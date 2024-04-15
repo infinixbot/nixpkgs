@@ -1,31 +1,32 @@
-{ config
-, lib
-, fetchurl
-, callPackage
-, vscode-utils
-, asciidoctor
-, nodePackages
-, python3Packages
-, jdk
-, llvmPackages
-, llvmPackages_14
-, nixpkgs-fmt
-, protobuf
-, jq
-, shellcheck
-, moreutils
-, racket
-, clojure-lsp
-, alejandra
-, millet
-, craftos-pc
-, shfmt
-, tinymist
-, typst-lsp
-, typst-preview
-, autoPatchelfHook
-, zlib
-, stdenv
+{
+  config,
+  lib,
+  fetchurl,
+  callPackage,
+  vscode-utils,
+  asciidoctor,
+  nodePackages,
+  python3Packages,
+  jdk,
+  llvmPackages,
+  llvmPackages_14,
+  nixpkgs-fmt,
+  protobuf,
+  jq,
+  shellcheck,
+  moreutils,
+  racket,
+  clojure-lsp,
+  alejandra,
+  millet,
+  craftos-pc,
+  shfmt,
+  tinymist,
+  typst-lsp,
+  typst-preview,
+  autoPatchelfHook,
+  zlib,
+  stdenv,
 }:
 
 let
@@ -40,8 +41,9 @@ let
   # This means an extension should be located at
   # ${lib.strings.toLower mktplcRef.publisher}.${lib.string.toLower mktplcRef.name}
   #
-  baseExtensions = self: lib.mapAttrs (_n: lib.recurseIntoAttrs)
-    {
+  baseExtensions =
+    self:
+    lib.mapAttrs (_n: lib.recurseIntoAttrs) {
       "13xforever".language-x86-64-assembly = buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "language-x86-64-assembly";
@@ -336,8 +338,7 @@ let
         };
         meta = {
           description = "An arctic, north-bluish clean and elegant Visual Studio Code theme.";
-          downloadPage =
-            "https://marketplace.visualstudio.com/items?itemName=arcticicestudio.nord-visual-studio-code";
+          downloadPage = "https://marketplace.visualstudio.com/items?itemName=arcticicestudio.nord-visual-studio-code";
           homepage = "https://github.com/arcticicestudio/nord-visual-studio-code";
           license = lib.licenses.mit;
           maintainers = [ lib.maintainers.imgabe ];
@@ -403,7 +404,7 @@ let
           homepage = "https://github.com/asdine/vscode-cue";
           changelog = "https://marketplace.visualstudio.com/items/asdine.cue/changelog";
           license = lib.licenses.mit;
-          maintainers = [lib.maintainers.matthewpi];
+          maintainers = [ lib.maintainers.matthewpi ];
         };
       };
 
@@ -465,7 +466,10 @@ let
           version = "0.13.5";
           hash = "sha256-sWM7N+axgu1zOGWexR4JVupVmYhZrd4cZz3pmLxRj8Q=";
         };
-        nativeBuildInputs = [ jq moreutils ];
+        nativeBuildInputs = [
+          jq
+          moreutils
+        ];
         postInstall = ''
           cd "$out/$installPrefix"
           jq '.contributes.configuration.properties."millet.server.path".default = "${millet}/bin/millet-ls"' package.json | sponge package.json
@@ -485,7 +489,10 @@ let
           version = "0.0.1";
           hash = "sha256-vz2kU36B1xkLci2QwLpl/SBEhfSWltIDJ1r7SorHcr8=";
         };
-        nativeBuildInputs = [ jq moreutils ];
+        nativeBuildInputs = [
+          jq
+          moreutils
+        ];
         postInstall = ''
           cd "$out/$installPrefix"
           jq '.contributes.configuration.properties."nixpkgs-fmt.path".default = "${nixpkgs-fmt}/bin/nixpkgs-fmt"' package.json | sponge package.json
@@ -602,7 +609,10 @@ let
           version = "2.0.374";
           hash = "sha256-VwdHOkduSSIrcOvrcVf7K8DSp3N1u9fvbaCVDCxp+bk=";
         };
-        nativeBuildInputs = [ jq moreutils ];
+        nativeBuildInputs = [
+          jq
+          moreutils
+        ];
         postInstall = ''
           cd "$out/$installPrefix"
           jq '.contributes.configuration[0].properties."calva.clojureLspPath".default = "${clojure-lsp}/bin/clojure-lsp"' package.json | sponge package.json
@@ -612,7 +622,7 @@ let
         };
       };
 
-       bierner.docs-view = buildVscodeMarketplaceExtension {
+      bierner.docs-view = buildVscodeMarketplaceExtension {
         mktplcRef = {
           name = "docs-view";
           publisher = "bierner";
@@ -823,30 +833,33 @@ let
       };
 
       charliermarsh.ruff = buildVscodeMarketplaceExtension {
-        mktplcRef = let
-          sources = {
-            "x86_64-linux" = {
-              arch = "linux-x64";
-              hash = "sha256-2c0tH/MlDOqeyffcV8ZCy4woogBTcf1GCuPPO8JXaWc=";
+        mktplcRef =
+          let
+            sources = {
+              "x86_64-linux" = {
+                arch = "linux-x64";
+                hash = "sha256-2c0tH/MlDOqeyffcV8ZCy4woogBTcf1GCuPPO8JXaWc=";
+              };
+              "x86_64-darwin" = {
+                arch = "darwin-x64";
+                hash = "sha256-euvGIlO7931N56R5BWKu3F9nSEoDgf+DXk7Hgl1qSUw=";
+              };
+              "aarch64-linux" = {
+                arch = "linux-arm64";
+                hash = "sha256-dGpIHChnfrQbxRZDuoAi4imgStyyPdxdvTQ3lknMYu0=";
+              };
+              "aarch64-darwin" = {
+                arch = "darwin-arm64";
+                hash = "sha256-tElX4C0I5AmpxSHMtqOsxSAUImD1tqArB5fnvhw4LFc=";
+              };
             };
-            "x86_64-darwin" = {
-              arch = "darwin-x64";
-              hash = "sha256-euvGIlO7931N56R5BWKu3F9nSEoDgf+DXk7Hgl1qSUw=";
-            };
-            "aarch64-linux" = {
-              arch = "linux-arm64";
-              hash = "sha256-dGpIHChnfrQbxRZDuoAi4imgStyyPdxdvTQ3lknMYu0=";
-            };
-            "aarch64-darwin" = {
-              arch = "darwin-arm64";
-              hash = "sha256-tElX4C0I5AmpxSHMtqOsxSAUImD1tqArB5fnvhw4LFc=";
-            };
-          };
-        in {
-          name = "ruff";
-          publisher = "charliermarsh";
-          version = "2024.4.0";
-        } // sources.${stdenv.system} or (throw "Unsupported system ${stdenv.system}");
+          in
+          {
+            name = "ruff";
+            publisher = "charliermarsh";
+            version = "2024.4.0";
+          }
+          // sources.${stdenv.system} or (throw "Unsupported system ${stdenv.system}");
         meta = {
           license = lib.licenses.mit;
           changelog = "https://marketplace.visualstudio.com/items/charliermarsh.ruff/changelog";
@@ -1005,7 +1018,9 @@ let
         };
       };
 
-      contextmapper.context-mapper-vscode-extension = callPackage ./contextmapper.context-mapper-vscode-extension { };
+      contextmapper.context-mapper-vscode-extension =
+        callPackage ./contextmapper.context-mapper-vscode-extension
+          { };
 
       continue.continue = buildVscodeMarketplaceExtension {
         mktplcRef =
@@ -1033,13 +1048,10 @@ let
             name = "continue";
             publisher = "Continue";
             version = "0.8.22";
-          } // sources.${stdenv.system};
-        nativeBuildInputs = [
-          autoPatchelfHook
-        ];
-        buildInputs = [
-          stdenv.cc.cc.lib
-        ];
+          }
+          // sources.${stdenv.system};
+        nativeBuildInputs = [ autoPatchelfHook ];
+        buildInputs = [ stdenv.cc.cc.lib ];
         postInstall = ''
           cd "$out/$installPrefix"
           substituteInPlace "out/extension.js" \
@@ -1051,7 +1063,12 @@ let
           homepage = "https://github.com/continuedev/continue";
           license = lib.licenses.asl20;
           maintainers = [ lib.maintainers.raroh73 ];
-          platforms = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" "aarch64-linux" ];
+          platforms = [
+            "x86_64-linux"
+            "x86_64-darwin"
+            "aarch64-darwin"
+            "aarch64-linux"
+          ];
         };
       };
 
@@ -1218,34 +1235,35 @@ let
       };
 
       devsense.phptools-vscode = buildVscodeMarketplaceExtension {
-        mktplcRef = let
-          sources = {
-            "x86_64-linux" = {
-              arch = "linux-x64";
-              hash = "sha256-8i5nRlzd+LnpEh9trWECxfiC1W4S0ekBab5vo18OlsA=";
+        mktplcRef =
+          let
+            sources = {
+              "x86_64-linux" = {
+                arch = "linux-x64";
+                hash = "sha256-8i5nRlzd+LnpEh9trWECxfiC1W4S0ekBab5vo18OlsA=";
+              };
+              "x86_64-darwin" = {
+                arch = "darwin-x64";
+                sha256 = "14crw56277rdwhigabb3nsndkfcs3yzzf7gw85jvryxviq32chgy";
+              };
+              "aarch64-linux" = {
+                arch = "linux-arm64";
+                sha256 = "1j1xlvbg3nrfmdd9zm6kywwicdwdkrq0si86lcndaii8m7sj5pfp";
+              };
+              "aarch64-darwin" = {
+                arch = "darwin-arm64";
+                sha256 = "0nlks6iqxkx1xlicsa8lrb1319rgznlxkv2gg7wkwgzph97ik8bi";
+              };
             };
-            "x86_64-darwin" = {
-              arch = "darwin-x64";
-              sha256 = "14crw56277rdwhigabb3nsndkfcs3yzzf7gw85jvryxviq32chgy";
-            };
-            "aarch64-linux" = {
-              arch = "linux-arm64";
-              sha256 = "1j1xlvbg3nrfmdd9zm6kywwicdwdkrq0si86lcndaii8m7sj5pfp";
-            };
-            "aarch64-darwin" = {
-              arch = "darwin-arm64";
-              sha256 = "0nlks6iqxkx1xlicsa8lrb1319rgznlxkv2gg7wkwgzph97ik8bi";
-            };
-          };
-        in {
-          name = "phptools-vscode";
-          publisher = "devsense";
-          version = "1.41.14332";
-        } // sources.${stdenv.system};
+          in
+          {
+            name = "phptools-vscode";
+            publisher = "devsense";
+            version = "1.41.14332";
+          }
+          // sources.${stdenv.system};
 
-        nativeBuildInputs = [
-          autoPatchelfHook
-        ];
+        nativeBuildInputs = [ autoPatchelfHook ];
 
         buildInputs = [
           zlib
@@ -1263,7 +1281,12 @@ let
           homepage = "https://github.com/DEVSENSE/phptools-docs";
           license = lib.licenses.unfree;
           maintainers = [ lib.maintainers.drupol ];
-          platforms = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" "aarch64-linux" ];
+          platforms = [
+            "x86_64-linux"
+            "x86_64-darwin"
+            "aarch64-darwin"
+            "aarch64-linux"
+          ];
         };
       };
 
@@ -1291,7 +1314,9 @@ let
           version = "0.0.4";
           sha256 = "0sa04srhqmngmw71slnrapi2xay0arj42j4gkan8i11n7bfi1xpf";
         };
-        meta = { license = lib.licenses.mit; };
+        meta = {
+          license = lib.licenses.mit;
+        };
       };
 
       dhall.vscode-dhall-lsp-server = buildVscodeMarketplaceExtension {
@@ -1301,7 +1326,9 @@ let
           version = "0.0.4";
           sha256 = "1zin7s827bpf9yvzpxpr5n6mv0b5rhh3civsqzmj52mdq365d2js";
         };
-        meta = { license = lib.licenses.mit; };
+        meta = {
+          license = lib.licenses.mit;
+        };
       };
 
       dhedgecock.radical-vscode = buildVscodeMarketplaceExtension {
@@ -1328,7 +1355,9 @@ let
           version = "0.0.8";
           hash = "sha256-BQPiSxiPPjdNPtIJI8L+558DVKxngPAI9sscpcJSJUI=";
         };
-        meta = { license = lib.licenses.asl20; };
+        meta = {
+          license = lib.licenses.asl20;
+        };
       };
 
       divyanshuagrawal.competitive-programming-helper = buildVscodeMarketplaceExtension {
@@ -1641,7 +1670,10 @@ let
           version = "0.6.4";
           hash = "sha256-Hxa4VPm3QvJICzpDyfk94fGHu1hr+YN9szVBwDB8X4U=";
         };
-        nativeBuildInputs = [ jq moreutils ];
+        nativeBuildInputs = [
+          jq
+          moreutils
+        ];
         postInstall = ''
           cd "$out/$installPrefix"
           jq '.contributes.configuration.properties."magicRacket.general.racketPath".default = "${racket}/bin/racket"' package.json | sponge package.json
@@ -1783,7 +1815,10 @@ let
           hash = "sha256-kfpRByJDcGY3W9+ELBzDOUMl06D/vyPlN//wPgQhByk=";
         };
 
-        nativeBuildInputs = [ jq moreutils ];
+        nativeBuildInputs = [
+          jq
+          moreutils
+        ];
 
         postInstall = ''
           cd "$out/$installPrefix"
@@ -1923,8 +1958,7 @@ let
         };
         meta = {
           description = "GitHub theme for VS Code";
-          downloadPage =
-            "https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme";
+          downloadPage = "https://marketplace.visualstudio.com/items?itemName=GitHub.github-vscode-theme";
           homepage = "https://github.com/primer/github-vscode-theme";
           license = lib.licenses.mit;
           maintainers = [ lib.maintainers.hugolgst ];
@@ -1959,7 +1993,9 @@ let
           version = "0.78.1";
           hash = "sha256-T9oW6o4ItZfR8E1qrcH3nhMvVB6ihi4kpiDz7YGHOcI=";
         };
-        meta = { license = lib.licenses.mit; };
+        meta = {
+          license = lib.licenses.mit;
+        };
       };
 
       gitlab.gitlab-workflow = buildVscodeMarketplaceExtension {
@@ -2304,7 +2340,10 @@ let
           version = "1.2.2";
           hash = "sha256-A+MNroXv0t9Mw/gr0Fyov3cXyF/GGzwRLKrIxQ2tKCE=";
         };
-        nativeBuildInputs = [ jq moreutils ];
+        nativeBuildInputs = [
+          jq
+          moreutils
+        ];
         postInstall = ''
           cd "$out/$installPrefix"
 
@@ -2553,7 +2592,10 @@ let
           version = "1.0.0";
           hash = "sha256-COlEjKhm8tK5XfOjrpVUDQ7x3JaOLiYoZ4MdwTL8ktk=";
         };
-        nativeBuildInputs = [ jq moreutils ];
+        nativeBuildInputs = [
+          jq
+          moreutils
+        ];
         postInstall = ''
           cd "$out/$installPrefix"
 
@@ -2608,9 +2650,15 @@ let
             hash = "sha256-IueXiN+077tiecAsVCzgYksWYTs00mZv6XJVMtRJ/PQ=";
           };
 
-          nativeBuildInputs = [ jq moreutils ];
+          nativeBuildInputs = [
+            jq
+            moreutils
+          ];
 
-          buildInputs = [ cfn-lint pydot ];
+          buildInputs = [
+            cfn-lint
+            pydot
+          ];
 
           postInstall = ''
             cd "$out/$installPrefix"
@@ -2807,11 +2855,12 @@ let
           hash = "sha256-GwlzFphZmP87pLys01+PWTv13imcdGjunCMH6atz9xs=";
         };
 
-        buildInputs = [
-          typst-preview
-        ];
+        buildInputs = [ typst-preview ];
 
-        nativeBuildInputs = [ jq moreutils ];
+        nativeBuildInputs = [
+          jq
+          moreutils
+        ];
 
         postInstall = ''
           cd "$out/$installPrefix"
@@ -3279,11 +3328,12 @@ let
           hash = "sha256-b5aD4gz4j+QAEPmYaNnaputbYTPoFxVFih76HmznUP8=";
         };
 
-        nativeBuildInputs = [ jq moreutils ];
-
-        buildInputs = [
-          tinymist
+        nativeBuildInputs = [
+          jq
+          moreutils
         ];
+
+        buildInputs = [ tinymist ];
 
         postInstall = ''
           cd "$out/$installPrefix"
@@ -3393,11 +3443,12 @@ let
           hash = "sha256-JcfFaR1wU5XwapH8vnfVy7Cb7DfUWVeoLfBV3wEtCpE=";
         };
 
-        nativeBuildInputs = [ jq moreutils ];
-
-        buildInputs = [
-          typst-lsp
+        nativeBuildInputs = [
+          jq
+          moreutils
         ];
+
+        buildInputs = [ typst-lsp ];
 
         postInstall = ''
           cd "$out/$installPrefix"
@@ -4331,7 +4382,10 @@ let
           version = "0.37.0";
           sha256 = "1d0blynn6c2hz4y9fk7b5wsa3x168gxyycr5d05zqp0rx520m5wc";
         };
-        nativeBuildInputs = [ jq moreutils ];
+        nativeBuildInputs = [
+          jq
+          moreutils
+        ];
         postInstall = ''
           cd "$out/$installPrefix"
           jq '.contributes.configuration.properties."shellcheck.executablePath".default = "${shellcheck}/bin/shellcheck"' package.json | sponge package.json
@@ -4453,7 +4507,11 @@ let
           downloadPage = "https://marketplace.visualstudio.com/items?itemName=uiua-lang.uiua-vscode";
           homepage = "https://github.com/uiua-lang/uiua-vscode";
           license = lib.licenses.mit;
-          maintainers = with lib.maintainers; [ tomasajt wackbyte defelo ];
+          maintainers = with lib.maintainers; [
+            tomasajt
+            wackbyte
+            defelo
+          ];
         };
       };
 
@@ -4523,7 +4581,10 @@ let
           sha256 = "1nlrijjwc35n1xgb5lgnr4yvlgfcxd0vdj93ip8lv2xi8x1ni5f6";
         };
 
-        nativeBuildInputs = [ jq moreutils ];
+        nativeBuildInputs = [
+          jq
+          moreutils
+        ];
 
         buildInputs = [ jdk ];
 
@@ -4967,7 +5028,10 @@ let
           version = "0.5.4";
           sha256 = "08dfl5h1k6s542qw5qx2czm1wb37ck9w2vpjz44kp2az352nmksb";
         };
-        nativeBuildInputs = [ jq moreutils ];
+        nativeBuildInputs = [
+          jq
+          moreutils
+        ];
         postInstall = ''
           cd "$out/$installPrefix"
           jq '.contributes.configuration.properties.protoc.properties.path.default = "${protobuf}/bin/protoc"' package.json | sponge package.json

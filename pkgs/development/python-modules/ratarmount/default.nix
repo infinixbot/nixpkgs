@@ -1,9 +1,10 @@
-{ lib
-, buildPythonPackage
-, fetchPypi
-, pythonOlder
-, fusepy
-, ratarmountcore
+{
+  lib,
+  buildPythonPackage,
+  fetchPypi,
+  pythonOlder,
+  fusepy,
+  ratarmountcore,
 }:
 
 buildPythonPackage rec {
@@ -18,7 +19,10 @@ buildPythonPackage rec {
     hash = "sha256-CZh27X5EmUiRYfeV0KOnpMrFDfa+qDFHr2pInD90UO8=";
   };
 
-  propagatedBuildInputs = [ ratarmountcore fusepy ];
+  propagatedBuildInputs = [
+    ratarmountcore
+    fusepy
+  ];
 
   checkPhase = ''
     runHook preCheck

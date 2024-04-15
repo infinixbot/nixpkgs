@@ -1,15 +1,19 @@
-{ stdenv
-, callPackage
-, rocmUpdateScript
-, llvm
-, makeWrapper
+{
+  stdenv,
+  callPackage,
+  rocmUpdateScript,
+  llvm,
+  makeWrapper,
 }:
 
 callPackage ../base.nix rec {
   inherit stdenv rocmUpdateScript;
   targetName = "clang-unwrapped";
   targetDir = "clang";
-  extraBuildInputs = [ llvm makeWrapper ];
+  extraBuildInputs = [
+    llvm
+    makeWrapper
+  ];
 
   extraCMakeFlags = [
     "-DCLANG_INCLUDE_DOCS=ON"

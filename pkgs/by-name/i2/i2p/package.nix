@@ -1,14 +1,15 @@
-{ lib
-, stdenv
-, fetchzip
-, jdk
-, ant
-, gettext
-, which
-, dbip-country-lite
-, java-service-wrapper
-, makeWrapper
-, gmp
+{
+  lib,
+  stdenv,
+  fetchzip,
+  jdk,
+  ant,
+  gettext,
+  which,
+  dbip-country-lite,
+  java-service-wrapper,
+  makeWrapper,
+  gmp,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -115,7 +116,11 @@ stdenv.mkDerivation (finalAttrs: {
       mit
       publicDomain
     ];
-    platforms = [ "x86_64-linux" "i686-linux" "aarch64-linux" ];
+    platforms = [
+      "x86_64-linux"
+      "i686-linux"
+      "aarch64-linux"
+    ];
     maintainers = with maintainers; [ linsui ];
     mainProgram = "i2prouter-plain";
   };

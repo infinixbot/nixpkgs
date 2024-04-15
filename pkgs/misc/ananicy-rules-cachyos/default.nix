@@ -1,4 +1,8 @@
-{ lib, stdenv, fetchFromGitHub }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+}:
 
 stdenv.mkDerivation {
   pname = "ananicy-rules-cachyos";
@@ -27,6 +31,10 @@ stdenv.mkDerivation {
     description = "ananicy-cpp-rules for CachyOS ";
     license = licenses.gpl3Only;
     platforms = platforms.linux;
-    maintainers = with maintainers; [ artturin johnrtitor diniamo ];
+    maintainers = with maintainers; [
+      artturin
+      johnrtitor
+      diniamo
+    ];
   };
 }

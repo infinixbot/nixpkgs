@@ -1,9 +1,10 @@
-{ lib
-, stdenv
-, fetchurl
-, libxcrypt
-, ncurses
-, buildPackages
+{
+  lib,
+  stdenv,
+  fetchurl,
+  libxcrypt,
+  ncurses,
+  buildPackages,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -17,9 +18,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  depsBuildBuild = [
-    buildPackages.stdenv.cc
-  ];
+  depsBuildBuild = [ buildPackages.stdenv.cc ];
 
   buildInputs = [
     libxcrypt
@@ -45,7 +44,10 @@ stdenv.mkDerivation (finalAttrs: {
       - job control
     '';
     license = lib.licenses.bsd2;
-    maintainers = with lib.maintainers; [ AndersonTorres suominen ];
+    maintainers = with lib.maintainers; [
+      AndersonTorres
+      suominen
+    ];
     platforms = lib.platforms.unix;
   };
 })

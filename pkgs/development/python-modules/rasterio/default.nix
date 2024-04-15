@@ -1,34 +1,36 @@
-{ lib
-, buildPythonPackage
-, fetchFromGitHub
-, fetchpatch
-, pytestCheckHook
-, pythonOlder
-, stdenv
-, testers
+{
+  lib,
+  buildPythonPackage,
+  fetchFromGitHub,
+  fetchpatch,
+  pytestCheckHook,
+  pythonOlder,
+  stdenv,
+  testers,
 
-, affine
-, attrs
-, boto3
-, certifi
-, click
-, click-plugins
-, cligj
-, cython_3
-, gdal
-, hypothesis
-, ipython
-, matplotlib
-, numpy
-, oldest-supported-numpy
-, packaging
-, pytest-randomly
-, setuptools
-, shapely
-, snuggs
-, wheel
+  affine,
+  attrs,
+  boto3,
+  certifi,
+  click,
+  click-plugins,
+  cligj,
+  cython_3,
+  gdal,
+  hypothesis,
+  ipython,
+  matplotlib,
+  numpy,
+  oldest-supported-numpy,
+  packaging,
+  pytest-randomly,
+  setuptools,
+  shapely,
+  snuggs,
+  wheel
 
-, rasterio  # required to run version test
+  ,
+  rasterio, # required to run version test
 }:
 
 buildPythonPackage rec {
@@ -61,7 +63,7 @@ buildPythonPackage rec {
     # remove useless import statement requiring distutils to be present at the runtime
     substituteInPlace rasterio/rio/calc.py \
       --replace-fail "from distutils.version import LooseVersion" ""
-    '';
+  '';
 
   nativeBuildInputs = [
     cython_3
@@ -84,15 +86,9 @@ buildPythonPackage rec {
   ];
 
   passthru.optional-dependencies = {
-    ipython = [
-      ipython
-    ];
-    plot = [
-      matplotlib
-    ];
-    s3 = [
-      boto3
-    ];
+    ipython = [ ipython ];
+    plot = [ matplotlib ];
+    s3 = [ boto3 ];
   };
 
   nativeCheckInputs = [
@@ -126,13 +122,9 @@ buildPythonPackage rec {
   disabledTests = [
     # flaky
     "test_outer_boundless_pixel_fidelity"
-  ] ++ lib.optionals stdenv.isDarwin [
-    "test_reproject_error_propagation"
-  ];
+  ] ++ lib.optionals stdenv.isDarwin [ "test_reproject_error_propagation" ];
 
-  pythonImportsCheck = [
-    "rasterio"
-  ];
+  pythonImportsCheck = [ "rasterio" ];
 
   passthru.tests.version = testers.testVersion {
     package = rasterio;

@@ -1,4 +1,10 @@
-{ lib, buildNpmPackage, fetchFromGitHub, testers, typescript }:
+{
+  lib,
+  buildNpmPackage,
+  fetchFromGitHub,
+  testers,
+  typescript,
+}:
 
 buildNpmPackage rec {
   pname = "typescript";
@@ -11,16 +17,12 @@ buildNpmPackage rec {
     hash = "sha256-8mVkVLy/E8Fl4Ds9NphtE2Hp1HLM8ehhW/dG6MlaLIs=";
   };
 
-  patches = [
-    ./disable-dprint-dstBundler.patch
-  ];
+  patches = [ ./disable-dprint-dstBundler.patch ];
 
   npmDepsHash = "sha256-Csu9Ik9aC9qvZmx9Yn1xzkrP1bjHL0o72ZSwzCicFoI=";
 
   passthru.tests = {
-    version = testers.testVersion {
-      package = typescript;
-    };
+    version = testers.testVersion { package = typescript; };
   };
 
   meta = with lib; {

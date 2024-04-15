@@ -1,12 +1,13 @@
-{ lib
-, buildPythonPackage
-, fetchFromGitHub
-, poetry-core
-, reretry
-, snakemake-interface-common
-, throttler
-, wrapt
-, snakemake
+{
+  lib,
+  buildPythonPackage,
+  fetchFromGitHub,
+  poetry-core,
+  reretry,
+  snakemake-interface-common,
+  throttler,
+  wrapt,
+  snakemake,
 }:
 
 buildPythonPackage rec {
@@ -21,9 +22,7 @@ buildPythonPackage rec {
     hash = "sha256-IxsD8+arv6jLyFxzZJgeRXadsjSKH14KIEdd89/bo1w=";
   };
 
-  nativeBuildInputs = [
-    poetry-core
-  ];
+  nativeBuildInputs = [ poetry-core ];
 
   propagatedBuildInputs = [
     reretry
