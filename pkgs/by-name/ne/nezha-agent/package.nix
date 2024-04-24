@@ -40,6 +40,6 @@ buildGoModule rec {
     description = "Agent of Nezha Monitoring";
     homepage = "https://github.com/nezhahq/agent";
     license = licenses.asl20;
-    maintainers = with maintainers; [moraxyc];
+    maintainers = with maintainers; [ moraxyc ];
   };
 }
