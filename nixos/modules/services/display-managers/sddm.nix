@@ -146,8 +146,8 @@ let
       in
       "${getExe pkgs.weston} --shell=kiosk -c ${westonIni}";
   };
-in
 
+in
 {
   imports = [
     (mkRenamedOptionModule

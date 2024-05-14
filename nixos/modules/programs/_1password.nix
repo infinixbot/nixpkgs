@@ -8,8 +8,8 @@
 let
 
   cfg = config.programs._1password;
-in
 
+in
 {
   imports = [
     (lib.mkRemovedOptionModule

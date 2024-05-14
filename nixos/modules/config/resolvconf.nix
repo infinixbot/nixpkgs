@@ -40,6 +40,7 @@ let
       name_servers='127.0.0.1${optionalString config.networking.enableIPv6 " ::1"}'
     ''
     + cfg.extraConfig;
+
 in
 
 {

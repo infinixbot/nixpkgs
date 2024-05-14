@@ -120,8 +120,8 @@ let
 
       };
     };
-in
 
+in
 {
 
   options.services.v4l2-relayd = {
@@ -215,8 +215,8 @@ in
         );
 
       enabledInstances = attrValues (filterAttrs (n: v: v.enable) cfg.instances);
-    in
 
+    in
     {
 
       boot = mkIf ((length enabledInstances) > 0) {

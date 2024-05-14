@@ -26,8 +26,8 @@ let
     def __init__(foo: address):
         self.count = 1
   '';
-in
 
+in
 buildPythonPackage rec {
   pname = "vyper";
   version = "0.3.10";

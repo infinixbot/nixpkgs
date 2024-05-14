@@ -26,8 +26,8 @@ let
     ]
     ++ lib.optionals enableMail [ mailutils ]
   );
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "smartmontools";
   version = "7.4";

@@ -102,7 +102,7 @@ rec {
           mkList k v
         else
           mkOption k v;
-    in
 
+    in
     builtins.concatLists (lib.mapAttrsToList render options);
 }

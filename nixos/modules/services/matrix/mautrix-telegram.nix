@@ -13,8 +13,8 @@ let
   cfg = config.services.mautrix-telegram;
   settingsFormat = pkgs.formats.json { };
   settingsFile = settingsFormat.generate "mautrix-telegram-config.json" cfg.settings;
-in
 
+in
 {
   options = {
     services.mautrix-telegram = {

@@ -37,8 +37,8 @@ let
         }) (super.callPackage ./curry-frontend.nix { });
       };
     }).curry-frontend;
-in
 
+in
 stdenv.mkDerivation {
   inherit pname version src;
 

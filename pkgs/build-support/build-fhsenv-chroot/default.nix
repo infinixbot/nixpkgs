@@ -53,8 +53,8 @@ let
   versionStr = lib.optionalString (version != null) ("-" + version);
 
   nameAndVersion = name + versionStr;
-in
 
+in
 runCommandLocal nameAndVersion
   {
     inherit meta;

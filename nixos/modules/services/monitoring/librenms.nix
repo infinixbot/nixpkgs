@@ -54,8 +54,8 @@ let
 
     ${lib.optionalString (cfg.extraConfig != null) cfg.extraConfig}
   '';
-in
 
+in
 {
   options.services.librenms = with lib; {
     enable = mkEnableOption "LibreNMS network monitoring system";

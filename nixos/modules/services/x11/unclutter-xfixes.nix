@@ -9,8 +9,8 @@ with lib;
 
 let
   cfg = config.services.unclutter-xfixes;
-in
 
+in
 {
   options.services.unclutter-xfixes = {
 

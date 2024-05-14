@@ -48,8 +48,8 @@ let
       };
     }
     ."${system}" or (throw "Unsupported system: ${system}");
-in
 
+in
 stdenv.mkDerivation {
   inherit pname src version;
 

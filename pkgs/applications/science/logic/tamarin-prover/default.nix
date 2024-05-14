@@ -132,8 +132,8 @@ let
       ];
     }
   );
-in
 
+in
 mkDerivation (
   common "tamarin-prover" src
   // {

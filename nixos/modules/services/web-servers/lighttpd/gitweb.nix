@@ -10,8 +10,8 @@ with lib;
 let
   cfg = config.services.gitweb;
   package = pkgs.gitweb.override (optionalAttrs cfg.gitwebTheme { gitwebTheme = true; });
-in
 
+in
 {
 
   options.services.lighttpd.gitweb = {

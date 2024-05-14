@@ -791,8 +791,8 @@ lib.makeScope pkgs.newScope (
             name = drv.name;
             value = mkExtension drv;
           }) (builtins.filter (i: i.enable or true) extensionData);
-        in
 
+        in
         # Produce the final attribute set of all extensions defined.
         builtins.listToAttrs namedExtensions
       );

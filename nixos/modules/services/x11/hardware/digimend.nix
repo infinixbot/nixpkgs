@@ -12,6 +12,7 @@ let
   cfg = config.services.xserver.digimend;
 
   pkg = config.boot.kernelPackages.digimend;
+
 in
 
 {

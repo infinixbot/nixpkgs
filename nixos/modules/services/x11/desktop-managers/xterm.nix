@@ -11,6 +11,7 @@ let
 
   cfg = config.services.xserver.desktopManager.xterm;
   xSessionEnabled = config.services.xserver.enable;
+
 in
 
 {

@@ -14,8 +14,8 @@ let
 
   minimum_config_is_set =
     config_text: (builtins.match ".*(MAILADDR|PROGRAM).*" mdadm_conf.text) != null;
-in
 
+in
 {
   imports = [
     (lib.mkRenamedOptionModule

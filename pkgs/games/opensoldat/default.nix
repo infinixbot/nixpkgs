@@ -46,6 +46,7 @@ let
       inherit (src.meta) homepage;
     };
   };
+
 in
 
 stdenv.mkDerivation rec {

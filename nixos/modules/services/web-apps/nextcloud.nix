@@ -987,8 +987,8 @@ in
             The package can be upgraded by explicitly declaring the service-option
             `services.nextcloud.package`.
           '';
-        in
 
+        in
         (optional (cfg.poolConfig != null) ''
           Using config.services.nextcloud.poolConfig is deprecated and will become unsupported in a future release.
           Please migrate your configuration to config.services.nextcloud.poolSettings.
@@ -1125,8 +1125,8 @@ in
                   ${toString i} --value="${toString v}"
               '') ([ cfg.hostName ] ++ cfg.settings.trusted_domains)
             );
-          in
 
+          in
           {
             wantedBy = [ "multi-user.target" ];
             wants = [ "nextcloud-update-db.service" ];

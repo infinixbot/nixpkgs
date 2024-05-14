@@ -17,6 +17,7 @@ let
     ;
 
   cfg = config.services.plantuml-server;
+
 in
 
 {

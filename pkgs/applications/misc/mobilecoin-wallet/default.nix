@@ -13,8 +13,8 @@ let
     hash = "sha256-XGU/xxsMhOBAh+MeMtL2S707yH8HnoO9w5l7zqjO6rs=";
   };
   appimageContents = appimageTools.extractType2 { inherit name src; };
-in
 
+in
 appimageTools.wrapType2 {
   inherit name src;
 

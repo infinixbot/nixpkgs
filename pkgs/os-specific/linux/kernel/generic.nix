@@ -291,8 +291,8 @@ let
           };
         }
       );
-    in
 
+    in
     kernel.overrideAttrs (
       finalAttrs: previousAttrs: {
 

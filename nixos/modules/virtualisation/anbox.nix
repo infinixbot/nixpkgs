@@ -51,6 +51,7 @@ let
           mksquashfs rootfs $out -comp xz -no-xattrs -all-root
         ''
       ) { });
+
 in
 
 {

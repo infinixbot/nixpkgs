@@ -137,8 +137,8 @@ let
   inherit (lib.sources) cleanSourceWith;
 
   inherit (lib.trivial) isFunction pipe;
-in
 
+in
 {
 
   /*

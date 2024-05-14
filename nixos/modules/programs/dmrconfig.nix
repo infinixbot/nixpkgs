@@ -7,8 +7,8 @@
 
 let
   cfg = config.programs.dmrconfig;
-in
 
+in
 {
   meta.maintainers = with lib.maintainers; [ ];
 

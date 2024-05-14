@@ -97,8 +97,8 @@ let
 
     dontPatchELF = true;
   };
-in
 
+in
 # Lightworks expects some files in /usr/share/lightworks
 buildFHSEnv {
   name = lightworks.name;

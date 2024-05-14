@@ -89,8 +89,8 @@ let
       GTK_IM_MODULE='xim'
     ''
     + lib.toShellVars extraEnv;
-in
 
+in
 buildFHSEnv rec {
   name = "steam";
 

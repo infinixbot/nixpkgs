@@ -76,8 +76,8 @@ let
     # settings.
     api_key: @API_KEY@
   '';
-in
 
+in
 {
 
   ###### interface

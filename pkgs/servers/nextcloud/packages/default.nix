@@ -17,8 +17,8 @@ let
         inherit apps;
       };
       appBaseDefs = builtins.fromJSON (builtins.readFile ./nextcloud-apps.json);
-    in
 
+    in
     {
       # Create a derivation from the official Nextcloud apps.
       # This takes the data generated from the go tool.
@@ -52,6 +52,6 @@ let
         ) pkgs
       )
     ) generatedJson;
-in
 
+in
 (lib.makeExtensible (_: (lib.makeScope newScope packages))).extend (selfNC: superNC: { })

@@ -889,8 +889,8 @@ let
         };
       };
     };
-in
 
+in
 {
 
   options = {

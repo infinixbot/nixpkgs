@@ -148,8 +148,8 @@ let
   mkMakeFlagsFromConfig = lib.mapAttrsToList (var: val: "${var}=${mkMakeFlagValue val}");
 
   shlibExt = stdenv.hostPlatform.extensions.sharedLibrary;
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "openblas";
   version = "0.3.27";

@@ -110,6 +110,7 @@ let
       runHook postInstall
     '';
   };
+
 in
 
 symlinkJoin rec {

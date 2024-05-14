@@ -27,8 +27,8 @@ let
     yarnLock = "${src}/yarn.lock";
     hash = "sha256-hapEbdjvvzeZHfrpYRW9W3vXkQVNyGZ0qydO34+mQqQ=";
   };
-in
 
+in
 stdenv.mkDerivation {
   inherit
     pname

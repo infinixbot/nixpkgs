@@ -12,6 +12,7 @@ let
   cfg = config.services.autofs;
 
   autoMaster = pkgs.writeText "auto.master" cfg.autoMaster;
+
 in
 
 {

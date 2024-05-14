@@ -66,8 +66,8 @@ let
       value = byId."${id}";
     }) ids
   );
-in
 
+in
 rec {
   # Only use if you know what youre doing
   raw = {
@@ -92,8 +92,8 @@ rec {
           throw "Could not resolve plugin ${plugin}";
 
       plugins = map processPlugin unprocessedPlugins;
-    in
 
+    in
     stdenv.mkDerivation rec {
       pname = meta.mainProgram + "-with-plugins";
       version = ide.version;

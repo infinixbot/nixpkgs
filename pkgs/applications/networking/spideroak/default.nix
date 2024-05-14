@@ -31,8 +31,8 @@ let
   ];
 
   version = "7.5.0";
-in
 
+in
 stdenv.mkDerivation {
   pname = "spideroak";
   inherit version;

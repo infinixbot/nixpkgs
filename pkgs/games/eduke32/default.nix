@@ -25,8 +25,8 @@
 let
   wrapper = "eduke32-wrapper";
   swWrapper = "voidsw-wrapper";
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "eduke32";
   version = "0-unstable-2024-02-17";

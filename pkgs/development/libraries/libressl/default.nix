@@ -116,8 +116,8 @@ let
         ];
       };
     };
-in
 
+in
 {
   libressl_3_6 = generic {
     version = "3.6.3";

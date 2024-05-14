@@ -45,8 +45,8 @@ let
       };
     };
   };
-in
 
+in
 {
   options.services.mautrix-whatsapp = {
     enable = lib.mkEnableOption "mautrix-whatsapp, a puppeting/relaybot bridge between Matrix and WhatsApp.";

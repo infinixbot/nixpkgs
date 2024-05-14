@@ -82,8 +82,8 @@ let
     map (packageName: nimOverrides.${packageName} or (_: [ ]) lockAttrs) packages;
 
   asFunc = x: if builtins.isFunction x then x else (_: x);
-in
 
+in
 buildNimPackageArgs:
 let
   composition =
@@ -159,6 +159,6 @@ let
     lib.trivial.warnIf (builtins.hasAttr "nimBinOnly" attrs)
       "the nimBinOnly attribute is deprecated for buildNimPackage"
       attrs;
-in
 
+in
 stdenv.mkDerivation composition

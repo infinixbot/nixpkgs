@@ -23,8 +23,8 @@ let
   withVLC = stdenv.isDarwin;
 
   inherit (lib) optional optionalString;
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "gemrb";
   version = "0.9.2";

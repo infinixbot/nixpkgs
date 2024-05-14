@@ -46,8 +46,8 @@ let
     # NB: Some editors (vscode) show this _whole_ line in right-to-left order
     "الجبر" = "أكثر من مجرد أرقام";
   };
-in
 
+in
 stdenv.mkDerivation {
   name = "pkgs.formats.javaProperties-test-${jdk.name}";
   nativeBuildInputs = [

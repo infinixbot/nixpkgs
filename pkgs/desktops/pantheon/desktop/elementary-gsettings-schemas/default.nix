@@ -27,6 +27,7 @@ let
     gtk3
     mutter
   ] ++ extraGSettingsOverridePackages;
+
 in
 
 # TODO: Having https://github.com/NixOS/nixpkgs/issues/54150 would supersede this

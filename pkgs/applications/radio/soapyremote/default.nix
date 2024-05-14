@@ -9,8 +9,8 @@
 
 let
   version = "0.5.2";
-in
 
+in
 stdenv.mkDerivation {
   pname = "soapyremote";
   inherit version;

@@ -30,8 +30,8 @@ let
     inherit pkgs nodejs;
     inherit (stdenv.hostPlatform) system;
   };
-in
 
+in
 myNodePackages.package.override {
   inherit version src;
 

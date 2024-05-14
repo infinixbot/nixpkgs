@@ -12,8 +12,8 @@ let
   cfg = config.services.go-autoconfig;
   format = pkgs.formats.yaml { };
   configFile = format.generate "config.yml" cfg.settings;
-in
 
+in
 {
   options = {
     services.go-autoconfig = {

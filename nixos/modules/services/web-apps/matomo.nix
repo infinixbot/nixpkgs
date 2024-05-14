@@ -17,8 +17,8 @@ let
   pool = user;
   phpExecutionUnit = "phpfpm-${pool}";
   databaseService = "mysql.service";
-in
 
+in
 {
   imports = [
     (mkRenamedOptionModule

@@ -50,8 +50,8 @@ let
     rev = "933f83becb45f5586ed5fd089e60d382aeefb409";
     hash = "sha256-CVEmKkzdFNLKCbcbeSIoM5QjYVLQglpz6gy7+ZFPgCY=";
   };
-in
 
+in
 rustPlatform.buildRustPackage rec {
   pname = "ecc";
   version = "1.0.12";

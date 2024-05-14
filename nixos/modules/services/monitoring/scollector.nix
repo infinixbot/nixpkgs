@@ -28,8 +28,8 @@ let
     ColDir = "${collectors}"
     ${cfg.extraConfig}
   '';
-in
 
+in
 {
 
   options = {

@@ -68,8 +68,8 @@ let
       install -D ${wrapperLibName} -t $out/lib
     '';
   };
-in
 
+in
 stdenv.mkDerivation rec {
   inherit version;
   pname = "dell-command-configure";

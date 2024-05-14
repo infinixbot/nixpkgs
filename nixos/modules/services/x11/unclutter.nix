@@ -9,8 +9,8 @@ with lib;
 
 let
   cfg = config.services.unclutter;
-in
 
+in
 {
   options.services.unclutter = {
 

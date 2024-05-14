@@ -230,14 +230,14 @@ let
 
         overrides = self: super: (overrides self super) // { fetchurl = thisStdenv.fetchurlBoot; };
       };
-    in
 
+    in
     {
       inherit config overlays;
       stdenv = thisStdenv;
     };
-in
 
+in
 assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
 [
 

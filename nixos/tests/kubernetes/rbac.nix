@@ -196,8 +196,8 @@ let
       machine1.fail("kubectl exec kubectl -- kubectl delete pods -l name=kubectl")
     '';
   };
-in
 
+in
 {
   singlenode = mkKubernetesSingleNodeTest singlenode;
   multinode = mkKubernetesMultiNodeTest multinode;

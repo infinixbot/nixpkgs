@@ -622,8 +622,8 @@ let
             throw "Unknown validitiy: '${valid}'"
         );
       };
-in
 
+in
 {
   inherit assertValidity commonMeta;
 }

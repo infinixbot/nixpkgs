@@ -125,8 +125,8 @@ let
     # Required since cassandra 4
     CASSANDRA_LOGBACK_CONF = "${cassandraEtc}/logback.xml";
   };
-in
 
+in
 {
   options.services.cassandra = {
 

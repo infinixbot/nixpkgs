@@ -14,8 +14,8 @@ let
     alsa-lib
     libpulseaudio
   ];
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "fmod";
   version = "4.44.64";

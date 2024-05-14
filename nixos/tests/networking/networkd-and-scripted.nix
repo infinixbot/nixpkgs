@@ -750,8 +750,8 @@ let
 
         serverNodeNum = "1";
         clientNodeNum = "2";
-      in
 
+      in
       {
         name = "vlan-ping";
         nodes.server = node serverNodeNum;
@@ -1175,8 +1175,8 @@ let
       '';
     };
   };
-in
 
+in
 lib.mapAttrs (lib.const (
   attrs:
   makeTest (

@@ -250,8 +250,8 @@ let
       };
     }) (lib.range 1 cfg.streamingProcesses)
   );
-in
 
+in
 {
 
   imports = [

@@ -28,8 +28,8 @@ let
       (cmakeBool "BOX2D_BUILD_EXAMPLES" false)
     ];
   });
-in
 
+in
 stdenv.mkDerivation {
   pname = "qml-box2d";
   version = "unstable-2022-08-25";

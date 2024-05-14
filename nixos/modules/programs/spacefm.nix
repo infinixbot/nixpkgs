@@ -9,8 +9,8 @@
 
 let
   cfg = config.programs.spacefm;
-in
 
+in
 {
   ###### interface
 

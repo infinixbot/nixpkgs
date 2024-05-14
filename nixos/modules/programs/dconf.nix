@@ -174,8 +174,8 @@ let
         };
       };
     };
-in
 
+in
 {
   options = {
     programs.dconf = {

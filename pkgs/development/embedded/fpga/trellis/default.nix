@@ -27,8 +27,8 @@ let
     hash = "sha256-r6viR8y9ZjURGNbsa0/YY8lzy9kGzjuu408ntxwpqm0=";
     name = "trellis-database";
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "trellis";
   version = "unstable-2022-09-14";

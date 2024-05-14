@@ -23,8 +23,8 @@ let
     "--with-native-system-header-dir=${lib.getDev glibc}${glibc.incdir or "/include"}"
     "--with-build-sysroot=/"
   ];
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "libgcc";
   inherit (gcc.cc) src version;

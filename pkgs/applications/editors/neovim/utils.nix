@@ -275,8 +275,8 @@ let
           ln -s ${grammar}/parser $out/parser/${name}.so
         ''
     );
-in
 
+in
 {
   inherit makeNeovimConfig;
   inherit generateProviderRc;

@@ -29,8 +29,8 @@ let
           (if val then "1" else "0")
         else
           toString val;
-    in
 
+    in
     {
       type =
         with types;
@@ -84,8 +84,8 @@ let
       PIDFile = "${cfg."${name}".settings.DATA_PATH}/.mfs${name}.lock";
     } // extraConfig;
   };
-in
 
+in
 {
   ###### interface
 

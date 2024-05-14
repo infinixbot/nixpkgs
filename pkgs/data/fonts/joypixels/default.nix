@@ -57,6 +57,7 @@ let
     [1]: ${joypixels-free-license.url}
     [2]: ${joypixels-license-appendix.url}
   '';
+
 in
 
 stdenv.mkDerivation rec {

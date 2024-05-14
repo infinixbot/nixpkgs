@@ -20,8 +20,8 @@ let
       systemctl --user start onedrive@onedrive
     fi
   '';
-in
 
+in
 {
   ### Documentation
   # meta.doc = ./onedrive.xml;

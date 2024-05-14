@@ -95,8 +95,8 @@ let
   };
 
   stateDir = "/var/lib/unifi-video";
-in
 
+in
 {
 
   options.services.unifi-video = {

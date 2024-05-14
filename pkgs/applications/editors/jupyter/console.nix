@@ -25,6 +25,7 @@ let
           mainProgram = "jupyter-console";
         };
       });
+
 in
 
 {

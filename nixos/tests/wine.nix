@@ -62,8 +62,8 @@ let
     "unstable"
     "wayland"
   ];
-in
 
+in
 listToAttrs (
   map (makeWineTest "winePackages" [ hello32 ]) variants
   ++ optionals pkgs.stdenv.is64bit (

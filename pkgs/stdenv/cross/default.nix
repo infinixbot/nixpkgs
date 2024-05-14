@@ -18,8 +18,8 @@ let
     # Use replaceCrossStdenv instead.
     config = builtins.removeAttrs config [ "replaceStdenv" ];
   };
-in
 
+in
 lib.init bootStages
 ++ [
 

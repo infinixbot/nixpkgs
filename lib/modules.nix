@@ -265,8 +265,8 @@ let
               }) merged.unmatchedDefns;
             in
             if defs == [ ] then { } else declaredConfig._module.freeformType.merge prefix defs;
-        in
 
+        in
         if declaredConfig._module.freeformType == null then
           declaredConfig
         # Because all definitions that had an associated option ended in
@@ -500,8 +500,8 @@ let
             operator = attrs: keyFilter attrs.modules;
           }
         );
-    in
 
+    in
     modulesPath: initialModules: args:
     filterModules modulesPath (collectStructuredModules unknownModule "" initialModules args);
 
@@ -620,8 +620,8 @@ let
       extraArgs = builtins.mapAttrs (
         name: _: builtins.addErrorContext (context name) (args.${name} or config._module.args.${name})
       ) (lib.functionArgs f);
-    in
 
+    in
     # Note: we append in the opposite order such that we can add an error
     # context on the explicit arguments of "args" too. This update
     # operator is used to make the "args@{ ... }: with args.lib;" notation
@@ -981,8 +981,8 @@ let
       warnDeprecation =
         warnIf (opt.type.deprecationMessage != null)
           "The type `types.${opt.type.name}' of option `${showOption loc}' defined in ${showFiles opt.declarations} is deprecated. ${opt.type.deprecationMessage}";
-    in
 
+    in
     warnDeprecation opt
     // {
       value = builtins.addErrorContext "while evaluating the option `${showOption loc}':" value;
@@ -1656,8 +1656,8 @@ let
           ;
         collectModules = collectModules null;
       };
-in
 
+in
 private
 // {
   # NOTE: not all of these functions are necessarily public interfaces; some

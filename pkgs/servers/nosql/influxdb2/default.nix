@@ -73,8 +73,8 @@ let
         install_name_tool -id $out/lib/libflux.dylib $out/lib/libflux.dylib
       '';
   };
-in
 
+in
 buildGoModule {
   pname = "influxdb";
   version = version;

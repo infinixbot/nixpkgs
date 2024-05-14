@@ -43,6 +43,7 @@ let
     pkgs.runCommandLocal "${name}.fish" {
       nativeBuildInputs = [ pkgs.babelfish ];
     } "babelfish < ${path} > $out;";
+
 in
 
 {

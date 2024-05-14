@@ -11,6 +11,7 @@ let
 
   inInitrd = hasExtX config.boot.initrd.supportedFilesystems;
   inSystem = hasExtX config.boot.supportedFilesystems;
+
 in
 
 {

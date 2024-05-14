@@ -52,8 +52,8 @@ lib.makePackageOverridable (
     );
 
     prefix = lib.optionalString (directory != "") "/${directory}";
-  in
 
+  in
   buildDhallPackage (
     {
       inherit dependencies source;

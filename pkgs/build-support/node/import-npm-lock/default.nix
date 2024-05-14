@@ -58,8 +58,8 @@ let
 
   # Manage node_modules outside of the store with hooks
   hooks = callPackages ./hooks { };
-in
 
+in
 {
   importNpmLock =
     {
@@ -125,8 +125,8 @@ in
         };
 
       pname = package.name or "unknown";
-    in
 
+    in
     runCommand "${pname}-${version}-sources"
       {
         inherit pname version;

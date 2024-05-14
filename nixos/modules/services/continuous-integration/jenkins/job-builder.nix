@@ -10,8 +10,8 @@ with lib;
 let
   jenkinsCfg = config.services.jenkins;
   cfg = config.services.jenkins.jobBuilder;
-in
 
+in
 {
   options = {
     services.jenkins.jobBuilder = {

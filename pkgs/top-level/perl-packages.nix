@@ -29,8 +29,8 @@ self:
 assert lib.versionAtLeast perl.version "5.30.3";
 let
   inherit (lib) maintainers teams;
-in
 
+in
 with self;
 {
 

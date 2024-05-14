@@ -40,8 +40,8 @@ let
           ln -s $f $man/share/man/man1/$basename
         done
       '';
-in
 
+in
 {
   imports = [
     (lib.mkRemovedOptionModule [

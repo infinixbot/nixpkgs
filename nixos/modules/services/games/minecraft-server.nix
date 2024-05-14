@@ -62,8 +62,8 @@ let
       cfg.serverProperties."query.port" or 25565
     else
       null;
-in
 
+in
 {
   options = {
     services.minecraft-server = {

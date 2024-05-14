@@ -299,6 +299,6 @@ let
         '';
     };
   };
-in
 
+in
 stdenv.mkDerivation (releases.${releaseType})

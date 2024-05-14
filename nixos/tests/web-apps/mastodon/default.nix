@@ -8,8 +8,8 @@ let
     "i686-linux"
     "aarch64-linux"
   ];
-in
 
+in
 {
   standard = handleTestOn supportedSystems ./standard.nix { inherit system; };
   remote-databases = handleTestOn supportedSystems ./remote-databases.nix { inherit system; };

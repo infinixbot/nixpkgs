@@ -12,6 +12,7 @@ let
   cfg = config.services.xmr-stak;
 
   pkg = pkgs.xmr-stak.override { inherit (cfg) openclSupport; };
+
 in
 
 {

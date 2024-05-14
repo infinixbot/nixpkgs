@@ -22,8 +22,8 @@ let
     #!/bin/sh
     exec ${pkgs.riemann-dash}/bin/riemann-dash ${conf}
   '';
-in
 
+in
 {
 
   options = {

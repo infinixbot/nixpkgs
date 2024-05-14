@@ -69,8 +69,8 @@ let
     PRETTY_NAME = "${osReleaseContents.PRETTY_NAME} (Initrd)";
   };
   initrdRelease = pkgs.writeText "initrd-release" (attrsToText initrdReleaseContents);
-in
 
+in
 {
   imports = [
     ./label.nix

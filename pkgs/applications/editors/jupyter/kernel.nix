@@ -25,8 +25,8 @@ let
         logo64 = "${env}/${env.sitePackages}/ipykernel/resources/logo-64x64.png";
       };
   };
-in
 
+in
 {
   inherit default;
 

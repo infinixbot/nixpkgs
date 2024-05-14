@@ -21,6 +21,7 @@ let
   };
 
   kernelModules = config.boot.kernelPackages.virtualbox.override { inherit virtualbox; };
+
 in
 
 {

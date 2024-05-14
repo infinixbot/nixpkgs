@@ -3,8 +3,8 @@
 let
   drv = haskellPackages.vector;
   docs = pkgs.haskell.lib.compose.documentationTarball drv;
-in
 
+in
 pkgs.runCommand "test haskell.lib.compose.documentationTarball"
   {
     meta = {

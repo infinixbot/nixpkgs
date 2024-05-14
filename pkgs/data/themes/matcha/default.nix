@@ -13,8 +13,8 @@
 
 let
   pname = "matcha-gtk-theme";
-in
 
+in
 lib.checkListOfEnum "${pname}: color variants"
   [
     "standard"

@@ -17,6 +17,7 @@ let
     desktopName = "NetLogo";
     categories = [ "Science" ];
   };
+
 in
 
 stdenv.mkDerivation rec {

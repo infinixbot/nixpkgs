@@ -97,8 +97,8 @@ let
       '';
     }
   );
-in
 
+in
 stdenv.mkDerivation {
   pname = "gnome-inform7";
   version = "unstable-2021-04-06";

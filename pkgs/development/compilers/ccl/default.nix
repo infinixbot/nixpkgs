@@ -43,8 +43,8 @@ let
   cfg =
     options.${stdenv.hostPlatform.system}
       or (throw "missing source url for platform ${stdenv.hostPlatform.system}");
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "ccl";
   version = "1.12.2";

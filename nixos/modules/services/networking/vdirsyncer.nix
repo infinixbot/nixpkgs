@@ -67,8 +67,8 @@ let
       LockPersonality = true;
     };
   };
-in
 
+in
 {
   options = {
     services.vdirsyncer = {

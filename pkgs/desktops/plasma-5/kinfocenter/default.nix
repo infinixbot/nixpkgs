@@ -39,8 +39,8 @@ let
   inherit (lib) getBin getExe;
 
   qdbus = "${getBin qttools}/bin/qdbus";
-in
 
+in
 mkDerivation {
   pname = "kinfocenter";
 

@@ -132,8 +132,8 @@ let
       ''
     else
       browser;
-in
 
+in
 stdenv.mkDerivation {
   pname = lib.optionalString ungoogled "ungoogled-" + "chromium${suffix}";
   inherit (chromium.browser) version;
@@ -173,8 +173,8 @@ stdenv.mkDerivation {
         gtk4
         libkrb5
       ];
-    in
 
+    in
     with lib;
     ''
       mkdir -p "$out/bin"

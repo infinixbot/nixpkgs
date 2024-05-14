@@ -301,6 +301,7 @@ let
       HasInfoPlistStrings = "YES";
     }
   ];
+
 in
 
 runCommand "Platforms" { } ''

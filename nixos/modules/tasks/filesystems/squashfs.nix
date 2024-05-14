@@ -3,6 +3,7 @@
 let
 
   inInitrd = config.boot.initrd.supportedFilesystems.squashfs or false;
+
 in
 
 {

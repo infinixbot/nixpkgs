@@ -235,6 +235,7 @@ let
   IOKitSrcs = lib.mapAttrs (
     name: value: if lib.isFunction value then value name else value
   ) IOKitSpecs;
+
 in
 
 # darwin package set
@@ -266,6 +267,7 @@ let
   adv_cmds-boot =
     applePackage "adv_cmds/boot.nix" "osx-10.5.8" "sha256-/OJLNpATyS31W5nWfJgSVO5itp8j55TRwG57/QLT5Fg="
       { };
+
 in
 
 developerToolsPackages_11_3_1

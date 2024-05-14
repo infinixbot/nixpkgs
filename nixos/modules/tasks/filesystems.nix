@@ -259,6 +259,7 @@ let
   initrdFstab = pkgs.writeText "initrd-fstab" (
     makeFstabEntries (filter utils.fsNeededForBoot fileSystems) { }
   );
+
 in
 
 {

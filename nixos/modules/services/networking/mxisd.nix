@@ -36,8 +36,8 @@ let
       pkgs.writeText "ma1sd-config.yaml" (builtins.toJSON fullConfig)
     else
       pkgs.writeText "mxisd-config.yaml" (builtins.toJSON fullConfig);
-in
 
+in
 {
   options = {
     services.mxisd = {

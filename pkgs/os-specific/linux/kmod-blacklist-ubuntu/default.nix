@@ -6,8 +6,8 @@
 
 let
   version = "30+20230519-1ubuntu3"; # mantic 2023-08-26
-in
 
+in
 stdenv.mkDerivation {
   pname = "kmod-blacklist";
   inherit version;

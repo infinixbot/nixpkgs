@@ -115,8 +115,8 @@ let
     ]
     ++ lib.optional (pulseaudioSupport) libpulseaudio
   );
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "zoom";
   version = versions.${system} or throwSystem;

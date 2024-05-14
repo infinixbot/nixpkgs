@@ -84,8 +84,8 @@ import ./make-test-python.nix (
             rm -f $mattermostConfig
             echo "$newConfig" > "$mattermostConfig"
           '';
-      in
 
+      in
       ''
         start_all()
 

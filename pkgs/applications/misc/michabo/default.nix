@@ -15,8 +15,8 @@ let
     desktopName = "Michabo";
     exec = "Michabo";
   };
-in
 
+in
 mkDerivation rec {
   pname = "michabo";
   version = "0.1";

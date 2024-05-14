@@ -78,8 +78,8 @@ import ./make-test-python.nix (
               module_init(kcanaryInit);
               module_exit(kcanaryExit);
             '';
-          in
 
+          in
           lib.singleton kcanary;
 
         boot.initrd.kernelModules = [ "kcanary" ];
@@ -140,8 +140,8 @@ import ./make-test-python.nix (
               ''}
               copy_bin_and_libs "${canary}/bin/${canary.name}"
             '');
-          in
 
+          in
           copyCanaries [
             # Simple canary process which just sleeps forever and should be killed by
             # stage 2.

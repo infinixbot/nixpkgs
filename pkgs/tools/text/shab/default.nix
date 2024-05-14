@@ -78,6 +78,6 @@ let
      parameters:       variables to expose to the template
   */
   renderText = shabScriptText: parameters: render (writeText "template" shabScriptText) parameters;
-in
 
+in
 shab

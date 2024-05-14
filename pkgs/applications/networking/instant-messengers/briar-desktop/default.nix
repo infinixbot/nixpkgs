@@ -16,8 +16,8 @@ let
     #! ${bash}/bin/bash
     exec ${tor}/bin/tor "$@"
   '';
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "briar-desktop";
   version = "0.5.0-beta";

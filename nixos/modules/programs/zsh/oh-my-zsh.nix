@@ -36,8 +36,8 @@ let
         (mkLinkFarmEntry "completions" "site-functions")
         (mkLinkFarmEntry' "plugins")
       ];
-in
 
+in
 {
   imports = [
     (lib.mkRenamedOptionModule

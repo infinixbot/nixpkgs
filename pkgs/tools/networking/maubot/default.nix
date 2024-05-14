@@ -138,6 +138,6 @@ let
       maintainers = with maintainers; [ chayleaf ];
     };
   };
-in
 
+in
 maubot

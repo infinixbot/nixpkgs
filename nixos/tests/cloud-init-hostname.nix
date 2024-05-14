@@ -27,8 +27,8 @@ let
       ${pkgs.cdrkit}/bin/genisoimage -volid cidata -joliet -rock -o $out/metadata.iso $out/iso
     '';
   };
-in
 
+in
 makeTest {
   name = "cloud-init-hostname";
   meta = with pkgs.lib.maintainers; {

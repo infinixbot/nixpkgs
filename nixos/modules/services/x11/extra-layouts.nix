@@ -86,6 +86,7 @@ let
   xkb_patched = pkgs.xorg.xkeyboardconfig_custom {
     layouts = config.services.xserver.xkb.extraLayouts;
   };
+
 in
 
 {

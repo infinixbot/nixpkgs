@@ -26,8 +26,8 @@ stdenv.mkDerivation (finalAttrs: {
       # upstream maintainers forgot to update version, so manual override for now
       # strVersion = lib.substring 0 6 finalAttrs.version;
       strVersion = "1.4.50";
-    in
 
+    in
     ''
       mkdir -p $out/bin
       cp -rv ./* $out

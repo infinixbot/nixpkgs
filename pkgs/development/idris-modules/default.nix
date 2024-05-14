@@ -44,8 +44,8 @@ let
           self.base
         ];
       };
-    in
 
+    in
     {
       inherit idris-no-deps callPackage;
 

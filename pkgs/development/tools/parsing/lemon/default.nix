@@ -18,8 +18,8 @@ let
       name = "lempar.c";
     };
   };
-in
 
+in
 stdenv.mkDerivation {
   pname = "lemon";
   version = "1.69";

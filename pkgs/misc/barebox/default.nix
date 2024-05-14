@@ -85,8 +85,8 @@ let
         // extraMeta;
     }
     // removeAttrs args [ "extraMeta" ];
-in
 
+in
 {
   inherit buildBarebox;
 

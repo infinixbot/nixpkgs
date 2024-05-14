@@ -14,8 +14,8 @@ let
     pkgs.mtl
   ];
   env = haskellPackages.ghcWithPackages (pkgs: defaultPkgs pkgs ++ packages pkgs);
-in
 
+in
 stdenv.mkDerivation {
   name = "mueval-env";
 

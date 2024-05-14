@@ -498,8 +498,8 @@ final: prev: {
           sha512 = "IXGOxHsPdRYfAzcY6IroI1PDvx3hhXf18qFCloHp8Iw5bzLgq/PTjcp10Z/2xedZ2hVlfpHy1eEptsTmi9YeNw==";
         };
       };
-    in
 
+    in
     {
       meta = oldAttrs.meta // {
         broken = before "16.13";

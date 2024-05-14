@@ -26,8 +26,8 @@ let
       libXxf86vm
     ]
   );
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "unciv";
   version = "4.11.10";

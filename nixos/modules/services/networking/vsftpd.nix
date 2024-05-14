@@ -143,6 +143,7 @@ let
     pam_service_name=vsftpd
     ${cfg.extraConfig}
   '';
+
 in
 
 {

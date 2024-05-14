@@ -38,8 +38,8 @@ let
       ./vte-ng-modified-patches/vte-0005-expose-function-for-getting-the-selected-text.patch
     ];
   });
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "termite";
   version = "15";

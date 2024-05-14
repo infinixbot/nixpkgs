@@ -22,8 +22,8 @@ let
     ++ cfg.extraFlags;
 
   opt = k: v: optional (v != null) ''--${k}="${v}"'';
-in
 
+in
 {
   options = {
     services.prometheus.pushgateway = {

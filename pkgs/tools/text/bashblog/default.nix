@@ -17,8 +17,8 @@ let
   # we can set flags to enable a certain processor
   markdownpl_path = "${perlPackages.TextMarkdown}/bin/Markdown.pl";
   pandoc_path = "${pandoc}/bin/pandoc";
-in
 
+in
 stdenv.mkDerivation {
   pname = "bashblog";
   version = "unstable-2022-03-26";

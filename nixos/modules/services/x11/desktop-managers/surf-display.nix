@@ -46,8 +46,8 @@ let
 
     ${cfg.extraConfig}
   '';
-in
 
+in
 {
   options = {
     services.xserver.desktopManager.surf-display = {

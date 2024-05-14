@@ -5,8 +5,8 @@
 }:
 let
   cctools = darwin.cctools;
-in
 
+in
 darwin.sigtool.overrideAttrs (old: {
   # this is a fork of sigtool that supports -v and --remove-signature, which are
   # used by the dotnet sdk

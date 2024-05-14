@@ -96,8 +96,8 @@ let
   '';
   rev = "e10b64dbc53a8583098e73580a1eb9ff4ce0c709";
   version = "0.99";
-in
 
+in
 stdenv.mkDerivation {
   pname = "factor-lang";
   inherit version;

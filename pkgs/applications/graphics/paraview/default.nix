@@ -45,8 +45,8 @@ let
       hash = "sha256-imRW70lGQX7Gy0AavIHQMVhnn9E2FPpiCdCKt7Jje4w=";
     })
   ];
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "paraview";
   inherit version;

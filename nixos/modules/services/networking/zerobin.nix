@@ -12,8 +12,8 @@ let
     PASTE_FILES_ROOT = "${cfg.dataDir}"
     ${cfg.extraConfig}
   '';
-in
 
+in
 {
   options = {
     services.zerobin = {

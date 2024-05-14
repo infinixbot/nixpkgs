@@ -24,8 +24,8 @@ let
     WRAPPER
     chmod +x $out/bin/${toolset}
   '';
-in
 
+in
 stdenv.mkDerivation {
   pname = "arcanist";
   version = "20230530";

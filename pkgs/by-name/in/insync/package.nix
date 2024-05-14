@@ -82,8 +82,8 @@ let
     # NB! This did the trick, otherwise it segfaults! However I don't understand why!
     dontStrip = true;
   };
-in
 
+in
 buildFHSEnv {
   inherit pname version;
 

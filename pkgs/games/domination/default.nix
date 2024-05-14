@@ -25,8 +25,8 @@ let
     exec = "domination-map-editor";
     icon = "domination";
   };
-in
 
+in
 stdenv.mkDerivation {
   pname = "domination";
   version = "1.2.9";

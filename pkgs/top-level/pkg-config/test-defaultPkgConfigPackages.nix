@@ -47,6 +47,6 @@ let
         moduleNames = [ moduleName ];
         package = pkg;
       };
-in
 
+in
 lib.recurseIntoAttrs allTests // { inherit tests-combined; }

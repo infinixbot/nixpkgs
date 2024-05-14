@@ -8,8 +8,8 @@
 let
   cfg = config.hardware.keyboard.zsa;
   inherit (lib) mkEnableOption mkIf;
-in
 
+in
 {
   options.hardware.keyboard.zsa = {
     enable = mkEnableOption ''

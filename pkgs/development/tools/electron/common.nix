@@ -30,8 +30,8 @@ let
     pkgs.${dep.fetcher} opts;
 
   fetchedDeps = lib.mapAttrs (name: fetchdep) info.deps;
-in
 
+in
 (chromium.override { upstream-info = info.chromium; }).mkDerivation (base: {
   packageName = "electron";
   inherit (info) version;

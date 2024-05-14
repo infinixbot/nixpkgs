@@ -8,8 +8,8 @@ let
   inherit (lib) mkOption types;
 
   cfg = config.virtualisation.podman.networkSocket;
-in
 
+in
 {
   options.virtualisation.podman.networkSocket = {
     server = mkOption { type = types.enum [ "ghostunnel" ]; };

@@ -51,8 +51,8 @@ let
     rev = "e7c908da50bde1c6399c9f0e445d6ea3330ddd9b";
     hash = "sha256-CNlb6MTEkD977hj3xonYqZH1/WlQ1EdVD7cvL//heRM=";
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "nwchem";
   version = "7.2.2";

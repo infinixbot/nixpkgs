@@ -122,8 +122,8 @@ let
 
     echo "" >> ${fileForGitCommands}
   '';
-in
 
+in
 {
   name = "generic-update-script";
   command = [

@@ -20,6 +20,6 @@ let
     system_preferences = callPackage ./systempreferences { };
     gworkspace = callPackage ./gworkspace { };
   };
-in
 
+in
 self

@@ -16,8 +16,8 @@
 
 let
   rev = "a210037760ca3ca9016ca1831c97531318df70fe";
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "translatelocally";
   version = "unstable-2023-09-20";

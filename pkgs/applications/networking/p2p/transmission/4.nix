@@ -58,8 +58,8 @@ let
     ++ optionals enableSystemd [ systemd ]
     ++ optionals stdenv.isLinux [ inotify-tools ]
   );
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "transmission";
   version = "4.0.5";

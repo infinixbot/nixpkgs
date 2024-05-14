@@ -352,8 +352,8 @@ in
           ln -s ${getBin cfg.package}/share/man $out/share/man
         '';
       };
-    in
 
+    in
     mkIf (cfg.enableStools || cfg.client.enable || cfg.server.enable || cfg.dbdserver.enable) {
 
       environment.systemPackages = [ wrappedSlurm ];

@@ -36,8 +36,8 @@ let
     inherit supportedSystems;
     nixpkgs = nixpkgsSrc;
   }) [ "unstable" ];
-in
 
+in
 rec {
 
   nixos = {

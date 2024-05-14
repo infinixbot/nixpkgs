@@ -62,8 +62,8 @@ let
     url = "https://yum.repos.intel.com/oneapi/intel-oneapi-tbb-${tbbVersion}-${tbbVersion}-${tbbRel}.x86_64.rpm";
     hash = "sha256-pzJpQdiYVpcKDShePak2I0uEh7u08vJgX7OBF5p5yAM=";
   };
-in
 
+in
 stdenvNoCC.mkDerivation (
   {
     pname = "mkl";

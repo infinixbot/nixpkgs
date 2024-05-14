@@ -81,6 +81,7 @@ let
       "darwin${darwinVersion}"
     else
       stdenv.hostPlatform.parsed.kernel.name;
+
 in
 
 assert vp8DecoderSupport || vp8EncoderSupport || vp9DecoderSupport || vp9EncoderSupport;

@@ -72,8 +72,8 @@ let
 
     ${cfg.extraConfig}
   '';
-in
 
+in
 {
   options = {
     services.zoneminder = with lib; {

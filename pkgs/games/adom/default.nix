@@ -32,8 +32,8 @@ let
       alsa-lib
       libpulseaudio
     ];
-in
 
+in
 stdenv.mkDerivation rec {
   name = "adom-${version}-noteye";
   version = "1.2.0_pre23";

@@ -48,6 +48,7 @@ let
       proprietary assets with a placeholder theme.
     '';
   };
+
 in
 
 stdenv.mkDerivation rec {

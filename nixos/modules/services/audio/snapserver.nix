@@ -73,8 +73,8 @@ let
     ]
     ++ optional (cfg.http.docRoot != null) "--http.doc_root=\"${toString cfg.http.docRoot}\""
   );
-in
 
+in
 {
   imports = [
     (mkRenamedOptionModule

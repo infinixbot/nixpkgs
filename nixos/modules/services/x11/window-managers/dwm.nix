@@ -10,6 +10,7 @@ with lib;
 let
 
   cfg = config.services.xserver.windowManager.dwm;
+
 in
 
 {

@@ -60,8 +60,8 @@ let
       cmakeFlags = prev.cmakeFlags ++ [ "-DIGRAPH_USE_INTERNAL_CXSPARSE=OFF" ];
     }
   );
-in
 
+in
 stdenv.mkDerivation rec {
   version = "4.2.0";
   pname = "hal-hardware-analyzer";

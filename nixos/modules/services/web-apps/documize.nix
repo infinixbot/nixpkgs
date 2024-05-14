@@ -20,8 +20,8 @@ let
       in
       optionalString predicate template
     );
-in
 
+in
 {
   options.services.documize = {
     enable = mkEnableOption "Documize Wiki";

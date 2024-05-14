@@ -31,8 +31,8 @@ let
           ];
     in
     (rpl r.url) + "-" + (rpl r.rev);
-in
 
+in
 stdenv.mkDerivation {
   name = "fakegit";
 

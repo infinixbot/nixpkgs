@@ -12,6 +12,7 @@ let
   cfg = config.services.memcached;
 
   memcached = pkgs.memcached;
+
 in
 
 {

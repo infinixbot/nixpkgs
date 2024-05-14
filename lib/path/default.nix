@@ -80,8 +80,8 @@ let
       # We can now know the length of the result by removing the number of
       # skipped parts from the total number
       componentCount = partCount - skipEnd - skipStart;
-    in
 
+    in
     # Special case of a single "." path component. Such a case leaves a
     # componentCount of -1 due to the skipStart/skipEnd not verifying that
     # they don't refer to the same character
@@ -153,8 +153,8 @@ let
     # Similar reasoning applies to the validity of the name part.
     # We care more about discerning store path-ness on realistic values. Making it airtight would be fragile and slow.
     && match ".{32}-.+" (elemAt components storeDirLength) != null;
-in
 
+in
 # No rec! Add dependencies on this file at the top.
 {
 

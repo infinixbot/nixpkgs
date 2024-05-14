@@ -40,8 +40,8 @@ let
         maintainers = with maintainers; [ oluceps ];
       };
     };
-in
 
+in
 {
   Mono = maple-font {
     pname = "MapleMono-ttf";

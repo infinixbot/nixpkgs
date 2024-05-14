@@ -51,8 +51,8 @@ makeScope newScope (
         packages = filter hasOctavePackage drvs;
       in
       unique (packages ++ concatLists (catAttrs "requiredOctavePackages" packages));
-  in
 
+  in
   {
 
     inherit callPackage buildOctavePackage computeRequiredOctavePackages;

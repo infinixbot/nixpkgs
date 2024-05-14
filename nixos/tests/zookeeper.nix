@@ -3,8 +3,8 @@ import ./make-test-python.nix (
   let
 
     perlEnv = pkgs.perl.withPackages (p: [ p.NetZooKeeper ]);
-  in
 
+  in
   {
     name = "zookeeper";
     meta = with pkgs.lib.maintainers; {

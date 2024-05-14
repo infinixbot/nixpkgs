@@ -13,8 +13,8 @@ let
     activationScript = config.system.activationScripts.script;
     dryActivationScript = config.system.dryActivationScript;
   };
-in
 
+in
 {
   options = {
     system.activatable = mkOption {

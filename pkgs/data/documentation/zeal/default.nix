@@ -19,8 +19,8 @@
 
 let
   isQt5 = lib.versions.major qtbase.version == "5";
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "zeal";
   version = "0.7.0";

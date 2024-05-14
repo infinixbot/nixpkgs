@@ -45,8 +45,8 @@ let
     coreutils
     less
   ];
-in
 
+in
 stdenv.mkDerivation rec {
   version = "3.6.7";
   pname =

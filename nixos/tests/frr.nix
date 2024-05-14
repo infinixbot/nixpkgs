@@ -25,8 +25,8 @@ import ./make-test-python.nix (
       router ospf
         network 192.168.0.0/16 area 0
     '';
-  in
 
+  in
   {
     name = "frr";
 

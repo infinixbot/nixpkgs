@@ -25,8 +25,8 @@ let
   # autotools build, making it awkward to rely on Nixpkgs Python builders.
   # Hence we manually set up PYTHONPATH.
   pythonPath = "$out/${python3.sitePackages}" + ":" + python3.pkgs.makePythonPath pythonModules;
-in
 
+in
 stdenv.mkDerivation {
   pname = "ibus-cangjie";
   version = "unstable-2023-07-25";

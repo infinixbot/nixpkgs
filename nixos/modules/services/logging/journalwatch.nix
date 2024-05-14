@@ -58,8 +58,8 @@ let
         ln -sf ${journalwatchConfig} $out/journalwatch/config
         ln -sf ${journalwatchPatterns} $out/journalwatch/patterns
       '';
-in
 
+in
 {
   options = {
     services.journalwatch = {

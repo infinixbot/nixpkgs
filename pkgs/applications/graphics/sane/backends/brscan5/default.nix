@@ -19,8 +19,8 @@ let
         ${file}
     '';
   system = stdenv.hostPlatform.system;
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "brscan5";
   version = "1.3.1-0";

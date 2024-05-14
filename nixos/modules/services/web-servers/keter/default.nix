@@ -181,8 +181,8 @@ in
         ${cfg.bundle.publicScript}
         exec ${cfg.bundle.executable}
       '';
-    in
 
+    in
     {
       systemd.services.keter = {
         description = "keter app loader";

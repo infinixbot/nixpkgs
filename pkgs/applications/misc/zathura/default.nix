@@ -32,6 +32,6 @@ let
       ];
     };
   };
-in
 
+in
 self

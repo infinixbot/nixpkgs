@@ -37,6 +37,7 @@ let
     "cairo"
     "ps"
   ];
+
 in
 
 stdenv.mkDerivation {

@@ -170,8 +170,8 @@ let
     x86_64-windows.magicOrExtension = "MZ";
     i686-windows.magicOrExtension = "MZ";
   };
-in
 
+in
 {
   imports = [
     (lib.mkRenamedOptionModule

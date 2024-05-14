@@ -186,8 +186,8 @@ let
       ];
     }) optionsList
   );
-in
 
+in
 rec {
   inherit optionsNix;
 

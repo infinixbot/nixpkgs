@@ -56,8 +56,8 @@ let
         hydraPlatforms = [ ];
       };
     };
-in
 
+in
 {
   descent1-assets = generic 1 "descent";
   descent2-assets = generic 2 "descent 2";

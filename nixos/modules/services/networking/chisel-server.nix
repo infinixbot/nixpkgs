@@ -9,8 +9,8 @@ with lib;
 
 let
   cfg = config.services.chisel-server;
-in
 
+in
 {
   options = {
     services.chisel-server = {

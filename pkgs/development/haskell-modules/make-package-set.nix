@@ -227,8 +227,8 @@ let
         cabal2nixDeriver = src;
       };
     }) (self.callPackage src args);
-in
 
+in
 package-set { inherit pkgs lib callPackage; } self
 // {
 
@@ -614,8 +614,8 @@ package-set { inherit pkgs lib callPackage; } self
         "doBenchmark"
         "extraDependencies"
       ];
-    in
 
+    in
     pkgWithCombinedDepsDevDrv.overrideAttrs (
       old:
       mkDerivationArgs

@@ -124,8 +124,8 @@ let
     exec = "${vmwareFHSUserEnv mainProgram}/bin/${mainProgram} %u";
     mimeTypes = [ "x-scheme-handler/vmware-view" ];
   };
-in
 
+in
 stdenv.mkDerivation {
   pname = "vmware-horizon-client";
   inherit version;

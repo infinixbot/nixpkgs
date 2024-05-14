@@ -55,6 +55,6 @@ let
 
     # Return an empty string when failed
     if tryOnce.success then tryOnce.value else "";
-in
 
+in
 lib.genAttrs strings normaliseAndCheck

@@ -209,6 +209,7 @@ let
       };
 
     };
+
 in
 
 {
@@ -325,8 +326,8 @@ in
             serviceConfig.ExecStop = optionalString sw.randomEncryption.enable "${pkgs.cryptsetup}/bin/cryptsetup luksClose ${sw.deviceName}";
             restartIfChanged = false;
           };
-      in
 
+      in
       listToAttrs (
         map createSwapDevice (filter (sw: sw.size != null || sw.randomEncryption.enable) config.swapDevices)
       );

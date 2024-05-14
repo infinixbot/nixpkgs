@@ -31,6 +31,7 @@ let
     convert ${coq.src}/ide/coqide/coq.png -resize 32x32 $out/logo-32x32.png
     convert ${coq.src}/ide/coqide/coq.png -resize 64x64 $out/logo-64x64.png
   '';
+
 in
 
 rec {

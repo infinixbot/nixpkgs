@@ -303,6 +303,6 @@ let
       #   cc1: error: fp software completion requires '-mtrap-precision=i' [-Werror]
       "--disable-werror"
     ];
-in
 
+in
 configureFlags

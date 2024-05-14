@@ -55,8 +55,8 @@ import ./make-test-python.nix (
                       --load-ca-certificate "$out/ca.crt" \
                       --outfile "$out/client1.crt"
         '';
-  in
 
+  in
   {
     name = "mosquitto";
     meta = with pkgs.lib; {

@@ -140,8 +140,8 @@ let
     outputHashMode = "recursive";
     outputHash = "sha256-hbWLsWorEo+1BBURvrFMXpxvZjJBZ1p7HVlJN5e5JZc=";
   };
-in
 
+in
 assert lib.assertMsg (
   enableClient || enableServer
 ) "mindustry: at least one of 'enableClient' and 'enableServer' must be true";

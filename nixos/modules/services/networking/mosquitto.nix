@@ -638,6 +638,7 @@ let
     ++ map (d: "include_dir ${d}") cfg.includeDirs;
 
   configFile = pkgs.writeText "mosquitto.conf" (concatStringsSep "\n" (formatGlobal cfg));
+
 in
 
 {

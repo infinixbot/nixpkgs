@@ -67,8 +67,8 @@ let
         self = perlOnBuild;
       };
     };
-in
 
+in
 rec {
   # Maint version
   perl536 = callPackage ./interpreter.nix {

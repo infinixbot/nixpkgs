@@ -16,8 +16,8 @@ let
     hash = "sha256-0QdXnpDVU4bQDmCG6nUJQvIqBLmrR2u6DGYHcM76/iI=";
   };
   whenPatched = lib.optionalString apngSupport;
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "libpng" + whenPatched "-apng";
   version = "1.6.43";

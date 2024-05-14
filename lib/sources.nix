@@ -303,8 +303,8 @@ let
         path = origSrc;
       };
     };
-in
 
+in
 {
 
   pathType = lib.warnIf (lib.isInOldestRelease

@@ -26,6 +26,7 @@ let
     genericName = "mrrescue";
     categories = [ "Game" ];
   };
+
 in
 
 stdenv.mkDerivation {

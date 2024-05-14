@@ -79,8 +79,8 @@ let
       sha256 = lib.getAttr id componentHashes;
     }
   ) (lib.attrValues supportedDeviceIds);
-in
 
+in
 stdenv.mkDerivation rec {
   inherit version;
   pname = "quartus-prime-lite-unwrapped";

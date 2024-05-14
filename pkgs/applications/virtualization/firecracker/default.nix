@@ -25,8 +25,8 @@ let
         sha256."${stdenv.hostPlatform.system}"
           or (throw "unsupported system ${stdenv.hostPlatform.system}");
     };
-in
 
+in
 stdenv.mkDerivation {
   pname = "firecracker";
   inherit version;

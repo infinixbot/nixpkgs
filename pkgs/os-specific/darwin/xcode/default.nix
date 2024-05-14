@@ -47,11 +47,11 @@ let
         license = licenses.unfree;
         platforms = platforms.darwin ++ platforms.linux;
       };
+
     in
-
     app.overrideAttrs (oldAttrs: oldAttrs // { inherit meta; });
-in
 
+in
 lib.makeExtensible (self: {
   xcode_8_1 = requireXcode "8.1" "sha256-VuAovU/b4rcLh+xMtcsZmbTWwTk35VGfMSp+fqPbsqM=";
   xcode_8_2 = requireXcode "8.2" "sha256-ohqgGD7JEEmXEvmfn/N9Ga2lM8jNwhIuh+ky7PQPzY4=";

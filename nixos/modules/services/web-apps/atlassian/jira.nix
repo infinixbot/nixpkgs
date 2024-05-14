@@ -26,6 +26,7 @@ let
     session.validationinterval              ${toString cfg.sso.validationInterval}
     session.lastvalidation                  session.lastvalidation
   '';
+
 in
 
 {

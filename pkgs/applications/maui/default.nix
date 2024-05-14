@@ -85,6 +85,6 @@ let
       station = callPackage ./station.nix { };
       vvave = callPackage ./vvave.nix { };
     };
-in
 
+in
 lib.makeScope libsForQt5.newScope packages

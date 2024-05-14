@@ -275,8 +275,8 @@ let
         output ${name}
         off
       '';
-in
 
+in
 {
 
   options = {

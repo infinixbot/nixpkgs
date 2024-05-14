@@ -15,8 +15,8 @@ let
 
     ${cfg.config}
   '';
-in
 
+in
 with lib;
 {
   options = {

@@ -10,8 +10,8 @@ with lib;
 let
 
   cfg = config.virtualisation.appvm;
-in
 
+in
 {
 
   options = {

@@ -28,8 +28,8 @@ let
       sys.system
     else
       null;
-in
 
+in
 lib.runTests (
   # We assert that the new algorithmic way of generating these lists matches the
   # way they were hard-coded before.

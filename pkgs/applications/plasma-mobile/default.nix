@@ -67,6 +67,6 @@ let
       plasma-settings = callPackage ./plasma-settings.nix { };
       spacebar = callPackage ./spacebar.nix { };
     };
-in
 
+in
 lib.makeScope libsForQt5.newScope packages

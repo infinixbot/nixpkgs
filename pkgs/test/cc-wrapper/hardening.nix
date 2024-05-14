@@ -120,8 +120,8 @@ let
       })
     else
       drv;
-in
 
+in
 nameDrvAfterAttrName (
   {
     bindNowExplicitEnabled = brokenIf stdenv.hostPlatform.isStatic (

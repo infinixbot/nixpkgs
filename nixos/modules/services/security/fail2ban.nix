@@ -49,8 +49,8 @@ let
           ) strJails
         )
       );
-    in
 
+    in
     pkgs.concatText "jail.local" [
       configFile
       (pkgs.writeText "extra-jail.local" extraConfig)

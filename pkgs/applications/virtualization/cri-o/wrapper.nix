@@ -24,8 +24,8 @@ let
     ]
     ++ extraPackages
   );
-in
 
+in
 runCommand cri-o-unwrapped.name
   {
     name = "${cri-o-unwrapped.pname}-wrapper-${cri-o-unwrapped.version}";

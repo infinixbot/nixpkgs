@@ -137,6 +137,6 @@ let
     phoebus-theme = themes.phoebus;
     cla-theme = themes.cla;
   };
-in
 
+in
 self // df-games

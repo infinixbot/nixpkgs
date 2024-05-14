@@ -25,8 +25,8 @@ let
       --file=$file \
       ''${drives[@]}
   '';
-in
 
+in
 {
   meta.maintainers = with lib.maintainers; [ peterhoeg ];
 

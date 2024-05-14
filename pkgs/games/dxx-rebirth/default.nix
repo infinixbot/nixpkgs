@@ -21,8 +21,8 @@ let
     url = "https://www.dxx-rebirth.com/download/dxx/res/d2xr-sc55-music.dxa";
     sha256 = "05mz77vml396mff43dbs50524rlm4fyds6widypagfbh5hc55qdc";
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "dxx-rebirth";
   version = "0-unstable-2024-01-13";

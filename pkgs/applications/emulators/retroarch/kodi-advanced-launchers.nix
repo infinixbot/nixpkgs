@@ -19,6 +19,7 @@ let
     name = core.core;
     path = core + "/bin/retroarch-" + name;
   }) cores;
+
 in
 
 stdenv.mkDerivation {

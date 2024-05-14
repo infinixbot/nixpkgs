@@ -28,8 +28,8 @@
         hash = "sha256-mx6JZSP8UQaREmyGRAbZNgo9Hphqy9pZzaV7Wr2kW4c=";
       };
     };
-  in
 
+  in
   {
 
     python27 = callPackage ./cpython/2.7 {

@@ -175,6 +175,7 @@ let
       );
     in
     listToAttrs (map mkAuthPrincipalsFile usersWithPrincipals);
+
 in
 
 {

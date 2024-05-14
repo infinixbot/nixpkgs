@@ -17,8 +17,8 @@ let
   settingsFile = pkgs.writeText "matrix-appservice-discord-settings.json" (
     builtins.toJSON cfg.settings
   );
-in
 
+in
 {
   options = {
     services.matrix-appservice-discord = {

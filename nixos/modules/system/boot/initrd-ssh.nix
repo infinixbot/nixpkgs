@@ -18,6 +18,7 @@ let
       initrd = config.boot.initrd;
     in
     (initrd.network.enable || initrd.systemd.network.enable) && cfg.enable;
+
 in
 
 {

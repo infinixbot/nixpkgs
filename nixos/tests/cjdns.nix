@@ -15,6 +15,7 @@ let
       # CJDNS output is incompatible with the XML log.
       systemd.services.cjdns.serviceConfig.StandardOutput = "null";
     };
+
 in
 
 import ./make-test-python.nix (

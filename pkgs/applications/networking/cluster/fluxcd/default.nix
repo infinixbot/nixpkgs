@@ -17,8 +17,8 @@ let
     sha256 = manifestsSha256;
     stripRoot = false;
   };
-in
 
+in
 buildGoModule rec {
   pname = "fluxcd";
   inherit version;

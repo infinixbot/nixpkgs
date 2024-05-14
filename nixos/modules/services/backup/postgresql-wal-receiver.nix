@@ -113,8 +113,8 @@ let
       };
     };
   };
-in
 
+in
 {
   options = {
     services.postgresqlWalReceiver = {

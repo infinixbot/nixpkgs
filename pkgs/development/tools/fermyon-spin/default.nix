@@ -27,8 +27,8 @@ let
       aarch64-darwin = "sha256-FNl3UefJWA8yJ2B44GUEK6py7DLikJrygIwsqdIjW9c=";
     }
     .${system} or (throw "Unsupported system: ${system}");
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "fermyon-spin";
   version = "2.4.2";

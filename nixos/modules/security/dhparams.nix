@@ -48,8 +48,8 @@ let
         in
         if cfg.stateful then "${cfg.path}/${name}.pem" else generated;
     };
-in
 
+in
 {
   options = {
     security.dhparams = {

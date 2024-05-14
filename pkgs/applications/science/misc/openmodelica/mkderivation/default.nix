@@ -98,8 +98,8 @@ let
   makeFlags = "${omtarget}" + appendByAttr "makeFlags" " " pkg;
 
   installFlags = "-i " + appendByAttr "installFlags" " " pkg;
-in
 
+in
 stdenv.mkDerivation (
   pkg
   // {

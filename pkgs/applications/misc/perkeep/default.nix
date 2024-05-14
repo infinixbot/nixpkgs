@@ -23,8 +23,8 @@ let
     "perkeep.org/cmd/pk-put"
     "perkeep.org/cmd/pk-mount"
   ];
-in
 
+in
 buildGoModule rec {
   pname = "perkeep";
   version = "0.11";

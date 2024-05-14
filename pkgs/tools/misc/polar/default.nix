@@ -16,8 +16,8 @@ let
     inherit ruby;
     gemdir = ./.;
   };
-in
 
+in
 stdenv.mkDerivation rec {
 
   pname = "polar";

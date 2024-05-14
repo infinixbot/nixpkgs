@@ -53,8 +53,8 @@ let
   );
 
   orig = removeFormatLinks (removeAttrs oldTlpdb [ "00texlive.config" ]);
-in
 
+in
 lib.recursiveUpdate orig rec {
   #### overrides of texlive.tlpdb
 

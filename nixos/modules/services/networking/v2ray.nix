@@ -75,8 +75,8 @@ with lib;
               ${cfg.package}/bin/v2ray test -c $out
             '';
           };
-    in
 
+    in
     mkIf cfg.enable {
       assertions = [
         {

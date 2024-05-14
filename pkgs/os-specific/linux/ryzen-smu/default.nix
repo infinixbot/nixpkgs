@@ -33,8 +33,8 @@ let
       runHook postInstall
     '';
   };
-in
 
+in
 stdenv.mkDerivation {
   pname = "ryzen-smu-${kernel.version}";
   inherit version src;

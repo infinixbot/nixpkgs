@@ -46,6 +46,7 @@ rec {
     let
 
       pSrcs = if (srcPlugin != null) then [ srcPlugin ] else srcPlugins;
+
     in
 
     buildEclipsePluginBase (

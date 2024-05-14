@@ -182,8 +182,8 @@ let
         CXXCPP = "clang++ -E";
       }
     );
-in
 
+in
 {
   subversion = common {
     version = "1.14.3";

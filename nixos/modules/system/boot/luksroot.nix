@@ -605,8 +605,8 @@ let
       ) luks.devices
     )
   );
-in
 
+in
 {
   imports = [
     (mkRemovedOptionModule [

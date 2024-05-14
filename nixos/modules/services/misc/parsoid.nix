@@ -32,8 +32,8 @@ let
   };
 
   confFile = pkgs.writeText "config.yml" (builtins.toJSON (recursiveUpdate confTree cfg.extraConfig));
-in
 
+in
 {
   imports = [
     (mkRemovedOptionModule [

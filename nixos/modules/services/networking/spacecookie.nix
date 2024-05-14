@@ -19,8 +19,8 @@ let
   format = pkgs.formats.json { };
 
   configFile = format.generate "spacecookie.json" spacecookieConfig;
-in
 
+in
 {
   imports = [
     (mkRenamedOptionModule

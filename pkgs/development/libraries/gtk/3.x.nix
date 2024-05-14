@@ -62,6 +62,7 @@ let
     gtk_module_path = "gtk-3.0";
     gtk_binary_version = "3.0.0";
   };
+
 in
 
 stdenv.mkDerivation (finalAttrs: {

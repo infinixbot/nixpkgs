@@ -17,8 +17,8 @@
 let
   qt = if useQt6 then qt6 else qt5;
   qtVersion = if useQt6 then "6" else "5";
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "qadwaitadecorations";
   version = "0.1.5";

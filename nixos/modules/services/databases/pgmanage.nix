@@ -44,8 +44,8 @@ let
   };
 
   pgmanage = "pgmanage";
-in
 
+in
 {
 
   options.services.pgmanage = {

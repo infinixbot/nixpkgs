@@ -12,8 +12,8 @@ let
       sdk_7_0
       sdk_8_0
     ];
-in
 
+in
 buildDotnetModule rec {
   pname = "dotnet-outdated";
   version = "4.6.1";

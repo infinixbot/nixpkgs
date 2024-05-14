@@ -78,6 +78,7 @@ let
       "${sbclBootstrap}/bin/sbcl --disable-debugger --no-userinit --no-sysinit"
     else
       "${lib.getExe ecl} --norc";
+
 in
 
 stdenv.mkDerivation (self: rec {

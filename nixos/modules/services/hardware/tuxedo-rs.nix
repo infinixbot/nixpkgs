@@ -9,8 +9,8 @@ with lib;
 
 let
   cfg = config.hardware.tuxedo-rs;
-in
 
+in
 {
   options = {
     hardware.tuxedo-rs = {

@@ -29,8 +29,8 @@ let
           // {
             description = "atom (null, bool, int, float or string)";
           };
-      in
 
+      in
       attrsOf (oneOf [
         singleAtom
         (listOf (nonEmptyListOf singleAtom))
@@ -57,8 +57,8 @@ let
           # Quote the value if it has spaces and isn't already quoted.
           if (hasInfix " " str) && !(hasPrefix "\"" str && hasSuffix "\"" str) then "\"${str}\"" else str
         );
-      in
 
+      in
       pkgs.writeText name (
         lib.generators.toKeyValue {
           mkKeyValue = generators.mkKeyValueDefault { inherit mkValueString; } " ";
@@ -414,6 +414,7 @@ let
       };
     };
   };
+
 in
 
 {

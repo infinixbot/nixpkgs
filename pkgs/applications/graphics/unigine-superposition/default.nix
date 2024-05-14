@@ -91,6 +91,7 @@ let
     icon = "Superposition";
     desktopName = "Superposition Benchmark";
   };
+
 in
 
 # We can patch the "/bin/superposition", but "/bin/launcher" checks it for changes.

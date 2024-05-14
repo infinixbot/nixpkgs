@@ -73,8 +73,8 @@ let
         }
     }
   '';
-in
 
+in
 stdenv.mkDerivation rec {
   inherit pname version src;
 

@@ -92,8 +92,8 @@ makeScopeWithSplicing' {
         // {
           __attrsFailEvaluation = true;
         };
-    in
 
+    in
     (
       noExtraAttrs (
         kdeFrameworks

@@ -39,8 +39,8 @@ let
     gnugrep
     which
   ];
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "cups-filters";
   version = "1.28.17";

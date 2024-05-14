@@ -607,8 +607,8 @@ rec {
 
         value = self.callPackage (directory + "/${file}") { };
       };
-    in
 
+    in
     builtins.listToAttrs (map toKeyVal haskellPaths);
 
   /*

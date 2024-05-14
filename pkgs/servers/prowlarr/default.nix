@@ -44,8 +44,8 @@ let
       x86_64-linux = "sha256-QhpJ/JunCbkuF2z1uNBojmv/wsISOrozTc0VgR+PuqQ=";
     }
     .${stdenv.hostPlatform.system} or unsupported;
-in
 
+in
 stdenv.mkDerivation rec {
   inherit pname;
   version = "1.16.2.4435";

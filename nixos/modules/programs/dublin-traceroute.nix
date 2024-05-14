@@ -7,8 +7,8 @@
 
 let
   cfg = config.programs.dublin-traceroute;
-in
 
+in
 {
   meta.maintainers = pkgs.dublin-traceroute.meta.maintainers;
 

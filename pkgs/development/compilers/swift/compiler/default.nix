@@ -197,8 +197,8 @@ let
         $out/lib/swift/
     '';
   };
-in
 
+in
 stdenv.mkDerivation {
   pname = "swift";
   inherit (sources) version;

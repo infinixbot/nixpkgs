@@ -13,6 +13,7 @@ let
   apple = "05ac";
 
   cfg = config.services.usbmuxd;
+
 in
 
 {

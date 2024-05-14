@@ -191,6 +191,6 @@ let # un-indented, over the whole file
           echo -e 'quit()' | env -i "$out"/bin/kresd -a 127.0.0.1#53535 -c test-http.lua
         ''
       );
-in
 
+in
 result

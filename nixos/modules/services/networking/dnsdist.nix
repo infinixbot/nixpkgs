@@ -81,8 +81,8 @@ let
 
     dnscrypt_setup()
   '';
-in
 
+in
 {
   options = {
     services.dnsdist = {

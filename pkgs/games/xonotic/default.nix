@@ -206,8 +206,8 @@ let
             $out/bin/xonotic-sdl
       '';
   };
-in
 
+in
 rec {
   xonotic-data = fetchzip {
     name = "xonotic-data";

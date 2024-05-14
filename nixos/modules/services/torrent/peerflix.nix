@@ -18,8 +18,8 @@ let
       "tmp": "${cfg.downloadDir}"
     }
   '';
-in
 
+in
 {
 
   ###### interface

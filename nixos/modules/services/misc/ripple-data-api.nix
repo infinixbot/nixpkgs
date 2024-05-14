@@ -36,8 +36,8 @@ let
       protocol = "http";
     };
   };
-in
 
+in
 {
   options = {
     services.rippleDataApi = {

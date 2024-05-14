@@ -200,6 +200,7 @@ let
   ];
 
   proxy_env = config.networking.proxy.envVars;
+
 in
 
 {
@@ -586,8 +587,8 @@ in
 
         enabledUpstreamSystemUnits = filter (n: !elem n cfg.suppressedSystemUnits) upstreamSystemUnits;
         enabledUnits = filterAttrs (n: v: !elem n cfg.suppressedSystemUnits) cfg.units;
-      in
 
+      in
       ({
         "systemd/system".source = generateUnits {
           type = "system";

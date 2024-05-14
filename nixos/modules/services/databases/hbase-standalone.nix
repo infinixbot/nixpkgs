@@ -35,8 +35,8 @@ let
     rm $out/hbase-site.xml
     ln -s ${configFile} $out/hbase-site.xml
   '';
-in
 
+in
 {
 
   imports = [

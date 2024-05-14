@@ -25,8 +25,8 @@ let
       generateDhallDirectoryPackage =
         callPackage ../development/interpreters/dhall/generate-dhall-directory-package.nix
           { };
-    in
 
+    in
     {
       inherit
         callPackage
@@ -47,6 +47,6 @@ let
 
       Prelude = callPackage ../development/dhall-modules/Prelude.nix { };
     };
-in
 
+in
 lib.fix' (lib.extends overrides packages)

@@ -90,6 +90,7 @@ let
     in
     # "75" -> "750"  Cf. https://bitbucket.org/icl/magma/src/f4ec79e2c13a2347eff8a77a3be6f83bc2daec20/CMakeLists.txt#lines-273
     "${minArch'}0";
+
 in
 
 assert (builtins.match "[^[:space:]]*" gpuTargetString) != null;

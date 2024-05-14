@@ -78,8 +78,8 @@ let
       maintainers = teams.c3d2.members;
     };
   };
-in
 
+in
 buildPythonApplication rec {
   pname = "openwebrx";
   version = "1.2.2";

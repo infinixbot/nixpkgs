@@ -106,6 +106,7 @@ let
       str = lib.strings.concatStringsSep "\n" lst;
     in
     builtins.toFile "modules.conf" str;
+
 in
 
 stdenv.mkDerivation rec {

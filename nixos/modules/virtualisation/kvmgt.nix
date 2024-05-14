@@ -18,8 +18,8 @@ let
       description = "UUID(s) of VGPU device. You can generate one with `libossp_uuid`.";
     };
   };
-in
 
+in
 {
   options = {
     virtualisation.kvmgt = {

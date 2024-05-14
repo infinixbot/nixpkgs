@@ -50,8 +50,8 @@ let
     rev = "e1484fd"; # Must match tag in cmake/custom/nevpt2.cmake
     hash = "sha256-Vl+FhwhJBbD/7U2CwsYE9BClSQYLJ8DKXV9EXxQUmz0=";
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "openmolcas";
   version = "24.02";

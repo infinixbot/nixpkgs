@@ -7,8 +7,8 @@
 
 let
   cfg = config.hardware.rtl-sdr;
-in
 
+in
 {
   options.hardware.rtl-sdr = {
     enable = lib.mkOption {

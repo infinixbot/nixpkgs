@@ -24,8 +24,8 @@ let
       echo done
     fi
   '';
-in
 
+in
 {
 
   options = {

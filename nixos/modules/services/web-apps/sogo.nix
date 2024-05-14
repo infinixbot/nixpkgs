@@ -33,8 +33,8 @@ let
         ''
     }
   '';
-in
 
+in
 {
   options.services.sogo = with types; {
     enable = mkEnableOption "SOGo groupware";

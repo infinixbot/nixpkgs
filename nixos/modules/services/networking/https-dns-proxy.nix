@@ -58,8 +58,8 @@ let
     "-r"
     providers."${cfg.provider.kind}".url
   ];
-in
 
+in
 {
   meta.maintainers = with lib.maintainers; [ peterhoeg ];
 

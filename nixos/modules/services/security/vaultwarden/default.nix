@@ -59,8 +59,8 @@ let
   );
 
   vaultwarden = cfg.package.override { inherit (cfg) dbBackend; };
-in
 
+in
 {
   imports = [
     (lib.mkRenamedOptionModule

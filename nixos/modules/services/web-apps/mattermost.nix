@@ -103,6 +103,7 @@ let
   );
 
   mattermostConfJSON = pkgs.writeText "mattermost-config.json" (builtins.toJSON mattermostConf);
+
 in
 
 {

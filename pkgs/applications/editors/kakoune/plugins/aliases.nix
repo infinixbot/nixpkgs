@@ -34,8 +34,8 @@ let
   deprecations = lib.mapAttrs (
     old: info: throw "${old} was renamed to ${info.new} on ${info.date}. Please update to ${info.new}."
   ) (lib.importJSON ./deprecated.json);
-in
 
+in
 mapAliases (
   {
     kak-auto-pairs = auto-pairs-kak; # backwards compat, added 2021-01-04

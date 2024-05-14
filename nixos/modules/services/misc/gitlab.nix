@@ -263,8 +263,8 @@ let
       }
     end
   '';
-in
 
+in
 {
 
   imports = [

@@ -24,8 +24,8 @@ let
     // {
       overrideScope = scope: overrideLuarocks (drv.overrideScope scope) f;
     };
-in
 
+in
 rec {
   inherit overrideLuarocks;
   inherit hasLuaModule requiredLuaModules;

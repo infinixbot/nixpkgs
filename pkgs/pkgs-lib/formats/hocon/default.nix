@@ -96,8 +96,8 @@ in
               _type = "substitution";
             };
       };
-    in
 
+    in
     {
       type =
         let

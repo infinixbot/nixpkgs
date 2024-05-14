@@ -10,8 +10,8 @@ let
 
   settingsFormat = pkgs.formats.ini { };
   configFile = settingsFormat.generate "gns3-server.conf" cfg.settings;
-in
 
+in
 {
   meta = {
     doc = ./gns3-server.md;
@@ -118,8 +118,8 @@ in
         enableDocker = config.virtualisation.docker.enable;
         enableLibvirtd = config.virtualisation.libvirtd.enable;
       };
-    in
 
+    in
     lib.mkIf cfg.enable {
       assertions = [
         {

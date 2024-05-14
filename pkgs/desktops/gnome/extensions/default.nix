@@ -64,8 +64,8 @@ let
       ))
       builtins.listToAttrs
     ];
-in
 
+in
 rec {
   # Remember to import all these in all-packages.nix
   gnome38Extensions = mapUuidNames (produceExtensionsList "38");

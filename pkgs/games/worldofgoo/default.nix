@@ -21,6 +21,7 @@ let
     icon = "2dboy-worldofgoo";
     name = "worldofgoo";
   };
+
 in
 
 stdenv.mkDerivation rec {

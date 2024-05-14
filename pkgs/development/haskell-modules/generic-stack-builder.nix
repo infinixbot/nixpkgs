@@ -26,8 +26,8 @@ let
   # Add all dependencies in buildInputs including propagated ones to
   # STACK_IN_NIX_EXTRA_ARGS.
   stackHook = makeSetupHook { name = "stack-hook"; } ./stack-hook.sh;
-in
 
+in
 stdenv.mkDerivation (
   args
   // {

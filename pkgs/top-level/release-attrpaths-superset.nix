@@ -205,8 +205,8 @@ let
   ] ++ justAttrNames [ ] filtered;
 
   names = map (path: (lib.concatStringsSep "." path)) paths;
-in
 
+in
 {
   inherit paths names;
 }

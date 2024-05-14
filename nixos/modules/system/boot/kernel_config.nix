@@ -70,8 +70,8 @@ let
           "8"
           "9"
         ];
-    in
 
+    in
     if (val == "") then
       "\"\""
     else if val == "y" || val == "m" || val == "n" then
@@ -109,8 +109,8 @@ let
       mkConf = cfg: concatStrings (mapAttrsToList mkConfigLine cfg);
     in
     mkConf exprs;
-in
 
+in
 {
 
   options = {

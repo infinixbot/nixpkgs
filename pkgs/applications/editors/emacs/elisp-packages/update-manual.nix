@@ -13,6 +13,6 @@ let
   hasScript = filterAttrs (
     _: v: isDerivation v && hasAttr "updateScript" v
   ) emacs.pkgs.manualPackages;
-in
 
+in
 attrValues (mapAttrs (_: v: v.updateScript) hasScript)

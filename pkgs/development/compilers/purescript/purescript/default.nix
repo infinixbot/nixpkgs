@@ -20,8 +20,8 @@ let
       patchelf --interpreter ${dynamic-linker} --set-rpath ${libPath} $PURS
       chmod u-w $PURS
     '';
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "purescript";
   version = "0.15.15";

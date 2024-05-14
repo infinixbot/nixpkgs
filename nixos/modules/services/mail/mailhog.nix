@@ -20,8 +20,8 @@ let
     ++ lib.optional (cfg.storage == "maildir") "-maildir-path $STATE_DIRECTORY"
     ++ cfg.extraArgs
   );
-in
 
+in
 {
   ###### interface
 

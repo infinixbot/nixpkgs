@@ -10,8 +10,8 @@ with lib;
 let
   cfg = config.services.corerad;
   settingsFormat = pkgs.formats.toml { };
-in
 
+in
 {
   meta.maintainers = with maintainers; [ mdlayher ];
 

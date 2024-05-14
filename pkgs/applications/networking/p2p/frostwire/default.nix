@@ -58,8 +58,8 @@ let
     outputHashMode = "recursive";
     outputHash = "sha256-r6YSrbSJbM3063JrX4tCVKFrJxTaLN4Trc+33jzpwcE=";
   };
-in
 
+in
 stdenv.mkDerivation {
   pname = "frostwire-desktop";
   inherit version src;

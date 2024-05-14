@@ -14,8 +14,8 @@ let
   format = pkgs.formats.json { };
 
   configFile = format.generate "nats.conf" cfg.settings;
-in
 
+in
 {
 
   ### Interface

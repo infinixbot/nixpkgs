@@ -48,8 +48,8 @@ let
       };
     };
   };
-in
 
+in
 {
   imports = [
     (mkMergedOptionModule

@@ -75,6 +75,6 @@ let
         broken = true;
       };
     };
-in
 
+in
 lib.mapAttrs dropBass allBass

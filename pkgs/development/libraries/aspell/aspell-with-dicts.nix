@@ -17,8 +17,8 @@ f:
 let
   # Dictionaries we want
   dicts = f aspellDicts;
-in
 
+in
 buildEnv {
   name = "aspell-env";
   nativeBuildInputs = [ makeWrapper ];

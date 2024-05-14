@@ -65,8 +65,8 @@ let
       confFileUnchecked;
 
   rootTrustAnchorFile = "${cfg.stateDir}/root.key";
-in
 
+in
 {
 
   ###### interface

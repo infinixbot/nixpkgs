@@ -11,6 +11,7 @@ let
 
   cfg = config.services.ihaskell;
   ihaskell = pkgs.ihaskell.override { packages = cfg.extraPackages; };
+
 in
 
 {

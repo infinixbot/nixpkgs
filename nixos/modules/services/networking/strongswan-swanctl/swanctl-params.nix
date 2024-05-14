@@ -1209,8 +1209,8 @@ in
             unique section having the `eap` prefix. EAP secrets are
             used for XAuth authentication as well.
           '';
-    in
 
+    in
     {
 
       eap = mkEapXauthParams;

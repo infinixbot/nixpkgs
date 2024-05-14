@@ -135,8 +135,8 @@ rec {
         mkdir -p "deps/${dep.pname}"
         ln -sf ${dep.packageJSON} "deps/${dep.pname}/package.json"
       '') workspaceDependencies;
-    in
 
+    in
     stdenv.mkDerivation {
       inherit preBuild postBuild name;
       dontUnpack = true;
@@ -381,8 +381,8 @@ rec {
           ln -s "${deps}/deps/${dep.package.name}/node_modules" "deps/${dep.package.name}/node_modules"
         fi
       '') workspaceDependenciesTransitive;
-    in
 
+    in
     stdenv.mkDerivation (
       builtins.removeAttrs attrs [
         "yarnNix"

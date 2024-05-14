@@ -66,8 +66,8 @@ let
         maintainers = with maintainers; [ notbandali ];
       };
     };
-in
 
+in
 rec {
   alloy5 = generic rec {
     version = "5.1.0";

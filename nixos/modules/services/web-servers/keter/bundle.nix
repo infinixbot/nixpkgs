@@ -30,8 +30,8 @@ let
     name = "keter.yml";
     text = (lib.generators.toYAML { } str);
   };
-in
 
+in
 stdenv.mkDerivation {
   name = "keter-bundle";
   buildCommand = ''

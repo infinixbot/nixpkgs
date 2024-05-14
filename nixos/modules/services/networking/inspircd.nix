@@ -9,8 +9,8 @@ let
   cfg = config.services.inspircd;
 
   configFile = pkgs.writeText "inspircd.conf" cfg.config;
-in
 
+in
 {
   meta = {
     maintainers = [ lib.maintainers.sternenseemann ];

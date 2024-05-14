@@ -15,8 +15,8 @@ let
     && !stdenv.hostPlatform.isMusl
     && !stdenv.hostPlatform.isDarwin
     && !stdenv.hostPlatform.isAndroid;
-in
 
+in
 jemalloc.overrideAttrs (oldAttrs: {
   configureFlags =
     oldAttrs.configureFlags

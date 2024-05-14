@@ -35,6 +35,7 @@ let
 
     ${extraGSettingsOverrides}
   '';
+
 in
 
 runCommand "gnome-gsettings-overrides" { preferLocalBuild = true; } ''

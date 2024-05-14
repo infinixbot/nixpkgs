@@ -50,8 +50,8 @@ let
       gst-plugins-bad
       gst-libav
     ];
-in
 
+in
 buildFHSEnv {
   name = "lutris";
 

@@ -7,8 +7,8 @@
 
 let
   cfg = config.programs.light;
-in
 
+in
 {
   options = {
     programs.light = {

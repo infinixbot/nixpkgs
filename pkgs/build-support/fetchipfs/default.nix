@@ -24,6 +24,7 @@ let
     || sha1 != ""
     || sha256 != ""
     || sha512 != "";
+
 in
 
 if (!hasHash) then

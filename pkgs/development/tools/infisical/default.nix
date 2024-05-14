@@ -43,8 +43,8 @@ let
       url = "https://github.com/Infisical/infisical/releases/download/infisical-cli%2Fv${version}/${name}";
     in
     fetchurl { inherit name url hash; };
-in
 
+in
 stdenv.mkDerivation {
   pname = "infisical";
   version = version;

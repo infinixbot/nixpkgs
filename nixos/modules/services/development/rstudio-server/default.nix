@@ -20,8 +20,8 @@ let
   rsession-conf = builtins.toFile "rsession.conf" ''
     ${cfg.rsessionExtraConfig}
   '';
-in
 
+in
 {
   meta.maintainers = with maintainers; [
     jbedo

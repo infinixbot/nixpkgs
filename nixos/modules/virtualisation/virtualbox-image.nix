@@ -10,8 +10,8 @@ with lib;
 let
 
   cfg = config.virtualbox;
-in
 
+in
 {
 
   options = {

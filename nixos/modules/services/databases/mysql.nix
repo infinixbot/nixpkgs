@@ -20,6 +20,7 @@ let
 
   format = pkgs.formats.ini { listsAsDuplicateKeys = true; };
   configFile = format.generate "my.cnf" cfg.settings;
+
 in
 
 {

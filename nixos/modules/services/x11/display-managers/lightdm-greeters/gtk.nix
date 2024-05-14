@@ -32,8 +32,8 @@ let
     ${optionalString (xcfg.dpi != null) "xft-dpi=${toString xcfg.dpi}"}
     ${cfg.extraConfig}
   '';
-in
 
+in
 {
   options = {
 

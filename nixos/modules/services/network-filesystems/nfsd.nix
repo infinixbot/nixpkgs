@@ -12,6 +12,7 @@ let
   cfg = config.services.nfs.server;
 
   exports = pkgs.writeText "exports" cfg.exports;
+
 in
 
 {

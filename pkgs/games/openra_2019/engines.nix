@@ -36,8 +36,8 @@ let
           ( cd $out/share/applications; sed -e 's/Dawn/Sun/g' -e 's/cnc/ts/g' openra-cnc.desktop > openra-ts.desktop )
         '';
       });
-in
 
+in
 {
   release =
     name:

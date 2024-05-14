@@ -16,8 +16,8 @@ lib.recurseIntoAttrs {
           permittedInsecurePackages = builtins.seq pkgs.glibc.version [ ];
         };
       };
-    in
 
+    in
     pkgs.hello;
 
 }

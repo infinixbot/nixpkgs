@@ -56,8 +56,8 @@ let
       ]
       ++ extraOptions
     );
-in
 
+in
 {
 
   ###### interface

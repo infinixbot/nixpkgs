@@ -12,8 +12,8 @@ import ../../make-test-python.nix (
     hosts = ''
       192.168.2.101 mastodon.local
     '';
-  in
 
+  in
   {
     name = "mastodon-standard";
     meta.maintainers = with pkgs.lib.maintainers; [

@@ -14,8 +14,8 @@
 let
   cfg = config.nixpkgs;
   inherit (lib) mkOption types;
-in
 
+in
 {
   disabledModules = [ ../nixpkgs.nix ];
   options = {

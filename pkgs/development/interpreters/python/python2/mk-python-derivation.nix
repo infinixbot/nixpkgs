@@ -170,8 +170,8 @@ let
         '';
 
       checkDrv = drv: if (isPythonModule drv) && (isMismatchedPython drv) then throwMismatch drv else drv;
-    in
 
+    in
     inputs: builtins.map (checkDrv) inputs;
 
   # Keep extra attributes from `attrs`, e.g., `patchPhase', etc.

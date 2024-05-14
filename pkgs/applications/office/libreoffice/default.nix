@@ -232,8 +232,8 @@ let
     );
   };
   tarballPath = "external/tarballs";
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "libreoffice";
   inherit version;

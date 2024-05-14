@@ -70,8 +70,8 @@ let
         inherit description;
       };
     };
-in
 
+in
 {
   check-mssql-health = generic {
     pname = "check_mssql_health";

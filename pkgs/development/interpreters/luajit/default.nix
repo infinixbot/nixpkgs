@@ -64,8 +64,8 @@ let
       buildPackages.pkgsi686Linux.buildPackages.stdenv
     else
       buildPackages.stdenv;
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "luajit";
   inherit version src;

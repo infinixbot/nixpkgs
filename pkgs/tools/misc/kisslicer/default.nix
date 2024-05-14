@@ -18,6 +18,7 @@ let
   ];
 
   inidir = "\\\${XDG_CONFIG_HOME:-\\$HOME/.config}/kisslicer";
+
 in
 
 stdenv.mkDerivation rec {

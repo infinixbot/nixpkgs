@@ -10,6 +10,7 @@
 let
 
   cfg = config.programs.cfs-zen-tweaks;
+
 in
 
 {

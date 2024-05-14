@@ -44,8 +44,8 @@ let
     ++ lib.optional log4cxxSupport log4cxx
     ++ lib.optional asioSupport asio
     ++ lib.optional (!asioSupport) boost180;
-in
 
+in
 stdenv.mkDerivation (finalAttrs: rec {
   pname = "libpulsar";
   version = "3.5.1";

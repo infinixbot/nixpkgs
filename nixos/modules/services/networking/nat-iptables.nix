@@ -143,6 +143,7 @@ let
     ip46tables -w -t nat -A POSTROUTING -j nixos-nat-post
     ip46tables -w -t nat -A OUTPUT -j nixos-nat-out
   '';
+
 in
 
 {

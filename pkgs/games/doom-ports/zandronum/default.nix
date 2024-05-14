@@ -27,8 +27,8 @@ let
   fmod = fmodex; # fmodex is on nixpkgs now
   sqlite = callPackage ./sqlite.nix { };
   clientLibPath = lib.makeLibraryPath [ fluidsynth ];
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "zandronum${suffix}";
   version = "3.1.0";

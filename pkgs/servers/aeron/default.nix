@@ -69,8 +69,8 @@ let
 
   aeronAll = aeronAll_1_44_1;
   aeronSamples = aeronSamples_1_44_1;
-in
 
+in
 stdenv.mkDerivation {
 
   inherit pname version;

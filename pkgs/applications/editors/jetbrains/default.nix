@@ -129,8 +129,8 @@ let
         # See https://www.jetbrains.com/help/pycharm/2022.1/cython-speedups.html
       }
     );
-in
 
+in
 rec {
   # Sorted alphabetically
 

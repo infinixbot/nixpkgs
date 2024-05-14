@@ -46,8 +46,8 @@ let
         rm WC2BTDP*.{iso,cdr}
         cp -r DATA $out
       '';
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "wargus";
   inherit (stratagus) version;

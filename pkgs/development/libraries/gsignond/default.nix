@@ -82,8 +82,8 @@ let
       platforms = platforms.linux;
     };
   };
-in
 
+in
 if plugins == [ ] then
   unwrapped
 else

@@ -74,8 +74,8 @@ let
       inherit (pkgs.xorg) lndir;
       inherit lib;
     };
-in
 
+in
 makeScope pkgs'.newScope (
   self:
   makeOverridable (

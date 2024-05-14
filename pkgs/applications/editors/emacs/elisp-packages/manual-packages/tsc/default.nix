@@ -58,8 +58,8 @@ let
 
     inherit (srcMeta) cargoHash;
   };
-in
 
+in
 symlinkJoin {
   name = "tsc-${version}";
   paths = [

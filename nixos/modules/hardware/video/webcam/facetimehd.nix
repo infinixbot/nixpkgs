@@ -12,6 +12,7 @@ let
   cfg = config.hardware.facetimehd;
 
   kernelPackages = config.boot.kernelPackages;
+
 in
 
 {

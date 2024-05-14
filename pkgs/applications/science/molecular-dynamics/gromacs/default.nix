@@ -56,8 +56,8 @@ let
         version = "2024.1";
         hash = "sha256-k32PEqNv/78q963XGtu1qlxVN4ktRsmnavvsqxqgqsc=";
       };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "gromacs";
   version = source.version;

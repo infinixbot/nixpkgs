@@ -38,8 +38,8 @@ let
     .${system} or throwSystem;
 
   displayname = "XPipe";
-in
 
+in
 stdenvNoCC.mkDerivation rec {
   pname = "xpipe";
   version = "9.2";

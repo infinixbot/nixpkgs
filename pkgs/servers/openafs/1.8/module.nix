@@ -26,8 +26,8 @@ let
     (fetchpatch args).overrideAttrs (o: {
       postFetch = "mv $out p; base64 -d p > $out; " + o.postFetch;
     });
-in
 
+in
 stdenv.mkDerivation {
   pname = "openafs";
   version = "${version}-${kernel.modDirVersion}";

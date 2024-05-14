@@ -30,8 +30,8 @@ let
     targetPkgs = _: [ left4gore-unwrapped ];
     runScript = "left4gore";
   };
-in
 
+in
 stdenvNoCC.mkDerivation {
   pname = "left4gore";
   inherit version;

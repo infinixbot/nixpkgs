@@ -77,8 +77,8 @@ let
   good = makeBigExe clang-sierraHack-stdenv "good";
 
   bad = makeBigExe clangStdenv "bad";
-in
 
+in
 stdenvNoCC.mkDerivation {
   name = "macos-sierra-shared-test";
   buildInputs = [

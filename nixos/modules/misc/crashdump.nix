@@ -11,8 +11,8 @@ let
   crashdump = config.boot.crashDump;
 
   kernelParams = concatStringsSep " " crashdump.kernelParams;
-in
 
+in
 ###### interface
 {
   options = {

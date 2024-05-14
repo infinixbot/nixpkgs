@@ -39,6 +39,7 @@ let
     src = ./org.gnome.login-screen.gschema.override;
     icon = "${nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg";
   };
+
 in
 
 stdenv.mkDerivation (finalAttrs: {

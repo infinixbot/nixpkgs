@@ -83,8 +83,8 @@ let
         (lib.concatStringsSep " " (attrs.options or defaultOptions))
       ]
     );
-in
 
+in
 stdenv.mkDerivation (
   mkDerivationArgs
   // {

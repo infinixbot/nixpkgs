@@ -43,8 +43,8 @@ let
       cp -R pyca/ui/static/* $out/static/
     '';
   };
-in
 
+in
 python3.pkgs.buildPythonApplication rec {
   pname = "pyca";
   version = "4.5";

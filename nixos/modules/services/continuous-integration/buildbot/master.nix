@@ -63,8 +63,8 @@ let
     m = BuildMaster(basedir, configfile, umask)
     m.setServiceParent(application)
   '';
-in
 
+in
 {
   options = {
     services.buildbot-master = {

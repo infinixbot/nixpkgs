@@ -393,8 +393,8 @@ let
       passthru.version = postgresql.version;
       passthru.psqlSchema = postgresql.psqlSchema;
     };
-in
 
+in
 # passed by <major>.nix
 versionArgs:
 # passed by default.nix

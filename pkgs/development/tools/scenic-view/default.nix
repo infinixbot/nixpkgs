@@ -97,8 +97,8 @@ let
     ];
     categories = [ "Development" ];
   };
-in
 
+in
 stdenv.mkDerivation rec {
   inherit pname version src;
   nativeBuildInputs = [

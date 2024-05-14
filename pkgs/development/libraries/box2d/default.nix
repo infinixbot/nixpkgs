@@ -22,8 +22,8 @@
 
 let
   inherit (lib) cmakeBool optionals;
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "box2d";
   version = "2.4.1";

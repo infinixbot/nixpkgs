@@ -57,8 +57,8 @@ let
   toConf = attrs: concatStringsSep "\n" (mkAttrsString true cfg.settings);
 
   configFile = pkgs.writeText "picom.conf" (toConf cfg.settings);
-in
 
+in
 {
 
   imports = [
@@ -334,8 +334,8 @@ in
             scalars or a group itself
           '';
         };
-      in
 
+      in
       mkOption {
         type = topLevel;
         default = { };

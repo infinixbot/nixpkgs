@@ -114,8 +114,8 @@ let
     } not supported for interpreter ${python.executable}";
 
   disabledIf = x: drv: if x then disabled drv else drv;
-in
 
+in
 {
   inherit lib pkgs stdenv;
   inherit (python.passthru)

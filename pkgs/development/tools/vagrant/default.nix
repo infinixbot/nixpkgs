@@ -54,8 +54,8 @@ let
       done
     '';
   };
-in
 
+in
 buildRubyGem rec {
   name = "${gemName}-${version}";
   gemName = "vagrant";

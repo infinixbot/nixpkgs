@@ -8,8 +8,8 @@
 let
   cfg = config.hardware.keyboard.teck;
   inherit (lib) mkEnableOption mkIf;
-in
 
+in
 {
   options.hardware.keyboard.teck = {
     enable = mkEnableOption "non-root access to the firmware of TECK keyboards";

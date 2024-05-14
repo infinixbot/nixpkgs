@@ -14,8 +14,8 @@ let
           "''"
         else
           "trim(file_get_contents('${cfg.settings.email.smtpPasswordFile}'))";
-    in
 
+    in
     pkgs.writeText "config.php" ''
       <?php
       // Set include path for PEAR and its modules, which we include in the distribution.

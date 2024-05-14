@@ -63,8 +63,8 @@ let
 
     # FIXME: Missing command: tune.exfat hfsck hformat fsck.nilfs2 {fsck,mkfs,debugfs,tunefs}.ocfs2
   ];
-in
 
+in
 mkDerivation {
   pname = "partitionmanager";
 

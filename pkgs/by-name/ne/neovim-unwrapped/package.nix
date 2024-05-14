@@ -87,8 +87,8 @@ stdenv.mkDerivation (
         ])
       else
         lua.luaOnBuild;
-  in
 
+  in
   {
     pname = "neovim-unwrapped";
     version = "0.9.5";

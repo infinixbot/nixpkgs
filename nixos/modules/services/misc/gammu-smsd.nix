@@ -57,8 +57,8 @@ let
       dbiSupport = service == "sql" && sql.driver == "sqlite";
       postgresSupport = service == "sql" && sql.driver == "native_pgsql";
     });
-in
 
+in
 {
   options = {
     services.gammu-smsd = {

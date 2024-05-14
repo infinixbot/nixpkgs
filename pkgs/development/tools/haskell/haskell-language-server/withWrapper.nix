@@ -58,6 +58,7 @@ let
       packages = [ "hls-stylish-haskell-plugin" ];
     };
   };
+
 in
 
 # make sure any formatter that is set is actually supported by us
@@ -107,8 +108,8 @@ let
           (lib.filter (dep: !(lib.elem dep.pname deps)))
         ];
       });
-    in
 
+    in
     drv: lib.pipe drv ([ stripDeps ] ++ map disableCabalFlag flags);
 
   tunedHls =
@@ -141,8 +142,8 @@ let
     lib.concatMapStringsSep "\n" (
       x: "ln -s ${tunedHls (getPackages version)}/bin/haskell-language-server $out/bin/${x}"
     ) (targets version);
-in
 
+in
 stdenv.mkDerivation {
   pname = "haskell-language-server";
   version = haskellPackages.haskell-language-server.version;

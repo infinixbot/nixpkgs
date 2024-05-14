@@ -489,15 +489,15 @@ rec {
                 + "of the given value is not an attribute set, so we can't "
                 + "update an attribute inside of it."
               );
-        in
 
+        in
         # We get the final result by applying all the updates on this level
         # after having applied all the nested updates
         # We use foldl instead of foldl' so that in case of multiple updates,
         # intermediate values aren't evaluated if not needed
         foldl (acc: el: el.update acc) withNestedMods split.right;
-    in
 
+    in
     updates: value: go 0 true value updates;
 
   /**

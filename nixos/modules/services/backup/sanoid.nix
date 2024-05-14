@@ -133,8 +133,8 @@ let
           generators.mkKeyValueDefault { inherit mkValueString; } "=" k v;
     in
     generators.toINI { inherit mkKeyValue; } cfg.settings;
-in
 
+in
 {
 
   # Interface

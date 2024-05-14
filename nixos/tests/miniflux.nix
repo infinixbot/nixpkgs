@@ -20,8 +20,8 @@ import ./make-test-python.nix (
     postgresPasswordFile = pkgs.writeText "pgpass" ''
       *:*:*:*:${postgresPassword}
     '';
-  in
 
+  in
   {
     name = "miniflux";
     meta.maintainers = [ ];

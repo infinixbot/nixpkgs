@@ -27,8 +27,8 @@ let
       "music"
     ];
   };
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   inherit pname;
   version =

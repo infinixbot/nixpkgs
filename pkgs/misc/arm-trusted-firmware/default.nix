@@ -103,8 +103,8 @@ let
       }
       // builtins.removeAttrs args [ "extraMeta" ]
     );
-in
 
+in
 {
   inherit buildArmTrustedFirmware;
 

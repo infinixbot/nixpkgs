@@ -63,6 +63,7 @@ let
     url = "https://registry.npmjs.org/requirejs/-/requirejs-2.3.6.tgz";
     sha256 = "165hkli3qcd59cjqvli9r5f92i0h7czkmhcg1cgwamw2d0b7xibz";
   };
+
 in
 
 buildPythonPackage rec {

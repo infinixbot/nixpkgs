@@ -34,8 +34,8 @@ let
       runHook postInstall
     '';
   };
-in
 
+in
 buildGoModule rec {
   inherit version;
   pname = "glasskube";

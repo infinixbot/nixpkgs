@@ -97,8 +97,8 @@ let
     outputHashMode = "recursive";
     outputHash = "sha256-nKfJiGoZlDEpbCmYVKNZXz2PYIosCd4nPFdy3MfprHc=";
   };
-in
 
+in
 stdenv.mkDerivation {
   inherit pname version src;
 

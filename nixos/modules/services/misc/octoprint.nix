@@ -25,8 +25,8 @@ let
   pluginsEnv = package.python.withPackages (ps: [ ps.octoprint ] ++ (cfg.plugins ps));
 
   package = pkgs.octoprint;
-in
 
+in
 {
   ##### interface
 

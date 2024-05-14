@@ -35,6 +35,7 @@ let
     xzcat -Q $src | cpio --format odc -i -d ${firmwareIn}
     exit 0
   '';
+
 in
 
 stdenvNoCC.mkDerivation {

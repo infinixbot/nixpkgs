@@ -191,8 +191,8 @@ let
               throw "Feature(s) ${lib.concatStringsSep " " unsupported} are not supported on ${stdenv.hostPlatform.system}"
             else
               features;
-    in
 
+    in
     stdenv.mkDerivation rec {
       pname = "mpd";
       version = "0.23.15";

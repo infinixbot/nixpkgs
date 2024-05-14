@@ -108,8 +108,8 @@ let
       }
       // attrs'
     );
-in
 
+in
 {
   beneath-a-steel-sky = generic rec {
     plong = "Beneath a Steel Sky";

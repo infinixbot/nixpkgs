@@ -67,8 +67,8 @@ let
     "DCO"
     "CONTRIBUTING"
   ];
-in
 
+in
 stdenv.mkDerivation {
   inherit pname version;
 

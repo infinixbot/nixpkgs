@@ -67,8 +67,8 @@ let
     #"wiredtiger"
   ] ++ optionals stdenv.isLinux [ "tcmalloc" ];
   inherit (lib) systems subtractLists;
-in
 
+in
 stdenv.mkDerivation rec {
   inherit version;
   pname = "mongodb";

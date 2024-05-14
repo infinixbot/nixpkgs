@@ -7,6 +7,7 @@
 
 let
   cfg = config.programs.xwayland;
+
 in
 
 {

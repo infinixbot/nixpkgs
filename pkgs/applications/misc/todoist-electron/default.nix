@@ -23,8 +23,8 @@ let
       ${asar}/bin/asar pack app $out/resources/app.asar
     '';
   });
-in
 
+in
 appimageTools.wrapAppImage {
   inherit pname version;
   src = appimageContents;

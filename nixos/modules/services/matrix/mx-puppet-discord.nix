@@ -13,8 +13,8 @@ let
   cfg = config.services.mx-puppet-discord;
   settingsFormat = pkgs.formats.json { };
   settingsFile = settingsFormat.generate "mx-puppet-discord-config.json" cfg.settings;
-in
 
+in
 {
   options = {
     services.mx-puppet-discord = {

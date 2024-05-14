@@ -77,8 +77,8 @@ let
       natsort
     ]
   );
-in
 
+in
 stdenv.mkDerivation {
   pname = "playonlinux";
   inherit version;

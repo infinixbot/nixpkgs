@@ -78,8 +78,8 @@ let
     enablePython = true;
     python = python3;
   };
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "yosys";
   version = "0.38";

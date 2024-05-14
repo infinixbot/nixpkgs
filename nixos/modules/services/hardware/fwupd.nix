@@ -65,8 +65,8 @@ let
         enableRemote cfg.package.installedTests "fwupd-tests"
       )
     );
-in
 
+in
 {
 
   ###### interface

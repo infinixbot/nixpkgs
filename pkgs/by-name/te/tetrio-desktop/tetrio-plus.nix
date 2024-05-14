@@ -89,8 +89,8 @@ let
     yarnLock = "${src}/resources/desktop-ci/yarn.lock";
     hash = "sha256-LfUC2bkUX+sFq3vMMOC1YVYbpDxUSnLO9GiKdoQBdAw=";
   };
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "tetrio-plus";
   inherit version src;

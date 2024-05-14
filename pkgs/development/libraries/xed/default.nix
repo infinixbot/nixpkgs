@@ -19,8 +19,8 @@ let
       sha256 = "sha256-nVHHiaPbf+b+RntjUGjLLGS53e6c+seXIBx7AcTtiWU=";
     };
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "xed";
   version = "2024.02.22";

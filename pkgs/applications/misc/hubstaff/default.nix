@@ -50,6 +50,7 @@ let
     libXfixes
     libXScrnSaver
   ];
+
 in
 
 stdenv.mkDerivation {

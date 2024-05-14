@@ -18,8 +18,8 @@ let
       ModulePath "${xorg.xf86videodummy}/lib/xorg/modules/drivers
     EndSection
   '';
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "jibri";
   version = "8.0-169-g1258814";

@@ -51,6 +51,7 @@ let
       --set LD_PRELOAD    "${pkgs.libredirect}/lib/libredirect.so" \
       --set NIX_REDIRECTS "/etc/nslcd.conf=/run/nslcd/nslcd.conf"
   '';
+
 in
 
 {

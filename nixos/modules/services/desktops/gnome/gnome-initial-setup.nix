@@ -42,6 +42,7 @@ let
       X-GNOME-Autostart-Phase=EarlyInitialization
     '';
   };
+
 in
 
 {

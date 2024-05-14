@@ -938,8 +938,8 @@ rec {
           throw "lib.fileset.${function}: Expected the ${argument} (${toString path}) to point to a local working tree of a Git repository, but it's not."
         else
           _mirrorStorePath path fetchResult.outPath;
-    in
 
+    in
     if !isPath path then
       throw "lib.fileset.${function}: Expected the ${argument} to be a path, but it's a ${typeOf path} instead."
     else if pathType path != "directory" then

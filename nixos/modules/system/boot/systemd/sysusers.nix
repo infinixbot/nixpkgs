@@ -60,6 +60,7 @@ let
     export CREDENTIALS_DIRECTORY=${staticSysusersCredentials}
     systemd-sysusers --root $out ${sysusersConfig}/00-nixos.conf
   '';
+
 in
 
 {

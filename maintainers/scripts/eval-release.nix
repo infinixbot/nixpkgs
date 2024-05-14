@@ -35,6 +35,6 @@ let
         ) attrs
     else
       { };
-in
 
+in
 recurse [ ] rel

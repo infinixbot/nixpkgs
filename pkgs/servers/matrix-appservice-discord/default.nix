@@ -14,8 +14,8 @@
 let
   pin = lib.importJSON ./pin.json;
   nodeSources = srcOnly nodejs;
-in
 
+in
 mkYarnPackage rec {
   pname = "matrix-appservice-discord";
   inherit (pin) version;

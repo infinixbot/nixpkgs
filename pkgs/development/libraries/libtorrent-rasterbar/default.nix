@@ -19,8 +19,8 @@ let
     enablePython = true;
     inherit python;
   };
-in
 
+in
 stdenv.mkDerivation {
   pname = "libtorrent-rasterbar";
   inherit version;

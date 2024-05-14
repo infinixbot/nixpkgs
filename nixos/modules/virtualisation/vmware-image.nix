@@ -18,8 +18,8 @@ let
     "twoGbMaxExtentFlat"
     "streamOptimized"
   ];
-in
 
+in
 {
   options = {
     vmware = {

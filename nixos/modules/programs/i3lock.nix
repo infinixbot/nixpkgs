@@ -8,8 +8,8 @@
 let
 
   cfg = config.programs.i3lock;
-in
 
+in
 {
 
   ###### interface

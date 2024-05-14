@@ -14,6 +14,7 @@ let
       checkType val || (val._type or "" == "override" && checkType val.content);
     merge = loc: defs: mergeOneOption loc (filterOverrides defs);
   };
+
 in
 
 {

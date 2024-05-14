@@ -55,6 +55,7 @@ let
     )
     + optional (cfg.firmwareConfig != null) cfg.firmwareConfig
   );
+
 in
 
 {

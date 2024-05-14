@@ -19,6 +19,7 @@ let
       lib.filterAttrs (k: v: v != null) cfg.shellAliases
     )
   );
+
 in
 
 {

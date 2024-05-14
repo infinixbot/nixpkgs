@@ -37,8 +37,8 @@ let
   printerName = (types.addCheck (types.strMatching "[[:graph:]]+") noInvalidChars) // {
     description = "printable string without spaces, # and /";
   };
-in
 
+in
 {
   options = {
     hardware.printers = {

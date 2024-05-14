@@ -47,8 +47,8 @@ let
       "always"
     ])
   ];
-in
 
+in
 rec {
 
   unitOption = mkOptionType {

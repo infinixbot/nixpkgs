@@ -58,8 +58,8 @@ let
         BUILD_ID = "rolling";
       };
       os-release = pkgs.writeText "os-release" (envFileGenerator (filterNull os-release-params));
-    in
 
+    in
     stdenv.mkDerivation {
       pname = "root-fs-scaffold";
       inherit version;

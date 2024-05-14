@@ -20,8 +20,8 @@ let
       sha256 = "0f8km7wqkw09g01l03kcrjgvq7b6xclzpvb5r64ymsmrc39p0ylp";
     };
   };
-in
 
+in
 stdenv.mkDerivation rec {
   inherit version;
   pname = "sonar-scanner-cli";

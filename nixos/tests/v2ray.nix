@@ -63,8 +63,8 @@ import ./make-test-python.nix (
         }
       ];
     };
-  in
 
+  in
   {
     name = "v2ray";
     meta = with lib.maintainers; {

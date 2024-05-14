@@ -584,8 +584,8 @@ let
         "TeTeX"
       ]
   );
-in
 
+in
 allPkgLists
 // {
   pkgs = tl;

@@ -56,8 +56,8 @@ let
       unwrapped = ShellCheck;
     };
   };
-in
 
+in
 overrideMeta shellcheck (old: {
   maintainers = with lib.maintainers; [ zowoq ];
   mainProgram = "shellcheck";

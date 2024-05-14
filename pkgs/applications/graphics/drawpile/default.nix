@@ -63,8 +63,8 @@ let
   kisDeps = [ qtx11extras ];
 
   boolToFlag = bool: if bool then "ON" else "OFF";
-in
 
+in
 mkDerivation rec {
   pname = "drawpile";
   version = "2.1.20";

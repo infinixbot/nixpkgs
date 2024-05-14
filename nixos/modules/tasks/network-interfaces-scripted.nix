@@ -727,8 +727,8 @@ let
               '';
             }
           );
-      in
 
+      in
       listToAttrs (
         map configureAddrs interfaces ++ map createTunDevice (filter (i: i.virtual) interfaces)
       )
@@ -750,6 +750,7 @@ let
     '';
 
   };
+
 in
 
 {

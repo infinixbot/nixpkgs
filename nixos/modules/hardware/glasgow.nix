@@ -7,8 +7,8 @@
 
 let
   cfg = config.hardware.glasgow;
-in
 
+in
 {
   options.hardware.glasgow = {
     enable = lib.mkOption {

@@ -216,8 +216,8 @@ let
         };
       };
     };
-in
 
+in
 {
 
   options = {

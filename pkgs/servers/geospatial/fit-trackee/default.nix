@@ -22,8 +22,8 @@ let
       });
     };
   };
-in
 
+in
 python.pkgs.buildPythonApplication rec {
   pname = "fit-trackee";
   version = "0.7.31";

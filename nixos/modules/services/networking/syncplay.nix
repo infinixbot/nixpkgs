@@ -24,8 +24,8 @@ let
       cfg.certDir
     ]
     ++ cfg.extraArgs;
-in
 
+in
 {
   options = {
     services.syncplay = {

@@ -17,8 +17,8 @@ let
     name = "pcscd-plugins";
     paths = map (p: "${p}/pcsc/drivers") config.services.pcscd.plugins;
   };
-in
 
+in
 {
   options.services.pcscd = {
     enable = mkEnableOption "PCSC-Lite daemon, to access smart cards using SCard API (PC/SC)";

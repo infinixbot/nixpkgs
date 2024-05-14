@@ -25,8 +25,8 @@ let
       EOF
     '';
   };
-in
 
+in
 buildBazelPackage rec {
   pname = "bazel-watcher";
   version = "0.25.2";

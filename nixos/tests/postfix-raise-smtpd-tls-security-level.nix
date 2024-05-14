@@ -33,8 +33,8 @@ import ./make-test-python.nix {
             if not success:
               sys.exit(1)
           '';
-        in
 
+        in
         [ checkConfig ];
     };
 

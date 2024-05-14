@@ -79,8 +79,8 @@ let
   };
 
   pebbleConfFile = pkgs.writeText "pebble.conf" (builtins.toJSON pebbleConf);
-in
 
+in
 {
   imports = [ ../../resolver.nix ];
 

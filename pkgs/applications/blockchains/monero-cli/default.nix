@@ -38,6 +38,7 @@ let
     rev = "bc28c316d05bf1e9ebfe3d7df1ab25831d98d168";
     hash = "sha256-F1Hf1WwHqXMd/5OWrdkpomszACTozDuC7DQXW3p6248=";
   };
+
 in
 
 stdenv.mkDerivation rec {

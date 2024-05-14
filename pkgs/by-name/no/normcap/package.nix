@@ -19,6 +19,7 @@ let
     tesseract4
     libnotify
   ] ++ lib.optionals stdenv.isLinux [ wl-clipboard ];
+
 in
 
 ps.buildPythonApplication rec {

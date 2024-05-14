@@ -15,6 +15,7 @@ let
     SFTPSERVER_PATH = sftpPath;
     DROPBEAR_PATH_SSH_PROGRAM = "${placeholder "out"}/bin/dbclient";
   };
+
 in
 
 stdenv.mkDerivation rec {

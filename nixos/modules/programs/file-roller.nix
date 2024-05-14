@@ -9,8 +9,8 @@
 
 let
   cfg = config.programs.file-roller;
-in
 
+in
 {
 
   ###### interface

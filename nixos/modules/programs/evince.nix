@@ -9,8 +9,8 @@
 
 let
   cfg = config.programs.evince;
-in
 
+in
 {
 
   ###### interface

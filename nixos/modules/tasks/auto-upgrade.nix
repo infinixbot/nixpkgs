@@ -9,8 +9,8 @@ with lib;
 
 let
   cfg = config.system.autoUpgrade;
-in
 
+in
 {
 
   options = {

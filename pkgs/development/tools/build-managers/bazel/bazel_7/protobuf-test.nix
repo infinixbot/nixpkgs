@@ -172,6 +172,6 @@ let
 
       '';
   };
-in
 
+in
 testBazel

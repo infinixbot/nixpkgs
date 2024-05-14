@@ -51,8 +51,8 @@ let
       };
     };
   };
-in
 
+in
 {
 
   ###### interface

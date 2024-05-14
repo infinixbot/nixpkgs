@@ -46,6 +46,7 @@ let
   anbox-application-manager = writeShellScript "anbox-application-manager" ''
     exec @out@/bin/anbox launch --package=org.anbox.appmgr --component=org.anbox.appmgr.AppViewActivity
   '';
+
 in
 
 stdenv.mkDerivation rec {

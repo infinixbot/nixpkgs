@@ -74,8 +74,8 @@ let
         users = concatStringsSep ";" users;
       };
     };
-in
 
+in
 {
 
   ###### interface

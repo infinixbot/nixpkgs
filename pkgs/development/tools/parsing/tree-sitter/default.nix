@@ -170,8 +170,8 @@ let
     );
 
   allGrammars = builtins.attrValues builtGrammars;
-in
 
+in
 rustPlatform.buildRustPackage {
   pname = "tree-sitter";
   inherit src version;

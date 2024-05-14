@@ -24,6 +24,7 @@ let
   ];
 
   sbinPath = lib.makeSearchPathOutput "bin" "sbin" [ procps ];
+
 in
 
 stdenv.mkDerivation rec {

@@ -55,8 +55,8 @@ let
     outputHashMode = "recursive";
     outputHash = "sha256-9tCcUg7hDNbkZiQEWtVRsUUfms73aU+vt5tQsfknM+E=";
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "mucommander";
   inherit version src postPatch;

@@ -48,8 +48,8 @@ let
                numcpus=numcpus, allow_shutdown=allow_shutdown)
     s.setServiceParent(application)
   '';
-in
 
+in
 {
   options = {
     services.buildbot-worker = {

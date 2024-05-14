@@ -86,10 +86,10 @@ let
       }
     else
       throw "MongoDB compass is not supported on ${stdenv.hostPlatform.system}";
-in
-# NOTE While MongoDB Compass is available to darwin, I do not have resources to test it
-# Feel free to make a PR adding support if desired
+  # NOTE While MongoDB Compass is available to darwin, I do not have resources to test it
+  # Feel free to make a PR adding support if desired
 
+in
 stdenv.mkDerivation {
   pname = "mongodb-compass";
   inherit version;

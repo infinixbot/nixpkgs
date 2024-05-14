@@ -114,8 +114,8 @@ let
   get-version = writeShellScriptBin "get-version" ''
     echo -n ${version}
   '';
-in
 
+in
 stdenv.mkDerivation {
   pname = "subsurface";
   inherit version;

@@ -43,8 +43,8 @@ let
       pname = "scala_2_13";
     };
   };
-in
 
+in
 with versionMap.${majorVersion};
 
 stdenv.mkDerivation rec {

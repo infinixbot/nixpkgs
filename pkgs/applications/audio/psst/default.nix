@@ -29,8 +29,8 @@ let
     terminal = false;
     startupWMClass = "psst-gui";
   };
-in
 
+in
 rustPlatform.buildRustPackage rec {
   pname = "psst";
   version = "unstable-2024-04-01";

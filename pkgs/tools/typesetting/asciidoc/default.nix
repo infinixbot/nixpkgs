@@ -136,8 +136,8 @@ let
     url = "https://github.com/downloads/dagwieers/asciidoc-odf/odp-backend-0.1.zip";
     sha256 = "08ya4bskygzqkfqwjllpg31qc5k08xp2k78z9b2480g8y57bfy10";
   };
-in
 
+in
 python3.pkgs.buildPythonApplication rec {
   pname =
     "asciidoc"

@@ -69,6 +69,7 @@ let
       else
         throw "Module at ${toString mod.src} does not support nginx version ${nginxVersion}!"
     );
+
 in
 
 assert lib.assertMsg (lib.unique moduleNames == moduleNames)

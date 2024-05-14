@@ -46,8 +46,8 @@ let
       ...
     }:
     cmakeFlags ++ cmakeFlags';
-in
 
+in
 {
   inherit makeCMakeFlags;
 }

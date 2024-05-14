@@ -344,6 +344,6 @@ let
         if attrNamesOnly then pkgs // packageJobs else mapTestOn ((packagePlatforms pkgs) // packageJobs);
     in
     unionOfDisjoint nonPackageJobs mapTestOn-packages;
-in
 
+in
 jobs

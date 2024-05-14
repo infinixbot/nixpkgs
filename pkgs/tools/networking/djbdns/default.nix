@@ -14,6 +14,7 @@ let
     url = "http://smarden.org/pape/djb/manpages/djbdns-${version}-man-20031023.tar.gz";
     sha256 = "0sg51gjy6j1hnrra406q1qhf5kvk1m00y8qqhs6r0a699gqmh75s";
   };
+
 in
 
 stdenv.mkDerivation {

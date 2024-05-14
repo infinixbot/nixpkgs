@@ -45,8 +45,8 @@ let
     # https://github.com/nanomq/idl-serial/issues/36
     hardeningDisable = [ "fortify3" ];
   };
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "nanomq";
   version = "0.20.8";

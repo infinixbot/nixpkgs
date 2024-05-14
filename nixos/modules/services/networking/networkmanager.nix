@@ -139,8 +139,8 @@ let
     pkgs.modemmanager
     pkgs.networkmanager
   ] ++ cfg.plugins ++ lib.optionals (!delegateWireless && !enableIwd) [ pkgs.wpa_supplicant ];
-in
 
+in
 {
 
   meta = {

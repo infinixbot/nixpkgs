@@ -278,6 +278,6 @@ let
       telly-skout = callPackage ./telly-skout.nix { };
       tokodon = callPackage ./tokodon.nix { };
     };
-in
 
+in
 lib.makeScope libsForQt5.newScope packages

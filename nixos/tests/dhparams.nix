@@ -79,8 +79,8 @@ import ./make-test-python.nix {
           with machine.nested("switch to generation ${toString gen}"):
             machine.succeed("${switchCmd}")
         '';
-    in
 
+    in
     ''
       import re
 

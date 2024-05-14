@@ -22,8 +22,8 @@ let
     categories = [ "Development" ];
     startupWMClass = "TLA+ Toolbox";
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "tla-toolbox";
   version = "1.7.1";

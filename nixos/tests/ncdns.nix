@@ -20,6 +20,7 @@ import ./make-test-python.nix (
     # Disabled because DNSSEC does not currently validate,
     # see https://github.com/namecoin/ncdns/issues/127
     dnssec = false;
+
   in
 
   {

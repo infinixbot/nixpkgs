@@ -16,8 +16,8 @@ let
   config_file = pkgs.writeText "rabbitmq.conf" config_file_content;
 
   advanced_config_file = pkgs.writeText "advanced.config" cfg.config;
-in
 
+in
 {
 
   imports = [

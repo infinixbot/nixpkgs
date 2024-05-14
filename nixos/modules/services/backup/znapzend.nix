@@ -320,8 +320,8 @@ let
       value = pkgs.writeText (stripSlashes srcCfg.dataset) fileText;
     }
   ) cfg.zetup;
-in
 
+in
 {
   options = {
     services.znapzend = {

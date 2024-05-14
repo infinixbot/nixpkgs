@@ -167,8 +167,8 @@ let
         );
       };
     };
-in
 
+in
 {
 
   ###### interface

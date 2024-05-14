@@ -113,8 +113,8 @@ let
         hash = "sha256-Hgd6SDm+Pq094/BbTCRCadyi3wf0fOoLkFRMfp3BZC8=";
       };
     };
-in
 
+in
 buildPythonPackage {
   pname = "pulsar-client";
   inherit version;

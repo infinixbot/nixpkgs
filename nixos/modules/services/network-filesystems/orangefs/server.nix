@@ -83,8 +83,8 @@ let
 
     ${concatStringsSep "\n" fileSystems}
   '';
-in
 
+in
 {
   ###### interface
 

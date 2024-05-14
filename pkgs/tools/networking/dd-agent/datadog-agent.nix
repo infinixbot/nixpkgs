@@ -40,8 +40,8 @@ let
       "-DDISABLE_PYTHON2=ON"
     ];
   };
-in
 
+in
 buildGoModule rec {
   pname = "datadog-agent";
   inherit src version;

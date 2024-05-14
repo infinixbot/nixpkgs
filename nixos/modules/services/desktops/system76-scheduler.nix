@@ -137,8 +137,8 @@ let
         "{\n${concatStringsSep "\n" (map (m: "  ${indent}${m}") a.matchers)}\n${indent}}"
       ))
     );
-in
 
+in
 {
   options = {
     services.system76-scheduler = {

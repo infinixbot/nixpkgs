@@ -55,6 +55,7 @@ let
       mv server/ui/dist $out
     '';
   };
+
 in
 
 buildGoModule {

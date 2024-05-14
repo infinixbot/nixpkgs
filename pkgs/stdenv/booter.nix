@@ -161,6 +161,6 @@ let
         # everything, so we make sure to avoid that.
         buildPackages.stdenv.cc;
   };
-in
 
+in
 dfold folder postStage (_: { }) withAllowCustomOverrides

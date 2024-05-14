@@ -18,8 +18,8 @@ let
       url = "https://sources.debian.org/data/main/t/titanion/0.3.dfsg1-7/debian/patches/${patchname}";
       sha256 = hash;
     };
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "titanion";
   version = "0.3";

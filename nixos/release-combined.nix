@@ -31,8 +31,8 @@ let
         pkgs.lib.mapAttrs (n: v: removeMaintainers v) set
     else
       set;
-in
 
+in
 rec {
 
   nixos = removeMaintainers (

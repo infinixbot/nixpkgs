@@ -299,11 +299,12 @@ let
         )
         ++ lib.optional (plug != null) plugImpl
         ++ [ customRC ];
-    in
 
+    in
     lib.concatStringsSep "\n" (lib.filter (x: x != null && x != "") entries);
 
   vimrcFile = settings: writeText "vimrc" (vimrcContent settings);
+
 in
 
 rec {

@@ -11,8 +11,8 @@ let
     ps.sympy
     ps.mpmath
   ]);
-in
 
+in
 buildOctavePackage rec {
   pname = "symbolic";
   version = "3.1.1";

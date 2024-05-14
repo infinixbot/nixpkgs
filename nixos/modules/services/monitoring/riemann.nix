@@ -26,8 +26,8 @@ let
       -cp ${classpath} \
       riemann.bin ${cfg.configFile}
   '';
-in
 
+in
 {
 
   options = {

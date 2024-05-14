@@ -17,8 +17,8 @@ stdenv.mkDerivation (
       icon
       desktopItem
       ;
-  in
 
+  in
   {
     pname = "remnote";
     version = "1.16.4";

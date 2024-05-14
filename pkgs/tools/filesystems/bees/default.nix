@@ -61,6 +61,7 @@ let
       maintainers = with maintainers; [ chaduffy ];
     };
   };
+
 in
 
 (runCommand "bees-service"

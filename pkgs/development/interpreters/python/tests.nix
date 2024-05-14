@@ -108,8 +108,8 @@ let
           mkdir $out
           touch $out/success
         '';
-    in
 
+    in
     lib.mapAttrs testfun envs;
 
   # Integration tests involving the package set.
@@ -212,8 +212,8 @@ let
         ${pythonWithRequests.interpreter} -c "import requests" > $out
       '';
     };
-in
 
+in
 lib.optionalAttrs (stdenv.hostPlatform == stdenv.buildPlatform) (
   environmentTests // integrationTests // overrideTests // condaTests
 )

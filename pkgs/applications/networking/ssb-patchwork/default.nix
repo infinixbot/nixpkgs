@@ -32,8 +32,8 @@ let
     genericName = "Patchwork";
     categories = [ "Network" ];
   };
-in
 
+in
 symlinkJoin {
   inherit name;
   paths = [ binary ];

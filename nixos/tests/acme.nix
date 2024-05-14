@@ -176,8 +176,8 @@ let
           };
         };
     };
-in
 
+in
 {
   name = "acme";
   meta = {

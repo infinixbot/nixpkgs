@@ -28,6 +28,7 @@ let
   ];
 
   cfg = config.services.glusterfs;
+
 in
 
 {

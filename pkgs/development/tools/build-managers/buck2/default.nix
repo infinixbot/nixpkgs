@@ -77,8 +77,8 @@ let
       url = "https://github.com/facebook/buck2-prelude/archive/${prelude-hash}.tar.gz";
     in
     fetchurl { inherit name url hash; };
-in
 
+in
 stdenv.mkDerivation {
   pname = "buck2";
   version = "unstable-${version}"; # TODO (aseipp): kill 'unstable' once a non-prerelease is made

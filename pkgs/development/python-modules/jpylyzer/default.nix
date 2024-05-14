@@ -21,8 +21,8 @@ let
     rev = "0290e98bae9c5480c995954d3f14b4cf0a0395ff";
     hash = "sha256-dr3hC6dGd3HNSE4nRj1xrfFSW9cepQ1mdVH8S3YQdtw=";
   };
-in
 
+in
 buildPythonPackage rec {
   pname = "jpylyzer";
   version = "2.2.1";

@@ -17,6 +17,7 @@ let
       pkgs.writeText "matterbridge.toml" (cfg.configFile)
     else
       cfg.configPath;
+
 in
 
 {

@@ -72,6 +72,7 @@ let
       found = match "(.*)e?abi.*" x;
     in
     if found == null then x else elemAt found 0;
+
 in
 
 rec {
@@ -918,8 +919,8 @@ rec {
           else
             abis.unknown;
       };
-    in
 
+    in
     mkSystem parsed;
 
   mkSystemFromString = s: mkSystemFromSkeleton (mkSkeletonFromList (splitString "-" s));

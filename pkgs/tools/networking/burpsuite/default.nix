@@ -48,8 +48,8 @@ let
       "System"
     ];
   };
-in
 
+in
 buildFHSEnv {
   inherit pname version;
 

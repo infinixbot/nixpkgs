@@ -64,8 +64,8 @@ let
       "-DBULLET2_MULTITHREADING=ON"
     ];
   });
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "openmw";
   version = "0.48.0";

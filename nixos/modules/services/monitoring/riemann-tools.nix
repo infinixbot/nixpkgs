@@ -18,8 +18,8 @@ let
     #!/bin/sh
     exec ${pkgs.riemann-tools}/bin/riemann-health ${builtins.concatStringsSep " " cfg.extraArgs} --host ${riemannHost}
   '';
-in
 
+in
 {
 
   options = {

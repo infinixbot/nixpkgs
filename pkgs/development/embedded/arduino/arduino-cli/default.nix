@@ -81,8 +81,8 @@ let
     };
 
   };
-in
 
+in
 if stdenv.isLinux then
   # buildFHSEnv is needed because the arduino-cli downloads compiler
   # toolchains from the internet that have their interpreters pointed at

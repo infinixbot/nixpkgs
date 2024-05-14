@@ -81,8 +81,8 @@ let
     "nativeBuildInputs"
     "passthru"
   ];
-in
 
+in
 stdenv.mkDerivation (
   {
     packageName = "${fullLibName}";

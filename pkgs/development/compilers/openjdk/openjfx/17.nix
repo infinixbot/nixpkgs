@@ -123,8 +123,8 @@ let
     outputHashMode = "recursive";
     outputHash = "sha256-dV7/U5GpFxhI13smZ587C6cVE4FRNPY0zexZkYK4Yqo=";
   };
-in
 
+in
 makePackage {
   pname = "openjfx-modular-sdk";
 

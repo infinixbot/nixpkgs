@@ -73,6 +73,7 @@ let
     ++ cfg.flashback.customSessions;
 
   notExcluded = pkg: mkDefault (!(lib.elem pkg config.environment.gnome.excludePackages));
+
 in
 
 {

@@ -128,8 +128,8 @@
                   mkRecord = typeAndData: "${entry.host}. IN ${typeAndData}";
                 in
                 lib.concatMapStringsSep "\n" mkRecord records;
-            in
 
+            in
             lib.concatMapStringsSep "\n" mkRecords allEntries;
 
           # All of the zones that are subdomains of existing zones.
@@ -155,8 +155,8 @@
           filteredZoneInfo = map (
             zi: zi // { zones = lib.filter (x: !lib.elem x subZones) zi.zones; }
           ) zoneInfo;
-        in
 
+        in
         pkgs.writeText "fake-root.zone" ''
           $TTL 3600
           . IN SOA ns.fakedns. admin.fakedns. ( 1 3h 1h 1w 1d )

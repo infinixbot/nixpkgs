@@ -81,8 +81,8 @@ let
       EndSubSection
     EndSection
   '';
-in
 
+in
 writeScriptBin "xdummy" ''
   #!${runtimeShell}
   exec ${xorg.xorgserver.out}/bin/Xorg \

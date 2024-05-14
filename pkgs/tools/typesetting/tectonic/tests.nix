@@ -77,8 +77,8 @@ let
         ${script}
         cp "${emptyFile}" "$out"
       '';
-in
 
+in
 lib.mapAttrs networkRequiringTestPkg {
   biber-compatibility = ''
     # import the test files

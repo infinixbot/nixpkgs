@@ -8,8 +8,8 @@
 let
   cfg = config.hardware.keyboard.uhk;
   inherit (lib) mkEnableOption mkIf;
-in
 
+in
 {
   options.hardware.keyboard.uhk = {
     enable = mkEnableOption ''

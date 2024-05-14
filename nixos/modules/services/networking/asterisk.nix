@@ -58,6 +58,7 @@ let
     // listToAttrs (
       map (x: nameValuePair x { source = cfg.package + "/etc/asterisk/" + x; }) defaultConfFiles
     );
+
 in
 
 {

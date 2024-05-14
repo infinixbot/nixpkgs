@@ -19,8 +19,8 @@ let
     ln -s "${./ActiveMQBroker.java}" ActiveMQBroker.java
     javac -d $out/lib ActiveMQBroker.java
   '';
-in
 
+in
 {
 
   options = {

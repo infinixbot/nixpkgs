@@ -45,8 +45,8 @@ let
       "i386"
     else
       null;
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "musl";
   version = "1.2.3";

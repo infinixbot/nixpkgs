@@ -294,8 +294,8 @@ makeScopeWithSplicing' {
 
             system = null;
           };
-        in
 
+        in
         nixos.config.system.build.macos-builder-installer
       ) { modules = [ ]; };
 

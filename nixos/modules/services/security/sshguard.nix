@@ -27,8 +27,8 @@ let
       BACKEND="${pkgs.sshguard}/libexec/${backend}"
       LOGREADER="LANG=C ${config.systemd.package}/bin/journalctl ${args}"
     '';
-in
 
+in
 {
 
   ###### interface

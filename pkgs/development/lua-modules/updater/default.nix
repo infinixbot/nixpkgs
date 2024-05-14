@@ -26,8 +26,8 @@ let
     lua5_3
     lua5_4
   ];
-in
 
+in
 buildPythonApplication {
   pname = "luarocks-packages-updater";
   version = "0.1";

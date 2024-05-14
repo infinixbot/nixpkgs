@@ -85,8 +85,8 @@ let
       cp -v ./*.h $out/include
     '';
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "appimagekit";
   version = "unstable-2020-12-31";

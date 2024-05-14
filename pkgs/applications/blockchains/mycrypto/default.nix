@@ -25,8 +25,8 @@ let
     icon = "mycrypto";
     categories = [ "Finance" ];
   };
-in
 
+in
 appimageTools.wrapType2 {
   inherit pname version src;
 

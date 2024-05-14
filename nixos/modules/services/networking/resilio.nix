@@ -86,8 +86,8 @@ let
         cp ${configFile} ${runConfigPath};
       ''
   );
-in
 
+in
 {
   options = {
     services.resilio = {

@@ -12,8 +12,8 @@
 
 let
   pname = "colloid-icon-theme";
-in
 
+in
 lib.checkListOfEnum "${pname}: scheme variants"
   [
     "default"

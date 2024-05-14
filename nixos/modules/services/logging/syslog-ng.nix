@@ -28,8 +28,8 @@ let
     "--persist-file=${persistFile}"
     "--pidfile=${pidFile}"
   ];
-in
 
+in
 {
   imports = [
     (mkRemovedOptionModule [

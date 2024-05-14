@@ -19,8 +19,8 @@ let
     libressl = libressl;
     bearssl = bearssl;
   };
-in
 
+in
 assert sslSupportEnabled -> sslLibs ? ${sslSupport};
 
 skawarePackages.buildPackage {

@@ -32,8 +32,8 @@ let
       "4.8.5" = "08yggr18v373a1ihj0rg2vd6psnic42b518xcgp3r9k81xz1xyr2";
     }
     ."${version}";
-in
 
+in
 {
   inherit fromMajorMinor;
   inherit srcHashForVersion;

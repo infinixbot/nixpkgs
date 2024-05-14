@@ -19,8 +19,8 @@ let
       + lib.optionalString (tssGroup != null) '', GROUP="${tssGroup}"''
     }
   '';
-in
 
+in
 {
   options.security.tpm2 = {
     enable = lib.mkEnableOption "Trusted Platform Module 2 support";

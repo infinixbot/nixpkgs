@@ -69,8 +69,8 @@ let
       ln -s lib $out/lib64
     '';
   };
-in
 
+in
 stdenv.mkDerivation {
   inherit
     meta

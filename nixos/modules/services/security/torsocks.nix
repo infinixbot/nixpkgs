@@ -34,8 +34,8 @@ let
       executable = true;
       destination = "/bin/${name}";
     };
-in
 
+in
 {
   options = {
     services.tor.torsocks = {

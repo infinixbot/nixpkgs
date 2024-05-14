@@ -13,6 +13,7 @@ let
   keyType = "ed25519";
 
   cfg = config.virtualisation.darwin-builder;
+
 in
 
 {
@@ -196,8 +197,8 @@ in
             KEYS="$(${hostPkgs.nix}/bin/nix-store --add "$KEYS")" ${lib.getExe config.system.build.vm}
           ''
         );
-      in
 
+      in
       script.overrideAttrs (old: {
         pos = __curPos; # sets meta.position to point here; see script binding above for package definition
         meta = (old.meta or { }) // {

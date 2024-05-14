@@ -454,8 +454,8 @@ let
                 }
               ''}
             '';
-      in
 
+      in
       ''
         ${optionalString vhost.forceSSL ''
           server {
@@ -1356,8 +1356,8 @@ in
             config.services.nginx.virtualHosts.<name>.enableSSL is deprecated,
             use config.services.nginx.virtualHosts.<name>.onlySSL instead.
           '';
-      in
 
+      in
       flatten (mapAttrsToList deprecatedSSL virtualHosts);
 
     assertions =

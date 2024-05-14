@@ -33,8 +33,8 @@ let
     nettools
     telnet
   ];
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "mininet";
   version = "2.3.1b4";

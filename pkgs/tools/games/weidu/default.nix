@@ -14,8 +14,8 @@ let
   # 2. ocaml 4.10 defaults to safe (immutable) strings so we need a version with
   #    that disabled as weidu is strongly dependent on mutable strings
   ocaml' = ocaml-ng.ocamlPackages_4_14_unsafe_string.ocaml;
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "weidu";
   version = "249.00";

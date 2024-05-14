@@ -171,8 +171,8 @@ let
 
       propagatedBuildInputs = [ click ];
     };
-in
 
+in
 {
   options = {
     services.taskserver = {

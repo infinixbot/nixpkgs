@@ -160,8 +160,8 @@ let
       hash = "sha256-ixWMaIChy4Ammsn23/3cCoala0lFibuUxyUr3tjfFKU=";
     };
   };
-in
 
+in
 buildPythonPackage {
   pname = "jaxlib";
   inherit version;

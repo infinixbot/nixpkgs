@@ -98,6 +98,7 @@ lib.makeOverridable (
     suffix = if type == "git" then builtins.substring 0 12 attrs.source.rev else version;
 
     documentFlag = if document == [ ] then "-N" else "--document ${lib.concatStringsSep "," document}";
+
   in
 
   stdenv.mkDerivation (

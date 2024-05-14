@@ -41,8 +41,8 @@ let
     url = "https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-${zipcode_rel}.zip";
     sha256 = "ExS0Cg3rs0I9IOVbZHLt8UEfk8/LmY9oAHPVVlYuTPw=";
   };
-in
 
+in
 clangStdenv.mkDerivation {
   pname = "fcitx5-mozc";
   version = "2.26.4220.102";

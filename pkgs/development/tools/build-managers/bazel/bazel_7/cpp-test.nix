@@ -90,6 +90,6 @@ let
 
       '';
   };
-in
 
+in
 testBazel

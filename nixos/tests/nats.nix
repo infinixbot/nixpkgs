@@ -4,8 +4,8 @@ let
   username = "client";
   password = "password";
   topic = "foo.bar";
-in
 
+in
 import ./make-test-python.nix (
   { pkgs, lib, ... }:
   {

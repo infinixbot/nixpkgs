@@ -262,8 +262,8 @@ let
 
       popd
     '';
-in
 
+in
 runCommandLocal "${name}-fhs"
   {
     passthru = {

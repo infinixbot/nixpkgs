@@ -51,8 +51,8 @@ let
     name = "${pname}-${version}";
     src = "${src}/pcloud";
   };
-in
 
+in
 stdenv.mkDerivation {
   inherit pname version;
 

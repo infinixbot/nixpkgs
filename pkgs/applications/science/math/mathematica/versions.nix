@@ -177,6 +177,7 @@ let
       installer = "Mathematica_10.0.2_LINUX.sh";
     }
   ];
+
 in
 
 lib.flip map versions (

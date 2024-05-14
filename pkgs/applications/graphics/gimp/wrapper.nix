@@ -15,8 +15,8 @@ let
   selectedPlugins = lib.filter (pkg: pkg != gimp) (if plugins == null then allPlugins else plugins);
   extraArgs = map (x: x.wrapArgs or "") selectedPlugins;
   versionBranch = lib.versions.majorMinor gimp.version;
-in
 
+in
 symlinkJoin {
   name = "gimp-with-plugins-${gimp.version}";
 

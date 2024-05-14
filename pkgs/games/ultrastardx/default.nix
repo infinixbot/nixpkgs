@@ -44,8 +44,8 @@ let
     libGL
     ffmpeg_4
   ];
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "ultrastardx";
   version = "2024.3.0";

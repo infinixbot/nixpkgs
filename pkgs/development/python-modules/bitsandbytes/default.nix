@@ -43,8 +43,8 @@ let
     name = "cuda-redist-${cudaVersion}";
     paths = cuda-common-redist;
   };
-in
 
+in
 buildPythonPackage {
   inherit pname version;
   pyproject = true;

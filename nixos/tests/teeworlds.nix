@@ -9,8 +9,8 @@ import ./make-test-python.nix (
         imports = [ ./common/x11.nix ];
         environment.systemPackages = [ pkgs.teeworlds ];
       };
-  in
 
+  in
   {
     name = "teeworlds";
     meta = with pkgs.lib.maintainers; {

@@ -89,8 +89,8 @@ let
         inherit moltenvk;
       }
     );
-in
 
+in
 if wineRelease == "staging" then
   callPackage ./staging.nix { wineUnstable = wine-build wineBuild "unstable"; }
 else

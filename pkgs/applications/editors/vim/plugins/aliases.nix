@@ -32,8 +32,8 @@ let
   deprecations = lib.mapAttrs (
     old: info: throw "${old} was renamed to ${info.new} on ${info.date}. Please update to ${info.new}."
   ) (lib.importJSON ./deprecated.json);
-in
 
+in
 mapAliases (
   with prev;
   {

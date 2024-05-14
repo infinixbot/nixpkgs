@@ -9,8 +9,8 @@ with lib;
 
 let
   cfg = config.services.jackett;
-in
 
+in
 {
   options = {
     services.jackett = {

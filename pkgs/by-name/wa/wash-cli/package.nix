@@ -18,8 +18,8 @@ let
     url = "https://github.com/bytecodealliance/wasmtime/releases/download/v13.0.0/wasi_snapshot_preview1.reactor.wasm";
     hash = "sha256-bNmx/IqYPkA7YHvlYvHPmIMF/fkKtSXlZx1bjR3Neow=";
   };
-in
 
+in
 rustPlatform.buildRustPackage rec {
   pname = "wash-cli";
   version = "0.24.0";

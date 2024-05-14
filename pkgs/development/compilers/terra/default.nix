@@ -44,8 +44,8 @@ let
   cuda = cudaPackages.cudatoolkit_11;
 
   clangVersion = llvmPackages.clang-unwrapped.version;
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "terra";
   version = "1.1.0";

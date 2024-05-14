@@ -138,8 +138,8 @@ let
       storage &local_mailboxes
     }
   '';
-in
 
+in
 {
   options = {
     services.maddy = {

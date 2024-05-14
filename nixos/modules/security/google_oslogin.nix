@@ -11,6 +11,7 @@ let
 
   cfg = config.security.googleOsLogin;
   package = pkgs.google-guest-oslogin;
+
 in
 
 {

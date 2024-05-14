@@ -11,8 +11,8 @@ let
   inherit (lib) mkOption types;
 
   workingDir = "/var/lib/${cfg.stateDir}";
-in
 
+in
 {
   port = 9896;
   extraOpts = {

@@ -26,8 +26,8 @@ let
   cfg = config.services.hercules-ci-agent;
 
   inherit (import ./settings.nix { inherit pkgs lib; }) format settingsModule;
-in
 
+in
 {
   imports = [
     (mkRenamedOptionModule

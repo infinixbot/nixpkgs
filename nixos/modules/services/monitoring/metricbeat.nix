@@ -18,8 +18,8 @@ let
   cfg = config.services.metricbeat;
 
   settingsFormat = pkgs.formats.yaml { };
-in
 
+in
 {
   options = {
 

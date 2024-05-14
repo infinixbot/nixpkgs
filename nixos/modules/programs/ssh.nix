@@ -35,8 +35,8 @@ let
   knownHostsFiles = [
     "/etc/ssh/ssh_known_hosts"
   ] ++ builtins.map pkgs.copyPathToStore cfg.knownHostsFiles;
-in
 
+in
 {
   ###### interface
 

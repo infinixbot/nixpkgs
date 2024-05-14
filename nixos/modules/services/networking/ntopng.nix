@@ -34,6 +34,7 @@ let
         --user=ntopng
         ${cfg.extraConfig}
       '';
+
 in
 
 {

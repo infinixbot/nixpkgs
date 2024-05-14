@@ -171,8 +171,8 @@ lib.makeOverridable (
             rustc
             rust-bindgen
           ];
-      in
 
+      in
       (optionalAttrs isModular {
         outputs = [
           "out"

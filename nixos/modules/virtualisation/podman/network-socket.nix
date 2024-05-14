@@ -8,8 +8,8 @@ let
   inherit (lib) mkOption types;
 
   cfg = config.virtualisation.podman.networkSocket;
-in
 
+in
 {
   imports = [ ./network-socket-ghostunnel.nix ];
 

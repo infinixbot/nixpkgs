@@ -41,8 +41,8 @@
 
 let
   inherit (lib) optionals optionalString;
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "strawberry";
   version = "1.0.23";

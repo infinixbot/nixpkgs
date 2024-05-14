@@ -42,8 +42,8 @@ let
   '';
 
   daemonConfFile = pkgs.writeText "usbguard-daemon-conf" daemonConf;
-in
 
+in
 {
 
   ###### interface

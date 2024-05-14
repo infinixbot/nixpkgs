@@ -10,8 +10,8 @@ let
 
   settingsFormat = pkgs.formats.toml { };
   configFile = settingsFormat.generate "sonic-server-config.toml" cfg.settings;
-in
 
+in
 {
   meta.maintainers = [ lib.maintainers.anthonyroussel ];
 

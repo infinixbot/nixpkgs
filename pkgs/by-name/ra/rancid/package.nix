@@ -52,8 +52,8 @@ let
   };
 
   telnet' = inetutils;
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "rancid";
   version = "3.13";

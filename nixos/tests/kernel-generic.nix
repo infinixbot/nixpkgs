@@ -50,8 +50,8 @@ let
       linux_testing
       ;
   };
-in
 
+in
 mapAttrs (_: lP: testsForLinuxPackages lP) kernels
 // {
   passthru = {

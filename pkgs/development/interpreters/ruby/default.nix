@@ -403,8 +403,8 @@ let
       ) args;
     in
     rubyDrv;
-in
 
+in
 {
   mkRubyVersion = rubyVersion;
   mkRuby = generic;

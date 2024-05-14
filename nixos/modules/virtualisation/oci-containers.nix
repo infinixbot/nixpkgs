@@ -369,8 +369,8 @@ let
           NotifyAccess = "all";
         };
     };
-in
 
+in
 {
   imports = [
     (lib.mkChangedOptionModule [ "docker-containers" ]

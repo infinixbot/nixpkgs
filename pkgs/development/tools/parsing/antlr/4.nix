@@ -123,8 +123,8 @@ let
         };
       };
     };
-in
 
+in
 {
   antlr4_13 =
     (mkAntlr {

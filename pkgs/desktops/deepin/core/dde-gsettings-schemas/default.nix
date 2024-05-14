@@ -27,8 +27,8 @@ let
     deepin-system-monitor
     gsettings-desktop-schemas # dde-appearance need org.gnome.desktop.background
   ] ++ extraGSettingsOverridePackages;
-in
 
+in
 with lib;
 
 # TODO: Having https://github.com/NixOS/nixpkgs/issues/54150 would supersede this

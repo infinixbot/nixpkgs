@@ -81,8 +81,8 @@ let
       Require all granted
     </Directory>
   '';
-in
 
+in
 {
   imports = [
     (mkRemovedOptionModule [

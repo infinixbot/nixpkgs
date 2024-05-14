@@ -122,8 +122,8 @@ let
 
   cudaBuildInputs = [ llamaccpPackage ];
   rocmBuildInputs = [ llamaccpPackage ];
-in
 
+in
 rustPlatform.buildRustPackage {
   inherit pname version;
   inherit featureDevice;

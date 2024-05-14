@@ -89,8 +89,8 @@ let
 
     doDist = false;
   };
-in
 
+in
 rustPlatform.buildRustPackage {
   pname = "typst-preview";
   inherit version src;

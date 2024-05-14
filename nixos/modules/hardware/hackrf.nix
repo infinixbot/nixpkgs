@@ -7,8 +7,8 @@
 
 let
   cfg = config.hardware.hackrf;
-in
 
+in
 {
   options.hardware.hackrf = {
     enable = lib.mkOption {

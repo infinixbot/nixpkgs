@@ -21,8 +21,8 @@ let
     gst-plugins-good
     gst-plugins-bad
   ];
-in
 
+in
 mkDerivation {
   pname = "kamoso";
   nativeBuildInputs = [

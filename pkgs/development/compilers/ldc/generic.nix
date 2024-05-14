@@ -27,6 +27,7 @@ let
     echo ${tzdata}/share/zoneinfo/ > $out/TZDatabaseDirFile
     echo ${curl.out}/lib/libcurl${stdenv.hostPlatform.extensions.sharedLibrary} > $out/LibcurlPathFile
   '';
+
 in
 
 stdenv.mkDerivation rec {

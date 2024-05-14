@@ -101,8 +101,8 @@ import ../make-test-python.nix {
                   { DynamicUser = true; }
                 else
                   { };
-            in
 
+            in
             [
               {
                 description = "${user}, chroot-only confinement ${withTmp}";
@@ -204,8 +204,8 @@ import ../make-test-python.nix {
               ];
             }
           );
-    in
 
+    in
     {
       imports = lib.imap1 mkTestStep (
         parametrisedTests

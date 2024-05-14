@@ -37,8 +37,8 @@ nixt.mkSuite "LibreOffice Updater" {
       '';
 
       actual = extractLatestVersionFromHtml latestVersionHtmlMock;
-    in
 
+    in
     "7.3.3" == actual;
 
   "should extract latest stable version from website" =

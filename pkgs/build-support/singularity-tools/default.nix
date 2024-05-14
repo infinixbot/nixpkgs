@@ -118,7 +118,7 @@ rec {
             TMPDIR=$(pwd -P) ${projectName} build $out ./img
           ''
       );
-    in
 
+    in
     result;
 }

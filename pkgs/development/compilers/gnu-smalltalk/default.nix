@@ -31,8 +31,8 @@ let
   libsigsegv-shared = lib.overrideDerivation libsigsegv (oldAttrs: {
     configureFlags = [ "--enable-shared" ];
   });
-in
 
+in
 stdenv.mkDerivation rec {
 
   version = "3.2.5";

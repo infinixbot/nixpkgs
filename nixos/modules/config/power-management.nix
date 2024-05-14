@@ -5,6 +5,7 @@ with lib;
 let
 
   cfg = config.powerManagement;
+
 in
 
 {

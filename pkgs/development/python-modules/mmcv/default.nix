@@ -50,8 +50,8 @@ let
     name = "cuda-redist-${cudaVersion}";
     paths = cuda-common-redist;
   };
-in
 
+in
 buildPythonPackage rec {
   pname = "mmcv";
   version = "2.1.0";

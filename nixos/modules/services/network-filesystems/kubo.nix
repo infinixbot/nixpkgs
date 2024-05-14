@@ -99,8 +99,8 @@ let
       "[${s 1}]:${s 3}"
     else
       null; # not valid for listen datagram, skip
-in
 
+in
 {
 
   ###### interface

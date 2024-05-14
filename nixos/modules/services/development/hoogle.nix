@@ -15,8 +15,8 @@ let
     name = "hoogle";
     paths = [ (cfg.haskellPackages.ghcWithHoogle cfg.packages) ];
   };
-in
 
+in
 {
 
   options.services.hoogle = {

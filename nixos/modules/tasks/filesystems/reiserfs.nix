@@ -10,6 +10,7 @@ with lib;
 let
 
   inInitrd = config.boot.initrd.supportedFilesystems.reiserfs or false;
+
 in
 
 {

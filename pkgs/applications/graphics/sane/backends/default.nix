@@ -134,8 +134,8 @@ stdenv.mkDerivation {
         mkdir -p $out/share/sane/${f.backend}
         ln -sv ${f.src} $out/share/sane/${f.backend}/${f.name}
       '';
-    in
 
+    in
     ''
       mkdir -p $out/etc/udev/rules.d/ $out/etc/udev/hwdb.d
       ./tools/sane-desc -m udev+hwdb -s doc/descriptions:doc/descriptions-external > $out/etc/udev/rules.d/49-libsane.rules

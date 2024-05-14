@@ -100,6 +100,6 @@ let
       [ ];
 
   canEval = val: (builtins.tryEval val).success;
-in
 
+in
 uniqueFiles

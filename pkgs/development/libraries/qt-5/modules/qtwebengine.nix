@@ -123,6 +123,7 @@ let
       "linux-generic-g++"
     else
       throw "Please add a qtPlatformCross entry for ${plat.config}";
+
 in
 
 qtModule (

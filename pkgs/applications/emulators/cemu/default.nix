@@ -46,8 +46,8 @@ let
       sha256 = "sha256-gf47uLeNiXQic43buB5ZnMqiotlUfIyAsP+3H7yJuFg=";
     };
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "cemu";
   version = "2.0-82";

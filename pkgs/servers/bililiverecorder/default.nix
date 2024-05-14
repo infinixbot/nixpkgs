@@ -18,8 +18,8 @@ let
 
   version = "2.11.1";
   hash = "sha256-GY6YRgebWeJtjAIm64Pf8wx6pUdZjbevNzKRdyPi1ow=";
-in
 
+in
 stdenv.mkDerivation {
   inherit pname version;
 

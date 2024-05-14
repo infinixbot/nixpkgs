@@ -23,8 +23,8 @@ let
   udevRule = writeText "k40-whisperer.rules" ''
     SUBSYSTEM=="usb", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="5512", ENV{DEVTYPE}=="usb_device", MODE="0664", GROUP="${udevGroup}"
   '';
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "k40-whisperer";
   version = "0.68";

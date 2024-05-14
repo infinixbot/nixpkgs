@@ -19,6 +19,7 @@ let
     # Default is in /etc/salt/pki/master
     pki_dir = "/var/lib/salt/pki/master";
   } cfg.configuration;
+
 in
 
 {

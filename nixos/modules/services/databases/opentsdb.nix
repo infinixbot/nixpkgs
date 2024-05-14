@@ -11,8 +11,8 @@ let
   cfg = config.services.opentsdb;
 
   configFile = pkgs.writeText "opentsdb.conf" cfg.config;
-in
 
+in
 {
 
   ###### interface

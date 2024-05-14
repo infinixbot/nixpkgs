@@ -66,6 +66,7 @@ let
     gtk_module_path = "gtk-4.0";
     gtk_binary_version = "4.0.0";
   };
+
 in
 
 stdenv.mkDerivation (finalAttrs: {

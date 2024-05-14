@@ -58,8 +58,8 @@ let
       hash = "sha256-0fuE0lm9rlAaok2Qe0V1uUrgP4AjMWgp3eTbw8G6PMM=";
     };
   });
-in
 
+in
 stdenv.mkDerivation rec {
   version = "1.23.6";
   pname = "mupdf";

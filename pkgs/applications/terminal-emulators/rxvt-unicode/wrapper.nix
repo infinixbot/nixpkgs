@@ -66,6 +66,6 @@ let
         tests.test = nixosTests.terminal-emulators.urxvt;
       };
     };
-in
 
+in
 lib.makeOverridable wrapper { inherit configure; }

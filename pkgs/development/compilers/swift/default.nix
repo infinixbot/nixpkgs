@@ -123,6 +123,6 @@ let
     swift-format = callPackage ./swift-format { };
 
   };
-in
 
+in
 self

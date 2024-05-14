@@ -6,8 +6,8 @@
 let
 
   shticker-book-unwritten-unwrapped = callPackage ./unwrapped.nix { };
-in
 
+in
 buildFHSEnv {
   name = "shticker_book_unwritten";
   targetPkgs =

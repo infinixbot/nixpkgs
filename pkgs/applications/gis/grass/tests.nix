@@ -2,8 +2,8 @@
 
 let
   inherit (grass) pname version;
-in
 
+in
 runCommand "${pname}-tests" { meta.timeout = 60; } ''
   HOME=$(mktemp -d)
 

@@ -35,8 +35,8 @@ let
     { NIXOS_FAKE_USB_DEBUG = option yes; }
     { NIXOS_FAKE_USB_DEBUG = option yes; }
   ];
-in
 
+in
 runTests {
   testEasy = {
     expr = (getConfig { NIXOS_FAKE_USB_DEBUG = yes; }).NIXOS_FAKE_USB_DEBUG;

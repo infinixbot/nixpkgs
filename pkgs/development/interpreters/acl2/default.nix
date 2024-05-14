@@ -30,8 +30,8 @@ let
     makeWrapper ${sbcl'}/bin/sbcl $out/bin/sbcl \
       --add-flags "--dynamic-space-size 2000"
   '';
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "acl2";
   version = "8.5";

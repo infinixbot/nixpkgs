@@ -36,6 +36,7 @@ let
   configFile = pkgs.writeText "zabbix_agent.conf" (
     toKeyValue { listsAsDuplicateKeys = true; } cfg.settings
   );
+
 in
 
 {

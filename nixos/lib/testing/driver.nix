@@ -110,8 +110,8 @@ let
             )
           }
       '';
-in
 
+in
 {
   options = {
 

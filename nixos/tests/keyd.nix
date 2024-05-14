@@ -72,8 +72,8 @@ let
         run_test_case("openvt -sw --", "${name}", test["press"], test["expect"])
       '';
     };
-in
 
+in
 pkgs.lib.mapAttrs mkKeyboardTest {
   swap-ab_and_ctrl-as-shift = {
     test.press = [

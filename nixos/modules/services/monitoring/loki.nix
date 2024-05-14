@@ -21,8 +21,8 @@ let
     pkgs.runCommand "loki-config.json" { } ''
       echo '${builtins.toJSON conf}' | ${pkgs.jq}/bin/jq 'del(._module)' > $out
     '';
-in
 
+in
 {
   options.services.loki = {
     enable = mkEnableOption "loki";

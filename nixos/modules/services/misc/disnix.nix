@@ -11,6 +11,7 @@ with lib;
 let
 
   cfg = config.services.disnix;
+
 in
 
 {

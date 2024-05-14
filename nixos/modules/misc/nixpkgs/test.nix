@@ -87,8 +87,8 @@ let
   };
 
   throws = x: !(builtins.tryEval x).success;
-in
 
+in
 lib.recurseIntoAttrs {
   invokeNixpkgsSimple =
     (eval { nixpkgs.system = stdenv.hostPlatform.system; })._module.args.pkgs.hello;

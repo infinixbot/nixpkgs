@@ -34,8 +34,8 @@ let
     libudev0-shim
   ];
   runtimeBins = lib.makeBinPath [ streamlink ];
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "${basename}-bin";
   version = "2.4.1";

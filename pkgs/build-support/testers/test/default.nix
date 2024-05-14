@@ -14,8 +14,8 @@ let
     versionSuffix = "test";
     label = "test";
   };
-in
 
+in
 lib.recurseIntoAttrs {
   hasPkgConfigModules = pkgs.callPackage ../hasPkgConfigModules/tests.nix { };
 

@@ -13,8 +13,8 @@ let
   dbConfig = pkgs.writeText "DB_CONFIG" ''
     ${cfg.extraDbConfig}
   '';
-in
 
+in
 {
   meta.maintainers = with maintainers; [
     primeos

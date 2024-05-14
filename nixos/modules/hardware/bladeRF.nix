@@ -9,6 +9,7 @@ with lib;
 
 let
   cfg = config.hardware.bladeRF;
+
 in
 
 {

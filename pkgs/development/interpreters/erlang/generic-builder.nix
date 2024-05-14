@@ -109,8 +109,8 @@ let
     optionalString
     ;
   wxPackages2 = if stdenv.isDarwin then [ wxGTK ] else wxPackages;
-in
 
+in
 stdenv.mkDerivation (
   {
     # name is used instead of pname to

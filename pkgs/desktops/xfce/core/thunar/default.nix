@@ -64,8 +64,8 @@ let
       maintainers = with maintainers; [ ] ++ teams.xfce.members;
     };
   };
-in
 
+in
 if thunarPlugins == [ ] then
   unwrapped
 else

@@ -77,8 +77,8 @@ let
       stable = "";
     }
     .${edition};
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "yandex-browser-${edition}";
   inherit version;

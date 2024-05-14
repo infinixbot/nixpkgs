@@ -37,8 +37,8 @@ let
   configFile = pkgs.writeText "manticore.conf" (
     toSphinx { mkKeyValue = k: v: "  ${k} = ${v}"; } cfg.settings
   );
-in
 
+in
 {
 
   options = {

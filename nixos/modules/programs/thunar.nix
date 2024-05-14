@@ -7,8 +7,8 @@
 
 let
   cfg = config.programs.thunar;
-in
 
+in
 {
   meta = {
     maintainers = lib.teams.xfce.members;
@@ -31,8 +31,8 @@ in
   config = lib.mkIf cfg.enable (
     let
       package = pkgs.xfce.thunar.override { thunarPlugins = cfg.plugins; };
-    in
 
+    in
     {
       environment.systemPackages = [ package ];
 

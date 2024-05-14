@@ -10,8 +10,8 @@ let
   openjfx20 = callPackage ../development/compilers/openjdk/openjfx/20.nix { };
   openjfx21 = callPackage ../development/compilers/openjdk/openjfx/21.nix { };
   openjfx22 = callPackage ../development/compilers/openjdk/openjfx/22.nix { };
-in
 
+in
 {
   inherit
     openjfx11
@@ -82,8 +82,8 @@ in
         in
         assert stdenv.isLinux;
         openjdk // { headless = openjdk.override { headless = true; }; };
-    in
 
+    in
     rec {
       adoptopenjdk-8 = mkAdoptopenjdk ../development/compilers/adoptopenjdk-bin/jdk8-linux.nix ../development/compilers/adoptopenjdk-bin/jdk8-darwin.nix;
 

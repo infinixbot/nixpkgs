@@ -51,6 +51,6 @@ let
       platforms = platforms.unix;
     };
   });
-in
 
+in
 auctex // { pkgs = [ auctex.tex ]; }

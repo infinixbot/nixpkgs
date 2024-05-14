@@ -36,8 +36,8 @@ let
     "test_update.py"
     "tests_libcrun_utils"
   ];
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "crun";
   version = "1.15";

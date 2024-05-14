@@ -32,8 +32,8 @@ let
     name = "rocm";
     paths = rocmList;
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "ucx";
   version = "1.16.0";

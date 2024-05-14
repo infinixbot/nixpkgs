@@ -178,8 +178,8 @@ let
     ln -s ${ufoaiPack} $out/UFOAIPack
     ln -s ${warsowPack} $out/WarsowPack
   '';
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "gtkradiant";
 

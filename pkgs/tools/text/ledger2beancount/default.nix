@@ -19,8 +19,8 @@ let
     StringInterpolate
     YAMLLibYAML
   ];
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "ledger2beancount";
   version = "2.7";

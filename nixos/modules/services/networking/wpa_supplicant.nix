@@ -205,8 +205,8 @@ let
     };
 
   systemctl = "/run/current-system/systemd/bin/systemctl";
-in
 
+in
 {
   options = {
     networking.wireless = {

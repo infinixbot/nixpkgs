@@ -30,8 +30,8 @@ let
       "x86_64-linux-gnu"
     else
       throw "amdgpu-pro is Linux only. Sorry ${stdenv.hostPlatform.system}.";
-in
 
+in
 stdenv.mkDerivation rec {
 
   version = "21.30";

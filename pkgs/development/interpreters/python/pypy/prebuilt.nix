@@ -60,8 +60,8 @@ let
     aarch64-darwin = "https://downloads.python.org/pypy/pypy${pythonVersion}-v${version}-macos_arm64.tar.bz2";
     x86_64-darwin = "https://downloads.python.org/pypy/pypy${pythonVersion}-v${version}-macos_x86_64.tar.bz2";
   };
-in
 
+in
 with passthru;
 stdenv.mkDerivation {
   inherit pname version;

@@ -48,8 +48,8 @@ import ./make-test-python.nix (
               server = Server(("localhost", 1234), Handler)
               server.serve_forever()
         '';
-  in
 
+  in
   {
     name = "switch-test";
     meta = with pkgs.lib.maintainers; {

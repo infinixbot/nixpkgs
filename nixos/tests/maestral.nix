@@ -17,8 +17,8 @@ import ./make-test-python.nix (
               serviceConfig.Type = "exec";
             };
           } attrs;
-      in
 
+      in
       {
         cli =
           { ... }:

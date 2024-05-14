@@ -36,8 +36,8 @@ let
   '';
 
   confFile = builtins.toFile "siproxd.conf" conf;
-in
 
+in
 {
   ##### interface
 

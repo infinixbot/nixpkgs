@@ -17,8 +17,8 @@ let
       );
     in
     pkgs.writeText "shutdown-ramfs-contents" (lib.concatStringsSep "\n" (storePaths ++ contents));
-in
 
+in
 {
   options.systemd.shutdownRamfs = {
     enable = lib.mkEnableOption "pivoting back to an initramfs for shutdown" // {

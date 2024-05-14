@@ -9,8 +9,8 @@ with lib;
 
 let
   cfg = config.services.xserver.displayManager.sx;
-in
 
+in
 {
   options = {
     services.xserver.displayManager.sx = {

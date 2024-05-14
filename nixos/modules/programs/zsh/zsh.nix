@@ -38,6 +38,7 @@ let
     #
     # See "STARTUP/SHUTDOWN FILES" section of zsh(1) for more info.
   '';
+
 in
 
 {

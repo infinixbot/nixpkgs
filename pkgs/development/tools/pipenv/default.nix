@@ -23,8 +23,8 @@ let
     ++ lib.optionals stdenv.hostPlatform.isAndroid [ pyjnius ];
 
   pythonEnv = python3.withPackages runtimeDeps;
-in
 
+in
 buildPythonApplication rec {
   pname = "pipenv";
   version = "2023.2.4";

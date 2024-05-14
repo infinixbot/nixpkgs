@@ -15,8 +15,8 @@ let
     url = "https://github.com/root-gg/plik/releases/download/${version}/plik-${version}-linux-amd64.tar.gz";
     hash = "sha256-Uj3I/ohgMr/Ud5xAZiBjsIW8bSdUeXXv9NYKLu8Aym8=";
   };
-in
 
+in
 {
 
   inherit (programs) plik plikd-unwrapped;

@@ -45,8 +45,8 @@ let
     outputHashMode = "recursive";
     outputHash = "sha256-Ga+tl4oZlum43tdfez1oWGMHZAfyePGl47S+9NRRvW8=";
   };
-in
 
+in
 stdenv.mkDerivation {
   pname = "hedgedoc";
   inherit version src;

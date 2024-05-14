@@ -36,6 +36,7 @@ let
     conf-file=${settingsFormat.generate "dnsmasq.conf" cfg.settings}
     ${cfg.extraConfig}
   '';
+
 in
 
 {

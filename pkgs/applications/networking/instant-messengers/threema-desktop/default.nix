@@ -66,8 +66,8 @@ let
       cp -r . "$out"
     '';
   };
-in
 
+in
 buildNpmPackage rec {
   pname = "threema-desktop";
   inherit version;

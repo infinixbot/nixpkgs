@@ -89,8 +89,8 @@ let
 
   nimHost = parsePlatform stdenv.hostPlatform;
   nimTarget = parsePlatform stdenv.targetPlatform;
-in
 
+in
 {
 
   nim-unwrapped-2 = stdenv.mkDerivation (finalAttrs: {

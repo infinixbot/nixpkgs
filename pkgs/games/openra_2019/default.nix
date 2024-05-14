@@ -66,8 +66,8 @@ let
         )
       )
     );
-in
 
+in
 pkgs.recurseIntoAttrs rec {
   # The whole attribute set is destructered to ensure those (and only those) attributes are given
   # and to provide defaults for those that are optional.

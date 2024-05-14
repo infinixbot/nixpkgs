@@ -10,8 +10,8 @@ with lib;
 let
   cfg = config.services.rmfakecloud;
   serviceDataDir = "/var/lib/rmfakecloud";
-in
 
+in
 {
   options = {
     services.rmfakecloud = {

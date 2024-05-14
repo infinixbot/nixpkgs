@@ -16,6 +16,6 @@ let
         { isoImage.isoBaseName = isoBaseName; }
       ] ++ extraModules;
     }).config;
-in
 
+in
 config.system.build.isoImage

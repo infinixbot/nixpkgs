@@ -103,8 +103,8 @@ let
     compressor: imageName:
     compressors.${compressor}
       or (throw "in docker image ${imageName}: compressor must be one of: [${toString builtins.attrNames compressors}]");
-in
 
+in
 rec {
   examples = callPackage ./examples.nix {
     inherit
@@ -866,8 +866,8 @@ rec {
 
             echo "Finished."
           '';
-    in
 
+    in
     checked result
   );
 
@@ -1371,8 +1371,8 @@ rec {
           # https://github.com/NixOS/nix/blob/2.8.0/src/libstore/build/local-derivation-goal.cc#L1076-L1077
           TERM = "xterm-256color";
         };
-    in
 
+    in
     streamLayeredImage {
       inherit name tag;
       contents = [

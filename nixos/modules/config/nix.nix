@@ -116,8 +116,8 @@ let
       mkKeyValuePairs = attrs: concatStringsSep "\n" (mapAttrsToList mkKeyValue attrs);
 
       isExtra = key: hasPrefix "extra-" key;
-    in
 
+    in
     pkgs.writeTextFile {
       name = "nix.conf";
       # workaround for https://github.com/NixOS/nix/issues/9487
@@ -153,8 +153,8 @@ let
           ''
       );
     };
-in
 
+in
 {
   imports =
     [

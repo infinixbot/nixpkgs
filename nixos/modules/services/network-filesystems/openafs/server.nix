@@ -92,8 +92,8 @@ let
       // cfg.roles.backup.fabsExtraConfig
     )
   );
-in
 
+in
 {
 
   options = {

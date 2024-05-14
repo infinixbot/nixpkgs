@@ -66,8 +66,8 @@ import ./make-test-python.nix (
                       --load-ca-certificate "$cacert" \
                       --outfile "$out/alice.cert"
         '';
-  in
 
+  in
   {
     name = "taskserver";
 

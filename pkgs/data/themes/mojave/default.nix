@@ -39,6 +39,7 @@ let
     hash = "sha256-nkw8gXYx8fN1yn0A5M2fWwOvfUQ6izynxRw5JA61InM=";
     name = "wallpapers";
   };
+
 in
 
 lib.checkListOfEnum "${pname}: button size variants"

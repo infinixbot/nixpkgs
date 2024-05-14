@@ -27,6 +27,7 @@ let
     // cfg.extraConfig;
 
   configFile = pkgs.writeText "shadowsocks.json" (builtins.toJSON opts);
+
 in
 
 {

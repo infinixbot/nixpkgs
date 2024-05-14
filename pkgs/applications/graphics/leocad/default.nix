@@ -20,8 +20,8 @@ let
     url = "https://web.archive.org/web/20210705153544/https://www.ldraw.org/library/updates/complete.zip";
     sha256 = "sha256-PW3XCbFwRaNkx4EgCnl2rXH7QgmpNgjTi17kZ5bladA=";
   };
-in
 
+in
 mkDerivation rec {
   pname = "leocad";
   version = "21.06";

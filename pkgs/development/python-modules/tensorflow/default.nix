@@ -592,8 +592,8 @@ let
         maxSilent = 14400; # 4h, double the default of 7200s
       };
   };
-in
 
+in
 buildPythonPackage {
   inherit version pname;
   disabled = pythonAtLeast "3.12";

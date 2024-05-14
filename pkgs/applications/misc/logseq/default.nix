@@ -20,8 +20,8 @@ stdenv.mkDerivation (
       src
       appimageContents
       ;
-  in
 
+  in
   {
     pname = "logseq";
     version = "0.10.9";

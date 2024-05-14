@@ -82,8 +82,8 @@ let
   dataDhall = "${data}/dhall";
 
   sourceFile = "source.dhall";
-in
 
+in
 runCommand name { } (
   ''
     set -eu

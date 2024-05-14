@@ -166,8 +166,8 @@ let
       '';
     };
   };
-in
 
+in
 {
 
   freeformType =

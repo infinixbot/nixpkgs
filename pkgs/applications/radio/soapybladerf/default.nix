@@ -13,8 +13,8 @@
 
 let
   version = "0.4.1";
-in
 
+in
 stdenv.mkDerivation {
   pname = "soapybladerf";
   inherit version;

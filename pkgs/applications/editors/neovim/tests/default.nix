@@ -96,8 +96,8 @@ let
         ''
         + buildCommand
       );
-in
 
+in
 pkgs.recurseIntoAttrs (rec {
   vim_empty_config = vimUtils.vimrcFile {
     beforePlugins = "";

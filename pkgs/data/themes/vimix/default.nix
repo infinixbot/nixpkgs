@@ -16,8 +16,8 @@
 
 let
   pname = "vimix-gtk-themes";
-in
 
+in
 lib.checkListOfEnum "${pname}: theme variants"
   [
     "doder"

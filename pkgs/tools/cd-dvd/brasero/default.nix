@@ -25,8 +25,8 @@ let
     dvdauthor
     vcdimager
   ];
-in
 
+in
 stdenv.mkDerivation rec {
   version = "${major}.${minor}";
   pname = "brasero";

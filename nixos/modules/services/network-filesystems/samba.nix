@@ -69,6 +69,7 @@ let
 
     restartTriggers = [ configFile ];
   };
+
 in
 
 {

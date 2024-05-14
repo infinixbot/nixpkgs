@@ -31,6 +31,7 @@ let
       addEnvHooks "$targetOffset" addEmacsVars
     fi
   '';
+
 in
 
 {

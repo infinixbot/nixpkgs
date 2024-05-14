@@ -136,6 +136,7 @@ let
   nixCrossStatic = {
     nixStatic = linux; # no need for buildPlatform=*-darwin
   };
+
 in
 
 {
@@ -168,8 +169,8 @@ in
       testEqual = path: systems: forMatchingSystems systems (testEqualOne path);
 
       mapTestEqual = mapAttrsRecursive testEqual;
-    in
 
+    in
     mapTestEqual {
       boehmgc = nativePlatforms;
       libffi = nativePlatforms;

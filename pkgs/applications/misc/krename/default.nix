@@ -18,8 +18,8 @@
 let
   pname = "krename";
   version = "5.0.2";
-in
 
+in
 mkDerivation rec {
   name = "${pname}-${version}";
 

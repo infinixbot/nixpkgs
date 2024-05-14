@@ -13,8 +13,8 @@ let
   # https-dns-proxy supports HTTP3 if curl has support, but as of 2022-08 curl doesn't work with that enabled
   # curl' = (curl.override { http3Support = true; });
   curl' = curl;
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "https-dns-proxy";
   # there are no stable releases (yet?)

@@ -44,8 +44,8 @@ let
       ...
     }:
     crossFlags ++ mesonFlags;
-in
 
+in
 {
   inherit makeMesonFlags;
 }

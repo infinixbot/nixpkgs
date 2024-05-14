@@ -784,8 +784,8 @@ in
             export ADMIN_PASSWORD
             discourse-rake admin:create_noninteractively
           '';
-        in
 
+        in
         ''
           set -o errexit -o pipefail -o nounset -o errtrace
           shopt -s inherit_errexit

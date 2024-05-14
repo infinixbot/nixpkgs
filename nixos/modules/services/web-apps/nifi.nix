@@ -30,8 +30,8 @@ let
     source "${envFile}"
     eval -- "\$@"
   '';
-in
 
+in
 {
   options = {
     services.nifi = {

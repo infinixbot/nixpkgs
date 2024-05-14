@@ -84,8 +84,8 @@ import ../make-test-python.nix (
         }
         extraConfig
       ];
-  in
 
+  in
   {
     name = "tinc";
     meta.maintainers = with lib.maintainers; [ minijackson ];

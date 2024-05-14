@@ -30,8 +30,8 @@ let
     .${system} or throwSystem;
 
   bin = "$out/bin/codeium_language_server";
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "codeium";
   version = "1.8.32";

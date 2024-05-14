@@ -131,8 +131,8 @@ let
             }
           );
       };
-    in
 
+    in
     {
       aura-browser = callPackage ./aura-browser.nix { };
       bluedevil = callPackage ./bluedevil.nix { };

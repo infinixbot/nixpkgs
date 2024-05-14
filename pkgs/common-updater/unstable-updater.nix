@@ -160,8 +160,8 @@ let
           --rev="$commit_sha"
     '';
   };
-in
 
+in
 [
   (lib.getExe updateScript)
   "--url=${builtins.toString url}"

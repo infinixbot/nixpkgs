@@ -10,8 +10,8 @@ with lib;
 let
 
   cfg = config.services.tuptime;
-in
 
+in
 {
 
   options.services.tuptime = {

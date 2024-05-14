@@ -93,8 +93,8 @@ let
       _class = "nixosTest";
       node.pkgs = pkgs.pkgsLinux;
     };
-in
 
+in
 {
 
   # Testing the test driver

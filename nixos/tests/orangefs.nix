@@ -45,8 +45,8 @@ import ./make-test-python.nix (
           ];
         };
       };
-  in
 
+  in
   {
     name = "orangefs";
 

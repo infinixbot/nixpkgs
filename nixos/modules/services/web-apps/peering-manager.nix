@@ -36,8 +36,8 @@ let
     export PYTHONPATH=${pkg.pythonPath}
     sudo -u peering-manager ${pkg}/bin/peering-manager "$@"
   '';
-in
 
+in
 {
   options.services.peering-manager = with lib; {
     enable = mkOption {

@@ -68,8 +68,8 @@ let
         }
       ) { };
     };
-in
 
+in
 {
 
   melpaDerivation =

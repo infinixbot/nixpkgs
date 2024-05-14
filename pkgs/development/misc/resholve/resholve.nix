@@ -26,8 +26,8 @@ let
       hash = "sha256-Q17A/oJ3GZbdSK55hPaMdw85g43WhTW9tuAuJtDfHHU=";
     };
   };
-in
 
+in
 python27.pkgs.buildPythonApplication {
   pname = "resholve";
   inherit version;

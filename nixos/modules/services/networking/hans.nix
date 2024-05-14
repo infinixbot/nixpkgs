@@ -13,8 +13,8 @@ let
   cfg = config.services.hans;
 
   hansUser = "hans";
-in
 
+in
 {
 
   ### configuration

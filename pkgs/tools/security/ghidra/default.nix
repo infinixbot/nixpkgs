@@ -22,8 +22,8 @@ let
     genericName = "Ghidra Software Reverse Engineering Suite";
     categories = [ "Development" ];
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "ghidra";
   version = "10.4";

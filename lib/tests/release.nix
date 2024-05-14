@@ -16,8 +16,8 @@
 let
   lib = import ../.;
   testWithNix = nix: import ./test-with-nix.nix { inherit lib nix pkgs; };
-in
 
+in
 pkgs.symlinkJoin {
   name = "nixpkgs-lib-tests";
   paths =

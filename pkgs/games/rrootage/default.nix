@@ -18,8 +18,8 @@ let
       url = "https://sources.debian.org/data/main/r/rrootage/${version}-${debianRevision}/debian/patches/${patchname}.patch";
       sha256 = hash;
     };
-in
 
+in
 stdenv.mkDerivation {
   pname = "rrootage";
   inherit version;

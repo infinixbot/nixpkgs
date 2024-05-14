@@ -170,6 +170,7 @@ let
     ]
     ++ lib.optional enableGui jdk8
   );
+
 in
 
 buildEnv {

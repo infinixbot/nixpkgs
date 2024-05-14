@@ -26,6 +26,7 @@ let
     ++ cfg.extraArgs;
 
   gettyCmd = args: "@${pkgs.util-linux}/sbin/agetty agetty ${escapeShellArgs baseArgs} ${args}";
+
 in
 
 {

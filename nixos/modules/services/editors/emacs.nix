@@ -19,8 +19,8 @@ let
       exec ${cfg.package}/bin/emacsclient --alternate-editor ${cfg.package}/bin/emacs "$@"
     fi
   '';
-in
 
+in
 {
 
   options.services.emacs = {

@@ -9,8 +9,8 @@ with lib;
 
 let
   cfg = config.services.orangefs.client;
-in
 
+in
 {
   ###### interface
 

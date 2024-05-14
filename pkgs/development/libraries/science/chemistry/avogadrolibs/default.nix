@@ -46,8 +46,8 @@ let
     rev = "8dc711a59d016604b3e9b6d59dec178b8e6ccd36";
     hash = "sha256-Valc5zwlaZ//eDupFouCfWCeID7/4ObU1SDLFJ/mo/g=";
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "avogadrolibs";
   version = "1.99.0";

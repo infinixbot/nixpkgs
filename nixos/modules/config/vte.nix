@@ -14,6 +14,7 @@ let
     # Supports both bash and zsh, requires interactive shell.
     . ${pkgs.vte.override { gtkVersion = null; }}/etc/profile.d/vte.sh
   '';
+
 in
 
 {

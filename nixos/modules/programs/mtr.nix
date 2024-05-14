@@ -7,8 +7,8 @@
 
 let
   cfg = config.programs.mtr;
-in
 
+in
 {
   options = {
     programs.mtr = {

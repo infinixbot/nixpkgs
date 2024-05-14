@@ -6,8 +6,8 @@
 
 let
   version = "0.4.0";
-in
 
+in
 rustPlatform.buildRustPackage {
 
   pname = "systemfd";

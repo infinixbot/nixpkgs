@@ -91,8 +91,8 @@ let
     }
     ${alsaCfg.extraConfig}
   '');
-in
 
+in
 {
 
   options = {

@@ -10,8 +10,8 @@ let
   # From https://skarnet.org/software/misc/sdnotify-wrapper.c,
   # which is unversioned.
   src = ./sdnotify-wrapper.c;
-in
 
+in
 runCommandCC "sdnotify-wrapper"
   {
 

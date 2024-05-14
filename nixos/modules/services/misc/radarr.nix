@@ -9,8 +9,8 @@ with lib;
 
 let
   cfg = config.services.radarr;
-in
 
+in
 {
   options = {
     services.radarr = {

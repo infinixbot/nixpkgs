@@ -105,8 +105,8 @@ let
     ];
     mimeTypes = [ "x-scheme-handler/electron-fiddle" ];
   };
-in
 
+in
 buildFHSEnv {
   name = "electron-fiddle";
   runScript = "${electron}/bin/electron ${unwrapped}/lib/electron-fiddle/resources/app.asar";

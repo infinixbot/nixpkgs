@@ -13,8 +13,8 @@ let
   vendor = "046d";
 
   daemon = "g15daemon";
-in
 
+in
 {
   imports = [
     (mkRenamedOptionModule

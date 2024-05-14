@@ -138,7 +138,7 @@ let
         priority = 5;
       };
     };
-in
 
+in
 # Technically, GPLv2 with usage exceptions
 lib.mapAttrs (mkpkg lib.licenses.gpl2) gplfonts // lib.mapAttrs (mkpkg lib.licenses.ofl) fonts

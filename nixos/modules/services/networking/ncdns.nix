@@ -54,6 +54,7 @@ let
   needsKeygen = all id (flip mapAttrsToList cfg.dnssec.keys (n: v: v == getAttr n defaultFiles));
 
   mkDefaultAttrs = mapAttrs (n: v: mkDefault v);
+
 in
 
 {

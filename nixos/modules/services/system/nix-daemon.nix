@@ -40,6 +40,7 @@ let
   };
 
   nixbldUsers = listToAttrs (map makeNixBuildUser (range 1 cfg.nrBuildUsers));
+
 in
 
 {

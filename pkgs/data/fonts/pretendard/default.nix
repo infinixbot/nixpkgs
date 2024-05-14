@@ -38,8 +38,8 @@ let
         maintainers = with maintainers; [ sudosubin ];
       };
     };
-in
 
+in
 {
   pretendard = mkPretendard {
     pname = "pretendard";

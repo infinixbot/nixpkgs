@@ -23,8 +23,8 @@ let
             ln -s ${dataDir}/public/uploads $out/public/uploads
           '';
       });
-in
 
+in
 package.override rec {
   pname = "bookstack";
   version = "24.02.3";

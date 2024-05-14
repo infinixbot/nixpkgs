@@ -72,8 +72,8 @@ let
     libudev0-shim
     pulseaudio
   ];
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "onlyoffice-desktopeditors";
   version = "7.2.0";

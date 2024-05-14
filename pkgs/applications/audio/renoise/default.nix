@@ -31,8 +31,8 @@ let
       hash = "sha256-PVpgxhJU8RY6QepydqImQnisWBjbrsuW4j49Xot3C6Y=";
     };
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "renoise";
   version = "3.4.3";

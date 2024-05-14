@@ -53,8 +53,8 @@ let
       isGVariant :: Any -> Bool
   */
   isGVariant = v: v._type or "" == "gvariant";
-in
 
+in
 rec {
 
   inherit type isGVariant;

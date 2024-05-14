@@ -26,8 +26,8 @@ let
     ""
   ];
   modulesDirs = lib.concatMapStringsSep ":" (x: "${x}/lib/modules") systems;
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "kmod";
   version = "31";

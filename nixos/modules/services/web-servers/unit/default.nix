@@ -11,8 +11,8 @@ let
   cfg = config.services.unit;
 
   configFile = pkgs.writeText "unit.json" cfg.config;
-in
 
+in
 {
   options = {
     services.unit = {

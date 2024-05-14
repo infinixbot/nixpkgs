@@ -82,8 +82,8 @@ let
       Typora $*
     '';
   };
-in
 
+in
 stdenv.mkDerivation {
   inherit pname version;
 

@@ -103,8 +103,8 @@ let
         ${pkgs.chrony}/bin/chronyc waitsync
       '';
     };
-in
 
+in
 import ./make-test-python.nix (
   { pkgs, ... }:
   {

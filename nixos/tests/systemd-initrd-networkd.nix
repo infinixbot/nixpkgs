@@ -68,8 +68,8 @@ let
         machine.wait_for_unit("multi-user.target")
       '';
     };
-in
 
+in
 {
   basic = makeTest {
     name = "systemd-initrd-network";

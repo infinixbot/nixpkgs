@@ -189,8 +189,8 @@ let
                 toString config.wakeup + optionalString (wakeupUCDefined && !config.wakeupUnusedComponent) "?";
             in
             if wakeupDefined then finalValue else "-";
-        in
 
+        in
         [
           config.name
           config.type
@@ -274,8 +274,8 @@ let
           ];
         in
         concatStringsSep "\n" lines;
-    in
 
+    in
     formattedLabels + "\n" + concatMapStringsSep "\n" formatLine masterCf + "\n" + cfg.extraMasterConf;
 
   headerCheckOptions =
@@ -324,6 +324,7 @@ let
   masterCfFile = pkgs.writeText "postfix-master.cf" masterCfContent;
   transportFile = pkgs.writeText "postfix-transport" cfg.transport;
   headerChecksFile = pkgs.writeText "postfix-header-checks" headerChecks;
+
 in
 
 {

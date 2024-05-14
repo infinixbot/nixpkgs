@@ -26,8 +26,8 @@ let
     ];
     genericName = pname;
   };
-in
 
+in
 stdenv.mkDerivation {
   inherit pname;
   version = "2.4";

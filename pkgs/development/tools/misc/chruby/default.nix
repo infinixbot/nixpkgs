@@ -11,8 +11,8 @@ let
     mkdir $out
     ${lib.concatStrings (lib.mapAttrsToList (name: path: "ln -s ${path} $out/${name}\n") rubies)}
   '';
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "chruby";
 

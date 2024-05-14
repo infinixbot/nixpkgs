@@ -48,8 +48,8 @@ let
         ${backend}.succeed("systemctl stop ${backend}-nginx.service", timeout=10)
       '';
     };
-in
 
+in
 lib.foldl' (attrs: backend: attrs // { ${backend} = mkOCITest backend; }) { } [
   "docker"
   "podman"

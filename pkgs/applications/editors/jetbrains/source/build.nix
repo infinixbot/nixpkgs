@@ -232,8 +232,8 @@ let
       "PyCharmCommunityInstallersBuildTarget"
     else
       "OpenSourceCommunityInstallersBuildTarget";
-in
 
+in
 stdenvNoCC.mkDerivation rec {
   pname = "${buildType}-community";
   version = buildVer;

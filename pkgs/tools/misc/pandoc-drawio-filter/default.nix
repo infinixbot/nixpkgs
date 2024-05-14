@@ -52,6 +52,7 @@ let
       mainProgram = "pandoc-drawio";
     };
   };
+
 in
 
 pandoc-drawio-filter

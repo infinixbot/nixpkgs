@@ -72,8 +72,8 @@ import ./make-test-python.nix {
             finally:
               pop.quit()
           '';
-        in
 
+        in
         [
           sendTestMail
           sendTestMailViaDeliveryAgent

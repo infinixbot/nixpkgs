@@ -86,8 +86,8 @@ let
   # !!! Move this into a public lib function, it is probably useful for others
   toValidStoreName =
     x: with builtins; lib.concatStringsSep "-" (filter (x: !(isList x)) (split "[^a-zA-Z0-9_=.?-]+" x));
-in
 
+in
 stdenvNoCC.mkDerivation rec {
   inherit
     name

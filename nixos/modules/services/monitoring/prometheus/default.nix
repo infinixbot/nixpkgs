@@ -1677,8 +1677,8 @@ let
       proxy_url = mkOpt types.str "Optional Proxy URL.";
     };
   };
-in
 
+in
 {
 
   imports = [

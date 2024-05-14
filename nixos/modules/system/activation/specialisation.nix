@@ -25,8 +25,8 @@ let
   children = mapAttrs (
     childName: childConfig: childConfig.configuration.system.build.toplevel
   ) config.specialisation;
-in
 
+in
 {
   options = {
 

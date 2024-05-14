@@ -12,8 +12,8 @@ let
   dmcfg = config.services.xserver.displayManager;
   ldmcfg = dmcfg.lightdm;
   cfg = ldmcfg.greeters.tiny;
-in
 
+in
 {
   options = {
 

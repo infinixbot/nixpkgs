@@ -11,8 +11,8 @@ let
 
   cfg = config.services.rspamd-trainer;
   format = pkgs.formats.toml { };
-in
 
+in
 {
   options.services.rspamd-trainer = {
 

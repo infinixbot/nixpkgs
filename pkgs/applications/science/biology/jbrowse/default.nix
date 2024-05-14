@@ -15,8 +15,8 @@ let
   };
 
   appimageContents = appimageTools.extractType2 { inherit pname version src; };
-in
 
+in
 appimageTools.wrapType2 {
   inherit pname version src;
   unshareIpc = false;

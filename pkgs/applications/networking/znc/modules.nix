@@ -29,8 +29,8 @@ let
         passthru.module_name = module_name;
       }
     );
-in
 
+in
 {
 
   backlog = zncDerivation rec {

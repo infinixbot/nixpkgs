@@ -31,8 +31,8 @@ let
       ${lib.getBin sqlite}/bin/sqlite3 $db < ${dbSql}
     fi
   '';
-in
 
+in
 pypkgs.buildPythonApplication rec {
   pname = "pykms";
   version = "unstable-2021-01-25";

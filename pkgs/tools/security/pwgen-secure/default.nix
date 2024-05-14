@@ -6,8 +6,8 @@
 
 let
   inherit (python3Packages) buildPythonApplication pythonOlder;
-in
 
+in
 buildPythonApplication rec {
   pname = "pwgen-secure";
   version = "0.9.1";

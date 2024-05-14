@@ -140,6 +140,6 @@ let
     '') (builtins.attrValues requiredDeps);
 
   repository_cache = runCommand "bazel-repository-cache" { } command;
-in
 
+in
 repository_cache

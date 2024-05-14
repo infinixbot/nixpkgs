@@ -269,8 +269,8 @@ let
 
     subPackages = [ "cmd/server" ];
   };
-in
 
+in
 stdenvNoCC.mkDerivation {
   pname = "authentik";
   inherit src version;

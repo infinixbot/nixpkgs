@@ -107,8 +107,8 @@ let
     (lib.mapAttrsToList (name: value: value name))
     (pkgs.linkFarm "nixpkgs-pkgs-lib-format-tests")
   ];
-in
 
+in
 runBuildTests {
 
   jsonAtoms = shouldPass {

@@ -18,6 +18,7 @@ let
   };
   caBundleName = if cfg.useCompatibleBundle then "ca-no-trust-rules-bundle.crt" else "ca-bundle.crt";
   caBundle = "${cacertPackage}/etc/ssl/certs/${caBundleName}";
+
 in
 
 {

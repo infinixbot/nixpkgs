@@ -17,8 +17,8 @@
 
 let
   isBeta = channel != "release";
-in
 
+in
 writeScript "update-${pname}" ''
   #!${runtimeShell}
   PATH=${coreutils}/bin:${gnused}/bin:${gnugrep}/bin:${xidel}/bin:${curl}/bin:${gnupg}/bin

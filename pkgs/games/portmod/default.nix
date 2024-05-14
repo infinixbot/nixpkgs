@@ -42,8 +42,8 @@ let
     imagemagick
     openmw
   ];
-in
 
+in
 python3Packages.buildPythonApplication rec {
   inherit src version;
 

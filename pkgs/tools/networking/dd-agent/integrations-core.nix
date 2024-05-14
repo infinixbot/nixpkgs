@@ -127,8 +127,8 @@ let
       propagatedBuildInputs = (fdeps python.pkgs) ++ [ datadog_checks_base ];
     }
   ) integrations;
-in
 
+in
 builtIntegrations
 // {
   inherit datadog_checks_base;

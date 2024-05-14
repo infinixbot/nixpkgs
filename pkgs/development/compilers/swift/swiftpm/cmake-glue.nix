@@ -23,8 +23,8 @@ let
         $out/lib/cmake/${module}/${module}Config.cmake
     )
   '';
-in
 
+in
 lib.mapAttrs mkInstallScript {
   SwiftSystem = ''
     add_library(SwiftSystem::SystemPackage STATIC IMPORTED)

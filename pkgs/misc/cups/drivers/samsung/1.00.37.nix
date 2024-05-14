@@ -10,8 +10,8 @@
 let
 
   arch = if stdenv.hostPlatform.system == "x86_64-linux" then "x86_64" else "i386";
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "samsung-unified-linux-driver";
   version = "1.00.37";

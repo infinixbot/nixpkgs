@@ -66,8 +66,8 @@ let
     ))
     + "\n"
   ) cfg.buildMachines;
-in
 
+in
 {
   options = {
     nix = {

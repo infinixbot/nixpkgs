@@ -58,8 +58,8 @@ let
         echo $lddOutput > $out
       fi
     '';
-in
 
+in
 {
   # This test proves an issue with buildFHSEnv - don't expect it to succeed,
   # this is discussed in https://github.com/NixOS/nixpkgs/pull/279844 .

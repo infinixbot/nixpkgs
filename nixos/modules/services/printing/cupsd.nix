@@ -127,6 +127,7 @@ let
       extractPort = addr: builtins.foldl' (a: b: b) "" (splitAddress addr);
     in
     builtins.map (address: strings.toInt (extractPort address)) addresses;
+
 in
 
 {

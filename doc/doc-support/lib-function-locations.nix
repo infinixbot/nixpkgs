@@ -80,6 +80,6 @@ let
       }
     ) relativeLocs
   );
-in
 
+in
 pkgs.writeText "locations.json" (builtins.toJSON jsonLocs)

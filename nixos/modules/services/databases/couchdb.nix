@@ -36,8 +36,8 @@ let
     ''
   );
   executable = "${cfg.package}/bin/couchdb";
-in
 
+in
 {
 
   ###### interface

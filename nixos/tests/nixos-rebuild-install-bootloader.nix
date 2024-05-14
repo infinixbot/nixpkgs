@@ -47,8 +47,8 @@ import ./make-test-python.nix (
             documentation.enable = false;
           }
         '';
-      in
 
+      in
       ''
         machine.start()
         machine.succeed("udevadm settle")

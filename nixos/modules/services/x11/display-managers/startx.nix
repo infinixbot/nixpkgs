@@ -10,6 +10,7 @@ with lib;
 let
 
   cfg = config.services.xserver.displayManager.startx;
+
 in
 
 {

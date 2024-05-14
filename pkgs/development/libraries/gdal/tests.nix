@@ -8,8 +8,8 @@
 
 let
   inherit (gdal) pname version;
-in
 
+in
 {
   ogrinfo-version = testers.testVersion {
     package = gdal;

@@ -198,8 +198,8 @@ let
             fetchzip = super.fetchzip.override { inherit (self) fetchurl; };
           };
       };
-    in
 
+    in
     {
       inherit config overlays;
       stdenv = thisStdenv;

@@ -103,8 +103,8 @@ let
     # Extra Configuration
     ${cfg.extraServerConfig}
   '';
-in
 
+in
 {
 
   imports = [

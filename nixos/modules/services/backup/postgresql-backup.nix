@@ -69,8 +69,8 @@ let
 
       startAt = cfg.startAt;
     };
-in
 
+in
 {
 
   imports = [

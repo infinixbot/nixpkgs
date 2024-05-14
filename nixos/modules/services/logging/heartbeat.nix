@@ -16,8 +16,8 @@ let
 
     ${cfg.extraConfig}
   '';
-in
 
+in
 {
   options = {
 

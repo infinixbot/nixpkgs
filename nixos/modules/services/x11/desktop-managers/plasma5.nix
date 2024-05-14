@@ -95,6 +95,7 @@ let
     # 2. Contaminate / if $HOME is unset; do not check if $HOME is set.
     XDG_CONFIG_HOME=''${XDG_CONFIG_HOME:-$HOME/.config}
   '';
+
 in
 
 {

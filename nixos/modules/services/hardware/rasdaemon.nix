@@ -10,8 +10,8 @@ with lib;
 let
 
   cfg = config.hardware.rasdaemon;
-in
 
+in
 {
   options.hardware.rasdaemon = {
 

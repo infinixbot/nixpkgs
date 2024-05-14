@@ -24,8 +24,8 @@ let
         p
     ) versionParts
   );
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "moodle";
   inherit version;

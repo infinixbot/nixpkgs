@@ -18,8 +18,8 @@ let
       url = "https://sources.debian.org/data/main/t/torus-trooper/0.22.dfsg1-12/debian/patches/${patchname}.patch";
       sha256 = hash;
     };
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "torus-trooper";
   version = "0.22";

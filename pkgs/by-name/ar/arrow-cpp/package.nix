@@ -77,8 +77,8 @@ let
     rev = "74278bc4a1122d74945969e6dec405abd1533ec3";
     hash = "sha256-WbpndtAviph6+I/F2bevuMI9DkfSv4SMPgMaP98k6Qo=";
   };
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "arrow-cpp";
   version = "16.0.0";

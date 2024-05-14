@@ -93,8 +93,8 @@ let
     expect "completed successfully"
     send "\n"
   '';
-in
 
+in
 stdenvNoCC.mkDerivation rec {
   pname = "${passthru.prettyName}-unwrapped";
   version = "1.9";

@@ -38,8 +38,8 @@ let
     ++ mapAttrsToList (
       name: hook: pkgs.writeText "webhook-${name}.json.tmpl" "[${hook}]"
     ) cfg.hooksTemplated;
-in
 
+in
 {
   options = {
     services.webhook = {

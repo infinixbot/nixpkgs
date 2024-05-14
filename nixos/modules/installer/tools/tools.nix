@@ -88,6 +88,7 @@ let
     path = makeBinPath [ pkgs.util-linuxMinimal ];
     manPage = ./manpages/nixos-enter.8;
   };
+
 in
 
 {

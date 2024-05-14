@@ -13,8 +13,8 @@ let
 
   localTarget =
     if hasPrefix "file://" cfg.targetUrl then removePrefix "file://" cfg.targetUrl else null;
-in
 
+in
 {
   options.services.duplicity = {
     enable = mkEnableOption "backups with duplicity";

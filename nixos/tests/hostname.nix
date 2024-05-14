@@ -74,8 +74,8 @@ let
           )
         '';
     };
-in
 
+in
 {
   noExplicitDomain = makeHostNameTest "ahost" null null;
 

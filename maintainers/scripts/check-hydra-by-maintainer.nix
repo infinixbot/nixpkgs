@@ -42,8 +42,8 @@ let
         false
     )
   ) (name: name) "" pkgs;
-in
 
+in
 pkgs.stdenv.mkDerivation {
   name = "nixpkgs-update-script";
   buildInputs = [ pkgs.hydra-check ];

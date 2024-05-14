@@ -10,8 +10,8 @@
 
 let
   fetchURL = import <nix/fetchurl.nix>;
-in
 
+in
 derivation {
   inherit system configureArgs;
   name = "trivial-bootstrap-${name}-${ver}";

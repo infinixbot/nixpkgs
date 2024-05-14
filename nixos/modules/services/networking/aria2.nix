@@ -23,8 +23,8 @@ let
     listen-port=${concatStringsSep "," (rangesToStringList cfg.listenPortRange)}
     rpc-listen-port=${toString cfg.rpcListenPort}
   '';
-in
 
+in
 {
   imports = [
     (mkRemovedOptionModule [

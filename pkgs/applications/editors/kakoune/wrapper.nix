@@ -10,8 +10,8 @@ let
   # "plugins" is the preferred way, but some configurations may be
   # using "configure.plugins", so accept both
   requestedPlugins = plugins ++ (configure.plugins or [ ]);
-in
 
+in
 symlinkJoin {
   name = "kakoune-${kakoune.version}";
 

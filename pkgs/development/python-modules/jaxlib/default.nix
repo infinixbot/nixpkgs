@@ -416,8 +416,8 @@ let
       "macosx_11_0_${arch}"
     else
       throw "Unsupported target platform: ${effectiveStdenv.hostPlatform}";
-in
 
+in
 buildPythonPackage {
   inherit meta pname version;
   format = "wheel";

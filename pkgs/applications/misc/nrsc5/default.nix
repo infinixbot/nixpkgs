@@ -19,8 +19,8 @@ let
   };
 
   version = "1.0";
-in
 
+in
 stdenv.mkDerivation {
   pname = "nrsc5";
   inherit version;

@@ -13,8 +13,8 @@
 let
   jdk = jdk8;
   jre = jdk8.jre;
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "jasmin";
   version = "2.4";

@@ -81,8 +81,8 @@ let
     # Does not work well with the temporary root
     #UMask = "0066";
   };
-in
 
+in
 {
   options.services.kanidm = {
     enableClient = lib.mkEnableOption "the Kanidm client";

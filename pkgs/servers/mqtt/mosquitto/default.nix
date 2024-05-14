@@ -25,8 +25,8 @@ let
     # https://github.com/eclipse/mosquitto/issues/1211#issuecomment-958137569
     cmakeFlags = old.cmakeFlags ++ [ "-DLWS_WITH_HTTP2=OFF" ];
   });
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "mosquitto";
   version = "2.0.18";

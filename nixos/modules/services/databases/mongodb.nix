@@ -24,6 +24,7 @@ let
       ${optionalString (cfg.replSetName != "") "replication.replSetName: ${cfg.replSetName}"}
       ${cfg.extraConfig}
     '';
+
 in
 
 {

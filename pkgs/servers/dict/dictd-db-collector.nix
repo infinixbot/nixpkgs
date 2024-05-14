@@ -76,6 +76,7 @@
         echo "}" >> dictd.conf
       done
     '';
+
   in
 
   stdenv.mkDerivation {

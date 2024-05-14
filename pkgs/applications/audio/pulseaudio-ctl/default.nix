@@ -21,8 +21,8 @@ let
     pulseaudio
   ];
   pname = "pulseaudio-ctl";
-in
 
+in
 stdenv.mkDerivation rec {
   name = "${pname}-${version}";
   version = "1.70";

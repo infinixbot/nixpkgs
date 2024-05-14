@@ -39,6 +39,7 @@ let
     ) (attrNames attrs);
 
   configFile = pkgs.writeText "davmail.properties" (concatStringsSep "\n" (linesForAttrs cfg.config));
+
 in
 
 {

@@ -67,8 +67,8 @@ let
           }
         )
       );
-in
 
+in
 rec {
   inherit mkTmuxPlugin;
 

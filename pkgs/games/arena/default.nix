@@ -20,8 +20,8 @@ let
 
   inherit (lib) makeLibraryPath;
   libDir = "lib64";
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "arena";
   version = "3.10-beta";

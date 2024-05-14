@@ -390,8 +390,8 @@ self: super:
             inherit hash;
           };
       };
-    in
 
+    in
     super.codeium-nvim.overrideAttrs {
       dependencies = with self; [
         nvim-cmp

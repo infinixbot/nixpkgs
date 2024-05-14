@@ -109,6 +109,7 @@ let
     xorg.libXtst
     zlib
   ];
+
 in
 
 stdenv.mkDerivation {

@@ -246,8 +246,8 @@ let
         "''${curl[@]}" --progress-bar --cookie cookies -o $out "$url"
       '';
     };
-in
 
+in
 {
   # TODO currently can't install more than one because `lame` clashes
   stage-trial = mkPianoteq rec {

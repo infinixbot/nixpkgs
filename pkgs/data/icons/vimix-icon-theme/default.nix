@@ -11,8 +11,8 @@
 
 let
   pname = "vimix-icon-theme";
-in
 
+in
 lib.checkListOfEnum "${pname}: color variants"
   [
     "standard"

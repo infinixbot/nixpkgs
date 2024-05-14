@@ -80,6 +80,6 @@ let
       // optionalAttrs (attrs ? checkPhase) { installCheckPhase = attrs.checkPhase; }
     )
   );
-in
 
+in
 lib.extendDerivation true passthru self

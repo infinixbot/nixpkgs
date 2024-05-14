@@ -33,8 +33,8 @@ let
     optional
     concatStringsSep
     ;
-in
 
+in
 assert versionAtLeast (getVersion erlang) minimumOTPVersion;
 
 stdenv.mkDerivation ({

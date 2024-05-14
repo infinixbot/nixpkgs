@@ -14,6 +14,7 @@ let
     "medium_power"
     "med_power_with_dipm"
   ];
+
 in
 
 {

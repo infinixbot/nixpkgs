@@ -69,6 +69,6 @@ let
       platforms = platforms.unix;
     };
   };
-in
 
+in
 link-grammar

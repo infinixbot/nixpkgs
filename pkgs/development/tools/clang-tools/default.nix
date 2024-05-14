@@ -9,8 +9,8 @@
 
 let
   unwrapped = llvmPackages.clang-unwrapped;
-in
 
+in
 stdenv.mkDerivation {
   inherit unwrapped;
 

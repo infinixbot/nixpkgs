@@ -57,6 +57,6 @@ let
       ripgrep
     ];
   };
-in
 
+in
 testBazel

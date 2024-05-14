@@ -108,6 +108,6 @@ let
       cp -r *.app $out/Applications
     '';
   };
-in
 
+in
 if stdenv.isDarwin then darwin else linux

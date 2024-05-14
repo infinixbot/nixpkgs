@@ -24,8 +24,8 @@
 
 let
   pythonPackages = python3Packages;
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "blueman";
   version = "2.4.1";

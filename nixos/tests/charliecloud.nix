@@ -10,8 +10,8 @@ import ./make-test-python.nix (
       RUN touch /etc/passwd /etc/group
       CMD ["true"]
     '';
-  in
 
+  in
   {
     name = "charliecloud";
     meta = with pkgs.lib.maintainers; {

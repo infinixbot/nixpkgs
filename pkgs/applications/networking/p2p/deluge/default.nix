@@ -111,8 +111,8 @@ let
         platforms = platforms.all;
       };
     };
-in
 
+in
 rec {
   deluge-gtk = generic {
     pname = "deluge-gtk";

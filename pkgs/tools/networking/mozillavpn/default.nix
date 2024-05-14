@@ -68,8 +68,8 @@ let
     preBuild = "cd qtglean";
     hash = "sha256-HFmRcfxCcc83IPPIovbf3jNftp0olKQ6RzV8vPpCYAM=";
   };
-in
 
+in
 stdenv.mkDerivation {
   inherit
     pname

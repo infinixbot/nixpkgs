@@ -88,6 +88,7 @@ let
     hash = "sha256-9vBYylbt1ypJwIAQJd/oiAueh+4VYcn/KzofQuhUea0=";
     buildInputs = [ c-stdaux ];
   };
+
 in
 
 stdenv.mkDerivation (finalAttrs: {

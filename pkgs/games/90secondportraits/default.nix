@@ -27,8 +27,8 @@ let
       categories = [ "Game" ];
     })
   ];
-in
 
+in
 stdenv.mkDerivation rec {
   inherit pname desktopItems;
   version = "1.01b";

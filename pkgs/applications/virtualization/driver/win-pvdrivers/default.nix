@@ -42,8 +42,8 @@ let
       hash = "sha256-CaSxCKnT/KaZw8Ma60g2z+4lOOWIRisGRtzMveQqQmM=";
     }
   ];
-in
 
+in
 stdenvNoCC.mkDerivation {
   pname = "win-pvdrivers";
   version = "unstable-2023-08-17";

@@ -9,8 +9,8 @@ with lib;
 
 let
   cfg = config.services.grafana_reporter;
-in
 
+in
 {
   options.services.grafana_reporter = {
     enable = mkEnableOption "grafana_reporter";

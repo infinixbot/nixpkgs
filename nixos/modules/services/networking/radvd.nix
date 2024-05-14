@@ -14,6 +14,7 @@ let
   cfg = config.services.radvd;
 
   confFile = pkgs.writeText "radvd.conf" cfg.config;
+
 in
 
 {

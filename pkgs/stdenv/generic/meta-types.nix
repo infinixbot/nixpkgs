@@ -19,8 +19,8 @@ let
     isFloat
     ;
   isTypeDef = t: isAttrs t && t ? name && isString t.name && t ? verify && isFunction t.verify;
-in
 
+in
 lib.fix (self: {
   string = {
     name = "string";

@@ -27,8 +27,8 @@ let
     ]
     ++ lib.optional stdenv.isLinux lttng-ust_2_12
   );
-in
 
+in
 writeShellScriptBin "patch-nupkgs" ''
   set -euo pipefail
   shopt -s nullglob

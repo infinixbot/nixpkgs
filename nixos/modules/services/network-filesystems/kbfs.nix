@@ -8,8 +8,8 @@ with lib;
 let
   inherit (config.security) wrapperDir;
   cfg = config.services.kbfs;
-in
 
+in
 {
 
   ###### interface

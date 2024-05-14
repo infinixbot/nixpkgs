@@ -47,8 +47,8 @@ let
       inherit name hash;
       url = "https://github.com/mealie-recipes/mealie/commit/${commit}.patch";
     };
-in
 
+in
 pythonpkgs.buildPythonPackage rec {
   pname = "mealie";
   inherit version src;

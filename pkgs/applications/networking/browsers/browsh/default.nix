@@ -15,6 +15,7 @@ let
     url = "https://github.com/browsh-org/browsh/releases/download/v${version}/browsh-${version}.xpi";
     hash = "sha256-04rLyQt8co3Z7UJnDJmj++E4n7of0Zh1jQ90Bfwnx5A=";
   };
+
 in
 
 buildGoModule rec {

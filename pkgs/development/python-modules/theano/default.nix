@@ -54,8 +54,8 @@ let
   # We need to be careful with overriding Python packages within the package set
   # as this can lead to collisions!
   libgpuarray_ = libgpuarray.override { inherit cudaSupport cudaPackages; };
-in
 
+in
 buildPythonPackage rec {
   pname = "theano";
   version = "1.0.5";

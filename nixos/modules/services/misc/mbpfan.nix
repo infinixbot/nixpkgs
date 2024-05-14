@@ -11,8 +11,8 @@ let
   verbose = optionalString cfg.verbose "v";
   format = pkgs.formats.ini { };
   cfgfile = format.generate "mbpfan.ini" cfg.settings;
-in
 
+in
 {
   options.services.mbpfan = {
     enable = mkEnableOption "mbpfan, fan controller daemon for Apple Macs and MacBooks";

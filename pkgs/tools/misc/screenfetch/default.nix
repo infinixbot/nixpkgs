@@ -44,8 +44,8 @@ let
       ]
     )
   );
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "screenfetch";
   version = "3.9.1";

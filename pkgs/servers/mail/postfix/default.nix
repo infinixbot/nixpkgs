@@ -63,8 +63,8 @@ let
     ++ lib.optional withSQLite "-lsqlite3"
     ++ lib.optional withLDAP "-lldap"
   );
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "postfix";
   version = "3.9.0";

@@ -50,8 +50,8 @@ let
     #
     ${concatStringsSep "\n" (mapAttrsToList (name: value: "CONFIG_${name}=${toStr value}") cfg.config)}
   '';
-in
 
+in
 {
   imports = [
     (mkRenamedOptionModule

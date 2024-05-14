@@ -36,8 +36,8 @@ let
         exit 1
       fi
     '';
-in
 
+in
 pkgs.runCommand "test haskell.lib.compose.setBuildTarget"
   {
     meta = {

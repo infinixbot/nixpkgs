@@ -58,6 +58,7 @@ let
       "ssl_gnutls"
     ]
     ++ lib.optionals (compatible lib stdenv.cc.libc) libcModules;
+
 in
 
 {
@@ -143,6 +144,7 @@ let
 
   # Whether any member of list1 is also member of list2, i. e. set intersection.
   anyMembers = list1: list2: lib.any (m1: lib.elem m1 list2) list1;
+
 in
 
 stdenv.mkDerivation rec {

@@ -48,8 +48,8 @@ let
   ] ++ extraRepoInitFlags;
 
   local_manifests = copyPathsToStore localManifests;
-in
 
+in
 stdenvNoCC.mkDerivation {
   inherit name;
 

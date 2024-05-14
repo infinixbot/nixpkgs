@@ -8,8 +8,8 @@
 
 let
   configFile = lib.optionalString (conf != null) (builtins.toFile "config.h" conf);
-in
 
+in
 stdenv.mkDerivation {
   pname = "ratox";
   version = "0.4.20180303";

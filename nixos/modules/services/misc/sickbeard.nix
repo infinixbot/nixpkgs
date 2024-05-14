@@ -15,8 +15,8 @@ let
   cfg = config.services.sickbeard;
   opt = options.services.sickbeard;
   sickbeard = cfg.package;
-in
 
+in
 {
 
   ###### interface

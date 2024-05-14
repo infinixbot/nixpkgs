@@ -12,8 +12,8 @@ let
 
   format = pkgs.formats.yaml { };
   configFile = format.generate "zigbee2mqtt.yaml" cfg.settings;
-in
 
+in
 {
   meta.maintainers = with maintainers; [
     sweber

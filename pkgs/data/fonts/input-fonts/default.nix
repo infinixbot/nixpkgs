@@ -29,6 +29,7 @@ let
   '';
 
   releaseDate = "2015-06-24";
+
 in
 
 stdenv.mkDerivation rec {

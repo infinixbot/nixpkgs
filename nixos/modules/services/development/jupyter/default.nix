@@ -24,8 +24,8 @@ let
 
     c.NotebookApp.password = ${cfg.password}
   '';
-in
 
+in
 {
   meta.maintainers = with maintainers; [ aborsu ];
 

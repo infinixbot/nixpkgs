@@ -99,8 +99,8 @@ let
         );
 
       finalPackage = mkDerivationSimple overrideAttrs args;
-    in
 
+    in
     finalPackage;
 
   #makeDerivationExtensibleConst = attrs: makeDerivationExtensible (_: attrs);
@@ -580,8 +580,8 @@ let
           // optionalAttrs (attrs ? allowedRequisites) {
             allowedRequisites = mapNullable unsafeDerivationToUntrackedOutpath attrs.allowedRequisites;
           };
-      in
 
+      in
       derivationArg;
 
   mkDerivationSimple =
@@ -694,6 +694,7 @@ let
         "outputHash"
         "outputHashMode"
       ];
+
     in
 
     extendDerivation validity.handled (
@@ -752,8 +753,8 @@ let
         # derivation (e.g., in assertions).
         passthru
     ) (derivation (derivationArg // optionalAttrs envIsExportable checkedEnv));
-in
 
+in
 {
   inherit mkDerivation;
 }

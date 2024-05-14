@@ -16,8 +16,8 @@ let
     pidfile /run/sniproxy.pid
     ${cfg.config}
   '';
-in
 
+in
 {
   imports = [
     (mkRemovedOptionModule

@@ -15,6 +15,7 @@
 let
 
   fontsConf = makeFontsConf { fontDirectories = [ freefont_ttf ]; };
+
 in
 
 perlPackages.buildPerlPackage rec {

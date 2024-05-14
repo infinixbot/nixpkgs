@@ -155,8 +155,8 @@ let
             fi
           '';
     } pkg;
-in
 
+in
 lib.makeExtensible (
   self:
   (

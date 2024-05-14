@@ -445,8 +445,8 @@ let
         };
       };
     };
-in
 
+in
 {
   options = {
     services.bacula-fd = {

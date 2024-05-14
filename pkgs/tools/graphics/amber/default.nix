@@ -46,8 +46,8 @@ let
     rev = "d87f61605b3647fbceae9aaa922fce0031afdc63";
     hash = "sha256-lB2i6wjehIFDOQdIPUvCy3zzcnJSsR5vNawPhGmb0es=";
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "amber";
   version = "unstable-2023-09-02";

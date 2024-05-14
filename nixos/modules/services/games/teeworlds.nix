@@ -95,8 +95,8 @@ let
 
     ${concatStringsSep "\n" cfg.extraOptions}
   '';
-in
 
+in
 {
   options = {
     services.teeworlds = {

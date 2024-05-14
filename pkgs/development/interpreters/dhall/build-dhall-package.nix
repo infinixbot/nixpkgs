@@ -70,8 +70,8 @@ let
   dataDhall = "${data}/dhall";
 
   sourceFile = "source.dhall";
-in
 
+in
 runCommand name { inherit dependencies; } ''
   set -eu
 

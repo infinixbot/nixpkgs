@@ -21,6 +21,7 @@ let
       builtins.toString value
     else
       throw "Unrecognized type ${builtins.typeOf value} in htop settings";
+
 in
 
 {

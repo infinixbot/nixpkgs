@@ -13,8 +13,8 @@
 
 let
   version = "0.3.4";
-in
 
+in
 stdenv.mkDerivation {
   pname = "soapyhackrf";
   inherit version;

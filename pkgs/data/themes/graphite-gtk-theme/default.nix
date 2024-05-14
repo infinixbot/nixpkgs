@@ -18,8 +18,8 @@
 
 let
   pname = "graphite-gtk-theme";
-in
 
+in
 lib.checkListOfEnum "${pname}: theme variants"
   [
     "default"

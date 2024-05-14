@@ -40,8 +40,8 @@ let
         .${lib.versions.majorMinor version} or (throw "no graphviz patch for this version of vala");
 
       disableGraphviz = !withGraphviz;
-    in
 
+    in
     stdenv.mkDerivation rec {
       pname = "vala";
       inherit version;
@@ -126,8 +126,8 @@ let
       };
     }
   );
-in
 
+in
 rec {
   vala_0_56 = generic {
     version = "0.56.17";

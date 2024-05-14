@@ -10,6 +10,7 @@
 let
 
   cfg = config.programs.gnome-terminal;
+
 in
 
 {

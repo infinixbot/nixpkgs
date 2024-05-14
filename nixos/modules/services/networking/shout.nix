@@ -29,8 +29,8 @@ let
           ${builtins.toJSON cfg.config}
         )
       '';
-in
 
+in
 {
   options.services.shout = {
     enable = mkEnableOption "Shout web IRC client";

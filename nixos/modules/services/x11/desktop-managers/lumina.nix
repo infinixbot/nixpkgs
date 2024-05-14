@@ -11,6 +11,7 @@ let
 
   xcfg = config.services.xserver;
   cfg = xcfg.desktopManager.lumina;
+
 in
 
 {

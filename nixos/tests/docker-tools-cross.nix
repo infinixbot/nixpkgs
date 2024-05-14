@@ -36,8 +36,8 @@ import ./make-test-python.nix (
       tag = "latest";
       contents = remoteCrossPkgs.hello;
     };
-  in
 
+  in
   {
     name = "docker-tools";
     meta = with pkgs.lib.maintainers; {

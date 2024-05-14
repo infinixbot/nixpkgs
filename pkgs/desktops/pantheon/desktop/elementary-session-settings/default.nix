@@ -87,6 +87,7 @@ let
     DesktopNames=Pantheon
     Type=Application
   '';
+
 in
 
 stdenv.mkDerivation rec {

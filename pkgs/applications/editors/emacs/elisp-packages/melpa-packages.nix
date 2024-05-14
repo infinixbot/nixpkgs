@@ -805,10 +805,10 @@ let
             else
               super.osx-dictionary;
         };
-    in
 
+    in
     lib.mapAttrs (n: v: if lib.hasAttr n overrides then overrides.${n} else v) super
   );
-in
 
+in
 (generateMelpa { }) // { __attrsFailEvaluation = true; }

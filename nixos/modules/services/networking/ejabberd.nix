@@ -21,8 +21,8 @@ let
   } --ctl-config "${ctlcfg}" --spool "${cfg.spoolDir}" --logs "${cfg.logsDir}"'';
 
   dumps = lib.escapeShellArgs cfg.loadDumps;
-in
 
+in
 {
 
   ###### interface

@@ -173,8 +173,8 @@ let
     optionalString
     versions
     ;
-in
 
+in
 let
   self = stdenv.mkDerivation rec {
     pname = "handbrake";

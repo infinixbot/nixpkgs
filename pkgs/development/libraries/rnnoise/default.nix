@@ -23,8 +23,8 @@ let
     else
       modelUrl;
   model_hash = if (modelHash == "") then modelVersionJSON.hash else modelHash;
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "rnnoise";
   version = "0.2";

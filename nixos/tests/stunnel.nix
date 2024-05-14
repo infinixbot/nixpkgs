@@ -61,8 +61,8 @@ let
     server_cert = ${src}.succeed("cat /test-cert.pem")
     ${dest}.succeed("echo %s > ${filename}" % quote(server_cert))
   '';
-in
 
+in
 {
   basicServer = makeTest {
     name = "basicServer";

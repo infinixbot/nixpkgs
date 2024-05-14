@@ -34,6 +34,7 @@ let
   '';
 
   inherit (stdenv.hostPlatform.extensions) sharedLibrary;
+
 in
 
 stdenv.mkDerivation rec {

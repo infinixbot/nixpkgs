@@ -17,6 +17,7 @@ let
   srcjson = builtins.fromJSON (builtins.readFile ./src.json);
 
   throwSystem = throw "Unsupported system: ${stdenv.hostPlatform.system}";
+
 in
 
 stdenv.mkDerivation rec {

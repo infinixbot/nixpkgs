@@ -10,8 +10,8 @@ let
     (buildOpenRAMod attrs name).overrideAttrs (_: {
       doCheck = false;
     });
-in
 
+in
 {
   ca = buildOpenRAMod {
     version = "96.git.fc3cf0b";

@@ -35,8 +35,8 @@ let
   wordlistsPathBin = writeShellScriptBin "wordlists_path" ''
     printf "${wordlistsCollection}/share/wordlists\n"
   '';
-in
 
+in
 symlinkJoin {
   name = "wordlists";
 

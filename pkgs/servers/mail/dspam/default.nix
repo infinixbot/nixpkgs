@@ -35,8 +35,8 @@ let
     coreutils
     which
   ];
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "dspam";
   version = "3.10.2";

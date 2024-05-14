@@ -22,8 +22,8 @@ let
     genericName = "Evernote desktop app";
     categories = [ "Application" ];
   };
-in
 
+in
 appimageTools.wrapType2 rec {
   inherit pname version;
 

@@ -110,8 +110,8 @@ let
       chmod -R +w deps/Zammad/.eslint-plugin-zammad
     '';
   };
-in
 
+in
 stdenv.mkDerivation {
   inherit pname version src;
 

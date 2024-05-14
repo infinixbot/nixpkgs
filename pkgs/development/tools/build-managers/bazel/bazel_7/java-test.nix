@@ -94,6 +94,6 @@ let
       ''
       + extraBazelArgs;
   };
-in
 
+in
 testBazel

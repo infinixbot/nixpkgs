@@ -223,14 +223,14 @@ let
         // with a checksum can be installed
         ${lib.optionalString usesNixExtensions ''lockPref("xpinstall.signatures.required", false)''};
       '';
+
+      #############################
+      #                           #
+      #   END EXTRA PREF CHANGES  #
+      #                           #
+      #############################
+
     in
-
-    #############################
-    #                           #
-    #   END EXTRA PREF CHANGES  #
-    #                           #
-    #############################
-
     stdenv.mkDerivation {
       inherit pname version;
 

@@ -18,6 +18,7 @@ let
     executable = true;
     destination = "/bin/tsocks";
   };
+
 in
 
 {

@@ -24,8 +24,8 @@ let
     libpulseaudio
     sndio
   ];
-in
 
+in
 stdenv.mkDerivation {
   pname = "cubeb";
   version = "unstable-2022-10-18";

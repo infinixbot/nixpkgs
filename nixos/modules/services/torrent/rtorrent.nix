@@ -12,8 +12,8 @@ let
 
   cfg = config.services.rtorrent;
   opt = options.services.rtorrent;
-in
 
+in
 {
   options.services.rtorrent = {
     enable = mkEnableOption "rtorrent";

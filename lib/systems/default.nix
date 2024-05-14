@@ -504,6 +504,7 @@ let
       final.parsed.abi.assertions or [ ]
     );
     final;
+
 in
 
 # Everything in this attrset is the public interface of the file.

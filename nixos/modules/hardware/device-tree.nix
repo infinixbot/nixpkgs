@@ -111,8 +111,8 @@ let
             o.dtboFile;
       }
     );
-in
 
+in
 {
   imports = [
     (mkRemovedOptionModule [

@@ -31,8 +31,8 @@ let
     platforms = builtins.attrNames sources;
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
   };
-in
 
+in
 if stdenv.isDarwin then
   callPackage ./darwin.nix {
     inherit

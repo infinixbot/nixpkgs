@@ -79,8 +79,8 @@ let
     url = "https://github.com/Bumblebee-Project/Bumblebee/commit/f94a118a88cd76e2dbea33d735bd53cf54b486a1.patch";
     hash = "sha256-3b5tLoMrGYSdg9Hz5bh0c44VIrbSZrY56JpWEyU/Pik=";
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "bumblebee";
   version = "3.2.1";

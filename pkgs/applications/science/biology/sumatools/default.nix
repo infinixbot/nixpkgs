@@ -13,8 +13,8 @@ let
     maintainers = [ maintainers.bzizou ];
     platforms = platforms.unix;
   };
-in
 
+in
 rec {
 
   # Suma library

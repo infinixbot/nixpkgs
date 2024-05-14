@@ -17,8 +17,8 @@ let
   plain = haskellPackages.gitit;
   plugins = if pluginSupport then plain else haskell.lib.compose.disableCabalFlag "plugins" plain;
   static = haskell.lib.compose.justStaticExecutables plugins;
-in
 
+in
 (haskell.lib.compose.overrideCabal (drv: {
   buildTools = (drv.buildTools or [ ]) ++ [ removeReferencesTo ];
 }) static).overrideAttrs

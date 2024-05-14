@@ -41,8 +41,8 @@ let
         };
       });
   };
-in
 
+in
 pkgs
 // {
   vmr = pkgs.vmr.overrideAttrs (old: {

@@ -14,6 +14,7 @@ with lib;
 let
 
   cfg = config.networking.nat;
+
 in
 
 {

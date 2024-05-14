@@ -17,8 +17,8 @@ let
     runScript = "/bin/boinc_client";
   };
   fhsEnvExecutable = "${fhsEnv}/bin/${fhsEnv.name}";
-in
 
+in
 {
   options.services.boinc = {
     enable = mkOption {

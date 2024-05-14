@@ -7,8 +7,8 @@
 with lib;
 let
   cfg = config.services.nullidentdmod;
-in
 
+in
 {
   options.services.nullidentdmod = with types; {
     enable = mkEnableOption "the nullidentdmod identd daemon";

@@ -12,8 +12,8 @@ let
   version = "3.99.5";
   suffix = "SP15";
   tarBall = "${version}final.${suffix}";
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "pcsc-cyberjack";
   inherit version;

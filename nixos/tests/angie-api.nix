@@ -6,8 +6,8 @@ import ./make-test-python.nix (
       192.168.2.101 api.example.com
       192.168.2.101 backend.example.com
     '';
-  in
 
+  in
   {
     name = "angie-api";
     meta.maintainers = with pkgs.lib.maintainers; [ izorkin ];

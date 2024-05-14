@@ -90,6 +90,6 @@ let
         '';
       }
     );
-in
 
+in
 builtins.mapAttrs (k: v: mkTest k v) tests

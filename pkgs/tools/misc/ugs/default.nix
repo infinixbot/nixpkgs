@@ -15,8 +15,8 @@ let
     desktopName = "Universal-G-Code-Sender";
     categories = [ "Game" ];
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "ugs";
   version = "2.1.6";

@@ -75,8 +75,8 @@ let
       [Install]
       WantedBy=hyperv-daemons.target
     '';
-in
 
+in
 stdenv.mkDerivation {
   pname = "hyperv-daemons";
   inherit (kernel) version;

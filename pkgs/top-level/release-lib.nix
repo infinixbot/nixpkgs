@@ -70,8 +70,8 @@ let
       pkgs_i686_freebsd = packageSet' { system = "i686-freebsd"; };
       pkgs_i686_cygwin = packageSet' { system = "i686-cygwin"; };
       pkgs_x86_64_cygwin = packageSet' { system = "x86_64-cygwin"; };
-    in
 
+    in
     system:
     if system == "x86_64-linux" then
       pkgs_x86_64_linux
@@ -216,8 +216,8 @@ let
     else
       [ ]
   );
-in
 
+in
 {
   # Common platform groups on which to test packages.
   inherit (platforms)

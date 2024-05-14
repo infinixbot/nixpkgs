@@ -64,8 +64,8 @@ let
       '';
     }
     .${flavour};
-in
 
+in
 import ../make-test-python.nix (
   { pkgs, lib, ... }:
   {

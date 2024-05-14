@@ -17,8 +17,8 @@ let
     rev = "v${version}";
     hash = "sha256-oi0H8TIQwtpzxKoQGnKaOY0bcWu7avTtrY+NgNRiq8k=";
   };
-in
 
+in
 buildNpmPackage rec {
   pname = "vaultwarden-webvault";
   inherit version;

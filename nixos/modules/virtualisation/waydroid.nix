@@ -20,8 +20,8 @@ let
     /dev/vndbinder = aidl2
     /dev/hwbinder = hidl
   '';
-in
 
+in
 {
 
   options.virtualisation.waydroid = {

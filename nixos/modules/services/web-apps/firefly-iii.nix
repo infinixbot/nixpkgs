@@ -129,8 +129,8 @@ let
     LockPersonality = true;
     PrivateUsers = true;
   };
-in
 
+in
 {
 
   options.services.firefly-iii = {

@@ -31,8 +31,8 @@ let
   minimalPackage = cfg.package.override {
     enabledPlugins = [ "syslog" ] ++ builtins.attrNames cfg.plugins;
   };
-in
 
+in
 {
   options.services.collectd = with types; {
     enable = mkEnableOption "collectd agent";

@@ -36,6 +36,7 @@ packageNames:
 
 let
   util = callPackage ./util.nix { };
+
 in
 
 let
@@ -251,6 +252,7 @@ let
       else
         packageNames;
   };
+
 in
 
 runCommand "julia-${julia.version}-env"

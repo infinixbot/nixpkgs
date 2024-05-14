@@ -17,6 +17,7 @@ let
 
   enableAutoScrub = cfgScrub.enable;
   enableBtrfs = inInitrd || inSystem || enableAutoScrub;
+
 in
 
 {

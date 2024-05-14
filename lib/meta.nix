@@ -15,8 +15,8 @@ let
     assertMsg
     ;
   inherit (builtins) isString match typeOf;
-in
 
+in
 rec {
 
   /*

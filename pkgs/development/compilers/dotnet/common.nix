@@ -125,8 +125,8 @@ stdenv.mkDerivation (
             # yes, older SDKs omit the comma
             [[ "$output" =~ Hello,?\ World! ]] && touch "$out"
           '';
-        in
 
+        in
         {
           version = testers.testVersion (
             {

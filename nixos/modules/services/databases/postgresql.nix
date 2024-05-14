@@ -70,6 +70,7 @@ let
   '';
 
   groupAccessAvailable = versionAtLeast postgresql.version "11.0";
+
 in
 
 {

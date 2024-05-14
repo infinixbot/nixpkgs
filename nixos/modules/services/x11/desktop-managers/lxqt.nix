@@ -11,6 +11,7 @@ with lib;
 let
   xcfg = config.services.xserver;
   cfg = xcfg.desktopManager.lxqt;
+
 in
 
 {

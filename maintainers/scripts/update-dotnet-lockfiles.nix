@@ -55,8 +55,8 @@ let
   '';
 
   fetchScripts = map (p: p.fetch-deps) packages;
-in
 
+in
 pkgs.stdenv.mkDerivation {
   name = "nixpkgs-update-dotnet-lockfiles";
   buildCommand = ''

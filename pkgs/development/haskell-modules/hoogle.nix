@@ -39,8 +39,8 @@ let
     lib.closePropagation
       # we grab the doc outputs
       (map (lib.getOutput "doc") packages);
-in
 
+in
 buildPackages.stdenv.mkDerivation {
   name = "hoogle-with-packages";
   buildInputs = [

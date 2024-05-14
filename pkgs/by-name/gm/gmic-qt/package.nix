@@ -41,6 +41,7 @@ let
       description = "Versatile front-end to the image processing framework G'MIC";
     };
   };
+
 in
 
 assert lib.assertMsg (builtins.hasAttr variant variants)

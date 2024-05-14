@@ -40,8 +40,8 @@ let
 
   php81-unit = php81.override phpConfig;
   php82-unit = php82.override phpConfig;
-in
 
+in
 stdenv.mkDerivation rec {
   version = "1.32.1";
   pname = "unit";

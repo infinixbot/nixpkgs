@@ -101,8 +101,8 @@ let
       }
       .${stdenv.system} or (throw "Unsupported system: ${stdenv.system}");
   };
-in
 
+in
 stdenv.mkDerivation {
   inherit pname src version;
 

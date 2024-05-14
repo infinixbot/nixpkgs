@@ -39,8 +39,8 @@ let
   components = callPackage ./components.nix { snapshotPath = ./components.json; };
 
   withExtraComponents = callPackage ./withExtraComponents.nix { inherit components; };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "google-cloud-sdk";
   inherit (data) version;

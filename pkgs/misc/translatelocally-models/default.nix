@@ -42,8 +42,8 @@ let
       };
     };
   allModelPkgs = lib.listToAttrs (map (withCodeAsKey mkModelPackage) modelSpecs);
-in
 
+in
 allModelPkgs
 // {
   is-en-tiny = allModelPkgs.is-en-tiny.overrideAttrs (super: {

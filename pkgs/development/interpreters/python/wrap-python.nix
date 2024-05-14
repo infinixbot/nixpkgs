@@ -52,8 +52,8 @@ makePythonHook {
         sys.argv[0] = '"'$(readlink -f "$f")'"'
         functools.reduce(lambda k, p: site.addsitedir(p, k), ['"$([ -n "$program_PYTHONPATH" ] && (echo "'$program_PYTHONPATH'" | sed "s|:|','|g") || true)"'], site._init_pathinfo())
       '';
-    in
 
+    in
     ''
       1 {
         :r

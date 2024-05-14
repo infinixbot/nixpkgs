@@ -21,6 +21,6 @@ let
   generatedPkg = dhallPackages.generateDhallDirectoryPackage args;
 
   builtPkg = dhallPackages.callPackage generatedPkg { };
-in
 
+in
 dhallPackageToNix builtPkg

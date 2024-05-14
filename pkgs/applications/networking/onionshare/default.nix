@@ -64,8 +64,8 @@ let
 
   # TODO: package meek https://support.torproject.org/glossary/meek/
   meek = "/meek-not-available";
-in
 
+in
 rec {
   onionshare = buildPythonApplication {
     pname = "onionshare-cli";

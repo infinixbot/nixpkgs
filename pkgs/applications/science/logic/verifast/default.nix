@@ -41,8 +41,8 @@ let
   patchLib = x: ''
     patchelf --set-rpath ${libPath} ${x}
   '';
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "verifast";
   version = "21.04";

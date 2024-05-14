@@ -28,6 +28,7 @@ let
     name = "graylog-plugins";
     paths = cfg.plugins;
   };
+
 in
 
 {

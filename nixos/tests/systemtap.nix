@@ -46,8 +46,8 @@ let
   kernels = {
     inherit (pkgs.linuxKernel.packageAliases) linux_default linux_latest;
   };
-in
 
+in
 mapAttrs (_: lP: testsForLinuxPackages lP) kernels
 // {
   passthru = {

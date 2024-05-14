@@ -59,6 +59,7 @@ let
     setPrio ((pkg.meta.priority or 5) + 3) pkg
   ) defaultPackageNames;
   defaultPackagesText = "[ ${concatMapStringsSep " " (n: "pkgs.${n}") defaultPackageNames} ]";
+
 in
 
 {

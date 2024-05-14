@@ -42,8 +42,8 @@ let
       hash = "sha256-K1Z90xexsUvk4SdEb8FGryRal0GAFoLz3j1h/RT2nYw=";
     };
   };
-in
 
+in
 stdenv.mkDerivation rec {
   version = "7.2";
   pname = "quantum-espresso";

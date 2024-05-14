@@ -127,8 +127,8 @@ let
     };
 
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "mujoco";
   version = "3.1.5";

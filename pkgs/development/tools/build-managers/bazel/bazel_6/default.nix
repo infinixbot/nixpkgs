@@ -211,8 +211,8 @@ let
       try-import /etc/bazel.bazelrc
     '';
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "bazel${lib.optionalString enableNixHacks "-hacks"}";
   inherit version;
@@ -399,8 +399,8 @@ stdenv.mkDerivation rec {
         rev = "4183fc709c26a00366665e2d60d70521dc0b405d";
         sha256 = "1mm4awx6sa0myiz9j4hwp71rpr7yh8vihf3zm15n2ii6xb82r31k";
       };
-    in
 
+    in
     (lib.optionalAttrs (!stdenv.hostPlatform.isDarwin) {
       # `extracted` doesn’t work on darwin
       shebang = callPackage ../shebang-test.nix {

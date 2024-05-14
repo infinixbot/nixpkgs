@@ -88,8 +88,8 @@ let
   '';
 
   common = callPackage ./common.nix { };
-in
 
+in
 stdenv.mkDerivation {
 
   pname = "vim-full";

@@ -41,8 +41,8 @@ let
     };
 
   configFile = pkgs.writeText "wasabibackend.conf" (builtins.toJSON confOptions);
-in
 
+in
 {
 
   options = {

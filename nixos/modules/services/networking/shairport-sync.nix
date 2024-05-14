@@ -10,6 +10,7 @@ with lib;
 let
 
   cfg = config.services.shairport-sync;
+
 in
 
 {

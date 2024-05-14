@@ -258,6 +258,7 @@ let
 
   inherit (cudaPackages) cudaFlags cudaVersion;
   inherit (cudaFlags) cudaCapabilities;
+
 in
 
 effectiveStdenv.mkDerivation {

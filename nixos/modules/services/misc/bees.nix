@@ -79,8 +79,8 @@ let
       '';
     };
   };
-in
 
+in
 {
 
   options.services.beesd = {

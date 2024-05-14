@@ -84,8 +84,8 @@ let
       addOpenGLRunpath $out/bin/hover
     '';
   };
-in
 
+in
 buildFHSEnv rec {
   name = pname;
   targetPkgs =

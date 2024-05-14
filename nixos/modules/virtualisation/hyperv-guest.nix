@@ -9,8 +9,8 @@ with lib;
 
 let
   cfg = config.virtualisation.hypervGuest;
-in
 
+in
 {
   options = {
     virtualisation.hypervGuest = {

@@ -24,8 +24,8 @@ let
     rev = "ec9412d27d5fa8f377848a59c768b12c243cb80d";
     sha256 = "sha256-/u/3oQzac/dQrgFaiYvzT5uQ108XarkXnA2DByA5sic=";
   };
-in
 
+in
 stdenv.mkDerivation {
   inherit pname version;
 

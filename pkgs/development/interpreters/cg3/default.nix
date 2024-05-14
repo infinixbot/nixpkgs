@@ -63,6 +63,6 @@ let
       platforms = platforms.all;
     };
   };
-in
 
+in
 cg3

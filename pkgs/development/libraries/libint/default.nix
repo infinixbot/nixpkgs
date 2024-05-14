@@ -255,6 +255,6 @@ let
 
     inherit meta;
   };
-in
 
+in
 codeComp

@@ -32,6 +32,7 @@ let
 
         ${cfg.extraConfig}
       '';
+
 in
 
 {

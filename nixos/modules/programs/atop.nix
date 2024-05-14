@@ -9,8 +9,8 @@
 
 let
   cfg = config.programs.atop;
-in
 
+in
 {
   ###### interface
 

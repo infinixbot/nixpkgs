@@ -155,8 +155,8 @@ let
   };
 
   pidFile = "/run/keepalived.pid";
-in
 
+in
 {
   meta.maintainers = [ lib.maintainers.raitobezarius ];
 

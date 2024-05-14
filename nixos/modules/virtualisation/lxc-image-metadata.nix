@@ -63,8 +63,8 @@ let
         files = [ ];
         properties = { };
       };
-in
 
+in
 {
   options = {
     virtualisation.lxc = {

@@ -19,6 +19,7 @@ let
     ${optionalString (cfg.socksParentProxy != "") "socksParentProxy = ${cfg.socksParentProxy}"}
     ${config.services.polipo.extraConfig}
   '';
+
 in
 
 {

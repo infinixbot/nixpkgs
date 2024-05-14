@@ -56,8 +56,8 @@ let
       description = "Speech synthesizer based on the concatenation of diphones (binary only)";
     };
   };
-in
 
+in
 runCommandLocal "${pname}-${version}" { inherit pname version meta; } ''
   mkdir -p "$out/share/mbrola"
   ln -s '${voices}/data' "$out/share/mbrola/voices"

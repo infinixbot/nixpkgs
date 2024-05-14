@@ -3,8 +3,8 @@ import ./make-test-python.nix (
   let
 
     testId = "7CFNTQM-IMTJBHJ-3UWRDIU-ZGQJFR6-VCXZ3NB-XUH3KZO-N52ITXR-LAIYUAU";
-  in
 
+  in
   {
     name = "syncthing-init";
     meta.maintainers = with pkgs.lib.maintainers; [ lassulus ];

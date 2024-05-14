@@ -96,8 +96,8 @@ let
         '';
   };
   overrides = (src + "/overrides");
-in
 
+in
 rec {
   collect =
     {

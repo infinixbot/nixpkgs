@@ -43,8 +43,8 @@ let
   );
 
   mkDefaultAttrs = mapAttrs (n: v: mkDefault v);
-in
 
+in
 {
   options.services.pdns-recursor = {
     enable = mkEnableOption "PowerDNS Recursor, a recursive DNS server";

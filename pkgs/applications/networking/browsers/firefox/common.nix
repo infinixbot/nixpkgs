@@ -239,6 +239,7 @@ let
       '') defaultPrefs
     )
   );
+
 in
 
 buildStdenv.mkDerivation {

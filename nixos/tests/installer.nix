@@ -887,8 +887,8 @@ let
         target.send_chars("password\n")
       '';
     };
-in
 
+in
 {
 
   # !!! `parted mkpart' seems to silently create overlapping partitions.

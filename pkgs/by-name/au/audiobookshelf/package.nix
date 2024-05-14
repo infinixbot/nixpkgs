@@ -49,8 +49,8 @@ let
       getopt
       ;
   };
-in
 
+in
 buildNpmPackage {
   inherit pname src;
   inherit (source) version;

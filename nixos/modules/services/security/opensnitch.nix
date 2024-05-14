@@ -14,8 +14,8 @@ let
   predefinedRules = flip mapAttrs cfg.rules (
     name: cfg: { file = pkgs.writeText "rule" (builtins.toJSON cfg); }
   );
-in
 
+in
 {
   options = {
     services.opensnitch = {

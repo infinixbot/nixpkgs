@@ -37,8 +37,8 @@ let
       "gnome3"
     else
       "curses";
-in
 
+in
 {
   imports = [
     (mkRemovedOptionModule [

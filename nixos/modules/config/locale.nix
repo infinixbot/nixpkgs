@@ -16,6 +16,7 @@ let
   };
 
   lcfg = config.location;
+
 in
 
 {

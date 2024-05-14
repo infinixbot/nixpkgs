@@ -16,8 +16,8 @@ let
     $pbsserver ${cfg.serverNode}
     $logevent 225
   '';
-in
 
+in
 {
   options = {
 

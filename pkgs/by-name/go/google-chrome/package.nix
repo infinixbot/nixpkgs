@@ -158,8 +158,8 @@ let
       gtk3
       gtk4
     ];
-in
 
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "google-chrome";
   version = "124.0.6367.201";

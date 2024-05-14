@@ -179,8 +179,8 @@ let
       '';
     };
   };
-in
 
+in
 utils
 // {
   coreboot-utils =

@@ -30,6 +30,7 @@ let
     };
     networking.firewall.allowedTCPPorts = [ 80 ];
   };
+
 in
 
 {

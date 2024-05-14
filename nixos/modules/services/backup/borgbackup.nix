@@ -292,8 +292,8 @@ let
       borgbackup.repos.${name}: repo isn't a local path, thus it can't be a removable device!
     '';
   };
-in
 
+in
 {
   meta.maintainers = with maintainers; [ dotlambda ];
   meta.doc = ./borgbackup.md;

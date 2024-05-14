@@ -12,8 +12,8 @@ let
       "x86"
     else
       throw "Unsupported architecture";
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "ut2004-demo";
   version = "3334";

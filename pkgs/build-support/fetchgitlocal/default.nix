@@ -49,7 +49,7 @@ lib.makeOverridable (
           git -C ${srcStr} archive --format=tar ${gitHash} \
             | tar xf - -C $out
         '';
-  in
 
+  in
   nixPath
 )

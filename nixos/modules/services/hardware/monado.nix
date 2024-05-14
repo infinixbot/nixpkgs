@@ -15,8 +15,8 @@ let
     ;
 
   cfg = config.services.monado;
-in
 
+in
 {
   options.services.monado = {
     enable = mkEnableOption "Monado user service";

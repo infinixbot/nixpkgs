@@ -24,8 +24,8 @@ let
   hexChars = stringToCharacters "0123456789abcdef";
   isHexString = s: all (c: elem c hexChars) (stringToCharacters (toLower s));
   hexStr = addCheckDesc "hexadecimal string" types.str isHexString;
-in
 
+in
 {
 
   options.services.multipath = with types; {
@@ -573,8 +573,8 @@ in
           }
         '';
         multipaths = lib.concatMapStringsSep "\n" mkMultipathBlock cfg.pathGroups;
-      in
 
+      in
       ''
         devices {
         ${indentLines 2 devices}

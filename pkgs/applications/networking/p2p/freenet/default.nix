@@ -36,8 +36,8 @@ let
       sha256 = "sha256-T1zymxRTADVhhwp2TyB+BC/J4gZsT/CUuMrT4COlpTY=";
     })
   ];
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "freenet";
   inherit version patches;

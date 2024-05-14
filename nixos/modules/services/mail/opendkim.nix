@@ -32,8 +32,8 @@ let
       "-x"
       cfg.configFile
     ];
-in
 
+in
 {
   imports = [
     (mkRenamedOptionModule

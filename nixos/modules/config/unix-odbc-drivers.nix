@@ -11,8 +11,8 @@ let
     Description = ${pkg.meta.description}
     Driver = ${pkg}/${pkg.driver}
   '';
-in
 
+in
 {
   ###### interface
 

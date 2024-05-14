@@ -100,8 +100,8 @@ let
     dontInstall = true;
     doCheck = true;
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "djv";
   version = djvVersion;

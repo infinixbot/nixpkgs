@@ -33,8 +33,8 @@ let
       versionWithDashes = builtins.replaceStrings [ "." ] [ "-" ] version;
     in
     "https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-${lib.versions.major version}-x-x/${versionWithDashes}/nrf-command-line-tools-${version}_${platform.name}.tar.gz";
-in
 
+in
 stdenv.mkDerivation {
   pname = "nrf-command-line-tools";
   inherit version;

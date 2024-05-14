@@ -26,8 +26,8 @@ let
       throw "Unsupported os";
   versionInfo = versions."${os}-${arch}";
   inherit (versionInfo) version sha256 url;
-in
 
+in
 stdenv.mkDerivation {
   pname = "ngrok";
   inherit version;

@@ -38,8 +38,8 @@ import ./make-test-python.nix (
         }
         extraConfig
       ];
-  in
 
+  in
   {
     name = "nebula";
 

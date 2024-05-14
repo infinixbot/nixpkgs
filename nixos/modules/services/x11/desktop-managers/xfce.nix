@@ -11,8 +11,8 @@ with lib;
 let
   cfg = config.services.xserver.desktopManager.xfce;
   excludePackages = config.environment.xfce.excludePackages;
-in
 
+in
 {
   meta = {
     maintainers = teams.xfce.members;

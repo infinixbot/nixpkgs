@@ -9,8 +9,8 @@ import ./make-test-python.nix (
         });
       })
     ];
-  in
 
+  in
   {
     name = "containers-custom-pkgs";
     meta = {

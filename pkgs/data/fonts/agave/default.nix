@@ -20,8 +20,8 @@ let
     (mkAg "Regular" "sha256-vX1VhEgqy9rQ7hPmAgBGxKyIs2QSAYqZC/mL/2BIOrA=")
     (mkAg "Bold" "sha256-Ax/l/RKyc03law0ThiLac/7HHV4+YxibKzcZnjZs6VI=")
   ];
-in
 
+in
 stdenv.mkDerivation {
   inherit pname version;
   srcs = fonts;

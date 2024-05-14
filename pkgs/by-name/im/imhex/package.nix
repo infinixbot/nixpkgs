@@ -33,8 +33,8 @@ let
     rev = "ImHex-v${patterns_version}";
     hash = "sha256-5a6aFT8R8vMzPS+Y+fcDV5+olhioEpLjdMqa7qOyGsw=";
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "imhex";
   inherit version;

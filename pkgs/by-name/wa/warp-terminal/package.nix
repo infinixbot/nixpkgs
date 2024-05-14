@@ -115,6 +115,6 @@ let
     ];
     platforms = platforms.darwin ++ [ "x86_64-linux" ];
   };
-in
 
+in
 if stdenvNoCC.isDarwin then darwin else linux

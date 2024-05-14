@@ -27,8 +27,8 @@ let
     mysqlSupport = true;
     postgresSupport = true;
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "sequeler";
   version = "0.8.2";

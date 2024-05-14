@@ -16,8 +16,8 @@ let
   };
 
   nix-snapshotter-lib = callPackage "${src}/package.nix" { };
-in
 
+in
 buildGoModule {
   pname = "nix-snapshotter";
   inherit version src;

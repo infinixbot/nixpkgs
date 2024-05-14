@@ -24,8 +24,8 @@ let
     rev = "8cd12a6e90999f3a341018812a5d66d7e6b30913";
     hash = "sha256-+I0NrML54ni37qgDHbRUQiLmmw/UZgXmoFoiDNDeH5A=";
   };
-in
 
+in
 stdenv.mkDerivation {
   pname = "tbs";
   version = "20240506-${kernel.version}";

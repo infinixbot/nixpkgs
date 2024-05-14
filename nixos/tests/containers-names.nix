@@ -22,8 +22,8 @@ import ./make-test-python.nix (
               localAddress = "192.168.${subnet}.2";
               config = { };
             };
-          in
 
+          in
           {
             first = container "1";
             second = container "2";

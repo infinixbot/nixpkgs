@@ -40,8 +40,8 @@ let
         name = "Charles";
         startupNotify = true;
       };
-    in
 
+    in
     stdenv.mkDerivation {
       pname = "charles";
       inherit version;
@@ -83,8 +83,8 @@ let
         platforms = platforms.unix;
       };
     };
-in
 
+in
 {
   charles4 = (
     generic {

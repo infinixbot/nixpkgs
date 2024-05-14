@@ -68,8 +68,8 @@ let
     GRAPHITE_CONF_DIR = configDir;
     GRAPHITE_STORAGE_DIR = dataDir;
   };
-in
 
+in
 {
 
   imports = [

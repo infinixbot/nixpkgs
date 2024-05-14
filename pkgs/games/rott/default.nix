@@ -20,8 +20,8 @@ let
     cd $dir
     exec @out@/libexec/rott "$@"
   '';
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "rott";
   version = "1.1.2";

@@ -46,6 +46,7 @@ let
       "NIX_CONNECT_TIMEOUT"
     ]
     ++ (map (site: "NIX_MIRRORS_${site}") sites);
+
 in
 
 {

@@ -11,8 +11,8 @@ let
     "http://oss.sonatype.org/content/repositories/public/"
     "http://repo.typesafe.com/typesafe/releases/"
   ];
-in
 
+in
 rec {
   makePaths =
     {

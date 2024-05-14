@@ -11,8 +11,8 @@ let
   cfg = config.services.softether;
 
   package = cfg.package.override { inherit (cfg) dataDir; };
-in
 
+in
 {
 
   ###### interface

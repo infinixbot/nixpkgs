@@ -24,6 +24,7 @@ let
     ${pkgs.xorg.mkfontdir}/bin/mkfontdir
     cat $(find ${pkgs.xorg.fontalias}/ -name fonts.alias) >fonts.alias
   '';
+
 in
 
 {

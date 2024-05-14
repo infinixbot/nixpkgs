@@ -21,8 +21,8 @@ let
         ;
     }
   );
-in
 
+in
 {
   imports = [
     (lib.mkRenamedOptionModule
@@ -300,8 +300,8 @@ in
             '';
           };
         };
-      in
 
+      in
       {
         dynamic = mkOption {
           type = types.bool;

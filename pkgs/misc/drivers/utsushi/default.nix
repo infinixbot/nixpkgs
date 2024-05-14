@@ -26,8 +26,8 @@ let
       [ -r .rev ] && cat .rev || true
     fi
   '';
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "imagescan";
   version = "3.65.0";

@@ -175,8 +175,8 @@ let
       cbfonts-fd
     ]
   );
-in
 
+in
 buildPythonPackage rec {
   pname = "manim";
   pyproject = true;

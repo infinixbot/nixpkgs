@@ -37,8 +37,8 @@ let
       sha256 = "1ri7w4sz3sy5xilibg53ls9526fx7jwbv8rc54ccrqfhxqyin308";
     };
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "diopser";
   version = "unstable-2021-5-13";

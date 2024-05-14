@@ -132,8 +132,8 @@ let
       bash $src/download-paks --cache=$(pwd) --version=${version} $out
     '';
   };
-in
 
+in
 # this really is the daemon game engine, the game itself is in the assets
 stdenv.mkDerivation rec {
   pname = "unvanquished";

@@ -27320,8 +27320,8 @@ with pkgs;
         otherSplices = generateSplicesForMkScope "xorg";
         f = lib.extends overrides generatedPackages;
       };
-    in
 
+    in
     recurseIntoAttrs xorgPackages;
 
   xorg-autoconf = callPackage ../development/tools/misc/xorg-autoconf { };

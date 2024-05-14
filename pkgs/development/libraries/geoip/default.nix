@@ -13,8 +13,8 @@
 let
   dataDir =
     if lib.isDerivation geoipDatabase then "${toString geoipDatabase}/share/GeoIP" else geoipDatabase;
-in
 
+in
 stdenv.mkDerivation rec {
   pname = drvName;
   version = "1.6.12";

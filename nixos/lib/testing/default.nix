@@ -30,8 +30,8 @@ let
     ./run.nix
     ./testScript.nix
   ];
-in
 
+in
 {
   inherit evalTest runTest testModules;
 }

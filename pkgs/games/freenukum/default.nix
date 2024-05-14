@@ -27,8 +27,8 @@ let
     ];
     genericName = pname;
   };
-in
 
+in
 rustPlatform.buildRustPackage rec {
   inherit pname;
   version = "0.4.0";

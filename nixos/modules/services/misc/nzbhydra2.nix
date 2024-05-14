@@ -9,8 +9,8 @@ with lib;
 
 let
   cfg = config.services.nzbhydra2;
-in
 
+in
 {
   options = {
     services.nzbhydra2 = {

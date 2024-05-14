@@ -2,8 +2,8 @@
 
 let
   version = "0.9.64";
-in
 
+in
 buildDhallGitHubPackage {
   name = "cloudformation";
   owner = "jcouyang";

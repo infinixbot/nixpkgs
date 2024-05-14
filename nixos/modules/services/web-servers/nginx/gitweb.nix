@@ -11,8 +11,8 @@ let
   cfg = config.services.nginx.gitweb;
   gitwebConfig = config.services.gitweb;
   package = pkgs.gitweb.override (optionalAttrs gitwebConfig.gitwebTheme { gitwebTheme = true; });
-in
 
+in
 {
 
   options.services.nginx.gitweb = {

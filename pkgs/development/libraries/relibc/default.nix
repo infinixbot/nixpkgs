@@ -41,8 +41,8 @@ let
     rustc = bootstrapCrossRust;
     cargo = bootstrapCrossRust;
   };
-in
 
+in
 redoxRustPlatform.buildRustPackage rec {
   pname = "relibc";
   version = "latest";

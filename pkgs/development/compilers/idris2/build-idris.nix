@@ -67,8 +67,8 @@ let
       '';
     }
   );
-in
 
+in
 {
   executable = derivation.overrideAttrs {
     installPhase = ''

@@ -41,8 +41,8 @@ let
       ${optionalString (config.type == "remote") ''resource = "${config.resource}"''}
     '') cfg.transports
   );
-in
 
+in
 {
   options.services.icingaweb2.modules.monitoring = with types; {
     enable = mkOption {

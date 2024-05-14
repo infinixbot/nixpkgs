@@ -6,6 +6,7 @@
 
 let
   version = "0.2pre4";
+
 in
 
 stdenv.mkDerivation {

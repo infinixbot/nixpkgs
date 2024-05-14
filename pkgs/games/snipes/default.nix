@@ -12,8 +12,8 @@ let
     url = "http://kingbird.myphotos.cc/ee22d44076adb8a34d8e20df4be3730a/SnipesConsole.ttf";
     sha256 = "06n8gq18js0bv4svx84ljzhs9zmi81wy0zqcqj3b4g0rsrkr20a7";
   };
-in
 
+in
 stdenv.mkDerivation {
   pname = "snipes";
   version = "20240317";

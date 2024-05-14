@@ -98,8 +98,8 @@ let
         virtualisation.qemu.options = qemuOptions;
         boot.initrd.services.udev.rules = concatMapStrings (x: x + "\n") udevRules;
       };
-    in
 
+    in
     {
       key = "network-interfaces";
       config = networkConfig // {
@@ -154,8 +154,8 @@ let
       };
     }
   );
-in
 
+in
 {
   config = {
     extraBaseModules = {

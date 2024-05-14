@@ -231,8 +231,8 @@ let
     ++ lib.optional (commit == "true") "--commit";
 
   args = [ packagesJson ] ++ optionalArgs;
-in
 
+in
 pkgs.stdenv.mkDerivation {
   name = "nixpkgs-update-script";
   buildCommand = ''

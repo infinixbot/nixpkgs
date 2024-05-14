@@ -84,6 +84,6 @@ let
       composition = eval args;
     in
     composition.config.out.dockerComposeYaml;
-in
 
+in
 arion

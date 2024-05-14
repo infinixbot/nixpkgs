@@ -45,8 +45,8 @@ let
       cp -r modules/core/3rdparty/* $out/
     '';
   };
-in
 
+in
 maven'.buildMavenPackage {
   inherit src version;
 

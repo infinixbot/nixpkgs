@@ -28,6 +28,7 @@ let
       "libzbar.0.dylib"
     else
       "libzbar${stdenv.hostPlatform.extensions.sharedLibrary}";
+
 in
 
 python3.pkgs.buildPythonApplication {

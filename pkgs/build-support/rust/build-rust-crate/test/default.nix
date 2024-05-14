@@ -106,8 +106,8 @@ let
             dependencies = [ crate ];
             src = mkBinExtern "src/main.rs" libName;
           };
-    in
 
+    in
     assert expectedTestOutputs != null -> hasTests;
     assert hasTests -> expectedTestOutputs != null;
 
@@ -211,8 +211,8 @@ let
         touch $out
       ''
     );
-in
 
+in
 rec {
 
   tests =

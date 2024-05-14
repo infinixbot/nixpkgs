@@ -13,8 +13,8 @@ import ./make-test-python.nix (
     envFile = pkgs.writeText "nixos-test-mumble-murmurd.env" ''
       MURMURD_PASSWORD=testpassword
     '';
-  in
 
+  in
   {
     name = "mumble";
     meta = with pkgs.lib.maintainers; {

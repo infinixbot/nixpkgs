@@ -7,6 +7,7 @@ let
   inherit (lib.trivial) warnIf;
 
   asciiTable = import ./ascii-table.nix;
+
 in
 
 rec {
@@ -1237,8 +1238,8 @@ rec {
       parsedInput = fromJSON (head strippedInput);
 
       generalError = "toInt: Could not convert ${escapeNixString str} to int.";
-    in
 
+    in
     # Error on presence of non digit characters.
     if strippedInput == null then
       throw generalError
@@ -1292,8 +1293,8 @@ rec {
       parsedInput = fromJSON (head strippedInput);
 
       generalError = "toIntBase10: Could not convert ${escapeNixString str} to int.";
-    in
 
+    in
     # Error on presence of non digit characters.
     if strippedInput == null then
       throw generalError
@@ -1517,8 +1518,8 @@ rec {
         # Example: "abcdef" -> "zbcdez" or "bcdefz" or "zabcde"
         else
           xinfix == yinfix || xdelr == ydell || xdell == ydelr;
-    in
 
+    in
     k:
     if k <= 0 then
       a: b: a == b

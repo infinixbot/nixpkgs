@@ -117,6 +117,6 @@ let
         mate-utils
       ];
     };
-in
 
+in
 lib.makeScope pkgs.newScope packages

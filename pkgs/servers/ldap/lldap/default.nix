@@ -70,8 +70,8 @@ let
       doCheck = false;
     }
   );
-in
 
+in
 rustPlatform.buildRustPackage (
   commonDerivationAttrs
   // {

@@ -79,6 +79,6 @@ let
       maintainers = with maintainers; [ willibutz ];
     };
   };
-in
 
+in
 if stdenv.isDarwin then self else perl.pkgs.toPerlModule self

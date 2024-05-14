@@ -134,10 +134,10 @@ let
       };
 
       elpaDevelPackages = super // overrides;
-    in
 
+    in
     elpaDevelPackages // { inherit elpaBuild; }
   );
-in
 
+in
 (generateElpa { }) // { __attrsFailEvaluation = true; }

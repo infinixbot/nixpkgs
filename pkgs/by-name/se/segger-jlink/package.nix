@@ -130,8 +130,8 @@ let
       ];
     };
   };
-in
 
+in
 stdenv.mkDerivation {
   pname = "segger-jlink";
   inherit src version;

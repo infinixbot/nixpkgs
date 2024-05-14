@@ -317,8 +317,8 @@ rec {
               }
             else
               singleAtom;
-        in
 
+        in
         attrsOf atom;
 
       generate =
@@ -520,8 +520,8 @@ rec {
             inherit value;
             _elixirType = "raw";
           };
-        in
 
+        in
         {
           inherit mkRaw;
 

@@ -23,8 +23,8 @@ import ./make-test-python.nix (
       print(job.body.decode('utf-8'))
       job.delete()
     '';
-  in
 
+  in
   {
     name = "beanstalkd";
     meta.maintainers = [ lib.maintainers.aanderse ];

@@ -25,8 +25,8 @@ let
       (pkgs.writeTextDir "log4j.properties" cfg.logging)
     ];
   };
-in
 
+in
 {
 
   options.services.zookeeper = {

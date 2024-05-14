@@ -747,8 +747,8 @@ let
       }
     ];
   };
-in
 
+in
 {
 
   options.services.thanos = {

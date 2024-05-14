@@ -26,6 +26,7 @@ let
     featureFlags.minimalModules = { };
   };
   evalMinimalConfig = module: nixosLib.evalModules { modules = [ module ]; };
+
 in
 
 rec {

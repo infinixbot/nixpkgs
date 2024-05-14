@@ -13,8 +13,8 @@ let
   uid = config.ids.uids.gpsd;
   gid = config.ids.gids.gpsd;
   cfg = config.services.gpsd;
-in
 
+in
 {
 
   ###### interface

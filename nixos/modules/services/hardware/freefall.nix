@@ -11,8 +11,8 @@ with lib;
 let
 
   cfg = config.services.freefall;
-in
 
+in
 {
 
   options.services.freefall = {
@@ -56,8 +56,8 @@ in
             Type = "forking";
           };
         };
-    in
 
+    in
     mkIf cfg.enable {
 
       environment.systemPackages = [ cfg.package ];

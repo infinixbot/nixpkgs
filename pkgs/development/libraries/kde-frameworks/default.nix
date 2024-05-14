@@ -116,8 +116,8 @@ let
                 maintainers = (meta.maintainers or [ ]) ++ maintainers;
                 platforms = meta.platforms or lib.platforms.all;
               };
-          in
 
+          in
           mkDerivation (
             args
             // {
@@ -133,8 +133,8 @@ let
           );
 
       };
-    in
 
+    in
     {
       extra-cmake-modules = callPackage ./extra-cmake-modules { };
 
@@ -231,6 +231,6 @@ let
       kxmlrpcclient = callPackage ./kxmlrpcclient.nix { };
 
     };
-in
 
+in
 lib.makeScope libsForQt5.newScope packages

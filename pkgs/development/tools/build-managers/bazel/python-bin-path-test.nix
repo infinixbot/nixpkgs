@@ -84,6 +84,6 @@ let
         //python:bin
     '';
   };
-in
 
+in
 testBazel

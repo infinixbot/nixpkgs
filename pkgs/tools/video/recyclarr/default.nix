@@ -49,8 +49,8 @@ let
       }";
     }
     ."${os}";
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "recyclarr";
   version = "6.0.2";

@@ -58,8 +58,8 @@ import ./make-test-python.nix (
       {
         services.moosefs.client.enable = true;
       };
-  in
 
+  in
   {
     name = "moosefs";
 

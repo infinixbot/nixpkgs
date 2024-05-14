@@ -43,8 +43,8 @@ let
   };
 
   sharedLibraryExt = rustc.stdenv.hostPlatform.extensions.sharedLibrary;
-in
 
+in
 flutter316.buildFlutterApplication rec {
   pname = "rustdesk";
   version = "1.2.3-2";

@@ -200,8 +200,8 @@ let
         + extraTest;
 
     };
-in
 
+in
 {
 
   # maintainer: @raitobezarius

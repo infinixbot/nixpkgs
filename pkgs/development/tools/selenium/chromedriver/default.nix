@@ -67,8 +67,8 @@ let
     libXi
     dbus
   ];
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "chromedriver";
   version = upstream-info.version;

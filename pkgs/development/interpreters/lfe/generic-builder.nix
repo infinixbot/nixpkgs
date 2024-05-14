@@ -43,8 +43,8 @@ let
 
     sha256 = "sha256-GChYQhhb0z772pfRNKXLWgiEOE2zYRn+4OPPpIhWjLs=";
   };
-in
 
+in
 assert (assertMsg (versionAtLeast maximumOTPVersion mainVersion)) ''
   LFE ${version} is supported on OTP <=${maximumOTPVersion}, not ${mainVersion}.
 '';

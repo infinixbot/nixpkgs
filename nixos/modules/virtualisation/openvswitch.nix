@@ -11,8 +11,8 @@ with lib;
 
 let
   cfg = config.virtualisation.vswitch;
-in
 
+in
 {
 
   options.virtualisation.vswitch = {
@@ -51,8 +51,8 @@ in
         buildInputs = with pkgs; [ cfg.package ];
         installPhase = "mkdir -p $out";
       };
-    in
 
+    in
     {
       environment.systemPackages = [ cfg.package ];
       boot.kernelModules = [

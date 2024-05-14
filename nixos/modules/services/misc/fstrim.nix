@@ -10,8 +10,8 @@ with lib;
 let
 
   cfg = config.services.fstrim;
-in
 
+in
 {
 
   options = {

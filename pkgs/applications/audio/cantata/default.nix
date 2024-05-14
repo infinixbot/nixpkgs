@@ -152,8 +152,8 @@ let
       pkgs = [ udisks2 ];
     }
   ];
-in
 
+in
 mkDerivation rec {
   pname = "cantata";
   version = "2.5.0";

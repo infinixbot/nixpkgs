@@ -10,8 +10,8 @@
 let
 
   cfg = config.environment.freetds;
-in
 
+in
 {
   ###### interface
 

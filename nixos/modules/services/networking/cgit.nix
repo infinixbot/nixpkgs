@@ -120,8 +120,8 @@ let
             '') cfg.repos
           )}
         '';
-in
 
+in
 {
   options = {
     services.cgit = mkOption {

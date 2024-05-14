@@ -131,8 +131,8 @@ let
     ```
     :::
   '';
-in
 
+in
 {
 
   options = {

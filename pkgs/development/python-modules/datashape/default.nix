@@ -25,8 +25,8 @@ let
       rev = version;
       inherit sha256;
     };
-in
 
+in
 buildPythonPackage rec {
   pname = "datashape";
   version = "0.5.4";

@@ -68,8 +68,8 @@ let
       stripRoot = false;
     };
   };
-in
 
+in
 stdenvNoCC.mkDerivation rec {
   pname = "bionic-prebuilt";
   version = "ndk-release-r23";

@@ -57,8 +57,8 @@ let
         image = "/boot/${config.system.boot.loader.kernelFile}";
         initrd = "/boot/initrd";
       };
-    in
 
+    in
     menuBuilderGrub2 finalCfg [
       { class = "installer"; }
       {
@@ -489,6 +489,7 @@ let
         # Verify the FAT partition.
         fsck.vfat -vn "$out"
       ''; # */
+
 in
 
 {

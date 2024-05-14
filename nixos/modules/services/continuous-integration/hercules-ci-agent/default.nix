@@ -17,8 +17,8 @@ let
 
   command = "${cfg.package}/bin/hercules-ci-agent --config ${cfg.tomlFile}";
   testCommand = "${command} --test-configuration";
-in
 
+in
 {
   imports = [
     ./common.nix

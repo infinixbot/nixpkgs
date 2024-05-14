@@ -36,8 +36,8 @@ let
     cat ${cellServDB} ${clientServDB} > $out/CellServDB
     echo "${cfg.mountPoint}:${cfg.cache.directory}:${toString cfg.cache.blocks}" > $out/cacheinfo
   '';
-in
 
+in
 {
   ###### interface
 

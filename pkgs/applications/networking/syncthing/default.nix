@@ -80,8 +80,8 @@ let
         platforms = platforms.unix;
       };
     };
-in
 
+in
 {
   syncthing = common {
     stname = "syncthing";

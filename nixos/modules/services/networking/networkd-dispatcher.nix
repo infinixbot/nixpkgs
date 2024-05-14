@@ -10,8 +10,8 @@ with lib;
 let
 
   cfg = config.services.networkd-dispatcher;
-in
 
+in
 {
 
   options = {

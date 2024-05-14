@@ -44,8 +44,8 @@ let
     categories = [ "Game" ];
     exec = "ut2004";
   };
-in
 
+in
 runCommand "ut2004" { nativeBuildInputs = [ makeWrapper ]; } ''
   mkdir -p $out/bin
   for i in ${game}/System/*-bin; do

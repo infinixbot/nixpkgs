@@ -20,8 +20,8 @@ let
     }
     data $fmt = { b "One and one make %d!\n", b 0 }
   '';
-in
 
+in
 stdenv.mkDerivation {
   name = "qbe-test-can-run-hello-world";
   meta.timeout = 10;

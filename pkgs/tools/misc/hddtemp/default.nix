@@ -8,8 +8,8 @@ let
     url = "mirror://savannah/hddtemp/hddtemp.db";
     sha256 = "1fr6qgns6qv7cr40lic5yqwkkc7yjmmgx8j0z6d93csg3smzhhya";
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "hddtemp";
   version = "0.3-beta15";

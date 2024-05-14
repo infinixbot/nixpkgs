@@ -39,8 +39,8 @@ let
       export PYTHONPATH=${pkg.pythonPath}
       sudo -u netbox ${pkg}/bin/netbox "$@"
     '');
-in
 
+in
 {
   options.services.netbox = {
     enable = lib.mkOption {

@@ -722,8 +722,8 @@ let
     // builtins.removeAttrs upstream-info (
       builtins.filter (e: e != "version") (builtins.attrNames upstream-info)
     );
-in
 
+in
 # Remove some extraAttrs we supplied to the base attributes already.
 stdenv.mkDerivation (
   base

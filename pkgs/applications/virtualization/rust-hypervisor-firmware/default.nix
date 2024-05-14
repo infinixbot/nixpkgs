@@ -9,6 +9,7 @@ let
   arch = hostPlatform.qemuArch;
 
   target = ./. + "/${arch}-unknown-none.json";
+
 in
 
 assert lib.assertMsg (builtins.pathExists target) "Target spec not found";
@@ -23,6 +24,7 @@ let
   };
 
   inherit (cross) rustPlatform;
+
 in
 
 rustPlatform.buildRustPackage rec {

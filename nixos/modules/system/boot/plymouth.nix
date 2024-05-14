@@ -56,6 +56,7 @@ let
     Theme=${cfg.theme}
     ${cfg.extraConfig}
   '';
+
 in
 
 {

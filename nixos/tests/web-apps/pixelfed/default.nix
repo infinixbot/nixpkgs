@@ -7,8 +7,8 @@ let
     "x86_64-linux"
     "i686-linux"
   ];
-in
 
+in
 {
   standard = handleTestOn supportedSystems ./standard.nix { inherit system; };
 }

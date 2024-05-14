@@ -18,8 +18,8 @@
 
 let
   version = "0.8.7";
-in
 
+in
 stdenv.mkDerivation {
   pname = "fsarchiver";
   inherit version;

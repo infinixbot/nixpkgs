@@ -22,8 +22,8 @@ let
     name = "quake3-env";
     paths = [ ioquake3 ] ++ paks;
   };
-in
 
+in
 stdenv.mkDerivation {
   name = "${name}-${ioquake3.name}";
 

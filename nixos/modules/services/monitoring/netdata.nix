@@ -55,8 +55,8 @@ let
   );
 
   defaultUser = "netdata";
-in
 
+in
 {
   options = {
     services.netdata = {

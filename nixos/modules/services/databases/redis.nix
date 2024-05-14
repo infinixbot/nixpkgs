@@ -30,8 +30,8 @@ let
 
   redisName = name: "redis" + optionalString (name != "") ("-" + name);
   enabledServers = filterAttrs (name: conf: conf.enable) config.services.redis.servers;
-in
 
+in
 {
   imports = [
     (mkRemovedOptionModule [

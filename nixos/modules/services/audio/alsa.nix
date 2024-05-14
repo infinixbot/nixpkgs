@@ -13,6 +13,7 @@ let
   inherit (pkgs) alsa-utils;
 
   pulseaudioEnabled = config.hardware.pulseaudio.enable;
+
 in
 
 {

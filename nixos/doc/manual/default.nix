@@ -115,8 +115,8 @@ let
     sed -e '/@PYTHON_MACHINE_METHODS@/ {' -e 'r ${testDriverMachineDocstrings}/machine-methods.md' -e 'd' -e '}' \
       -i ./development/writing-nixos-tests.section.md
   '';
-in
 
+in
 rec {
   inherit (optionsDoc) optionsJSON optionsNix optionsDocBook;
 

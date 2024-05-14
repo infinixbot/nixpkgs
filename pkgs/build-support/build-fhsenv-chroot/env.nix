@@ -266,8 +266,8 @@ let
       fi
     done
   '';
-in
 
+in
 stdenv.mkDerivation {
   name = "${name}-fhs";
   buildCommand = ''

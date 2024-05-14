@@ -52,8 +52,8 @@ let
         platforms = platforms.all;
       };
     };
-in
 
+in
 {
   saxon = common {
     pname = "saxon";

@@ -89,8 +89,8 @@ let
     outputHashMode = "recursive";
     outputHash = depsHash;
   };
-in
 
+in
 stdenv.mkDerivation (
   cleanAttrs
   // {

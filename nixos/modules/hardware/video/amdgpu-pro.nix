@@ -19,6 +19,7 @@ let
   package32 = pkgs.pkgsi686Linux.linuxPackages.amdgpu-pro.override { kernel = null; };
 
   opengl = config.hardware.opengl;
+
 in
 
 {

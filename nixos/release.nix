@@ -111,8 +111,8 @@ let
         }).config;
 
       tarball = config.system.build.tarball;
-    in
 
+    in
     tarball
     // {
       meta = {
@@ -168,8 +168,8 @@ let
       '';
       preferLocalBuild = true;
     };
-in
 
+in
 rec {
 
   channel = import lib/make-channel.nix {

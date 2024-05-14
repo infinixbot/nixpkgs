@@ -350,8 +350,8 @@ let
             ign (0 - (range / 2)) (
               range / 2 - 1
             ) "signedInt${toString bit}" "${toString bit} bit signed integer";
-        in
 
+        in
         {
           # TODO: Deduplicate with docs in nixos/doc/manual/development/option-types.section.md
           /**
@@ -1052,8 +1052,8 @@ let
           freeformType = base._module.freeformType;
 
           name = "submodule";
-        in
 
+        in
         mkOptionType {
           inherit name;
           description = if description != null then description else freeformType.description or name;
@@ -1264,6 +1264,6 @@ let
 
     };
   };
-in
 
+in
 outer_types // outer_types.types

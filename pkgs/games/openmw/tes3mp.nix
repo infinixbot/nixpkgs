@@ -151,8 +151,8 @@ let
       chmod -R u+w "$data"/server
     fi
   '';
-in
 
+in
 symlinkJoin {
   name = "openmw-tes3mp-${unwrapped.version}";
   inherit (unwrapped) version meta;

@@ -22,8 +22,8 @@ let
     genericName = "zsnes";
     categories = [ "Game" ];
   };
-in
 
+in
 stdenv.mkDerivation {
   pname = "zsnes";
   version = "1.51";

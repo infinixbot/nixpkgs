@@ -133,8 +133,8 @@ let
         symlink = v.target;
       }) (filterAttrs (_: v: v.enable) cfg.contents);
   };
-in
 
+in
 {
   options.boot.initrd.systemd = {
     enable = mkEnableOption "systemd in initrd" // {

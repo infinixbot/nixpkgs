@@ -122,8 +122,8 @@ let
   };
 
   minimal = encapsulate nixopsContextBase;
-in
 
+in
 {
   nixops_unstable_minimal = minimal;
 

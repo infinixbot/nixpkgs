@@ -60,8 +60,8 @@ let
           ''}"
         }
       '';
-    in
 
+    in
     {
       description = "OpenVPN instance ‘${name}’";
 
@@ -88,6 +88,7 @@ let
       description = "Sends a signal to OpenVPN process to trigger a restart after return from sleep";
     };
   };
+
 in
 
 {

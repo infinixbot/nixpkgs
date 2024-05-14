@@ -16,8 +16,8 @@ let
     ;
 
   cfg = config.nix;
-in
 
+in
 {
   options = {
     nix = {

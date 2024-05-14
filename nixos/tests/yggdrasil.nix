@@ -23,8 +23,8 @@ let
     PrivateKey = "0c4a24acd3402722ce9277ed179f4a04b895b49586493c25fbaed60653d857d62b6f918b6c1a4b54d6bcde86cf74e074fb32ead4ee439b7930df2aa60c825186";
   };
   danIp6 = bobPrefix + "::2";
-in
 
+in
 import ./make-test-python.nix (
   { pkgs, ... }:
   {

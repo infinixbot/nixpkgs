@@ -72,8 +72,8 @@ let
       path = buildPackages.emscripten + "/bin";
     }
   ];
-in
 
+in
 stdenv.mkDerivation {
   name = bootGhcjs.name;
   src = passthru.configuredSrc;

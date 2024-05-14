@@ -61,6 +61,6 @@ let
         gcc64.cc.langCC;
     };
   };
-in
 
+in
 clangMulti

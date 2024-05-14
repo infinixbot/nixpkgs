@@ -34,8 +34,8 @@ let
       cp ${pkgs.djbdns}/etc/dnsroots.global $out/servers/@;
     fi
   '';
-in
 
+in
 {
 
   ###### interface

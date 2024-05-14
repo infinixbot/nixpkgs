@@ -168,8 +168,8 @@ let
       try-import /etc/bazel.bazelrc
     '';
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "bazel";
   inherit version src;

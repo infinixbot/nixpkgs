@@ -31,8 +31,8 @@ let
     hash = "sha256-TFn30VCuWZr252VN1T5NNCZe2VEN3xQSomS7XxxKGF8=";
     fetchSubmodules = true;
   };
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "tiledb";
   version = "2.18.2";

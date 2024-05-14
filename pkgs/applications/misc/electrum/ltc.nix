@@ -42,6 +42,7 @@ let
       mv ./all/electrum_ltc/tests $out
     '';
   };
+
 in
 
 python3.pkgs.buildPythonApplication {

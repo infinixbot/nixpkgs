@@ -7,6 +7,7 @@ let
   cfg = config.hardware.mwProCapture;
 
   kernelPackages = config.boot.kernelPackages;
+
 in
 
 {

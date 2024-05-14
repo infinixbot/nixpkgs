@@ -18,8 +18,8 @@ let
       qtbase
     ]
   }";
-in
 
+in
 mkDerivation {
   pname = "oda-file-converter";
   inherit version;

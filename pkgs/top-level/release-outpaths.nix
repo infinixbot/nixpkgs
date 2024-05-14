@@ -91,6 +91,6 @@ let
     "moduleSystem"
     "lib-tests" # these just confuse the output
   ];
-in
 
+in
 tweak (builtins.removeAttrs hydraJobs blacklist)

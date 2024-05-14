@@ -34,6 +34,7 @@ let
   customHunspell = hunspellWithDicts [ hunspellDicts.en-us ];
 
   majorVersion = "1.4";
+
 in
 
 python3.pkgs.buildPythonApplication rec {

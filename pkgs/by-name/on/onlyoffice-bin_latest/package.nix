@@ -158,6 +158,7 @@ let
       )
     '';
   };
+
 in
 
 # In order to download plugins, OnlyOffice uses /usr/bin/curl so we have to wrap it.

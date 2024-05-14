@@ -41,8 +41,8 @@ let
       cp -r build $out
     '';
   };
-in
 
+in
 buildDotnetModule {
   inherit
     pname

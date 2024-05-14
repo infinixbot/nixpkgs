@@ -180,6 +180,6 @@ let
       maintainers = [ lib.maintainers.lucasew ];
     };
   };
-in
 
+in
 if plugins == [ ] then unwrapped else unwrapped.withPlugins (_: plugins)

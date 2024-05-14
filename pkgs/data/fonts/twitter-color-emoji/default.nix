@@ -32,8 +32,8 @@ let
       nototools
     ]
   );
-in
 
+in
 stdenv.mkDerivation rec {
   pname = "twitter-color-emoji";
   inherit version;

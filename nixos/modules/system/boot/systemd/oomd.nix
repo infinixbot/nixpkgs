@@ -2,8 +2,8 @@
 let
 
   cfg = config.systemd.oomd;
-in
 
+in
 {
   imports = [
     (lib.mkRenamedOptionModule

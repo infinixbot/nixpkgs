@@ -45,8 +45,8 @@ let
       ];
     })
     + "/nixos.qcow2";
-in
 
+in
 makeEc2Test {
   name = "image-contents";
   inherit image;

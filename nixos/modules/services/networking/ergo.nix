@@ -44,8 +44,8 @@ let
       }
     ''
   );
-in
 
+in
 {
 
   options = {

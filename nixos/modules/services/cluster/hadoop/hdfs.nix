@@ -92,8 +92,8 @@ let
         extraConfig
       ])
     );
-in
 
+in
 {
   options.services.hadoop.hdfs = {
 

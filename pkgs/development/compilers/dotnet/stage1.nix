@@ -26,6 +26,6 @@ let
           inherit (stage0.vmr) fetch-deps;
         };
       });
-in
 
+in
 mkPackages { inherit vmr; }

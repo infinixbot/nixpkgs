@@ -25,8 +25,8 @@ let
       };
       test-support.displayManager.auto.user = user;
     };
-in
 
+in
 makeTest {
   name = "armagetronad";
   meta = with pkgs.lib.maintainers; {

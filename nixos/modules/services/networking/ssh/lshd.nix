@@ -12,6 +12,7 @@ let
   inherit (pkgs) lsh;
 
   cfg = config.services.lshd;
+
 in
 
 {

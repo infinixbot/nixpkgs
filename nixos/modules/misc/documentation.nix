@@ -183,8 +183,8 @@ let
         exec = "nixos-help";
         categories = [ "System" ];
       };
-    in
 
+    in
     pkgs.symlinkJoin {
       name = "nixos-help";
       paths = [
@@ -192,6 +192,7 @@ let
         desktopItem
       ];
     };
+
 in
 
 {

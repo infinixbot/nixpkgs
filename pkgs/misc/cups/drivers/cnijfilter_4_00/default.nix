@@ -28,8 +28,8 @@ let
       "32"
     else
       throw "Unsupported system ${stdenv.hostPlatform.system}";
-in
 
+in
 stdenv.mkDerivation {
   pname = "cnijfilter";
 

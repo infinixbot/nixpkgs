@@ -29,8 +29,8 @@ let
     exit 1 # fail if emitting event didn't exit clean
     EOF
   '';
-in
 
+in
 resholve.mkDerivation rec {
   # bashup.events doesn't version yet but it has two variants with
   # differing features/performance characteristics:

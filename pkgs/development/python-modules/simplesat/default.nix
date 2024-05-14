@@ -20,8 +20,8 @@ let
     msi_version = '${version}.000'
     version_info = (${lib.versions.major version}, ${lib.versions.minor version}, ${lib.versions.patch version}, 'final', 0)
   '';
-in
 
+in
 buildPythonPackage rec {
   pname = "simplesat";
   inherit version;

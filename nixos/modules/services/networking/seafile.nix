@@ -36,8 +36,8 @@ let
   ccnetDir = "${seafRoot}/ccnet";
   dataDir = "${seafRoot}/data";
   seahubDir = "${seafRoot}/seahub";
-in
 
+in
 {
 
   ###### Interface

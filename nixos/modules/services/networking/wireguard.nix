@@ -512,8 +512,8 @@ let
       ipPostMove = nsWrap "ip" src dst;
       wg = nsWrap "wg" src dst;
       ns = if dst == "init" then "1" else dst;
-    in
 
+    in
     nameValuePair "wireguard-${name}" {
       description = "WireGuard Tunnel - ${name}";
       after = [ "network-pre.target" ];

@@ -10,6 +10,7 @@
 let
 
   cfg = config.services.gnome.gnome-settings-daemon;
+
 in
 
 {

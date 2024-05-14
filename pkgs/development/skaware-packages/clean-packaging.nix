@@ -51,8 +51,8 @@ let
       exit 1
     fi
   '';
-in
 
+in
 {
   inherit commonFileActions checkForRemainingFiles;
 }

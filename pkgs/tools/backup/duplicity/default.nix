@@ -162,6 +162,6 @@ let
       maintainers = with maintainers; [ corngood ];
     };
   };
-in
 
+in
 self

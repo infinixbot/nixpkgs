@@ -20,6 +20,7 @@ let
     ];
     inherit (config.boot.loader.generationsDir) copyKernels;
   };
+
 in
 
 {
