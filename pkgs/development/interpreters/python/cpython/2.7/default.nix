@@ -153,9 +153,7 @@ let
         hash = "sha256-Lp5fGlcfJJ6p6vKmcLckJiAA2AZz4prjFE0aMEJxotw=";
       })
     ]
-    ++ lib.optionals (x11Support && stdenv.isDarwin) [
-      ./use-correct-tcl-tk-on-darwin.patch
-    ]
+    ++ lib.optionals (x11Support && stdenv.isDarwin) [ ./use-correct-tcl-tk-on-darwin.patch ]
     ++ lib.optionals stdenv.isDarwin [
       # Fix darwin build https://bugs.python.org/issue34027
       ../3.7/darwin-libutil.patch

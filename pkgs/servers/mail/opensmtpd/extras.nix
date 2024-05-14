@@ -78,15 +78,9 @@ stdenv.mkDerivation rec {
       "--with-perl=${perl}"
       "--with-filter-perl"
     ]
-    ++ lib.optionals enableMysql [
-      "--with-table-mysql"
-    ]
-    ++ lib.optionals enablePostgres [
-      "--with-table-postgres"
-    ]
-    ++ lib.optionals enableSqlite [
-      "--with-table-sqlite"
-    ]
+    ++ lib.optionals enableMysql [ "--with-table-mysql" ]
+    ++ lib.optionals enablePostgres [ "--with-table-postgres" ]
+    ++ lib.optionals enableSqlite [ "--with-table-sqlite" ]
     ++ lib.optionals enableRedis [ "--with-table-redis" ];
 
   env.NIX_CFLAGS_COMPILE =
