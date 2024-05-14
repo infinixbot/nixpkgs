@@ -54,6 +54,7 @@ let
   */
   isGVariant = v: v._type or "" == "gvariant";
 in
+
 rec {
 
   inherit type isGVariant;

@@ -23,6 +23,7 @@ let
     mainProgram = "spotify";
   };
 in
+
 if stdenv.isDarwin then
   callPackage ./darwin.nix (extraArgs // { inherit pname meta; })
 else

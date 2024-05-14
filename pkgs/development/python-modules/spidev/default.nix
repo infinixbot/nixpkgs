@@ -26,4 +26,5 @@ buildPythonPackage rec {
     maintainers = with maintainers; [ hexa ];
     platforms = platforms.linux;
   };
+
 }

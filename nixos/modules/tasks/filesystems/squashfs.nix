@@ -8,4 +8,5 @@ in
 {
 
   boot.initrd.availableKernelModules = lib.mkIf inInitrd [ "squashfs" ];
+
 }

@@ -558,6 +558,7 @@ in
           Whether to create the database and database user locally.
         '';
       };
+
     };
 
     config = {
@@ -987,6 +988,7 @@ in
             `services.nextcloud.package`.
           '';
         in
+
         (optional (cfg.poolConfig != null) ''
           Using config.services.nextcloud.poolConfig is deprecated and will become unsupported in a future release.
           Please migrate your configuration to config.services.nextcloud.poolSettings.
@@ -1124,6 +1126,7 @@ in
               '') ([ cfg.hostName ] ++ cfg.settings.trusted_domains)
             );
           in
+
           {
             wantedBy = [ "multi-user.target" ];
             wants = [ "nextcloud-update-db.service" ];

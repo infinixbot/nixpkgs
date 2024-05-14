@@ -72,5 +72,7 @@ in
       "modprobe.d/blacklist-radeon.conf".source = package + "/etc/modprobe.d/blacklist-radeon.conf";
       amd.source = package + "/etc/amd";
     };
+
   };
+
 }

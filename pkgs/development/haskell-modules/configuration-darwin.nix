@@ -362,6 +362,7 @@ self: super:
 
     # https://github.com/NixOS/nixpkgs/issues/149692
     Agda = disableCabalFlag "optimise-heavily" super.Agda;
+
   }
   // lib.optionalAttrs pkgs.stdenv.isx86_64 {
     # x86_64-darwin

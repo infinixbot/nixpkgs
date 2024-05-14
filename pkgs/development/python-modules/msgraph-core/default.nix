@@ -36,6 +36,7 @@ buildPythonPackage rec {
     microsoft-kiota-authentication-azure
     microsoft-kiota-http
     requests
+
   ];
 
   nativeCheckInputs = [

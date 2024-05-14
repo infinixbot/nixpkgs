@@ -919,6 +919,7 @@ rec {
             abis.unknown;
       };
     in
+
     mkSystem parsed;
 
   mkSystemFromString = s: mkSystemFromSkeleton (mkSkeletonFromList (splitString "-" s));
@@ -957,4 +958,5 @@ rec {
     "${cpu.name}-${vendor.name}-${kernelName kernel}${optExecFormat}${optAbi}";
 
   ################################################################################
+
 }

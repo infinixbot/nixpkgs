@@ -19,6 +19,7 @@ in
     };
 
     package = lib.mkPackageOption pkgs "streamdeck-ui" { default = [ "streamdeck-ui" ]; };
+
   };
 
   config = lib.mkIf cfg.enable {

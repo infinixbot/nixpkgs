@@ -36,6 +36,7 @@ let
     wayland
   ];
 in
+
 rustPlatform.buildRustPackage rec {
   pname = "ajour";
   version = "1.3.2";

@@ -29,6 +29,7 @@ let
     ${cfg.extraConfig}
   '';
 in
+
 {
 
   options = {
@@ -97,7 +98,9 @@ in
           Extra scollector configuration added to the end of scollector.toml
         '';
       };
+
     };
+
   };
 
   config = mkIf config.services.scollector.enable {
@@ -125,5 +128,7 @@ in
     };
 
     users.groups.scollector.gid = config.ids.gids.scollector;
+
   };
+
 }

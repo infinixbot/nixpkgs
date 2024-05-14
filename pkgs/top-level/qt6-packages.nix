@@ -124,6 +124,7 @@ makeScopeWithSplicing' {
       waylib = callPackage ../development/libraries/waylib { };
 
       wayqt = callPackage ../development/libraries/wayqt { };
+
     }
     // lib.optionalAttrs pkgs.config.allowAliases {
       # Remove completely before 24.11

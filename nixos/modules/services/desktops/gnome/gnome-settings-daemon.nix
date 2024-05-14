@@ -25,7 +25,9 @@ in
     services.gnome.gnome-settings-daemon = {
 
       enable = lib.mkEnableOption "GNOME Settings Daemon";
+
     };
+
   };
 
   ###### implementation
@@ -45,5 +47,7 @@ in
     systemd.user.targets."gnome-session-x11-services-ready".wants = [
       "org.gnome.SettingsDaemon.XSettings.service"
     ];
+
   };
+
 }

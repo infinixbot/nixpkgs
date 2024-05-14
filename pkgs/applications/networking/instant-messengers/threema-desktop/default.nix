@@ -67,6 +67,7 @@ let
     '';
   };
 in
+
 buildNpmPackage rec {
   pname = "threema-desktop";
   inherit version;

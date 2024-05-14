@@ -61,4 +61,5 @@ stdenv.mkDerivation rec {
     license = licenses.mit;
     mainProgram = "fbpanel";
   };
+
 }

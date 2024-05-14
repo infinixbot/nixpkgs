@@ -59,4 +59,5 @@ in
   };
 
   meta.maintainers = with lib.maintainers; [ misterio77 ];
+
 }

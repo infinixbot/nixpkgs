@@ -79,5 +79,6 @@ stdenv.mkDerivation (
       meta = (lib.optionalAttrs (args ? meta) args.meta) // {
         description = "Build of a generic binary distribution";
       };
+
     }
 )

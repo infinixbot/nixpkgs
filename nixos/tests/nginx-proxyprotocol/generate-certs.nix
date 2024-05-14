@@ -19,6 +19,7 @@ runCommandCC "generate-tests-certs"
         '';
       }))
     ];
+
   }
   ''
     minica \

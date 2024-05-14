@@ -73,6 +73,7 @@ let
     }
   ];
 in
+
 stdenv.mkDerivation {
   name = bootGhcjs.name;
   src = passthru.configuredSrc;

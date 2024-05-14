@@ -164,7 +164,9 @@ in
           Will be inserted in the Default section of the config file.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -186,7 +188,9 @@ in
       };
 
       environment.systemPackages = [ bitlbeePkg ];
+
     })
     (mkIf (config.services.bitlbee.authBackend == "pam") { security.pam.services.bitlbee = { }; })
   ];
+
 }

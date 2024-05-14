@@ -12,6 +12,7 @@ with lib;
 let
   cfg = config.virtualisation.vswitch;
 in
+
 {
 
   options.virtualisation.vswitch = {
@@ -51,6 +52,7 @@ in
         installPhase = "mkdir -p $out";
       };
     in
+
     {
       environment.systemPackages = [ cfg.package ];
       boot.kernelModules = [
@@ -131,6 +133,7 @@ in
           RestartSec = 3;
         };
       };
+
     }
   );
 
@@ -149,4 +152,5 @@ in
   ];
 
   meta.maintainers = with maintainers; [ netixx ];
+
 }

@@ -281,6 +281,7 @@ in
         linux_5_15_hardened = hardenedKernelFor kernels.linux_5_15 { };
         linux_6_1_hardened = hardenedKernelFor kernels.linux_6_1 { };
         linux_6_6_hardened = hardenedKernelFor kernels.linux_6_6 { };
+
       }
       // lib.optionalAttrs config.allowAliases {
         linux_4_9 = throw "linux 4.9 was removed because it will reach its end of life within 22.11";
@@ -647,6 +648,7 @@ in
         hid-tmff2 = callPackage ../os-specific/linux/hid-tmff2 { };
 
         drbd = callPackage ../os-specific/linux/drbd/driver.nix { };
+
       }
       // lib.optionalAttrs config.allowAliases {
         ati_drivers_x11 = throw "ati drivers are no longer supported by any kernel >=4.1"; # added 2021-05-18;

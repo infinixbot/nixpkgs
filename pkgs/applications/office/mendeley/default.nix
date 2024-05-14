@@ -44,4 +44,5 @@ appimageTools.wrapType2 {
     ];
     mainProgram = "mendeley-reference-manager";
   };
+
 }

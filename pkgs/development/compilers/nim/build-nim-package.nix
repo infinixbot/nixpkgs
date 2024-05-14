@@ -83,6 +83,7 @@ let
 
   asFunc = x: if builtins.isFunction x then x else (_: x);
 in
+
 buildNimPackageArgs:
 let
   composition =
@@ -159,4 +160,5 @@ let
       "the nimBinOnly attribute is deprecated for buildNimPackage"
       attrs;
 in
+
 stdenv.mkDerivation composition

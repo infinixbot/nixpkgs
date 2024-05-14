@@ -206,6 +206,7 @@ in
           invocation when xmonad.config is set.
         '';
       };
+
     };
   };
   config = mkIf cfg.enable {

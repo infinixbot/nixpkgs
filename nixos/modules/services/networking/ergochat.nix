@@ -130,6 +130,7 @@ in
           };
         };
       };
+
     };
   };
   config = lib.mkIf cfg.enable {
@@ -157,6 +158,7 @@ in
         LimitNOFILE = toString cfg.openFilesLimit;
       };
     };
+
   };
   meta.maintainers = with lib.maintainers; [
     lassulus

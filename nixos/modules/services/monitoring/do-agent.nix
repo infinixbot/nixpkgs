@@ -10,6 +10,7 @@ with lib;
 let
   cfg = config.services.do-agent;
 in
+
 {
   options.services.do-agent = {
     enable = mkEnableOption "do-agent, the DigitalOcean droplet metrics agent";

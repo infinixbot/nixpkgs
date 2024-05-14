@@ -20,6 +20,7 @@
         required if you want to use this device.
       '';
     };
+
   };
 
   ###### implementation
@@ -27,5 +28,7 @@
   config = lib.mkIf config.networking.enableIntel2200BGFirmware {
 
     hardware.firmware = [ pkgs.intel2200BGFirmware ];
+
   };
+
 }

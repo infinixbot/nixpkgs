@@ -28,4 +28,5 @@ buildPythonPackage rec {
     homepage = "https://github.com/pediapress/pyfribidi";
     license = licenses.gpl2;
   };
+
 }

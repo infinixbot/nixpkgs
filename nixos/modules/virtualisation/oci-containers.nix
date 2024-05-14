@@ -61,6 +61,7 @@ let
             description = "Registry where to login to.";
             example = "https://docker.pkg.github.com";
           };
+
         };
 
         cmd = mkOption {
@@ -369,6 +370,7 @@ let
         };
     };
 in
+
 {
   imports = [
     (lib.mkChangedOptionModule [ "docker-containers" ]
@@ -402,6 +404,7 @@ in
       type = types.attrsOf (types.submodule containerOptions);
       description = "OCI (Docker) containers to run as systemd services.";
     };
+
   };
 
   config = lib.mkIf (cfg.containers != { }) (
@@ -415,4 +418,5 @@ in
       (lib.mkIf (cfg.backend == "docker") { virtualisation.docker.enable = true; })
     ]
   );
+
 }

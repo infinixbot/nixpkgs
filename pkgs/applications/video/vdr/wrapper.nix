@@ -11,6 +11,7 @@ let
 
   requiredXinePlugins = lib.flatten (map (p: p.passthru.requiredXinePlugins or [ ]) plugins);
 in
+
 symlinkJoin {
 
   name = "vdr-with-plugins-${lib.getVersion vdr}";

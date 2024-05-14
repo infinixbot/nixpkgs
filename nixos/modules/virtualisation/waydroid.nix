@@ -21,6 +21,7 @@ let
     /dev/hwbinder = hidl
   '';
 in
+
 {
 
   options.virtualisation.waydroid = {
@@ -70,4 +71,5 @@ in
       "d /var/lib/misc 0755 root root -" # for dnsmasq.leases
     ];
   };
+
 }

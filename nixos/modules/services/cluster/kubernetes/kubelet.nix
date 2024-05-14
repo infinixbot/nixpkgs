@@ -319,6 +319,7 @@ in
       default = null;
       type = nullOr int;
     };
+
   };
 
   ###### implementation
@@ -418,6 +419,7 @@ in
           name = "kubelet";
           CN = top.kubelet.hostname;
           action = "systemctl restart kubelet.service";
+
         };
         kubeletClient = mkCert {
           name = "kubelet-client";
@@ -448,6 +450,7 @@ in
         effect = "NoSchedule";
       };
     })
+
   ];
 
   meta.buildDocsInSandbox = false;

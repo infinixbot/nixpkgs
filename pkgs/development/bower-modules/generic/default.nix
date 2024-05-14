@@ -11,6 +11,7 @@ let
   # `bower2nix` command.
   bowerPackages = import generated { inherit (pkgs) buildEnv fetchbower; };
 in
+
 pkgs.stdenv.mkDerivation (
   attrs
   // {

@@ -14,6 +14,7 @@ let
   settingsFormat = pkgs.formats.json { };
   settingsFile = settingsFormat.generate "mautrix-telegram-config.json" cfg.settings;
 in
+
 {
   options = {
     services.mautrix-telegram = {

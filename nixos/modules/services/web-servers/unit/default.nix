@@ -12,6 +12,7 @@ let
 
   configFile = pkgs.writeText "unit.json" cfg.config;
 in
+
 {
   options = {
     services.unit = {
@@ -155,5 +156,6 @@ in
     };
 
     users.groups = optionalAttrs (cfg.group == "unit") { unit = { }; };
+
   };
 }

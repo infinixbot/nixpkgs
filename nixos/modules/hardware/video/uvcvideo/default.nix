@@ -60,5 +60,6 @@ in
     services.udev.packages = [ (uvcdynctrl-udev-rules cfg.dynctrl.packages) ];
 
     environment.systemPackages = [ pkgs.libwebcam ];
+
   };
 }

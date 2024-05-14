@@ -24,4 +24,5 @@ buildPythonPackage rec {
     homepage = "http://modestmaps.com";
     license = licenses.bsd3;
   };
+
 }

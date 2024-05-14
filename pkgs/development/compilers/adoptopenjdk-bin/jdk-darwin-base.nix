@@ -68,6 +68,7 @@ let
       inherit knownVulnerabilities;
       mainProgram = "java";
     };
+
   };
 in
 result

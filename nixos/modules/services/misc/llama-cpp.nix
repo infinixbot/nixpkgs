@@ -57,6 +57,7 @@ in
         description = "Open ports in the firewall for LLaMA C++ server.";
       };
     };
+
   };
 
   config = lib.mkIf cfg.enable {
@@ -115,6 +116,7 @@ in
     };
 
     networking.firewall = lib.mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.port ]; };
+
   };
 
   meta.maintainers = with lib.maintainers; [ newam ];

@@ -240,6 +240,7 @@ in
         is plugged nor WiFi is powered, and to "background" otherwise.
       '';
     };
+
   };
 
   ###### implementation
@@ -322,5 +323,7 @@ in
       # Tell dhcpcd to rebind its interfaces if it's running.
       /run/current-system/systemd/bin/systemctl reload dhcpcd.service
     '';
+
   };
+
 }

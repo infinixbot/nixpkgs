@@ -65,6 +65,7 @@ let
     ];
   });
 in
+
 stdenv.mkDerivation rec {
   pname = "openmw";
   version = "0.48.0";

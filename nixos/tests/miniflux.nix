@@ -21,6 +21,7 @@ import ./make-test-python.nix (
       *:*:*:*:${postgresPassword}
     '';
   in
+
   {
     name = "miniflux";
     meta.maintainers = [ ];

@@ -388,6 +388,7 @@ let
             Read only representation of the final configuration.
           '';
         };
+
       };
     };
 in
@@ -417,6 +418,7 @@ in
           See [](#opt-services.caddy.virtualHosts) for further information.
         '';
       };
+
     };
   };
 
@@ -444,6 +446,7 @@ in
           } // cfg.poolConfig;
         })
       ) eachSite;
+
     }
 
     {
@@ -524,6 +527,7 @@ in
                 fastcgi_pass unix:${config.services.phpfpm.pools."dokuwiki-${hostName}".socket};
               '';
             };
+
           };
         }) eachSite;
       };
@@ -570,6 +574,7 @@ in
         ) eachSite;
       };
     })
+
   ]);
 
   meta.maintainers = with maintainers; [

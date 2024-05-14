@@ -11,6 +11,7 @@ let
 
   cfg = config.services.novacomd;
 in
+
 {
 
   options = {

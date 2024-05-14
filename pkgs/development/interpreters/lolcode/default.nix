@@ -42,4 +42,5 @@ stdenv.mkDerivation rec {
     mainProgram = "lolcode-lci";
     platforms = lib.platforms.unix;
   };
+
 }

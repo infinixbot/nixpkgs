@@ -35,6 +35,7 @@ let
       );
   siteDir = "$out/share/emacs/site-lisp/elpa/${tree-sitter-langs.pname}-${tree-sitter-langs.version}";
 in
+
 melpaStablePackages.tree-sitter-langs.overrideAttrs (old: {
   postPatch =
     old.postPatch or ""
@@ -60,4 +61,5 @@ melpaStablePackages.tree-sitter-langs.overrideAttrs (old: {
     inherit plugins;
     withPlugins = fn: final.tree-sitter-langs.override { plugins = fn tree-sitter-grammars; };
   };
+
 })

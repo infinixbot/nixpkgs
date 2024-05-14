@@ -38,4 +38,5 @@ buildPythonPackage rec {
     maintainers = with maintainers; [ leenaars ];
     broken = stdenv.isDarwin; # requires pyobjc-core, pyobjc-framework-Cocoa
   };
+
 }

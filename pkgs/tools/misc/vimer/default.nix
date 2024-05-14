@@ -32,4 +32,5 @@ stdenv.mkDerivation rec {
     platforms = platforms.all;
     mainProgram = "vimer";
   };
+
 }

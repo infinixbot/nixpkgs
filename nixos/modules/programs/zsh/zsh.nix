@@ -173,7 +173,9 @@ in
         '';
         type = lib.types.bool;
       };
+
     };
+
   };
 
   config = lib.mkIf cfg.enable {
@@ -315,5 +317,7 @@ in
       "/run/current-system/sw/bin/zsh"
       "${pkgs.zsh}/bin/zsh"
     ];
+
   };
+
 }

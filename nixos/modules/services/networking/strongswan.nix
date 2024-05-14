@@ -45,6 +45,7 @@ let
       connectionsConf = makeSections "conn" connections;
       caConf = makeSections "ca" ca;
     in
+
     builtins.toFile "ipsec.conf" ''
       ${setupConf}
       ${connectionsConf}
@@ -76,6 +77,7 @@ let
       }
     '';
 in
+
 {
   options.services.strongswan = {
     enable = mkEnableOption "strongSwan";

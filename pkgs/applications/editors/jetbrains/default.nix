@@ -130,6 +130,7 @@ let
       }
     );
 in
+
 rec {
   # Sorted alphabetically
 
@@ -298,6 +299,7 @@ rec {
           libxml2
           xz
         ];
+
     }).overrideAttrs
       (attrs: {
         postInstall =
@@ -388,4 +390,5 @@ rec {
   plugins = callPackage ./plugins { } // {
     __attrsFailEvaluation = true;
   };
+
 }

@@ -54,6 +54,7 @@ let
         )}
       '';
 in
+
 {
   options.programs.firejail = {
     enable = lib.mkEnableOption "firejail, a sandboxing tool for Linux";

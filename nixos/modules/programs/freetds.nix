@@ -11,6 +11,7 @@ let
 
   cfg = config.environment.freetds;
 in
+
 {
   ###### interface
 
@@ -35,7 +36,9 @@ in
         will be configured to allow the programs that use freetds to find the
         library and config.
       '';
+
     };
+
   };
 
   ###### implementation
@@ -56,5 +59,7 @@ in
         )
       );
     };
+
   };
+
 }

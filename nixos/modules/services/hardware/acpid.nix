@@ -124,7 +124,9 @@ in
         default = "";
         description = "Shell commands to execute on an ac_adapter.* event.";
       };
+
     };
+
   };
 
   ###### implementation
@@ -153,6 +155,9 @@ in
         ConditionVirtualization = "!systemd-nspawn";
         ConditionPathExists = [ "/proc/acpi" ];
       };
+
     };
+
   };
+
 }

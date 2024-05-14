@@ -35,6 +35,7 @@ let
 
   hasDisabledPlugins = builtins.length cfg.disabledPlugins > 0;
 in
+
 {
   imports = [
     (mkRenamedOptionModule

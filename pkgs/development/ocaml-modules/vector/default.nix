@@ -23,4 +23,5 @@ buildDunePackage rec {
     homepage = "https://github.com/backtracking/vector";
     maintainers = [ lib.maintainers.vbgl ];
   };
+
 }

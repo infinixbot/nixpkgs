@@ -31,6 +31,7 @@ let
   redisName = name: "redis" + optionalString (name != "") ("-" + name);
   enabledServers = filterAttrs (name: conf: conf.enable) config.services.redis.servers;
 in
+
 {
   imports = [
     (mkRemovedOptionModule [
@@ -656,6 +657,7 @@ in
         default = { };
       };
     };
+
   };
 
   ###### implementation
@@ -774,5 +776,6 @@ in
         };
       }
     ) enabledServers;
+
   };
 }

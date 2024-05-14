@@ -90,8 +90,11 @@ in
             See amixer(1) for allowed values.
           '';
         };
+
       };
+
     };
+
   };
 
   ###### implementation
@@ -160,5 +163,7 @@ in
         }
       ];
     };
+
   };
+
 }

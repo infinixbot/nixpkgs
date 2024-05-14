@@ -27,4 +27,5 @@ skawarePackages.buildPackage {
     mv doc $doc/share/doc/nsss/html
     mv examples $doc/share/doc/nsss/examples
   '';
+
 }

@@ -73,6 +73,7 @@ let
     pulseaudio
   ];
 in
+
 stdenv.mkDerivation rec {
   pname = "onlyoffice-desktopeditors";
   version = "7.2.0";

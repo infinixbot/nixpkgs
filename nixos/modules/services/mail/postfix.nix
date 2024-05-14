@@ -190,6 +190,7 @@ let
             in
             if wakeupDefined then finalValue else "-";
         in
+
         [
           config.name
           config.type
@@ -274,6 +275,7 @@ let
         in
         concatStringsSep "\n" lines;
     in
+
     formattedLabels + "\n" + concatMapStringsSep "\n" formatLine masterCf + "\n" + cfg.extraMasterConf;
 
   headerCheckOptions =
@@ -742,7 +744,9 @@ in
         default = false;
         description = "Whether to enable sender rewriting scheme";
       };
+
     };
+
   };
 
   ###### implementation

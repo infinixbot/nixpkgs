@@ -71,12 +71,14 @@ let
       '';
       meta.platforms = lib.platforms.darwin;
     };
+
   };
 
   good = makeBigExe clang-sierraHack-stdenv "good";
 
   bad = makeBigExe clangStdenv "bad";
 in
+
 stdenvNoCC.mkDerivation {
   name = "macos-sierra-shared-test";
   buildInputs = [

@@ -42,6 +42,7 @@ let
     '') cfg.transports
   );
 in
+
 {
   options.services.icingaweb2.modules.monitoring = with types; {
     enable = mkOption {

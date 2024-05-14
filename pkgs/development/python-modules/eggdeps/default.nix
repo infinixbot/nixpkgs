@@ -30,4 +30,5 @@ buildPythonPackage rec {
     homepage = "http://thomas-lotze.de/en/software/eggdeps/";
     license = licenses.zpl20;
   };
+
 }

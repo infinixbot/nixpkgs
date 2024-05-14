@@ -30,6 +30,7 @@ let
         )
       '';
 in
+
 {
   options.services.shout = {
     enable = mkEnableOption "Shout web IRC client";

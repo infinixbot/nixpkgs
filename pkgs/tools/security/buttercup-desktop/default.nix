@@ -13,6 +13,7 @@ let
   };
   appimageContents = appimageTools.extractType2 { inherit pname src version; };
 in
+
 appimageTools.wrapType2 {
   inherit pname src version;
 

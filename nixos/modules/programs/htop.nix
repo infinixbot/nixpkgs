@@ -69,4 +69,5 @@ in
         lib.mapAttrsToList (key: value: "${key}=${fmt value}") cfg.settings
       );
   };
+
 }

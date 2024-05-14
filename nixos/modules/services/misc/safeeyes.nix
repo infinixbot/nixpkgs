@@ -21,7 +21,9 @@ in
     services.safeeyes = {
 
       enable = mkEnableOption "the safeeyes OSGi service";
+
     };
+
   };
 
   ###### implementation
@@ -46,5 +48,6 @@ in
         RestartSec = 3;
       };
     };
+
   };
 }

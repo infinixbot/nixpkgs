@@ -171,6 +171,7 @@ let
     i686-windows.magicOrExtension = "MZ";
   };
 in
+
 {
   imports = [
     (lib.mkRenamedOptionModule

@@ -24,4 +24,5 @@
 
       assert machine.succeed("cat /root/.nix-channels") == f"{nixpkgs_unstable_channel}\n"
     '';
+
 }

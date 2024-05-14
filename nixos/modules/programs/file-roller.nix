@@ -10,6 +10,7 @@
 let
   cfg = config.programs.file-roller;
 in
+
 {
 
   ###### interface
@@ -24,7 +25,9 @@ in
         "gnome"
         "file-roller"
       ] { };
+
     };
+
   };
 
   ###### implementation
@@ -34,5 +37,7 @@ in
     environment.systemPackages = [ cfg.package ];
 
     services.dbus.packages = [ cfg.package ];
+
   };
+
 }

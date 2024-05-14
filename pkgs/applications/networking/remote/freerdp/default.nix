@@ -76,6 +76,7 @@ let
 
   inherit (lib) optionals;
 in
+
 stdenv.mkDerivation rec {
   pname = "freerdp";
   version = "2.11.7";

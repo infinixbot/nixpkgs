@@ -137,7 +137,9 @@ in
           manual {option}`configText` option is used.
         '';
       };
+
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -175,4 +177,5 @@ in
 
     users.extraGroups.ntopng = { };
   };
+
 }

@@ -90,6 +90,7 @@ let
     ''
     + lib.toShellVars extraEnv;
 in
+
 buildFHSEnv rec {
   name = "steam";
 

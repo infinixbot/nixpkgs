@@ -82,6 +82,7 @@ let
 
   localMpd = (cfg.host == "localhost" || cfg.host == "127.0.0.1");
 in
+
 {
   ###### interface
 
@@ -196,6 +197,7 @@ in
         If the endpoint is one of "${concatStringsSep "\", \"" (attrNames endpointUrls)}" the url is set automatically.
       '';
     };
+
   };
 
   ###### implementation
@@ -216,4 +218,5 @@ in
       };
     };
   };
+
 }

@@ -72,6 +72,7 @@ in
         config options.
       '';
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -115,4 +116,5 @@ in
   };
 
   meta.maintainers = with maintainers; [ diogotcorreia ];
+
 }

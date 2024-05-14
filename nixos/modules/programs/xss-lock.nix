@@ -53,5 +53,6 @@ in
     warnings = lib.mkIf (config.services.xserver.displayManager.startx.enable) [
       "xss-lock service only works if a displayManager is set; it doesn't work when services.xserver.displayManager.startx.enable = true"
     ];
+
   };
 }

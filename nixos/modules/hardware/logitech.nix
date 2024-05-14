@@ -14,6 +14,7 @@ let
 
   daemon = "g15daemon";
 in
+
 {
   imports = [
     (mkRenamedOptionModule

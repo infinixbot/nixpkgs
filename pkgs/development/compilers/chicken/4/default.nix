@@ -20,4 +20,5 @@ let
     egg2nix = callPackage ./egg2nix.nix { };
   };
 in
+
 self

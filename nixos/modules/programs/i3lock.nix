@@ -9,6 +9,7 @@ let
 
   cfg = config.programs.i3lock;
 in
+
 {
 
   ###### interface
@@ -51,5 +52,7 @@ in
     };
 
     security.pam.services.i3lock.u2fAuth = cfg.u2fSupport;
+
   };
+
 }

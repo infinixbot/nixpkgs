@@ -248,6 +248,7 @@ let
         };
         meta.homepage = "https://github.com/adrusi/zig.kak/";
       };
+
     }
   );
 in

@@ -37,7 +37,9 @@ in
         example = literalExpression "[ pkgs.dictdDBs.nld2eng ]";
         description = "List of databases to make available.";
       };
+
     };
+
   };
 
   ###### implementation

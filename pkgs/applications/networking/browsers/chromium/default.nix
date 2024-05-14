@@ -133,6 +133,7 @@ let
     else
       browser;
 in
+
 stdenv.mkDerivation {
   pname = lib.optionalString ungoogled "ungoogled-" + "chromium${suffix}";
   inherit (chromium.browser) version;
@@ -173,6 +174,7 @@ stdenv.mkDerivation {
         libkrb5
       ];
     in
+
     with lib;
     ''
       mkdir -p "$out/bin"

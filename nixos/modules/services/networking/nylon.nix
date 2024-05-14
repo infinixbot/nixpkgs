@@ -157,6 +157,7 @@ in
       type = with types; attrsOf (submodule nylonOpts);
       internal = true;
     };
+
   };
 
   ###### implementation
@@ -174,5 +175,6 @@ in
     users.groups.nylon.gid = config.ids.gids.nylon;
 
     systemd.services = foldr (a: b: a // b) { } nylonUnits;
+
   };
 }

@@ -125,4 +125,5 @@ let
       meta = builtins.removeAttrs weechat.meta [ "outputsToInstall" ];
     };
 in
+
 lib.makeOverridable wrapper

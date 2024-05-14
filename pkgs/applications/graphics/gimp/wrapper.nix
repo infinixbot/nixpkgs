@@ -16,6 +16,7 @@ let
   extraArgs = map (x: x.wrapArgs or "") selectedPlugins;
   versionBranch = lib.versions.majorMinor gimp.version;
 in
+
 symlinkJoin {
   name = "gimp-with-plugins-${gimp.version}";
 

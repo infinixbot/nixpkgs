@@ -44,6 +44,7 @@ with lib;
       '';
       type = types.lines;
     };
+
   };
 
   ###### implementation
@@ -71,5 +72,7 @@ with lib;
       # module.
       echo ${pkgs.kmod}/bin/modprobe > /proc/sys/kernel/modprobe
     '';
+
   };
+
 }

@@ -95,6 +95,7 @@ let
     in
     self;
 in
+
 {
 
   docbook-xsl-nons = common {

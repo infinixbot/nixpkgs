@@ -562,6 +562,7 @@ in
       };
       groups = mkIf (group == "snipeit") { snipeit = { }; };
     };
+
   };
 
   meta.maintainers = with maintainers; [ yayayayaka ];

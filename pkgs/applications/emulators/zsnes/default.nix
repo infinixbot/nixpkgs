@@ -23,6 +23,7 @@ let
     categories = [ "Game" ];
   };
 in
+
 stdenv.mkDerivation {
   pname = "zsnes";
   version = "1.51";

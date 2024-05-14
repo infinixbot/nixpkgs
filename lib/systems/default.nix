@@ -381,6 +381,7 @@ let
                 selectEmulator pkgs
               else
                 throw "Don't know how to run ${final.config} executables.";
+
           }
         )
         // mapAttrs (n: v: v final.parsed) inspect.predicates

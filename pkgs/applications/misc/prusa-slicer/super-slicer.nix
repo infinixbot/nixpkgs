@@ -106,6 +106,7 @@ let
       };
 
       passthru = allVersions;
+
     };
   wxGTK31-prusa = wxGTK31.overrideAttrs (old: rec {
     pname = "wxwidgets-prusa3d-patched";

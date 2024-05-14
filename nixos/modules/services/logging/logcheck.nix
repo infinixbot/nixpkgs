@@ -132,6 +132,7 @@ let
     };
   };
 in
+
 {
   options = {
     services.logcheck = {
@@ -230,6 +231,7 @@ in
           or to access certain log files.
         '';
       };
+
     };
   };
 

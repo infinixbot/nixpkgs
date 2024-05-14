@@ -141,6 +141,7 @@ let
     outputHash = "sha256-hbWLsWorEo+1BBURvrFMXpxvZjJBZ1p7HVlJN5e5JZc=";
   };
 in
+
 assert lib.assertMsg (
   enableClient || enableServer
 ) "mindustry: at least one of 'enableClient' and 'enableServer' must be true";

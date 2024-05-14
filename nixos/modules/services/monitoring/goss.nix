@@ -11,6 +11,7 @@ let
   settingsFormat = pkgs.formats.yaml { };
   configFile = settingsFormat.generate "goss.yaml" cfg.settings;
 in
+
 {
   meta = {
     doc = ./goss.md;

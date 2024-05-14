@@ -391,6 +391,7 @@ self: super:
           };
       };
     in
+
     super.codeium-nvim.overrideAttrs {
       dependencies = with self; [
         nvim-cmp

@@ -276,6 +276,7 @@ let
         off
       '';
 in
+
 {
 
   options = {
@@ -364,7 +365,9 @@ in
           }
         '';
       };
+
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -402,6 +405,7 @@ in
         KillMode = "process";
       };
     };
+
   };
 
   meta.maintainers = with maintainers; [ alexnortung ];

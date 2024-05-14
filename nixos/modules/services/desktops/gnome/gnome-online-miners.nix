@@ -27,7 +27,9 @@
           crawls through your online content.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -37,5 +39,7 @@
     environment.systemPackages = [ pkgs.gnome.gnome-online-miners ];
 
     services.dbus.packages = [ pkgs.gnome.gnome-online-miners ];
+
   };
+
 }

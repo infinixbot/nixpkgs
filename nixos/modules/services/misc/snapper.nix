@@ -194,6 +194,7 @@ in
             "sysconfig/snapper".text = ''
               SNAPPER_CONFIGS="${lib.concatStringsSep " " (builtins.attrNames cfg.configs)}"
             '';
+
           }
           // (mapAttrs' (
             name: subvolume:
@@ -204,6 +205,7 @@ in
             })
           ) cfg.configs)
           // (lib.optionalAttrs (cfg.filters != null) { "snapper/filters/default.txt".text = cfg.filters; });
+
       };
 
       services.dbus.packages = [ pkgs.snapper ];

@@ -10,6 +10,7 @@ with lib;
 let
   cfg = config.services.cadvisor;
 in
+
 {
   options = {
     services.cadvisor = {

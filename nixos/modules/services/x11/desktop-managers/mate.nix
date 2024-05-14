@@ -49,6 +49,7 @@ in
       type = types.listOf types.package;
       description = "Which MATE packages to exclude from the default environment";
     };
+
   };
 
   config = mkMerge [

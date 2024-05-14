@@ -45,6 +45,7 @@ in
         '';
       };
     };
+
   };
 
   ###### implementation
@@ -56,5 +57,7 @@ in
     services.udev.packages = [ pcmciaUtils ];
 
     environment.systemPackages = [ pcmciaUtils ];
+
   };
+
 }

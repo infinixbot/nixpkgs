@@ -270,6 +270,7 @@ in
         default = [ ];
       };
     };
+
   };
   config = mkIf (sshEnabled || serviceEnabled) {
 
@@ -377,4 +378,5 @@ in
       };
     }) (filterAttrs (name: instance: instance.onCalendar != null) cfg.instances);
   };
+
 }

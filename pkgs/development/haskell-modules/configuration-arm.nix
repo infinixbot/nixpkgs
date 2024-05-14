@@ -49,6 +49,7 @@ self: super:
       librarySystemDepends = librarySystemDepends ++ [ pkgs.wiringpi ];
     }
   ) super.wiringPi;
+
 }
 // lib.optionalAttrs pkgs.stdenv.hostPlatform.isAarch64 {
   # AARCH64-SPECIFIC OVERRIDES

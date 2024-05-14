@@ -263,7 +263,9 @@ in
         example = "ftpd_banner=Hello";
         description = "Extra configuration to add at the bottom of the generated configuration file.";
       };
+
     } // (listToAttrs (catAttrs "nixosOption" optionDescription));
+
   };
 
   ###### implementation

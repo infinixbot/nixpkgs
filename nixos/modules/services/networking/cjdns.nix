@@ -93,6 +93,7 @@ let
           setuser = "nobody";
         }
       ];
+
     } cfg.extraConfig
   );
 in
@@ -241,7 +242,9 @@ in
           incurs heavy eval-time costs.
         '';
       };
+
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -318,5 +321,7 @@ in
         message = "networking.enableIPv6 must be enabled for CJDNS to work";
       }
     ];
+
   };
+
 }

@@ -20,7 +20,9 @@ with lib;
     services.deepin.app-services = {
 
       enable = mkEnableOption "service collection of DDE applications, including dconfig-center";
+
     };
+
   };
 
   ###### implementation
@@ -41,5 +43,7 @@ with lib;
     services.dbus.packages = [ pkgs.deepin.dde-app-services ];
 
     environment.pathsToLink = [ "/share/dsg" ];
+
   };
+
 }

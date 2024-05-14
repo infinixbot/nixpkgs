@@ -18,6 +18,7 @@ let
       };
       appBaseDefs = builtins.fromJSON (builtins.readFile ./nextcloud-apps.json);
     in
+
     {
       # Create a derivation from the official Nextcloud apps.
       # This takes the data generated from the go tool.
@@ -36,6 +37,7 @@ let
             ;
         }
       ) { };
+
     }
     // lib.mapAttrs (
       type: pkgs:
@@ -51,4 +53,5 @@ let
       )
     ) generatedJson;
 in
+
 (lib.makeExtensible (_: (lib.makeScope newScope packages))).extend (selfNC: superNC: { })

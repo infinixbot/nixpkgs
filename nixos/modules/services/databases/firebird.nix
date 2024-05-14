@@ -77,7 +77,9 @@ in
           data/ stores the databases, system/ stores the password database security2.fdb.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -159,5 +161,6 @@ in
     };
 
     users.groups.firebird.gid = config.ids.gids.firebird;
+
   };
 }

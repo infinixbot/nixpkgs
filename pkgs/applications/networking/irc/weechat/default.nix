@@ -96,6 +96,7 @@ let
   ];
   enabledPlugins = builtins.filter (p: p.enabled) plugins;
 in
+
 assert lib.all (p: p.enabled -> !(builtins.elem null p.buildInputs)) plugins;
 stdenv.mkDerivation rec {
   version = "4.2.2";

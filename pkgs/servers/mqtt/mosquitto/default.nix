@@ -26,6 +26,7 @@ let
     cmakeFlags = old.cmakeFlags ++ [ "-DLWS_WITH_HTTP2=OFF" ];
   });
 in
+
 stdenv.mkDerivation rec {
   pname = "mosquitto";
   version = "2.0.18";

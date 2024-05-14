@@ -109,7 +109,9 @@ in
         description = "icecast.xml content.";
         default = "";
       };
+
     };
+
   };
 
   ###### implementation
@@ -128,5 +130,7 @@ in
         ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
       };
     };
+
   };
+
 }

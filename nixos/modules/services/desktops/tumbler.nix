@@ -35,7 +35,9 @@ in
     services.tumbler = {
 
       enable = mkEnableOption "Tumbler, A D-Bus thumbnailer service";
+
     };
+
   };
 
   ###### implementation
@@ -45,5 +47,7 @@ in
     environment.systemPackages = with pkgs.xfce; [ tumbler ];
 
     services.dbus.packages = with pkgs.xfce; [ tumbler ];
+
   };
+
 }

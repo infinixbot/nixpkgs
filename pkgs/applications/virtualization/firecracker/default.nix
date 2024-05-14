@@ -26,6 +26,7 @@ let
           or (throw "unsupported system ${stdenv.hostPlatform.system}");
     };
 in
+
 stdenv.mkDerivation {
   pname = "firecracker";
   inherit version;

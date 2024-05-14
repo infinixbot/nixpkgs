@@ -75,6 +75,7 @@ in
         }
       '';
     };
+
   };
 
   config = lib.mkIf cfg.enable {
@@ -90,5 +91,6 @@ in
         lib.mapAttrsToList (key: value: ''export ${key}="${value}"'') cfg.extraConfig
       )}
     '';
+
   };
 }

@@ -173,7 +173,9 @@ in
           Use local DNS server for resolving.
         '';
       };
+
     };
+
   };
 
   config = mkMerge [
@@ -209,6 +211,8 @@ in
           RemainAfterExit = true;
         };
       };
+
     })
   ];
+
 }

@@ -89,6 +89,7 @@ let
 in
 # NOTE While MongoDB Compass is available to darwin, I do not have resources to test it
 # Feel free to make a PR adding support if desired
+
 stdenv.mkDerivation {
   pname = "mongodb-compass";
   inherit version;

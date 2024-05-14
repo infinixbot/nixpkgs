@@ -56,5 +56,6 @@ in
       description = "ngircd user.";
     };
     users.groups.ngircd = { };
+
   };
 }

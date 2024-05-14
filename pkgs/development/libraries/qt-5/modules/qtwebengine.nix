@@ -335,6 +335,7 @@ qtModule (
         xorg.libXdamage
         libdrm
         xorg.libxkbfile
+
       ]
       ++ lib.optionals pipewireSupport [
         # Pipewire
@@ -440,6 +441,7 @@ qtModule (
       # This build takes a long time; particularly on slow architectures
       timeout = 24 * 3600;
     };
+
   }
   // lib.optionalAttrs (stdenv.buildPlatform != stdenv.hostPlatform) {
     configurePlatforms = [ ];
@@ -453,5 +455,6 @@ qtModule (
       nss
       nspr
     ];
+
   }
 )

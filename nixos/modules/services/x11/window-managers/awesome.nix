@@ -42,6 +42,7 @@ in
         description = "Disable client transparency support, which can be greatly detrimental to performance in some setups";
       };
     };
+
   };
 
   ###### implementation
@@ -57,5 +58,6 @@ in
     };
 
     environment.systemPackages = [ awesome ];
+
   };
 }

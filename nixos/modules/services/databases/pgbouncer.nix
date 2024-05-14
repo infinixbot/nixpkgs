@@ -79,6 +79,7 @@ let
     '';
   };
 in
+
 {
 
   options.services.pgbouncer = {
@@ -670,7 +671,9 @@ in
     };
 
     networking.firewall.allowedTCPPorts = optional cfg.openFirewall cfg.listenPort;
+
   };
 
   meta.maintainers = [ maintainers._1000101 ];
+
 }

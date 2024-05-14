@@ -17,6 +17,7 @@ let
 
   cfg = config.nix;
 in
+
 {
   options = {
     nix = {

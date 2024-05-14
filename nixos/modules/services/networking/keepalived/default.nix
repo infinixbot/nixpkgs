@@ -156,6 +156,7 @@ let
 
   pidFile = "/run/keepalived.pid";
 in
+
 {
   meta.maintainers = [ lib.maintainers.raitobezarius ];
 
@@ -254,6 +255,7 @@ in
             Enable SNMP traps.
           '';
         };
+
       };
 
       vrrpScripts = mkOption {
@@ -297,6 +299,7 @@ in
           This is useful to avoid putting secrets into the nix store.
         '';
       };
+
     };
   };
 

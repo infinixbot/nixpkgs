@@ -45,6 +45,7 @@ let
     ++ lib.optional asioSupport asio
     ++ lib.optional (!asioSupport) boost180;
 in
+
 stdenv.mkDerivation (finalAttrs: rec {
   pname = "libpulsar";
   version = "3.5.1";

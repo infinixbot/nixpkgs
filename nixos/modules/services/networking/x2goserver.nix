@@ -23,6 +23,7 @@ let
     X2GO_NXAGENT_DEFAULT_OPTIONS="${concatStringsSep " " cfg.nxagentDefaultOptions}"
   '';
 in
+
 {
   imports = [
     (mkRenamedOptionModule

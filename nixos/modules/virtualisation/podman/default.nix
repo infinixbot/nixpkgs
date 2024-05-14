@@ -41,6 +41,7 @@ let
         done
       '';
 in
+
 {
   imports = [
     (lib.mkRemovedOptionModule [
@@ -168,6 +169,7 @@ in
         Settings for podman's default network.
       '';
     };
+
   };
 
   config =

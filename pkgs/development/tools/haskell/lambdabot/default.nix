@@ -30,6 +30,7 @@ let
   modulesStr = lib.replaceStrings [ "\n" ] [ " " ] modules;
   configStr = lib.replaceStrings [ "\n" ] [ " " ] configuration;
 in
+
 haskellLib.overrideCabal (self: {
   patches = (self.patches or [ ]) ++ [ ./custom-config.patch ];
   postPatch =

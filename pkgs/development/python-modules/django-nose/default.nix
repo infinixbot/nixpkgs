@@ -29,4 +29,5 @@ buildPythonPackage rec {
     homepage = "https://github.com/django-nose/django-nose";
     license = licenses.bsd3;
   };
+
 }

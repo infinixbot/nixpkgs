@@ -153,6 +153,7 @@ in
       # disksup requires bash
       path = [ pkgs.bash ];
     };
+
   };
   meta.maintainers = with lib.maintainers; [ picnoir ];
   meta.doc = ./pleroma.md;

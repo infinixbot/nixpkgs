@@ -35,6 +35,7 @@ let
   );
   configFile = settingsFormat.generate "tinyproxy.conf" cfg.settings;
 in
+
 {
 
   options = {

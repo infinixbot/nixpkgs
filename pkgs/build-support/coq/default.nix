@@ -207,6 +207,7 @@ stdenv.mkDerivation (
           }
         )
         // (args.meta or { });
+
     }
     // (optionalAttrs setCOQBIN { COQBIN = "${coq}/bin/"; })
     // (optionalAttrs (!args ? installPhase && !args ? useMelquiondRemake) {

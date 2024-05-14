@@ -34,4 +34,5 @@ buildGoModule rec {
     license = licenses.mpl20;
     maintainers = with maintainers; [ techknowlogick ];
   };
+
 }

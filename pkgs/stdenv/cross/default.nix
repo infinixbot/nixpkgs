@@ -19,6 +19,7 @@ let
     config = builtins.removeAttrs config [ "replaceStdenv" ];
   };
 in
+
 lib.init bootStages
 ++ [
 
@@ -122,4 +123,5 @@ lib.init bootStages
           baseStdenv;
     }
   )
+
 ]

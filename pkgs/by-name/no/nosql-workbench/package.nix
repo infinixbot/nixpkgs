@@ -67,6 +67,7 @@ if stdenv.isDarwin then
 
       runHook postInstall
     '';
+
   }
 else
   appimageTools.wrapType2 {

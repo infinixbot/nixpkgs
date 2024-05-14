@@ -776,6 +776,7 @@ rec {
 
     enableParallelBuilding = true;
   };
+
 } # un-indented
 
 //
@@ -824,4 +825,5 @@ rec {
           mv "$out"/{bin/xindy.mem,lib/xindy/}
         '';
       };
+
     }

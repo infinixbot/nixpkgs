@@ -58,7 +58,9 @@ in
         default = "127.0.0.1";
         description = "The address on which the service listens";
       };
+
     };
+
   };
 
   ###### Service definition
@@ -89,5 +91,6 @@ in
       };
     };
     environment.systemPackages = [ cfg.package ];
+
   };
 }

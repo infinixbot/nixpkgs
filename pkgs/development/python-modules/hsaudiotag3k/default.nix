@@ -24,4 +24,5 @@ buildPythonPackage rec {
     homepage = "http://hg.hardcoded.net/hsaudiotag/";
     license = licenses.bsd3;
   };
+
 }

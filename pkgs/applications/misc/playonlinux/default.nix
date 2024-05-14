@@ -78,6 +78,7 @@ let
     ]
   );
 in
+
 stdenv.mkDerivation {
   pname = "playonlinux";
   inherit version;

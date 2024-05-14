@@ -26,4 +26,5 @@ buildDunePackage rec {
   meta = graphql_parser.meta // {
     description = "Build GraphQL schemas and execute queries against them";
   };
+
 }

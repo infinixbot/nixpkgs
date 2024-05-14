@@ -15,6 +15,7 @@ let
     name: cfg: { file = pkgs.writeText "rule" (builtins.toJSON cfg); }
   );
 in
+
 {
   options = {
     services.opensnitch = {
@@ -72,6 +73,7 @@ in
                   output).
                 '';
               };
+
             };
 
             DefaultAction = mkOption {
@@ -143,6 +145,7 @@ in
                   Max stats per item to keep in backlog.
                 '';
               };
+
             };
 
             Ebpf.ModulesPath = mkOption {
@@ -171,6 +174,7 @@ in
                 get stored by the NixOS module.
               '';
             };
+
           };
         };
         description = ''
@@ -235,6 +239,7 @@ in
         "L+ /etc/opensnitchd/system-fw.json - - - - ${pkgs.opensnitch}/etc/opensnitchd/system-fw.json"
       ];
     };
+
   };
 
   meta.maintainers = with lib.maintainers; [ onny ];

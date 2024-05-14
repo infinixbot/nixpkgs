@@ -16,6 +16,7 @@ let
     sha256 = coreSha256;
   };
 in
+
 buildPythonApplication rec {
   pname = "sonota-unstable";
   version = "2018-10-07";

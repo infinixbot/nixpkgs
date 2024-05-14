@@ -16,6 +16,7 @@ let
       aarch64-linux = "linux_arm";
       x86_64-darwin = "macos_x64";
       aarch64-darwin = "macos_arm";
+
     }
     .${system} or throwSystem;
 
@@ -30,6 +31,7 @@ let
 
   bin = "$out/bin/codeium_language_server";
 in
+
 stdenv.mkDerivation (finalAttrs: {
   pname = "codeium";
   version = "1.8.32";

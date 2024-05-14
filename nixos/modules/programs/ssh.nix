@@ -36,6 +36,7 @@ let
     "/etc/ssh/ssh_known_hosts"
   ] ++ builtins.map pkgs.copyPathToStore cfg.knownHostsFiles;
 in
+
 {
   ###### interface
 
@@ -300,6 +301,7 @@ in
         '';
       };
     };
+
   };
 
   config = {
@@ -388,5 +390,6 @@ in
     '';
 
     environment.variables.SSH_ASKPASS = lib.optionalString cfg.enableAskPassword cfg.askPassword;
+
   };
 }

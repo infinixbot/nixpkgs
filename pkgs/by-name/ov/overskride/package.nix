@@ -23,6 +23,7 @@ let
   name = "overskride";
   version = "0.5.7";
 in
+
 rustPlatform.buildRustPackage {
 
   pname = name;
@@ -84,4 +85,5 @@ rustPlatform.buildRustPackage {
     maintainers = with maintainers; [ mrcjkb ];
     platforms = platforms.linux;
   };
+
 }

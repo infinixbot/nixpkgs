@@ -32,6 +32,7 @@ let
     enabledPlugins = [ "syslog" ] ++ builtins.attrNames cfg.plugins;
   };
 in
+
 {
   options.services.collectd = with types; {
     enable = mkEnableOption "collectd agent";
@@ -109,6 +110,7 @@ in
       '';
       type = lines;
     };
+
   };
 
   config = mkIf cfg.enable {

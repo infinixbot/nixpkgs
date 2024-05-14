@@ -19,6 +19,7 @@ let
   pkg = if cfg.pulseAudio then pkgs.squeezelite-pulse else pkgs.squeezelite;
   bin = "${pkg}/bin/${pkg.pname}";
 in
+
 {
 
   ###### interface

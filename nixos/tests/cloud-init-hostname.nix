@@ -28,6 +28,7 @@ let
     '';
   };
 in
+
 makeTest {
   name = "cloud-init-hostname";
   meta = with pkgs.lib.maintainers; {

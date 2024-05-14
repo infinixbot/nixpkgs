@@ -10,6 +10,7 @@ let
   format = pkgs.formats.yaml { };
   cfg = config.services.evdevremapkeys;
 in
+
 {
   options.services.evdevremapkeys = {
     enable = mkEnableOption ''evdevremapkeys, a daemon to remap events on linux input devices'';

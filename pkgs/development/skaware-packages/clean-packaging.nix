@@ -52,6 +52,7 @@ let
     fi
   '';
 in
+
 {
   inherit commonFileActions checkForRemainingFiles;
 }

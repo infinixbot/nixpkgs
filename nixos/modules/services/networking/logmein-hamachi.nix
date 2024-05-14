@@ -26,6 +26,7 @@ in
         (closed source) commercial VPN software.
       '';
     };
+
   };
 
   ###### implementation
@@ -45,5 +46,7 @@ in
     };
 
     environment.systemPackages = [ pkgs.logmein-hamachi ];
+
   };
+
 }

@@ -212,6 +212,7 @@ in
           exit $_status
         '';
       };
+
     };
 
     environment.usrbinenv = mkOption {
@@ -245,6 +246,7 @@ in
         '';
       } (types.either types.str types.package);
     };
+
   };
 
   ###### implementation
@@ -304,4 +306,5 @@ in
       };
     };
   };
+
 }

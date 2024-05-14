@@ -31,7 +31,9 @@ in
           configuration.nix easily.
         '';
       };
+
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -43,5 +45,7 @@ in
     services.udev.packages = [ pkgs.xf86_input_wacom ];
 
     environment.etc."X11/xorg.conf.d/70-wacom.conf".source = "${pkgs.xf86_input_wacom}/share/X11/xorg.conf.d/70-wacom.conf";
+
   };
+
 }

@@ -9,6 +9,7 @@ let
 
   cfg = config.virtualisation.podman.networkSocket;
 in
+
 {
   options.virtualisation.podman.networkSocket = {
     server = mkOption { type = types.enum [ "ghostunnel" ]; };
@@ -26,6 +27,7 @@ in
       };
     };
     systemd.services.ghostunnel-server-podman-socket.serviceConfig.SupplementaryGroups = [ "podman" ];
+
   };
 
   meta.maintainers = lib.teams.podman.members ++ [ lib.maintainers.roberth ];

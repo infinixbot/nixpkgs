@@ -26,4 +26,5 @@ buildPythonPackage rec {
     description = "Library for generating identicons. Port of Sigil (https://github.com/cupcake/sigil) with enhancements";
     license = licenses.bsd0;
   };
+
 }

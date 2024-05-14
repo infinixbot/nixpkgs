@@ -13,6 +13,7 @@
 let
   pname = "qogir-icon-theme";
 in
+
 lib.checkListOfEnum "${pname}: color variants"
   [
     "standard"

@@ -17,6 +17,7 @@ let
   lib = import ../.;
   testWithNix = nix: import ./test-with-nix.nix { inherit lib nix pkgs; };
 in
+
 pkgs.symlinkJoin {
   name = "nixpkgs-lib-tests";
   paths =
@@ -32,4 +33,5 @@ pkgs.symlinkJoin {
     #   https://github.com/NixOS/nixpkgs/issues/272591
     #
     [ (import ../../pkgs/test/release { }) ];
+
 }

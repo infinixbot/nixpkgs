@@ -787,6 +787,7 @@ in
     };
 
     users.groups.mosquitto.gid = config.ids.gids.mosquitto;
+
   };
 
   meta = {

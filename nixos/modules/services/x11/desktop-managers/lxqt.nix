@@ -32,6 +32,7 @@ in
       type = types.listOf types.package;
       description = "Which LXQt packages to exclude from the default environment";
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -81,4 +82,5 @@ in
       "gtk"
     ];
   };
+
 }

@@ -20,6 +20,7 @@ let
     javac -d $out/lib ActiveMQBroker.java
   '';
 in
+
 {
 
   options = {
@@ -134,5 +135,7 @@ in
           ${cfg.extraJavaOptions} ActiveMQBroker "${cfg.configurationURI}"
       '';
     };
+
   };
+
 }

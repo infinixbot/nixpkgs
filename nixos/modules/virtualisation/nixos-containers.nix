@@ -323,6 +323,7 @@ let
       config = {
         mountPoint = mkDefault name;
       };
+
     };
 
   allowedDeviceOpts =
@@ -448,6 +449,7 @@ let
         set up from localAddress6 to hostAddress6 and back.
       '';
     };
+
   };
 
   dummyConfig = {
@@ -827,6 +829,7 @@ in
         {command}`systemctl`.
       '';
     };
+
   };
 
   config = mkMerge [

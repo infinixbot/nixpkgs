@@ -34,4 +34,5 @@ buildPythonPackage rec {
     license = licenses.free;
     maintainers = with maintainers; [ domenkozar ];
   };
+
 }

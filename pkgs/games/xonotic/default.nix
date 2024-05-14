@@ -207,6 +207,7 @@ let
       '';
   };
 in
+
 rec {
   xonotic-data = fetchzip {
     name = "xonotic-data";

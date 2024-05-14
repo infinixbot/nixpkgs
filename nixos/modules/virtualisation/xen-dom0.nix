@@ -135,6 +135,7 @@ in
           servers specified in /etc/resolv.conf .
         '';
       };
+
     };
 
     virtualisation.xen.stored = mkOption {
@@ -157,6 +158,7 @@ in
     };
 
     virtualisation.xen.trace = mkEnableOption "Xen tracing";
+
   };
 
   ###### implementation
@@ -503,5 +505,6 @@ in
       serviceConfig.ExecStart = "${cfg.package}/etc/init.d/xendomains start";
       serviceConfig.ExecStop = "${cfg.package}/etc/init.d/xendomains stop";
     };
+
   };
 }

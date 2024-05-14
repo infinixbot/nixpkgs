@@ -51,6 +51,7 @@ let
     hash = "sha256-CVEmKkzdFNLKCbcbeSIoM5QjYVLQglpz6gy7+ZFPgCY=";
   };
 in
+
 rustPlatform.buildRustPackage rec {
   pname = "ecc";
   version = "1.0.12";

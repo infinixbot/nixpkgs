@@ -24,6 +24,7 @@ let
         languages = builtins.fromJSON (builtins.readFile ./wordpress-languages.json);
       };
     in
+
     {
       # Create a generic WordPress package. Most arguments are just passed
       # to `mkDerivation`. The version is automatically filtered for weird characters.
@@ -179,6 +180,7 @@ let
               throw "fetchWordpress: invalid package type ${type}";
         }
       ) { };
+
     }
     // lib.mapAttrs (
       type: pkgs:
@@ -195,6 +197,7 @@ let
       )
     ) generatedJson;
 in
+
 # This creates an extensible scope.
 lib.recursiveUpdate ((lib.makeExtensible (_: (lib.makeScope newScope packages))).extend (
   selfWP: superWP: { }

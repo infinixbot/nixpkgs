@@ -86,6 +86,7 @@ in
         Extra command line arguments to pass to hledger-web.
       '';
     };
+
   };
 
   imports = [
@@ -142,6 +143,7 @@ in
           (mkIf (cfg.stateDir == "/var/lib/hledger-web") { StateDirectory = "hledger-web"; })
         ];
       };
+
   };
 
   meta.maintainers = with lib.maintainers; [

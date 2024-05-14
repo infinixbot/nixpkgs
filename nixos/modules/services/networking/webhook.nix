@@ -39,6 +39,7 @@ let
       name: hook: pkgs.writeText "webhook-${name}.json.tmpl" "[${hook}]"
     ) cfg.hooksTemplated;
 in
+
 {
   options = {
     services.webhook = {

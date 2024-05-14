@@ -349,6 +349,7 @@ in
             ${datadogPkg}/bin/trace-agent -config /etc/datadog-agent/datadog.yaml
           '';
         });
+
       };
 
     environment.etc = etcfiles;

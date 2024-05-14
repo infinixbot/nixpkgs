@@ -79,6 +79,7 @@ in
         '';
       };
     };
+
   };
 
   config = lib.mkIf cfg.enable {
@@ -159,7 +160,9 @@ in
 
       (lib.mkIf userCfg.mutableUsers { "sysusers.d".source = sysusersConfig; })
     ];
+
   };
 
   meta.maintainers = with lib.maintainers; [ nikstur ];
+
 }

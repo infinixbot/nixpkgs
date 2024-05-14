@@ -33,6 +33,7 @@
       homeDir = "/home/nixos/";
       desktopDir = homeDir + "Desktop/";
     in
+
     ''
       mkdir -p ${desktopDir}
       chown nixos ${homeDir} ${desktopDir}
@@ -43,4 +44,5 @@
         desktopDir + "io.calamares.calamares.desktop"
       }
     '';
+
 }

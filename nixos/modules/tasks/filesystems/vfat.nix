@@ -32,5 +32,6 @@ in
     '';
 
     boot.initrd.systemd.initrdBin = mkIf inInitrd [ pkgs.dosfstools ];
+
   };
 }

@@ -109,6 +109,7 @@ in
         '';
       };
     };
+
   };
 
   config = lib.mkIf cfg.enable {
@@ -138,5 +139,7 @@ in
           // lib.optionalAttrs (cfg.writebackDevice != null) { writeback-device = cfg.writebackDevice; };
       }) devices
     );
+
   };
+
 }

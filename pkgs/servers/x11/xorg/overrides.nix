@@ -1503,6 +1503,7 @@ self: super:
       mkfontscale "$fontDir"
     '';
   });
+
 }
 
 # mark some packages as unfree
@@ -1543,6 +1544,7 @@ self: super:
       });
     mapNamesToAttrs = f: names: with lib; listToAttrs (zipListsWith nameValuePair names (map f names));
   in
+
   mapNamesToAttrs (setLicense lib.licenses.unfreeRedistributable) redist
   // mapNamesToAttrs (setLicense lib.licenses.unfree) unfree
 )

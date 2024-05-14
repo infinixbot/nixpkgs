@@ -90,6 +90,7 @@ import ./make-test-python.nix (
           };
           networking.firewall.allowedUDPPorts = [ 1024 ];
         };
+
     };
 
     testScript = ''

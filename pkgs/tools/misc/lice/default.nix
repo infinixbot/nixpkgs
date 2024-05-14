@@ -26,4 +26,5 @@ buildPythonPackage rec {
     platforms = platforms.unix;
     mainProgram = "lice";
   };
+
 }

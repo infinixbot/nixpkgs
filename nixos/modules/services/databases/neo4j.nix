@@ -104,6 +104,7 @@ let
     ${cfg.extraServerConfig}
   '';
 in
+
 {
 
   imports = [
@@ -645,11 +646,13 @@ in
                     default value.
                   '';
                 };
+
               };
 
               config.directoriesToCreate = optionals (
                 certDirOpt.highestPrio >= 1500 && options.baseDirectory.highestPrio >= 1500
               ) (map (opt: opt.value) (filter isDefaultPathOption (attrValues options)));
+
             }
           )
         );
@@ -663,6 +666,7 @@ in
         for further details.
       '';
     };
+
   };
 
   ###### implementation

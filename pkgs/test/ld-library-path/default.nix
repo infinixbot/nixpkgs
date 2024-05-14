@@ -68,6 +68,7 @@ let
         [ "$(LD_LIBRARY_PATH=${libgoodbye}/lib greeting-test)" = "Goodbye, world!" ]
       )
     '';
+
   };
 in
 stdenv.mkDerivation {

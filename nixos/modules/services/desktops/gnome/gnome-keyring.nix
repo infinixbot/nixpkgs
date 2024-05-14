@@ -28,7 +28,9 @@
           such as user names and passwords.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -52,5 +54,7 @@
       capabilities = "cap_ipc_lock=ep";
       source = "${pkgs.gnome.gnome-keyring}/bin/gnome-keyring-daemon";
     };
+
   };
+
 }

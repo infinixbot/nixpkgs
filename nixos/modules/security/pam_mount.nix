@@ -139,6 +139,7 @@ in
         '';
       };
     };
+
   };
 
   config = mkIf (cfg.enable || anyPamMount) {
@@ -196,5 +197,6 @@ in
           </pam_mount>
         '';
     };
+
   };
 }

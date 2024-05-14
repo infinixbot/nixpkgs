@@ -134,4 +134,5 @@ rec {
         homepage = "https://dnsprivacy.org/dns_privacy_daemon_-_stubby/";
       };
   };
+
 }

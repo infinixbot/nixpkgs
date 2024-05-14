@@ -16,7 +16,9 @@
     programs.seahorse = {
 
       enable = lib.mkEnableOption "Seahorse, a GNOME application for managing encryption keys and passwords in the GNOME Keyring";
+
     };
+
   };
 
   ###### implementation
@@ -28,5 +30,7 @@
     environment.systemPackages = [ pkgs.gnome.seahorse ];
 
     services.dbus.packages = [ pkgs.gnome.seahorse ];
+
   };
+
 }

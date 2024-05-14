@@ -149,6 +149,7 @@ let
           not route options, in the sense used in the manual.
         '';
       };
+
     };
   };
 
@@ -178,7 +179,9 @@ let
           example = 42;
           description = "The default gateway metric/preference.";
         };
+
       };
+
     };
 
   interfaceOpts =
@@ -483,6 +486,7 @@ let
             options.assertions = options.assertions;
           })
         ];
+
     };
 
   vswitchInterfaceOpts =
@@ -856,8 +860,11 @@ in
                 into one atomic operation.
               '';
             };
+
           };
+
         });
+
     };
 
     networking.bridges = mkOption {
@@ -900,8 +907,11 @@ in
               type = types.bool;
               description = "Whether the bridge interface should enable rstp.";
             };
+
           };
+
         });
+
     };
 
     networking.bonds =
@@ -956,6 +966,7 @@ in
                   Documentation can be found in
                   <https://www.kernel.org/doc/Documentation/networking/bonding.txt>
                 '';
+
               };
 
               lacp_rate = mkOption {
@@ -1005,7 +1016,9 @@ in
                   balance-xor, 802.3ad, and tlb modes.
                 '';
               };
+
             };
+
           });
       };
 
@@ -1040,7 +1053,9 @@ in
               example = "vepa";
               description = "The mode of the macvlan device.";
             };
+
           };
+
         });
     };
 
@@ -1224,7 +1239,9 @@ in
                   Configures encapsulation in UDP packets.
                 '';
               };
+
           };
+
         });
     };
 
@@ -1359,8 +1376,11 @@ in
               type = types.str;
               description = "The interface the vlan will transmit packets through.";
             };
+
           };
+
         });
+
     };
 
     networking.wlanInterfaces = mkOption {
@@ -1472,8 +1492,11 @@ in
                 - xE:xx:xx:xx:xx:xx
               '';
             };
+
           };
+
         });
+
     };
 
     networking.useDHCP = mkOption {
@@ -1513,6 +1536,7 @@ in
         ${tempaddrDoc}
       '';
     };
+
   };
 
   ###### implementation
@@ -1806,4 +1830,5 @@ in
         }
       );
   };
+
 }

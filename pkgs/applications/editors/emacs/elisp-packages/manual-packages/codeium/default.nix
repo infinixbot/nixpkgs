@@ -40,4 +40,5 @@ melpaBuild {
     platforms = pkgs.codeium.meta.platforms;
     sourceProvenance = [ lib.sourceTypes.fromSource ];
   };
+
 }

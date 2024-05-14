@@ -271,6 +271,7 @@ in
         :::
       '';
     };
+
   };
 
   config = lib.mkIf cfg.enable {
@@ -297,4 +298,5 @@ in
   };
 
   meta.maintainers = with lib.maintainers; [ rnhmjoj ];
+
 }

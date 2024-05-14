@@ -23,6 +23,7 @@ let
     startupWMClass = "TLA+ Toolbox";
   };
 in
+
 stdenv.mkDerivation rec {
   pname = "tla-toolbox";
   version = "1.7.1";

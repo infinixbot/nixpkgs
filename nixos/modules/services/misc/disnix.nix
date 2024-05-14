@@ -41,6 +41,7 @@ in
         description = "Names of the Disnix profiles to expose in the system's PATH";
       };
     };
+
   };
 
   ###### implementation
@@ -106,6 +107,7 @@ in
 
         serviceConfig.ExecStart = "${cfg.package}/bin/disnix-service";
       };
+
     };
   };
 }

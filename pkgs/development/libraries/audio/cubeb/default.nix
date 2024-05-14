@@ -25,6 +25,7 @@ let
     sndio
   ];
 in
+
 stdenv.mkDerivation {
   pname = "cubeb";
   version = "unstable-2022-10-18";

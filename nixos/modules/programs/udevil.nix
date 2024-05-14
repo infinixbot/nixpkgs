@@ -8,6 +8,7 @@
 let
   cfg = config.programs.udevil;
 in
+
 {
   options.programs.udevil.enable = lib.mkEnableOption "udevil, to mount filesystems without password";
 

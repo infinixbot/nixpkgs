@@ -94,7 +94,9 @@ in
           Additional parameters passed to {command}`syslogd`.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -126,5 +128,7 @@ in
         StandardOutput = "null";
       };
     };
+
   };
+
 }

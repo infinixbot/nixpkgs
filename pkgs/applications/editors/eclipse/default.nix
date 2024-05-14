@@ -299,4 +299,5 @@ rec {
   plugins = callPackage ./plugins.nix { } // {
     __attrsFailEvaluation = true;
   };
+
 }

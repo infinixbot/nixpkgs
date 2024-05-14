@@ -81,6 +81,7 @@ let
             is_nixenv = "False";
             is_virtualenv = "False";
           };
+
         }
         // lib.optionalAttrs (python.pythonAtLeast "3.8") {
           # Venv built using Python Nix environment (python.buildEnv)
@@ -108,6 +109,7 @@ let
           touch $out/success
         '';
     in
+
     lib.mapAttrs testfun envs;
 
   # Integration tests involving the package set.
@@ -211,6 +213,7 @@ let
       '';
     };
 in
+
 lib.optionalAttrs (stdenv.hostPlatform == stdenv.buildPlatform) (
   environmentTests // integrationTests // overrideTests // condaTests
 )

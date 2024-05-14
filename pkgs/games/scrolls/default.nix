@@ -49,4 +49,5 @@ stdenv.mkDerivation {
     mkdir "$out/bin"
     ln -s "$out/opt/Scrolls/Scrolls" "$out/bin/Scrolls"
   '';
+
 }

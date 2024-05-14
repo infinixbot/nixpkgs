@@ -71,7 +71,9 @@ in
         '';
         apply = map (d: d // { manage = "window"; });
       };
+
     };
+
   };
 
   config = {

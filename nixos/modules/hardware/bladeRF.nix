@@ -22,6 +22,7 @@ in
         libbladeRF package.
       '';
     };
+
   };
 
   config = mkIf cfg.enable {

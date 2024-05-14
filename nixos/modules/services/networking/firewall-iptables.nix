@@ -320,6 +320,7 @@ in
         '';
       };
     };
+
   };
 
   # FIXME: Maybe if `enable' is false, the firewall should still be
@@ -368,5 +369,7 @@ in
         ExecStop = "@${stopScript} firewall-stop";
       };
     };
+
   };
+
 }

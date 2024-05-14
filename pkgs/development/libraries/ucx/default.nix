@@ -33,6 +33,7 @@ let
     paths = rocmList;
   };
 in
+
 stdenv.mkDerivation rec {
   pname = "ucx";
   version = "1.16.0";
@@ -73,6 +74,7 @@ stdenv.mkDerivation rec {
     ++ lib.optionals enableCuda [
       cudaPackages.cuda_cudart
       cudaPackages.cuda_nvml_dev
+
     ]
     ++ lib.optionals enableRocm rocmList;
 

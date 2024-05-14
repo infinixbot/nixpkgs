@@ -105,6 +105,7 @@ in
               The DNS servers which dnsmasq should query.
             '';
           };
+
         };
         default = { };
         description = ''
@@ -136,7 +137,9 @@ in
           This option is deprecated, please use {option}`settings` instead.
         '';
       };
+
     };
+
   };
 
   ###### implementation

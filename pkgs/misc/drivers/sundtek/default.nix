@@ -27,6 +27,7 @@ let
     else
       "15y6r5w306pcq4g1rn9f7vf70f3a7qhq237ngaf0wxh2nr0aamxp";
 in
+
 stdenv.mkDerivation {
   src = fetchurl {
     url = "http://www.sundtek.de/media/netinst/${platform}/installer.tar.gz";

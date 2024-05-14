@@ -37,6 +37,7 @@ import ./make-test-python.nix (
             }
           ];
         };
+
       };
 
     # fancy setup: run in uWSGI and use nginx as proxy
@@ -75,6 +76,7 @@ import ./make-test-python.nix (
 
         # allow nginx access to the searx socket
         users.users.nginx.extraGroups = [ "searx" ];
+
       };
 
     testScript = ''

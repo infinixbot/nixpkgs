@@ -125,6 +125,7 @@ in
         Extra commandline options when launching Prometheus.
       '';
     };
+
   };
 
   serviceOpts = {

@@ -54,4 +54,5 @@ buildGoModule {
     maintainers = with maintainers; [ MayNiklas ];
     mainProgram = "owncast";
   };
+
 }

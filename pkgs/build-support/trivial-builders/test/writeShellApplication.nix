@@ -142,4 +142,5 @@ linkFarm "writeShellApplication-tests" {
     excludeShellChecks = [ "SC2154" ];
     expected = "";
   };
+
 }

@@ -30,6 +30,7 @@ lib.throwIf (args ? minimalOCamlVersion && lib.versionOlder ocaml.version args.m
       configurePlatforms = [ ];
       strictDeps = true;
       inherit (topkg) buildPhase installPhase;
+
     }
     // (builtins.removeAttrs args [ "minimalOCamlVersion" ])
     // {
@@ -47,5 +48,6 @@ lib.throwIf (args ? minimalOCamlVersion && lib.versionOlder ocaml.version args.m
       meta = (args.meta or { }) // {
         platforms = args.meta.platforms or ocaml.meta.platforms;
       };
+
     }
   )

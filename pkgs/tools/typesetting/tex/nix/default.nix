@@ -108,6 +108,7 @@ rec {
             in
             if fn != null then [ { key = fn; } ] ++ xs else xs;
         in
+
         pkgs.lib.foldr foundDeps [ ] deps;
     };
 
@@ -128,6 +129,7 @@ rec {
             } "${pkgs.stdenv.bash}/bin/bash ${./find-lhs2tex-includes.sh}"
           );
         in
+
         pkgs.lib.concatMap (x: lib.optionals (builtins.pathExists x) [ { key = x; } ]) (
           map (x: dirOf key + ("/" + x)) deps
         );
@@ -286,4 +288,5 @@ rec {
   fontsConf = pkgs.makeFontsConf {
     fontDirectories = [ "${pkgs.ghostscript}/share/ghostscript/fonts" ];
   };
+
 }

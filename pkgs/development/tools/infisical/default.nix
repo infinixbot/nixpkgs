@@ -44,6 +44,7 @@ let
     in
     fetchurl { inherit name url hash; };
 in
+
 stdenv.mkDerivation {
   pname = "infisical";
   version = version;

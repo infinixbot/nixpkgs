@@ -21,4 +21,5 @@ buildPythonPackage rec {
     license = licenses.bsd3;
     description = "Check password strength";
   };
+
 }

@@ -29,6 +29,7 @@ with (import ./srcs.nix { inherit fetchurl; });
 let
   inherit (lib) optional optionalString optionals;
 in
+
 stdenv.mkDerivation {
   pname = "openafs";
   inherit version srcs;

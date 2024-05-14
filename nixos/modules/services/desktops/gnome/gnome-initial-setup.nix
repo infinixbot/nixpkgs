@@ -57,7 +57,9 @@ in
     services.gnome.gnome-initial-setup = {
 
       enable = lib.mkEnableOption "GNOME Initial Setup, a Simple, easy, and safe way to prepare a new system";
+
     };
+
   };
 
   ###### implementation
@@ -82,4 +84,5 @@ in
       "${pkgs.gnome.gnome-initial-setup}/share/gnome-initial-setup/initial-setup-dconf-defaults"
     ];
   };
+
 }

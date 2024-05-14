@@ -38,4 +38,5 @@ stdenv.mkDerivation rec {
     platforms = with platforms; unix;
     mainProgram = "sipsak";
   };
+
 }

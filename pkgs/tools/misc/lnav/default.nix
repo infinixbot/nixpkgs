@@ -72,4 +72,5 @@ stdenv.mkDerivation rec {
     platforms = platforms.unix;
     mainProgram = "lnav";
   };
+
 }

@@ -173,6 +173,7 @@ let
           ];
           platforms = platforms.linux ++ platforms.darwin;
         };
+
       }
       // lib.optionalAttrs stdenv.isDarwin {
         CXX = "clang++";
@@ -182,6 +183,7 @@ let
       }
     );
 in
+
 {
   subversion = common {
     version = "1.14.3";

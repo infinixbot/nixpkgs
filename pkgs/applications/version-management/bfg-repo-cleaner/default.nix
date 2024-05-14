@@ -50,4 +50,5 @@ stdenv.mkDerivation rec {
     platforms = platforms.unix;
     downloadPage = "https://mvnrepository.com/artifact/com.madgag/bfg/${version}";
   };
+
 }

@@ -58,6 +58,7 @@ let
   # Use this rather than `rec { ... }` below for sake of overlays.
   inherit (pkgs.haskell) compiler packages;
 in
+
 {
   lib = haskellLibUncomposable;
 

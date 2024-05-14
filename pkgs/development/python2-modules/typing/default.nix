@@ -12,6 +12,7 @@
 let
   testDir = if isPy3k then "src" else "python2";
 in
+
 buildPythonPackage rec {
   pname = "typing";
   version = "3.10.0.0";

@@ -27,6 +27,7 @@ let
 
   inherit (import ./settings.nix { inherit pkgs lib; }) format settingsModule;
 in
+
 {
   imports = [
     (mkRenamedOptionModule

@@ -132,6 +132,7 @@ let
           Install faust2* for specific faust2appl scripts.
         '';
       };
+
     };
 
   # Default values for faust2appl.
@@ -254,6 +255,7 @@ let
 
       runtimePath = concatStringsSep ":" (map (p: "${p}/bin") ([ faust ] ++ runtimeInputs));
     in
+
     stdenv.mkDerivation (
       (faust2ApplBase args)
       // {
@@ -265,7 +267,9 @@ let
             wrapProgram "$script" --prefix PATH : "${runtimePath}"
           done
         '';
+
       }
     );
 in
+
 faust

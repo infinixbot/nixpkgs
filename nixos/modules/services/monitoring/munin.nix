@@ -322,7 +322,9 @@ in
           }
         '';
       };
+
     };
+
   };
 
   config = mkMerge [
@@ -340,6 +342,7 @@ in
       users.groups.munin = {
         gid = config.ids.gids.munin;
       };
+
     })
     (mkIf nodeCfg.enable {
 
@@ -390,6 +393,7 @@ in
         user = "munin";
         group = "munin";
       };
+
     })
     (mkIf cronCfg.enable {
 

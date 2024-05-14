@@ -74,6 +74,7 @@ in
       enables commands to be sent to test and debug stage 1. Use
       machine.switch_root() to leave stage 1 and proceed to stage 2.
     '';
+
   };
 
   config = {
@@ -238,4 +239,5 @@ in
     # Squelch warning about unset system.stateVersion
     system.stateVersion = lib.mkDefault lib.trivial.release;
   };
+
 }

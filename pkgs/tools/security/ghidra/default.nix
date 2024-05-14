@@ -23,6 +23,7 @@ let
     categories = [ "Development" ];
   };
 in
+
 stdenv.mkDerivation rec {
   pname = "ghidra";
   version = "10.4";
@@ -84,4 +85,5 @@ stdenv.mkDerivation rec {
       mic92
     ];
   };
+
 }

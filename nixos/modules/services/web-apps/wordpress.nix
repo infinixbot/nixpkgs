@@ -402,6 +402,7 @@ let
             @ini_set( 'display_errors', 'On' );
           '';
         };
+
       };
 
       config.virtualHost.hostName = mkDefault name;
@@ -435,6 +436,7 @@ in
           See [](#opt-services.httpd.virtualHosts) for further information.
         '';
       };
+
     };
   };
 
@@ -475,6 +477,7 @@ in
           } // cfg.poolConfig;
         })
       ) eachSite;
+
     }
 
     (mkIf (cfg.webserver == "httpd") {
@@ -643,5 +646,6 @@ in
         ) eachSite;
       };
     })
+
   ]);
 }

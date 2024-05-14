@@ -126,6 +126,7 @@ stdenv.mkDerivation (
             [[ "$output" =~ Hello,?\ World! ]] && touch "$out"
           '';
         in
+
         {
           version = testers.testVersion (
             {

@@ -131,6 +131,7 @@ let
     };
   };
 in
+
 if withScripts then
   symlinkJoin {
     name = "msmtp-${version}";

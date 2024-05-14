@@ -134,6 +134,7 @@ in
           "d  ${cfg.dataDir}            0750 trilium trilium - -"
           "L+ ${cfg.dataDir}/config.ini -    -       -       - ${configIni}"
         ];
+
       }
 
       (lib.mkIf cfg.nginx.enable {

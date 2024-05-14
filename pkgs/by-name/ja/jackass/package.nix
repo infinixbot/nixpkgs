@@ -23,6 +23,7 @@ let
     '';
   });
 in
+
 stdenv.mkDerivation (finalAttrs: {
   pname = "jackass";
   version = "1.1";

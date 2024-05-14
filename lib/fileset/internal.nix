@@ -939,6 +939,7 @@ rec {
         else
           _mirrorStorePath path fetchResult.outPath;
     in
+
     if !isPath path then
       throw "lib.fileset.${function}: Expected the ${argument} to be a path, but it's a ${typeOf path} instead."
     else if pathType path != "directory" then
@@ -947,4 +948,5 @@ rec {
       tryStorePath
     else
       tryFetchGit;
+
 }

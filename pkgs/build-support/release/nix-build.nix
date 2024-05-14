@@ -154,6 +154,7 @@ stdenv.mkDerivation (
       description =
         if doCoverageAnalysis then "Coverage analysis" else "Nix package for ${stdenv.hostPlatform.system}";
     };
+
   }
 
   //

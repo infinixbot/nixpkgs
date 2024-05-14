@@ -21,6 +21,7 @@ in
       default = "";
       description = "monitrc content";
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -45,6 +46,7 @@ in
       };
       restartTriggers = [ config.environment.etc.monitrc.source ];
     };
+
   };
 
   meta.maintainers = with maintainers; [ ryantm ];

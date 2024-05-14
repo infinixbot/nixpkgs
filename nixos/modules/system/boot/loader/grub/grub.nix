@@ -337,6 +337,7 @@ in
                   Note these are typically device paths and not paths to partitions.
                 '';
               };
+
             };
           });
       };
@@ -767,7 +768,9 @@ in
           to install and run NixOS on 64bit x86 systems with 32bit (U)EFI.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -1023,4 +1026,5 @@ in
       ''
     )
   ];
+
 }

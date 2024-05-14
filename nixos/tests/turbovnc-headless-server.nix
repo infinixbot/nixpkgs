@@ -172,5 +172,6 @@ import ./make-test-python.nix (
       machine.copy_from_vm("/tmp/Xvnc.stdout")
       machine.copy_from_vm("/tmp/Xvnc.stderr")
     '';
+
   }
 )

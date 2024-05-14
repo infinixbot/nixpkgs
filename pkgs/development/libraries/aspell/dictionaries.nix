@@ -127,6 +127,7 @@ let
           meta = {
             homepage = "http://ftp.gnu.org/gnu/aspell/dict/0index.html";
           } // (args.meta or { });
+
         }
         // lib.optionalAttrs
           (lib.elem language [
@@ -222,6 +223,7 @@ let
       // args
     );
 in
+
 rec {
 
   ### Languages
@@ -1010,5 +1012,7 @@ rec {
     meta = {
       homepage = "http://www.jpetrie.net/scientific-word-list-for-spell-checkersspelling-dictionaries/";
     };
+
   };
+
 }

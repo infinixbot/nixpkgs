@@ -31,7 +31,9 @@ in
         "gnome"
         "gvfs"
       ] { };
+
     };
+
   };
 
   ###### implementation
@@ -50,5 +52,7 @@ in
 
     # Needed for unwrapped applications
     environment.sessionVariables.GIO_EXTRA_MODULES = [ "${cfg.package}/lib/gio/modules" ];
+
   };
+
 }

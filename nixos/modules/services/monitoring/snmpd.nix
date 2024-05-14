@@ -68,6 +68,7 @@ in
         a config file will be automatically generated.
       '';
     };
+
   };
 
   config = lib.mkIf cfg.enable {
@@ -85,4 +86,5 @@ in
   };
 
   meta.maintainers = [ lib.maintainers.eliandoran ];
+
 }

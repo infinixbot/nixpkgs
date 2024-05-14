@@ -11,6 +11,7 @@ let
   version = "5.2.0";
   libPath = lib.makeLibraryPath [ oracle-instantclient.lib ];
 in
+
 stdenv.mkDerivation {
   inherit version;
 

@@ -75,6 +75,7 @@ let
       inherit lib;
     };
 in
+
 makeScope pkgs'.newScope (
   self:
   makeOverridable (
@@ -129,6 +130,7 @@ makeScope pkgs'.newScope (
 
         emacsWithPackages = emacsWithPackages { inherit pkgs lib; } self;
         withPackages = emacsWithPackages { inherit pkgs lib; } self;
+
       }
       // {
 
@@ -140,6 +142,7 @@ makeScope pkgs'.newScope (
         # Telega uploads packages incompatible with stable tdlib to melpa
         # Prefer the one from melpa stable
         inherit (melpaStablePackages) telega;
+
       }
     )
   ) { }

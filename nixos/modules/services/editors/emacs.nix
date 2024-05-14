@@ -20,6 +20,7 @@ let
     fi
   '';
 in
+
 {
 
   options.services.emacs = {

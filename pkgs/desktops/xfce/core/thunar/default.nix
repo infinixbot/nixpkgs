@@ -65,6 +65,7 @@ let
     };
   };
 in
+
 if thunarPlugins == [ ] then
   unwrapped
 else

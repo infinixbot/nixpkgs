@@ -23,4 +23,5 @@ lib.appendToName "with-packages" (symlinkJoin {
     wrapProgram $out/bin/idris \
       --set IDRIS_LIBRARY_PATH $out/libs
   '';
+
 })

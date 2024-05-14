@@ -311,6 +311,7 @@ let
           super.str
           super.trivial-package-local-nicknames
         ];
+
       };
 
       njson = build-asdf-system rec {
@@ -347,6 +348,7 @@ let
           "nsymbols"
           "nsymbols/star"
         ];
+
       };
 
       nclasses = build-asdf-system rec {
@@ -951,7 +953,9 @@ let
       nsb-cga = super.nsb-cga.overrideLispAttrs (oa: {
         lispLibs = oa.lispLibs ++ [ self.sb-cga ];
       });
+
     }
   );
 in
+
 packages

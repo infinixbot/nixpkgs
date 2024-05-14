@@ -65,7 +65,9 @@ in
           will be created.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -114,5 +116,7 @@ in
     };
 
     environment.systemPackages = [ pkgs.shairport-sync ];
+
   };
+
 }

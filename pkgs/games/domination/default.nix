@@ -26,6 +26,7 @@ let
     icon = "domination";
   };
 in
+
 stdenv.mkDerivation {
   pname = "domination";
   version = "1.2.9";

@@ -63,5 +63,6 @@ stdenv.mkDerivation rec {
       These contigs are then immediately aligned to the reference with BWA-MEM and parsed to identify variants.
       Sequencing reads are then realigned to the contigs with BWA-MEM, and variants are scored by their read support.
     '';
+
   };
 }

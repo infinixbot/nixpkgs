@@ -37,6 +37,7 @@ let
     };
   };
 in
+
 {
   options = {
     services.rippleDataApi = {

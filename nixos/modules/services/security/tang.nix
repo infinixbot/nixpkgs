@@ -41,6 +41,7 @@ in
         Preferably, internal addresses should be used.
       '';
     };
+
   };
   config = mkIf cfg.enable {
     environment.systemPackages = [ cfg.package ];

@@ -34,6 +34,7 @@ let
     '';
   };
 in
+
 stdenv.mkDerivation {
   pname = "ryzen-smu-${kernel.version}";
   inherit version src;

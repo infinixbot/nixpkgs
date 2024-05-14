@@ -96,4 +96,5 @@ stdenv.mkDerivation rec {
     maintainers = with maintainers; [ rnhmjoj ];
     platforms = platforms.linux;
   };
+
 }

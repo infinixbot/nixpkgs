@@ -17,6 +17,7 @@ let
 
   udevRules = callPackage ./udev_rules_type1.nix { };
 in
+
 stdenv.mkDerivation rec {
   pname = "brscan4";
   version = "0.4.10-1";

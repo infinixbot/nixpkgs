@@ -192,6 +192,7 @@ let
             else
               features;
     in
+
     stdenv.mkDerivation rec {
       pname = "mpd";
       version = "0.23.15";

@@ -12,6 +12,7 @@ let
   cfg = config.services.rspamd-trainer;
   format = pkgs.formats.toml { };
 in
+
 {
   options.services.rspamd-trainer = {
 
@@ -42,6 +43,7 @@ in
       '';
       default = [ ];
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -70,7 +72,9 @@ in
         };
       };
     };
+
   };
 
   meta.maintainers = with lib.maintainers; [ onny ];
+
 }

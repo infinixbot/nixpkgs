@@ -36,4 +36,5 @@ stdenv.mkDerivation rec {
   '';
 
   doCheck = false; # fails 1 of 6 tests
+
 }

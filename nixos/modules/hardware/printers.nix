@@ -38,6 +38,7 @@ let
     description = "printable string without spaces, # and /";
   };
 in
+
 {
   options = {
     hardware.printers = {

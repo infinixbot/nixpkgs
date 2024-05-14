@@ -30,6 +30,7 @@ assert lib.versionAtLeast perl.version "5.30.3";
 let
   inherit (lib) maintainers teams;
 in
+
 with self;
 {
 
@@ -38899,6 +38900,7 @@ with self;
       license = with lib.licenses; [ bsd3 ];
     };
   };
+
 }
 // lib.optionalAttrs config.allowAliases {
   autodie = null; # part of Perl

@@ -63,6 +63,7 @@ let
     stdenv.cc.cc
   ];
 in
+
 stdenv.mkDerivation rec {
   version = "3.1.0";
   pname = "pencil";

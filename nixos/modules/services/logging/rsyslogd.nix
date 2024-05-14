@@ -77,7 +77,9 @@ in
           Additional parameters passed to {command}`rsyslogd`.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -100,5 +102,7 @@ in
         StandardOutput = "null";
       };
     };
+
   };
+
 }

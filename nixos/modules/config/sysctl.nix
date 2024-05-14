@@ -58,7 +58,9 @@ in
         parameter may be a string, integer, boolean, or null
         (signifying the option will not appear at all).
       '';
+
     };
+
   };
 
   config = {

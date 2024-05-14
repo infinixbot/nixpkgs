@@ -130,6 +130,7 @@ let
       bintoolsNoLibc' = if bootBintoolsNoLibc == null then tools.bintoolsNoLibc else bootBintoolsNoLibc;
       bintools' = if bootBintools == null then tools.bintools else bootBintools;
     in
+
     {
 
       libllvm = callPackage ../common/llvm {
@@ -500,6 +501,7 @@ let
   );
   noExtend = extensible: lib.attrsets.removeAttrs extensible [ "extend" ];
 in
+
 {
   inherit
     tools

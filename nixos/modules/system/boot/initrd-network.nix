@@ -115,6 +115,7 @@ in
         boot has initialised the network.
       '';
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -166,5 +167,7 @@ in
             ip link set dev "$iface" down
           done
         '';
+
   };
+
 }

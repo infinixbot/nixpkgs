@@ -109,6 +109,7 @@ stdenv.mkDerivation rec {
 
     # Fix compile errors with Eigen 3.4
     ./eigen-3.4.patch
+
   ] ++ lib.optional (!withSvmLight) ./svmlight-scrubber.patch;
 
   nativeBuildInputs =

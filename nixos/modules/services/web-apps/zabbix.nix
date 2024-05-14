@@ -66,6 +66,7 @@ let
     ${cfg.extraConfig}
   '';
 in
+
 {
   # interface
 
@@ -201,6 +202,7 @@ in
           Additional configuration to be copied verbatim into {file}`zabbix.conf.php`.
         '';
       };
+
     };
   };
 
@@ -283,5 +285,6 @@ in
     };
 
     users.groups.${group} = mapAttrs (name: mkDefault) { gid = config.ids.gids.zabbix; };
+
   };
 }

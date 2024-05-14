@@ -46,6 +46,7 @@ let
     outputHash = "sha256-Ga+tl4oZlum43tdfez1oWGMHZAfyePGl47S+9NRRvW8=";
   };
 in
+
 stdenv.mkDerivation {
   pname = "hedgedoc";
   inherit version src;

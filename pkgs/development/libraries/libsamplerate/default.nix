@@ -12,6 +12,7 @@
 let
   inherit (lib) optionals optionalString;
 in
+
 stdenv.mkDerivation rec {
   pname = "libsamplerate";
   version = "0.2.2";

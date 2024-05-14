@@ -219,6 +219,7 @@ in
                     Changing this option takes precedence over `gid`.
                   '';
                 };
+
               };
 
               config = {
@@ -230,10 +231,13 @@ in
                   mkDerivedConfig options.text (pkgs.writeText name')
                 );
               };
+
             }
           )
         );
+
     };
+
   };
 
   ###### implementation
@@ -336,5 +340,7 @@ in
           mkcomposefs --from-file ${etcDump} $out
           fsck.erofs $out
         '';
+
   };
+
 }

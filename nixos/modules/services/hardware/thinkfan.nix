@@ -132,6 +132,7 @@ let
     :::
   '';
 in
+
 {
 
   options = {
@@ -266,7 +267,9 @@ in
           <https://github.com/vmatare/thinkfan/blob/master/examples/thinkfan.yaml>
         '';
       };
+
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -304,5 +307,6 @@ in
     };
 
     boot.extraModprobeConfig = "options thinkpad_acpi experimental=1 fan_control=1";
+
   };
 }

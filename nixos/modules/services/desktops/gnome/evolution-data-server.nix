@@ -33,6 +33,7 @@
         example = lib.literalExpression "[ pkgs.evolution-ews ]";
         description = "Plugins for Evolution.";
       };
+
     };
   };
 

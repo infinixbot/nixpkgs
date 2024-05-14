@@ -33,6 +33,7 @@ let
     libXinerama
   ];
 in
+
 stdenv.mkDerivation {
   pname = "kega-fusion";
   version = "3.63x";

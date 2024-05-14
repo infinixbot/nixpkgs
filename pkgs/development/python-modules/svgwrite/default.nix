@@ -33,4 +33,5 @@ buildPythonPackage rec {
     homepage = "https://github.com/mozman/svgwrite";
     license = licenses.mit;
   };
+
 }

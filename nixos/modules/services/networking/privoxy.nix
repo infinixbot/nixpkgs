@@ -209,6 +209,7 @@ in
         :::
       '';
     };
+
   };
 
   ###### implementation
@@ -282,6 +283,7 @@ in
         certificate-directory = "/run/privoxy/certs";
         trusted-cas-file = "/etc/ssl/certs/ca-certificates.crt";
       });
+
   };
 
   imports =
@@ -312,4 +314,5 @@ in
     ];
 
   meta.maintainers = with lib.maintainers; [ rnhmjoj ];
+
 }

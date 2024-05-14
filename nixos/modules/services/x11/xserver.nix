@@ -749,6 +749,7 @@ in
         '';
       };
     };
+
   };
 
   ###### implementation
@@ -1037,6 +1038,7 @@ in
       (if cfg.upscaleDefaultCursor then fontcursormisc_hidpi else pkgs.xorg.fontcursormisc)
       pkgs.xorg.fontmiscmisc
     ];
+
   };
 
   # uses relatedPackages

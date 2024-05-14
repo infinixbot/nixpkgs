@@ -16,6 +16,7 @@ let
   opt = options.services.sickbeard;
   sickbeard = cfg.package;
 in
+
 {
 
   ###### interface

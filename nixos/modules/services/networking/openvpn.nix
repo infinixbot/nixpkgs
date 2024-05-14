@@ -61,6 +61,7 @@ let
         }
       '';
     in
+
     {
       description = "OpenVPN instance ‘${name}’";
 
@@ -221,7 +222,9 @@ in
               );
             };
           };
+
         });
+
     };
 
     services.openvpn.restartAfterSleep = mkOption {
@@ -229,6 +232,7 @@ in
       type = types.bool;
       description = "Whether OpenVPN client should be restarted after sleep.";
     };
+
   };
 
   ###### implementation
@@ -246,5 +250,7 @@ in
     environment.systemPackages = [ openvpn ];
 
     boot.kernelModules = [ "tun" ];
+
   };
+
 }

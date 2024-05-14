@@ -39,6 +39,7 @@ in
         example = "brun 10%";
         description = "Additional configuration file entries. See cachefilesd.conf(5) for more information.";
       };
+
     };
   };
 

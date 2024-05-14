@@ -28,4 +28,5 @@ stdenv.mkDerivation rec {
     platforms = platforms.linux ++ platforms.darwin;
     mainProgram = "pick";
   };
+
 }

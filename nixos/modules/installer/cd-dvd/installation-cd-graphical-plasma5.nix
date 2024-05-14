@@ -35,6 +35,7 @@
       homeDir = "/home/nixos/";
       desktopDir = homeDir + "Desktop/";
     in
+
     ''
       mkdir -p ${desktopDir}
       chown nixos ${homeDir} ${desktopDir}
@@ -45,4 +46,5 @@
         desktopDir + "org.kde.konsole.desktop"
       }
     '';
+
 }

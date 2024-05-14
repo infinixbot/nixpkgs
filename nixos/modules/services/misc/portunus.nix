@@ -10,6 +10,7 @@ with lib;
 let
   cfg = config.services.portunus;
 in
+
 {
   options.services.portunus = {
     enable = mkEnableOption "Portunus, a self-contained user/group management and authentication service for LDAP";

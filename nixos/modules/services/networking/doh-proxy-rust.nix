@@ -11,6 +11,7 @@ let
 
   cfg = config.services.doh-proxy-rust;
 in
+
 {
 
   options.services.doh-proxy-rust = {
@@ -26,6 +27,7 @@ in
         available options, see <https://github.com/jedisct1/doh-server#usage>.
       '';
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -66,4 +68,5 @@ in
   };
 
   meta.maintainers = with maintainers; [ stephank ];
+
 }

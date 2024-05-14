@@ -63,4 +63,5 @@ buildDotnetModule rec {
     mainProgram = "naps2";
     broken = stdenv.isAarch64; # Google.Protobuf.Tools dependency fails to build.
   };
+
 }

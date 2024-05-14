@@ -36,6 +36,7 @@ let
     printf "${wordlistsCollection}/share/wordlists\n"
   '';
 in
+
 symlinkJoin {
   name = "wordlists";
 

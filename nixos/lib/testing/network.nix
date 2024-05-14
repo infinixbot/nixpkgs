@@ -99,6 +99,7 @@ let
         boot.initrd.services.udev.rules = concatMapStrings (x: x + "\n") udevRules;
       };
     in
+
     {
       key = "network-interfaces";
       config = networkConfig // {
@@ -154,6 +155,7 @@ let
     }
   );
 in
+
 {
   config = {
     extraBaseModules = {

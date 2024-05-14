@@ -116,6 +116,7 @@ let
       '';
     }) { inherit system; });
 in
+
 with pkgs;
 {
   kafka_2_8 = makeKafkaTest "kafka_2_8" { kafkaPackage = apacheKafka_2_8; };

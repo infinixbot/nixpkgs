@@ -58,6 +58,7 @@ let
     };
   };
 in
+
 makeImpureTest {
   name = "opencl-example";
   testedPackage = "rocmPackages_6.clr";

@@ -12,6 +12,7 @@ let
 
   package = cfg.package.override { inherit (cfg) dataDir; };
 in
+
 {
 
   ###### interface
@@ -53,7 +54,9 @@ in
           Data directory for SoftEther VPN.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -153,6 +156,8 @@ in
         };
         boot.kernelModules = [ "tun" ];
       })
+
     ]
   );
+
 }

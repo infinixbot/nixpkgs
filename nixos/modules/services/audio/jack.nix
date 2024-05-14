@@ -49,6 +49,7 @@ in
             Commands to run after JACK is started.
           '';
         };
+
       };
 
       alsa = {
@@ -116,7 +117,9 @@ in
           '';
         };
       };
+
     };
+
   };
 
   config = mkMerge [
@@ -289,6 +292,7 @@ in
         restartIfChanged = false;
       };
     })
+
   ];
 
   meta.maintainers = [ ];

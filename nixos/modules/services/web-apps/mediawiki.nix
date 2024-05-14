@@ -507,6 +507,7 @@ in
           $wgEnableEmail = false;
         '';
       };
+
     };
   };
 

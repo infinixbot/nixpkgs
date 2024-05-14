@@ -66,6 +66,7 @@ else
       '';
 
       strictDeps = true;
+
     }
     // (builtins.removeAttrs args [
       "minimalOCamlVersion"
@@ -84,5 +85,6 @@ else
       meta = (args.meta or { }) // {
         platforms = args.meta.platforms or ocaml.meta.platforms;
       };
+
     }
   )

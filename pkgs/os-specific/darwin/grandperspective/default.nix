@@ -44,4 +44,5 @@ stdenv.mkDerivation (finalAttrs: {
     maintainers = with maintainers; [ eliandoran ];
     platforms = platforms.darwin;
   };
+
 })

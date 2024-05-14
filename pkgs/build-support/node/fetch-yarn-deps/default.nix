@@ -20,6 +20,7 @@ let
 
   tests = callPackage ./tests { };
 in
+
 {
   prefetch-yarn-deps = stdenv.mkDerivation {
     name = "prefetch-yarn-deps";
@@ -149,5 +150,6 @@ in
           ])
         );
     in
+
     lib.setFunctionArgs f (lib.functionArgs f) // { inherit tests; };
 }

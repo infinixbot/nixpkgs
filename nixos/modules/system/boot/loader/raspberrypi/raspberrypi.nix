@@ -112,6 +112,7 @@ in
             :::
           '';
         };
+
       };
 
       firmwareConfig = mkOption {

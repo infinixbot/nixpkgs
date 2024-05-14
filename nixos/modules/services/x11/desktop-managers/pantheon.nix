@@ -37,6 +37,7 @@ in
       };
 
       apps.enable = mkEnableOption "Pantheon default applications";
+
     };
 
     services.xserver.desktopManager.pantheon = {
@@ -83,6 +84,7 @@ in
       };
 
       debug = mkEnableOption "gnome-session debug messages";
+
     };
 
     environment.pantheon.excludePackages = mkOption {
@@ -91,6 +93,7 @@ in
       type = types.listOf types.package;
       description = "Which packages pantheon should exclude from the default environment";
     };
+
   };
 
   config = mkMerge [
@@ -340,5 +343,6 @@ in
 
       environment.pathsToLink = [ "/share/contractor" ];
     })
+
   ];
 }

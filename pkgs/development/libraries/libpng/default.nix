@@ -17,6 +17,7 @@ let
   };
   whenPatched = lib.optionalString apngSupport;
 in
+
 stdenv.mkDerivation (finalAttrs: {
   pname = "libpng" + whenPatched "-apng";
   version = "1.6.43";

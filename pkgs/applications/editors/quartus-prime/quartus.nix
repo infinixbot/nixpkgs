@@ -80,6 +80,7 @@ let
     }
   ) (lib.attrValues supportedDeviceIds);
 in
+
 stdenv.mkDerivation rec {
   inherit version;
   pname = "quartus-prime-lite-unwrapped";

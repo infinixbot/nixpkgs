@@ -10,6 +10,7 @@ with lib;
 let
   cfg = config.services.sslmate-agent;
 in
+
 {
   meta.maintainers = with maintainers; [ wolfangaukang ];
 

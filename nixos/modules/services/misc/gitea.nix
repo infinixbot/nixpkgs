@@ -705,6 +705,7 @@ in
         # If we have a folder or symlink with gitea locales, remove it
         # And symlink the current gitea locales in place
         "L+ '${cfg.stateDir}/conf/locale' - - - - ${cfg.package.out}/locale"
+
       ]
       ++ lib.optionals cfg.lfs.enable [
         "d '${cfg.lfs.contentDir}' 0750 ${cfg.user} ${cfg.group} - -"

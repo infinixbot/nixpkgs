@@ -93,6 +93,7 @@ let
       ])
     );
 in
+
 {
   options.services.hadoop.hdfs = {
 
@@ -155,6 +156,7 @@ in
         description = "HTTPFS_TEMP path used by HTTPFS";
       };
     };
+
   };
 
   config = mkMerge [
@@ -229,5 +231,6 @@ in
         isSystemUser = true;
       };
     })
+
   ];
 }

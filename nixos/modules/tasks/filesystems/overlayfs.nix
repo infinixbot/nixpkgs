@@ -81,6 +81,7 @@ let
             This MUST be set if you set `upperdir`.
           '';
         };
+
       };
 
       config = lib.mkIf (config.overlay.lowerdir != null) {
@@ -102,6 +103,7 @@ let
           ]
           ++ (map (s: "x-systemd.requires-mounts-for=${s}") lowerdir);
       };
+
     };
 in
 
@@ -111,6 +113,7 @@ in
 
     # Merge the overlay options into the fileSystems option.
     fileSystems = lib.mkOption { type = lib.types.attrsOf (lib.types.submodule [ overlayOpts ]); };
+
   };
 
   config =
@@ -140,5 +143,7 @@ in
 
       boot.initrd.systemd.services = lib.mkMerge (lib.mapAttrsToList preMountService initrdFileSystems);
       systemd.services = lib.mkMerge (lib.mapAttrsToList preMountService userspaceFileSystems);
+
     };
+
 }

@@ -58,6 +58,7 @@ stdenv.mkDerivation (finalAttrs: {
         src = ./fix-paths.patch;
         inherit swaybg;
       })
+
     ]
     ++ lib.optionals (!finalAttrs.isNixOS) [
       # References to /nix/store/... will get GC'ed which causes problems when

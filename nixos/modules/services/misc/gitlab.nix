@@ -264,6 +264,7 @@ let
     end
   '';
 in
+
 {
 
   imports = [
@@ -1808,6 +1809,7 @@ in
           "-t ${cfg.puma.threadsMin}:${cfg.puma.threadsMax}"
         ];
       };
+
     };
 
     systemd.services.gitlab-backup = {
@@ -1824,6 +1826,7 @@ in
         ExecStart = "${gitlab-rake}/bin/gitlab-rake gitlab:backup:create";
       };
     };
+
   };
 
   meta.doc = ./gitlab.md;

@@ -263,6 +263,7 @@ in
       # nix-daemon must do so on its own accord, and only when the new version
       # starts and detects that Nix's persistent state needs an upgrade.
       stopIfChanged = false;
+
     };
 
     # Set up the environment variables for running Nix.
@@ -281,5 +282,7 @@ in
 
     # Legacy configuration conversion.
     nix.settings = mkMerge [ (mkIf (isNixAtLeast "2.3pre") { sandbox-fallback = false; }) ];
+
   };
+
 }

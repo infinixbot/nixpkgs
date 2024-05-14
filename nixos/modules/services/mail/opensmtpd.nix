@@ -18,6 +18,7 @@ let
     ln -s ${cfg.package}/sbin/smtpctl $out/bin/sendmail
   '';
 in
+
 {
 
   ###### interface
@@ -91,6 +92,7 @@ in
         '';
       };
     };
+
   };
 
   ###### implementation

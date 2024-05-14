@@ -58,6 +58,7 @@ let
   hostgroups = lib.mapAttrsToList (name: hostgroup: { inherit name; } // hostgroup) cfg.hostgroups;
   bgpPeers = lib.mapAttrsToList (name: bgpPeer: { inherit name; } // bgpPeer) cfg.bgpPeers;
 in
+
 {
   options.services.fastnetmon-advanced = with lib; {
     enable = mkEnableOption "the fastnetmon-advanced DDoS Protection daemon";
@@ -229,6 +230,7 @@ in
           DynamicUser = true;
         };
       };
+
     })
   ];
 

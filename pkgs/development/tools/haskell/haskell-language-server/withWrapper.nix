@@ -108,6 +108,7 @@ let
         ];
       });
     in
+
     drv: lib.pipe drv ([ stripDeps ] ++ map disableCabalFlag flags);
 
   tunedHls =
@@ -141,6 +142,7 @@ let
       x: "ln -s ${tunedHls (getPackages version)}/bin/haskell-language-server $out/bin/${x}"
     ) (targets version);
 in
+
 stdenv.mkDerivation {
   pname = "haskell-language-server";
   version = haskellPackages.haskell-language-server.version;

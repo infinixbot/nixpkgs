@@ -32,6 +32,7 @@ let
     ${cfg.extraConfig}
   '';
 in
+
 {
 
   ###### interface
@@ -81,7 +82,9 @@ in
         default = null;
         description = "If set, maintenance script will be run at specified (in systemd.timer format) interval";
       };
+
     };
+
   };
 
   ###### implementation

@@ -66,7 +66,9 @@ in
           drive configuration in [here](http://manpages.ubuntu.com/manpages/latest/en/man8/udisks.8.html) for supported options.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -106,4 +108,5 @@ in
 
     systemd.packages = [ pkgs.udisks2 ];
   };
+
 }

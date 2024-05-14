@@ -39,4 +39,5 @@ buildPythonPackage rec {
     homepage = "https://www.torproject.org/projects/obfsproxy";
     maintainers = with maintainers; [ thoughtpolice ];
   };
+
 }

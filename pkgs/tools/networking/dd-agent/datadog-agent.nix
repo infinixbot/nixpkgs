@@ -41,6 +41,7 @@ let
     ];
   };
 in
+
 buildGoModule rec {
   pname = "datadog-agent";
   inherit src version;

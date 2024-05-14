@@ -116,6 +116,7 @@ let
       '';
     };
 in
+
 pkgs.lib.mapAttrs mkKeyboardTest {
   azerty = {
     tests = {

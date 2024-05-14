@@ -55,6 +55,7 @@ let
   # as this can lead to collisions!
   libgpuarray_ = libgpuarray.override { inherit cudaSupport cudaPackages; };
 in
+
 buildPythonPackage rec {
   pname = "theano";
   version = "1.0.5";

@@ -62,6 +62,7 @@ let
     ${fluidsynth}/bin/fluidsynth -a ${audioDriver} -i ${soundfont-fluid}/share/soundfonts/FluidR3_GM2-2.sf2 $*
   '';
 in
+
 stdenv.mkDerivation rec {
   pname = "openttd";
   version = "13.4";

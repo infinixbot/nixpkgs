@@ -794,6 +794,7 @@ in
         message = "dovecot requires mailUser and mailGroup to be set when `sieve.scripts` is set";
       }
     ];
+
   };
 
   meta.maintainers = [ lib.maintainers.dblsaiko ];

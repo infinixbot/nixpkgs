@@ -24,6 +24,7 @@ let
     rpc-listen-port=${toString cfg.rpcListenPort}
   '';
 in
+
 {
   imports = [
     (mkRemovedOptionModule [

@@ -41,6 +41,7 @@ import ../make-test-python.nix (
       }
     ];
   in
+
   {
 
     name = "matrix-synapse";
@@ -231,5 +232,6 @@ import ../make-test-python.nix (
       )
       serversqlite.succeed("[ -e /var/lib/matrix-synapse/homeserver.db ]")
     '';
+
   }
 )

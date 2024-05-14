@@ -13,6 +13,7 @@ let
 
   dataDir = "/var/lib/metabase";
 in
+
 {
 
   options = {
@@ -63,6 +64,7 @@ in
             [Java KeyStore](https://www.digitalocean.com/community/tutorials/java-keytool-essentials-working-with-java-keystores) file containing the certificates.
           '';
         };
+
       };
 
       openFirewall = mkOption {
@@ -73,6 +75,7 @@ in
         '';
       };
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -104,5 +107,6 @@ in
     networking.firewall = mkIf cfg.openFirewall {
       allowedTCPPorts = [ cfg.listen.port ] ++ optional cfg.ssl.enable cfg.ssl.port;
     };
+
   };
 }

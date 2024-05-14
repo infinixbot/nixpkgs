@@ -55,6 +55,7 @@ let
     ${lib.optionalString (cfg.extraConfig != null) cfg.extraConfig}
   '';
 in
+
 {
   options.services.librenms = with lib; {
     enable = mkEnableOption "LibreNMS network monitoring system";
@@ -654,6 +655,7 @@ in
       ++ lib.optionals cfg.useDistributedPollers [
         "d ${cfg.dataDir}/rrdcached-journal            0700 ${cfg.user} ${cfg.group} - -"
       ];
+
   };
 
   meta.maintainers = lib.teams.wdz.members;

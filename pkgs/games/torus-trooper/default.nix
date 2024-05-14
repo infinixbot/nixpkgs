@@ -19,6 +19,7 @@ let
       sha256 = hash;
     };
 in
+
 stdenv.mkDerivation (finalAttrs: {
   pname = "torus-trooper";
   version = "0.22";

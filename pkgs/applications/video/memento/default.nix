@@ -21,6 +21,7 @@
 let
   isQt5 = lib.versions.major qtbase.version == "5";
 in
+
 stdenv.mkDerivation (finalAttrs: {
   pname = "memento";
   version = "1.2.2";

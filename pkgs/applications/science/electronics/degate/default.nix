@@ -14,6 +14,7 @@
 let
   boost_static = boost.override { enableStatic = true; };
 in
+
 stdenv.mkDerivation rec {
   pname = "degate";
   version = "2.0.0";

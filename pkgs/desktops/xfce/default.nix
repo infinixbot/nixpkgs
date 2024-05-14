@@ -157,6 +157,7 @@ makeScopeWithSplicing' {
       xfce4-windowck-plugin = callPackage ./panel-plugins/xfce4-windowck-plugin { };
 
       xfce4-pulseaudio-plugin = callPackage ./panel-plugins/xfce4-pulseaudio-plugin { };
+
     }
     // lib.optionalAttrs config.allowAliases {
       #### ALIASES

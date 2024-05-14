@@ -12,6 +12,7 @@ let
     ${lib.concatStrings (lib.mapAttrsToList (name: path: "ln -s ${path} $out/${name}\n") rubies)}
   '';
 in
+
 stdenv.mkDerivation rec {
   pname = "chruby";
 

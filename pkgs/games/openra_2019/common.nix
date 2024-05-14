@@ -45,6 +45,7 @@ let
   ];
   mkdirp = makeSetupHook { name = "openra-mkdirp-hook"; } ./mkdirp.sh;
 in
+
 {
   patchEngine = dir: version: ''
     sed -i \

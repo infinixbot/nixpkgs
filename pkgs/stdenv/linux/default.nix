@@ -231,11 +231,13 @@ let
         overrides = self: super: (overrides self super) // { fetchurl = thisStdenv.fetchurlBoot; };
       };
     in
+
     {
       inherit config overlays;
       stdenv = thisStdenv;
     };
 in
+
 assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
 [
 
@@ -558,6 +560,7 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
             NIX_CFLAGS_COMPILE = (previousAttrs.NIX_CFLAGS_COMPILE or "") + " -static-libstdc++";
           }
         );
+
       };
 
       # `gettext` comes with obsolete config.sub/config.guess that don't recognize LoongArch64.

@@ -77,4 +77,5 @@ skawarePackages.buildPackage {
     mv doc $doc/share/doc/s6-rc/html
     mv examples $doc/share/doc/s6-rc/examples
   '';
+
 }

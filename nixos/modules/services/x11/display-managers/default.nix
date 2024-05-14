@@ -228,7 +228,9 @@ in
           Environment variables to import into the systemd user environment.
         '';
       };
+
     };
+
   };
 
   config = {
@@ -377,4 +379,5 @@ in
       ]
     )
   ];
+
 }

@@ -37,6 +37,7 @@ let
         (mkLinkFarmEntry' "plugins")
       ];
 in
+
 {
   imports = [
     (lib.mkRenamedOptionModule
@@ -188,6 +189,7 @@ in
         message = "If `cfg.custom` is set for `ZSH_CUSTOM`, `customPkgs` can't be used!";
       }
     ];
+
   };
 
   meta.doc = ./oh-my-zsh.md;

@@ -67,7 +67,9 @@ in
           Later files in the list overrides earlier configuration.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -114,5 +116,7 @@ in
     };
 
     users.groups.mopidy.gid = gid;
+
   };
+
 }

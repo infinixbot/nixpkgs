@@ -52,6 +52,7 @@ let
     hash = "sha256-CNlb6MTEkD977hj3xonYqZH1/WlQ1EdVD7cvL//heRM=";
   };
 in
+
 stdenv.mkDerivation rec {
   pname = "nwchem";
   version = "7.2.2";

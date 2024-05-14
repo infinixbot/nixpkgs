@@ -30,4 +30,5 @@ buildDunePackage rec {
   meta = irmin.meta // {
     description = "Irmin backend which allow to store values into chunks";
   };
+
 }

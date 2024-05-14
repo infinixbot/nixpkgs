@@ -41,6 +41,7 @@ let
     platforms = builtins.attrNames sources;
   };
 in
+
 if stdenv.isDarwin then
   callPackage ./darwin.nix {
     inherit

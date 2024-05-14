@@ -125,6 +125,7 @@ let
     mimeTypes = [ "x-scheme-handler/vmware-view" ];
   };
 in
+
 stdenv.mkDerivation {
   pname = "vmware-horizon-client";
   inherit version;

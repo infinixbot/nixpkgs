@@ -20,6 +20,7 @@ let
     YAMLLibYAML
   ];
 in
+
 stdenv.mkDerivation rec {
   pname = "ledger2beancount";
   version = "2.7";

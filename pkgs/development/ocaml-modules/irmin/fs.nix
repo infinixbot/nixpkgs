@@ -34,4 +34,5 @@ buildDunePackage rec {
   meta = irmin.meta // {
     description = "Generic file-system backend for Irmin";
   };
+
 }

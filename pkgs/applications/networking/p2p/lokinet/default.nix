@@ -21,6 +21,7 @@ let
   # dependencies, see: https://github.com/oxen-io/lokinet/issues/2200.
   spdlog' = spdlog.override { fmt = fmt_9; };
 in
+
 stdenv.mkDerivation rec {
   pname = "lokinet";
   version = "0.9.11";

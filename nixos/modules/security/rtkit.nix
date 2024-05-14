@@ -24,6 +24,7 @@ with lib;
         acquire realtime priority.
       '';
     };
+
   };
 
   config = mkIf config.security.rtkit.enable {
@@ -43,5 +44,7 @@ with lib;
       description = "RealtimeKit daemon";
     };
     users.groups.rtkit = { };
+
   };
+
 }

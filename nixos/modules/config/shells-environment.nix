@@ -188,6 +188,7 @@ in
       '';
       type = types.listOf (types.either types.shellPackage types.path);
     };
+
   };
 
   config = {
@@ -245,5 +246,7 @@ in
       ln -sfn "${cfg.binsh}" /bin/.sh.tmp
       mv /bin/.sh.tmp /bin/sh # atomically replace /bin/sh
     '';
+
   };
+
 }

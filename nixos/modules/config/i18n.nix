@@ -111,7 +111,9 @@ with lib;
           can be found at <https://sourceware.org/git/?p=glibc.git;a=blob;f=localedata/SUPPORTED>.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -136,5 +138,6 @@ with lib;
       LANG=${config.i18n.defaultLocale}
       ${concatStringsSep "\n" (mapAttrsToList (n: v: "${n}=${v}") config.i18n.extraLocaleSettings)}
     '';
+
   };
 }

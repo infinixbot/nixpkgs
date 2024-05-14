@@ -45,6 +45,7 @@ let
     ''
   );
 in
+
 {
 
   options = {
@@ -154,5 +155,6 @@ in
     };
 
     users.groups.${cfg.group} = { };
+
   };
 }

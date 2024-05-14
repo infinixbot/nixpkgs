@@ -13,6 +13,7 @@ let
   runDir = "/run/longview";
   configsDir = "${runDir}/longview.d";
 in
+
 {
   options = {
 
@@ -103,7 +104,9 @@ in
           A file containing the password corresponding to {option}`mysqlUser`.
         '';
       };
+
     };
+
   };
 
   config = mkIf cfg.enable {

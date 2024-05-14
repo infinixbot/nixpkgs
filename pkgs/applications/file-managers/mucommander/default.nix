@@ -56,6 +56,7 @@ let
     outputHash = "sha256-9tCcUg7hDNbkZiQEWtVRsUUfms73aU+vt5tQsfknM+E=";
   };
 in
+
 stdenv.mkDerivation rec {
   pname = "mucommander";
   inherit version src postPatch;

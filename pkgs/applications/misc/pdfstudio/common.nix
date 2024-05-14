@@ -68,6 +68,7 @@ let
     '';
   };
 in
+
 # Package with cups in FHS sandbox, because JAVA bin expects "/usr/bin/lpr" for printing.
 buildFHSEnv {
   name = pname;

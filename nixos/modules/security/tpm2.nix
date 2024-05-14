@@ -20,6 +20,7 @@ let
     }
   '';
 in
+
 {
   options.security.tpm2 = {
     enable = lib.mkEnableOption "Trusted Platform Module 2 support";

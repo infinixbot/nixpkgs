@@ -106,6 +106,7 @@ rec {
           chmod +x $out/bin/egrep $out/bin/fgrep $out/bin/dsymutil
         '';
       in
+
       ''
         mkdir -p $out/bin $out/lib $out/lib/darwin
 

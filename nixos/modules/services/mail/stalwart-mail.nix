@@ -13,6 +13,7 @@ let
   configFile = configFormat.generate "stalwart-mail.toml" cfg.settings;
   dataDir = "/var/lib/stalwart-mail";
 in
+
 {
   options.services.stalwart-mail = {
     enable = mkEnableOption "the Stalwart all-in-one email server";

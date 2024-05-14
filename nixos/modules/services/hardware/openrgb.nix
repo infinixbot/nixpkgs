@@ -43,6 +43,7 @@ in
       default = 6742;
       description = "Set server port of openrgb.";
     };
+
   };
 
   config = mkIf cfg.enable {

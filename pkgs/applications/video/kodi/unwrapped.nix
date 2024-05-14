@@ -186,6 +186,7 @@ let
     ++ lib.optional waylandSupport "wayland"
     ++ lib.optional x11Support "x11";
 in
+
 stdenv.mkDerivation (finalAttrs: {
   pname = "kodi";
   version = "21.0";

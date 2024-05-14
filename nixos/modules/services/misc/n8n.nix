@@ -39,6 +39,7 @@ in
         This cannot be set through configuration and must reside in an environment variable.
       '';
     };
+
   };
 
   config = mkIf cfg.enable {

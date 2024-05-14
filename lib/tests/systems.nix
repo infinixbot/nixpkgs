@@ -29,6 +29,7 @@ let
     else
       null;
 in
+
 lib.runTests (
   # We assert that the new algorithmic way of generating these lists matches the
   # way they were hard-coded before.
@@ -255,6 +256,7 @@ lib.runTests (
                 isCompatible = null;
               } ? ${platformAttrName};
           };
+
       })
       (
         lib.systems.elaborate "x86_64-linux" # arbitrary choice, just to get all the elaborated attrNames

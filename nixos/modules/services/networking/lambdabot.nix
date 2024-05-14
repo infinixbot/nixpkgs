@@ -35,7 +35,9 @@ in
         default = "";
         description = "Lambdabot script";
       };
+
     };
+
   };
 
   ### implementation
@@ -73,5 +75,7 @@ in
     };
 
     users.groups.lambdabot.gid = config.ids.gids.lambdabot;
+
   };
+
 }

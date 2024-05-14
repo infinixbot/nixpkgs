@@ -37,6 +37,7 @@ in
           Configuration for Gonic, see <https://github.com/sentriz/gonic#configuration-options> for supported values.
         '';
       };
+
     };
   };
 

@@ -26,4 +26,5 @@ buildPythonPackage rec {
     description = "A Nose plugin for integrating JavaScript tests into a Python test suite";
     license = licenses.free;
   };
+
 }

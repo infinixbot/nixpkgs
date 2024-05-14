@@ -37,4 +37,5 @@ buildPythonPackage {
     homepage = "https://github.com/hickeroar/simplebayes";
     license = licenses.mit;
   };
+
 }

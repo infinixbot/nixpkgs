@@ -52,6 +52,7 @@ makeScope newScope (
       in
       unique (packages ++ concatLists (catAttrs "requiredOctavePackages" packages));
   in
+
   {
 
     inherit callPackage buildOctavePackage computeRequiredOctavePackages;
@@ -212,5 +213,6 @@ makeScope newScope (
     windows = callPackage ../development/octave-modules/windows { };
 
     zeromq = callPackage ../development/octave-modules/zeromq { inherit (pkgs) zeromq autoreconfHook; };
+
   }
 )

@@ -108,6 +108,7 @@ in
         Set extra options to pass to the JVM.
       '';
     };
+
   };
 
   config = lib.mkIf cfg.enable {
@@ -217,6 +218,7 @@ in
         MemoryDenyWriteExecute = false;
       };
     };
+
   };
   imports = [
     (lib.mkRemovedOptionModule [

@@ -81,6 +81,7 @@ import ./make-test-python.nix (
 
           users.users.jenkins.extraGroups = [ "users" ];
         };
+
     };
 
     testScript =

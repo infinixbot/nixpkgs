@@ -9,6 +9,7 @@ let
 
   cfg = config.programs.mosh;
 in
+
 {
   options.programs.mosh = {
     enable = lib.mkEnableOption "mosh";

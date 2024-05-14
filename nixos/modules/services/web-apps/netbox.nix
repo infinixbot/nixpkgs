@@ -40,6 +40,7 @@ let
       sudo -u netbox ${pkg}/bin/netbox "$@"
     '');
 in
+
 {
   options.services.netbox = {
     enable = lib.mkOption {

@@ -59,6 +59,7 @@ let
     '';
   };
 in
+
 stdenv.mkDerivation rec {
   pname = "ghostscript${lib.optionalString x11Support "-with-X"}";
   version = "10.02.1";

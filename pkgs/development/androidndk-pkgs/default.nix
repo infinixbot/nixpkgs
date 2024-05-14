@@ -114,4 +114,5 @@
         else
           throw "androidndkPkgs_24: no targetPackages, use `buildPackages.androidndkPkgs_24";
     };
+
 }

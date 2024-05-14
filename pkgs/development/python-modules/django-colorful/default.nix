@@ -26,4 +26,5 @@ buildPythonPackage rec {
     homepage = "https://github.com/charettes/django-colorful";
     license = licenses.mit;
   };
+
 }

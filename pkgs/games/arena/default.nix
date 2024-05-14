@@ -21,6 +21,7 @@ let
   inherit (lib) makeLibraryPath;
   libDir = "lib64";
 in
+
 stdenv.mkDerivation rec {
   pname = "arena";
   version = "3.10-beta";
@@ -93,4 +94,5 @@ stdenv.mkDerivation rec {
     homepage = "http://www.playwitharena.de";
     platforms = [ "x86_64-linux" ];
   };
+
 }

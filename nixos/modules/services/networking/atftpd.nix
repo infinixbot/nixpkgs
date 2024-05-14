@@ -49,7 +49,9 @@ in
           Document root directory for the atftpd.
         '';
       };
+
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -61,5 +63,7 @@ in
       # runs as nobody
       serviceConfig.ExecStart = "${pkgs.atftp}/sbin/atftpd --daemon --no-fork ${lib.concatStringsSep " " cfg.extraOptions} ${cfg.root}";
     };
+
   };
+
 }

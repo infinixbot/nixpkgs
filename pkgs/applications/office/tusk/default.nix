@@ -23,6 +23,7 @@ let
     categories = [ "Application" ];
   };
 in
+
 appimageTools.wrapType2 rec {
   inherit pname version;
 

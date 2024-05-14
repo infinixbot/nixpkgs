@@ -134,5 +134,7 @@ with lib;
         Extra lines to be added verbatim to the vrrp_instance section.
       '';
     };
+
   };
+
 }

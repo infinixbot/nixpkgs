@@ -80,6 +80,7 @@ import ./make-test-python.nix (
     unitName = "options-test";
     configFile = "/etc/systemd/nspawn/${unitName}.nspawn";
   in
+
   {
     name = "systemd-nspawn-configfile";
 

@@ -43,4 +43,5 @@ stdenv.mkDerivation {
     maintainers = [ maintainers.Profpatsch ];
     mainProgram = "droopy";
   };
+
 }

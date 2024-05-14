@@ -276,6 +276,7 @@ let
         ''
     );
 in
+
 {
   inherit makeNeovimConfig;
   inherit generateProviderRc;

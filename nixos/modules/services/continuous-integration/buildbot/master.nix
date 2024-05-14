@@ -64,6 +64,7 @@ let
     m.setServiceParent(application)
   '';
 in
+
 {
   options = {
     services.buildbot-master = {

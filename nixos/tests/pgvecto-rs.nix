@@ -66,6 +66,7 @@ let
 
         machine.shutdown()
       '';
+
     };
   applicablePostgresqlVersions = filterAttrs (
     _: value: versionAtLeast value.version "14"

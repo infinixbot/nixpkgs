@@ -21,6 +21,7 @@ let
     ${cfg.rsessionExtraConfig}
   '';
 in
+
 {
   meta.maintainers = with maintainers; [
     jbedo
@@ -65,6 +66,7 @@ in
         Extra contents for resssion.conf.
       '';
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -104,5 +106,6 @@ in
         gid = config.ids.gids.rstudio-server;
       };
     };
+
   };
 }

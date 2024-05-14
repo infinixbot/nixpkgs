@@ -64,4 +64,5 @@ stdenv.mkDerivation rec {
     platforms = platforms.linux;
     mainProgram = "com.github.cassidyjames.ideogram";
   };
+
 }

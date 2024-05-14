@@ -18,6 +18,7 @@ in
         integrated graphics processor instead.
       '';
     };
+
   };
 
   ###### implementation
@@ -44,4 +45,5 @@ in
       path = [ kernel.bbswitch ];
     };
   };
+
 }

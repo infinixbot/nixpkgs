@@ -176,6 +176,7 @@ let
 
   bazelWithNixHacks = bazel_self.override { enableNixHacks = true; };
 in
+
 recurseIntoAttrs {
   distDir = testsDistDir;
   testsRepoCache = testsRepoCache;

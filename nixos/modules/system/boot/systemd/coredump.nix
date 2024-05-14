@@ -79,5 +79,7 @@ in
     })
 
     (mkIf (!cfg.enable) { boot.kernel.sysctl."kernel.core_pattern" = mkDefault "core"; })
+
   ];
+
 }

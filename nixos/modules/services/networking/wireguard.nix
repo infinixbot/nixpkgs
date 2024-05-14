@@ -184,6 +184,7 @@ let
           '';
         };
       };
+
     };
 
   # peer options
@@ -326,7 +327,9 @@ let
                   NAT, the interface might benefit from having a persistent keepalive
                   interval of 25 seconds; however, most users will not need this.'';
       };
+
     };
+
   };
 
   generateKeyServiceUnit =
@@ -510,6 +513,7 @@ let
       wg = nsWrap "wg" src dst;
       ns = if dst == "init" then "1" else dst;
     in
+
     nameValuePair "wireguard-${name}" {
       description = "WireGuard Tunnel - ${name}";
       after = [ "network-pre.target" ];
@@ -618,7 +622,9 @@ in
         };
         type = with types; attrsOf (submodule interfaceOpts);
       };
+
     };
+
   };
 
   ###### implementation
@@ -669,4 +675,5 @@ in
       systemd.targets = mapAttrs' generateInterfaceTarget cfg.interfaces;
     }
   );
+
 }

@@ -20,7 +20,9 @@ with lib;
     services.deepin.dde-daemon = {
 
       enable = mkEnableOption "daemon for handling the deepin session settings";
+
     };
+
   };
 
   ###### implementation
@@ -36,5 +38,7 @@ with lib;
     systemd.packages = [ pkgs.deepin.dde-daemon ];
 
     environment.pathsToLink = [ "/lib/deepin-daemon" ];
+
   };
+
 }

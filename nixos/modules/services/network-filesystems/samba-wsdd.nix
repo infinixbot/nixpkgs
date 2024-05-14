@@ -10,6 +10,7 @@ with lib;
 let
   cfg = config.services.samba-wsdd;
 in
+
 {
   options = {
     services.samba-wsdd = {

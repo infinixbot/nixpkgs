@@ -12,6 +12,7 @@ let
     "http://repo.typesafe.com/typesafe/releases/"
   ];
 in
+
 rec {
   makePaths =
     {
@@ -1094,5 +1095,6 @@ rec {
         version = "0.1.1";
       };
     }
+
   ];
 }

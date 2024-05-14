@@ -179,6 +179,7 @@ rec {
             packageId = "synstructure";
           }
         ];
+
       };
       "asn1-rs-impl" = rec {
         crateName = "asn1-rs-impl";
@@ -201,6 +202,7 @@ rec {
             packageId = "syn";
           }
         ];
+
       };
       "autocfg 0.1.7" = rec {
         crateName = "autocfg";
@@ -208,6 +210,7 @@ rec {
         edition = "2015";
         sha256 = "1chwgimpx5z7xbag7krr9d8asxfqbh683qhgl9kn3hxk2l0djj8x";
         authors = [ "Josh Stone <cuviper@gmail.com>" ];
+
       };
       "autocfg 1.0.1" = rec {
         crateName = "autocfg";
@@ -215,6 +218,7 @@ rec {
         edition = "2015";
         sha256 = "0jj6i9zn4gjl03kjvziqdji6rwx8ykz8zk2ngpc331z2g3fk3c6d";
         authors = [ "Josh Stone <cuviper@gmail.com>" ];
+
       };
       "base64" = rec {
         crateName = "base64";
@@ -294,6 +298,7 @@ rec {
           "Rodolphe Breard <rodolphe@what.tf>"
           "Jack Lloyd <jack@randombit.net>"
         ];
+
       };
       "botan-sys" = rec {
         crateName = "botan-sys";
@@ -422,6 +427,7 @@ rec {
         edition = "2015";
         sha256 = "0d8z0pbr87wgzqqb2jk5pvj0afzc6d3rb772ach6fijhg6yglrdk";
         authors = [ "Jorge Aparicio <jorge@japaric.io>" ];
+
       };
       "data-encoding" = rec {
         crateName = "data-encoding";
@@ -590,6 +596,7 @@ rec {
             packageId = "foreign-types-shared";
           }
         ];
+
       };
       "foreign-types-shared" = rec {
         crateName = "foreign-types-shared";
@@ -597,6 +604,7 @@ rec {
         edition = "2015";
         sha256 = "0jxgzd04ra4imjv8jgkmdq59kj8fsz6w4zxsbmlai34h26225c00";
         authors = [ "Steven Fackler <sfackler@gmail.com>" ];
+
       };
       "generic-array" = rec {
         crateName = "generic-array";
@@ -671,6 +679,7 @@ rec {
         edition = "2018";
         sha256 = "0d8wr2qf5b25a04xf10rz9r0pdbjdgb0zaw3xvf8k2sqcz1qzaqs";
         authors = [ "David Tolnay <dtolnay@gmail.com>" ];
+
       };
       "js-sys" = rec {
         crateName = "js-sys";
@@ -684,6 +693,7 @@ rec {
             packageId = "wasm-bindgen";
           }
         ];
+
       };
       "lazy_static" = rec {
         crateName = "lazy_static";
@@ -1096,6 +1106,7 @@ rec {
             target = { target, features }: ((target."os" == "macos") || (target."os" == "freebsd"));
           }
         ];
+
       };
       "oid-registry" = rec {
         crateName = "oid-registry";
@@ -1244,6 +1255,7 @@ rec {
             packageId = "base64";
           }
         ];
+
       };
       "pem-rfc7468" = rec {
         crateName = "pem-rfc7468";
@@ -1397,6 +1409,7 @@ rec {
         edition = "2015";
         sha256 = "1ghcyjp5537r7qigmgl3dj62j01arlpddaq93a3i414v3iskz2aq";
         authors = [ "Alex Crichton <alex@alexcrichton.com>" ];
+
       };
       "ppv-lite86" = rec {
         crateName = "ppv-lite86";
@@ -1613,6 +1626,7 @@ rec {
             packageId = "rand_core";
           }
         ];
+
       };
       "rcgen" = rec {
         crateName = "rcgen";
@@ -1956,6 +1970,7 @@ rec {
             features = [ "std" ];
           }
         ];
+
       };
       "smallvec" = rec {
         crateName = "smallvec";
@@ -1978,6 +1993,7 @@ rec {
           "Mathijs van de Nes <git@mathijs.vd-nes.nl>"
           "John Ericson <git@JohnEricson.me>"
         ];
+
       };
       "spki" = rec {
         crateName = "spki";
@@ -2124,6 +2140,7 @@ rec {
             packageId = "thiserror-impl";
           }
         ];
+
       };
       "thiserror-impl" = rec {
         crateName = "thiserror-impl";
@@ -2146,6 +2163,7 @@ rec {
             packageId = "syn";
           }
         ];
+
       };
       "time" = rec {
         crateName = "time";
@@ -2266,6 +2284,7 @@ rec {
         sha256 = "0jkbqaj9d3v5a91pp3wp9mffvng1nhycx6sh4qkdd9qyr62ccmm1";
         libPath = "src/untrusted.rs";
         authors = [ "Brian Smith <brian@briansmith.org>" ];
+
       };
       "vcpkg" = rec {
         crateName = "vcpkg";
@@ -2273,6 +2292,7 @@ rec {
         edition = "2015";
         sha256 = "09i4nf5y8lig6xgj3f7fyrvzd3nlaw4znrihw8psidvv5yk4xkdc";
         authors = [ "Jim McGrath <jimmc2@gmail.com>" ];
+
       };
       "version_check" = rec {
         crateName = "version_check";
@@ -2280,6 +2300,7 @@ rec {
         edition = "2015";
         sha256 = "0gs8grwdlgh0xq660d7wr80x14vxbizmd8dbp29p2pdncx8lp1s9";
         authors = [ "Sergio Benitez <sb@sergio.bz>" ];
+
       };
       "wasi" = rec {
         crateName = "wasi";
@@ -2453,6 +2474,7 @@ rec {
         edition = "2018";
         sha256 = "18h67l9b9jn06iw9r2p7bh9i0brh24lilcp4f26f4f24bh1qv59x";
         authors = [ "The wasm-bindgen Developers" ];
+
       };
       "web-sys" = rec {
         crateName = "web-sys";
@@ -3977,6 +3999,7 @@ rec {
         edition = "2015";
         sha256 = "1dmpa6mvcvzz16zg6d5vrfy4bxgg541wxrcip7cnshi06v38ffxc";
         authors = [ "Peter Atashian <retep998@gmail.com>" ];
+
       };
       "winapi-x86_64-pc-windows-gnu" = rec {
         crateName = "winapi-x86_64-pc-windows-gnu";
@@ -3984,6 +4007,7 @@ rec {
         edition = "2015";
         sha256 = "0gqq64czqb64kskjryj8isp62m2sgvx25yyj3kpc2myh85w24bki";
         authors = [ "Peter Atashian <retep998@gmail.com>" ];
+
       };
       "x509-parser" = rec {
         crateName = "x509-parser";
@@ -4129,6 +4153,7 @@ rec {
             packageId = "synstructure";
           }
         ];
+
       };
     };
 

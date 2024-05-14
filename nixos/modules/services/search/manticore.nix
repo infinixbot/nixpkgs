@@ -38,6 +38,7 @@ let
     toSphinx { mkKeyValue = k: v: "  ${k} = ${v}"; } cfg.settings
   );
 in
+
 {
 
   options = {
@@ -81,6 +82,7 @@ in
           }
         '';
       };
+
     };
   };
 
@@ -138,7 +140,9 @@ in
           };
       };
     };
+
   };
 
   meta.maintainers = with lib.maintainers; [ onny ];
+
 }

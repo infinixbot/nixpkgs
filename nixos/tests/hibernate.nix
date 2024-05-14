@@ -62,4 +62,5 @@ makeTest {
     machine.wait_for_unit("default.target")
     machine.fail("grep 'not persisted to disk' /run/test/suspended")
   '';
+
 }

@@ -71,6 +71,7 @@ let
       pkgs_i686_cygwin = packageSet' { system = "i686-cygwin"; };
       pkgs_x86_64_cygwin = packageSet' { system = "x86_64-cygwin"; };
     in
+
     system:
     if system == "x86_64-linux" then
       pkgs_x86_64_linux
@@ -216,6 +217,7 @@ let
       [ ]
   );
 in
+
 {
   # Common platform groups on which to test packages.
   inherit (platforms)

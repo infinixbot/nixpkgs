@@ -33,7 +33,9 @@ in
           haveged should refill the entropy pool.
         '';
       };
+
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -83,6 +85,8 @@ in
         ];
         SystemCallErrorNumber = "EPERM";
       };
+
     };
   };
+
 }

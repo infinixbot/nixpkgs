@@ -37,6 +37,7 @@ let
     else
       pkgs.writeText "mxisd-config.yaml" (builtins.toJSON fullConfig);
 in
+
 {
   options = {
     services.mxisd = {
@@ -73,6 +74,7 @@ in
             the domain of the matrix homeserver
           '';
         };
+
       };
 
       server = {
@@ -92,7 +94,9 @@ in
             HTTP port to listen on (unencrypted)
           '';
         };
+
       };
+
     };
   };
 

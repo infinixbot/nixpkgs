@@ -121,6 +121,7 @@ mkDerivation {
     kxmlgui
     plasma-framework
     libqaccessibilityclient
+
   ];
   outputs = [
     "out"

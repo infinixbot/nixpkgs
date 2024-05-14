@@ -61,6 +61,7 @@ in
       type = types.listOf types.package;
       description = "Which packages cinnamon should exclude from the default environment";
     };
+
   };
 
   config = mkMerge [

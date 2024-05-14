@@ -42,6 +42,7 @@ let
 
   configFile = pkgs.writeText "wasabibackend.conf" (builtins.toJSON confOptions);
 in
+
 {
 
   options = {
@@ -181,5 +182,6 @@ in
     };
 
     users.groups.${cfg.group} = { };
+
   };
 }

@@ -26,4 +26,5 @@ buildDunePackage rec {
     maintainers = [ lib.maintainers.vbgl ];
     inherit (src.meta) homepage;
   };
+
 }

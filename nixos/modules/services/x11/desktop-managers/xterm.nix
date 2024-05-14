@@ -22,6 +22,7 @@ in
       defaultText = literalExpression ''versionOlder config.system.stateVersion "19.09" && config.services.xserver.enable;'';
       description = "Enable a xterm terminal as a desktop manager.";
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -35,5 +36,7 @@ in
     };
 
     environment.systemPackages = [ pkgs.xterm ];
+
   };
+
 }

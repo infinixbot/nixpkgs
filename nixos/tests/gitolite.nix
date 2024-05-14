@@ -86,6 +86,7 @@ import ./make-test-python.nix (
             isNormalUser = true;
           };
         };
+
     };
 
     testScript = ''

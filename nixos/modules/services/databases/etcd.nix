@@ -12,6 +12,7 @@ let
   cfg = config.services.etcd;
   opt = options.services.etcd;
 in
+
 {
 
   options.services.etcd = {

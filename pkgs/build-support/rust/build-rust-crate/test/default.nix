@@ -107,6 +107,7 @@ let
             src = mkBinExtern "src/main.rs" libName;
           };
     in
+
     assert expectedTestOutputs != null -> hasTests;
     assert hasTests -> expectedTestOutputs != null;
 
@@ -211,6 +212,7 @@ let
       ''
     );
 in
+
 rec {
 
   tests =

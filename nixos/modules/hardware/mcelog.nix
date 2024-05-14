@@ -20,6 +20,7 @@ with lib;
         '';
       };
     };
+
   };
 
   config = mkIf config.hardware.mcelog.enable {

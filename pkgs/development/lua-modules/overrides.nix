@@ -501,6 +501,7 @@ in
       cargo
       rustPlatform.cargoSetupHook
     ];
+
   });
 
   lush-nvim = prev.lush-nvim.overrideAttrs (drv: {
@@ -730,6 +731,7 @@ in
         -u test/minimal_init.vim --cmd "set rtp+=${vimPlugins.plenary-nvim}" \
         -c "PlenaryBustedDirectory test/auto/ { minimal_init = './test/minimal_init.vim' }"
     '';
+
   });
 
   std-_debug = prev.std-_debug.overrideAttrs (oa: {
@@ -784,6 +786,7 @@ in
       rustPlatform.cargoSetupHook
       lua.pkgs.luarocks-build-rust-mlua
     ];
+
   });
 
   tree-sitter-norg = prev.tree-sitter-norg.overrideAttrs (oa: {

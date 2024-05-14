@@ -17,6 +17,7 @@ let
 
   cfg = config.hardware.ipu6;
 in
+
 {
 
   options.hardware.ipu6 = {
@@ -36,6 +37,7 @@ in
         and `ipu6epmtl` for Meteor Lake.
       '';
     };
+
   };
 
   config = mkIf cfg.enable {

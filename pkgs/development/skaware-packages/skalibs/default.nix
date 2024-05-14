@@ -30,6 +30,7 @@ skawarePackages.buildPackage {
       # Empty the default path, which would be "/usr/bin:bin".
       # It would be set when PATH is empty. This hurts hermeticity.
       "--with-default-path="
+
     ]
     ++ lib.optionals (stdenv.buildPlatform.config != stdenv.hostPlatform.config) [
       # ./configure: sysdep posixspawnearlyreturn cannot be autodetected
@@ -55,4 +56,5 @@ skawarePackages.buildPackage {
     # and might break if skalibs gets an breaking update.
     fdtools = pkgs.fdtools;
   };
+
 }

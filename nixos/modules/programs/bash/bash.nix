@@ -113,7 +113,9 @@ in
         type = lib.types.lines;
         internal = true;
       };
+
     };
+
   };
 
   config = # lib.mkIf cfg.enable
@@ -146,6 +148,7 @@ in
 
           ${cfge.interactiveShellInit}
         '';
+
       };
 
       environment.etc.profile.text = ''
@@ -214,5 +217,7 @@ in
         "${pkgs.bashInteractive}/bin/bash"
         "${pkgs.bashInteractive}/bin/sh"
       ];
+
     };
+
 }

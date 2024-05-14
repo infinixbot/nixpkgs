@@ -37,6 +37,7 @@ let
 
   confFile = builtins.toFile "siproxd.conf" conf;
 in
+
 {
   ##### interface
 
@@ -171,7 +172,9 @@ in
           Extra configuration to add to siproxd configuration.
         '';
       };
+
     };
+
   };
 
   ##### implementation
@@ -190,5 +193,7 @@ in
         ExecStart = "${pkgs.siproxd}/sbin/siproxd -c ${confFile}";
       };
     };
+
   };
+
 }

@@ -114,6 +114,7 @@ let
     };
   };
 in
+
 {
   options = {
     services.postgresqlWalReceiver = {

@@ -11,6 +11,7 @@ let
   cfg = config.amazonImage;
   amiBootMode = if config.ec2.efi then "uefi" else "legacy-bios";
 in
+
 {
 
   imports = [ ../../../modules/virtualisation/amazon-image.nix ];

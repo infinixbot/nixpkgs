@@ -40,4 +40,5 @@ python3.pkgs.buildPythonApplication rec {
     maintainers = with maintainers; [ StillerHarpo ];
     mainProgram = "ical2orgpy";
   };
+
 }

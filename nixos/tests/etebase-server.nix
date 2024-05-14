@@ -4,6 +4,7 @@ import ./make-test-python.nix (
   let
     dataDir = "/var/lib/foobar";
   in
+
   {
     name = "etebase-server";
     meta = with pkgs.lib.maintainers; {

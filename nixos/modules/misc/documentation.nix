@@ -184,6 +184,7 @@ let
         categories = [ "System" ];
       };
     in
+
     pkgs.symlinkJoin {
       name = "nixos-help";
       paths = [
@@ -379,7 +380,9 @@ in
           [ pkgs.customModules ]
         '';
       };
+
     };
+
   };
 
   config = mkIf cfg.enable (mkMerge [
@@ -431,5 +434,7 @@ in
           nixos-help
         ];
     })
+
   ]);
+
 }

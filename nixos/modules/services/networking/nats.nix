@@ -15,6 +15,7 @@ let
 
   configFile = format.generate "nats.conf" cfg.settings;
 in
+
 {
 
   ### Interface
@@ -165,4 +166,5 @@ in
 
     users.groups = mkIf (cfg.group == "nats") { nats = { }; };
   };
+
 }

@@ -337,6 +337,7 @@ let
           ProtectControlGroups = true;
           PrivateDevices = true;
           RestrictSUIDSGID = true;
+
         };
     };
   };

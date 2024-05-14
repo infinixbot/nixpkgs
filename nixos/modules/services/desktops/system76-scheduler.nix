@@ -138,6 +138,7 @@ let
       ))
     );
 in
+
 {
   options = {
     services.system76-scheduler = {

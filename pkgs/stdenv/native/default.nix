@@ -189,6 +189,7 @@ in
         # Curl should be in /usr/bin or so.
         curl = null;
       };
+
     }
   )
 
@@ -216,4 +217,5 @@ in
       extraNativeBuildInputs = if localSystem.isLinux then [ prevStage.patchelf ] else [ ];
     };
   })
+
 ]

@@ -36,7 +36,9 @@ in
       package = lib.mkPackageOption pkgs "jdk" { example = "jre"; };
 
       binfmt = lib.mkEnableOption "binfmt to execute java jar's and classes";
+
     };
+
   };
 
   config = lib.mkIf cfg.enable {
@@ -67,5 +69,7 @@ in
     environment.shellInit = ''
       test -e ${cfg.package}/nix-support/setup-hook && source ${cfg.package}/nix-support/setup-hook
     '';
+
   };
+
 }

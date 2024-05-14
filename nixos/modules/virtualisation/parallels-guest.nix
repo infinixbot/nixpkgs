@@ -46,6 +46,7 @@ in
         '';
       };
     };
+
   };
 
   config = mkIf config.hardware.parallels.enable {
@@ -147,5 +148,6 @@ in
         };
       };
     };
+
   };
 }

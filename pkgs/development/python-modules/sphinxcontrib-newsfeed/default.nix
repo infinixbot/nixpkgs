@@ -27,4 +27,5 @@ buildPythonPackage rec {
     homepage = "https://github.com/prometheusresearch/sphinxcontrib-newsfeed";
     license = licenses.bsd2;
   };
+
 }

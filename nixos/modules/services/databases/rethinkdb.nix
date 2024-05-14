@@ -58,7 +58,9 @@ in
       #  default = {};
       #  description = "List of named RethinkDB instances in our cluster.";
       #};
+
     };
+
   };
 
   ###### implementation
@@ -105,5 +107,7 @@ in
     users.groups = optionalAttrs (cfg.group == "rethinkdb") (singleton {
       name = "rethinkdb";
     });
+
   };
+
 }

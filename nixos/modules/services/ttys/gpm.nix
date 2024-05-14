@@ -34,7 +34,9 @@ in
         default = "ps/2";
         description = "Mouse protocol to use.";
       };
+
     };
+
   };
 
   ###### implementation
@@ -52,5 +54,7 @@ in
       serviceConfig.Type = "forking";
       serviceConfig.PIDFile = "/run/gpm.pid";
     };
+
   };
+
 }

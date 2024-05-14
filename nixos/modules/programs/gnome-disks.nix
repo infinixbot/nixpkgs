@@ -27,7 +27,9 @@
           be a UDisks2 graphical front-end.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -37,5 +39,7 @@
     environment.systemPackages = [ pkgs.gnome.gnome-disk-utility ];
 
     services.dbus.packages = [ pkgs.gnome.gnome-disk-utility ];
+
   };
+
 }

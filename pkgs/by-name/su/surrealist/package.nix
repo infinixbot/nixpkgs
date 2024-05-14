@@ -55,6 +55,7 @@ let
     cargoHash = "sha256-aACJ+lYNEU8FFBs158G1/JG8sc6Rq080PeKCMnwdpH0=";
   };
 in
+
 stdenv.mkDerivation (finalAttrs: {
   pname = "surrealist";
   version = "1.11.7";

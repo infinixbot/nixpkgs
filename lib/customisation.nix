@@ -34,6 +34,7 @@ let
     ;
   inherit (lib.strings) levenshtein levenshteinAtMost;
 in
+
 rec {
 
   /**
@@ -295,6 +296,7 @@ rec {
       # Only show the error for the first missing argument
       error = errorForArg (head (attrNames missingArgs));
     in
+
     if missingArgs == { } then
       makeOverridable f allArgs
     # This needs to be an abort so it can't be caught with `builtins.tryEval`,
@@ -727,4 +729,5 @@ rec {
       };
     in
     self;
+
 }

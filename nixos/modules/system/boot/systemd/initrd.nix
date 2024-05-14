@@ -134,6 +134,7 @@ let
       }) (filterAttrs (_: v: v.enable) cfg.contents);
   };
 in
+
 {
   options.boot.initrd.systemd = {
     enable = mkEnableOption "systemd in initrd" // {
@@ -518,6 +519,7 @@ in
 
           "/etc/os-release".source = config.boot.initrd.osRelease;
           "/etc/initrd-release".source = config.boot.initrd.osRelease;
+
         }
         // optionalAttrs (config.environment.etc ? "modprobe.d/nixos.conf") {
           "/etc/modprobe.d/nixos.conf".source = config.environment.etc."modprobe.d/nixos.conf".source;

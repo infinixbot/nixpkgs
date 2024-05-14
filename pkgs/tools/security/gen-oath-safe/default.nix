@@ -52,4 +52,5 @@ stdenv.mkDerivation rec {
     maintainers = [ maintainers.makefu ];
     mainProgram = "gen-oath-safe";
   };
+
 }

@@ -64,6 +64,7 @@ let
         properties = { };
       };
 in
+
 {
   options = {
     virtualisation.lxc = {

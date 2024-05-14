@@ -34,6 +34,7 @@ let
       ${jq}/bin/jq -s '(.[0] | with_entries( select(.key == "bootstrap-nodes"))) * .[1]' src.json ${confJSON} > $out
     '';
 in
+
 {
   options.services.tox-node = {
     enable = mkEnableOption "Tox Node service";

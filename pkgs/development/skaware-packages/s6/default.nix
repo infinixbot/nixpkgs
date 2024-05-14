@@ -55,4 +55,5 @@ skawarePackages.buildPackage {
     mv doc $doc/share/doc/s6/html
     mv examples $doc/share/doc/s6/examples
   '';
+
 }

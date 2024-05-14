@@ -56,5 +56,6 @@ import ./make-test-python.nix (
       machine.fail("curl --fail --max-time 10 --proxy http://user:supervillain@localhost:1080 http://localhost")
       machine.succeed("curl --fail --max-time 10 --proxy socks5://user:supersecret@localhost:1080 http://localhost")
     '';
+
   }
 )

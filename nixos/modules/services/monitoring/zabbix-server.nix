@@ -238,7 +238,9 @@ in
           StartPingers = 32;
         };
       };
+
     };
+
   };
 
   # implementation
@@ -379,5 +381,7 @@ in
     systemd.services.httpd.after =
       optional (config.services.zabbixWeb.enable && mysqlLocal) "mysql.service"
       ++ optional (config.services.zabbixWeb.enable && pgsqlLocal) "postgresql.service";
+
   };
+
 }

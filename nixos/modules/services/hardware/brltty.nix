@@ -25,6 +25,7 @@ let
     fi
   '';
 in
+
 {
 
   options = {
@@ -34,6 +35,7 @@ in
       default = false;
       description = "Whether to enable the BRLTTY daemon.";
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -61,4 +63,5 @@ in
     systemd.paths.brltty.wantedBy = targets;
     systemd.paths."brltty@".wantedBy = targets;
   };
+
 }

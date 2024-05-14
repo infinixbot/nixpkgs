@@ -785,6 +785,7 @@ in
             discourse-rake admin:create_noninteractively
           '';
         in
+
         ''
           set -o errexit -o pipefail -o nounset -o errtrace
           shopt -s inherit_errexit

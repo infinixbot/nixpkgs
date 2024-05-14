@@ -35,6 +35,7 @@ in
         Contents of the {file}`drbd.conf` configuration file.
       '';
     };
+
   };
 
   ###### implementation

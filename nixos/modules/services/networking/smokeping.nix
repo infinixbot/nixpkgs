@@ -302,6 +302,7 @@ in
         description = "Enable a smokeping web interface";
       };
     };
+
   };
 
   config = mkIf cfg.enable {

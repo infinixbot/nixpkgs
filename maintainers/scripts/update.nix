@@ -232,6 +232,7 @@ let
 
   args = [ packagesJson ] ++ optionalArgs;
 in
+
 pkgs.stdenv.mkDerivation {
   name = "nixpkgs-update-script";
   buildCommand = ''

@@ -1854,6 +1854,7 @@ let
         {manpage}`systemd.link(5)` for details.
       '';
     };
+
   };
 
   l2tpSessionOptions = {
@@ -2184,6 +2185,7 @@ let
         {manpage}`systemd.netdev(5)` for details.
       '';
     };
+
   };
 
   addressOptions = {
@@ -3151,6 +3153,7 @@ let
         {manpage}`systemd.network(5)` for details.
       '';
     };
+
   };
 
   networkConfig =
@@ -3346,6 +3349,7 @@ let
         default = [ ];
       };
     };
+
   };
 
   commonConfig =
@@ -3400,6 +3404,7 @@ let
             ExecStart = "${config.systemd.package}/lib/systemd/systemd-networkd-wait-online -i %I ${utils.escapeSystemdExecArgs cfg.wait-online.extraArgs}";
           };
         };
+
       })
     ];
 
@@ -3453,6 +3458,7 @@ let
         };
 
         services.resolved.enable = mkDefault true;
+
       })
     ];
 
@@ -3527,6 +3533,7 @@ let
           "${config.boot.initrd.systemd.package}/lib/systemd/systemd-network-generator"
         ];
         kernelModules = [ "af_packet" ];
+
       })
     ];
 in

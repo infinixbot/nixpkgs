@@ -72,6 +72,7 @@ in
         Mountpoint for FUSE namespace that exposes "urn:eris:…" files.
       '';
     };
+
   };
 
   config = lib.mkIf cfg.enable {

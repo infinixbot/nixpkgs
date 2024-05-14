@@ -67,6 +67,7 @@ let
         jobs.python311Packages.sphinx.x86_64-linux # Document creation for many packages
       ];
     };
+
   } // (mapTestOn (packagePython pkgs));
 in
 jobs

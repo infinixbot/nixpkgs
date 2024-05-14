@@ -17,6 +17,7 @@ let
     ${cfg.extraConfig}
   '';
 in
+
 {
   options = {
 
@@ -53,6 +54,7 @@ in
         default = "";
         description = "Any other configuration options you want to add";
       };
+
     };
   };
 

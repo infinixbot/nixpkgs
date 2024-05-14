@@ -176,6 +176,7 @@ let
     ]
   );
 in
+
 buildPythonPackage rec {
   pname = "manim";
   pyproject = true;

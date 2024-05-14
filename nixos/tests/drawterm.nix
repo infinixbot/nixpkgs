@@ -77,6 +77,7 @@ let
           machine.wait_for_text("ending")
           machine.screenshot("out.png")
         '';
+
       }
     );
   mkTestOn =

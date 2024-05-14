@@ -28,12 +28,14 @@ let
         };
       };
     in
+
     [
       promise
       semaphore
     ]
   );
 in
+
 pkgs.mkShell {
   packages = [
     pkgs.git

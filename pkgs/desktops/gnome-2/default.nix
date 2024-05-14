@@ -46,6 +46,7 @@ lib.makeScope pkgs.newScope (
     #### DESKTOP
 
     gtksourceview = callPackage ./desktop/gtksourceview { autoreconfHook = pkgs.autoreconfHook269; };
+
   }
   // lib.optionalAttrs config.allowAliases {
     inherit (pkgs)

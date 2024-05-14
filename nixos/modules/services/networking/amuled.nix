@@ -48,7 +48,9 @@ in
           The user the AMule daemon should run as.
         '';
       };
+
     };
+
   };
 
   ###### implementation

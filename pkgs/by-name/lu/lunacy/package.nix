@@ -113,4 +113,5 @@ stdenv.mkDerivation (finalAttrs: {
     sourceProvenance = [ sourceTypes.binaryBytecode ];
     mainProgram = "lunacy";
   };
+
 })

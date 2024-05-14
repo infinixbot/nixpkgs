@@ -30,4 +30,5 @@ buildPythonPackage rec {
     license = with licenses; [ bsd2 ];
     maintainers = with maintainers; [ matejc ];
   };
+
 }

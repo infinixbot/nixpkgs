@@ -8,6 +8,7 @@ let
   mkCommon = callPackage ./common.nix { };
   inherit (vmr) targetRid releaseManifest;
 in
+
 {
   inherit vmr;
   sdk = mkCommon "sdk" rec {

@@ -83,5 +83,6 @@ in
         automatically generated `Caddyfile`.
       '';
     };
+
   };
 }

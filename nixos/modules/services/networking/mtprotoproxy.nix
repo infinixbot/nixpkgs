@@ -96,7 +96,9 @@ in
           Extra configuration options for mtprotoproxy.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -111,5 +113,7 @@ in
         DynamicUser = true;
       };
     };
+
   };
+
 }

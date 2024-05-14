@@ -38,4 +38,5 @@ buildPythonPackage rec {
     description = "Plugin for nose or py.test that automatically reruns flaky tests";
     license = licenses.asl20;
   };
+
 }

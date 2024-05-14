@@ -73,8 +73,10 @@ in
             extraArguments = "-N -D4343 billremote@socks.host.net";
           }
         ];
+
       };
     };
+
   };
 
   ###### implementation
@@ -115,5 +117,6 @@ in
       ) { } cfg.sessions;
 
     environment.systemPackages = [ pkgs.autossh ];
+
   };
 }

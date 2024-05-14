@@ -55,6 +55,7 @@ in
         "usbmuxd2"
       ];
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -85,5 +86,6 @@ in
         ExecStart = "${cfg.package}/bin/usbmuxd -U ${cfg.user} -v";
       };
     };
+
   };
 }

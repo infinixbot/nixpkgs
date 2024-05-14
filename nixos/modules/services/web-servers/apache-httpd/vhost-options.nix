@@ -308,6 +308,7 @@ in
         Declarative location config. See <https://httpd.apache.org/docs/2.4/mod/core.html#location> for details.
       '';
     };
+
   };
 
   config = {
@@ -315,5 +316,6 @@ in
     locations = builtins.listToAttrs (
       map (elem: nameValuePair elem.urlPath { alias = elem.file; }) config.servedFiles
     );
+
   };
 }

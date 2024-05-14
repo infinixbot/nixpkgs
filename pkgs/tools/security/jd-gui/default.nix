@@ -100,6 +100,7 @@ let
     startupWMClass = "org-jd-gui-App";
   };
 in
+
 stdenv.mkDerivation rec {
   inherit
     pname

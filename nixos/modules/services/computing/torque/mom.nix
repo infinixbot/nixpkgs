@@ -17,6 +17,7 @@ let
     $logevent 225
   '';
 in
+
 {
   options = {
 
@@ -27,7 +28,9 @@ in
         type = types.str;
         description = "Hostname running pbs server.";
       };
+
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -68,5 +71,6 @@ in
         PIDFile = "/var/spool/torque/mom_priv/mom.lock";
       };
     };
+
   };
 }

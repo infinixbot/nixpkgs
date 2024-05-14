@@ -50,6 +50,7 @@ let
     };
   };
 in
+
 {
   options.services.mautrix-signal = {
     enable = lib.mkEnableOption "mautrix-signal, a Matrix-Signal puppeting bridge.";

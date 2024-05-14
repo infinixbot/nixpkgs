@@ -37,4 +37,5 @@ rustPlatform.buildRustPackage rec {
     maintainers = [ maintainers.manojkarthick ];
     mainProgram = "reddsaver";
   };
+
 }

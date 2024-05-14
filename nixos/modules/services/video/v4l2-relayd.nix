@@ -117,9 +117,11 @@ let
             '';
           };
         };
+
       };
     };
 in
+
 {
 
   options.services.v4l2-relayd = {
@@ -139,6 +141,7 @@ in
         v4l2-relayd instances to be created.
       '';
     };
+
   };
 
   config =
@@ -213,6 +216,7 @@ in
 
       enabledInstances = attrValues (filterAttrs (n: v: v.enable) cfg.instances);
     in
+
     {
 
       boot = mkIf ((length enabledInstances) > 0) {
@@ -221,6 +225,7 @@ in
       };
 
       systemd.services = mkInstanceServices enabledInstances;
+
     };
 
   meta.maintainers = with lib.maintainers; [ betaboon ];

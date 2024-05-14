@@ -136,5 +136,6 @@ in
       propagatedBuildInputs =
         o.propagatedBuildInputs
         ++ lib.optional (version == "8.16.0+0.16.3" || version == "dev") coq.ocamlPackages.ppx_hash;
+
     }
   )

@@ -52,4 +52,5 @@ stdenv.mkDerivation rec {
     platforms = lib.platforms.all;
     mainProgram = "i3status";
   };
+
 }

@@ -17,4 +17,5 @@ mkTmuxPlugin {
       tmuxThumbsDir = "${thumbs}/bin";
     })
   ];
+
 }

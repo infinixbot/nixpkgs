@@ -56,6 +56,7 @@ in
         '';
       };
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -102,5 +103,6 @@ in
     };
 
     users.groups = mkIf (cfg.group == "vdr") { vdr = { }; };
+
   };
 }

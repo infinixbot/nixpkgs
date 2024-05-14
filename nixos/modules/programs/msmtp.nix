@@ -8,6 +8,7 @@
 let
   cfg = config.programs.msmtp;
 in
+
 {
   meta.maintainers = with lib.maintainers; [ pacien ];
 

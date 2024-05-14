@@ -26,6 +26,7 @@ let
 
   package = pkgs.octoprint;
 in
+
 {
   ##### interface
 
@@ -88,7 +89,9 @@ in
         default = { };
         description = "Extra options which are added to OctoPrint's YAML configuration file.";
       };
+
     };
+
   };
 
   ##### implementation

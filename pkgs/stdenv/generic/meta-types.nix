@@ -20,6 +20,7 @@ let
     ;
   isTypeDef = t: isAttrs t && t ? name && isString t.name && t ? verify && isFunction t.verify;
 in
+
 lib.fix (self: {
   string = {
     name = "string";

@@ -113,6 +113,7 @@ in
         for all available options.
       '';
     };
+
   };
 
   config = lib.mkIf cfg.enable {

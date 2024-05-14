@@ -83,6 +83,7 @@ import ./make-test-python.nix (
         )) nodes.server.services.kanidm.serverSettings;
         serverConfigFile = (pkgs.formats.toml { }).generate "server.toml" filteredConfig;
       in
+
       ''
         start_all()
         server.wait_for_unit("kanidm.service")

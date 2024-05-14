@@ -356,6 +356,7 @@ rec {
       appendIfNotSet = el: list: if elem el list then list else list ++ [ el ];
       ghcArgs' = if threadedRuntime then appendIfNotSet "-threaded" ghcArgs else ghcArgs;
     in
+
     makeBinWriter {
       compileScript = ''
         cp $contentPath tmp.hs
@@ -710,6 +711,7 @@ rec {
         ${lib.getExe dotnet-sdk} fsi --quiet --nologo --readline- ${fsi-flags} "$@" < "$script"
       '';
     in
+
     content:
     makeScriptWriter
       (

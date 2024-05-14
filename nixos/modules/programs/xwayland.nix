@@ -37,6 +37,7 @@ in
       '';
       description = "The Xwayland package to use.";
     };
+
   };
 
   config = lib.mkIf cfg.enable {
@@ -45,5 +46,6 @@ in
     environment.pathsToLink = [ "/share/X11" ];
 
     environment.systemPackages = [ cfg.package ];
+
   };
 }

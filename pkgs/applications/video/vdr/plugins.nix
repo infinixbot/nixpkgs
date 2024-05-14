@@ -75,6 +75,7 @@ in
       license = licenses.gpl2;
       inherit (vdr.meta) platforms;
     };
+
   };
 
   epgsearch = stdenv.mkDerivation rec {
@@ -125,6 +126,7 @@ in
       license = licenses.gpl2;
       inherit (vdr.meta) platforms;
     };
+
   };
 
   vnsiserver = stdenv.mkDerivation rec {
@@ -149,6 +151,7 @@ in
       license = licenses.gpl2;
       inherit (vdr.meta) platforms;
     };
+
   };
 
   text2skin = stdenv.mkDerivation rec {

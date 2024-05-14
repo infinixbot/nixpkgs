@@ -10,6 +10,7 @@ with lib;
 let
   cfg = config.hyperv;
 in
+
 {
   options = {
     hyperv = {

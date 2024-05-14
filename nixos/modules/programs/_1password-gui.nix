@@ -9,6 +9,7 @@ let
 
   cfg = config.programs._1password-gui;
 in
+
 {
   imports = [
     (lib.mkRemovedOptionModule
@@ -57,5 +58,6 @@ in
           setgid = true;
         };
       };
+
     };
 }

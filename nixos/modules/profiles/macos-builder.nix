@@ -197,6 +197,7 @@ in
           ''
         );
       in
+
       script.overrideAttrs (old: {
         pos = __curPos; # sets meta.position to point here; see script binding above for package definition
         meta = (old.meta or { }) // {

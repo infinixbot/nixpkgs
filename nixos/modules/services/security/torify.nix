@@ -61,7 +61,9 @@ in
           configuration file.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -78,4 +80,5 @@ in
       local = 127.128.0.0/255.192.0.0
     '';
   };
+
 }

@@ -68,5 +68,6 @@ import ./make-test-python.nix (
       machine.wait_until_fails("udisksctl info -b /dev/sda1")
       machine.fail("[ -e /dev/sda ]")
     '';
+
   }
 )

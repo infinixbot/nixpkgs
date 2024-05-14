@@ -24,6 +24,7 @@ let
 
   inherit (lib) optional optionalString;
 in
+
 stdenv.mkDerivation rec {
   pname = "gemrb";
   version = "0.9.2";

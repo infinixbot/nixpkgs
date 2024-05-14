@@ -46,6 +46,7 @@ let
     hardeningDisable = [ "fortify3" ];
   };
 in
+
 stdenv.mkDerivation (finalAttrs: {
   pname = "nanomq";
   version = "0.20.8";

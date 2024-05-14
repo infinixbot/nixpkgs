@@ -26,6 +26,7 @@ let
     vcdimager
   ];
 in
+
 stdenv.mkDerivation rec {
   version = "${major}.${minor}";
   pname = "brasero";

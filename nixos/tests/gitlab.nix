@@ -443,6 +443,7 @@ in
               gitlab.succeed("test -s /tmp/archive.tar.bz2")
         '';
     in
+
     ''
       gitlab.start()
     ''

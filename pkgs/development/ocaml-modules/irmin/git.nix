@@ -58,4 +58,5 @@ buildDunePackage {
   meta = irmin.meta // {
     description = "Git backend for Irmin";
   };
+
 }

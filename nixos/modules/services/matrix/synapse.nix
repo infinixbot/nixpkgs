@@ -479,6 +479,7 @@ in
       "matrix-synapse"
       "registration_shared_secret"
     ] "Pass this value via extraConfigFiles instead")
+
   ];
 
   options =
@@ -1648,4 +1649,5 @@ in
     doc = ./synapse.md;
     maintainers = teams.matrix.members;
   };
+
 }

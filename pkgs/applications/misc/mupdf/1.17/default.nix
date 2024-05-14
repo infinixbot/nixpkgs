@@ -27,6 +27,7 @@ let
   # OpenJPEG version is hardcoded in package source
   openJpegVersion = with stdenv; lib.versions.majorMinor (lib.getVersion openjpeg);
 in
+
 stdenv.mkDerivation rec {
   version = "1.17.0";
   pname = "mupdf";

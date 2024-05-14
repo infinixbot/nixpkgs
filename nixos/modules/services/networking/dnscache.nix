@@ -35,6 +35,7 @@ let
     fi
   '';
 in
+
 {
 
   ###### interface
@@ -88,6 +89,7 @@ in
           needed if you want to use e.g. Google DNS as your upstream DNS.
         '';
       };
+
     };
   };
 

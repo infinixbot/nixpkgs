@@ -41,7 +41,9 @@ in
         default = "osgi";
         description = "Group account under which Apache Felix runs.";
       };
+
     };
+
   };
 
   ###### implementation

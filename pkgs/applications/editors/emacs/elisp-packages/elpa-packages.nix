@@ -225,11 +225,14 @@ let
               tar --create --verbose --file=$src $content_directory
             '';
         });
+
       };
 
       elpaPackages = super // overrides;
     in
+
     elpaPackages // { inherit elpaBuild; }
   );
 in
+
 (generateElpa { }) // { __attrsFailEvaluation = true; }

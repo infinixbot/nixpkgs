@@ -135,6 +135,7 @@ let
     }
   ) { };
 in
+
 {
 
   ###### interface
@@ -221,6 +222,7 @@ in
         The time interval (in minutes) between key expiration checks.
       '';
     };
+
   };
 
   ###### implementation
@@ -286,7 +288,9 @@ in
         message = "The secret and public provider key must be set together.";
       }
     ];
+
   };
 
   meta.maintainers = with lib.maintainers; [ rnhmjoj ];
+
 }

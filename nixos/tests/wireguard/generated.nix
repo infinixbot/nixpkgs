@@ -23,6 +23,7 @@ import ../make-test-python.nix (
           listenPort = 12345;
           privateKeyFile = "/etc/wireguard/private";
           generatePrivateKeyFile = true;
+
         };
       };
 

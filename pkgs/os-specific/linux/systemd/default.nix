@@ -741,6 +741,7 @@ stdenv.mkDerivation (finalAttrs: {
       (lib.mesonBool "create-log-dirs" false)
       (lib.mesonBool "smack" true)
       (lib.mesonBool "b_pie" true)
+
     ]
     ++ lib.optionals (withShellCompletions == false) [
       (lib.mesonOption "bashcompletiondir" "no")
@@ -920,6 +921,7 @@ stdenv.mkDerivation (finalAttrs: {
 
       "-USYSTEMD_BINARY_PATH"
       "-DSYSTEMD_BINARY_PATH=\"/run/current-system/systemd/lib/systemd/systemd\""
+
     ]
     ++ lib.optionals stdenv.hostPlatform.isMusl [ "-D__UAPI_DEF_ETHHDR=0" ]
   );

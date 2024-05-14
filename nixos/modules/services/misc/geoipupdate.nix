@@ -126,10 +126,12 @@ in
                 sensitive contents.
               '';
             };
+
           };
         };
       };
     };
+
   };
 
   config = lib.mkIf cfg.enable {

@@ -11,6 +11,7 @@ let
 
   cfg = config.services.canto-daemon;
 in
+
 {
 
   ##### interface
@@ -24,6 +25,7 @@ in
         description = "Whether to enable the canto RSS daemon.";
       };
     };
+
   };
 
   ##### implementation
@@ -37,4 +39,5 @@ in
       serviceConfig.ExecStart = "${pkgs.canto-daemon}/bin/canto-daemon";
     };
   };
+
 }

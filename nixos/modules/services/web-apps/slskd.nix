@@ -272,6 +272,7 @@ in
 
       configurationYaml = settingsFormat.generate "slskd.yml" confWithoutNullValues;
     in
+
     lib.mkIf cfg.enable {
 
       # Force off, configuration file is in nix store and is immutable

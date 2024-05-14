@@ -23,4 +23,5 @@ buildPythonPackage rec {
     homepage = "https://pypi.python.org/pypi/setuptools-git";
     license = licenses.bsd3;
   };
+
 }

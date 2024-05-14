@@ -51,6 +51,7 @@ let
     hash = "sha256-Vl+FhwhJBbD/7U2CwsYE9BClSQYLJ8DKXV9EXxQUmz0=";
   };
 in
+
 stdenv.mkDerivation rec {
   pname = "openmolcas";
   version = "24.02";

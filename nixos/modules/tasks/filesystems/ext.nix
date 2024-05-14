@@ -36,5 +36,6 @@ in
     '';
 
     boot.initrd.systemd.initrdBin = lib.mkIf inInitrd [ pkgs.e2fsprogs ];
+
   };
 }

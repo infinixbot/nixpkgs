@@ -11,6 +11,7 @@ let
   jenkinsCfg = config.services.jenkins;
   cfg = config.services.jenkins.jobBuilder;
 in
+
 {
   options = {
     services.jenkins.jobBuilder = {

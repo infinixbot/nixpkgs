@@ -84,6 +84,7 @@ with lib;
         description = "Additional configuration lines";
       };
     };
+
   };
 
   config = mkIf cfg.enable {

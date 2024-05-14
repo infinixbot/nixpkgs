@@ -26,4 +26,5 @@ buildGoPackage rec {
     maintainers = with maintainers; [ yrashk ];
     mainProgram = "simplehttp2server";
   };
+
 }

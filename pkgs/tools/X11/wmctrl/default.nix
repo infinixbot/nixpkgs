@@ -38,4 +38,5 @@ stdenv.mkDerivation rec {
     maintainers = [ lib.maintainers.Anton-Latukha ];
     mainProgram = "wmctrl";
   };
+
 }

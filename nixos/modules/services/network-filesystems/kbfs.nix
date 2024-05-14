@@ -9,6 +9,7 @@ let
   inherit (config.security) wrapperDir;
   cfg = config.services.kbfs;
 in
+
 {
 
   ###### interface
@@ -51,6 +52,7 @@ in
           Additional flags to pass to the Keybase filesystem on launch.
         '';
       };
+
     };
   };
 

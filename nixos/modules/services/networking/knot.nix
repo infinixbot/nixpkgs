@@ -179,6 +179,7 @@ let
       # We don't want to walk the insides of derivation attributes.
       doRecurse = val: isAttrs val && !isDerivation val;
     in
+
     result;
 
   configFile =

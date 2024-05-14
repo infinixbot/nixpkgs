@@ -32,6 +32,7 @@ let
       --replace '"0.0.0"' '"${version}"'
   '';
 in
+
 {
 
   plik = buildGoModule {

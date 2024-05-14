@@ -57,6 +57,7 @@ let
   sigtool = callPackage ./sigtool.nix { };
   signAppHost = callPackage ./sign-apphost.nix { };
 in
+
 mkCommon type rec {
   inherit pname version;
 

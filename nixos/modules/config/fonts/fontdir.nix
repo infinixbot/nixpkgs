@@ -49,6 +49,7 @@ in
           {file}`/run/current-system/sw/share/X11/fonts`.
         '';
       };
+
     };
   };
 
@@ -60,6 +61,7 @@ in
     services.xserver.filesSection = ''
       FontPath "${x11Fonts}/share/X11/fonts"
     '';
+
   };
 
   imports = [
@@ -75,4 +77,5 @@ in
       ]
     )
   ];
+
 }

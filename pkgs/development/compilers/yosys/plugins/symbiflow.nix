@@ -43,6 +43,7 @@ let
     cmakeFlags = old.cmakeFlags ++ [ "-DBUILD_SHARED_LIBS=OFF" ];
   });
 in
+
 lib.genAttrs plugins (
   plugin:
   stdenv.mkDerivation (rec {

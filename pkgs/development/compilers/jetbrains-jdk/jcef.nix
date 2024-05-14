@@ -99,6 +99,7 @@ let
     .${platform};
   inherit (arches) depsArch projectArch targetArch;
 in
+
 stdenv.mkDerivation rec {
   pname = "jcef-jetbrains";
   rev = "9f8d4fb20b4658db6b2b6bc08e5dd0d8c7340290";

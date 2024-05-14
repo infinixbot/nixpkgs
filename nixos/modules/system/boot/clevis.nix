@@ -50,6 +50,7 @@ in
       default = false;
       type = types.bool;
     };
+
   };
 
   config = mkIf cfg.enable {

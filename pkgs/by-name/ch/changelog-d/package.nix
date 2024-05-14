@@ -32,6 +32,7 @@ let
       homepage = "https://codeberg.org/fgaz/changelog-d";
       maintainers = [ lib.maintainers.roberth ];
     };
+
   };
 in
 (haskellModifications hsPkg).overrideAttrs mkDerivationOverrides

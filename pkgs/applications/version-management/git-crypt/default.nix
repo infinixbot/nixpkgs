@@ -74,4 +74,5 @@ stdenv.mkDerivation rec {
     platforms = platforms.unix;
     mainProgram = "git-crypt";
   };
+
 }

@@ -29,5 +29,7 @@ in
     };
 
     environment.systemPackages = [ gnome.metacity ];
+
   };
+
 }

@@ -523,6 +523,7 @@ let
   # Don't forget to run update-component-packages.py after updating
   hassVersion = "2024.5.3";
 in
+
 python.pkgs.buildPythonApplication rec {
   pname = "homeassistant";
   version =

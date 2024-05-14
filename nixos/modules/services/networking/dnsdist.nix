@@ -82,6 +82,7 @@ let
     dnscrypt_setup()
   '';
 in
+
 {
   options = {
     services.dnsdist = {
@@ -149,6 +150,7 @@ in
             This will be automatically rotated before expiration.
           '';
         };
+
       };
 
       extraConfig = mkOption {

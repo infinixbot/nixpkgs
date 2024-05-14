@@ -57,4 +57,5 @@ buildPythonPackage rec {
     changelog = "https://github.com/PyWavelets/pywt/releases/tag/v${version}";
     license = licenses.mit;
   };
+
 }

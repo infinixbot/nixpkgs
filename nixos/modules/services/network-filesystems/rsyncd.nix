@@ -59,6 +59,7 @@ in
         type = types.bool;
         description = "If enabled Rsync will be socket-activated rather than run persistently.";
       };
+
     };
   };
 
@@ -137,9 +138,11 @@ in
           wantedBy = [ "sockets.target" ];
         };
       };
+
   };
 
   meta.maintainers = with lib.maintainers; [ ehmry ];
 
   # TODO: socket activated rsyncd
+
 }

@@ -11,6 +11,7 @@ let
 
   cfg = config.services.networkd-dispatcher;
 in
+
 {
 
   options = {
@@ -76,6 +77,7 @@ in
           }
         );
       };
+
     };
   };
 
@@ -110,5 +112,6 @@ in
           ];
       };
     };
+
   };
 }

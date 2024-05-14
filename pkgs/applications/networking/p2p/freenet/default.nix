@@ -37,6 +37,7 @@ let
     })
   ];
 in
+
 stdenv.mkDerivation rec {
   pname = "freenet";
   inherit version patches;

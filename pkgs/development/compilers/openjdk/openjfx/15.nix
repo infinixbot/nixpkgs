@@ -115,6 +115,7 @@ let
     outputHash = "sha256-fGLTMM9s/Vn7eMzn6OQR3tL0cGbAYc7c4J4/aW3JvkI=";
   };
 in
+
 makePackage {
   pname = "openjfx-modular-sdk";
 

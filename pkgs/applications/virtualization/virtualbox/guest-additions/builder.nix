@@ -33,6 +33,7 @@ with lib;
 let
   buildType = "release";
 in
+
 stdenv.mkDerivation (finalAttrs: {
   pname = "VirtualBox-GuestAdditions-builder-${kernel.version}";
   version = "7.0.14";

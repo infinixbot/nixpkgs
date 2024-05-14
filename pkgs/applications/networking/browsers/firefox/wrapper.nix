@@ -224,11 +224,13 @@ let
         ${lib.optionalString usesNixExtensions ''lockPref("xpinstall.signatures.required", false)''};
       '';
     in
+
     #############################
     #                           #
     #   END EXTRA PREF CHANGES  #
     #                           #
     #############################
+
     stdenv.mkDerivation {
       inherit pname version;
 

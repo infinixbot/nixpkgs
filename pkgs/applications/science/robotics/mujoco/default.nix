@@ -125,8 +125,10 @@ let
         cereal_1_3_2
       ];
     };
+
   };
 in
+
 stdenv.mkDerivation rec {
   pname = "mujoco";
   version = "3.1.5";

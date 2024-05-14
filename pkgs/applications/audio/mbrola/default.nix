@@ -57,6 +57,7 @@ let
     };
   };
 in
+
 runCommandLocal "${pname}-${version}" { inherit pname version meta; } ''
   mkdir -p "$out/share/mbrola"
   ln -s '${voices}/data' "$out/share/mbrola/voices"

@@ -78,7 +78,9 @@ in
           If set, the value of this option will be written to this path.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -105,6 +107,7 @@ in
             LimitNOFILE = "${toString cfg.openFilesLimit}";
           };
         };
+
       }
 
       (mkIf (cfg.motd != null) { environment.etc."solanum/ircd.motd".text = cfg.motd; })

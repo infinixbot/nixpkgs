@@ -50,4 +50,5 @@ buildGoModule rec {
     maintainers = with maintainers; [ kashw2 ];
     mainProgram = "files-cli";
   };
+
 }

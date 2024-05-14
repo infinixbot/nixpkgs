@@ -22,4 +22,5 @@ buildPythonPackage rec {
     homepage = "https://github.com/turicas/mongodict/";
     license = licenses.gpl3;
   };
+
 }

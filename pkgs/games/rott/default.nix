@@ -21,6 +21,7 @@ let
     exec @out@/libexec/rott "$@"
   '';
 in
+
 stdenv.mkDerivation rec {
   pname = "rott";
   version = "1.1.2";

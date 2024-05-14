@@ -94,4 +94,5 @@ in
 
     environment.systemPackages = [ commandNotFound ];
   };
+
 }

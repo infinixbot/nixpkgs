@@ -23,7 +23,9 @@ with lib;
         the DDE API, which provides some dbus interfaces that is used for screen zone detecting,
         thumbnail generating, and sound playing in Deepin Desktop Environment
       '';
+
     };
+
   };
 
   ###### implementation
@@ -46,5 +48,7 @@ with lib;
       group = "deepin-sound-player";
       isSystemUser = true;
     };
+
   };
+
 }

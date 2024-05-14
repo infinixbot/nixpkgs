@@ -18,6 +18,7 @@ import ../make-test-python.nix (
     # Generated via: mkpasswd -m sha-512 and passing in "foobar"
     hashedAlicePassword = "$6$MsMrE1q.1HrCgTS$Vq2e/uILzYjSN836TobAyN9xh9oi7EmCmucnZID25qgPoibkw8qTCugiAPnn4eCGvn1A.7oEBFJaaGUaJsQQY.";
   in
+
   {
     name = "pam-oath-login";
 

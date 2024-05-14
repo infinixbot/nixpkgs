@@ -13,6 +13,7 @@ let
     ${cfg.extraConfig}
   '';
 in
+
 {
   options = {
     services.zerobin = {

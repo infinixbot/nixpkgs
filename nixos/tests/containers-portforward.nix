@@ -68,5 +68,6 @@ import ./make-test-python.nix (
       # Destroying a declarative container should fail.
       machine.fail("nixos-container destroy webserver")
     '';
+
   }
 )

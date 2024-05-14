@@ -49,4 +49,5 @@ buildNimPackage (finalAttrs: {
     mainProgram = "min";
     maintainers = with lib.maintainers; [ ehmry ];
   };
+
 })

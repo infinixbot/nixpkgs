@@ -88,6 +88,7 @@ in
           apply = v: if isString v then logLevels.${v} else v;
           description = "Log verbosity (syslog keyword or level).";
         };
+
     };
   };
 

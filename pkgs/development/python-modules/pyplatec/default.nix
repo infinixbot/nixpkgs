@@ -22,4 +22,5 @@ buildPythonPackage rec {
     homepage = "https://github.com/Mindwerks/plate-tectonics";
     license = licenses.lgpl3;
   };
+
 }

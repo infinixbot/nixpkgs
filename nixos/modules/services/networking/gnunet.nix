@@ -126,6 +126,7 @@ in
         '';
       };
     };
+
   };
 
   ###### implementation
@@ -162,5 +163,7 @@ in
       serviceConfig.RuntimeDirectory = "gnunet";
       serviceConfig.StateDirectory = "gnunet";
     };
+
   };
+
 }

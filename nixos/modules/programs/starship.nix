@@ -27,6 +27,7 @@ let
 
   initOption = if cfg.interactiveOnly then "promptInit" else "shellInit";
 in
+
 {
   options.programs.starship = {
     enable = lib.mkEnableOption "the Starship shell prompt";

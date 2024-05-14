@@ -84,7 +84,9 @@ in
           crontab file when the cron service starts.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -134,6 +136,9 @@ in
         restartTriggers = [ config.time.timeZone ];
         serviceConfig.ExecStart = "${cronNixosPkg}/bin/cron -n";
       };
+
     })
+
   ];
+
 }

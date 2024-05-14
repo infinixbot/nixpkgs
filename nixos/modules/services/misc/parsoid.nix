@@ -33,6 +33,7 @@ let
 
   confFile = pkgs.writeText "config.yml" (builtins.toJSON (recursiveUpdate confTree cfg.extraConfig));
 in
+
 {
   imports = [
     (mkRemovedOptionModule [
@@ -96,7 +97,9 @@ in
           Extra configuration to add to parsoid configuration.
         '';
       };
+
     };
+
   };
 
   ##### implementation
@@ -136,5 +139,7 @@ in
         RemoveIPC = true;
       };
     };
+
   };
+
 }

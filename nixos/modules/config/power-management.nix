@@ -55,7 +55,9 @@ in
           it goes to suspend or hibernation.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -96,5 +98,7 @@ in
       '';
       serviceConfig.Type = "oneshot";
     };
+
   };
+
 }

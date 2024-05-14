@@ -100,6 +100,7 @@ let
 
       finalPackage = mkDerivationSimple overrideAttrs args;
     in
+
     finalPackage;
 
   #makeDerivationExtensibleConst = attrs: makeDerivationExtensible (_: attrs);
@@ -580,6 +581,7 @@ let
             allowedRequisites = mapNullable unsafeDerivationToUntrackedOutpath attrs.allowedRequisites;
           };
       in
+
       derivationArg;
 
   mkDerivationSimple =
@@ -751,6 +753,7 @@ let
         passthru
     ) (derivation (derivationArg // optionalAttrs envIsExportable checkedEnv));
 in
+
 {
   inherit mkDerivation;
 }

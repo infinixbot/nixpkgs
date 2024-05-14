@@ -78,6 +78,7 @@ let
         else
           (if (iface == "DBUS") then "-u" else ifaceArg)
       }";
+
     };
 in
 
@@ -114,6 +115,7 @@ in
                   `wpa_supplicant`.
                 '';
               };
+
             };
 
             extraConf = mkOption {
@@ -186,6 +188,7 @@ in
                 example = "network";
                 description = "Members of this group can control wpa_supplicant.";
               };
+
             };
           };
         });
@@ -222,7 +225,9 @@ in
         `DBUS` defines a device-unrelated {command}`wpa_supplicant`
         service that can be accessed through `D-Bus`.
       '';
+
     };
+
   };
 
   ###### implementation
@@ -262,5 +267,7 @@ in
         '';
       })
     ];
+
   };
+
 }

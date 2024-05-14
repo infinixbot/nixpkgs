@@ -33,5 +33,7 @@ in
     };
 
     environment.systemPackages = [ pkgs.xorg.twm ];
+
   };
+
 }

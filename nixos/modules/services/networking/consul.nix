@@ -159,7 +159,9 @@ in
           type = types.bool;
         };
       };
+
     };
+
   };
 
   config = mkIf cfg.enable (mkMerge [
@@ -288,5 +290,6 @@ in
         };
       };
     })
+
   ]);
 }

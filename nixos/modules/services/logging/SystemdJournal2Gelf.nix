@@ -41,6 +41,7 @@ in
       };
 
       package = mkPackageOption pkgs "systemd-journal2gelf" { };
+
     };
   };
 

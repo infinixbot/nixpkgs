@@ -728,6 +728,7 @@ let
             }
           );
       in
+
       listToAttrs (
         map configureAddrs interfaces ++ map createTunDevice (filter (i: i.virtual) interfaces)
       )
@@ -747,6 +748,7 @@ let
     services.udev.extraRules = ''
       KERNEL=="tun", TAG+="systemd"
     '';
+
   };
 in
 

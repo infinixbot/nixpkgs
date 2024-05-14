@@ -151,6 +151,7 @@ in
         Restart = "always";
         ExecStart = "${cfg.package}/bin/calibre-server ${lib.concatStringsSep " " cfg.libraries} ${execFlags}";
       };
+
     };
 
     environment.systemPackages = [ pkgs.calibre ];
@@ -169,6 +170,7 @@ in
         gid = config.ids.gids.calibre-server;
       };
     };
+
   };
 
   meta.maintainers = with lib.maintainers; [ gaelreyrol ];

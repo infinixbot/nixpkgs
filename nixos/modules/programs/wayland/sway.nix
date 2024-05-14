@@ -152,6 +152,7 @@ in
         for a list of useful software.
       '';
     };
+
   };
 
   config = lib.mkIf cfg.enable (

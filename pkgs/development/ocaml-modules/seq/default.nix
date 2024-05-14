@@ -18,6 +18,7 @@ stdenv.mkDerivation (
       homepage = "https://github.com/c-cube/seq";
       inherit (ocaml.meta) platforms;
     };
+
   }
   // (
     if lib.versionOlder ocaml.version "4.07" then
@@ -40,6 +41,7 @@ stdenv.mkDerivation (
         createFindlibDestdir = true;
 
         meta.description = "Compatibility package for OCaml’s standard iterator type starting from 4.07";
+
       }
     else
       {
@@ -54,6 +56,7 @@ stdenv.mkDerivation (
         '';
 
         meta.description = "dummy backward-compatibility package for iterators";
+
       }
   )
 )

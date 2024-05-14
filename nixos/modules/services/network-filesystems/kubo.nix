@@ -100,6 +100,7 @@ let
     else
       null; # not valid for listen datagram, skip
 in
+
 {
 
   ###### interface
@@ -247,6 +248,7 @@ in
           ];
           Swarm.AddrFilters = null;
         };
+
       };
 
       extraFlags = mkOption {
@@ -276,6 +278,7 @@ in
         default = false;
         description = "Whether to use socket activation to start Kubo when needed.";
       };
+
     };
   };
 

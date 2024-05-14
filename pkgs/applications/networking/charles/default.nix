@@ -41,6 +41,7 @@ let
         startupNotify = true;
       };
     in
+
     stdenv.mkDerivation {
       pname = "charles";
       inherit version;
@@ -83,6 +84,7 @@ let
       };
     };
 in
+
 {
   charles4 = (
     generic {

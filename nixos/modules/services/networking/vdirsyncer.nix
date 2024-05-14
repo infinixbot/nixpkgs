@@ -68,6 +68,7 @@ let
     };
   };
 in
+
 {
   options = {
     services.vdirsyncer = {

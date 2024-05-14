@@ -28,7 +28,9 @@ in
           The path to a daemon's secret key.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -71,6 +73,9 @@ in
         Restart = "on-failure";
         RuntimeDirectory = "munge";
       };
+
     };
+
   };
+
 }

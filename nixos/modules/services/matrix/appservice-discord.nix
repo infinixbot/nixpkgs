@@ -18,6 +18,7 @@ let
     builtins.toJSON cfg.settings
   );
 in
+
 {
   options = {
     services.matrix-appservice-discord = {

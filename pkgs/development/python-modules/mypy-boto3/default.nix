@@ -1461,4 +1461,5 @@ rec {
   mypy-boto3-xray =
     buildMypyBoto3Package "xray" "1.34.0"
       "sha256-8weFeYAit/DBFOhReQr5uSy0Am7Sh1fpYtMPtDka+OI=";
+
 }

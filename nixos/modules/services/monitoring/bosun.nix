@@ -21,6 +21,7 @@ let
     ${cfg.extraConfig}
   '';
 in
+
 {
 
   options = {
@@ -109,7 +110,9 @@ in
           https://bosun.org/configuration.html
         '';
       };
+
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -149,5 +152,7 @@ in
     };
 
     users.groups.bosun.gid = config.ids.gids.bosun;
+
   };
+
 }

@@ -146,7 +146,9 @@ in
         '';
         type = lib.types.lines;
       };
+
     };
+
   };
 
   config = lib.mkIf cfg.enable {
@@ -325,5 +327,7 @@ in
         ${pkgs.coreutils}/bin/mkdir $__fish_user_data_dir/generated_completions
       end
     '';
+
   };
+
 }

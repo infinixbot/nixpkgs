@@ -86,4 +86,5 @@ let
       vvave = callPackage ./vvave.nix { };
     };
 in
+
 lib.makeScope libsForQt5.newScope packages

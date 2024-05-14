@@ -69,6 +69,7 @@ buildPythonPackage rec {
     "test_load_registry_from_doi"
     "test_retrieve"
     "test_stream_download"
+
   ];
 
   meta = with lib; {
@@ -77,4 +78,5 @@ buildPythonPackage rec {
     license = licenses.bsd3;
     maintainers = with maintainers; [ GuillaumeDesforges ];
   };
+
 }

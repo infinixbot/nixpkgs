@@ -27,5 +27,6 @@ callPackage ./generic.nix (
         sha256 = "0crhf4zrzdpc1jdgyv6l6mxqgmny12r3i39y1i0j8q3pbqkd04bv";
       })
     ];
+
   }
 )

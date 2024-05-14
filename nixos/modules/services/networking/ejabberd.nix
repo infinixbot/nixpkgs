@@ -22,6 +22,7 @@ let
 
   dumps = lib.escapeShellArgs cfg.loadDumps;
 in
+
 {
 
   ###### interface
@@ -87,6 +88,7 @@ in
         description = "Add ImageMagick to server's path; allows for image thumbnailing";
       };
     };
+
   };
 
   ###### implementation
@@ -158,5 +160,7 @@ in
     ];
 
     security.pam.services.ejabberd = { };
+
   };
+
 }

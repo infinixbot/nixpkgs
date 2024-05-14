@@ -259,6 +259,7 @@ in
           port = toString cfg.port;
         }) cfg.listenAddresses;
       };
+
     })
 
     # code from https://github.com/yrutschle/sslh#transparent-proxy-support

@@ -14,6 +14,7 @@ import ./make-test-python.nix (
       FllUkMD5oqjOR/YcboxG8Z3B5sJuvTP9llsF+gnuveWih9dpbBr7AgEC
     '';
   in
+
   {
     name = "initrd-luks-empty-passphrase";
 

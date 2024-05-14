@@ -66,6 +66,7 @@ let
 
   _icu = if isDarwin then darwin.ICU else icu;
 in
+
 stdenv.mkDerivation rec {
   pname = "dotnet-vmr";
   version = release;

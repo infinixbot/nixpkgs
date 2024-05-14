@@ -42,6 +42,7 @@ let
     sha256 = "ExS0Cg3rs0I9IOVbZHLt8UEfk8/LmY9oAHPVVlYuTPw=";
   };
 in
+
 clangStdenv.mkDerivation {
   pname = "fcitx5-mozc";
   version = "2.26.4220.102";
@@ -81,6 +82,7 @@ clangStdenv.mkDerivation {
       url = "https://salsa.debian.org/debian/mozc/-/raw/debian/sid/debian/patches/0007-Update-src-base-absl.gyp.patch";
       sha256 = "UiS0UScDKyAusXOhc7Bg8dF8ARQQiVTylEhAOxqaZt8=";
     })
+
   ];
 
   postUnpack = ''

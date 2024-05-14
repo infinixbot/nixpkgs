@@ -25,6 +25,7 @@ let
   isHexString = s: all (c: elem c hexChars) (stringToCharacters (toLower s));
   hexStr = addCheckDesc "hexadecimal string" types.str isHexString;
 in
+
 {
 
   options.services.multipath = with types; {
@@ -429,6 +430,7 @@ in
             default = null;
             description = "Set the 'all targets ports' flag when registering keys with mpathpersist";
           };
+
         };
       });
     };
@@ -534,9 +536,11 @@ in
             example = "ro";
             description = "Options used to mount the file system";
           };
+
         };
       });
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -570,6 +574,7 @@ in
         '';
         multipaths = lib.concatMapStringsSep "\n" mkMultipathBlock cfg.pathGroups;
       in
+
       ''
         devices {
         ${indentLines 2 devices}

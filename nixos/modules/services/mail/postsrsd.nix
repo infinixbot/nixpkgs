@@ -11,6 +11,7 @@ let
 
   cfg = config.services.postsrsd;
 in
+
 {
 
   ###### interface
@@ -87,7 +88,9 @@ in
         default = "postsrsd";
         description = "Group for the daemon";
       };
+
     };
+
   };
 
   ###### implementation
@@ -134,5 +137,6 @@ in
         chown "${cfg.user}:${cfg.group}" "${cfg.secretsFile}"
       '';
     };
+
   };
 }

@@ -41,6 +41,7 @@ let
 
       disableGraphviz = !withGraphviz;
     in
+
     stdenv.mkDerivation rec {
       pname = "vala";
       inherit version;
@@ -126,6 +127,7 @@ let
     }
   );
 in
+
 rec {
   vala_0_56 = generic {
     version = "0.56.17";

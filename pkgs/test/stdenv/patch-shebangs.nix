@@ -90,6 +90,7 @@ let
         assertion = "grep '^#!${stdenv.shell}' $out/bin/test > /dev/null";
       };
     };
+
   };
 in
 stdenv.mkDerivation {

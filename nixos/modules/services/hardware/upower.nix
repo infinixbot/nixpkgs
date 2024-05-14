@@ -200,7 +200,9 @@ in
           (UPS or laptop batteries) supplying the computer
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -231,4 +233,5 @@ in
       };
     };
   };
+
 }

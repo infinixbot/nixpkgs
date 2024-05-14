@@ -93,6 +93,7 @@ let
           '';
         };
       };
+
     };
 
   swapCfg =
@@ -197,6 +198,7 @@ let
           type = types.path;
           internal = true;
         };
+
       };
 
       config = {
@@ -205,6 +207,7 @@ let
         realDevice =
           if config.randomEncryption.enable then "/dev/mapper/${config.deviceName}" else config.device;
       };
+
     };
 in
 
@@ -233,6 +236,7 @@ in
 
       type = types.listOf (types.submodule swapCfg);
     };
+
   };
 
   config = mkIf ((length config.swapDevices) != 0) {
@@ -322,8 +326,11 @@ in
             restartIfChanged = false;
           };
       in
+
       listToAttrs (
         map createSwapDevice (filter (sw: sw.size != null || sw.randomEncryption.enable) config.swapDevices)
       );
+
   };
+
 }

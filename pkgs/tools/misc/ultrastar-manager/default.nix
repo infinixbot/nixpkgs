@@ -106,6 +106,7 @@ let
     paths = map buildPlugin plugins;
   };
 in
+
 mkDerivation {
   pname = "ultrastar-manager";
   inherit version;

@@ -93,4 +93,5 @@ rec {
 
   # Extract the options from the given set of parameters.
   paramsToOptions = ps: mapParamsRecursive (_path: name: param: { ${name} = param.option; }) ps;
+
 }

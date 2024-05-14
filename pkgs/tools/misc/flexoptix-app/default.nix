@@ -30,6 +30,7 @@ let
     '';
   });
 in
+
 appimageTools.wrapAppImage {
   inherit pname version;
   src = appimageContents;

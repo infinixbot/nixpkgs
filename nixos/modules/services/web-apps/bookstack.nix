@@ -29,6 +29,7 @@ let
 
   tlsEnabled = cfg.nginx.addSSL || cfg.nginx.forceSSL || cfg.nginx.onlySSL || cfg.nginx.enableACME;
 in
+
 {
   imports = [
     (mkRemovedOptionModule [
@@ -292,6 +293,7 @@ in
         file.
       '';
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -500,6 +502,7 @@ in
       };
       groups = mkIf (group == "bookstack") { bookstack = { }; };
     };
+
   };
 
   meta.maintainers = with maintainers; [ ymarkus ];

@@ -12,6 +12,7 @@ let
 
   configFile = pkgs.writeText "opentsdb.conf" cfg.config;
 in
+
 {
 
   ###### interface
@@ -58,7 +59,9 @@ in
           The contents of OpenTSDB's configuration file
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -92,5 +95,6 @@ in
     };
 
     users.groups.opentsdb.gid = config.ids.gids.opentsdb;
+
   };
 }

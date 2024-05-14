@@ -13,6 +13,7 @@ let
   format = pkgs.formats.yaml { };
   configFile = format.generate "config.yml" cfg.settings;
 in
+
 {
   options = {
     services.go-autoconfig = {
@@ -42,6 +43,7 @@ in
           }
         '';
       };
+
     };
   };
 
@@ -60,7 +62,9 @@ in
         };
       };
     };
+
   };
 
   meta.maintainers = with lib.maintainers; [ onny ];
+
 }

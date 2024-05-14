@@ -39,6 +39,7 @@ let
 
   drv = builtins.unsafeDiscardOutputDependency pkg.drvPath;
 in
+
 writeScript "update-dotnet-vmr.sh" ''
   #! ${nix}/bin/nix-shell
   #! nix-shell -i ${runtimeShell} --pure ${drv}

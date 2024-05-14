@@ -8,6 +8,7 @@
 let
   cfg = config.programs.light;
 in
+
 {
   options = {
     programs.light = {
@@ -47,7 +48,9 @@ in
             The percentage value by which to increase/decrease brightness.
           '';
         };
+
       };
+
     };
   };
 

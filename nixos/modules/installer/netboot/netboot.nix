@@ -36,6 +36,7 @@ with lib;
         Nix store in the generated netboot image.
       '';
     };
+
   };
 
   config = {
@@ -165,5 +166,7 @@ with lib;
       touch /etc/NIXOS
       ${config.nix.package}/bin/nix-env -p /nix/var/nix/profiles/system --set /run/current-system
     '';
+
   };
+
 }

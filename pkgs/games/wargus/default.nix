@@ -47,6 +47,7 @@ let
         cp -r DATA $out
       '';
 in
+
 stdenv.mkDerivation rec {
   pname = "wargus";
   inherit (stratagus) version;

@@ -35,6 +35,7 @@ lib.pipe drv
             }
         )
       )
+
     ]
     ++
 
@@ -64,6 +65,7 @@ lib.pipe drv
             # "1" everywhere else.  Might be worth changing this to "*".
             libgcc_s-version-major = if targetPlatform.isM68k then "2" else "1";
           in
+
           [
 
             (

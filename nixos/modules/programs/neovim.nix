@@ -143,12 +143,14 @@ in
                   type = lib.types.nullOr lib.types.path;
                   description = "Path of the source file.";
                 };
+
               };
 
               config.target = lib.mkDefault name;
             }
           )
         );
+
     };
   };
 

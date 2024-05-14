@@ -37,6 +37,7 @@ let
     echo "${cfg.mountPoint}:${cfg.cache.directory}:${toString cfg.cache.blocks}" > $out/cacheinfo
   '';
 in
+
 {
   ###### interface
 
@@ -199,6 +200,7 @@ in
           connected mode. Useful for roaming devices.
         '';
       };
+
     };
   };
 

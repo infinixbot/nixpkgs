@@ -12,6 +12,7 @@ let
   gitwebConfig = config.services.gitweb;
   package = pkgs.gitweb.override (optionalAttrs gitwebConfig.gitwebTheme { gitwebTheme = true; });
 in
+
 {
 
   options.services.nginx.gitweb = {
@@ -55,6 +56,7 @@ in
         VirtualHost to serve gitweb on. Default is catch-all.
       '';
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -87,7 +89,9 @@ in
         };
       };
     };
+
   };
 
   meta.maintainers = with maintainers; [ ];
+
 }

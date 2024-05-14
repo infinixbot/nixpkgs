@@ -26,6 +26,7 @@ let
     else
       phpIniFile;
 in
+
 stdenv.mkDerivation (finalAttrs: {
   pname = "wp-cli";
   inherit version;

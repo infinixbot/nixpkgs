@@ -52,4 +52,5 @@ let
     };
   });
 in
+
 auctex // { pkgs = [ auctex.tex ]; }

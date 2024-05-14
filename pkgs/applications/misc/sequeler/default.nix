@@ -28,6 +28,7 @@ let
     postgresSupport = true;
   };
 in
+
 stdenv.mkDerivation rec {
   pname = "sequeler";
   version = "0.8.2";

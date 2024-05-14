@@ -104,6 +104,7 @@ let
     compressors.${compressor}
       or (throw "in docker image ${imageName}: compressor must be one of: [${toString builtins.attrNames compressors}]");
 in
+
 rec {
   examples = callPackage ./examples.nix {
     inherit
@@ -866,6 +867,7 @@ rec {
             echo "Finished."
           '';
     in
+
     checked result
   );
 
@@ -1345,6 +1347,7 @@ rec {
           # https://github.com/NixOS/nix/blob/2.8.0/src/libstore/build/local-derivation-goal.cc#L1046-L1047
           # TODO: Make configurable?
           NIX_BUILD_CORES = "1";
+
         }
         // drvEnv
         // {
@@ -1369,6 +1372,7 @@ rec {
           TERM = "xterm-256color";
         };
     in
+
     streamLayeredImage {
       inherit name tag;
       contents = [

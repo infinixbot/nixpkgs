@@ -89,6 +89,7 @@ mkDerivation rec {
       # to be sure it is taken from `pkgs.file` rather than `stdenv`,
       # especially when cross-compiling
       "--with-file-command=${file}/bin/file"
+
     ]
     ++ lib.optionals (!withPython) [
       "--disable-python-module"

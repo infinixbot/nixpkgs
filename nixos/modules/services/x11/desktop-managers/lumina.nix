@@ -25,6 +25,7 @@ in
       default = false;
       description = "Enable the Lumina desktop manager";
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -39,5 +40,6 @@ in
       # FIXME: modules should link subdirs of `/share` rather than relying on this
       "/share"
     ];
+
   };
 }

@@ -353,6 +353,7 @@ in
         '';
       };
     };
+
   };
 
   ###### implementation
@@ -533,7 +534,9 @@ in
         allowedTCPPorts = listenPorts;
         allowedUDPPorts = listenPorts;
       };
+
   };
 
   meta.maintainers = with lib.maintainers; [ matthewbauer ];
+
 }

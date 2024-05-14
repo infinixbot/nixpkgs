@@ -38,6 +38,7 @@ let
     else
       "curses";
 in
+
 {
   imports = [
     (mkRemovedOptionModule [

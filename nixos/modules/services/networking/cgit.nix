@@ -121,6 +121,7 @@ let
           )}
         '';
 in
+
 {
   options = {
     services.cgit = mkOption {

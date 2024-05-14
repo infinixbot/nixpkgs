@@ -9,6 +9,7 @@ let
 
   cfg = config.services.gitDaemon;
 in
+
 {
 
   ###### interface
@@ -103,6 +104,7 @@ in
         default = "git";
         description = "Group under which Git daemon would be running.";
       };
+
     };
   };
 
@@ -132,5 +134,7 @@ in
         + (optionalString cfg.exportAll "--export-all ")
         + concatStringsSep " " cfg.repositories;
     };
+
   };
+
 }

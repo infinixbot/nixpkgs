@@ -455,6 +455,7 @@ let
               ''}
             '';
       in
+
       ''
         ${optionalString vhost.forceSSL ''
           server {
@@ -1356,6 +1357,7 @@ in
             use config.services.nginx.virtualHosts.<name>.onlySSL instead.
           '';
       in
+
       flatten (mapAttrsToList deprecatedSSL virtualHosts);
 
     assertions =

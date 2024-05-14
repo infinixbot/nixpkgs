@@ -81,6 +81,7 @@ let
       # skipped parts from the total number
       componentCount = partCount - skipEnd - skipStart;
     in
+
     # Special case of a single "." path component. Such a case leaves a
     # componentCount of -1 due to the skipStart/skipEnd not verifying that
     # they don't refer to the same character
@@ -153,6 +154,7 @@ let
     # We care more about discerning store path-ness on realistic values. Making it airtight would be fragile and slow.
     && match ".{32}-.+" (elemAt components storeDirLength) != null;
 in
+
 # No rec! Add dependencies on this file at the top.
 {
 
@@ -640,4 +642,5 @@ in
       lib.path.subpath.normalise: Argument is not a valid subpath string:
           ${subpathInvalidReason subpath}'';
     joinRelPath (splitRelPath subpath);
+
 }

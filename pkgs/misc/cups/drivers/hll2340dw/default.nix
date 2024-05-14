@@ -27,6 +27,7 @@ let
     sha256 = "8aa24a6a825e3a4d5b51778cb46fe63032ec5a731ace22f9ef2b0ffcc2033cc9";
   };
 in
+
 stdenv.mkDerivation {
   pname = "cups-brother-hll2340dw";
   inherit version;

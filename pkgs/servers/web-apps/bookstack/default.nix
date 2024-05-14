@@ -24,6 +24,7 @@ let
           '';
       });
 in
+
 package.override rec {
   pname = "bookstack";
   version = "24.02.3";

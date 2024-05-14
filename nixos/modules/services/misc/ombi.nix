@@ -10,6 +10,7 @@ with lib;
 let
   cfg = config.services.ombi;
 in
+
 {
   options = {
     services.ombi = {

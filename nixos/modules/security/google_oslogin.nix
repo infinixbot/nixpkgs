@@ -33,6 +33,7 @@ in
         an instance, and to perform operations as root (sudo).
       '';
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -80,4 +81,5 @@ in
     services.openssh.authorizedKeysCommand = "/etc/ssh/authorized_keys_command_google_oslogin %u";
     services.openssh.authorizedKeysCommandUser = "nobody";
   };
+
 }

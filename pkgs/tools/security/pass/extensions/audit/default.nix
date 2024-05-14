@@ -15,6 +15,7 @@ let
     p.zxcvbn
   ]);
 in
+
 stdenv.mkDerivation rec {
   pname = "pass-audit";
   version = "1.2";

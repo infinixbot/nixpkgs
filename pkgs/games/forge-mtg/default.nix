@@ -21,6 +21,7 @@ let
   # launch4j downloads and runs a native binary during the package phase.
   patches = [ ./no-launch4j.patch ];
 in
+
 maven.buildMavenPackage {
   pname = "forge-mtg";
   inherit version src patches;

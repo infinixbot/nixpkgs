@@ -41,6 +41,7 @@ in
         default = false;
         description = "Open ports in the firewall for the libreddit web interface";
       };
+
     };
   };
 

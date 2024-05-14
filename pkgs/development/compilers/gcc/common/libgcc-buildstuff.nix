@@ -27,6 +27,7 @@ let
   #
   SHLIB_LC = lib.optionalString stdenv.targetPlatform.isPower "-mnewlib";
 in
+
 ''
   echo 'libgcc.a: ${crtstuff-ofiles}' >> libgcc/Makefile.in
   echo 'SHLIB_LC=${SHLIB_LC}' >> libgcc/Makefile.in

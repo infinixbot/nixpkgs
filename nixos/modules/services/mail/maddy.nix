@@ -139,6 +139,7 @@ let
     }
   '';
 in
+
 {
   options = {
     services.maddy = {
@@ -358,6 +359,7 @@ in
         '';
         default = [ ];
       };
+
     };
   };
 
@@ -425,7 +427,9 @@ in
           after = [ "maddy.service" ];
           wantedBy = [ "multi-user.target" ];
         };
+
       };
+
     };
 
     environment.etc."maddy/maddy.conf" = {

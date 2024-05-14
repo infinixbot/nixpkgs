@@ -106,6 +106,7 @@ in
       disableTxChecksumIpGeneric = mkEnableOption "" // {
         description = "See <https://github.com/daeuniverse/dae/issues/43>";
       };
+
     };
   };
 

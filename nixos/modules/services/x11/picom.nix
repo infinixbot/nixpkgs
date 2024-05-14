@@ -58,6 +58,7 @@ let
 
   configFile = pkgs.writeText "picom.conf" (toConf cfg.settings);
 in
+
 {
 
   imports = [
@@ -334,6 +335,7 @@ in
           '';
         };
       in
+
       mkOption {
         type = topLevel;
         default = { };
@@ -400,4 +402,5 @@ in
   };
 
   meta.maintainers = with lib.maintainers; [ rnhmjoj ];
+
 }

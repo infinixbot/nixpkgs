@@ -3,6 +3,7 @@ let
 
   cfg = config.systemd.oomd;
 in
+
 {
   imports = [
     (lib.mkRenamedOptionModule

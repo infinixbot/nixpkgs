@@ -93,6 +93,7 @@ stdenv.mkDerivation (
 
       runHook postInstall
     '';
+
   }
   // newAttrs
 )

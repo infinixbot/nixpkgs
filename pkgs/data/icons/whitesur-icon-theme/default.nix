@@ -79,4 +79,5 @@ lib.checkListOfEnum "${pname}: theme variants"
       platforms = platforms.linux;
       maintainers = with maintainers; [ icy-thought ];
     };
+
   }

@@ -28,4 +28,5 @@ buildPythonPackage rec {
     homepage = "https://github.com/joke2k/django-environ/";
     license = licenses.mit;
   };
+
 }

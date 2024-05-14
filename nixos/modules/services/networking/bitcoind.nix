@@ -275,7 +275,9 @@ in
     ) eachBitcoind;
 
     users.groups = mapAttrs' (bitcoindName: cfg: (nameValuePair "${cfg.group}" { })) eachBitcoind;
+
   };
 
   meta.maintainers = with maintainers; [ _1000101 ];
+
 }

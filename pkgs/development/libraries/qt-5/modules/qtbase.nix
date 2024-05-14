@@ -199,6 +199,7 @@ stdenv.mkDerivation (
         pkg-config
         which
       ] ++ lib.optionals stdenv.isDarwin [ xcbuild ];
+
     }
     // lib.optionalAttrs (stdenv.buildPlatform != stdenv.hostPlatform) {
       # `qtbase` expects to find `cc` (with no prefix) in the
@@ -373,6 +374,7 @@ stdenv.mkDerivation (
       # if dependency paths contain the string "pq", which can occur in the hash.
       # To prevent these failures, we need to override PostgreSQL detection.
       PSQL_LIBS = lib.optionalString (postgresql != null) "-L${postgresql.lib}/lib -lpq";
+
     }
     // lib.optionalAttrs (stdenv.buildPlatform != stdenv.hostPlatform) { configurePlatforms = [ ]; }
     // {
@@ -593,6 +595,7 @@ stdenv.mkDerivation (
         ];
         platforms = platforms.unix;
       };
+
     }
   )
 )

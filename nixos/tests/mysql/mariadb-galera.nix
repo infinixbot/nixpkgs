@@ -153,6 +153,7 @@ let
             id = 6;
             method = "rsync";
           };
+
         };
 
       testScript = ''

@@ -189,6 +189,7 @@ in
                         default = [ ];
                       };
                     };
+
                   })
                 );
             };
@@ -315,7 +316,9 @@ in
       } "${pkgs.buildPackages.sudo-rs}/bin/visudo -f $src -c && cp $src $out";
       mode = "0440";
     };
+
   };
 
   meta.maintainers = [ lib.maintainers.nicoo ];
+
 }

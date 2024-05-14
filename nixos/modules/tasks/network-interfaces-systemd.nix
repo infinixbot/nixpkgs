@@ -335,6 +335,7 @@ in
                     );
                   in
                   seq assertNoUnknownOption (buildOptionSet (filterSystemdOptions driverOptionMapping));
+
               };
 
               networks = listToAttrs (
@@ -530,5 +531,6 @@ in
           };
         };
     })
+
   ];
 }

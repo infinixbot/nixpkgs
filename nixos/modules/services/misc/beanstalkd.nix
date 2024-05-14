@@ -61,5 +61,6 @@ in
         StateDirectory = "beanstalkd";
       };
     };
+
   };
 }

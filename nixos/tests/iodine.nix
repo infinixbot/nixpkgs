@@ -46,6 +46,7 @@ import ./make-test-python.nix (
           systemd.tmpfiles.rules = [ "f /root/pw 0666 root root - ${password}" ];
           environment.systemPackages = [ pkgs.nagiosPluginsOfficial ];
         };
+
     };
 
     testScript = ''

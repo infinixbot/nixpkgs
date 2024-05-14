@@ -11,6 +11,7 @@ let
 
   cfg = config.hardware.rasdaemon;
 in
+
 {
   options.hardware.rasdaemon = {
 
@@ -177,4 +178,5 @@ in
   };
 
   meta.maintainers = [ maintainers.evils ];
+
 }

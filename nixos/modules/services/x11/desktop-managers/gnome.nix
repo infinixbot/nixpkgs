@@ -195,6 +195,7 @@ in
       type = types.listOf types.package;
       description = "Which packages gnome should exclude from the default environment";
     };
+
   };
 
   config = lib.mkMerge [
@@ -508,4 +509,5 @@ in
       services.sysprof.enable = notExcluded pkgs.sysprof;
     })
   ];
+
 }

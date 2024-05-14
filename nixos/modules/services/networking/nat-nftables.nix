@@ -178,5 +178,6 @@ in
         ip6 saddr { ${ipv6Set} } ${oifExpr} accept comment "from internal IPv6s"
       ''}
     '';
+
   };
 }

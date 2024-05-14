@@ -15,6 +15,7 @@ let
     sha256 = "sha256-huFWygMEylBKBMLV16UE6xLWP6Aw1FGYk5h1q5CErUs=";
   };
 in
+
 stdenv.mkDerivation rec {
   pname = "ipmitool";
   version = "1.8.19";

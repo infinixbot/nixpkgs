@@ -58,6 +58,7 @@ with lib;
         '';
       };
     };
+
   };
 
   config =
@@ -75,6 +76,7 @@ with lib;
             '';
           };
     in
+
     mkIf cfg.enable {
       assertions = [
         {

@@ -109,5 +109,6 @@ in
     ];
 
     environment.etc."gdb/gdbinit.d/nixseparatedebuginfod.gdb".text = "set debuginfod enabled on";
+
   };
 }

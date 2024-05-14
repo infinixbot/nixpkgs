@@ -238,6 +238,7 @@ in
                               '';
                               example = "/*.(jpg|png|css|js)";
                             };
+
                           };
                         }
                       )

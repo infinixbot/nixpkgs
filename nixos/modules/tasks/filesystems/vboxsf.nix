@@ -23,5 +23,6 @@ in
     system.fsPackages = [ package ];
 
     boot.initrd.kernelModules = mkIf inInitrd [ "vboxsf" ];
+
   };
 }

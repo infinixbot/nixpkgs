@@ -40,6 +40,7 @@ let
 
   withExtraComponents = callPackage ./withExtraComponents.nix { inherit components; };
 in
+
 stdenv.mkDerivation rec {
   pname = "google-cloud-sdk";
   inherit (data) version;

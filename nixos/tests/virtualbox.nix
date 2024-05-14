@@ -496,6 +496,7 @@ let
         '';
       };
 in
+
 mapAttrs (mkVBoxTest { } vboxVMs) {
   simple-gui = ''
     # Home to select Tools, down to move to the VM, enter to start it.

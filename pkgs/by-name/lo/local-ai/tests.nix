@@ -97,6 +97,7 @@ in
           machine.copy_from_vm("metrics.json")
         '';
     };
+
 }
 // lib.optionalAttrs (!self.features.with_cublas && !self.features.with_clblas) {
   # https://localai.io/docs/getting-started/manual/
@@ -215,6 +216,7 @@ in
           machine.copy_from_vm("metrics.json")
         '';
     };
+
 }
 //
   lib.optionalAttrs

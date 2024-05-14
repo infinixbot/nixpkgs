@@ -59,6 +59,7 @@ let
         ln -sf ${journalwatchPatterns} $out/journalwatch/patterns
       '';
 in
+
 {
   options = {
     services.journalwatch = {
@@ -271,6 +272,7 @@ in
         Persistent = true;
       };
     };
+
   };
 
   meta = {

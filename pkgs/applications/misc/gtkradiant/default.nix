@@ -179,6 +179,7 @@ let
     ln -s ${warsowPack} $out/WarsowPack
   '';
 in
+
 stdenv.mkDerivation rec {
   pname = "gtkradiant";
 

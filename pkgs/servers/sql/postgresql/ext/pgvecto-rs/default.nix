@@ -23,6 +23,7 @@ let
     bindgenHook = rustPlatform.bindgenHook.override { inherit clang; };
   };
 in
+
 (buildPgrxExtension.override {
   # Upstream only works with a fixed version of cargo-pgrx for each release,
   # so we're pinning it here to avoid future incompatibility.

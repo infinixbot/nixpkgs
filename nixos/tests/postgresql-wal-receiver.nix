@@ -28,6 +28,7 @@ let
 
       recoveryFile = pkgs.writeTextDir "recovery.signal" "";
     in
+
     makeTest {
       name = "postgresql-wal-receiver-${pkg.name}";
       meta.maintainers = with lib.maintainers; [ pacien ];
@@ -113,6 +114,7 @@ let
       '';
     };
 in
+
 if package == null then
   # all-tests.nix: Maps the generic function over all attributes of PostgreSQL packages
   builtins.listToAttrs (

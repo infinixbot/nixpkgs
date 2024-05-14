@@ -79,7 +79,9 @@ in
           The existing user the Quassel daemon should run as. If left empty, a default "quassel" user will be created.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -133,5 +135,7 @@ in
         User = user;
       };
     };
+
   };
+
 }

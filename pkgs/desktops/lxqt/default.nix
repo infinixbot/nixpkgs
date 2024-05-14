@@ -148,6 +148,7 @@ let
         ### Screen saver
         pkgs.xscreensaver
       ];
+
     };
 in
 makeScope kdePackages.newScope packages

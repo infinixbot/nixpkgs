@@ -132,6 +132,7 @@ let
           );
       };
     in
+
     {
       aura-browser = callPackage ./aura-browser.nix { };
       bluedevil = callPackage ./bluedevil.nix { };
@@ -208,6 +209,7 @@ let
           parachute = callPackage ./3rdparty/kwin/scripts/parachute.nix { };
           polonium = callPackage ./3rdparty/addons/polonium.nix { };
         };
+
     }
     // lib.optionalAttrs config.allowAliases {
       ksysguard = throw "ksysguard has been replaced with plasma-systemmonitor";

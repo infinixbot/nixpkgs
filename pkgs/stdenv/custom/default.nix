@@ -21,6 +21,7 @@ let
     config = builtins.removeAttrs config [ "replaceStdenv" ];
   };
 in
+
 bootStages
 ++ [
 
@@ -32,4 +33,5 @@ bootStages
       assert vanillaPackages.targetPlatform == localSystem;
       config.replaceStdenv { pkgs = vanillaPackages; };
   })
+
 ]

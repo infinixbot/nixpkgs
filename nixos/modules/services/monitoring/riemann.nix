@@ -27,6 +27,7 @@ let
       riemann.bin ${cfg.configFile}
   '';
 in
+
 {
 
   options = {
@@ -97,5 +98,7 @@ in
       };
       serviceConfig.LimitNOFILE = 65536;
     };
+
   };
+
 }

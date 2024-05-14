@@ -59,6 +59,7 @@ let
     outputHash = "sha256-r6YSrbSJbM3063JrX4tCVKFrJxTaLN4Trc+33jzpwcE=";
   };
 in
+
 stdenv.mkDerivation {
   pname = "frostwire-desktop";
   inherit version src;

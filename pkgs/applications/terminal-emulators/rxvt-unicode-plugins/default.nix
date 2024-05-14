@@ -18,4 +18,5 @@
   theme-switch = callPackage ./urxvt-theme-switch { };
 
   vtwheel = callPackage ./urxvt-vtwheel { };
+
 }

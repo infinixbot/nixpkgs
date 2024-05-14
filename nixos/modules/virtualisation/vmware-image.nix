@@ -19,6 +19,7 @@ let
     "streamOptimized"
   ];
 in
+
 {
   options = {
     vmware = {

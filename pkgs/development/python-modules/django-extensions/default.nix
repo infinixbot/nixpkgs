@@ -66,6 +66,7 @@ buildPythonPackage rec {
     "tests/management/commands/test_pipchecker.py"
     # django.db.utils.OperationalError: no such table: django_extensions_permmodel
     "tests/test_dumpscript.py"
+
   ];
 
   meta = with lib; {

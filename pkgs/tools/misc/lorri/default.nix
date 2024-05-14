@@ -20,6 +20,7 @@ let
   sha256 = "sha256-peelMKv9GOTPdyb1iifzlFikeayTchqaYCgeXyR5EgM=";
   cargoSha256 = "sha256-UFAmTYnCqsQxBnCm1zMu+BcWIZMuuxvpF7poLlzC6Kg=";
 in
+
 (rustPlatform.buildRustPackage rec {
   pname = "lorri";
   inherit version;

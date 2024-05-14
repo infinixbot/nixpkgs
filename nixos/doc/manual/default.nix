@@ -116,6 +116,7 @@ let
       -i ./development/writing-nixos-tests.section.md
   '';
 in
+
 rec {
   inherit (optionsDoc) optionsJSON optionsNix optionsDocBook;
 
@@ -239,4 +240,5 @@ rec {
           ${optionsJSON}/${common.outputPath}/options.json \
           $out/share/man/man5/configuration.nix.5
       '';
+
 }

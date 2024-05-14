@@ -18,6 +18,7 @@ let
     stripRoot = false;
   };
 in
+
 buildGoModule rec {
   pname = "fluxcd";
   inherit version;

@@ -69,6 +69,7 @@ let
     '';
   };
 in
+
 stdenv.mkDerivation rec {
   inherit version;
   pname = "dell-command-configure";

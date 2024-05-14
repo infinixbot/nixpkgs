@@ -22,6 +22,7 @@ let
   genesisFile = pkgs.writeText "genesis.json" (builtins.toJSON cfg.genesis);
   staticNodesFile = pkgs.writeText "static-nodes.json" (builtins.toJSON cfg.staticNodes);
 in
+
 {
   options = {
 

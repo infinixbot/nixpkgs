@@ -228,6 +228,7 @@ let
       };
     }) (self.callPackage src args);
 in
+
 package-set { inherit pkgs lib callPackage; } self
 // {
 
@@ -614,6 +615,7 @@ package-set { inherit pkgs lib callPackage; } self
         "extraDependencies"
       ];
     in
+
     pkgWithCombinedDepsDevDrv.overrideAttrs (
       old:
       mkDerivationArgs

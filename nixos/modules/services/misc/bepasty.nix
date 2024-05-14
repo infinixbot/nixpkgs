@@ -112,6 +112,7 @@ in
                   '';
                   default = default_home;
                 };
+
               };
               config = {
                 secretKeyFile = mkDefault (

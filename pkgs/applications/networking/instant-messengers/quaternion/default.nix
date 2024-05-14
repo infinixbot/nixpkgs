@@ -17,6 +17,7 @@
 let
   inherit (lib) cmakeBool;
 in
+
 stdenv.mkDerivation (finalAttrs: {
   pname = "quaternion";
   version = "0.0.96.1";

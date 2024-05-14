@@ -174,5 +174,6 @@ in
       nixpkgs.pkgs = config.node.pkgs;
       imports = [ ../../modules/misc/nixpkgs/read-only.nix ];
     };
+
   };
 }

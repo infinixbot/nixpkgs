@@ -161,6 +161,7 @@ let
     '';
   };
 in
+
 [
   (lib.getExe updateScript)
   "--url=${builtins.toString url}"

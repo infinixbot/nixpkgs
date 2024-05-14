@@ -199,6 +199,7 @@ in
                         default = [ ];
                       };
                     };
+
                   })
                 );
             };
@@ -336,5 +337,7 @@ in
           "${pkgs.buildPackages.sudo}/sbin/visudo -f $src -c && cp $src $out";
       mode = "0440";
     };
+
   };
+
 }

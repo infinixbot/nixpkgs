@@ -27,6 +27,7 @@ let
     };
   };
 in
+
 python27.pkgs.buildPythonApplication {
   pname = "resholve";
   inherit version;

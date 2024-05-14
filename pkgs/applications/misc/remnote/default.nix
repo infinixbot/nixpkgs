@@ -18,6 +18,7 @@ stdenv.mkDerivation (
       desktopItem
       ;
   in
+
   {
     pname = "remnote";
     version = "1.16.4";

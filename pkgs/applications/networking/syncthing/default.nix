@@ -81,6 +81,7 @@ let
       };
     };
 in
+
 {
   syncthing = common {
     stname = "syncthing";

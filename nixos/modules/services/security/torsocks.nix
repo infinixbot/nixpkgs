@@ -35,6 +35,7 @@ let
       destination = "/bin/${name}";
     };
 in
+
 {
   options = {
     services.tor.torsocks = {
@@ -110,6 +111,7 @@ in
           allowed to be used with non localhost address.
         '';
       };
+
     };
   };
 

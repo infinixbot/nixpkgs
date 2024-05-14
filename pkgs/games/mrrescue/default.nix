@@ -65,4 +65,5 @@ stdenv.mkDerivation {
     license = licenses.zlib;
     downloadPage = "http://tangramgames.dk/games/mrrescue";
   };
+
 }

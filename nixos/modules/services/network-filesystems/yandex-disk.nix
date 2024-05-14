@@ -70,7 +70,9 @@ in
           Comma-separated list of directories which are excluded from synchronization.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -111,6 +113,8 @@ in
         ${pkgs.su}/bin/su -s ${pkgs.runtimeShell} ${u} \
           -c '${pkgs.yandex-disk}/bin/yandex-disk start --no-daemon -a ${dir}/token -d ${cfg.directory} --exclude-dirs=${cfg.excludes}'
       '';
+
     };
   };
+
 }

@@ -8,6 +8,7 @@
 let
   cfg = config.programs.thunar;
 in
+
 {
   meta = {
     maintainers = lib.teams.xfce.members;
@@ -23,6 +24,7 @@ in
         description = "List of thunar plugins to install.";
         example = lib.literalExpression "with pkgs.xfce; [ thunar-archive-plugin thunar-volman ]";
       };
+
     };
   };
 
@@ -30,6 +32,7 @@ in
     let
       package = pkgs.xfce.thunar.override { thunarPlugins = cfg.plugins; };
     in
+
     {
       environment.systemPackages = [ package ];
 

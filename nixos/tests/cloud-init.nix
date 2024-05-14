@@ -57,6 +57,7 @@ let
     '';
   };
 in
+
 makeTest {
   name = "cloud-init";
   meta.maintainers = with pkgs.lib.maintainers; [

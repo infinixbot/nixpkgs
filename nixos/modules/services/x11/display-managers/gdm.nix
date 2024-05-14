@@ -153,7 +153,9 @@ in
           See [here](https://help.gnome.org/admin/gdm/stable/configuration.html.en#daemonconfig) for supported options.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -357,6 +359,9 @@ in
         session   optional      pam_keyinit.so revoke
         session   include       login
       '';
+
     };
+
   };
+
 }

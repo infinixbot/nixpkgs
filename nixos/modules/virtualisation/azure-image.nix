@@ -41,5 +41,6 @@ in
       inherit (cfg) diskSize contents;
       inherit config lib pkgs;
     };
+
   };
 }

@@ -11,6 +11,7 @@ let
   # using "configure.plugins", so accept both
   requestedPlugins = plugins ++ (configure.plugins or [ ]);
 in
+
 symlinkJoin {
   name = "kakoune-${kakoune.version}";
 

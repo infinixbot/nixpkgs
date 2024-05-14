@@ -57,6 +57,7 @@ let
       ++ extraOptions
     );
 in
+
 {
 
   ###### interface
@@ -180,6 +181,7 @@ in
         Extra command line arguments to pass to magneticow.
       '';
     };
+
   };
 
   ###### implementation
@@ -230,7 +232,9 @@ in
         '';
       }
     ];
+
   };
 
   meta.maintainers = with lib.maintainers; [ rnhmjoj ];
+
 }

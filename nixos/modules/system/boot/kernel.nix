@@ -272,6 +272,7 @@ in
         lib.kernelConfig functions to build list elements.
       '';
     };
+
   };
 
   ###### implementation
@@ -323,6 +324,7 @@ in
           "hid_microsoft"
           "hid_cherry"
           "hid_corsair"
+
         ]
         ++ optionals pkgs.stdenv.hostPlatform.isx86 [
           # Misc. x86 keyboard stuff.
@@ -469,6 +471,9 @@ in
             assertion = attrs.assertion cfg;
             inherit (attrs) message;
           }) config.system.requiredKernelConfig;
+
     })
+
   ];
+
 }

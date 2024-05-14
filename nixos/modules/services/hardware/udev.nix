@@ -284,6 +284,7 @@ in
           read after all other files.
         '';
       };
+
     };
 
     hardware.firmware = mkOption {
@@ -365,7 +366,9 @@ in
           after the essential initrd rules.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -478,6 +481,7 @@ in
     systemd.services.systemd-udevd = {
       restartTriggers = cfg.packages;
     };
+
   };
 
   imports = [

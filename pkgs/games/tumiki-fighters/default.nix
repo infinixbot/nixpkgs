@@ -19,6 +19,7 @@ let
       sha256 = hash;
     };
 in
+
 stdenv.mkDerivation (finalAttrs: {
   pname = "tumiki-fighters";
   version = "0.21";

@@ -11,6 +11,7 @@ let
 
   cfg = config.services.tuptime;
 in
+
 {
 
   options.services.tuptime = {
@@ -93,4 +94,5 @@ in
   };
 
   meta.maintainers = [ maintainers.evils ];
+
 }

@@ -117,6 +117,7 @@ let
                 platforms = meta.platforms or lib.platforms.all;
               };
           in
+
           mkDerivation (
             args
             // {
@@ -130,8 +131,10 @@ let
                 ;
             }
           );
+
       };
     in
+
     {
       extra-cmake-modules = callPackage ./extra-cmake-modules { };
 
@@ -226,6 +229,8 @@ let
       kmediaplayer = callPackage ./kmediaplayer.nix { };
       kross = callPackage ./kross.nix { };
       kxmlrpcclient = callPackage ./kxmlrpcclient.nix { };
+
     };
 in
+
 lib.makeScope libsForQt5.newScope packages

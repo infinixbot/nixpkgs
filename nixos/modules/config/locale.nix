@@ -41,6 +41,7 @@ in
         type = types.bool;
         description = "If set, keep the hardware clock in local time instead of UTC.";
       };
+
     };
 
     location = {
@@ -74,6 +75,7 @@ in
           `manual` you must also provide latitude/longitude.
         '';
       };
+
     };
   };
 
@@ -99,4 +101,5 @@ in
         localtime.mode = "direct-symlink";
       };
   };
+
 }

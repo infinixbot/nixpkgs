@@ -81,4 +81,5 @@ let
     ) relativeLocs
   );
 in
+
 pkgs.writeText "locations.json" (builtins.toJSON jsonLocs)

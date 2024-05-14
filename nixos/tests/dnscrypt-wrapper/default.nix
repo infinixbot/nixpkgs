@@ -129,6 +129,7 @@ in
       networking.nameservers = [ "::1" ];
       security.pki.certificateFiles = [ snakeoil.ca.cert ];
     };
+
   };
 
   testScript = ''

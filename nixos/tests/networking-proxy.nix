@@ -8,6 +8,7 @@ let
     imports = [ ./common/user-account.nix ];
 
     services.xserver.enable = false;
+
   };
 in
 import ./make-test-python.nix (

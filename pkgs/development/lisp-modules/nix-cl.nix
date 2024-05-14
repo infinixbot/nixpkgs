@@ -254,6 +254,7 @@ let
           # Not sure if it's needed, but caused problems with SBCL
           # save-lisp-and-die binaries in the past
           dontStrip = true;
+
         }
         // (
           args
@@ -402,4 +403,5 @@ let
         ;
     };
 in
+
 wrapLisp

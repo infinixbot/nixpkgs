@@ -35,6 +35,7 @@ stdenv.mkDerivation rec {
 
       javaOptions = [ "-Dawt.useSystemAAFontSettings=on" ];
     in
+
     ''
       mkdir -pv "$out/share/ganttproject"
       cp -rv *  "$out/share/ganttproject"

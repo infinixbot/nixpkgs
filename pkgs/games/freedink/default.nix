@@ -30,6 +30,7 @@ let
     prePatch = "substituteInPlace Makefile --replace /usr/local $out";
   };
 in
+
 stdenv.mkDerivation rec {
   pname = "freedink";
   inherit version;

@@ -54,6 +54,7 @@ let
     ${cfg.extraConfig}
   '';
 in
+
 {
 
   ###### interface
@@ -158,6 +159,7 @@ in
             to.
           '';
         };
+
       };
 
       dbFile = mkOption {
@@ -229,6 +231,7 @@ in
         '';
       };
     };
+
   };
 
   ###### implementation
@@ -304,4 +307,5 @@ in
 
     users.groups = optionalAttrs (cfg.group == name) { ${name}.gid = gid; };
   };
+
 }

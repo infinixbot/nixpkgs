@@ -229,6 +229,7 @@ let
       ]; # some inherit jre.meta.platforms
       mainProgram = "java";
     };
+
   };
 in
 result

@@ -32,6 +32,7 @@ in
       '';
       type = types.attrsOf types.int;
     };
+
   };
 
   config = {
@@ -694,5 +695,7 @@ in
       nixbld = 30000;
       nogroup = 65534;
     };
+
   };
+
 }

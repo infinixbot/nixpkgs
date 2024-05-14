@@ -11,6 +11,7 @@ let
 
   cfg = config.services.slimserver;
 in
+
 {
   options = {
 
@@ -65,4 +66,5 @@ in
       groups.slimserver = { };
     };
   };
+
 }

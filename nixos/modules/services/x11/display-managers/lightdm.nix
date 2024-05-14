@@ -69,6 +69,7 @@ let
     ${cfg.extraSeatDefaults}
   '';
 in
+
 {
   meta = with lib; {
     maintainers = with maintainers; [ ] ++ teams.pantheon.members;
@@ -147,6 +148,7 @@ in
             The LightDM greeter to login via. The package should be a directory
             containing a .desktop file matching the name in the 'name' option.
           '';
+
         };
         name = mkOption {
           type = types.str;
@@ -192,6 +194,7 @@ in
           Show the greeter for this many seconds before automatic login occurs.
         '';
       };
+
     };
   };
 

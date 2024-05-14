@@ -45,6 +45,7 @@ in
         '';
       };
     };
+
   };
 
   ###### implementation
@@ -52,5 +53,7 @@ in
   config = mkIf config.boot.loader.initScript.enable {
 
     system.build.installBootLoader = initScriptBuilder;
+
   };
+
 }

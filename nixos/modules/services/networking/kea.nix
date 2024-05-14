@@ -427,6 +427,7 @@ in
             } // commonServiceConfig;
           };
         })
+
       ]);
 
   meta.maintainers = with maintainers; [ hexa ];

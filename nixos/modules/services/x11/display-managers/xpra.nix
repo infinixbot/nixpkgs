@@ -328,4 +328,5 @@ in
     hardware.pulseaudio.enable = mkDefault cfg.pulseaudio;
     hardware.pulseaudio.systemWide = mkDefault cfg.pulseaudio;
   };
+
 }

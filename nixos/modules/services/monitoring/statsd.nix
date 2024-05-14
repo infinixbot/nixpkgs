@@ -121,6 +121,7 @@ in
       default = "";
       type = types.nullOr types.str;
     };
+
   };
 
   ###### implementation
@@ -150,5 +151,7 @@ in
     };
 
     environment.systemPackages = [ pkgs.statsd ];
+
   };
+
 }

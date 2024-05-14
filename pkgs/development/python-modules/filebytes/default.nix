@@ -20,4 +20,5 @@ buildPythonPackage rec {
     description = "Scripts to parse ELF, PE, Mach-O and OAT (Android Runtime)";
     maintainers = with maintainers; [ bennofs ];
   };
+
 }

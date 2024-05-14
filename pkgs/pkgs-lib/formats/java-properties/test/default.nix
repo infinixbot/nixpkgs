@@ -47,6 +47,7 @@ let
     "الجبر" = "أكثر من مجرد أرقام";
   };
 in
+
 stdenv.mkDerivation {
   name = "pkgs.formats.javaProperties-test-${jdk.name}";
   nativeBuildInputs = [

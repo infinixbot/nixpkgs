@@ -26,4 +26,5 @@ stdenv.mkDerivation rec {
     platforms = platforms.unix;
     mainProgram = "catimg";
   };
+
 }

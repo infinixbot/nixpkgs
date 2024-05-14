@@ -12,6 +12,7 @@
 let
   rev = "22796663dcad81684ab24308d9db570f6781ba2c";
 in
+
 stdenv.mkDerivation rec {
   name = "mpw-${version}-${builtins.substring 0 8 rev}";
   version = "2.6";

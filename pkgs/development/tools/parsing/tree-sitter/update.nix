@@ -450,6 +450,7 @@ let
         }) knownTreeSitterOrgGrammarRepos
       );
     in
+
     lib.attrsets.unionOfDisjoint otherGrammars treeSitterOrgaGrammars;
 
   jsonFile = name: val: (formats.json { }).generate name val;
@@ -517,4 +518,5 @@ let
      })"
   '';
 in
+
 update-all-grammars

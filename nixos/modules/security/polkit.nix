@@ -55,6 +55,7 @@ in
         value).  By default, this is all users in the `wheel` group.
       '';
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -119,4 +120,5 @@ in
 
     users.groups.polkituser = { };
   };
+
 }

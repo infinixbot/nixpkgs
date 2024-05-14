@@ -8,6 +8,7 @@ with lib;
 let
   cfg = config.services.keybase;
 in
+
 {
 
   ###### interface
@@ -21,6 +22,7 @@ in
         default = false;
         description = "Whether to start the Keybase service.";
       };
+
     };
   };
 

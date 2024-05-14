@@ -228,6 +228,7 @@ in
         "host.conf".text = ''
           multi on
         '';
+
       }
       // optionalAttrs (pkgs.stdenv.hostPlatform.libc == "glibc") {
         # /etc/rpc: RPC program numbers.
@@ -248,5 +249,7 @@ in
 
     # Install the proxy environment variables
     environment.sessionVariables = cfg.proxy.envVars;
+
   };
+
 }

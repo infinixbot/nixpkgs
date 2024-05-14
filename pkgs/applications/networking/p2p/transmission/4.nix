@@ -59,6 +59,7 @@ let
     ++ optionals stdenv.isLinux [ inotify-tools ]
   );
 in
+
 stdenv.mkDerivation (finalAttrs: {
   pname = "transmission";
   version = "4.0.5";

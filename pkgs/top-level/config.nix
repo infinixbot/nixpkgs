@@ -167,6 +167,7 @@ let
     };
   };
 in
+
 {
 
   freeformType =
@@ -190,4 +191,5 @@ in
       mapAttrsToList (k: v: "undeclared Nixpkgs option set: config.${k}") config._undeclared or { }
     );
   };
+
 }

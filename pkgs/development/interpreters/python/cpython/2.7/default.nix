@@ -155,10 +155,12 @@ let
     ]
     ++ lib.optionals (x11Support && stdenv.isDarwin) [
       ./use-correct-tcl-tk-on-darwin.patch
+
     ]
     ++ lib.optionals stdenv.isDarwin [
       # Fix darwin build https://bugs.python.org/issue34027
       ../3.7/darwin-libutil.patch
+
     ]
     ++ lib.optionals stdenv.isLinux [
 
@@ -171,6 +173,7 @@ let
 
       # Fix ctypes.util.find_library with gcc10.
       ./find_library-gcc10.patch
+
     ]
     ++ lib.optionals stdenv.hostPlatform.isCygwin [
       ./2.5.2-ctypes-util-find_library.patch
@@ -290,8 +293,10 @@ let
     _PYTHON_HOST_PLATFORM = stdenv.hostPlatform.config;
   };
 in
+
 # Build the basic Python interpreter without modules that have
 # external dependencies.
+
 with passthru;
 stdenv.mkDerivation (
   {

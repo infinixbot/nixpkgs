@@ -29,6 +29,7 @@ with lib;
         Where the tftp server files are stored.
       '';
     };
+
   };
 
   ###### implementation
@@ -43,5 +44,7 @@ with lib;
       server = "${pkgs.netkittftp}/sbin/in.tftpd";
       serverArgs = "${config.services.tftpd.path}";
     };
+
   };
+
 }

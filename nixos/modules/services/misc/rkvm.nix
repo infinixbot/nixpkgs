@@ -135,6 +135,7 @@ in
         description = "Structured client daemon configuration";
       };
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -172,4 +173,5 @@ in
         rkvm-client = mkIf cfg.client.enable (mkBase "client");
       };
   };
+
 }

@@ -56,6 +56,7 @@ let
 
   defaultUser = "netdata";
 in
+
 {
   options = {
     services.netdata = {
@@ -351,6 +352,7 @@ in
           group = cfg.group;
           permissions = "u+rx,g+x,o-rwx";
         };
+
       }
       // optionalAttrs (cfg.package.withIpmi) {
         "freeipmi.plugin" = {
@@ -385,5 +387,6 @@ in
     };
 
     users.groups = optionalAttrs (cfg.group == defaultUser) { ${defaultUser} = { }; };
+
   };
 }

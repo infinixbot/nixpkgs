@@ -126,6 +126,7 @@ let
     CASSANDRA_LOGBACK_CONF = "${cassandraEtc}/logback.xml";
   };
 in
+
 {
   options.services.cassandra = {
 

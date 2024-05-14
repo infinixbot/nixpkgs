@@ -61,6 +61,7 @@ let
     }
   );
 in
+
 stdenv.mkDerivation rec {
   version = "4.2.0";
   pname = "hal-hardware-analyzer";

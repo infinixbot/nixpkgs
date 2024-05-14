@@ -56,7 +56,9 @@ in
           Extra config in TOML format.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -72,5 +74,7 @@ in
 
       serviceConfig.ExecStart = "${cfg.package}/bin/dwm-status ${configFile}";
     };
+
   };
+
 }

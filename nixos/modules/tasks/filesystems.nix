@@ -98,12 +98,14 @@ let
             to actually be the {option}`mountPoint` of some other filesystem.
           '';
         };
+
       };
 
       config = {
         mountPoint = mkDefault name;
         device = mkIf (elem config.fsType specialFSTypes) (mkDefault config.fsType);
       };
+
     };
 
   fileSystemOpts =
@@ -152,6 +154,7 @@ let
           type = types.bool;
           description = "Disable running fsck on this filesystem.";
         };
+
       };
 
       config.options = mkMerge [
@@ -159,6 +162,7 @@ let
         (mkIf config.autoFormat [ "x-systemd.makefs" ])
         (mkIf (utils.fsNeededForBoot config) [ "x-initrd.mount" ])
       ];
+
     };
 
   # Makes sequence of `specialMount device mountPoint options fsType` commands.
@@ -587,5 +591,7 @@ in
           ];
         };
       };
+
   };
+
 }

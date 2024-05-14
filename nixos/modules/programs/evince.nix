@@ -10,6 +10,7 @@
 let
   cfg = config.programs.evince;
 in
+
 {
 
   ###### interface
@@ -21,7 +22,9 @@ in
       enable = lib.mkEnableOption "Evince, the GNOME document viewer";
 
       package = lib.mkPackageOption pkgs "evince" { };
+
     };
+
   };
 
   ###### implementation
@@ -33,5 +36,7 @@ in
     services.dbus.packages = [ cfg.package ];
 
     systemd.packages = [ cfg.package ];
+
   };
+
 }

@@ -90,6 +90,7 @@ in
       default = null;
       example = "/root/nixos/secrets/gotosocial.env";
     };
+
   };
 
   config = lib.mkIf cfg.enable {

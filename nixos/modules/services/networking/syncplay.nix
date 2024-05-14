@@ -25,6 +25,7 @@ let
     ]
     ++ cfg.extraArgs;
 in
+
 {
   options = {
     services.syncplay = {

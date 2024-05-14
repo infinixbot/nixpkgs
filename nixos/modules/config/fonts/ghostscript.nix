@@ -19,6 +19,7 @@ with lib;
         applications.
       '';
     };
+
   };
 
   config = mkIf config.fonts.enableGhostscriptFonts {

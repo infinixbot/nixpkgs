@@ -42,4 +42,5 @@ self: super: {
   hercules-ci-optparse-applicative =
     self.callPackage ../misc/haskell/hercules-ci-optparse-applicative.nix
       { };
+
 }

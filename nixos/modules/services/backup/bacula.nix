@@ -446,6 +446,7 @@ let
       };
     };
 in
+
 {
   options = {
     services.bacula-fd = {
@@ -601,6 +602,7 @@ in
           Important notice: The backup won't be encrypted.
         '';
       };
+
     };
 
     services.bacula-dir = {

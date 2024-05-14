@@ -70,6 +70,7 @@ let
   };
   initrdRelease = pkgs.writeText "initrd-release" (attrsToText initrdReleaseContents);
 in
+
 {
   imports = [
     ./label.nix
@@ -212,6 +213,7 @@ in
           You would only want to set this option if you're build NixOS appliance images.
         '';
       };
+
     };
 
     stateVersion = mkOption {
@@ -260,6 +262,7 @@ in
       default = null;
       description = "The Git revision of the top-level flake from which this configuration was built.";
     };
+
   };
 
   config = {
@@ -284,6 +287,7 @@ in
 
       "os-release".text = attrsToText osReleaseContents;
     };
+
   };
 
   # uses version info nixpkgs, which requires a full nixpkgs path

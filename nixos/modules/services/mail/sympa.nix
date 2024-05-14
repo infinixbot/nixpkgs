@@ -550,6 +550,7 @@ in
                     -s /run/sympa/wwsympa.socket \
                     -- ${pkg}/lib/sympa/cgi/wwsympa.fcgi
         '';
+
       } // commonServiceConfig;
     };
 
@@ -651,6 +652,7 @@ in
         }
       ];
     };
+
   };
 
   meta.maintainers = with maintainers; [

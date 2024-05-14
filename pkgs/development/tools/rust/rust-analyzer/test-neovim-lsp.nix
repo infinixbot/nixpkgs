@@ -45,6 +45,7 @@ runCommand "test-neovim-rust-analyzer"
           end
         }))
       '';
+
   }
   ''
     # neovim requires a writable HOME.

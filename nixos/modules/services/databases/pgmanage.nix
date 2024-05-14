@@ -45,6 +45,7 @@ let
 
   pgmanage = "pgmanage";
 in
+
 {
 
   options.services.pgmanage = {

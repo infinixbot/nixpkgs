@@ -130,6 +130,7 @@ let
     PrivateUsers = true;
   };
 in
+
 {
 
   options.services.firefly-iii = {

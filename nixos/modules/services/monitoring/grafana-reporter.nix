@@ -10,6 +10,7 @@ with lib;
 let
   cfg = config.services.grafana_reporter;
 in
+
 {
   options.services.grafana_reporter = {
     enable = mkEnableOption "grafana_reporter";
@@ -33,6 +34,7 @@ in
         default = 3000;
         type = types.port;
       };
+
     };
     addr = mkOption {
       description = "Listening address.";

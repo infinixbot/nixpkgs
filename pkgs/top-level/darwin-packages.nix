@@ -295,12 +295,14 @@ makeScopeWithSplicing' {
             system = null;
           };
         in
+
         nixos.config.system.build.macos-builder-installer
       ) { modules = [ ]; };
 
       linux-builder-x86_64 = self.linux-builder.override {
         modules = [ { nixpkgs.hostPlatform = "x86_64-linux"; } ];
       };
+
     }
   );
 }

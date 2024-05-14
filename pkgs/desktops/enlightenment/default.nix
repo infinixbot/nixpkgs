@@ -16,5 +16,6 @@ lib.makeScope pkgs.newScope (
     evisum = callPackage ./evisum { };
     rage = callPackage ./rage { };
     terminology = callPackage ./terminology { };
+
   }
 )

@@ -58,6 +58,7 @@ let
       postgresSupport = service == "sql" && sql.driver == "native_pgsql";
     });
 in
+
 {
   options = {
     services.gammu-smsd = {
@@ -282,6 +283,7 @@ in
         PermissionsStartOnly = true;
         ExecStart = "${gammuPackage}/bin/gammu-smsd -c ${configFile}";
       };
+
     };
   };
 }

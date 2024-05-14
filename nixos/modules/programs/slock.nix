@@ -8,6 +8,7 @@
 let
   cfg = config.programs.slock;
 in
+
 {
   options = {
     programs.slock = {

@@ -128,6 +128,7 @@ let
     }
   ) integrations;
 in
+
 builtIntegrations
 // {
   inherit datadog_checks_base;

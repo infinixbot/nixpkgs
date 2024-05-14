@@ -74,6 +74,7 @@ let
     ++ optional (cfg.http.docRoot != null) "--http.doc_root=\"${toString cfg.http.docRoot}\""
   );
 in
+
 {
   imports = [
     (mkRenamedOptionModule
@@ -359,4 +360,5 @@ in
   meta = {
     maintainers = with maintainers; [ tobim ];
   };
+
 }

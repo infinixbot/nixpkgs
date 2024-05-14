@@ -172,6 +172,7 @@ in
         This option is incompatible with the nftables based nat module.
       '';
     };
+
   };
 
   config = mkIf (!config.networking.nftables.enable) (mkMerge [

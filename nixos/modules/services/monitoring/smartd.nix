@@ -88,7 +88,9 @@ let
           type = types.separatedString " ";
           description = "Options that determine how smartd monitors the device.";
         };
+
       };
+
     };
 in
 
@@ -196,6 +198,7 @@ in
           type = types.bool;
           description = "Whenever to send a test notification on startup.";
         };
+
       };
 
       defaults = {
@@ -239,7 +242,9 @@ in
         type = with types; listOf (submodule smartdDeviceOpts);
         description = "List of devices to monitor.";
       };
+
     };
+
   };
 
   ###### implementation
@@ -258,5 +263,7 @@ in
       wantedBy = [ "multi-user.target" ];
       serviceConfig.ExecStart = "${pkgs.smartmontools}/sbin/smartd ${lib.concatStringsSep " " cfg.extraOptions} --no-fork --configfile=${smartdConf}";
     };
+
   };
+
 }

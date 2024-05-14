@@ -8,6 +8,7 @@
 let
   cfg = config.programs.nexttrace;
 in
+
 {
   options = {
     programs.nexttrace = {

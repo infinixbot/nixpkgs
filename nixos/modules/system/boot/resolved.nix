@@ -11,6 +11,7 @@ let
 
   dnsmasqResolve = config.services.dnsmasq.enable && config.services.dnsmasq.resolveLocalQueries;
 in
+
 {
 
   options = {
@@ -143,6 +144,7 @@ in
         Extra config to append to resolved.conf.
       '';
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -196,5 +198,7 @@ in
     networking.networkmanager.dns = "systemd-resolved";
 
     networking.resolvconf.package = pkgs.systemd;
+
   };
+
 }

@@ -16,6 +16,7 @@ import ../make-test-python.nix (
     lxd-image-rootfs = releases.lxdContainerImage.${pkgs.stdenv.hostPlatform.system};
     lxd-image-rootfs-squashfs = releases.lxdContainerImageSquashfs.${pkgs.stdenv.hostPlatform.system};
   in
+
   {
     name = "lxd-container";
 

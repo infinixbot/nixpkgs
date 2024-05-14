@@ -34,7 +34,9 @@ in
         default = 10;
         description = "Set the nice level for the Freenet daemon";
       };
+
     };
+
   };
 
   ### implementation
@@ -62,4 +64,5 @@ in
 
     users.groups.freenet.gid = config.ids.gids.freenet;
   };
+
 }

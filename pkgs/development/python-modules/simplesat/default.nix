@@ -21,6 +21,7 @@ let
     version_info = (${lib.versions.major version}, ${lib.versions.minor version}, ${lib.versions.patch version}, 'final', 0)
   '';
 in
+
 buildPythonPackage rec {
   pname = "simplesat";
   inherit version;

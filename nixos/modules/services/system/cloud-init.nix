@@ -102,7 +102,9 @@ in
           Takes precedence over the `settings` option if set.
         '';
       };
+
     };
+
   };
 
   config = mkIf cfg.enable {

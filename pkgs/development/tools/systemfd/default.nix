@@ -7,6 +7,7 @@
 let
   version = "0.4.0";
 in
+
 rustPlatform.buildRustPackage {
 
   pname = "systemfd";
@@ -29,4 +30,5 @@ rustPlatform.buildRustPackage {
     maintainers = [ lib.maintainers.adisbladis ];
     platforms = lib.platforms.unix;
   };
+
 }

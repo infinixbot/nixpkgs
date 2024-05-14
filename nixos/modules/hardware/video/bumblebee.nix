@@ -80,6 +80,7 @@ in
           Set preferred power management method for unused card.
         '';
       };
+
     };
   };
 

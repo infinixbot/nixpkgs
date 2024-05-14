@@ -34,6 +34,7 @@ let
     "Material-Black-Plum-Suru"
   ];
 in
+
 lib.checkListOfEnum "${pname}: color variants" colorVariantList colorVariants
 
   stdenvNoCC.mkDerivation

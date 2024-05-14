@@ -404,6 +404,7 @@ let
     in
     rubyDrv;
 in
+
 {
   mkRubyVersion = rubyVersion;
   mkRuby = generic;
@@ -424,4 +425,5 @@ in
     hash = "sha256-jcKvKALMcAzRgtVDByY4jM+IWz8KFPzWoPIf8knJqpk=";
     cargoHash = "sha256-GeelTMRFIyvz1QS2L+Q3KAnyQy7jc0ejhx3TdEFVEbk=";
   };
+
 }

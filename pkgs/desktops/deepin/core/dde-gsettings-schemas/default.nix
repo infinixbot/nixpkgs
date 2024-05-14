@@ -28,6 +28,7 @@ let
     gsettings-desktop-schemas # dde-appearance need org.gnome.desktop.background
   ] ++ extraGSettingsOverridePackages;
 in
+
 with lib;
 
 # TODO: Having https://github.com/NixOS/nixpkgs/issues/54150 would supersede this

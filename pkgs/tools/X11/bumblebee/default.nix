@@ -80,6 +80,7 @@ let
     hash = "sha256-3b5tLoMrGYSdg9Hz5bh0c44VIrbSZrY56JpWEyU/Pik=";
   };
 in
+
 stdenv.mkDerivation rec {
   pname = "bumblebee";
   version = "3.2.1";

@@ -38,7 +38,9 @@ in
         default = "";
         description = "Configuration to use for Cyrus SASL authentication daemon.";
       };
+
     };
+
   };
 
   ###### implementation

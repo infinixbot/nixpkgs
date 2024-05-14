@@ -68,7 +68,9 @@ in
           Pass -d and -7 to automount and write log to the system journal.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -100,5 +102,7 @@ in
         ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
       };
     };
+
   };
+
 }

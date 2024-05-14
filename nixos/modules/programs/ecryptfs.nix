@@ -8,6 +8,7 @@
 let
   cfg = config.programs.ecryptfs;
 in
+
 {
   options.programs.ecryptfs = {
     enable = lib.mkEnableOption "ecryptfs setuid mount wrappers";
@@ -28,6 +29,7 @@ in
         group = "root";
         source = "${lib.getBin pkgs.ecryptfs}/bin/umount.ecryptfs_private";
       };
+
     };
   };
 }

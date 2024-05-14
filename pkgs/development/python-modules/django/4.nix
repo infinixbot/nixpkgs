@@ -65,6 +65,7 @@ buildPythonPackage rec {
       # make sure the tests don't remove packages from our pythonpath
       # and disable failing tests
       ./django_4_tests.patch
+
     ]
     ++ lib.optionals withGdal [
       (substituteAll {

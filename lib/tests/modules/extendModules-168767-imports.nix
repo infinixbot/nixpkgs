@@ -24,5 +24,6 @@ in
     }
 
     { config.sub.value = 1; }
+
   ];
 }

@@ -39,6 +39,7 @@ in
       type = types.listOf types.package;
       description = "List of default packages to exclude from the configuration";
     };
+
   };
 
   config = mkIf cfg.enable {

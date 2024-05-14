@@ -51,6 +51,7 @@ in
           while forwarding the rest of the queries to original resolvers.
         '';
       };
+
     };
   };
 
@@ -75,5 +76,6 @@ in
         listen-address=127.0.0.1
       '';
     };
+
   };
 }

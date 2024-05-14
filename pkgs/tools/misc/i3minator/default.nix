@@ -39,4 +39,5 @@ python3Packages.buildPythonApplication rec {
     maintainers = with maintainers; [ domenkozar ];
     platforms = lib.platforms.linux;
   };
+
 }

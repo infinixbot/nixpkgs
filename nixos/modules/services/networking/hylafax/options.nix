@@ -378,10 +378,12 @@ in
         unreferenced files may reside in the docq directory.
       '';
     };
+
   };
 
   config.services.hylafax = mkIf (config.services.hylafax.enable) (mkMerge [
     defaultConfig
     localConfig
   ]);
+
 }

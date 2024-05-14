@@ -134,6 +134,7 @@ in
         default = "";
         description = "Shell fragments to be run after the system environment has been created. This should only be used for things that need to modify the internals of the environment, e.g. generating MIME caches. The environment being built can be accessed at $out.";
       };
+
     };
 
     system = {
@@ -144,7 +145,9 @@ in
           The packages you want in the boot environment.
         '';
       };
+
     };
+
   };
 
   config = {
@@ -190,5 +193,6 @@ in
         ${config.environment.extraSetup}
       '';
     };
+
   };
 }

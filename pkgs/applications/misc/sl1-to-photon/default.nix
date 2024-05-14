@@ -44,4 +44,5 @@ buildPythonApplication rec {
     homepage = "https://github.com/cab404/SL1toPhoton";
     mainProgram = "sl1-to-photon";
   };
+
 }

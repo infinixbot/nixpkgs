@@ -79,6 +79,7 @@ let
     };
   };
 in
+
 buildPythonApplication rec {
   pname = "openwebrx";
   version = "1.2.2";

@@ -32,6 +32,7 @@ in
         default = "80";
         description = "Port for metadata service to listen on.";
       };
+
     };
   };
 
@@ -60,6 +61,7 @@ in
         ExecStart = "${pkgs.hologram}/bin/hologram-agent -debug -conf ${cfgFile} -port ${cfg.httpPort}";
       };
     };
+
   };
 
   meta.maintainers = with lib.maintainers; [ ];

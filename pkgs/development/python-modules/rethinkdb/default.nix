@@ -33,4 +33,5 @@ buildPythonPackage rec {
     homepage = "https://github.com/RethinkDB/rethinkdb-python";
     license = licenses.asl20;
   };
+
 }

@@ -11,6 +11,7 @@ let
 
   is03 = lib.versionOlder cfg.package.version "0.4.0";
 in
+
 {
   meta.maintainers = with maintainers; [ happysalada ];
   meta.doc = ./pict-rs.md;
@@ -105,4 +106,5 @@ in
       };
     };
   };
+
 }

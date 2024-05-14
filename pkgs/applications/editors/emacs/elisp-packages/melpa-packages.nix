@@ -151,6 +151,7 @@ let
 
           # upstream issue: missing file header
           ido-complete-space-or-hyphen = markBroken super.ido-complete-space-or-hyphen;
+
         }
         // {
           # Expects bash to be at /bin/bash
@@ -805,7 +806,9 @@ let
               super.osx-dictionary;
         };
     in
+
     lib.mapAttrs (n: v: if lib.hasAttr n overrides then overrides.${n} else v) super
   );
 in
+
 (generateMelpa { }) // { __attrsFailEvaluation = true; }

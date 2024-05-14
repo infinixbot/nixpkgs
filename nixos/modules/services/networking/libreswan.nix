@@ -132,7 +132,9 @@ in
           FAQ](https://libreswan.org/wiki/FAQ#Why_is_it_recommended_to_disable_send_redirects_in_.2Fproc.2Fsys.2Fnet_.3F) page for why this is recommended.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -176,5 +178,7 @@ in
         StateDirectoryMode = 700;
       };
     };
+
   };
+
 }

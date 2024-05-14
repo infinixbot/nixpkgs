@@ -13,6 +13,7 @@ let
   minorVersion = "3.141";
   patchVersion = "59";
 in
+
 stdenv.mkDerivation rec {
   pname = "selenium-server-standalone";
   version = "${minorVersion}.${patchVersion}";

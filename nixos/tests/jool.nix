@@ -312,5 +312,7 @@ in
         homeserver.wait_for_open_port(80)
         server.succeed("curl --fail -s http://203.0.113.1 | grep -q IPv6!")
     '';
+
   };
+
 }

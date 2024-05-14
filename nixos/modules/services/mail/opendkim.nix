@@ -33,6 +33,7 @@ let
       cfg.configFile
     ];
 in
+
 {
   imports = [
     (mkRenamedOptionModule
@@ -109,7 +110,9 @@ in
         default = null;
         description = "Additional opendkim configuration.";
       };
+
     };
+
   };
 
   ###### implementation
@@ -188,5 +191,6 @@ in
         UMask = "0077";
       };
     };
+
   };
 }

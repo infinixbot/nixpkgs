@@ -223,6 +223,7 @@ import ./make-test-python.nix (
               isSystemUser = true;
               group = "unauthorizeduser";
             };
+
           };
           users.groups = {
             someuser = { };

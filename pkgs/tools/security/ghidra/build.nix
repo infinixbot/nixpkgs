@@ -98,6 +98,7 @@ let
     outputHash = "sha256-nKfJiGoZlDEpbCmYVKNZXz2PYIosCd4nPFdy3MfprHc=";
   };
 in
+
 stdenv.mkDerivation {
   inherit pname version src;
 
@@ -171,4 +172,5 @@ stdenv.mkDerivation {
     maintainers = with maintainers; [ roblabla ];
     broken = stdenv.isDarwin && stdenv.isx86_64;
   };
+
 }

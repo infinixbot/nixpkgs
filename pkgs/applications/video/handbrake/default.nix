@@ -174,6 +174,7 @@ let
     versions
     ;
 in
+
 let
   self = stdenv.mkDerivation rec {
     pname = "handbrake";

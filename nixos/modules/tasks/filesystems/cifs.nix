@@ -32,5 +32,6 @@ in
     '';
 
     boot.initrd.systemd.extraBin."mount.cifs" = mkIf inInitrd "${pkgs.cifs-utils}/sbin/mount.cifs";
+
   };
 }

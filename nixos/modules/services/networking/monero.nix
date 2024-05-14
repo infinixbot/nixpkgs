@@ -199,7 +199,9 @@ in
           Extra lines to be added verbatim to monerod configuration.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -240,7 +242,9 @@ in
         specify one using option monero.mining.address.
       '';
     };
+
   };
 
   meta.maintainers = with lib.maintainers; [ rnhmjoj ];
+
 }

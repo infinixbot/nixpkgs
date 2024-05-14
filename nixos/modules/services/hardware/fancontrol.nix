@@ -11,6 +11,7 @@ let
   cfg = config.hardware.fancontrol;
   configFile = pkgs.writeText "fancontrol.conf" cfg.config;
 in
+
 {
   options.hardware.fancontrol = {
     enable = mkEnableOption "software fan control (requires fancontrol.config)";
@@ -52,6 +53,7 @@ in
     powerManagement.resumeCommands = ''
       systemctl restart fancontrol.service
     '';
+
   };
 
   meta.maintainers = [ maintainers.evils ];

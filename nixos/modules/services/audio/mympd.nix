@@ -77,6 +77,7 @@ in
         '';
       };
     };
+
   };
 
   config = lib.mkIf cfg.enable {
@@ -134,7 +135,9 @@ in
         allowedTCPPorts = [ cfg.settings.ssl_port ];
       })
     ];
+
   };
 
   meta.maintainers = [ lib.maintainers.eliandoran ];
+
 }

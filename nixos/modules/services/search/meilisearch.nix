@@ -10,6 +10,7 @@ with lib;
 let
   cfg = config.services.meilisearch;
 in
+
 {
 
   meta.maintainers = with maintainers; [
@@ -109,6 +110,7 @@ in
       default = "104857600";
       type = types.str;
     };
+
   };
 
   ###### implementation

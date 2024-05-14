@@ -271,6 +271,7 @@ in
       ];
 
       documentation.man.man-db.skipPackages = [ nixos-version ];
+
     })
 
     # These may be used in auxiliary scripts (ie not part of toplevel), so they are defined unconditionally.
@@ -286,4 +287,5 @@ in
       };
     })
   ];
+
 }

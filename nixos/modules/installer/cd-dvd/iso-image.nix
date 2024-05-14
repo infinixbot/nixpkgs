@@ -58,6 +58,7 @@ let
         initrd = "/boot/initrd";
       };
     in
+
     menuBuilderGrub2 finalCfg [
       { class = "installer"; }
       {
@@ -722,6 +723,7 @@ in
         If text mode is required off-handedly (e.g. for serial use) you can use the `T` key, after being prompted, to use text mode for the current boot.
       '';
     };
+
   };
 
   # store them in lib so we can mkImageMediaOverride the
@@ -942,5 +944,7 @@ in
     # Add vfat support to the initrd to enable people to copy the
     # contents of the CD to a bootable USB stick.
     boot.initrd.supportedFilesystems = [ "vfat" ];
+
   };
+
 }

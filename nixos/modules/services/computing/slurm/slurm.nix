@@ -290,7 +290,9 @@ in
           Slurm module and is meant to make the Slurm config file available to other modules.
         '';
       };
+
     };
+
   };
 
   imports = [
@@ -351,6 +353,7 @@ in
         '';
       };
     in
+
     mkIf (cfg.enableStools || cfg.client.enable || cfg.server.enable || cfg.dbdserver.enable) {
 
       environment.systemPackages = [ wrappedSlurm ];
@@ -472,5 +475,7 @@ in
             ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
           };
         };
+
     };
+
 }

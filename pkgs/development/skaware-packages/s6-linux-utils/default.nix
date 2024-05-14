@@ -36,4 +36,5 @@ skawarePackages.buildPackage {
 
     mv doc $doc/share/doc/s6-linux-utils/html
   '';
+
 }

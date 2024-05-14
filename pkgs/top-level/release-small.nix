@@ -40,6 +40,7 @@ in
     inherit nixpkgs;
     officialRelease = false;
   };
+
 }
 // (mapTestOn ({
 

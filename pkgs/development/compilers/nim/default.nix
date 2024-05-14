@@ -90,6 +90,7 @@ let
   nimHost = parsePlatform stdenv.hostPlatform;
   nimTarget = parsePlatform stdenv.targetPlatform;
 in
+
 {
 
   nim-unwrapped-2 = stdenv.mkDerivation (finalAttrs: {
@@ -205,6 +206,7 @@ in
       ] ++ lib.optional (!stdenv.hostPlatform.isWindows) ./toLocation.patch;
     }
   );
+
 }
 // (
   let
@@ -355,5 +357,6 @@ in
       nim' = buildPackages.nim-unwrapped-1;
       patches = [ ./nim.cfg.patch ];
     };
+
   }
 )

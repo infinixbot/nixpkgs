@@ -21,6 +21,7 @@ let
     };
   };
 in
+
 stdenv.mkDerivation rec {
   inherit version;
   pname = "sonar-scanner-cli";

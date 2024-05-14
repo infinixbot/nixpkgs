@@ -20,7 +20,9 @@
     services.gnome.gnome-user-share = {
 
       enable = lib.mkEnableOption "GNOME User Share, a user-level file sharing service for GNOME";
+
     };
+
   };
 
   ###### implementation
@@ -30,5 +32,7 @@
     environment.systemPackages = [ pkgs.gnome.gnome-user-share ];
 
     systemd.packages = [ pkgs.gnome.gnome-user-share ];
+
   };
+
 }

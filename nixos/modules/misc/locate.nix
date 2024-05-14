@@ -232,6 +232,7 @@ in
         Whether not to index bind mounts
       '';
     };
+
   };
 
   config = mkIf cfg.enable {

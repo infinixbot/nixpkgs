@@ -89,6 +89,7 @@ in
         names from that file.
       '';
     };
+
   };
 
   config = mkIf cfg.installCACerts {
@@ -104,5 +105,7 @@ in
 
     # P11-Kit trust source.
     environment.etc."ssl/trust-source".source = "${cacertPackage.p11kit}/etc/ssl/trust-source";
+
   };
+
 }

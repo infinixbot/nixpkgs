@@ -60,6 +60,7 @@ let
           default = "";
           description = "What to run.";
         };
+
       };
     };
 in
@@ -112,7 +113,9 @@ in
           Literal contents to append to the end of actkbd configuration file.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -144,5 +147,7 @@ in
 
     # For testing
     environment.systemPackages = [ pkgs.actkbd ];
+
   };
+
 }

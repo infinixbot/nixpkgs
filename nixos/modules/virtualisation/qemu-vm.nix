@@ -56,7 +56,9 @@ let
           default = null;
           description = "A name for the drive. Must be unique in the drives list. Not passed to qemu.";
         };
+
       };
+
     };
 
   selectPartitionTableLayout =
@@ -1024,6 +1026,7 @@ in
         pass the CA certificates from the host to the VM.
       '';
     };
+
   };
 
   config = {
@@ -1433,6 +1436,7 @@ in
         (isYes "SERIAL_8250")
       ]
       ++ optionals (cfg.writableStore) [ (isEnabled "OVERLAY_FS") ];
+
   };
 
   # uses types of services/x11/xserver.nix

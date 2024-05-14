@@ -27321,6 +27321,7 @@ with pkgs;
         f = lib.extends overrides generatedPackages;
       };
     in
+
     recurseIntoAttrs xorgPackages;
 
   xorg-autoconf = callPackage ../development/tools/misc/xorg-autoconf { };
@@ -38269,6 +38270,7 @@ with pkgs;
       durden
       pipeworld
     ];
+
   };
   cat9-wrapped = arcan.wrapper.override {
     name = "cat9-wrapped";

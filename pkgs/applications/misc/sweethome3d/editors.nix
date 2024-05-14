@@ -97,10 +97,12 @@ let
         platforms = lib.platforms.linux;
         mainProgram = exec;
       };
+
     };
 
   d2u = lib.replaceStrings [ "." ] [ "_" ];
 in
+
 {
 
   textures-editor = mkEditorProject rec {
@@ -128,4 +130,5 @@ in
     };
     desktopName = "Sweet Home 3D - Furniture Library Editor";
   };
+
 }

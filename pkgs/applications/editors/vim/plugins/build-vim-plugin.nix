@@ -60,4 +60,5 @@ rec {
       );
     in
     addRtp (toVimPlugin drv);
+
 }

@@ -51,6 +51,7 @@ buildGoModule rec {
     repo = pname;
     rev = "v${version}";
     hash = "sha256-IH2OjaLbcKSGG44aggolAOuJkjk+GaXnnTbrXfZ0lVo=";
+
   };
 
   vendorHash = null;

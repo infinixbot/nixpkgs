@@ -76,10 +76,12 @@ in
         '';
       };
     };
+
   };
 
   config = {
 
     system.build.bootStage2 = bootStage2;
+
   };
 }

@@ -11,6 +11,7 @@ let
 
   cfg = config.services.bloop;
 in
+
 {
 
   options.services.bloop = {

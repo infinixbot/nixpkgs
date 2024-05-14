@@ -152,6 +152,7 @@ in
       etcFiles = listToAttrs (map mkEtc enabledConfigs);
       systemdConfigs = listToAttrs (map mkSystemd enabledConfigs);
     in
+
     mkIf cfg.enable {
       environment.etc = etcFiles;
       systemd.services = systemdConfigs;

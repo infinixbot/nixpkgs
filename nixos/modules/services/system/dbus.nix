@@ -59,6 +59,7 @@ in
           performance and reliability, while keeping compatibility to the D-Bus
           reference implementation.
         '';
+
       };
 
       packages = mkOption {
@@ -178,6 +179,7 @@ in
         reloadIfChanged = true;
         restartTriggers = [ configDir ];
       };
+
     })
 
     (mkIf (cfg.implementation == "broker") {
@@ -221,5 +223,6 @@ in
         restartTriggers = [ configDir ];
       };
     })
+
   ]);
 }

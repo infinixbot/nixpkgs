@@ -64,6 +64,7 @@ import ../make-test-python.nix (
             description = "Alice Foobar";
             extraGroups = [ "podman" ];
           };
+
         };
 
       client =

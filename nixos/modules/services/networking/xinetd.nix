@@ -126,9 +126,13 @@ in
               default = "";
               description = "Extra configuration-lines added to the section of the service.";
             };
+
           };
+
         }));
+
     };
+
   };
 
   ###### implementation

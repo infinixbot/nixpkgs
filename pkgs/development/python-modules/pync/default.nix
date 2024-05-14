@@ -32,4 +32,5 @@ buildPythonPackage rec {
     platforms = platforms.darwin;
     maintainers = with maintainers; [ lovek323 ];
   };
+
 }

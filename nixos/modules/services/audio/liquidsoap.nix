@@ -59,6 +59,7 @@ in
 
       type = types.attrsOf (types.either types.path types.str);
     };
+
   };
   ##### implementation
 
@@ -77,4 +78,5 @@ in
 
     systemd.services = builtins.listToAttrs (map streamService streams);
   };
+
 }

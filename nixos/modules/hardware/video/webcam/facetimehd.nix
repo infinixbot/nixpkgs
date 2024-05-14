@@ -51,5 +51,7 @@ in
     powerManagement.resumeCommands = ''
       ${pkgs.kmod}/bin/modprobe -v facetimehd
     '';
+
   };
+
 }

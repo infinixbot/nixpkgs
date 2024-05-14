@@ -206,6 +206,7 @@ let
 
   names = map (path: (lib.concatStringsSep "." path)) paths;
 in
+
 {
   inherit paths names;
 }

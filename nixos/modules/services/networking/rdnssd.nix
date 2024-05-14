@@ -32,6 +32,7 @@ in
         advertisements sent by IPv6 routers.
       '';
     };
+
   };
 
   ###### implementation
@@ -80,5 +81,7 @@ in
       group = "rdnssd";
     };
     users.groups.rdnssd = { };
+
   };
+
 }

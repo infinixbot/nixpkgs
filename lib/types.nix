@@ -351,6 +351,7 @@ let
               range / 2 - 1
             ) "signedInt${toString bit}" "${toString bit} bit signed integer";
         in
+
         {
           # TODO: Deduplicate with docs in nixos/doc/manual/development/option-types.section.md
           /**
@@ -1052,6 +1053,7 @@ let
 
           name = "submodule";
         in
+
         mkOptionType {
           inherit name;
           description = if description != null then description else freeformType.description or name;
@@ -1259,7 +1261,9 @@ let
 
       # Augment the given type with an additional type check function.
       addCheck = elemType: check: elemType // { check = x: elemType.check x && check x; };
+
     };
   };
 in
+
 outer_types // outer_types.types

@@ -61,6 +61,7 @@ let
     x86_64-darwin = "https://downloads.python.org/pypy/pypy${pythonVersion}-v${version}-macos_x86_64.tar.bz2";
   };
 in
+
 with passthru;
 stdenv.mkDerivation {
   inherit pname version;
@@ -167,4 +168,5 @@ stdenv.mkDerivation {
     license = licenses.mit;
     platforms = lib.mapAttrsToList (arch: _: arch) downloadUrls;
   };
+
 }

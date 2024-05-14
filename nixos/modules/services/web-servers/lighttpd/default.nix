@@ -223,7 +223,9 @@ in
           {option}`configText` option is used.
         '';
       };
+
     };
+
   };
 
   config = mkIf cfg.enable {

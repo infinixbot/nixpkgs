@@ -48,6 +48,7 @@ let
 
   fetchExpr = package: "  (fetchNuGet ${generators.toPretty { multiline = false; } package})";
 in
+
 writeText "deps.nix" ''
   { fetchNuGet }: [
   ${concatMapStringsSep "\n" fetchExpr allPackages}

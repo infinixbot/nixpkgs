@@ -62,6 +62,7 @@ let
   snakeOilPrivateKeyFile = pkgs.writeText "private-key" snakeOilPrivateKey;
   snakeOilPublicKey = sshKeys.snakeOilPublicKey;
 in
+
 {
   boot-ec2-nixops = makeEc2Test {
     name = "nixops-userdata";

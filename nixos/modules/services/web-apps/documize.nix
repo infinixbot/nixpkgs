@@ -21,6 +21,7 @@ let
       optionalString predicate template
     );
 in
+
 {
   options.services.documize = {
     enable = mkEnableOption "Documize Wiki";

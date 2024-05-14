@@ -18,6 +18,7 @@
 let
   pname = "qogir-theme";
 in
+
 lib.checkListOfEnum "${pname}: theme variants"
   [
     "default"

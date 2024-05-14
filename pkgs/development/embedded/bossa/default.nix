@@ -21,6 +21,7 @@ let
     installPhase = "mkdir -p $out/bin; cp bin2c $out/bin/";
   };
 in
+
 stdenv.mkDerivation rec {
   pname = "bossa";
   version = "1.9.1";

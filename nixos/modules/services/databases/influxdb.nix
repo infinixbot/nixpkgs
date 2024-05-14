@@ -185,4 +185,5 @@ in
 
     users.groups = optionalAttrs (cfg.group == "influxdb") { influxdb.gid = config.ids.gids.influxdb; };
   };
+
 }

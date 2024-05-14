@@ -17,7 +17,9 @@ in
     services.torque.server = {
 
       enable = mkEnableOption "torque server";
+
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -105,5 +107,6 @@ in
         PIDFile = "/var/spool/torque/sched_priv/sched.lock";
       };
     };
+
   };
 }

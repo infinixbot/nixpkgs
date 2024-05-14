@@ -39,4 +39,5 @@ buildDunePackage {
   meta = ffmpeg-base.meta // {
     description = "Bindings for the ffmpeg libraries -- top-level helpers";
   };
+
 }

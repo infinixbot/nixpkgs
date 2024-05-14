@@ -63,6 +63,7 @@ let
     else
       null;
 in
+
 {
   options = {
     services.minecraft-server = {
@@ -320,5 +321,6 @@ in
           + " set `services.minecraft-server.eula` to `true` if you agree.";
       }
     ];
+
   };
 }

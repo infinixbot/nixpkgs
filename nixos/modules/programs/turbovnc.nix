@@ -34,7 +34,9 @@ in
           in TurboVNC.
         '';
       };
+
     };
+
   };
 
   config = lib.mkIf cfg.ensureHeadlessSoftwareOpenGL {
@@ -50,5 +52,6 @@ in
     # This comment exists to explain why `hardware.` is involved,
     # even though 100% software rendering is used.
     hardware.opengl.enable = true;
+
   };
 }

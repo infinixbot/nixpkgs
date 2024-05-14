@@ -73,6 +73,7 @@ buildPythonPackage rec {
     "test_cp_cli"
     "test_mv_cli"
     "test_sync_remote_to_local"
+
   ];
 
   disabledTestPaths = [

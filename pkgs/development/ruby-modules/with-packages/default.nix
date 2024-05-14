@@ -72,6 +72,7 @@ let
         '';
       };
     in
+
     stdenv.mkDerivation {
       name = "${ruby.name}-with-packages";
       nativeBuildInputs = [ makeBinaryWrapper ];
@@ -97,6 +98,7 @@ let
       };
     };
 in
+
 {
   inherit withPackages gems buildGems;
 }

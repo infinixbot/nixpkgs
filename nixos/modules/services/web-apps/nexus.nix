@@ -11,6 +11,7 @@ let
 
   cfg = config.services.nexus;
 in
+
 {
   options = {
     services.nexus = {

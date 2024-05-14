@@ -29,6 +29,7 @@ let
     sha256 = "0773s5iz8aw9npgyasb0r2ybp6gvy2s9sq51az8w7h52bzn5blnn";
   };
 in
+
 stdenv.mkDerivation rec {
   pname = "nano";
   version = "8.0";

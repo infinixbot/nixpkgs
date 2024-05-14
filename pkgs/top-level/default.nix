@@ -49,6 +49,7 @@ let # Rename the function arguments
   config0 = config;
   crossSystem0 = crossSystem;
 in
+
 let
   lib = import ../../lib;
 
@@ -155,4 +156,5 @@ let
 
   pkgs = boot stages;
 in
+
 checked pkgs

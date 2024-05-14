@@ -26,6 +26,7 @@ let
     ];
   };
 in
+
 {
 
   options.services.zookeeper = {

@@ -37,6 +37,7 @@ let
   );
   executable = "${cfg.package}/bin/couchdb";
 in
+
 {
 
   ###### interface
@@ -165,7 +166,9 @@ in
           needs to be readable and writable from couchdb user/group.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -222,5 +225,6 @@ in
     };
 
     users.groups.couchdb.gid = config.ids.gids.couchdb;
+
   };
 }

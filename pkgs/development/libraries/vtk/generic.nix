@@ -48,6 +48,7 @@ let
   version = "${majorVersion}.${minorVersion}";
   pythonMajor = lib.substring 0 1 python.pythonVersion;
 in
+
 stdenv.mkDerivation {
   pname = "vtk${optionalString enableQt "-qvtk"}";
   inherit version;

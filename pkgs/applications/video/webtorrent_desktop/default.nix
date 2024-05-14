@@ -66,4 +66,5 @@ buildNpmPackage {
     maintainers = [ maintainers.bendlas ];
     mainProgram = "WebTorrent";
   };
+
 }

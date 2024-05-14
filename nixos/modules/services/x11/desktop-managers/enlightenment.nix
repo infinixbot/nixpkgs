@@ -51,6 +51,7 @@ in
       default = false;
       description = "Enable the Enlightenment desktop environment.";
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -139,5 +140,7 @@ in
         StandardOutput = "null";
       };
     };
+
   };
+
 }

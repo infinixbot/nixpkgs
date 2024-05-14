@@ -30,6 +30,7 @@ let
 
       runHook postInstall
     '';
+
   });
 in
 writeShellApplication {

@@ -67,6 +67,7 @@ buildPythonPackage rec {
       ./django_5_tests_pythonpath.patch
       # disable test that excpects timezone issues
       ./django_5_disable_failing_tests.patch
+
     ]
     ++ lib.optionals withGdal [
       (substituteAll {

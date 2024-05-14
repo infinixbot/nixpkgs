@@ -67,6 +67,7 @@ let
     + "\n"
   ) cfg.buildMachines;
 in
+
 {
   options = {
     nix = {

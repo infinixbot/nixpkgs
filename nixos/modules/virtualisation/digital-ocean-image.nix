@@ -76,10 +76,12 @@ in
       inherit (cfg) diskSize;
       inherit config lib pkgs;
     };
+
   };
 
   meta.maintainers = with maintainers; [
     arianvp
     eamsden
   ];
+
 }

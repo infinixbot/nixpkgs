@@ -14,6 +14,7 @@ let
 
   hansUser = "hans";
 in
+
 {
 
   ### configuration
@@ -61,6 +62,7 @@ in
                 default = "";
                 description = "File that contains password";
               };
+
             };
           })
         );
@@ -99,6 +101,7 @@ in
           description = "File that contains password";
         };
       };
+
     };
   };
 

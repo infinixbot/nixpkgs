@@ -53,7 +53,9 @@ in
           HTTP proxy used for requests.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -77,5 +79,7 @@ in
         ];
       };
     };
+
   };
+
 }

@@ -16,6 +16,7 @@ let
     paths = [ (cfg.haskellPackages.ghcWithHoogle cfg.packages) ];
   };
 in
+
 {
 
   options.services.hoogle = {
@@ -95,4 +96,5 @@ in
       };
     };
   };
+
 }

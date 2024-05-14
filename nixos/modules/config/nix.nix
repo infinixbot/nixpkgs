@@ -117,6 +117,7 @@ let
 
       isExtra = key: hasPrefix "extra-" key;
     in
+
     pkgs.writeTextFile {
       name = "nix.conf";
       # workaround for https://github.com/NixOS/nix/issues/9487
@@ -153,6 +154,7 @@ let
       );
     };
 in
+
 {
   imports =
     [

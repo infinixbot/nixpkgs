@@ -72,6 +72,7 @@ let
   mysqlLocal = cfg.database.createLocally && cfg.database.type == "mysql2";
   pgsqlLocal = cfg.database.createLocally && cfg.database.type == "postgresql";
 in
+
 {
   imports = [
     (mkRemovedOptionModule [
@@ -487,6 +488,7 @@ in
         WorkingDirectory = "${cfg.package}/share/redmine";
         ExecStart = "${bundle} exec rails server -u webrick -e production -p ${toString cfg.port} -P '${cfg.stateDir}/redmine.pid'";
       };
+
     };
 
     users.users = optionalAttrs (cfg.user == "redmine") {
@@ -498,5 +500,7 @@ in
     };
 
     users.groups = optionalAttrs (cfg.group == "redmine") { redmine.gid = config.ids.gids.redmine; };
+
   };
+
 }

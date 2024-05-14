@@ -252,6 +252,7 @@ in
         '';
       };
     };
+
   };
 
   ###### implementation
@@ -549,5 +550,7 @@ in
     services.postgresql.authentication = optionalString haveLocalDB ''
       local hydra all ident map=hydra-users
     '';
+
   };
+
 }

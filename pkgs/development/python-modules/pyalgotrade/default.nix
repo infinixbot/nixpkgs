@@ -48,4 +48,5 @@ buildPythonPackage rec {
     homepage = "http://gbeced.github.io/pyalgotrade/";
     license = licenses.asl20;
   };
+
 }

@@ -25,7 +25,9 @@ in
         default = false;
         description = "Whether to enable the X Font Server.";
       };
+
     };
+
   };
 
   ###### implementation

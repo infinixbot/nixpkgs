@@ -124,6 +124,7 @@ in
             description = "wgautomesh peer list.";
           };
         };
+
       };
       default = { };
       description = "Configuration for wgautomesh.";

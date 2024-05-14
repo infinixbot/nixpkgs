@@ -76,6 +76,7 @@ rec {
               jq . "$valuePath"> $out
             ''
         ) { };
+
     };
 
   yaml =
@@ -115,6 +116,7 @@ rec {
             };
         in
         valueType;
+
     };
 
   # the ini formats share a lot of code
@@ -253,6 +255,7 @@ rec {
 
             generate = name: value: pkgs.writeText name (lib.generators.toGitINI value);
           };
+
       }
     )
     ini
@@ -315,6 +318,7 @@ rec {
             else
               singleAtom;
         in
+
         attrsOf atom;
 
       generate =
@@ -329,6 +333,7 @@ rec {
         pkgs.writeText name (
           lib.generators.toKeyValue (removeAttrs args [ "listToValue" ]) transformedValue
         );
+
     };
 
   toml =
@@ -368,6 +373,7 @@ rec {
               json2toml "$valuePath" "$out"
             ''
         ) { };
+
     };
 
   /*
@@ -515,6 +521,7 @@ rec {
             _elixirType = "raw";
           };
         in
+
         {
           inherit mkRaw;
 
@@ -666,4 +673,5 @@ rec {
             ''
         ) { };
     };
+
 }

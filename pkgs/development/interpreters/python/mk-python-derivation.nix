@@ -256,6 +256,7 @@ let
         attrName: drv:
         if (isPythonModule drv) && (isMismatchedPython drv) then throwMismatch attrName drv else drv;
     in
+
     attrName: inputs: map (checkDrv attrName) inputs;
 
   isBootstrapInstallPackage = isBootstrapInstallPackage' (attrs.pname or null);
@@ -417,6 +418,7 @@ let
     )
   );
 in
+
 extendDerivation (
   disabled -> throw "${name} not supported for interpreter ${python.executable}"
 ) passthru self

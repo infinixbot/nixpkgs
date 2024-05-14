@@ -27,7 +27,9 @@ in
       };
 
       package = lib.mkPackageOption pkgs "power-profiles-daemon" { };
+
     };
+
   };
 
   ###### implementation
@@ -51,5 +53,7 @@ in
     services.udev.packages = [ cfg.package ];
 
     systemd.packages = [ cfg.package ];
+
   };
+
 }

@@ -35,6 +35,7 @@ let
     '';
   };
 in
+
 buildGoModule rec {
   inherit version;
   pname = "glasskube";

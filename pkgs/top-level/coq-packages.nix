@@ -309,4 +309,5 @@ rec {
       __recurseIntoDerivationForReleaseJobs = true;
     };
   coq = coqPackages.coq;
+
 }

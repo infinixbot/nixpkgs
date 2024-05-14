@@ -415,6 +415,7 @@ let
           autoSubUidGidRange = mkDefault true;
         })
       ];
+
     };
 
   groupOpts =
@@ -448,6 +449,7 @@ let
             `/etc/group` file.
           '';
         };
+
       };
 
       config = {
@@ -457,6 +459,7 @@ let
           filterAttrs (n: u: elem config.name u.extraGroups) cfg.users
         );
       };
+
     };
 
   subordinateUidRange = {
@@ -1165,4 +1168,5 @@ in
           )
         );
     };
+
 }

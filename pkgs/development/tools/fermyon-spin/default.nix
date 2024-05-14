@@ -28,6 +28,7 @@ let
     }
     .${system} or (throw "Unsupported system: ${system}");
 in
+
 stdenv.mkDerivation rec {
   pname = "fermyon-spin";
   version = "2.4.2";

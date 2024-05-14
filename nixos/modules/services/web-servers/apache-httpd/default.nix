@@ -767,6 +767,7 @@ in
         description = "Allowed SSL/TLS protocol versions.";
       };
     };
+
   };
 
   # implementation
@@ -1015,5 +1016,6 @@ in
           ExecStart = "/run/current-system/systemd/bin/systemctl reload httpd.service";
         };
       };
+
   };
 }

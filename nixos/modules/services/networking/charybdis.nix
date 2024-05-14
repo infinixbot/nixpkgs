@@ -72,7 +72,9 @@ in
           If set, the value of this option will be written to this path.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -111,6 +113,7 @@ in
             User = cfg.user;
           };
         };
+
       }
 
       (mkIf (cfg.motd != null) { environment.etc."charybdis/ircd.motd".text = cfg.motd; })

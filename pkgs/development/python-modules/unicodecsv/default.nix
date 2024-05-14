@@ -22,4 +22,5 @@ buildPythonPackage rec {
     homepage = "https://github.com/jdunck/python-unicodecsv";
     maintainers = with maintainers; [ koral ];
   };
+
 }

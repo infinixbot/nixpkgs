@@ -41,6 +41,7 @@ let
     meta.mainProgram = "keyd-application-mapper";
   };
 in
+
 stdenv.mkDerivation {
   pname = "keyd";
   inherit version src;

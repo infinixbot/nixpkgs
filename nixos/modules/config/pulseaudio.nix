@@ -92,6 +92,7 @@ let
     ${alsaCfg.extraConfig}
   '');
 in
+
 {
 
   options = {
@@ -218,7 +219,9 @@ in
           };
         };
       };
+
     };
+
   };
 
   config = lib.mkIf cfg.enable (mkMerge [
@@ -334,4 +337,5 @@ in
       environment.variables.PULSE_COOKIE = "${stateDir}/.config/pulse/cookie";
     })
   ]);
+
 }

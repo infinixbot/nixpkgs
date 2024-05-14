@@ -81,6 +81,7 @@ in
           This option should be defined at most once per module.
         '';
       };
+
     };
   };
 

@@ -122,6 +122,7 @@ symlinkJoin {
         pciutils # need lspci
       ] ++ additionalPrograms;
     in
+
     [ "--prefix PRISMLAUNCHER_JAVA_PATHS : ${lib.makeSearchPath "bin/java" jdks}" ]
     ++ lib.optionals stdenv.isLinux [
       "--set LD_LIBRARY_PATH ${addOpenGLRunpath.driverLink}/lib:${lib.makeLibraryPath runtimeLibs}"

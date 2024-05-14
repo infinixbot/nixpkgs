@@ -22,4 +22,5 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/vipshop/hiredis-vip";
     license = lib.licenses.bsd3;
   };
+
 }

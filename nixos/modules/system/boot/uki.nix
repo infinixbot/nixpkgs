@@ -67,6 +67,7 @@ in
       internal = true;
       description = "Name of the UKI file";
     };
+
   };
 
   config = {
@@ -112,5 +113,6 @@ in
     '';
 
     meta.maintainers = with lib.maintainers; [ nikstur ];
+
   };
 }

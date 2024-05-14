@@ -73,6 +73,7 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.cmakeFeature "CMAKE_INSTALL_DOCDIR" "share/doc/minetest")
     (lib.cmakeFeature "CMAKE_INSTALL_MANDIR" "share/man")
     (lib.cmakeFeature "CMAKE_INSTALL_LOCALEDIR" "share/locale")
+
   ];
 
   nativeBuildInputs = [

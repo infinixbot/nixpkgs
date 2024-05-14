@@ -75,6 +75,7 @@ let
       };
     };
 in
+
 {
 
   ###### interface
@@ -190,7 +191,9 @@ in
           Specify extra settings per application.
         '';
       };
+
     };
+
   };
 
   ###### implementation

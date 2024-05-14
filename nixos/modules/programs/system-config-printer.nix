@@ -14,7 +14,9 @@
     programs.system-config-printer = {
 
       enable = lib.mkEnableOption "system-config-printer, a Graphical user interface for CUPS administration";
+
     };
+
   };
 
   ###### implementation
@@ -24,5 +26,7 @@
     environment.systemPackages = [ pkgs.system-config-printer ];
 
     services.system-config-printer.enable = true;
+
   };
+
 }

@@ -24,6 +24,7 @@ import ./make-test-python.nix (
         };
 
         environment.systemPackages = with pkgs; [ gxmessage ];
+
       };
 
     nodes.moonlight =
@@ -32,6 +33,7 @@ import ./make-test-python.nix (
         imports = [ ./common/x11.nix ];
 
         environment.systemPackages = with pkgs; [ moonlight-qt ];
+
       };
 
     enableOCR = true;

@@ -11,6 +11,7 @@ let
 
   cfg = config.virtualbox;
 in
+
 {
 
   options = {
@@ -285,5 +286,6 @@ in
     ];
 
     virtualisation.virtualbox.guest.enable = true;
+
   };
 }

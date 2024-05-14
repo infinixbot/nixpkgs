@@ -28,6 +28,7 @@ let
     })
   ];
 in
+
 stdenv.mkDerivation rec {
   inherit pname desktopItems;
   version = "1.01b";
@@ -66,4 +67,5 @@ stdenv.mkDerivation rec {
     ];
     downloadPage = "http://tangramgames.dk/games/90secondportraits";
   };
+
 }

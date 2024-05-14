@@ -264,7 +264,9 @@ let
             description = "Cron key taken from the administration page.";
           };
         };
+
       };
+
     };
 in
 {
@@ -294,6 +296,7 @@ in
       default = { };
       description = "InvoicePlane configuration.";
     };
+
   };
 
   # implementation
@@ -351,6 +354,7 @@ in
           })
         ) eachSite;
       };
+
     }
 
     {
@@ -387,6 +391,7 @@ in
         group = webserver.group;
         isSystemUser = true;
       };
+
     }
     {
 
@@ -418,6 +423,7 @@ in
           }
         ))
       ) eachSite;
+
     }
 
     (mkIf (cfg.webserver == "caddy") {
@@ -470,5 +476,6 @@ in
         ) eachSite;
       };
     })
+
   ]);
 }

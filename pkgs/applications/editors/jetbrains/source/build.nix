@@ -233,6 +233,7 @@ let
     else
       "OpenSourceCommunityInstallersBuildTarget";
 in
+
 stdenvNoCC.mkDerivation rec {
   pname = "${buildType}-community";
   version = buildVer;

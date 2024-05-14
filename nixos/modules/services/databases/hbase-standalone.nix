@@ -36,6 +36,7 @@ let
     ln -s ${configFile} $out/hbase-site.xml
   '';
 in
+
 {
 
   imports = [
@@ -119,6 +120,7 @@ in
           configurations in hbase-site.xml, see <https://github.com/apache/hbase/blob/master/hbase-server/src/test/resources/hbase-site.xml> for details.
         '';
       };
+
     };
   };
 
@@ -155,5 +157,6 @@ in
     };
 
     users.groups.hbase.gid = config.ids.gids.hbase;
+
   };
 }

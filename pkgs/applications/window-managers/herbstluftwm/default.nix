@@ -74,6 +74,7 @@ stdenv.mkDerivation rec {
       url = "https://github.com/herbstluftwm/herbstluftwm/commit/1a6e8ee24eac671569f54bfec22ab47ff285a52c.patch";
       hash = "sha256-srulWJQ9zTR4Kdxo40AdHND4nexDe2PDSR69yWsOpVA=";
     })
+
   ];
 
   postPatch = ''

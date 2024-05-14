@@ -140,6 +140,7 @@ let
         "foo@bar"
       ];
     };
+
   };
 
   authKeysFiles =
@@ -766,9 +767,11 @@ in
           the `moduli` file shipped with OpenSSH will be used.
         '';
       };
+
     };
 
     users.users = mkOption { type = with types; attrsOf (submodule userOptions); };
+
   };
 
   ###### implementation
@@ -856,6 +859,7 @@ in
                   Type = "simple";
                 }
             );
+
         };
       in
 
@@ -879,11 +883,13 @@ in
           };
 
           services."sshd@" = service;
+
         }
       else
         {
 
           services.sshd = service;
+
         };
 
     networking.firewall.allowedTCPPorts = optionals cfg.openFirewall cfg.ports;
@@ -988,4 +994,5 @@ in
         }
       );
   };
+
 }

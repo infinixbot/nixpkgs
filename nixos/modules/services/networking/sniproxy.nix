@@ -17,6 +17,7 @@ let
     ${cfg.config}
   '';
 in
+
 {
   imports = [
     (mkRemovedOptionModule
@@ -66,6 +67,7 @@ in
         '';
       };
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -95,5 +97,6 @@ in
         gid = config.ids.gids.sniproxy;
       };
     };
+
   };
 }

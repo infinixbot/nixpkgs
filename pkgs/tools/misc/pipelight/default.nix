@@ -17,6 +17,7 @@ let
 
   mozillaPluginPath = "/lib/mozilla/plugins";
 in
+
 stdenv.mkDerivation rec {
 
   version = "0.2.8.2";

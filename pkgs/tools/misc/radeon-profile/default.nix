@@ -43,4 +43,5 @@ mkDerivation rec {
     platforms = platforms.linux;
     mainProgram = "radeon-profile";
   };
+
 }

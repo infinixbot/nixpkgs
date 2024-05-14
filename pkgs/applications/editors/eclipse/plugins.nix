@@ -314,6 +314,7 @@ rec {
       license = licenses.lgpl21;
       platforms = platforms.all;
     };
+
   };
 
   color-theme = buildEclipsePlugin rec {

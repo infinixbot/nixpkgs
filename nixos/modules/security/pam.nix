@@ -603,6 +603,7 @@ let
           type = types.nullOr types.lines;
           description = "Contents of the PAM service file.";
         };
+
       };
 
       # The resulting /etc/pam.d/* file contents are verified in
@@ -1432,6 +1433,7 @@ let
             ];
           };
       };
+
     };
 
   inherit (pkgs) pam_krb5 pam_ccreds;

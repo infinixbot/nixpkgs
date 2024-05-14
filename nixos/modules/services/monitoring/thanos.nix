@@ -317,6 +317,7 @@ let
         reloader.rule-dirs = mkListParam "reloader.rule-dir" ''
           Rule directories for the reloader to refresh.
         '';
+
       };
 
     store =
@@ -700,6 +701,7 @@ let
           Data directory relative to `/var/lib`
           in which to cache blocks and process downsamplings.
         '';
+
       };
 
     receive =
@@ -732,6 +734,7 @@ let
           `0d` - disables this retention
         '';
       };
+
   };
 
   assertRelativeStateDir = cmd: {
@@ -745,6 +748,7 @@ let
     ];
   };
 in
+
 {
 
   options.services.thanos = {
@@ -954,5 +958,6 @@ in
         };
       }
     ]))
+
   ];
 }

@@ -49,6 +49,7 @@ let
     s.setServiceParent(application)
   '';
 in
+
 {
   options = {
     services.buildbot-worker = {
@@ -193,8 +194,10 @@ in
         # NOTE: call twistd directly with stdout logging for systemd
         ExecStart = "${python.pkgs.twisted}/bin/twistd --nodaemon --pidfile= --logfile - --python ${tacFile}";
       };
+
     };
   };
 
   meta.maintainers = lib.teams.buildbot.members;
+
 }

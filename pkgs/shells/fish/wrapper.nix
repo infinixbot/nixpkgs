@@ -49,6 +49,7 @@ lib.makeOverridable (
         shellAliasesFishConfig
       ]);
   in
+
   writeShellApplication {
     inherit runtimeInputs;
     name = "fish";

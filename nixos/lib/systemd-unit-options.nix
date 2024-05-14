@@ -48,6 +48,7 @@ let
     ])
   ];
 in
+
 rec {
 
   unitOption = mkOptionType {
@@ -148,6 +149,7 @@ rec {
       type = types.listOf unitNameType;
       description = "Aliases of that unit.";
     };
+
   };
 
   concreteUnitOptions = sharedOptions // {
@@ -162,6 +164,7 @@ rec {
       internal = true;
       description = "The generated unit.";
     };
+
   };
 
   commonUnitOptions = {
@@ -306,6 +309,7 @@ rec {
           interval are not permitted to start any more.
         '';
       };
+
     };
   };
 
@@ -455,6 +459,7 @@ rec {
           description = "A list of all job script derivations of this unit.";
           default = [ ];
         };
+
       };
 
       config = mkMerge [
@@ -483,6 +488,7 @@ rec {
           serviceConfig.ExecStopPost = jobScripts;
         })
       ];
+
     };
 
   stage2ServiceOptions = {
@@ -597,6 +603,7 @@ rec {
         '';
       };
     };
+
   };
 
   stage2SocketOptions = {
@@ -630,6 +637,7 @@ rec {
           {manpage}`systemd.time(7)` for details.
         '';
       };
+
     };
   };
 
@@ -663,6 +671,7 @@ rec {
           {manpage}`systemd.path(5)` for details.
         '';
       };
+
     };
   };
 
@@ -724,6 +733,7 @@ rec {
           {manpage}`systemd.mount(5)` for details.
         '';
       };
+
     };
   };
 
@@ -765,6 +775,7 @@ rec {
           {manpage}`systemd.automount(5)` for details.
         '';
       };
+
     };
   };
 
@@ -797,6 +808,7 @@ rec {
           {manpage}`systemd.slice(5)` for details.
         '';
       };
+
     };
   };
 
@@ -813,4 +825,5 @@ rec {
       sliceOptions
     ];
   };
+
 }

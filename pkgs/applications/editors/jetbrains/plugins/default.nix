@@ -67,6 +67,7 @@ let
     }) ids
   );
 in
+
 rec {
   # Only use if you know what youre doing
   raw = {
@@ -92,6 +93,7 @@ rec {
 
       plugins = map processPlugin unprocessedPlugins;
     in
+
     stdenv.mkDerivation rec {
       pname = meta.mainProgram + "-with-plugins";
       version = ide.version;

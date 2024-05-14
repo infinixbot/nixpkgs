@@ -37,4 +37,5 @@ stdenv.mkDerivation rec {
     license = lib.licenses.lgpl21;
     maintainers = [ lib.maintainers.gal_bolle ];
   };
+
 }

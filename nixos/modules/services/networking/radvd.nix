@@ -60,6 +60,7 @@ in
         The contents of the radvd configuration file.
       '';
     };
+
   };
 
   ###### implementation
@@ -82,5 +83,7 @@ in
         Restart = "always";
       };
     };
+
   };
+
 }

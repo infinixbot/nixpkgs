@@ -400,6 +400,7 @@ in
                 run = ''${tarsnap} -x -f "${lastArchive}" ${optionalString cfg.verbose "-v"}'';
                 cachedir = escapeShellArg cfg.cachedir;
               in
+
               if (cfg.cachedir != null) then
                 ''
                   mkdir -p ${cachedir}

@@ -109,6 +109,7 @@ let
     else
       throw "Skype for linux is not supported on ${stdenv.hostPlatform.system}";
 in
+
 stdenv.mkDerivation {
   pname = "skypeforlinux";
   inherit version;

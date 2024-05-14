@@ -152,6 +152,7 @@ let
     fi
   '';
 in
+
 symlinkJoin {
   name = "openmw-tes3mp-${unwrapped.version}";
   inherit (unwrapped) version meta;

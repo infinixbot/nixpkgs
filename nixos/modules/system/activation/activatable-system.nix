@@ -14,6 +14,7 @@ let
     dryActivationScript = config.system.dryActivationScript;
   };
 in
+
 {
   options = {
     system.activatable = mkOption {

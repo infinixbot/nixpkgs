@@ -134,6 +134,7 @@ let
 
           machine.shutdown()
         '';
+
     };
 
   mk-ensure-clauses-test =

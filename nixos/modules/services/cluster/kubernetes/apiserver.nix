@@ -435,6 +435,7 @@ in
       default = null;
       type = nullOr path;
     };
+
   };
 
   ###### implementation
@@ -559,6 +560,7 @@ in
             }
           ];
         };
+
       };
 
       services.kubernetes.pki.certs = with top.lib; {
@@ -611,7 +613,9 @@ in
           action = "systemctl restart etcd.service";
         };
       };
+
     })
+
   ];
 
   meta.buildDocsInSandbox = false;

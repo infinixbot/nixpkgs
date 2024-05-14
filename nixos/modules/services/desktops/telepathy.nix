@@ -29,7 +29,9 @@ with lib;
           that enables real-time communication via pluggable protocol backends.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -46,4 +48,5 @@ with lib;
       telepathy-logger
     ];
   };
+
 }

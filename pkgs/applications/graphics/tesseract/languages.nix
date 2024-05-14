@@ -158,6 +158,7 @@ rec {
       uzb_cyrl = "sha256-pSBiXV3h8Aia+DbABLLPvT/lpQhEAeTpaFjUl9FQsc0=";
       vie = "sha256-zvXmN0fIbiG8u9MLtoOhsQT5gpO3SyqJF0hw1btEQck=";
       yid = "sha256-zZm4mvPApL0hpD3UPxN+/96j3V0ZrVk+ALvUih5orck=";
+
     };
   };
 

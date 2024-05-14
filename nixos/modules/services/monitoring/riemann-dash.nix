@@ -23,6 +23,7 @@ let
     exec ${pkgs.riemann-dash}/bin/riemann-dash ${conf}
   '';
 in
+
 {
 
   options = {
@@ -51,6 +52,7 @@ in
         '';
       };
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -80,5 +82,7 @@ in
         ExecStart = "${launcher}/bin/riemann-dash";
       };
     };
+
   };
+
 }

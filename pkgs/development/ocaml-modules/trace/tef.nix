@@ -27,4 +27,5 @@ buildDunePackage {
   meta = trace.meta // {
     description = "A simple backend for trace, emitting Catapult JSON into a file";
   };
+
 }

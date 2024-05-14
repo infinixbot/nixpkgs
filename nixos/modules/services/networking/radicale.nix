@@ -31,6 +31,7 @@ let
       "hosts"
     ] cfg.settings;
 in
+
 {
   options.services.radicale = {
     enable = mkEnableOption "Radicale CalDAV and CardDAV server";

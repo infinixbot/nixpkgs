@@ -31,6 +31,7 @@ let
   # TODO: make the non-flake test use thise.
   linuxSystem = lib.replaceStrings [ "darwin" ] [ "linux" ] stdenv.hostPlatform.system;
 in
+
 runCommand "test-nixos-rebuild-repl"
   {
     nativeBuildInputs = [

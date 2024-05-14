@@ -52,6 +52,7 @@ let
     };
   };
 in
+
 {
 
   ###### interface
@@ -150,7 +151,9 @@ in
           }
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -179,4 +182,5 @@ in
     environment.etc."proxychains.conf".text = configFile;
     environment.systemPackages = [ cfg.package ];
   };
+
 }

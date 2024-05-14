@@ -78,6 +78,7 @@ let
     hash = "sha256-WbpndtAviph6+I/F2bevuMI9DkfSv4SMPgMaP98k6Qo=";
   };
 in
+
 stdenv.mkDerivation (finalAttrs: {
   pname = "arrow-cpp";
   version = "16.0.0";

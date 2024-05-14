@@ -96,6 +96,7 @@ in
         description = "Extra configuration";
       };
     };
+
   };
 
   ###### implementation
@@ -144,5 +145,7 @@ in
         install -d -m0700 -o ${serviceConfig.User} -g ${serviceConfig.Group} "${cfg.workDir}/udf/lua"
       '';
     };
+
   };
+
 }

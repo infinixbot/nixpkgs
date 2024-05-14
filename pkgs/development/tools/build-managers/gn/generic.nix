@@ -28,6 +28,7 @@ let
     #endif  // OUT_LAST_COMMIT_POSITION_H_
   '';
 in
+
 stdenv.mkDerivation {
   pname = "gn-unstable";
   inherit version;

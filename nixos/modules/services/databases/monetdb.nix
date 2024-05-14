@@ -10,6 +10,7 @@ with lib;
 let
   cfg = config.services.monetdb;
 in
+
 {
   meta.maintainers = with maintainers; [
     StillerHarpo
@@ -98,5 +99,6 @@ in
         ${cfg.package}/bin/monetdbd set listenaddr=${cfg.listenAddress} ${cfg.dataDir}
       '';
     };
+
   };
 }

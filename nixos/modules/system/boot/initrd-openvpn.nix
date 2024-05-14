@@ -39,6 +39,7 @@ in
       '';
       example = literalExpression "./configuration.ovpn";
     };
+
   };
 
   config = mkIf (config.boot.initrd.network.enable && cfg.enable) {
@@ -96,4 +97,5 @@ in
       serviceConfig.Type = "notify";
     };
   };
+
 }

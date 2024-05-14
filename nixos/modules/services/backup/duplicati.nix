@@ -85,5 +85,6 @@ in
       };
     };
     users.groups.duplicati.gid = config.ids.gids.duplicati;
+
   };
 }

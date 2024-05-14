@@ -30,6 +30,7 @@ let
             description = "atom (null, bool, int, float or string)";
           };
       in
+
       attrsOf (oneOf [
         singleAtom
         (listOf (nonEmptyListOf singleAtom))
@@ -57,12 +58,14 @@ let
           if (hasInfix " " str) && !(hasPrefix "\"" str && hasSuffix "\"" str) then "\"${str}\"" else str
         );
       in
+
       pkgs.writeText name (
         lib.generators.toKeyValue {
           mkKeyValue = generators.mkKeyValueDefault { inherit mkValueString; } " ";
           listsAsDuplicateKeys = true;
         } normalizedValue
       );
+
   };
 
   installSecrets =
@@ -169,6 +172,7 @@ let
             Lines which would be added inside ups.conf for handling this UPS.
           '';
         };
+
       };
 
       config = {
@@ -516,6 +520,7 @@ in
         '';
         type = with types; attrsOf (submodule userOptions);
       };
+
     };
   };
 
@@ -653,5 +658,6 @@ in
         users.groups."nut" =
           { gid = 84; };
     */
+
   };
 }

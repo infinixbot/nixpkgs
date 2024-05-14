@@ -163,6 +163,7 @@ in
         forwarding rule is forwarded.
       '';
     };
+
   };
 
   config = mkIf config.networking.nat.enable {
@@ -205,5 +206,6 @@ in
           "net.ipv6.conf.default.forwarding" = mkOverride 99 true;
         };
     };
+
   };
 }

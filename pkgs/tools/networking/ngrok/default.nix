@@ -27,6 +27,7 @@ let
   versionInfo = versions."${os}-${arch}";
   inherit (versionInfo) version sha256 url;
 in
+
 stdenv.mkDerivation {
   pname = "ngrok";
   inherit version;

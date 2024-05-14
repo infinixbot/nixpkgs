@@ -19,6 +19,7 @@ let
   };
   configFile = format.generate "merecat.conf" cfg.settings;
 in
+
 {
 
   options.services.merecat = {
@@ -38,6 +39,7 @@ in
         directory = "/srv/www";
       };
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -52,5 +54,7 @@ in
         AmbientCapabilities = lib.mkIf ((cfg.settings.port or 80) < 1024) [ "CAP_NET_BIND_SERVICE" ];
       };
     };
+
   };
+
 }

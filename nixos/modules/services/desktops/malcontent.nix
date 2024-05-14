@@ -18,7 +18,9 @@ with lib;
     services.malcontent = {
 
       enable = mkEnableOption "Malcontent, parental control support for applications";
+
     };
+
   };
 
   ###### implementation
@@ -36,5 +38,7 @@ with lib;
     ];
 
     services.accounts-daemon.enable = true;
+
   };
+
 }

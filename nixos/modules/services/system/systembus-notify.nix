@@ -10,6 +10,7 @@ let
 
   inherit (lib) mkEnableOption mkIf;
 in
+
 {
   options.services.systembus-notify = {
     enable = mkEnableOption ''

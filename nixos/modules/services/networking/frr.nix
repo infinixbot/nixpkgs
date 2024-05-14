@@ -223,7 +223,9 @@ in
           });
       in
       listToAttrs (map frrService (filter isEnabled allServices));
+
   };
 
   meta.maintainers = with lib.maintainers; [ woffs ];
+
 }

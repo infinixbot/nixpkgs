@@ -79,6 +79,7 @@ let
           It must contain a `xkb_types "name" { ... }` block.
         '';
       };
+
     };
   };
 
@@ -129,6 +130,7 @@ in
         <https://wiki.archlinux.org/index.php/X_KeyBoard_extension#Basic_examples>
       '';
     };
+
   };
 
   ###### implementation
@@ -147,5 +149,7 @@ in
         config.services.xserver.displayManager.startx.enable
         || config.services.xserver.displayManager.sx.enable;
     };
+
   };
+
 }

@@ -12,6 +12,7 @@ let
 
   workingDir = "/var/lib/${cfg.stateDir}";
 in
+
 {
   port = 9896;
   extraOpts = {

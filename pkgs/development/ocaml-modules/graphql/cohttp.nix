@@ -39,4 +39,5 @@ buildDunePackage rec {
   meta = graphql.meta // {
     description = "Run GraphQL servers with “cohttp”";
   };
+
 }

@@ -197,6 +197,7 @@ in
           for the available options.
         '';
       };
+
     };
 
     services.pdns-recursor.resolveNamecoin = mkOption {
@@ -206,6 +207,7 @@ in
         Resolve `.bit` top-level domains using ncdns and namecoin.
       '';
     };
+
   };
 
   ###### implementation
@@ -287,7 +289,9 @@ in
         fi
       '';
     };
+
   };
 
   meta.maintainers = with lib.maintainers; [ rnhmjoj ];
+
 }

@@ -367,6 +367,7 @@ in
         scope or implication of the `--graceful` option may change in the future.
       '';
     };
+
   };
 
   config = mkIf cfg.enable {

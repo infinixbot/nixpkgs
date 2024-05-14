@@ -92,6 +92,7 @@ let
         a' = normalise a;
         b' = normalise b;
       in
+
       hasPrefix a'.mountPoint b'.device
       || hasPrefix a'.mountPoint b'.mountPoint
       || any (hasPrefix a'.mountPoint) b'.depends;

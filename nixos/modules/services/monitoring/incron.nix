@@ -62,7 +62,9 @@ in
         example = literalExpression "[ pkgs.rsync ]";
         description = "Extra packages available to the system incrontab.";
       };
+
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -99,4 +101,5 @@ in
       serviceConfig.ExecStart = "${pkgs.incron}/bin/incrond --foreground";
     };
   };
+
 }

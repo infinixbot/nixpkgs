@@ -111,6 +111,7 @@ let
 
   scopePkgs = lib.mapAttrs scopePkg sources;
 in
+
 stdenv.mkDerivation rec {
   pname = "picoscope";
   inherit (sources.picoscope) version;

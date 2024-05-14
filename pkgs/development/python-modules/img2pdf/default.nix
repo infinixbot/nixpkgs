@@ -54,6 +54,7 @@ buildPythonPackage rec {
       url = "https://salsa.debian.org/debian/img2pdf/-/raw/4a7dbda0f473f7c5ffcaaf68ea4ad3f435e0920d/debian/patches/fix_tests.patch";
       hash = "sha256-A1zK6yINhS+dvyckZjqoSO1XJRTaf4OXFdq5ufUrBs8=";
     })
+
   ];
 
   nativeBuildInputs = [ setuptools ];

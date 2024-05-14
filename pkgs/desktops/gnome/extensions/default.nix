@@ -65,6 +65,7 @@ let
       builtins.listToAttrs
     ];
 in
+
 rec {
   # Remember to import all these in all-packages.nix
   gnome38Extensions = mapUuidNames (produceExtensionsList "38");
@@ -106,4 +107,5 @@ rec {
     # Make the set "public"
     lib.recurseIntoAttrs
   ];
+
 }

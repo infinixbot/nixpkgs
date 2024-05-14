@@ -96,6 +96,7 @@ let
 
   stateDir = "/var/lib/unifi-video";
 in
+
 {
 
   options.services.unifi-video = {
@@ -153,6 +154,7 @@ in
       defaultText = literalExpression ''"''${config.${opt.dataDir}}/unifi-video.pid"'';
       description = "Location of unifi-video pid file.";
     };
+
   };
 
   config = mkIf cfg.enable {

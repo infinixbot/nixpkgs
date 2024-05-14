@@ -169,6 +169,7 @@ in
 
       mapTestEqual = mapAttrsRecursive testEqual;
     in
+
     mapTestEqual {
       boehmgc = nativePlatforms;
       libffi = nativePlatforms;

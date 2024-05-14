@@ -123,6 +123,7 @@ let
     echo "" >> ${fileForGitCommands}
   '';
 in
+
 {
   name = "generic-update-script";
   command = [

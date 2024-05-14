@@ -74,6 +74,7 @@ in
         this exporter is running.
       '';
     };
+
   };
   serviceOpts = {
     environment.DATA_SOURCE_NAME = cfg.dataSourceName;

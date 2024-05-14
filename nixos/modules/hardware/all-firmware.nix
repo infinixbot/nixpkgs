@@ -84,6 +84,7 @@ in
         default = cfg.enableRedistributableFirmware || cfg.enableAllFirmware;
         defaultText = literalMD "Enabled if proprietary firmware is allowed via {option}`enableRedistributableFirmware` or {option}`enableAllFirmware`.";
       };
+
   };
 
   ###### implementation

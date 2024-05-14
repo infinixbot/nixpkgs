@@ -279,4 +279,5 @@ let
       tokodon = callPackage ./tokodon.nix { };
     };
 in
+
 lib.makeScope libsForQt5.newScope packages

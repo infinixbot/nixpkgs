@@ -50,5 +50,6 @@
         source = "${pkgs.cdrtools}/bin/cdrecord";
       };
     };
+
   };
 }

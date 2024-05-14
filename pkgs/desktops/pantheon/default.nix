@@ -224,6 +224,7 @@ lib.makeScope pkgs.newScope (
     # specifically third party switchboard plugins and wingpanel indicators.
     # Please call these packages in pkgs/top-level/all-packages.nix instead of this file.
     # https://github.com/NixOS/nixpkgs/issues/115222#issuecomment-906868654
+
   }
 )
 // lib.optionalAttrs config.allowAliases {
@@ -247,4 +248,5 @@ lib.makeScope pkgs.newScope (
   gnome-bluetooth-contract = throw "pantheon.gnome-bluetooth-contract has been removed, abandoned by upstream."; # added 2022-06-30
 
   notes-up = throw "The ‘pantheon.notes-up’ alias was removed on 2022-02-02, please use ‘pkgs.notes-up’ directly."; # added 2021-12-18
+
 }

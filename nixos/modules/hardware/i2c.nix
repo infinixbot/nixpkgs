@@ -44,7 +44,9 @@ in
         destination = "/etc/udev/rules.d/70-i2c.rules";
       }
     );
+
   };
 
   meta.maintainers = [ maintainers.rnhmjoj ];
+
 }

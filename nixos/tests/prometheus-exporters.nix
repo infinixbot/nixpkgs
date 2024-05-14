@@ -1763,6 +1763,7 @@ mapAttrs (
     let
       nodeName = testConfig.nodeName or exporter;
     in
+
     {
       name = "prometheus-${exporter}-exporter";
 

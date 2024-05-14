@@ -48,5 +48,6 @@ import ./make-test-python.nix (
           "grep -q changeme /var/run/go-neb/config.yaml",
       )
     '';
+
   }
 )

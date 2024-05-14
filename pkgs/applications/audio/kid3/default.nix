@@ -44,6 +44,7 @@ let
     else
       "kid3-cli";
 in
+
 stdenv.mkDerivation (finalAttrs: {
   pname = "kid3";
   version = "3.9.5";

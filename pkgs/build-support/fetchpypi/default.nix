@@ -39,8 +39,10 @@ let
           throw "Unsupported format ${format}"
       );
     in
+
     compute (builtins.removeAttrs attrs [ "format" ]);
 in
+
 makeOverridable (
   {
     format ? "setuptools",

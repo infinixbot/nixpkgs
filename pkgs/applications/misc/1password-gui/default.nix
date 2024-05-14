@@ -74,6 +74,7 @@ let
     mainProgram = "1password";
   };
 in
+
 if stdenv.isDarwin then
   callPackage ./darwin.nix {
     inherit

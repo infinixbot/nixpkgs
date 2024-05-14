@@ -564,6 +564,7 @@ in
               `none`.
             '';
           };
+
         };
 
         cache32Bit = mkOption {
@@ -597,8 +598,11 @@ in
           default = false;
           description = "Use embedded bitmaps in fonts like Calibri.";
         };
+
       };
+
     };
+
   };
   config = mkMerge [
     (mkIf cfg.enable {
@@ -641,4 +645,5 @@ in
     })
     (mkIf cfg.enable { fonts.fontconfig.confPackages = [ confPkg ]; })
   ];
+
 }

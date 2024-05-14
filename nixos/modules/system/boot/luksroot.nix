@@ -606,6 +606,7 @@ let
     )
   );
 in
+
 {
   imports = [
     (mkRemovedOptionModule [
@@ -1048,6 +1049,7 @@ in
         Enables support for authenticating with FIDO2 devices.
       '';
     };
+
   };
 
   config = mkIf (luks.devices != { } || luks.forceLuksSupportInInitrd) {
@@ -1227,6 +1229,7 @@ in
         "${config.boot.initrd.systemd.package}/bin/systemd-cryptsetup"
         "${config.boot.initrd.systemd.package}/lib/systemd/system-generators/systemd-cryptsetup-generator"
       ];
+
     };
     # We do this because we need the udev rules from the package
     boot.initrd.services.lvm.enable = true;

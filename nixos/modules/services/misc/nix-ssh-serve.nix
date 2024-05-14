@@ -46,7 +46,9 @@ in
         default = "ssh";
         description = "The specific Nix-over-SSH protocol to use.";
       };
+
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -73,5 +75,6 @@ in
     '';
 
     users.users.nix-ssh.openssh.authorizedKeys.keys = cfg.keys;
+
   };
 }

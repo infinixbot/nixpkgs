@@ -40,6 +40,7 @@ home-assistant.python.pkgs.buildPythonPackage (
         packaging
       ]
       ++ (args.nativeCheckInputs or [ ]);
+
   }
   // builtins.removeAttrs args [ "nativeCheckInputs" ]
 )

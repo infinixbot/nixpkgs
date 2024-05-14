@@ -53,6 +53,7 @@ let
       pinentryMkDerivation =
         if (lib.elem "qt" buildFlavors) then libsForQt5.mkDerivation else stdenv.mkDerivation;
     in
+
     pinentryMkDerivation rec {
       pname = "pinentry-${pinentryExtraPname}";
       version = "1.2.1";

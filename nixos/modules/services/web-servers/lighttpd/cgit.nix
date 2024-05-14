@@ -60,6 +60,7 @@ in
         http://git.zx2c4.com/cgit/tree/cgitrc.5.txt
       '';
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -94,5 +95,7 @@ in
       mkdir -p /var/cache/cgit
       chown lighttpd:lighttpd /var/cache/cgit
     '';
+
   };
+
 }

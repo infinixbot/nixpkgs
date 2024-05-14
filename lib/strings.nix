@@ -1238,6 +1238,7 @@ rec {
 
       generalError = "toInt: Could not convert ${escapeNixString str} to int.";
     in
+
     # Error on presence of non digit characters.
     if strippedInput == null then
       throw generalError
@@ -1292,6 +1293,7 @@ rec {
 
       generalError = "toIntBase10: Could not convert ${escapeNixString str} to int.";
     in
+
     # Error on presence of non digit characters.
     if strippedInput == null then
       throw generalError
@@ -1516,6 +1518,7 @@ rec {
         else
           xinfix == yinfix || xdelr == ydell || xdell == ydelr;
     in
+
     k:
     if k <= 0 then
       a: b: a == b

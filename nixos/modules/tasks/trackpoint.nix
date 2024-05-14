@@ -63,7 +63,9 @@ with lib;
           Some newer devices (example x1c6) use "TPPS/2 Elan TrackPoint".
         '';
       };
+
     };
+
   };
 
   ###### implementation

@@ -43,6 +43,7 @@ let
 
   daemonConfFile = pkgs.writeText "usbguard-daemon-conf" daemonConf;
 in
+
 {
 
   ###### interface
@@ -68,6 +69,7 @@ in
 
           For more details see {manpage}`usbguard-rules.conf(5)`.
         '';
+
       };
       rules = mkOption {
         type = types.nullOr types.lines;

@@ -205,6 +205,7 @@ in
             ExecStop = "${pkgs.coreutils}/bin/kill -INT $MAINPID";
           };
         };
+
       };
 
       users.users.xrdp = {
@@ -218,6 +219,8 @@ in
         allowNullPassword = true;
         startSession = true;
       };
+
     })
   ];
+
 }

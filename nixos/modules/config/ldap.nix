@@ -219,7 +219,9 @@ in
           {option}`users.ldap.daemon.extraConfig` instead.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -308,6 +310,7 @@ in
         };
       })
     ];
+
   };
 
   imports = [

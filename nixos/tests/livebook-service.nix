@@ -15,6 +15,7 @@ import ./make-test-python.nix (
               LIVEBOOK_PORT = 20123;
               LIVEBOOK_COOKIE = "chocolate chip";
               LIVEBOOK_TOKEN_ENABLED = true;
+
             };
             environmentFile = pkgs.writeText "livebook.env" ''
               LIVEBOOK_PASSWORD = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"

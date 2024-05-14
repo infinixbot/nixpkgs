@@ -39,7 +39,9 @@ in
           List of packages containing tracker3 subcommands.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -62,5 +64,7 @@ in
         in
         "${subcommandPackagesTree}/libexec/tracker3";
     };
+
   };
+
 }

@@ -8,6 +8,7 @@
 let
   cfg = config.programs.xfconf;
 in
+
 {
   meta = {
     maintainers = lib.teams.xfce.members;

@@ -20,4 +20,5 @@ buildPythonPackage rec {
     maintainers = with maintainers; [ domenkozar ];
     platforms = platforms.all;
   };
+
 }

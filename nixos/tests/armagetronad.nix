@@ -26,6 +26,7 @@ let
       test-support.displayManager.auto.user = user;
     };
 in
+
 makeTest {
   name = "armagetronad";
   meta = with pkgs.lib.maintainers; {
@@ -281,4 +282,5 @@ makeTest {
         )
         srv.node.wait_until_fails(f"ss --numeric --udp --listening | grep -q {srv.port}")
     '';
+
 }

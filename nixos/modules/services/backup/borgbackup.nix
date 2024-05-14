@@ -293,6 +293,7 @@ let
     '';
   };
 in
+
 {
   meta.maintainers = with maintainers; [ dotlambda ];
   meta.doc = ./borgbackup.md;
@@ -832,6 +833,7 @@ in
               default = null;
               example = "100G";
             };
+
           };
         }
       )

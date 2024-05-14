@@ -21,6 +21,7 @@ let
   engineSourceName = engine.src.name or "engine";
   modSourceName = mod.src.name or "mod";
 in
+
 # Based on: https://build.opensuse.org/package/show/home:fusion809/openra-ura
 stdenv.mkDerivation (
   lib.recursiveUpdate packageAttrs rec {

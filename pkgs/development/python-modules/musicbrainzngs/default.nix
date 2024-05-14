@@ -30,4 +30,5 @@ buildPythonPackage rec {
     license = licenses.bsd2;
     maintainers = with maintainers; [ domenkozar ];
   };
+
 }

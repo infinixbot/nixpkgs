@@ -829,4 +829,5 @@ rec {
   # limit is specified by UEFI and enforced by systemd-repart.
   # Corresponds to GPT_LABEL_MAX from systemd's gpt.h.
   GPTMaxLabelLength = 36;
+
 }

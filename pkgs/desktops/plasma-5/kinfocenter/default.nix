@@ -40,6 +40,7 @@ let
 
   qdbus = "${getBin qttools}/bin/qdbus";
 in
+
 mkDerivation {
   pname = "kinfocenter";
 

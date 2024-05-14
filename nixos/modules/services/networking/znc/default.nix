@@ -66,12 +66,14 @@ let
               [ "<${name} ${subname}>" ] ++ map (line: "\t${line}") (toLines value.${subname}) ++ [ "</${name}>" ]
             )
           ) (filter (v: v != null) (attrNames value));
+
         }
         .${builtins.typeOf value};
 
       # One level "above" encode, acts upon a set and uses encode on each name,value pair
       toLines = set: concatMap (name: encode name set.${name}) (sortedAttrs set);
     in
+
     concatStringsSep "\n" (toLines cfg.config);
 
   semanticTypes = with types; rec {
@@ -353,5 +355,6 @@ in
         members = [ defaultUser ];
       };
     };
+
   };
 }

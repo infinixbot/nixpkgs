@@ -37,6 +37,7 @@ let
     nixpkgs = nixpkgsSrc;
   }) [ "unstable" ];
 in
+
 rec {
 
   nixos = {
@@ -156,4 +157,5 @@ rec {
         ])
       ];
     };
+
 }

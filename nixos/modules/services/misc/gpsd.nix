@@ -14,6 +14,7 @@ let
   gid = config.ids.gids.gpsd;
   cfg = config.services.gpsd;
 in
+
 {
 
   ###### interface
@@ -114,7 +115,9 @@ in
           Check gpsd(8) mangpage for possible arguments.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -154,5 +157,7 @@ in
           '';
       };
     };
+
   };
+
 }

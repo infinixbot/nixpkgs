@@ -24,6 +24,7 @@ let
     )
   '';
 in
+
 lib.mapAttrs mkInstallScript {
   SwiftSystem = ''
     add_library(SwiftSystem::SystemPackage STATIC IMPORTED)

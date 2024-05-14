@@ -31,6 +31,7 @@ let
     text = (lib.generators.toYAML { } str);
   };
 in
+
 stdenv.mkDerivation {
   name = "keter-bundle";
   buildCommand = ''

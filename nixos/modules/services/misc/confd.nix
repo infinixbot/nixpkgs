@@ -20,6 +20,7 @@ let
     watch = ${boolToString cfg.watch}
   '';
 in
+
 {
   options.services.confd = {
     enable = mkEnableOption "confd, a service to manage local application configuration files using templates and data from etcd/consul/redis/zookeeper";

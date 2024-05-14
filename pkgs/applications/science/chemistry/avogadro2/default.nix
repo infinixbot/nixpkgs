@@ -20,6 +20,7 @@ let
     hash = "sha256-AR/y70zeYR9xBzWDB5JXjJdDM+NLOX6yxCQte2lYN/U=";
   };
 in
+
 stdenv.mkDerivation rec {
   pname = "avogadro2";
   version = "1.99.0";

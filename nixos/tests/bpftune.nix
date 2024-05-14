@@ -20,5 +20,6 @@ import ./make-test-python.nix (
       machine.wait_for_unit("bpftune.service")
       machine.wait_for_console_text("bpftune works")
     '';
+
   }
 )

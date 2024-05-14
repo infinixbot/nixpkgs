@@ -86,7 +86,9 @@ in
           verbatim to the configuration file.
         '';
       };
+
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -115,5 +117,7 @@ in
         User = "polipo";
       };
     };
+
   };
+
 }

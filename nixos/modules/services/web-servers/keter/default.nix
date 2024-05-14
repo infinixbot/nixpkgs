@@ -148,6 +148,7 @@ in
         example = "MY_AWS_KEY=$(cat /run/keys/AWS_ACCESS_KEY_ID)";
       };
     };
+
   };
 
   config = lib.mkIf cfg.enable (
@@ -181,6 +182,7 @@ in
         exec ${cfg.bundle.executable}
       '';
     in
+
     {
       systemd.services.keter = {
         description = "keter app loader";

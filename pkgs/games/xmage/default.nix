@@ -27,6 +27,7 @@ stdenv.mkDerivation (finalAttrs: {
       # strVersion = lib.substring 0 6 finalAttrs.version;
       strVersion = "1.4.50";
     in
+
     ''
       mkdir -p $out/bin
       cp -rv ./* $out
@@ -49,4 +50,5 @@ stdenv.mkDerivation (finalAttrs: {
     ];
     homepage = "http://xmage.de/";
   };
+
 })

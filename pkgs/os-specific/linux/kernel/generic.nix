@@ -292,6 +292,7 @@ let
         }
       );
     in
+
     kernel.overrideAttrs (
       finalAttrs: previousAttrs: {
 
@@ -371,6 +372,7 @@ let
               ]
               ++ kernelTests;
           };
+
       }
     )
   );

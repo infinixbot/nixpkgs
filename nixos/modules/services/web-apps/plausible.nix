@@ -10,6 +10,7 @@ with lib;
 let
   cfg = config.services.plausible;
 in
+
 {
   options.services.plausible = {
     enable = mkEnableOption "plausible";

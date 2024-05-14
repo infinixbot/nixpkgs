@@ -58,6 +58,7 @@ let
           type = types.str;
           description = "What to run.";
         };
+
       };
     };
 in
@@ -105,7 +106,9 @@ in
           Literal contents to append to the end of {command}`triggerhappy` configuration file.
         '';
       };
+
     };
+
   };
 
   ###### implementation
@@ -138,5 +141,7 @@ in
         '';
       }
     );
+
   };
+
 }

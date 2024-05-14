@@ -46,4 +46,5 @@ in
     environment.etc."gsignond.conf".source = "${package}/etc/gsignond.conf";
     services.dbus.packages = [ package ];
   };
+
 }

@@ -59,6 +59,7 @@ let
       };
       os-release = pkgs.writeText "os-release" (envFileGenerator (filterNull os-release-params));
     in
+
     stdenv.mkDerivation {
       pname = "root-fs-scaffold";
       inherit version;

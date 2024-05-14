@@ -31,6 +31,7 @@ let
           default = { };
           description = "Extra SSL configuration options.";
         };
+
       };
     };
 
@@ -479,7 +480,9 @@ let
           default = "";
           description = "Additional virtual host specific configuration";
         };
+
       };
+
     };
 in
 
@@ -712,6 +715,7 @@ in
             enabled = true;
           };
         };
+
       };
 
       ssl = mkOption {
@@ -747,6 +751,7 @@ in
         default = "";
         description = "Additional prosody configuration";
       };
+
     };
   };
 
@@ -949,6 +954,7 @@ in
         (mkIf (cfg.dataDir == "/var/lib/prosody") { StateDirectory = "prosody"; })
       ];
     };
+
   };
 
   meta.doc = ./prosody.md;

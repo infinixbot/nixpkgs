@@ -343,4 +343,5 @@ in
       ${attrsToSection x.bridgeVLANConfig}
     '')
     + def.extraConfig;
+
 }

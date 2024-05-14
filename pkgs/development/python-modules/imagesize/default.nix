@@ -19,4 +19,5 @@ buildPythonPackage rec {
     homepage = "https://github.com/shibukawa/imagesize_py";
     license = with licenses; [ mit ];
   };
+
 }

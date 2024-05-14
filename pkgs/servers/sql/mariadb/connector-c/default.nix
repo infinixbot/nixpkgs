@@ -18,6 +18,7 @@ with lib;
 let
   isVer33 = versionAtLeast version "3.3";
 in
+
 stdenv.mkDerivation {
   pname = "mariadb-connector-c";
   inherit version;

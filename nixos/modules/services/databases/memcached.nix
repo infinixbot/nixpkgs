@@ -61,6 +61,7 @@ in
         description = "A list of extra options that will be added as a suffix when running memcached.";
       };
     };
+
   };
 
   ###### implementation
@@ -127,4 +128,5 @@ in
       ''
     )
   ];
+
 }

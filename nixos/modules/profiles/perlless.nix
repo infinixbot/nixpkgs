@@ -27,4 +27,5 @@
   # Check that the system does not contain a Nix store path that contains the
   # string "perl".
   system.forbiddenDependenciesRegexes = [ "perl" ];
+
 }

@@ -51,6 +51,7 @@ let
     ${concatStringsSep "\n" (mapAttrsToList (name: value: "CONFIG_${name}=${toStr value}") cfg.config)}
   '';
 in
+
 {
   imports = [
     (mkRenamedOptionModule
@@ -105,6 +106,7 @@ in
           }
         '';
       };
+
     };
   };
 
@@ -176,5 +178,6 @@ in
             "function sys.format_bytes" = "execute";
           };
         };
+
   };
 }

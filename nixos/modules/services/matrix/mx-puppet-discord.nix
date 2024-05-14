@@ -14,6 +14,7 @@ let
   settingsFormat = pkgs.formats.json { };
   settingsFile = settingsFormat.generate "mx-puppet-discord-config.json" cfg.settings;
 in
+
 {
   options = {
     services.mx-puppet-discord = {

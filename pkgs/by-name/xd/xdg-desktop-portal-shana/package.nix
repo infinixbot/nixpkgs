@@ -39,4 +39,5 @@ rustPlatform.buildRustPackage rec {
     platforms = platforms.linux;
     maintainers = [ maintainers.samuelefacenda ];
   };
+
 }

@@ -61,6 +61,7 @@ in
         '';
       };
     };
+
   };
 
   config = mkIf (cfg.enable && config.networking.nftables.enable) {
@@ -197,5 +198,7 @@ in
         }
       ''}
     '';
+
   };
+
 }

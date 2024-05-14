@@ -692,6 +692,7 @@ in
         # If we have a folder or symlink with Forgejo locales, remove it
         # And symlink the current Forgejo locales in place
         "L+ '${cfg.stateDir}/conf/locale' - - - - ${cfg.package.out}/locale"
+
       ]
       ++ optionals cfg.lfs.enable [
         "d '${cfg.lfs.contentDir}' 0750 ${cfg.user} ${cfg.group} - -"

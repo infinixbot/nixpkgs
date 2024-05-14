@@ -35,6 +35,7 @@ import ./make-test-python.nix (
       ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFpxm7PUQsZB2Ejs8Xp0YVp8IOW+HylIRzhweORbRCMv root@client
     '';
   in
+
   {
     name = "borgbackup";
     meta = with pkgs.lib; {
@@ -113,6 +114,7 @@ import ./make-test-python.nix (
               startAt = [ ];
               environment.BORG_RSH = "ssh -oStrictHostKeyChecking=no -i /root/id_ed25519";
             };
+
           };
         };
 

@@ -17315,4 +17315,5 @@ final: prev: {
     };
     meta.homepage = "https://github.com/jhradilek/vim-snippets/";
   };
+
 }

@@ -11,6 +11,7 @@ let
   cfg = config.services.corerad;
   settingsFormat = pkgs.formats.toml { };
 in
+
 {
   meta.maintainers = with maintainers; [ mdlayher ];
 

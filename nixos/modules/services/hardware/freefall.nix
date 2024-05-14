@@ -12,6 +12,7 @@ let
 
   cfg = config.services.freefall;
 in
+
 {
 
   options.services.freefall = {
@@ -33,6 +34,7 @@ in
         Device paths to all internal spinning hard drives.
       '';
     };
+
   };
 
   config =
@@ -55,10 +57,13 @@ in
           };
         };
     in
+
     mkIf cfg.enable {
 
       environment.systemPackages = [ cfg.package ];
 
       systemd.services = builtins.listToAttrs (map mkService cfg.devices);
+
     };
+
 }

@@ -40,6 +40,7 @@ let
 
   binName = "squeezelite${optionalString pulseSupport "-pulse"}";
 in
+
 stdenv.mkDerivation {
   # the nixos module uses the pname as the binary name
   pname = binName;

@@ -107,6 +107,7 @@ in
       default = "";
       description = "Verbatim contents of {file}`cntlm.conf`.";
     };
+
   };
 
   ###### implementation

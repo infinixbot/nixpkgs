@@ -216,6 +216,7 @@ let
     exec ${updateScript_python}/bin/python ${toString ./update.py}
   '';
 in
+
 {
   # Supported releases (as of 2023-04-19).
   # v16 and v19 have been dropped because they go EOL before the NixOS 23.11 release.
@@ -235,5 +236,6 @@ in
       inherit updateScript;
     };
   });
+
 }
 // versions

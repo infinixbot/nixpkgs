@@ -9,6 +9,7 @@ with lib;
 let
   cfg = config.services.vector;
 in
+
 {
   options.services.vector = {
     enable = mkEnableOption "Vector, a high-performance observability data pipeline";

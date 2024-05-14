@@ -133,4 +133,5 @@ self: super: {
     url = "https://github.com/vimus/libmpd-haskell/pull/138.patch";
     sha256 = "Q4fA2J/Tq+WernBo+UIMdj604ILOMlIYkG4Pr046DfM=";
   }) super.libmpd;
+
 }

@@ -243,6 +243,7 @@ in
         Convenience option to access partitions with added closures.
       '';
     };
+
   };
 
   config = {
@@ -371,5 +372,6 @@ in
       nikstur
       willibutz
     ];
+
   };
 }

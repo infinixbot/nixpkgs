@@ -206,6 +206,7 @@ let
 
   systemctl = "/run/current-system/systemd/bin/systemctl";
 in
+
 {
   options = {
     networking.wireless = {
@@ -460,6 +461,7 @@ in
                   for available options.
                 '';
               };
+
             };
           }
         );

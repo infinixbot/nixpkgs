@@ -504,6 +504,7 @@ in
         '';
       };
     };
+
   };
 
   ###### implementation
@@ -686,6 +687,7 @@ in
 
       unitConfig.RequiresMountsFor = "${cfg.dataDir}";
     };
+
   };
 
   meta.doc = ./postgresql.md;

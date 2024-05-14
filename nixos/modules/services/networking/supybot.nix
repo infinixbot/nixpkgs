@@ -78,7 +78,9 @@ in
         '';
         example = literalExpression "p: [ p.lxml p.requests ]";
       };
+
     };
+
   };
 
   config = mkIf cfg.enable {
@@ -163,5 +165,6 @@ in
       ++ (flip mapAttrsToList cfg.plugins (
         name: dest: "L+ '${cfg.stateDir}/plugins/${name}' - - - - ${dest}"
       ));
+
   };
 }

@@ -14,6 +14,7 @@ let
   name = "tmux-sessionizer";
   version = "0.4.2";
 in
+
 rustPlatform.buildRustPackage {
   pname = name;
   inherit version;

@@ -43,5 +43,6 @@
     (lib.mkIf (config.boot.supportedFilesystems.unionfs-fuse or false) {
       system.fsPackages = [ pkgs.unionfs-fuse ];
     })
+
   ];
 }

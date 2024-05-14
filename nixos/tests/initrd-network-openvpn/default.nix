@@ -23,6 +23,7 @@ import ../make-test-python.nix (
           </secret>
         '';
       in
+
       {
 
         # Minimal test case to check a successful boot, even with invalid config

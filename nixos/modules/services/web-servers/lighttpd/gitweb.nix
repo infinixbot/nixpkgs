@@ -11,6 +11,7 @@ let
   cfg = config.services.gitweb;
   package = pkgs.gitweb.override (optionalAttrs cfg.gitwebTheme { gitwebTheme = true; });
 in
+
 {
 
   options.services.lighttpd.gitweb = {
@@ -22,6 +23,7 @@ in
         If true, enable gitweb in lighttpd. Access it at http://yourserver/gitweb
       '';
     };
+
   };
 
   config = mkIf config.services.lighttpd.gitweb.enable {
@@ -52,5 +54,7 @@ in
           )
       }
     '';
+
   };
+
 }

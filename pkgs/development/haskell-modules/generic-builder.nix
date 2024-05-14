@@ -910,6 +910,7 @@ lib.fix (
           };
 
         env = envFunc { };
+
       };
 
       meta =
@@ -923,6 +924,7 @@ lib.fix (
         // optionalAttrs (args ? badPlatforms) { inherit badPlatforms; }
         // optionalAttrs (args ? changelog) { inherit changelog; }
         // optionalAttrs (args ? mainProgram) { inherit mainProgram; };
+
     }
     // optionalAttrs (args ? preCompileBuildDriver) { inherit preCompileBuildDriver; }
     // optionalAttrs (args ? postCompileBuildDriver) { inherit postCompileBuildDriver; }

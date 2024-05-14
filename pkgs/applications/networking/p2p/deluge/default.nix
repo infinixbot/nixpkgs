@@ -112,6 +112,7 @@ let
       };
     };
 in
+
 rec {
   deluge-gtk = generic {
     pname = "deluge-gtk";

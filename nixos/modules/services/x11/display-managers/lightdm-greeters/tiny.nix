@@ -13,6 +13,7 @@ let
   ldmcfg = dmcfg.lightdm;
   cfg = ldmcfg.greeters.tiny;
 in
+
 {
   options = {
 
@@ -55,7 +56,9 @@ in
           Section to describe style and ui.
         '';
       };
+
     };
+
   };
 
   config = mkIf (ldmcfg.enable && cfg.enable) {
@@ -86,5 +89,6 @@ in
         '';
       }
     ];
+
   };
 }

@@ -123,7 +123,9 @@ in
         default = false;
         description = "Open ports in the firewall for the TeamSpeak3 serverquery (administration) system. Requires openFirewall.";
       };
+
     };
+
   };
 
   ###### implementation

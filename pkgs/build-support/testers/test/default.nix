@@ -15,6 +15,7 @@ let
     label = "test";
   };
 in
+
 lib.recurseIntoAttrs {
   hasPkgConfigModules = pkgs.callPackage ../hasPkgConfigModules/tests.nix { };
 

@@ -35,7 +35,9 @@ in
         description = "Control file to customize your shell behavior.";
         type = lib.types.lines;
       };
+
     };
+
   };
 
   config = lib.mkIf cfg.enable {
@@ -73,5 +75,7 @@ in
       "/run/current-system/sw/bin/xonsh"
       "${cfg.package}/bin/xonsh"
     ];
+
   };
+
 }

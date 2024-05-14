@@ -20,5 +20,6 @@ in
 
     # fsck.erofs is currently experimental and should not be run as a
     # privileged user. Thus, it is not included in the initrd.
+
   };
 }

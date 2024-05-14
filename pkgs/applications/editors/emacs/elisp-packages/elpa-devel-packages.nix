@@ -135,7 +135,9 @@ let
 
       elpaDevelPackages = super // overrides;
     in
+
     elpaDevelPackages // { inherit elpaBuild; }
   );
 in
+
 (generateElpa { }) // { __attrsFailEvaluation = true; }

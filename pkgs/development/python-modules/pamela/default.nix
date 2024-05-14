@@ -28,4 +28,5 @@ buildPythonPackage rec {
     homepage = "https://github.com/minrk/pamela";
     license = licenses.mit;
   };
+
 }

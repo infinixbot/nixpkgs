@@ -19,6 +19,7 @@ let
     hash = "sha256-bNmx/IqYPkA7YHvlYvHPmIMF/fkKtSXlZx1bjR3Neow=";
   };
 in
+
 rustPlatform.buildRustPackage rec {
   pname = "wash-cli";
   version = "0.24.0";
