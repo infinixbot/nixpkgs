@@ -1,11 +1,15 @@
 # GVfs
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
 
   cfg = config.services.gvfs;
-
 in
 
 {
@@ -23,12 +27,12 @@ in
       enable = lib.mkEnableOption "GVfs, a userspace virtual filesystem";
 
       # gvfs can be built with multiple configurations
-      package = lib.mkPackageOption pkgs [ "gnome" "gvfs" ] { };
-
+      package = lib.mkPackageOption pkgs [
+        "gnome"
+        "gvfs"
+      ] { };
     };
-
   };
-
 
   ###### implementation
 
@@ -46,7 +50,5 @@ in
 
     # Needed for unwrapped applications
     environment.sessionVariables.GIO_EXTRA_MODULES = [ "${cfg.package}/lib/gio/modules" ];
-
   };
-
 }

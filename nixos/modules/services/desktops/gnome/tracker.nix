@@ -1,6 +1,11 @@
 # Tracker daemon.
 
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   cfg = config.services.gnome.tracker;
@@ -34,11 +39,8 @@ in
           List of packages containing tracker3 subcommands.
         '';
       };
-
     };
-
   };
-
 
   ###### implementation
 
@@ -60,7 +62,5 @@ in
         in
         "${subcommandPackagesTree}/libexec/tracker3";
     };
-
   };
-
 }

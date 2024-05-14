@@ -6,7 +6,8 @@
 }:
 let
   cfg = config.programs.river;
-in {
+in
+{
   options.programs.river = {
     enable = lib.mkEnableOption "river, a dynamic tiling Wayland compositor";
 
@@ -41,8 +42,8 @@ in {
     };
   };
 
-  config =
-    lib.mkIf cfg.enable (lib.mkMerge [
+  config = lib.mkIf cfg.enable (
+    lib.mkMerge [
       {
         environment.systemPackages = lib.optional (cfg.package != null) cfg.package ++ cfg.extraPackages;
 
@@ -50,10 +51,14 @@ in {
         services.displayManager.sessionPackages = lib.optionals (cfg.package != null) [ cfg.package ];
 
         # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1050913
-        xdg.portal.config.river.default = lib.mkDefault [ "wlr" "gtk" ];
+        xdg.portal.config.river.default = lib.mkDefault [
+          "wlr"
+          "gtk"
+        ];
       }
       (import ./wayland-session.nix { inherit lib pkgs; })
-    ]);
+    ]
+  );
 
   meta.maintainers = with lib.maintainers; [ GaetanLepage ];
 }

@@ -1,5 +1,16 @@
-{ lib, stdenv, fetchurl, alsa-lib, fluidsynth, libjack2, cmake, pkg-config
-, qtbase, qttools, qtx11extras, wrapQtAppsHook
+{
+  lib,
+  stdenv,
+  fetchurl,
+  alsa-lib,
+  fluidsynth,
+  libjack2,
+  cmake,
+  pkg-config,
+  qtbase,
+  qttools,
+  qtx11extras,
+  wrapQtAppsHook,
 }:
 
 stdenv.mkDerivation rec {
@@ -11,9 +22,20 @@ stdenv.mkDerivation rec {
     hash = "sha256-5lqmoUku4/8oKxlQio1nJtMu1kn42iK8mi0K3s9y70M=";
   };
 
-  nativeBuildInputs = [ cmake pkg-config wrapQtAppsHook ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+    wrapQtAppsHook
+  ];
 
-  buildInputs = [ alsa-lib fluidsynth libjack2 qtbase qttools qtx11extras ];
+  buildInputs = [
+    alsa-lib
+    fluidsynth
+    libjack2
+    qtbase
+    qttools
+    qtx11extras
+  ];
 
   meta = with lib; {
     description = "Fluidsynth GUI";

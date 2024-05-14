@@ -1,16 +1,17 @@
-{ lib
-, stdenv
-, fetchurl
-, pkg-config
-, cmake
-, extra-cmake-modules
-, gettext
-, zstd
-, fcitx5
-, librime
-, rime-data
-, symlinkJoin
-, rimeDataPkgs ? [ rime-data ]
+{
+  lib,
+  stdenv,
+  fetchurl,
+  pkg-config,
+  cmake,
+  extra-cmake-modules,
+  gettext,
+  zstd,
+  fcitx5,
+  librime,
+  rime-data,
+  symlinkJoin,
+  rimeDataPkgs ? [ rime-data ],
 }:
 
 stdenv.mkDerivation rec {
@@ -22,9 +23,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-Ll0T+bgGXYbg/POJmCeDVjkTvaNuR/bxw9hQJJV+CQo=";
   };
 
-  cmakeFlags = [
-    "-DRIME_DATA_DIR=${placeholder "out"}/share/rime-data"
-  ];
+  cmakeFlags = [ "-DRIME_DATA_DIR=${placeholder "out"}/share/rime-data" ];
 
   nativeBuildInputs = [
     cmake

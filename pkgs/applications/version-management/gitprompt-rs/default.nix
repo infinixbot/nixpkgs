@@ -26,7 +26,10 @@ rustPlatform.buildRustPackage rec {
     description = "Simple Git prompt";
     homepage = "https://github.com/9ary/gitprompt-rs";
     license = with licenses; [ mpl20 ];
-    maintainers = with maintainers; [ isabelroses cafkafk ];
+    maintainers = with maintainers; [
+      isabelroses
+      cafkafk
+    ];
     mainProgram = "gitprompt-rs";
   };
 }

@@ -1,6 +1,11 @@
 # GNOME Online Accounts daemon.
 
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
 
@@ -22,11 +27,8 @@
           a single sign-on framework for the GNOME desktop.
         '';
       };
-
     };
-
   };
-
 
   ###### implementation
 
@@ -35,7 +37,5 @@
     environment.systemPackages = [ pkgs.gnome-online-accounts ];
 
     services.dbus.packages = [ pkgs.gnome-online-accounts ];
-
   };
-
 }

@@ -29,20 +29,19 @@ stdenv.mkDerivation (finalAttrs: {
 
   inherit (libiconvReal) setupHooks;
 
-  postPatch =
-    ''
-      substitute ${./meson.build} meson.build --subst-var version
-      cp ${./meson.options} meson.options
+  postPatch = ''
+    substitute ${./meson.build} meson.build --subst-var version
+    cp ${./meson.options} meson.options
 
-      # Work around unnecessary private API usage in libcharset
-      mkdir -p libcharset/os && cat <<-header > libcharset/os/variant_private.h
-        #pragma once
-        #include <stdbool.h>
-        static inline bool os_variant_has_internal_content(const char*) { return false; }
-      header
+    # Work around unnecessary private API usage in libcharset
+    mkdir -p libcharset/os && cat <<-header > libcharset/os/variant_private.h
+      #pragma once
+      #include <stdbool.h>
+      static inline bool os_variant_has_internal_content(const char*) { return false; }
+    header
 
-      cp ${./nixpkgs_test.c} tests/libiconv/nixpkgs_test.c
-    '';
+    cp ${./nixpkgs_test.c} tests/libiconv/nixpkgs_test.c
+  '';
 
   strictDeps = true;
 

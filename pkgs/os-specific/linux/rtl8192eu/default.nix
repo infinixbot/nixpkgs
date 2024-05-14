@@ -1,10 +1,17 @@
-{ stdenv, lib, fetchFromGitHub, kernel, bc }:
+{
+  stdenv,
+  lib,
+  fetchFromGitHub,
+  kernel,
+  bc,
+}:
 
 with lib;
 
-let modDestDir = "$out/lib/modules/${kernel.modDirVersion}/kernel/drivers/net/wireless/realtek/rtl8192eu";
-
-in stdenv.mkDerivation {
+let
+  modDestDir = "$out/lib/modules/${kernel.modDirVersion}/kernel/drivers/net/wireless/realtek/rtl8192eu";
+in
+stdenv.mkDerivation {
   pname = "rtl8192eu";
   version = "${kernel.version}-4.4.1.20240507";
 

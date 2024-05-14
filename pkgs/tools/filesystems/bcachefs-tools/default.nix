@@ -77,10 +77,10 @@ stdenv.mkDerivation (finalAttrs: {
     # code refactoring of bcachefs-tools broke reading passphrases from stdin (vs. terminal)
     # upstream issue https://github.com/koverstreet/bcachefs-tools/issues/261
     (fetchpatch {
-    url = "https://github.com/koverstreet/bcachefs-tools/commit/38b0cb721d2a35f5a4af429bc7bd367461f2fa26.patch";
-    hash = "sha256-/9reye+Qoa+EMkS+wfdX+KwDeLHHJ/S+Qm7sWl0MtqM=";
-  })
-];
+      url = "https://github.com/koverstreet/bcachefs-tools/commit/38b0cb721d2a35f5a4af429bc7bd367461f2fa26.patch";
+      hash = "sha256-/9reye+Qoa+EMkS+wfdX+KwDeLHHJ/S+Qm7sWl0MtqM=";
+    })
+  ];
 
   preCheck = lib.optionalString (!fuseSupport) ''
     rm tests/test_fuse.py
@@ -104,7 +104,7 @@ stdenv.mkDerivation (finalAttrs: {
       inherit (nixosTests.installer) bcachefsSimple bcachefsEncrypted bcachefsMulti;
     };
 
-    updateScript = nix-update-script {};
+    updateScript = nix-update-script { };
   };
 
   enableParallelBuilding = true;

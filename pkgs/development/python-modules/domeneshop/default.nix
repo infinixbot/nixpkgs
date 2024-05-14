@@ -1,13 +1,14 @@
-{ lib
-, buildPythonPackage
-, fetchPypi
-, pythonOlder
-, setuptools
-, urllib3
-, pyopenssl
-, cryptography
-, idna
-, certifi
+{
+  lib,
+  buildPythonPackage,
+  fetchPypi,
+  pythonOlder,
+  setuptools,
+  urllib3,
+  pyopenssl,
+  cryptography,
+  idna,
+  certifi,
 }:
 
 buildPythonPackage rec {
@@ -22,9 +23,7 @@ buildPythonPackage rec {
     hash = "sha256-UCxIDnhIAkxZ1oQXYRyAMdGgUsUZ6AlYXwsxL49TFAg=";
   };
 
-  nativeBuildInputs = [
-    setuptools
-  ];
+  nativeBuildInputs = [ setuptools ];
 
   dependencies = [
     certifi

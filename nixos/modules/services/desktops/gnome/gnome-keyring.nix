@@ -1,6 +1,11 @@
 # GNOME Keyring daemon.
 
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
 
@@ -23,11 +28,8 @@
           such as user names and passwords.
         '';
       };
-
     };
-
   };
-
 
   ###### implementation
 
@@ -35,7 +37,10 @@
 
     environment.systemPackages = [ pkgs.gnome.gnome-keyring ];
 
-    services.dbus.packages = [ pkgs.gnome.gnome-keyring pkgs.gcr ];
+    services.dbus.packages = [
+      pkgs.gnome.gnome-keyring
+      pkgs.gcr
+    ];
 
     xdg.portal.extraPortals = [ pkgs.gnome.gnome-keyring ];
 
@@ -47,7 +52,5 @@
       capabilities = "cap_ipc_lock=ep";
       source = "${pkgs.gnome.gnome-keyring}/bin/gnome-keyring-daemon";
     };
-
   };
-
 }

@@ -1,11 +1,15 @@
 # This module defines global configuration for the xonsh.
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
 
   cfg = config.programs.xonsh;
-
 in
 
 {
@@ -31,9 +35,7 @@ in
         description = "Control file to customize your shell behavior.";
         type = lib.types.lines;
       };
-
     };
-
   };
 
   config = lib.mkIf cfg.enable {
@@ -67,11 +69,9 @@ in
 
     environment.systemPackages = [ cfg.package ];
 
-    environment.shells =
-      [ "/run/current-system/sw/bin/xonsh"
-        "${cfg.package}/bin/xonsh"
-      ];
-
+    environment.shells = [
+      "/run/current-system/sw/bin/xonsh"
+      "${cfg.package}/bin/xonsh"
+    ];
   };
-
 }

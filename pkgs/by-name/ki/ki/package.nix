@@ -1,8 +1,9 @@
-{ lib
-, fetchFromGitHub
-, python3Packages
-, cmake
-, anki
+{
+  lib,
+  fetchFromGitHub,
+  python3Packages,
+  cmake,
+  anki,
 }:
 
 python3Packages.buildPythonApplication rec {
@@ -27,18 +28,19 @@ python3Packages.buildPythonApplication rec {
 
   nativeBuildInputs = [ cmake ];
 
-  propagatedBuildInputs = with python3Packages; [
-    beartype
-    click
-    colorama
-    git-filter-repo
-    gitpython
-    lark
-    tqdm
-    whatthepatch
-  ] ++ [
-    anki
-  ];
+  propagatedBuildInputs =
+    with python3Packages;
+    [
+      beartype
+      click
+      colorama
+      git-filter-repo
+      gitpython
+      lark
+      tqdm
+      whatthepatch
+    ]
+    ++ [ anki ];
 
   nativeCheckInputs = with python3Packages; [
     bitstring

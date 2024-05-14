@@ -1,9 +1,14 @@
 # Global configuration for spacefm.
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-let cfg = config.programs.spacefm;
-
+let
+  cfg = config.programs.spacefm;
 in
 {
   ###### interface
@@ -38,7 +43,6 @@ in
           Refer to the [relevant entry](https://ignorantguru.github.io/spacefm/spacefm-manual-en.html#programfiles-etc) in the SpaceFM manual.
         '';
       };
-
     };
   };
 
@@ -47,7 +51,8 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [ pkgs.spaceFM ];
 
-    environment.etc."spacefm/spacefm.conf".text =
-      lib.concatStrings (lib.mapAttrsToList (n: v: "${n}=${builtins.toString v}\n") cfg.settings);
+    environment.etc."spacefm/spacefm.conf".text = lib.concatStrings (
+      lib.mapAttrsToList (n: v: "${n}=${builtins.toString v}\n") cfg.settings
+    );
   };
 }

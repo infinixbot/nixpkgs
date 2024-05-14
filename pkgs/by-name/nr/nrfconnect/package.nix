@@ -1,6 +1,7 @@
-{ lib
-, fetchurl
-, appimageTools
+{
+  lib,
+  fetchurl,
+  appimageTools,
 }:
 
 let
@@ -13,11 +14,9 @@ let
     name = "${pname}-${version}.AppImage";
   };
 
-  appimageContents = appimageTools.extractType2 {
-    inherit pname version src;
-  };
-
-in appimageTools.wrapType2 {
+  appimageContents = appimageTools.extractType2 { inherit pname version src; };
+in
+appimageTools.wrapType2 {
   inherit pname version src;
 
   extraPkgs = pkgs: [ pkgs.segger-jlink ];

@@ -1,4 +1,14 @@
-{ lib, stdenv, fetchurl, cmake, python3, bison, openssl, readline, bzip2 }:
+{
+  lib,
+  stdenv,
+  fetchurl,
+  cmake,
+  python3,
+  bison,
+  openssl,
+  readline,
+  bzip2,
+}:
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "monetdb";
@@ -9,8 +19,16 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-Z9GHyNzwIJZd/1eXjUT4+Tb1kZveAWHe6wEMXem/0Kw=";
   };
 
-  nativeBuildInputs = [ bison cmake python3 ];
-  buildInputs = [ openssl readline bzip2 ];
+  nativeBuildInputs = [
+    bison
+    cmake
+    python3
+  ];
+  buildInputs = [
+    openssl
+    readline
+    bzip2
+  ];
 
   postPatch = ''
     substituteInPlace cmake/monetdb-packages.cmake --replace \

@@ -1,31 +1,36 @@
-{ lib
-, stdenv
-, fetchurl
-, fetchpatch2
-, gi-docgen
-, meson
-, ninja
-, pkg-config
-, vala
-, gobject-introspection
-, gperf
-, glib
-, cairo
-, sqlite
-, libsoup_3
-, gtk4
-, libsysprof-capture
-, json-glib
-, protobufc
-, xvfb-run
-, gnome
+{
+  lib,
+  stdenv,
+  fetchurl,
+  fetchpatch2,
+  gi-docgen,
+  meson,
+  ninja,
+  pkg-config,
+  vala,
+  gobject-introspection,
+  gperf,
+  glib,
+  cairo,
+  sqlite,
+  libsoup_3,
+  gtk4,
+  libsysprof-capture,
+  json-glib,
+  protobufc,
+  xvfb-run,
+  gnome,
 }:
 
 stdenv.mkDerivation rec {
   pname = "libshumate";
   version = "1.2.1";
 
-  outputs = [ "out" "dev" "devdoc" ];
+  outputs = [
+    "out"
+    "dev"
+    "devdoc"
+  ];
   outputBin = "devdoc"; # demo app
 
   src = fetchurl {
@@ -67,13 +72,9 @@ stdenv.mkDerivation rec {
     protobufc
   ];
 
-  nativeCheckInputs = [
-    xvfb-run
-  ];
+  nativeCheckInputs = [ xvfb-run ];
 
-  mesonFlags = [
-    "-Ddemos=true"
-  ];
+  mesonFlags = [ "-Ddemos=true" ];
 
   doCheck = !stdenv.isDarwin;
 
@@ -94,9 +95,7 @@ stdenv.mkDerivation rec {
   '';
 
   passthru = {
-    updateScript = gnome.updateScript {
-      packageName = pname;
-    };
+    updateScript = gnome.updateScript { packageName = pname; };
   };
 
   meta = with lib; {

@@ -1,6 +1,11 @@
 # at-spi2-core daemon.
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
 
@@ -24,11 +29,8 @@
           `The name org.a11y.Bus was not provided by any .service files`.
         '';
       };
-
     };
-
   };
-
 
   ###### implementation
 

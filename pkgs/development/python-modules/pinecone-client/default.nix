@@ -1,19 +1,20 @@
-{ lib
-, buildPythonPackage
-, dnspython
-, fetchPypi
-, loguru
-, numpy
-, poetry-core
-, python-dateutil
-, pythonOlder
-, pythonRelaxDepsHook
-, pyyaml
-, requests
-, setuptools
-, tqdm
-, typing-extensions
-, urllib3
+{
+  lib,
+  buildPythonPackage,
+  dnspython,
+  fetchPypi,
+  loguru,
+  numpy,
+  poetry-core,
+  python-dateutil,
+  pythonOlder,
+  pythonRelaxDepsHook,
+  pyyaml,
+  requests,
+  setuptools,
+  tqdm,
+  typing-extensions,
+  urllib3,
 }:
 
 buildPythonPackage rec {
@@ -29,13 +30,9 @@ buildPythonPackage rec {
     hash = "sha256-1E2yEuZKo0PRTvybCOnkXZi6e2gfYymLhwM1QuoBfyM=";
   };
 
-  pythonRelaxDeps = [
-    "urllib3"
-  ];
+  pythonRelaxDeps = [ "urllib3" ];
 
-  nativeBuildInputs = [
-    pythonRelaxDepsHook
-  ];
+  nativeBuildInputs = [ pythonRelaxDepsHook ];
 
   build-system = [
     setuptools
@@ -57,9 +54,7 @@ buildPythonPackage rec {
   # Tests require network access
   doCheck = false;
 
-  pythonImportsCheck = [
-    "pinecone"
-  ];
+  pythonImportsCheck = [ "pinecone" ];
 
   meta = with lib; {
     description = "The Pinecone python client";

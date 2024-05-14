@@ -1,10 +1,11 @@
-{ lib
-, stdenv
-, callPackage
-, fetchurl
-, testers
-, ngspice
-, cmake
+{
+  lib,
+  stdenv,
+  callPackage,
+  fetchurl,
+  testers,
+  ngspice,
+  cmake,
 }:
 
 stdenv.mkDerivation (finalAttrs: {

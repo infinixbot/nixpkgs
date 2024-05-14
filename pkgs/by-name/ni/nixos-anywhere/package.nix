@@ -1,18 +1,19 @@
-{ stdenv
-, fetchFromGitHub
-, openssh
-, gitMinimal
-, rsync
-, nix
-, coreutils
-, curl
-, gnugrep
-, gawk
-, findutils
-, gnused
-, lib
-, makeWrapper
-, sshpass
+{
+  stdenv,
+  fetchFromGitHub,
+  openssh,
+  gitMinimal,
+  rsync,
+  nix,
+  coreutils,
+  curl,
+  gnugrep,
+  gawk,
+  findutils,
+  gnused,
+  lib,
+  makeWrapper,
+  sshpass,
 }:
 let
   runtimeDeps = [
@@ -54,6 +55,10 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "nixos-anywhere";
     license = licenses.mit;
     platforms = platforms.all;
-    maintainers = [ maintainers.mic92 maintainers.lassulus maintainers.phaer ];
+    maintainers = [
+      maintainers.mic92
+      maintainers.lassulus
+      maintainers.phaer
+    ];
   };
 })

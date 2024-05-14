@@ -1,11 +1,15 @@
 # GNOME Terminal.
 
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
 
   cfg = config.programs.gnome-terminal;
-
 in
 
 {

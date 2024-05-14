@@ -1,16 +1,17 @@
-{ lib
-, buildPythonPackage
-, fetchFromGitHub
-, cmake
-, symlinkJoin
-, ffmpeg-full
-, pkg-config
-, ninja
-, pybind11
-, sox
-, torch
-, cudaSupport ? torch.cudaSupport
-, cudaPackages
+{
+  lib,
+  buildPythonPackage,
+  fetchFromGitHub,
+  cmake,
+  symlinkJoin,
+  ffmpeg-full,
+  pkg-config,
+  ninja,
+  pybind11,
+  sox,
+  torch,
+  cudaSupport ? torch.cudaSupport,
+  cudaPackages,
 }:
 
 buildPythonPackage rec {
@@ -25,9 +26,7 @@ buildPythonPackage rec {
     hash = "sha256-8EPoZ/dfxrQjdtE0rZ+2pOaXxlyhRuweYnVuA9i0Fgc=";
   };
 
-  patches = [
-    ./0001-setup.py-propagate-cmakeFlags.patch
-  ];
+  patches = [ ./0001-setup.py-propagate-cmakeFlags.patch ];
 
   postPatch = ''
     substituteInPlace setup.py \
@@ -53,9 +52,7 @@ buildPythonPackage rec {
     cmake
     pkg-config
     ninja
-  ] ++ lib.optionals cudaSupport [
-    cudaPackages.cuda_nvcc
-  ];
+  ] ++ lib.optionals cudaSupport [ cudaPackages.cuda_nvcc ];
 
   buildInputs = [
     ffmpeg-full
@@ -64,14 +61,12 @@ buildPythonPackage rec {
     torch.cxxdev
   ];
 
-  propagatedBuildInputs = [
-    torch
-  ];
+  propagatedBuildInputs = [ torch ];
 
-  BUILD_SOX=0;
-  BUILD_KALDI=0;
-  BUILD_RNNT=0;
-  BUILD_CTC_DECODER=0;
+  BUILD_SOX = 0;
+  BUILD_KALDI = 0;
+  BUILD_RNNT = 0;
+  BUILD_CTC_DECODER = 0;
 
   dontUseCmakeConfigure = true;
 
@@ -82,7 +77,11 @@ buildPythonPackage rec {
     homepage = "https://pytorch.org/";
     changelog = "https://github.com/pytorch/audio/releases/tag/v${version}";
     license = licenses.bsd2;
-    platforms = [ "aarch64-darwin" "aarch64-linux" "x86_64-linux" ];
+    platforms = [
+      "aarch64-darwin"
+      "aarch64-linux"
+      "x86_64-linux"
+    ];
     maintainers = with maintainers; [ junjihashimoto ];
   };
 }

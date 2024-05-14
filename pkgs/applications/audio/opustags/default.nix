@@ -1,5 +1,16 @@
-{ stdenv, lib, fetchFromGitHub, cmake, pkg-config, libiconv, libogg
-, ffmpeg, glibcLocales, perl, perlPackages }:
+{
+  stdenv,
+  lib,
+  fetchFromGitHub,
+  cmake,
+  pkg-config,
+  libiconv,
+  libogg,
+  ffmpeg,
+  glibcLocales,
+  perl,
+  perlPackages,
+}:
 
 stdenv.mkDerivation rec {
   pname = "opustags";
@@ -12,16 +23,25 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-2t6fhA1s1sKpHTmaMtK+DZ8xLpS6ntq33b4ycuMc8x8=";
   };
 
-
-  nativeBuildInputs = [ cmake pkg-config ]
-    ++ lib.optionals stdenv.isDarwin [ libiconv ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+  ] ++ lib.optionals stdenv.isDarwin [ libiconv ];
 
   buildInputs = [ libogg ];
 
   doCheck = true;
 
-  nativeCheckInputs = [ ffmpeg glibcLocales perl ]
-    ++ (with perlPackages; [ ListMoreUtils TestDeep ]);
+  nativeCheckInputs =
+    [
+      ffmpeg
+      glibcLocales
+      perl
+    ]
+    ++ (with perlPackages; [
+      ListMoreUtils
+      TestDeep
+    ]);
 
   checkPhase = ''
     export LANG="en_US.UTF-8"

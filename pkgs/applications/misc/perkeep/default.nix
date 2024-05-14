@@ -1,4 +1,9 @@
-{ buildGoModule, fetchurl, fetchFromGitHub, lib }:
+{
+  buildGoModule,
+  fetchurl,
+  fetchFromGitHub,
+  lib,
+}:
 
 let
   gouiJS = fetchurl {
@@ -18,7 +23,6 @@ let
     "perkeep.org/cmd/pk-put"
     "perkeep.org/cmd/pk-mount"
   ];
-
 in
 buildGoModule rec {
   pname = "perkeep";

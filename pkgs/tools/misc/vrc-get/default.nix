@@ -1,4 +1,14 @@
-{ fetchCrate, installShellFiles, lib, rustPlatform, pkg-config, stdenv, Security, SystemConfiguration, buildPackages }:
+{
+  fetchCrate,
+  installShellFiles,
+  lib,
+  rustPlatform,
+  pkg-config,
+  stdenv,
+  Security,
+  SystemConfiguration,
+  buildPackages,
+}:
 
 rustPlatform.buildRustPackage rec {
   pname = "vrc-get";
@@ -9,9 +19,15 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-+xbHw1DpFmapjsFoUvxUqTok8TKMebMw3gYjO/rx/iU=";
   };
 
-  nativeBuildInputs = [ installShellFiles pkg-config ];
+  nativeBuildInputs = [
+    installShellFiles
+    pkg-config
+  ];
 
-  buildInputs = lib.optionals stdenv.isDarwin [ Security SystemConfiguration ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    Security
+    SystemConfiguration
+  ];
 
   cargoHash = "sha256-iuLhDcii+wXDNUsUMo8lj4kfJve5RAz7FT5Pxs9yFPQ=";
 

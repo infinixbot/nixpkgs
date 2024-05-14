@@ -1,18 +1,19 @@
-{ lib
-, stdenv
-, fetchFromGitLab
+{
+  lib,
+  stdenv,
+  fetchFromGitLab,
 
-, cmake
+  cmake,
 
-, glm
-, libGL
-, openxr-loader
-, python3
-, vulkan-headers
-, vulkan-loader
-, xorg
+  glm,
+  libGL,
+  openxr-loader,
+  python3,
+  vulkan-headers,
+  vulkan-loader,
+  xorg,
 
-, unstableGitUpdater
+  unstableGitUpdater,
 }:
 
 stdenv.mkDerivation {
@@ -26,9 +27,7 @@ stdenv.mkDerivation {
     hash = "sha256-m6Xhi6xlDWiVqtYyxpQP2vp5JsB2EKsoXkmd0IYtPQ8=";
   };
 
-  nativeBuildInputs = [
-    cmake
-  ];
+  nativeBuildInputs = [ cmake ];
 
   buildInputs = [
     glm

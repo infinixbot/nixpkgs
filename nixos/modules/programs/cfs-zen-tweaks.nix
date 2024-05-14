@@ -1,11 +1,15 @@
 # CFS Zen Tweaks
 
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
 
   cfg = config.programs.cfs-zen-tweaks;
-
 in
 
 {
