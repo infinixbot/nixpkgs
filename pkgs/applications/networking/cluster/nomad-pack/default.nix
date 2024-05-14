@@ -1,6 +1,7 @@
-{ lib
-, fetchFromGitHub
-, buildGoModule
+{
+  lib,
+  fetchFromGitHub,
+  buildGoModule,
 }:
 
 buildGoModule rec {
@@ -33,5 +34,4 @@ buildGoModule rec {
     license = licenses.mpl20;
     maintainers = with maintainers; [ techknowlogick ];
   };
-
 }

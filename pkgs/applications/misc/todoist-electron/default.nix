@@ -1,4 +1,10 @@
-{ lib, appimageTools, fetchurl, asar }: let
+{
+  lib,
+  appimageTools,
+  fetchurl,
+  asar,
+}:
+let
   pname = "todoist-electron";
   version = "8.10.1";
 
@@ -17,8 +23,8 @@
       ${asar}/bin/asar pack app $out/resources/app.asar
     '';
   });
-
-in appimageTools.wrapAppImage {
+in
+appimageTools.wrapAppImage {
   inherit pname version;
   src = appimageContents;
 
@@ -37,7 +43,10 @@ in appimageTools.wrapAppImage {
     description = "The official Todoist electron app";
     platforms = [ "x86_64-linux" ];
     license = licenses.unfree;
-    maintainers = with maintainers; [ kylesferrazza pokon548 ];
+    maintainers = with maintainers; [
+      kylesferrazza
+      pokon548
+    ];
     mainProgram = "todoist-electron";
   };
 }

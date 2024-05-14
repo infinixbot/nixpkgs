@@ -1,9 +1,29 @@
-{ lib, stdenv, fetchFromGitHub, fetchpatch, cmake, boost, SDL2, SDL2_image, SDL2_ttf, libpng
-, glew, gettext, libsndfile, libvorbis, libogg, physfs, openal
-, xmlstarlet, doxygen, python3, callPackage }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  fetchpatch,
+  cmake,
+  boost,
+  SDL2,
+  SDL2_image,
+  SDL2_ttf,
+  libpng,
+  glew,
+  gettext,
+  libsndfile,
+  libvorbis,
+  libogg,
+  physfs,
+  openal,
+  xmlstarlet,
+  doxygen,
+  python3,
+  callPackage,
+}:
 
 let
-  colobot-data = callPackage ./data.nix {};
+  colobot-data = callPackage ./data.nix { };
 in
 stdenv.mkDerivation rec {
   pname = "colobot";
@@ -25,14 +45,30 @@ stdenv.mkDerivation rec {
       name = "gcc13-fixes.patch";
       url = "https://github.com/colobot/colobot/commit/d47e26586325ec11425cef5c95fc206dc103dbe2.patch";
       hash = "sha256-2DmLkyoyiZSW0yeZDSSWFjCEJos25jPHZQi1yuJGFko=";
-      excludes = [
-        "src/object/task/taskgoto.h"
-      ];
+      excludes = [ "src/object/task/taskgoto.h" ];
     })
   ];
 
-  nativeBuildInputs = [ cmake xmlstarlet doxygen python3 ];
-  buildInputs = [ boost SDL2 SDL2_image SDL2_ttf libpng glew gettext libsndfile libvorbis libogg physfs openal ];
+  nativeBuildInputs = [
+    cmake
+    xmlstarlet
+    doxygen
+    python3
+  ];
+  buildInputs = [
+    boost
+    SDL2
+    SDL2_image
+    SDL2_ttf
+    libpng
+    glew
+    gettext
+    libsndfile
+    libvorbis
+    libogg
+    physfs
+    openal
+  ];
 
   enableParallelBuilding = false;
 

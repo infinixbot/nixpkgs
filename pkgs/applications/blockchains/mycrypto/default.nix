@@ -1,4 +1,9 @@
-{ lib, appimageTools, fetchurl, makeDesktopItem }:
+{
+  lib,
+  appimageTools,
+  fetchurl,
+  makeDesktopItem,
+}:
 
 let
   pname = "MyCrypto";
@@ -10,9 +15,7 @@ let
     inherit sha256;
   };
 
-  appimageContents = appimageTools.extractType2 {
-    inherit pname version src;
-  };
+  appimageContents = appimageTools.extractType2 { inherit pname version src; };
 
   desktopItem = makeDesktopItem {
     name = pname;
@@ -22,8 +25,8 @@ let
     icon = "mycrypto";
     categories = [ "Finance" ];
   };
-
-in appimageTools.wrapType2 {
+in
+appimageTools.wrapType2 {
   inherit pname version src;
 
   extraInstallCommands = ''

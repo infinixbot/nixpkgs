@@ -1,10 +1,11 @@
-{ lib
-, buildPythonPackage
-, fetchFromGitHub
-, hatchling
-, bdffont
-, pytestCheckHook
-, nix-update-script
+{
+  lib,
+  buildPythonPackage,
+  fetchFromGitHub,
+  hatchling,
+  bdffont,
+  pytestCheckHook,
+  nix-update-script,
 }:
 
 buildPythonPackage rec {
@@ -19,17 +20,11 @@ buildPythonPackage rec {
     hash = "sha256-gu9niWxYTw3rcA++z8B+MdKp5XaqAGjmvd+PdSDosfg=";
   };
 
-  build-system = [
-    hatchling
-  ];
+  build-system = [ hatchling ];
 
-  dependencies = [
-    bdffont
-  ];
+  dependencies = [ bdffont ];
 
-  nativeCheckInputs = [
-    pytestCheckHook
-  ];
+  nativeCheckInputs = [ pytestCheckHook ];
 
   pythonImportsCheck = [ "pcffont" ];
 

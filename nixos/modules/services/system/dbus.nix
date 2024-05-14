@@ -1,6 +1,11 @@
 # D-Bus configuration and system bus daemon.
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
 
@@ -14,8 +19,13 @@ let
     serviceDirectories = cfg.packages;
   };
 
-  inherit (lib) mkOption mkEnableOption mkIf mkMerge types;
-
+  inherit (lib)
+    mkOption
+    mkEnableOption
+    mkIf
+    mkMerge
+    types
+    ;
 in
 
 {
@@ -38,7 +48,10 @@ in
       };
 
       implementation = mkOption {
-        type = types.enum [ "dbus" "broker" ];
+        type = types.enum [
+          "dbus"
+          "broker"
+        ];
         default = "dbus";
         description = ''
           The implementation to use for the message bus defined by the D-Bus specification.
@@ -46,7 +59,6 @@ in
           performance and reliability, while keeping compatibility to the D-Bus
           reference implementation.
         '';
-
       };
 
       packages = mkOption {
@@ -67,7 +79,11 @@ in
       };
 
       apparmor = mkOption {
-        type = types.enum [ "enabled" "disabled" "required" ];
+        type = types.enum [
+          "enabled"
+          "disabled"
+          "required"
+        ];
         description = ''
           AppArmor mode for dbus.
 
@@ -102,23 +118,17 @@ in
       users.groups.messagebus.gid = config.ids.gids.messagebus;
 
       # Install dbus for dbus tools even when using dbus-broker
-      environment.systemPackages = [
-        pkgs.dbus
-      ];
+      environment.systemPackages = [ pkgs.dbus ];
 
       # You still need the dbus reference implementation installed to use dbus-broker
-      systemd.packages = [
-        pkgs.dbus
-      ];
+      systemd.packages = [ pkgs.dbus ];
 
       services.dbus.packages = [
         pkgs.dbus
         config.system.path
       ];
 
-      systemd.user.sockets.dbus.wantedBy = [
-        "sockets.target"
-      ];
+      systemd.user.sockets.dbus.wantedBy = [ "sockets.target" ];
     }
 
     (mkIf config.boot.initrd.systemd.dbus.enable {
@@ -153,9 +163,7 @@ in
         ];
         # Don't restart dbus-daemon. Bad things tend to happen if we do.
         reloadIfChanged = true;
-        restartTriggers = [
-          configDir
-        ];
+        restartTriggers = [ configDir ];
         environment = {
           LD_LIBRARY_PATH = config.system.nssModules.path;
         };
@@ -168,21 +176,14 @@ in
         ];
         # Don't restart dbus-daemon. Bad things tend to happen if we do.
         reloadIfChanged = true;
-        restartTriggers = [
-          configDir
-        ];
+        restartTriggers = [ configDir ];
       };
-
     })
 
     (mkIf (cfg.implementation == "broker") {
-      environment.systemPackages = [
-        pkgs.dbus-broker
-      ];
+      environment.systemPackages = [ pkgs.dbus-broker ];
 
-      systemd.packages = [
-        pkgs.dbus-broker
-      ];
+      systemd.packages = [ pkgs.dbus-broker ];
 
       # Just to be sure we don't restart through the unit alias
       systemd.services.dbus.reloadIfChanged = true;
@@ -203,9 +204,7 @@ in
         };
         # Don't restart dbus. Bad things tend to happen if we do.
         reloadIfChanged = true;
-        restartTriggers = [
-          configDir
-        ];
+        restartTriggers = [ configDir ];
         environment = {
           LD_LIBRARY_PATH = config.system.nssModules.path;
         };
@@ -219,11 +218,8 @@ in
         ];
         # Don't restart dbus. Bad things tend to happen if we do.
         reloadIfChanged = true;
-        restartTriggers = [
-          configDir
-        ];
+        restartTriggers = [ configDir ];
       };
     })
-
   ]);
 }

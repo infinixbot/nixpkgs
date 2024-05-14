@@ -1,6 +1,11 @@
 # Evolution Data Server daemon.
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
 
@@ -28,7 +33,6 @@
         example = lib.literalExpression "[ pkgs.evolution-ews ]";
         description = "Plugins for Evolution.";
       };
-
     };
   };
 
@@ -36,7 +40,9 @@
 
   config =
     let
-      bundle = pkgs.evolutionWithPlugins.override { inherit (config.services.gnome.evolution-data-server) plugins; };
+      bundle = pkgs.evolutionWithPlugins.override {
+        inherit (config.services.gnome.evolution-data-server) plugins;
+      };
     in
     lib.mkMerge [
       (lib.mkIf config.services.gnome.evolution-data-server.enable {

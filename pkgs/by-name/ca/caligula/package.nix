@@ -1,8 +1,9 @@
-{ lib
-, rustPlatform
-, fetchFromGitHub
-, stdenv
-, darwin
+{
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
+  stdenv,
+  darwin,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -19,7 +20,8 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "sha256-VwtmU5jTQPn3hpNuLckPQl6joEFPfuax1gRVG0/nceg=";
 
   buildInputs = lib.optionals stdenv.isDarwin (
-    with darwin.apple_sdk.frameworks; [
+    with darwin.apple_sdk.frameworks;
+    [
       Cocoa
       IOKit
       Foundation

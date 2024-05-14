@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   # interface
@@ -45,6 +50,5 @@
         source = "${pkgs.cdrtools}/bin/cdrecord";
       };
     };
-
   };
 }

@@ -1,25 +1,26 @@
-{ lib
-, stdenv
-, fetchFromGitLab
-, cargo
-, meson
-, ninja
-, pkg-config
-, gnome
-, gnome-desktop
-, glib
-, gtk3
-, wayland
-, wayland-protocols
-, libbsd
-, libxml2
-, libxkbcommon
-, rustPlatform
-, rustc
-, feedbackd
-, wrapGAppsHook3
-, fetchpatch
-, nixosTests
+{
+  lib,
+  stdenv,
+  fetchFromGitLab,
+  cargo,
+  meson,
+  ninja,
+  pkg-config,
+  gnome,
+  gnome-desktop,
+  glib,
+  gtk3,
+  wayland,
+  wayland-protocols,
+  libbsd,
+  libxml2,
+  libxkbcommon,
+  rustPlatform,
+  rustc,
+  feedbackd,
+  wrapGAppsHook3,
+  fetchpatch,
+  nixosTests,
 }:
 
 stdenv.mkDerivation rec {
@@ -70,7 +71,10 @@ stdenv.mkDerivation rec {
     description = "A virtual keyboard supporting Wayland";
     homepage = "https://gitlab.gnome.org/World/Phosh/squeekboard";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [ artturin tomfitzhenry ];
+    maintainers = with maintainers; [
+      artturin
+      tomfitzhenry
+    ];
     platforms = platforms.linux;
   };
 }

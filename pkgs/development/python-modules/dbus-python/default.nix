@@ -1,18 +1,19 @@
-{ lib
-, fetchPypi
-, buildPythonPackage
-, fetchpatch
-, isPyPy
-, python
+{
+  lib,
+  fetchPypi,
+  buildPythonPackage,
+  fetchpatch,
+  isPyPy,
+  python,
 
-# build-system
-, meson
-, meson-python
-, pkg-config
+  # build-system
+  meson,
+  meson-python,
+  pkg-config,
 
-# native dependencies
-, dbus
-, dbus-glib
+  # native dependencies
+  dbus,
+  dbus-glib,
 }:
 
 buildPythonPackage rec {
@@ -79,9 +80,7 @@ buildPythonPackage rec {
     ln -s $dev/include/*/dbus_python/dbus-1.0/ $dev/include/dbus-1.0
   '';
 
-  nativeCheckInputs = [
-    dbus.out
-  ];
+  nativeCheckInputs = [ dbus.out ];
 
   checkPhase = ''
     runHook preCheck

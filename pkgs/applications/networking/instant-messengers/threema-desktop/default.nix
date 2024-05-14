@@ -1,11 +1,12 @@
-{ lib
-, buildNpmPackage
-, fetchFromGitHub
-, makeDesktopItem
-, copyDesktopItems
-, makeWrapper
-, electron
-, python3
+{
+  lib,
+  buildNpmPackage,
+  fetchFromGitHub,
+  makeDesktopItem,
+  copyDesktopItems,
+  makeWrapper,
+  electron,
+  python3,
 }:
 
 let
@@ -65,7 +66,6 @@ let
       cp -r . "$out"
     '';
   };
-
 in
 buildNpmPackage rec {
   pname = "threema-desktop";

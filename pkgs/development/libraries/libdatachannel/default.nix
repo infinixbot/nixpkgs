@@ -1,15 +1,16 @@
-{ stdenv
-, lib
-, fetchFromGitHub
-, srcOnly
-, cmake
-, ninja
-, pkg-config
-, libnice
-, openssl
-, plog
-, srtp
-, usrsctp
+{
+  stdenv,
+  lib,
+  fetchFromGitHub,
+  srcOnly,
+  cmake,
+  ninja,
+  pkg-config,
+  libnice,
+  openssl,
+  plog,
+  srtp,
+  usrsctp,
 }:
 
 stdenv.mkDerivation rec {
@@ -23,7 +24,10 @@ stdenv.mkDerivation rec {
     hash = "sha256-hxXDovJAmuh15jFaxY9aESoTVVJ3u2twsX31U3txans=";
   };
 
-  outputs = [ "out" "dev" ];
+  outputs = [
+    "out"
+    "dev"
+  ];
 
   strictDeps = true;
   nativeBuildInputs = [

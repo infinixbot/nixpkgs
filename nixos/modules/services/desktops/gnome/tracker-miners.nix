@@ -1,6 +1,11 @@
 # Tracker Miners daemons.
 
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
 
@@ -22,9 +27,7 @@
           search engine and metadata storage system.
         '';
       };
-
     };
-
   };
 
   ###### implementation
@@ -38,7 +41,5 @@
     systemd.packages = [ pkgs.tracker-miners ];
 
     services.gnome.tracker.subcommandPackages = [ pkgs.tracker-miners ];
-
   };
-
 }

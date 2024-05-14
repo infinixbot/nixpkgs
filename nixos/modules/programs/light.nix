@@ -1,8 +1,12 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.programs.light;
-
 in
 {
   options = {
@@ -43,9 +47,7 @@ in
             The percentage value by which to increase/decrease brightness.
           '';
         };
-
       };
-
     };
   };
 
@@ -54,22 +56,24 @@ in
     services.udev.packages = [ pkgs.light ];
     services.actkbd = lib.mkIf cfg.brightnessKeys.enable {
       enable = true;
-      bindings = let
-        light = "${pkgs.light}/bin/light";
-        step = builtins.toString cfg.brightnessKeys.step;
-      in [
-        {
-          keys = [ 224 ];
-          events = [ "key" ];
-          # Use minimum brightness 0.1 so the display won't go totally black.
-          command = "${light} -N 0.1 && ${light} -U ${step}";
-        }
-        {
-          keys = [ 225 ];
-          events = [ "key" ];
-          command = "${light} -A ${step}";
-        }
-      ];
+      bindings =
+        let
+          light = "${pkgs.light}/bin/light";
+          step = builtins.toString cfg.brightnessKeys.step;
+        in
+        [
+          {
+            keys = [ 224 ];
+            events = [ "key" ];
+            # Use minimum brightness 0.1 so the display won't go totally black.
+            command = "${light} -N 0.1 && ${light} -U ${step}";
+          }
+          {
+            keys = [ 225 ];
+            events = [ "key" ];
+            command = "${light} -A ${step}";
+          }
+        ];
     };
   };
 }

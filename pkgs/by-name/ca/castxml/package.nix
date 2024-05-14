@@ -31,10 +31,7 @@ stdenv.mkDerivation (finalAttrs: {
   nativeBuildInputs = [
     cmake
     (lib.getDev llvm)
-  ]
-  ++ lib.optionals (withManual || withHTML) [
-    sphinx
-  ];
+  ] ++ lib.optionals (withManual || withHTML) [ sphinx ];
 
   buildInputs = [
     libclang
@@ -43,9 +40,7 @@ stdenv.mkDerivation (finalAttrs: {
     zlib
   ];
 
-  propagatedBuildInputs = [
-    libclang
-  ];
+  propagatedBuildInputs = [ libclang ];
 
   cmakeFlags = [
     (lib.cmakeOptionType "path" "CLANG_RESOURCE_DIR" "${lib.getDev libclang}")

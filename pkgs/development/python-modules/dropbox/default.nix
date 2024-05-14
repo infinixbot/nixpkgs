@@ -1,15 +1,16 @@
-{ lib
-, buildPythonPackage
-, pythonOlder
-, fetchFromGitHub
-, setuptools
-, requests
-, six
-, stone
-, mock
-, pytest-mock
-, pytestCheckHook
-, sphinxHook
+{
+  lib,
+  buildPythonPackage,
+  pythonOlder,
+  fetchFromGitHub,
+  setuptools,
+  requests,
+  six,
+  stone,
+  mock,
+  pytest-mock,
+  pytestCheckHook,
+  sphinxHook,
 }:
 
 buildPythonPackage rec {
@@ -19,7 +20,10 @@ buildPythonPackage rec {
 
   disabled = pythonOlder "3.7";
 
-  outputs = ["out" "doc"];
+  outputs = [
+    "out"
+    "doc"
+  ];
 
   src = fetchFromGitHub {
     owner = "dropbox";
@@ -28,9 +32,7 @@ buildPythonPackage rec {
     hash = "sha256-d++lxsbwPxnz1JPguWkImHXB+GQpMa9Uo3JNIxIe2ok=";
   };
 
-  build-system = [
-    setuptools
-  ];
+  build-system = [ setuptools ];
 
   dependencies = [
     requests
@@ -51,9 +53,7 @@ buildPythonPackage rec {
 
   doCheck = true;
 
-  pythonImportsCheck = [
-    "dropbox"
-  ];
+  pythonImportsCheck = [ "dropbox" ];
 
   nativeBuildInputs = [ sphinxHook ];
 
