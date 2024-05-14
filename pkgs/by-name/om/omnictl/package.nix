@@ -1,4 +1,9 @@
-{ lib, buildGoModule, fetchFromGitHub, installShellFiles }:
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+  installShellFiles,
+}:
 
 buildGoModule rec {
   pname = "omnictl";
@@ -13,7 +18,10 @@ buildGoModule rec {
 
   vendorHash = "sha256-BYKIAgWR+PDJbDJ72PS6TDvpZx7yRaDJzbq0/b/MIKs=";
 
-  ldflags = [ "-s" "-w" ];
+  ldflags = [
+    "-s"
+    "-w"
+  ];
 
   GOWORK = "off";
 

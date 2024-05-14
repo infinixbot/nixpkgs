@@ -1,6 +1,11 @@
 # GNOME Sushi daemon.
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
 
@@ -21,11 +26,8 @@
           Whether to enable Sushi, a quick previewer for nautilus.
         '';
       };
-
     };
-
   };
-
 
   ###### implementation
 
@@ -34,7 +36,5 @@
     environment.systemPackages = [ pkgs.gnome.sushi ];
 
     services.dbus.packages = [ pkgs.gnome.sushi ];
-
   };
-
 }

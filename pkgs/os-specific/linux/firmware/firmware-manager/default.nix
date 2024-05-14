@@ -1,14 +1,15 @@
-{ lib
-, stdenv
-, rustPlatform
-, fetchFromGitHub
-, cargo
-, pkg-config
-, rustc
-, openssl
-, udev
-, gtk3
-, wrapGAppsHook3
+{
+  lib,
+  stdenv,
+  rustPlatform,
+  fetchFromGitHub,
+  cargo,
+  pkg-config,
+  rustc,
+  openssl,
+  udev,
+  gtk3,
+  wrapGAppsHook3,
 }:
 
 stdenv.mkDerivation rec {

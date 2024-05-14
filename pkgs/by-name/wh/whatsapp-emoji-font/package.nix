@@ -1,12 +1,13 @@
-{ stdenvNoCC
-, lib
-, fetchFromGitHub
-, imagemagick
-, nix-update-script
-, pngquant
-, python3Packages
-, which
-, zopfli
+{
+  stdenvNoCC,
+  lib,
+  fetchFromGitHub,
+  imagemagick,
+  nix-update-script,
+  pngquant,
+  python3Packages,
+  which,
+  zopfli,
 }:
 
 stdenvNoCC.mkDerivation rec {
@@ -20,9 +21,7 @@ stdenvNoCC.mkDerivation rec {
     hash = "sha256-BviYvhH/iu5N0+YtL4d6andbWL87LFU98pxUgt4NcsM=";
   };
 
-  makeFlags = [
-    "PREFIX=$(out)"
-  ];
+  makeFlags = [ "PREFIX=$(out)" ];
 
   enableParallelBuilding = true;
 

@@ -33,7 +33,10 @@ mkKdeDerivation {
     patchShebangs src/plugins/strip-effect-metadata.py
   '';
 
-  extraNativeBuildInputs = [pkg-config python3];
+  extraNativeBuildInputs = [
+    pkg-config
+    python3
+  ];
   extraBuildInputs = [
     qtquick3d
     qtsensors

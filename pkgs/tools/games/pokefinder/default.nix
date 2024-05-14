@@ -1,16 +1,17 @@
-{ lib
-, stdenv
-, copyDesktopItems
-, makeDesktopItem
-, fetchFromGitHub
-, cmake
-, python3
-, qtbase
-, qttools
-, qtwayland
-, imagemagick
-, wrapQtAppsHook
-, gitUpdater
+{
+  lib,
+  stdenv,
+  copyDesktopItems,
+  makeDesktopItem,
+  fetchFromGitHub,
+  cmake,
+  python3,
+  qtbase,
+  qttools,
+  qtwayland,
+  imagemagick,
+  wrapQtAppsHook,
+  gitUpdater,
 }:
 
 stdenv.mkDerivation rec {
@@ -31,20 +32,33 @@ stdenv.mkDerivation rec {
     patchShebangs Source/Core/Resources/
   '';
 
-  installPhase = ''
-    runHook preInstall
-  '' + lib.optionalString (stdenv.isDarwin) ''
-    mkdir -p $out/Applications
-    cp -R Source/PokeFinder.app $out/Applications
-  '' + lib.optionalString (!stdenv.isDarwin) ''
-    install -D Source/PokeFinder $out/bin/PokeFinder
-    mkdir -p $out/share/pixmaps
-    convert "$src/Source/Form/Images/pokefinder.ico[-1]" $out/share/pixmaps/pokefinder.png
-  '' + ''
-    runHook postInstall
-  '';
+  installPhase =
+    ''
+      runHook preInstall
+    ''
+    + lib.optionalString (stdenv.isDarwin) ''
+      mkdir -p $out/Applications
+      cp -R Source/PokeFinder.app $out/Applications
+    ''
+    + lib.optionalString (!stdenv.isDarwin) ''
+      install -D Source/PokeFinder $out/bin/PokeFinder
+      mkdir -p $out/share/pixmaps
+      convert "$src/Source/Form/Images/pokefinder.ico[-1]" $out/share/pixmaps/pokefinder.png
+    ''
+    + ''
+      runHook postInstall
+    '';
 
-  nativeBuildInputs = [ cmake wrapQtAppsHook python3 ] ++ lib.optionals (!stdenv.isDarwin) [ copyDesktopItems imagemagick ];
+  nativeBuildInputs =
+    [
+      cmake
+      wrapQtAppsHook
+      python3
+    ]
+    ++ lib.optionals (!stdenv.isDarwin) [
+      copyDesktopItems
+      imagemagick
+    ];
 
   desktopItems = [
     (makeDesktopItem {
@@ -57,12 +71,12 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [ qtbase qttools ]
-    ++ lib.optionals stdenv.isLinux [ qtwayland ];
+  buildInputs = [
+    qtbase
+    qttools
+  ] ++ lib.optionals stdenv.isLinux [ qtwayland ];
 
-  passthru.updateScript = gitUpdater {
-    rev-prefix = "v";
-  };
+  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
 
   meta = with lib; {
     homepage = "https://github.com/Admiral-Fish/PokeFinder";

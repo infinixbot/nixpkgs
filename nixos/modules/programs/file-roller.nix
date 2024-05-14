@@ -1,10 +1,16 @@
 # File Roller.
 
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
-let cfg = config.programs.file-roller;
-
-in {
+let
+  cfg = config.programs.file-roller;
+in
+{
 
   ###### interface
 
@@ -14,12 +20,12 @@ in {
 
       enable = lib.mkEnableOption "File Roller, an archive manager for GNOME";
 
-      package = lib.mkPackageOption pkgs [ "gnome" "file-roller" ] { };
-
+      package = lib.mkPackageOption pkgs [
+        "gnome"
+        "file-roller"
+      ] { };
     };
-
   };
-
 
   ###### implementation
 
@@ -28,7 +34,5 @@ in {
     environment.systemPackages = [ cfg.package ];
 
     services.dbus.packages = [ cfg.package ];
-
   };
-
 }

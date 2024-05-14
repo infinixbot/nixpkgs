@@ -1,13 +1,14 @@
-{ lib
-, stdenv
-, graphviz
-, imagemagick
-, linux_latest
-, makeFontsConf
-, perl
-, python3
-, which
-, fetchpatch
+{
+  lib,
+  stdenv,
+  graphviz,
+  imagemagick,
+  linux_latest,
+  makeFontsConf,
+  perl,
+  python3,
+  which,
+  fetchpatch,
 }:
 
 stdenv.mkDerivation {
@@ -32,9 +33,7 @@ stdenv.mkDerivation {
       tools/net/ynl/ynl-gen-rst.py
   '';
 
-  FONTCONFIG_FILE = makeFontsConf {
-    fontDirectories = [ ];
-  };
+  FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ ]; };
 
   nativeBuildInputs = [
     graphviz

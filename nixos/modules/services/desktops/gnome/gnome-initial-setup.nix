@@ -1,6 +1,11 @@
 # GNOME Initial Setup.
 
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
 
@@ -37,7 +42,6 @@ let
       X-GNOME-Autostart-Phase=EarlyInitialization
     '';
   };
-
 in
 
 {
@@ -53,25 +57,18 @@ in
     services.gnome.gnome-initial-setup = {
 
       enable = lib.mkEnableOption "GNOME Initial Setup, a Simple, easy, and safe way to prepare a new system";
-
     };
-
   };
-
 
   ###### implementation
 
   config = lib.mkIf config.services.gnome.gnome-initial-setup.enable {
 
-    environment.systemPackages = [
-      pkgs.gnome.gnome-initial-setup
-    ]
-    ++ lib.optional (lib.versionOlder config.system.stateVersion "20.03") createGisStampFilesAutostart
-    ;
+    environment.systemPackages =
+      [ pkgs.gnome.gnome-initial-setup ]
+      ++ lib.optional (lib.versionOlder config.system.stateVersion "20.03") createGisStampFilesAutostart;
 
-    systemd.packages = [
-      pkgs.gnome.gnome-initial-setup
-    ];
+    systemd.packages = [ pkgs.gnome.gnome-initial-setup ];
 
     systemd.user.targets."gnome-session".wants = [
       "gnome-initial-setup-copy-worker.service"
@@ -79,13 +76,10 @@ in
       "gnome-welcome-tour.service"
     ];
 
-    systemd.user.targets."gnome-session@gnome-initial-setup".wants = [
-      "gnome-initial-setup.service"
-    ];
+    systemd.user.targets."gnome-session@gnome-initial-setup".wants = [ "gnome-initial-setup.service" ];
 
     programs.dconf.profiles.gnome-initial-setup.databases = [
       "${pkgs.gnome.gnome-initial-setup}/share/gnome-initial-setup/initial-setup-dconf-defaults"
     ];
   };
-
 }

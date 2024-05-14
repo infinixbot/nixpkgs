@@ -1,13 +1,14 @@
-{ lib
-, buildPythonPackage
-, fetchFromGitHub
-, isPyPy
-, gmp
-, mpfr
-, libmpc
+{
+  lib,
+  buildPythonPackage,
+  fetchFromGitHub,
+  isPyPy,
+  gmp,
+  mpfr,
+  libmpc,
 
-# Reverse dependency
-, sage
+  # Reverse dependency
+  sage,
 }:
 
 let
@@ -28,11 +29,17 @@ buildPythonPackage {
     hash = "sha256-ARCttNzRA+Ji2j2NYaSCDXgvoEg01T9BnYadyqON2o0=";
   };
 
-  buildInputs = [ gmp mpfr libmpc ];
+  buildInputs = [
+    gmp
+    mpfr
+    libmpc
+  ];
 
   pythonImportsCheck = [ "gmpy2" ];
 
-  passthru.tests = { inherit sage; };
+  passthru.tests = {
+    inherit sage;
+  };
 
   meta = with lib; {
     description = "GMP/MPIR, MPFR, and MPC interface to Python 2.6+ and 3.x";

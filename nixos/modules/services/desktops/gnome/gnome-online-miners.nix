@@ -1,6 +1,11 @@
 # GNOME Online Miners daemon.
 
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
 
@@ -22,11 +27,8 @@
           crawls through your online content.
         '';
       };
-
     };
-
   };
-
 
   ###### implementation
 
@@ -35,7 +37,5 @@
     environment.systemPackages = [ pkgs.gnome.gnome-online-miners ];
 
     services.dbus.packages = [ pkgs.gnome.gnome-online-miners ];
-
   };
-
 }

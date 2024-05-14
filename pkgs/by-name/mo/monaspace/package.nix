@@ -1,6 +1,7 @@
-{ lib
-, stdenvNoCC
-, fetchzip
+{
+  lib,
+  stdenvNoCC,
+  fetchzip,
 }:
 
 stdenvNoCC.mkDerivation (finalAttrs: {
@@ -13,7 +14,10 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     hash = "sha256-PNeWDWYSd/oAviwyvwiQSLeATGqGIFYZWjKp+trT5x4=";
   };
 
-  outputs = [ "out" "woff" ];
+  outputs = [
+    "out"
+    "woff"
+  ];
 
   installPhase = ''
     runHook preInstall

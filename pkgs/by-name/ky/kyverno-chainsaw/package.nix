@@ -1,4 +1,8 @@
-{ lib, buildGoModule, fetchFromGitHub }:
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+}:
 
 buildGoModule rec {
   pname = "kyverno-chainsaw";
@@ -14,7 +18,8 @@ buildGoModule rec {
   vendorHash = "sha256-BDpNt/0d/QkJlkyWkw96xVos8kml1BwvStM8NqB4WC8=";
 
   ldflags = [
-    "-s" "-w"
+    "-s"
+    "-w"
     "-X github.com/kyverno/chainsaw/pkg/version.BuildVersion=v${version}"
     "-X github.com/kyverno/chainsaw/pkg/version.BuildHash=${version}"
     "-X github.com/kyverno/chainsaw/pkg/version.BuildTime=1970-01-01_00:00:00"

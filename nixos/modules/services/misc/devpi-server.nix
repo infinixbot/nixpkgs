@@ -95,9 +95,7 @@ in
                 "--host=${cfg.host}"
                 "--port=${builtins.toString cfg.port}"
               ]
-              ++ lib.optionals (! isNull cfg.secretFile) [
-                "--secretfile=${runtimeDir}/${secretsFileName}"
-              ]
+              ++ lib.optionals (!isNull cfg.secretFile) [ "--secretfile=${runtimeDir}/${secretsFileName}" ]
               ++ (
                 if cfg.replica then
                   [
@@ -119,9 +117,7 @@ in
       };
     };
 
-    networking.firewall = mkIf cfg.openFirewall {
-      allowedTCPPorts = [ cfg.port ];
-    };
+    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.port ]; };
 
     meta.maintainers = [ cafkafk ];
   };

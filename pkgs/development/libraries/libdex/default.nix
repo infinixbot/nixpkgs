@@ -1,22 +1,27 @@
-{ stdenv
-, lib
-, fetchurl
-, gi-docgen
-, gobject-introspection
-, meson
-, ninja
-, pkg-config
-, vala
-, glib
-, liburing
-, gnome
+{
+  stdenv,
+  lib,
+  fetchurl,
+  gi-docgen,
+  gobject-introspection,
+  meson,
+  ninja,
+  pkg-config,
+  vala,
+  glib,
+  liburing,
+  gnome,
 }:
 
 stdenv.mkDerivation rec {
   pname = "libdex";
   version = "0.6.0";
 
-  outputs = [ "out" "dev" "devdoc" ];
+  outputs = [
+    "out"
+    "dev"
+    "devdoc"
+  ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";
@@ -37,9 +42,7 @@ stdenv.mkDerivation rec {
     liburing
   ];
 
-  mesonFlags = [
-    "-Ddocs=true"
-  ];
+  mesonFlags = [ "-Ddocs=true" ];
 
   doCheck = true;
 
