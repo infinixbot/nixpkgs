@@ -567,7 +567,7 @@ self: super:
   copilot-vim = super.copilot-vim.overrideAttrs (old: {
     postInstall = ''
       substituteInPlace $out/autoload/copilot/client.vim \
-        --replace "  let node = get(g:, 'copilot_node_command', '')" \
+        --replace "  let node = get(g:, 'copilot_node_command', ''\'''\')" \
                   "  let node = get(g:, 'copilot_node_command', '${nodejs}/bin/node')"
     '';
 
