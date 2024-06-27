@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -10,9 +15,7 @@ let
   # We check the source code in a derivation that does not depend on the
   # system configuration so that most users don't have to redo the check and require
   # the necessary dependencies.
-  checkedSource = pkgs.runCommand "systemd-boot" {
-    preferLocalBuild = true;
-  } ''
+  checkedSource = pkgs.runCommand "systemd-boot" { preferLocalBuild = true; } ''
     install -m755 -D ${./systemd-boot-builder.py} $out
     ${lib.getExe pkgs.buildPackages.mypy} \
       --no-implicit-optional \
@@ -42,9 +45,8 @@ let
 
     inherit (efi) efiSysMountPoint canTouchEfiVariables;
 
-    bootMountPoint = if cfg.xbootldrMountPoint != null
-      then cfg.xbootldrMountPoint
-      else efi.efiSysMountPoint;
+    bootMountPoint =
+      if cfg.xbootldrMountPoint != null then cfg.xbootldrMountPoint else efi.efiSysMountPoint;
 
     nixosDir = "/EFI/nixos";
 
@@ -60,23 +62,27 @@ let
         exit 1
       }
       ${pkgs.util-linuxMinimal}/bin/findmnt ${efiSysMountPoint} > /dev/null || fail efiSysMountPoint ${efiSysMountPoint}
-      ${lib.optionalString
-        (cfg.xbootldrMountPoint != null)
-        "${pkgs.util-linuxMinimal}/bin/findmnt ${cfg.xbootldrMountPoint} > /dev/null || fail xbootldrMountPoint ${cfg.xbootldrMountPoint}"}
+      ${lib.optionalString (cfg.xbootldrMountPoint != null)
+        "${pkgs.util-linuxMinimal}/bin/findmnt ${cfg.xbootldrMountPoint} > /dev/null || fail xbootldrMountPoint ${cfg.xbootldrMountPoint}"
+      }
     '';
 
     copyExtraFiles = pkgs.writeShellScript "copy-extra-files" ''
       empty_file=$(${pkgs.coreutils}/bin/mktemp)
 
-      ${concatStrings (mapAttrsToList (n: v: ''
-        ${pkgs.coreutils}/bin/install -Dp "${v}" "${bootMountPoint}/"${escapeShellArg n}
-        ${pkgs.coreutils}/bin/install -D $empty_file "${bootMountPoint}/${nixosDir}/.extra-files/"${escapeShellArg n}
-      '') cfg.extraFiles)}
+      ${concatStrings (
+        mapAttrsToList (n: v: ''
+          ${pkgs.coreutils}/bin/install -Dp "${v}" "${bootMountPoint}/"${escapeShellArg n}
+          ${pkgs.coreutils}/bin/install -D $empty_file "${bootMountPoint}/${nixosDir}/.extra-files/"${escapeShellArg n}
+        '') cfg.extraFiles
+      )}
 
-      ${concatStrings (mapAttrsToList (n: v: ''
-        ${pkgs.coreutils}/bin/install -Dp "${pkgs.writeText n v}" "${bootMountPoint}/loader/entries/"${escapeShellArg n}
-        ${pkgs.coreutils}/bin/install -D $empty_file "${bootMountPoint}/${nixosDir}/.extra-files/loader/entries/"${escapeShellArg n}
-      '') cfg.extraEntries)}
+      ${concatStrings (
+        mapAttrsToList (n: v: ''
+          ${pkgs.coreutils}/bin/install -Dp "${pkgs.writeText n v}" "${bootMountPoint}/loader/entries/"${escapeShellArg n}
+          ${pkgs.coreutils}/bin/install -D $empty_file "${bootMountPoint}/${nixosDir}/.extra-files/loader/entries/"${escapeShellArg n}
+        '') cfg.extraEntries
+      )}
     '';
   };
 
@@ -85,23 +91,61 @@ let
     ${systemdBootBuilder} "$@"
     ${cfg.extraInstallCommands}
   '';
-in {
+in
+{
 
   meta.maintainers = with lib.maintainers; [ julienmalka ];
 
-  imports =
-    [ (mkRenamedOptionModule [ "boot" "loader" "gummiboot" "enable" ] [ "boot" "loader" "systemd-boot" "enable" ])
-      (lib.mkChangedOptionModule
-        [ "boot" "loader" "systemd-boot" "memtest86" "entryFilename" ]
-        [ "boot" "loader" "systemd-boot" "memtest86" "sortKey" ]
-        (config: lib.strings.removeSuffix ".conf" config.boot.loader.systemd-boot.memtest86.entryFilename)
-      )
-      (lib.mkChangedOptionModule
-        [ "boot" "loader" "systemd-boot" "netbootxyz" "entryFilename" ]
-        [ "boot" "loader" "systemd-boot" "netbootxyz" "sortKey" ]
-        (config: lib.strings.removeSuffix ".conf" config.boot.loader.systemd-boot.netbootxyz.entryFilename)
-      )
-    ];
+  imports = [
+    (mkRenamedOptionModule
+      [
+        "boot"
+        "loader"
+        "gummiboot"
+        "enable"
+      ]
+      [
+        "boot"
+        "loader"
+        "systemd-boot"
+        "enable"
+      ]
+    )
+    (lib.mkChangedOptionModule
+      [
+        "boot"
+        "loader"
+        "systemd-boot"
+        "memtest86"
+        "entryFilename"
+      ]
+      [
+        "boot"
+        "loader"
+        "systemd-boot"
+        "memtest86"
+        "sortKey"
+      ]
+      (config: lib.strings.removeSuffix ".conf" config.boot.loader.systemd-boot.memtest86.entryFilename)
+    )
+    (lib.mkChangedOptionModule
+      [
+        "boot"
+        "loader"
+        "systemd-boot"
+        "netbootxyz"
+        "entryFilename"
+      ]
+      [
+        "boot"
+        "loader"
+        "systemd-boot"
+        "netbootxyz"
+        "sortKey"
+      ]
+      (config: lib.strings.removeSuffix ".conf" config.boot.loader.systemd-boot.netbootxyz.entryFilename)
+    )
+  ];
 
   options.boot.loader.systemd-boot = {
     enable = mkOption {
@@ -203,7 +247,14 @@ in {
     consoleMode = mkOption {
       default = "keep";
 
-      type = types.enum [ "0" "1" "2" "auto" "max" "keep" ];
+      type = types.enum [
+        "0"
+        "1"
+        "2"
+        "auto"
+        "max"
+        "keep"
+      ];
 
       description = ''
         The resolution of the console. The following values are valid:
@@ -267,7 +318,7 @@ in {
 
     extraEntries = mkOption {
       type = types.attrsOf types.lines;
-      default = {};
+      default = { };
       example = literalExpression ''
         { "memtest86.conf" = '''
           title Memtest86+
@@ -290,7 +341,7 @@ in {
 
     extraFiles = mkOption {
       type = types.attrsOf types.path;
-      default = {};
+      default = { };
       example = literalExpression ''
         { "efi/memtest86/memtest.efi" = "''${pkgs.memtest86plus}/memtest.efi"; }
       '';
@@ -320,33 +371,35 @@ in {
   };
 
   config = mkIf cfg.enable {
-    assertions = [
-      {
-        assertion = (hasPrefix "/" efi.efiSysMountPoint);
-        message = "The ESP mount point '${toString efi.efiSysMountPoint}' must be an absolute path";
-      }
-      {
-        assertion = cfg.xbootldrMountPoint == null || (hasPrefix "/" cfg.xbootldrMountPoint);
-        message = "The XBOOTLDR mount point '${toString cfg.xbootldrMountPoint}' must be an absolute path";
-      }
-      {
-        assertion = cfg.xbootldrMountPoint != efi.efiSysMountPoint;
-        message = "The XBOOTLDR mount point '${toString cfg.xbootldrMountPoint}' cannot be the same as the ESP mount point '${toString efi.efiSysMountPoint}'";
-      }
-      {
-        assertion = (config.boot.kernelPackages.kernel.features or { efiBootStub = true; }) ? efiBootStub;
-        message = "This kernel does not support the EFI boot stub";
-      }
-    ] ++ concatMap (filename: [
-      {
-        assertion = !(hasInfix "/" filename);
-        message = "boot.loader.systemd-boot.extraEntries.${lib.strings.escapeNixIdentifier filename} is invalid: entries within folders are not supported";
-      }
-      {
-        assertion = hasSuffix ".conf" filename;
-        message = "boot.loader.systemd-boot.extraEntries.${lib.strings.escapeNixIdentifier filename} is invalid: entries must have a .conf file extension";
-      }
-    ]) (builtins.attrNames cfg.extraEntries)
+    assertions =
+      [
+        {
+          assertion = (hasPrefix "/" efi.efiSysMountPoint);
+          message = "The ESP mount point '${toString efi.efiSysMountPoint}' must be an absolute path";
+        }
+        {
+          assertion = cfg.xbootldrMountPoint == null || (hasPrefix "/" cfg.xbootldrMountPoint);
+          message = "The XBOOTLDR mount point '${toString cfg.xbootldrMountPoint}' must be an absolute path";
+        }
+        {
+          assertion = cfg.xbootldrMountPoint != efi.efiSysMountPoint;
+          message = "The XBOOTLDR mount point '${toString cfg.xbootldrMountPoint}' cannot be the same as the ESP mount point '${toString efi.efiSysMountPoint}'";
+        }
+        {
+          assertion = (config.boot.kernelPackages.kernel.features or { efiBootStub = true; }) ? efiBootStub;
+          message = "This kernel does not support the EFI boot stub";
+        }
+      ]
+      ++ concatMap (filename: [
+        {
+          assertion = !(hasInfix "/" filename);
+          message = "boot.loader.systemd-boot.extraEntries.${lib.strings.escapeNixIdentifier filename} is invalid: entries within folders are not supported";
+        }
+        {
+          assertion = hasSuffix ".conf" filename;
+          message = "boot.loader.systemd-boot.extraEntries.${lib.strings.escapeNixIdentifier filename} is invalid: entries must have a .conf file extension";
+        }
+      ]) (builtins.attrNames cfg.extraEntries)
       ++ concatMap (filename: [
         {
           assertion = !(hasPrefix "/" filename);
@@ -367,12 +420,8 @@ in {
     boot.loader.supportsInitrdSecrets = true;
 
     boot.loader.systemd-boot.extraFiles = mkMerge [
-      (mkIf cfg.memtest86.enable {
-        "efi/memtest86/memtest.efi" = "${pkgs.memtest86plus.efi}";
-      })
-      (mkIf cfg.netbootxyz.enable {
-        "efi/netbootxyz/netboot.xyz.efi" = "${pkgs.netbootxyz-efi}";
-      })
+      (mkIf cfg.memtest86.enable { "efi/memtest86/memtest.efi" = "${pkgs.memtest86plus.efi}"; })
+      (mkIf cfg.netbootxyz.enable { "efi/netbootxyz/netboot.xyz.efi" = "${pkgs.netbootxyz-efi}"; })
     ];
 
     boot.loader.systemd-boot.extraEntries = mkMerge [
@@ -401,9 +450,7 @@ in {
 
       boot.loader.id = "systemd-boot";
 
-      requiredKernelConfig = with config.lib.kernelConfig; [
-        (isYes "EFI_STUB")
-      ];
+      requiredKernelConfig = with config.lib.kernelConfig; [ (isYes "EFI_STUB") ];
     };
   };
 }

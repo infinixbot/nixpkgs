@@ -36,9 +36,7 @@ in
     xdg.portal.extraPortals = [ pkgs.gnome.gnome-keyring ];
 
     security.pam.services = lib.mkMerge [
-      {
-        login.enableGnomeKeyring = true;
-      }
+      { login.enableGnomeKeyring = true; }
       (lib.mkIf config.services.xserver.displayManager.gdm.enable {
         gdm-password.enableGnomeKeyring = true;
         gdm-autologin.enableGnomeKeyring = true;

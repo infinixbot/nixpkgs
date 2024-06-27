@@ -1,8 +1,9 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, zig_0_12
-, callPackage
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  zig_0_12,
+  callPackage,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -17,13 +18,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-2iVDPUj9ExgTooDQmCCtZs3wxBe2be9xjzAk9HedPNY=";
   };
 
-  zigBuildFlags = [
-    "-Dversion_data_path=${zig_0_12.src}/doc/langref.html.in"
-  ];
+  zigBuildFlags = [ "-Dversion_data_path=${zig_0_12.src}/doc/langref.html.in" ];
 
-  nativeBuildInputs = [
-    zig_0_12.hook
-  ];
+  nativeBuildInputs = [ zig_0_12.hook ];
 
   postPatch = ''
     ln -s ${callPackage ./deps.nix { }} $ZIG_GLOBAL_CACHE_DIR/p
@@ -35,7 +32,10 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://github.com/zigtools/zls/releases/tag/${finalAttrs.version}";
     homepage = "https://github.com/zigtools/zls";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [ figsoda moni ];
+    maintainers = with lib.maintainers; [
+      figsoda
+      moni
+    ];
     platforms = lib.platforms.unix;
   };
 })

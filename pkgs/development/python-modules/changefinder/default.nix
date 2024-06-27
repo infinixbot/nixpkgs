@@ -1,10 +1,11 @@
-{ lib
-, buildPythonPackage
-, fetchFromGitHub
-, setuptools
-, numpy
-, scipy
-, statsmodels
+{
+  lib,
+  buildPythonPackage,
+  fetchFromGitHub,
+  setuptools,
+  numpy,
+  scipy,
+  statsmodels,
 }:
 
 buildPythonPackage {
@@ -19,9 +20,7 @@ buildPythonPackage {
     hash = "sha256-1If0gIsMU8673fKSSHVMvDgR1UnYgM/4HiyvZJ9T6VM=";
   };
 
-  nativeBuildInputs = [
-    setuptools
-  ];
+  nativeBuildInputs = [ setuptools ];
 
   propagatedBuildInputs = [
     numpy
