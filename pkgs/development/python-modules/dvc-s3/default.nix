@@ -31,13 +31,9 @@ buildPythonPackage rec {
       --replace-fail "aiobotocore[boto3]" "aiobotocore"
   '';
 
-  build-system = [
-    setuptools-scm
-  ];
+  build-system = [ setuptools-scm ];
 
-  nativeBuildInputs = [
-    pythonRelaxDepsHook
-  ];
+  nativeBuildInputs = [ pythonRelaxDepsHook ];
 
   dependencies = [
     aiobotocore

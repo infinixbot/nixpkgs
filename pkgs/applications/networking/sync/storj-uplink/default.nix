@@ -1,6 +1,7 @@
-{ lib
-, buildGoModule
-, fetchFromGitHub
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
 }:
 
 buildGoModule rec {
@@ -18,7 +19,10 @@ buildGoModule rec {
 
   vendorHash = "sha256-CyUthAKwJwocZtvNEy5p/1WmqT4DIl0jN63hiQncrwY=";
 
-  ldflags = [ "-s" "-w" ];
+  ldflags = [
+    "-s"
+    "-w"
+  ];
 
   meta = with lib; {
     description = "Command-line tool for Storj";

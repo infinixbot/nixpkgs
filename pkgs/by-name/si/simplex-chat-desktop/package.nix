@@ -1,7 +1,8 @@
-{ lib
-, appimageTools
-, fetchurl
-, gitUpdater
+{
+  lib,
+  appimageTools,
+  fetchurl,
+  gitUpdater,
 }:
 
 let
@@ -13,22 +14,19 @@ let
     hash = "sha256-EYoUsxJgG9xqXtjys0InJJaqvX1XXcef9PYQ3nZPNuo=";
   };
 
-  appimageContents = appimageTools.extract {
-    inherit pname version src;
-  };
-in appimageTools.wrapType2 {
-    inherit pname version src;
+  appimageContents = appimageTools.extract { inherit pname version src; };
+in
+appimageTools.wrapType2 {
+  inherit pname version src;
 
-    extraBwrapArgs = [
-      "--setenv _JAVA_AWT_WM_NONREPARENTING 1"
-    ];
+  extraBwrapArgs = [ "--setenv _JAVA_AWT_WM_NONREPARENTING 1" ];
 
-    extraInstallCommands = ''
-      install --mode=444 -D ${appimageContents}/chat.simplex.app.desktop --target-directory=$out/share/applications
-      substituteInPlace $out/share/applications/chat.simplex.app.desktop \
-        --replace-fail 'Exec=simplex' 'Exec=simplex-chat-desktop'
-      cp -r ${appimageContents}/usr/share/icons $out/share
-    '';
+  extraInstallCommands = ''
+    install --mode=444 -D ${appimageContents}/chat.simplex.app.desktop --target-directory=$out/share/applications
+    substituteInPlace $out/share/applications/chat.simplex.app.desktop \
+      --replace-fail 'Exec=simplex' 'Exec=simplex-chat-desktop'
+    cp -r ${appimageContents}/usr/share/icons $out/share
+  '';
 
   passthru.updateScript = gitUpdater {
     url = "https://github.com/simplex-chat/simplex-chat";

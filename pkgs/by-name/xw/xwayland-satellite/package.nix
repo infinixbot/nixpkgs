@@ -1,11 +1,12 @@
-{ lib
-, rustPlatform
-, fetchFromGitHub
-, pkg-config
-, xwayland
-, xcb-util-cursor
-, libxcb
-, nix-update-script
+{
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
+  pkg-config,
+  xwayland,
+  xcb-util-cursor,
+  libxcb,
+  nix-update-script,
 }:
 
 rustPlatform.buildRustPackage rec {
