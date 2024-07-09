@@ -1,4 +1,18 @@
-{ lib, stdenv, fetchurl, mono, libmediainfo, sqlite, curl, makeWrapper, icu, dotnet-runtime, openssl, nixosTests, zlib }:
+{
+  lib,
+  stdenv,
+  fetchurl,
+  mono,
+  libmediainfo,
+  sqlite,
+  curl,
+  makeWrapper,
+  icu,
+  dotnet-runtime,
+  openssl,
+  nixosTests,
+  zlib,
+}:
 
 let
   pname = "prowlarr";
@@ -13,21 +27,26 @@ let
     else
       unsupported;
 
-  arch = {
-    aarch64-darwin = "arm64";
-    aarch64-linux = "arm64";
-    x86_64-darwin = "x64";
-    x86_64-linux = "x64";
-  }.${stdenv.hostPlatform.system} or unsupported;
+  arch =
+    {
+      aarch64-darwin = "arm64";
+      aarch64-linux = "arm64";
+      x86_64-darwin = "x64";
+      x86_64-linux = "x64";
+    }
+    .${stdenv.hostPlatform.system} or unsupported;
 
-  hash = {
-    aarch64-darwin = "sha256-4bzeHU52XNAZW24P6uKQ0etUCW7dIsVpujrilPrI3hM=";
-    aarch64-linux = "sha256-0IpayOFTxhdbz7R3PhbTsdweMdDyY6J5WJ8JX/6aFbg=";
-    x86_64-darwin = "sha256-6hcuD63xwolT/dDKnrdfosyJy1W5kyPJJf/H4u6XGfw=";
-    x86_64-linux = "sha256-7ZDdXAVdMAArOy7iYaqmS6s70TQaZIknRoLRyTKpULg=";
-  }.${stdenv.hostPlatform.system} or unsupported;
+  hash =
+    {
+      aarch64-darwin = "sha256-4bzeHU52XNAZW24P6uKQ0etUCW7dIsVpujrilPrI3hM=";
+      aarch64-linux = "sha256-0IpayOFTxhdbz7R3PhbTsdweMdDyY6J5WJ8JX/6aFbg=";
+      x86_64-darwin = "sha256-6hcuD63xwolT/dDKnrdfosyJy1W5kyPJJf/H4u6XGfw=";
+      x86_64-linux = "sha256-7ZDdXAVdMAArOy7iYaqmS6s70TQaZIknRoLRyTKpULg=";
+    }
+    .${stdenv.hostPlatform.system} or unsupported;
 
-in stdenv.mkDerivation rec {
+in
+stdenv.mkDerivation rec {
   inherit pname;
   version = "1.19.0.4568";
 
@@ -46,8 +65,17 @@ in stdenv.mkDerivation rec {
 
     makeWrapper "${dotnet-runtime}/bin/dotnet" $out/bin/Prowlarr \
       --add-flags "$out/share/${pname}-${version}/Prowlarr.dll" \
-      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [
-        curl sqlite libmediainfo mono openssl icu zlib ]}
+      --prefix LD_LIBRARY_PATH : ${
+        lib.makeLibraryPath [
+          curl
+          sqlite
+          libmediainfo
+          mono
+          openssl
+          icu
+          zlib
+        ]
+      }
 
     runHook postInstall
   '';

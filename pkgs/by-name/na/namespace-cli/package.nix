@@ -1,6 +1,7 @@
-{ lib
-, fetchFromGitHub
-, buildGoModule
+{
+  lib,
+  fetchFromGitHub,
+  buildGoModule,
 }:
 
 buildGoModule rec {
@@ -16,7 +17,11 @@ buildGoModule rec {
 
   vendorHash = "sha256-y+mXUzkY5w2hYECtfcBBUCWsRwhip6IhX617lRX698Q=";
 
-  subPackages = ["cmd/nsc" "cmd/ns" "cmd/docker-credential-nsc"];
+  subPackages = [
+    "cmd/nsc"
+    "cmd/ns"
+    "cmd/docker-credential-nsc"
+  ];
 
   ldflags = [
     "-s"

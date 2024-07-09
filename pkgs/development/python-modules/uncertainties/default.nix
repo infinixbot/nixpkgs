@@ -19,9 +19,7 @@ buildPythonPackage rec {
     hash = "sha256-AaFazHeq7t4DnG2s9GvmAJ3ni62PWHR//mNPL+WyGSI=";
   };
 
-  nativeBuildInputs = [
-    setuptools-scm
-  ];
+  nativeBuildInputs = [ setuptools-scm ];
 
   nativeCheckInputs = [
     pytestCheckHook

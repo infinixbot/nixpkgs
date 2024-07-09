@@ -31,29 +31,31 @@
   installShellFiles,
 }:
 let
-  runtimePaths = [
-    cdrtools
-    curl
-    gawk
-    gnugrep
-    gnused
-    jq
-    ncurses
-    pciutils
-    procps
-    python3
-    qemu
-    socat
-    swtpm
-    util-linux
-    unzip
-    xrandr
-    zsync
-  ] ++ lib.optionals stdenv.isLinux [
-    glxinfo
-    usbutils
-    xdg-user-dirs
-  ];
+  runtimePaths =
+    [
+      cdrtools
+      curl
+      gawk
+      gnugrep
+      gnused
+      jq
+      ncurses
+      pciutils
+      procps
+      python3
+      qemu
+      socat
+      swtpm
+      util-linux
+      unzip
+      xrandr
+      zsync
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      glxinfo
+      usbutils
+      xdg-user-dirs
+    ];
 in
 
 stdenv.mkDerivation (finalAttrs: {
@@ -98,9 +100,7 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postInstall
   '';
 
-  passthru.tests = testers.testVersion {
-    package = quickemu;
-  };
+  passthru.tests = testers.testVersion { package = quickemu; };
 
   meta = {
     description = "Quickly create and run optimised Windows, macOS and Linux virtual machines";

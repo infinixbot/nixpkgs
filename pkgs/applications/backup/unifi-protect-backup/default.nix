@@ -1,6 +1,7 @@
-{ lib
-, fetchFromGitHub
-, python3
+{
+  lib,
+  fetchFromGitHub,
+  python3,
 }:
 
 let
@@ -56,9 +57,7 @@ python.pkgs.buildPythonApplication rec {
     pyunifiprotect
   ];
 
-  nativeCheckInputs = with python.pkgs; [
-    pytestCheckHook
-  ];
+  nativeCheckInputs = with python.pkgs; [ pytestCheckHook ];
 
   meta = with lib; {
     description = "Python tool to backup unifi event clips in realtime";

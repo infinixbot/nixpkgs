@@ -33,13 +33,9 @@ buildPythonPackage rec {
     sed -i '/addopts/d' pyproject.toml
   '';
 
-  build-system = [
-    poetry-core
-  ];
+  build-system = [ poetry-core ];
 
-  nativeBuildInputs = [
-    pythonRelaxDepsHook
-  ];
+  nativeBuildInputs = [ pythonRelaxDepsHook ];
 
   pythonRelaxDeps = [ "pytz" ];
 

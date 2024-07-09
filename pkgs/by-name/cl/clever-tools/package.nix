@@ -1,8 +1,9 @@
-{ lib
-, buildNpmPackage
-, fetchFromGitHub
-, nodejs_18
-, installShellFiles
+{
+  lib,
+  buildNpmPackage,
+  fetchFromGitHub,
+  nodejs_18,
+  installShellFiles,
 }:
 
 buildNpmPackage rec {

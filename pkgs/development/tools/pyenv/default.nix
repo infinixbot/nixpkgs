@@ -1,7 +1,8 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, installShellFiles
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  installShellFiles,
 }:
 
 stdenv.mkDerivation rec {
@@ -15,13 +16,14 @@ stdenv.mkDerivation rec {
     hash = "sha256-ujbJrF7QDd2DIsZGEoJrM3VA2WNpkJNe4BZVcPokXRg=";
   };
 
-  nativeBuildInputs = [
-    installShellFiles
-  ];
+  nativeBuildInputs = [ installShellFiles ];
 
   configureScript = "src/configure";
 
-  makeFlags = ["-C" "src"];
+  makeFlags = [
+    "-C"
+    "src"
+  ];
 
   installPhase = ''
     runHook preInstall
