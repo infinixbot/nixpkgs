@@ -7,9 +7,8 @@
   gtk-layer-shell,
   pango,
   gdk-pixbuf,
-  atk
+  atk,
   # Extra packages called by various internal nwg-panel modules
-  ,
   hyprland, # hyprctl
   sway, # swaylock, swaymsg
   systemd, # systemctl

@@ -77,9 +77,8 @@
   curl,
   libffi,
   libepoxy,
-  libevdev
+  libevdev,
   # postPatch:
-  ,
   glibc, # gconv + locale
   # postFixup:
   vulkan-loader,

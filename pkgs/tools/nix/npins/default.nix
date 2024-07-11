@@ -4,10 +4,9 @@
   makeWrapper,
   stdenv,
   darwin,
-  callPackage
+  callPackage,
 
   # runtime dependencies
-  ,
   nix, # for nix-prefetch-url
   nix-prefetch-git,
   git, # for git ls-remote

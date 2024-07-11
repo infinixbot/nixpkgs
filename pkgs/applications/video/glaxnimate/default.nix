@@ -13,9 +13,8 @@
   wrapQtAppsHook,
   testers,
   qtsvg,
-  qtimageformats
+  qtimageformats,
   # For the tests
-  ,
   glaxnimate, # Call itself, for the tests
   xvfb-run,
 }:

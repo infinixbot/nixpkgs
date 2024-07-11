@@ -7,11 +7,10 @@
   pkg-config,
   perl,
   texinfo,
-  yasm
+  yasm,
 
   # You can fetch any upstream version using this derivation by specifying version and hash
   # NOTICE: Always use this argument to override the version. Do not use overrideAttrs.
-  ,
   version, # ffmpeg ABI version. Also declare this if you're overriding the source.
   hash ? "", # hash of the upstream source for the given ABI version
   source ? fetchgit {

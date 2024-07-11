@@ -11,9 +11,8 @@
 lib.makeOverridable (
   {
     name, # The name of the desktop file
-    type ? "Application"
+    type ? "Application",
     # version is hardcoded
-    ,
     desktopName, # The name of the application
     genericName ? null,
     noDisplay ? null,

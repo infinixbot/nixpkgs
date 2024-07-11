@@ -11,9 +11,8 @@
   libgit2,
   nix,
   openssl,
-  pkg-config
+  pkg-config,
 
-  ,
   devenv, # required to run version test
 }:
 

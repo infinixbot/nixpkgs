@@ -6,9 +6,8 @@
   fetchFromGitLab,
   callPackage,
   config,
-  writeShellScript
+  writeShellScript,
 
-  ,
   cdrtools, # libvirt
 }:
 let
