@@ -26,7 +26,6 @@ buildPythonPackage rec {
     hash = "sha256-djJMNXijMVzMVzw8NZSe3YFRGyAPqdvr0P374Za5XkU=";
   };
 
-
   propagatedBuildInputs = [
     setuptools
     poetry-core
