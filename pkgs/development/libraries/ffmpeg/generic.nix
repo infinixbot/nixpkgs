@@ -335,7 +335,6 @@
   Known issues:
   Cross-compiling will disable features not present on host OS
     (e.g. dxva2 support [DirectX] will not be enabled unless natively compiled on Cygwin)
-
 */
 
 let

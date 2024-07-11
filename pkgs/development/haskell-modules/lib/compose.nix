@@ -333,7 +333,6 @@ rec {
     We can build only "server" and not wait on the compilation of "dev" by using setBuildTarget as follows:
 
       > setBuildTarget "server" (callCabal2nix "thePackageName" thePackageSrc {})
-
   */
   setBuildTargets =
     xs:

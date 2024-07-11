@@ -221,7 +221,6 @@ rec {
     We can build only "server" and not wait on the compilation of "dev" by using setBuildTarget as follows:
 
       setBuildTarget (callCabal2nix "thePackageName" thePackageSrc {}) "server"
-
   */
   setBuildTargets = drv: xs: compose.setBuildTargets xs drv;
   setBuildTarget = drv: x: compose.setBuildTarget x drv;
