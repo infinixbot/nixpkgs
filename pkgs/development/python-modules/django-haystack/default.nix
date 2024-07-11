@@ -52,7 +52,6 @@ buildPythonPackage rec {
     whoosh
   ] ++ optional-dependencies.elasticsearch;
 
-
   checkPhase = ''
     runHook preCheck
     python test_haystack/run_tests.py

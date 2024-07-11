@@ -1,4 +1,5 @@
-{ lib,
+{
+  lib,
   fetchPypi,
   fetchFromGitHub,
   buildPythonPackage,

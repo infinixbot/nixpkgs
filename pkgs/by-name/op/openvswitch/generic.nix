@@ -104,7 +104,7 @@ stdenv.mkDerivation rec {
       --prefix PYTHONPATH : $out/share/openvswitch/python
 
     wrapProgram $out/bin/ovs-tcpdump \
-      --prefix PATH : ${lib.makeBinPath [tcpdump]} \
+      --prefix PATH : ${lib.makeBinPath [ tcpdump ]} \
       --prefix PYTHONPATH : $out/share/openvswitch/python
   '';
 

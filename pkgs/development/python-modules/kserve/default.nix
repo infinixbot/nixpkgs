@@ -55,7 +55,6 @@ buildPythonPackage rec {
     poetry-core
   ];
 
-
   dependencies = [
     async-timeout
     cloudevents

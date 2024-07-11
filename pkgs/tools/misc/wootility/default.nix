@@ -1,10 +1,11 @@
-{ appimageTools
-, fetchurl
-, lib
-, xorg
-, udev
-, wooting-udev-rules
-, makeWrapper
+{
+  appimageTools,
+  fetchurl,
+  lib,
+  xorg,
+  udev,
+  wooting-udev-rules,
+  makeWrapper,
 }:
 
 appimageTools.wrapType2 rec {
@@ -17,8 +18,10 @@ appimageTools.wrapType2 rec {
   };
 
   extraInstallCommands =
-    let contents = appimageTools.extract { inherit pname version src; };
-    in ''
+    let
+      contents = appimageTools.extract { inherit pname version src; };
+    in
+    ''
       source "${makeWrapper}/nix-support/setup-hook"
       wrapProgram $out/bin/wootility \
         --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
@@ -36,7 +39,9 @@ appimageTools.wrapType2 rec {
 
   multiPkgs = extraPkgs;
   extraPkgs =
-    pkgs: (appimageTools.defaultFhsEnvArgs.multiPkgs pkgs) ++ ([
+    pkgs:
+    (appimageTools.defaultFhsEnvArgs.multiPkgs pkgs)
+    ++ ([
       udev
       wooting-udev-rules
       xorg.libxkbfile
@@ -47,7 +52,10 @@ appimageTools.wrapType2 rec {
     description = "Customization and management software for Wooting keyboards";
     platforms = [ "x86_64-linux" ];
     license = licenses.unfree;
-    maintainers = with maintainers; [ davidtwco sodiboo ];
+    maintainers = with maintainers; [
+      davidtwco
+      sodiboo
+    ];
     mainProgram = "wootility";
   };
 }

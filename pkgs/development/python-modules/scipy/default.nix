@@ -94,22 +94,22 @@ buildPythonPackage {
       --replace-fail 'numpy>=2.0.0rc1,' 'numpy' \
   '';
 
-  nativeBuildInputs = [
-    cython
-    gfortran
-    meson-python
-    nukeReferences
-    pythran
-    pkg-config
-    wheel
-    setuptools
-  ] ++ lib.optionals stdenv.isDarwin [
-    # Minimal version required according to:
-    # https://github.com/scipy/scipy/blob/v1.14.0/scipy/meson.build#L185-L188
-    (xcbuild.override {
-      sdkVer = "13.3";
-    })
-  ];
+  nativeBuildInputs =
+    [
+      cython
+      gfortran
+      meson-python
+      nukeReferences
+      pythran
+      pkg-config
+      wheel
+      setuptools
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      # Minimal version required according to:
+      # https://github.com/scipy/scipy/blob/v1.14.0/scipy/meson.build#L185-L188
+      (xcbuild.override { sdkVer = "13.3"; })
+    ];
 
   buildInputs = [
     blas

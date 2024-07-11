@@ -1,42 +1,43 @@
-{ stdenv
-, lib
-, fetchFromGitHub
-, cmake
-, ninja
-, clangStdenv
-, pkg-config
-, alsa-lib
-, avahi
-, avahi-compat
-, bluez
-, boost185
-, fmt
-, ffmpeg
-, fftw
-, flac
-, git
-, gnutls
-, lame
-, libcoap
-, libjack2
-, libopus
-, libsamplerate
-, libsndfile
-, libvorbis
-, lilv
-, lv2
-, mpg123
-, pipewire
-, portaudio
-, qt6
-, rapidfuzz-cpp
-, re2
-, rubberband
-, snappy
-, SDL2
-, spdlog
-, suil
-, udev
+{
+  stdenv,
+  lib,
+  fetchFromGitHub,
+  cmake,
+  ninja,
+  clangStdenv,
+  pkg-config,
+  alsa-lib,
+  avahi,
+  avahi-compat,
+  bluez,
+  boost185,
+  fmt,
+  ffmpeg,
+  fftw,
+  flac,
+  git,
+  gnutls,
+  lame,
+  libcoap,
+  libjack2,
+  libopus,
+  libsamplerate,
+  libsndfile,
+  libvorbis,
+  lilv,
+  lv2,
+  mpg123,
+  pipewire,
+  portaudio,
+  qt6,
+  rapidfuzz-cpp,
+  re2,
+  rubberband,
+  snappy,
+  SDL2,
+  spdlog,
+  suil,
+  udev,
 }:
 
 # TODO: figure out LLVM jit
@@ -54,7 +55,14 @@ stdenv.mkDerivation (finalAttrs: {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [ cmake ninja git pkg-config qt6.qttools qt6.wrapQtAppsHook ];
+  nativeBuildInputs = [
+    cmake
+    ninja
+    git
+    pkg-config
+    qt6.qttools
+    qt6.wrapQtAppsHook
+  ];
 
   buildInputs = [
     alsa-lib
@@ -154,6 +162,9 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     platforms = [ "x86_64-linux" ];
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [ jcelerier minijackson ];
+    maintainers = with maintainers; [
+      jcelerier
+      minijackson
+    ];
   };
 })

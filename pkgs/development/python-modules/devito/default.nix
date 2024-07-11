@@ -46,7 +46,6 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = true;
 
-
   dependencies = [
     anytree
     cached-property

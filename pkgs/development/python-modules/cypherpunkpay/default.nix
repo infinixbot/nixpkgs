@@ -47,9 +47,7 @@ buildPythonPackage rec {
     "waitress"
   ];
 
-  nativeBuildInputs = [
-    poetry-core
-  ];
+  nativeBuildInputs = [ poetry-core ];
 
   propagatedBuildInputs = [
     apscheduler

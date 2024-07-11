@@ -29,23 +29,28 @@ let
       wheel
     ];
 
-    propagatedBuildInputs = (with python3Packages; [
-      ply
-      prompt-toolkit
-      pygments
-    ]);
+    propagatedBuildInputs = (
+      with python3Packages;
+      [
+        ply
+        prompt-toolkit
+        pygments
+      ]
+    );
 
-    nativeCheckInputs = [
-      git
-      glibcLocales
-    ] ++ (with python3Packages; [
-      pip
-      pyte
-      pytest-mock
-      pytest-subprocess
-      pytestCheckHook
-      requests
-    ]);
+    nativeCheckInputs =
+      [
+        git
+        glibcLocales
+      ]
+      ++ (with python3Packages; [
+        pip
+        pyte
+        pytest-mock
+        pytest-subprocess
+        pytestCheckHook
+        requests
+      ]);
 
     disabledTests = [
       # fails on sandbox

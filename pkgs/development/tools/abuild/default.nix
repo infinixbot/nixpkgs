@@ -1,17 +1,18 @@
-{ lib
-, stdenv
-, fetchFromGitLab
-, gitUpdater
-, makeWrapper
-, pkg-config
-, file
-, scdoc
-, openssl
-, zlib
-, busybox
-, apk-tools
-, perl
-, findutils
+{
+  lib,
+  stdenv,
+  fetchFromGitLab,
+  gitUpdater,
+  makeWrapper,
+  pkg-config,
+  file,
+  scdoc,
+  openssl,
+  zlib,
+  busybox,
+  apk-tools,
+  perl,
+  findutils,
 }:
 
 stdenv.mkDerivation rec {
@@ -31,13 +32,15 @@ stdenv.mkDerivation rec {
     zlib
     busybox
     # for $out/bin/apkbuild-cpan and $out/bin/apkbuild-pypi
-    (perl.withPackages (ps: with ps; [
-      LWP
-      JSON
-      ModuleBuildTiny
-      LWPProtocolHttps
-      IPCSystemSimple
-    ]))
+    (perl.withPackages (
+      ps: with ps; [
+        LWP
+        JSON
+        ModuleBuildTiny
+        LWPProtocolHttps
+        IPCSystemSimple
+      ]
+    ))
   ];
 
   nativeBuildInputs = [
@@ -58,9 +61,7 @@ stdenv.mkDerivation rec {
     "CFLAGS=-Wno-error"
   ];
 
-  installFlags = [
-    "sysconfdir=${placeholder "out"}/etc"
-  ];
+  installFlags = [ "sysconfdir=${placeholder "out"}/etc" ];
 
   postInstall = ''
     # this script requires unpackaged 'augeas' rubygem, no reason
