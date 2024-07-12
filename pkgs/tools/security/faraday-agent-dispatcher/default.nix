@@ -1,6 +1,7 @@
-{ lib
-, fetchFromGitHub
-, python3
+{
+  lib,
+  fetchFromGitHub,
+  python3,
 }:
 
 python3.pkgs.buildPythonApplication rec {
@@ -20,16 +21,11 @@ python3.pkgs.buildPythonApplication rec {
       --replace-fail '"pytest-runner",' ""
   '';
 
-  pythonRelaxDeps = [
-    "python-socketio"
-  ];
+  pythonRelaxDeps = [ "python-socketio" ];
 
-  build-system = with python3.pkgs; [
-    setuptools-scm
-  ];
+  build-system = with python3.pkgs; [ setuptools-scm ];
 
-  nativeBuildInputs = with python3.pkgs; [
-  ];
+  nativeBuildInputs = with python3.pkgs; [ ];
 
   dependencies = with python3.pkgs; [
     aiohttp
@@ -67,9 +63,7 @@ python3.pkgs.buildPythonApplication rec {
     "tests/plugins-docker/test_executors.py"
   ];
 
-  pythonImportsCheck = [
-    "faraday_agent_dispatcher"
-  ];
+  pythonImportsCheck = [ "faraday_agent_dispatcher" ];
 
   meta = with lib; {
     description = "Tool to send result from tools to the Faraday Platform";

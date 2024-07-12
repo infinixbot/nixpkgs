@@ -90,7 +90,10 @@ stdenv.mkDerivation (finalAttrs: {
       ]
     );
 
-  outputs = [ "out" "man" ];
+  outputs = [
+    "out"
+    "man"
+  ];
 
   postInstall = ''
     install -Dm644 $src/contrib/linux/dosbox-staging.desktop $out/share/applications/
@@ -116,9 +119,7 @@ stdenv.mkDerivation (finalAttrs: {
         command = "dosbox --version";
       };
     };
-    updateScript = gitUpdater {
-      rev-prefix = "v";
-    };
+    updateScript = gitUpdater { rev-prefix = "v"; };
   };
 
   meta = {

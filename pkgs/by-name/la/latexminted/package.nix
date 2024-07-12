@@ -1,8 +1,9 @@
-{ lib
-, fetchPypi
-, python3Packages
-, latexminted
-, testers
+{
+  lib,
+  fetchPypi,
+  python3Packages,
+  latexminted,
+  testers,
 }:
 
 python3Packages.buildPythonApplication rec {
@@ -15,9 +16,7 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-QUFfoX1jv5pVQDEBGaVd1madfqbTWTJyXPh4gw7P5UE=";
   };
 
-  build-system = with python3Packages; [
-    setuptools
-  ];
+  build-system = with python3Packages; [ setuptools ];
 
   dependencies = with python3Packages; [
     pygments

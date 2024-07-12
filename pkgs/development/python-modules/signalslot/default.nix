@@ -27,7 +27,6 @@ buildPythonPackage rec {
       --replace "--cov-report html" ""
   '';
 
-
   propagatedBuildInputs = [
     contexter
     six

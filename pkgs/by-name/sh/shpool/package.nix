@@ -18,7 +18,6 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-6gfK71uM6IOP571Jzv3QPPKITaRteXyySZAstH0e+/M=";
   };
 
-
   postPatch = ''
     substituteInPlace systemd/shpool.service \
       --replace-fail '/usr/bin/shpool' "$out/bin/shpool"
@@ -26,9 +25,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-rJ+Avq/6y68xEcJ+EeFVhFaSWJyC+x0a46cclVsTE4Q=";
 
-  buildInputs = [
-    linux-pam
-  ];
+  buildInputs = [ linux-pam ];
 
   # The majority of tests rely on impure environment
   # (such as systemd socket, ssh socket), and some of them

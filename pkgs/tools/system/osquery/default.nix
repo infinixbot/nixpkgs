@@ -1,17 +1,18 @@
-{ lib
-, cmake
-, fetchFromGitHub
-, fetchzip
-, fetchurl
-, git
-, perl
-, python3
-, stdenvNoCC
-, ninja
-, autoPatchelfHook
-, writeShellApplication
-, jq
-, removeReferencesTo
+{
+  lib,
+  cmake,
+  fetchFromGitHub,
+  fetchzip,
+  fetchurl,
+  git,
+  perl,
+  python3,
+  stdenvNoCC,
+  ninja,
+  autoPatchelfHook,
+  writeShellApplication,
+  jq,
+  removeReferencesTo,
 }:
 
 let
@@ -49,7 +50,14 @@ let
     sha256 = opensslSha256;
   };
 
-  toolchain = import ./toolchain-bin.nix { inherit autoPatchelfHook stdenvNoCC lib fetchzip; };
+  toolchain = import ./toolchain-bin.nix {
+    inherit
+      autoPatchelfHook
+      stdenvNoCC
+      lib
+      fetchzip
+      ;
+  };
 
 in
 
@@ -59,9 +67,7 @@ stdenvNoCC.mkDerivation rec {
 
   inherit src version;
 
-  patches = [
-    ./Remove-git-reset.patch
-  ];
+  patches = [ ./Remove-git-reset.patch ];
 
   nativeBuildInputs = [
     cmake
@@ -123,9 +129,16 @@ stdenvNoCC.mkDerivation rec {
   meta = with lib; {
     description = "SQL powered operating system instrumentation, monitoring, and analytics";
     homepage = "https://osquery.io";
-    license = with licenses; [ gpl2Only asl20 ];
+    license = with licenses; [
+      gpl2Only
+      asl20
+    ];
     platforms = platforms.linux;
     sourceProvenance = with sourceTypes; [ fromSource ];
-    maintainers = with maintainers; [ znewman01 lewo squalus ];
+    maintainers = with maintainers; [
+      znewman01
+      lewo
+      squalus
+    ];
   };
 }

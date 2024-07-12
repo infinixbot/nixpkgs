@@ -55,7 +55,6 @@ buildPythonPackage rec {
     setuptools-scm
   ];
 
-
   dependencies = [
     dissect-archive
     dissect-btrfs

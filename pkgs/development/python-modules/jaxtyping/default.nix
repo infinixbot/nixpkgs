@@ -30,13 +30,9 @@ let
       hash = "sha256-kuGFzp8sDLq6J/qq8ap3lD3n1pABHurXcbRUtDQyWwE=";
     };
 
-    build-system = [
-      hatchling
-    ];
+    build-system = [ hatchling ];
 
-    dependencies = [
-      typeguard
-    ];
+    dependencies = [ typeguard ];
 
     pythonRelaxDeps = [ "typeguard" ];
 
