@@ -361,8 +361,7 @@ let
             # See here for some context:
             # https://github.com/NixOS/nixpkgs/pull/194634#issuecomment-1272129132
             ++ lib.optional (
-              stdenv.targetPlatform.isDarwin
-              && lib.versionOlder stdenv.targetPlatform.darwinSdkVersion "11.0"
+              stdenv.targetPlatform.isDarwin && lib.versionOlder stdenv.targetPlatform.darwinSdkVersion "11.0"
             ) (metadata.getVersionFile "lldb/cpu_subtype_arm64e_replacement.patch");
         }
         // lib.optionalAttrs (lib.versions.major metadata.release_version == "16") {

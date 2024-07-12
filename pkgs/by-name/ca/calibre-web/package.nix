@@ -1,15 +1,14 @@
-{ lib
-, fetchFromGitHub
-, nixosTests
-, nix-update-script
-, python3
+{
+  lib,
+  fetchFromGitHub,
+  nixosTests,
+  nix-update-script,
+  python3,
 }:
 
 let
   python = python3.override {
-    packageOverrides = self: super: {
-      sqlalchemy = super.sqlalchemy_1_4;
-    };
+    packageOverrides = self: super: { sqlalchemy = super.sqlalchemy_1_4; };
   };
 in
 python.pkgs.buildPythonApplication rec {

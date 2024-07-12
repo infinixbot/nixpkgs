@@ -1,4 +1,12 @@
-{ lib, stdenv, requireFile, bc, version, src, eulaDate }:
+{
+  lib,
+  stdenv,
+  requireFile,
+  bc,
+  version,
+  src,
+  eulaDate,
+}:
 
 let
   license_dir = "~/.config/houdini";

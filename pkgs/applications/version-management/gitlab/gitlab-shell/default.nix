@@ -1,4 +1,10 @@
-{ lib, fetchFromGitLab, buildGoModule, ruby, libkrb5 }:
+{
+  lib,
+  fetchFromGitLab,
+  buildGoModule,
+  ruby,
+  libkrb5,
+}:
 
 buildGoModule rec {
   pname = "gitlab-shell";
@@ -12,11 +18,12 @@ buildGoModule rec {
     sha256 = "sha256-SclRIIUZm1D5fYDrTH1L8opQpxxIoi+SrG2GO7wtScU=";
   };
 
-  buildInputs = [ ruby libkrb5 ];
-
-  patches = [
-    ./remove-hardcoded-locations.patch
+  buildInputs = [
+    ruby
+    libkrb5
   ];
+
+  patches = [ ./remove-hardcoded-locations.patch ];
 
   vendorHash = "sha256-Ebs9HnHhK4y6+vwLRvVwQnG8I7Gk6leBBezjkc+bhJo=";
 

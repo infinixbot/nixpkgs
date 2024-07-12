@@ -1,13 +1,14 @@
-{ lib
-, stdenv
-, stdenvNoCC
-, fetchurl
-, appimageTools
-, electron
-, makeWrapper
-, asar
-, autoPatchelfHook
-, libusb1
+{
+  lib,
+  stdenv,
+  stdenvNoCC,
+  fetchurl,
+  appimageTools,
+  electron,
+  makeWrapper,
+  asar,
+  autoPatchelfHook,
+  libusb1,
 }:
 
 let
@@ -20,9 +21,7 @@ let
     sha256 = "sha256-5VzUSuq+yc8HXSILMg24w/hbwasf4jq0H0wte9Mw+nY=";
   };
 
-  appimageContents = appimageTools.extract {
-    inherit pname version src;
-  };
+  appimageContents = appimageTools.extract { inherit pname version src; };
 in
 stdenvNoCC.mkDerivation {
   inherit pname version src;
@@ -40,9 +39,7 @@ stdenvNoCC.mkDerivation {
     libusb1
   ];
 
-  autoPatchelfIgnoreMissingDeps = [
-    "libc.musl-x86_64.so.1"
-  ];
+  autoPatchelfIgnoreMissingDeps = [ "libc.musl-x86_64.so.1" ];
 
   installPhase = ''
     runHook preInstall
@@ -72,7 +69,10 @@ stdenvNoCC.mkDerivation {
     description = "Agent is the configuration application of the Ultimate Hacking Keyboard";
     homepage = "https://github.com/UltimateHackingKeyboard/agent";
     license = licenses.unfreeRedistributable;
-    maintainers = with maintainers; [ ngiger nickcao ];
+    maintainers = with maintainers; [
+      ngiger
+      nickcao
+    ];
     platforms = [ "x86_64-linux" ];
   };
 }
