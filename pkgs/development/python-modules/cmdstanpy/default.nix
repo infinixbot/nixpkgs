@@ -44,9 +44,7 @@ buildPythonPackage rec {
     rm test/conftest.py
   '';
 
-  nativeBuildInputs = [
-    setuptools
-  ];
+  nativeBuildInputs = [ setuptools ];
 
   propagatedBuildInputs = [
     pandas

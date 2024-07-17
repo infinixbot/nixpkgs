@@ -1,4 +1,13 @@
-{ lib, stdenv, fetchFromGitHub, fetchYarnDeps, yarnConfigHook, npmHooks, nodejs, testers }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  fetchYarnDeps,
+  yarnConfigHook,
+  npmHooks,
+  nodejs,
+  testers,
+}:
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "codefresh";

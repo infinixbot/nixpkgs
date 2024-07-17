@@ -1,7 +1,8 @@
-{ lib
-, pkgs
-, makeSetupHook
-, waf
+{
+  lib,
+  pkgs,
+  makeSetupHook,
+  waf,
 }:
 
 makeSetupHook {
