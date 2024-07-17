@@ -439,7 +439,9 @@ let
               else
                 peer.dynamicEndpointRefreshSeconds;
           };
-      unitConfig = lib.optionalAttrs dynamicRefreshEnabled { StartLimitIntervalSec = 0; };
+      unitConfig = lib.optionalAttrs dynamicRefreshEnabled {
+        StartLimitIntervalSec = 0;
+      };
 
       script =
         let
@@ -644,7 +646,9 @@ in
       all_peers = flatten (
         mapAttrsToList (
           interfaceName: interfaceCfg:
-          map (peer: { inherit interfaceName interfaceCfg peer; }) interfaceCfg.peers
+          map (peer: {
+            inherit interfaceName interfaceCfg peer;
+          }) interfaceCfg.peers
         ) cfg.interfaces
       );
     in

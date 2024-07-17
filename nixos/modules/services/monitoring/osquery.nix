@@ -24,15 +24,25 @@ let
     concatStringsSep "\n" (
       mapAttrsToList (name: value: "--${name}=${value}")
         # Use the conf derivation if not otherwise specified.
-        ({ config_path = conf; } // cfg.flags)
+        (
+          {
+            config_path = conf;
+          }
+          // cfg.flags
+        )
     )
   );
 
-  osqueryi = pkgs.runCommand "osqueryi" { nativeBuildInputs = [ pkgs.makeWrapper ]; } ''
-    mkdir -p $out/bin
-    makeWrapper ${pkgs.osquery}/bin/osqueryi $out/bin/osqueryi \
-      --add-flags "--flagfile ${flagfile} --disable-database"
-  '';
+  osqueryi =
+    pkgs.runCommand "osqueryi"
+      {
+        nativeBuildInputs = [ pkgs.makeWrapper ];
+      }
+      ''
+        mkdir -p $out/bin
+        makeWrapper ${pkgs.osquery}/bin/osqueryi $out/bin/osqueryi \
+          --add-flags "--flagfile ${flagfile} --disable-database"
+      '';
 in
 {
   options.services.osquery = {

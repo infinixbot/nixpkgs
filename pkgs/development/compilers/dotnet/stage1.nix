@@ -28,4 +28,6 @@ let
       });
 
 in
-mkPackages { inherit vmr; }
+mkPackages {
+  inherit vmr;
+}

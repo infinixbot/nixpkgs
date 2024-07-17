@@ -139,7 +139,9 @@ in
   # Use this function in any package that uses Gerbil libraries, to define the GERBIL_LOADPATH.
   gerbilLoadPath = gerbilInputs: concatStringsSep ":" (map (x: x + "/gerbil/lib") gerbilInputs);
 
-  path-src = path: { fun = _: path; };
+  path-src = path: {
+    fun = _: path;
+  };
 
   view = traceSeqN 4;
 

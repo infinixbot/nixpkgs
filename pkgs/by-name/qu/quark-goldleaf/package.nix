@@ -12,8 +12,12 @@
 }:
 
 let
-  jdk' = jdk.override { enableJavaFX = true; };
-  maven' = maven.override { jdk = jdk'; };
+  jdk' = jdk.override {
+    enableJavaFX = true;
+  };
+  maven' = maven.override {
+    jdk = jdk';
+  };
 in
 maven'.buildMavenPackage rec {
   pname = "quark-goldleaf";

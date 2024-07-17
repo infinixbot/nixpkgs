@@ -55,7 +55,9 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ "rocm_docs" ];
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     description = "ROCm Documentation Python package for ReadTheDocs build standardization";

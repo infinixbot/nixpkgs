@@ -144,16 +144,20 @@ in
       console.keyMap =
         with config.services.xserver;
         mkIf cfg.useXkbConfig (
-          pkgs.runCommand "xkb-console-keymap" { preferLocalBuild = true; } ''
-            '${pkgs.buildPackages.ckbcomp}/bin/ckbcomp' \
-              ${
-                optionalString (
-                  config.environment.sessionVariables ? XKB_CONFIG_ROOT
-                ) "-I${config.environment.sessionVariables.XKB_CONFIG_ROOT}"
-              } \
-              -model '${xkb.model}' -layout '${xkb.layout}' \
-              -option '${xkb.options}' -variant '${xkb.variant}' > "$out"
-          ''
+          pkgs.runCommand "xkb-console-keymap"
+            {
+              preferLocalBuild = true;
+            }
+            ''
+              '${pkgs.buildPackages.ckbcomp}/bin/ckbcomp' \
+                ${
+                  optionalString (
+                    config.environment.sessionVariables ? XKB_CONFIG_ROOT
+                  ) "-I${config.environment.sessionVariables.XKB_CONFIG_ROOT}"
+                } \
+                -model '${xkb.model}' -layout '${xkb.layout}' \
+                -option '${xkb.options}' -variant '${xkb.variant}' > "$out"
+            ''
         );
     }
 

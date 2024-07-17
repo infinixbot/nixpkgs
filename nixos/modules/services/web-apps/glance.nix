@@ -54,7 +54,11 @@ in
                 columns = [
                   {
                     size = "full";
-                    widgets = [ { type = "calendar"; } ];
+                    widgets = [
+                      {
+                        type = "calendar";
+                      }
+                    ];
                   }
                 ];
               }
@@ -66,7 +70,9 @@ in
                   {
                     size = "full";
                     widgets = [
-                      { type = "calendar"; }
+                      {
+                        type = "calendar";
+                      }
                       {
                         type = "weather";
                         location = "Nivelles, Belgium";
@@ -133,7 +139,9 @@ in
       };
     };
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.settings.server.port ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.settings.server.port ];
+    };
   };
 
   meta.doc = ./glance.md;

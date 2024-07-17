@@ -26,7 +26,9 @@ appimageTools.wrapType2 {
 
   extraInstallCommands =
     let
-      appimageContents = appimageTools.extractType2 { inherit name src; };
+      appimageContents = appimageTools.extractType2 {
+        inherit name src;
+      };
     in
     ''
       mkdir -p $out/etc/udev/rules.d

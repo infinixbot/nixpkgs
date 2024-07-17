@@ -16,7 +16,11 @@ stdenv.mkDerivation {
   '';
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [ (imgui.override { IMGUI_BUILD_GLFW_BINDING = true; }) ];
+  buildInputs = [
+    (imgui.override {
+      IMGUI_BUILD_GLFW_BINDING = true;
+    })
+  ];
 
   meta = with lib; {
     description = "Standalone ImPlot Demos";

@@ -22,7 +22,9 @@
 }:
 
 let
-  sdClosureInfo = pkgs.buildPackages.closureInfo { rootPaths = storePaths; };
+  sdClosureInfo = pkgs.buildPackages.closureInfo {
+    rootPaths = storePaths;
+  };
 in
 pkgs.stdenv.mkDerivation {
   name = "btrfs-fs.img${lib.optionalString compressImage ".zst"}";

@@ -40,7 +40,9 @@ rustPlatform.buildRustPackage rec {
   '';
 
   passthru = {
-    tests.testVersion = testers.testVersion { package = oo7; };
+    tests.testVersion = testers.testVersion {
+      package = oo7;
+    };
 
     # TODO: re-enable this when upstream adds a Cargo.lock
     # updateScript = nix-update-script { };

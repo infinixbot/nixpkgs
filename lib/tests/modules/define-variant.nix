@@ -4,7 +4,9 @@ let
 in
 {
   options = {
-    attrs = mkOption { type = types.attrsOf lib.types.int; };
+    attrs = mkOption {
+      type = types.attrsOf lib.types.int;
+    };
     result = mkOption { };
     resultFoo = mkOption { };
     resultFooBar = mkOption { };

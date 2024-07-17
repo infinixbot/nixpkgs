@@ -1,1 +1,4 @@
-{ mkKdeDerivation }: mkKdeDerivation { pname = "kmbox"; }
+{ mkKdeDerivation }:
+mkKdeDerivation {
+  pname = "kmbox";
+}

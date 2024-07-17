@@ -25,7 +25,9 @@ in
         '';
 
         default = { };
-        type = types.submodule { freeformType = format.type; };
+        type = types.submodule {
+          freeformType = format.type;
+        };
       };
     };
   };

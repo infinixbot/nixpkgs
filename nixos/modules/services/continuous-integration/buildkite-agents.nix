@@ -12,7 +12,11 @@ let
     hooks:
     let
       mkHookEntry = name: text: ''
-        ln --symbolic ${pkgs.writeShellApplication { inherit name text; }}/bin/${name} $out/${name}
+        ln --symbolic ${
+          pkgs.writeShellApplication {
+            inherit name text;
+          }
+        }/bin/${name} $out/${name}
       '';
     in
     pkgs.runCommandLocal "buildkite-agent-hooks" { } ''
@@ -185,7 +189,11 @@ in
       };
     }
   );
-  config.users.groups = mapAgents (name: cfg: { "buildkite-agent-${name}" = { }; });
+  config.users.groups = mapAgents (
+    name: cfg: {
+      "buildkite-agent-${name}" = { };
+    }
+  );
 
   config.systemd.services = mapAgents (
     name: cfg: {

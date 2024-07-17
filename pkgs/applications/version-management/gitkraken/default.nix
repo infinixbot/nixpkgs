@@ -168,7 +168,9 @@ let
 
     nativeBuildInputs = [
       copyDesktopItems
-      (wrapGAppsHook3.override { makeWrapper = makeShellWrapper; })
+      (wrapGAppsHook3.override {
+        makeWrapper = makeShellWrapper;
+      })
     ];
     buildInputs = [
       gtk3

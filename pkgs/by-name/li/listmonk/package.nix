@@ -51,7 +51,9 @@ buildGoModule rec {
     '';
 
   passthru = {
-    frontend = callPackage ./frontend.nix { inherit meta version src; };
+    frontend = callPackage ./frontend.nix {
+      inherit meta version src;
+    };
     tests = {
       inherit (nixosTests) listmonk;
     };

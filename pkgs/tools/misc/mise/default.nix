@@ -80,7 +80,9 @@ rustPlatform.buildRustPackage rec {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests.version = testers.testVersion { package = mise; };
+    tests.version = testers.testVersion {
+      package = mise;
+    };
   };
 
   meta = {

@@ -53,14 +53,18 @@ import ./make-test-python.nix (
         { ... }:
         lib.mkMerge [
           routerBase
-          { networking.nat.enable = true; }
+          {
+            networking.nat.enable = true;
+          }
         ];
 
       routerDummyNoNat =
         { ... }:
         lib.mkMerge [
           routerBase
-          { networking.nat.enable = false; }
+          {
+            networking.nat.enable = false;
+          }
         ];
 
       server =

@@ -90,7 +90,9 @@ buildGoModule rec {
 
   passthru.tests = {
     integration = nixosTests.tracee;
-    integration-test-cli = import ./integration-tests.nix { inherit lib tracee makeWrapper; };
+    integration-test-cli = import ./integration-tests.nix {
+      inherit lib tracee makeWrapper;
+    };
     version = testers.testVersion {
       package = tracee;
       version = "v${version}";

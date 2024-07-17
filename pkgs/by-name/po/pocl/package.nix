@@ -21,18 +21,23 @@ let
   clang = llvmPackages.clangUseLLVM;
   # Workaround to make sure libclang finds libgcc.a and libgcc_s.so when
   # invoked from within libpocl
-  clangWrapped = runCommand "clang-pocl" { nativeBuildInputs = [ makeWrapper ]; } ''
-    mkdir -p $out/bin
-    cp -r ${clang}/bin/* $out/bin/
-    LIBGCC_DIR=$(dirname $(find ${stdenv.cc.cc}/lib/ -name libgcc.a))
-    for F in ${clang}/bin/ld*; do
-      BASENAME=$(basename "$F")
-      rm -f $out/bin/$BASENAME
-      makeWrapper ${clang}/bin/$BASENAME $out/bin/$BASENAME \
-        --add-flags "-L$LIBGCC_DIR" \
-        --add-flags "-L${stdenv.cc.cc.lib}/lib"
-    done
-  '';
+  clangWrapped =
+    runCommand "clang-pocl"
+      {
+        nativeBuildInputs = [ makeWrapper ];
+      }
+      ''
+        mkdir -p $out/bin
+        cp -r ${clang}/bin/* $out/bin/
+        LIBGCC_DIR=$(dirname $(find ${stdenv.cc.cc}/lib/ -name libgcc.a))
+        for F in ${clang}/bin/ld*; do
+          BASENAME=$(basename "$F")
+          rm -f $out/bin/$BASENAME
+          makeWrapper ${clang}/bin/$BASENAME $out/bin/$BASENAME \
+            --add-flags "-L$LIBGCC_DIR" \
+            --add-flags "-L${stdenv.cc.cc.lib}/lib"
+        done
+      '';
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "pocl";

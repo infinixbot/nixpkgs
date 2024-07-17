@@ -1148,11 +1148,16 @@ in
     # copy the cryptsetup binary and it's dependencies
     boot.initrd.extraUtilsCommands =
       let
-        pbkdf2-sha512 = pkgs.runCommandCC "pbkdf2-sha512" { buildInputs = [ pkgs.openssl ]; } ''
-          mkdir -p "$out/bin"
-          cc -O3 -lcrypto ${./pbkdf2-sha512.c} -o "$out/bin/pbkdf2-sha512"
-          strip -s "$out/bin/pbkdf2-sha512"
-        '';
+        pbkdf2-sha512 =
+          pkgs.runCommandCC "pbkdf2-sha512"
+            {
+              buildInputs = [ pkgs.openssl ];
+            }
+            ''
+              mkdir -p "$out/bin"
+              cc -O3 -lcrypto ${./pbkdf2-sha512.c} -o "$out/bin/pbkdf2-sha512"
+              strip -s "$out/bin/pbkdf2-sha512"
+            '';
       in
       mkIf (!config.boot.initrd.systemd.enable) ''
         copy_bin_and_libs ${pkgs.cryptsetup}/bin/cryptsetup

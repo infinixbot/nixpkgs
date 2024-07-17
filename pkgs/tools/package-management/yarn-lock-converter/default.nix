@@ -35,7 +35,9 @@ buildNpmPackage rec {
     rmdir $out/bin/@vht
   '';
   passthru = {
-    tests.version = testers.testVersion { package = yarn-lock-converter; };
+    tests.version = testers.testVersion {
+      package = yarn-lock-converter;
+    };
     updateScript = ./update.sh;
   };
 

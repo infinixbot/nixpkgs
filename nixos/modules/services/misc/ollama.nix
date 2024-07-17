@@ -8,7 +8,9 @@ let
   inherit (lib) types mkBefore;
 
   cfg = config.services.ollama;
-  ollamaPackage = cfg.package.override { inherit (cfg) acceleration; };
+  ollamaPackage = cfg.package.override {
+    inherit (cfg) acceleration;
+  };
 in
 {
   imports = [
@@ -191,7 +193,9 @@ in
       '';
     };
 
-    networking.firewall = lib.mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.port ]; };
+    networking.firewall = lib.mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.port ];
+    };
 
     environment.systemPackages = [ ollamaPackage ];
   };

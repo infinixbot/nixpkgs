@@ -20,7 +20,9 @@ let
 
       inherit version;
 
-      src = fetchCrate { inherit version pname hash; };
+      src = fetchCrate {
+        inherit version pname hash;
+      };
 
       inherit cargoHash;
 

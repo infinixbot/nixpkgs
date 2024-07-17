@@ -38,7 +38,9 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postInstall
   '';
 
-  passthru.updateScript = (callPackage ./update.nix { }) { inherit (finalAttrs) version; };
+  passthru.updateScript = (callPackage ./update.nix { }) {
+    inherit (finalAttrs) version;
+  };
 
   meta = with lib; {
     description = "AQLPROFILE library for AMD HSA runtime API extension support";

@@ -19,7 +19,9 @@ let
       MEDIA_ROOT = "/var/lib/tandoor-recipes";
       GUNICORN_MEDIA = true;
     }
-    // optionalAttrs (config.time.timeZone != null) { TZ = config.time.timeZone; }
+    // optionalAttrs (config.time.timeZone != null) {
+      TZ = config.time.timeZone;
+    }
     // (lib.mapAttrs (_: toString) cfg.extraConfig);
 
   manage = pkgs.writeShellScript "manage" ''

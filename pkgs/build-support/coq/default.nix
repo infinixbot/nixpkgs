@@ -8,7 +8,9 @@
 }@args:
 
 let
-  lib = import ./extra-lib.nix { inherit (args) lib; };
+  lib = import ./extra-lib.nix {
+    inherit (args) lib;
+  };
 
   inherit (lib)
     concatStringsSep
@@ -97,15 +99,22 @@ let
     ]
     ++ dropAttrs
   ) keepAttrs;
-  fetch = import ../coq/meta-fetch/default.nix { inherit lib stdenv fetchzip; } (
-    {
-      inherit release releaseRev;
-      location = {
-        inherit domain owner repo;
-      };
-    }
-    // optionalAttrs (args ? fetcher) { inherit fetcher; }
-  );
+  fetch =
+    import ../coq/meta-fetch/default.nix
+      {
+        inherit lib stdenv fetchzip;
+      }
+      (
+        {
+          inherit release releaseRev;
+          location = {
+            inherit domain owner repo;
+          };
+        }
+        // optionalAttrs (args ? fetcher) {
+          inherit fetcher;
+        }
+      );
   fetched = fetch (if version != null then version else defaultVersion);
   display-pkg =
     n: sep: v:
@@ -209,7 +218,9 @@ stdenv.mkDerivation (
         // (args.meta or { });
 
     }
-    // (optionalAttrs setCOQBIN { COQBIN = "${coq}/bin/"; })
+    // (optionalAttrs setCOQBIN {
+      COQBIN = "${coq}/bin/";
+    })
     // (optionalAttrs (!args ? installPhase && !args ? useMelquiondRemake) {
       installFlags = coqlib-flags ++ docdir-flags ++ extraInstallFlags;
     })

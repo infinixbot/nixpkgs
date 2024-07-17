@@ -45,7 +45,9 @@ let
     manPage = ./manpages/nixos-install.8;
   };
 
-  nixos-rebuild = pkgs.nixos-rebuild.override { nix = config.nix.package.out; };
+  nixos-rebuild = pkgs.nixos-rebuild.override {
+    nix = config.nix.package.out;
+  };
 
   nixos-generate-config = makeProg {
     name = "nixos-generate-config";

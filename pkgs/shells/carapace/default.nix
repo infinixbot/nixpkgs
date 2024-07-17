@@ -33,7 +33,9 @@ buildGoModule rec {
     GOOS= GOARCH= go generate ./...
   '';
 
-  passthru.tests.version = testers.testVersion { package = carapace; };
+  passthru.tests.version = testers.testVersion {
+    package = carapace;
+  };
 
   meta = with lib; {
     description = "Multi-shell multi-command argument completer";

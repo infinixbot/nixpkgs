@@ -39,7 +39,9 @@ stdenv.mkDerivation rec {
   passthru.tests = {
     inherit knot-dns tracee;
     bpf = nixosTests.bpf;
-    systemd = systemd.override { withLibBPF = true; };
+    systemd = systemd.override {
+      withLibBPF = true;
+    };
   };
 
   postInstall = ''

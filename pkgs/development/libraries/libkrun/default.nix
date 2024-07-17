@@ -35,7 +35,9 @@ stdenv.mkDerivation rec {
   ] ++ lib.optionals sevVariant [ pkg-config ];
 
   buildInputs = [
-    (libkrunfw.override { inherit sevVariant; })
+    (libkrunfw.override {
+      inherit sevVariant;
+    })
     glibc
     glibc.static
   ] ++ lib.optionals sevVariant [ openssl ];

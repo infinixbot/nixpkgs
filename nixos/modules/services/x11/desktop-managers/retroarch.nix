@@ -15,7 +15,9 @@ in
   options.services.xserver.desktopManager.retroarch = {
     enable = mkEnableOption "RetroArch";
 
-    package = mkPackageOption pkgs "retroarch" { example = "retroarch-full"; };
+    package = mkPackageOption pkgs "retroarch" {
+      example = "retroarch-full";
+    };
 
     extraArgs = mkOption {
       type = types.listOf types.str;

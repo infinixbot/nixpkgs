@@ -33,7 +33,9 @@ let
       .${system} or throwSystem;
   };
 
-  appimageContents = appimageTools.extractType2 { inherit pname version src; };
+  appimageContents = appimageTools.extractType2 {
+    inherit pname version src;
+  };
 
   meta = with lib; {
     description = "Open source note taking and to-do application with synchronisation capabilities";

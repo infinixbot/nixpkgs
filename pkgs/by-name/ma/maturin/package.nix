@@ -34,7 +34,9 @@ rustPlatform.buildRustPackage rec {
 
   passthru = {
     tests = {
-      version = testers.testVersion { package = maturin; };
+      version = testers.testVersion {
+        package = maturin;
+      };
       pyo3 = callPackage ./pyo3-test { };
     };
 

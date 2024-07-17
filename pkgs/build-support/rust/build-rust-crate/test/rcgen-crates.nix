@@ -4,7 +4,9 @@
 
 {
   nixpkgs ? <nixpkgs>,
-  pkgs ? import nixpkgs { config = { }; },
+  pkgs ? import nixpkgs {
+    config = { };
+  },
   lib ? pkgs.lib,
   stdenv ? pkgs.stdenv,
   buildRustCrateForPkgs ?
@@ -42,11 +44,15 @@ rec {
 
     # Use this attribute to refer to the derivation building your root crate package.
     # You can override the features with rootCrate.build.override { features = [ "default" "feature1" ... ]; }.
-    build = internal.buildRustCrateWithFeatures { inherit packageId; };
+    build = internal.buildRustCrateWithFeatures {
+      inherit packageId;
+    };
 
     # Debug support which might change between releases.
     # File a bug if you depend on any for non-debug work!
-    debug = internal.debugCrate { inherit packageId; };
+    debug = internal.debugCrate {
+      inherit packageId;
+    };
   };
   # Refer your crate build derivation by name here.
   # You can override the features with
@@ -54,11 +60,15 @@ rec {
   workspaceMembers = {
     "rcgen" = rec {
       packageId = "rcgen";
-      build = internal.buildRustCrateWithFeatures { packageId = "rcgen"; };
+      build = internal.buildRustCrateWithFeatures {
+        packageId = "rcgen";
+      };
 
       # Debug support which might change between releases.
       # File a bug if you depend on any for non-debug work!
-      debug = internal.debugCrate { inherit packageId; };
+      debug = internal.debugCrate {
+        inherit packageId;
+      };
     };
   };
 
@@ -4352,7 +4362,10 @@ rec {
                   if crateOverrides == pkgs.defaultCrateOverrides then
                     buildRustCrateForPkgs
                   else
-                    pkgs: (buildRustCrateForPkgs pkgs).override { defaultCrateOverrides = crateOverrides; }
+                    pkgs:
+                    (buildRustCrateForPkgs pkgs).override {
+                      defaultCrateOverrides = crateOverrides;
+                    }
                 );
             builtRustCrates = builtRustCratesWithFeatures {
               inherit packageId features;
@@ -4466,7 +4479,10 @@ rec {
               dependencies = crateConfig.buildDependencies or [ ];
             };
             filterEnabledDependenciesForThis =
-              dependencies: filterEnabledDependencies { inherit dependencies features target; };
+              dependencies:
+              filterEnabledDependencies {
+                inherit dependencies features target;
+              };
             dependenciesWithRenames = lib.filter (d: d ? "rename") (
               filterEnabledDependenciesForThis (
                 (crateConfig.buildDependencies or [ ]) ++ (crateConfig.dependencies or [ ]) ++ devDependencies
@@ -4535,7 +4551,9 @@ rec {
       assert (builtins.isList dependencies);
       assert (builtins.isAttrs target);
       let
-        enabledDependencies = filterEnabledDependencies { inherit dependencies features target; };
+        enabledDependencies = filterEnabledDependencies {
+          inherit dependencies features target;
+        };
         depDerivation = dependency: buildByPackageId dependency.packageId;
       in
       map depDerivation enabledDependencies;
@@ -4582,7 +4600,9 @@ rec {
             features = rootFeatures;
             inherit packageId target;
           };
-          diffedDefaultPackageFeatures = diffDefaultPackageFeatures { inherit packageId target; };
+          diffedDefaultPackageFeatures = diffDefaultPackageFeatures {
+            inherit packageId target;
+          };
         };
       in
       {
@@ -4603,7 +4623,13 @@ rec {
       }:
       assert (builtins.isAttrs crateConfigs);
       let
-        prefixValues = prefix: lib.mapAttrs (n: v: { "${prefix}" = v; });
+        prefixValues =
+          prefix:
+          lib.mapAttrs (
+            n: v: {
+              "${prefix}" = v;
+            }
+          );
         mergedFeatures = prefixValues "crate2nix" (mergePackageFeatures {
           inherit crateConfigs packageId target;
           features = [ "default" ];
@@ -4626,7 +4652,9 @@ rec {
           && (v.crate2nix.features or [ ]) != (v."cargo".resolved_default_features or [ ])
         ) combined;
       in
-      builtins.toJSON { inherit onlyInCargo onlyInCrate2Nix differentFeatures; };
+      builtins.toJSON {
+        inherit onlyInCargo onlyInCrate2Nix differentFeatures;
+      };
 
     /*
       Returns an attrset mapping packageId to the list of enabled features.
@@ -4707,7 +4735,10 @@ rec {
             cacheFeatures = featuresByPackageId.${packageId} or [ ];
             combinedFeatures = sortedUnique (cacheFeatures ++ enabledFeatures);
           in
-          featuresByPackageId // { "${packageId}" = combinedFeatures; };
+          featuresByPackageId
+          // {
+            "${packageId}" = combinedFeatures;
+          };
         cacheWithDependencies = resolveDependencies cacheWithSelf "dep" (
           crateConfig.dependencies or [ ]
           ++ lib.optionals (runTests && packageId == rootPackageId) (crateConfig.devDependencies or [ ])
@@ -4734,7 +4765,9 @@ rec {
         let
           targetFunc = dep.target or (features: true);
         in
-        targetFunc { inherit features target; }
+        targetFunc {
+          inherit features target;
+        }
         && (!(dep.optional or false) || builtins.any (doesFeatureEnableDependency dep) features)
       ) dependencies;
 
@@ -4821,7 +4854,13 @@ rec {
       assert (builtins.isList features);
       assert (builtins.all builtins.isString features);
       let
-        outFeaturesSet = lib.foldl (set: feature: set // { "${feature}" = 1; }) { } features;
+        outFeaturesSet = lib.foldl (
+          set: feature:
+          set
+          // {
+            "${feature}" = 1;
+          }
+        ) { } features;
         outFeaturesUnique = builtins.attrNames outFeaturesSet;
       in
       builtins.sort (a: b: a < b) outFeaturesUnique;

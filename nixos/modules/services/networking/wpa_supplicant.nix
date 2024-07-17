@@ -37,10 +37,21 @@ let
     };
 
   # Creates a WPA2 fallback network
-  mkWPA2Fallback = opts: opts // { authProtocols = subtractLists wpa3Protocols opts.authProtocols; };
+  mkWPA2Fallback =
+    opts:
+    opts
+    // {
+      authProtocols = subtractLists wpa3Protocols opts.authProtocols;
+    };
 
   # Networks attrset as a list
-  networkList = mapAttrsToList (ssid: opts: opts // { inherit ssid; }) cfg.networks;
+  networkList = mapAttrsToList (
+    ssid: opts:
+    opts
+    // {
+      inherit ssid;
+    }
+  ) cfg.networks;
 
   # List of all networks (normal + generated fallbacks)
   allNetworks =
@@ -586,7 +597,9 @@ in
 
     systemd.services =
       if cfg.interfaces == [ ] then
-        { wpa_supplicant = mkUnit null; }
+        {
+          wpa_supplicant = mkUnit null;
+        }
       else
         listToAttrs (map (i: nameValuePair "wpa_supplicant-${i}" (mkUnit i)) cfg.interfaces);
 

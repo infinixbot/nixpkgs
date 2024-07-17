@@ -10,7 +10,9 @@ with lib;
 let
   cfg = config.services.softether;
 
-  package = cfg.package.override { inherit (cfg) dataDir; };
+  package = cfg.package.override {
+    inherit (cfg) dataDir;
+  };
 
 in
 {

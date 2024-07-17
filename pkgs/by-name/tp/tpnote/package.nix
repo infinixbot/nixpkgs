@@ -48,7 +48,9 @@ rustPlatform.buildRustPackage rec {
 
   RUSTONIG_SYSTEM_LIBONIG = true;
 
-  passthru.tests.version = testers.testVersion { package = tpnote; };
+  passthru.tests.version = testers.testVersion {
+    package = tpnote;
+  };
 
   # The `tpnote` crate has no unit tests. All tests are in `tpnote-lib`.
   checkType = "debug";

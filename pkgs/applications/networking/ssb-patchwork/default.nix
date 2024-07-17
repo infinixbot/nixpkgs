@@ -21,7 +21,9 @@ let
     inherit src;
   };
   # we only use this to extract the icon
-  appimage-contents = appimageTools.extractType2 { inherit name src; };
+  appimage-contents = appimageTools.extractType2 {
+    inherit name src;
+  };
 
   desktopItem = makeDesktopItem {
     name = "ssb-patchwork";

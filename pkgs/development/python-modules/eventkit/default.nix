@@ -12,7 +12,9 @@ in
 buildPythonPackage {
   inherit pname version;
 
-  src = fetchPypi { inherit pname version hash; };
+  src = fetchPypi {
+    inherit pname version hash;
+  };
 
   propagatedBuildInputs = [ numpy ];
   dontUseSetuptoolsCheck = true;

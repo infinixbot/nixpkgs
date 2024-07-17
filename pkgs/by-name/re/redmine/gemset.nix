@@ -381,11 +381,21 @@
       "test"
     ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "mingw"; }
-      { engine = "mingw"; }
-      { engine = "mswin"; }
-      { engine = "ruby"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mswin";
+      }
+      {
+        engine = "ruby";
+      }
     ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -593,10 +603,18 @@
       "test"
     ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "mingw"; }
-      { engine = "mingw"; }
-      { engine = "ruby"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "ruby";
+      }
     ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -633,10 +651,18 @@
   mysql2 = {
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "mingw"; }
-      { engine = "mingw"; }
-      { engine = "ruby"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "ruby";
+      }
     ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -766,10 +792,18 @@
   pg = {
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "mingw"; }
-      { engine = "mingw"; }
-      { engine = "ruby"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "ruby";
+      }
     ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1318,10 +1352,18 @@
     dependencies = [ "mini_portile2" ];
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "mingw"; }
-      { engine = "mingw"; }
-      { engine = "ruby"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "ruby";
+      }
     ];
     source = {
       remotes = [ "https://rubygems.org" ];

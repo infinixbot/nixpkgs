@@ -20,7 +20,9 @@ let
 
   useBbswitch = cfg.pmMethod == "bbswitch" || cfg.pmMethod == "auto" && useNvidia;
 
-  primus = pkgs.primus.override { inherit useNvidia; };
+  primus = pkgs.primus.override {
+    inherit useNvidia;
+  };
 
 in
 

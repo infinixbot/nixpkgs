@@ -97,7 +97,9 @@ let
       "~/Library/Fonts"
     ];
   };
-  fonts = import ./system-fonts.nix { inherit stdenv xorg fontDirs; };
+  fonts = import ./system-fonts.nix {
+    inherit stdenv xorg fontDirs;
+  };
   # any X related programs expected to be available via $PATH
   pkgs = with xorg; [
     # non-xorg

@@ -33,7 +33,9 @@ buildPythonPackage rec {
     export PDM_BUILD_SCM_VERSION="${realVersion}"
   '';
 
-  passthru.updateScript = unstableGitUpdater { tagPrefix = "v"; };
+  passthru.updateScript = unstableGitUpdater {
+    tagPrefix = "v";
+  };
 
   meta = with lib; {
     description = "System on Chip toolkit for Amaranth HDL";

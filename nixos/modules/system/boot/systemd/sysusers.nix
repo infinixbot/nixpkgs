@@ -58,11 +58,16 @@ let
     )}
   '';
 
-  staticSysusers = pkgs.runCommand "static-sysusers" { nativeBuildInputs = [ pkgs.systemd ]; } ''
-    mkdir $out
-    export CREDENTIALS_DIRECTORY=${staticSysusersCredentials}
-    systemd-sysusers --root $out ${sysusersConfig}/00-nixos.conf
-  '';
+  staticSysusers =
+    pkgs.runCommand "static-sysusers"
+      {
+        nativeBuildInputs = [ pkgs.systemd ];
+      }
+      ''
+        mkdir $out
+        export CREDENTIALS_DIRECTORY=${staticSysusersCredentials}
+        systemd-sysusers --root $out ${sysusersConfig}/00-nixos.conf
+      '';
 
 in
 
@@ -181,7 +186,9 @@ in
         };
       })
 
-      (lib.mkIf userCfg.mutableUsers { "sysusers.d".source = sysusersConfig; })
+      (lib.mkIf userCfg.mutableUsers {
+        "sysusers.d".source = sysusersConfig;
+      })
     ];
 
   };

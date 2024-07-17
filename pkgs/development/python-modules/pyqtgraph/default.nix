@@ -15,7 +15,9 @@
 }:
 
 let
-  fontsConf = makeFontsConf { fontDirectories = [ freefont_ttf ]; };
+  fontsConf = makeFontsConf {
+    fontDirectories = [ freefont_ttf ];
+  };
 in
 buildPythonPackage rec {
   pname = "pyqtgraph";

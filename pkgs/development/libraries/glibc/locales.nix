@@ -18,10 +18,15 @@
   locales ? [ "en_US.UTF-8/UTF-8" ],
 }:
 
-(callPackage ./common.nix { inherit stdenv; } {
-  pname = "glibc-locales";
-  extraNativeBuildInputs = [ glibc ];
-}).overrideAttrs
+(callPackage ./common.nix
+  {
+    inherit stdenv;
+  }
+  {
+    pname = "glibc-locales";
+    extraNativeBuildInputs = [ glibc ];
+  }
+).overrideAttrs
   (
     finalAttrs: previousAttrs: {
 

@@ -26,7 +26,9 @@ rustPlatform.buildRustPackage rec {
     installManPage sigi.1
   '';
 
-  passthru.tests.version = testers.testVersion { package = sigi; };
+  passthru.tests.version = testers.testVersion {
+    package = sigi;
+  };
 
   meta = with lib; {
     description = "Organizing CLI for people who don't love organizing";

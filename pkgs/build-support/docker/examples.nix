@@ -25,7 +25,11 @@ let
     # about it, so we enable the feature flag.
     featureFlags.minimalModules = { };
   };
-  evalMinimalConfig = module: nixosLib.evalModules { modules = [ module ]; };
+  evalMinimalConfig =
+    module:
+    nixosLib.evalModules {
+      modules = [ module ];
+    };
 
 in
 
@@ -788,7 +792,9 @@ rec {
     };
 
   # Example export of the bash image
-  exportBash = pkgs.dockerTools.exportImage { fromImage = bash; };
+  exportBash = pkgs.dockerTools.exportImage {
+    fromImage = bash;
+  };
 
   imageViaFakeChroot = pkgs.dockerTools.streamLayeredImage {
     name = "image-via-fake-chroot";
@@ -880,7 +886,9 @@ rec {
   nix-shell-inputs = streamNixShellImage {
     name = "nix-shell-inputs";
     tag = "latest";
-    drv = pkgs.mkShell { nativeBuildInputs = [ pkgs.hello ]; };
+    drv = pkgs.mkShell {
+      nativeBuildInputs = [ pkgs.hello ];
+    };
     command = ''
       hello
     '';

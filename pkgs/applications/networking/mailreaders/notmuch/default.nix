@@ -203,7 +203,9 @@ stdenv.mkDerivation (finalAttrs: {
         "/nix-support"
       ];
     };
-    tests.version = testers.testVersion { package = notmuch; };
+    tests.version = testers.testVersion {
+      package = notmuch;
+    };
 
     updateScript = gitUpdater {
       url = "https://git.notmuchmail.org/git/notmuch";

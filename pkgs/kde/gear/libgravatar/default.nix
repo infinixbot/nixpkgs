@@ -1,1 +1,4 @@
-{ mkKdeDerivation }: mkKdeDerivation { pname = "libgravatar"; }
+{ mkKdeDerivation }:
+mkKdeDerivation {
+  pname = "libgravatar";
+}

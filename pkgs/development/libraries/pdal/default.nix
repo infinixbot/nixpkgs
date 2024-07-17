@@ -122,7 +122,9 @@ stdenv.mkDerivation (finalAttrs: {
       command = "pdal --version";
       version = "pdal ${finalAttrs.finalPackage.version}";
     };
-    pdal = callPackage ./tests.nix { pdal = finalAttrs.finalPackage; };
+    pdal = callPackage ./tests.nix {
+      pdal = finalAttrs.finalPackage;
+    };
     pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
   };
 

@@ -63,7 +63,9 @@ buildPythonPackage rec {
   ];
 
   passthru.tests = {
-    fullTestsuite = psautohint.override { runAllTests = true; };
+    fullTestsuite = psautohint.override {
+      runAllTests = true;
+    };
   };
 
   meta = with lib; {

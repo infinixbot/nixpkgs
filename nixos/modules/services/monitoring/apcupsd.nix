@@ -55,28 +55,36 @@ let
     else
       "";
 
-  scriptDir = pkgs.runCommand "apcupsd-scriptdir" { preferLocalBuild = true; } (
-    ''
-      mkdir "$out"
-      # Copy SCRIPTDIR from apcupsd package
-      cp -r ${pkgs.apcupsd}/etc/apcupsd/* "$out"/
-      # Make the files writeable (nix will unset the write bits afterwards)
-      chmod u+w "$out"/*
-      # Remove the sample event notification scripts, because they don't work
-      # anyways (they try to send mail to "root" with the "mail" command)
-      (cd "$out" && rm changeme commok commfailure onbattery offbattery)
-      # Remove the sample apcupsd.conf file (we're generating our own)
-      rm "$out/apcupsd.conf"
-      # Set the SCRIPTDIR= line in apccontrol to the dir we're creating now
-      sed -i -e "s|^SCRIPTDIR=.*|SCRIPTDIR=$out|" "$out/apccontrol"
-    ''
-    + concatStringsSep "\n" (map eventToShellCmds eventList)
+  scriptDir =
+    pkgs.runCommand "apcupsd-scriptdir"
+      {
+        preferLocalBuild = true;
+      }
+      (
+        ''
+          mkdir "$out"
+          # Copy SCRIPTDIR from apcupsd package
+          cp -r ${pkgs.apcupsd}/etc/apcupsd/* "$out"/
+          # Make the files writeable (nix will unset the write bits afterwards)
+          chmod u+w "$out"/*
+          # Remove the sample event notification scripts, because they don't work
+          # anyways (they try to send mail to "root" with the "mail" command)
+          (cd "$out" && rm changeme commok commfailure onbattery offbattery)
+          # Remove the sample apcupsd.conf file (we're generating our own)
+          rm "$out/apcupsd.conf"
+          # Set the SCRIPTDIR= line in apccontrol to the dir we're creating now
+          sed -i -e "s|^SCRIPTDIR=.*|SCRIPTDIR=$out|" "$out/apccontrol"
+        ''
+        + concatStringsSep "\n" (map eventToShellCmds eventList)
 
-  );
+      );
 
   # Ensure the CLI uses our generated configFile
   wrappedBinaries =
-    pkgs.runCommandLocal "apcupsd-wrapped-binaries" { nativeBuildInputs = [ pkgs.makeWrapper ]; }
+    pkgs.runCommandLocal "apcupsd-wrapped-binaries"
+      {
+        nativeBuildInputs = [ pkgs.makeWrapper ];
+      }
       ''
         for p in "${lib.getBin pkgs.apcupsd}/bin/"*; do
             bname=$(basename "$p")

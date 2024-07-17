@@ -89,7 +89,9 @@ buildDotnetModule rec {
     '';
 
   passthru = {
-    tests.version = testers.testVersion { package = roslyn-ls; };
+    tests.version = testers.testVersion {
+      package = roslyn-ls;
+    };
     updateScript = ./update.sh;
   };
 

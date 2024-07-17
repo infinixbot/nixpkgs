@@ -59,7 +59,9 @@ let
       file = "libs/linux/libjSSC-2.8_x86.so";
     };
   # abiVersion 6 is default, but we need 5 for `avrdude_bin` executable
-  ncurses5 = ncurses.override { abiVersion = "5"; };
+  ncurses5 = ncurses.override {
+    abiVersion = "5";
+  };
   teensy_libpath = lib.makeLibraryPath [
     atk
     cairo

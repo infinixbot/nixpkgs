@@ -75,7 +75,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    users.groups = optionalAttrs (cfg.group == "zeyple") { "${cfg.group}" = { }; };
+    users.groups = optionalAttrs (cfg.group == "zeyple") {
+      "${cfg.group}" = { };
+    };
     users.users = optionalAttrs (cfg.user == "zeyple") {
       "${cfg.user}" = {
         isSystemUser = true;
@@ -89,7 +91,9 @@ in
         force_encrypt = true;
       };
 
-      gpg = mapAttrs (name: mkDefault) { home = "${gpgHome}"; };
+      gpg = mapAttrs (name: mkDefault) {
+        home = "${gpgHome}";
+      };
 
       relay = mapAttrs (name: mkDefault) {
         host = "localhost";

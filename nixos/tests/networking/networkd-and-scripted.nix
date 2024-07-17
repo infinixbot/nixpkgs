@@ -1,16 +1,22 @@
 {
   system ? builtins.currentSystem,
   config ? { },
-  pkgs ? import ../.. { inherit system config; },
+  pkgs ? import ../.. {
+    inherit system config;
+  },
   # bool: whether to use networkd in the tests
   networkd,
 }:
 
-with import ../../lib/testing-python.nix { inherit system pkgs; };
+with import ../../lib/testing-python.nix {
+  inherit system pkgs;
+};
 
 let
   lib = pkgs.lib;
-  router = import ./router.nix { inherit networkd; };
+  router = import ./router.nix {
+    inherit networkd;
+  };
   clientConfig =
     extraConfig:
     lib.recursiveUpdate {
@@ -1180,6 +1186,9 @@ in
 lib.mapAttrs (lib.const (
   attrs:
   makeTest (
-    attrs // { name = "${attrs.name}-Networking-${if networkd then "Networkd" else "Scripted"}"; }
+    attrs
+    // {
+      name = "${attrs.name}-Networking-${if networkd then "Networkd" else "Scripted"}";
+    }
   )
 )) testCases

@@ -38,7 +38,9 @@ let
 
     pythonImportsCheck = [ "trove_classifiers" ];
 
-    passthru.tests.trove-classifiers = self.overridePythonAttrs { doCheck = true; };
+    passthru.tests.trove-classifiers = self.overridePythonAttrs {
+      doCheck = true;
+    };
 
     meta = {
       description = "Canonical source for classifiers on PyPI";

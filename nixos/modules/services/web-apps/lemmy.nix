@@ -184,7 +184,10 @@ in
           (
             lib.foldlAttrs (
               acc: option: data:
-              acc // lib.setAttrByPath data.setting { _secret = option; }
+              acc
+              // lib.setAttrByPath data.setting {
+                _secret = option;
+              }
             ) { } secrets
           );
       # the option name is the id of the credential loaded by LoadCredential

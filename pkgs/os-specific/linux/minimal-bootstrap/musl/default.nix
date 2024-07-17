@@ -13,7 +13,13 @@
   gzip,
 }:
 let
-  inherit (import ./common.nix { inherit lib; }) pname meta;
+  inherit
+    (import ./common.nix {
+      inherit lib;
+    })
+    pname
+    meta
+    ;
   version = "1.2.4";
 
   src = fetchurl {

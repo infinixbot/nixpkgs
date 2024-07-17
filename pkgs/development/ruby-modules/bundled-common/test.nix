@@ -26,11 +26,16 @@ builtins.concatLists [
     }
   )
 
-  (test.run "Just gemdir" (functions.bundlerFiles { gemdir = test/.; }) {
-    gemfile = should.equal test/Gemfile;
-    lockfile = should.equal test/Gemfile.lock;
-    gemset = should.equal test/gemset.nix;
-  })
+  (test.run "Just gemdir"
+    (functions.bundlerFiles {
+      gemdir = test/.;
+    })
+    {
+      gemfile = should.equal test/Gemfile;
+      lockfile = should.equal test/Gemfile.lock;
+      gemset = should.equal test/gemset.nix;
+    }
+  )
 
   (test.run "Gemset and dir"
     (functions.bundlerFiles {

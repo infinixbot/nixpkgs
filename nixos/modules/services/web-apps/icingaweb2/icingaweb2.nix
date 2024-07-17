@@ -188,7 +188,9 @@ in
         phpEnv = {
           ICINGAWEB_LIBDIR = toString (
             pkgs.linkFarm "icingaweb2-libdir" (
-              mapAttrsToList (name: path: { inherit name path; }) cfg.libraryPaths
+              mapAttrsToList (name: path: {
+                inherit name path;
+              }) cfg.libraryPaths
             )
           );
         };
@@ -256,7 +258,10 @@ in
       { }
       # Module packages
       // (mapAttrs' (
-        k: v: nameValuePair "icingaweb2/enabledModules/${k}" { source = v; }
+        k: v:
+        nameValuePair "icingaweb2/enabledModules/${k}" {
+          source = v;
+        }
       ) cfg.modulePackages)
       # Built-in modules
       // doModule "doc"

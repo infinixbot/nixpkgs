@@ -122,7 +122,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == "git") { git.gid = config.ids.gids.git; };
+    users.groups = optionalAttrs (cfg.group == "git") {
+      git.gid = config.ids.gids.git;
+    };
 
     systemd.services.git-daemon = {
       after = [ "network.target" ];

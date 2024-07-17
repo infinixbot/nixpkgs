@@ -146,7 +146,9 @@ in
           StateDirectory = "supybot";
           ProtectSystem = "strict";
         }
-        // optionalAttrs (!isStateDirHome) { ProtectHome = true; };
+        // optionalAttrs (!isStateDirHome) {
+          ProtectHome = true;
+        };
     };
 
     systemd.tmpfiles.rules =

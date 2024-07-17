@@ -5,7 +5,9 @@
   ...
 }:
 let
-  format = pkgs.formats.php { finalVariable = "config"; };
+  format = pkgs.formats.php {
+    finalVariable = "config";
+  };
 
   cfg = config.services.filesender;
   simpleSamlCfg = config.services.simplesamlphp.filesender;
@@ -97,7 +99,11 @@ in
           };
           log_facilities = mkOption {
             type = format.type;
-            default = [ { type = "error_log"; } ];
+            default = [
+              {
+                type = "error_log";
+              }
+            ];
             description = "Defines where FileSender logging is sent. You can sent logging to a file, to syslog or to the default PHP log facility (as configured through your webserver's PHP module). The directive takes an array of one or more logging targets. Logging can be sent to multiple targets simultaneously. Each logging target is a list containing the name of the logging target and a number of attributes which vary per log target. See below for the exact definiation of each log target.";
           };
         };

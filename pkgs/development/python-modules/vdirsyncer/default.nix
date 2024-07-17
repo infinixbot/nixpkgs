@@ -80,7 +80,9 @@ buildPythonPackage rec {
     "test_verbosity"
   ];
 
-  passthru.tests.version = testers.testVersion { package = vdirsyncer; };
+  passthru.tests.version = testers.testVersion {
+    package = vdirsyncer;
+  };
 
   meta = with lib; {
     description = "Synchronize calendars and contacts";

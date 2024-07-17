@@ -51,14 +51,20 @@ let
               f = perlPackagesFun;
             }
           )
-          { perl = self; };
+          {
+            perl = self;
+          };
     in
     rec {
       buildEnv = callPackage ./wrapper.nix {
         perl = self;
         inherit (pkgs) requiredPerlModules;
       };
-      withPackages = f: buildEnv.override { extraLibs = f pkgs; };
+      withPackages =
+        f:
+        buildEnv.override {
+          extraLibs = f pkgs;
+        };
       pkgs = perlPackages // (overrides pkgs);
       interpreter = "${self}/bin/perl";
       libPrefix = "lib/perl5/site_perl";

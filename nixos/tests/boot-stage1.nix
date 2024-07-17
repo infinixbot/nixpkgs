@@ -88,10 +88,14 @@ import ./make-test-python.nix (
           let
             compile =
               name: source:
-              pkgs.runCommandCC name { inherit source; } ''
-                mkdir -p "$out/bin"
-                echo "$source" | gcc -Wall -o "$out/bin/$name" -xc -
-              '';
+              pkgs.runCommandCC name
+                {
+                  inherit source;
+                }
+                ''
+                  mkdir -p "$out/bin"
+                  echo "$source" | gcc -Wall -o "$out/bin/$name" -xc -
+                '';
 
             daemonize =
               name: source:

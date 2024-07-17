@@ -26,7 +26,9 @@ buildPythonPackage rec {
     hash = "sha256-mfXkrCbBaJ0da+taKJvfyU5NS43tYJWqtTUXiCLVoGQ=";
   };
 
-  cargoDeps = rustPlatform.importCargoLock { lockFile = ./Cargo.lock; };
+  cargoDeps = rustPlatform.importCargoLock {
+    lockFile = ./Cargo.lock;
+  };
 
   postPatch = ''
     ln -s ${./Cargo.lock} Cargo.lock

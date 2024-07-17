@@ -38,7 +38,9 @@ runCommand file
       outputHash = hash;
       NETRC = netrc_file;
     }
-    // (lib.optionalAttrs (name != null) { inherit name; })
+    // (lib.optionalAttrs (name != null) {
+      inherit name;
+    })
   )
   ''
     python ${./fetch-legacy.py} ${

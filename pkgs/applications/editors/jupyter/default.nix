@@ -7,7 +7,11 @@
 }:
 
 let
-  jupyterPath = (jupyter-kernel.create { inherit definitions; });
+  jupyterPath = (
+    jupyter-kernel.create {
+      inherit definitions;
+    }
+  );
   jupyter-notebook =
     (python3.buildEnv.override {
       extraLibs = [ python3.pkgs.notebook ];

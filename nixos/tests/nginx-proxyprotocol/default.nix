@@ -33,7 +33,9 @@ import ../make-test-python.nix (
                 proxyProtocol = true;
                 ssl = true;
               }
-              { addr = "127.0.0.2"; }
+              {
+                addr = "127.0.0.2";
+              }
               {
                 addr = "127.0.0.3";
                 ssl = false;

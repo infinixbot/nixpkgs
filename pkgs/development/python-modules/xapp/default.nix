@@ -50,7 +50,9 @@ buildPythonPackage rec {
   pythonImportsCheck = [ "xapp" ];
 
   passthru = {
-    updateScript = gitUpdater { ignoredVersions = "^master.*"; };
+    updateScript = gitUpdater {
+      ignoredVersions = "^master.*";
+    };
     skipBulkUpdate = true; # This should be bumped as part of Cinnamon update.
   };
 

@@ -44,7 +44,9 @@ let
   };
 
   configFile = pkgs.writeText "zabbix_server.conf" (
-    toKeyValue { listsAsDuplicateKeys = true; } cfg.settings
+    toKeyValue {
+      listsAsDuplicateKeys = true;
+    } cfg.settings
   );
 
   mysqlLocal = cfg.database.createLocally && cfg.database.type == "mysql";
@@ -274,13 +276,23 @@ in
         FpingLocation = "/run/wrappers/bin/fping";
         LoadModule = builtins.attrNames cfg.modules;
       }
-      (mkIf (cfg.database.createLocally != true) { DBPort = cfg.database.port; })
-      (mkIf (cfg.database.passwordFile != null) { Include = [ "${passwordFile}" ]; })
-      (mkIf (mysqlLocal && cfg.database.socket != null) { DBSocket = cfg.database.socket; })
-      (mkIf (cfg.modules != { }) { LoadModulePath = "${moduleEnv}/lib"; })
+      (mkIf (cfg.database.createLocally != true) {
+        DBPort = cfg.database.port;
+      })
+      (mkIf (cfg.database.passwordFile != null) {
+        Include = [ "${passwordFile}" ];
+      })
+      (mkIf (mysqlLocal && cfg.database.socket != null) {
+        DBSocket = cfg.database.socket;
+      })
+      (mkIf (cfg.modules != { }) {
+        LoadModulePath = "${moduleEnv}/lib";
+      })
     ];
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.listen.port ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.listen.port ];
+    };
 
     services.mysql = optionalAttrs mysqlLocal {
       enable = true;

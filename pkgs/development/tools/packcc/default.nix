@@ -58,7 +58,9 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  passthru.tests.version = testers.testVersion { package = packcc; };
+  passthru.tests.version = testers.testVersion {
+    package = packcc;
+  };
 
   meta = with lib; {
     description = "Parser generator for C";

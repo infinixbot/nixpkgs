@@ -24,7 +24,9 @@ buildGoModule rec {
     "-X main.buildSource=nix"
   ];
 
-  passthru.tests.version = testers.testVersion { package = lazygit; };
+  passthru.tests.version = testers.testVersion {
+    package = lazygit;
+  };
 
   meta = with lib; {
     description = "Simple terminal UI for git commands";

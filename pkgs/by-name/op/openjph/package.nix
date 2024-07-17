@@ -34,7 +34,9 @@ stdenv.mkDerivation (finalAttrs: {
   strictDeps = true;
 
   passthru = {
-    tests.pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+    tests.pkg-config = testers.hasPkgConfigModules {
+      package = finalAttrs.finalPackage;
+    };
     updateScript = nix-update-script { };
   };
 

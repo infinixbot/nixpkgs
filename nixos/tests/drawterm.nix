@@ -84,4 +84,9 @@ let
     systems: name: machine:
     if pkgs.lib.elem system systems then mkTest name machine else { ... }: { };
 in
-builtins.mapAttrs (k: v: mkTestOn v.systems k v.node { inherit system; }) tests
+builtins.mapAttrs (
+  k: v:
+  mkTestOn v.systems k v.node {
+    inherit system;
+  }
+) tests

@@ -103,7 +103,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru.tests.version =
     # test that the version is correct
-    testers.testVersion { package = alephone; };
+    testers.testVersion {
+      package = alephone;
+    };
 
   meta = {
     description = "Aleph One is the open source continuation of Bungie’s Marathon 2 game engine";

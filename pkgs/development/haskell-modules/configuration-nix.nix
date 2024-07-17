@@ -142,7 +142,9 @@ builtins.intersectAttrs super {
   epanet-haskell = disableHardening [ "format" ] super.epanet-haskell;
 
   # Link the proper version.
-  zeromq4-haskell = super.zeromq4-haskell.override { zeromq = pkgs.zeromq4; };
+  zeromq4-haskell = super.zeromq4-haskell.override {
+    zeromq = pkgs.zeromq4;
+  };
 
   threadscope = enableSeparateBinOutput super.threadscope;
 
@@ -200,7 +202,11 @@ builtins.intersectAttrs super {
         hledger-ui = installHledgerExtraFiles super.hledger-ui;
 
         hledger_1_30_1 = installHledgerExtraFiles (
-          doDistribute (super.hledger_1_30_1.override { hledger-lib = self.hledger-lib_1_30; })
+          doDistribute (
+            super.hledger_1_30_1.override {
+              hledger-lib = self.hledger-lib_1_30;
+            }
+          )
         );
         hledger-web_1_30 = installHledgerExtraFiles (
           hledgerWebTestFix (
@@ -288,7 +294,9 @@ builtins.intersectAttrs super {
   hzk = appendConfigureFlag "--extra-include-dirs=${pkgs.zookeeper_mt}/include/zookeeper" super.hzk;
 
   # Foreign dependency name clashes with another Haskell package.
-  libarchive-conduit = super.libarchive-conduit.override { archive = pkgs.libarchive; };
+  libarchive-conduit = super.libarchive-conduit.override {
+    archive = pkgs.libarchive;
+  };
 
   # Heist's test suite requires system pandoc
   heist = addTestToolDepend pkgs.pandoc super.heist;
@@ -306,7 +314,11 @@ builtins.intersectAttrs super {
   glib = disableHardening [ "fortify" ] (
     addPkgconfigDepend pkgs.glib (addBuildTool self.buildHaskellPackages.gtk2hs-buildtools super.glib)
   );
-  gtk3 = disableHardening [ "fortify" ] (super.gtk3.override { inherit (pkgs) gtk3; });
+  gtk3 = disableHardening [ "fortify" ] (
+    super.gtk3.override {
+      inherit (pkgs) gtk3;
+    }
+  );
   gtk = lib.pipe super.gtk (
     [
       (disableHardening [ "fortify" ])
@@ -351,7 +363,9 @@ builtins.intersectAttrs super {
   digitalocean-kzs = dontCheck super.digitalocean-kzs; # https://github.com/KazumaSATO/digitalocean-kzs/issues/1
   github-types = dontCheck super.github-types; # http://hydra.cryp.to/build/1114046/nixlog/1/raw
   hadoop-rpc = dontCheck super.hadoop-rpc; # http://hydra.cryp.to/build/527461/nixlog/2/raw
-  hjsonschema = overrideCabal (drv: { testTarget = "local"; }) super.hjsonschema;
+  hjsonschema = overrideCabal (drv: {
+    testTarget = "local";
+  }) super.hjsonschema;
   marmalade-upload = dontCheck super.marmalade-upload; # http://hydra.cryp.to/build/501904/nixlog/1/raw
   mongoDB = dontCheck super.mongoDB;
   network-transport-tcp = dontCheck super.network-transport-tcp;
@@ -431,8 +445,12 @@ builtins.intersectAttrs super {
 
   # wxc supports wxGTX >= 3.0, but our current default version points to 2.8.
   # http://hydra.cryp.to/build/1331287/log/raw
-  wxc = (addBuildDepend self.split super.wxc).override { wxGTK = pkgs.wxGTK32; };
-  wxcore = super.wxcore.override { wxGTK = pkgs.wxGTK32; };
+  wxc = (addBuildDepend self.split super.wxc).override {
+    wxGTK = pkgs.wxGTK32;
+  };
+  wxcore = super.wxcore.override {
+    wxGTK = pkgs.wxGTK32;
+  };
 
   shellify = enableSeparateBinOutput super.shellify;
   specup = enableSeparateBinOutput super.specup;
@@ -442,10 +460,16 @@ builtins.intersectAttrs super {
   gi-gtk-declarative = dontCheck super.gi-gtk-declarative;
   gi-gtk-declarative-app-simple = dontCheck super.gi-gtk-declarative-app-simple;
   hsqml = dontCheck (
-    addExtraLibraries [
-      pkgs.libGLU
-      pkgs.libGL
-    ] (super.hsqml.override { qt5 = pkgs.qt5Full; })
+    addExtraLibraries
+      [
+        pkgs.libGLU
+        pkgs.libGL
+      ]
+      (
+        super.hsqml.override {
+          qt5 = pkgs.qt5Full;
+        }
+      )
   );
   monomer = dontCheck super.monomer;
 
@@ -472,10 +496,17 @@ builtins.intersectAttrs super {
   # `dev` and `lib` output in, or Cabal will have trouble finding the library.
   # Since it looks a bit neater having it in a list, we circumvent the singular
   # LLVM input here.
-  llvm-ffi = addBuildDepends [
-    pkgs.llvmPackages_16.llvm.lib
-    pkgs.llvmPackages_16.llvm.dev
-  ] (super.llvm-ffi.override { LLVM = null; });
+  llvm-ffi =
+    addBuildDepends
+      [
+        pkgs.llvmPackages_16.llvm.lib
+        pkgs.llvmPackages_16.llvm.dev
+      ]
+      (
+        super.llvm-ffi.override {
+          LLVM = null;
+        }
+      );
 
   # Needs help finding LLVM.
   spaceprobe = addBuildTool self.buildHaskellPackages.llvmPackages.llvm super.spaceprobe;
@@ -571,7 +602,11 @@ builtins.intersectAttrs super {
   hscurses = addExtraLibrary pkgs.ncurses super.hscurses;
 
   # Looks like Avahi provides the missing library
-  dnssd = super.dnssd.override { dns_sd = pkgs.avahi.override { withLibdnssdCompat = true; }; };
+  dnssd = super.dnssd.override {
+    dns_sd = pkgs.avahi.override {
+      withLibdnssdCompat = true;
+    };
+  };
 
   # Tests execute goldplate
   goldplate = overrideCabal (drv: {
@@ -636,9 +671,13 @@ builtins.intersectAttrs super {
   # https://github.com/haskell-fswatch/hfsnotify/issues/62
   fsnotify = dontCheck super.fsnotify;
 
-  hs-GeoIP = super.hs-GeoIP.override { GeoIP = pkgs.geoipWithDatabase; };
+  hs-GeoIP = super.hs-GeoIP.override {
+    GeoIP = pkgs.geoipWithDatabase;
+  };
 
-  discount = super.discount.override { markdown = pkgs.discount; };
+  discount = super.discount.override {
+    markdown = pkgs.discount;
+  };
 
   # tests require working stack installation with all-cabal-hashes cloned in $HOME
   stackage-curator = dontCheck super.stackage-curator;
@@ -706,7 +745,9 @@ builtins.intersectAttrs super {
   clock = dontCheck super.clock;
 
   # Break infinite recursion cycle between devtools and mprelude.
-  devtools = super.devtools.override { mprelude = dontCheck super.mprelude; };
+  devtools = super.devtools.override {
+    mprelude = dontCheck super.mprelude;
+  };
 
   # Break dependency cycle between tasty-hedgehog and tasty-expected-failure
   tasty-hedgehog = dontCheck super.tasty-hedgehog;
@@ -715,7 +756,9 @@ builtins.intersectAttrs super {
   lifted-async = dontCheck super.lifted-async;
 
   # loc and loc-test depend on each other for testing. Break that infinite cycle:
-  loc-test = super.loc-test.override { loc = dontCheck self.loc; };
+  loc-test = super.loc-test.override {
+    loc = dontCheck self.loc;
+  };
 
   # The test suites try to run the "fixpoint" and "liquid" executables built just
   # before and fail because the library search paths aren't configured properly.
@@ -739,7 +782,9 @@ builtins.intersectAttrs super {
 
   # Not running the "example" test because it requires a binary from lsps test
   # suite which is not part of the output of lsp.
-  lsp-test = overrideCabal (old: { testTarget = "tests func-test"; }) super.lsp-test;
+  lsp-test = overrideCabal (old: {
+    testTarget = "tests func-test";
+  }) super.lsp-test;
 
   # the test suite attempts to run the binaries built in this package
   # through $PATH but they aren't in $PATH
@@ -898,7 +943,9 @@ builtins.intersectAttrs super {
   githash = dontCheck super.githash;
 
   # Avoid infitite recursion with yaya.
-  yaya-hedgehog = super.yaya-hedgehog.override { yaya = dontCheck self.yaya; };
+  yaya-hedgehog = super.yaya-hedgehog.override {
+    yaya = dontCheck self.yaya;
+  };
 
   # Avoid infitite recursion with tonatona.
   tonaparser = dontCheck super.tonaparser;
@@ -1111,7 +1158,9 @@ builtins.intersectAttrs super {
   }) (self.generateOptparseApplicativeCompletions [ "pnbackup" ] super.pinboard-notes-backup);
 
   # Pass the correct libarchive into the package.
-  streamly-archive = super.streamly-archive.override { archive = pkgs.libarchive; };
+  streamly-archive = super.streamly-archive.override {
+    archive = pkgs.libarchive;
+  };
 
   hlint = overrideCabal (drv: {
     postInstall =
@@ -1220,7 +1269,9 @@ builtins.intersectAttrs super {
     nix = self.hercules-ci-cnix-store.passthru.nixPackage;
   };
   hercules-ci-cnix-expr = addTestToolDepend pkgs.git (
-    super.hercules-ci-cnix-expr.override { nix = self.hercules-ci-cnix-store.passthru.nixPackage; }
+    super.hercules-ci-cnix-expr.override {
+      nix = self.hercules-ci-cnix-store.passthru.nixPackage;
+    }
   );
   hercules-ci-cnix-store =
     overrideCabal
@@ -1229,7 +1280,11 @@ builtins.intersectAttrs super {
           nixPackage = pkgs.nixVersions.nix_2_19;
         };
       })
-      (super.hercules-ci-cnix-store.override { nix = self.hercules-ci-cnix-store.passthru.nixPackage; });
+      (
+        super.hercules-ci-cnix-store.override {
+          nix = self.hercules-ci-cnix-store.passthru.nixPackage;
+        }
+      );
 
   # the testsuite fails because of not finding tsc without some help
   aeson-typescript = overrideCabal (drv: {
@@ -1461,14 +1516,22 @@ builtins.intersectAttrs super {
   # Disable checks to break dependency loop with SCalendar
   scalendar = dontCheck super.scalendar;
 
-  halide-haskell = super.halide-haskell.override { Halide = pkgs.halide; };
+  halide-haskell = super.halide-haskell.override {
+    Halide = pkgs.halide;
+  };
 
   # Sydtest has a brittle test suite that will only work with the exact
   # versions that it ships with.
   sydtest = dontCheck super.sydtest;
 
   # Prevent argv limit being exceeded when invoking $CC.
-  inherit (lib.mapAttrs (_: overrideCabal { __onlyPropagateKnownPkgConfigModules = true; }) super)
+  inherit
+    (lib.mapAttrs (
+      _:
+      overrideCabal {
+        __onlyPropagateKnownPkgConfigModules = true;
+      }
+    ) super)
     gi-javascriptcore
     gi-webkit2webextension
     gi-gtk_4_0_8
@@ -1480,13 +1543,17 @@ builtins.intersectAttrs super {
   webkit2gtk3-javascriptcore = lib.pipe super.webkit2gtk3-javascriptcore [
     (addBuildDepend pkgs.xorg.libXtst)
     (addBuildDepend pkgs.lerc)
-    (overrideCabal { __onlyPropagateKnownPkgConfigModules = true; })
+    (overrideCabal {
+      __onlyPropagateKnownPkgConfigModules = true;
+    })
   ];
 
   gi-webkit2 = lib.pipe super.gi-webkit2 [
     (addBuildDepend pkgs.xorg.libXtst)
     (addBuildDepend pkgs.lerc)
-    (overrideCabal { __onlyPropagateKnownPkgConfigModules = true; })
+    (overrideCabal {
+      __onlyPropagateKnownPkgConfigModules = true;
+    })
   ];
 
   # Makes the mpi-hs package respect the choice of mpi implementation in Nixpkgs.
@@ -1501,16 +1568,20 @@ builtins.intersectAttrs super {
       mpiImpl = pkgs.mpi.pname;
       disableUnused = with builtins; map disableCabalFlag (filter (n: n != mpiImpl) validMpi);
     in
-    lib.pipe (super.mpi-hs_0_7_3_0.override { ompi = pkgs.mpi; }) (
-      [
-        (addTestToolDepends [
-          pkgs.openssh
-          pkgs.mpiCheckPhaseHook
-        ])
-      ]
-      ++ disableUnused
-      ++ lib.optional (builtins.elem mpiImpl validMpi) (enableCabalFlag mpiImpl)
-    );
+    lib.pipe
+      (super.mpi-hs_0_7_3_0.override {
+        ompi = pkgs.mpi;
+      })
+      (
+        [
+          (addTestToolDepends [
+            pkgs.openssh
+            pkgs.mpiCheckPhaseHook
+          ])
+        ]
+        ++ disableUnused
+        ++ lib.optional (builtins.elem mpiImpl validMpi) (enableCabalFlag mpiImpl)
+      );
   inherit
     (lib.mapAttrs (
       _:

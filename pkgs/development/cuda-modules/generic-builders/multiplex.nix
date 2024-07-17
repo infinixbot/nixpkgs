@@ -55,7 +55,14 @@ let
 
   # FIXME: do this at the module system level
   propagatePlatforms = lib.mapAttrs (
-    redistArch: packages: map (p: { inherit redistArch; } // p) packages
+    redistArch: packages:
+    map (
+      p:
+      {
+        inherit redistArch;
+      }
+      // p
+    ) packages
   );
 
   # All releases across all platforms

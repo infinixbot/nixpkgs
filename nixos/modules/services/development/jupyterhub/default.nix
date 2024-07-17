@@ -129,7 +129,13 @@ in
 
     kernels = mkOption {
       type = types.nullOr (
-        types.attrsOf (types.submodule (import ../jupyter/kernel-options.nix { inherit lib pkgs; }))
+        types.attrsOf (
+          types.submodule (
+            import ../jupyter/kernel-options.nix {
+              inherit lib pkgs;
+            }
+          )
+        )
       );
 
       default = null;

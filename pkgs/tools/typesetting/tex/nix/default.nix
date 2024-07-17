@@ -20,7 +20,12 @@ rec {
       tex =
         pkgs.texlive.combine
           # always include basic stuff you need for LaTeX
-          ({ inherit (pkgs.texlive) scheme-basic; } // texPackages);
+          (
+            {
+              inherit (pkgs.texlive) scheme-basic;
+            }
+            // texPackages
+          );
     in
 
     pkgs.stdenv.mkDerivation {
@@ -62,7 +67,11 @@ rec {
     { rootFile }:
 
     builtins.genericClosure {
-      startSet = [ { key = rootFile; } ];
+      startSet = [
+        {
+          key = rootFile;
+        }
+      ];
 
       operator =
         { key, ... }:
@@ -106,7 +115,15 @@ rec {
                 map (ext: dirOf key + ("/" + dep.name + ext)) exts
               );
             in
-            if fn != null then [ { key = fn; } ] ++ xs else xs;
+            if fn != null then
+              [
+                {
+                  key = fn;
+                }
+              ]
+              ++ xs
+            else
+              xs;
 
         in
         pkgs.lib.foldr foundDeps [ ] deps;
@@ -116,7 +133,11 @@ rec {
     { lib, rootFile }:
 
     builtins.genericClosure {
-      startSet = [ { key = rootFile; } ];
+      startSet = [
+        {
+          key = rootFile;
+        }
+      ];
 
       operator =
         { key, ... }:
@@ -130,9 +151,14 @@ rec {
           );
 
         in
-        pkgs.lib.concatMap (x: lib.optionals (builtins.pathExists x) [ { key = x; } ]) (
-          map (x: dirOf key + ("/" + x)) deps
-        );
+        pkgs.lib.concatMap (
+          x:
+          lib.optionals (builtins.pathExists x) [
+            {
+              key = x;
+            }
+          ]
+        ) (map (x: dirOf key + ("/" + x)) deps);
     };
 
   dot2pdf =
@@ -262,7 +288,9 @@ rec {
 
     postscriptToPNG {
       postscript = runLaTeX {
-        rootFile = wrapSimpleTeX { inherit body preamble; };
+        rootFile = wrapSimpleTeX {
+          inherit body preamble;
+        };
         inherit packages;
         generatePDF = false;
         generatePS = true;
@@ -278,13 +306,17 @@ rec {
     }:
 
     runLaTeX {
-      rootFile = wrapSimpleTeX { inherit body preamble; };
+      rootFile = wrapSimpleTeX {
+        inherit body preamble;
+      };
       inherit packages;
     };
 
   # Some tools (like dot) need a fontconfig configuration file.
   # This should be extended to allow the called to add additional
   # fonts.
-  fontsConf = pkgs.makeFontsConf { fontDirectories = [ "${pkgs.ghostscript.fonts}/share/fonts" ]; };
+  fontsConf = pkgs.makeFontsConf {
+    fontDirectories = [ "${pkgs.ghostscript.fonts}/share/fonts" ];
+  };
 
 }

@@ -122,7 +122,11 @@ import ../../make-test-python.nix (
             };
 
             policies.settings = {
-              policies = [ { receiver = "Test Contact Point"; } ];
+              policies = [
+                {
+                  receiver = "Test Contact Point";
+                }
+              ];
             };
 
             templates.settings = {
@@ -135,7 +139,11 @@ import ../../make-test-python.nix (
             };
 
             muteTimings.settings = {
-              muteTimes = [ { name = "Test Mute Timing"; } ];
+              muteTimes = [
+                {
+                  name = "Test Mute Timing";
+                }
+              ];
             };
           };
         };

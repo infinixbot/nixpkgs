@@ -55,7 +55,9 @@ stdenv.mkDerivation rec {
       gstreamer
       gst-libav
       gst-plugins-base
-      (gst-plugins-good.override { gtkSupport = true; })
+      (gst-plugins-good.override {
+        gtkSupport = true;
+      })
       gst-plugins-bad
     ]);
 

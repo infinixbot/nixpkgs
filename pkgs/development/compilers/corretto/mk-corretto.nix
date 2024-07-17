@@ -95,22 +95,34 @@ jdk.overrideAttrs (
       oldAttrs.passthru
       // {
         tests = {
-          version = testers.testVersion { package = pkg; };
-          vendor = runCommand "${pname}-vendor" { nativeBuildInputs = [ pkg ]; } ''
-            output=$(${pkg.meta.mainProgram} -XshowSettings:properties -version 2>&1 | grep vendor)
-            grep -Fq "java.vendor = Amazon.com Inc." - <<< "$output" && touch $out
-          '';
-          compiler = runCommand "${pname}-compiler" { nativeBuildInputs = [ pkg ]; } ''
-            cat << EOF  > Main.java
-            class Main {
-                public static void main(String[] args) {
-                    System.out.println("Hello, World!");
+          version = testers.testVersion {
+            package = pkg;
+          };
+          vendor =
+            runCommand "${pname}-vendor"
+              {
+                nativeBuildInputs = [ pkg ];
+              }
+              ''
+                output=$(${pkg.meta.mainProgram} -XshowSettings:properties -version 2>&1 | grep vendor)
+                grep -Fq "java.vendor = Amazon.com Inc." - <<< "$output" && touch $out
+              '';
+          compiler =
+            runCommand "${pname}-compiler"
+              {
+                nativeBuildInputs = [ pkg ];
+              }
+              ''
+                cat << EOF  > Main.java
+                class Main {
+                    public static void main(String[] args) {
+                        System.out.println("Hello, World!");
+                    }
                 }
-            }
-            EOF
-            ${pkg}/bin/javac Main.java
-            ${pkg}/bin/java Main | grep -q "Hello, World!" && touch $out
-          '';
+                EOF
+                ${pkg}/bin/javac Main.java
+                ${pkg}/bin/java Main | grep -q "Hello, World!" && touch $out
+              '';
         };
       };
 

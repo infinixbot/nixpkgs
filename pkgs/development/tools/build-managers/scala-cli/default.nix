@@ -90,7 +90,9 @@ stdenv.mkDerivation {
     inherit platforms;
   };
 
-  passthru.updateScript = callPackage ./update.nix { } { inherit platforms pname version; };
+  passthru.updateScript = callPackage ./update.nix { } {
+    inherit platforms pname version;
+  };
 
   passthru.tests.version = testers.testVersion {
     package = scala-cli;

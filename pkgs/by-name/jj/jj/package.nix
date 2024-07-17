@@ -34,18 +34,25 @@ buildGoModule rec {
   passthru = {
     updateScript = nix-update-script { };
     tests = with testers; {
-      version = testVersion { package = jj; };
+      version = testVersion {
+        package = jj;
+      };
       examples = testEqualContents {
         assertion = "examples from projects README.md work";
-        actual = runCommand "actual" { nativeBuildInputs = [ jj ]; } ''
-          {
-            echo '{"name":{"first":"Tom","last":"Smith"}}' | jj name.last
-            echo '{"name":{"first":"Tom","last":"Smith"}}' | jj name
-            echo '{"name":{"first":"Tom","last":"Smith"}}' | jj -v Andy name.first
-            echo '{"friends":["Tom","Jane","Carol"]}' | jj -v Andy friends.-1
-            echo '{"age":46,"name":{"first":"Tom","last":"Smith"}}' | jj -D age
-          } > $out
-        '';
+        actual =
+          runCommand "actual"
+            {
+              nativeBuildInputs = [ jj ];
+            }
+            ''
+              {
+                echo '{"name":{"first":"Tom","last":"Smith"}}' | jj name.last
+                echo '{"name":{"first":"Tom","last":"Smith"}}' | jj name
+                echo '{"name":{"first":"Tom","last":"Smith"}}' | jj -v Andy name.first
+                echo '{"friends":["Tom","Jane","Carol"]}' | jj -v Andy friends.-1
+                echo '{"age":46,"name":{"first":"Tom","last":"Smith"}}' | jj -D age
+              } > $out
+            '';
         expected = writeText "expected" ''
           Smith
           {"first":"Tom","last":"Smith"}

@@ -127,16 +127,24 @@ stdenv.mkDerivation (
       dontFixup
       ;
 
-    passthru = {
-      inherit
-        executableName
-        longName
-        tests
-        updateScript
-        ;
-      fhs = fhs { };
-      fhsWithPackages = f: fhs { additionalPkgs = f; };
-    } // lib.optionalAttrs (vscodeServer != null) { inherit rev vscodeServer; };
+    passthru =
+      {
+        inherit
+          executableName
+          longName
+          tests
+          updateScript
+          ;
+        fhs = fhs { };
+        fhsWithPackages =
+          f:
+          fhs {
+            additionalPkgs = f;
+          };
+      }
+      // lib.optionalAttrs (vscodeServer != null) {
+        inherit rev vscodeServer;
+      };
 
     desktopItem = makeDesktopItem {
       name = executableName;
@@ -215,7 +223,9 @@ stdenv.mkDerivation (
         autoPatchelfHook
         asar
         # override doesn't preserve splicing https://github.com/NixOS/nixpkgs/issues/132651
-        (buildPackages.wrapGAppsHook3.override { inherit (buildPackages) makeWrapper; })
+        (buildPackages.wrapGAppsHook3.override {
+          inherit (buildPackages) makeWrapper;
+        })
       ];
 
     dontBuild = true;

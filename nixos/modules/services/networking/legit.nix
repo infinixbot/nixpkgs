@@ -125,7 +125,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    users.groups = optionalAttrs (cfg.group == "legit") { "${cfg.group}" = { }; };
+    users.groups = optionalAttrs (cfg.group == "legit") {
+      "${cfg.group}" = { };
+    };
 
     users.users = optionalAttrs (cfg.user == "legit") {
       "${cfg.user}" = {

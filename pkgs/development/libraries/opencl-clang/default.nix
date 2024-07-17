@@ -26,7 +26,9 @@ let
 
   llvmPkgs = llvmPackages_14;
   inherit (llvmPkgs) llvm;
-  spirv-llvm-translator' = spirv-llvm-translator.override { inherit llvm; };
+  spirv-llvm-translator' = spirv-llvm-translator.override {
+    inherit llvm;
+  };
   libclang = if buildWithPatches then passthru.libclang else llvmPkgs.libclang;
 
   passthru = rec {
@@ -35,7 +37,9 @@ let
     libclang = addPatches "clang" llvmPkgs.libclang;
 
     clang-unwrapped = libclang.out;
-    clang = llvmPkgs.clang.override { cc = clang-unwrapped; };
+    clang = llvmPkgs.clang.override {
+      cc = clang-unwrapped;
+    };
 
     patchesOut = stdenv.mkDerivation {
       pname = "opencl-clang-patches";

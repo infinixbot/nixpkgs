@@ -20,7 +20,10 @@ let
 
   addCheckDesc =
     desc: elemType: check:
-    types.addCheck elemType check // { description = "${elemType.description} (with check: ${desc})"; };
+    types.addCheck elemType check
+    // {
+      description = "${elemType.description} (with check: ${desc})";
+    };
   hexChars = stringToCharacters "0123456789abcdef";
   isHexString = s: all (c: elem c hexChars) (stringToCharacters (toLower s));
   hexStr = addCheckDesc "hexadecimal string" types.str isHexString;

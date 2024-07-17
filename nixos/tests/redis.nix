@@ -1,7 +1,9 @@
 {
   system ? builtins.currentSystem,
   config ? { },
-  pkgs ? import ../../.. { inherit system config; },
+  pkgs ? import ../../.. {
+    inherit system config;
+  },
 
   lib ? pkgs.lib,
 }:
@@ -84,4 +86,9 @@ let
         '';
     };
 in
-lib.mapAttrs (_: package: makeRedisTest { inherit package; }) redisPackages
+lib.mapAttrs (
+  _: package:
+  makeRedisTest {
+    inherit package;
+  }
+) redisPackages

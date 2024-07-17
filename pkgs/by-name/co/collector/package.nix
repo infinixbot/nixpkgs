@@ -52,7 +52,9 @@ stdenv.mkDerivation (finalAttrs: {
     ))
   ];
 
-  passthru.updateScript = unstableGitUpdater { hardcodeZeroVersion = true; };
+  passthru.updateScript = unstableGitUpdater {
+    hardcodeZeroVersion = true;
+  };
 
   meta = {
     description = "Drag multiple files and folders on to Collection window, drop them anywhere!";

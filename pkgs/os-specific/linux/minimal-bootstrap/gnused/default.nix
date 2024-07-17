@@ -13,7 +13,12 @@
 }:
 
 let
-  inherit (import ./common.nix { inherit lib; }) meta;
+  inherit
+    (import ./common.nix {
+      inherit lib;
+    })
+    meta
+    ;
   pname = "gnused";
   # last version that can be bootstrapped with our slightly buggy gnused-mes
   version = "4.2";

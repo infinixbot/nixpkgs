@@ -78,7 +78,9 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   passthru = {
-    updateScript = gitUpdater { odd-unstable = true; };
+    updateScript = gitUpdater {
+      odd-unstable = true;
+    };
 
     tests = {
       test = nixosTests.terminal-emulators.gnome-terminal;

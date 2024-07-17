@@ -33,7 +33,9 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  passthru.tests.version = testers.testVersion { package = detekt; };
+  passthru.tests.version = testers.testVersion {
+    package = detekt;
+  };
 
   meta = with lib; {
     description = "Static code analysis for Kotlin";

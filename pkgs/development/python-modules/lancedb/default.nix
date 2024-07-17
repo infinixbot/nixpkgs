@@ -42,7 +42,9 @@ buildPythonPackage rec {
 
   buildAndTestSubdir = "python";
 
-  cargoDeps = rustPlatform.importCargoLock { lockFile = ./Cargo.lock; };
+  cargoDeps = rustPlatform.importCargoLock {
+    lockFile = ./Cargo.lock;
+  };
 
   postPatch = ''
     ln -s ${./Cargo.lock} Cargo.lock

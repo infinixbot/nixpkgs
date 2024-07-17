@@ -79,7 +79,9 @@ stdenv.mkDerivation {
     '';
 
   passthru = {
-    updateScript = unstableGitUpdater { shallowClone = false; };
+    updateScript = unstableGitUpdater {
+      shallowClone = false;
+    };
     tests = nixosTests.drawterm;
   };
 

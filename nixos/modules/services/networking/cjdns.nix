@@ -59,7 +59,12 @@ let
 
   parseModules =
     x:
-    x // { connectTo = mapAttrs (name: value: { inherit (value) password publicKey; }) x.connectTo; };
+    x
+    // {
+      connectTo = mapAttrs (name: value: {
+        inherit (value) password publicKey;
+      }) x.connectTo;
+    };
 
   cjdrouteConf = builtins.toJSON (
     recursiveUpdate {
@@ -67,7 +72,9 @@ let
         bind = cfg.admin.bind;
         password = "@CJDNS_ADMIN_PASSWORD@";
       };
-      authorizedPasswords = map (p: { password = p; }) cfg.authorizedPasswords;
+      authorizedPasswords = map (p: {
+        password = p;
+      }) cfg.authorizedPasswords;
       interfaces = {
         ETHInterface = if (cfg.ETHInterface.bind != "") then [ (parseModules cfg.ETHInterface) ] else [ ];
         UDPInterface = if (cfg.UDPInterface.bind != "") then [ (parseModules cfg.UDPInterface) ] else [ ];

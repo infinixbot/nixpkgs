@@ -33,7 +33,9 @@ stdenv.mkDerivation {
   inherit version;
 
   # run ./update
-  src = fetchurl { inherit sha256 url; };
+  src = fetchurl {
+    inherit sha256 url;
+  };
 
   sourceRoot = ".";
 

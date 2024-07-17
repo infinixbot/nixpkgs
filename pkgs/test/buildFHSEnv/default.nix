@@ -78,7 +78,9 @@ in
           });
         in
         [
-          (ncurses'.override { unicodeSupport = false; })
+          (ncurses'.override {
+            unicodeSupport = false;
+          })
           p.libbsd
         ]
       );

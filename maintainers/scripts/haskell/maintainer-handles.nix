@@ -16,7 +16,9 @@ let
   mkMailGithubPair =
     _: maintainer:
     if (maintainer ? email) && (maintainer ? github) then
-      { "${maintainer.email}" = maintainer.github; }
+      {
+        "${maintainer.email}" = maintainer.github;
+      }
     else
       { };
 in

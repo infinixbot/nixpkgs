@@ -88,7 +88,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   # Fontconfig error: Cannot load default config file
-  FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ freefont_ttf ]; };
+  FONTCONFIG_FILE = makeFontsConf {
+    fontDirectories = [ freefont_ttf ];
+  };
 
   # Run-time dependency gi-docgen found: NO (tried pkgconfig and cmake)
   # it should be a build-time dep for build
@@ -112,7 +114,9 @@ stdenv.mkDerivation (finalAttrs: {
       freeze = "1.90.0";
     };
     tests = {
-      pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+      pkg-config = testers.hasPkgConfigModules {
+        package = finalAttrs.finalPackage;
+      };
     };
   };
 

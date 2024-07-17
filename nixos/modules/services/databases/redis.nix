@@ -24,7 +24,9 @@ let
     pkgs.writeText "redis.conf" (
       generators.toKeyValue {
         listsAsDuplicateKeys = true;
-        mkKeyValue = generators.mkKeyValueDefault { inherit mkValueString; } " ";
+        mkKeyValue = generators.mkKeyValueDefault {
+          inherit mkValueString;
+        } " ";
       } settings
     );
 
@@ -639,7 +641,9 @@ in
                     slowlog-log-slower-than = config.slowLogLogSlowerThan;
                     slowlog-max-len = config.slowLogMaxLen;
                   }
-                  (mkIf (config.bind != null) { inherit (config) bind; })
+                  (mkIf (config.bind != null) {
+                    inherit (config) bind;
+                  })
                   (mkIf (config.unixSocket != null) {
                     unixsocket = config.unixSocket;
                     unixsocketperm = toString config.unixSocketPerm;
@@ -647,8 +651,12 @@ in
                   (mkIf (config.slaveOf != null) {
                     slaveof = "${config.slaveOf.ip} ${toString config.slaveOf.port}";
                   })
-                  (mkIf (config.masterAuth != null) { masterauth = config.masterAuth; })
-                  (mkIf (config.requirePass != null) { requirepass = config.requirePass; })
+                  (mkIf (config.masterAuth != null) {
+                    masterauth = config.masterAuth;
+                  })
+                  (mkIf (config.requirePass != null) {
+                    requirepass = config.requirePass;
+                  })
                 ];
               }
             )
@@ -674,7 +682,9 @@ in
       }) enabledServers
     );
 
-    boot.kernel.sysctl = mkIf cfg.vmOverCommit { "vm.overcommit_memory" = "1"; };
+    boot.kernel.sysctl = mkIf cfg.vmOverCommit {
+      "vm.overcommit_memory" = "1";
+    };
 
     networking.firewall.allowedTCPPorts = concatMap (conf: optional conf.openFirewall conf.port) (
       attrValues enabledServers

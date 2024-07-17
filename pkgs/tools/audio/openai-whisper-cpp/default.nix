@@ -85,7 +85,9 @@ effectiveStdenv.mkDerivation (finalAttrs: {
       WHISPER_COREML_ALLOW_FALLBACK = "1";
       WHISPER_METAL_EMBED_LIBRARY = "1";
     }
-    // lib.optionalAttrs cudaSupport { WHISPER_CUBLAS = "1"; };
+    // lib.optionalAttrs cudaSupport {
+      WHISPER_CUBLAS = "1";
+    };
 
   makeFlags = [
     "main"

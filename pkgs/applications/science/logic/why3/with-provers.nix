@@ -6,15 +6,20 @@
 }:
 provers:
 let
-  configAwkScript = runCommand "why3-conf.awk" { inherit provers; } ''
-    for p in $provers; do
-      for b in $p/bin/*; do
-        BASENAME=$(basename $b)
-        echo "/^command =/{ gsub(\"$BASENAME\", \"$b\") }" >> $out
-      done
-    done
-    echo '{ print }' >> $out
-  '';
+  configAwkScript =
+    runCommand "why3-conf.awk"
+      {
+        inherit provers;
+      }
+      ''
+        for p in $provers; do
+          for b in $p/bin/*; do
+            BASENAME=$(basename $b)
+            echo "/^command =/{ gsub(\"$BASENAME\", \"$b\") }" >> $out
+          done
+        done
+        echo '{ print }' >> $out
+      '';
 in
 stdenv.mkDerivation {
   pname = "${why3.pname}-with-provers";

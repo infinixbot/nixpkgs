@@ -55,11 +55,17 @@ stdenv.mkDerivation (finalAttrs: {
 
   env = lib.optionalAttrs enablePython (
     if enableAvx then
-      { "AVX2" = 1; }
+      {
+        "AVX2" = 1;
+      }
     else if enableSse4_1 then
-      { "SSE41" = 1; }
+      {
+        "SSE41" = 1;
+      }
     else
-      { "SSE2" = 1; }
+      {
+        "SSE2" = 1;
+      }
   );
 
   buildInputs = [ zlib ];

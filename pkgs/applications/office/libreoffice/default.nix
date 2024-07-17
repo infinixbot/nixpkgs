@@ -234,7 +234,13 @@ let
   };
   srcs = {
     third_party = map (
-      x: (fetchurl { inherit (x) url sha256 name; }) // { inherit (x) md5name md5; }
+      x:
+      (fetchurl {
+        inherit (x) url sha256 name;
+      })
+      // {
+        inherit (x) md5name md5;
+      }
     ) srcsAttributes.deps;
     translations = fetchurl srcsAttributes.translations;
     help = fetchurl srcsAttributes.help;
@@ -346,7 +352,9 @@ stdenv.mkDerivation (finalAttrs: {
       # This should be ordered first, so it gets picked up before any other
       # propagated libpng
       # See: https://www.mail-archive.com/libreoffice@lists.freedesktop.org/msg334080.html
-      (libpng.override { apngSupport = false; })
+      (libpng.override {
+        apngSupport = false;
+      })
       perlPackages.ArchiveZip
       coinmp
       perlPackages.IOCompress
@@ -376,7 +384,9 @@ stdenv.mkDerivation (finalAttrs: {
       gpgme
       graphite2
       gtk3
-      (harfbuzz.override { withIcu = true; })
+      (harfbuzz.override {
+        withIcu = true;
+      })
       hunspell
       icu
       jre'

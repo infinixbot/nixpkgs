@@ -22,7 +22,9 @@ buildKodiAddon rec {
 
   passthru = {
     pythonPath = "lib";
-    updateScript = addonUpdateScript { attrPath = "kodi.packages.websocket"; };
+    updateScript = addonUpdateScript {
+      attrPath = "kodi.packages.websocket";
+    };
   };
 
   meta = with lib; {

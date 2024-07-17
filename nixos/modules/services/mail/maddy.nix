@@ -476,7 +476,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == name) { ${cfg.group} = { }; };
+    users.groups = optionalAttrs (cfg.group == name) {
+      ${cfg.group} = { };
+    };
 
     networking.firewall = mkIf cfg.openFirewall {
       allowedTCPPorts = [

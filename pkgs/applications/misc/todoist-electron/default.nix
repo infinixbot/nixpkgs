@@ -13,16 +13,20 @@ let
     hash = "sha256-Yp4wfibymHLGlaPDzu2rhSXxanwdXoNpF/d6+S0r+1U=";
   };
 
-  appimageContents = (appimageTools.extract { inherit pname version src; }).overrideAttrs (oA: {
-    buildCommand = ''
-      ${oA.buildCommand}
+  appimageContents =
+    (appimageTools.extract {
+      inherit pname version src;
+    }).overrideAttrs
+      (oA: {
+        buildCommand = ''
+          ${oA.buildCommand}
 
-      # Get rid of the autoupdater
-      ${asar}/bin/asar extract $out/resources/app.asar app
-      sed -i 's/async isUpdateAvailable.*/async isUpdateAvailable(updateInfo) { return false;/g' app/node_modules/electron-updater/out/AppUpdater.js
-      ${asar}/bin/asar pack app $out/resources/app.asar
-    '';
-  });
+          # Get rid of the autoupdater
+          ${asar}/bin/asar extract $out/resources/app.asar app
+          sed -i 's/async isUpdateAvailable.*/async isUpdateAvailable(updateInfo) { return false;/g' app/node_modules/electron-updater/out/AppUpdater.js
+          ${asar}/bin/asar pack app $out/resources/app.asar
+        '';
+      });
 
 in
 appimageTools.wrapAppImage {

@@ -37,7 +37,9 @@ stdenv.mkDerivation {
 
   makeFlags = [ "PREFIX=$(out)" ];
 
-  passthru.updateScript = unstableGitUpdater { url = "https://github.com/paoloose/urn.git"; };
+  passthru.updateScript = unstableGitUpdater {
+    url = "https://github.com/paoloose/urn.git";
+  };
 
   passthru.tests.nixosTest = nixosTests.urn-timer;
 

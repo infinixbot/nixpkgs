@@ -70,7 +70,12 @@ let
       # Always set DB_PASSWORD even when passwordFile is not set. This is the
       # default Wordpress behaviour.
       DB_PASSWORD =
-        if (cfg.database.passwordFile != null) then { _file = cfg.database.passwordFile; } else "";
+        if (cfg.database.passwordFile != null) then
+          {
+            _file = cfg.database.passwordFile;
+          }
+        else
+          "";
     }
     // cfg.settings;
 

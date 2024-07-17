@@ -81,7 +81,9 @@ buildNpmPackage rec {
     }
   '';
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = {
     description = "Chat with your documents using local AI";

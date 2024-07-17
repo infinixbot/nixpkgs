@@ -42,7 +42,9 @@
 }:
 let
   # Fix crashes with speexdsp effects
-  speexdsp' = speexdsp.override { withFftw3 = false; };
+  speexdsp' = speexdsp.override {
+    withFftw3 = false;
+  };
 in
 
 stdenv.mkDerivation rec {

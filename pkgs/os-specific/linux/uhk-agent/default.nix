@@ -21,7 +21,9 @@ let
     sha256 = "sha256-5VzUSuq+yc8HXSILMg24w/hbwasf4jq0H0wte9Mw+nY=";
   };
 
-  appimageContents = appimageTools.extract { inherit pname version src; };
+  appimageContents = appimageTools.extract {
+    inherit pname version src;
+  };
 in
 stdenvNoCC.mkDerivation {
   inherit pname version src;

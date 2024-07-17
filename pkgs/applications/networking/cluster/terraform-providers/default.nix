@@ -107,18 +107,24 @@ let
   # These are the providers that don't fall in line with the default model
   special-providers = {
     # github api seems to be broken, doesn't just fail to recognize the license, it's ignored entirely.
-    checkly = automated-providers.checkly.override { spdx = "MIT"; };
+    checkly = automated-providers.checkly.override {
+      spdx = "MIT";
+    };
     gitlab = automated-providers.gitlab.override {
       mkProviderFetcher = fetchFromGitLab;
       owner = "gitlab-org";
     };
     # actions update always fails but can't reproduce the failure.
-    heroku = automated-providers.heroku.override { spdx = "MPL-2.0"; };
+    heroku = automated-providers.heroku.override {
+      spdx = "MPL-2.0";
+    };
     # mkisofs needed to create ISOs holding cloud-init data and wrapped to terraform via deecb4c1aab780047d79978c636eeb879dd68630
     libvirt = automated-providers.libvirt.overrideAttrs (_: {
       propagatedBuildInputs = [ cdrtools ];
     });
-    minio = automated-providers.minio.override { spdx = "AGPL-3.0-only"; };
+    minio = automated-providers.minio.override {
+      spdx = "AGPL-3.0-only";
+    };
   };
 
   # Put all the providers we not longer support in this list.
@@ -128,9 +134,15 @@ let
         name: date: throw "the ${name} terraform provider has been archived by upstream on ${date}";
       removed = name: date: throw "the ${name} terraform provider removed from nixpkgs on ${date}";
     in
-    lib.optionalAttrs config.allowAliases { fly = archived "fly" "2023/10"; };
+    lib.optionalAttrs config.allowAliases {
+      fly = archived "fly" "2023/10";
+    };
 
   # excluding aliases, used by terraform-full
   actualProviders = automated-providers // special-providers;
 in
-actualProviders // removed-providers // { inherit actualProviders mkProvider; }
+actualProviders
+// removed-providers
+// {
+  inherit actualProviders mkProvider;
+}

@@ -28,7 +28,9 @@ in
 
       enable = mkEnableOption "filebeat";
 
-      package = mkPackageOption pkgs "filebeat" { example = "filebeat7"; };
+      package = mkPackageOption pkgs "filebeat" {
+        example = "filebeat7";
+      };
 
       inputs = mkOption {
         description = ''

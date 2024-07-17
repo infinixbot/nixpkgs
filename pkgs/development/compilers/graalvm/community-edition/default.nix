@@ -9,7 +9,9 @@ lib.makeScope pkgs.newScope (self: {
 
   graalvm-ce = self.callPackage ./graalvm-ce { };
 
-  graalvm-ce-musl = self.callPackage ./graalvm-ce { useMusl = true; };
+  graalvm-ce-musl = self.callPackage ./graalvm-ce {
+    useMusl = true;
+  };
 
   graaljs = self.callPackage ./graaljs { };
 

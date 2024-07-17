@@ -20,7 +20,9 @@ let
     extensionPack = if cfg.enableExtensionPack then pkgs.virtualboxExtpack else null;
   };
 
-  kernelModules = config.boot.kernelPackages.virtualbox.override { inherit virtualbox; };
+  kernelModules = config.boot.kernelPackages.virtualbox.override {
+    inherit virtualbox;
+  };
 
 in
 

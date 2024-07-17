@@ -167,7 +167,8 @@ in
 }).overrideAttrs
   (
     o:
-    lib.optionalAttrs (
-      o.version != null && (o.version == "dev" || lib.versions.isGe "2.2.0" o.version)
-    ) { propagatedBuildInputs = o.propagatedBuildInputs ++ [ coq.ocamlPackages.ppx_optcomp ]; }
+    lib.optionalAttrs (o.version != null && (o.version == "dev" || lib.versions.isGe "2.2.0" o.version))
+      {
+        propagatedBuildInputs = o.propagatedBuildInputs ++ [ coq.ocamlPackages.ppx_optcomp ];
+      }
   )

@@ -1,6 +1,11 @@
 { lib }:
 let
-  inherit (import ./internal.nix { inherit lib; }) _ipv6;
+  inherit
+    (import ./internal.nix {
+      inherit lib;
+    })
+    _ipv6
+    ;
 in
 {
   ipv6 = {

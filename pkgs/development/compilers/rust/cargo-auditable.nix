@@ -46,23 +46,34 @@ let
 
   rustPlatform = makeRustPlatform {
     inherit (buildPackages) rustc;
-    cargo = buildPackages.cargo.override { auditable = false; };
+    cargo = buildPackages.cargo.override {
+      auditable = false;
+    };
   };
 
-  bootstrap = rustPlatform.buildRustPackage (args // { auditable = false; });
+  bootstrap = rustPlatform.buildRustPackage (
+    args
+    // {
+      auditable = false;
+    }
+  );
 in
 
-rustPlatform.buildRustPackage.override { cargo-auditable = bootstrap; } (
-  args
-  // {
-    nativeBuildInputs = [ installShellFiles ];
-
-    postInstall = ''
-      installManPage cargo-auditable/cargo-auditable.1
-    '';
-
-    passthru = {
-      inherit bootstrap;
-    };
+rustPlatform.buildRustPackage.override
+  {
+    cargo-auditable = bootstrap;
   }
-)
+  (
+    args
+    // {
+      nativeBuildInputs = [ installShellFiles ];
+
+      postInstall = ''
+        installManPage cargo-auditable/cargo-auditable.1
+      '';
+
+      passthru = {
+        inherit bootstrap;
+      };
+    }
+  )

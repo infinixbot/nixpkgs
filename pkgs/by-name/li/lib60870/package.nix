@@ -30,7 +30,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   env.NIX_LDFLAGS = "-lmbedcrypto -lmbedx509 -lmbedtls";
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     description = "Implementation of the IEC 60870-5-101/104 protocol";

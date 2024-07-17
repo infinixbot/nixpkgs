@@ -47,7 +47,9 @@ stdenv.mkDerivation rec {
 
   mesonFlags = [ (lib.mesonBool "examples" (!stdenv.isDarwin)) ];
 
-  passthru.updateScript = unstableGitUpdater { tagPrefix = "alpha"; };
+  passthru.updateScript = unstableGitUpdater {
+    tagPrefix = "alpha";
+  };
 
   meta = with lib; {
     description = "Portable GUI library for C";

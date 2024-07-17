@@ -13,7 +13,9 @@ buildDunePackage {
   inherit (ocaml_gettext) src version;
 
   propagatedBuildInputs = [
-    (camomile.override { version = "1.0.2"; })
+    (camomile.override {
+      version = "1.0.2";
+    })
     ocaml_gettext
   ];
 

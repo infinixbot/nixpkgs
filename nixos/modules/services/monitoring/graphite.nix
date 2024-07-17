@@ -61,7 +61,9 @@ let
   carbonEnv = {
     PYTHONPATH =
       let
-        cenv = pkgs.python3.buildEnv.override { extraLibs = [ pkgs.python3Packages.carbon ]; };
+        cenv = pkgs.python3.buildEnv.override {
+          extraLibs = [ pkgs.python3Packages.carbon ];
+        };
       in
       "${cenv}/${pkgs.python3.sitePackages}";
     GRAPHITE_ROOT = dataDir;
@@ -371,7 +373,9 @@ in
         environment = {
           PYTHONPATH =
             let
-              penv = pkgs.python3.buildEnv.override { extraLibs = [ pkgs.python3Packages.graphite-web ]; };
+              penv = pkgs.python3.buildEnv.override {
+                extraLibs = [ pkgs.python3Packages.graphite-web ];
+              };
               penvPack = "${penv}/${pkgs.python3.sitePackages}";
             in
             concatStringsSep ":" [

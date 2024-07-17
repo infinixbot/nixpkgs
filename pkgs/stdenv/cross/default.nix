@@ -41,7 +41,9 @@ lib.init bootStages
       assert vanillaPackages.stdenv.buildPlatform == localSystem;
       assert vanillaPackages.stdenv.hostPlatform == localSystem;
       assert vanillaPackages.stdenv.targetPlatform == localSystem;
-      vanillaPackages.stdenv.override { targetPlatform = crossSystem; };
+      vanillaPackages.stdenv.override {
+        targetPlatform = crossSystem;
+      };
     # It's OK to change the built-time dependencies
     allowCustomOverrides = true;
   })
@@ -118,7 +120,9 @@ lib.init bootStages
           );
         in
         if config ? replaceCrossStdenv then
-          config.replaceCrossStdenv { inherit buildPackages baseStdenv; }
+          config.replaceCrossStdenv {
+            inherit buildPackages baseStdenv;
+          }
         else
           baseStdenv;
     }

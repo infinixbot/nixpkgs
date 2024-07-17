@@ -82,7 +82,9 @@ stdenv.mkDerivation rec {
 
   postFixup =
     let
-      libpath = libPathNative { packages = buildInputs; };
+      libpath = libPathNative {
+        packages = buildInputs;
+      };
     in
     ''
       app=$out/opt/Rocket.Chat

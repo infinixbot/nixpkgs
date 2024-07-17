@@ -41,7 +41,9 @@ let
   products = versions.${system} or (throw "Unsupported system: ${system}");
 
   package = if stdenv.isDarwin then ./bin/darwin.nix else ./bin/linux.nix;
-  mkJetBrainsProductCore = callPackage package { inherit vmopts; };
+  mkJetBrainsProductCore = callPackage package {
+    inherit vmopts;
+  };
   mkMeta = meta: fromSource: {
     inherit (meta) homepage longDescription;
     description =
@@ -261,7 +263,9 @@ rec {
     ];
   };
 
-  mps = mkJetBrainsProduct { pname = "mps"; };
+  mps = mkJetBrainsProduct {
+    pname = "mps";
+  };
 
   phpstorm = mkJetBrainsProduct {
     pname = "phpstorm";
@@ -271,7 +275,9 @@ rec {
     ];
   };
 
-  pycharm-community-bin = buildPycharm { pname = "pycharm-community"; };
+  pycharm-community-bin = buildPycharm {
+    pname = "pycharm-community";
+  };
 
   pycharm-community-src = buildPycharm {
     pname = "pycharm-community";

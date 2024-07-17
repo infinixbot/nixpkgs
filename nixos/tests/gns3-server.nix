@@ -7,11 +7,16 @@ import ./make-test-python.nix (
     nodes.machine =
       { ... }:
       let
-        tls-cert = pkgs.runCommand "selfSignedCerts" { buildInputs = [ pkgs.openssl ]; } ''
-          openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -nodes -days 365 \
-            -subj '/CN=localhost'
-          install -D -t $out key.pem cert.pem
-        '';
+        tls-cert =
+          pkgs.runCommand "selfSignedCerts"
+            {
+              buildInputs = [ pkgs.openssl ];
+            }
+            ''
+              openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -nodes -days 365 \
+                -subj '/CN=localhost'
+              install -D -t $out key.pem cert.pem
+            '';
       in
       {
         services.gns3-server = {
@@ -36,7 +41,11 @@ import ./make-test-python.nix (
 
     testScript =
       let
-        createProject = pkgs.writeText "createProject.json" (builtins.toJSON { name = "test_project"; });
+        createProject = pkgs.writeText "createProject.json" (
+          builtins.toJSON {
+            name = "test_project";
+          }
+        );
       in
       ''
         start_all()

@@ -53,4 +53,7 @@ let
   });
 
 in
-auctex // { pkgs = [ auctex.tex ]; }
+auctex
+// {
+  pkgs = [ auctex.tex ];
+}

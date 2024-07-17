@@ -133,8 +133,9 @@ in
     passwordFile = mkOption {
       default =
         if localMpd then
-          (findFirst (c: any (x: x == "read") c.permissions) { passwordFile = null; } mpdCfg.credentials)
-          .passwordFile
+          (findFirst (c: any (x: x == "read") c.permissions) {
+            passwordFile = null;
+          } mpdCfg.credentials).passwordFile
         else
           null;
       defaultText = literalMD ''

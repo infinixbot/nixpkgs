@@ -177,7 +177,9 @@ buildPythonApplication rec {
 
   pythonImportsCheck = [ "pre_commit" ];
 
-  passthru.tests.version = testers.testVersion { package = pre-commit; };
+  passthru.tests.version = testers.testVersion {
+    package = pre-commit;
+  };
 
   meta = with lib; {
     description = "Framework for managing and maintaining multi-language pre-commit hooks";

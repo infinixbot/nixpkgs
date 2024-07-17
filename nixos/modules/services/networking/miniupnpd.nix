@@ -26,7 +26,9 @@ let
     ${cfg.appendConfig}
   '';
   firewall = if config.networking.nftables.enable then "nftables" else "iptables";
-  miniupnpd = pkgs.miniupnpd.override { inherit firewall; };
+  miniupnpd = pkgs.miniupnpd.override {
+    inherit firewall;
+  };
   firewallScripts = lib.optionals (firewall == "iptables") (
     [ "iptables" ] ++ lib.optional (config.networking.enableIPv6) "ip6tables"
   );

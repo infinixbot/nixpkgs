@@ -15,19 +15,27 @@ let
   chooseNotNull = x: y: if x != null then x else y;
 
   ctrlAgentConfig = chooseNotNull cfg.ctrl-agent.configFile (
-    format.generate "kea-ctrl-agent.conf" { Control-agent = cfg.ctrl-agent.settings; }
+    format.generate "kea-ctrl-agent.conf" {
+      Control-agent = cfg.ctrl-agent.settings;
+    }
   );
 
   dhcp4Config = chooseNotNull cfg.dhcp4.configFile (
-    format.generate "kea-dhcp4.conf" { Dhcp4 = cfg.dhcp4.settings; }
+    format.generate "kea-dhcp4.conf" {
+      Dhcp4 = cfg.dhcp4.settings;
+    }
   );
 
   dhcp6Config = chooseNotNull cfg.dhcp6.configFile (
-    format.generate "kea-dhcp6.conf" { Dhcp6 = cfg.dhcp6.settings; }
+    format.generate "kea-dhcp6.conf" {
+      Dhcp6 = cfg.dhcp6.settings;
+    }
   );
 
   dhcpDdnsConfig = chooseNotNull cfg.dhcp-ddns.configFile (
-    format.generate "kea-dhcp-ddns.conf" { DhcpDdns = cfg.dhcp-ddns.settings; }
+    format.generate "kea-dhcp-ddns.conf" {
+      DhcpDdns = cfg.dhcp-ddns.settings;
+    }
   );
 
   package = pkgs.kea;
@@ -119,7 +127,11 @@ in
               subnet4 = [
                 {
                   subnet = "192.0.2.0/24";
-                  pools = [ { pool = "192.0.2.100 - 192.0.2.240"; } ];
+                  pools = [
+                    {
+                      pool = "192.0.2.100 - 192.0.2.240";
+                    }
+                  ];
                 }
               ];
             };
@@ -178,7 +190,11 @@ in
               subnet6 = [
                 {
                   subnet = "2001:db8:1::/64";
-                  pools = [ { pool = "2001:db8:1::1-2001:db8:1::ffff"; } ];
+                  pools = [
+                    {
+                      pool = "2001:db8:1::1-2001:db8:1::ffff";
+                    }
+                  ];
                 }
               ];
             };
@@ -259,7 +275,9 @@ in
     in
     mkIf (cfg.ctrl-agent.enable || cfg.dhcp4.enable || cfg.dhcp6.enable || cfg.dhcp-ddns.enable)
       (mkMerge [
-        { environment.systemPackages = [ package ]; }
+        {
+          environment.systemPackages = [ package ];
+        }
 
         (mkIf cfg.ctrl-agent.enable {
           assertions = [

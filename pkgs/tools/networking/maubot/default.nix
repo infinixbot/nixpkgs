@@ -117,13 +117,25 @@ let
           python3 = python;
         };
 
-        withPythonPackages = pythonPackages: wrapper { inherit pythonPackages; };
+        withPythonPackages =
+          pythonPackages:
+          wrapper {
+            inherit pythonPackages;
+          };
 
         # This adds the plugins to lib/maubot-plugins
-        withPlugins = plugins: wrapper { inherit plugins; };
+        withPlugins =
+          plugins:
+          wrapper {
+            inherit plugins;
+          };
 
         # This changes example-config.yaml in module directory
-        withBaseConfig = baseConfig: wrapper { inherit baseConfig; };
+        withBaseConfig =
+          baseConfig:
+          wrapper {
+            inherit baseConfig;
+          };
       };
 
     meta = with lib; {

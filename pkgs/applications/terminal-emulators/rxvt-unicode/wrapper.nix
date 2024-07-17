@@ -38,7 +38,9 @@ let
   wrapper =
     { configure, ... }:
     let
-      config = configure { inherit availablePlugins; };
+      config = configure {
+        inherit availablePlugins;
+      };
       plugins = config.plugins or (builtins.attrValues availablePlugins);
       extraDeps = config.extraDeps or [ ];
       perlDeps = (config.perlDeps or [ ]) ++ lib.concatMap mkPerlDeps plugins;
@@ -68,4 +70,6 @@ let
     };
 
 in
-lib.makeOverridable wrapper { inherit configure; }
+lib.makeOverridable wrapper {
+  inherit configure;
+}

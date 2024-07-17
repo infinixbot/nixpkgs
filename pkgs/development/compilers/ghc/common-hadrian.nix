@@ -159,8 +159,12 @@
       {
         inherit url sha256;
       }
-      // lib.optionalAttrs (rev != null) { inherit rev; }
-      // lib.optionalAttrs (postFetch != null) { inherit postFetch; }
+      // lib.optionalAttrs (rev != null) {
+        inherit rev;
+      }
+      // lib.optionalAttrs (postFetch != null) {
+        inherit postFetch;
+      }
     );
 
     patches =
@@ -211,11 +215,16 @@
 
   # GHC's build system hadrian built from the GHC-to-build's source tree
   # using our bootstrap GHC.
-  hadrian ? import ../../tools/haskell/hadrian/make-hadrian.nix { inherit bootPkgs lib; } {
-    inherit ghcSrc;
-    ghcVersion = version;
-    userSettings = hadrianUserSettings;
-  },
+  hadrian ?
+    import ../../tools/haskell/hadrian/make-hadrian.nix
+      {
+        inherit bootPkgs lib;
+      }
+      {
+        inherit ghcSrc;
+        ghcVersion = version;
+        userSettings = hadrianUserSettings;
+      },
 
   #  Whether to build sphinx documentation.
   # TODO(@sternenseemann): Hadrian ignores the --docs flag if finalStage = Stage1

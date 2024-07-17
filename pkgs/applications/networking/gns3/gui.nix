@@ -36,7 +36,9 @@ python3.pkgs.buildPythonApplication rec {
       sentry-sdk
       setuptools
       sip4
-      (pyqt5.override { withWebSockets = true; })
+      (pyqt5.override {
+        withWebSockets = true;
+      })
       truststore
       qt5.qtwayland
     ]

@@ -36,11 +36,16 @@ import ./make-test-python.nix (
         };
       };
 
-    cert = pkgs.runCommand "selfSignedCerts" { buildInputs = [ pkgs.openssl ]; } ''
-      openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -nodes -subj '/CN=dns.example.local'
-      mkdir -p $out
-      cp key.pem cert.pem $out
-    '';
+    cert =
+      pkgs.runCommand "selfSignedCerts"
+        {
+          buildInputs = [ pkgs.openssl ];
+        }
+        ''
+          openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -nodes -subj '/CN=dns.example.local'
+          mkdir -p $out
+          cp key.pem cert.pem $out
+        '';
   in
   {
     name = "unbound";

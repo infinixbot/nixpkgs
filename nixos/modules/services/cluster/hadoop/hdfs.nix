@@ -9,7 +9,11 @@ let
   cfg = config.services.hadoop;
 
   # Config files for hadoop services
-  hadoopConf = "${import ./conf.nix { inherit cfg pkgs lib; }}/";
+  hadoopConf = "${
+    import ./conf.nix {
+      inherit cfg pkgs lib;
+    }
+  }/";
 
   # Generator for HDFS service options
   hadoopServiceOption =
@@ -97,65 +101,79 @@ in
 {
   options.services.hadoop.hdfs = {
 
-    namenode = hadoopServiceOption { serviceName = "HDFS NameNode"; } // {
-      formatOnInit = mkOption {
-        type = types.bool;
-        default = false;
-        description = ''
-          Format HDFS namenode on first start. This is useful for quickly spinning up
-          ephemeral HDFS clusters with a single namenode.
-          For HA clusters, initialization involves multiple steps across multiple nodes.
-          Follow this guide to initialize an HA cluster manually:
-          <https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HDFSHighAvailabilityWithQJM.html>
-        '';
+    namenode =
+      hadoopServiceOption {
+        serviceName = "HDFS NameNode";
+      }
+      // {
+        formatOnInit = mkOption {
+          type = types.bool;
+          default = false;
+          description = ''
+            Format HDFS namenode on first start. This is useful for quickly spinning up
+            ephemeral HDFS clusters with a single namenode.
+            For HA clusters, initialization involves multiple steps across multiple nodes.
+            Follow this guide to initialize an HA cluster manually:
+            <https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HDFSHighAvailabilityWithQJM.html>
+          '';
+        };
       };
-    };
 
-    datanode = hadoopServiceOption { serviceName = "HDFS DataNode"; } // {
-      dataDirs = mkOption {
-        default = null;
-        description = "Tier and path definitions for datanode storage.";
-        type =
-          with types;
-          nullOr (
-            listOf (submodule {
-              options = {
-                type = mkOption {
-                  type = enum [
-                    "SSD"
-                    "DISK"
-                    "ARCHIVE"
-                    "RAM_DISK"
-                  ];
-                  description = ''
-                    Storage types ([SSD]/[DISK]/[ARCHIVE]/[RAM_DISK]) for HDFS storage policies.
-                  '';
+    datanode =
+      hadoopServiceOption {
+        serviceName = "HDFS DataNode";
+      }
+      // {
+        dataDirs = mkOption {
+          default = null;
+          description = "Tier and path definitions for datanode storage.";
+          type =
+            with types;
+            nullOr (
+              listOf (submodule {
+                options = {
+                  type = mkOption {
+                    type = enum [
+                      "SSD"
+                      "DISK"
+                      "ARCHIVE"
+                      "RAM_DISK"
+                    ];
+                    description = ''
+                      Storage types ([SSD]/[DISK]/[ARCHIVE]/[RAM_DISK]) for HDFS storage policies.
+                    '';
+                  };
+                  path = mkOption {
+                    type = path;
+                    example = [ "/var/lib/hadoop/hdfs/dn" ];
+                    description = "Determines where on the local filesystem a data node should store its blocks.";
+                  };
                 };
-                path = mkOption {
-                  type = path;
-                  example = [ "/var/lib/hadoop/hdfs/dn" ];
-                  description = "Determines where on the local filesystem a data node should store its blocks.";
-                };
-              };
-            })
-          );
+              })
+            );
+        };
       };
-    };
 
-    journalnode = hadoopServiceOption { serviceName = "HDFS JournalNode"; };
+    journalnode = hadoopServiceOption {
+      serviceName = "HDFS JournalNode";
+    };
 
     zkfc = hadoopServiceOption {
       serviceName = "HDFS ZooKeeper failover controller";
       firewallOption = false;
     };
 
-    httpfs = hadoopServiceOption { serviceName = "HDFS JournalNode"; } // {
-      tempPath = mkOption {
-        type = types.path;
-        default = "/tmp/hadoop/httpfs";
-        description = "HTTPFS_TEMP path used by HTTPFS";
+    httpfs =
+      hadoopServiceOption {
+        serviceName = "HDFS JournalNode";
+      }
+      // {
+        tempPath = mkOption {
+          type = types.path;
+          default = "/tmp/hadoop/httpfs";
+          description = "HTTPFS_TEMP path used by HTTPFS";
+        };
       };
-    };
 
   };
 

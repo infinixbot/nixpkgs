@@ -68,7 +68,9 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postInstall
   '';
 
-  passthru.tests.aws-azure-login = callPackage ./tests.nix { package = finalAttrs.finalPackage; };
+  passthru.tests.aws-azure-login = callPackage ./tests.nix {
+    package = finalAttrs.finalPackage;
+  };
 
   meta = {
     description = "Use Azure AD SSO to log into the AWS via CLI";

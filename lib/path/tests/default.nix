@@ -6,7 +6,9 @@
     overlays = [ ];
     inherit system;
   },
-  nixVersions ? import ../../tests/nix-for-tests.nix { inherit pkgs; },
+  nixVersions ? import ../../tests/nix-for-tests.nix {
+    inherit pkgs;
+  },
   libpath ? ../..,
   # Random seed
   seed ? null,

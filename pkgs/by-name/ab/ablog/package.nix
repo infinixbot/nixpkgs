@@ -47,7 +47,9 @@ python3.pkgs.buildPythonApplication rec {
     "ignore::sphinx.deprecation.RemovedInSphinx90Warning" # Ignore ImportError
   ];
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     description = "ABlog for blogging with Sphinx";

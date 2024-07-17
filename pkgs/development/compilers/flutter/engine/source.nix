@@ -3,7 +3,9 @@
   hostPlatform,
   targetPlatform,
   fetchgit,
-  tools ? callPackage ./tools.nix { inherit hostPlatform; },
+  tools ? callPackage ./tools.nix {
+    inherit hostPlatform;
+  },
   curl,
   pkg-config,
   git,
@@ -16,7 +18,9 @@
   url,
 }:
 let
-  constants = callPackage ./constants.nix { inherit targetPlatform; };
+  constants = callPackage ./constants.nix {
+    inherit targetPlatform;
+  };
   boolOption = value: if value then "True" else "False";
 in
 runCommand "flutter-engine-source-${version}-${targetPlatform.system}"

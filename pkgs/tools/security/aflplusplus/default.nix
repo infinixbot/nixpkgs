@@ -33,8 +33,12 @@ let
       "qemu-i386"
     else
       throw "aflplusplus: no support for ${stdenv.targetPlatform.system}!";
-  libdislocator = callPackage ./libdislocator.nix { inherit aflplusplus; };
-  libtokencap = callPackage ./libtokencap.nix { inherit aflplusplus; };
+  libdislocator = callPackage ./libdislocator.nix {
+    inherit aflplusplus;
+  };
+  libtokencap = callPackage ./libtokencap.nix {
+    inherit aflplusplus;
+  };
   aflplusplus = stdenvNoCC.mkDerivation rec {
     pname = "aflplusplus";
     version = "4.20c";

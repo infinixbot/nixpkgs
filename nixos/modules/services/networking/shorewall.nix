@@ -69,7 +69,10 @@ in
     };
     environment = {
       etc = lib.mapAttrs' (
-        name: conf: lib.nameValuePair "shorewall/${name}" { source = conf; }
+        name: conf:
+        lib.nameValuePair "shorewall/${name}" {
+          source = conf;
+        }
       ) cfg.configs;
       systemPackages = [ cfg.package ];
     };

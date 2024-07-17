@@ -23,7 +23,9 @@ in
     {
       enable = mkEnableOption "ZITADEL, a user and identity access management platform";
 
-      package = mkPackageOption pkgs "ZITADEL" { default = [ "zitadel" ]; };
+      package = mkPackageOption pkgs "ZITADEL" {
+        default = [ "zitadel" ];
+      };
 
       user = mkOption {
         type = types.str;

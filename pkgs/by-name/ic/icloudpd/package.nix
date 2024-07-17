@@ -62,7 +62,9 @@ python3Packages.buildPythonApplication rec {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests = testers.testVersion { package = icloudpd; };
+    tests = testers.testVersion {
+      package = icloudpd;
+    };
   };
 
   preBuild = ''

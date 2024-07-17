@@ -177,7 +177,9 @@ stdenv.mkDerivation (finalAttrs: {
     '';
 
   passthru.tests = {
-    version = testers.testVersion { package = finalAttrs.finalPackage; };
+    version = testers.testVersion {
+      package = finalAttrs.finalPackage;
+    };
     inherit nixos-icons;
     inherit (perlPackages) ImageMagick;
     inherit (python3.pkgs) img2pdf;

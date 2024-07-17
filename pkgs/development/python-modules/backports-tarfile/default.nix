@@ -54,7 +54,9 @@ let
 
     pythonImportsCheck = [ "backports.tarfile" ];
 
-    passthru.tests.pytest = self.overridePythonAttrs { doCheck = true; };
+    passthru.tests.pytest = self.overridePythonAttrs {
+      doCheck = true;
+    };
 
     meta = with lib; {
       description = "Backport of CPython tarfile module";

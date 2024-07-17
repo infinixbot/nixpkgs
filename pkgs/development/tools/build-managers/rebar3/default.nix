@@ -18,7 +18,9 @@
 let
   version = "3.23.0";
   owner = "erlang";
-  deps = import ./rebar-deps.nix { inherit fetchFromGitHub fetchgit fetchHex; };
+  deps = import ./rebar-deps.nix {
+    inherit fetchFromGitHub fetchgit fetchHex;
+  };
   rebar3 = stdenv.mkDerivation rec {
     pname = "rebar3";
     inherit version erlang;
@@ -94,7 +96,9 @@ let
           git
           gnused
           nix
-          (rebar3WithPlugins { globalPlugins = [ rebar3-nix ]; })
+          (rebar3WithPlugins {
+            globalPlugins = [ rebar3-nix ];
+          })
         ]
       }
       latest=$(list-git-tags | sed -n '/[\d\.]\+/p' | sort -V | tail -1)

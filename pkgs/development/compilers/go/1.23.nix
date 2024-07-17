@@ -25,7 +25,9 @@ let
     else
       buildPackages.callPackage ./bootstrap121.nix { };
 
-  skopeoTest = skopeo.override { buildGoModule = buildGo123Module; };
+  skopeoTest = skopeo.override {
+    buildGoModule = buildGo123Module;
+  };
 
   goarch =
     platform:
@@ -193,7 +195,9 @@ stdenv.mkDerivation (finalAttrs: {
   passthru = {
     inherit goBootstrap skopeoTest;
     tests = {
-      skopeo = testers.testVersion { package = skopeoTest; };
+      skopeo = testers.testVersion {
+        package = skopeoTest;
+      };
       version = testers.testVersion {
         package = finalAttrs.finalPackage;
         command = "go version";

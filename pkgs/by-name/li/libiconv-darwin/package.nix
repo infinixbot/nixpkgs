@@ -98,7 +98,9 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postInstallCheck
   '';
 
-  passthru.updateScript = gitUpdater { rev-prefix = "libiconv-"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "libiconv-";
+  };
 
   __structuredAttrs = true;
 

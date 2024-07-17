@@ -61,7 +61,13 @@ let
     };
 
   lockJson = if lib.isPath dubLock then lib.importJSON dubLock else dubLock;
-  depsRaw = lib.mapAttrsToList (pname: args: { inherit pname; } // args) lockJson.dependencies;
+  depsRaw = lib.mapAttrsToList (
+    pname: args:
+    {
+      inherit pname;
+    }
+    // args
+  ) lockJson.dependencies;
 
   dubDeps = map makeDubDep (lib.filter (args: !(args ? repository)) depsRaw);
   gitDeps = map makeGitDep (lib.filter (args: args ? repository) depsRaw);

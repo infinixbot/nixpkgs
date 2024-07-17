@@ -290,7 +290,9 @@ in
                 example = {
                   acs_exclude_dfs = true;
                 };
-                type = types.submodule { freeformType = extraSettingsFormat.type; };
+                type = types.submodule {
+                  freeformType = extraSettingsFormat.type;
+                };
                 description = ''
                   Extra configuration options to put at the end of global initialization, before defining BSSs.
                   To find out which options are global and which are per-bss you have to read hostapd's source code,
@@ -732,7 +734,9 @@ in
                         example = {
                           multi_ap = true;
                         };
-                        type = types.submodule { freeformType = extraSettingsFormat.type; };
+                        type = types.submodule {
+                          freeformType = extraSettingsFormat.type;
+                        };
                         description = ''
                           Extra configuration options to put at the end of this BSS's defintion in the
                           hostapd.conf for the associated interface. To find out which options are global
@@ -1054,14 +1058,21 @@ in
                               + optionalString (entry.id != null) "|id=${entry.id}"
                             );
                           }
-                          // optionalAttrs (bssCfg.bssid != null) { bssid = bssCfg.bssid; }
-                          // optionalAttrs (
-                            bssCfg.macAllow != [ ] || bssCfg.macAllowFile != null || bssCfg.authentication.saeAddToMacAllow
-                          ) { accept_mac_file = "/run/hostapd/${bssCfg._module.args.name}.mac.allow"; }
+                          // optionalAttrs (bssCfg.bssid != null) {
+                            bssid = bssCfg.bssid;
+                          }
+                          //
+                            optionalAttrs
+                              (bssCfg.macAllow != [ ] || bssCfg.macAllowFile != null || bssCfg.authentication.saeAddToMacAllow)
+                              {
+                                accept_mac_file = "/run/hostapd/${bssCfg._module.args.name}.mac.allow";
+                              }
                           // optionalAttrs (bssCfg.macDeny != [ ] || bssCfg.macDenyFile != null) {
                             deny_mac_file = "/run/hostapd/${bssCfg._module.args.name}.mac.deny";
                           }
-                          // optionalAttrs (bssCfg.authentication.mode == "none") { wpa = mkDefault 0; }
+                          // optionalAttrs (bssCfg.authentication.mode == "none") {
+                            wpa = mkDefault 0;
+                          }
                           // optionalAttrs (bssCfg.authentication.mode == "wpa3-sae") {
                             wpa = 2;
                             wpa_key_mgmt = "SAE";

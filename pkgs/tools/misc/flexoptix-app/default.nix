@@ -19,16 +19,20 @@ let
     hash = "sha256-OZe5dV50xq99olImbo7JQxPjRd7hGyBIVwFvtR9cIVc=";
   };
 
-  appimageContents = (appimageTools.extract { inherit pname version src; }).overrideAttrs (oA: {
-    buildCommand = ''
-      ${oA.buildCommand}
+  appimageContents =
+    (appimageTools.extract {
+      inherit pname version src;
+    }).overrideAttrs
+      (oA: {
+        buildCommand = ''
+          ${oA.buildCommand}
 
-      # Get rid of the autoupdater
-      ${asar}/bin/asar extract $out/resources/app.asar app
-      patch -p0 < ${./disable-autoupdate.patch}
-      ${asar}/bin/asar pack app $out/resources/app.asar
-    '';
-  });
+          # Get rid of the autoupdater
+          ${asar}/bin/asar extract $out/resources/app.asar app
+          patch -p0 < ${./disable-autoupdate.patch}
+          ${asar}/bin/asar pack app $out/resources/app.asar
+        '';
+      });
 
 in
 appimageTools.wrapAppImage {

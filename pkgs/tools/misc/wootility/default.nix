@@ -19,7 +19,9 @@ appimageTools.wrapType2 {
 
   extraInstallCommands =
     let
-      contents = appimageTools.extract { inherit pname version src; };
+      contents = appimageTools.extract {
+        inherit pname version src;
+      };
     in
     ''
       source "${makeWrapper}/nix-support/setup-hook"

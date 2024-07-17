@@ -72,7 +72,9 @@ stdenv.mkDerivation (finalAttrs: {
     ln -s "${qt6Kvantum}/share/Kvantum" "$out/share/Kvantum"
   '';
 
-  passthru.updateScript = gitUpdater { rev-prefix = "V"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "V";
+  };
 
   meta = with lib; {
     description = "SVG-based Qt5 theme engine plus a config tool and extra themes";

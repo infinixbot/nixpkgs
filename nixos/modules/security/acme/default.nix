@@ -1245,10 +1245,15 @@ in
         {
           "acme-fixperms" = userMigrationService;
         }
-        // (optionalAttrs (cfg.maxConcurrentRenewals > 0) { "acme-lockfiles" = lockfilePrepareService; })
+        // (optionalAttrs (cfg.maxConcurrentRenewals > 0) {
+          "acme-lockfiles" = lockfilePrepareService;
+        })
         // renewServices
         // (optionalAttrs (cfg.preliminarySelfsigned) (
-          { "acme-selfsigned-ca" = selfsignCAService; } // selfsignServices
+          {
+            "acme-selfsigned-ca" = selfsignCAService;
+          }
+          // selfsignServices
         ));
 
       systemd.timers = mapAttrs' (cert: conf: nameValuePair "acme-${cert}" conf.renewTimer) certConfigs;

@@ -197,7 +197,9 @@ in
       };
     };
 
-    users.groups = mkIf (cfg.user == defaultUser && cfg.group == defaultUser) { ${defaultUser} = { }; };
+    users.groups = mkIf (cfg.user == defaultUser && cfg.group == defaultUser) {
+      ${defaultUser} = { };
+    };
 
     networking.firewall.allowedTCPPorts = mkIf cfg.openFirewall [ cfg.port ];
 

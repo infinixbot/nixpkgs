@@ -15,8 +15,14 @@ let
   user = "dokuwiki";
   webserver = config.services.${cfg.webserver};
 
-  mkPhpIni = generators.toKeyValue { mkKeyValue = generators.mkKeyValueDefault { } " = "; };
-  mkPhpPackage = cfg: cfg.phpPackage.buildEnv { extraConfig = mkPhpIni cfg.phpOptions; };
+  mkPhpIni = generators.toKeyValue {
+    mkKeyValue = generators.mkKeyValueDefault { } " = ";
+  };
+  mkPhpPackage =
+    cfg:
+    cfg.phpPackage.buildEnv {
+      extraConfig = mkPhpIni cfg.phpOptions;
+    };
 
   dokuwikiAclAuthConfig =
     hostName: cfg:
@@ -434,7 +440,9 @@ in
 
           phpPackage = mkPhpPackage cfg;
           phpEnv =
-            optionalAttrs (cfg.usersFile != null) { DOKUWIKI_USERS_AUTH_CONFIG = "${cfg.usersFile}"; }
+            optionalAttrs (cfg.usersFile != null) {
+              DOKUWIKI_USERS_AUTH_CONFIG = "${cfg.usersFile}";
+            }
             // optionalAttrs (cfg.mergedConfig.useacl) {
               DOKUWIKI_ACL_AUTH_CONFIG =
                 if (cfg.acl != null) then "${dokuwikiAclAuthConfig hostName cfg}" else "${toString cfg.aclFile}";

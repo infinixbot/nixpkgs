@@ -92,13 +92,18 @@
           };
 
           linux = {
-            namespaces = map (type: { inherit type; }) [
-              "pid"
-              "network"
-              "mount"
-              "ipc"
-              "uts"
-            ];
+            namespaces =
+              map
+                (type: {
+                  inherit type;
+                })
+                [
+                  "pid"
+                  "network"
+                  "mount"
+                  "ipc"
+                  "uts"
+                ];
           };
 
           root = {

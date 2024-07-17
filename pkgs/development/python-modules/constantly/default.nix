@@ -45,7 +45,9 @@ let
 
     pythonImportsCheck = [ "constantly" ];
 
-    passthru.tests.constantly = self.overridePythonAttrs { doCheck = true; };
+    passthru.tests.constantly = self.overridePythonAttrs {
+      doCheck = true;
+    };
 
     meta = with lib; {
       description = "Module for symbolic constant support";

@@ -167,8 +167,12 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = finalAttrs.pname; };
-    tests.pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+    updateScript = gnome.updateScript {
+      packageName = finalAttrs.pname;
+    };
+    tests.pkg-config = testers.hasPkgConfigModules {
+      package = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

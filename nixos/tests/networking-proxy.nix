@@ -30,7 +30,10 @@ import ./make-test-python.nix (
       machine2 =
         { ... }:
 
-        default-config // { networking.proxy.default = "http://user:pass@host:port"; };
+        default-config
+        // {
+          networking.proxy.default = "http://user:pass@host:port";
+        };
 
       # specific proxy options
       machine3 =

@@ -215,7 +215,12 @@ stdenv.mkDerivation (
         override =
           attr:
           let
-            perl = attr.override (inputs' // { self = perl; });
+            perl = attr.override (
+              inputs'
+              // {
+                self = perl;
+              }
+            );
           in
           perl;
       in

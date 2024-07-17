@@ -86,7 +86,9 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optional withWayland "--set RMG_WAYLAND 1";
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     homepage = "https://github.com/Rosalie241/RMG";

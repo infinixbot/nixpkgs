@@ -69,7 +69,9 @@ in
       };
     };
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ 8686 ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ 8686 ];
+    };
 
     users.users = mkIf (cfg.user == "lidarr") {
       lidarr = {

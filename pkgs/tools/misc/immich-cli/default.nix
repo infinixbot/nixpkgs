@@ -58,7 +58,9 @@ let
 
     passthru = {
       inherit open-api-typescript-sdk;
-      tests.version = testers.testVersion { package = immich-cli; };
+      tests.version = testers.testVersion {
+        package = immich-cli;
+      };
     };
 
     meta = {

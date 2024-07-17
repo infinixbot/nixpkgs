@@ -60,7 +60,9 @@ stdenv.mkDerivation rec {
 
   passthru.tests = {
     # make sure that the override doesn't break bootstrapping
-    gnumakeWithGuile = gnumake.override { guileSupport = true; };
+    gnumakeWithGuile = gnumake.override {
+      guileSupport = true;
+    };
   };
 
   meta = with lib; {

@@ -14,10 +14,14 @@ let
   checkedConfig =
     file:
     if cfg.checkConfig then
-      pkgs.runCommand "checked-config" { nativeBuildInputs = [ cfg.package ]; } ''
-        ln -s ${file} $out
-        amtool check-config $out
-      ''
+      pkgs.runCommand "checked-config"
+        {
+          nativeBuildInputs = [ cfg.package ];
+        }
+        ''
+          ln -s ${file} $out
+          amtool check-config $out
+        ''
     else
       file;
 

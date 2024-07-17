@@ -1,6 +1,8 @@
 {
   system ? builtins.currentSystem,
-  pkgs ? import ../.. { inherit system; },
+  pkgs ? import ../.. {
+    inherit system;
+  },
   ...
 }:
 let
@@ -12,7 +14,9 @@ let
     machine.succeed("mongosh --eval 'use myNewDatabase;' --eval 'db.myCollection.insertOne( { x: 1 } );'")
   '';
 in
-with import ../lib/testing-python.nix { inherit system; };
+with import ../lib/testing-python.nix {
+  inherit system;
+};
 {
 
   postgresql = makeTest {

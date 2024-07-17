@@ -16,14 +16,18 @@ let
     if cfg.presets == [ ] then
       userSettingsFile
     else
-      pkgs.runCommand "starship.toml" { nativeBuildInputs = [ pkgs.yq ]; } ''
-        tomlq -s -t 'reduce .[] as $item ({}; . * $item)' \
-          ${
-            lib.concatStringsSep " " (map (f: "${cfg.package}/share/starship/presets/${f}.toml") cfg.presets)
-          } \
-          ${userSettingsFile} \
-          > $out
-      '';
+      pkgs.runCommand "starship.toml"
+        {
+          nativeBuildInputs = [ pkgs.yq ];
+        }
+        ''
+          tomlq -s -t 'reduce .[] as $item ({}; . * $item)' \
+            ${
+              lib.concatStringsSep " " (map (f: "${cfg.package}/share/starship/presets/${f}.toml") cfg.presets)
+            } \
+            ${userSettingsFile} \
+            > $out
+        '';
 
   initOption = if cfg.interactiveOnly then "promptInit" else "shellInit";
 

@@ -8,7 +8,9 @@
 let
   cfg = config.programs.river;
 
-  wayland-lib = import ./lib.nix { inherit lib; };
+  wayland-lib = import ./lib.nix {
+    inherit lib;
+  };
 in
 {
   options.programs.river = {
@@ -31,7 +33,9 @@ in
           if p == null then
             null
           else
-            wayland-lib.genFinalPackage p { xwaylandSupport = cfg.xwayland.enable; };
+            wayland-lib.genFinalPackage p {
+              xwaylandSupport = cfg.xwayland.enable;
+            };
       };
 
     xwayland.enable = lib.mkEnableOption "XWayland" // {

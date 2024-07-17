@@ -39,7 +39,9 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ "magika" ];
 
-  passthru.tests.version = testers.testVersion { package = magika; };
+  passthru.tests.version = testers.testVersion {
+    package = magika;
+  };
 
   meta = with lib; {
     description = "Magika: Detect file content types with deep learning";

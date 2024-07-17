@@ -41,7 +41,9 @@ let
             "${type} ${sec}\n" + (concatStringsSep "\n" (mapAttrsToList (k: v: "  ${k}=${v}") attrs))
           ) sections
         );
-      setupConf = makeSections "config" { inherit setup; };
+      setupConf = makeSections "config" {
+        inherit setup;
+      };
       connectionsConf = makeSections "conn" connections;
       caConf = makeSections "ca" ca;
 
@@ -73,7 +75,11 @@ let
       }
 
       starter {
-        config_file = ${ipsecConf { inherit setup connections ca; }}
+        config_file = ${
+          ipsecConf {
+            inherit setup connections ca;
+          }
+        }
       }
     '';
 

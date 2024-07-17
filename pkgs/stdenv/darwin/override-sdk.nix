@@ -44,7 +44,11 @@ let
       let
         # Avoid evaluation failures due to missing or throwing
         # frameworks (such as QuickTime in the 11.0 SDK).
-        maybeReplacement = builtins.tryEval sdk.${attr}.${name} or { success = false; };
+        maybeReplacement =
+          builtins.tryEval
+            sdk.${attr}.${name} or {
+              success = false;
+            };
       in
       if maybeReplacement.success then
         mappings
@@ -111,7 +115,9 @@ let
   mkBintools =
     Libsystem: bintools:
     if bintools ? override then
-      bintools.override { libc = Libsystem; }
+      bintools.override {
+        libc = Libsystem;
+      }
     else
       let
         # `override` isn’t available, so bintools has to be rewrapped with the new libc.
@@ -163,7 +169,9 @@ let
   mkPlatform =
     version: platform:
     platform
-    // lib.optionalAttrs platform.isDarwin { inherit (version) darwinMinVersion darwinSdkVersion; };
+    // lib.optionalAttrs platform.isDarwin {
+      inherit (version) darwinMinVersion darwinSdkVersion;
+    };
 
   # Creates a stub package. Unchanged files from the original package are symlinked
   # into the package. The contents of `nix-support` are updated to reference any
@@ -338,15 +346,27 @@ let
       if pkg.key == null || newPackages ? ${outPath} then
         newPackages
       else
-        newPackages // { ${outPath} = replacement; }
+        newPackages
+        // {
+          ${outPath} = replacement;
+        }
     ) baseMapping dependencies;
 
   overrideSDK =
     stdenv: sdkVersion:
     let
-      newVersion = {
-        inherit (stdenv.hostPlatform) darwinMinVersion darwinSdkVersion;
-      } // (if lib.isAttrs sdkVersion then sdkVersion else { darwinSdkVersion = sdkVersion; });
+      newVersion =
+        {
+          inherit (stdenv.hostPlatform) darwinMinVersion darwinSdkVersion;
+        }
+        // (
+          if lib.isAttrs sdkVersion then
+            sdkVersion
+          else
+            {
+              darwinSdkVersion = sdkVersion;
+            }
+        );
 
       inherit (newVersion) darwinMinVersion darwinSdkVersion;
 

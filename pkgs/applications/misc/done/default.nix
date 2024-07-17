@@ -57,7 +57,9 @@ stdenv.mkDerivation rec {
     sqlite
   ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.AppKit ];
 
-  env = lib.optionalAttrs stdenv.isDarwin { GETTEXT_DIR = gettext; };
+  env = lib.optionalAttrs stdenv.isDarwin {
+    GETTEXT_DIR = gettext;
+  };
 
   meta = with lib; {
     description = "Ultimate task management solution for seamless organization and efficiency";

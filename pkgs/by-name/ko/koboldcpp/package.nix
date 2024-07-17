@@ -60,7 +60,9 @@ effectiveStdenv.mkDerivation (finalAttrs: {
     python3Packages.wrapPython
   ];
 
-  pythonInputs = builtins.attrValues { inherit (python3Packages) tkinter customtkinter packaging; };
+  pythonInputs = builtins.attrValues {
+    inherit (python3Packages) tkinter customtkinter packaging;
+  };
 
   buildInputs =
     [ tk ]
@@ -144,7 +146,9 @@ effectiveStdenv.mkDerivation (finalAttrs: {
       --prefix PATH ${lib.makeBinPath [ tk ]} ${makeWrapperArgs}
   '';
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = {
     description = "Way to run various GGML and GGUF models";

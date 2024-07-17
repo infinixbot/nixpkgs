@@ -55,7 +55,9 @@ stdenv.mkDerivation rec {
   ];
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "gnome-text-editor"; };
+    updateScript = gnome.updateScript {
+      packageName = "gnome-text-editor";
+    };
   };
 
   meta = with lib; {

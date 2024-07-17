@@ -19,28 +19,33 @@ let
   cfg = config.services.uptime;
   opt = options.services.uptime;
 
-  configDir = pkgs.runCommand "config" { preferLocalBuild = true; } (
-    if cfg.configFile != null then
-      ''
-        mkdir $out
-        ext=`echo ${cfg.configFile} | grep -o \\..*`
-        ln -sv ${cfg.configFile} $out/default$ext
-        ln -sv /var/lib/uptime/runtime.json $out/runtime.json
-      ''
-    else
-      ''
-        mkdir $out
-        cat ${pkgs.nodePackages.node-uptime}/lib/node_modules/node-uptime/config/default.yaml > $out/default.yaml
-        cat >> $out/default.yaml <<EOF
+  configDir =
+    pkgs.runCommand "config"
+      {
+        preferLocalBuild = true;
+      }
+      (
+        if cfg.configFile != null then
+          ''
+            mkdir $out
+            ext=`echo ${cfg.configFile} | grep -o \\..*`
+            ln -sv ${cfg.configFile} $out/default$ext
+            ln -sv /var/lib/uptime/runtime.json $out/runtime.json
+          ''
+        else
+          ''
+            mkdir $out
+            cat ${pkgs.nodePackages.node-uptime}/lib/node_modules/node-uptime/config/default.yaml > $out/default.yaml
+            cat >> $out/default.yaml <<EOF
 
-        autoStartMonitor: false
+            autoStartMonitor: false
 
-        mongodb:
-          connectionString: 'mongodb://localhost/uptime'
-        EOF
-        ln -sv /var/lib/uptime/runtime.json $out/runtime.json
-      ''
-  );
+            mongodb:
+              connectionString: 'mongodb://localhost/uptime'
+            EOF
+            ln -sv /var/lib/uptime/runtime.json $out/runtime.json
+          ''
+      );
 in
 {
   options.services.uptime = {

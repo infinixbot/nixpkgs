@@ -7,7 +7,12 @@
   stdenv,
 }@args:
 let
-  faustDefaults = faust.faust2ApplBase (args // { baseName = "${baseName}.py"; });
+  faustDefaults = faust.faust2ApplBase (
+    args
+    // {
+      baseName = "${baseName}.py";
+    }
+  );
 in
 stdenv.mkDerivation (
   faustDefaults

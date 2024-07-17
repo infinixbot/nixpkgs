@@ -60,14 +60,18 @@ in
       path = cfg.path;
     };
     environment.systemPackages = [ cfg.package ];
-    systemd.user.timers.offlineimap = {
-      description = "offlineimap timer";
-      timerConfig = {
-        Unit = "offlineimap.service";
-        OnCalendar = cfg.onCalendar;
-        # start immediately after computer is started:
-        Persistent = "true";
+    systemd.user.timers.offlineimap =
+      {
+        description = "offlineimap timer";
+        timerConfig = {
+          Unit = "offlineimap.service";
+          OnCalendar = cfg.onCalendar;
+          # start immediately after computer is started:
+          Persistent = "true";
+        };
+      }
+      // optionalAttrs cfg.enable {
+        wantedBy = [ "default.target" ];
       };
-    } // optionalAttrs cfg.enable { wantedBy = [ "default.target" ]; };
   };
 }

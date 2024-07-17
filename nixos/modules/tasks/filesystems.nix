@@ -13,7 +13,10 @@ let
 
   addCheckDesc =
     desc: elemType: check:
-    types.addCheck elemType check // { description = "${elemType.description} (with check: ${desc})"; };
+    types.addCheck elemType check
+    // {
+      description = "${elemType.description} (with check: ${desc})";
+    };
 
   isNonEmpty = s: (builtins.match "[ \t\n]*" s) == null;
   nonEmptyStr = addCheckDesc "non-empty" types.str isNonEmpty;

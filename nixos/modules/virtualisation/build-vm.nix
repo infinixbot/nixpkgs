@@ -8,7 +8,9 @@ let
 
   inherit (lib) mkOption;
 
-  vmVariant = extendModules { modules = [ ./qemu-vm.nix ]; };
+  vmVariant = extendModules {
+    modules = [ ./qemu-vm.nix ];
+  };
 
   vmVariantWithBootLoader = vmVariant.extendModules {
     modules = [

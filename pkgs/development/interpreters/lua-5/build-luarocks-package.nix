@@ -133,7 +133,9 @@ let
         };
 
         luarocks_content =
-          (lib.generators.toLua { asBindings = true; } self.luarocksConfig)
+          (lib.generators.toLua {
+            asBindings = true;
+          } self.luarocksConfig)
           + ''
 
             ${self.extraConfig}

@@ -34,7 +34,11 @@ let
   };
 
   # need to build a custom version of lldb and llvm for enhanced rust support
-  lldb = (import ./lldb.nix { inherit fetchFromGitHub runCommand llvmPackages; });
+  lldb = (
+    import ./lldb.nix {
+      inherit fetchFromGitHub runCommand llvmPackages;
+    }
+  );
 
   adapter = rustPlatform.buildRustPackage {
     pname = "${pname}-adapter";
@@ -46,7 +50,9 @@ let
 
     nativeBuildInputs = [ makeWrapper ];
 
-    env = lib.optionalAttrs stdenv.isDarwin { NIX_LDFLAGS = "-llldb -lc++abi"; };
+    env = lib.optionalAttrs stdenv.isDarwin {
+      NIX_LDFLAGS = "-llldb -lc++abi";
+    };
 
     buildAndTestSubdir = "adapter";
 

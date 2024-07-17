@@ -30,7 +30,9 @@ buildGoModule rec {
   passthru = {
     updateScript = nix-update-script { };
     tests = {
-      version = testers.testVersion { package = ejson2env; };
+      version = testers.testVersion {
+        package = ejson2env;
+      };
       decryption = callPackage ./test-decryption.nix { };
     };
   };

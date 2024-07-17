@@ -187,7 +187,9 @@ let
   buildPath = "out/${buildType}";
   libExecPath = "$out/libexec/${packageName}";
 
-  ungoogler = ungoogled-chromium { inherit (upstream-info.deps.ungoogled-patches) rev hash; };
+  ungoogler = ungoogled-chromium {
+    inherit (upstream-info.deps.ungoogled-patches) rev hash;
+  };
 
   # There currently isn't a (much) more concise way to get a stdenv
   # that uses lld as its linker without bootstrapping pkgsLLVM; see
@@ -197,7 +199,9 @@ let
       llvmPackages = pkgsBuildBuild.rustc.llvmPackages;
     in
     overrideCC llvmPackages.stdenv (
-      llvmPackages.stdenv.cc.override { inherit (llvmPackages) bintools; }
+      llvmPackages.stdenv.cc.override {
+        inherit (llvmPackages) bintools;
+      }
     );
 
   chromiumRosettaStone = {
@@ -260,8 +264,12 @@ let
         # simply throw in the kitchen sink.
         # ** Because of overrides, we have to copy the list as it otherwise mess with splicing **
         ++ [
-          (buildPackages.libpng.override { apngSupport = false; }) # https://bugs.chromium.org/p/chromium/issues/detail?id=752403
-          (buildPackages.libopus.override { withCustomModes = true; })
+          (buildPackages.libpng.override {
+            apngSupport = false;
+          }) # https://bugs.chromium.org/p/chromium/issues/detail?id=752403
+          (buildPackages.libopus.override {
+            withCustomModes = true;
+          })
           bzip2
           flac
           speex
@@ -317,8 +325,12 @@ let
 
       buildInputs =
         [
-          (libpng.override { apngSupport = false; }) # https://bugs.chromium.org/p/chromium/issues/detail?id=752403
-          (libopus.override { withCustomModes = true; })
+          (libpng.override {
+            apngSupport = false;
+          }) # https://bugs.chromium.org/p/chromium/issues/detail?id=752403
+          (libopus.override {
+            withCustomModes = true;
+          })
           bzip2
           flac
           speex

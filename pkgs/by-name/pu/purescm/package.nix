@@ -44,7 +44,9 @@ let
     '';
 
     passthru.tests = {
-      version = testers.testVersion { inherit package; };
+      version = testers.testVersion {
+        inherit package;
+      };
     };
 
     meta = {

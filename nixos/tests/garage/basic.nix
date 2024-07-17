@@ -8,7 +8,9 @@ args@{ mkNode, ver, ... }:
     };
 
     nodes = {
-      single_node = mkNode { replicationMode = "none"; };
+      single_node = mkNode {
+        replicationMode = "none";
+      };
     };
 
     testScript = ''

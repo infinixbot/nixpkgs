@@ -49,7 +49,9 @@ stdenv.mkDerivation rec {
     libpthreadstubs
     gstreamer
     gst-plugins-base
-    (gst-plugins-good.override { gtkSupport = true; })
+    (gst-plugins-good.override {
+      gtkSupport = true;
+    })
     gst-libav
     qrencode
     webkitgtk

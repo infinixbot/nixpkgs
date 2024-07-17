@@ -64,7 +64,9 @@ let
       hash = buildHashes."${stdenv.hostPlatform.system}";
       url = "https://github.com/facebook/buck2/releases/download/${version}/buck2-${suffix}.zst";
     in
-    fetchurl { inherit name url hash; };
+    fetchurl {
+      inherit name url hash;
+    };
 
   # compatible version of buck2 prelude; this is exported via passthru.prelude
   # for downstream consumers to use when they need to automate any kind of
@@ -76,7 +78,9 @@ let
       hash = buildHashes."_prelude";
       url = "https://github.com/facebook/buck2-prelude/archive/${prelude-hash}.tar.gz";
     in
-    fetchurl { inherit name url hash; };
+    fetchurl {
+      inherit name url hash;
+    };
 
 in
 stdenv.mkDerivation {

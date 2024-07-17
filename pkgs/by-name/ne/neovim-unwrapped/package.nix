@@ -15,7 +15,9 @@
   tree-sitter,
   fetchurl,
   buildPackages,
-  treesitter-parsers ? import ./treesitter-parsers.nix { inherit fetchurl; },
+  treesitter-parsers ? import ./treesitter-parsers.nix {
+    inherit fetchurl;
+  },
   CoreServices,
   fixDarwinDylibNames,
   glibcLocales ? null,

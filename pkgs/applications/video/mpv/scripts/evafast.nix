@@ -17,7 +17,9 @@ buildLua {
   };
 
   # Drop the `branch` parameter once upstream merges `rewrite` back into `master`
-  passthru.updateScript = unstableGitUpdater { branch = "rewrite"; };
+  passthru.updateScript = unstableGitUpdater {
+    branch = "rewrite";
+  };
 
   meta = with lib; {
     description = "Seeking and hybrid fastforwarding like VHS";

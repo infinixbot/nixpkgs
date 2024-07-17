@@ -63,7 +63,9 @@ let
 
     enableParallelBuilding = true;
 
-    passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+    passthru.updateScript = gitUpdater {
+      rev-prefix = "v";
+    };
   };
 
   xrdp = stdenv.mkDerivation rec {

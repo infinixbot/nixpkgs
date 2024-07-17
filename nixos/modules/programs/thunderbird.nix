@@ -72,9 +72,13 @@ in
 
     environment.etc =
       let
-        policiesJSON = policyFormat.generate "thunderbird-policies.json" { inherit (cfg) policies; };
+        policiesJSON = policyFormat.generate "thunderbird-policies.json" {
+          inherit (cfg) policies;
+        };
       in
-      lib.mkIf (cfg.policies != { }) { "thunderbird/policies/policies.json".source = policiesJSON; };
+      lib.mkIf (cfg.policies != { }) {
+        "thunderbird/policies/policies.json".source = policiesJSON;
+      };
 
     programs.thunderbird.policies = {
       DisableAppUpdate = true;

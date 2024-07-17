@@ -65,7 +65,9 @@ in
       };
     };
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ 5076 ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ 5076 ];
+    };
 
     users.users.nzbhydra2 = {
       group = "nzbhydra2";

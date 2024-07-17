@@ -101,7 +101,9 @@ let
         // args
         // metadata
         # Previously monorepoSrc was erroneously not being passed through.
-        // lib.optionalAttrs (lib.versionOlder metadata.release_version "14") { monorepoSrc = null; } # Preserve a bug during #307211, TODO: remove; causes llvm 13 rebuild.
+        // lib.optionalAttrs (lib.versionOlder metadata.release_version "14") {
+          monorepoSrc = null;
+        } # Preserve a bug during #307211, TODO: remove; causes llvm 13 rebuild.
       );
       clangVersion =
         if (lib.versionOlder metadata.release_version "16") then
@@ -340,7 +342,11 @@ let
                   src = metadata.getVersionFile "lldb/resource-dir.patch";
                   clangLibDir = "${libclang.lib}/lib";
                 }).overrideAttrs
-                  (_: _: { name = "resource-dir.patch"; })
+                  (
+                    _: _: {
+                      name = "resource-dir.patch";
+                    }
+                  )
               ) { };
             in
             lib.optional (lib.versionOlder metadata.release_version "16")
@@ -390,7 +396,9 @@ let
         libc = preLibcCrossHeaders;
       };
 
-      bintools = wrapBintoolsWith { bintools = tools.bintools-unwrapped; };
+      bintools = wrapBintoolsWith {
+        bintools = tools.bintools-unwrapped;
+      };
 
       clangUseLLVM = wrapCCWith (
         rec {
@@ -524,9 +532,11 @@ let
           extraPackages = [ ];
           extraBuildCommands = mkExtraBuildCommands0 cc;
         }
-        // lib.optionalAttrs (
-          lib.versionAtLeast metadata.release_version "15" && stdenv.targetPlatform.isWasm
-        ) { nixSupport.cc-cflags = [ "-fno-exceptions" ]; };
+        // lib.optionalAttrs
+          (lib.versionAtLeast metadata.release_version "15" && stdenv.targetPlatform.isWasm)
+          {
+            nixSupport.cc-cflags = [ "-fno-exceptions" ];
+          };
     }
     // lib.optionalAttrs (lib.versionAtLeast metadata.release_version "15") {
       # TODO: pre-15: lldb/docs/index.rst:155:toctree contains reference to nonexisting document 'design/structureddataplugins'
@@ -552,7 +562,9 @@ let
         // args
         // metadata
         # Previously monorepoSrc was erroneously not being passed through.
-        // lib.optionalAttrs (lib.versionOlder metadata.release_version "14") { monorepoSrc = null; } # Preserve a bug during #307211, TODO: remove; causes llvm 13 rebuild.
+        // lib.optionalAttrs (lib.versionOlder metadata.release_version "14") {
+          monorepoSrc = null;
+        } # Preserve a bug during #307211, TODO: remove; causes llvm 13 rebuild.
       );
 
       compiler-rtPatches =

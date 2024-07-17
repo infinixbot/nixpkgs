@@ -1,1 +1,3 @@
-{ shorthandOnlyDefinesConfig = true; }
+{
+  shorthandOnlyDefinesConfig = true;
+}

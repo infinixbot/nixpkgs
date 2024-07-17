@@ -99,14 +99,18 @@ in
     };
     package = lib.mkOption {
       type = lib.types.package;
-      default = package.override { inherit (cfg) allowedPatterns extraWrapperArgs; };
+      default = package.override {
+        inherit (cfg) allowedPatterns extraWrapperArgs;
+      };
       description = "The final package with the final config applied";
       internal = true;
     };
   };
   config = lib.mkIf cfg.enable (
     lib.mkMerge [
-      { nix.settings.pre-build-hook = lib.getExe cfg.package; }
+      {
+        nix.settings.pre-build-hook = lib.getExe cfg.package;
+      }
       (lib.mkIf cfg.presets.nvidia-gpu.enable {
         nix.settings.system-features = cfg.allowedPatterns.nvidia-gpu.onFeatures;
         programs.nix-required-mounts.allowedPatterns = {

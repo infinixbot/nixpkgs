@@ -109,7 +109,9 @@ buildPythonApplication rec {
 
   passthru.tests = {
     devpi-server = nixosTests.devpi-server;
-    version = testers.testVersion { package = devpi-server; };
+    version = testers.testVersion {
+      package = devpi-server;
+    };
   };
 
   meta = with lib; {

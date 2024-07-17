@@ -118,7 +118,9 @@ let
 
     passthru = rec {
       plugins = {
-        jsdec = pkgs.callPackage ./jsdec.nix { inherit rizin openssl; };
+        jsdec = pkgs.callPackage ./jsdec.nix {
+          inherit rizin openssl;
+        };
         rz-ghidra = pkgs.qt6.callPackage ./rz-ghidra.nix {
           inherit rizin openssl;
           enableCutterPlugin = false;

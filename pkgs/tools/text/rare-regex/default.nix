@@ -34,7 +34,9 @@ buildGoModule rec {
   tags = lib.optionals withPcre2 [ "pcre2" ];
 
   passthru.tests = {
-    version = testers.testVersion { package = rare-regex; };
+    version = testers.testVersion {
+      package = rare-regex;
+    };
   };
 
   meta = with lib; {

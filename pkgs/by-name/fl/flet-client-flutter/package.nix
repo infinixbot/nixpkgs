@@ -63,7 +63,9 @@ flutter319.buildFlutterApplication rec {
         '';
 
     updateScript = _experimental-update-script-combinators.sequence [
-      (gitUpdater { rev-prefix = "v"; })
+      (gitUpdater {
+        rev-prefix = "v";
+      })
       (_experimental-update-script-combinators.copyAttrOutputToFile "flet-client-flutter.pubspecSource" ./pubspec.lock.json)
     ];
   };

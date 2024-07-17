@@ -31,7 +31,9 @@ buildGoModule rec {
     rm internal/git/git_test.go
   '';
 
-  passthru.tests.version = testers.testVersion { package = svu; };
+  passthru.tests.version = testers.testVersion {
+    package = svu;
+  };
 
   meta = with lib; {
     description = "Semantic Version Util";

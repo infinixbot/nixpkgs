@@ -17,7 +17,9 @@ in
     services.pyload = {
       enable = mkEnableOption "pyLoad download manager";
 
-      package = mkPackageOption pkgs "pyLoad" { default = [ "pyload-ng" ]; };
+      package = mkPackageOption pkgs "pyLoad" {
+        default = [ "pyload-ng" ];
+      };
 
       listenAddress = mkOption {
         type = types.str;

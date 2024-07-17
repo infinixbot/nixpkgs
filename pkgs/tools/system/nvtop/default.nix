@@ -30,6 +30,10 @@ in
 // builtins.listToAttrs (
   builtins.map (gpu: {
     name = gpu;
-    value = (callPackage ./build-nvtop.nix { "${gpu}" = true; });
+    value = (
+      callPackage ./build-nvtop.nix {
+        "${gpu}" = true;
+      }
+    );
   }) defaultGPUFamilies
 )

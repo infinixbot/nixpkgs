@@ -96,7 +96,11 @@ stdenv.mkDerivation rec {
       ;
     inherit (python3.pkgs) soundfile wavefile;
     inherit (gst_all_1) gst-plugins-bad;
-    lame = (lame.override { sndfileFileIOSupport = true; });
+    lame = (
+      lame.override {
+        sndfileFileIOSupport = true;
+      }
+    );
   };
 
   meta = with lib; {

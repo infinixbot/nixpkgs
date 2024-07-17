@@ -24,7 +24,9 @@
 }:
 let
   # normally video.js is downloaded at build time
-  videojs = callPackage ./videojs.nix { inherit versions; };
+  videojs = callPackage ./videojs.nix {
+    inherit versions;
+  };
 in
 crystal.buildCrystalPackage rec {
   pname = "invidious";

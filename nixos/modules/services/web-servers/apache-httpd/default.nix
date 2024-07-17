@@ -17,11 +17,16 @@ let
 
   pkg = cfg.package.out;
 
-  apachectl = pkgs.runCommand "apachectl" { meta.priority = -1; } ''
-    mkdir -p $out/bin
-    cp ${pkg}/bin/apachectl $out/bin/apachectl
-    sed -i $out/bin/apachectl -e 's|$HTTPD -t|$HTTPD -t -f /etc/httpd/httpd.conf|'
-  '';
+  apachectl =
+    pkgs.runCommand "apachectl"
+      {
+        meta.priority = -1;
+      }
+      ''
+        mkdir -p $out/bin
+        cp ${pkg}/bin/apachectl $out/bin/apachectl
+        sed -i $out/bin/apachectl -e 's|$HTTPD -t|$HTTPD -t -f /etc/httpd/httpd.conf|'
+      '';
 
   php = cfg.phpPackage.override {
     apxs2Support = true;
@@ -34,7 +39,9 @@ let
     in
     (if majorVersion == "8" then "php" else "php${majorVersion}");
 
-  mod_perl = pkgs.apacheHttpdPackages.mod_perl.override { apacheHttpd = pkg; };
+  mod_perl = pkgs.apacheHttpdPackages.mod_perl.override {
+    apacheHttpd = pkg;
+  };
 
   vhosts = attrValues cfg.virtualHosts;
 
@@ -261,33 +268,45 @@ let
       mkLocations =
         locations:
         concatStringsSep "\n" (
-          map (config: ''
-            <Location ${config.location}>
-              ${
-                optionalString (config.proxyPass != null) ''
-                  <IfModule mod_proxy.c>
-                      ProxyPass ${config.proxyPass}
-                      ProxyPassReverse ${config.proxyPass}
-                  </IfModule>
-                ''
-              }
-              ${
-                optionalString (config.index != null) ''
-                  <IfModule mod_dir.c>
-                      DirectoryIndex ${config.index}
-                  </IfModule>
-                ''
-              }
-              ${
-                optionalString (config.alias != null) ''
-                  <IfModule mod_alias.c>
-                      Alias "${config.alias}"
-                  </IfModule>
-                ''
-              }
-              ${config.extraConfig}
-            </Location>
-          '') (sortProperties (mapAttrsToList (k: v: v // { location = k; }) locations))
+          map
+            (config: ''
+              <Location ${config.location}>
+                ${
+                  optionalString (config.proxyPass != null) ''
+                    <IfModule mod_proxy.c>
+                        ProxyPass ${config.proxyPass}
+                        ProxyPassReverse ${config.proxyPass}
+                    </IfModule>
+                  ''
+                }
+                ${
+                  optionalString (config.index != null) ''
+                    <IfModule mod_dir.c>
+                        DirectoryIndex ${config.index}
+                    </IfModule>
+                  ''
+                }
+                ${
+                  optionalString (config.alias != null) ''
+                    <IfModule mod_alias.c>
+                        Alias "${config.alias}"
+                    </IfModule>
+                  ''
+                }
+                ${config.extraConfig}
+              </Location>
+            '')
+            (
+              sortProperties (
+                mapAttrsToList (
+                  k: v:
+                  v
+                  // {
+                    location = k;
+                  }
+                ) locations
+              )
+            )
         );
     in
     ''
@@ -367,7 +386,9 @@ let
       let
         toStr =
           listen: "Listen ${listen.ip}:${toString listen.port} ${if listen.ssl then "https" else "http"}";
-        uniqueListen = uniqList { inputList = map toStr listenInfo; };
+        uniqueListen = uniqList {
+          inputList = map toStr listenInfo;
+        };
       in
       concatStringsSep "\n" uniqueListen
     }
@@ -385,7 +406,9 @@ let
               path = "${pkg}/modules/mod_${module}.so";
             }
           else if isAttrs module then
-            { inherit (module) name path; }
+            {
+              inherit (module) name path;
+            }
           else
             throw "Expecting either a string or attribute set including a name and path.";
       in
@@ -818,7 +841,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == "wwwrun") { wwwrun.gid = config.ids.gids.wwwrun; };
+    users.groups = optionalAttrs (cfg.group == "wwwrun") {
+      wwwrun.gid = config.ids.gids.wwwrun;
+    };
 
     security.acme.certs =
       let
@@ -946,8 +971,12 @@ in
       ];
 
       environment =
-        optionalAttrs cfg.enablePHP { PHPRC = phpIni; }
-        // optionalAttrs cfg.enableMellon { LD_LIBRARY_PATH = "${pkgs.xmlsec}/lib"; };
+        optionalAttrs cfg.enablePHP {
+          PHPRC = phpIni;
+        }
+        // optionalAttrs cfg.enableMellon {
+          LD_LIBRARY_PATH = "${pkgs.xmlsec}/lib";
+        };
 
       preStart = ''
         # Get rid of old semaphores.  These tend to accumulate across

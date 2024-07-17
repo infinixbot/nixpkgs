@@ -25,7 +25,9 @@ rustPlatform.buildRustPackage rec {
   #
   # Let's test it runs
   passthru.tests = {
-    version = testers.testVersion { package = nixel; };
+    version = testers.testVersion {
+      package = nixel;
+    };
   };
 
   meta = with lib; {

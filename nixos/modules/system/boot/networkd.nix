@@ -2343,7 +2343,11 @@ let
 
     ipv6PREF64Prefixes = mkOption {
       default = [ ];
-      example = [ { Prefix = "64:ff9b::/96"; } ];
+      example = [
+        {
+          Prefix = "64:ff9b::/96";
+        }
+      ];
       type = types.listOf (
         mkSubsectionType "ipv6PREF64PrefixConfig" check.network.sectionIPv6PREF64Prefix
       );
@@ -2831,7 +2835,11 @@ let
 
     bridgeVLANs = mkOption {
       default = [ ];
-      example = [ { VLAN = "10-20"; } ];
+      example = [
+        {
+          VLAN = "10-20";
+        }
+      ];
       type = types.listOf (mkSubsectionType "bridgeVLANConfig" check.network.sectionBridgeVLAN);
       description = ''
         A list of BridgeVLAN sections to be added to the unit.  See
@@ -2982,7 +2990,11 @@ let
 
     addresses = mkOption {
       default = [ ];
-      example = [ { Address = "192.168.0.100/24"; } ];
+      example = [
+        {
+          Address = "192.168.0.100/24";
+        }
+      ];
       type = types.listOf (mkSubsectionType "addressConfig" check.network.sectionAddress);
       description = ''
         A list of address sections to be added to the unit.  See
@@ -3010,7 +3022,11 @@ let
 
     routes = mkOption {
       default = [ ];
-      example = [ { Gateway = "192.168.0.1"; } ];
+      example = [
+        {
+          Gateway = "192.168.0.1";
+        }
+      ];
       type = types.listOf (mkSubsectionType "routeConfig" check.network.sectionRoute);
       description = ''
         A list of route sections to be added to the unit.  See
@@ -3024,10 +3040,16 @@ let
     { config, ... }:
     {
       config = {
-        matchConfig = optionalAttrs (config.name != null) { Name = config.name; };
+        matchConfig = optionalAttrs (config.name != null) {
+          Name = config.name;
+        };
         networkConfig =
-          optionalAttrs (config.DHCP != null) { DHCP = config.DHCP; }
-          // optionalAttrs (config.domains != null) { Domains = concatStringsSep " " config.domains; };
+          optionalAttrs (config.DHCP != null) {
+            DHCP = config.DHCP;
+          }
+          // optionalAttrs (config.domains != null) {
+            Domains = concatStringsSep " " config.domains;
+          };
       };
     };
 
@@ -3103,14 +3125,26 @@ let
     links = mkOption {
       default = { };
       inherit visible;
-      type = with types; attrsOf (submodule [ { options = linkOptions; } ]);
+      type =
+        with types;
+        attrsOf (submodule [
+          {
+            options = linkOptions;
+          }
+        ]);
       description = "Definition of systemd network links.";
     };
 
     netdevs = mkOption {
       default = { };
       inherit visible;
-      type = with types; attrsOf (submodule [ { options = netdevOptions; } ]);
+      type =
+        with types;
+        attrsOf (submodule [
+          {
+            options = netdevOptions;
+          }
+        ]);
       description = "Definition of systemd network devices.";
     };
 
@@ -3120,7 +3154,9 @@ let
       type =
         with types;
         attrsOf (submodule [
-          { options = networkOptions; }
+          {
+            options = networkOptions;
+          }
           networkConfig
         ]);
       description = "Definition of systemd networks.";
@@ -3132,7 +3168,9 @@ let
       type =
         with types;
         submodule [
-          { options = networkdOptions; }
+          {
+            options = networkdOptions;
+          }
           networkdConfig
         ];
       description = "Definition of global systemd network config.";
@@ -3148,7 +3186,13 @@ let
           submodule (
             { name, config, ... }:
             {
-              options = mapAttrs (_: x: x // { internal = true; }) concreteUnitOptions;
+              options = mapAttrs (
+                _: x:
+                x
+                // {
+                  internal = true;
+                }
+              ) concreteUnitOptions;
               config = {
                 unit = mkDefault (makeUnit name config);
               };
@@ -3280,7 +3324,9 @@ let
     mkMerge [
       (commonConfig config)
 
-      { environment.etc = unitFiles; }
+      {
+        environment.etc = unitFiles;
+      }
 
       (mkIf config.systemd.network.enable {
 

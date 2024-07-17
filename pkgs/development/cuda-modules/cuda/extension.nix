@@ -80,7 +80,10 @@ let
                       "${pname}/LICENSE.txt";
                   url = "https://developer.download.nvidia.com/compute/cuda/redist/${licensePath}";
                 in
-                lib.licenses.nvidiaCudaRedist // { inherit url; };
+                lib.licenses.nvidiaCudaRedist
+                // {
+                  inherit url;
+                };
             };
           });
     in

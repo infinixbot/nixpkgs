@@ -88,7 +88,9 @@ buildPythonPackage rec {
     in
     (lib.attrsets.mergeAttrsList allTests)
     // {
-      python = callPackage ./tests/python { inherit image; };
+      python = callPackage ./tests/python {
+        inherit image;
+      };
     };
 
   pythonImportsCheck = [ "imwatermark" ];

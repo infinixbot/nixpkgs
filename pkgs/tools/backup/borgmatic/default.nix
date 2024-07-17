@@ -67,7 +67,9 @@ python3Packages.buildPythonApplication rec {
                  --replace "sleep " "${coreutils}/bin/sleep "
     '';
 
-  passthru.tests.version = testers.testVersion { package = borgmatic; };
+  passthru.tests.version = testers.testVersion {
+    package = borgmatic;
+  };
 
   __darwinAllowLocalNetworking = true;
 

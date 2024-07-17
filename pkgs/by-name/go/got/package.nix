@@ -75,7 +75,9 @@ stdenv'.mkDerivation (finalAttrs: {
     ]
   );
 
-  passthru.tests.version = testers.testVersion { package = finalAttrs.finalPackage; };
+  passthru.tests.version = testers.testVersion {
+    package = finalAttrs.finalPackage;
+  };
 
   meta = {
     changelog = "https://gameoftrees.org/releases/CHANGES";

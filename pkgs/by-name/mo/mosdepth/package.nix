@@ -24,7 +24,9 @@ buildNimPackage (finalAttrs: {
   buildInputs = [ pcre ];
 
   passthru.tests = {
-    version = testers.testVersion { package = finalAttrs.finalPackage; };
+    version = testers.testVersion {
+      package = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

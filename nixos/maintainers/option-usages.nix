@@ -104,7 +104,11 @@ let
       tryCollectOptions =
         moduleResult:
         forEach (excludeOptions (collect isOption moduleResult)) (
-          opt: { name = showOption opt.loc; } // builtins.tryEval (strict opt.value)
+          opt:
+          {
+            name = showOption opt.loc;
+          }
+          // builtins.tryEval (strict opt.value)
         );
     in
     keepNames (filterChanges (zipLists (tryCollectOptions old) (tryCollectOptions new)));
@@ -177,7 +181,9 @@ rec {
     text = dotContent;
   };
 
-  pdf = pkgs.texFunctions.dot2pdf { dotGraph = dot; };
+  pdf = pkgs.texFunctions.dot2pdf {
+    dotGraph = dot;
+  };
 
   txtContent = graphToText graph;
   txt = pkgs.writeTextFile {

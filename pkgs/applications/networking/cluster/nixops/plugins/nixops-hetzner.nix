@@ -40,7 +40,9 @@ buildPythonPackage {
 
   pythonImportsCheck = [ "nixops_hetzner" ];
 
-  passthru.updateScript = unstableGitUpdater { tagPrefix = "v"; };
+  passthru.updateScript = unstableGitUpdater {
+    tagPrefix = "v";
+  };
 
   meta = with lib; {
     description = "Hetzner bare metal NixOps plugin";

@@ -971,38 +971,98 @@ lib.fix (
         {
           inherit homepage license platforms;
         }
-        // optionalAttrs (args ? broken) { inherit broken; }
-        // optionalAttrs (args ? description) { inherit description; }
-        // optionalAttrs (args ? maintainers) { inherit maintainers; }
-        // optionalAttrs (args ? hydraPlatforms) { inherit hydraPlatforms; }
-        // optionalAttrs (args ? badPlatforms) { inherit badPlatforms; }
-        // optionalAttrs (args ? changelog) { inherit changelog; }
-        // optionalAttrs (args ? mainProgram) { inherit mainProgram; };
+        // optionalAttrs (args ? broken) {
+          inherit broken;
+        }
+        // optionalAttrs (args ? description) {
+          inherit description;
+        }
+        // optionalAttrs (args ? maintainers) {
+          inherit maintainers;
+        }
+        // optionalAttrs (args ? hydraPlatforms) {
+          inherit hydraPlatforms;
+        }
+        // optionalAttrs (args ? badPlatforms) {
+          inherit badPlatforms;
+        }
+        // optionalAttrs (args ? changelog) {
+          inherit changelog;
+        }
+        // optionalAttrs (args ? mainProgram) {
+          inherit mainProgram;
+        };
 
     }
-    // optionalAttrs (args ? preCompileBuildDriver) { inherit preCompileBuildDriver; }
-    // optionalAttrs (args ? postCompileBuildDriver) { inherit postCompileBuildDriver; }
-    // optionalAttrs (args ? preUnpack) { inherit preUnpack; }
-    // optionalAttrs (args ? postUnpack) { inherit postUnpack; }
-    // optionalAttrs (args ? patches) { inherit patches; }
-    // optionalAttrs (args ? patchPhase) { inherit patchPhase; }
-    // optionalAttrs (args ? preConfigure) { inherit preConfigure; }
-    // optionalAttrs (args ? postConfigure) { inherit postConfigure; }
-    // optionalAttrs (args ? preBuild) { inherit preBuild; }
-    // optionalAttrs (args ? postBuild) { inherit postBuild; }
-    // optionalAttrs (args ? doBenchmark) { inherit doBenchmark; }
-    // optionalAttrs (args ? checkPhase) { inherit checkPhase; }
-    // optionalAttrs (args ? preCheck) { inherit preCheck; }
-    // optionalAttrs (args ? postCheck) { inherit postCheck; }
-    // optionalAttrs (args ? preHaddock) { inherit preHaddock; }
-    // optionalAttrs (args ? postHaddock) { inherit postHaddock; }
-    // optionalAttrs (args ? preInstall) { inherit preInstall; }
-    // optionalAttrs (args ? installPhase) { inherit installPhase; }
-    // optionalAttrs (args ? postInstall) { inherit postInstall; }
-    // optionalAttrs (args ? preFixup) { inherit preFixup; }
-    // optionalAttrs (args ? postFixup) { inherit postFixup; }
-    // optionalAttrs (args ? dontStrip) { inherit dontStrip; }
-    // optionalAttrs (postPhases != [ ]) { inherit postPhases; }
+    // optionalAttrs (args ? preCompileBuildDriver) {
+      inherit preCompileBuildDriver;
+    }
+    // optionalAttrs (args ? postCompileBuildDriver) {
+      inherit postCompileBuildDriver;
+    }
+    // optionalAttrs (args ? preUnpack) {
+      inherit preUnpack;
+    }
+    // optionalAttrs (args ? postUnpack) {
+      inherit postUnpack;
+    }
+    // optionalAttrs (args ? patches) {
+      inherit patches;
+    }
+    // optionalAttrs (args ? patchPhase) {
+      inherit patchPhase;
+    }
+    // optionalAttrs (args ? preConfigure) {
+      inherit preConfigure;
+    }
+    // optionalAttrs (args ? postConfigure) {
+      inherit postConfigure;
+    }
+    // optionalAttrs (args ? preBuild) {
+      inherit preBuild;
+    }
+    // optionalAttrs (args ? postBuild) {
+      inherit postBuild;
+    }
+    // optionalAttrs (args ? doBenchmark) {
+      inherit doBenchmark;
+    }
+    // optionalAttrs (args ? checkPhase) {
+      inherit checkPhase;
+    }
+    // optionalAttrs (args ? preCheck) {
+      inherit preCheck;
+    }
+    // optionalAttrs (args ? postCheck) {
+      inherit postCheck;
+    }
+    // optionalAttrs (args ? preHaddock) {
+      inherit preHaddock;
+    }
+    // optionalAttrs (args ? postHaddock) {
+      inherit postHaddock;
+    }
+    // optionalAttrs (args ? preInstall) {
+      inherit preInstall;
+    }
+    // optionalAttrs (args ? installPhase) {
+      inherit installPhase;
+    }
+    // optionalAttrs (args ? postInstall) {
+      inherit postInstall;
+    }
+    // optionalAttrs (args ? preFixup) {
+      inherit preFixup;
+    }
+    // optionalAttrs (args ? postFixup) {
+      inherit postFixup;
+    }
+    // optionalAttrs (args ? dontStrip) {
+      inherit dontStrip;
+    }
+    // optionalAttrs (postPhases != [ ]) {
+      inherit postPhases;
+    }
     // optionalAttrs (stdenv.buildPlatform.libc == "glibc") {
       LOCALE_ARCHIVE = "${glibcLocales}/lib/locale/locale-archive";
     }

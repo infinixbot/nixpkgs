@@ -84,7 +84,9 @@ stdenv.mkDerivation (finalAttrs: {
     ]
     ++ lib.optionals isCross [ wayland-scanner ]
     ++ lib.optionals withDocumentation [
-      (graphviz-nox.override { pango = null; }) # To avoid an infinite recursion
+      (graphviz-nox.override {
+        pango = null;
+      }) # To avoid an infinite recursion
       doxygen
       libxslt
       xmlto
@@ -120,7 +122,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru = {
     inherit withLibraries;
-    tests.pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+    tests.pkg-config = testers.hasPkgConfigModules {
+      package = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

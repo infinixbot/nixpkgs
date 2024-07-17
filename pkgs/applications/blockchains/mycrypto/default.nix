@@ -15,7 +15,9 @@ let
     inherit sha256;
   };
 
-  appimageContents = appimageTools.extractType2 { inherit pname version src; };
+  appimageContents = appimageTools.extractType2 {
+    inherit pname version src;
+  };
 
   desktopItem = makeDesktopItem {
     name = pname;

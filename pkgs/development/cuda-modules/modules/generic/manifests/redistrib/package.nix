@@ -4,7 +4,10 @@ let
 in
 options.mkOption {
   description = "Package in the manifest";
-  example = (import ./release.nix { inherit lib; }).linux-x86_64;
+  example =
+    (import ./release.nix {
+      inherit lib;
+    }).linux-x86_64;
   type = types.submodule {
     options = {
       relative_path = options.mkOption {

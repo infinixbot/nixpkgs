@@ -24,7 +24,12 @@ let
   stagesNative = import ./native args;
 
   # The Nix build environment.
-  stagesNix = import ./nix (args // { bootStages = stagesNative; });
+  stagesNix = import ./nix (
+    args
+    // {
+      bootStages = stagesNative;
+    }
+  );
 
   stagesFreeBSD = import ./freebsd args;
 

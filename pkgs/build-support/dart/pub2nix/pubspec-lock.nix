@@ -65,10 +65,14 @@ let
         sha256 = details.description.sha256;
       };
     in
-    runCommand "pub-${name}-${details.version}" { passthru.packageRoot = "."; } ''
-      mkdir -p "$out"
-      tar xf '${archive}' -C "$out"
-    '';
+    runCommand "pub-${name}-${details.version}"
+      {
+        passthru.packageRoot = ".";
+      }
+      ''
+        mkdir -p "$out"
+        tar xf '${archive}' -C "$out"
+      '';
 
   mkGitDependencySource =
     name: details:

@@ -29,7 +29,13 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   postFixup = ''
     wrapProgram $out/bin/lsix \
-      --prefix PATH : ${lib.makeBinPath [ (imagemagick.override { ghostscriptSupport = true; }) ]}
+      --prefix PATH : ${
+        lib.makeBinPath [
+          (imagemagick.override {
+            ghostscriptSupport = true;
+          })
+        ]
+      }
   '';
 
   meta = with lib; {

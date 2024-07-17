@@ -19,7 +19,9 @@ buildKodiAddon rec {
   passthru = {
     # Unusual Python path.
     pythonPath = "resources/modules";
-    updateScript = addonUpdateScript { attrPath = "kodi.packages.infotagger"; };
+    updateScript = addonUpdateScript {
+      attrPath = "kodi.packages.infotagger";
+    };
   };
 
   meta = with lib; {

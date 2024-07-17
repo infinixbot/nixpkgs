@@ -4,7 +4,12 @@
   lib ? pkgs.lib,
 }:
 let
-  inherit (import ../lib/testing-python.nix { inherit system pkgs; }) makeTest;
+  inherit
+    (import ../lib/testing-python.nix {
+      inherit system pkgs;
+    })
+    makeTest
+    ;
   inherit (lib) recursiveUpdate;
 
   baseTestConfig = {
@@ -26,7 +31,11 @@ let
 in
 
 {
-  without-auth = makeTest (recursiveUpdate baseTestConfig { name = "suwayomi-server-without-auth"; });
+  without-auth = makeTest (
+    recursiveUpdate baseTestConfig {
+      name = "suwayomi-server-without-auth";
+    }
+  );
 
   with-auth = makeTest (
     recursiveUpdate baseTestConfig {

@@ -112,39 +112,43 @@ let
     assert expectedTestOutputs != null -> hasTests;
     assert hasTests -> expectedTestOutputs != null;
 
-    runCommand "run-buildRustCrate-${crateName}-test" { nativeBuildInputs = [ crate ]; } (
-      if !hasTests then
-        ''
-          ${lib.concatMapStringsSep "\n" (
-            binary:
-            # Can't actually run the binary when cross-compiling
-            (lib.optionalString (stdenv.hostPlatform != stdenv.buildPlatform) "type ") + binary
-          ) binaries}
-          ${lib.optionalString isLib ''
-            test -e ${crate}/lib/*.rlib || exit 1
-            ${lib.optionalString (stdenv.hostPlatform != stdenv.buildPlatform) "test -x "} \
-              ${libTestBinary}/bin/run-test-${crateName}
-          ''}
-          touch $out
-        ''
-      else if stdenv.hostPlatform == stdenv.buildPlatform then
-        ''
-          for file in ${crate}/tests/*; do
-            $file 2>&1 >> $out
-          done
-          set -e
-          ${lib.concatMapStringsSep "\n" (
-            o: "grep '${o}' $out || {  echo 'output \"${o}\" not found in:'; cat $out; exit 23; }"
-          ) expectedTestOutputs}
-        ''
-      else
-        ''
-          for file in ${crate}/tests/*; do
-            test -x "$file"
-          done
-          touch "$out"
-        ''
-    );
+    runCommand "run-buildRustCrate-${crateName}-test"
+      {
+        nativeBuildInputs = [ crate ];
+      }
+      (
+        if !hasTests then
+          ''
+            ${lib.concatMapStringsSep "\n" (
+              binary:
+              # Can't actually run the binary when cross-compiling
+              (lib.optionalString (stdenv.hostPlatform != stdenv.buildPlatform) "type ") + binary
+            ) binaries}
+            ${lib.optionalString isLib ''
+              test -e ${crate}/lib/*.rlib || exit 1
+              ${lib.optionalString (stdenv.hostPlatform != stdenv.buildPlatform) "test -x "} \
+                ${libTestBinary}/bin/run-test-${crateName}
+            ''}
+            touch $out
+          ''
+        else if stdenv.hostPlatform == stdenv.buildPlatform then
+          ''
+            for file in ${crate}/tests/*; do
+              $file 2>&1 >> $out
+            done
+            set -e
+            ${lib.concatMapStringsSep "\n" (
+              o: "grep '${o}' $out || {  echo 'output \"${o}\" not found in:'; cat $out; exit 23; }"
+            ) expectedTestOutputs}
+          ''
+        else
+          ''
+            for file in ${crate}/tests/*; do
+              test -x "$file"
+            done
+            touch "$out"
+          ''
+      );
 
   /*
     Returns a derivation that asserts that the crate specified by `crateArgs`
@@ -256,13 +260,21 @@ rec {
           src = mkBin "src/foobar.rs";
         };
         crateBinNoPath1 = {
-          crateBin = [ { name = "my-binary2"; } ];
+          crateBin = [
+            {
+              name = "my-binary2";
+            }
+          ];
           src = mkBin "src/my_binary2.rs";
         };
         crateBinNoPath2 = {
           crateBin = [
-            { name = "my-binary3"; }
-            { name = "my-binary4"; }
+            {
+              name = "my-binary3";
+            }
+            {
+              name = "my-binary4";
+            }
           ];
           src = symlinkJoin {
             name = "buildRustCrateMultipleBinariesCase";
@@ -273,15 +285,27 @@ rec {
           };
         };
         crateBinNoPath3 = {
-          crateBin = [ { name = "my-binary5"; } ];
+          crateBin = [
+            {
+              name = "my-binary5";
+            }
+          ];
           src = mkBin "src/bin/main.rs";
         };
         crateBinNoPath4 = {
-          crateBin = [ { name = "my-binary6"; } ];
+          crateBin = [
+            {
+              name = "my-binary6";
+            }
+          ];
           src = mkBin "src/main.rs";
         };
         crateBinRename1 = {
-          crateBin = [ { name = "my-binary-rename1"; } ];
+          crateBin = [
+            {
+              name = "my-binary-rename1";
+            }
+          ];
           src = mkBinExtern "src/main.rs" "foo_renamed";
           dependencies = [
             (mkHostCrate {
@@ -294,7 +318,11 @@ rec {
           };
         };
         crateBinRename2 = {
-          crateBin = [ { name = "my-binary-rename2"; } ];
+          crateBin = [
+            {
+              name = "my-binary-rename2";
+            }
+          ];
           src = mkBinExtern "src/main.rs" "foo_renamed";
           dependencies = [
             (mkHostCrate {
@@ -676,7 +704,9 @@ rec {
           src = symlinkJoin rec {
             name = "find-cargo-toml";
             paths = [
-              (mkCargoToml { name = "ignoreMe"; })
+              (mkCargoToml {
+                name = "ignoreMe";
+              })
               (mkTestFileWithMain "src/main.rs" "ignore_main")
 
               (mkCargoToml {
@@ -700,7 +730,10 @@ rec {
           let
             withoutCargoTomlSearch = builtins.removeAttrs rustCargoTomlInSubDir [ "workspace_member" ];
           in
-          withoutCargoTomlSearch // { expectedTestOutputs = [ "test ignore_main ... ok" ]; };
+          withoutCargoTomlSearch
+          // {
+            expectedTestOutputs = [ "test ignore_main ... ok" ];
+          };
         procMacroInPrelude = {
           procMacro = true;
           edition = "2018";
@@ -720,7 +753,13 @@ rec {
         buildRustCrate = null;
       };
       tests = lib.mapAttrs (
-        key: value: mkTest (value // lib.optionalAttrs (!value ? crateName) { crateName = key; })
+        key: value:
+        mkTest (
+          value
+          // lib.optionalAttrs (!value ? crateName) {
+            crateName = key;
+          }
+        )
       ) cases;
     in
     tests
@@ -764,7 +803,11 @@ rec {
       crateBinNoPath1Outputs = assertOutputs {
         name = "crateBinNoPath1";
         crateArgs = {
-          crateBin = [ { name = "my-binary2"; } ];
+          crateBin = [
+            {
+              name = "my-binary2";
+            }
+          ];
           src = mkBin "src/my_binary2.rs";
         };
         expectedFiles = [ "./bin/my-binary2" ];
@@ -824,45 +867,61 @@ rec {
         let
           pkg = brotliCrates.brotli_2_5_0 { };
         in
-        runCommand "run-brotli-test-cmd" { nativeBuildInputs = [ pkg ]; } (
-          if stdenv.hostPlatform == stdenv.buildPlatform then
-            ''
-              ${pkg}/bin/brotli -c ${pkg}/bin/brotli > /dev/null && touch $out
-            ''
-          else
-            ''
-              test -x '${pkg}/bin/brotli' && touch $out
-            ''
-        );
+        runCommand "run-brotli-test-cmd"
+          {
+            nativeBuildInputs = [ pkg ];
+          }
+          (
+            if stdenv.hostPlatform == stdenv.buildPlatform then
+              ''
+                ${pkg}/bin/brotli -c ${pkg}/bin/brotli > /dev/null && touch $out
+              ''
+            else
+              ''
+                test -x '${pkg}/bin/brotli' && touch $out
+              ''
+          );
       allocNoStdLibTest =
         let
           pkg = brotliCrates.alloc_no_stdlib_1_3_0 { };
         in
-        runCommand "run-alloc-no-stdlib-test-cmd" { nativeBuildInputs = [ pkg ]; } ''
-          test -e ${pkg}/bin/example && touch $out
-        '';
+        runCommand "run-alloc-no-stdlib-test-cmd"
+          {
+            nativeBuildInputs = [ pkg ];
+          }
+          ''
+            test -e ${pkg}/bin/example && touch $out
+          '';
       brotliDecompressorTest =
         let
           pkg = brotliCrates.brotli_decompressor_1_3_1 { };
         in
-        runCommand "run-brotli-decompressor-test-cmd" { nativeBuildInputs = [ pkg ]; } ''
-          test -e ${pkg}/bin/brotli-decompressor && touch $out
-        '';
+        runCommand "run-brotli-decompressor-test-cmd"
+          {
+            nativeBuildInputs = [ pkg ];
+          }
+          ''
+            test -e ${pkg}/bin/brotli-decompressor && touch $out
+          '';
 
       rcgenTest =
         let
           pkg = rcgenCrates.rootCrate.build;
         in
-        runCommand "run-rcgen-test-cmd" { nativeBuildInputs = [ pkg ]; } (
-          if stdenv.hostPlatform == stdenv.buildPlatform then
-            ''
-              ${pkg}/bin/rcgen && touch $out
-            ''
-          else
-            ''
-              test -x '${pkg}/bin/rcgen' && touch $out
-            ''
-        );
+        runCommand "run-rcgen-test-cmd"
+          {
+            nativeBuildInputs = [ pkg ];
+          }
+          (
+            if stdenv.hostPlatform == stdenv.buildPlatform then
+              ''
+                ${pkg}/bin/rcgen && touch $out
+              ''
+            else
+              ''
+                test -x '${pkg}/bin/rcgen' && touch $out
+              ''
+          );
     };
   test = releaseTools.aggregate {
     name = "buildRustCrate-tests";

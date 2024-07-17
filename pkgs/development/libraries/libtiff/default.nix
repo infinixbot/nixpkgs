@@ -95,7 +95,9 @@ stdenv.mkDerivation (finalAttrs: {
     libjpeg
     # libwebp depends on us; this will cause infinite
     # recursion otherwise
-    (libwebp.override { tiffSupport = false; })
+    (libwebp.override {
+      tiffSupport = false;
+    })
     xz
     zlib
     zstd
@@ -116,7 +118,9 @@ stdenv.mkDerivation (finalAttrs: {
         freeimage
         ;
       inherit (python3Packages) pillow imread;
-      pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+      pkg-config = testers.hasPkgConfigModules {
+        package = finalAttrs.finalPackage;
+      };
     };
     updateScript = nix-update-script { };
   };

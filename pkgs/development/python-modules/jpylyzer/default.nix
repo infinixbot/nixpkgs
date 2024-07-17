@@ -54,7 +54,9 @@ buildPythonPackage rec {
   disallowedReferences = [ testFiles ];
 
   passthru.tests = {
-    withFullCheck = jpylyzer.override { doFullCheck = true; };
+    withFullCheck = jpylyzer.override {
+      doFullCheck = true;
+    };
   };
 
   meta = with lib; {

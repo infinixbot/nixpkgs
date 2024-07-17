@@ -47,7 +47,9 @@ python3.pkgs.buildPythonApplication rec {
   ];
 
   passthru.tests = {
-    version = testers.testVersion { package = scriv; };
+    version = testers.testVersion {
+      package = scriv;
+    };
   };
 
   meta = {

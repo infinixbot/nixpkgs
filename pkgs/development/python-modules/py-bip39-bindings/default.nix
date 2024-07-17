@@ -32,7 +32,9 @@ buildPythonPackage rec {
     })
   ];
 
-  cargoDeps = rustPlatform.importCargoLock { lockFile = ./Cargo.lock; };
+  cargoDeps = rustPlatform.importCargoLock {
+    lockFile = ./Cargo.lock;
+  };
 
   postPatch = ''
     cp ${./Cargo.lock} Cargo.lock

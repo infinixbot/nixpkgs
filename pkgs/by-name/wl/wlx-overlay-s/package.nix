@@ -76,7 +76,9 @@ rustPlatform.buildRustPackage rec {
   '';
 
   passthru = {
-    tests.testVersion = testers.testVersion { package = wlx-overlay-s; };
+    tests.testVersion = testers.testVersion {
+      package = wlx-overlay-s;
+    };
 
     updateScript = nix-update-script { };
   };

@@ -9,7 +9,9 @@
   mkDerivation,
   openssl,
   wrapGAppsHook3,
-  avahiWithLibdnssdCompat ? avahi.override { withLibdnssdCompat = true; },
+  avahiWithLibdnssdCompat ? avahi.override {
+    withLibdnssdCompat = true;
+  },
   fetchpatch,
 }:
 

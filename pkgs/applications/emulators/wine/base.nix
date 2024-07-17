@@ -25,7 +25,9 @@
   mainProgram ? "wine",
 }:
 
-with import ./util.nix { inherit lib; };
+with import ./util.nix {
+  inherit lib;
+};
 
 let
   prevName = pname;
@@ -86,7 +88,9 @@ let
 in
 stdenv.mkDerivation (
   finalAttrs:
-  lib.optionalAttrs (buildScript != null) { builder = buildScript; }
+  lib.optionalAttrs (buildScript != null) {
+    builder = buildScript;
+  }
   // lib.optionalAttrs stdenv.isDarwin {
     postBuild = ''
       # The Wine preloader must _not_ be linked to any system libraries, but `NIX_LDFLAGS` will link

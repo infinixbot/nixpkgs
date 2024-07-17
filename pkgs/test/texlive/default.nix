@@ -406,7 +406,9 @@ rec {
   # needed (detected by checking if it disallows --gscmd)
   repstopdf =
     runCommand "texlive-test-repstopdf"
-      { nativeBuildInputs = [ (texlive.withPackages (ps: [ ps.epstopdf ])) ]; }
+      {
+        nativeBuildInputs = [ (texlive.withPackages (ps: [ ps.epstopdf ])) ];
+      }
       ''
         ! (epstopdf --gscmd echo /dev/null 2>&1 || true) | grep forbidden >/dev/null
         (repstopdf --gscmd echo /dev/null 2>&1 || true) | grep forbidden >/dev/null
@@ -417,7 +419,9 @@ rec {
   # needed (detected by checking if it disallows --gscmd)
   rpdfcrop =
     runCommand "texlive-test-rpdfcrop"
-      { nativeBuildInputs = [ (texlive.withPackages (ps: [ ps.pdfcrop ])) ]; }
+      {
+        nativeBuildInputs = [ (texlive.withPackages (ps: [ ps.pdfcrop ])) ];
+      }
       ''
         ! (pdfcrop --gscmd echo $(command -v pdfcrop) 2>&1 || true) | grep 'restricted mode' >/dev/null
         (rpdfcrop --gscmd echo $(command -v pdfcrop) 2>&1 || true) | grep 'restricted mode' >/dev/null
@@ -922,15 +926,19 @@ rec {
       '';
       errorText = lib.concatStringsSep "\n\n" (lib.mapAttrsToList prettyPrint incorrectSchemes);
     in
-    runCommand "texlive-test-license" { inherit errorText; } (
-      if (incorrectSchemes == { }) then
-        "echo everything is fine! > $out"
-      else
-        ''
-          echo "$errorText"
-          false
-        ''
-    );
+    runCommand "texlive-test-license"
+      {
+        inherit errorText;
+      }
+      (
+        if (incorrectSchemes == { }) then
+          "echo everything is fine! > $out"
+        else
+          ''
+            echo "$errorText"
+            false
+          ''
+      );
 
   # verify that all fixed hashes are present
   # this is effectively an eval-time assertion, converted into a derivation for

@@ -37,19 +37,23 @@ let
       (pkgs.callPackage (
         { runCommandNoCC, squashfsTools }:
 
-        runCommandNoCC "${cfg.image.name}-modified.img" { nativeBuildInputs = [ squashfsTools ]; } ''
-          echo "-> Extracting Anbox root image..."
-          unsquashfs -dest rootfs ${cfg.image}
+        runCommandNoCC "${cfg.image.name}-modified.img"
+          {
+            nativeBuildInputs = [ squashfsTools ];
+          }
+          ''
+            echo "-> Extracting Anbox root image..."
+            unsquashfs -dest rootfs ${cfg.image}
 
-          echo "-> Modifying Anbox root image..."
-          (
-          cd rootfs
-          ${cfg.imageModifications}
-          )
+            echo "-> Modifying Anbox root image..."
+            (
+            cd rootfs
+            ${cfg.imageModifications}
+            )
 
-          echo "-> Packing modified Anbox root image..."
-          mksquashfs rootfs $out -comp xz -no-xattrs -all-root
-        ''
+            echo "-> Packing modified Anbox root image..."
+            mksquashfs rootfs $out -comp xz -no-xattrs -all-root
+          ''
       ) { });
 
 in

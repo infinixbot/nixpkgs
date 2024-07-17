@@ -268,12 +268,17 @@ in
       systemd.tmpfiles.packages = [
         # The /run/podman rule interferes with our podman group, so we remove
         # it and let the systemd socket logic take care of it.
-        (pkgs.runCommand "podman-tmpfiles-nixos" { package = cfg.package; } ''
-          mkdir -p $out/lib/tmpfiles.d/
-          grep -v 'D! /run/podman 0700 root root' \
-            <$package/lib/tmpfiles.d/podman.conf \
-            >$out/lib/tmpfiles.d/podman.conf
-        '')
+        (pkgs.runCommand "podman-tmpfiles-nixos"
+          {
+            package = cfg.package;
+          }
+          ''
+            mkdir -p $out/lib/tmpfiles.d/
+            grep -v 'D! /run/podman 0700 root root' \
+              <$package/lib/tmpfiles.d/podman.conf \
+              >$out/lib/tmpfiles.d/podman.conf
+          ''
+        )
       ];
 
       users.groups.podman = { };

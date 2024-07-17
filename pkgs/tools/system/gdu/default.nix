@@ -45,7 +45,9 @@ buildGoModule rec {
     "-skip=TestStoredAnalyzer"
   ];
 
-  passthru.tests.version = testers.testVersion { package = gdu; };
+  passthru.tests.version = testers.testVersion {
+    package = gdu;
+  };
 
   meta = with lib; {
     description = "Disk usage analyzer with console interface";

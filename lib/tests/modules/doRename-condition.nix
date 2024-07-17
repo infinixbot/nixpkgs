@@ -27,7 +27,9 @@ in
       type = types.attrsOf (
         types.submodule {
           options = {
-            bar = mkOption { type = types.str; };
+            bar = mkOption {
+              type = types.str;
+            };
           };
         }
       );

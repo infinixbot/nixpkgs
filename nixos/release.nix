@@ -14,7 +14,9 @@ with import ../lib;
   configuration ? { },
 }:
 
-with import ../pkgs/top-level/release-lib.nix { inherit supportedSystems; };
+with import ../pkgs/top-level/release-lib.nix {
+  inherit supportedSystems;
+};
 
 let
 
@@ -30,22 +32,32 @@ let
     system:
     import ./tests/all-tests.nix {
       inherit system;
-      pkgs = import ./.. { inherit system; };
-      callTest = config: { ${system} = hydraJob config.test; };
+      pkgs = import ./.. {
+        inherit system;
+      };
+      callTest = config: {
+        ${system} = hydraJob config.test;
+      };
     }
     // {
       # for typechecking of the scripts and evaluation of
       # the nodes, without running VMs.
       allDrivers = import ./tests/all-tests.nix {
         inherit system;
-        pkgs = import ./.. { inherit system; };
-        callTest = config: { ${system} = hydraJob config.driver; };
+        pkgs = import ./.. {
+          inherit system;
+        };
+        callTest = config: {
+          ${system} = hydraJob config.driver;
+        };
       };
     };
 
   allTests = foldAttrs recursiveUpdate { } (map allTestsForSystem supportedSystems);
 
-  pkgs = import ./.. { system = "x86_64-linux"; };
+  pkgs = import ./.. {
+    system = "x86_64-linux";
+  };
 
   versionModule =
     { config, ... }:
@@ -72,19 +84,25 @@ let
       ...
     }:
 
-    with import ./.. { inherit system; };
+    with import ./.. {
+      inherit system;
+    };
 
     hydraJob (
       (import lib/eval-config.nix {
         inherit system;
-        modules = makeModules module { isoImage.isoBaseName = "nixos-${type}"; };
+        modules = makeModules module {
+          isoImage.isoBaseName = "nixos-${type}";
+        };
       }).config.system.build.isoImage
     );
 
   makeSdImage =
     { module, system, ... }:
 
-    with import ./.. { inherit system; };
+    with import ./.. {
+      inherit system;
+    };
 
     hydraJob (
       (import lib/eval-config.nix {
@@ -100,7 +118,9 @@ let
       system,
     }:
 
-    with import ./.. { inherit system; };
+    with import ./.. {
+      inherit system;
+    };
 
     let
 
@@ -330,7 +350,9 @@ rec {
   ova = forMatchingSystems [ "x86_64-linux" ] (
     system:
 
-    with import ./.. { inherit system; };
+    with import ./.. {
+      inherit system;
+    };
 
     hydraJob (
       (import lib/eval-config.nix {
@@ -347,7 +369,9 @@ rec {
   # KVM image for proxmox in VMA format
   proxmoxImage = forMatchingSystems [ "x86_64-linux" ] (
     system:
-    with import ./.. { inherit system; };
+    with import ./.. {
+      inherit system;
+    };
 
     hydraJob (
       (import lib/eval-config.nix {
@@ -360,7 +384,9 @@ rec {
   # LXC tarball for proxmox
   proxmoxLXC = forMatchingSystems [ "x86_64-linux" ] (
     system:
-    with import ./.. { inherit system; };
+    with import ./.. {
+      inherit system;
+    };
 
     hydraJob (
       (import lib/eval-config.nix {
@@ -380,7 +406,9 @@ rec {
       (
         system:
 
-        with import ./.. { inherit system; };
+        with import ./.. {
+          inherit system;
+        };
 
         hydraJob (
           (import lib/eval-config.nix {
@@ -403,7 +431,9 @@ rec {
       (
         system:
 
-        with import ./.. { inherit system; };
+        with import ./.. {
+          inherit system;
+        };
 
         hydraJob (
           (import lib/eval-config.nix {
@@ -429,7 +459,9 @@ rec {
       (
         system:
 
-        with import ./.. { inherit system; };
+        with import ./.. {
+          inherit system;
+        };
 
         hydraJob (
           (import lib/eval-config.nix {
@@ -460,7 +492,9 @@ rec {
       (
         system:
 
-        with import ./.. { inherit system; };
+        with import ./.. {
+          inherit system;
+        };
 
         hydraJob (
           (import lib/eval-config.nix {
@@ -484,7 +518,9 @@ rec {
       (
         system:
 
-        with import ./.. { inherit system; };
+        with import ./.. {
+          inherit system;
+        };
 
         hydraJob (
           (import lib/eval-config.nix {
@@ -509,7 +545,9 @@ rec {
       (
         system:
 
-        with import ./.. { inherit system; };
+        with import ./.. {
+          inherit system;
+        };
 
         hydraJob (
           (import lib/eval-config.nix {
@@ -534,7 +572,9 @@ rec {
       (
         system:
 
-        with import ./.. { inherit system; };
+        with import ./.. {
+          inherit system;
+        };
 
         hydraJob (
           (import lib/eval-config.nix {
@@ -559,7 +599,9 @@ rec {
       (
         system:
 
-        with import ./.. { inherit system; };
+        with import ./.. {
+          inherit system;
+        };
 
         hydraJob (
           (import lib/eval-config.nix {

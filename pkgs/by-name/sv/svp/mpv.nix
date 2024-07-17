@@ -6,7 +6,9 @@
 }:
 
 mpv-unwrapped.wrapper {
-  mpv = mpv-unwrapped.override { vapoursynthSupport = true; };
+  mpv = mpv-unwrapped.override {
+    vapoursynthSupport = true;
+  };
   extraMakeWrapperArgs = [
     # Add paths to required libraries
     "--prefix"

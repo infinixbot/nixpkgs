@@ -57,7 +57,9 @@ rustPlatform.buildRustPackage rec {
       --zsh <($out/bin/zellij setup --generate-completion zsh)
   '';
 
-  passthru.tests.version = testers.testVersion { package = zellij; };
+  passthru.tests.version = testers.testVersion {
+    package = zellij;
+  };
 
   meta = with lib; {
     description = "Terminal workspace with batteries included";

@@ -14,9 +14,30 @@
 let
   buildDotnet = attrs: callPackage (import ./build-dotnet.nix attrs) { };
   buildAttrs = {
-    buildAspNetCore = attrs: buildDotnet (attrs // { type = "aspnetcore"; });
-    buildNetRuntime = attrs: buildDotnet (attrs // { type = "runtime"; });
-    buildNetSdk = attrs: buildDotnet (attrs // { type = "sdk"; });
+    buildAspNetCore =
+      attrs:
+      buildDotnet (
+        attrs
+        // {
+          type = "aspnetcore";
+        }
+      );
+    buildNetRuntime =
+      attrs:
+      buildDotnet (
+        attrs
+        // {
+          type = "runtime";
+        }
+      );
+    buildNetSdk =
+      attrs:
+      buildDotnet (
+        attrs
+        // {
+          type = "sdk";
+        }
+      );
   };
 
   ## Files in versions/ are generated automatically by update.sh ##
@@ -43,7 +64,11 @@ in
 
   combinePackages = attrs: callPackage (import ./combine-packages.nix attrs) { };
 
-  dotnet_8 = recurseIntoAttrs (callPackage ./8 { bootstrapSdk = dotnet_8_0.sdk_8_0_1xx; });
+  dotnet_8 = recurseIntoAttrs (
+    callPackage ./8 {
+      bootstrapSdk = dotnet_8_0.sdk_8_0_1xx;
+    }
+  );
   dotnet_9 = recurseIntoAttrs (callPackage ./9 { });
 }
 // lib.optionalAttrs config.allowAliases {

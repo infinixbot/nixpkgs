@@ -78,7 +78,9 @@ python3Packages.buildPythonApplication rec {
 
   nativeCheckInputs = with python3Packages; [ pytestCheckHook ];
 
-  passthru.tests.version = testers.testVersion { package = udiskie; };
+  passthru.tests.version = testers.testVersion {
+    package = udiskie;
+  };
 
   meta = with lib; {
     homepage = "https://github.com/coldfix/udiskie";

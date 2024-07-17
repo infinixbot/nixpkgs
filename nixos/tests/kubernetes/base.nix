@@ -1,10 +1,14 @@
 {
   system ? builtins.currentSystem,
   config ? { },
-  pkgs ? import ../../.. { inherit system config; },
+  pkgs ? import ../../.. {
+    inherit system config;
+  },
 }:
 
-with import ../../lib/testing-python.nix { inherit system pkgs; };
+with import ../../lib/testing-python.nix {
+  inherit system pkgs;
+};
 with pkgs.lib;
 
 let
@@ -32,10 +36,14 @@ let
       '';
       wrapKubectl =
         with pkgs;
-        runCommand "wrap-kubectl" { nativeBuildInputs = [ makeWrapper ]; } ''
-          mkdir -p $out/bin
-          makeWrapper ${pkgs.kubernetes}/bin/kubectl $out/bin/kubectl --set KUBECONFIG "/etc/kubernetes/cluster-admin.kubeconfig"
-        '';
+        runCommand "wrap-kubectl"
+          {
+            nativeBuildInputs = [ makeWrapper ];
+          }
+          ''
+            mkdir -p $out/bin
+            makeWrapper ${pkgs.kubernetes}/bin/kubectl $out/bin/kubectl --set KUBECONFIG "/etc/kubernetes/cluster-admin.kubeconfig"
+          '';
     in
     makeTest {
       inherit name;

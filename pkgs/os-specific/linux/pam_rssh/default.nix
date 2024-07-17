@@ -41,7 +41,11 @@ rustPlatform.buildRustPackage rec {
     "--skip=tests::parse_user_authorized_keys"
   ];
 
-  nativeCheckInputs = [ (openssh.override { dsaKeysSupport = true; }) ];
+  nativeCheckInputs = [
+    (openssh.override {
+      dsaKeysSupport = true;
+    })
+  ];
 
   env.USER = "nixbld";
 

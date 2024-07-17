@@ -23,7 +23,9 @@ in
       appriseSupport = mkEnableOption "apprise support for notifications";
 
       settings = lib.mkOption {
-        type = lib.types.submodule { freeformType = with lib.types; attrsOf str; };
+        type = lib.types.submodule {
+          freeformType = with lib.types; attrsOf str;
+        };
         default = { };
         example = {
           PORT = "4000";

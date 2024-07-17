@@ -34,7 +34,9 @@ let
       };
     };
 
-    passthru.tests.version = testers.testVersion { inherit package; };
+    passthru.tests.version = testers.testVersion {
+      inherit package;
+    };
 
     meta = with lib; {
       description = "Interface to send PartiQL statements to Amazon Quantum Ledger Database (QLDB)";

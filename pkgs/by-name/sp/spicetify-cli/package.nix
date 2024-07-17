@@ -39,7 +39,9 @@ buildGoModule rec {
     $out/bin/spicetify --help > /dev/null
   '';
 
-  passthru.tests.version = testers.testVersion { package = spicetify-cli; };
+  passthru.tests.version = testers.testVersion {
+    package = spicetify-cli;
+  };
 
   meta = with lib; {
     description = "Command-line tool to customize Spotify client";

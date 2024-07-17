@@ -55,7 +55,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  passthru.tests = testers.testVersion { package = finalAttrs.finalPackage; };
+  passthru.tests = testers.testVersion {
+    package = finalAttrs.finalPackage;
+  };
 
   meta = {
     homepage = "https://github.com/CastXML/CastXML";

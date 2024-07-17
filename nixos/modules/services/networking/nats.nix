@@ -95,7 +95,9 @@ in
     services.nats.settings = {
       server_name = cfg.serverName;
       port = cfg.port;
-      jetstream = optionalAttrs cfg.jetstream { store_dir = cfg.dataDir; };
+      jetstream = optionalAttrs cfg.jetstream {
+        store_dir = cfg.dataDir;
+      };
     };
 
     systemd.services.nats = {
@@ -164,7 +166,9 @@ in
       };
     };
 
-    users.groups = mkIf (cfg.group == "nats") { nats = { }; };
+    users.groups = mkIf (cfg.group == "nats") {
+      nats = { };
+    };
   };
 
 }

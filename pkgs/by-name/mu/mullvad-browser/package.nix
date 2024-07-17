@@ -123,7 +123,11 @@ let
     }
   );
 
-  policiesJson = writeText "policies.json" (builtins.toJSON { policies.DisableAppUpdate = true; });
+  policiesJson = writeText "policies.json" (
+    builtins.toJSON {
+      policies.DisableAppUpdate = true;
+    }
+  );
 in
 stdenv.mkDerivation rec {
   pname = "mullvad-browser";

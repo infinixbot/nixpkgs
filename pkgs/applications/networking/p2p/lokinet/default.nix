@@ -19,7 +19,9 @@
 let
   # Upstream has received reports of incompatibilities with fmt, and other
   # dependencies, see: https://github.com/oxen-io/lokinet/issues/2200.
-  spdlog' = spdlog.override { fmt = fmt_9; };
+  spdlog' = spdlog.override {
+    fmt = fmt_9;
+  };
 
 in
 stdenv.mkDerivation rec {

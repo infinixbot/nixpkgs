@@ -10,7 +10,9 @@ buildEnv {
   name = "flare-1.14";
 
   paths = [
-    (callPackage ./engine.nix { inherit Cocoa; })
+    (callPackage ./engine.nix {
+      inherit Cocoa;
+    })
     (callPackage ./game.nix { })
   ];
 

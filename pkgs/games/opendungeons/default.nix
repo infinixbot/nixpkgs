@@ -16,7 +16,9 @@ let
   ogre' = ogre_13.overrideAttrs (old: {
     cmakeFlags = old.cmakeFlags ++ [ "-DOGRE_RESOURCEMANAGER_STRICT=0" ];
   });
-  cegui' = cegui.override { ogre = ogre'; };
+  cegui' = cegui.override {
+    ogre = ogre';
+  };
 in
 stdenv.mkDerivation {
   pname = "opendungeons";

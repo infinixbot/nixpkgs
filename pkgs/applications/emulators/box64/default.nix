@@ -82,9 +82,14 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   passthru = {
-    updateScript = gitUpdater { rev-prefix = "v"; };
+    updateScript = gitUpdater {
+      rev-prefix = "v";
+    };
     tests.hello =
-      runCommand "box64-test-hello" { nativeBuildInputs = [ finalAttrs.finalPackage ]; }
+      runCommand "box64-test-hello"
+        {
+          nativeBuildInputs = [ finalAttrs.finalPackage ];
+        }
         # There is no actual "Hello, world!" with any of the logging enabled, and with all logging disabled it's hard to
         # tell what problems the emulator has run into.
         ''

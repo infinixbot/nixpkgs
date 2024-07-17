@@ -59,20 +59,24 @@ let
       src,
       patchCommands,
     }:
-    runCommand "${name}-k2pdfopt.patch" { inherit src; } ''
-      source $stdenv/setup
-      unpackPhase
+    runCommand "${name}-k2pdfopt.patch"
+      {
+        inherit src;
+      }
+      ''
+        source $stdenv/setup
+        unpackPhase
 
-      orig=$sourceRoot
-      new=$sourceRoot-modded
-      cp -r $orig/. $new/
+        orig=$sourceRoot
+        new=$sourceRoot-modded
+        cp -r $orig/. $new/
 
-      pushd $new >/dev/null
-      ${patchCommands}
-      popd >/dev/null
+        pushd $new >/dev/null
+        ${patchCommands}
+        popd >/dev/null
 
-      diff -Naur $orig $new > $out || true
-    '';
+        diff -Naur $orig $new > $out || true
+      '';
 
   pname = "k2pdfopt";
   version = "2.55";

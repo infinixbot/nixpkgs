@@ -35,7 +35,9 @@ let
 
     # Modify flutter-tool's system platform in order to get the desired platform's hashes.
     flutter = flutter.unwrapped.override {
-      flutterTools = flutter.unwrapped.tools.override { inherit systemPlatform; };
+      flutterTools = flutter.unwrapped.tools.override {
+        inherit systemPlatform;
+      };
     };
   };
 in

@@ -25,7 +25,9 @@ in
 
       enable = mkEnableOption "heartbeat, uptime monitoring";
 
-      package = mkPackageOption pkgs "heartbeat" { example = "heartbeat7"; };
+      package = mkPackageOption pkgs "heartbeat" {
+        example = "heartbeat7";
+      };
 
       name = mkOption {
         type = types.str;

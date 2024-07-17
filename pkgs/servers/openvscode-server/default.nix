@@ -28,7 +28,9 @@
 let
   system = stdenv.hostPlatform.system;
 
-  yarn' = yarn.override { inherit nodejs; };
+  yarn' = yarn.override {
+    inherit nodejs;
+  };
   defaultYarnOpts = [
     "frozen-lockfile"
     "non-interactive"

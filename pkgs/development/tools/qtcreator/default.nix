@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     cmake
     pkg-config
-    (qttools.override { withClang = true; })
+    (qttools.override {
+      withClang = true;
+    })
     wrapQtAppsHook
     python3
     ninja

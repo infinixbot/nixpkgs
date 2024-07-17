@@ -58,7 +58,9 @@ stdenv.mkDerivation (finalAttrs: {
   doCheck = true;
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "gnome-user-share"; };
+    updateScript = gnome.updateScript {
+      packageName = "gnome-user-share";
+    };
   };
 
   meta = with lib; {

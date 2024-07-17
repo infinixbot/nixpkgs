@@ -55,7 +55,9 @@ in
 
       networking.firewall.allowedTCPPorts = mkIf cfg.openFirewall [ cfg.port ];
 
-      users.groups = mkIf (cfg.group == "komga") { komga = { }; };
+      users.groups = mkIf (cfg.group == "komga") {
+        komga = { };
+      };
 
       users.users = mkIf (cfg.user == "komga") {
         komga = {

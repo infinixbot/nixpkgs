@@ -37,13 +37,17 @@ in
         '';
       };
 
-      package = lib.mkPackageOption pkgs "1Password GUI" { default = [ "_1password-gui" ]; };
+      package = lib.mkPackageOption pkgs "1Password GUI" {
+        default = [ "_1password-gui" ];
+      };
     };
   };
 
   config =
     let
-      package = cfg.package.override { polkitPolicyOwners = cfg.polkitPolicyOwners; };
+      package = cfg.package.override {
+        polkitPolicyOwners = cfg.polkitPolicyOwners;
+      };
     in
     lib.mkIf cfg.enable {
       environment.systemPackages = [ package ];

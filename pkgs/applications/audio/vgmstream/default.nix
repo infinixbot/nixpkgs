@@ -40,14 +40,20 @@ stdenv.mkDerivation rec {
     pkg-config
   ] ++ lib.optional buildAudaciousPlugin gtk3;
 
-  buildInputs = [
-    mpg123
-    ffmpeg
-    libvorbis
-    libao
-    jansson
-    speex
-  ] ++ lib.optional buildAudaciousPlugin (audacious.override { audacious-plugins = null; });
+  buildInputs =
+    [
+      mpg123
+      ffmpeg
+      libvorbis
+      libao
+      jansson
+      speex
+    ]
+    ++ lib.optional buildAudaciousPlugin (
+      audacious.override {
+        audacious-plugins = null;
+      }
+    );
 
   preConfigure = ''
     substituteInPlace cmake/dependencies/audacious.cmake \

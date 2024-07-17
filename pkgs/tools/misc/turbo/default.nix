@@ -66,7 +66,9 @@ rustPlatform.buildRustPackage rec {
         "^\d+\.\d+\.\d+$"
       ];
     };
-    tests.version = testers.testVersion { package = turbo; };
+    tests.version = testers.testVersion {
+      package = turbo;
+    };
   };
 
   meta = with lib; {

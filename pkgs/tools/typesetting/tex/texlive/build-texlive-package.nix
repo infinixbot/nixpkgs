@@ -60,16 +60,20 @@
 let
   # common metadata
   name = "${pname}-${version}${extraVersion}";
-  meta = {
-    license = map (x: lib.licenses.${x}) license;
-    # TeX Live packages should not be installed directly into the user profile
-    outputsToInstall = [ ];
-    longDescription = ''
-      This package cannot be installed or used directly. Please use `texlive.withPackages (ps: [ ps.${lib.strings.escapeNixIdentifier pname} ])`.
-    '';
-    # discourage nix-env from matching this package
-    priority = 10;
-  } // lib.optionalAttrs (args ? shortdesc) { description = args.shortdesc; };
+  meta =
+    {
+      license = map (x: lib.licenses.${x}) license;
+      # TeX Live packages should not be installed directly into the user profile
+      outputsToInstall = [ ];
+      longDescription = ''
+        This package cannot be installed or used directly. Please use `texlive.withPackages (ps: [ ps.${lib.strings.escapeNixIdentifier pname} ])`.
+      '';
+      # discourage nix-env from matching this package
+      priority = 10;
+    }
+    // lib.optionalAttrs (args ? shortdesc) {
+      description = args.shortdesc;
+    };
 
   hasBinfiles = args ? binfiles && args.binfiles != [ ];
   hasDocfiles = sha512 ? doc;
@@ -98,13 +102,27 @@ let
       # containers behave like specified outputs
       outputSpecified = true;
     }
-    // lib.optionalAttrs (args ? deps) { tlDeps = args.deps; }
-    // lib.optionalAttrs (args ? fontMaps) { inherit (args) fontMaps; }
-    // lib.optionalAttrs (args ? formats) { inherit (args) formats; }
-    // lib.optionalAttrs (args ? hyphenPatterns) { inherit (args) hyphenPatterns; }
-    // lib.optionalAttrs (args ? postactionScript) { inherit (args) postactionScript; }
-    // lib.optionalAttrs hasSource { inherit (containers) texsource; }
-    // lib.optionalAttrs (!hasRunfiles) { tex = fakeTeX; };
+    // lib.optionalAttrs (args ? deps) {
+      tlDeps = args.deps;
+    }
+    // lib.optionalAttrs (args ? fontMaps) {
+      inherit (args) fontMaps;
+    }
+    // lib.optionalAttrs (args ? formats) {
+      inherit (args) formats;
+    }
+    // lib.optionalAttrs (args ? hyphenPatterns) {
+      inherit (args) hyphenPatterns;
+    }
+    // lib.optionalAttrs (args ? postactionScript) {
+      inherit (args) postactionScript;
+    }
+    // lib.optionalAttrs hasSource {
+      inherit (containers) texsource;
+    }
+    // lib.optionalAttrs (!hasRunfiles) {
+      tex = fakeTeX;
+    };
 
   # build run, doc, source, tlpkg containers
   mkContainer =
@@ -119,7 +137,9 @@ let
         runCommand "${name}-${tlOutputName}"
           (
             {
-              src = fetchurl { inherit urls sha512; };
+              src = fetchurl {
+                inherit urls sha512;
+              };
               inherit passthru;
               # save outputName, since fixed output derivations cannot change nor override outputName
               inherit meta stripPrefix tlOutputName;

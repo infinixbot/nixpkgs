@@ -58,7 +58,9 @@ assert lib.assertMsg (
 ) "withWaylandGLFW is only available on Linux.";
 
 let
-  prismlauncher' = prismlauncher-unwrapped.override { inherit msaClientID gamemodeSupport; };
+  prismlauncher' = prismlauncher-unwrapped.override {
+    inherit msaClientID gamemodeSupport;
+  };
 in
 
 symlinkJoin {

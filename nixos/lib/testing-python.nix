@@ -1,6 +1,8 @@
 args@{
   system,
-  pkgs ? import ../.. { inherit system config; },
+  pkgs ? import ../.. {
+    inherit system config;
+  },
   # Use a minimal kernel?
   minimal ? false,
   # Ignored
@@ -11,7 +13,9 @@ args@{
   extraConfigurations ? [ ],
 }:
 let
-  nixos-lib = import ./default.nix { inherit (pkgs) lib; };
+  nixos-lib = import ./default.nix {
+    inherit (pkgs) lib;
+  };
 in
 
 pkgs.lib.throwIf (args ? specialArgs)

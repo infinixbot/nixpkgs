@@ -172,7 +172,9 @@ let
         exePathForLibraryCheck = null;
         archSpecificLibraries = [
           {
-            nixPackage = gmp.override { withStatic = true; };
+            nixPackage = gmp.override {
+              withStatic = true;
+            };
             fileToCheckFor = null;
           }
         ];

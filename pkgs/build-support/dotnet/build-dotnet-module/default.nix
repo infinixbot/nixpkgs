@@ -101,7 +101,10 @@ let
     else
       dotnet-sdk.meta.platforms;
 
-  inherit (callPackage ./hooks { inherit dotnet-sdk dotnet-runtime; })
+  inherit
+    (callPackage ./hooks {
+      inherit dotnet-sdk dotnet-runtime;
+    })
     dotnetConfigureHook
     dotnetBuildHook
     dotnetCheckHook
@@ -257,7 +260,9 @@ stdenvNoCC.mkDerivation (
               coreutils
               runtimeShellPackage
               dotnet-sdk
-              (nuget-to-nix.override { inherit dotnet-sdk; })
+              (nuget-to-nix.override {
+                inherit dotnet-sdk;
+              })
             ];
             dotnetSdkPath = toString dotnet-sdk;
             excludedSources = lib.concatStringsSep " " (map lib.escapeShellArg sdkDeps);

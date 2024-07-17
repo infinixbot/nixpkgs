@@ -94,13 +94,17 @@ let
 
   rewriteHashes =
     drv: hashes:
-    runCommandLocal (drvName drv) { nixStore = "${nix.out}/bin/nix-store"; } ''
-      $nixStore --dump ${drv} | sed 's|${baseNameOf drv}|'$(basename $out)'|g' | sed -e ${
-        concatStringsSep " -e " (
-          mapAttrsToList (name: value: "'s|${baseNameOf name}|${baseNameOf value}|g'") hashes
-        )
-      } | $nixStore --restore $out
-    '';
+    runCommandLocal (drvName drv)
+      {
+        nixStore = "${nix.out}/bin/nix-store";
+      }
+      ''
+        $nixStore --dump ${drv} | sed 's|${baseNameOf drv}|'$(basename $out)'|g' | sed -e ${
+          concatStringsSep " -e " (
+            mapAttrsToList (name: value: "'s|${baseNameOf name}|${baseNameOf value}|g'") hashes
+          )
+        } | $nixStore --restore $out
+      '';
 
   rewrittenDeps = listToAttrs [
     {

@@ -13,21 +13,25 @@ let
   inherit (lib) cmakeBool;
 
   # 2.3.1 is the only supported version
-  box2d' = (box2d.override { settingsFile = "Box2D/Common/b2Settings.h"; }).overrideAttrs (old: rec {
-    version = "2.3.1";
-    src = fetchFromGitHub {
-      owner = "erincatto";
-      repo = "box2d";
-      rev = "v${version}";
-      hash = "sha256-Z2J17YMzQNZqABIa5eyJDT7BWfXveymzs+DWsrklPIs=";
-    };
-    sourceRoot = "source/Box2D";
-    cmakeFlags = old.cmakeFlags or [ ] ++ [
-      (cmakeBool "BOX2D_INSTALL" true)
-      (cmakeBool "BOX2D_BUILD_SHARED" true)
-      (cmakeBool "BOX2D_BUILD_EXAMPLES" false)
-    ];
-  });
+  box2d' =
+    (box2d.override {
+      settingsFile = "Box2D/Common/b2Settings.h";
+    }).overrideAttrs
+      (old: rec {
+        version = "2.3.1";
+        src = fetchFromGitHub {
+          owner = "erincatto";
+          repo = "box2d";
+          rev = "v${version}";
+          hash = "sha256-Z2J17YMzQNZqABIa5eyJDT7BWfXveymzs+DWsrklPIs=";
+        };
+        sourceRoot = "source/Box2D";
+        cmakeFlags = old.cmakeFlags or [ ] ++ [
+          (cmakeBool "BOX2D_INSTALL" true)
+          (cmakeBool "BOX2D_BUILD_SHARED" true)
+          (cmakeBool "BOX2D_BUILD_EXAMPLES" false)
+        ];
+      });
 
 in
 stdenv.mkDerivation {

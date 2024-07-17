@@ -270,26 +270,30 @@ let
         };
       }; # end of configfile derivation
 
-      kernel = (callPackage ./manual-config.nix { inherit lib stdenv buildPackages; }) (
-        basicArgs
-        // {
-          inherit
-            kernelPatches
-            randstructSeed
-            extraMakeFlags
-            extraMeta
-            configfile
-            modDirVersion
-            ;
-          pos = builtins.unsafeGetAttrPos "version" args;
+      kernel =
+        (callPackage ./manual-config.nix {
+          inherit lib stdenv buildPackages;
+        })
+          (
+            basicArgs
+            // {
+              inherit
+                kernelPatches
+                randstructSeed
+                extraMakeFlags
+                extraMeta
+                configfile
+                modDirVersion
+                ;
+              pos = builtins.unsafeGetAttrPos "version" args;
 
-          config = {
-            CONFIG_MODULES = "y";
-            CONFIG_FW_LOADER = "m";
-            CONFIG_RUST = if withRust then "y" else "n";
-          };
-        }
-      );
+              config = {
+                CONFIG_MODULES = "y";
+                CONFIG_FW_LOADER = "m";
+                CONFIG_RUST = if withRust then "y" else "n";
+              };
+            }
+          );
 
     in
     kernel.overrideAttrs (
@@ -339,7 +343,9 @@ let
                   { config, pkgs, ... }:
                   {
                     boot.kernelPatches = [
-                      (builtins.seq config.boot.kernelPackages.kernel.version { patch = pkgs.emptyFile; })
+                      (builtins.seq config.boot.kernelPackages.kernel.version {
+                        patch = pkgs.emptyFile;
+                      })
                     ];
                   }
                 )).config.boot.kernelPackages.kernel.outPath emptyFile;

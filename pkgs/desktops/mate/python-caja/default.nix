@@ -36,7 +36,9 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  passthru.updateScript = mateUpdateScript { inherit pname; };
+  passthru.updateScript = mateUpdateScript {
+    inherit pname;
+  };
 
   meta = with lib; {
     description = "Python binding for Caja components";

@@ -174,11 +174,19 @@ rustPlatform.buildRustPackage rec {
 
   passthru = {
     tests = {
-      version = testers.testVersion { package = mistral-rs; };
+      version = testers.testVersion {
+        package = mistral-rs;
+      };
 
-      withMkl = mistral-rs.override { acceleration = "mkl"; };
-      withCuda = mistral-rs.override { acceleration = "cuda"; };
-      withMetal = mistral-rs.override { acceleration = "metal"; };
+      withMkl = mistral-rs.override {
+        acceleration = "mkl";
+      };
+      withCuda = mistral-rs.override {
+        acceleration = "cuda";
+      };
+      withMetal = mistral-rs.override {
+        acceleration = "metal";
+      };
     };
   };
 

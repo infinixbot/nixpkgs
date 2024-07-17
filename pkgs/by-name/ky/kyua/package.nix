@@ -104,7 +104,9 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postInstallCheck
   '';
 
-  passthru.updateScript = unstableGitUpdater { tagPrefix = "kyua-"; };
+  passthru.updateScript = unstableGitUpdater {
+    tagPrefix = "kyua-";
+  };
 
   __structuredAttrs = true;
 

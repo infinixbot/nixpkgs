@@ -81,7 +81,9 @@ in
         };
       };
       dirs = {
-        log = optionalPath { description = "Where to store below's logs"; };
+        log = optionalPath {
+          description = "Where to store below's logs";
+        };
         store = optionalPath {
           description = "Where to store below's data";
           example = "/var/lib/below";

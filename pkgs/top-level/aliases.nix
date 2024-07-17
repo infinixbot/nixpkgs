@@ -153,7 +153,11 @@ mapAliases ({
     lib.warn
       "blender-with-packages is deprecated in favor of blender.withPackages, e.g. `blender.withPackages(ps: [ ps.foobar ])`"
       (blender.withPackages (_: args.packages)).overrideAttrs
-      (lib.optionalAttrs (args ? name) { pname = "blender-" + args.name; }); # Added 2023-10-30
+      (
+        lib.optionalAttrs (args ? name) {
+          pname = "blender-" + args.name;
+        }
+      ); # Added 2023-10-30
   blockbench-electron = blockbench; # Added 2024-03-16
   bluezFull = throw "'bluezFull' has been renamed to/replaced by 'bluez'"; # Converted to throw 2023-09-10
   bookletimposer = throw "bookletimposer has been removed from nixpkgs; upstream unmaintained and broke with pypdf3"; # Added 2024-01-01
@@ -1399,10 +1403,16 @@ mapAliases ({
   tootle = throw "'tootle' has been removed as it is not maintained upstream. Consider using 'tuba' instead"; # Added 2024-02-11
   tor-browser-bundle-bin = tor-browser; # Added 2023-09-23
   transmission = lib.warn (transmission3Warning { }) transmission_3; # Added 2024-06-10
-  transmission-gtk = lib.warn (transmission3Warning { suffix = "-gtk"; }) transmission_3-gtk; # Added 2024-06-10
-  transmission-qt = lib.warn (transmission3Warning { suffix = "-qt"; }) transmission_3-qt; # Added 2024-06-10
+  transmission-gtk = lib.warn (transmission3Warning {
+    suffix = "-gtk";
+  }) transmission_3-gtk; # Added 2024-06-10
+  transmission-qt = lib.warn (transmission3Warning {
+    suffix = "-qt";
+  }) transmission_3-qt; # Added 2024-06-10
   treefmt = treefmt2; # 2024-06-28
-  libtransmission = lib.warn (transmission3Warning { prefix = "lib"; }) libtransmission_3; # Added 2024-06-10
+  libtransmission = lib.warn (transmission3Warning {
+    prefix = "lib";
+  }) libtransmission_3; # Added 2024-06-10
   transfig = fig2dev; # Added 2022-02-15
   transifex-client = transifex-cli; # Added 2023-12-29
   trezor_agent = trezor-agent; # Added 2024-01-07

@@ -49,7 +49,9 @@ stdenv.mkDerivation (finalAttrs: {
   pytestFlagsArray = [ "../tests" ];
 
   passthru.tests = {
-    version = testers.testVersion { package = finalAttrs.finalPackage; };
+    version = testers.testVersion {
+      package = finalAttrs.finalPackage;
+    };
   };
 
   meta = {

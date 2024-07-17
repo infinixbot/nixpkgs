@@ -107,7 +107,9 @@ stdenv.mkDerivation (finalAttrs: {
     # nix-build -A ghdl-llvm.passthru.tests
     # nix-build -A ghdl-gcc.passthru.tests
     tests = {
-      simple = callPackage ./test-simple.nix { inherit backend; };
+      simple = callPackage ./test-simple.nix {
+        inherit backend;
+      };
     };
   };
 

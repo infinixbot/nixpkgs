@@ -24,8 +24,12 @@ let
   pinData = import ./pin.nix;
   inherit (pinData.hashes) desktopSrcHash desktopYarnHash;
   executableName = "element-desktop";
-  keytar = callPackage ./keytar { inherit Security AppKit; };
-  seshat = callPackage ./seshat { inherit CoreServices; };
+  keytar = callPackage ./keytar {
+    inherit Security AppKit;
+  };
+  seshat = callPackage ./seshat {
+    inherit CoreServices;
+  };
 in
 stdenv.mkDerivation (
   finalAttrs:

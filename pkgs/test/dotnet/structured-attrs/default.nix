@@ -23,7 +23,11 @@ let
   };
 in
 {
-  no-structured-attrs = testers.testBuildFailure (app.overrideAttrs { __structuredAttrs = false; });
+  no-structured-attrs = testers.testBuildFailure (
+    app.overrideAttrs {
+      __structuredAttrs = false;
+    }
+  );
 
   check-output = testers.testEqualContents {
     assertion = "buildDotnetModule sets AssemblyCopyrightAttribute with structured attributes";

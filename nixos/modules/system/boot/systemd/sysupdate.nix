@@ -9,7 +9,9 @@
 let
   cfg = config.systemd.sysupdate;
 
-  format = pkgs.formats.ini { listToValue = toString; };
+  format = pkgs.formats.ini {
+    listToValue = toString;
+  };
 
   definitionsDirectory = utils.systemdUtils.lib.definitions "sysupdate.d" format cfg.transfers;
 in

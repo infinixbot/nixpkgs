@@ -36,7 +36,13 @@ in
       };
       vgpus = mkOption {
         default = { };
-        type = with types; attrsOf (submodule [ { options = vgpuOptions; } ]);
+        type =
+          with types;
+          attrsOf (submodule [
+            {
+              options = vgpuOptions;
+            }
+          ]);
         description = ''
           Virtual GPUs to be used in Qemu. You can find devices via {command}`ls /sys/bus/pci/devices/*/mdev_supported_types`
           and find info about device via {command}`cat /sys/bus/pci/devices/*/mdev_supported_types/i915-GVTg_V5_4/description`

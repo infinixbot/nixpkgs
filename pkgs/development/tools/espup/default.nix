@@ -66,7 +66,9 @@ rustPlatform.buildRustPackage rec {
       --zsh <($out/bin/espup completions zsh)
   '';
 
-  passthru.tests.version = testers.testVersion { package = espup; };
+  passthru.tests.version = testers.testVersion {
+    package = espup;
+  };
 
   meta = with lib; {
     description = "Tool for installing and maintaining Espressif Rust ecosystem";

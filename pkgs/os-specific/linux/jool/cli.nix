@@ -10,7 +10,9 @@
 }:
 
 let
-  sourceAttrs = (import ./source.nix) { inherit fetchFromGitHub; };
+  sourceAttrs = (import ./source.nix) {
+    inherit fetchFromGitHub;
+  };
 in
 
 stdenv.mkDerivation {

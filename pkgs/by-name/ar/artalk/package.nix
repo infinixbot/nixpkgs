@@ -55,7 +55,9 @@ buildGoModule rec {
     '';
 
   passthru.tests = {
-    version = testers.testVersion { package = artalk; };
+    version = testers.testVersion {
+      package = artalk;
+    };
   };
 
   meta = {

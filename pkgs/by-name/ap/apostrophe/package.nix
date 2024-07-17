@@ -35,7 +35,9 @@ let
   });
 
   libspelling-patched =
-    (libspelling.override { gtksourceview5 = gtksourceview5-patched; }).overrideAttrs
+    (libspelling.override {
+      gtksourceview5 = gtksourceview5-patched;
+    }).overrideAttrs
       (prev: {
         patches = (prev.patches or [ ]) ++ [ "${src}/build-aux/flatpak/libspelling_text_commits.patch" ];
       });

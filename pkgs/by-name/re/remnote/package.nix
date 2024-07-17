@@ -11,7 +11,9 @@ let
     url = "https://download2.remnote.io/remnote-desktop2/RemNote-${version}.AppImage";
     hash = "sha256-mF+6QL7ApPX1BAoPMbPGBUCJVNfa4W4VVu0E3MTzens=";
   };
-  appimageContents = appimageTools.extractType2 { inherit pname version src; };
+  appimageContents = appimageTools.extractType2 {
+    inherit pname version src;
+  };
 in
 appimageTools.wrapType2 {
   inherit pname version src;

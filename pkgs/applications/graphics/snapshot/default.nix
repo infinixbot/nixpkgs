@@ -54,7 +54,9 @@ stdenv.mkDerivation (finalAttrs: {
     )
   '';
 
-  passthru.updateScript = gnome.updateScript { packageName = "snapshot"; };
+  passthru.updateScript = gnome.updateScript {
+    packageName = "snapshot";
+  };
 
   meta = with lib; {
     homepage = "https://gitlab.gnome.org/GNOME/snapshot";

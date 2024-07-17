@@ -10,5 +10,7 @@ let
   ];
 in
 {
-  standard = handleTestOn supportedSystems ./standard.nix { inherit system; };
+  standard = handleTestOn supportedSystems ./standard.nix {
+    inherit system;
+  };
 }

@@ -57,7 +57,9 @@ in
 
       enable = mkEnableOption "spacecookie";
 
-      package = mkPackageOption pkgs "spacecookie" { example = "haskellPackages.spacecookie"; };
+      package = mkPackageOption pkgs "spacecookie" {
+        example = "haskellPackages.spacecookie";
+      };
 
       openFirewall = mkOption {
         type = types.bool;
@@ -232,6 +234,8 @@ in
       };
     };
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.port ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.port ];
+    };
   };
 }

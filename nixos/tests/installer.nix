@@ -1,11 +1,15 @@
 {
   system ? builtins.currentSystem,
   config ? { },
-  pkgs ? import ../.. { inherit system config; },
+  pkgs ? import ../.. {
+    inherit system config;
+  },
   systemdStage1 ? false,
 }:
 
-with import ../lib/testing-python.nix { inherit system pkgs; };
+with import ../lib/testing-python.nix {
+  inherit system pkgs;
+};
 with pkgs.lib;
 
 let
@@ -705,8 +709,12 @@ let
                   zfsSupport = extraInstallerConfig.boot.supportedFilesystems.zfs or false;
                 in
                 [
-                  (pkgs.grub2.override { inherit zfsSupport; })
-                  (pkgs.grub2_efi.override { inherit zfsSupport; })
+                  (pkgs.grub2.override {
+                    inherit zfsSupport;
+                  })
+                  (pkgs.grub2_efi.override {
+                    inherit zfsSupport;
+                  })
                 ]
               )
               ++ optionals (bootLoader == "systemd-boot") [
@@ -1650,12 +1658,20 @@ in
 }
 // {
   clevisBcachefs = mkClevisBcachefsTest { };
-  clevisBcachefsFallback = mkClevisBcachefsTest { fallback = true; };
+  clevisBcachefsFallback = mkClevisBcachefsTest {
+    fallback = true;
+  };
   clevisLuks = mkClevisLuksTest { };
-  clevisLuksFallback = mkClevisLuksTest { fallback = true; };
+  clevisLuksFallback = mkClevisLuksTest {
+    fallback = true;
+  };
   clevisZfs = mkClevisZfsTest { };
-  clevisZfsFallback = mkClevisZfsTest { fallback = true; };
-  clevisZfsParentDataset = mkClevisZfsTest { parentDataset = true; };
+  clevisZfsFallback = mkClevisZfsTest {
+    fallback = true;
+  };
+  clevisZfsParentDataset = mkClevisZfsTest {
+    parentDataset = true;
+  };
   clevisZfsParentDatasetFallback = mkClevisZfsTest {
     parentDataset = true;
     fallback = true;

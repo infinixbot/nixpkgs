@@ -20,7 +20,9 @@ in
           setcap wrapper for 'dumpcap' for users in the 'wireshark' group.
         '';
       };
-      package = lib.mkPackageOption pkgs "wireshark-cli" { example = "wireshark"; };
+      package = lib.mkPackageOption pkgs "wireshark-cli" {
+        example = "wireshark";
+      };
     };
   };
 

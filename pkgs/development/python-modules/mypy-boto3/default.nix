@@ -19,7 +19,9 @@ let
 
       disabled = pythonOlder "3.7";
 
-      src = fetchPypi { inherit pname version hash; };
+      src = fetchPypi {
+        inherit pname version hash;
+      };
 
       build-system = [ setuptools ];
 

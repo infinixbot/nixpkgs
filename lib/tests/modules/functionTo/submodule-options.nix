@@ -16,7 +16,13 @@ in
       {
         options = {
           fun = lib.mkOption {
-            type = types.functionTo (types.submodule { options.a = lib.mkOption { default = "a"; }; });
+            type = types.functionTo (
+              types.submodule {
+                options.a = lib.mkOption {
+                  default = "a";
+                };
+              }
+            );
           };
         };
       }
@@ -28,7 +34,13 @@ in
       {
         options = {
           fun = lib.mkOption {
-            type = types.functionTo (types.submodule { options.b = lib.mkOption { default = "b"; }; });
+            type = types.functionTo (
+              types.submodule {
+                options.b = lib.mkOption {
+                  default = "b";
+                };
+              }
+            );
           };
         };
       }
@@ -55,5 +67,9 @@ in
     };
   };
 
-  config.fun = lib.mkMerge [ (input: { b = "bee"; }) ];
+  config.fun = lib.mkMerge [
+    (input: {
+      b = "bee";
+    })
+  ];
 }

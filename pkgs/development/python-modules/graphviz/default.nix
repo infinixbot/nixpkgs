@@ -44,7 +44,9 @@ buildPythonPackage rec {
   '';
 
   # Fontconfig error: Cannot load default config file
-  FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ freefont_ttf ]; };
+  FONTCONFIG_FILE = makeFontsConf {
+    fontDirectories = [ freefont_ttf ];
+  };
 
   build-system = [ setuptools ];
 

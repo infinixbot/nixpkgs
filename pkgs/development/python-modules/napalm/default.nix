@@ -58,7 +58,9 @@ buildPythonPackage rec {
     netaddr
     netmiko
     # breaks infinite recursion
-    (netutils.override { napalm = null; })
+    (netutils.override {
+      napalm = null;
+    })
     paramiko
     pyeapi
     pyyaml

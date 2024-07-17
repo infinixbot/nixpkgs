@@ -12,18 +12,31 @@ in
         type = types.submodule (
           { config, extendModules, ... }:
           {
-            options.value = mkOption { type = types.int; };
+            options.value = mkOption {
+              type = types.int;
+            };
 
             options.specialisation = mkOption {
               default = { };
-              inherit (extendModules { modules = [ { specialisation = mkOverride 0 { }; } ]; }) type;
+              inherit
+                (extendModules {
+                  modules = [
+                    {
+                      specialisation = mkOverride 0 { };
+                    }
+                  ];
+                })
+                type
+                ;
             };
           }
         );
       };
     }
 
-    { config.sub.value = 1; }
+    {
+      config.sub.value = 1;
+    }
 
   ];
 }

@@ -20,7 +20,9 @@ rustPlatform.buildRustPackage rec {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests.version = testers.testVersion { package = commitlint-rs; };
+    tests.version = testers.testVersion {
+      package = commitlint-rs;
+    };
   };
 
   meta = with lib; {

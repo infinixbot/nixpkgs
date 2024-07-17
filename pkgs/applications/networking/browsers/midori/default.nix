@@ -39,7 +39,9 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs = [
-    (libsoup.override { gnomeSupport = true; })
+    (libsoup.override {
+      gnomeSupport = true;
+    })
     gcr
     glib-networking
     gsettings-desktop-schemas

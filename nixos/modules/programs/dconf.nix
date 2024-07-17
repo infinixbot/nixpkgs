@@ -18,18 +18,22 @@ let
   # Check if dconf keyfiles are valid
   checkDconfKeyfiles =
     dir:
-    pkgs.runCommand "check-dconf-keyfiles" { nativeBuildInputs = [ (lib.getBin pkgs.dconf) ]; } ''
-      if [[ -f ${dir} ]]; then
-        echo "dconf keyfiles should be a directory but a file is provided: ${dir}"
-        exit 1
-      fi
+    pkgs.runCommand "check-dconf-keyfiles"
+      {
+        nativeBuildInputs = [ (lib.getBin pkgs.dconf) ];
+      }
+      ''
+        if [[ -f ${dir} ]]; then
+          echo "dconf keyfiles should be a directory but a file is provided: ${dir}"
+          exit 1
+        fi
 
-      dconf compile db ${dir} || (
-        echo "The dconf keyfiles are invalid: ${dir}"
-        exit 1
-      )
-      cp -R ${dir} $out
-    '';
+        dconf compile db ${dir} || (
+          echo "The dconf keyfiles are invalid: ${dir}"
+          exit 1
+        )
+        cp -R ${dir} $out
+      '';
 
   mkAllLocks =
     settings:
@@ -54,22 +58,26 @@ let
   # open the database file so we have to check if the output is empty.
   checkDconfDb =
     file:
-    pkgs.runCommand "check-dconf-db" { nativeBuildInputs = [ (lib.getBin pkgs.dconf) ]; } ''
-      if [[ -d ${file} ]]; then
-        echo "dconf DB should be a file but a directory is provided: ${file}"
-        exit 1
-      fi
+    pkgs.runCommand "check-dconf-db"
+      {
+        nativeBuildInputs = [ (lib.getBin pkgs.dconf) ];
+      }
+      ''
+        if [[ -d ${file} ]]; then
+          echo "dconf DB should be a file but a directory is provided: ${file}"
+          exit 1
+        fi
 
-      echo "file-db:${file}" > profile
-      DCONF_PROFILE=$(pwd)/profile dconf dump / > output 2> error
-      if [[ ! -s output ]] && [[ -s error ]]; then
-        cat error
-        echo "The dconf DB file is invalid: ${file}"
-        exit 1
-      fi
+        echo "file-db:${file}" > profile
+        DCONF_PROFILE=$(pwd)/profile dconf dump / > output 2> error
+        if [[ ! -s output ]] && [[ -s error ]]; then
+          cat error
+          echo "The dconf DB file is invalid: ${file}"
+          exit 1
+        fi
 
-      cp ${file} $out
-    '';
+        cp ${file} $out
+      '';
 
   # Generate dconf profile
   mkDconfProfile =

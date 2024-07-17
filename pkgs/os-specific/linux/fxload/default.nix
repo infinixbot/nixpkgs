@@ -20,7 +20,9 @@ stdenv.mkDerivation rec {
     ln -s ${passthru.libusb}/examples/bin/fxload $out/bin/fxload
   '';
 
-  passthru.libusb = libusb1.override { withExamples = true; };
+  passthru.libusb = libusb1.override {
+    withExamples = true;
+  };
 
   meta = with lib; {
     homepage = "https://github.com/libusb/libusb";

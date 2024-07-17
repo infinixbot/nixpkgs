@@ -22,8 +22,15 @@ let
         (lib.mapAttrsToList (key: map (val: "${key}: ${val}")))
         lib.concatLists
       ];
-      include = mkLines { Include = conf.Include or [ ]; };
-      other = mkLines (conf // { Include = [ ]; });
+      include = mkLines {
+        Include = conf.Include or [ ];
+      };
+      other = mkLines (
+        conf
+        // {
+          Include = [ ];
+        }
+      );
     in
     pkgs.writeText "hylafax-config${name}" (concatStringsSep "\n" (include ++ other));
 
@@ -92,8 +99,12 @@ let
   };
 
   timers = mkMerge [
-    (mkIf (cfg.faxcron.enable.frequency != null) { hylafax-faxcron.timerConfig.Persistent = true; })
-    (mkIf (cfg.faxqclean.enable.frequency != null) { hylafax-faxqclean.timerConfig.Persistent = true; })
+    (mkIf (cfg.faxcron.enable.frequency != null) {
+      hylafax-faxcron.timerConfig.Persistent = true;
+    })
+    (mkIf (cfg.faxqclean.enable.frequency != null) {
+      hylafax-faxqclean.timerConfig.Persistent = true;
+    })
   ];
 
   hardenService =
@@ -122,7 +133,11 @@ let
       filter = key: value: (value != null) || !(lib.hasAttr key hardening);
       apply = service: lib.filterAttrs filter (hardening // (service.serviceConfig or { }));
     in
-    service: service // { serviceConfig = apply service; };
+    service:
+    service
+    // {
+      serviceConfig = apply service;
+    };
 
   services.hylafax-spool = {
     description = "HylaFAX spool area preparation";

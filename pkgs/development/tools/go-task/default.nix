@@ -50,7 +50,9 @@ buildGoModule rec {
   '';
 
   passthru.tests = {
-    version = testers.testVersion { package = go-task; };
+    version = testers.testVersion {
+      package = go-task;
+    };
   };
 
   meta = with lib; {

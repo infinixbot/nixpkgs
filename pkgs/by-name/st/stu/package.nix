@@ -28,7 +28,9 @@ rustPlatform.buildRustPackage {
     darwin.apple_sdk.frameworks.CoreGraphics
   ];
 
-  passthru.tests.version = testers.testVersion { package = stu; };
+  passthru.tests.version = testers.testVersion {
+    package = stu;
+  };
 
   meta = {
     description = "Terminal file explorer for S3 buckets";

@@ -10,7 +10,9 @@
 }:
 
 let
-  maven' = maven.override { jdk = jdk8; };
+  maven' = maven.override {
+    jdk = jdk8;
+  };
 
   mvnDepsHashes = {
     "x86_64-linux" = "sha256-M8O1EJtlTm+mVy/qxapRcBWxD14eYL/LLUxP2uOBoM4=";

@@ -32,7 +32,9 @@ buildGoModule rec {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests.version = testers.testVersion { package = mautrix-discord; };
+    tests.version = testers.testVersion {
+      package = mautrix-discord;
+    };
   };
 
   meta = with lib; {

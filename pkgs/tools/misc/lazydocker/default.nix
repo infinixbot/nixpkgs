@@ -34,7 +34,9 @@ buildGoModule rec {
     "-X main.version=${version}"
   ];
 
-  passthru.tests.version = testers.testVersion { package = lazydocker; };
+  passthru.tests.version = testers.testVersion {
+    package = lazydocker;
+  };
 
   meta = with lib; {
     description = "Simple terminal UI for both docker and docker-compose";

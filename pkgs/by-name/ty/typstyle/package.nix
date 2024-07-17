@@ -44,7 +44,9 @@ rustPlatform.buildRustPackage rec {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests.version = testers.testVersion { package = typstyle; };
+    tests.version = testers.testVersion {
+      package = typstyle;
+    };
   };
 
   meta = {

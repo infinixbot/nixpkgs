@@ -77,7 +77,9 @@ buildGoModule rec {
       install ${src}/default-policy.json -Dt $out
     '';
     tests = {
-      version = testers.testVersion { package = skopeo; };
+      version = testers.testVersion {
+        package = skopeo;
+      };
       inherit (dockerTools.examples) testNixFromDockerHub;
     };
   };

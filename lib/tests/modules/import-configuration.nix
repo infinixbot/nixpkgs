@@ -1,6 +1,8 @@
 { lib, ... }:
 let
-  myconf = lib.evalModules { modules = [ { } ]; };
+  myconf = lib.evalModules {
+    modules = [ { } ];
+  };
 in
 {
   imports = [

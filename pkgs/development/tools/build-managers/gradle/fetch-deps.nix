@@ -148,7 +148,9 @@ let
       {
         ${url} =
           if builtins.isString v then
-            { hash = v; }
+            {
+              hash = v;
+            }
           else
             {
               text =
@@ -169,9 +171,13 @@ let
                   ) jarPomList;
 
                   uniqueVersionFiles = builtins.map ({ i, x }: x) (
-                    builtins.filter (
-                      { i, x }: i == 0 || (builtins.elemAt sortedJarPomList (i - 1)).version != x.version
-                    ) (lib.imap0 (i: x: { inherit i x; }) sortedJarPomList)
+                    builtins.filter
+                      ({ i, x }: i == 0 || (builtins.elemAt sortedJarPomList (i - 1)).version != x.version)
+                      (
+                        lib.imap0 (i: x: {
+                          inherit i x;
+                        }) sortedJarPomList
+                      )
                   );
                   uniqueVersions' = map (x: x.version) uniqueVersionFiles;
                   releaseVersions = map (x: x.version) (builtins.filter (x: !x.isSnapshot) uniqueVersionFiles);

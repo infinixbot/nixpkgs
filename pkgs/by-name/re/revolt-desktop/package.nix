@@ -39,7 +39,9 @@
           sha256 = "sha256-Wsm6ef2Reenq3/aKGaP2yzlOuLKaxKtRHCLLMxvWUUY=";
         };
 
-        appimageContents = appimageTools.extractType2 { inherit (final) src pname version; };
+        appimageContents = appimageTools.extractType2 {
+          inherit (final) src pname version;
+        };
 
         dontUnpack = true;
 

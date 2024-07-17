@@ -22,7 +22,9 @@ in
     services.cockpit = {
       enable = mkEnableOption "Cockpit";
 
-      package = mkPackageOption pkgs "Cockpit" { default = [ "cockpit" ]; };
+      package = mkPackageOption pkgs "Cockpit" {
+        default = [ "cockpit" ];
+      };
 
       settings = lib.mkOption {
         type = settingsFormat.type;

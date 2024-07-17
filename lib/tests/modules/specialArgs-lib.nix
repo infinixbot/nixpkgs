@@ -20,7 +20,10 @@
       ... # note the lack of a `lib` argument
     }:
     assert args.lib == { };
-    assert args.specialArgs == { lib = { }; };
+    assert
+      args.specialArgs == {
+        lib = { };
+      };
     {
       options.foo = lib.mkOption { };
       config.foo = lib.mkIf true "alright";

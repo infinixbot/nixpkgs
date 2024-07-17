@@ -26,8 +26,12 @@ let
   };
 
   libtensorflow = pkgs.callPackage ./libtensorflow.nix { };
-  backend = pkgs.callPackage ./backend.nix { inherit libtensorflow src version; };
-  frontend = pkgs.callPackage ./frontend.nix { inherit src version; };
+  backend = pkgs.callPackage ./backend.nix {
+    inherit libtensorflow src version;
+  };
+  frontend = pkgs.callPackage ./frontend.nix {
+    inherit src version;
+  };
 
   fetchModel =
     { name, hash }:
@@ -88,7 +92,9 @@ stdenv.mkDerivation {
     runHook postInstall
   '';
 
-  passthru.tests.version = testers.testVersion { package = pkgs.photoprism; };
+  passthru.tests.version = testers.testVersion {
+    package = pkgs.photoprism;
+  };
 
   meta = with lib; {
     homepage = "https://photoprism.app";

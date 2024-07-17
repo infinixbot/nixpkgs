@@ -11,9 +11,20 @@ let
   version = "2.2.0";
 
   # { <name> = { name = "..."; propagatedBuildInputs = [ ... ]; buildInputs = [ ... ]; } }
-  allPlugins = lib.mapAttrs (name: value: value // { inherit name; }) (
-    import ./plugins.nix { inherit pkgs python; }
-  );
+  allPlugins =
+    lib.mapAttrs
+      (
+        name: value:
+        value
+        // {
+          inherit name;
+        }
+      )
+      (
+        import ./plugins.nix {
+          inherit pkgs python;
+        }
+      );
 
   # [ { name = "..."; propagatedBuildInputs = [ ... ]; buildInputs = [ ... ]; } ]
   selectedPlugins = plugins allPlugins;

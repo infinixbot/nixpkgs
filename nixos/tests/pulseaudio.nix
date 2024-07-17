@@ -42,11 +42,15 @@ let
 
           {
             imports = [ ./common/wayland-cage.nix ];
-            hardware.pulseaudio = {
-              enable = true;
-              support32Bit = true;
-              inherit systemWide;
-            } // lib.optionalAttrs fullVersion { package = pkgs.pulseaudioFull; };
+            hardware.pulseaudio =
+              {
+                enable = true;
+                support32Bit = true;
+                inherit systemWide;
+              }
+              // lib.optionalAttrs fullVersion {
+                package = pkgs.pulseaudioFull;
+              };
 
             environment.systemPackages = [
               testers.testPlay

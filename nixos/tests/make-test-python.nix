@@ -9,7 +9,9 @@ f:
   ...
 }@args:
 
-with import ../lib/testing-python.nix { inherit system pkgs; };
+with import ../lib/testing-python.nix {
+  inherit system pkgs;
+};
 
 makeTest (
   if pkgs.lib.isFunction f then

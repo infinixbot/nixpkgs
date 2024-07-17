@@ -678,7 +678,12 @@ in
       sources."string_decoder-1.1.1"
       sources."strip-ansi-3.0.1"
       sources."strip-json-comments-2.0.1"
-      (sources."tar-4.4.19" // { dependencies = [ sources."safe-buffer-5.2.1" ]; })
+      (
+        sources."tar-4.4.19"
+        // {
+          dependencies = [ sources."safe-buffer-5.2.1" ];
+        }
+      )
       sources."util-deprecate-1.0.2"
       sources."wide-align-1.1.5"
       sources."wrappy-1.0.2"

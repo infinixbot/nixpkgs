@@ -39,8 +39,18 @@ let
     unique
     ;
 
-  inherit (import ../../build-support/lib/cmake.nix { inherit lib stdenv; }) makeCMakeFlags;
-  inherit (import ../../build-support/lib/meson.nix { inherit lib stdenv; }) makeMesonFlags;
+  inherit
+    (import ../../build-support/lib/cmake.nix {
+      inherit lib stdenv;
+    })
+    makeCMakeFlags
+    ;
+  inherit
+    (import ../../build-support/lib/meson.nix {
+      inherit lib stdenv;
+    })
+    makeMesonFlags
+    ;
 
   mkDerivation =
     fnOrAttrs:
@@ -65,7 +75,12 @@ let
       # separate lines, because Nix would only show the last line of the comment.
 
       # An infinite recursion here can be caused by having the attribute names of expression `e` in `.overrideAttrs(finalAttrs: previousAttrs: e)` depend on `finalAttrs`. Only the attribute values of `e` can depend on `finalAttrs`.
-      args = rattrs (args // { inherit finalPackage overrideAttrs; });
+      args = rattrs (
+        args
+        // {
+          inherit finalPackage overrideAttrs;
+        }
+      );
       #              ^^^^
 
       overrideAttrs =
@@ -659,7 +674,9 @@ let
           ]
           ++ optional (__structuredAttrs || envIsExportable) "env"
         )
-        // optionalAttrs __structuredAttrs { env = checkedEnv; }
+        // optionalAttrs __structuredAttrs {
+          env = checkedEnv;
+        }
         // {
           cmakeFlags = makeCMakeFlags attrs;
           mesonFlags = makeMesonFlags attrs;
@@ -674,7 +691,9 @@ let
           ++ attrs.propagatedNativeBuildInputs or [ ]
           ++ attrs.propagatedBuildInputs or [ ];
       };
-      validity = checkMeta.assertValidity { inherit meta attrs; };
+      validity = checkMeta.assertValidity {
+        inherit meta attrs;
+      };
 
       checkedEnv =
         let

@@ -26,7 +26,9 @@ buildGoModule rec {
   ];
 
   passthru.tests = {
-    version = testers.testVersion { package = jsonfmt; };
+    version = testers.testVersion {
+      package = jsonfmt;
+    };
   };
 
   meta = with lib; {

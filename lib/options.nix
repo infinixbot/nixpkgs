@@ -78,7 +78,10 @@ rec {
       # Whether the option can be set only once
       readOnly ? null,
     }@attrs:
-    attrs // { _type = "option"; };
+    attrs
+    // {
+      _type = "option";
+    };
 
   /*
     Creates an Option attribute set for a boolean value option i.e an
@@ -206,7 +209,9 @@ rec {
             defaultText = literalExpression ("${pkgsText}." + defaultText);
           }
         else
-          optionalAttrs nullable { default = null; };
+          optionalAttrs nullable {
+            default = null;
+          };
     in
     mkOption (
       defaults
@@ -280,7 +285,9 @@ rec {
 
     WARNING: Does not perform nested checks, as this does not run the merge function!
   */
-  mergeOneOption = mergeUniqueOption { message = ""; };
+  mergeOneOption = mergeUniqueOption {
+    message = "";
+  };
 
   /*
     Require a single definition.

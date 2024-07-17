@@ -27,7 +27,9 @@ buildDunePackage rec {
   # mdx is not available for OCaml < 4.08
   doCheck = lib.versionAtLeast ocaml.version "4.08";
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = {
     homepage = "https://github.com/c-cube/printbox/";

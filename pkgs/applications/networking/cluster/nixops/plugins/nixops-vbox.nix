@@ -31,7 +31,9 @@ buildPythonPackage {
 
   pythonImportsCheck = [ "nixopsvbox" ];
 
-  passthru.updateScript = unstableGitUpdater { tagPrefix = "v"; };
+  passthru.updateScript = unstableGitUpdater {
+    tagPrefix = "v";
+  };
 
   meta = with lib; {
     description = "NixOps plugin for VirtualBox VMs";

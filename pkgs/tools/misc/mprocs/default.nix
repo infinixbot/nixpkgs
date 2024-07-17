@@ -22,7 +22,9 @@ rustPlatform.buildRustPackage rec {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests.version = testers.testVersion { package = mprocs; };
+    tests.version = testers.testVersion {
+      package = mprocs;
+    };
   };
 
   meta = {

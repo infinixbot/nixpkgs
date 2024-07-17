@@ -58,7 +58,9 @@ stdenv.mkDerivation (finalAttrs: {
     shared-mime-info
   ];
 
-  passthru.updateScript = gitUpdater { odd-unstable = true; };
+  passthru.updateScript = gitUpdater {
+    odd-unstable = true;
+  };
 
   meta = with lib; {
     description = "Source code editing widget for GTK";

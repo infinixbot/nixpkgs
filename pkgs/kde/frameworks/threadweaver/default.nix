@@ -1,1 +1,4 @@
-{ mkKdeDerivation }: mkKdeDerivation { pname = "threadweaver"; }
+{ mkKdeDerivation }:
+mkKdeDerivation {
+  pname = "threadweaver";
+}

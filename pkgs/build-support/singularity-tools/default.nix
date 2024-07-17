@@ -29,12 +29,16 @@ rec {
       # May be "apptainer" instead of "singularity"
       projectName ? (singularity.projectName or "singularity"),
     }:
-    runCommand "${projectName}-layer-${name}" { inherit contents; } ''
-      mkdir $out
-      for f in $contents ; do
-        cp -ra $f $out/
-      done
-    '';
+    runCommand "${projectName}-layer-${name}"
+      {
+        inherit contents;
+      }
+      ''
+        mkdir $out
+        for f in $contents ; do
+          cp -ra $f $out/
+        done
+      '';
 
   buildImage =
     let

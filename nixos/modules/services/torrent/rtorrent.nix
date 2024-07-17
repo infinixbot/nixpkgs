@@ -100,7 +100,9 @@ in
 
   config = mkIf cfg.enable {
 
-    users.groups = mkIf (cfg.group == "rtorrent") { rtorrent = { }; };
+    users.groups = mkIf (cfg.group == "rtorrent") {
+      rtorrent = { };
+    };
 
     users.users = mkIf (cfg.user == "rtorrent") {
       rtorrent = {

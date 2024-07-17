@@ -1,14 +1,18 @@
 {
   system ? builtins.currentSystem,
   config ? { },
-  pkgs ? import ../.. { inherit system config; },
+  pkgs ? import ../.. {
+    inherit system config;
+  },
   debug ? false,
   enableUnfree ? false,
   enableKvm ? false,
   use64bitGuest ? true,
 }:
 
-with import ../lib/testing-python.nix { inherit system pkgs; };
+with import ../lib/testing-python.nix {
+  inherit system pkgs;
+};
 with pkgs.lib;
 
 let
@@ -376,7 +380,9 @@ let
     headless.services.xserver.enable = false;
   };
 
-  vboxVMsWithExtpack = mapAttrs createVM { testExtensionPack.vmFlags = enableExtensionPackVMFlags; };
+  vboxVMsWithExtpack = mapAttrs createVM {
+    testExtensionPack.vmFlags = enableExtensionPackVMFlags;
+  };
 
   mkVBoxTest =
     vboxHostConfig: vms: name: testScript:
@@ -388,7 +394,12 @@ let
         {
           imports =
             let
-              mkVMConf = name: val: val.machine // { key = "${name}-config"; };
+              mkVMConf =
+                name: val:
+                val.machine
+                // {
+                  key = "${name}-config";
+                };
               vmConfigs = mapAttrsToList mkVMConf vms;
             in
             [
@@ -454,24 +465,29 @@ let
       };
     };
 
-  unfreeTests = mapAttrs (mkVBoxTest { enableExtensionPack = true; } vboxVMsWithExtpack) {
-    enable-extension-pack = ''
-      create_vm_testExtensionPack()
-      vbm("startvm testExtensionPack")
-      wait_for_startup_testExtensionPack()
-      machine.screenshot("cli_started")
-      wait_for_vm_boot_testExtensionPack()
-      machine.screenshot("cli_booted")
+  unfreeTests =
+    mapAttrs
+      (mkVBoxTest {
+        enableExtensionPack = true;
+      } vboxVMsWithExtpack)
+      {
+        enable-extension-pack = ''
+          create_vm_testExtensionPack()
+          vbm("startvm testExtensionPack")
+          wait_for_startup_testExtensionPack()
+          machine.screenshot("cli_started")
+          wait_for_vm_boot_testExtensionPack()
+          machine.screenshot("cli_booted")
 
-      with machine.nested("Checking for privilege escalation"):
-          machine.fail("test -e '/root/VirtualBox VMs'")
-          machine.fail("test -e '/root/.config/VirtualBox'")
-          machine.succeed("test -e '/home/alice/VirtualBox VMs'")
+          with machine.nested("Checking for privilege escalation"):
+              machine.fail("test -e '/root/VirtualBox VMs'")
+              machine.fail("test -e '/root/.config/VirtualBox'")
+              machine.succeed("test -e '/home/alice/VirtualBox VMs'")
 
-      shutdown_vm_testExtensionPack()
-      destroy_vm_testExtensionPack()
-    '';
-  };
+          shutdown_vm_testExtensionPack()
+          destroy_vm_testExtensionPack()
+        '';
+      };
 
   kvmTests =
     mapAttrs

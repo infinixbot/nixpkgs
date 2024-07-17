@@ -11,7 +11,9 @@ let
     url = "https://releases.bootstrapstudio.io/${version}/Bootstrap%20Studio.AppImage";
     sha256 = "sha256-t75lmprCWumwt1wNVNWZSHdk1NBSmFqwjDQZHRpBv9g=";
   };
-  appimageContents = appimageTools.extractType2 { inherit pname version src; };
+  appimageContents = appimageTools.extractType2 {
+    inherit pname version src;
+  };
 in
 appimageTools.wrapType2 {
   inherit pname version src;

@@ -30,7 +30,9 @@ rustPlatform.buildRustPackage rec {
   # No tests are present in the repository
   doCheck = false;
 
-  passthru.tests.version = testers.testVersion { package = cringify; };
+  passthru.tests.version = testers.testVersion {
+    package = cringify;
+  };
 
   meta = {
     description = "Annoy your friends with the cringified text";

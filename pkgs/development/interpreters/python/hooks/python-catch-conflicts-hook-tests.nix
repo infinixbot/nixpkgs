@@ -12,7 +12,11 @@ let
   ### UTILITIES
 
   # customize a package so that its store paths differs
-  customize = pkg: pkg.overrideAttrs { some_modification = true; };
+  customize =
+    pkg:
+    pkg.overrideAttrs {
+      some_modification = true;
+    };
 
   # generates minimal pyproject.toml
   pyprojectToml =
@@ -154,7 +158,9 @@ in
         propagatedBuildInputs = [ (customize leaf) ];
       };
       # some leaf package
-      leaf = generatePythonPackage { pname = "leaf"; };
+      leaf = generatePythonPackage {
+        pname = "leaf";
+      };
     in
     expectFailure toplevel "Found duplicated packages in closure for dependency 'leaf'";
 
@@ -199,7 +205,9 @@ in
         propagatedBuildInputs = [ (customize leaf) ];
       };
       # some leaf package
-      leaf = generatePythonPackage { pname = "leaf"; };
+      leaf = generatePythonPackage {
+        pname = "leaf";
+      };
     in
     expectFailure toplevel "Found duplicated packages in closure for dependency 'leaf'";
 }

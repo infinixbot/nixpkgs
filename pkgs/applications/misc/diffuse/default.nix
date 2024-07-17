@@ -61,7 +61,9 @@ python3.pkgs.buildPythonApplication rec {
   makeWrapperArgs = [ "--prefix XDG_DATA_DIRS : ${hicolor-icon-theme}/share" ];
 
   passthru = {
-    updateScript = gitUpdater { rev-prefix = "v"; };
+    updateScript = gitUpdater {
+      rev-prefix = "v";
+    };
   };
 
   meta = with lib; {

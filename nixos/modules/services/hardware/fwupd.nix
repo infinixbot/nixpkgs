@@ -34,13 +34,21 @@ let
 
   originalEtc =
     let
-      mkEtcFile = n: nameValuePair n { source = "${cfg.package}/etc/${n}"; };
+      mkEtcFile =
+        n:
+        nameValuePair n {
+          source = "${cfg.package}/etc/${n}";
+        };
     in
     listToAttrs (map mkEtcFile cfg.package.filesInstalledToEtc);
   extraTrustedKeys =
     let
       mkName = p: "pki/fwupd/${baseNameOf (toString p)}";
-      mkEtcFile = p: nameValuePair (mkName p) { source = p; };
+      mkEtcFile =
+        p:
+        nameValuePair (mkName p) {
+          source = p;
+        };
     in
     listToAttrs (map mkEtcFile cfg.extraTrustedKeys);
 
@@ -151,7 +159,9 @@ in
       };
 
       uefiCapsuleSettings = mkOption {
-        type = types.submodule { freeformType = format.type.nestedTypes.elemType; };
+        type = types.submodule {
+          freeformType = format.type.nestedTypes.elemType;
+        };
         default = { };
         description = ''
           UEFI capsule configurations for the fwupd daemon.

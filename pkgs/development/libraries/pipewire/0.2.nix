@@ -22,7 +22,9 @@
 }:
 
 let
-  fontsConf = makeFontsConf { fontDirectories = [ ]; };
+  fontsConf = makeFontsConf {
+    fontDirectories = [ ];
+  };
 in
 stdenv.mkDerivation rec {
   pname = "pipewire";

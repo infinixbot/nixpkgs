@@ -16,7 +16,10 @@ let
   pairOf =
     x:
     with types;
-    addCheck (listOf x) (y: length y == 2) // { description = "pair of ${x.description}"; };
+    addCheck (listOf x) (y: length y == 2)
+    // {
+      description = "pair of ${x.description}";
+    };
 
   mkDefaultAttrs = mapAttrs (n: v: mkDefault v);
 
@@ -389,7 +392,9 @@ in
       partOf = [ "graphical-session.target" ];
 
       # Temporarily fixes corrupt colours with Mesa 18
-      environment = mkIf (cfg.backend == "glx") { allow_rgb10_configs = "false"; };
+      environment = mkIf (cfg.backend == "glx") {
+        allow_rgb10_configs = "false";
+      };
 
       serviceConfig = {
         ExecStart = "${getExe cfg.package} --config ${configFile}";

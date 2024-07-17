@@ -3,7 +3,11 @@
   dont-propagate-conflicting-deps =
     let
       # customize a package so that its store paths differs
-      mkConflict = pkg: pkg.overrideAttrs { some_modification = true; };
+      mkConflict =
+        pkg:
+        pkg.overrideAttrs {
+          some_modification = true;
+        };
       # minimal pyproject.toml for the example project
       pyprojectToml = builtins.toFile "pyproject.toml" ''
         [project]

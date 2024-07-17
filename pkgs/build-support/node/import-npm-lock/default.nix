@@ -47,7 +47,9 @@ let
                 hash = module.integrity;
               })
             else if lib.hasPrefix "git" module.resolved then
-              (builtins.fetchGit { url = module.resolved; })
+              (builtins.fetchGit {
+                url = module.resolved;
+              })
             else
               throw "Unsupported URL scheme: ${scheme}"
           )
@@ -94,13 +96,17 @@ in
         packages = mapAttrs (
           _: module:
           let
-            src = fetchModule { inherit module npmRoot; };
+            src = fetchModule {
+              inherit module npmRoot;
+            };
           in
           (removeAttrs module [
             "link"
             "funding"
           ])
-          // lib.optionalAttrs (src != null) { resolved = "file:${src}"; }
+          // lib.optionalAttrs (src != null) {
+            resolved = "file:${src}";
+          }
           // lib.optionalAttrs (module ? dependencies) {
             dependencies = mapLockDependencies module.dependencies;
           }

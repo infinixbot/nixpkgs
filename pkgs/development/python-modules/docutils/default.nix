@@ -30,7 +30,9 @@ let
 
     # infinite recursion via sphinx and pillow
     doCheck = false;
-    passthru.tests.pytest = self.overridePythonAttrs { doCheck = true; };
+    passthru.tests.pytest = self.overridePythonAttrs {
+      doCheck = true;
+    };
 
     nativeCheckInputs = [ pillow ];
 

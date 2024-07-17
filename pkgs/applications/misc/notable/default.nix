@@ -15,7 +15,9 @@ let
     inherit sha256;
   };
 
-  appimageContents = appimageTools.extract { inherit pname version src; };
+  appimageContents = appimageTools.extract {
+    inherit pname version src;
+  };
 in
 appimageTools.wrapType2 rec {
 

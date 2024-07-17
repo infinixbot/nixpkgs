@@ -39,11 +39,32 @@ rec {
 
   makeSourceTarball = sourceTarball; # compatibility
 
-  binaryTarball = args: import ./binary-tarball.nix ({ inherit lib stdenv; } // args);
+  binaryTarball =
+    args:
+    import ./binary-tarball.nix (
+      {
+        inherit lib stdenv;
+      }
+      // args
+    );
 
-  mvnBuild = args: import ./maven-build.nix ({ inherit lib stdenv; } // args);
+  mvnBuild =
+    args:
+    import ./maven-build.nix (
+      {
+        inherit lib stdenv;
+      }
+      // args
+    );
 
-  nixBuild = args: import ./nix-build.nix ({ inherit lib stdenv; } // args);
+  nixBuild =
+    args:
+    import ./nix-build.nix (
+      {
+        inherit lib stdenv;
+      }
+      // args
+    );
 
   coverageAnalysis =
     args:
@@ -75,7 +96,14 @@ rec {
       // args
     );
 
-  rpmBuild = args: import ./rpm-build.nix ({ inherit lib vmTools; } // args);
+  rpmBuild =
+    args:
+    import ./rpm-build.nix (
+      {
+        inherit lib vmTools;
+      }
+      // args
+    );
 
   debBuild =
     args:

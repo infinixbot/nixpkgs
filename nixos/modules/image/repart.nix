@@ -301,7 +301,11 @@ in
             }
             ."${cfg.compression.algorithm}";
 
-        makeClosure = paths: pkgs.closureInfo { rootPaths = paths; };
+        makeClosure =
+          paths:
+          pkgs.closureInfo {
+            rootPaths = paths;
+          };
 
         # Add the closure of the provided Nix store paths to cfg.partitions so
         # that amend-repart-definitions.py can read it.
@@ -342,7 +346,9 @@ in
         format = pkgs.formats.ini { };
 
         definitionsDirectory = utils.systemdUtils.lib.definitions "repart.d" format (
-          lib.mapAttrs (_n: v: { Partition = v.repartConfig; }) cfg.finalPartitions
+          lib.mapAttrs (_n: v: {
+            Partition = v.repartConfig;
+          }) cfg.finalPartitions
         );
 
         partitionsJSON = pkgs.writeText "partitions.json" (builtins.toJSON cfg.finalPartitions);

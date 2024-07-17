@@ -102,7 +102,9 @@ in
       };
     };
 
-    users.groups = mkIf (cfg.group == "vdr") { vdr = { }; };
+    users.groups = mkIf (cfg.group == "vdr") {
+      vdr = { };
+    };
 
   };
 }

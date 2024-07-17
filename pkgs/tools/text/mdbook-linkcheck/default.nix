@@ -31,7 +31,9 @@ rustPlatform.buildRustPackage rec {
 
   doCheck = false; # tries to access network to test broken web link functionality
 
-  passthru.tests.version = testers.testVersion { package = mdbook-linkcheck; };
+  passthru.tests.version = testers.testVersion {
+    package = mdbook-linkcheck;
+  };
 
   meta = with lib; {
     description = "Backend for `mdbook` which will check your links for you";

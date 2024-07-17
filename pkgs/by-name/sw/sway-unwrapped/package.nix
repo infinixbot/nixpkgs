@@ -96,7 +96,9 @@ stdenv.mkDerivation (finalAttrs: {
     librsvg
     wayland-protocols
     libdrm
-    (wlroots.override { inherit (finalAttrs) enableXWayland; })
+    (wlroots.override {
+      inherit (finalAttrs) enableXWayland;
+    })
   ] ++ lib.optionals finalAttrs.enableXWayland [ xorg.xcbutilwm ];
 
   mesonFlags =

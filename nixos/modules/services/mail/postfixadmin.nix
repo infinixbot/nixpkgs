@@ -136,7 +136,11 @@ in
 
     services.postgresql = mkIf localDB {
       enable = true;
-      ensureUsers = [ { name = cfg.database.username; } ];
+      ensureUsers = [
+        {
+          name = cfg.database.username;
+        }
+      ];
     };
     # The postgresql module doesn't currently support concepts like
     # objects owners and extensions; for now we tack on what's needed

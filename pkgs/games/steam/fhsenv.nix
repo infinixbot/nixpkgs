@@ -341,7 +341,9 @@ buildFHSEnv rec {
         mainProgram = "steam";
       }
     else
-      { description = "Steam dependencies (dummy package, do not use)"; };
+      {
+        description = "Steam dependencies (dummy package, do not use)";
+      };
 
   passthru.steamargs = args;
   passthru.run = buildFHSEnv {

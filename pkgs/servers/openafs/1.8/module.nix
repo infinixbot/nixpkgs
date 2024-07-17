@@ -16,7 +16,13 @@
 }:
 
 let
-  inherit (import ./srcs.nix { inherit fetchurl; }) src version;
+  inherit
+    (import ./srcs.nix {
+      inherit fetchurl;
+    })
+    src
+    version
+    ;
 
   modDestDir = "$out/lib/modules/${kernel.modDirVersion}/extra/openafs";
   kernelBuildDir = "${kernel.dev}/lib/modules/${kernel.modDirVersion}/build";

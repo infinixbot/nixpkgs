@@ -96,7 +96,11 @@ import ./make-test-python.nix (
           enable = true;
           startWhenNeeded = true;
           ports = [ 2222 ];
-          listenAddresses = [ { addr = "0.0.0.0"; } ];
+          listenAddresses = [
+            {
+              addr = "0.0.0.0";
+            }
+          ];
         };
         users.users.root.openssh.authorizedKeys.keys = [ snakeOilPublicKey ];
       };
@@ -177,7 +181,9 @@ import ./make-test-python.nix (
         {
           services.openssh = {
             enable = true;
-            package = pkgs.opensshPackages.openssh.override { linkOpenssl = false; };
+            package = pkgs.opensshPackages.openssh.override {
+              linkOpenssl = false;
+            };
             hostKeys = [
               {
                 type = "ed25519";
@@ -203,7 +209,9 @@ import ./make-test-python.nix (
         {
           services.openssh = {
             enable = true;
-            package = pkgs.opensshPackages.openssh.override { withPAM = false; };
+            package = pkgs.opensshPackages.openssh.override {
+              withPAM = false;
+            };
             settings = {
               UsePAM = false;
             };

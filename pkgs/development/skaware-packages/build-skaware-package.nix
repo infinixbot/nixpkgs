@@ -148,7 +148,16 @@ stdenv.mkDerivation {
     ${cleanPackaging.checkForRemainingFiles}
   '';
 
-  passthru = passthru // (if manpages == null then { } else { inherit manpages; });
+  passthru =
+    passthru
+    // (
+      if manpages == null then
+        { }
+      else
+        {
+          inherit manpages;
+        }
+    );
 
   meta = {
     homepage = "https://skarnet.org/software/${pname}/";

@@ -58,12 +58,16 @@ resholve.mkDerivation rec {
   '';
 
   solutions = {
-    events = {
-      inputs = [ ];
-      interpreter = "none";
-      scripts = [ "bin/bashup.events" ];
-      inherit keep;
-    } // lib.optionalAttrs (lib.isAttrs fake) { inherit fake; };
+    events =
+      {
+        inputs = [ ];
+        interpreter = "none";
+        scripts = [ "bin/bashup.events" ];
+        inherit keep;
+      }
+      // lib.optionalAttrs (lib.isAttrs fake) {
+        inherit fake;
+      };
   };
 
   inherit doInstallCheck;

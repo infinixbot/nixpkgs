@@ -34,7 +34,9 @@ rustPlatform.buildRustPackage rec {
       --zsh <($out/bin/yr completion zsh)
   '';
 
-  passthru.tests.version = testers.testVersion { package = yara-x; };
+  passthru.tests.version = testers.testVersion {
+    package = yara-x;
+  };
 
   meta = {
     description = "Tool to do pattern matching for malware research";

@@ -193,7 +193,9 @@ let
     ${forEach "  provide-xfr: " zone.provideXFR}
   '';
 
-  zoneConfigs = zoneConfigs' { } "" { children = cfg.zones; };
+  zoneConfigs = zoneConfigs' { } "" {
+    children = cfg.zones;
+  };
 
   zoneConfigs' =
     parent: name: zone:
@@ -207,7 +209,14 @@ let
     else
       zipAttrsWith (name: head) (
         mapAttrsToList (
-          name: child: zoneConfigs' (parent // zone // { children = { }; }) name child
+          name: child:
+          zoneConfigs' (
+            parent
+            // zone
+            // {
+              children = { };
+            }
+          ) name child
         ) zone.children
       );
 
@@ -493,7 +502,9 @@ let
 
   dnssec = dnssecZones != { };
 
-  dnssecTools = pkgs.bind.override { enablePython = true; };
+  dnssecTools = pkgs.bind.override {
+    enablePython = true;
+  };
 
   signZones = optionalString dnssec ''
     install -m 0600 -o "${username}" -g "${username}" -d "${stateDir}/dnssec"

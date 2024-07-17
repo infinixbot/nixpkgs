@@ -11,31 +11,52 @@ let
   # to see the result once the module transformed the lose structured config
   getConfig =
     structuredConfig:
-    (lts_kernel.override { structuredExtraConfig = structuredConfig; }).configfile.structuredConfig;
+    (lts_kernel.override {
+      structuredExtraConfig = structuredConfig;
+    }).configfile.structuredConfig;
 
   mandatoryVsOptionalConfig = mkMerge [
-    { NIXOS_FAKE_USB_DEBUG = yes; }
-    { NIXOS_FAKE_USB_DEBUG = option yes; }
+    {
+      NIXOS_FAKE_USB_DEBUG = yes;
+    }
+    {
+      NIXOS_FAKE_USB_DEBUG = option yes;
+    }
   ];
 
   freeformConfig = mkMerge [
-    { NIXOS_FAKE_MMC_BLOCK_MINORS = freeform "32"; } # same as default, won't trigger any error
-    { NIXOS_FAKE_MMC_BLOCK_MINORS = freeform "64"; } # will trigger an error but the message is not great:
+    {
+      NIXOS_FAKE_MMC_BLOCK_MINORS = freeform "32";
+    } # same as default, won't trigger any error
+    {
+      NIXOS_FAKE_MMC_BLOCK_MINORS = freeform "64";
+    } # will trigger an error but the message is not great:
   ];
 
   mkDefaultWorksConfig = mkMerge [
-    { "NIXOS_TEST_BOOLEAN" = yes; }
-    { "NIXOS_TEST_BOOLEAN" = lib.mkDefault no; }
+    {
+      "NIXOS_TEST_BOOLEAN" = yes;
+    }
+    {
+      "NIXOS_TEST_BOOLEAN" = lib.mkDefault no;
+    }
   ];
 
   allOptionalRemainOptional = mkMerge [
-    { NIXOS_FAKE_USB_DEBUG = option yes; }
-    { NIXOS_FAKE_USB_DEBUG = option yes; }
+    {
+      NIXOS_FAKE_USB_DEBUG = option yes;
+    }
+    {
+      NIXOS_FAKE_USB_DEBUG = option yes;
+    }
   ];
 
   failures = runTests {
     testEasy = {
-      expr = (getConfig { NIXOS_FAKE_USB_DEBUG = yes; }).NIXOS_FAKE_USB_DEBUG;
+      expr =
+        (getConfig {
+          NIXOS_FAKE_USB_DEBUG = yes;
+        }).NIXOS_FAKE_USB_DEBUG;
       expected = {
         tristate = "y";
         optional = false;

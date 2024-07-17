@@ -16,7 +16,9 @@ in
     services.teleport = with lib.types; {
       enable = mkEnableOption "the Teleport service";
 
-      package = mkPackageOption pkgs "teleport" { example = "teleport_11"; };
+      package = mkPackageOption pkgs "teleport" {
+        example = "teleport_11";
+      };
 
       settings = mkOption {
         type = settingsYaml.type;

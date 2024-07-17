@@ -54,7 +54,9 @@ stdenv.mkDerivation rec {
   passthru = {
     inherit (incus) tests;
 
-    updateScript = gitUpdater { rev-prefix = "v"; };
+    updateScript = gitUpdater {
+      rev-prefix = "v";
+    };
   };
 
   meta = with lib; {

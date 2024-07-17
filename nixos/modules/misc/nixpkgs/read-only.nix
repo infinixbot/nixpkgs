@@ -26,14 +26,18 @@ in
       };
       config = mkOption {
         internal = true;
-        type = types.unique { message = "nixpkgs.config is set to read-only"; } types.anything;
+        type = types.unique {
+          message = "nixpkgs.config is set to read-only";
+        } types.anything;
         description = ''
           The Nixpkgs `config` that `pkgs` was initialized with.
         '';
       };
       overlays = mkOption {
         internal = true;
-        type = types.unique { message = "nixpkgs.overlays is set to read-only"; } types.anything;
+        type = types.unique {
+          message = "nixpkgs.overlays is set to read-only";
+        } types.anything;
         description = ''
           The Nixpkgs overlays that `pkgs` was initialized with.
         '';

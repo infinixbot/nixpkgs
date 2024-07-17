@@ -67,13 +67,17 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   passthru =
     let
-      fetchDepsAttrs = callPackages ./fetch-deps { pnpm = finalAttrs.finalPackage; };
+      fetchDepsAttrs = callPackages ./fetch-deps {
+        pnpm = finalAttrs.finalPackage;
+      };
     in
     {
       inherit (fetchDepsAttrs) fetchDeps configHook;
 
       tests.version = lib.optionalAttrs withNode (
-        testers.testVersion { package = finalAttrs.finalPackage; }
+        testers.testVersion {
+          package = finalAttrs.finalPackage;
+        }
       );
     };
 

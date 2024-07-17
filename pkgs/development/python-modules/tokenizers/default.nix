@@ -78,7 +78,9 @@ buildPythonPackage rec {
     hash = "sha256-sKEAt46cdme821tzz9WSKnQb3hPmFJ4zvHgBNRxjEuk=";
   };
 
-  cargoDeps = rustPlatform.importCargoLock { lockFile = ./Cargo.lock; };
+  cargoDeps = rustPlatform.importCargoLock {
+    lockFile = ./Cargo.lock;
+  };
 
   sourceRoot = "${src.name}/bindings/python";
   maturinBuildFlags = [ "--interpreter ${python.executable}" ];

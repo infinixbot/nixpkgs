@@ -77,7 +77,9 @@ in
 
   lspce = callPackage ./manual-packages/lspce { };
 
-  matrix-client = callPackage ./manual-packages/matrix-client { _map = self.map; };
+  matrix-client = callPackage ./manual-packages/matrix-client {
+    _map = self.map;
+  };
 
   mu4e = callPackage ./manual-packages/mu4e { };
 
@@ -95,9 +97,13 @@ in
 
   sv-kalender = callPackage ./manual-packages/sv-kalender { };
 
-  texpresso = callPackage ./manual-packages/texpresso { inherit (pkgs) texpresso; };
+  texpresso = callPackage ./manual-packages/texpresso {
+    inherit (pkgs) texpresso;
+  };
 
-  tree-sitter-langs = callPackage ./manual-packages/tree-sitter-langs { final = self; };
+  tree-sitter-langs = callPackage ./manual-packages/tree-sitter-langs {
+    final = self;
+  };
 
   treesit-grammars = callPackage ./manual-packages/treesit-grammars { };
 
@@ -116,7 +122,9 @@ in
   youtube-dl = callPackage ./manual-packages/youtube-dl { };
 
   # From old emacsPackages (pre emacsPackagesNg)
-  cedille = callPackage ./manual-packages/cedille { inherit (pkgs) cedille; };
+  cedille = callPackage ./manual-packages/cedille {
+    inherit (pkgs) cedille;
+  };
   color-theme-solarized = callPackage ./manual-packages/color-theme-solarized { };
   hsc3-mode = callPackage ./manual-packages/hsc3 { };
   prolog-mode = callPackage ./manual-packages/prolog { };

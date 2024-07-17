@@ -13,7 +13,9 @@
 }:
 
 let
-  srcs = import ../srcs.nix { inherit fetchFromGitHub; };
+  srcs = import ../srcs.nix {
+    inherit fetchFromGitHub;
+  };
 in
 stdenv.mkDerivation rec {
   pname = "nemo-fileroller";

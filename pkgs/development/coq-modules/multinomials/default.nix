@@ -145,4 +145,6 @@ mkCoqDerivation {
     license = lib.licenses.cecill-c;
   };
 }
-// lib.optionalAttrs (args ? useDune) { inherit useDune; }
+// lib.optionalAttrs (args ? useDune) {
+  inherit useDune;
+}

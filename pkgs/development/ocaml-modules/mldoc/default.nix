@@ -26,7 +26,9 @@ let
       })
     ];
   });
-  uri' = uri.override { angstrom = angstrom'; };
+  uri' = uri.override {
+    angstrom = angstrom';
+  };
 in
 buildDunePackage rec {
   pname = "mldoc";

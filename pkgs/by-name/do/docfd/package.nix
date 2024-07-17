@@ -66,7 +66,9 @@ buildDunePackage' rec {
     }"
   '';
 
-  passthru.tests.version = testers.testVersion { package = docfd; };
+  passthru.tests.version = testers.testVersion {
+    package = docfd;
+  };
 
   meta = with lib; {
     description = "TUI multiline fuzzy document finder";

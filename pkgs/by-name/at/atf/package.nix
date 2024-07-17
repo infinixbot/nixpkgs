@@ -74,7 +74,9 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postInstallCheck
   '';
 
-  passthru.updateScript = gitUpdater { rev-prefix = "atf-"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "atf-";
+  };
 
   __structuredAttrs = true;
 

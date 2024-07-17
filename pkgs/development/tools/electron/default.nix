@@ -7,8 +7,12 @@ lib.mapAttrs' (
   version: info:
   lib.nameValuePair "electron_${version}" (
     let
-      electron-unwrapped = callPackage ./common.nix { inherit info; };
+      electron-unwrapped = callPackage ./common.nix {
+        inherit info;
+      };
     in
-    callPackage ./wrapper.nix { inherit electron-unwrapped; }
+    callPackage ./wrapper.nix {
+      inherit electron-unwrapped;
+    }
   )
 ) versions

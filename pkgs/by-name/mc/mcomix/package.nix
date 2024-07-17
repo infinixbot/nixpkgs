@@ -65,7 +65,9 @@ python3.pkgs.buildPythonApplication rec {
     cp -a share $out/
   '';
 
-  passthru.tests.version = testers.testVersion { package = mcomix; };
+  passthru.tests.version = testers.testVersion {
+    package = mcomix;
+  };
 
   meta = with lib; {
     description = "Comic book reader and image viewer";

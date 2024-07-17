@@ -14,18 +14,28 @@ in
     intStrings = mkOption {
       type = types.attrsOf (
         types.attrTag {
-          left = mkOption { type = types.int; };
-          right = mkOption { type = types.str; };
+          left = mkOption {
+            type = types.int;
+          };
+          right = mkOption {
+            type = types.str;
+          };
         }
       );
     };
     nested = mkOption {
       type = types.attrTag {
-        left = mkOption { type = types.int; };
+        left = mkOption {
+          type = types.int;
+        };
         right = mkOption {
           type = types.attrTag {
-            left = mkOption { type = types.int; };
-            right = mkOption { type = types.str; };
+            left = mkOption {
+              type = types.int;
+            };
+            right = mkOption {
+              type = types.str;
+            };
           };
         };
       };
@@ -33,8 +43,12 @@ in
     merged = mkOption {
       type = types.attrsOf (
         types.attrTag {
-          yay = mkOption { type = types.int; };
-          extensible = mkOption { type = types.enum [ "foo" ]; };
+          yay = mkOption {
+            type = types.int;
+          };
+          extensible = mkOption {
+            type = types.enum [ "foo" ];
+          };
         }
       );
     };
@@ -44,7 +58,9 @@ in
           foo = mkOption {
             type = types.submodule {
               options = {
-                bar = mkOption { type = types.int; };
+                bar = mkOption {
+                  type = types.int;
+                };
               };
             };
           };
@@ -63,8 +79,12 @@ in
       options.merged = mkOption {
         type = types.attrsOf (
           types.attrTag {
-            nay = mkOption { type = types.bool; };
-            extensible = mkOption { type = types.enum [ "bar" ]; };
+            nay = mkOption {
+              type = types.bool;
+            };
+            extensible = mkOption {
+              type = types.enum [ "bar" ];
+            };
           }
         );
       };
@@ -78,12 +98,20 @@ in
       b = true;
     };
     intStrings.syntaxError4 = lib.mkMerge [
-      { a = true; }
-      { b = true; }
+      {
+        a = true;
+      }
+      {
+        b = true;
+      }
     ];
     intStrings.mergeError = lib.mkMerge [
-      { int = throw "do not eval"; }
-      { string = throw "do not eval"; }
+      {
+        int = throw "do not eval";
+      }
+      {
+        string = throw "do not eval";
+      }
     ];
     intStrings.badTagError.rite = throw "do not eval";
     intStrings.badTagTypeError.left = "bad";
@@ -95,12 +123,30 @@ in
     merged.extensi-foo.extensible = "foo";
     merged.extensi-bar.extensible = "bar";
     okChecks = builtins.addErrorContext "while evaluating the assertions" (
-      assert config.intStrings.hello == { right = "hello world"; };
-      assert config.intStrings.numberOne == { left = 1; };
-      assert config.merged.negative == { nay = false; };
-      assert config.merged.positive == { yay = 100; };
-      assert config.merged.extensi-foo == { extensible = "foo"; };
-      assert config.merged.extensi-bar == { extensible = "bar"; };
+      assert
+        config.intStrings.hello == {
+          right = "hello world";
+        };
+      assert
+        config.intStrings.numberOne == {
+          left = 1;
+        };
+      assert
+        config.merged.negative == {
+          nay = false;
+        };
+      assert
+        config.merged.positive == {
+          yay = 100;
+        };
+      assert
+        config.merged.extensi-foo == {
+          extensible = "foo";
+        };
+      assert
+        config.merged.extensi-bar == {
+          extensible = "bar";
+        };
       assert config.docs."submodules.<name>.foo.bar".type == "signed integer";
       assert config.docs."submodules.<name>.qux".type == "string";
       assert config.docs."submodules.<name>.qux".declarations == [ __curPos.file ];

@@ -153,7 +153,9 @@ let
       }
     else if outputHash != "" then
       if outputHashAlgo != "" then
-        { inherit outputHashAlgo outputHash; }
+        {
+          inherit outputHashAlgo outputHash;
+        }
       else
         throw "fetchurl was passed outputHash without outputHashAlgo"
     else if sha512 != "" then
@@ -184,7 +186,9 @@ assert
   (lib.isList curlOpts)
   -> lib.warn ''
     fetchurl for ${toString (builtins.head urls_)}: curlOpts is a list (${
-      lib.generators.toPretty { multiline = false; } curlOpts
+      lib.generators.toPretty {
+        multiline = false;
+      } curlOpts
     }), which is not supported anymore.
     - If you wish to get the same effect as before, for elements with spaces (even if escaped) to expand to multiple curl arguments, use a string argument instead:
       curlOpts = ${lib.strings.escapeNixString (toString curlOpts)};
@@ -194,7 +198,9 @@ assert
 stdenvNoCC.mkDerivation (
   (
     if (pname != "" && version != "") then
-      { inherit pname version; }
+      {
+        inherit pname version;
+      }
     else
       {
         name =

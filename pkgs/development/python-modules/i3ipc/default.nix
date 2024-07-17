@@ -25,7 +25,9 @@ buildPythonPackage rec {
   };
   propagatedBuildInputs = [ xlib ];
 
-  fontsConf = makeFontsConf { fontDirectories = [ ]; };
+  fontsConf = makeFontsConf {
+    fontDirectories = [ ];
+  };
   FONTCONFIG_FILE = fontsConf; # Fontconfig error: Cannot load default config file
   nativeCheckInputs = [
     pytest

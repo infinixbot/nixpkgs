@@ -112,7 +112,9 @@ let
       inherit version tarDirectory;
       src =
         if !needsAuth then
-          fetchurl { inherit name url sha256; }
+          fetchurl {
+            inherit name url sha256;
+          }
         else
           (lib.overrideDerivation
             (fetchurl {

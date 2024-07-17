@@ -61,7 +61,9 @@
 }:
 
 let
-  pkgs = import nixpkgsPath { inherit config; };
+  pkgs = import nixpkgsPath {
+    inherit config;
+  };
   inherit (pkgs) lib;
 
   # see usage explanation for the input format `files` allows

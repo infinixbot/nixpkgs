@@ -140,9 +140,21 @@ import ./make-test-python.nix (
               --retry 1000 --retry-delay 1 --retry-all-errors \
               "$@"
       }
-      curl -d ${lib.escapeShellArg (builtins.toJSON { deviceID = IDsToDelete.device; })} \
+      curl -d ${
+        lib.escapeShellArg (
+          builtins.toJSON {
+            deviceID = IDsToDelete.device;
+          }
+        )
+      } \
           -X POST 127.0.0.1:8384/rest/config/devices
-      curl -d ${lib.escapeShellArg (builtins.toJSON { id = IDsToDelete.folder; })} \
+      curl -d ${
+        lib.escapeShellArg (
+          builtins.toJSON {
+            id = IDsToDelete.folder;
+          }
+        )
+      } \
           -X POST 127.0.0.1:8384/rest/config/folders
     '';
   in
@@ -195,7 +207,9 @@ import ./make-test-python.nix (
         # Run the script on the machine
         machine.succeed("${addDeviceToDeleteScript}")
       ''
-      + (checkSettingsToDelete { not = false; })
+      + (checkSettingsToDelete {
+        not = false;
+      })
       + ''
         # Useful for debugging later
         machine.copy_from_vm("${configPath}", "before")
@@ -203,7 +217,9 @@ import ./make-test-python.nix (
         machine.systemctl("restart syncthing-init.service")
         machine.wait_for_unit("syncthing-init.service")
       ''
-      + (checkSettingsToDelete { not = true; })
+      + (checkSettingsToDelete {
+        not = true;
+      })
       + ''
         # Useful for debugging later
         machine.copy_from_vm("${configPath}", "after")

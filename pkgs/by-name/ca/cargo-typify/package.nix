@@ -31,7 +31,9 @@ rustPlatform.buildRustPackage rec {
     export RUSTFMT="${lib.getExe rustfmt}"
   '';
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     description = "JSON Schema to Rust type converter";

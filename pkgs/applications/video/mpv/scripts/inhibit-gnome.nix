@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
     rev = "v${version}";
     hash = "sha256-LSGg5gAQE2JpepBqhz6D6d3NlqYaU4bjvYf1F+oLphQ=";
   };
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   nativeBuildInputs = [ pkg-config ];
 

@@ -1,11 +1,15 @@
 {
   system ? builtins.currentSystem,
   config ? { },
-  pkgs ? import ../.. { inherit system config; },
+  pkgs ? import ../.. {
+    inherit system config;
+  },
   lib ? pkgs.lib,
 }:
 
-with import ../lib/testing-python.nix { inherit system pkgs; };
+with import ../lib/testing-python.nix {
+  inherit system pkgs;
+};
 
 let
   inherit (lib.maintainers) elvishjerricco;

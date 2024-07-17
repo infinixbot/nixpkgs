@@ -35,7 +35,12 @@ let
     stripTests = true;
     enableOptimizations = false;
   };
-  callPackage = lib.callPackageWith (pkgsBuildHost // { python27 = python27'; });
+  callPackage = lib.callPackageWith (
+    pkgsBuildHost
+    // {
+      python27 = python27';
+    }
+  );
   source = callPackage ./source.nix { };
   deps = callPackage ./deps.nix { };
 in

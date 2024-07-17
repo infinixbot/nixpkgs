@@ -12,8 +12,12 @@
   withExamples ? false,
 }:
 let
-  deps = import ./deps.nix { inherit fetchurl; };
-  testInputs = import ./testinputs.nix { inherit fetchurl; };
+  deps = import ./deps.nix {
+    inherit fetchurl;
+  };
+  testInputs = import ./testinputs.nix {
+    inherit fetchurl;
+  };
 in
 stdenv.mkDerivation rec {
   pname = "mkgmap";

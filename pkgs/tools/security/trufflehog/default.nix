@@ -35,7 +35,9 @@ buildGoModule rec {
   '';
 
   passthru = {
-    tests.version = testers.testVersion { package = trufflehog; };
+    tests.version = testers.testVersion {
+      package = trufflehog;
+    };
   };
 
   meta = with lib; {

@@ -11,7 +11,9 @@ let
       callPackage = pkgs.newScope self;
     in
     rec {
-      interpreter = callPackage ./factor99.nix { inherit (pkgs) stdenv; };
+      interpreter = callPackage ./factor99.nix {
+        inherit (pkgs) stdenv;
+      };
 
       # Convenience access for using the returned attribute the same way as the
       # interpreter derivation. Takes a list of runtime libraries as its only

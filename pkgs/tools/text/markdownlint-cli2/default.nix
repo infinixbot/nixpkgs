@@ -41,9 +41,14 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   '';
 
   passthru.tests = {
-    smoke = runCommand "${finalAttrs.pname}-test" { nativeBuildInputs = [ markdownlint-cli2 ]; } ''
-      markdownlint-cli2 ${markdownlint-cli2}/share/doc/markdownlint-cli2/README.md > $out
-    '';
+    smoke =
+      runCommand "${finalAttrs.pname}-test"
+        {
+          nativeBuildInputs = [ markdownlint-cli2 ];
+        }
+        ''
+          markdownlint-cli2 ${markdownlint-cli2}/share/doc/markdownlint-cli2/README.md > $out
+        '';
   };
 
   meta = {

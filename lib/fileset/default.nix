@@ -99,7 +99,10 @@
 { lib }:
 let
 
-  inherit (import ./internal.nix { inherit lib; })
+  inherit
+    (import ./internal.nix {
+      inherit lib;
+    })
     _coerce
     _singleton
     _coerceMany
@@ -988,5 +991,9 @@ in
         # This is the only `fetchGit` parameter that makes sense in this context.
         # We can't just pass `submodules = recurseSubmodules` here because
         # this would fail for Nix versions that don't support `submodules`.
-        (lib.optionalAttrs recurseSubmodules { submodules = true; });
+        (
+          lib.optionalAttrs recurseSubmodules {
+            submodules = true;
+          }
+        );
 }

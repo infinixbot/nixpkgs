@@ -150,7 +150,9 @@ stdenv.mkDerivation (finalAttrs: {
   enableParallelBuilding = true;
 
   passthru.tests = {
-    grass = callPackage ./tests.nix { grass = finalAttrs.finalPackage; };
+    grass = callPackage ./tests.nix {
+      grass = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

@@ -28,7 +28,9 @@ buildGoModule rec {
   ];
 
   passthru.tests = {
-    version = testers.testVersion { package = eks-node-viewer; };
+    version = testers.testVersion {
+      package = eks-node-viewer;
+    };
   };
 
   meta = with lib; {

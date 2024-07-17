@@ -253,7 +253,10 @@ in
         let
           kernel-name = config.boot.kernelPackages.kernel.name or "kernel";
         in
-        modules: (pkgs.aggregateModules modules).override { name = kernel-name + "-modules"; };
+        modules:
+        (pkgs.aggregateModules modules).override {
+          name = kernel-name + "-modules";
+        };
     };
 
     system.requiredKernelConfig = mkOption {

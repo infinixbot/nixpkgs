@@ -135,7 +135,9 @@ in
               ${getExe pkgs.replace-secret} @pkey@ "$CREDENTIALS_DIRECTORY/pkey.pem" /run/coturn/turnserver.cfg
             '');
         in
-        (optionalAttrs (preStart' != "") { preStart = mkAfter preStart'; })
+        (optionalAttrs (preStart' != "") {
+          preStart = mkAfter preStart';
+        })
         // (optionalAttrs cfg.useAcmeCertificates {
           serviceConfig.LoadCredential = [
             "cert.pem:${dir}/fullchain.pem"

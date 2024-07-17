@@ -23,7 +23,11 @@
 with linuxKernel;
 
 let
-  deblobKernel = kernel: callPackage ../os-specific/linux/kernel/linux-libre.nix { linux = kernel; };
+  deblobKernel =
+    kernel:
+    callPackage ../os-specific/linux/kernel/linux-libre.nix {
+      linux = kernel;
+    };
 
   # Hardened Linux
   hardenedKernelFor =
@@ -607,7 +611,9 @@ in
 
         virtio_vmmci = callPackage ../os-specific/linux/virtio_vmmci { };
 
-        virtualbox = callPackage ../os-specific/linux/virtualbox { virtualbox = pkgs.virtualboxHardened; };
+        virtualbox = callPackage ../os-specific/linux/virtualbox {
+          virtualbox = pkgs.virtualboxHardened;
+        };
 
         virtualboxGuestAdditions =
           callPackage ../applications/virtualization/virtualbox/guest-additions
@@ -763,14 +769,18 @@ in
     }
   );
 
-  packageAliases = {
-    linux_default = packages.linux_6_6;
-    # Update this when adding the newest kernel major version!
-    linux_latest = packages.linux_6_10;
-    linux_mptcp = throw "'linux_mptcp' has been moved to https://github.com/teto/mptcp-flake";
-    linux_rt_default = packages.linux_rt_5_15;
-    linux_rt_latest = packages.linux_rt_6_6;
-  } // { __attrsFailEvaluation = true; };
+  packageAliases =
+    {
+      linux_default = packages.linux_6_6;
+      # Update this when adding the newest kernel major version!
+      linux_latest = packages.linux_6_10;
+      linux_mptcp = throw "'linux_mptcp' has been moved to https://github.com/teto/mptcp-flake";
+      linux_rt_default = packages.linux_rt_5_15;
+      linux_rt_latest = packages.linux_rt_6_6;
+    }
+    // {
+      __attrsFailEvaluation = true;
+    };
 
   manualConfig = callPackage ../os-specific/linux/kernel/manual-config.nix { };
 

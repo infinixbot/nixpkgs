@@ -58,12 +58,24 @@
     ];
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "mingw"; }
-      { engine = "mingw"; }
-      { engine = "mswin"; }
-      { engine = "rbx"; }
-      { engine = "ruby"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mswin";
+      }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "ruby";
+      }
     ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -205,12 +217,24 @@
   fast-stemmer = {
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "mingw"; }
-      { engine = "mingw"; }
-      { engine = "mswin"; }
-      { engine = "rbx"; }
-      { engine = "ruby"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mswin";
+      }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "ruby";
+      }
     ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -528,12 +552,24 @@
   liquid = {
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "mingw"; }
-      { engine = "mingw"; }
-      { engine = "mswin"; }
-      { engine = "rbx"; }
-      { engine = "ruby"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mswin";
+      }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "ruby";
+      }
     ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -546,12 +582,24 @@
     dependencies = [ "liquid" ];
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "mingw"; }
-      { engine = "mingw"; }
-      { engine = "mswin"; }
-      { engine = "rbx"; }
-      { engine = "ruby"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mswin";
+      }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "ruby";
+      }
     ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -577,12 +625,24 @@
   matrix = {
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "mingw"; }
-      { engine = "mingw"; }
-      { engine = "mswin"; }
-      { engine = "rbx"; }
-      { engine = "ruby"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mswin";
+      }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "ruby";
+      }
     ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -918,12 +978,24 @@
   yajl-ruby = {
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "mingw"; }
-      { engine = "mingw"; }
-      { engine = "mswin"; }
-      { engine = "rbx"; }
-      { engine = "ruby"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mingw";
+      }
+      {
+        engine = "mswin";
+      }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "ruby";
+      }
     ];
     source = {
       remotes = [ "https://rubygems.org" ];

@@ -55,7 +55,13 @@ let
     # in EC2 instances).
     if cfg.devices == [ "nodev" ] then null else realGrub;
 
-  grubEfi = if cfg.efiSupport then realGrub.override { efiSupport = cfg.efiSupport; } else null;
+  grubEfi =
+    if cfg.efiSupport then
+      realGrub.override {
+        efiSupport = cfg.efiSupport;
+      }
+    else
+      null;
 
   f = x: optionalString (x != null) ("" + x);
 
@@ -141,9 +147,13 @@ let
       }
     );
 
-  bootDeviceCounters = foldr (device: attr: attr // { ${device} = (attr.${device} or 0) + 1; }) { } (
-    concatMap (args: args.devices) cfg.mirroredBoots
-  );
+  bootDeviceCounters = foldr (
+    device: attr:
+    attr
+    // {
+      ${device} = (attr.${device} or 0) + 1;
+    }
+  ) { } (concatMap (args: args.devices) cfg.mirroredBoots);
 
   convertedFont = (
     pkgs.runCommand "grub-font-converted.pf2" { } (
@@ -777,7 +787,9 @@ in
 
   config = mkMerge [
 
-    { boot.loader.grub.splashImage = mkDefault defaultSplash; }
+    {
+      boot.loader.grub.splashImage = mkDefault defaultSplash;
+    }
 
     (mkIf (cfg.splashImage == defaultSplash) {
       boot.loader.grub.backgroundColor = mkDefault "#2F302F";

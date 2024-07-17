@@ -60,7 +60,9 @@ stdenv.mkDerivation rec {
   ];
 
   passthru.tests = {
-    version = testers.testVersion { package = quick-lint-js; };
+    version = testers.testVersion {
+      package = quick-lint-js;
+    };
   };
 
   meta = with lib; {

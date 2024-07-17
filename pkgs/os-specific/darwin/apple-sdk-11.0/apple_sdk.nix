@@ -213,7 +213,9 @@ rec {
   frameworks =
     let
       # Dependency map created by gen-frameworks.py.
-      generatedDeps = import ./frameworks.nix { inherit frameworks libs; };
+      generatedDeps = import ./frameworks.nix {
+        inherit frameworks libs;
+      };
 
       # Additional dependencies that are not picked up by gen-frameworks.py.
       # Some of these are simply private frameworks the generator does not see.

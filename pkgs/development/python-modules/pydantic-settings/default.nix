@@ -54,7 +54,9 @@ let
     # We do not want all of the downstream packages that depend on pydantic-settings to also depend on ruff.
     doCheck = false;
     passthru.tests = {
-      pytest = self.overridePythonAttrs { doCheck = true; };
+      pytest = self.overridePythonAttrs {
+        doCheck = true;
+      };
     };
 
     meta = with lib; {

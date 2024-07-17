@@ -244,7 +244,11 @@ let
           acc = acc';
         });
 
-  closePropagationSlow = list: (uniqList { inputList = (innerClosePropagation [ ] list); });
+  closePropagationSlow =
+    list:
+    (uniqList {
+      inputList = (innerClosePropagation [ ] list);
+    });
 
   # This is an optimisation of closePropagation which avoids the O(n^2) behavior
   # Using a list of derivations, it generates the full closure of the propagatedXXXBuildInputs
@@ -384,7 +388,9 @@ let
         )
       )
     ];
-  mergeAttrsByFuncDefaults = foldl mergeAttrByFunc { inherit mergeAttrBy; };
+  mergeAttrsByFuncDefaults = foldl mergeAttrByFunc {
+    inherit mergeAttrBy;
+  };
   mergeAttrsByFuncDefaultsClean = list: removeAttrs (mergeAttrsByFuncDefaults list) [ "mergeAttrBy" ];
 
   # sane defaults (same name as attr name so that inherit can be used)

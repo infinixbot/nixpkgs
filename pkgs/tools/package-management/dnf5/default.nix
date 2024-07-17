@@ -112,7 +112,9 @@ stdenv.mkDerivation (finalAttrs: {
   dontFixCmake = true;
 
   passthru.tests = {
-    version = testers.testVersion { package = finalAttrs.finalPackage; };
+    version = testers.testVersion {
+      package = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

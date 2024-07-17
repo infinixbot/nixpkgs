@@ -146,7 +146,9 @@ in
         description = "Graylog server daemon user";
       };
     };
-    users.groups = mkIf (cfg.user == "graylog") { graylog = { }; };
+    users.groups = mkIf (cfg.user == "graylog") {
+      graylog = { };
+    };
 
     systemd.tmpfiles.rules = [ "d '${cfg.messageJournalDir}' - ${cfg.user} - - -" ];
 

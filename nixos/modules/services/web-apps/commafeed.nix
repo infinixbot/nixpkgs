@@ -69,44 +69,48 @@ in
       environment = lib.mapAttrs (
         _: v: if lib.isBool v then lib.boolToString v else toString v
       ) cfg.environment;
-      serviceConfig = {
-        ExecStart = "${lib.getExe cfg.package} server ${cfg.package}/share/config.yml";
-        User = cfg.user;
-        Group = cfg.group;
-        StateDirectory = baseNameOf cfg.stateDir;
-        WorkingDirectory = cfg.stateDir;
-        # Hardening
-        CapabilityBoundingSet = [ "" ];
-        DevicePolicy = "closed";
-        DynamicUser = true;
-        LockPersonality = true;
-        NoNewPrivileges = true;
-        PrivateDevices = true;
-        PrivateUsers = true;
-        ProcSubset = "pid";
-        ProtectClock = true;
-        ProtectControlGroups = true;
-        ProtectHome = true;
-        ProtectHostname = true;
-        ProtectKernelLogs = true;
-        ProtectKernelModules = true;
-        ProtectKernelTunables = true;
-        ProtectProc = "invisible";
-        ProtectSystem = true;
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-        ];
-        RestrictNamespaces = true;
-        RestrictRealtime = true;
-        RestrictSUIDSGID = true;
-        SystemCallArchitectures = "native";
-        SystemCallFilter = [
-          "@system-service"
-          "~@privileged"
-        ];
-        UMask = "0077";
-      } // lib.optionalAttrs (cfg.environmentFile != null) { EnvironmentFile = cfg.environmentFile; };
+      serviceConfig =
+        {
+          ExecStart = "${lib.getExe cfg.package} server ${cfg.package}/share/config.yml";
+          User = cfg.user;
+          Group = cfg.group;
+          StateDirectory = baseNameOf cfg.stateDir;
+          WorkingDirectory = cfg.stateDir;
+          # Hardening
+          CapabilityBoundingSet = [ "" ];
+          DevicePolicy = "closed";
+          DynamicUser = true;
+          LockPersonality = true;
+          NoNewPrivileges = true;
+          PrivateDevices = true;
+          PrivateUsers = true;
+          ProcSubset = "pid";
+          ProtectClock = true;
+          ProtectControlGroups = true;
+          ProtectHome = true;
+          ProtectHostname = true;
+          ProtectKernelLogs = true;
+          ProtectKernelModules = true;
+          ProtectKernelTunables = true;
+          ProtectProc = "invisible";
+          ProtectSystem = true;
+          RestrictAddressFamilies = [
+            "AF_INET"
+            "AF_INET6"
+          ];
+          RestrictNamespaces = true;
+          RestrictRealtime = true;
+          RestrictSUIDSGID = true;
+          SystemCallArchitectures = "native";
+          SystemCallFilter = [
+            "@system-service"
+            "~@privileged"
+          ];
+          UMask = "0077";
+        }
+        // lib.optionalAttrs (cfg.environmentFile != null) {
+          EnvironmentFile = cfg.environmentFile;
+        };
     };
   };
 

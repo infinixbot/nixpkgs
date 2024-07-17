@@ -15,7 +15,9 @@ let
     rev = "v${version}";
     hash = "sha256-ex5bpO60ousJcgZGdviqWrCyihycW+JT+EYFvdooUDw=";
   };
-  frontend = callPackage ./frontend.nix { inherit src version; };
+  frontend = callPackage ./frontend.nix {
+    inherit src version;
+  };
 in
 
 buildGoModule rec {

@@ -18,11 +18,15 @@ let
       };
   '';
 in
-runCommandNoCC "mime-module-test" { nativeBuildInputs = [ hare ]; } ''
-  HARECACHE="$(mktemp -d)"
-  export HARECACHE
-  readonly binout="test-bin"
-  hare build -qRo "$binout" ${mainDotHare}
-  ./$binout
-  : 1>$out
-''
+runCommandNoCC "mime-module-test"
+  {
+    nativeBuildInputs = [ hare ];
+  }
+  ''
+    HARECACHE="$(mktemp -d)"
+    export HARECACHE
+    readonly binout="test-bin"
+    hare build -qRo "$binout" ${mainDotHare}
+    ./$binout
+    : 1>$out
+  ''

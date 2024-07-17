@@ -178,7 +178,11 @@ in
         include <abstractions/base>
         include <abstractions/nameservice>
         include <abstractions/ssl_certs>
-        include "${pkgs.apparmorRulesFromClosure { name = "miniflux"; } cfg.package}"
+        include "${
+          pkgs.apparmorRulesFromClosure {
+            name = "miniflux";
+          } cfg.package
+        }"
         r ${cfg.package}/bin/miniflux,
         r @{sys}/kernel/mm/transparent_hugepage/hpage_pmd_size,
         rw /run/miniflux/**,

@@ -25,7 +25,9 @@ rustPlatform.buildRustPackage rec {
   cargoTestFlags = cargoBuildFlags;
 
   passthru = {
-    tests.version = testers.testVersion { package = clippy-sarif; };
+    tests.version = testers.testVersion {
+      package = clippy-sarif;
+    };
   };
 
   meta = {

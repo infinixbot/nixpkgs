@@ -19,8 +19,12 @@ let
   mergeConfig =
     lhs_: rhs_:
     let
-      lhs = optCall lhs_ { inherit pkgs; };
-      rhs = optCall rhs_ { inherit pkgs; };
+      lhs = optCall lhs_ {
+        inherit pkgs;
+      };
+      rhs = optCall rhs_ {
+        inherit pkgs;
+      };
     in
     recursiveUpdate lhs rhs
     // optionalAttrs (lhs ? packageOverrides) {
@@ -83,9 +87,16 @@ let
               crossSystem = cfg.hostPlatform;
             }
           else
-            { localSystem = cfg.hostPlatform; };
+            {
+              localSystem = cfg.hostPlatform;
+            };
       in
-      import ../../.. ({ inherit (cfg) config overlays; } // systemArgs)
+      import ../../.. (
+        {
+          inherit (cfg) config overlays;
+        }
+        // systemArgs
+      )
     else
       import ../../.. {
         inherit (cfg)
@@ -411,7 +422,9 @@ in
             `nixpkgs.config` options should be passed when creating the instance instead.
 
             Current value:
-            ${lib.generators.toPretty { multiline = true; } opt.config}
+            ${lib.generators.toPretty {
+              multiline = true;
+            } opt.config}
           '';
         }
       ];

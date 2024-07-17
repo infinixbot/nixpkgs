@@ -295,7 +295,9 @@ in
       after = [ "networking.target" ];
       preStart =
         let
-          configFile = settingsFormat.generate "hedgedoc-config.json" { production = cfg.settings; };
+          configFile = settingsFormat.generate "hedgedoc-config.json" {
+            production = cfg.settings;
+          };
         in
         ''
           ${pkgs.envsubst}/bin/envsubst \

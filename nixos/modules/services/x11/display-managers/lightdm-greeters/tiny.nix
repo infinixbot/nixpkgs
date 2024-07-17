@@ -74,7 +74,9 @@ in
           static const char *session = "${dmcfg.defaultSession}";
         '';
         config = optionalString (cfg.extraConfig != "") (configHeader + cfg.extraConfig);
-        package = pkgs.lightdm-tiny-greeter.override { conf = config; };
+        package = pkgs.lightdm-tiny-greeter.override {
+          conf = config;
+        };
       in
       mkDefault {
         package = package.xgreeters;

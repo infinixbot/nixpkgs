@@ -10,12 +10,18 @@
     nix
     pkgs-nixVersions.latest
   ],
-  pkgs-nixVersions ? import ./nix-for-tests.nix { inherit pkgs; },
+  pkgs-nixVersions ? import ./nix-for-tests.nix {
+    inherit pkgs;
+  },
 }:
 
 let
   lib = import ../.;
-  testWithNix = nix: import ./test-with-nix.nix { inherit lib nix pkgs; };
+  testWithNix =
+    nix:
+    import ./test-with-nix.nix {
+      inherit lib nix pkgs;
+    };
 
 in
 pkgs.symlinkJoin {
@@ -32,6 +38,10 @@ pkgs.symlinkJoin {
     #
     #   https://github.com/NixOS/nixpkgs/issues/272591
     #
-    [ (import ../../pkgs/test/release { inherit pkgs lib nix; }) ];
+    [
+      (import ../../pkgs/test/release {
+        inherit pkgs lib nix;
+      })
+    ];
 
 }

@@ -193,9 +193,13 @@ stdenv.mkDerivation {
   ];
 
   passthru.tests = {
-    clang-default-compilation = foot.override { inherit (llvmPackages) stdenv; };
+    clang-default-compilation = foot.override {
+      inherit (llvmPackages) stdenv;
+    };
 
-    noPgo = foot.override { allowPgo = false; };
+    noPgo = foot.override {
+      allowPgo = false;
+    };
 
     # By changing name, this will get rebuilt everytime we change version,
     # even if the hash stays the same. Consequently it'll fail if we introduce

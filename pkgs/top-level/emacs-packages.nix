@@ -62,11 +62,15 @@ let
   # Contains both melpa stable & unstable
   melpaGeneric =
     { pkgs, lib }:
-    import ../applications/editors/emacs/elisp-packages/melpa-packages.nix { inherit lib pkgs; };
+    import ../applications/editors/emacs/elisp-packages/melpa-packages.nix {
+      inherit lib pkgs;
+    };
 
   mkManualPackages =
     { pkgs, lib }:
-    import ../applications/editors/emacs/elisp-packages/manual-packages.nix { inherit lib pkgs; };
+    import ../applications/editors/emacs/elisp-packages/manual-packages.nix {
+      inherit lib pkgs;
+    };
 
   emacsWithPackages =
     { pkgs, lib }:
@@ -82,12 +86,24 @@ makeScope pkgs'.newScope (
     {
       pkgs ? pkgs',
       lib ? pkgs.lib,
-      elpaDevelPackages ? mkElpaDevelPackages { inherit pkgs lib; } self,
-      elpaPackages ? mkElpaPackages { inherit pkgs lib; } self,
-      nongnuPackages ? mkNongnuPackages { inherit pkgs lib; } self,
-      melpaStablePackages ? melpaGeneric { inherit pkgs lib; } "stable" self,
-      melpaPackages ? melpaGeneric { inherit pkgs lib; } "unstable" self,
-      manualPackages ? mkManualPackages { inherit pkgs lib; } self,
+      elpaDevelPackages ? mkElpaDevelPackages {
+        inherit pkgs lib;
+      } self,
+      elpaPackages ? mkElpaPackages {
+        inherit pkgs lib;
+      } self,
+      nongnuPackages ? mkNongnuPackages {
+        inherit pkgs lib;
+      } self,
+      melpaStablePackages ? melpaGeneric {
+        inherit pkgs lib;
+      } "stable" self,
+      melpaPackages ? melpaGeneric {
+        inherit pkgs lib;
+      } "unstable" self,
+      manualPackages ? mkManualPackages {
+        inherit pkgs lib;
+      } self,
     }:
     (
       { }
@@ -132,8 +148,12 @@ makeScope pkgs'.newScope (
           inherit (self) emacs;
         };
 
-        emacsWithPackages = emacsWithPackages { inherit pkgs lib; } self;
-        withPackages = emacsWithPackages { inherit pkgs lib; } self;
+        emacsWithPackages = emacsWithPackages {
+          inherit pkgs lib;
+        } self;
+        withPackages = emacsWithPackages {
+          inherit pkgs lib;
+        } self;
 
       }
       // {

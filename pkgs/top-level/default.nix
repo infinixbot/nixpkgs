@@ -91,7 +91,13 @@ let
   # Allow both:
   # { /* the config */ } and
   # { pkgs, ... } : { /* the config */ }
-  config1 = if lib.isFunction config0 then config0 { inherit pkgs; } else config0;
+  config1 =
+    if lib.isFunction config0 then
+      config0 {
+        inherit pkgs;
+      }
+    else
+      config0;
 
   configEval = lib.evalModules {
     modules = [
@@ -139,9 +145,18 @@ let
 
   # Partially apply some arguments for building bootstraping stage pkgs
   # sets. Only apply arguments which no stdenv would want to override.
-  allPackages = newArgs: import ./stage.nix ({ inherit lib nixpkgsFun; } // newArgs);
+  allPackages =
+    newArgs:
+    import ./stage.nix (
+      {
+        inherit lib nixpkgsFun;
+      }
+      // newArgs
+    );
 
-  boot = import ../stdenv/booter.nix { inherit lib allPackages; };
+  boot = import ../stdenv/booter.nix {
+    inherit lib allPackages;
+  };
 
   stages = stdenvStages {
     inherit

@@ -5,7 +5,9 @@
   gnused,
 }:
 let
-  tests = import ./test { inherit callPackage; };
+  tests = import ./test {
+    inherit callPackage;
+  };
 in
 {
   patchRcPathBash = makeSetupHook {

@@ -11,10 +11,15 @@ let
   cfg = config.services.shout;
   shoutHome = "/var/lib/shout";
 
-  defaultConfig = pkgs.runCommand "config.js" { preferLocalBuild = true; } ''
-    EDITOR=true ${pkgs.shout}/bin/shout config --home $PWD
-    mv config.js $out
-  '';
+  defaultConfig =
+    pkgs.runCommand "config.js"
+      {
+        preferLocalBuild = true;
+      }
+      ''
+        EDITOR=true ${pkgs.shout}/bin/shout config --home $PWD
+        mv config.js $out
+      '';
 
   finalConfigFile =
     if (cfg.configFile != null) then

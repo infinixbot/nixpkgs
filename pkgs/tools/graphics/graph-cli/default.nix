@@ -26,7 +26,9 @@ python3Packages.buildPythonApplication rec {
   propagatedBuildInputs = with python3Packages; [
     numpy
     pandas
-    (matplotlib.override { enableQt = true; })
+    (matplotlib.override {
+      enableQt = true;
+    })
   ];
 
   # does not contain tests despite reference in Makefile

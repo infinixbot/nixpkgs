@@ -30,7 +30,9 @@ lib.makeScope
   (
     self: with self; {
 
-      bash_2_05 = callPackage ./bash/2.nix { tinycc = tinycc-mes; };
+      bash_2_05 = callPackage ./bash/2.nix {
+        tinycc = tinycc-mes;
+      };
 
       bash = callPackage ./bash {
         bootBash = bash_2_05;
@@ -52,7 +54,9 @@ lib.makeScope
         gnutar = gnutar-musl;
       };
 
-      coreutils = callPackage ./coreutils { tinycc = tinycc-mes; };
+      coreutils = callPackage ./coreutils {
+        tinycc = tinycc-mes;
+      };
       coreutils-musl = callPackage ./coreutils/musl.nix {
         bash = bash_2_05;
         tinycc = tinycc-musl;
@@ -123,7 +127,9 @@ lib.makeScope
         tinycc = tinycc-mes;
       };
 
-      gnumake = callPackage ./gnumake { tinycc = tinycc-mes; };
+      gnumake = callPackage ./gnumake {
+        tinycc = tinycc-mes;
+      };
 
       gnumake-musl = callPackage ./gnumake/musl.nix {
         bash = bash_2_05;
@@ -132,7 +138,9 @@ lib.makeScope
         gnumakeBoot = gnumake;
       };
 
-      gnupatch = callPackage ./gnupatch { tinycc = tinycc-mes; };
+      gnupatch = callPackage ./gnupatch {
+        tinycc = tinycc-mes;
+      };
 
       gnused = callPackage ./gnused {
         bash = bash_2_05;
@@ -174,9 +182,13 @@ lib.makeScope
         tinycc = tinycc-mes;
       };
 
-      heirloom-devtools = callPackage ./heirloom-devtools { tinycc = tinycc-mes; };
+      heirloom-devtools = callPackage ./heirloom-devtools {
+        tinycc = tinycc-mes;
+      };
 
-      linux-headers = callPackage ./linux-headers { bash = bash_2_05; };
+      linux-headers = callPackage ./linux-headers {
+        bash = bash_2_05;
+      };
 
       ln-boot = callPackage ./ln-boot { };
 

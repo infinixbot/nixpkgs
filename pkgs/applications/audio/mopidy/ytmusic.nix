@@ -28,7 +28,9 @@ python.pkgs.buildPythonApplication rec {
   nativeBuildInputs = with python.pkgs; [ setuptools ];
 
   propagatedBuildInputs = [
-    (mopidy.override { pythonPackages = python.pkgs; })
+    (mopidy.override {
+      pythonPackages = python.pkgs;
+    })
     python.pkgs.ytmusicapi
     python.pkgs.pytube
   ];

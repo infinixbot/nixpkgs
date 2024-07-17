@@ -60,7 +60,9 @@ let
 
     in
     menuBuilderGrub2 finalCfg [
-      { class = "installer"; }
+      {
+        class = "installer";
+      }
       {
         class = "nomodeset";
         params = "nomodeset";

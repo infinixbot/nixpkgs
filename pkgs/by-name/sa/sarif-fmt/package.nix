@@ -45,7 +45,9 @@ rustPlatform.buildRustPackage rec {
   ];
 
   passthru = {
-    tests.version = testers.testVersion { package = sarif-fmt; };
+    tests.version = testers.testVersion {
+      package = sarif-fmt;
+    };
   };
 
   meta = {

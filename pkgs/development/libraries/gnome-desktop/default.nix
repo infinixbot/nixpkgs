@@ -93,7 +93,9 @@ stdenv.mkDerivation rec {
   separateDebugInfo = stdenv.isLinux;
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "gnome-desktop"; };
+    updateScript = gnome.updateScript {
+      packageName = "gnome-desktop";
+    };
   };
 
   meta = with lib; {

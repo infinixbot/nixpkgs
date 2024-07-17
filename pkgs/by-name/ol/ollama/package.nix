@@ -98,7 +98,9 @@ let
     rocmPackages.rocm-device-libs
     rocmPackages.rocm-smi
   ];
-  rocmClang = linkFarm "rocm-clang" { llvm = rocmPackages.llvm.clang; };
+  rocmClang = linkFarm "rocm-clang" {
+    llvm = rocmPackages.llvm.clang;
+  };
   rocmPath = buildEnv {
     name = "rocm-path";
     paths = rocmLibs ++ [ rocmClang ];
@@ -137,7 +139,12 @@ let
   wrapperArgs = builtins.concatStringsSep " " wrapperOptions;
 
   goBuild =
-    if enableCuda then buildGoModule.override { stdenv = overrideCC stdenv gcc12; } else buildGoModule;
+    if enableCuda then
+      buildGoModule.override {
+        stdenv = overrideCC stdenv gcc12;
+      }
+    else
+      buildGoModule;
   inherit (lib) licenses platforms maintainers;
 in
 goBuild (
@@ -145,7 +152,9 @@ goBuild (
     ROCM_PATH = rocmPath;
     CLBlast_DIR = "${clblast}/lib/cmake/CLBlast";
   })
-  // (lib.optionalAttrs enableCuda { CUDA_LIB_DIR = "${cudaToolkit}/lib"; })
+  // (lib.optionalAttrs enableCuda {
+    CUDA_LIB_DIR = "${cudaToolkit}/lib";
+  })
   // {
     inherit
       pname

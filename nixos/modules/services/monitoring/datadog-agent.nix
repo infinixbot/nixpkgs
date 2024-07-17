@@ -17,11 +17,21 @@ let
       additional_checksd = "/etc/datadog-agent/checks.d";
       use_dogstatsd = true;
     }
-    // optionalAttrs (cfg.logLevel != null) { log_level = cfg.logLevel; }
-    // optionalAttrs (cfg.hostname != null) { inherit (cfg) hostname; }
-    // optionalAttrs (cfg.ddUrl != null) { dd_url = cfg.ddUrl; }
-    // optionalAttrs (cfg.site != null) { site = cfg.site; }
-    // optionalAttrs (cfg.tags != null) { tags = concatStringsSep ", " cfg.tags; }
+    // optionalAttrs (cfg.logLevel != null) {
+      log_level = cfg.logLevel;
+    }
+    // optionalAttrs (cfg.hostname != null) {
+      inherit (cfg) hostname;
+    }
+    // optionalAttrs (cfg.ddUrl != null) {
+      dd_url = cfg.ddUrl;
+    }
+    // optionalAttrs (cfg.site != null) {
+      site = cfg.site;
+    }
+    // optionalAttrs (cfg.tags != null) {
+      tags = concatStringsSep ", " cfg.tags;
+    }
     // optionalAttrs (cfg.enableLiveProcessCollection) {
       process_config = {
         enabled = "true";
@@ -245,7 +255,11 @@ in
       type = types.attrs;
       default = {
         init_config = { };
-        instances = [ { use_mount = "false"; } ];
+        instances = [
+          {
+            use_mount = "false";
+          }
+        ];
       };
     };
 

@@ -1,6 +1,8 @@
 {
   system ? builtins.currentSystem,
-  pkgs ? import ../.. { inherit system; },
+  pkgs ? import ../.. {
+    inherit system;
+  },
   package,
 }:
 import ./make-test-python.nix (

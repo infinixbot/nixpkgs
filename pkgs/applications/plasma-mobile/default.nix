@@ -28,7 +28,9 @@
 
 let
   mirror = "mirror://kde";
-  srcs = import ./srcs.nix { inherit fetchurl mirror; };
+  srcs = import ./srcs.nix {
+    inherit fetchurl mirror;
+  };
 
   mkDerivation =
     args:
@@ -59,7 +61,9 @@ let
   packages =
     self:
     let
-      callPackage = self.newScope { inherit mkDerivation; };
+      callPackage = self.newScope {
+        inherit mkDerivation;
+      };
     in
     {
       plasma-dialer = callPackage ./plasma-dialer.nix { };

@@ -47,7 +47,9 @@ let
 
   faust =
     let
-      ncurses_static = ncurses.override { enableStatic = true; };
+      ncurses_static = ncurses.override {
+        enableStatic = true;
+      };
     in
     stdenv.mkDerivation {
 

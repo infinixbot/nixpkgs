@@ -16,8 +16,12 @@
 }:
 
 let
-  drbdForOCF = drbd.override { forOCF = true; };
-  pacemakerForOCF = pacemaker.override { forOCF = true; };
+  drbdForOCF = drbd.override {
+    forOCF = true;
+  };
+  pacemakerForOCF = pacemaker.override {
+    forOCF = true;
+  };
 
   resource-agentsForOCF = stdenv.mkDerivation rec {
     pname = "resource-agents";

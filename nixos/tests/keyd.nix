@@ -2,10 +2,14 @@
 {
   system ? builtins.currentSystem,
   config ? { },
-  pkgs ? import ../.. { inherit system config; },
+  pkgs ? import ../.. {
+    inherit system config;
+  },
 }:
 
-with import ../lib/testing-python.nix { inherit system pkgs; };
+with import ../lib/testing-python.nix {
+  inherit system pkgs;
+};
 
 let
   readyFile = "/tmp/readerReady";

@@ -99,7 +99,9 @@ stdenv.mkDerivation (finalAttrs: {
       --replace-fail "jq" "${lib.getExe jq}"
   '';
 
-  passthru.tests.version = testers.testVersion { package = dunst; };
+  passthru.tests.version = testers.testVersion {
+    package = dunst;
+  };
 
   meta = with lib; {
     description = "Lightweight and customizable notification daemon";

@@ -43,5 +43,7 @@
         name = "${pname}-${version}";
       }
     else
-      { name = if (name != "") then name else (baseNameOf finalAttrs.url); }
+      {
+        name = if (name != "") then name else (baseNameOf finalAttrs.url);
+      }
   )

@@ -65,16 +65,26 @@ let
         ;
     };
 
-  basePlugins = lib.mapAttrs (_: a: { builtin = true; } // a) (import ./builtin-plugins.nix inputs);
+  basePlugins = lib.mapAttrs (
+    _: a:
+    {
+      builtin = true;
+    }
+    // a
+  ) (import ./builtin-plugins.nix inputs);
   pluginOverrides' = lib.mapAttrs (
     plugName:
     lib.throwIf (basePlugins.${plugName}.deprecated or false)
       "beets evaluation error: Plugin ${plugName} was enabled in pluginOverrides, but it has been removed. Remove the override to fix evaluation."
   ) pluginOverrides;
 
-  allPlugins = lib.mapAttrs (n: a: mkPlugin { name = n; } // a) (
-    lib.recursiveUpdate basePlugins pluginOverrides'
-  );
+  allPlugins = lib.mapAttrs (
+    n: a:
+    mkPlugin {
+      name = n;
+    }
+    // a
+  ) (lib.recursiveUpdate basePlugins pluginOverrides');
   builtinPlugins = lib.filterAttrs (_: p: p.builtin) allPlugins;
   enabledPlugins = lib.filterAttrs (_: p: p.enable) allPlugins;
   disabledPlugins = lib.filterAttrs (_: p: !p.enable) allPlugins;
@@ -178,18 +188,23 @@ python3Packages.buildPythonApplication {
 
   passthru.plugins = allPlugins;
 
-  passthru.tests.gstreamer = runCommand "beets-gstreamer-test" { meta.timeout = 60; } ''
-        set -euo pipefail
-        export HOME=$(mktemp -d)
-        mkdir $out
+  passthru.tests.gstreamer =
+    runCommand "beets-gstreamer-test"
+      {
+        meta.timeout = 60;
+      }
+      ''
+            set -euo pipefail
+            export HOME=$(mktemp -d)
+            mkdir $out
 
-        cat << EOF > $out/config.yaml
-    replaygain:
-      backend: gstreamer
-    EOF
+            cat << EOF > $out/config.yaml
+        replaygain:
+          backend: gstreamer
+        EOF
 
-        ${beets}/bin/beet -c $out/config.yaml > /dev/null
-  '';
+            ${beets}/bin/beet -c $out/config.yaml > /dev/null
+      '';
 
   meta = with lib; {
     description = "Music tagger and library organizer";

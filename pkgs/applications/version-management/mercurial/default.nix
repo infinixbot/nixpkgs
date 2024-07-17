@@ -115,7 +115,9 @@ let
       '';
 
     passthru.tests = {
-      mercurial-tests = makeTests { flags = "--with-hg=$MERCURIAL_BASE/bin/hg"; };
+      mercurial-tests = makeTests {
+        flags = "--with-hg=$MERCURIAL_BASE/bin/hg";
+      };
     };
 
     meta = with lib; {

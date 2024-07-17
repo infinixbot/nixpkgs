@@ -54,7 +54,9 @@ buildNimPackage (
       tests = {
         inherit (nixosTests) nitter;
       };
-      updateScript = unstableGitUpdater { branch = "guest_accounts"; };
+      updateScript = unstableGitUpdater {
+        branch = "guest_accounts";
+      };
     };
 
     meta = with lib; {

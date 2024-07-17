@@ -1,1 +1,4 @@
-{ mkDerivation }: mkDerivation { path = "sbin/rcorder"; }
+{ mkDerivation }:
+mkDerivation {
+  path = "sbin/rcorder";
+}

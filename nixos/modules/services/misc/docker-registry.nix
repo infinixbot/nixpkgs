@@ -15,10 +15,14 @@ let
   registryConfig = {
     version = "0.1";
     log.fields.service = "registry";
-    storage = {
-      cache.blobdescriptor = blobCache;
-      delete.enabled = cfg.enableDelete;
-    } // (optionalAttrs (cfg.storagePath != null) { filesystem.rootdirectory = cfg.storagePath; });
+    storage =
+      {
+        cache.blobdescriptor = blobCache;
+        delete.enabled = cfg.enableDelete;
+      }
+      // (optionalAttrs (cfg.storagePath != null) {
+        filesystem.rootdirectory = cfg.storagePath;
+      });
     http = {
       addr = "${cfg.listenAddress}:${builtins.toString cfg.port}";
       headers.X-Content-Type-Options = [ "nosniff" ];
@@ -50,7 +54,9 @@ in
   options.services.dockerRegistry = {
     enable = mkEnableOption "Docker Registry";
 
-    package = mkPackageOption pkgs "docker-distribution" { example = "gitlab-container-registry"; };
+    package = mkPackageOption pkgs "docker-distribution" {
+      example = "gitlab-container-registry";
+    };
 
     listenAddress = mkOption {
       description = "Docker registry host or ip to bind to.";
@@ -176,6 +182,8 @@ in
       };
     users.groups.docker-registry = { };
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.port ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.port ];
+    };
   };
 }

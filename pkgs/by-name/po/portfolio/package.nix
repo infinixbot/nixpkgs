@@ -65,7 +65,9 @@ stdenv.mkDerivation rec {
     ln -s $out/portfolio/icon.xpm $out/share/pixmaps/portfolio.xpm
   '';
 
-  passthru.updateScript = gitUpdater { url = "https://github.com/buchen/portfolio.git"; };
+  passthru.updateScript = gitUpdater {
+    url = "https://github.com/buchen/portfolio.git";
+  };
 
   meta = with lib; {
     description = "Simple tool to calculate the overall performance of an investment portfolio";

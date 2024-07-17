@@ -22,5 +22,7 @@ with lib;
 
   };
 
-  config = mkIf config.fonts.enableGhostscriptFonts { fonts.packages = [ pkgs.ghostscript.fonts ]; };
+  config = mkIf config.fonts.enableGhostscriptFonts {
+    fonts.packages = [ pkgs.ghostscript.fonts ];
+  };
 }

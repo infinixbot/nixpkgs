@@ -96,19 +96,25 @@ let
       inherit twenty-fortyeight;
     };
 
-    libretro-fuse = callPackage ../applications/video/kodi/addons/libretro-fuse { inherit fuse; };
+    libretro-fuse = callPackage ../applications/video/kodi/addons/libretro-fuse {
+      inherit fuse;
+    };
 
     libretro-genplus = callPackage ../applications/video/kodi/addons/libretro-genplus {
       inherit genesis-plus-gx;
     };
 
-    libretro-mgba = callPackage ../applications/video/kodi/addons/libretro-mgba { inherit mgba; };
+    libretro-mgba = callPackage ../applications/video/kodi/addons/libretro-mgba {
+      inherit mgba;
+    };
 
     libretro-nestopia = callPackage ../applications/video/kodi/addons/libretro-nestopia {
       inherit nestopia;
     };
 
-    libretro-snes9x = callPackage ../applications/video/kodi/addons/libretro-snes9x { inherit snes9x; };
+    libretro-snes9x = callPackage ../applications/video/kodi/addons/libretro-snes9x {
+      inherit snes9x;
+    };
 
     jellycon = callPackage ../applications/video/kodi/addons/jellycon { };
 

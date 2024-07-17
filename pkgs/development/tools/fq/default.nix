@@ -27,7 +27,9 @@ buildGoModule rec {
 
   subPackages = [ "." ];
 
-  passthru.tests = testers.testVersion { package = fq; };
+  passthru.tests = testers.testVersion {
+    package = fq;
+  };
 
   meta = with lib; {
     description = "jq for binary formats";

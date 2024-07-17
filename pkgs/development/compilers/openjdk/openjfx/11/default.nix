@@ -86,7 +86,9 @@ stdenv.mkDerivation {
 
   mitmCache = gradle.fetchDeps {
     attrPath = "openjfx${major}";
-    pkg = pkgs."openjfx${major}".override { withWebKit = true; };
+    pkg = pkgs."openjfx${major}".override {
+      withWebKit = true;
+    };
     data = ./deps.json;
   };
 

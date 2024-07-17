@@ -43,7 +43,9 @@ stdenv.mkDerivation rec {
 
   cmakeFlags = [ (lib.cmakeBool "IMNODES_EXAMPLES" withExamples) ];
 
-  passthru.tests.examples = imnodes.override { withExamples = true; };
+  passthru.tests.examples = imnodes.override {
+    withExamples = true;
+  };
 
   meta = {
     description = "Small, dependency-free node editor for dear imgui";

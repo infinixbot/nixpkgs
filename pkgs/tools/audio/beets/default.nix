@@ -39,7 +39,9 @@ lib.makeExtensible (self: {
     ];
   };
 
-  beets-minimal = self.beets.override { disableAllPlugins = true; };
+  beets-minimal = self.beets.override {
+    disableAllPlugins = true;
+  };
 
   beets-unstable = callPackage ./common.nix {
     inherit python3Packages;
@@ -56,7 +58,13 @@ lib.makeExtensible (self: {
     ];
   };
 
-  alternatives = callPackage ./plugins/alternatives.nix { beets = self.beets-minimal; };
-  copyartifacts = callPackage ./plugins/copyartifacts.nix { beets = self.beets-minimal; };
-  extrafiles = callPackage ./plugins/extrafiles.nix { beets = self.beets-minimal; };
+  alternatives = callPackage ./plugins/alternatives.nix {
+    beets = self.beets-minimal;
+  };
+  copyartifacts = callPackage ./plugins/copyartifacts.nix {
+    beets = self.beets-minimal;
+  };
+  extrafiles = callPackage ./plugins/extrafiles.nix {
+    beets = self.beets-minimal;
+  };
 })

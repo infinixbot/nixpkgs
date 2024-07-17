@@ -36,7 +36,9 @@ import ./make-test-python.nix (
           };
           boot-luks-custom-keymap.configuration = lib.mkMerge [
             boot-luks.configuration
-            { console.keyMap = "neo"; }
+            {
+              console.keyMap = "neo";
+            }
           ];
         };
       };

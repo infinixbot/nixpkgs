@@ -210,9 +210,12 @@ in
           let
             mergeAttrList = lib.foldl' lib.mergeAttrs { };
             stdParams = mergeAttrList [
-              (lib.optionalAttrs (
-                cfg.environmentalParameters ? base-url && cfg.environmentalParameters.base-url != null
-              ) { "jetbrains.youtrack.baseUrl" = cfg.environmentalParameters.base-url; })
+              (lib.optionalAttrs
+                (cfg.environmentalParameters ? base-url && cfg.environmentalParameters.base-url != null)
+                {
+                  "jetbrains.youtrack.baseUrl" = cfg.environmentalParameters.base-url;
+                }
+              )
               {
                 "java.aws.headless" = "true";
                 "jetbrains.youtrack.disableBrowser" = "true";
@@ -243,7 +246,9 @@ in
               text = (lib.concatStringsSep "\n" cfg.generalParameters);
             };
 
-            package = cfg.package.override { statePath = cfg.statePath; };
+            package = cfg.package.override {
+              statePath = cfg.statePath;
+            };
           in
           {
             after = [ "network.target" ];
@@ -274,7 +279,9 @@ in
                 Restart = "on-failure";
                 ExecStart = "${package}/bin/youtrack run";
               }
-              (lib.mkIf (cfg.statePath == "/var/lib/youtrack") { StateDirectory = "youtrack"; })
+              (lib.mkIf (cfg.statePath == "/var/lib/youtrack") {
+                StateDirectory = "youtrack";
+              })
             ];
           };
       in

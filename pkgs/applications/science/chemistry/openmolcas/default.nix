@@ -108,7 +108,9 @@ stdenv.mkDerivation rec {
       globalarrays
     ];
 
-  passthru = lib.optionalAttrs enableMpi { inherit mpi; };
+  passthru = lib.optionalAttrs enableMpi {
+    inherit mpi;
+  };
 
   cmakeFlags =
     [

@@ -227,24 +227,31 @@ rec {
         name = "gradle-${gradle.version}";
 
         paths = [
-          (makeSetupHook { name = "gradle-setup-hook"; } (concatTextFile {
-            name = "setup-hook.sh";
-            files = [
-              (mitm-cache.setupHook)
-              (substituteAll {
-                src = ./setup-hook.sh;
-                # jdk used for keytool
-                inherit (gradle) jdk;
-                init_script = ./init-build.gradle;
-              })
-            ];
-          }))
+          (makeSetupHook
+            {
+              name = "gradle-setup-hook";
+            }
+            (concatTextFile {
+              name = "setup-hook.sh";
+              files = [
+                (mitm-cache.setupHook)
+                (substituteAll {
+                  src = ./setup-hook.sh;
+                  # jdk used for keytool
+                  inherit (gradle) jdk;
+                  init_script = ./init-build.gradle;
+                })
+              ];
+            })
+          )
           gradle
           mitm-cache
         ];
 
         passthru = {
-          fetchDeps = callPackage ./fetch-deps.nix { inherit mitm-cache; };
+          fetchDeps = callPackage ./fetch-deps.nix {
+            inherit mitm-cache;
+          };
           inherit (gradle) jdk;
         };
 

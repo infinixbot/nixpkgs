@@ -63,7 +63,9 @@ let
       # https://github.com/NixOS/nix/blob/9348f9291e5d9e4ba3c4347ea1b235640f54fd79/src/libutil/util.cc#L478
       export USER=nobody
       ${buildPackages.nix}/bin/nix-store --load-db < ${
-        closureInfo { rootPaths = contentsList; }
+        closureInfo {
+          rootPaths = contentsList;
+        }
       }/registration
       # Reset registration times to make the image reproducible
       ${buildPackages.sqlite}/bin/sqlite3 nix/var/nix/db/db.sqlite "UPDATE ValidPaths SET registrationTime = ''${SOURCE_DATE_EPOCH}"
@@ -202,25 +204,29 @@ rec {
       derivations,
       onlyDeps ? false,
     }:
-    runCommand "merge-drvs" { inherit derivations onlyDeps; } ''
-      if [[ -n "$onlyDeps" ]]; then
-        echo $derivations > $out
-        exit 0
-      fi
-
-      mkdir $out
-      for derivation in $derivations; do
-        echo "Merging $derivation..."
-        if [[ -d "$derivation" ]]; then
-          # If it's a directory, copy all of its contents into $out.
-          cp -drf --preserve=mode -f $derivation/* $out/
-        else
-          # Otherwise treat the derivation as a tarball and extract it
-          # into $out.
-          tar -C $out -xpf $drv || true
+    runCommand "merge-drvs"
+      {
+        inherit derivations onlyDeps;
+      }
+      ''
+        if [[ -n "$onlyDeps" ]]; then
+          echo $derivations > $out
+          exit 0
         fi
-      done
-    '';
+
+        mkdir $out
+        for derivation in $derivations; do
+          echo "Merging $derivation..."
+          if [[ -d "$derivation" ]]; then
+            # If it's a directory, copy all of its contents into $out.
+            cp -drf --preserve=mode -f $derivation/* $out/
+          else
+            # Otherwise treat the derivation as a tarball and extract it
+            # into $out.
+            tar -C $out -xpf $drv || true
+          fi
+        done
+      '';
 
   # Helper for setting up the base files for managing users and
   # groups, only if such files don't exist already. It is suitable for
@@ -974,7 +980,12 @@ rec {
       extraCommands ? "",
       ...
     }:
-    (buildImage (args // { extraCommands = (mkDbExtraCommand copyToRoot) + extraCommands; }));
+    (buildImage (
+      args
+      // {
+        extraCommands = (mkDbExtraCommand copyToRoot) + extraCommands;
+      }
+    ));
 
   # TODO: add the dependencies of the config json.
   buildLayeredImageWithNixDb =
@@ -983,7 +994,12 @@ rec {
       extraCommands ? "",
       ...
     }:
-    (buildLayeredImage (args // { extraCommands = (mkDbExtraCommand contents) + extraCommands; }));
+    (buildLayeredImage (
+      args
+      // {
+        extraCommands = (mkDbExtraCommand contents) + extraCommands;
+      }
+    ));
 
   # Arguments are documented in ../../../doc/build-helpers/images/dockertools.section.md
   streamLayeredImage = lib.makeOverridable (

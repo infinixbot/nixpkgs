@@ -108,7 +108,9 @@ in
             ) "-${config.security.wrapperDir}/fusermount -uz ${cfg.mountpoint}";
           in
           if (cfg.mountpoint == null) then
-            { ExecStart = cmd; }
+            {
+              ExecStart = cmd;
+            }
           else
             {
               ExecStartPre = umounter;

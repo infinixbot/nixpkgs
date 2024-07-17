@@ -11,7 +11,9 @@ let
     url = "https://github.com/keyboardio/chrysalis/releases/download/v${version}/chrysalis-${version}-x64.AppImage";
     hash = "sha512-F6Y87rgIclj1OA3gVX/gqqp9AvXKQlBXrbqk/26F1KHPF9NzHJgVmeszSo3Nhb6xg4CzWmzkqc8IW2H/Bg57kw==";
   };
-  appimageContents = appimageTools.extract { inherit pname version src; };
+  appimageContents = appimageTools.extract {
+    inherit pname version src;
+  };
 in
 appimageTools.wrapType2 {
   inherit pname version src;

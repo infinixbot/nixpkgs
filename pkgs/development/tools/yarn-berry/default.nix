@@ -39,7 +39,9 @@ stdenv.mkDerivation (finalAttrs: {
   passthru.updateScript = ./update.sh;
 
   passthru.tests = {
-    version = testers.testVersion { package = finalAttrs.finalPackage; };
+    version = testers.testVersion {
+      package = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

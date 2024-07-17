@@ -30,7 +30,9 @@ rustPlatform.buildRustPackage {
   ];
 
   passthru.tests = {
-    version = testers.testVersion { package = wstunnel; };
+    version = testers.testVersion {
+      package = wstunnel;
+    };
     nixosTest = nixosTests.wstunnel;
   };
 

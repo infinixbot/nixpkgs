@@ -18,7 +18,11 @@ let
     in
     z.publish.enable || z.discovery.enable;
 
-  overriddenPackage = cfg.package.override (optionalAttrs hasZeroconf { zeroconfSupport = true; });
+  overriddenPackage = cfg.package.override (
+    optionalAttrs hasZeroconf {
+      zeroconfSupport = true;
+    }
+  );
   binary = "${getBin overriddenPackage}/bin/pulseaudio";
   binaryNoDaemon = "${binary} --daemonize=no";
 
@@ -261,7 +265,10 @@ in
       hardware.pulseaudio.daemon.config.dl-search-path =
         let
           overriddenModules = builtins.map (
-            drv: drv.override { pulseaudio = overriddenPackage; }
+            drv:
+            drv.override {
+              pulseaudio = overriddenPackage;
+            }
           ) cfg.extraModules;
           modulePaths =
             builtins.map (drv: "${drv}/lib/pulseaudio/modules")
@@ -271,7 +278,9 @@ in
         lib.concatStringsSep ":" modulePaths;
     })
 
-    (mkIf hasZeroconf { services.avahi.enable = true; })
+    (mkIf hasZeroconf {
+      services.avahi.enable = true;
+    })
     (mkIf cfg.zeroconf.publish.enable {
       services.avahi.publish.enable = true;
       services.avahi.publish.userServices = true;

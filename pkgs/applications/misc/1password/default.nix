@@ -16,10 +16,14 @@ let
   fetch =
     srcPlatform: hash: extension:
     let
-      args = {
-        url = "https://cache.agilebits.com/dist/1P/op2/pkg/v${version}/op_${srcPlatform}_v${version}.${extension}";
-        inherit hash;
-      } // lib.optionalAttrs (extension == "zip") { stripRoot = false; };
+      args =
+        {
+          url = "https://cache.agilebits.com/dist/1P/op2/pkg/v${version}/op_${srcPlatform}_v${version}.${extension}";
+          inherit hash;
+        }
+        // lib.optionalAttrs (extension == "zip") {
+          stripRoot = false;
+        };
     in
     if extension == "zip" then fetchzip args else fetchurl args;
 
@@ -82,7 +86,9 @@ stdenv.mkDerivation {
 
   passthru.updateScript = ./update.sh;
 
-  passthru.tests.version = testers.testVersion { package = _1password; };
+  passthru.tests.version = testers.testVersion {
+    package = _1password;
+  };
 
   meta = with lib; {
     description = "1Password command-line tool";

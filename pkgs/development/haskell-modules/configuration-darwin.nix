@@ -156,11 +156,18 @@ self: super:
       __darwinAllowLocalNetworking = true;
     });
 
-    hidapi = addExtraLibraries [
-      darwin.apple_sdk.frameworks.AppKit
-      darwin.apple_sdk.frameworks.IOKit
-      darwin.apple_sdk.frameworks.CoreFoundation
-    ] (super.hidapi.override { systemd = null; });
+    hidapi =
+      addExtraLibraries
+        [
+          darwin.apple_sdk.frameworks.AppKit
+          darwin.apple_sdk.frameworks.IOKit
+          darwin.apple_sdk.frameworks.CoreFoundation
+        ]
+        (
+          super.hidapi.override {
+            systemd = null;
+          }
+        );
 
     hmatrix = addBuildDepend darwin.apple_sdk.frameworks.Accelerate super.hmatrix;
 

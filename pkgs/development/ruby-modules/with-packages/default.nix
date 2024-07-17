@@ -22,7 +22,9 @@
 */
 
 let
-  functions = import ../bundled-common/functions.nix { inherit lib gemConfig; };
+  functions = import ../bundled-common/functions.nix {
+    inherit lib gemConfig;
+  };
 
   buildGems =
     gemset:

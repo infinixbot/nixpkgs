@@ -74,7 +74,9 @@ stdenv.mkDerivation rec {
   mesonFlags = [ "-Dgtk_doc=true" ];
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = pname; };
+    updateScript = gnome.updateScript {
+      packageName = pname;
+    };
   };
 
   meta = with lib; {

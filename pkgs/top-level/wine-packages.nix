@@ -48,14 +48,26 @@ rec {
     embedInstallers = true;
   };
 
-  stable = base.override { wineRelease = "stable"; };
-  stableFull = full.override { wineRelease = "stable"; };
+  stable = base.override {
+    wineRelease = "stable";
+  };
+  stableFull = full.override {
+    wineRelease = "stable";
+  };
 
-  unstable = base.override { wineRelease = "unstable"; };
-  unstableFull = full.override { wineRelease = "unstable"; };
+  unstable = base.override {
+    wineRelease = "unstable";
+  };
+  unstableFull = full.override {
+    wineRelease = "unstable";
+  };
 
-  staging = base.override { wineRelease = "staging"; };
-  stagingFull = full.override { wineRelease = "staging"; };
+  staging = base.override {
+    wineRelease = "staging";
+  };
+  stagingFull = full.override {
+    wineRelease = "staging";
+  };
 
   wayland = base.override {
     wineRelease = "wayland";

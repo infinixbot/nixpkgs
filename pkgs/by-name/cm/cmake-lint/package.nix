@@ -32,7 +32,9 @@ python3Packages.buildPythonApplication rec {
   '';
 
   passthru.tests = {
-    version = testers.testVersion { package = cmake-lint; };
+    version = testers.testVersion {
+      package = cmake-lint;
+    };
   };
 
   meta = {

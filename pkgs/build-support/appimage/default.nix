@@ -34,10 +34,14 @@ rec {
       src,
       ...
     }:
-    pkgs.runCommand "${name}-extracted" { buildInputs = [ appimage-exec ]; } ''
-      appimage-exec.sh -x $out ${src}
-      ${postExtract}
-    '';
+    pkgs.runCommand "${name}-extracted"
+      {
+        buildInputs = [ appimage-exec ];
+      }
+      ''
+        appimage-exec.sh -x $out ${src}
+        ${postExtract}
+      '';
 
   # for compatibility, deprecated
   extractType1 = extract;

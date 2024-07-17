@@ -1,1 +1,4 @@
-{ mkKdeDerivation }: mkKdeDerivation { pname = "qqc2-breeze-style"; }
+{ mkKdeDerivation }:
+mkKdeDerivation {
+  pname = "qqc2-breeze-style";
+}

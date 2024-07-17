@@ -1,3 +1,5 @@
 { pkgs, makeInstalledTest, ... }:
 
-makeInstalledTest { tested = pkgs.glib-networking; }
+makeInstalledTest {
+  tested = pkgs.glib-networking;
+}

@@ -1,8 +1,12 @@
 {
   system ? builtins.currentSystem,
-  pkgs ? import ../../.. { inherit system; },
+  pkgs ? import ../../.. {
+    inherit system;
+  },
 }:
-with import ./base.nix { inherit system; };
+with import ./base.nix {
+  inherit system;
+};
 let
 
   roServiceAccount = pkgs.writeText "ro-service-account.json" (

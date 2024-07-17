@@ -65,7 +65,9 @@ stdenv.mkDerivation rec {
     ln -s $out/libexec/gummyd $out/bin/gummyd
   '';
 
-  passthru.tests.version = testers.testVersion { package = gummy; };
+  passthru.tests.version = testers.testVersion {
+    package = gummy;
+  };
 
   meta = with lib; {
     homepage = "https://codeberg.org/fusco/gummy";

@@ -29,15 +29,23 @@ let
       })
       ({
         name = "overriding-using-only-attrset";
-        expr = (pkgs.hello.overrideAttrs { pname = "hello-overriden"; }).pname == "hello-overriden";
+        expr =
+          (pkgs.hello.overrideAttrs {
+            pname = "hello-overriden";
+          }).pname == "hello-overriden";
         expected = true;
       })
       ({
         name = "overriding-using-only-attrset-no-final-attrs";
         expr =
-          ((stdenvNoCC.mkDerivation { pname = "hello-no-final-attrs"; }).overrideAttrs {
-            pname = "hello-no-final-attrs-overridden";
-          }).pname == "hello-no-final-attrs-overridden";
+          (
+            (stdenvNoCC.mkDerivation {
+              pname = "hello-no-final-attrs";
+            }).overrideAttrs
+            {
+              pname = "hello-no-final-attrs-overridden";
+            }
+          ).pname == "hello-no-final-attrs-overridden";
         expected = true;
       })
     ];
@@ -68,10 +76,16 @@ let
 
   example = entangle pkgs.hello pkgs.figlet;
 
-  overrides1 = example.overrideAttrs (_: super: { pname = "a-better-${super.pname}"; });
+  overrides1 = example.overrideAttrs (
+    _: super: {
+      pname = "a-better-${super.pname}";
+    }
+  );
 
   repeatedOverrides = overrides1.overrideAttrs (
-    _: super: { pname = "${super.pname}-with-blackjack"; }
+    _: super: {
+      pname = "${super.pname}-with-blackjack";
+    }
   );
 in
 

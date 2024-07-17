@@ -16,7 +16,9 @@ with lib;
 
 let
 
-  qemu-common = import ../../lib/qemu-common.nix { inherit lib pkgs; };
+  qemu-common = import ../../lib/qemu-common.nix {
+    inherit lib pkgs;
+  };
 
   cfg = config.virtualisation;
 
@@ -86,7 +88,12 @@ let
           inherit file;
         }
       );
-      deviceOpts = mkOpts (deviceExtraOpts // { drive = drvId; });
+      deviceOpts = mkOpts (
+        deviceExtraOpts
+        // {
+          drive = drvId;
+        }
+      );
       device =
         if cfg.qemu.diskInterface == "scsi" then
           "-device lsi53c895a -device scsi-hd,${deviceOpts}"
@@ -287,7 +294,9 @@ let
         "$@"
   '';
 
-  regInfo = hostPkgs.closureInfo { rootPaths = config.virtualisation.additionalPaths; };
+  regInfo = hostPkgs.closureInfo {
+    rootPaths = config.virtualisation.additionalPaths;
+  };
 
   # Use well-defined and persistent filesystem labels to identify block devices.
   rootFilesystemLabel = "nixos";
@@ -310,7 +319,9 @@ let
     format = "qcow2";
     onlyNixStore = false;
     label = rootFilesystemLabel;
-    partitionTableType = selectPartitionTableLayout { inherit (cfg) useDefaultFilesystems useEFIBoot; };
+    partitionTableType = selectPartitionTableLayout {
+      inherit (cfg) useDefaultFilesystems useEFIBoot;
+    };
     # Bootloader should be installed on the system image only if we are booting through bootloaders.
     # Though, if a user is not using our default filesystems, it is possible to not have any ESP
     # or a strange partition table that's incompatible with GRUB configuration.
@@ -924,7 +935,10 @@ in
     virtualisation.efi = {
       OVMF = mkOption {
         type = types.package;
-        default = (pkgs.OVMF.override { secureBoot = cfg.useSecureBoot; }).fd;
+        default =
+          (pkgs.OVMF.override {
+            secureBoot = cfg.useSecureBoot;
+          }).fd;
         defaultText = ''
           (pkgs.OVMF.override {
                     secureBoot = cfg.useSecureBoot;

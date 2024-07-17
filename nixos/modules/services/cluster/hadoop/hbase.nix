@@ -8,7 +8,11 @@
 with lib;
 let
   cfg = config.services.hadoop;
-  hadoopConf = "${import ./conf.nix { inherit cfg pkgs lib; }}/";
+  hadoopConf = "${
+    import ./conf.nix {
+      inherit cfg pkgs lib;
+    }
+  }/";
   mkIfNotNull = x: mkIf (x != null) x;
   # generic hbase role options
   hbaseRoleOption =

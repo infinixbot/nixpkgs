@@ -42,7 +42,9 @@ mkDerivation rec {
 
   cmakeFlags = [ "-DLDUTILS_ROOT=${libsForQt5.ldutils}" ];
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v_"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v_";
+  };
 
   meta = with lib; {
     description = "GPS track manager for Qt using KDE Marble maps";

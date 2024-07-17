@@ -158,7 +158,9 @@ let
   licenseNames = lib.lists.unique ([ "android-sdk-license" ] ++ extraLicenses);
 in
 rec {
-  deployAndroidPackages = callPackage ./deploy-androidpackages.nix { inherit stdenv lib mkLicenses; };
+  deployAndroidPackages = callPackage ./deploy-androidpackages.nix {
+    inherit stdenv lib mkLicenses;
+  };
 
   deployAndroidPackage = (
     {

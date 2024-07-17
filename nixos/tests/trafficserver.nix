@@ -60,7 +60,9 @@ import ./make-test-python.nix (
               path = "healthchecks.so";
               arg = toString healthchecks;
             }
-            { path = "xdebug.so"; }
+            {
+              path = "xdebug.so";
+            }
           ];
 
           services.trafficserver.remap = ''

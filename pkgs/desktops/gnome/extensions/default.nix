@@ -39,7 +39,13 @@ let
     lib.trivial.pipe extensions [
       (map (extension: lib.nameValuePair extension.extensionUuid extension))
       builtins.listToAttrs
-      (attrs: attrs // { __attrsFailEvaluation = true; })
+      (
+        attrs:
+        attrs
+        // {
+          __attrsFailEvaluation = true;
+        }
+      )
     ];
 
   # Map the list of extensions to an attrset based on the pname as key, which is more human readable than the UUID
@@ -82,7 +88,13 @@ rec {
     # Apply some custom patches for automatically packaged extensions
     (callPackage ./extensionOverrides.nix { })
     # Add all manually packaged extensions
-    (extensions: extensions // (import ./manuallyPackaged.nix { inherit callPackage; }))
+    (
+      extensions:
+      extensions
+      // (import ./manuallyPackaged.nix {
+        inherit callPackage;
+      })
+    )
     # Map the extension UUIDs to readable names
     (lib.attrValues)
     (mapReadableNames)
@@ -102,7 +114,13 @@ rec {
       }
     )
     # Export buildShellExtension function
-    (extensions: extensions // { inherit buildShellExtension; })
+    (
+      extensions:
+      extensions
+      // {
+        inherit buildShellExtension;
+      }
+    )
     # Make the set "public"
     lib.recurseIntoAttrs
   ];

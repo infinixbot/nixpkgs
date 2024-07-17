@@ -42,7 +42,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    networking.firewall = mkIf cfg.openPorts { allowedUDPPorts = [ 27960 ]; };
+    networking.firewall = mkIf cfg.openPorts {
+      allowedUDPPorts = [ 27960 ];
+    };
 
     systemd.services.openarena = {
       description = "OpenArena";

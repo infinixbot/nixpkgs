@@ -40,7 +40,14 @@ let
   ];
 
   buildDrvInheritArgs = builtins.foldl' (
-    attrs: arg: if buildDrvArgs ? ${arg} then attrs // { ${arg} = buildDrvArgs.${arg}; } else attrs
+    attrs: arg:
+    if buildDrvArgs ? ${arg} then
+      attrs
+      // {
+        ${arg} = buildDrvArgs.${arg};
+      }
+    else
+      attrs
   ) { } buildDrvInheritArgNames;
 
   drvArgs = buildDrvInheritArgs // (removeAttrs args [ "buildDrvArgs" ]);

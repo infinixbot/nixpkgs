@@ -38,7 +38,9 @@ let
       version = "18.6.6";
 
       nativeBuildInputs = [
-        (appimage-run.override { buildFHSEnv = buildFHSEnvChroot; })
+        (appimage-run.override {
+          buildFHSEnv = buildFHSEnvChroot;
+        })
         addOpenGLRunpath
         copyDesktopItems
         unzip

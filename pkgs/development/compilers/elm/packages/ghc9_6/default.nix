@@ -45,6 +45,8 @@ pkgs.haskell.packages.ghc96.override {
     // {
       inherit elmPkgs;
 
-      ansi-wl-pprint = overrideCabal (drv: { jailbreak = true; }) (self.callPackage ./ansi-wl-pprint { });
+      ansi-wl-pprint = overrideCabal (drv: {
+        jailbreak = true;
+      }) (self.callPackage ./ansi-wl-pprint { });
     };
 }

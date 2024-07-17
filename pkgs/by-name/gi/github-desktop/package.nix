@@ -47,7 +47,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [
     autoPatchelfHook
-    (wrapGAppsHook3.override { inherit makeWrapper; })
+    (wrapGAppsHook3.override {
+      inherit makeWrapper;
+    })
   ];
 
   buildInputs = [

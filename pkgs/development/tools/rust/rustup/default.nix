@@ -44,7 +44,9 @@ rustPlatform.buildRustPackage rec {
 
   buildInputs =
     [
-      (curl.override { inherit openssl; })
+      (curl.override {
+        inherit openssl;
+      })
       zlib
     ]
     ++ lib.optionals stdenv.isDarwin [

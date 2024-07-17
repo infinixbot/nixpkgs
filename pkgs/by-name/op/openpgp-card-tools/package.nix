@@ -37,7 +37,9 @@ rustPlatform.buildRustPackage rec {
     ];
 
   passthru = {
-    tests.version = testers.testVersion { package = openpgp-card-tools; };
+    tests.version = testers.testVersion {
+      package = openpgp-card-tools;
+    };
   };
 
   meta = with lib; {

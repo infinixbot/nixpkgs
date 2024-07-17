@@ -41,13 +41,17 @@ let
     genStubsScript
     ;
 
-  basicEnv = (callPackage ../bundled-common { inherit bundler; }) (
-    args
-    // {
-      inherit pname name;
-      mainGemName = pname;
-    }
-  );
+  basicEnv =
+    (callPackage ../bundled-common {
+      inherit bundler;
+    })
+      (
+        args
+        // {
+          inherit pname name;
+          mainGemName = pname;
+        }
+      );
 
   inherit (basicEnv) envPaths;
   # Idea here is a mkDerivation that gen-bin-stubs new stubs "as specified" -
@@ -63,7 +67,10 @@ let
 in
 # The basicEnv should be put into passthru so that e.g. nix-shell can use it.
 if pname == null then
-  basicEnv // { inherit name basicEnv; }
+  basicEnv
+  // {
+    inherit name basicEnv;
+  }
 else
   let
     bundlerEnvArgs = {

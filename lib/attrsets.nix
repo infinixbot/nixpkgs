@@ -289,7 +289,14 @@ rec {
     attrPath: value:
     let
       len = length attrPath;
-      atDepth = n: if n == len then value else { ${elemAt attrPath n} = atDepth (n + 1); };
+      atDepth =
+        n:
+        if n == len then
+          value
+        else
+          {
+            ${elemAt attrPath n} = atDepth (n + 1);
+          };
     in
     atDepth 0;
 
@@ -830,7 +837,14 @@ rec {
   foldAttrs =
     op: nul: list_of_attrs:
     foldr (
-      n: a: foldr (name: o: o // { ${name} = op n.${name} (a.${name} or nul); }) a (attrNames n)
+      n: a:
+      foldr (
+        name: o:
+        o
+        // {
+          ${name} = op n.${name} (a.${name} or nul);
+        }
+      ) a (attrNames n)
     ) { } list_of_attrs;
 
   /**
@@ -914,7 +928,14 @@ rec {
     foldl' (
       listOfAttrs: attrName:
       concatMap (
-        attrs: map (listValue: attrs // { ${attrName} = listValue; }) attrsOfLists.${attrName}
+        attrs:
+        map (
+          listValue:
+          attrs
+          // {
+            ${attrName} = listValue;
+          }
+        ) attrsOfLists.${attrName}
       ) listOfAttrs
     ) [ { } ] (attrNames attrsOfLists);
 
@@ -981,7 +1002,9 @@ rec {
 
     :::
   */
-  nameValuePair = name: value: { inherit name value; };
+  nameValuePair = name: value: {
+    inherit name value;
+  };
 
   /**
     Apply a function to each element in an attribute set, creating a new attribute set.
@@ -1921,7 +1944,12 @@ rec {
 
     :::
   */
-  recurseIntoAttrs = attrs: attrs // { recurseForDerivations = true; };
+  recurseIntoAttrs =
+    attrs:
+    attrs
+    // {
+      recurseForDerivations = true;
+    };
 
   /**
     Undo the effect of recurseIntoAttrs.
@@ -1938,7 +1966,12 @@ rec {
     dontRecurseIntoAttrs :: AttrSet -> AttrSet
     ```
   */
-  dontRecurseIntoAttrs = attrs: attrs // { recurseForDerivations = false; };
+  dontRecurseIntoAttrs =
+    attrs:
+    attrs
+    // {
+      recurseForDerivations = false;
+    };
 
   /**
     `unionOfDisjoint x y` is equal to `x // y // z` where the

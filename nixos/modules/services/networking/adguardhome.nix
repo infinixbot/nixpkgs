@@ -31,7 +31,9 @@ let
             bind_port = cfg.port;
           }
         else
-          { http.address = "${cfg.host}:${toString cfg.port}"; }
+          {
+            http.address = "${cfg.host}:${toString cfg.port}";
+          }
       )
     else
       null;

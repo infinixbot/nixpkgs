@@ -26,7 +26,9 @@ buildGoModule rec {
   ];
 
   passthru.tests = {
-    version = testers.testVersion { package = gh-dash; };
+    version = testers.testVersion {
+      package = gh-dash;
+    };
   };
 
   meta = {

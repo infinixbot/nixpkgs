@@ -85,9 +85,13 @@ in
       stateDirectory = "/var/lib/transfer.sh";
     in
     mkIf cfg.enable {
-      services.transfer-sh.settings = {
-        LISTENER = mkDefault ":8080";
-      } // optionalAttrs localProvider { BASEDIR = mkDefault stateDirectory; };
+      services.transfer-sh.settings =
+        {
+          LISTENER = mkDefault ":8080";
+        }
+        // optionalAttrs localProvider {
+          BASEDIR = mkDefault stateDirectory;
+        };
 
       systemd.services.transfer-sh = {
         after = [ "network.target" ];
@@ -120,8 +124,12 @@ in
             SystemCallFilter = [ "@system-service" ];
             StateDirectory = baseNameOf stateDirectory;
           }
-          // optionalAttrs (cfg.secretFile != null) { EnvironmentFile = cfg.secretFile; }
-          // optionalAttrs localProvider { ReadWritePaths = cfg.settings.BASEDIR; };
+          // optionalAttrs (cfg.secretFile != null) {
+            EnvironmentFile = cfg.secretFile;
+          }
+          // optionalAttrs localProvider {
+            ReadWritePaths = cfg.settings.BASEDIR;
+          };
       };
     };
 

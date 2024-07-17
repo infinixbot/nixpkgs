@@ -12,7 +12,9 @@
 }:
 
 let
-  maven' = maven.override { inherit jdk; };
+  maven' = maven.override {
+    inherit jdk;
+  };
 
   version = "3.8.1";
   src = fetchFromGitHub {

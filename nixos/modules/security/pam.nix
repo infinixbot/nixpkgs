@@ -523,7 +523,9 @@ let
             '';
           };
 
-          package = mkPackageOption pkgs.plasma5Packages "kwallet-pam" { pkgsText = "pkgs.plasma5Packages"; };
+          package = mkPackageOption pkgs.plasma5Packages "kwallet-pam" {
+            pkgsText = "pkgs.plasma5Packages";
+          };
         };
 
         sssdStrictAccess = mkOption {
@@ -679,7 +681,13 @@ let
         rules =
           let
             autoOrderRules = flip pipe [
-              (imap1 (index: rule: rule // { order = mkDefault (10000 + index * 100); }))
+              (imap1 (
+                index: rule:
+                rule
+                // {
+                  order = mkDefault (10000 + index * 100);
+                }
+              ))
               (map (rule: nameValuePair rule.name (removeAttrs rule [ "name" ])))
               listToAttrs
             ];

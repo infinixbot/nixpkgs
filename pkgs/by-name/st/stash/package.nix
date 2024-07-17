@@ -27,7 +27,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   pname = "stash";
 
-  src = fetchurl { inherit (sources.${stdenv.system}) url hash; };
+  src = fetchurl {
+    inherit (sources.${stdenv.system}) url hash;
+  };
 
   dontUnpack = true;
 

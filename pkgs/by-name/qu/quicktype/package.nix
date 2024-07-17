@@ -29,7 +29,9 @@ buildNpmPackage rec {
   '';
 
   passthru.tests = {
-    version = testers.testVersion { package = quicktype; };
+    version = testers.testVersion {
+      package = quicktype;
+    };
   };
 
   meta = with lib; {

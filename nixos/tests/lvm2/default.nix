@@ -1,7 +1,9 @@
 {
   system ? builtins.currentSystem,
   config ? { },
-  pkgs ? import ../../.. { inherit system config; },
+  pkgs ? import ../../.. {
+    inherit system config;
+  },
   lib ? pkgs.lib,
   kernelVersionsToTest ? [
     "4.19"
@@ -17,7 +19,11 @@
 let
   tests =
     let
-      callTest = p: lib.flip (import p) { inherit system pkgs; };
+      callTest =
+        p:
+        lib.flip (import p) {
+          inherit system pkgs;
+        };
     in
     {
       thinpool = {

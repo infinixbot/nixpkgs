@@ -279,7 +279,9 @@ in
                   {
                     inherit package;
                   }
-                  // lib.optionalAttrs (package ? meta.priority) { meta.priority = package.meta.priority; }
+                  // lib.optionalAttrs (package ? meta.priority) {
+                    meta.priority = package.meta.priority;
+                  }
                 )
                 ''
                   mkdir -p $out
@@ -304,7 +306,9 @@ in
           ++ lib.optional cfg.vendor.functions.enable "/share/fish/vendor_functions.d";
       }
 
-      { systemPackages = [ cfg.package ]; }
+      {
+        systemPackages = [ cfg.package ];
+      }
 
       {
         shells = [

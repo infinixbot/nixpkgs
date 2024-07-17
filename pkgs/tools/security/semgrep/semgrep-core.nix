@@ -6,7 +6,9 @@
 }:
 
 let
-  common = import ./common.nix { inherit lib; };
+  common = import ./common.nix {
+    inherit lib;
+  };
 in
 stdenvNoCC.mkDerivation rec {
   pname = "semgrep-core";

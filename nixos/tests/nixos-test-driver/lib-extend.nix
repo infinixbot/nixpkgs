@@ -2,7 +2,13 @@
 
 let
   patchedPkgs = pkgs.extend (
-    new: old: { lib = old.lib.extend (self: super: { sorry_dave = "sorry dave"; }); }
+    new: old: {
+      lib = old.lib.extend (
+        self: super: {
+          sorry_dave = "sorry dave";
+        }
+      );
+    }
   );
 
   testBody = {

@@ -17,7 +17,9 @@
     })
   ];
   options = {
-    warnings = lib.mkOption { type = lib.types.listOf lib.types.str; };
+    warnings = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+    };
     c.d.e = lib.mkOption { };
     result = lib.mkOption { };
   };

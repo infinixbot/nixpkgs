@@ -2,12 +2,19 @@
 {
   system ? builtins.currentSystem,
   config ? { },
-  pkgs ? import ../.. { inherit system config; },
+  pkgs ? import ../.. {
+    inherit system config;
+  },
   lib ? pkgs.lib,
 }:
 
 let
-  inherit (import ../lib/testing-python.nix { inherit system pkgs; }) makeTest;
+  inherit
+    (import ../lib/testing-python.nix {
+      inherit system pkgs;
+    })
+    makeTest
+    ;
 
   mkOCITest =
     backend:
@@ -92,7 +99,17 @@ in
 {
   nixos-container = mkContainersTest;
 }
-// (lib.foldl' (attrs: backend: attrs // { ${backend} = mkOCITest backend; }) { } [
-  "docker"
-  "podman"
-])
+// (lib.foldl'
+  (
+    attrs: backend:
+    attrs
+    // {
+      ${backend} = mkOCITest backend;
+    }
+  )
+  { }
+  [
+    "docker"
+    "podman"
+  ]
+)

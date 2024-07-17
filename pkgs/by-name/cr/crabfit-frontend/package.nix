@@ -84,7 +84,9 @@ stdenv.mkDerivation (finalAttrs: {
 
     mkdir -p src/app/fonts
     cp "${
-      google-fonts.override { fonts = [ "Karla" ]; }
+      google-fonts.override {
+        fonts = [ "Karla" ];
+      }
     }/share/fonts/truetype/Karla[wght].ttf" src/app/fonts/karla.ttf
 
     runHook postConfigure

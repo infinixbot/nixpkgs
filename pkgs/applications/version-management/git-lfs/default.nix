@@ -57,7 +57,9 @@ buildGoModule rec {
       --zsh <($out/bin/git-lfs completion zsh)
   '';
 
-  passthru.tests.version = testers.testVersion { package = git-lfs; };
+  passthru.tests.version = testers.testVersion {
+    package = git-lfs;
+  };
 
   meta = with lib; {
     description = "Git extension for versioning large files";

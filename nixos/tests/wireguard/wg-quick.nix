@@ -8,7 +8,9 @@ import ../make-test-python.nix (
   }:
   let
     wg-snakeoil-keys = import ./snakeoil-keys.nix;
-    peer = import ./make-peer.nix { inherit lib; };
+    peer = import ./make-peer.nix {
+      inherit lib;
+    };
     commonConfig = {
       boot.kernelPackages = lib.mkIf (kernelPackages != null) kernelPackages;
       networking.nftables.enable = nftables;

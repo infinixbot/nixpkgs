@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests.version = testers.testVersion { package = magic-enum; };
+    tests.version = testers.testVersion {
+      package = magic-enum;
+    };
   };
 
   meta = {

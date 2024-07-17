@@ -64,14 +64,19 @@ stdenv.mkDerivation rec {
   '';
 
   passthru.tests = {
-    uses-curses = runCommand "${pname}-curses" { buildInputs = [ glibc ]; } ''
-      if ! ldd ${aspell}/bin/aspell | grep -q ${ncurses}
-      then
-        echo "Test failure: It does not look like aspell picked up the curses dependency."
-        exit 1
-      fi
-      touch $out
-    '';
+    uses-curses =
+      runCommand "${pname}-curses"
+        {
+          buildInputs = [ glibc ];
+        }
+        ''
+          if ! ldd ${aspell}/bin/aspell | grep -q ${ncurses}
+          then
+            echo "Test failure: It does not look like aspell picked up the curses dependency."
+            exit 1
+          fi
+          touch $out
+        '';
   };
 
   meta = {

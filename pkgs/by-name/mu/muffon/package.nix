@@ -12,7 +12,9 @@ let
     url = "https://github.com/staniel359/muffon/releases/download/v${version}/muffon-${version}-linux-x86_64.AppImage";
     hash = "sha256-2eLe/xvdWcOcUSE0D+pMOcOYCfFVEyKO13LiaJiZgX0=";
   };
-  appimageContents = appimageTools.extractType2 { inherit pname src version; };
+  appimageContents = appimageTools.extractType2 {
+    inherit pname src version;
+  };
 in
 appimageTools.wrapType2 {
   inherit pname src version;

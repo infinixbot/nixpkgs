@@ -406,7 +406,11 @@ let
       do printf >>$out "%s,\n" ${
         lib.concatMapStringsSep " " (x: "\"${x}\"") (baseRules ++ additionalRules)
       }
-      done <${closureInfo { inherit rootPaths; }}/store-paths
+      done <${
+        closureInfo {
+          inherit rootPaths;
+        }
+      }/store-paths
     '';
 in
 {

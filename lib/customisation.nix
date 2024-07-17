@@ -178,7 +178,10 @@ rec {
         }
       else if isFunction result then
         # Transform the result into a functor while propagating its arguments
-        setFunctionArgs result (functionArgs result) // { override = overrideArgs; }
+        setFunctionArgs result (functionArgs result)
+        // {
+          override = overrideArgs;
+        }
       else
         result
     );
@@ -380,7 +383,12 @@ rec {
       outputs = drv.outputs or [ "out" ];
 
       commonAttrs =
-        drv // (listToAttrs outputsList) // ({ all = map (x: x.value) outputsList; }) // passthru;
+        drv
+        // (listToAttrs outputsList)
+        // ({
+          all = map (x: x.value) outputsList;
+        })
+        // passthru;
 
       outputToAttrListElement = outputName: {
         name = outputName;
@@ -646,14 +654,18 @@ rec {
   */
   makeScopeWithSplicing =
     splicePackages: newScope: otherSplices: keep: extra: f:
-    makeScopeWithSplicing' { inherit splicePackages newScope; } {
-      inherit
-        otherSplices
-        keep
-        extra
-        f
-        ;
-    };
+    makeScopeWithSplicing'
+      {
+        inherit splicePackages newScope;
+      }
+      {
+        inherit
+          otherSplices
+          keep
+          extra
+          f
+          ;
+      };
 
   /**
     Like makeScope, but aims to support cross compilation. It's still ugly, but
@@ -721,10 +733,15 @@ rec {
         # overridden.
         overrideScope =
           g:
-          (makeScopeWithSplicing' { inherit splicePackages newScope; } {
-            inherit otherSplices keep extra;
-            f = extends g f;
-          });
+          (makeScopeWithSplicing'
+            {
+              inherit splicePackages newScope;
+            }
+            {
+              inherit otherSplices keep extra;
+              f = extends g f;
+            }
+          );
         packages = f;
       };
     in

@@ -45,7 +45,9 @@ buildGoModule rec {
     export HOME=$(mktemp -d)
   '';
 
-  passthru.tests.version = testers.testVersion { package = restish; };
+  passthru.tests.version = testers.testVersion {
+    package = restish;
+  };
 
   meta = with lib; {
     description = "CLI tool for interacting with REST-ish HTTP APIs";

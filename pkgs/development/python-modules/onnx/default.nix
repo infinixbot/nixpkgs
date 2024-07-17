@@ -21,7 +21,9 @@
 }:
 
 let
-  gtestStatic = gtest.override { static = true; };
+  gtestStatic = gtest.override {
+    static = true;
+  };
 in
 buildPythonPackage rec {
   pname = "onnx";

@@ -13,7 +13,12 @@
   bootGawk,
 }:
 let
-  inherit (import ./common.nix { inherit lib; }) meta;
+  inherit
+    (import ./common.nix {
+      inherit lib;
+    })
+    meta
+    ;
   pname = "gawk";
   version = "5.2.2";
 

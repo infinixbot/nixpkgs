@@ -11,7 +11,12 @@
   gnugrep,
 }:
 let
-  inherit (import ./common.nix { inherit lib; }) meta;
+  inherit
+    (import ./common.nix {
+      inherit lib;
+    })
+    meta
+    ;
   pname = "gawk-mes";
   # >=3.1.x is incompatible with mes-libc
   version = "3.0.6";

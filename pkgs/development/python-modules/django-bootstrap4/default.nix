@@ -38,7 +38,11 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ "bootstrap4" ];
 
-  nativeCheckInputs = [ (django.override { withGdal = true; }) ];
+  nativeCheckInputs = [
+    (django.override {
+      withGdal = true;
+    })
+  ];
 
   checkPhase = ''
     runHook preCheck

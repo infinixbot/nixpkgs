@@ -10,7 +10,9 @@
 }:
 
 let
-  mupdf-cxx = mupdf.override { enableCxx = true; };
+  mupdf-cxx = mupdf.override {
+    enableCxx = true;
+  };
 in
 stdenv.mkDerivation rec {
   pname = "librum";

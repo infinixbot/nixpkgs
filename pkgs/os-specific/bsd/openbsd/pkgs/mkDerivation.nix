@@ -32,17 +32,22 @@ lib.makeOverridable (
     rec {
       pname = "${attrs.pname or (baseNameOf attrs.path)}-openbsd";
       version = "0";
-      src = runCommand "${pname}-filtered-src" { nativeBuildInputs = [ rsync ]; } ''
-        for p in ${lib.concatStringsSep " " ([ attrs.path ] ++ attrs.extraPaths or [ ])}; do
-          set -x
-          path="$out/$p"
-          mkdir -p "$(dirname "$path")"
-          src_path="${source}/$p"
-          if [[ -d "$src_path" ]]; then src_path+=/; fi
-          rsync --chmod="+w" -r "$src_path" "$path"
-          set +x
-        done
-      '';
+      src =
+        runCommand "${pname}-filtered-src"
+          {
+            nativeBuildInputs = [ rsync ];
+          }
+          ''
+            for p in ${lib.concatStringsSep " " ([ attrs.path ] ++ attrs.extraPaths or [ ])}; do
+              set -x
+              path="$out/$p"
+              mkdir -p "$(dirname "$path")"
+              src_path="${source}/$p"
+              if [[ -d "$src_path" ]]; then src_path+=/; fi
+              rsync --chmod="+w" -r "$src_path" "$path"
+              set +x
+            done
+          '';
 
       extraPaths = [ ];
 
@@ -92,7 +97,9 @@ lib.makeOverridable (
       installPhase = "includesPhase";
       dontBuild = true;
     }
-    // lib.optionalAttrs stdenv'.hostPlatform.isStatic { NOLIBSHARED = true; }
+    // lib.optionalAttrs stdenv'.hostPlatform.isStatic {
+      NOLIBSHARED = true;
+    }
     // attrs
   )
 )

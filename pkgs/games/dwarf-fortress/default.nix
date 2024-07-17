@@ -80,7 +80,9 @@ let
           isAtLeast50 = versionAtLeast dfVersion "50.0";
 
           dwarf-fortress-unfuck = optionalAttrs (!isAtLeast50 && stdenv.isLinux) (
-            callPackage ./unfuck.nix { inherit dfVersion; }
+            callPackage ./unfuck.nix {
+              inherit dfVersion;
+            }
           );
 
           dwarf-fortress = callPackage ./game.nix {
@@ -88,7 +90,11 @@ let
             inherit dwarf-fortress-unfuck;
           };
 
-          twbt = optionalAttrs (!isAtLeast50) (callPackage ./twbt { inherit dfVersion; });
+          twbt = optionalAttrs (!isAtLeast50) (
+            callPackage ./twbt {
+              inherit dfVersion;
+            }
+          );
 
           dfhack = callPackage ./dfhack {
             inherit (perlPackages) XMLLibXML XMLLibXSLT;
@@ -129,7 +135,9 @@ let
     dwarf-therapist = dwarf-fortress.dwarf-therapist;
     dwarf-fortress-original = dwarf-fortress.dwarf-fortress;
 
-    dwarf-fortress-full = callPackage ./lazy-pack.nix { inherit df-games versionToName latestVersion; };
+    dwarf-fortress-full = callPackage ./lazy-pack.nix {
+      inherit df-games versionToName latestVersion;
+    };
 
     soundSense = callPackage ./soundsense.nix { };
 
@@ -137,7 +145,11 @@ let
       jre = jre8; # TODO: remove override https://github.com/NixOS/nixpkgs/pull/89731
     };
 
-    themes = recurseIntoAttrs (callPackage ./themes { stdenv = stdenvNoCC; });
+    themes = recurseIntoAttrs (
+      callPackage ./themes {
+        stdenv = stdenvNoCC;
+      }
+    );
 
     # Theme aliases
     phoebus-theme = themes.phoebus;

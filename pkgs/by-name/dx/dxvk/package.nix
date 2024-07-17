@@ -32,7 +32,9 @@ stdenvNoCC.mkDerivation (
           enableMoltenVKCompat = true;
         }
       else
-        pkgsCross.mingw32.dxvk_2.override { stdenv = mingw32Stdenv; };
+        pkgsCross.mingw32.dxvk_2.override {
+          stdenv = mingw32Stdenv;
+        };
 
     dxvk64 =
       if stdenvNoCC.isDarwin then
@@ -41,7 +43,9 @@ stdenvNoCC.mkDerivation (
           enableMoltenVKCompat = true;
         }
       else
-        pkgsCross.mingwW64.dxvk_2.override { stdenv = mingwW64Stdenv; };
+        pkgsCross.mingwW64.dxvk_2.override {
+          stdenv = mingwW64Stdenv;
+        };
   in
   {
     pname = "dxvk";

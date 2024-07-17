@@ -136,7 +136,11 @@ buildGoModule rec {
   '';
 
   # $data is not available in goModules.drv
-  overrideModAttrs = (_: { postPatch = null; });
+  overrideModAttrs = (
+    _: {
+      postPatch = null;
+    }
+  );
 
   passthru = {
     # allow nix-update to handle npmDepsHash

@@ -156,7 +156,10 @@ in
           ))
         );
     in
-    lib.setFunctionArgs f (lib.functionArgs f) // { inherit tests; };
+    lib.setFunctionArgs f (lib.functionArgs f)
+    // {
+      inherit tests;
+    };
 
   yarnConfigHook = makeSetupHook {
     name = "yarn-config-hook";

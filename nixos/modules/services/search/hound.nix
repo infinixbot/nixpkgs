@@ -93,7 +93,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    users.groups = lib.mkIf (cfg.group == "hound") { hound = { }; };
+    users.groups = lib.mkIf (cfg.group == "hound") {
+      hound = { };
+    };
 
     users.users = lib.mkIf (cfg.user == "hound") {
       hound = {

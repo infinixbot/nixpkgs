@@ -20,7 +20,9 @@
 }:
 let
   # Flags copied from DCGM's libevent build script
-  libevent-nossl = libevent.override { sslSupport = false; };
+  libevent-nossl = libevent.override {
+    sslSupport = false;
+  };
   libevent-nossl-static = libevent-nossl.overrideAttrs (super: {
     CFLAGS = "-Wno-cast-function-type -Wno-implicit-fallthrough -fPIC";
     CXXFLAGS = "-Wno-cast-function-type -Wno-implicit-fallthrough -fPIC";
@@ -30,7 +32,9 @@ let
     ];
   });
 
-  jsoncpp-static = jsoncpp.override { enableStatic = true; };
+  jsoncpp-static = jsoncpp.override {
+    enableStatic = true;
+  };
 
   # DCGM depends on 3 different versions of CUDA at the same time.
   # The runtime closure, thankfully, is quite small because most things

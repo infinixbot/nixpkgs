@@ -1,14 +1,20 @@
 {
   system ? builtins.currentSystem,
   config ? { },
-  pkgs ? import ../.. { inherit system config; },
+  pkgs ? import ../.. {
+    inherit system config;
+  },
 }:
 
-with import ../lib/testing-python.nix { inherit system pkgs; };
+with import ../lib/testing-python.nix {
+  inherit system pkgs;
+};
 
 let
   lib = pkgs.lib;
-  qemu-common = import ../lib/qemu-common.nix { inherit lib pkgs; };
+  qemu-common = import ../lib/qemu-common.nix {
+    inherit lib pkgs;
+  };
 
   mkStartCommand =
     {
@@ -78,7 +84,9 @@ let
       modules = [
         ../modules/installer/sd-card/sd-image-x86_64.nix
         ../modules/testing/test-instrumentation.nix
-        { sdImage.compressImage = false; }
+        {
+          sdImage.compressImage = false;
+        }
       ];
     }).config.system.build.sdImage;
 
@@ -113,7 +121,9 @@ let
           modules = [
             ../modules/installer/netboot/netboot.nix
             ../modules/testing/test-instrumentation.nix
-            { key = "serial"; }
+            {
+              key = "serial";
+            }
           ];
         }).config;
       ipxeBootDir = pkgs.symlinkJoin {
@@ -124,7 +134,12 @@ let
           config.system.build.netbootIpxeScript
         ];
       };
-      startCommand = mkStartCommand ({ pxe = ipxeBootDir; } // extraConfig);
+      startCommand = mkStartCommand (
+        {
+          pxe = ipxeBootDir;
+        }
+        // extraConfig
+      );
     in
     makeTest {
       name = "boot-netboot-" + name;
@@ -148,12 +163,18 @@ in
     usb = "${iso}/iso/${iso.isoName}";
   };
 
-  uefiNetboot = makeNetbootTest "uefi" { uefi = true; };
+  uefiNetboot = makeNetbootTest "uefi" {
+    uefi = true;
+  };
 }
 // lib.optionalAttrs (pkgs.stdenv.hostPlatform.system == "x86_64-linux") {
-  biosCdrom = makeBootTest "bios-cdrom" { cdrom = "${iso}/iso/${iso.isoName}"; };
+  biosCdrom = makeBootTest "bios-cdrom" {
+    cdrom = "${iso}/iso/${iso.isoName}";
+  };
 
-  biosUsb = makeBootTest "bios-usb" { usb = "${iso}/iso/${iso.isoName}"; };
+  biosUsb = makeBootTest "bios-usb" {
+    usb = "${iso}/iso/${iso.isoName}";
+  };
 
   biosNetboot = makeNetbootTest "bios" { };
 

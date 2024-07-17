@@ -29,6 +29,8 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = [ cfg.package ];
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ 46899 ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ 46899 ];
+    };
   };
 }

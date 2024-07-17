@@ -158,7 +158,9 @@ let
     ];
 
     passthru.tests = {
-      all-tests = self.override { doCheck = true; };
+      all-tests = self.override {
+        doCheck = true;
+      };
     };
 
     meta = {

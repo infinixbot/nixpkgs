@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
   dontDropIconThemeCache = true;
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "adwaita-icon-theme"; };
+    updateScript = gnome.updateScript {
+      packageName = "adwaita-icon-theme";
+    };
   };
 
   meta = with lib; {

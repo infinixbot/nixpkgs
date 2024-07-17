@@ -35,7 +35,9 @@ in
         values.
       '';
 
-      type = types.submodule { freeformType = settingsFormat.type; };
+      type = types.submodule {
+        freeformType = settingsFormat.type;
+      };
 
       default = { };
 

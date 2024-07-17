@@ -131,7 +131,9 @@ python3.pkgs.buildPythonApplication rec {
     tests = {
       inherit (nixosTests) cloud-init cloud-init-hostname;
     };
-    updateScript = gitUpdater { ignoredVersions = ".ubuntu.*"; };
+    updateScript = gitUpdater {
+      ignoredVersions = ".ubuntu.*";
+    };
   };
 
   meta = with lib; {

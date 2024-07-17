@@ -111,7 +111,13 @@ buildPythonPackage rec {
 
   passthru.testers.cuda-detect =
     writers.writePython3Bin "numba-cuda-detect"
-      { libraries = [ (numba.override { cudaSupport = true; }) ]; }
+      {
+        libraries = [
+          (numba.override {
+            cudaSupport = true;
+          })
+        ];
+      }
       ''
         from numba import cuda
         cuda.detect()

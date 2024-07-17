@@ -408,7 +408,11 @@ in
           include <abstractions/base>
           include <abstractions/nameservice>
           include <abstractions/ssl_certs>
-          include "${pkgs.apparmorRulesFromClosure { name = "mumble-server"; } cfg.package}"
+          include "${
+            pkgs.apparmorRulesFromClosure {
+              name = "mumble-server";
+            } cfg.package
+          }"
           pix ${cfg.package}/bin/.mumble-server-wrapped,
 
           r ${config.environment.etc."os-release".source},

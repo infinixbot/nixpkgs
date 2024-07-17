@@ -534,15 +534,33 @@ rec {
     {
       config = {
         unitConfig =
-          optionalAttrs (config.requires != [ ]) { Requires = toString config.requires; }
-          // optionalAttrs (config.wants != [ ]) { Wants = toString config.wants; }
-          // optionalAttrs (config.upholds != [ ]) { Upholds = toString config.upholds; }
-          // optionalAttrs (config.after != [ ]) { After = toString config.after; }
-          // optionalAttrs (config.before != [ ]) { Before = toString config.before; }
-          // optionalAttrs (config.bindsTo != [ ]) { BindsTo = toString config.bindsTo; }
-          // optionalAttrs (config.partOf != [ ]) { PartOf = toString config.partOf; }
-          // optionalAttrs (config.conflicts != [ ]) { Conflicts = toString config.conflicts; }
-          // optionalAttrs (config.requisite != [ ]) { Requisite = toString config.requisite; }
+          optionalAttrs (config.requires != [ ]) {
+            Requires = toString config.requires;
+          }
+          // optionalAttrs (config.wants != [ ]) {
+            Wants = toString config.wants;
+          }
+          // optionalAttrs (config.upholds != [ ]) {
+            Upholds = toString config.upholds;
+          }
+          // optionalAttrs (config.after != [ ]) {
+            After = toString config.after;
+          }
+          // optionalAttrs (config.before != [ ]) {
+            Before = toString config.before;
+          }
+          // optionalAttrs (config.bindsTo != [ ]) {
+            BindsTo = toString config.bindsTo;
+          }
+          // optionalAttrs (config.partOf != [ ]) {
+            PartOf = toString config.partOf;
+          }
+          // optionalAttrs (config.conflicts != [ ]) {
+            Conflicts = toString config.conflicts;
+          }
+          // optionalAttrs (config.requisite != [ ]) {
+            Requisite = toString config.requisite;
+          }
           // optionalAttrs (config ? restartTriggers && config.restartTriggers != [ ]) {
             X-Restart-Triggers = "${pkgs.writeText "X-Restart-Triggers-${name}" (
               pipe config.restartTriggers [
@@ -561,10 +579,18 @@ rec {
               ]
             )}";
           }
-          // optionalAttrs (config.description != "") { Description = config.description; }
-          // optionalAttrs (config.documentation != [ ]) { Documentation = toString config.documentation; }
-          // optionalAttrs (config.onFailure != [ ]) { OnFailure = toString config.onFailure; }
-          // optionalAttrs (config.onSuccess != [ ]) { OnSuccess = toString config.onSuccess; }
+          // optionalAttrs (config.description != "") {
+            Description = config.description;
+          }
+          // optionalAttrs (config.documentation != [ ]) {
+            Documentation = toString config.documentation;
+          }
+          // optionalAttrs (config.onFailure != [ ]) {
+            OnFailure = toString config.onFailure;
+          }
+          // optionalAttrs (config.onSuccess != [ ]) {
+            OnSuccess = toString config.onSuccess;
+          }
           // optionalAttrs (options.startLimitIntervalSec.isDefined) {
             StartLimitIntervalSec = toString config.startLimitIntervalSec;
           }
@@ -649,8 +675,12 @@ rec {
             What = config.what;
             Where = config.where;
           }
-          // optionalAttrs (config.type != "") { Type = config.type; }
-          // optionalAttrs (config.options != "") { Options = config.options; };
+          // optionalAttrs (config.type != "") {
+            Type = config.type;
+          }
+          // optionalAttrs (config.options != "") {
+            Options = config.options;
+          };
       };
     };
 

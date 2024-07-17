@@ -345,7 +345,9 @@ in
         };
       };
 
-      groups = optionalAttrs (cfg.group == "writefreely") { writefreely = { }; };
+      groups = optionalAttrs (cfg.group == "writefreely") {
+        writefreely = { };
+      };
     };
 
     systemd.tmpfiles.settings."10-writefreely".${cfg.stateDir}.d = {

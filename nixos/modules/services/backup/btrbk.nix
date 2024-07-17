@@ -49,7 +49,9 @@ let
   genConfig =
     set:
     let
-      pairs = mapAttrsToList (name: value: { inherit name value; }) set;
+      pairs = mapAttrsToList (name: value: {
+        inherit name value;
+      }) set;
       sortedPairs = sortOn prioOf pairs;
     in
     concatMap genPair sortedPairs;
@@ -102,7 +104,12 @@ let
     else
       throw "The btrbk nixos module needs either sudo or doas enabled in the configuration";
 
-  addDefaults = settings: { backend = "btrfs-progs-${sudo_doas}"; } // settings;
+  addDefaults =
+    settings:
+    {
+      backend = "btrfs-progs-${sudo_doas}";
+    }
+    // settings;
 
   mkConfigFile =
     name: settings:
@@ -190,7 +197,12 @@ in
                   freeformType =
                     let
                       t = types.attrsOf (
-                        types.either types.str (t // { description = "instances of this type recursively"; })
+                        types.either types.str (
+                          t
+                          // {
+                            description = "instances of this type recursively";
+                          }
+                        )
                       );
                     in
                     t;

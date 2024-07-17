@@ -98,7 +98,9 @@ buildPythonPackage rec {
       cudaSupport = true;
       testCudaRuntime = true;
     };
-    opencl = gpuctypes.override { testOpenclRuntime = true; };
+    opencl = gpuctypes.override {
+      testOpenclRuntime = true;
+    };
     rocm = gpuctypes.override {
       rocmSupport = true;
       testRocmRuntime = true;

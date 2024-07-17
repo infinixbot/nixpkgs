@@ -63,9 +63,13 @@ lib.makeOverridable (
     name = "fetch-deps.sh";
     executable = true;
     # see pkgs/common-updater/combinators.nix
-    derivationArgs.passthru = {
-      supportedFeatures = lib.optional silent "silent";
-    } // lib.optionalAttrs (attrPath != null) { inherit attrPath; };
+    derivationArgs.passthru =
+      {
+        supportedFeatures = lib.optional silent "silent";
+      }
+      // lib.optionalAttrs (attrPath != null) {
+        inherit attrPath;
+      };
     text = ''
       #!${runtimeShell}
       set -eo pipefail

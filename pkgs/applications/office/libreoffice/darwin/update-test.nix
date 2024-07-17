@@ -5,7 +5,10 @@
   nixt,
 }:
 let
-  inherit (import ./update-utils.nix { inherit (pkgs) lib; })
+  inherit
+    (import ./update-utils.nix {
+      inherit (pkgs) lib;
+    })
     extractLatestVersionFromHtml
     extractSha256FromHtml
     getLatestStableVersion

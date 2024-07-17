@@ -81,7 +81,9 @@ crystal.buildCrystalPackage rec {
 
   passthru = {
     updateScript = _experimental-update-script-combinators.sequence [
-      (gitUpdater { rev-prefix = "v"; })
+      (gitUpdater {
+        rev-prefix = "v";
+      })
       (_experimental-update-script-combinators.copyAttrOutputToFile "collision.shardLock" ./shard.lock)
       {
         command = [
@@ -98,9 +100,14 @@ crystal.buildCrystalPackage rec {
         supportedFeatures = [ "silent" ];
       }
     ];
-    shardLock = runCommand "shard.lock" { inherit src; } ''
-      cp $src/shard.lock $out
-    '';
+    shardLock =
+      runCommand "shard.lock"
+        {
+          inherit src;
+        }
+        ''
+          cp $src/shard.lock $out
+        '';
   };
 
   meta = with lib; {

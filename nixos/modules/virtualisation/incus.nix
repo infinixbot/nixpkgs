@@ -115,7 +115,9 @@ let
       INCUS_USBIDS_PATH = "${pkgs.hwdata}/share/hwdata/usb.ids";
       PATH = lib.mkForce serverBinPath;
     }
-    (lib.mkIf (cfg.ui.enable) { "INCUS_UI" = cfg.ui.package; })
+    (lib.mkIf (cfg.ui.enable) {
+      "INCUS_UI" = cfg.ui.package;
+    })
   ];
 
   incus-startup = pkgs.writeShellScript "incus-startup" ''
@@ -179,7 +181,11 @@ in
       };
 
       preseed = lib.mkOption {
-        type = lib.types.nullOr (lib.types.submodule { freeformType = preseedFormat.type; });
+        type = lib.types.nullOr (
+          lib.types.submodule {
+            freeformType = preseedFormat.type;
+          }
+        );
 
         default = null;
 

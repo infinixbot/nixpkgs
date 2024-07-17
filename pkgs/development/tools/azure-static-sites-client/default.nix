@@ -87,7 +87,10 @@ stdenv.mkDerivation {
     tests =
       with lib;
       genAttrs (map (x: x.version) versions) (
-        versionFlavor: azure-static-sites-client.override { inherit versionFlavor; }
+        versionFlavor:
+        azure-static-sites-client.override {
+          inherit versionFlavor;
+        }
       );
     updateScript = ./update.sh;
   };

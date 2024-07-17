@@ -270,11 +270,15 @@ in
         );
 
         systemd.services.mfs-metalogger = mkIf cfg.metalogger.enable (
-          systemdService "metalogger" { Restart = "on-abnormal"; } metaloggerCfg
+          systemdService "metalogger" {
+            Restart = "on-abnormal";
+          } metaloggerCfg
         );
 
         systemd.services.mfs-chunkserver = mkIf cfg.chunkserver.enable (
-          systemdService "chunkserver" { Restart = "on-abnormal"; } chunkserverCfg
+          systemdService "chunkserver" {
+            Restart = "on-abnormal";
+          } chunkserverCfg
         );
       };
 }

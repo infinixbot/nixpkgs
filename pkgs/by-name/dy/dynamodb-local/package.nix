@@ -51,7 +51,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   '';
 
   passthru = {
-    tests.version = testers.testVersion { package = dynamodb-local; };
+    tests.version = testers.testVersion {
+      package = dynamodb-local;
+    };
     updateScript = writeShellScript "update-dynamodb-local" ''
       set -o errexit
       export PATH="${

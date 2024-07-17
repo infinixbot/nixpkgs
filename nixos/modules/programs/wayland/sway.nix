@@ -8,7 +8,9 @@
 let
   cfg = config.programs.sway;
 
-  wayland-lib = import ./lib.nix { inherit lib; };
+  wayland-lib = import ./lib.nix {
+    inherit lib;
+  };
 in
 {
   options.programs.sway = {

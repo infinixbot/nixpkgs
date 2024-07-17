@@ -7,7 +7,11 @@
 with lib;
 let
   cfg = config.services.hadoop;
-  hadoopConf = "${import ./conf.nix { inherit cfg pkgs lib; }}/";
+  hadoopConf = "${
+    import ./conf.nix {
+      inherit cfg pkgs lib;
+    }
+  }/";
   restartIfChanged = mkOption {
     type = types.bool;
     description = ''

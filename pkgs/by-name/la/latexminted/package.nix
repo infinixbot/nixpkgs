@@ -24,7 +24,9 @@ python3Packages.buildPythonApplication rec {
   ];
 
   passthru = {
-    tests.version = testers.testVersion { package = latexminted; };
+    tests.version = testers.testVersion {
+      package = latexminted;
+    };
   };
 
   meta = {

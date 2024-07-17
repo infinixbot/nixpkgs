@@ -100,14 +100,21 @@ let
 
       testfun =
         name: attrs:
-        runCommand "${python.name}-tests-${name}" ({ inherit (python) pythonVersion; } // attrs) ''
-          cp -r ${./tests/test_environments} tests
-          chmod -R +w tests
-          substituteAllInPlace tests/test_python.py
-          ${attrs.interpreter} -m unittest discover --verbose tests #/test_python.py
-          mkdir $out
-          touch $out/success
-        '';
+        runCommand "${python.name}-tests-${name}"
+          (
+            {
+              inherit (python) pythonVersion;
+            }
+            // attrs
+          )
+          ''
+            cp -r ${./tests/test_environments} tests
+            chmod -R +w tests
+            substituteAllInPlace tests/test_python.py
+            ${attrs.interpreter} -m unittest discover --verbose tests #/test_python.py
+            mkdir $out
+            touch $out/success
+          '';
 
     in
     lib.mapAttrs testfun envs;
@@ -117,20 +124,28 @@ let
   integrationTests = lib.optionalAttrs (!python.isPyPy) (
     lib.optionalAttrs (python.isPy3k && !stdenv.isDarwin) {
       # darwin has no split-debug
-      cpython-gdb = callPackage ./tests/test_cpython_gdb { interpreter = python; };
+      cpython-gdb = callPackage ./tests/test_cpython_gdb {
+        interpreter = python;
+      };
     }
     // lib.optionalAttrs (python.pythonAtLeast "3.7") {
       # Before the addition of NIX_PYTHONPREFIX mypy was broken with typed packages
-      nix-pythonprefix-mypy = callPackage ./tests/test_nix_pythonprefix { interpreter = python; };
+      nix-pythonprefix-mypy = callPackage ./tests/test_nix_pythonprefix {
+        interpreter = python;
+      };
       # Make sure tkinter is importable. See https://github.com/NixOS/nixpkgs/issues/238990
-      tkinter = callPackage ./tests/test_tkinter { interpreter = python; };
+      tkinter = callPackage ./tests/test_tkinter {
+        interpreter = python;
+      };
     }
   );
 
   # Tests to ensure overriding works as expected.
   overrideTests =
     let
-      extension = self: super: { foobar = super.numpy; };
+      extension = self: super: {
+        foobar = super.numpy;
+      };
       # `pythonInterpreters.pypy39_prebuilt` does not expose an attribute
       # name (is not present in top-level `pkgs`).
       is_prebuilt = python: python.pythonAttr == null;
@@ -165,7 +180,9 @@ let
             pkgs_ = pkgs.extend (
               final: prev: {
                 pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
-                  (python-final: python-prev: { foo = python-prev.setuptools; })
+                  (python-final: python-prev: {
+                    foo = python-prev.setuptools;
+                  })
                 ];
               }
             );

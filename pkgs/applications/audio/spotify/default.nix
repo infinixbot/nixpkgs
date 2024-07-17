@@ -25,6 +25,16 @@ let
 
 in
 if stdenv.isDarwin then
-  callPackage ./darwin.nix (extraArgs // { inherit pname meta; })
+  callPackage ./darwin.nix (
+    extraArgs
+    // {
+      inherit pname meta;
+    }
+  )
 else
-  callPackage ./linux.nix (extraArgs // { inherit pname meta; })
+  callPackage ./linux.nix (
+    extraArgs
+    // {
+      inherit pname meta;
+    }
+  )

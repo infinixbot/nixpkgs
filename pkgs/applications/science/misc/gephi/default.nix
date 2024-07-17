@@ -7,7 +7,9 @@
 }:
 
 let
-  mavenJdk11 = maven.override { jdk = jdk11; };
+  mavenJdk11 = maven.override {
+    jdk = jdk11;
+  };
 in
 mavenJdk11.buildMavenPackage rec {
   pname = "gephi";

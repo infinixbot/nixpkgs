@@ -13,7 +13,9 @@
 
 plugins:
 let
-  pythonEnvironment = python3.buildEnv.override { extraLibs = plugins; };
+  pythonEnvironment = python3.buildEnv.override {
+    extraLibs = plugins;
+  };
 
   getRecursivePropagatedBuildInputs =
     pkgs:

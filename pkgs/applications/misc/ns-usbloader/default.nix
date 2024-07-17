@@ -17,7 +17,9 @@ let
     attrs:
     attrs.${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
 
-  jreWithJavaFX = jre.override { enableJavaFX = true; };
+  jreWithJavaFX = jre.override {
+    enableJavaFX = true;
+  };
 in
 maven.buildMavenPackage rec {
   pname = "ns-usbloader";

@@ -153,7 +153,9 @@ in
     mapListToAttrs supportedSystems (
       system':
       let
-        system = lib.systems.elaborate { system = system'; };
+        system = lib.systems.elaborate {
+          system = system';
+        };
       in
       mapListToAttrs (blasProviders system) (
         provider:

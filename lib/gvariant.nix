@@ -228,7 +228,11 @@ rec {
     :::
   */
   mkEmptyArray =
-    elemType: mkPrimitive (type.arrayOf elemType) [ ] // { __toString = self: "@${self.type} []"; };
+    elemType:
+    mkPrimitive (type.arrayOf elemType) [ ]
+    // {
+      __toString = self: "@${self.type} []";
+    };
 
   /**
     Returns the GVariant variant from the given Nix value. Variants are containers
@@ -264,7 +268,10 @@ rec {
     let
       gvarElem = mkValue elem;
     in
-    mkPrimitive type.variant gvarElem // { __toString = self: "<${toString self.value}>"; };
+    mkPrimitive type.variant gvarElem
+    // {
+      __toString = self: "<${toString self.value}>";
+    };
 
   /**
     Returns the GVariant dictionary entry from the given key and value.
@@ -307,7 +314,9 @@ rec {
       value' = mkValue value;
       dictionaryType = type.dictionaryEntryOf name'.type value'.type;
     in
-    mkPrimitive dictionaryType { inherit name value; }
+    mkPrimitive dictionaryType {
+      inherit name value;
+    }
     // {
       __toString = self: "@${self.type} {${name'},${value'}}";
     };
@@ -420,7 +429,11 @@ rec {
     ```
   */
   mkBoolean =
-    v: mkPrimitive type.boolean v // { __toString = self: if self.value then "true" else "false"; };
+    v:
+    mkPrimitive type.boolean v
+    // {
+      __toString = self: if self.value then "true" else "false";
+    };
 
   /**
     Returns the GVariant string from the given Nix string value.
@@ -449,7 +462,10 @@ rec {
           ] s
         );
     in
-    mkPrimitive type.string v // { __toString = self: "'${sanitize self.value}'"; };
+    mkPrimitive type.string v
+    // {
+      __toString = self: "'${sanitize self.value}'";
+    };
 
   /**
     Returns the GVariant object path from the given Nix string value.
@@ -467,7 +483,11 @@ rec {
     ```
   */
   mkObjectpath =
-    v: mkPrimitive type.string v // { __toString = self: "objectpath '${escape [ "'" ] self.value}'"; };
+    v:
+    mkPrimitive type.string v
+    // {
+      __toString = self: "objectpath '${escape [ "'" ] self.value}'";
+    };
 
   /**
     Returns the GVariant uchar from the given Nix int value.
@@ -517,7 +537,12 @@ rec {
     mkInt32 :: Int -> gvariant
     ```
   */
-  mkInt32 = v: mkPrimitive type.int32 v // { __toString = self: toString self.value; };
+  mkInt32 =
+    v:
+    mkPrimitive type.int32 v
+    // {
+      __toString = self: toString self.value;
+    };
 
   /**
     Returns the GVariant uint32 from the given Nix int value.
@@ -567,5 +592,10 @@ rec {
     mkDouble :: Float -> gvariant
     ```
   */
-  mkDouble = v: mkPrimitive type.double v // { __toString = self: toString self.value; };
+  mkDouble =
+    v:
+    mkPrimitive type.double v
+    // {
+      __toString = self: toString self.value;
+    };
 }

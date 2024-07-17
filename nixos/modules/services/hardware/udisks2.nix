@@ -78,7 +78,12 @@ in
     environment.systemPackages = [ pkgs.udisks2 ];
 
     environment.etc =
-      (mapAttrs' (name: value: nameValuePair "udisks2/${name}" { source = value; }) configFiles)
+      (mapAttrs' (
+        name: value:
+        nameValuePair "udisks2/${name}" {
+          source = value;
+        }
+      ) configFiles)
       // (
         let
           libblockdev = pkgs.udisks2.libblockdev;

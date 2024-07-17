@@ -125,7 +125,9 @@ in
       documentation = [ "https://gitlab.com/famedly/conduit/" ];
       wantedBy = [ "multi-user.target" ];
       environment = lib.mkMerge ([
-        { CONDUIT_CONFIG = configFile; }
+        {
+          CONDUIT_CONFIG = configFile;
+        }
         cfg.extraEnvironment
       ]);
       serviceConfig = {

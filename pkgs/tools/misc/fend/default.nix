@@ -80,7 +80,9 @@ rustPlatform.buildRustPackage rec {
   passthru = {
     updateScript = nix-update-script { };
     tests = {
-      version = testers.testVersion { package = fend; };
+      version = testers.testVersion {
+        package = fend;
+      };
       units = testers.testEqualContents {
         assertion = "fend does simple math and unit conversions";
         expected = writeText "expected" ''

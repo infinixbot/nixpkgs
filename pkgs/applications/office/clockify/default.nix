@@ -15,7 +15,9 @@ appimageTools.wrapType2 rec {
 
   extraInstallCommands =
     let
-      appimageContents = appimageTools.extract { inherit pname version src; };
+      appimageContents = appimageTools.extract {
+        inherit pname version src;
+      };
     in
     ''
       install -Dm 444 ${appimageContents}/clockify.desktop -t $out/share/applications

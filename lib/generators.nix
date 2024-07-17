@@ -263,7 +263,9 @@ rec {
         ''
           [${mkSectionName sectName}]
         ''
-        + toKeyValue { inherit mkKeyValue listsAsDuplicateKeys; } sectValues;
+        + toKeyValue {
+          inherit mkKeyValue listsAsDuplicateKeys;
+        } sectValues;
     in
     # map input to ini sections
     mapAttrsToStringsSep "\n" mkSection attrsOfAttrs;
@@ -349,9 +351,14 @@ rec {
       if globalSection == { } then
         ""
       else
-        (toKeyValue { inherit mkKeyValue listsAsDuplicateKeys; } globalSection) + "\n"
+        (toKeyValue {
+          inherit mkKeyValue listsAsDuplicateKeys;
+        } globalSection)
+        + "\n"
     )
-    + (toINI { inherit mkSectionName mkKeyValue listsAsDuplicateKeys; } sections);
+    + (toINI {
+      inherit mkSectionName mkKeyValue listsAsDuplicateKeys;
+    } sections);
 
   /**
     Generate a git-config file from an attrset.
@@ -429,7 +436,9 @@ rec {
       mkKeyValue =
         k: v:
         let
-          mkKeyValue = mkKeyValueDefault { inherit mkValueString; } " = " k;
+          mkKeyValue = mkKeyValueDefault {
+            inherit mkValueString;
+          } " = " k;
         in
         concatStringsSep "\n" (map (kv: "\t" + mkKeyValue kv) (toList v));
 
@@ -441,13 +450,19 @@ rec {
             if isAttrs value && !isDerivation value then
               mapAttrsToList (name: value: recurse ([ name ] ++ path) value) value
             else if length path > 1 then
-              { ${concatStringsSep "." (reverseList (tail path))}.${head path} = value; }
+              {
+                ${concatStringsSep "." (reverseList (tail path))}.${head path} = value;
+              }
             else
-              { ${head path} = value; };
+              {
+                ${head path} = value;
+              };
         in
         attrs: foldl recursiveUpdate { } (flatten (recurse [ ] attrs));
 
-      toINI_ = toINI { inherit mkKeyValue mkSectionName; };
+      toINI_ = toINI {
+        inherit mkKeyValue mkSectionName;
+      };
     in
     toINI_ (gitFlattenAttrs attrs);
 
@@ -455,13 +470,17 @@ rec {
     mkKeyValueDefault wrapper that handles dconf INI quirks.
     The main differences of the format is that it requires strings to be quoted.
   */
-  mkDconfKeyValue = mkKeyValueDefault { mkValueString = v: toString (gvariant.mkValue v); } "=";
+  mkDconfKeyValue = mkKeyValueDefault {
+    mkValueString = v: toString (gvariant.mkValue v);
+  } "=";
 
   /**
     Generates INI in dconf keyfile style. See https://help.gnome.org/admin/system-admin-guide/stable/dconf-keyfiles.html.en
     for details.
   */
-  toDconfINI = toINI { mkKeyValue = mkDconfKeyValue; };
+  toDconfINI = toINI {
+    mkKeyValue = mkDconfKeyValue;
+  };
 
   /**
     Recurses through a `Value` limited to a certain depth. (`depthLimit`)

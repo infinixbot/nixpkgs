@@ -10,7 +10,9 @@ let
 
   poolName = "rss-bridge";
 
-  configAttr = lib.recursiveUpdate { FileCache.path = "${cfg.dataDir}/cache/"; } cfg.config;
+  configAttr = lib.recursiveUpdate {
+    FileCache.path = "${cfg.dataDir}/cache/";
+  } cfg.config;
   cfgHalf = lib.mapAttrsRecursive (
     path: value:
     let

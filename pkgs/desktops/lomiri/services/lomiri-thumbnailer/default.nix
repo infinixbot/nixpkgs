@@ -192,7 +192,11 @@ stdenv.mkDerivation (finalAttrs: {
 
   preCheck = ''
     # Fontconfig warnings breaks some tests
-    export FONTCONFIG_FILE=${makeFontsConf { fontDirectories = [ ]; }}
+    export FONTCONFIG_FILE=${
+      makeFontsConf {
+        fontDirectories = [ ];
+      }
+    }
     export HOME=$TMPDIR
 
     # Some tests need Qt plugins

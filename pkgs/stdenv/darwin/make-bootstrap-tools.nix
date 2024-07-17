@@ -9,7 +9,13 @@
 }:
 
 let
-  cross = if crossSystem != null then { inherit crossSystem; } else { };
+  cross =
+    if crossSystem != null then
+      {
+        inherit crossSystem;
+      }
+    else
+      { };
   custom-bootstrap =
     if bootstrapFiles != null then
       {
@@ -25,7 +31,13 @@ let
     else
       { };
 in
-with import pkgspath ({ inherit localSystem; } // cross // custom-bootstrap);
+with import pkgspath (
+  {
+    inherit localSystem;
+  }
+  // cross
+  // custom-bootstrap
+);
 
 rec {
   build = stdenv.mkDerivation {
@@ -290,9 +302,14 @@ rec {
 
   bootstrapFiles = {
     bootstrapTools = "${build}/on-server/bootstrap-tools.tar.xz";
-    unpack = runCommand "unpack" { allowedReferences = [ ]; } ''
-      cp -r ${build}/unpack $out
-    '';
+    unpack =
+      runCommand "unpack"
+        {
+          allowedReferences = [ ];
+        }
+        ''
+          cp -r ${build}/unpack $out
+        '';
   };
 
   bootstrapTools = derivation {

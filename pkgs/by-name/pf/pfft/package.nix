@@ -16,7 +16,9 @@ assert lib.elem precision [
 ];
 
 let
-  fftw' = fftwMpi.override { inherit precision; };
+  fftw' = fftwMpi.override {
+    inherit precision;
+  };
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "pfft-${precision}";

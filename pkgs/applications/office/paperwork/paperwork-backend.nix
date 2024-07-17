@@ -28,7 +28,13 @@
 
 buildPythonPackage rec {
   pname = "paperwork-backend";
-  inherit (import ./src.nix { inherit fetchFromGitLab; }) version src;
+  inherit
+    (import ./src.nix {
+      inherit fetchFromGitLab;
+    })
+    version
+    src
+    ;
   format = "pyproject";
 
   sourceRoot = "${src.name}/paperwork-backend";

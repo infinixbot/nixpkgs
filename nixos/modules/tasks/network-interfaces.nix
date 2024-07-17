@@ -153,7 +153,9 @@ let
     };
   };
 
-  gatewayCoerce = address: { inherit address; };
+  gatewayCoerce = address: {
+    inherit address;
+  };
 
   gatewayOpts =
     { ... }:
@@ -539,19 +541,24 @@ let
     mapAttrsToList (name: { description, ... }: ''- `"${name}"` to ${description};'') tempaddrValues
   );
 
-  hostidFile = pkgs.runCommand "gen-hostid" { preferLocalBuild = true; } ''
-    hi="${cfg.hostId}"
-    ${
-      if pkgs.stdenv.isBigEndian then
-        ''
-          echo -ne "\x''${hi:0:2}\x''${hi:2:2}\x''${hi:4:2}\x''${hi:6:2}" > $out
-        ''
-      else
-        ''
-          echo -ne "\x''${hi:6:2}\x''${hi:4:2}\x''${hi:2:2}\x''${hi:0:2}" > $out
-        ''
-    }
-  '';
+  hostidFile =
+    pkgs.runCommand "gen-hostid"
+      {
+        preferLocalBuild = true;
+      }
+      ''
+        hi="${cfg.hostId}"
+        ${
+          if pkgs.stdenv.isBigEndian then
+            ''
+              echo -ne "\x''${hi:0:2}\x''${hi:2:2}\x''${hi:4:2}\x''${hi:6:2}" > $out
+            ''
+          else
+            ''
+              echo -ne "\x''${hi:6:2}\x''${hi:4:2}\x''${hi:2:2}\x''${hi:0:2}" > $out
+            ''
+        }
+      '';
 
 in
 
@@ -778,7 +785,9 @@ in
           };
         };
         vs1.interfaces = [
-          { name = "eth2"; }
+          {
+            name = "eth2";
+          }
           {
             name = "lo2";
             type = "internal";
@@ -1636,12 +1645,18 @@ in
       serviceConfig.Type = "oneshot";
     };
 
-    environment.etc.hostid = mkIf (cfg.hostId != null) { source = hostidFile; };
-    boot.initrd.systemd.contents."/etc/hostid" = mkIf (cfg.hostId != null) { source = hostidFile; };
+    environment.etc.hostid = mkIf (cfg.hostId != null) {
+      source = hostidFile;
+    };
+    boot.initrd.systemd.contents."/etc/hostid" = mkIf (cfg.hostId != null) {
+      source = hostidFile;
+    };
 
     # static hostname configuration needed for hostnamectl and the
     # org.freedesktop.hostname1 dbus service (both provided by systemd)
-    environment.etc.hostname = mkIf (cfg.hostName != "") { text = cfg.hostName + "\n"; };
+    environment.etc.hostname = mkIf (cfg.hostName != "") {
+      text = cfg.hostName + "\n";
+    };
 
     environment.systemPackages =
       [
@@ -1685,9 +1700,13 @@ in
         '';
       };
     };
-    services.mstpd = mkIf needsMstpd { enable = true; };
+    services.mstpd = mkIf needsMstpd {
+      enable = true;
+    };
 
-    virtualisation.vswitch = mkIf (cfg.vswitches != { }) { enable = true; };
+    virtualisation.vswitch = mkIf (cfg.vswitches != { }) {
+      enable = true;
+    };
 
     services.udev.packages =
       [
@@ -1742,10 +1761,28 @@ in
               wlanListDeviceFirst =
                 device: interfaces:
                 if hasAttr device interfaces then
-                  mapAttrsToList (n: v: v // { _iName = n; }) (filterAttrs (n: _: n == device) interfaces)
-                  ++ mapAttrsToList (n: v: v // { _iName = n; }) (filterAttrs (n: _: n != device) interfaces)
+                  mapAttrsToList (
+                    n: v:
+                    v
+                    // {
+                      _iName = n;
+                    }
+                  ) (filterAttrs (n: _: n == device) interfaces)
+                  ++ mapAttrsToList (
+                    n: v:
+                    v
+                    // {
+                      _iName = n;
+                    }
+                  ) (filterAttrs (n: _: n != device) interfaces)
                 else
-                  mapAttrsToList (n: v: v // { _iName = n; }) interfaces;
+                  mapAttrsToList (
+                    n: v:
+                    v
+                    // {
+                      _iName = n;
+                    }
+                  ) interfaces;
 
               # Udev script to execute for the default WLAN interface with the persistend udev name.
               # The script creates the required, new WLAN interfaces interfaces and configures the

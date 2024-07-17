@@ -104,12 +104,16 @@ rec {
     inherit text;
     deps = [ ];
   };
-  fullDepEntry = text: deps: { inherit text deps; };
+  fullDepEntry = text: deps: {
+    inherit text deps;
+  };
   packEntry = deps: {
     inherit deps;
     text = "";
   };
 
-  stringAfter = deps: text: { inherit text deps; };
+  stringAfter = deps: text: {
+    inherit text deps;
+  };
 
 }

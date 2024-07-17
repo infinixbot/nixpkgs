@@ -5,7 +5,9 @@
   fetchurl,
 }:
 let
-  common = import ./common.nix { inherit fetchurl; };
+  common = import ./common.nix {
+    inherit fetchurl;
+  };
   inherit (stdenv.hostPlatform) system;
 in
 stdenv.mkDerivation rec {

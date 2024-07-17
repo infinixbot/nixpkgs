@@ -298,7 +298,9 @@ buildPythonApplication rec {
   '';
 
   passthru = {
-    tests = lib.optionalAttrs stdenv.isLinux { default = nixosTests.terminal-emulators.kitty; };
+    tests = lib.optionalAttrs stdenv.isLinux {
+      default = nixosTests.terminal-emulators.kitty;
+    };
     updateScript = nix-update-script { };
   };
 

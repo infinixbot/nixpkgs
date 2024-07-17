@@ -26,7 +26,9 @@ in
       enable = mkEnableOption "A simple, high performance relay server written in rust";
       package = mkPackageOption pkgs "realm" { };
       config = mkOption {
-        type = types.submodule { freeformType = configFormat.type; };
+        type = types.submodule {
+          freeformType = configFormat.type;
+        };
         default = { };
         description = ''
           The realm configuration, see <https://github.com/zhboner/realm#overview> for documentation.

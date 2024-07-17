@@ -51,7 +51,9 @@ stdenv.mkDerivation rec {
   nativeCheckInputs = lib.optionals (!stdenv.isDarwin) [ xvfb-run ];
 
   # Tests require fontconfig.
-  FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ ]; };
+  FONTCONFIG_FILE = makeFontsConf {
+    fontDirectories = [ ];
+  };
 
   doCheck = true;
 

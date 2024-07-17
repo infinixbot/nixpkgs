@@ -52,7 +52,9 @@ buildGoModule rec {
     "static_build"
   ];
 
-  passthru.tests.version = testers.testVersion { package = manifest-tool; };
+  passthru.tests.version = testers.testVersion {
+    package = manifest-tool;
+  };
 
   meta = with lib; {
     description = "Command line tool to create and query container image manifest list/indexes";

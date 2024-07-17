@@ -52,7 +52,9 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postConfigure
   '';
 
-  passthru.updateScript = gitUpdater { rev-prefix = "xfce4-panel-profiles-"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "xfce4-panel-profiles-";
+  };
 
   meta = with lib; {
     homepage = "https://docs.xfce.org/apps/xfce4-panel-profiles/start";

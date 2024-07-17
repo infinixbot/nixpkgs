@@ -26,7 +26,9 @@ rustPlatform.buildRustPackage {
   buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
 
   passthru = {
-    tests.version = testers.testVersion { package = committed; };
+    tests.version = testers.testVersion {
+      package = committed;
+    };
     updateScript = nix-update-script { };
   };
 

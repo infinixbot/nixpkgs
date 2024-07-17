@@ -91,7 +91,9 @@ stdenv'.mkDerivation (finalAttrs: {
 
   passthru = {
     tests = {
-      version = testers.testVersion { package = renovate; };
+      version = testers.testVersion {
+        package = renovate;
+      };
       vm-test = nixosTests.renovate;
     };
     updateScript = nix-update-script { };

@@ -34,7 +34,9 @@ buildPythonPackage {
 
   pythonImportsCheck = [ "nixops_virtd" ];
 
-  passthru.updateScript = unstableGitUpdater { tagPrefix = "v"; };
+  passthru.updateScript = unstableGitUpdater {
+    tagPrefix = "v";
+  };
 
   meta = with lib; {
     description = "NixOps libvirtd backend plugin";

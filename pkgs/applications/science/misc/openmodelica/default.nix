@@ -7,8 +7,15 @@
 lib.makeScope newScope (
   self:
   let
-    callPackage = self.newScope { stdenv = clangStdenv; };
-    callQtPackage = self.newScope (libsForQt5 // { stdenv = clangStdenv; });
+    callPackage = self.newScope {
+      stdenv = clangStdenv;
+    };
+    callQtPackage = self.newScope (
+      libsForQt5
+      // {
+        stdenv = clangStdenv;
+      }
+    );
   in
   {
     mkOpenModelicaDerivation = callPackage ./mkderivation { };

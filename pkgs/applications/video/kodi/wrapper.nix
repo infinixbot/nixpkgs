@@ -8,7 +8,9 @@
 }:
 
 let
-  kodiPackages = callPackage ../../../top-level/kodi-packages.nix { inherit kodi; };
+  kodiPackages = callPackage ../../../top-level/kodi-packages.nix {
+    inherit kodi;
+  };
 
   # linux distros are supposed to provide pillow and pycryptodome
   requiredPythonPath =

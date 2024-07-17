@@ -20,7 +20,11 @@ buildPecl {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [ (dlib.override { guiSupport = true; }) ];
+  buildInputs = [
+    (dlib.override {
+      guiSupport = true;
+    })
+  ];
 
   meta = with lib; {
     description = "PHP extension for Dlib";

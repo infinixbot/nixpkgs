@@ -130,9 +130,13 @@ let
         else if k == "useTemplate" then
           ""
         else
-          generators.mkKeyValueDefault { inherit mkValueString; } "=" k v;
+          generators.mkKeyValueDefault {
+            inherit mkValueString;
+          } "=" k v;
     in
-    generators.toINI { inherit mkKeyValue; } cfg.settings;
+    generators.toINI {
+      inherit mkKeyValue;
+    } cfg.settings;
 
 in
 {

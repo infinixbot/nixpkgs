@@ -1,7 +1,9 @@
 { piper-tts, python3 }:
 
 let
-  python = python3.override { packageOverrides = self: super: { }; };
+  python = python3.override {
+    packageOverrides = self: super: { };
+  };
 in
 
 python.pkgs.buildPythonPackage {

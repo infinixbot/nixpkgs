@@ -10,18 +10,23 @@ with lib;
 let
   cfg = config.services.scollector;
 
-  collectors = pkgs.runCommand "collectors" { preferLocalBuild = true; } ''
-    mkdir -p $out
-    ${lib.concatStringsSep "\n" (
-      lib.mapAttrsToList (
-        frequency: binaries:
-        "mkdir -p $out/${frequency}\n"
-        + (lib.concatStringsSep "\n" (
-          map (path: "ln -s ${path} $out/${frequency}/$(basename ${path})") binaries
-        ))
-      ) cfg.collectors
-    )}
-  '';
+  collectors =
+    pkgs.runCommand "collectors"
+      {
+        preferLocalBuild = true;
+      }
+      ''
+        mkdir -p $out
+        ${lib.concatStringsSep "\n" (
+          lib.mapAttrsToList (
+            frequency: binaries:
+            "mkdir -p $out/${frequency}\n"
+            + (lib.concatStringsSep "\n" (
+              map (path: "ln -s ${path} $out/${frequency}/$(basename ${path})") binaries
+            ))
+          ) cfg.collectors
+        )}
+      '';
 
   conf = pkgs.writeText "scollector.toml" ''
     Host = "${cfg.bosunHost}"

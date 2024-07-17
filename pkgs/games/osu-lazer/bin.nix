@@ -84,7 +84,9 @@ else
 
     extraInstallCommands =
       let
-        contents = appimageTools.extract { inherit pname version src; };
+        contents = appimageTools.extract {
+          inherit pname version src;
+        };
       in
       ''
         mv -v $out/bin/${pname} $out/bin/osu\!

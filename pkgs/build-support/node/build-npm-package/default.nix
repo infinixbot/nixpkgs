@@ -71,7 +71,9 @@
 
 let
   # .override {} negates splicing, so we need to use buildPackages explicitly
-  npmHooks = buildPackages.npmHooks.override { inherit nodejs; };
+  npmHooks = buildPackages.npmHooks.override {
+    inherit nodejs;
+  };
 in
 stdenv.mkDerivation (
   args

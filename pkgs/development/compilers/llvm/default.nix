@@ -72,7 +72,12 @@ let
   llvmPackages = lib.mapAttrs' (
     version: args:
     lib.nameValuePair (if (args ? gitRelease) then "git" else lib.versions.major version) (
-      mkPackage (args // { inherit version; })
+      mkPackage (
+        args
+        // {
+          inherit version;
+        }
+      )
     )
   ) versions;
 in

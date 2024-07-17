@@ -148,7 +148,9 @@ let
 
   needNativeCLC = !stdenv.buildPlatform.canExecute stdenv.hostPlatform;
 
-  common = import ./common.nix { inherit lib fetchurl; };
+  common = import ./common.nix {
+    inherit lib fetchurl;
+  };
 in
 stdenv.mkDerivation {
   inherit (common)

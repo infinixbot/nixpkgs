@@ -26,7 +26,9 @@ rustPlatform.buildRustPackage rec {
   ];
 
   passthru.tests = {
-    version = testers.testVersion { package = toml-cli; };
+    version = testers.testVersion {
+      package = toml-cli;
+    };
   };
 
   meta = {

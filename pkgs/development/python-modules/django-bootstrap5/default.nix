@@ -39,7 +39,9 @@ buildPythonPackage rec {
 
   nativeCheckInputs = [
     beautifulsoup4
-    (django.override { withGdal = true; })
+    (django.override {
+      withGdal = true;
+    })
     pillow
     pytest-django
     pytestCheckHook

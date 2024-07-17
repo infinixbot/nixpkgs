@@ -42,7 +42,9 @@ let
       hash = buildHashes."${stdenv.hostPlatform.system}";
       url = "https://github.com/Infisical/infisical/releases/download/infisical-cli%2Fv${version}/${name}";
     in
-    fetchurl { inherit name url hash; };
+    fetchurl {
+      inherit name url hash;
+    };
 
 in
 stdenv.mkDerivation {
@@ -72,7 +74,9 @@ stdenv.mkDerivation {
 
   passthru = {
     updateScript = ./update.sh;
-    tests.version = testers.testVersion { package = infisical; };
+    tests.version = testers.testVersion {
+      package = infisical;
+    };
   };
 
   meta = with lib; {

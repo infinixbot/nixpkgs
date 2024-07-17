@@ -36,7 +36,9 @@ stdenv.mkDerivation (finalAttrs: {
   checkTarget = "test";
 
   passthru.tests = {
-    version = testers.testVersion { package = finalAttrs.finalPackage; };
+    version = testers.testVersion {
+      package = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

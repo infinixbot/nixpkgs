@@ -47,9 +47,13 @@ python3.pkgs.buildPythonApplication rec {
   # This is needed because `git-pw` always rely on an ambiant git.
   # Furthermore, this doesn't really make sense to resholve git inside this derivation.
   # As `testVersion` does not offer the right knob, we can just `overrideAttrs`-it ourselves.
-  passthru.tests.version = (testers.testVersion { package = git-pw; }).overrideAttrs (old: {
-    buildInputs = (old.buildInputs or [ ]) ++ [ git ];
-  });
+  passthru.tests.version =
+    (testers.testVersion {
+      package = git-pw;
+    }).overrideAttrs
+      (old: {
+        buildInputs = (old.buildInputs or [ ]) ++ [ git ];
+      });
 
   meta = with lib; {
     description = "Tool for integrating Git with Patchwork, the web-based patch tracking system";

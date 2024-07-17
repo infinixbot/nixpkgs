@@ -7,7 +7,9 @@
 }:
 let
   awk = "${gawk}/bin/awk";
-  dockerCredentialsFile = import ./credentials.nix { inherit lib; };
+  dockerCredentialsFile = import ./credentials.nix {
+    inherit lib;
+  };
 in
 {
   fetcher,

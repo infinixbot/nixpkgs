@@ -26,7 +26,9 @@ stdenv.mkDerivation (finalAttrs: {
     maeparser
   ];
 
-  env = lib.optionalAttrs stdenv.cc.isClang { NIX_CFLAGS_COMPILE = "-Wno-unused-but-set-variable"; };
+  env = lib.optionalAttrs stdenv.cc.isClang {
+    NIX_CFLAGS_COMPILE = "-Wno-unused-but-set-variable";
+  };
 
   doCheck = true;
 

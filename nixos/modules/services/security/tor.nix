@@ -292,7 +292,11 @@ let
     generators.toKeyValue
       {
         listsAsDuplicateKeys = true;
-        mkKeyValue = k: generators.mkKeyValueDefault { mkValueString = mkValueString k; } " " k;
+        mkKeyValue =
+          k:
+          generators.mkKeyValueDefault {
+            mkValueString = mkValueString k;
+          } " " k;
       }
       (
         lib.mapAttrs (
@@ -1044,7 +1048,11 @@ in
           options.ControlPort = mkOption rec {
             description = (descriptionGeneric "ControlPort");
             default = [ ];
-            example = [ { port = 9051; } ];
+            example = [
+              {
+                port = 9051;
+              }
+            ];
             type =
               with types;
               oneOf [
@@ -1147,7 +1155,14 @@ in
                   }
                 ))
               ]);
-            apply = p: if isInt p || isString p then { port = p; } else p;
+            apply =
+              p:
+              if isInt p || isString p then
+                {
+                  port = p;
+                }
+              else
+                p;
           };
           options.ExtORPortCookieAuthFile = optionPath "ExtORPortCookieAuthFile";
           options.ExtORPortCookieAuthFileGroupReadable = optionBool "ExtORPortCookieAuthFileGroupReadable";
@@ -1286,13 +1301,21 @@ in
           };
           options.SOCKSPort = mkOption {
             description = (descriptionGeneric "SOCKSPort");
-            default = lib.optionals cfg.settings.HiddenServiceNonAnonymousMode [ { port = 0; } ];
+            default = lib.optionals cfg.settings.HiddenServiceNonAnonymousMode [
+              {
+                port = 0;
+              }
+            ];
             defaultText = literalExpression ''
               if config.${opt.settings}.HiddenServiceNonAnonymousMode == true
               then [ { port = 0; } ]
               else [ ]
             '';
-            example = [ { port = 9090; } ];
+            example = [
+              {
+                port = 9090;
+              }
+            ];
             type = types.listOf (optionSOCKSPort true);
           };
           options.TestingTorNetwork = optionBool "TestingTorNetwork";
@@ -1386,7 +1409,9 @@ in
         ];
       })
       (mkIf cfg.relay.enable (
-        optionalAttrs (cfg.relay.role != "exit") { ExitPolicy = mkForce [ "reject *:*" ]; }
+        optionalAttrs (cfg.relay.role != "exit") {
+          ExitPolicy = mkForce [ "reject *:*" ];
+        }
         //
           optionalAttrs
             (elem cfg.relay.role [
@@ -1440,9 +1465,12 @@ in
           ];
           AutomapHostsOnResolve = true;
         }
-        // optionalAttrs (
-          flatten (mapAttrsToList (n: o: o.clientAuthorizations) cfg.client.onionServices) != [ ]
-        ) { ClientOnionAuthDir = runDir + "/ClientOnionAuthDir"; }
+        //
+          optionalAttrs
+            (flatten (mapAttrsToList (n: o: o.clientAuthorizations) cfg.client.onionServices) != [ ])
+            {
+              ClientOnionAuthDir = runDir + "/ClientOnionAuthDir";
+            }
       ))
     ];
 

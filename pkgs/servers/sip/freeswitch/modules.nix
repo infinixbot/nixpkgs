@@ -17,7 +17,9 @@
 
 let
 
-  mk = path: inputs: { inherit path inputs; };
+  mk = path: inputs: {
+    inherit path inputs;
+  };
 
 in
 

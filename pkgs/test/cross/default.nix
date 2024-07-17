@@ -28,7 +28,9 @@ let
       args' = lib.concatStringsSep " " args;
     in
     crossPkgs.runCommand "test-${pkgName}-${crossPkgs.stdenv.hostPlatform.config}"
-      { nativeBuildInputs = [ pkgs.dos2unix ]; }
+      {
+        nativeBuildInputs = [ pkgs.dos2unix ];
+      }
       ''
         # Just in case we are using wine, get rid of that annoying extra
         # stuff.
@@ -212,8 +214,30 @@ let
 
 in
 {
-  gcc = (lib.mapAttrs (_: mapMultiPlatformTest (system: system // { useLLVM = false; })) tests);
-  llvm = (lib.mapAttrs (_: mapMultiPlatformTest (system: system // { useLLVM = true; })) tests);
+  gcc = (
+    lib.mapAttrs (
+      _:
+      mapMultiPlatformTest (
+        system:
+        system
+        // {
+          useLLVM = false;
+        }
+      )
+    ) tests
+  );
+  llvm = (
+    lib.mapAttrs (
+      _:
+      mapMultiPlatformTest (
+        system:
+        system
+        // {
+          useLLVM = true;
+        }
+      )
+    ) tests
+  );
 
   inherit mbuffer sanity;
 }

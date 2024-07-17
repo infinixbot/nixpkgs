@@ -19,7 +19,9 @@ let
       nodename  ARBITRARYNODENAME
   '';
 
-  tsm-client_ = tsm-client.override { inherit dsmSysCli; };
+  tsm-client_ = tsm-client.override {
+    inherit dsmSysCli;
+  };
 
   env.nativeBuildInputs = [ tsm-client_ ];
 

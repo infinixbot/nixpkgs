@@ -41,21 +41,33 @@ let
 
       TRUSTED_PROXY_IP = cfg.trustedProxy;
     }
-    // lib.optionalAttrs (cfg.redis.host != null) { REDIS_HOST = cfg.redis.host; }
-    // lib.optionalAttrs (cfg.redis.port != null) { REDIS_PORT = toString (cfg.redis.port); }
+    // lib.optionalAttrs (cfg.redis.host != null) {
+      REDIS_HOST = cfg.redis.host;
+    }
+    // lib.optionalAttrs (cfg.redis.port != null) {
+      REDIS_PORT = toString (cfg.redis.port);
+    }
     // lib.optionalAttrs (cfg.redis.createLocally && cfg.redis.enableUnixSocket) {
       REDIS_URL = "unix://${config.services.redis.servers.mastodon.unixSocket}";
     }
     // lib.optionalAttrs (cfg.database.host != "/run/postgresql" && cfg.database.port != null) {
       DB_PORT = toString cfg.database.port;
     }
-    // lib.optionalAttrs cfg.smtp.authenticate { SMTP_LOGIN = cfg.smtp.user; }
-    // lib.optionalAttrs (cfg.elasticsearch.host != null) { ES_HOST = cfg.elasticsearch.host; }
+    // lib.optionalAttrs cfg.smtp.authenticate {
+      SMTP_LOGIN = cfg.smtp.user;
+    }
+    // lib.optionalAttrs (cfg.elasticsearch.host != null) {
+      ES_HOST = cfg.elasticsearch.host;
+    }
     // lib.optionalAttrs (cfg.elasticsearch.host != null) {
       ES_PORT = toString (cfg.elasticsearch.port);
     }
-    // lib.optionalAttrs (cfg.elasticsearch.host != null) { ES_PRESET = cfg.elasticsearch.preset; }
-    // lib.optionalAttrs (cfg.elasticsearch.user != null) { ES_USER = cfg.elasticsearch.user; }
+    // lib.optionalAttrs (cfg.elasticsearch.host != null) {
+      ES_PRESET = cfg.elasticsearch.preset;
+    }
+    // lib.optionalAttrs (cfg.elasticsearch.user != null) {
+      ES_USER = cfg.elasticsearch.user;
+    }
     // cfg.extraConfig;
 
   systemCallsList = [
@@ -936,9 +948,13 @@ in
             env
             // (
               if cfg.enableUnixSocket then
-                { SOCKET = "/run/mastodon-web/web.socket"; }
+                {
+                  SOCKET = "/run/mastodon-web/web.socket";
+                }
               else
-                { PORT = toString (cfg.webPort); }
+                {
+                  PORT = toString (cfg.webPort);
+                }
             );
           serviceConfig = {
             ExecStart = "${cfg.package}/bin/puma -C config/puma.rb";
@@ -1031,8 +1047,12 @@ in
         };
         services.redis.servers.mastodon = lib.mkIf redisActuallyCreateLocally (
           lib.mkMerge [
-            { enable = true; }
-            (lib.mkIf (!cfg.redis.enableUnixSocket) { port = cfg.redis.port; })
+            {
+              enable = true;
+            }
+            (lib.mkIf (!cfg.redis.enableUnixSocket) {
+              port = cfg.redis.port;
+            })
           ]
         );
         services.postgresql = lib.mkIf databaseActuallyCreateLocally {

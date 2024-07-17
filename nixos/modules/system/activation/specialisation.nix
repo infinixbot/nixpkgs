@@ -68,7 +68,12 @@ in
                 specialisations will be ignored.
               '';
               visible = "shallow";
-              inherit (extend { modules = [ ./no-clone.nix ]; }) type;
+              inherit
+                (extend {
+                  modules = [ ./no-clone.nix ];
+                })
+                type
+                ;
             };
           }
         )

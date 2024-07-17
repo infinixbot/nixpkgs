@@ -15,14 +15,19 @@ let
   # We check the source code in a derivation that does not depend on the
   # system configuration so that most users don't have to redo the check and require
   # the necessary dependencies.
-  checkedSource = pkgs.runCommand "systemd-boot" { preferLocalBuild = true; } ''
-    install -m755 -D ${./systemd-boot-builder.py} $out
-    ${lib.getExe pkgs.buildPackages.mypy} \
-      --no-implicit-optional \
-      --disallow-untyped-calls \
-      --disallow-untyped-defs \
-      $out
-  '';
+  checkedSource =
+    pkgs.runCommand "systemd-boot"
+      {
+        preferLocalBuild = true;
+      }
+      ''
+        install -m755 -D ${./systemd-boot-builder.py} $out
+        ${lib.getExe pkgs.buildPackages.mypy} \
+          --no-implicit-optional \
+          --disallow-untyped-calls \
+          --disallow-untyped-defs \
+          $out
+      '';
 
   systemdBootBuilder = pkgs.substituteAll rec {
     name = "systemd-boot";
@@ -388,7 +393,11 @@ in
           message = "The XBOOTLDR mount point '${toString cfg.xbootldrMountPoint}' cannot be the same as the ESP mount point '${toString efi.efiSysMountPoint}'";
         }
         {
-          assertion = (config.boot.kernelPackages.kernel.features or { efiBootStub = true; }) ? efiBootStub;
+          assertion =
+            (config.boot.kernelPackages.kernel.features or {
+              efiBootStub = true;
+            }
+            ) ? efiBootStub;
           message = "This kernel does not support the EFI boot stub";
         }
       ]
@@ -422,8 +431,12 @@ in
     boot.loader.supportsInitrdSecrets = true;
 
     boot.loader.systemd-boot.extraFiles = mkMerge [
-      (mkIf cfg.memtest86.enable { "efi/memtest86/memtest.efi" = "${pkgs.memtest86plus.efi}"; })
-      (mkIf cfg.netbootxyz.enable { "efi/netbootxyz/netboot.xyz.efi" = "${pkgs.netbootxyz-efi}"; })
+      (mkIf cfg.memtest86.enable {
+        "efi/memtest86/memtest.efi" = "${pkgs.memtest86plus.efi}";
+      })
+      (mkIf cfg.netbootxyz.enable {
+        "efi/netbootxyz/netboot.xyz.efi" = "${pkgs.netbootxyz-efi}";
+      })
     ];
 
     boot.loader.systemd-boot.extraEntries = mkMerge [

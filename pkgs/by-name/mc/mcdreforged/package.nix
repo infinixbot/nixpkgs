@@ -36,7 +36,9 @@ python3.pkgs.buildPythonApplication rec {
   nativeCheckInputs = [ python3.pkgs.pytestCheckHook ];
 
   passthru.tests = {
-    version = testers.testVersion { package = mcdreforged; };
+    version = testers.testVersion {
+      package = mcdreforged;
+    };
   };
 
   meta = {

@@ -286,8 +286,12 @@ let
         "" = optionalString (host != null) "${host}:" + dataset;
         _plan = plan;
       }
-      // optionalAttrs (presend != null) { _precmd = presend; }
-      // optionalAttrs (postsend != null) { _pstcmd = postsend; }
+      // optionalAttrs (presend != null) {
+        _precmd = presend;
+      }
+      // optionalAttrs (postsend != null) {
+        _pstcmd = postsend;
+      }
     );
 
   mkSrcAttrs =

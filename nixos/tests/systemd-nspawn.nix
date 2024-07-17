@@ -1,7 +1,9 @@
 import ./make-test-python.nix (
   { pkgs, lib, ... }:
   let
-    gpgKeyring = import ./common/gpg-keyring.nix { inherit pkgs; };
+    gpgKeyring = import ./common/gpg-keyring.nix {
+      inherit pkgs;
+    };
 
     nspawnImages = (
       pkgs.runCommand "localhost"

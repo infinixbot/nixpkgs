@@ -77,7 +77,9 @@
               forceEmptyCache
               ;
 
-            src = makeTestSrc { inherit name src; };
+            src = makeTestSrc {
+              inherit name src;
+            };
           };
       in
       {
@@ -196,15 +198,21 @@
     let
       hash_ =
         if hash != "" then
-          { outputHash = hash; }
+          {
+            outputHash = hash;
+          }
         else
           {
             outputHash = "";
             outputHashAlgo = "sha256";
           };
 
-      forceGitDeps_ = lib.optionalAttrs forceGitDeps { FORCE_GIT_DEPS = true; };
-      forceEmptyCache_ = lib.optionalAttrs forceEmptyCache { FORCE_EMPTY_CACHE = true; };
+      forceGitDeps_ = lib.optionalAttrs forceGitDeps {
+        FORCE_GIT_DEPS = true;
+      };
+      forceEmptyCache_ = lib.optionalAttrs forceEmptyCache {
+        FORCE_EMPTY_CACHE = true;
+      };
     in
     stdenvNoCC.mkDerivation (
       args

@@ -144,7 +144,13 @@ let
     pipe users [
       attrNames
       (imap0 (
-        index: user: nameValuePair user (users.${user} // { scope = userScope listenerScope index; })
+        index: user:
+        nameValuePair user (
+          users.${user}
+          // {
+            scope = userScope listenerScope index;
+          }
+        )
       ))
       listToAttrs
     ];
@@ -263,7 +269,9 @@ let
       "auth_plugin ${plugin.plugin}"
       "auth_plugin_deny_special_chars ${optionToString plugin.denySpecialChars}"
     ]
-    ++ formatFreeform { prefix = "auth_opt_"; } plugin.options;
+    ++ formatFreeform {
+      prefix = "auth_opt_";
+    } plugin.options;
 
   freeformListenerKeys = {
     allow_anonymous = 1;
@@ -364,7 +372,9 @@ let
         };
 
         settings = mkOption {
-          type = submodule { freeformType = attrsOf optionType; };
+          type = submodule {
+            freeformType = attrsOf optionType;
+          };
           description = ''
             Additional settings for this listener.
           '';
@@ -466,7 +476,9 @@ let
         };
 
         settings = mkOption {
-          type = submodule { freeformType = attrsOf optionType; };
+          type = submodule {
+            freeformType = attrsOf optionType;
+          };
           description = ''
             Additional settings for this bridge.
           '';
@@ -608,7 +620,9 @@ let
     };
 
     settings = mkOption {
-      type = submodule { freeformType = attrsOf optionType; };
+      type = submodule {
+        freeformType = attrsOf optionType;
+      };
       description = ''
         Global configuration options for the mosquitto broker.
       '';

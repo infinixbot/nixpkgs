@@ -94,8 +94,12 @@ let
           name = cargoDepsName;
           patches = cargoPatches;
         }
-        // lib.optionalAttrs (args ? cargoHash) { hash = args.cargoHash; }
-        // lib.optionalAttrs (args ? cargoSha256) { sha256 = args.cargoSha256; }
+        // lib.optionalAttrs (args ? cargoHash) {
+          hash = args.cargoHash;
+        }
+        // lib.optionalAttrs (args ? cargoSha256) {
+          sha256 = args.cargoSha256;
+        }
         // depsExtraArgs
       );
 
@@ -122,7 +126,9 @@ stdenv.mkDerivation (
     "cargoUpdateHook"
     "cargoLock"
   ])
-  // lib.optionalAttrs useSysroot { RUSTFLAGS = "--sysroot ${sysroot} " + (args.RUSTFLAGS or ""); }
+  // lib.optionalAttrs useSysroot {
+    RUSTFLAGS = "--sysroot ${sysroot} " + (args.RUSTFLAGS or "");
+  }
   // {
     inherit buildAndTestSubdir cargoDeps;
 
@@ -143,7 +149,9 @@ stdenv.mkDerivation (
     nativeBuildInputs =
       nativeBuildInputs
       ++ lib.optionals auditable [
-        (buildPackages.cargo-auditable-cargo-wrapper.override { inherit cargo cargo-auditable; })
+        (buildPackages.cargo-auditable-cargo-wrapper.override {
+          inherit cargo cargo-auditable;
+        })
       ]
       ++ [
         cargoBuildHook

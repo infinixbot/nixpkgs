@@ -21,9 +21,13 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   passthru = {
-    tests.version = testers.testVersion { package = finalAttrs.finalPackage; };
+    tests.version = testers.testVersion {
+      package = finalAttrs.finalPackage;
+    };
 
-    updateScript = gitUpdater { url = "https://passt.top/passt"; };
+    updateScript = gitUpdater {
+      url = "https://passt.top/passt";
+    };
   };
 
   meta = with lib; {

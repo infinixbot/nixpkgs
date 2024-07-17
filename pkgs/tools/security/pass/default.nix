@@ -42,7 +42,9 @@ assert dmenuSupport && x11Support -> dmenu != null && xdotool != null;
 assert dmenuSupport && waylandSupport -> dmenu-wayland != null && ydotool != null;
 
 let
-  passExtensions = import ./extensions { inherit pkgs; };
+  passExtensions = import ./extensions {
+    inherit pkgs;
+  };
 
   env =
     extensions:

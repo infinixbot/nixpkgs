@@ -61,7 +61,9 @@ let
       in
       pkgs.writeText name (
         lib.generators.toKeyValue {
-          mkKeyValue = generators.mkKeyValueDefault { inherit mkValueString; } " ";
+          mkKeyValue = generators.mkKeyValueDefault {
+            inherit mkValueString;
+          } " ";
           listsAsDuplicateKeys = true;
         } normalizedValue
       );
@@ -223,7 +225,9 @@ let
         type = with types; listOf (submodule listenOptions);
         default = [ ];
         example = [
-          { address = "192.168.50.1"; }
+          {
+            address = "192.168.50.1";
+          }
           {
             address = "::1";
             port = 5923;

@@ -65,7 +65,12 @@ let
           };
         };
       };
-  recurseIntoAttrs = attrs: attrs // { recurseForDerivations = true; };
+  recurseIntoAttrs =
+    attrs:
+    attrs
+    // {
+      recurseForDerivations = true;
+    };
 
   # hydraJobs leaves recurseForDerivations as empty attrmaps;
   # that would break nix-env and we also need to recurse everywhere.

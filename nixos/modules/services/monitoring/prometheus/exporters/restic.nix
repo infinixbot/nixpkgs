@@ -143,7 +143,9 @@ in
       // (mapAttrs' (
         name: value: nameValuePair (rcloneAttrToOpt name) (toRcloneVal value)
       ) cfg.rcloneOptions)
-      // optionalAttrs (cfg.rcloneConfigFile != null) { RCLONE_CONFIG = cfg.rcloneConfigFile; }
+      // optionalAttrs (cfg.rcloneConfigFile != null) {
+        RCLONE_CONFIG = cfg.rcloneConfigFile;
+      }
       // (mapAttrs' (
         name: value: nameValuePair (rcloneAttrToConf name) (toRcloneVal value)
       ) cfg.rcloneConfig);

@@ -42,7 +42,9 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postInstall
   '';
 
-  passthru.updateScript = gitUpdater { rev-prefix = "hhexen-"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "hhexen-";
+  };
 
   meta = {
     description = "Linux port of Raven Game's Hexen";

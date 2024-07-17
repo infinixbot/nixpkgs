@@ -247,7 +247,9 @@ stdenv.mkDerivation rec {
 
   passthru.tests = {
     inherit (gst_all_1) gst-plugins-good;
-    ffmpeg = ffmpeg.override { withVpx = true; };
+    ffmpeg = ffmpeg.override {
+      withVpx = true;
+    };
   };
 
   meta = with lib; {

@@ -50,7 +50,9 @@ in
       };
 
       settings = lib.mkOption {
-        type = lib.types.submodule { freeformType = settingsFormat.type; };
+        type = lib.types.submodule {
+          freeformType = settingsFormat.type;
+        };
         default = { };
         example = {
           host = "127.0.0.1";
@@ -170,7 +172,9 @@ in
             password = lib.mkDefault "@AUTH_PASSWORD@";
           };
         })
-        (lib.mkIf (cfg.vpcs.enable) { VPCS.vpcs_path = lib.mkDefault (lib.getExe cfg.vpcs.package); })
+        (lib.mkIf (cfg.vpcs.enable) {
+          VPCS.vpcs_path = lib.mkDefault (lib.getExe cfg.vpcs.package);
+        })
         (lib.mkIf (cfg.dynamips.enable) {
           Dynamips.dynamips_path = lib.mkDefault (lib.getExe cfg.dynamips.package);
         })

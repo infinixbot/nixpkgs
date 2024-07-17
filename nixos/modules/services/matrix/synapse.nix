@@ -116,7 +116,9 @@ let
 
       ```
       ${generators.toPretty { } (
-        recursiveUpdate defaultCommonLogConfig { handlers.journal.SYSLOG_IDENTIFIER = logName; }
+        recursiveUpdate defaultCommonLogConfig {
+          handlers.journal.SYSLOG_IDENTIFIER = logName;
+        }
       )}
       ```
     '';
@@ -1459,7 +1461,9 @@ in
       path = config.services.redis.servers.matrix-synapse.unixSocket;
     };
     services.matrix-synapse.settings.instance_map.main = lib.mkIf hasWorkers (
-      lib.mkDefault { path = "/run/matrix-synapse/main_replication.sock"; }
+      lib.mkDefault {
+        path = "/run/matrix-synapse/main_replication.sock";
+      }
     );
 
     services.matrix-synapse.serviceUnit =

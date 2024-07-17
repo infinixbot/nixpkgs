@@ -37,9 +37,13 @@ let
   data = import ./data.nix { };
   sources = system: data.googleCloudSdkPkgs.${system} or (throw "Unsupported system: ${system}");
 
-  components = callPackage ./components.nix { snapshotPath = ./components.json; };
+  components = callPackage ./components.nix {
+    snapshotPath = ./components.json;
+  };
 
-  withExtraComponents = callPackage ./withExtraComponents.nix { inherit components; };
+  withExtraComponents = callPackage ./withExtraComponents.nix {
+    inherit components;
+  };
 
 in
 stdenv.mkDerivation rec {

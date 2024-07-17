@@ -22,7 +22,9 @@ let
     hash = "sha256-xjSWDP8mSjLcn+0hsRpEdzsBgBR+mKCZB8yLmHl+WqE=";
   };
 
-  fstar-dune = ocamlPackages.callPackage ./dune.nix { inherit version src; };
+  fstar-dune = ocamlPackages.callPackage ./dune.nix {
+    inherit version src;
+  };
 
   fstar-ulib = callPackage ./ulib.nix {
     inherit

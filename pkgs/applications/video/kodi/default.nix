@@ -6,7 +6,9 @@ unwrapped.overrideAttrs (oldAttrs: {
   passthru =
     let
       finalKodi = oldAttrs.passthru.kodi;
-      kodiPackages = callPackage ../../../top-level/kodi-packages.nix { kodi = finalKodi; };
+      kodiPackages = callPackage ../../../top-level/kodi-packages.nix {
+        kodi = finalKodi;
+      };
     in
     oldAttrs.passthru
     // {

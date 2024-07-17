@@ -88,7 +88,9 @@ in
   nodes.inner = lib.mkMerge [
     baseNetwork
     (setAddress6 "eth1" "2001:db8::2")
-    { virtualisation.vlans = [ 3 ]; }
+    {
+      virtualisation.vlans = [ 3 ];
+    }
   ];
 
   nodes.server = lib.mkMerge [

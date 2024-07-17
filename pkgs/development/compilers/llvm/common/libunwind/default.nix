@@ -106,8 +106,36 @@ stdenv.mkDerivation (
       '';
     };
   }
-  // (if postUnpack != "" then { inherit postUnpack; } else { })
-  // (if (lib.versionAtLeast release_version "15") then { inherit postInstall; } else { })
-  // (if prePatch != "" then { inherit prePatch; } else { })
-  // (if postPatch != "" then { inherit postPatch; } else { })
+  // (
+    if postUnpack != "" then
+      {
+        inherit postUnpack;
+      }
+    else
+      { }
+  )
+  // (
+    if (lib.versionAtLeast release_version "15") then
+      {
+        inherit postInstall;
+      }
+    else
+      { }
+  )
+  // (
+    if prePatch != "" then
+      {
+        inherit prePatch;
+      }
+    else
+      { }
+  )
+  // (
+    if postPatch != "" then
+      {
+        inherit postPatch;
+      }
+    else
+      { }
+  )
 )

@@ -13,7 +13,10 @@
 let
   # N.B. Keep in sync with default arg for stdenv/generic.
   defaultMkDerivationFromStdenv =
-    stdenv: (import ./generic/make-derivation.nix { inherit lib config; } stdenv).mkDerivation;
+    stdenv:
+    (import ./generic/make-derivation.nix {
+      inherit lib config;
+    } stdenv).mkDerivation;
 
   # Low level function to help with overriding `mkDerivationFromStdenv`. One
   # gives it the old stdenv arguments and a "continuation" function, and
@@ -119,7 +122,11 @@ rec {
   #   randomPkg = import ../bla { ...
   #     stdenv = overrideSetup stdenv ../stdenv/generic/setup-latest.sh;
   #   };
-  overrideSetup = stdenv: setupScript: stdenv.override { inherit setupScript; };
+  overrideSetup =
+    stdenv: setupScript:
+    stdenv.override {
+      inherit setupScript;
+    };
 
   # Return a modified stdenv that tries to build statically linked
   # binaries.
@@ -346,7 +353,9 @@ rec {
       old:
       {
         allowedRequisites = null;
-        cc = stdenv.cc.override { inherit bintools; };
+        cc = stdenv.cc.override {
+          inherit bintools;
+        };
         # gcc >12.1.0 supports '-fuse-ld=mold'
         # the wrap ld above in bintools supports gcc <12.1.0 and shouldn't harm >12.1.0
         # https://github.com/rui314/mold#how-to-use
@@ -433,10 +442,21 @@ rec {
         let
           bintools' = stdenv.cc.bintools;
         in
-        if bintools' ? override then (bintools'.override { inherit defaultHardeningFlags; }) else bintools';
+        if bintools' ? override then
+          (bintools'.override {
+            inherit defaultHardeningFlags;
+          })
+        else
+          bintools';
     in
     stdenv.override (old: {
-      cc = if stdenv.cc == null then null else stdenv.cc.override { inherit bintools; };
+      cc =
+        if stdenv.cc == null then
+          null
+        else
+          stdenv.cc.override {
+            inherit bintools;
+          };
       allowedRequisites = lib.mapNullable (rs: rs ++ [ bintools ]) (stdenv.allowedRequisites or null);
     });
 }

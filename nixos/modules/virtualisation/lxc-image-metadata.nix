@@ -38,9 +38,13 @@ let
   templates =
     if cfg.templates != { } then
       let
-        list = lib.mapAttrsToList (name: value: { inherit name; } // value) (
-          lib.filterAttrs (name: value: value.enable) cfg.templates
-        );
+        list = lib.mapAttrsToList (
+          name: value:
+          {
+            inherit name;
+          }
+          // value
+        ) (lib.filterAttrs (name: value: value.enable) cfg.templates);
       in
       {
         files = map (tpl: {

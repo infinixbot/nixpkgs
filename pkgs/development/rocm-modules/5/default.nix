@@ -79,7 +79,9 @@ rec {
   };
 
   # Unfree
-  hsa-amd-aqlprofile-bin = callPackage ./hsa-amd-aqlprofile-bin { stdenv = llvm.rocmClangStdenv; };
+  hsa-amd-aqlprofile-bin = callPackage ./hsa-amd-aqlprofile-bin {
+    stdenv = llvm.rocmClangStdenv;
+  };
 
   # Broken, too many errors
   rdc = callPackage ./rdc {
@@ -88,7 +90,9 @@ rec {
     # stdenv = llvm.rocmClangStdenv;
   };
 
-  rocm-docs-core = python3Packages.callPackage ./rocm-docs-core { stdenv = gcc12Stdenv; };
+  rocm-docs-core = python3Packages.callPackage ./rocm-docs-core {
+    stdenv = gcc12Stdenv;
+  };
 
   hip-common = callPackage ./hip-common {
     inherit rocmUpdateScript;
@@ -155,7 +159,9 @@ rec {
   # Needs GCC
   rocgdb = callPackage ./rocgdb {
     inherit rocmUpdateScript;
-    elfutils = elfutils.override { enableDebuginfod = true; };
+    elfutils = elfutils.override {
+      enableDebuginfod = true;
+    };
     stdenv = gcc12Stdenv;
   };
 
@@ -325,7 +331,9 @@ rec {
     stdenv = llvm.rocmClangStdenv;
   };
 
-  rocmlir-rock = rocmlir.override { buildRockCompiler = true; };
+  rocmlir-rock = rocmlir.override {
+    buildRockCompiler = true;
+  };
 
   hipsolver = callPackage ./hipsolver {
     inherit
@@ -384,12 +392,18 @@ rec {
     inherit (llvm) clang-tools-extra;
     stdenv = llvm.rocmClangStdenv;
     rocmlir = rocmlir-rock;
-    boost = boost179.override { enableStatic = true; };
+    boost = boost179.override {
+      enableStatic = true;
+    };
   };
 
-  miopen-hip = miopen.override { useOpenCL = false; };
+  miopen-hip = miopen.override {
+    useOpenCL = false;
+  };
 
-  miopen-opencl = miopen.override { useOpenCL = true; };
+  miopen-opencl = miopen.override {
+    useOpenCL = true;
+  };
 
   migraphx = callPackage ./migraphx {
     inherit
@@ -450,7 +464,9 @@ rec {
       rocm-docs-core
       ;
     inherit (llvm) clang openmp;
-    opencv = opencv.override { enablePython = true; };
+    opencv = opencv.override {
+      enablePython = true;
+    };
     ffmpeg = ffmpeg_4;
     rapidjson = rapidjson-unstable;
     stdenv = llvm.rocmClangStdenv;

@@ -24,7 +24,9 @@ python3Packages.buildPythonPackage rec {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests = testers.testVersion { package = s-tui; };
+    tests = testers.testVersion {
+      package = s-tui;
+    };
   };
 
   meta = with lib; {

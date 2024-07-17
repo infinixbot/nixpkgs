@@ -16,7 +16,9 @@
 }:
 
 let
-  common = import ./common.nix { inherit lib fetchFromGitHub; };
+  common = import ./common.nix {
+    inherit lib fetchFromGitHub;
+  };
 in
 buildPythonPackage (
   common

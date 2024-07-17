@@ -28,7 +28,11 @@ stdenv.mkDerivation {
 
   buildCommand =
     ''
-      closureInfo=${closureInfo { rootPaths = storeContents; }}
+      closureInfo=${
+        closureInfo {
+          rootPaths = storeContents;
+        }
+      }
 
       # Also include a manifest of the closures in a format suitable
       # for nix-store --load-db.

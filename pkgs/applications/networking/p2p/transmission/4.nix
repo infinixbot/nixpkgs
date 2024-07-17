@@ -44,21 +44,26 @@
 let
   inherit (lib) cmakeBool optionals;
 
-  apparmorRules = apparmorRulesFromClosure { name = "transmission-daemon"; } (
-    [
-      curl
-      libdeflate
-      libevent
-      libnatpmp
-      libpsl
-      miniupnpc
-      openssl
-      pcre
-      zlib
-    ]
-    ++ optionals enableSystemd [ systemd ]
-    ++ optionals stdenv.isLinux [ inotify-tools ]
-  );
+  apparmorRules =
+    apparmorRulesFromClosure
+      {
+        name = "transmission-daemon";
+      }
+      (
+        [
+          curl
+          libdeflate
+          libevent
+          libnatpmp
+          libpsl
+          miniupnpc
+          openssl
+          pcre
+          zlib
+        ]
+        ++ optionals enableSystemd [ systemd ]
+        ++ optionals stdenv.isLinux [ inotify-tools ]
+      );
 
 in
 stdenv.mkDerivation (finalAttrs: {

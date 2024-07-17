@@ -101,7 +101,9 @@ stdenv.mkDerivation rec {
     '';
 
   # Run package tests
-  passthru.tests = callPackage ./tests.nix { inherit pname; };
+  passthru.tests = callPackage ./tests.nix {
+    inherit pname;
+  };
 
   meta = {
     description = "Purely functional programming language with first class types";

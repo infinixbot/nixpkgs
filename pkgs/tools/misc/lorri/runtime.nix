@@ -17,7 +17,9 @@ let
     ];
   };
 
-  runtimeClosureInfo = closureInfo { rootPaths = [ tools ]; };
+  runtimeClosureInfo = closureInfo {
+    rootPaths = [ tools ];
+  };
 
   closureToNix = runCommand "closure.nix" { } ''
     (

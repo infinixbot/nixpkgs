@@ -1,7 +1,9 @@
 { lib, config, ... }:
 let
   inherit (lib) options trivial types;
-  Release = import ./release.nix { inherit lib config; };
+  Release = import ./release.nix {
+    inherit lib config;
+  };
 in
 options.mkOption {
   description = "Feature manifest is an attribute set which includes a mapping from package name to release";

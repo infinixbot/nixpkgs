@@ -123,7 +123,9 @@ let
     };
   };
 
-  nixosWithUserModules = noUserModules.extendModules { modules = allUserModules; };
+  nixosWithUserModules = noUserModules.extendModules {
+    modules = allUserModules;
+  };
 
   withExtraAttrs =
     configuration:

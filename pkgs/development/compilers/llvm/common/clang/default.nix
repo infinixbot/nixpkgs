@@ -254,10 +254,14 @@ let
             '';
           }
         else
-          { ninjaFlags = [ "docs-clang-man" ]; }
+          {
+            ninjaFlags = [ "docs-clang-man" ];
+          }
       )
     )
-    // (lib.optionalAttrs (clang-tools-extra_src != null) { inherit clang-tools-extra_src; })
+    // (lib.optionalAttrs (clang-tools-extra_src != null) {
+      inherit clang-tools-extra_src;
+    })
     // (lib.optionalAttrs (lib.versionOlder release_version "13") {
       unpackPhase = ''
         unpackFile $src

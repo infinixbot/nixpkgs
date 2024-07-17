@@ -124,7 +124,9 @@ rustPlatform.buildRustPackage rec {
 
     tests = {
       test = nixosTests.terminal-emulators.rio;
-      version = testers.testVersion { package = rio; };
+      version = testers.testVersion {
+        package = rio;
+      };
     };
   };
 

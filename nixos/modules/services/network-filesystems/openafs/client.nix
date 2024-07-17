@@ -6,7 +6,9 @@
 }:
 
 # openafsMod, openafsBin, mkCellServDB
-with import ./lib.nix { inherit config lib pkgs; };
+with import ./lib.nix {
+  inherit config lib pkgs;
+};
 
 let
   inherit (lib)
@@ -30,12 +32,17 @@ let
     mkCellServDB cfg.cellName cfg.cellServDB
   );
 
-  afsConfig = pkgs.runCommand "afsconfig" { preferLocalBuild = true; } ''
-    mkdir -p $out
-    echo ${cfg.cellName} > $out/ThisCell
-    cat ${cellServDB} ${clientServDB} > $out/CellServDB
-    echo "${cfg.mountPoint}:${cfg.cache.directory}:${toString cfg.cache.blocks}" > $out/cacheinfo
-  '';
+  afsConfig =
+    pkgs.runCommand "afsconfig"
+      {
+        preferLocalBuild = true;
+      }
+      ''
+        mkdir -p $out
+        echo ${cfg.cellName} > $out/ThisCell
+        cat ${cellServDB} ${clientServDB} > $out/CellServDB
+        echo "${cfg.mountPoint}:${cfg.cache.directory}:${toString cfg.cache.blocks}" > $out/cacheinfo
+      '';
 
 in
 {
@@ -223,9 +230,14 @@ in
 
     environment.etc = {
       clientCellServDB = {
-        source = pkgs.runCommand "CellServDB" { preferLocalBuild = true; } ''
-          cat ${cellServDB} ${clientServDB} > $out
-        '';
+        source =
+          pkgs.runCommand "CellServDB"
+            {
+              preferLocalBuild = true;
+            }
+            ''
+              cat ${cellServDB} ${clientServDB} > $out
+            '';
         target = "openafs/CellServDB";
         mode = "0644";
       };

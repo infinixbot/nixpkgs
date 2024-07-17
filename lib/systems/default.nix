@@ -20,12 +20,24 @@ let
 
   inherit (lib.strings) toJSON;
 
-  doubles = import ./doubles.nix { inherit lib; };
-  parse = import ./parse.nix { inherit lib; };
-  inspect = import ./inspect.nix { inherit lib; };
-  platforms = import ./platforms.nix { inherit lib; };
-  examples = import ./examples.nix { inherit lib; };
-  architectures = import ./architectures.nix { inherit lib; };
+  doubles = import ./doubles.nix {
+    inherit lib;
+  };
+  parse = import ./parse.nix {
+    inherit lib;
+  };
+  inspect = import ./inspect.nix {
+    inherit lib;
+  };
+  platforms = import ./platforms.nix {
+    inherit lib;
+  };
+  examples = import ./examples.nix {
+    inherit lib;
+  };
+  architectures = import ./architectures.nix {
+    inherit lib;
+  };
 
   /**
     Elaborated systems contain functions, which means that they don't satisfy
@@ -66,7 +78,13 @@ let
   elaborate =
     args':
     let
-      args = if isString args' then { system = args'; } else args';
+      args =
+        if isString args' then
+          {
+            system = args';
+          }
+        else
+          args';
 
       # TODO: deprecate args.rustc in favour of args.rust after 23.05 is EOL.
       rust = args.rust or args.rustc or { };

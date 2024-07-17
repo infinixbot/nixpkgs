@@ -16,7 +16,11 @@ in
         b = "bee";
       };
     }
-    { examples.override = lib.mkForce { b = "bee"; }; }
+    {
+      examples.override = lib.mkForce {
+        b = "bee";
+      };
+    }
   ];
   config.examples = {
     merged = {

@@ -7,7 +7,9 @@
 with lib;
 let
   cfg = config.services.monica;
-  monica = pkgs.monica.override { dataDir = cfg.dataDir; };
+  monica = pkgs.monica.override {
+    dataDir = cfg.dataDir;
+  };
   db = cfg.database;
   mail = cfg.mail;
 
@@ -205,7 +207,9 @@ in
 
     nginx = mkOption {
       type = types.submodule (
-        recursiveUpdate (import ../web-servers/nginx/vhost-options.nix { inherit config lib; }) { }
+        recursiveUpdate (import ../web-servers/nginx/vhost-options.nix {
+          inherit config lib;
+        }) { }
       );
       default = { };
       example = ''
@@ -486,7 +490,9 @@ in
         };
         "${config.services.nginx.user}".extraGroups = [ group ];
       };
-      groups = mkIf (group == "monica") { monica = { }; };
+      groups = mkIf (group == "monica") {
+        monica = { };
+      };
     };
   };
 }

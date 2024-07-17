@@ -7,7 +7,9 @@ let
 in
 {
   options.submodule = lib.mkOption {
-    type = lib.types.submoduleWith { modules = [ sub ]; };
+    type = lib.types.submoduleWith {
+      modules = [ sub ];
+    };
     default = { };
   };
 }

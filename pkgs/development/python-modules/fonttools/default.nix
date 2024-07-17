@@ -66,7 +66,10 @@ buildPythonPackage rec {
         repacker = [ uharfbuzz ];
       };
     in
-    extras // { all = lib.concatLists (lib.attrValues extras); };
+    extras
+    // {
+      all = lib.concatLists (lib.attrValues extras);
+    };
 
   nativeCheckInputs =
     [

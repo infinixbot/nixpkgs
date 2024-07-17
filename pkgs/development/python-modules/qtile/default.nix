@@ -68,7 +68,9 @@ buildPythonPackage rec {
   ];
 
   dependencies = extraPackages ++ [
-    (cairocffi.override { withXcffib = true; })
+    (cairocffi.override {
+      withXcffib = true;
+    })
     dbus-next
     iwlib
     libcst

@@ -105,7 +105,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == "ejabberd") { ejabberd.gid = config.ids.gids.ejabberd; };
+    users.groups = optionalAttrs (cfg.group == "ejabberd") {
+      ejabberd.gid = config.ids.gids.ejabberd;
+    };
 
     systemd.services.ejabberd = {
       description = "ejabberd server";

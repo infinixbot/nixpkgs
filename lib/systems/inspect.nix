@@ -362,36 +362,52 @@ rec {
     };
 
     isAndroid = [
-      { abi = abis.android; }
-      { abi = abis.androideabi; }
+      {
+        abi = abis.android;
+      }
+      {
+        abi = abis.androideabi;
+      }
     ];
     isGnu =
       with abis;
-      map (a: { abi = a; }) [
-        gnuabi64
-        gnuabin32
-        gnu
-        gnueabi
-        gnueabihf
-        gnuabielfv1
-        gnuabielfv2
-      ];
+      map
+        (a: {
+          abi = a;
+        })
+        [
+          gnuabi64
+          gnuabin32
+          gnu
+          gnueabi
+          gnueabihf
+          gnuabielfv1
+          gnuabielfv2
+        ];
     isMusl =
       with abis;
-      map (a: { abi = a; }) [
-        musl
-        musleabi
-        musleabihf
-        muslabin32
-        muslabi64
-      ];
+      map
+        (a: {
+          abi = a;
+        })
+        [
+          musl
+          musleabi
+          musleabihf
+          muslabin32
+          muslabi64
+        ];
     isUClibc =
       with abis;
-      map (a: { abi = a; }) [
-        uclibc
-        uclibceabi
-        uclibceabihf
-      ];
+      map
+        (a: {
+          abi = a;
+        })
+        [
+          uclibc
+          uclibceabi
+          uclibceabihf
+        ];
 
     isEfi = [
       {
@@ -474,9 +490,18 @@ rec {
   # that `lib.meta.availableOn` can distinguish them from the patterns which
   # apply only to the `parsed` field.
 
-  platformPatterns = mapAttrs (_: p: { parsed = { }; } // p) {
-    isStatic = {
-      isStatic = true;
-    };
-  };
+  platformPatterns =
+    mapAttrs
+      (
+        _: p:
+        {
+          parsed = { };
+        }
+        // p
+      )
+      {
+        isStatic = {
+          isStatic = true;
+        };
+      };
 }

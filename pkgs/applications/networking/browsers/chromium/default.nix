@@ -79,7 +79,9 @@ let
         ;
       gnChromium = buildPackages.gn.overrideAttrs (oldAttrs: {
         inherit (upstream-info.deps.gn) version;
-        src = fetchgit { inherit (upstream-info.deps.gn) url rev hash; };
+        src = fetchgit {
+          inherit (upstream-info.deps.gn) url rev hash;
+        };
       });
       recompressTarball = callPackage ./recompress-tarball.nix { };
     });
@@ -115,12 +117,16 @@ let
       browser = chromium.browser;
     in
     if enableWideVine then
-      runCommand (browser.name + "-wv") { version = browser.version; } ''
-        mkdir -p $out
-        cp -a ${browser}/* $out/
-        chmod u+w $out/libexec/chromium
-        cp -a ${widevine-cdm}/share/google/chrome/WidevineCdm $out/libexec/chromium/
-      ''
+      runCommand (browser.name + "-wv")
+        {
+          version = browser.version;
+        }
+        ''
+          mkdir -p $out
+          cp -a ${browser}/* $out/
+          chmod u+w $out/libexec/chromium
+          cp -a ${widevine-cdm}/share/google/chrome/WidevineCdm $out/libexec/chromium/
+        ''
     else
       browser;
 

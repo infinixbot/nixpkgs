@@ -497,7 +497,9 @@ in
             allowedUDPPorts = [ cfg.settings.peer-port ];
           }
       ))
-      (mkIf cfg.openRPCPort { allowedTCPPorts = [ cfg.settings.rpc-port ]; })
+      (mkIf cfg.openRPCPort {
+        allowedTCPPorts = [ cfg.settings.rpc-port ];
+      })
     ];
 
     boot.kernel.sysctl = mkMerge [

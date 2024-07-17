@@ -45,8 +45,12 @@ stdenv.mkDerivation (finalAttrs: {
     ];
 
   env =
-    lib.optionalAttrs stdenv.cc.isClang { CXXFLAGS = "-std=c++11"; }
-    // lib.optionalAttrs stdenv.isDarwin { NIX_CFLAGS_LINK = "-headerpad_max_install_names"; };
+    lib.optionalAttrs stdenv.cc.isClang {
+      CXXFLAGS = "-std=c++11";
+    }
+    // lib.optionalAttrs stdenv.isDarwin {
+      NIX_CFLAGS_LINK = "-headerpad_max_install_names";
+    };
 
   preConfigure = ''
     export LD=$CC
@@ -115,7 +119,9 @@ stdenv.mkDerivation (finalAttrs: {
     command = "pjsua --version";
   };
 
-  passthru.tests.pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+  passthru.tests.pkg-config = testers.hasPkgConfigModules {
+    package = finalAttrs.finalPackage;
+  };
 
   passthru.tests.python-pjsua2 = runCommand "python-pjsua2" { } ''
     ${(python3.withPackages (pkgs: [ pkgs.pjsua2 ])).interpreter} -c "import pjsua2" > $out

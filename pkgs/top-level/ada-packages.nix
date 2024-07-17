@@ -56,11 +56,15 @@ makeScopeWithSplicing' {
       gnatcoll-postgres = self.callPackage ../development/ada-modules/gnatcoll/db.nix {
         component = "postgres";
       };
-      gnatcoll-sql = self.callPackage ../development/ada-modules/gnatcoll/db.nix { component = "sql"; };
+      gnatcoll-sql = self.callPackage ../development/ada-modules/gnatcoll/db.nix {
+        component = "sql";
+      };
       gnatcoll-sqlite = self.callPackage ../development/ada-modules/gnatcoll/db.nix {
         component = "sqlite";
       };
-      gnatcoll-xref = self.callPackage ../development/ada-modules/gnatcoll/db.nix { component = "xref"; };
+      gnatcoll-xref = self.callPackage ../development/ada-modules/gnatcoll/db.nix {
+        component = "xref";
+      };
       gnatcoll-db2ada = self.callPackage ../development/ada-modules/gnatcoll/db.nix {
         component = "gnatcoll_db2ada";
       };

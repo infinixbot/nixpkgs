@@ -27,7 +27,9 @@ let
 
   inherit (llvmPackages_14) lld llvm;
   inherit (if buildWithPatches then opencl-clang else llvmPackages_14) clang libclang;
-  spirv-llvm-translator' = spirv-llvm-translator.override { inherit llvm; };
+  spirv-llvm-translator' = spirv-llvm-translator.override {
+    inherit llvm;
+  };
 in
 
 stdenv.mkDerivation rec {

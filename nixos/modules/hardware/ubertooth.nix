@@ -10,7 +10,9 @@ with lib;
 let
   cfg = config.hardware.ubertooth;
 
-  ubertoothPkg = pkgs.ubertooth.override { udevGroup = cfg.group; };
+  ubertoothPkg = pkgs.ubertooth.override {
+    udevGroup = cfg.group;
+  };
 in
 {
   options.hardware.ubertooth = {

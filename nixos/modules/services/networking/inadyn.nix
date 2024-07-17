@@ -261,6 +261,8 @@ in
       isSystemUser = true;
     };
 
-    users.groups = mkIf (cfg.group == "inadyn") { inadyn = { }; };
+    users.groups = mkIf (cfg.group == "inadyn") {
+      inadyn = { };
+    };
   };
 }

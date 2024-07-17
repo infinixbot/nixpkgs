@@ -17,7 +17,11 @@ let
   failure = testers.testBuildFailure linkCheck;
 
 in
-runCommand "link-check-fail" { inherit failure; } ''
-  grep -F foos-missing-anchor $failure/testBuildFailure.log >/dev/null
-  touch $out
-''
+runCommand "link-check-fail"
+  {
+    inherit failure;
+  }
+  ''
+    grep -F foos-missing-anchor $failure/testBuildFailure.log >/dev/null
+    touch $out
+  ''

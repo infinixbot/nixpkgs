@@ -175,7 +175,9 @@ stdenv.mkDerivation (finalAttrs: {
         inherit rocm-smi;
         clr = finalAttrs.finalPackage;
       };
-      opencl-example = callPackage ./test-opencl-example.nix { clr = finalAttrs.finalPackage; };
+      opencl-example = callPackage ./test-opencl-example.nix {
+        clr = finalAttrs.finalPackage;
+      };
     };
   };
 

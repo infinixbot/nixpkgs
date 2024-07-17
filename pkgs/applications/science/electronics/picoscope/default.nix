@@ -53,7 +53,9 @@ let
     stdenv.mkDerivation rec {
       pname = "libpicoipp";
       inherit (sources.libpicoipp) version;
-      src = fetchurl { inherit (sources.libpicoipp) url sha256; };
+      src = fetchurl {
+        inherit (sources.libpicoipp) url sha256;
+      };
       nativeBuildInputs = [
         dpkg
         autoPatchelfHook
@@ -93,7 +95,9 @@ let
     stdenv.mkDerivation rec {
       pname = "lib${name}";
       inherit version;
-      src = fetchurl { inherit url sha256; };
+      src = fetchurl {
+        inherit url sha256;
+      };
       # picoscope does a signature check, so we can't patchelf these
       nativeBuildInputs = [ dpkg ];
       sourceRoot = ".";
@@ -106,7 +110,10 @@ let
       '';
       meta =
         with lib;
-        shared_meta lib // { description = "library for picotech oscilloscope ${name} series"; };
+        shared_meta lib
+        // {
+          description = "library for picotech oscilloscope ${name} series";
+        };
     };
 
   scopePkgs = lib.mapAttrs scopePkg sources;
@@ -116,7 +123,9 @@ stdenv.mkDerivation rec {
   pname = "picoscope";
   inherit (sources.picoscope) version;
 
-  src = fetchurl { inherit (sources.picoscope) url sha256; };
+  src = fetchurl {
+    inherit (sources.picoscope) url sha256;
+  };
 
   nativeBuildInputs = [
     dpkg

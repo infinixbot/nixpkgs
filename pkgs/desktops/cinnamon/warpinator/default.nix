@@ -86,7 +86,9 @@ stdenv.mkDerivation rec {
       --replace-fail 'GLib.find_program_in_path("bwrap")' "True"
   '';
 
-  passthru.updateScript = gitUpdater { ignoredVersions = "^master.*"; };
+  passthru.updateScript = gitUpdater {
+    ignoredVersions = "^master.*";
+  };
 
   meta = with lib; {
     homepage = "https://github.com/linuxmint/warpinator";

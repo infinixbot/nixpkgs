@@ -42,7 +42,9 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postInstall
   '';
 
-  passthru.updateScript = gitUpdater { rev-prefix = "hheretic-"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "hheretic-";
+  };
 
   meta = {
     description = "Linux port of Raven Game's Heretic";

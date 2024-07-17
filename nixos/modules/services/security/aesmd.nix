@@ -10,7 +10,9 @@ let
   cfg = config.services.aesmd;
   opt = options.services.aesmd;
 
-  sgx-psw = pkgs.sgx-psw.override { inherit (cfg) debug; };
+  sgx-psw = pkgs.sgx-psw.override {
+    inherit (cfg) debug;
+  };
 
   configFile =
     with cfg.settings;

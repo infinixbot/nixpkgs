@@ -28,7 +28,9 @@ buildGoModule rec {
   ];
 
   passthru.tests = {
-    version = testers.testVersion { package = sish; };
+    version = testers.testVersion {
+      package = sish;
+    };
   };
 
   meta = with lib; {

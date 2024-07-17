@@ -29,7 +29,9 @@ buildGoModule rec {
   doCheck = false;
 
   passthru.tests = {
-    version = testers.testVersion { package = gh-markdown-preview; };
+    version = testers.testVersion {
+      package = gh-markdown-preview;
+    };
   };
 
   meta = {

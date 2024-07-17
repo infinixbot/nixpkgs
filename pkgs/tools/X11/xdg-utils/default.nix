@@ -351,19 +351,27 @@ stdenv.mkDerivation (self: {
       {
         nativeBuildInputs = [ self.finalPackage ];
         preferLocalBuild = true;
-        xenias = lib.mapAttrsToList (hash: urls: fetchurl { inherit hash urls; }) {
-          "sha256-SL95tM1AjOi7vDnCyT10s0tvQvc+ZSZBbkNOYXfbOy0=" = [
-            "https://staging.cohostcdn.org/attachment/0f5d9832-0cda-4d07-b35f-832b287feb6c/kernelkisser.png"
-            "https://static1.e621.net/data/0e/76/0e7672980d48e48c2d1373eb2505db5a.png"
-          ];
-          "sha256-Si9AtB7J9o6rK/oftv+saST77CNaeWomWU5ECfbRioM=" = [
-            "https://static1.e621.net/data/25/3d/253dc77fbc60d7214bc60e4a647d1c32.jpg"
-          ];
-          "sha256-Z+onQRY5zlDWPp5/y4E6crLz3TaMCNipcxEEMSHuLkM=" = [
-            "https://d.furaffinity.net/art/neotheta/1691409857/1691409857.neotheta_quickmakeanentry_by_neotheta-sig.png"
-            "https://static1.e621.net/data/bf/e4/bfe43ba264ad68e5d8a101ecef69c03e.png"
-          ];
-        };
+        xenias =
+          lib.mapAttrsToList
+            (
+              hash: urls:
+              fetchurl {
+                inherit hash urls;
+              }
+            )
+            {
+              "sha256-SL95tM1AjOi7vDnCyT10s0tvQvc+ZSZBbkNOYXfbOy0=" = [
+                "https://staging.cohostcdn.org/attachment/0f5d9832-0cda-4d07-b35f-832b287feb6c/kernelkisser.png"
+                "https://static1.e621.net/data/0e/76/0e7672980d48e48c2d1373eb2505db5a.png"
+              ];
+              "sha256-Si9AtB7J9o6rK/oftv+saST77CNaeWomWU5ECfbRioM=" = [
+                "https://static1.e621.net/data/25/3d/253dc77fbc60d7214bc60e4a647d1c32.jpg"
+              ];
+              "sha256-Z+onQRY5zlDWPp5/y4E6crLz3TaMCNipcxEEMSHuLkM=" = [
+                "https://d.furaffinity.net/art/neotheta/1691409857/1691409857.neotheta_quickmakeanentry_by_neotheta-sig.png"
+                "https://static1.e621.net/data/bf/e4/bfe43ba264ad68e5d8a101ecef69c03e.png"
+              ];
+            };
       }
       ''
         for x in $xenias; do

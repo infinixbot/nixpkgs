@@ -75,7 +75,9 @@ rustPlatform.buildRustPackage rec {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests.version = testers.testVersion { package = ncspot; };
+    tests.version = testers.testVersion {
+      package = ncspot;
+    };
   };
 
   meta = with lib; {

@@ -365,9 +365,13 @@ stdenv.mkDerivation (
     passthru = {
       llvm = llvmShared;
       inherit llvmPackages;
-      tests = {
-        inherit fd ripgrep wezterm;
-      } // lib.optionalAttrs stdenv.hostPlatform.isLinux { inherit firefox thunderbird; };
+      tests =
+        {
+          inherit fd ripgrep wezterm;
+        }
+        // lib.optionalAttrs stdenv.hostPlatform.isLinux {
+          inherit firefox thunderbird;
+        };
     };
 
     meta = with lib; {

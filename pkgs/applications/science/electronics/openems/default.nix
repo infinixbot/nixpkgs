@@ -43,7 +43,9 @@ stdenv.mkDerivation rec {
       boost
       zlib
       csxcad
-      (octave.override { inherit hdf5; })
+      (octave.override {
+        inherit hdf5;
+      })
     ]
     ++ lib.optionals withQcsxcad [ qcsxcad ]
     ++ lib.optionals withMPI [ mpi ]

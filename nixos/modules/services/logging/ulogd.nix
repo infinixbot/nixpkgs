@@ -8,7 +8,9 @@
 with lib;
 let
   cfg = config.services.ulogd;
-  settingsFormat = pkgs.formats.ini { listsAsDuplicateKeys = true; };
+  settingsFormat = pkgs.formats.ini {
+    listsAsDuplicateKeys = true;
+  };
   settingsFile = settingsFormat.generate "ulogd.conf" cfg.settings;
 in
 {

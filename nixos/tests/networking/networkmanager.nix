@@ -1,24 +1,34 @@
 {
   system ? builtins.currentSystem,
   config ? { },
-  pkgs ? import ../.. { inherit system config; },
+  pkgs ? import ../.. {
+    inherit system config;
+  },
 }:
 
-with import ../../lib/testing-python.nix { inherit system pkgs; };
+with import ../../lib/testing-python.nix {
+  inherit system pkgs;
+};
 
 let
   lib = pkgs.lib;
   # this is intended as a client test since you shouldn't use NetworkManager for a router or server
   # so using systemd-networkd for the router vm is fine in these tests.
-  router = import ./router.nix { networkd = true; };
-  qemu-common = import ../../lib/qemu-common.nix { inherit (pkgs) lib pkgs; };
+  router = import ./router.nix {
+    networkd = true;
+  };
+  qemu-common = import ../../lib/qemu-common.nix {
+    inherit (pkgs) lib pkgs;
+  };
   clientConfig =
     extraConfig:
     lib.recursiveUpdate {
       networking.useDHCP = false;
 
       # Make sure that only NetworkManager configures the interface
-      networking.interfaces = lib.mkForce { eth1 = { }; };
+      networking.interfaces = lib.mkForce {
+        eth1 = { };
+      };
       networking.networkmanager = {
         enable = true;
         # this is needed so NM doesn't generate 'Wired Connection' profiles and instead uses the default one

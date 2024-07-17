@@ -138,7 +138,9 @@ in
       "containers/storage.conf".source = toml.generate "storage.conf" cfg.storage.settings;
 
       "containers/registries.conf".source = toml.generate "registries.conf" {
-        registries = lib.mapAttrs (n: v: { registries = v; }) cfg.registries;
+        registries = lib.mapAttrs (n: v: {
+          registries = v;
+        }) cfg.registries;
       };
 
       "containers/policy.json".source =

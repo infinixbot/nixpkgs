@@ -809,8 +809,12 @@ in
       };
 
       users.groups =
-        optionalAttrs (group == "postfix") { ${group}.gid = config.ids.gids.postfix; }
-        // optionalAttrs (setgidGroup == "postdrop") { ${setgidGroup}.gid = config.ids.gids.postdrop; };
+        optionalAttrs (group == "postfix") {
+          ${group}.gid = config.ids.gids.postfix;
+        }
+        // optionalAttrs (setgidGroup == "postdrop") {
+          ${setgidGroup}.gid = config.ids.gids.postdrop;
+        };
 
       systemd.services.postfix-setup = {
         description = "Setup for Postfix mail server";
@@ -929,17 +933,39 @@ in
             else
               "[${cfg.relayHost}]:${toString cfg.relayPort}";
         }
-        // optionalAttrs (!config.networking.enableIPv6) { inet_protocols = mkDefault "ipv4"; }
-        // optionalAttrs (cfg.networks != null) { mynetworks = cfg.networks; }
-        // optionalAttrs (cfg.networksStyle != "") { mynetworks_style = cfg.networksStyle; }
-        // optionalAttrs (cfg.hostname != "") { myhostname = cfg.hostname; }
-        // optionalAttrs (cfg.domain != "") { mydomain = cfg.domain; }
-        // optionalAttrs (cfg.origin != "") { myorigin = cfg.origin; }
-        // optionalAttrs (cfg.destination != null) { mydestination = cfg.destination; }
-        // optionalAttrs (cfg.relayDomains != null) { relay_domains = cfg.relayDomains; }
-        // optionalAttrs (cfg.recipientDelimiter != "") { recipient_delimiter = cfg.recipientDelimiter; }
-        // optionalAttrs haveAliases { alias_maps = [ "${cfg.aliasMapType}:/etc/postfix/aliases" ]; }
-        // optionalAttrs haveTransport { transport_maps = [ "hash:/etc/postfix/transport" ]; }
+        // optionalAttrs (!config.networking.enableIPv6) {
+          inet_protocols = mkDefault "ipv4";
+        }
+        // optionalAttrs (cfg.networks != null) {
+          mynetworks = cfg.networks;
+        }
+        // optionalAttrs (cfg.networksStyle != "") {
+          mynetworks_style = cfg.networksStyle;
+        }
+        // optionalAttrs (cfg.hostname != "") {
+          myhostname = cfg.hostname;
+        }
+        // optionalAttrs (cfg.domain != "") {
+          mydomain = cfg.domain;
+        }
+        // optionalAttrs (cfg.origin != "") {
+          myorigin = cfg.origin;
+        }
+        // optionalAttrs (cfg.destination != null) {
+          mydestination = cfg.destination;
+        }
+        // optionalAttrs (cfg.relayDomains != null) {
+          relay_domains = cfg.relayDomains;
+        }
+        // optionalAttrs (cfg.recipientDelimiter != "") {
+          recipient_delimiter = cfg.recipientDelimiter;
+        }
+        // optionalAttrs haveAliases {
+          alias_maps = [ "${cfg.aliasMapType}:/etc/postfix/aliases" ];
+        }
+        // optionalAttrs haveTransport {
+          transport_maps = [ "hash:/etc/postfix/transport" ];
+        }
         // optionalAttrs haveVirtual {
           virtual_alias_maps = [ "${cfg.virtualMapType}:/etc/postfix/virtual" ];
         }
@@ -948,14 +974,18 @@ in
             "hash:/etc/postfix/local_recipients"
           ] ++ optional haveAliases "$alias_maps";
         }
-        // optionalAttrs (cfg.dnsBlacklists != [ ]) { smtpd_client_restrictions = clientRestrictions; }
+        // optionalAttrs (cfg.dnsBlacklists != [ ]) {
+          smtpd_client_restrictions = clientRestrictions;
+        }
         // optionalAttrs cfg.useSrs {
           sender_canonical_maps = [ "tcp:127.0.0.1:10001" ];
           sender_canonical_classes = [ "envelope_sender" ];
           recipient_canonical_maps = [ "tcp:127.0.0.1:10002" ];
           recipient_canonical_classes = [ "envelope_recipient" ];
         }
-        // optionalAttrs cfg.enableHeaderChecks { header_checks = [ "regexp:/etc/postfix/header_checks" ]; }
+        // optionalAttrs cfg.enableHeaderChecks {
+          header_checks = [ "regexp:/etc/postfix/header_checks" ];
+        }
         // optionalAttrs (cfg.tlsTrustedAuthorities != "") {
           smtp_tls_CAfile = cfg.tlsTrustedAuthorities;
           smtp_tls_security_level = mkDefault "may";
@@ -1096,19 +1126,33 @@ in
                   // {
                     smtpd_tls_wrappermode = "yes";
                   }
-                  // optionalAttrs adjustSmtpTlsSecurityLevel { smtpd_tls_security_level = "encrypt"; };
+                  // optionalAttrs adjustSmtpTlsSecurityLevel {
+                    smtpd_tls_security_level = "encrypt";
+                  };
               in
               concatLists (mapAttrsToList mkKeyVal submissionsOptions);
           };
         };
     }
 
-    (mkIf haveAliases { services.postfix.aliasFiles.aliases = aliasesFile; })
-    (mkIf haveCanonical { services.postfix.mapFiles.canonical = canonicalFile; })
-    (mkIf haveTransport { services.postfix.mapFiles.transport = transportFile; })
-    (mkIf haveVirtual { services.postfix.mapFiles.virtual = virtualFile; })
-    (mkIf haveLocalRecipients { services.postfix.mapFiles.local_recipients = localRecipientMapFile; })
-    (mkIf cfg.enableHeaderChecks { services.postfix.mapFiles.header_checks = headerChecksFile; })
+    (mkIf haveAliases {
+      services.postfix.aliasFiles.aliases = aliasesFile;
+    })
+    (mkIf haveCanonical {
+      services.postfix.mapFiles.canonical = canonicalFile;
+    })
+    (mkIf haveTransport {
+      services.postfix.mapFiles.transport = transportFile;
+    })
+    (mkIf haveVirtual {
+      services.postfix.mapFiles.virtual = virtualFile;
+    })
+    (mkIf haveLocalRecipients {
+      services.postfix.mapFiles.local_recipients = localRecipientMapFile;
+    })
+    (mkIf cfg.enableHeaderChecks {
+      services.postfix.mapFiles.header_checks = headerChecksFile;
+    })
     (mkIf (cfg.dnsBlacklists != [ ]) {
       services.postfix.mapFiles.client_access = checkClientAccessFile;
     })

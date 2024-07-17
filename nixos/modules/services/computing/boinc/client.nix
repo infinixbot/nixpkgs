@@ -32,7 +32,9 @@ in
       '';
     };
 
-    package = mkPackageOption pkgs "boinc" { example = "boinc-headless"; };
+    package = mkPackageOption pkgs "boinc" {
+      example = "boinc-headless";
+    };
 
     dataDir = mkOption {
       type = types.path;

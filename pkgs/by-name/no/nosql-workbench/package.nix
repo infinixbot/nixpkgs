@@ -85,7 +85,9 @@ else
 
     extraInstallCommands =
       let
-        appimageContents = appimageTools.extract { inherit pname version src; };
+        appimageContents = appimageTools.extract {
+          inherit pname version src;
+        };
       in
       ''
         # Install XDG Desktop file and its icon

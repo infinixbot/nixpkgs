@@ -32,7 +32,9 @@ stdenv.mkDerivation rec {
     cp bin/ctrtool${stdenv.hostPlatform.extensions.executable} $out/bin/
   ";
 
-  passthru.updateScript = gitUpdater { rev-prefix = "ctrtool-v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "ctrtool-v";
+  };
 
   meta = with lib; {
     license = licenses.mit;

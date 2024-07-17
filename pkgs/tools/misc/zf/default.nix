@@ -36,7 +36,9 @@ stdenv.mkDerivation (finalAttrs: {
       --zsh complete/_zf
   '';
 
-  passthru.tests.version = testers.testVersion { package = finalAttrs.finalPackage; };
+  passthru.tests.version = testers.testVersion {
+    package = finalAttrs.finalPackage;
+  };
 
   meta = {
     homepage = "https://github.com/natecraddock/zf";

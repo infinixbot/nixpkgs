@@ -146,7 +146,9 @@ stdenv.mkDerivation rec {
             {
               cacert = cacert.unbundled;
               cacertWithExcludes =
-                (cacert.override { blacklist = builtins.attrNames blacklistCAToFingerprint; }).unbundled;
+                (cacert.override {
+                  blacklist = builtins.attrNames blacklistCAToFingerprint;
+                }).unbundled;
 
               nativeBuildInputs = [ openssl ];
             }

@@ -216,7 +216,9 @@ in
         chrootPaths =
           pkgs.runCommand "${mkPathSafeName name}-chroot-paths"
             {
-              closureInfo = pkgs.closureInfo { inherit rootPaths; };
+              closureInfo = pkgs.closureInfo {
+                inherit rootPaths;
+              };
               serviceName = "${name}.service";
               excludedPath = rootPaths;
             }

@@ -11,9 +11,14 @@ let
   package = config.security.krb5.package;
   PIDFile = "/run/kdc.pid";
 
-  format = import ../../../security/krb5/krb5-conf-format.nix { inherit pkgs lib; } {
-    enableKdcACLEntries = true;
-  };
+  format =
+    import ../../../security/krb5/krb5-conf-format.nix
+      {
+        inherit pkgs lib;
+      }
+      {
+        enableKdcACLEntries = true;
+      };
 
   aclMap = {
     add = "a";

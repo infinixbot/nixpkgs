@@ -133,7 +133,9 @@ stdenvNoCC.mkDerivation (
         inherit version;
       }
     else
-      { inherit name; }
+      {
+        inherit name;
+      }
   )
   // {
     __structuredAttrs = true;

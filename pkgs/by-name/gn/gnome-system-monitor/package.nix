@@ -65,7 +65,9 @@ stdenv.mkDerivation rec {
   doCheck = true;
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "gnome-system-monitor"; };
+    updateScript = gnome.updateScript {
+      packageName = "gnome-system-monitor";
+    };
   };
 
   meta = with lib; {

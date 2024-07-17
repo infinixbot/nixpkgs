@@ -147,7 +147,12 @@ let
       override =
         attr:
         let
-          python = attr.override (inputs' // { self = python; });
+          python = attr.override (
+            inputs'
+            // {
+              self = python;
+            }
+          );
         in
         python;
     in

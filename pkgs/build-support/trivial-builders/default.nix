@@ -128,7 +128,9 @@ rec {
             ;
           passAsFile = [ "text" ] ++ derivationArgs.passAsFile or [ ];
           meta =
-            lib.optionalAttrs (executable && matches != null) { mainProgram = lib.head matches; }
+            lib.optionalAttrs (executable && matches != null) {
+              mainProgram = lib.head matches;
+            }
             // meta
             // derivationArgs.meta or { };
         }
@@ -156,7 +158,11 @@ rec {
 
   # See doc/build-helpers/trivial-build-helpers.chapter.md
   # or https://nixos.org/manual/nixpkgs/unstable/#trivial-builder-text-writing
-  writeText = name: text: writeTextFile { inherit name text; };
+  writeText =
+    name: text:
+    writeTextFile {
+      inherit name text;
+    };
 
   # See doc/build-helpers/trivial-build-helpers.chapter.md
   # or https://nixos.org/manual/nixpkgs/unstable/#trivial-builder-text-writing
@@ -449,7 +455,11 @@ rec {
     # Writes contents of files to /nix/store/<store path>
     concatText "my-file" [ file1 file2 ]
   */
-  concatText = name: files: concatTextFile { inherit name files; };
+  concatText =
+    name: files:
+    concatTextFile {
+      inherit name files;
+    };
 
   # TODO: deduplicate with documentation in doc/build-helpers/trivial-build-helpers.chapter.md
   #       see also https://github.com/NixOS/nixpkgs/pull/249721
@@ -582,7 +592,13 @@ rec {
           entries
         # We do this foldl to have last-wins semantics in case of repeated entries
         else if (lib.isList entries) then
-          lib.foldl (a: b: a // { "${b.name}" = b.path; }) { } entries
+          lib.foldl (
+            a: b:
+            a
+            // {
+              "${b.name}" = b.path;
+            }
+          ) { } entries
         else
           throw "linkFarm entries must be either attrs or a list!";
 
@@ -971,7 +987,9 @@ rec {
           installPhase = "cp -R ./ $out";
         }
         # Carry `meta` information from the underlying `src` if present.
-        // (optionalAttrs (src ? meta) { inherit (src) meta; })
+        // (optionalAttrs (src ? meta) {
+          inherit (src) meta;
+        })
         // (removeAttrs args [
           "src"
           "name"

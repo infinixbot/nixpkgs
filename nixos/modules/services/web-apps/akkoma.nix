@@ -132,7 +132,9 @@ let
       } ''elixir "$codePath" >"$out"''
     );
 
-  format = pkgs.formats.elixirConf { elixir = cfg.package.elixirPackage; };
+  format = pkgs.formats.elixirConf {
+    elixir = cfg.package.elixirPackage;
+  };
   configFile = format.generate "config.exs" (
     replaceSec (
       attrsets.updateManyAttrsByPath [
@@ -163,7 +165,10 @@ let
       text,
       runtimeInputs ? [ ],
     }:
-    pkgs.writeShellApplication { inherit name text runtimeInputs; } + "/bin/${name}";
+    pkgs.writeShellApplication {
+      inherit name text runtimeInputs;
+    }
+    + "/bin/${name}";
 
   genScript = writeShell {
     name = "akkoma-gen-cookie";
@@ -1107,7 +1112,13 @@ in
       nginx = mkOption {
         type =
           with types;
-          nullOr (submodule (import ../web-servers/nginx/vhost-options.nix { inherit config lib; }));
+          nullOr (
+            submodule (
+              import ../web-servers/nginx/vhost-options.nix {
+                inherit config lib;
+              }
+            )
+          );
         default = null;
         description = ''
           Extra configuration for the nginx virtual host of Akkoma.
@@ -1249,7 +1260,14 @@ in
               ]
               (mkIf (isStorePath staticDir) (
                 map (dir: "${dir}:${dir}:norbind") (
-                  splitString "\n" (readFile ((pkgs.closureInfo { rootPaths = staticDir; }) + "/store-paths"))
+                  splitString "\n" (
+                    readFile (
+                      (pkgs.closureInfo {
+                        rootPaths = staticDir;
+                      })
+                      + "/store-paths"
+                    )
+                  )
                 )
               ))
               (mkIf (db ? socket_dir) [ "${db.socket_dir}:${db.socket_dir}:norbind" ])

@@ -54,7 +54,9 @@ buildGoModule rec {
   passthru = {
     updateScript = nix-update-script { };
 
-    tests.version = testers.testVersion { package = dsq; };
+    tests.version = testers.testVersion {
+      package = dsq;
+    };
   };
 
   meta = with lib; {

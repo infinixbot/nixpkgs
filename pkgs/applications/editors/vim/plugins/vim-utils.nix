@@ -147,12 +147,20 @@ let
         if builtins.isString plugin then
           # make sure `pname` is set to that we are able to convert the derivation
           # back to a string.
-          (knownPlugins.${plugin} // { pname = plugin; })
+          (
+            knownPlugins.${plugin}
+            // {
+              pname = plugin;
+            }
+          )
         else
           plugin;
     in
     # make sure all the dependencies of the plugin are also derivations
-    drv // { dependencies = map (pluginToDrv knownPlugins) (drv.dependencies or [ ]); };
+    drv
+    // {
+      dependencies = map (pluginToDrv knownPlugins) (drv.dependencies or [ ]);
+    };
 
   # transitive closure of plugin dependencies (plugin needs to be a derivation)
   transitiveClosure =
@@ -375,25 +383,30 @@ rec {
                   mkVimrcFile vimrcConfig
                 else
                   throw "at least one of vimrcConfig and vimrcFile must be specified";
-              bin = runCommand "${name}-bin" { nativeBuildInputs = [ makeWrapper ]; } ''
-                vimrc=${lib.escapeShellArg vimrc}
-                gvimrc=${lib.optionalString (gvimrcFile != null) (lib.escapeShellArg gvimrcFile)}
+              bin =
+                runCommand "${name}-bin"
+                  {
+                    nativeBuildInputs = [ makeWrapper ];
+                  }
+                  ''
+                    vimrc=${lib.escapeShellArg vimrc}
+                    gvimrc=${lib.optionalString (gvimrcFile != null) (lib.escapeShellArg gvimrcFile)}
 
-                mkdir -p "$out/bin"
-                for exe in ${
-                  if standalone then "{,g,r,rg,e}vim {,g}vimdiff vi" else "{,g,r,rg,e}{vim,view} {,g}vimdiff ex vi"
-                }; do
-                  if [[ -e ${vim}/bin/$exe ]]; then
-                    dest="$out/bin/${executableName}"
-                    if [[ -e $dest ]]; then
-                      echo "ambiguous executableName: ''${dest##*/} already exists"
-                      continue
-                    fi
-                    makeWrapper ${vim}/bin/"$exe" "$dest" \
-                      --add-flags "-u ''${vimrc@Q} ''${gvimrc:+-U ''${gvimrc@Q}}"
-                  fi
-                done
-              '';
+                    mkdir -p "$out/bin"
+                    for exe in ${
+                      if standalone then "{,g,r,rg,e}vim {,g}vimdiff vi" else "{,g,r,rg,e}{vim,view} {,g}vimdiff ex vi"
+                    }; do
+                      if [[ -e ${vim}/bin/$exe ]]; then
+                        dest="$out/bin/${executableName}"
+                        if [[ -e $dest ]]; then
+                          echo "ambiguous executableName: ''${dest##*/} already exists"
+                          continue
+                        fi
+                        makeWrapper ${vim}/bin/"$exe" "$dest" \
+                          --add-flags "-u ''${vimrc@Q} ''${gvimrc:+-U ''${gvimrc@Q}}"
+                      fi
+                    done
+                  '';
             in
             if standalone then
               bin

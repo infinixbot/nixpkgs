@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     [
       ncurses
       zlib
-      (imlib2.override { inherit x11Support; })
+      (imlib2.override {
+        inherit x11Support;
+      })
     ]
     ++ lib.optionals x11Support [
       xorg.libX11

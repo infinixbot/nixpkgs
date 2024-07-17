@@ -124,7 +124,9 @@ in
         name = "uhub-${name}";
         value =
           let
-            pkg = pkgs.uhub.override { tlsSupport = cfg.enableTLS; };
+            pkg = pkgs.uhub.override {
+              tlsSupport = cfg.enableTLS;
+            };
           in
           {
             description = "high performance peer-to-peer hub for the ADC network";

@@ -25,9 +25,13 @@ buildPythonPackage rec {
   };
 
   buildInputs = [
-    (pkgs.hyperscan.override { withStatic = true; })
+    (pkgs.hyperscan.override {
+      withStatic = true;
+    })
     # we need static pcre to be built, by default only shared library is built
-    (pcre.overrideAttrs { dontDisableStatic = 0; })
+    (pcre.overrideAttrs {
+      dontDisableStatic = 0;
+    })
   ];
 
   nativeBuildInputs = [

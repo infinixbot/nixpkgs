@@ -65,7 +65,11 @@ let
               else
                 cd $src
               fi
-              ${installLibHaxe { inherit libname version; }}
+              ${
+                installLibHaxe {
+                  inherit libname version;
+                }
+              }
             )
             runHook postInstall
           '';
@@ -158,7 +162,9 @@ in
         rev = "cf80c6a";
         sha256 = "0mdiacr5b2m8jrlgyd2d3vp1fha69lcfb67x4ix7l7zfi8g460gs";
       };
-      installPhase = installLibHaxe { inherit libname version; };
+      installPhase = installLibHaxe {
+        inherit libname version;
+      };
       meta = {
         homepage = "http://lib.haxe.org/p/${libname}";
         license = lib.licenses.bsd2;

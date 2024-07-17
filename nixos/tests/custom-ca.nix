@@ -6,65 +6,73 @@
 {
   system ? builtins.currentSystem,
   config ? { },
-  pkgs ? import ../.. { inherit system config; },
+  pkgs ? import ../.. {
+    inherit system config;
+  },
 }:
 
-with import ../lib/testing-python.nix { inherit system pkgs; };
+with import ../lib/testing-python.nix {
+  inherit system pkgs;
+};
 
 let
   inherit (pkgs) lib;
 
   makeCert =
     { caName, domain }:
-    pkgs.runCommand "example-cert" { buildInputs = [ pkgs.gnutls ]; } ''
-      mkdir $out
+    pkgs.runCommand "example-cert"
+      {
+        buildInputs = [ pkgs.gnutls ];
+      }
+      ''
+        mkdir $out
 
-      # CA cert template
-      cat >ca.template <<EOF
-      organization = "${caName}"
-      cn = "${caName}"
-      expiration_days = 365
-      ca
-      cert_signing_key
-      crl_signing_key
-      EOF
+        # CA cert template
+        cat >ca.template <<EOF
+        organization = "${caName}"
+        cn = "${caName}"
+        expiration_days = 365
+        ca
+        cert_signing_key
+        crl_signing_key
+        EOF
 
-      # server cert template
-      cat >server.template <<EOF
-      organization = "An example company"
-      cn = "${domain}"
-      expiration_days = 30
-      dns_name = "${domain}"
-      encryption_key
-      signing_key
-      EOF
+        # server cert template
+        cat >server.template <<EOF
+        organization = "An example company"
+        cn = "${domain}"
+        expiration_days = 30
+        dns_name = "${domain}"
+        encryption_key
+        signing_key
+        EOF
 
-      # generate CA keypair
-      certtool                \
-        --generate-privkey    \
-        --key-type rsa        \
-        --sec-param High      \
-        --outfile $out/ca.key
-      certtool                     \
-        --generate-self-signed     \
-        --load-privkey $out/ca.key \
-        --template ca.template     \
-        --outfile $out/ca.crt
+        # generate CA keypair
+        certtool                \
+          --generate-privkey    \
+          --key-type rsa        \
+          --sec-param High      \
+          --outfile $out/ca.key
+        certtool                     \
+          --generate-self-signed     \
+          --load-privkey $out/ca.key \
+          --template ca.template     \
+          --outfile $out/ca.crt
 
-      # generate server keypair
-      certtool                    \
-        --generate-privkey        \
-        --key-type rsa            \
-        --sec-param High          \
-        --outfile $out/server.key
-      certtool                            \
-        --generate-certificate            \
-        --load-privkey $out/server.key    \
-        --load-ca-privkey $out/ca.key     \
-        --load-ca-certificate $out/ca.crt \
-        --template server.template        \
-        --outfile $out/server.crt
-    '';
+        # generate server keypair
+        certtool                    \
+          --generate-privkey        \
+          --key-type rsa            \
+          --sec-param High          \
+          --outfile $out/server.key
+        certtool                            \
+          --generate-certificate            \
+          --load-privkey $out/server.key    \
+          --load-ca-privkey $out/ca.key     \
+          --load-ca-certificate $out/ca.crt \
+          --template server.template        \
+          --outfile $out/server.crt
+      '';
 
   example-good-cert = makeCert {
     caName = "Example good CA";

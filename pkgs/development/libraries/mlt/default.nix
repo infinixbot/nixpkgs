@@ -71,7 +71,9 @@ stdenv.mkDerivation rec {
 
   buildInputs =
     [
-      (opencv4.override { inherit ffmpeg; })
+      (opencv4.override {
+        inherit ffmpeg;
+      })
       ffmpeg
       fftw
       frei0r
@@ -136,7 +138,9 @@ stdenv.mkDerivation rec {
     inherit ffmpeg;
   };
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     description = "Open source multimedia framework, designed for television broadcasting";

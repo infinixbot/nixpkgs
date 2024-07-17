@@ -126,7 +126,9 @@ stdenv.mkDerivation (finalAttrs: {
       mapnik
       ;
     inherit (qt5) qtbase;
-    pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+    pkg-config = testers.hasPkgConfigModules {
+      package = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

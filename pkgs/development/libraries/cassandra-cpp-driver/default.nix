@@ -31,9 +31,12 @@ stdenv.mkDerivation rec {
   ];
 
   cmakeFlags =
-    (lib.attrsets.mapAttrsToList (
-      name: value: "-DCASS_BUILD_${name}:BOOL=${if value then "ON" else "OFF"}"
-    ) { EXAMPLES = examples; })
+    (lib.attrsets.mapAttrsToList
+      (name: value: "-DCASS_BUILD_${name}:BOOL=${if value then "ON" else "OFF"}")
+      {
+        EXAMPLES = examples;
+      }
+    )
     ++ [ "-DLIBUV_INCLUDE_DIR=${lib.getDev libuv}/include" ];
 
   meta = with lib; {

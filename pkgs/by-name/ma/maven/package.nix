@@ -35,8 +35,12 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   '';
 
   passthru = {
-    buildMaven = callPackage ./build-maven.nix { maven = finalAttrs.finalPackage; };
-    buildMavenPackage = callPackage ./build-maven-package.nix { maven = finalAttrs.finalPackage; };
+    buildMaven = callPackage ./build-maven.nix {
+      maven = finalAttrs.finalPackage;
+    };
+    buildMavenPackage = callPackage ./build-maven-package.nix {
+      maven = finalAttrs.finalPackage;
+    };
   };
 
   meta = {

@@ -146,7 +146,11 @@ import ./make-test-python.nix (
             settings = {
               IfTAPMode = true;
               IfName = "ygg0";
-              MulticastInterfaces = [ { Port = 43210; } ];
+              MulticastInterfaces = [
+                {
+                  Port = 43210;
+                }
+              ];
               openMulticastPort = true;
             };
             persistentKeys = true;

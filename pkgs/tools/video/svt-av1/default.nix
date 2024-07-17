@@ -29,9 +29,13 @@ stdenv.mkDerivation (finalAttrs: {
   cmakeFlags = [ "-DSVT_AV1_LTO=ON" ];
 
   passthru = {
-    updateScript = gitUpdater { rev-prefix = "v"; };
+    updateScript = gitUpdater {
+      rev-prefix = "v";
+    };
     tests = {
-      ffmpeg = ffmpeg.override { withSvtav1 = true; };
+      ffmpeg = ffmpeg.override {
+        withSvtav1 = true;
+      };
     };
   };
 

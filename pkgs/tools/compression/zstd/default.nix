@@ -110,8 +110,12 @@ stdenv.mkDerivation rec {
     updateScript = nix-update-script { };
     tests = {
       inherit libarchive rocksdb arrow-cpp;
-      libzip = libzip.override { withZstd = true; };
-      curl = curl.override { zstdSupport = true; };
+      libzip = libzip.override {
+        withZstd = true;
+      };
+      curl = curl.override {
+        zstdSupport = true;
+      };
       python-zstd = python3Packages.zstd;
       haskell-zstd = haskellPackages.zstd;
       haskell-hs-zstd = haskellPackages.hs-zstd;

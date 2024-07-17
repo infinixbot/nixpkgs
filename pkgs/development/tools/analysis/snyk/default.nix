@@ -33,7 +33,9 @@ buildNpmPackage rec {
 
   npmBuildScript = "build:prod";
 
-  passthru.tests.version = testers.testVersion { package = snyk; };
+  passthru.tests.version = testers.testVersion {
+    package = snyk;
+  };
 
   meta = with lib; {
     description = "Scans and monitors projects for security vulnerabilities";

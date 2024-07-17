@@ -20,7 +20,9 @@ let
   );
 
   # Bootstrap `fetchurl` needed to build SDK packages without causing an infinite recursion.
-  fetchurlBoot = import ../build-support/fetchurl/boot.nix { inherit (stdenv) system; };
+  fetchurlBoot = import ../build-support/fetchurl/boot.nix {
+    inherit (stdenv) system;
+  };
 
   aliases =
     self: super:
@@ -50,7 +52,9 @@ makeScopeWithSplicing' {
       };
 
       # macOS 11.0 SDK
-      apple_sdk_11_0 = pkgs.callPackage ../os-specific/darwin/apple-sdk-11.0 { fetchurl = fetchurlBoot; };
+      apple_sdk_11_0 = pkgs.callPackage ../os-specific/darwin/apple-sdk-11.0 {
+        fetchurl = fetchurlBoot;
+      };
 
       # macOS 12.3 SDK
       apple_sdk_12_3 = pkgs.callPackage ../os-specific/darwin/apple-sdk-12.3 { };
@@ -105,7 +109,9 @@ makeScopeWithSplicing' {
         apple_sdk_12_3
         ;
 
-      stdenvNoCF = stdenv.override { extraBuildInputs = [ ]; };
+      stdenvNoCF = stdenv.override {
+        extraBuildInputs = [ ];
+      };
 
       binutils-unwrapped = callPackage ../os-specific/darwin/binutils {
         inherit (self) cctools;
@@ -139,7 +145,9 @@ makeScopeWithSplicing' {
         ];
       };
 
-      binutilsDualAs = self.binutils.override { bintools = self.binutilsDualAs-unwrapped; };
+      binutilsDualAs = self.binutils.override {
+        bintools = self.binutilsDualAs-unwrapped;
+      };
 
       binutilsNoLibc = pkgs.wrapBintoolsWith {
         libc = preLibcCrossHeaders;
@@ -301,35 +309,44 @@ makeScopeWithSplicing' {
       discrete-scroll = callPackage ../os-specific/darwin/discrete-scroll { };
 
       # See doc/packages/darwin-builder.section.md
-      linux-builder = lib.makeOverridable (
-        { modules }:
-        let
-          toGuest = builtins.replaceStrings [ "darwin" ] [ "linux" ];
+      linux-builder =
+        lib.makeOverridable
+          (
+            { modules }:
+            let
+              toGuest = builtins.replaceStrings [ "darwin" ] [ "linux" ];
 
-          nixos = import ../../nixos {
-            configuration = {
-              imports = [ ../../nixos/modules/profiles/macos-builder.nix ] ++ modules;
+              nixos = import ../../nixos {
+                configuration = {
+                  imports = [ ../../nixos/modules/profiles/macos-builder.nix ] ++ modules;
 
-              # If you need to override this, consider starting with the right Nixpkgs
-              # in the first place, ie change `pkgs` in `pkgs.darwin.linux-builder`.
-              # or if you're creating new wiring that's not `pkgs`-centric, perhaps use the
-              # macos-builder profile directly.
-              virtualisation.host = {
-                inherit pkgs;
+                  # If you need to override this, consider starting with the right Nixpkgs
+                  # in the first place, ie change `pkgs` in `pkgs.darwin.linux-builder`.
+                  # or if you're creating new wiring that's not `pkgs`-centric, perhaps use the
+                  # macos-builder profile directly.
+                  virtualisation.host = {
+                    inherit pkgs;
+                  };
+
+                  nixpkgs.hostPlatform = lib.mkDefault (toGuest stdenv.hostPlatform.system);
+                };
+
+                system = null;
               };
 
-              nixpkgs.hostPlatform = lib.mkDefault (toGuest stdenv.hostPlatform.system);
-            };
-
-            system = null;
+            in
+            nixos.config.system.build.macos-builder-installer
+          )
+          {
+            modules = [ ];
           };
 
-        in
-        nixos.config.system.build.macos-builder-installer
-      ) { modules = [ ]; };
-
       linux-builder-x86_64 = self.linux-builder.override {
-        modules = [ { nixpkgs.hostPlatform = "x86_64-linux"; } ];
+        modules = [
+          {
+            nixpkgs.hostPlatform = "x86_64-linux";
+          }
+        ];
       };
 
     }

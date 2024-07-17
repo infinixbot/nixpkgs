@@ -64,7 +64,9 @@ let
       hash = "sha256-WNdAYu66ggpSYJ8Kt57yEA4mSTv+Rvzj9Rm1q765HpY=";
     };
   });
-  openvdb_tbb_2021_8 = openvdb.override { tbb = tbb_2021_11; };
+  openvdb_tbb_2021_8 = openvdb.override {
+    tbb = tbb_2021_11;
+  };
   wxGTK-override' = if wxGTK-override == null then wxGTK-prusa else wxGTK-override;
 in
 stdenv.mkDerivation (finalAttrs: {
@@ -203,5 +205,7 @@ stdenv.mkDerivation (finalAttrs: {
       ];
       platforms = platforms.unix;
     }
-    // lib.optionalAttrs (stdenv.isDarwin) { mainProgram = "PrusaSlicer"; };
+    // lib.optionalAttrs (stdenv.isDarwin) {
+      mainProgram = "PrusaSlicer";
+    };
 })

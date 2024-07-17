@@ -14,7 +14,9 @@ python3Packages.buildPythonApplication {
   inherit pname version;
   pyproject = true;
 
-  src = fetchPypi { inherit pname version hash; };
+  src = fetchPypi {
+    inherit pname version hash;
+  };
 
   nativeBuildInputs = [
     python3Packages.poetry-core

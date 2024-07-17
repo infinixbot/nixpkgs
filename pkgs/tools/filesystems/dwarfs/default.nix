@@ -97,7 +97,9 @@ stdenv.mkDerivation (finalAttrs: {
     #     https://github.com/mhx/dwarfs/blob/2cb5542a5d4274225c5933370adcf00035f6c974/CMakeLists.txt#L129
     # Thus the `gtest` headers, when included,
     # refer to symbols that only exist in `.so` files compiled with that version.
-    (gtest.override { cxx_standard = "20"; })
+    (gtest.override {
+      cxx_standard = "20";
+    })
   ];
   # these fail inside of the sandbox due to missing access
   # to the FUSE device

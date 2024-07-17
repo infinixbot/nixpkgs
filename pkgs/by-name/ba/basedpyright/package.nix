@@ -114,7 +114,9 @@ buildNpmPackage rec {
 
   passthru = {
     updateScript = ./update.sh;
-    tests.version = testers.testVersion { package = basedpyright; };
+    tests.version = testers.testVersion {
+      package = basedpyright;
+    };
   };
 
   meta = {

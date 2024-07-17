@@ -93,7 +93,9 @@ stdenv.mkDerivation rec {
     };
     tests = {
       inherit libavif libheif;
-      ffmpeg = ffmpeg.override { withAom = true; };
+      ffmpeg = ffmpeg.override {
+        withAom = true;
+      };
     };
   };
 

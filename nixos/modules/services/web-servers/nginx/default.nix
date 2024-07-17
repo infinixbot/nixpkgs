@@ -376,7 +376,11 @@ let
             let
               addrs = if vhost.listenAddresses != [ ] then vhost.listenAddresses else cfg.defaultListenAddresses;
             in
-            mkDefaultListenVhost (map (addr: { inherit addr; }) addrs);
+            mkDefaultListenVhost (
+              map (addr: {
+                inherit addr;
+              }) addrs
+            );
 
         hostListen = if vhost.forceSSL then filter (x: x.ssl) defaultListen else defaultListen;
 
@@ -524,45 +528,57 @@ let
   mkLocations =
     locations:
     concatStringsSep "\n" (
-      map (config: ''
-        location ${config.location} {
-          ${
-            optionalString (
-              config.proxyPass != null && !cfg.proxyResolveWhileRunning
-            ) "proxy_pass ${config.proxyPass};"
-          }
-          ${
-            optionalString (config.proxyPass != null && cfg.proxyResolveWhileRunning) ''
-              set $nix_proxy_target "${config.proxyPass}";
-              proxy_pass $nix_proxy_target;
-            ''
-          }
-          ${optionalString config.proxyWebsockets ''
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection $connection_upgrade;
-          ''}
-          ${
-            concatStringsSep "\n" (
-              mapAttrsToList (n: v: ''fastcgi_param ${n} "${v}";'') (
-                optionalAttrs (config.fastcgiParams != { }) (defaultFastcgiParams // config.fastcgiParams)
+      map
+        (config: ''
+          location ${config.location} {
+            ${
+              optionalString (
+                config.proxyPass != null && !cfg.proxyResolveWhileRunning
+              ) "proxy_pass ${config.proxyPass};"
+            }
+            ${
+              optionalString (config.proxyPass != null && cfg.proxyResolveWhileRunning) ''
+                set $nix_proxy_target "${config.proxyPass}";
+                proxy_pass $nix_proxy_target;
+              ''
+            }
+            ${optionalString config.proxyWebsockets ''
+              proxy_http_version 1.1;
+              proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Connection $connection_upgrade;
+            ''}
+            ${
+              concatStringsSep "\n" (
+                mapAttrsToList (n: v: ''fastcgi_param ${n} "${v}";'') (
+                  optionalAttrs (config.fastcgiParams != { }) (defaultFastcgiParams // config.fastcgiParams)
+                )
               )
-            )
+            }
+            ${optionalString (config.index != null) "index ${config.index};"}
+            ${optionalString (config.tryFiles != null) "try_files ${config.tryFiles};"}
+            ${optionalString (config.root != null) "root ${config.root};"}
+            ${optionalString (config.alias != null) "alias ${config.alias};"}
+            ${optionalString (config.return != null) "return ${toString config.return};"}
+            ${config.extraConfig}
+            ${
+              optionalString (
+                config.proxyPass != null && config.recommendedProxySettings
+              ) "include ${recommendedProxyConfig};"
+            }
+            ${mkBasicAuth "sublocation" config}
           }
-          ${optionalString (config.index != null) "index ${config.index};"}
-          ${optionalString (config.tryFiles != null) "try_files ${config.tryFiles};"}
-          ${optionalString (config.root != null) "root ${config.root};"}
-          ${optionalString (config.alias != null) "alias ${config.alias};"}
-          ${optionalString (config.return != null) "return ${toString config.return};"}
-          ${config.extraConfig}
-          ${
-            optionalString (
-              config.proxyPass != null && config.recommendedProxySettings
-            ) "include ${recommendedProxyConfig};"
-          }
-          ${mkBasicAuth "sublocation" config}
-        }
-      '') (sortProperties (mapAttrsToList (k: v: v // { location = k; }) locations))
+        '')
+        (
+          sortProperties (
+            mapAttrsToList (
+              k: v:
+              v
+              // {
+                location = k;
+              }
+            ) locations
+          )
+        )
     );
 
   mkBasicAuth =
@@ -767,7 +783,11 @@ in
         default = pkgs.nginxStable;
         defaultText = literalExpression "pkgs.nginxStable";
         type = types.package;
-        apply = p: p.override { modules = lib.unique (p.modules ++ cfg.additionalModules); };
+        apply =
+          p:
+          p.override {
+            modules = lib.unique (p.modules ++ cfg.additionalModules);
+          };
         description = ''
           Nginx package to use. This defaults to the stable version. Note
           that the nginx team recommends to use the mainline version which
@@ -1216,7 +1236,13 @@ in
       };
 
       virtualHosts = mkOption {
-        type = types.attrsOf (types.submodule (import ./vhost-options.nix { inherit config lib; }));
+        type = types.attrsOf (
+          types.submodule (
+            import ./vhost-options.nix {
+              inherit config lib;
+            }
+          )
+        );
         default = {
           localhost = { };
         };
@@ -1600,7 +1626,9 @@ in
       };
     };
 
-    environment.etc."nginx/nginx.conf" = mkIf cfg.enableReload { source = configFile; };
+    environment.etc."nginx/nginx.conf" = mkIf cfg.enableReload {
+      source = configFile;
+    };
 
     # This service waits for all certificates to be available
     # before reloading nginx configuration.
@@ -1664,7 +1692,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == "nginx") { nginx.gid = config.ids.gids.nginx; };
+    users.groups = optionalAttrs (cfg.group == "nginx") {
+      nginx.gid = config.ids.gids.nginx;
+    };
 
     boot.kernelModules = optional (versionAtLeast config.boot.kernelPackages.kernel.version "4.17") "tls";
 

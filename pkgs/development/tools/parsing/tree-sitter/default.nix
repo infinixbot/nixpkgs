@@ -58,9 +58,15 @@ let
       mkdir $out
     ''
     + (lib.concatStrings (
-      lib.mapAttrsToList (
-        name: grammar: "ln -s ${if grammar ? src then grammar.src else fetchGrammar grammar} $out/${name}\n"
-      ) (import ./grammars { inherit lib; })
+      lib.mapAttrsToList
+        (
+          name: grammar: "ln -s ${if grammar ? src then grammar.src else fetchGrammar grammar} $out/${name}\n"
+        )
+        (
+          import ./grammars {
+            inherit lib;
+          }
+        )
     ))
   );
 
@@ -77,7 +83,11 @@ let
           location = grammar.location or null;
           generate = grammar.generate or false;
         };
-      grammars' = import ./grammars { inherit lib; } // extraGrammars;
+      grammars' =
+        import ./grammars {
+          inherit lib;
+        }
+        // extraGrammars;
       grammars =
         grammars'
         // {

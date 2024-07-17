@@ -39,7 +39,9 @@ let
       throw "unsupported type: ${builtins.typeOf v}: ${(lib.generators.toPretty { } v)}";
 
   settingsFormat = pkgs.formats.keyValue {
-    mkKeyValue = lib.generators.mkKeyValueDefault { mkValueString = mkValueStringArmagetron; } " ";
+    mkKeyValue = lib.generators.mkKeyValueDefault {
+      mkValueString = mkValueStringArmagetron;
+    } " ";
     listsAsDuplicateKeys = true;
   };
 
@@ -157,7 +159,9 @@ in
               SERVER_PORT = serverCfg.port;
               SERVER_NAME = serverCfg.name;
             }
-            // (lib.optionalAttrs (serverCfg.dns != null) { SERVER_DNS = serverCfg.dns; })
+            // (lib.optionalAttrs (serverCfg.dns != null) {
+              SERVER_DNS = serverCfg.dns;
+            })
           );
           customSettings = serverCfg.settings;
           everytimeSettings = serverCfg.roundSettings;
@@ -290,7 +294,9 @@ in
     );
 
     users.groups = mkMerge (
-      mapAttrsToList (serverName: serverCfg: { ${nameToId serverName} = { }; }) enabledServers
+      mapAttrsToList (serverName: serverCfg: {
+        ${nameToId serverName} = { };
+      }) enabledServers
     );
   };
 }

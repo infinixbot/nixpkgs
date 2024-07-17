@@ -84,7 +84,9 @@ buildPythonPackage rec {
   # Many portions of the test suite fail under Python 3.12
   doCheck = lib.versions.majorMinor python.version != "3.12";
 
-  passthru.tests.check = ax.overridePythonAttrs { doCheck = true; };
+  passthru.tests.check = ax.overridePythonAttrs {
+    doCheck = true;
+  };
 
   meta = with lib; {
     description = "Ax is an accessible, general-purpose platform for understanding, managing, deploying, and automating adaptive experiments";

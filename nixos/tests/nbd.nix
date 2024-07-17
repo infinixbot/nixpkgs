@@ -29,7 +29,9 @@ import ./make-test-python.nix (
         {
           # Create some small files of zeros to use as the ndb disks
           ## `vault-pub.disk` is accessible from any IP
-          systemd.services.create-pub-file = mkCreateSmallFileService { path = "/vault-pub.disk"; };
+          systemd.services.create-pub-file = mkCreateSmallFileService {
+            path = "/vault-pub.disk";
+          };
           ## `vault-priv.disk` is accessible only from localhost.
           ## It's also a loopback device to test exporting /dev/...
           systemd.services.create-priv-file = mkCreateSmallFileService {
@@ -39,7 +41,9 @@ import ./make-test-python.nix (
           ## `aaa.disk` is just here because "[aaa]" sorts before
           ## "[generic]" lexicographically, and nbd-server breaks if
           ## "[generic]" isn't the first section.
-          systemd.services.create-aaa-file = mkCreateSmallFileService { path = "/aaa.disk"; };
+          systemd.services.create-aaa-file = mkCreateSmallFileService {
+            path = "/aaa.disk";
+          };
 
           # Needed only for nbd-client used in the tests.
           environment.systemPackages = [ pkgs.nbd ];

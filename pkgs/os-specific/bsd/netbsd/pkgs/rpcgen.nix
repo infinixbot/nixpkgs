@@ -1,3 +1,5 @@
 { mkDerivation }:
 
-mkDerivation { path = "usr.bin/rpcgen"; }
+mkDerivation {
+  path = "usr.bin/rpcgen";
+}

@@ -17,7 +17,9 @@ stdenv.mkDerivation rec {
 
   makeFlags = [ "PREFIX=$(out)" ];
 
-  passthru.tests.version = testers.testVersion { package = datefmt; };
+  passthru.tests.version = testers.testVersion {
+    package = datefmt;
+  };
 
   meta = with lib; {
     homepage = "https://jb55.com/datefmt";

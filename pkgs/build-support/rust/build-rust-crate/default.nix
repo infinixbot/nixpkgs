@@ -81,7 +81,13 @@ let
   # instability unnecessarily.
   needUnstableCLI = dependencies: lib.any (dep: dep.stdlib or false) dependencies;
 
-  inherit (import ./log.nix { inherit lib; }) noisily echo_colored;
+  inherit
+    (import ./log.nix {
+      inherit lib;
+    })
+    noisily
+    echo_colored
+    ;
 
   configureCrate = import ./configure-crate.nix {
     inherit
@@ -105,7 +111,9 @@ let
     rustc = rustc';
   };
 
-  installCrate = import ./install-crate.nix { inherit stdenv; };
+  installCrate = import ./install-crate.nix {
+    inherit stdenv;
+  };
 in
 
 /*
@@ -300,7 +308,10 @@ lib.makeOverridable
           buildTests
           ;
 
-        src = crate.src or (fetchCrate { inherit (crate) crateName version sha256; });
+        src =
+          crate.src or (fetchCrate {
+            inherit (crate) crateName version sha256;
+          });
         name = "rust_${crate.crateName}-${crate.version}${lib.optionalString buildTests_ "-test"}";
         version = crate.version;
         depsBuildBuild = [ pkgsBuildBuild.stdenv.cc ];

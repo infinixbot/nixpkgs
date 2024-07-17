@@ -28,7 +28,9 @@ let
   p5 = camlp5;
 in
 let
-  camlp5 = p5.override { legacy = true; };
+  camlp5 = p5.override {
+    legacy = true;
+  };
 in
 
 let

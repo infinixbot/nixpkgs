@@ -61,7 +61,11 @@ beamPackages.mixRelease rec {
         # However, we can't just recompile things like we would on other systems.
         # Therefore, we need to add it to mime's compile-time config too, and also in every package that depends on mime, directly or indirectly.
         # We take the lazy way out and just add it to every dependency - it won't make a difference in packages that don't depend on `mime`.
-        addMimeTypes = _: p: p.override { patchPhase = mimeTypePatchPhase; };
+        addMimeTypes =
+          _: p:
+          p.override {
+            patchPhase = mimeTypePatchPhase;
+          };
       in
       (lib.attrsets.mapAttrs addMimeTypes prev)
       // {
@@ -227,7 +231,9 @@ beamPackages.mixRelease rec {
           patchPhase = mimeTypePatchPhase;
         };
 
-        syslog = prev.syslog.override { buildPlugins = with beamPackages; [ pc ]; };
+        syslog = prev.syslog.override {
+          buildPlugins = with beamPackages; [ pc ];
+        };
       };
   };
 

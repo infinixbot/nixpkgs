@@ -114,7 +114,12 @@ let
       # A plain section contains directly attributes (we don't really check that ATM).
       sec_plain =
         nix_def: sec_name:
-        if !hasAttr sec_name nix_def then "" else n2y "" { ${sec_name} = nix_def.${sec_name}; };
+        if !hasAttr sec_name nix_def then
+          ""
+        else
+          n2y "" {
+            ${sec_name} = nix_def.${sec_name};
+          };
 
       # This section contains a list of attribute sets.  In each of the sets
       # there's an attribute (`fa_name`, typically "id") that must exist and come first.
@@ -129,7 +134,13 @@ let
           let
             elem2yaml =
               fa_val: other_attrs:
-              "  - " + n2y "" { ${fa_name} = fa_val; } + "    " + n2y "    " other_attrs + "\n";
+              "  - "
+              + n2y "" {
+                ${fa_name} = fa_val;
+              }
+              + "    "
+              + n2y "    " other_attrs
+              + "\n";
             sec = nix_def.${sec_name};
           in
           sec_name

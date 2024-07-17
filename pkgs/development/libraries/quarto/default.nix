@@ -46,7 +46,9 @@ stdenv.mkDerivation (final: {
       ${
         lib.optionalString (rWrapper != null)
           "--prefix QUARTO_R : ${
-            rWrapper.override { packages = [ rPackages.rmarkdown ] ++ extraRPackages; }
+            rWrapper.override {
+              packages = [ rPackages.rmarkdown ] ++ extraRPackages;
+            }
           }/bin/R"
       } \
       ${
@@ -80,7 +82,10 @@ stdenv.mkDerivation (final: {
 
   passthru.tests = {
     quarto-check =
-      runCommand "quarto-check" { nativeBuildInputs = lib.optionals stdenv.isDarwin [ sysctl ]; }
+      runCommand "quarto-check"
+        {
+          nativeBuildInputs = lib.optionals stdenv.isDarwin [ sysctl ];
+        }
         ''
           export HOME="$(mktemp -d)"
           ${quarto}/bin/quarto check

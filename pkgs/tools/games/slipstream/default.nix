@@ -6,7 +6,9 @@
   jdk,
 }:
 let
-  mavenWithJdk = maven.override { inherit jdk; };
+  mavenWithJdk = maven.override {
+    inherit jdk;
+  };
 in
 mavenWithJdk.buildMavenPackage rec {
   pname = "slipstream";

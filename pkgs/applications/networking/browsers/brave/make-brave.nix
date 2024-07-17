@@ -153,7 +153,9 @@ in
 stdenv.mkDerivation {
   inherit pname version;
 
-  src = fetchurl { inherit url hash; };
+  src = fetchurl {
+    inherit url hash;
+  };
 
   dontConfigure = true;
   dontBuild = true;
@@ -162,7 +164,9 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [
     dpkg
-    (wrapGAppsHook3.override { inherit makeWrapper; })
+    (wrapGAppsHook3.override {
+      inherit makeWrapper;
+    })
   ];
 
   buildInputs = [

@@ -32,7 +32,10 @@ buildGoModule rec {
   passthru = {
     # Sets up a table and family, then inserts, and ensures it gets back the value.
     tests.smoketest =
-      runCommand "cbtemulator-smoketest" { nativeBuildInputs = [ google-cloud-bigtable-tool ]; }
+      runCommand "cbtemulator-smoketest"
+        {
+          nativeBuildInputs = [ google-cloud-bigtable-tool ];
+        }
         ''
           # Start the emulator
           ${lib.getExe cbtemulator} &

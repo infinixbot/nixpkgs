@@ -199,7 +199,9 @@ in
           matches = builtins.filter (match: match != null) (map (builtins.match pattern) files);
         in
         if builtins.length matches != 0 then
-          { inherit path matches; }
+          {
+            inherit path matches;
+          }
         else if path == /. then
           null
         else

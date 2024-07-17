@@ -20,7 +20,14 @@ let
 
   fns = map (file: import file) list;
 
-  packages = unique (concatMap (fn: fn { fetchNuGet = package: package; }) fns);
+  packages = unique (
+    concatMap (
+      fn:
+      fn {
+        fetchNuGet = package: package;
+      }
+    ) fns
+  );
 
   changePackageRid =
     package: rid:
@@ -46,7 +53,13 @@ let
     package.version
   ]) (concatMap expandPackage packages);
 
-  fetchExpr = package: "  (fetchNuGet ${generators.toPretty { multiline = false; } package})";
+  fetchExpr =
+    package:
+    "  (fetchNuGet ${
+        generators.toPretty {
+          multiline = false;
+        } package
+      })";
 
 in
 writeText "deps.nix" ''

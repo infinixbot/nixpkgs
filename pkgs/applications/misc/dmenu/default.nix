@@ -48,7 +48,9 @@ stdenv.mkDerivation rec {
 
   makeFlags = [ "CC:=$(CC)" ];
 
-  passthru.updateScript = gitUpdater { url = "git://git.suckless.org/dmenu"; };
+  passthru.updateScript = gitUpdater {
+    url = "git://git.suckless.org/dmenu";
+  };
 
   meta = with lib; {
     description = "Generic, highly customizable, and efficient menu for the X Window System";

@@ -112,7 +112,9 @@ in
   options = {
 
     # Merge the overlay options into the fileSystems option.
-    fileSystems = lib.mkOption { type = lib.types.attrsOf (lib.types.submodule [ overlayOpts ]); };
+    fileSystems = lib.mkOption {
+      type = lib.types.attrsOf (lib.types.submodule [ overlayOpts ]);
+    };
 
   };
 

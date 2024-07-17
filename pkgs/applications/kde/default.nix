@@ -31,7 +31,9 @@
 
 let
   mirror = "mirror://kde";
-  srcs = import ./srcs.nix { inherit fetchurl mirror; };
+  srcs = import ./srcs.nix {
+    inherit fetchurl mirror;
+  };
 
   mkDerivation =
     args:
@@ -260,7 +262,9 @@ let
 
       # Plasma Mobile Gear
       alligator = callPackage ./alligator.nix { };
-      angelfish = callPackage ./angelfish.nix { inherit srcs; };
+      angelfish = callPackage ./angelfish.nix {
+        inherit srcs;
+      };
       audiotube = callPackage ./audiotube.nix { };
       calindori = callPackage ./calindori.nix { };
       kalk = callPackage ./kalk.nix { };

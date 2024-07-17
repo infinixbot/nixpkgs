@@ -112,10 +112,18 @@ in
             lib.lazyDerivation: The derivation ${derivation.name or "<unknown>"} has outputs that don't match the assumed outputs.
 
             Assumed outputs passed to lazyDerivation${showMaybeAttrPosPre ",\n    at " "outputs" args}:
-                ${lib.generators.toPretty { multiline = false; } outputs};
+                ${
+                  lib.generators.toPretty {
+                    multiline = false;
+                  } outputs
+                };
 
             Actual outputs of the derivation${showMaybePackagePosPre ",\n    defined at " derivation}:
-                ${lib.generators.toPretty { multiline = false; } derivation.outputs}
+                ${
+                  lib.generators.toPretty {
+                    multiline = false;
+                  } derivation.outputs
+                }
 
             If the outputs are known ahead of evaluating the derivation,
             then update the lazyDerivation call to match the actual outputs, in the same order.

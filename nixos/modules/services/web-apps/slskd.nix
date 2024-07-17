@@ -40,7 +40,11 @@ in
       };
 
       nginx = mkOption {
-        type = types.submodule (import ../web-servers/nginx/vhost-options.nix { inherit config lib; });
+        type = types.submodule (
+          import ../web-servers/nginx/vhost-options.nix {
+            inherit config lib;
+          }
+        );
         default = { };
         example = lib.literalExpression ''
           {
@@ -285,7 +289,9 @@ in
         };
       };
 
-      users.groups = lib.optionalAttrs (cfg.group == defaultUser) { "${defaultUser}" = { }; };
+      users.groups = lib.optionalAttrs (cfg.group == defaultUser) {
+        "${defaultUser}" = { };
+      };
 
       systemd.services.slskd = {
         description = "A modern client-server application for the Soulseek file sharing network";

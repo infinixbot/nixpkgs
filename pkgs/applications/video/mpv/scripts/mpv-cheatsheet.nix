@@ -15,7 +15,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     rev = "v${finalAttrs.version}";
     hash = "sha256-MWK0CYto3zgn3fivmL43tvgZn6XrjPxKLp0lgTFdplM=";
   };
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   nativeBuildInputs = [ nodePackages.browserify ];
 

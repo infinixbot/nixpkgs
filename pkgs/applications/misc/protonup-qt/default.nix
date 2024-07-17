@@ -10,7 +10,9 @@ let
     url = "https://github.com/DavidoTek/ProtonUp-Qt/releases/download/v${version}/ProtonUp-Qt-${version}-x86_64.AppImage";
     hash = "sha256-d1UjyhU7BezOoQZBnmrk96gD0MbYST0XR+PWVYmvGFQ=";
   };
-  appimageContents = appimageTools.extractType2 { inherit pname version src; };
+  appimageContents = appimageTools.extractType2 {
+    inherit pname version src;
+  };
 in
 appimageTools.wrapType2 {
   inherit pname version src;

@@ -71,12 +71,16 @@ stdenv.mkDerivation rec {
   # (Alternatively we could try to patch the asar archive, but that requires a
   # few additional steps and might not be the best idea.)
 
-  src = fetchurl { inherit url hash; };
+  src = fetchurl {
+    inherit url hash;
+  };
 
   nativeBuildInputs = [
     autoPatchelfHook
     dpkg
-    (wrapGAppsHook3.override { inherit makeWrapper; })
+    (wrapGAppsHook3.override {
+      inherit makeWrapper;
+    })
   ];
 
   buildInputs = [

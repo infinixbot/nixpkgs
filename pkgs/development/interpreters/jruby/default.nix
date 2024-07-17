@@ -58,8 +58,12 @@ stdenv.mkDerivation (finalAttrs: {
     rubyEngine = "jruby";
     gemPath = "lib/${rubyEngine}/gems/${rubyVersion.libDir}";
     libPath = "lib/${rubyEngine}/${rubyVersion.libDir}";
-    devEnv = callPackage ../ruby/dev.nix { ruby = finalAttrs.finalPackage; };
-    updateScript = gitUpdater { url = "https://github.com/jruby/jruby.git"; };
+    devEnv = callPackage ../ruby/dev.nix {
+      ruby = finalAttrs.finalPackage;
+    };
+    updateScript = gitUpdater {
+      url = "https://github.com/jruby/jruby.git";
+    };
   };
 
   meta = with lib; {

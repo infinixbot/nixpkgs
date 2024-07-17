@@ -41,7 +41,9 @@ let
   # with the version in nixpkgs (e.g. for SPIRV-Headers), so we don't want to patch in our packages.
   # The revisions are extracted from https://github.com/KhronosGroup/VK-GL-CTS/blob/main/external/fetch_sources.py#L290
   # with the vk-cts-sources.py script.
-  sources = import ./sources.nix { inherit fetchurl fetchFromGitHub; };
+  sources = import ./sources.nix {
+    inherit fetchurl fetchFromGitHub;
+  };
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "vulkan-cts";

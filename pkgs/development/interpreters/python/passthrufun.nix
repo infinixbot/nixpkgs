@@ -125,7 +125,9 @@ rec {
     python = self;
     inherit (pythonPackages) requiredPythonModules;
   };
-  withPackages = import ./with-packages.nix { inherit buildEnv pythonPackages; };
+  withPackages = import ./with-packages.nix {
+    inherit buildEnv pythonPackages;
+  };
   pkgs = pythonPackages;
   interpreter = "${self}/bin/${executable}";
   inherit
@@ -146,7 +148,9 @@ rec {
       pythonOnBuildForHost_overridden;
   pythonOnBuildForHost = pythonOnBuildForHost_overridden;
 
-  tests = callPackage ./tests.nix { python = self; };
+  tests = callPackage ./tests.nix {
+    python = self;
+  };
 
   inherit pythonAttr;
 }

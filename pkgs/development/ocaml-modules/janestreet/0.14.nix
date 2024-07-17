@@ -770,7 +770,9 @@ with self;
     hash = "0dbri9d00ydi0dw1cavswnqdmhjaaz80vap29ns2lr6mhhlvyjmj";
     meta.description = "[@@deriving] plugin to generate S-expression conversion functions";
     propagatedBuildInputs = [
-      (ppxlib.override { version = "0.24.0"; })
+      (ppxlib.override {
+        version = "0.24.0";
+      })
       sexplib0
       base
     ];

@@ -52,7 +52,10 @@ let
         '';
 
         Caddyfile-formatted =
-          pkgs.runCommand "Caddyfile-formatted" { nativeBuildInputs = [ cfg.package ]; }
+          pkgs.runCommand "Caddyfile-formatted"
+            {
+              nativeBuildInputs = [ cfg.package ];
+            }
             ''
               mkdir -p $out
               cp --no-preserve=mode ${Caddyfile}/Caddyfile $out/Caddyfile
@@ -280,7 +283,15 @@ in
     };
 
     virtualHosts = mkOption {
-      type = with types; attrsOf (submodule (import ./vhost-options.nix { inherit cfg; }));
+      type =
+        with types;
+        attrsOf (
+          submodule (
+            import ./vhost-options.nix {
+              inherit cfg;
+            }
+          )
+        );
       default = { };
       example = literalExpression ''
         {
@@ -451,7 +462,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == "caddy") { caddy.gid = config.ids.gids.caddy; };
+    users.groups = optionalAttrs (cfg.group == "caddy") {
+      caddy.gid = config.ids.gids.caddy;
+    };
 
     security.acme.certs =
       let

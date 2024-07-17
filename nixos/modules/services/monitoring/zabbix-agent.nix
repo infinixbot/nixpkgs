@@ -34,7 +34,9 @@ let
   };
 
   configFile = pkgs.writeText "zabbix_agent.conf" (
-    toKeyValue { listsAsDuplicateKeys = true; } cfg.settings
+    toKeyValue {
+      listsAsDuplicateKeys = true;
+    } cfg.settings
   );
 
 in
@@ -165,10 +167,14 @@ in
 
       # the default value for "ListenIP" is 0.0.0.0 but zabbix agent 2 cannot accept configuration files which
       # explicitly set "ListenIP" to the default value...
-      (mkIf (cfg.listen.ip != "0.0.0.0") { ListenIP = cfg.listen.ip; })
+      (mkIf (cfg.listen.ip != "0.0.0.0") {
+        ListenIP = cfg.listen.ip;
+      })
     ];
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.listen.port ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.listen.port ];
+    };
 
     users.users.${user} = {
       description = "Zabbix Agent daemon user";

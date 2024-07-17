@@ -69,7 +69,9 @@ let
       None = null;
     };
 
-  moveDevHook = makeSetupHook { name = "kf6-move-dev-hook"; } ./move-dev-hook.sh;
+  moveDevHook = makeSetupHook {
+    name = "kf6-move-dev-hook";
+  } ./move-dev-hook.sh;
 in
 {
   pname,
@@ -154,4 +156,12 @@ let
 
   pos = builtins.unsafeGetAttrPos "pname" args;
 in
-traceAllDuplicateDeps (stdenv.mkDerivation (defaultArgs // cleanArgs // { inherit meta pos; }))
+traceAllDuplicateDeps (
+  stdenv.mkDerivation (
+    defaultArgs
+    // cleanArgs
+    // {
+      inherit meta pos;
+    }
+  )
+)

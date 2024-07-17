@@ -62,7 +62,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests.version = testers.testVersion { package = ios-webkit-debug-proxy; };
+    tests.version = testers.testVersion {
+      package = ios-webkit-debug-proxy;
+    };
   };
 
   meta = with lib; {

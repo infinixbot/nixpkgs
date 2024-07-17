@@ -236,7 +236,9 @@ in
       ]
       ++ lib.optional cfg.gamescopeSession.enable steam-gamescope
       ++ lib.optional cfg.protontricks.enable (
-        cfg.protontricks.package.override { inherit extraCompatPaths; }
+        cfg.protontricks.package.override {
+          inherit extraCompatPaths;
+        }
       );
 
     networking.firewall = lib.mkMerge [

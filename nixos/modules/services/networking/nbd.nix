@@ -29,7 +29,9 @@ let
         group = "root";
         port = cfg.server.listenPort;
       }
-      // (optionalAttrs (cfg.server.listenAddress != null) { listenaddr = cfg.server.listenAddress; })
+      // (optionalAttrs (cfg.server.listenAddress != null) {
+        listenaddr = cfg.server.listenAddress;
+      })
     );
   };
   exportSections = mapAttrs (

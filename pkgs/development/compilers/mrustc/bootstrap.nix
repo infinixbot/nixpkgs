@@ -68,7 +68,9 @@ stdenv.mkDerivation rec {
     libxml2
     # for cargo
     openssl
-    (curl.override { inherit openssl; })
+    (curl.override {
+      inherit openssl;
+    })
   ];
 
   makeFlags = [

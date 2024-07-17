@@ -22,7 +22,9 @@ let
   # Whether given IP (plus optional port) is an IPv6.
   isIPv6 = ip: builtins.length (lib.splitString ":" ip) > 2;
 
-  helpers = import ./helpers.nix { inherit config lib; };
+  helpers = import ./helpers.nix {
+    inherit config lib;
+  };
 
   flushNat = ''
     ${helpers}
@@ -177,7 +179,9 @@ in
   };
 
   config = mkIf (!config.networking.nftables.enable) (mkMerge [
-    ({ networking.firewall.extraCommands = mkBefore flushNat; })
+    ({
+      networking.firewall.extraCommands = mkBefore flushNat;
+    })
     (mkIf config.networking.nat.enable {
 
       networking.firewall = mkIf config.networking.firewall.enable {

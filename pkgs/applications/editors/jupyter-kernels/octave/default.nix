@@ -15,7 +15,9 @@
 # nix run --impure --expr 'with import <nixpkgs> {}; jupyter.override { definitions.octave = octave-kernel.definition; }'
 
 let
-  kernel = callPackage ./kernel.nix { python3Packages = python3.pkgs; };
+  kernel = callPackage ./kernel.nix {
+    python3Packages = python3.pkgs;
+  };
 
 in
 

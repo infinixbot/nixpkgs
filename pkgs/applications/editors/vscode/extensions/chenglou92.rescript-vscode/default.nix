@@ -6,7 +6,9 @@
 }:
 let
   version = "1.54.0";
-  rescript-editor-analysis = callPackage ./rescript-editor-analysis.nix { inherit version; };
+  rescript-editor-analysis = callPackage ./rescript-editor-analysis.nix {
+    inherit version;
+  };
   arch =
     if stdenv.isLinux then
       "linux"

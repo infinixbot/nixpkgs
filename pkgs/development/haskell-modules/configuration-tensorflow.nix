@@ -18,9 +18,12 @@ let
 
   setTensorflowSourceRoot =
     dir: drv:
-    (overrideCabal (drv: { src = tensorflow-haskell; }) drv).overrideAttrs (_oldAttrs: {
-      sourceRoot = "${tensorflow-haskell.name}/${dir}";
-    });
+    (overrideCabal (drv: {
+      src = tensorflow-haskell;
+    }) drv).overrideAttrs
+      (_oldAttrs: {
+        sourceRoot = "${tensorflow-haskell.name}/${dir}";
+      });
 in
 {
   tensorflow-proto = doJailbreak (setTensorflowSourceRoot "tensorflow-proto" super.tensorflow-proto);

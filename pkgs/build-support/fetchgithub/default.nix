@@ -60,7 +60,9 @@ lib.makeOverridable (
         fetchgit
       # fetchzip may not be overridable when using external tools, for example nix-prefetch
       else if fetchzip ? override then
-        fetchzip.override { withUnzip = false; }
+        fetchzip.override {
+          withUnzip = false;
+        }
       else
         fetchzip;
     privateAttrs = lib.optionalAttrs private {
@@ -95,7 +97,9 @@ lib.makeOverridable (
               ;
             url = gitRepoUrl;
           }
-          // lib.optionalAttrs (leaveDotGit != null) { inherit leaveDotGit; }
+          // lib.optionalAttrs (leaveDotGit != null) {
+            inherit leaveDotGit;
+          }
         else
           {
             url = "${baseUrl}/archive/${rev}.tar.gz";

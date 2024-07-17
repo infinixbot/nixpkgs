@@ -38,7 +38,9 @@ let
   extensions = composeManyExtensions [
     aliases
     mainProgramOverrides
-    (import ./overrides.nix { inherit pkgs nodejs; })
+    (import ./overrides.nix {
+      inherit pkgs nodejs;
+    })
   ];
 in
 makeExtensible (extends extensions nodePackages)

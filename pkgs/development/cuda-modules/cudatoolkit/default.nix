@@ -61,7 +61,9 @@ backendStdenv.mkDerivation rec {
   dontPatchELF = true;
   dontStrip = true;
 
-  src = fetchurl { inherit (release) url sha256; };
+  src = fetchurl {
+    inherit (release) url sha256;
+  };
 
   outputs = [
     "out"
@@ -130,7 +132,9 @@ backendStdenv.mkDerivation rec {
       (lib.getLib libtiff)
       qt6Packages.qtwayland
       rdma-core
-      (ucx.override { enableCuda = false; }) # Avoid infinite recursion
+      (ucx.override {
+        enableCuda = false;
+      }) # Avoid infinite recursion
       xorg.libxshmfence
       xorg.libxkbfile
     ]

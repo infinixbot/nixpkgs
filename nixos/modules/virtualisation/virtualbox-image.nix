@@ -199,7 +199,9 @@ in
         usbehci = "on";
         mouse = "usbtablet";
       })
-      (mkIf (pkgs.stdenv.hostPlatform.system == "i686-linux") { pae = "on"; })
+      (mkIf (pkgs.stdenv.hostPlatform.system == "i686-linux") {
+        pae = "on";
+      })
     ];
 
     system.build.virtualBoxOVA = import ../../lib/make-disk-image.nix {

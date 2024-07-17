@@ -30,9 +30,13 @@
 
 let
   # NOTE: Update the default GPU targets on every update
-  gfx80 = (rocblas.override { gpuTargets = [ "gfx803" ]; }).overrideAttrs {
-    pname = "rocblas-tensile-gfx80";
-  };
+  gfx80 =
+    (rocblas.override {
+      gpuTargets = [ "gfx803" ];
+    }).overrideAttrs
+      {
+        pname = "rocblas-tensile-gfx80";
+      };
 
   gfx90 =
     (rocblas.override {
@@ -44,7 +48,9 @@ let
         "gfx90a:xnack-"
       ];
     }).overrideAttrs
-      { pname = "rocblas-tensile-gfx90"; };
+      {
+        pname = "rocblas-tensile-gfx90";
+      };
 
   gfx94 =
     (rocblas.override {
@@ -54,7 +60,9 @@ let
         "gfx942"
       ];
     }).overrideAttrs
-      { pname = "rocblas-tensile-gfx94"; };
+      {
+        pname = "rocblas-tensile-gfx94";
+      };
 
   gfx10 =
     (rocblas.override {
@@ -64,7 +72,9 @@ let
         "gfx1030"
       ];
     }).overrideAttrs
-      { pname = "rocblas-tensile-gfx10"; };
+      {
+        pname = "rocblas-tensile-gfx10";
+      };
 
   gfx11 =
     (rocblas.override {
@@ -74,10 +84,14 @@ let
         "gfx1102"
       ];
     }).overrideAttrs
-      { pname = "rocblas-tensile-gfx11"; };
+      {
+        pname = "rocblas-tensile-gfx11";
+      };
 
   # Unfortunately, we have to do two full builds, otherwise we get overlapping _fallback.dat files
-  fallbacks = rocblas.overrideAttrs { pname = "rocblas-tensile-fallbacks"; };
+  fallbacks = rocblas.overrideAttrs {
+    pname = "rocblas-tensile-fallbacks";
+  };
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "rocblas";

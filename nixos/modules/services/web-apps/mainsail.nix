@@ -22,7 +22,11 @@ in
     };
 
     nginx = mkOption {
-      type = types.submodule (import ../web-servers/nginx/vhost-options.nix { inherit config lib; });
+      type = types.submodule (
+        import ../web-servers/nginx/vhost-options.nix {
+          inherit config lib;
+        }
+      );
       default = { };
       example = literalExpression ''
         {

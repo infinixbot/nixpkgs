@@ -7,7 +7,9 @@
 let
   cfg = config.services.nextjs-ollama-llm-ui;
   # we have to override the URL to a Ollama service here, because it gets baked into the web app.
-  nextjs-ollama-llm-ui = cfg.package.override { inherit (cfg) ollamaUrl; };
+  nextjs-ollama-llm-ui = cfg.package.override {
+    inherit (cfg) ollamaUrl;
+  };
 in
 {
   options = {

@@ -20,7 +20,9 @@
   meta ? { },
   patches ? [ ],
   elixir ? inputs.elixir,
-  hex ? inputs.hex.override { inherit elixir; },
+  hex ? inputs.hex.override {
+    inherit elixir;
+  },
   ...
 }@attrs:
 

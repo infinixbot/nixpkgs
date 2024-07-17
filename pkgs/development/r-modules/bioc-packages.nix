@@ -5,7 +5,9 @@
 
 { self, derive }:
 let
-  derive2 = derive { biocVersion = "3.19"; };
+  derive2 = derive {
+    biocVersion = "3.19";
+  };
 in
 with self;
 {

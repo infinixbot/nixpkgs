@@ -14,8 +14,12 @@
   substituteAll,
 }:
 let
-  gtk4' = gtk4.override { x11Support = true; };
-  pango' = pango.override { withIntrospection = true; };
+  gtk4' = gtk4.override {
+    x11Support = true;
+  };
+  pango' = pango.override {
+    withIntrospection = true;
+  };
 in
 crystal.buildCrystalPackage rec {
   pname = "rtfm";

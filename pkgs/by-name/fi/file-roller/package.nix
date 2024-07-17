@@ -63,7 +63,9 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "file-roller"; };
+    updateScript = gnome.updateScript {
+      packageName = "file-roller";
+    };
   };
 
   meta = with lib; {

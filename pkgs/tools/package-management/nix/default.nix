@@ -17,7 +17,9 @@
   confDir ? "/etc",
 }:
 let
-  boehmgc-nix_2_3 = boehmgc.override { enableLargeConfig = true; };
+  boehmgc-nix_2_3 = boehmgc.override {
+    enableLargeConfig = true;
+  };
 
   boehmgc-nix = boehmgc-nix_2_3.overrideAttrs (drv: {
     patches = (drv.patches or [ ]) ++ [
@@ -100,17 +102,24 @@ let
 
   common =
     args:
-    callPackage (import ./common.nix ({ inherit lib fetchFromGitHub; } // args)) {
-      inherit
-        Security
-        storeDir
-        stateDir
-        confDir
-        ;
-      boehmgc = boehmgc-nix;
-      aws-sdk-cpp =
-        if lib.versionAtLeast args.version "2.12pre" then aws-sdk-cpp-nix else aws-sdk-cpp-old-nix;
-    };
+    callPackage
+      (import ./common.nix (
+        {
+          inherit lib fetchFromGitHub;
+        }
+        // args
+      ))
+      {
+        inherit
+          Security
+          storeDir
+          stateDir
+          confDir
+          ;
+        boehmgc = boehmgc-nix;
+        aws-sdk-cpp =
+          if lib.versionAtLeast args.version "2.12pre" then aws-sdk-cpp-nix else aws-sdk-cpp-old-nix;
+      };
 
   # https://github.com/NixOS/nix/pull/7585
   patch-monitorfdhup = fetchpatch2 {
@@ -172,7 +181,9 @@ lib.makeExtensible (
             self_attribute_name = "nix_2_3";
             maintainers = with lib.maintainers; [ flokli ];
           }).override
-          { boehmgc = boehmgc-nix_2_3; }
+          {
+            boehmgc = boehmgc-nix_2_3;
+          }
         ).overrideAttrs
           {
             # https://github.com/NixOS/nix/issues/10222
@@ -237,7 +248,9 @@ lib.makeExtensible (
               # Despite the use of the 10.13 deployment target here, the aligned
               # allocation function Clang uses with this setting actually works
               # all the way back to 10.6.
-              stdenv = overrideSDK stdenv { darwinMinVersion = "10.13"; };
+              stdenv = overrideSDK stdenv {
+                darwinMinVersion = "10.13";
+              };
             }
           );
 

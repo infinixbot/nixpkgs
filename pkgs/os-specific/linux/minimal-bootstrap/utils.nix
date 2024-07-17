@@ -11,8 +11,12 @@ rec {
     attrs:
     let
       passthru = attrs.passthru or { };
-      validity = checkMeta.assertValidity { inherit meta attrs; };
-      meta = checkMeta.commonMeta { inherit validity attrs; };
+      validity = checkMeta.assertValidity {
+        inherit meta attrs;
+      };
+      meta = checkMeta.commonMeta {
+        inherit validity attrs;
+      };
       baseDrv = derivation (
         {
           inherit (buildPlatform) system;
@@ -25,7 +29,9 @@ rec {
       );
       passthru' =
         passthru
-        // lib.optionalAttrs (passthru ? tests) { tests = lib.mapAttrs (_: f: f baseDrv) passthru.tests; };
+        // lib.optionalAttrs (passthru ? tests) {
+          tests = lib.mapAttrs (_: f: f baseDrv) passthru.tests;
+        };
     in
     lib.extendDerivation validity.handled (
       {
@@ -72,6 +78,10 @@ rec {
       inherit destination;
     };
 
-  writeText = name: text: writeTextFile { inherit name text; };
+  writeText =
+    name: text:
+    writeTextFile {
+      inherit name text;
+    };
 
 }

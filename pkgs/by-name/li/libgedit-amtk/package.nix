@@ -65,7 +65,9 @@ stdenv.mkDerivation rec {
     runHook postCheck
   '';
 
-  passthru.updateScript = gitUpdater { odd-unstable = true; };
+  passthru.updateScript = gitUpdater {
+    odd-unstable = true;
+  };
 
   meta = with lib; {
     homepage = "https://github.com/gedit-technology/libgedit-amtk";

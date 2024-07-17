@@ -234,7 +234,11 @@ filterAndCreateOverrides {
       };
     };
 
-  cuda_nvprof = { cuda_cupti }: prevAttrs: { buildInputs = prevAttrs.buildInputs ++ [ cuda_cupti ]; };
+  cuda_nvprof =
+    { cuda_cupti }:
+    prevAttrs: {
+      buildInputs = prevAttrs.buildInputs ++ [ cuda_cupti ];
+    };
 
   cuda_demo_suite =
     {

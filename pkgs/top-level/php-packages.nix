@@ -57,10 +57,14 @@ lib.makeScope pkgs.newScope (
       php
       ;
 
-    builders = import ../build-support/php/builders { inherit callPackages callPackage buildPecl; };
+    builders = import ../build-support/php/builders {
+      inherit callPackages callPackage buildPecl;
+    };
   in
   {
-    buildPecl = callPackage ../build-support/php/build-pecl.nix { php = php.unwrapped; };
+    buildPecl = callPackage ../build-support/php/build-pecl.nix {
+      php = php.unwrapped;
+    };
 
     inherit (builders.v1)
       buildComposerProject
@@ -307,7 +311,9 @@ lib.makeScope pkgs.newScope (
 
         memprof = callPackage ../development/php-packages/memprof { };
 
-        mongodb = callPackage ../development/php-packages/mongodb { inherit (pkgs) darwin; };
+        mongodb = callPackage ../development/php-packages/mongodb {
+          inherit (pkgs) darwin;
+        };
 
         msgpack = callPackage ../development/php-packages/msgpack { };
 
@@ -357,7 +363,9 @@ lib.makeScope pkgs.newScope (
 
         smbclient = callPackage ../development/php-packages/smbclient { };
 
-        snuffleupagus = callPackage ../development/php-packages/snuffleupagus { inherit (pkgs) darwin; };
+        snuffleupagus = callPackage ../development/php-packages/snuffleupagus {
+          inherit (pkgs) darwin;
+        };
 
         spx = callPackage ../development/php-packages/spx { };
 
@@ -388,21 +396,29 @@ lib.makeScope pkgs.newScope (
           #
           # These will be passed as arguments to mkExtension above.
           extensionData = [
-            { name = "bcmath"; }
+            {
+              name = "bcmath";
+            }
             {
               name = "bz2";
               buildInputs = [ bzip2 ];
               configureFlags = [ "--with-bz2=${bzip2.dev}" ];
             }
-            { name = "calendar"; }
-            { name = "ctype"; }
+            {
+              name = "calendar";
+            }
+            {
+              name = "ctype";
+            }
             {
               name = "curl";
               buildInputs = [ curl ];
               configureFlags = [ "--with-curl=${curl.dev}" ];
               doCheck = false;
             }
-            { name = "dba"; }
+            {
+              name = "dba";
+            }
             {
               name = "dom";
               buildInputs = [ libxml2 ];
@@ -598,7 +614,9 @@ lib.makeScope pkgs.newScope (
               configureFlags = [ "--with-openssl" ];
               doCheck = false;
             }
-            { name = "pcntl"; }
+            {
+              name = "pcntl";
+            }
             {
               name = "pdo";
               doCheck = false;
@@ -679,7 +697,9 @@ lib.makeScope pkgs.newScope (
               name = "session";
               doCheck = false;
             }
-            { name = "shmop"; }
+            {
+              name = "shmop";
+            }
             {
               name = "simplexml";
               buildInputs = [
@@ -725,9 +745,15 @@ lib.makeScope pkgs.newScope (
                 ../development/interpreters/php/skip-sqlite3_bind_bug68849.phpt.patch
               ];
             }
-            { name = "sysvmsg"; }
-            { name = "sysvsem"; }
-            { name = "sysvshm"; }
+            {
+              name = "sysvmsg";
+            }
+            {
+              name = "sysvsem";
+            }
+            {
+              name = "sysvshm";
+            }
             {
               name = "tidy";
               configureFlags = [ "--with-tidy=${html-tidy}" ];

@@ -35,7 +35,9 @@ stdenv.mkDerivation rec {
 
   inherit (mod_ca) configureFlags installFlags;
 
-  passthru.updateScript = directoryListingUpdater { url = "https://redwax.eu/dist/rs/"; };
+  passthru.updateScript = directoryListingUpdater {
+    url = "https://redwax.eu/dist/rs/";
+  };
 
   meta = with lib; {
     description = "RedWax CA service module for issuing signed timestamps";

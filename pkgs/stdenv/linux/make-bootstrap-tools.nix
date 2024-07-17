@@ -26,7 +26,9 @@ rec {
     singleBinary = "symlinks";
   });
 
-  tarMinimal = gnutar.override { acl = null; };
+  tarMinimal = gnutar.override {
+    acl = null;
+  };
 
   busyboxMinimal = busybox.override {
     useMusl = lib.meta.availableOn stdenv.hostPlatform musl;
@@ -43,7 +45,9 @@ rec {
     '';
   };
 
-  bootGCC = gcc.cc.override { enableLTO = false; };
+  bootGCC = gcc.cc.override {
+    enableLTO = false;
+  };
   bootBinutils = binutils.bintools.override {
     withAllTargets = false;
     # Don't need two linkers, disable whatever's not primary/default.

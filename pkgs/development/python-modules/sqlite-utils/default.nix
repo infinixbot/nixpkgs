@@ -48,7 +48,9 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ "sqlite_utils" ];
 
-  passthru.tests.version = testers.testVersion { package = sqlite-utils; };
+  passthru.tests.version = testers.testVersion {
+    package = sqlite-utils;
+  };
 
   meta = with lib; {
     description = "Python CLI utility and library for manipulating SQLite databases";

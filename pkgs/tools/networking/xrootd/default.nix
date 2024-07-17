@@ -48,10 +48,14 @@ stdenv.mkDerivation (finalAttrs: {
     "man"
   ] ++ lib.optional (externalEtc != null) "etc";
 
-  passthru.fetchxrd = callPackage ./fetchxrd.nix { xrootd = finalAttrs.finalPackage; };
+  passthru.fetchxrd = callPackage ./fetchxrd.nix {
+    xrootd = finalAttrs.finalPackage;
+  };
   passthru.tests =
     lib.optionalAttrs stdenv.hostPlatform.isLinux {
-      test-runner = callPackage ./test-runner.nix { xrootd = finalAttrs.finalPackage; };
+      test-runner = callPackage ./test-runner.nix {
+        xrootd = finalAttrs.finalPackage;
+      };
     }
     // {
       test-xrdcp = finalAttrs.passthru.fetchxrd {

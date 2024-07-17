@@ -108,47 +108,63 @@ recurseIntoAttrs {
     );
 
     haskell = expectSuccessBin (
-      writeHaskellBin "test-writers-haskell-bin" { libraries = [ haskellPackages.acme-default ]; } ''
-        import Data.Default
+      writeHaskellBin "test-writers-haskell-bin"
+        {
+          libraries = [ haskellPackages.acme-default ];
+        }
+        ''
+          import Data.Default
 
-        int :: Int
-        int = def
+          int :: Int
+          int = def
 
-        main :: IO ()
-        main = case int of
-          18871 -> putStrLn $ id "success"
-          _ -> print "fail"
-      ''
+          main :: IO ()
+          main = case int of
+            18871 -> putStrLn $ id "success"
+            _ -> print "fail"
+        ''
     );
 
     js = expectSuccessBin (
-      writeJSBin "test-writers-js-bin" { libraries = [ nodePackages.semver ]; } ''
-        var semver = require('semver');
-
-        if (semver.valid('1.2.3')) {
-          console.log('success')
-        } else {
-          console.log('fail')
+      writeJSBin "test-writers-js-bin"
+        {
+          libraries = [ nodePackages.semver ];
         }
-      ''
+        ''
+          var semver = require('semver');
+
+          if (semver.valid('1.2.3')) {
+            console.log('success')
+          } else {
+            console.log('fail')
+          }
+        ''
     );
 
     perl = expectSuccessBin (
-      writePerlBin "test-writers-perl-bin" { libraries = [ perlPackages.boolean ]; } ''
-        use boolean;
-        print "success\n" if true;
-      ''
+      writePerlBin "test-writers-perl-bin"
+        {
+          libraries = [ perlPackages.boolean ];
+        }
+        ''
+          use boolean;
+          print "success\n" if true;
+        ''
     );
 
     python3 = expectSuccessBin (
-      writePython3Bin "test-writers-python3-bin" { libraries = [ python3Packages.pyyaml ]; } ''
-        import yaml
+      writePython3Bin "test-writers-python3-bin"
+        {
+          libraries = [ python3Packages.pyyaml ];
+        }
+        ''
+          import yaml
 
-        y = yaml.safe_load("""
-          - test: success
-        """)
-        print(y[0]['test'])
-      ''
+          y = yaml.safe_load("""
+            - test: success
+          """)
+          print(y[0]['test'])
+        ''
     );
 
     # Commented out because of this issue: https://github.com/NixOS/nixpkgs/issues/39356
@@ -222,47 +238,63 @@ recurseIntoAttrs {
     );
 
     haskell = expectSuccess (
-      writeHaskell "test-writers-haskell" { libraries = [ haskellPackages.acme-default ]; } ''
-        import Data.Default
+      writeHaskell "test-writers-haskell"
+        {
+          libraries = [ haskellPackages.acme-default ];
+        }
+        ''
+          import Data.Default
 
-        int :: Int
-        int = def
+          int :: Int
+          int = def
 
-        main :: IO ()
-        main = case int of
-          18871 -> putStrLn $ id "success"
-          _ -> print "fail"
-      ''
+          main :: IO ()
+          main = case int of
+            18871 -> putStrLn $ id "success"
+            _ -> print "fail"
+        ''
     );
 
     js = expectSuccess (
-      writeJS "test-writers-js" { libraries = [ nodePackages.semver ]; } ''
-        var semver = require('semver');
-
-        if (semver.valid('1.2.3')) {
-          console.log('success')
-        } else {
-          console.log('fail')
+      writeJS "test-writers-js"
+        {
+          libraries = [ nodePackages.semver ];
         }
-      ''
+        ''
+          var semver = require('semver');
+
+          if (semver.valid('1.2.3')) {
+            console.log('success')
+          } else {
+            console.log('fail')
+          }
+        ''
     );
 
     perl = expectSuccess (
-      writePerl "test-writers-perl" { libraries = [ perlPackages.boolean ]; } ''
-        use boolean;
-        print "success\n" if true;
-      ''
+      writePerl "test-writers-perl"
+        {
+          libraries = [ perlPackages.boolean ];
+        }
+        ''
+          use boolean;
+          print "success\n" if true;
+        ''
     );
 
     python3 = expectSuccess (
-      writePython3 "test-writers-python3" { libraries = [ python3Packages.pyyaml ]; } ''
-        import yaml
+      writePython3 "test-writers-python3"
+        {
+          libraries = [ python3Packages.pyyaml ];
+        }
+        ''
+          import yaml
 
-        y = yaml.safe_load("""
-          - test: success
-        """)
-        print(y[0]['test'])
-      ''
+          y = yaml.safe_load("""
+            - test: success
+          """)
+          print(y[0]['test'])
+        ''
     );
 
     # Commented out because of this issue: https://github.com/NixOS/nixpkgs/issues/39356
@@ -370,25 +402,31 @@ recurseIntoAttrs {
     );
 
     haskell = expectSuccess (
-      writeHaskell "test-writers-haskell-path" { libraries = [ haskellPackages.acme-default ]; } (
-        writeText "test" ''
-          import Data.Default
+      writeHaskell "test-writers-haskell-path"
+        {
+          libraries = [ haskellPackages.acme-default ];
+        }
+        (
+          writeText "test" ''
+            import Data.Default
 
-          int :: Int
-          int = def
+            int :: Int
+            int = def
 
-          main :: IO ()
-          main = case int of
-            18871 -> putStrLn $ id "success"
-            _ -> print "fail"
-        ''
-      )
+            main :: IO ()
+            main = case int of
+              18871 -> putStrLn $ id "success"
+              _ -> print "fail"
+          ''
+        )
     );
   };
 
   data = {
     json = expectDataEqual {
-      file = writeJSON "data.json" { hello = "world"; };
+      file = writeJSON "data.json" {
+        hello = "world";
+      };
       expected = ''
         {
           "hello": "world"
@@ -397,14 +435,18 @@ recurseIntoAttrs {
     };
 
     toml = expectDataEqual {
-      file = writeTOML "data.toml" { hello = "world"; };
+      file = writeTOML "data.toml" {
+        hello = "world";
+      };
       expected = ''
         hello = "world"
       '';
     };
 
     yaml = expectDataEqual {
-      file = writeYAML "data.yaml" { hello = "world"; };
+      file = writeYAML "data.yaml" {
+        hello = "world";
+      };
       expected = "hello: world\n";
     };
   };
@@ -479,7 +521,9 @@ recurseIntoAttrs {
 
     no-empty-wrapper =
       let
-        bin = writeBashBin "bin" { makeWrapperArgs = [ ]; } ''true'';
+        bin = writeBashBin "bin" {
+          makeWrapperArgs = [ ];
+        } ''true'';
       in
       runCommand "run-test-writers-wrapping-no-empty-wrapper" { } ''
         ls -A ${bin}/bin

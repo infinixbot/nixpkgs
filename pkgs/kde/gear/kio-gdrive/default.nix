@@ -1,1 +1,4 @@
-{ mkKdeDerivation }: mkKdeDerivation { pname = "kio-gdrive"; }
+{ mkKdeDerivation }:
+mkKdeDerivation {
+  pname = "kio-gdrive";
+}

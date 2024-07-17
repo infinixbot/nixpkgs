@@ -45,7 +45,11 @@ buildPythonPackage rec {
 
   nativeCheckInputs = [
     pytestCheckHook
-    (toPythonModule (xandikos.override { python3Packages = python.pkgs; }))
+    (toPythonModule (
+      xandikos.override {
+        python3Packages = python.pkgs;
+      }
+    ))
   ];
 
   pythonImportsCheck = [ "caldav" ];

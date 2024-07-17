@@ -43,7 +43,11 @@ in
 if pluginSupport then
   base
 else
-  lib.pipe (base.override { ghc-paths = null; }) [
-    justStaticExecutables
-    aarch64DarwinFix
-  ]
+  lib.pipe
+    (base.override {
+      ghc-paths = null;
+    })
+    [
+      justStaticExecutables
+      aarch64DarwinFix
+    ]

@@ -286,7 +286,9 @@ stdenv.mkDerivation (finalAttrs: {
     popd # autotest
   '';
 
-  passthru.tests = callPackage ./tests.nix { gdal = finalAttrs.finalPackage; };
+  passthru.tests = callPackage ./tests.nix {
+    gdal = finalAttrs.finalPackage;
+  };
 
   __darwinAllowLocalNetworking = true;
 

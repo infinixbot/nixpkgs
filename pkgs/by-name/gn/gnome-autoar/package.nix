@@ -45,7 +45,9 @@ stdenv.mkDerivation rec {
   mesonFlags = [ "-Dvapi=true" ];
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "gnome-autoar"; };
+    updateScript = gnome.updateScript {
+      packageName = "gnome-autoar";
+    };
   };
 
   meta = with lib; {

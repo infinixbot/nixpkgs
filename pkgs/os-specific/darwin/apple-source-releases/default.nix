@@ -244,8 +244,12 @@ in
 self:
 
 let
-  macosPackages_11_0_1 = import ./macos-11.0.1.nix { inherit applePackage'; };
-  developerToolsPackages_11_3_1 = import ./developer-tools-11.3.1.nix { inherit applePackage'; };
+  macosPackages_11_0_1 = import ./macos-11.0.1.nix {
+    inherit applePackage';
+  };
+  developerToolsPackages_11_3_1 = import ./developer-tools-11.3.1.nix {
+    inherit applePackage';
+  };
 
   applePackage' =
     namePath: version: sdkName: sha256:
@@ -312,7 +316,9 @@ developerToolsPackages_11_3_1
   eap8021x =
     applePackage "eap8021x" "osx-10.11.6" "sha256-54P3+YhVhOanoZQoqswDnr/GbR/AdEERse135nyuIQo="
       { };
-  IOKit = applePackage "IOKit" "osx-10.11.6" "" { inherit IOKitSrcs; };
+  IOKit = applePackage "IOKit" "osx-10.11.6" "" {
+    inherit IOKitSrcs;
+  };
   launchd =
     applePackage "launchd" "osx-10.9.5" "sha256-dmV0UK7hG9wvTr+F4Z47nCFXcVZCV+cQ46WbE0DBtJs="
       { };
@@ -392,7 +398,9 @@ developerToolsPackages_11_3_1
       { };
   diskdev_cmds =
     applePackage "diskdev_cmds" "osx-10.11.6" "sha256-VX+hcZ7JhOA8EhwLloPlM3Yx79RXp9OYHV9Mi10uw3Q="
-      { macosPackages_11_0_1 = macosPackages_11_0_1; };
+      {
+        macosPackages_11_0_1 = macosPackages_11_0_1;
+      };
   network_cmds =
     if isSdk10_12 then
       applePackage "network_cmds" "osx-10.11.6" "sha256-I89CLIswGheewOjiNZwQTgWvWbhm0qtB5+KUqzxnQ5M=" { }
@@ -424,9 +432,15 @@ developerToolsPackages_11_3_1
         Security = null;
         xpc = null;
       };
-  libutilHeaders = pkgs.darwin.libutil.override { headersOnly = true; };
-  hfsHeaders = pkgs.darwin.hfs.override { headersOnly = true; };
-  libresolvHeaders = pkgs.darwin.libresolv.override { headersOnly = true; };
+  libutilHeaders = pkgs.darwin.libutil.override {
+    headersOnly = true;
+  };
+  hfsHeaders = pkgs.darwin.hfs.override {
+    headersOnly = true;
+  };
+  libresolvHeaders = pkgs.darwin.libresolv.override {
+    headersOnly = true;
+  };
 
   # TODO(matthewbauer):
   # To be removed, once I figure out how to build a newer Security version.

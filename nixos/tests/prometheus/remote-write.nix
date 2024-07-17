@@ -31,13 +31,19 @@ import ../make-test-python.nix (
             enable = true;
             globalConfig.scrape_interval = "2s";
 
-            remoteWrite = [ { url = "http://receiver:9090/api/v1/write"; } ];
+            remoteWrite = [
+              {
+                url = "http://receiver:9090/api/v1/write";
+              }
+            ];
 
             scrapeConfigs = [
               {
                 job_name = "node";
                 static_configs = [
-                  { targets = [ "node:${toString config.services.prometheus.exporters.node.port}" ]; }
+                  {
+                    targets = [ "node:${toString config.services.prometheus.exporters.node.port}" ];
+                  }
                 ];
               }
             ];

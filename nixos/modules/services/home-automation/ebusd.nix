@@ -166,33 +166,38 @@ in
         serviceConfig = {
           ExecStart =
             let
-              args = cli.toGNUCommandLineShell { optionValueSeparator = "="; } (
-                foldr (a: b: a // b) { } [
+              args =
+                cli.toGNUCommandLineShell
                   {
-                    inherit (cfg)
-                      device
-                      port
-                      configpath
-                      scanconfig
-                      readonly
-                      ;
-                    foreground = true;
-                    updatecheck = "off";
-                    log = mapAttrsToList (name: value: "${name}:${value}") cfg.logs;
-                    mqttretain = cfg.mqtt.retain;
+                    optionValueSeparator = "=";
                   }
-                  (optionalAttrs cfg.mqtt.enable {
-                    mqtthost = cfg.mqtt.host;
-                    mqttport = cfg.mqtt.port;
-                    mqttuser = cfg.mqtt.user;
-                    mqttpass = cfg.mqtt.password;
-                  })
-                  (optionalAttrs cfg.mqtt.home-assistant {
-                    mqttint = "${cfg.package}/etc/ebusd/mqtt-hassio.cfg";
-                    mqttjson = true;
-                  })
-                ]
-              );
+                  (
+                    foldr (a: b: a // b) { } [
+                      {
+                        inherit (cfg)
+                          device
+                          port
+                          configpath
+                          scanconfig
+                          readonly
+                          ;
+                        foreground = true;
+                        updatecheck = "off";
+                        log = mapAttrsToList (name: value: "${name}:${value}") cfg.logs;
+                        mqttretain = cfg.mqtt.retain;
+                      }
+                      (optionalAttrs cfg.mqtt.enable {
+                        mqtthost = cfg.mqtt.host;
+                        mqttport = cfg.mqtt.port;
+                        mqttuser = cfg.mqtt.user;
+                        mqttpass = cfg.mqtt.password;
+                      })
+                      (optionalAttrs cfg.mqtt.home-assistant {
+                        mqttint = "${cfg.package}/etc/ebusd/mqtt-hassio.cfg";
+                        mqttjson = true;
+                      })
+                    ]
+                  );
             in
             "${cfg.package}/bin/ebusd ${args} ${escapeShellArgs cfg.extraArguments}";
 

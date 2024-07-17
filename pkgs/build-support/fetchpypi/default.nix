@@ -58,5 +58,7 @@ makeOverridable (
       ]
     );
   in
-  fetchurl { inherit url sha256 hash; }
+  fetchurl {
+    inherit url sha256 hash;
+  }
 )

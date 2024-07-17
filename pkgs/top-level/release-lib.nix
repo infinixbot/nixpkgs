@@ -57,20 +57,52 @@ let
   mkPkgsFor =
     crossSystem:
     let
-      packageSet' = args: packageSet (args // { inherit crossSystem; } // nixpkgsArgs);
+      packageSet' =
+        args:
+        packageSet (
+          args
+          // {
+            inherit crossSystem;
+          }
+          // nixpkgsArgs
+        );
 
-      pkgs_x86_64_linux = packageSet' { system = "x86_64-linux"; };
-      pkgs_i686_linux = packageSet' { system = "i686-linux"; };
-      pkgs_aarch64_linux = packageSet' { system = "aarch64-linux"; };
-      pkgs_riscv64_linux = packageSet' { system = "riscv64-linux"; };
-      pkgs_aarch64_darwin = packageSet' { system = "aarch64-darwin"; };
-      pkgs_armv6l_linux = packageSet' { system = "armv6l-linux"; };
-      pkgs_armv7l_linux = packageSet' { system = "armv7l-linux"; };
-      pkgs_x86_64_darwin = packageSet' { system = "x86_64-darwin"; };
-      pkgs_x86_64_freebsd = packageSet' { system = "x86_64-freebsd"; };
-      pkgs_i686_freebsd = packageSet' { system = "i686-freebsd"; };
-      pkgs_i686_cygwin = packageSet' { system = "i686-cygwin"; };
-      pkgs_x86_64_cygwin = packageSet' { system = "x86_64-cygwin"; };
+      pkgs_x86_64_linux = packageSet' {
+        system = "x86_64-linux";
+      };
+      pkgs_i686_linux = packageSet' {
+        system = "i686-linux";
+      };
+      pkgs_aarch64_linux = packageSet' {
+        system = "aarch64-linux";
+      };
+      pkgs_riscv64_linux = packageSet' {
+        system = "riscv64-linux";
+      };
+      pkgs_aarch64_darwin = packageSet' {
+        system = "aarch64-darwin";
+      };
+      pkgs_armv6l_linux = packageSet' {
+        system = "armv6l-linux";
+      };
+      pkgs_armv7l_linux = packageSet' {
+        system = "armv7l-linux";
+      };
+      pkgs_x86_64_darwin = packageSet' {
+        system = "x86_64-darwin";
+      };
+      pkgs_x86_64_freebsd = packageSet' {
+        system = "x86_64-freebsd";
+      };
+      pkgs_i686_freebsd = packageSet' {
+        system = "i686-freebsd";
+      };
+      pkgs_i686_cygwin = packageSet' {
+        system = "i686-cygwin";
+      };
+      pkgs_x86_64_cygwin = packageSet' {
+        system = "x86_64-cygwin";
+      };
 
     in
     system:
@@ -133,7 +165,12 @@ let
   # This is written in a funny way so that we only elaborate the systems once.
   supportedMatches =
     let
-      supportedPlatforms = map (system: systems.elaborate { inherit system; }) supportedSystems;
+      supportedPlatforms = map (
+        system:
+        systems.elaborate {
+          inherit system;
+        }
+      ) supportedSystems;
     in
     metaPatterns:
     let

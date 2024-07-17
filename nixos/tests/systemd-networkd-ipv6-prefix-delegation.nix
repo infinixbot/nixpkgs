@@ -82,7 +82,11 @@ import ./make-test-python.nix (
                         delegated-len = 48;
                       }
                     ];
-                    pools = [ { pool = "2001:DB8:0000:0000::-2001:DB8:0FFF:FFFF::FFFF"; } ];
+                    pools = [
+                      {
+                        pool = "2001:DB8:0000:0000::-2001:DB8:0FFF:FFFF::FFFF";
+                      }
+                    ];
                   }
                 ];
 
@@ -278,7 +282,11 @@ import ./make-test-python.nix (
             # verify connectivity from the client to the router.
             "01-lo" = {
               name = "lo";
-              addresses = [ { Address = "FD42::1/128"; } ];
+              addresses = [
+                {
+                  Address = "FD42::1/128";
+                }
+              ];
             };
           };
         };

@@ -12,7 +12,9 @@ let
 in
 {
   options.virtualisation.podman.networkSocket = {
-    server = mkOption { type = types.enum [ "ghostunnel" ]; };
+    server = mkOption {
+      type = types.enum [ "ghostunnel" ];
+    };
   };
 
   config = lib.mkIf (cfg.enable && cfg.server == "ghostunnel") {

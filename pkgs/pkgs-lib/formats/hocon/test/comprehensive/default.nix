@@ -41,7 +41,9 @@ let
 
     "misc attrs" = {
       x = 1;
-      y = hocon.lib.mkAppend { a = 1; };
+      y = hocon.lib.mkAppend {
+        a = 1;
+      };
     };
 
     "cursed \" .attrs \" " = {
@@ -62,7 +64,9 @@ let
           type = "file";
           value = include_file;
         })
-        (hocon.lib.mkInclude { value = include_file; })
+        (hocon.lib.mkInclude {
+          value = include_file;
+        })
         (hocon.lib.mkInclude {
           value = "https://example.com";
           type = "url";

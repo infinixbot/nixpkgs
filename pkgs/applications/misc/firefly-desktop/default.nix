@@ -11,7 +11,9 @@ let
     url = "https://github.com/iotaledger/firefly/releases/download/desktop-${version}/${pname}-${version}.AppImage";
     sha256 = "sha256-MATMl5eEIauDQpz8/wqIzD7IugPVZ2HJAWCbDM4n+hA=";
   };
-  appimageContents = appimageTools.extractType2 { inherit pname version src; };
+  appimageContents = appimageTools.extractType2 {
+    inherit pname version src;
+  };
 
 in
 appimageTools.wrapType2 {

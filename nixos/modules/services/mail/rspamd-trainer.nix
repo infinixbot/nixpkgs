@@ -24,7 +24,9 @@ in
         IMAP authentication configuration for rspamd-trainer. For supplying
         the IMAP password, use the `secrets` option.
       '';
-      type = types.submodule { freeformType = format.type; };
+      type = types.submodule {
+        freeformType = format.type;
+      };
       example = literalExpression ''
         {
           HOST = "localhost";

@@ -8,7 +8,10 @@
 {
   varnish60Packages = rec {
     varnish = varnish60;
-    modules = (callPackages ./modules.nix { inherit varnish; }).modules15;
+    modules =
+      (callPackages ./modules.nix {
+        inherit varnish;
+      }).modules15;
     digest = callPackage ./digest.nix {
       inherit varnish;
       version = "libvmod-digest-1.0.2";
@@ -22,10 +25,16 @@
   };
   varnish74Packages = rec {
     varnish = varnish74;
-    modules = (callPackages ./modules.nix { inherit varnish; }).modules23;
+    modules =
+      (callPackages ./modules.nix {
+        inherit varnish;
+      }).modules23;
   };
   varnish75Packages = rec {
     varnish = varnish75;
-    modules = (callPackages ./modules.nix { inherit varnish; }).modules24;
+    modules =
+      (callPackages ./modules.nix {
+        inherit varnish;
+      }).modules24;
   };
 }

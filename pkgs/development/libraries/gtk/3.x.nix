@@ -130,7 +130,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   buildInputs = [
     libxkbcommon
-    (libepoxy.override { inherit x11Support; })
+    (libepoxy.override {
+      inherit x11Support;
+    })
     isocodes
   ] ++ lib.optionals stdenv.isDarwin [ AppKit ] ++ lib.optionals trackerSupport [ tracker ];
   #TODO: colord?

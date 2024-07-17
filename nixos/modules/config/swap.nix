@@ -11,7 +11,9 @@ with lib;
 
 let
 
-  randomEncryptionCoerce = enable: { inherit enable; };
+  randomEncryptionCoerce = enable: {
+    inherit enable;
+  };
 
   randomEncryptionOpts =
     { ... }:
@@ -221,9 +223,15 @@ in
     swapDevices = mkOption {
       default = [ ];
       example = [
-        { device = "/dev/hda7"; }
-        { device = "/var/swapfile"; }
-        { label = "bigswap"; }
+        {
+          device = "/dev/hda7";
+        }
+        {
+          device = "/var/swapfile";
+        }
+        {
+          label = "bigswap";
+        }
       ];
       description = ''
         The swap devices and swap files.  These must have been

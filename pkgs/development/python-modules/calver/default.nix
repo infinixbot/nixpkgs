@@ -36,7 +36,9 @@ let
 
     pythonImportsCheck = [ "calver" ];
 
-    passthru.tests.calver = self.overridePythonAttrs { doCheck = true; };
+    passthru.tests.calver = self.overridePythonAttrs {
+      doCheck = true;
+    };
 
     meta = {
       description = "Setuptools extension for CalVer package versions";

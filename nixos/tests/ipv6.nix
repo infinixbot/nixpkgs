@@ -31,7 +31,9 @@ import ./make-test-python.nix (
       # and here, by setting this on the interface explicitly.
       client_interface_setting = {
         networking.tempAddresses = "disabled";
-        networking.interfaces = lib.mkForce { eth1.tempAddress = "enabled"; };
+        networking.interfaces = lib.mkForce {
+          eth1.tempAddress = "enabled";
+        };
       };
 
       server = {

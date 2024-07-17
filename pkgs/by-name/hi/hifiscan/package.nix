@@ -22,7 +22,9 @@ python3Packages.buildPythonApplication {
 
   dontUseSetuptoolsCheck = true;
 
-  src = fetchPypi { inherit pname version hash; };
+  src = fetchPypi {
+    inherit pname version hash;
+  };
 
   meta = with lib; {
     homepage = "https://github.com/erdewit/HiFiScan";

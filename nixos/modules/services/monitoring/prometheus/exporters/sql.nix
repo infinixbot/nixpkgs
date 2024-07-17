@@ -75,11 +75,34 @@ let
       cfg.configFile
     else
       let
-        nameInline = mapAttrsToList (k: v: v // { name = k; });
-        renameStartupSql = j: removeAttrs (j // { startup_sql = j.startupSql; }) [ "startupSql" ];
+        nameInline = mapAttrsToList (
+          k: v:
+          v
+          // {
+            name = k;
+          }
+        );
+        renameStartupSql =
+          j:
+          removeAttrs (
+            j
+            // {
+              startup_sql = j.startupSql;
+            }
+          ) [ "startupSql" ];
         configuration = {
           jobs = map renameStartupSql (
-            nameInline (mapAttrs (k: v: (v // { queries = nameInline v.queries; })) cfg.configuration.jobs)
+            nameInline (
+              mapAttrs (
+                k: v:
+                (
+                  v
+                  // {
+                    queries = nameInline v.queries;
+                  }
+                )
+              ) cfg.configuration.jobs
+            )
           );
         };
       in

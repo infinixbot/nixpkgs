@@ -58,7 +58,9 @@ let
         nix-update python3Packages.opentelemetry-instrumentation
       '';
       # Enable tests via passthru to avoid cyclic dependency with opentelemetry-test-utils.
-      tests.${self.pname} = self.overridePythonAttrs { doCheck = true; };
+      tests.${self.pname} = self.overridePythonAttrs {
+        doCheck = true;
+      };
     };
 
     meta = with lib; {

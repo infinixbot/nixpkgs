@@ -138,7 +138,9 @@ in
         inherit name;
         path = p.profile;
       }) enabledPolicies
-      ++ mapAttrsToList (name: path: { inherit name path; }) cfg.includes
+      ++ mapAttrsToList (name: path: {
+        inherit name path;
+      }) cfg.includes
     );
     environment.etc."apparmor/parser.conf".text =
       ''

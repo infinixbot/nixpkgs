@@ -19,7 +19,11 @@ import ../make-test-python.nix (
             scrapeConfigs = [
               {
                 job_name = "pushgateway";
-                static_configs = [ { targets = [ "pushgateway:9091" ]; } ];
+                static_configs = [
+                  {
+                    targets = [ "pushgateway:9091" ];
+                  }
+                ];
               }
             ];
           };

@@ -77,7 +77,9 @@ stdenv.mkDerivation rec {
   '';
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "ghex"; };
+    updateScript = gnome.updateScript {
+      packageName = "ghex";
+    };
   };
 
   meta = with lib; {

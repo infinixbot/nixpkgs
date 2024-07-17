@@ -156,7 +156,9 @@ let
     let
       nameOfNewest = computeName (lists.last supportedManifests).redistrib.${pname};
       drvs = builtins.listToAttrs (lists.map buildCutensorPackage supportedManifests);
-      containsDefault = attrsets.optionalAttrs (drvs != { }) { cutensor = drvs.${nameOfNewest}; };
+      containsDefault = attrsets.optionalAttrs (drvs != { }) {
+        cutensor = drvs.${nameOfNewest};
+      };
     in
     drvs // containsDefault;
 in

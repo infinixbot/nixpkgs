@@ -8,7 +8,9 @@
 let
   cfg = config.programs.hyprland;
 
-  wayland-lib = import ./lib.nix { inherit lib; };
+  wayland-lib = import ./lib.nix {
+    inherit lib;
+  };
 in
 {
   options.programs.hyprland = {
@@ -26,7 +28,11 @@ in
         '';
       }
       // {
-        apply = p: wayland-lib.genFinalPackage p { enableXWayland = cfg.xwayland.enable; };
+        apply =
+          p:
+          wayland-lib.genFinalPackage p {
+            enableXWayland = cfg.xwayland.enable;
+          };
       };
 
     portalPackage =
@@ -37,7 +43,11 @@ in
         '';
       }
       // {
-        apply = p: wayland-lib.genFinalPackage p { hyprland = cfg.package; };
+        apply =
+          p:
+          wayland-lib.genFinalPackage p {
+            hyprland = cfg.package;
+          };
       };
 
     xwayland.enable = lib.mkEnableOption "XWayland" // {

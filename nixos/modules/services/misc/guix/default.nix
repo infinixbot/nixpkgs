@@ -8,7 +8,9 @@
 let
   cfg = config.services.guix;
 
-  package = cfg.package.override { inherit (cfg) stateDir storeDir; };
+  package = cfg.package.override {
+    inherit (cfg) stateDir storeDir;
+  };
 
   guixBuildUser = id: {
     name = "guixbuilder${toString id}";

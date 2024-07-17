@@ -57,7 +57,9 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs = [
-    (elfutils.override { enableDebuginfod = true; }) # perfparser needs to find debuginfod.h
+    (elfutils.override {
+      enableDebuginfod = true;
+    }) # perfparser needs to find debuginfod.h
     kconfigwidgets
     kddockwidgets
     ki18n

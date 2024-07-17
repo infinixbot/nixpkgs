@@ -18339,7 +18339,11 @@ with self;
       ApacheTest
       ExtUtilsXSBuilder
     ];
-    propagatedBuildInputs = [ (pkgs.apacheHttpdPackages.mod_perl.override { inherit perl; }) ];
+    propagatedBuildInputs = [
+      (pkgs.apacheHttpdPackages.mod_perl.override {
+        inherit perl;
+      })
+    ];
     makeMakerFlags = [
       "--with-apache2-src=${pkgs.apacheHttpd.dev}"
       "--with-apache2-apxs=${pkgs.apacheHttpd.dev}/bin/apxs"
@@ -31731,7 +31735,11 @@ with self;
       url = "mirror://cpan/authors/id/C/CL/CLKAO/SVN-Simple-0.28.tar.gz";
       hash = "sha256-1jzBaeQ2m+mKU5q+nMFhG/zCs2lmplF+Z2aI/tGIT/s=";
     };
-    propagatedBuildInputs = [ (pkgs.subversionClient.override { inherit perl; }) ];
+    propagatedBuildInputs = [
+      (pkgs.subversionClient.override {
+        inherit perl;
+      })
+    ];
     meta = {
       description = "Simple interface to subversion's editor interface";
       license = with lib.licenses; [

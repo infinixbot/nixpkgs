@@ -69,7 +69,9 @@ in
                   if (cfg.coturn.password != null) then
                     cfg.coturn.password
                   else
-                    { _secret = cfg.coturn.passwordFile; };
+                    {
+                      _secret = cfg.coturn.passwordFile;
+                    };
               }
             ];
           };

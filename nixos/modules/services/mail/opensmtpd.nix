@@ -13,10 +13,15 @@ let
   conf = pkgs.writeText "smtpd.conf" cfg.serverConfiguration;
   args = concatStringsSep " " cfg.extraServerArgs;
 
-  sendmail = pkgs.runCommand "opensmtpd-sendmail" { preferLocalBuild = true; } ''
-    mkdir -p $out/bin
-    ln -s ${cfg.package}/sbin/smtpctl $out/bin/sendmail
-  '';
+  sendmail =
+    pkgs.runCommand "opensmtpd-sendmail"
+      {
+        preferLocalBuild = true;
+      }
+      ''
+        mkdir -p $out/bin
+        ln -s ${cfg.package}/sbin/smtpctl $out/bin/sendmail
+      '';
 
 in
 {
@@ -125,7 +130,10 @@ in
     };
 
     services.mail.sendmailSetuidWrapper = mkIf cfg.setSendmail (
-      security.wrappers.smtpctl // { program = "sendmail"; }
+      security.wrappers.smtpctl
+      // {
+        program = "sendmail";
+      }
     );
 
     systemd.tmpfiles.rules = [

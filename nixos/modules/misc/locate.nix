@@ -55,10 +55,15 @@ in
       '';
     };
 
-    package = lib.mkPackageOption pkgs [
-      "findutils"
-      "locate"
-    ] { example = "mlocate"; };
+    package =
+      lib.mkPackageOption pkgs
+        [
+          "findutils"
+          "locate"
+        ]
+        {
+          example = "mlocate";
+        };
 
     interval = lib.mkOption {
       type = lib.types.str;
@@ -235,8 +240,12 @@ in
 
   config = lib.mkIf cfg.enable {
     users.groups = lib.mkMerge [
-      (lib.mkIf isMLocate { mlocate = { }; })
-      (lib.mkIf isPLocate { plocate = { }; })
+      (lib.mkIf isMLocate {
+        mlocate = { };
+      })
+      (lib.mkIf isPLocate {
+        plocate = { };
+      })
     ];
 
     security.wrappers =
@@ -281,7 +290,9 @@ in
 
       systemPackages = [ cfg.package ];
 
-      variables = lib.mkIf isFindutils { LOCATE_PATH = cfg.output; };
+      variables = lib.mkIf isFindutils {
+        LOCATE_PATH = cfg.output;
+      };
     };
 
     warnings =

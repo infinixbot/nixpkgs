@@ -198,7 +198,9 @@ in
           lib.optionalAttrs (conf != { }) {
             "xdg/xdg-desktop-portal/${
               lib.optionalString (desktop != "common") "${desktop}-"
-            }portals.conf".text = lib.generators.toINI { } { preferred = conf; };
+            }portals.conf".text = lib.generators.toINI { } {
+              preferred = conf;
+            };
           }
         ) cfg.config;
       };

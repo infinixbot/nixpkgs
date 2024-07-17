@@ -148,7 +148,9 @@ let
         };
 
         # Definitions to apply at the root of the NixOS configuration.
-        atRoot = mkOption { internal = true; };
+        atRoot = mkOption {
+          internal = true;
+        };
       };
 
       # Clients should not be authenticated with the public root certificates

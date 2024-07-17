@@ -27,7 +27,9 @@ buildPythonPackage rec {
 
   # Update this hash if bumping versions
   jarHash = "sha256-x2KH6tnoG7sogtjrJvUaxy0PCEA8q/zneuI969oBOKo=";
-  skeinJar = callPackage ./skeinjar.nix { inherit pname version jarHash; };
+  skeinJar = callPackage ./skeinjar.nix {
+    inherit pname version jarHash;
+  };
 
   propagatedBuildInputs = [
     cryptography

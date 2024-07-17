@@ -94,7 +94,10 @@ rec {
     (
       filesetV1:
       # This change is backwards compatible (but not forwards compatible, so we still need a new version)
-      filesetV1 // { _internalVersion = 2; }
+      filesetV1
+      // {
+        _internalVersion = 2;
+      }
     )
 
     # Convert v2 into v3: filesetTree's now have a representation for an empty file set without a base path
@@ -242,7 +245,9 @@ rec {
       #     "default.nix" = <type>;
       #   }
       # See ./README.md#single-files
-      _create (dirOf path) { ${baseNameOf path} = type; };
+      _create (dirOf path) {
+        ${baseNameOf path} = type;
+      };
 
   # Expand a directory representation to an equivalent one in attribute set form.
   # All directory entries are included in the result.
@@ -539,7 +544,9 @@ rec {
     else
       # Direct files are always included by builtins.path without calling the filter
       # But we need to lift up the base path to its parent to satisfy the base path invariant
-      _create (dirOf root) { ${baseNameOf root} = rootPathType; };
+      _create (dirOf root) {
+        ${baseNameOf root} = rootPathType;
+      };
 
   # Turns a file set into the list of file paths it includes.
   # Type: fileset -> [ Path ]
@@ -573,7 +580,9 @@ rec {
         # If we haven't reached the required depth yet
         if index < length fileset._internalBaseComponents then
           # Create an attribute set and recurse as the value, this can be lazily evaluated this way
-          { ${elemAt fileset._internalBaseComponents index} = recurse (index + 1); }
+          {
+            ${elemAt fileset._internalBaseComponents index} = recurse (index + 1);
+          }
         else
           # Otherwise we reached the appropriate depth, here's the original tree
           fileset._internalTree;
@@ -853,7 +862,9 @@ rec {
       _create root (fromDir root)
     else
       # Single files are turned into a directory containing that file or nothing.
-      _create (dirOf root) { ${baseNameOf root} = fromFile (baseNameOf root) rootType; };
+      _create (dirOf root) {
+        ${baseNameOf root} = fromFile (baseNameOf root) rootType;
+      };
 
   # Support for `builtins.fetchGit` with `submodules = true` was introduced in 2.4
   # https://github.com/NixOS/nix/commit/55cefd41d63368d4286568e2956afd535cb44018
@@ -926,7 +937,9 @@ rec {
             # Unfortunately this means older Nix versions get a poor error message for shallow repositories, and there's no good way to improve that.
             # Checking for `.git/shallow` doesn't seem worth it, especially since that's more of an implementation detail,
             # and would also require more code to handle worktrees where `.git` is a file.
-            // optionalAttrs (versionAtLeast nixVersion _fetchGitShallowMinver) { shallow = true; }
+            // optionalAttrs (versionAtLeast nixVersion _fetchGitShallowMinver) {
+              shallow = true;
+            }
             // extraFetchGitAttrs
           );
         in

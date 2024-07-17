@@ -17,7 +17,9 @@ let
     ;
 in
 finalAttrs: prevAttrs: {
-  src = fetchurl { inherit (package) url hash; };
+  src = fetchurl {
+    inherit (package) url hash;
+  };
 
   # Useful for inspecting why something went wrong.
   brokenConditions =

@@ -995,7 +995,10 @@ rec {
         let
           key = pred e;
         in
-        r // { ${key} = (r.${key} or [ ]) ++ [ e ]; }
+        r
+        // {
+          ${key} = (r.${key} or [ ]) ++ [ e ];
+        }
       ) { }
     );
 
@@ -1070,7 +1073,11 @@ rec {
 
     :::
   */
-  zipLists = zipListsWith (fst: snd: { inherit fst snd; });
+  zipLists = zipListsWith (
+    fst: snd: {
+      inherit fst snd;
+    }
+  );
 
   /**
     Reverse the order of the elements of a list.
@@ -1218,7 +1225,9 @@ rec {
     in
     if length list < 2 then
       # finish
-      { result = list; }
+      {
+        result = list;
+      }
     else if dfsthis ? cycle then
       # there's a cycle, starting from the current vertex, return it
       {
@@ -1231,7 +1240,9 @@ rec {
     # Slow, but short. Can be made a bit faster with an explicit stack.
     else
       # there are no cycles
-      { result = [ dfsthis.minimal ] ++ toporest.result; };
+      {
+        result = [ dfsthis.minimal ] ++ toporest.result;
+      };
 
   /**
     Sort a list based on a comparator function which compares two

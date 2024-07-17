@@ -672,7 +672,9 @@ in
     ];
 
     systemd.services = {
-      phpfpm-tt-rss = mkIf (cfg.pool == "${poolName}") { restartTriggers = [ servedRoot ]; };
+      phpfpm-tt-rss = mkIf (cfg.pool == "${poolName}") {
+        restartTriggers = [ servedRoot ];
+      };
 
       tt-rss = {
         description = "Tiny Tiny RSS feeds update daemon";

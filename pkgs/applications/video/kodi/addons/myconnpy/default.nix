@@ -17,7 +17,9 @@ buildKodiAddon rec {
 
   passthru = {
     pythonPath = "lib";
-    updateScript = addonUpdateScript { attrPath = "kodi.packages.myconnpy"; };
+    updateScript = addonUpdateScript {
+      attrPath = "kodi.packages.myconnpy";
+    };
   };
 
   meta = with lib; {

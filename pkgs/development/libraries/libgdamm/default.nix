@@ -12,7 +12,9 @@
 }:
 
 let
-  gda = libgda.override { inherit mysqlSupport postgresSupport; };
+  gda = libgda.override {
+    inherit mysqlSupport postgresSupport;
+  };
 in
 stdenv.mkDerivation rec {
   pname = "libgdamm";

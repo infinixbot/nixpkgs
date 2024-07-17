@@ -61,7 +61,11 @@ import ./make-test-python.nix {
             {
               job_name = "pushgateway";
               scrape_interval = "1s";
-              static_configs = [ { targets = [ "127.0.0.1:${toString pushgwPort}" ]; } ];
+              static_configs = [
+                {
+                  targets = [ "127.0.0.1:${toString pushgwPort}" ];
+                }
+              ];
             }
           ];
           rules = [
@@ -136,7 +140,11 @@ import ./make-test-python.nix {
                 scrapeConfigs = [
                   {
                     job_name = "s3-node_exporter";
-                    static_configs = [ { targets = [ "s3:9100" ]; } ];
+                    static_configs = [
+                      {
+                        targets = [ "s3:9100" ];
+                      }
+                    ];
                   }
                 ];
               };

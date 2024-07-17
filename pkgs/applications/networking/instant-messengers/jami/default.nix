@@ -278,7 +278,9 @@ stdenv.mkDerivation rec {
     qtWrapperArgs+=("''${gappsWrapperArgs[@]}")
   '';
 
-  passthru.updateScript = gitUpdater { rev-prefix = "stable/"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "stable/";
+  };
 
   meta = with lib; {
     homepage = "https://jami.net/";

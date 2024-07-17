@@ -314,7 +314,12 @@ in
   config = {
 
     locations = builtins.listToAttrs (
-      map (elem: nameValuePair elem.urlPath { alias = elem.file; }) config.servedFiles
+      map (
+        elem:
+        nameValuePair elem.urlPath {
+          alias = elem.file;
+        }
+      ) config.servedFiles
     );
 
   };

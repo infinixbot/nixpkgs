@@ -86,7 +86,9 @@ python3Packages.buildPythonApplication rec {
     svg-flatten
   ];
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     description = "Directly render SVG overlays into Gerber and Excellon files";

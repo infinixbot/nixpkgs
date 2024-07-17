@@ -44,7 +44,9 @@ buildGoModule rec {
     done
   '';
 
-  passthru.tests.version = testers.testVersion { package = gitsign; };
+  passthru.tests.version = testers.testVersion {
+    package = gitsign;
+  };
 
   meta = {
     homepage = "https://github.com/sigstore/gitsign";

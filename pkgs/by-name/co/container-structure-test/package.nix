@@ -28,7 +28,9 @@ in
 stdenv.mkDerivation {
   inherit version;
   pname = "container-structure-test";
-  src = fetchurl { inherit (sources.${stdenv.system}) url hash; };
+  src = fetchurl {
+    inherit (sources.${stdenv.system}) url hash;
+  };
 
   dontUnpack = true;
 

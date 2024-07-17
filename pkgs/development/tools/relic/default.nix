@@ -27,7 +27,9 @@ buildGoModule rec {
   ];
 
   passthru.tests = {
-    version = testers.testVersion { package = relic; };
+    version = testers.testVersion {
+      package = relic;
+    };
   };
 
   meta = with lib; {

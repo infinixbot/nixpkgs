@@ -20,7 +20,9 @@ let
 
   toTincConf = generators.toKeyValue {
     listsAsDuplicateKeys = true;
-    mkKeyValue = generators.mkKeyValueDefault { inherit mkValueString; } "=";
+    mkKeyValue = generators.mkKeyValueDefault {
+      inherit mkValueString;
+    } "=";
   };
 
   tincConfType =
@@ -143,7 +145,9 @@ let
 
         settings = mkOption {
           default = { };
-          type = types.submodule { freeformType = tincConfType; };
+          type = types.submodule {
+            freeformType = tincConfType;
+          };
           description = ''
             Configuration for this host.
 
@@ -320,7 +324,9 @@ in
 
                   settings = mkOption {
                     default = { };
-                    type = types.submodule { freeformType = tincConfType; };
+                    type = types.submodule {
+                      freeformType = tincConfType;
+                    };
                     example = literalExpression ''
                       {
                         Interface = "custom.interface";
@@ -386,7 +392,12 @@ in
             "tinc/${network}/tinc.conf" = {
               mode = "0444";
               text = ''
-                ${toTincConf ({ Interface = "tinc.${network}"; } // data.settings)}
+                ${toTincConf (
+                  {
+                    Interface = "tinc.${network}";
+                  }
+                  // data.settings
+                )}
                 ${data.extraConfig}
               '';
             };

@@ -12,7 +12,11 @@ let
   vteInitSnippet = ''
     # Show current working directory in VTE terminals window title.
     # Supports both bash and zsh, requires interactive shell.
-    . ${pkgs.vte.override { gtkVersion = null; }}/etc/profile.d/vte.sh
+    . ${
+      pkgs.vte.override {
+        gtkVersion = null;
+      }
+    }/etc/profile.d/vte.sh
   '';
 
 in
@@ -52,6 +56,8 @@ in
       programs.bash.interactiveShellInit = mkBefore vteInitSnippet;
     })
 
-    (mkIf config.programs.zsh.vteIntegration { programs.zsh.interactiveShellInit = vteInitSnippet; })
+    (mkIf config.programs.zsh.vteIntegration {
+      programs.zsh.interactiveShellInit = vteInitSnippet;
+    })
   ];
 }

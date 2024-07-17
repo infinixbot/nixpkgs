@@ -72,7 +72,9 @@ python3Packages.buildPythonApplication rec {
       "test_restricted_arch"
     ];
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = {
     description = "Build system for Ubuntu Touch apps";

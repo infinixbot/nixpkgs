@@ -60,7 +60,9 @@ stdenv.mkDerivation rec {
   # usually getting stripped.
   stripDebugList = [ "pcsc" ];
 
-  passthru.updateScript = gitUpdater { url = "https://salsa.debian.org/rousseau/CCID.git"; };
+  passthru.updateScript = gitUpdater {
+    url = "https://salsa.debian.org/rousseau/CCID.git";
+  };
 
   meta = with lib; {
     description = "PC/SC driver for USB CCID smart card readers";

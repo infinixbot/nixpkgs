@@ -35,8 +35,12 @@ let
 
   ## Stage 2 ##
   # Helpers
-  bintools-unwrapped = callPackage ./stage-2/bintools-unwrapped.nix { inherit llvm lld; };
-  bintools = wrapBintoolsWith { bintools = bintools-unwrapped; };
+  bintools-unwrapped = callPackage ./stage-2/bintools-unwrapped.nix {
+    inherit llvm lld;
+  };
+  bintools = wrapBintoolsWith {
+    bintools = bintools-unwrapped;
+  };
   rStdenv = callPackage ./stage-2/rstdenv.nix {
     inherit
       llvm

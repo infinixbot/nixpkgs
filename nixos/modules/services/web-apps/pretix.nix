@@ -43,7 +43,9 @@ let
 
   configFile = format.generate "pretix.cfg" (filterRecursiveNull cfg.settings);
 
-  finalPackage = cfg.package.override { inherit (cfg) plugins; };
+  finalPackage = cfg.package.override {
+    inherit (cfg) plugins;
+  };
 
   pythonEnv = cfg.package.python.buildEnv.override {
     extraLibs =

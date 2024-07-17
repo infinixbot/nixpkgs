@@ -5,11 +5,16 @@ import ../make-test-python.nix (
     ca_key = mailerCerts.ca.key;
     ca_pem = mailerCerts.ca.cert;
 
-    bundle = pkgs.runCommand "bundle" { nativeBuildInputs = [ pkgs.minica ]; } ''
-      minica -ca-cert ${ca_pem} -ca-key ${ca_key} \
-        -domains localhost
-      install -Dm444 -t $out localhost/{key,cert}.pem
-    '';
+    bundle =
+      pkgs.runCommand "bundle"
+        {
+          nativeBuildInputs = [ pkgs.minica ];
+        }
+        ''
+          minica -ca-cert ${ca_pem} -ca-key ${ca_key} \
+            -domains localhost
+          install -Dm444 -t $out localhost/{key,cert}.pem
+        '';
 
     mailerCerts = import ../common/acme/server/snakeoil-certs.nix;
     mailerDomain = mailerCerts.domain;

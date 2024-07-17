@@ -22,7 +22,9 @@ let
   };
 
   SystemVersion =
-    lib.optionalAttrs (productBuildVer != null) { ProductBuildVersion = productBuildVer; }
+    lib.optionalAttrs (productBuildVer != null) {
+      ProductBuildVersion = productBuildVer;
+    }
     // {
       ProductName = "Mac OS X";
       ProductVersion = sdkVer;

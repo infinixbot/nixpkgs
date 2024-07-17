@@ -20,7 +20,11 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [ (mkl.override { inherit enableStatic; }) ];
+  buildInputs = [
+    (mkl.override {
+      inherit enableStatic;
+    })
+  ];
 
   doCheck = true;
 

@@ -33,7 +33,9 @@ buildDotnetModule rec {
           --prefix DYLD_LIBRARY_PATH : $out/lib/formula-dotnet/runtimes/macos/native
       '';
 
-  passthru.updateScript = unstableGitUpdater { url = meta.homepage; };
+  passthru.updateScript = unstableGitUpdater {
+    url = meta.homepage;
+  };
 
   meta = with lib; {
     description = "Formal Specifications for Verification and Synthesis";

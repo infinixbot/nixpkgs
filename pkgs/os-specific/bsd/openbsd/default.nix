@@ -34,7 +34,9 @@ makeScopeWithSplicing' {
         };
       });
 
-      makeMinimal = buildPackages.netbsd.makeMinimal.override { inherit (self) make-rules; };
+      makeMinimal = buildPackages.netbsd.makeMinimal.override {
+        inherit (self) make-rules;
+      };
 
       # The manual callPackages below should in principle be unnecessary, but are
       # necessary. See note in ../netbsd/default.nix
@@ -77,7 +79,9 @@ makeScopeWithSplicing' {
         inherit (buildPackages.netbsd) install tsort statHook;
       };
 
-      lorder = self.callPackage ./pkgs/lorder.nix { inherit (buildPackages.netbsd) install; };
+      lorder = self.callPackage ./pkgs/lorder.nix {
+        inherit (buildPackages.netbsd) install;
+      };
 
       make-rules = self.callPackage ./pkgs/make-rules/package.nix { };
 

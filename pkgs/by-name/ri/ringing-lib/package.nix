@@ -31,7 +31,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   doCheck = true;
 
-  passthru.updateScript = unstableGitUpdater { hardcodeZeroVersion = true; };
+  passthru.updateScript = unstableGitUpdater {
+    hardcodeZeroVersion = true;
+  };
   meta = {
     description = "Library of C++ classes and utilities for change ringing";
     homepage = "https://ringing-lib.github.io/";

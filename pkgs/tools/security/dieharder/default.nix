@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
   buildInputs = [ gsl ];
 
   passthru = {
-    tests.version = testers.testVersion { package = dieharder; };
+    tests.version = testers.testVersion {
+      package = dieharder;
+    };
   };
 
   meta = with lib; {

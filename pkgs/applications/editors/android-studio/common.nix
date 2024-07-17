@@ -277,7 +277,11 @@ let
         allowSubstitutes = false;
         passthru =
           let
-            withSdk = androidSdk: mkAndroidStudioWrapper { inherit androidStudio androidSdk; };
+            withSdk =
+              androidSdk:
+              mkAndroidStudioWrapper {
+                inherit androidStudio androidSdk;
+              };
           in
           {
             inherit version;
@@ -339,4 +343,6 @@ let
         ln -s ${desktopItem}/share/applications $out/share/applications
       '';
 in
-mkAndroidStudioWrapper { inherit androidStudio; }
+mkAndroidStudioWrapper {
+  inherit androidStudio;
+}

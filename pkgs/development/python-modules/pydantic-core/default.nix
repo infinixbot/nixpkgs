@@ -55,7 +55,9 @@ let
 
     # escape infinite recursion with pydantic via dirty-equals
     doCheck = false;
-    passthru.tests.pytest = pydantic-core.overrideAttrs { doCheck = true; };
+    passthru.tests.pytest = pydantic-core.overrideAttrs {
+      doCheck = true;
+    };
 
     nativeCheckInputs = [
       pytestCheckHook

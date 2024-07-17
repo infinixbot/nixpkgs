@@ -34,7 +34,9 @@ lib.throwIf
       [ re ]
       ++ library_deps
       ++ lib.optionals (lib.versionAtLeast version "0.25.1") [
-        (ocamlformat-lib.override { inherit version; })
+        (ocamlformat-lib.override {
+          inherit version;
+        })
       ];
 
     meta = {

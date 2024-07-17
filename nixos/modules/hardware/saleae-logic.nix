@@ -22,7 +22,9 @@ in
     };
   };
 
-  config = lib.mkIf cfg.enable { services.udev.packages = [ cfg.package ]; };
+  config = lib.mkIf cfg.enable {
+    services.udev.packages = [ cfg.package ];
+  };
 
   meta.maintainers = with lib.maintainers; [ chivay ];
 }

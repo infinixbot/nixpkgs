@@ -30,7 +30,9 @@ in
 
   config = lib.mkIf cfg.enable (
     let
-      package = pkgs.xfce.thunar.override { thunarPlugins = cfg.plugins; };
+      package = pkgs.xfce.thunar.override {
+        thunarPlugins = cfg.plugins;
+      };
 
     in
     {

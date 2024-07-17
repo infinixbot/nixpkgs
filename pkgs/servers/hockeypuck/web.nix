@@ -6,7 +6,9 @@
 }:
 
 let
-  sources = (import ./sources.nix) { inherit fetchFromGitHub; };
+  sources = (import ./sources.nix) {
+    inherit fetchFromGitHub;
+  };
 in
 stdenv.mkDerivation {
   pname = "${sources.pname}-web";

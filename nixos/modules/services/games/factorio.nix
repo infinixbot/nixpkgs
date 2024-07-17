@@ -215,7 +215,9 @@ in
           This option is insecure. Use extraSettingsFile instead.
         '';
       };
-      package = mkPackageOption pkgs "factorio-headless" { example = "factorio-headless-experimental"; };
+      package = mkPackageOption pkgs "factorio-headless" {
+        example = "factorio-headless-experimental";
+      };
       password = mkOption {
         type = types.nullOr types.str;
         default = null;

@@ -86,7 +86,9 @@ llvmPackages.stdenv.mkDerivation rec {
     # Should appear BEFORE lit, since lit passes through python rather
     # than the python environment we make.
     kleePython
-    (lit.override { python = kleePython; })
+    (lit.override {
+      python = kleePython;
+    })
   ];
 
   cmakeBuildType =

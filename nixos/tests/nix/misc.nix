@@ -4,8 +4,12 @@
 let
   inherit (pkgs) lib;
   tests = {
-    default = testsForPackage { nixPackage = pkgs.nix; };
-    lix = testsForPackage { nixPackage = pkgs.lix; };
+    default = testsForPackage {
+      nixPackage = pkgs.nix;
+    };
+    lix = testsForPackage {
+      nixPackage = pkgs.lix;
+    };
   };
 
   testsForPackage =

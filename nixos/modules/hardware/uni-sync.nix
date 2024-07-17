@@ -119,7 +119,9 @@ in
 
   config = mkIf cfg.enable {
     environment.etc."uni-sync/uni-sync.json".text = mkIf (cfg.devices != [ ]) (
-      builtins.toJSON { configs = cfg.devices; }
+      builtins.toJSON {
+        configs = cfg.devices;
+      }
     );
 
     environment.systemPackages = [ cfg.package ];

@@ -215,7 +215,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   # Fontconfig error: Cannot load default config file
-  FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ ]; };
+  FONTCONFIG_FILE = makeFontsConf {
+    fontDirectories = [ ];
+  };
 
   doCheck = true;
 

@@ -108,7 +108,9 @@ let
 
     passthru.tests = {
       inherit pip-tools;
-      pytest = self.overridePythonAttrs { doCheck = true; };
+      pytest = self.overridePythonAttrs {
+        doCheck = true;
+      };
     };
 
     meta = {

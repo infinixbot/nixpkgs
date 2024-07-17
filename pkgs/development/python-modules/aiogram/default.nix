@@ -76,7 +76,9 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ "aiogram" ];
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     description = "Modern and fully asynchronous framework for Telegram Bot API";

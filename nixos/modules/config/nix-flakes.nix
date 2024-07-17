@@ -106,7 +106,9 @@ in
   config = mkIf cfg.enable {
     environment.etc."nix/registry.json".text = builtins.toJSON {
       version = 2;
-      flakes = mapAttrsToList (n: v: { inherit (v) from to exact; }) cfg.registry;
+      flakes = mapAttrsToList (n: v: {
+        inherit (v) from to exact;
+      }) cfg.registry;
     };
   };
 }

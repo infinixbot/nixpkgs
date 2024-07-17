@@ -38,8 +38,14 @@ stdenv.mkDerivation rec {
     stripJavaArchivesHook
   ];
 
-  HDFLIBS = (hdf4.override { javaSupport = true; }).out;
-  HDF5LIBS = (hdf5.override { javaSupport = true; }).out;
+  HDFLIBS =
+    (hdf4.override {
+      javaSupport = true;
+    }).out;
+  HDF5LIBS =
+    (hdf5.override {
+      javaSupport = true;
+    }).out;
 
   buildPhase =
     let

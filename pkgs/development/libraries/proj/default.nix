@@ -78,7 +78,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru.tests = {
     python = python3.pkgs.pyproj;
-    proj = callPackage ./tests.nix { proj = finalAttrs.finalPackage; };
+    proj = callPackage ./tests.nix {
+      proj = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

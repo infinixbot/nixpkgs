@@ -265,13 +265,19 @@ stdenv.mkDerivation rec {
     postHooks+=(sgxsdk)
   '';
 
-  passthru.tests = callPackage ../samples { sgxMode = "SIM"; };
+  passthru.tests = callPackage ../samples {
+    sgxMode = "SIM";
+  };
 
   # Run tests in SGX hardware mode on an SGX-enabled machine
   # $(nix-build -A sgx-sdk.runTestsHW)/bin/run-tests-hw
   passthru.runTestsHW =
     let
-      testsHW = lib.filterAttrs (_: v: v ? "name") (callPackage ../samples { sgxMode = "HW"; });
+      testsHW = lib.filterAttrs (_: v: v ? "name") (
+        callPackage ../samples {
+          sgxMode = "HW";
+        }
+      );
       testsHWLinked = linkFarmFromDrvs "sgx-samples-hw-bundle" (lib.attrValues testsHW);
     in
     writeShellApplication {

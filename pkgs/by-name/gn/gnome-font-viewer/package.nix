@@ -51,7 +51,9 @@ stdenv.mkDerivation rec {
   preConfigure = "sed -i '2,$ d'  meson-postinstall.sh";
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "gnome-font-viewer"; };
+    updateScript = gnome.updateScript {
+      packageName = "gnome-font-viewer";
+    };
   };
 
   meta = with lib; {

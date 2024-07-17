@@ -25,7 +25,9 @@ buildGoModule rec {
     "-X main.version=${version}"
   ];
 
-  passthru.tests.version = testers.testVersion { package = timer; };
+  passthru.tests.version = testers.testVersion {
+    package = timer;
+  };
 
   meta = with lib; {
     description = "`sleep` with progress";

@@ -81,12 +81,16 @@ rec {
       version,
       packageJSON,
       yarnLock,
-      yarnNix ? mkYarnNix { inherit yarnLock; },
+      yarnNix ? mkYarnNix {
+        inherit yarnLock;
+      },
       offlineCache ? importOfflineCache yarnNix,
       yarnFlags ? [ ],
       ignoreScripts ? true,
       nodejs ? inputs.nodejs,
-      yarn ? inputs.yarn.override { inherit nodejs; },
+      yarn ? inputs.yarn.override {
+        inherit nodejs;
+      },
       pkgConfig ? { },
       preBuild ? "",
       postBuild ? "",
@@ -208,7 +212,9 @@ rec {
       packageJSON ? src + "/package.json",
       yarnLock ? src + "/yarn.lock",
       nodejs ? inputs.nodejs,
-      yarn ? inputs.yarn.override { inherit nodejs; },
+      yarn ? inputs.yarn.override {
+        inherit nodejs;
+      },
       packageOverrides ? { },
       ...
     }@attrs:
@@ -308,10 +314,14 @@ rec {
       src,
       packageJSON ? src + "/package.json",
       yarnLock ? src + "/yarn.lock",
-      yarnNix ? mkYarnNix { inherit yarnLock; },
+      yarnNix ? mkYarnNix {
+        inherit yarnLock;
+      },
       offlineCache ? importOfflineCache yarnNix,
       nodejs ? inputs.nodejs,
-      yarn ? inputs.yarn.override { inherit nodejs; },
+      yarn ? inputs.yarn.override {
+        inherit nodejs;
+      },
       yarnFlags ? [ ],
       yarnPreBuild ? "",
       yarnPostBuild ? "",
@@ -473,9 +483,15 @@ rec {
           {
             inherit (nodejs.meta) platforms;
           }
-          // lib.optionalAttrs (package ? description) { inherit (package) description; }
-          // lib.optionalAttrs (package ? homepage) { inherit (package) homepage; }
-          // lib.optionalAttrs (package ? license) { license = getLicenseFromSpdxId package.license; }
+          // lib.optionalAttrs (package ? description) {
+            inherit (package) description;
+          }
+          // lib.optionalAttrs (package ? homepage) {
+            inherit (package) homepage;
+          }
+          // lib.optionalAttrs (package ? license) {
+            license = getLicenseFromSpdxId package.license;
+          }
           // (attrs.meta or { });
       }
     );
@@ -525,15 +541,20 @@ rec {
     '';
   };
 
-  fixup_yarn_lock = runCommandLocal "fixup_yarn_lock" { buildInputs = [ nodejs ]; } ''
-    mkdir -p $out/lib
-    mkdir -p $out/bin
+  fixup_yarn_lock =
+    runCommandLocal "fixup_yarn_lock"
+      {
+        buildInputs = [ nodejs ];
+      }
+      ''
+        mkdir -p $out/lib
+        mkdir -p $out/bin
 
-    cp ${./lib/urlToName.js} $out/lib/urlToName.js
-    cp ${./internal/fixup_yarn_lock.js} $out/bin/fixup_yarn_lock
+        cp ${./lib/urlToName.js} $out/lib/urlToName.js
+        cp ${./internal/fixup_yarn_lock.js} $out/bin/fixup_yarn_lock
 
-    patchShebangs $out
-  '';
+        patchShebangs $out
+      '';
 }
 // lib.optionalAttrs allowAliases {
   # Aliases

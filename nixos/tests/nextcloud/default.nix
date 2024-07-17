@@ -1,7 +1,9 @@
 {
   system ? builtins.currentSystem,
   config ? { },
-  pkgs ? import ../../.. { inherit system config; },
+  pkgs ? import ../../.. {
+    inherit system config;
+  },
 }:
 
 with pkgs.lib;
@@ -13,9 +15,15 @@ let
       imports = [
         {
           options.test-helpers = {
-            rclone = mkOption { type = types.str; };
-            upload-sample = mkOption { type = types.str; };
-            check-sample = mkOption { type = types.str; };
+            rclone = mkOption {
+              type = types.str;
+            };
+            upload-sample = mkOption {
+              type = types.str;
+            };
+            check-sample = mkOption {
+              type = types.str;
+            };
             init = mkOption {
               type = types.str;
               default = "";
@@ -25,8 +33,12 @@ let
               default = "";
             };
           };
-          options.adminuser = mkOption { type = types.str; };
-          options.adminpass = mkOption { type = types.str; };
+          options.adminuser = mkOption {
+            type = types.str;
+          };
+          options.adminpass = mkOption {
+            type = types.str;
+          };
         }
       ];
 

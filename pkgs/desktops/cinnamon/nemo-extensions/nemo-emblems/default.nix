@@ -6,7 +6,9 @@
 }:
 
 let
-  srcs = import ../srcs.nix { inherit fetchFromGitHub; };
+  srcs = import ../srcs.nix {
+    inherit fetchFromGitHub;
+  };
 in
 python3.pkgs.buildPythonApplication rec {
   pname = "nemo-emblems";

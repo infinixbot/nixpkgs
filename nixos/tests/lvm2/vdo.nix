@@ -18,7 +18,9 @@ import ../make-test-python.nix (
           dmeventd.enable = true;
         };
         environment.systemPackages = with pkgs; [ xfsprogs ];
-        boot = lib.mkIf (kernelPackages != null) { inherit kernelPackages; };
+        boot = lib.mkIf (kernelPackages != null) {
+          inherit kernelPackages;
+        };
       };
 
     testScript = ''

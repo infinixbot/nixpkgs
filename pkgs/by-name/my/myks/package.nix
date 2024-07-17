@@ -35,7 +35,9 @@ buildGoModule rec {
 
   CGO_ENABLED = 0;
 
-  passthru.tests.version = testers.testVersion { package = myks; };
+  passthru.tests.version = testers.testVersion {
+    package = myks;
+  };
 
   postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
     installShellCompletion --cmd myks \

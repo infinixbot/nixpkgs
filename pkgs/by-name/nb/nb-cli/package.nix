@@ -46,7 +46,9 @@ python3.pkgs.buildPythonApplication rec {
   pythonImportsCheck = [ "nb_cli" ];
 
   passthru.tests = {
-    version = testers.testVersion { package = nb-cli; };
+    version = testers.testVersion {
+      package = nb-cli;
+    };
   };
 
   meta = {

@@ -8,7 +8,9 @@
 let
   cfg = config.services.lokinet;
   dataDir = "/var/lib/lokinet";
-  settingsFormat = pkgs.formats.ini { listsAsDuplicateKeys = true; };
+  settingsFormat = pkgs.formats.ini {
+    listsAsDuplicateKeys = true;
+  };
   configFile = settingsFormat.generate "lokinet.ini" (
     lib.filterAttrsRecursive (n: v: v != null) cfg.settings
   );

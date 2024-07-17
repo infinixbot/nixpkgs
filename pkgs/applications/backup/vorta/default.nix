@@ -63,7 +63,9 @@ python3Packages.buildPythonApplication rec {
 
   preCheck =
     let
-      fontsConf = makeFontsConf { fontDirectories = [ ]; };
+      fontsConf = makeFontsConf {
+        fontDirectories = [ ];
+      };
     in
     ''
       export HOME=$(mktemp -d)

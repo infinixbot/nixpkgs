@@ -45,7 +45,9 @@ in
             type = lazyAttrsOf str;
             default = { };
           };
-          options.bottom = lib.mkOption { type = enum [ ]; };
+          options.bottom = lib.mkOption {
+            type = enum [ ];
+          };
         };
     }
 

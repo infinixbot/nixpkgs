@@ -63,7 +63,9 @@ stdenv.mkDerivation rec {
 
   checkPhase = "(cd test && ./httpseverywhere_test)";
 
-  FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ ]; };
+  FONTCONFIG_FILE = makeFontsConf {
+    fontDirectories = [ ];
+  };
 
   outputs = [
     "out"

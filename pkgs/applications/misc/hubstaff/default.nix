@@ -58,7 +58,9 @@ stdenv.mkDerivation {
   pname = "hubstaff";
   inherit version;
 
-  src = fetchurl { inherit sha256 url; };
+  src = fetchurl {
+    inherit sha256 url;
+  };
 
   nativeBuildInputs = [
     unzip

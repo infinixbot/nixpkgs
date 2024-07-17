@@ -1,11 +1,18 @@
 {
   system ? builtins.currentSystem,
   config ? { },
-  pkgs ? import ../.. { inherit system config; },
+  pkgs ? import ../.. {
+    inherit system config;
+  },
 }:
 
 let
-  inherit (import ../lib/testing-python.nix { inherit system pkgs; }) makeTest;
+  inherit
+    (import ../lib/testing-python.nix {
+      inherit system pkgs;
+    })
+    makeTest
+    ;
   inherit (pkgs.lib)
     concatStringsSep
     maintainers
@@ -1109,7 +1116,9 @@ let
                 type = "v6";
               };
             }
-            { "google.com" = { }; }
+            {
+              "google.com" = { };
+            }
           ];
           dns = { };
           ping = {
@@ -1674,7 +1683,9 @@ let
               }
             ];
             outbounds = [
-              { protocol = "freedom"; }
+              {
+                protocol = "freedom";
+              }
               {
                 protocol = "freedom";
                 settings = { };
@@ -1795,7 +1806,9 @@ mapAttrs (
       name = "prometheus-${exporter}-exporter";
 
       nodes.${nodeName} = mkMerge [
-        { services.prometheus.exporters.${exporter} = testConfig.exporterConfig; }
+        {
+          services.prometheus.exporters.${exporter} = testConfig.exporterConfig;
+        }
         testConfig.metricProvider or { }
       ];
 

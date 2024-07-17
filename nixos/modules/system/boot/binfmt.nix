@@ -54,8 +54,17 @@ let
     else
       interpreter;
 
-  getEmulator = system: (lib.systems.elaborate { inherit system; }).emulator pkgs;
-  getQemuArch = system: (lib.systems.elaborate { inherit system; }).qemuArch;
+  getEmulator =
+    system:
+    (lib.systems.elaborate {
+      inherit system;
+    }).emulator
+      pkgs;
+  getQemuArch =
+    system:
+    (lib.systems.elaborate {
+      inherit system;
+    }).qemuArch;
 
   # Mapping of systems to “magicOrExtension” and “mask”. Mostly taken from:
   # - https://github.com/cleverca22/nixos-configs/blob/master/qemu.nix

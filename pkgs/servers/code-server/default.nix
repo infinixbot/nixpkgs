@@ -32,7 +32,9 @@ let
   system = stdenv.hostPlatform.system;
 
   python = python3;
-  yarn' = yarn.override { inherit nodejs; };
+  yarn' = yarn.override {
+    inherit nodejs;
+  };
   defaultYarnOpts = [ ];
 
   esbuild' = esbuild.override {

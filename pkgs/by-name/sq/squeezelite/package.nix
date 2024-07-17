@@ -101,7 +101,9 @@ stdenv.mkDerivation {
     ++ optional sslSupport "-DUSE_SSL"
     ++ optional (stdenv.isAarch32 or stdenv.isAarch64) "-DRPI";
 
-  env = lib.optionalAttrs stdenv.isDarwin { LDADD = "-lportaudio -lpthread"; };
+  env = lib.optionalAttrs stdenv.isDarwin {
+    LDADD = "-lportaudio -lpthread";
+  };
 
   installPhase = ''
     runHook preInstall

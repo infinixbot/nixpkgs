@@ -14,7 +14,9 @@ with lib;
 let
   cfg = config.testing;
 
-  qemu-common = import ../../lib/qemu-common.nix { inherit lib pkgs; };
+  qemu-common = import ../../lib/qemu-common.nix {
+    inherit lib pkgs;
+  };
 
   backdoorService = {
     requires = [
@@ -91,7 +93,9 @@ in
 
     systemd.services.backdoor = lib.mkMerge [
       backdoorService
-      { wantedBy = [ "multi-user.target" ]; }
+      {
+        wantedBy = [ "multi-user.target" ];
+      }
     ];
 
     boot.initrd.systemd = lib.mkMerge [

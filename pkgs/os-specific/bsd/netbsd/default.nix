@@ -140,9 +140,13 @@ makeScopeWithSplicing' {
           ;
       };
 
-      lorder = self.callPackage ./pkgs/lorder.nix { inherit (buildNetbsd) makeMinimal install; };
+      lorder = self.callPackage ./pkgs/lorder.nix {
+        inherit (buildNetbsd) makeMinimal install;
+      };
 
-      mtree = self.callPackage ./pkgs/mtree.nix { inherit (self) mknod; };
+      mtree = self.callPackage ./pkgs/mtree.nix {
+        inherit (self) mknod;
+      };
 
       mkDerivation = self.callPackage ./pkgs/mkDerivation.nix {
         inherit (buildNetbsd)
@@ -156,13 +160,19 @@ makeScopeWithSplicing' {
         inherit (buildPackages.buildPackages) rsync;
       };
 
-      makeMinimal = self.callPackage ./pkgs/makeMinimal.nix { inherit (self) make; };
+      makeMinimal = self.callPackage ./pkgs/makeMinimal.nix {
+        inherit (self) make;
+      };
 
       # See note in pkgs/stat/package.nix
-      stat = self.callPackage ./pkgs/stat/package.nix { inherit (buildNetbsd) makeMinimal install; };
+      stat = self.callPackage ./pkgs/stat/package.nix {
+        inherit (buildNetbsd) makeMinimal install;
+      };
 
       # See note in pkgs/stat/hook.nix
-      statHook = self.callPackage ./pkgs/stat/hook.nix { inherit (self) stat; };
+      statHook = self.callPackage ./pkgs/stat/hook.nix {
+        inherit (self) stat;
+      };
 
       sys-headers = self.callPackage ./pkgs/sys/headers.nix {
         inherit (buildNetbsd)
@@ -177,7 +187,9 @@ makeScopeWithSplicing' {
           ;
       };
 
-      tsort = self.callPackage ./pkgs/tsort.nix { inherit (buildNetbsd) makeMinimal install; };
+      tsort = self.callPackage ./pkgs/tsort.nix {
+        inherit (buildNetbsd) makeMinimal install;
+      };
     }
   );
 }

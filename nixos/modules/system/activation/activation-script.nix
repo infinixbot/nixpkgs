@@ -30,7 +30,14 @@ let
     set: onlyDry:
     let
       set' = mapAttrs (
-        _: v: if isString v then (noDepEntry v) // { supportsDryActivation = false; } else v
+        _: v:
+        if isString v then
+          (noDepEntry v)
+          // {
+            supportsDryActivation = false;
+          }
+        else
+          v
       ) set;
       withHeadlines = addAttributeName set';
       # When building a dry activation script, this replaces all activation scripts
@@ -42,7 +49,10 @@ let
       withDrySnippets = mapAttrs (
         a: v:
         if onlyDry && !v.supportsDryActivation then
-          v // { text = "#### Activation script snippet ${a} does not support dry activation."; }
+          v
+          // {
+            text = "#### Activation script snippet ${a} does not support dry activation.";
+          }
         else
           v
       ) withHeadlines;
@@ -157,7 +167,12 @@ in
       '';
 
       type = types.attrsOf (scriptType true);
-      apply = set: set // { script = systemActivationScript set false; };
+      apply =
+        set:
+        set
+        // {
+          script = systemActivationScript set false;
+        };
     };
 
     system.dryActivationScript = mkOption {

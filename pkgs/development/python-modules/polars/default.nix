@@ -15,7 +15,9 @@
 
 let
   rust-jemalloc-sys' = rust-jemalloc-sys.override {
-    jemalloc = jemalloc.override { disableInitExecTls = true; };
+    jemalloc = jemalloc.override {
+      disableInitExecTls = true;
+    };
   };
 in
 
@@ -40,7 +42,9 @@ buildPythonPackage rec {
     #sed -i 's/version = "0.18.0"/version = "${version}"/g' Cargo.lock
   '';
 
-  cargoDeps = rustPlatform.importCargoLock { lockFile = ./Cargo.lock; };
+  cargoDeps = rustPlatform.importCargoLock {
+    lockFile = ./Cargo.lock;
+  };
 
   buildAndTestSubdir = "py-polars";
 

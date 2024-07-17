@@ -38,7 +38,9 @@ stdenv.mkDerivation (finalAttrs: {
   strictDeps = true;
 
   passthru.tests = {
-    approximation = callPackage ./tests/approximation.nix { spigot = finalAttrs.finalPackage; };
+    approximation = callPackage ./tests/approximation.nix {
+      spigot = finalAttrs.finalPackage;
+    };
   };
 
   meta = {

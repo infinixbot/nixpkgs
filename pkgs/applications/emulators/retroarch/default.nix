@@ -130,7 +130,9 @@ stdenv.mkDerivation rec {
 
   passthru = {
     tests = nixosTests.retroarch;
-    updateScript = gitUpdater { rev-prefix = "v"; };
+    updateScript = gitUpdater {
+      rev-prefix = "v";
+    };
   };
 
   meta = with lib; {

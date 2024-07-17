@@ -42,7 +42,9 @@ buildPythonPackage {
 
   pythonImportsCheck = [ "nixops_aws" ];
 
-  passthru.updateScript = unstableGitUpdater { tagPrefix = "v"; };
+  passthru.updateScript = unstableGitUpdater {
+    tagPrefix = "v";
+  };
 
   meta = with lib; {
     description = "AWS plugin for NixOps";

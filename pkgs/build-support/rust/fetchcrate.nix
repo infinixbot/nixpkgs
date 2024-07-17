@@ -22,7 +22,9 @@ assert pname == null || pname == crateName;
     name = "${crateName}-${version}.tar.gz";
     url = "${registryDl}/${crateName}/${version}/download";
   }
-  // lib.optionalAttrs unpack { extension = "tar.gz"; }
+  // lib.optionalAttrs unpack {
+    extension = "tar.gz";
+  }
   // removeAttrs args [
     "crateName"
     "pname"

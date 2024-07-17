@@ -9,7 +9,9 @@
 }:
 let
   arch = stdenv.targetPlatform.uname.processor;
-  harePropagationInputs = builtins.attrValues { inherit (hare) harec qbe; };
+  harePropagationInputs = builtins.attrValues {
+    inherit (hare) harec qbe;
+  };
   hareWrappedScript = writeShellApplication {
     # `name` MUST be `hare`, since its role is to replace the hare binary.
     name = "hare";
@@ -27,15 +29,20 @@ let
       esac
     '';
   };
-  hareWrapper = runCommand "hare-wrapper" { nativeBuildInputs = [ makeWrapper ]; } ''
-    mkdir -p $out/bin
-    install ${lib.getExe hareWrappedScript} $out/bin/hare
-    makeWrapper ${lib.getExe hare} $out/bin/hare-native \
-      --inherit-argv0 \
-      --unset AR \
-      --unset LD \
-      --unset CC
-  '';
+  hareWrapper =
+    runCommand "hare-wrapper"
+      {
+        nativeBuildInputs = [ makeWrapper ];
+      }
+      ''
+        mkdir -p $out/bin
+        install ${lib.getExe hareWrappedScript} $out/bin/hare
+        makeWrapper ${lib.getExe hare} $out/bin/hare-native \
+          --inherit-argv0 \
+          --unset AR \
+          --unset LD \
+          --unset CC
+      '';
 in
 makeSetupHook {
   name = "hare-hook";

@@ -10,7 +10,9 @@ let
     url = "https://github.com/Martichou/rquickshare/releases/download/v${version}/r-quick-share_${version}_amd64.AppImage";
     hash = "sha256-0r8G3f46nHfTeReai4mWCykyx65AoaoGc0L7nrGEhTQ=";
   };
-  appimageContents = appimageTools.extractType2 { inherit pname version src; };
+  appimageContents = appimageTools.extractType2 {
+    inherit pname version src;
+  };
 in
 appimageTools.wrapType2 {
   inherit pname version src;

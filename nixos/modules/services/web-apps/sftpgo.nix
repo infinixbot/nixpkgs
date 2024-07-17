@@ -310,10 +310,26 @@ in
   config = mkIf cfg.enable {
     services.sftpgo.settings = (
       mapAttrs (name: mkDefault) {
-        ftpd.bindings = [ { port = 0; } ];
-        httpd.bindings = [ { port = 0; } ];
-        sftpd.bindings = [ { port = 0; } ];
-        webdavd.bindings = [ { port = 0; } ];
+        ftpd.bindings = [
+          {
+            port = 0;
+          }
+        ];
+        httpd.bindings = [
+          {
+            port = 0;
+          }
+        ];
+        sftpd.bindings = [
+          {
+            port = 0;
+          }
+        ];
+        webdavd.bindings = [
+          {
+            port = 0;
+          }
+        ];
         httpd.openapi_path = "${cfg.package}/share/sftpgo/openapi";
         httpd.templates_path = "${cfg.package}/share/sftpgo/templates";
         httpd.static_files_path = "${cfg.package}/share/sftpgo/static";
@@ -390,7 +406,9 @@ in
           ];
           UMask = "0077";
         })
-        (mkIf hasPrivilegedPorts { AmbientCapabilities = "CAP_NET_BIND_SERVICE"; })
+        (mkIf hasPrivilegedPorts {
+          AmbientCapabilities = "CAP_NET_BIND_SERVICE";
+        })
         (mkIf (cfg.dataDir == options.services.sftpgo.dataDir.default) {
           StateDirectory = baseNameOf cfg.dataDir;
         })

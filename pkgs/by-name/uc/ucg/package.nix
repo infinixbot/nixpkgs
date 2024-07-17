@@ -32,7 +32,9 @@ stdenv.mkDerivation (finalAttrs: {
   buildInputs = [ pcre ];
 
   passthru.tests = {
-    simple = callPackage ./tests/simple.nix { ucg = finalAttrs.finalPackage; };
+    simple = callPackage ./tests/simple.nix {
+      ucg = finalAttrs.finalPackage;
+    };
   };
 
   meta = {

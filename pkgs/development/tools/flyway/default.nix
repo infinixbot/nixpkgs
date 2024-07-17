@@ -28,7 +28,9 @@ stdenv.mkDerivation (finalAttrs: {
       --add-flags "-jarDirs='$out/share/flyway/jars'"
   '';
   passthru.tests = {
-    version = testers.testVersion { package = finalAttrs.finalPackage; };
+    version = testers.testVersion {
+      package = finalAttrs.finalPackage;
+    };
   };
   meta = with lib; {
     description = "Evolve your Database Schema easily and reliably across all your instances";

@@ -43,7 +43,9 @@ stdenv.mkDerivation rec {
     "--with-c-client-target=slx"
   ];
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     description = "Console mail reader";

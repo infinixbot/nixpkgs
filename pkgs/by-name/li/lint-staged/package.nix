@@ -28,7 +28,9 @@ buildNpmPackage rec {
       '"version": "${version}"'
   '';
 
-  passthru.tests.version = testers.testVersion { package = lint-staged; };
+  passthru.tests.version = testers.testVersion {
+    package = lint-staged;
+  };
 
   meta = with lib; {
     description = "Run linters on git staged files";

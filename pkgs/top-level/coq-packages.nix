@@ -15,7 +15,9 @@
   coq2html,
 }@args:
 let
-  lib = import ../build-support/coq/extra-lib.nix { inherit (args) lib; };
+  lib = import ../build-support/coq/extra-lib.nix {
+    inherit (args) lib;
+  };
 in
 let
   mkCoqPackages' =
@@ -31,7 +33,9 @@ let
         };
       };
 
-      metaFetch = import ../build-support/coq/meta-fetch/default.nix { inherit lib stdenv fetchzip; };
+      metaFetch = import ../build-support/coq/meta-fetch/default.nix {
+        inherit lib stdenv fetchzip;
+      };
       mkCoqDerivation = lib.makeOverridable (callPackage ../build-support/coq { });
 
       contribs = recurseIntoAttrs (callPackage ../development/coq-modules/contribs { });
@@ -49,7 +53,9 @@ let
       Cheerios = callPackage ../development/coq-modules/Cheerios { };
       CoLoR = callPackage ../development/coq-modules/CoLoR (
         (lib.optionalAttrs (lib.versions.isEq self.coq.coq-version "8.13") {
-          bignums = self.bignums.override { version = "8.13.0"; };
+          bignums = self.bignums.override {
+            version = "8.13.0";
+          };
         })
       );
       compcert = callPackage ../development/coq-modules/compcert {
@@ -72,7 +78,9 @@ let
       coq-record-update = callPackage ../development/coq-modules/coq-record-update { };
       coqeal = callPackage ../development/coq-modules/coqeal (
         (lib.optionalAttrs (lib.versions.range "8.13" "8.14" self.coq.coq-version) {
-          bignums = self.bignums.override { version = "${self.coq.coq-version}.0"; };
+          bignums = self.bignums.override {
+            version = "${self.coq.coq-version}.0";
+          };
         })
       );
       coqhammer = callPackage ../development/coq-modules/coqhammer { };
@@ -154,7 +162,9 @@ let
       trakt = callPackage ../development/coq-modules/trakt { };
       vcfloat = callPackage ../development/coq-modules/vcfloat (
         lib.optionalAttrs (lib.versions.range "8.16" "8.18" self.coq.version) {
-          interval = self.interval.override { version = "4.9.0"; };
+          interval = self.interval.override {
+            version = "4.9.0";
+          };
         }
       );
       Velisarios = callPackage ../development/coq-modules/Velisarios { };
@@ -182,7 +192,9 @@ let
         // (lib.optionalAttrs (lib.versions.isEq self.coq.coq-version "8.13") {
           ITree = self.ITree.override {
             version = "4.0.0";
-            paco = self.paco.override { version = "4.1.2"; };
+            paco = self.paco.override {
+              version = "4.1.2";
+            };
           };
         })
       );

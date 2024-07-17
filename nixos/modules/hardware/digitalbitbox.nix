@@ -28,5 +28,7 @@ in
     };
   };
 
-  config = mkIf cfg.enable { services.udev.packages = [ cfg.package ]; };
+  config = mkIf cfg.enable {
+    services.udev.packages = [ cfg.package ];
+  };
 }

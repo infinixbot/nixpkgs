@@ -39,7 +39,9 @@ buildGoModule rec {
     done
   '';
 
-  passthru.tests.version = testers.testVersion { package = kubeswitch; };
+  passthru.tests.version = testers.testVersion {
+    package = kubeswitch;
+  };
 
   meta = {
     changelog = "https://github.com/danielfoehrKn/kubeswitch/releases/tag/${version}";

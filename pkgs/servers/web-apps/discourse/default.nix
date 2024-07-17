@@ -151,16 +151,21 @@ let
       }
     );
 
-  rake = runCommand "discourse-rake" { nativeBuildInputs = [ makeWrapper ]; } ''
-    mkdir -p $out/bin
-    makeWrapper ${rubyEnv}/bin/rake $out/bin/discourse-rake \
-        ${
-          lib.concatStrings (lib.mapAttrsToList (name: value: "--set ${name} '${value}' ") runtimeEnv)
-        } \
-        --prefix PATH : ${lib.makeBinPath runtimeDeps} \
-        --set RAKEOPT '-f ${discourse}/share/discourse/Rakefile' \
-        --chdir '${discourse}/share/discourse'
-  '';
+  rake =
+    runCommand "discourse-rake"
+      {
+        nativeBuildInputs = [ makeWrapper ];
+      }
+      ''
+        mkdir -p $out/bin
+        makeWrapper ${rubyEnv}/bin/rake $out/bin/discourse-rake \
+            ${
+              lib.concatStrings (lib.mapAttrsToList (name: value: "--set ${name} '${value}' ") runtimeEnv)
+            } \
+            --prefix PATH : ${lib.makeBinPath runtimeDeps} \
+            --set RAKEOPT '-f ${discourse}/share/discourse/Rakefile' \
+            --chdir '${discourse}/share/discourse'
+      '';
 
   rubyEnv = bundlerEnv {
     name = "discourse-ruby-env-${version}";
@@ -451,7 +456,9 @@ let
         ;
       inherit (pkgs) discourseAllPlugins;
       enabledPlugins = plugins;
-      plugins = callPackage ./plugins/all-plugins.nix { inherit mkDiscoursePlugin; };
+      plugins = callPackage ./plugins/all-plugins.nix {
+        inherit mkDiscoursePlugin;
+      };
       ruby = rubyEnv.wrappedRuby;
       tests = import ../../../../nixos/tests/discourse.nix {
         inherit (stdenv) system;

@@ -18,7 +18,9 @@ buildLua rec {
       "webui-page"
     ];
   };
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   scriptPath = ".";
   passthru.scriptName = "webui";

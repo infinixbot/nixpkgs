@@ -49,7 +49,11 @@ let
     DisableAppUpdate = true;
   } // config.firefox.policies or { };
 
-  policiesJson = writeText "firefox-policies.json" (builtins.toJSON { inherit policies; });
+  policiesJson = writeText "firefox-policies.json" (
+    builtins.toJSON {
+      inherit policies;
+    }
+  );
 
   defaultSource = lib.findFirst (sourceMatches "en-US") { } sources;
 
@@ -67,7 +71,9 @@ in
 stdenv.mkDerivation {
   inherit pname version;
 
-  src = fetchurl { inherit (source) url sha256; };
+  src = fetchurl {
+    inherit (source) url sha256;
+  };
 
   nativeBuildInputs = [
     wrapGAppsHook3

@@ -48,10 +48,14 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ];
 
-  env = {
-    # Needed to get openssl-sys to use pkg-config.
-    OPENSSL_NO_VENDOR = 1;
-  } // lib.optionalAttrs stdenv.cc.isClang { NIX_CFLAGS_COMPILE = "-faligned-allocation"; };
+  env =
+    {
+      # Needed to get openssl-sys to use pkg-config.
+      OPENSSL_NO_VENDOR = 1;
+    }
+    // lib.optionalAttrs stdenv.cc.isClang {
+      NIX_CFLAGS_COMPILE = "-faligned-allocation";
+    };
 
   passthru = {
     updateScript = nix-update-script { };

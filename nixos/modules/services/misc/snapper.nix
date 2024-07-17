@@ -257,12 +257,14 @@ in
           // (mapAttrs' (
             name: subvolume:
             nameValuePair "snapper/configs/${name}" ({
-              text = lib.generators.toKeyValue { inherit mkKeyValue; } (
-                filterAttrs (k: v: v != defaultOf k) subvolume
-              );
+              text = lib.generators.toKeyValue {
+                inherit mkKeyValue;
+              } (filterAttrs (k: v: v != defaultOf k) subvolume);
             })
           ) cfg.configs)
-          // (lib.optionalAttrs (cfg.filters != null) { "snapper/filters/default.txt".text = cfg.filters; });
+          // (lib.optionalAttrs (cfg.filters != null) {
+            "snapper/filters/default.txt".text = cfg.filters;
+          });
       };
 
       services.dbus.packages = [ pkgs.snapper ];

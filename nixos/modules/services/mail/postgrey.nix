@@ -86,7 +86,9 @@ in
           ];
         in
         if value inetAddr == null then
-          { path = "/run/postgrey.sock"; }
+          {
+            path = "/run/postgrey.sock";
+          }
         else
           {
             addr = value inetAddr;

@@ -43,7 +43,9 @@ python3.pkgs.buildPythonApplication rec {
 
   pythonImportsCheck = [ "khard" ];
 
-  passthru.tests.version = testers.testVersion { package = khard; };
+  passthru.tests.version = testers.testVersion {
+    package = khard;
+  };
 
   meta = {
     homepage = "https://github.com/scheibler/khard";

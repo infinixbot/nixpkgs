@@ -16,9 +16,15 @@ let
   allPackages =
     self:
     let
-      frameworks = import ./frameworks { inherit (self) callPackage; };
-      gear = import ./gear { inherit (self) callPackage; };
-      plasma = import ./plasma { inherit (self) callPackage; };
+      frameworks = import ./frameworks {
+        inherit (self) callPackage;
+      };
+      gear = import ./gear {
+        inherit (self) callPackage;
+      };
+      plasma = import ./plasma {
+        inherit (self) callPackage;
+      };
 
       sets = [
         "gear"
@@ -30,7 +36,13 @@ let
       allUrls = lib.attrsets.mergeAttrsList (map loadUrls sets);
 
       sources = lib.mapAttrs (
-        _: v: (fetchurl { inherit (v) url hash; }) // { inherit (v) version; }
+        _: v:
+        (fetchurl {
+          inherit (v) url hash;
+        })
+        // {
+          inherit (v) version;
+        }
       ) allUrls;
     in
     (

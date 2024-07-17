@@ -81,12 +81,18 @@ let
               hash = "sha256-Kvd06eZdibgDbabVVe0+cNTeS1rDnMXIZZpPlHIlfBo=";
             };
           in
-          runCommand "backgroundremover-image-test.png" { buildInputs = [ self ]; } ''
-            export NUMBA_CACHE_DIR=$(mktemp -d)
-            backgroundremover -i ${demoImage} -o $out
-          '';
+          runCommand "backgroundremover-image-test.png"
+            {
+              buildInputs = [ self ];
+            }
+            ''
+              export NUMBA_CACHE_DIR=$(mktemp -d)
+              backgroundremover -i ${demoImage} -o $out
+            '';
       };
-      updateScript = gitUpdater { rev-prefix = "v"; };
+      updateScript = gitUpdater {
+        rev-prefix = "v";
+      };
     };
 
     doCheck = false; # no tests

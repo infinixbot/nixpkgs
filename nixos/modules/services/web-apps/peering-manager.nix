@@ -33,7 +33,9 @@ let
           ln -s ${cfg.oidcConfigPath} $out/opt/peering-manager/peering_manager/oidc_config.py
         '';
     })).override
-      { inherit (cfg) plugins; };
+      {
+        inherit (cfg) plugins;
+      };
   peeringManagerManageScript = pkgs.writeScriptBin "peering-manager-manage" ''
     #!${pkgs.stdenv.shell}
     export PYTHONPATH=${pkg.pythonPath}

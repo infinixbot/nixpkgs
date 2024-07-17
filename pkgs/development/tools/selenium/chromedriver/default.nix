@@ -94,7 +94,9 @@ stdenv.mkDerivation rec {
       wrapProgram "$out/bin/chromedriver" --prefix LD_LIBRARY_PATH : "${libs}"
     '';
 
-  passthru.tests.version = testers.testVersion { package = chromedriver; };
+  passthru.tests.version = testers.testVersion {
+    package = chromedriver;
+  };
 
   meta = with lib; {
     homepage = "https://chromedriver.chromium.org/";

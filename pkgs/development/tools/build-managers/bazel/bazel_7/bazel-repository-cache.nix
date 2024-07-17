@@ -22,7 +22,9 @@ let
         _acc: moduleDepGraphName: module:
         (
           if builtins.isAttrs module && module ? repoSpec then
-            op _acc { inherit moduleDepGraphName; } module.repoSpec
+            op _acc {
+              inherit moduleDepGraphName;
+            } module.repoSpec
           else
             _acc
         )
@@ -47,7 +49,9 @@ let
           then
             lib.foldlAttrs (
               __acc: moduleExtensionGeneratedRepoName: repoSpec:
-              (op __acc { inherit moduleExtensionName moduleExtensionGeneratedRepoName; } repoSpec)
+              (op __acc {
+                inherit moduleExtensionName moduleExtensionGeneratedRepoName;
+              } repoSpec)
             ) _acc moduleExtension.general.generatedRepoSpecs
           else
             _acc

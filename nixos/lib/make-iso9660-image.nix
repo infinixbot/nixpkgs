@@ -105,5 +105,7 @@ stdenv.mkDerivation {
   squashfsCommand = lib.optionalString needSquashfs makeSquashfsDrv.buildCommand;
 
   # For obtaining the closure of `storeContents'.
-  closureInfo = closureInfo { rootPaths = map (x: x.object) storeContents; };
+  closureInfo = closureInfo {
+    rootPaths = map (x: x.object) storeContents;
+  };
 }

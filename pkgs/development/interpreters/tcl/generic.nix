@@ -90,7 +90,9 @@ let
     };
   };
 
-  mkTclDerivation = callPackage ./mk-tcl-derivation.nix { tcl = baseInterp; };
+  mkTclDerivation = callPackage ./mk-tcl-derivation.nix {
+    tcl = baseInterp;
+  };
 
 in
 baseInterp.overrideAttrs (self: {

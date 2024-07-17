@@ -22,7 +22,9 @@ let
     mkPackageOption
     ;
 
-  package = cfg.package.override { inherit (cfg) stateDir; };
+  package = cfg.package.override {
+    inherit (cfg) stateDir;
+  };
 
   cfg = config.services.dolibarr;
   vhostCfg = lib.optionalAttrs (cfg.nginx != null) config.services.nginx.virtualHosts."${cfg.domain}";
@@ -177,12 +179,16 @@ in
     nginx = mkOption {
       type = types.nullOr (
         types.submodule (
-          lib.recursiveUpdate (import ../web-servers/nginx/vhost-options.nix { inherit config lib; }) {
-            # enable encryption by default,
-            # as sensitive login and Dolibarr (ERP) data should not be transmitted in clear text.
-            options.forceSSL.default = true;
-            options.enableACME.default = true;
-          }
+          lib.recursiveUpdate
+            (import ../web-servers/nginx/vhost-options.nix {
+              inherit config lib;
+            })
+            {
+              # enable encryption by default,
+              # as sensitive login and Dolibarr (ERP) data should not be transmitted in clear text.
+              options.forceSSL.default = true;
+              options.enableACME.default = true;
+            }
         )
       );
       default = null;
@@ -364,7 +370,9 @@ in
         group = cfg.group;
       };
 
-      users.groups = optionalAttrs (cfg.group == "dolibarr") { dolibarr = { }; };
+      users.groups = optionalAttrs (cfg.group == "dolibarr") {
+        dolibarr = { };
+      };
     }
     (mkIf (cfg.nginx != null) {
       users.users."${config.services.nginx.group}".extraGroups = mkIf (cfg.nginx != null) [ cfg.group ];

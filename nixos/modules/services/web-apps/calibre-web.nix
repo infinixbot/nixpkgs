@@ -169,7 +169,9 @@ in
         };
       };
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.listen.port ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.listen.port ];
+    };
 
     users.users = mkIf (cfg.user == "calibre-web") {
       calibre-web = {
@@ -178,7 +180,9 @@ in
       };
     };
 
-    users.groups = mkIf (cfg.group == "calibre-web") { calibre-web = { }; };
+    users.groups = mkIf (cfg.group == "calibre-web") {
+      calibre-web = { };
+    };
   };
 
   meta.maintainers = with lib.maintainers; [ pborzenkov ];

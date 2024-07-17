@@ -56,7 +56,9 @@ stdenv.mkDerivation rec {
   cmakeFlags = lib.optional enableGui "-DUSE_QT_GUI=ON";
 
   passthru.tests = {
-    version = testers.testVersion { package = lgogdownloader; };
+    version = testers.testVersion {
+      package = lgogdownloader;
+    };
   };
 
   meta = {

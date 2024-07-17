@@ -29,7 +29,11 @@ import ./make-test-python.nix (
           test-support.displayManager.auto.user = "alice";
           services.xscreensaver.enable = true;
           nixpkgs.overlays = [
-            (self: super: { xscreensaver = super.xscreensaver.override { wrapperPrefix = ""; }; })
+            (self: super: {
+              xscreensaver = super.xscreensaver.override {
+                wrapperPrefix = "";
+              };
+            })
           ];
         };
 
@@ -43,7 +47,11 @@ import ./make-test-python.nix (
           test-support.displayManager.auto.user = "alice";
           services.xscreensaver.enable = true;
           nixpkgs.overlays = [
-            (self: super: { xscreensaver = super.xscreensaver.override { wrapperPrefix = "/a/bad/path"; }; })
+            (self: super: {
+              xscreensaver = super.xscreensaver.override {
+                wrapperPrefix = "/a/bad/path";
+              };
+            })
           ];
         };
     };

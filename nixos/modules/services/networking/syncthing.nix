@@ -35,7 +35,13 @@ let
     else
       "${cfg.guiAddress}${path}";
 
-  devices = mapAttrsToList (_: device: device // { deviceID = device.id; }) cfg.settings.devices;
+  devices = mapAttrsToList (
+    _: device:
+    device
+    // {
+      deviceID = device.id;
+    }
+  ) cfg.settings.devices;
 
   folders = mapAttrsToList (
     _: folder:
@@ -49,7 +55,12 @@ let
         {
           devices = map (
             device:
-            if builtins.isString device then { deviceId = cfg.settings.devices.${device}.id; } else device
+            if builtins.isString device then
+              {
+                deviceId = cfg.settings.devices.${device}.id;
+              }
+            else
+              device
           ) folder.devices;
         }
   ) (filterAttrs (_: folder: folder.enable) cfg.settings.folders);

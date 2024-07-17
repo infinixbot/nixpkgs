@@ -247,9 +247,13 @@ in
       ];
 
     # List of machines for distributed Nix builds
-    environment.etc."nix/machines" = mkIf (cfg.buildMachines != [ ]) { text = buildMachinesText; };
+    environment.etc."nix/machines" = mkIf (cfg.buildMachines != [ ]) {
+      text = buildMachinesText;
+    };
 
     # Legacy configuration conversion.
-    nix.settings = mkIf (!cfg.distributedBuilds) { builders = null; };
+    nix.settings = mkIf (!cfg.distributedBuilds) {
+      builders = null;
+    };
   };
 }

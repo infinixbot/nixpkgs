@@ -66,7 +66,9 @@ stdenv.mkDerivation rec {
   ];
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "gnome-disk-utility"; };
+    updateScript = gnome.updateScript {
+      packageName = "gnome-disk-utility";
+    };
   };
 
   meta = with lib; {

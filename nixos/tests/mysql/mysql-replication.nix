@@ -1,12 +1,20 @@
 {
   system ? builtins.currentSystem,
   config ? { },
-  pkgs ? import ../../.. { inherit system config; },
+  pkgs ? import ../../.. {
+    inherit system config;
+  },
   lib ? pkgs.lib,
 }:
 
 let
-  inherit (import ./common.nix { inherit pkgs lib; }) mkTestName mariadbPackages;
+  inherit
+    (import ./common.nix {
+      inherit pkgs lib;
+    })
+    mkTestName
+    mariadbPackages
+    ;
 
   replicateUser = "replicate";
   replicatePassword = "secret";
@@ -109,4 +117,9 @@ let
       '';
     };
 in
-lib.mapAttrs (_: package: makeReplicationTest { inherit package; }) mariadbPackages
+lib.mapAttrs (
+  _: package:
+  makeReplicationTest {
+    inherit package;
+  }
+) mariadbPackages

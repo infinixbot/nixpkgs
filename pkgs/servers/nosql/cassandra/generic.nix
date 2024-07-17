@@ -115,7 +115,9 @@ stdenv.mkDerivation rec {
           test;
       };
 
-    updateScript = callPackage ./update-script.nix { inherit generation; };
+    updateScript = callPackage ./update-script.nix {
+      inherit generation;
+    };
   };
 
   meta =

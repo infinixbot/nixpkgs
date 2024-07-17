@@ -20,7 +20,10 @@ let
     #
     # $ nix-build -A nixfmt-rfc-style.tests
     passthru.tests =
-      runCommand "nixfmt-rfc-style-tests" { nativeBuildInputs = [ nixfmt-rfc-style ]; }
+      runCommand "nixfmt-rfc-style-tests"
+        {
+          nativeBuildInputs = [ nixfmt-rfc-style ];
+        }
         ''
           nixfmt --version > $out
         '';

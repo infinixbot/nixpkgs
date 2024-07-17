@@ -36,7 +36,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       feh
       libnotify # notify-send
       # Needed to fix font rendering issue in imagemagick
-      (imagemagick.override { ghostscriptSupport = true; })
+      (imagemagick.override {
+        ghostscriptSupport = true;
+      })
     ]
     ++ lib.optionals waylandSupport [
       grim

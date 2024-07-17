@@ -3,9 +3,13 @@
 # tests and linux cross stdenv building, so handle with care!
 { lib }:
 let
-  platforms = import ./platforms.nix { inherit lib; };
+  platforms = import ./platforms.nix {
+    inherit lib;
+  };
 
-  riscv = bits: { config = "riscv${bits}-unknown-linux-gnu"; };
+  riscv = bits: {
+    config = "riscv${bits}-unknown-linux-gnu";
+  };
 in
 
 rec {

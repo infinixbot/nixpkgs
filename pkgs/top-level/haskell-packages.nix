@@ -467,7 +467,10 @@ in
       in
       pkgs.recurseIntoAttrs (
         pkgs.lib.genAttrs integerSimpleGhcNames (
-          name: compiler.${name}.override { enableIntegerSimple = true; }
+          name:
+          compiler.${name}.override {
+            enableIntegerSimple = true;
+          }
         )
       );
 
@@ -481,7 +484,10 @@ in
       in
       pkgs.recurseIntoAttrs (
         pkgs.lib.genAttrs nativeBignumGhcNames (
-          name: compiler.${name}.override { enableNativeBignum = true; }
+          name:
+          compiler.${name}.override {
+            enableNativeBignum = true;
+          }
         )
       );
   };
@@ -640,7 +646,9 @@ in
             ghc = bh.compiler.integer-simple.${name};
             buildHaskellPackages = bh.packages.integer-simple.${name};
             overrides = pkgs.lib.composeExtensions (oldAttrs.overrides or (_: _: { })) (
-              _: _: { integer-simple = null; }
+              _: _: {
+                integer-simple = null;
+              }
             );
           })
         );

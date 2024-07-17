@@ -176,7 +176,9 @@ in
         '';
       };
 
-      package = mkPackageOption pkgs "minecraft-server" { example = "minecraft-server_1_12_2"; };
+      package = mkPackageOption pkgs "minecraft-server" {
+        example = "minecraft-server_1_12_2";
+      };
 
       jvmOpts = mkOption {
         type = types.separatedString " ";

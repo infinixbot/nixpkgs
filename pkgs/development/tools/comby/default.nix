@@ -60,7 +60,9 @@ let
       };
     };
 
-  combyKernel = mkCombyPackage { pname = "comby-kernel"; };
+  combyKernel = mkCombyPackage {
+    pname = "comby-kernel";
+  };
   combySemantic = mkCombyPackage {
     pname = "comby-semantic";
     extraBuildInputs = [ ocamlPackages.cohttp-lwt-unix ];

@@ -96,7 +96,13 @@
         v: system:
         if v != null then
           v
-        else if localSystem.canExecute (lib.systems.elaborate { inherit system; }) then
+        else if
+          localSystem.canExecute (
+            lib.systems.elaborate {
+              inherit system;
+            }
+          )
+        then
           archLookupTable.${system}
         else
           null
@@ -193,7 +199,9 @@ let
         shell = "${bootstrapTools}/bin/bash";
         initialPath = [ bootstrapTools ];
 
-        fetchurlBoot = import ../../build-support/fetchurl/boot.nix { inherit system; };
+        fetchurlBoot = import ../../build-support/fetchurl/boot.nix {
+          inherit system;
+        };
 
         cc =
           if prevStage.gcc-unwrapped == null then
@@ -228,7 +236,12 @@ let
                 }
               );
 
-        overrides = self: super: (overrides self super) // { fetchurl = thisStdenv.fetchurlBoot; };
+        overrides =
+          self: super:
+          (overrides self super)
+          // {
+            fetchurl = thisStdenv.fetchurlBoot;
+          };
       };
 
     in
@@ -330,7 +343,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
 
       # Rebuild binutils to use from stage2 onwards.
       overrides = self: super: {
-        binutils-unwrapped = super.binutils-unwrapped.override { enableGold = false; };
+        binutils-unwrapped = super.binutils-unwrapped.override {
+          enableGold = false;
+        };
         inherit (prevStage)
           ccWrapperStdenv
           gcc-unwrapped
@@ -385,13 +400,17 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
           patchelf
           ;
         ${localSystem.libc} = getLibc prevStage;
-        gmp = super.gmp.override { cxx = false; };
+        gmp = super.gmp.override {
+          cxx = false;
+        };
         # This stage also rebuilds binutils which will of course be used only in the next stage.
         # We inherit this until stage3, in stage4 it will be rebuilt using the adjacent bash/runtimeShell pkg.
         # TODO(@sternenseemann): Can we already build the wrapper with the actual runtimeShell here?
         # Historically, the wrapper didn't use runtimeShell, so the used shell had to be changed explicitly
         # (or stdenvNoCC.shell would be used) which happened in stage4.
-        binutils = super.binutils.override { runtimeShell = "${bootstrapTools}/bin/bash"; };
+        binutils = super.binutils.override {
+          runtimeShell = "${bootstrapTools}/bin/bash";
+        };
         gcc-unwrapped =
           (super.gcc-unwrapped.override (
             commonGccOverrides
@@ -614,12 +633,19 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
           # We build a special copy of libgmp which doesn't use libstdc++, because
           # xgcc++'s libstdc++ references the bootstrap-files (which is what
           # compiles xgcc++).
-          gmp = super.gmp.override { cxx = false; };
+          gmp = super.gmp.override {
+            cxx = false;
+          };
         }
         // {
           ${localSystem.libc} = getLibc prevStage;
           gcc-unwrapped =
-            (super.gcc-unwrapped.override (commonGccOverrides // { inherit (prevStage) which; })).overrideAttrs
+            (super.gcc-unwrapped.override (
+              commonGccOverrides
+              // {
+                inherit (prevStage) which;
+              }
+            )).overrideAttrs
               (a: {
                 # so we can add them to allowedRequisites below
                 passthru = a.passthru // {
@@ -680,7 +706,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
 
         # To allow users' overrides inhibit dependencies too heavy for
         # bootstrap, like guile: https://github.com/NixOS/nixpkgs/issues/181188
-        gnumake = super.gnumake.override { inBootstrap = true; };
+        gnumake = super.gnumake.override {
+          inBootstrap = true;
+        };
 
         gcc = lib.makeOverridable (import ../../build-support/cc-wrapper) {
           nativeTools = false;
@@ -739,7 +767,11 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
 
         preHook = commonPreHook;
 
-        initialPath = ((import ../generic/common-path.nix) { pkgs = prevStage; });
+        initialPath = (
+          (import ../generic/common-path.nix) {
+            pkgs = prevStage;
+          }
+        );
 
         extraNativeBuildInputs = [
           prevStage.patchelf
@@ -867,7 +899,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
                 ;
             };
 
-            gnumake = super.gnumake.override { inBootstrap = false; };
+            gnumake = super.gnumake.override {
+              inBootstrap = false;
+            };
           }
           // lib.optionalAttrs (super.stdenv.targetPlatform == localSystem) {
             # Need to get rid of these when cross-compiling.

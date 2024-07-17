@@ -19,7 +19,9 @@
 }:
 
 let
-  expected = import ./bootstrap-sources.nix { inherit hostPlatform; };
+  expected = import ./bootstrap-sources.nix {
+    inherit hostPlatform;
+  };
 in
 
 fetchFromGitHub {

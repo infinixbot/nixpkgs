@@ -127,7 +127,9 @@ in
       map mkDefaults [
         defaultConfig
         # Note: this is defined here to avoid the docs depending on `config`
-        { homeserver.domain = config.services.matrix-synapse.settings.server_name; }
+        {
+          homeserver.domain = config.services.matrix-synapse.settings.server_name;
+        }
       ]
     );
 

@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
     export INSTALL_DATA="${coreutils}/bin/install -m 444"
   '';
 
-  passthru.tests.version = testers.testVersion { package = donkey; };
+  passthru.tests.version = testers.testVersion {
+    package = donkey;
+  };
 
   meta = with lib; {
     description = "Alternative for S/KEY's 'key' command";

@@ -7,7 +7,12 @@
 
 browser: args:
 
-(wrapFirefox browser ({ libName = "thunderbird"; } // args))
+(wrapFirefox browser (
+  {
+    libName = "thunderbird";
+  }
+  // args
+))
 
 .overrideAttrs
   (old: {

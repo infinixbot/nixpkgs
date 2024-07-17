@@ -2,8 +2,12 @@
 
 {
   options = {
-    examples = lib.mkOption { type = lib.types.attrs; };
-    assertion = lib.mkOption { type = lib.types.bool; };
+    examples = lib.mkOption {
+      type = lib.types.attrs;
+    };
+    assertion = lib.mkOption {
+      type = lib.types.bool;
+    };
   };
 
   config = {

@@ -195,7 +195,9 @@ stdenv.mkDerivation rec {
         --replace "-lunistring" ""
     '';
 
-  passthru.updateScript = gitUpdater { url = "https://gitlab.com/gnutls/gnutls.git"; };
+  passthru.updateScript = gitUpdater {
+    url = "https://gitlab.com/gnutls/gnutls.git";
+  };
 
   passthru.tests = {
     inherit
@@ -211,7 +213,9 @@ stdenv.mkDerivation rec {
     inherit (ocamlPackages) ocamlnet;
     haskell-gnutls = haskellPackages.gnutls;
     python3-gnutls = python3Packages.python3-gnutls;
-    rsyslog = rsyslog.override { withGnutls = true; };
+    rsyslog = rsyslog.override {
+      withGnutls = true;
+    };
     static = pkgsStatic.gnutls;
   };
 

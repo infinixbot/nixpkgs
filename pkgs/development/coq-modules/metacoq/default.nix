@@ -180,7 +180,9 @@ let
               maintainers = with lib.maintainers; [ cohencyril ];
             };
           }
-          // lib.optionalAttrs (package != "single") { passthru = lib.genAttrs packages metacoq_; }
+          // lib.optionalAttrs (package != "single") {
+            passthru = lib.genAttrs packages metacoq_;
+          }
         )).overrideAttrs
           (
             o:

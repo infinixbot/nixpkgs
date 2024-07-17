@@ -29,7 +29,9 @@
   },
 }:
 let
-  constants = callPackage ./constants.nix { targetPlatform = hostPlatform; };
+  constants = callPackage ./constants.nix {
+    targetPlatform = hostPlatform;
+  };
 in
 {
   depot_tools = fetchgit {

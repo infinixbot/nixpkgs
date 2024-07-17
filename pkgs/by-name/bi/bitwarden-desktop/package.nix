@@ -70,9 +70,13 @@ buildNpmPackage rec {
     inherit src;
     patches = map (
       patch:
-      runCommand (builtins.baseNameOf patch) { nativeBuildInputs = [ patchutils_0_4_2 ]; } ''
-        < ${patch} filterdiff -p1 --include=${lib.escapeShellArg cargoRoot}'/*' > $out
-      ''
+      runCommand (builtins.baseNameOf patch)
+        {
+          nativeBuildInputs = [ patchutils_0_4_2 ];
+        }
+        ''
+          < ${patch} filterdiff -p1 --include=${lib.escapeShellArg cargoRoot}'/*' > $out
+        ''
     ) patches;
     patchFlags = [ "-p4" ];
     sourceRoot = "${src.name}/${cargoRoot}";
@@ -127,7 +131,9 @@ buildNpmPackage rec {
 
   nativeCheckInputs = [
     dbus
-    (gnome-keyring.override { useWrappedDaemon = false; })
+    (gnome-keyring.override {
+      useWrappedDaemon = false;
+    })
   ];
 
   checkFlags = [ "--skip=password::password::tests::test" ];

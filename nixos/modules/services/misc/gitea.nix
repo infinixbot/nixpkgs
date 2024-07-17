@@ -606,7 +606,9 @@ in
       "cron.update_checker".ENABLED = lib.mkDefault false;
 
       database = mkMerge [
-        { DB_TYPE = cfg.database.type; }
+        {
+          DB_TYPE = cfg.database.type;
+        }
         (mkIf (useMysql || usePostgresql) {
           HOST =
             if cfg.database.socket != null then
@@ -617,8 +619,12 @@ in
           USER = cfg.database.user;
           PASSWD = "#dbpass#";
         })
-        (mkIf useSqlite { PATH = cfg.database.path; })
-        (mkIf usePostgresql { SSL_MODE = "disable"; })
+        (mkIf useSqlite {
+          PATH = cfg.database.path;
+        })
+        (mkIf usePostgresql {
+          SSL_MODE = "disable";
+        })
       ];
 
       repository = {
@@ -630,7 +636,9 @@ in
         LFS_JWT_SECRET = "#lfsjwtsecret#";
       };
 
-      camo = mkIf (cfg.camoHmacKeyFile != null) { HMAC_KEY = "#hmackey#"; };
+      camo = mkIf (cfg.camoHmacKeyFile != null) {
+        HMAC_KEY = "#hmackey#";
+      };
 
       session = {
         COOKIE_NAME = lib.mkDefault "session";
@@ -642,15 +650,21 @@ in
         INSTALL_LOCK = true;
       };
 
-      mailer = mkIf (cfg.mailerPasswordFile != null) { PASSWD = "#mailerpass#"; };
+      mailer = mkIf (cfg.mailerPasswordFile != null) {
+        PASSWD = "#mailerpass#";
+      };
 
-      metrics = mkIf (cfg.metricsTokenFile != null) { TOKEN = "#metricstoken#"; };
+      metrics = mkIf (cfg.metricsTokenFile != null) {
+        TOKEN = "#metricstoken#";
+      };
 
       oauth2 = {
         JWT_SECRET = "#oauth2jwtsecret#";
       };
 
-      lfs = mkIf cfg.lfs.enable { PATH = cfg.lfs.contentDir; };
+      lfs = mkIf cfg.lfs.enable {
+        PATH = cfg.lfs.contentDir;
+      };
 
       packages.CHUNKED_UPLOAD_PATH = "${cfg.stateDir}/tmp/package-upload";
     };
@@ -894,7 +908,9 @@ in
       };
     };
 
-    users.groups = mkIf (cfg.group == "gitea") { gitea = { }; };
+    users.groups = mkIf (cfg.group == "gitea") {
+      gitea = { };
+    };
 
     warnings =
       optional (cfg.database.password != "")

@@ -170,7 +170,9 @@ in
 
     networking.firewall.allowedTCPPorts = mkIf cfg.openFirewall [ cfg.settings.server.port ];
 
-    users.groups = mkIf (cfg.group == "suwayomi") { suwayomi = { }; };
+    users.groups = mkIf (cfg.group == "suwayomi") {
+      suwayomi = { };
+    };
 
     users.users = mkIf (cfg.user == "suwayomi") {
       suwayomi = {

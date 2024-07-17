@@ -48,7 +48,9 @@ rustPlatform.buildRustPackage rec {
   passthru.tests = {
     inherit ruff-lsp;
     updateScript = nix-update-script { };
-    version = testers.testVersion { package = ruff; };
+    version = testers.testVersion {
+      package = ruff;
+    };
   };
 
   meta = {

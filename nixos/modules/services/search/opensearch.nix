@@ -30,7 +30,9 @@ in
   options.services.opensearch = {
     enable = mkEnableOption "OpenSearch";
 
-    package = lib.mkPackageOption pkgs "OpenSearch" { default = [ "opensearch" ]; };
+    package = lib.mkPackageOption pkgs "OpenSearch" {
+      default = [ "opensearch" ];
+    };
 
     settings = lib.mkOption {
       type = lib.types.submodule {

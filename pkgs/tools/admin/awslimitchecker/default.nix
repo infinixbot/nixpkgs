@@ -36,7 +36,9 @@ python3.pkgs.buildPythonApplication rec {
     onetimepass
     pyotp
     mock
-    (pytestCheckHook.override { pytest = pytest_7; })
+    (pytestCheckHook.override {
+      pytest = pytest_7;
+    })
     testfixtures
   ];
 

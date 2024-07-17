@@ -29,10 +29,14 @@
 
 let
   # escape infinite recursion with pytest-trio
-  pytest-trio' = (pytest-trio.override { trio = null; }).overrideAttrs {
-    doCheck = false;
-    pythonImportsCheck = [ ];
-  };
+  pytest-trio' =
+    (pytest-trio.override {
+      trio = null;
+    }).overrideAttrs
+      {
+        doCheck = false;
+        pythonImportsCheck = [ ];
+      };
 in
 buildPythonPackage rec {
   pname = "trio";

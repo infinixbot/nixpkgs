@@ -149,7 +149,9 @@ in
                 };
 
                 servers = mkOption {
-                  type = submodule { freeformType = jsonType; };
+                  type = submodule {
+                    freeformType = jsonType;
+                  };
                   description = "IRC servers to connect to";
                 };
               };

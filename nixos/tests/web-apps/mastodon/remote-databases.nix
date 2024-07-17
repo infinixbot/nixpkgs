@@ -3,11 +3,15 @@ import ../../make-test-python.nix (
   let
     cert =
       pkgs:
-      pkgs.runCommand "selfSignedCerts" { buildInputs = [ pkgs.openssl ]; } ''
-        openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -nodes -subj '/CN=mastodon.local' -days 36500
-        mkdir -p $out
-        cp key.pem cert.pem $out
-      '';
+      pkgs.runCommand "selfSignedCerts"
+        {
+          buildInputs = [ pkgs.openssl ];
+        }
+        ''
+          openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -nodes -subj '/CN=mastodon.local' -days 36500
+          mkdir -p $out
+          cp key.pem cert.pem $out
+        '';
 
     hosts = ''
       192.168.2.103 mastodon.local

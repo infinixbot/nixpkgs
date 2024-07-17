@@ -259,7 +259,9 @@ in
       devices = mkOption {
         default = [ ];
         example = [
-          { device = "/dev/sda"; }
+          {
+            device = "/dev/sda";
+          }
           {
             device = "/dev/sdb";
             options = "-d sat";

@@ -284,7 +284,9 @@ in
       inherit group;
     };
 
-    users.groups.${group} = mapAttrs (name: mkDefault) { gid = config.ids.gids.zabbix; };
+    users.groups.${group} = mapAttrs (name: mkDefault) {
+      gid = config.ids.gids.zabbix;
+    };
 
   };
 }

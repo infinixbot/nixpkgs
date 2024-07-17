@@ -12,11 +12,15 @@ let
 
   settingsFormat = pkgs.formats.keyValue { };
 
-  configFormat = pkgs.formats.ini { mkKeyValue = generators.mkKeyValueDefault { } " = "; };
+  configFormat = pkgs.formats.ini {
+    mkKeyValue = generators.mkKeyValueDefault { } " = ";
+  };
 
   mkJailConfig =
     name: attrs:
-    optionalAttrs (name != "DEFAULT") { inherit (attrs) enabled; }
+    optionalAttrs (name != "DEFAULT") {
+      inherit (attrs) enabled;
+    }
     // optionalAttrs (attrs.filter != null) {
       filter = if (builtins.isString filter) then filter else name;
     }
@@ -36,7 +40,10 @@ let
   jailConf =
     let
       configFile = configFormat.generate "jail.local" (
-        { INCLUDES.before = "paths-nixos.conf"; } // (mapAttrs mkJailConfig attrsJails)
+        {
+          INCLUDES.before = "paths-nixos.conf";
+        }
+        // (mapAttrs mkJailConfig attrsJails)
       );
       extraConfig = concatStringsSep "\n" (
         attrValues (
@@ -102,7 +109,9 @@ in
         '';
       };
 
-      package = mkPackageOption pkgs "fail2ban" { example = "fail2ban_0_11"; };
+      package = mkPackageOption pkgs "fail2ban" {
+        example = "fail2ban_0_11";
+      };
 
       packageFirewall = mkOption {
         default = config.networking.firewall.package;

@@ -45,7 +45,10 @@ let
         binNotFormats = lib.subtractLists formatLinks attrs.binfiles;
       in
       if binNotFormats != [ ] then
-        attrs // { binfiles = binNotFormats; }
+        attrs
+        // {
+          binfiles = binNotFormats;
+        }
       else
         removeAttrs attrs [ "binfiles" ]
     else

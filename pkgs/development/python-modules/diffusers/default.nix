@@ -90,7 +90,9 @@ buildPythonPackage rec {
   # it takes a few hours
   doCheck = false;
 
-  passthru.tests.pytest = diffusers.overridePythonAttrs { doCheck = true; };
+  passthru.tests.pytest = diffusers.overridePythonAttrs {
+    doCheck = true;
+  };
 
   nativeCheckInputs = [
     parameterized

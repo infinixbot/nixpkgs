@@ -7,7 +7,9 @@ let
     julia:
     julia.overrideAttrs (oldAttrs: {
       passthru = (oldAttrs.passthru or { }) // {
-        withPackages = juliaWithPackages.override { inherit julia; };
+        withPackages = juliaWithPackages.override {
+          inherit julia;
+        };
       };
     });
 

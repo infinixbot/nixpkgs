@@ -8,7 +8,9 @@ import ../make-test-python.nix (
   }:
 
   let
-    releases = import ../../release.nix { configuration.documentation.enable = lib.mkForce false; };
+    releases = import ../../release.nix {
+      configuration.documentation.enable = lib.mkForce false;
+    };
 
     container-image-metadata = releases.lxdContainerMeta.${pkgs.stdenv.hostPlatform.system};
     container-image-rootfs = releases.lxdContainerImage.${pkgs.stdenv.hostPlatform.system};

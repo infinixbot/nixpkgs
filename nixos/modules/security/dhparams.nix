@@ -65,7 +65,9 @@ in
         type =
           with types;
           let
-            coerce = bits: { inherit bits; };
+            coerce = bits: {
+              inherit bits;
+            };
           in
           attrsOf (coercedTo int coerce (submodule paramsSubmodule));
         default = { };

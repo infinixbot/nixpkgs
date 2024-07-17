@@ -18,7 +18,9 @@ buildLua rec {
     rev = "v${version}";
     sha256 = "sha256-j8K9coa8kyA7AgRQaBXJJmeTpNtfDKkOGnAP9Up7biA=";
   };
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   postPatch = ''
     substituteInPlace utils/forvo.lua \

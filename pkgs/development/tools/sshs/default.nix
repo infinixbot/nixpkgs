@@ -27,7 +27,9 @@ rustPlatform.buildRustPackage rec {
     ln -sf ${./Cargo.lock} Cargo.lock
   '';
 
-  passthru.tests.version = testers.testVersion { package = sshs; };
+  passthru.tests.version = testers.testVersion {
+    package = sshs;
+  };
 
   meta = with lib; {
     description = "Terminal user interface for SSH";

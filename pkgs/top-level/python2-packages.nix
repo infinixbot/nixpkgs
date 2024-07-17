@@ -15,7 +15,9 @@ with super;
 
   bootstrapped-pip = toPythonModule (callPackage ../development/python2-modules/bootstrapped-pip { });
 
-  cffi = callPackage ../development/python2-modules/cffi { inherit cffi; };
+  cffi = callPackage ../development/python2-modules/cffi {
+    inherit cffi;
+  };
 
   configparser = callPackage ../development/python2-modules/configparser { };
 
@@ -65,7 +67,9 @@ with super;
 
   pytest_4 = callPackage ../development/python2-modules/pytest {
     # hypothesis tests require pytest that causes dependency cycle
-    hypothesis = self.hypothesis.override { doCheck = false; };
+    hypothesis = self.hypothesis.override {
+      doCheck = false;
+    };
   };
 
   pytest-xdist = callPackage ../development/python2-modules/pytest-xdist { };
@@ -88,7 +92,9 @@ with super;
     doCheck = false; # circular dependency with pytest
   });
 
-  wcwidth = callPackage ../development/python2-modules/wcwidth { inherit wcwidth; };
+  wcwidth = callPackage ../development/python2-modules/wcwidth {
+    inherit wcwidth;
+  };
 
   wheel = callPackage ../development/python2-modules/wheel { };
 

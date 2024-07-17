@@ -106,7 +106,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == "postsrsd") { postsrsd.gid = config.ids.gids.postsrsd; };
+    users.groups = optionalAttrs (cfg.group == "postsrsd") {
+      postsrsd.gid = config.ids.gids.postsrsd;
+    };
 
     systemd.services.postsrsd = {
       description = "PostSRSd SRS rewriting server";

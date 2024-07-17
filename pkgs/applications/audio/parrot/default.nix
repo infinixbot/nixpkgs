@@ -47,7 +47,9 @@ rustPlatform.buildRustPackage {
       }
   '';
 
-  passthru.updateScript = unstableGitUpdater { tagPrefix = "v"; };
+  passthru.updateScript = unstableGitUpdater {
+    tagPrefix = "v";
+  };
 
   meta = {
     description = "Hassle-free Discord music bot";

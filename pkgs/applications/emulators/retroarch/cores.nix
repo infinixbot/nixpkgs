@@ -62,7 +62,11 @@ let
     repo:
     let
       inherit (getCore repo) src fetcher;
-      fetcherFn = { inherit fetchFromGitHub; }.${fetcher} or (throw "Unknown fetcher: ${fetcher}");
+      fetcherFn =
+        {
+          inherit fetchFromGitHub;
+        }
+        .${fetcher} or (throw "Unknown fetcher: ${fetcher}");
     in
     fetcherFn src;
 

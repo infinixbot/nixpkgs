@@ -36,7 +36,9 @@ let
   python3 = python311;
 
   # put packages that needs to be overridden in the py package scope
-  py = callPackage ./python-packages.nix { inherit src version python3; };
+  py = callPackage ./python-packages.nix {
+    inherit src version python3;
+  };
 
   # Builder for Azure CLI extensions. Extensions are Python wheels that
   # outside of nix would be fetched by the CLI itself from various sources.
@@ -52,7 +54,9 @@ let
     python3.pkgs.buildPythonPackage (
       {
         format = "wheel";
-        src = fetchurl { inherit url sha256; };
+        src = fetchurl {
+          inherit url sha256;
+        };
         meta = {
           inherit description;
           inherit (azure-cli.meta) platforms maintainers;
@@ -71,7 +75,9 @@ let
     );
 
   extensions =
-    callPackages ./extensions-generated.nix { inherit mkAzExtension; }
+    callPackages ./extensions-generated.nix {
+      inherit mkAzExtension;
+    }
     // callPackages ./extensions-manual.nix {
       inherit mkAzExtension python3;
       python3Packages = python3.pkgs;
@@ -376,7 +382,11 @@ py.pkgs.toPythonApplication (
 
     passthru = {
       inherit extensions;
-      withExtensions = extensions: azure-cli.override { withExtensions = extensions; };
+      withExtensions =
+        extensions:
+        azure-cli.override {
+          withExtensions = extensions;
+        };
       tests = {
         # Test the package builds with some extensions configured, and the
         # wanted extensions are recognized by the CLI and listed in the output.
@@ -405,7 +415,9 @@ py.pkgs.toPythonApplication (
         #       check mutable extension install still works.
         azWithMutableConfig =
           let
-            az = azure-cli.override { withImmutableConfig = false; };
+            az = azure-cli.override {
+              withImmutableConfig = false;
+            };
           in
           runCommand "test-az-with-immutable-config" { } ''
             export HOME=$TMPDIR

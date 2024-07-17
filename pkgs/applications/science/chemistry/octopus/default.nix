@@ -88,7 +88,9 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  passthru = lib.attrsets.optionalAttrs enableMpi { inherit mpi; };
+  passthru = lib.attrsets.optionalAttrs enableMpi {
+    inherit mpi;
+  };
 
   meta = with lib; {
     description = "Real-space time dependent density-functional theory code";

@@ -57,7 +57,9 @@ stdenv.mkDerivation rec {
     libepoxy
     gst_all_1.gstreamer
     gst_all_1.gst-plugins-base
-    (gst_all_1.gst-plugins-good.override { gtkSupport = true; })
+    (gst_all_1.gst-plugins-good.override {
+      gtkSupport = true;
+    })
     gst_all_1.gst-plugins-bad
     gst_all_1.gst-plugins-ugly
   ];
@@ -72,7 +74,9 @@ stdenv.mkDerivation rec {
   '';
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "sushi"; };
+    updateScript = gnome.updateScript {
+      packageName = "sushi";
+    };
   };
 
   meta = with lib; {

@@ -160,9 +160,13 @@ let
       ln -nsf ../zulu-${lib.versions.major version}.jdk/Contents/Home/man $out/share/man
     '';
 
-    passthru = (lib.optionalAttrs isJdk8 { jre = jdk; }) // {
-      home = jdk;
-    };
+    passthru =
+      (lib.optionalAttrs isJdk8 {
+        jre = jdk;
+      })
+      // {
+        home = jdk;
+      };
 
     meta = (import ../openjdk/meta.nix lib version) // {
       description = "Certified builds of OpenJDK";

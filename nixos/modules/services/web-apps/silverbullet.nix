@@ -111,7 +111,9 @@ in
       };
     };
 
-    networking.firewall = lib.mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.listenPort ]; };
+    networking.firewall = lib.mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.listenPort ];
+    };
 
     users.users.${defaultUser} = lib.mkIf (cfg.user == defaultUser) {
       isSystemUser = true;

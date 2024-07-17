@@ -24,7 +24,9 @@ buildKodiAddon rec {
   };
 
   passthru = {
-    updateScript = addonUpdateScript { attrPath = "kodi.packages.raiplay"; };
+    updateScript = addonUpdateScript {
+      attrPath = "kodi.packages.raiplay";
+    };
   };
 
   meta = with lib; {

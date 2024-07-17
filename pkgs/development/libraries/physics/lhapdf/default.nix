@@ -37,7 +37,9 @@ stdenv.mkDerivation rec {
   enableParallelBuilding = true;
 
   passthru = {
-    pdf_sets = import ./pdf_sets.nix { inherit lib stdenv fetchurl; };
+    pdf_sets = import ./pdf_sets.nix {
+      inherit lib stdenv fetchurl;
+    };
   };
 
   postInstall = ''

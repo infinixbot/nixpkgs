@@ -71,7 +71,12 @@ let
   outer_types = rec {
     isType = type: x: (x._type or "") == type;
 
-    setType = typeName: value: value // { _type = typeName; };
+    setType =
+      typeName: value:
+      value
+      // {
+        _type = typeName;
+      };
 
     # Default type merging function
     # takes two type functors and return the merged type
@@ -504,7 +509,12 @@ let
       string =
         lib.warn
           "The type `types.string` is deprecated. See https://github.com/NixOS/nixpkgs/pull/66346 for better alternative types."
-          (separatedString "" // { name = "string"; });
+          (
+            separatedString ""
+            // {
+              name = "string";
+            }
+          );
 
       passwdEntry =
         entryType:
@@ -555,7 +565,9 @@ let
       };
 
       pkgs = addCheck (
-        unique { message = "A Nixpkgs pkgs set can not be merged with another pkgs set."; } attrs
+        unique {
+          message = "A Nixpkgs pkgs set can not be merged with another pkgs set.";
+        } attrs
         // {
           name = "pkgs";
           descriptionClass = "noun";
@@ -845,7 +857,9 @@ let
           };
         };
 
-      uniq = unique { message = ""; };
+      uniq = unique {
+        message = "";
+      };
 
       unique =
         { message }:
@@ -956,14 +970,29 @@ let
                 def: lib.setDefaultModuleLocation "${def.file}, via option ${showOption loc}" def.value
               ) defs;
           };
-          inherit (submoduleWith { modules = staticModules; }) getSubOptions getSubModules;
-          substSubModules = m: deferredModuleWith (attrs // { staticModules = m; });
+          inherit
+            (submoduleWith {
+              modules = staticModules;
+            })
+            getSubOptions
+            getSubModules
+            ;
+          substSubModules =
+            m:
+            deferredModuleWith (
+              attrs
+              // {
+                staticModules = m;
+              }
+            );
           functor = defaultFunctor "deferredModuleWith" // {
             type = types.deferredModuleWith;
             payload = {
               inherit staticModules;
             };
-            binOp = lhs: rhs: { staticModules = lhs.staticModules ++ rhs.staticModules; };
+            binOp = lhs: rhs: {
+              staticModules = lhs.staticModules ++ rhs.staticModules;
+            };
           };
         };
 
@@ -987,7 +1016,9 @@ let
                   _file = file;
                   # There's no way to merge types directly from the module system,
                   # but we can cheat a bit by just declaring an option with the type
-                  options = lib.mkOption { type = value; };
+                  options = lib.mkOption {
+                    type = value;
+                  };
                 }
               ) defs;
               # Merges all the types into a single one, including submodule merging.
@@ -1060,7 +1091,11 @@ let
           merge =
             loc: defs:
             (base.extendModules {
-              modules = [ { _module.args.name = last loc; } ] ++ allModules defs;
+              modules = [
+                {
+                  _module.args.name = last loc;
+                }
+              ] ++ allModules defs;
               prefix = loc;
             }).config;
           emptyValue = {
@@ -1068,7 +1103,9 @@ let
           };
           getSubOptions =
             prefix:
-            (base.extendModules { inherit prefix; }).options
+            (base.extendModules {
+              inherit prefix;
+            }).options
             // optionalAttrs (freeformType != null) {
               # Expose the sub options of the freeform type. Note that the option
               # discovery doesn't care about the attribute name used here, so this
@@ -1076,8 +1113,17 @@ let
               _freeformOptions = freeformType.getSubOptions prefix;
             };
           getSubModules = modules;
-          substSubModules = m: submoduleWith (attrs // { modules = m; });
-          nestedTypes = lib.optionalAttrs (freeformType != null) { freeformType = freeformType; };
+          substSubModules =
+            m:
+            submoduleWith (
+              attrs
+              // {
+                modules = m;
+              }
+            );
+          nestedTypes = lib.optionalAttrs (freeformType != null) {
+            freeformType = freeformType;
+          };
           functor = defaultFunctor name // {
             type = types.submoduleWith;
             payload = {
@@ -1245,7 +1291,15 @@ let
             let
               coerceVal = val: if coercedType.check val then coerceFunc val else val;
             in
-            finalType.merge loc (map (def: def // { value = coerceVal def.value; }) defs);
+            finalType.merge loc (
+              map (
+                def:
+                def
+                // {
+                  value = coerceVal def.value;
+                }
+              ) defs
+            );
           emptyValue = finalType.emptyValue;
           getSubOptions = finalType.getSubOptions;
           getSubModules = finalType.getSubModules;
@@ -1259,7 +1313,12 @@ let
         };
 
       # Augment the given type with an additional type check function.
-      addCheck = elemType: check: elemType // { check = x: elemType.check x && check x; };
+      addCheck =
+        elemType: check:
+        elemType
+        // {
+          check = x: elemType.check x && check x;
+        };
 
     };
   };

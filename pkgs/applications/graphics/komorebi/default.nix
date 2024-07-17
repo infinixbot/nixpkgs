@@ -45,7 +45,9 @@ stdenv.mkDerivation rec {
     clutter-gst
   ];
 
-  passthru.tests.version = testers.testVersion { package = komorebi; };
+  passthru.tests.version = testers.testVersion {
+    package = komorebi;
+  };
 
   meta = with lib; {
     description = "Beautiful and customizable wallpaper manager for Linux";

@@ -169,12 +169,17 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru = {
     inherit releaseName distroPrefix;
-    inherit (ghidra-extensions.override { ghidra = finalAttrs.finalPackage; })
+    inherit
+      (ghidra-extensions.override {
+        ghidra = finalAttrs.finalPackage;
+      })
       buildGhidraExtension
       buildGhidraScripts
       ;
 
-    withExtensions = callPackage ./with-extensions.nix { ghidra = finalAttrs.finalPackage; };
+    withExtensions = callPackage ./with-extensions.nix {
+      ghidra = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

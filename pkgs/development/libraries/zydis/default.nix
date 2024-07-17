@@ -8,7 +8,9 @@
 }:
 
 let
-  zycore = callPackage ./zycore.nix { inherit stdenv fetchFromGitHub cmake; };
+  zycore = callPackage ./zycore.nix {
+    inherit stdenv fetchFromGitHub cmake;
+  };
 in
 stdenv.mkDerivation rec {
   pname = "zydis";

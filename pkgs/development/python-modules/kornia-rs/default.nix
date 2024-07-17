@@ -32,7 +32,9 @@ buildPythonPackage rec {
   buildInputs = lib.optional stdenv.hostPlatform.isDarwin libiconv;
 
   cargoRoot = "py-kornia";
-  cargoDeps = rustPlatform.importCargoLock { lockFile = ./Cargo.lock; };
+  cargoDeps = rustPlatform.importCargoLock {
+    lockFile = ./Cargo.lock;
+  };
 
   # The path dependency doesn't vendor the dependencies correctly, so get kornia-rs from crates instead.
   patches = [

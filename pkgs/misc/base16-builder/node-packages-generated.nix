@@ -1666,7 +1666,12 @@ in
       sources."color-support-1.1.3"
       sources."commander-1.1.1"
       sources."concat-map-0.0.1"
-      (sources."configstore-2.1.0" // { dependencies = [ sources."mkdirp-0.5.6" ]; })
+      (
+        sources."configstore-2.1.0"
+        // {
+          dependencies = [ sources."mkdirp-0.5.6" ];
+        }
+      )
       sources."console-control-strings-1.1.0"
       sources."core-util-is-1.0.3"
       sources."create-error-class-3.0.2"
@@ -1695,7 +1700,12 @@ in
       sources."esprima-4.0.1"
       sources."filled-array-1.1.0"
       sources."find-up-1.1.2"
-      (sources."fs-minipass-2.1.0" // { dependencies = [ sources."minipass-3.3.6" ]; })
+      (
+        sources."fs-minipass-2.1.0"
+        // {
+          dependencies = [ sources."minipass-3.3.6" ];
+        }
+      )
       sources."fs-promise-0.3.1"
       sources."fs.realpath-1.0.0"
       sources."function-bind-1.1.1"
@@ -1752,13 +1762,23 @@ in
       sources."loud-rejection-1.6.0"
       sources."lowercase-keys-1.0.1"
       sources."lru-cache-6.0.0"
-      (sources."make-dir-3.1.0" // { dependencies = [ sources."semver-6.3.0" ]; })
+      (
+        sources."make-dir-3.1.0"
+        // {
+          dependencies = [ sources."semver-6.3.0" ];
+        }
+      )
       sources."map-obj-1.0.1"
       sources."meow-3.7.0"
       sources."minimatch-3.1.2"
       sources."minimist-1.2.8"
       sources."minipass-5.0.0"
-      (sources."minizlib-2.1.2" // { dependencies = [ sources."minipass-3.3.6" ]; })
+      (
+        sources."minizlib-2.1.2"
+        // {
+          dependencies = [ sources."minipass-3.3.6" ];
+        }
+      )
       sources."mkdirp-1.0.4"
       sources."ms-2.1.2"
       sources."node-addon-api-3.2.1"
@@ -1766,7 +1786,12 @@ in
       sources."node-status-codes-1.0.0"
       sources."nodejieba-2.5.2"
       sources."nopt-5.0.0"
-      (sources."normalize-package-data-2.5.0" // { dependencies = [ sources."semver-5.7.1" ]; })
+      (
+        sources."normalize-package-data-2.5.0"
+        // {
+          dependencies = [ sources."semver-5.7.1" ];
+        }
+      )
       sources."npmlog-5.0.1"
       sources."number-is-nan-1.0.1"
       sources."object-assign-4.1.1"
@@ -1775,7 +1800,12 @@ in
       sources."os-homedir-1.0.2"
       sources."os-tmpdir-1.0.2"
       sources."osenv-0.1.5"
-      (sources."package-json-2.4.0" // { dependencies = [ sources."semver-5.7.1" ]; })
+      (
+        sources."package-json-2.4.0"
+        // {
+          dependencies = [ sources."semver-5.7.1" ];
+        }
+      )
       sources."parse-json-2.2.0"
       sources."path-exists-2.1.0"
       sources."path-is-absolute-1.0.1"
@@ -1810,7 +1840,12 @@ in
       sources."safe-buffer-5.2.1"
       sources."safer-buffer-2.1.2"
       sources."semver-7.5.0"
-      (sources."semver-diff-2.1.0" // { dependencies = [ sources."semver-5.7.1" ]; })
+      (
+        sources."semver-diff-2.1.0"
+        // {
+          dependencies = [ sources."semver-5.7.1" ];
+        }
+      )
       sources."set-blocking-2.0.0"
       sources."signal-exit-3.0.7"
       sources."slide-1.1.6"

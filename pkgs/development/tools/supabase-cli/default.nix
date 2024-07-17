@@ -42,7 +42,9 @@ buildGoModule rec {
   '';
 
   passthru = {
-    tests.version = testers.testVersion { package = supabase-cli; };
+    tests.version = testers.testVersion {
+      package = supabase-cli;
+    };
     updateScript = nix-update-script { };
   };
 

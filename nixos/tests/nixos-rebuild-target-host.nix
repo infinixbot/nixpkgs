@@ -49,7 +49,11 @@ import ./make-test-python.nix (
             security.sudo.extraRules = lib.mkForce [
               {
                 groups = [ "wheel" ];
-                commands = [ { command = "ALL"; } ];
+                commands = [
+                  {
+                    command = "ALL";
+                  }
+                ];
               }
               {
                 users = [ "alice" ];

@@ -50,7 +50,11 @@ let
     arg:
     if builtins.isPath arg then
       {
-        args = args ++ [ { __rawShell = "\"\$${builtins.toString maxArgIndex}\""; } ];
+        args = args ++ [
+          {
+            __rawShell = "\"\$${builtins.toString maxArgIndex}\"";
+          }
+        ];
         maxArgIndex = maxArgIndex + 1;
         paths = paths ++ [ arg ];
       }
@@ -130,7 +134,9 @@ rec {
       command = lib.toList (updateScript.command or updateScript);
       supportedFeatures = updateScript.supportedFeatures or [ ];
     }
-    // lib.optionalAttrs (updateScript ? attrPath) { inherit (updateScript) attrPath; };
+    // lib.optionalAttrs (updateScript ? attrPath) {
+      inherit (updateScript) attrPath;
+    };
 
   /*
     sequence : [UpdateScript] → UpdateScript

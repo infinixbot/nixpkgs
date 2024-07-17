@@ -54,7 +54,9 @@ buildPythonApplication rec {
 
   passthru = {
     tests.nixos = nixosTests.nixops.unstable;
-    updateScript = unstableGitUpdater { tagPrefix = "v"; };
+    updateScript = unstableGitUpdater {
+      tagPrefix = "v";
+    };
   };
 
   meta = with lib; {

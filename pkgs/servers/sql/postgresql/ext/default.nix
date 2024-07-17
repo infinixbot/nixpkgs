@@ -79,7 +79,9 @@ self: super: {
   temporal_tables = super.callPackage ./temporal_tables.nix { };
 
   timescaledb = super.callPackage ./timescaledb.nix { };
-  timescaledb-apache = super.callPackage ./timescaledb.nix { enableUnfree = false; };
+  timescaledb-apache = super.callPackage ./timescaledb.nix {
+    enableUnfree = false;
+  };
 
   timescaledb_toolkit = super.callPackage ./timescaledb_toolkit.nix { };
 

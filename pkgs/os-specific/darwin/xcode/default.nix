@@ -49,7 +49,13 @@ let
       };
 
     in
-    app.overrideAttrs (oldAttrs: oldAttrs // { inherit meta; });
+    app.overrideAttrs (
+      oldAttrs:
+      oldAttrs
+      // {
+        inherit meta;
+      }
+    );
 
 in
 lib.makeExtensible (self: {

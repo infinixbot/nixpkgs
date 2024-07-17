@@ -167,7 +167,9 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  env = lib.optionalAttrs stdenv.isDarwin { NIX_CFLAGS_LINK = "-fuse-ld=lld"; };
+  env = lib.optionalAttrs stdenv.isDarwin {
+    NIX_CFLAGS_LINK = "-fuse-ld=lld";
+  };
 
   cmakeFlags = [ "-DTDESKTOP_API_TEST=ON" ];
 

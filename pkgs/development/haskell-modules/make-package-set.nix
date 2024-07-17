@@ -110,7 +110,14 @@ let
       auto = builtins.intersectAttrs (lib.functionArgs drv) scope;
 
       # Converts a returned function to a functor attribute set if necessary
-      ensureAttrs = v: if builtins.isFunction v then { __functor = _: v; } else v;
+      ensureAttrs =
+        v:
+        if builtins.isFunction v then
+          {
+            __functor = _: v;
+          }
+        else
+          v;
 
       # this wraps the `drv` function to add `scope` and `overrideScope` to the result.
       drvScope =
@@ -151,7 +158,13 @@ let
           inherit (scope) ghc buildHaskellPackages;
         };
     in
-    ps // ps.xorg // ps.gnome2 // { inherit stdenv; } // scopeSpliced;
+    ps
+    // ps.xorg
+    // ps.gnome2
+    // {
+      inherit stdenv;
+    }
+    // scopeSpliced;
   defaultScope = mkScope self;
   callPackage = drv: args: callPackageWithScope defaultScope drv args;
 
@@ -229,7 +242,9 @@ let
     }) (self.callPackage src args);
 
 in
-package-set { inherit pkgs lib callPackage; } self
+package-set {
+  inherit pkgs lib callPackage;
+} self
 // {
 
   inherit
@@ -301,7 +316,9 @@ package-set { inherit pkgs lib callPackage; } self
             src;
       };
     in
-    overrideCabal (orig: { inherit src; }) (callPackageKeepDeriver expr args);
+    overrideCabal (orig: {
+      inherit src;
+    }) (callPackageKeepDeriver expr args);
 
   callCabal2nix =
     name: src: args:
@@ -356,7 +373,12 @@ package-set { inherit pkgs lib callPackage; } self
           cabal2nixOptions
           { };
     in
-    if returnShellEnv then (modifier drv).envFunc { inherit withHoogle; } else modifier drv;
+    if returnShellEnv then
+      (modifier drv).envFunc {
+        inherit withHoogle;
+      }
+    else
+      modifier drv;
 
   # This can be used to easily create a derivation containing GHC and the specified set of Haskell packages.
   #
@@ -386,7 +408,9 @@ package-set { inherit pkgs lib callPackage; } self
   # To reload the Hoogle server automatically on .cabal file changes try
   # this:
   # echo *.cabal | entr -r -- nix-shell --run 'hoogle server --local'
-  hoogleWithPackages = self.callPackage ./hoogle.nix { haskellPackages = self; };
+  hoogleWithPackages = self.callPackage ./hoogle.nix {
+    haskellPackages = self;
+  };
   hoogleLocal =
     {
       packages ? [ ],
@@ -402,7 +426,9 @@ package-set { inherit pkgs lib callPackage; } self
   #   $ nix-shell -p 'haskellPackages.ghcWithHoogle (hpkgs: [ hpkgs.conduit hpkgs.lens ])'
   #
   # ghcWithHoogle :: (HaskellPkgSet -> [ HaskellPkg ]) -> Derivation
-  ghcWithHoogle = self.ghcWithPackages.override { withHoogle = true; };
+  ghcWithHoogle = self.ghcWithPackages.override {
+    withHoogle = true;
+  };
 
   # Returns a derivation whose environment contains a GHC with only
   # the dependencies of packages listed in `packages`, not the
@@ -616,7 +642,9 @@ package-set { inherit pkgs lib callPackage; } self
       # `haskellPackages.mkDerivation`).
       #
       # pkgWithCombinedDepsDevDrv :: Derivation
-      pkgWithCombinedDepsDevDrv = pkgWithCombinedDeps.envFunc { inherit withHoogle; };
+      pkgWithCombinedDepsDevDrv = pkgWithCombinedDeps.envFunc {
+        inherit withHoogle;
+      };
 
       mkDerivationArgs = builtins.removeAttrs args [
         "genericBuilderArgsModifier"
@@ -684,7 +712,9 @@ package-set { inherit pkgs lib callPackage; } self
   buildFromCabalSdist =
     pkg:
     haskellLib.overrideSrc {
-      src = self.cabalSdist { inherit (pkg) src; };
+      src = self.cabalSdist {
+        inherit (pkg) src;
+      };
       version = pkg.version;
     } pkg;
 

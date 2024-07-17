@@ -35,8 +35,12 @@ applyPatches (
           longDescription = description;
           inherit homepage;
         }
-        // lib.optionalAttrs (description != null) { longDescription = description; }
-        // lib.optionalAttrs (homepage != null) { inherit homepage; };
+        // lib.optionalAttrs (description != null) {
+          longDescription = description;
+        }
+        // lib.optionalAttrs (homepage != null) {
+          inherit homepage;
+        };
     };
   }
   // lib.optionalAttrs (appName != null && appVersion != null) {

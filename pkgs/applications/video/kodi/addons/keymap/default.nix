@@ -24,7 +24,9 @@ buildKodiAddon rec {
   ];
 
   passthru = {
-    updateScript = addonUpdateScript { attrPath = "kodi.packages.keymap"; };
+    updateScript = addonUpdateScript {
+      attrPath = "kodi.packages.keymap";
+    };
   };
 
   meta = with lib; {

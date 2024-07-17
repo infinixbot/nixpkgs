@@ -155,7 +155,9 @@ in
     (mkIf cfg.queueCleaner.enable {
       systemd.services.lifecycled-queue-cleaner = {
         description = "Lifecycle Daemon Queue Cleaner";
-        environment = optionalAttrs (cfg.awsRegion != null) { AWS_REGION = cfg.awsRegion; };
+        environment = optionalAttrs (cfg.awsRegion != null) {
+          AWS_REGION = cfg.awsRegion;
+        };
         serviceConfig = {
           Type = "oneshot";
           ExecStart = "${pkgs.lifecycled}/bin/lifecycled-queue-cleaner -parallel ${toString cfg.queueCleaner.parallel}";

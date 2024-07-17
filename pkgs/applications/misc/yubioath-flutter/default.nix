@@ -23,7 +23,9 @@ flutter319.buildFlutterApplication rec {
     hash = "sha256-aXUnmKEUCi0rsVr3HVhEk6xa1z9HMsH+0AIY531hqiU=";
   };
 
-  passthru.helper = python3.pkgs.callPackage ./helper.nix { inherit src version meta; };
+  passthru.helper = python3.pkgs.callPackage ./helper.nix {
+    inherit src version meta;
+  };
 
   pubspecLock = lib.importJSON ./pubspec.lock.json;
   gitHashes = {

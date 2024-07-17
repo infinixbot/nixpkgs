@@ -53,7 +53,9 @@ in
     };
 
     settings = mkOption {
-      type = submodule { freeformType = attrsOf (either str bool); };
+      type = submodule {
+        freeformType = attrsOf (either str bool);
+      };
 
       defaultText = ''
         {

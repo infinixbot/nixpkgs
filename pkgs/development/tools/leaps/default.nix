@@ -26,7 +26,9 @@ buildGoModule rec {
     "-X main.version=${version}"
   ];
 
-  passthru.tests.version = testers.testVersion { package = leaps; };
+  passthru.tests.version = testers.testVersion {
+    package = leaps;
+  };
 
   meta = with lib; {
     description = "Pair programming tool and library written in Golang";

@@ -88,8 +88,12 @@ buildDotnetModule rec {
         ]
         ++ [
           # Native libraries, with extra code for the C# wrapping
-          (nativeWrapperToReplaceFormat { depname = "GifDec"; })
-          (nativeWrapperToReplaceFormat { depname = "NesSndEmu"; })
+          (nativeWrapperToReplaceFormat {
+            depname = "GifDec";
+          })
+          (nativeWrapperToReplaceFormat {
+            depname = "NesSndEmu";
+          })
           (nativeWrapperToReplaceFormat {
             depname = "NotSoFatso";
             extraPostPatch = ''
@@ -98,8 +102,12 @@ buildDotnetModule rec {
                 --replace-fail "$CXX" "$CXX -std=c++14"
             '';
           })
-          (nativeWrapperToReplaceFormat { depname = "ShineMp3"; })
-          (nativeWrapperToReplaceFormat { depname = "Stb"; })
+          (nativeWrapperToReplaceFormat {
+            depname = "ShineMp3";
+          })
+          (nativeWrapperToReplaceFormat {
+            depname = "Stb";
+          })
           (nativeWrapperToReplaceFormat {
             depname = "Vorbis";
             buildInputs = [

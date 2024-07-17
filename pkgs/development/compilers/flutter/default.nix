@@ -9,7 +9,11 @@
 }@args:
 let
   mkCustomFlutter = args: callPackage ./flutter.nix args;
-  wrapFlutter = flutter: callPackage ./wrapper.nix { inherit flutter; };
+  wrapFlutter =
+    flutter:
+    callPackage ./wrapper.nix {
+      inherit flutter;
+    };
   getPatches =
     dir:
     let

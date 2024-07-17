@@ -23,7 +23,9 @@ let
       }
     else
       stdenv;
-  buildNpmPackage' = buildNpmPackage.override { stdenv = stdenv'; };
+  buildNpmPackage' = buildNpmPackage.override {
+    stdenv = stdenv';
+  };
 in
 buildNpmPackage' rec {
   pname = "jellyfin-web";

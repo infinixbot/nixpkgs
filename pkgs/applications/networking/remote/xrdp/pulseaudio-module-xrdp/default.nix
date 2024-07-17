@@ -48,7 +48,9 @@ stdenv.mkDerivation rec {
   ];
 
   passthru = {
-    updateScript = gitUpdater { rev-prefix = "v"; };
+    updateScript = gitUpdater {
+      rev-prefix = "v";
+    };
     tests = {
       inherit (nixosTests) xrdp-with-audio-pulseaudio;
     };

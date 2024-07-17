@@ -37,10 +37,14 @@ let
   gtk4-paperplane = gtk4.overrideAttrs (prev: {
     patches = (prev.patches or [ ]) ++ [ "${src}/build-aux/gtk-reversed-list.patch" ];
   });
-  wrapPaperPlaneHook = wrapGAppsHook3.override { gtk3 = gtk4-paperplane; };
+  wrapPaperPlaneHook = wrapGAppsHook3.override {
+    gtk3 = gtk4-paperplane;
+  };
   # libadwaita has gtk4 in propagatedBuildInputs so it must be overrided
   # to avoid linking two libraries, while libshumate doesn't
-  libadwaita-paperplane = libadwaita.override { gtk4 = gtk4-paperplane; };
+  libadwaita-paperplane = libadwaita.override {
+    gtk4 = gtk4-paperplane;
+  };
   tdlib-paperplane = tdlib.overrideAttrs (prev: {
     pname = "tdlib-paperplane";
     version = "1.8.19";

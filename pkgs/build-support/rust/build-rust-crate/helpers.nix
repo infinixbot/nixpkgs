@@ -8,7 +8,14 @@
     lib.deepSeq f (
       lib.foldl' (features: fun: fun features) (lib.attrsets.recursiveUpdate f up) functions
     );
-  mapFeatures = features: map (fun: fun { features = features; });
+  mapFeatures =
+    features:
+    map (
+      fun:
+      fun {
+        features = features;
+      }
+    );
   mkFeatures =
     feat:
     lib.foldl (

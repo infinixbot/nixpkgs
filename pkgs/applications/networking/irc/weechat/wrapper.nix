@@ -27,7 +27,9 @@ let
       perlInterpreter = perlPackages.perl;
       availablePlugins =
         let
-          simplePlugin = name: { pluginFile = "${weechat.${name}}/lib/weechat/plugins/${name}.so"; };
+          simplePlugin = name: {
+            pluginFile = "${weechat.${name}}/lib/weechat/plugins/${name}.so";
+          };
         in
         rec {
           python = (simplePlugin "python") // {
@@ -69,7 +71,9 @@ let
           php = simplePlugin "php";
         };
 
-      config = configure { inherit availablePlugins; };
+      config = configure {
+        inherit availablePlugins;
+      };
 
       plugins = config.plugins or (builtins.attrValues availablePlugins);
 

@@ -13,7 +13,9 @@ let
   user = "mobilizon";
   group = "mobilizon";
 
-  settingsFormat = pkgs.formats.elixirConf { elixir = cfg.package.elixirPackage; };
+  settingsFormat = pkgs.formats.elixirConf {
+    elixir = cfg.package.elixirPackage;
+  };
 
   configFile = settingsFormat.generate "mobilizon-config.exs" cfg.settings;
 
@@ -245,7 +247,9 @@ in
         "Mobilizon.Web.Endpoint" = {
           server = true;
           url.host = mkDefault instanceSettings.hostname;
-          secret_key_base = settingsFormat.lib.mkGetEnv { envVariable = "MOBILIZON_INSTANCE_SECRET"; };
+          secret_key_base = settingsFormat.lib.mkGetEnv {
+            envVariable = "MOBILIZON_INSTANCE_SECRET";
+          };
         };
 
         "Mobilizon.Web.Auth.Guardian".secret_key = settingsFormat.lib.mkGetEnv {

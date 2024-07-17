@@ -18,18 +18,23 @@ let
   ];
 in
 
-(callPackage ./common.nix { inherit stdenv; } {
-  inherit
-    withLinuxHeaders
-    withGd
-    profilingLibraries
-    enableCET
-    ;
-  pname =
-    "glibc"
-    + lib.optionalString withGd "-gd"
-    + lib.optionalString (stdenv.cc.isGNU && libgcc == null) "-nolibgcc";
-}).overrideAttrs
+(callPackage ./common.nix
+  {
+    inherit stdenv;
+  }
+  {
+    inherit
+      withLinuxHeaders
+      withGd
+      profilingLibraries
+      enableCET
+      ;
+    pname =
+      "glibc"
+      + lib.optionalString withGd "-gd"
+      + lib.optionalString (stdenv.cc.isGNU && libgcc == null) "-nolibgcc";
+  }
+).overrideAttrs
   (previousAttrs: {
 
     # Note:
@@ -207,7 +212,9 @@ in
 
     passthru =
       (previousAttrs.passthru or { })
-      // lib.optionalAttrs (libgcc != null) { inherit libgcc; };
+      // lib.optionalAttrs (libgcc != null) {
+        inherit libgcc;
+      };
 
     meta = (previousAttrs.meta or { }) // {
       description = "GNU C Library";

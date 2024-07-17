@@ -94,7 +94,9 @@ in
 
   config = mkMerge [
 
-    { services.cron.enable = mkDefault (allFiles != [ ]); }
+    {
+      services.cron.enable = mkDefault (allFiles != [ ]);
+    }
     (mkIf (config.services.cron.enable) {
       security.wrappers.crontab = {
         setuid = true;

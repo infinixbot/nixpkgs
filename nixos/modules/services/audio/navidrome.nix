@@ -153,7 +153,9 @@ in
         };
       };
 
-      users.groups = mkIf (cfg.group == "navidrome") { navidrome = { }; };
+      users.groups = mkIf (cfg.group == "navidrome") {
+        navidrome = { };
+      };
 
       networking.firewall.allowedTCPPorts = mkIf cfg.openFirewall [ cfg.settings.Port ];
     };

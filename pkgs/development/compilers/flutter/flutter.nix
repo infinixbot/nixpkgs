@@ -159,20 +159,24 @@ let
       runHook postInstallCheck
     '';
 
-    passthru = {
-      # TODO: rely on engine.version instead of engineVersion
-      inherit
-        dart
-        engineVersion
-        artifactHashes
-        channel
-        ;
-      tools = flutterTools;
-      # The derivation containing the original Flutter SDK files.
-      # When other derivations wrap this one, any unmodified files
-      # found here should be included as-is, for tooling compatibility.
-      sdk = unwrapped;
-    } // lib.optionalAttrs (engine != null && engine.meta.available) { inherit engine; };
+    passthru =
+      {
+        # TODO: rely on engine.version instead of engineVersion
+        inherit
+          dart
+          engineVersion
+          artifactHashes
+          channel
+          ;
+        tools = flutterTools;
+        # The derivation containing the original Flutter SDK files.
+        # When other derivations wrap this one, any unmodified files
+        # found here should be included as-is, for tooling compatibility.
+        sdk = unwrapped;
+      }
+      // lib.optionalAttrs (engine != null && engine.meta.available) {
+        inherit engine;
+      };
 
     meta = with lib; {
       description = "Flutter is Google's SDK for building mobile, web and desktop with Dart";

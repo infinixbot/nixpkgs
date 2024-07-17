@@ -9,7 +9,9 @@ with lib;
 
 let
   cfg = config.services.snipe-it;
-  snipe-it = pkgs.snipe-it.override { dataDir = cfg.dataDir; };
+  snipe-it = pkgs.snipe-it.override {
+    dataDir = cfg.dataDir;
+  };
   db = cfg.database;
   mail = cfg.mail;
 
@@ -238,7 +240,9 @@ in
 
     nginx = mkOption {
       type = types.submodule (
-        recursiveUpdate (import ../web-servers/nginx/vhost-options.nix { inherit config lib; }) { }
+        recursiveUpdate (import ../web-servers/nginx/vhost-options.nix {
+          inherit config lib;
+        }) { }
       );
       default = { };
       example = literalExpression ''
@@ -560,7 +564,9 @@ in
         };
         "${config.services.nginx.user}".extraGroups = [ group ];
       };
-      groups = mkIf (group == "snipeit") { snipeit = { }; };
+      groups = mkIf (group == "snipeit") {
+        snipeit = { };
+      };
     };
 
   };

@@ -1,12 +1,20 @@
 {
   system ? builtins.currentSystem,
   config ? { },
-  pkgs ? import ../../.. { inherit system config; },
+  pkgs ? import ../../.. {
+    inherit system config;
+  },
   lib ? pkgs.lib,
 }:
 
 let
-  inherit (import ./common.nix { inherit pkgs lib; }) mkTestName mariadbPackages;
+  inherit
+    (import ./common.nix {
+      inherit pkgs lib;
+    })
+    mkTestName
+    mariadbPackages
+    ;
 
   makeTest = import ./../make-test-python.nix;
 
@@ -57,4 +65,9 @@ let
       '';
     };
 in
-lib.mapAttrs (_: package: makeAutobackupTest { inherit package; }) mariadbPackages
+lib.mapAttrs (
+  _: package:
+  makeAutobackupTest {
+    inherit package;
+  }
+) mariadbPackages

@@ -50,9 +50,13 @@ let
 
   useSharedHttpParser = !stdenv.isDarwin && lib.versionOlder "${majorVersion}.${minorVersion}" "11.4";
 
-  sharedLibDeps = {
-    inherit openssl zlib libuv;
-  } // (lib.optionalAttrs useSharedHttpParser { inherit http-parser; });
+  sharedLibDeps =
+    {
+      inherit openssl zlib libuv;
+    }
+    // (lib.optionalAttrs useSharedHttpParser {
+      inherit http-parser;
+    });
 
   sharedConfigureFlags =
     lib.concatMap (name: [
@@ -191,7 +195,9 @@ let
 
     passthru.interpreterName = "nodejs";
 
-    passthru.pkgs = callPackage ../../node-packages/default.nix { nodejs = self; };
+    passthru.pkgs = callPackage ../../node-packages/default.nix {
+      nodejs = self;
+    };
 
     setupHook = ./setup-hook.sh;
 

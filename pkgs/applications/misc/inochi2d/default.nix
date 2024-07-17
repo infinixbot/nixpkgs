@@ -16,7 +16,11 @@
 # https://github.com/NixOS/nixpkgs/pull/288841#issuecomment-1950247467
 
 let
-  mkGeneric = builderArgs: callPackage ./generic.nix { inherit builderArgs; };
+  mkGeneric =
+    builderArgs:
+    callPackage ./generic.nix {
+      inherit builderArgs;
+    };
 in
 {
   inochi-creator = mkGeneric rec {

@@ -25,7 +25,9 @@ buildGoModule rec {
     "-X main.AppVersion=${version}"
   ];
 
-  passthru.tests.version = testers.testVersion { package = gucci; };
+  passthru.tests.version = testers.testVersion {
+    package = gucci;
+  };
 
   checkFlags = [
     "-short"

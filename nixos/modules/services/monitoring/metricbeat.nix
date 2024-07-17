@@ -27,7 +27,9 @@ in
 
       enable = mkEnableOption "metricbeat";
 
-      package = mkPackageOption pkgs "metricbeat" { example = "metricbeat7"; };
+      package = mkPackageOption pkgs "metricbeat" {
+        example = "metricbeat7";
+      };
 
       modules = mkOption {
         description = ''

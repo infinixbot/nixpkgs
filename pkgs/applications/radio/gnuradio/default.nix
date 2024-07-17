@@ -306,9 +306,15 @@ stdenv.mkDerivation (
           # previous gnuradio versions where there it's log4cpp.
           logLib = spdlog;
         }
-        // lib.optionalAttrs (hasFeature "gr-uhd") { inherit uhd; }
-        // lib.optionalAttrs (hasFeature "gr-pdu") { inherit libiio libad9361; }
-        // lib.optionalAttrs (hasFeature "gr-qtgui") { inherit (libsForQt5) qwt; };
+        // lib.optionalAttrs (hasFeature "gr-uhd") {
+          inherit uhd;
+        }
+        // lib.optionalAttrs (hasFeature "gr-pdu") {
+          inherit libiio libad9361;
+        }
+        // lib.optionalAttrs (hasFeature "gr-qtgui") {
+          inherit (libsForQt5) qwt;
+        };
 
       postInstall =
         shared.postInstall

@@ -163,10 +163,18 @@ stdenv.mkDerivation rec {
     tests = {
       inherit (nixosTests) kerberos;
       inherit (python3.pkgs) requests-credssp;
-      bind = bind.override { enableGSSAPI = true; };
-      curl = curl.override { gssSupport = true; };
-      openssh = openssh.override { withKerberos = true; };
-      postgresql = postgresql.override { gssSupport = true; };
+      bind = bind.override {
+        enableGSSAPI = true;
+      };
+      curl = curl.override {
+        gssSupport = true;
+      };
+      openssh = openssh.override {
+        withKerberos = true;
+      };
+      postgresql = postgresql.override {
+        gssSupport = true;
+      };
     };
   };
 }

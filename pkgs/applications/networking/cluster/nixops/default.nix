@@ -11,7 +11,12 @@ let
   encapsulate =
     layerZero:
     let
-      fixed = layerZero ({ extend = f: encapsulate (extends f layerZero); } // fixed);
+      fixed = layerZero (
+        {
+          extend = f: encapsulate (extends f layerZero);
+        }
+        // fixed
+      );
     in
     fixed.public;
 
@@ -19,7 +24,11 @@ let
 
     python = python3.override {
       packageOverrides =
-        self: super: { nixops = self.callPackage ./unwrapped.nix { }; } // (this.plugins self super);
+        self: super:
+        {
+          nixops = self.callPackage ./unwrapped.nix { };
+        }
+        // (this.plugins self super);
     };
 
     plugins =
@@ -49,7 +58,12 @@ let
     # selector is a function mapping pythonPackages to a list of plugins
     # e.g. nixops_unstable.withPlugins (ps: with ps; [ nixops-aws ])
     withPlugins =
-      selector: this.extend (this: _old: { selectedPlugins = selector this.availablePlugins; });
+      selector:
+      this.extend (
+        this: _old: {
+          selectedPlugins = selector this.availablePlugins;
+        }
+      );
 
     rawPackage = this.python.pkgs.toPythonApplication (
       this.python.pkgs.nixops.overridePythonAttrs (old: {
@@ -74,15 +88,22 @@ let
       tests =
         this.rawPackage.tests
         // {
-          nixos = this.rawPackage.tests.nixos.passthru.override { nixopsPkg = this.rawPackage; };
+          nixos = this.rawPackage.tests.nixos.passthru.override {
+            nixopsPkg = this.rawPackage;
+          };
           commutative_addAvailablePlugins_withPlugins =
             assert
-              (this.public.addAvailablePlugins (self: super: { inherit emptyFile; })).withPlugins (ps: [
-                emptyFile
-              ]) ==
+              (this.public.addAvailablePlugins (
+                self: super: {
+                  inherit emptyFile;
+                }
+              )).withPlugins
+                (ps: [ emptyFile ]) ==
               # Note that this value proves that the package is not instantiated until the end, where it's valid again.
               (this.public.withPlugins (ps: [ emptyFile ])).addAvailablePlugins (
-                self: super: { inherit emptyFile; }
+                self: super: {
+                  inherit emptyFile;
+                }
               );
             emptyFile;
         }
@@ -93,7 +114,12 @@ let
               (this.withPlugins (ps: with ps; [ nixops-encrypted-links ])).tests;
         };
       overrideAttrs =
-        f: this.extend (this: oldThis: { rawPackage = oldThis.rawPackage.overrideAttrs f; });
+        f:
+        this.extend (
+          this: oldThis: {
+            rawPackage = oldThis.rawPackage.overrideAttrs f;
+          }
+        );
       /**
         nixops.addAvailablePlugins: Overlay -> Package
 
@@ -102,7 +128,11 @@ let
       */
       addAvailablePlugins =
         newPlugins:
-        this.extend (finalThis: oldThis: { plugins = lib.composeExtensions oldThis.plugins newPlugins; });
+        this.extend (
+          finalThis: oldThis: {
+            plugins = lib.composeExtensions oldThis.plugins newPlugins;
+          }
+        );
 
       # For those who need or dare.
       internals = this;

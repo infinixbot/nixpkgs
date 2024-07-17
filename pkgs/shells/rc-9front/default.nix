@@ -41,7 +41,9 @@ stdenv.mkDerivation {
 
   passthru = {
     shellPath = "/bin/rc";
-    updateScript = unstableGitUpdater { shallowClone = false; };
+    updateScript = unstableGitUpdater {
+      shallowClone = false;
+    };
   };
 
   meta = with lib; {

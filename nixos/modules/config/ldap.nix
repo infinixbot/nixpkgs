@@ -45,12 +45,17 @@ let
   # nslcd normally reads configuration from /etc/nslcd.conf.
   # this file might contain secrets. We append those at runtime,
   # so redirect its location to something more temporary.
-  nslcdWrapped = runCommand "nslcd-wrapped" { nativeBuildInputs = [ makeWrapper ]; } ''
-    mkdir -p $out/bin
-    makeWrapper ${nss_pam_ldapd}/sbin/nslcd $out/bin/nslcd \
-      --set LD_PRELOAD    "${pkgs.libredirect}/lib/libredirect.so" \
-      --set NIX_REDIRECTS "/etc/nslcd.conf=/run/nslcd/nslcd.conf"
-  '';
+  nslcdWrapped =
+    runCommand "nslcd-wrapped"
+      {
+        nativeBuildInputs = [ makeWrapper ];
+      }
+      ''
+        mkdir -p $out/bin
+        makeWrapper ${nss_pam_ldapd}/sbin/nslcd $out/bin/nslcd \
+          --set LD_PRELOAD    "${pkgs.libredirect}/lib/libredirect.so" \
+          --set NIX_REDIRECTS "/etc/nslcd.conf=/run/nslcd/nslcd.conf"
+      '';
 
 in
 
@@ -229,7 +234,9 @@ in
 
   config = mkIf cfg.enable {
 
-    environment.etc = optionalAttrs (!cfg.daemon.enable) { "ldap.conf" = ldapConfig; };
+    environment.etc = optionalAttrs (!cfg.daemon.enable) {
+      "ldap.conf" = ldapConfig;
+    };
 
     system.nssModules = mkIf cfg.nsswitch (
       singleton (if cfg.daemon.enable then nss_pam_ldapd else nss_ldap)

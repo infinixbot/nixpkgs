@@ -18,7 +18,9 @@ buildKodiAddon rec {
 
   passthru = {
     pythonPath = "resources/lib";
-    updateScript = addonUpdateScript { attrPath = "kodi.packages.somafm"; };
+    updateScript = addonUpdateScript {
+      attrPath = "kodi.packages.somafm";
+    };
   };
 
   meta = with lib; {

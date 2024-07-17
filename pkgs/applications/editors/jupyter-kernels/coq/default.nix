@@ -26,22 +26,32 @@ let
     (callPackage ./kernel.nix { })
   ]);
 
-  logos = runCommand "coq-logos" { buildInputs = [ imagemagick ]; } ''
-    mkdir -p $out
-    convert ${coq.src}/ide/coqide/coq.png -resize 32x32 $out/logo-32x32.png
-    convert ${coq.src}/ide/coqide/coq.png -resize 64x64 $out/logo-64x64.png
-  '';
+  logos =
+    runCommand "coq-logos"
+      {
+        buildInputs = [ imagemagick ];
+      }
+      ''
+        mkdir -p $out
+        convert ${coq.src}/ide/coqide/coq.png -resize 32x32 $out/logo-32x32.png
+        convert ${coq.src}/ide/coqide/coq.png -resize 64x64 $out/logo-64x64.png
+      '';
 
 in
 
 rec {
-  launcher = runCommand "coq-kernel-launcher" { nativeBuildInputs = [ makeWrapper ]; } ''
-    mkdir -p $out/bin
+  launcher =
+    runCommand "coq-kernel-launcher"
+      {
+        nativeBuildInputs = [ makeWrapper ];
+      }
+      ''
+        mkdir -p $out/bin
 
-    makeWrapper ${python.interpreter} $out/bin/coq-kernel \
-      --add-flags "-m coq_jupyter" \
-      --suffix PATH : ${coq}/bin
-  '';
+        makeWrapper ${python.interpreter} $out/bin/coq-kernel \
+          --add-flags "-m coq_jupyter" \
+          --suffix PATH : ${coq}/bin
+      '';
 
   definition = definitionWithPackages [ ];
 

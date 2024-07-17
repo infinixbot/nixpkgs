@@ -41,7 +41,14 @@ let
     in
     {
       production =
-        (if (gitlabVersionAtLeast "15.0") then { main = val; } else val)
+        (
+          if (gitlabVersionAtLeast "15.0") then
+            {
+              main = val;
+            }
+          else
+            val
+        )
         // lib.optionalAttrs (gitlabVersionAtLeast "15.9") {
           ci = val // {
             database_tasks = false;
@@ -139,11 +146,15 @@ let
       omniauth.enabled = false;
       shared.path = "${cfg.statePath}/shared";
       gitaly.client_path = "${cfg.packages.gitaly}/bin";
-      backup = {
-        gitaly_backup_path = "${cfg.packages.gitaly}/bin/gitaly-backup";
-        path = cfg.backup.path;
-        keep_time = cfg.backup.keepTime;
-      } // (optionalAttrs (cfg.backup.uploadOptions != { }) { upload = cfg.backup.uploadOptions; });
+      backup =
+        {
+          gitaly_backup_path = "${cfg.packages.gitaly}/bin/gitaly-backup";
+          path = cfg.backup.path;
+          keep_time = cfg.backup.keepTime;
+        }
+        // (optionalAttrs (cfg.backup.uploadOptions != { }) {
+          upload = cfg.backup.uploadOptions;
+        });
       gitlab_shell = {
         path = "${cfg.packages.gitlab-shell}";
         hooks_path = "${cfg.statePath}/shell/hooks";
@@ -321,7 +332,9 @@ in
         '';
       };
 
-      packages.gitlab = mkPackageOption pkgs "gitlab" { example = "gitlab-ee"; };
+      packages.gitlab = mkPackageOption pkgs "gitlab" {
+        example = "gitlab-ee";
+      };
 
       packages.gitlab-shell = mkPackageOption pkgs "gitlab-shell" { };
 
@@ -1224,7 +1237,9 @@ in
     # We use postgres as the main data store.
     services.postgresql = optionalAttrs databaseActuallyCreateLocally {
       enable = true;
-      ensureUsers = singleton { name = cfg.databaseUsername; };
+      ensureUsers = singleton {
+        name = cfg.databaseUsername;
+      };
     };
 
     # Enable rotation of log files
@@ -1817,10 +1832,14 @@ in
       after = [ "gitlab.service" ];
       bindsTo = [ "gitlab.service" ];
       startAt = cfg.backup.startAt;
-      environment = {
-        RAILS_ENV = "production";
-        CRON = "1";
-      } // optionalAttrs (stringLength cfg.backup.skip > 0) { SKIP = cfg.backup.skip; };
+      environment =
+        {
+          RAILS_ENV = "production";
+          CRON = "1";
+        }
+        // optionalAttrs (stringLength cfg.backup.skip > 0) {
+          SKIP = cfg.backup.skip;
+        };
       serviceConfig = {
         User = cfg.user;
         Group = cfg.group;

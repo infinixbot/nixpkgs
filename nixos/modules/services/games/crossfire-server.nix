@@ -168,7 +168,9 @@ in
           Group = "crossfire";
           WorkingDirectory = cfg.stateDir;
         }
-        (mkIf (cfg.stateDir == "/var/lib/crossfire") { StateDirectory = "crossfire"; })
+        (mkIf (cfg.stateDir == "/var/lib/crossfire") {
+          StateDirectory = "crossfire";
+        })
       ];
 
       # The crossfire server needs access to a bunch of files at runtime that
@@ -187,6 +189,8 @@ in
       '';
     };
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ serverPort ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ serverPort ];
+    };
   };
 }

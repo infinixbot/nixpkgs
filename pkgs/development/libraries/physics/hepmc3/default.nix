@@ -12,7 +12,13 @@ let
   pythonVersion = with lib.versions; "${major python.version}${minor python.version}";
   withPython = python != null;
   # ensure that root is built with the same python interpreter, as it links against numpy
-  root_py = if withPython then root.override { inherit python; } else root;
+  root_py =
+    if withPython then
+      root.override {
+        inherit python;
+      }
+    else
+      root;
 in
 
 stdenv.mkDerivation rec {

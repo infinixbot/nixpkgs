@@ -63,7 +63,9 @@ let
       IMAGE_ID = optionalString (config.system.image.id != null) config.system.image.id;
       IMAGE_VERSION = optionalString (config.system.image.version != null) config.system.image.version;
     }
-    // lib.optionalAttrs (cfg.variant_id != null) { VARIANT_ID = cfg.variant_id; };
+    // lib.optionalAttrs (cfg.variant_id != null) {
+      VARIANT_ID = cfg.variant_id;
+    };
 
   initrdReleaseContents = (removeAttrs osReleaseContents [ "BUILD_ID" ]) // {
     PRETTY_NAME = "${osReleaseContents.PRETTY_NAME} (Initrd)";

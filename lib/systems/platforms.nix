@@ -18,7 +18,9 @@ rec {
     };
   };
 
-  pc_simplekernel = lib.recursiveUpdate pc { linux-kernel.autoModules = false; };
+  pc_simplekernel = lib.recursiveUpdate pc {
+    linux-kernel.autoModules = false;
+  };
 
   powernv = {
     linux-kernel = {
@@ -599,7 +601,9 @@ rec {
       riscv-multiplatform
 
     else if platform.parsed.cpu == lib.systems.parse.cpuTypes.mipsel then
-      (import ./examples.nix { inherit lib; }).mipsel-linux-gnu
+      (import ./examples.nix {
+        inherit lib;
+      }).mipsel-linux-gnu
 
     else if platform.parsed.cpu == lib.systems.parse.cpuTypes.powerpc64le then
       powernv

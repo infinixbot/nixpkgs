@@ -61,7 +61,9 @@ buildGoModule rec {
   # go-modules derivation doesn't provide $data
   # so we need to wait until it is built, and then
   # at that time we can then apply the substituteInPlace
-  overrideModAttrs = _: { postPatch = null; };
+  overrideModAttrs = _: {
+    postPatch = null;
+  };
 
   postPatch = ''
     substituteInPlace modules/setting/server.go --subst-var data

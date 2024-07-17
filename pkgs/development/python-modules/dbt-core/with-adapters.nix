@@ -21,4 +21,6 @@ adapterFun:
   extraLibs = [ dbt-core ] ++ (adapterFun adapters);
   ignoreCollisions = true;
 }).overrideAttrs
-  { meta.mainProgram = dbt-core.meta.mainProgram; }
+  {
+    meta.mainProgram = dbt-core.meta.mainProgram;
+  }

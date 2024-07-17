@@ -69,7 +69,9 @@ buildGoModule {
     '';
 
   passthru.tests = {
-    simple = callPackage ./tests.nix { inherit version; };
+    simple = callPackage ./tests.nix {
+      inherit version;
+    };
   };
 
   meta = {

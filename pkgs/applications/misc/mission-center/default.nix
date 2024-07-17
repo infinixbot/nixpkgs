@@ -58,8 +58,12 @@ stdenv.mkDerivation rec {
   cargoDeps = symlinkJoin {
     name = "cargo-vendor-dir";
     paths = [
-      (rustPlatform.importCargoLock { lockFile = ./Cargo.lock; })
-      (rustPlatform.importCargoLock { lockFile = ./gatherer-Cargo.lock; })
+      (rustPlatform.importCargoLock {
+        lockFile = ./Cargo.lock;
+      })
+      (rustPlatform.importCargoLock {
+        lockFile = ./gatherer-Cargo.lock;
+      })
     ];
   };
 

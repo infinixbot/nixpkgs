@@ -9,16 +9,24 @@ let
   addToNativeBuildInputs = pkg: old: {
     nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ lib.toList pkg;
   };
-  addToBuildInputs = pkg: old: { buildInputs = (old.buildInputs or [ ]) ++ lib.toList pkg; };
+  addToBuildInputs = pkg: old: {
+    buildInputs = (old.buildInputs or [ ]) ++ lib.toList pkg;
+  };
   addToPropagatedBuildInputs = pkg: old: {
     propagatedBuildInputs = (old.propagatedBuildInputs or [ ]) ++ lib.toList pkg;
   };
-  addPkgConfig = old: { nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.pkg-config ]; };
+  addPkgConfig = old: {
+    nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.pkg-config ];
+  };
   addToBuildInputsWithPkgConfig = pkg: old: (addPkgConfig old) // (addToBuildInputs pkg old);
   addToPropagatedBuildInputsWithPkgConfig =
     pkg: old: (addPkgConfig old) // (addToPropagatedBuildInputs pkg old);
-  broken = addMetaAttrs { broken = true; };
-  brokenOnDarwin = addMetaAttrs { broken = stdenv.isDarwin; };
+  broken = addMetaAttrs {
+    broken = true;
+  };
+  brokenOnDarwin = addMetaAttrs {
+    broken = stdenv.isDarwin;
+  };
   addToCscOptions = opt: old: {
     CSC_OPTIONS = lib.concatStringsSep " " ([ old.CSC_OPTIONS or "" ] ++ lib.toList opt);
   };
@@ -216,8 +224,12 @@ in
   };
 
   # platform changes
-  pledge = addMetaAttrs { platforms = lib.platforms.openbsd; };
-  unveil = addMetaAttrs { platforms = lib.platforms.openbsd; };
+  pledge = addMetaAttrs {
+    platforms = lib.platforms.openbsd;
+  };
+  unveil = addMetaAttrs {
+    platforms = lib.platforms.openbsd;
+  };
 
   # mark broken
   "ephem-v1.1" = broken;

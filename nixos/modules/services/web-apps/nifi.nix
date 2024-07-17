@@ -347,6 +347,8 @@ in
       )
     ];
 
-    users.groups = lib.optionalAttrs (cfg.group == "nifi") { nifi = { }; };
+    users.groups = lib.optionalAttrs (cfg.group == "nifi") {
+      nifi = { };
+    };
   };
 }

@@ -8,7 +8,9 @@
   love,
   luajit,
   libcoldclear ? callPackage ./libcoldclear.nix { },
-  ccloader ? callPackage ./ccloader.nix { inherit libcoldclear luajit; },
+  ccloader ? callPackage ./ccloader.nix {
+    inherit libcoldclear luajit;
+  },
 }:
 
 let

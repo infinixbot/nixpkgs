@@ -20,7 +20,11 @@
 let
   python = python310.override {
     packageOverrides = (
-      self: super: { matplotlib = super.matplotlib.override { enableGtk3 = true; }; }
+      self: super: {
+        matplotlib = super.matplotlib.override {
+          enableGtk3 = true;
+        };
+      }
     );
   };
 in

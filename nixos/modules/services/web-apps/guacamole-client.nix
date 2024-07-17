@@ -15,7 +15,9 @@ in
       package = lib.mkPackageOption pkgs "guacamole-client" { };
 
       settings = lib.mkOption {
-        type = lib.types.submodule { freeformType = settingsFormat.type; };
+        type = lib.types.submodule {
+          freeformType = settingsFormat.type;
+        };
         default = {
           guacd-hostname = "localhost";
           guacd-port = 4822;

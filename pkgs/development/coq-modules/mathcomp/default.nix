@@ -195,7 +195,9 @@ let
             ];
           };
         }
-        // lib.optionalAttrs (package != "single") { passthru = lib.genAttrs packages mathcomp_; }
+        // lib.optionalAttrs (package != "single") {
+          passthru = lib.genAttrs packages mathcomp_;
+        }
         // lib.optionalAttrs withDoc {
           htmldoc_template = fetchzip {
             url = "https://github.com/math-comp/math-comp.github.io/archive/doc-1.12.0.zip";
@@ -236,15 +238,20 @@ let
       );
       patched-derivation2 = patched-derivation1.overrideAttrs (
         o:
-        lib.optionalAttrs (
-          lib.versions.isLe "8.7" coq.coq-version || (o.version != "dev" && lib.versions.isLe "1.7" o.version)
-        ) { installFlags = o.installFlags ++ [ "-f Makefile.coq" ]; }
+        lib.optionalAttrs
+          (
+            lib.versions.isLe "8.7" coq.coq-version || (o.version != "dev" && lib.versions.isLe "1.7" o.version)
+          )
+          {
+            installFlags = o.installFlags ++ [ "-f Makefile.coq" ];
+          }
       );
       patched-derivation = patched-derivation2.overrideAttrs (
         o:
-        lib.optionalAttrs (
-          o.version != null && (o.version == "dev" || lib.versions.isGe "2.0.0" o.version)
-        ) { propagatedBuildInputs = o.propagatedBuildInputs ++ [ hierarchy-builder ]; }
+        lib.optionalAttrs (o.version != null && (o.version == "dev" || lib.versions.isGe "2.0.0" o.version))
+          {
+            propagatedBuildInputs = o.propagatedBuildInputs ++ [ hierarchy-builder ];
+          }
       );
     in
     patched-derivation;

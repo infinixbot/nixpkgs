@@ -77,7 +77,10 @@ let
       all = lib.concatStringsSep ", " (lib.attrNames available);
     in
     if lib.hasAttr name available then
-      lib.getAttr name available // { inherit name; }
+      lib.getAttr name available
+      // {
+        inherit name;
+      }
     else
       throw "Unknown UWSGI plugin ${name}, available : ${all}";
 

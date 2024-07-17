@@ -269,7 +269,14 @@ stdenv.mkDerivation (finalAttrs: rec {
     in
     symlinkJoin {
       name = "isabelle-with-components-${isabelle.version}";
-      paths = [ isabelle ] ++ (builtins.map (c: c.override { inherit isabelle; }) components);
+      paths =
+        [ isabelle ]
+        ++ (builtins.map (
+          c:
+          c.override {
+            inherit isabelle;
+          }
+        ) components);
 
       postBuild =
         ''

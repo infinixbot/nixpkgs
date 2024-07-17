@@ -32,7 +32,9 @@ buildGoModule rec {
   ];
 
   passthru.tests = {
-    version = testers.testVersion { package = catnip; };
+    version = testers.testVersion {
+      package = catnip;
+    };
   };
 
   meta = with lib; {

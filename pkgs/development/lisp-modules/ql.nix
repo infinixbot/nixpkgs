@@ -308,7 +308,9 @@ let
   );
 
   qlpkgs = lib.optionalAttrs (builtins.pathExists ./imported.nix) (
-    pkgs.callPackage ./imported.nix { inherit build-asdf-system; }
+    pkgs.callPackage ./imported.nix {
+      inherit build-asdf-system;
+    }
   );
 
 in

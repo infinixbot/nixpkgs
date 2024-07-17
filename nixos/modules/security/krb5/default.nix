@@ -27,7 +27,9 @@ let
     '';
 
   cfg = config.security.krb5;
-  format = import ./krb5-conf-format.nix { inherit pkgs lib; } { };
+  format = import ./krb5-conf-format.nix {
+    inherit pkgs lib;
+  } { };
 in
 {
   imports = [
@@ -52,7 +54,9 @@ in
         type = bool;
       };
 
-      package = mkPackageOption pkgs "krb5" { example = "heimdal"; };
+      package = mkPackageOption pkgs "krb5" {
+        example = "heimdal";
+      };
 
       settings = mkOption {
         default = { };
@@ -122,5 +126,7 @@ in
     };
   };
 
-  meta.maintainers = builtins.attrValues { inherit (lib.maintainers) dblsaiko h7x4; };
+  meta.maintainers = builtins.attrValues {
+    inherit (lib.maintainers) dblsaiko h7x4;
+  };
 }

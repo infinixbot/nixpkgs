@@ -19,7 +19,9 @@ let
       UpdateChannel = 0;
       Headless = true;
     }
-    // lib.optionalAttrs (cfg.ipcPasswordFile != null) { IPCPassword = "#ipcPassword#"; }
+    // lib.optionalAttrs (cfg.ipcPasswordFile != null) {
+      IPCPassword = "#ipcPassword#";
+    }
   );
 
   ipc-config = format.generate "IPC.config" cfg.ipcSettings;

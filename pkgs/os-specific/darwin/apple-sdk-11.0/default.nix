@@ -74,7 +74,9 @@ let
       cc
     else
       cc.override {
-        bintools = stdenv.cc.bintools.override { libc = packages.Libsystem; };
+        bintools = stdenv.cc.bintools.override {
+          libc = packages.Libsystem;
+        };
         libc = packages.Libsystem;
       };
 
@@ -122,7 +124,13 @@ let
         ]
     );
 
-  callPackage = newScope (packages // pkgs.darwin // { inherit MacOSX-SDK; });
+  callPackage = newScope (
+    packages
+    // pkgs.darwin
+    // {
+      inherit MacOSX-SDK;
+    }
+  );
 
   packages = stdenvs // {
     inherit (callPackage ./apple_sdk.nix { }) frameworks libs;
@@ -142,7 +150,9 @@ let
     # conflicting LLVM modules.
     objc4 = stdenv.objc4 or (callPackage ./libobjc.nix { });
 
-    sdkRoot = pkgs.callPackage ../apple-sdk/sdkRoot.nix { sdkVersion = "11.0"; };
+    sdkRoot = pkgs.callPackage ../apple-sdk/sdkRoot.nix {
+      sdkVersion = "11.0";
+    };
 
     # questionable aliases
     configd = pkgs.darwin.apple_sdk.frameworks.SystemConfiguration;

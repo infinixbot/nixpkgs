@@ -109,7 +109,9 @@ buildPythonPackage rec {
   '';
 
   # tons of warnings from subpackages, no point in playing whack-a-mole
-  env = lib.optionalAttrs (!enableVerbose) { NIX_CFLAGS_COMPILE = "-w"; };
+  env = lib.optionalAttrs (!enableVerbose) {
+    NIX_CFLAGS_COMPILE = "-w";
+  };
 
   outputs = [
     "out"

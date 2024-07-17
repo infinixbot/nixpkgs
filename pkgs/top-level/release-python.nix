@@ -19,7 +19,9 @@
 }:
 
 let
-  release-lib = import ./release-lib.nix { inherit supportedSystems nixpkgsArgs; };
+  release-lib = import ./release-lib.nix {
+    inherit supportedSystems nixpkgsArgs;
+  };
 
   inherit (release-lib) mapTestOn pkgs;
 
@@ -45,8 +47,12 @@ let
   );
 
   jobs = {
-    lib-tests = import ../../lib/tests/release.nix { inherit pkgs; };
-    pkgs-lib-tests = import ../pkgs-lib/tests { inherit pkgs; };
+    lib-tests = import ../../lib/tests/release.nix {
+      inherit pkgs;
+    };
+    pkgs-lib-tests = import ../pkgs-lib/tests {
+      inherit pkgs;
+    };
 
     tested = pkgs.releaseTools.aggregate {
       name = "python-tested";

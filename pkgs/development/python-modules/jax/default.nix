@@ -149,10 +149,14 @@ buildPythonPackage rec {
   #   NIXPKGS_ALLOW_UNFREE=1 nixglhost -- nix run --impure .#python3Packages.jax.passthru.tests.test_cuda_jaxlibBin
   passthru.tests = {
     test_cuda_jaxlibSource = callPackage ./test-cuda.nix {
-      jaxlib = jaxlib-build.override { cudaSupport = true; };
+      jaxlib = jaxlib-build.override {
+        cudaSupport = true;
+      };
     };
     test_cuda_jaxlibBin = callPackage ./test-cuda.nix {
-      jaxlib = jaxlib-bin.override { cudaSupport = true; };
+      jaxlib = jaxlib-bin.override {
+        cudaSupport = true;
+      };
     };
   };
 

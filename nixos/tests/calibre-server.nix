@@ -1,11 +1,18 @@
 {
   system ? builtins.currentSystem,
   config ? { },
-  pkgs ? import ../.. { inherit system config; },
+  pkgs ? import ../.. {
+    inherit system config;
+  },
 }:
 
 let
-  inherit (import ../lib/testing-python.nix { inherit system pkgs; }) makeTest;
+  inherit
+    (import ../lib/testing-python.nix {
+      inherit system pkgs;
+    })
+    makeTest
+    ;
   inherit (pkgs.lib)
     concatStringsSep
     maintainers

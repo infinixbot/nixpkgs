@@ -74,7 +74,9 @@ stdenv.mkDerivation rec {
     ++ (with gst_all_1; [
       gstreamer
       gst-plugins-base
-      (gst-plugins-good.override { qt6Support = true; })
+      (gst-plugins-good.override {
+        qt6Support = true;
+      })
       gst-plugins-bad
       libnice
     ]);

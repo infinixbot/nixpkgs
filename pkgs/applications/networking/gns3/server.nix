@@ -72,7 +72,9 @@ python3Packages.buildPythonApplication {
   checkInputs = with python3Packages; [
     pytest-aiohttp
     pytest-rerunfailures
-    (pytestCheckHook.override { pytest = pytest_7; })
+    (pytestCheckHook.override {
+      pytest = pytest_7;
+    })
   ];
 
   pytestFlagsArray = [

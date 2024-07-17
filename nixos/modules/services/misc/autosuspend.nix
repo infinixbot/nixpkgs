@@ -45,7 +45,11 @@ let
   };
 
   autosuspend-conf = settingsFormat.generate "autosuspend.conf" (
-    { general = cfg.settings; } // checks // wakeups
+    {
+      general = cfg.settings;
+    }
+    // checks
+    // wakeups
   );
 
   autosuspend = cfg.package;

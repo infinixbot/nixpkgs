@@ -9,7 +9,9 @@ with lib;
 
 let
   cfg = config.services.minidlna;
-  settingsFormat = pkgs.formats.keyValue { listsAsDuplicateKeys = true; };
+  settingsFormat = pkgs.formats.keyValue {
+    listsAsDuplicateKeys = true;
+  };
   settingsFile = settingsFormat.generate "minidlna.conf" cfg.settings;
 in
 

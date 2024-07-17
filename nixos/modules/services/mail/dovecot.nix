@@ -207,7 +207,13 @@ let
   modulesDir = pkgs.symlinkJoin {
     name = "dovecot-modules";
     paths = map (pkg: "${pkg}/lib/dovecot") (
-      [ dovecotPkg ] ++ map (module: module.override { dovecot = dovecotPkg; }) cfg.modules
+      [ dovecotPkg ]
+      ++ map (
+        module:
+        module.override {
+          dovecot = dovecotPkg;
+        }
+      ) cfg.modules
     );
   };
 
@@ -695,18 +701,26 @@ in
         };
       }
       // optionalAttrs (cfg.createMailUser && cfg.mailUser != null) {
-        ${cfg.mailUser} = {
-          description = "Virtual Mail User";
-          isSystemUser = true;
-        } // optionalAttrs (cfg.mailGroup != null) { group = cfg.mailGroup; };
+        ${cfg.mailUser} =
+          {
+            description = "Virtual Mail User";
+            isSystemUser = true;
+          }
+          // optionalAttrs (cfg.mailGroup != null) {
+            group = cfg.mailGroup;
+          };
       };
 
     users.groups =
       {
         dovenull.gid = config.ids.gids.dovenull2;
       }
-      // optionalAttrs (cfg.group == "dovecot2") { dovecot2.gid = config.ids.gids.dovecot2; }
-      // optionalAttrs (cfg.createMailUser && cfg.mailGroup != null) { ${cfg.mailGroup} = { }; };
+      // optionalAttrs (cfg.group == "dovecot2") {
+        dovecot2.gid = config.ids.gids.dovecot2;
+      }
+      // optionalAttrs (cfg.createMailUser && cfg.mailGroup != null) {
+        ${cfg.mailGroup} = { };
+      };
 
     environment.etc."dovecot/modules".source = modulesDir;
     environment.etc."dovecot/dovecot.conf".source = cfg.configFile;

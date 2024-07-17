@@ -70,7 +70,14 @@
 }@args:
 
 let
-  generators = callPackage ./generators.nix { inherit dart; } { buildDrvArgs = args; };
+  generators =
+    callPackage ./generators.nix
+      {
+        inherit dart;
+      }
+      {
+        buildDrvArgs = args;
+      };
 
   pubspecLockFile = builtins.toJSON pubspecLock;
   pubspecLockData = pub2nix.readPubspecLock {
@@ -102,7 +109,10 @@ let
     extraSetupCommands = extraPackageConfigSetup;
   };
 
-  inherit (dartHooks.override { inherit dart; })
+  inherit
+    (dartHooks.override {
+      inherit dart;
+    })
     dartConfigHook
     dartBuildHook
     dartInstallHook

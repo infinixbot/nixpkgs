@@ -90,10 +90,15 @@
 
   config = {
 
-    virtualisation.docker.daemon.settings = lib.mkIf (
-      config.hardware.nvidia-container-toolkit.enable
-      && (lib.versionAtLeast config.virtualisation.docker.package.version "25")
-    ) { features.cdi = true; };
+    virtualisation.docker.daemon.settings =
+      lib.mkIf
+        (
+          config.hardware.nvidia-container-toolkit.enable
+          && (lib.versionAtLeast config.virtualisation.docker.package.version "25")
+        )
+        {
+          features.cdi = true;
+        };
 
     hardware.nvidia-container-toolkit.mounts =
       let

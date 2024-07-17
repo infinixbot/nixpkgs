@@ -275,7 +275,13 @@ in
 
       interfaces = mkOption {
         default = { };
-        type = with types; attrsOf (submodule [ { options = commonOptions; } ]);
+        type =
+          with types;
+          attrsOf (submodule [
+            {
+              options = commonOptions;
+            }
+          ]);
         description = ''
           Interface-specific open ports.
         '';
@@ -287,7 +293,13 @@ in
         default = {
           default = mapAttrs (name: value: cfg.${name}) commonOptions;
         } // cfg.interfaces;
-        type = with types; attrsOf (submodule [ { options = commonOptions; } ]);
+        type =
+          with types;
+          attrsOf (submodule [
+            {
+              options = commonOptions;
+            }
+          ]);
         description = ''
           All open ports.
         '';

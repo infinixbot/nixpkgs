@@ -24,7 +24,9 @@ rustPlatform.buildRustPackage rec {
   cargoTestFlags = cargoBuildFlags;
 
   passthru = {
-    tests.version = testers.testVersion { package = shellcheck-sarif; };
+    tests.version = testers.testVersion {
+      package = shellcheck-sarif;
+    };
   };
 
   meta = {

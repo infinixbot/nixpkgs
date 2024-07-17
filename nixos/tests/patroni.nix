@@ -51,7 +51,9 @@ import ./make-test-python.nix (
                 maximum_lag_on_failover = 1048576;
               };
               initdb = [
-                { encoding = "UTF8"; }
+                {
+                  encoding = "UTF8";
+                }
                 "data-checksums"
               ];
             };

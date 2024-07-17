@@ -13,7 +13,9 @@ lib.makeScope newScope (self: rec {
       sha256,
       ...
     }:
-    fetchurl { inherit url sha256; };
+    fetchurl {
+      inherit url sha256;
+    };
 
   akkuDerivation = self.callPackage ./akkuDerivation.nix { };
   akku = self.callPackage ./akku.nix { };
@@ -83,7 +85,12 @@ lib.makeScope newScope (self: rec {
             in
             if builtins.isList license then map stringToLicense license else stringToLicense license;
         }).overrideAttrs
-          ({ "${pname}" = lib.id; } // overrides)."${pname}";
+          (
+            {
+              "${pname}" = lib.id;
+            }
+            // overrides
+          )."${pname}";
       deps = lib.importTOML ./deps.toml;
       packages = lib.makeScope self.newScope (akkuself: lib.mapAttrs (makeAkkuPackage akkuself) deps);
     in

@@ -37,7 +37,9 @@ let
         generateDhallDirectoryPackage
         ;
 
-      lib = import ../development/dhall-modules/lib.nix { inherit lib; };
+      lib = import ../development/dhall-modules/lib.nix {
+        inherit lib;
+      };
 
       dhall-cloudformation = callPackage ../development/dhall-modules/dhall-cloudformation.nix { };
 

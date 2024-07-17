@@ -30,7 +30,9 @@ buildGoModule rec {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests.version = testers.testVersion { package = pack; };
+    tests.version = testers.testVersion {
+      package = pack;
+    };
   };
 
   meta = {

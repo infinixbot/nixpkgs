@@ -92,7 +92,9 @@ stdenv.mkDerivation rec {
             '';
       in
       {
-        version = testers.testVersion { package = mold; };
+        version = testers.testVersion {
+          package = mold;
+        };
       }
       // lib.optionalAttrs stdenv.isLinux {
         adapter-gcc = helloTest "adapter-gcc" (

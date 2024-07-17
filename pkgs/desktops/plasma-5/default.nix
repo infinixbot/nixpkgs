@@ -144,7 +144,9 @@ let
       flatpak-kcm = callPackage ./flatpak-kcm.nix { };
       kactivitymanagerd = callPackage ./kactivitymanagerd.nix { };
       kde-cli-tools = callPackage ./kde-cli-tools.nix { };
-      kde-gtk-config = callPackage ./kde-gtk-config { inherit gsettings-desktop-schemas; };
+      kde-gtk-config = callPackage ./kde-gtk-config {
+        inherit gsettings-desktop-schemas;
+      };
       kdecoration = callPackage ./kdecoration.nix { };
       kdeplasma-addons = callPackage ./kdeplasma-addons.nix { };
       kgamma5 = callPackage ./kgamma5.nix { };
@@ -176,7 +178,9 @@ let
       plasma-mobile = callPackage ./plasma-mobile { };
       plasma-nano = callPackage ./plasma-nano { };
       plasma-nm = callPackage ./plasma-nm { };
-      plasma-pa = callPackage ./plasma-pa.nix { inherit gconf; };
+      plasma-pa = callPackage ./plasma-pa.nix {
+        inherit gconf;
+      };
       plasma-remotecontrollers = callPackage ./plasma-remotecontrollers.nix { };
       plasma-sdk = callPackage ./plasma-sdk.nix { };
       plasma-systemmonitor = callPackage ./plasma-systemmonitor.nix { };

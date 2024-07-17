@@ -119,7 +119,9 @@ let
       fetchSubmodules = true;
     };
   });
-  prusa-slicer-wxGTK-override = prusa-slicer.override { wxGTK-override = wxGTK31-prusa; };
+  prusa-slicer-wxGTK-override = prusa-slicer.override {
+    wxGTK-override = wxGTK31-prusa;
+  };
   allVersions = builtins.mapAttrs (
     _name: version: (prusa-slicer-wxGTK-override.overrideAttrs (override version))
   ) versions;

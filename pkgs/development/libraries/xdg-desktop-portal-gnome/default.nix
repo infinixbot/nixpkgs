@@ -64,7 +64,9 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "xdg-desktop-portal-gnome"; };
+    updateScript = gnome.updateScript {
+      packageName = "xdg-desktop-portal-gnome";
+    };
   };
 
   meta = with lib; {

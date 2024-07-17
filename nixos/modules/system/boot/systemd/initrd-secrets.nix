@@ -11,7 +11,9 @@
     boot.initrd.systemd.contents = lib.mkIf (!config.boot.loader.supportsInitrdSecrets) (
       lib.mapAttrs' (
         dest: source:
-        lib.nameValuePair "/.initrd-secrets/${dest}" { source = if source == null then dest else source; }
+        lib.nameValuePair "/.initrd-secrets/${dest}" {
+          source = if source == null then dest else source;
+        }
       ) config.boot.initrd.secrets
     );
 

@@ -84,7 +84,9 @@
 
 let
   python3 = python3Packages.python;
-  pyPkgsOpenusd = python3Packages.openusd.override { withOsl = false; };
+  pyPkgsOpenusd = python3Packages.openusd.override {
+    withOsl = false;
+  };
 
   libdecor' = libdecor.overrideAttrs (old: {
     # Blender uses private APIs, need to patch to expose them
@@ -250,7 +252,9 @@ stdenv.mkDerivation (finalAttrs: {
       openimageio
       openjpeg
       openpgl
-      (opensubdiv.override { inherit cudaSupport; })
+      (opensubdiv.override {
+        inherit cudaSupport;
+      })
       openvdb
       potrace
       pugixml
@@ -262,7 +266,9 @@ stdenv.mkDerivation (finalAttrs: {
     ]
     ++ lib.optionals (!stdenv.isAarch64 && stdenv.isLinux) [
       embree
-      (openimagedenoise.override { inherit cudaSupport; })
+      (openimagedenoise.override {
+        inherit cudaSupport;
+      })
     ]
     ++ (
       if (!stdenv.isDarwin) then
@@ -289,7 +295,9 @@ stdenv.mkDerivation (finalAttrs: {
           brotli
           embree
           llvmPackages.openmp
-          (openimagedenoise.override { inherit cudaSupport; })
+          (openimagedenoise.override {
+            inherit cudaSupport;
+          })
           sse2neon
         ]
     )
@@ -363,40 +371,49 @@ stdenv.mkDerivation (finalAttrs: {
       };
 
     tests = {
-      render = runCommand "${finalAttrs.pname}-test" { nativeBuildInputs = [ mesa.llvmpipeHook ]; } ''
-        set -euo pipefail
-        cat <<'PYTHON' > scene-config.py
-        import bpy
-        bpy.context.scene.eevee.taa_render_samples = 32
-        bpy.context.scene.cycles.samples = 32
-        if ${if (stdenv.isAarch64 && stdenv.isLinux) then "True" else "False"}:
-            bpy.context.scene.cycles.use_denoising = False
-        bpy.context.scene.render.resolution_x = 100
-        bpy.context.scene.render.resolution_y = 100
-        bpy.context.scene.render.threads_mode = 'FIXED'
-        bpy.context.scene.render.threads = 1
-        PYTHON
+      render =
+        runCommand "${finalAttrs.pname}-test"
+          {
+            nativeBuildInputs = [ mesa.llvmpipeHook ];
+          }
+          ''
+            set -euo pipefail
+            cat <<'PYTHON' > scene-config.py
+            import bpy
+            bpy.context.scene.eevee.taa_render_samples = 32
+            bpy.context.scene.cycles.samples = 32
+            if ${if (stdenv.isAarch64 && stdenv.isLinux) then "True" else "False"}:
+                bpy.context.scene.cycles.use_denoising = False
+            bpy.context.scene.render.resolution_x = 100
+            bpy.context.scene.render.resolution_y = 100
+            bpy.context.scene.render.threads_mode = 'FIXED'
+            bpy.context.scene.render.threads = 1
+            PYTHON
 
-        mkdir $out
-        for engine in BLENDER_EEVEE_NEXT CYCLES; do
-          echo "Rendering with $engine..."
-          # Beware that argument order matters
-          ${lib.getExe finalAttrs.finalPackage} \
-            --background \
-            -noaudio \
-            --factory-startup \
-            --python-exit-code 1 \
-            --python scene-config.py \
-            --engine "$engine" \
-            --render-output "$out/$engine" \
-            --render-frame 1
-        done
-      '';
+            mkdir $out
+            for engine in BLENDER_EEVEE_NEXT CYCLES; do
+              echo "Rendering with $engine..."
+              # Beware that argument order matters
+              ${lib.getExe finalAttrs.finalPackage} \
+                --background \
+                -noaudio \
+                --factory-startup \
+                --python-exit-code 1 \
+                --python scene-config.py \
+                --engine "$engine" \
+                --render-output "$out/$engine" \
+                --render-frame 1
+            done
+          '';
       tester-cudaAvailable = cudaPackages.writeGpuTestPython { } ''
         import subprocess
         subprocess.run([${
           lib.concatMapStringsSep ", " (x: ''"${x}"'') [
-            (lib.getExe (blender.override { cudaSupport = true; }))
+            (lib.getExe (
+              blender.override {
+                cudaSupport = true;
+              }
+            ))
             "--background"
             "-noaudio"
             "--python-exit-code"
@@ -417,7 +434,13 @@ stdenv.mkDerivation (finalAttrs: {
     # OptiX, enabled with cudaSupport, is non-free.
     license =
       with lib.licenses;
-      [ gpl2Plus ] ++ lib.optional cudaSupport (unfree // { shortName = "NVidia OptiX EULA"; });
+      [ gpl2Plus ]
+      ++ lib.optional cudaSupport (
+        unfree
+        // {
+          shortName = "NVidia OptiX EULA";
+        }
+      );
 
     platforms = [
       "aarch64-linux"

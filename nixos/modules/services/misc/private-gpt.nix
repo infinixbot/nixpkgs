@@ -72,7 +72,12 @@ in
 
       preStart =
         let
-          config = format.generate "settings-local.yaml" (cfg.settings // { server.env_name = "local"; });
+          config = format.generate "settings-local.yaml" (
+            cfg.settings
+            // {
+              server.env_name = "local";
+            }
+          );
         in
         ''
           mkdir -p ${cfg.stateDir}/{settings,huggingface,matplotlib,tiktoken_cache}

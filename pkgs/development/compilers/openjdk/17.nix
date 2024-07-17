@@ -53,7 +53,9 @@ let
   };
 
   # when building a headless jdk, also bootstrap it with a headless jdk
-  openjdk-bootstrap = openjdk17-bootstrap.override { gtkSupport = !headless; };
+  openjdk-bootstrap = openjdk17-bootstrap.override {
+    gtkSupport = !headless;
+  };
 
   openjdk = stdenv.mkDerivation {
     pname = "openjdk" + lib.optionalString headless "-headless";

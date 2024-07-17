@@ -26,8 +26,12 @@ with pkgs;
           tests = lib.genAttrs pkgSets (
             name:
             recurseIntoAttrs {
-              clang = callPackage ./cc-wrapper { stdenv = pkgs.${name}.stdenv; };
-              libcxx = callPackage ./cc-wrapper { stdenv = pkgs.${name}.libcxxStdenv; };
+              clang = callPackage ./cc-wrapper {
+                stdenv = pkgs.${name}.stdenv;
+              };
+              libcxx = callPackage ./cc-wrapper {
+                stdenv = pkgs.${name}.libcxxStdenv;
+              };
             }
           );
         in
@@ -48,7 +52,12 @@ with pkgs;
             ) [ (filter (n: !lib.hasSuffix "MultiStdenv" n)) ]
           );
         in
-        lib.genAttrs pkgSets (name: callPackage ./cc-wrapper { stdenv = pkgs.${name}; });
+        lib.genAttrs pkgSets (
+          name:
+          callPackage ./cc-wrapper {
+            stdenv = pkgs.${name};
+          }
+        );
     in
     recurseIntoAttrs {
       default = callPackage ./cc-wrapper { };
@@ -108,10 +117,14 @@ with pkgs;
 
   hardeningFlags = recurseIntoAttrs (callPackage ./cc-wrapper/hardening.nix { });
   hardeningFlags-gcc = recurseIntoAttrs (
-    callPackage ./cc-wrapper/hardening.nix { stdenv = gccStdenv; }
+    callPackage ./cc-wrapper/hardening.nix {
+      stdenv = gccStdenv;
+    }
   );
   hardeningFlags-clang = recurseIntoAttrs (
-    callPackage ./cc-wrapper/hardening.nix { stdenv = llvmPackages.stdenv; }
+    callPackage ./cc-wrapper/hardening.nix {
+      stdenv = llvmPackages.stdenv;
+    }
   );
 
   config = callPackage ./config.nix { };
@@ -122,13 +135,19 @@ with pkgs;
 
   hooks = callPackage ./hooks { };
 
-  cc-multilib-gcc = callPackage ./cc-wrapper/multilib.nix { stdenv = gccMultiStdenv; };
-  cc-multilib-clang = callPackage ./cc-wrapper/multilib.nix { stdenv = clangMultiStdenv; };
+  cc-multilib-gcc = callPackage ./cc-wrapper/multilib.nix {
+    stdenv = gccMultiStdenv;
+  };
+  cc-multilib-clang = callPackage ./cc-wrapper/multilib.nix {
+    stdenv = clangMultiStdenv;
+  };
 
   fetchurl = callPackages ../build-support/fetchurl/tests.nix { };
   fetchtorrent = callPackages ../build-support/fetchtorrent/tests.nix { };
   fetchpatch = callPackages ../build-support/fetchpatch/tests.nix { };
-  fetchpatch2 = callPackages ../build-support/fetchpatch/tests.nix { fetchpatch = fetchpatch2; };
+  fetchpatch2 = callPackages ../build-support/fetchpatch/tests.nix {
+    fetchpatch = fetchpatch2;
+  };
   fetchDebianPatch = callPackages ../build-support/fetchdebianpatch/tests.nix { };
   fetchzip = callPackages ../build-support/fetchzip/tests.nix { };
   fetchgit = callPackages ../build-support/fetchgit/tests.nix { };
@@ -196,7 +215,11 @@ with pkgs;
     };
   };
 
-  pkgs-lib = recurseIntoAttrs (import ../pkgs-lib/tests { inherit pkgs; });
+  pkgs-lib = recurseIntoAttrs (
+    import ../pkgs-lib/tests {
+      inherit pkgs;
+    }
+  );
 
   buildFHSEnv = recurseIntoAttrs (callPackages ./buildFHSEnv { });
 

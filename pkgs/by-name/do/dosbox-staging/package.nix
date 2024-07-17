@@ -119,7 +119,9 @@ stdenv.mkDerivation (finalAttrs: {
         command = "dosbox --version";
       };
     };
-    updateScript = gitUpdater { rev-prefix = "v"; };
+    updateScript = gitUpdater {
+      rev-prefix = "v";
+    };
   };
 
   meta = {

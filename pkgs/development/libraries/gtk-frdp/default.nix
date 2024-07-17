@@ -42,7 +42,9 @@ stdenv.mkDerivation rec {
   ];
 
   passthru = {
-    updateScript = unstableGitUpdater { tagPrefix = "v"; };
+    updateScript = unstableGitUpdater {
+      tagPrefix = "v";
+    };
   };
 
   env.NIX_CFLAGS_COMPILE = toString (

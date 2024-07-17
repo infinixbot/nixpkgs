@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
   };
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "gnome-common"; };
+    updateScript = gnome.updateScript {
+      packageName = "gnome-common";
+    };
   };
 
   propagatedBuildInputs = [

@@ -30,7 +30,9 @@ let
     propagatedBuildInputs = [ pytz ];
 
     doCheck = false;
-    passthru.tests.pytest = dirty-equals.overrideAttrs { doCheck = true; };
+    passthru.tests.pytest = dirty-equals.overrideAttrs {
+      doCheck = true;
+    };
 
     nativeCheckInputs = [
       pydantic

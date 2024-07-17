@@ -120,7 +120,9 @@ stdenv.mkDerivation rec {
     // lib.optionalAttrs (!enableGlade) {
       glade =
         let
-          libhandyWithGlade = libhandy.override { enableGlade = true; };
+          libhandyWithGlade = libhandy.override {
+            enableGlade = true;
+          };
         in
         runCommand "${libhandy.name}-glade" { } ''
           cp -r "${libhandyWithGlade.glade}" "$out"

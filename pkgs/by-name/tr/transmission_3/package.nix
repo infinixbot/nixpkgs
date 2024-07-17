@@ -109,19 +109,23 @@ stdenv.mkDerivation (finalAttrs: {
       include <abstractions/nameservice>
       include <abstractions/ssl_certs>
       include "${
-        apparmorRulesFromClosure { name = "transmission-daemon"; } (
-          [
-            curl
-            libevent
-            openssl
-            pcre
-            zlib
-            libnatpmp
-            miniupnpc
-          ]
-          ++ lib.optionals enableSystemd [ systemd ]
-          ++ lib.optionals stdenv.isLinux [ inotify-tools ]
-        )
+        apparmorRulesFromClosure
+          {
+            name = "transmission-daemon";
+          }
+          (
+            [
+              curl
+              libevent
+              openssl
+              pcre
+              zlib
+              libnatpmp
+              miniupnpc
+            ]
+            ++ lib.optionals enableSystemd [ systemd ]
+            ++ lib.optionals stdenv.isLinux [ inotify-tools ]
+          )
       }"
       r @{PROC}/sys/kernel/random/uuid,
       r @{PROC}/sys/vm/overcommit_memory,

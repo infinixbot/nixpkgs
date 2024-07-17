@@ -38,7 +38,9 @@ let
 
     doCheck = false;
 
-    passthru.tests.pytest = self.overridePythonAttrs { doCheck = true; };
+    passthru.tests.pytest = self.overridePythonAttrs {
+      doCheck = true;
+    };
 
     nativeCheckInputs = [
       pytestCheckHook

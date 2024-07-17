@@ -90,17 +90,27 @@ let
   ] (arch: elem "${arch}-darwin" supportedSystems);
 
   nonPackageJobs = {
-    tarball = import ./make-tarball.nix { inherit pkgs nixpkgs officialRelease; };
+    tarball = import ./make-tarball.nix {
+      inherit pkgs nixpkgs officialRelease;
+    };
 
     release-checks = import ./nixpkgs-basic-release-checks.nix {
       inherit pkgs nixpkgs supportedSystems;
     };
 
-    metrics = import ./metrics.nix { inherit pkgs nixpkgs; };
+    metrics = import ./metrics.nix {
+      inherit pkgs nixpkgs;
+    };
 
-    manual = import ../../doc { inherit pkgs nixpkgs; };
-    lib-tests = import ../../lib/tests/release.nix { inherit pkgs; };
-    pkgs-lib-tests = import ../pkgs-lib/tests { inherit pkgs; };
+    manual = import ../../doc {
+      inherit pkgs nixpkgs;
+    };
+    lib-tests = import ../../lib/tests/release.nix {
+      inherit pkgs;
+    };
+    pkgs-lib-tests = import ../pkgs-lib/tests {
+      inherit pkgs;
+    };
 
     darwin-tested =
       if supportDarwin.x86_64 then

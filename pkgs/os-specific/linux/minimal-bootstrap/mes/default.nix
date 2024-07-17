@@ -20,7 +20,9 @@ let
     hash = "sha256-MlJQs1Z+2SA7pwFhyDWvAQeec+vtl7S1u3fKUAuCiUA=";
   };
 
-  nyacc = callPackage ./nyacc.nix { inherit nyacc; };
+  nyacc = callPackage ./nyacc.nix {
+    inherit nyacc;
+  };
 
   config_h = builtins.toFile "config.h" ''
     #undef SYSTEM_LIBC
@@ -160,14 +162,18 @@ let
     let
       os = map compile sources;
     in
-    kaem.runCommand "${pname}-${libname}-${version}" { inherit meta; } ''
-      LIBDIR=''${out}/lib
-      mkdir -p ''${LIBDIR}
-      cd ''${LIBDIR}
+    kaem.runCommand "${pname}-${libname}-${version}"
+      {
+        inherit meta;
+      }
+      ''
+        LIBDIR=''${out}/lib
+        mkdir -p ''${LIBDIR}
+        cd ''${LIBDIR}
 
-      ${archive "${libname}.a" os}
-      ${sourceArchive "${libname}.s" os}
-    '';
+        ${archive "${libname}.a" os}
+        ${sourceArchive "${libname}.s" os}
+      '';
 
   libc-mini = mkLib "libc-mini" libc_mini_SOURCES;
   libmescc = mkLib "libmescc" libmescc_SOURCES;

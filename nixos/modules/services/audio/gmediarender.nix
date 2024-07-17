@@ -47,7 +47,9 @@ in
       '';
     };
 
-    package = mkPackageOption pkgs "gmediarender" { default = "gmrender-resurrect"; };
+    package = mkPackageOption pkgs "gmediarender" {
+      default = "gmrender-resurrect";
+    };
 
     port = mkOption {
       type = types.nullOr types.port;

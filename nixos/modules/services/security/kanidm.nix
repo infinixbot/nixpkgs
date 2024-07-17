@@ -438,11 +438,15 @@ in
 
     # These paths are hardcoded
     environment.etc = lib.mkMerge [
-      (lib.mkIf cfg.enableServer { "kanidm/server.toml".source = serverConfigFile; })
+      (lib.mkIf cfg.enableServer {
+        "kanidm/server.toml".source = serverConfigFile;
+      })
       (lib.mkIf options.services.kanidm.clientSettings.isDefined {
         "kanidm/config".source = clientConfigFile;
       })
-      (lib.mkIf cfg.enablePam { "kanidm/unixd".source = unixConfigFile; })
+      (lib.mkIf cfg.enablePam {
+        "kanidm/unixd".source = unixConfigFile;
+      })
     ];
 
     system.nssModules = lib.mkIf cfg.enablePam [ cfg.package ];
@@ -451,8 +455,12 @@ in
     system.nssDatabases.passwd = lib.optional cfg.enablePam "kanidm";
 
     users.groups = lib.mkMerge [
-      (lib.mkIf cfg.enableServer { kanidm = { }; })
-      (lib.mkIf cfg.enablePam { kanidm-unixd = { }; })
+      (lib.mkIf cfg.enableServer {
+        kanidm = { };
+      })
+      (lib.mkIf cfg.enablePam {
+        kanidm-unixd = { };
+      })
     ];
     users.users = lib.mkMerge [
       (lib.mkIf cfg.enableServer {

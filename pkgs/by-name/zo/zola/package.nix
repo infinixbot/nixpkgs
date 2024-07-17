@@ -48,7 +48,9 @@ rustPlatform.buildRustPackage rec {
       --zsh <($out/bin/zola completion zsh)
   '';
 
-  passthru.tests.version = testers.testVersion { package = zola; };
+  passthru.tests.version = testers.testVersion {
+    package = zola;
+  };
 
   meta = with lib; {
     description = "Fast static site generator with everything built-in";

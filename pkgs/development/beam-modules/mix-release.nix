@@ -52,7 +52,9 @@
 
   elixir ? inputs.elixir,
   erlang ? inputs.erlang,
-  hex ? inputs.hex.override { inherit elixir; },
+  hex ? inputs.hex.override {
+    inherit elixir;
+  },
 
   # Remove releases/COOKIE
   #

@@ -69,7 +69,9 @@ buildPythonPackage rec {
   pythonImportsCheck = [ "pypdf" ];
 
   nativeCheckInputs = [
-    (fpdf2.overridePythonAttrs { doCheck = false; }) # avoid reference loop
+    (fpdf2.overridePythonAttrs {
+      doCheck = false;
+    }) # avoid reference loop
     pytestCheckHook
     pytest-timeout
   ] ++ passthru.optional-dependencies.full;

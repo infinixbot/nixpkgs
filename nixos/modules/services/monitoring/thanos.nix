@@ -921,7 +921,9 @@ in
               ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
             };
           }
-          // optionalAttrs (!wait) { inherit (cfg.compact) startAt; };
+          // optionalAttrs (!wait) {
+            inherit (cfg.compact) startAt;
+          };
       }
     ]))
 

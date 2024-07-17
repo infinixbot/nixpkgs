@@ -6,7 +6,9 @@
 }:
 
 let
-  sources = (import ./sources.nix) { inherit fetchFromGitHub; };
+  sources = (import ./sources.nix) {
+    inherit fetchFromGitHub;
+  };
 in
 buildGoModule {
   inherit (sources) pname version src;

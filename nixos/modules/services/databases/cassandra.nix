@@ -46,26 +46,40 @@ let
       seed_provider = [
         {
           class_name = "org.apache.cassandra.locator.SimpleSeedProvider";
-          parameters = [ { seeds = concatStringsSep "," cfg.seedAddresses; } ];
+          parameters = [
+            {
+              seeds = concatStringsSep "," cfg.seedAddresses;
+            }
+          ];
         }
       ];
     }
-    // optionalAttrs atLeast3 { hints_directory = "${cfg.homeDir}/hints"; }
+    // optionalAttrs atLeast3 {
+      hints_directory = "${cfg.homeDir}/hints";
+    }
   );
 
   cassandraConfigWithAddresses =
     cassandraConfig
     // (
       if cfg.listenAddress == null then
-        { listen_interface = cfg.listenInterface; }
+        {
+          listen_interface = cfg.listenInterface;
+        }
       else
-        { listen_address = cfg.listenAddress; }
+        {
+          listen_address = cfg.listenAddress;
+        }
     )
     // (
       if cfg.rpcAddress == null then
-        { rpc_interface = cfg.rpcInterface; }
+        {
+          rpc_interface = cfg.rpcInterface;
+        }
       else
-        { rpc_address = cfg.rpcAddress; }
+        {
+          rpc_address = cfg.rpcAddress;
+        }
     );
 
   cassandraEtc = pkgs.stdenv.mkDerivation {
@@ -164,7 +178,9 @@ in
       '';
     };
 
-    package = mkPackageOption pkgs "cassandra" { example = "cassandra_3_11"; };
+    package = mkPackageOption pkgs "cassandra" {
+      example = "cassandra_3_11";
+    };
 
     jvmOpts = mkOption {
       type = types.listOf types.str;

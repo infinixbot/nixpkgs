@@ -111,7 +111,9 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     ln -s ${
-      vgmstream.override { buildAudaciousPlugin = true; }
+      vgmstream.override {
+        buildAudaciousPlugin = true;
+      }
     }/lib/audacious/Input/* $out/lib/audacious/Input
   '';
 

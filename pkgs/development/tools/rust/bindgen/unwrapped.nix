@@ -9,7 +9,9 @@
 }:
 let
   # bindgen hardcodes rustfmt outputs that use nightly features
-  rustfmt-nightly = rustfmt.override { asNightly = true; };
+  rustfmt-nightly = rustfmt.override {
+    asNightly = true;
+  };
 in
 rustPlatform.buildRustPackage rec {
   pname = "rust-bindgen-unwrapped";

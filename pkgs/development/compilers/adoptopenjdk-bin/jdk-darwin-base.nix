@@ -23,7 +23,9 @@ let
         "adoptopenjdk-${sourcePerArch.packageType}-${sourcePerArch.vmType}-bin";
     version = sourcePerArch.${cpuName}.version or (throw "unsupported CPU ${cpuName}");
 
-    src = fetchurl { inherit (sourcePerArch.${cpuName}) url sha256; };
+    src = fetchurl {
+      inherit (sourcePerArch.${cpuName}) url sha256;
+    };
 
     # See: https://github.com/NixOS/patchelf/issues/10
     dontStrip = 1;

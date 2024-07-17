@@ -17,7 +17,9 @@ stdenv.mkDerivation rec {
     name = "${pname}-${version}.AppImage";
   };
 
-  appimageContents = appimageTools.extractType2 { inherit pname version src; };
+  appimageContents = appimageTools.extractType2 {
+    inherit pname version src;
+  };
 
   dontUnpack = true;
   dontConfigure = true;

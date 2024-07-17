@@ -116,7 +116,9 @@ in
 
       }
 
-      (mkIf (cfg.motd != null) { environment.etc."charybdis/ircd.motd".text = cfg.motd; })
+      (mkIf (cfg.motd != null) {
+        environment.etc."charybdis/ircd.motd".text = cfg.motd;
+      })
     ]
   );
 }

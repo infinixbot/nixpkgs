@@ -56,7 +56,9 @@ stdenv.mkDerivation rec {
     qtWrapperArgs+=(--prefix GST_PLUGIN_SYSTEM_PATH_1_0 : "$GST_PLUGIN_SYSTEM_PATH_1_0")
   '';
 
-  passthru.tests.version = testers.testVersion { package = crow-translate; };
+  passthru.tests.version = testers.testVersion {
+    package = crow-translate;
+  };
 
   meta = with lib; {
     description = "Simple and lightweight translator that allows to translate and speak text using Google, Yandex and Bing";

@@ -578,9 +578,13 @@ in
         type =
           with types;
           listOf (
-            coercedTo str (output: { inherit output; }) (submodule {
-              options = xrandrOptions;
-            })
+            coercedTo str
+              (output: {
+                inherit output;
+              })
+              (submodule {
+                options = xrandrOptions;
+              })
           );
         # Set primary to true for the first head if no other has been set
         # primary already.
@@ -779,7 +783,12 @@ in
       name:
       let
         driver = attrByPath [ name ] (
-          if xorg ? ${"xf86video" + name} then { modules = [ xorg.${"xf86video" + name} ]; } else null
+          if xorg ? ${"xf86video" + name} then
+            {
+              modules = [ xorg.${"xf86video" + name} ];
+            }
+          else
+            null
         ) knownVideoDrivers;
       in
       optional (driver != null) (

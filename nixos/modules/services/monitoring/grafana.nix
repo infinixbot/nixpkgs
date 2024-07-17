@@ -85,7 +85,10 @@ let
       fi
     '';
   provisionConfDir =
-    pkgs.runCommand "grafana-provisioning" { nativeBuildInputs = [ pkgs.xorg.lndir ]; }
+    pkgs.runCommand "grafana-provisioning"
+      {
+        nativeBuildInputs = [ pkgs.xorg.lndir ];
+      }
       ''
         mkdir -p $out/{alerting,datasources,dashboards,plugins}
         ${ln {
@@ -2195,7 +2198,11 @@ in
                   policies = mkOption {
                     description = "List of contact points to import or update.";
                     default = [ ];
-                    type = types.listOf (types.submodule { freeformType = provisioningSettingsFormat.type; });
+                    type = types.listOf (
+                      types.submodule {
+                        freeformType = provisioningSettingsFormat.type;
+                      }
+                    );
                   };
 
                   resetPolicies = mkOption {

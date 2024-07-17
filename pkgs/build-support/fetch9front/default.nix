@@ -54,5 +54,8 @@ lib.makeOverridable (
       };
   in
 
-  fetcher fetcherArgs // { inherit rev; }
+  fetcher fetcherArgs
+  // {
+    inherit rev;
+  }
 )

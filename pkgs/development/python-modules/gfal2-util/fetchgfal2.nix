@@ -50,6 +50,8 @@
           name = "${finalAttrs.pname}-${finalAttrs.version}";
         }
       else
-        { name = if (name != "") then name else (baseNameOf url); }
+        {
+          name = if (name != "") then name else (baseNameOf url);
+        }
     )
   )

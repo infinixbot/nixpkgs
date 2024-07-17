@@ -7,7 +7,9 @@
 
 let
   cfg = config.programs.gpu-screen-recorder;
-  package = cfg.package.override { inherit (config.security) wrapperDir; };
+  package = cfg.package.override {
+    inherit (config.security) wrapperDir;
+  };
 in
 {
   options = {

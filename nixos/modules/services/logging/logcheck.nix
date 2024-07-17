@@ -10,11 +10,16 @@ with lib;
 let
   cfg = config.services.logcheck;
 
-  defaultRules = pkgs.runCommand "logcheck-default-rules" { preferLocalBuild = true; } ''
-    cp -prd ${pkgs.logcheck}/etc/logcheck $out
-    chmod u+w $out
-    rm -r $out/logcheck.*
-  '';
+  defaultRules =
+    pkgs.runCommand "logcheck-default-rules"
+      {
+        preferLocalBuild = true;
+      }
+      ''
+        cp -prd ${pkgs.logcheck}/etc/logcheck $out
+        chmod u+w $out
+        rm -r $out/logcheck.*
+      '';
 
   rulesDir = pkgs.symlinkJoin {
     name = "logcheck-rules-dir";
@@ -249,7 +254,9 @@ in
         extraGroups = cfg.extraGroups;
       };
     };
-    users.groups = optionalAttrs (cfg.user == "logcheck") { logcheck = { }; };
+    users.groups = optionalAttrs (cfg.user == "logcheck") {
+      logcheck = { };
+    };
 
     systemd.tmpfiles.settings.logcheck = {
       "/var/lib/logcheck".d = {

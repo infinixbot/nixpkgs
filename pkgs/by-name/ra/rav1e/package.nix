@@ -58,7 +58,9 @@ rustPlatform.buildRustPackage rec {
   '';
 
   passthru = {
-    tests.version = testers.testVersion { package = rav1e; };
+    tests.version = testers.testVersion {
+      package = rav1e;
+    };
   };
 
   meta = {

@@ -13,7 +13,9 @@
 stdenv.mkDerivation rec {
   inherit pname version;
 
-  src = fetchurl { inherit url sha256; };
+  src = fetchurl {
+    inherit url sha256;
+  };
 
   patches = [
     # Fix buidling on platforms other than x86

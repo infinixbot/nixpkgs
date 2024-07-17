@@ -42,7 +42,9 @@ in
           RestartSec = 20;
           DynamicUser = true;
         }
-        (mkIf (cfg.stateDir == "/var/lib/jmusicbot") { StateDirectory = "jmusicbot"; })
+        (mkIf (cfg.stateDir == "/var/lib/jmusicbot") {
+          StateDirectory = "jmusicbot";
+        })
       ];
     };
   };

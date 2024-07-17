@@ -15,7 +15,9 @@ let
     hash = "sha256-PMRUDQSQxbECbF9SPOo03t4Xxj1OtYJAPXEMyyy6EVY=";
   };
 
-  appimageContents = appimageTools.extract { inherit pname src version; };
+  appimageContents = appimageTools.extract {
+    inherit pname src version;
+  };
 in
 appimageTools.wrapType2 {
   inherit pname src version;

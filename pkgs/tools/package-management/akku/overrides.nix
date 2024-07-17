@@ -13,13 +13,27 @@ let
   addToBuildInputs = extras: pkg: old: {
     propagatedBuildInputs = old.propagatedBuildInputs ++ extras;
   };
-  broken = lib.addMetaAttrs { broken = true; };
-  skipTests = pkg: old: { doCheck = false; };
+  broken = lib.addMetaAttrs {
+    broken = true;
+  };
+  skipTests = pkg: old: {
+    doCheck = false;
+  };
   # debugging
-  showLibs = pkg: old: { preCheck = "echo $CHEZSCHEMELIBDIRS"; };
-  runTests = pkg: old: { doCheck = true; };
-  brokenOnAarch64 = _: lib.addMetaAttrs { broken = stdenv.isAarch64; };
-  brokenOnx86_64Darwin = lib.addMetaAttrs { broken = stdenv.isDarwin && stdenv.isx86_64; };
+  showLibs = pkg: old: {
+    preCheck = "echo $CHEZSCHEMELIBDIRS";
+  };
+  runTests = pkg: old: {
+    doCheck = true;
+  };
+  brokenOnAarch64 =
+    _:
+    lib.addMetaAttrs {
+      broken = stdenv.isAarch64;
+    };
+  brokenOnx86_64Darwin = lib.addMetaAttrs {
+    broken = stdenv.isDarwin && stdenv.isx86_64;
+  };
 in
 {
   chez-srfi = joinOverrides [

@@ -14,7 +14,9 @@ stdenv.mkDerivation {
   pname = "minecraft-server";
   inherit version;
 
-  src = fetchurl { inherit url sha1; };
+  src = fetchurl {
+    inherit url sha1;
+  };
 
   preferLocalBuild = true;
 

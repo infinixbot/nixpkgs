@@ -13,7 +13,9 @@
 
 let
   stdenv = gccStdenv;
-  s = import ./sources.nix { inherit fetchurl fetchFromGitHub; };
+  s = import ./sources.nix {
+    inherit fetchurl fetchFromGitHub;
+  };
 in
 stdenv.mkDerivation rec {
   pname = "lambda-lisp-blc";

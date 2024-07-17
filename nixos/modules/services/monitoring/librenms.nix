@@ -205,7 +205,9 @@ in
 
     nginx = mkOption {
       type = types.submodule (
-        recursiveUpdate (import ../web-servers/nginx/vhost-options.nix { inherit config lib; }) { }
+        recursiveUpdate (import ../web-servers/nginx/vhost-options.nix {
+          inherit config lib;
+        }) { }
       );
       default = { };
       example = literalExpression ''
@@ -416,10 +418,14 @@ in
     services.mysql = lib.mkIf cfg.database.createLocally {
       enable = true;
       package = lib.mkDefault pkgs.mariadb;
-      settings.mysqld = {
-        innodb_file_per_table = 1;
-        lower_case_table_names = 0;
-      } // (lib.optionalAttrs cfg.useDistributedPollers { bind-address = "0.0.0.0"; });
+      settings.mysqld =
+        {
+          innodb_file_per_table = 1;
+          lower_case_table_names = 0;
+        }
+        // (lib.optionalAttrs cfg.useDistributedPollers {
+          bind-address = "0.0.0.0";
+        });
       ensureDatabases = [ cfg.database.database ];
       ensureUsers = [
         {

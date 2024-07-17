@@ -31,11 +31,15 @@ let
           if self.steamArch == "amd64" then pkgsi686Linux.steamPackages.steam-runtime-wrapped else null;
         inherit buildFHSEnv;
       };
-      steam-fhsenv-small = steam-fhsenv.override { withGameSpecificLibraries = false; };
+      steam-fhsenv-small = steam-fhsenv.override {
+        withGameSpecificLibraries = false;
+      };
 
       # This has to exist so Hydra tries to build all of Steam's dependencies.
       # FIXME: Maybe we should expose it as something more generic?
-      steam-fhsenv-without-steam = steam-fhsenv.override { steam = null; };
+      steam-fhsenv-without-steam = steam-fhsenv.override {
+        steam = null;
+      };
 
       steamcmd = callPackage ./steamcmd.nix { };
     };

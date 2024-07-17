@@ -23,10 +23,14 @@ let
     }
     .${type} or (throw "Unsupported compressor type for firmware.");
 
-  args = {
-    allowedRequisites = [ ];
-    inherit (compressor) nativeBuildInputs;
-  } // lib.optionalAttrs (firmware ? meta) { inherit (firmware) meta; };
+  args =
+    {
+      allowedRequisites = [ ];
+      inherit (compressor) nativeBuildInputs;
+    }
+    // lib.optionalAttrs (firmware ? meta) {
+      inherit (firmware) meta;
+    };
 in
 
 runCommand "${firmware.name}-${type}" args ''

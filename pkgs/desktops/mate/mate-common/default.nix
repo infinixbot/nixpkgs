@@ -16,7 +16,9 @@ stdenvNoCC.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  passthru.updateScript = mateUpdateScript { inherit pname; };
+  passthru.updateScript = mateUpdateScript {
+    inherit pname;
+  };
 
   meta = with lib; {
     description = "Common files for development of MATE packages";

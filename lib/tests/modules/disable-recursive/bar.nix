@@ -1,1 +1,3 @@
-{ imports = [ ../declare-enable.nix ]; }
+{
+  imports = [ ../declare-enable.nix ];
+}

@@ -234,6 +234,8 @@ stdenv.mkDerivation (
           '';
       }
     else
-      { sourceRoot = "${src'.name}/runtimes"; }
+      {
+        sourceRoot = "${src'.name}/runtimes";
+      }
   )
 )

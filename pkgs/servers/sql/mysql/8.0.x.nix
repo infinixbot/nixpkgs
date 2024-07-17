@@ -57,7 +57,9 @@ stdenv.mkDerivation (finalAttrs: {
   buildInputs =
     [
       boost
-      (curl.override { inherit openssl; })
+      (curl.override {
+        inherit openssl;
+      })
       icu
       libedit
       libevent

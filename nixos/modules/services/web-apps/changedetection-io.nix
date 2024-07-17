@@ -174,7 +174,9 @@ in
         };
       };
 
-      groups = optionalAttrs (cfg.group == "changedetection-io") { "changedetection-io" = { }; };
+      groups = optionalAttrs (cfg.group == "changedetection-io") {
+        "changedetection-io" = { };
+      };
     };
 
     virtualisation = {

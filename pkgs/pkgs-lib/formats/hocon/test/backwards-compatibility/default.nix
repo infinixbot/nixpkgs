@@ -34,7 +34,9 @@ let
     };
 
     nested_in_array = [
-      { __hocon_envvar = "PATH"; }
+      {
+        __hocon_envvar = "PATH";
+      }
       {
         __hocon_unquoted_string = ''
           [

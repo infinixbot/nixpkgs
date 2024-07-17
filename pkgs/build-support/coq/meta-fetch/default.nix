@@ -5,7 +5,9 @@
 }@args:
 
 let
-  lib = import ../extra-lib.nix { inherit (args) lib; };
+  lib = import ../extra-lib.nix {
+    inherit (args) lib;
+  };
 
   inherit (lib)
     attrNames
@@ -62,9 +64,21 @@ let
           out = "https://www.mpi-sws.org/~${owner}/${repo}/download/${repo}-${rev}.${ext}";
         }
       ] (throw "meta-fetch: no fetcher found for domain ${domain} on ${rev}");
-      fetch = x: if args ? sha256 then fetchzip (x // { inherit sha256; }) else builtins.fetchTarball x;
+      fetch =
+        x:
+        if args ? sha256 then
+          fetchzip (
+            x
+            // {
+              inherit sha256;
+            }
+          )
+        else
+          builtins.fetchTarball x;
     in
-    fetch { inherit url; };
+    fetch {
+      inherit url;
+    };
 in
 {
   fetcher ? default-fetcher,
@@ -113,7 +127,13 @@ switch arg [
       in
       {
         version = rv.version or v;
-        src = rv.src or fetcher (location // { rev = releaseRev v; } // rv);
+        src = rv.src or fetcher (
+          location
+          // {
+            rev = releaseRev v;
+          }
+          // rv
+        );
       };
   }
   {
@@ -128,7 +148,13 @@ switch arg [
       {
         inherit version;
         src = fetcher (
-          location // { inherit rev; } // (optionalAttrs has-owner { owner = head splitted; })
+          location
+          // {
+            inherit rev;
+          }
+          // (optionalAttrs has-owner {
+            owner = head splitted;
+          })
         );
       };
   }

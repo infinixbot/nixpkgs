@@ -87,11 +87,16 @@ stdenv.mkDerivation rec {
       package = checksec;
       version = "v${version}";
     };
-    debug-report = runCommand "debug-report" { buildInputs = [ checksec ]; } ''
-      checksec --debug_report || exit 1
-      echo "OK"
-      touch $out
-    '';
+    debug-report =
+      runCommand "debug-report"
+        {
+          buildInputs = [ checksec ];
+        }
+        ''
+          checksec --debug_report || exit 1
+          echo "OK"
+          touch $out
+        '';
   };
 
   meta = with lib; {

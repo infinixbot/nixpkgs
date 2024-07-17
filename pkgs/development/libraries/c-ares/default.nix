@@ -47,7 +47,10 @@ stdenv.mkDerivation rec {
 
   passthru.tests = {
     inherit grpc;
-    curl = (curl.override { c-aresSupport = true; }).tests.withCheck;
+    curl =
+      (curl.override {
+        c-aresSupport = true;
+      }).tests.withCheck;
   };
 
   meta = with lib; {

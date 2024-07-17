@@ -16,7 +16,9 @@ let
   testTools = rec {
     test = import ./testing.nix;
     stubs = import ./stubs.nix defs;
-    should = import ./assertions.nix { inherit test lib; };
+    should = import ./assertions.nix {
+      inherit test lib;
+    };
   };
 
   tap = import ./tap-support.nix;

@@ -82,7 +82,9 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   passthru = {
-    cosmocc = callPackage ./cosmocc.nix { cosmopolitan = finalAttrs.finalPackage; };
+    cosmocc = callPackage ./cosmocc.nix {
+      cosmopolitan = finalAttrs.finalPackage;
+    };
   };
 
   meta = {

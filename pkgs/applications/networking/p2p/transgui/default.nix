@@ -100,7 +100,9 @@ stdenv.mkDerivation rec {
     cp -r "./lang" "$out/share/transgui"
   '';
 
-  passthru.updateScript = unstableGitUpdater { tagPrefix = "v"; };
+  passthru.updateScript = unstableGitUpdater {
+    tagPrefix = "v";
+  };
 
   meta = {
     description = "A cross platform front-end for the Transmission BitTorrent client";

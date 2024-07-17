@@ -55,7 +55,9 @@ stdenv.mkDerivation rec {
     sed -i -e '/^mupdfthird =/d' -e 's/, mupdfthird//g' meson.build
   '';
 
-  passthru.updateScript = gitUpdater { url = "https://git.pwmt.org/pwmt/zathura-pdf-mupdf.git"; };
+  passthru.updateScript = gitUpdater {
+    url = "https://git.pwmt.org/pwmt/zathura-pdf-mupdf.git";
+  };
 
   meta = with lib; {
     homepage = "https://pwmt.org/projects/zathura-pdf-mupdf/";

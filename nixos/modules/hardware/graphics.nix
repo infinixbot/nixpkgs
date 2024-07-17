@@ -203,11 +203,17 @@ in
       "/run/opengl-driver"."L+".argument = toString driversEnv;
       "/run/opengl-driver-32" =
         if pkgs.stdenv.isi686 then
-          { "L+".argument = "opengl-driver"; }
+          {
+            "L+".argument = "opengl-driver";
+          }
         else if cfg.enable32Bit then
-          { "L+".argument = toString driversEnv32; }
+          {
+            "L+".argument = toString driversEnv32;
+          }
         else
-          { "r" = { }; };
+          {
+            "r" = { };
+          };
     };
 
     hardware.graphics.package = lib.mkDefault pkgs.mesa.drivers;

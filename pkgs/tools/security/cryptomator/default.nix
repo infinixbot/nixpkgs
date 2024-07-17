@@ -13,7 +13,9 @@
 }:
 
 let
-  mavenJdk = maven.override { jdk = jdk; };
+  mavenJdk = maven.override {
+    jdk = jdk;
+  };
 in
 assert stdenv.isLinux; # better than `called with unexpected argument 'enableJavaFX'`
 mavenJdk.buildMavenPackage rec {

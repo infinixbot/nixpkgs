@@ -101,7 +101,9 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postInstall
   '';
 
-  passthru.tests = testers.testVersion { package = quickemu; };
+  passthru.tests = testers.testVersion {
+    package = quickemu;
+  };
 
   meta = {
     description = "Quickly create and run optimised Windows, macOS and Linux virtual machines";

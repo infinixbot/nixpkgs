@@ -63,7 +63,9 @@ buildRubyGem rec {
 
   doInstallCheck = true;
   dontBuild = false;
-  src = fetchurl { inherit url hash; };
+  src = fetchurl {
+    inherit url hash;
+  };
 
   # Some reports indicate that some connection types, particularly
   # WinRM, suffer from "Digest initialization failed" errors. Adding

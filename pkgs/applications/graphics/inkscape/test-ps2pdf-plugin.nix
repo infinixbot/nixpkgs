@@ -14,15 +14,19 @@ let
       </svg>'';
   };
 in
-runCommand "inkscape-test-eps" { nativeBuildInputs = [ inkscape ]; } ''
-  echo ps test
-  inkscape ${svg_file} --export-type=ps -o test.ps
-  inkscape test.ps -o test.ps.svg
+runCommand "inkscape-test-eps"
+  {
+    nativeBuildInputs = [ inkscape ];
+  }
+  ''
+    echo ps test
+    inkscape ${svg_file} --export-type=ps -o test.ps
+    inkscape test.ps -o test.ps.svg
 
-  echo eps test
-  inkscape ${svg_file} --export-type=eps -o test.eps
-  inkscape test.eps -o test.eps.svg
+    echo eps test
+    inkscape ${svg_file} --export-type=eps -o test.eps
+    inkscape test.eps -o test.eps.svg
 
-  # inkscape does not return an error code, only does not create files
-  [[ -f test.ps.svg && -f test.eps.svg ]] && touch $out
-''
+    # inkscape does not return an error code, only does not create files
+    [[ -f test.ps.svg && -f test.eps.svg ]] && touch $out
+  ''

@@ -3,7 +3,9 @@
 let
   inherit (pkgs) lib;
   tests = {
-    default = testsForPackage { sparkPackage = pkgs.spark; };
+    default = testsForPackage {
+      sparkPackage = pkgs.spark;
+    };
   };
 
   testsForPackage =

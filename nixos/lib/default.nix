@@ -21,9 +21,13 @@ let
   # If cond, force `a` before returning any attr
   seqAttrsIf = cond: a: lib.mapAttrs (_: v: seqIf cond a v);
 
-  eval-config-minimal = import ./eval-config-minimal.nix { inherit lib; };
+  eval-config-minimal = import ./eval-config-minimal.nix {
+    inherit lib;
+  };
 
-  testing-lib = import ./testing/default.nix { inherit lib; };
+  testing-lib = import ./testing/default.nix {
+    inherit lib;
+  };
 in
 /*
   This attribute set appears as lib.nixos in the flake, or can be imported

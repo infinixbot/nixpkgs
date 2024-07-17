@@ -156,7 +156,12 @@ in
             ]
           )
           + " "
-          + argsFormat.generate "freeciv-server" (cfg.settings // { saves = null; })
+          + argsFormat.generate "freeciv-server" (
+            cfg.settings
+            // {
+              saves = null;
+            }
+          )
         );
         DynamicUser = true;
         # Create rootDir in the host's mount namespace.
@@ -226,7 +231,9 @@ in
         SystemCallErrorNumber = "EPERM";
       };
     };
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.settings.port ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.settings.port ];
+    };
   };
   meta.maintainers = with lib.maintainers; [ julm ];
 }

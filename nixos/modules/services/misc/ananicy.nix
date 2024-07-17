@@ -27,13 +27,19 @@ in
     services.ananicy = {
       enable = mkEnableOption "Ananicy, an auto nice daemon";
 
-      package = mkPackageOption pkgs "ananicy" { example = "ananicy-cpp"; };
-
-      rulesProvider = mkPackageOption pkgs "ananicy" { example = "ananicy-cpp"; } // {
-        description = ''
-          Which package to copy default rules,types,cgroups from.
-        '';
+      package = mkPackageOption pkgs "ananicy" {
+        example = "ananicy-cpp";
       };
+
+      rulesProvider =
+        mkPackageOption pkgs "ananicy" {
+          example = "ananicy-cpp";
+        }
+        // {
+          description = ''
+            Which package to copy default rules,types,cgroups from.
+          '';
+        };
 
       settings = mkOption {
         type =

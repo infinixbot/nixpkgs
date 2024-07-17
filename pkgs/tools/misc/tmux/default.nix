@@ -101,22 +101,27 @@ stdenv.mkDerivation (finalAttrs: {
     '';
 
   passthru = {
-    terminfo = runCommand "tmux-terminfo" { nativeBuildInputs = [ ncurses ]; } (
-      if stdenv.isDarwin then
-        ''
-          mkdir -p $out/share/terminfo/74
-          cp -v ${ncurses}/share/terminfo/74/tmux $out/share/terminfo/74
-          # macOS ships an old version (5.7) of ncurses which does not include tmux-256color so we need to provide it from our ncurses.
-          # However, due to a bug in ncurses 5.7, we need to first patch the terminfo before we can use it with macOS.
-          # https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
-          tic -o $out/share/terminfo -x <(TERMINFO_DIRS=${ncurses}/share/terminfo infocmp -x tmux-256color | sed 's|pairs#0x10000|pairs#32767|')
-        ''
-      else
-        ''
-          mkdir -p $out/share/terminfo/t
-          ln -sv ${ncurses}/share/terminfo/t/{tmux,tmux-256color,tmux-direct} $out/share/terminfo/t
-        ''
-    );
+    terminfo =
+      runCommand "tmux-terminfo"
+        {
+          nativeBuildInputs = [ ncurses ];
+        }
+        (
+          if stdenv.isDarwin then
+            ''
+              mkdir -p $out/share/terminfo/74
+              cp -v ${ncurses}/share/terminfo/74/tmux $out/share/terminfo/74
+              # macOS ships an old version (5.7) of ncurses which does not include tmux-256color so we need to provide it from our ncurses.
+              # However, due to a bug in ncurses 5.7, we need to first patch the terminfo before we can use it with macOS.
+              # https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
+              tic -o $out/share/terminfo -x <(TERMINFO_DIRS=${ncurses}/share/terminfo infocmp -x tmux-256color | sed 's|pairs#0x10000|pairs#32767|')
+            ''
+          else
+            ''
+              mkdir -p $out/share/terminfo/t
+              ln -sv ${ncurses}/share/terminfo/t/{tmux,tmux-256color,tmux-direct} $out/share/terminfo/t
+            ''
+        );
   };
 
   meta = {

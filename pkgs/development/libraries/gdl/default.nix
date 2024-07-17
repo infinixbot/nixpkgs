@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
   ];
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "gdl"; };
+    updateScript = gnome.updateScript {
+      packageName = "gdl";
+    };
   };
 
   meta = with lib; {

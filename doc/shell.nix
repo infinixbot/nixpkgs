@@ -13,4 +13,6 @@ let
     open = "/${outputPath}/${indexPath}";
   };
 in
-pkgs.mkShell { packages = [ web-devmode ]; }
+pkgs.mkShell {
+  packages = [ web-devmode ];
+}

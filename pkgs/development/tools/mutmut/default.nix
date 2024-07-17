@@ -35,7 +35,9 @@ let
         junit-xml
       ];
 
-      passthru.tests.version = testers.testVersion { package = self; };
+      passthru.tests.version = testers.testVersion {
+        package = self;
+      };
 
       meta = with lib; {
         description = "mutation testing system for Python, with a strong focus on ease of use";

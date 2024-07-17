@@ -54,7 +54,9 @@ rustPlatform.buildRustPackage rec {
 
   passthru.tests = {
     wav = callPackage ./test-wav.nix { };
-    version = testers.testVersion { package = faircamp; };
+    version = testers.testVersion {
+      package = faircamp;
+    };
   };
 
   meta = with lib; {

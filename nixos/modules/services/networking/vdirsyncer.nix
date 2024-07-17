@@ -13,7 +13,11 @@ let
 
   toIniJson =
     with generators;
-    toINI { mkKeyValue = mkKeyValueDefault { mkValueString = builtins.toJSON; } "="; };
+    toINI {
+      mkKeyValue = mkKeyValueDefault {
+        mkValueString = builtins.toJSON;
+      } "=";
+    };
 
   toConfigFile =
     name: cfg':
@@ -39,8 +43,12 @@ let
         User = if cfg'.user == null then "vdirsyncer" else cfg'.user;
         Group = if cfg'.group == null then "vdirsyncer" else cfg'.group;
       }
-      // (optionalAttrs (cfg'.user == null) { DynamicUser = true; })
-      // (optionalAttrs (cfg'.additionalGroups != [ ]) { SupplementaryGroups = cfg'.additionalGroups; })
+      // (optionalAttrs (cfg'.user == null) {
+        DynamicUser = true;
+      })
+      // (optionalAttrs (cfg'.additionalGroups != [ ]) {
+        SupplementaryGroups = cfg'.additionalGroups;
+      })
       // (optionalAttrs (cfg'.config.statusPath == null) {
         StateDirectory = "vdirsyncer/${name}";
         StateDirectoryMode = "0700";

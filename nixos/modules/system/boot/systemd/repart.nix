@@ -13,7 +13,9 @@ let
   format = pkgs.formats.ini { };
 
   definitionsDirectory = utils.systemdUtils.lib.definitions "repart.d" format (
-    lib.mapAttrs (_n: v: { Partition = v; }) cfg.partitions
+    lib.mapAttrs (_n: v: {
+      Partition = v;
+    }) cfg.partitions
   );
 
   partitionAssertions = lib.mapAttrsToList (
@@ -157,9 +159,13 @@ in
         };
     };
 
-    environment.etc = lib.mkIf cfg.enable { "repart.d".source = definitionsDirectory; };
+    environment.etc = lib.mkIf cfg.enable {
+      "repart.d".source = definitionsDirectory;
+    };
 
-    systemd = lib.mkIf cfg.enable { additionalUpstreamSystemUnits = [ "systemd-repart.service" ]; };
+    systemd = lib.mkIf cfg.enable {
+      additionalUpstreamSystemUnits = [ "systemd-repart.service" ];
+    };
   };
 
   meta.maintainers = with lib.maintainers; [ nikstur ];

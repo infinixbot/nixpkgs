@@ -20,13 +20,19 @@ let
           inherit flint3;
           inherit sage-src env-locations singular;
           inherit (maxima) lisp-compiler;
-          linbox = pkgs.linbox.override { withSage = true; };
+          linbox = pkgs.linbox.override {
+            withSage = true;
+          };
           pkg-config = pkgs.pkg-config; # not to confuse with pythonPackages.pkg-config
         };
 
-        sage-docbuild = self.callPackage ./python-modules/sage-docbuild.nix { inherit sage-src; };
+        sage-docbuild = self.callPackage ./python-modules/sage-docbuild.nix {
+          inherit sage-src;
+        };
 
-        sage-setup = self.callPackage ./python-modules/sage-setup.nix { inherit sage-src; };
+        sage-setup = self.callPackage ./python-modules/sage-setup.nix {
+          inherit sage-src;
+        };
       }
     );
   };
@@ -84,7 +90,9 @@ let
   };
 
   # The documentation for sage, building it takes a lot of ram.
-  sagedoc = callPackage ./sagedoc.nix { inherit sage-with-env jupyter-kernel-specs; };
+  sagedoc = callPackage ./sagedoc.nix {
+    inherit sage-with-env jupyter-kernel-specs;
+  };
 
   # sagelib with added wrappers and a dependency on sage-tests to make sure thet tests were run.
   sage-with-env = callPackage ./sage-with-env.nix {
@@ -99,7 +107,9 @@ let
   # separate derivation to make it possible to re-run the tests without
   # rebuilding sagelib (which takes ~30 minutes).
   # Running the tests should take something in the order of 1h.
-  sage-tests = callPackage ./sage-tests.nix { inherit sage-with-env; };
+  sage-tests = callPackage ./sage-tests.nix {
+    inherit sage-with-env;
+  };
 
   sage-src = callPackage ./sage-src.nix { };
 
@@ -134,7 +144,9 @@ let
       extraLibs = pythonRuntimeDeps;
     }; # make the libs accessible
 
-  singular = pkgs.singular.override { inherit flint3; };
+  singular = pkgs.singular.override {
+    inherit flint3;
+  };
 
   maxima = pkgs.maxima-ecl.override {
     lisp-compiler = pkgs.ecl.override {
@@ -156,7 +168,9 @@ let
   # openblas instead of openblasCompat. Apparently other packages somehow use flints
   # blas when it is available. Alternative would be to override flint to use
   # openblasCompat.
-  flint3 = pkgs.flint3.override { withBlas = false; };
+  flint3 = pkgs.flint3.override {
+    withBlas = false;
+  };
 
   # Multiple palp dimensions need to be available and sage expects them all to be
   # in the same folder.

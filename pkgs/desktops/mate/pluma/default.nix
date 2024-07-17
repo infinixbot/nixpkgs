@@ -57,7 +57,9 @@ stdenv.mkDerivation rec {
     patchPythonScript $out/lib/pluma/plugins/snippets/Snippet.py
   '';
 
-  passthru.updateScript = mateUpdateScript { inherit pname; };
+  passthru.updateScript = mateUpdateScript {
+    inherit pname;
+  };
 
   meta = with lib; {
     description = "Powerful text editor for the MATE desktop";

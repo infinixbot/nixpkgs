@@ -16,7 +16,9 @@ appimageTools.wrapType2 rec {
 
   extraInstallCommands =
     let
-      contents = appimageTools.extractType2 { inherit pname version src; };
+      contents = appimageTools.extractType2 {
+        inherit pname version src;
+      };
     in
     ''
       mkdir -p "$out/share/applications"

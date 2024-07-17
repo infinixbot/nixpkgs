@@ -359,7 +359,13 @@ let
       let
         secretsRaw = recursiveGetAttrsetWithJqPrefix set attr;
         # Set default option values
-        secrets = mapAttrs (_name: set: { quote = true; } // set) secretsRaw;
+        secrets = mapAttrs (
+          _name: set:
+          {
+            quote = true;
+          }
+          // set
+        ) secretsRaw;
         stringOrDefault = str: def: if str == "" then def else str;
       in
       ''
@@ -421,10 +427,16 @@ let
           utils
           ;
       };
-      unitOptions = import ./systemd-unit-options.nix { inherit lib systemdUtils; };
-      types = import ./systemd-types.nix { inherit lib systemdUtils pkgs; };
+      unitOptions = import ./systemd-unit-options.nix {
+        inherit lib systemdUtils;
+      };
+      types = import ./systemd-types.nix {
+        inherit lib systemdUtils pkgs;
+      };
       network = {
-        units = import ./systemd-network-units.nix { inherit lib systemdUtils; };
+        units = import ./systemd-network-units.nix {
+          inherit lib systemdUtils;
+        };
       };
     };
   };

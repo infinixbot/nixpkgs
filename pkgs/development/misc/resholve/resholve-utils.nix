@@ -144,7 +144,13 @@ rec {
 
   injectUnresholved =
     solutions: unresholved:
-    (builtins.mapAttrs (name: value: value // { inherit unresholved; }) solutions);
+    (builtins.mapAttrs (
+      name: value:
+      value
+      // {
+        inherit unresholved;
+      }
+    ) solutions);
 
   # Build resholve invocation for each solution.
   phraseCommands =
@@ -178,7 +184,11 @@ rec {
       inherit invokable;
       prep = "";
     };
-  phraseContextForOut = invokable: phraseContext { inherit invokable; };
+  phraseContextForOut =
+    invokable:
+    phraseContext {
+      inherit invokable;
+    };
 
   phraseSolution = name: solution: (phraseContextForOut (phraseInvocation name solution));
   phraseSolutions =
@@ -193,7 +203,12 @@ rec {
         ''
           ${
             (phraseContextForPWD (
-              phraseInvocation name (partialSolution // { scripts = [ "${placeholder "out"}" ]; })
+              phraseInvocation name (
+                partialSolution
+                // {
+                  scripts = [ "${placeholder "out"}" ];
+                }
+              )
             ))
           }
         ''
@@ -209,7 +224,14 @@ rec {
       destination = "/bin/${name}";
       checkPhase =
         ''
-          ${phraseContextForOut (phraseInvocation name (partialSolution // { scripts = [ "bin/${name}" ]; }))}
+          ${phraseContextForOut (
+            phraseInvocation name (
+              partialSolution
+              // {
+                scripts = [ "bin/${name}" ];
+              }
+            )
+          )}
         ''
         + lib.optionalString (partialSolution.interpreter != "none") ''
           ${partialSolution.interpreter} -n $out/bin/${name}

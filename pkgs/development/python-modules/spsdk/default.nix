@@ -102,7 +102,9 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ "spsdk" ];
 
-  passthru.tests.version = testers.testVersion { package = spsdk; };
+  passthru.tests.version = testers.testVersion {
+    package = spsdk;
+  };
 
   meta = with lib; {
     changelog = "https://github.com/nxp-mcuxpresso/spsdk/blob/${src.rev}/docs/release_notes.rst";

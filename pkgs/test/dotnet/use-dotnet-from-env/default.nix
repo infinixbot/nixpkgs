@@ -49,15 +49,25 @@ in
   use-dotnet-root-env = testers.testEqualContents {
     assertion = "buildDotnetModule uses DOTNET_ROOT from environment in wrapper";
     expected = runtimeVersionFile;
-    actual = runCommand "use-dotnet-from-env-root-test" { env.DOTNET_ROOT = dotnet-runtime; } ''
-      ${appWithoutFallback}/bin/Application >"$out"
-    '';
+    actual =
+      runCommand "use-dotnet-from-env-root-test"
+        {
+          env.DOTNET_ROOT = dotnet-runtime;
+        }
+        ''
+          ${appWithoutFallback}/bin/Application >"$out"
+        '';
   };
   use-dotnet-path-env = testers.testEqualContents {
     assertion = "buildDotnetModule uses DOTNET_ROOT from dotnet in PATH in wrapper";
     expected = runtimeVersionFile;
-    actual = runCommand "use-dotnet-from-env-path-test" { dotnetRuntime = dotnet-runtime; } ''
-      PATH=$dotnetRuntime''${PATH+:}$PATH ${appWithoutFallback}/bin/Application >"$out"
-    '';
+    actual =
+      runCommand "use-dotnet-from-env-path-test"
+        {
+          dotnetRuntime = dotnet-runtime;
+        }
+        ''
+          PATH=$dotnetRuntime''${PATH+:}$PATH ${appWithoutFallback}/bin/Application >"$out"
+        '';
   };
 }

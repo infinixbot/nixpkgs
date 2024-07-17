@@ -2,7 +2,11 @@ import ../make-test-python.nix (
   { pkgs, ... }:
   let
     # Set up SSL certs for Synapse to be happy.
-    runWithOpenSSL = file: cmd: pkgs.runCommand file { buildInputs = [ pkgs.openssl ]; } cmd;
+    runWithOpenSSL =
+      file: cmd:
+      pkgs.runCommand file {
+        buildInputs = [ pkgs.openssl ];
+      } cmd;
 
     ca_key = runWithOpenSSL "ca-key.pem" "openssl genrsa -out $out 2048";
     ca_pem = runWithOpenSSL "ca.pem" ''
@@ -111,7 +115,9 @@ import ../make-test-python.nix (
         {
           environment.systemPackages = [
             (pkgs.writers.writePython3Bin "create_management_room_and_invite_mjolnir"
-              { libraries = with pkgs.python3Packages; [ matrix-nio ] ++ matrix-nio.optional-dependencies.e2e; }
+              {
+                libraries = with pkgs.python3Packages; [ matrix-nio ] ++ matrix-nio.optional-dependencies.e2e;
+              }
               ''
                 import asyncio
 

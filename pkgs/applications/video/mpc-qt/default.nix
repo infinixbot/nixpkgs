@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
 
   qmakeFlags = [ "MPCQT_VERSION=${version}" ];
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     description = "Media Player Classic Qute Theater";

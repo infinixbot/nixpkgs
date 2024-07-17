@@ -11,7 +11,9 @@ let
     url = "https://github.com/RPGLogs/Uploaders-fflogs/releases/download/v${version}/fflogs-v${version}.AppImage";
     hash = "sha256-fJOZHvnGOB+b67w2F8kJ+1hogc0DTmtujvNw3W8WWSU=";
   };
-  extracted = appimageTools.extractType2 { inherit pname version src; };
+  extracted = appimageTools.extractType2 {
+    inherit pname version src;
+  };
 in
 appimageTools.wrapType2 {
   inherit pname version src;

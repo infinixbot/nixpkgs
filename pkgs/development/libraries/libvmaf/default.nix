@@ -41,7 +41,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru.tests = {
     inherit libaom ffmpeg-full;
-    version = testers.testVersion { package = finalAttrs.finalPackage; };
+    version = testers.testVersion {
+      package = finalAttrs.finalPackage;
+    };
     pkg-config = testers.hasPkgConfigModules {
       package = finalAttrs.finalPackage;
       moduleNames = [ "libvmaf" ];

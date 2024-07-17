@@ -8,7 +8,9 @@
 
 let
   inherit (stdenv.hostPlatform) system;
-  sources = import ./bins.nix { inherit fetchurl fetchzip; };
+  sources = import ./bins.nix {
+    inherit fetchurl fetchzip;
+  };
 in
 
 stdenv.mkDerivation rec {

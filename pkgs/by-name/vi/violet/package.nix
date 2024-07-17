@@ -24,7 +24,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests = testers.testVersion { package = violet; };
+    tests = testers.testVersion {
+      package = violet;
+    };
   };
 
   meta = {

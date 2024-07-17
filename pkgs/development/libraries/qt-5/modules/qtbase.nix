@@ -376,7 +376,9 @@ stdenv.mkDerivation (
       PSQL_LIBS = lib.optionalString (postgresql != null) "-L${postgresql.lib}/lib -lpq";
 
     }
-    // lib.optionalAttrs (stdenv.buildPlatform != stdenv.hostPlatform) { configurePlatforms = [ ]; }
+    // lib.optionalAttrs (stdenv.buildPlatform != stdenv.hostPlatform) {
+      configurePlatforms = [ ];
+    }
     // {
       # TODO Remove obsolete and useless flags once the build will be totally mastered
       configureFlags =

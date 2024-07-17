@@ -101,7 +101,11 @@ in
           snipeit.succeed("snipe-it migrate:fresh --force")
 
           # Login page should disappear
-          ${checkLoginPage { shouldSucceed = false; }}
+          ${
+            checkLoginPage {
+              shouldSucceed = false;
+            }
+          }
 
           # Restore the state
           snipeit.succeed(

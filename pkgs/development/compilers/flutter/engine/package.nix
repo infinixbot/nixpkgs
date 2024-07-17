@@ -8,7 +8,9 @@
   darwin,
   clang,
   llvm,
-  tools ? callPackage ./tools.nix { inherit hostPlatform; },
+  tools ? callPackage ./tools.nix {
+    inherit hostPlatform;
+  },
   stdenv,
   stdenvNoCC,
   dart,
@@ -53,7 +55,9 @@ let
 
   expandDeps = deps: flatten (map expandSingleDep deps);
 
-  constants = callPackage ./constants.nix { inherit targetPlatform; };
+  constants = callPackage ./constants.nix {
+    inherit targetPlatform;
+  };
 
   src = callPackage ./source.nix {
     inherit
@@ -314,7 +318,9 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   passthru = {
-    dart = callPackage ./dart.nix { engine = finalAttrs.finalPackage; };
+    dart = callPackage ./dart.nix {
+      engine = finalAttrs.finalPackage;
+    };
   };
 
   meta = {

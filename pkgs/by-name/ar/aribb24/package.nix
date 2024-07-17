@@ -35,7 +35,9 @@ stdenv.mkDerivation (finalAttrs: {
   preConfigure = "autoreconf --install";
 
   passthru = {
-    updateScript = gitUpdater { rev-prefix = "v"; };
+    updateScript = gitUpdater {
+      rev-prefix = "v";
+    };
     tests.pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
   };
 

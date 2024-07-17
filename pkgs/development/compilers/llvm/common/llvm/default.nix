@@ -657,7 +657,9 @@ stdenv.mkDerivation (
         check_version patch ${patch}
       '';
   }
-  // lib.optionalAttrs (
-    lib.versionOlder release_version "17" || lib.versionAtLeast release_version "18"
-  ) { hardeningDisable = [ "trivialautovarinit" ]; }
+  //
+    lib.optionalAttrs (lib.versionOlder release_version "17" || lib.versionAtLeast release_version "18")
+      {
+        hardeningDisable = [ "trivialautovarinit" ];
+      }
 )

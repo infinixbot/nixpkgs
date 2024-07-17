@@ -38,7 +38,9 @@ let
     nix-apps = {
       enabled = cfg.extraApps != { };
       linkTarget = pkgs.linkFarm "nix-apps" (
-        mapAttrsToList (name: path: { inherit name path; }) cfg.extraApps
+        mapAttrsToList (name: path: {
+          inherit name path;
+        }) cfg.extraApps
       );
       writable = false;
     };
@@ -90,7 +92,9 @@ let
     extraConfig = toKeyValue cfg.phpOptions;
   };
 
-  toKeyValue = generators.toKeyValue { mkKeyValue = generators.mkKeyValueDefault { } " = "; };
+  toKeyValue = generators.toKeyValue {
+    mkKeyValue = generators.mkKeyValueDefault { } " = ";
+  };
 
   phpCli = concatStringsSep " " (
     [ "${getExe phpPackage}" ]
@@ -458,7 +462,9 @@ in
         "nextcloud29"
       ];
     };
-    phpPackage = mkPackageOption pkgs "php" { example = "php82"; };
+    phpPackage = mkPackageOption pkgs "php" {
+      example = "php82";
+    };
 
     maxUploadSize = mkOption {
       default = "512M";
@@ -1064,7 +1070,9 @@ in
           post_max_size = cfg.maxUploadSize;
           memory_limit = cfg.maxUploadSize;
         }
-        (mkIf cfg.caching.apcu { "apc.enable_cli" = "1"; })
+        (mkIf cfg.caching.apcu {
+          "apc.enable_cli" = "1";
+        })
       ];
     }
 

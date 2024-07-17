@@ -47,7 +47,9 @@ let
     # Avoid infinite recursion with jsonschema
     doCheck = false;
 
-    passthru.tests.referencing = self.overridePythonAttrs { doCheck = true; };
+    passthru.tests.referencing = self.overridePythonAttrs {
+      doCheck = true;
+    };
 
     pythonImportsCheck = [ "referencing" ];
 

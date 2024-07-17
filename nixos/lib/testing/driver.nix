@@ -12,8 +12,12 @@ let
   testDriver = hostPkgs.callPackage ../test-driver {
     inherit (config) enableOCR extraPythonPackages;
     qemu_pkg = config.qemu.package;
-    imagemagick_light = hostPkgs.imagemagick_light.override { inherit (hostPkgs) libtiff; };
-    tesseract4 = hostPkgs.tesseract4.override { enableLanguages = [ "eng" ]; };
+    imagemagick_light = hostPkgs.imagemagick_light.override {
+      inherit (hostPkgs) libtiff;
+    };
+    tesseract4 = hostPkgs.tesseract4.override {
+      enableLanguages = [ "eng" ];
+    };
   };
 
   vlans = map (

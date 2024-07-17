@@ -46,8 +46,12 @@ lib.fix (
     buildEnv' =
       args:
       (
-        buildEnv ({ inherit (args) name paths; })
-        // lib.optionalAttrs (args ? extraOutputsToInstall) { inherit (args) extraOutputsToInstall; }
+        buildEnv ({
+          inherit (args) name paths;
+        })
+        // lib.optionalAttrs (args ? extraOutputsToInstall) {
+          inherit (args) extraOutputsToInstall;
+        }
       ).overrideAttrs
         (
           removeAttrs args [
@@ -110,20 +114,25 @@ lib.fix (
       specifiedOutputs = lib.groupBy (p: p.tlOutputName or p.outputName) specified.right;
       otherOutputNames = builtins.catAttrs "key" (
         builtins.genericClosure {
-          startSet = map (key: { inherit key; }) (
-            lib.concatLists (builtins.catAttrs "outputs" specified.wrong)
-          );
+          startSet = map (key: {
+            inherit key;
+          }) (lib.concatLists (builtins.catAttrs "outputs" specified.wrong));
           operator = _: [ ];
         }
       );
       otherOutputs = lib.genAttrs otherOutputNames (n: builtins.catAttrs n specified.wrong);
       outputsToInstall = builtins.catAttrs "key" (
         builtins.genericClosure {
-          startSet = map (key: { inherit key; }) (
-            [ "out" ]
-            ++ lib.optional (otherOutputs ? man) "man"
-            ++ lib.concatLists (builtins.catAttrs "outputsToInstall" (builtins.catAttrs "meta" specified.wrong))
-          );
+          startSet =
+            map
+              (key: {
+                inherit key;
+              })
+              (
+                [ "out" ]
+                ++ lib.optional (otherOutputs ? man) "man"
+                ++ lib.concatLists (builtins.catAttrs "outputsToInstall" (builtins.catAttrs "meta" specified.wrong))
+              );
           operator = _: [ ];
         }
       );
@@ -243,11 +252,16 @@ lib.fix (
 
     # the 'non-relocated' packages must live in $TEXMFROOT/texmf-dist
     # and sometimes look into $TEXMFROOT/tlpkg (notably fmtutil, updmap look for perl modules in both)
-    texmfroot = runCommand "${name}-texmfroot" { inherit texmfdist tlpkg; } ''
-      mkdir -p "$out"
-      ln -s "$texmfdist" "$out"/texmf-dist
-      ln -s "$tlpkg" "$out"/tlpkg
-    '';
+    texmfroot =
+      runCommand "${name}-texmfroot"
+        {
+          inherit texmfdist tlpkg;
+        }
+        ''
+          mkdir -p "$out"
+          ln -s "$texmfdist" "$out"/texmf-dist
+          ln -s "$tlpkg" "$out"/tlpkg
+        '';
 
     # texlive.combine: expose info and man pages in usual /share/{info,man} location
     doc = buildEnv {
@@ -313,7 +327,13 @@ lib.fix (
         let
           appliedArgs = if builtins.isFunction newArgs then newArgs args else newArgs;
         in
-        self (args // { __fromCombineWrapper = false; } // appliedArgs);
+        self (
+          args
+          // {
+            __fromCombineWrapper = false;
+          }
+          // appliedArgs
+        );
       withPackages =
         reqs:
         self (
@@ -457,7 +477,9 @@ lib.fix (
 
         inherit texmfdist texmfroot;
 
-        fontconfigFile = makeFontsConf { fontDirectories = [ "${texmfroot}/texmf-dist/fonts" ]; };
+        fontconfigFile = makeFontsConf {
+          fontDirectories = [ "${texmfroot}/texmf-dist/fonts" ];
+        };
 
         fmtutilCnf = assembleConfigLines fmtutilLines pkgList.sortedFormatPkgs;
         updmapCfg = assembleConfigLines updmapLines pkgList.sortedFontMaps;
@@ -480,5 +502,7 @@ lib.fix (
   if __combine || __formatsOf != null then
     out
   else
-    lib.addMetaAttrs { inherit (pkgList) outputsToInstall; } out
+    lib.addMetaAttrs {
+      inherit (pkgList) outputsToInstall;
+    } out
 )

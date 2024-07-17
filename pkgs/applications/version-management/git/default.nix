@@ -62,7 +62,9 @@ assert svnSupport -> perlSupport;
 
 let
   version = "2.45.2";
-  svn = subversionClient.override { perlBindings = perlSupport; };
+  svn = subversionClient.override {
+    perlBindings = perlSupport;
+  };
   gitwebPerlLibs = with perlPackages; [
     CGI
     HTMLParser

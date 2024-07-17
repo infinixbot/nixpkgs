@@ -27,10 +27,14 @@ in
           JACK Audio Connection Kit. You need to add yourself to the "jackaudio" group
         '';
 
-        package = mkPackageOption pkgs "jack2" { example = "jack1"; } // {
-          # until jack1 promiscuous mode is fixed
-          internal = true;
-        };
+        package =
+          mkPackageOption pkgs "jack2" {
+            example = "jack1";
+          }
+          // {
+            # until jack1 promiscuous mode is fixed
+            internal = true;
+          };
 
         extraOptions = mkOption {
           type = types.listOf types.str;
@@ -251,15 +255,19 @@ in
 
       systemd.services.jack = {
         description = "JACK Audio Connection Kit";
-        serviceConfig = {
-          User = "jackaudio";
-          SupplementaryGroups = lib.optional (
-            config.hardware.pulseaudio.enable && !config.hardware.pulseaudio.systemWide
-          ) "users";
-          ExecStart = "${cfg.jackd.package}/bin/jackd ${lib.escapeShellArgs cfg.jackd.extraOptions}";
-          LimitRTPRIO = 99;
-          LimitMEMLOCK = "infinity";
-        } // optionalAttrs umaskNeeded { UMask = "007"; };
+        serviceConfig =
+          {
+            User = "jackaudio";
+            SupplementaryGroups = lib.optional (
+              config.hardware.pulseaudio.enable && !config.hardware.pulseaudio.systemWide
+            ) "users";
+            ExecStart = "${cfg.jackd.package}/bin/jackd ${lib.escapeShellArgs cfg.jackd.extraOptions}";
+            LimitRTPRIO = 99;
+            LimitMEMLOCK = "infinity";
+          }
+          // optionalAttrs umaskNeeded {
+            UMask = "007";
+          };
         path = [ cfg.jackd.package ];
         environment = {
           JACK_PROMISCUOUS_SERVER = "jackaudio";

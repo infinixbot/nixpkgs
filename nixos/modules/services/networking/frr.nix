@@ -161,7 +161,9 @@ in
         };
       };
     }
-    { options.services.frr = (genAttrs services serviceOptions); }
+    {
+      options.services.frr = (genAttrs services serviceOptions);
+    }
   ];
 
   ###### implementation

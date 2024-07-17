@@ -5,7 +5,9 @@
   pkgs,
 }:
 let
-  nodePackages = import ./composition.nix { inherit pkgs; };
+  nodePackages = import ./composition.nix {
+    inherit pkgs;
+  };
   sourceInfo = (lib.importJSON ./netlify-cli.json);
 in
 nodePackages.package.override {

@@ -69,7 +69,13 @@ let
     Returns the module system's `config` and `options` variables.
   */
   eval =
-    args@{ ... }: import (srcUnpacked + "/src/nix/eval-composition.nix") ({ inherit pkgs; } // args);
+    args@{ ... }:
+    import (srcUnpacked + "/src/nix/eval-composition.nix") (
+      {
+        inherit pkgs;
+      }
+      // args
+    );
 
   /*
     Function to derivation of the docker compose yaml file

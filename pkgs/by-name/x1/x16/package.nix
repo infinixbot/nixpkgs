@@ -45,7 +45,9 @@ stdenv.mkDerivation (finalAttrs: {
     inherit (finalAttrs) version;
     emulator = finalAttrs.finalPackage;
     rom = callPackage ./rom.nix { };
-    run = (callPackage ./run.nix { }) { inherit (finalAttrs.finalPackage) emulator rom; };
+    run = (callPackage ./run.nix { }) {
+      inherit (finalAttrs.finalPackage) emulator rom;
+    };
   };
 
   meta = {

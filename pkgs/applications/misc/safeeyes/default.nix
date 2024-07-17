@@ -73,7 +73,9 @@ buildPythonApplication rec {
 
   doCheck = false; # no tests
 
-  passthru.tests.version = testers.testVersion { package = safeeyes; };
+  passthru.tests.version = testers.testVersion {
+    package = safeeyes;
+  };
 
   meta = with lib; {
     homepage = "http://slgobinath.github.io/SafeEyes";

@@ -346,7 +346,9 @@ let
           }
         );
 
-      type = types.submoduleWith { inherit modules specialArgs class; };
+      type = types.submoduleWith {
+        inherit modules specialArgs class;
+      };
 
       result = withWarnings {
         _type = "configuration";
@@ -376,7 +378,9 @@ let
           if m._type or "module" == "module" then
             unifyModuleSyntax fallbackFile fallbackKey m
           else if m._type == "if" || m._type == "override" then
-            loadModule args fallbackFile fallbackKey { config = m; }
+            loadModule args fallbackFile fallbackKey {
+              config = m;
+            }
           else
             throw (
               "Could not load a value as a module, because it is of type ${lib.strings.escapeNixString m._type}"
@@ -529,7 +533,9 @@ let
         if m ? meta then
           mkMerge [
             config
-            { meta = m.meta; }
+            {
+              meta = m.meta;
+            }
           ]
         else
           config;
@@ -538,7 +544,9 @@ let
         if m ? freeformType then
           mkMerge [
             config
-            { _module.freeformType = m.freeformType; }
+            {
+              _module.freeformType = m.freeformType;
+            }
           ]
         else
           config;
@@ -739,7 +747,11 @@ let
           // {
             options = mkOption {
               type = types.submoduleWith {
-                modules = [ { options = decl.options; } ];
+                modules = [
+                  {
+                    options = decl.options;
+                  }
+                ];
                 # `null` is not intended for use by modules. It is an internal
                 # value that means "whatever the user has declared elsewhere".
                 # This might become obsolete with https://github.com/NixOS/nixpkgs/issues/162398
@@ -886,7 +898,13 @@ let
           t' = opt.options.type;
           mergedType = t.typeMerge t'.functor;
           typesMergeable = mergedType != null;
-          typeSet = if (bothHave "type") && typesMergeable then { type = mergedType; } else { };
+          typeSet =
+            if (bothHave "type") && typesMergeable then
+              {
+                type = mergedType;
+              }
+            else
+              { };
           bothHave = k: opt.options ? ${k} && res ? ${k};
         in
         if
@@ -961,7 +979,11 @@ let
             # For a better error message, evaluate all readOnly definitions as
             # if they were the only definition.
             separateDefs = map (
-              def: def // { value = (mergeDefinitions loc opt.type [ def ]).mergedValue; }
+              def:
+              def
+              // {
+                value = (mergeDefinitions loc opt.type [ def ]).mergedValue;
+              }
             ) defs';
           in
           throw "The option `${showOption loc}' is read-only, but it's set multiple times. Definition values:${showDefs separateDefs}"
@@ -1036,7 +1058,13 @@ let
 
     isDefined = defsFinal != [ ];
 
-    optionalValue = if isDefined then { value = mergedValue; } else { };
+    optionalValue =
+      if isDefined then
+        {
+          value = mergedValue;
+        }
+      else
+        { };
   };
 
   /*
@@ -1119,7 +1147,14 @@ let
         def: if def.value._type or "" == "override" then def.value.priority else defaultOverridePriority;
       highestPrio = foldl' (prio: def: min (getPrio def) prio) 9999 defs;
       strip =
-        def: if def.value._type or "" == "override" then def // { value = def.value.content; } else def;
+        def:
+        if def.value._type or "" == "override" then
+          def
+          // {
+            value = def.value.content;
+          }
+        else
+          def;
     in
     {
       values = concatMap (def: if getPrio def == highestPrio then [ (strip def) ] else [ ]) defs;
@@ -1155,7 +1190,10 @@ let
   fixupOptionType =
     loc: opt:
     if opt.type.getSubModules or null == null then
-      opt // { type = opt.type or types.unspecified; }
+      opt
+      // {
+        type = opt.type or types.unspecified;
+      }
     else
       opt
       // {
@@ -1590,7 +1628,9 @@ let
           description = "Alias of {option}`${showOption to}`.";
           apply = x: use (toOf config);
         }
-        // optionalAttrs (toType != null) { type = toType; }
+        // optionalAttrs (toType != null) {
+          type = toType;
+        }
       );
       config = mkIf condition (mkMerge [
         (optionalAttrs (options ? warnings) {

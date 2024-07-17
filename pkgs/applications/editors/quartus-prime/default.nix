@@ -17,7 +17,9 @@
     "MAX II/V"
     "MAX 10 FPGA"
   ],
-  unwrapped ? callPackage ./quartus.nix { inherit unstick supportedDevices withQuesta; },
+  unwrapped ? callPackage ./quartus.nix {
+    inherit unstick supportedDevices withQuesta;
+  },
   extraProfile ? "",
 }:
 
@@ -74,9 +76,15 @@ buildFHSEnv rec {
     with pkgs;
     let
       # This seems ugly - can we override `libpng = libpng12` for all `pkgs`?
-      freetype = pkgs.freetype.override { libpng = libpng12; };
-      fontconfig = pkgs.fontconfig.override { inherit freetype; };
-      libXft = pkgs.xorg.libXft.override { inherit freetype fontconfig; };
+      freetype = pkgs.freetype.override {
+        libpng = libpng12;
+      };
+      fontconfig = pkgs.fontconfig.override {
+        inherit freetype;
+      };
+      libXft = pkgs.xorg.libXft.override {
+        inherit freetype fontconfig;
+      };
     in
     [
       # questa requirements
@@ -151,7 +159,10 @@ buildFHSEnv rec {
     inherit unwrapped;
     tests = {
       buildSof =
-        runCommand "quartus-prime-lite-test-build-sof" { nativeBuildInputs = [ quartus-prime-lite ]; }
+        runCommand "quartus-prime-lite-test-build-sof"
+          {
+            nativeBuildInputs = [ quartus-prime-lite ];
+          }
           ''
             cat >mydesign.vhd <<EOF
             library ieee;

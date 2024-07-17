@@ -8,7 +8,9 @@
 
 let
   python = python3.override {
-    packageOverrides = self: super: { sqlalchemy = super.sqlalchemy_1_4; };
+    packageOverrides = self: super: {
+      sqlalchemy = super.sqlalchemy_1_4;
+    };
   };
 in
 python.pkgs.buildPythonApplication rec {

@@ -14,7 +14,9 @@
   # `extraDependencies` are not actually transitive dependencies of libraries in
   # `packages` above.  We explicitly want to test that it is possible to specify
   # `extraDependencies` that are not in the closure of `packages`.
-  extraDependencies = p: { libraryHaskellDepends = [ p.conduit ]; };
+  extraDependencies = p: {
+    libraryHaskellDepends = [ p.conduit ];
+  };
   nativeBuildInputs = [ cabal-install ];
   phases = [
     "unpackPhase"

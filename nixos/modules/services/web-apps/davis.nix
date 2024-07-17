@@ -221,7 +221,9 @@ in
 
     nginx = lib.mkOption {
       type = lib.types.submodule (
-        lib.recursiveUpdate (import ../web-servers/nginx/vhost-options.nix { inherit config lib; }) { }
+        lib.recursiveUpdate (import ../web-servers/nginx/vhost-options.nix {
+          inherit config lib;
+        }) { }
       );
       default = null;
       example = ''
@@ -330,7 +332,16 @@ in
           CALDAV_ENABLED = true;
           CARDDAV_ENABLED = true;
         }
-        // (if mail.dsn != null then { MAILER_DSN = mail.dsn; } else { MAILER_DSN._secret = mail.dsnFile; })
+        // (
+          if mail.dsn != null then
+            {
+              MAILER_DSN = mail.dsn;
+            }
+          else
+            {
+              MAILER_DSN._secret = mail.dsnFile;
+            }
+        )
         // (
           if db.createLocally then
             {
@@ -349,7 +360,9 @@ in
                   null;
             }
           else
-            { DATABASE_URL._secret = db.urlFile; }
+            {
+              DATABASE_URL._secret = db.urlFile;
+            }
         );
 
       users = {
@@ -361,7 +374,9 @@ in
             home = cfg.dataDir;
           };
         };
-        groups = lib.mkIf (group == "davis") { davis = { }; };
+        groups = lib.mkIf (group == "davis") {
+          davis = { };
+        };
       };
 
       systemd.tmpfiles.rules = [

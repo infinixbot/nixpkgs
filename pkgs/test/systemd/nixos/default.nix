@@ -15,8 +15,12 @@ let
           system.stateVersion = lib.trivial.release;
           systemd.services.systemd-test-nixos = {
             serviceConfig = lib.mkMerge [
-              { StateDirectory = "foo"; }
-              { StateDirectory = "bar"; }
+              {
+                StateDirectory = "foo";
+              }
+              {
+                StateDirectory = "bar";
+              }
             ];
           };
         };
@@ -36,8 +40,12 @@ let
           system.stateVersion = lib.trivial.release;
           systemd.services.systemd-test-nixos = {
             serviceConfig = lib.mkMerge [
-              { StateDirectory = "foo"; }
-              { StateDirectory = [ "bar" ]; }
+              {
+                StateDirectory = "foo";
+              }
+              {
+                StateDirectory = [ "bar" ];
+              }
             ];
           };
         };

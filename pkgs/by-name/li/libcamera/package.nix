@@ -118,7 +118,9 @@ stdenv.mkDerivation rec {
   env.NIX_CFLAGS_COMPILE = "-Wno-error=deprecated-declarations";
 
   # Silence fontconfig warnings about missing config
-  FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ ]; };
+  FONTCONFIG_FILE = makeFontsConf {
+    fontDirectories = [ ];
+  };
 
   meta = with lib; {
     description = "Open source camera stack and framework for Linux, Android, and ChromeOS";

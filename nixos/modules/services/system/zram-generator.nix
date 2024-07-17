@@ -19,7 +19,9 @@ in
     package = lib.mkPackageOption pkgs "zram-generator" { };
 
     settings = lib.mkOption {
-      type = lib.types.submodule { freeformType = settingsFormat.type; };
+      type = lib.types.submodule {
+        freeformType = settingsFormat.type;
+      };
       default = { };
       description = ''
         Configuration for zram-generator,

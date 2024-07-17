@@ -169,7 +169,9 @@ in
       }
       (mkIf cfg.redis.enable (
         if cfg.redis.createLocally then
-          { environment.REDIS_URL = config.services.redis.servers.db-rest.unixSocket; }
+          {
+            environment.REDIS_URL = config.services.redis.servers.db-rest.unixSocket;
+          }
         else
           {
             script =
@@ -194,10 +196,14 @@ in
           group = cfg.group;
         };
       })
-      (lib.mkIf cfg.redis.createLocally { ${cfg.user}.extraGroups = [ "redis-db-rest" ]; })
+      (lib.mkIf cfg.redis.createLocally {
+        ${cfg.user}.extraGroups = [ "redis-db-rest" ];
+      })
     ];
 
-    users.groups = lib.mkIf (cfg.group == "db-rest") { db-rest = { }; };
+    users.groups = lib.mkIf (cfg.group == "db-rest") {
+      db-rest = { };
+    };
 
     services.redis.servers.db-rest.enable = cfg.redis.enable && cfg.redis.createLocally;
   };

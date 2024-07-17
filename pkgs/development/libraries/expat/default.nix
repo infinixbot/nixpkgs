@@ -67,7 +67,9 @@ stdenv.mkDerivation (finalAttrs: {
     inherit (perlPackages) XMLSAXExpat XMLParser;
     inherit (luaPackages) luaexpat;
     inherit (ocamlPackages) ocaml_expat;
-    pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+    pkg-config = testers.hasPkgConfigModules {
+      package = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

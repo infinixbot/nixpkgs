@@ -31,5 +31,7 @@ in
 })).override
   ({
     monorepoSrc = llvmSrc;
-    libllvm = llvmPackages.libllvm.override ({ monorepoSrc = llvmSrc; });
+    libllvm = llvmPackages.libllvm.override ({
+      monorepoSrc = llvmSrc;
+    });
   })

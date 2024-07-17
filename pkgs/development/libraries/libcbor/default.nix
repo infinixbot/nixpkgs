@@ -47,7 +47,11 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru.tests = {
     inherit libfido2 mysql80;
-    openssh = (openssh.override { withFIDO = true; });
+    openssh = (
+      openssh.override {
+        withFIDO = true;
+      }
+    );
     systemd = (
       systemd.override {
         withFido2 = true;

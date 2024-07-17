@@ -37,7 +37,9 @@ let
   inInitrd = config.boot.initrd.supportedFilesystems.zfs or false;
   inSystem = config.boot.supportedFilesystems.zfs or false;
 
-  autosnapPkg = pkgs.zfstools.override { zfs = cfgZfs.package; };
+  autosnapPkg = pkgs.zfstools.override {
+    zfs = cfgZfs.package;
+  };
 
   zfsAutoSnap = "${autosnapPkg}/bin/zfs-auto-snapshot";
 

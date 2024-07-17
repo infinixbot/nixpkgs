@@ -17,7 +17,9 @@
   lib,
 }:
 let
-  compyte = import ./compyte.nix { inherit mkDerivation fetchFromGitHub; };
+  compyte = import ./compyte.nix {
+    inherit mkDerivation fetchFromGitHub;
+  };
 
   inherit (cudaPackages) cudatoolkit;
 in

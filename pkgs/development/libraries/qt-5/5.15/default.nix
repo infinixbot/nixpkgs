@@ -40,9 +40,13 @@
 
 let
 
-  srcs = import ./srcs.nix { inherit lib fetchgit fetchFromGitHub; } // {
-    __attrsFailEvaluation = true;
-  };
+  srcs =
+    import ./srcs.nix {
+      inherit lib fetchgit fetchFromGitHub;
+    }
+    // {
+      __attrsFailEvaluation = true;
+    };
 
   qtCompatVersion = srcs.qtbase.version;
 
@@ -257,7 +261,11 @@ let
         inherit patches;
         # Use a variant of mkDerivation that does not include wrapQtApplications
         # to avoid cyclic dependencies between Qt modules.
-        mkDerivation = (callPackage ../mkDerivation.nix { wrapQtAppsHook = null; }) stdenv.mkDerivation;
+        mkDerivation =
+          (callPackage ../mkDerivation.nix {
+            wrapQtAppsHook = null;
+          })
+            stdenv.mkDerivation;
       };
 
       callPackage = self.newScope {
@@ -331,7 +339,9 @@ let
       qtlocation = callPackage ../modules/qtlocation.nix { };
       qtlottie = callPackage ../modules/qtlottie.nix { };
       qtmacextras = callPackage ../modules/qtmacextras.nix { };
-      qtmultimedia = callPackage ../modules/qtmultimedia.nix { inherit gstreamer gst-plugins-base; };
+      qtmultimedia = callPackage ../modules/qtmultimedia.nix {
+        inherit gstreamer gst-plugins-base;
+      };
       qtnetworkauth = callPackage ../modules/qtnetworkauth.nix { };
       qtpim = callPackage ../modules/qtpim.nix { };
       qtpositioning = callPackage ../modules/qtpositioning.nix { };
@@ -490,7 +500,9 @@ let
 
   bootstrapScope = baseScope.overrideScope (
     final: prev: {
-      qtbase = prev.qtbase.override { qttranslations = null; };
+      qtbase = prev.qtbase.override {
+        qttranslations = null;
+      };
       qtdeclarative = null;
     }
   );

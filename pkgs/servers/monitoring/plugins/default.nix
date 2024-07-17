@@ -37,10 +37,15 @@ let
     procps
   ];
 
-  mailq = runCommand "mailq-wrapper" { preferLocalBuild = true; } ''
-    mkdir -p $out/bin
-    ln -s /run/wrappers/bin/sendmail $out/bin/mailq
-  '';
+  mailq =
+    runCommand "mailq-wrapper"
+      {
+        preferLocalBuild = true;
+      }
+      ''
+        mkdir -p $out/bin
+        ln -s /run/wrappers/bin/sendmail $out/bin/mailq
+      '';
 in
 stdenv.mkDerivation rec {
   pname = "monitoring-plugins";

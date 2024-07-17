@@ -34,7 +34,9 @@ let
           valueString;
     in
     "${key}=${quotedValueString}";
-  msrKernelParam = kernelParam { module = "msr"; };
+  msrKernelParam = kernelParam {
+    module = "msr";
+  };
 in
 {
   options.hardware.cpu.x86.msr =

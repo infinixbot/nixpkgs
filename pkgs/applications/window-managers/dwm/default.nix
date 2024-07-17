@@ -44,7 +44,9 @@ stdenv.mkDerivation rec {
 
   makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
 
-  passthru.updateScript = gitUpdater { url = "git://git.suckless.org/dwm"; };
+  passthru.updateScript = gitUpdater {
+    url = "git://git.suckless.org/dwm";
+  };
 
   meta = with lib; {
     homepage = "https://dwm.suckless.org/";

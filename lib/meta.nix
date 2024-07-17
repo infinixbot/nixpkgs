@@ -43,7 +43,12 @@ rec {
 
     :::
   */
-  addMetaAttrs = newAttrs: drv: drv // { meta = (drv.meta or { }) // newAttrs; };
+  addMetaAttrs =
+    newAttrs: drv:
+    drv
+    // {
+      meta = (drv.meta or { }) // newAttrs;
+    };
 
   /**
     Disable Hydra builds of given derivation.
@@ -54,7 +59,11 @@ rec {
 
     : 1\. Function argument
   */
-  dontDistribute = drv: addMetaAttrs { hydraPlatforms = [ ]; } drv;
+  dontDistribute =
+    drv:
+    addMetaAttrs {
+      hydraPlatforms = [ ];
+    } drv;
 
   /**
     Change the [symbolic name of a derivation](https://nixos.org/manual/nix/stable/language/derivations.html#attr-name).
@@ -73,7 +82,12 @@ rec {
 
     : 2\. Function argument
   */
-  setName = name: drv: drv // { inherit name; };
+  setName =
+    name: drv:
+    drv
+    // {
+      inherit name;
+    };
 
   /**
     Like `setName`, but takes the previous name as an argument.
@@ -98,7 +112,12 @@ rec {
 
     :::
   */
-  updateName = updater: drv: drv // { name = updater (drv.name); };
+  updateName =
+    updater: drv:
+    drv
+    // {
+      name = updater (drv.name);
+    };
 
   /**
     Append a suffix to the name of a package (before the version
@@ -147,7 +166,11 @@ rec {
     `drv`
     : 2\. Function argument
   */
-  setPrio = priority: addMetaAttrs { inherit priority; };
+  setPrio =
+    priority:
+    addMetaAttrs {
+      inherit priority;
+    };
 
   /**
     Decrease the nix-env priority of the package, i.e., other
@@ -246,7 +269,12 @@ rec {
       else
         matchAttrs (
           # Normalize platform attrset.
-          if elem ? parsed then elem else { parsed = elem; }
+          if elem ? parsed then
+            elem
+          else
+            {
+              parsed = elem;
+            }
         ) platform
     );
 

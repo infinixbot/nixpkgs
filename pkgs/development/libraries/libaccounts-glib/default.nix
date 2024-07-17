@@ -73,7 +73,9 @@ stdenv.mkDerivation rec {
     "-Dpy-overrides-dir=${placeholder "py"}/${python3.sitePackages}/gi/overrides"
   ];
 
-  passthru.updateScript = gitUpdater { rev-prefix = "VERSION_"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "VERSION_";
+  };
 
   meta = with lib; {
     description = "Library for managing accounts which can be used from GLib applications";

@@ -68,7 +68,9 @@ let
         versionAtLeast
         ;
 
-      smartmon = smartmontools.override { inherit enableMail; };
+      smartmon = smartmontools.override {
+        inherit enableMail;
+      };
 
       buildKernel = any (n: n == configFile) [
         "kernel"
@@ -297,7 +299,12 @@ let
         inherit enableMail latestCompatibleLinuxPackages kernelModuleAttribute;
         # The corresponding userspace tools to this instantiation
         # of the ZFS package set.
-        userspaceTools = genericBuild (outerArgs // { configFile = "user"; }) innerArgs;
+        userspaceTools = genericBuild (
+          outerArgs
+          // {
+            configFile = "user";
+          }
+        ) innerArgs;
 
         inherit tests;
       };

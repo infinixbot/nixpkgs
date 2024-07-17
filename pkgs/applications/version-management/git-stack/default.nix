@@ -26,7 +26,9 @@ rustPlatform.buildRustPackage rec {
   # Many tests try to access the file system.
   doCheck = false;
 
-  passthru.tests.version = testers.testVersion { package = git-stack; };
+  passthru.tests.version = testers.testVersion {
+    package = git-stack;
+  };
 
   meta = with lib; {
     description = "Stacked branch management for Git";

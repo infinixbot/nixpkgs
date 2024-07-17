@@ -54,7 +54,9 @@ let
         address = cfg.address;
         port = cfg.port;
         authentication = {
-          x509 = lib.optionalAttrs (cfg.clientCaFile != null) { clientCAFile = cfg.clientCaFile; };
+          x509 = lib.optionalAttrs (cfg.clientCaFile != null) {
+            clientCAFile = cfg.clientCaFile;
+          };
           webhook = {
             enabled = true;
             cacheTTL = "10s";
@@ -70,11 +72,21 @@ let
         healthzPort = cfg.healthz.port;
         healthzBindAddress = cfg.healthz.bind;
       }
-      // lib.optionalAttrs (cfg.tlsCertFile != null) { tlsCertFile = cfg.tlsCertFile; }
-      // lib.optionalAttrs (cfg.tlsKeyFile != null) { tlsPrivateKeyFile = cfg.tlsKeyFile; }
-      // lib.optionalAttrs (cfg.clusterDomain != "") { clusterDomain = cfg.clusterDomain; }
-      // lib.optionalAttrs (cfg.clusterDns != "") { clusterDNS = [ cfg.clusterDns ]; }
-      // lib.optionalAttrs (cfg.featureGates != [ ]) { featureGates = cfg.featureGates; }
+      // lib.optionalAttrs (cfg.tlsCertFile != null) {
+        tlsCertFile = cfg.tlsCertFile;
+      }
+      // lib.optionalAttrs (cfg.tlsKeyFile != null) {
+        tlsPrivateKeyFile = cfg.tlsKeyFile;
+      }
+      // lib.optionalAttrs (cfg.clusterDomain != "") {
+        clusterDomain = cfg.clusterDomain;
+      }
+      // lib.optionalAttrs (cfg.clusterDns != "") {
+        clusterDNS = [ cfg.clusterDns ];
+      }
+      // lib.optionalAttrs (cfg.featureGates != [ ]) {
+        featureGates = cfg.featureGates;
+      }
     )
   );
 

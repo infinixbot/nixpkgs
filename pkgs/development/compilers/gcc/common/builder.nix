@@ -6,7 +6,9 @@
 }:
 
 let
-  forceLibgccToBuildCrtStuff = import ./libgcc-buildstuff.nix { inherit lib stdenv; };
+  forceLibgccToBuildCrtStuff = import ./libgcc-buildstuff.nix {
+    inherit lib stdenv;
+  };
 in
 
 originalAttrs:

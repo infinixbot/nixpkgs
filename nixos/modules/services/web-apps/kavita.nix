@@ -9,7 +9,10 @@ let
   cfg = config.services.kavita;
   settingsFormat = pkgs.formats.json { };
   appsettings = settingsFormat.generate "appsettings.json" (
-    { TokenKey = "@TOKEN@"; } // cfg.settings
+    {
+      TokenKey = "@TOKEN@";
+    }
+    // cfg.settings
   );
 in
 {

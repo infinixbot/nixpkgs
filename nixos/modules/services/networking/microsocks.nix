@@ -113,7 +113,9 @@ in
           isSystemUser = true;
         };
       };
-      groups = lib.mkIf (cfg.group == "microsocks") { microsocks = { }; };
+      groups = lib.mkIf (cfg.group == "microsocks") {
+        microsocks = { };
+      };
     };
     systemd.services.microsocks = {
       enable = true;

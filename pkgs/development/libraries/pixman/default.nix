@@ -78,7 +78,9 @@ stdenv.mkDerivation (finalAttrs: {
         wlroots
         xwayland
         ;
-      pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+      pkg-config = testers.hasPkgConfigModules {
+        package = finalAttrs.finalPackage;
+      };
     };
     updateScript = gitUpdater {
       url = "https://gitlab.freedesktop.org/pixman/pixman.git";

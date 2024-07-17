@@ -22,7 +22,12 @@ let
   optionalNullInt = o: i: optional (i != null) (intOpt o i);
   optionalEmptyList = o: l: optional ([ ] != l) (lstOpt o l);
 
-  mkEnableTrueOption = name: mkEnableOption name // { default = true; };
+  mkEnableTrueOption =
+    name:
+    mkEnableOption name
+    // {
+      default = true;
+    };
 
   mkEndpointOpt = name: addr: port: {
     enable = mkEnableOption name;

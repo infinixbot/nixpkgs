@@ -94,7 +94,9 @@
 }:
 
 let
-  opusWithCustomModes = libopus.override { withCustomModes = true; };
+  opusWithCustomModes = libopus.override {
+    withCustomModes = true;
+  };
 
   deps =
     [

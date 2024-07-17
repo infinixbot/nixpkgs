@@ -61,7 +61,13 @@ let
   nvimAutoDisableWrap = makeNeovimConfig { };
 
   wrapNeovim2 =
-    suffix: config: wrapNeovimUnstable neovim-unwrapped (config // { extraName = suffix; });
+    suffix: config:
+    wrapNeovimUnstable neovim-unwrapped (
+      config
+      // {
+        extraName = suffix;
+      }
+    );
 
   nmt = fetchFromGitLab {
     owner = "rycee";

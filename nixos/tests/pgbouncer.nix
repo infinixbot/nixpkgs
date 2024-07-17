@@ -29,7 +29,11 @@ import ./make-test-python.nix (
             postgresql = {
               enable = true;
               ensureDatabases = [ "testdb" ];
-              ensureUsers = [ { name = "testuser"; } ];
+              ensureUsers = [
+                {
+                  name = "testuser";
+                }
+              ];
               authentication = ''
                 local testdb testuser scram-sha-256
               '';

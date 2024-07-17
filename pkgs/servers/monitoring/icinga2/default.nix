@@ -115,10 +115,15 @@ stdenv.mkDerivation rec {
     ''}
   '';
 
-  vim = runCommand "vim-icinga2-${version}" { pname = "vim-icinga2"; } ''
-    mkdir -p $out/share/vim-plugins
-    cp -r "${src}/tools/syntax/vim" $out/share/vim-plugins/icinga2
-  '';
+  vim =
+    runCommand "vim-icinga2-${version}"
+      {
+        pname = "vim-icinga2";
+      }
+      ''
+        mkdir -p $out/share/vim-plugins
+        cp -r "${src}/tools/syntax/vim" $out/share/vim-plugins/icinga2
+      '';
 
   meta = {
     description = "Open source monitoring system";

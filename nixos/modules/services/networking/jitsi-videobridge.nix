@@ -30,7 +30,11 @@ let
       };
       stats = {
         enabled = true;
-        transports = [ { type = "muc"; } ];
+        transports = [
+          {
+            type = "muc";
+          }
+        ];
       };
       apis.xmpp-client.configs = flip mapAttrs cfg.xmppConfigs (
         name: xmppConfig: {

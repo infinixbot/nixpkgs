@@ -46,7 +46,9 @@ in
 
   config = mkIf cfg.enable {
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.listen.port ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.listen.port ];
+    };
 
     environment.systemPackages = [ pkg ];
 

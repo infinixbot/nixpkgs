@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ cmake ];
 
   passthru = {
-    updateScript = unstableGitUpdater { branch = "post-3.4-transmission"; };
+    updateScript = unstableGitUpdater {
+      branch = "post-3.4-transmission";
+    };
   };
 
   meta = with lib; {

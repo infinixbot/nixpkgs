@@ -77,16 +77,20 @@ import ./make-test-python.nix (
                 r ${pkgs.glibc.libgcc}/share/**,
                 x ${pkgs.glibc.libgcc}/foo/**,
               ''} ${
-                pkgs.runCommand "actual.rules" { preferLocalBuild = true; } ''
-                  ${pkgs.gnused}/bin/sed -e 's:^[^ ]* ${builtins.storeDir}/[^,/-]*-\([^/,]*\):\1 \0:' ${
-                    pkgs.apparmorRulesFromClosure {
-                      name = "ping";
-                      additionalRules = [ "x $path/foo/**" ];
-                    } [ pkgs.libcap ]
-                  } |
-                  ${pkgs.coreutils}/bin/sort -n -k1 |
-                  ${pkgs.gnused}/bin/sed -e 's:^[^ ]* ::' >$out
-                ''
+                pkgs.runCommand "actual.rules"
+                  {
+                    preferLocalBuild = true;
+                  }
+                  ''
+                    ${pkgs.gnused}/bin/sed -e 's:^[^ ]* ${builtins.storeDir}/[^,/-]*-\([^/,]*\):\1 \0:' ${
+                      pkgs.apparmorRulesFromClosure {
+                        name = "ping";
+                        additionalRules = [ "x $path/foo/**" ];
+                      } [ pkgs.libcap ]
+                    } |
+                    ${pkgs.coreutils}/bin/sort -n -k1 |
+                    ${pkgs.gnused}/bin/sed -e 's:^[^ ]* ::' >$out
+                  ''
               }"
           )
     '';

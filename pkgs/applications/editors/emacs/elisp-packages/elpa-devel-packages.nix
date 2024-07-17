@@ -69,7 +69,14 @@ let
     let
 
       imported = import generated {
-        callPackage = pkgs: args: self.callPackage pkgs (args // { inherit fetchurl; });
+        callPackage =
+          pkgs: args:
+          self.callPackage pkgs (
+            args
+            // {
+              inherit fetchurl;
+            }
+          );
       };
 
       super = removeAttrs imported [ "dash" ];
@@ -161,7 +168,10 @@ let
       elpaDevelPackages = super // overrides;
 
     in
-    elpaDevelPackages // { inherit elpaBuild; }
+    elpaDevelPackages
+    // {
+      inherit elpaBuild;
+    }
   );
 
 in

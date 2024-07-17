@@ -22,11 +22,15 @@ let
     };
   '';
 in
-runCommandNoCC "${hare.pname}-cross-compilation-test" { meta.timeout = 60; } ''
-  HARECACHE="$(mktemp -d --tmpdir harecache.XXXXXXXX)"
-  export HARECACHE
-  outbin="test-${processor}"
-  ${lib.getExe hare} build -q -a "${processor}" -o "$outbin" ${mainDotHare}
-  ${emulator buildPackages} "./$outbin"
-  : 1>$out
-''
+runCommandNoCC "${hare.pname}-cross-compilation-test"
+  {
+    meta.timeout = 60;
+  }
+  ''
+    HARECACHE="$(mktemp -d --tmpdir harecache.XXXXXXXX)"
+    export HARECACHE
+    outbin="test-${processor}"
+    ${lib.getExe hare} build -q -a "${processor}" -o "$outbin" ${mainDotHare}
+    ${emulator buildPackages} "./$outbin"
+    : 1>$out
+  ''

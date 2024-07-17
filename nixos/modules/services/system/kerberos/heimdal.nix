@@ -39,9 +39,14 @@ let
     };
   };
 
-  format = import ../../../security/krb5/krb5-conf-format.nix { inherit pkgs lib; } {
-    enableKdcACLEntries = true;
-  };
+  format =
+    import ../../../security/krb5/krb5-conf-format.nix
+      {
+        inherit pkgs lib;
+      }
+      {
+        enableKdcACLEntries = true;
+      };
 
   kdcConfFile = format.generate "kdc.conf" finalConfig;
 in

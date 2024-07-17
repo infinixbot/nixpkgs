@@ -22,7 +22,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
   outputDoc = "dev"; # single tiny man3 page
 
-  passthru.updateScript = unstableGitUpdater { tagPrefix = "libz-"; };
+  passthru.updateScript = unstableGitUpdater {
+    tagPrefix = "libz-";
+  };
 
   meta = {
     homepage = "https://sortix.org/libz/";

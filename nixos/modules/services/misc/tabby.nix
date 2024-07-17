@@ -9,7 +9,9 @@ let
 
   cfg = config.services.tabby;
   format = pkgs.formats.toml { };
-  tabbyPackage = cfg.package.override { inherit (cfg) acceleration; };
+  tabbyPackage = cfg.package.override {
+    inherit (cfg) acceleration;
+  };
 in
 {
   options = {
@@ -162,8 +164,12 @@ in
         };
 
         serviceEnv = lib.mkMerge [
-          { TABBY_ROOT = "%S/tabby"; }
-          (lib.mkIf (!cfg.usageCollection) { TABBY_DISABLE_USAGE_COLLECTION = "1"; })
+          {
+            TABBY_ROOT = "%S/tabby";
+          }
+          (lib.mkIf (!cfg.usageCollection) {
+            TABBY_DISABLE_USAGE_COLLECTION = "1";
+          })
         ];
       in
       {

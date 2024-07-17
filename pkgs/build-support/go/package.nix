@@ -64,11 +64,17 @@ let
     inherit (goDep) goPackagePath;
     src =
       if goDep.fetch.type == "git" then
-        fetchgit { inherit (goDep.fetch) url rev sha256; }
+        fetchgit {
+          inherit (goDep.fetch) url rev sha256;
+        }
       else if goDep.fetch.type == "hg" then
-        fetchhg { inherit (goDep.fetch) url rev sha256; }
+        fetchhg {
+          inherit (goDep.fetch) url rev sha256;
+        }
       else if goDep.fetch.type == "bzr" then
-        fetchbzr { inherit (goDep.fetch) url rev sha256; }
+        fetchbzr {
+          inherit (goDep.fetch) url rev sha256;
+        }
       else if goDep.fetch.type == "FromGitHub" then
         fetchFromGitHub {
           inherit (goDep.fetch)
@@ -84,7 +90,14 @@ let
 
   importGodeps = { depsFile }: map dep2src (import depsFile);
 
-  goPath = if goDeps != null then importGodeps { depsFile = goDeps; } ++ extraSrcs else extraSrcs;
+  goPath =
+    if goDeps != null then
+      importGodeps {
+        depsFile = goDeps;
+      }
+      ++ extraSrcs
+    else
+      extraSrcs;
   package = stdenv.mkDerivation (
     (builtins.removeAttrs args [
       "goPackageAliases"
@@ -327,7 +340,9 @@ let
         // {
           inherit go;
         }
-        // lib.optionalAttrs (goPackageAliases != [ ]) { inherit goPackageAliases; };
+        // lib.optionalAttrs (goPackageAliases != [ ]) {
+          inherit goPackageAliases;
+        };
 
       meta = {
         # Add default meta information

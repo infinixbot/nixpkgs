@@ -142,7 +142,9 @@ clangStdenv.mkDerivation (finalAttrs: {
     rm -rf "$out"/{include,lib,man}
   '';
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = {
     homepage = "https://www.aseprite.org/";

@@ -51,7 +51,9 @@ let
 
       # Idris wrapper with specified compiler and library paths, used to build packages
 
-      idris = pkgs.callPackage ./idris-wrapper.nix { inherit idris-no-deps; };
+      idris = pkgs.callPackage ./idris-wrapper.nix {
+        inherit idris-no-deps;
+      };
 
       # Utilities for building packages
 

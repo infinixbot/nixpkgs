@@ -53,7 +53,9 @@ let
 
     version = sourcePerArch.${cpuName}.version or (throw "unsupported CPU ${cpuName}");
 
-    src = fetchurl { inherit (sourcePerArch.${cpuName}) url sha256; };
+    src = fetchurl {
+      inherit (sourcePerArch.${cpuName}) url sha256;
+    };
 
     buildInputs = [
       alsa-lib # libasound.so wanted by lib/libjsound.so

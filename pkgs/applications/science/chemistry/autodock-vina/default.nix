@@ -6,7 +6,9 @@
   glibc,
 }:
 let
-  boost' = boost.override { enableShared = false; };
+  boost' = boost.override {
+    enableShared = false;
+  };
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "autodock-vina";

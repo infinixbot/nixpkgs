@@ -23,7 +23,9 @@
       ];
       hash' =
         if hash != "" then
-          { outputHash = hash; }
+          {
+            outputHash = hash;
+          }
         else
           {
             outputHash = "";

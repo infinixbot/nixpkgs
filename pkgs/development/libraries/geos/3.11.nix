@@ -39,7 +39,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru.tests = {
     pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
-    geos = callPackage ./tests.nix { geos = finalAttrs.finalPackage; };
+    geos = callPackage ./tests.nix {
+      geos = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

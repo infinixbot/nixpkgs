@@ -74,7 +74,9 @@ stdenv.mkDerivation rec {
   buildInputs = [
     c-ares
     crc32c
-    (curl.override { inherit openssl; })
+    (curl.override {
+      inherit openssl;
+    })
     grpc
     nlohmann_json
     openssl

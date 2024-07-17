@@ -45,7 +45,9 @@ rustPlatform.buildRustPackage rec {
     installShellFiles
     makeWrapper
     mandoc
-    (rustfmt.override { asNightly = true; })
+    (rustfmt.override {
+      asNightly = true;
+    })
   ];
 
   buildInputs = [

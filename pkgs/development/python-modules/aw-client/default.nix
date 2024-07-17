@@ -54,7 +54,9 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ "aw_client" ];
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     description = "Client library for ActivityWatch";

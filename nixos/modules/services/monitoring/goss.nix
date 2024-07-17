@@ -40,7 +40,9 @@ in
       };
 
       settings = lib.mkOption {
-        type = lib.types.submodule { freeformType = settingsFormat.type; };
+        type = lib.types.submodule {
+          freeformType = settingsFormat.type;
+        };
         default = { };
         example = {
           addr."tcp://localhost:8080" = {

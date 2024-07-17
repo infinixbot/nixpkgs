@@ -83,7 +83,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   dontWrapQtApps = true;
 
-  FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ ]; };
+  FONTCONFIG_FILE = makeFontsConf {
+    fontDirectories = [ ];
+  };
 
   preBuild = ''
     # Makes fontconfig produce less noise in logs

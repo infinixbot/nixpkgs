@@ -2,7 +2,9 @@
 { config, pkgs, ... }:
 let
   inherit (pkgs) lib;
-  qemu-common = import ../../lib/qemu-common.nix { inherit lib pkgs; };
+  qemu-common = import ../../lib/qemu-common.nix {
+    inherit lib pkgs;
+  };
   vlanIfs = lib.range 1 (lib.length config.virtualisation.vlans);
 in
 {
@@ -54,7 +56,11 @@ in
         subnet4 = map (n: {
           id = n;
           subnet = "192.168.${toString n}.0/24";
-          pools = [ { pool = "192.168.${toString n}.3 - 192.168.${toString n}.254"; } ];
+          pools = [
+            {
+              pool = "192.168.${toString n}.3 - 192.168.${toString n}.254";
+            }
+          ];
           option-data = [
             {
               data = "192.168.${toString n}.1";
@@ -90,7 +96,11 @@ in
           id = n;
           subnet = "fd00:1234:5678:${toString n}::/64";
           interface = "eth${toString n}";
-          pools = [ { pool = "fd00:1234:5678:${toString n}::2-fd00:1234:5678:${toString n}::2"; } ];
+          pools = [
+            {
+              pool = "fd00:1234:5678:${toString n}::2-fd00:1234:5678:${toString n}::2";
+            }
+          ];
         }) vlanIfs;
       };
     };

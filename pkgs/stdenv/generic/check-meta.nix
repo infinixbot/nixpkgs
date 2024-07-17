@@ -319,7 +319,9 @@ let
 
   metaTypes =
     let
-      types = import ./meta-types.nix { inherit lib; };
+      types = import ./meta-types.nix {
+        inherit lib;
+      };
       inherit (types)
         str
         union
@@ -417,7 +419,9 @@ let
       else
         [
           "key 'meta.${k}' has invalid value; expected ${metaTypes.${k}.name}, got\n    ${
-            toPretty { indent = "    "; } v
+            toPretty {
+              indent = "    ";
+            } v
           }"
         ]
     else
@@ -583,7 +587,9 @@ let
     }
     // attrs.meta or { }
     # Fill `meta.position` to identify the source location of the package.
-    // optionalAttrs (pos != null) { position = pos.file + ":" + toString pos.line; }
+    // optionalAttrs (pos != null) {
+      position = pos.file + ":" + toString pos.line;
+    }
     // {
       # Expose the result of the checks for everyone to see.
       unfree = hasUnfreeLicense attrs;
@@ -615,9 +621,23 @@ let
           if valid == "yes" then
             true
           else if valid == "no" then
-            (handleEvalIssue { inherit meta attrs; } { inherit (validity) reason errormsg; })
+            (handleEvalIssue
+              {
+                inherit meta attrs;
+              }
+              {
+                inherit (validity) reason errormsg;
+              }
+            )
           else if valid == "warn" then
-            (handleEvalWarning { inherit meta attrs; } { inherit (validity) reason errormsg; })
+            (handleEvalWarning
+              {
+                inherit meta attrs;
+              }
+              {
+                inherit (validity) reason errormsg;
+              }
+            )
           else
             throw "Unknown validitiy: '${valid}'"
         );

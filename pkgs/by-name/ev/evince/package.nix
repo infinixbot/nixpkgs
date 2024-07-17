@@ -125,7 +125,9 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "evince"; };
+    updateScript = gnome.updateScript {
+      packageName = "evince";
+    };
   };
 
   meta = with lib; {

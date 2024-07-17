@@ -236,5 +236,12 @@ stdenv.mkDerivation (
       broken = stdenv.hostPlatform.isRiscV32 && !stdenv.cc.isClang;
     };
   }
-  // (if lib.versionOlder release_version "16" then { inherit preConfigure; } else { })
+  // (
+    if lib.versionOlder release_version "16" then
+      {
+        inherit preConfigure;
+      }
+    else
+      { }
+  )
 )

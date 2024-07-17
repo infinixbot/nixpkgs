@@ -256,7 +256,14 @@ in
                 attrset or not (refer to [](#opt-services.parsedmarc.settings) for
                 details).
               '';
-              apply = x: if isAttrs x || x == null then x else { _secret = x; };
+              apply =
+                x:
+                if isAttrs x || x == null then
+                  x
+                else
+                  {
+                    _secret = x;
+                  };
             };
           };
 
@@ -304,7 +311,14 @@ in
                 attrset or not (refer to [](#opt-services.parsedmarc.settings) for
                 details).
               '';
-              apply = x: if isAttrs x || x == null then x else { _secret = x; };
+              apply =
+                x:
+                if isAttrs x || x == null then
+                  x
+                else
+                  {
+                    _secret = x;
+                  };
             };
 
             from = lib.mkOption {
@@ -358,7 +372,14 @@ in
                 attrset or not (refer to [](#opt-services.parsedmarc.settings) for
                 details).
               '';
-              apply = x: if isAttrs x || x == null then x else { _secret = x; };
+              apply =
+                x:
+                if isAttrs x || x == null then
+                  x
+                else
+                  {
+                    _secret = x;
+                  };
             };
 
             ssl = lib.mkOption {

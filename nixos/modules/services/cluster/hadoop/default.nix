@@ -220,7 +220,11 @@ with lib;
       systemPackages = [ cfg.package ];
       etc."hadoop-conf".source =
         let
-          hadoopConf = "${import ./conf.nix { inherit cfg pkgs lib; }}/";
+          hadoopConf = "${
+            import ./conf.nix {
+              inherit cfg pkgs lib;
+            }
+          }/";
         in
         "${hadoopConf}";
       variables.HADOOP_CONF_DIR = "/etc/hadoop-conf/";

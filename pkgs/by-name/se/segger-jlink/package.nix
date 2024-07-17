@@ -53,7 +53,9 @@ let
       curlOpts = "--data accept_license_agreement=accepted";
     };
 
-  qt4-bundled = callPackage ./qt4-bundled.nix { inherit src version; };
+  qt4-bundled = callPackage ./qt4-bundled.nix {
+    inherit src version;
+  };
 
 in
 stdenv.mkDerivation {

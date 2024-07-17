@@ -116,7 +116,9 @@ in
         };
       };
 
-      package = mkPackageOption pkgs "gnunet" { example = "gnunet_git"; };
+      package = mkPackageOption pkgs "gnunet" {
+        example = "gnunet_git";
+      };
 
       extraOptions = mkOption {
         type = types.lines;

@@ -142,7 +142,11 @@ let
         ];
     in
     {
-      "${server}".configuration = { nodes, config, ... }: baseConfig { inherit nodes config; };
+      "${server}".configuration =
+        { nodes, config, ... }:
+        baseConfig {
+          inherit nodes config;
+        };
 
       # Test that server reloads when an alias is removed (and subsequently test removal works in acme)
       "${server}-remove-alias".configuration =
@@ -242,7 +246,9 @@ in
             # account hash generation with default server from <= 23.11
             http01lego_legacyAccountHash.configuration = lib.mkMerge [
               simpleConfig
-              { security.acme.defaults.server = lib.mkForce null; }
+              {
+                security.acme.defaults.server = lib.mkForce null;
+              }
             ];
 
             renew.configuration = lib.mkMerge [
@@ -257,7 +263,9 @@ in
             # Tests that account creds can be safely changed.
             accountchange.configuration = lib.mkMerge [
               simpleConfig
-              { security.acme.certs."http.example.test".email = "admin@example.test"; }
+              {
+                security.acme.certs."http.example.test".email = "admin@example.test";
+              }
             ];
 
             # First derivation used to test general ACME features
@@ -422,7 +430,9 @@ in
               "caddy-change-acme-conf".configuration =
                 { nodes, config, ... }:
                 lib.mkMerge [
-                  (baseCaddyConfig { inherit nodes config; })
+                  (baseCaddyConfig {
+                    inherit nodes config;
+                  })
                   {
                     security.acme.certs."example.test" = {
                       keyType = "ec384";

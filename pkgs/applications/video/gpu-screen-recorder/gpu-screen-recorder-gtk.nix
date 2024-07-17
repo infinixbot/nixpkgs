@@ -53,7 +53,9 @@ stdenv.mkDerivation {
 
   preFixup =
     let
-      gpu-screen-recorder-wrapped = gpu-screen-recorder.override { inherit wrapperDir; };
+      gpu-screen-recorder-wrapped = gpu-screen-recorder.override {
+        inherit wrapperDir;
+      };
     in
     ''
       gappsWrapperArgs+=(--prefix PATH : ${wrapperDir})

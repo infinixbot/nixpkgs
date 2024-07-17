@@ -33,13 +33,27 @@ rec {
     'type' field is required.
   */
 
-  inherit (import ./formats/java-properties/default.nix { inherit lib pkgs; }) javaProperties;
+  inherit
+    (import ./formats/java-properties/default.nix {
+      inherit lib pkgs;
+    })
+    javaProperties
+    ;
 
-  libconfig = (import ./formats/libconfig/default.nix { inherit lib pkgs; }).format;
+  libconfig =
+    (import ./formats/libconfig/default.nix {
+      inherit lib pkgs;
+    }).format;
 
-  hocon = (import ./formats/hocon/default.nix { inherit lib pkgs; }).format;
+  hocon =
+    (import ./formats/hocon/default.nix {
+      inherit lib pkgs;
+    }).format;
 
-  php = (import ./formats/php/default.nix { inherit lib pkgs; }).format;
+  php =
+    (import ./formats/php/default.nix {
+      inherit lib pkgs;
+    }).format;
 
   json =
     { }:

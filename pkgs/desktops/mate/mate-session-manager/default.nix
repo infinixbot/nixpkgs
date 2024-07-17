@@ -69,7 +69,9 @@ stdenv.mkDerivation rec {
 
   passthru.providedSessions = [ "mate" ];
 
-  passthru.updateScript = mateUpdateScript { inherit pname; };
+  passthru.updateScript = mateUpdateScript {
+    inherit pname;
+  };
 
   meta = with lib; {
     description = "MATE Desktop session manager";

@@ -12,7 +12,9 @@ let
   jdk = openjdk.override (
     lib.optionalAttrs stdenv.isLinux {
       enableJavaFX = true;
-      openjfx = openjfx.override { withWebKit = true; };
+      openjfx = openjfx.override {
+        withWebKit = true;
+      };
     }
   );
 

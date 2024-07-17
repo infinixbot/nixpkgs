@@ -37,7 +37,9 @@
 assert name == null -> pname != null;
 
 let
-  functions = import ./functions.nix { inherit lib gemConfig; };
+  functions = import ./functions.nix {
+    inherit lib gemConfig;
+  };
 
   inherit (functions)
     applyGemConfigs
@@ -53,7 +55,9 @@ let
   importedGemset =
     if builtins.typeOf gemFiles.gemset != "set" then import gemFiles.gemset else gemFiles.gemset;
 
-  filteredGemset = filterGemset { inherit ruby groups; } importedGemset;
+  filteredGemset = filterGemset {
+    inherit ruby groups;
+  } importedGemset;
 
   configuredGemset = lib.flip lib.mapAttrs filteredGemset (
     name: attrs:
@@ -160,7 +164,9 @@ let
     } // meta;
 
     passthru = (
-      lib.optionalAttrs (pname != null) { inherit (gems.${pname}) gemType; }
+      lib.optionalAttrs (pname != null) {
+        inherit (gems.${pname}) gemType;
+      }
       // rec {
         inherit
           ruby

@@ -18,7 +18,9 @@
 let
   mkFlag = b: if b then "yes" else "no";
 
-  games = import ./games.nix { inherit stdenv lib fetchFromGitHub; };
+  games = import ./games.nix {
+    inherit stdenv lib fetchFromGitHub;
+  };
 
   wrapper = import ./wrapper.nix {
     inherit

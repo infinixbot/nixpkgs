@@ -61,7 +61,9 @@ in
       };
     };
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ 9117 ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ 9117 ];
+    };
 
     users.users = mkIf (cfg.user == "jackett") {
       jackett = {
@@ -71,6 +73,8 @@ in
       };
     };
 
-    users.groups = mkIf (cfg.group == "jackett") { jackett.gid = config.ids.gids.jackett; };
+    users.groups = mkIf (cfg.group == "jackett") {
+      jackett.gid = config.ids.gids.jackett;
+    };
   };
 }

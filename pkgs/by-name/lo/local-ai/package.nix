@@ -242,20 +242,24 @@ let
     passthru.espeak-ng = espeak-ng';
   };
 
-  piper-tts' = (piper-tts.override { inherit piper-phonemize; }).overrideAttrs (self: {
-    name = "piper-tts'";
-    inherit (go-piper) src;
-    sourceRoot = "source/piper";
-    installPhase = null;
-    postInstall = ''
-      cp CMakeFiles/piper.dir/src/cpp/piper.cpp.o $out/piper.o
-      cd $out
-      mkdir bin lib
-      mv lib*so* lib/
-      mv piper piper_phonemize bin/
-      rm -rf cmake pkgconfig espeak-ng-data *.ort
-    '';
-  });
+  piper-tts' =
+    (piper-tts.override {
+      inherit piper-phonemize;
+    }).overrideAttrs
+      (self: {
+        name = "piper-tts'";
+        inherit (go-piper) src;
+        sourceRoot = "source/piper";
+        installPhase = null;
+        postInstall = ''
+          cp CMakeFiles/piper.dir/src/cpp/piper.cpp.o $out/piper.o
+          cd $out
+          mkdir bin lib
+          mv lib*so* lib/
+          mv piper piper_phonemize bin/
+          rm -rf cmake pkgconfig espeak-ng-data *.ort
+        '';
+      });
 
   go-piper = stdenv.mkDerivation {
     name = "go-piper";
@@ -455,194 +459,201 @@ let
     hash = "sha256-hRrbGUUawQV4fqxAn3eFBvn4/lZ+NrKhxnGHqpljrec=";
   };
 
-  self = buildGoModule.override { stdenv = effectiveStdenv; } {
-    inherit pname version src;
+  self =
+    buildGoModule.override
+      {
+        stdenv = effectiveStdenv;
+      }
+      {
+        inherit pname version src;
 
-    vendorHash = "sha256-uvko1PQWW5P+6cgmwVKocKBm5GndszqCsSbxlXANqJs=";
+        vendorHash = "sha256-uvko1PQWW5P+6cgmwVKocKBm5GndszqCsSbxlXANqJs=";
 
-    env.NIX_CFLAGS_COMPILE = lib.optionalString with_stablediffusion " -isystem ${opencv}/include/opencv4";
+        env.NIX_CFLAGS_COMPILE = lib.optionalString with_stablediffusion " -isystem ${opencv}/include/opencv4";
 
-    postPatch =
-      let
-        cp = "cp -r --no-preserve=mode,ownership";
-      in
-      ''
-        sed -i Makefile \
-          -e 's;git clone.*go-llama\.cpp$;${cp} ${go-llama} sources/go-llama\.cpp;' \
-          -e 's;git clone.*gpt4all$;${cp} ${gpt4all} sources/gpt4all;' \
-          -e 's;git clone.*go-piper$;${cp} ${
-            if with_tts then go-piper else go-piper.src
-          } sources/go-piper;' \
-          -e 's;git clone.*go-rwkv\.cpp$;${cp} ${go-rwkv} sources/go-rwkv\.cpp;' \
-          -e 's;git clone.*whisper\.cpp$;${cp} ${whisper-cpp.src} sources/whisper\.cpp;' \
-          -e 's;git clone.*go-bert\.cpp$;${cp} ${go-bert} sources/go-bert\.cpp;' \
-          -e 's;git clone.*diffusion$;${cp} ${
-            if with_stablediffusion then go-stable-diffusion else go-stable-diffusion.src
-          } sources/go-stable-diffusion;' \
-          -e 's;git clone.*go-tiny-dream$;${cp} ${
-            if with_tinydream then go-tiny-dream else go-tiny-dream.src
-          } sources/go-tiny-dream;' \
-          -e 's, && git checkout.*,,g' \
-          -e '/mod download/ d' \
-          -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/llama-cpp-fallback/ d' \
-          -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/llama-cpp-avx/ d' \
-          -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/llama-cpp-cuda/ d' \
+        postPatch =
+          let
+            cp = "cp -r --no-preserve=mode,ownership";
+          in
+          ''
+            sed -i Makefile \
+              -e 's;git clone.*go-llama\.cpp$;${cp} ${go-llama} sources/go-llama\.cpp;' \
+              -e 's;git clone.*gpt4all$;${cp} ${gpt4all} sources/gpt4all;' \
+              -e 's;git clone.*go-piper$;${cp} ${
+                if with_tts then go-piper else go-piper.src
+              } sources/go-piper;' \
+              -e 's;git clone.*go-rwkv\.cpp$;${cp} ${go-rwkv} sources/go-rwkv\.cpp;' \
+              -e 's;git clone.*whisper\.cpp$;${cp} ${whisper-cpp.src} sources/whisper\.cpp;' \
+              -e 's;git clone.*go-bert\.cpp$;${cp} ${go-bert} sources/go-bert\.cpp;' \
+              -e 's;git clone.*diffusion$;${cp} ${
+                if with_stablediffusion then go-stable-diffusion else go-stable-diffusion.src
+              } sources/go-stable-diffusion;' \
+              -e 's;git clone.*go-tiny-dream$;${cp} ${
+                if with_tinydream then go-tiny-dream else go-tiny-dream.src
+              } sources/go-tiny-dream;' \
+              -e 's, && git checkout.*,,g' \
+              -e '/mod download/ d' \
+              -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/llama-cpp-fallback/ d' \
+              -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/llama-cpp-avx/ d' \
+              -e '/^ALL_GRPC_BACKENDS+=backend-assets\/grpc\/llama-cpp-cuda/ d' \
 
-      ''
-      + lib.optionalString with_cublas ''
-        sed -i Makefile \
-          -e '/^CGO_LDFLAGS_WHISPER?=/ s;$;-L${libcufft}/lib -L${cuda_cudart}/lib;'
-      '';
+          ''
+          + lib.optionalString with_cublas ''
+            sed -i Makefile \
+              -e '/^CGO_LDFLAGS_WHISPER?=/ s;$;-L${libcufft}/lib -L${cuda_cudart}/lib;'
+          '';
 
-    postConfigure = ''
-      shopt -s extglob
-      mkdir -p backend-assets/grpc
-      cp ${llama-cpp-grpc}/bin/grpc-server backend-assets/grpc/llama-cpp-avx2
-      cp ${llama-cpp-rpc}/bin/grpc-server backend-assets/grpc/llama-cpp-grpc
+        postConfigure = ''
+          shopt -s extglob
+          mkdir -p backend-assets/grpc
+          cp ${llama-cpp-grpc}/bin/grpc-server backend-assets/grpc/llama-cpp-avx2
+          cp ${llama-cpp-rpc}/bin/grpc-server backend-assets/grpc/llama-cpp-grpc
 
-      mkdir -p backend-assets/util
-      cp ${llama-cpp-rpc}/bin/llama-rpc-server backend-assets/util/llama-cpp-rpc-server
-    '';
+          mkdir -p backend-assets/util
+          cp ${llama-cpp-rpc}/bin/llama-rpc-server backend-assets/util/llama-cpp-rpc-server
+        '';
 
-    buildInputs =
-      [ ]
-      ++ lib.optionals with_cublas [ libcublas ]
-      ++ lib.optionals with_clblas [
-        clblast
-        ocl-icd
-        opencl-headers
-      ]
-      ++ lib.optionals with_openblas [ openblas.dev ]
-      ++ lib.optionals with_stablediffusion go-stable-diffusion.buildInputs
-      ++ lib.optionals with_tts go-piper.buildInputs;
-
-    nativeBuildInputs = [
-      protobuf
-      protoc-gen-go
-      protoc-gen-go-grpc
-      makeWrapper
-      ncurses # tput
-    ] ++ lib.optionals with_cublas [ cuda_nvcc ];
-
-    enableParallelBuilding = false;
-
-    modBuildPhase = ''
-      mkdir sources
-      make prepare-sources protogen-go
-      go mod tidy -v
-    '';
-
-    proxyVendor = true;
-
-    # should be passed as makeFlags, but build system failes with strings
-    # containing spaces
-    env.GO_TAGS = builtins.concatStringsSep " " GO_TAGS;
-
-    makeFlags =
-      [
-        "VERSION=v${version}"
-        "BUILD_TYPE=${BUILD_TYPE}"
-      ]
-      ++ lib.optional with_cublas "CUDA_LIBPATH=${cuda_cudart}/lib"
-      ++ lib.optional with_tts "PIPER_CGO_CXXFLAGS=-DSPDLOG_FMT_EXTERNAL=1";
-
-    buildPhase = ''
-      runHook preBuild
-
-      mkdir sources
-      make prepare-sources
-      # avoid rebuild of prebuilt libraries
-      touch sources/**/lib*.a
-      cp ${whisper-cpp}/lib/static/lib*.a sources/whisper.cpp
-
-      local flagsArray=(
-        ''${enableParallelBuilding:+-j''${NIX_BUILD_CORES}}
-        SHELL=$SHELL
-      )
-      _accumFlagsArray makeFlags makeFlagsArray buildFlags buildFlagsArray
-      echoCmd 'build flags' "''${flagsArray[@]}"
-      make build "''${flagsArray[@]}"
-      unset flagsArray
-
-      runHook postBuild
-    '';
-
-    installPhase = ''
-      runHook preInstall
-
-      install -Dt $out/bin ${pname}
-
-      runHook postInstall
-    '';
-
-    # patching rpath with patchelf doens't work. The execuable
-    # raises an segmentation fault
-    postFixup =
-      let
-        LD_LIBRARY_PATH =
+        buildInputs =
           [ ]
-          ++ lib.optionals with_cublas [
-            # driverLink has to be first to avoid loading the stub version of libcuda.so
-            # https://github.com/NixOS/nixpkgs/issues/320145#issuecomment-2190319327
-            addDriverRunpath.driverLink
-            (lib.getLib libcublas)
-            cuda_cudart
-          ]
+          ++ lib.optionals with_cublas [ libcublas ]
           ++ lib.optionals with_clblas [
             clblast
             ocl-icd
+            opencl-headers
           ]
-          ++ lib.optionals with_openblas [ openblas ]
-          ++ lib.optionals with_tts [ piper-phonemize ];
-      in
-      ''
-        wrapProgram $out/bin/${pname} \
-        --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath LD_LIBRARY_PATH}" \
-        --prefix PATH : "${ffmpeg}/bin"
-      '';
+          ++ lib.optionals with_openblas [ openblas.dev ]
+          ++ lib.optionals with_stablediffusion go-stable-diffusion.buildInputs
+          ++ lib.optionals with_tts go-piper.buildInputs;
 
-    passthru.local-packages = {
-      inherit
-        go-tiny-dream
-        go-rwkv
-        go-bert
-        go-llama
-        gpt4all
-        go-piper
-        llama-cpp-grpc
-        whisper-cpp
-        go-tiny-dream-ncnn
-        espeak-ng'
-        piper-phonemize
-        piper-tts'
-        llama-cpp-rpc
-        ;
-    };
+        nativeBuildInputs = [
+          protobuf
+          protoc-gen-go
+          protoc-gen-go-grpc
+          makeWrapper
+          ncurses # tput
+        ] ++ lib.optionals with_cublas [ cuda_nvcc ];
 
-    passthru.features = {
-      inherit
-        with_cublas
-        with_openblas
-        with_tts
-        with_stablediffusion
-        with_tinydream
-        with_clblas
-        ;
-    };
+        enableParallelBuilding = false;
 
-    passthru.tests = callPackages ./tests.nix { inherit self; };
-    passthru.lib = callPackages ./lib.nix { };
+        modBuildPhase = ''
+          mkdir sources
+          make prepare-sources protogen-go
+          go mod tidy -v
+        '';
 
-    meta = with lib; {
-      description = "OpenAI alternative to run local LLMs, image and audio generation";
-      homepage = "https://localai.io";
-      license = licenses.mit;
-      maintainers = with maintainers; [
-        onny
-        ck3d
-      ];
-      platforms = platforms.linux;
-    };
-  };
+        proxyVendor = true;
+
+        # should be passed as makeFlags, but build system failes with strings
+        # containing spaces
+        env.GO_TAGS = builtins.concatStringsSep " " GO_TAGS;
+
+        makeFlags =
+          [
+            "VERSION=v${version}"
+            "BUILD_TYPE=${BUILD_TYPE}"
+          ]
+          ++ lib.optional with_cublas "CUDA_LIBPATH=${cuda_cudart}/lib"
+          ++ lib.optional with_tts "PIPER_CGO_CXXFLAGS=-DSPDLOG_FMT_EXTERNAL=1";
+
+        buildPhase = ''
+          runHook preBuild
+
+          mkdir sources
+          make prepare-sources
+          # avoid rebuild of prebuilt libraries
+          touch sources/**/lib*.a
+          cp ${whisper-cpp}/lib/static/lib*.a sources/whisper.cpp
+
+          local flagsArray=(
+            ''${enableParallelBuilding:+-j''${NIX_BUILD_CORES}}
+            SHELL=$SHELL
+          )
+          _accumFlagsArray makeFlags makeFlagsArray buildFlags buildFlagsArray
+          echoCmd 'build flags' "''${flagsArray[@]}"
+          make build "''${flagsArray[@]}"
+          unset flagsArray
+
+          runHook postBuild
+        '';
+
+        installPhase = ''
+          runHook preInstall
+
+          install -Dt $out/bin ${pname}
+
+          runHook postInstall
+        '';
+
+        # patching rpath with patchelf doens't work. The execuable
+        # raises an segmentation fault
+        postFixup =
+          let
+            LD_LIBRARY_PATH =
+              [ ]
+              ++ lib.optionals with_cublas [
+                # driverLink has to be first to avoid loading the stub version of libcuda.so
+                # https://github.com/NixOS/nixpkgs/issues/320145#issuecomment-2190319327
+                addDriverRunpath.driverLink
+                (lib.getLib libcublas)
+                cuda_cudart
+              ]
+              ++ lib.optionals with_clblas [
+                clblast
+                ocl-icd
+              ]
+              ++ lib.optionals with_openblas [ openblas ]
+              ++ lib.optionals with_tts [ piper-phonemize ];
+          in
+          ''
+            wrapProgram $out/bin/${pname} \
+            --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath LD_LIBRARY_PATH}" \
+            --prefix PATH : "${ffmpeg}/bin"
+          '';
+
+        passthru.local-packages = {
+          inherit
+            go-tiny-dream
+            go-rwkv
+            go-bert
+            go-llama
+            gpt4all
+            go-piper
+            llama-cpp-grpc
+            whisper-cpp
+            go-tiny-dream-ncnn
+            espeak-ng'
+            piper-phonemize
+            piper-tts'
+            llama-cpp-rpc
+            ;
+        };
+
+        passthru.features = {
+          inherit
+            with_cublas
+            with_openblas
+            with_tts
+            with_stablediffusion
+            with_tinydream
+            with_clblas
+            ;
+        };
+
+        passthru.tests = callPackages ./tests.nix {
+          inherit self;
+        };
+        passthru.lib = callPackages ./lib.nix { };
+
+        meta = with lib; {
+          description = "OpenAI alternative to run local LLMs, image and audio generation";
+          homepage = "https://localai.io";
+          license = licenses.mit;
+          maintainers = with maintainers; [
+            onny
+            ck3d
+          ];
+          platforms = platforms.linux;
+        };
+      };
 in
 self

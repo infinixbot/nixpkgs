@@ -14,7 +14,12 @@ let
           ;
         inherit (darwin) xcode;
       }
-      // (initArgs // { inherit ffmpegVariant; })
+      // (
+        initArgs
+        // {
+          inherit ffmpegVariant;
+        }
+      )
     );
 
   v4 = {

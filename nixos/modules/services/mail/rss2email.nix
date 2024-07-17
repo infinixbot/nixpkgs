@@ -124,7 +124,12 @@ in
             // lib.mapAttrs' (
               name: feed:
               nameValuePair "feed.${name}" (
-                { inherit (feed) url; } // lib.optionalAttrs (feed.to != null) { inherit (feed) to; }
+                {
+                  inherit (feed) url;
+                }
+                // lib.optionalAttrs (feed.to != null) {
+                  inherit (feed) to;
+                }
               )
             ) cfg.feeds
           )

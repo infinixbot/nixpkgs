@@ -34,7 +34,11 @@ in
       package = lib.mkOption {
         type = lib.types.package;
         default = pkgs.discourse;
-        apply = p: p.override { plugins = lib.unique (p.enabledPlugins ++ cfg.plugins); };
+        apply =
+          p:
+          p.override {
+            plugins = lib.unique (p.enabledPlugins ++ cfg.plugins);
+          };
         defaultText = lib.literalExpression "pkgs.discourse";
         description = ''
           The discourse package to use.
@@ -688,7 +692,11 @@ in
 
     services.postgresql = lib.mkIf databaseActuallyCreateLocally {
       enable = true;
-      ensureUsers = [ { name = "discourse"; } ];
+      ensureUsers = [
+        {
+          name = "discourse";
+        }
+      ];
     };
 
     # The postgresql module doesn't currently support concepts like

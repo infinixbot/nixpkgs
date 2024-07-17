@@ -141,7 +141,9 @@ in
 
       passthru = {
         updateScript = nix-update-script { };
-        tests.version = testers.testVersion { package = nixd; };
+        tests.version = testers.testVersion {
+          package = nixd;
+        };
       };
 
       meta = common.meta // {

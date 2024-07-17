@@ -11,7 +11,9 @@
 content:
 
 let
-  tester = writers.writePython3Bin "tester-${name}" { inherit libraries; } content;
+  tester = writers.writePython3Bin "tester-${name}" {
+    inherit libraries;
+  } content;
   tester' = tester.overrideAttrs (oldAttrs: {
     passthru.gpuCheck =
       runCommand "test-${name}"

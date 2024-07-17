@@ -56,7 +56,9 @@ buildGoModule rec {
       incus-systemd-init = nixosTests.incus.container-systemd-init;
     };
 
-    generator = callPackage ./generator.nix { inherit src version; };
+    generator = callPackage ./generator.nix {
+      inherit src version;
+    };
   };
 
   meta = {

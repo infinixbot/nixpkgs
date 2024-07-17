@@ -30,7 +30,9 @@ buildPerlPackage rec {
       command = "${lib.getExe exiftool} -ver";
       package = exiftool;
     };
-    updateScript = gitUpdater { url = "https://github.com/exiftool/exiftool.git"; };
+    updateScript = gitUpdater {
+      url = "https://github.com/exiftool/exiftool.git";
+    };
   };
 
   meta = {

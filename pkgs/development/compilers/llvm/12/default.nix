@@ -35,7 +35,12 @@ let
   metadata = rec {
     release_version = "12.0.1";
     version = "${release_version}${dash-candidate}"; # differentiating these (variables) is important for RCs
-    inherit (import ../common/common-let.nix { inherit lib release_version; }) llvm_meta;
+    inherit
+      (import ../common/common-let.nix {
+        inherit lib release_version;
+      })
+      llvm_meta
+      ;
     fetch =
       name: sha256:
       fetchurl {
@@ -223,7 +228,9 @@ let
         libc = preLibcCrossHeaders;
       };
 
-      bintools = wrapBintoolsWith { bintools = tools.bintools-unwrapped; };
+      bintools = wrapBintoolsWith {
+        bintools = tools.bintools-unwrapped;
+      };
 
       clangUseLLVM = wrapCCWith rec {
         cc = tools.clang-unwrapped;

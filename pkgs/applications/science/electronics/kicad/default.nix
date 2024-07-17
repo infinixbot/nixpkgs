@@ -135,7 +135,12 @@ let
   python = python3;
   wxPython = python.pkgs.wxpython;
   addonPath = "addon.zip";
-  addonsDrvs = map (pkg: pkg.override { inherit addonPath python3; }) addons;
+  addonsDrvs = map (
+    pkg:
+    pkg.override {
+      inherit addonPath python3;
+    }
+  ) addons;
 
   addonsJoined =
     runCommand "addonsJoined"
@@ -175,8 +180,12 @@ in
 stdenv.mkDerivation rec {
 
   # Common libraries, referenced during runtime, via the wrapper.
-  passthru.libraries = callPackages ./libraries.nix { inherit libSrc; };
-  passthru.callPackage = newScope { inherit addonPath python3; };
+  passthru.libraries = callPackages ./libraries.nix {
+    inherit libSrc;
+  };
+  passthru.callPackage = newScope {
+    inherit addonPath python3;
+  };
   base = callPackage ./base.nix {
     inherit stable testing baseName;
     inherit kicadSrc kicadVersion;

@@ -25,7 +25,9 @@ python3.pkgs.buildPythonApplication rec {
   nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
 
   passthru.tests = {
-    version = testers.testVersion { package = exabgp; };
+    version = testers.testVersion {
+      package = exabgp;
+    };
   };
 
   meta = with lib; {

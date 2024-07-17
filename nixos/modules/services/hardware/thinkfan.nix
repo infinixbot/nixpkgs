@@ -12,7 +12,9 @@ let
   cfg = config.services.thinkfan;
   settingsFormat = pkgs.formats.yaml { };
   configFile = settingsFormat.generate "thinkfan.yaml" cfg.settings;
-  thinkfan = pkgs.thinkfan.override { inherit (cfg) smartSupport; };
+  thinkfan = pkgs.thinkfan.override {
+    inherit (cfg) smartSupport;
+  };
 
   # fan-speed and temperature levels
   levelType =

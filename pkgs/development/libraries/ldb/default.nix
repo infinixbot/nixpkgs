@@ -86,7 +86,9 @@ stdenv.mkDerivation (finalAttrs: {
     "modules"
   ];
 
-  passthru.tests.pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+  passthru.tests.pkg-config = testers.hasPkgConfigModules {
+    package = finalAttrs.finalPackage;
+  };
 
   meta = with lib; {
     broken = stdenv.isDarwin;

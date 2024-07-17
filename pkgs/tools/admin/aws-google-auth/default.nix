@@ -70,7 +70,9 @@ buildPythonApplication rec {
 
   pythonImportsCheck = [ "aws_google_auth" ];
 
-  passthru.tests.version = testers.testVersion { package = aws-google-auth; };
+  passthru.tests.version = testers.testVersion {
+    package = aws-google-auth;
+  };
 
   meta = with lib; {
     description = "Acquire AWS STS (temporary) credentials via Google Apps SAML Single Sign On";

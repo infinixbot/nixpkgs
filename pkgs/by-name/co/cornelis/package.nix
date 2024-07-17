@@ -13,9 +13,14 @@ let
     description = "agda-mode for Neovim";
 
     passthru = {
-      tests = runCommand "cornelis-tests" { nativeBuildInputs = [ cornelis ]; } ''
-        cornelis --help > $out
-      '';
+      tests =
+        runCommand "cornelis-tests"
+          {
+            nativeBuildInputs = [ cornelis ];
+          }
+          ''
+            cornelis --help > $out
+          '';
     };
   };
 in

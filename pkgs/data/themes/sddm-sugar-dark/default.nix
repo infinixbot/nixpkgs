@@ -23,7 +23,9 @@ stdenvNoCC.mkDerivation rec {
   installPhase =
     let
       iniFormat = pkgs.formats.ini { };
-      configFile = iniFormat.generate "" { General = themeConfig; };
+      configFile = iniFormat.generate "" {
+        General = themeConfig;
+      };
 
       basePath = "$out/share/sddm/themes/sugar-dark";
     in

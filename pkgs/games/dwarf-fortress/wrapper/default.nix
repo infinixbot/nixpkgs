@@ -36,7 +36,9 @@
 }:
 
 let
-  dfhack' = dfhack.override { inherit enableStoneSense; };
+  dfhack' = dfhack.override {
+    inherit enableStoneSense;
+  };
 
   isAtLeast50 = dwarf-fortress.baseVersion >= 50;
 

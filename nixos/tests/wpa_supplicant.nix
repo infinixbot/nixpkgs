@@ -34,7 +34,11 @@ import ./make-test-python.nix (
                     ssid = "nixos-test-sae";
                     authentication = {
                       mode = "wpa3-sae";
-                      saePasswords = [ { password = "reproducibility"; } ];
+                      saePasswords = [
+                        {
+                          password = "reproducibility";
+                        }
+                      ];
                     };
                     bssid = "02:00:00:00:00:00";
                   };

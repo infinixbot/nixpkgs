@@ -16,9 +16,14 @@ let
 
   # nix-build rejects attribute names with periods
   # This will build those regardless.
-  tests-combined = runCommand "pkg-config-checks" { allTests = lib.attrValues allTests; } ''
-    touch $out
-  '';
+  tests-combined =
+    runCommand "pkg-config-checks"
+      {
+        allTests = lib.attrValues allTests;
+      }
+      ''
+        touch $out
+      '';
 
   makePkgConfigTestMaybe =
     moduleName: pkg:
@@ -49,4 +54,7 @@ let
       };
 
 in
-lib.recurseIntoAttrs allTests // { inherit tests-combined; }
+lib.recurseIntoAttrs allTests
+// {
+  inherit tests-combined;
+}

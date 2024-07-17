@@ -17,7 +17,9 @@ buildKodiAddon rec {
 
   passthru = {
     pythonPath = "lib";
-    updateScript = addonUpdateScript { attrPath = "kodi.packages.routing"; };
+    updateScript = addonUpdateScript {
+      attrPath = "kodi.packages.routing";
+    };
   };
 
   meta = with lib; {

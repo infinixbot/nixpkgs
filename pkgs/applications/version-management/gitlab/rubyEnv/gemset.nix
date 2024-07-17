@@ -953,8 +953,12 @@ src: {
       "test"
     ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "ruby"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "ruby";
+      }
     ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1172,8 +1176,12 @@ src: {
       "test"
     ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "ruby"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "ruby";
+      }
     ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -4908,8 +4916,12 @@ src: {
       "test"
     ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "ruby"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "ruby";
+      }
     ];
     source = {
       remotes = [ "https://rubygems.org" ];

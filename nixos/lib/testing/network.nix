@@ -30,7 +30,9 @@ let
       ...
     }:
     let
-      qemu-common = import ../qemu-common.nix { inherit lib pkgs; };
+      qemu-common = import ../qemu-common.nix {
+        inherit lib pkgs;
+      };
 
       # Convert legacy VLANs to named interfaces and merge with explicit interfaces.
       vlansNumbered = forEach (zipLists config.virtualisation.vlans (range 1 255)) (v: {
@@ -38,7 +40,13 @@ let
         vlan = v.fst;
         assignIP = true;
       });
-      explicitInterfaces = lib.mapAttrsToList (n: v: v // { name = n; }) config.virtualisation.interfaces;
+      explicitInterfaces = lib.mapAttrsToList (
+        n: v:
+        v
+        // {
+          name = n;
+        }
+      ) config.virtualisation.interfaces;
       interfaces = vlansNumbered ++ explicitInterfaces;
       interfacesNumbered = zipLists interfaces (range 1 255);
 

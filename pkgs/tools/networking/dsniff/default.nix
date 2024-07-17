@@ -24,17 +24,24 @@ let
   */
   staticdb = symlinkJoin {
     inherit (db) name;
-    paths = with db.overrideAttrs { dontDisableStatic = true; }; [
-      out
-      dev
-    ];
+    paths =
+      with db.overrideAttrs {
+        dontDisableStatic = true;
+      }; [
+        out
+        dev
+      ];
     postBuild = ''
       rm $out/lib/*.so*
     '';
   };
   pcap = symlinkJoin {
     inherit (libpcap) name;
-    paths = [ (libpcap.overrideAttrs { dontDisableStatic = true; }) ];
+    paths = [
+      (libpcap.overrideAttrs {
+        dontDisableStatic = true;
+      })
+    ];
     postBuild = ''
       cp -rs $out/include/pcap $out/include/net
       # prevent references to libpcap
@@ -43,19 +50,28 @@ let
   };
   net = symlinkJoin {
     inherit (libnet) name;
-    paths = [ (libnet.overrideAttrs { dontDisableStatic = true; }) ];
+    paths = [
+      (libnet.overrideAttrs {
+        dontDisableStatic = true;
+      })
+    ];
     postBuild = ''
       # prevent dynamic linking, now that we have a static library
       rm $out/lib/*.so*
     '';
   };
-  nids = libnids.overrideAttrs { dontDisableStatic = true; };
+  nids = libnids.overrideAttrs {
+    dontDisableStatic = true;
+  };
   ssl = symlinkJoin {
     inherit (openssl) name;
-    paths = with openssl.override { static = true; }; [
-      out
-      dev
-    ];
+    paths =
+      with openssl.override {
+        static = true;
+      }; [
+        out
+        dev
+      ];
   };
 in
 stdenv.mkDerivation rec {

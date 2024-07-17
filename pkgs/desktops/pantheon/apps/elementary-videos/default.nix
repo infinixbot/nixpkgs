@@ -46,7 +46,9 @@ stdenv.mkDerivation rec {
       gst-plugins-bad
       gst-plugins-base
       # https://github.com/elementary/videos/issues/356
-      (gst-plugins-good.override { gtkSupport = true; })
+      (gst-plugins-good.override {
+        gtkSupport = true;
+      })
       gst-plugins-ugly
       gstreamer
     ]);

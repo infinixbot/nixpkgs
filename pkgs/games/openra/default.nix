@@ -2,7 +2,11 @@
 
 let
   buildOpenRAEngine = callPackage ./build-engine.nix { };
-  callPackage' = path: callPackage path { inherit buildOpenRAEngine; };
+  callPackage' =
+    path:
+    callPackage path {
+      inherit buildOpenRAEngine;
+    };
 in
 {
   engines = {

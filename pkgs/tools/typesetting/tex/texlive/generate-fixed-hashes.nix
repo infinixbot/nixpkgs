@@ -23,10 +23,30 @@ let
 
   getFods =
     drv:
-    optional (isDerivation drv.tex) (drv.tex // { tlType = "run"; })
-    ++ optional (drv ? texdoc) (drv.texdoc // { tlType = "doc"; })
-    ++ optional (drv ? texsource) (drv.texsource // { tlType = "source"; })
-    ++ optional (drv ? tlpkg) (drv.tlpkg // { tlType = "tlpkg"; });
+    optional (isDerivation drv.tex) (
+      drv.tex
+      // {
+        tlType = "run";
+      }
+    )
+    ++ optional (drv ? texdoc) (
+      drv.texdoc
+      // {
+        tlType = "doc";
+      }
+    )
+    ++ optional (drv ? texsource) (
+      drv.texsource
+      // {
+        tlType = "source";
+      }
+    )
+    ++ optional (drv ? tlpkg) (
+      drv.tlpkg
+      // {
+        tlType = "tlpkg";
+      }
+    );
 
   sorted = sort (a: b: a.pname < b.pname) (attrValues texlive.pkgs);
   fods = concatMap getFods sorted;

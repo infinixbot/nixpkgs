@@ -1,3 +1,5 @@
 { makeSetupHook }:
 
-makeSetupHook { name = "openbsd-setup-hook"; } ./setup-hook.sh
+makeSetupHook {
+  name = "openbsd-setup-hook";
+} ./setup-hook.sh

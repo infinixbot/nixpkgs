@@ -255,7 +255,9 @@ in
     # conflicts display-manager.service, then when nixos-rebuild
     # switch starts multi-user.target, display-manager.service is
     # stopped so plymouth-quit.service can be started.)
-    systemd.services.plymouth-quit = mkIf config.boot.plymouth.enable { wantedBy = lib.mkForce [ ]; };
+    systemd.services.plymouth-quit = mkIf config.boot.plymouth.enable {
+      wantedBy = lib.mkForce [ ];
+    };
 
     systemd.services.display-manager.serviceConfig = {
       # Restart = "always"; - already defined in xserver.nix
@@ -303,7 +305,9 @@ in
     # presented and there's a little delay.
     services.xserver.displayManager.gdm.settings = {
       daemon = mkMerge [
-        { WaylandEnable = cfg.gdm.wayland; }
+        {
+          WaylandEnable = cfg.gdm.wayland;
+        }
         # nested if else didn't work
         (mkIf (config.services.displayManager.autoLogin.enable && cfg.gdm.autoLogin.delay != 0) {
           TimedLoginEnable = true;
@@ -315,7 +319,9 @@ in
           AutomaticLogin = config.services.displayManager.autoLogin.user;
         })
       ];
-      debug = mkIf cfg.gdm.debug { Enable = true; };
+      debug = mkIf cfg.gdm.debug {
+        Enable = true;
+      };
     };
 
     environment.etc."gdm/custom.conf".source = configFile;

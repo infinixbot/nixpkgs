@@ -51,12 +51,22 @@ let
         name = "${name}-${version}";
         src = fetchurl {
           inherit sha256;
-          urls = mkUrls (args // { inherit name version; });
+          urls = mkUrls (
+            args
+            // {
+              inherit name version;
+            }
+          );
         };
         inherit doCheck requireX;
         propagatedBuildInputs = depends;
         nativeBuildInputs = depends;
-        meta.homepage = mkHomepage (args // { inherit name; });
+        meta.homepage = mkHomepage (
+          args
+          // {
+            inherit name;
+          }
+        );
         meta.platforms = platforms;
         meta.hydraPlatforms = hydraPlatforms;
         meta.broken = broken;
@@ -177,7 +187,12 @@ let
   # }
   overrideMaintainers =
     overrides: old:
-    lib.mapAttrs (name: value: (builtins.getAttr name old).override { maintainers = value; }) overrides;
+    lib.mapAttrs (
+      name: value:
+      (builtins.getAttr name old).override {
+        maintainers = value;
+      }
+    ) overrides;
 
   # Overrides package definitions with new R dependencies.
   # For example,
@@ -223,7 +238,9 @@ let
     let
       nameValuePairs = map (name: {
         inherit name;
-        value = (builtins.getAttr name old).override { requireX = true; };
+        value = (builtins.getAttr name old).override {
+          requireX = true;
+        };
       }) packageNames;
     in
     builtins.listToAttrs nameValuePairs;
@@ -280,7 +297,9 @@ let
     let
       nameValuePairs = map (name: {
         inherit name;
-        value = (builtins.getAttr name old).override { doCheck = false; };
+        value = (builtins.getAttr name old).override {
+          doCheck = false;
+        };
       }) packageNames;
     in
     builtins.listToAttrs nameValuePairs;
@@ -304,7 +323,9 @@ let
     let
       nameValuePairs = map (name: {
         inherit name;
-        value = (builtins.getAttr name old).override { broken = true; };
+        value = (builtins.getAttr name old).override {
+          broken = true;
+        };
       }) packageNames;
     in
     builtins.listToAttrs nameValuePairs;
@@ -2234,13 +2255,17 @@ let
       '';
     });
 
-    ChIPXpress = old.ChIPXpress.override { hydraPlatforms = [ ]; };
+    ChIPXpress = old.ChIPXpress.override {
+      hydraPlatforms = [ ];
+    };
 
     rgl = old.rgl.overrideAttrs (attrs: {
       RGL_USE_NULL = "true";
     });
 
-    Rrdrand = old.Rrdrand.override { platforms = lib.platforms.x86_64 ++ lib.platforms.x86; };
+    Rrdrand = old.Rrdrand.override {
+      platforms = lib.platforms.x86_64 ++ lib.platforms.x86;
+    };
 
     symengine = old.symengine.overrideAttrs (_: {
       preConfigure = ''
@@ -2256,7 +2281,9 @@ let
       platforms = lib.platforms.x86_64 ++ lib.platforms.x86;
     };
 
-    flowClust = old.flowClust.override { platforms = lib.platforms.x86_64 ++ lib.platforms.x86; };
+    flowClust = old.flowClust.override {
+      platforms = lib.platforms.x86_64 ++ lib.platforms.x86;
+    };
 
     RcppCGAL = old.RcppCGAL.overrideAttrs (_: {
       postPatch = "patchShebangs configure";
@@ -2284,7 +2311,9 @@ let
       preConfigure = "patchShebangs configure";
     });
 
-    dbarts = old.dbarts.override { platforms = lib.platforms.x86_64 ++ lib.platforms.x86; };
+    dbarts = old.dbarts.override {
+      platforms = lib.platforms.x86_64 ++ lib.platforms.x86;
+    };
 
     geomorph = old.geomorph.overrideAttrs (attrs: {
       RGL_USE_NULL = "true";

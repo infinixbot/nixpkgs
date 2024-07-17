@@ -142,32 +142,37 @@ let
     buildPythonApplication {
       name = "nixos-taskserver";
 
-      src = pkgs.runCommand "nixos-taskserver-src" { preferLocalBuild = true; } ''
-        mkdir -p "$out"
-        cat "${
-          pkgs.substituteAll {
-            src = ./helper-tool.py;
-            inherit taskd certtool;
-            inherit (cfg)
-              dataDir
-              user
-              group
-              fqdn
-              ;
-            certBits = cfg.pki.auto.bits;
-            clientExpiration = cfg.pki.auto.expiration.client;
-            crlExpiration = cfg.pki.auto.expiration.crl;
-            isAutoConfig = if needToCreateCA then "True" else "False";
+      src =
+        pkgs.runCommand "nixos-taskserver-src"
+          {
+            preferLocalBuild = true;
           }
-        }" > "$out/main.py"
-        cat > "$out/setup.py" <<EOF
-        from setuptools import setup
-        setup(name="nixos-taskserver",
-              py_modules=["main"],
-              install_requires=["Click"],
-              entry_points="[console_scripts]\\nnixos-taskserver=main:cli")
-        EOF
-      '';
+          ''
+            mkdir -p "$out"
+            cat "${
+              pkgs.substituteAll {
+                src = ./helper-tool.py;
+                inherit taskd certtool;
+                inherit (cfg)
+                  dataDir
+                  user
+                  group
+                  fqdn
+                  ;
+                certBits = cfg.pki.auto.bits;
+                clientExpiration = cfg.pki.auto.expiration.client;
+                crlExpiration = cfg.pki.auto.expiration.crl;
+                isAutoConfig = if needToCreateCA then "True" else "False";
+              }
+            }" > "$out/main.py"
+            cat > "$out/setup.py" <<EOF
+            from setuptools import setup
+            setup(name="nixos-taskserver",
+                  py_modules=["main"],
+                  install_requires=["Click"],
+                  entry_points="[console_scripts]\\nnixos-taskserver=main:cli")
+            EOF
+          '';
 
       propagatedBuildInputs = [ click ];
     };
@@ -460,7 +465,9 @@ in
         };
       };
 
-      users.groups = optionalAttrs (cfg.group == "taskd") { taskd.gid = config.ids.gids.taskd; };
+      users.groups = optionalAttrs (cfg.group == "taskd") {
+        taskd.gid = config.ids.gids.taskd;
+      };
 
       services.taskserver.config = {
         # systemd related

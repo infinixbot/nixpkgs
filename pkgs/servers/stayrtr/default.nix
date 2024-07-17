@@ -26,7 +26,9 @@ buildGoModule rec {
     "-X main.version=${version}"
   ];
 
-  passthru.tests.version = testers.testVersion { package = stayrtr; };
+  passthru.tests.version = testers.testVersion {
+    package = stayrtr;
+  };
 
   meta = with lib; {
     description = "Simple RPKI-To-Router server. (Hard fork of GoRTR)";

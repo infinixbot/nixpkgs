@@ -28,7 +28,9 @@ buildGoModule rec {
   ];
 
   passthru.tests = {
-    version = testers.testVersion { package = gopatch; };
+    version = testers.testVersion {
+      package = gopatch;
+    };
   };
 
   meta = with lib; {

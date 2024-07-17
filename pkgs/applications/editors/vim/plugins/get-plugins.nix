@@ -1,6 +1,11 @@
 with import <localpkgs> { };
 let
-  inherit (vimUtils.override { inherit vim; }) buildVimPlugin;
+  inherit
+    (vimUtils.override {
+      inherit vim;
+    })
+    buildVimPlugin
+    ;
   inherit (neovimUtils) buildNeovimPlugin;
 
   generated = callPackage <localpkgs/pkgs/applications/editors/vim/plugins/generated.nix> {

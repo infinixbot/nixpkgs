@@ -146,7 +146,9 @@ in
         # Budgie Desktop.
         budgie-backgrounds
         budgie-control-center'
-        (budgie-desktop-with-plugins.override { plugins = cfg.extraPlugins; })
+        (budgie-desktop-with-plugins.override {
+          plugins = cfg.extraPlugins;
+        })
         budgie-desktop-view
         budgie-screensaver
         budgie-session

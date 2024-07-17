@@ -141,7 +141,9 @@ in
         '';
       };
 
-      package = mkPackageOption pkgs "samba" { example = "samba4Full"; };
+      package = mkPackageOption pkgs "samba" {
+        example = "samba4Full";
+      };
 
       invalidUsers = mkOption {
         type = types.listOf types.str;

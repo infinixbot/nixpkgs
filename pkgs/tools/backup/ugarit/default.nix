@@ -6,7 +6,9 @@
 }:
 
 let
-  eggs = import ./eggs.nix { inherit eggDerivation fetchegg; };
+  eggs = import ./eggs.nix {
+    inherit eggDerivation fetchegg;
+  };
 in
 
 eggDerivation rec {

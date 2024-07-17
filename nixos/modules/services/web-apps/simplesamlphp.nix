@@ -7,7 +7,9 @@
 let
   cfg = config.services.simplesamlphp;
 
-  format = pkgs.formats.php { finalVariable = "config"; };
+  format = pkgs.formats.php {
+    finalVariable = "config";
+  };
 
   generateConfig =
     opts:
@@ -100,7 +102,9 @@ in
   config = {
     services.phpfpm.pools = lib.mapAttrs' (
       phpfpmName: opts:
-      lib.nameValuePair opts.phpfpmPool { phpEnv.SIMPLESAMLPHP_CONFIG_DIR = "${generateConfig opts}"; }
+      lib.nameValuePair opts.phpfpmPool {
+        phpEnv.SIMPLESAMLPHP_CONFIG_DIR = "${generateConfig opts}";
+      }
     ) cfg;
 
     services.nginx.virtualHosts = lib.mapAttrs' (

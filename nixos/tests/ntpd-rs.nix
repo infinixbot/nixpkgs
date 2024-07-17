@@ -32,7 +32,11 @@ import ./make-test-python.nix (
           enable = true;
           metrics.enable = true;
           settings = {
-            server = [ { listen = "[::]:123"; } ];
+            server = [
+              {
+                listen = "[::]:123";
+              }
+            ];
           };
         };
       };

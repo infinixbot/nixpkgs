@@ -26,7 +26,11 @@ buildGoModule rec {
 
   postPatch = ''
     substituteInPlace gui/src/{linux/main.py,linux/monitors/dbus_monitor.py,gui/settings.py} \
-      --replace-fail "python3" "${(python3.buildEnv.override { extraLibs = pythonPath; }).interpreter}"
+      --replace-fail "python3" "${
+        (python3.buildEnv.override {
+          extraLibs = pythonPath;
+        }).interpreter
+      }"
 
     substituteInPlace gui/com.quexten.Goldwarden.desktop \
       --replace-fail "Exec=goldwarden_ui_main.py" "Exec=$out/bin/goldwarden-gui"

@@ -223,7 +223,9 @@ in
       ];
     };
 
-    users.groups = optionalAttrs (cfg.group == name) { "${cfg.group}" = { }; };
+    users.groups = optionalAttrs (cfg.group == name) {
+      "${cfg.group}" = { };
+    };
     users.users = optionalAttrs (cfg.user == name) {
       ${name} = {
         description = "Coder service user";

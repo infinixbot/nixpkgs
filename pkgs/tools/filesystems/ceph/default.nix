@@ -363,7 +363,9 @@ rec {
       python.pkgs.python # for the toPythonPath function
       python.pkgs.wrapPython
       which
-      (ensureNewerSourcesHook { year = "1980"; })
+      (ensureNewerSourcesHook {
+        year = "1980";
+      })
       # for building docs/man-pages presumably
       doxygen
       graphviz
@@ -519,7 +521,9 @@ rec {
 
   ceph-client =
     runCommand "ceph-client-${version}"
-      { meta = getMeta "Tools needed to mount Ceph's RADOS Block Devices/Cephfs"; }
+      {
+        meta = getMeta "Tools needed to mount Ceph's RADOS Block Devices/Cephfs";
+      }
       ''
         mkdir -p $out/{bin,etc,${sitePackages},share/bash-completion/completions}
         cp -r ${ceph}/bin/{ceph,.ceph-wrapped,rados,rbd,rbdmap} $out/bin

@@ -25,7 +25,13 @@ let
 
   cfg = config.services.hercules-ci-agent;
 
-  inherit (import ./settings.nix { inherit pkgs lib; }) format settingsModule;
+  inherit
+    (import ./settings.nix {
+      inherit pkgs lib;
+    })
+    format
+    settingsModule
+    ;
 
 in
 {
@@ -100,7 +106,9 @@ in
 
         For the exhaustive list of settings, see <https://docs.hercules-ci.com/hercules-ci/reference/agent-config/>.
       '';
-      type = types.submoduleWith { modules = [ settingsModule ]; };
+      type = types.submoduleWith {
+        modules = [ settingsModule ];
+      };
     };
 
     /*

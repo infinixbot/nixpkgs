@@ -63,7 +63,9 @@ stdenv'.mkDerivation rec {
 
   buildInputs =
     [
-      (SDL2.override { drmSupport = stdenv.isLinux; })
+      (SDL2.override {
+        drmSupport = stdenv.isLinux;
+      })
       SDL2_ttf
       ffmpeg
       libopus

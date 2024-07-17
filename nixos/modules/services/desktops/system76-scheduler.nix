@@ -39,7 +39,10 @@ let
     lib.genAttrs (attrNames optionSpecs) (
       name:
       mkOption (
-        optionSpecs.${name} // { default = optionSpecs.${name}.default or defaults.${name} or null; }
+        optionSpecs.${name}
+        // {
+          default = optionSpecs.${name}.default or defaults.${name} or null;
+        }
       )
     );
 
@@ -244,7 +247,11 @@ in
       };
 
       assignments = mkOption {
-        type = types.attrsOf (types.submodule { options = schedulerProfile { }; });
+        type = types.attrsOf (
+          types.submodule {
+            options = schedulerProfile { };
+          }
+        );
         default = { };
         example = literalExpression ''
           {

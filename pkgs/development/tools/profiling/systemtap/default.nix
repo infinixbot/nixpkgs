@@ -25,7 +25,9 @@ let
   stapBuild = stdenv.mkDerivation {
     pname = "systemtap";
     inherit version;
-    src = fetchgit { inherit url rev sha256; };
+    src = fetchgit {
+      inherit url rev sha256;
+    };
     nativeBuildInputs = [
       pkg-config
       cpio

@@ -38,7 +38,9 @@ let
     ;
 in
 rec {
-  qemu-common = import ../../../nixos/lib/qemu-common.nix { inherit lib pkgs; };
+  qemu-common = import ../../../nixos/lib/qemu-common.nix {
+    inherit lib pkgs;
+  };
 
   qemu = buildPackages.qemu_kvm;
 
@@ -515,7 +517,9 @@ rec {
           QEMU_OPTS
           memSize
           ;
-        preVM = createEmptyImage { inherit size fullName; };
+        preVM = createEmptyImage {
+          inherit size fullName;
+        };
 
         buildCommand = ''
           ${createRootFS}
@@ -705,7 +709,9 @@ rec {
 
           debs = (lib.intersperse "|" debs);
 
-          preVM = createEmptyImage { inherit size fullName; };
+          preVM = createEmptyImage {
+            inherit size fullName;
+          };
 
           buildCommand = ''
             ${createRootFS}
@@ -871,15 +877,20 @@ rec {
         QEMU_OPTS
         memSize
         ;
-      rpms = import (rpmClosureGenerator {
-        inherit
-          name
-          packagesLists
-          urlPrefixes
-          archs
-          ;
-        packages = packages ++ extraPackages;
-      }) { inherit fetchurl; };
+      rpms =
+        import
+          (rpmClosureGenerator {
+            inherit
+              name
+              packagesLists
+              urlPrefixes
+              archs
+              ;
+            packages = packages ++ extraPackages;
+          })
+          {
+            inherit fetchurl;
+          };
     };
 
   /*
@@ -963,7 +974,11 @@ rec {
           QEMU_OPTS
           memSize
           ;
-        debs = import expr { inherit fetchurl; } ++ extraDebs;
+        debs =
+          import expr {
+            inherit fetchurl;
+          }
+          ++ extraDebs;
       }
       // args
     ))
@@ -1505,7 +1520,9 @@ rec {
   # Shorthand for `diskImageFuns.<attr> { extraPackages = ... }'.
   diskImageExtraFuns = lib.mapAttrs (
     name: f: extraPackages:
-    f { inherit extraPackages; }
+    f {
+      inherit extraPackages;
+    }
   ) diskImageFuns;
 
   /*

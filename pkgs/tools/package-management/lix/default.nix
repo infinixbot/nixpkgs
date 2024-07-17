@@ -11,7 +11,9 @@
   confDir ? "/etc",
 }:
 let
-  boehmgc-nix_2_3 = boehmgc.override { enableLargeConfig = true; };
+  boehmgc-nix_2_3 = boehmgc.override {
+    enableLargeConfig = true;
+  };
 
   boehmgc-nix = boehmgc-nix_2_3.overrideAttrs (drv: {
     patches = (drv.patches or [ ]) ++ [
@@ -35,16 +37,23 @@ let
 
   common =
     args:
-    callPackage (import ./common.nix ({ inherit lib fetchFromGitHub; } // args)) {
-      inherit
-        Security
-        storeDir
-        stateDir
-        confDir
-        ;
-      boehmgc = boehmgc-nix;
-      aws-sdk-cpp = aws-sdk-cpp-nix;
-    };
+    callPackage
+      (import ./common.nix (
+        {
+          inherit lib fetchFromGitHub;
+        }
+        // args
+      ))
+      {
+        inherit
+          Security
+          storeDir
+          stateDir
+          confDir
+          ;
+        boehmgc = boehmgc-nix;
+        aws-sdk-cpp = aws-sdk-cpp-nix;
+      };
 in
 lib.makeExtensible (self: ({
   buildLix = common;

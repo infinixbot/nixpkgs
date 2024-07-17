@@ -64,7 +64,9 @@ let
 
   imp = {
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.port ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.port ];
+    };
 
     systemd.services.iperf3 = {
       description = "iperf3 daemon";

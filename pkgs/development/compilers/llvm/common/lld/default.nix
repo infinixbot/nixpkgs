@@ -95,6 +95,8 @@ stdenv.mkDerivation (
     if (postPatch == "" && lib.versions.major release_version != "13") then
       { }
     else
-      { inherit postPatch; }
+      {
+        inherit postPatch;
+      }
   )
 )

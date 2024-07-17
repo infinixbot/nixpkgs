@@ -43,7 +43,9 @@ let
     doCheck = false;
 
     # Enable tests via passthru to avoid cyclic dependency with opentelemetry-test-utils.
-    passthru.tests.${self.pname} = self.overridePythonAttrs { doCheck = true; };
+    passthru.tests.${self.pname} = self.overridePythonAttrs {
+      doCheck = true;
+    };
 
     meta = opentelemetry-api.meta // {
       homepage = "https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-sdk";

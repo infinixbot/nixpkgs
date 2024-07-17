@@ -30,7 +30,9 @@ buildNpmPackage rec {
   passthru = {
     updateScript = ./update.sh;
     tests = {
-      version = testers.testVersion { package = uglify-js; };
+      version = testers.testVersion {
+        package = uglify-js;
+      };
 
       simple = testers.testEqualContents {
         assertion = "uglify-js minifies a basic js file";

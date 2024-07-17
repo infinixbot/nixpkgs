@@ -32,7 +32,9 @@ buildGoModule rec {
   '';
 
   passthru = {
-    tests.version = testers.testVersion { package = athens; };
+    tests.version = testers.testVersion {
+      package = athens;
+    };
   };
 
   meta = with lib; {

@@ -46,7 +46,9 @@
         inherit (gfal2-python) gfal2;
 
         fetchGfal2 = lib.makeOverridable (
-          callPackage ./fetchgfal2.nix { gfal2-util = finalAttrs.finalPackage; }
+          callPackage ./fetchgfal2.nix {
+            gfal2-util = finalAttrs.finalPackage;
+          }
         );
 
         # With these functionality tests, it should be safe to merge version bumps once all the tests are passed.

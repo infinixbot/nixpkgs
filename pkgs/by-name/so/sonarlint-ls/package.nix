@@ -16,7 +16,9 @@
 }:
 
 let
-  mavenJdk17 = maven.override { jdk = jdk17; };
+  mavenJdk17 = maven.override {
+    jdk = jdk17;
+  };
 in
 mavenJdk17.buildMavenPackage rec {
   pname = "sonarlint-ls";

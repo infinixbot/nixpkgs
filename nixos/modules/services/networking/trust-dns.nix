@@ -128,7 +128,11 @@ in
             zones = mkOption {
               description = "List of zones to serve.";
               default = [ ];
-              type = types.listOf (types.coercedTo types.str (zone: { inherit zone; }) zoneType);
+              type = types.listOf (
+                types.coercedTo types.str (zone: {
+                  inherit zone;
+                }) zoneType
+              );
             };
           };
         };

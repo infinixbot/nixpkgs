@@ -27,34 +27,38 @@
 let
   GL = "GLVND"; # or "LEGACY";
 
-  osg' = (openscenegraph.override { colladaSupport = true; }).overrideDerivation (old: {
-    patches = [
-      (fetchpatch {
-        # Darwin: Without this patch, OSG won't build osgdb_png.so, which is required by OpenMW.
-        name = "darwin-osg-plugins-fix.patch";
-        url = "https://gitlab.com/OpenMW/openmw-dep/-/raw/0abe3c9c3858211028d881d7706813d606335f72/macos/osg.patch";
-        sha256 = "sha256-/CLRZofZHot8juH78VG1/qhTHPhy5DoPMN+oH8hC58U=";
-      })
-    ];
-    cmakeFlags =
-      (old.cmakeFlags or [ ])
-      ++ [
-        "-Wno-dev"
-        "-DOpenGL_GL_PREFERENCE=${GL}"
-        "-DBUILD_OSG_PLUGINS_BY_DEFAULT=0"
-        "-DBUILD_OSG_DEPRECATED_SERIALIZERS=0"
-      ]
-      ++ (map (e: "-DBUILD_OSG_PLUGIN_${e}=1") [
-        "BMP"
-        "DAE"
-        "DDS"
-        "FREETYPE"
-        "JPEG"
-        "OSG"
-        "PNG"
-        "TGA"
-      ]);
-  });
+  osg' =
+    (openscenegraph.override {
+      colladaSupport = true;
+    }).overrideDerivation
+      (old: {
+        patches = [
+          (fetchpatch {
+            # Darwin: Without this patch, OSG won't build osgdb_png.so, which is required by OpenMW.
+            name = "darwin-osg-plugins-fix.patch";
+            url = "https://gitlab.com/OpenMW/openmw-dep/-/raw/0abe3c9c3858211028d881d7706813d606335f72/macos/osg.patch";
+            sha256 = "sha256-/CLRZofZHot8juH78VG1/qhTHPhy5DoPMN+oH8hC58U=";
+          })
+        ];
+        cmakeFlags =
+          (old.cmakeFlags or [ ])
+          ++ [
+            "-Wno-dev"
+            "-DOpenGL_GL_PREFERENCE=${GL}"
+            "-DBUILD_OSG_PLUGINS_BY_DEFAULT=0"
+            "-DBUILD_OSG_DEPRECATED_SERIALIZERS=0"
+          ]
+          ++ (map (e: "-DBUILD_OSG_PLUGIN_${e}=1") [
+            "BMP"
+            "DAE"
+            "DDS"
+            "FREETYPE"
+            "JPEG"
+            "OSG"
+            "PNG"
+            "TGA"
+          ]);
+      });
 
   bullet' = bullet.overrideDerivation (old: {
     cmakeFlags = (old.cmakeFlags or [ ]) ++ [

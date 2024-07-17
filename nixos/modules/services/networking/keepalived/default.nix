@@ -111,9 +111,21 @@ let
 
   notNullOrEmpty = s: !(s == null || s == "");
 
-  vrrpScripts = mapAttrsToList (name: config: { inherit name; } // config) cfg.vrrpScripts;
+  vrrpScripts = mapAttrsToList (
+    name: config:
+    {
+      inherit name;
+    }
+    // config
+  ) cfg.vrrpScripts;
 
-  vrrpInstances = mapAttrsToList (iName: iConfig: { name = iName; } // iConfig) cfg.vrrpInstances;
+  vrrpInstances = mapAttrsToList (
+    iName: iConfig:
+    {
+      name = iName;
+    }
+    // iConfig
+  ) cfg.vrrpInstances;
 
   vrrpInstanceAssertions =
     i:
@@ -259,13 +271,25 @@ in
       };
 
       vrrpScripts = mkOption {
-        type = types.attrsOf (types.submodule (import ./vrrp-script-options.nix { inherit lib; }));
+        type = types.attrsOf (
+          types.submodule (
+            import ./vrrp-script-options.nix {
+              inherit lib;
+            }
+          )
+        );
         default = { };
         description = "Declarative vrrp script config";
       };
 
       vrrpInstances = mkOption {
-        type = types.attrsOf (types.submodule (import ./vrrp-instance-options.nix { inherit lib; }));
+        type = types.attrsOf (
+          types.submodule (
+            import ./vrrp-instance-options.nix {
+              inherit lib;
+            }
+          )
+        );
         default = { };
         description = "Declarative vhost config";
       };

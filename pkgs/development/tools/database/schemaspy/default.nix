@@ -37,7 +37,9 @@ maven.buildMavenPackage rec {
 
     # springframework boot gets angry about 1970 sources
     # fix from https://github.com/nix-community/mavenix/issues/25
-    (ensureNewerSourcesHook { year = "1980"; })
+    (ensureNewerSourcesHook {
+      year = "1980";
+    })
   ];
 
   wrappedPath = lib.makeBinPath [ graphviz ];

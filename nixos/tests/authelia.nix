@@ -62,11 +62,16 @@ import ./make-test-python.nix (
             dynamicConfigOptions = {
               tls.certificates =
                 let
-                  certDir = pkgs.runCommand "selfSignedCerts" { buildInputs = [ pkgs.openssl ]; } ''
-                    openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -nodes -subj '/CN=example.com/CN=auth.example.com/CN=static.example.com' -days 36500
-                    mkdir -p $out
-                    cp key.pem cert.pem $out
-                  '';
+                  certDir =
+                    pkgs.runCommand "selfSignedCerts"
+                      {
+                        buildInputs = [ pkgs.openssl ];
+                      }
+                      ''
+                        openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -nodes -subj '/CN=example.com/CN=auth.example.com/CN=static.example.com' -days 36500
+                        mkdir -p $out
+                        cp key.pem cert.pem $out
+                      '';
                 in
                 [
                   {
@@ -110,7 +115,11 @@ import ./make-test-python.nix (
               };
 
               http.services.simplehttp = {
-                loadBalancer.servers = [ { url = "http://localhost:8000"; } ];
+                loadBalancer.servers = [
+                  {
+                    url = "http://localhost:8000";
+                  }
+                ];
               };
 
               http.routers.authelia = {
@@ -121,7 +130,11 @@ import ./make-test-python.nix (
               };
 
               http.services.authelia = {
-                loadBalancer.servers = [ { url = "http://localhost:9091"; } ];
+                loadBalancer.servers = [
+                  {
+                    url = "http://localhost:9091";
+                  }
+                ];
               };
             };
 

@@ -61,7 +61,9 @@ stdenv.mkDerivation rec {
 
   mesonFlags = [ (lib.mesonOption "profile" "release") ];
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     description = "Stream movies and TV shows from Jellyfin";

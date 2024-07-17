@@ -145,7 +145,9 @@ in
       description = "ownCloud Infinite Scale daemon user";
     };
 
-    users.groups = lib.mkIf (cfg.group == defaultGroup) { ${defaultGroup} = { }; };
+    users.groups = lib.mkIf (cfg.group == defaultGroup) {
+      ${defaultGroup} = { };
+    };
 
     systemd = {
       services.ocis = {

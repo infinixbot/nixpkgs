@@ -33,7 +33,9 @@ let
   lib' = lib;
 in
 let
-  lib = import ../../../../build-support/coq/extra-lib.nix { lib = lib'; };
+  lib = import ../../../../build-support/coq/extra-lib.nix {
+    lib = lib';
+  };
 in
 with builtins;
 with lib;
@@ -82,7 +84,10 @@ let
   };
   releaseRev = v: "V${v}";
   fetched =
-    import ../../../../build-support/coq/meta-fetch/default.nix { inherit lib stdenv fetchzip; }
+    import ../../../../build-support/coq/meta-fetch/default.nix
+      {
+        inherit lib stdenv fetchzip;
+      }
       {
         inherit release releaseRev;
         location = {

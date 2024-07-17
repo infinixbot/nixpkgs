@@ -12,7 +12,9 @@
 }:
 
 let
-  common = import ./common.nix { inherit fetchzip; };
+  common = import ./common.nix {
+    inherit fetchzip;
+  };
 in
 
 stdenv.mkDerivation rec {

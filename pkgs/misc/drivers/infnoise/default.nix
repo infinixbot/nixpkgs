@@ -50,7 +50,9 @@ stdenv.mkDerivation rec {
   '';
 
   passthru = {
-    tests.version = testers.testVersion { package = infnoise; };
+    tests.version = testers.testVersion {
+      package = infnoise;
+    };
   };
 
   meta = with lib; {

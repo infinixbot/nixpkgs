@@ -93,7 +93,9 @@ beamPackages.mixRelease rec {
         };
         beamDeps = with final; [ prometheus_ex ];
       };
-      majic = prev.majic.override { buildInputs = [ file ]; };
+      majic = prev.majic.override {
+        buildInputs = [ file ];
+      };
       # Some additional build inputs and build fixes
       http_signatures = prev.http_signatures.override {
         patchPhase = ''
@@ -104,7 +106,9 @@ beamPackages.mixRelease rec {
         nativeBuildInputs = [ cmake ];
         dontUseCmakeConfigure = true;
       };
-      syslog = prev.syslog.override { buildPlugins = with beamPackages; [ pc ]; };
+      syslog = prev.syslog.override {
+        buildPlugins = with beamPackages; [ pc ];
+      };
 
       # This needs a different version (1.0.14 -> 1.0.18) to build properly with
       # our Erlang/OTP version.

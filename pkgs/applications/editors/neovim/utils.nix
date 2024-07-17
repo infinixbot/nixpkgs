@@ -63,7 +63,18 @@ let
             optional = false;
           };
         in
-        map (x: defaultPlugin // (if (x ? plugin) then x else { plugin = x; })) plugins;
+        map (
+          x:
+          defaultPlugin
+          // (
+            if (x ? plugin) then
+              x
+            else
+              {
+                plugin = x;
+              }
+          )
+        ) plugins;
 
       pluginRC = lib.foldl (
         acc: p: if p.config != null then acc ++ [ p.config ] else acc
@@ -119,7 +130,9 @@ let
           (neovim-unwrapped.lua.pkgs.luaLib.genLuaCPathAbsStr luaEnv)
         ];
 
-      manifestRc = vimUtils.vimrcContent { customRC = ""; };
+      manifestRc = vimUtils.vimrcContent {
+        customRC = "";
+      };
       # we call vimrcContent without 'packages' to avoid the init.vim generation
       neovimRcContent = vimUtils.vimrcContent {
         beforePlugins = "";
@@ -138,7 +151,9 @@ let
       inherit luaEnv;
       inherit withNodeJs;
     }
-    // lib.optionalAttrs withRuby { inherit rubyEnv; };
+    // lib.optionalAttrs withRuby {
+      inherit rubyEnv;
+    };
 
   # to keep backwards compatibility for people using neovim.override
   legacyWrapper =

@@ -129,7 +129,9 @@ in
 
   config = mkIf cfg.enable {
     services.your_spotify.clientPackage = mkDefault (
-      cfg.package.client.override { apiEndpoint = cfg.settings.API_ENDPOINT; }
+      cfg.package.client.override {
+        apiEndpoint = cfg.settings.API_ENDPOINT;
+      }
     );
     systemd.services.your_spotify = {
       after = [ "network.target" ];
@@ -194,7 +196,9 @@ in
         '';
       };
     };
-    services.mongodb = mkIf cfg.enableLocalDB { enable = true; };
+    services.mongodb = mkIf cfg.enableLocalDB {
+      enable = true;
+    };
   };
   meta.maintainers = with lib.maintainers; [ patrickdag ];
 }

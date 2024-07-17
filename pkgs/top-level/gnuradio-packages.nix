@@ -29,7 +29,9 @@ lib.makeScope newScope (
         inherit gnuradio;
         inherit (gnuradio) gnuradioOlder gnuradioAtLeast;
       }
-      // lib.optionalAttrs (gnuradio.hasFeature "gr-uhd") { inherit (gnuradio) uhd; }
+      // lib.optionalAttrs (gnuradio.hasFeature "gr-uhd") {
+        inherit (gnuradio) uhd;
+      }
     );
   in
   {

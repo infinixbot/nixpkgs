@@ -1,6 +1,8 @@
 {
   addOpenGLRunpath,
-  allowedPatternsPath ? callPackage ./closure.nix { inherit allowedPatterns; },
+  allowedPatternsPath ? callPackage ./closure.nix {
+    inherit allowedPatterns;
+  },
   allowedPatterns ? rec {
     # This config is just an example.
     # When the hook observes either of the following requiredSystemFeatures:

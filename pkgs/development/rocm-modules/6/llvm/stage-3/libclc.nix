@@ -8,7 +8,11 @@
 }:
 
 let
-  spirv = (spirv-llvm-translator.override { inherit llvm; });
+  spirv = (
+    spirv-llvm-translator.override {
+      inherit llvm;
+    }
+  );
 in
 callPackage ../base.nix rec {
   inherit stdenv rocmUpdateScript;

@@ -22,7 +22,9 @@ stdenv.mkDerivation {
       tools/net/ynl/ynl-gen-rst.py
   '';
 
-  FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ ]; };
+  FONTCONFIG_FILE = makeFontsConf {
+    fontDirectories = [ ];
+  };
 
   nativeBuildInputs = [
     graphviz

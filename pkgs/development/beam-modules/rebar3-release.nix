@@ -46,7 +46,9 @@ let
   # `rebar3` package is an escript archive with bundled dependencies which can
   # interfere with those in the app we are trying to build. `rebar3WithPlugins`
   # doesn't have this issue since it puts its own deps last on the code path.
-  rebar3 = rebar3WithPlugins { plugins = buildPlugins; };
+  rebar3 = rebar3WithPlugins {
+    plugins = buildPlugins;
+  };
 
   pkg =
     assert beamDeps != [ ] -> checkouts == null;

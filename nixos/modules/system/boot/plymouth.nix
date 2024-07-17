@@ -10,7 +10,9 @@ with lib;
 
 let
 
-  plymouth = pkgs.plymouth.override { systemd = config.boot.initrd.systemd.package; };
+  plymouth = pkgs.plymouth.override {
+    systemd = config.boot.initrd.systemd.package;
+  };
 
   cfg = config.boot.plymouth;
   opt = options.boot.plymouth;
@@ -22,24 +24,29 @@ let
     osVersion = config.system.nixos.release;
   };
 
-  plymouthLogos = pkgs.runCommand "plymouth-logos" { inherit (cfg) logo; } ''
-    mkdir -p $out
+  plymouthLogos =
+    pkgs.runCommand "plymouth-logos"
+      {
+        inherit (cfg) logo;
+      }
+      ''
+        mkdir -p $out
 
-    # For themes that are compiled with PLYMOUTH_LOGO_FILE
-    mkdir -p $out/etc/plymouth
-    ln -s $logo $out/etc/plymouth/logo.png
+        # For themes that are compiled with PLYMOUTH_LOGO_FILE
+        mkdir -p $out/etc/plymouth
+        ln -s $logo $out/etc/plymouth/logo.png
 
-    # Logo for bgrt theme
-    # Note this is technically an abuse of watermark for the bgrt theme
-    # See: https://gitlab.freedesktop.org/plymouth/plymouth/-/issues/95#note_813768
-    mkdir -p $out/share/plymouth/themes/spinner
-    ln -s $logo $out/share/plymouth/themes/spinner/watermark.png
+        # Logo for bgrt theme
+        # Note this is technically an abuse of watermark for the bgrt theme
+        # See: https://gitlab.freedesktop.org/plymouth/plymouth/-/issues/95#note_813768
+        mkdir -p $out/share/plymouth/themes/spinner
+        ln -s $logo $out/share/plymouth/themes/spinner/watermark.png
 
-    # Logo for spinfinity theme
-    # See: https://gitlab.freedesktop.org/plymouth/plymouth/-/issues/106
-    mkdir -p $out/share/plymouth/themes/spinfinity
-    ln -s $logo $out/share/plymouth/themes/spinfinity/header-image.png
-  '';
+        # Logo for spinfinity theme
+        # See: https://gitlab.freedesktop.org/plymouth/plymouth/-/issues/106
+        mkdir -p $out/share/plymouth/themes/spinfinity
+        ln -s $logo $out/share/plymouth/themes/spinfinity/header-image.png
+      '';
 
   themesEnv = pkgs.buildEnv {
     name = "plymouth-themes";

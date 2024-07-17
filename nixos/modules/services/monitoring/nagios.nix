@@ -44,15 +44,20 @@ let
       lines = mapAttrsToList (key: value: "${key}=${value}") (default // cfg.extraConfig);
       content = concatStringsSep "\n" lines;
       file = pkgs.writeText "nagios.cfg" content;
-      validated = pkgs.runCommand "nagios-checked.cfg" { preferLocalBuild = true; } ''
-        cp ${file} nagios.cfg
-        # nagios checks the existence of /var/lib/nagios, but
-        # it does not exist in the build sandbox, so we fake it
-        mkdir lib
-        lib=$(readlink -f lib)
-        sed -i s@=${nagiosState}@=$lib@ nagios.cfg
-        ${pkgs.nagios}/bin/nagios -v nagios.cfg && cp ${file} $out
-      '';
+      validated =
+        pkgs.runCommand "nagios-checked.cfg"
+          {
+            preferLocalBuild = true;
+          }
+          ''
+            cp ${file} nagios.cfg
+            # nagios checks the existence of /var/lib/nagios, but
+            # it does not exist in the build sandbox, so we fake it
+            mkdir lib
+            lib=$(readlink -f lib)
+            sed -i s@=${nagiosState}@=$lib@ nagios.cfg
+            ${pkgs.nagios}/bin/nagios -v nagios.cfg && cp ${file} $out
+          '';
       defaultCfgFile = if cfg.validateConfig then validated else file;
     in
     if cfg.mainConfigFile == null then defaultCfgFile else cfg.mainConfigFile;
@@ -220,7 +225,9 @@ in
     services.httpd.virtualHosts = optionalAttrs cfg.enableWebInterface {
       ${cfg.virtualHost.hostName} = mkMerge [
         cfg.virtualHost
-        { extraConfig = extraHttpdConfig; }
+        {
+          extraConfig = extraHttpdConfig;
+        }
       ];
     };
   };

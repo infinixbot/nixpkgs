@@ -34,7 +34,11 @@
         pymysql
         setproctitle
       ])
-      ++ [ (mycli.override { inherit python3; }) ];
+      ++ [
+        (mycli.override {
+          inherit python3;
+        })
+      ];
     meta.maintainers = with lib.maintainers; [ obreitwi ];
   };
 

@@ -111,9 +111,13 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == defaultUser) { ${defaultUser} = { }; };
+    users.groups = optionalAttrs (cfg.group == defaultUser) {
+      ${defaultUser} = { };
+    };
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.port ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.port ];
+    };
 
     systemd.services.node-red = {
       description = "Node-RED Service";
@@ -137,7 +141,9 @@ in
           Restart = "always";
           WorkingDirectory = cfg.userDir;
         }
-        (mkIf (cfg.userDir == "/var/lib/node-red") { StateDirectory = "node-red"; })
+        (mkIf (cfg.userDir == "/var/lib/node-red") {
+          StateDirectory = "node-red";
+        })
       ];
     };
   };

@@ -24,7 +24,14 @@ let
     builtins.deepSeq f (
       lib.lists.foldl' (features: fun: fun features) (lib.attrsets.recursiveUpdate f up) functions
     );
-  mapFeatures = features: map (fun: fun { features = features; });
+  mapFeatures =
+    features:
+    map (
+      fun:
+      fun {
+        features = features;
+      }
+    );
   mkFeatures =
     feat:
     lib.lists.foldl (
@@ -44,7 +51,11 @@ rec {
       version = "1.3.0";
       authors = [ "Daniel Reiter Horn <danielrh@dropbox.com>" ];
       sha256 = "1jcp27pzmqdszgp80y484g4kwbjbg7x8a589drcwbxg0i8xwkir9";
-      crateBin = [ { name = "example"; } ];
+      crateBin = [
+        {
+          name = "example";
+        }
+      ];
       inherit dependencies buildDependencies features;
     };
   brotli_2_5_0_ =
@@ -61,7 +72,11 @@ rec {
         "The Brotli Authors"
       ];
       sha256 = "1ynw4hkdwnp0kj30p86ls44ahv4s99258s019bqrq4mya8hlsb5b";
-      crateBin = [ { name = "brotli"; } ];
+      crateBin = [
+        {
+          name = "brotli";
+        }
+      ];
       inherit dependencies buildDependencies features;
     };
   brotli_decompressor_1_3_1_ =
@@ -78,14 +93,20 @@ rec {
         "The Brotli Authors"
       ];
       sha256 = "022g69q1xzwdj0130qm3fa4qwpn4q1jx3lc8yz0v0v201p7bm8fb";
-      crateBin = [ { name = "brotli-decompressor"; } ];
+      crateBin = [
+        {
+          name = "brotli-decompressor";
+        }
+      ];
       inherit dependencies buildDependencies features;
     };
   alloc_no_stdlib_1_3_0 =
     {
       features ? (alloc_no_stdlib_1_3_0_features { }),
     }:
-    alloc_no_stdlib_1_3_0_ { features = mkFeatures (features.alloc_no_stdlib_1_3_0 or { }); };
+    alloc_no_stdlib_1_3_0_ {
+      features = mkFeatures (features.alloc_no_stdlib_1_3_0 or { });
+    };
   alloc_no_stdlib_1_3_0_features =
     f:
     updateFeatures f ({

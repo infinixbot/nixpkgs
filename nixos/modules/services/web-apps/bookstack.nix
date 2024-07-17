@@ -9,7 +9,9 @@ with lib;
 
 let
   cfg = config.services.bookstack;
-  bookstack = pkgs.bookstack.override { dataDir = cfg.dataDir; };
+  bookstack = pkgs.bookstack.override {
+    dataDir = cfg.dataDir;
+  };
   db = cfg.database;
   mail = cfg.mail;
 
@@ -217,7 +219,9 @@ in
 
     nginx = mkOption {
       type = types.submodule (
-        recursiveUpdate (import ../web-servers/nginx/vhost-options.nix { inherit config lib; }) { }
+        recursiveUpdate (import ../web-servers/nginx/vhost-options.nix {
+          inherit config lib;
+        }) { }
       );
       default = { };
       example = literalExpression ''
@@ -500,7 +504,9 @@ in
         };
         "${config.services.nginx.user}".extraGroups = [ group ];
       };
-      groups = mkIf (group == "bookstack") { bookstack = { }; };
+      groups = mkIf (group == "bookstack") {
+        bookstack = { };
+      };
     };
 
   };

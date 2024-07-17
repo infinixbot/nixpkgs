@@ -220,7 +220,9 @@ stdenv.mkDerivation (finalAttrs: {
         grep format=svg "$out"
       '';
 
-      version = testers.testVersion { package = finalAttrs.finalPackage; };
+      version = testers.testVersion {
+        package = finalAttrs.finalPackage;
+      };
     };
   };
 

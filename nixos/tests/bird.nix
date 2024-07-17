@@ -10,7 +10,12 @@
 }:
 
 let
-  inherit (import ../lib/testing-python.nix { inherit system pkgs; }) makeTest;
+  inherit
+    (import ../lib/testing-python.nix {
+      inherit system pkgs;
+    })
+    makeTest
+    ;
   inherit (pkgs.lib) optionalString;
 
   makeBird2Host =

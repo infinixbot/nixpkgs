@@ -10,18 +10,23 @@ with lib;
 let
   cfg = config.services.netdata;
 
-  wrappedPlugins = pkgs.runCommand "wrapped-plugins" { preferLocalBuild = true; } ''
-    mkdir -p $out/libexec/netdata/plugins.d
-    ln -s /run/wrappers/bin/apps.plugin $out/libexec/netdata/plugins.d/apps.plugin
-    ln -s /run/wrappers/bin/cgroup-network $out/libexec/netdata/plugins.d/cgroup-network
-    ln -s /run/wrappers/bin/perf.plugin $out/libexec/netdata/plugins.d/perf.plugin
-    ln -s /run/wrappers/bin/slabinfo.plugin $out/libexec/netdata/plugins.d/slabinfo.plugin
-    ln -s /run/wrappers/bin/freeipmi.plugin $out/libexec/netdata/plugins.d/freeipmi.plugin
-    ln -s /run/wrappers/bin/systemd-journal.plugin $out/libexec/netdata/plugins.d/systemd-journal.plugin
-    ln -s /run/wrappers/bin/logs-management.plugin $out/libexec/netdata/plugins.d/logs-management.plugin
-    ln -s /run/wrappers/bin/network-viewer.plugin $out/libexec/netdata/plugins.d/network-viewer.plugin
-    ln -s /run/wrappers/bin/debugfs.plugin $out/libexec/netdata/plugins.d/debugfs.plugin
-  '';
+  wrappedPlugins =
+    pkgs.runCommand "wrapped-plugins"
+      {
+        preferLocalBuild = true;
+      }
+      ''
+        mkdir -p $out/libexec/netdata/plugins.d
+        ln -s /run/wrappers/bin/apps.plugin $out/libexec/netdata/plugins.d/apps.plugin
+        ln -s /run/wrappers/bin/cgroup-network $out/libexec/netdata/plugins.d/cgroup-network
+        ln -s /run/wrappers/bin/perf.plugin $out/libexec/netdata/plugins.d/perf.plugin
+        ln -s /run/wrappers/bin/slabinfo.plugin $out/libexec/netdata/plugins.d/slabinfo.plugin
+        ln -s /run/wrappers/bin/freeipmi.plugin $out/libexec/netdata/plugins.d/freeipmi.plugin
+        ln -s /run/wrappers/bin/systemd-journal.plugin $out/libexec/netdata/plugins.d/systemd-journal.plugin
+        ln -s /run/wrappers/bin/logs-management.plugin $out/libexec/netdata/plugins.d/logs-management.plugin
+        ln -s /run/wrappers/bin/network-viewer.plugin $out/libexec/netdata/plugins.d/network-viewer.plugin
+        ln -s /run/wrappers/bin/debugfs.plugin $out/libexec/netdata/plugins.d/debugfs.plugin
+      '';
 
   plugins = [
     "${cfg.package}/libexec/netdata/plugins.d"
@@ -277,10 +282,14 @@ in
           pkgs.jq
           config.virtualisation.podman.package
         ];
-      environment = {
-        PYTHONPATH = "${cfg.package}/libexec/netdata/python.d/python_modules";
-        NETDATA_PIPENAME = "/run/netdata/ipc";
-      } // lib.optionalAttrs (!cfg.enableAnalyticsReporting) { DO_NOT_TRACK = "1"; };
+      environment =
+        {
+          PYTHONPATH = "${cfg.package}/libexec/netdata/python.d/python_modules";
+          NETDATA_PIPENAME = "/run/netdata/ipc";
+        }
+        // lib.optionalAttrs (!cfg.enableAnalyticsReporting) {
+          DO_NOT_TRACK = "1";
+        };
       restartTriggers = [
         config.environment.etc."netdata/netdata.conf".source
         config.environment.etc."netdata/conf.d".source
@@ -462,7 +471,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == defaultUser) { ${defaultUser} = { }; };
+    users.groups = optionalAttrs (cfg.group == defaultUser) {
+      ${defaultUser} = { };
+    };
 
   };
 }

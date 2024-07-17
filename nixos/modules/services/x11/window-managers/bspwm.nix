@@ -16,7 +16,9 @@ in
     services.xserver.windowManager.bspwm = {
       enable = mkEnableOption "bspwm";
 
-      package = mkPackageOption pkgs "bspwm" { example = "bspwm-unstable"; };
+      package = mkPackageOption pkgs "bspwm" {
+        example = "bspwm-unstable";
+      };
       configFile = mkOption {
         type = with types; nullOr path;
         example = literalExpression ''"''${pkgs.bspwm}/share/doc/bspwm/examples/bspwmrc"'';
@@ -28,7 +30,9 @@ in
       };
 
       sxhkd = {
-        package = mkPackageOption pkgs "sxhkd" { example = "sxhkd-unstable"; };
+        package = mkPackageOption pkgs "sxhkd" {
+          example = "sxhkd-unstable";
+        };
         configFile = mkOption {
           type = with types; nullOr path;
           example = literalExpression ''"''${pkgs.bspwm}/share/doc/bspwm/examples/sxhkdrc"'';

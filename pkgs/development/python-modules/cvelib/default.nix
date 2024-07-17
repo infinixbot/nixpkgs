@@ -44,7 +44,9 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ "cvelib" ];
 
-  passthru.tests.version = testers.testVersion { package = cve; };
+  passthru.tests.version = testers.testVersion {
+    package = cve;
+  };
 
   meta = with lib; {
     description = "Library and a command line interface for the CVE Services API";

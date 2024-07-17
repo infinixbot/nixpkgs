@@ -13,7 +13,9 @@ let
     {
       callPackage = newScope self;
 
-      python3 = callPackage ./python.nix { inherit python3; };
+      python3 = callPackage ./python.nix {
+        inherit python3;
+      };
 
       hyperkitty = callPackage ./hyperkitty.nix { };
 

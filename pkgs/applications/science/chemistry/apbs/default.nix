@@ -32,7 +32,9 @@ let
       "-DBUILD_SUPERLU=OFF"
     ];
 
-    env = lib.optionalAttrs stdenv.cc.isClang { NIX_CFLAGS_COMPILE = "-Wno-error=implicit-int"; };
+    env = lib.optionalAttrs stdenv.cc.isClang {
+      NIX_CFLAGS_COMPILE = "-Wno-error=implicit-int";
+    };
 
     buildInputs = [
       blas

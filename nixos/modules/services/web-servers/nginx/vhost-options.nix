@@ -78,7 +78,9 @@ with lib;
           addr = "192.154.1.1";
           port = 80;
         }
-        { addr = "unix:/var/run/nginx.sock"; }
+        {
+          addr = "unix:/var/run/nginx.sock";
+        }
       ];
       description = ''
         Listen addresses and ports for this virtual host.
@@ -371,7 +373,13 @@ with lib;
     };
 
     locations = mkOption {
-      type = types.attrsOf (types.submodule (import ./location-options.nix { inherit lib config; }));
+      type = types.attrsOf (
+        types.submodule (
+          import ./location-options.nix {
+            inherit lib config;
+          }
+        )
+      );
       default = { };
       example = literalExpression ''
         {

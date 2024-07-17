@@ -8,7 +8,10 @@
 }:
 
 let
-  inherit (import ./sources.nix { inherit fetchFromGitHub; })
+  inherit
+    (import ./sources.nix {
+      inherit fetchFromGitHub;
+    })
     pname
     version
     src

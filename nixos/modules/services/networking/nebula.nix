@@ -296,7 +296,9 @@ in
     );
 
     users.groups = mkMerge (
-      mapAttrsToList (netName: netCfg: { ${nameToId netName} = { }; }) enabledNetworks
+      mapAttrsToList (netName: netCfg: {
+        ${nameToId netName} = { };
+      }) enabledNetworks
     );
   };
 

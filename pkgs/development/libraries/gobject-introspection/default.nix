@@ -38,7 +38,9 @@ let
   ];
 
   # https://discourse.gnome.org/t/dealing-with-glib-and-gobject-introspection-circular-dependency/18701
-  glib' = glib.override { withIntrospection = false; };
+  glib' = glib.override {
+    withIntrospection = false;
+  };
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "gobject-introspection";

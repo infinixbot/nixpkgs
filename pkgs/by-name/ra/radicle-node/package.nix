@@ -80,7 +80,9 @@ rustPlatform.buildRustPackage rec {
       package = radicle-node;
     in
     {
-      version = testers.testVersion { inherit package; };
+      version = testers.testVersion {
+        inherit package;
+      };
       basic =
         runCommand "${package.name}-basic-test"
           {

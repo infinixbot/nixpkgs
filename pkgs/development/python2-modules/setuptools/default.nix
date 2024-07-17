@@ -54,7 +54,9 @@ buildPythonPackage rec {
 
   nativeBuildInputs = [
     bootstrapped-pip
-    (pipInstallHook.override { pip = null; })
+    (pipInstallHook.override {
+      pip = null;
+    })
     (setuptoolsBuildHook.override {
       setuptools = null;
       wheel = null;

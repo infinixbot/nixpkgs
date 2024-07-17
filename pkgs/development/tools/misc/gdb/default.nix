@@ -99,7 +99,11 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optional pythonSupport python3
     ++ lib.optional doCheck dejagnu
-    ++ lib.optional enableDebuginfod (elfutils.override { enableDebuginfod = true; })
+    ++ lib.optional enableDebuginfod (
+      elfutils.override {
+        enableDebuginfod = true;
+      }
+    )
     ++ lib.optional stdenv.isDarwin libiconv;
 
   propagatedNativeBuildInputs = [ setupDebugInfoDirs ];

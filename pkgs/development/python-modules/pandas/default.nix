@@ -167,7 +167,10 @@ let
           xml = [ lxml ];
         };
       in
-      extras // { all = lib.concatLists (lib.attrValues extras); };
+      extras
+      // {
+        all = lib.concatLists (lib.attrValues extras);
+      };
 
     doCheck = false; # various infinite recursions
 

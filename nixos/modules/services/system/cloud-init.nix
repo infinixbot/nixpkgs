@@ -98,7 +98,9 @@ in
         description = ''
           Structured cloud-init configuration.
         '';
-        type = types.submodule { freeformType = settingsFormat.type; };
+        type = types.submodule {
+          freeformType = settingsFormat.type;
+        };
         default = { };
       };
 
@@ -170,7 +172,14 @@ in
     };
 
     environment.etc."cloud/cloud.cfg" =
-      if cfg.config == "" then { source = cfgfile; } else { text = cfg.config; };
+      if cfg.config == "" then
+        {
+          source = cfgfile;
+        }
+      else
+        {
+          text = cfg.config;
+        };
 
     systemd.network.enable = mkIf cfg.network.enable true;
 

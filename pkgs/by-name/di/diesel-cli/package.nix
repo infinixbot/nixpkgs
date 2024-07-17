@@ -88,7 +88,9 @@ rustPlatform.buildRustPackage rec {
   env.NIX_LDFLAGS = lib.optionalString mysqlSupport "-lz -lssl -lcrypto";
 
   passthru = {
-    tests.version = testers.testVersion { package = diesel-cli; };
+    tests.version = testers.testVersion {
+      package = diesel-cli;
+    };
     updateScript = nix-update-script { };
   };
 

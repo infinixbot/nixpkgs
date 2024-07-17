@@ -223,7 +223,9 @@ runBuildTests {
   };
 
   iniDuplicateKeys = shouldPass {
-    format = formats.ini { listsAsDuplicateKeys = true; };
+    format = formats.ini {
+      listsAsDuplicateKeys = true;
+    };
     input = {
       foo = {
         bar = [
@@ -400,7 +402,9 @@ runBuildTests {
   };
 
   keyValueDuplicateKeys = shouldPass {
-    format = formats.keyValue { listsAsDuplicateKeys = true; };
+    format = formats.keyValue {
+      listsAsDuplicateKeys = true;
+    };
     input = {
       bar = [
         null
@@ -510,7 +514,9 @@ runBuildTests {
   };
 
   phpAtoms = shouldPass rec {
-    format = formats.php { finalVariable = "config"; };
+    format = formats.php {
+      finalVariable = "config";
+    };
     input = {
       null = null;
       false = false;

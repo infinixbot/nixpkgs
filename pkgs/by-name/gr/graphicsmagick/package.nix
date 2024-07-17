@@ -86,7 +86,10 @@ stdenv.mkDerivation (finalAttrs: {
     };
     tests = {
       issue-157920 =
-        runCommand "issue-157920-regression-test" { buildInputs = [ finalAttrs.finalPackage ]; }
+        runCommand "issue-157920-regression-test"
+          {
+            buildInputs = [ finalAttrs.finalPackage ];
+          }
           ''
             gm convert ${graphviz}/share/doc/graphviz/neatoguide.pdf jpg:$out
           '';

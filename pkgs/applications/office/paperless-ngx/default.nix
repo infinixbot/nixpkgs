@@ -40,7 +40,9 @@ let
   python = python3.override {
     packageOverrides = final: prev: {
       # tesseract5 may be overwritten in the paperless module and we need to propagate that to make the closure reduction effective
-      ocrmypdf = prev.ocrmypdf.override { tesseract = tesseract5; };
+      ocrmypdf = prev.ocrmypdf.override {
+        tesseract = tesseract5;
+      };
 
       uvicorn = prev.uvicorn.overridePythonAttrs (_: {
         version = "0.25.0";

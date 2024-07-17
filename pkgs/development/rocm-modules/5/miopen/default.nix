@@ -89,25 +89,50 @@ let
     )
   );
 
-  gfx900 = runCommand "miopen-gfx900.kdb" { preferLocalBuild = true; } ''
-    ${lbzip2}/bin/lbzip2 -ckd ${src}/src/kernels/gfx900.kdb.bz2 > $out
-  '';
+  gfx900 =
+    runCommand "miopen-gfx900.kdb"
+      {
+        preferLocalBuild = true;
+      }
+      ''
+        ${lbzip2}/bin/lbzip2 -ckd ${src}/src/kernels/gfx900.kdb.bz2 > $out
+      '';
 
-  gfx906 = runCommand "miopen-gfx906.kdb" { preferLocalBuild = true; } ''
-    ${lbzip2}/bin/lbzip2 -ckd ${src}/src/kernels/gfx906.kdb.bz2 > $out
-  '';
+  gfx906 =
+    runCommand "miopen-gfx906.kdb"
+      {
+        preferLocalBuild = true;
+      }
+      ''
+        ${lbzip2}/bin/lbzip2 -ckd ${src}/src/kernels/gfx906.kdb.bz2 > $out
+      '';
 
-  gfx908 = runCommand "miopen-gfx908.kdb" { preferLocalBuild = true; } ''
-    ${lbzip2}/bin/lbzip2 -ckd ${src}/src/kernels/gfx908.kdb.bz2 > $out
-  '';
+  gfx908 =
+    runCommand "miopen-gfx908.kdb"
+      {
+        preferLocalBuild = true;
+      }
+      ''
+        ${lbzip2}/bin/lbzip2 -ckd ${src}/src/kernels/gfx908.kdb.bz2 > $out
+      '';
 
-  gfx90a = runCommand "miopen-gfx90a.kdb" { preferLocalBuild = true; } ''
-    ${lbzip2}/bin/lbzip2 -ckd ${src}/src/kernels/gfx90a.kdb.bz2 > $out
-  '';
+  gfx90a =
+    runCommand "miopen-gfx90a.kdb"
+      {
+        preferLocalBuild = true;
+      }
+      ''
+        ${lbzip2}/bin/lbzip2 -ckd ${src}/src/kernels/gfx90a.kdb.bz2 > $out
+      '';
 
-  gfx1030 = runCommand "miopen-gfx1030.kdb" { preferLocalBuild = true; } ''
-    ${lbzip2}/bin/lbzip2 -ckd ${src}/src/kernels/gfx1030.kdb.bz2 > $out
-  '';
+  gfx1030 =
+    runCommand "miopen-gfx1030.kdb"
+      {
+        preferLocalBuild = true;
+      }
+      ''
+        ${lbzip2}/bin/lbzip2 -ckd ${src}/src/kernels/gfx1030.kdb.bz2 > $out
+      '';
 in
 stdenv.mkDerivation (finalAttrs: {
   inherit version src;

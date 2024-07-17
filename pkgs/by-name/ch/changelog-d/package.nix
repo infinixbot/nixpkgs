@@ -19,7 +19,9 @@ let
 
     # nix-build -A changelog-d.tests
     passthru.tests = {
-      basic = callPackage ./tests/basic.nix { changelog-d = finalAttrs.finalPackage; };
+      basic = callPackage ./tests/basic.nix {
+        changelog-d = finalAttrs.finalPackage;
+      };
     };
 
     meta = oldAttrs.meta // {

@@ -43,7 +43,9 @@ import ./default.nix
     };
 
     # For use at runtime
-    llvmShared = llvm_18.override { enableSharedLibraries = true; };
+    llvmShared = llvm_18.override {
+      enableSharedLibraries = true;
+    };
 
     # Expose llvmPackages used for rustc from rustc via passthru for LTO in Firefox
     llvmPackages = llvmPackages_18;

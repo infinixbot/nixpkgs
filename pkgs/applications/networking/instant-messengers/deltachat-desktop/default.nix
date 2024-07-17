@@ -140,7 +140,9 @@ buildNpmPackage rec {
   });
 
   passthru.tests = {
-    version = testers.testVersion { package = deltachat-desktop; };
+    version = testers.testVersion {
+      package = deltachat-desktop;
+    };
   };
 
   meta = with lib; {

@@ -10,7 +10,9 @@ with lib;
 let
   imcfg = config.i18n.inputMethod;
   cfg = imcfg.ibus;
-  ibusPackage = pkgs.ibus-with-plugins.override { plugins = cfg.engines; };
+  ibusPackage = pkgs.ibus-with-plugins.override {
+    plugins = cfg.engines;
+  };
   ibusEngine = lib.types.mkOptionType {
     name = "ibus-engine";
     inherit (lib.types.package) descriptionClass merge;

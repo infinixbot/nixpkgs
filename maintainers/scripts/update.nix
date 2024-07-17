@@ -20,11 +20,15 @@
 let
   pkgs = import ./../../default.nix (
     if include-overlays == false then
-      { overlays = [ ]; }
+      {
+        overlays = [ ];
+      }
     else if include-overlays == true then
       { } # Let Nixpkgs include overlays impurely.
     else
-      { overlays = include-overlays; }
+      {
+        overlays = include-overlays;
+      }
   );
 
   inherit (pkgs) lib;

@@ -164,74 +164,82 @@ in
 
   config = mkIf cfg.enable {
     systemd = {
-      services.duplicity = {
-        description = "backup files with duplicity";
+      services.duplicity =
+        {
+          description = "backup files with duplicity";
 
-        environment.HOME = stateDirectory;
+          environment.HOME = stateDirectory;
 
-        script =
-          let
-            target = escapeShellArg cfg.targetUrl;
-            extra = escapeShellArgs (
-              [
-                "--archive-dir"
-                stateDirectory
-              ]
-              ++ cfg.extraFlags
-            );
-            dup = "${pkgs.duplicity}/bin/duplicity";
-          in
-          ''
-            set -x
-            ${dup} cleanup ${target} --force ${extra}
-            ${lib.optionalString (
-              cfg.cleanup.maxAge != null
-            ) "${dup} remove-older-than ${lib.escapeShellArg cfg.cleanup.maxAge} ${target} --force ${extra}"}
-            ${lib.optionalString (
-              cfg.cleanup.maxFull != null
-            ) "${dup} remove-all-but-n-full ${toString cfg.cleanup.maxFull} ${target} --force ${extra}"}
-            ${lib.optionalString (
-              cfg.cleanup.maxIncr != null
-            ) "${dup} remove-all-inc-of-but-n-full ${toString cfg.cleanup.maxIncr} ${target} --force ${extra}"}
-            exec ${dup} ${if cfg.fullIfOlderThan == "always" then "full" else "incr"} ${
-              lib.escapeShellArgs (
+          script =
+            let
+              target = escapeShellArg cfg.targetUrl;
+              extra = escapeShellArgs (
                 [
-                  cfg.root
-                  cfg.targetUrl
+                  "--archive-dir"
+                  stateDirectory
                 ]
-                ++ lib.optionals (cfg.includeFileList != null) [
-                  "--include-filelist"
-                  cfg.includeFileList
-                ]
-                ++ lib.optionals (cfg.excludeFileList != null) [
-                  "--exclude-filelist"
-                  cfg.excludeFileList
-                ]
-                ++ concatMap (p: [
-                  "--include"
-                  p
-                ]) cfg.include
-                ++ concatMap (p: [
-                  "--exclude"
-                  p
-                ]) cfg.exclude
-                ++ (lib.optionals (cfg.fullIfOlderThan != "never" && cfg.fullIfOlderThan != "always") [
-                  "--full-if-older-than"
-                  cfg.fullIfOlderThan
-                ])
-              )
-            } ${extra}
-          '';
-        serviceConfig =
-          {
-            PrivateTmp = true;
-            ProtectSystem = "strict";
-            ProtectHome = "read-only";
-            StateDirectory = baseNameOf stateDirectory;
-          }
-          // optionalAttrs (localTarget != null) { ReadWritePaths = localTarget; }
-          // optionalAttrs (cfg.secretFile != null) { EnvironmentFile = cfg.secretFile; };
-      } // optionalAttrs (cfg.frequency != null) { startAt = cfg.frequency; };
+                ++ cfg.extraFlags
+              );
+              dup = "${pkgs.duplicity}/bin/duplicity";
+            in
+            ''
+              set -x
+              ${dup} cleanup ${target} --force ${extra}
+              ${lib.optionalString (
+                cfg.cleanup.maxAge != null
+              ) "${dup} remove-older-than ${lib.escapeShellArg cfg.cleanup.maxAge} ${target} --force ${extra}"}
+              ${lib.optionalString (
+                cfg.cleanup.maxFull != null
+              ) "${dup} remove-all-but-n-full ${toString cfg.cleanup.maxFull} ${target} --force ${extra}"}
+              ${lib.optionalString (
+                cfg.cleanup.maxIncr != null
+              ) "${dup} remove-all-inc-of-but-n-full ${toString cfg.cleanup.maxIncr} ${target} --force ${extra}"}
+              exec ${dup} ${if cfg.fullIfOlderThan == "always" then "full" else "incr"} ${
+                lib.escapeShellArgs (
+                  [
+                    cfg.root
+                    cfg.targetUrl
+                  ]
+                  ++ lib.optionals (cfg.includeFileList != null) [
+                    "--include-filelist"
+                    cfg.includeFileList
+                  ]
+                  ++ lib.optionals (cfg.excludeFileList != null) [
+                    "--exclude-filelist"
+                    cfg.excludeFileList
+                  ]
+                  ++ concatMap (p: [
+                    "--include"
+                    p
+                  ]) cfg.include
+                  ++ concatMap (p: [
+                    "--exclude"
+                    p
+                  ]) cfg.exclude
+                  ++ (lib.optionals (cfg.fullIfOlderThan != "never" && cfg.fullIfOlderThan != "always") [
+                    "--full-if-older-than"
+                    cfg.fullIfOlderThan
+                  ])
+                )
+              } ${extra}
+            '';
+          serviceConfig =
+            {
+              PrivateTmp = true;
+              ProtectSystem = "strict";
+              ProtectHome = "read-only";
+              StateDirectory = baseNameOf stateDirectory;
+            }
+            // optionalAttrs (localTarget != null) {
+              ReadWritePaths = localTarget;
+            }
+            // optionalAttrs (cfg.secretFile != null) {
+              EnvironmentFile = cfg.secretFile;
+            };
+        }
+        // optionalAttrs (cfg.frequency != null) {
+          startAt = cfg.frequency;
+        };
 
       tmpfiles.rules = optional (localTarget != null) "d ${localTarget} 0700 root root -";
     };

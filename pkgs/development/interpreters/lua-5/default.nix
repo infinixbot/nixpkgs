@@ -41,12 +41,16 @@ let
               makeScopeWithSplicing',
             }:
             let
-              luaPackagesFun = callPackage ../../../top-level/lua-packages.nix { lua = self; };
+              luaPackagesFun = callPackage ../../../top-level/lua-packages.nix {
+                lua = self;
+              };
               generatedPackages =
                 if (builtins.pathExists ../../lua-modules/generated-packages.nix) then
                   (
                     final: prev:
-                    callPackage ../../lua-modules/generated-packages.nix { inherit (final) callPackage; } final prev
+                    callPackage ../../lua-modules/generated-packages.nix {
+                      inherit (final) callPackage;
+                    } final prev
                   )
                 else
                   (final: prev: { });
@@ -87,7 +91,9 @@ let
         makeWrapper = makeBinaryWrapper;
         inherit (luaPackages) requiredLuaModules;
       };
-      withPackages = import ./with-packages.nix { inherit buildEnv luaPackages; };
+      withPackages = import ./with-packages.nix {
+        inherit buildEnv luaPackages;
+      };
       pkgs =
         let
           lp = luaPackages;

@@ -77,7 +77,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru = {
     tests.phosh = nixosTests.phosh;
-    tests.version = testers.testVersion { package = finalAttrs.finalPackage; };
+    tests.version = testers.testVersion {
+      package = finalAttrs.finalPackage;
+    };
     updateScript = directoryListingUpdater { };
   };
 

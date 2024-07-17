@@ -24,7 +24,9 @@ buildGoModule rec {
   nativeBuildInputs = [ pkg-config ];
   buildInputs = [ ffmpeg_4 ];
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     homepage = "https://github.com/bakape/hydron";

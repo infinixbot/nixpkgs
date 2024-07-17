@@ -14,7 +14,9 @@ let
   configurationDirectory = "/etc/${configurationDirectoryName}";
   stateDirectory = "/var/lib/${configurationPrefix}containers";
 
-  nixos-container = pkgs.nixos-container.override { inherit stateDirectory configurationDirectory; };
+  nixos-container = pkgs.nixos-container.override {
+    inherit stateDirectory configurationDirectory;
+  };
 
   # The container's init script, a small wrapper around the regular
   # NixOS stage-2 init script.
@@ -518,9 +520,13 @@ in
                               config = {
                                 nixpkgs =
                                   if options.nixpkgs ? hostPlatform && host.options.nixpkgs.hostPlatform.isDefined then
-                                    { inherit (host.config.nixpkgs) hostPlatform; }
+                                    {
+                                      inherit (host.config.nixpkgs) hostPlatform;
+                                    }
                                   else
-                                    { inherit (host.config.nixpkgs) localSystem; };
+                                    {
+                                      inherit (host.config.nixpkgs) localSystem;
+                                    };
                                 boot.isContainer = true;
                                 networking.hostName = mkDefault name;
                                 networking.useDHCP = false;
@@ -772,7 +778,9 @@ in
               };
 
               # Removed option. See `checkAssertion` below for the accompanying error message.
-              pkgs = mkOption { visible = false; };
+              pkgs = mkOption {
+                visible = false;
+              };
             } // networkOptions;
 
             config =

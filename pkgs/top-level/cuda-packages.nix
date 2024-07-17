@@ -40,7 +40,9 @@ let
   # Backbone
   gpus = builtins.import ../development/cuda-modules/gpus.nix;
   nvccCompatibilities = builtins.import ../development/cuda-modules/nvcc-compatibilities.nix;
-  flags = callPackage ../development/cuda-modules/flags.nix { inherit cudaVersion gpus; };
+  flags = callPackage ../development/cuda-modules/flags.nix {
+    inherit cudaVersion gpus;
+  };
   passthruFunction = final: ({
     inherit cudaVersion lib pkgs;
     inherit gpus nvccCompatibilities flags;
@@ -91,7 +93,9 @@ let
   composedExtension = fixedPoints.composeManyExtensions (
     [
       (import ../development/cuda-modules/setup-hooks/extension.nix)
-      (callPackage ../development/cuda-modules/cuda/extension.nix { inherit cudaVersion; })
+      (callPackage ../development/cuda-modules/cuda/extension.nix {
+        inherit cudaVersion;
+      })
       (import ../development/cuda-modules/cuda/overrides.nix)
       (callPackage ../development/cuda-modules/generic-builders/multiplex.nix {
         inherit cudaVersion flags mkVersionedPackageName;
@@ -110,7 +114,9 @@ let
         shimsFn = ../development/cuda-modules/tensorrt/shims.nix;
         fixupFn = ../development/cuda-modules/tensorrt/fixup.nix;
       })
-      (callPackage ../development/cuda-modules/cuda-samples/extension.nix { inherit cudaVersion; })
+      (callPackage ../development/cuda-modules/cuda-samples/extension.nix {
+        inherit cudaVersion;
+      })
       (callPackage ../development/cuda-modules/cuda-library-samples/extension.nix { })
     ]
     ++ lib.optionals config.allowAliases [ (import ../development/cuda-modules/aliases.nix) ]
@@ -120,4 +126,7 @@ let
     fixedPoints.extends composedExtension passthruFunction
   );
 in
-cudaPackages // { inherit __attrsFailEvaluation; }
+cudaPackages
+// {
+  inherit __attrsFailEvaluation;
+}

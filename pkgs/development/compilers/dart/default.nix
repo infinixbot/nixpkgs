@@ -5,7 +5,9 @@
   unzip,
   runCommand,
   darwin,
-  sources ? import ./sources.nix { inherit fetchurl; },
+  sources ? import ./sources.nix {
+    inherit fetchurl;
+  },
   version ? sources.versionUsed,
 }:
 
@@ -35,14 +37,19 @@ stdenv.mkDerivation (finalAttrs: {
   passthru = {
     updateScript = ./update.sh;
     tests = {
-      testCreate = runCommand "dart-test-create" { nativeBuildInputs = [ finalAttrs.finalPackage ]; } ''
-        PROJECTNAME="dart_test_project"
-        dart create --no-pub $PROJECTNAME
+      testCreate =
+        runCommand "dart-test-create"
+          {
+            nativeBuildInputs = [ finalAttrs.finalPackage ];
+          }
+          ''
+            PROJECTNAME="dart_test_project"
+            dart create --no-pub $PROJECTNAME
 
-        [[ -d $PROJECTNAME ]]
-        [[ -f $PROJECTNAME/bin/$PROJECTNAME.dart ]]
-        touch $out
-      '';
+            [[ -d $PROJECTNAME ]]
+            [[ -f $PROJECTNAME/bin/$PROJECTNAME.dart ]]
+            touch $out
+          '';
 
       testCompile =
         runCommand "dart-test-compile"

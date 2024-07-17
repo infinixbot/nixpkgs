@@ -16,7 +16,9 @@ stdenvNoCC.mkDerivation rec {
     rev = "v${version}";
     sha256 = "1wn2ngcvn7wcsl3kmj782x5q9130qw951lj6ilrkafp6q6zscpqr";
   };
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   dontBuild = true;
 

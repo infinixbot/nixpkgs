@@ -60,7 +60,9 @@ stdenv.mkDerivation rec {
   version = "6.32.02";
 
   passthru = {
-    tests = import ./tests { inherit callPackage; };
+    tests = import ./tests {
+      inherit callPackage;
+    };
   };
 
   src = fetchurl {

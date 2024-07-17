@@ -104,7 +104,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   NIX_LDFLAGS = lib.optionalString stdenv.isDarwin "-framework AppKit";
 
-  FONTCONFIG_FILE = makeFontsConf { fontDirectories = [ gentium ]; };
+  FONTCONFIG_FILE = makeFontsConf {
+    fontDirectories = [ gentium ];
+  };
 
   enableParallelBuilding = true;
 

@@ -45,7 +45,9 @@ stdenv.mkDerivation rec {
                   'find_program( LLVM_OPT opt PATHS "${buildLlvmTools.llvm}/bin" NO_DEFAULT_PATH )' \
         --replace 'find_program( LLVM_SPIRV llvm-spirv PATHS ''${LLVM_TOOLS_BINARY_DIR} NO_DEFAULT_PATH )' \
                   'find_program( LLVM_SPIRV llvm-spirv PATHS "${
-                    buildPackages.spirv-llvm-translator.override { inherit (buildLlvmTools) llvm; }
+                    buildPackages.spirv-llvm-translator.override {
+                      inherit (buildLlvmTools) llvm;
+                    }
                   }/bin" NO_DEFAULT_PATH )'
     ''
     + lib.optionalString (stdenv.hostPlatform != stdenv.buildPlatform) ''

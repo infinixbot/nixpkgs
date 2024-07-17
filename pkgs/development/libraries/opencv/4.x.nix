@@ -144,11 +144,17 @@ let
         name = platform: "ippicv_2021.10.0_${platform}_20230919_general.tgz";
       in
       if effectiveStdenv.hostPlatform.system == "x86_64-linux" then
-        { ${name "lnx_intel64"} = "606a19b207ebedfe42d59fd916cc4850"; }
+        {
+          ${name "lnx_intel64"} = "606a19b207ebedfe42d59fd916cc4850";
+        }
       else if effectiveStdenv.hostPlatform.system == "i686-linux" then
-        { ${name "lnx_ia32"} = "ea08487b810baad2f68aca87b74a2db9"; }
+        {
+          ${name "lnx_ia32"} = "ea08487b810baad2f68aca87b74a2db9";
+        }
       else if effectiveStdenv.hostPlatform.system == "x86_64-darwin" then
-        { ${name "mac_intel64"} = "14f01c5a4780bfae9dde9b0aaf5e56fc"; }
+        {
+          ${name "mac_intel64"} = "14f01c5a4780bfae9dde9b0aaf5e56fc";
+        }
       else
         throw "ICV is not available for this platform (or not yet supported by this package)";
     dst = ".cache/ippicv";
@@ -258,7 +264,9 @@ let
   withOpenblas = (enableBlas && blas.provider.pname == "openblas");
   #multithreaded openblas conflicts with opencv multithreading, which manifest itself in hung tests
   #https://github.com/OpenMathLib/OpenBLAS/wiki/Faq/4bded95e8dc8aadc70ce65267d1093ca7bdefc4c#multi-threaded
-  openblas_ = blas.provider.override { singleThreaded = true; };
+  openblas_ = blas.provider.override {
+    singleThreaded = true;
+  };
 
   inherit (cudaPackages) cudaFlags cudaVersion;
   inherit (cudaFlags) cudaCapabilities;
@@ -548,32 +556,42 @@ effectiveStdenv.mkDerivation {
       popd
     '';
 
-  passthru = {
-    cudaSupport = enableCuda;
+  passthru =
+    {
+      cudaSupport = enableCuda;
 
-    tests =
-      {
-        inherit (gst_all_1) gst-plugins-bad;
-      }
-      // lib.optionalAttrs (!effectiveStdenv.isDarwin) { inherit qimgv; }
-      // lib.optionalAttrs (!enablePython) { pythonEnabled = pythonPackages.opencv4; }
-      // lib.optionalAttrs (effectiveStdenv.buildPlatform != "x86_64-darwin") {
-        opencv4-tests = callPackage ./tests.nix {
-          inherit
-            enableGStreamer
-            enableGtk2
-            enableGtk3
-            runAccuracyTests
-            runPerformanceTests
-            testDataSrc
-            ;
-          inherit opencv4;
+      tests =
+        {
+          inherit (gst_all_1) gst-plugins-bad;
+        }
+        // lib.optionalAttrs (!effectiveStdenv.isDarwin) {
+          inherit qimgv;
+        }
+        // lib.optionalAttrs (!enablePython) {
+          pythonEnabled = pythonPackages.opencv4;
+        }
+        // lib.optionalAttrs (effectiveStdenv.buildPlatform != "x86_64-darwin") {
+          opencv4-tests = callPackage ./tests.nix {
+            inherit
+              enableGStreamer
+              enableGtk2
+              enableGtk3
+              runAccuracyTests
+              runPerformanceTests
+              testDataSrc
+              ;
+            inherit opencv4;
+          };
+        }
+        // lib.optionalAttrs (enableCuda) {
+          no-libstdcxx-errors = callPackage ./libstdcxx-test.nix {
+            attrName = "opencv4";
+          };
         };
-      }
-      // lib.optionalAttrs (enableCuda) {
-        no-libstdcxx-errors = callPackage ./libstdcxx-test.nix { attrName = "opencv4"; };
-      };
-  } // lib.optionalAttrs enablePython { pythonPath = [ ]; };
+    }
+    // lib.optionalAttrs enablePython {
+      pythonPath = [ ];
+    };
 
   meta = with lib; {
     description = "Open Computer Vision Library with more than 500 algorithms";

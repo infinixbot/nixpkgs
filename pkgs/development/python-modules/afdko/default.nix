@@ -136,7 +136,9 @@ buildPythonPackage rec {
     ];
 
   passthru.tests = {
-    fullTestsuite = afdko.override { runAllTests = true; };
+    fullTestsuite = afdko.override {
+      runAllTests = true;
+    };
   };
 
   meta = with lib; {

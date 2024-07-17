@@ -11,8 +11,12 @@
   icu,
 }:
 let
-  boost = boost181.override { enableStatic = true; };
-  protobuf = protobuf_21.override { enableShared = false; };
+  boost = boost181.override {
+    enableStatic = true;
+  };
+  protobuf = protobuf_21.override {
+    enableShared = false;
+  };
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "localproxy";

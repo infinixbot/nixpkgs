@@ -16,7 +16,9 @@ in
         Whether to install Singularity/Apptainer with system-level overriding such as SUID support.
       '';
     };
-    package = lib.mkPackageOption pkgs "singularity" { example = "apptainer"; };
+    package = lib.mkPackageOption pkgs "singularity" {
+      example = "apptainer";
+    };
     packageOverriden = lib.mkOption {
       type = lib.types.nullOr lib.types.package;
       default = null;
@@ -97,7 +99,9 @@ in
         {
           systemBinPaths = cfg.systemBinPaths;
         }
-        // lib.optionalAttrs cfg.enableExternalLocalStateDir { externalLocalStateDir = "/var/lib"; }
+        // lib.optionalAttrs cfg.enableExternalLocalStateDir {
+          externalLocalStateDir = "/var/lib";
+        }
         // lib.optionalAttrs cfg.enableSuid {
           enableSuid = true;
           starterSuidPath = "/run/wrappers/bin/${cfg.package.projectName}-suid";

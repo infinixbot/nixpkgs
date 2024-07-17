@@ -148,7 +148,9 @@ in
       };
       package = mkPackageOption pkgs "listmonk" { };
       settings = mkOption {
-        type = types.submodule { freeformType = tomlFormat.type; };
+        type = types.submodule {
+          freeformType = tomlFormat.type;
+        };
         description = ''
           Static settings set in the config.toml, see <https://github.com/knadh/listmonk/blob/master/config.toml.sample> for details.
           You can set secrets using the secretFile option with environment variables following <https://listmonk.app/docs/configuration/#environment-variables>.

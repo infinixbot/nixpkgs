@@ -38,7 +38,9 @@
       mainProgram = "firefox";
     };
     tests = [ nixosTests.firefox ];
-    updateScript = callPackage ./update.nix { attrPath = "firefox-unwrapped"; };
+    updateScript = callPackage ./update.nix {
+      attrPath = "firefox-unwrapped";
+    };
   };
 
   firefox-beta = buildMozillaMach rec {
@@ -164,5 +166,7 @@
         versionSuffix = "esr";
       };
     }).override
-      { python3 = python311; };
+      {
+        python3 = python311;
+      };
 }

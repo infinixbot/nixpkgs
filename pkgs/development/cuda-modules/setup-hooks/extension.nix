@@ -3,7 +3,9 @@ final: _: {
   # to accommodate automatic CUDAToolkit_ROOT construction
   markForCudatoolkitRootHook = final.callPackage (
     { makeSetupHook }:
-    makeSetupHook { name = "mark-for-cudatoolkit-root-hook"; } ./mark-for-cudatoolkit-root-hook.sh
+    makeSetupHook {
+      name = "mark-for-cudatoolkit-root-hook";
+    } ./mark-for-cudatoolkit-root-hook.sh
   ) { };
 
   # Currently propagated by cuda_nvcc or cudatoolkit, rather than used directly

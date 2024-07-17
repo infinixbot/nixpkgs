@@ -86,7 +86,9 @@ let
           RestartSec = "20s";
           PrivateDevices = "no"; # osd needs disk access
         }
-        // optionalAttrs (daemonType == "mon") { RestartSec = "10"; };
+        // optionalAttrs (daemonType == "mon") {
+          RestartSec = "10";
+        };
     };
 
   makeTarget = daemonType: {
@@ -422,9 +424,15 @@ in
           {
             global = globalSection';
           }
-          // optionalAttrs (cfg.mon.enable && cfg.mon.extraConfig != { }) { mon = cfg.mon.extraConfig; }
-          // optionalAttrs (cfg.mds.enable && cfg.mds.extraConfig != { }) { mds = cfg.mds.extraConfig; }
-          // optionalAttrs (cfg.osd.enable && cfg.osd.extraConfig != { }) { osd = cfg.osd.extraConfig; }
+          // optionalAttrs (cfg.mon.enable && cfg.mon.extraConfig != { }) {
+            mon = cfg.mon.extraConfig;
+          }
+          // optionalAttrs (cfg.mds.enable && cfg.mds.extraConfig != { }) {
+            mds = cfg.mds.extraConfig;
+          }
+          // optionalAttrs (cfg.osd.enable && cfg.osd.extraConfig != { }) {
+            osd = cfg.osd.extraConfig;
+          }
           // optionalAttrs (cfg.client.enable && cfg.client.extraConfig != { }) cfg.client.extraConfig;
       in
       generators.toINI { } totalConfig;

@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
 
   buildInputs = [
     openssl
-    (libevent.override { inherit openssl; })
+    (libevent.override {
+      inherit openssl;
+    })
     libprom
     libpromhttp
     libmicrohttpd

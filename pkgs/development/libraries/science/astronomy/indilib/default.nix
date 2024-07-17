@@ -72,7 +72,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru.tests = {
     # make sure 3rd party drivers compile with this indilib
-    indi-full = indi-full.override { indilib = finalAttrs.finalPackage; };
+    indi-full = indi-full.override {
+      indilib = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

@@ -43,7 +43,9 @@ stdenv.mkDerivation rec {
     patchelf --add-rpath ${lib.getLib rocmPackages.rocm-smi}/lib $out/bin/btop
   '';
 
-  passthru.tests.version = testers.testVersion { package = btop; };
+  passthru.tests.version = testers.testVersion {
+    package = btop;
+  };
 
   meta = with lib; {
     description = "Monitor of resources";

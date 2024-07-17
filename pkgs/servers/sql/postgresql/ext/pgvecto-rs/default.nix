@@ -20,7 +20,9 @@ let
   # See https://docs.pgvecto.rs/developers/development.html#environment, step 4
   clang = clang_16;
   rustPlatform' = rustPlatform // {
-    bindgenHook = rustPlatform.bindgenHook.override { inherit clang; };
+    bindgenHook = rustPlatform.bindgenHook.override {
+      inherit clang;
+    };
   };
 
 in

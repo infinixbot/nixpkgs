@@ -50,7 +50,9 @@ let
         url = builtins.elemAt parts 0;
         sha = builtins.elemAt parts 4;
       }
-      // lib.optionalAttrs (type != null) { inherit type value; };
+      // lib.optionalAttrs (type != null) {
+        inherit type value;
+      };
 
   # shadows args.lockFileContents
   lockFileContents = if lockFile != null then builtins.readFile lockFile else args.lockFileContents;

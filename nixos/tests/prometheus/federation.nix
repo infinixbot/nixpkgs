@@ -116,12 +116,18 @@ import ../make-test-python.nix (
               {
                 job_name = "node";
                 static_configs = [
-                  { targets = [ "node1:${toString config.services.prometheus.exporters.node.port}" ]; }
+                  {
+                    targets = [ "node1:${toString config.services.prometheus.exporters.node.port}" ];
+                  }
                 ];
               }
               {
                 job_name = "prometheus";
-                static_configs = [ { targets = [ "prometheus1:${toString config.services.prometheus.port}" ]; } ];
+                static_configs = [
+                  {
+                    targets = [ "prometheus1:${toString config.services.prometheus.port}" ];
+                  }
+                ];
               }
             ];
           };
@@ -142,12 +148,18 @@ import ../make-test-python.nix (
               {
                 job_name = "node";
                 static_configs = [
-                  { targets = [ "node2:${toString config.services.prometheus.exporters.node.port}" ]; }
+                  {
+                    targets = [ "node2:${toString config.services.prometheus.exporters.node.port}" ];
+                  }
                 ];
               }
               {
                 job_name = "prometheus";
-                static_configs = [ { targets = [ "prometheus2:${toString config.services.prometheus.port}" ]; } ];
+                static_configs = [
+                  {
+                    targets = [ "prometheus2:${toString config.services.prometheus.port}" ];
+                  }
+                ];
               }
             ];
           };

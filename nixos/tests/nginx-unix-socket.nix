@@ -14,7 +14,11 @@ import ./make-test-python.nix (
             enable = true;
             virtualHosts.localhost = {
               serverName = "localhost";
-              listen = [ { addr = "unix:${nginxSocketPath}"; } ];
+              listen = [
+                {
+                  addr = "unix:${nginxSocketPath}";
+                }
+              ];
               locations."/test".return = "200 'foo'";
             };
           };

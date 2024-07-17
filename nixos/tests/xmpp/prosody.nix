@@ -1,11 +1,15 @@
 let
   cert =
     pkgs:
-    pkgs.runCommand "selfSignedCerts" { buildInputs = [ pkgs.openssl ]; } ''
-      openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -nodes -subj '/CN=example.com/CN=uploads.example.com/CN=conference.example.com' -days 36500
-      mkdir -p $out
-      cp key.pem cert.pem $out
-    '';
+    pkgs.runCommand "selfSignedCerts"
+      {
+        buildInputs = [ pkgs.openssl ];
+      }
+      ''
+        openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -nodes -subj '/CN=example.com/CN=uploads.example.com/CN=conference.example.com' -days 36500
+        mkdir -p $out
+        cp key.pem cert.pem $out
+      '';
   createUsers =
     pkgs:
     pkgs.writeScriptBin "create-prosody-users" ''
@@ -56,7 +60,9 @@ import ../make-test-python.nix {
           ${nodes.server.config.networking.primaryIPAddress} uploads.example.com
         '';
         environment.systemPackages = [
-          (pkgs.callPackage ./xmpp-sendmessage.nix { connectTo = "example.com"; })
+          (pkgs.callPackage ./xmpp-sendmessage.nix {
+            connectTo = "example.com";
+          })
         ];
       };
     server =
@@ -84,7 +90,11 @@ import ../make-test-python.nix {
             ssl.cert = "${cert pkgs}/cert.pem";
             ssl.key = "${cert pkgs}/key.pem";
           };
-          muc = [ { domain = "conference.example.com"; } ];
+          muc = [
+            {
+              domain = "conference.example.com";
+            }
+          ];
           uploadHttp = {
             domain = "uploads.example.com";
           };

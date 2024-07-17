@@ -49,7 +49,9 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  passthru.tests.version = testers.testVersion { package = crowdin-cli; };
+  passthru.tests.version = testers.testVersion {
+    package = crowdin-cli;
+  };
 
   meta = with lib; {
     mainProgram = "crowdin";

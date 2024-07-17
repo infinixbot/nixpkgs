@@ -99,7 +99,9 @@ let
             php = generic filteredArgs;
 
             php-packages =
-              (callPackage ../../../top-level/php-packages.nix { phpPackage = phpWithExtensions; }).overrideScope
+              (callPackage ../../../top-level/php-packages.nix {
+                phpPackage = phpWithExtensions;
+              }).overrideScope
                 packageOverrides;
 
             allExtensionFunctions = prevExtensionFunctions ++ [ extensions ];
@@ -160,9 +162,16 @@ let
                   f:
                   let
                     newPhpAttrsOverrides = composeOverrides (filteredArgs.phpAttrsOverrides or (attrs: { })) f;
-                    php = generic (filteredArgs // { phpAttrsOverrides = newPhpAttrsOverrides; });
+                    php = generic (
+                      filteredArgs
+                      // {
+                        phpAttrsOverrides = newPhpAttrsOverrides;
+                      }
+                    );
                   in
-                  php.buildEnv { inherit extensions extraConfig; };
+                  php.buildEnv {
+                    inherit extensions extraConfig;
+                  };
                 phpIni = "${phpWithExtensions}/lib/php.ini";
                 unwrapped = php;
                 # Select the right php tests for the php version
@@ -213,7 +222,9 @@ let
 
       mkWithExtensions =
         prevArgs: prevExtensionFunctions: extensions:
-        mkBuildEnv prevArgs prevExtensionFunctions { inherit extensions; };
+        mkBuildEnv prevArgs prevExtensionFunctions {
+          inherit extensions;
+        };
 
       defaultPhpSrc = fetchurl {
         url = "https://www.php.net/distributions/php-${version}.tar.bz2";
@@ -374,7 +385,12 @@ let
               f:
               let
                 newPhpAttrsOverrides = composeOverrides phpAttrsOverrides f;
-                php = generic (args // { phpAttrsOverrides = newPhpAttrsOverrides; });
+                php = generic (
+                  args
+                  // {
+                    phpAttrsOverrides = newPhpAttrsOverrides;
+                  }
+                );
               in
               php;
             inherit ztsSupport;

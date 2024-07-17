@@ -167,7 +167,9 @@ lib.makeOverridable (
             elfutils
             hexdump
             # module makefiles often run uname commands to find out the kernel version
-            (buildPackages.deterministic-uname.override { inherit modDirVersion; })
+            (buildPackages.deterministic-uname.override {
+              inherit modDirVersion;
+            })
           ]
           ++ optional (lib.versionAtLeast version "5.13") zstd
           ++ optionals withRust [
@@ -543,6 +545,8 @@ lib.makeOverridable (
 
       karch = stdenv.hostPlatform.linuxArch;
     }
-    // (optionalAttrs (pos != null) { inherit pos; })
+    // (optionalAttrs (pos != null) {
+      inherit pos;
+    })
   )
 )

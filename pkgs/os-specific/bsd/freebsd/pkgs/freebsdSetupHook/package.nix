@@ -1,3 +1,5 @@
 { makeSetupHook }:
 
-makeSetupHook { name = "freebsd-setup-hook"; } ./setup-hook.sh
+makeSetupHook {
+  name = "freebsd-setup-hook";
+} ./setup-hook.sh

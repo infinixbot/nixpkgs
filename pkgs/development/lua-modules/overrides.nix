@@ -514,7 +514,10 @@ in
   });
 
   luasystem = prev.luasystem.overrideAttrs (
-    oa: lib.optionalAttrs stdenv.isLinux { buildInputs = [ glibc.out ]; }
+    oa:
+    lib.optionalAttrs stdenv.isLinux {
+      buildInputs = [ glibc.out ];
+    }
   );
 
   luazip = prev.luazip.overrideAttrs (oa: {

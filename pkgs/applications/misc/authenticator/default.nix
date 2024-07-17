@@ -59,7 +59,9 @@ stdenv.mkDerivation rec {
     glib
     gst_all_1.gstreamer
     gst_all_1.gst-plugins-base
-    (gst_all_1.gst-plugins-bad.override { enableZbar = true; })
+    (gst_all_1.gst-plugins-bad.override {
+      enableZbar = true;
+    })
     gtk4
     libadwaita
     openssl

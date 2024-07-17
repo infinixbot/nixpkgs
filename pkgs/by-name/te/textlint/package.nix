@@ -68,10 +68,14 @@ buildNpmPackage rec {
   passthru = {
     withPackages =
       ps:
-      runCommand "textlint-with-packages" { nativeBuildInputs = [ makeWrapper ]; } ''
-        makeWrapper ${textlint}/bin/textlint $out/bin/textlint \
-          --set NODE_PATH ${lib.makeSearchPath "lib/node_modules" ps}
-      '';
+      runCommand "textlint-with-packages"
+        {
+          nativeBuildInputs = [ makeWrapper ];
+        }
+        ''
+          makeWrapper ${textlint}/bin/textlint $out/bin/textlint \
+            --set NODE_PATH ${lib.makeSearchPath "lib/node_modules" ps}
+        '';
 
     testPackages =
       {

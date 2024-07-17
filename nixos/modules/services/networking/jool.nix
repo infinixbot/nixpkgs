@@ -47,9 +47,21 @@ let
 
   # Generate the config file of instance `name`
   nat64Conf =
-    name: configFormat.generate "jool-nat64-${name}.conf" (cfg.nat64.${name} // { instance = name; });
+    name:
+    configFormat.generate "jool-nat64-${name}.conf" (
+      cfg.nat64.${name}
+      // {
+        instance = name;
+      }
+    );
   siitConf =
-    name: configFormat.generate "jool-siit-${name}.conf" (cfg.siit.${name} // { instance = name; });
+    name:
+    configFormat.generate "jool-siit-${name}.conf" (
+      cfg.siit.${name}
+      // {
+        instance = name;
+      }
+    );
 
   # NAT64 config type
   nat64Options = lib.types.submodule {

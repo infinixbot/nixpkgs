@@ -48,7 +48,9 @@ stdenv.mkDerivation rec {
   # dynamic build and plugin support. Generating it with make and checking it
   # in to nixpkgs here was the easiest way to supply it to rustPlatform.
   # See: https://github.com/Shizcow/dmenu-rs/issues/34#issuecomment-757415584
-  cargoDeps = rustPlatform.importCargoLock { lockFile = ./Cargo.lock; };
+  cargoDeps = rustPlatform.importCargoLock {
+    lockFile = ./Cargo.lock;
+  };
 
   # Copy the Cargo.lock stored here in nixpkgs into the build directory.
   postPatch = ''

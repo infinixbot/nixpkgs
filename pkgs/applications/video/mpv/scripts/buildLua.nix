@@ -90,7 +90,9 @@ lib.makeOverridable (
                 else
                   builtins.unsafeGetAttrPos "pname" args;
             in
-            lib.optionalAttrs (pos != null) { position = "${pos.file}:${toString pos.line}"; }
+            lib.optionalAttrs (pos != null) {
+              position = "${pos.file}:${toString pos.line}";
+            }
           );
       }
     )

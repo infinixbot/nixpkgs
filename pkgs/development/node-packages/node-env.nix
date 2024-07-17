@@ -133,7 +133,9 @@ let
     }@args:
     builtins.addErrorContext "while evaluating node package '${packageName}'" ''
       installPackage "${packageName}" "${src}"
-      ${includeDependencies { inherit dependencies; }}
+      ${includeDependencies {
+        inherit dependencies;
+      }}
       cd ..
       ${lib.optionalString (builtins.substring 0 1 packageName == "@") "cd .."}
     '';
@@ -226,7 +228,11 @@ let
       if [ -d "${packageName}" ]
       then
           cd "${packageName}"
-          ${pinpointDependencies { inherit dependencies production; }}
+          ${
+            pinpointDependencies {
+              inherit dependencies production;
+            }
+          }
           cd ..
           ${lib.optionalString (builtins.substring 0 1 packageName == "@") "cd .."}
       fi
@@ -676,7 +682,9 @@ let
         inherit dontStrip; # Stripping may fail a build for some package deployments
         inherit dontNpmInstall unpackPhase buildPhase;
 
-        includeScript = includeDependencies { inherit dependencies; };
+        includeScript = includeDependencies {
+          inherit dependencies;
+        };
         pinpointDependenciesScript = pinpointDependenciesOfPackage args;
 
         passAsFile = [

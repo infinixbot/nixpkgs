@@ -16,52 +16,55 @@
 # build libsigrok plus its Python bindings. Unfortunately it does not appear
 # to be possible to build them separately, at least not easily.
 toPythonModule (
-  (libsigrok.override { inherit python; }).overrideAttrs (orig: {
-    pname = "${python.libPrefix}-sigrok";
+  (libsigrok.override {
+    inherit python;
+  }).overrideAttrs
+    (orig: {
+      pname = "${python.libPrefix}-sigrok";
 
-    patches = orig.patches or [ ] ++ [
-      # Makes libsigrok install the bindings into site-packages properly (like
-      # we expect) instead of making a version-specific *.egg subdirectory.
-      ./python-install.patch
-    ];
-
-    nativeBuildInputs =
-      orig.nativeBuildInputs or [ ]
-      ++ [
-        autoreconfHook
-        setuptools
-        swig
-        numpy
-      ]
-      ++ lib.optionals (stdenv.hostPlatform == stdenv.buildPlatform) [
-        pythonImportsCheckHook
-        pythonCatchConflictsHook
+      patches = orig.patches or [ ] ++ [
+        # Makes libsigrok install the bindings into site-packages properly (like
+        # we expect) instead of making a version-specific *.egg subdirectory.
+        ./python-install.patch
       ];
 
-    buildInputs = orig.buildInputs or [ ] ++ [
-      pygobject3 # makes headers available the configure script checks for
-    ];
+      nativeBuildInputs =
+        orig.nativeBuildInputs or [ ]
+        ++ [
+          autoreconfHook
+          setuptools
+          swig
+          numpy
+        ]
+        ++ lib.optionals (stdenv.hostPlatform == stdenv.buildPlatform) [
+          pythonImportsCheckHook
+          pythonCatchConflictsHook
+        ];
 
-    propagatedBuildInputs = orig.propagatedBuildInputs or [ ] ++ [
-      pygobject3
-      numpy
-    ];
+      buildInputs = orig.buildInputs or [ ] ++ [
+        pygobject3 # makes headers available the configure script checks for
+      ];
 
-    postInstall = ''
-      ${orig.postInstall or ""}
+      propagatedBuildInputs = orig.propagatedBuildInputs or [ ] ++ [
+        pygobject3
+        numpy
+      ];
 
-      # for pythonImportsCheck
-      export PYTHONPATH="$out/${python.sitePackages}:$PYTHONPATH"
-    '';
+      postInstall = ''
+        ${orig.postInstall or ""}
 
-    pythonImportsCheck = [
-      "sigrok"
-      "sigrok.core"
-    ];
+        # for pythonImportsCheck
+        export PYTHONPATH="$out/${python.sitePackages}:$PYTHONPATH"
+      '';
 
-    meta = orig.meta // {
-      description = "Python bindings for libsigrok";
-      maintainers = orig.meta.maintainers ++ [ lib.maintainers.sternenseemann ];
-    };
-  })
+      pythonImportsCheck = [
+        "sigrok"
+        "sigrok.core"
+      ];
+
+      meta = orig.meta // {
+        description = "Python bindings for libsigrok";
+        maintainers = orig.meta.maintainers ++ [ lib.maintainers.sternenseemann ];
+      };
+    })
 )

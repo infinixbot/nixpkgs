@@ -36,7 +36,9 @@ stdenv.mkDerivation (finalAttrs: {
   makeFlags = [ "DESTDIR=$(out)" ];
 
   passthru = {
-    tests.version = testers.testVersion { package = finalAttrs.finalPackage; };
+    tests.version = testers.testVersion {
+      package = finalAttrs.finalPackage;
+    };
     updateScript = nix-update-script { };
   };
 

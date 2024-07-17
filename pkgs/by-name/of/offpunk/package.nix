@@ -55,7 +55,9 @@ python3Packages.buildPythonApplication rec {
     installManPage man/*.1
   '';
 
-  passthru.tests.version = testers.testVersion { package = offpunk; };
+  passthru.tests.version = testers.testVersion {
+    package = offpunk;
+  };
 
   meta = {
     description = "Command-line and offline-first smolnet browser/feed reader";

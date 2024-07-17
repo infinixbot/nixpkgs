@@ -39,8 +39,12 @@ in
       mkAdoptopenjdk =
         path-linux: path-darwin:
         let
-          package-linux = import path-linux { inherit stdenv lib; };
-          package-darwin = import path-darwin { inherit lib; };
+          package-linux = import path-linux {
+            inherit stdenv lib;
+          };
+          package-darwin = import path-darwin {
+            inherit lib;
+          };
           package = if stdenv.isLinux then package-linux else package-darwin;
         in
         {
@@ -50,8 +54,12 @@ in
           jdk-hotspot = callPackage package.jdk-hotspot { };
           jre-hotspot = callPackage package.jre-hotspot { };
         }
-        // lib.optionalAttrs (package ? jdk-openj9) { jdk-openj9 = callPackage package.jdk-openj9 { }; }
-        // lib.optionalAttrs (package ? jre-openj9) { jre-openj9 = callPackage package.jre-openj9 { }; };
+        // lib.optionalAttrs (package ? jdk-openj9) {
+          jdk-openj9 = callPackage package.jdk-openj9 { };
+        }
+        // lib.optionalAttrs (package ? jre-openj9) {
+          jre-openj9 = callPackage package.jre-openj9 { };
+        };
 
       mkBootstrap =
         adoptopenjdk: path: args:
@@ -59,7 +67,9 @@ in
         if !stdenv.hostPlatform.isi686 then
           # only linux has the gtkSupport option
           if stdenv.isLinux then
-            adoptopenjdk.jdk-hotspot.override { gtkSupport = false; }
+            adoptopenjdk.jdk-hotspot.override {
+              gtkSupport = false;
+            }
           else
             adoptopenjdk.jdk-hotspot
         else
@@ -73,7 +83,10 @@ in
           let
             openjdk = callPackage path-darwin { };
           in
-          openjdk // { headless = openjdk; };
+          openjdk
+          // {
+            headless = openjdk;
+          };
 
       mkOpenjdkLinuxOnly =
         path-linux: args:
@@ -81,7 +94,12 @@ in
           openjdk = callPackage path-linux (gnomeArgs // args);
         in
         assert stdenv.isLinux;
-        openjdk // { headless = openjdk.override { headless = true; }; };
+        openjdk
+        // {
+          headless = openjdk.override {
+            headless = true;
+          };
+        };
 
     in
     rec {
@@ -122,23 +140,38 @@ in
       );
 
       openjdk14-bootstrap = mkBootstrap adoptopenjdk-14 ../development/compilers/openjdk/13.nix (
-        bootstrapArgs // { inherit openjdk13-bootstrap; }
+        bootstrapArgs
+        // {
+          inherit openjdk13-bootstrap;
+        }
       );
 
       openjdk15-bootstrap = mkBootstrap adoptopenjdk-15 ../development/compilers/openjdk/14.nix (
-        bootstrapArgs // { inherit openjdk14-bootstrap; }
+        bootstrapArgs
+        // {
+          inherit openjdk14-bootstrap;
+        }
       );
 
       openjdk16-bootstrap = mkBootstrap adoptopenjdk-16 ../development/compilers/openjdk/15.nix (
-        bootstrapArgs // { inherit openjdk15-bootstrap; }
+        bootstrapArgs
+        // {
+          inherit openjdk15-bootstrap;
+        }
       );
 
       openjdk17-bootstrap = mkBootstrap adoptopenjdk-17 ../development/compilers/openjdk/16.nix (
-        bootstrapArgs // { inherit openjdk16-bootstrap; }
+        bootstrapArgs
+        // {
+          inherit openjdk16-bootstrap;
+        }
       );
 
       openjdk18-bootstrap = mkBootstrap adoptopenjdk-17 ../development/compilers/openjdk/17.nix (
-        bootstrapArgs // { inherit openjdk17-bootstrap; }
+        bootstrapArgs
+        // {
+          inherit openjdk17-bootstrap;
+        }
       );
 
       openjdk8 = mkOpenjdk ../development/compilers/openjdk/8.nix ../development/compilers/zulu/8.nix { };

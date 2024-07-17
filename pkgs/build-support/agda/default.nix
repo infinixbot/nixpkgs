@@ -67,7 +67,14 @@ let
         ln -s ${Agda.bin}/bin/agda-mode $out/bin/agda-mode
       '';
 
-  withPackages = arg: if isAttrs arg then withPackages' arg else withPackages' { pkgs = arg; };
+  withPackages =
+    arg:
+    if isAttrs arg then
+      withPackages' arg
+    else
+      withPackages' {
+        pkgs = arg;
+      };
 
   extensions = [
     "agda"
@@ -139,7 +146,14 @@ let
       # set this only on non-darwin.
       LC_ALL = optionalString (!stdenv.isDarwin) "C.UTF-8";
 
-      meta = if meta.broken or false then meta // { hydraPlatforms = platforms.none; } else meta;
+      meta =
+        if meta.broken or false then
+          meta
+          // {
+            hydraPlatforms = platforms.none;
+          }
+        else
+          meta;
 
       # Retrieve all packages from the finished package set that have the current package as a dependency and build them
       passthru.tests = filterAttrs (

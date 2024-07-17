@@ -99,7 +99,9 @@ stdenv.mkDerivation (finalAttrs: {
     scenefx
     wayland
     wayland-protocols
-    (wlroots.override { inherit (finalAttrs) enableXWayland; })
+    (wlroots.override {
+      inherit (finalAttrs) enableXWayland;
+    })
   ] ++ lib.optionals finalAttrs.enableXWayland [ xcbutilwm ];
 
   mesonFlags =

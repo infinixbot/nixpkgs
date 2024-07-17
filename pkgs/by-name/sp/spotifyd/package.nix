@@ -63,7 +63,9 @@ rustPackages.rustPlatform.buildRustPackage rec {
       package = spotifyd;
       version = builtins.head (lib.splitString "-" version);
     };
-    updateScript = nix-update-script { extraArgs = [ "--version=branch" ]; };
+    updateScript = nix-update-script {
+      extraArgs = [ "--version=branch" ];
+    };
   };
 
   meta = {

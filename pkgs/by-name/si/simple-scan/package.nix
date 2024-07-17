@@ -67,7 +67,9 @@ stdenv.mkDerivation rec {
   doCheck = true;
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "simple-scan"; };
+    updateScript = gnome.updateScript {
+      packageName = "simple-scan";
+    };
   };
 
   meta = with lib; {

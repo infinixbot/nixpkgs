@@ -12,7 +12,9 @@
 }:
 
 let
-  mavenJdk8 = maven.override { jdk = jdk8; };
+  mavenJdk8 = maven.override {
+    jdk = jdk8;
+  };
 
   defineMvnWrapper = ''
     mvn()

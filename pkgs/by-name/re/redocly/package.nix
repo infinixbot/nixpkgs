@@ -44,7 +44,9 @@ buildNpmPackage rec {
   '';
 
   passthru = {
-    tests.version = testers.testVersion { package = redocly; };
+    tests.version = testers.testVersion {
+      package = redocly;
+    };
   };
 
   meta = {

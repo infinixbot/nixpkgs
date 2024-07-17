@@ -108,7 +108,9 @@ stdenv.mkDerivation (finalAttrs: {
       gst-plugins-bad
     ]);
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v."; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v.";
+  };
 
   meta = with lib; {
     description = "Modern feed reader designed for the GNOME desktop";

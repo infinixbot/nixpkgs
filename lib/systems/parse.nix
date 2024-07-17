@@ -60,7 +60,12 @@ let
     mapAttrs (
       name: value:
       assert type.check value;
-      setType type.name ({ inherit name; } // value)
+      setType type.name (
+        {
+          inherit name;
+        }
+        // value
+      )
     );
 
   # gnu-config will ignore the portion of a triple matching the

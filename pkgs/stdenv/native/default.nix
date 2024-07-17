@@ -200,7 +200,9 @@ in
     stdenv =
       makeStdenv {
         inherit (prevStage) cc fetchurl;
-        overrides = self: super: { inherit (prevStage) fetchurl; };
+        overrides = self: super: {
+          inherit (prevStage) fetchurl;
+        };
       }
       // {
         inherit (prevStage) fetchurl;
@@ -214,7 +216,9 @@ in
     stdenv = makeStdenv {
       inherit (prevStage.stdenv) cc fetchurl;
       extraPath = [ prevStage.xz ];
-      overrides = self: super: { inherit (prevStage) fetchurl xz; };
+      overrides = self: super: {
+        inherit (prevStage) fetchurl xz;
+      };
       extraNativeBuildInputs = if localSystem.isLinux then [ prevStage.patchelf ] else [ ];
     };
   })

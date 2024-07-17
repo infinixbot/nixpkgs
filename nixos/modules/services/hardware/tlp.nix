@@ -8,7 +8,9 @@ with lib;
 let
   cfg = config.services.tlp;
   enableRDW = config.networking.networkmanager.enable;
-  tlp = pkgs.tlp.override { inherit enableRDW; };
+  tlp = pkgs.tlp.override {
+    inherit enableRDW;
+  };
   # TODO: Use this for having proper parameters in the future
   mkTlpConfig =
     tlpConfig:

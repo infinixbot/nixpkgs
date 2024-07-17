@@ -44,7 +44,10 @@ let
   pythonToUse =
     let
       extraPythonPackages = (
-        (callPackage ./extra-python-packages.nix { inherit python3; }).getExtraPythonPackages packageNames
+        (callPackage ./extra-python-packages.nix {
+          inherit python3;
+        }).getExtraPythonPackages
+          packageNames
       );
     in
     (
@@ -133,11 +136,18 @@ let
   #   ...
   # }
   # This is also the point where we apply the packageOverrides.
-  dependencyUuidToInfo = import dependencies { inherit fetchgit; };
+  dependencyUuidToInfo = import dependencies {
+    inherit fetchgit;
+  };
   fillInOverrideSrc =
     uuid: info:
     if lib.hasAttr info.name packageOverrides then
-      (info // { src = lib.getAttr info.name packageOverrides; })
+      (
+        info
+        // {
+          src = lib.getAttr info.name packageOverrides;
+        }
+      )
     else
       info;
   dependencyUuidToRepo = lib.mapAttrs util.repoifyInfo (
@@ -157,7 +167,12 @@ let
   fillInOverrideSrc' =
     uuid: info:
     if lib.hasAttr info.name packageOverridesRepoified then
-      (info // { src = lib.getAttr info.name packageOverridesRepoified; })
+      (
+        info
+        // {
+          src = lib.getAttr info.name packageOverridesRepoified;
+        }
+      )
     else
       info;
   overridesOnly = lib.mapAttrs fillInOverrideSrc' (
@@ -226,7 +241,10 @@ let
     text = lib.generators.toJSON { } artifacts;
   };
   overridesToml =
-    runCommand "Overrides.toml" { buildInputs = [ (python3.withPackages (ps: with ps; [ toml ])) ]; }
+    runCommand "Overrides.toml"
+      {
+        buildInputs = [ (python3.withPackages (ps: with ps; [ toml ])) ];
+      }
       ''
         python ${./python}/format_overrides.py \
           "${overridesJson}" \

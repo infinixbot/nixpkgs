@@ -255,7 +255,11 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru =
     let
-      useThisCurl = attr: attr.override { curl = finalAttrs.finalPackage; };
+      useThisCurl =
+        attr:
+        attr.override {
+          curl = finalAttrs.finalPackage;
+        };
     in
     {
       inherit opensslSupport openssl;
@@ -276,12 +280,18 @@ stdenv.mkDerivation (finalAttrs: {
           nginx-http3 = nixosTests.nginx-http3;
           pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
         }
-        // lib.optionalAttrs (stdenv.hostPlatform.system != "x86_64-darwin") { static = pkgsStatic.curl; }
+        // lib.optionalAttrs (stdenv.hostPlatform.system != "x86_64-darwin") {
+          static = pkgsStatic.curl;
+        }
         // lib.optionalAttrs (!stdenv.isDarwin) {
           fetchpatch = tests.fetchpatch.simple.override {
-            fetchpatch = (fetchpatch.override { fetchurl = useThisCurl fetchurl; }) // {
-              version = 1;
-            };
+            fetchpatch =
+              (fetchpatch.override {
+                fetchurl = useThisCurl fetchurl;
+              })
+              // {
+                version = 1;
+              };
           };
         };
     };

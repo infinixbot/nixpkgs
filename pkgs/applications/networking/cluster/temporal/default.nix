@@ -45,7 +45,9 @@ buildGoModule rec {
     runHook postInstall
   '';
 
-  passthru.tests.version = testers.testVersion { package = temporal; };
+  passthru.tests.version = testers.testVersion {
+    package = temporal;
+  };
 
   meta = with lib; {
     description = "Microservice orchestration platform which enables developers to build scalable applications without sacrificing productivity or reliability";

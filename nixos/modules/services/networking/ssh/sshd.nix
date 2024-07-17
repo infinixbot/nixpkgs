@@ -38,7 +38,9 @@ let
           throw "unsupported type ${builtins.typeOf v}: ${(lib.generators.toPretty { }) v}";
 
       base = pkgs.formats.keyValue {
-        mkKeyValue = lib.generators.mkKeyValueDefault { inherit mkValueString; } " ";
+        mkKeyValue = lib.generators.mkKeyValueDefault {
+          inherit mkValueString;
+        } " ";
       };
       # OpenSSH is very inconsistent with options that can take multiple values.
       # For some of them, they can simply appear multiple times and are appended, for others the
@@ -785,7 +787,9 @@ in
 
     };
 
-    users.users = mkOption { type = with types; attrsOf (submodule userOptions); };
+    users.users = mkOption {
+      type = with types; attrsOf (submodule userOptions);
+    };
 
   };
 
@@ -959,19 +963,24 @@ in
     '';
 
     system.checks = [
-      (pkgs.runCommand "check-sshd-config" { nativeBuildInputs = [ validationPackage ]; } ''
-        ${concatMapStringsSep "\n" (
-          lport: "sshd -G -T -C lport=${toString lport} -f ${sshconf} > /dev/null"
-        ) cfg.ports}
-        ${concatMapStringsSep "\n" (
-          la:
-          concatMapStringsSep "\n" (
-            port:
-            "sshd -G -T -C ${escapeShellArg "laddr=${la.addr},lport=${toString port}"} -f ${sshconf} > /dev/null"
-          ) (if la.port != null then [ la.port ] else cfg.ports)
-        ) cfg.listenAddresses}
-        touch $out
-      '')
+      (pkgs.runCommand "check-sshd-config"
+        {
+          nativeBuildInputs = [ validationPackage ];
+        }
+        ''
+          ${concatMapStringsSep "\n" (
+            lport: "sshd -G -T -C lport=${toString lport} -f ${sshconf} > /dev/null"
+          ) cfg.ports}
+          ${concatMapStringsSep "\n" (
+            la:
+            concatMapStringsSep "\n" (
+              port:
+              "sshd -G -T -C ${escapeShellArg "laddr=${la.addr},lport=${toString port}"} -f ${sshconf} > /dev/null"
+            ) (if la.port != null then [ la.port ] else cfg.ports)
+          ) cfg.listenAddresses}
+          touch $out
+        ''
+      )
     ];
 
     assertions =

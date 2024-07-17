@@ -101,7 +101,13 @@ with lib;
     };
 
     virtualIps = mkOption {
-      type = types.listOf (types.submodule (import ./virtual-ip-options.nix { inherit lib; }));
+      type = types.listOf (
+        types.submodule (
+          import ./virtual-ip-options.nix {
+            inherit lib;
+          }
+        )
+      );
       default = [ ];
       # TODO: example
       description = "Declarative vhost config";

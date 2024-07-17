@@ -13,7 +13,9 @@
 # ./result/bin/semgrep scan --metrics=off --config 'r/generic.unicode.security.bidi.contains-bidirectional-characters'
 
 let
-  common = import ./common.nix { inherit lib; };
+  common = import ./common.nix {
+    inherit lib;
+  };
   semgrepBinPath = lib.makeBinPath [ semgrep-core ];
 in
 buildPythonApplication rec {

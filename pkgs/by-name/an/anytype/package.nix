@@ -14,7 +14,9 @@ let
     name = "Anytype-${version}.AppImage";
     hash = "sha256-z/Htqq2HgCKNPzF81/nvLK/32KuMUYdHRTQbM8hZSIw=";
   };
-  appimageContents = appimageTools.extractType2 { inherit name src; };
+  appimageContents = appimageTools.extractType2 {
+    inherit name src;
+  };
 in
 appimageTools.wrapType2 {
   inherit name src;

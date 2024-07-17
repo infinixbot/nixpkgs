@@ -15,7 +15,9 @@ appimageTools.wrapType2 rec {
 
   extraInstallCommands =
     let
-      contents = appimageTools.extract { inherit pname version src; };
+      contents = appimageTools.extract {
+        inherit pname version src;
+      };
     in
     ''
       install -Dm644 ${contents}/dopamine.desktop $out/share/applications/dopamine.desktop
@@ -24,7 +26,9 @@ appimageTools.wrapType2 rec {
       cp -r ${contents}/usr/share/icons $out/share
     '';
 
-  passthru.updateScript = nix-update-script { extraArgs = [ "--version=unstable" ]; };
+  passthru.updateScript = nix-update-script {
+    extraArgs = [ "--version=unstable" ];
+  };
 
   meta = {
     changelog = "https://github.com/digimezzo/dopamine/blob/${version}/CHANGELOG.md";

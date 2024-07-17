@@ -59,7 +59,9 @@ let
   version = info.version;
 
   # when building a headless jdk, also bootstrap it with a headless jdk
-  openjdk-bootstrap = openjdk22-bootstrap.override { gtkSupport = !headless; };
+  openjdk-bootstrap = openjdk22-bootstrap.override {
+    gtkSupport = !headless;
+  };
 in
 
 stdenv.mkDerivation (finalAttrs: {

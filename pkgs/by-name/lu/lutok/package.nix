@@ -72,7 +72,9 @@ lib.fix (
     checkInputs = [ atf' ];
     nativeCheckInputs = [ kyua' ];
 
-    passthru.updateScript = gitUpdater { rev-prefix = "lutok-"; };
+    passthru.updateScript = gitUpdater {
+      rev-prefix = "lutok-";
+    };
 
     __structuredAttrs = true;
 

@@ -11,11 +11,16 @@ let
   cfg = config.services.dgraph;
   settingsFormat = pkgs.formats.json { };
   configFile = settingsFormat.generate "config.json" cfg.settings;
-  dgraphWithNode = pkgs.runCommand "dgraph" { nativeBuildInputs = [ pkgs.makeWrapper ]; } ''
-    mkdir -p $out/bin
-    makeWrapper ${cfg.package}/bin/dgraph $out/bin/dgraph \
-      --prefix PATH : "${lib.makeBinPath [ pkgs.nodejs ]}" \
-  '';
+  dgraphWithNode =
+    pkgs.runCommand "dgraph"
+      {
+        nativeBuildInputs = [ pkgs.makeWrapper ];
+      }
+      ''
+        mkdir -p $out/bin
+        makeWrapper ${cfg.package}/bin/dgraph $out/bin/dgraph \
+          --prefix PATH : "${lib.makeBinPath [ pkgs.nodejs ]}" \
+      '';
   securityOptions = {
     NoNewPrivileges = true;
 

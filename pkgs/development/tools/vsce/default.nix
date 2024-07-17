@@ -46,7 +46,9 @@ buildNpmPackage rec {
   makeCacheWritable = true;
   npmFlags = [ "--legacy-peer-deps" ];
 
-  passthru.tests.version = testers.testVersion { package = vsce; };
+  passthru.tests.version = testers.testVersion {
+    package = vsce;
+  };
 
   meta = with lib; {
     homepage = "https://github.com/microsoft/vscode-vsce";

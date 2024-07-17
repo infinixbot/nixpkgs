@@ -25,7 +25,9 @@
   tsm-client, # Tivoli Storage Manager Backup Client from IBM
 }:
 
-with (import ./srcs.nix { inherit fetchurl; });
+with (import ./srcs.nix {
+  inherit fetchurl;
+});
 let
   inherit (lib) optional optionalString optionals;
 

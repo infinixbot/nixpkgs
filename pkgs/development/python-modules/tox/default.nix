@@ -63,7 +63,9 @@ buildPythonPackage rec {
   doCheck = false; # infinite recursion via devpi-client
 
   passthru.tests = {
-    version = testers.testVersion { package = tox; };
+    version = testers.testVersion {
+      package = tox;
+    };
   };
 
   meta = with lib; {

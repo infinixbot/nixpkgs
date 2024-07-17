@@ -23,7 +23,9 @@
 }:
 
 let
-  sdClosureInfo = pkgs.buildPackages.closureInfo { rootPaths = storePaths; };
+  sdClosureInfo = pkgs.buildPackages.closureInfo {
+    rootPaths = storePaths;
+  };
 in
 pkgs.stdenv.mkDerivation {
   name = "ext4-fs.img${lib.optionalString compressImage ".zst"}";

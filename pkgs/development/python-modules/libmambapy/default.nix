@@ -38,7 +38,9 @@ buildPythonPackage rec {
   ];
 
   buildInputs = [
-    (libmamba.override { python3Packages = pythonPackages; })
+    (libmamba.override {
+      python3Packages = pythonPackages;
+    })
     pybind11
     fmt
     spdlog

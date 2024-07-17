@@ -31,7 +31,9 @@ buildNpmPackage rec {
   '';
 
   passthru = {
-    tests.version = testers.testVersion { package = triton; };
+    tests.version = testers.testVersion {
+      package = triton;
+    };
   };
 
   meta = with lib; {

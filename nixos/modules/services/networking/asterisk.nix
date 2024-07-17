@@ -54,9 +54,16 @@ let
         syslog.local0 => notice,warning,error
       '';
     }
-    // mapAttrs (name: text: { inherit text; }) cfg.confFiles
+    // mapAttrs (name: text: {
+      inherit text;
+    }) cfg.confFiles
     // listToAttrs (
-      map (x: nameValuePair x { source = cfg.package + "/etc/asterisk/" + x; }) defaultConfFiles
+      map (
+        x:
+        nameValuePair x {
+          source = cfg.package + "/etc/asterisk/" + x;
+        }
+      ) defaultConfFiles
     );
 
 in

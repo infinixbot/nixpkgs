@@ -193,7 +193,12 @@ stdenv.mkDerivation (
         override =
           attr:
           let
-            lua = attr.override (inputs' // { self = lua; });
+            lua = attr.override (
+              inputs'
+              // {
+                self = lua;
+              }
+            );
           in
           lua;
       in

@@ -67,7 +67,9 @@ stdenv.mkDerivation rec {
     "prefix="
   ];
 
-  passthru.tests.version = testers.testVersion { package = vkdt; };
+  passthru.tests.version = testers.testVersion {
+    package = vkdt;
+  };
 
   meta = with lib; {
     description = "Vulkan-powered raw image processor";

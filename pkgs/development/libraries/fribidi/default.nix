@@ -45,7 +45,9 @@ stdenv.mkDerivation (finalAttrs: {
   nativeCheckInputs = [ python3 ];
 
   passthru.tests = {
-    pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+    pkg-config = testers.hasPkgConfigModules {
+      package = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

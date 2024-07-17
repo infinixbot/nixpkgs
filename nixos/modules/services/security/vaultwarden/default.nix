@@ -61,7 +61,9 @@ let
     lib.concatStrings (lib.mapAttrsToList (name: value: "${name}=${value}\n") configEnv)
   );
 
-  vaultwarden = cfg.package.override { inherit (cfg) dbBackend; };
+  vaultwarden = cfg.package.override {
+    inherit (cfg) dbBackend;
+  };
 
 in
 {

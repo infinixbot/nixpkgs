@@ -185,7 +185,9 @@ final: prev: {
     '';
   };
 
-  node-red = prev.node-red.override { buildInputs = [ final.node-pre-gyp ]; };
+  node-red = prev.node-red.override {
+    buildInputs = [ final.node-pre-gyp ];
+  };
 
   node2nix = prev.node2nix.override {
     # Get latest commit for misc fixes
@@ -276,7 +278,9 @@ final: prev: {
         ln -s '${final.postcss}/lib/node_modules/postcss' "$out/lib/node_modules/postcss"
       '';
       passthru.tests = {
-        simple-execution = callPackage ./package-tests/postcss-cli.nix { inherit (final) postcss-cli; };
+        simple-execution = callPackage ./package-tests/postcss-cli.nix {
+          inherit (final) postcss-cli;
+        };
       };
       meta = oldAttrs.meta // {
         maintainers = with lib.maintainers; [ Luflosi ];
@@ -306,7 +310,9 @@ final: prev: {
     '';
 
     passthru.tests = {
-      simple-execution = pkgs.callPackage ./package-tests/prisma.nix { inherit (final) prisma; };
+      simple-execution = pkgs.callPackage ./package-tests/prisma.nix {
+        inherit (final) prisma;
+      };
     };
   };
 
@@ -320,7 +326,9 @@ final: prev: {
     '';
   };
 
-  rush = prev."@microsoft/rush".override { name = "rush"; };
+  rush = prev."@microsoft/rush".override {
+    name = "rush";
+  };
 
   tailwindcss = prev.tailwindcss.override {
     plugins = [ ];
@@ -337,7 +345,9 @@ final: prev: {
       unset nodePath
     '';
     passthru.tests = {
-      simple-execution = callPackage ./package-tests/tailwindcss.nix { inherit (final) tailwindcss; };
+      simple-execution = callPackage ./package-tests/tailwindcss.nix {
+        inherit (final) tailwindcss;
+      };
     };
   };
 
@@ -392,7 +402,9 @@ final: prev: {
     '';
   };
 
-  uppy-companion = prev."@uppy/companion".override { name = "uppy-companion"; };
+  uppy-companion = prev."@uppy/companion".override {
+    name = "uppy-companion";
+  };
 
   vega-cli = prev.vega-cli.override {
     nativeBuildInputs = [ pkgs.pkg-config ];
@@ -418,7 +430,9 @@ final: prev: {
       done
     '';
     passthru.tests = {
-      simple-execution = callPackage ./package-tests/vega-lite.nix { inherit (final) vega-lite; };
+      simple-execution = callPackage ./package-tests/vega-lite.nix {
+        inherit (final) vega-lite;
+      };
     };
   };
 
@@ -440,5 +454,7 @@ final: prev: {
       ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.CoreText ];
   };
 
-  webtorrent-cli = prev.webtorrent-cli.override { buildInputs = [ final.node-gyp-build ]; };
+  webtorrent-cli = prev.webtorrent-cli.override {
+    buildInputs = [ final.node-gyp-build ];
+  };
 }

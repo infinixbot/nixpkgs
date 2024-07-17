@@ -12,7 +12,9 @@ let
     url = "https://storage.googleapis.com/caido-releases/v${version}/caido-desktop-v${version}-linux-x86_64.AppImage";
     hash = "sha256-MUQ1tVcIpLrC2RKsWDqv8MBGaHfh56OxIC/ARArQjiU=";
   };
-  appimageContents = appimageTools.extractType2 { inherit pname src version; };
+  appimageContents = appimageTools.extractType2 {
+    inherit pname src version;
+  };
 
 in
 appimageTools.wrapType2 {

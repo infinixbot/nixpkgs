@@ -85,7 +85,9 @@ stdenv.mkDerivation rec {
     qttools
   ] ++ lib.optionals stdenv.isLinux [ qtwayland ];
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     homepage = "https://github.com/Admiral-Fish/PokeFinder";

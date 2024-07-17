@@ -10,7 +10,9 @@
 }:
 
 let
-  mvn = maven.override { jdk = jdk11; };
+  mvn = maven.override {
+    jdk = jdk11;
+  };
 in
 mvn.buildMavenPackage rec {
   pname = "protege";

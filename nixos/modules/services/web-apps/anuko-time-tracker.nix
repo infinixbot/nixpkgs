@@ -135,7 +135,9 @@ in
 
     nginx = lib.mkOption {
       type = lib.types.submodule (
-        lib.recursiveUpdate (import ../web-servers/nginx/vhost-options.nix { inherit config lib; }) { }
+        lib.recursiveUpdate (import ../web-servers/nginx/vhost-options.nix {
+          inherit config lib;
+        }) { }
       );
       default = { };
       example = lib.literalExpression ''

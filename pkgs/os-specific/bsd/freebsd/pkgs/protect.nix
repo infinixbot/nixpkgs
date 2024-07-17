@@ -1,1 +1,4 @@
-{ mkDerivation }: mkDerivation { path = "usr.bin/protect"; }
+{ mkDerivation }:
+mkDerivation {
+  path = "usr.bin/protect";
+}

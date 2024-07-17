@@ -1,7 +1,9 @@
 { lib, ... }:
 {
 
-  options.value = lib.mkOption { type = lib.types.lazyAttrsOf lib.types.boolByOr; };
+  options.value = lib.mkOption {
+    type = lib.types.lazyAttrsOf lib.types.boolByOr;
+  };
 
   config.value = {
     falseFalse = lib.mkMerge [

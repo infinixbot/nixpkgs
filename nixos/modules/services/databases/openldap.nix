@@ -45,9 +45,19 @@ let
           # Actual Nix evaluation is lazy, so this is not an issue there
           type =
             let
-              hiddenOptions = lib.mapAttrs (name: attr: attr // { visible = false; }) options;
+              hiddenOptions = lib.mapAttrs (
+                name: attr:
+                attr
+                // {
+                  visible = false;
+                }
+              ) options;
             in
-            types.attrsOf (types.submodule { options = hiddenOptions; });
+            types.attrsOf (
+              types.submodule {
+                options = hiddenOptions;
+              }
+            );
           default = { };
           description = "Child entries of the current entry, with recursively the same structure.";
           example = lib.literalExpression ''
@@ -74,7 +84,9 @@ let
         };
       };
     in
-    types.submodule { inherit options; };
+    types.submodule {
+      inherit options;
+    };
 
   valueToLdif =
     attr: values:
@@ -390,6 +402,8 @@ in
         };
       };
 
-      users.groups = lib.optionalAttrs (cfg.group == "openldap") { openldap = { }; };
+      users.groups = lib.optionalAttrs (cfg.group == "openldap") {
+        openldap = { };
+      };
     };
 }

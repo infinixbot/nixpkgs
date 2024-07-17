@@ -127,7 +127,9 @@ in
                 {
                   c = cfg.process.prefork;
                 }
-                // (optionalAttrs (cfg.socket.type != "unix") { s = "${cfg.socket.type}:${cfg.socket.address}"; })
+                // (optionalAttrs (cfg.socket.type != "unix") {
+                  s = "${cfg.socket.type}:${cfg.socket.address}";
+                })
               )
             }
           '';
@@ -139,7 +141,9 @@ in
               Group = cfg.process.group;
             }
           else
-            { DynamicUser = true; }
+            {
+              DynamicUser = true;
+            }
         );
     });
 

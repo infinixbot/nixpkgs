@@ -3,11 +3,15 @@
 rec {
   runTest =
     name: body:
-    runCommand name { strictDeps = true; } ''
-      set -o errexit
-      ${body}
-      touch $out
-    '';
+    runCommand name
+      {
+        strictDeps = true;
+      }
+      ''
+        set -o errexit
+        ${body}
+        touch $out
+      '';
 
   skip =
     cond: text:

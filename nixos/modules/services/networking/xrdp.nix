@@ -10,41 +10,46 @@ with lib;
 let
   cfg = config.services.xrdp;
 
-  confDir = pkgs.runCommand "xrdp.conf" { preferLocalBuild = true; } ''
-    mkdir -p $out
+  confDir =
+    pkgs.runCommand "xrdp.conf"
+      {
+        preferLocalBuild = true;
+      }
+      ''
+        mkdir -p $out
 
-    cp -r ${cfg.package}/etc/xrdp/* $out
-    chmod -R +w $out
+        cp -r ${cfg.package}/etc/xrdp/* $out
+        chmod -R +w $out
 
-    cat > $out/startwm.sh <<EOF
-    #!/bin/sh
-    . /etc/profile
-    ${lib.optionalString cfg.audio.enable "${cfg.audio.package}/libexec/pulsaudio-xrdp-module/pulseaudio_xrdp_init"}
-    ${cfg.defaultWindowManager}
-    EOF
-    chmod +x $out/startwm.sh
+        cat > $out/startwm.sh <<EOF
+        #!/bin/sh
+        . /etc/profile
+        ${lib.optionalString cfg.audio.enable "${cfg.audio.package}/libexec/pulsaudio-xrdp-module/pulseaudio_xrdp_init"}
+        ${cfg.defaultWindowManager}
+        EOF
+        chmod +x $out/startwm.sh
 
-    substituteInPlace $out/xrdp.ini \
-      --replace "#rsakeys_ini=" "rsakeys_ini=/run/xrdp/rsakeys.ini" \
-      --replace "certificate=" "certificate=${cfg.sslCert}" \
-      --replace "key_file=" "key_file=${cfg.sslKey}" \
-      --replace LogFile=xrdp.log LogFile=/dev/null \
-      --replace EnableSyslog=true EnableSyslog=false
+        substituteInPlace $out/xrdp.ini \
+          --replace "#rsakeys_ini=" "rsakeys_ini=/run/xrdp/rsakeys.ini" \
+          --replace "certificate=" "certificate=${cfg.sslCert}" \
+          --replace "key_file=" "key_file=${cfg.sslKey}" \
+          --replace LogFile=xrdp.log LogFile=/dev/null \
+          --replace EnableSyslog=true EnableSyslog=false
 
-    substituteInPlace $out/sesman.ini \
-      --replace LogFile=xrdp-sesman.log LogFile=/dev/null \
-      --replace EnableSyslog=1 EnableSyslog=0 \
-      --replace startwm.sh $out/startwm.sh \
-      --replace reconnectwm.sh $out/reconnectwm.sh \
+        substituteInPlace $out/sesman.ini \
+          --replace LogFile=xrdp-sesman.log LogFile=/dev/null \
+          --replace EnableSyslog=1 EnableSyslog=0 \
+          --replace startwm.sh $out/startwm.sh \
+          --replace reconnectwm.sh $out/reconnectwm.sh \
 
-    # Ensure that clipboard works for non-ASCII characters
-    sed -i -e '/.*SessionVariables.*/ a\
-    LANG=${config.i18n.defaultLocale}\
-    LOCALE_ARCHIVE=${config.i18n.glibcLocales}/lib/locale/locale-archive
-    ' $out/sesman.ini
+        # Ensure that clipboard works for non-ASCII characters
+        sed -i -e '/.*SessionVariables.*/ a\
+        LANG=${config.i18n.defaultLocale}\
+        LOCALE_ARCHIVE=${config.i18n.glibcLocales}/lib/locale/locale-archive
+        ' $out/sesman.ini
 
-    ${cfg.extraConfDirCommands}
-  '';
+        ${cfg.extraConfDirCommands}
+      '';
 in
 {
 

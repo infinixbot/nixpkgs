@@ -81,7 +81,11 @@ buildGoModule rec {
 
   # do not pass preBuild to go-modules.drv, as it would otherwise fail to build.
   # but even if it would work, it simply isn't needed in that scope.
-  overrideModAttrs = (_: { preBuild = null; });
+  overrideModAttrs = (
+    _: {
+      preBuild = null;
+    }
+  );
 
   # uses go-systemd, which uses libsystemd headers
   # https://github.com/coreos/go-systemd/issues/351

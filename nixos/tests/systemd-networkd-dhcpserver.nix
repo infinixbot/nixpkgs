@@ -80,7 +80,9 @@ import ./make-test-python.nix (
                     PVID = 1;
                     EgressUntagged = 1;
                   }
-                  { VLAN = 2; }
+                  {
+                    VLAN = 2;
+                  }
                 ];
               };
               "02-vlan2" = {

@@ -71,7 +71,9 @@ python3Packages.buildPythonApplication rec {
     makeWrapperArgs+=("''${gappsWrapperArgs[@]}")
   '';
 
-  passthru.updateScript = gitUpdater { rev-prefix = "${pname}-"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "${pname}-";
+  };
 
   meta = with lib; {
     homepage = "https://docs.xfce.org/apps/catfish/start";

@@ -17,7 +17,9 @@
 }:
 
 let
-  s = import ./sources.nix { inherit fetchurl fetchFromGitHub; };
+  s = import ./sources.nix {
+    inherit fetchurl fetchFromGitHub;
+  };
 in
 assert lib.elem targetArchitecture [
   "i586"

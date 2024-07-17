@@ -51,12 +51,24 @@ let
             valueTargetTarget = pkgsTargetTarget.${name} or { };
             augmentedValue = defaultValue // {
               __spliced =
-                (lib.optionalAttrs (pkgsBuildBuild ? ${name}) { buildBuild = valueBuildBuild; })
-                // (lib.optionalAttrs (pkgsBuildHost ? ${name}) { buildHost = valueBuildHost; })
-                // (lib.optionalAttrs (pkgsBuildTarget ? ${name}) { buildTarget = valueBuildTarget; })
-                // (lib.optionalAttrs (pkgsHostHost ? ${name}) { hostHost = valueHostHost; })
-                // (lib.optionalAttrs (pkgsHostTarget ? ${name}) { hostTarget = valueHostTarget; })
-                // (lib.optionalAttrs (pkgsTargetTarget ? ${name}) { targetTarget = valueTargetTarget; });
+                (lib.optionalAttrs (pkgsBuildBuild ? ${name}) {
+                  buildBuild = valueBuildBuild;
+                })
+                // (lib.optionalAttrs (pkgsBuildHost ? ${name}) {
+                  buildHost = valueBuildHost;
+                })
+                // (lib.optionalAttrs (pkgsBuildTarget ? ${name}) {
+                  buildTarget = valueBuildTarget;
+                })
+                // (lib.optionalAttrs (pkgsHostHost ? ${name}) {
+                  hostHost = valueHostHost;
+                })
+                // (lib.optionalAttrs (pkgsHostTarget ? ${name}) {
+                  hostTarget = valueHostTarget;
+                })
+                // (lib.optionalAttrs (pkgsTargetTarget ? ${name}) {
+                  targetTarget = valueTargetTarget;
+                });
             };
             # Get the set of outputs of a derivation. If one derivation fails to
             # evaluate we don't want to diverge the entire splice, so we fall back

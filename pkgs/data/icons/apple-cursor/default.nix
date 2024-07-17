@@ -13,7 +13,9 @@ let
         url = "https://github.com/ful1e5/apple_cursor/releases/download/v${version}/${variant}.${suffix}";
         hash = hash;
       }
-      // (lib.optionalAttrs (suffix == "zip") { stripRoot = false; })
+      // (lib.optionalAttrs (suffix == "zip") {
+        stripRoot = false;
+      })
     );
 
   version = "2.0.0";

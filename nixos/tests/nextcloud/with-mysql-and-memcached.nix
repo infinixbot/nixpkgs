@@ -5,7 +5,9 @@
   ...
 }:
 
-with import ../../lib/testing-python.nix { inherit system pkgs; };
+with import ../../lib/testing-python.nix {
+  inherit system pkgs;
+};
 runTest (
   { config, ... }:
   {

@@ -51,7 +51,11 @@ stdenvNoCC.mkDerivation {
   ];
 
   passthru = {
-    withPlugins = f: gauge.override { plugins = f gaugePlugins; };
+    withPlugins =
+      f:
+      gauge.override {
+        plugins = f gaugePlugins;
+      };
     fromManifest =
       path:
       let

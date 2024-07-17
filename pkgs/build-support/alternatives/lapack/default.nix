@@ -21,7 +21,9 @@ let
     if lapackImplementation == "mkl" then
       lapackProvider
     else
-      lapackProvider.override { blas64 = isILP64; };
+      lapackProvider.override {
+        blas64 = isILP64;
+      };
 
 in
 

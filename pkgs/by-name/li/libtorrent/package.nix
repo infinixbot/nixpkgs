@@ -38,7 +38,9 @@ stdenv.mkDerivation {
     zlib
   ];
 
-  passthru.updateScript = unstableGitUpdater { tagPrefix = "v"; };
+  passthru.updateScript = unstableGitUpdater {
+    tagPrefix = "v";
+  };
 
   enableParallelBuilding = true;
 

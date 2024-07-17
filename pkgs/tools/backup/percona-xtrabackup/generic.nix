@@ -54,7 +54,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   buildInputs =
     [
-      (curl.override { inherit openssl; })
+      (curl.override {
+        inherit openssl;
+      })
       cyrus_sasl
       libaio
       libedit

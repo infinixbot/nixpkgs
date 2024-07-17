@@ -44,7 +44,9 @@ let
     what: name: file:
     if checkConfigEnabled then
       pkgs.runCommandLocal "${name}-${replaceStrings [ " " ] [ "" ] what}-checked"
-        { nativeBuildInputs = [ cfg.package.cli ]; }
+        {
+          nativeBuildInputs = [ cfg.package.cli ];
+        }
         ''
           ln -s ${file} $out
           promtool ${what} $out
@@ -1926,7 +1928,9 @@ in
       uid = config.ids.uids.prometheus;
       group = "prometheus";
     };
-    environment.etc."prometheus/prometheus.yaml" = mkIf cfg.enableReload { source = prometheusYml; };
+    environment.etc."prometheus/prometheus.yaml" = mkIf cfg.enableReload {
+      source = prometheusYml;
+    };
     systemd.services.prometheus = {
       wantedBy = [ "multi-user.target" ];
       after = [ "network.target" ];

@@ -76,7 +76,9 @@ import ./make-test-python.nix (
 
         programs.sway = {
           enable = true;
-          package = pkgs.swayfx.override { isNixOS = true; };
+          package = pkgs.swayfx.override {
+            isNixOS = true;
+          };
         };
 
         # To test pinentry via gpg-agent:

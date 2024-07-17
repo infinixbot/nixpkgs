@@ -30,7 +30,9 @@
 }:
 
 let
-  libusb-with-fxload = libusb1.override { withExamples = true; };
+  libusb-with-fxload = libusb1.override {
+    withExamples = true;
+  };
 in
 
 stdenv.mkDerivation rec {

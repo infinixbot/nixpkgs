@@ -24,11 +24,15 @@ rustPlatform.buildRustPackage rec {
         hash = "sha256-xAjpw71HgS6fILg5zNuc43s0fIqYcoUMMbCH65xrlww=";
       };
     in
-    runCommand "source-with-lock" { nativeBuildInputs = [ lndir ]; } ''
-      mkdir -p $out
-      ln -s ${lockFile} $out/Cargo.lock
-      lndir -silent ${source} $out
-    '';
+    runCommand "source-with-lock"
+      {
+        nativeBuildInputs = [ lndir ];
+      }
+      ''
+        mkdir -p $out
+        ln -s ${lockFile} $out/Cargo.lock
+        lndir -silent ${source} $out
+      '';
 
   cargoHash = "sha256-w+PeuH6VFIu3iH5EXF6gEwyYoGeqXX0yd5jJs2NqisQ=";
 

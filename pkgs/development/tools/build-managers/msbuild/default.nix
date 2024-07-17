@@ -21,7 +21,11 @@ let
     sha256 = "1wnzbdpk4s9bmawlh359ak2b8zi0sgx1qvcjnvfncr1wsck53v7q";
   };
 
-  deps = map (package: package.src) (import ./deps.nix { inherit fetchurl; });
+  deps = map (package: package.src) (
+    import ./deps.nix {
+      inherit fetchurl;
+    }
+  );
 
   nuget-config = writeText "NuGet.config" ''
     <?xml version="1.0" encoding="utf-8"?>

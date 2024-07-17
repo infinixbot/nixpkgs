@@ -13,7 +13,9 @@
   SDL2,
 }:
 let
-  luajit_lua52 = luajit.override { enable52Compat = true; };
+  luajit_lua52 = luajit.override {
+    enable52Compat = true;
+  };
 in
 stdenv.mkDerivation rec {
   pname = "koreader";

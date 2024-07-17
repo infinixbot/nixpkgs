@@ -18,7 +18,9 @@ let
 
   mysqldOptions = "--user=${cfg.user} --datadir=${cfg.dataDir} --basedir=${cfg.package}";
 
-  format = pkgs.formats.ini { listsAsDuplicateKeys = true; };
+  format = pkgs.formats.ini {
+    listsAsDuplicateKeys = true;
+  };
   configFile = format.generate "my.cnf" cfg.settings;
 
 in
@@ -351,7 +353,9 @@ in
           "mysql"
         ];
       })
-      (mkIf (!isMariaDB) { plugin-load-add = "auth_socket.so"; })
+      (mkIf (!isMariaDB) {
+        plugin-load-add = "auth_socket.so";
+      })
     ];
 
     users.users = optionalAttrs (cfg.user == "mysql") {
@@ -362,7 +366,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == "mysql") { mysql.gid = config.ids.gids.mysql; };
+    users.groups = optionalAttrs (cfg.group == "mysql") {
+      mysql.gid = config.ids.gids.mysql;
+    };
 
     environment.systemPackages = [ cfg.package ];
 

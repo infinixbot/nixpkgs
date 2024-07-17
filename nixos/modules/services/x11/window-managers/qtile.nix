@@ -72,7 +72,9 @@ in
     };
 
     environment = {
-      etc."xdg/qtile/config.py" = mkIf (cfg.configFile != null) { source = cfg.configFile; };
+      etc."xdg/qtile/config.py" = mkIf (cfg.configFile != null) {
+        source = cfg.configFile;
+      };
       systemPackages = [ cfg.finalPackage ];
     };
   };

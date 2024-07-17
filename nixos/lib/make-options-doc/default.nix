@@ -157,9 +157,13 @@ let
       unpack =
         p:
         if lib.isString p then
-          { name = p; }
+          {
+            name = p;
+          }
         else if lib.isList p then
-          { path = p; }
+          {
+            path = p;
+          }
         else
           p;
       describe =
@@ -192,7 +196,10 @@ rec {
   inherit optionsNix;
 
   optionsAsciiDoc =
-    pkgs.runCommand "options.adoc" { nativeBuildInputs = [ pkgs.nixos-render-docs ]; }
+    pkgs.runCommand "options.adoc"
+      {
+        nativeBuildInputs = [ pkgs.nixos-render-docs ];
+      }
       ''
         nixos-render-docs -j $NIX_BUILD_CORES options asciidoc \
           --manpage-urls ${pkgs.path + "/doc/manpage-urls.json"} \
@@ -202,7 +209,10 @@ rec {
       '';
 
   optionsCommonMark =
-    pkgs.runCommand "options.md" { nativeBuildInputs = [ pkgs.nixos-render-docs ]; }
+    pkgs.runCommand "options.md"
+      {
+        nativeBuildInputs = [ pkgs.nixos-render-docs ];
+      }
       ''
         nixos-render-docs -j $NIX_BUILD_CORES options commonmark \
           --manpage-urls ${pkgs.path + "/doc/manpage-urls.json"} \

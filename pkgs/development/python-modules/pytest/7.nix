@@ -80,7 +80,9 @@ let
     '';
 
     doCheck = false;
-    passthru.tests.pytest = callPackage ./tests.nix { pytest = self; };
+    passthru.tests.pytest = callPackage ./tests.nix {
+      pytest = self;
+    };
 
     # Remove .pytest_cache when using py.test in a Nix build
     setupHook = writeText "pytest-hook" ''

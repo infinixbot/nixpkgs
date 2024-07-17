@@ -33,9 +33,9 @@ let
     "opcache.fast_shutdown" = 1;
   };
 
-  phpCfg = generators.toKeyValue { mkKeyValue = generators.mkKeyValueDefault { } " = "; } (
-    defaultPHPCfg // cfg.phpCfg
-  );
+  phpCfg = generators.toKeyValue {
+    mkKeyValue = generators.mkKeyValueDefault { } " = ";
+  } (defaultPHPCfg // cfg.phpCfg);
 
   podConfigFlags =
     let
@@ -451,7 +451,13 @@ in
       nginx = mkOption {
         type =
           with types;
-          nullOr (submodule (import ../web-servers/nginx/vhost-options.nix { inherit config lib; }));
+          nullOr (
+            submodule (
+              import ../web-servers/nginx/vhost-options.nix {
+                inherit config lib;
+              }
+            )
+          );
         default = null;
         example =
           lib.literalExpression # nginx
@@ -701,7 +707,9 @@ in
             Group = cfg.group;
             UMask = "077";
           }
-          // lib.optionalAttrs (cfg.secretFile != null) { LoadCredential = "env-secrets:${cfg.secretFile}"; };
+          // lib.optionalAttrs (cfg.secretFile != null) {
+            LoadCredential = "env-secrets:${cfg.secretFile}";
+          };
 
         script =
           ''

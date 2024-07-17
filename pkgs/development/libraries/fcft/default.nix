@@ -74,8 +74,12 @@ stdenv.mkDerivation rec {
   ];
 
   passthru.tests = {
-    noShaping = fcft.override { withShapingTypes = [ ]; };
-    onlyGraphemeShaping = fcft.override { withShapingTypes = [ "grapheme" ]; };
+    noShaping = fcft.override {
+      withShapingTypes = [ ];
+    };
+    onlyGraphemeShaping = fcft.override {
+      withShapingTypes = [ "grapheme" ];
+    };
   };
 
   meta = with lib; {

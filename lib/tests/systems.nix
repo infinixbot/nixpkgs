@@ -227,7 +227,12 @@ lib.runTests (
       expected = "x86_64-linux";
     };
     test_toLosslessStringMaybe_fail = {
-      expr = toLosslessStringMaybe (lib.systems.elaborate "x86_64-linux" // { something = "extra"; });
+      expr = toLosslessStringMaybe (
+        lib.systems.elaborate "x86_64-linux"
+        // {
+          something = "extra";
+        }
+      );
       expected = null;
     };
   }
@@ -241,7 +246,10 @@ lib.runTests (
           let
             modified =
               assert origValue != arbitraryValue;
-              lib.systems.elaborate "x86_64-linux" // { ${platformAttrName} = arbitraryValue; };
+              lib.systems.elaborate "x86_64-linux"
+              // {
+                ${platformAttrName} = arbitraryValue;
+              };
             arbitraryValue = x: "<<modified>>";
           in
           {

@@ -28,9 +28,16 @@ mixRelease rec {
     inherit beamPackages lib;
     overrides = (
       final: prev:
-      (lib.mapAttrs (_: value: value.override { appConfigPath = src + "/config"; }) prev)
+      (lib.mapAttrs (
+        _: value:
+        value.override {
+          appConfigPath = src + "/config";
+        }
+      ) prev)
       // {
-        fast_html = prev.fast_html.override { nativeBuildInputs = [ cmake ]; };
+        fast_html = prev.fast_html.override {
+          nativeBuildInputs = [ cmake ];
+        };
         ex_cldr = prev.ex_cldr.overrideAttrs (old: {
           # We have to use the GitHub sources, as it otherwise tries to download
           # the locales at build time.

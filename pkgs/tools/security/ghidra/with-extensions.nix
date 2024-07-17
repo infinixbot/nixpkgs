@@ -9,7 +9,9 @@
 }:
 
 let
-  ghidra-extensions = callPackage ./extensions.nix { inherit ghidra; };
+  ghidra-extensions = callPackage ./extensions.nix {
+    inherit ghidra;
+  };
   allExtensions = lib.filterAttrs (n: pkg: lib.isDerivation pkg) ghidra-extensions;
 
   /*

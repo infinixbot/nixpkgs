@@ -33,7 +33,9 @@ stdenv.mkDerivation (finalAttrs: {
     tests = {
       inherit (python3.pkgs) zxing-cpp;
     };
-    updateScript = gitUpdater { rev-prefix = "v"; };
+    updateScript = gitUpdater {
+      rev-prefix = "v";
+    };
   };
 
   meta = {

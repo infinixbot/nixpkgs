@@ -142,7 +142,9 @@ in
         hooks_dir = optional (config.virtualisation.containers.ociSeccompBpfHook.enable) config.boot.kernelPackages.oci-seccomp-bpf-hook;
 
         default_runtime = mkIf (cfg.runtime != null) cfg.runtime;
-        runtimes = mkIf (cfg.runtime != null) { "${cfg.runtime}" = { }; };
+        runtimes = mkIf (cfg.runtime != null) {
+          "${cfg.runtime}" = { };
+        };
       };
     };
 

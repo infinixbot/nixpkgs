@@ -24,7 +24,9 @@ rustPlatform.buildRustPackage rec {
   cargoTestFlags = cargoBuildFlags;
 
   passthru = {
-    tests.version = testers.testVersion { package = hadolint-sarif; };
+    tests.version = testers.testVersion {
+      package = hadolint-sarif;
+    };
   };
 
   meta = {

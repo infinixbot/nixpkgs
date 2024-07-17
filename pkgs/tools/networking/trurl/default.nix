@@ -36,7 +36,9 @@ stdenv.mkDerivation rec {
   nativeCheckInputs = [ python3 ];
   checkTarget = "test";
 
-  passthru.tests.version = testers.testVersion { package = trurl; };
+  passthru.tests.version = testers.testVersion {
+    package = trurl;
+  };
 
   meta = with lib; {
     description = "Command line tool for URL parsing and manipulation";

@@ -314,7 +314,9 @@ runTests {
           bar = false;
           baz = true;
         };
-        g = self: super: { bar = super.baz or false; };
+        g = self: super: {
+          bar = super.baz or false;
+        };
         f_o_g = composeExtensions f g;
         composed = obj.extend f_o_g;
       in
@@ -341,8 +343,12 @@ runTests {
         bar = false;
         baz = true;
       };
-      g = self: super: { bar = super.baz or false; };
-      h = self: super: { qux = super.bar or false; };
+      g = self: super: {
+        bar = super.baz or false;
+      };
+      h = self: super: {
+        qux = super.bar or false;
+      };
       obj = makeExtensible (self: {
         foo = self.qux;
       });
@@ -406,7 +412,9 @@ runTests {
   };
 
   testFunctionArgsFunctor = {
-    expr = functionArgs { __functor = self: { a, b }: null; };
+    expr = functionArgs {
+      __functor = self: { a, b }: null;
+    };
     expected = {
       a = false;
       b = false;
@@ -414,7 +422,11 @@ runTests {
   };
 
   testFunctionArgsSetFunctionArgs = {
-    expr = functionArgs (setFunctionArgs (args: args.x) { x = false; });
+    expr = functionArgs (
+      setFunctionArgs (args: args.x) {
+        x = false;
+      }
+    );
     expected = {
       x = false;
     };
@@ -464,7 +476,9 @@ runTests {
           outPath = "/default";
         }
         # And it returns the derivation directly if there's no "out" either
-        { outPath = "/default"; }
+        {
+          outPath = "/default";
+        }
         # Same if the output is specified explicitly, even if there's a "dev"
         {
           dev.outPath = "/dev";
@@ -621,7 +635,11 @@ runTests {
       in
       {
         storePath = isStorePath goodPath;
-        storePathDerivation = isStorePath (import ../.. { system = "x86_64-linux"; }).hello;
+        storePathDerivation =
+          isStorePath
+            (import ../.. {
+              system = "x86_64-linux";
+            }).hello;
         storePathAppendix = isStorePath "${goodPath}/bin/python";
         nonAbsolute = isStorePath (concatStrings (tail (stringToCharacters goodPath)));
         asPath = isStorePath (/. + goodPath);
@@ -698,7 +716,11 @@ runTests {
   };
 
   testHasInfixDerivation = {
-    expr = hasInfix "hello" (import ../.. { system = "x86_64-linux"; }).hello;
+    expr =
+      hasInfix "hello"
+        (import ../.. {
+          system = "x86_64-linux";
+        }).hello;
     expected = true;
   };
 
@@ -713,7 +735,9 @@ runTests {
   };
 
   testHasInfixToString = {
-    expr = hasInfix "a" { __toString = _: "a"; };
+    expr = hasInfix "a" {
+      __toString = _: "a";
+    };
     expected = true;
   };
 
@@ -1515,10 +1539,15 @@ runTests {
   };
 
   testLongestValidPathPrefix_zero = {
-    expr = attrsets.longestValidPathPrefix [
-      "a"
-      (throw "do not use")
-    ] { d = null; };
+    expr =
+      attrsets.longestValidPathPrefix
+        [
+          "a"
+          (throw "do not use")
+        ]
+        {
+          d = null;
+        };
     expected = [ ];
   };
 
@@ -1531,20 +1560,30 @@ runTests {
   };
 
   testLongestValidPathPrefix_one = {
-    expr = attrsets.longestValidPathPrefix [
-      "a"
-      "b"
-      "c"
-    ] { a = null; };
+    expr =
+      attrsets.longestValidPathPrefix
+        [
+          "a"
+          "b"
+          "c"
+        ]
+        {
+          a = null;
+        };
     expected = [ "a" ];
   };
 
   testLongestValidPathPrefix_two = {
-    expr = attrsets.longestValidPathPrefix [
-      "a"
-      "b"
-      "c"
-    ] { a.b = null; };
+    expr =
+      attrsets.longestValidPathPrefix
+        [
+          "a"
+          "b"
+          "c"
+        ]
+        {
+          a.b = null;
+        };
     expected = [
       "a"
       "b"
@@ -1552,11 +1591,16 @@ runTests {
   };
 
   testLongestValidPathPrefix_three = {
-    expr = attrsets.longestValidPathPrefix [
-      "a"
-      "b"
-      "c"
-    ] { a.b.c = null; };
+    expr =
+      attrsets.longestValidPathPrefix
+        [
+          "a"
+          "b"
+          "c"
+        ]
+        {
+          a.b.c = null;
+        };
     expected = [
       "a"
       "b"
@@ -1565,11 +1609,16 @@ runTests {
   };
 
   testLongestValidPathPrefix_three_extra = {
-    expr = attrsets.longestValidPathPrefix [
-      "a"
-      "b"
-      "c"
-    ] { a.b.c.d = throw "nope"; };
+    expr =
+      attrsets.longestValidPathPrefix
+        [
+          "a"
+          "b"
+          "c"
+        ]
+        {
+          a.b.c.d = throw "nope";
+        };
     expected = [
       "a"
       "b"
@@ -1774,8 +1823,12 @@ runTests {
   };
   testMergeAttrsListExample2 = {
     expr = attrsets.mergeAttrsList [
-      { a = 0; }
-      { a = 1; }
+      {
+        a = 0;
+      }
+      {
+        a = 1;
+      }
     ];
     expected = {
       a = 1;
@@ -1863,36 +1916,57 @@ runTests {
   };
 
   testMatchAttrsMatchingImplicit = {
-    expr = matchAttrs { cpu = { }; } {
-      cpu = {
-        bits = 64;
-      };
-    };
+    expr =
+      matchAttrs
+        {
+          cpu = { };
+        }
+        {
+          cpu = {
+            bits = 64;
+          };
+        };
     expected = true;
   };
 
   testMatchAttrsMissingAttrs = {
-    expr = matchAttrs { cpu = { }; } { };
+    expr = matchAttrs {
+      cpu = { };
+    } { };
     expected = false;
   };
 
   testOverrideExistingEmpty = {
-    expr = overrideExisting { } { a = 1; };
+    expr = overrideExisting { } {
+      a = 1;
+    };
     expected = { };
   };
 
   testOverrideExistingDisjoint = {
-    expr = overrideExisting { b = 2; } { a = 1; };
+    expr =
+      overrideExisting
+        {
+          b = 2;
+        }
+        {
+          a = 1;
+        };
     expected = {
       b = 2;
     };
   };
 
   testOverrideExistingOverride = {
-    expr = overrideExisting {
-      a = 3;
-      b = 2;
-    } { a = 1; };
+    expr =
+      overrideExisting
+        {
+          a = 3;
+          b = 2;
+        }
+        {
+          a = 1;
+        };
     expected = {
       a = 1;
       b = 2;
@@ -2014,13 +2088,18 @@ runTests {
   };
 
   testToINIDuplicateKeys = {
-    expr = generators.toINI { listsAsDuplicateKeys = true; } {
-      foo.bar = true;
-      baz.qux = [
-        1
-        false
-      ];
-    };
+    expr =
+      generators.toINI
+        {
+          listsAsDuplicateKeys = true;
+        }
+        {
+          foo.bar = true;
+          baz.qux = [
+            1
+            false
+          ];
+        };
     expected = ''
       [baz]
       qux=1
@@ -2192,8 +2271,12 @@ runTests {
     let
       val = {
         list = [
-          { one = 1; }
-          { two = 2; }
+          {
+            one = 1;
+          }
+          {
+            two = 2;
+          }
         ];
         all = 42;
       };
@@ -2213,36 +2296,43 @@ runTests {
       };
     in
     {
-      expr = mapAttrs (const (generators.toPretty { multiline = false; })) rec {
-        int = 42;
-        float = 0.1337;
-        bool = true;
-        emptystring = "";
-        string = "fn\${o}\"r\\d";
-        newlinestring = "\n";
-        path = /. + "/foo";
-        null_ = null;
-        function = x: x;
-        functionArgs =
-          {
-            arg ? 4,
-            foo,
-          }:
-          arg;
-        list = [
-          3
-          4
-          function
-          [ false ]
-        ];
-        emptylist = [ ];
-        attrs = {
-          foo = null;
-          "foo b/ar" = "baz";
-        };
-        emptyattrs = { };
-        drv = deriv;
-      };
+      expr =
+        mapAttrs
+          (const (
+            generators.toPretty {
+              multiline = false;
+            }
+          ))
+          rec {
+            int = 42;
+            float = 0.1337;
+            bool = true;
+            emptystring = "";
+            string = "fn\${o}\"r\\d";
+            newlinestring = "\n";
+            path = /. + "/foo";
+            null_ = null;
+            function = x: x;
+            functionArgs =
+              {
+                arg ? 4,
+                foo,
+              }:
+              arg;
+            list = [
+              3
+              4
+              function
+              [ false ]
+            ];
+            emptylist = [ ];
+            attrs = {
+              foo = null;
+              "foo b/ar" = "baz";
+            };
+            emptyattrs = { };
+            drv = deriv;
+          };
       expected = rec {
         int = "42";
         float = "0.1337";
@@ -2284,8 +2374,13 @@ runTests {
     in
     {
       expr =
-        (builtins.tryEval (generators.toPretty { } (generators.withRecursion { depthLimit = 2; } a)))
-        .success;
+        (builtins.tryEval (
+          generators.toPretty { } (
+            generators.withRecursion {
+              depthLimit = 2;
+            } a
+          )
+        )).success;
       expected = false;
     };
 
@@ -2365,10 +2460,15 @@ runTests {
   };
 
   testToPrettyAllowPrettyValues = {
-    expr = generators.toPretty { allowPrettyValues = true; } {
-      __pretty = v: "«" + v + "»";
-      val = "foo";
-    };
+    expr =
+      generators.toPretty
+        {
+          allowPrettyValues = true;
+        }
+        {
+          __pretty = v: "«" + v + "»";
+          val = "foo";
+        };
     expected = "«foo»";
   };
 
@@ -2435,7 +2535,9 @@ runTests {
   };
 
   testToLuaAttrsetWithLuaInline = {
-    expr = generators.toLua { } { x = generators.mkLuaInline ''"abc" .. "def"''; };
+    expr = generators.toLua { } {
+      x = generators.mkLuaInline ''"abc" .. "def"'';
+    };
     expected = ''
       {
         ["x"] = ("abc" .. "def")
@@ -2443,7 +2545,9 @@ runTests {
   };
 
   testToLuaAttrsetWithSpaceInKey = {
-    expr = generators.toLua { } { "some space and double-quote (\")" = 42; };
+    expr = generators.toLua { } {
+      "some space and double-quote (\")" = 42;
+    };
     expected = ''
       {
         ["some space and double-quote (\")"] = 42
@@ -2451,25 +2555,37 @@ runTests {
   };
 
   testToLuaWithoutMultiline = {
-    expr = generators.toLua { multiline = false; } [
-      41
-      43
-    ];
+    expr =
+      generators.toLua
+        {
+          multiline = false;
+        }
+        [
+          41
+          43
+        ];
     expected = ''{ 41, 43 }'';
   };
 
   testToLuaEmptyBindings = {
-    expr = generators.toLua { asBindings = true; } { };
+    expr = generators.toLua {
+      asBindings = true;
+    } { };
     expected = "";
   };
 
   testToLuaBindings = {
-    expr = generators.toLua { asBindings = true; } {
-      x1 = 41;
-      _y = {
-        a = 43;
-      };
-    };
+    expr =
+      generators.toLua
+        {
+          asBindings = true;
+        }
+        {
+          x1 = 41;
+          _y = {
+            a = 43;
+          };
+        };
     expected = ''
       _y = {
         ["a"] = 43
@@ -2479,7 +2595,14 @@ runTests {
   };
 
   testToLuaPartialTableBindings = {
-    expr = generators.toLua { asBindings = true; } { "x.y" = 42; };
+    expr =
+      generators.toLua
+        {
+          asBindings = true;
+        }
+        {
+          "x.y" = 42;
+        };
     expected = ''
       x.y = 42
     '';
@@ -2501,11 +2624,23 @@ runTests {
   };
 
   testToLuaBindingsWithSpace = testingThrow (
-    generators.toLua { asBindings = true; } { "with space" = 42; }
+    generators.toLua
+      {
+        asBindings = true;
+      }
+      {
+        "with space" = 42;
+      }
   );
 
   testToLuaBindingsWithLeadingDigit = testingThrow (
-    generators.toLua { asBindings = true; } { "11eleven" = 42; }
+    generators.toLua
+      {
+        asBindings = true;
+      }
+      {
+        "11eleven" = 42;
+      }
   );
 
   testToLuaBasicExample = {
@@ -2534,7 +2669,9 @@ runTests {
 
   testToGNUCommandLine = {
     expr = cli.toGNUCommandLine { } {
-      data = builtins.toJSON { id = 0; };
+      data = builtins.toJSON {
+        id = 0;
+      };
       X = "PUT";
       retry = 3;
       retry-delay = null;
@@ -2562,18 +2699,25 @@ runTests {
   };
 
   testToGNUCommandLineSeparator = {
-    expr = cli.toGNUCommandLine { optionValueSeparator = "="; } {
-      data = builtins.toJSON { id = 0; };
-      X = "PUT";
-      retry = 3;
-      retry-delay = null;
-      url = [
-        "https://example.com/foo"
-        "https://example.com/bar"
-      ];
-      silent = false;
-      verbose = true;
-    };
+    expr =
+      cli.toGNUCommandLine
+        {
+          optionValueSeparator = "=";
+        }
+        {
+          data = builtins.toJSON {
+            id = 0;
+          };
+          X = "PUT";
+          retry = 3;
+          retry-delay = null;
+          url = [
+            "https://example.com/foo"
+            "https://example.com/bar"
+          ];
+          silent = false;
+          verbose = true;
+        };
 
     expected = [
       "-X=PUT"
@@ -2587,7 +2731,9 @@ runTests {
 
   testToGNUCommandLineShell = {
     expr = cli.toGNUCommandLineShell { } {
-      data = builtins.toJSON { id = 0; };
+      data = builtins.toJSON {
+        id = 0;
+      };
       X = "PUT";
       retry = 3;
       retry-delay = null;
@@ -2638,17 +2784,26 @@ runTests {
         submodule =
           { lib, ... }:
           {
-            freeformType = lib.types.attrsOf (lib.types.submodule { options.bar = lib.mkOption { }; });
+            freeformType = lib.types.attrsOf (
+              lib.types.submodule {
+                options.bar = lib.mkOption { };
+              }
+            );
             options.bar = lib.mkOption { };
           };
 
         module =
           { lib, ... }:
           {
-            options.foo = lib.mkOption { type = lib.types.submodule submodule; };
+            options.foo = lib.mkOption {
+              type = lib.types.submodule submodule;
+            };
           };
 
-        options = (evalModules { modules = [ module ]; }).options;
+        options =
+          (evalModules {
+            modules = [ module ];
+          }).options;
 
         locs = filter (o: !o.internal) (optionAttrSetToDocList options);
       in
@@ -2685,9 +2840,15 @@ runTests {
       ];
     };
     expected = [
-      { a = 1; }
-      { a = 2; }
-      { a = 3; }
+      {
+        a = 1;
+      }
+      {
+        a = 2;
+      }
+      {
+        a = 3;
+      }
     ];
   };
 
@@ -3061,30 +3222,37 @@ runTests {
 
   # The example from the updateManyAttrsByPath documentation
   testUpdateManyAttrsByPathExample = {
-    expr = updateManyAttrsByPath [
-      {
-        path = [
-          "a"
-          "b"
-        ];
-        update = old: { d = old.c; };
-      }
-      {
-        path = [
-          "a"
-          "b"
-          "c"
-        ];
-        update = old: old + 1;
-      }
-      {
-        path = [
-          "x"
-          "y"
-        ];
-        update = old: "xy";
-      }
-    ] { a.b.c = 0; };
+    expr =
+      updateManyAttrsByPath
+        [
+          {
+            path = [
+              "a"
+              "b"
+            ];
+            update = old: {
+              d = old.c;
+            };
+          }
+          {
+            path = [
+              "a"
+              "b"
+              "c"
+            ];
+            update = old: old + 1;
+          }
+          {
+            path = [
+              "x"
+              "y"
+            ];
+            update = old: "xy";
+          }
+        ]
+        {
+          a.b.c = 0;
+        };
     expected = {
       a = {
         b = {
@@ -3180,19 +3348,29 @@ runTests {
 
   # Nested attributes are updated first
   testUpdateManyAttrsByPathNestedBeforehand = {
-    expr = updateManyAttrsByPath [
-      {
-        path = [ "a" ];
-        update = old: old // { x = old.b; };
-      }
-      {
-        path = [
-          "a"
-          "b"
-        ];
-        update = old: old + 1;
-      }
-    ] { a.b = 0; };
+    expr =
+      updateManyAttrsByPath
+        [
+          {
+            path = [ "a" ];
+            update =
+              old:
+              old
+              // {
+                x = old.b;
+              };
+          }
+          {
+            path = [
+              "a"
+              "b"
+            ];
+            update = old: old + 1;
+          }
+        ]
+        {
+          a.b = 0;
+        };
     expected = {
       a.b = 1;
       a.x = 1;
@@ -3416,7 +3594,9 @@ runTests {
       };
     in
     {
-      expr = lazyDerivation { inherit derivation; };
+      expr = lazyDerivation {
+        inherit derivation;
+      };
       expected = derivation;
     };
 
@@ -3579,10 +3759,16 @@ runTests {
 
   testGetExe'FailureFirstArg = testingThrow (getExe' "not a derivation" "executable");
 
-  testGetExe'FailureSecondArg = testingThrow (getExe' { type = "derivation"; } "dir/executable");
+  testGetExe'FailureSecondArg = testingThrow (
+    getExe' {
+      type = "derivation";
+    } "dir/executable"
+  );
 
   testPlatformMatch = {
-    expr = meta.platformMatch { system = "x86_64-linux"; } "x86_64-linux";
+    expr = meta.platformMatch {
+      system = "x86_64-linux";
+    } "x86_64-linux";
     expected = true;
   };
 
@@ -3593,7 +3779,9 @@ runTests {
   };
 
   testPlatformMatchNoMatch = {
-    expr = meta.platformMatch { system = "x86_64-darwin"; } "x86_64-linux";
+    expr = meta.platformMatch {
+      system = "x86_64-darwin";
+    } "x86_64-linux";
     expected = false;
   };
 

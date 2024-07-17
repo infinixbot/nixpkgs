@@ -19,7 +19,9 @@ stdenv.mkDerivation {
   pname = "isl";
   inherit version;
 
-  src = fetchurl { inherit urls sha256; };
+  src = fetchurl {
+    inherit urls sha256;
+  };
 
   inherit patches;
 

@@ -47,7 +47,10 @@
       actual,
       expected,
     }:
-    runCommand "equal-contents-${lib.strings.toLower assertion}" { inherit assertion actual expected; }
+    runCommand "equal-contents-${lib.strings.toLower assertion}"
+      {
+        inherit assertion actual expected;
+      }
       ''
         echo "Checking:"
         echo "$assertion"
@@ -118,7 +121,12 @@
       # It's safe to discard the context, because we don't access the path.
       salt = builtins.unsafeDiscardStringContext (lib.substring 0 12 (baseNameOf drvPath));
       # New derivation incorporating the original drv hash in the name
-      salted = f (args // { name = "${args.name or "source"}-salted-${salt}"; });
+      salted = f (
+        args
+        // {
+          name = "${args.name or "source"}-salted-${salt}";
+        }
+      );
       # Make sure we did change the derivation. If the fetcher ignores `name`,
       # `invalidateFetcherByDrvHash` doesn't work.
       checked =
@@ -133,7 +141,9 @@
   # https://nixos.org/manual/nixpkgs/unstable/#tester-runNixOSTest
   runNixOSTest =
     let
-      nixos = import ../../../nixos/lib { inherit lib; };
+      nixos = import ../../../nixos/lib {
+        inherit lib;
+      };
     in
     testModule:
     nixos.runTest {
@@ -181,7 +191,10 @@
       "testers.hasPkgConfigModule has been deprecated in favor of testers.hasPkgConfigModules. It accepts a list of strings via the moduleNames argument instead of a single moduleName."
       (
         testers.hasPkgConfigModules (
-          builtins.removeAttrs args [ "moduleName" ] // { moduleNames = [ moduleName ]; }
+          builtins.removeAttrs args [ "moduleName" ]
+          // {
+            moduleNames = [ moduleName ];
+          }
         )
       );
   hasPkgConfigModules = callPackage ./hasPkgConfigModules/tester.nix { };

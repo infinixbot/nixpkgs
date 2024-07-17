@@ -25,7 +25,9 @@ buildGoModule rec {
     "-X main.version=${version}"
   ];
 
-  passthru.tests.version = testers.testVersion { package = dashing; };
+  passthru.tests.version = testers.testVersion {
+    package = dashing;
+  };
 
   meta = with lib; {
     description = "Dash Generator Script for Any HTML";

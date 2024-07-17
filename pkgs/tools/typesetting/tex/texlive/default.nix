@@ -184,7 +184,9 @@ let
         inherit mirrors pname;
         fixedHashes = fixedHashes."${pname}-${toString revision}${extraRevision}" or { };
       }
-      // lib.optionalAttrs (args ? deps) { deps = map (n: tl.${n}) (args.deps or [ ]); }
+      // lib.optionalAttrs (args ? deps) {
+        deps = map (n: tl.${n}) (args.deps or [ ]);
+      }
     )
   ) overriddenTlpdb;
 
@@ -220,15 +222,48 @@ let
       let
         tlType = drv.tlType or tlOutToType.${drv.tlOutputName or drv.outputName} or null;
       in
-      lib.optional (tlType != null) (drv // { inherit tlType; })
-    else
-      [ (drv.tex // { tlType = "run"; }) ]
-      ++ lib.optional (drv ? texdoc) (
-        drv.texdoc // { tlType = "doc"; } // lib.optionalAttrs (drv ? man) { hasManpages = true; }
+      lib.optional (tlType != null) (
+        drv
+        // {
+          inherit tlType;
+        }
       )
-      ++ lib.optional (drv ? texsource) (drv.texsource // { tlType = "source"; })
-      ++ lib.optional (drv ? tlpkg) (drv.tlpkg // { tlType = "tlpkg"; })
-      ++ lib.optional (drv ? out) (drv.out // { tlType = "bin"; });
+    else
+      [
+        (
+          drv.tex
+          // {
+            tlType = "run";
+          }
+        )
+      ]
+      ++ lib.optional (drv ? texdoc) (
+        drv.texdoc
+        // {
+          tlType = "doc";
+        }
+        // lib.optionalAttrs (drv ? man) {
+          hasManpages = true;
+        }
+      )
+      ++ lib.optional (drv ? texsource) (
+        drv.texsource
+        // {
+          tlType = "source";
+        }
+      )
+      ++ lib.optional (drv ? tlpkg) (
+        drv.tlpkg
+        // {
+          tlType = "tlpkg";
+        }
+      )
+      ++ lib.optional (drv ? out) (
+        drv.out
+        // {
+          tlType = "bin";
+        }
+      );
   tlOutToType = {
     out = "bin";
     tex = "run";
@@ -263,7 +298,9 @@ let
   toTLPkgSets = { pkgs, ... }: lib.mapAttrsToList toTLPkgSet (builtins.groupBy (p: p.pname) pkgs);
 
   # export TeX packages as { pkgs = [ ... ]; } in the top attribute set
-  allPkgLists = lib.mapAttrs (n: drv: { pkgs = toTLPkgList drv; }) tl;
+  allPkgLists = lib.mapAttrs (n: drv: {
+    pkgs = toTLPkgList drv;
+  }) tl;
 
   # function for creating a working environment from a set of TL packages
   # now a legacy wrapper around buildTeXEnv
@@ -567,9 +604,14 @@ let
     map
       (s: {
         name = "texlive" + s;
-        value = lib.addMetaAttrs { license = licenses.${"scheme-" + (lib.toLower s)}; } (buildTeXEnv {
-          requiredTeXPackages = ps: [ ps.${"scheme-" + (lib.toLower s)} ];
-        });
+        value =
+          lib.addMetaAttrs
+            {
+              license = licenses.${"scheme-" + (lib.toLower s)};
+            }
+            (buildTeXEnv {
+              requiredTeXPackages = ps: [ ps.${"scheme-" + (lib.toLower s)} ];
+            });
       })
       [
         "Basic"

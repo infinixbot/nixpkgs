@@ -16,7 +16,9 @@
 # nix run --impure --expr 'with import <nixpkgs> {}; jupyter.override { definitions.clojure = clojupyter.definition; }'
 
 let
-  cljdeps = import ./deps.nix { inherit pkgs; };
+  cljdeps = import ./deps.nix {
+    inherit pkgs;
+  };
   classp = cljdeps.makeClasspaths { };
 
   shellScript = writeShellScript "clojupyter" ''

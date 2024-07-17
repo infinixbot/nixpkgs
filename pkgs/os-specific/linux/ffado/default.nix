@@ -63,7 +63,9 @@ mkDerivation rec {
 
   nativeBuildInputs = [
     desktop-file-utils
-    (scons.override { python3 = python311; })
+    (scons.override {
+      python3 = python311;
+    })
     pkg-config
     which
     python

@@ -161,7 +161,12 @@ in
                 checkHost = c.checkHost or c.verifyHostname or null;
                 verifyHostname = null; # Not a real stunnel configuration setting
               };
-            forceClient = c: c // { client = true; };
+            forceClient =
+              c:
+              c
+              // {
+                client = true;
+              };
           in
           mapAttrs (_: c: forceClient (setCheckHostFromVerifyHostname (applyDefaults c)));
 

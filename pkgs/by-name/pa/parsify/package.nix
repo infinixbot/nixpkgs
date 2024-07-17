@@ -15,7 +15,9 @@ appimageTools.wrapType2 rec {
 
   extraInstallCommands =
     let
-      contents = appimageTools.extract { inherit pname version src; };
+      contents = appimageTools.extract {
+        inherit pname version src;
+      };
     in
     ''
       install -m 444 -D ${contents}/@parsifydesktop.desktop -t $out/share/applications
