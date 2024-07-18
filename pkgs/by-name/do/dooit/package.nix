@@ -1,9 +1,10 @@
-{ lib
-, fetchFromGitHub
-, dooit
-, python3
-, testers
-, nix-update-script
+{
+  lib,
+  fetchFromGitHub,
+  dooit,
+  python3,
+  testers,
+  nix-update-script,
 }:
 
 python3.pkgs.buildPythonApplication rec {
@@ -18,9 +19,7 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-GtXRzj+o+FClleh73kqelk0JrSyafZhf847lX1BiS9k=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [
-    poetry-core
-  ];
+  nativeBuildInputs = with python3.pkgs; [ poetry-core ];
 
   pythonRelaxDeps = [
     "textual"
@@ -53,7 +52,10 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "https://github.com/kraanzu/dooit";
     changelog = "https://github.com/kraanzu/dooit/blob/v${version}/CHANGELOG.md";
     license = licenses.mit;
-    maintainers = with maintainers; [ khaneliman wesleyjrz ];
+    maintainers = with maintainers; [
+      khaneliman
+      wesleyjrz
+    ];
     mainProgram = "dooit";
   };
 }

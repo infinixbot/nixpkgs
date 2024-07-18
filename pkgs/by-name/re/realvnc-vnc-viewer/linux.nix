@@ -1,28 +1,38 @@
-{ lib
-, stdenv
-, fetchurl
-, autoPatchelfHook
-, rpmextract
-, libX11
-, libXext
-, pname
-, version
-, meta
+{
+  lib,
+  stdenv,
+  fetchurl,
+  autoPatchelfHook,
+  rpmextract,
+  libX11,
+  libXext,
+  pname,
+  version,
+  meta,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
   inherit pname version;
 
-  src = {
-    "x86_64-linux" = fetchurl rec {
-      name = "VNC-Viewer-${finalAttrs.version}-Linux-x64.rpm";
-      url = "https://downloads.realvnc.com/download/file/viewer.files/${name}";
-      hash = "sha256-KJZbH3mfxuyUslkYvB/RKquEsB7ayJSv6yNqfLmAsGI=";
-    };
-  }.${stdenv.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
+  src =
+    {
+      "x86_64-linux" = fetchurl rec {
+        name = "VNC-Viewer-${finalAttrs.version}-Linux-x64.rpm";
+        url = "https://downloads.realvnc.com/download/file/viewer.files/${name}";
+        hash = "sha256-KJZbH3mfxuyUslkYvB/RKquEsB7ayJSv6yNqfLmAsGI=";
+      };
+    }
+    .${stdenv.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
 
-  nativeBuildInputs = [ autoPatchelfHook rpmextract ];
-  buildInputs = [ libX11 libXext stdenv.cc.cc.libgcc or null ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+    rpmextract
+  ];
+  buildInputs = [
+    libX11
+    libXext
+    stdenv.cc.cc.libgcc or null
+  ];
 
   unpackPhase = ''
     rpmextract $src
@@ -43,5 +53,7 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postInstall
   '';
 
-  meta = meta // { mainProgram = "vncviewer"; };
+  meta = meta // {
+    mainProgram = "vncviewer";
+  };
 })

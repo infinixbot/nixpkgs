@@ -1,4 +1,9 @@
-{ buildDunePackage, mirage-console, cstruct, cstruct-lwt }:
+{
+  buildDunePackage,
+  mirage-console,
+  cstruct,
+  cstruct-lwt,
+}:
 
 buildDunePackage {
   pname = "mirage-console-unix";

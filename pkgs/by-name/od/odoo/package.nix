@@ -1,12 +1,13 @@
-{ lib
-, fetchgit
-, fetchzip
-, python310
-, rtlcss
-, wkhtmltopdf
-, nixosTests
-, odoo_version ? "17.0"
-, odoo_release ? "20240610"
+{
+  lib,
+  fetchgit,
+  fetchzip,
+  python310,
+  rtlcss,
+  wkhtmltopdf,
+  nixosTests,
+  odoo_version ? "17.0",
+  odoo_release ? "20240610",
 }:
 
 let
@@ -20,11 +21,12 @@ let
           rev = "docutils-${version}";
           hash = "sha256-O/9q/Dg1DBIxKdNBOhDV16yy5ez0QANJYMjeovDoWX8=";
         };
-        buildInputs = with prev; [setuptools];
+        buildInputs = with prev; [ setuptools ];
       });
     };
   };
-in python.pkgs.buildPythonApplication rec {
+in
+python.pkgs.buildPythonApplication rec {
   pname = "odoo";
   version = "${odoo_version}.${odoo_release}";
 
@@ -41,7 +43,13 @@ in python.pkgs.buildPythonApplication rec {
   doCheck = false;
 
   makeWrapperArgs = [
-    "--prefix" "PATH" ":" "${lib.makeBinPath [ wkhtmltopdf rtlcss ]}"
+    "--prefix"
+    "PATH"
+    ":"
+    "${lib.makeBinPath [
+      wkhtmltopdf
+      rtlcss
+    ]}"
   ];
 
   propagatedBuildInputs = with python.pkgs; [
@@ -49,7 +57,7 @@ in python.pkgs.buildPythonApplication rec {
     chardet
     cryptography
     decorator
-    docutils-0_17  # sphinx has a docutils requirement >= 18
+    docutils-0_17 # sphinx has a docutils requirement >= 18
     ebaysdk
     freezegun
     gevent
@@ -105,6 +113,9 @@ in python.pkgs.buildPythonApplication rec {
     description = "Open Source ERP and CRM";
     homepage = "https://www.odoo.com/";
     license = licenses.lgpl3Only;
-    maintainers = with maintainers; [ mkg20001 siriobalmelli ];
+    maintainers = with maintainers; [
+      mkg20001
+      siriobalmelli
+    ];
   };
 }

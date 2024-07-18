@@ -11,7 +11,9 @@ in
 {
   # nix-build -A tests.devShellTools.valueToString
   valueToString =
-    let inherit (devShellTools) valueToString; in
+    let
+      inherit (devShellTools) valueToString;
+    in
 
     stdenv.mkDerivation {
       name = "devShellTools-valueToString-built-tests";
@@ -22,9 +24,16 @@ in
       boolTrue = true;
       boolFalse = false;
       foo = "foo";
-      list = [ 1 2 3 ];
+      list = [
+        1
+        2
+        3
+      ];
       pathDefaultNix = ./default.nix;
-      packages = [ hello emptyFile ];
+      packages = [
+        hello
+        emptyFile
+      ];
       # TODO: nested lists
 
       buildCommand = ''
@@ -35,8 +44,19 @@ in
           [[ "$boolFalse" = ${escapeShellArg (valueToString false)} ]]
           [[ "$foo" = ${escapeShellArg (valueToString "foo")} ]]
           [[ "$hello" = ${escapeShellArg (valueToString hello)} ]]
-          [[ "$list" = ${escapeShellArg (valueToString [ 1 2 3 ])} ]]
-          [[ "$packages" = ${escapeShellArg (valueToString [ hello emptyFile ])} ]]
+          [[ "$list" = ${
+            escapeShellArg (valueToString [
+              1
+              2
+              3
+            ])
+          } ]]
+          [[ "$packages" = ${
+            escapeShellArg (valueToString [
+              hello
+              emptyFile
+            ])
+          } ]]
           [[ "$pathDefaultNix" = ${escapeShellArg (valueToString ./default.nix)} ]]
           [[ "$emptyFile" = ${escapeShellArg (valueToString emptyFile)} ]]
         ) >log 2>&1 || { cat log; exit 1; }

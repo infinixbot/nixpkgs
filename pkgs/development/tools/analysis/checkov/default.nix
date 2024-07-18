@@ -42,12 +42,9 @@ python3.pkgs.buildPythonApplication rec {
     "pycep-parser"
   ];
 
-  build-system = with python3.pkgs; [
-    setuptools-scm
-  ];
+  build-system = with python3.pkgs; [ setuptools-scm ];
 
-  nativeBuildInputs = with python3.pkgs; [
-  ];
+  nativeBuildInputs = with python3.pkgs; [ ];
 
   dependencies = with python3.pkgs; [
     aiodns

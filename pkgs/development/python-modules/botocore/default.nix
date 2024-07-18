@@ -26,9 +26,7 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "urllib3" ];
 
-  nativeBuildInputs = [
-    setuptools
-  ];
+  nativeBuildInputs = [ setuptools ];
 
   propagatedBuildInputs = [
     jmespath

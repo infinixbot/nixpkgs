@@ -1,9 +1,10 @@
-{ lib
-, buildHomeAssistantComponent
-, fetchFromGitHub
-, toPythonModule
-, async-timeout
-, music-assistant
+{
+  lib,
+  buildHomeAssistantComponent,
+  fetchFromGitHub,
+  toPythonModule,
+  async-timeout,
+  music-assistant,
 }:
 
 buildHomeAssistantComponent rec {

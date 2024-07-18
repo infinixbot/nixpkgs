@@ -54,9 +54,7 @@ buildPythonPackage rec {
     "urllib3"
   ];
 
-  build-system = [
-    setuptools
-  ];
+  build-system = [ setuptools ];
 
   dependencies = [
     agate

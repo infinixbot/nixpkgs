@@ -34,7 +34,10 @@ buildPythonPackage rec {
     hash = "sha256-5raEejd8WH9JrFvMIy2AuMGK9O/FJ2rq9PeVqK+IMOU=";
   };
 
-  build-system = [ setuptools hatchling ];
+  build-system = [
+    setuptools
+    hatchling
+  ];
 
   dependencies = [
     aiolimiter

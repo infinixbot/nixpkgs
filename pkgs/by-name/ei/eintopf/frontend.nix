@@ -1,13 +1,14 @@
-{ lib
-, stdenv
-, fetchYarnDeps
-, fixup-yarn-lock
-, yarn
-, fetchFromGitea
-, src
-, version
-, nodejs
-, eintopf
+{
+  lib,
+  stdenv,
+  fetchYarnDeps,
+  fixup-yarn-lock,
+  yarn,
+  fetchFromGitea,
+  src,
+  version,
+  nodejs,
+  eintopf,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -59,6 +60,11 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   meta = {
-    inherit (eintopf.meta) homepage description license maintainers;
+    inherit (eintopf.meta)
+      homepage
+      description
+      license
+      maintainers
+      ;
   };
 })

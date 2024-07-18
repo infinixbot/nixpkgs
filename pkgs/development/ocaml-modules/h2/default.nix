@@ -1,14 +1,15 @@
-{ buildDunePackage
-, fetchFromGitHub
-, hpack
-, angstrom
-, faraday
-, base64
-, psq
-, httpaf
-, alcotest
-, yojson
-, hex
+{
+  buildDunePackage,
+  fetchFromGitHub,
+  hpack,
+  angstrom,
+  faraday,
+  base64,
+  psq,
+  httpaf,
+  alcotest,
+  yojson,
+  hex,
 }:
 
 let
@@ -23,10 +24,7 @@ in
 buildDunePackage rec {
   pname = "h2";
 
-  inherit (hpack)
-    version
-    src
-    ;
+  inherit (hpack) version src;
 
   propagatedBuildInputs = [
     angstrom

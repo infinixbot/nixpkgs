@@ -1,6 +1,10 @@
-{ buildDunePackage
-, mirage-crypto, mirage-crypto-rng
-, dune-configurator, async, logs
+{
+  buildDunePackage,
+  mirage-crypto,
+  mirage-crypto-rng,
+  dune-configurator,
+  async,
+  logs,
 }:
 
 buildDunePackage {
@@ -10,9 +14,7 @@ buildDunePackage {
 
   duneVersion = "3";
 
-  buildInputs = [
-    dune-configurator
-  ];
+  buildInputs = [ dune-configurator ];
 
   propagatedBuildInputs = [
     async

@@ -1,13 +1,14 @@
-{ lib
-, buildPythonApplication
-, fetchzip
-, pygobject3
-, glib
-, gobject-introspection
-, gtk3
-, python-linux-procfs
-, python-ethtool
-, wrapGAppsHook3
+{
+  lib,
+  buildPythonApplication,
+  fetchzip,
+  pygobject3,
+  glib,
+  gobject-introspection,
+  gtk3,
+  python-linux-procfs,
+  python-ethtool,
+  wrapGAppsHook3,
 }:
 
 buildPythonApplication rec {
@@ -38,7 +39,11 @@ buildPythonApplication rec {
     wrapGAppsHook3
   ];
 
-  propagatedBuildInputs = [ pygobject3 python-linux-procfs python-ethtool ];
+  propagatedBuildInputs = [
+    pygobject3
+    python-linux-procfs
+    python-ethtool
+  ];
 
   postInstall = ''
     mkdir -p $out/share/tuna

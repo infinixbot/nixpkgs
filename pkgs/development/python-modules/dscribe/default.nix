@@ -1,13 +1,14 @@
-{ buildPythonPackage
-, lib
-, fetchFromGitHub
-, numpy
-, scipy
-, ase
-, joblib
-, sparse
-, pybind11
-, scikit-learn
+{
+  buildPythonPackage,
+  lib,
+  fetchFromGitHub,
+  numpy,
+  scipy,
+  ase,
+  joblib,
+  sparse,
+  pybind11,
+  scikit-learn,
 }:
 
 buildPythonPackage rec {
@@ -24,9 +25,7 @@ buildPythonPackage rec {
 
   pyproject = true;
 
-  build-system = [
-    pybind11
-  ];
+  build-system = [ pybind11 ];
 
   dependencies = [
     numpy
