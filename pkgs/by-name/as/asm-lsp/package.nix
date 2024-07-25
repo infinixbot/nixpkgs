@@ -1,8 +1,9 @@
-{ lib
-, rustPlatform
-, fetchFromGitHub
-, pkg-config
-, openssl
+{
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
+  pkg-config,
+  openssl,
 }:
 let
   pname = "asm-lsp";
@@ -18,13 +19,9 @@ rustPlatform.buildRustPackage {
     hash = "sha256-LWsawBh1czS7LUX70IXrJHUonIt2XEN8L26iP5cVyRk=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-  ];
+  nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    openssl
-  ];
+  buildInputs = [ openssl ];
 
   cargoHash = "sha256-pIjOelOQ5X8jl/ZtE8IzXPtcLmANDtWsJaNXno8CT6Y=";
 

@@ -1,17 +1,18 @@
-{ lib
-, buildPythonPackage
-, fetchFromGitHub
+{
+  lib,
+  buildPythonPackage,
+  fetchFromGitHub,
 
-, flit-core
+  flit-core,
 
-, prometheus-client
-, typing-extensions
-, wrapt
-, aiohttp
-, twisted
+  prometheus-client,
+  typing-extensions,
+  wrapt,
+  aiohttp,
+  twisted,
 
-, pytestCheckHook
-, pytest-asyncio
+  pytestCheckHook,
+  pytest-asyncio,
 }:
 
 buildPythonPackage rec {
@@ -26,9 +27,7 @@ buildPythonPackage rec {
     hash = "sha256-2C4qr0gLYHndd49UfjtuF/v05Hl2PuyegPUhCAmd5/E=";
   };
 
-  nativeBuildInputs = [
-    flit-core
-  ];
+  nativeBuildInputs = [ flit-core ];
 
   propagatedBuildInputs = [
     prometheus-client
@@ -37,15 +36,9 @@ buildPythonPackage rec {
   ];
 
   passthru.optional-dependencies = {
-    aiohttp = [
-      aiohttp
-    ];
-    consul = [
-      aiohttp
-    ];
-    twisted = [
-      twisted
-    ];
+    aiohttp = [ aiohttp ];
+    consul = [ aiohttp ];
+    twisted = [ twisted ];
   };
 
   nativeCheckInputs = [

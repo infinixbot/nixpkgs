@@ -1,14 +1,19 @@
-{ stdenv
-, lib
-, libusb1
-, installShellFiles
-, fetchFromGitHub
-, pkg-config
-}: stdenv.mkDerivation (finalAttrs: {
+{
+  stdenv,
+  lib,
+  libusb1,
+  installShellFiles,
+  fetchFromGitHub,
+  pkg-config,
+}:
+stdenv.mkDerivation (finalAttrs: {
   name = "mouse_m908";
   version = "3.4";
 
-  nativeBuildInputs = [ pkg-config installShellFiles ];
+  nativeBuildInputs = [
+    pkg-config
+    installShellFiles
+  ];
 
   buildInputs = [ libusb1.dev ];
 

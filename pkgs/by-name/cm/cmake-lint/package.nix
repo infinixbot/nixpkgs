@@ -28,9 +28,7 @@ python3Packages.buildPythonApplication rec {
 
   pythonImportsCheck = [ "cmakelint" ];
 
-  nativeCheckInputs = [
-    python3Packages.pytestCheckHook
-  ];
+  nativeCheckInputs = [ python3Packages.pytestCheckHook ];
 
   passthru.tests = {
     version = testers.testVersion { package = cmake-lint; };

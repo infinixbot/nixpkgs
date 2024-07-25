@@ -16,9 +16,7 @@ melpaBuild rec {
     hash = "sha256-rTeVjkAw44Q35vjaERs4uoZRJ6XR3FKplEUCVPHhY7Q=";
   };
 
-  packageRequires = [
-    prop-menu
-  ];
+  packageRequires = [ prop-menu ];
 
   meta = {
     homepage = "https://github.com/idris-community/idris2-mode";

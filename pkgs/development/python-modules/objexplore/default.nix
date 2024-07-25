@@ -7,7 +7,7 @@
   blessed,
   rich,
   pytestCheckHook,
-  pandas
+  pandas,
 }:
 
 buildPythonPackage rec {
@@ -24,7 +24,10 @@ buildPythonPackage rec {
     hash = "sha256-FFQIiip7pk9fQhjGLxMSMakwoXbzaUjXcbQgDX52dnI=";
   };
 
-  pythonRelaxDeps = [ "blessed" "rich" ];
+  pythonRelaxDeps = [
+    "blessed"
+    "rich"
+  ];
 
   build-system = [ setuptools ];
 
@@ -54,6 +57,9 @@ buildPythonPackage rec {
     description = "Terminal UI to interactively inspect and explore Python objects";
     homepage = "https://github.com/kylepollina/objexplore";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [ pbsds sigmanificient ];
+    maintainers = with lib.maintainers; [
+      pbsds
+      sigmanificient
+    ];
   };
 }

@@ -1,11 +1,12 @@
-{ callPackage
-, kernel ? null
-, stdenv
-, linuxKernel
-, nixosTests
-, fetchpatch
-, ...
-} @ args:
+{
+  callPackage,
+  kernel ? null,
+  stdenv,
+  linuxKernel,
+  nixosTests,
+  fetchpatch,
+  ...
+}@args:
 
 let
   stdenv' = if kernel == null then stdenv else kernel.stdenv;
@@ -27,9 +28,7 @@ callPackage ./generic.nix args {
   rev = "/54ef0fdf60a8e7633c38cb46e1f5bcfcec792f4e";
 
   isUnstable = true;
-  tests = [
-    nixosTests.zfs.unstable
-  ];
+  tests = [ nixosTests.zfs.unstable ];
 
   # 6.10 patches approved+merged to the default branch, not in staging yet
   # https://github.com/openzfs/zfs/pull/16250

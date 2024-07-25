@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 let
@@ -15,7 +20,15 @@ in
     package = mkPackageOption pkgs "livebook" { };
 
     environment = mkOption {
-      type = with types; attrsOf (nullOr (oneOf [ bool int str ]));
+      type =
+        with types;
+        attrsOf (
+          nullOr (oneOf [
+            bool
+            int
+            str
+          ])
+        );
       default = { };
       description = ''
         Environment variables to set.
@@ -97,9 +110,9 @@ in
         # stuck running a `cat /dev/urandom | tr | fold` pipeline.
         IgnoreSIGPIPE = false;
       };
-      environment = mapAttrs (name: value:
-        if isBool value then boolToString value else toString value)
-        cfg.environment;
+      environment = mapAttrs (
+        name: value: if isBool value then boolToString value else toString value
+      ) cfg.environment;
       path = [ pkgs.bash ] ++ cfg.extraPackages;
       wantedBy = [ "default.target" ];
     };
@@ -107,6 +120,9 @@ in
 
   meta = {
     doc = ./livebook.md;
-    maintainers = with lib.maintainers; [ munksgaard scvalex ];
+    maintainers = with lib.maintainers; [
+      munksgaard
+      scvalex
+    ];
   };
 }

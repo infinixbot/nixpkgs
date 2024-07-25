@@ -1,10 +1,20 @@
-{ lib, stdenv, fetchurl, autoPatchelfHook
-, glib, nspr, nss, libxcb
-, testers, chromedriver
+{
+  lib,
+  stdenv,
+  fetchurl,
+  autoPatchelfHook,
+  glib,
+  nspr,
+  nss,
+  libxcb,
+  testers,
+  chromedriver,
 }:
 
 let
-  upstream-info = (import ../../../../applications/networking/browsers/chromium/upstream-info.nix).stable.chromedriver;
+  upstream-info =
+    (import ../../../../applications/networking/browsers/chromium/upstream-info.nix)
+    .stable.chromedriver;
   allSpecs = {
     x86_64-linux = {
       system = "linux64";
@@ -22,9 +32,11 @@ let
     };
   };
 
-  spec = allSpecs.${stdenv.hostPlatform.system}
-    or (throw "missing chromedriver binary for ${stdenv.hostPlatform.system}");
-in stdenv.mkDerivation rec {
+  spec =
+    allSpecs.${stdenv.hostPlatform.system}
+      or (throw "missing chromedriver binary for ${stdenv.hostPlatform.system}");
+in
+stdenv.mkDerivation rec {
   pname = "chromedriver";
   version = upstream-info.version;
 
@@ -35,7 +47,10 @@ in stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ autoPatchelfHook ];
   buildInputs = lib.optionals (!stdenv.isDarwin) [
-    glib nspr nss libxcb
+    glib
+    nspr
+    nss
+    libxcb
   ];
 
   installPhase = ''

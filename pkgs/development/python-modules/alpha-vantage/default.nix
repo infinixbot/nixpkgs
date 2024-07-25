@@ -40,9 +40,7 @@ buildPythonPackage rec {
   ];
 
   passthru.optional-dependencies = {
-    pandas = [
-      pandas
-    ];
+    pandas = [ pandas ];
   };
 
   nativeCheckInputs = [

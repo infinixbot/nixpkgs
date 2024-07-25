@@ -46,9 +46,7 @@ buildPythonPackage rec {
     substituteInPlace pyproject.toml \
       --replace-fail "numpy >=2.0.0rc1" "numpy"
   '';
-  pythonRelaxDeps = [
-    "mpi4py"
-  ];
+  pythonRelaxDeps = [ "mpi4py" ];
 
   HDF5_DIR = "${hdf5}";
   HDF5_MPI = if mpiSupport then "ON" else "OFF";

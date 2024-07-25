@@ -1,12 +1,13 @@
-{ lib
-, buildDotnetModule
-, fetchFromGitHub
-, dotnetCorePackages
-, blueprint-compiler
-, chromaprint
-, glib
-, gtk4
-, libadwaita
+{
+  lib,
+  buildDotnetModule,
+  fetchFromGitHub,
+  dotnetCorePackages,
+  blueprint-compiler,
+  chromaprint,
+  glib,
+  gtk4,
+  libadwaita,
 }:
 
 let
@@ -34,9 +35,7 @@ buildDotnetModule rec {
     libadwaita
   ];
 
-  buildInputs = [
-    chromaprint
-  ];
+  buildInputs = [ chromaprint ];
 
   runtimeDeps = [
     glib
@@ -59,6 +58,9 @@ buildDotnetModule rec {
     mainProgram = "NickvisionTagger.GNOME";
     license = licenses.mit;
     platforms = platforms.linux;
-    maintainers = with maintainers; [ zendo ratcornu ];
+    maintainers = with maintainers; [
+      zendo
+      ratcornu
+    ];
   };
 }

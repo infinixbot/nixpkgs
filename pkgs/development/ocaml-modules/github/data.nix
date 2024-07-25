@@ -1,5 +1,8 @@
-{ buildDunePackage, github
-, yojson, atdgen
+{
+  buildDunePackage,
+  github,
+  yojson,
+  atdgen,
 }:
 
 buildDunePackage {
@@ -8,9 +11,7 @@ buildDunePackage {
 
   duneVersion = "3";
 
-  nativeBuildInputs = [
-    atdgen
-  ];
+  nativeBuildInputs = [ atdgen ];
 
   propagatedBuildInputs = [
     yojson

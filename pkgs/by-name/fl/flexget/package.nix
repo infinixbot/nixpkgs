@@ -1,13 +1,12 @@
-{ lib
-, python3
-, python311
-, fetchFromGitHub
+{
+  lib,
+  python3,
+  python311,
+  fetchFromGitHub,
 }:
 
 let
-  python = if (builtins.tryEval python3.pkgs.nose.outPath).success
-    then python3
-    else python311;
+  python = if (builtins.tryEval python3.pkgs.nose.outPath).success then python3 else python311;
 in
 
 python.pkgs.buildPythonApplication rec {

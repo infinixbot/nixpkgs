@@ -1,6 +1,10 @@
 # Generates the documentation for library functions via nixdoc.
 
-{ pkgs, nixpkgs, libsets }:
+{
+  pkgs,
+  nixpkgs,
+  libsets,
+}:
 
 with pkgs;
 
@@ -11,7 +15,10 @@ stdenv.mkDerivation {
     fileset = ../../lib;
   };
 
-  buildInputs = [ nixdoc nix ];
+  buildInputs = [
+    nixdoc
+    nix
+  ];
   installPhase = ''
     export NIX_STATE_DIR=$(mktemp -d)
     nix-instantiate --eval --strict --json ${./lib-function-locations.nix} \
@@ -39,9 +46,16 @@ stdenv.mkDerivation {
     ```{=include=} sections auto-id-prefix=auto-generated
     EOF
 
-    ${lib.concatMapStrings ({ name, baseName ? name, description }: ''
-      docgen ${name} ${baseName} ${lib.escapeShellArg description}
-    '') libsets}
+    ${lib.concatMapStrings (
+      {
+        name,
+        baseName ? name,
+        description,
+      }:
+      ''
+        docgen ${name} ${baseName} ${lib.escapeShellArg description}
+      ''
+    ) libsets}
 
     echo '```' >> "$out/index.md"
   '';

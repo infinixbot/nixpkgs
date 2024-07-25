@@ -1,6 +1,4 @@
-{ buildDunePackage
-, timedesc
-}:
+{ buildDunePackage, timedesc }:
 
 buildDunePackage {
   pname = "timedesc-tzdb";
@@ -11,4 +9,3 @@ buildDunePackage {
     description = "Virtual library for Timedesc time zone database backends";
   };
 }
-

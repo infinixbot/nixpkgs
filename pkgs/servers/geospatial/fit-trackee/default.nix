@@ -1,9 +1,10 @@
-{ lib
-, python3
-, fetchFromGitHub
-, fetchPypi
-, postgresql
-, postgresqlTestHook
+{
+  lib,
+  python3,
+  fetchFromGitHub,
+  fetchPypi,
+  postgresql,
+  postgresqlTestHook,
 }:
 let
   python = python3.override {
@@ -41,32 +42,33 @@ python.pkgs.buildPythonApplication rec {
       --replace-fail psycopg2-binary psycopg2
   '';
 
-  build-system = [
-    python3.pkgs.poetry-core
-  ];
+  build-system = [ python3.pkgs.poetry-core ];
 
-  dependencies = with python.pkgs; [
-    authlib
-    babel
-    dramatiq
-    flask
-    flask-bcrypt
-    flask-dramatiq
-    flask-limiter
-    flask-migrate
-    flask-sqlalchemy
-    gpxpy
-    gunicorn
-    humanize
-    psycopg2
-    pyjwt
-    pyopenssl
-    pytz
-    shortuuid
-    sqlalchemy
-    staticmap
-    ua-parser
-  ] ++ dramatiq.optional-dependencies.redis;
+  dependencies =
+    with python.pkgs;
+    [
+      authlib
+      babel
+      dramatiq
+      flask
+      flask-bcrypt
+      flask-dramatiq
+      flask-limiter
+      flask-migrate
+      flask-sqlalchemy
+      gpxpy
+      gunicorn
+      humanize
+      psycopg2
+      pyjwt
+      pyopenssl
+      pytz
+      shortuuid
+      sqlalchemy
+      staticmap
+      ua-parser
+    ]
+    ++ dramatiq.optional-dependencies.redis;
 
   pythonImportsCheck = [ "fittrackee" ];
 
@@ -77,9 +79,7 @@ python.pkgs.buildPythonApplication rec {
     postgresql
   ];
 
-  pytestFlagsArray = [
-    "fittrackee"
-  ];
+  pytestFlagsArray = [ "fittrackee" ];
 
   postgresqlTestSetupPost = ''
     export DATABASE_TEST_URL=postgresql://$PGUSER/$PGDATABAS?host=$PGHOST

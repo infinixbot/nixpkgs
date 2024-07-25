@@ -1,14 +1,15 @@
-{ lib
-, buildPythonPackage
-, fetchFromGitHub
-, setuptools
-, wheel
-, rfc3986
-, pytestCheckHook
-, hypothesis
-, requests
-, pytest-httpserver
-, pytest-xdist
+{
+  lib,
+  buildPythonPackage,
+  fetchFromGitHub,
+  setuptools,
+  wheel,
+  rfc3986,
+  pytestCheckHook,
+  hypothesis,
+  requests,
+  pytest-httpserver,
+  pytest-xdist,
 }:
 
 buildPythonPackage rec {
@@ -29,9 +30,7 @@ buildPythonPackage rec {
     wheel
   ];
 
-  dependencies = [
-    rfc3986
-  ];
+  dependencies = [ rfc3986 ];
 
   pythonImportsCheck = [
     "jschon"
@@ -63,9 +62,7 @@ buildPythonPackage rec {
     "test_keyword_dependency_resolution"
   ];
 
-  disabledTestPaths = [
-    "tests/test_benchmarks.py"
-  ];
+  disabledTestPaths = [ "tests/test_benchmarks.py" ];
 
   # used in checks
   __darwinAllowLocalNetworking = true;

@@ -90,21 +90,23 @@ in
         information, see the NVIDIA docs, on Chapter 23. Dynamic Boost on Linux
       '';
 
-      modesetting.enable = lib.mkEnableOption ''
-        kernel modesetting when using the NVIDIA proprietary driver.
+      modesetting.enable =
+        lib.mkEnableOption ''
+          kernel modesetting when using the NVIDIA proprietary driver.
 
-        Enabling this fixes screen tearing when using Optimus via PRIME (see
-        {option}`hardware.nvidia.prime.sync.enable`. This is not enabled
-        by default because it is not officially supported by NVIDIA and would not
-        work with SLI.
+          Enabling this fixes screen tearing when using Optimus via PRIME (see
+          {option}`hardware.nvidia.prime.sync.enable`. This is not enabled
+          by default because it is not officially supported by NVIDIA and would not
+          work with SLI.
 
-        Enabling this and using version 545 or newer of the proprietary NVIDIA
-        driver causes it to provide its own framebuffer device, which can cause
-        Wayland compositors to work when they otherwise wouldn't.
-      '' // {
-        default = lib.versionAtLeast nvidia_x11.version "535";
-        defaultText = lib.literalExpression "lib.versionAtLeast nvidia_x11.version \"535\"";
-      };
+          Enabling this and using version 545 or newer of the proprietary NVIDIA
+          driver causes it to provide its own framebuffer device, which can cause
+          Wayland compositors to work when they otherwise wouldn't.
+        ''
+        // {
+          default = lib.versionAtLeast nvidia_x11.version "535";
+          defaultText = lib.literalExpression "lib.versionAtLeast nvidia_x11.version \"535\"";
+        };
 
       prime.nvidiaBusId = lib.mkOption {
         type = busIDType;
@@ -291,7 +293,9 @@ in
               softdep nvidia post: nvidia-uvm
             '';
           };
-          systemd.tmpfiles.rules = lib.mkIf config.virtualisation.docker.enableNvidia [ "L+ /run/nvidia-docker/bin - - - - ${nvidia_x11.bin}/origBin" ];
+          systemd.tmpfiles.rules = lib.mkIf config.virtualisation.docker.enableNvidia [
+            "L+ /run/nvidia-docker/bin - - - - ${nvidia_x11.bin}/origBin"
+          ];
           services.udev.extraRules = ''
             # Create /dev/nvidia-uvm when the nvidia-uvm module is loaded.
             KERNEL=="nvidia", RUN+="${pkgs.runtimeShell} -c 'mknod -m 666 /dev/nvidiactl c 195 255'"
@@ -552,7 +556,9 @@ in
 
           services.dbus.packages = lib.optional cfg.dynamicBoost.enable nvidia_x11.bin;
 
-          hardware.firmware = lib.optional (cfg.open || lib.versionAtLeast nvidia_x11.version "555") nvidia_x11.firmware;
+          hardware.firmware = lib.optional (
+            cfg.open || lib.versionAtLeast nvidia_x11.version "555"
+          ) nvidia_x11.firmware;
 
           systemd.tmpfiles.rules =
             [
@@ -578,7 +584,9 @@ in
             # If requested enable modesetting via kernel parameters.
             kernelParams =
               lib.optional (offloadCfg.enable || cfg.modesetting.enable) "nvidia-drm.modeset=1"
-              ++ lib.optional ((offloadCfg.enable || cfg.modesetting.enable) && lib.versionAtLeast nvidia_x11.version "545") "nvidia-drm.fbdev=1"
+              ++ lib.optional (
+                (offloadCfg.enable || cfg.modesetting.enable) && lib.versionAtLeast nvidia_x11.version "545"
+              ) "nvidia-drm.fbdev=1"
               ++ lib.optional cfg.powerManagement.enable "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
               ++ lib.optional cfg.open "nvidia.NVreg_OpenRmEnableUnsupportedGpus=1"
               ++ lib.optional (config.boot.kernelPackages.kernel.kernelAtLeast "6.2" && !ibtSupport) "ibt=off";
@@ -639,7 +647,9 @@ in
                           TOPOLOGY_FILE_PATH = "${nvidia_x11.fabricmanager}/share/nvidia-fabricmanager/nvidia/nvswitch";
                           DATABASE_PATH = "${nvidia_x11.fabricmanager}/share/nvidia-fabricmanager/nvidia/nvswitch";
                         };
-                        nv-fab-conf = settingsFormat.generate "fabricmanager.conf" (fabricManagerConfDefaults // cfg.datacenter.settings);
+                        nv-fab-conf = settingsFormat.generate "fabricmanager.conf" (
+                          fabricManagerConfDefaults // cfg.datacenter.settings
+                        );
                       in
                       "${lib.getExe nvidia_x11.fabricmanager} -c ${nv-fab-conf}";
                     LimitCORE = "infinity";

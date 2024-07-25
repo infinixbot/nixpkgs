@@ -1,9 +1,10 @@
-{ lib
-, fetchpatch
-, rustPlatform
-, fetchFromGitHub
-, testers
-, difftastic
+{
+  lib,
+  fetchpatch,
+  rustPlatform,
+  fetchFromGitHub,
+  testers,
+  difftastic,
 }:
 
 let
@@ -31,9 +32,7 @@ rustPlatform.buildRustPackage rec {
   };
 
   # skip flaky tests
-  checkFlags = [
-    "--skip=options::tests::test_detect_display_width"
-  ];
+  checkFlags = [ "--skip=options::tests::test_detect_display_width" ];
 
   postPatch = ''
     patch -d $cargoDepsCopy/libmimalloc-sys-0.1.24/c_src/mimalloc \
@@ -47,7 +46,11 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/Wilfred/difftastic";
     changelog = "https://github.com/Wilfred/difftastic/blob/${version}/CHANGELOG.md";
     license = licenses.mit;
-    maintainers = with maintainers; [ ethancedwards8 figsoda matthiasbeyer ];
+    maintainers = with maintainers; [
+      ethancedwards8
+      figsoda
+      matthiasbeyer
+    ];
     mainProgram = "difft";
   };
 }

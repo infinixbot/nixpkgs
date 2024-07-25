@@ -1,21 +1,22 @@
-{ stdenv
-, lib
-, gitUpdater
-, fetchFromGitea
-, pkg-config
-, meson
-, ninja
-, scdoc
-, wayland-scanner
-, fontconfig
-, freetype
-, pixman
-, libpng
-, tllist
-, wayland
-, wayland-protocols
-, dbus
-, fcft
+{
+  stdenv,
+  lib,
+  gitUpdater,
+  fetchFromGitea,
+  pkg-config,
+  meson,
+  ninja,
+  scdoc,
+  wayland-scanner,
+  fontconfig,
+  freetype,
+  pixman,
+  libpng,
+  tllist,
+  wayland,
+  wayland-protocols,
+  dbus,
+  fcft,
 }:
 
 stdenv.mkDerivation rec {
@@ -33,9 +34,7 @@ stdenv.mkDerivation rec {
   PKG_CONFIG_DBUS_1_SESSION_BUS_SERVICES_DIR = "${placeholder "out"}/share/dbus-1/services";
 
   strictDeps = true;
-  depsBuildBuild = [
-    pkg-config
-  ];
+  depsBuildBuild = [ pkg-config ];
   nativeBuildInputs = [
     pkg-config
     meson
@@ -61,7 +60,10 @@ stdenv.mkDerivation rec {
     homepage = "https://codeberg.org/dnkl/fnott";
     changelog = "https://codeberg.org/dnkl/fnott/src/tag/${src.rev}/CHANGELOG.md";
     description = "Keyboard driven and lightweight Wayland notification daemon for wlroots-based compositors";
-    license = with lib.licenses; [ mit zlib ];
+    license = with lib.licenses; [
+      mit
+      zlib
+    ];
     maintainers = with lib.maintainers; [
       jmbaur
       eclairevoyant

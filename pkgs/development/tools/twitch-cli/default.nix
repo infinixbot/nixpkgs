@@ -1,8 +1,9 @@
-{ buildGoModule
-, fetchFromGitHub
-, lib
-, testers
-, twitch-cli
+{
+  buildGoModule,
+  fetchFromGitHub,
+  lib,
+  testers,
+  twitch-cli,
 }:
 
 buildGoModule rec {
@@ -16,9 +17,7 @@ buildGoModule rec {
     hash = "sha256-kRyJl2SxppVGCO/6wrsb8cO+wpBT1nBsyI/JsPRYzMc=";
   };
 
-  patches = [
-    ./application-name.patch
-  ];
+  patches = [ ./application-name.patch ];
 
   vendorHash = "sha256-Z5bWS4oqjkEfOsvBzupKKnF6rJPU0TLVdwxDkIKcBQY=";
 

@@ -1,12 +1,13 @@
-{ stdenv
-, lib
-, fetchurl
-, makeWrapper
-, git
-, coreutils
-, jdk
-, gnuplot
-, graphviz
+{
+  stdenv,
+  lib,
+  fetchurl,
+  makeWrapper,
+  git,
+  coreutils,
+  jdk,
+  gnuplot,
+  graphviz,
 }:
 stdenv.mkDerivation rec {
   pname = "maelstrom";
@@ -32,9 +33,7 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  nativeBuildInputs = [
-    makeWrapper
-  ];
+  nativeBuildInputs = [ makeWrapper ];
 
   runtimeDependencies = [
     git

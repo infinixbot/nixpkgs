@@ -1,11 +1,12 @@
-{ lib
-, stdenv
-, callPackage
-, fetchFromGitHub
-, makeWrapper
-, nixosTests
-, python3Packages
-, writeShellScript
+{
+  lib,
+  stdenv,
+  callPackage,
+  fetchFromGitHub,
+  makeWrapper,
+  nixosTests,
+  python3Packages,
+  writeShellScript,
 }:
 
 let
@@ -97,35 +98,35 @@ pythonpkgs.buildPythonPackage rec {
       --replace-fail '__version__ = ' '__version__ = "v${version}" #'
   '';
 
-  postInstall = let
-    start_script = writeShellScript "start-mealie" ''
-      ${lib.getExe pythonpkgs.gunicorn} "$@" -k uvicorn.workers.UvicornWorker mealie.app:app;
+  postInstall =
+    let
+      start_script = writeShellScript "start-mealie" ''
+        ${lib.getExe pythonpkgs.gunicorn} "$@" -k uvicorn.workers.UvicornWorker mealie.app:app;
+      '';
+      init_db = writeShellScript "init-mealie-db" ''
+        ${python.interpreter} $OUT/${python.sitePackages}/mealie/scripts/install_model.py
+        ${python.interpreter} $OUT/${python.sitePackages}/mealie/db/init_db.py
+      '';
+    in
+    ''
+      mkdir -p $out/config $out/bin $out/libexec
+      rm -f $out/bin/*
+
+      substitute ${src}/alembic.ini $out/config/alembic.ini \
+        --replace-fail 'script_location = alembic' 'script_location = ${src}/alembic'
+
+      makeWrapper ${start_script} $out/bin/mealie \
+        --set PYTHONPATH "$out/${python.sitePackages}:${python.pkgs.makePythonPath propagatedBuildInputs}" \
+        --set LD_LIBRARY_PATH "${crfpp}/lib" \
+        --set STATIC_FILES "${frontend}" \
+        --set PATH "${lib.makeBinPath [ crfpp ]}"
+
+      makeWrapper ${init_db} $out/libexec/init_db \
+        --set PYTHONPATH "$out/${python.sitePackages}:${python.pkgs.makePythonPath propagatedBuildInputs}" \
+        --set OUT "$out"
     '';
-    init_db = writeShellScript "init-mealie-db" ''
-      ${python.interpreter} $OUT/${python.sitePackages}/mealie/scripts/install_model.py
-      ${python.interpreter} $OUT/${python.sitePackages}/mealie/db/init_db.py
-    '';
-  in ''
-    mkdir -p $out/config $out/bin $out/libexec
-    rm -f $out/bin/*
 
-    substitute ${src}/alembic.ini $out/config/alembic.ini \
-      --replace-fail 'script_location = alembic' 'script_location = ${src}/alembic'
-
-    makeWrapper ${start_script} $out/bin/mealie \
-      --set PYTHONPATH "$out/${python.sitePackages}:${python.pkgs.makePythonPath propagatedBuildInputs}" \
-      --set LD_LIBRARY_PATH "${crfpp}/lib" \
-      --set STATIC_FILES "${frontend}" \
-      --set PATH "${lib.makeBinPath [ crfpp ]}"
-
-    makeWrapper ${init_db} $out/libexec/init_db \
-      --set PYTHONPATH "$out/${python.sitePackages}:${python.pkgs.makePythonPath propagatedBuildInputs}" \
-      --set OUT "$out"
-  '';
-
-  checkInputs = with python.pkgs; [
-    pytestCheckHook
-  ];
+  checkInputs = with python.pkgs; [ pytestCheckHook ];
 
   passthru.tests = {
     inherit (nixosTests) mealie;
@@ -142,7 +143,10 @@ pythonpkgs.buildPythonPackage rec {
     homepage = "https://mealie.io";
     changelog = "https://github.com/mealie-recipes/mealie/releases/tag/${src.rev}";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [ litchipi anoa ];
+    maintainers = with maintainers; [
+      litchipi
+      anoa
+    ];
     mainProgram = "mealie";
   };
 }

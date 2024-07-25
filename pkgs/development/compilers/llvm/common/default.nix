@@ -592,13 +592,11 @@ let
           ./compiler-rt/armv6-scudo-no-yield.patch
           ./compiler-rt/armv6-scudo-libatomic.patch
         ]
-        ++ lib.optional (lib.versionAtLeast metadata.release_version "19") (
-          fetchpatch {
-            url = "https://github.com/llvm/llvm-project/pull/99837/commits/14ae0a660a38e1feb151928a14f35ff0f4487351.patch";
-            hash = "sha256-JykABCaNNhYhZQxCvKiBn54DZ5ZguksgCHnpdwWF2no=";
-            relative = "compiler-rt";
-          }
-        );
+        ++ lib.optional (lib.versionAtLeast metadata.release_version "19") (fetchpatch {
+          url = "https://github.com/llvm/llvm-project/pull/99837/commits/14ae0a660a38e1feb151928a14f35ff0f4487351.patch";
+          hash = "sha256-JykABCaNNhYhZQxCvKiBn54DZ5ZguksgCHnpdwWF2no=";
+          relative = "compiler-rt";
+        });
     in
     {
       compiler-rt-libc = callPackage ./compiler-rt {

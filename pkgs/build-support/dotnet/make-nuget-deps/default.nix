@@ -1,8 +1,23 @@
-{ linkFarmFromDrvs, fetchurl, runCommand, zip }:
-{ name, nugetDeps ? import sourceFile, sourceFile ? null }:
+{
+  linkFarmFromDrvs,
+  fetchurl,
+  runCommand,
+  zip,
+}:
+{
+  name,
+  nugetDeps ? import sourceFile,
+  sourceFile ? null,
+}:
 linkFarmFromDrvs "${name}-nuget-deps" (nugetDeps {
-  fetchNuGet = { pname, version, sha256 ? "", hash ? ""
-    , url ? "https://www.nuget.org/api/v2/package/${pname}/${version}" }:
+  fetchNuGet =
+    {
+      pname,
+      version,
+      sha256 ? "",
+      hash ? "",
+      url ? "https://www.nuget.org/api/v2/package/${pname}/${version}",
+    }:
     let
       src = fetchurl {
         name = "${pname}.${version}.nupkg";

@@ -42,16 +42,18 @@ buildPythonPackage rec {
 
   nativeCheckInputs = [ pytestCheckHook ];
 
-  checkInputs = [
-    hypothesis
-    pandas
-    pytest-remotedata
-    typing-extensions
-  ] ++ lib.optionals (pythonOlder "3.12") [
-    # requires wasmer which is broken for python 3.12
-    # https://github.com/wasmerio/wasmer-python/issues/778
-    snapshottest
-  ];
+  checkInputs =
+    [
+      hypothesis
+      pandas
+      pytest-remotedata
+      typing-extensions
+    ]
+    ++ lib.optionals (pythonOlder "3.12") [
+      # requires wasmer which is broken for python 3.12
+      # https://github.com/wasmerio/wasmer-python/issues/778
+      snapshottest
+    ];
 
   pytestFlagsArray = [
     "-m"

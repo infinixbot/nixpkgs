@@ -1,7 +1,8 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, SDL
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  SDL,
 }:
 
 stdenv.mkDerivation rec {
@@ -15,9 +16,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-alyg4AQ1nSISk3NwniTurRVWeUp1q/SQjK2loek8bfI=";
   };
 
-  buildInputs = [
-    SDL
-  ];
+  buildInputs = [ SDL ];
 
   installPhase = ''
     mkdir -p $out/bin
@@ -33,4 +32,3 @@ stdenv.mkDerivation rec {
     maintainers = with maintainers; [ fiq ];
   };
 }
-

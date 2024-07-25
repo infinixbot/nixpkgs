@@ -196,8 +196,7 @@ buildPythonPackage rec {
     # Implemented as alternative to pythonImportsCheck, in case if circular dependency on torch occurs again,
     # and pythonImportsCheck is commented back.
     import-triton =
-      runCommand "import-triton"
-        { nativeBuildInputs = [ (python.withPackages (ps: [ ps.triton ])) ]; }
+      runCommand "import-triton" { nativeBuildInputs = [ (python.withPackages (ps: [ ps.triton ])) ]; }
         ''
           python << \EOF
           import triton

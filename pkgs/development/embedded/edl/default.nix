@@ -1,4 +1,9 @@
-{ lib, stdenv, fetchFromGitHub, python3Packages }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  python3Packages,
+}:
 
 python3Packages.buildPythonPackage {
   pname = "edl";
@@ -49,4 +54,3 @@ python3Packages.buildPythonPackage {
     broken = stdenv.isDarwin;
   };
 }
-
