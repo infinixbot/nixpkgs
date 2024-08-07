@@ -1,11 +1,12 @@
-{ lib
-, stdenv
-, fetchFromSourcehut
-, meson
-, ninja
-, pkg-config
-, wayland
-, wayland-scanner
+{
+  lib,
+  stdenv,
+  fetchFromSourcehut,
+  meson,
+  ninja,
+  pkg-config,
+  wayland,
+  wayland-scanner,
 }:
 
 stdenv.mkDerivation rec {
@@ -20,11 +21,14 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [ meson ninja pkg-config wayland-scanner ];
-  buildInputs = [ wayland ];
-  depsBuildBuild = [
+  nativeBuildInputs = [
+    meson
+    ninja
     pkg-config
+    wayland-scanner
   ];
+  buildInputs = [ wayland ];
+  depsBuildBuild = [ pkg-config ];
 
   meta = with lib; {
     description = "Xrandr clone for wlroots compositors";

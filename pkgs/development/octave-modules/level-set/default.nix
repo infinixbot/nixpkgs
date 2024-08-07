@@ -1,10 +1,11 @@
-{ buildOctavePackage
-, lib
-, fetchgit
-, automake
-, autoconf
-, autoconf-archive
-, parallel
+{
+  buildOctavePackage,
+  lib,
+  fetchgit,
+  automake,
+  autoconf,
+  autoconf-archive,
+  parallel,
 }:
 
 buildOctavePackage rec {
@@ -34,9 +35,7 @@ buildOctavePackage rec {
     autoconf-archive
   ];
 
-  requiredOctavePackages = [
-    parallel
-  ];
+  requiredOctavePackages = [ parallel ];
 
   preBuild = ''
     mkdir -p $out

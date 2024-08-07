@@ -1,10 +1,11 @@
-{ lib
-, fetchFromGitLab
-, nettle
-, nix-update-script
-, rustPlatform
-, pkg-config
-, installShellFiles
+{
+  lib,
+  fetchFromGitLab,
+  nettle,
+  nix-update-script,
+  rustPlatform,
+  pkg-config,
+  installShellFiles,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -26,9 +27,7 @@ rustPlatform.buildRustPackage rec {
     installShellFiles
   ];
 
-  buildInputs = [
-    nettle
-  ];
+  buildInputs = [ nettle ];
   # Install shell completion files and manual pages. Unfortunatly it is hard to
   # predict the paths to all of these files generated during the build, and it
   # is impossible to control these using `$OUT_DIR` or alike, as implied by

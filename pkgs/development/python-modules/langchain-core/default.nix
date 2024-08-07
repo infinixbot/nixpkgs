@@ -86,15 +86,16 @@ buildPythonPackage rec {
     '';
   };
 
-  disabledTests = [
-    # flaky, sometimes fail to strip uuid from AIMessageChunk before comparing to test value
-    "test_map_stream"
-  ]
-  ++ lib.optionals stdenv.isDarwin [
-    # Langchain-core the following tests due to the test comparing execution time with magic values.
-    "test_queue_for_streaming_via_sync_call"
-    "test_same_event_loop"
-  ];
+  disabledTests =
+    [
+      # flaky, sometimes fail to strip uuid from AIMessageChunk before comparing to test value
+      "test_map_stream"
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      # Langchain-core the following tests due to the test comparing execution time with magic values.
+      "test_queue_for_streaming_via_sync_call"
+      "test_same_event_loop"
+    ];
 
   meta = {
     description = "Building applications with LLMs through composability";

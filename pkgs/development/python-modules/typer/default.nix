@@ -32,8 +32,8 @@ buildPythonPackage rec {
   propagatedBuildInputs = [
     click
     typing-extensions
-  # Build includes the standard optional by default
-  # https://github.com/tiangolo/typer/blob/0.12.3/pyproject.toml#L71-L72
+    # Build includes the standard optional by default
+    # https://github.com/tiangolo/typer/blob/0.12.3/pyproject.toml#L71-L72
   ] ++ optional-dependencies.standard;
 
   optional-dependencies = {

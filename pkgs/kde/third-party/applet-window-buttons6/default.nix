@@ -1,13 +1,14 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, fetchpatch
-, cmake
-, extra-cmake-modules
-, kcoreaddons
-, kdeclarative
-, kdecoration
-, libplasma
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  fetchpatch,
+  cmake,
+  extra-cmake-modules,
+  kcoreaddons,
+  kdeclarative,
+  kdecoration,
+  libplasma,
 }:
 
 stdenv.mkDerivation rec {

@@ -1,14 +1,15 @@
-{ lib
-, llvmPackages_15
-, fetchzip
-, sbcl
-, pkg-config
-, fmt_9
-, gmpxx
-, libelf
-, boost
-, libunwind
-, ninja
+{
+  lib,
+  llvmPackages_15,
+  fetchzip,
+  sbcl,
+  pkg-config,
+  fmt_9,
+  gmpxx,
+  libelf,
+  boost,
+  libunwind,
+  ninja,
 }:
 
 let
@@ -24,9 +25,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-SiQ4RMha6dMV7V2fh+UxtAIgEEH/6/hF9fe+bPtoGIw=";
   };
 
-  patches = [
-    ./remove-unused-command-line-argument.patch
-  ];
+  patches = [ ./remove-unused-command-line-argument.patch ];
 
   # Workaround for https://github.com/clasp-developers/clasp/issues/1590
   postPatch = ''
@@ -46,7 +45,10 @@ stdenv.mkDerivation rec {
     libclang
   ];
 
-  ninjaFlags = [ "-C" "build" ];
+  ninjaFlags = [
+    "-C"
+    "build"
+  ];
 
   configurePhase = ''
     export SOURCE_DATE_EPOCH=1
@@ -65,9 +67,12 @@ stdenv.mkDerivation rec {
 
   meta = {
     description = "Common Lisp implementation based on LLVM with C++ integration";
-    license = lib.licenses.lgpl21Plus ;
+    license = lib.licenses.lgpl21Plus;
     maintainers = lib.teams.lisp.members;
-    platforms = ["x86_64-linux" "x86_64-darwin"];
+    platforms = [
+      "x86_64-linux"
+      "x86_64-darwin"
+    ];
     # Upstream claims support, but breaks with:
     # error: use of undeclared identifier 'aligned_alloc'
     broken = stdenv.isDarwin;

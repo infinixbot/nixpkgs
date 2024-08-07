@@ -1,8 +1,9 @@
-{ lib
-, python3Packages
-, fetchPypi
-, taskwarrior
-, glibcLocales
+{
+  lib,
+  python3Packages,
+  fetchPypi,
+  taskwarrior,
+  glibcLocales,
 }:
 
 with python3Packages;
@@ -24,7 +25,12 @@ buildPythonApplication rec {
 
   nativeCheckInputs = [ glibcLocales ];
 
-  makeWrapperArgs = [ "--suffix" "PATH" ":" "${taskwarrior}/bin" ];
+  makeWrapperArgs = [
+    "--suffix"
+    "PATH"
+    ":"
+    "${taskwarrior}/bin"
+  ];
 
   preCheck = ''
     export TERM=''${TERM-linux}

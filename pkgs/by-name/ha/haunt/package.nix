@@ -1,14 +1,15 @@
-{ lib
-, stdenv
-, fetchurl
-, fetchpatch
-, autoreconfHook
-, callPackage
-, guile
-, guile-commonmark
-, guile-reader
-, makeWrapper
-, pkg-config
+{
+  lib,
+  stdenv,
+  fetchurl,
+  fetchpatch,
+  autoreconfHook,
+  callPackage,
+  guile,
+  guile-commonmark,
+  guile-reader,
+  makeWrapper,
+  pkg-config,
 }:
 
 stdenv.mkDerivation (finalAttrs: {

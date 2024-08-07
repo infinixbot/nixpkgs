@@ -1,29 +1,30 @@
-{ lib
-, stdenv
-, callPackage
-, fetchFromGitHub
-, testers
+{
+  lib,
+  stdenv,
+  callPackage,
+  fetchFromGitHub,
+  testers,
 
-, enableE57 ? lib.meta.availableOn stdenv.hostPlatform libe57format
+  enableE57 ? lib.meta.availableOn stdenv.hostPlatform libe57format,
 
-, cmake
-, curl
-, gdal
-, hdf5-cpp
-, laszip
-, libe57format
-, libgeotiff
-, libtiff
-, libxml2
-, openscenegraph
-, pkg-config
-, postgresql
-, proj
-, sqlite
-, tiledb
-, xercesc
-, zlib
-, zstd
+  cmake,
+  curl,
+  gdal,
+  hdf5-cpp,
+  laszip,
+  libe57format,
+  libgeotiff,
+  libtiff,
+  libxml2,
+  openscenegraph,
+  pkg-config,
+  postgresql,
+  proj,
+  sqlite,
+  tiledb,
+  xercesc,
+  zlib,
+  zstd,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -37,9 +38,7 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-ukBZLr/iyYQ68sv9JWrR4YP0ahHfGhytgcWKPzrF3Ps=";
   };
 
-  patches = [
-    ./pdal.pc.in.patch
-  ];
+  patches = [ ./pdal.pc.in.patch ];
 
   nativeBuildInputs = [
     cmake
@@ -62,9 +61,7 @@ stdenv.mkDerivation (finalAttrs: {
     xercesc
     zlib
     zstd
-  ] ++ lib.optionals enableE57 [
-    libe57format
-  ];
+  ] ++ lib.optionals enableE57 [ libe57format ];
 
   cmakeFlags = [
     "-DBUILD_PLUGIN_E57=${if enableE57 then "ON" else "OFF"}"
@@ -128,9 +125,7 @@ stdenv.mkDerivation (finalAttrs: {
       version = "pdal ${finalAttrs.finalPackage.version}";
     };
     pdal = callPackage ./tests.nix { pdal = finalAttrs.finalPackage; };
-    pkg-config = testers.hasPkgConfigModules {
-      package = finalAttrs.finalPackage;
-    };
+    pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
   };
 
   meta = with lib; {

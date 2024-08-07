@@ -1,14 +1,15 @@
-{ lib
-, boost
-, cmake
-, cxxopts
-, digestpp
-, fetchFromGitHub
-, fmt
-, jsoncons
-, pugixml
-, sqlite_orm
-, stdenv
+{
+  lib,
+  boost,
+  cmake,
+  cxxopts,
+  digestpp,
+  fetchFromGitHub,
+  fmt,
+  jsoncons,
+  pugixml,
+  sqlite_orm,
+  stdenv,
 }:
 stdenv.mkDerivation {
   pname = "bt-migrate";
@@ -21,9 +22,7 @@ stdenv.mkDerivation {
     hash = "sha256-kA6yxhbIh3ThmgF8Zyoe3I79giLVmdNr9IIrw5Xx4s0=";
   };
 
-  nativeBuildInputs = [
-    cmake
-  ];
+  nativeBuildInputs = [ cmake ];
 
   buildInputs = [
     boost

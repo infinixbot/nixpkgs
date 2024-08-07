@@ -1,21 +1,22 @@
-{ lib
-, stdenv
-, fetchurl
-, wrapGAppsHook4
-, buildPackages
-, cargo
-, desktop-file-utils
-, meson
-, ninja
-, pkg-config
-, rustc
-, gettext
-, gdk-pixbuf
-, glib
-, gtk4
-, gtksourceview5
-, libadwaita
-, darwin
+{
+  lib,
+  stdenv,
+  fetchurl,
+  wrapGAppsHook4,
+  buildPackages,
+  cargo,
+  desktop-file-utils,
+  meson,
+  ninja,
+  pkg-config,
+  rustc,
+  gettext,
+  gdk-pixbuf,
+  glib,
+  gtk4,
+  gtksourceview5,
+  libadwaita,
+  darwin,
 }:
 
 stdenv.mkDerivation rec {
@@ -50,9 +51,7 @@ stdenv.mkDerivation rec {
     gtk4
     gtksourceview5
     libadwaita
-  ] ++ lib.optionals stdenv.isDarwin [
-    darwin.apple_sdk.frameworks.Foundation
-  ];
+  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Foundation ];
 
   meta = with lib; {
     homepage = "https://gitlab.gnome.org/World/design/icon-library";

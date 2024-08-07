@@ -1,27 +1,28 @@
-{ lib
-, stdenv
-, fetchFromBitbucket
-, cmake
-, pkg-config
-, wrapGAppsHook3
-, makeWrapper
-, pixman
-, libpthreadstubs
-, gtkmm3
-, libXau
-, libXdmcp
-, lcms2
-, libiptcdata
-, fftw
-, expat
-, pcre
-, libsigcxx
-, lensfun
-, librsvg
-, libcanberra-gtk3
-, exiv2
-, exiftool
-, mimalloc
+{
+  lib,
+  stdenv,
+  fetchFromBitbucket,
+  cmake,
+  pkg-config,
+  wrapGAppsHook3,
+  makeWrapper,
+  pixman,
+  libpthreadstubs,
+  gtkmm3,
+  libXau,
+  libXdmcp,
+  lcms2,
+  libiptcdata,
+  fftw,
+  expat,
+  pcre,
+  libsigcxx,
+  lensfun,
+  librsvg,
+  libcanberra-gtk3,
+  exiv2,
+  exiftool,
+  mimalloc,
 }:
 
 stdenv.mkDerivation rec {

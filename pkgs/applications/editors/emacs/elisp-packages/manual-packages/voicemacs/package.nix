@@ -28,9 +28,7 @@ melpaBuild {
     hash = "sha256-D/5+3SgECEb7A8qQqsAV1TQr+lA8EyOjf6NesnV2gos=";
   };
 
-  patches = [
-    ./0000-add-missing-require.patch
-  ];
+  patches = [ ./0000-add-missing-require.patch ];
 
   packageRequires = [
     avy

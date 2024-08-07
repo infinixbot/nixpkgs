@@ -17,10 +17,13 @@ buildGoModule rec {
 
   vendorHash = "sha256-uC6HMIf+wbHx2/Ico1UOj+S27xtVe1mCrcBy1CacIVs=";
 
-  ldflags = ["-s" "-w"];
-  subPackages = ["cmd/eigenlayer"];
+  ldflags = [
+    "-s"
+    "-w"
+  ];
+  subPackages = [ "cmd/eigenlayer" ];
 
-  passthru.updateScript = nix-update-script {};
+  passthru.updateScript = nix-update-script { };
 
   meta = with lib; {
     homepage = "https://www.eigenlayer.xyz/";
@@ -28,6 +31,6 @@ buildGoModule rec {
     description = "Utility that manages core operator functionalities like local keys, operator registration and updates";
     mainProgram = "eigenlayer";
     license = licenses.bsl11;
-    maintainers = with maintainers; [selfuryon];
+    maintainers = with maintainers; [ selfuryon ];
   };
 }

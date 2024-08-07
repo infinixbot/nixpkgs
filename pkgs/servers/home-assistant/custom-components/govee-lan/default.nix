@@ -1,10 +1,11 @@
-{ lib
-, buildHomeAssistantComponent
-, fetchFromGitHub
-, fetchpatch2
-, govee-led-wez
-, pytest-homeassistant-custom-component
-, pytestCheckHook
+{
+  lib,
+  buildHomeAssistantComponent,
+  fetchFromGitHub,
+  fetchpatch2,
+  govee-led-wez,
+  pytest-homeassistant-custom-component,
+  pytestCheckHook,
 }:
 
 buildHomeAssistantComponent {
@@ -33,9 +34,7 @@ buildHomeAssistantComponent {
 
   dontBuild = true;
 
-  propagatedBuildInputs = [
-    govee-led-wez
-  ];
+  propagatedBuildInputs = [ govee-led-wez ];
 
   # AttributeError: 'async_generator' object has no attribute 'config'
   doCheck = false;
@@ -44,7 +43,6 @@ buildHomeAssistantComponent {
     pytest-homeassistant-custom-component
     pytestCheckHook
   ];
-
 
   meta = with lib; {
     description = "Control Govee lights via the LAN API from Home Assistant";

@@ -1,7 +1,8 @@
-{ lib
-, fetchFromGitHub
-, graphviz
-, python3
+{
+  lib,
+  fetchFromGitHub,
+  graphviz,
+  python3,
 }:
 
 python3.pkgs.buildPythonApplication rec {
@@ -21,24 +22,20 @@ python3.pkgs.buildPythonApplication rec {
     "typing-extensions"
   ];
 
-  build-system = with python3.pkgs; [
-    poetry-core
-  ];
+  build-system = with python3.pkgs; [ poetry-core ];
 
-  propagatedBuildInputs = [
-    graphviz
-  ] ++ (with python3.pkgs; [
-    scapy
-    typer
-    typing-extensions
-  ]);
+  propagatedBuildInputs =
+    [ graphviz ]
+    ++ (with python3.pkgs; [
+      scapy
+      typer
+      typing-extensions
+    ]);
 
   # Project has no tests
   doCheck = false;
 
-  pythonImportsCheck = [
-    "route_graph"
-  ];
+  pythonImportsCheck = [ "route_graph" ];
 
   meta = with lib; {
     description = "CLI tool for creating graphs of routes";

@@ -21,9 +21,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-DaSbmu1P/umOAhG901aC+TKa3xXSvUbpYsaiYTr2RJs=";
 
-  nativeBuildInputs = [
-    installShellFiles
-  ];
+  nativeBuildInputs = [ installShellFiles ];
 
   ldflags = [
     "-s"
@@ -61,7 +59,10 @@ buildGoModule rec {
     description = "AI on the command line";
     homepage = "https://github.com/charmbracelet/mods";
     license = licenses.mit;
-    maintainers = with maintainers; [ dit7ya caarlos0 ];
+    maintainers = with maintainers; [
+      dit7ya
+      caarlos0
+    ];
     mainProgram = "mods";
   };
 }

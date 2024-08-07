@@ -1,7 +1,8 @@
-{ coreutils
-, fetchFromGitHub
-, lib
-, python39
+{
+  coreutils,
+  fetchFromGitHub,
+  lib,
+  python39,
 }:
 
 let

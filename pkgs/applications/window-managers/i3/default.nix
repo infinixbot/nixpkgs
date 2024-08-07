@@ -1,8 +1,37 @@
-{ fetchurl, lib, stdenv, pkg-config, makeWrapper, meson, ninja, installShellFiles, libxcb, xcbutilkeysyms
-, xcbutil, xcbutilwm, xcbutilxrm, libstartup_notification, libX11, pcre2, libev
-, yajl, xcb-util-cursor, perl, pango, perlPackages, libxkbcommon
-, xorgserver, xvfb-run, xdotool, xorg, which
-, asciidoc, xmlto, docbook_xml_dtd_45, docbook_xsl, findXMLCatalogs
+{
+  fetchurl,
+  lib,
+  stdenv,
+  pkg-config,
+  makeWrapper,
+  meson,
+  ninja,
+  installShellFiles,
+  libxcb,
+  xcbutilkeysyms,
+  xcbutil,
+  xcbutilwm,
+  xcbutilxrm,
+  libstartup_notification,
+  libX11,
+  pcre2,
+  libev,
+  yajl,
+  xcb-util-cursor,
+  perl,
+  pango,
+  perlPackages,
+  libxkbcommon,
+  xorgserver,
+  xvfb-run,
+  xdotool,
+  xorg,
+  which,
+  asciidoc,
+  xmlto,
+  docbook_xml_dtd_45,
+  docbook_xsl,
+  findXMLCatalogs,
 }:
 
 stdenv.mkDerivation rec {
@@ -15,8 +44,17 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [
-    pkg-config makeWrapper meson ninja installShellFiles perl
-    asciidoc xmlto docbook_xml_dtd_45 docbook_xsl findXMLCatalogs
+    pkg-config
+    makeWrapper
+    meson
+    ninja
+    installShellFiles
+    perl
+    asciidoc
+    xmlto
+    docbook_xml_dtd_45
+    docbook_xsl
+    findXMLCatalogs
   ];
 
   mesonFlags = [
@@ -24,14 +62,36 @@ stdenv.mkDerivation rec {
     "-Dmans=true"
   ];
 
-  buildInputs = [
-    libxcb xcbutilkeysyms xcbutil xcbutilwm xcbutilxrm libxkbcommon
-    libstartup_notification libX11 pcre2 libev yajl xcb-util-cursor perl pango
-    perlPackages.AnyEventI3 perlPackages.X11XCB perlPackages.IPCRun
-    perlPackages.ExtUtilsPkgConfig perlPackages.InlineC
-  ] ++ lib.optionals doCheck [
-    xorgserver xvfb-run xdotool xorg.setxkbmap xorg.xrandr which
-  ];
+  buildInputs =
+    [
+      libxcb
+      xcbutilkeysyms
+      xcbutil
+      xcbutilwm
+      xcbutilxrm
+      libxkbcommon
+      libstartup_notification
+      libX11
+      pcre2
+      libev
+      yajl
+      xcb-util-cursor
+      perl
+      pango
+      perlPackages.AnyEventI3
+      perlPackages.X11XCB
+      perlPackages.IPCRun
+      perlPackages.ExtUtilsPkgConfig
+      perlPackages.InlineC
+    ]
+    ++ lib.optionals doCheck [
+      xorgserver
+      xvfb-run
+      xdotool
+      xorg.setxkbmap
+      xorg.xrandr
+      which
+    ];
 
   configureFlags = [ "--disable-builddir" ];
 
@@ -80,11 +140,14 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "Tiling window manager";
-    homepage    = "https://i3wm.org";
-    maintainers = with maintainers; [ modulistic fpletz ];
+    homepage = "https://i3wm.org";
+    maintainers = with maintainers; [
+      modulistic
+      fpletz
+    ];
     mainProgram = "i3";
-    license     = licenses.bsd3;
-    platforms   = platforms.all;
+    license = licenses.bsd3;
+    platforms = platforms.all;
 
     longDescription = ''
       A tiling window manager primarily targeted at advanced users and

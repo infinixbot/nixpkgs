@@ -1,8 +1,16 @@
-{ lib, androidenv, buildPackages, pkgs, targetPackages, androidndkPkgs_23, config
+{
+  lib,
+  androidenv,
+  buildPackages,
+  pkgs,
+  targetPackages,
+  androidndkPkgs_23,
+  config,
 }:
 
 let
-  makeNdkPkgs = ndkVersion: llvmPackages:
+  makeNdkPkgs =
+    ndkVersion: llvmPackages:
     let
       buildAndroidComposition = buildPackages.buildPackages.androidenv.composeAndroidPackages {
         includeNDK = true;
@@ -17,11 +25,13 @@ let
     in
     import ./androidndk-pkgs.nix {
       inherit lib;
-      inherit (buildPackages)
-        makeWrapper autoPatchelfHook;
+      inherit (buildPackages) makeWrapper autoPatchelfHook;
       inherit (pkgs)
         stdenv
-        runCommand wrapBintoolsWith wrapCCWith;
+        runCommand
+        wrapBintoolsWith
+        wrapCCWith
+        ;
 
       # For hardeningUnsupportedFlagsByTargetPlatform
       inherit llvmPackages;
@@ -32,7 +42,11 @@ let
       # these two really are the same.
       buildAndroidndk = buildAndroidComposition.ndk-bundle;
       androidndk = androidComposition.ndk-bundle;
-      targetAndroidndkPkgs = if targetPackages ? "androidndkPkgs_${majorVersion}" then targetPackages."androidndkPkgs_${majorVersion}" else throw "androidndkPkgs_${majorVersion}: no targetPackages, use `buildPackages.androidndkPkgs_${majorVersion}";
+      targetAndroidndkPkgs =
+        if targetPackages ? "androidndkPkgs_${majorVersion}" then
+          targetPackages."androidndkPkgs_${majorVersion}"
+        else
+          throw "androidndkPkgs_${majorVersion}: no targetPackages, use `buildPackages.androidndkPkgs_${majorVersion}";
     };
 in
 

@@ -120,7 +120,12 @@ stdenv.mkDerivation (finalAttrs: {
     "../src"
   ];
 
-  outputs = [ "out" "dev" "lib" "man" ];
+  outputs = [
+    "out"
+    "dev"
+    "lib"
+    "man"
+  ];
 
   hardeningDisable = [ "format" ];
 

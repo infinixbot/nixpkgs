@@ -1,6 +1,10 @@
 # Run:
 #   nix-build -A nixosTests.activation-lib
-{ lib, stdenv, testers }:
+{
+  lib,
+  stdenv,
+  testers,
+}:
 let
   inherit (lib) fileset;
 
@@ -26,11 +30,7 @@ let
     '';
   };
 
-  runShellcheck = testers.shellcheck {
-    src = runTests.src;
-  };
+  runShellcheck = testers.shellcheck { src = runTests.src; };
 
 in
-lib.recurseIntoAttrs {
-  inherit runTests runShellcheck;
-}
+lib.recurseIntoAttrs { inherit runTests runShellcheck; }

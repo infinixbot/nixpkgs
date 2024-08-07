@@ -1,11 +1,12 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, cmake
-, doxygen
-, graphviz
-, gtest
-, valgrind
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  cmake,
+  doxygen,
+  graphviz,
+  gtest,
+  valgrind,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -43,9 +44,7 @@ stdenv.mkDerivation (finalAttrs: {
     graphviz
   ];
 
-  buildInputs = [
-    gtest
-  ];
+  buildInputs = [ gtest ];
 
   strictDeps = true;
 
@@ -65,15 +64,17 @@ stdenv.mkDerivation (finalAttrs: {
 
   doCheck = !(stdenv.hostPlatform.isStatic || stdenv.isDarwin);
 
-  nativeCheckInputs = [
-    valgrind
-  ];
+  nativeCheckInputs = [ valgrind ];
 
   meta = with lib; {
     description = "Fast JSON parser/generator for C++ with both SAX/DOM style API";
     homepage = "http://rapidjson.org/";
     license = licenses.mit;
     platforms = platforms.unix;
-    maintainers = with maintainers; [ dotlambda Madouura tobim ];
+    maintainers = with maintainers; [
+      dotlambda
+      Madouura
+      tobim
+    ];
   };
 })

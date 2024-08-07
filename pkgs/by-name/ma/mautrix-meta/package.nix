@@ -1,8 +1,9 @@
-{ buildGoModule
-, fetchFromGitHub
-, lib
-, nixosTests
-, olm
+{
+  buildGoModule,
+  fetchFromGitHub,
+  lib,
+  nixosTests,
+  olm,
 }:
 
 buildGoModule rec {
@@ -24,10 +25,7 @@ buildGoModule rec {
 
   passthru = {
     tests = {
-      inherit (nixosTests)
-        mautrix-meta-postgres
-        mautrix-meta-sqlite
-        ;
+      inherit (nixosTests) mautrix-meta-postgres mautrix-meta-sqlite;
     };
   };
 

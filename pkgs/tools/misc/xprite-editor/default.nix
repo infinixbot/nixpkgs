@@ -1,10 +1,12 @@
-{ lib, stdenv
-, fetchFromGitHub
-, rustPlatform
-, gtk3
-, AppKit
-, pkg-config
-, python3
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  rustPlatform,
+  gtk3,
+  AppKit,
+  pkg-config,
+  python3,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -24,14 +26,19 @@ rustPlatform.buildRustPackage rec {
     '';
   };
 
-  buildInputs = lib.optionals stdenv.isLinux [ gtk3 ]
-    ++ lib.optionals stdenv.isDarwin [ AppKit ];
+  buildInputs = lib.optionals stdenv.isLinux [ gtk3 ] ++ lib.optionals stdenv.isDarwin [ AppKit ];
 
-  nativeBuildInputs = lib.optionals stdenv.isLinux [ pkg-config python3 ];
+  nativeBuildInputs = lib.optionals stdenv.isLinux [
+    pkg-config
+    python3
+  ];
 
   cargoHash = "sha256-k53nSYBIJJHPivz6IvF5t0eZVkTvj1ZT3RyHdoy5MXw=";
 
-  cargoBuildFlags = [ "--bin" "xprite-native" ];
+  cargoBuildFlags = [
+    "--bin"
+    "xprite-native"
+  ];
 
   meta = with lib; {
     # error[E0034]: multiple applicable items in scope

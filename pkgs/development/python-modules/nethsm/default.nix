@@ -32,9 +32,7 @@ buildPythonPackage {
     urllib3
   ];
 
-  nativeBuildInputs = [
-    flit-core
-  ];
+  nativeBuildInputs = [ flit-core ];
 
   pythonRelaxDeps = true;
 

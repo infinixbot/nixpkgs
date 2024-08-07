@@ -1,9 +1,10 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, fetchpatch
-, python3
-, installShellFiles
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  fetchpatch,
+  python3,
+  installShellFiles,
 }:
 
 python3.pkgs.buildPythonApplication rec {
@@ -17,11 +18,15 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-0xPNhbu6/p/cbHOr5Y+PXbMbt5q/S13S5100ZZSdylE=";
   };
 
-  outputs = [ "out" "man" ];
+  outputs = [
+    "out"
+    "man"
+  ];
 
   nativeBuildInputs = [ installShellFiles ];
 
-  pythonPath = with python3.pkgs;
+  pythonPath =
+    with python3.pkgs;
     lib.optionals stdenv.isLinux [
       systemd
       pyinotify
@@ -82,7 +87,8 @@ python3.pkgs.buildPythonApplication rec {
       rm $out/bin/fail2ban-python
       ln -s ${python3.interpreter} $out/bin/fail2ban-python
 
-    '' + lib.optionalString stdenv.isLinux ''
+    ''
+    + lib.optionalString stdenv.isLinux ''
       # see https://github.com/NixOS/nixpkgs/issues/4968
       rm -r "${sitePackages}/usr"
     '';
@@ -91,6 +97,9 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "https://www.fail2ban.org/";
     description = "Program that scans log files for repeated failing login attempts and bans IP addresses";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [ eelco lovek323 ];
+    maintainers = with maintainers; [
+      eelco
+      lovek323
+    ];
   };
 }

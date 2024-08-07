@@ -1,8 +1,9 @@
-{ lib
-, fetchFromGitHub
-, git
-, nodejs
-, python3
+{
+  lib,
+  fetchFromGitHub,
+  git,
+  nodejs,
+  python3,
 }:
 
 python3.pkgs.buildPythonApplication rec {
@@ -28,12 +29,12 @@ python3.pkgs.buildPythonApplication rec {
       --replace "mypy==1.10.0" "mypy==1.10.*"
   '';
 
-  nativeBuildInputs = [
-    git
-  ] ++ (with python3.pkgs; [
-    setuptools
-    setuptools-scm
-  ]);
+  nativeBuildInputs =
+    [ git ]
+    ++ (with python3.pkgs; [
+      setuptools
+      setuptools-scm
+    ]);
 
   propagatedBuildInputs = with python3.pkgs; [
     argcomplete
@@ -78,9 +79,7 @@ python3.pkgs.buildPythonApplication rec {
     "tests/test_provenance.py"
   ];
 
-  pythonImportsCheck = [
-    "cwltool"
-  ];
+  pythonImportsCheck = [ "cwltool" ];
 
   meta = with lib; {
     description = "Common Workflow Language reference implementation";

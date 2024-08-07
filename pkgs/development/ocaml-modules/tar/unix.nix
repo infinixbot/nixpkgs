@@ -1,8 +1,9 @@
-{ buildDunePackage
-, tar
-, cstruct-lwt
-, lwt
-, git
+{
+  buildDunePackage,
+  tar,
+  cstruct-lwt,
+  lwt,
+  git,
 }:
 
 buildDunePackage rec {
@@ -15,9 +16,7 @@ buildDunePackage rec {
     lwt
   ];
 
-  nativeCheckInputs = [
-    git
-  ];
+  nativeCheckInputs = [ git ];
 
   meta = tar.meta // {
     description = "Decode and encode tar format files from Unix";

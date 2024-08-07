@@ -1,6 +1,7 @@
-{ lib
-, rustPlatform
-, fetchFromGitHub
+{
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -24,4 +25,3 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "openapi-tui";
   };
 }
-

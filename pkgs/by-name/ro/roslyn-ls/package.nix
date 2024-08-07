@@ -1,4 +1,13 @@
-{ lib, fetchFromGitHub, buildDotnetModule, dotnetCorePackages, stdenvNoCC, testers, roslyn-ls, jq }:
+{
+  lib,
+  fetchFromGitHub,
+  buildDotnetModule,
+  dotnetCorePackages,
+  stdenvNoCC,
+  testers,
+  roslyn-ls,
+  jq,
+}:
 let
   pname = "roslyn-ls";
   dotnet-sdk = dotnetCorePackages.sdk_9_0;

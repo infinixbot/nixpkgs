@@ -1,10 +1,11 @@
-{ lib
-, stdenv
-, fetchgit
-, autoreconfHook
-, pkg-config
-, fltk13
-, gettext
+{
+  lib,
+  stdenv,
+  fetchgit,
+  autoreconfHook,
+  pkg-config,
+  fltk13,
+  gettext,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -23,9 +24,7 @@ stdenv.mkDerivation (finalAttrs: {
     gettext
   ];
 
-  buildInputs = [
-    fltk13
-  ];
+  buildInputs = [ fltk13 ];
 
   enableParallelBuilding = true;
 

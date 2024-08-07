@@ -1,4 +1,8 @@
-{ lib, stdenv, fetchurl }:
+{
+  lib,
+  stdenv,
+  fetchurl,
+}:
 
 stdenv.mkDerivation rec {
   pname = "man-pages";
@@ -9,9 +13,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-4jy6wp8RC6Vx8NqFI+edNzaRRm7X8qMTAXIYF9NFML0=";
   };
 
-  makeFlags = [
-    "prefix=${placeholder "out"}"
-  ];
+  makeFlags = [ "prefix=${placeholder "out"}" ];
 
   dontBuild = true;
 

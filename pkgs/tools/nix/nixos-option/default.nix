@@ -1,10 +1,11 @@
-{ lib
-, stdenv
-, boost
-, cmake
-, pkg-config
-, installShellFiles
-, nix
+{
+  lib,
+  stdenv,
+  boost,
+  cmake,
+  pkg-config,
+  installShellFiles,
+  nix,
 }:
 
 stdenv.mkDerivation {
@@ -26,9 +27,7 @@ stdenv.mkDerivation {
     boost
     nix
   ];
-  cmakeFlags = [
-    "-DNIX_DEV_INCLUDEPATH=${nix.dev}/include/nix"
-  ];
+  cmakeFlags = [ "-DNIX_DEV_INCLUDEPATH=${nix.dev}/include/nix" ];
 
   meta = with lib; {
     license = licenses.lgpl2Plus;

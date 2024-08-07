@@ -57,10 +57,7 @@ buildPythonPackage rec {
     hash = "sha256-W+m7PVphj4sP5+Um7dtPbdnaZ+edZn/fcE4XJGX1E6M=";
   };
 
-
-  pythonRelaxDeps = [
-    "urwid"
-  ];
+  pythonRelaxDeps = [ "urwid" ];
 
   propagatedBuildInputs = [
     aioquic

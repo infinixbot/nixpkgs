@@ -34,16 +34,12 @@ buildPythonPackage rec {
     wheel
   ];
 
-  buildInputs = [
-    ncurses
-  ];
+  buildInputs = [ ncurses ];
 
   dependencies = [
     filelock
     setuptools
-  ] ++ lib.optionals (pythonOlder "3.10") [
-    typing-extensions
-  ];
+  ] ++ lib.optionals (pythonOlder "3.10") [ typing-extensions ];
 
   postPatch = ''
     sed -i /patchelf/d pyproject.toml

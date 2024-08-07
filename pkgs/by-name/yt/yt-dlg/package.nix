@@ -2,11 +2,11 @@
   lib,
   python3,
   fetchFromGitHub,
-  fetchPypi
+  fetchPypi,
 }:
 let
-  python3' =
-    (python3.override {
+  python3' = (
+    python3.override {
       packageOverrides = final: prev: {
         wxpython = prev.wxpython.overrideAttrs rec {
           version = "4.2.0";
@@ -17,7 +17,8 @@ let
           };
         };
       };
-    });
+    }
+  );
 
   python3Packages = python3'.pkgs;
 

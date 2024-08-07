@@ -1,12 +1,13 @@
-{ lib
-, stdenv
-, llvmPackages
-, fetchurl
-, pkg-config
-, freetype
-, cmake
-, static ? stdenv.hostPlatform.isStatic
-, testers
+{
+  lib,
+  stdenv,
+  llvmPackages,
+  fetchurl,
+  pkg-config,
+  freetype,
+  cmake,
+  static ? stdenv.hostPlatform.isStatic,
+  testers,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -14,18 +15,26 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "graphite2";
 
   src = fetchurl {
-    url = with finalAttrs; "https://github.com/silnrsi/graphite/releases/download/${version}/${pname}-${version}.tgz";
+    url =
+      with finalAttrs;
+      "https://github.com/silnrsi/graphite/releases/download/${version}/${pname}-${version}.tgz";
     sha256 = "1790ajyhk0ax8xxamnrk176gc9gvhadzy78qia4rd8jzm89ir7gr";
   };
 
-  outputs = [ "out" "dev" ];
+  outputs = [
+    "out"
+    "dev"
+  ];
 
-  nativeBuildInputs = [ pkg-config cmake ];
-  buildInputs = [ freetype ]
-    ++ lib.optional (stdenv.targetPlatform.useLLVM or false)
-      (llvmPackages.compiler-rt.override {
-        doFakeLibgcc = true;
-      });
+  nativeBuildInputs = [
+    pkg-config
+    cmake
+  ];
+  buildInputs =
+    [ freetype ]
+    ++ lib.optional (stdenv.targetPlatform.useLLVM or false) (
+      llvmPackages.compiler-rt.override { doFakeLibgcc = true; }
+    );
 
   patches = lib.optionals stdenv.isDarwin [ ./macosx.patch ];
   postPatch = ''
@@ -39,9 +48,7 @@ stdenv.mkDerivation (finalAttrs: {
       --replace 'readelf' "${stdenv.cc.targetPrefix}readelf"
   '';
 
-  cmakeFlags = lib.optionals static [
-    "-DBUILD_SHARED_LIBS=OFF"
-  ];
+  cmakeFlags = lib.optionals static [ "-DBUILD_SHARED_LIBS=OFF" ];
 
   # Remove a test that fails to statically link (undefined reference to png and
   # freetype symbols)
@@ -52,9 +59,7 @@ stdenv.mkDerivation (finalAttrs: {
   doCheck = true;
 
   passthru.tests = {
-    pkg-config = testers.hasPkgConfigModules {
-      package = finalAttrs.finalPackage;
-    };
+    pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
   };
 
   meta = with lib; {

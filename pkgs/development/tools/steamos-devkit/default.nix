@@ -1,11 +1,12 @@
-{ lib
-, fetchFromGitHub
-, fetchFromGitLab
-, python3
-, copyDesktopItems
-, makeDesktopItem
-, pkg-config
-, SDL2
+{
+  lib,
+  fetchFromGitHub,
+  fetchFromGitLab,
+  python3,
+  copyDesktopItems,
+  makeDesktopItem,
+  pkg-config,
+  SDL2,
 }:
 let
   # steamos-devkit requires a build of the unreleased pyimgui 2.0 branch, move to pythonPackages when 2.0 is released.
@@ -84,9 +85,7 @@ python3.pkgs.buildPythonPackage rec {
     six
   ];
 
-  nativeBuildInputs = [
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ copyDesktopItems ];
 
   postUnpack = ''
     # Find the absolute source root to link correctly to the previous root

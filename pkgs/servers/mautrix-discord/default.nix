@@ -1,10 +1,11 @@
-{ lib
-, buildGoModule
-, fetchFromGitHub
-, olm
-, nix-update-script
-, testers
-, mautrix-discord
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+  olm,
+  nix-update-script,
+  testers,
+  mautrix-discord,
 }:
 
 buildGoModule rec {
@@ -20,18 +21,18 @@ buildGoModule rec {
 
   vendorHash = "sha256-QdH98NA5Y9YKkvL8Gq8ChgvHFOyOBFXDDulxwql6v5c=";
 
-  ldflags = [ "-s" "-w" ];
+  ldflags = [
+    "-s"
+    "-w"
+  ];
 
   buildInputs = [ olm ];
 
   doCheck = false;
 
-
   passthru = {
     updateScript = nix-update-script { };
-    tests.version = testers.testVersion {
-      package = mautrix-discord;
-    };
+    tests.version = testers.testVersion { package = mautrix-discord; };
   };
 
   meta = with lib; {

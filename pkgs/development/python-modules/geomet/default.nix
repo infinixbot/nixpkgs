@@ -37,8 +37,6 @@ buildPythonPackage rec {
     homepage = "https://github.com/geomet/geomet";
     changelog = "https://github.com/geomet/geomet/releases/tag/${version}";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      ris
-    ];
+    maintainers = with maintainers; [ ris ];
   };
 }

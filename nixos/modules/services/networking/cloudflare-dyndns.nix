@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 with lib;
 
@@ -91,7 +96,8 @@ in
         EnvironmentFile = cfg.apiTokenFile;
         ExecStart =
           let
-            args = [ "--cache-file /var/lib/cloudflare-dyndns/ip.cache" ]
+            args =
+              [ "--cache-file /var/lib/cloudflare-dyndns/ip.cache" ]
               ++ (if cfg.ipv4 then [ "-4" ] else [ "-no-4" ])
               ++ (if cfg.ipv6 then [ "-6" ] else [ "-no-6" ])
               ++ optional cfg.deleteMissing "--delete-missing"
@@ -99,8 +105,6 @@ in
           in
           "${getExe cfg.package} ${toString args}";
       };
-    } // optionalAttrs (cfg.frequency != null) {
-      startAt = cfg.frequency;
-    };
+    } // optionalAttrs (cfg.frequency != null) { startAt = cfg.frequency; };
   };
 }

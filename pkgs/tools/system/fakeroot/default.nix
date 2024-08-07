@@ -1,15 +1,16 @@
-{ lib
-, coreutils
-, stdenv
-, fetchFromGitLab
-, fetchpatch
-, getopt
-, libcap
-, gnused
-, nixosTests
-, testers
-, autoreconfHook
-, po4a
+{
+  lib,
+  coreutils,
+  stdenv,
+  fetchFromGitLab,
+  fetchpatch,
+  getopt,
+  libcap,
+  gnused,
+  nixosTests,
+  testers,
+  autoreconfHook,
+  po4a,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -46,7 +47,10 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  nativeBuildInputs = [ autoreconfHook po4a ];
+  nativeBuildInputs = [
+    autoreconfHook
+    po4a
+  ];
   buildInputs = lib.optional (!stdenv.isDarwin) libcap;
 
   postUnpack = ''
@@ -67,9 +71,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru = {
     tests = {
-      version = testers.testVersion {
-        package = finalAttrs.finalPackage;
-      };
+      version = testers.testVersion { package = finalAttrs.finalPackage; };
       # A lightweight *unit* test that exercises fakeroot and fakechroot together:
       nixos-etc = nixosTests.etc.test-etc-fakeroot;
     };

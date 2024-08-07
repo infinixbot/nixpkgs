@@ -1,18 +1,19 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, nix-update-script
-, meson
-, ninja
-, pkg-config
-, vala
-, wrapGAppsHook4
-, glib
-, granite7
-, gsettings-desktop-schemas
-, gtk4
-, systemd
-, xorg
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  nix-update-script,
+  meson,
+  ninja,
+  pkg-config,
+  vala,
+  wrapGAppsHook4,
+  glib,
+  granite7,
+  gsettings-desktop-schemas,
+  gtk4,
+  systemd,
+  xorg,
 }:
 
 stdenv.mkDerivation rec {
@@ -43,9 +44,7 @@ stdenv.mkDerivation rec {
     xorg.libX11
   ];
 
-  mesonFlags = [
-    "-Dsystemduserunitdir=${placeholder "out"}/lib/systemd/user"
-  ];
+  mesonFlags = [ "-Dsystemduserunitdir=${placeholder "out"}/lib/systemd/user" ];
 
   passthru = {
     updateScript = nix-update-script { };
