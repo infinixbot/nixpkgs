@@ -69,7 +69,13 @@ in
           scripts before forwarding the value to the
           `displayManager`.
         '';
-        apply = map (d: d // { manage = "window"; });
+        apply = map (
+          d:
+          d
+          // {
+            manage = "window";
+          }
+        );
       };
 
     };

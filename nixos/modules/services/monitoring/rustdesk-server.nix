@@ -128,7 +128,9 @@ in
 
       systemd.services.rustdesk-relay = lib.mkMerge [
         serviceDefaults
-        { serviceConfig.ExecStart = "${cfg.package}/bin/hbbr ${lib.escapeShellArgs cfg.extraRelayArgs}"; }
+        {
+          serviceConfig.ExecStart = "${cfg.package}/bin/hbbr ${lib.escapeShellArgs cfg.extraRelayArgs}";
+        }
       ];
     };
 

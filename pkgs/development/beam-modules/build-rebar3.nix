@@ -28,7 +28,9 @@
 let
   debugInfoFlag = lib.optionalString (enableDebugInfo || erlang.debugInfo) "debug-info";
 
-  rebar3 = rebar3WithPlugins { plugins = buildPlugins; };
+  rebar3 = rebar3WithPlugins {
+    plugins = buildPlugins;
+  };
 
   shell =
     drv:

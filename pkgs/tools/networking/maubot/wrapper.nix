@@ -76,7 +76,11 @@ let
             plugins = pkgs: plugins pkgs ++ filter pkgs;
             inherit pythonPackages baseConfig;
           };
-        withBaseConfig = baseConfig: wrapper { inherit baseConfig pythonPackages plugins; };
+        withBaseConfig =
+          baseConfig:
+          wrapper {
+            inherit baseConfig pythonPackages plugins;
+          };
       };
 
       meta.priority = (unwrapped.meta.priority or 0) - 1;

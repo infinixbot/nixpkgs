@@ -64,8 +64,12 @@ in
         pkgs.mate.basePackages
         ++ pkgs.mate.extraPackages
         ++ [
-          (pkgs.mate.caja-with-extensions.override { extensions = cfg.extraCajaExtensions; })
-          (pkgs.mate.mate-panel-with-applets.override { applets = cfg.extraPanelApplets; })
+          (pkgs.mate.caja-with-extensions.override {
+            extensions = cfg.extraCajaExtensions;
+          })
+          (pkgs.mate.mate-panel-with-applets.override {
+            applets = cfg.extraPanelApplets;
+          })
           pkgs.desktop-file-utils
           pkgs.glib
           pkgs.gtk3.out

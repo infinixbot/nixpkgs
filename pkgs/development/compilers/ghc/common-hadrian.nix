@@ -159,8 +159,12 @@
       {
         inherit url sha256;
       }
-      // lib.optionalAttrs (rev != null) { inherit rev; }
-      // lib.optionalAttrs (postFetch != null) { inherit postFetch; }
+      // lib.optionalAttrs (rev != null) {
+        inherit rev;
+      }
+      // lib.optionalAttrs (postFetch != null) {
+        inherit postFetch;
+      }
     );
 
     patches =

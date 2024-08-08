@@ -44,7 +44,9 @@ stdenv.mkDerivation rec {
   doCheck = !stdenv.hostPlatform.isMusl;
 
   passthru = {
-    updateScript = gitUpdater { url = "https://git.kernel.org/pub/scm/libs/ell/ell.git"; };
+    updateScript = gitUpdater {
+      url = "https://git.kernel.org/pub/scm/libs/ell/ell.git";
+    };
   };
 
   meta = with lib; {

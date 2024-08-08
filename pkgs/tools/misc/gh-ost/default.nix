@@ -25,7 +25,9 @@ buildGoModule rec {
     "-X main.AppVersion=${version}"
   ];
 
-  passthru.tests.version = testers.testVersion { package = gh-ost; };
+  passthru.tests.version = testers.testVersion {
+    package = gh-ost;
+  };
 
   meta = with lib; {
     description = "Triggerless online schema migration solution for MySQL";

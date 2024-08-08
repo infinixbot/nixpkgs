@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     "--enable-threads"
   ];
 
-  passthru.tests.version = testers.testVersion { package = dmalloc; };
+  passthru.tests.version = testers.testVersion {
+    package = dmalloc;
+  };
 
   meta = with lib; {
     description = "Debug Malloc memory allocation debugging C library";

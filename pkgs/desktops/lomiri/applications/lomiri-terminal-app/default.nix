@@ -89,7 +89,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru = {
     tests.vm-test = nixosTests.terminal-emulators.lomiri-terminal-app;
-    updateScript = gitUpdater { rev-prefix = "v"; };
+    updateScript = gitUpdater {
+      rev-prefix = "v";
+    };
   };
 
   meta = with lib; {

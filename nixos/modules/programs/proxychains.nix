@@ -63,7 +63,9 @@ in
 
       enable = lib.mkEnableOption "proxychains configuration";
 
-      package = lib.mkPackageOption pkgs "proxychains" { example = "proxychains-ng"; };
+      package = lib.mkPackageOption pkgs "proxychains" {
+        example = "proxychains-ng";
+      };
 
       chain = {
         type = lib.mkOption {

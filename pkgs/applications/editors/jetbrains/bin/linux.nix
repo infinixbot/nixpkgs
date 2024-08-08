@@ -147,5 +147,7 @@ lib.makeOverridable mkDerivation (
       runHook postInstall
     '';
   }
-  // lib.optionalAttrs (!(meta.license.free or true)) { preferLocalBuild = true; }
+  // lib.optionalAttrs (!(meta.license.free or true)) {
+    preferLocalBuild = true;
+  }
 )

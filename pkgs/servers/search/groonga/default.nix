@@ -61,7 +61,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru.tests = {
     inherit (postgresqlPackages) pgroonga;
-    version = testers.testVersion { package = finalAttrs.finalPackage; };
+    version = testers.testVersion {
+      package = finalAttrs.finalPackage;
+    };
     pkg-config = testers.hasPkgConfigModules {
       package = finalAttrs.finalPackage;
       moduleNames = [ "groonga" ];

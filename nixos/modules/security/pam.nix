@@ -524,7 +524,9 @@ let
             '';
           };
 
-          package = mkPackageOption pkgs.plasma5Packages "kwallet-pam" { pkgsText = "pkgs.plasma5Packages"; };
+          package = mkPackageOption pkgs.plasma5Packages "kwallet-pam" {
+            pkgsText = "pkgs.plasma5Packages";
+          };
 
           forceRun = mkEnableOption null // {
             description = ''

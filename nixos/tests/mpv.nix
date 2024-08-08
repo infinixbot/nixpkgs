@@ -13,7 +13,9 @@ import ./make-test-python.nix (
       {
         environment.systemPackages = [
           pkgs.curl
-          (pkgs.mpv.override { scripts = [ pkgs.mpvScripts.simple-mpv-webui ]; })
+          (pkgs.mpv.override {
+            scripts = [ pkgs.mpvScripts.simple-mpv-webui ];
+          })
         ];
       };
 

@@ -187,7 +187,9 @@ let
         shell = "${bootstrapTools}/bin/bash";
         initialPath = [ bootstrapTools ];
 
-        fetchurlBoot = import ../../build-support/fetchurl/boot.nix { inherit system; };
+        fetchurlBoot = import ../../build-support/fetchurl/boot.nix {
+          inherit system;
+        };
 
         cc =
           if prevStage.gcc-unwrapped == null then
@@ -324,7 +326,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
 
       # Rebuild binutils to use from stage2 onwards.
       overrides = self: super: {
-        binutils-unwrapped = super.binutils-unwrapped.override { enableGold = false; };
+        binutils-unwrapped = super.binutils-unwrapped.override {
+          enableGold = false;
+        };
         inherit (prevStage)
           ccWrapperStdenv
           gcc-unwrapped
@@ -385,7 +389,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
         # TODO(@sternenseemann): Can we already build the wrapper with the actual runtimeShell here?
         # Historically, the wrapper didn't use runtimeShell, so the used shell had to be changed explicitly
         # (or stdenvNoCC.shell would be used) which happened in stage4.
-        binutils = super.binutils.override { runtimeShell = "${bootstrapTools}/bin/bash"; };
+        binutils = super.binutils.override {
+          runtimeShell = "${bootstrapTools}/bin/bash";
+        };
         gcc-unwrapped =
           (super.gcc-unwrapped.override (
             commonGccOverrides
@@ -613,7 +619,12 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
         // {
           ${localSystem.libc} = getLibc prevStage;
           gcc-unwrapped =
-            (super.gcc-unwrapped.override (commonGccOverrides // { inherit (prevStage) which; })).overrideAttrs
+            (super.gcc-unwrapped.override (
+              commonGccOverrides
+              // {
+                inherit (prevStage) which;
+              }
+            )).overrideAttrs
               (a: {
                 # so we can add them to allowedRequisites below
                 passthru = a.passthru // {

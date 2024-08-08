@@ -35,7 +35,13 @@ let
     else
       "${cfg.guiAddress}${path}";
 
-  devices = mapAttrsToList (_: device: device // { deviceID = device.id; }) cfg.settings.devices;
+  devices = mapAttrsToList (
+    _: device:
+    device
+    // {
+      deviceID = device.id;
+    }
+  ) cfg.settings.devices;
 
   folders = mapAttrsToList (
     _: folder:

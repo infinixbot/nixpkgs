@@ -202,7 +202,9 @@ in
             ];
           }
         '';
-        type = types.submodule { freeformType = json.type; };
+        type = types.submodule {
+          freeformType = json.type;
+        };
       };
       httpd = {
         enable = mkEnableOption "Radicle HTTP gateway to radicle-node";
@@ -302,7 +304,9 @@ in
 
       environment.systemPackages = [ rad-system ];
 
-      networking.firewall = mkIf cfg.node.openFirewall { allowedTCPPorts = [ cfg.node.listenPort ]; };
+      networking.firewall = mkIf cfg.node.openFirewall {
+        allowedTCPPorts = [ cfg.node.listenPort ];
+      };
 
       users = {
         users.radicle = {
@@ -311,7 +315,9 @@ in
           home = env.HOME;
           isSystemUser = true;
         };
-        groups.radicle = { };
+        groups.radicle =
+          {
+          };
       };
     }
 

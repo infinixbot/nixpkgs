@@ -262,7 +262,12 @@ let
         type = types.submodule [
           {
             inherit imports;
-            options = (mkExporterOpts { inherit name port; } // extraOpts);
+            options = (
+              mkExporterOpts {
+                inherit name port;
+              }
+              // extraOpts
+            );
           }
           (
             { config, ... }:
@@ -311,7 +316,9 @@ let
         }
       );
       users.groups = (
-        mkIf (conf.group == "${name}-exporter" && !enableDynamicUser) { "${name}-exporter" = { }; }
+        mkIf (conf.group == "${name}-exporter" && !enableDynamicUser) {
+          "${name}-exporter" = { };
+        }
       );
       networking.firewall.extraCommands = mkIf (conf.openFirewall && !nftables) (concatStrings [
         "ip46tables -A nixos-fw ${conf.firewallFilter} "

@@ -77,7 +77,9 @@ stdenv.mkDerivation (
     '';
 
     passthru = {
-      hook = callPackage ./hook.nix { zig = finalAttrs.finalPackage; };
+      hook = callPackage ./hook.nix {
+        zig = finalAttrs.finalPackage;
+      };
     };
 
     meta = {

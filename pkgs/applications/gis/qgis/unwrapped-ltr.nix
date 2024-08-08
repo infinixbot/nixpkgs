@@ -51,7 +51,11 @@
 let
   py = python311.override {
     self = py;
-    packageOverrides = self: super: { pyqt5 = super.pyqt5.override { withLocation = true; }; };
+    packageOverrides = self: super: {
+      pyqt5 = super.pyqt5.override {
+        withLocation = true;
+      };
+    };
   };
 
   pythonBuildInputs = with py.pkgs; [

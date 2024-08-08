@@ -17,8 +17,12 @@ let
 in
 {
   options = {
-    deferred = mkOption { type = deferredModule; };
-    result = mkOption { default = (evalModules { modules = [ config.deferred ]; }).config.result; };
+    deferred = mkOption {
+      type = deferredModule;
+    };
+    result = mkOption {
+      default = (evalModules { modules = [ config.deferred ]; }).config.result;
+    };
   };
   config = {
     deferred =

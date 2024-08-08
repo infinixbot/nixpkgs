@@ -150,7 +150,10 @@ buildFHSEnv rec {
     inherit unwrapped;
     tests = {
       buildSof =
-        runCommand "quartus-prime-lite-test-build-sof" { nativeBuildInputs = [ quartus-prime-lite ]; }
+        runCommand "quartus-prime-lite-test-build-sof"
+          {
+            nativeBuildInputs = [ quartus-prime-lite ];
+          }
           ''
             cat >mydesign.vhd <<EOF
             library ieee;

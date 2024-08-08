@@ -19,7 +19,9 @@
 }:
 
 let
-  get-nix-license = import ./get_nix_license.nix { inherit lib writeText; };
+  get-nix-license = import ./get_nix_license.nix {
+    inherit lib writeText;
+  };
 in
 
 rustPlatform.buildRustPackage rec {

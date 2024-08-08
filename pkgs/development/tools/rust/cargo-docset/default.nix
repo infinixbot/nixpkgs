@@ -21,7 +21,9 @@ rustPlatform.buildRustPackage rec {
 
   buildInputs = [ sqlite ];
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     description = "Cargo subcommand to generate a Dash/Zeal docset for your Rust packages";

@@ -130,7 +130,9 @@ in
     };
 
     networking.firewall = lib.mkMerge [
-      (lib.mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.settings.http_port ]; })
+      (lib.mkIf cfg.openFirewall {
+        allowedTCPPorts = [ cfg.settings.http_port ];
+      })
       (lib.mkIf (cfg.openFirewall && cfg.settings.ssl && cfg.settings.ssl_port != null) {
         allowedTCPPorts = [ cfg.settings.ssl_port ];
       })

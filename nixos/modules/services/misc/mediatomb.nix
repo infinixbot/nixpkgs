@@ -395,7 +395,9 @@ in
         serviceConfig.Group = cfg.group;
       };
 
-      users.groups = optionalAttrs (cfg.group == "mediatomb") { mediatomb.gid = gid; };
+      users.groups = optionalAttrs (cfg.group == "mediatomb") {
+        mediatomb.gid = gid;
+      };
 
       users.users = optionalAttrs (cfg.user == "mediatomb") {
         mediatomb = {

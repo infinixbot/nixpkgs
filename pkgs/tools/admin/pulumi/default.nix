@@ -125,11 +125,15 @@ buildGoModule rec {
     pkgs = pulumiPackages;
     withPackages =
       f:
-      runCommand "${pulumi.name}-with-packages" { nativeBuildInputs = [ makeWrapper ]; } ''
-        mkdir -p $out/bin
-        makeWrapper ${pulumi}/bin/pulumi $out/bin/pulumi \
-          --set LD_LIBRARY_PATH "${stdenv.cc.cc.lib}/lib
-      '';
+      runCommand "${pulumi.name}-with-packages"
+        {
+          nativeBuildInputs = [ makeWrapper ];
+        }
+        ''
+          mkdir -p $out/bin
+          makeWrapper ${pulumi}/bin/pulumi $out/bin/pulumi \
+            --set LD_LIBRARY_PATH "${stdenv.cc.cc.lib}/lib
+        '';
   };
 
   meta = with lib; {

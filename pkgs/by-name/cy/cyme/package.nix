@@ -40,7 +40,9 @@ rustPlatform.buildRustPackage rec {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests.version = testers.testVersion { package = cyme; };
+    tests.version = testers.testVersion {
+      package = cyme;
+    };
   };
 
   meta = with lib; {

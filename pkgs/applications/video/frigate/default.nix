@@ -20,7 +20,9 @@ let
     hash = "sha256-NVT7yaJkVA7b7GL0S0fHjNneBzhjCru56qY1Q4sTVcE=";
   };
 
-  frigate-web = callPackage ./web.nix { inherit version src; };
+  frigate-web = callPackage ./web.nix {
+    inherit version src;
+  };
 
   python = python311.override {
     self = python;

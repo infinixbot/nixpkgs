@@ -11,7 +11,9 @@
 let
   python = python3.override {
     self = python;
-    packageOverrides = self: super: { pydantic = super.pydantic_1; };
+    packageOverrides = self: super: {
+      pydantic = super.pydantic_1;
+    };
   };
 in
 python.pkgs.buildPythonApplication rec {

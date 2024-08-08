@@ -106,7 +106,9 @@ stdenv.mkDerivation rec {
   '';
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = pname; };
+    updateScript = gnome.updateScript {
+      packageName = pname;
+    };
 
     tests = {
       installed-tests = nixosTests.installed-tests.gnome-photos;

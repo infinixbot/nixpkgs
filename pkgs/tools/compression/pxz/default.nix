@@ -35,7 +35,9 @@ stdenv.mkDerivation rec {
     "MANDIR=${placeholder "out"}/share/man"
   ];
 
-  passthru.tests.version = testers.testVersion { package = pxz; };
+  passthru.tests.version = testers.testVersion {
+    package = pxz;
+  };
 
   meta = with lib; {
     homepage = "https://jnovy.fedorapeople.org/pxz/";

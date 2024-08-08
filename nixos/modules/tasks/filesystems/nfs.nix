@@ -21,10 +21,18 @@ let
 
   # merge parameters from services.nfs.server
   nfsConfSettings =
-    optionalAttrs (cfg.server.nproc != null) { nfsd.threads = cfg.server.nproc; }
-    // optionalAttrs (cfg.server.hostName != null) { nfsd.host = cfg.hostName; }
-    // optionalAttrs (cfg.server.mountdPort != null) { mountd.port = cfg.server.mountdPort; }
-    // optionalAttrs (cfg.server.statdPort != null) { statd.port = cfg.server.statdPort; }
+    optionalAttrs (cfg.server.nproc != null) {
+      nfsd.threads = cfg.server.nproc;
+    }
+    // optionalAttrs (cfg.server.hostName != null) {
+      nfsd.host = cfg.hostName;
+    }
+    // optionalAttrs (cfg.server.mountdPort != null) {
+      mountd.port = cfg.server.mountdPort;
+    }
+    // optionalAttrs (cfg.server.statdPort != null) {
+      statd.port = cfg.server.statdPort;
+    }
     // optionalAttrs (cfg.server.lockdPort != null) {
       lockd.port = cfg.server.lockdPort;
       lockd.udp-port = cfg.server.lockdPort;

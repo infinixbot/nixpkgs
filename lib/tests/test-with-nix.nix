@@ -26,7 +26,9 @@ pkgs.runCommand "nixpkgs-lib-tests-nix-${nix.version}"
         inherit pkgs;
         lib = import ../.;
       })
-      (import ../path/tests { inherit pkgs; })
+      (import ../path/tests {
+        inherit pkgs;
+      })
     ];
     nativeBuildInputs = [
       nix

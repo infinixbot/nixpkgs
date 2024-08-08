@@ -61,7 +61,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.port ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.port ];
+    };
 
     systemd.services.uptermd = {
       description = "Upterm Daemon";

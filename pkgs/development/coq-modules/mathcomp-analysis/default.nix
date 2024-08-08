@@ -235,9 +235,10 @@ let
       );
       patched-derivation = patched-derivation2.overrideAttrs (
         o:
-        lib.optionalAttrs (
-          o.version != null && (o.version == "dev" || lib.versions.isGe "0.3.4" o.version)
-        ) { propagatedBuildInputs = o.propagatedBuildInputs ++ [ hierarchy-builder ]; }
+        lib.optionalAttrs (o.version != null && (o.version == "dev" || lib.versions.isGe "0.3.4" o.version))
+          {
+            propagatedBuildInputs = o.propagatedBuildInputs ++ [ hierarchy-builder ];
+          }
       );
     in
     patched-derivation;

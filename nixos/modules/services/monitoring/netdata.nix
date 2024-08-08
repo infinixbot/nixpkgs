@@ -278,10 +278,14 @@ in
           config.virtualisation.podman.package
         ]
         ++ lib.optional config.boot.zfs.enabled config.boot.zfs.package;
-      environment = {
-        PYTHONPATH = "${cfg.package}/libexec/netdata/python.d/python_modules";
-        NETDATA_PIPENAME = "/run/netdata/ipc";
-      } // lib.optionalAttrs (!cfg.enableAnalyticsReporting) { DO_NOT_TRACK = "1"; };
+      environment =
+        {
+          PYTHONPATH = "${cfg.package}/libexec/netdata/python.d/python_modules";
+          NETDATA_PIPENAME = "/run/netdata/ipc";
+        }
+        // lib.optionalAttrs (!cfg.enableAnalyticsReporting) {
+          DO_NOT_TRACK = "1";
+        };
       restartTriggers = [
         config.environment.etc."netdata/netdata.conf".source
         config.environment.etc."netdata/conf.d".source
@@ -463,7 +467,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == defaultUser) { ${defaultUser} = { }; };
+    users.groups = optionalAttrs (cfg.group == defaultUser) {
+      ${defaultUser} = { };
+    };
 
   };
 }

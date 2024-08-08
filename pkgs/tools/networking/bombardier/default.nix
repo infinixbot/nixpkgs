@@ -30,7 +30,9 @@ buildGoModule rec {
   __darwinAllowLocalNetworking = true;
 
   passthru.tests = {
-    version = testers.testVersion { package = bombardier; };
+    version = testers.testVersion {
+      package = bombardier;
+    };
   };
 
   meta = with lib; {

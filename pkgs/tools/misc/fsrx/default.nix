@@ -20,7 +20,9 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "sha256-bRStmz2sJnhCKpvoQfc/ZP9B2ZdNHYNEHd+wZErdS1Y=";
 
   passthru = {
-    tests.version = testers.testVersion { package = fsrx; };
+    tests.version = testers.testVersion {
+      package = fsrx;
+    };
   };
 
   meta = with lib; {

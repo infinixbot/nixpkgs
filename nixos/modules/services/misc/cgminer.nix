@@ -120,7 +120,9 @@ in
         description = "Cgminer user";
       };
     };
-    users.groups = optionalAttrs (cfg.user == "cgminer") { cgminer = { }; };
+    users.groups = optionalAttrs (cfg.user == "cgminer") {
+      cgminer = { };
+    };
 
     environment.systemPackages = [ cfg.package ];
 

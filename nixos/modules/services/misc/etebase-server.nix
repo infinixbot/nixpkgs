@@ -198,12 +198,17 @@ in
   config = mkIf cfg.enable {
 
     environment.systemPackages = with pkgs; [
-      (runCommand "etebase-server" { nativeBuildInputs = [ makeWrapper ]; } ''
-        makeWrapper ${cfg.package}/bin/etebase-server \
-          $out/bin/etebase-server \
-          --chdir ${escapeShellArg cfg.dataDir} \
-          --prefix ETEBASE_EASY_CONFIG_PATH : "${configIni}"
-      '')
+      (runCommand "etebase-server"
+        {
+          nativeBuildInputs = [ makeWrapper ];
+        }
+        ''
+          makeWrapper ${cfg.package}/bin/etebase-server \
+            $out/bin/etebase-server \
+            --chdir ${escapeShellArg cfg.dataDir} \
+            --prefix ETEBASE_EASY_CONFIG_PATH : "${configIni}"
+        ''
+      )
     ];
 
     systemd.tmpfiles.rules =
@@ -264,6 +269,8 @@ in
       groups.${defaultUser} = { };
     };
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.port ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.port ];
+    };
   };
 }

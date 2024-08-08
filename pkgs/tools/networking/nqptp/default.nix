@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  passthru.updateScript = gitUpdater { ignoredVersions = ".*(-dev|d0)"; };
+  passthru.updateScript = gitUpdater {
+    ignoredVersions = ".*(-dev|d0)";
+  };
 
   meta = {
     homepage = "https://github.com/mikebrady/nqptp";

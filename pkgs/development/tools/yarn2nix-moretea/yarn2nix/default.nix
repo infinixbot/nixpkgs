@@ -525,15 +525,20 @@ rec {
     '';
   };
 
-  fixup_yarn_lock = runCommandLocal "fixup_yarn_lock" { buildInputs = [ nodejs ]; } ''
-    mkdir -p $out/lib
-    mkdir -p $out/bin
+  fixup_yarn_lock =
+    runCommandLocal "fixup_yarn_lock"
+      {
+        buildInputs = [ nodejs ];
+      }
+      ''
+        mkdir -p $out/lib
+        mkdir -p $out/bin
 
-    cp ${./lib/urlToName.js} $out/lib/urlToName.js
-    cp ${./internal/fixup_yarn_lock.js} $out/bin/fixup_yarn_lock
+        cp ${./lib/urlToName.js} $out/lib/urlToName.js
+        cp ${./internal/fixup_yarn_lock.js} $out/bin/fixup_yarn_lock
 
-    patchShebangs $out
-  '';
+        patchShebangs $out
+      '';
 }
 // lib.optionalAttrs allowAliases {
   # Aliases

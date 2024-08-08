@@ -10,7 +10,11 @@ with lib;
 let
   cfg = config.services.hologram-agent;
 
-  cfgFile = pkgs.writeText "hologram-agent.json" (builtins.toJSON { host = cfg.dialAddress; });
+  cfgFile = pkgs.writeText "hologram-agent.json" (
+    builtins.toJSON {
+      host = cfg.dialAddress;
+    }
+  );
 in
 {
   options = {

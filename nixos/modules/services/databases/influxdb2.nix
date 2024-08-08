@@ -67,7 +67,9 @@ let
   );
 
   provisionState = pkgs.writeText "provision_state.json" (
-    builtins.toJSON { inherit (cfg.provision) organizations users; }
+    builtins.toJSON {
+      inherit (cfg.provision) organizations users;
+    }
   );
 
   provisioningScript = pkgs.writeShellScript "post-start-provision" ''

@@ -113,8 +113,12 @@ in
       gnuradioOlder = lib.versionOlder versionAttr.major;
       gnuradioAtLeast = lib.versionAtLeast versionAttr.major;
     }
-    // lib.optionalAttrs (hasFeature "gr-qtgui") { inherit qt; }
-    // lib.optionalAttrs (hasFeature "gnuradio-companion") { inherit gtk; };
+    // lib.optionalAttrs (hasFeature "gr-qtgui") {
+      inherit qt;
+    }
+    // lib.optionalAttrs (hasFeature "gnuradio-companion") {
+      inherit gtk;
+    };
   # Wrapping is done with an external wrapper
   dontWrapPythonPrograms = true;
   dontWrapQtApps = true;

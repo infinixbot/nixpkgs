@@ -578,9 +578,13 @@ in
         type =
           with types;
           listOf (
-            coercedTo str (output: { inherit output; }) (submodule {
-              options = xrandrOptions;
-            })
+            coercedTo str
+              (output: {
+                inherit output;
+              })
+              (submodule {
+                options = xrandrOptions;
+              })
           );
         # Set primary to true for the first head if no other has been set
         # primary already.

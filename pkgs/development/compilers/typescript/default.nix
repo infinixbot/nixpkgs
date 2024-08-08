@@ -22,7 +22,9 @@ buildNpmPackage rec {
   npmDepsHash = "sha256-YihnUZgM+74EmImalyTFtp9xyiOOfjZVohDfpcvlSEg=";
 
   passthru.tests = {
-    version = testers.testVersion { package = typescript; };
+    version = testers.testVersion {
+      package = typescript;
+    };
   };
 
   meta = with lib; {

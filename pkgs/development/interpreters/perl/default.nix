@@ -51,7 +51,9 @@ let
               f = perlPackagesFun;
             }
           )
-          { perl = self; };
+          {
+            perl = self;
+          };
     in
     rec {
       buildEnv = callPackage ./wrapper.nix {

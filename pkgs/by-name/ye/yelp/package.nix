@@ -50,7 +50,9 @@ stdenv.mkDerivation rec {
   ];
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "yelp"; };
+    updateScript = gnome.updateScript {
+      packageName = "yelp";
+    };
   };
 
   meta = with lib; {

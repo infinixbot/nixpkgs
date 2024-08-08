@@ -36,7 +36,11 @@ import ./make-test-python.nix (
 
     testScript =
       let
-        createProject = pkgs.writeText "createProject.json" (builtins.toJSON { name = "test_project"; });
+        createProject = pkgs.writeText "createProject.json" (
+          builtins.toJSON {
+            name = "test_project";
+          }
+        );
       in
       ''
         start_all()

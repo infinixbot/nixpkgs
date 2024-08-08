@@ -1926,7 +1926,9 @@ in
       uid = config.ids.uids.prometheus;
       group = "prometheus";
     };
-    environment.etc."prometheus/prometheus.yaml" = mkIf cfg.enableReload { source = prometheusYml; };
+    environment.etc."prometheus/prometheus.yaml" = mkIf cfg.enableReload {
+      source = prometheusYml;
+    };
     systemd.services.prometheus = {
       wantedBy = [ "multi-user.target" ];
       after = [ "network.target" ];

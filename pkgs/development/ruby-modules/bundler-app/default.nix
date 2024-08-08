@@ -41,7 +41,11 @@
 }@args:
 
 let
-  basicEnv = (callPackage ../bundled-common { inherit ruby; }) args;
+  basicEnv =
+    (callPackage ../bundled-common {
+      inherit ruby;
+    })
+      args;
 
   cmdArgs =
     removeAttrs args [

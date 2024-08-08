@@ -116,7 +116,9 @@ let
       withChromium ? true,
     }:
     let
-      fontconfig = makeFontsConf { fontDirectories = [ ]; };
+      fontconfig = makeFontsConf {
+        fontDirectories = [ ];
+      };
     in
     runCommand ("playwright-browsers" + lib.optionalString withChromium "-chromium")
       {

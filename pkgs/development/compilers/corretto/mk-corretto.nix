@@ -95,7 +95,9 @@ jdk.overrideAttrs (
       oldAttrs.passthru
       // {
         tests = {
-          version = testers.testVersion { package = pkg; };
+          version = testers.testVersion {
+            package = pkg;
+          };
           vendor = runCommand "${pname}-vendor" { nativeBuildInputs = [ pkg ]; } ''
             output=$(${pkg.meta.mainProgram} -XshowSettings:properties -version 2>&1 | grep vendor)
             grep -Fq "java.vendor = Amazon.com Inc." - <<< "$output" && touch $out

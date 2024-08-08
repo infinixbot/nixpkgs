@@ -27,7 +27,9 @@ let
     enablePython = true;
     inherit python;
   };
-  cgal = cgal_5.override { boost = boost'; };
+  cgal = cgal_5.override {
+    boost = boost';
+  };
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "gplates";

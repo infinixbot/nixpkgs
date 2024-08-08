@@ -1,1 +1,3 @@
-{ attrsOfSub.bar.enable = true; }
+{
+  attrsOfSub.bar.enable = true;
+}

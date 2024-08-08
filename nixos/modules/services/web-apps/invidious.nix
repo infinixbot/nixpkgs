@@ -125,25 +125,29 @@ let
       }) cfg.serviceScale
     );
 
-    services.invidious.settings = {
-      # Automatically initialises and migrates the database if necessary
-      check_tables = true;
+    services.invidious.settings =
+      {
+        # Automatically initialises and migrates the database if necessary
+        check_tables = true;
 
-      db = {
-        user = lib.mkDefault (
-          if (lib.versionAtLeast config.system.stateVersion "24.05") then "invidious" else "kemal"
-        );
-        dbname = lib.mkDefault "invidious";
-        port = cfg.database.port;
-        # Blank for unix sockets, see
-        # https://github.com/will/crystal-pg/blob/1548bb255210/src/pq/conninfo.cr#L100-L108
-        host = lib.optionalString (cfg.database.host != null) cfg.database.host;
-        # Not needed because peer authentication is enabled
-        password = lib.mkIf (cfg.database.host == null) "";
-      };
+        db = {
+          user = lib.mkDefault (
+            if (lib.versionAtLeast config.system.stateVersion "24.05") then "invidious" else "kemal"
+          );
+          dbname = lib.mkDefault "invidious";
+          port = cfg.database.port;
+          # Blank for unix sockets, see
+          # https://github.com/will/crystal-pg/blob/1548bb255210/src/pq/conninfo.cr#L100-L108
+          host = lib.optionalString (cfg.database.host != null) cfg.database.host;
+          # Not needed because peer authentication is enabled
+          password = lib.mkIf (cfg.database.host == null) "";
+        };
 
-      host_binding = cfg.address;
-    } // (lib.optionalAttrs (cfg.domain != null) { inherit (cfg) domain; });
+        host_binding = cfg.address;
+      }
+      // (lib.optionalAttrs (cfg.domain != null) {
+        inherit (cfg) domain;
+      });
 
     assertions = [
       {

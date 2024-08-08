@@ -42,7 +42,10 @@ let
       withDrySnippets = mapAttrs (
         a: v:
         if onlyDry && !v.supportsDryActivation then
-          v // { text = "#### Activation script snippet ${a} does not support dry activation."; }
+          v
+          // {
+            text = "#### Activation script snippet ${a} does not support dry activation.";
+          }
         else
           v
       ) withHeadlines;
@@ -159,7 +162,12 @@ in
       '';
 
       type = types.attrsOf (scriptType true);
-      apply = set: set // { script = systemActivationScript set false; };
+      apply =
+        set:
+        set
+        // {
+          script = systemActivationScript set false;
+        };
     };
 
     system.dryActivationScript = mkOption {

@@ -52,7 +52,9 @@ in
         type = bool;
       };
 
-      package = mkPackageOption pkgs "krb5" { example = "heimdal"; };
+      package = mkPackageOption pkgs "krb5" {
+        example = "heimdal";
+      };
 
       settings = mkOption {
         default = { };
@@ -122,5 +124,7 @@ in
     };
   };
 
-  meta.maintainers = builtins.attrValues { inherit (lib.maintainers) dblsaiko h7x4; };
+  meta.maintainers = builtins.attrValues {
+    inherit (lib.maintainers) dblsaiko h7x4;
+  };
 }

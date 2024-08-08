@@ -84,7 +84,9 @@ php.buildComposerProject (finalAttrs: {
         )
       );
     }
-    // lib.optionalAttrs (phpCfg != null) { extraConfig = phpCfg; }
+    // lib.optionalAttrs (phpCfg != null) {
+      extraConfig = phpCfg;
+    }
   );
 
   nativeBuildInputs =

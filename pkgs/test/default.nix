@@ -107,10 +107,14 @@ with pkgs;
 
   hardeningFlags = recurseIntoAttrs (callPackage ./cc-wrapper/hardening.nix { });
   hardeningFlags-gcc = recurseIntoAttrs (
-    callPackage ./cc-wrapper/hardening.nix { stdenv = gccStdenv; }
+    callPackage ./cc-wrapper/hardening.nix {
+      stdenv = gccStdenv;
+    }
   );
   hardeningFlags-clang = recurseIntoAttrs (
-    callPackage ./cc-wrapper/hardening.nix { stdenv = llvmPackages.stdenv; }
+    callPackage ./cc-wrapper/hardening.nix {
+      stdenv = llvmPackages.stdenv;
+    }
   );
 
   config = callPackage ./config.nix { };

@@ -72,7 +72,9 @@ stdenv.mkDerivation rec {
   '';
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "sushi"; };
+    updateScript = gnome.updateScript {
+      packageName = "sushi";
+    };
   };
 
   meta = with lib; {

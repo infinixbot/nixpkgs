@@ -98,7 +98,9 @@ import ../make-test-python.nix {
                     Group = "chroot-testgroup";
                   }
                 else if user == "dynamic-user" then
-                  { DynamicUser = true; }
+                  {
+                    DynamicUser = true;
+                  }
                 else
                   { };
 
@@ -109,7 +111,11 @@ import ../make-test-python.nix {
                 config = {
                   confinement.mode = "chroot-only";
                   # Only set if privateTmp is true to ensure that the default is false.
-                  serviceConfig = serviceConfig // lib.optionalAttrs privateTmp { PrivateTmp = true; };
+                  serviceConfig =
+                    serviceConfig
+                    // lib.optionalAttrs privateTmp {
+                      PrivateTmp = true;
+                    };
                 };
                 testScript =
                   if user == "root" then
@@ -145,7 +151,11 @@ import ../make-test-python.nix {
                 description = "${user}, full APIVFS confinement ${withTmp}";
                 config = {
                   # Only set if privateTmp is false to ensure that the default is true.
-                  serviceConfig = serviceConfig // lib.optionalAttrs (!privateTmp) { PrivateTmp = false; };
+                  serviceConfig =
+                    serviceConfig
+                    // lib.optionalAttrs (!privateTmp) {
+                      PrivateTmp = false;
+                    };
                 };
                 testScript =
                   if user == "root" then

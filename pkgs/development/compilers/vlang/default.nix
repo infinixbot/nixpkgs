@@ -49,7 +49,9 @@ let
     rev = "0c280130cb7ec410b7d21810d1247956c15b72fc";
     hash = "sha256-Fmhkrg9DBiWxInostNp+WfA3V5GgEIs5+KIYrqZosqY=";
   };
-  boehmgcStatic = boehmgc.override { enableStatic = true; };
+  boehmgcStatic = boehmgc.override {
+    enableStatic = true;
+  };
 in
 stdenv.mkDerivation {
   pname = "vlang";

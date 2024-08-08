@@ -194,7 +194,9 @@ in
         '';
       };
     };
-    services.mongodb = mkIf cfg.enableLocalDB { enable = true; };
+    services.mongodb = mkIf cfg.enableLocalDB {
+      enable = true;
+    };
   };
   meta.maintainers = with lib.maintainers; [ patrickdag ];
 }

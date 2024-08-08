@@ -129,7 +129,9 @@ stdenv.mkDerivation (finalAttrs: {
       versionPolicy = "none";
     };
     tests = {
-      pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+      pkg-config = testers.hasPkgConfigModules {
+        package = finalAttrs.finalPackage;
+      };
     };
   };
 

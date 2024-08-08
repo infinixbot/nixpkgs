@@ -39,7 +39,9 @@ let
 
     passthru = {
       updateScript = gitUpdater { };
-      tests.version = testers.testVersion { package = self; };
+      tests.version = testers.testVersion {
+        package = self;
+      };
     };
 
     meta = {

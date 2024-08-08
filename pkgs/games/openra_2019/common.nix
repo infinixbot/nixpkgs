@@ -45,7 +45,9 @@ let
     openal
     SDL2
   ];
-  mkdirp = makeSetupHook { name = "openra-mkdirp-hook"; } ./mkdirp.sh;
+  mkdirp = makeSetupHook {
+    name = "openra-mkdirp-hook";
+  } ./mkdirp.sh;
 
 in
 {

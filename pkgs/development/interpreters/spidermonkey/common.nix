@@ -211,7 +211,9 @@ stdenv.mkDerivation (finalAttrs: rec {
     ln -s $out/bin/js${lib.versions.major version} $out/bin/js
   '';
 
-  passthru.tests.run = callPackage ./test.nix { spidermonkey = finalAttrs.finalPackage; };
+  passthru.tests.run = callPackage ./test.nix {
+    spidermonkey = finalAttrs.finalPackage;
+  };
 
   meta = with lib; {
     description = "Mozilla's JavaScript engine written in C/C++";

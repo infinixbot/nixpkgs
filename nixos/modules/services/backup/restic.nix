@@ -366,7 +366,9 @@ in
                 name: value: nameValuePair (rcloneAttrToOpt name) (toRcloneVal value)
               ) backup.rcloneOptions
             )
-            // optionalAttrs (backup.rcloneConfigFile != null) { RCLONE_CONFIG = backup.rcloneConfigFile; }
+            // optionalAttrs (backup.rcloneConfigFile != null) {
+              RCLONE_CONFIG = backup.rcloneConfigFile;
+            }
             // optionalAttrs (backup.rcloneConfig != null) (
               mapAttrs' (
                 name: value: nameValuePair (rcloneAttrToConf name) (toRcloneVal value)
@@ -376,22 +378,26 @@ in
           restartIfChanged = false;
           wants = [ "network-online.target" ];
           after = [ "network-online.target" ];
-          serviceConfig = {
-            Type = "oneshot";
-            ExecStart =
-              (optionals doBackup [
-                "${resticCmd} backup ${
-                  concatStringsSep " " (backup.extraBackupArgs ++ excludeFlags)
-                } --files-from=${filesFromTmpFile}"
-              ])
-              ++ pruneCmd
-              ++ checkCmd;
-            User = backup.user;
-            RuntimeDirectory = "restic-backups-${name}";
-            CacheDirectory = "restic-backups-${name}";
-            CacheDirectoryMode = "0700";
-            PrivateTmp = true;
-          } // optionalAttrs (backup.environmentFile != null) { EnvironmentFile = backup.environmentFile; };
+          serviceConfig =
+            {
+              Type = "oneshot";
+              ExecStart =
+                (optionals doBackup [
+                  "${resticCmd} backup ${
+                    concatStringsSep " " (backup.extraBackupArgs ++ excludeFlags)
+                  } --files-from=${filesFromTmpFile}"
+                ])
+                ++ pruneCmd
+                ++ checkCmd;
+              User = backup.user;
+              RuntimeDirectory = "restic-backups-${name}";
+              CacheDirectory = "restic-backups-${name}";
+              CacheDirectoryMode = "0700";
+              PrivateTmp = true;
+            }
+            // optionalAttrs (backup.environmentFile != null) {
+              EnvironmentFile = backup.environmentFile;
+            };
         }
         // optionalAttrs (backup.initialize || doBackup || backup.backupPrepareCommand != null) {
           preStart = ''

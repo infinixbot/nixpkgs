@@ -34,7 +34,9 @@ stdenv.mkDerivation (
       name = "${pname}-${version}.AppImage";
     };
 
-    appimageContents = appimageTools.extract { inherit pname src version; };
+    appimageContents = appimageTools.extract {
+      inherit pname src version;
+    };
 
     dontUnpack = true;
     dontConfigure = true;

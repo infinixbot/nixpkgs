@@ -14,7 +14,9 @@ in
     programs.git = {
       enable = lib.mkEnableOption "git, a distributed version control system";
 
-      package = lib.mkPackageOption pkgs "git" { example = "gitFull"; };
+      package = lib.mkPackageOption pkgs "git" {
+        example = "gitFull";
+      };
 
       config = lib.mkOption {
         type =
@@ -35,9 +37,13 @@ in
                       acc
                       // (
                         if builtins.isList value then
-                          { ordered = acc.ordered ++ value; }
+                          {
+                            ordered = acc.ordered ++ value;
+                          }
                         else
-                          { unordered = acc.unordered ++ [ x ]; }
+                          {
+                            unordered = acc.unordered ++ [ x ];
+                          }
                       )
                     )
                     {

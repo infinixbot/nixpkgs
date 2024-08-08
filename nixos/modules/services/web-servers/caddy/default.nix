@@ -451,7 +451,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == "caddy") { caddy.gid = config.ids.gids.caddy; };
+    users.groups = optionalAttrs (cfg.group == "caddy") {
+      caddy.gid = config.ids.gids.caddy;
+    };
 
     security.acme.certs =
       let

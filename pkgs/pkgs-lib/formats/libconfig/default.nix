@@ -22,7 +22,9 @@ let
 
   libconfig-validator =
     buildPackages.runCommandCC "libconfig-validator"
-      { buildInputs = with buildPackages; [ libconfig ]; }
+      {
+        buildInputs = with buildPackages; [ libconfig ];
+      }
       ''
         mkdir -p "$out/bin"
         $CC -lconfig -x c - -o "$out/bin/libconfig-validator" ${./validator.c}

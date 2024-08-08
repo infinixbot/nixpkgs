@@ -178,18 +178,23 @@ python3Packages.buildPythonApplication {
 
   passthru.plugins = allPlugins;
 
-  passthru.tests.gstreamer = runCommand "beets-gstreamer-test" { meta.timeout = 60; } ''
-        set -euo pipefail
-        export HOME=$(mktemp -d)
-        mkdir $out
+  passthru.tests.gstreamer =
+    runCommand "beets-gstreamer-test"
+      {
+        meta.timeout = 60;
+      }
+      ''
+            set -euo pipefail
+            export HOME=$(mktemp -d)
+            mkdir $out
 
-        cat << EOF > $out/config.yaml
-    replaygain:
-      backend: gstreamer
-    EOF
+            cat << EOF > $out/config.yaml
+        replaygain:
+          backend: gstreamer
+        EOF
 
-        ${beets}/bin/beet -c $out/config.yaml > /dev/null
-  '';
+            ${beets}/bin/beet -c $out/config.yaml > /dev/null
+      '';
 
   meta = with lib; {
     description = "Music tagger and library organizer";

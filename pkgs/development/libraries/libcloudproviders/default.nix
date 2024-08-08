@@ -47,7 +47,9 @@ stdenv.mkDerivation rec {
   buildInputs = [ glib ];
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "libcloudproviders"; };
+    updateScript = gnome.updateScript {
+      packageName = "libcloudproviders";
+    };
   };
 
   meta = with lib; {

@@ -137,9 +137,13 @@ in
         '';
       };
 
-      package = mkPackageOption pkgs "slurm" { example = "slurm-full"; } // {
-        default = pkgs.slurm.override { enableX11 = !cfg.enableSrunX11; };
-      };
+      package =
+        mkPackageOption pkgs "slurm" {
+          example = "slurm-full";
+        }
+        // {
+          default = pkgs.slurm.override { enableX11 = !cfg.enableSrunX11; };
+        };
 
       controlMachine = mkOption {
         type = types.nullOr types.str;

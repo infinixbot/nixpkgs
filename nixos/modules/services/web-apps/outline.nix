@@ -592,7 +592,9 @@ in
       };
     };
 
-    users.groups = lib.optionalAttrs (cfg.group == defaultUser) { ${defaultUser} = { }; };
+    users.groups = lib.optionalAttrs (cfg.group == defaultUser) {
+      ${defaultUser} = { };
+    };
 
     systemd.tmpfiles.rules = [
       "f ${cfg.secretKeyFile} 0600 ${cfg.user} ${cfg.group} -"
@@ -708,7 +710,9 @@ in
             AWS_S3_ACL = cfg.storage.acl;
           })
 
-          (lib.mkIf (cfg.slackAuthentication != null) { SLACK_CLIENT_ID = cfg.slackAuthentication.clientId; })
+          (lib.mkIf (cfg.slackAuthentication != null) {
+            SLACK_CLIENT_ID = cfg.slackAuthentication.clientId;
+          })
 
           (lib.mkIf (cfg.googleAuthentication != null) {
             GOOGLE_CLIENT_ID = cfg.googleAuthentication.clientId;

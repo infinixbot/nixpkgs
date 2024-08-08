@@ -23,7 +23,9 @@
 let
   modules =
     if ui then
-      { "client/ui" = "netbird-ui"; }
+      {
+        "client/ui" = "netbird-ui";
+      }
     else
       {
         client = "netbird";

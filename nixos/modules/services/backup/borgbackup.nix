@@ -135,7 +135,9 @@ let
                       --why="Scheduled backup" \
         ''
         + backupScript;
-      unitConfig = optionalAttrs (isLocalPath cfg.repo) { RequiresMountsFor = [ cfg.repo ]; };
+      unitConfig = optionalAttrs (isLocalPath cfg.repo) {
+        RequiresMountsFor = [ cfg.repo ];
+      };
       serviceConfig = {
         User = cfg.user;
         Group = cfg.group;
@@ -186,13 +188,17 @@ let
       name,
       set ? { },
     }:
-    pkgs.runCommand "${name}-wrapper" { nativeBuildInputs = [ pkgs.makeWrapper ]; } (
-      with lib;
-      ''
-        makeWrapper "${original}" "$out/bin/${name}" \
-          ${concatStringsSep " \\\n " (mapAttrsToList (name: value: ''--set ${name} "${value}"'') set)}
-      ''
-    );
+    pkgs.runCommand "${name}-wrapper"
+      {
+        nativeBuildInputs = [ pkgs.makeWrapper ];
+      }
+      (
+        with lib;
+        ''
+          makeWrapper "${original}" "$out/bin/${name}" \
+            ${concatStringsSep " \\\n " (mapAttrsToList (name: value: ''--set ${name} "${value}"'') set)}
+        ''
+      );
 
   mkBorgWrapper =
     name: cfg:
@@ -220,7 +226,9 @@ let
         "${config.users.users."${cfg.user}".home}/.config/borg".d = settings;
         "${config.users.users."${cfg.user}".home}/.cache/borg".d = settings;
       }
-      // optionalAttrs (isLocalPath cfg.repo && !cfg.removableDevice) { "${cfg.repo}".d = settings; }
+      // optionalAttrs (isLocalPath cfg.repo && !cfg.removableDevice) {
+        "${cfg.repo}".d = settings;
+      }
     );
 
   mkPassAssertion = name: cfg: {

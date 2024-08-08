@@ -29,7 +29,9 @@ stdenvNoCC.mkDerivation (
     };
     python3 = buildPackages.python3.override {
       self = python3;
-      packageOverrides = _: _: { nanopb-proto = self.passthru.python-module; };
+      packageOverrides = _: _: {
+        nanopb-proto = self.passthru.python-module;
+      };
     };
     generator = buildPackages.callPackage ./generator.nix {
       inherit python3;

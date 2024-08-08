@@ -114,7 +114,9 @@ lib.makeScope pkgs.newScope (
 
     wingpanel = callPackage ./desktop/wingpanel { };
 
-    wingpanel-with-indicators = callPackage ./desktop/wingpanel/wrapper.nix { indicators = null; };
+    wingpanel-with-indicators = callPackage ./desktop/wingpanel/wrapper.nix {
+      indicators = null;
+    };
 
     #### LIBRARIES
 
@@ -170,7 +172,9 @@ lib.makeScope pkgs.newScope (
 
     switchboard = callPackage ./apps/switchboard { };
 
-    switchboard-with-plugs = callPackage ./apps/switchboard/wrapper.nix { plugs = null; };
+    switchboard-with-plugs = callPackage ./apps/switchboard/wrapper.nix {
+      plugs = null;
+    };
 
     switchboard-plug-a11y = callPackage ./apps/switchboard-plugs/a11y { };
 

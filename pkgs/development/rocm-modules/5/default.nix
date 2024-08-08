@@ -78,7 +78,9 @@ rec {
   };
 
   # Unfree
-  hsa-amd-aqlprofile-bin = callPackage ./hsa-amd-aqlprofile-bin { stdenv = llvm.rocmClangStdenv; };
+  hsa-amd-aqlprofile-bin = callPackage ./hsa-amd-aqlprofile-bin {
+    stdenv = llvm.rocmClangStdenv;
+  };
 
   # Broken, too many errors
   rdc = callPackage ./rdc {
@@ -324,7 +326,9 @@ rec {
     stdenv = llvm.rocmClangStdenv;
   };
 
-  rocmlir-rock = rocmlir.override { buildRockCompiler = true; };
+  rocmlir-rock = rocmlir.override {
+    buildRockCompiler = true;
+  };
 
   hipsolver = callPackage ./hipsolver {
     inherit
@@ -386,9 +390,13 @@ rec {
     boost = boost179.override { enableStatic = true; };
   };
 
-  miopen-hip = miopen.override { useOpenCL = false; };
+  miopen-hip = miopen.override {
+    useOpenCL = false;
+  };
 
-  miopen-opencl = miopen.override { useOpenCL = true; };
+  miopen-opencl = miopen.override {
+    useOpenCL = true;
+  };
 
   migraphx = callPackage ./migraphx {
     inherit

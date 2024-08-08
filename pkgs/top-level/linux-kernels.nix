@@ -23,7 +23,11 @@
 with linuxKernel;
 
 let
-  deblobKernel = kernel: callPackage ../os-specific/linux/kernel/linux-libre.nix { linux = kernel; };
+  deblobKernel =
+    kernel:
+    callPackage ../os-specific/linux/kernel/linux-libre.nix {
+      linux = kernel;
+    };
 
   # Hardened Linux
   hardenedKernelFor =
@@ -606,7 +610,9 @@ in
 
         virtio_vmmci = callPackage ../os-specific/linux/virtio_vmmci { };
 
-        virtualbox = callPackage ../os-specific/linux/virtualbox { virtualbox = pkgs.virtualboxHardened; };
+        virtualbox = callPackage ../os-specific/linux/virtualbox {
+          virtualbox = pkgs.virtualboxHardened;
+        };
 
         virtualboxGuestAdditions =
           callPackage ../applications/virtualization/virtualbox/guest-additions

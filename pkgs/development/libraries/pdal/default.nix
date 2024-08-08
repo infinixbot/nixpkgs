@@ -125,7 +125,9 @@ stdenv.mkDerivation (finalAttrs: {
       version = "pdal ${finalAttrs.finalPackage.version}";
     };
     pdal = callPackage ./tests.nix { pdal = finalAttrs.finalPackage; };
-    pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+    pkg-config = testers.hasPkgConfigModules {
+      package = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

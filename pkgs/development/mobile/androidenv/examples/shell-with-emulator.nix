@@ -15,7 +15,9 @@
   */
 
   # If you want to use the in-tree version of nixpkgs:
-  pkgs ? import ../../../../.. { config.allowUnfree = true; },
+  pkgs ? import ../../../../.. {
+    config.allowUnfree = true;
+  },
 
   config ? pkgs.config,
 }:

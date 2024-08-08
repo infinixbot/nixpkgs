@@ -356,7 +356,9 @@ in
           createHome = false;
         };
       };
-      groups = mkIf (cfg.group == "syncoid") { syncoid = { }; };
+      groups = mkIf (cfg.group == "syncoid") {
+        syncoid = { };
+      };
     };
 
     systemd.services = mapAttrs' (

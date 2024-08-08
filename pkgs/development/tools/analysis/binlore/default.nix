@@ -122,34 +122,38 @@ rec {
   */
   make =
     lore: drv:
-    runCommand "${drv.name}-binlore" { drv = drv; } (
-      ''
-        mkdir $out
-        touch $out/{${builtins.concatStringsSep "," lore.types}}
-
-        ${lore.callback lore drv}
-      ''
-      +
-        # append lore from package's $out and drv.binlore.${drv.outputName} (last entry wins)
+    runCommand "${drv.name}-binlore"
+      {
+        drv = drv;
+      }
+      (
         ''
-          for lore_type in ${builtins.toString lore.types}; do
-            if [[ -f "${drv}/nix-support/$lore_type" ]]; then
-              cat "${drv}/nix-support/$lore_type" >> "$out/$lore_type"
-            fi
-        ''
-      +
-        lib.optionalString (builtins.hasAttr "binlore" drv && builtins.hasAttr drv.outputName drv.binlore)
-          ''
-            if [[ -f "${drv.binlore."${drv.outputName}"}/$lore_type" ]]; then
-              cat "${drv.binlore."${drv.outputName}"}/$lore_type" >> "$out/$lore_type"
-            fi
-          ''
-      + ''
-        done
+          mkdir $out
+          touch $out/{${builtins.concatStringsSep "," lore.types}}
 
-        echo binlore for $drv written to $out
-      ''
-    );
+          ${lore.callback lore drv}
+        ''
+        +
+          # append lore from package's $out and drv.binlore.${drv.outputName} (last entry wins)
+          ''
+            for lore_type in ${builtins.toString lore.types}; do
+              if [[ -f "${drv}/nix-support/$lore_type" ]]; then
+                cat "${drv}/nix-support/$lore_type" >> "$out/$lore_type"
+              fi
+          ''
+        +
+          lib.optionalString (builtins.hasAttr "binlore" drv && builtins.hasAttr drv.outputName drv.binlore)
+            ''
+              if [[ -f "${drv.binlore."${drv.outputName}"}/$lore_type" ]]; then
+                cat "${drv.binlore."${drv.outputName}"}/$lore_type" >> "$out/$lore_type"
+              fi
+            ''
+        + ''
+          done
+
+          echo binlore for $drv written to $out
+        ''
+      );
 
   /*
     Utility function for creating override lore for drv.
@@ -203,47 +207,51 @@ rec {
   */
   synthesize =
     drv: loreSynthesizingScript:
-    runCommand "${drv.name}-lore-override" { drv = drv; } (
-      ''
-        execer(){
-          local verdict="$1"
+    runCommand "${drv.name}-lore-override"
+      {
+        drv = drv;
+      }
+      (
+        ''
+          execer(){
+            local verdict="$1"
 
-          shift
+            shift
 
-          for path in "$@"; do
-            if [[ -f "$PWD/$path" ]]; then
-              echo "$verdict:$PWD/$path"
-            else
-              echo "error: Tried to synthesize execer lore for missing file: $PWD/$path" >&2
+            for path in "$@"; do
+              if [[ -f "$PWD/$path" ]]; then
+                echo "$verdict:$PWD/$path"
+              else
+                echo "error: Tried to synthesize execer lore for missing file: $PWD/$path" >&2
+                exit 2
+              fi
+            done
+          } >> $out/execers
+
+          wrapper(){
+            local wrapper="$1"
+            local original="$2"
+
+            if [[ ! -f "$wrapper" ]]; then
+              echo "error: Tried to synthesize wrapper lore for missing wrapper: $PWD/$wrapper" >&2
               exit 2
             fi
-          done
-        } >> $out/execers
 
-        wrapper(){
-          local wrapper="$1"
-          local original="$2"
+            if [[ ! -f "$original" ]]; then
+              echo "error: Tried to synthesize wrapper lore for missing original: $PWD/$original" >&2
+              exit 2
+            fi
 
-          if [[ ! -f "$wrapper" ]]; then
-            echo "error: Tried to synthesize wrapper lore for missing wrapper: $PWD/$wrapper" >&2
-            exit 2
-          fi
+            echo "$PWD/$wrapper:$PWD/$original"
 
-          if [[ ! -f "$original" ]]; then
-            echo "error: Tried to synthesize wrapper lore for missing original: $PWD/$original" >&2
-            exit 2
-          fi
+          } >> $out/wrappers
 
-          echo "$PWD/$wrapper:$PWD/$original"
+          mkdir $out
 
-        } >> $out/wrappers
+          # lore override commands are relative to the drv root
+          cd $drv
 
-        mkdir $out
-
-        # lore override commands are relative to the drv root
-        cd $drv
-
-      ''
-      + loreSynthesizingScript
-    );
+        ''
+        + loreSynthesizingScript
+      );
 }

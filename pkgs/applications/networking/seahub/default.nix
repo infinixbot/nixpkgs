@@ -9,7 +9,9 @@
 let
   python = python3.override {
     self = python;
-    packageOverrides = self: super: { django = super.django_3; };
+    packageOverrides = self: super: {
+      django = super.django_3;
+    };
   };
 in
 python.pkgs.buildPythonApplication rec {

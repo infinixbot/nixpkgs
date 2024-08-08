@@ -50,7 +50,9 @@ in
   options.services.dockerRegistry = {
     enable = mkEnableOption "Docker Registry";
 
-    package = mkPackageOption pkgs "docker-distribution" { example = "gitlab-container-registry"; };
+    package = mkPackageOption pkgs "docker-distribution" {
+      example = "gitlab-container-registry";
+    };
 
     listenAddress = mkOption {
       description = "Docker registry host or ip to bind to.";
@@ -176,6 +178,8 @@ in
       };
     users.groups.docker-registry = { };
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.port ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.port ];
+    };
   };
 }

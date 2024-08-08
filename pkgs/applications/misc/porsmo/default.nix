@@ -35,7 +35,9 @@ rustPlatform.buildRustPackage rec {
       darwin.apple_sdk.frameworks.CoreFoundation
     ];
 
-  passthru.tests.version = testers.testVersion { package = porsmo; };
+  passthru.tests.version = testers.testVersion {
+    package = porsmo;
+  };
 
   meta = with lib; {
     description = "Pomodoro cli app in rust with timer and countdown";

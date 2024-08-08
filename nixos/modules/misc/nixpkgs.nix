@@ -83,9 +83,16 @@ let
               crossSystem = cfg.hostPlatform;
             }
           else
-            { localSystem = cfg.hostPlatform; };
+            {
+              localSystem = cfg.hostPlatform;
+            };
       in
-      import ../../.. ({ inherit (cfg) config overlays; } // systemArgs)
+      import ../../.. (
+        {
+          inherit (cfg) config overlays;
+        }
+        // systemArgs
+      )
     else
       import ../../.. {
         inherit (cfg)

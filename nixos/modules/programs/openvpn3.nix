@@ -13,7 +13,9 @@ in
     enable = lib.mkEnableOption "the openvpn3 client";
     package = lib.mkOption {
       type = lib.types.package;
-      default = pkgs.openvpn3.override { enableSystemdResolved = config.services.resolved.enable; };
+      default = pkgs.openvpn3.override {
+        enableSystemdResolved = config.services.resolved.enable;
+      };
       defaultText = lib.literalExpression ''
         pkgs.openvpn3.override {
                 enableSystemdResolved = config.services.resolved.enable;

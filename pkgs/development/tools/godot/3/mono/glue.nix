@@ -5,7 +5,11 @@
   python311Packages,
 }:
 
-(godot3.override { scons = scons.override { python3Packages = python311Packages; }; }).overrideAttrs
+(godot3.override {
+  scons = scons.override {
+    python3Packages = python311Packages;
+  };
+}).overrideAttrs
   (
     self: base: {
       pname = "godot3-mono-glue";

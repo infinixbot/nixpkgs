@@ -23,7 +23,9 @@ with lib;
         - [complex sample configuration](https://github.com/Ylianst/MeshCentral/blob/master/sample-config-advanced.json)
         - [Old homepage with documentation link](https://www.meshcommander.com/meshcentral2)
       '';
-      type = types.submodule { freeformType = configFormat.type; };
+      type = types.submodule {
+        freeformType = configFormat.type;
+      };
       example = {
         settings = {
           WANonly = true;

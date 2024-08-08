@@ -66,7 +66,9 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional enableFB "--with-fb"
     ++ lib.optional enableDirectFB "--with-directfb";
 
-  env = lib.optionalAttrs stdenv.cc.isClang { NIX_CFLAGS_COMPILE = "-Wno-error=implicit-int"; };
+  env = lib.optionalAttrs stdenv.cc.isClang {
+    NIX_CFLAGS_COMPILE = "-Wno-error=implicit-int";
+  };
 
   meta = with lib; {
     homepage = "http://links.twibright.com/";

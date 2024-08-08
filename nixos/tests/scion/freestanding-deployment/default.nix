@@ -3,7 +3,10 @@ import ../../make-test-python.nix (
   { pkgs, ... }:
   let
     trust-root-configuration-keys =
-      pkgs.runCommand "generate-trc-keys.sh" { buildInputs = [ pkgs.scion ]; }
+      pkgs.runCommand "generate-trc-keys.sh"
+        {
+          buildInputs = [ pkgs.scion ];
+        }
         ''
           set -euo pipefail
 

@@ -49,7 +49,9 @@ buildGoModule rec {
   # most tests require network access
   doCheck = false;
 
-  passthru.tests.version = testers.testVersion { package = gh; };
+  passthru.tests.version = testers.testVersion {
+    package = gh;
+  };
 
   meta = with lib; {
     description = "GitHub CLI tool";

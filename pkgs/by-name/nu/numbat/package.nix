@@ -30,7 +30,9 @@ rustPlatform.buildRustPackage rec {
     cp -r $src/${pname}/modules $out/share/${pname}/
   '';
 
-  passthru.tests.version = testers.testVersion { package = numbat; };
+  passthru.tests.version = testers.testVersion {
+    package = numbat;
+  };
 
   meta = with lib; {
     description = "High precision scientific calculator with full support for physical units";

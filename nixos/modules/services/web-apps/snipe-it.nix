@@ -9,7 +9,9 @@ with lib;
 
 let
   cfg = config.services.snipe-it;
-  snipe-it = pkgs.snipe-it.override { dataDir = cfg.dataDir; };
+  snipe-it = pkgs.snipe-it.override {
+    dataDir = cfg.dataDir;
+  };
   db = cfg.database;
   mail = cfg.mail;
 
@@ -560,7 +562,9 @@ in
         };
         "${config.services.nginx.user}".extraGroups = [ group ];
       };
-      groups = mkIf (group == "snipeit") { snipeit = { }; };
+      groups = mkIf (group == "snipeit") {
+        snipeit = { };
+      };
     };
 
   };

@@ -17,8 +17,12 @@ let
           v = p.deviceUri;
           m = p.model;
         }
-        // optionalAttrs (p.location != null) { L = p.location; }
-        // optionalAttrs (p.description != null) { D = p.description; }
+        // optionalAttrs (p.location != null) {
+          L = p.location;
+        }
+        // optionalAttrs (p.description != null) {
+          D = p.description;
+        }
         // optionalAttrs (p.ppdOptions != { }) {
           o = mapAttrsToList (name: value: "${name}=${value}") p.ppdOptions;
         }

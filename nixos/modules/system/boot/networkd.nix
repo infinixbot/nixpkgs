@@ -3025,10 +3025,16 @@ let
     { config, ... }:
     {
       config = {
-        matchConfig = optionalAttrs (config.name != null) { Name = config.name; };
+        matchConfig = optionalAttrs (config.name != null) {
+          Name = config.name;
+        };
         networkConfig =
-          optionalAttrs (config.DHCP != null) { DHCP = config.DHCP; }
-          // optionalAttrs (config.domains != null) { Domains = concatStringsSep " " config.domains; };
+          optionalAttrs (config.DHCP != null) {
+            DHCP = config.DHCP;
+          }
+          // optionalAttrs (config.domains != null) {
+            Domains = concatStringsSep " " config.domains;
+          };
       };
     };
 

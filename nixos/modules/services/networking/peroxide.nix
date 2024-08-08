@@ -16,7 +16,9 @@ in
   options.services.peroxide = {
     enable = mkEnableOption "peroxide";
 
-    package = mkPackageOption pkgs "peroxide" { default = [ "peroxide" ]; };
+    package = mkPackageOption pkgs "peroxide" {
+      default = [ "peroxide" ];
+    };
 
     logLevel = mkOption {
       # https://github.com/sirupsen/logrus#level-logging

@@ -224,16 +224,20 @@ let
     if configFile == null then
       fileSystemsCfgFile
     else
-      pkgs.runCommand "configuration.nix" { buildInputs = with pkgs; [ nixpkgs-fmt ]; } ''
-        (
-          echo '{ imports = ['
-          printf "(%s)\n" "$(cat ${fileSystemsCfgFile})";
-          printf "(%s)\n" "$(cat ${configFile})";
-          echo ']; }'
-        ) > $out
+      pkgs.runCommand "configuration.nix"
+        {
+          buildInputs = with pkgs; [ nixpkgs-fmt ];
+        }
+        ''
+          (
+            echo '{ imports = ['
+            printf "(%s)\n" "$(cat ${fileSystemsCfgFile})";
+            printf "(%s)\n" "$(cat ${configFile})";
+            echo ']; }'
+          ) > $out
 
-        nixpkgs-fmt $out
-      '';
+          nixpkgs-fmt $out
+        '';
 
   image =
     (pkgs.vmTools.override {

@@ -66,7 +66,9 @@ stdenv.mkDerivation rec {
   '';
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "gnome-calculator"; };
+    updateScript = gnome.updateScript {
+      packageName = "gnome-calculator";
+    };
   };
 
   meta = with lib; {

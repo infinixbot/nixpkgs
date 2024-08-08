@@ -26,7 +26,11 @@ in
         '';
       }
       // {
-        apply = p: wayland-lib.genFinalPackage p { enableXWayland = cfg.xwayland.enable; };
+        apply =
+          p:
+          wayland-lib.genFinalPackage p {
+            enableXWayland = cfg.xwayland.enable;
+          };
       };
 
     portalPackage =
@@ -37,7 +41,11 @@ in
         '';
       }
       // {
-        apply = p: wayland-lib.genFinalPackage p { hyprland = cfg.package; };
+        apply =
+          p:
+          wayland-lib.genFinalPackage p {
+            hyprland = cfg.package;
+          };
       };
 
     xwayland.enable = lib.mkEnableOption "XWayland" // {

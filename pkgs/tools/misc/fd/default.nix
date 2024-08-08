@@ -45,7 +45,9 @@ rustPlatform.buildRustPackage rec {
       installShellCompletion --zsh contrib/completion/_fd
     '';
 
-  passthru.tests.version = testers.testVersion { package = fd; };
+  passthru.tests.version = testers.testVersion {
+    package = fd;
+  };
 
   meta = with lib; {
     description = "Simple, fast and user-friendly alternative to find";

@@ -388,34 +388,38 @@ let
             knownVulnerabilities = op (lib.versionOlder ver.majMin "3.0") "This Ruby release has reached its end of life. See https://www.ruby-lang.org/en/downloads/branches/.";
           };
 
-          passthru = rec {
-            version = ver;
-            rubyEngine = "ruby";
-            libPath = "lib/${rubyEngine}/${ver.libDir}";
-            gemPath = "lib/${rubyEngine}/gems/${ver.libDir}";
-            devEnv = import ./dev.nix {
-              inherit buildEnv bundler bundix;
-              ruby = finalAttrs.finalPackage;
-            };
-
-            inherit rubygems;
-            inherit
-              (import ../../ruby-modules/with-packages {
-                inherit
-                  lib
-                  stdenv
-                  makeBinaryWrapper
-                  buildRubyGem
-                  buildEnv
-                  ;
-                gemConfig = defaultGemConfig;
+          passthru =
+            rec {
+              version = ver;
+              rubyEngine = "ruby";
+              libPath = "lib/${rubyEngine}/${ver.libDir}";
+              gemPath = "lib/${rubyEngine}/gems/${ver.libDir}";
+              devEnv = import ./dev.nix {
+                inherit buildEnv bundler bundix;
                 ruby = finalAttrs.finalPackage;
-              })
-              withPackages
-              buildGems
-              gems
-              ;
-          } // lib.optionalAttrs useBaseRuby { inherit baseRuby; };
+              };
+
+              inherit rubygems;
+              inherit
+                (import ../../ruby-modules/with-packages {
+                  inherit
+                    lib
+                    stdenv
+                    makeBinaryWrapper
+                    buildRubyGem
+                    buildEnv
+                    ;
+                  gemConfig = defaultGemConfig;
+                  ruby = finalAttrs.finalPackage;
+                })
+                withPackages
+                buildGems
+                gems
+                ;
+            }
+            // lib.optionalAttrs useBaseRuby {
+              inherit baseRuby;
+            };
         })
       ) args;
     in

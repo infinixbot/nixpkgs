@@ -45,7 +45,9 @@ stdenv.mkDerivation rec {
     libepoxy
   ];
 
-  env = lib.optionalAttrs stdenv.isDarwin { NIX_LDFLAGS = "-framework OpenGL"; };
+  env = lib.optionalAttrs stdenv.isDarwin {
+    NIX_LDFLAGS = "-framework OpenGL";
+  };
 
   enableParallelBuilding = true;
 

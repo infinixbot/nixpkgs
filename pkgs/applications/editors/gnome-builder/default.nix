@@ -157,7 +157,9 @@ stdenv.mkDerivation (finalAttrs: {
     moveToOutput share/doc/libide "$devdoc"
   '';
 
-  passthru.updateScript = gnome.updateScript { packageName = "gnome-builder"; };
+  passthru.updateScript = gnome.updateScript {
+    packageName = "gnome-builder";
+  };
 
   meta = with lib; {
     description = "IDE for writing GNOME-based software";

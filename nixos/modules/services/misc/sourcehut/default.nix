@@ -511,7 +511,10 @@ in
           };
         };
 
-        options."hub.sr.ht" = commonServiceSettings "hub" // { };
+        options."hub.sr.ht" =
+          commonServiceSettings "hub"
+          // {
+          };
 
         options."lists.sr.ht" = commonServiceSettings "lists" // {
           allow-new-lists = mkEnableOption "creation of new lists";
@@ -571,7 +574,10 @@ in
           };
         };
 
-        options."man.sr.ht" = commonServiceSettings "man" // { };
+        options."man.sr.ht" =
+          commonServiceSettings "man"
+          // {
+          };
 
         options."meta.sr.ht" =
           removeAttrs (commonServiceSettings "meta") [
@@ -677,7 +683,10 @@ in
           };
         };
 
-        options."paste.sr.ht" = commonServiceSettings "paste" // { };
+        options."paste.sr.ht" =
+          commonServiceSettings "paste"
+          // {
+          };
 
         options."todo.sr.ht" = commonServiceSettings "todo" // {
           notify-from = mkOption {
@@ -760,7 +769,9 @@ in
     };
 
     git = {
-      package = mkPackageOption pkgs "git" { example = "gitFull"; };
+      package = mkPackageOption pkgs "git" {
+        example = "gitFull";
+      };
       fcgiwrap.preforkProcess = mkOption {
         description = "Number of fcgiwrap processes to prefork.";
         type = types.int;
@@ -830,7 +841,9 @@ in
       # Needed for sharing the LMTP sockets with JoinsNamespaceOf=
       systemd.services.postfix.serviceConfig.PrivateTmp = true;
     })
-    (mkIf cfg.redis.enable { services.redis.vmOverCommit = mkDefault true; })
+    (mkIf cfg.redis.enable {
+      services.redis.vmOverCommit = mkDefault true;
+    })
     (mkIf cfg.nginx.enable {
       assertions = [
         {
@@ -1305,7 +1318,9 @@ in
       extraConfig = {
         services.nginx = mkIf cfg.nginx.enable {
           virtualHosts."hub.${domain}" = mkMerge [
-            { serverAliases = [ domain ]; }
+            {
+              serverAliases = [ domain ];
+            }
             cfg.nginx.virtualHost
           ];
         };

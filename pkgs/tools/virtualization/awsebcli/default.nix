@@ -11,7 +11,9 @@ let
     overrideFunc: version: hash:
     overrideFunc (oldAttrs: rec {
       inherit version;
-      src = oldAttrs.src.override { inherit version hash; };
+      src = oldAttrs.src.override {
+        inherit version hash;
+      };
     });
 
   localPython = python3.override {

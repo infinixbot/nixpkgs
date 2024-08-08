@@ -113,7 +113,9 @@ in
 
     unifiVideoPackage = mkPackageOption pkgs "unifi-video" { };
 
-    mongodbPackage = mkPackageOption pkgs "mongodb" { default = "mongodb-5_0"; };
+    mongodbPackage = mkPackageOption pkgs "mongodb" {
+      default = "mongodb-5_0";
+    };
 
     logDir = mkOption {
       type = types.str;

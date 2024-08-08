@@ -78,7 +78,11 @@ in
       };
 
       preseed = lib.mkOption {
-        type = lib.types.nullOr (lib.types.submodule { freeformType = preseedFormat.type; });
+        type = lib.types.nullOr (
+          lib.types.submodule {
+            freeformType = preseedFormat.type;
+          }
+        );
 
         default = null;
 
@@ -203,7 +207,9 @@ in
 
       path = [ pkgs.util-linux ] ++ lib.optional cfg.zfsSupport config.boot.zfs.package;
 
-      environment = lib.mkIf (cfg.ui.enable) { "LXD_UI" = cfg.ui.package; };
+      environment = lib.mkIf (cfg.ui.enable) {
+        "LXD_UI" = cfg.ui.package;
+      };
 
       serviceConfig = {
         ExecStart = "@${cfg.package}/bin/lxd lxd --group lxd";

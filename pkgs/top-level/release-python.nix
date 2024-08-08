@@ -19,7 +19,9 @@
 }:
 
 let
-  release-lib = import ./release-lib.nix { inherit supportedSystems nixpkgsArgs; };
+  release-lib = import ./release-lib.nix {
+    inherit supportedSystems nixpkgsArgs;
+  };
 
   inherit (release-lib) mapTestOn pkgs;
 

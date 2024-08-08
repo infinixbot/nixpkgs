@@ -138,7 +138,9 @@ let
       inherit luaEnv;
       inherit withNodeJs;
     }
-    // lib.optionalAttrs withRuby { inherit rubyEnv; };
+    // lib.optionalAttrs withRuby {
+      inherit rubyEnv;
+    };
 
   # to keep backwards compatibility for people using neovim.override
   legacyWrapper =

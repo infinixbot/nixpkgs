@@ -108,9 +108,13 @@ let
       swift = swiftNoSwiftDriver;
     };
 
-    swift-driver = callPackage ./swift-driver { swift = swiftNoSwiftDriver; };
+    swift-driver = callPackage ./swift-driver {
+      swift = swiftNoSwiftDriver;
+    };
 
-    swift = callPackage ./wrapper { swift = swift-unwrapped; };
+    swift = callPackage ./wrapper {
+      swift = swift-unwrapped;
+    };
 
     sourcekit-lsp = callPackage ./sourcekit-lsp {
       inherit (apple_sdk.frameworks) CryptoKit LocalAuthentication;

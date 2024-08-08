@@ -785,7 +785,9 @@ in
 
     };
 
-    users.users = mkOption { type = with types; attrsOf (submodule userOptions); };
+    users.users = mkOption {
+      type = with types; attrsOf (submodule userOptions);
+    };
 
   };
 
@@ -959,19 +961,24 @@ in
     '';
 
     system.checks = [
-      (pkgs.runCommand "check-sshd-config" { nativeBuildInputs = [ validationPackage ]; } ''
-        ${concatMapStringsSep "\n" (
-          lport: "sshd -G -T -C lport=${toString lport} -f ${sshconf} > /dev/null"
-        ) cfg.ports}
-        ${concatMapStringsSep "\n" (
-          la:
-          concatMapStringsSep "\n" (
-            port:
-            "sshd -G -T -C ${escapeShellArg "laddr=${la.addr},lport=${toString port}"} -f ${sshconf} > /dev/null"
-          ) (if la.port != null then [ la.port ] else cfg.ports)
-        ) cfg.listenAddresses}
-        touch $out
-      '')
+      (pkgs.runCommand "check-sshd-config"
+        {
+          nativeBuildInputs = [ validationPackage ];
+        }
+        ''
+          ${concatMapStringsSep "\n" (
+            lport: "sshd -G -T -C lport=${toString lport} -f ${sshconf} > /dev/null"
+          ) cfg.ports}
+          ${concatMapStringsSep "\n" (
+            la:
+            concatMapStringsSep "\n" (
+              port:
+              "sshd -G -T -C ${escapeShellArg "laddr=${la.addr},lport=${toString port}"} -f ${sshconf} > /dev/null"
+            ) (if la.port != null then [ la.port ] else cfg.ports)
+          ) cfg.listenAddresses}
+          touch $out
+        ''
+      )
     ];
 
     assertions =

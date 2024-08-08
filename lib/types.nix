@@ -71,7 +71,12 @@ let
   outer_types = rec {
     isType = type: x: (x._type or "") == type;
 
-    setType = typeName: value: value // { _type = typeName; };
+    setType =
+      typeName: value:
+      value
+      // {
+        _type = typeName;
+      };
 
     # Default type merging function
     # takes two type functors and return the merged type
@@ -504,7 +509,12 @@ let
       string =
         lib.warn
           "The type `types.string` is deprecated. See https://github.com/NixOS/nixpkgs/pull/66346 for better alternative types."
-          (separatedString "" // { name = "string"; });
+          (
+            separatedString ""
+            // {
+              name = "string";
+            }
+          );
 
       passwdEntry =
         entryType:
@@ -957,13 +967,22 @@ let
               ) defs;
           };
           inherit (submoduleWith { modules = staticModules; }) getSubOptions getSubModules;
-          substSubModules = m: deferredModuleWith (attrs // { staticModules = m; });
+          substSubModules =
+            m:
+            deferredModuleWith (
+              attrs
+              // {
+                staticModules = m;
+              }
+            );
           functor = defaultFunctor "deferredModuleWith" // {
             type = types.deferredModuleWith;
             payload = {
               inherit staticModules;
             };
-            binOp = lhs: rhs: { staticModules = lhs.staticModules ++ rhs.staticModules; };
+            binOp = lhs: rhs: {
+              staticModules = lhs.staticModules ++ rhs.staticModules;
+            };
           };
         };
 
@@ -987,7 +1006,9 @@ let
                   _file = file;
                   # There's no way to merge types directly from the module system,
                   # but we can cheat a bit by just declaring an option with the type
-                  options = lib.mkOption { type = value; };
+                  options = lib.mkOption {
+                    type = value;
+                  };
                 }
               ) defs;
               # Merges all the types into a single one, including submodule merging.
@@ -1076,8 +1097,17 @@ let
               _freeformOptions = freeformType.getSubOptions prefix;
             };
           getSubModules = modules;
-          substSubModules = m: submoduleWith (attrs // { modules = m; });
-          nestedTypes = lib.optionalAttrs (freeformType != null) { freeformType = freeformType; };
+          substSubModules =
+            m:
+            submoduleWith (
+              attrs
+              // {
+                modules = m;
+              }
+            );
+          nestedTypes = lib.optionalAttrs (freeformType != null) {
+            freeformType = freeformType;
+          };
           functor = defaultFunctor name // {
             type = types.submoduleWith;
             payload = {

@@ -119,7 +119,9 @@ in
 
       enableJIT = mkEnableOption "JIT support";
 
-      package = mkPackageOption pkgs "postgresql" { example = "postgresql_15"; };
+      package = mkPackageOption pkgs "postgresql" {
+        example = "postgresql_15";
+      };
 
       checkConfig = mkOption {
         type = types.bool;

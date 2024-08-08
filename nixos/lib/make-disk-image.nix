@@ -388,7 +388,9 @@ let
 
   additionalPaths' = lib.subtractLists basePaths additionalPaths;
 
-  closureInfo = pkgs.closureInfo { rootPaths = basePaths ++ additionalPaths'; };
+  closureInfo = pkgs.closureInfo {
+    rootPaths = basePaths ++ additionalPaths';
+  };
 
   blockSize = toString (4 * 1024); # ext4fs block size (not block device sector size)
 

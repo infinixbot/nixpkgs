@@ -122,7 +122,13 @@ in
 
     kernels = mkOption {
       type = types.nullOr (
-        types.attrsOf (types.submodule (import ./kernel-options.nix { inherit lib pkgs; }))
+        types.attrsOf (
+          types.submodule (
+            import ./kernel-options.nix {
+              inherit lib pkgs;
+            }
+          )
+        )
       );
 
       default = null;
@@ -194,7 +200,9 @@ in
         };
       };
     })
-    (mkIf (cfg.enable && (cfg.group == "jupyter")) { users.groups.jupyter = { }; })
+    (mkIf (cfg.enable && (cfg.group == "jupyter")) {
+      users.groups.jupyter = { };
+    })
     (mkIf (cfg.enable && (cfg.user == "jupyter")) {
       users.extraUsers.jupyter = {
         extraGroups = [ cfg.group ];

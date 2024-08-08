@@ -89,27 +89,34 @@ in
     } ./pip-build-hook.sh
   ) { };
 
-  pypaBuildHook = callPackage (
-    {
-      makePythonHook,
-      build,
-      wheel,
-    }:
-    makePythonHook {
-      name = "pypa-build-hook.sh";
-      propagatedBuildInputs = [ wheel ];
-      substitutions = {
-        inherit build;
+  pypaBuildHook =
+    callPackage
+      (
+        {
+          makePythonHook,
+          build,
+          wheel,
+        }:
+        makePythonHook {
+          name = "pypa-build-hook.sh";
+          propagatedBuildInputs = [ wheel ];
+          substitutions = {
+            inherit build;
+          };
+          # A test to ensure that this hook never propagates any of its dependencies
+          #   into the build environment.
+          # This prevents false positive alerts raised by catchConflictsHook.
+          # Such conflicts don't happen within the standard nixpkgs python package
+          #   set, but in downstream projects that build packages depending on other
+          #   versions of this hook's dependencies.
+          passthru.tests = callPackage ./pypa-build-hook-test.nix {
+            inherit pythonOnBuildForHost;
+          };
+        } ./pypa-build-hook.sh
+      )
+      {
+        inherit (pythonOnBuildForHost.pkgs) build;
       };
-      # A test to ensure that this hook never propagates any of its dependencies
-      #   into the build environment.
-      # This prevents false positive alerts raised by catchConflictsHook.
-      # Such conflicts don't happen within the standard nixpkgs python package
-      #   set, but in downstream projects that build packages depending on other
-      #   versions of this hook's dependencies.
-      passthru.tests = callPackage ./pypa-build-hook-test.nix { inherit pythonOnBuildForHost; };
-    } ./pypa-build-hook.sh
-  ) { inherit (pythonOnBuildForHost.pkgs) build; };
 
   pipInstallHook = callPackage (
     { makePythonHook, pip }:
@@ -122,16 +129,21 @@ in
     } ./pip-install-hook.sh
   ) { };
 
-  pypaInstallHook = callPackage (
-    { makePythonHook, installer }:
-    makePythonHook {
-      name = "pypa-install-hook";
-      propagatedBuildInputs = [ installer ];
-      substitutions = {
-        inherit pythonInterpreter pythonSitePackages;
+  pypaInstallHook =
+    callPackage
+      (
+        { makePythonHook, installer }:
+        makePythonHook {
+          name = "pypa-install-hook";
+          propagatedBuildInputs = [ installer ];
+          substitutions = {
+            inherit pythonInterpreter pythonSitePackages;
+          };
+        } ./pypa-install-hook.sh
+      )
+      {
+        inherit (pythonOnBuildForHost.pkgs) installer;
       };
-    } ./pypa-install-hook.sh
-  ) { inherit (pythonOnBuildForHost.pkgs) installer; };
 
   pytestCheckHook = callPackage (
     { makePythonHook, pytest }:
@@ -160,7 +172,9 @@ in
             else
               ../catch_conflicts/catch_conflicts.py;
         }
-        // lib.optionalAttrs useLegacyHook { inherit setuptools; };
+        // lib.optionalAttrs useLegacyHook {
+          inherit setuptools;
+        };
       passthru.tests = import ./python-catch-conflicts-hook-tests.nix {
         inherit pythonOnBuildForHost runCommand;
         inherit (pkgs) coreutils gnugrep writeShellScript;
@@ -191,7 +205,9 @@ in
 
   pythonOutputDistHook = callPackage (
     { makePythonHook }:
-    makePythonHook { name = "python-output-dist-hook"; } ./python-output-dist-hook.sh
+    makePythonHook {
+      name = "python-output-dist-hook";
+    } ./python-output-dist-hook.sh
   ) { };
 
   pythonRecompileBytecodeHook = callPackage (
@@ -225,7 +241,9 @@ in
 
   pythonRemoveBinBytecodeHook = callPackage (
     { makePythonHook }:
-    makePythonHook { name = "python-remove-bin-bytecode-hook"; } ./python-remove-bin-bytecode-hook.sh
+    makePythonHook {
+      name = "python-remove-bin-bytecode-hook";
+    } ./python-remove-bin-bytecode-hook.sh
   ) { };
 
   pythonRemoveTestsDirHook = callPackage (
@@ -326,7 +344,9 @@ in
     } ./wheel-unpack-hook.sh
   ) { };
 
-  wrapPython = callPackage ../wrap-python.nix { inherit (pkgs.buildPackages) makeWrapper; };
+  wrapPython = callPackage ../wrap-python.nix {
+    inherit (pkgs.buildPackages) makeWrapper;
+  };
 
   sphinxHook = callPackage (
     { makePythonHook, installShellFiles }:

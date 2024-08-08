@@ -66,7 +66,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru = {
     tests.test = nixosTests.terminal-emulators.st;
-    updateScript = gitUpdater { url = "git://git.suckless.org/st"; };
+    updateScript = gitUpdater {
+      url = "git://git.suckless.org/st";
+    };
   };
 
   meta = with lib; {

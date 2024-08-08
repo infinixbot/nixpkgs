@@ -100,7 +100,9 @@ stdenv.mkDerivation rec {
   '';
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "gnome-keyring"; };
+    updateScript = gnome.updateScript {
+      packageName = "gnome-keyring";
+    };
   };
 
   meta = with lib; {

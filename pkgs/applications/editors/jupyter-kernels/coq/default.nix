@@ -35,13 +35,18 @@ let
 in
 
 rec {
-  launcher = runCommand "coq-kernel-launcher" { nativeBuildInputs = [ makeWrapper ]; } ''
-    mkdir -p $out/bin
+  launcher =
+    runCommand "coq-kernel-launcher"
+      {
+        nativeBuildInputs = [ makeWrapper ];
+      }
+      ''
+        mkdir -p $out/bin
 
-    makeWrapper ${python.interpreter} $out/bin/coq-kernel \
-      --add-flags "-m coq_jupyter" \
-      --suffix PATH : ${coq}/bin
-  '';
+        makeWrapper ${python.interpreter} $out/bin/coq-kernel \
+          --add-flags "-m coq_jupyter" \
+          --suffix PATH : ${coq}/bin
+      '';
 
   definition = definitionWithPackages [ ];
 

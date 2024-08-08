@@ -19,7 +19,9 @@ let
 
   cfg = config.services.music-assistant;
 
-  finalPackage = cfg.package.override { inherit (cfg) providers; };
+  finalPackage = cfg.package.override {
+    inherit (cfg) providers;
+  };
 in
 
 {

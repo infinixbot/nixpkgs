@@ -90,7 +90,9 @@ python3.pkgs.buildPythonApplication rec {
     "${nextpnr}/bin/nextpnr-ice40"
   ];
 
-  passthru.updateScript = unstableGitUpdater { hardcodeZeroVersion = true; };
+  passthru.updateScript = unstableGitUpdater {
+    hardcodeZeroVersion = true;
+  };
 
   meta = with lib; {
     description = "Software for Glasgow, a digital interface multitool";

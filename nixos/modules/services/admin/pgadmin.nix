@@ -164,7 +164,9 @@ in
         SERVER_MODE = true;
         UPGRADE_CHECK_ENABLED = false;
       }
-      // (optionalAttrs cfg.openFirewall { DEFAULT_SERVER = mkDefault "::"; })
+      // (optionalAttrs cfg.openFirewall {
+        DEFAULT_SERVER = mkDefault "::";
+      })
       // (optionalAttrs cfg.emailServer.enable {
         MAIL_SERVER = cfg.emailServer.address;
         MAIL_PORT = cfg.emailServer.port;

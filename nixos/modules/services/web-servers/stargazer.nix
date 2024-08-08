@@ -33,7 +33,10 @@ let
           name = section.route;
           params = builtins.removeAttrs section [ "route" ];
         in
-        genINI { "${name}" = params; } + "\n"
+        genINI {
+          "${name}" = params;
+        }
+        + "\n"
       ))
     )
   );
@@ -232,7 +235,9 @@ in
       };
     };
 
-    users.groups = lib.optionalAttrs (cfg.group == "stargazer") { stargazer = { }; };
+    users.groups = lib.optionalAttrs (cfg.group == "stargazer") {
+      stargazer = { };
+    };
   };
 
   meta.maintainers = with lib.maintainers; [ gaykitty ];

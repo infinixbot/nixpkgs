@@ -20,7 +20,9 @@ lib.makeScope newScope (
     mingwrt = callPackage ./mingwrt { };
     mingw_runtime = mingwrt;
 
-    mingw_w64 = callPackage ./mingw-w64 { stdenv = crossLibcStdenv; };
+    mingw_w64 = callPackage ./mingw-w64 {
+      stdenv = crossLibcStdenv;
+    };
 
     # FIXME untested with llvmPackages_16 was using llvmPackages_8
     crossThreadsStdenv = overrideCC crossLibcStdenv (
@@ -28,16 +30,22 @@ lib.makeScope newScope (
         buildPackages.llvmPackages.clangNoLibcxx
       else
         buildPackages.gccWithoutTargetLibc.override (old: {
-          bintools = old.bintools.override { libc = libcCross; };
+          bintools = old.bintools.override {
+            libc = libcCross;
+          };
           libc = libcCross;
         })
     );
 
     mingw_w64_headers = callPackage ./mingw-w64/headers.nix { };
 
-    mingw_w64_pthreads = callPackage ./mingw-w64/pthreads.nix { stdenv = crossThreadsStdenv; };
+    mingw_w64_pthreads = callPackage ./mingw-w64/pthreads.nix {
+      stdenv = crossThreadsStdenv;
+    };
 
-    mcfgthreads = callPackage ./mcfgthreads { stdenv = crossThreadsStdenv; };
+    mcfgthreads = callPackage ./mcfgthreads {
+      stdenv = crossThreadsStdenv;
+    };
 
     npiperelay = callPackage ./npiperelay { };
 

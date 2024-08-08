@@ -6,9 +6,13 @@
 
 let
   pkgs = {
-    mod = { };
+    mod =
+      {
+      };
 
-    soundpack = { };
+    soundpack =
+      {
+      };
 
     tileset = {
       UndeadPeople = callPackage ./tilesets/UndeadPeople { };

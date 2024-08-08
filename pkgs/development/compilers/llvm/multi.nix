@@ -50,7 +50,9 @@ let
     # `gccForLibs`.
     libc = gcc_multi_sysroot;
 
-    bintools = clang.bintools.override { libc = gcc_multi_sysroot; };
+    bintools = clang.bintools.override {
+      libc = gcc_multi_sysroot;
+    };
 
     gccForLibs = gcc_multi_sysroot // {
       inherit (glibc_multi) libgcc;

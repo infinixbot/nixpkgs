@@ -243,11 +243,16 @@ lib.fix (
 
     # the 'non-relocated' packages must live in $TEXMFROOT/texmf-dist
     # and sometimes look into $TEXMFROOT/tlpkg (notably fmtutil, updmap look for perl modules in both)
-    texmfroot = runCommand "${name}-texmfroot" { inherit texmfdist tlpkg; } ''
-      mkdir -p "$out"
-      ln -s "$texmfdist" "$out"/texmf-dist
-      ln -s "$tlpkg" "$out"/tlpkg
-    '';
+    texmfroot =
+      runCommand "${name}-texmfroot"
+        {
+          inherit texmfdist tlpkg;
+        }
+        ''
+          mkdir -p "$out"
+          ln -s "$texmfdist" "$out"/texmf-dist
+          ln -s "$tlpkg" "$out"/tlpkg
+        '';
 
     # texlive.combine: expose info and man pages in usual /share/{info,man} location
     doc = buildEnv {

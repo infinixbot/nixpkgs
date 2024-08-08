@@ -69,5 +69,7 @@ buildGoModule rec {
       license = licenses.mit;
       maintainers = [ ];
     }
-    // lib.optionalAttrs stdenv.isDarwin { mainProgram = "docker-credential-osxkeychain"; };
+    // lib.optionalAttrs stdenv.isDarwin {
+      mainProgram = "docker-credential-osxkeychain";
+    };
 }

@@ -61,7 +61,10 @@ in
 
     system.systemBuilderCommands = lib.mkIf config.system.activatable config.system.activatableSystemBuilderCommands;
     system.systemBuilderArgs = lib.mkIf config.system.activatable (
-      systemBuilderArgs // { toplevelVar = "out"; }
+      systemBuilderArgs
+      // {
+        toplevelVar = "out";
+      }
     );
 
     system.build.separateActivationScript =

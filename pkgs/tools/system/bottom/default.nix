@@ -39,7 +39,9 @@ rustPlatform.buildRustPackage rec {
 
   BTM_GENERATE = true;
 
-  passthru.tests.version = testers.testVersion { package = bottom; };
+  passthru.tests.version = testers.testVersion {
+    package = bottom;
+  };
 
   meta = with lib; {
     description = "Cross-platform graphical process/system monitor with a customizable interface";

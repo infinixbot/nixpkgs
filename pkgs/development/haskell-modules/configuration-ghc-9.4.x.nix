@@ -108,7 +108,9 @@ in
   inherit
     (
       let
-        hls_overlay = lself: lsuper: { Cabal-syntax = lself.Cabal-syntax_3_10_3_0; };
+        hls_overlay = lself: lsuper: {
+          Cabal-syntax = lself.Cabal-syntax_3_10_3_0;
+        };
       in
       lib.mapAttrs (_: pkg: doDistribute (pkg.overrideScope hls_overlay)) {
         haskell-language-server = allowInconsistentDependencies super.haskell-language-server;

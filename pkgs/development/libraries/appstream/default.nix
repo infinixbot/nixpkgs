@@ -114,7 +114,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru.tests = {
     installed-tests = nixosTests.installed-tests.appstream;
-    pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+    pkg-config = testers.hasPkgConfigModules {
+      package = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

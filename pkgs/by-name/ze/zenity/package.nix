@@ -41,7 +41,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "zenity"; };
+    updateScript = gnome.updateScript {
+      packageName = "zenity";
+    };
   };
 
   meta = with lib; {

@@ -40,7 +40,9 @@
 }:
 
 let
-  mlt-full = mlt.override { ffmpeg = ffmpeg-full; };
+  mlt-full = mlt.override {
+    ffmpeg = ffmpeg-full;
+  };
 in
 mkDerivation {
   pname = "kdenlive";

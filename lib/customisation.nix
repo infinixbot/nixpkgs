@@ -178,7 +178,10 @@ rec {
         }
       else if isFunction result then
         # Transform the result into a functor while propagating its arguments
-        setFunctionArgs result (functionArgs result) // { override = overrideArgs; }
+        setFunctionArgs result (functionArgs result)
+        // {
+          override = overrideArgs;
+        }
       else
         result
     );

@@ -25,7 +25,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru.tests = {
     static = pkgsStatic.libdeflate;
-    pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+    pkg-config = testers.hasPkgConfigModules {
+      package = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

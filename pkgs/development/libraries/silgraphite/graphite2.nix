@@ -33,7 +33,9 @@ stdenv.mkDerivation (finalAttrs: {
   buildInputs =
     [ freetype ]
     ++ lib.optional (stdenv.targetPlatform.useLLVM or false) (
-      llvmPackages.compiler-rt.override { doFakeLibgcc = true; }
+      llvmPackages.compiler-rt.override {
+        doFakeLibgcc = true;
+      }
     );
 
   patches = lib.optionals stdenv.isDarwin [ ./macosx.patch ];
@@ -59,7 +61,9 @@ stdenv.mkDerivation (finalAttrs: {
   doCheck = true;
 
   passthru.tests = {
-    pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+    pkg-config = testers.hasPkgConfigModules {
+      package = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

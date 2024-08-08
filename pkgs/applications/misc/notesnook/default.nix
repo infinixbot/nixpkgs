@@ -32,7 +32,9 @@ let
       .${system} or throwSystem;
   };
 
-  appimageContents = appimageTools.extractType2 { inherit pname version src; };
+  appimageContents = appimageTools.extractType2 {
+    inherit pname version src;
+  };
 
   meta = with lib; {
     description = "Fully open source & end-to-end encrypted note taking alternative to Evernote";

@@ -61,8 +61,20 @@
 
 let
   # Not always evaluated
-  blas' = if use64BitIdx then blas.override { isILP64 = true; } else blas;
-  lapack' = if use64BitIdx then lapack.override { isILP64 = true; } else lapack;
+  blas' =
+    if use64BitIdx then
+      blas.override {
+        isILP64 = true;
+      }
+    else
+      blas;
+  lapack' =
+    if use64BitIdx then
+      lapack.override {
+        isILP64 = true;
+      }
+    else
+      lapack;
   qrupdate' = qrupdate.override {
     # If use64BitIdx is false, this override doesn't evaluate to a new
     # derivation, as blas and lapack are not overridden.

@@ -279,9 +279,15 @@ let
           filename
         ];
     }
-    // optionalAttrs (dependencies != [ ]) { inherit dependencies; }
-    // optionalAttrs (optional-dependencies != { }) { inherit optional-dependencies; }
-    // optionalAttrs (build-system != [ ]) { inherit build-system; };
+    // optionalAttrs (dependencies != [ ]) {
+      inherit dependencies;
+    }
+    // optionalAttrs (optional-dependencies != { }) {
+      inherit optional-dependencies;
+    }
+    // optionalAttrs (build-system != [ ]) {
+      inherit build-system;
+    };
 
   # Keep extra attributes from `attrs`, e.g., `patchPhase', etc.
   self = toPythonModule (
@@ -341,7 +347,9 @@ let
           ++ optionals (format' != "other") [
             (
               if isBootstrapInstallPackage then
-                pypaInstallHook.override { inherit (python.pythonOnBuildForHost.pkgs.bootstrap) installer; }
+                pypaInstallHook.override {
+                  inherit (python.pythonOnBuildForHost.pkgs.bootstrap) installer;
+                }
               else
                 pypaInstallHook
             )

@@ -57,7 +57,10 @@ stdenv.mkDerivation (finalAttrs: {
   mesonFlags = [ "-Dtheme_kde=false" ];
 
   passthru = {
-    updateScript = gitUpdater { };
+    updateScript =
+      gitUpdater
+        {
+        };
   };
 
   meta = with lib; {

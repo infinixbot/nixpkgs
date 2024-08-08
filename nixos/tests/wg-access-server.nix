@@ -18,7 +18,11 @@ import ./make-test-python.nix (
           settings = {
             adminUsername = "admin";
           };
-          secretsFile = (pkgs.writers.writeYAML "secrets.yaml" { adminPassword = "hunter2"; });
+          secretsFile = (
+            pkgs.writers.writeYAML "secrets.yaml" {
+              adminPassword = "hunter2";
+            }
+          );
         };
       };
     };

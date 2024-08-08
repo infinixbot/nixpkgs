@@ -76,7 +76,9 @@ in
 
     environment = lib.mkIf cfg.enable {
       systemPackages = [ cfg.package ];
-      variables = lib.mkIf (cfg.flake != null) { FLAKE = cfg.flake; };
+      variables = lib.mkIf (cfg.flake != null) {
+        FLAKE = cfg.flake;
+      };
     };
 
     systemd = lib.mkIf cfg.clean.enable {

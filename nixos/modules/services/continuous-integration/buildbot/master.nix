@@ -232,7 +232,9 @@ in
         description = "Specifies port number on which the buildbot HTTP interface listens.";
       };
 
-      package = mkPackageOption pkgs "buildbot-full" { example = "buildbot"; };
+      package = mkPackageOption pkgs "buildbot-full" {
+        example = "buildbot";
+      };
 
       packages = mkOption {
         default = [ pkgs.git ];
@@ -252,7 +254,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    users.groups = optionalAttrs (cfg.group == "buildbot") { buildbot = { }; };
+    users.groups = optionalAttrs (cfg.group == "buildbot") {
+      buildbot = { };
+    };
 
     users.users = optionalAttrs (cfg.user == "buildbot") {
       buildbot = {

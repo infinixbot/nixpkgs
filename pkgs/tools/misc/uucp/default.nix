@@ -34,7 +34,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   makeFlags = [ "AR:=$(AR)" ];
 
-  passthru.tests.version = testers.testVersion { package = finalAttrs.finalPackage; };
+  passthru.tests.version = testers.testVersion {
+    package = finalAttrs.finalPackage;
+  };
 
   meta = {
     description = "Unix-unix cp over serial line, also includes cu program";

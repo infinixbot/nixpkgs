@@ -30,7 +30,9 @@ let
         extraPrefix = lib.optionalString (extraPrefix != null) extraPrefix;
       }
     else
-      { inherit stripLen extraPrefix; };
+      {
+        inherit stripLen extraPrefix;
+      };
 in
 let
   inherit (args') stripLen extraPrefix;

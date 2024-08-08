@@ -1,1 +1,4 @@
-{ mkKdeDerivation }: mkKdeDerivation { pname = "akonadi-contacts"; }
+{ mkKdeDerivation }:
+mkKdeDerivation {
+  pname = "akonadi-contacts";
+}

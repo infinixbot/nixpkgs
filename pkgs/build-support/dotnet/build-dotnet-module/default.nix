@@ -100,7 +100,10 @@ let
     else
       dotnet-sdk.meta.platforms;
 
-  inherit (callPackage ./hooks { inherit dotnet-sdk dotnet-runtime; })
+  inherit
+    (callPackage ./hooks {
+      inherit dotnet-sdk dotnet-runtime;
+    })
     dotnetConfigureHook
     dotnetBuildHook
     dotnetCheckHook

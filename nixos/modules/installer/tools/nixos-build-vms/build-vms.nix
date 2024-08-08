@@ -12,7 +12,9 @@ let
 
   pkgs = import ../../../../.. { inherit system config; };
 
-  testing = import ../../../../lib/testing-python.nix { inherit system pkgs; };
+  testing = import ../../../../lib/testing-python.nix {
+    inherit system pkgs;
+  };
 
   interactiveDriver =
     (testing.makeTest {

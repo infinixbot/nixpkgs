@@ -33,7 +33,9 @@ makeScopeWithSplicing' {
 
       libxfce4windowing = callPackage ./core/libxfce4windowing { };
 
-      thunar = callPackage ./core/thunar { thunarPlugins = [ ]; };
+      thunar = callPackage ./core/thunar {
+        thunarPlugins = [ ];
+      };
 
       thunar-volman = callPackage ./core/thunar-volman { };
 
@@ -62,7 +64,9 @@ makeScopeWithSplicing' {
       xfce4-appfinder = callPackage ./core/xfce4-appfinder { };
 
       xfce4-dev-tools = callPackage ./core/xfce4-dev-tools {
-        mkXfceDerivation = self.mkXfceDerivation.override { xfce4-dev-tools = null; };
+        mkXfceDerivation = self.mkXfceDerivation.override {
+          xfce4-dev-tools = null;
+        };
       };
 
       #### APPLICATIONS

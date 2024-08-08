@@ -47,7 +47,11 @@ with lib;
               protocol = "http";
             }
           ];
-          outbounds = [ { protocol = "freedom"; } ];
+          outbounds = [
+            {
+              protocol = "freedom";
+            }
+          ];
         };
         description = ''
           The configuration object.

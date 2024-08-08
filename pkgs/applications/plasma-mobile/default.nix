@@ -59,7 +59,9 @@ let
   packages =
     self:
     let
-      callPackage = self.newScope { inherit mkDerivation; };
+      callPackage = self.newScope {
+        inherit mkDerivation;
+      };
     in
     {
       plasma-dialer = callPackage ./plasma-dialer.nix { };

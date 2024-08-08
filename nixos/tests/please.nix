@@ -11,7 +11,9 @@ import ./make-test-python.nix (
           (lib.listToAttrs (
             map (n: lib.nameValuePair n { isNormalUser = true; }) (lib.genList (x: "user${toString x}") 6)
           ))
-          { user0.extraGroups = [ "wheel" ]; }
+          {
+            user0.extraGroups = [ "wheel" ];
+          }
         ];
 
         security.please = {

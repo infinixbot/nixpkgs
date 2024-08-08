@@ -20,7 +20,9 @@ rustPlatform.buildRustPackage rec {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests = testers.testVersion { package = diffedit3; };
+    tests = testers.testVersion {
+      package = diffedit3;
+    };
   };
 
   meta = with lib; {

@@ -55,10 +55,15 @@ in
       '';
     };
 
-    package = lib.mkPackageOption pkgs [
-      "findutils"
-      "locate"
-    ] { example = "mlocate"; };
+    package =
+      lib.mkPackageOption pkgs
+        [
+          "findutils"
+          "locate"
+        ]
+        {
+          example = "mlocate";
+        };
 
     interval = lib.mkOption {
       type = lib.types.str;
@@ -281,7 +286,9 @@ in
 
       systemPackages = [ cfg.package ];
 
-      variables = lib.mkIf isFindutils { LOCATE_PATH = cfg.output; };
+      variables = lib.mkIf isFindutils {
+        LOCATE_PATH = cfg.output;
+      };
     };
 
     warnings =

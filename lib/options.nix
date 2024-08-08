@@ -206,7 +206,9 @@ rec {
             defaultText = literalExpression ("${pkgsText}." + defaultText);
           }
         else
-          optionalAttrs nullable { default = null; };
+          optionalAttrs nullable {
+            default = null;
+          };
     in
     mkOption (
       defaults

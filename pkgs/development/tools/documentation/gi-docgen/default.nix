@@ -44,7 +44,9 @@ python3.pkgs.buildPythonApplication rec {
   '';
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "gi-docgen"; };
+    updateScript = gnome.updateScript {
+      packageName = "gi-docgen";
+    };
   };
 
   meta = with lib; {

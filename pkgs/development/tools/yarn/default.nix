@@ -38,7 +38,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   passthru = {
     tests.version = lib.optionalAttrs withNode (
-      testers.testVersion { package = finalAttrs.finalPackage; }
+      testers.testVersion {
+        package = finalAttrs.finalPackage;
+      }
     );
 
     updateScript = gitUpdater {

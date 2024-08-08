@@ -85,7 +85,9 @@ rec {
     {
       features ? (alloc_no_stdlib_1_3_0_features { }),
     }:
-    alloc_no_stdlib_1_3_0_ { features = mkFeatures (features.alloc_no_stdlib_1_3_0 or { }); };
+    alloc_no_stdlib_1_3_0_ {
+      features = mkFeatures (features.alloc_no_stdlib_1_3_0 or { });
+    };
   alloc_no_stdlib_1_3_0_features =
     f:
     updateFeatures f ({

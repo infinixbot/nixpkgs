@@ -1,1 +1,4 @@
-{ mkKdeDerivation }: mkKdeDerivation { pname = "kde-dev-scripts"; }
+{ mkKdeDerivation }:
+mkKdeDerivation {
+  pname = "kde-dev-scripts";
+}

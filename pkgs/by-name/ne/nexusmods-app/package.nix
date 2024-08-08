@@ -15,7 +15,9 @@
   enableUnfree ? false, # Set to true to support RAR format mods
 }:
 let
-  _7zzWithOptionalUnfreeRarSupport = _7zz.override { inherit enableUnfree; };
+  _7zzWithOptionalUnfreeRarSupport = _7zz.override {
+    inherit enableUnfree;
+  };
 in
 buildDotnetModule rec {
   pname = "nexusmods-app";

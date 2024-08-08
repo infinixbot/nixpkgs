@@ -62,7 +62,9 @@ let
       '';
 
       passthru = {
-        tests = nixosTests.spark.default.passthru.override { sparkPackage = finalAttrs.finalPackage; };
+        tests = nixosTests.spark.default.passthru.override {
+          sparkPackage = finalAttrs.finalPackage;
+        };
         # Add python packages to PYSPARK_PYTHON
         withPythonPackages =
           f:

@@ -1386,7 +1386,9 @@ in
         ];
       })
       (mkIf cfg.relay.enable (
-        optionalAttrs (cfg.relay.role != "exit") { ExitPolicy = mkForce [ "reject *:*" ]; }
+        optionalAttrs (cfg.relay.role != "exit") {
+          ExitPolicy = mkForce [ "reject *:*" ];
+        }
         //
           optionalAttrs
             (elem cfg.relay.role [
@@ -1440,9 +1442,12 @@ in
           ];
           AutomapHostsOnResolve = true;
         }
-        // optionalAttrs (
-          flatten (mapAttrsToList (n: o: o.clientAuthorizations) cfg.client.onionServices) != [ ]
-        ) { ClientOnionAuthDir = runDir + "/ClientOnionAuthDir"; }
+        //
+          optionalAttrs
+            (flatten (mapAttrsToList (n: o: o.clientAuthorizations) cfg.client.onionServices) != [ ])
+            {
+              ClientOnionAuthDir = runDir + "/ClientOnionAuthDir";
+            }
       ))
     ];
 

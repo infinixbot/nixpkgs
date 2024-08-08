@@ -265,7 +265,9 @@ let
           if usePersistenced then
             mapNullable (
               hash:
-              callPackage (import ./persistenced.nix self hash) { fetchFromGitHub = fetchFromGithubOrNvidia; }
+              callPackage (import ./persistenced.nix self hash) {
+                fetchFromGitHub = fetchFromGithubOrNvidia;
+              }
             ) persistencedSha256
           else
             { };
@@ -278,7 +280,9 @@ let
         compressFirmware = false;
         ibtSupport = ibtSupport || (lib.versionAtLeast version "530");
       }
-      // optionalAttrs (!i686bundled) { inherit lib32; };
+      // optionalAttrs (!i686bundled) {
+        inherit lib32;
+      };
 
     meta = with lib; {
       homepage = "https://www.nvidia.com/object/unix.html";

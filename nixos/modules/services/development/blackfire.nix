@@ -8,7 +8,9 @@
 let
   cfg = config.services.blackfire-agent;
 
-  agentConfigFile = lib.generators.toINI { } { blackfire = cfg.settings; };
+  agentConfigFile = lib.generators.toINI { } {
+    blackfire = cfg.settings;
+  };
 
   agentSock = "blackfire/agent.sock";
 in

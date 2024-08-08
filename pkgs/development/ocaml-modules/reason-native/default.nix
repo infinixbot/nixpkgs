@@ -37,10 +37,16 @@ lib.makeScope newScope (self: {
   fs = self.callPackage ./fs.nix { };
   pastel = self.callPackage ./pastel.nix { };
   pastel-console = self.callPackage ./pastel-console.nix { };
-  qcheck-rely = self.callPackage ./qcheck-rely.nix { inherit qcheck-core; };
-  refmterr = self.callPackage ./refmterr.nix { inherit atdgen; };
+  qcheck-rely = self.callPackage ./qcheck-rely.nix {
+    inherit qcheck-core;
+  };
+  refmterr = self.callPackage ./refmterr.nix {
+    inherit atdgen;
+  };
   rely = self.callPackage ./rely.nix { };
-  rely-junit-reporter = self.callPackage ./rely-junit-reporter.nix { inherit atdgen junit; };
+  rely-junit-reporter = self.callPackage ./rely-junit-reporter.nix {
+    inherit atdgen junit;
+  };
   unicode-config = self.callPackage ./unicode-config.nix { };
   unicode = self.callPackage ./unicode.nix { };
   utf8 = self.callPackage ./utf8.nix { };

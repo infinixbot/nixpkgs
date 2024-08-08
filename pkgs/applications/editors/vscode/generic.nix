@@ -127,16 +127,20 @@ stdenv.mkDerivation (
       dontFixup
       ;
 
-    passthru = {
-      inherit
-        executableName
-        longName
-        tests
-        updateScript
-        ;
-      fhs = fhs { };
-      fhsWithPackages = f: fhs { additionalPkgs = f; };
-    } // lib.optionalAttrs (vscodeServer != null) { inherit rev vscodeServer; };
+    passthru =
+      {
+        inherit
+          executableName
+          longName
+          tests
+          updateScript
+          ;
+        fhs = fhs { };
+        fhsWithPackages = f: fhs { additionalPkgs = f; };
+      }
+      // lib.optionalAttrs (vscodeServer != null) {
+        inherit rev vscodeServer;
+      };
 
     desktopItem = makeDesktopItem {
       name = executableName;

@@ -205,7 +205,9 @@ in
         # Create custom toKeyValue generator
         # see https://man7.org/linux/man-pages/man5/login.defs.5.html for config specification
         let
-          toKeyValue = lib.generators.toKeyValue { mkKeyValue = lib.generators.mkKeyValueDefault { } " "; };
+          toKeyValue = lib.generators.toKeyValue {
+            mkKeyValue = lib.generators.mkKeyValueDefault { } " ";
+          };
         in
         {
           # /etc/login.defs: global configuration for pwdutils.

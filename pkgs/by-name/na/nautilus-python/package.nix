@@ -56,7 +56,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "nautilus-python"; };
+    updateScript = gnome.updateScript {
+      packageName = "nautilus-python";
+    };
   };
 
   meta = with lib; {

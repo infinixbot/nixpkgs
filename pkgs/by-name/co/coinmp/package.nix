@@ -32,7 +32,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   enableParallelBuilding = true;
 
-  env = lib.optionalAttrs stdenv.cc.isClang { CXXFLAGS = "-std=c++14"; };
+  env = lib.optionalAttrs stdenv.cc.isClang {
+    CXXFLAGS = "-std=c++14";
+  };
 
   hardeningDisable = [ "format" ];
 

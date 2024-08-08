@@ -674,7 +674,9 @@ in
       }) enabledServers
     );
 
-    boot.kernel.sysctl = mkIf cfg.vmOverCommit { "vm.overcommit_memory" = "1"; };
+    boot.kernel.sysctl = mkIf cfg.vmOverCommit {
+      "vm.overcommit_memory" = "1";
+    };
 
     networking.firewall.allowedTCPPorts = concatMap (conf: optional conf.openFirewall conf.port) (
       attrValues enabledServers
@@ -690,7 +692,12 @@ in
         group = redisName name;
       }
     ) enabledServers;
-    users.groups = mapAttrs' (name: conf: nameValuePair (redisName name) { }) enabledServers;
+    users.groups = mapAttrs' (
+      name: conf:
+      nameValuePair (redisName name)
+        {
+        }
+    ) enabledServers;
 
     systemd.services = mapAttrs' (
       name: conf:

@@ -271,7 +271,9 @@ in
         lib.concatStringsSep ":" modulePaths;
     })
 
-    (mkIf hasZeroconf { services.avahi.enable = true; })
+    (mkIf hasZeroconf {
+      services.avahi.enable = true;
+    })
     (mkIf cfg.zeroconf.publish.enable {
       services.avahi.publish.enable = true;
       services.avahi.publish.userServices = true;

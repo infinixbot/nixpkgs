@@ -18,7 +18,9 @@ let
       networking.useDHCP = false;
 
       # Make sure that only NetworkManager configures the interface
-      networking.interfaces = lib.mkForce { eth1 = { }; };
+      networking.interfaces = lib.mkForce {
+        eth1 = { };
+      };
       networking.networkmanager = {
         enable = true;
         # this is needed so NM doesn't generate 'Wired Connection' profiles and instead uses the default one

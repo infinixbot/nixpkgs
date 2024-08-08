@@ -47,4 +47,7 @@ let
   allModelPkgs = lib.listToAttrs (map (withCodeAsKey mkModelPackage) modelSpecs);
 
 in
-allModelPkgs // { passthru.updateScript = ./update.sh; }
+allModelPkgs
+// {
+  passthru.updateScript = ./update.sh;
+}

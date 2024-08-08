@@ -84,7 +84,11 @@ import ../make-test-python.nix {
             ssl.cert = "${cert pkgs}/cert.pem";
             ssl.key = "${cert pkgs}/key.pem";
           };
-          muc = [ { domain = "conference.example.com"; } ];
+          muc = [
+            {
+              domain = "conference.example.com";
+            }
+          ];
           uploadHttp = {
             domain = "uploads.example.com";
           };

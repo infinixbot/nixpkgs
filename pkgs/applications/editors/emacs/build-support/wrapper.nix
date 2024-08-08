@@ -68,7 +68,9 @@ runCommand (lib.appendToName "with-packages" emacs).name
             inherit explicitRequires lndir emacs;
             nativeBuildInputs = lib.optional withNativeCompilation gcc;
           }
-          // lib.optionalAttrs withNativeCompilation { inherit (emacs) LIBRARY_PATH; }
+          // lib.optionalAttrs withNativeCompilation {
+            inherit (emacs) LIBRARY_PATH;
+          }
         )
         ''
           findInputsOld() {

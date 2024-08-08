@@ -11,7 +11,9 @@ lib.packagesFromDirectoryRecursive {
 // {
   inherit (pkgs) emacspeak;
 
-  codeium = callPackage ./manual-packages/codeium { inherit (pkgs) codeium; };
+  codeium = callPackage ./manual-packages/codeium {
+    inherit (pkgs) codeium;
+  };
 
   lsp-bridge = callPackage ./manual-packages/lsp-bridge {
     inherit (pkgs)
@@ -23,7 +25,9 @@ lib.packagesFromDirectoryRecursive {
       ;
   };
 
-  matrix-client = callPackage ./manual-packages/matrix-client { _map = self.map; };
+  matrix-client = callPackage ./manual-packages/matrix-client {
+    _map = self.map;
+  };
 
   structured-haskell-mode = self.shm;
 

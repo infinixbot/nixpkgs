@@ -43,7 +43,9 @@ buildNpmPackage rec {
   '';
 
   passthru = {
-    tests.version = testers.testVersion { package = node-manta; };
+    tests.version = testers.testVersion {
+      package = node-manta;
+    };
   };
 
   meta = with lib; {

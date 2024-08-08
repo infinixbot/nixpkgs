@@ -176,7 +176,9 @@ stdenv.mkDerivation (finalAttrs: {
         };
       };
 
-    tests.version = testers.testVersion { package = finalAttrs.finalPackage; };
+    tests.version = testers.testVersion {
+      package = finalAttrs.finalPackage;
+    };
 
     updateScript = writeScript "update-palemoon-bin" ''
       #!/usr/bin/env nix-shell

@@ -359,7 +359,13 @@ let
       let
         secretsRaw = recursiveGetAttrsetWithJqPrefix set attr;
         # Set default option values
-        secrets = mapAttrs (_name: set: { quote = true; } // set) secretsRaw;
+        secrets = mapAttrs (
+          _name: set:
+          {
+            quote = true;
+          }
+          // set
+        ) secretsRaw;
         stringOrDefault = str: def: if str == "" then def else str;
       in
       ''

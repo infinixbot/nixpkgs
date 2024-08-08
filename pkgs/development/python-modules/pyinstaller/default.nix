@@ -52,7 +52,9 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ "PyInstaller" ];
 
-  passthru.tests.version = testers.testVersion { package = pyinstaller; };
+  passthru.tests.version = testers.testVersion {
+    package = pyinstaller;
+  };
 
   meta = {
     description = "A tool to bundle a python application with dependencies into a single package";

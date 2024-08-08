@@ -126,7 +126,9 @@ in
       isSystemUser = true;
     };
 
-    networking.firewall = lib.mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.settings.port ]; };
+    networking.firewall = lib.mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.settings.port ];
+    };
 
     services.postgresql = lib.mkIf cfg.setupPostgresqlDB {
       enable = true;

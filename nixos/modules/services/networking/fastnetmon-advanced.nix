@@ -31,7 +31,9 @@ let
         FERRETDB_TELEMETRY="disable" FERRETDB_HANDLER="sqlite" FERRETDB_STATE_DIR="$PWD/ferretdb" FERRETDB_SQLITE_URL="file:$PWD/ferretdb/" ferretdb &
 
         cat << EOF > fastnetmon/fastnetmon.conf
-        ${builtins.toJSON { mongodb_username = ""; }}
+        ${builtins.toJSON {
+          mongodb_username = "";
+        }}
         EOF
         proot -b fastnetmon:/etc/fastnetmon -0 fcli create_configuration
         proot -b fastnetmon:/etc/fastnetmon -0 fcli set bgp default
@@ -40,20 +42,25 @@ let
       '';
 
   # merge the user configs into the default configs
-  config_tar = pkgs.runCommand "fastnetmon-config.tar" { nativeBuildInputs = with pkgs; [ jq ]; } ''
-    jq -s add ${default_configs}/main.json ${pkgs.writeText "main-add.json" (builtins.toJSON cfg.settings)} > main.json
-    mkdir hostgroup
-    ${lib.concatImapStringsSep "\n" (pos: hostgroup: ''
-      jq -s add ${default_configs}/hostgroup/0.json ${pkgs.writeText "hostgroup-${toString (pos - 1)}-add.json" (builtins.toJSON hostgroup)} > hostgroup/${toString (pos - 1)}.json
-    '') hostgroups}
-    mkdir bgp
-    ${lib.concatImapStringsSep "\n" (pos: bgp: ''
-      jq -s add ${default_configs}/bgp/0.json ${pkgs.writeText "bgp-${toString (pos - 1)}-add.json" (builtins.toJSON bgp)} > bgp/${toString (pos - 1)}.json
-    '') bgpPeers}
-    tar -cf $out main.json ${
-      lib.concatImapStringsSep " " (pos: _: "hostgroup/${toString (pos - 1)}.json") hostgroups
-    } ${lib.concatImapStringsSep " " (pos: _: "bgp/${toString (pos - 1)}.json") bgpPeers}
-  '';
+  config_tar =
+    pkgs.runCommand "fastnetmon-config.tar"
+      {
+        nativeBuildInputs = with pkgs; [ jq ];
+      }
+      ''
+        jq -s add ${default_configs}/main.json ${pkgs.writeText "main-add.json" (builtins.toJSON cfg.settings)} > main.json
+        mkdir hostgroup
+        ${lib.concatImapStringsSep "\n" (pos: hostgroup: ''
+          jq -s add ${default_configs}/hostgroup/0.json ${pkgs.writeText "hostgroup-${toString (pos - 1)}-add.json" (builtins.toJSON hostgroup)} > hostgroup/${toString (pos - 1)}.json
+        '') hostgroups}
+        mkdir bgp
+        ${lib.concatImapStringsSep "\n" (pos: bgp: ''
+          jq -s add ${default_configs}/bgp/0.json ${pkgs.writeText "bgp-${toString (pos - 1)}-add.json" (builtins.toJSON bgp)} > bgp/${toString (pos - 1)}.json
+        '') bgpPeers}
+        tar -cf $out main.json ${
+          lib.concatImapStringsSep " " (pos: _: "hostgroup/${toString (pos - 1)}.json") hostgroups
+        } ${lib.concatImapStringsSep " " (pos: _: "bgp/${toString (pos - 1)}.json") bgpPeers}
+      '';
 
   hostgroups = lib.mapAttrsToList (name: hostgroup: { inherit name; } // hostgroup) cfg.hostgroups;
   bgpPeers = lib.mapAttrsToList (name: bgpPeer: { inherit name; } // bgpPeer) cfg.bgpPeers;
@@ -111,7 +118,9 @@ in
       environment.etc."fastnetmon/license.lic".source = "/var/lib/fastnetmon/license.lic";
       environment.etc."fastnetmon/gobgpd.conf".source = "/run/fastnetmon/gobgpd.conf";
       environment.etc."fastnetmon/fastnetmon.conf".source = pkgs.writeText "fastnetmon.conf" (
-        builtins.toJSON { mongodb_username = ""; }
+        builtins.toJSON {
+          mongodb_username = "";
+        }
       );
 
       services.ferretdb.enable = true;

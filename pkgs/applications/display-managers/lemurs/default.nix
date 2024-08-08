@@ -21,7 +21,9 @@ rustPlatform.buildRustPackage rec {
 
   buildInputs = [ linux-pam ];
 
-  passthru.tests.version = testers.testVersion { package = lemurs; };
+  passthru.tests.version = testers.testVersion {
+    package = lemurs;
+  };
 
   meta = with lib; {
     description = "Customizable TUI display/login manager written in Rust";

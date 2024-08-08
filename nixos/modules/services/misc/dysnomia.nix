@@ -251,15 +251,22 @@ in
         };
       }
       // lib.optionalAttrs (config.services.mysql.enable) {
-        mysql-database = {
-          mysqlPort = config.services.mysql.settings.mysqld.port;
-          mysqlSocket = "/run/mysqld/mysqld.sock";
-        } // lib.optionalAttrs cfg.enableAuthentication { mysqlUsername = "root"; };
+        mysql-database =
+          {
+            mysqlPort = config.services.mysql.settings.mysqld.port;
+            mysqlSocket = "/run/mysqld/mysqld.sock";
+          }
+          // lib.optionalAttrs cfg.enableAuthentication {
+            mysqlUsername = "root";
+          };
       }
       // lib.optionalAttrs (config.services.postgresql.enable) {
         postgresql-database =
-          { }
-          // lib.optionalAttrs (cfg.enableAuthentication) { postgresqlUsername = "postgres"; };
+          {
+          }
+          // lib.optionalAttrs (cfg.enableAuthentication) {
+            postgresqlUsername = "postgres";
+          };
       }
       // lib.optionalAttrs (config.services.tomcat.enable) {
         tomcat-webapplication = {

@@ -32,6 +32,10 @@ pkgs.symlinkJoin {
     #
     #   https://github.com/NixOS/nixpkgs/issues/272591
     #
-    [ (import ../../pkgs/test/release { inherit pkgs lib nix; }) ];
+    [
+      (import ../../pkgs/test/release {
+        inherit pkgs lib nix;
+      })
+    ];
 
 }

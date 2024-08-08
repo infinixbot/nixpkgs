@@ -1180,6 +1180,9 @@ in
 lib.mapAttrs (lib.const (
   attrs:
   makeTest (
-    attrs // { name = "${attrs.name}-Networking-${if networkd then "Networkd" else "Scripted"}"; }
+    attrs
+    // {
+      name = "${attrs.name}-Networking-${if networkd then "Networkd" else "Scripted"}";
+    }
   )
 )) testCases

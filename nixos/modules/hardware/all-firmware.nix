@@ -130,6 +130,8 @@ in
           facetimehd-firmware
         ];
     })
-    (mkIf cfg.wirelessRegulatoryDatabase { hardware.firmware = [ pkgs.wireless-regdb ]; })
+    (mkIf cfg.wirelessRegulatoryDatabase {
+      hardware.firmware = [ pkgs.wireless-regdb ];
+    })
   ];
 }

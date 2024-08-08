@@ -154,7 +154,9 @@ in
         propagatedBuildInputs = [ (customize leaf) ];
       };
       # some leaf package
-      leaf = generatePythonPackage { pname = "leaf"; };
+      leaf = generatePythonPackage {
+        pname = "leaf";
+      };
     in
     expectFailure toplevel "Found duplicated packages in closure for dependency 'leaf'";
 
@@ -199,7 +201,9 @@ in
         propagatedBuildInputs = [ (customize leaf) ];
       };
       # some leaf package
-      leaf = generatePythonPackage { pname = "leaf"; };
+      leaf = generatePythonPackage {
+        pname = "leaf";
+      };
     in
     expectFailure toplevel "Found duplicated packages in closure for dependency 'leaf'";
 }

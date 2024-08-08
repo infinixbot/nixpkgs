@@ -26,9 +26,13 @@
     };
   } ./dotnet-configure-hook.sh;
 
-  dotnetBuildHook = makeSetupHook { name = "dotnet-build-hook"; } ./dotnet-build-hook.sh;
+  dotnetBuildHook = makeSetupHook {
+    name = "dotnet-build-hook";
+  } ./dotnet-build-hook.sh;
 
-  dotnetCheckHook = makeSetupHook { name = "dotnet-check-hook"; } ./dotnet-check-hook.sh;
+  dotnetCheckHook = makeSetupHook {
+    name = "dotnet-check-hook";
+  } ./dotnet-check-hook.sh;
 
   dotnetInstallHook = makeSetupHook {
     name = "dotnet-install-hook";

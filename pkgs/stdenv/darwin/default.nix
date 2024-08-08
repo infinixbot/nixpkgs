@@ -622,7 +622,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
         # Use this stage’s CF to build Python. It’s required, but it can’t be included in the stdenv.
         python3 = self.python3Minimal;
         python3Minimal =
-          (super.python3Minimal.override { self = self.python3Minimal; }).overrideAttrs
+          (super.python3Minimal.override {
+            self = self.python3Minimal;
+          }).overrideAttrs
             (old: {
               buildInputs = old.buildInputs or [ ] ++ [ self.darwin.CF ];
             });
@@ -640,9 +642,13 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
               buildInputs = old.buildInputs or [ ] ++ [ self.darwin.CF ];
             });
 
-            signingUtils = prevStage.darwin.signingUtils.override { inherit (selfDarwin) sigtool; };
+            signingUtils = prevStage.darwin.signingUtils.override {
+              inherit (selfDarwin) sigtool;
+            };
 
-            postLinkSignHook = prevStage.darwin.postLinkSignHook.override { inherit (selfDarwin) sigtool; };
+            postLinkSignHook = prevStage.darwin.postLinkSignHook.override {
+              inherit (selfDarwin) sigtool;
+            };
 
             # Rewrap binutils with the real Libsystem
             binutils = superDarwin.binutils.override {
@@ -692,7 +698,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
                 }
               );
               libraries = super.llvmPackages.libraries.extend (
-                _: _: { inherit (prevStage.llvmPackages) compiler-rt libcxx; }
+                _: _: {
+                  inherit (prevStage.llvmPackages) compiler-rt libcxx;
+                }
               );
             in
             {
@@ -901,7 +909,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
           ;
 
         # Avoid pulling in openldap just to run Meson’s tests.
-        meson = super.meson.overrideAttrs { doInstallCheck = false; };
+        meson = super.meson.overrideAttrs {
+          doInstallCheck = false;
+        };
 
         # The bootstrap Python needs its own `pythonAttr` to make sure the override works properly.
         python3 = self.python3-bootstrap;
@@ -958,7 +968,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
                 }
               );
               libraries = super.llvmPackages.libraries.extend (
-                _: _: { inherit (prevStage.llvmPackages) compiler-rt libcxx; }
+                _: _: {
+                  inherit (prevStage.llvmPackages) compiler-rt libcxx;
+                }
               );
             in
             {
@@ -1224,7 +1236,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
 
               # libc++, and libc++abi do not need CoreFoundation. Avoid propagating the CF from prior
               # stages to the final stdenv via rpath by dropping it from `extraBuildInputs`.
-              stdenvNoCF = self.stdenv.override { extraBuildInputs = [ ]; };
+              stdenvNoCF = self.stdenv.override {
+                extraBuildInputs = [ ];
+              };
 
               libcxxBootstrapStdenv = self.overrideCC stdenvNoCF (
                 self.llvmPackages.clangNoCompilerRtWithLibc.override {
@@ -1243,7 +1257,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
               libraries = super.llvmPackages.libraries.extend (
                 selfLib: superLib: {
                   compiler-rt = null;
-                  libcxx = superLib.libcxx.override ({ stdenv = libcxxBootstrapStdenv; });
+                  libcxx = superLib.libcxx.override ({
+                    stdenv = libcxxBootstrapStdenv;
+                  });
                 }
               );
             in
@@ -1527,7 +1543,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
                   # propagated to the final stdenv. CF is required by ASAN.
                   compiler-rt = superLib.compiler-rt.override ({
                     inherit (self.llvmPackages) libllvm;
-                    stdenv = self.stdenv.override { extraBuildInputs = [ self.darwin.CF ]; };
+                    stdenv = self.stdenv.override {
+                      extraBuildInputs = [ self.darwin.CF ];
+                    };
                   });
                 }
               );
@@ -1544,10 +1562,14 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
         # the final stdenv, which happens because of the rpath hook.
         stdenv =
           let
-            stdenvNoCF = super.stdenv.override { extraBuildInputs = [ ]; };
+            stdenvNoCF = super.stdenv.override {
+              extraBuildInputs = [ ];
+            };
           in
           self.overrideCC stdenvNoCF (
-            self.llvmPackages.clangNoCompilerRtWithLibc.override { inherit (self.llvmPackages) libcxx; }
+            self.llvmPackages.clangNoCompilerRtWithLibc.override {
+              inherit (self.llvmPackages) libcxx;
+            }
           );
       };
 
@@ -1782,7 +1804,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
           // (
             let
               libraries = super.llvmPackages.libraries.extend (
-                _: _: { inherit (prevStage.llvmPackages) compiler-rt libcxx; }
+                _: _: {
+                  inherit (prevStage.llvmPackages) compiler-rt libcxx;
+                }
               );
             in
             { inherit libraries; } // libraries
@@ -1992,7 +2016,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
               inherit (prevStage.darwin.apple_sdk) sdkRoot;
             };
 
-            signingUtils = superDarwin.signingUtils.override { inherit (selfDarwin) sigtool; };
+            signingUtils = superDarwin.signingUtils.override {
+              inherit (selfDarwin) sigtool;
+            };
 
             binutils = superDarwin.binutils.override {
               inherit (prevStage) expand-response-params;
@@ -2009,10 +2035,18 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
               llvm-manpages = super.llvmPackages.llvm-manpages.override {
                 python3Packages = self.python3.pkgs.overrideScope (
                   _: superPython: {
-                    hatch-vcs = superPython.hatch-vcs.overrideAttrs { doInstallCheck = false; };
-                    markdown-it-py = superPython.markdown-it-py.overrideAttrs { doInstallCheck = false; };
-                    mdit-py-plugins = superPython.mdit-py-plugins.overrideAttrs { doInstallCheck = false; };
-                    myst-parser = superPython.myst-parser.overrideAttrs { doInstallCheck = false; };
+                    hatch-vcs = superPython.hatch-vcs.overrideAttrs {
+                      doInstallCheck = false;
+                    };
+                    markdown-it-py = superPython.markdown-it-py.overrideAttrs {
+                      doInstallCheck = false;
+                    };
+                    mdit-py-plugins = superPython.mdit-py-plugins.overrideAttrs {
+                      doInstallCheck = false;
+                    };
+                    myst-parser = superPython.myst-parser.overrideAttrs {
+                      doInstallCheck = false;
+                    };
                   }
                 );
               };
@@ -2080,7 +2114,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
                 }
               );
               libraries = super.llvmPackages.libraries.extend (
-                _: _: { inherit (prevStage.llvmPackages) compiler-rt libcxx; }
+                _: _: {
+                  inherit (prevStage.llvmPackages) compiler-rt libcxx;
+                }
               );
             in
             { inherit tools libraries; } // tools // libraries
@@ -2456,7 +2492,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
                     }
                   );
                   libraries = super.llvmPackages.libraries.extend (
-                    _: _: { inherit (prevStage.llvmPackages) compiler-rt libcxx; }
+                    _: _: {
+                      inherit (prevStage.llvmPackages) compiler-rt libcxx;
+                    }
                   );
                 in
                 { inherit tools libraries; } // tools // libraries

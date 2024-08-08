@@ -460,7 +460,9 @@ in
         };
       };
 
-      users.groups = optionalAttrs (cfg.group == "taskd") { taskd.gid = config.ids.gids.taskd; };
+      users.groups = optionalAttrs (cfg.group == "taskd") {
+        taskd.gid = config.ids.gids.taskd;
+      };
 
       services.taskserver.config = {
         # systemd related

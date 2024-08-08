@@ -66,7 +66,9 @@ stdenvNoCC.mkDerivation rec {
         ''
     );
 
-  passthru.updateScript = gitUpdater { rev-prefix = "noto-monthly-release-"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "noto-monthly-release-";
+  };
 
   meta = {
     description = "Beautiful and free fonts for many languages";

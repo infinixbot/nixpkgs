@@ -13,7 +13,9 @@ lib.makeScope newScope (self: rec {
       sha256,
       ...
     }:
-    fetchurl { inherit url sha256; };
+    fetchurl {
+      inherit url sha256;
+    };
 
   akkuDerivation = self.callPackage ./akkuDerivation.nix { };
   akku = self.callPackage ./akku.nix { };

@@ -78,9 +78,11 @@ with lib;
         }
       ];
 
-      users.groups = optionalAttrs (
-        cfgSevGuest.group == options.hardware.cpu.amd.sevGuest.group.default
-      ) { "${cfgSevGuest.group}" = { }; };
+      users.groups =
+        optionalAttrs (cfgSevGuest.group == options.hardware.cpu.amd.sevGuest.group.default)
+          {
+            "${cfgSevGuest.group}" = { };
+          };
 
       services.udev.extraRules = with cfgSevGuest; ''
         KERNEL=="sev-guest", OWNER="${user}", GROUP="${group}", MODE="${mode}"

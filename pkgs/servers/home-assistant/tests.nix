@@ -22,7 +22,9 @@ let
     zha = [ pydeconz ];
   };
 
-  extraDisabledTestPaths = { };
+  extraDisabledTestPaths =
+    {
+    };
 
   extraDisabledTests = {
     advantage_air = [

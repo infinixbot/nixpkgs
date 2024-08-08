@@ -126,7 +126,9 @@
   # or doc/build-helpers/testers.chapter.md
   runNixOSTest =
     let
-      nixos = import ../../../nixos/lib { inherit lib; };
+      nixos = import ../../../nixos/lib {
+        inherit lib;
+      };
     in
     testModule:
     nixos.runTest {
@@ -174,7 +176,10 @@
       "testers.hasPkgConfigModule has been deprecated in favor of testers.hasPkgConfigModules. It accepts a list of strings via the moduleNames argument instead of a single moduleName."
       (
         testers.hasPkgConfigModules (
-          builtins.removeAttrs args [ "moduleName" ] // { moduleNames = [ moduleName ]; }
+          builtins.removeAttrs args [ "moduleName" ]
+          // {
+            moduleNames = [ moduleName ];
+          }
         )
       );
   hasPkgConfigModules = callPackage ./hasPkgConfigModules/tester.nix { };

@@ -10,7 +10,9 @@ with lib;
 let
   receiverSubmodule = {
     options = {
-      postgresqlPackage = mkPackageOption pkgs "postgresql" { example = "postgresql_15"; };
+      postgresqlPackage = mkPackageOption pkgs "postgresql" {
+        example = "postgresql_15";
+      };
 
       directory = mkOption {
         type = types.path;

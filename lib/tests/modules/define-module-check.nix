@@ -1,1 +1,3 @@
-{ _module.check = false; }
+{
+  _module.check = false;
+}

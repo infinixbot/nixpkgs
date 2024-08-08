@@ -31,7 +31,9 @@ buildGoModule rec {
   ];
 
   passthru.tests = {
-    zed-version = testers.testVersion { package = zed; };
+    zed-version = testers.testVersion {
+      package = zed;
+    };
     zq-version = testers.testVersion {
       package = zed;
       command = "zq --version";

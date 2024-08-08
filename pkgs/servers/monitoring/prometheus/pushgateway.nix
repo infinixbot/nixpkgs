@@ -32,7 +32,9 @@ buildGoModule rec {
 
   passthru.tests = {
     inherit (nixosTests.prometheus) pushgateway;
-    version = testers.testVersion { package = prometheus-pushgateway; };
+    version = testers.testVersion {
+      package = prometheus-pushgateway;
+    };
   };
 
   meta = with lib; {

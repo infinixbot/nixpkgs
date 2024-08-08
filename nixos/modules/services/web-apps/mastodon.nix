@@ -1031,8 +1031,12 @@ in
         };
         services.redis.servers.mastodon = lib.mkIf redisActuallyCreateLocally (
           lib.mkMerge [
-            { enable = true; }
-            (lib.mkIf (!cfg.redis.enableUnixSocket) { port = cfg.redis.port; })
+            {
+              enable = true;
+            }
+            (lib.mkIf (!cfg.redis.enableUnixSocket) {
+              port = cfg.redis.port;
+            })
           ]
         );
         services.postgresql = lib.mkIf databaseActuallyCreateLocally {

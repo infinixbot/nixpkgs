@@ -129,7 +129,9 @@ let
     dwarf-therapist = dwarf-fortress.dwarf-therapist;
     dwarf-fortress-original = dwarf-fortress.dwarf-fortress;
 
-    dwarf-fortress-full = callPackage ./lazy-pack.nix { inherit df-games versionToName latestVersion; };
+    dwarf-fortress-full = callPackage ./lazy-pack.nix {
+      inherit df-games versionToName latestVersion;
+    };
 
     soundSense = callPackage ./soundsense.nix { };
 
@@ -137,7 +139,11 @@ let
       jre = jre8; # TODO: remove override https://github.com/NixOS/nixpkgs/pull/89731
     };
 
-    themes = recurseIntoAttrs (callPackage ./themes { stdenv = stdenvNoCC; });
+    themes = recurseIntoAttrs (
+      callPackage ./themes {
+        stdenv = stdenvNoCC;
+      }
+    );
 
     # Theme aliases
     phoebus-theme = themes.phoebus;

@@ -88,7 +88,9 @@ stdenv.mkDerivation (finalAttrs: {
   mesonFlags = [ "-Dunit_tests=disabled" ] ++ lib.optionals withPantheon [ "-Dgranite=enabled" ];
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "epiphany"; };
+    updateScript = gnome.updateScript {
+      packageName = "epiphany";
+    };
   };
 
   meta = with lib; {

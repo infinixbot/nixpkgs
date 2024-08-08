@@ -26,8 +26,12 @@ let
       inherit spdxId;
       url = "https://spdx.org/licenses/${spdxId}.html";
     }
-    // optionalAttrs (attrs ? url) { inherit url; }
-    // optionalAttrs (attrs ? fullName) { inherit fullName; };
+    // optionalAttrs (attrs ? url) {
+      inherit url;
+    }
+    // optionalAttrs (attrs ? fullName) {
+      inherit fullName;
+    };
 
 in
 lib.mapAttrs mkLicense (

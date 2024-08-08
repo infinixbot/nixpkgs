@@ -187,7 +187,11 @@ in
         }
       );
 
-      newIssue = pkgs.writeText "new-issue.json" (builtins.toJSON { title = "useful issue title"; });
+      newIssue = pkgs.writeText "new-issue.json" (
+        builtins.toJSON {
+          title = "useful issue title";
+        }
+      );
 
       closeIssue = pkgs.writeText "close-issue.json" (
         builtins.toJSON {

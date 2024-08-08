@@ -810,8 +810,12 @@ in
       };
 
       users.groups =
-        optionalAttrs (group == "postfix") { ${group}.gid = config.ids.gids.postfix; }
-        // optionalAttrs (setgidGroup == "postdrop") { ${setgidGroup}.gid = config.ids.gids.postdrop; };
+        optionalAttrs (group == "postfix") {
+          ${group}.gid = config.ids.gids.postfix;
+        }
+        // optionalAttrs (setgidGroup == "postdrop") {
+          ${setgidGroup}.gid = config.ids.gids.postdrop;
+        };
 
       systemd.services.postfix-setup = {
         description = "Setup for Postfix mail server";
@@ -1038,7 +1042,9 @@ in
           virtual = {
             privileged = true;
           };
-          lmtp = { };
+          lmtp =
+            {
+            };
           anvil = {
             maxproc = 1;
           };
@@ -1097,19 +1103,33 @@ in
                   // {
                     smtpd_tls_wrappermode = "yes";
                   }
-                  // optionalAttrs adjustSmtpTlsSecurityLevel { smtpd_tls_security_level = "encrypt"; };
+                  // optionalAttrs adjustSmtpTlsSecurityLevel {
+                    smtpd_tls_security_level = "encrypt";
+                  };
               in
               concatLists (mapAttrsToList mkKeyVal submissionsOptions);
           };
         };
     }
 
-    (mkIf haveAliases { services.postfix.aliasFiles.aliases = aliasesFile; })
-    (mkIf haveCanonical { services.postfix.mapFiles.canonical = canonicalFile; })
-    (mkIf haveTransport { services.postfix.mapFiles.transport = transportFile; })
-    (mkIf haveVirtual { services.postfix.mapFiles.virtual = virtualFile; })
-    (mkIf haveLocalRecipients { services.postfix.mapFiles.local_recipients = localRecipientMapFile; })
-    (mkIf cfg.enableHeaderChecks { services.postfix.mapFiles.header_checks = headerChecksFile; })
+    (mkIf haveAliases {
+      services.postfix.aliasFiles.aliases = aliasesFile;
+    })
+    (mkIf haveCanonical {
+      services.postfix.mapFiles.canonical = canonicalFile;
+    })
+    (mkIf haveTransport {
+      services.postfix.mapFiles.transport = transportFile;
+    })
+    (mkIf haveVirtual {
+      services.postfix.mapFiles.virtual = virtualFile;
+    })
+    (mkIf haveLocalRecipients {
+      services.postfix.mapFiles.local_recipients = localRecipientMapFile;
+    })
+    (mkIf cfg.enableHeaderChecks {
+      services.postfix.mapFiles.header_checks = headerChecksFile;
+    })
     (mkIf (cfg.dnsBlacklists != [ ]) {
       services.postfix.mapFiles.client_access = checkClientAccessFile;
     })

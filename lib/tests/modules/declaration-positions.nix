@@ -11,12 +11,18 @@ assert
 {
   imports = [
     {
-      options.imported.line10 = lib.mkOption { type = lib.types.int; };
+      options.imported.line10 = lib.mkOption {
+        type = lib.types.int;
+      };
 
       # Simulates various patterns of generating modules such as
       # programs.firefox.nativeMessagingHosts.ff2mpv. We don't expect to get
       # line numbers for these, but we can fall back on knowing the file.
-      options.generated = discardPositions { line18 = lib.mkOption { type = lib.types.int; }; };
+      options.generated = discardPositions {
+        line18 = lib.mkOption {
+          type = lib.types.int;
+        };
+      };
 
       options.submoduleLine34.extraOptLine23 = lib.mkOption {
         default = 1;
@@ -25,7 +31,9 @@ assert
     }
   ];
 
-  options.nested.nestedLine30 = lib.mkOption { type = lib.types.int; };
+  options.nested.nestedLine30 = lib.mkOption {
+    type = lib.types.int;
+  };
 
   options.submoduleLine34 = lib.mkOption {
     default = { };

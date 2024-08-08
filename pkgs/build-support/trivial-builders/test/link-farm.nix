@@ -36,7 +36,9 @@ let
     }
   ];
 
-  linkFarmFromAttrs = linkFarm "linkFarmFromAttrs" { inherit foo hello; };
+  linkFarmFromAttrs = linkFarm "linkFarmFromAttrs" {
+    inherit foo hello;
+  };
 in
 runCommand "test-linkFarm" { } ''
   function assertPathEquals() {

@@ -55,7 +55,9 @@ in
     ];
     systemd.services.systemd-oomd.wantedBy = [ "multi-user.target" ];
 
-    environment.etc."systemd/oomd.conf".text = lib.generators.toINI { } { OOM = cfg.extraConfig; };
+    environment.etc."systemd/oomd.conf".text = lib.generators.toINI { } {
+      OOM = cfg.extraConfig;
+    };
 
     systemd.oomd.extraConfig.DefaultMemoryPressureDurationSec = lib.mkDefault "20s"; # Fedora default
 

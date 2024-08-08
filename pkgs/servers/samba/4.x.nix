@@ -72,7 +72,9 @@ let
     self = python;
     libxcrypt = libxcrypt-legacy;
   };
-  wrapPython = python3Packages.wrapPython.override { inherit python; };
+  wrapPython = python3Packages.wrapPython.override {
+    inherit python;
+  };
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "samba";
@@ -291,7 +293,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru.tests = {
     samba = nixosTests.samba;
-    pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+    pkg-config = testers.hasPkgConfigModules {
+      package = finalAttrs.finalPackage;
+    };
     version = testers.testVersion {
       command = "${finalAttrs.finalPackage}/bin/smbd -V";
       package = finalAttrs.finalPackage;

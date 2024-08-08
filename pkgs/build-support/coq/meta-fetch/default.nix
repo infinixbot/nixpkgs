@@ -5,7 +5,9 @@
 }@args:
 
 let
-  lib = import ../extra-lib.nix { inherit (args) lib; };
+  lib = import ../extra-lib.nix {
+    inherit (args) lib;
+  };
 
   inherit (lib)
     attrNames

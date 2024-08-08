@@ -50,7 +50,9 @@ let
         }
       ];
     }
-    // optionalAttrs atLeast3 { hints_directory = "${cfg.homeDir}/hints"; }
+    // optionalAttrs atLeast3 {
+      hints_directory = "${cfg.homeDir}/hints";
+    }
   );
 
   cassandraConfigWithAddresses =
@@ -164,7 +166,9 @@ in
       '';
     };
 
-    package = mkPackageOption pkgs "cassandra" { example = "cassandra_3_11"; };
+    package = mkPackageOption pkgs "cassandra" {
+      example = "cassandra_3_11";
+    };
 
     jvmOpts = mkOption {
       type = types.listOf types.str;

@@ -35,7 +35,9 @@ let
     mapAttrsToStringsSep "\n" mkSection attrsOfAttrs;
 
   configFile = pkgs.writeText "manticore.conf" (
-    toSphinx { mkKeyValue = k: v: "  ${k} = ${v}"; } cfg.settings
+    toSphinx {
+      mkKeyValue = k: v: "  ${k} = ${v}";
+    } cfg.settings
   );
 
 in
@@ -65,7 +67,9 @@ in
           <https://manual.manticoresearch.com/Server%20settings>
           for more information.
         '';
-        type = types.submodule { freeformType = format.type; };
+        type = types.submodule {
+          freeformType = format.type;
+        };
         example = literalExpression ''
           {
             searchd = {

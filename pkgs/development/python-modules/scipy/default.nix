@@ -109,7 +109,9 @@ buildPythonPackage {
     ++ lib.optionals stdenv.isDarwin [
       # Minimal version required according to:
       # https://github.com/scipy/scipy/blob/v1.14.0/scipy/meson.build#L185-L188
-      (xcbuild.override { sdkVer = "13.3"; })
+      (xcbuild.override {
+        sdkVer = "13.3";
+      })
     ];
 
   buildInputs = [

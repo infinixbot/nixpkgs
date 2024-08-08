@@ -79,7 +79,10 @@ in
   config = lib.mkIf config.services.step-ca.enable (
     let
       configFile = settingsFormat.generate "ca.json" (
-        cfg.settings // { address = cfg.address + ":" + toString cfg.port; }
+        cfg.settings
+        // {
+          address = cfg.address + ":" + toString cfg.port;
+        }
       );
     in
     {
@@ -138,7 +141,9 @@ in
 
       users.groups.step-ca = { };
 
-      networking.firewall = lib.mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.port ]; };
+      networking.firewall = lib.mkIf cfg.openFirewall {
+        allowedTCPPorts = [ cfg.port ];
+      };
     }
   );
 }

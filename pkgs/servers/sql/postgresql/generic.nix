@@ -272,7 +272,9 @@ let
       passthru =
         let
           this = self.callPackage generic args;
-          jitToggle = this.override { jitSupport = !jitSupport; };
+          jitToggle = this.override {
+            jitSupport = !jitSupport;
+          };
         in
         {
           psqlSchema = lib.versions.major version;

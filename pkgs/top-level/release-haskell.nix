@@ -20,7 +20,9 @@
 
 let
 
-  releaseLib = import ./release-lib.nix { inherit supportedSystems; };
+  releaseLib = import ./release-lib.nix {
+    inherit supportedSystems;
+  };
 
   inherit (releaseLib)
     lib
@@ -406,17 +408,22 @@ let
       };
 
       # Get some cache going for MUSL-enabled GHC.
-      pkgsMusl.haskellPackages = removePlatforms [
-        # pkgsMusl is compiled natively with musl.  It is not
-        # cross-compiled (unlike pkgsStatic).  We can only
-        # natively bootstrap GHC with musl on x86_64-linux because
-        # upstream doesn't provide a musl bindist for aarch64.
-        "aarch64-linux"
+      pkgsMusl.haskellPackages =
+        removePlatforms
+          [
+            # pkgsMusl is compiled natively with musl.  It is not
+            # cross-compiled (unlike pkgsStatic).  We can only
+            # natively bootstrap GHC with musl on x86_64-linux because
+            # upstream doesn't provide a musl bindist for aarch64.
+            "aarch64-linux"
 
-        # musl only supports linux, not darwin.
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ] { inherit (packagePlatforms pkgs.pkgsMusl.haskellPackages) hello lens random; };
+            # musl only supports linux, not darwin.
+            "x86_64-darwin"
+            "aarch64-darwin"
+          ]
+          {
+            inherit (packagePlatforms pkgs.pkgsMusl.haskellPackages) hello lens random;
+          };
 
       # Test some statically linked packages to catch regressions
       # and get some cache going for static compilation with GHC.

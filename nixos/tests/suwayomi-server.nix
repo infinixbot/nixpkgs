@@ -26,7 +26,11 @@ let
 in
 
 {
-  without-auth = makeTest (recursiveUpdate baseTestConfig { name = "suwayomi-server-without-auth"; });
+  without-auth = makeTest (
+    recursiveUpdate baseTestConfig {
+      name = "suwayomi-server-without-auth";
+    }
+  );
 
   with-auth = makeTest (
     recursiveUpdate baseTestConfig {

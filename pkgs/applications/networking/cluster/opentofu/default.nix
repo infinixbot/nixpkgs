@@ -89,13 +89,18 @@ let
         resource "random_id" "test" {}
       '';
       opentofu = package.withPlugins (p: [ p.random ]);
-      test = runCommand "opentofu-plugin-test" { buildInputs = [ opentofu ]; } ''
-        # make it fail outside of sandbox
-        export HTTP_PROXY=http://127.0.0.1:0 HTTPS_PROXY=https://127.0.0.1:0
-        cp ${mainTf} main.tf
-        tofu init
-        touch $out
-      '';
+      test =
+        runCommand "opentofu-plugin-test"
+          {
+            buildInputs = [ opentofu ];
+          }
+          ''
+            # make it fail outside of sandbox
+            export HTTP_PROXY=http://127.0.0.1:0 HTTPS_PROXY=https://127.0.0.1:0
+            cp ${mainTf} main.tf
+            tofu init
+            touch $out
+          '';
     in
     test;
 

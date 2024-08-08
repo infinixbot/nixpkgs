@@ -988,5 +988,9 @@ in
         # This is the only `fetchGit` parameter that makes sense in this context.
         # We can't just pass `submodules = recurseSubmodules` here because
         # this would fail for Nix versions that don't support `submodules`.
-        (lib.optionalAttrs recurseSubmodules { submodules = true; });
+        (
+          lib.optionalAttrs recurseSubmodules {
+            submodules = true;
+          }
+        );
 }

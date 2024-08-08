@@ -285,7 +285,9 @@ in
         };
       };
 
-      users.groups = lib.optionalAttrs (cfg.group == defaultUser) { "${defaultUser}" = { }; };
+      users.groups = lib.optionalAttrs (cfg.group == defaultUser) {
+        "${defaultUser}" = { };
+      };
 
       systemd.services.slskd = {
         description = "A modern client-server application for the Soulseek file sharing network";

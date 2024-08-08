@@ -344,7 +344,10 @@ let
         }
       );
     in
-    server // { inherit client server; };
+    server
+    // {
+      inherit client server;
+    };
 in
 self: {
   # see https://mariadb.org/about/#maintenance-policy for EOLs

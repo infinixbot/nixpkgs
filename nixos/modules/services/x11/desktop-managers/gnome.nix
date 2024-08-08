@@ -245,7 +245,10 @@ in
         in
         assert (lib.assertMsg namesAreUnique "Flashback WM names must be unique.");
         map (
-          wm: pkgs.gnome.gnome-flashback.mkSessionForWm { inherit (wm) wmName wmLabel wmCommand; }
+          wm:
+          pkgs.gnome.gnome-flashback.mkSessionForWm {
+            inherit (wm) wmName wmLabel wmCommand;
+          }
         ) flashbackWms;
 
       security.pam.services.gnome-flashback = {
@@ -260,7 +263,9 @@ in
         with pkgs.gnome;
         [
           gnome-flashback
-          (gnome-panel-with-modules.override { panelModulePackages = cfg.flashback.panelModulePackages; })
+          (gnome-panel-with-modules.override {
+            panelModulePackages = cfg.flashback.panelModulePackages;
+          })
         ]
         # For /share/applications/${wmName}.desktop
         ++ (map (

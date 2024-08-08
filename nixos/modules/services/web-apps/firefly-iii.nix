@@ -450,7 +450,9 @@ in
           home = cfg.dataDir;
         };
       };
-      groups = mkIf (group == defaultGroup) { ${defaultGroup} = { }; };
+      groups = mkIf (group == defaultGroup) {
+        ${defaultGroup} = { };
+      };
     };
   };
 }

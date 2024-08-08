@@ -80,7 +80,9 @@ in
           Restart = "always";
         };
 
-        unitConfig = optionalAttrs cfg.startWithGraphical { After = "graphical-session.target"; };
+        unitConfig = optionalAttrs cfg.startWithGraphical {
+          After = "graphical-session.target";
+        };
       }
       // optionalAttrs cfg.enable {
         wantedBy = if cfg.startWithGraphical then [ "graphical-session.target" ] else [ "default.target" ];

@@ -110,7 +110,11 @@ import ./make-test-python.nix (
               };
 
               http.services.simplehttp = {
-                loadBalancer.servers = [ { url = "http://localhost:8000"; } ];
+                loadBalancer.servers = [
+                  {
+                    url = "http://localhost:8000";
+                  }
+                ];
               };
 
               http.routers.authelia = {
@@ -121,7 +125,11 @@ import ./make-test-python.nix (
               };
 
               http.services.authelia = {
-                loadBalancer.servers = [ { url = "http://localhost:9091"; } ];
+                loadBalancer.servers = [
+                  {
+                    url = "http://localhost:9091";
+                  }
+                ];
               };
             };
 

@@ -269,7 +269,9 @@ python.pkgs.buildPythonApplication rec {
   passthru = {
     inherit npmDeps python;
     plugins = lib.recurseIntoAttrs (
-      python.pkgs.callPackage ./plugins { inherit (python.pkgs) callPackage; }
+      python.pkgs.callPackage ./plugins {
+        inherit (python.pkgs) callPackage;
+      }
     );
     tests = {
       inherit (nixosTests) pretix;

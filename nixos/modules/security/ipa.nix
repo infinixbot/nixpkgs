@@ -17,11 +17,16 @@ let
     BASE ${cfg.basedn}
     TLS_CACERT /etc/ipa/ca.crt
   '';
-  nssDb = pkgs.runCommand "ipa-nssdb" { nativeBuildInputs = [ pkgs.nss.tools ]; } ''
-    mkdir -p $out
-    certutil -d $out -N --empty-password
-    certutil -d $out -A --empty-password -n "${cfg.realm} IPA CA" -t CT,C,C -i ${cfg.certificate}
-  '';
+  nssDb =
+    pkgs.runCommand "ipa-nssdb"
+      {
+        nativeBuildInputs = [ pkgs.nss.tools ];
+      }
+      ''
+        mkdir -p $out
+        certutil -d $out -N --empty-password
+        certutil -d $out -A --empty-password -n "${cfg.realm} IPA CA" -t CT,C,C -i ${cfg.certificate}
+      '';
 in
 {
   options = {

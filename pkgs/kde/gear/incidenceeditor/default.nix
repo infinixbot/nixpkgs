@@ -1,1 +1,4 @@
-{ mkKdeDerivation }: mkKdeDerivation { pname = "incidenceeditor"; }
+{ mkKdeDerivation }:
+mkKdeDerivation {
+  pname = "incidenceeditor";
+}

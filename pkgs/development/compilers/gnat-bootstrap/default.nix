@@ -76,7 +76,9 @@ stdenv.mkDerivation (
 
     version = "${gccVersion}${lib.optionalString (alireRevision != "") "-"}${alireRevision}";
 
-    src = fetchzip { inherit (versionMap.${majorVersion}) url hash; };
+    src = fetchzip {
+      inherit (versionMap.${majorVersion}) url hash;
+    };
 
     nativeBuildInputs =
       [

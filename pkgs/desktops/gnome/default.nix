@@ -69,17 +69,29 @@ lib.makeScope pkgs.newScope (
     # Needed for elementary's gala, wingpanel and greeter until support for higher versions is provided
     mutter43 = callPackage ./core/mutter/43 { };
 
-    networkmanager-openvpn = pkgs.networkmanager-openvpn.override { withGnome = true; };
+    networkmanager-openvpn = pkgs.networkmanager-openvpn.override {
+      withGnome = true;
+    };
 
-    networkmanager-vpnc = pkgs.networkmanager-vpnc.override { withGnome = true; };
+    networkmanager-vpnc = pkgs.networkmanager-vpnc.override {
+      withGnome = true;
+    };
 
-    networkmanager-openconnect = pkgs.networkmanager-openconnect.override { withGnome = true; };
+    networkmanager-openconnect = pkgs.networkmanager-openconnect.override {
+      withGnome = true;
+    };
 
-    networkmanager-fortisslvpn = pkgs.networkmanager-fortisslvpn.override { withGnome = true; };
+    networkmanager-fortisslvpn = pkgs.networkmanager-fortisslvpn.override {
+      withGnome = true;
+    };
 
-    networkmanager-l2tp = pkgs.networkmanager-l2tp.override { withGnome = true; };
+    networkmanager-l2tp = pkgs.networkmanager-l2tp.override {
+      withGnome = true;
+    };
 
-    networkmanager-iodine = pkgs.networkmanager-iodine.override { withGnome = true; };
+    networkmanager-iodine = pkgs.networkmanager-iodine.override {
+      withGnome = true;
+    };
 
     nixos-gsettings-overrides = callPackage ./nixos/gsettings-overrides { };
 

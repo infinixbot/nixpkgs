@@ -26,7 +26,9 @@ in
     };
 
     settings = lib.mkOption {
-      type = lib.types.submodule { freeformType = format.type; };
+      type = lib.types.submodule {
+        freeformType = format.type;
+      };
       default = { };
       description = ''
         Settings to write to {file}`ntp.toml`

@@ -128,7 +128,9 @@ rec {
             ;
           passAsFile = [ "text" ] ++ derivationArgs.passAsFile or [ ];
           meta =
-            lib.optionalAttrs (executable && matches != null) { mainProgram = lib.head matches; }
+            lib.optionalAttrs (executable && matches != null) {
+              mainProgram = lib.head matches;
+            }
             // meta
             // derivationArgs.meta or { };
         }

@@ -6,7 +6,9 @@
         (
           { lib, ... }:
           {
-            options.foo = lib.mkOption { default = lib.foo; };
+            options.foo = lib.mkOption {
+              default = lib.foo;
+            };
           }
         )
       ];

@@ -56,7 +56,9 @@ stdenv.mkDerivation {
   # !!! should use XML.
   inherit symlinks objects;
 
-  closureInfo = closureInfo { rootPaths = objects; };
+  closureInfo = closureInfo {
+    rootPaths = objects;
+  };
 
   extension = compressionExtension;
 }

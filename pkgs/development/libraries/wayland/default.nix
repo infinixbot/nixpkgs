@@ -120,7 +120,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru = {
     inherit withLibraries;
-    tests.pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+    tests.pkg-config = testers.hasPkgConfigModules {
+      package = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

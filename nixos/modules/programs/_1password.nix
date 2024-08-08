@@ -28,7 +28,9 @@ in
     programs._1password = {
       enable = lib.mkEnableOption "the 1Password CLI tool";
 
-      package = lib.mkPackageOption pkgs "1Password CLI" { default = [ "_1password" ]; };
+      package = lib.mkPackageOption pkgs "1Password CLI" {
+        default = [ "_1password" ];
+      };
     };
   };
 

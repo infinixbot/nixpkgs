@@ -1,1 +1,4 @@
-{ mkKdeDerivation }: mkKdeDerivation { pname = "dolphin-plugins"; }
+{ mkKdeDerivation }:
+mkKdeDerivation {
+  pname = "dolphin-plugins";
+}

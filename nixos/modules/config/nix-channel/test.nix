@@ -12,4 +12,6 @@ let
   };
 
 in
-lib.recurseIntoAttrs { inherit runShellcheck; }
+lib.recurseIntoAttrs {
+  inherit runShellcheck;
+}

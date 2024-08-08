@@ -75,8 +75,12 @@ let
           nameValuePair "40-${i.name}" {
             matchConfig.OriginalName = i.name;
             linkConfig =
-              optionalAttrs (i.macAddress != null) { MACAddress = i.macAddress; }
-              // optionalAttrs (i.mtu != null) { MTUBytes = toString i.mtu; };
+              optionalAttrs (i.macAddress != null) {
+                MACAddress = i.macAddress;
+              }
+              // optionalAttrs (i.mtu != null) {
+                MTUBytes = toString i.mtu;
+              };
           };
       in
       listToAttrs (map createNetworkLink interfaces);

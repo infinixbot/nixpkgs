@@ -14,7 +14,9 @@
 }:
 let
   # package depends on SDL2main static library
-  SDL2' = SDL2.override { withStatic = true; };
+  SDL2' = SDL2.override {
+    withStatic = true;
+  };
 in
 stdenv.mkDerivation rec {
   pname = "theforceengine";

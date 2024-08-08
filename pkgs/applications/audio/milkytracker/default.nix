@@ -71,7 +71,9 @@ stdenv.mkDerivation (finalAttrs: {
     install -Dm644 $src/resources/milkytracker.appdata $out/share/appdata/milkytracker.appdata.xml
   '';
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     description = "Music tracker application, similar to Fasttracker II";

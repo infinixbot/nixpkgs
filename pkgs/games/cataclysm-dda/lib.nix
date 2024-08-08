@@ -1,11 +1,17 @@
 { callPackage }:
 
 rec {
-  buildMod = callPackage ./builder.nix { type = "mod"; };
+  buildMod = callPackage ./builder.nix {
+    type = "mod";
+  };
 
-  buildSoundPack = callPackage ./builder.nix { type = "soundpack"; };
+  buildSoundPack = callPackage ./builder.nix {
+    type = "soundpack";
+  };
 
-  buildTileSet = callPackage ./builder.nix { type = "tileset"; };
+  buildTileSet = callPackage ./builder.nix {
+    type = "tileset";
+  };
 
   wrapCDDA = callPackage ./wrapper.nix { };
 

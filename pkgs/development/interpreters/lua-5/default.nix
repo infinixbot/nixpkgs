@@ -41,7 +41,9 @@ let
               makeScopeWithSplicing',
             }:
             let
-              luaPackagesFun = callPackage ../../../top-level/lua-packages.nix { lua = self; };
+              luaPackagesFun = callPackage ../../../top-level/lua-packages.nix {
+                lua = self;
+              };
               generatedPackages =
                 if (builtins.pathExists ../../lua-modules/generated-packages.nix) then
                   (

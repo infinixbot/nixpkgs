@@ -76,7 +76,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == name) { ${name}.gid = config.ids.gids.headphones; };
+    users.groups = optionalAttrs (cfg.group == name) {
+      ${name}.gid = config.ids.gids.headphones;
+    };
 
     systemd.services.headphones = {
       description = "Headphones Server";

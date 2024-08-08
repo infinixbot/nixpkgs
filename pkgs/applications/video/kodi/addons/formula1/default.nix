@@ -20,7 +20,9 @@ buildKodiAddon rec {
   propagatedBuildInputs = [ requests ];
 
   passthru = {
-    updateScript = addonUpdateScript { attrPath = "kodi.packages.formula1"; };
+    updateScript = addonUpdateScript {
+      attrPath = "kodi.packages.formula1";
+    };
   };
 
   meta = with lib; {

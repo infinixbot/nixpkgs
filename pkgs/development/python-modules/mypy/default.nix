@@ -43,7 +43,9 @@ buildPythonPackage rec {
     rev = "refs/tags/v${version}";
     hash = "sha256-joV+elRaAICNQHkYuYtTDjvOUkHPsRkG1OLRvdxeIHc=";
   };
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   build-system = [
     mypy-extensions

@@ -10,6 +10,8 @@
       value = if options ? set.enable then 360 else 7;
     }
     # Only define if possible.
-    // lib.optionalAttrs (options ? set.enable) { enable = true; };
+    // lib.optionalAttrs (options ? set.enable) {
+      enable = true;
+    };
 
 }

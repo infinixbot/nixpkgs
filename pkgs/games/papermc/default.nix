@@ -11,5 +11,8 @@ let
   }) versions;
 in
 lib.recurseIntoAttrs (
-  packages // { papermc = builtins.getAttr "papermc-${escapeVersion latestVersion}" packages; }
+  packages
+  // {
+    papermc = builtins.getAttr "papermc-${escapeVersion latestVersion}" packages;
+  }
 )

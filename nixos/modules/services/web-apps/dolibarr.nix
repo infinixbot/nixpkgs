@@ -364,7 +364,9 @@ in
         group = cfg.group;
       };
 
-      users.groups = optionalAttrs (cfg.group == "dolibarr") { dolibarr = { }; };
+      users.groups = optionalAttrs (cfg.group == "dolibarr") {
+        dolibarr = { };
+      };
     }
     (mkIf (cfg.nginx != null) {
       users.users."${config.services.nginx.group}".extraGroups = mkIf (cfg.nginx != null) [ cfg.group ];

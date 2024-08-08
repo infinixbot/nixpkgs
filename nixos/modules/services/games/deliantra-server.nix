@@ -155,7 +155,9 @@ in
           Group = "deliantra";
           WorkingDirectory = cfg.stateDir;
         }
-        (mkIf (cfg.stateDir == "/var/lib/deliantra") { StateDirectory = "deliantra"; })
+        (mkIf (cfg.stateDir == "/var/lib/deliantra") {
+          StateDirectory = "deliantra";
+        })
       ];
 
       # The deliantra server needs access to a bunch of files at runtime that
@@ -174,6 +176,8 @@ in
       '';
     };
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ serverPort ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ serverPort ];
+    };
   };
 }

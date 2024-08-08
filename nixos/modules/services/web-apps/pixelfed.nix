@@ -127,7 +127,11 @@ in
 
       nginx = mkOption {
         type = types.nullOr (
-          types.submodule (import ../web-servers/nginx/vhost-options.nix { inherit config lib; })
+          types.submodule (
+            import ../web-servers/nginx/vhost-options.nix {
+              inherit config lib;
+            }
+          )
         );
         default = null;
         example = lib.literalExpression ''
@@ -307,7 +311,11 @@ in
     services.postgresql = mkIf (cfg.database.createLocally && cfg.database.type == "pgsql") {
       enable = mkDefault true;
       ensureDatabases = [ cfg.database.name ];
-      ensureUsers = [ { name = user; } ];
+      ensureUsers = [
+        {
+          name = user;
+        }
+      ];
     };
 
     # Make each individual option overridable with lib.mkDefault.

@@ -381,7 +381,9 @@ let
         disabledTests = [ "test_sign_failures" ];
       };
 
-      versioningit = super.versioningit.overridePythonAttrs { doCheck = false; };
+      versioningit = super.versioningit.overridePythonAttrs {
+        doCheck = false;
+      };
 
       voluptuous = super.voluptuous.overridePythonAttrs (oldAttrs: rec {
         version = "0.13.1";

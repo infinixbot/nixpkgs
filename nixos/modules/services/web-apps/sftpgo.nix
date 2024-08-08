@@ -390,7 +390,9 @@ in
           ];
           UMask = "0077";
         })
-        (mkIf hasPrivilegedPorts { AmbientCapabilities = "CAP_NET_BIND_SERVICE"; })
+        (mkIf hasPrivilegedPorts {
+          AmbientCapabilities = "CAP_NET_BIND_SERVICE";
+        })
         (mkIf (cfg.dataDir == options.services.sftpgo.dataDir.default) {
           StateDirectory = baseNameOf cfg.dataDir;
         })

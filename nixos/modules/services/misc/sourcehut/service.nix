@@ -259,9 +259,11 @@ in
           {
             "${srvCfg.group}" = { };
           }
-          // optionalAttrs (
-            cfg.postgresql.enable && hasSuffix "0" (postgresql.settings.unix_socket_permissions or "")
-          ) { "postgres".members = [ srvCfg.user ]; }
+          // optionalAttrs
+            (cfg.postgresql.enable && hasSuffix "0" (postgresql.settings.unix_socket_permissions or ""))
+            {
+              "postgres".members = [ srvCfg.user ];
+            }
           // optionalAttrs (cfg.redis.enable && hasSuffix "0" (redis.settings.unixsocketperm or "")) {
             "redis-sourcehut-${srvsrht}".members = [ srvCfg.user ];
           };
@@ -314,7 +316,9 @@ in
       };
 
       services.sourcehut.settings = mkMerge [
-        { "${srv}.sr.ht".origin = mkDefault "https://${srv}.${cfg.settings."sr.ht".global-domain}"; }
+        {
+          "${srv}.sr.ht".origin = mkDefault "https://${srv}.${cfg.settings."sr.ht".global-domain}";
+        }
 
         (mkIf cfg.postgresql.enable {
           "${srv}.sr.ht".connection-string = mkDefault "postgresql:///${srvCfg.postgresql.database}?user=${srvCfg.user}&host=/run/postgresql";

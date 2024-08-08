@@ -48,7 +48,9 @@ let
                 {
                   Gateway = gateway.address;
                 }
-                // optionalAttrs (gateway.metric != null) { Metric = gateway.metric; }
+                // optionalAttrs (gateway.metric != null) {
+                  Metric = gateway.metric;
+                }
               )
             ];
           };
@@ -101,7 +103,9 @@ let
             Name = i.name;
             Kind = i.virtualType;
           };
-          "${i.virtualType}Config" = optionalAttrs (i.virtualOwner != null) { User = i.virtualOwner; };
+          "${i.virtualType}Config" = optionalAttrs (i.virtualOwner != null) {
+            User = i.virtualOwner;
+          };
         };
       });
       networks."40-${i.name}" = {
@@ -120,29 +124,67 @@ let
             (mkIf (route.address != null && route.prefixLength != null) {
               Destination = "${route.address}/${toString route.prefixLength}";
             })
-            (mkIf (route.options ? fastopen_no_cookie) { FastOpenNoCookie = route.options.fastopen_no_cookie; })
-            (mkIf (route.via != null) { Gateway = route.via; })
-            (mkIf (route.type != null) { Type = route.type; })
-            (mkIf (route.options ? onlink) { GatewayOnLink = true; })
-            (mkIf (route.options ? initrwnd) { InitialAdvertisedReceiveWindow = route.options.initrwnd; })
-            (mkIf (route.options ? initcwnd) { InitialCongestionWindow = route.options.initcwnd; })
-            (mkIf (route.options ? pref) { IPv6Preference = route.options.pref; })
-            (mkIf (route.options ? mtu) { MTUBytes = route.options.mtu; })
-            (mkIf (route.options ? metric) { Metric = route.options.metric; })
-            (mkIf (route.options ? src) { PreferredSource = route.options.src; })
-            (mkIf (route.options ? protocol) { Protocol = route.options.protocol; })
-            (mkIf (route.options ? quickack) { QuickAck = route.options.quickack; })
-            (mkIf (route.options ? scope) { Scope = route.options.scope; })
-            (mkIf (route.options ? from) { Source = route.options.from; })
-            (mkIf (route.options ? table) { Table = route.options.table; })
-            (mkIf (route.options ? advmss) { TCPAdvertisedMaximumSegmentSize = route.options.advmss; })
-            (mkIf (route.options ? ttl-propagate) { TTLPropagate = route.options.ttl-propagate == "enabled"; })
+            (mkIf (route.options ? fastopen_no_cookie) {
+              FastOpenNoCookie = route.options.fastopen_no_cookie;
+            })
+            (mkIf (route.via != null) {
+              Gateway = route.via;
+            })
+            (mkIf (route.type != null) {
+              Type = route.type;
+            })
+            (mkIf (route.options ? onlink) {
+              GatewayOnLink = true;
+            })
+            (mkIf (route.options ? initrwnd) {
+              InitialAdvertisedReceiveWindow = route.options.initrwnd;
+            })
+            (mkIf (route.options ? initcwnd) {
+              InitialCongestionWindow = route.options.initcwnd;
+            })
+            (mkIf (route.options ? pref) {
+              IPv6Preference = route.options.pref;
+            })
+            (mkIf (route.options ? mtu) {
+              MTUBytes = route.options.mtu;
+            })
+            (mkIf (route.options ? metric) {
+              Metric = route.options.metric;
+            })
+            (mkIf (route.options ? src) {
+              PreferredSource = route.options.src;
+            })
+            (mkIf (route.options ? protocol) {
+              Protocol = route.options.protocol;
+            })
+            (mkIf (route.options ? quickack) {
+              QuickAck = route.options.quickack;
+            })
+            (mkIf (route.options ? scope) {
+              Scope = route.options.scope;
+            })
+            (mkIf (route.options ? from) {
+              Source = route.options.from;
+            })
+            (mkIf (route.options ? table) {
+              Table = route.options.table;
+            })
+            (mkIf (route.options ? advmss) {
+              TCPAdvertisedMaximumSegmentSize = route.options.advmss;
+            })
+            (mkIf (route.options ? ttl-propagate) {
+              TTLPropagate = route.options.ttl-propagate == "enabled";
+            })
           ]
         );
         networkConfig.IPv6PrivacyExtensions = "kernel";
         linkConfig =
-          optionalAttrs (i.macAddress != null) { MACAddress = i.macAddress; }
-          // optionalAttrs (i.mtu != null) { MTUBytes = toString i.mtu; };
+          optionalAttrs (i.macAddress != null) {
+            MACAddress = i.macAddress;
+          }
+          // optionalAttrs (i.mtu != null) {
+            MTUBytes = toString i.mtu;
+          };
       };
     })
   );
@@ -244,7 +286,9 @@ in
       networking.dhcpcd.enable = mkDefault false;
 
       systemd.network = mkMerge [
-        { enable = true; }
+        {
+          enable = true;
+        }
         defaultGateways
         (genericDhcpNetworks false)
         interfaceNetworks
@@ -373,10 +417,14 @@ in
                 # unfortunately networkd cannot encode dependencies of netdevs on addresses/routes,
                 # so we cannot specify Local=, Peer=, PeerPort=. this looks like a missing feature
                 # in networkd.
-                fooOverUDPConfig = {
-                  Port = fou.port;
-                  Encapsulation = if fou.protocol != null then "FooOverUDP" else "GenericUDPEncapsulation";
-                } // (optionalAttrs (fou.protocol != null) { Protocol = fou.protocol; });
+                fooOverUDPConfig =
+                  {
+                    Port = fou.port;
+                    Encapsulation = if fou.protocol != null then "FooOverUDP" else "GenericUDPEncapsulation";
+                  }
+                  // (optionalAttrs (fou.protocol != null) {
+                    Protocol = fou.protocol;
+                  });
               };
             }
           )
@@ -390,9 +438,15 @@ in
                   Kind = "sit";
                 };
                 tunnelConfig =
-                  (optionalAttrs (sit.remote != null) { Remote = sit.remote; })
-                  // (optionalAttrs (sit.local != null) { Local = sit.local; })
-                  // (optionalAttrs (sit.ttl != null) { TTL = sit.ttl; })
+                  (optionalAttrs (sit.remote != null) {
+                    Remote = sit.remote;
+                  })
+                  // (optionalAttrs (sit.local != null) {
+                    Local = sit.local;
+                  })
+                  // (optionalAttrs (sit.ttl != null) {
+                    TTL = sit.ttl;
+                  })
                   // (optionalAttrs (sit.encapsulation != null) (
                     {
                       FooOverUDP = true;
@@ -421,9 +475,15 @@ in
                   Kind = gre.type;
                 };
                 tunnelConfig =
-                  (optionalAttrs (gre.remote != null) { Remote = gre.remote; })
-                  // (optionalAttrs (gre.local != null) { Local = gre.local; })
-                  // (optionalAttrs (gre.ttl != null) { TTL = gre.ttl; });
+                  (optionalAttrs (gre.remote != null) {
+                    Remote = gre.remote;
+                  })
+                  // (optionalAttrs (gre.local != null) {
+                    Local = gre.local;
+                  })
+                  // (optionalAttrs (gre.ttl != null) {
+                    TTL = gre.ttl;
+                  });
               };
               networks = mkIf (gre.dev != null) {
                 "40-${gre.dev}" = {

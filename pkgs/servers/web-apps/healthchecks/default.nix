@@ -8,7 +8,9 @@
 let
   py = python3.override {
     self = py;
-    packageOverrides = final: prev: { django = prev.django_5; };
+    packageOverrides = final: prev: {
+      django = prev.django_5;
+    };
   };
 in
 py.pkgs.buildPythonApplication rec {

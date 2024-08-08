@@ -32,7 +32,9 @@
 }:
 
 let
-  release-lib = import ./release-lib.nix { inherit supportedSystems scrubJobs nixpkgsArgs; };
+  release-lib = import ./release-lib.nix {
+    inherit supportedSystems scrubJobs nixpkgsArgs;
+  };
 
   inherit (release-lib)
     all
@@ -188,7 +190,10 @@ in
 
   # Test some cross builds to the Sheevaplug
   crossSheevaplugLinux = mapTestOnCross systems.examples.sheevaplug (
-    linuxCommon // { ubootSheevaplug = nativePlatforms; }
+    linuxCommon
+    // {
+      ubootSheevaplug = nativePlatforms;
+    }
   );
 
   # Test some cross builds on 32 bit mingw-w64

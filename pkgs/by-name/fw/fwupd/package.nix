@@ -102,7 +102,9 @@ let
         hash = "sha256-d4qG3fKyxkfN91AplRYqARFz+aRr+R37BpE450bPxi0=";
         passthru = {
           inherit src version; # For update script
-          updateScript = unstableGitUpdater { url = "${test-firmware.meta.homepage}.git"; };
+          updateScript = unstableGitUpdater {
+            url = "${test-firmware.meta.homepage}.git";
+          };
         };
       };
     in
@@ -239,7 +241,9 @@ stdenv.mkDerivation (finalAttrs: {
   # Fontconfig error: Cannot load default config file
   FONTCONFIG_FILE =
     let
-      fontsConf = makeFontsConf { fontDirectories = [ freefont_ttf ]; };
+      fontsConf = makeFontsConf {
+        fontDirectories = [ freefont_ttf ];
+      };
     in
     fontsConf;
 

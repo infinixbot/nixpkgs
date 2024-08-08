@@ -57,7 +57,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "glycin-loaders"; };
+    updateScript = gnome.updateScript {
+      packageName = "glycin-loaders";
+    };
 
     glycinPathsPatch = substituteAll {
       src = ./fix-glycin-paths.patch;

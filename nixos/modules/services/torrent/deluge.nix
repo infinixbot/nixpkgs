@@ -282,7 +282,9 @@ in
         allowedTCPPortRanges = singleton (listToRange (cfg.config.listen_ports or listenPortsDefault));
         allowedUDPPortRanges = singleton (listToRange (cfg.config.listen_ports or listenPortsDefault));
       })
-      (mkIf (cfg.web.openFirewall) { allowedTCPPorts = [ cfg.web.port ]; })
+      (mkIf (cfg.web.openFirewall) {
+        allowedTCPPorts = [ cfg.web.port ];
+      })
     ];
 
     environment.systemPackages = [ cfg.package ];

@@ -82,7 +82,9 @@ in
     namespaces = mkOption {
       description = "Configure the 'namespaces' section of the registration.yml for the bridge and the server";
       # TODO link to Matrix documentation of the format
-      type = types.submodule { freeformType = jsonType; };
+      type = types.submodule {
+        freeformType = jsonType;
+      };
 
       default = {
         users = [

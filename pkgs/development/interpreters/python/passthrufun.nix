@@ -146,7 +146,9 @@ rec {
       pythonOnBuildForHost_overridden;
   pythonOnBuildForHost = pythonOnBuildForHost_overridden;
 
-  tests = callPackage ./tests.nix { python = self; };
+  tests = callPackage ./tests.nix {
+    python = self;
+  };
 
   inherit pythonAttr;
 }

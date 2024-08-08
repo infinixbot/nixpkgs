@@ -390,6 +390,8 @@ in
         };
       };
 
-      users.groups = lib.optionalAttrs (cfg.group == "openldap") { openldap = { }; };
+      users.groups = lib.optionalAttrs (cfg.group == "openldap") {
+        openldap = { };
+      };
     };
 }

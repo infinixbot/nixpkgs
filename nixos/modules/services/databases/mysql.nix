@@ -351,7 +351,9 @@ in
           "mysql"
         ];
       })
-      (mkIf (!isMariaDB) { plugin-load-add = "auth_socket.so"; })
+      (mkIf (!isMariaDB) {
+        plugin-load-add = "auth_socket.so";
+      })
     ];
 
     users.users = optionalAttrs (cfg.user == "mysql") {
@@ -362,7 +364,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == "mysql") { mysql.gid = config.ids.gids.mysql; };
+    users.groups = optionalAttrs (cfg.group == "mysql") {
+      mysql.gid = config.ids.gids.mysql;
+    };
 
     environment.systemPackages = [ cfg.package ];
 

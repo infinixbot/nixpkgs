@@ -26,7 +26,9 @@ buildKodiAddon rec {
   ];
 
   passthru = {
-    updateScript = addonUpdateScript { attrPath = "kodi.packages.skyvideoitalia"; };
+    updateScript = addonUpdateScript {
+      attrPath = "kodi.packages.skyvideoitalia";
+    };
   };
 
   meta = with lib; {

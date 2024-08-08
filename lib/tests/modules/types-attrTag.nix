@@ -14,18 +14,28 @@ in
     intStrings = mkOption {
       type = types.attrsOf (
         types.attrTag {
-          left = mkOption { type = types.int; };
-          right = mkOption { type = types.str; };
+          left = mkOption {
+            type = types.int;
+          };
+          right = mkOption {
+            type = types.str;
+          };
         }
       );
     };
     nested = mkOption {
       type = types.attrTag {
-        left = mkOption { type = types.int; };
+        left = mkOption {
+          type = types.int;
+        };
         right = mkOption {
           type = types.attrTag {
-            left = mkOption { type = types.int; };
-            right = mkOption { type = types.str; };
+            left = mkOption {
+              type = types.int;
+            };
+            right = mkOption {
+              type = types.str;
+            };
           };
         };
       };
@@ -33,8 +43,12 @@ in
     merged = mkOption {
       type = types.attrsOf (
         types.attrTag {
-          yay = mkOption { type = types.int; };
-          extensible = mkOption { type = types.enum [ "foo" ]; };
+          yay = mkOption {
+            type = types.int;
+          };
+          extensible = mkOption {
+            type = types.enum [ "foo" ];
+          };
         }
       );
     };
@@ -44,7 +58,9 @@ in
           foo = mkOption {
             type = types.submodule {
               options = {
-                bar = mkOption { type = types.int; };
+                bar = mkOption {
+                  type = types.int;
+                };
               };
             };
           };
@@ -63,8 +79,12 @@ in
       options.merged = mkOption {
         type = types.attrsOf (
           types.attrTag {
-            nay = mkOption { type = types.bool; };
-            extensible = mkOption { type = types.enum [ "bar" ]; };
+            nay = mkOption {
+              type = types.bool;
+            };
+            extensible = mkOption {
+              type = types.enum [ "bar" ];
+            };
           }
         );
       };

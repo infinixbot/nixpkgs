@@ -58,8 +58,12 @@
   gst-vaapi = callPackage ./vaapi { };
 
   icamerasrc-ipu6 = callPackage ./icamerasrc { };
-  icamerasrc-ipu6ep = callPackage ./icamerasrc { ipu6-camera-hal = ipu6ep-camera-hal; };
-  icamerasrc-ipu6epmtl = callPackage ./icamerasrc { ipu6-camera-hal = ipu6epmtl-camera-hal; };
+  icamerasrc-ipu6ep = callPackage ./icamerasrc {
+    ipu6-camera-hal = ipu6ep-camera-hal;
+  };
+  icamerasrc-ipu6epmtl = callPackage ./icamerasrc {
+    ipu6-camera-hal = ipu6epmtl-camera-hal;
+  };
 
   # note: gst-python is in ../../python-modules/gst-python - called under python3Packages
 }

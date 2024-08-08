@@ -34,7 +34,11 @@ in
       package = lib.mkOption {
         type = lib.types.package;
         default = pkgs.discourse;
-        apply = p: p.override { plugins = lib.unique (p.enabledPlugins ++ cfg.plugins); };
+        apply =
+          p:
+          p.override {
+            plugins = lib.unique (p.enabledPlugins ++ cfg.plugins);
+          };
         defaultText = lib.literalExpression "pkgs.discourse";
         description = ''
           The discourse package to use.

@@ -29,7 +29,9 @@ let
 
   settingsFormat = (
     pkgs.formats.keyValue {
-      mkKeyValue = mkKeyValueTinyproxy { mkValueString = mkValueStringTinyproxy; } " ";
+      mkKeyValue = mkKeyValueTinyproxy {
+        mkValueString = mkValueStringTinyproxy;
+      } " ";
       listsAsDuplicateKeys = true;
     }
   );

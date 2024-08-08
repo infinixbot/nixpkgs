@@ -223,7 +223,9 @@ let
         type = with types; listOf (submodule listenOptions);
         default = [ ];
         example = [
-          { address = "192.168.50.1"; }
+          {
+            address = "192.168.50.1";
+          }
           {
             address = "::1";
             port = 5923;

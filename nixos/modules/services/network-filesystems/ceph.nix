@@ -86,7 +86,9 @@ let
           RestartSec = "20s";
           PrivateDevices = "no"; # osd needs disk access
         }
-        // optionalAttrs (daemonType == "mon") { RestartSec = "10"; };
+        // optionalAttrs (daemonType == "mon") {
+          RestartSec = "10";
+        };
     };
 
   makeTarget = daemonType: {

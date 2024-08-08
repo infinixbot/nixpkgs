@@ -100,7 +100,9 @@ buildPythonApplication rec {
 
   __darwinAllowLocalNetworking = true;
 
-  passthru.tests.version = testers.testVersion { package = pdm; };
+  passthru.tests.version = testers.testVersion {
+    package = pdm;
+  };
 
   passthru.updateScript = nix-update-script { };
 

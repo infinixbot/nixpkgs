@@ -82,7 +82,9 @@ stdenv.mkDerivation {
 
   passthru.updateScript = ./update.sh;
 
-  passthru.tests.version = testers.testVersion { package = _1password; };
+  passthru.tests.version = testers.testVersion {
+    package = _1password;
+  };
 
   meta = with lib; {
     description = "1Password command-line tool";

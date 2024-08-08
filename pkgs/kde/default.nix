@@ -30,7 +30,13 @@ let
       allUrls = lib.attrsets.mergeAttrsList (map loadUrls sets);
 
       sources = lib.mapAttrs (
-        _: v: (fetchurl { inherit (v) url hash; }) // { inherit (v) version; }
+        _: v:
+        (fetchurl {
+          inherit (v) url hash;
+        })
+        // {
+          inherit (v) version;
+        }
       ) allUrls;
     in
     (

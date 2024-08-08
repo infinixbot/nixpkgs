@@ -54,7 +54,9 @@ stdenv.mkDerivation {
   pname = "ovftool";
   inherit (ovftoolSystem) version;
 
-  src = fetchurl { inherit (ovftoolSystem) name url hash; };
+  src = fetchurl {
+    inherit (ovftoolSystem) name url hash;
+  };
 
   buildInputs =
     [

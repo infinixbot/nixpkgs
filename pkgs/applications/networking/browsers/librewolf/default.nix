@@ -42,7 +42,9 @@ in
     mainProgram = "librewolf";
   };
   tests = [ nixosTests.librewolf ];
-  updateScript = callPackage ./update.nix { attrPath = "librewolf-unwrapped"; };
+  updateScript = callPackage ./update.nix {
+    attrPath = "librewolf-unwrapped";
+  };
 }).override
   {
     crashreporterSupport = false;

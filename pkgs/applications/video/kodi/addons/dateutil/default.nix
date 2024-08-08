@@ -21,7 +21,9 @@ buildKodiAddon rec {
 
   passthru = {
     pythonPath = "lib";
-    updateScript = addonUpdateScript { attrPath = "kodi.packages.dateutil"; };
+    updateScript = addonUpdateScript {
+      attrPath = "kodi.packages.dateutil";
+    };
   };
 
   meta = with lib; {

@@ -29,7 +29,9 @@ in
       '';
     };
     settings = lib.mkOption {
-      type = lib.types.submodule { freeformType = settingsFormat.type; };
+      type = lib.types.submodule {
+        freeformType = settingsFormat.type;
+      };
       default = {
         app = {
           listen = "127.0.0.1:8050";

@@ -41,7 +41,9 @@ buildGoModule rec {
   doCheck = !stdenv.isDarwin;
 
   passthru.tests = {
-    version = testers.testVersion { package = static-server; };
+    version = testers.testVersion {
+      package = static-server;
+    };
   };
 
   __darwinAllowLocalNetworking = true;

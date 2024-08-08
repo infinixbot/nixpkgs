@@ -49,7 +49,9 @@ in
           }
         ];
 
-        keyGenerator = mkDefault { type = "phonetic"; };
+        keyGenerator = mkDefault {
+          type = "phonetic";
+        };
 
         rateLimits = {
           categories = {
@@ -60,7 +62,9 @@ in
           };
         };
 
-        storage = mkDefault { type = "file"; };
+        storage = mkDefault {
+          type = "file";
+        };
 
         documents = {
           about = mkDefault "${pkg}/share/haste-server/about.md";

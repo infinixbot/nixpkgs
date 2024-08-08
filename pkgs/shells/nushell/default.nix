@@ -83,7 +83,9 @@ rustPlatform.buildRustPackage {
 
   passthru = {
     shellPath = "/bin/nu";
-    tests.version = testers.testVersion { package = nushell; };
+    tests.version = testers.testVersion {
+      package = nushell;
+    };
     updateScript = nix-update-script { };
   };
 

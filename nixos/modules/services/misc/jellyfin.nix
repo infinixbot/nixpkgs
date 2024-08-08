@@ -182,7 +182,9 @@ in
       };
     };
 
-    users.groups = mkIf (cfg.group == "jellyfin") { jellyfin = { }; };
+    users.groups = mkIf (cfg.group == "jellyfin") {
+      jellyfin = { };
+    };
 
     networking.firewall = mkIf cfg.openFirewall {
       # from https://jellyfin.org/docs/general/networking/index.html

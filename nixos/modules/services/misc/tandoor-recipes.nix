@@ -18,7 +18,9 @@ let
       DEBUG_TOOLBAR = "0";
       MEDIA_ROOT = "/var/lib/tandoor-recipes";
     }
-    // optionalAttrs (config.time.timeZone != null) { TZ = config.time.timeZone; }
+    // optionalAttrs (config.time.timeZone != null) {
+      TZ = config.time.timeZone;
+    }
     // (lib.mapAttrs (_: toString) cfg.extraConfig);
 
   manage = pkgs.writeShellScript "manage" ''

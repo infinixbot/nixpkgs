@@ -818,7 +818,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == "wwwrun") { wwwrun.gid = config.ids.gids.wwwrun; };
+    users.groups = optionalAttrs (cfg.group == "wwwrun") {
+      wwwrun.gid = config.ids.gids.wwwrun;
+    };
 
     security.acme.certs =
       let

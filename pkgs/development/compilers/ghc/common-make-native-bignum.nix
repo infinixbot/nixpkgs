@@ -232,7 +232,9 @@ stdenv.mkDerivation (
     pname = "${targetPrefix}ghc${variantSuffix}";
     inherit version;
 
-    src = fetchurl { inherit url sha256; };
+    src = fetchurl {
+      inherit url sha256;
+    };
 
     enableParallelBuilding = true;
 

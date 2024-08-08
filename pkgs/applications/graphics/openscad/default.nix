@@ -158,10 +158,15 @@ mkDerivation rec {
   };
 
   passthru.tests = {
-    lib3mf_support = runCommand "${pname}-lib3mf-support-test" { nativeBuildInputs = [ openscad ]; } ''
-      echo "cube([1, 1, 1]);" | openscad -o cube.3mf -
-      echo "import(\"cube.3mf\");" | openscad -o cube-import.3mf -
-      mv cube-import.3mf $out
-    '';
+    lib3mf_support =
+      runCommand "${pname}-lib3mf-support-test"
+        {
+          nativeBuildInputs = [ openscad ];
+        }
+        ''
+          echo "cube([1, 1, 1]);" | openscad -o cube.3mf -
+          echo "import(\"cube.3mf\");" | openscad -o cube-import.3mf -
+          mv cube-import.3mf $out
+        '';
   };
 }

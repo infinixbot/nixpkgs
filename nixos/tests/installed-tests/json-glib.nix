@@ -1,3 +1,5 @@
 { pkgs, makeInstalledTest, ... }:
 
-makeInstalledTest { tested = pkgs.json-glib; }
+makeInstalledTest {
+  tested = pkgs.json-glib;
+}

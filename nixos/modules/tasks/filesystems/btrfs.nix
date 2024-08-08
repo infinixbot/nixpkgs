@@ -69,7 +69,9 @@ in
   };
 
   config = mkMerge [
-    (mkIf enableBtrfs { system.fsPackages = [ pkgs.btrfs-progs ]; })
+    (mkIf enableBtrfs {
+      system.fsPackages = [ pkgs.btrfs-progs ];
+    })
 
     (mkIf inInitrd {
       boot.initrd.kernelModules = [ "btrfs" ];

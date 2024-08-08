@@ -26,7 +26,9 @@ crystal.buildCrystalPackage rec {
   # Tests require network access
   doCheck = false;
 
-  passthru.tests.version = testers.testVersion { package = amqpcat; };
+  passthru.tests.version = testers.testVersion {
+    package = amqpcat;
+  };
 
   meta = with lib; {
     description = "CLI tool for publishing to and consuming from AMQP servers";

@@ -105,13 +105,17 @@ makeScope newScope (
 
     ga = callPackage ../development/octave-modules/ga { };
 
-    general = callPackage ../development/octave-modules/general { nettle = pkgs.nettle; };
+    general = callPackage ../development/octave-modules/general {
+      nettle = pkgs.nettle;
+    };
 
     generate_html = callPackage ../development/octave-modules/generate_html { };
 
     geometry = callPackage ../development/octave-modules/geometry { };
 
-    gsl = callPackage ../development/octave-modules/gsl { inherit (pkgs) gsl; };
+    gsl = callPackage ../development/octave-modules/gsl {
+      inherit (pkgs) gsl;
+    };
 
     image = callPackage ../development/octave-modules/image { };
 
@@ -119,7 +123,9 @@ makeScope newScope (
 
     instrument-control = callPackage ../development/octave-modules/instrument-control { };
 
-    io = callPackage ../development/octave-modules/io { inherit (octave) enableJava; };
+    io = callPackage ../development/octave-modules/io {
+      inherit (octave) enableJava;
+    };
 
     interval = callPackage ../development/octave-modules/interval { };
 
@@ -156,7 +162,9 @@ makeScope newScope (
 
     ncarray = callPackage ../development/octave-modules/ncarray { };
 
-    netcdf = callPackage ../development/octave-modules/netcdf { inherit (pkgs) netcdf; };
+    netcdf = callPackage ../development/octave-modules/netcdf {
+      inherit (pkgs) netcdf;
+    };
 
     nurbs = callPackage ../development/octave-modules/nurbs { };
 
@@ -194,7 +202,9 @@ makeScope newScope (
 
     struct = callPackage ../development/octave-modules/struct { };
 
-    symbolic = callPackage ../development/octave-modules/symbolic { inherit (octave) python; };
+    symbolic = callPackage ../development/octave-modules/symbolic {
+      inherit (octave) python;
+    };
 
     tisean = callPackage ../development/octave-modules/tisean { };
 
@@ -208,11 +218,15 @@ makeScope newScope (
 
     video = callPackage ../development/octave-modules/video { };
 
-    vrml = callPackage ../development/octave-modules/vrml { freewrl = null; };
+    vrml = callPackage ../development/octave-modules/vrml {
+      freewrl = null;
+    };
 
     windows = callPackage ../development/octave-modules/windows { };
 
-    zeromq = callPackage ../development/octave-modules/zeromq { inherit (pkgs) zeromq autoreconfHook; };
+    zeromq = callPackage ../development/octave-modules/zeromq {
+      inherit (pkgs) zeromq autoreconfHook;
+    };
 
   }
 )

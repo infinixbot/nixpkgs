@@ -110,7 +110,9 @@ stdenv.mkDerivation (finalAttrs: {
             (x: {
               inherit (x) f;
               p = x.p // {
-                src = applyPatches { inherit (x.p) src patches; };
+                src = applyPatches {
+                  inherit (x.p) src patches;
+                };
               };
             })
             [

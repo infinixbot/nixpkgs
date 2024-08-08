@@ -11,7 +11,9 @@
 }:
 
 let
-  jdk = jdk21.override { enableJavaFX = true; };
+  jdk = jdk21.override {
+    enableJavaFX = true;
+  };
 in
 maven.buildMavenPackage rec {
   pname = "scenebuilder";

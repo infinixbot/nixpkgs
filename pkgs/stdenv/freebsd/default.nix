@@ -82,7 +82,9 @@ let
       shell = "bin/bash";
       shellPath = "/bin/bash";
     };
-    curl = linkBootstrap { paths = [ "bin/curl" ]; };
+    curl = linkBootstrap {
+      paths = [ "bin/curl" ];
+    };
     llvmPackages = {
       clang-unwrapped = linkBootstrap {
         paths = [

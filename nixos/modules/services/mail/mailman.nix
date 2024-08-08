@@ -59,7 +59,9 @@ let
   '';
 
   mailmanCfg = lib.generators.toINI { } (
-    recursiveUpdate cfg.settings { webservice.admin_pass = "#NIXOS_MAILMAN_REST_API_PASS_SECRET#"; }
+    recursiveUpdate cfg.settings {
+      webservice.admin_pass = "#NIXOS_MAILMAN_REST_API_PASS_SECRET#";
+    }
   );
 
   mailmanCfgFile = pkgs.writeText "mailman-raw.cfg" mailmanCfg;

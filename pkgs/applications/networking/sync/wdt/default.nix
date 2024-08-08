@@ -44,7 +44,9 @@ stdenv.mkDerivation {
   cmakeFlags = [ "-DWDT_USE_SYSTEM_FOLLY=ON" ];
 
   passthru = {
-    updateScript = unstableGitUpdater { tagPrefix = "v"; };
+    updateScript = unstableGitUpdater {
+      tagPrefix = "v";
+    };
   };
 
   meta = with lib; {

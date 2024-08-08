@@ -12,7 +12,9 @@ let
 
   settingsFormat = pkgs.formats.keyValue { };
 
-  configFormat = pkgs.formats.ini { mkKeyValue = generators.mkKeyValueDefault { } " = "; };
+  configFormat = pkgs.formats.ini {
+    mkKeyValue = generators.mkKeyValueDefault { } " = ";
+  };
 
   mkJailConfig =
     name: attrs:
@@ -102,7 +104,9 @@ in
         '';
       };
 
-      package = mkPackageOption pkgs "fail2ban" { example = "fail2ban_0_11"; };
+      package = mkPackageOption pkgs "fail2ban" {
+        example = "fail2ban_0_11";
+      };
 
       packageFirewall = mkOption {
         default = config.networking.firewall.package;

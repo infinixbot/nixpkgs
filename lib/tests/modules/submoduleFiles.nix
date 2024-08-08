@@ -9,7 +9,9 @@
           {
             options.value = lib.mkOption { };
 
-            options.internalFiles = lib.mkOption { default = options.value.files; };
+            options.internalFiles = lib.mkOption {
+              default = options.value.files;
+            };
           }
         )
       ];

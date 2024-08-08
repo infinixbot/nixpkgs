@@ -175,7 +175,9 @@ in
       wireless = {
         enable = lib.mkIf (!enableIwd) true;
         dbusControlled = true;
-        iwd = lib.mkIf enableIwd { enable = true; };
+        iwd = lib.mkIf enableIwd {
+          enable = true;
+        };
       };
       networkmanager.enable = false;
     };

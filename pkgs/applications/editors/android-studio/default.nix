@@ -9,7 +9,9 @@ let
   mkStudio =
     opts:
     callPackage (import ./common.nix opts) {
-      fontsConf = makeFontsConf { fontDirectories = [ ]; };
+      fontsConf = makeFontsConf {
+        fontDirectories = [ ];
+      };
       inherit buildFHSEnv;
       inherit tiling_wm;
     };

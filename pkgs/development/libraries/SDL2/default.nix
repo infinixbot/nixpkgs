@@ -217,7 +217,9 @@ stdenv.mkDerivation (finalAttrs: {
         "release-(.*)"
       ];
     };
-    tests.pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+    tests.pkg-config = testers.hasPkgConfigModules {
+      package = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

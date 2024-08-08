@@ -62,7 +62,9 @@ in
         See <https://grafana.com/docs/agent/latest/configuration/>
       '';
 
-      type = types.submodule { freeformType = settingsFormat.type; };
+      type = types.submodule {
+        freeformType = settingsFormat.type;
+      };
 
       default = { };
       defaultText = lib.literalExpression ''

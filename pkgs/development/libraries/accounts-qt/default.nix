@@ -41,7 +41,9 @@ stdenv.mkDerivation (finalAttrs: {
     patchelf --shrink-rpath --allowed-rpath-prefixes "$NIX_STORE" "$out"/bin/*
   '';
 
-  passthru.updateScript = gitUpdater { rev-prefix = "VERSION_"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "VERSION_";
+  };
 
   meta = with lib; {
     description = "Qt library for accessing the online accounts database";

@@ -51,7 +51,9 @@ python3Packages.buildPythonApplication rec {
   ];
 
   passthru.tests = {
-    version = testers.testVersion { package = afew; };
+    version = testers.testVersion {
+      package = afew;
+    };
   };
 
   meta = with lib; {

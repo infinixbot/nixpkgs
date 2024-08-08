@@ -33,7 +33,14 @@ let
     pkg:
     if pkg != null then
       pkg.override (args: {
-        melpaBuild = drv: args.melpaBuild (drv // { dontConfigure = true; });
+        melpaBuild =
+          drv:
+          args.melpaBuild (
+            drv
+            // {
+              dontConfigure = true;
+            }
+          );
       })
     else
       null;
@@ -166,7 +173,9 @@ let
           # Expects bash to be at /bin/bash
           ac-rtags = fix-rtags super.ac-rtags;
 
-          airline-themes = super.airline-themes.override { inherit (self.melpaPackages) powerline; };
+          airline-themes = super.airline-themes.override {
+            inherit (self.melpaPackages) powerline;
+          };
 
           auto-complete-clang-async = super.auto-complete-clang-async.overrideAttrs (old: {
             buildInputs = old.buildInputs ++ [ pkgs.llvmPackages.llvm ];
@@ -183,7 +192,9 @@ let
 
           company-rtags = fix-rtags super.company-rtags;
 
-          easy-kill-extras = super.easy-kill-extras.override { inherit (self.melpaPackages) easy-kill; };
+          easy-kill-extras = super.easy-kill-extras.override {
+            inherit (self.melpaPackages) easy-kill;
+          };
 
           dune = dontConfigure super.dune;
 
@@ -250,7 +261,9 @@ let
             packageRequires = with self; [ evil ];
           });
 
-          ess-R-data-view = super.ess-R-data-view.override { inherit (self.melpaPackages) ess ctable popup; };
+          ess-R-data-view = super.ess-R-data-view.override {
+            inherit (self.melpaPackages) ess ctable popup;
+          };
 
           flycheck-rtags = fix-rtags super.flycheck-rtags;
 
@@ -527,7 +540,9 @@ let
           });
 
           # upstream issue: missing file header
-          mhc = super.mhc.override { inherit (self.melpaPackages) calfw; };
+          mhc = super.mhc.override {
+            inherit (self.melpaPackages) calfw;
+          };
 
           # missing .NET
           nemerle = markBroken super.nemerle;
@@ -738,7 +753,9 @@ let
               '';
           });
 
-          spaceline = super.spaceline.override { inherit (self.melpaPackages) powerline; };
+          spaceline = super.spaceline.override {
+            inherit (self.melpaPackages) powerline;
+          };
 
           vterm = super.vterm.overrideAttrs (old: {
             nativeBuildInputs = [ pkgs.cmake ];

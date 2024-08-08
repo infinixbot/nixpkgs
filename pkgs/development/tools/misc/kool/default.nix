@@ -26,7 +26,9 @@ buildGoModule rec {
   ];
 
   passthru.tests = {
-    version = testers.testVersion { package = kool; };
+    version = testers.testVersion {
+      package = kool;
+    };
   };
 
   meta = with lib; {

@@ -155,7 +155,9 @@ let
         ];
       };
 
-      tests.version = testers.testVersion { package = self; };
+      tests.version = testers.testVersion {
+        package = self;
+      };
     };
 
     meta = with lib; {

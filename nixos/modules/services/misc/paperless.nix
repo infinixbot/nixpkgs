@@ -24,15 +24,21 @@ let
       PAPERLESS_THUMBNAIL_FONT_NAME = defaultFont;
       GUNICORN_CMD_ARGS = "--bind=${cfg.address}:${toString cfg.port}";
     }
-    // optionalAttrs (config.time.timeZone != null) { PAPERLESS_TIME_ZONE = config.time.timeZone; }
-    // optionalAttrs enableRedis { PAPERLESS_REDIS = "unix://${redisServer.unixSocket}"; }
+    // optionalAttrs (config.time.timeZone != null) {
+      PAPERLESS_TIME_ZONE = config.time.timeZone;
+    }
+    // optionalAttrs enableRedis {
+      PAPERLESS_REDIS = "unix://${redisServer.unixSocket}";
+    }
     // optionalAttrs (cfg.settings.PAPERLESS_ENABLE_NLTK or true) {
       PAPERLESS_NLTK_DIR = pkgs.symlinkJoin {
         name = "paperless_ngx_nltk_data";
         paths = cfg.package.nltkData;
       };
     }
-    // optionalAttrs (cfg.openMPThreadingWorkaround) { OMP_NUM_THREADS = "1"; }
+    // optionalAttrs (cfg.openMPThreadingWorkaround) {
+      OMP_NUM_THREADS = "1";
+    }
     // (lib.mapAttrs (
       _: s:
       if (lib.isAttrs s || lib.isList s) then
@@ -316,64 +322,68 @@ in
         "${cfg.consumptionDir}".d = if cfg.consumptionDirIsPublic then { mode = "777"; } else defaultRule;
       };
 
-    systemd.services.paperless-scheduler = {
-      description = "Paperless Celery Beat";
-      wantedBy = [ "multi-user.target" ];
-      wants = [
-        "paperless-consumer.service"
-        "paperless-web.service"
-        "paperless-task-queue.service"
-      ];
-      serviceConfig = defaultServiceConfig // {
-        User = cfg.user;
-        ExecStart = "${cfg.package}/bin/celery --app paperless beat --loglevel INFO";
-        Restart = "on-failure";
-        LoadCredential = lib.optionalString (
-          cfg.passwordFile != null
-        ) "PAPERLESS_ADMIN_PASSWORD:${cfg.passwordFile}";
-      };
-      environment = env;
+    systemd.services.paperless-scheduler =
+      {
+        description = "Paperless Celery Beat";
+        wantedBy = [ "multi-user.target" ];
+        wants = [
+          "paperless-consumer.service"
+          "paperless-web.service"
+          "paperless-task-queue.service"
+        ];
+        serviceConfig = defaultServiceConfig // {
+          User = cfg.user;
+          ExecStart = "${cfg.package}/bin/celery --app paperless beat --loglevel INFO";
+          Restart = "on-failure";
+          LoadCredential = lib.optionalString (
+            cfg.passwordFile != null
+          ) "PAPERLESS_ADMIN_PASSWORD:${cfg.passwordFile}";
+        };
+        environment = env;
 
-      preStart =
-        ''
-          ln -sf ${manage} ${cfg.dataDir}/paperless-manage
+        preStart =
+          ''
+            ln -sf ${manage} ${cfg.dataDir}/paperless-manage
 
-          # Auto-migrate on first run or if the package has changed
-          versionFile="${cfg.dataDir}/src-version"
-          version=$(cat "$versionFile" 2>/dev/null || echo 0)
+            # Auto-migrate on first run or if the package has changed
+            versionFile="${cfg.dataDir}/src-version"
+            version=$(cat "$versionFile" 2>/dev/null || echo 0)
 
-          if [[ $version != ${cfg.package.version} ]]; then
-            ${cfg.package}/bin/paperless-ngx migrate
+            if [[ $version != ${cfg.package.version} ]]; then
+              ${cfg.package}/bin/paperless-ngx migrate
 
-            # Parse old version string format for backwards compatibility
-            version=$(echo "$version" | grep -ohP '[^-]+$')
+              # Parse old version string format for backwards compatibility
+              version=$(echo "$version" | grep -ohP '[^-]+$')
 
-            versionLessThan() {
-              target=$1
-              [[ $({ echo "$version"; echo "$target"; } | sort -V | head -1) != "$target" ]]
-            }
+              versionLessThan() {
+                target=$1
+                [[ $({ echo "$version"; echo "$target"; } | sort -V | head -1) != "$target" ]]
+              }
 
-            if versionLessThan 1.12.0; then
-              # Reindex documents as mentioned in https://github.com/paperless-ngx/paperless-ngx/releases/tag/v1.12.1
-              echo "Reindexing documents, to allow searching old comments. Required after the 1.12.x upgrade."
-              ${cfg.package}/bin/paperless-ngx document_index reindex
+              if versionLessThan 1.12.0; then
+                # Reindex documents as mentioned in https://github.com/paperless-ngx/paperless-ngx/releases/tag/v1.12.1
+                echo "Reindexing documents, to allow searching old comments. Required after the 1.12.x upgrade."
+                ${cfg.package}/bin/paperless-ngx document_index reindex
+              fi
+
+              echo ${cfg.package.version} > "$versionFile"
             fi
+          ''
+          + optionalString (cfg.passwordFile != null) ''
+            export PAPERLESS_ADMIN_USER="''${PAPERLESS_ADMIN_USER:-admin}"
+            export PAPERLESS_ADMIN_PASSWORD=$(cat $CREDENTIALS_DIRECTORY/PAPERLESS_ADMIN_PASSWORD)
+            superuserState="$PAPERLESS_ADMIN_USER:$PAPERLESS_ADMIN_PASSWORD"
+            superuserStateFile="${cfg.dataDir}/superuser-state"
 
-            echo ${cfg.package.version} > "$versionFile"
-          fi
-        ''
-        + optionalString (cfg.passwordFile != null) ''
-          export PAPERLESS_ADMIN_USER="''${PAPERLESS_ADMIN_USER:-admin}"
-          export PAPERLESS_ADMIN_PASSWORD=$(cat $CREDENTIALS_DIRECTORY/PAPERLESS_ADMIN_PASSWORD)
-          superuserState="$PAPERLESS_ADMIN_USER:$PAPERLESS_ADMIN_PASSWORD"
-          superuserStateFile="${cfg.dataDir}/superuser-state"
-
-          if [[ $(cat "$superuserStateFile" 2>/dev/null) != $superuserState ]]; then
-            ${cfg.package}/bin/paperless-ngx manage_superuser
-            echo "$superuserState" > "$superuserStateFile"
-          fi
-        '';
-    } // optionalAttrs enableRedis { after = [ "redis-paperless.service" ]; };
+            if [[ $(cat "$superuserStateFile" 2>/dev/null) != $superuserState ]]; then
+              ${cfg.package}/bin/paperless-ngx manage_superuser
+              echo "$superuserState" > "$superuserStateFile"
+            fi
+          '';
+      }
+      // optionalAttrs enableRedis {
+        after = [ "redis-paperless.service" ];
+      };
 
     systemd.services.paperless-task-queue = {
       description = "Paperless Celery Workers";

@@ -15,7 +15,11 @@ import ./make-test-python.nix (
             dbs = [
               {
                 path = "/var/lib/grafana/data/grafana.db";
-                replicas = [ { url = "sftp://foo:bar@127.0.0.1:22/home/foo/grafana"; } ];
+                replicas = [
+                  {
+                    url = "sftp://foo:bar@127.0.0.1:22/home/foo/grafana";
+                  }
+                ];
               }
             ];
           };

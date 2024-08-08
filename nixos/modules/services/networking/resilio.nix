@@ -47,7 +47,9 @@ let
           // (optionalAttrs (cfg.httpPass != "") { password = cfg.httpPass; })
           // (optionalAttrs (cfg.apiKey != "") { api_key = cfg.apiKey; });
       }
-      // optionalAttrs (sharedFoldersRecord != [ ]) { shared_folders = sharedFoldersRecord; }
+      // optionalAttrs (sharedFoldersRecord != [ ]) {
+        shared_folders = sharedFoldersRecord;
+      }
     )
   );
 

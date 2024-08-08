@@ -104,7 +104,10 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   passthru = {
-    updateScript = gitUpdater { };
+    updateScript =
+      gitUpdater
+        {
+        };
   };
 
   meta = with lib; {

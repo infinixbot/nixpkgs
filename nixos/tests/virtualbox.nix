@@ -376,7 +376,9 @@ let
     headless.services.xserver.enable = false;
   };
 
-  vboxVMsWithExtpack = mapAttrs createVM { testExtensionPack.vmFlags = enableExtensionPackVMFlags; };
+  vboxVMsWithExtpack = mapAttrs createVM {
+    testExtensionPack.vmFlags = enableExtensionPackVMFlags;
+  };
 
   mkVBoxTest =
     vboxHostConfig: vms: name: testScript:

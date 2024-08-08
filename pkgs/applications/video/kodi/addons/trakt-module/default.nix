@@ -26,7 +26,9 @@ buildKodiAddon rec {
 
   passthru = {
     pythonPath = "lib";
-    updateScript = addonUpdateScript { attrPath = "kodi.packages.trakt-module"; };
+    updateScript = addonUpdateScript {
+      attrPath = "kodi.packages.trakt-module";
+    };
   };
 
   meta = with lib; {

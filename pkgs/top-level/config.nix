@@ -41,7 +41,9 @@ let
     # Internal stuff
 
     # Hide built-in module system options from docs.
-    _module.args = mkOption { internal = true; };
+    _module.args = mkOption {
+      internal = true;
+    };
 
     warnings = mkOption {
       type = types.listOf types.str;
@@ -57,9 +59,13 @@ let
       default = false;
     };
 
-    doCheckByDefault = mkMassRebuild { feature = "run `checkPhase` by default"; };
+    doCheckByDefault = mkMassRebuild {
+      feature = "run `checkPhase` by default";
+    };
 
-    strictDepsByDefault = mkMassRebuild { feature = "set `strictDeps` to true by default"; };
+    strictDepsByDefault = mkMassRebuild {
+      feature = "set `strictDeps` to true by default";
+    };
 
     structuredAttrsByDefault = mkMassRebuild {
       feature = "set `__structuredAttrs` to true by default";

@@ -60,16 +60,20 @@
 let
   # common metadata
   name = "${pname}-${version}${extraVersion}";
-  meta = {
-    license = map (x: lib.licenses.${x}) license;
-    # TeX Live packages should not be installed directly into the user profile
-    outputsToInstall = [ ];
-    longDescription = ''
-      This package cannot be installed or used directly. Please use `texlive.withPackages (ps: [ ps.${lib.strings.escapeNixIdentifier pname} ])`.
-    '';
-    # discourage nix-env from matching this package
-    priority = 10;
-  } // lib.optionalAttrs (args ? shortdesc) { description = args.shortdesc; };
+  meta =
+    {
+      license = map (x: lib.licenses.${x}) license;
+      # TeX Live packages should not be installed directly into the user profile
+      outputsToInstall = [ ];
+      longDescription = ''
+        This package cannot be installed or used directly. Please use `texlive.withPackages (ps: [ ps.${lib.strings.escapeNixIdentifier pname} ])`.
+      '';
+      # discourage nix-env from matching this package
+      priority = 10;
+    }
+    // lib.optionalAttrs (args ? shortdesc) {
+      description = args.shortdesc;
+    };
 
   hasBinfiles = args ? binfiles && args.binfiles != [ ];
   hasDocfiles = sha512 ? doc;

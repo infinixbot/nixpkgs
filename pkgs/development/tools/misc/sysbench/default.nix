@@ -71,7 +71,9 @@ stdenv.mkDerivation rec {
   '';
 
   passthru.tests = {
-    versionTest = testers.testVersion { package = sysbench; };
+    versionTest = testers.testVersion {
+      package = sysbench;
+    };
   };
 
   meta = {

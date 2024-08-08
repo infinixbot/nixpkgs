@@ -25,7 +25,9 @@ in
     services.tomcat = {
       enable = lib.mkEnableOption "Apache Tomcat";
 
-      package = lib.mkPackageOption pkgs "tomcat9" { example = "tomcat10"; };
+      package = lib.mkPackageOption pkgs "tomcat9" {
+        example = "tomcat10";
+      };
 
       port = lib.mkOption {
         type = lib.types.port;

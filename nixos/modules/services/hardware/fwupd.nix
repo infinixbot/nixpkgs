@@ -151,7 +151,9 @@ in
       };
 
       uefiCapsuleSettings = mkOption {
-        type = types.submodule { freeformType = format.type.nestedTypes.elemType; };
+        type = types.submodule {
+          freeformType = format.type.nestedTypes.elemType;
+        };
         default = { };
         description = ''
           UEFI capsule configurations for the fwupd daemon.

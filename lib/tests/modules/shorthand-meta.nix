@@ -8,7 +8,9 @@ in
       { config, ... }:
       {
         options = {
-          meta.foo = mkOption { type = types.listOf types.str; };
+          meta.foo = mkOption {
+            type = types.listOf types.str;
+          };
           result = mkOption { default = lib.concatStringsSep " " config.meta.foo; };
         };
       }

@@ -63,7 +63,9 @@ in
       };
     };
 
-    users.groups = mkIf (cfg.group == "sabnzbd") { sabnzbd.gid = config.ids.gids.sabnzbd; };
+    users.groups = mkIf (cfg.group == "sabnzbd") {
+      sabnzbd.gid = config.ids.gids.sabnzbd;
+    };
 
     systemd.services.sabnzbd = {
       description = "sabnzbd server";
@@ -79,6 +81,8 @@ in
       };
     };
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ 8080 ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ 8080 ];
+    };
   };
 }

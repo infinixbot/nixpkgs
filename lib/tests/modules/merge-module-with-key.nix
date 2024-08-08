@@ -17,7 +17,9 @@ let
 
   decl = {
     options = {
-      raw = mkOption { type = types.lines; };
+      raw = mkOption {
+        type = types.lines;
+      };
     };
   };
 in

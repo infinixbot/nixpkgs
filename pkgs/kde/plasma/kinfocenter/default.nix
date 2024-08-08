@@ -40,7 +40,12 @@ mkKdeDerivation {
 
   patches = [
     # fwupdmgr is provided through NixOS' module
-    (substituteAll ({ src = ./0001-tool-paths.patch; } // tools))
+    (substituteAll (
+      {
+        src = ./0001-tool-paths.patch;
+      }
+      // tools
+    ))
   ];
 
   postPatch = ''

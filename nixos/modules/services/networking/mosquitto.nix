@@ -364,7 +364,9 @@ let
         };
 
         settings = mkOption {
-          type = submodule { freeformType = attrsOf optionType; };
+          type = submodule {
+            freeformType = attrsOf optionType;
+          };
           description = ''
             Additional settings for this listener.
           '';
@@ -466,7 +468,9 @@ let
         };
 
         settings = mkOption {
-          type = submodule { freeformType = attrsOf optionType; };
+          type = submodule {
+            freeformType = attrsOf optionType;
+          };
           description = ''
             Additional settings for this bridge.
           '';
@@ -608,7 +612,9 @@ let
     };
 
     settings = mkOption {
-      type = submodule { freeformType = attrsOf optionType; };
+      type = submodule {
+        freeformType = attrsOf optionType;
+      };
       description = ''
         Global configuration options for the mosquitto broker.
       '';

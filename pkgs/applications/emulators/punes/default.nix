@@ -68,7 +68,9 @@ stdenv.mkDerivation (finalAttrs: {
     "-DENABLE_QT6_LIBS=${if lib.versionAtLeast qtbase.version "6.0" then "ON" else "OFF"}"
   ];
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     description = "Qt-based Nintendo Entertainment System emulator and NSF/NSFe Music Player";

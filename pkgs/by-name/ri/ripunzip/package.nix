@@ -44,7 +44,9 @@ rustPlatform.buildRustPackage rec {
           url = "https://github.com/google/ripunzip/archive/cb9caa3ba4b0e27a85e165be64c40f1f6dfcc085.zip";
           hash = "sha256-BoErC5VL3Vpvkx6xJq6J+eUJrBnjVEdTuSo7zh98Jy4=";
         };
-    version = testers.testVersion { package = ripunzip; };
+    version = testers.testVersion {
+      package = ripunzip;
+    };
   };
 
   meta = with lib; {

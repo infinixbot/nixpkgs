@@ -24,7 +24,11 @@ import ./make-test-python.nix (
             {
               job_name = "prometheus";
               scrape_interval = "5s";
-              static_configs = [ { targets = [ "localhost:9090" ]; } ];
+              static_configs = [
+                {
+                  targets = [ "localhost:9090" ];
+                }
+              ];
             }
           ];
 
@@ -43,7 +47,15 @@ import ./make-test-python.nix (
             ''
           ];
 
-          alertmanagers = [ { static_configs = [ { targets = [ "localhost:9093" ]; } ]; } ];
+          alertmanagers = [
+            {
+              static_configs = [
+                {
+                  targets = [ "localhost:9093" ];
+                }
+              ];
+            }
+          ];
 
           alertmanager = {
             enable = true;
@@ -57,7 +69,11 @@ import ./make-test-python.nix (
             configuration.receivers = [
               {
                 name = "test";
-                webhook_configs = [ { url = "http://localhost:1234"; } ];
+                webhook_configs = [
+                  {
+                    url = "http://localhost:1234";
+                  }
+                ];
               }
             ];
           };

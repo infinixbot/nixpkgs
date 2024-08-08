@@ -55,5 +55,7 @@
 }).overrideAttrs
   (
     o:
-    lib.optionalAttrs (lib.versionAtLeast o.version "1.8.0" || o.version == "dev") { doCheck = false; }
+    lib.optionalAttrs (lib.versionAtLeast o.version "1.8.0" || o.version == "dev") {
+      doCheck = false;
+    }
   )

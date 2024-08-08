@@ -20,7 +20,9 @@ let
     inherit version pname src;
     extraPkgs = pkgs: [ pkgs.libsecret ];
   };
-  appimageContents = appimageTools.extractType2 { inherit version pname src; };
+  appimageContents = appimageTools.extractType2 {
+    inherit version pname src;
+  };
 in
 stdenvNoCC.mkDerivation rec {
   inherit pname version;

@@ -151,7 +151,9 @@ in
       pkgs.writeText "buildbot-worker-password" cfg.workerPass
     );
 
-    users.groups = optionalAttrs (cfg.group == "bbworker") { bbworker = { }; };
+    users.groups = optionalAttrs (cfg.group == "bbworker") {
+      bbworker = { };
+    };
 
     users.users = optionalAttrs (cfg.user == "bbworker") {
       bbworker = {

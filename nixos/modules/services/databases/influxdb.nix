@@ -63,9 +63,17 @@ let
       https-enabled = false;
     };
 
-    graphite = [ { enabled = false; } ];
+    graphite = [
+      {
+        enabled = false;
+      }
+    ];
 
-    udp = [ { enabled = false; } ];
+    udp = [
+      {
+        enabled = false;
+      }
+    ];
 
     collectd = [
       {
@@ -76,7 +84,11 @@ let
       }
     ];
 
-    opentsdb = [ { enabled = false; } ];
+    opentsdb = [
+      {
+        enabled = false;
+      }
+    ];
 
     continuous_queries = {
       enabled = true;
@@ -183,7 +195,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == "influxdb") { influxdb.gid = config.ids.gids.influxdb; };
+    users.groups = optionalAttrs (cfg.group == "influxdb") {
+      influxdb.gid = config.ids.gids.influxdb;
+    };
   };
 
 }

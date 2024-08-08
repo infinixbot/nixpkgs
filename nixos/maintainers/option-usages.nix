@@ -177,7 +177,9 @@ rec {
     text = dotContent;
   };
 
-  pdf = pkgs.texFunctions.dot2pdf { dotGraph = dot; };
+  pdf = pkgs.texFunctions.dot2pdf {
+    dotGraph = dot;
+  };
 
   txtContent = graphToText graph;
   txt = pkgs.writeTextFile {

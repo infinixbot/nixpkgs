@@ -13,7 +13,10 @@ let
   };
 
   hocon-validator =
-    pkgs.writers.writePython3Bin "hocon-validator" { libraries = [ pkgs.python3Packages.pyhocon ]; }
+    pkgs.writers.writePython3Bin "hocon-validator"
+      {
+        libraries = [ pkgs.python3Packages.pyhocon ];
+      }
       ''
         from sys import argv
         from pyhocon import ConfigFactory

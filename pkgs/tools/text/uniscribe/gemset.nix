@@ -3,8 +3,12 @@
     dependencies = [ "unicode-categories" ];
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "maglev"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "maglev";
+      }
       {
         engine = "maglev";
         version = "1.8";
@@ -77,8 +81,12 @@
         engine = "maglev";
         version = "2.6";
       }
-      { engine = "rbx"; }
-      { engine = "rbx"; }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "rbx";
+      }
       {
         engine = "rbx";
         version = "1.8";
@@ -115,9 +123,15 @@
         engine = "rbx";
         version = "2.6";
       }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
       {
         engine = "ruby";
         version = "1.8";
@@ -201,8 +215,12 @@
   paint = {
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "maglev"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "maglev";
+      }
       {
         engine = "maglev";
         version = "1.8";
@@ -275,8 +293,12 @@
         engine = "maglev";
         version = "2.6";
       }
-      { engine = "rbx"; }
-      { engine = "rbx"; }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "rbx";
+      }
       {
         engine = "rbx";
         version = "1.8";
@@ -313,9 +335,15 @@
         engine = "rbx";
         version = "2.6";
       }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
       {
         engine = "ruby";
         version = "1.8";
@@ -399,8 +427,12 @@
   rationalist = {
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "maglev"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "maglev";
+      }
       {
         engine = "maglev";
         version = "1.8";
@@ -473,8 +505,12 @@
         engine = "maglev";
         version = "2.6";
       }
-      { engine = "rbx"; }
-      { engine = "rbx"; }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "rbx";
+      }
       {
         engine = "rbx";
         version = "1.8";
@@ -511,9 +547,15 @@
         engine = "rbx";
         version = "2.6";
       }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
       {
         engine = "ruby";
         version = "1.8";
@@ -598,8 +640,12 @@
     dependencies = [ "characteristics" ];
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "maglev"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "maglev";
+      }
       {
         engine = "maglev";
         version = "1.8";
@@ -672,8 +718,12 @@
         engine = "maglev";
         version = "2.6";
       }
-      { engine = "rbx"; }
-      { engine = "rbx"; }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "rbx";
+      }
       {
         engine = "rbx";
         version = "1.8";
@@ -710,9 +760,15 @@
         engine = "rbx";
         version = "2.6";
       }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
       {
         engine = "ruby";
         version = "1.8";
@@ -796,8 +852,12 @@
   unicode-categories = {
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "maglev"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "maglev";
+      }
       {
         engine = "maglev";
         version = "1.8";
@@ -870,8 +930,12 @@
         engine = "maglev";
         version = "2.6";
       }
-      { engine = "rbx"; }
-      { engine = "rbx"; }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "rbx";
+      }
       {
         engine = "rbx";
         version = "1.8";
@@ -908,9 +972,15 @@
         engine = "rbx";
         version = "2.6";
       }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
       {
         engine = "ruby";
         version = "1.8";
@@ -994,8 +1064,12 @@
   unicode-display_width = {
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "maglev"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "maglev";
+      }
       {
         engine = "maglev";
         version = "1.8";
@@ -1068,8 +1142,12 @@
         engine = "maglev";
         version = "2.6";
       }
-      { engine = "rbx"; }
-      { engine = "rbx"; }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "rbx";
+      }
       {
         engine = "rbx";
         version = "1.8";
@@ -1106,9 +1184,15 @@
         engine = "rbx";
         version = "2.6";
       }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
       {
         engine = "ruby";
         version = "1.8";
@@ -1193,8 +1277,12 @@
     dependencies = [ "unicode-version" ];
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "maglev"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "maglev";
+      }
       {
         engine = "maglev";
         version = "1.8";
@@ -1267,8 +1355,12 @@
         engine = "maglev";
         version = "2.6";
       }
-      { engine = "rbx"; }
-      { engine = "rbx"; }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "rbx";
+      }
       {
         engine = "rbx";
         version = "1.8";
@@ -1305,9 +1397,15 @@
         engine = "rbx";
         version = "2.6";
       }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
       {
         engine = "ruby";
         version = "1.8";
@@ -1392,8 +1490,12 @@
     dependencies = [ "unicode-types" ];
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "maglev"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "maglev";
+      }
       {
         engine = "maglev";
         version = "1.8";
@@ -1466,8 +1568,12 @@
         engine = "maglev";
         version = "2.6";
       }
-      { engine = "rbx"; }
-      { engine = "rbx"; }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "rbx";
+      }
       {
         engine = "rbx";
         version = "1.8";
@@ -1504,9 +1610,15 @@
         engine = "rbx";
         version = "2.6";
       }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
       {
         engine = "ruby";
         version = "1.8";
@@ -1590,8 +1702,12 @@
   unicode-sequence_name = {
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "maglev"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "maglev";
+      }
       {
         engine = "maglev";
         version = "1.8";
@@ -1664,8 +1780,12 @@
         engine = "maglev";
         version = "2.6";
       }
-      { engine = "rbx"; }
-      { engine = "rbx"; }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "rbx";
+      }
       {
         engine = "rbx";
         version = "1.8";
@@ -1702,9 +1822,15 @@
         engine = "rbx";
         version = "2.6";
       }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
       {
         engine = "ruby";
         version = "1.8";
@@ -1788,8 +1914,12 @@
   unicode-types = {
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "maglev"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "maglev";
+      }
       {
         engine = "maglev";
         version = "1.8";
@@ -1862,8 +1992,12 @@
         engine = "maglev";
         version = "2.6";
       }
-      { engine = "rbx"; }
-      { engine = "rbx"; }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "rbx";
+      }
       {
         engine = "rbx";
         version = "1.8";
@@ -1900,9 +2034,15 @@
         engine = "rbx";
         version = "2.6";
       }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
       {
         engine = "ruby";
         version = "1.8";
@@ -1986,8 +2126,12 @@
   unicode-version = {
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "maglev"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "maglev";
+      }
       {
         engine = "maglev";
         version = "1.8";
@@ -2060,8 +2204,12 @@
         engine = "maglev";
         version = "2.6";
       }
-      { engine = "rbx"; }
-      { engine = "rbx"; }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "rbx";
+      }
       {
         engine = "rbx";
         version = "1.8";
@@ -2098,9 +2246,15 @@
         engine = "rbx";
         version = "2.6";
       }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
       {
         engine = "ruby";
         version = "1.8";

@@ -162,6 +162,8 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.user == "collectd") { collectd = { }; };
+    users.groups = optionalAttrs (cfg.user == "collectd") {
+      collectd = { };
+    };
   };
 }

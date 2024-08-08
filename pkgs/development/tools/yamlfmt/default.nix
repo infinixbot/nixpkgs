@@ -26,7 +26,9 @@ buildGoModule rec {
     "-X main.commit=${src.rev}"
   ];
 
-  passthru.tests.version = testers.testVersion { package = yamlfmt; };
+  passthru.tests.version = testers.testVersion {
+    package = yamlfmt;
+  };
 
   meta = with lib; {
     description = "Extensible command line tool or library to format yaml files";

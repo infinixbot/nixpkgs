@@ -231,7 +231,9 @@ let
         libc = preLibcCrossHeaders;
       };
 
-      bintools = wrapBintoolsWith { bintools = tools.bintools-unwrapped; };
+      bintools = wrapBintoolsWith {
+        bintools = tools.bintools-unwrapped;
+      };
 
       clangUseLLVM = wrapCCWith rec {
         cc = tools.clang-unwrapped;

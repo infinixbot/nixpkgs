@@ -20,7 +20,9 @@ let
   );
 
   # Bootstrap `fetchurl` needed to build SDK packages without causing an infinite recursion.
-  fetchurlBoot = import ../build-support/fetchurl/boot.nix { inherit (stdenv) system; };
+  fetchurlBoot = import ../build-support/fetchurl/boot.nix {
+    inherit (stdenv) system;
+  };
 
   aliases =
     self: super:
@@ -50,7 +52,9 @@ makeScopeWithSplicing' {
       };
 
       # macOS 11.0 SDK
-      apple_sdk_11_0 = pkgs.callPackage ../os-specific/darwin/apple-sdk-11.0 { fetchurl = fetchurlBoot; };
+      apple_sdk_11_0 = pkgs.callPackage ../os-specific/darwin/apple-sdk-11.0 {
+        fetchurl = fetchurlBoot;
+      };
 
       # macOS 12.3 SDK
       apple_sdk_12_3 = pkgs.callPackage ../os-specific/darwin/apple-sdk-12.3 { };
@@ -105,7 +109,9 @@ makeScopeWithSplicing' {
         apple_sdk_12_3
         ;
 
-      stdenvNoCF = stdenv.override { extraBuildInputs = [ ]; };
+      stdenvNoCF = stdenv.override {
+        extraBuildInputs = [ ];
+      };
 
       binutils-unwrapped = callPackage ../os-specific/darwin/binutils {
         inherit (pkgs) cctools;
@@ -139,7 +145,9 @@ makeScopeWithSplicing' {
         ];
       };
 
-      binutilsDualAs = self.binutils.override { bintools = self.binutilsDualAs-unwrapped; };
+      binutilsDualAs = self.binutils.override {
+        bintools = self.binutilsDualAs-unwrapped;
+      };
 
       binutilsNoLibc = pkgs.wrapBintoolsWith {
         libc = preLibcCrossHeaders;

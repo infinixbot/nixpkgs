@@ -72,7 +72,11 @@ let
     options =
       let
         scrubbedEval = evalModules {
-          modules = [ { _module.check = false; } ] ++ docModules.eager;
+          modules = [
+            {
+              _module.check = false;
+            }
+          ] ++ docModules.eager;
           class = "nixos";
           specialArgs = specialArgs // {
             pkgs = scrubDerivations "pkgs" pkgs;

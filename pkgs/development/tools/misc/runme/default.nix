@@ -57,7 +57,9 @@ buildGoModule rec {
   '';
 
   passthru.tests = {
-    version = testers.testVersion { package = runme; };
+    version = testers.testVersion {
+      package = runme;
+    };
   };
 
   meta = with lib; {

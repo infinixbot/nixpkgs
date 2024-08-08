@@ -24,8 +24,16 @@ let
         };
         doCheck = false;
       });
-      alembic = prev.alembic.overridePythonAttrs (lib.const { doCheck = false; });
-      factory-boy = prev.factory-boy.overridePythonAttrs (lib.const { doCheck = false; });
+      alembic = prev.alembic.overridePythonAttrs (
+        lib.const {
+          doCheck = false;
+        }
+      );
+      factory-boy = prev.factory-boy.overridePythonAttrs (
+        lib.const {
+          doCheck = false;
+        }
+      );
       beautifultable = prev.beautifultable.overridePythonAttrs (oldAttrs: rec {
         version = "0.8.0";
         src = fetchPypi {

@@ -388,14 +388,18 @@ in
         db_name = cfg.database.name;
         db_user = cfg.database.name;
       }
-      // (optionalAttrs (cfg.database.host != null) { db_host = cfg.database.host; })
+      // (optionalAttrs (cfg.database.host != null) {
+        db_host = cfg.database.host;
+      })
       // (optionalAttrs mysqlLocal {
         db_host = "localhost"; # use unix domain socket
       })
       // (optionalAttrs pgsqlLocal {
         db_host = "/run/postgresql"; # use unix domain socket
       })
-      // (optionalAttrs (cfg.database.port != null) { db_port = cfg.database.port; })
+      // (optionalAttrs (cfg.database.port != null) {
+        db_port = cfg.database.port;
+      })
       // (optionalAttrs (cfg.mta.type == "postfix") {
         sendmail_aliases = "${dataDir}/sympa_transport";
         aliases_program = "${pkgs.postfix}/bin/postmap";

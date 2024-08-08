@@ -177,7 +177,12 @@ let
   # }
   overrideMaintainers =
     overrides: old:
-    lib.mapAttrs (name: value: (builtins.getAttr name old).override { maintainers = value; }) overrides;
+    lib.mapAttrs (
+      name: value:
+      (builtins.getAttr name old).override {
+        maintainers = value;
+      }
+    ) overrides;
 
   # Overrides package definitions with new R dependencies.
   # For example,
@@ -223,7 +228,9 @@ let
     let
       nameValuePairs = map (name: {
         inherit name;
-        value = (builtins.getAttr name old).override { requireX = true; };
+        value = (builtins.getAttr name old).override {
+          requireX = true;
+        };
       }) packageNames;
     in
     builtins.listToAttrs nameValuePairs;
@@ -280,7 +287,9 @@ let
     let
       nameValuePairs = map (name: {
         inherit name;
-        value = (builtins.getAttr name old).override { doCheck = false; };
+        value = (builtins.getAttr name old).override {
+          doCheck = false;
+        };
       }) packageNames;
     in
     builtins.listToAttrs nameValuePairs;
@@ -304,7 +313,9 @@ let
     let
       nameValuePairs = map (name: {
         inherit name;
-        value = (builtins.getAttr name old).override { broken = true; };
+        value = (builtins.getAttr name old).override {
+          broken = true;
+        };
       }) packageNames;
     in
     builtins.listToAttrs nameValuePairs;

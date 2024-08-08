@@ -61,7 +61,11 @@ let
         tensorrt = allBuilds.${computeName tensorRTDefaultVersion};
       };
     in
-    { inherit buildTensorRTPackage; } // allBuilds // defaultBuild;
+    {
+      inherit buildTensorRTPackage;
+    }
+    // allBuilds
+    // defaultBuild;
 
   tarballURL =
     {

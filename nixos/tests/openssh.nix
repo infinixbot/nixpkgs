@@ -177,7 +177,9 @@ import ./make-test-python.nix (
         {
           services.openssh = {
             enable = true;
-            package = pkgs.opensshPackages.openssh.override { linkOpenssl = false; };
+            package = pkgs.opensshPackages.openssh.override {
+              linkOpenssl = false;
+            };
             hostKeys = [
               {
                 type = "ed25519";
@@ -203,7 +205,9 @@ import ./make-test-python.nix (
         {
           services.openssh = {
             enable = true;
-            package = pkgs.opensshPackages.openssh.override { withPAM = false; };
+            package = pkgs.opensshPackages.openssh.override {
+              withPAM = false;
+            };
             settings = {
               UsePAM = false;
             };

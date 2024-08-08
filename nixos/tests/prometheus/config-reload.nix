@@ -19,7 +19,11 @@ import ../make-test-python.nix (
             scrapeConfigs = [
               {
                 job_name = "prometheus";
-                static_configs = [ { targets = [ "prometheus:${toString config.services.prometheus.port}" ]; } ];
+                static_configs = [
+                  {
+                    targets = [ "prometheus:${toString config.services.prometheus.port}" ];
+                  }
+                ];
               }
             ];
           };
@@ -36,7 +40,9 @@ import ../make-test-python.nix (
                     {
                       job_name = "node";
                       static_configs = [
-                        { targets = [ "node:${toString config.services.prometheus.exporters.node.port}" ]; }
+                        {
+                          targets = [ "node:${toString config.services.prometheus.exporters.node.port}" ];
+                        }
                       ];
                     }
                   ];

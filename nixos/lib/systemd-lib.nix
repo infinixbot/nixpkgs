@@ -602,10 +602,18 @@ rec {
               ]
             )}";
           }
-          // optionalAttrs (config.description != "") { Description = config.description; }
-          // optionalAttrs (config.documentation != [ ]) { Documentation = toString config.documentation; }
-          // optionalAttrs (config.onFailure != [ ]) { OnFailure = toString config.onFailure; }
-          // optionalAttrs (config.onSuccess != [ ]) { OnSuccess = toString config.onSuccess; }
+          // optionalAttrs (config.description != "") {
+            Description = config.description;
+          }
+          // optionalAttrs (config.documentation != [ ]) {
+            Documentation = toString config.documentation;
+          }
+          // optionalAttrs (config.onFailure != [ ]) {
+            OnFailure = toString config.onFailure;
+          }
+          // optionalAttrs (config.onSuccess != [ ]) {
+            OnSuccess = toString config.onSuccess;
+          }
           // optionalAttrs (options.startLimitIntervalSec.isDefined) {
             StartLimitIntervalSec = toString config.startLimitIntervalSec;
           }
@@ -690,8 +698,12 @@ rec {
             What = config.what;
             Where = config.where;
           }
-          // optionalAttrs (config.type != "") { Type = config.type; }
-          // optionalAttrs (config.options != "") { Options = config.options; };
+          // optionalAttrs (config.type != "") {
+            Type = config.type;
+          }
+          // optionalAttrs (config.options != "") {
+            Options = config.options;
+          };
       };
     };
 

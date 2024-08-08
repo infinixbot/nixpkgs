@@ -79,7 +79,11 @@
               nixosSystemAcceptsLib =
                 (self.lib.nixosSystem {
                   pkgs = self.legacyPackages.${system};
-                  lib = self.lib.extend (final: prev: { ifThisFunctionIsMissingTheTestFails = final.id; });
+                  lib = self.lib.extend (
+                    final: prev: {
+                      ifThisFunctionIsMissingTheTestFails = final.id;
+                    }
+                  );
                   modules = [
                     ./nixos/modules/profiles/minimal.nix
                     (
@@ -100,7 +104,10 @@
 
       htmlDocs = {
         nixpkgsManual = builtins.mapAttrs (_: jobSet: jobSet.manual) jobs;
-        nixosManual = (import ./nixos/release-small.nix { nixpkgs = self; }).nixos.manual;
+        nixosManual =
+          (import ./nixos/release-small.nix {
+            nixpkgs = self;
+          }).nixos.manual;
       };
 
       # The "legacy" in `legacyPackages` doesn't imply that the packages exposed
@@ -115,7 +122,9 @@
       legacyPackages = forAllSystems (
         system:
         (import ./. { inherit system; }).extend (
-          final: prev: { lib = prev.lib.extend libVersionInfoOverlay; }
+          final: prev: {
+            lib = prev.lib.extend libVersionInfoOverlay;
+          }
         )
       );
 

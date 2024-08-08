@@ -460,14 +460,21 @@ let
   jsonFile = name: val: (formats.json { }).generate name val;
 
   # implementation of the updater
-  updateImpl = passArgs "updateImpl-with-args" {
-    binaries = {
-      curl = "${curl}/bin/curl";
-      nix-prefetch-git = "${nix-prefetch-git}/bin/nix-prefetch-git";
-      printf = "${coreutils}/bin/printf";
-    };
-    inherit knownTreeSitterOrgGrammarRepos ignoredTreeSitterOrgRepos;
-  } (writers.writePython3 "updateImpl" { flakeIgnore = [ "E501" ]; } ./update_impl.py);
+  updateImpl =
+    passArgs "updateImpl-with-args"
+      {
+        binaries = {
+          curl = "${curl}/bin/curl";
+          nix-prefetch-git = "${nix-prefetch-git}/bin/nix-prefetch-git";
+          printf = "${coreutils}/bin/printf";
+        };
+        inherit knownTreeSitterOrgGrammarRepos ignoredTreeSitterOrgRepos;
+      }
+      (
+        writers.writePython3 "updateImpl" {
+          flakeIgnore = [ "E501" ];
+        } ./update_impl.py
+      );
 
   # Pass the given arguments to the command, in the ARGS environment variable.
   # The arguments are just a json object that should be available in the script.
@@ -508,14 +515,24 @@ let
          '')
          (
            lib.mapAttrsToList (
-             nixRepoAttrName: attrs: attrs // { inherit nixRepoAttrName outputDir; }
+             nixRepoAttrName: attrs:
+             attrs
+             // {
+               inherit nixRepoAttrName outputDir;
+             }
            ) allGrammars
          )
      }
      ${updateImpl} print-all-grammars-nix-file "$(< ${
        jsonFile "all-grammars.json" {
          allGrammars = (
-           lib.mapAttrsToList (nixRepoAttrName: attrs: attrs // { inherit nixRepoAttrName; }) allGrammars
+           lib.mapAttrsToList (
+             nixRepoAttrName: attrs:
+             attrs
+             // {
+               inherit nixRepoAttrName;
+             }
+           ) allGrammars
          );
          inherit outputDir;
        }

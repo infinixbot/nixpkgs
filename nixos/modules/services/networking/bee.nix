@@ -23,7 +23,9 @@ in
     services.bee = {
       enable = mkEnableOption "Ethereum Swarm Bee";
 
-      package = mkPackageOption pkgs "bee" { example = "bee-unstable"; };
+      package = mkPackageOption pkgs "bee" {
+        example = "bee-unstable";
+      };
 
       settings = mkOption {
         type = format.type;
@@ -132,6 +134,8 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == "bee") { bee = { }; };
+    users.groups = optionalAttrs (cfg.group == "bee") {
+      bee = { };
+    };
   };
 }

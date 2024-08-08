@@ -124,7 +124,12 @@ let
           config.system.build.netbootIpxeScript
         ];
       };
-      startCommand = mkStartCommand ({ pxe = ipxeBootDir; } // extraConfig);
+      startCommand = mkStartCommand (
+        {
+          pxe = ipxeBootDir;
+        }
+        // extraConfig
+      );
     in
     makeTest {
       name = "boot-netboot-" + name;
@@ -148,12 +153,18 @@ in
     usb = "${iso}/iso/${iso.isoName}";
   };
 
-  uefiNetboot = makeNetbootTest "uefi" { uefi = true; };
+  uefiNetboot = makeNetbootTest "uefi" {
+    uefi = true;
+  };
 }
 // lib.optionalAttrs (pkgs.stdenv.hostPlatform.system == "x86_64-linux") {
-  biosCdrom = makeBootTest "bios-cdrom" { cdrom = "${iso}/iso/${iso.isoName}"; };
+  biosCdrom = makeBootTest "bios-cdrom" {
+    cdrom = "${iso}/iso/${iso.isoName}";
+  };
 
-  biosUsb = makeBootTest "bios-usb" { usb = "${iso}/iso/${iso.isoName}"; };
+  biosUsb = makeBootTest "bios-usb" {
+    usb = "${iso}/iso/${iso.isoName}";
+  };
 
   biosNetboot = makeNetbootTest "bios" { };
 

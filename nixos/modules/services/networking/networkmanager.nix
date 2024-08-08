@@ -610,7 +610,12 @@ in
         ) cfg.plugins
       )
       // builtins.listToAttrs (
-        map (e: nameValuePair "ModemManager/fcc-unlock.d/${e.id}" { source = e.path; }) cfg.fccUnlockScripts
+        map (
+          e:
+          nameValuePair "ModemManager/fcc-unlock.d/${e.id}" {
+            source = e.path;
+          }
+        ) cfg.fccUnlockScripts
       )
       // optionalAttrs (cfg.appendNameservers != [ ] || cfg.insertNameservers != [ ]) {
         "NetworkManager/dispatcher.d/02overridedns".source = overrideNameserversScript;
@@ -725,7 +730,9 @@ in
 
     # Turn off NixOS' network management when networking is managed entirely by NetworkManager
     networking = mkMerge [
-      (mkIf (!delegateWireless) { useDHCP = false; })
+      (mkIf (!delegateWireless) {
+        useDHCP = false;
+      })
 
       {
         networkmanager.plugins = with pkgs; [
@@ -739,9 +746,13 @@ in
         ];
       }
 
-      (mkIf cfg.enableStrongSwan { networkmanager.plugins = [ pkgs.networkmanager_strongswan ]; })
+      (mkIf cfg.enableStrongSwan {
+        networkmanager.plugins = [ pkgs.networkmanager_strongswan ];
+      })
 
-      (mkIf enableIwd { wireless.iwd.enable = true; })
+      (mkIf enableIwd {
+        wireless.iwd.enable = true;
+      })
 
       {
         networkmanager.connectionConfig = {

@@ -67,7 +67,9 @@ stdenv.mkDerivation (finalAttrs: {
           head -n1)"
       update-source-version ${finalAttrs.pname} "$new_version"
     '';
-    tests.pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+    tests.pkg-config = testers.hasPkgConfigModules {
+      package = finalAttrs.finalPackage;
+    };
   };
 
   meta = with lib; {

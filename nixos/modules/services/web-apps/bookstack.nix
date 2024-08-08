@@ -9,7 +9,9 @@ with lib;
 
 let
   cfg = config.services.bookstack;
-  bookstack = pkgs.bookstack.override { dataDir = cfg.dataDir; };
+  bookstack = pkgs.bookstack.override {
+    dataDir = cfg.dataDir;
+  };
   db = cfg.database;
   mail = cfg.mail;
 
@@ -500,7 +502,9 @@ in
         };
         "${config.services.nginx.user}".extraGroups = [ group ];
       };
-      groups = mkIf (group == "bookstack") { bookstack = { }; };
+      groups = mkIf (group == "bookstack") {
+        bookstack = { };
+      };
     };
 
   };

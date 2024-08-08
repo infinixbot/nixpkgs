@@ -185,7 +185,9 @@ stdenv.mkDerivation rec {
         --replace "-lunistring" ""
     '';
 
-  passthru.updateScript = gitUpdater { url = "https://gitlab.com/gnutls/gnutls.git"; };
+  passthru.updateScript = gitUpdater {
+    url = "https://gitlab.com/gnutls/gnutls.git";
+  };
 
   passthru.tests = {
     inherit

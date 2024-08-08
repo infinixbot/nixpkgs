@@ -86,7 +86,9 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "libshumate"; };
+    updateScript = gnome.updateScript {
+      packageName = "libshumate";
+    };
   };
 
   meta = with lib; {

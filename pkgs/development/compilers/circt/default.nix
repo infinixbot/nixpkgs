@@ -90,7 +90,9 @@ stdenv.mkDerivation rec {
   '';
 
   passthru = {
-    updateScript = gitUpdater { rev-prefix = "firtool-"; };
+    updateScript = gitUpdater {
+      rev-prefix = "firtool-";
+    };
     llvm = circt-llvm;
   };
 

@@ -18,7 +18,9 @@ lib.makeScope pkgs.newScope (
 
     lxmenu-data = callPackage ./core/lxmenu-data { };
 
-    lxpanel = callPackage ./core/lxpanel { gtk2 = gtk2-x11; };
+    lxpanel = callPackage ./core/lxpanel {
+      gtk2 = gtk2-x11;
+    };
 
     lxrandr = callPackage ./core/lxrandr { };
 

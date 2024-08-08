@@ -78,7 +78,9 @@ rec {
   };
 
   # Unfree
-  hsa-amd-aqlprofile-bin = callPackage ./hsa-amd-aqlprofile-bin { stdenv = llvm.rocmClangStdenv; };
+  hsa-amd-aqlprofile-bin = callPackage ./hsa-amd-aqlprofile-bin {
+    stdenv = llvm.rocmClangStdenv;
+  };
 
   # Broken, too many errors
   rdc = callPackage ./rdc {
@@ -338,7 +340,9 @@ rec {
     stdenv = llvm.rocmClangStdenv;
   };
 
-  rocmlir-rock = rocmlir.override { buildRockCompiler = true; };
+  rocmlir-rock = rocmlir.override {
+    buildRockCompiler = true;
+  };
 
   hipsolver = callPackage ./hipsolver {
     inherit

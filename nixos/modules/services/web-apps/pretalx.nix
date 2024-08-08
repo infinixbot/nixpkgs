@@ -12,7 +12,9 @@ let
 
   configFile = format.generate "pretalx.cfg" cfg.settings;
 
-  finalPackage = cfg.package.override { inherit (cfg) plugins; };
+  finalPackage = cfg.package.override {
+    inherit (cfg) plugins;
+  };
 
   pythonEnv = finalPackage.python.buildEnv.override {
     extraLibs =

@@ -19,7 +19,11 @@ let
   makePostgresqlTlsClientCertTest =
     pkg:
     let
-      runWithOpenSSL = file: cmd: pkgs.runCommand file { buildInputs = [ pkgs.openssl ]; } cmd;
+      runWithOpenSSL =
+        file: cmd:
+        pkgs.runCommand file {
+          buildInputs = [ pkgs.openssl ];
+        } cmd;
       caKey = runWithOpenSSL "ca.key" "openssl ecparam -name prime256v1 -genkey -noout -out $out";
       caCert = runWithOpenSSL "ca.crt" ''
         openssl req -new -x509 -sha256 -key ${caKey} -out $out -subj "/CN=test.example" -days 36500

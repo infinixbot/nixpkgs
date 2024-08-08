@@ -416,5 +416,7 @@ stdenv.mkDerivation (finalAttrs: {
       platforms = platforms.unix;
     }
     # toolsOnly: Does not have qemu-kvm and there's no main support tool
-    // lib.optionalAttrs (!toolsOnly) { mainProgram = "qemu-kvm"; };
+    // lib.optionalAttrs (!toolsOnly) {
+      mainProgram = "qemu-kvm";
+    };
 })

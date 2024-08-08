@@ -57,10 +57,17 @@ let
       };
 
       # Defines the ACL on the virtual filesystem
-      permissions = lib.recursiveUpdate {
-        "/" = [ "list" ]; # read-only top level directory
-        "/private" = [ "*" ]; # private subdirectory, not shared with others
-      } (lib.optionalAttrs (isMemberOf config "shared" user) { "/shared" = [ "*" ]; });
+      permissions =
+        lib.recursiveUpdate
+          {
+            "/" = [ "list" ]; # read-only top level directory
+            "/private" = [ "*" ]; # private subdirectory, not shared with others
+          }
+          (
+            lib.optionalAttrs (isMemberOf config "shared" user) {
+              "/shared" = [ "*" ];
+            }
+          );
 
       filters = {
         allowed_ip = [ ];

@@ -71,7 +71,9 @@ stdenv.mkDerivation rec {
   doCheck = true;
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "gnome-dictionary"; };
+    updateScript = gnome.updateScript {
+      packageName = "gnome-dictionary";
+    };
   };
 
   meta = with lib; {

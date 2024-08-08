@@ -15,4 +15,6 @@ let
   inherit (import ./release-lib.nix { inherit supportedSystems; }) mapTestOn packagePlatforms pkgs;
 in
 
-mapTestOn { rPackages = packagePlatforms pkgs.rPackages; }
+mapTestOn {
+  rPackages = packagePlatforms pkgs.rPackages;
+}

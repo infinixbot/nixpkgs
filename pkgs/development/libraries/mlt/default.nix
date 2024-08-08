@@ -136,7 +136,9 @@ stdenv.mkDerivation rec {
     inherit ffmpeg;
   };
 
-  passthru.updateScript = gitUpdater { rev-prefix = "v"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "v";
+  };
 
   meta = with lib; {
     description = "Open source multimedia framework, designed for television broadcasting";

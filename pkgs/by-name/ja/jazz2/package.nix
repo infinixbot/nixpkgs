@@ -40,7 +40,9 @@ stdenv.mkDerivation (finalAttrs: {
     "-DNCINE_OVERRIDE_CONTENT_PATH=${jazz2-content}"
   ];
 
-  passthru.tests.version = testers.testVersion { package = finalAttrs.finalPackage; };
+  passthru.tests.version = testers.testVersion {
+    package = finalAttrs.finalPackage;
+  };
 
   meta = with lib; {
     description = "Open-source Jazz Jackrabbit 2 reimplementation";

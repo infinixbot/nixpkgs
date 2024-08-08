@@ -180,7 +180,9 @@ in
         };
     };
 
-    users.groups = optionalAttrs (cfg.group == "jenkins") { jenkins.gid = config.ids.gids.jenkins; };
+    users.groups = optionalAttrs (cfg.group == "jenkins") {
+      jenkins.gid = config.ids.gids.jenkins;
+    };
 
     users.users = optionalAttrs (cfg.user == "jenkins") {
       jenkins = {

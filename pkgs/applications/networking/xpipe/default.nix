@@ -29,7 +29,11 @@ let
   throwSystem = throw "Unsupported system: ${system}";
 
   # Keep this setup to easily add more arch support in the future
-  arch = { x86_64-linux = "x86_64"; }.${system} or throwSystem;
+  arch =
+    {
+      x86_64-linux = "x86_64";
+    }
+    .${system} or throwSystem;
 
   hash =
     {

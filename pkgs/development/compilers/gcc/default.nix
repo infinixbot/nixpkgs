@@ -541,8 +541,12 @@ pipe
         // optionalAttrs (!is7 && !atLeast12 && stdenv.cc.isClang && targetPlatform != hostPlatform) {
           NIX_CFLAGS_COMPILE = "-Wno-register";
         }
-        // optionalAttrs (!atLeast7) { inherit langJava; }
-        // optionalAttrs atLeast6 { NIX_LDFLAGS = optionalString hostPlatform.isSunOS "-lm"; }
+        // optionalAttrs (!atLeast7) {
+          inherit langJava;
+        }
+        // optionalAttrs atLeast6 {
+          NIX_LDFLAGS = optionalString hostPlatform.isSunOS "-lm";
+        }
       );
 
       passthru = {
@@ -610,7 +614,9 @@ pipe
     // optionalAttrs (!atLeast8) {
       doCheck = false; # requires a lot of tools, causes a dependency cycle for stdenv
     }
-    // optionalAttrs enableMultilib { dontMoveLib64 = true; }
+    // optionalAttrs enableMultilib {
+      dontMoveLib64 = true;
+    }
     // optionalAttrs (((is49 && !stdenv.hostPlatform.isDarwin) || is6) && langJava) {
       postFixup = ''
         target="$(echo "$out/libexec/gcc"/*/*/ecj*)"

@@ -19,7 +19,10 @@ in
     command = "cloudflared help";
   };
   refuses-to-autoupdate =
-    runCommand "cloudflared-${version}-refuses-to-autoupdate" { nativeBuildInputs = [ cloudflared ]; }
+    runCommand "cloudflared-${version}-refuses-to-autoupdate"
+      {
+        nativeBuildInputs = [ cloudflared ];
+      }
       ''
         set -e
         cloudflared update 2>&1 | tee output.txt

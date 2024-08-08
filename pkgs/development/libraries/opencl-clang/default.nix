@@ -34,7 +34,9 @@ let
     libclang = addPatches "clang" llvmPkgs.libclang;
 
     clang-unwrapped = libclang.out;
-    clang = llvmPkgs.clang.override { cc = clang-unwrapped; };
+    clang = llvmPkgs.clang.override {
+      cc = clang-unwrapped;
+    };
 
     patchesOut = stdenv.mkDerivation {
       pname = "opencl-clang-patches";

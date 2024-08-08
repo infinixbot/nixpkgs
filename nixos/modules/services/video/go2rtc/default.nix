@@ -65,7 +65,9 @@ in
           };
 
           # TODO: https://github.com/AlexxIT/go2rtc/blob/v1.5.0/README.md#module-rtsp
-          rtsp = { };
+          rtsp =
+            {
+            };
 
           streams = mkOption {
             type = attrsOf (either str (listOf str));
@@ -84,7 +86,9 @@ in
           };
 
           # TODO: https://github.com/AlexxIT/go2rtc/blob/v1.5.0/README.md#module-webrtc
-          webrtc = { };
+          webrtc =
+            {
+            };
         };
       };
     };

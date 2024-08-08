@@ -71,7 +71,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru = {
     tests = {
-      version = testers.testVersion { package = finalAttrs.finalPackage; };
+      version = testers.testVersion {
+        package = finalAttrs.finalPackage;
+      };
       # A lightweight *unit* test that exercises fakeroot and fakechroot together:
       nixos-etc = nixosTests.etc.test-etc-fakeroot;
     };

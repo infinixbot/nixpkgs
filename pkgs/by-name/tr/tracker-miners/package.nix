@@ -133,7 +133,9 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "tracker-miners"; };
+    updateScript = gnome.updateScript {
+      packageName = "tracker-miners";
+    };
   };
 
   meta = {

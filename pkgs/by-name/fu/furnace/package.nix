@@ -110,7 +110,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru = {
     updateScript = ./update.sh;
-    tests.version = testers.testVersion { package = furnace; };
+    tests.version = testers.testVersion {
+      package = furnace;
+    };
   };
 
   meta = {

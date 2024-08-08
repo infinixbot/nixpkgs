@@ -845,7 +845,9 @@ rec {
     };
   };
 
-  tmux-thumbs = pkgs.callPackage ./tmux-thumbs { inherit mkTmuxPlugin; };
+  tmux-thumbs = pkgs.callPackage ./tmux-thumbs {
+    inherit mkTmuxPlugin;
+  };
 
   t-smart-tmux-session-manager = mkTmuxPlugin rec {
     pluginName = "t-smart-tmux-session-manager";

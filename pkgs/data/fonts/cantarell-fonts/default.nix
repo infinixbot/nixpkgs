@@ -44,7 +44,9 @@ stdenv.mkDerivation rec {
   outputHash = "XeqHVdTQ7PTzxkjwfzS/BTR7+k/M69sfUKdRXGOTmZE=";
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = pname; };
+    updateScript = gnome.updateScript {
+      packageName = pname;
+    };
   };
 
   meta = {

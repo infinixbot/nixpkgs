@@ -441,9 +441,13 @@ rec {
             if isAttrs value && !isDerivation value then
               mapAttrsToList (name: value: recurse ([ name ] ++ path) value) value
             else if length path > 1 then
-              { ${concatStringsSep "." (reverseList (tail path))}.${head path} = value; }
+              {
+                ${concatStringsSep "." (reverseList (tail path))}.${head path} = value;
+              }
             else
-              { ${head path} = value; };
+              {
+                ${head path} = value;
+              };
         in
         attrs: foldl recursiveUpdate { } (flatten (recurse [ ] attrs));
 

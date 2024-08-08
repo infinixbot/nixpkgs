@@ -29,9 +29,11 @@
 
 let
   # NOTE: Update the default GPU targets on every update
-  gfx80 = (rocblas.override { gpuTargets = [ "gfx803" ]; }).overrideAttrs {
-    pname = "rocblas-tensile-gfx80";
-  };
+  gfx80 =
+    (rocblas.override {
+      gpuTargets = [ "gfx803" ];
+    }).overrideAttrs
+      { pname = "rocblas-tensile-gfx80"; };
 
   gfx90 =
     (rocblas.override {

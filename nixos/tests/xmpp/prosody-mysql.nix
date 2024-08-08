@@ -66,7 +66,9 @@ import ../make-test-python.nix {
       {
         nixpkgs.overlays = [
           (self: super: {
-            prosody = super.prosody.override { withExtraLuaPackages = p: [ p.luadbi-mysql ]; };
+            prosody = super.prosody.override {
+              withExtraLuaPackages = p: [ p.luadbi-mysql ];
+            };
           })
         ];
         security.pki.certificateFiles = [ "${cert pkgs}/cert.pem" ];
@@ -91,7 +93,11 @@ import ../make-test-python.nix {
             ssl.cert = "${cert pkgs}/cert.pem";
             ssl.key = "${cert pkgs}/key.pem";
           };
-          muc = [ { domain = "conference.example.com"; } ];
+          muc = [
+            {
+              domain = "conference.example.com";
+            }
+          ];
           uploadHttp = {
             domain = "uploads.example.com";
           };

@@ -2137,8 +2137,12 @@ runTests {
 
   testToINIWithGlobalSectionEmpty = {
     expr = generators.toINIWithGlobalSection { } {
-      globalSection = { };
-      sections = { };
+      globalSection =
+        {
+        };
+      sections =
+        {
+        };
     };
     expected = '''';
   };
@@ -2707,17 +2711,26 @@ runTests {
         submodule =
           { lib, ... }:
           {
-            freeformType = lib.types.attrsOf (lib.types.submodule { options.bar = lib.mkOption { }; });
+            freeformType = lib.types.attrsOf (
+              lib.types.submodule {
+                options.bar = lib.mkOption { };
+              }
+            );
             options.bar = lib.mkOption { };
           };
 
         module =
           { lib, ... }:
           {
-            options.foo = lib.mkOption { type = lib.types.submodule submodule; };
+            options.foo = lib.mkOption {
+              type = lib.types.submodule submodule;
+            };
           };
 
-        options = (evalModules { modules = [ module ]; }).options;
+        options =
+          (evalModules {
+            modules = [ module ];
+          }).options;
 
         locs = filter (o: !o.internal) (optionAttrSetToDocList options);
       in
@@ -3249,19 +3262,24 @@ runTests {
 
   # Nested attributes are updated first
   testUpdateManyAttrsByPathNestedBeforehand = {
-    expr = updateManyAttrsByPath [
-      {
-        path = [ "a" ];
-        update = old: old // { x = old.b; };
-      }
-      {
-        path = [
-          "a"
-          "b"
-        ];
-        update = old: old + 1;
-      }
-    ] { a.b = 0; };
+    expr =
+      updateManyAttrsByPath
+        [
+          {
+            path = [ "a" ];
+            update = old: old // { x = old.b; };
+          }
+          {
+            path = [
+              "a"
+              "b"
+            ];
+            update = old: old + 1;
+          }
+        ]
+        {
+          a.b = 0;
+        };
     expected = {
       a.b = 1;
       a.x = 1;

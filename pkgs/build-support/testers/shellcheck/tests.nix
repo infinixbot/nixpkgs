@@ -32,7 +32,13 @@ lib.recurseIntoAttrs {
 
   example-file =
     runCommand "test-testers-shellcheck-example-file"
-      { failure = testers.testBuildFailure (testers.shellcheck { src = ./example.sh; }); }
+      {
+        failure = testers.testBuildFailure (
+          testers.shellcheck {
+            src = ./example.sh;
+          }
+        );
+      }
       ''
         log="$failure/testBuildFailure.log"
         echo "Checking $log"

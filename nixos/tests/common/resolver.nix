@@ -153,7 +153,11 @@
 
           # All the zones without 'subZones'.
           filteredZoneInfo = map (
-            zi: zi // { zones = lib.filter (x: !lib.elem x subZones) zi.zones; }
+            zi:
+            zi
+            // {
+              zones = lib.filter (x: !lib.elem x subZones) zi.zones;
+            }
           ) zoneInfo;
 
         in

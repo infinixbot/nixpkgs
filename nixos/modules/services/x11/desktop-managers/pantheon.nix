@@ -208,8 +208,12 @@ in
           elementary-settings-daemon
           gala
           gnome-settings-daemon
-          (switchboard-with-plugs.override { plugs = cfg.extraSwitchboardPlugs; })
-          (wingpanel-with-indicators.override { indicators = cfg.extraWingpanelIndicators; })
+          (switchboard-with-plugs.override {
+            plugs = cfg.extraSwitchboardPlugs;
+          })
+          (wingpanel-with-indicators.override {
+            indicators = cfg.extraWingpanelIndicators;
+          })
         ])
         ++ utils.removePackagesByName (
           (with pkgs; [

@@ -155,7 +155,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == "unit") { unit = { }; };
+    users.groups = optionalAttrs (cfg.group == "unit") {
+      unit = { };
+    };
 
   };
 }

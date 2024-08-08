@@ -52,7 +52,9 @@ let
       lximage-qt = callPackage ./lximage-qt { };
       qps = callPackage ./qps { };
       screengrab = callPackage ./screengrab { };
-      qlipper = callPackage ./qlipper { inherit (pkgs.libsForQt5) qtbase qttools; };
+      qlipper = callPackage ./qlipper {
+        inherit (pkgs.libsForQt5) qtbase qttools;
+      };
       lxqt-archiver = callPackage ./lxqt-archiver { };
       xdg-desktop-portal-lxqt = callPackage ./xdg-desktop-portal-lxqt { };
 

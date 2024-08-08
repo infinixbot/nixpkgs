@@ -1125,7 +1125,9 @@ self: super:
                 url = "https://gitlab.freedesktop.org/xorg/xserver/-/commit/${commit}.diff";
                 inherit sha256;
               }
-              // lib.optionalAttrs (name != null) { name = name + ".patch"; }
+              // lib.optionalAttrs (name != null) {
+                name = name + ".patch";
+              }
             );
         in
         if (!isDarwin) then
@@ -1362,7 +1364,9 @@ self: super:
   });
 
   xinit =
-    (super.xinit.override { stdenv = if isDarwin then clangStdenv else stdenv; }).overrideAttrs
+    (super.xinit.override {
+      stdenv = if isDarwin then clangStdenv else stdenv;
+    }).overrideAttrs
       (attrs: {
         nativeBuildInputs = attrs.nativeBuildInputs ++ lib.optional isDarwin bootstrap_cmds;
         depsBuildBuild = [ buildPackages.stdenv.cc ];

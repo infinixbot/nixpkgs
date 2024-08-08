@@ -37,7 +37,9 @@ let
     hash = "sha256-5iXOvh4QTv+G0fjEHU62u7QCee+jbvKhK0+fQXbdJis=";
   };
 
-  opentoonz-opencv = opencv.override { inherit libtiff; };
+  opentoonz-opencv = opencv.override {
+    inherit libtiff;
+  };
 
   opentoonz-libtiff = stdenv.mkDerivation {
     pname = "libtiff";

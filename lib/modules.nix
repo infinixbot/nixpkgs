@@ -346,7 +346,9 @@ let
           }
         );
 
-      type = types.submoduleWith { inherit modules specialArgs class; };
+      type = types.submoduleWith {
+        inherit modules specialArgs class;
+      };
 
       result = withWarnings {
         _type = "configuration";
@@ -961,7 +963,11 @@ let
             # For a better error message, evaluate all readOnly definitions as
             # if they were the only definition.
             separateDefs = map (
-              def: def // { value = (mergeDefinitions loc opt.type [ def ]).mergedValue; }
+              def:
+              def
+              // {
+                value = (mergeDefinitions loc opt.type [ def ]).mergedValue;
+              }
             ) defs';
           in
           throw "The option `${showOption loc}' is read-only, but it's set multiple times. Definition values:${showDefs separateDefs}"
@@ -1590,7 +1596,9 @@ let
           description = "Alias of {option}`${showOption to}`.";
           apply = x: use (toOf config);
         }
-        // optionalAttrs (toType != null) { type = toType; }
+        // optionalAttrs (toType != null) {
+          type = toType;
+        }
       );
       config = mkIf condition (mkMerge [
         (optionalAttrs (options ? warnings) {

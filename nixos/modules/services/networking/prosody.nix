@@ -283,7 +283,11 @@ let
     prefix: settings:
     generators.toKeyValue {
       listsAsDuplicateKeys = false;
-      mkKeyValue = k: generators.mkKeyValueDefault { mkValueString = toLua; } " = " (prefix + k);
+      mkKeyValue =
+        k:
+        generators.mkKeyValueDefault {
+          mkValueString = toLua;
+        } " = " (prefix + k);
     } (filterAttrs (k: v: v != null) settings);
 
   createSSLOptsStr = o: ''
@@ -470,7 +474,10 @@ let
             (listOf atom)
           ];
         in
-        attrsOf (nullOr atom) // { description = "int, bool, string or list of them"; };
+        attrsOf (nullOr atom)
+        // {
+          description = "int, bool, string or list of them";
+        };
       options.domain = mkOption {
         type = with types; nullOr str;
         description = "Domain name for a http_file_share service.";
@@ -730,7 +737,11 @@ in
       muc = mkOption {
         type = types.listOf (types.submodule mucOpts);
         default = [ ];
-        example = [ { domain = "conference.my-xmpp-example-host.org"; } ];
+        example = [
+          {
+            domain = "conference.my-xmpp-example-host.org";
+          }
+        ];
         description = "Multi User Chat (MUC) configuration";
       };
 
@@ -975,7 +986,9 @@ in
       home = cfg.dataDir;
     };
 
-    users.groups.prosody = mkIf (cfg.group == "prosody") { gid = config.ids.gids.prosody; };
+    users.groups.prosody = mkIf (cfg.group == "prosody") {
+      gid = config.ids.gids.prosody;
+    };
 
     systemd.services.prosody = {
       description = "Prosody XMPP server";
@@ -1006,7 +1019,9 @@ in
           RestrictRealtime = true;
           RestrictSUIDSGID = true;
         }
-        (mkIf (cfg.dataDir == "/var/lib/prosody") { StateDirectory = "prosody"; })
+        (mkIf (cfg.dataDir == "/var/lib/prosody") {
+          StateDirectory = "prosody";
+        })
       ];
     };
 

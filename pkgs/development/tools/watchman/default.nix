@@ -91,7 +91,9 @@ stdenv.mkDerivation rec {
 
   cargoRoot = "watchman/cli";
 
-  cargoDeps = rustPlatform.importCargoLock { lockFile = ./Cargo.lock; };
+  cargoDeps = rustPlatform.importCargoLock {
+    lockFile = ./Cargo.lock;
+  };
 
   patches = [
     # fix build with rustc >=1.79

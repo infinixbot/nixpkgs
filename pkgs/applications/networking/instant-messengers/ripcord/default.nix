@@ -63,7 +63,9 @@ mkDerivation rec {
       xkeyboardconfig
     ]);
 
-  fontsConf = makeFontsConf { fontDirectories = [ twemoji-color-font ]; };
+  fontsConf = makeFontsConf {
+    fontDirectories = [ twemoji-color-font ];
+  };
 
   installPhase = ''
     runHook preInstall

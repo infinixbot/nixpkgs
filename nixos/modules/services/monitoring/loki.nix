@@ -125,10 +125,14 @@ in
               cfg.configFile;
           validateConfig =
             file:
-            pkgs.runCommand "validate-loki-conf" { nativeBuildInputs = [ cfg.package ]; } ''
-              loki -verify-config -config.file "${file}"
-              ln -s "${file}" "$out"
-            '';
+            pkgs.runCommand "validate-loki-conf"
+              {
+                nativeBuildInputs = [ cfg.package ];
+              }
+              ''
+                loki -verify-config -config.file "${file}"
+                ln -s "${file}" "$out"
+              '';
         in
         {
           ExecStart = "${cfg.package}/bin/loki --config.file=${conf} ${escapeShellArgs cfg.extraFlags}";

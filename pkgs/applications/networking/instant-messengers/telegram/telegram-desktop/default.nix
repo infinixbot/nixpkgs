@@ -56,7 +56,9 @@
 let
   tg_owt = callPackage ./tg_owt.nix {
     inherit stdenv;
-    abseil-cpp = abseil-cpp.override { cxxStandard = "20"; };
+    abseil-cpp = abseil-cpp.override {
+      cxxStandard = "20";
+    };
   };
 in
 stdenv.mkDerivation (finalAttrs: {
@@ -186,7 +188,9 @@ stdenv.mkDerivation (finalAttrs: {
       ]
     );
 
-  env = lib.optionalAttrs stdenv.isDarwin { NIX_CFLAGS_LINK = "-fuse-ld=lld"; };
+  env = lib.optionalAttrs stdenv.isDarwin {
+    NIX_CFLAGS_LINK = "-fuse-ld=lld";
+  };
 
   cmakeFlags = [
     "-Ddisable_autoupdate=ON"

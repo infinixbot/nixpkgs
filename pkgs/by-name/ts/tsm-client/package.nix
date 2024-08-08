@@ -175,7 +175,11 @@ in
 
 buildEnv {
   name = "tsm-client-${unwrapped.version}";
-  meta = meta // lib.attrsets.optionalAttrs enableGui { mainProgram = "dsmj"; };
+  meta =
+    meta
+    // lib.attrsets.optionalAttrs enableGui {
+      mainProgram = "dsmj";
+    };
   passthru = passthru // {
     inherit unwrapped;
   };

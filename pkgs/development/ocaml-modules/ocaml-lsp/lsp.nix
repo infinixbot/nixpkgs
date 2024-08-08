@@ -34,7 +34,9 @@
 }:
 
 let
-  jsonrpc_v = jsonrpc.override { inherit version; };
+  jsonrpc_v = jsonrpc.override {
+    inherit version;
+  };
 in
 buildDunePackage rec {
   pname = "lsp";

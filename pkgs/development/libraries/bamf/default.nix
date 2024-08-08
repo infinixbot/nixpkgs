@@ -83,7 +83,9 @@ stdenv.mkDerivation rec {
   # Ignore deprecation errors
   env.NIX_CFLAGS_COMPILE = "-DGLIB_DISABLE_DEPRECATION_WARNINGS";
 
-  passthru.updateScript = gitUpdater { ignoredVersions = ".ubuntu.*"; };
+  passthru.updateScript = gitUpdater {
+    ignoredVersions = ".ubuntu.*";
+  };
 
   meta = with lib; {
     description = "Application matching framework";

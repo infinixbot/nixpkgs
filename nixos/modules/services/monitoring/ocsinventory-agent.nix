@@ -8,7 +8,9 @@
 let
   cfg = config.services.ocsinventory-agent;
 
-  settingsFormat = pkgs.formats.keyValue { mkKeyValue = lib.generators.mkKeyValueDefault { } "="; };
+  settingsFormat = pkgs.formats.keyValue {
+    mkKeyValue = lib.generators.mkKeyValueDefault { } "=";
+  };
 
 in
 {

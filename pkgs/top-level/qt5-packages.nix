@@ -224,7 +224,9 @@ makeScopeWithSplicing' {
 
           maui-core = libsForQt5.callPackage ../development/libraries/maui-core { };
 
-          mlt = pkgs.mlt.override { qt = qt5; };
+          mlt = pkgs.mlt.override {
+            qt = qt5;
+          };
 
           phonon = callPackage ../development/libraries/phonon { };
 

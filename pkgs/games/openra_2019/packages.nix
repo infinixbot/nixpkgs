@@ -16,7 +16,12 @@ let
     let
       f = import ./common.nix;
     in
-    f (builtins.intersectAttrs (builtins.functionArgs f) pkgs // { lua = pkgs.lua5_1; });
+    f (
+      builtins.intersectAttrs (builtins.functionArgs f) pkgs
+      // {
+        lua = pkgs.lua5_1;
+      }
+    );
 
   /*
     Building a set of engines or mods requires some dependencies as well,

@@ -26,7 +26,9 @@ buildPythonApplication rec {
     git
   ];
 
-  passthru.tests.version = testers.testVersion { package = mu-repo; };
+  passthru.tests.version = testers.testVersion {
+    package = mu-repo;
+  };
 
   meta = with lib; {
     description = "Tool to help in dealing with multiple git repositories";

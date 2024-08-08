@@ -69,7 +69,9 @@ let
     pos = builtins.unsafeGetAttrPos "pname" args;
 
     passthru = {
-      updateScript = gitUpdater { inherit rev-prefix odd-unstable patchlevel-unstable; };
+      updateScript = gitUpdater {
+        inherit rev-prefix odd-unstable patchlevel-unstable;
+      };
     } // passthru;
 
     meta =

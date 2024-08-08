@@ -439,7 +439,9 @@ let
               else
                 peer.dynamicEndpointRefreshSeconds;
           };
-      unitConfig = lib.optionalAttrs dynamicRefreshEnabled { StartLimitIntervalSec = 0; };
+      unitConfig = lib.optionalAttrs dynamicRefreshEnabled {
+        StartLimitIntervalSec = 0;
+      };
 
       script =
         let

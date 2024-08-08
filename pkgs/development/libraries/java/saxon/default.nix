@@ -52,7 +52,9 @@ let
           chmod a+x $out/bin/${mainProgram}
         '';
 
-        passthru = lib.optionalAttrs (updateScript != null) { inherit updateScript; };
+        passthru = lib.optionalAttrs (updateScript != null) {
+          inherit updateScript;
+        };
 
         meta = with lib; {
           inherit description license mainProgram;

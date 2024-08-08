@@ -44,7 +44,9 @@ stdenv.mkDerivation rec {
   ];
 
   passthru = {
-    updateScript = gnome.updateScript { packageName = "gnome-console"; };
+    updateScript = gnome.updateScript {
+      packageName = "gnome-console";
+    };
   };
 
   passthru.tests.test = nixosTests.terminal-emulators.kgx;

@@ -122,7 +122,9 @@ stdenv.mkDerivation (finalAttrs: {
   passthru = {
     tests = {
       installedTests = nixosTests.installed-tests.graphene;
-      pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
+      pkg-config = testers.hasPkgConfigModules {
+        package = finalAttrs.finalPackage;
+      };
     };
 
     updateScript = nix-update-script { };

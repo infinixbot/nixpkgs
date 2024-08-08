@@ -31,7 +31,9 @@ in
           if p == null then
             null
           else
-            wayland-lib.genFinalPackage p { xwaylandSupport = cfg.xwayland.enable; };
+            wayland-lib.genFinalPackage p {
+              xwaylandSupport = cfg.xwayland.enable;
+            };
       };
 
     xwayland.enable = lib.mkEnableOption "XWayland" // {

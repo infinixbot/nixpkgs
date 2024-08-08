@@ -4,7 +4,9 @@ let
 in
 {
   options = {
-    fun = lib.mkOption { type = types.functionTo (types.listOf types.str); };
+    fun = lib.mkOption {
+      type = types.functionTo (types.listOf types.str);
+    };
 
     result = lib.mkOption {
       type = types.str;

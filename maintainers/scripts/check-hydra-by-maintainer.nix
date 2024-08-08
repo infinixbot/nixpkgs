@@ -1,6 +1,8 @@
 { maintainer }:
 let
-  pkgs = import ./../../default.nix { config.allowAliases = false; };
+  pkgs = import ./../../default.nix {
+    config.allowAliases = false;
+  };
   inherit (pkgs) lib;
   maintainer_ = pkgs.lib.maintainers.${maintainer};
   packagesWith =

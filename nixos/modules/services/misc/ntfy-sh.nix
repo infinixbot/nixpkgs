@@ -115,7 +115,9 @@ in
         };
       };
 
-      users.groups = optionalAttrs (cfg.group == "ntfy-sh") { ntfy-sh = { }; };
+      users.groups = optionalAttrs (cfg.group == "ntfy-sh") {
+        ntfy-sh = { };
+      };
 
       users.users = optionalAttrs (cfg.user == "ntfy-sh") {
         ntfy-sh = {

@@ -35,7 +35,10 @@ in
           openjdk = callPackage path-linux (args);
         in
         assert stdenv.isLinux;
-        openjdk // { headless = openjdk.override { headless = true; }; };
+        openjdk
+        // {
+          headless = openjdk.override { headless = true; };
+        };
 
     in
     rec {

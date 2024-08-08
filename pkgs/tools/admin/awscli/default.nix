@@ -65,7 +65,9 @@ let
 
     passthru = {
       python = python3; # for aws_shell
-      updateScript = nix-update-script { extraArgs = [ "--version=skip" ]; };
+      updateScript = nix-update-script {
+        extraArgs = [ "--version=skip" ];
+      };
       tests.version = testers.testVersion {
         package = awscli;
         command = "aws --version";

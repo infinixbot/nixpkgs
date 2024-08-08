@@ -291,7 +291,12 @@ let
         inherit enableMail latestCompatibleLinuxPackages kernelModuleAttribute;
         # The corresponding userspace tools to this instantiation
         # of the ZFS package set.
-        userspaceTools = genericBuild (outerArgs // { configFile = "user"; }) innerArgs;
+        userspaceTools = genericBuild (
+          outerArgs
+          // {
+            configFile = "user";
+          }
+        ) innerArgs;
 
         inherit tests;
       };

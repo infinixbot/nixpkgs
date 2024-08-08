@@ -9,7 +9,11 @@
   ...
 }:
 let
-  pkgs-with-overlay = pkgs.extend (final: prev: { proof-of-overlay-hello = prev.hello; });
+  pkgs-with-overlay = pkgs.extend (
+    final: prev: {
+      proof-of-overlay-hello = prev.hello;
+    }
+  );
 
   dummyVersioning = {
     revision = "test";

@@ -305,7 +305,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == name) { ${name}.gid = gid; };
+    users.groups = optionalAttrs (cfg.group == name) {
+      ${name}.gid = gid;
+    };
   };
 
 }

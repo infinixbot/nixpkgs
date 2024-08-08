@@ -234,7 +234,9 @@ in
 
   config = mkIf cfg.enable {
 
-    environment.etc = lib.optionalAttrs (!cfg.daemon.enable) { "ldap.conf" = ldapConfig; };
+    environment.etc = lib.optionalAttrs (!cfg.daemon.enable) {
+      "ldap.conf" = ldapConfig;
+    };
 
     system.nssModules = mkIf cfg.nsswitch (
       lib.singleton (if cfg.daemon.enable then pkgs.nss_pam_ldapd else pkgs.nss_ldap)

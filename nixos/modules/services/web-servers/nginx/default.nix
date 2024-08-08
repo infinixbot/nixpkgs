@@ -767,7 +767,11 @@ in
         default = pkgs.nginxStable;
         defaultText = literalExpression "pkgs.nginxStable";
         type = types.package;
-        apply = p: p.override { modules = lib.unique (p.modules ++ cfg.additionalModules); };
+        apply =
+          p:
+          p.override {
+            modules = lib.unique (p.modules ++ cfg.additionalModules);
+          };
         description = ''
           Nginx package to use. This defaults to the stable version. Note
           that the nginx team recommends to use the mainline version which
@@ -1216,7 +1220,13 @@ in
       };
 
       virtualHosts = mkOption {
-        type = types.attrsOf (types.submodule (import ./vhost-options.nix { inherit config lib; }));
+        type = types.attrsOf (
+          types.submodule (
+            import ./vhost-options.nix {
+              inherit config lib;
+            }
+          )
+        );
         default = {
           localhost = { };
         };
@@ -1600,7 +1610,9 @@ in
       };
     };
 
-    environment.etc."nginx/nginx.conf" = mkIf cfg.enableReload { source = configFile; };
+    environment.etc."nginx/nginx.conf" = mkIf cfg.enableReload {
+      source = configFile;
+    };
 
     # This service waits for all certificates to be available
     # before reloading nginx configuration.
@@ -1664,7 +1676,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == "nginx") { nginx.gid = config.ids.gids.nginx; };
+    users.groups = optionalAttrs (cfg.group == "nginx") {
+      nginx.gid = config.ids.gids.nginx;
+    };
 
     boot.kernelModules = optional (versionAtLeast config.boot.kernelPackages.kernel.version "4.17") "tls";
 

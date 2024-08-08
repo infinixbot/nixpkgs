@@ -24,7 +24,9 @@ buildKodiAddon rec {
   ];
 
   passthru = {
-    updateScript = addonUpdateScript { attrPath = "kodi.packages.mediacccde"; };
+    updateScript = addonUpdateScript {
+      attrPath = "kodi.packages.mediacccde";
+    };
   };
 
   meta = with lib; {

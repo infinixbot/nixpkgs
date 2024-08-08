@@ -73,7 +73,9 @@ stdenv.mkDerivation (finalAttrs: {
     )
   '';
 
-  passthru.updateScript = gnome.updateScript { packageName = "loupe"; };
+  passthru.updateScript = gnome.updateScript {
+    packageName = "loupe";
+  };
 
   meta = with lib; {
     homepage = "https://gitlab.gnome.org/GNOME/loupe";

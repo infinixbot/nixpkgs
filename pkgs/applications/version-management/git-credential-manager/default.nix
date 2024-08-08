@@ -62,7 +62,9 @@ buildDotnetModule rec {
 
   passthru = {
     updateScript = ./update.sh;
-    tests.version = testers.testVersion { package = git-credential-manager; };
+    tests.version = testers.testVersion {
+      package = git-credential-manager;
+    };
   };
 
   meta = with lib; {

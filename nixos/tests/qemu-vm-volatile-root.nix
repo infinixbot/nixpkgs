@@ -7,7 +7,9 @@
 
   meta.maintainers = with lib.maintainers; [ nikstur ];
 
-  nodes.machine = _: { virtualisation.diskImage = null; };
+  nodes.machine = _: {
+    virtualisation.diskImage = null;
+  };
 
   testScript = ''
     machine.succeed("findmnt --kernel --types tmpfs /")

@@ -57,9 +57,13 @@ let
     gemdir = ./rubyEnv;
     gemset = import (gemdir + "/gemset.nix") src;
     gemConfig = defaultGemConfig // {
-      gpgme = attrs: { nativeBuildInputs = [ pkg-config ]; };
+      gpgme = attrs: {
+        nativeBuildInputs = [ pkg-config ];
+      };
       # the openssl needs the openssl include files
-      openssl = attrs: { buildInputs = [ openssl ]; };
+      openssl = attrs: {
+        buildInputs = [ openssl ];
+      };
       ruby-magic = attrs: {
         buildInputs = [ file ];
         buildFlags = [ "--enable-system-libraries" ];

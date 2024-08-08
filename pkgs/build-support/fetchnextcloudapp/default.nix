@@ -28,8 +28,12 @@ applyPatches (
           longDescription = description;
           inherit homepage;
         }
-        // lib.optionalAttrs (description != null) { longDescription = description; }
-        // lib.optionalAttrs (homepage != null) { inherit homepage; };
+        // lib.optionalAttrs (description != null) {
+          longDescription = description;
+        }
+        // lib.optionalAttrs (homepage != null) {
+          inherit homepage;
+        };
     };
     prePatch = ''
       if [ ! -f ./appinfo/info.xml ]; then

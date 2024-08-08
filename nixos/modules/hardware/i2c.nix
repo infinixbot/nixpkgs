@@ -32,7 +32,9 @@ in
 
     boot.kernelModules = [ "i2c-dev" ];
 
-    users.groups = mkIf (cfg.group == "i2c") { i2c = { }; };
+    users.groups = mkIf (cfg.group == "i2c") {
+      i2c = { };
+    };
 
     services.udev.packages = lib.singleton (
       pkgs.writeTextFile {

@@ -154,7 +154,9 @@ rec {
                   passAsFile = [ "content" ];
                 }
               else
-                { contentPath = content; }
+                {
+                  contentPath = content;
+                }
             )
           )
           ''

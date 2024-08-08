@@ -186,7 +186,9 @@ in
     (mkIf cfg.enable {
       services.influxdb2.enable = cfg.influxdb.enable;
 
-      networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.settings.web.listen.port ]; };
+      networking.firewall = mkIf cfg.openFirewall {
+        allowedTCPPorts = [ cfg.settings.web.listen.port ];
+      };
 
       systemd.services.scrutiny = {
         description = "Hard Drive S.M.A.R.T Monitoring, Historical Trends & Real World Failure Thresholds";

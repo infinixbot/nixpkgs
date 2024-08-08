@@ -21,7 +21,9 @@ buildKodiAddon rec {
 
   passthru = {
     pythonPath = "resources/lib";
-    updateScript = addonUpdateScript { attrPath = "kodi.packages.radioparadise"; };
+    updateScript = addonUpdateScript {
+      attrPath = "kodi.packages.radioparadise";
+    };
   };
 
   meta = with lib; {

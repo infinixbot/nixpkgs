@@ -2195,7 +2195,11 @@ in
                   policies = mkOption {
                     description = "List of contact points to import or update.";
                     default = [ ];
-                    type = types.listOf (types.submodule { freeformType = provisioningSettingsFormat.type; });
+                    type = types.listOf (
+                      types.submodule {
+                        freeformType = provisioningSettingsFormat.type;
+                      }
+                    );
                   };
 
                   resetPolicies = mkOption {

@@ -29,7 +29,9 @@ buildGoModule rec {
   ];
 
   passthru.tests = {
-    version = testers.testVersion { package = gtree; };
+    version = testers.testVersion {
+      package = gtree;
+    };
   };
 
   meta = with lib; {

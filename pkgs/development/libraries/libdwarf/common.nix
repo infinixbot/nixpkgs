@@ -13,7 +13,9 @@ stdenv.mkDerivation rec {
   pname = "libdwarf";
   inherit version;
 
-  src = fetchurl { inherit url hash; };
+  src = fetchurl {
+    inherit url hash;
+  };
 
   configureFlags = [
     "--enable-shared"

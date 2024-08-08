@@ -23,7 +23,11 @@ let
       let
         attrName = if jitSupport then "${version}_jit" else version;
       in
-      self.lib.nameValuePair attrName (import path { inherit jitSupport self; })
+      self.lib.nameValuePair attrName (
+        import path {
+          inherit jitSupport self;
+        }
+      )
     ) versions;
 
 in

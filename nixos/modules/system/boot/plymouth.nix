@@ -10,7 +10,9 @@ with lib;
 
 let
 
-  plymouth = pkgs.plymouth.override { systemd = config.boot.initrd.systemd.package; };
+  plymouth = pkgs.plymouth.override {
+    systemd = config.boot.initrd.systemd.package;
+  };
 
   cfg = config.boot.plymouth;
   opt = options.boot.plymouth;

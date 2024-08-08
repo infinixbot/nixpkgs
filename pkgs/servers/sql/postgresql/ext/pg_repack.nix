@@ -30,7 +30,9 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   passthru.tests = {
-    version = testers.testVersion { package = finalAttrs.finalPackage; };
+    version = testers.testVersion {
+      package = finalAttrs.finalPackage;
+    };
     extension = stdenv.mkDerivation {
       name = "plpgsql-check-test";
       dontUnpack = true;

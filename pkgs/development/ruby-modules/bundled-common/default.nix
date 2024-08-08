@@ -160,7 +160,9 @@ let
     } // meta;
 
     passthru = (
-      lib.optionalAttrs (pname != null) { inherit (gems.${pname}) gemType; }
+      lib.optionalAttrs (pname != null) {
+        inherit (gems.${pname}) gemType;
+      }
       // rec {
         inherit
           ruby

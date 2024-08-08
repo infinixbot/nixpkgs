@@ -164,7 +164,9 @@ let
                   bypassrls = true;
                 };
               }
-              { name = "default-clauses"; }
+              {
+                name = "default-clauses";
+              }
             ];
           };
         };

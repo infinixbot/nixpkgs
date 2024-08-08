@@ -13,8 +13,12 @@ let
     { config, ... }:
     {
       options = {
-        shortName = lib.mkOption { type = types.str; };
-        scope = lib.mkOption { type = types.str; };
+        shortName = lib.mkOption {
+          type = types.str;
+        };
+        scope = lib.mkOption {
+          type = types.str;
+        };
         enableFeatureFreezePing = lib.mkOption {
           type = types.bool;
           default = false;

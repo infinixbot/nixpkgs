@@ -56,7 +56,9 @@ stdenv.mkDerivation (finalAttrs: {
     popd
   '';
 
-  passthru.updateScript = unstableGitUpdater { url = finalAttrs.meta.homepage; };
+  passthru.updateScript = unstableGitUpdater {
+    url = finalAttrs.meta.homepage;
+  };
 
   meta = {
     homepage = "https://github.com/blakemcbride/TECOC";

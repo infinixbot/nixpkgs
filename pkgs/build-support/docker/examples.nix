@@ -857,7 +857,9 @@ rec {
       ];
     };
 
-    config = { };
+    config =
+      {
+      };
   };
 
   nix-shell-basic = streamNixShellImage {
@@ -880,7 +882,9 @@ rec {
   nix-shell-inputs = streamNixShellImage {
     name = "nix-shell-inputs";
     tag = "latest";
-    drv = pkgs.mkShell { nativeBuildInputs = [ pkgs.hello ]; };
+    drv = pkgs.mkShell {
+      nativeBuildInputs = [ pkgs.hello ];
+    };
     command = ''
       hello
     '';

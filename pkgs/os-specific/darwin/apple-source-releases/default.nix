@@ -402,7 +402,9 @@ developerToolsPackages_11_3_1
       { };
   diskdev_cmds =
     applePackage "diskdev_cmds" "osx-10.11.6" "sha256-VX+hcZ7JhOA8EhwLloPlM3Yx79RXp9OYHV9Mi10uw3Q="
-      { macosPackages_11_0_1 = macosPackages_11_0_1; };
+      {
+        macosPackages_11_0_1 = macosPackages_11_0_1;
+      };
   network_cmds =
     if isSdk10_12 then
       applePackage "network_cmds" "osx-10.11.6" "sha256-I89CLIswGheewOjiNZwQTgWvWbhm0qtB5+KUqzxnQ5M=" { }

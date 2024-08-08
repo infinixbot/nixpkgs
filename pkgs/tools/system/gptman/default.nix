@@ -25,7 +25,9 @@ rustPlatform.buildRustPackage rec {
 
   buildFeatures = [ "cli" ];
 
-  passthru.tests.version = testers.testVersion { package = gptman; };
+  passthru.tests.version = testers.testVersion {
+    package = gptman;
+  };
 
   meta = with lib; {
     description = "GPT manager that allows you to copy partitions from one disk to another and more";

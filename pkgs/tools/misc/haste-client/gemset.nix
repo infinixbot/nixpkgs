@@ -3,8 +3,12 @@
     dependencies = [ "multipart-post" ];
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "maglev"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "maglev";
+      }
       {
         engine = "maglev";
         version = "1.8";
@@ -77,8 +81,12 @@
         engine = "maglev";
         version = "2.6";
       }
-      { engine = "rbx"; }
-      { engine = "rbx"; }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "rbx";
+      }
       {
         engine = "rbx";
         version = "1.8";
@@ -115,9 +123,15 @@
         engine = "rbx";
         version = "2.6";
       }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
       {
         engine = "ruby";
         version = "1.8";
@@ -215,8 +229,12 @@
   json = {
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "maglev"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "maglev";
+      }
       {
         engine = "maglev";
         version = "1.8";
@@ -289,8 +307,12 @@
         engine = "maglev";
         version = "2.6";
       }
-      { engine = "rbx"; }
-      { engine = "rbx"; }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "rbx";
+      }
       {
         engine = "rbx";
         version = "1.8";
@@ -327,9 +349,15 @@
         engine = "rbx";
         version = "2.6";
       }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
       {
         engine = "ruby";
         version = "1.8";
@@ -413,8 +441,12 @@
   multipart-post = {
     groups = [ "default" ];
     platforms = [
-      { engine = "maglev"; }
-      { engine = "maglev"; }
+      {
+        engine = "maglev";
+      }
+      {
+        engine = "maglev";
+      }
       {
         engine = "maglev";
         version = "1.8";
@@ -487,8 +519,12 @@
         engine = "maglev";
         version = "2.6";
       }
-      { engine = "rbx"; }
-      { engine = "rbx"; }
+      {
+        engine = "rbx";
+      }
+      {
+        engine = "rbx";
+      }
       {
         engine = "rbx";
         version = "1.8";
@@ -525,9 +561,15 @@
         engine = "rbx";
         version = "2.6";
       }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
-      { engine = "ruby"; }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
+      {
+        engine = "ruby";
+      }
       {
         engine = "ruby";
         version = "1.8";

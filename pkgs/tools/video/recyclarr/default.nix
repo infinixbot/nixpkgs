@@ -88,7 +88,9 @@ stdenv.mkDerivation rec {
 
   passthru = {
     updateScript = ./update.sh;
-    tests.version = testers.testVersion { package = recyclarr; };
+    tests.version = testers.testVersion {
+      package = recyclarr;
+    };
   };
 
   meta = with lib; {

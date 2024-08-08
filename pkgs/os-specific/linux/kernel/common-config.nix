@@ -788,7 +788,9 @@ let
 
         DEFAULT_MMAP_MIN_ADDR = freeform "65536";
       }
-      // optionalAttrs stdenv.hostPlatform.isAarch64 { DEFAULT_MMAP_MIN_ADDR = freeform "32768"; };
+      // optionalAttrs stdenv.hostPlatform.isAarch64 {
+        DEFAULT_MMAP_MIN_ADDR = freeform "32768";
+      };
 
     microcode = {
       MICROCODE = yes;

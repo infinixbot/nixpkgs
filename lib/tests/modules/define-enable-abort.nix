@@ -1,1 +1,3 @@
-{ config.enable = abort "oops"; }
+{
+  config.enable = abort "oops";
+}

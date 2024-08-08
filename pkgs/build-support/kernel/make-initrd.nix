@@ -130,5 +130,7 @@ stdenvNoCC.mkDerivation (
     ]) contents (lib.range 0 (lib.length contents - 1));
     pathsFromGraph = ./paths-from-graph.pl;
   }
-  // lib.optionalAttrs makeUInitrd { uInitrdCompression = uInitrdCompression; }
+  // lib.optionalAttrs makeUInitrd {
+    uInitrdCompression = uInitrdCompression;
+  }
 )

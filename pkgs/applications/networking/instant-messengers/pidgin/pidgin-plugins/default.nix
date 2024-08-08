@@ -27,7 +27,9 @@ lib.makeScope newScope (
 
     pidgin-indicator = callPackage ./pidgin-indicator { };
 
-    pidgin-latex = callPackage ./pidgin-latex { texLive = texliveBasic; };
+    pidgin-latex = callPackage ./pidgin-latex {
+      texLive = texliveBasic;
+    };
 
     pidgin-msn-pecan = callPackage ./msn-pecan { };
 

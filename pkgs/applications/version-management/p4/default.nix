@@ -14,7 +14,9 @@
 }:
 
 let
-  opensslStatic = openssl.override { static = true; };
+  opensslStatic = openssl.override {
+    static = true;
+  };
   androidZlibContrib =
     let
       src = fetchzip {

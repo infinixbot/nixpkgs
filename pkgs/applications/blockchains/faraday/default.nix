@@ -29,7 +29,9 @@ buildGoModule rec {
     "-w"
   ];
 
-  passthru.tests.version = testers.testVersion { package = faraday; };
+  passthru.tests.version = testers.testVersion {
+    package = faraday;
+  };
 
   meta = with lib; {
     description = "LND Channel Management Tools";

@@ -21,7 +21,9 @@ in
   options.services.quickwit = {
     enable = mkEnableOption "Quickwit";
 
-    package = lib.mkPackageOption pkgs "Quickwit" { default = [ "quickwit" ]; };
+    package = lib.mkPackageOption pkgs "Quickwit" {
+      default = [ "quickwit" ];
+    };
 
     settings = lib.mkOption {
       type = lib.types.submodule {

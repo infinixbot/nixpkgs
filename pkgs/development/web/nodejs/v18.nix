@@ -17,7 +17,9 @@ let
     packages:
     if packages.stdenv.cc.isClang && lib.versionAtLeast (lib.getVersion packages.stdenv.cc.cc) "16" then
       overrideCC packages.llvmPackages_15.stdenv (
-        packages.llvmPackages_15.stdenv.cc.override { inherit (packages.llvmPackages) libcxx; }
+        packages.llvmPackages_15.stdenv.cc.override {
+          inherit (packages.llvmPackages) libcxx;
+        }
       )
     else
       packages.stdenv;

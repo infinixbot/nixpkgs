@@ -371,7 +371,13 @@ with lib;
     };
 
     locations = mkOption {
-      type = types.attrsOf (types.submodule (import ./location-options.nix { inherit lib config; }));
+      type = types.attrsOf (
+        types.submodule (
+          import ./location-options.nix {
+            inherit lib config;
+          }
+        )
+      );
       default = { };
       example = literalExpression ''
         {

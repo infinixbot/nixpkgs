@@ -223,7 +223,9 @@ in
           isSystemUser = true;
         };
       };
-      groups = mkIf (cfg.group == defaultGroup) { patroni = { }; };
+      groups = mkIf (cfg.group == defaultGroup) {
+        patroni = { };
+      };
     };
 
     systemd.services = {

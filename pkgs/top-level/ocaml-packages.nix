@@ -192,7 +192,9 @@ let
 
         carton-git = callPackage ../development/ocaml-modules/carton/git.nix { };
 
-        carton-lwt = callPackage ../development/ocaml-modules/carton/lwt.nix { git-binary = pkgs.git; };
+        carton-lwt = callPackage ../development/ocaml-modules/carton/lwt.nix {
+          git-binary = pkgs.git;
+        };
 
         cfstream = callPackage ../development/ocaml-modules/cfstream { };
 
@@ -304,7 +306,9 @@ let
 
         cudf = callPackage ../development/ocaml-modules/cudf { };
 
-        curly = callPackage ../development/ocaml-modules/curly { inherit (pkgs) curl; };
+        curly = callPackage ../development/ocaml-modules/curly {
+          inherit (pkgs) curl;
+        };
 
         curses = callPackage ../development/ocaml-modules/curses { };
 
@@ -574,17 +578,23 @@ let
 
         fix = callPackage ../development/ocaml-modules/fix { };
 
-        flac = callPackage ../development/ocaml-modules/flac { inherit (pkgs) flac; };
+        flac = callPackage ../development/ocaml-modules/flac {
+          inherit (pkgs) flac;
+        };
 
         flex = callPackage ../development/ocaml-modules/flex { };
 
         fmt = callPackage ../development/ocaml-modules/fmt { };
 
-        fontconfig = callPackage ../development/ocaml-modules/fontconfig { inherit (pkgs) fontconfig; };
+        fontconfig = callPackage ../development/ocaml-modules/fontconfig {
+          inherit (pkgs) fontconfig;
+        };
 
         fpath = callPackage ../development/ocaml-modules/fpath { };
 
-        frei0r = callPackage ../development/ocaml-modules/frei0r { inherit (pkgs) frei0r; };
+        frei0r = callPackage ../development/ocaml-modules/frei0r {
+          inherit (pkgs) frei0r;
+        };
 
         frontc = callPackage ../development/ocaml-modules/frontc { };
 
@@ -619,13 +629,17 @@ let
 
         gg = callPackage ../development/ocaml-modules/gg { };
 
-        git = callPackage ../development/ocaml-modules/git { git-binary = pkgs.git; };
+        git = callPackage ../development/ocaml-modules/git {
+          git-binary = pkgs.git;
+        };
 
         git-mirage = callPackage ../development/ocaml-modules/git/mirage.nix { };
 
         git-paf = callPackage ../development/ocaml-modules/git/paf.nix { };
 
-        git-unix = callPackage ../development/ocaml-modules/git/unix.nix { git-binary = pkgs.git; };
+        git-unix = callPackage ../development/ocaml-modules/git/unix.nix {
+          git-binary = pkgs.git;
+        };
 
         github = callPackage ../development/ocaml-modules/github { };
         github-data = callPackage ../development/ocaml-modules/github/data.nix { };
@@ -645,7 +659,9 @@ let
 
         gmap = callPackage ../development/ocaml-modules/gmap { };
 
-        gnuplot = callPackage ../development/ocaml-modules/gnuplot { inherit (pkgs) gnuplot; };
+        gnuplot = callPackage ../development/ocaml-modules/gnuplot {
+          inherit (pkgs) gnuplot;
+        };
 
         graphics =
           if lib.versionOlder "4.09" ocaml.version then
@@ -663,7 +679,9 @@ let
 
         graphql_ppx = callPackage ../development/ocaml-modules/graphql_ppx { };
 
-        gsl = callPackage ../development/ocaml-modules/gsl { inherit (pkgs) gsl; };
+        gsl = callPackage ../development/ocaml-modules/gsl {
+          inherit (pkgs) gsl;
+        };
 
         gstreamer = callPackage ../development/ocaml-modules/gstreamer {
           inherit (pkgs.darwin.apple_sdk.frameworks) AppKit Foundation;
@@ -821,7 +839,9 @@ let
               inherit (pkgs) openssl;
             }
           else
-            import ../development/ocaml-modules/janestreet { };
+            import ../development/ocaml-modules/janestreet
+              {
+              };
 
         janeStreet_0_15 =
           (lib.makeScope self.newScope (
@@ -1014,7 +1034,9 @@ let
 
         lambdasoup = callPackage ../development/ocaml-modules/lambdasoup { };
 
-        lame = callPackage ../development/ocaml-modules/lame { inherit (pkgs) lame; };
+        lame = callPackage ../development/ocaml-modules/lame {
+          inherit (pkgs) lame;
+        };
 
         landmarks = callPackage ../development/ocaml-modules/landmarks { };
 
@@ -1036,7 +1058,9 @@ let
 
         libc = callPackage ../development/ocaml-modules/libc { };
 
-        lilv = callPackage ../development/ocaml-modules/lilv { inherit (pkgs) lilv; };
+        lilv = callPackage ../development/ocaml-modules/lilv {
+          inherit (pkgs) lilv;
+        };
 
         linenoise = callPackage ../development/ocaml-modules/linenoise { };
 
@@ -1046,7 +1070,9 @@ let
 
         linol-lwt = callPackage ../development/ocaml-modules/linol/lwt.nix { };
 
-        llvm = callPackage ../development/ocaml-modules/llvm { libllvm = pkgs.llvmPackages.libllvm; };
+        llvm = callPackage ../development/ocaml-modules/llvm {
+          libllvm = pkgs.llvmPackages.libllvm;
+        };
 
         lo = callPackage ../development/ocaml-modules/lo { };
 
@@ -1064,7 +1090,9 @@ let
 
         lutils = callPackage ../development/ocaml-modules/lutils { };
 
-        luv = callPackage ../development/ocaml-modules/luv { inherit (pkgs) file; };
+        luv = callPackage ../development/ocaml-modules/luv {
+          inherit (pkgs) file;
+        };
 
         lwd = callPackage ../development/ocaml-modules/lwd { };
 
@@ -1104,7 +1132,9 @@ let
 
         magic-trace = callPackage ../development/ocaml-modules/magic-trace { };
 
-        mariadb = callPackage ../development/ocaml-modules/mariadb { inherit (pkgs) mariadb; };
+        mariadb = callPackage ../development/ocaml-modules/mariadb {
+          inherit (pkgs) mariadb;
+        };
 
         markup = callPackage ../development/ocaml-modules/markup { };
 
@@ -1299,7 +1329,9 @@ let
 
         notty = callPackage ../development/ocaml-modules/notty { };
 
-        npy = callPackage ../development/ocaml-modules/npy { inherit (pkgs.python3Packages) numpy; };
+        npy = callPackage ../development/ocaml-modules/npy {
+          inherit (pkgs.python3Packages) numpy;
+        };
 
         num =
           if lib.versionOlder "4.06" ocaml.version then
@@ -1467,7 +1499,9 @@ let
 
         omd = callPackage ../development/ocaml-modules/omd { };
 
-        opam-core = callPackage ../development/ocaml-modules/opam-core { inherit (pkgs) opam; };
+        opam-core = callPackage ../development/ocaml-modules/opam-core {
+          inherit (pkgs) opam;
+        };
 
         opam-file-format = callPackage ../development/ocaml-modules/opam-file-format { };
 
@@ -1551,7 +1585,9 @@ let
 
         polynomial = callPackage ../development/ocaml-modules/polynomial { };
 
-        portaudio = callPackage ../development/ocaml-modules/portaudio { inherit (pkgs) portaudio; };
+        portaudio = callPackage ../development/ocaml-modules/portaudio {
+          inherit (pkgs) portaudio;
+        };
 
         posix-base = callPackage ../development/ocaml-modules/posix/base.nix { };
 
@@ -1561,7 +1597,9 @@ let
 
         posix-types = callPackage ../development/ocaml-modules/posix/types.nix { };
 
-        postgresql = callPackage ../development/ocaml-modules/postgresql { inherit (pkgs) postgresql; };
+        postgresql = callPackage ../development/ocaml-modules/postgresql {
+          inherit (pkgs) postgresql;
+        };
 
         pp = callPackage ../development/ocaml-modules/pp { };
 
@@ -1649,7 +1687,9 @@ let
 
         ptset = callPackage ../development/ocaml-modules/ptset { };
 
-        pulseaudio = callPackage ../development/ocaml-modules/pulseaudio { inherit (pkgs) pulseaudio; };
+        pulseaudio = callPackage ../development/ocaml-modules/pulseaudio {
+          inherit (pkgs) pulseaudio;
+        };
 
         pure-splitmix = callPackage ../development/ocaml-modules/pure-splitmix { };
 
@@ -1687,7 +1727,9 @@ let
 
         reactivedata = callPackage ../development/ocaml-modules/reactivedata { };
 
-        readline = callPackage ../development/ocaml-modules/readline { readline = pkgs.readline; };
+        readline = callPackage ../development/ocaml-modules/readline {
+          readline = pkgs.readline;
+        };
 
         reason = callPackage ../development/compilers/reason { };
 
@@ -1754,7 +1796,9 @@ let
 
         sawja = callPackage ../development/ocaml-modules/sawja { };
 
-        secp256k1 = callPackage ../development/ocaml-modules/secp256k1 { inherit (pkgs) secp256k1; };
+        secp256k1 = callPackage ../development/ocaml-modules/secp256k1 {
+          inherit (pkgs) secp256k1;
+        };
 
         secp256k1-internal = callPackage ../development/ocaml-modules/secp256k1-internal { };
 
@@ -1776,7 +1820,9 @@ let
 
         shared-memory-ring-lwt = callPackage ../development/ocaml-modules/shared-memory-ring/lwt.nix { };
 
-        shine = callPackage ../development/ocaml-modules/shine { inherit (pkgs) shine; };
+        shine = callPackage ../development/ocaml-modules/shine {
+          inherit (pkgs) shine;
+        };
 
         simple-diff = callPackage ../development/ocaml-modules/simple-diff { };
 
@@ -1786,17 +1832,23 @@ let
 
         sosa = callPackage ../development/ocaml-modules/sosa { };
 
-        soundtouch = callPackage ../development/ocaml-modules/soundtouch { inherit (pkgs) soundtouch; };
+        soundtouch = callPackage ../development/ocaml-modules/soundtouch {
+          inherit (pkgs) soundtouch;
+        };
 
         spdx_licenses = callPackage ../development/ocaml-modules/spdx_licenses { };
 
-        speex = callPackage ../development/ocaml-modules/speex { inherit (pkgs) speex; };
+        speex = callPackage ../development/ocaml-modules/speex {
+          inherit (pkgs) speex;
+        };
 
         spelll = callPackage ../development/ocaml-modules/spelll { };
 
         spices = callPackage ../development/ocaml-modules/spices { };
 
-        srt = callPackage ../development/ocaml-modules/srt { inherit (pkgs) srt; };
+        srt = callPackage ../development/ocaml-modules/srt {
+          inherit (pkgs) srt;
+        };
 
         ssl = callPackage ../development/ocaml-modules/ssl { };
 
@@ -1824,11 +1876,15 @@ let
 
         ### T ###
 
-        taglib = callPackage ../development/ocaml-modules/taglib { inherit (pkgs) taglib; };
+        taglib = callPackage ../development/ocaml-modules/taglib {
+          inherit (pkgs) taglib;
+        };
 
         tar = callPackage ../development/ocaml-modules/tar { };
 
-        tar-unix = callPackage ../development/ocaml-modules/tar/unix.nix { inherit (pkgs) git; };
+        tar-unix = callPackage ../development/ocaml-modules/tar/unix.nix {
+          inherit (pkgs) git;
+        };
 
         tcpip = callPackage ../development/ocaml-modules/tcpip { };
 
@@ -1872,7 +1928,9 @@ let
 
         topkg = callPackage ../development/ocaml-modules/topkg { };
 
-        torch = callPackage ../development/ocaml-modules/torch { torch = pkgs.libtorch-bin; };
+        torch = callPackage ../development/ocaml-modules/torch {
+          torch = pkgs.libtorch-bin;
+        };
 
         trace = callPackage ../development/ocaml-modules/trace { };
 
@@ -2016,7 +2074,9 @@ let
 
         ### Z ###
 
-        z3 = callPackage ../development/ocaml-modules/z3 { inherit (pkgs) z3; };
+        z3 = callPackage ../development/ocaml-modules/z3 {
+          inherit (pkgs) z3;
+        };
 
         zarith = callPackage ../development/ocaml-modules/zarith { };
 
@@ -2106,6 +2166,8 @@ rec {
   # We still have packages that rely on unsafe-string, which is deprecated in OCaml 4.06.0.
   # Below are aliases for porting them to the latest versions of the OCaml 4 series.
   ocamlPackages_4_14_unsafe_string = mkOcamlPackages (
-    callPackage ../development/compilers/ocaml/4.14.nix { unsafeStringSupport = true; }
+    callPackage ../development/compilers/ocaml/4.14.nix {
+      unsafeStringSupport = true;
+    }
   );
 }

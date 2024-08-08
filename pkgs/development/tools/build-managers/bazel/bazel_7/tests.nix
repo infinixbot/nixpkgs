@@ -167,7 +167,9 @@ let
       })
       // {
         bashTools = callBazelTest ../bash-tools-test.nix { };
-        cpp = callBazelTest ./cpp-test.nix { extraBazelArgs = ""; };
+        cpp = callBazelTest ./cpp-test.nix {
+          extraBazelArgs = "";
+        };
         java = callBazelTest ./java-test.nix { };
         pythonBinPath = callBazelTest ../python-bin-path-test.nix { };
         protobuf = callBazelTest ./protobuf-test.nix { };

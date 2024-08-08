@@ -80,7 +80,9 @@ in
     xdg.icons.enable = true;
     xdg.portal.enable = mkDefault true;
     xdg.portal.extraPortals = mkDefault [
-      (pkgs.xdg-desktop-portal-gtk.override { buildPortalsInGnome = false; })
+      (pkgs.xdg-desktop-portal-gtk.override {
+        buildPortalsInGnome = false;
+      })
     ];
 
     # https://github.com/NixOS/nixpkgs/pull/247766#issuecomment-1722839259

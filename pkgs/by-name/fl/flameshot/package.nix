@@ -34,7 +34,9 @@ stdenv.mkDerivation {
   ];
 
   passthru = {
-    updateScript = nix-update-script { extraArgs = [ "--version=branch" ]; };
+    updateScript = nix-update-script {
+      extraArgs = [ "--version=branch" ];
+    };
   };
 
   cmakeFlags = [

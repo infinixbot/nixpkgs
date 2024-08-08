@@ -29,7 +29,9 @@ buildGoModule rec {
   ];
 
   passthru.tests = {
-    version = testers.testVersion { package = gomarkdoc; };
+    version = testers.testVersion {
+      package = gomarkdoc;
+    };
   };
 
   meta = with lib; {

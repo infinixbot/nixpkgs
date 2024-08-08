@@ -106,7 +106,9 @@ in
     };
 
     webappSettings = mkOption {
-      type = lib.types.submodule { freeformType = format.type; };
+      type = lib.types.submodule {
+        freeformType = format.type;
+      };
       default = {
         enabled = true;
         webroot = cfg.webRoot;

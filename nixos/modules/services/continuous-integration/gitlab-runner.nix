@@ -239,7 +239,9 @@ in
       '';
     };
     settings = mkOption {
-      type = types.submodule { freeformType = (pkgs.formats.json { }).type; };
+      type = types.submodule {
+        freeformType = (pkgs.formats.json { }).type;
+      };
       default = { };
       description = ''
         Global gitlab-runner configuration. See
@@ -264,7 +266,9 @@ in
         Time to wait until a graceful shutdown is turned into a forceful one.
       '';
     };
-    package = mkPackageOption pkgs "gitlab-runner" { example = "gitlab-runner_1_11"; };
+    package = mkPackageOption pkgs "gitlab-runner" {
+      example = "gitlab-runner_1_11";
+    };
     extraPackages = mkOption {
       type = types.listOf types.package;
       default = [ ];

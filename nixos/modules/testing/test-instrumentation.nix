@@ -91,7 +91,9 @@ in
 
     systemd.services.backdoor = lib.mkMerge [
       backdoorService
-      { wantedBy = [ "multi-user.target" ]; }
+      {
+        wantedBy = [ "multi-user.target" ];
+      }
     ];
 
     boot.initrd.systemd = lib.mkMerge [

@@ -46,7 +46,9 @@ stdenv.mkDerivation {
     runHook postInstall
   '';
 
-  passthru.updateScript = unstableGitUpdater { url = "https://macoy.me/code/macoy/cakelisp"; };
+  passthru.updateScript = unstableGitUpdater {
+    url = "https://macoy.me/code/macoy/cakelisp";
+  };
 
   meta = with lib; {
     description = "Performance-oriented Lisp-like language";

@@ -128,7 +128,9 @@ stdenv.mkDerivation (
             {
               package = finalAttrs.finalPackage;
             }
-            // lib.optionalAttrs (type != "sdk") { command = "dotnet --info"; }
+            // lib.optionalAttrs (type != "sdk") {
+              command = "dotnet --info";
+            }
           );
         }
         // lib.optionalAttrs (type == "sdk") (

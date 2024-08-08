@@ -213,7 +213,9 @@ in
       };
     };
 
-    users.groups = mkIf (cfg.group == "galene") { galene = { }; };
+    users.groups = mkIf (cfg.group == "galene") {
+      galene = { };
+    };
   };
   meta.maintainers = with lib.maintainers; [ rgrunbla ];
 }

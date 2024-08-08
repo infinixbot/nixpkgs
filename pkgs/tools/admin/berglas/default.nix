@@ -55,7 +55,9 @@ buildGoModule rec {
   postPatch = skipTestsCommand;
 
   passthru.tests = {
-    version = testers.testVersion { package = berglas; };
+    version = testers.testVersion {
+      package = berglas;
+    };
   };
 
   meta = with lib; {

@@ -301,7 +301,9 @@ package-set { inherit pkgs lib callPackage; } self
             src;
       };
     in
-    overrideCabal (orig: { inherit src; }) (callPackageKeepDeriver expr args);
+    overrideCabal (orig: {
+      inherit src;
+    }) (callPackageKeepDeriver expr args);
 
   callCabal2nix =
     name: src: args:
@@ -386,7 +388,9 @@ package-set { inherit pkgs lib callPackage; } self
   # To reload the Hoogle server automatically on .cabal file changes try
   # this:
   # echo *.cabal | entr -r -- nix-shell --run 'hoogle server --local'
-  hoogleWithPackages = self.callPackage ./hoogle.nix { haskellPackages = self; };
+  hoogleWithPackages = self.callPackage ./hoogle.nix {
+    haskellPackages = self;
+  };
   hoogleLocal =
     {
       packages ? [ ],
@@ -402,7 +406,9 @@ package-set { inherit pkgs lib callPackage; } self
   #   $ nix-shell -p 'haskellPackages.ghcWithHoogle (hpkgs: [ hpkgs.conduit hpkgs.lens ])'
   #
   # ghcWithHoogle :: (HaskellPkgSet -> [ HaskellPkg ]) -> Derivation
-  ghcWithHoogle = self.ghcWithPackages.override { withHoogle = true; };
+  ghcWithHoogle = self.ghcWithPackages.override {
+    withHoogle = true;
+  };
 
   # Returns a derivation whose environment contains a GHC with only
   # the dependencies of packages listed in `packages`, not the

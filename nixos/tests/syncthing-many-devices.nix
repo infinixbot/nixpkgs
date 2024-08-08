@@ -195,7 +195,9 @@ import ./make-test-python.nix (
         # Run the script on the machine
         machine.succeed("${addDeviceToDeleteScript}")
       ''
-      + (checkSettingsToDelete { not = false; })
+      + (checkSettingsToDelete {
+        not = false;
+      })
       + ''
         # Useful for debugging later
         machine.copy_from_vm("${configPath}", "before")
@@ -203,7 +205,9 @@ import ./make-test-python.nix (
         machine.systemctl("restart syncthing-init.service")
         machine.wait_for_unit("syncthing-init.service")
       ''
-      + (checkSettingsToDelete { not = true; })
+      + (checkSettingsToDelete {
+        not = true;
+      })
       + ''
         # Useful for debugging later
         machine.copy_from_vm("${configPath}", "after")

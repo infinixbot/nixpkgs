@@ -121,7 +121,9 @@ stdenv.mkDerivation (
       description = "SELinux core library";
     };
   }
-  // lib.optionalAttrs (
-    stdenv.cc.bintools.isLLVM && lib.versionAtLeast stdenv.cc.bintools.version "17"
-  ) { NIX_LDFLAGS = "--undefined-version"; }
+  //
+    lib.optionalAttrs (stdenv.cc.bintools.isLLVM && lib.versionAtLeast stdenv.cc.bintools.version "17")
+      {
+        NIX_LDFLAGS = "--undefined-version";
+      }
 )

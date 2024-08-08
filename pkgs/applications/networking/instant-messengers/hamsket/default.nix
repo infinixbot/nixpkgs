@@ -24,7 +24,9 @@ let
     }
   );
 
-  appimageContents = appimageTools.extract { inherit pname version src; };
+  appimageContents = appimageTools.extract {
+    inherit pname version src;
+  };
 
 in
 appimageTools.wrapType2 {

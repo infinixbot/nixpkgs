@@ -24,7 +24,9 @@ stdenvNoCC.mkDerivation rec {
 
   passthru.tests.noto-fonts = nixosTests.noto-fonts;
 
-  passthru.updateScript = gitUpdater { rev-prefix = "Serif"; };
+  passthru.updateScript = gitUpdater {
+    rev-prefix = "Serif";
+  };
 
   meta = with lib; {
     description = "Beautiful and free fonts for CJK languages";

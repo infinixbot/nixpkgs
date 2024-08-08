@@ -24,7 +24,9 @@ buildGoModule rec {
     "-w"
   ];
 
-  passthru.tests.version = testers.testVersion { package = plow; };
+  passthru.tests.version = testers.testVersion {
+    package = plow;
+  };
 
   meta = with lib; {
     description = "High-performance HTTP benchmarking tool that includes a real-time web UI and terminal display";

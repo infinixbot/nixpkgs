@@ -31,7 +31,9 @@ buildGoModule rec {
   ];
 
   passthru.tests = {
-    version = testers.testVersion { package = ghz; };
+    version = testers.testVersion {
+      package = ghz;
+    };
     web-version = testers.testVersion {
       package = ghz;
       command = "ghz-web -v";

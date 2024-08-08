@@ -37,7 +37,9 @@ buildGoModule rec {
       --zsh <($out/bin/pscale completion zsh)
   '';
 
-  passthru.tests.version = testers.testVersion { package = pscale; };
+  passthru.tests.version = testers.testVersion {
+    package = pscale;
+  };
 
   meta = with lib; {
     description = "CLI for PlanetScale Database";

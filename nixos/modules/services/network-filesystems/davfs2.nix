@@ -133,7 +133,9 @@ in
       };
     };
 
-    users.groups = optionalAttrs (cfg.davGroup == "davfs2") { davfs2.gid = config.ids.gids.davfs2; };
+    users.groups = optionalAttrs (cfg.davGroup == "davfs2") {
+      davfs2.gid = config.ids.gids.davfs2;
+    };
 
     users.users = optionalAttrs (cfg.davUser == "davfs2") {
       davfs2 = {

@@ -335,7 +335,9 @@ lib.makeScope pkgs.newScope (
       ];
     };
 
-    gmic = pkgs.gmic-qt.override { variant = "gimp"; };
+    gmic = pkgs.gmic-qt.override {
+      variant = "gimp";
+    };
 
     gimplensfun = pluginDerivation rec {
       version = "unstable-2018-10-21";

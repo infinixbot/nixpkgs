@@ -200,7 +200,11 @@ builtins.intersectAttrs super {
         hledger-ui = installHledgerExtraFiles super.hledger-ui;
 
         hledger_1_30_1 = installHledgerExtraFiles (
-          doDistribute (super.hledger_1_30_1.override { hledger-lib = self.hledger-lib_1_30; })
+          doDistribute (
+            super.hledger_1_30_1.override {
+              hledger-lib = self.hledger-lib_1_30;
+            }
+          )
         );
         hledger-web_1_30 = installHledgerExtraFiles (
           hledgerWebTestFix (
@@ -1234,7 +1238,11 @@ builtins.intersectAttrs super {
           nixPackage = pkgs.nixVersions.nix_2_19;
         };
       })
-      (super.hercules-ci-cnix-store.override { nix = self.hercules-ci-cnix-store.passthru.nixPackage; });
+      (
+        super.hercules-ci-cnix-store.override {
+          nix = self.hercules-ci-cnix-store.passthru.nixPackage;
+        }
+      );
 
   # the testsuite fails because of not finding tsc without some help
   aeson-typescript = overrideCabal (drv: {
@@ -1473,7 +1481,13 @@ builtins.intersectAttrs super {
   sydtest = dontCheck super.sydtest;
 
   # Prevent argv limit being exceeded when invoking $CC.
-  inherit (lib.mapAttrs (_: overrideCabal { __onlyPropagateKnownPkgConfigModules = true; }) super)
+  inherit
+    (lib.mapAttrs (
+      _:
+      overrideCabal {
+        __onlyPropagateKnownPkgConfigModules = true;
+      }
+    ) super)
     gi-javascriptcore
     gi-webkit2webextension
     gi-gtk_4_0_8

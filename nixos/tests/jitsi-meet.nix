@@ -7,7 +7,10 @@ import ./make-test-python.nix (
     };
 
     nodes = {
-      client = { nodes, pkgs, ... }: { };
+      client =
+        { nodes, pkgs, ... }:
+        {
+        };
       server =
         { config, pkgs, ... }:
         {

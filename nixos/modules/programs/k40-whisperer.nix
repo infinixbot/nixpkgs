@@ -7,7 +7,9 @@
 
 let
   cfg = config.programs.k40-whisperer;
-  pkg = cfg.package.override { udevGroup = cfg.group; };
+  pkg = cfg.package.override {
+    udevGroup = cfg.group;
+  };
 in
 {
   options.programs.k40-whisperer = {

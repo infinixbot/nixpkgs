@@ -11,7 +11,11 @@
   ...
 }:
 let
-  jdkWithJfx = jdk.override (lib.optionalAttrs stdenv.isLinux { enableJavaFX = true; });
+  jdkWithJfx = jdk.override (
+    lib.optionalAttrs stdenv.isLinux {
+      enableJavaFX = true;
+    }
+  );
 in
 stdenv.mkDerivation rec {
   pname = "autopsy";

@@ -157,9 +157,13 @@ in
         };
     };
 
-    environment.etc = lib.mkIf cfg.enable { "repart.d".source = definitionsDirectory; };
+    environment.etc = lib.mkIf cfg.enable {
+      "repart.d".source = definitionsDirectory;
+    };
 
-    systemd = lib.mkIf cfg.enable { additionalUpstreamSystemUnits = [ "systemd-repart.service" ]; };
+    systemd = lib.mkIf cfg.enable {
+      additionalUpstreamSystemUnits = [ "systemd-repart.service" ];
+    };
   };
 
   meta.maintainers = with lib.maintainers; [ nikstur ];

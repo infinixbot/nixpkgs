@@ -153,7 +153,9 @@ stdenv.mkDerivation (finalAttrs: {
   passthru = {
     updateScript = nix-update-script { };
     tests = {
-      version = testers.testVersion { package = finalAttrs.finalPackage; };
+      version = testers.testVersion {
+        package = finalAttrs.finalPackage;
+      };
     };
   };
 

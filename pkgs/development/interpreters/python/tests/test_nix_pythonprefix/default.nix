@@ -8,7 +8,9 @@ let
 
   python =
     let
-      packageOverrides = self: super: { typeddep = self.callPackage ./typeddep { }; };
+      packageOverrides = self: super: {
+        typeddep = self.callPackage ./typeddep { };
+      };
     in
     interpreter.override {
       inherit packageOverrides;

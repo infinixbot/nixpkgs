@@ -70,9 +70,11 @@ in
     };
   };
 
-  config.services.oauth2-proxy = lib.mkIf (
-    cfg.virtualHosts != { } && (lib.hasPrefix "127.0.0.1:" cfg.proxy)
-  ) { enable = true; };
+  config.services.oauth2-proxy =
+    lib.mkIf (cfg.virtualHosts != { } && (lib.hasPrefix "127.0.0.1:" cfg.proxy))
+      {
+        enable = true;
+      };
 
   config.services.nginx = lib.mkIf (cfg.virtualHosts != { } && config.services.oauth2-proxy.enable) (
     lib.mkMerge (

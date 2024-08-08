@@ -668,7 +668,9 @@ in
       };
 
       database = mkMerge [
-        { DB_TYPE = cfg.database.type; }
+        {
+          DB_TYPE = cfg.database.type;
+        }
         (mkIf (useMysql || usePostgresql) {
           HOST =
             if cfg.database.socket != null then
@@ -678,15 +680,21 @@ in
           NAME = cfg.database.name;
           USER = cfg.database.user;
         })
-        (mkIf useSqlite { PATH = cfg.database.path; })
-        (mkIf usePostgresql { SSL_MODE = "disable"; })
+        (mkIf useSqlite {
+          PATH = cfg.database.path;
+        })
+        (mkIf usePostgresql {
+          SSL_MODE = "disable";
+        })
       ];
 
       repository = {
         ROOT = cfg.repositoryRoot;
       };
 
-      server = mkIf cfg.lfs.enable { LFS_START_SERVER = true; };
+      server = mkIf cfg.lfs.enable {
+        LFS_START_SERVER = true;
+      };
 
       session = {
         COOKIE_NAME = mkDefault "session";
@@ -696,7 +704,9 @@ in
         INSTALL_LOCK = true;
       };
 
-      lfs = mkIf cfg.lfs.enable { PATH = cfg.lfs.contentDir; };
+      lfs = mkIf cfg.lfs.enable {
+        PATH = cfg.lfs.contentDir;
+      };
     };
 
     services.forgejo.secrets = {
@@ -709,9 +719,13 @@ in
         JWT_SECRET = "${cfg.customDir}/conf/oauth2_jwt_secret";
       };
 
-      database = mkIf (cfg.database.passwordFile != null) { PASSWD = cfg.database.passwordFile; };
+      database = mkIf (cfg.database.passwordFile != null) {
+        PASSWD = cfg.database.passwordFile;
+      };
 
-      server = mkIf cfg.lfs.enable { LFS_JWT_SECRET = "${cfg.customDir}/conf/lfs_jwt_secret"; };
+      server = mkIf cfg.lfs.enable {
+        LFS_JWT_SECRET = "${cfg.customDir}/conf/lfs_jwt_secret";
+      };
     };
 
     services.postgresql = optionalAttrs (usePostgresql && cfg.database.createDatabase) {
@@ -934,7 +948,9 @@ in
       };
     };
 
-    users.groups = mkIf (cfg.group == "forgejo") { forgejo = { }; };
+    users.groups = mkIf (cfg.group == "forgejo") {
+      forgejo = { };
+    };
 
     systemd.services.forgejo-dump = mkIf cfg.dump.enable {
       description = "forgejo dump";

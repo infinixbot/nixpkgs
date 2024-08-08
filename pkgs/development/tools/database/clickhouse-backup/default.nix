@@ -25,7 +25,9 @@ buildGoModule rec {
     export CGO_ENABLED=0
   '';
 
-  passthru.tests.version = testers.testVersion { package = clickhouse-backup; };
+  passthru.tests.version = testers.testVersion {
+    package = clickhouse-backup;
+  };
 
   meta = with lib; {
     description = "Tool for easy ClickHouse backup and restore using object storage for backup files";

@@ -35,7 +35,9 @@ let
   checkConfig =
     file:
     pkgs.runCommandLocal "checked-snmp-exporter-config.yml"
-      { nativeBuildInputs = [ pkgs.buildPackages.prometheus-snmp-exporter ]; }
+      {
+        nativeBuildInputs = [ pkgs.buildPackages.prometheus-snmp-exporter ];
+      }
       ''
         ln -s ${coerceConfigFile file} $out
         snmp_exporter --dry-run --config.file $out

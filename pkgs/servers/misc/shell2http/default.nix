@@ -33,7 +33,9 @@ buildGoModule rec {
   '';
 
   passthru.tests = {
-    version = testers.testVersion { package = shell2http; };
+    version = testers.testVersion {
+      package = shell2http;
+    };
   };
 
   __darwinAllowLocalNetworking = true;

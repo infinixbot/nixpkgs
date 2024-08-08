@@ -189,65 +189,70 @@ let
   '';
 
   # fontconfig configuration package
-  confPkg = pkgs.runCommand "fontconfig-conf" { preferLocalBuild = true; } ''
-    dst=$out/etc/fonts/conf.d
-    mkdir -p $dst
+  confPkg =
+    pkgs.runCommand "fontconfig-conf"
+      {
+        preferLocalBuild = true;
+      }
+      ''
+        dst=$out/etc/fonts/conf.d
+        mkdir -p $dst
 
-    # fonts.conf
-    ln -s ${pkg.out}/etc/fonts/fonts.conf \
-          $dst/../fonts.conf
-    # TODO: remove this legacy symlink once people stop using packages built before #95358 was merged
-    mkdir -p $out/etc/fonts/2.11
-    ln -s /etc/fonts/fonts.conf \
-          $out/etc/fonts/2.11/fonts.conf
+        # fonts.conf
+        ln -s ${pkg.out}/etc/fonts/fonts.conf \
+              $dst/../fonts.conf
+        # TODO: remove this legacy symlink once people stop using packages built before #95358 was merged
+        mkdir -p $out/etc/fonts/2.11
+        ln -s /etc/fonts/fonts.conf \
+              $out/etc/fonts/2.11/fonts.conf
 
-    # fontconfig default config files
-    ln -s ${pkg.out}/etc/fonts/conf.d/*.conf \
-          $dst/
+        # fontconfig default config files
+        ln -s ${pkg.out}/etc/fonts/conf.d/*.conf \
+              $dst/
 
-    ${optionalString (!cfg.antialias) (
-      replaceDefaultConfig "10-yes-antialias.conf" "10-no-antialias.conf"
-    )}
+        ${optionalString (!cfg.antialias) (
+          replaceDefaultConfig "10-yes-antialias.conf" "10-no-antialias.conf"
+        )}
 
-    ${optionalString (cfg.hinting.style != "slight") (
-      replaceDefaultConfig "10-hinting-slight.conf" "10-hinting-${cfg.hinting.style}.conf"
-    )}
+        ${optionalString (cfg.hinting.style != "slight") (
+          replaceDefaultConfig "10-hinting-slight.conf" "10-hinting-${cfg.hinting.style}.conf"
+        )}
 
-    ${optionalString (cfg.subpixel.rgba != "none") (
-      replaceDefaultConfig "10-sub-pixel-none.conf" "10-sub-pixel-${cfg.subpixel.rgba}.conf"
-    )}
+        ${optionalString (cfg.subpixel.rgba != "none") (
+          replaceDefaultConfig "10-sub-pixel-none.conf" "10-sub-pixel-${cfg.subpixel.rgba}.conf"
+        )}
 
-    ${optionalString (cfg.subpixel.lcdfilter != "default") (
-      replaceDefaultConfig "11-lcdfilter-default.conf" "11-lcdfilter-${cfg.subpixel.lcdfilter}.conf"
-    )}
+        ${optionalString (cfg.subpixel.lcdfilter != "default") (
+          replaceDefaultConfig "11-lcdfilter-default.conf" "11-lcdfilter-${cfg.subpixel.lcdfilter}.conf"
+        )}
 
-    # 00-nixos-cache.conf
-    ln -s ${cacheConf}  $dst/00-nixos-cache.conf
+        # 00-nixos-cache.conf
+        ln -s ${cacheConf}  $dst/00-nixos-cache.conf
 
-    # 10-nixos-rendering.conf
-    ln -s ${renderConf}       $dst/10-nixos-rendering.conf
+        # 10-nixos-rendering.conf
+        ln -s ${renderConf}       $dst/10-nixos-rendering.conf
 
-    # 50-user.conf
-    ${optionalString (!cfg.includeUserConf) ''
-      rm $dst/50-user.conf
-    ''}
+        # 50-user.conf
+        ${optionalString (!cfg.includeUserConf) ''
+          rm $dst/50-user.conf
+        ''}
 
-    # local.conf (indirect priority 51)
-    ${optionalString (cfg.localConf != "") ''
-      ln -s ${localConf}        $dst/../local.conf
-    ''}
+        # local.conf (indirect priority 51)
+        ${optionalString (cfg.localConf != "") ''
+          ln -s ${localConf}        $dst/../local.conf
+        ''}
 
-    # 52-nixos-default-fonts.conf
-    ln -s ${defaultFontsConf} $dst/52-nixos-default-fonts.conf
+        # 52-nixos-default-fonts.conf
+        ln -s ${defaultFontsConf} $dst/52-nixos-default-fonts.conf
 
-    # 53-no-bitmaps.conf
-    ln -s ${rejectBitmaps} $dst/53-no-bitmaps.conf
+        # 53-no-bitmaps.conf
+        ln -s ${rejectBitmaps} $dst/53-no-bitmaps.conf
 
-    ${optionalString (!cfg.allowType1) ''
-      # 53-nixos-reject-type1.conf
-      ln -s ${rejectType1} $dst/53-nixos-reject-type1.conf
-    ''}
-  '';
+        ${optionalString (!cfg.allowType1) ''
+          # 53-nixos-reject-type1.conf
+          ln -s ${rejectType1} $dst/53-nixos-reject-type1.conf
+        ''}
+      '';
 
   # Package with configuration files
   # this merge all the packages in the fonts.fontconfig.confPackages list
@@ -643,7 +648,9 @@ in
         ''}
       '';
     })
-    (mkIf cfg.enable { fonts.fontconfig.confPackages = [ confPkg ]; })
+    (mkIf cfg.enable {
+      fonts.fontconfig.confPackages = [ confPkg ];
+    })
   ];
 
 }

@@ -64,7 +64,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru = {
     inherit python3 extraTools;
-    hook = callPackage ./hook.nix { waf = finalAttrs.finalPackage; };
+    hook = callPackage ./hook.nix {
+      waf = finalAttrs.finalPackage;
+    };
   };
 
   meta = {

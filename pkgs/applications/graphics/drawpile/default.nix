@@ -111,6 +111,10 @@ mkDerivation rec {
       platforms = lib.platforms.unix;
       broken = stdenv.isDarwin;
     }
-    // lib.optionalAttrs buildServer { mainProgram = "drawpile-srv"; }
-    // lib.optionalAttrs buildClient { mainProgram = "drawpile"; };
+    // lib.optionalAttrs buildServer {
+      mainProgram = "drawpile-srv";
+    }
+    // lib.optionalAttrs buildClient {
+      mainProgram = "drawpile";
+    };
 }

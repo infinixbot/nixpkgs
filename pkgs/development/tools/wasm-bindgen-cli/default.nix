@@ -18,7 +18,9 @@ rustPlatform.buildRustPackage rec {
   pname = "wasm-bindgen-cli";
   inherit version hash cargoHash;
 
-  src = fetchCrate { inherit pname version hash; };
+  src = fetchCrate {
+    inherit pname version hash;
+  };
 
   nativeBuildInputs = [ pkg-config ];
 

@@ -153,7 +153,9 @@ in
 stdenv.mkDerivation {
   inherit pname version;
 
-  src = fetchurl { inherit url hash; };
+  src = fetchurl {
+    inherit url hash;
+  };
 
   dontConfigure = true;
   dontBuild = true;

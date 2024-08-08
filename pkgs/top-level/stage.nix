@@ -111,7 +111,10 @@ let
         pkgs = self;
       };
     in
-    res // { stdenvAdapters = res; };
+    res
+    // {
+      stdenvAdapters = res;
+    };
 
   trivialBuilders =
     self: super:
@@ -208,7 +211,11 @@ let
     pkgsCross = lib.mapAttrs (n: crossSystem: nixpkgsFun { inherit crossSystem; }) lib.systems.examples;
 
     pkgsLLVM = nixpkgsFun {
-      overlays = [ (self': super': { pkgsLLVM = super'; }) ] ++ overlays;
+      overlays = [
+        (self': super': {
+          pkgsLLVM = super';
+        })
+      ] ++ overlays;
       # Bootstrap a cross stdenv using the LLVM toolchain.
       # This is currently not possible when compiling natively,
       # so we don't need to check hostPlatform != buildPlatform.
@@ -224,7 +231,11 @@ let
     pkgsMusl =
       if stdenv.hostPlatform.isLinux && stdenv.buildPlatform.is64bit then
         nixpkgsFun {
-          overlays = [ (self': super': { pkgsMusl = super'; }) ] ++ overlays;
+          overlays = [
+            (self': super': {
+              pkgsMusl = super';
+            })
+          ] ++ overlays;
           ${if stdenv.hostPlatform == stdenv.buildPlatform then "localSystem" else "crossSystem"} = {
             parsed = makeMuslParsedPlatform stdenv.hostPlatform.parsed;
           };
@@ -237,7 +248,11 @@ let
     pkgsi686Linux =
       if stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isx86 then
         nixpkgsFun {
-          overlays = [ (self': super': { pkgsi686Linux = super'; }) ] ++ overlays;
+          overlays = [
+            (self': super': {
+              pkgsi686Linux = super';
+            })
+          ] ++ overlays;
           ${if stdenv.hostPlatform == stdenv.buildPlatform then "localSystem" else "crossSystem"} = {
             parsed = stdenv.hostPlatform.parsed // {
               cpu = lib.systems.parse.cpuTypes.i686;
@@ -251,7 +266,11 @@ let
     pkgsx86_64Darwin =
       if stdenv.hostPlatform.isDarwin then
         nixpkgsFun {
-          overlays = [ (self': super': { pkgsx86_64Darwin = super'; }) ] ++ overlays;
+          overlays = [
+            (self': super': {
+              pkgsx86_64Darwin = super';
+            })
+          ] ++ overlays;
           localSystem = {
             parsed = stdenv.hostPlatform.parsed // {
               cpu = lib.systems.parse.cpuTypes.x86_64;
@@ -268,7 +287,9 @@ let
       if stdenv.hostPlatform.isLinux then
         self
       else
-        nixpkgsFun { localSystem = lib.systems.elaborate "${stdenv.hostPlatform.parsed.cpu.name}-linux"; };
+        nixpkgsFun {
+          localSystem = lib.systems.elaborate "${stdenv.hostPlatform.parsed.cpu.name}-linux";
+        };
 
     # Extend the package set with zero or more overlays. This preserves
     # preexisting overlays. Prefer to initialize with the right overlays
@@ -289,7 +310,11 @@ let
     # Fully static packages.
     # Currently uses Musl on Linux (couldn’t get static glibc to work).
     pkgsStatic = nixpkgsFun ({
-      overlays = [ (self': super': { pkgsStatic = super'; }) ] ++ overlays;
+      overlays = [
+        (self': super': {
+          pkgsStatic = super';
+        })
+      ] ++ overlays;
       crossSystem = {
         isStatic = true;
         parsed =

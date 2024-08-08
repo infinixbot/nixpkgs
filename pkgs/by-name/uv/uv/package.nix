@@ -65,7 +65,9 @@ python3Packages.buildPythonApplication rec {
   pythonImportsCheck = [ "uv" ];
 
   passthru = {
-    tests.version = testers.testVersion { package = uv; };
+    tests.version = testers.testVersion {
+      package = uv;
+    };
     updateScript = nix-update-script { };
   };
 

@@ -514,5 +514,7 @@ stdenvNoCC.mkDerivation {
         + " (wrapper script)";
       priority = 10;
     }
-    // optionalAttrs useMacosReexportHack { platforms = platforms.darwin; };
+    // optionalAttrs useMacosReexportHack {
+      platforms = platforms.darwin;
+    };
 }

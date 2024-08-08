@@ -426,6 +426,8 @@ in
       port = cfg.cache.redisPort;
     };
 
-    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.server.port ]; };
+    networking.firewall = mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.server.port ];
+    };
   };
 }

@@ -130,7 +130,9 @@ stdenv.mkDerivation rec {
     tests = {
       libinput-module = nixosTests.libinput;
     };
-    updateScript = gitUpdater { patchlevel-unstable = true; };
+    updateScript = gitUpdater {
+      patchlevel-unstable = true;
+    };
   };
 
   meta = with lib; {

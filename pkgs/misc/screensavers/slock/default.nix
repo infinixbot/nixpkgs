@@ -42,7 +42,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   makeFlags = [ "CC:=$(CC)" ];
 
-  passthru.updateScript = gitUpdater { url = "git://git.suckless.org/slock"; };
+  passthru.updateScript = gitUpdater {
+    url = "git://git.suckless.org/slock";
+  };
 
   meta = with lib; {
     homepage = "https://tools.suckless.org/slock";

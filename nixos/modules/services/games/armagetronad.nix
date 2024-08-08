@@ -39,7 +39,9 @@ let
       throw "unsupported type: ${builtins.typeOf v}: ${(lib.generators.toPretty { } v)}";
 
   settingsFormat = pkgs.formats.keyValue {
-    mkKeyValue = lib.generators.mkKeyValueDefault { mkValueString = mkValueStringArmagetron; } " ";
+    mkKeyValue = lib.generators.mkKeyValueDefault {
+      mkValueString = mkValueStringArmagetron;
+    } " ";
     listsAsDuplicateKeys = true;
   };
 
@@ -290,7 +292,9 @@ in
     );
 
     users.groups = mkMerge (
-      mapAttrsToList (serverName: serverCfg: { ${nameToId serverName} = { }; }) enabledServers
+      mapAttrsToList (serverName: serverCfg: {
+        ${nameToId serverName} = { };
+      }) enabledServers
     );
   };
 }

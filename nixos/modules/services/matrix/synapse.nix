@@ -1459,7 +1459,9 @@ in
       path = config.services.redis.servers.matrix-synapse.unixSocket;
     };
     services.matrix-synapse.settings.instance_map.main = lib.mkIf hasWorkers (
-      lib.mkDefault { path = "/run/matrix-synapse/main_replication.sock"; }
+      lib.mkDefault {
+        path = "/run/matrix-synapse/main_replication.sock";
+      }
     );
 
     services.matrix-synapse.serviceUnit =

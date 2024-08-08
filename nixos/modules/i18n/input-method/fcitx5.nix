@@ -69,14 +69,18 @@ in
       };
       settings = {
         globalOptions = lib.mkOption {
-          type = lib.types.submodule { freeformType = settingsFormat.type; };
+          type = lib.types.submodule {
+            freeformType = settingsFormat.type;
+          };
           default = { };
           description = ''
             The global options in `config` file in ini format.
           '';
         };
         inputMethod = lib.mkOption {
-          type = lib.types.submodule { freeformType = settingsFormat.type; };
+          type = lib.types.submodule {
+            freeformType = settingsFormat.type;
+          };
           default = { };
           description = ''
             The input method configure in `profile` file in ini format.
@@ -138,7 +142,9 @@ in
       let
         optionalFile =
           p: f: v:
-          lib.optionalAttrs (v != { }) { "xdg/fcitx5/${p}".text = f v; };
+          lib.optionalAttrs (v != { }) {
+            "xdg/fcitx5/${p}".text = f v;
+          };
       in
       lib.attrsets.mergeAttrsList [
         (optionalFile "config" (lib.generators.toINI { }) cfg.settings.globalOptions)
@@ -157,6 +163,8 @@ in
         GTK_IM_MODULE = "fcitx";
         QT_IM_MODULE = "fcitx";
       }
-      // lib.optionalAttrs cfg.ignoreUserConfig { SKIP_FCITX_USER_PATH = "1"; };
+      // lib.optionalAttrs cfg.ignoreUserConfig {
+        SKIP_FCITX_USER_PATH = "1";
+      };
   };
 }

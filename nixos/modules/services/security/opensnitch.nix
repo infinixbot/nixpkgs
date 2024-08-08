@@ -12,7 +12,9 @@ let
   format = pkgs.formats.json { };
 
   predefinedRules = flip mapAttrs cfg.rules (
-    name: cfg: { file = pkgs.writeText "rule" (builtins.toJSON cfg); }
+    name: cfg: {
+      file = pkgs.writeText "rule" (builtins.toJSON cfg);
+    }
   );
 
 in
@@ -48,7 +50,9 @@ in
           for available options.
         '';
 
-        type = types.submodule { freeformType = format.type; };
+        type = types.submodule {
+          freeformType = format.type;
+        };
       };
 
       settings = mkOption {

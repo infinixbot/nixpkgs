@@ -57,7 +57,9 @@ buildGoModule rec {
     in
     [ "-skip=^${builtins.concatStringsSep "$|^" skippedTests}$" ];
 
-  passthru.tests.version = testers.testVersion { package = skeema; };
+  passthru.tests.version = testers.testVersion {
+    package = skeema;
+  };
 
   meta = with lib; {
     description = "Declarative pure-SQL schema management for MySQL and MariaDB";

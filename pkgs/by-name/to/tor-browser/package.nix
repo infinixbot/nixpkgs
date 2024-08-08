@@ -143,7 +143,11 @@ lib.warnIf (useHardenedMalloc != null)
         }
       );
 
-      policiesJson = writeText "policies.json" (builtins.toJSON { policies.DisableAppUpdate = true; });
+      policiesJson = writeText "policies.json" (
+        builtins.toJSON {
+          policies.DisableAppUpdate = true;
+        }
+      );
     in
     stdenv.mkDerivation rec {
       pname = "tor-browser";
@@ -352,7 +356,9 @@ lib.warnIf (useHardenedMalloc != null)
 
       passthru = {
         inherit sources;
-        updateScript = callPackage ./update.nix { inherit pname version meta; };
+        updateScript = callPackage ./update.nix {
+          inherit pname version meta;
+        };
       };
 
       meta = with lib; {

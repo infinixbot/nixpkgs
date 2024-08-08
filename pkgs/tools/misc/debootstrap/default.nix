@@ -88,7 +88,9 @@ stdenv.mkDerivation rec {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests.version = testers.testVersion { package = debootstrap; };
+    tests.version = testers.testVersion {
+      package = debootstrap;
+    };
   };
 
   meta = with lib; {

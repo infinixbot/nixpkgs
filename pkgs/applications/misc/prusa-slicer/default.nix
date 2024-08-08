@@ -203,5 +203,7 @@ stdenv.mkDerivation (finalAttrs: {
       ];
       platforms = platforms.unix;
     }
-    // lib.optionalAttrs (stdenv.isDarwin) { mainProgram = "PrusaSlicer"; };
+    // lib.optionalAttrs (stdenv.isDarwin) {
+      mainProgram = "PrusaSlicer";
+    };
 })

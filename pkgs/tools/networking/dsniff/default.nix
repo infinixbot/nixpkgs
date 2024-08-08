@@ -49,7 +49,9 @@ let
       rm $out/lib/*.so*
     '';
   };
-  nids = libnids.overrideAttrs { dontDisableStatic = true; };
+  nids = libnids.overrideAttrs {
+    dontDisableStatic = true;
+  };
   ssl = symlinkJoin {
     inherit (openssl) name;
     paths = with openssl.override { static = true; }; [

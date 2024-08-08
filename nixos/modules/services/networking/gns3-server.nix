@@ -170,7 +170,9 @@ in
             password = lib.mkDefault "@AUTH_PASSWORD@";
           };
         })
-        (lib.mkIf (cfg.vpcs.enable) { VPCS.vpcs_path = lib.mkDefault (lib.getExe cfg.vpcs.package); })
+        (lib.mkIf (cfg.vpcs.enable) {
+          VPCS.vpcs_path = lib.mkDefault (lib.getExe cfg.vpcs.package);
+        })
         (lib.mkIf (cfg.dynamips.enable) {
           Dynamips.dynamips_path = lib.mkDefault (lib.getExe cfg.dynamips.package);
         })

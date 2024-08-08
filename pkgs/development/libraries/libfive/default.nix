@@ -112,7 +112,9 @@ stdenv.mkDerivation {
     "libfive.stdlib"
   ];
 
-  passthru.updateScript = unstableGitUpdater { tagFormat = ""; };
+  passthru.updateScript = unstableGitUpdater {
+    tagFormat = "";
+  };
 
   meta = with lib; {
     description = "Infrastructure for solid modeling with F-Reps in C, C++, and Guile";

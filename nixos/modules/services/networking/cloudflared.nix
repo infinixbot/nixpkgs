@@ -310,9 +310,13 @@ in
           warp-routing = filterConfig tunnel.warp-routing;
           originRequest = filterConfig tunnel.originRequest;
           ingress =
-            (map (key: { hostname = key; } // getAttr key (filterConfig (filterConfig ingressesSet))) (
-              attrNames ingressesSet
-            ))
+            (map (
+              key:
+              {
+                hostname = key;
+              }
+              // getAttr key (filterConfig (filterConfig ingressesSet))
+            ) (attrNames ingressesSet))
             ++ (map (key: {
               hostname = key;
               service = getAttr key ingressesStr;
@@ -348,7 +352,9 @@ in
       };
     };
 
-    users.groups = mkIf (cfg.group == "cloudflared") { cloudflared = { }; };
+    users.groups = mkIf (cfg.group == "cloudflared") {
+      cloudflared = { };
+    };
   };
 
   meta.maintainers = with maintainers; [

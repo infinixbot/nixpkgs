@@ -28,7 +28,9 @@ rustPlatform.buildRustPackage rec {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests.version = testers.testVersion { package = kickstart; };
+    tests.version = testers.testVersion {
+      package = kickstart;
+    };
   };
 
   meta = with lib; {

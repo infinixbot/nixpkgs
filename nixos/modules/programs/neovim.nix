@@ -166,9 +166,12 @@ in
       builtins.attrValues (
         builtins.mapAttrs (name: value: {
           name = "xdg/nvim/${name}";
-          value = builtins.removeAttrs (value // { target = "xdg/nvim/${value.target}"; }) (
-            lib.optionals (builtins.isNull value.source) [ "source" ]
-          );
+          value = builtins.removeAttrs (
+            value
+            // {
+              target = "xdg/nvim/${value.target}";
+            }
+          ) (lib.optionals (builtins.isNull value.source) [ "source" ]);
         }) cfg.runtime
       )
     );

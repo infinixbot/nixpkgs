@@ -127,8 +127,12 @@ in
       {
         LESSKEYIN_SYSTEM = builtins.toString lessKey;
       }
-      // lib.optionalAttrs (cfg.lessopen != null) { LESSOPEN = cfg.lessopen; }
-      // lib.optionalAttrs (cfg.lessclose != null) { LESSCLOSE = cfg.lessclose; };
+      // lib.optionalAttrs (cfg.lessopen != null) {
+        LESSOPEN = cfg.lessopen;
+      }
+      // lib.optionalAttrs (cfg.lessclose != null) {
+        LESSCLOSE = cfg.lessclose;
+      };
 
     warnings =
       lib.optional

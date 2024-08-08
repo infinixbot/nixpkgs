@@ -31,7 +31,9 @@ let
     import ./tests/all-tests.nix {
       inherit system;
       pkgs = import ./.. { inherit system; };
-      callTest = config: { ${system} = hydraJob config.test; };
+      callTest = config: {
+        ${system} = hydraJob config.test;
+      };
     }
     // {
       # for typechecking of the scripts and evaluation of
@@ -39,7 +41,9 @@ let
       allDrivers = import ./tests/all-tests.nix {
         inherit system;
         pkgs = import ./.. { inherit system; };
-        callTest = config: { ${system} = hydraJob config.driver; };
+        callTest = config: {
+          ${system} = hydraJob config.driver;
+        };
       };
     };
 
@@ -77,7 +81,9 @@ let
     hydraJob (
       (import lib/eval-config.nix {
         inherit system;
-        modules = makeModules module { isoImage.isoBaseName = "nixos-${type}"; };
+        modules = makeModules module {
+          isoImage.isoBaseName = "nixos-${type}";
+        };
       }).config.system.build.isoImage
     );
 

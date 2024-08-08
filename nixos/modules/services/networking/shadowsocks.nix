@@ -23,7 +23,9 @@ let
       plugin = cfg.plugin;
       plugin_opts = cfg.pluginOpts;
     }
-    // optionalAttrs (cfg.password != null) { password = cfg.password; }
+    // optionalAttrs (cfg.password != null) {
+      password = cfg.password;
+    }
     // cfg.extraConfig;
 
   configFile = pkgs.writeText "shadowsocks.json" (builtins.toJSON opts);

@@ -81,7 +81,9 @@ let
         oldAttrs:
         {
           inherit (upstream-info.deps.gn) version;
-          src = fetchgit { inherit (upstream-info.deps.gn) url rev hash; };
+          src = fetchgit {
+            inherit (upstream-info.deps.gn) url rev hash;
+          };
         }
         // lib.optionalAttrs (chromiumVersionAtLeast "127") {
           # Relax hardening as otherwise gn unstable 2024-06-06 and later fail with:

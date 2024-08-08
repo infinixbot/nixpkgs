@@ -18,7 +18,9 @@ in
       description = "Whether streamdeck-ui should be started automatically.";
     };
 
-    package = lib.mkPackageOption pkgs "streamdeck-ui" { default = [ "streamdeck-ui" ]; };
+    package = lib.mkPackageOption pkgs "streamdeck-ui" {
+      default = [ "streamdeck-ui" ];
+    };
 
   };
 

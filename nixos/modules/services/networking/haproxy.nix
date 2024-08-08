@@ -107,6 +107,8 @@ with lib;
       };
     };
 
-    users.groups = optionalAttrs (cfg.group == "haproxy") { haproxy = { }; };
+    users.groups = optionalAttrs (cfg.group == "haproxy") {
+      haproxy = { };
+    };
   };
 }

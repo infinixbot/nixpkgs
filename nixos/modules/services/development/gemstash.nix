@@ -104,7 +104,9 @@ in
           RestrictSUIDSGID = true;
           LockPersonality = true;
         }
-        (mkIf (cfg.settings.base_path == "/var/lib/gemstash") { StateDirectory = "gemstash"; })
+        (mkIf (cfg.settings.base_path == "/var/lib/gemstash") {
+          StateDirectory = "gemstash";
+        })
       ];
     };
   };

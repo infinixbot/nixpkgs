@@ -92,7 +92,9 @@ stdenv.mkDerivation (
           broken = false;
           platforms = emacs.meta.platforms;
         }
-        // optionalAttrs ((args.src.meta.homepage or "") != "") { homepage = args.src.meta.homepage; }
+        // optionalAttrs ((args.src.meta.homepage or "") != "") {
+          homepage = args.src.meta.homepage;
+        }
         // meta;
     }
 

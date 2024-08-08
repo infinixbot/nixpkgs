@@ -207,7 +207,9 @@ in
 
     passthru =
       (previousAttrs.passthru or { })
-      // lib.optionalAttrs (libgcc != null) { inherit libgcc; };
+      // lib.optionalAttrs (libgcc != null) {
+        inherit libgcc;
+      };
 
     meta = (previousAttrs.meta or { }) // {
       description = "GNU C Library";

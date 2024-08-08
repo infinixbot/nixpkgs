@@ -19,7 +19,11 @@ let
     }
     ."${system}" or throwSystem;
 
-  arch = { "x86_64-linux" = "amd64"; }."${system}" or throwSystem;
+  arch =
+    {
+      "x86_64-linux" = "amd64";
+    }
+    ."${system}" or throwSystem;
 
 in
 

@@ -132,7 +132,9 @@ let
 in
 
 {
-  ZenTest = attrs: { meta.mainProgram = "zentest"; };
+  ZenTest = attrs: {
+    meta.mainProgram = "zentest";
+  };
 
   atk = attrs: {
     dependencies = attrs.dependencies ++ [ "gobject-introspection" ];
@@ -199,23 +201,41 @@ in
     buildInputs = [ protobuf ];
   };
 
-  cocoapods-acknowledgements = attrs: { dependencies = attrs.dependencies ++ [ "cocoapods" ]; };
+  cocoapods-acknowledgements = attrs: {
+    dependencies = attrs.dependencies ++ [ "cocoapods" ];
+  };
 
-  cocoapods-deploy = attrs: { dependencies = [ "cocoapods" ]; };
+  cocoapods-deploy = attrs: {
+    dependencies = [ "cocoapods" ];
+  };
 
-  cocoapods-disable-podfile-validations = attrs: { dependencies = [ "cocoapods" ]; };
+  cocoapods-disable-podfile-validations = attrs: {
+    dependencies = [ "cocoapods" ];
+  };
 
-  cocoapods-generate = attrs: { dependencies = attrs.dependencies ++ [ "cocoapods" ]; };
+  cocoapods-generate = attrs: {
+    dependencies = attrs.dependencies ++ [ "cocoapods" ];
+  };
 
-  cocoapods-git_url_rewriter = attrs: { dependencies = [ "cocoapods" ]; };
+  cocoapods-git_url_rewriter = attrs: {
+    dependencies = [ "cocoapods" ];
+  };
 
-  cocoapods-keys = attrs: { dependencies = attrs.dependencies ++ [ "cocoapods" ]; };
+  cocoapods-keys = attrs: {
+    dependencies = attrs.dependencies ++ [ "cocoapods" ];
+  };
 
-  cocoapods-open = attrs: { dependencies = [ "cocoapods" ]; };
+  cocoapods-open = attrs: {
+    dependencies = [ "cocoapods" ];
+  };
 
-  cocoapods-try-release-fix = attrs: { dependencies = [ "cocoapods" ]; };
+  cocoapods-try-release-fix = attrs: {
+    dependencies = [ "cocoapods" ];
+  };
 
-  curb = attrs: { buildInputs = [ curl ]; };
+  curb = attrs: {
+    buildInputs = [ curl ];
+  };
 
   curses = attrs: {
     dontBuild = false;
@@ -238,7 +258,9 @@ in
     '';
   };
 
-  digest-sha3 = attrs: { hardeningDisable = [ "format" ]; };
+  digest-sha3 = attrs: {
+    hardeningDisable = [ "format" ];
+  };
 
   rdiscount = attrs: {
     # Use discount from nixpkgs instead of vendored version
@@ -303,7 +325,9 @@ in
     '';
   };
 
-  do_sqlite3 = attrs: { buildInputs = [ sqlite ]; };
+  do_sqlite3 = attrs: {
+    buildInputs = [ sqlite ];
+  };
 
   eventmachine = attrs: {
     dontBuild = false;
@@ -324,7 +348,9 @@ in
     buildInputs = [ libffi ];
   };
 
-  fiddle = attrs: { buildInputs = [ libffi ]; };
+  fiddle = attrs: {
+    buildInputs = [ libffi ];
+  };
 
   gdk_pixbuf2 = attrs: {
     nativeBuildInputs = [
@@ -393,7 +419,9 @@ in
       '';
     };
 
-  parser = attrs: { meta.mainProgram = "ruby-parse"; };
+  parser = attrs: {
+    meta.mainProgram = "ruby-parse";
+  };
 
   pg_query =
     attrs:
@@ -421,7 +449,9 @@ in
       '';
     };
 
-  prettier = attrs: { meta.mainProgram = "rbprettier"; };
+  prettier = attrs: {
+    meta.mainProgram = "rbprettier";
+  };
 
   prometheus-client-mmap =
     attrs:
@@ -606,7 +636,9 @@ in
       '';
   };
 
-  hitimes = attrs: { buildInputs = lib.optionals stdenv.isDarwin [ CoreServices ]; };
+  hitimes = attrs: {
+    buildInputs = lib.optionals stdenv.isDarwin [ CoreServices ];
+  };
 
   hpricot = attrs: {
     dontBuild = false;
@@ -628,7 +660,9 @@ in
     ];
   };
 
-  idn-ruby = attrs: { buildInputs = [ libidn ]; };
+  idn-ruby = attrs: {
+    buildInputs = [ libidn ];
+  };
 
   # disable bundle install as it can't install anything in addition to what is
   # specified in pkgs/applications/misc/jekyll/Gemfile anyway. Also do chmod_R
@@ -670,7 +704,9 @@ in
     # Requires Python 2. Project is abandoned.
   };
 
-  execjs = attrs: { propagatedBuildInputs = [ nodejs.libv8 ]; };
+  execjs = attrs: {
+    propagatedBuildInputs = [ nodejs.libv8 ];
+  };
 
   libxml-ruby = attrs: {
     buildFlags =
@@ -799,7 +835,9 @@ in
             "--with-opt-include=${libiconv}/include"
           ];
       }
-      // lib.optionalAttrs stdenv.isDarwin { buildInputs = [ libxml2 ]; }
+      // lib.optionalAttrs stdenv.isDarwin {
+        buildInputs = [ libxml2 ];
+      }
     );
 
   openssl = attrs: {
@@ -851,9 +889,13 @@ in
     ];
   };
 
-  patron = attrs: { buildInputs = [ curl ]; };
+  patron = attrs: {
+    buildInputs = [ curl ];
+  };
 
-  pcaprub = attrs: { buildInputs = [ libpcap ]; };
+  pcaprub = attrs: {
+    buildInputs = [ libpcap ];
+  };
 
   pg = attrs: {
     # Force pkg-config lookup for libpq.
@@ -866,17 +908,29 @@ in
     buildInputs = [ postgresql ];
   };
 
-  psych = attrs: { buildInputs = [ libyaml ]; };
+  psych = attrs: {
+    buildInputs = [ libyaml ];
+  };
 
-  puma = attrs: { buildInputs = [ openssl ]; };
+  puma = attrs: {
+    buildInputs = [ openssl ];
+  };
 
-  "pygments.rb" = attrs: { buildInputs = [ python3 ]; };
+  "pygments.rb" = attrs: {
+    buildInputs = [ python3 ];
+  };
 
-  rack = attrs: { meta.mainProgram = "rackup"; };
+  rack = attrs: {
+    meta.mainProgram = "rackup";
+  };
 
-  railties = attrs: { meta.mainProgram = "rails"; };
+  railties = attrs: {
+    meta.mainProgram = "rails";
+  };
 
-  rainbow = attrs: { buildInputs = [ rainbow_rake ]; };
+  rainbow = attrs: {
+    buildInputs = [ rainbow_rake ];
+  };
 
   rbczmq =
     { ... }:
@@ -913,7 +967,9 @@ in
     buildFlags = [ "--enable-system-libraries" ];
   };
 
-  rest-client = attrs: { meta.mainProgram = "restclient"; };
+  rest-client = attrs: {
+    meta.mainProgram = "restclient";
+  };
 
   rmagick = attrs: {
     nativeBuildInputs = [ pkg-config ];
@@ -923,11 +979,17 @@ in
     ];
   };
 
-  rouge = attrs: { meta.mainProgram = "rougify"; };
+  rouge = attrs: {
+    meta.mainProgram = "rougify";
+  };
 
-  rpam2 = attrs: { buildInputs = [ linux-pam ]; };
+  rpam2 = attrs: {
+    buildInputs = [ linux-pam ];
+  };
 
-  rspec-core = attrs: { meta.mainProgram = "rspec"; };
+  rspec-core = attrs: {
+    meta.mainProgram = "rspec";
+  };
 
   ruby-libvirt = attrs: {
     nativeBuildInputs = [ pkg-config ];
@@ -938,7 +1000,9 @@ in
     ];
   };
 
-  ruby-lxc = attrs: { buildInputs = [ lxc ]; };
+  ruby-lxc = attrs: {
+    buildInputs = [ lxc ];
+  };
 
   ruby-terminfo = attrs: {
     buildInputs = [ ncurses ];
@@ -1009,11 +1073,17 @@ in
       '';
     };
 
-  semian = attrs: { buildInputs = [ openssl ]; };
+  semian = attrs: {
+    buildInputs = [ openssl ];
+  };
 
-  sequel_pg = attrs: { buildInputs = [ postgresql ]; };
+  sequel_pg = attrs: {
+    buildInputs = [ postgresql ];
+  };
 
-  snappy = attrs: { buildInputs = [ args.snappy ]; };
+  snappy = attrs: {
+    buildInputs = [ args.snappy ];
+  };
 
   sqlite3 =
     attrs:
@@ -1039,9 +1109,13 @@ in
     '';
   };
 
-  taglib-ruby = attrs: { buildInputs = [ taglib ]; };
+  taglib-ruby = attrs: {
+    buildInputs = [ taglib ];
+  };
 
-  timfel-krb5-auth = attrs: { buildInputs = [ libkrb5 ]; };
+  timfel-krb5-auth = attrs: {
+    buildInputs = [ libkrb5 ];
+  };
 
   tiny_tds = attrs: {
     nativeBuildInputs = [
@@ -1051,9 +1125,13 @@ in
     buildInputs = [ freetds ];
   };
 
-  treetop = attrs: { meta.mainProgram = "tt"; };
+  treetop = attrs: {
+    meta.mainProgram = "tt";
+  };
 
-  typhoeus = attrs: { buildInputs = [ curl ]; };
+  typhoeus = attrs: {
+    buildInputs = [ curl ];
+  };
 
   tzinfo =
     attrs:
@@ -1080,7 +1158,9 @@ in
     ];
   };
 
-  whois = attrs: { meta.mainProgram = "whoisrb"; };
+  whois = attrs: {
+    meta.mainProgram = "whoisrb";
+  };
 
   xapian-ruby = attrs: {
     # use the system xapian
@@ -1102,7 +1182,11 @@ in
     '';
   };
 
-  zlib = attrs: { buildInputs = [ zlib ]; };
+  zlib = attrs: {
+    buildInputs = [ zlib ];
+  };
 
-  zookeeper = attrs: { buildInputs = lib.optionals stdenv.isDarwin [ cctools ]; };
+  zookeeper = attrs: {
+    buildInputs = lib.optionals stdenv.isDarwin [ cctools ];
+  };
 }
