@@ -15,7 +15,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [ cfg.package ];
+    environment.systemPackages = [
+      cfg.package
+    ];
 
     # Hyprlock needs Hypridle systemd service to be running to detect idle time
     services.hypridle.enable = true;

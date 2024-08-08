@@ -160,7 +160,9 @@ stdenv.mkDerivation rec {
     "-D drm=true"
   ];
 
-  patches = [ ./efl-elua.patch ];
+  patches = [
+    ./efl-elua.patch
+  ];
 
   postPatch = ''
     patchShebangs src/lib/elementary/config_embed

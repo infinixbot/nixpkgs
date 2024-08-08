@@ -290,7 +290,9 @@ rec {
   # This should be extended to allow the called to add additional
   # fonts.
   fontsConf = pkgs.makeFontsConf {
-    fontDirectories = [ "${pkgs.ghostscript.fonts}/share/fonts" ];
+    fontDirectories = [
+      "${pkgs.ghostscript.fonts}/share/fonts"
+    ];
   };
 
 }

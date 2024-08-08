@@ -60,7 +60,9 @@ in
 
     preloadModels = mkOption {
       type = listOf str;
-      default = [ "ok_nabu" ];
+      default = [
+        "ok_nabu"
+      ];
       example = [
         # wyoming_openwakeword/models/*.tflite
         "alexa"
@@ -110,9 +112,15 @@ in
   config = mkIf cfg.enable {
     systemd.services."wyoming-openwakeword" = {
       description = "Wyoming openWakeWord server";
-      wants = [ "network-online.target" ];
-      after = [ "network-online.target" ];
-      wantedBy = [ "multi-user.target" ];
+      wants = [
+        "network-online.target"
+      ];
+      after = [
+        "network-online.target"
+      ];
+      wantedBy = [
+        "multi-user.target"
+      ];
       serviceConfig = {
         DynamicUser = true;
         User = "wyoming-openwakeword";

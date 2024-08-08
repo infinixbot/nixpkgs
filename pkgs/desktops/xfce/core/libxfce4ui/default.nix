@@ -37,7 +37,9 @@ mkXfceDerivation {
     libSM
   ];
 
-  configureFlags = [ "--with-vendor-info=NixOS" ];
+  configureFlags = [
+    "--with-vendor-info=NixOS"
+  ];
 
   meta = with lib; {
     description = "Widgets library for Xfce";

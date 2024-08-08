@@ -16,9 +16,13 @@ buildOctavePackage rec {
     sha256 = "sha256-VxIReiXTHRJmADZGpA6B59dCdDPCY2bkJt/6mrir1kg=";
   };
 
-  buildInputs = [ ncurses ];
+  buildInputs = [
+    ncurses
+  ];
 
-  propagatedBuildInputs = [ units ];
+  propagatedBuildInputs = [
+    units
+  ];
 
   meta = with lib; {
     homepage = "https://octave.sourceforge.io/miscellaneous/index.html";

@@ -68,7 +68,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   meta = with lib; {
-    maintainers = with maintainers; [ arthsmn ];
+    maintainers = with maintainers; [
+      arthsmn
+    ];
     description = "Desktop Publishing (DTP) and Layout program";
     mainProgram = "scribus";
     homepage = "https://www.scribus.net";

@@ -34,9 +34,13 @@ stdenv.mkDerivation (finalAttrs: {
   # strictDeps raises the chance that xsimd will be able to be cross compiled
   strictDeps = true;
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = [ doctest ];
+  buildInputs = [
+    doctest
+  ];
 
   cmakeFlags = [
     # Always build the tests, even if not running them, because testing whether

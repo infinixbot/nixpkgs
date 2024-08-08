@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-areFRDi728SedArhUy/rbPzhoFabNoT/WdyyN+6OQK0=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     dnspython
@@ -30,7 +32,9 @@ python3.pkgs.buildPythonApplication rec {
   # Project has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "dnstwist" ];
+  pythonImportsCheck = [
+    "dnstwist"
+  ];
 
   meta = with lib; {
     description = "Domain name permutation engine for detecting homograph phishing attacks";

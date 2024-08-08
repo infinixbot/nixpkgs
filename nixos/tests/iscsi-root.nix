@@ -102,7 +102,9 @@ import ./make-test-python.nix (
             name = initiatorName;
           };
 
-          environment.systemPackages = with pkgs; [ xfsprogs ];
+          environment.systemPackages = with pkgs; [
+            xfsprogs
+          ];
 
           system.extraDependencies = [ nodes.initiatorRootDisk.system.build.toplevel ];
 

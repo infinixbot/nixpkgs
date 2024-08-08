@@ -23,9 +23,13 @@ python3.pkgs.buildPythonApplication rec {
     wheel
   ];
 
-  propagatedBuildInputs = with python3.pkgs; [ tree-sitter ];
+  propagatedBuildInputs = with python3.pkgs; [
+    tree-sitter
+  ];
 
-  pythonImportsCheck = [ "zeekscript" ];
+  pythonImportsCheck = [
+    "zeekscript"
+  ];
 
   meta = with lib; {
     description = "Zeek script formatter and analyzer";

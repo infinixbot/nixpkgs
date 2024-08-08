@@ -50,11 +50,17 @@ stdenv.mkDerivation rec {
       # all build .so plugins:
       "TC_CONFIG_NO_XT=y"
     ]
-    ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [ "HOSTCC=$(CC_FOR_BUILD)" ];
+    ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
+      "HOSTCC=$(CC_FOR_BUILD)"
+    ];
 
-  buildFlags = [ "CONFDIR=/etc/iproute2" ];
+  buildFlags = [
+    "CONFDIR=/etc/iproute2"
+  ];
 
-  installFlags = [ "CONFDIR=$(out)/etc/iproute2" ];
+  installFlags = [
+    "CONFDIR=$(out)/etc/iproute2"
+  ];
 
   depsBuildBuild = [ buildPackages.stdenv.cc ]; # netem requires $HOSTCC
   nativeBuildInputs = [

@@ -29,7 +29,9 @@ buildGoModule rec {
 
   doCheck = false;
 
-  buildInputs = [ sqlite ];
+  buildInputs = [
+    sqlite
+  ];
 
   ui = callPackage ./ui.nix { };
 

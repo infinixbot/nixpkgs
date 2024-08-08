@@ -70,7 +70,9 @@ stdenv.mkDerivation (finalAttrs: {
     qtdeclarative
   ];
 
-  nativeCheckInputs = [ dbus-test-runner ];
+  nativeCheckInputs = [
+    dbus-test-runner
+  ];
 
   cmakeFlags = [
     # Needs qdoc, see https://github.com/NixOS/nixpkgs/pull/245379
@@ -111,6 +113,8 @@ stdenv.mkDerivation (finalAttrs: {
     license = licenses.lgpl3Only;
     maintainers = teams.lomiri.members;
     platforms = platforms.linux;
-    pkgConfigModules = [ "libu1db-qt5" ];
+    pkgConfigModules = [
+      "libu1db-qt5"
+    ];
   };
 })

@@ -21,9 +21,13 @@ buildGoModule rec {
 
   vendorHash = "sha256-veduD0K3Onkqvyg9E5v854a6/8UIRQZEH098lUepRNU=";
 
-  nativeCheckInputs = [ swtpm ];
+  nativeCheckInputs = [
+    swtpm
+  ];
 
-  buildInputs = [ openssl ];
+  buildInputs = [
+    openssl
+  ];
 
   ldflags = [
     "-s"

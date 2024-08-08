@@ -17,9 +17,16 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "rocthrust";
   version = "6.0.2";
 
-  outputs = [
-    "out"
-  ] ++ lib.optionals buildTests [ "test" ] ++ lib.optionals buildBenchmarks [ "benchmark" ];
+  outputs =
+    [
+      "out"
+    ]
+    ++ lib.optionals buildTests [
+      "test"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "benchmark"
+    ];
 
   src = fetchFromGitHub {
     owner = "ROCm";
@@ -35,7 +42,9 @@ stdenv.mkDerivation (finalAttrs: {
     clr
   ];
 
-  buildInputs = lib.optionals buildTests [ gtest ];
+  buildInputs = lib.optionals buildTests [
+    gtest
+  ];
 
   cmakeFlags =
     [
@@ -47,9 +56,15 @@ stdenv.mkDerivation (finalAttrs: {
       "-DCMAKE_INSTALL_LIBDIR=lib"
       "-DCMAKE_INSTALL_INCLUDEDIR=include"
     ]
-    ++ lib.optionals (gpuTargets != [ ]) [ "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}" ]
-    ++ lib.optionals buildTests [ "-DBUILD_TEST=ON" ]
-    ++ lib.optionals buildBenchmarks [ "-DBUILD_BENCHMARKS=ON" ]
+    ++ lib.optionals (gpuTargets != [ ]) [
+      "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
+    ]
+    ++ lib.optionals buildTests [
+      "-DBUILD_TEST=ON"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "-DBUILD_BENCHMARKS=ON"
+    ]
     ++ lib.optionals (buildTests || buildBenchmarks) [
       "-DCMAKE_CXX_FLAGS=-Wno-deprecated-builtins" # Too much spam
     ];

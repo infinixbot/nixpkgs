@@ -14,7 +14,9 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-tGfOcyH2F6IeglfY00u199eKusnn6HeqD7or3Oz3ed4=";
   };
 
-  configureFlags = [ "--with-ipv6" ];
+  configureFlags = [
+    "--with-ipv6"
+  ];
 
   buildInputs = [ pcre2 ];
 

@@ -44,7 +44,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-BbPhV00+Z2JrWXT4YvNrW0J8fO65Zcs2pObC00LkWrI=";
   };
 
-  patches = [ ./darwin.patch ];
+  patches = [
+    ./darwin.patch
+  ];
 
   postPatch =
     lib.optionalString withDocumentation ''
@@ -74,7 +76,9 @@ stdenv.mkDerivation (finalAttrs: {
     "-Dtests=${lib.boolToString withTests}"
   ];
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs =
     [
@@ -82,7 +86,9 @@ stdenv.mkDerivation (finalAttrs: {
       pkg-config
       ninja
     ]
-    ++ lib.optionals isCross [ wayland-scanner ]
+    ++ lib.optionals isCross [
+      wayland-scanner
+    ]
     ++ lib.optionals withDocumentation [
       (graphviz-nox.override { pango = null; }) # To avoid an infinite recursion
       doxygen
@@ -98,8 +104,12 @@ stdenv.mkDerivation (finalAttrs: {
       expat
       libxml2
     ]
-    ++ lib.optionals withLibraries [ libffi ]
-    ++ lib.optionals (withLibraries && !stdenv.hostPlatform.isLinux) [ epoll-shim ]
+    ++ lib.optionals withLibraries [
+      libffi
+    ]
+    ++ lib.optionals (withLibraries && !stdenv.hostPlatform.isLinux) [
+      epoll-shim
+    ]
     ++ lib.optionals withDocumentation [
       docbook_xsl
       docbook_xml_dtd_45
@@ -145,7 +155,9 @@ stdenv.mkDerivation (finalAttrs: {
       qyliss
     ];
     pkgConfigModules =
-      [ "wayland-scanner" ]
+      [
+        "wayland-scanner"
+      ]
       ++ lib.optionals withLibraries [
         "wayland-client"
         "wayland-cursor"

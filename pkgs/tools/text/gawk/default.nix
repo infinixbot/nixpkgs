@@ -49,7 +49,9 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ autoreconfHook ] ++ lib.optional (doCheck && stdenv.isLinux) glibcLocales;
 
   buildInputs =
-    [ runtimeShellPackage ]
+    [
+      runtimeShellPackage
+    ]
     ++ lib.optional withSigsegv libsigsegv
     ++ lib.optional interactive readline
     ++ lib.optional stdenv.isDarwin locale;
@@ -59,7 +61,9 @@ stdenv.mkDerivation rec {
     (if interactive then "--with-readline=${readline.dev}" else "--without-readline")
   ];
 
-  makeFlags = [ "AR=${stdenv.cc.targetPrefix}ar" ];
+  makeFlags = [
+    "AR=${stdenv.cc.targetPrefix}ar"
+  ];
 
   inherit doCheck;
 

@@ -102,7 +102,9 @@ in
       serviceConfig = {
         Restart = "always";
         Type = "forking";
-        ExecStart = [ (lib.concatStringsSep " \\\n" rshimCommand) ];
+        ExecStart = [
+          (lib.concatStringsSep " \\\n" rshimCommand)
+        ];
         KillMode = "control-group";
       };
       wantedBy = [ "multi-user.target" ];

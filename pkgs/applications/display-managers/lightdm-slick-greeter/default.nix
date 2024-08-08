@@ -74,7 +74,9 @@ stdenv.mkDerivation rec {
     patchShebangs files/usr/bin/*
   '';
 
-  mesonFlags = [ "--sbindir=${placeholder "out"}/bin" ];
+  mesonFlags = [
+    "--sbindir=${placeholder "out"}/bin"
+  ];
 
   postInstall = ''
     substituteInPlace "$out/share/xgreeters/slick-greeter.desktop" \

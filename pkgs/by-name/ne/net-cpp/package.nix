@@ -21,7 +21,11 @@
 }:
 
 let
-  pythonEnv = python3.withPackages (ps: with ps; [ httpbin ]);
+  pythonEnv = python3.withPackages (
+    ps: with ps; [
+      httpbin
+    ]
+  );
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "net-cpp";
@@ -108,6 +112,8 @@ stdenv.mkDerivation (finalAttrs: {
     license = licenses.lgpl3Only;
     maintainers = teams.lomiri.members;
     platforms = platforms.linux;
-    pkgConfigModules = [ "net-cpp" ];
+    pkgConfigModules = [
+      "net-cpp"
+    ];
   };
 })

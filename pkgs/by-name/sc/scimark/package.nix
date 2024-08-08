@@ -14,7 +14,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-kcg5vKYp0B7+bC/CmFMO/tMwxf9q6nvuFv0vRSy3MbE=";
   };
 
-  nativeBuildInputs = [ unzip ];
+  nativeBuildInputs = [
+    unzip
+  ];
 
   dontConfigure = true;
 

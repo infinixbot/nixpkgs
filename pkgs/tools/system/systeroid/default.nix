@@ -24,7 +24,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-TTxvkRRVPCycEtAmm5BIOVc9bUmdqQBPSORBxHzm9ms=";
 
-  buildInputs = [ xorg.libxcb ];
+  buildInputs = [
+    xorg.libxcb
+  ];
 
   # tries to access /sys/
   doCheck = false;

@@ -65,7 +65,16 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "triton-llvm";
   version = "17.0.0-c5dede880d17";
 
-  outputs = [ "out" ] ++ lib.optionals buildDocs [ "doc" ] ++ lib.optionals buildMan [ "man" ];
+  outputs =
+    [
+      "out"
+    ]
+    ++ lib.optionals buildDocs [
+      "doc"
+    ]
+    ++ lib.optionals buildMan [
+      "man"
+    ];
 
   # See https://github.com/triton-lang/triton/blob/main/python/setup.py
   # and https://github.com/ptillet/triton-llvm-releases/releases

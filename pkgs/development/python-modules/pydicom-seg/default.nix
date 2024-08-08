@@ -38,7 +38,9 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "jsonschema" ];
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   propagatedBuildInputs = [
     jsonschema

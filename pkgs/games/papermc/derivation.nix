@@ -36,7 +36,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     runHook postInstall
   '';
 
-  nativeBuildInputs = [ makeBinaryWrapper ];
+  nativeBuildInputs = [
+    makeBinaryWrapper
+  ];
 
   dontUnpack = true;
   preferLocalBuild = true;

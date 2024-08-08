@@ -33,7 +33,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-O5RT68wPWwzCb51JZWWNcIubWoM7NZw/MRiaHXPDmF0=";
   };
 
-  cmakeFlags = [ "-DUNICODE_BLOCKS=${ucd-blocks.outPath}" ];
+  cmakeFlags = [
+    "-DUNICODE_BLOCKS=${ucd-blocks.outPath}"
+  ];
 
   outputs = [
     "out"

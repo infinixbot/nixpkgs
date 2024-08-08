@@ -24,7 +24,9 @@ buildGoModule rec {
     rm -r tests/gomigrations
   '';
 
-  subPackages = [ "cmd/goose" ];
+  subPackages = [
+    "cmd/goose"
+  ];
 
   ldflags = [
     "-s"

@@ -23,7 +23,9 @@ stdenv.mkDerivation (finalAttrs: {
     patchShebangs .
   '';
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   buildInputs = [
     flint

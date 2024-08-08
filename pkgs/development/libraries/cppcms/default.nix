@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  cmakeFlags = [ "--no-warn-unused-cli" ];
+  cmakeFlags = [
+    "--no-warn-unused-cli"
+  ];
 
   meta = with lib; {
     homepage = "http://cppcms.com";

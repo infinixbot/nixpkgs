@@ -40,8 +40,12 @@ python3.pkgs.buildPythonApplication rec {
       pycryptodome
       unpaddedbase64
     ];
-    metrics = [ prometheus-client ];
-    sqlite = [ aiosqlite ];
+    metrics = [
+      prometheus-client
+    ];
+    sqlite = [
+      aiosqlite
+    ];
   };
 
   propagatedBuildInputs =

@@ -17,7 +17,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   dontUnpack = true;
 
-  nativeBuildInputs = [ makeBinaryWrapper ];
+  nativeBuildInputs = [
+    makeBinaryWrapper
+  ];
 
   installPhase =
     let

@@ -26,7 +26,9 @@ useStdenv.mkDerivation {
     sha256 = "1pn416znrdndb8iccprzx4zicmsx8c6i9dm3wq5z3jg8nan53p69";
   };
 
-  patches = [ ./repl-license-path.patch ];
+  patches = [
+    ./repl-license-path.patch
+  ];
 
   postPatch = ''
     patchShebangs --build a19/a.sh a20/a.sh a21/a.sh dy/a.sh e/a.sh

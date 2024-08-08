@@ -69,7 +69,9 @@ stdenv.mkDerivation (finalAttrs: {
     pango
   ];
 
-  configureFlags = [ "--with-freerdp-plugin-dir=${placeholder "out"}/lib" ];
+  configureFlags = [
+    "--with-freerdp-plugin-dir=${placeholder "out"}/lib"
+  ];
 
   postPatch = ''
     patchShebangs ./src/protocols/rdp/**/*.pl

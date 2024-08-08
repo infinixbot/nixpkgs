@@ -22,7 +22,9 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = [ guile ];
+  buildInputs = [
+    guile
+  ];
 
   meta = with lib; {
     description = "POSIX-compatible shell written in Guile Scheme";

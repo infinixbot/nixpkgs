@@ -33,7 +33,9 @@ stdenv.mkDerivation rec {
     python3
   ];
 
-  buildInputs = [ hdf5 ];
+  buildInputs = [
+    hdf5
+  ];
 
   outputs = [
     "out"

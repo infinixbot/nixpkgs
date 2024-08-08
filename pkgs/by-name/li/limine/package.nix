@@ -36,7 +36,9 @@ stdenv.mkDerivation {
     nasm
   ];
 
-  configureFlags = [ "--enable-all" ];
+  configureFlags = [
+    "--enable-all"
+  ];
 
   installFlags = [
     "destdir=$out"

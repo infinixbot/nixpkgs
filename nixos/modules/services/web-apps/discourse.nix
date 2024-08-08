@@ -707,7 +707,9 @@ in
         bindsTo = [ "postgresql.service" ];
         wantedBy = [ "discourse.service" ];
         partOf = [ "discourse.service" ];
-        path = [ pgsql.package ];
+        path = [
+          pgsql.package
+        ];
         script = ''
           set -o errexit -o pipefail -o nounset -o errtrace
           shopt -s inherit_errexit
@@ -732,7 +734,9 @@ in
         "discourse-postgresql.service"
       ];
       bindsTo =
-        [ "redis-discourse.service" ]
+        [
+          "redis-discourse.service"
+        ]
         ++ lib.optionals (cfg.database.host == null) [
           "postgresql.service"
           "discourse-postgresql.service"
@@ -1134,7 +1138,9 @@ in
       discourse = { };
     };
 
-    environment.systemPackages = [ cfg.package.rake ];
+    environment.systemPackages = [
+      cfg.package.rake
+    ];
   };
 
   meta.doc = ./discourse.md;

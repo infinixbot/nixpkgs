@@ -66,7 +66,9 @@ import ../make-test-python.nix (
                 private-domain = "local";
 
                 local-zone = "local. static";
-                local-data = [ ''"test.local. 10800 IN A 192.168.123.5"'' ];
+                local-data = [
+                  ''"test.local. 10800 IN A 192.168.123.5"''
+                ];
               };
 
               dnstap = {

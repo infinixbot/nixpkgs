@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
     installShellFiles
     which
   ];
-  buildInputs = [ ncurses ];
+  buildInputs = [
+    ncurses
+  ];
 
   checkPhase = ''
     runHook preCheck

@@ -32,7 +32,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  configureFlags = [ "--enable-pthread" ];
+  configureFlags = [
+    "--enable-pthread"
+  ];
 
   enableParallelBuilding = true;
 

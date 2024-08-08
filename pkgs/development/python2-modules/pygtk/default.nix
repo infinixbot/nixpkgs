@@ -42,7 +42,9 @@ buildPythonPackage rec {
   ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [ pango ];
+  buildInputs = [
+    pango
+  ];
 
   propagatedBuildInputs = [
     gtk2

@@ -28,7 +28,9 @@ python3.pkgs.buildPythonApplication rec {
     rich
   ];
 
-  pythonImportsCheck = [ "octosuite" ];
+  pythonImportsCheck = [
+    "octosuite"
+  ];
 
   # Project has no tests
   doCheck = false;

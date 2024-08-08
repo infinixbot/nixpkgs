@@ -20,7 +20,9 @@ buildGoModule rec {
 
   sourceRoot = "${src.name}/src";
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   ldflags = [
     "-s"

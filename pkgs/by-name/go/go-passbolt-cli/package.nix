@@ -27,7 +27,9 @@ buildGoModule rec {
 
   subPackages = [ "." ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   installPhase = ''
     runHook preInstall

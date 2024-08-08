@@ -23,7 +23,9 @@ buildDunePackage rec {
     ppx_optcomp
   ];
 
-  checkInputs = [ ppx_expect ];
+  checkInputs = [
+    ppx_expect
+  ];
 
   doCheck = true;
 

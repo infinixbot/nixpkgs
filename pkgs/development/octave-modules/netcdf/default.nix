@@ -14,7 +14,9 @@ buildOctavePackage rec {
     sha256 = "sha256-uuFD8VNeWbyHFyWMDMzWDd2n+dG9EFmc/JnZU2tx+Uk=";
   };
 
-  buildInputs = [ netcdf ];
+  buildInputs = [
+    netcdf
+  ];
 
   meta = with lib; {
     homepage = "https://octave.sourceforge.io/netcdf/index.html";

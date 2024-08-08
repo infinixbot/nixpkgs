@@ -16,7 +16,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-OB/JKByD7qKaLcYuOn5ivfvTe4DeARHfwEhXEx1pnrw=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   meta = {
     description = "Terminal multiplexer with window manager and session sharing";

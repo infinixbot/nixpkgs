@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ gsl ];
 
-  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
+  makeFlags = [
+    "CC=${stdenv.cc.targetPrefix}cc"
+  ];
 
   installPhase = ''
     mkdir -p $out/bin

@@ -21,7 +21,9 @@ buildDotnetModule rec {
   executables = [ "tone" ];
   nugetDeps = ./nuget-deps.nix;
 
-  dotnetInstallFlags = [ "-p:PublishSingleFile=false" ];
+  dotnetInstallFlags = [
+    "-p:PublishSingleFile=false"
+  ];
 
   dotnet-sdk = dotnetCorePackages.sdk_6_0;
   runtimeDeps = [ ffmpeg-full ];

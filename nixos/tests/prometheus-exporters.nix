@@ -1461,7 +1461,9 @@ let
     smartctl = {
       exporterConfig = {
         enable = true;
-        devices = [ "/dev/vda" ];
+        devices = [
+          "/dev/vda"
+        ];
       };
       exporterTest = ''
         wait_until_succeeds(
@@ -1512,7 +1514,9 @@ let
       exporterConfig = {
         configuration.jobs.points = {
           interval = "1m";
-          connections = [ "postgres://prometheus-sql-exporter@/data?host=/run/postgresql&sslmode=disable" ];
+          connections = [
+            "postgres://prometheus-sql-exporter@/data?host=/run/postgresql&sslmode=disable"
+          ];
           queries = {
             points = {
               labels = [ "name" ];
@@ -1598,7 +1602,9 @@ let
       exporterConfig = {
         enable = true;
 
-        extraFlags = [ "--systemd.collector.enable-restart-count" ];
+        extraFlags = [
+          "--systemd.collector.enable-restart-count"
+        ];
       };
       metricProvider = { };
       exporterTest = ''
@@ -1739,7 +1745,9 @@ let
         group = "varnish";
       };
       metricProvider = {
-        systemd.services.prometheus-varnish-exporter.after = [ "varnish.service" ];
+        systemd.services.prometheus-varnish-exporter.after = [
+          "varnish.service"
+        ];
         services.varnish = {
           enable = true;
           config = ''

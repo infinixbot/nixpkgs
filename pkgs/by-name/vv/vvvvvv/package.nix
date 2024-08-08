@@ -55,7 +55,9 @@ stdenv.mkDerivation rec {
 
   cmakeDir = "../desktop_version";
 
-  cmakeFlags = [ "-DBUNDLE_DEPENDENCIES=OFF" ] ++ lib.optional makeAndPlay "-DMAKEANDPLAY=ON";
+  cmakeFlags = [
+    "-DBUNDLE_DEPENDENCIES=OFF"
+  ] ++ lib.optional makeAndPlay "-DMAKEANDPLAY=ON";
 
   desktopItems = [
     (makeDesktopItem {

@@ -330,7 +330,9 @@ in
         after = [ "network.target" ];
         wantedBy = [ "multi-user.target" ];
         restartIfChanged = false;
-        unitConfig.ConditionPathExists = [ "|/etc/openafs/server/KeyFileExt" ];
+        unitConfig.ConditionPathExists = [
+          "|/etc/openafs/server/KeyFileExt"
+        ];
         preStart = ''
           mkdir -m 0755 -p /var/openafs
           ${optionalString (netInfo != null) "cp ${netInfo} /var/openafs/netInfo"}

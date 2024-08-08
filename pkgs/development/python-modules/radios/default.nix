@@ -38,7 +38,9 @@ buildPythonPackage rec {
       --replace "--cov" ""
   '';
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   pythonRelaxDeps = [ "pycountry" ];
 

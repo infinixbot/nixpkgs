@@ -31,7 +31,9 @@
 }:
 
 let
-  gl_rpath = lib.makeLibraryPath [ stdenv.cc.cc.lib ];
+  gl_rpath = lib.makeLibraryPath [
+    stdenv.cc.cc.lib
+  ];
 
   rpath = lib.makeLibraryPath [
     glib

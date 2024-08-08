@@ -19,9 +19,16 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "hipcub";
   version = "5.7.1";
 
-  outputs = [
-    "out"
-  ] ++ lib.optionals buildTests [ "test" ] ++ lib.optionals buildBenchmarks [ "benchmark" ];
+  outputs =
+    [
+      "out"
+    ]
+    ++ lib.optionals buildTests [
+      "test"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "benchmark"
+    ];
 
   src = fetchFromGitHub {
     owner = "ROCm";
@@ -36,9 +43,16 @@ stdenv.mkDerivation (finalAttrs: {
     clr
   ];
 
-  buildInputs = [
-    rocprim
-  ] ++ lib.optionals buildTests [ gtest ] ++ lib.optionals buildBenchmarks [ gbenchmark ];
+  buildInputs =
+    [
+      rocprim
+    ]
+    ++ lib.optionals buildTests [
+      gtest
+    ]
+    ++ lib.optionals buildBenchmarks [
+      gbenchmark
+    ];
 
   cmakeFlags =
     [
@@ -50,9 +64,15 @@ stdenv.mkDerivation (finalAttrs: {
       "-DCMAKE_INSTALL_LIBDIR=lib"
       "-DCMAKE_INSTALL_INCLUDEDIR=include"
     ]
-    ++ lib.optionals (gpuTargets != [ ]) [ "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}" ]
-    ++ lib.optionals buildTests [ "-DBUILD_TEST=ON" ]
-    ++ lib.optionals buildBenchmarks [ "-DBUILD_BENCHMARK=ON" ];
+    ++ lib.optionals (gpuTargets != [ ]) [
+      "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
+    ]
+    ++ lib.optionals buildTests [
+      "-DBUILD_TEST=ON"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "-DBUILD_BENCHMARK=ON"
+    ];
 
   postInstall =
     lib.optionalString buildTests ''

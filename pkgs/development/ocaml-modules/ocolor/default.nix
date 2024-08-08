@@ -18,7 +18,9 @@ buildDunePackage rec {
     sha256 = "osQTZGJp9yDoKNa6WoyhViNbRg1ukcD0Jxiu4VxqeUc=";
   };
 
-  nativeBuildInputs = [ cppo ];
+  nativeBuildInputs = [
+    cppo
+  ];
 
   meta = {
     description = "Print with style in your terminal using Format’s semantic tags";

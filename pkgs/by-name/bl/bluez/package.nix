@@ -110,10 +110,14 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.withFeatureAs true "udevdir" "${placeholder "out"}/lib/udev")
   ];
 
-  makeFlags = [ "rulesdir=${placeholder "out"}/lib/udev/rules.d" ];
+  makeFlags = [
+    "rulesdir=${placeholder "out"}/lib/udev/rules.d"
+  ];
 
   # Work around `make install' trying to create /var/lib/bluetooth.
-  installFlags = [ "statedir=$(TMPDIR)/var/lib/bluetooth" ];
+  installFlags = [
+    "statedir=$(TMPDIR)/var/lib/bluetooth"
+  ];
 
   doCheck = stdenv.hostPlatform.isx86_64;
 

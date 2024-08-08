@@ -218,18 +218,25 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    rustPlatform.cargoSetupHook
-    meson
-    ninja
-    python3
-    python3.pkgs.tomli
-    pkg-config
-    rustc
-    cargo
-    cargo-c'
-    nasm
-  ] ++ lib.optionals stdenv.isDarwin [ lld ] ++ lib.optionals enableDocumentation [ hotdoc ];
+  nativeBuildInputs =
+    [
+      rustPlatform.cargoSetupHook
+      meson
+      ninja
+      python3
+      python3.pkgs.tomli
+      pkg-config
+      rustc
+      cargo
+      cargo-c'
+      nasm
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      lld
+    ]
+    ++ lib.optionals enableDocumentation [
+      hotdoc
+    ];
 
   env = lib.optionalAttrs stdenv.isDarwin { NIX_CFLAGS_LINK = "-fuse-ld=lld"; };
 

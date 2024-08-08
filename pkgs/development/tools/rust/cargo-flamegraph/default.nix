@@ -23,7 +23,9 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "sha256-KwpveTiViY+C4A+fE5yeGuT9PXbDyi+YsOc75mX2KdU=";
 
   nativeBuildInputs = lib.optionals stdenv.isLinux [ makeWrapper ];
-  buildInputs = lib.optionals stdenv.isDarwin [ Security ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    Security
+  ];
 
   postFixup = lib.optionalString stdenv.isLinux ''
     wrapProgram $out/bin/cargo-flamegraph \

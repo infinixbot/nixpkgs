@@ -88,11 +88,15 @@ stdenv.mkDerivation (finalAttrs: rec {
     python3
   ];
 
-  buildInputs = [
-    boost
-    libiconv
-    libintl
-  ] ++ lib.optionals withData [ poppler_data ];
+  buildInputs =
+    [
+      boost
+      libiconv
+      libintl
+    ]
+    ++ lib.optionals withData [
+      poppler_data
+    ];
 
   # TODO: reduce propagation to necessary libs
   propagatedBuildInputs =
@@ -109,23 +113,33 @@ stdenv.mkDerivation (finalAttrs: rec {
       curl
       nss
     ]
-    ++ lib.optionals (qt5Support || qt6Support) [ qtbase ]
-    ++ lib.optionals introspectionSupport [ gobject-introspection ]
-    ++ lib.optionals gpgmeSupport [ gpgme ];
+    ++ lib.optionals (qt5Support || qt6Support) [
+      qtbase
+    ]
+    ++ lib.optionals introspectionSupport [
+      gobject-introspection
+    ]
+    ++ lib.optionals gpgmeSupport [
+      gpgme
+    ];
 
-  cmakeFlags = [
-    (mkFlag true "UNSTABLE_API_ABI_HEADERS") # previously "XPDF_HEADERS"
-    (mkFlag (!minimal) "GLIB")
-    (mkFlag (!minimal) "CPP")
-    (mkFlag (!minimal) "LIBCURL")
-    (mkFlag (!minimal) "LCMS")
-    (mkFlag (!minimal) "LIBTIFF")
-    (mkFlag (!minimal) "NSS3")
-    (mkFlag utils "UTILS")
-    (mkFlag qt5Support "QT5")
-    (mkFlag qt6Support "QT6")
-    (mkFlag gpgmeSupport "GPGME")
-  ] ++ lib.optionals finalAttrs.finalPackage.doCheck [ "-DTESTDATADIR=${testData}" ];
+  cmakeFlags =
+    [
+      (mkFlag true "UNSTABLE_API_ABI_HEADERS") # previously "XPDF_HEADERS"
+      (mkFlag (!minimal) "GLIB")
+      (mkFlag (!minimal) "CPP")
+      (mkFlag (!minimal) "LIBCURL")
+      (mkFlag (!minimal) "LCMS")
+      (mkFlag (!minimal) "LIBTIFF")
+      (mkFlag (!minimal) "NSS3")
+      (mkFlag utils "UTILS")
+      (mkFlag qt5Support "QT5")
+      (mkFlag qt6Support "QT6")
+      (mkFlag gpgmeSupport "GPGME")
+    ]
+    ++ lib.optionals finalAttrs.finalPackage.doCheck [
+      "-DTESTDATADIR=${testData}"
+    ];
   disallowedReferences = lib.optional finalAttrs.finalPackage.doCheck testData;
 
   dontWrapQtApps = true;

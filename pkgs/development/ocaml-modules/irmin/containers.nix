@@ -15,7 +15,9 @@ buildDunePackage {
 
   inherit (ppx_irmin) src version;
 
-  nativeBuildInputs = [ ppx_irmin ];
+  nativeBuildInputs = [
+    ppx_irmin
+  ];
 
   propagatedBuildInputs = [
     irmin

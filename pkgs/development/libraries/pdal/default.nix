@@ -38,30 +38,36 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-ukBZLr/iyYQ68sv9JWrR4YP0ahHfGhytgcWKPzrF3Ps=";
   };
 
-  patches = [ ./pdal.pc.in.patch ];
+  patches = [
+    ./pdal.pc.in.patch
+  ];
 
   nativeBuildInputs = [
     cmake
     pkg-config
   ];
 
-  buildInputs = [
-    curl
-    gdal
-    hdf5-cpp
-    laszip
-    libgeotiff
-    libtiff
-    (libxml2.override { enableHttp = true; })
-    openscenegraph
-    postgresql
-    proj
-    sqlite
-    tiledb
-    xercesc
-    zlib
-    zstd
-  ] ++ lib.optionals enableE57 [ libe57format ];
+  buildInputs =
+    [
+      curl
+      gdal
+      hdf5-cpp
+      laszip
+      libgeotiff
+      libtiff
+      (libxml2.override { enableHttp = true; })
+      openscenegraph
+      postgresql
+      proj
+      sqlite
+      tiledb
+      xercesc
+      zlib
+      zstd
+    ]
+    ++ lib.optionals enableE57 [
+      libe57format
+    ];
 
   cmakeFlags = [
     "-DBUILD_PLUGIN_E57=${if enableE57 then "ON" else "OFF"}"

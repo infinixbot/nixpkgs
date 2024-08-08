@@ -490,7 +490,9 @@ let
       sha256 = "092qhlnjjgz11ifx6mng7mz20i44gc0nlccrbmw18xr5hipbqqka";
     };
 
-    buildInputs = [ libxslt ];
+    buildInputs = [
+      libxslt
+    ];
 
     meta = common_meta;
   };

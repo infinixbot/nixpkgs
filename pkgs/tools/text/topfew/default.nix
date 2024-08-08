@@ -18,7 +18,9 @@ buildGoModule rec {
 
   vendorHash = null;
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   ldflags = [
     "-s"

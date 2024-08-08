@@ -10,9 +10,13 @@ buildGoModule rec {
   pname = "litmusctl";
   version = "1.7.0";
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
-  buildInputs = [ kubectl ];
+  buildInputs = [
+    kubectl
+  ];
 
   src = fetchFromGitHub {
     owner = "litmuschaos";

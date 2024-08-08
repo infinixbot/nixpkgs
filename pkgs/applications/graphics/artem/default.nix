@@ -20,9 +20,13 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-QyFUxnq4BSULgpZxCu5+7TWfu6Gey0JFkOYSK+rL7l0=";
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.Security
+  ];
 
   checkFlags = [
     # require internet access

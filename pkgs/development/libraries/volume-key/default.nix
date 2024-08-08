@@ -51,7 +51,9 @@ stdenv.mkDerivation rec {
     ncurses
   ];
 
-  configureFlags = [ "--with-gpgme-prefix=${gpgme.dev}" ];
+  configureFlags = [
+    "--with-gpgme-prefix=${gpgme.dev}"
+  ];
 
   preConfigure = ''
     export PYTHON="${buildPackages.python3}/bin/python"

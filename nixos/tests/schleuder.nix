@@ -127,7 +127,9 @@ import ./make-test-python.nix {
                 EOF
               '';
         in
-        [ "L+ /root/.schleuder-cli/schleuder-cli.yml - - - - ${cliconfig}" ];
+        [
+          "L+ /root/.schleuder-cli/schleuder-cli.yml - - - - ${cliconfig}"
+        ];
     };
 
   testScript = ''

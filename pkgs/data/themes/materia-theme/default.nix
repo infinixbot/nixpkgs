@@ -37,7 +37,9 @@ stdenv.mkDerivation rec {
 
   propagatedUserEnvPkgs = [ gtk-engine-murrine ];
 
-  mesonFlags = [ "-Dgnome_shell_version=${lib.versions.majorMinor gnome.gnome-shell.version}" ];
+  mesonFlags = [
+    "-Dgnome_shell_version=${lib.versions.majorMinor gnome.gnome-shell.version}"
+  ];
 
   postInstall = ''
     rm $out/share/themes/*/COPYING

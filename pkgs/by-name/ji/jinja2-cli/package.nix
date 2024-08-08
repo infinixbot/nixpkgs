@@ -28,11 +28,16 @@ python3.pkgs.buildPythonApplication rec {
     python3.pkgs.wheel
   ];
 
-  nativeCheckInputs = [ python3.pkgs.pytestCheckHook ];
+  nativeCheckInputs = [
+    python3.pkgs.pytestCheckHook
+  ];
 
   propagatedBuildInputs =
     with python3.pkgs;
-    [ jinja2 ] ++ lib.attrVals extras passthru.optional-dependencies;
+    [
+      jinja2
+    ]
+    ++ lib.attrVals extras passthru.optional-dependencies;
 
   pythonImportsCheck = [ "jinja2cli" ];
 

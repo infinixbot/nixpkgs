@@ -63,16 +63,20 @@ stdenv.mkDerivation (finalAttrs: {
     ./disable-introspection-test.patch
   ];
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    makeWrapper
-    which # for locale detection
-    libxml2 # for xml-stripblanks
-    dbus # for dbus-run-session
-    gobject-introspection
-  ] ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [ mesonEmulatorHook ];
+  nativeBuildInputs =
+    [
+      meson
+      ninja
+      pkg-config
+      makeWrapper
+      which # for locale detection
+      libxml2 # for xml-stripblanks
+      dbus # for dbus-run-session
+      gobject-introspection
+    ]
+    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+      mesonEmulatorHook
+    ];
 
   buildInputs = [
     cairo
@@ -81,13 +85,21 @@ stdenv.mkDerivation (finalAttrs: {
     spidermonkey_115
   ];
 
-  nativeCheckInputs = [ xvfb-run ] ++ testDeps;
+  nativeCheckInputs = [
+    xvfb-run
+  ] ++ testDeps;
 
-  propagatedBuildInputs = [ glib ];
+  propagatedBuildInputs = [
+    glib
+  ];
 
-  mesonFlags = [
-    "-Dinstalled_test_prefix=${placeholder "installedTests"}"
-  ] ++ lib.optionals (!stdenv.isLinux || stdenv.hostPlatform.isMusl) [ "-Dprofiler=disabled" ];
+  mesonFlags =
+    [
+      "-Dinstalled_test_prefix=${placeholder "installedTests"}"
+    ]
+    ++ lib.optionals (!stdenv.isLinux || stdenv.hostPlatform.isMusl) [
+      "-Dprofiler=disabled"
+    ];
 
   doCheck = !stdenv.isDarwin;
 

@@ -17,7 +17,9 @@ buildHomeAssistantComponent rec {
     hash = "sha256-ucSaQWMS6ZwXHnw5Ct/STxpl1JjBRua3edrLvBAsdyw=";
   };
 
-  propagatedBuildInputs = [ requests ];
+  propagatedBuildInputs = [
+    requests
+  ];
 
   meta = with lib; {
     description = "Home-assistant integration for awtrix";

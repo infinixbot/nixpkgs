@@ -12,7 +12,9 @@ import ../make-test-python.nix (
         services.hitch = {
           enable = true;
           backend = "[127.0.0.1]:80";
-          pem-files = [ ./example.pem ];
+          pem-files = [
+            ./example.pem
+          ];
         };
 
         services.httpd = {

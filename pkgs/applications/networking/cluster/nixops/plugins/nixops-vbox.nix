@@ -25,9 +25,13 @@ buildPythonPackage {
     --replace "poetry>=" "poetry-core>="
   '';
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
-  buildInputs = [ nixops ];
+  buildInputs = [
+    nixops
+  ];
 
   pythonImportsCheck = [ "nixopsvbox" ];
 

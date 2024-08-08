@@ -24,7 +24,9 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = [ SDL2 ];
+  buildInputs = [
+    SDL2
+  ];
 
   strictDeps = true;
 

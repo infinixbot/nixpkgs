@@ -29,7 +29,9 @@ stdenv.mkDerivation {
 
   propagatedBuildInputs = [ curl ];
 
-  cmakeFlags = [ "-DCPR_USE_SYSTEM_CURL=ON" ];
+  cmakeFlags = [
+    "-DCPR_USE_SYSTEM_CURL=ON"
+  ];
 
   postPatch = ''
     # Linking with stdc++fs is no longer necessary.

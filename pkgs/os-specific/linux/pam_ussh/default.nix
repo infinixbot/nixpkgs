@@ -24,7 +24,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-fOIzJuTXiDNJak5ilgI2KnPOCogbFWTlPL3yNQdzUUI=";
 
-  buildInputs = [ pam ];
+  buildInputs = [
+    pam
+  ];
 
   buildPhase = ''
     runHook preBuild

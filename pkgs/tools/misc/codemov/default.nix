@@ -27,7 +27,9 @@ rustPlatform.buildRustPackage {
     pkg-config
   ];
 
-  buildInputs = [ oniguruma ];
+  buildInputs = [
+    oniguruma
+  ];
 
   env = {
     RUSTONIG_SYSTEM_LIBONIG = true;

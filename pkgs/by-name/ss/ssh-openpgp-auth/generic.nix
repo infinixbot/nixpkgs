@@ -73,7 +73,9 @@ rustPlatform.buildRustPackage {
     ];
 
   doCheck = true;
-  nativeCheckInputs = [ openssh ];
+  nativeCheckInputs = [
+    openssh
+  ];
 
   meta = with lib; {
     description = metaDescription;

@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
 
   hardeningDisable = [ "format" ];
 
-  configureFlags = [ "--enable-chooser" ];
+  configureFlags = [
+    "--enable-chooser"
+  ];
 
   meta = with lib; {
     description = "Notepad clone for GTK 2.0";

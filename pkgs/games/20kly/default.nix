@@ -24,7 +24,9 @@ python3Packages.buildPythonApplication rec {
         "LIGHTYEARS_DIR = \"$out/share\""
   '';
 
-  propagatedBuildInputs = with python3Packages; [ pygame ];
+  propagatedBuildInputs = with python3Packages; [
+    pygame
+  ];
 
   buildPhase = ''
     python -O -m compileall .

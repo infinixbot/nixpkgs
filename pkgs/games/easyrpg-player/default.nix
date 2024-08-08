@@ -105,14 +105,18 @@ stdenv.mkDerivation rec {
       AudioToolbox
     ];
 
-  cmakeFlags = [ "-DPLAYER_ENABLE_TESTS=${lib.boolToString doCheck}" ];
+  cmakeFlags = [
+    "-DPLAYER_ENABLE_TESTS=${lib.boolToString doCheck}"
+  ];
 
   makeFlags = [
     "all"
     "man"
   ];
 
-  buildFlags = lib.optionals doCheck [ "test_runner_player" ];
+  buildFlags = lib.optionals doCheck [
+    "test_runner_player"
+  ];
 
   postInstall = lib.optionalString stdenv.hostPlatform.isDarwin ''
     mkdir $out/bin

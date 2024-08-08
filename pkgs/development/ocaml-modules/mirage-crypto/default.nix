@@ -26,7 +26,13 @@ buildDunePackage rec {
 
   nativeBuildInputs = [ pkg-config ];
   buildInputs = [ dune-configurator ];
-  propagatedBuildInputs = [ eqaf-cstruct ] ++ lib.optionals withFreestanding [ ocaml-freestanding ];
+  propagatedBuildInputs =
+    [
+      eqaf-cstruct
+    ]
+    ++ lib.optionals withFreestanding [
+      ocaml-freestanding
+    ];
 
   # Compatibility with eqaf 0.10
   postPatch = ''

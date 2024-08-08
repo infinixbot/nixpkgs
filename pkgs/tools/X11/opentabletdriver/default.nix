@@ -28,7 +28,9 @@ buildDotnetModule rec {
     hash = "sha256-zK+feU96JOXjmkTndM9VyUid3z+MZFxJGH+MXaB6kzk=";
   };
 
-  patches = [ ./remove-git-from-generate-rules.patch ];
+  patches = [
+    ./remove-git-from-generate-rules.patch
+  ];
 
   dotnetInstallFlags = [ "--framework=net6.0" ];
 

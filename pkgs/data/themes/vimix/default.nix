@@ -73,9 +73,13 @@ lib.checkListOfEnum "${pname}: theme variants"
       sassc
     ];
 
-    buildInputs = [ gtk_engines ];
+    buildInputs = [
+      gtk_engines
+    ];
 
-    propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+    propagatedUserEnvPkgs = [
+      gtk-engine-murrine
+    ];
 
     postPatch = ''
       patchShebangs install.sh

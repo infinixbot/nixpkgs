@@ -72,7 +72,9 @@ stdenv.mkDerivation {
     )
   );
 
-  src = lib.sourceByRegex ./. [ ".*\.java" ];
+  src = lib.sourceByRegex ./. [
+    ".*\.java"
+  ];
   # On Linux, this can be C.UTF-8, but darwin + zulu requires en_US.UTF-8
   LANG = "en_US.UTF-8";
   buildPhase = ''

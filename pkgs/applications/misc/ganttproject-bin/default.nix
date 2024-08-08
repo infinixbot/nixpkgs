@@ -33,7 +33,9 @@ stdenv.mkDerivation rec {
         categories = [ "Office" ];
       };
 
-      javaOptions = [ "-Dawt.useSystemAAFontSettings=on" ];
+      javaOptions = [
+        "-Dawt.useSystemAAFontSettings=on"
+      ];
 
     in
     ''

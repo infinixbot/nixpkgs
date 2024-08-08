@@ -101,7 +101,9 @@ else
     };
 
     propagatedBuildInputs =
-      [ ocaml-compiler-libs ]
+      [
+        ocaml-compiler-libs
+      ]
       ++ (param.OMP or [ ])
       ++ [
         ppx_derivers

@@ -28,7 +28,9 @@ buildGoModule rec {
 
   subPackages = [ "." ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   postInstall = ''
     installShellCompletion --cmd pet \

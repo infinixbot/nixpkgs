@@ -15,7 +15,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-bHP3DJpgh89AaCX4c1tQGaZ/PiWjArED1rMdszFUq+U=";
   };
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   meta = with lib; {
     description = "Fetch program written in C";

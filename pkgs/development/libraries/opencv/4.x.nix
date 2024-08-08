@@ -269,10 +269,14 @@ effectiveStdenv.mkDerivation {
   pname = "opencv";
   inherit version src;
 
-  outputs = [
-    "out"
-    "cxxdev"
-  ] ++ lib.optionals (runAccuracyTests || runPerformanceTests) [ "package_tests" ];
+  outputs =
+    [
+      "out"
+      "cxxdev"
+    ]
+    ++ lib.optionals (runAccuracyTests || runPerformanceTests) [
+      "package_tests"
+    ];
   cudaPropagateToOutput = "cxxdev";
 
   postUnpack = lib.optionalString buildContrib ''
@@ -280,9 +284,14 @@ effectiveStdenv.mkDerivation {
   '';
 
   # Ensures that we use the system OpenEXR rather than the vendored copy of the source included with OpenCV.
-  patches = [
-    ./cmake-don-t-use-OpenCVFindOpenEXR.patch
-  ] ++ lib.optionals enableContrib [ ] ++ lib.optional enableCuda ./cuda_opt_flow.patch;
+  patches =
+    [
+      ./cmake-don-t-use-OpenCVFindOpenEXR.patch
+    ]
+    ++ lib.optionals enableContrib
+      [
+      ]
+    ++ lib.optional enableCuda ./cuda_opt_flow.patch;
 
   # This prevents cmake from using libraries in impure paths (which
   # causes build failure on non NixOS)
@@ -316,21 +325,43 @@ effectiveStdenv.mkDerivation {
       protobuf_21
       zlib
     ]
-    ++ lib.optionals enablePython [ pythonPackages.python ]
-    ++ lib.optionals (effectiveStdenv.buildPlatform == effectiveStdenv.hostPlatform) [ hdf5 ]
-    ++ lib.optionals enableGtk2 [ gtk2 ]
-    ++ lib.optionals enableGtk3 [ gtk3 ]
-    ++ lib.optionals enableVtk [ vtk ]
-    ++ lib.optionals enableJPEG [ libjpeg ]
-    ++ lib.optionals enablePNG [ libpng ]
-    ++ lib.optionals enableTIFF [ libtiff ]
-    ++ lib.optionals enableWebP [ libwebp ]
+    ++ lib.optionals enablePython [
+      pythonPackages.python
+    ]
+    ++ lib.optionals (effectiveStdenv.buildPlatform == effectiveStdenv.hostPlatform) [
+      hdf5
+    ]
+    ++ lib.optionals enableGtk2 [
+      gtk2
+    ]
+    ++ lib.optionals enableGtk3 [
+      gtk3
+    ]
+    ++ lib.optionals enableVtk [
+      vtk
+    ]
+    ++ lib.optionals enableJPEG [
+      libjpeg
+    ]
+    ++ lib.optionals enablePNG [
+      libpng
+    ]
+    ++ lib.optionals enableTIFF [
+      libtiff
+    ]
+    ++ lib.optionals enableWebP [
+      libwebp
+    ]
     ++ lib.optionals enableEXR [
       openexr
       ilmbase
     ]
-    ++ lib.optionals enableJPEG2000 [ openjpeg ]
-    ++ lib.optionals enableFfmpeg [ ffmpeg ]
+    ++ lib.optionals enableJPEG2000 [
+      openjpeg
+    ]
+    ++ lib.optionals enableFfmpeg [
+      ffmpeg
+    ]
     ++ lib.optionals (enableFfmpeg && effectiveStdenv.isDarwin) [
       bzip2
       VideoDecodeAcceleration
@@ -347,12 +378,24 @@ effectiveStdenv.mkDerivation {
         zstd
       ]
     )
-    ++ lib.optionals enableOvis [ ogre ]
-    ++ lib.optionals enableGPhoto2 [ libgphoto2 ]
-    ++ lib.optionals enableDC1394 [ libdc1394 ]
-    ++ lib.optionals enableEigen [ eigen ]
-    ++ lib.optionals enableVA [ libva ]
-    ++ lib.optionals enableBlas [ blas.provider ]
+    ++ lib.optionals enableOvis [
+      ogre
+    ]
+    ++ lib.optionals enableGPhoto2 [
+      libgphoto2
+    ]
+    ++ lib.optionals enableDC1394 [
+      libdc1394
+    ]
+    ++ lib.optionals enableEigen [
+      eigen
+    ]
+    ++ lib.optionals enableVA [
+      libva
+    ]
+    ++ lib.optionals enableBlas [
+      blas.provider
+    ]
     ++ lib.optionals enableTesseract [
       # There is seemingly no compile-time flag for Tesseract.  It's
       # simply enabled automatically if contrib is built, and it detects
@@ -360,7 +403,9 @@ effectiveStdenv.mkDerivation {
       tesseract
       leptonica
     ]
-    ++ lib.optionals enableTbb [ tbb ]
+    ++ lib.optionals enableTbb [
+      tbb
+    ]
     ++ lib.optionals effectiveStdenv.isDarwin [
       bzip2
       AVFoundation
@@ -409,7 +454,9 @@ effectiveStdenv.mkDerivation {
       pythonPackages.wheel
       pythonPackages.setuptools
     ]
-    ++ lib.optionals enableCuda [ cudaPackages.cuda_nvcc ];
+    ++ lib.optionals enableCuda [
+      cudaPackages.cuda_nvcc
+    ];
 
   env.NIX_CFLAGS_COMPILE = lib.optionalString enableEXR "-I${ilmbase.dev}/include/OpenEXR";
 
@@ -490,8 +537,12 @@ effectiveStdenv.mkDerivation {
       "-DBUILD_PNG=OFF"
       "-DBUILD_WEBP=OFF"
     ]
-    ++ lib.optionals (!effectiveStdenv.isDarwin) [ "-DOPENCL_LIBRARY=${ocl-icd}/lib/libOpenCL.so" ]
-    ++ lib.optionals enablePython [ "-DOPENCV_SKIP_PYTHON_LOADER=ON" ]
+    ++ lib.optionals (!effectiveStdenv.isDarwin) [
+      "-DOPENCL_LIBRARY=${ocl-icd}/lib/libOpenCL.so"
+    ]
+    ++ lib.optionals enablePython [
+      "-DOPENCV_SKIP_PYTHON_LOADER=ON"
+    ]
     ++ lib.optionals (enabledModules != [ ]) [
       "-DBUILD_LIST=${lib.concatStringsSep "," enabledModules}"
     ];

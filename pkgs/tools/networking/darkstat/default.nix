@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   buildInputs = [
     libpcap

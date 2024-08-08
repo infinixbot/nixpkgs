@@ -82,7 +82,9 @@ stdenv.mkDerivation (finalAttrs: {
     dbus
   ];
 
-  mesonFlags = [ "-Ddocumentation=true" ];
+  mesonFlags = [
+    "-Ddocumentation=true"
+  ];
 
   doCheck = stdenv.isLinux;
 

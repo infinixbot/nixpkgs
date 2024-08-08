@@ -66,7 +66,9 @@ lib.checkListOfEnum "${pname}: button variants"
       librsvg
     ];
 
-    propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+    propagatedUserEnvPkgs = [
+      gtk-engine-murrine
+    ];
 
     installPhase = ''
       runHook preInstall

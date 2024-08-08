@@ -93,7 +93,9 @@ stdenv'.mkDerivation (finalAttrs: {
         lib.makeLibraryPath [ libjack2 ]
       }"
     ]
-    ++ lib.optionals (stdenv.isLinux) [ "--set ALSA_PLUGIN_DIR ${alsa-plugins}/lib/alsa-lib" ]
+    ++ lib.optionals (stdenv.isLinux) [
+      "--set ALSA_PLUGIN_DIR ${alsa-plugins}/lib/alsa-lib"
+    ]
     ++ lib.optionals (!stdenv.isDarwin) [
       # There are some issues with using the wayland backend, see:
       # https://musescore.org/en/node/321936
@@ -107,31 +109,35 @@ stdenv'.mkDerivation (finalAttrs: {
     ninja
   ];
 
-  buildInputs = [
-    libjack2
-    freetype
-    lame
-    libogg
-    libpulseaudio
-    libsndfile
-    libvorbis
-    portaudio'
-    portmidi
-    flac
-    libopusenc
-    libopus
-    tinyxml-2
-    qtbase
-    qtdeclarative
-    qtgraphicaleffects
-    qtquickcontrols
-    qtquickcontrols2
-    qtscript
-    qtsvg
-    qtxmlpatterns
-    qtnetworkauth
-    qtx11extras
-  ] ++ lib.optionals stdenv.isLinux [ alsa-lib ];
+  buildInputs =
+    [
+      libjack2
+      freetype
+      lame
+      libogg
+      libpulseaudio
+      libsndfile
+      libvorbis
+      portaudio'
+      portmidi
+      flac
+      libopusenc
+      libopus
+      tinyxml-2
+      qtbase
+      qtdeclarative
+      qtgraphicaleffects
+      qtquickcontrols
+      qtquickcontrols2
+      qtscript
+      qtsvg
+      qtxmlpatterns
+      qtnetworkauth
+      qtx11extras
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      alsa-lib
+    ];
 
   postInstall =
     ''

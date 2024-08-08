@@ -141,10 +141,14 @@ assert withPgtk -> withGTK3 && !withX;
 assert withXwidgets -> !noGui && (withGTK3 || withPgtk);
 
 let
-  libGccJitLibraryPaths = [
-    "${lib.getLib libgccjit}/lib/gcc"
-    "${lib.getLib stdenv.cc.libc}/lib"
-  ] ++ lib.optionals (stdenv.cc ? cc.libgcc) [ "${lib.getLib stdenv.cc.cc.libgcc}/lib" ];
+  libGccJitLibraryPaths =
+    [
+      "${lib.getLib libgccjit}/lib/gcc"
+      "${lib.getLib stdenv.cc.libc}/lib"
+    ]
+    ++ lib.optionals (stdenv.cc ? cc.libgcc) [
+      "${lib.getLib stdenv.cc.cc.libgcc}/lib"
+    ];
 
   inherit (if variant == "macport" then llvmPackages_14.stdenv else stdenv) mkDerivation;
 in
@@ -240,7 +244,9 @@ mkDerivation (finalAttrs: {
       makeWrapper
       pkg-config
     ]
-    ++ lib.optionals (variant == "macport") [ texinfo ]
+    ++ lib.optionals (variant == "macport") [
+      texinfo
+    ]
     ++ lib.optionals srcRepo [
       autoreconfHook
       texinfo
@@ -256,26 +262,50 @@ mkDerivation (finalAttrs: {
       libxml2
       ncurses
     ]
-    ++ lib.optionals withGconf [ gconf ]
-    ++ lib.optionals withAcl [ acl ]
-    ++ lib.optionals withAlsaLib [ alsa-lib ]
-    ++ lib.optionals withGpm [ gpm ]
-    ++ lib.optionals withDbus [ dbus ]
-    ++ lib.optionals withSelinux [ libselinux ]
-    ++ lib.optionals (!stdenv.isDarwin && withGTK3) [ gsettings-desktop-schemas ]
+    ++ lib.optionals withGconf [
+      gconf
+    ]
+    ++ lib.optionals withAcl [
+      acl
+    ]
+    ++ lib.optionals withAlsaLib [
+      alsa-lib
+    ]
+    ++ lib.optionals withGpm [
+      gpm
+    ]
+    ++ lib.optionals withDbus [
+      dbus
+    ]
+    ++ lib.optionals withSelinux [
+      libselinux
+    ]
+    ++ lib.optionals (!stdenv.isDarwin && withGTK3) [
+      gsettings-desktop-schemas
+    ]
     ++ lib.optionals (stdenv.isLinux && withX) [
       libotf
       m17n_lib
     ]
-    ++ lib.optionals (withX && withGTK2) [ gtk2-x11 ]
-    ++ lib.optionals (withX && withGTK3) [ gtk3-x11 ]
-    ++ lib.optionals (withX && withMotif) [ motif ]
-    ++ lib.optionals withGlibNetworking [ glib-networking ]
+    ++ lib.optionals (withX && withGTK2) [
+      gtk2-x11
+    ]
+    ++ lib.optionals (withX && withGTK3) [
+      gtk3-x11
+    ]
+    ++ lib.optionals (withX && withMotif) [
+      motif
+    ]
+    ++ lib.optionals withGlibNetworking [
+      glib-networking
+    ]
     ++ lib.optionals withNativeCompilation [
       libgccjit
       zlib
     ]
-    ++ lib.optionals withImageMagick [ imagemagick ]
+    ++ lib.optionals withImageMagick [
+      imagemagick
+    ]
     ++ lib.optionals withPgtk [
       giflib
       gtk3
@@ -285,10 +315,18 @@ mkDerivation (finalAttrs: {
       librsvg
       libtiff
     ]
-    ++ lib.optionals withSQLite3 [ sqlite ]
-    ++ lib.optionals withSystemd [ systemd ]
-    ++ lib.optionals withTreeSitter [ tree-sitter ]
-    ++ lib.optionals withWebP [ libwebp ]
+    ++ lib.optionals withSQLite3 [
+      sqlite
+    ]
+    ++ lib.optionals withSystemd [
+      systemd
+    ]
+    ++ lib.optionals withTreeSitter [
+      tree-sitter
+    ]
+    ++ lib.optionals withWebP [
+      libwebp
+    ]
     ++ lib.optionals withX [
       Xaw3d
       cairo
@@ -300,9 +338,15 @@ mkDerivation (finalAttrs: {
       librsvg
       libtiff
     ]
-    ++ lib.optionals withXinput2 [ libXi ]
-    ++ lib.optionals withXwidgets [ webkitgtk ]
-    ++ lib.optionals stdenv.isDarwin [ sigtool ]
+    ++ lib.optionals withXinput2 [
+      libXi
+    ]
+    ++ lib.optionals withXwidgets [
+      webkitgtk
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      sigtool
+    ]
     ++ lib.optionals withNS [
       librsvg
       AppKit
@@ -324,10 +368,14 @@ mkDerivation (finalAttrs: {
       ImageCaptureCore
       ImageIO
     ]
-    ++ lib.optionals (variant == "macport" && stdenv.hostPlatform.isAarch64) [ UniformTypeIdentifiers ];
+    ++ lib.optionals (variant == "macport" && stdenv.hostPlatform.isAarch64) [
+      UniformTypeIdentifiers
+    ];
 
   # Emacs needs to find movemail at run time, see info (emacs) Movemail
-  propagatedUserEnvPkgs = lib.optionals withMailutils [ mailutils ];
+  propagatedUserEnvPkgs = lib.optionals withMailutils [
+    mailutils
+  ];
 
   hardeningDisable = [ "format" ];
 
@@ -338,7 +386,9 @@ mkDerivation (finalAttrs: {
     ]
     ++ (
       if withNS then
-        [ (lib.enableFeature false "ns-self-contained") ]
+        [
+          (lib.enableFeature false "ns-self-contained")
+        ]
       else if withX then
         [
           (lib.withFeatureAs true "x-toolkit" toolkit)
@@ -346,7 +396,9 @@ mkDerivation (finalAttrs: {
           (lib.withFeature true "xft")
         ]
       else if withPgtk then
-        [ (lib.withFeature true "pgtk") ]
+        [
+          (lib.withFeature true "pgtk")
+        ]
       else
         [
           (lib.withFeature false "gif")
@@ -363,7 +415,9 @@ mkDerivation (finalAttrs: {
       (lib.withFeature true "mac")
       (lib.withFeature true "xml2")
     ]
-    ++ lib.optionals stdenv.isDarwin [ (lib.withFeature withNS "ns") ]
+    ++ lib.optionals stdenv.isDarwin [
+      (lib.withFeature withNS "ns")
+    ]
     ++ [
       (lib.withFeature withCompressInstall "compress-install")
       (lib.withFeature withToolkitScrollBars "toolkit-scroll-bars")

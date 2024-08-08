@@ -385,7 +385,9 @@ in
       '';
     };
 
-    systemd.services.nginx.serviceConfig.SupplementaryGroups = [ "frigate" ];
+    systemd.services.nginx.serviceConfig.SupplementaryGroups = [
+      "frigate"
+    ];
 
     users.users.frigate = {
       isSystemUser = true;
@@ -398,7 +400,9 @@ in
         "go2rtc.service"
         "network.target"
       ];
-      wantedBy = [ "multi-user.target" ];
+      wantedBy = [
+        "multi-user.target"
+      ];
       environment = {
         CONFIG_FILE = format.generate "frigate.yml" filteredConfig;
         HOME = "/var/lib/frigate";

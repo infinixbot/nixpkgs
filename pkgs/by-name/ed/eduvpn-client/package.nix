@@ -40,7 +40,9 @@ python3Packages.buildPythonApplication rec {
     setuptools
   ];
 
-  checkInputs = with python3Packages; [ pytestCheckHook ];
+  checkInputs = with python3Packages; [
+    pytestCheckHook
+  ];
 
   meta = with lib; {
     changelog = "https://raw.githubusercontent.com/eduvpn/python-eduvpn-client/${version}/CHANGES.md";

@@ -39,7 +39,9 @@ rustPlatform.buildRustPackage rec {
     ronn
   ];
 
-  buildInputs = [ systemd ];
+  buildInputs = [
+    systemd
+  ];
 
   preBuild = ''
     # embedded into the binary at build time

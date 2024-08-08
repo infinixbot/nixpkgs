@@ -29,14 +29,24 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-J4Z/NjCVOq4QS7ncCi87P5YPgqRwFyDAc14uS5T7s6M=";
   };
 
-  nativeBuildInputs = [ cmake ] ++ lib.optionals (withManual || withHTML) [ sphinx ];
+  nativeBuildInputs =
+    [
+      cmake
+    ]
+    ++ lib.optionals (withManual || withHTML) [
+      sphinx
+    ];
 
-  buildInputs = [
-    libffi
-    libxml2
-    llvm
-    zlib
-  ] ++ lib.optionals (!stdenv.isDarwin) [ libclang ];
+  buildInputs =
+    [
+      libffi
+      libxml2
+      llvm
+      zlib
+    ]
+    ++ lib.optionals (!stdenv.isDarwin) [
+      libclang
+    ];
 
   cmakeFlags =
     [

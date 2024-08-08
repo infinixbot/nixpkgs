@@ -108,7 +108,9 @@ stdenv.mkDerivation rec {
 
   prefixKey = "--prefix-dir=";
 
-  configureFlags = [ "--without-liblzo2" ];
+  configureFlags = [
+    "--without-liblzo2"
+  ];
 
   postInstall = ''
     ${lib.optionalString withOpenGFX ''

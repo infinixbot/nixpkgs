@@ -17,7 +17,9 @@ python3Packages.buildPythonApplication rec {
     stripRoot = false;
   };
 
-  nativeBuildInputs = [ makeBinaryWrapper ];
+  nativeBuildInputs = [
+    makeBinaryWrapper
+  ];
 
   installPhase = ''
     runHook preInstall

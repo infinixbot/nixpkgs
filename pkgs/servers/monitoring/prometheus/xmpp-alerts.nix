@@ -25,7 +25,9 @@ python3Packages.buildPythonApplication rec {
   '';
 
   propagatedBuildInputs =
-    [ prometheus-alertmanager ]
+    [
+      prometheus-alertmanager
+    ]
     ++ (with python3Packages; [
       aiohttp
       aiohttp-openmetrics

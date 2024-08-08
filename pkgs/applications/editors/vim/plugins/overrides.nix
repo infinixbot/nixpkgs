@@ -512,7 +512,13 @@ self: super:
           rustPlatform.bindgenHook
         ];
 
-        buildInputs = [ libuv.dev ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.AppKit ];
+        buildInputs =
+          [
+            libuv.dev
+          ]
+          ++ lib.optionals stdenv.isDarwin [
+            darwin.apple_sdk.frameworks.AppKit
+          ];
       };
     in
     buildVimPlugin {
@@ -660,7 +666,9 @@ self: super:
       pname = "cord.nvim";
       inherit version src;
 
-      nativeBuildInputs = [ rustPackage ];
+      nativeBuildInputs = [
+        rustPackage
+      ];
 
       buildPhase = ''
         install -D ${rustPackage}/lib/cord.${extension} cord.${extension}
@@ -1593,7 +1601,9 @@ self: super:
         pname = "sniprun-bin";
         inherit version src;
 
-        buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+        buildInputs = lib.optionals stdenv.isDarwin [
+          darwin.apple_sdk.frameworks.Security
+        ];
 
         cargoHash = "sha256-bLki+6uMKJtk/bu+LNf2E1m/HpEG8zmnM3JI89IjmNs=";
 

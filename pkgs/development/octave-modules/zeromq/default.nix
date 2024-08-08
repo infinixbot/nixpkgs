@@ -29,7 +29,9 @@ buildOctavePackage rec {
     autoreconfHook
   ];
 
-  propagatedBuildInputs = [ zeromq ];
+  propagatedBuildInputs = [
+    zeromq
+  ];
 
   meta = with lib; {
     homepage = "https://octave.sourceforge.io/zeromq/index.html";

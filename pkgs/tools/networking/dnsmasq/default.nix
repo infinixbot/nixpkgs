@@ -19,7 +19,9 @@ let
       "-DHAVE_IDN"
       "-DHAVE_DNSSEC"
     ]
-    ++ lib.optionals dbusSupport [ "-DHAVE_DBUS" ]
+    ++ lib.optionals dbusSupport [
+      "-DHAVE_DBUS"
+    ]
     ++ lib.optionals stdenv.isLinux [
       "-DHAVE_CONNTRACK"
       "-DHAVE_NFTSET"

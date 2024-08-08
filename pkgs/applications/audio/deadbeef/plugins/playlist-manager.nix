@@ -18,7 +18,9 @@ stdenv.mkDerivation {
     sha256 = "sha256-dsKthlQ0EuX4VhO8K9VTyX3zN8ytzDUbSi/xSMB4xRw=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     deadbeef

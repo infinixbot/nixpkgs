@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [ openssl ];
+  buildInputs = [
+    openssl
+  ];
 
   makeFlags = [ "OPENSSL=y" ];
 

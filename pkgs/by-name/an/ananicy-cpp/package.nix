@@ -40,10 +40,14 @@ clangStdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ] ++ lib.optionals withBpf [ bpftools ];
+  nativeBuildInputs =
+    [
+      cmake
+      pkg-config
+    ]
+    ++ lib.optionals withBpf [
+      bpftools
+    ];
 
   buildInputs =
     [

@@ -40,7 +40,9 @@ buildGoModule rec {
     hash = "sha256-gOoIvPvCc4wcTNhfsOGqYsvM2eibtDcvp986Dkx099A=";
   };
 
-  propagatedBuildInputs = [ fuseftp ];
+  propagatedBuildInputs = [
+    fuseftp
+  ];
 
   # telepresence depends on fuseftp existing as a built binary, as it gets embedded
   # CGO gets disabled to match their build process as that is how it's done upstream

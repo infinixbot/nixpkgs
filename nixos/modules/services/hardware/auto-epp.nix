@@ -62,7 +62,9 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    boot.kernelParams = [ "amd_pstate=active" ];
+    boot.kernelParams = [
+      "amd_pstate=active"
+    ];
 
     environment.etc."auto-epp.conf".source = format.generate "auto-epp.conf" cfg.settings;
     systemd.packages = [ cfg.package ];

@@ -51,7 +51,9 @@ import ./make-test-python.nix (
             {
               static_configs = [
                 {
-                  targets = [ "localhost:9093" ];
+                  targets = [
+                    "localhost:9093"
+                  ];
                 }
               ];
             }

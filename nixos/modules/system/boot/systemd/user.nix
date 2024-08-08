@@ -183,7 +183,9 @@ in
   };
 
   config = {
-    systemd.additionalUpstreamSystemUnits = [ "user.slice" ];
+    systemd.additionalUpstreamSystemUnits = [
+      "user.slice"
+    ];
 
     environment.etc = {
       "systemd/user".source = generateUnits {

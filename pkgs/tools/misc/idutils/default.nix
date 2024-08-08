@@ -32,8 +32,12 @@ stdenv.mkDerivation rec {
   '';
 
   buildInputs =
-    lib.optionals stdenv.isLinux [ emacs ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.CoreServices ];
+    lib.optionals stdenv.isLinux [
+      emacs
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.CoreServices
+    ];
 
   nativeBuildInputs = [
     gnulib

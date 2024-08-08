@@ -14,7 +14,9 @@ buildOctavePackage rec {
     sha256 = "1srx78k90ycla7yisa9h593n9l8br31lsdxlspra8sxiyq0sbk72";
   };
 
-  requiredOctavePackages = [ optim ];
+  requiredOctavePackages = [
+    optim
+  ];
 
   meta = with lib; {
     homepage = "https://octave.sourceforge.io/econometrics/index.html";

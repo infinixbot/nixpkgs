@@ -27,7 +27,9 @@ stdenv.mkDerivation (finalAttrs: {
     gtest
   ];
 
-  buildInputs = [ capnproto ];
+  buildInputs = [
+    capnproto
+  ];
 
   cmakeFlags = [
     "-DUHDM_USE_HOST_GTEST=On"

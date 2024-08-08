@@ -177,7 +177,9 @@ self: super:
     # Ensure the necessary frameworks are propagatedBuildInputs on darwin
     OpenGLRaw = overrideCabal (drv: {
       librarySystemDepends = [ ];
-      libraryHaskellDepends = drv.libraryHaskellDepends ++ [ darwin.apple_sdk.frameworks.OpenGL ];
+      libraryHaskellDepends = drv.libraryHaskellDepends ++ [
+        darwin.apple_sdk.frameworks.OpenGL
+      ];
       preConfigure =
         ''
           frameworkPaths=($(for i in $nativeBuildInputs; do if [ -d "$i"/Library/Frameworks ]; then echo "-F$i/Library/Frameworks"; fi done))
@@ -188,7 +190,9 @@ self: super:
     }) super.OpenGLRaw;
     GLURaw = overrideCabal (drv: {
       librarySystemDepends = [ ];
-      libraryHaskellDepends = drv.libraryHaskellDepends ++ [ darwin.apple_sdk.frameworks.OpenGL ];
+      libraryHaskellDepends = drv.libraryHaskellDepends ++ [
+        darwin.apple_sdk.frameworks.OpenGL
+      ];
     }) super.GLURaw;
     bindings-GLFW = overrideCabal (drv: {
       librarySystemDepends = [ ];
@@ -204,7 +208,9 @@ self: super:
     }) super.bindings-GLFW;
     OpenCL = overrideCabal (drv: {
       librarySystemDepends = [ ];
-      libraryHaskellDepends = drv.libraryHaskellDepends ++ [ darwin.apple_sdk.frameworks.OpenCL ];
+      libraryHaskellDepends = drv.libraryHaskellDepends ++ [
+        darwin.apple_sdk.frameworks.OpenCL
+      ];
     }) super.OpenCL;
 
     # cabal2nix likes to generate dependencies on hinotify when hfsevents is
@@ -241,7 +247,9 @@ self: super:
 
     # conditional dependency via a cabal flag
     cas-store = overrideCabal (drv: {
-      libraryHaskellDepends = [ self.kqueue ] ++ (drv.libraryHaskellDepends or [ ]);
+      libraryHaskellDepends = [
+        self.kqueue
+      ] ++ (drv.libraryHaskellDepends or [ ]);
     }) super.cas-store;
 
     # We are lacking pure pgrep at the moment for tests to work

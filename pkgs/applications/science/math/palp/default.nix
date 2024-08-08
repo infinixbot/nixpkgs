@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-fkp78hmZioRMC8zgoXbknQdDy0tQWg4ZUym/LsGW3dc=";
   };
 
-  hardeningDisable = [ "format" ];
+  hardeningDisable = [
+    "format"
+  ];
 
   patchPhase = lib.optionalString stdenv.isDarwin ''
     substituteInPlace GNUmakefile --replace gcc cc

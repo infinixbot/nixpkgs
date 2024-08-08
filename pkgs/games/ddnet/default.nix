@@ -61,7 +61,9 @@ stdenv.mkDerivation rec {
     rustPlatform.cargoSetupHook
   ];
 
-  nativeCheckInputs = [ gtest ];
+  nativeCheckInputs = [
+    gtest
+  ];
 
   buildInputs =
     [
@@ -86,7 +88,9 @@ stdenv.mkDerivation rec {
         glslang
         spirv-tools
       ]
-      ++ lib.optionals stdenv.isLinux [ libX11 ]
+      ++ lib.optionals stdenv.isLinux [
+        libX11
+      ]
       ++ lib.optionals stdenv.isDarwin [
         Carbon
         Cocoa

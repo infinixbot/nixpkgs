@@ -59,7 +59,9 @@ stdenv.mkDerivation (finalAttrs: {
     removeReferencesTo
   ];
 
-  buildInputs = lib.optionals withCryptodev [ cryptodev ];
+  buildInputs = lib.optionals withCryptodev [
+    cryptodev
+  ];
 
   outputs = [
     "bin"

@@ -43,10 +43,14 @@ pythonPackages.buildPythonApplication rec {
       gst_all_1.gstreamer
     ];
 
-  buildInputs = [
-    qt5.qtbase
-    qt5.qtwayland
-  ] ++ lib.optionals (pyqt5.multimediaEnabled) [ qt5.qtmultimedia.bin ];
+  buildInputs =
+    [
+      qt5.qtbase
+      qt5.qtwayland
+    ]
+    ++ lib.optionals (pyqt5.multimediaEnabled) [
+      qt5.qtmultimedia.bin
+    ];
 
   propagatedBuildInputs = with pythonPackages; [
     chromaprint

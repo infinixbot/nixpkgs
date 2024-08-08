@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
     python3
   ];
 
-  buildInputs = [ efl ];
+  buildInputs = [
+    efl
+  ];
 
   postPatch = ''
     patchShebangs data/colorschemes/*.py

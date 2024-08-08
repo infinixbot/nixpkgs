@@ -20,7 +20,9 @@ stdenv.mkDerivation rec {
 
   patches = [ ./10_fix_buffer_overflow_wordole_c_CVE-2014-8123.patch ];
 
-  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
+  makeFlags = [
+    "CC=${stdenv.cc.targetPrefix}cc"
+  ];
 
   installTargets = [ "global_install" ];
 

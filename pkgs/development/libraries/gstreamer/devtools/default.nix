@@ -32,14 +32,20 @@ stdenv.mkDerivation rec {
     "dev"
   ];
 
-  depsBuildBuild = [ pkg-config ];
-
-  nativeBuildInputs = [
-    meson
-    ninja
+  depsBuildBuild = [
     pkg-config
-    gobject-introspection
-  ] ++ lib.optionals enableDocumentation [ hotdoc ];
+  ];
+
+  nativeBuildInputs =
+    [
+      meson
+      ninja
+      pkg-config
+      gobject-introspection
+    ]
+    ++ lib.optionals enableDocumentation [
+      hotdoc
+    ];
 
   buildInputs = [
     cairo
@@ -54,7 +60,9 @@ stdenv.mkDerivation rec {
     gst-rtsp-server
   ];
 
-  mesonFlags = [ (lib.mesonEnable "doc" enableDocumentation) ];
+  mesonFlags = [
+    (lib.mesonEnable "doc" enableDocumentation)
+  ];
 
   meta = with lib; {
     description = "Integration testing infrastructure for the GStreamer framework";

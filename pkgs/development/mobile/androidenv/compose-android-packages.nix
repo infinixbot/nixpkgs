@@ -155,7 +155,12 @@ let
 
   # The list of all license names we're accepting. Put android-sdk-license there
   # by default.
-  licenseNames = lib.lists.unique ([ "android-sdk-license" ] ++ extraLicenses);
+  licenseNames = lib.lists.unique (
+    [
+      "android-sdk-license"
+    ]
+    ++ extraLicenses
+  );
 in
 rec {
   deployAndroidPackages = callPackage ./deploy-androidpackages.nix {

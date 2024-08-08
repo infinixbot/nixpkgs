@@ -20,13 +20,19 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-8JDMqZ5BWslH4+Mfo5lnWTmD2QDaColwBOLzcuGZciY=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = [
-    bzip2
-    libtomcrypt
-    zlib
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Carbon ];
+  buildInputs =
+    [
+      bzip2
+      libtomcrypt
+      zlib
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Carbon
+    ];
 
   cmakeFlags = [
     (lib.cmakeBool "BUILD_SHARED_LIBS" (!stdenv.hostPlatform.isStatic))

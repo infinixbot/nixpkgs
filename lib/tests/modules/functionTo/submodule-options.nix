@@ -63,5 +63,7 @@ in
     };
   };
 
-  config.fun = lib.mkMerge [ (input: { b = "bee"; }) ];
+  config.fun = lib.mkMerge [
+    (input: { b = "bee"; })
+  ];
 }

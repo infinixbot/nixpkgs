@@ -25,7 +25,9 @@ buildPythonPackage rec {
     hash = "sha256-1qnWJjYsDc70VkHYbKt0X26f0f4TugqMiS1FeaPjhq4=";
   };
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   pythonRelaxDeps = [ "s3transfer" ];
 

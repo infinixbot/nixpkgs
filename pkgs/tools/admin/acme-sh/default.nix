@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-ymj97aWWOLen7YEfG72N2nyxlwuB/Su4+pgpWUuckgc=";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   installPhase =
     let

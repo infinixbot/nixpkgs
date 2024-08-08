@@ -26,7 +26,9 @@ perlPackages.buildPerlPackage rec {
     })
   ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   configurePhase = "true";
 

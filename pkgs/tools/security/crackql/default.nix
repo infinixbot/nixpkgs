@@ -18,9 +18,13 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-XlHbGkwdOV1nobjtQP/M3IIEuzXHBuwf52EsXf3MWoM=";
   };
 
-  pythonRelaxDeps = [ "graphql-core" ];
+  pythonRelaxDeps = [
+    "graphql-core"
+  ];
 
-  nativeBuildInputs = with python3.pkgs; [ poetry-core ];
+  nativeBuildInputs = with python3.pkgs; [
+    poetry-core
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     requests

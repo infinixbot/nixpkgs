@@ -61,7 +61,9 @@ stdenv.mkDerivation rec {
     libxml2
   ];
 
-  configureFlags = [ "--disable-dconf-migration" ];
+  configureFlags = [
+    "--disable-dconf-migration"
+  ];
 
   doCheck = true;
 

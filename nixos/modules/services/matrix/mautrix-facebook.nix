@@ -146,7 +146,9 @@ in
     systemd.services.mautrix-facebook = rec {
       wantedBy = [ "multi-user.target" ];
       wants =
-        [ "network-online.target" ]
+        [
+          "network-online.target"
+        ]
         ++ optional config.services.matrix-synapse.enable config.services.matrix-synapse.serviceUnit
         ++ optional cfg.configurePostgresql "postgresql.service";
       after = wants;

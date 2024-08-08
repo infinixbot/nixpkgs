@@ -49,7 +49,9 @@ stdenv.mkDerivation rec {
     "AR=${stdenv.cc.targetPrefix}ar"
   ] ++ lib.optional sensord "PROG_EXTRA=sensord";
 
-  installFlags = [ "ETCDIR=${placeholder "out"}/etc" ];
+  installFlags = [
+    "ETCDIR=${placeholder "out"}/etc"
+  ];
 
   # Making regexp to patch-out installing of .so symlinks from Makefile is
   # complicated, it is easier to remove them post-install.

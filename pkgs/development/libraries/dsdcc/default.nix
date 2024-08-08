@@ -29,7 +29,9 @@ stdenv.mkDerivation (finalAttrs: {
     serialdv
   ];
 
-  cmakeFlags = [ "-DUSE_MBELIB=ON" ];
+  cmakeFlags = [
+    "-DUSE_MBELIB=ON"
+  ];
 
   postFixup = ''
     substituteInPlace "$out"/lib/pkgconfig/libdsdcc.pc \

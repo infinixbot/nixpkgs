@@ -32,7 +32,9 @@ stdenv.mkDerivation rec {
   dontStrip = true; # Don't strip, otherwise patching the rpaths breaks
   sourceRoot = ".";
 
-  nativeBuildInputs = [ autoPatchelfHook ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+  ];
 
   buildInputs = [
     stdenv.cc.libc

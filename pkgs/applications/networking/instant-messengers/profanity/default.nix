@@ -48,7 +48,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-u/mp+vtMj602LfrulA+nhLNH8K6sqKIOuPJzhZusVmE=";
   };
 
-  patches = [ ./patches/packages-osx.patch ];
+  patches = [
+    ./patches/packages-osx.patch
+  ];
 
   enableParallelBuilding = true;
 

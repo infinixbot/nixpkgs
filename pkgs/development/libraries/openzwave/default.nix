@@ -42,7 +42,9 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   FONTCONFIG_FILE = "${fontconfig.out}/etc/fonts/fonts.conf";
   FONTCONFIG_PATH = "${fontconfig.out}/etc/fonts/";

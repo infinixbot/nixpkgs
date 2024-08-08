@@ -10,7 +10,9 @@
 }:
 
 let
-  patches = [ ./use-go-in-path.patch ];
+  patches = [
+    ./use-go-in-path.patch
+  ];
 
   # Patch the protoc alias so that it always builds from source.
   rulesProto = fetchFromGitHub {

@@ -23,11 +23,17 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-Ahzm23AStSwDSgks9j/J15/zo+EH/NgbfCBc3xBcTwQ=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs =
-    [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.AppKit ]
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.AppKit
+    ]
     ++ lib.optionals stdenv.isLinux [
       libxkbcommon
       wayland

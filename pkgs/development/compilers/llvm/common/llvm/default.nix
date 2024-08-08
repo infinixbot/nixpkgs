@@ -122,7 +122,9 @@ stdenv.mkDerivation (
       "python"
     ];
 
-    hardeningDisable = [ "trivialautovarinit" ];
+    hardeningDisable = [
+      "trivialautovarinit"
+    ];
 
     nativeBuildInputs =
       [ cmake ]
@@ -133,8 +135,12 @@ stdenv.mkDerivation (
         # splicing does *not* work with the latter. (TODO: fix)
         python3Packages.sphinx
       ]
-      ++ optionals (lib.versionOlder version "18" && enableManpages) [ python3Packages.recommonmark ]
-      ++ optionals (lib.versionAtLeast version "18" && enableManpages) [ python3Packages.myst-parser ];
+      ++ optionals (lib.versionOlder version "18" && enableManpages) [
+        python3Packages.recommonmark
+      ]
+      ++ optionals (lib.versionAtLeast version "18" && enableManpages) [
+        python3Packages.myst-parser
+      ];
 
     buildInputs = [
       libxml2
@@ -409,12 +415,20 @@ stdenv.mkDerivation (
         flagsForLlvmConfig =
           (
             if lib.versionOlder release_version "15" then
-              [ "-DLLVM_INSTALL_CMAKE_DIR=${placeholder "dev"}/lib/cmake/llvm/" ]
+              [
+                "-DLLVM_INSTALL_CMAKE_DIR=${placeholder "dev"}/lib/cmake/llvm/"
+              ]
             else
-              [ "-DLLVM_INSTALL_PACKAGE_DIR=${placeholder "dev"}/lib/cmake/llvm" ]
+              [
+                "-DLLVM_INSTALL_PACKAGE_DIR=${placeholder "dev"}/lib/cmake/llvm"
+              ]
           )
-          ++ [ "-DLLVM_ENABLE_RTTI=ON" ]
-          ++ optionals enableSharedLibraries [ "-DLLVM_LINK_LLVM_DYLIB=ON" ];
+          ++ [
+            "-DLLVM_ENABLE_RTTI=ON"
+          ]
+          ++ optionals enableSharedLibraries [
+            "-DLLVM_LINK_LLVM_DYLIB=ON"
+          ];
       in
       flagsForLlvmConfig
       ++ [
@@ -426,7 +440,9 @@ stdenv.mkDerivation (
         "-DLLVM_ENABLE_DUMP=ON"
         (lib.cmakeBool "LLVM_ENABLE_TERMINFO" enableTerminfo)
       ]
-      ++ optionals (!doCheck) [ "-DLLVM_INCLUDE_TESTS=OFF" ]
+      ++ optionals (!doCheck) [
+        "-DLLVM_INCLUDE_TESTS=OFF"
+      ]
       ++ optionals stdenv.hostPlatform.isStatic [
         # Disables building of shared libs, -fPIC is still injected by cc-wrapper
         "-DLLVM_ENABLE_PIC=OFF"
@@ -444,7 +460,9 @@ stdenv.mkDerivation (
         "-DSPHINX_OUTPUT_HTML=OFF"
         "-DSPHINX_WARNINGS_AS_ERRORS=OFF"
       ]
-      ++ optionals (enableGoldPlugin) [ "-DLLVM_BINUTILS_INCDIR=${libbfd.dev}/include" ]
+      ++ optionals (enableGoldPlugin) [
+        "-DLLVM_BINUTILS_INCDIR=${libbfd.dev}/include"
+      ]
       ++ optionals isDarwin [
         "-DLLVM_ENABLE_LIBCXX=ON"
         "-DCAN_TARGET_i386=false"

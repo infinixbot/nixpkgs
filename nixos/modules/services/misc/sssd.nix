@@ -149,7 +149,9 @@ in
           ExecStartPre = "-${pkgs.sssd}/bin/sssd --genconf-section=kcm";
           ExecStart = "${pkgs.sssd}/libexec/sssd/sssd_kcm --uid 0 --gid 0";
         };
-        restartTriggers = [ settingsFileUnsubstituted ];
+        restartTriggers = [
+          settingsFileUnsubstituted
+        ];
       };
       systemd.sockets.sssd-kcm = {
         description = "SSSD Kerberos Cache Manager responder socket";

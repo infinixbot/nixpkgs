@@ -17,7 +17,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-c5J2cTzyb7CiBlS4vS3PdRhr6DhIvXE2lt40u0s6G0k=";
 
-  subPackages = [ "cmd/chaos/" ];
+  subPackages = [
+    "cmd/chaos/"
+  ];
 
   meta = with lib; {
     description = "Tool to communicate with Chaos DNS API";

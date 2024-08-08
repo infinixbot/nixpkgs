@@ -99,7 +99,9 @@ let
             buildPackages.re2c
           ];
 
-          buildInputs = [ pkgs.gnatPackages.gnatcoll-xref ];
+          buildInputs = [
+            pkgs.gnatPackages.gnatcoll-xref
+          ];
 
           buildPhase = ''
             runHook preBuild
@@ -140,7 +142,9 @@ let
           {
             dontUnpack = false;
 
-            nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.pkg-config ];
+            nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
+              pkgs.pkg-config
+            ];
 
             buildInputs = (old.buildInputs or [ ]) ++ [ pkgs.enchant2 ];
 

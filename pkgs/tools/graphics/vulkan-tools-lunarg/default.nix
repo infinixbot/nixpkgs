@@ -64,7 +64,9 @@ stdenv.mkDerivation rec {
     libsForQt5.qt5.qtwayland
   ];
 
-  cmakeFlags = [ "-DVULKAN_HEADERS_INSTALL_DIR=${vulkan-headers}" ];
+  cmakeFlags = [
+    "-DVULKAN_HEADERS_INSTALL_DIR=${vulkan-headers}"
+  ];
 
   preConfigure = ''
     patchShebangs scripts/*

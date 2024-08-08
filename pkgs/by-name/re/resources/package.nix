@@ -63,7 +63,9 @@ stdenv.mkDerivation (finalAttrs: {
       --replace '"pkexec"' '"/run/wrappers/bin/pkexec"'
   '';
 
-  mesonFlags = [ (lib.mesonOption "profile" "default") ];
+  mesonFlags = [
+    (lib.mesonOption "profile" "default")
+  ];
 
   passthru = {
     updateScript = nix-update-script { };

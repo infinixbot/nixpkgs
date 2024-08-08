@@ -15,9 +15,13 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "14r8fri4byyzavzdifpga6118hxqjwpzd11xxj28s16zxcanq16m";
   };
 
-  buildInputs = [ xorg.xcursorgen ];
+  buildInputs = [
+    xorg.xcursorgen
+  ];
 
-  propagatedBuildInputs = [ hicolor-icon-theme ];
+  propagatedBuildInputs = [
+    hicolor-icon-theme
+  ];
 
   dontDropIconThemeCache = true;
 

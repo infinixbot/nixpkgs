@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
       xorg.libX11
       alsa-lib
     ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.AppKit ];
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.AppKit
+    ];
 
   cmakeBuildType = "MinSizeRel";
 

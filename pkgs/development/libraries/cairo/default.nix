@@ -60,7 +60,9 @@ stdenv.mkDerivation (
     ];
 
     buildInputs =
-      [ docbook_xsl ]
+      [
+        docbook_xsl
+      ]
       ++ optionals stdenv.isDarwin (
         with darwin.apple_sdk.frameworks;
         [

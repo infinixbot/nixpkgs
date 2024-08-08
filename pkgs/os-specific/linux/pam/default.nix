@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-+JI8dAFZBS1xnb/CovgZQtaN00/K9hxwagLJuA/u744=";
   };
 
-  patches = [ ./suid-wrapper-path.patch ];
+  patches = [
+    ./suid-wrapper-path.patch
+  ];
 
   # Case-insensitivity workaround for https://github.com/linux-pam/linux-pam/issues/569
   postPatch =
@@ -74,7 +76,9 @@ stdenv.mkDerivation rec {
     "--enable-lastlog"
   ];
 
-  installFlags = [ "SCONFIGDIR=${placeholder "out"}/etc/security" ];
+  installFlags = [
+    "SCONFIGDIR=${placeholder "out"}/etc/security"
+  ];
 
   doCheck = false; # fails
 

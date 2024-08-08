@@ -50,7 +50,9 @@ stdenv.mkDerivation (finalAttrs: {
       --replace 'readelf' "${stdenv.cc.targetPrefix}readelf"
   '';
 
-  cmakeFlags = lib.optionals static [ "-DBUILD_SHARED_LIBS=OFF" ];
+  cmakeFlags = lib.optionals static [
+    "-DBUILD_SHARED_LIBS=OFF"
+  ];
 
   # Remove a test that fails to statically link (undefined reference to png and
   # freetype symbols)

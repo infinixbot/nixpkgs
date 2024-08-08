@@ -22,7 +22,13 @@ mkDerivation rec {
     sha256 = "sha256-QUIHowMl3YTDQlo58OHXXNaYLI4vuIozYbZnz4EQUmQ=";
   };
 
-  nativeBuildInputs = [ cmake ] ++ lib.optionals (withGstreamer || withOmemo) [ pkg-config ];
+  nativeBuildInputs =
+    [
+      cmake
+    ]
+    ++ lib.optionals (withGstreamer || withOmemo) [
+      pkg-config
+    ];
   buildInputs =
     lib.optionals withGstreamer (
       with gst_all_1;
@@ -42,8 +48,12 @@ mkDerivation rec {
       "-DBUILD_EXAMPLES=false"
       "-DBUILD_TESTS=false"
     ]
-    ++ lib.optionals withGstreamer [ "-DWITH_GSTREAMER=ON" ]
-    ++ lib.optionals withOmemo [ "-DBUILD_OMEMO=ON" ];
+    ++ lib.optionals withGstreamer [
+      "-DWITH_GSTREAMER=ON"
+    ]
+    ++ lib.optionals withOmemo [
+      "-DBUILD_OMEMO=ON"
+    ];
 
   meta = with lib; {
     description = "Cross-platform C++ XMPP client and server library";

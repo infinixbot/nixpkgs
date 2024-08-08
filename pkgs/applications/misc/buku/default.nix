@@ -34,7 +34,9 @@ buildPythonApplication rec {
     sha256 = "sha256-kPVlfTYUusf5CZnKB53WZcCHo3MEnA2bLUHTRPGPn+8=";
   };
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   nativeCheckInputs = [
     hypothesis

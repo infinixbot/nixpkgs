@@ -40,7 +40,9 @@ buildDunePackage rec {
   ];
 
   doCheck = true;
-  checkInputs = [ alcotest ];
+  checkInputs = [
+    alcotest
+  ];
 
   passthru.updateScript = gitUpdater { rev-prefix = "v"; };
 

@@ -125,7 +125,9 @@ stdenv.mkDerivation rec {
       (lib.withFeature withP11-kit "p11-kit")
       (lib.enableFeature cxxBindings "cxx")
     ]
-    ++ lib.optionals (stdenv.hostPlatform.isMinGW) [ "--disable-doc" ];
+    ++ lib.optionals (stdenv.hostPlatform.isMinGW) [
+      "--disable-doc"
+    ];
 
   enableParallelBuilding = true;
 

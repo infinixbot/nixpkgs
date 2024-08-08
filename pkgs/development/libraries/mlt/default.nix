@@ -62,12 +62,16 @@ stdenv.mkDerivation rec {
       which
       makeWrapper
     ]
-    ++ lib.optionals cudaSupport [ cudaPackages.cuda_nvcc ]
+    ++ lib.optionals cudaSupport [
+      cudaPackages.cuda_nvcc
+    ]
     ++ lib.optionals enablePython [
       python3
       swig
     ]
-    ++ lib.optionals (qt != null) [ qt.wrapQtAppsHook ];
+    ++ lib.optionals (qt != null) [
+      qt.wrapQtAppsHook
+    ];
 
   buildInputs =
     [
@@ -86,8 +90,12 @@ stdenv.mkDerivation rec {
       sox
       vid-stab
     ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk_11_0.frameworks.Accelerate ]
-    ++ lib.optionals cudaSupport [ cudaPackages.cuda_cudart ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk_11_0.frameworks.Accelerate
+    ]
+    ++ lib.optionals cudaSupport [
+      cudaPackages.cuda_cudart
+    ]
     ++ lib.optionals enableJackrack [
       glib
       ladspa-sdk
@@ -99,8 +107,12 @@ stdenv.mkDerivation rec {
       (qt.qt5compat or null)
       libarchive
     ]
-    ++ lib.optionals enableSDL1 [ SDL ]
-    ++ lib.optionals enableSDL2 [ SDL2 ];
+    ++ lib.optionals enableSDL1 [
+      SDL
+    ]
+    ++ lib.optionals enableSDL2 [
+      SDL2
+    ];
 
   outputs = [
     "out"
@@ -113,7 +125,9 @@ stdenv.mkDerivation rec {
       "-DCMAKE_SKIP_BUILD_RPATH=ON"
       "-DMOD_OPENCV=ON"
     ]
-    ++ lib.optionals enablePython [ "-DSWIG_PYTHON=ON" ]
+    ++ lib.optionals enablePython [
+      "-DSWIG_PYTHON=ON"
+    ]
     ++ lib.optionals (qt != null) [
       "-DMOD_QT${lib.versions.major qt.qtbase.version}=ON"
       "-DMOD_GLAXNIMATE${if lib.versions.major qt.qtbase.version == "5" then "" else "_QT6"}=ON"

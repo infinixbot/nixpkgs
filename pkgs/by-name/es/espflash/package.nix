@@ -34,7 +34,9 @@ rustPlatform.buildRustPackage rec {
 
   buildInputs =
     [ openssl ]
-    ++ lib.optionals stdenv.isLinux [ udev ]
+    ++ lib.optionals stdenv.isLinux [
+      udev
+    ]
     ++ lib.optionals stdenv.isDarwin [
       CoreServices
       Security

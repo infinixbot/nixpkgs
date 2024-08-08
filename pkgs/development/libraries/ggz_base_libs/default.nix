@@ -30,12 +30,16 @@ stdenv.mkDerivation rec {
       --replace "/usr/local/ssl/lib" "${lib.getLib openssl}/lib"
   '';
 
-  configureFlags = [ "--with-tls" ];
+  configureFlags = [
+    "--with-tls"
+  ];
 
   meta = with lib; {
     description = "GGZ Gaming zone libraries";
     mainProgram = "ggz-config";
-    maintainers = with maintainers; [ raskin ];
+    maintainers = with maintainers; [
+      raskin
+    ];
     platforms = platforms.linux;
     license = licenses.gpl2;
     downloadPage = "http://www.ggzgamingzone.org/releases/";

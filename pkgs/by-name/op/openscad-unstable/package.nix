@@ -164,7 +164,9 @@ clangStdenv.mkDerivation rec {
 
   doCheck = true;
 
-  nativeCheckInputs = [ mesa.llvmpipeHook ];
+  nativeCheckInputs = [
+    mesa.llvmpipeHook
+  ];
 
   checkPhase = ''
     # some fontconfig issues cause pdf output to have wrong font

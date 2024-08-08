@@ -43,7 +43,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-8RfiObWDqZJg+sjjDBk+sRoS5CiECIdNPH79T+O8e8M=";
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   buildInputs = [
     SDL2

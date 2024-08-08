@@ -5,7 +5,9 @@ import ../../make-test-python.nix (
     trust-root-configuration-keys =
       pkgs.runCommand "generate-trc-keys.sh"
         {
-          buildInputs = [ pkgs.scion ];
+          buildInputs = [
+            pkgs.scion
+          ];
         }
         ''
           set -euo pipefail
@@ -103,7 +105,9 @@ import ../../make-test-python.nix (
           "scion/keys/master0.key".text = "U${toString hostId}v4k23ZXjGDwDofg/Eevw==";
           "scion/keys/master1.key".text = "dBMko${toString hostId}qMS8DfrN/zP2OUdA==";
         };
-        environment.systemPackages = [ pkgs.scion ];
+        environment.systemPackages = [
+          pkgs.scion
+        ];
       })
     ];
   in

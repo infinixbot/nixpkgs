@@ -26,7 +26,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-KDImoIUAkjCa4O++F9LdDN+i8VoC78g8644Rhbpy+mc=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     (lib.getDev curl)

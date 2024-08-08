@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-k6LFMs2/OQQyeGI5WXBGWkAAY4GeP8LaA8hTXFwbaCM=";
   };
 
-  patches = [ ./use_v23_dbus_interface.diff ];
+  patches = [
+    ./use_v23_dbus_interface.diff
+  ];
 
   postPatch = ''
     substituteInPlace CMakeLists.txt \
@@ -69,7 +71,9 @@ stdenv.mkDerivation rec {
   cmakeFlags = [ "-DVERSION=${version}" ];
 
   # qt5integration must be placed before qtsvg in QT_PLUGIN_PATH
-  qtWrapperArgs = [ "--prefix QT_PLUGIN_PATH : ${qt5integration}/${qtbase.qtPluginPrefix}" ];
+  qtWrapperArgs = [
+    "--prefix QT_PLUGIN_PATH : ${qt5integration}/${qtbase.qtPluginPrefix}"
+  ];
 
   preFixup = ''
     qtWrapperArgs+=(--prefix GST_PLUGIN_SYSTEM_PATH_1_0 : "$GST_PLUGIN_SYSTEM_PATH_1_0")

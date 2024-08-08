@@ -39,7 +39,9 @@ buildGoModule rec {
     protobuf_26 # Required for buftesting.GetProtocFilePaths
   ];
 
-  checkFlags = [ "-skip=TestWorkspaceGit" ];
+  checkFlags = [
+    "-skip=TestWorkspaceGit"
+  ];
 
   preCheck = ''
     # The tests need access to some of the built utilities

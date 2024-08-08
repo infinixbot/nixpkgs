@@ -19,7 +19,13 @@ stdenv.mkDerivation rec {
 
   cmakeFlags = [ "-DBUILD_SHARED_LIBS=ON" ];
 
-  nativeBuildInputs = [ cmake ] ++ lib.optionals stdenv.isDarwin [ fixDarwinDylibNames ];
+  nativeBuildInputs =
+    [
+      cmake
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      fixDarwinDylibNames
+    ];
 
   doCheck = true;
 

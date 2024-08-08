@@ -13,7 +13,9 @@ stdenv.mkDerivation rec {
     sha256 = "1z000zi7hpr2h9cabj6hzf3n6a6gd6glmm8nn36v4b8i4vzbhx7q";
   };
 
-  patches = [ ./include.patch ];
+  patches = [
+    ./include.patch
+  ];
 
   meta = with lib; {
     description = "CloneCD to ISO converter";

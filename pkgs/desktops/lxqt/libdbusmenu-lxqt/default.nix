@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     wrapQtAppsHook
   ];
 
-  buildInputs = [ qtbase ];
+  buildInputs = [
+    qtbase
+  ];
 
   passthru.updateScript = gitUpdater { };
 

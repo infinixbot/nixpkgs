@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-VtXkgixgElKKOT26uKN9feXDVjjtSgTWvcgk5o5MLmw=";
     rev = "refs/tags/v${version}";
   };
-  buildInputs = [ (lib.getOutput "static" stdenv.cc.libc) ];
+  buildInputs = [
+    (lib.getOutput "static" stdenv.cc.libc)
+  ];
   makeFlags = [ "PREFIX=$(out)" ];
   preConfigure =
     ""

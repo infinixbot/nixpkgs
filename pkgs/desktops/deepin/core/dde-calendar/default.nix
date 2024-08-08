@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-Hn759Cxtzv+HBllA2vdZcH6P8EWZkjawpgkmLiE2+uA=";
   };
 
-  patches = [ ./fix-wrapped-name-not-in-whitelist.diff ];
+  patches = [
+    ./fix-wrapped-name-not-in-whitelist.diff
+  ];
 
   postPatch = ''
     for file in $(grep -rl "/bin/bash"); do

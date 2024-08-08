@@ -53,16 +53,23 @@ stdenv.mkDerivation rec {
   preCheck = ''
     patchShebangs ../tests/test-yacas
   '';
-  nativeCheckInputs = [ gtest ];
+  nativeCheckInputs = [
+    gtest
+  ];
   doCheck = true;
 
-  nativeBuildInputs = [
-    cmake
-    # Perl is only for the documentation
-    perl
-  ] ++ lib.optionals enableJava [ openjdk ];
+  nativeBuildInputs =
+    [
+      cmake
+      # Perl is only for the documentation
+      perl
+    ]
+    ++ lib.optionals enableJava [
+      openjdk
+    ];
   buildInputs =
-    [ ]
+    [
+    ]
     ++ lib.optionals enableGui [
       qtbase
       wrapQtAppsHook

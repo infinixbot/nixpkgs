@@ -80,14 +80,18 @@ in
   config = mkIf (imcfg.enable && imcfg.type == "ibus") {
     i18n.inputMethod.package = ibusPackage;
 
-    environment.systemPackages = [ ibusAutostart ];
+    environment.systemPackages = [
+      ibusAutostart
+    ];
 
     # Without dconf enabled it is impossible to use IBus
     programs.dconf.enable = true;
 
     programs.dconf.packages = [ ibusPackage ];
 
-    services.dbus.packages = [ ibusPackage ];
+    services.dbus.packages = [
+      ibusPackage
+    ];
 
     environment.variables = {
       GTK_IM_MODULE = "ibus";
@@ -95,7 +99,9 @@ in
       XMODIFIERS = "@im=ibus";
     };
 
-    xdg.portal.extraPortals = mkIf config.xdg.portal.enable [ ibusPackage ];
+    xdg.portal.extraPortals = mkIf config.xdg.portal.enable [
+      ibusPackage
+    ];
   };
 
   # uses attributes of the linked package

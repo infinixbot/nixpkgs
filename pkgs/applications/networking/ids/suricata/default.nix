@@ -58,7 +58,9 @@ stdenv.mkDerivation rec {
       cargo
     ];
 
-  propagatedBuildInputs = with python.pkgs; [ pyyaml ];
+  propagatedBuildInputs = with python.pkgs; [
+    pyyaml
+  ];
 
   buildInputs =
     [

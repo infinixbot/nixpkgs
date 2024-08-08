@@ -29,7 +29,9 @@ buildPythonPackage rec {
     hash = "sha256-eMZXXOGe9jKf9bXEinIIu6w3i4SOkLnDWnxmT5G0RWA=";
   };
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   pythonRelaxDeps = [
     "lxml"

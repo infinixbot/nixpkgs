@@ -17,7 +17,9 @@ python3Packages.buildPythonApplication rec {
     sha256 = "0j4lvn3rx1kqvxcsd8nhc2lgk48jyyl7qffhlkvakhy60f9lymj3";
   };
 
-  propagatedBuildInputs = with python3Packages; [ ruamel-yaml ];
+  propagatedBuildInputs = with python3Packages; [
+    ruamel-yaml
+  ];
 
   nativeCheckInputs = with python3Packages; [
     pytestCheckHook

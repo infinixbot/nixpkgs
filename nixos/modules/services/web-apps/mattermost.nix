@@ -60,8 +60,12 @@ let
     else
       stdenv.mkDerivation {
         name = "${cfg.package.name}-plugins";
-        nativeBuildInputs = [ autoPatchelfHook ] ++ mattermostPluginDerivations;
-        buildInputs = [ cfg.package ];
+        nativeBuildInputs = [
+          autoPatchelfHook
+        ] ++ mattermostPluginDerivations;
+        buildInputs = [
+          cfg.package
+        ];
         installPhase = ''
           mkdir -p $out/data/plugins
           plugins=(${

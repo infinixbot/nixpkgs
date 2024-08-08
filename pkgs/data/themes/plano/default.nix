@@ -34,7 +34,9 @@ stdenv.mkDerivation rec {
     librsvg
   ];
 
-  propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+  propagatedUserEnvPkgs = [
+    gtk-engine-murrine
+  ];
 
   meta = with lib; {
     description = "Flat theme for GNOME and Xfce";

@@ -80,7 +80,11 @@ python3.pkgs.buildPythonApplication {
       qdarkstyle
     ];
 
-  checkInputs = with python3.pkgs; lib.optionals enableQt [ pyqt6 ];
+  checkInputs =
+    with python3.pkgs;
+    lib.optionals enableQt [
+      pyqt6
+    ];
 
   postPatch =
     ''

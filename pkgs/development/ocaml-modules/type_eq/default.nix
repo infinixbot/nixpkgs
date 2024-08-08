@@ -16,7 +16,9 @@ buildDunePackage rec {
     hash = "sha256-4u/HF92Hbf9Rcv+JTAMPhYZjoKZ1cS0mBMkzU/hxx38=";
   };
 
-  checkInputs = [ alcotest ];
+  checkInputs = [
+    alcotest
+  ];
 
   doCheck = true;
 

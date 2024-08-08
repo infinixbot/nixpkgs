@@ -60,9 +60,13 @@ rustPlatform.buildRustPackage rec {
       libxkbcommon
       wayland
     ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.libobjc ];
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.libobjc
+    ];
 
-  checkFlags = [ "--skip=bench" ];
+  checkFlags = [
+    "--skip=bench"
+  ];
 
   postInstall = ''
     install -Dm444 $src/res/oculante.png -t $out/share/icons/hicolor/128x128/apps/

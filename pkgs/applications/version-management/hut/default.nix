@@ -18,7 +18,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-6dIqcjtacxlmadnPzRlOJYoyOaO4zdjzrjO64KS2Bq0=";
 
-  nativeBuildInputs = [ scdoc ];
+  nativeBuildInputs = [
+    scdoc
+  ];
 
   makeFlags = [ "PREFIX=$(out)" ];
 

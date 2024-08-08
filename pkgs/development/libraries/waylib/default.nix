@@ -60,9 +60,13 @@ stdenv.mkDerivation (finalAttrs: {
     libdrm
   ];
 
-  propagatedBuildInputs = [ qwlroots ];
+  propagatedBuildInputs = [
+    qwlroots
+  ];
 
-  cmakeFlags = [ (lib.cmakeBool "INSTALL_TINYWL" true) ];
+  cmakeFlags = [
+    (lib.cmakeBool "INSTALL_TINYWL" true)
+  ];
 
   strictDeps = true;
 

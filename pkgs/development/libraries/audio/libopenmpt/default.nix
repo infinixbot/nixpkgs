@@ -32,19 +32,27 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [
-    zlib
-    mpg123
-    libogg
-    libvorbis
-    portaudio
-    libsndfile
-    flac
-  ] ++ lib.optionals usePulseAudio [ libpulseaudio ];
+  buildInputs =
+    [
+      zlib
+      mpg123
+      libogg
+      libvorbis
+      portaudio
+      libsndfile
+      flac
+    ]
+    ++ lib.optionals usePulseAudio [
+      libpulseaudio
+    ];
 
-  configureFlags = [ (lib.strings.withFeature usePulseAudio "pulseaudio") ];
+  configureFlags = [
+    (lib.strings.withFeature usePulseAudio "pulseaudio")
+  ];
 
   doCheck = stdenv.buildPlatform.canExecute stdenv.hostPlatform;
 

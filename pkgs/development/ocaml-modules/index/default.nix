@@ -29,7 +29,9 @@ buildDunePackage rec {
 
   minimalOCamlVersion = "4.08";
 
-  buildInputs = [ stdlib-shims ];
+  buildInputs = [
+    stdlib-shims
+  ];
   propagatedBuildInputs = [
     cmdliner
     fmt

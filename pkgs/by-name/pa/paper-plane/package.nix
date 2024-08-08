@@ -93,16 +93,20 @@ stdenv.mkDerivation {
     libxml2.bin
   ];
 
-  buildInputs = [
-    libshumate
-    libadwaita-paperplane
-    tdlib-paperplane
-    rlottie-paperplane
-    gst_all_1.gstreamer
-    gst_all_1.gst-libav
-    gst_all_1.gst-plugins-base
-    gst_all_1.gst-plugins-good
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Foundation ];
+  buildInputs =
+    [
+      libshumate
+      libadwaita-paperplane
+      tdlib-paperplane
+      rlottie-paperplane
+      gst_all_1.gstreamer
+      gst_all_1.gst-libav
+      gst_all_1.gst-plugins-base
+      gst_all_1.gst-plugins-good
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Foundation
+    ];
 
   mesonFlags = [
     # The API ID and hash provided here are for use with Paper Plane only.

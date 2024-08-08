@@ -44,7 +44,9 @@ stdenv.mkDerivation {
     sha256 = "sha256-BbBP2DiPZTSn1SBYMCgyiNdF9GD+NqR6YjeVNOQHHn4=";
   };
 
-  patches = [ ../backport-ffmpeg-6-support-jfx11.patch ];
+  patches = [
+    ../backport-ffmpeg-6-support-jfx11.patch
+  ];
 
   buildInputs = [
     gtk2

@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
     patchShebangs build-aux
   '';
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   preFixup = ''
     gappsWrapperArgs+=(

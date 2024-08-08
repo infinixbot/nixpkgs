@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-0s4UqRwuJIrSh24pFS1ke8xeQzvGja+tDuluwWb8+tE=";
   };
 
-  patches = [ ./dont-create-var.patch ];
+  patches = [
+    ./dont-create-var.patch
+  ];
 
   postPatch = ''
     substituteInPlace ./src/bin/keactrl/Makefile.am --replace '@sysconfdir@' "$out/etc"

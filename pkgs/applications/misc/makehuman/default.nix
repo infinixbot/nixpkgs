@@ -89,7 +89,9 @@ stdenv.mkDerivation rec {
     qtbase
   ];
 
-  propagatedBuildInputs = with python3.pkgs; [ pydeps ];
+  propagatedBuildInputs = with python3.pkgs; [
+    pydeps
+  ];
 
   finalSource = "${pname}-final";
 

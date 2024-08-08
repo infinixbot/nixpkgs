@@ -19,7 +19,9 @@ buildGoModule rec {
   proxyVendor = true;
   vendorHash = "sha256-EvVazz51sW8z+8XfZB0Xo42KuUT6Q9n2Y/0HvlF1bV4=";
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   postInstall = ''
     installShellCompletion --cmd threatest \

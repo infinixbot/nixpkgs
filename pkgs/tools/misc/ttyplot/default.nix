@@ -17,9 +17,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-B95pd0hoesBDQwzN0h3kMBVcUFJVWQrpOKizKpdoiok=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ ncurses ];
+  buildInputs = [
+    ncurses
+  ];
 
   makeFlags = [ "PREFIX=$(out)" ];
 

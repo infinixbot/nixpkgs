@@ -42,7 +42,9 @@ stdenv.mkDerivation (finalAttrs: {
       --suffix COWPATH : $out/share/cowsay/cows
   '';
 
-  makeFlags = [ "prefix=${placeholder "out"}" ];
+  makeFlags = [
+    "prefix=${placeholder "out"}"
+  ];
 
   passthru = {
     updateScript = nix-update-script { };

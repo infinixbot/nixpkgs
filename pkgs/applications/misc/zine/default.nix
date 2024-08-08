@@ -19,11 +19,17 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-dXq8O0jVpr0xxvLTrsLJbiyyOMXXtEz7OMINqDEfG4U=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [
-    openssl
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.CoreServices ];
+  buildInputs =
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.CoreServices
+    ];
 
   meta = with lib; {
     description = "Simple and opinionated tool to build your own magazine";

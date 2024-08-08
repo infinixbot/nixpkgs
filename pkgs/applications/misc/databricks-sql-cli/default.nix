@@ -31,7 +31,9 @@ python3.pkgs.buildPythonApplication rec {
       --replace 'pandas = "1.3.4"' 'pandas = "~1.5"'
   '';
 
-  nativeBuildInputs = with python3.pkgs; [ poetry-core ];
+  nativeBuildInputs = with python3.pkgs; [
+    poetry-core
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     cli-helpers
@@ -44,7 +46,9 @@ python3.pkgs.buildPythonApplication rec {
     sqlparse
   ];
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
   meta = with lib; {
     description = "CLI for querying Databricks SQL";

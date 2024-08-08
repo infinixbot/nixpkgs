@@ -14,12 +14,18 @@
 qtModule {
   pname = "qtsystems";
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optionals stdenv.hostPlatform.isLinux [ "bin" ];
+  outputs =
+    [
+      "out"
+      "dev"
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [
+      "bin"
+    ];
 
-  propagatedBuildInputs = [ qtbase ];
+  propagatedBuildInputs = [
+    qtbase
+  ];
 
   nativeBuildInputs = [
     pkg-config
@@ -34,7 +40,9 @@ qtModule {
   ];
 
   qmakeFlags =
-    [ "CONFIG+=git_build" ]
+    [
+      "CONFIG+=git_build"
+    ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       "CONFIG+=ofono"
       "CONFIG+=udisks"

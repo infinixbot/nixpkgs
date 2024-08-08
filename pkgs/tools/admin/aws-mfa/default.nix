@@ -28,14 +28,20 @@ buildPythonApplication rec {
     })
   ];
 
-  build-system = [ setuptools ];
+  build-system = [
+    setuptools
+  ];
 
-  dependencies = [ boto3 ];
+  dependencies = [
+    boto3
+  ];
 
   # package has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "awsmfa" ];
+  pythonImportsCheck = [
+    "awsmfa"
+  ];
 
   meta = with lib; {
     description = "Manage AWS MFA Security Credentials";

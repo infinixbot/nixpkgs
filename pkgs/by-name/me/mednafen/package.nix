@@ -56,7 +56,9 @@ stdenv.mkDerivation (finalAttrs: {
       libGLU
       libX11
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ libiconv ];
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      libiconv
+    ];
 
   hardeningDisable = [
     "format"

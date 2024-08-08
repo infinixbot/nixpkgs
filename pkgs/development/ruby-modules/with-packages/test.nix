@@ -5,7 +5,9 @@ let
   lib = pkgs.lib;
   stdenv = pkgs.stdenv;
 
-  rubyVersions = with pkgs; [ ruby_3_2 ];
+  rubyVersions = with pkgs; [
+    ruby_3_2
+  ];
 
   gemTests = (lib.mapAttrs (name: gem: [ name ]) pkgs.ruby.gems) // (import ./require_exceptions.nix);
 

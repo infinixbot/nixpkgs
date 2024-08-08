@@ -34,7 +34,9 @@ stdenv.mkDerivation {
     libtool
   ];
 
-  patches = [ ./patches/get_protocol.patch ];
+  patches = [
+    ./patches/get_protocol.patch
+  ];
 
   # lgmon3's --enable-libdir flag is used soley for specifying in which
   # directory the cnnnet.ini cache file should reside.

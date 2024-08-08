@@ -270,7 +270,9 @@ in
     programs.zsh.vteIntegration = mkDefault true;
 
     # Systemd services
-    systemd.packages = utils.removePackagesByName (with pkgs.xfce; [ xfce4-notifyd ]) excludePackages;
+    systemd.packages = utils.removePackagesByName (with pkgs.xfce; [
+      xfce4-notifyd
+    ]) excludePackages;
 
     security.pam.services.xfce4-screensaver.unixAuth = cfg.enableScreensaver;
 

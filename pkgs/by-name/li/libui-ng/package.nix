@@ -43,9 +43,13 @@ stdenv.mkDerivation rec {
         darwin.apple_sdk_11_0.frameworks.CoreFoundation
       ]
     else
-      [ gtk3 ];
+      [
+        gtk3
+      ];
 
-  mesonFlags = [ (lib.mesonBool "examples" (!stdenv.isDarwin)) ];
+  mesonFlags = [
+    (lib.mesonBool "examples" (!stdenv.isDarwin))
+  ];
 
   passthru.updateScript = unstableGitUpdater {
     tagPrefix = "alpha";

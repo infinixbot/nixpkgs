@@ -21,7 +21,9 @@ stdenv.mkDerivation {
   makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
 
   env.NIX_CFLAGS_COMPILE = toString (
-    lib.optionals stdenv.isDarwin [ "-Wno-error=implicit-function-declaration" ]
+    lib.optionals stdenv.isDarwin [
+      "-Wno-error=implicit-function-declaration"
+    ]
   );
 
   enableParallelBuilding = true;

@@ -45,7 +45,9 @@ buildPythonApplication {
     "yarl"
   ];
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
   propagatedBuildInputs = [
     anchor-kr
     anitopy

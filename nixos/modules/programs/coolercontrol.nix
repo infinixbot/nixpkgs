@@ -30,7 +30,9 @@ in
     lib.mkMerge [
       # Common
       ({
-        environment.systemPackages = with pkgs.coolercontrol; [ coolercontrol-gui ];
+        environment.systemPackages = with pkgs.coolercontrol; [
+          coolercontrol-gui
+        ];
 
         systemd = {
           packages = with pkgs.coolercontrol; [

@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
 
   makeFlags = [ "DESTDIR=$(out)" ];
 
-  buildInputs = [ zlib ];
+  buildInputs = [
+    zlib
+  ];
 
   installTargets = [
     "install"

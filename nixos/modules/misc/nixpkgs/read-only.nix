@@ -17,7 +17,9 @@ let
 
 in
 {
-  disabledModules = [ ../nixpkgs.nix ];
+  disabledModules = [
+    ../nixpkgs.nix
+  ];
   options = {
     nixpkgs = {
       pkgs = mkOption {

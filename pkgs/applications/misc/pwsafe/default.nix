@@ -67,12 +67,18 @@ stdenv.mkDerivation rec {
       libyubikey
       yubikey-personalization
     ]
-    ++ lib.optionals stdenv.isDarwin [ Cocoa ];
+    ++ lib.optionals stdenv.isDarwin [
+      Cocoa
+    ];
 
-  cmakeFlags = [
-    "-DNO_GTEST=ON"
-    "-DCMAKE_CXX_FLAGS=-I${yubikey-personalization}/include/ykpers-1"
-  ] ++ lib.optionals stdenv.isDarwin [ "-DNO_YUBI=ON" ];
+  cmakeFlags =
+    [
+      "-DNO_GTEST=ON"
+      "-DCMAKE_CXX_FLAGS=-I${yubikey-personalization}/include/ykpers-1"
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      "-DNO_YUBI=ON"
+    ];
 
   postPatch =
     ''

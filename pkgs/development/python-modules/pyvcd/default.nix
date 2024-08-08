@@ -30,6 +30,8 @@ buildPythonPackage rec {
     homepage = "https://github.com/SanDisk-Open-Source/pyvcd";
     changelog = "https://github.com/SanDisk-Open-Source/pyvcd/blob/${version}/CHANGELOG.rst";
     license = licenses.mit;
-    maintainers = with maintainers; [ sb0 ];
+    maintainers = with maintainers; [
+      sb0
+    ];
   };
 }

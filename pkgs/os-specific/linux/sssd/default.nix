@@ -160,7 +160,9 @@ stdenv.mkDerivation (finalAttrs: {
     jose
   ];
 
-  makeFlags = [ "SGML_CATALOG_FILES=${docbookFiles}" ];
+  makeFlags = [
+    "SGML_CATALOG_FILES=${docbookFiles}"
+  ];
 
   installFlags = [
     "sysconfdir=$(out)/etc"

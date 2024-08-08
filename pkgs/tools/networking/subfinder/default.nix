@@ -19,7 +19,9 @@ buildGoModule rec {
 
   modRoot = "./v2";
 
-  subPackages = [ "cmd/subfinder/" ];
+  subPackages = [
+    "cmd/subfinder/"
+  ];
 
   ldflags = [
     "-w"

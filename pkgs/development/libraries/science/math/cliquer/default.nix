@@ -19,7 +19,9 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   meta = with lib; {
     description = "Routines for clique searching";

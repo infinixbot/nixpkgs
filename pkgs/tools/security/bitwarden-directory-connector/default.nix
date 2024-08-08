@@ -45,7 +45,9 @@ let
       makeCacheWritable = true;
       inherit npmBuildScript installPhase;
 
-      buildInputs = [ libsecret ];
+      buildInputs = [
+        libsecret
+      ];
 
       nativeBuildInputs = [
         python3

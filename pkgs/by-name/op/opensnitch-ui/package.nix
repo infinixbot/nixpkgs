@@ -27,7 +27,9 @@ python311Packages.buildPythonApplication rec {
     qt5.wrapQtAppsHook
   ];
 
-  buildInputs = [ qt5.qtwayland ];
+  buildInputs = [
+    qt5.qtwayland
+  ];
 
   propagatedBuildInputs = with python311Packages; [
     grpcio-tools

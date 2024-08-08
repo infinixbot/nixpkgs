@@ -66,7 +66,9 @@ rustPlatform.buildRustPackage rec {
       MediaPlayer
       Security
     ]
-    ++ lib.optionals stdenv.isLinux [ alsa-lib ];
+    ++ lib.optionals stdenv.isLinux [
+      alsa-lib
+    ];
 
   meta = {
     description = "Terminal Music Player TUI written in Rust";

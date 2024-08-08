@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
     libpng
   ];
 
-  buildInputs = [ zlib ];
+  buildInputs = [
+    zlib
+  ];
 
   nativeBuildInputs = [
     ninja

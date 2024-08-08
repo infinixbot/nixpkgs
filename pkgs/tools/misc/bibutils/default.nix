@@ -33,7 +33,9 @@ stdenv.mkDerivation rec {
 
   dontAddPrefix = true;
 
-  makeFlags = [ "CC:=$(CC)" ];
+  makeFlags = [
+    "CC:=$(CC)"
+  ];
 
   doCheck = true;
   checkTarget = "test";

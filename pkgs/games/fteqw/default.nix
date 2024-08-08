@@ -26,7 +26,9 @@
 
       buildFlags = [ "m-rel" ];
 
-      nativeBuildInputs = [ vulkan-headers ];
+      nativeBuildInputs = [
+        vulkan-headers
+      ];
 
       buildInputs = [
         gzip
@@ -87,7 +89,9 @@
 
       buildFlags = [ "qcc-rel" ];
 
-      buildInputs = [ zlib ];
+      buildInputs = [
+        zlib
+      ];
 
       description = "User friendly QuakeC compiler";
     }

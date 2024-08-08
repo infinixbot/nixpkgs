@@ -32,9 +32,17 @@ buildGoModule rec {
     "-X github.com/go-musicfox/go-musicfox/internal/types.AppVersion=${version}"
   ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ flac ] ++ lib.optionals stdenv.isLinux [ alsa-lib ];
+  buildInputs =
+    [
+      flac
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      alsa-lib
+    ];
 
   passthru.updateScript = nix-update-script { };
 

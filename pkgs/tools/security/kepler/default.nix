@@ -23,13 +23,19 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-+WLb4DsAW6tnO0KdtD9zMnYCEb1t0onZqFhnqhbIStU=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [
-    openssl
-    postgresql
-    zstd
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs =
+    [
+      openssl
+      postgresql
+      zstd
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+    ];
 
   env = {
     ZSTD_SYS_USE_PKG_CONFIG = true;

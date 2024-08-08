@@ -29,11 +29,17 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [
-    python3
-  ] ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [ elfutils ];
+  buildInputs =
+    [
+      python3
+    ]
+    ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [
+      elfutils
+    ];
 
-  configureFlags = [ "--enable-clippy-only" ];
+  configureFlags = [
+    "--enable-clippy-only"
+  ];
 
   installPhase = ''
     mkdir -p $out/bin

@@ -46,9 +46,16 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "rocblas";
   version = "6.0.2";
 
-  outputs = [
-    "out"
-  ] ++ lib.optionals buildTests [ "test" ] ++ lib.optionals buildBenchmarks [ "benchmark" ];
+  outputs =
+    [
+      "out"
+    ]
+    ++ lib.optionals buildTests [
+      "test"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "benchmark"
+    ];
 
   src = fetchFromGitHub {
     owner = "ROCm";
@@ -57,27 +64,37 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-G68d/gvBbTdNx8xR3xY+OkBm5Yxq1NFjxby9BbpOcUk=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    rocm-cmake
-    clr
-  ] ++ lib.optionals buildTensile [ tensile ];
+  nativeBuildInputs =
+    [
+      cmake
+      rocm-cmake
+      clr
+    ]
+    ++ lib.optionals buildTensile [
+      tensile
+    ];
 
   buildInputs =
-    [ python3 ]
+    [
+      python3
+    ]
     ++ lib.optionals buildTensile [
       msgpack
       libxml2
       python3Packages.msgpack
       python3Packages.joblib
     ]
-    ++ lib.optionals buildTests [ gtest ]
+    ++ lib.optionals buildTests [
+      gtest
+    ]
     ++ lib.optionals (buildTests || buildBenchmarks) [
       gfortran
       openmp
       amd-blis
     ]
-    ++ lib.optionals (buildTensile || buildTests || buildBenchmarks) [ python3Packages.pyyaml ];
+    ++ lib.optionals (buildTensile || buildTests || buildBenchmarks) [
+      python3Packages.pyyaml
+    ];
 
   cmakeFlags =
     [

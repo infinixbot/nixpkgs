@@ -30,9 +30,13 @@ python3.pkgs.buildPythonApplication rec {
       --replace "boto3>=1.34.75" "boto3>=1.34.58" \
   '';
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
-  pythonImportsCheck = [ "awslogs" ];
+  pythonImportsCheck = [
+    "awslogs"
+  ];
 
   meta = with lib; {
     description = "AWS CloudWatch logs for Humans";

@@ -48,7 +48,9 @@ stdenv.mkDerivation rec {
       pkg-config
       python3
     ]
-    ++ lib.optionals withMan [ help2man ]
+    ++ lib.optionals withMan [
+      help2man
+    ]
     ++ lib.optionals withIntrospection [
       gobject-introspection
       gtk-doc
@@ -59,12 +61,22 @@ stdenv.mkDerivation rec {
       mesonEmulatorHook
     ];
 
-  buildInputs = [
-    bash-completion
-    libmbim
-  ] ++ lib.optionals withIntrospection [ libgudev ];
+  buildInputs =
+    [
+      bash-completion
+      libmbim
+    ]
+    ++ lib.optionals withIntrospection [
+      libgudev
+    ];
 
-  propagatedBuildInputs = [ glib ] ++ lib.optionals withIntrospection [ libqrtr-glib ];
+  propagatedBuildInputs =
+    [
+      glib
+    ]
+    ++ lib.optionals withIntrospection [
+      libqrtr-glib
+    ];
 
   mesonFlags = [
     "-Dudevdir=${placeholder "out"}/lib/udev"

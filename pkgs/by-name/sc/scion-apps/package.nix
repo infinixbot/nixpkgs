@@ -39,7 +39,9 @@ buildGoModule {
     cp -r webapp/web $out/share/scion-webapp
   '';
 
-  buildInputs = [ openpam ];
+  buildInputs = [
+    openpam
+  ];
 
   ldflags = [
     "-s"

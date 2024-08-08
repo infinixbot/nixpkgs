@@ -23,7 +23,9 @@ rustPlatform.buildRustPackage rec {
   };
   cargoHash = "sha256-lhojo3dhsM9y1SxpVMH93yv+JeNfTL7VLsbTp9ErgIQ=";
 
-  patches = [ ./allow-warnings.patch ];
+  patches = [
+    ./allow-warnings.patch
+  ];
 
   buildInputs =
     [ openssl ]

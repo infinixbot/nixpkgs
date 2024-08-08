@@ -31,7 +31,9 @@ stdenv.mkDerivation (finalAttrs: {
     libpulseaudio
   ];
 
-  makeFlags = [ "AR=${stdenv.cc.targetPrefix}ar" ];
+  makeFlags = [
+    "AR=${stdenv.cc.targetPrefix}ar"
+  ];
 
   configurePhase = ''
     runHook preConfigure

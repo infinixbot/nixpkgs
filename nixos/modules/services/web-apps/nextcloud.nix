@@ -95,8 +95,12 @@ let
   };
 
   phpCli = concatStringsSep " " (
-    [ "${getExe phpPackage}" ]
-    ++ optionals (cfg.cli.memoryLimit != null) [ "-dmemory_limit=${cfg.cli.memoryLimit}" ]
+    [
+      "${getExe phpPackage}"
+    ]
+    ++ optionals (cfg.cli.memoryLimit != null) [
+      "-dmemory_limit=${cfg.cli.memoryLimit}"
+    ]
   );
 
   occ = pkgs.writeScriptBin "nextcloud-occ" ''
@@ -1114,7 +1118,9 @@ in
           "${datadir}/data"
           "${cfg.home}/store-apps"
         ]
-        ++ [ "L+ ${datadir}/config/override.config.php - - - - ${overrideConfig}" ];
+        ++ [
+          "L+ ${datadir}/config/override.config.php - - - - ${overrideConfig}"
+        ];
 
       systemd.services = {
         # When upgrading the Nextcloud package, Nextcloud can report errors such as

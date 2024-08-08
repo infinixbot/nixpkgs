@@ -48,7 +48,9 @@ buildDotnetModule rec {
   ];
 
   # Required for OneClick
-  makeWrapperArgs = [ ''--suffix PATH : "${lib.makeBinPath [ xdg-utils ]}"'' ];
+  makeWrapperArgs = [
+    ''--suffix PATH : "${lib.makeBinPath [ xdg-utils ]}"''
+  ];
 
   meta = with lib; {
     description = "Yet another mod installer for Beat Saber, heavily inspired by ModAssistant";

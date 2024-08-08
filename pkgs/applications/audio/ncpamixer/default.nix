@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-GJ2zSIxSnL53nFZ2aeGlVI7i4APt+aALVEhNP5RkpMc=";
   };
 
-  patches = [ ./remove_dynamic_download.patch ];
+  patches = [
+    ./remove_dynamic_download.patch
+  ];
 
   postPatch =
     let

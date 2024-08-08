@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-v81hPeu5qnMG6Sb95D88jy5x/GO781bf7efCYjbOaxs=";
   };
 
-  pythonImportsCheck = [ "syncrclone" ];
+  pythonImportsCheck = [
+    "syncrclone"
+  ];
 
   meta = with lib; {
     description = "Bidirectional sync tool for rclone";

@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
   # libkcapi looks also for a host c compiler when cross-compiling
   # otherwise you obtain following error message:
   # "error: no acceptable C compiler found in $PATH"
-  depsBuildBuild = [ buildPackages.stdenv.cc ];
+  depsBuildBuild = [
+    buildPackages.stdenv.cc
+  ];
 
   enableParallelBuilding = true;
 

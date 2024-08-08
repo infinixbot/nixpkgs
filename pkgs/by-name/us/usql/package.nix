@@ -31,7 +31,9 @@ buildGoModule rec {
   # Exclude drivers from the bad group
   # These drivers break too often and are not used.
   #
-  excludedPackages = [ "impala" ];
+  excludedPackages = [
+    "impala"
+  ];
 
   # These tags and flags are copied from build.sh
   tags = [

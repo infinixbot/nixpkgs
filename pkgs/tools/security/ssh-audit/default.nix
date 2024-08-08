@@ -27,7 +27,9 @@ python3Packages.buildPythonApplication rec {
     installManPage $src/ssh-audit.1
   '';
 
-  nativeCheckInputs = with python3Packages; [ pytestCheckHook ];
+  nativeCheckInputs = with python3Packages; [
+    pytestCheckHook
+  ];
 
   passthru.tests = {
     inherit (nixosTests) ssh-audit;

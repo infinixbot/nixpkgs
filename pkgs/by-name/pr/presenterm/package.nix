@@ -20,7 +20,9 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-sMhowTXPzZcIOV4Ny9NzvgXGsZSPBJGDg9JvuoZoSUc=";
   };
 
-  buildInputs = [ libsixel ];
+  buildInputs = [
+    libsixel
+  ];
 
   cargoHash = "sha256-2aHJnGSuP0TEBMxF1zljbEyk1g6ECTpnByyH8jaj78s=";
 

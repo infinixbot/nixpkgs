@@ -38,7 +38,9 @@ stdenv.mkDerivation rec {
   version = "27.1";
 
   src = fetchurl {
-    urls = [ "https://bitcoincore.org/bin/bitcoin-core-${version}/bitcoin-${version}.tar.gz" ];
+    urls = [
+      "https://bitcoincore.org/bin/bitcoin-core-${version}/bitcoin-${version}.tar.gz"
+    ];
     # hash retrieved from signed SHA256SUMS
     sha256 = "0c1051fd921b8fae912f5c2dfd86b085ab45baa05cd7be4585b10b4d1818f3da";
   };
@@ -112,7 +114,9 @@ stdenv.mkDerivation rec {
       "--disable-tests"
       "--disable-gui-tests"
     ]
-    ++ lib.optionals (!withWallet) [ "--disable-wallet" ]
+    ++ lib.optionals (!withWallet) [
+      "--disable-wallet"
+    ]
     ++ lib.optionals withGui [
       "--with-gui=qt5"
       "--with-qt-bindir=${qtbase.dev}/bin:${qttools.dev}/bin"

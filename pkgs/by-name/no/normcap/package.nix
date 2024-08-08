@@ -14,11 +14,15 @@ let
 
   ps = python3.pkgs;
 
-  wrapperDeps = [
-    leptonica
-    tesseract4
-    libnotify
-  ] ++ lib.optionals stdenv.isLinux [ wl-clipboard ];
+  wrapperDeps =
+    [
+      leptonica
+      tesseract4
+      libnotify
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      wl-clipboard
+    ];
 
 in
 
@@ -42,9 +46,13 @@ ps.buildPythonApplication rec {
       --replace-fail "addopts = [" "addopts_ = ["
   '';
 
-  pythonRemoveDeps = [ "pyside6-essentials" ];
+  pythonRemoveDeps = [
+    "pyside6-essentials"
+  ];
 
-  pythonRelaxDeps = [ "shiboken6" ];
+  pythonRelaxDeps = [
+    "shiboken6"
+  ];
 
   nativeBuildInputs = [
     ps.hatchling

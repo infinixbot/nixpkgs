@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Eztc2jUyKRVUiZkYEh+IFHkDuPIy+Gx3ZW/MsuOVaMc=";
   };
 
-  nativeCheckInputs = [ gmpxx ];
+  nativeCheckInputs = [
+    gmpxx
+  ];
 
   enableParallelBuilding = true;
 

@@ -34,7 +34,9 @@ stdenv.mkDerivation rec {
     libevdevc
   ];
 
-  configureFlags = [ "--with-sdkdir=${placeholder "out"}" ];
+  configureFlags = [
+    "--with-sdkdir=${placeholder "out"}"
+  ];
 
   meta = with lib; {
     description = "Chromebook touchpad driver";

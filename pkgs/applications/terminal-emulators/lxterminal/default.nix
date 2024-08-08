@@ -53,7 +53,9 @@ stdenv.mkDerivation rec {
     pcre2
   ];
 
-  patches = [ ./respect-xml-catalog-files-var.patch ];
+  patches = [
+    ./respect-xml-catalog-files-var.patch
+  ];
 
   preConfigure = ''
     ./autogen.sh

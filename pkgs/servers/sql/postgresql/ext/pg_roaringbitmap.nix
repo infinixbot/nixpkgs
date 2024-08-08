@@ -17,7 +17,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-E6vqawnsRsAIajGDgJcTUWV1H8GFFboTjhmVfemUGbs=";
   };
 
-  buildInputs = [ postgresql ];
+  buildInputs = [
+    postgresql
+  ];
 
   installPhase = ''
     install -D -t $out/lib roaringbitmap${postgresql.dlSuffix}

@@ -25,7 +25,9 @@ buildPythonPackage rec {
 
   pyproject = true;
 
-  build-system = [ pybind11 ];
+  build-system = [
+    pybind11
+  ];
 
   dependencies = [
     numpy

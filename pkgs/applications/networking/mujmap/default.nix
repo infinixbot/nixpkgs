@@ -20,7 +20,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-nnAYjutjxtEpDNoWTnlESDO4Haz14wZxY4gdyzdLgBU=";
 
-  buildInputs = [ notmuch ] ++ lib.optional stdenv.isDarwin Security;
+  buildInputs = [
+    notmuch
+  ] ++ lib.optional stdenv.isDarwin Security;
 
   meta = with lib; {
     description = "JMAP integration for notmuch mail";

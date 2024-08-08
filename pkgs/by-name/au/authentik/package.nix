@@ -156,8 +156,12 @@ let
           rev = version;
           hash = "sha256-VwH7fwLcoH2Z9D/OY9iieM0cRhyDKOpAzqQ+4YVE3vU=";
         };
-        nativeBuildInputs = with prev; [ poetry-core ];
-        propagatedBuildInputs = with final; [ django ];
+        nativeBuildInputs = with prev; [
+          poetry-core
+        ];
+        propagatedBuildInputs = with final; [
+          django
+        ];
         pyproject = true;
       };
 
@@ -170,7 +174,9 @@ let
           rev = version;
           hash = "sha256-ZoEHDkGmrcNiMe/rbwXsEPZo3LD93cZp6zjftMKjLeg=";
         };
-        nativeBuildInputs = with prev; [ poetry-core ];
+        nativeBuildInputs = with prev; [
+          poetry-core
+        ];
         propagatedBuildInputs = with final; [
           django
           django-pgactivity
@@ -249,7 +255,9 @@ let
         nativeBuildInputs = [ prev.poetry-core ];
         pyproject = true;
 
-        propagatedBuildInputs = with final; [ sly ];
+        propagatedBuildInputs = with final; [
+          sly
+        ];
       };
 
       authentik-django = prev.buildPythonPackage {

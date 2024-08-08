@@ -11,7 +11,9 @@ import ./make-test-python.nix (
     nodes.sunshine =
       { config, pkgs, ... }:
       {
-        imports = [ ./common/x11.nix ];
+        imports = [
+          ./common/x11.nix
+        ];
 
         services.sunshine = {
           enable = true;
@@ -23,16 +25,22 @@ import ./make-test-python.nix (
           };
         };
 
-        environment.systemPackages = with pkgs; [ gxmessage ];
+        environment.systemPackages = with pkgs; [
+          gxmessage
+        ];
 
       };
 
     nodes.moonlight =
       { config, pkgs, ... }:
       {
-        imports = [ ./common/x11.nix ];
+        imports = [
+          ./common/x11.nix
+        ];
 
-        environment.systemPackages = with pkgs; [ moonlight-qt ];
+        environment.systemPackages = with pkgs; [
+          moonlight-qt
+        ];
 
       };
 

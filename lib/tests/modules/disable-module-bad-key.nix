@@ -11,6 +11,8 @@ let
     };
 in
 {
-  imports = [ ./declare-enable.nix ];
+  imports = [
+    ./declare-enable.nix
+  ];
   disabledModules = [ { } ];
 }

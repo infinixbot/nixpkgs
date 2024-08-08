@@ -53,7 +53,9 @@ python3Packages.buildPythonApplication rec {
         ++ lib.optional (unrarSupport) unrar
       );
     in
-    [ ''--prefix PATH : "${archivers}"'' ];
+    [
+      ''--prefix PATH : "${archivers}"''
+    ];
 
   nativeBuildInputs = [ python3Packages.invoke ];
 

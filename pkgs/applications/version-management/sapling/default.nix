@@ -160,7 +160,9 @@ python3Packages.buildPythonApplication {
   ];
 
   buildInputs =
-    [ openssl ]
+    [
+      openssl
+    ]
     ++ lib.optionals stdenv.isDarwin [
       curl
       libiconv

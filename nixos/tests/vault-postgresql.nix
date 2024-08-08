@@ -25,7 +25,9 @@ import ./make-test-python.nix (
         services.vault.extraSettingsPaths = [ "/run/vault.hcl" ];
 
         systemd.services.vault = {
-          after = [ "postgresql.service" ];
+          after = [
+            "postgresql.service"
+          ];
           # Try for about 10 minutes rather than the default of 5 attempts.
           serviceConfig.RestartSec = 1;
           serviceConfig.StartLimitBurst = 600;

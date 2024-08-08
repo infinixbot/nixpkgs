@@ -23,11 +23,17 @@ buildPythonPackage rec {
     hash = "sha256-kiNtzEup2ygCTk0zk8YV2jxAj6ZzOhP8v0U4FbV15hI=";
   };
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
-  buildInputs = [ poetry ];
+  buildInputs = [
+    poetry
+  ];
 
-  propagatedBuildInputs = [ safety ];
+  propagatedBuildInputs = [
+    safety
+  ];
 
   pythonImportsCheck = [ "poetry_audit_plugin" ];
 

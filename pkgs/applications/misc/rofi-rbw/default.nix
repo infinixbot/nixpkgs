@@ -34,7 +34,9 @@ buildPythonApplication rec {
   ];
 
   buildInputs =
-    [ rbw ]
+    [
+      rbw
+    ]
     ++ lib.optionals waylandSupport [
       wl-clipboard
       wtype
@@ -49,7 +51,9 @@ buildPythonApplication rec {
   pythonImportsCheck = [ "rofi_rbw" ];
 
   wrapper_paths =
-    [ rbw ]
+    [
+      rbw
+    ]
     ++ lib.optionals waylandSupport [
       wl-clipboard
       wtype

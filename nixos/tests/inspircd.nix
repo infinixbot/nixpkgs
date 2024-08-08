@@ -31,7 +31,9 @@ import ./make-test-python.nix (
         builtins.map (
           client:
           lib.nameValuePair client {
-            imports = [ ./common/user-account.nix ];
+            imports = [
+              ./common/user-account.nix
+            ];
 
             systemd.services.ii = {
               requires = [ "network.target" ];

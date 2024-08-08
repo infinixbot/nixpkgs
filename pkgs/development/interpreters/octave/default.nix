@@ -142,7 +142,9 @@ stdenv.mkDerivation (finalAttrs: {
       libsForQt5.qtsvg
       libsForQt5.qscintilla
     ]
-    ++ lib.optionals (enableJava) [ jdk ]
+    ++ lib.optionals (enableJava) [
+      jdk
+    ]
     ++ lib.optionals (!stdenv.isDarwin) [
       libGL
       libGLU

@@ -72,9 +72,13 @@ stdenv.mkDerivation rec {
       substituteInPlace sim/ppc/emul_unix.c --replace sys/termios.h termios.h
     '';
 
-  patches = [
-    ./debug-info-from-env.patch
-  ] ++ lib.optionals stdenv.isDarwin [ ./darwin-target-match.patch ];
+  patches =
+    [
+      ./debug-info-from-env.patch
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      ./darwin-target-match.patch
+    ];
 
   nativeBuildInputs = [
     pkg-config

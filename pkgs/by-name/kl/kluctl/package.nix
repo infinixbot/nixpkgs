@@ -32,7 +32,9 @@ buildGoModule rec {
   # Depends on docker
   doCheck = false;
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   passthru.tests.version = testers.testVersion {
     package = kluctl;

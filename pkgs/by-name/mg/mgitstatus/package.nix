@@ -16,7 +16,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     hash = "sha256-jzoX7Efq9+1UdXQdhLRqBlhU3cBrk5AZblg9AYetItg=";
   };
 
-  installFlags = [ "PREFIX=$(out)" ];
+  installFlags = [
+    "PREFIX=$(out)"
+  ];
 
   passthru.tests.version = testers.testVersion {
     package = finalAttrs.finalPackage;

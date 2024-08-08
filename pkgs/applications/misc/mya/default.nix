@@ -26,13 +26,19 @@ stdenv.mkDerivation (finalAttrs: {
     ninja
   ];
 
-  buildInputs = [
-    curl
-    json_c
-    libbsd
-  ] ++ lib.optionals (!stdenv.hostPlatform.isGnu) [ argp-standalone ];
+  buildInputs =
+    [
+      curl
+      json_c
+      libbsd
+    ]
+    ++ lib.optionals (!stdenv.hostPlatform.isGnu) [
+      argp-standalone
+    ];
 
-  patches = [ ./argp.patch ];
+  patches = [
+    ./argp.patch
+  ];
 
   installPhase = ''
     runHook preInstall

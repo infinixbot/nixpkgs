@@ -16,9 +16,13 @@ buildOctavePackage rec {
     sha256 = "sha256-bZNaRnmJl5UF0bQMNoEWvoIXJaB0E6/V9eChE725OHY=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  propagatedBuildInputs = [ ffmpeg_4 ];
+  propagatedBuildInputs = [
+    ffmpeg_4
+  ];
 
   meta = with lib; {
     homepage = "https://octave.sourceforge.io/video/index.html";

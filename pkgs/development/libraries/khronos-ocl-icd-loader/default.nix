@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ cmake ];
   buildInputs = [ opencl-headers ];
 
-  cmakeFlags = [ (lib.cmakeBool "OCL_ICD_ENABLE_TRACE" withTracing) ];
+  cmakeFlags = [
+    (lib.cmakeBool "OCL_ICD_ENABLE_TRACE" withTracing)
+  ];
 
   meta = with lib; {
     description = "Official Khronos OpenCL ICD Loader";

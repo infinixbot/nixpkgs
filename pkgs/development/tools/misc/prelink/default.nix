@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     "host"
   ];
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   buildInputs = [
     stdenv.cc.libc

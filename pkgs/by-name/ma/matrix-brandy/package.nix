@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-alyg4AQ1nSISk3NwniTurRVWeUp1q/SQjK2loek8bfI=";
   };
 
-  buildInputs = [ SDL ];
+  buildInputs = [
+    SDL
+  ];
 
   installPhase = ''
     mkdir -p $out/bin

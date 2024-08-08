@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     boost
   ];
 
-  cmakeFlags = [ "-DEIGEN_INCLUDE_DIR=${eigen}/include/eigen3" ];
+  cmakeFlags = [
+    "-DEIGEN_INCLUDE_DIR=${eigen}/include/eigen3"
+  ];
 
   doCheck = true;
   checkTarget = "test";

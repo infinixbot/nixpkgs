@@ -16,11 +16,17 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-vAuhzrBPbJCaQMuivpLzVTAR5F1ththTq9hij8ZI4aM=";
   };
 
-  pythonRelaxDeps = [ "cryptography" ];
+  pythonRelaxDeps = [
+    "cryptography"
+  ];
 
-  build-system = with python3.pkgs; [ pdm-backend ];
+  build-system = with python3.pkgs; [
+    pdm-backend
+  ];
 
-  nativeBuildInputs = with python3.pkgs; [ cython ];
+  nativeBuildInputs = with python3.pkgs; [
+    cython
+  ];
 
   dependencies = with python3.pkgs; [
     commandparse
@@ -39,7 +45,9 @@ python3.pkgs.buildPythonApplication rec {
   # Project has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "ldeep" ];
+  pythonImportsCheck = [
+    "ldeep"
+  ];
 
   meta = with lib; {
     description = "In-depth LDAP enumeration utility";

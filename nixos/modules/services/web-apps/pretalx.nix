@@ -70,7 +70,9 @@ in
 
     gunicorn.extraArgs = lib.mkOption {
       type = with lib.types; listOf str;
-      default = [ "--name=pretalx" ];
+      default = [
+        "--name=pretalx"
+      ];
       example = [
         "--name=pretalx"
         "--workers=4"
@@ -143,7 +145,9 @@ in
         options = {
           database = {
             backend = lib.mkOption {
-              type = lib.types.enum [ "postgresql" ];
+              type = lib.types.enum [
+                "postgresql"
+              ];
               default = "postgresql";
               description = ''
                 Database backend to use.
@@ -410,8 +414,12 @@ in
               "network.target"
               "redis-pretalx.service"
             ]
-            ++ lib.optionals (cfg.settings.database.backend == "postgresql") [ "postgresql.service" ]
-            ++ lib.optionals (cfg.settings.database.backend == "mysql") [ "mysql.service" ];
+            ++ lib.optionals (cfg.settings.database.backend == "postgresql") [
+              "postgresql.service"
+            ]
+            ++ lib.optionals (cfg.settings.database.backend == "mysql") [
+              "mysql.service"
+            ];
           wantedBy = [ "multi-user.target" ];
           preStart = ''
             versionFile="${cfg.settings.filesystem.data}/.version"
@@ -456,8 +464,12 @@ in
                 "network.target"
                 "redis-pretalx.service"
               ]
-              ++ lib.optionals (cfg.settings.database.backend == "postgresql") [ "postgresql.service" ]
-              ++ lib.optionals (cfg.settings.database.backend == "mysql") [ "mysql.service" ];
+              ++ lib.optionals (cfg.settings.database.backend == "postgresql") [
+                "postgresql.service"
+              ]
+              ++ lib.optionals (cfg.settings.database.backend == "mysql") [
+                "mysql.service"
+              ];
             wantedBy = [ "multi-user.target" ];
             serviceConfig.ExecStart = "${lib.getExe' pythonEnv "celery"} -A pretalx.celery_app worker ${cfg.celery.extraArgs}";
           }

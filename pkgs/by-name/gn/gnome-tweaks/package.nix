@@ -60,7 +60,9 @@ python3Packages.buildPythonApplication rec {
     libnotify
   ];
 
-  pythonPath = with python3Packages; [ pygobject3 ];
+  pythonPath = with python3Packages; [
+    pygobject3
+  ];
 
   postPatch = ''
     patchShebangs meson-postinstall.py

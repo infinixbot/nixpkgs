@@ -25,7 +25,9 @@ stdenv.mkDerivation {
     curl
   ];
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   meta = with lib; {
     description = "Point cloud organization for massive datasets";

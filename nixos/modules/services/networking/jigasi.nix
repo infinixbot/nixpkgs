@@ -189,7 +189,9 @@ in
             "${sipCommunicatorPropertiesFile}"
         '';
 
-        restartTriggers = [ config.environment.etc."jitsi/jigasi/sip-communicator.properties".source ];
+        restartTriggers = [
+          config.environment.etc."jitsi/jigasi/sip-communicator.properties".source
+        ];
         environment.JAVA_SYS_PROPS = concatStringsSep " " (
           mapAttrsToList (k: v: "${k}=${toString v}") jigasiProps
         );

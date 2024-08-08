@@ -34,7 +34,9 @@ buildGoModule rec {
     protoc-gen-go-grpc
   ];
 
-  buildInputs = [ hyperscan ];
+  buildInputs = [
+    hyperscan
+  ];
 
   preBuild = ''
     # Compile proto files

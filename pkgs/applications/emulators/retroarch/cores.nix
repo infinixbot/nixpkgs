@@ -1224,7 +1224,9 @@ in
     core = "swanstation";
     extraNativeBuildInputs = [ cmake ];
     makefile = "Makefile";
-    cmakeFlags = [ "-DBUILD_LIBRETRO_CORE=ON" ];
+    cmakeFlags = [
+      "-DBUILD_LIBRETRO_CORE=ON"
+    ];
     meta = {
       description = "Port of SwanStation (a fork of DuckStation) to libretro";
       license = lib.licenses.gpl3Only;

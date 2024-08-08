@@ -13,7 +13,9 @@ import ./make-test-python.nix (
     nodes = {
       server = {
         imports = [ ./common/user-account.nix ];
-        security.pki.certificateFiles = [ certs.ca.cert ];
+        security.pki.certificateFiles = [
+          certs.ca.cert
+        ];
         networking.extraHosts = ''
           127.0.0.1 ${domain}
         '';
@@ -42,7 +44,9 @@ import ./make-test-python.nix (
       client =
         { nodes, config, ... }:
         {
-          security.pki.certificateFiles = [ certs.ca.cert ];
+          security.pki.certificateFiles = [
+            certs.ca.cert
+          ];
           networking.extraHosts = ''
             ${nodes.server.config.networking.primaryIPAddress} ${domain}
           '';

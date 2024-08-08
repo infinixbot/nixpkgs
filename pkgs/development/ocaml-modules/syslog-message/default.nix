@@ -18,10 +18,14 @@ buildDunePackage rec {
     hash = "sha256-+eyiv6JvC0EKs3G1s5qoFtK0bU4Yg41AHg5Nc6xD9w0=";
   };
 
-  propagatedBuildInputs = [ ptime ];
+  propagatedBuildInputs = [
+    ptime
+  ];
 
   doCheck = true;
-  checkInputs = [ qcheck ];
+  checkInputs = [
+    qcheck
+  ];
 
   meta = with lib; {
     description = "Syslog message parser";

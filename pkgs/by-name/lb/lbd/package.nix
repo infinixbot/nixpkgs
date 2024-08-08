@@ -24,7 +24,9 @@ stdenvNoCC.mkDerivation {
     hash = "sha256-NHY3NoPigsmfRjOx9Lt3/fGsyeq1/bzKHIXMDBJiI6c=";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   installPhase = ''
     runHook preInstall

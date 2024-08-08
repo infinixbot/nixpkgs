@@ -24,7 +24,13 @@ stdenv.mkDerivation rec {
     wrapQtAppsHook
   ];
 
-  buildInputs = [ qtmultimedia ] ++ lib.optionals stdenv.isLinux [ qtwayland ];
+  buildInputs =
+    [
+      qtmultimedia
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      qtwayland
+    ];
 
   cmakeFlags = [ "-DUSE_QT6=TRUE" ];
 

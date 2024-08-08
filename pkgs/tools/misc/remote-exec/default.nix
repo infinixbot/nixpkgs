@@ -48,7 +48,9 @@ buildPythonApplication rec {
 
   doCheck = true;
 
-  nativeCheckInputs = [ rsync ];
+  nativeCheckInputs = [
+    rsync
+  ];
 
   checkInputs = [
     pytestCheckHook

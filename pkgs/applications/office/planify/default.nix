@@ -69,7 +69,9 @@ stdenv.mkDerivation rec {
     webkitgtk_6_0
   ];
 
-  mesonFlags = [ "-Dprofile=default" ];
+  mesonFlags = [
+    "-Dprofile=default"
+  ];
 
   meta = with lib; {
     description = "Task manager with Todoist support designed for GNU/Linux";

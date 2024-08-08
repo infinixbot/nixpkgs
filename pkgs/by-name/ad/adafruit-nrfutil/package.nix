@@ -50,7 +50,9 @@ python3Packages.buildPythonApplication rec {
     mkdir test-reports
   '';
 
-  pythonImportsCheck = [ "nordicsemi" ];
+  pythonImportsCheck = [
+    "nordicsemi"
+  ];
 
   meta = {
     homepage = "https://github.com/adafruit/Adafruit_nRF52_nrfutil";

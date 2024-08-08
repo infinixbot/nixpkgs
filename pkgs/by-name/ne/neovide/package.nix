@@ -73,11 +73,15 @@ rustPlatform.buildRustPackage.override { stdenv = clangStdenv; } rec {
 
   nativeCheckInputs = [ neovim ];
 
-  buildInputs = [
-    SDL2
-    fontconfig
-    rustPlatform.bindgenHook
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.AppKit ];
+  buildInputs =
+    [
+      SDL2
+      fontconfig
+      rustPlatform.bindgenHook
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.AppKit
+    ];
 
   postFixup =
     let

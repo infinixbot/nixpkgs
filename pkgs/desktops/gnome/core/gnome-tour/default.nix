@@ -32,7 +32,9 @@ stdenv.mkDerivation rec {
 
   cargoVendorDir = "vendor";
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     appstream-glib

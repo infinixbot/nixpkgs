@@ -39,7 +39,9 @@ stdenv.mkDerivation rec {
   hardeningDisable = [ "format" ];
 
   configureFlags =
-    [ "--enable-gd-formats" ]
+    [
+      "--enable-gd-formats"
+    ]
     # -pthread gets passed to clang, causing warnings
     ++ lib.optional stdenv.isDarwin "--enable-werror=no";
 

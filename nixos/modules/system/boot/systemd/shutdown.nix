@@ -62,7 +62,9 @@ in
       unitConfig = {
         DefaultDependencies = false;
         RequiresMountsFor = "/run/initramfs";
-        ConditionFileIsExecutable = [ "!/run/initramfs/shutdown" ];
+        ConditionFileIsExecutable = [
+          "!/run/initramfs/shutdown"
+        ];
       };
 
       serviceConfig = {

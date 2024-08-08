@@ -24,7 +24,9 @@ buildPythonPackage rec {
 
   doCheck = false; # no tests
 
-  pythonImportsCheck = [ "libopensonic" ];
+  pythonImportsCheck = [
+    "libopensonic"
+  ];
 
   meta = with lib; {
     description = "Python library to wrap the Open Subsonic REST API";

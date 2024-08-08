@@ -64,7 +64,9 @@ stdenv.mkDerivation rec {
     fmt
   ] ++ lib.optional luaSupport fcitx5-lua;
 
-  cmakeFlags = [ (lib.cmakeBool "USE_QT6" (lib.versions.major qtbase.version == "6")) ];
+  cmakeFlags = [
+    (lib.cmakeBool "USE_QT6" (lib.versions.major qtbase.version == "6"))
+  ];
 
   dontWrapQtApps = true;
 

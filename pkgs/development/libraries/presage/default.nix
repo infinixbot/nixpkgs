@@ -60,7 +60,9 @@ stdenv.mkDerivation rec {
     tinyxml
   ];
 
-  nativeCheckInputs = [ cppunit ];
+  nativeCheckInputs = [
+    cppunit
+  ];
 
   doCheck = true;
 

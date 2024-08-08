@@ -46,8 +46,12 @@ stdenv.mkDerivation rec {
       pkg-config
       ninja
     ]
-    ++ lib.optionals enableDocs [ graphviz ]
-    ++ lib.optionals enableGI [ gobject-introspection ]
+    ++ lib.optionals enableDocs [
+      graphviz
+    ]
+    ++ lib.optionals enableGI [
+      gobject-introspection
+    ]
     ++ lib.optionals (enableDocs || enableGI) [
       doxygen
       (python3.pythonOnBuildForHost.withPackages (

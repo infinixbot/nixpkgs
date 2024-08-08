@@ -15,7 +15,9 @@ buildPythonPackage rec {
 
   sourceRoot = "${src.name}/${pname}";
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   propagatedBuildInputs = [
     cirq-core

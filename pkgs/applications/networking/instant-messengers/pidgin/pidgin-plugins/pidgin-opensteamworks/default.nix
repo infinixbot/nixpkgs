@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
     "DATA_ROOT_DIR_PURPLE=${placeholder "out"}/share"
   ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
   buildInputs = [
     pidgin
     glib

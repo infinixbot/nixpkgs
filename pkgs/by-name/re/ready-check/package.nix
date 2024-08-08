@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-j0UY2Q1jYGRtjvaWMwgMJrNaQZQnEJ5ST4o4PAVYWVc=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     beautifulsoup4
@@ -24,7 +26,9 @@ python3.pkgs.buildPythonApplication rec {
     tld
   ];
 
-  pythonImportsCheck = [ "ready" ];
+  pythonImportsCheck = [
+    "ready"
+  ];
 
   meta = with lib; {
     description = "Tool to check readiness of websites";

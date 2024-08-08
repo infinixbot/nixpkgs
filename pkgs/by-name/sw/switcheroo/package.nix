@@ -47,11 +47,15 @@ stdenv.mkDerivation (finalAttrs: {
     wrapGAppsHook4
   ];
 
-  buildInputs = [
-    glib
-    gtk4
-    libadwaita
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Foundation ];
+  buildInputs =
+    [
+      glib
+      gtk4
+      libadwaita
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Foundation
+    ];
 
   preFixup = ''
     gappsWrapperArgs+=(

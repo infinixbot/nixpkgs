@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
 
   cmakeFlags = [ "-DBUILD_SHARED_LIBS=ON" ];
 
-  hardeningDisable = [ "format" ];
+  hardeningDisable = [
+    "format"
+  ];
 
   meta = with lib; {
     description = "Arbitrary-order scalar-relativistic Douglas-Kroll-Hess module";

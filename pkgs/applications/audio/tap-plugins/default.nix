@@ -16,7 +16,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-bwybMxIAbOzPr43QGshjbnRK5GdziGiYDsTutZdSj4s=";
   };
 
-  buildInputs = [ ladspa-sdk ];
+  buildInputs = [
+    ladspa-sdk
+  ];
 
   postPatch = ''
     substituteInPlace Makefile --replace /usr/local "$out"

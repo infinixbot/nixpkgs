@@ -21,11 +21,15 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    bzip2
-    fftw
-    zlib
-  ] ++ lib.optionals stdenv.cc.isClang [ llvmPackages.openmp ];
+  buildInputs =
+    [
+      bzip2
+      fftw
+      zlib
+    ]
+    ++ lib.optionals stdenv.cc.isClang [
+      llvmPackages.openmp
+    ];
 
   env.NIX_CFLAGS_COMPILE = toString [
     (lib.optionalString stdenv.cc.isGNU "-std=c++11")

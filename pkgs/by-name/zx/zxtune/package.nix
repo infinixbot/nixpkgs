@@ -76,7 +76,9 @@ stdenv.mkDerivation rec {
 
   buildInputs = staticBuildInputs ++ dlopenBuildInputs;
 
-  patches = [ ./disable_updates.patch ];
+  patches = [
+    ./disable_updates.patch
+  ];
 
   # Fix use of old OpenAL header path
   postPatch = ''

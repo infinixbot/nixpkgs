@@ -43,7 +43,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-X3pzTrNd0G6BouCDkr3dukQTFDzZ7qblIYxFQActKGE=";
   };
 
-  patches = [ ./0001-Remove-FetchContent-usage.patch ];
+  patches = [
+    ./0001-Remove-FetchContent-usage.patch
+  ];
 
   postPatch = ''
     # 1. Remove hardcoded LTO flags: needs extra setup on Linux,

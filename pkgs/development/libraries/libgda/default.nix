@@ -57,13 +57,22 @@ stdenv.mkDerivation rec {
     yelp-tools
   ];
 
-  buildInputs = [
-    gtk3
-    openssl
-    libgee
-  ] ++ lib.optionals mysqlSupport [ libmysqlclient ] ++ lib.optionals postgresSupport [ postgresql ];
+  buildInputs =
+    [
+      gtk3
+      openssl
+      libgee
+    ]
+    ++ lib.optionals mysqlSupport [
+      libmysqlclient
+    ]
+    ++ lib.optionals postgresSupport [
+      postgresql
+    ];
 
-  propagatedBuildInputs = [ libxml2 ];
+  propagatedBuildInputs = [
+    libxml2
+  ];
 
   configureFlags = [
     "--with-mysql=${if mysqlSupport then "yes" else "no"}"

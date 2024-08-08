@@ -520,8 +520,12 @@ let
       Cabal-syntax_3_10_3_0 = released;
       Cabal_3_12_1_0 = released;
       Cabal-syntax_3_12_1_0 = released;
-      cabal2nix = lib.subtractLists [ compilerNames.ghc9101 ] released;
-      cabal2nix-unstable = lib.subtractLists [ compilerNames.ghc9101 ] released;
+      cabal2nix = lib.subtractLists [
+        compilerNames.ghc9101
+      ] released;
+      cabal2nix-unstable = lib.subtractLists [
+        compilerNames.ghc9101
+      ] released;
       funcmp = released;
       haskell-language-server = lib.subtractLists [
         # Support ceased as of 2.3.0.0
@@ -531,36 +535,62 @@ let
         # No support yet (2024-05-12)
         compilerNames.ghc9101
       ] released;
-      hoogle = lib.subtractLists [ compilerNames.ghc9101 ] released;
+      hoogle = lib.subtractLists [
+        compilerNames.ghc9101
+      ] released;
       hlint = lib.subtractLists [
         compilerNames.ghc902
         compilerNames.ghc9101
       ] released;
-      hpack = lib.subtractLists [ compilerNames.ghc9101 ] released;
+      hpack = lib.subtractLists [
+        compilerNames.ghc9101
+      ] released;
       hsdns = released;
       jailbreak-cabal = released;
-      language-nix = lib.subtractLists [ compilerNames.ghc9101 ] released;
-      large-hashable = [ compilerNames.ghc928 ];
+      language-nix = lib.subtractLists [
+        compilerNames.ghc9101
+      ] released;
+      large-hashable = [
+        compilerNames.ghc928
+      ];
       nix-paths = released;
-      titlecase = lib.subtractLists [ compilerNames.ghc9101 ] released;
+      titlecase = lib.subtractLists [
+        compilerNames.ghc9101
+      ] released;
       ghc-api-compat = [
         compilerNames.ghc8107
         compilerNames.ghc902
       ];
-      ghc-bignum = [ compilerNames.ghc8107 ];
-      ghc-lib = lib.subtractLists [ compilerNames.ghc9101 ] released;
-      ghc-lib-parser = lib.subtractLists [ compilerNames.ghc9101 ] released;
-      ghc-lib-parser-ex = lib.subtractLists [ compilerNames.ghc9101 ] released;
+      ghc-bignum = [
+        compilerNames.ghc8107
+      ];
+      ghc-lib = lib.subtractLists [
+        compilerNames.ghc9101
+      ] released;
+      ghc-lib-parser = lib.subtractLists [
+        compilerNames.ghc9101
+      ] released;
+      ghc-lib-parser-ex = lib.subtractLists [
+        compilerNames.ghc9101
+      ] released;
       ghc-source-gen = [
         # Feel free to remove these as they break,
         compilerNames.ghc8107
         compilerNames.ghc902
         compilerNames.ghc928
       ];
-      ghc-tags = lib.subtractLists [ compilerNames.ghc9101 ] released;
-      hashable = lib.subtractLists [ compilerNames.ghc9101 ] released;
-      primitive = lib.subtractLists [ compilerNames.ghc9101 ] released;
-      weeder = lib.subtractLists [ compilerNames.ghc9101 ] released;
+      ghc-tags = lib.subtractLists [
+        compilerNames.ghc9101
+      ] released;
+      hashable = lib.subtractLists [
+        compilerNames.ghc9101
+      ] released;
+      primitive = lib.subtractLists [
+        compilerNames.ghc9101
+      ] released;
+      weeder = lib.subtractLists [
+        compilerNames.ghc9101
+      ] released;
     })
     {
       mergeable = pkgs.releaseTools.aggregate {
@@ -617,7 +647,9 @@ let
         name = "haskell-pkgsMusl-ghcs";
         meta = {
           description = "GHCs built with musl";
-          maintainers = with lib.maintainers; [ nh2 ];
+          maintainers = with lib.maintainers; [
+            nh2
+          ];
         };
         constituents = accumulateDerivations [
           jobs.pkgsMusl.haskell.compiler.ghc8107Binary

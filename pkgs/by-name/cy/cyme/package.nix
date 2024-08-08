@@ -24,9 +24,17 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-XvU8r4bmI18qp+1O3nsJG3RTiiNxfKksRgkSBMsja5s=";
 
-  nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.isDarwin [ darwin.DarwinTools ];
+  nativeBuildInputs =
+    [
+      pkg-config
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.DarwinTools
+    ];
 
-  buildInputs = [ libusb1 ];
+  buildInputs = [
+    libusb1
+  ];
 
   checkFlags =
     [

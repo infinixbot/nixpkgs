@@ -64,7 +64,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-3iWKqg9HSicocDAyp1Lk87nBbj+Slg1/e1VKEOIQkyQ=";
   };
 
-  patches = [ ./udev-absolute-path.patch ];
+  patches = [
+    ./udev-absolute-path.patch
+  ];
 
   nativeBuildInputs =
     [
@@ -99,7 +101,9 @@ stdenv.mkDerivation rec {
       gtk3
     ];
 
-  propagatedBuildInputs = [ udev ];
+  propagatedBuildInputs = [
+    udev
+  ];
 
   nativeCheckInputs = [
     check

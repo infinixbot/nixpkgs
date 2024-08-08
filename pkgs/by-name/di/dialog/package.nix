@@ -19,9 +19,13 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-MVZAqwcZIl1cvKsTBYXAXweR/PBzBypf6UeZaaorgzs=";
   };
 
-  nativeBuildInputs = lib.optionals withLibrary [ libtool ];
+  nativeBuildInputs = lib.optionals withLibrary [
+    libtool
+  ];
 
-  buildInputs = [ ncurses ];
+  buildInputs = [
+    ncurses
+  ];
 
   strictDeps = true;
 
@@ -32,7 +36,9 @@ stdenv.mkDerivation (finalAttrs: {
     "--with-ncurses${lib.optionalString unicodeSupport "w"}"
   ];
 
-  installTargets = [ "install${lib.optionalString withLibrary "-full"}" ];
+  installTargets = [
+    "install${lib.optionalString withLibrary "-full"}"
+  ];
 
   meta = {
     homepage = "https://invisible-island.net/dialog/dialog.html";

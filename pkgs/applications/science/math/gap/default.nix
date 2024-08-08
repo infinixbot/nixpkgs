@@ -91,7 +91,9 @@ stdenv.mkDerivation rec {
     zlib
   ];
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   propagatedBuildInputs = [
     pari # used at runtime by the alnuth package

@@ -130,7 +130,9 @@ stdenv.mkDerivation rec {
     "--with-distro=NixOS"
     "--with-guestfs-path=${placeholder "out"}/lib/guestfs"
   ] ++ lib.optionals (!javaSupport) [ "--without-java" ];
-  patches = [ ./libguestfs-syms.patch ];
+  patches = [
+    ./libguestfs-syms.patch
+  ];
 
   createFindlibDestdir = true;
 

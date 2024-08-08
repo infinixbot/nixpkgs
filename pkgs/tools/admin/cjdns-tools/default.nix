@@ -12,9 +12,13 @@ stdenv.mkDerivation {
 
   src = cjdns.src;
 
-  buildInputs = [ nodejs ];
+  buildInputs = [
+    nodejs
+  ];
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   buildPhase = ''
     patchShebangs tools

@@ -38,7 +38,9 @@ python3.pkgs.buildPythonApplication rec {
     pytestCheckHook
   ];
 
-  pythonImportsCheck = [ "gitlint" ];
+  pythonImportsCheck = [
+    "gitlint"
+  ];
 
   meta = with lib; {
     description = "Linting for your git commit messages";

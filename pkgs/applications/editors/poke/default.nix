@@ -46,10 +46,14 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    pkg-config
-    texinfo
-  ] ++ lib.optionals (!isCross) [ help2man ];
+  nativeBuildInputs =
+    [
+      pkg-config
+      texinfo
+    ]
+    ++ lib.optionals (!isCross) [
+      help2man
+    ];
 
   buildInputs =
     [

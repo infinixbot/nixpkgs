@@ -207,10 +207,15 @@
       ]
       # Incorrect bounds on Cabal in hadrian
       # https://gitlab.haskell.org/ghc/ghc/-/issues/24100
-      ++ lib.optionals (lib.elem version [
-        "9.8.1"
-        "9.8.2"
-      ]) [ ../../tools/haskell/hadrian/hadrian-9.8.1-allow-Cabal-3.10.patch ];
+      ++
+        lib.optionals
+          (lib.elem version [
+            "9.8.1"
+            "9.8.2"
+          ])
+          [
+            ../../tools/haskell/hadrian/hadrian-9.8.1-allow-Cabal-3.10.patch
+          ];
   },
 
   # GHC's build system hadrian built from the GHC-to-build's source tree
@@ -249,8 +254,12 @@ let
     # documentation) makes the GHC RTS able to load static libraries, which may
     # be needed for TemplateHaskell. This solution was described in
     # https://www.tweag.io/blog/2020-09-30-bazel-static-haskell
-    lib.optionals enableRelocatedStaticLibs [ "*.*.ghc.*.opts += -fPIC -fexternal-dynamic-refs" ]
-    ++ lib.optionals targetPlatform.useAndroidPrebuilt [ "*.*.ghc.c.opts += -optc-std=gnu99" ];
+    lib.optionals enableRelocatedStaticLibs [
+      "*.*.ghc.*.opts += -fPIC -fexternal-dynamic-refs"
+    ]
+    ++ lib.optionals targetPlatform.useAndroidPrebuilt [
+      "*.*.ghc.c.opts += -optc-std=gnu99"
+    ];
 
   # Splicer will pull out correct variations
   libDeps =
@@ -482,13 +491,17 @@ stdenv.mkDerivation (
             "--with-iconv-includes=${libiconv}/include"
             "--with-iconv-libraries=${libiconv}/lib"
           ]
-      ++ lib.optionals (targetPlatform != hostPlatform) [ "--enable-bootstrap-with-devel-snapshot" ]
+      ++ lib.optionals (targetPlatform != hostPlatform) [
+        "--enable-bootstrap-with-devel-snapshot"
+      ]
       ++ lib.optionals useLdGold [
         "CFLAGS=-fuse-ld=gold"
         "CONF_GCC_LINKER_OPTS_STAGE1=-fuse-ld=gold"
         "CONF_GCC_LINKER_OPTS_STAGE2=-fuse-ld=gold"
       ]
-      ++ lib.optionals (disableLargeAddressSpace) [ "--disable-large-address-space" ]
+      ++ lib.optionals (disableLargeAddressSpace) [
+        "--disable-large-address-space"
+      ]
       ++ lib.optionals enableDwarf [
         "--enable-dwarf-unwind"
         "--with-libdw-includes=${lib.getDev targetPackages.elfutils}/include"
@@ -523,8 +536,12 @@ stdenv.mkDerivation (
         # Python is used in a few scripts invoked by hadrian to generate e.g. rts headers.
         python3
       ]
-      ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [ autoSignDarwinBinariesHook ]
-      ++ lib.optionals enableDocs [ sphinx ];
+      ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [
+        autoSignDarwinBinariesHook
+      ]
+      ++ lib.optionals enableDocs [
+        sphinx
+      ];
 
     # For building runtime libs
     depsBuildTarget = toolsForTarget;
@@ -628,7 +645,12 @@ stdenv.mkDerivation (
     meta = {
       homepage = "http://haskell.org/ghc";
       description = "Glasgow Haskell Compiler";
-      maintainers = with lib.maintainers; [ guibou ] ++ lib.teams.haskell.members;
+      maintainers =
+        with lib.maintainers;
+        [
+          guibou
+        ]
+        ++ lib.teams.haskell.members;
       timeout = 24 * 3600;
       inherit (ghc.meta) license platforms;
     };

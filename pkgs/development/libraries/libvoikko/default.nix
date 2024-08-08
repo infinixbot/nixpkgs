@@ -27,7 +27,9 @@ stdenv.mkDerivation (finalAttrs: {
     python3
   ];
 
-  buildInputs = [ hfst-ospell ];
+  buildInputs = [
+    hfst-ospell
+  ];
 
   meta = with lib; {
     homepage = "https://voikko.puimula.org/";

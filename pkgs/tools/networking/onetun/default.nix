@@ -19,7 +19,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-TRfr4riMzR/MbsV2RiQNlPoPLhHK5EScNBCeyyamfgE=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [ Security ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    Security
+  ];
 
   meta = with lib; {
     description = "Cross-platform, user-space WireGuard port-forwarder that requires no root-access or system network configurations";

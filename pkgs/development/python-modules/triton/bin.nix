@@ -39,7 +39,9 @@ buildPythonPackage rec {
 
   buildInputs = [ zlib ];
 
-  nativeBuildInputs = [ autoPatchelfHook ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+  ];
 
   propagatedBuildInputs = [
     filelock

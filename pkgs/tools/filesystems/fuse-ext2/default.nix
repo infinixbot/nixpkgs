@@ -25,7 +25,9 @@ stdenv.mkDerivation (finalAttrs: {
     ./darwin-no-installer.patch
   ];
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   buildInputs = [
     e2fsprogs

@@ -22,7 +22,9 @@ buildDunePackage rec {
     hash = "sha256-o/DylUx+olRRloiCU6b1t/xOmW8A5IZB2n3U7fkMo80=";
   };
 
-  propagatedBuildInputs = [ bigstring ];
+  propagatedBuildInputs = [
+    bigstring
+  ];
 
   checkInputs = [
     alcotest

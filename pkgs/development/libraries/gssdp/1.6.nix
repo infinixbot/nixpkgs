@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     sha256 = "L+21r9sizxTVSYo5p3PKiXiKJQ/PcBGHg9+CHh8/NEY=";
   };
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     meson
@@ -44,9 +46,13 @@ stdenv.mkDerivation rec {
     python3
   ];
 
-  buildInputs = [ libsoup_3 ];
+  buildInputs = [
+    libsoup_3
+  ];
 
-  propagatedBuildInputs = [ glib ];
+  propagatedBuildInputs = [
+    glib
+  ];
 
   mesonFlags = [
     "-Dgtk_doc=true"

@@ -64,7 +64,9 @@ stdenv.mkDerivation rec {
       python3
       python3.pkgs.pygobject3
     ]
-    ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [ elfutils ];
+    ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [
+      elfutils
+    ];
 
   prePatch = ''
     # remove sources of nondeterminism

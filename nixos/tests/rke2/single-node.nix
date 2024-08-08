@@ -67,7 +67,9 @@ import ../make-test-python.nix (
             "rke2-metrics-server"
             "rke2-ingress-nginx"
           ];
-          extraFlags = [ "--cluster-reset" ];
+          extraFlags = [
+            "--cluster-reset"
+          ];
         };
       };
 

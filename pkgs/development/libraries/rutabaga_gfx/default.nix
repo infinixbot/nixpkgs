@@ -54,7 +54,9 @@ stdenv.mkDerivation (finalAttrs: {
         aemu
         gfxstream
       ]
-      ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform libdrm) [ libdrm ]
+      ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform libdrm) [
+        libdrm
+      ]
     );
 
   cargoDeps = rustPlatform.fetchCargoTarball {

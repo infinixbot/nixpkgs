@@ -19,7 +19,9 @@ stdenv.mkDerivation rec {
     xorgproto
     libX11
   ];
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
   meta = with lib; {
     description = "Minimalistic X11 menu creator";
     license = licenses.free; # 9menu derivative with 9menu license

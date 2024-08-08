@@ -156,7 +156,9 @@ stdenv.mkDerivation (finalAttrs: {
   enableParallelBuilding = true;
 
   configureFlags =
-    [ "--disable-oss" ]
+    [
+      "--disable-oss"
+    ]
     ++ lib.optional (!x11Support) "--without-x"
     ++ lib.optional alsaSupport "--with-alsa-prefix=${alsa-lib.out}/lib"
     ++ lib.optional stdenv.hostPlatform.isWindows "--disable-video-opengles"

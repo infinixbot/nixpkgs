@@ -45,7 +45,9 @@ stdenv.mkDerivation rec {
 
   sourceRoot = ".";
 
-  nativeBuildInputs = lib.optionals stdenv.isLinux [ autoPatchelfHook ];
+  nativeBuildInputs = lib.optionals stdenv.isLinux [
+    autoPatchelfHook
+  ];
 
   buildInputs = [
     gcc-unwrapped.lib

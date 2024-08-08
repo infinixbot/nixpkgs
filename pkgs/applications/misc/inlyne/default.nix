@@ -27,7 +27,13 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-M6daK2y9HBRDV2wQjw87g1QYOqiJBfRf9uW1Eg6z6C8=";
 
-  nativeBuildInputs = [ installShellFiles ] ++ lib.optionals stdenv.isLinux [ pkg-config ];
+  nativeBuildInputs =
+    [
+      installShellFiles
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      pkg-config
+    ];
 
   buildInputs =
     lib.optionals stdenv.isLinux [
@@ -40,7 +46,9 @@ rustPlatform.buildRustPackage rec {
       libxkbcommon
       openssl
     ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk_11_0.frameworks.AppKit ];
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk_11_0.frameworks.AppKit
+    ];
 
   checkFlags = lib.optionals stdenv.isDarwin [
     # time out on darwin

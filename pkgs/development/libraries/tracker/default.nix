@@ -54,7 +54,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs =
     [
@@ -73,23 +75,31 @@ stdenv.mkDerivation (finalAttrs: {
       gobject-introspection
       vala
     ]
-    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [ mesonEmulatorHook ];
+    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+      mesonEmulatorHook
+    ];
 
-  buildInputs = [
-    glib
-    libxml2
-    sqlite
-    icu
-    libsoup
-    libsoup_3
-    libuuid
-    json-glib
-    avahi
-    libstemmer
+  buildInputs =
+    [
+      glib
+      libxml2
+      sqlite
+      icu
+      libsoup
+      libsoup_3
+      libuuid
+      json-glib
+      avahi
+      libstemmer
+      dbus
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      systemd
+    ];
+
+  nativeCheckInputs = [
     dbus
-  ] ++ lib.optionals stdenv.isLinux [ systemd ];
-
-  nativeCheckInputs = [ dbus ];
+  ];
 
   mesonFlags =
     [
@@ -106,9 +116,13 @@ stdenv.mkDerivation (finalAttrs: {
           sqlite3_has_fts5 = '${lib.boolToString (lib.hasInfix "-DSQLITE_ENABLE_FTS3" sqlite.NIX_CFLAGS_COMPILE)}'
         '';
       in
-      [ "--cross-file=${crossFile}" ]
+      [
+        "--cross-file=${crossFile}"
+      ]
     )
-    ++ lib.optionals (!stdenv.isLinux) [ "-Dsystemd_user_services=false" ];
+    ++ lib.optionals (!stdenv.isLinux) [
+      "-Dsystemd_user_services=false"
+    ];
 
   doCheck =
     # https://gitlab.gnome.org/GNOME/tracker/-/issues/402

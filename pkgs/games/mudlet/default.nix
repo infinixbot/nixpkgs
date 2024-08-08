@@ -85,21 +85,25 @@ stdenv.mkDerivation rec {
     wrapQtAppsHook
   ];
 
-  buildInputs = [
-    boost
-    hunspell
-    libGLU
-    libsForQt5.qtkeychain
-    libsecret
-    libzip
-    luaEnv
-    pcre
-    pugixml
-    qtbase
-    qtmultimedia
-    yajl
-    discord-rpc
-  ] ++ lib.optional stdenv.isDarwin [ AppKit ];
+  buildInputs =
+    [
+      boost
+      hunspell
+      libGLU
+      libsForQt5.qtkeychain
+      libsecret
+      libzip
+      luaEnv
+      pcre
+      pugixml
+      qtbase
+      qtmultimedia
+      yajl
+      discord-rpc
+    ]
+    ++ lib.optional stdenv.isDarwin [
+      AppKit
+    ];
 
   cmakeFlags = [
     # RPATH of binary /nix/store/.../bin/... contains a forbidden reference to /build/

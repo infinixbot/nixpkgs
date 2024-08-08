@@ -26,7 +26,9 @@ python3.pkgs.buildPythonApplication rec {
     "flake8"
   ];
 
-  nativeBuildInputs = with python3.pkgs; [ poetry-core ];
+  nativeBuildInputs = with python3.pkgs; [
+    poetry-core
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     bandit
@@ -53,9 +55,13 @@ python3.pkgs.buildPythonApplication rec {
     vulture
   ];
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
-  pythonImportsCheck = [ "prospector" ];
+  pythonImportsCheck = [
+    "prospector"
+  ];
 
   disabledTestPaths = [
     # distutils.errors.DistutilsArgError: no commands supplied

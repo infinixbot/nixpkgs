@@ -129,7 +129,9 @@ stdenv.mkDerivation (finalAttrs: {
       skia
       woff2
     ]
-    ++ lib.optional stdenv.isLinux [ qtwayland ]
+    ++ lib.optional stdenv.isLinux [
+      qtwayland
+    ]
     ++ lib.optionals stdenv.isDarwin [
       AppKit
       Cocoa
@@ -137,11 +139,15 @@ stdenv.mkDerivation (finalAttrs: {
       OpenGL
     ];
 
-  cmakeFlags = [
-    # Disable network operations
-    "-DSERENITY_CACHE_DIR=Caches"
-    "-DENABLE_NETWORK_DOWNLOADS=OFF"
-  ] ++ lib.optionals stdenv.isLinux [ "-DCMAKE_INSTALL_LIBEXECDIR=libexec" ];
+  cmakeFlags =
+    [
+      # Disable network operations
+      "-DSERENITY_CACHE_DIR=Caches"
+      "-DENABLE_NETWORK_DOWNLOADS=OFF"
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      "-DCMAKE_INSTALL_LIBEXECDIR=libexec"
+    ];
 
   # FIXME: Add an option to -DENABLE_QT=ON on macOS to use Qt rather than Cocoa for the GUI
   # FIXME: Add an option to enable PulseAudio rather than using Qt multimedia on non-macOS

@@ -19,7 +19,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-5iU6jk8yZLVUjksB4g39zBtfm6LTeBgXOLsw/M5CZZc=";
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   # This is an FHS specific assert depending on glibc location
   checkFlags = [

@@ -24,7 +24,9 @@ buildPythonApplication rec {
     sed -i pyproject.toml -e '/--cov[^"]*/d'
   '';
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   nativeCheckInputs = [
     pytestCheckHook

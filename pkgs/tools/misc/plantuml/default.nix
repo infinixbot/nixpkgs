@@ -16,7 +16,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     hash = "sha256-YayIedHIIpecVF7BZSvBTp66Eb7He+l+1RCir5KuL28=";
   };
 
-  nativeBuildInputs = [ makeBinaryWrapper ];
+  nativeBuildInputs = [
+    makeBinaryWrapper
+  ];
 
   buildCommand = ''
     install -Dm644 $src $out/lib/plantuml.jar

@@ -37,7 +37,13 @@ stdenv.mkDerivation rec {
     python3.pkgs.setuptools
   ];
 
-  buildInputs = [ boost ] ++ lib.optionals (!static) [ (python3.withPackages (ps: [ ps.twisted ])) ];
+  buildInputs =
+    [
+      boost
+    ]
+    ++ lib.optionals (!static) [
+      (python3.withPackages (ps: [ ps.twisted ]))
+    ];
 
   propagatedBuildInputs = [
     libevent

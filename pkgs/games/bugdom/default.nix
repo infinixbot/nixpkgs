@@ -32,7 +32,9 @@ stdenv.mkDerivation rec {
   '';
 
   buildInputs =
-    [ SDL2 ]
+    [
+      SDL2
+    ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       IOKit
       Foundation

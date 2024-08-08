@@ -132,7 +132,9 @@ in
 
     systemd.services = {
       "init-kasmweb" = {
-        wantedBy = [ "docker-kasm_db.service" ];
+        wantedBy = [
+          "docker-kasm_db.service"
+        ];
         before = [
           "docker-kasm_db.service"
           "docker-kasm_redis.service"
@@ -233,7 +235,9 @@ in
         kasm_manager = {
           image = "kasmweb/manager:${pkgs.kasmweb.version}";
           user = "root:root";
-          volumes = [ "${cfg.datastorePath}/:/opt/kasm/current/" ];
+          volumes = [
+            "${cfg.datastorePath}/:/opt/kasm/current/"
+          ];
           dependsOn = [
             "kasm_db"
             "kasm_api"
@@ -263,7 +267,9 @@ in
         kasm_share = {
           image = "kasmweb/share:${pkgs.kasmweb.version}";
           user = "root:root";
-          volumes = [ "${cfg.datastorePath}/:/opt/kasm/current/" ];
+          volumes = [
+            "${cfg.datastorePath}/:/opt/kasm/current/"
+          ];
           dependsOn = [
             "kasm_db"
             "kasm_redis"
@@ -277,7 +283,9 @@ in
         kasm_guac = {
           image = "kasmweb/kasm-guac:${pkgs.kasmweb.version}";
           user = "root:root";
-          volumes = [ "${cfg.datastorePath}/:/opt/kasm/current/" ];
+          volumes = [
+            "${cfg.datastorePath}/:/opt/kasm/current/"
+          ];
           dependsOn = [
             "kasm_db"
             "kasm_redis"

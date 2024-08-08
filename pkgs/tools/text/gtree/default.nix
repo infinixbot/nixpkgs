@@ -19,7 +19,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-yxbnASN3vUpRdsxfVsN/zigfpPJKcJaLfFBTtUUW2t0=";
 
-  subPackages = [ "cmd/gtree" ];
+  subPackages = [
+    "cmd/gtree"
+  ];
 
   ldflags = [
     "-s"

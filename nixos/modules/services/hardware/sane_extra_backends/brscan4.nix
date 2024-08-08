@@ -102,7 +102,9 @@ in
 
   config = mkIf (config.hardware.sane.enable && cfg.enable) {
 
-    hardware.sane.extraBackends = [ pkgs.brscan4 ];
+    hardware.sane.extraBackends = [
+      pkgs.brscan4
+    ];
 
     environment.etc."opt/brother/scanner/brscan4" = {
       source = "${etcFiles}/etc/opt/brother/scanner/brscan4";

@@ -33,7 +33,9 @@ stdenvNoCC.mkDerivation {
     hash = "sha256-yn0fTYsdZZSOcaYlPCn8BUIWeFIKcTI1oioTWqjYunQ=";
   };
 
-  propagatedBuildInputs = [ qtgraphicaleffects ];
+  propagatedBuildInputs = [
+    qtgraphicaleffects
+  ];
 
   dontWrapQtApps = true;
 

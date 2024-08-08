@@ -46,7 +46,9 @@ stdenv.mkDerivation (finalAttrs: {
     "BIN_DIR=${placeholder "out"}/bin/"
   ];
 
-  hardeningDisable = [ "fortify" ];
+  hardeningDisable = [
+    "fortify"
+  ];
 
   meta = {
     homepage = "https://www.parallelrealities.co.uk/games/edgar";

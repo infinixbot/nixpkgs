@@ -30,7 +30,9 @@ rec {
     hash = "sha256-UcjbDJR6shyETpanNkRoH8LF8r6gFjsyNHVSCMHKqS8=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     cppzmq

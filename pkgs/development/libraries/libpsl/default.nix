@@ -48,7 +48,9 @@ stdenv.mkDerivation rec {
     libxslt
   ];
 
-  propagatedBuildInputs = [ publicsuffix-list ];
+  propagatedBuildInputs = [
+    publicsuffix-list
+  ];
 
   postPatch = ''
     patchShebangs src/psl-make-dafsa

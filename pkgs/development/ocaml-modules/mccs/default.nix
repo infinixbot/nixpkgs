@@ -16,7 +16,9 @@ buildDunePackage rec {
     hash = "sha256-0NZF2W/eWwZRXnMJh9LmOdbE/CRDYeLUUx6ty4irP6U=";
   };
 
-  propagatedBuildInputs = [ cudf ];
+  propagatedBuildInputs = [
+    cudf
+  ];
 
   doCheck = true;
 

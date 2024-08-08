@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-nnYk/nGbNGbl7Y39AueIltYA2fd43Gb1SmQu5VZRycM=";
   };
 
-  cmakeFlags = [ "-DRIME_DATA_DIR=${placeholder "out"}/share/rime-data" ];
+  cmakeFlags = [
+    "-DRIME_DATA_DIR=${placeholder "out"}/share/rime-data"
+  ];
 
   nativeBuildInputs = [
     cmake

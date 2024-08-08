@@ -16,7 +16,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-ZqHcPyGAD57qvZ6sV3uR/N2aq7pnj7ujuFJzGRENHSU=";
   };
 
-  patches = [ ./darwin-rpath-universal.patch ];
+  patches = [
+    ./darwin-rpath-universal.patch
+  ];
 
   buildInputs = [
     bzip2

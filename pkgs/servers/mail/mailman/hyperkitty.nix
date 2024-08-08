@@ -19,7 +19,9 @@ buildPythonPackage rec {
     hash = "sha256-BfhCh4zZcfwoIfubW/+MUWXwh1yFOH/jpRdQdsj6lME=";
   };
 
-  nativeBuildInputs = [ pdm-backend ];
+  nativeBuildInputs = [
+    pdm-backend
+  ];
 
   propagatedBuildInputs = [
     django

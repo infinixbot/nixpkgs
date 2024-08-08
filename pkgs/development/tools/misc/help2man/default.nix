@@ -35,7 +35,9 @@ stdenv.mkDerivation rec {
     libintl
   ];
 
-  configureFlags = [ "--enable-nls" ];
+  configureFlags = [
+    "--enable-nls"
+  ];
 
   doCheck = false; # target `check' is missing
 

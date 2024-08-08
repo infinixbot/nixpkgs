@@ -19,7 +19,9 @@ stdenvNoCC.mkDerivation rec {
     hash = "sha256-6NFCXj80VAoFX+i4By5IpbtJC4qL+sAzlLHUJjTQ/sI=";
   };
 
-  nativeBuildInputs = [ gtk3 ];
+  nativeBuildInputs = [
+    gtk3
+  ];
 
   propagatedBuildInputs = [
     breeze-icons

@@ -21,10 +21,14 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs =
-    lib.optionals withBlas [ blas ]
+    lib.optionals withBlas [
+      blas
+    ]
     ++ lib.optionals (withBlas && stdenv.isDarwin) [
       darwin.apple_sdk.frameworks.Accelerate
       darwin.apple_sdk.frameworks.CoreGraphics

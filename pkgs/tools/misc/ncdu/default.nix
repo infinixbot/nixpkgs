@@ -23,7 +23,9 @@ stdenv.mkDerivation (finalAttrs: {
     installShellFiles
   ];
 
-  buildInputs = [ ncurses ];
+  buildInputs = [
+    ncurses
+  ];
 
   zigBuildFlags = lib.optional pie "-Dpie=true";
 

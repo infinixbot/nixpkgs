@@ -27,10 +27,14 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-dRTKE8gkV298ZmMokyy3Ufer/Lp1GQYdEhIBoLhloEQ=";
   };
 
-  nativeBuildInputs = [
-    installShellFiles
-    python3.pkgs.setuptools
-  ] ++ lib.optionals withAutocomplete [ python3.pkgs.argcomplete ];
+  nativeBuildInputs =
+    [
+      installShellFiles
+      python3.pkgs.setuptools
+    ]
+    ++ lib.optionals withAutocomplete [
+      python3.pkgs.argcomplete
+    ];
 
   propagatedBuildInputs = [ python3.pkgs.argcomplete ];
 

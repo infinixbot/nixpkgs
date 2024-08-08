@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-bqhltxkoqDdmddOBZ1f3I29AxGm5buUXpjjFwefemEM=";
   };
 
-  patches = [ ./fixes.patch ];
+  patches = [
+    ./fixes.patch
+  ];
 
   postPatch = ''
     # the trailing slash is important!!

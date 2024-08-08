@@ -61,12 +61,18 @@ rustPlatform.buildRustPackage rec {
     })
   ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [
-    oniguruma
-    openssl
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs =
+    [
+      oniguruma
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+    ];
 
   env = {
     OPENSSL_NO_VENDOR = true;

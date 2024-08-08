@@ -44,7 +44,9 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs =
-    [ cmake ]
+    [
+      cmake
+    ]
     ++ lib.optionals stdenv.isDarwin [
       macdylibbundler
       makeWrapper
@@ -78,7 +80,9 @@ stdenv.mkDerivation rec {
   ];
 
   env.NIX_CFLAGS_COMPILE = toString (
-    lib.optionals (stdenv.isDarwin && stdenv.isx86_64) [ "-DAPPLE_OLD_XCODE" ]
+    lib.optionals (stdenv.isDarwin && stdenv.isx86_64) [
+      "-DAPPLE_OLD_XCODE"
+    ]
   );
 
   doCheck = true;

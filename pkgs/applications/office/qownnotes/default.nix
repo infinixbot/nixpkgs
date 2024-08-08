@@ -48,7 +48,9 @@ stdenv.mkDerivation {
     botan2
   ] ++ lib.optionals stdenv.isLinux [ qtwayland ];
 
-  qmakeFlags = [ "USE_SYSTEM_BOTAN=1" ];
+  qmakeFlags = [
+    "USE_SYSTEM_BOTAN=1"
+  ];
 
   postInstall =
     ''

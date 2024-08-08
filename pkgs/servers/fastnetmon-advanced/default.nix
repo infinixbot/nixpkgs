@@ -16,9 +16,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-2AKUNPQ7OzuYOolJHwTnWHzB4Qpwun/77+dFCN/cE98=";
   };
 
-  nativeBuildInputs = [ autoPatchelfHook ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+  ];
 
-  buildInputs = [ bzip2 ];
+  buildInputs = [
+    bzip2
+  ];
 
   unpackPhase = ''
     ar xf $src

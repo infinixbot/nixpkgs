@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
   ];
   propagatedBuildInputs = lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
 
-  cmakeFlags = [ "-DBUILD_SHARED_LIBS=ON" ];
+  cmakeFlags = [
+    "-DBUILD_SHARED_LIBS=ON"
+  ];
 
   passthru.tests = {
     inherit nix;

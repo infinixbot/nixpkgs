@@ -25,7 +25,9 @@ python3.pkgs.buildPythonApplication rec {
   # Project has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "swaggerhole" ];
+  pythonImportsCheck = [
+    "swaggerhole"
+  ];
 
   meta = with lib; {
     description = "Tool to searching for secret on swaggerhub";

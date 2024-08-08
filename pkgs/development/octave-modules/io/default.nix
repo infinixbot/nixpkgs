@@ -16,9 +16,13 @@ buildOctavePackage rec {
     sha256 = "sha256-p0pAC70ZIn9sB8WFiS3oec165S2CDaH2nxo+PolFL1o=";
   };
 
-  buildInputs = [ (lib.optional enableJava jdk) ];
+  buildInputs = [
+    (lib.optional enableJava jdk)
+  ];
 
-  propagatedBuildInputs = [ unzip ];
+  propagatedBuildInputs = [
+    unzip
+  ];
 
   meta = with lib; {
     homepage = "https://octave.sourceforge.io/io/index.html";

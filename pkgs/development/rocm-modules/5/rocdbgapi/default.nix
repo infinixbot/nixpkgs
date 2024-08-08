@@ -45,7 +45,13 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "rocdbgapi";
   version = "5.7.1";
 
-  outputs = [ "out" ] ++ lib.optionals buildDocs [ "doc" ];
+  outputs =
+    [
+      "out"
+    ]
+    ++ lib.optionals buildDocs [
+      "doc"
+    ];
 
   src = fetchFromGitHub {
     owner = "ROCm";

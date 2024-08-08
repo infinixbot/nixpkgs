@@ -32,7 +32,9 @@ buildPythonApplication rec {
     poetry-core
   ];
 
-  nativeBuildInputs = [ ];
+  nativeBuildInputs =
+    [
+    ];
 
   nativeCheckInputs = [
     responses

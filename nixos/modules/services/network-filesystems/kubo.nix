@@ -337,7 +337,9 @@ in
         createHome = false;
         uid = config.ids.uids.ipfs;
         description = "IPFS daemon user";
-        packages = [ pkgs.kubo-migrator ];
+        packages = [
+          pkgs.kubo-migrator
+        ];
       };
     };
 

@@ -20,7 +20,9 @@ buildGoModule rec {
 
   env.GOWORK = "off";
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   ldflags = [
     "-s"

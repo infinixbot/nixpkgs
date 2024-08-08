@@ -24,7 +24,9 @@ buildGoModule rec {
 
   nativeBuildInputs = [ makeWrapper ];
 
-  subPackages = [ "cmd/tfplugindocs" ];
+  subPackages = [
+    "cmd/tfplugindocs"
+  ];
 
   allowGoReference = true;
 

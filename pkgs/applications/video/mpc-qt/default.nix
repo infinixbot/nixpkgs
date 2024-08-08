@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
     wrapQtAppsHook
   ];
 
-  buildInputs = [ mpv ];
+  buildInputs = [
+    mpv
+  ];
 
   postPatch = ''
     substituteInPlace lconvert.pri --replace "qtPrepareTool(LCONVERT, lconvert)" "qtPrepareTool(LCONVERT, lconvert, , , ${qttools}/bin)"
@@ -39,7 +41,9 @@ stdenv.mkDerivation rec {
     substituteInPlace Makefile --replace ${qtbase}/bin/lrelease ${qttools.dev}/bin/lrelease
   '';
 
-  qmakeFlags = [ "MPCQT_VERSION=${version}" ];
+  qmakeFlags = [
+    "MPCQT_VERSION=${version}"
+  ];
 
   passthru.updateScript = gitUpdater { rev-prefix = "v"; };
 

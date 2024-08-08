@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optional stdenv.isDarwin AudioUnit;
 
-  cmakeFlags = lib.optionals stdenv.isDarwin [ "-DBUILD_TESTS=OFF" ];
+  cmakeFlags = lib.optionals stdenv.isDarwin [
+    "-DBUILD_TESTS=OFF"
+  ];
 
   env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.isDarwin "-Wno-strict-prototypes";
 

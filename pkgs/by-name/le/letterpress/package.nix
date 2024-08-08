@@ -36,9 +36,13 @@ python3Packages.buildPythonApplication rec {
     })
   ];
 
-  runtimeDeps = [ jp2a ];
+  runtimeDeps = [
+    jp2a
+  ];
 
-  buildInputs = [ libadwaita ];
+  buildInputs = [
+    libadwaita
+  ];
 
   nativeBuildInputs = [
     appstream

@@ -46,7 +46,9 @@ gnuradio.pkgs.mkDerivation rec {
     gnuradio.unwrapped.python.pkgs.mako
     gnuradio.unwrapped.python.pkgs.six
   ];
-  nativeCheckInputs = [ gtest ];
+  nativeCheckInputs = [
+    gtest
+  ];
 
   buildInputs =
     [
@@ -64,8 +66,12 @@ gnuradio.pkgs.mkDerivation rec {
       gnuradio.unwrapped.boost
       gnuradio.unwrapped.logLib
     ]
-    ++ lib.optionals (gnuradio.hasFeature "gr-uhd") [ gnuradio.unwrapped.uhd ]
-    ++ lib.optionals (enableRawUdp) [ libpcap ]
+    ++ lib.optionals (gnuradio.hasFeature "gr-uhd") [
+      gnuradio.unwrapped.uhd
+    ]
+    ++ lib.optionals (enableRawUdp) [
+      libpcap
+    ]
     ++ lib.optionals (gnuradio.hasFeature "gr-ctrlport") [
       thrift
       gnuradio.unwrapped.python.pkgs.thrift
@@ -73,7 +79,9 @@ gnuradio.pkgs.mkDerivation rec {
     ++ lib.optionals (gnuradio.hasFeature "gr-pdu" || gnuradio.hasFeature "gr-iio") [
       gnuradio.unwrapped.libiio
     ]
-    ++ lib.optionals (gnuradio.hasFeature "gr-pdu") [ gnuradio.unwrapped.libad9361 ];
+    ++ lib.optionals (gnuradio.hasFeature "gr-pdu") [
+      gnuradio.unwrapped.libad9361
+    ];
 
   cmakeFlags = [
     (lib.cmakeFeature "GFlags_INCLUDE_DIRS" "${gflags}/include")

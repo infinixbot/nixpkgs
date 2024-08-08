@@ -178,9 +178,13 @@ let
 
       sourceRoot = "ceph-${version}/src/python-common";
 
-      propagatedBuildInputs = [ pyyaml ];
+      propagatedBuildInputs = [
+        pyyaml
+      ];
 
-      nativeCheckInputs = [ pytestCheckHook ];
+      nativeCheckInputs = [
+        pytestCheckHook
+      ];
 
       disabledTests = [
         # requires network access
@@ -270,8 +274,12 @@ let
             inherit version;
             hash = "sha256-hBSYub7GFiOxtsR+u8AjZ8B9YODhlfGXkIF/EMyNsLc=";
           };
-          disabledTests = old.disabledTests or [ ] ++ [ "test_export_md5_digest" ];
-          propagatedBuildInputs = old.propagatedBuildInputs or [ ] ++ [ self.flaky ];
+          disabledTests = old.disabledTests or [ ] ++ [
+            "test_export_md5_digest"
+          ];
+          propagatedBuildInputs = old.propagatedBuildInputs or [ ] ++ [
+            self.flaky
+          ];
         });
 
         # Ceph does not support `kubernetes` >= 19, see:

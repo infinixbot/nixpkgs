@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-wdH+Zw7G2ZigzBMX8p3GKdFVx/AhbTNL+P3w+YjI/dc=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   cmakeFlags = lib.optionals withMPI [ "-DWITH_MPI=ON" ];
 

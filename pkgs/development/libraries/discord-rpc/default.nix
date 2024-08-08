@@ -19,9 +19,13 @@ stdenv.mkDerivation rec {
     sha256 = "04cxhqdv5r92lrpnhxf8702a8iackdf3sfk1050z7pijbijiql2a";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = [ rapidjson ] ++ lib.optional stdenv.isDarwin AppKit;
+  buildInputs = [
+    rapidjson
+  ] ++ lib.optional stdenv.isDarwin AppKit;
 
   cmakeFlags = [
     "-DBUILD_SHARED_LIBS=true"

@@ -20,7 +20,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-uUXEipIUfu9AbG7Ekz+25JkWSEGzqA7sJHZqezLzUto=";
   };
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   buildInputs = [
     libjpeg

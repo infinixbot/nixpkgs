@@ -18,7 +18,11 @@
 }:
 
 let
-  pythonEnv = python3.pythonOnBuildForHost.withPackages (ps: with ps; [ setuptools ]);
+  pythonEnv = python3.pythonOnBuildForHost.withPackages (
+    ps: with ps; [
+      setuptools
+    ]
+  );
 in
 stdenv.mkDerivation rec {
   pname = "gusb";
@@ -47,7 +51,9 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     meson
@@ -70,7 +76,9 @@ stdenv.mkDerivation rec {
     (lib.mesonOption "usb_ids" "${hwdata}/share/hwdata/usb.ids")
   ];
 
-  checkInputs = [ umockdev ];
+  checkInputs = [
+    umockdev
+  ];
 
   doCheck = false; # tests try to access USB
 

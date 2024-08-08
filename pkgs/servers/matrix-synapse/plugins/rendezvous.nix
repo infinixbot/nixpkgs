@@ -29,7 +29,9 @@ buildPythonPackage rec {
   };
 
   nativeBuildInputs =
-    [ setuptools-rust ]
+    [
+      setuptools-rust
+    ]
     ++ (with rustPlatform; [
       cargoSetupHook
       maturinBuildHook

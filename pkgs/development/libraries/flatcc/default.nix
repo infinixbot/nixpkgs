@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  cmakeFlags = [ "-DFLATCC_INSTALL=on" ];
+  cmakeFlags = [
+    "-DFLATCC_INSTALL=on"
+  ];
 
   meta = with lib; {
     description = "FlatBuffers Compiler and Library in C for C";

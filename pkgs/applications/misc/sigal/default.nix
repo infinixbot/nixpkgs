@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-pDTaqtqfuk7tACkyaKClTJotuVcTKli5yx1wbEM93TM=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools-scm ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools-scm
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     # install_requires
@@ -34,11 +36,21 @@ python3.pkgs.buildPythonApplication rec {
     cryptography
   ];
 
-  nativeCheckInputs = [ ffmpeg ] ++ (with python3.pkgs; [ pytestCheckHook ]);
+  nativeCheckInputs =
+    [
+      ffmpeg
+    ]
+    ++ (with python3.pkgs; [
+      pytestCheckHook
+    ]);
 
-  disabledTests = lib.optionals stdenv.isDarwin [ "test_nonmedia_files" ];
+  disabledTests = lib.optionals stdenv.isDarwin [
+    "test_nonmedia_files"
+  ];
 
-  makeWrapperArgs = [ "--prefix PATH : ${lib.makeBinPath [ ffmpeg ]}" ];
+  makeWrapperArgs = [
+    "--prefix PATH : ${lib.makeBinPath [ ffmpeg ]}"
+  ];
 
   meta = with lib; {
     description = "Yet another simple static gallery generator";

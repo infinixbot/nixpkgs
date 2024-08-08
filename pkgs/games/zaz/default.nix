@@ -22,7 +22,9 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "1r3bmwny05zzmdalxm5ah2rray0nnsg1w00r30p47q6x2lpwj8ml";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
   buildInputs = [
     (lib.getDev SDL)
     SDL_image

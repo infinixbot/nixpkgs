@@ -20,7 +20,8 @@
 
 let
   binPath = lib.makeBinPath (
-    [ ]
+    [
+    ]
     ++ lib.optionals stdenv.isLinux [
       runc
       crun
@@ -38,7 +39,8 @@ let
 
     # this only works for some binaries, others may need to be added to `binPath` or in the modules
     paths =
-      [ ]
+      [
+      ]
       ++ lib.optionals stdenv.isLinux [
         aardvark-dns
         netavark
@@ -61,7 +63,9 @@ runCommand buildah-unwrapped.name
       "man"
     ];
 
-    nativeBuildInputs = [ makeWrapper ];
+    nativeBuildInputs = [
+      makeWrapper
+    ];
 
   }
   ''

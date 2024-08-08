@@ -65,7 +65,9 @@ buildPythonPackage rec {
     "tests/spark_/typesets/test_spark_standard_set.py"
   ];
 
-  pythonImportsCheck = [ "visions" ];
+  pythonImportsCheck = [
+    "visions"
+  ];
 
   meta = with lib; {
     description = "Type system for data analysis in Python";

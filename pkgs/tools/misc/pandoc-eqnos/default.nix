@@ -18,7 +18,9 @@ buildPythonApplication rec {
     sha256 = "sha256-7GQdfGHhtQs6LZK+ZyMmcPSkoFfBWmATTMejMiFcS7Y=";
   };
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   propagatedBuildInputs = [ pandoc-xnos ];
 

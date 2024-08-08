@@ -34,9 +34,13 @@ stdenv.mkDerivation {
     "lib"
   ];
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  cmakeFlags = [ (lib.cmakeBool "NVTT_SHARED" true) ];
+  cmakeFlags = [
+    (lib.cmakeBool "NVTT_SHARED" true)
+  ];
 
   postInstall = ''
     moveToOutput include "$dev"

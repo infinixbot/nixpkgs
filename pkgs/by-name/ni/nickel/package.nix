@@ -24,7 +24,9 @@ rustPlatform.buildRustPackage rec {
     "-p nickel-lang-lsp"
   ];
 
-  nativeBuildInputs = [ python3 ];
+  nativeBuildInputs = [
+    python3
+  ];
 
   outputs = [
     "out"

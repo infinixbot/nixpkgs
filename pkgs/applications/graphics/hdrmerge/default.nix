@@ -40,7 +40,9 @@ mkDerivation rec {
     alglib
   ];
 
-  cmakeFlags = [ "-DALGLIB_DIR:PATH=${alglib}" ];
+  cmakeFlags = [
+    "-DALGLIB_DIR:PATH=${alglib}"
+  ];
 
   CXXFLAGS = [
     # GCC 13: error: 'uint32_t' does not name a type

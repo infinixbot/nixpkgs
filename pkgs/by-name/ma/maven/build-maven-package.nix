@@ -33,7 +33,9 @@ let
       name = "${pname}-${version}-maven-deps";
       inherit src sourceRoot patches;
 
-      nativeBuildInputs = [ maven ] ++ args.nativeBuildInputs or [ ];
+      nativeBuildInputs = [
+        maven
+      ] ++ args.nativeBuildInputs or [ ];
 
       JAVA_HOME = mvnJdk;
 
@@ -92,7 +94,9 @@ stdenv.mkDerivation (
   // {
     inherit fetchedMavenDeps;
 
-    nativeBuildInputs = args.nativeBuildInputs or [ ] ++ [ maven ];
+    nativeBuildInputs = args.nativeBuildInputs or [ ] ++ [
+      maven
+    ];
 
     JAVA_HOME = mvnJdk;
 

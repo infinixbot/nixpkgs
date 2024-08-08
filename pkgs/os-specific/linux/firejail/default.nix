@@ -20,14 +20,18 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-XAlb6SSyY2S1iWDaulIlghQ16OGvT/wBCog95/nxkog=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     libapparmor
     which
   ];
 
-  configureFlags = [ "--enable-apparmor" ];
+  configureFlags = [
+    "--enable-apparmor"
+  ];
 
   patches = [
     # Adds the /nix directory when using an overlay.

@@ -136,7 +136,9 @@ stdenv.mkDerivation rec {
     description = "Bloat-free Graphical User interface for C++ with minimal dependencies";
     homepage = "https://github.com/ocornut/imgui";
     license = lib.licenses.mit; # vcpkg licensed as MIT too
-    maintainers = with lib.maintainers; [ SomeoneSerge ];
+    maintainers = with lib.maintainers; [
+      SomeoneSerge
+    ];
     platforms = lib.platforms.all;
   };
 }

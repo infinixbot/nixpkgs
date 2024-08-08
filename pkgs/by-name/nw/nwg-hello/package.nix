@@ -29,7 +29,9 @@ python3Packages.buildPythonApplication rec {
     gtk-layer-shell
   ];
 
-  propagatedBuildInputs = [ python3Packages.pygobject3 ];
+  propagatedBuildInputs = [
+    python3Packages.pygobject3
+  ];
 
   postPatch = ''
     # hard coded paths

@@ -102,6 +102,8 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/FedeDP/Clightd";
     platforms = platforms.linux;
     license = licenses.gpl3;
-    maintainers = with maintainers; [ eadwu ];
+    maintainers = with maintainers; [
+      eadwu
+    ];
   };
 }

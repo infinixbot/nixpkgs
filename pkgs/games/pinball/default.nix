@@ -37,7 +37,9 @@ stdenv.mkDerivation rec {
   ];
   strictDeps = true;
 
-  configureFlags = [ "--with-sdl-prefix=${lib.getDev SDL}" ];
+  configureFlags = [
+    "--with-sdl-prefix=${lib.getDev SDL}"
+  ];
 
   env.NIX_CFLAGS_COMPILE = toString [
     "-I${lib.getDev SDL_image}/include/SDL"

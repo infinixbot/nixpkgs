@@ -40,9 +40,13 @@ buildPythonApplication rec {
     zeroconf
   ];
 
-  makeWrapperArgs = [ "--prefix PATH : ${lib.makeBinPath nativeBuildInputs}" ];
+  makeWrapperArgs = [
+    "--prefix PATH : ${lib.makeBinPath nativeBuildInputs}"
+  ];
 
-  checkInputs = [ pytestCheckHook ];
+  checkInputs = [
+    pytestCheckHook
+  ];
 
   preCheck = ''
     # Solves PermissionError: [Errno 13] Permission denied: '/homeless-shelter'

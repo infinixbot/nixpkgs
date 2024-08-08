@@ -18,16 +18,22 @@ python3.pkgs.buildPythonApplication rec {
     fetchLFS = true;
   };
 
-  pythonRelaxDeps = [ "textual" ];
+  pythonRelaxDeps = [
+    "textual"
+  ];
 
-  nativeBuildInputs = with python3.pkgs; [ poetry-core ];
+  nativeBuildInputs = with python3.pkgs; [
+    poetry-core
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     pyfluidsynth
     textual
   ];
 
-  pythonImportsCheck = [ "upiano" ];
+  pythonImportsCheck = [
+    "upiano"
+  ];
 
   meta = with lib; {
     description = "Piano in your terminal";

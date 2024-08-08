@@ -46,9 +46,13 @@ stdenv.mkDerivation rec {
     jdk_headless
   ];
 
-  buildInputs = [ gtest ];
+  buildInputs = [
+    gtest
+  ];
 
-  cmakeFlags = [ "-DJAVA_HOME=${jdk_headless.passthru.home}" ];
+  cmakeFlags = [
+    "-DJAVA_HOME=${jdk_headless.passthru.home}"
+  ];
 
   meta = with lib; {
     description = "Library designed to simplify the usage of the Java Native Interface";

@@ -18,10 +18,14 @@ buildKodiBinaryAddon rec {
     hash = "sha256-MimwEV7YD6pMshxqbKTVbLDsPmMbqSy4HPnxwmKswpc=";
   };
 
-  extraCMakeFlags = [ "-DFUSE_LIB=${fuse}/lib/retroarch/cores/fuse_libretro.so" ];
+  extraCMakeFlags = [
+    "-DFUSE_LIB=${fuse}/lib/retroarch/cores/fuse_libretro.so"
+  ];
 
   extraBuildInputs = [ fuse ];
-  propagatedBuildInputs = [ libretro ];
+  propagatedBuildInputs = [
+    libretro
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/kodi-game/game.libretro.fuse";

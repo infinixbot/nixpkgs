@@ -19,7 +19,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-ji38ZNOZ+SDL7+9dvaRIA38EsqMqYWpSmZntexJqcMU=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [ CoreServices ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    CoreServices
+  ];
 
   meta = with lib; {
     description = "Preprocessor for mdbook to add mermaid.js support";

@@ -122,7 +122,9 @@ else
 
     buildInputs = libraries;
 
-    runtimeDependencies = [ (lib.getLib systemd) ];
+    runtimeDependencies = [
+      (lib.getLib systemd)
+    ];
 
     unpackPhase = ''
       ${dpkg}/bin/dpkg-deb -x $src .

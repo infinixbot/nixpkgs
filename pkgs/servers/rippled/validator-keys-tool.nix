@@ -32,7 +32,9 @@ stdenv.mkDerivation rec {
 
   hardeningDisable = [ "format" ];
 
-  cmakeFlags = [ "-Dep_procs=1" ];
+  cmakeFlags = [
+    "-Dep_procs=1"
+  ];
 
   installPhase = ''
     runHook preInstall

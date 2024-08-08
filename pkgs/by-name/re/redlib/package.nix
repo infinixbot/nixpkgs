@@ -20,7 +20,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-3NQWiu/nTtHrivYL1pgxqQxEuIW0xfjxwK0ZEa2y1Kk=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.Security
+  ];
 
   checkFlags = [
     # All these test try to connect to Reddit.

@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     libpng
   ];
 
-  qmakeFlags = [ "gui/qt" ];
+  qmakeFlags = [
+    "gui/qt"
+  ];
 
   meta = with lib; {
     description = "Third-party TI-84 Plus CE / TI-83 Premium CE emulator, focused on developer features";

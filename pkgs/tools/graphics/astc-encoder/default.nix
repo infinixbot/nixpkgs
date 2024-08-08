@@ -74,7 +74,9 @@ stdenv.mkDerivation rec {
 
   cmakeBuildType = "RelWithDebInfo";
 
-  cmakeFlags = isaFlags ++ [ "-DASTCENC_UNIVERSAL_BUILD=OFF" ];
+  cmakeFlags = isaFlags ++ [
+    "-DASTCENC_UNIVERSAL_BUILD=OFF"
+  ];
 
   # Set a fixed build year to display within help output (otherwise, it would be 1980)
   postPatch = ''

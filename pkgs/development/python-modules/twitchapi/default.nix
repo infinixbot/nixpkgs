@@ -48,6 +48,8 @@ buildPythonPackage rec {
     description = "Python implementation of the Twitch Helix API, its Webhook, PubSub and EventSub";
     homepage = "https://github.com/Teekeks/pyTwitchAPI";
     license = licenses.mit;
-    maintainers = with maintainers; [ dotlambda ];
+    maintainers = with maintainers; [
+      dotlambda
+    ];
   };
 }

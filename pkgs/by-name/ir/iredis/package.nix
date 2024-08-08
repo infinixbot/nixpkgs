@@ -23,7 +23,9 @@ python3.pkgs.buildPythonApplication rec {
       --replace-fail 'wcwidth = "0.1.9"' 'wcwidth = "*"'
   '';
 
-  nativeBuildInputs = with python3.pkgs; [ poetry-core ];
+  nativeBuildInputs = with python3.pkgs; [
+    poetry-core
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     click

@@ -43,7 +43,9 @@ stdenv.mkDerivation {
     unset NIX_ENFORCE_PURITY
   '';
 
-  makeFlags = [ "PARALLEL=$(NIX_BUILD_CORES)" ];
+  makeFlags = [
+    "PARALLEL=$(NIX_BUILD_CORES)"
+  ];
 
   installPhase = ''
     mkdir $out

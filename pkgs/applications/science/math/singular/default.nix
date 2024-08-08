@@ -53,8 +53,12 @@ stdenv.mkDerivation rec {
       "--with-ntl=${ntl}"
       "--disable-pyobject-module"
     ]
-    ++ lib.optionals enableDocs [ "--enable-doc-build" ]
-    ++ lib.optionals enableGfanlib [ "--enable-gfanlib" ];
+    ++ lib.optionals enableDocs [
+      "--enable-doc-build"
+    ]
+    ++ lib.optionals enableGfanlib [
+      "--enable-gfanlib"
+    ];
 
   prePatch = ''
     # don't let the tests depend on `hostname`
@@ -66,17 +70,21 @@ stdenv.mkDerivation rec {
   # For reference (last checked on commit 75f460d):
   # https://github.com/Singular/Singular/blob/spielwiese/doc/Building-Singular-from-source.md
   # https://github.com/Singular/Singular/blob/spielwiese/doc/external-packages-dynamic-modules.md
-  buildInputs = [
-    # necessary
-    gmp
-    # by upstream recommended but optional
-    ncurses
-    readline
-    ntl
-    flint3
-    lrcalc
-    gfan
-  ] ++ lib.optionals enableGfanlib [ cddlib ];
+  buildInputs =
+    [
+      # necessary
+      gmp
+      # by upstream recommended but optional
+      ncurses
+      readline
+      ntl
+      flint3
+      lrcalc
+      gfan
+    ]
+    ++ lib.optionals enableGfanlib [
+      cddlib
+    ];
 
   nativeBuildInputs =
     [

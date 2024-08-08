@@ -42,7 +42,9 @@ llvmPackages.stdenv.mkDerivation {
     rm test/Python.C
   '';
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = [
     llvm_12

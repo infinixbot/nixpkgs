@@ -22,7 +22,9 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = [ SDL2 ];
+  buildInputs = [
+    SDL2
+  ];
 
   makeFlags = [ "CC=${stdenv.cc.targetPrefix}c++" ];
 

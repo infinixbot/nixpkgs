@@ -36,7 +36,9 @@ stdenv.mkDerivation {
     gumbo
   ];
 
-  cmakeFlags = [ "-DEXTERNAL_GUMBO=ON" ];
+  cmakeFlags = [
+    "-DEXTERNAL_GUMBO=ON"
+  ];
 
   installPhase = ''
     runHook preInstall

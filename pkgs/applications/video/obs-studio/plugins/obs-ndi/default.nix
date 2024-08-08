@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-DVUoLV2jCdD8qXSpmGvqjrQh02dCLroKsUAb5+lYTog=";
   };
 
-  patches = [ ./hardcode-ndi-path.patch ];
+  patches = [
+    ./hardcode-ndi-path.patch
+  ];
 
   postPatch = ''
     # Add path (variable added in hardcode-ndi-path.patch

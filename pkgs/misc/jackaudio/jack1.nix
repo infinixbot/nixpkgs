@@ -33,7 +33,9 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "0i6l25dmfk2ji2lrakqq9icnwjxklgcjzzk65dmsff91z2zva5rm";
   };
 
-  configureFlags = [ (lib.enableFeature (optLibffado != null) "firewire") ];
+  configureFlags = [
+    (lib.enableFeature (optLibffado != null) "firewire")
+  ];
 
   nativeBuildInputs = [ pkg-config ];
   buildInputs = [

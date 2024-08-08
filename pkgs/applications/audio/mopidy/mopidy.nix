@@ -32,7 +32,9 @@ pythonPackages.buildPythonApplication rec {
   ];
 
   propagatedBuildInputs =
-    [ gobject-introspection ]
+    [
+      gobject-introspection
+    ]
     ++ (
       with pythonPackages;
       [
@@ -46,7 +48,9 @@ pythonPackages.buildPythonApplication rec {
       ++ lib.optional (!stdenv.isDarwin) dbus-python
     );
 
-  propagatedNativeBuildInputs = [ gobject-introspection ];
+  propagatedNativeBuildInputs = [
+    gobject-introspection
+  ];
 
   # There are no tests
   doCheck = false;

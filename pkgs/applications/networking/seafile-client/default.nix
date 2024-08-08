@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
 
   cmakeFlags = lib.optional withShibboleth "-DBUILD_SHIBBOLETH_SUPPORT=ON";
 
-  qtWrapperArgs = [ "--suffix PATH : ${lib.makeBinPath [ seafile-shared ]}" ];
+  qtWrapperArgs = [
+    "--suffix PATH : ${lib.makeBinPath [ seafile-shared ]}"
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/haiwen/seafile-client";

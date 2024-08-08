@@ -33,11 +33,15 @@ python311.pkgs.buildPythonPackage rec {
     setuptools
   ];
 
-  dependencies = with python311.pkgs; [ numpy ];
+  dependencies = with python311.pkgs; [
+    numpy
+  ];
 
   __darwinAllowLocalNetworking = true;
 
-  nativeCheckInputs = with python311.pkgs; [ unittestCheckHook ];
+  nativeCheckInputs = with python311.pkgs; [
+    unittestCheckHook
+  ];
 
   unittestFlagsArray = [
     "-s"

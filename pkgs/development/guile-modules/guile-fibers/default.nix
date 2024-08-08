@@ -34,7 +34,9 @@ stdenv.mkDerivation rec {
     libevent
   ];
 
-  makeFlags = [ "GUILE_AUTO_COMPILE=0" ];
+  makeFlags = [
+    "GUILE_AUTO_COMPILE=0"
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/wingo/fibers";

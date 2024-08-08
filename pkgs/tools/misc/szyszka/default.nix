@@ -32,14 +32,21 @@ rustPlatform.buildRustPackage rec {
     wrapGAppsHook4
   ];
 
-  buildInputs = [
-    glib
-    cairo
-    pango
-    atk
-    gdk-pixbuf
-    gtk4
-  ] ++ lib.optionals stdenv.isDarwin (with darwin.apple_sdk.frameworks; [ Foundation ]);
+  buildInputs =
+    [
+      glib
+      cairo
+      pango
+      atk
+      gdk-pixbuf
+      gtk4
+    ]
+    ++ lib.optionals stdenv.isDarwin (
+      with darwin.apple_sdk.frameworks;
+      [
+        Foundation
+      ]
+    );
 
   meta = with lib; {
     description = "Simple but powerful and fast bulk file renamer";

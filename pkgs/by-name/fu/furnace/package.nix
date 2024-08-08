@@ -46,10 +46,14 @@ stdenv.mkDerivation (finalAttrs: {
       --replace-fail 'libX11.so' '${lib.getLib libX11}/lib/libX11.so'
   '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ makeWrapper ];
+  nativeBuildInputs =
+    [
+      cmake
+      pkg-config
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      makeWrapper
+    ];
 
   buildInputs =
     [
@@ -62,12 +66,19 @@ stdenv.mkDerivation (finalAttrs: {
       zlib
       portaudio
     ]
-    ++ lib.optionals withJACK [ libjack2 ]
+    ++ lib.optionals withJACK [
+      libjack2
+    ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       # portaudio pkg-config is pulling this in as a link dependency, not set in propagatedBuildInputs
       alsa-lib
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin (with darwin.apple_sdk.frameworks; [ Cocoa ]);
+    ++ lib.optionals stdenv.hostPlatform.isDarwin (
+      with darwin.apple_sdk.frameworks;
+      [
+        Cocoa
+      ]
+    );
 
   cmakeFlags = [
     (lib.cmakeBool "BUILD_GUI" withGUI)

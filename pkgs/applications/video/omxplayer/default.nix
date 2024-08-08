@@ -22,7 +22,9 @@ let
 
     configurePlatforms = [ ];
     configureFlags =
-      [ "--arch=${stdenv.hostPlatform.parsed.cpu.name}" ]
+      [
+        "--arch=${stdenv.hostPlatform.parsed.cpu.name}"
+      ]
       ++ lib.optionals stdenv.hostPlatform.isAarch32 [
         # TODO be better with condition
         "--cpu=arm1176jzf-s"

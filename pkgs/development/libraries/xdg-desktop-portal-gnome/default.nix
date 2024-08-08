@@ -47,7 +47,9 @@ stdenv.mkDerivation (finalAttrs: {
     wayland # required by GTK 4
   ];
 
-  mesonFlags = [ "-Dsystemduserunitdir=${placeholder "out"}/lib/systemd/user" ];
+  mesonFlags = [
+    "-Dsystemduserunitdir=${placeholder "out"}/lib/systemd/user"
+  ];
 
   postInstall = ''
     # Pull in WebP and JXL support for gnome-backgrounds.

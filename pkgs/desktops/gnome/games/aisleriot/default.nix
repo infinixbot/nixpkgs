@@ -54,7 +54,9 @@ stdenv.mkDerivation (finalAttrs: {
     patchShebangs src/lib/meson_compileschemas.py
   '';
 
-  mesonFlags = [ "-Dtheme_kde=false" ];
+  mesonFlags = [
+    "-Dtheme_kde=false"
+  ];
 
   passthru = {
     updateScript =

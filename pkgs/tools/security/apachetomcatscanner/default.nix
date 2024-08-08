@@ -31,7 +31,9 @@ python3.pkgs.buildPythonApplication rec {
   # Project has no test
   doCheck = false;
 
-  pythonImportsCheck = [ "apachetomcatscanner" ];
+  pythonImportsCheck = [
+    "apachetomcatscanner"
+  ];
 
   meta = with lib; {
     description = "Tool to scan for Apache Tomcat server vulnerabilities";

@@ -19,7 +19,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-kehkMCYBfj0AiKZxD7EcT2F0d+gm6+TF/lhqpjFH/JI=";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   propagatedBuildInputs = [
     erlang

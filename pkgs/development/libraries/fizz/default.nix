@@ -60,7 +60,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   doCheck = true;
-  checkInputs = [ gtest ];
+  checkInputs = [
+    gtest
+  ];
   preCheck =
     let
       disabledTests = [

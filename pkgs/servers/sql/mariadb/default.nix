@@ -122,7 +122,9 @@ let
         '';
 
         patches =
-          [ ./patch/cmake-includedir.patch ]
+          [
+            ./patch/cmake-includedir.patch
+          ]
           # Fixes a build issue as documented on
           # https://jira.mariadb.org/browse/MDEV-26769?focusedCommentId=206073&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-206073
           ++ lib.optional (
@@ -223,7 +225,9 @@ let
         // {
           pname = "mariadb-client";
 
-          patches = common.patches ++ [ ./patch/cmake-plugin-includedir.patch ];
+          patches = common.patches ++ [
+            ./patch/cmake-plugin-includedir.patch
+          ];
 
           buildInputs =
             common.buildInputs
@@ -306,13 +310,21 @@ let
               "-DWITHOUT_FEDERATED=1"
               "-DWITHOUT_TOKUDB=1"
             ]
-            ++ lib.optionals withNuma [ "-DWITH_NUMA=ON" ]
-            ++ lib.optionals (!withStorageMroonga) [ "-DWITHOUT_MROONGA=1" ]
-            ++ lib.optionals (!withStorageRocks) [ "-DWITHOUT_ROCKSDB=1" ]
+            ++ lib.optionals withNuma [
+              "-DWITH_NUMA=ON"
+            ]
+            ++ lib.optionals (!withStorageMroonga) [
+              "-DWITHOUT_MROONGA=1"
+            ]
+            ++ lib.optionals (!withStorageRocks) [
+              "-DWITHOUT_ROCKSDB=1"
+            ]
             ++ lib.optionals (!stdenv.hostPlatform.isDarwin && withStorageRocks) [
               "-DWITH_ROCKSDB_JEMALLOC=ON"
             ]
-            ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ "-DWITH_JEMALLOC=yes" ]
+            ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
+              "-DWITH_JEMALLOC=yes"
+            ]
             ++ lib.optionals stdenv.hostPlatform.isDarwin [
               "-DPLUGIN_AUTH_PAM=NO"
               "-DPLUGIN_AUTH_PAM_V1=NO"

@@ -56,7 +56,9 @@ stdenv.mkDerivation (finalAttrs: {
     texlive.bin.core.dev
   ];
 
-  buildInputs = [ tex ];
+  buildInputs = [
+    tex
+  ];
 
   makeFlags =
     [
@@ -66,9 +68,13 @@ stdenv.mkDerivation (finalAttrs: {
       map (tool: "--assume-old=${tool}") buildPlatformTools
     );
 
-  nativeCheckInputs = [ texlive ];
+  nativeCheckInputs = [
+    texlive
+  ];
 
-  testFlags = [ "all1" ];
+  testFlags = [
+    "all1"
+  ];
 
   preInstall = ''
     mkdir -p $out/{bin,man/man1}

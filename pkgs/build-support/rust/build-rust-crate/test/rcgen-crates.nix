@@ -97,7 +97,9 @@ rec {
         version = "0.3.1";
         edition = "2018";
         sha256 = "0czsk1nd4dx2k83f7jzkn8klx05wbmblkx1jh51i4c170akhbzrh";
-        authors = [ "Pierre Chifflier <chifflier@wzdftpd.net>" ];
+        authors = [
+          "Pierre Chifflier <chifflier@wzdftpd.net>"
+        ];
         dependencies = [
           {
             name = "asn1-rs-derive";
@@ -164,7 +166,9 @@ rec {
         edition = "2018";
         sha256 = "1gzf9vab06lk0zjvbr07axx64fndkng2s28bnj27fnwd548pb2yv";
         procMacro = true;
-        authors = [ "Pierre Chifflier <chifflier@wzdftpd.net>" ];
+        authors = [
+          "Pierre Chifflier <chifflier@wzdftpd.net>"
+        ];
         dependencies = [
           {
             name = "proc-macro2";
@@ -191,7 +195,9 @@ rec {
         edition = "2018";
         sha256 = "1va27bn7qxqp4wanzjlkagnynv6jnrhnwmcky2ahzb1r405p6xr7";
         procMacro = true;
-        authors = [ "Pierre Chifflier <chifflier@wzdftpd.net>" ];
+        authors = [
+          "Pierre Chifflier <chifflier@wzdftpd.net>"
+        ];
         dependencies = [
           {
             name = "proc-macro2";
@@ -213,7 +219,9 @@ rec {
         version = "0.1.7";
         edition = "2015";
         sha256 = "1chwgimpx5z7xbag7krr9d8asxfqbh683qhgl9kn3hxk2l0djj8x";
-        authors = [ "Josh Stone <cuviper@gmail.com>" ];
+        authors = [
+          "Josh Stone <cuviper@gmail.com>"
+        ];
 
       };
       "autocfg 1.0.1" = rec {
@@ -221,7 +229,9 @@ rec {
         version = "1.0.1";
         edition = "2015";
         sha256 = "0jj6i9zn4gjl03kjvziqdji6rwx8ykz8zk2ngpc331z2g3fk3c6d";
-        authors = [ "Josh Stone <cuviper@gmail.com>" ];
+        authors = [
+          "Josh Stone <cuviper@gmail.com>"
+        ];
 
       };
       "base64" = rec {
@@ -246,7 +256,9 @@ rec {
         version = "1.1.1";
         edition = "2018";
         sha256 = "0p4was874qc90q2chm2i14m9mn8zmxjis8vaxihd6a2x4aqxkd76";
-        authors = [ "RustCrypto Developers" ];
+        authors = [
+          "RustCrypto Developers"
+        ];
         features = {
           "std" = [ "alloc" ];
         };
@@ -256,7 +268,9 @@ rec {
         version = "1.3.2";
         edition = "2018";
         sha256 = "12ki6w8gn1ldq7yz9y680llwk5gmrhrzszaa17g1sbrw2r2qvwxy";
-        authors = [ "The Rust Project Developers" ];
+        authors = [
+          "The Rust Project Developers"
+        ];
         features = {
           "compiler_builtins" = [ "dep:compiler_builtins" ];
           "core" = [ "dep:core" ];
@@ -272,7 +286,9 @@ rec {
         version = "0.8.1";
         edition = "2018";
         sha256 = "08bmiyn7c3b0dgx20w6hr28d9jcq7cj78cchr84pc686sb2s41ik";
-        authors = [ "Jack Lloyd <jack@randombit.net>" ];
+        authors = [
+          "Jack Lloyd <jack@randombit.net>"
+        ];
         dependencies = [
           {
             name = "botan-sys";
@@ -309,7 +325,9 @@ rec {
         version = "0.8.1";
         edition = "2015";
         sha256 = "1m11zblxfanrhl97j7z3ap7n17rr8j0rg91sr7f9j6y2bsniaz1x";
-        authors = [ "Jack Lloyd <jack@randombit.net>" ];
+        authors = [
+          "Jack Lloyd <jack@randombit.net>"
+        ];
         dependencies = [
           {
             name = "cty";
@@ -338,7 +356,9 @@ rec {
         version = "3.9.1";
         edition = "2018";
         sha256 = "1688dv6s0cbj72p9lmll8a02a85dzxvdw2is7pji490zmd35m954";
-        authors = [ "Nick Fitzgerald <fitzgen@gmail.com>" ];
+        authors = [
+          "Nick Fitzgerald <fitzgen@gmail.com>"
+        ];
         features =
           {
           };
@@ -349,7 +369,9 @@ rec {
         version = "1.4.3";
         edition = "2018";
         sha256 = "0456lv9xi1a5bcm32arknf33ikv76p3fr9yzki4lb2897p2qkh8l";
-        authors = [ "Andrew Gallant <jamslam@gmail.com>" ];
+        authors = [
+          "Andrew Gallant <jamslam@gmail.com>"
+        ];
         features = {
           "default" = [ "std" ];
         };
@@ -360,7 +382,9 @@ rec {
         edition = "2018";
         crateBin = [ ];
         sha256 = "1vl50h2qh0nh0iddzj6gd1pnxnxpvwmbfxc30578c1pajmxi7a92";
-        authors = [ "Alex Crichton <alex@alexcrichton.com>" ];
+        authors = [
+          "Alex Crichton <alex@alexcrichton.com>"
+        ];
         features = {
           "jobserver" = [ "dep:jobserver" ];
           "parallel" = [ "jobserver" ];
@@ -371,7 +395,9 @@ rec {
         version = "1.0.0";
         edition = "2018";
         sha256 = "1za0vb97n4brpzpv8lsbnzmq5r8f2b0cpqqr0sy8h5bn751xxwds";
-        authors = [ "Alex Crichton <alex@alexcrichton.com>" ];
+        authors = [
+          "Alex Crichton <alex@alexcrichton.com>"
+        ];
         features = {
           "compiler_builtins" = [ "dep:compiler_builtins" ];
           "core" = [ "dep:core" ];
@@ -386,7 +412,9 @@ rec {
         version = "0.6.2";
         edition = "2018";
         sha256 = "12vv7csqqjj0x1l5mf51lgqiw76k5c3mb1yzfhfcqysks2j2lvwx";
-        authors = [ "RustCrypto Developers" ];
+        authors = [
+          "RustCrypto Developers"
+        ];
         features =
           {
           };
@@ -396,7 +424,9 @@ rec {
         version = "0.2.11";
         edition = "2018";
         sha256 = "00qckh65nzb7s7vd60wylw6alxf9g37xh31lirb1qw0l8fxx6fzq";
-        authors = [ "RustCrypto Developers" ];
+        authors = [
+          "RustCrypto Developers"
+        ];
         dependencies = [
           {
             name = "generic-array";
@@ -434,7 +464,9 @@ rec {
         version = "0.2.2";
         edition = "2015";
         sha256 = "0d8z0pbr87wgzqqb2jk5pvj0afzc6d3rb772ach6fijhg6yglrdk";
-        authors = [ "Jorge Aparicio <jorge@japaric.io>" ];
+        authors = [
+          "Jorge Aparicio <jorge@japaric.io>"
+        ];
 
       };
       "data-encoding" = rec {
@@ -442,7 +474,9 @@ rec {
         version = "2.3.2";
         edition = "2018";
         sha256 = "0mvd8bjq5mq50fcf931cff57vwmbsvs1kpxynkzrshli98y3kqiy";
-        authors = [ "Julien Cretin <git@ia0.eu>" ];
+        authors = [
+          "Julien Cretin <git@ia0.eu>"
+        ];
         features = {
           "default" = [ "std" ];
           "std" = [ "alloc" ];
@@ -458,7 +492,9 @@ rec {
         version = "0.4.5";
         edition = "2018";
         sha256 = "1x4k0jln8va1657cghl40l6p7hyvr1ixz71v9cd6imwmgp51rdvr";
-        authors = [ "RustCrypto Developers" ];
+        authors = [
+          "RustCrypto Developers"
+        ];
         dependencies = [
           {
             name = "const-oid";
@@ -495,7 +531,9 @@ rec {
         version = "7.0.0";
         edition = "2018";
         sha256 = "10kfa2gzl3x20mwgrd43cyi79xgkqxyzcyrh0xylv4apa33qlfgy";
-        authors = [ "Pierre Chifflier <chifflier@wzdftpd.net>" ];
+        authors = [
+          "Pierre Chifflier <chifflier@wzdftpd.net>"
+        ];
         dependencies = [
           {
             name = "asn1-rs";
@@ -546,7 +584,9 @@ rec {
         version = "0.9.0";
         edition = "2018";
         sha256 = "0rmhvk33rgvd6ll71z8sng91a52rw14p0drjn1da0mqa138n1pfk";
-        authors = [ "RustCrypto Developers" ];
+        authors = [
+          "RustCrypto Developers"
+        ];
         dependencies = [
           {
             name = "generic-array";
@@ -569,7 +609,9 @@ rec {
         edition = "2018";
         sha256 = "11i8p5snlc1hs4g5q3wiyr75dn276l6kr0si5m7xmfa6y31mvy9v";
         procMacro = true;
-        authors = [ "Jane Lusby <jlusby@yaah.dev>" ];
+        authors = [
+          "Jane Lusby <jlusby@yaah.dev>"
+        ];
         dependencies = [
           {
             name = "proc-macro2";
@@ -597,7 +639,9 @@ rec {
         version = "0.3.2";
         edition = "2015";
         sha256 = "1cgk0vyd7r45cj769jym4a6s7vwshvd0z4bqrb92q1fwibmkkwzn";
-        authors = [ "Steven Fackler <sfackler@gmail.com>" ];
+        authors = [
+          "Steven Fackler <sfackler@gmail.com>"
+        ];
         dependencies = [
           {
             name = "foreign-types-shared";
@@ -611,7 +655,9 @@ rec {
         version = "0.1.1";
         edition = "2015";
         sha256 = "0jxgzd04ra4imjv8jgkmdq59kj8fsz6w4zxsbmlai34h26225c00";
-        authors = [ "Steven Fackler <sfackler@gmail.com>" ];
+        authors = [
+          "Steven Fackler <sfackler@gmail.com>"
+        ];
 
       };
       "generic-array" = rec {
@@ -645,7 +691,9 @@ rec {
         version = "0.2.4";
         edition = "2018";
         sha256 = "0k0bdr1dyf4n9fvnkx4fmwxhv4hgnyf55gj86v4m69fln743g3a1";
-        authors = [ "The Rand Project Developers" ];
+        authors = [
+          "The Rand Project Developers"
+        ];
         dependencies = [
           {
             name = "cfg-if";
@@ -686,7 +734,9 @@ rec {
         version = "1.0.1";
         edition = "2018";
         sha256 = "0d8wr2qf5b25a04xf10rz9r0pdbjdgb0zaw3xvf8k2sqcz1qzaqs";
-        authors = [ "David Tolnay <dtolnay@gmail.com>" ];
+        authors = [
+          "David Tolnay <dtolnay@gmail.com>"
+        ];
 
       };
       "js-sys" = rec {
@@ -694,7 +744,9 @@ rec {
         version = "0.3.56";
         edition = "2018";
         sha256 = "010g8jkj5avy3xd77i3cprjzzpfa6z9z2ay0fkllqmpx617c53x3";
-        authors = [ "The wasm-bindgen Developers" ];
+        authors = [
+          "The wasm-bindgen Developers"
+        ];
         dependencies = [
           {
             name = "wasm-bindgen";
@@ -708,7 +760,9 @@ rec {
         version = "1.4.0";
         edition = "2015";
         sha256 = "0in6ikhw8mgl33wjv6q6xfrb5b9jr16q8ygjy803fay4zcisvaz2";
-        authors = [ "Marvin Löbel <loebel.marvin@gmail.com>" ];
+        authors = [
+          "Marvin Löbel <loebel.marvin@gmail.com>"
+        ];
         dependencies = [
           {
             name = "spin";
@@ -730,7 +784,9 @@ rec {
         version = "0.2.116";
         edition = "2015";
         sha256 = "0x6sk17kv2fdsqxlm23bz9x1y79w90k7ylkflk44rgidhy4bspan";
-        authors = [ "The Rust Project Developers" ];
+        authors = [
+          "The Rust Project Developers"
+        ];
         features = {
           "default" = [ "std" ];
           "rustc-dep-of-std" = [
@@ -750,7 +806,9 @@ rec {
         version = "0.2.1";
         edition = "2018";
         sha256 = "0akh56sh51adhagmk9l84dyrlz60gv8ri05xhr13i1b18czkpmy7";
-        authors = [ "Jorge Aparicio <jorge@japaric.io>" ];
+        authors = [
+          "Jorge Aparicio <jorge@japaric.io>"
+        ];
         features = {
           "musl-reference-tests" = [ "rand" ];
           "rand" = [ "dep:rand" ];
@@ -762,7 +820,9 @@ rec {
         version = "0.4.14";
         edition = "2015";
         sha256 = "04175hv0v62shd82qydq58a48k3bjijmk54v38zgqlbxqkkbpfai";
-        authors = [ "The Rust Project Developers" ];
+        authors = [
+          "The Rust Project Developers"
+        ];
         dependencies = [
           {
             name = "cfg-if";
@@ -818,7 +878,9 @@ rec {
         version = "0.2.1";
         edition = "2018";
         sha256 = "16ppc5g84aijpri4jzv14rvcnslvlpphbszc7zzp6vfkddf4qdb8";
-        authors = [ "Alex Huszagh <ahuszagh@gmail.com>" ];
+        authors = [
+          "Alex Huszagh <ahuszagh@gmail.com>"
+        ];
         features = {
           "default" = [ "std" ];
         };
@@ -829,7 +891,9 @@ rec {
         version = "7.1.0";
         edition = "2018";
         sha256 = "0281jdx0xcyhjgs1jkj9pii8py1clcpazg41bgz7d71qxzhi278v";
-        authors = [ "contact@geoffroycouprie.com" ];
+        authors = [
+          "contact@geoffroycouprie.com"
+        ];
         dependencies = [
           {
             name = "memchr";
@@ -867,7 +931,9 @@ rec {
         version = "0.4.3";
         edition = "2018";
         sha256 = "0py73wsa5j4izhd39nkqzqv260r0ma08vy30ky54ld3vkhlbcfpr";
-        authors = [ "The Rust Project Developers" ];
+        authors = [
+          "The Rust Project Developers"
+        ];
         dependencies = [
           {
             name = "num-integer";
@@ -1011,7 +1077,9 @@ rec {
         version = "0.1.44";
         edition = "2015";
         sha256 = "1nq152y3304as1iai95hqz8prqnc94lks1s7q05sfjdmcf56kk6j";
-        authors = [ "The Rust Project Developers" ];
+        authors = [
+          "The Rust Project Developers"
+        ];
         dependencies = [
           {
             name = "num-traits";
@@ -1040,7 +1108,9 @@ rec {
         version = "0.1.42";
         edition = "2015";
         sha256 = "0ndd9wb9qar50fdr16xm3i1zk6h2g9br56nml2n22kd56y1iq0mj";
-        authors = [ "The Rust Project Developers" ];
+        authors = [
+          "The Rust Project Developers"
+        ];
         dependencies = [
           {
             name = "num-integer";
@@ -1076,7 +1146,9 @@ rec {
         version = "0.2.14";
         edition = "2015";
         sha256 = "144j176s2p76azy2ngk2vkdzgwdc0bc8c93jhki8c9fsbknb2r4s";
-        authors = [ "The Rust Project Developers" ];
+        authors = [
+          "The Rust Project Developers"
+        ];
         dependencies = [
           {
             name = "libm";
@@ -1106,7 +1178,9 @@ rec {
         version = "0.1.3";
         edition = "2015";
         sha256 = "05gvsnv4k6d69iksz47i7fq1r61dj1k1nh4i8xrw7qlkcfx9kflp";
-        authors = [ "Jacob Pratt <open-source@jhpratt.dev>" ];
+        authors = [
+          "Jacob Pratt <open-source@jhpratt.dev>"
+        ];
         dependencies = [
           {
             name = "libc";
@@ -1121,7 +1195,9 @@ rec {
         version = "0.4.0";
         edition = "2018";
         sha256 = "0akbah3j8231ayrp2l1y5d9zmvbvqcsj0sa6s6dz6h85z8bhgqiq";
-        authors = [ "Pierre Chifflier <chifflier@wzdftpd.net>" ];
+        authors = [
+          "Pierre Chifflier <chifflier@wzdftpd.net>"
+        ];
         dependencies = [
           {
             name = "asn1-rs";
@@ -1159,7 +1235,9 @@ rec {
         version = "1.9.0";
         edition = "2018";
         sha256 = "1mfqhrsgi368x92bwnq3vi3p5nv0n1qlrn69gfflhvkfkxfm2cns";
-        authors = [ "Aleksey Kladov <aleksey.kladov@gmail.com>" ];
+        authors = [
+          "Aleksey Kladov <aleksey.kladov@gmail.com>"
+        ];
         features = {
           "alloc" = [ "race" ];
           "atomic-polyfill" = [ "dep:atomic-polyfill" ];
@@ -1179,7 +1257,9 @@ rec {
         version = "0.10.38";
         edition = "2018";
         sha256 = "15baqlphisr1f7ddq11jnrrzz4shdh35kwal24adyc2c4cif4yhc";
-        authors = [ "Steven Fackler <sfackler@gmail.com>" ];
+        authors = [
+          "Steven Fackler <sfackler@gmail.com>"
+        ];
         dependencies = [
           {
             name = "bitflags";
@@ -1256,7 +1336,9 @@ rec {
         version = "1.0.2";
         edition = "2018";
         sha256 = "0iqrvfnm71x9pvff39d5ajwn3gc9glxlv4d4h22max7342db18z9";
-        authors = [ "Jonathan Creekmore <jonathan@thecreekmores.org>" ];
+        authors = [
+          "Jonathan Creekmore <jonathan@thecreekmores.org>"
+        ];
         dependencies = [
           {
             name = "base64";
@@ -1270,7 +1352,9 @@ rec {
         version = "0.2.4";
         edition = "2018";
         sha256 = "1m1c9jypydzabg4yscplmvff7pdcc8gg4cqg081hnlf03hxkmsc4";
-        authors = [ "RustCrypto Developers" ];
+        authors = [
+          "RustCrypto Developers"
+        ];
         dependencies = [
           {
             name = "base64ct";
@@ -1287,7 +1371,9 @@ rec {
         version = "0.2.4";
         edition = "2018";
         sha256 = "0b2f1a0lf5h53zrjvcqbxzjhh89gcfa1myhf6z7w10ypg61fwsqi";
-        authors = [ "RustCrypto Developers" ];
+        authors = [
+          "RustCrypto Developers"
+        ];
         dependencies = [
           {
             name = "der";
@@ -1335,7 +1421,9 @@ rec {
         version = "0.7.6";
         edition = "2018";
         sha256 = "0iq46p6fa2b8xy6pj52zpmdy8ya3fg31dj4rc19x1fi69nvgjgpf";
-        authors = [ "RustCrypto Developers" ];
+        authors = [
+          "RustCrypto Developers"
+        ];
         dependencies = [
           {
             name = "der";
@@ -1416,7 +1504,9 @@ rec {
         version = "0.3.24";
         edition = "2015";
         sha256 = "1ghcyjp5537r7qigmgl3dj62j01arlpddaq93a3i414v3iskz2aq";
-        authors = [ "Alex Crichton <alex@alexcrichton.com>" ];
+        authors = [
+          "Alex Crichton <alex@alexcrichton.com>"
+        ];
 
       };
       "ppv-lite86" = rec {
@@ -1424,7 +1514,9 @@ rec {
         version = "0.2.16";
         edition = "2018";
         sha256 = "0wkqwnvnfcgqlrahphl45vdlgi2f1bs7nqcsalsllp1y4dp9x7zb";
-        authors = [ "The CryptoCorrosion Contributors" ];
+        authors = [
+          "The CryptoCorrosion Contributors"
+        ];
         features = {
           "default" = [ "std" ];
         };
@@ -1461,7 +1553,9 @@ rec {
         version = "1.0.15";
         edition = "2018";
         sha256 = "0id1q0875pvhkg0mlb5z8gzdm2g2rbbz76bfzhv331lrm2b3wkc6";
-        authors = [ "David Tolnay <dtolnay@gmail.com>" ];
+        authors = [
+          "David Tolnay <dtolnay@gmail.com>"
+        ];
         dependencies = [
           {
             name = "proc-macro2";
@@ -1627,7 +1721,9 @@ rec {
         version = "0.3.1";
         edition = "2018";
         sha256 = "1rwpykyvhkxs4jvqdja3mzp9dqaqamzn113cxaigs9z2dmcry7nm";
-        authors = [ "The Rand Project Developers" ];
+        authors = [
+          "The Rand Project Developers"
+        ];
         dependencies = [
           {
             name = "rand_core";
@@ -1647,7 +1743,9 @@ rec {
           }
         ];
         sha256 = "0ppwfl9g504x2qwk7m7mag8c3l70w9mcfha93013nlzqdlw2vynp";
-        authors = [ "est31 <MTest31@outlook.com>" ];
+        authors = [
+          "est31 <MTest31@outlook.com>"
+        ];
         dependencies = [
           {
             name = "pem";
@@ -1730,7 +1828,9 @@ rec {
         version = "0.16.20";
         edition = "2018";
         sha256 = "1z682xp7v38ayq9g9nkbhhfpj6ygralmlx7wdmsfv8rnw99cylrh";
-        authors = [ "Brian Smith <brian@briansmith.org>" ];
+        authors = [
+          "Brian Smith <brian@briansmith.org>"
+        ];
         dependencies = [
           {
             name = "libc";
@@ -1969,7 +2069,9 @@ rec {
         version = "4.0.0";
         edition = "2018";
         sha256 = "03dmfxhgwzpm1360iwcpcg3y18ddgya0i0hc599am212pdvj7ib5";
-        authors = [ "Pierre Chifflier <chifflier@wzdftpd.net>" ];
+        authors = [
+          "Pierre Chifflier <chifflier@wzdftpd.net>"
+        ];
         dependencies = [
           {
             name = "nom";
@@ -1985,7 +2087,9 @@ rec {
         version = "1.8.0";
         edition = "2018";
         sha256 = "10zf4fn63p2d6sx8qap3jvyarcfw563308x3431hd4c34r35gpgj";
-        authors = [ "The Servo Project Developers" ];
+        authors = [
+          "The Servo Project Developers"
+        ];
         features = {
           "arbitrary" = [ "dep:arbitrary" ];
           "const_new" = [ "const_generics" ];
@@ -2008,7 +2112,9 @@ rec {
         version = "0.4.1";
         edition = "2018";
         sha256 = "0ckgkcg6db5y94dqhmyikgn8yrsah6pyf4j197hv1c51bp0s00aw";
-        authors = [ "RustCrypto Developers" ];
+        authors = [
+          "RustCrypto Developers"
+        ];
         dependencies = [
           {
             name = "der";
@@ -2041,7 +2147,9 @@ rec {
         version = "1.0.86";
         edition = "2018";
         sha256 = "0sqwa4nqxzm89nj8xd8sk4iz0hbrw3mb17b6hyc2w2d0zzsb6rca";
-        authors = [ "David Tolnay <dtolnay@gmail.com>" ];
+        authors = [
+          "David Tolnay <dtolnay@gmail.com>"
+        ];
         dependencies = [
           {
             name = "proc-macro2";
@@ -2093,7 +2201,9 @@ rec {
         version = "0.12.6";
         edition = "2018";
         sha256 = "03r1lydbf3japnlpc4wka7y90pmz1i0danaj3f9a7b431akdlszk";
-        authors = [ "Nika Layzell <nika@thelayzells.com>" ];
+        authors = [
+          "Nika Layzell <nika@thelayzells.com>"
+        ];
         dependencies = [
           {
             name = "proc-macro2";
@@ -2141,7 +2251,9 @@ rec {
         version = "1.0.30";
         edition = "2018";
         sha256 = "05y4wm29ck8flwq5k1q6nhwh00a3b30cz3xr0qvnbwad5vjsnjw5";
-        authors = [ "David Tolnay <dtolnay@gmail.com>" ];
+        authors = [
+          "David Tolnay <dtolnay@gmail.com>"
+        ];
         dependencies = [
           {
             name = "thiserror-impl";
@@ -2156,7 +2268,9 @@ rec {
         edition = "2018";
         sha256 = "0jviwmvx6wzawsj6c9msic7h419wmsbjagl9dzhpydkzc8zzscma";
         procMacro = true;
-        authors = [ "David Tolnay <dtolnay@gmail.com>" ];
+        authors = [
+          "David Tolnay <dtolnay@gmail.com>"
+        ];
         dependencies = [
           {
             name = "proc-macro2";
@@ -2295,7 +2409,9 @@ rec {
         edition = "2018";
         sha256 = "0jkbqaj9d3v5a91pp3wp9mffvng1nhycx6sh4qkdd9qyr62ccmm1";
         libPath = "src/untrusted.rs";
-        authors = [ "Brian Smith <brian@briansmith.org>" ];
+        authors = [
+          "Brian Smith <brian@briansmith.org>"
+        ];
 
       };
       "vcpkg" = rec {
@@ -2303,7 +2419,9 @@ rec {
         version = "0.2.15";
         edition = "2015";
         sha256 = "09i4nf5y8lig6xgj3f7fyrvzd3nlaw4znrihw8psidvv5yk4xkdc";
-        authors = [ "Jim McGrath <jimmc2@gmail.com>" ];
+        authors = [
+          "Jim McGrath <jimmc2@gmail.com>"
+        ];
 
       };
       "version_check" = rec {
@@ -2311,7 +2429,9 @@ rec {
         version = "0.9.4";
         edition = "2015";
         sha256 = "0gs8grwdlgh0xq660d7wr80x14vxbizmd8dbp29p2pdncx8lp1s9";
-        authors = [ "Sergio Benitez <sb@sergio.bz>" ];
+        authors = [
+          "Sergio Benitez <sb@sergio.bz>"
+        ];
 
       };
       "wasi" = rec {
@@ -2319,7 +2439,9 @@ rec {
         version = "0.10.2+wasi-snapshot-preview1";
         edition = "2018";
         sha256 = "1ii7nff4y1mpcrxzzvbpgxm7a1nn3szjf1n21jnx37c2g6dbsvzx";
-        authors = [ "The Cranelift Project Developers" ];
+        authors = [
+          "The Cranelift Project Developers"
+        ];
         features = {
           "compiler_builtins" = [ "dep:compiler_builtins" ];
           "core" = [ "dep:core" ];
@@ -2341,7 +2463,9 @@ rec {
         version = "0.2.79";
         edition = "2018";
         sha256 = "01kc4lj2vlf0ra2w63izrgdlv8p6f8p15086hhyqln6q4dsazw95";
-        authors = [ "The wasm-bindgen Developers" ];
+        authors = [
+          "The wasm-bindgen Developers"
+        ];
         dependencies = [
           {
             name = "cfg-if";
@@ -2382,7 +2506,9 @@ rec {
         version = "0.2.79";
         edition = "2018";
         sha256 = "1jpdrl5jj01961jxhmvj7v25ws928fyfj8ms7izifnhg0ggw08cb";
-        authors = [ "The wasm-bindgen Developers" ];
+        authors = [
+          "The wasm-bindgen Developers"
+        ];
         dependencies = [
           {
             name = "bumpalo";
@@ -2425,7 +2551,9 @@ rec {
         edition = "2018";
         sha256 = "00gdh0dlf2r77mxwh08q0z01vz2z7mvrllmj4gjjx9a0kvb06hig";
         procMacro = true;
-        authors = [ "The wasm-bindgen Developers" ];
+        authors = [
+          "The wasm-bindgen Developers"
+        ];
         dependencies = [
           {
             name = "quote";
@@ -2447,7 +2575,9 @@ rec {
         version = "0.2.79";
         edition = "2018";
         sha256 = "1g1fjqvrkrf3j20z8nxsf60cypxg9dfvpbachl2b53908q6s7a5z";
-        authors = [ "The wasm-bindgen Developers" ];
+        authors = [
+          "The wasm-bindgen Developers"
+        ];
         dependencies = [
           {
             name = "proc-macro2";
@@ -2485,7 +2615,9 @@ rec {
         version = "0.2.79";
         edition = "2018";
         sha256 = "18h67l9b9jn06iw9r2p7bh9i0brh24lilcp4f26f4f24bh1qv59x";
-        authors = [ "The wasm-bindgen Developers" ];
+        authors = [
+          "The wasm-bindgen Developers"
+        ];
 
       };
       "web-sys" = rec {
@@ -2493,7 +2625,9 @@ rec {
         version = "0.3.56";
         edition = "2018";
         sha256 = "1sxqmwq773ss5m6vz7z95fdm6bqlix0s2awsy0j5gllxy8cv6q60";
-        authors = [ "The wasm-bindgen Developers" ];
+        authors = [
+          "The wasm-bindgen Developers"
+        ];
         dependencies = [
           {
             name = "js-sys";
@@ -3958,7 +4092,9 @@ rec {
         version = "0.22.0";
         edition = "2018";
         sha256 = "1gd1gxip5kgdwmrvhj5gjxij2mgg2mavq1ych4q1h272ja0xg5gh";
-        authors = [ "Brian Smith <brian@briansmith.org>" ];
+        authors = [
+          "Brian Smith <brian@briansmith.org>"
+        ];
         dependencies = [
           {
             name = "ring";
@@ -3984,7 +4120,9 @@ rec {
         version = "0.3.9";
         edition = "2015";
         sha256 = "06gl025x418lchw1wxj64ycr7gha83m44cjr5sarhynd9xkrm0sw";
-        authors = [ "Peter Atashian <retep998@gmail.com>" ];
+        authors = [
+          "Peter Atashian <retep998@gmail.com>"
+        ];
         dependencies = [
           {
             name = "winapi-i686-pc-windows-gnu";
@@ -4010,7 +4148,9 @@ rec {
         version = "0.4.0";
         edition = "2015";
         sha256 = "1dmpa6mvcvzz16zg6d5vrfy4bxgg541wxrcip7cnshi06v38ffxc";
-        authors = [ "Peter Atashian <retep998@gmail.com>" ];
+        authors = [
+          "Peter Atashian <retep998@gmail.com>"
+        ];
 
       };
       "winapi-x86_64-pc-windows-gnu" = rec {
@@ -4018,7 +4158,9 @@ rec {
         version = "0.4.0";
         edition = "2015";
         sha256 = "0gqq64czqb64kskjryj8isp62m2sgvx25yyj3kpc2myh85w24bki";
-        authors = [ "Peter Atashian <retep998@gmail.com>" ];
+        authors = [
+          "Peter Atashian <retep998@gmail.com>"
+        ];
 
       };
       "x509-parser" = rec {
@@ -4026,7 +4168,9 @@ rec {
         version = "0.13.0";
         edition = "2018";
         sha256 = "0f3fqbv92q3a3s51md94sw3vgzs934agl4ii5a6ym364mkdlpwg5";
-        authors = [ "Pierre Chifflier <chifflier@wzdftpd.net>" ];
+        authors = [
+          "Pierre Chifflier <chifflier@wzdftpd.net>"
+        ];
         dependencies = [
           {
             name = "asn1-rs";
@@ -4096,7 +4240,9 @@ rec {
         version = "0.5.0";
         edition = "2018";
         sha256 = "0k1gk11hq4rwlppv9f50bz8bnmgr73r66idpp7rybly96si38v9l";
-        authors = [ "Masaki Hara <ackie.h.gmai@gmail.com>" ];
+        authors = [
+          "Masaki Hara <ackie.h.gmai@gmail.com>"
+        ];
         dependencies = [
           {
             name = "time";
@@ -4122,7 +4268,9 @@ rec {
         version = "1.4.3";
         edition = "2018";
         sha256 = "068nvl3n5hk6lfn5y24grf2c7anzzqfzjjccscq3md7rqp79v3fn";
-        authors = [ "The RustCrypto Project Developers" ];
+        authors = [
+          "The RustCrypto Project Developers"
+        ];
         dependencies = [
           {
             name = "zeroize_derive";
@@ -4146,7 +4294,9 @@ rec {
         edition = "2018";
         sha256 = "1nzdqyryjnqcrqz0vhddpkd8sybhn0bd8rbd6l33rdhhxwzz3s41";
         procMacro = true;
-        authors = [ "The RustCrypto Project Developers" ];
+        authors = [
+          "The RustCrypto Project Developers"
+        ];
         dependencies = [
           {
             name = "proc-macro2";

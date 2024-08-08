@@ -33,7 +33,9 @@ buildPythonPackage rec {
     sed -i '/"ruff>=/d' pyproject.toml
   '';
 
-  build-system = [ hatchling ];
+  build-system = [
+    hatchling
+  ];
 
   dependencies = [
     packaging

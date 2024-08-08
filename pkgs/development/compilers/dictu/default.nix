@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     sqlite
   ] ++ lib.optional httpSupport curl ++ lib.optional linenoiseSupport linenoise;
 
-  patches = [ ./0001-force-sqlite-to-be-found.patch ];
+  patches = [
+    ./0001-force-sqlite-to-be-found.patch
+  ];
 
   postPatch = lib.optionalString (!enableLTO) ''
     sed -i src/CMakeLists.txt \

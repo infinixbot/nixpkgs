@@ -40,7 +40,9 @@ stdenv.mkDerivation rec {
       --replace '/usr/' "/"
   '';
 
-  qmakeFlags = [ "CONFIG+=release" ];
+  qmakeFlags = [
+    "CONFIG+=release"
+  ];
 
   installFlags = [ "INSTALL_ROOT=$(out)" ];
 

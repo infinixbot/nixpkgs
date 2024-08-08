@@ -25,10 +25,18 @@ stdenv.mkDerivation (finalAttrs: {
   version = "5.7.1";
 
   outputs =
-    [ "out" ]
-    ++ lib.optionals buildTests [ "test" ]
-    ++ lib.optionals buildBenchmarks [ "benchmark" ]
-    ++ lib.optionals buildSamples [ "sample" ];
+    [
+      "out"
+    ]
+    ++ lib.optionals buildTests [
+      "test"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "benchmark"
+    ]
+    ++ lib.optionals buildSamples [
+      "sample"
+    ];
 
   src = fetchFromGitHub {
     owner = "ROCm";
@@ -46,7 +54,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    [ rocfft ]
+    [
+      rocfft
+    ]
     ++ lib.optionals (buildTests || buildBenchmarks || buildSamples) [
       gtest
       boost
@@ -68,10 +78,18 @@ stdenv.mkDerivation (finalAttrs: {
       "-DCMAKE_INSTALL_LIBDIR=lib"
       "-DCMAKE_INSTALL_INCLUDEDIR=include"
     ]
-    ++ lib.optionals (gpuTargets != [ ]) [ "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}" ]
-    ++ lib.optionals buildTests [ "-DBUILD_CLIENTS_TESTS=ON" ]
-    ++ lib.optionals buildBenchmarks [ "-DBUILD_CLIENTS_RIDER=ON" ]
-    ++ lib.optionals buildSamples [ "-DBUILD_CLIENTS_SAMPLES=ON" ];
+    ++ lib.optionals (gpuTargets != [ ]) [
+      "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
+    ]
+    ++ lib.optionals buildTests [
+      "-DBUILD_CLIENTS_TESTS=ON"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "-DBUILD_CLIENTS_RIDER=ON"
+    ]
+    ++ lib.optionals buildSamples [
+      "-DBUILD_CLIENTS_SAMPLES=ON"
+    ];
 
   postInstall =
     lib.optionalString buildTests ''

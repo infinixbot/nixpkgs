@@ -36,7 +36,9 @@ stdenv.mkDerivation rec {
     wayland-protocols
   ];
 
-  mesonFlags = [ "-Dfishcompletiondir=share/fish/vendor_completions.d" ];
+  mesonFlags = [
+    "-Dfishcompletiondir=share/fish/vendor_completions.d"
+  ];
 
   # Fix for https://github.com/NixOS/nixpkgs/issues/251261
   postInstall = lib.optionalString (!xdg-utils.meta.broken) ''

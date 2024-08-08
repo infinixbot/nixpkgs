@@ -38,7 +38,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     meson
@@ -47,7 +49,9 @@ stdenv.mkDerivation (finalAttrs: {
     wayland-scanner
   ];
 
-  mesonFlags = [ (lib.mesonOption "version" finalAttrs.version) ];
+  mesonFlags = [
+    (lib.mesonOption "version" finalAttrs.version)
+  ];
 
   buildInputs = [
     bash-completion

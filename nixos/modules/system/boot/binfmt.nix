@@ -387,7 +387,9 @@ in
     systemd = lib.mkMerge [
       ({
         tmpfiles.rules =
-          [ "d /run/binfmt 0755 -" ]
+          [
+            "d /run/binfmt 0755 -"
+          ]
           ++ lib.mapAttrsToList (name: interpreter: "L+ /run/binfmt/${name} - - - - ${interpreter}") (
             lib.mapAttrs mkInterpreter config.boot.binfmt.registrations
           );

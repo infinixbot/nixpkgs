@@ -24,16 +24,22 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-m9iIF8h6V3wWLUQuPntXtRAh16RrmR3uqZZIljGCY08=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [
-    libkrb5
-    openssl
-    postgresql
-    readline
-    sqlite
-    zlib
-  ] ++ lib.optionals stdenv.isLinux [ pam ];
+  buildInputs =
+    [
+      libkrb5
+      openssl
+      postgresql
+      readline
+      sqlite
+      zlib
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      pam
+    ];
 
   hardeningDisable = [ "format" ];
 

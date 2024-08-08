@@ -20,13 +20,17 @@ buildPythonPackage rec {
     hash = "sha256-klIqyX04w1xYmYtAbLF5jwpcJ83oKOaENboxyCL70EY=";
   };
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
   nativeCheckInputs = [
     pytestCheckHook
     scipy
   ];
 
-  propagatedBuildInputs = [ numpy ];
+  propagatedBuildInputs = [
+    numpy
+  ];
 
   pythonImportsCheck = [ "rowan" ];
 

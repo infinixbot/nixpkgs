@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     pyunbound
   ];
 
-  buildInputs = [ python3.pkgs.wrapPython ];
+  buildInputs = [
+    python3.pkgs.wrapPython
+  ];
 
   propagatedBuildInputs = [
     unbound

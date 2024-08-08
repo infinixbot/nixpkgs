@@ -25,7 +25,9 @@ buildPythonApplication rec {
     })
   ];
 
-  propagatedBuildInputs = [ requests ];
+  propagatedBuildInputs = [
+    requests
+  ];
 
   # No tests implemented
   doCheck = false;

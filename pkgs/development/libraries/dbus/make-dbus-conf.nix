@@ -25,7 +25,9 @@ runCommand "dbus-1"
       findXMLCatalogs
     ];
 
-    buildInputs = [ dbus.out ];
+    buildInputs = [
+      dbus.out
+    ];
   }
   ''
     mkdir -p $out

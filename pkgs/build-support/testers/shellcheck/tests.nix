@@ -18,7 +18,9 @@ lib.recurseIntoAttrs {
           testers.shellcheck {
             src = fileset.toSource {
               root = ./.;
-              fileset = fileset.unions [ ./example.sh ];
+              fileset = fileset.unions [
+                ./example.sh
+              ];
             };
           }
         );

@@ -46,23 +46,33 @@ stdenv.mkDerivation (finalAttrs: {
       libxml2.dev
       libxcrypt
     ]
-    ++ lib.optionals stdenv.isDarwin [ gettext ]
+    ++ lib.optionals stdenv.isDarwin [
+      gettext
+    ]
     ++ lib.optionals pythonSupport [
       libxml2.py
       python
       ncurses
     ]
-    ++ lib.optionals cryptoSupport [ libgcrypt ];
+    ++ lib.optionals cryptoSupport [
+      libgcrypt
+    ];
 
-  propagatedBuildInputs = [ findXMLCatalogs ];
+  propagatedBuildInputs = [
+    findXMLCatalogs
+  ];
 
-  configureFlags = [
-    "--without-debug"
-    "--without-mem-debug"
-    "--without-debugger"
-    (lib.withFeature pythonSupport "python")
-    (lib.optionalString pythonSupport "PYTHON=${python.pythonOnBuildForHost.interpreter}")
-  ] ++ lib.optionals (!cryptoSupport) [ "--without-crypto" ];
+  configureFlags =
+    [
+      "--without-debug"
+      "--without-mem-debug"
+      "--without-debugger"
+      (lib.withFeature pythonSupport "python")
+      (lib.optionalString pythonSupport "PYTHON=${python.pythonOnBuildForHost.interpreter}")
+    ]
+    ++ lib.optionals (!cryptoSupport) [
+      "--without-crypto"
+    ];
 
   enableParallelBuilding = true;
 

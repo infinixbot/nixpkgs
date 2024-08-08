@@ -112,7 +112,9 @@ stdenv.mkDerivation rec {
     ]
     ++ (
       if singlePrec then
-        [ "-DGMX_DOUBLE=OFF" ]
+        [
+          "-DGMX_DOUBLE=OFF"
+        ]
       else
         [
           "-DGMX_DOUBLE=ON"
@@ -126,7 +128,9 @@ stdenv.mkDerivation rec {
           "-DGMX_THREAD_MPI:BOOL=FALSE"
         ]
       else
-        [ "-DGMX_MPI:BOOL=FALSE" ]
+        [
+          "-DGMX_MPI:BOOL=FALSE"
+        ]
     )
     ++ lib.optionals enableCuda [
       "-DGMX_GPU=CUDA"

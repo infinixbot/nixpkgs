@@ -29,7 +29,9 @@ stdenvNoCC.mkDerivation rec {
     ubuntu-themes # provides ubuntu-mono-dark
   ];
 
-  nativeBuildInputs = [ gtk3 ];
+  nativeBuildInputs = [
+    gtk3
+  ];
 
   dontDropIconThemeCache = true;
 

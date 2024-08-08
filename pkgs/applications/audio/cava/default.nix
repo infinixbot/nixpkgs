@@ -40,7 +40,9 @@ stdenv.mkDerivation rec {
       SDL2
       libGL
     ]
-    ++ lib.optionals withPipewire [ pipewire ];
+    ++ lib.optionals withPipewire [
+      pipewire
+    ];
 
   nativeBuildInputs = [
     autoreconfHook

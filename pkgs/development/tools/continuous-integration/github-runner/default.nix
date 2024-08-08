@@ -115,10 +115,14 @@ buildDotnetModule rec {
       src/dir.proj
   '';
 
-  nativeBuildInputs = [
-    which
-    git
-  ] ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [ autoSignDarwinBinariesHook ];
+  nativeBuildInputs =
+    [
+      which
+      git
+    ]
+    ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [
+      autoSignDarwinBinariesHook
+    ];
 
   buildInputs = [ stdenv.cc.cc.lib ];
 

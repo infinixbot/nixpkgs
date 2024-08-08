@@ -36,21 +36,27 @@ stdenv.mkDerivation (finalAttrs: {
     cmake
     wrapQtAppsHook
   ];
-  buildInputs = [
-    SDL2
-    frei0r
-    ladspaPlugins
-    gettext
-    mlt
-    fftw
-    qtbase
-    qttools
-    qtmultimedia
-    qtcharts
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Cocoa ];
+  buildInputs =
+    [
+      SDL2
+      frei0r
+      ladspaPlugins
+      gettext
+      mlt
+      fftw
+      qtbase
+      qttools
+      qtmultimedia
+      qtcharts
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      Cocoa
+    ];
 
   env.NIX_CFLAGS_COMPILE = "-DSHOTCUT_NOUPGRADE";
-  cmakeFlags = [ "-DSHOTCUT_VERSION=${finalAttrs.version}" ];
+  cmakeFlags = [
+    "-DSHOTCUT_VERSION=${finalAttrs.version}"
+  ];
 
   patches = [
     (substituteAll {

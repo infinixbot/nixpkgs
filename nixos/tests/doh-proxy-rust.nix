@@ -24,7 +24,9 @@ import ./make-test-python.nix (
           };
           services.doh-proxy-rust = {
             enable = true;
-            flags = [ "--server-address=127.0.0.1:53" ];
+            flags = [
+              "--server-address=127.0.0.1:53"
+            ];
           };
         };
     };

@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-GnFlvZCEzSCcBVLjFWLe+AKXVA6UMs/gycrOJ2TBqrE=";
   };
 
-  cmakeFlags = [ "-DHMAT_GIT_VERSION=OFF" ];
+  cmakeFlags = [
+    "-DHMAT_GIT_VERSION=OFF"
+  ];
 
   nativeBuildInputs = [ cmake ];
   buildInputs = [

@@ -45,7 +45,9 @@ stdenv.mkDerivation rec {
     docbook_xml_dtd_43
   ];
 
-  propagatedBuildInputs = [ glib ];
+  propagatedBuildInputs = [
+    glib
+  ];
 
   mesonFlags = [
     "-Dinstalled_tests=true"

@@ -29,18 +29,31 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-kqVZeCTp+Z6BtB6nzkwmtkJ4wtmjlSQBg05lD02cVvQ=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  cmakeFlags = [ "-DWITH_SYSTEMD=${if withSystemd then "ON" else "OFF"}" ];
+  cmakeFlags = [
+    "-DWITH_SYSTEMD=${if withSystemd then "ON" else "OFF"}"
+  ];
 
-  buildInputs = [
-    libjpeg
-    openssl
-    libgcrypt
-    libpng
-  ] ++ lib.optionals withSystemd [ systemd ] ++ lib.optionals stdenv.isDarwin [ Carbon ];
+  buildInputs =
+    [
+      libjpeg
+      openssl
+      libgcrypt
+      libpng
+    ]
+    ++ lib.optionals withSystemd [
+      systemd
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Carbon
+    ];
 
-  propagatedBuildInputs = [ zlib ];
+  propagatedBuildInputs = [
+    zlib
+  ];
 
   meta = with lib; {
     description = "VNC server library";

@@ -20,7 +20,9 @@ buildGoModule rec {
 
   subPackages = [ "." ];
 
-  patches = [ ./staticfiles-directory.patch ];
+  patches = [
+    ./staticfiles-directory.patch
+  ];
 
   meta = with lib; {
     description = "Tool to manage network booting of machines";

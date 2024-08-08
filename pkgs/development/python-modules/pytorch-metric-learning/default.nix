@@ -39,7 +39,9 @@ buildPythonPackage rec {
     hash = "sha256-1y7VCnzgwFOMeMloVdYyszNhf/zZlBJUjuF4qgA5c0A=";
   };
 
-  build-system = [ setuptools ];
+  build-system = [
+    setuptools
+  ];
 
   dependencies = [
     numpy

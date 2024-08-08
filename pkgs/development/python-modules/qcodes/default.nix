@@ -133,7 +133,9 @@ buildPythonPackage rec {
       opencensus
       opencensus-ext-azure
     ];
-    refactor = [ libcst ];
+    refactor = [
+      libcst
+    ];
     zurichinstruments = [
       # zhinst-qcodes
     ];

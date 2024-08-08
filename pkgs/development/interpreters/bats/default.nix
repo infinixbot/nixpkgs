@@ -138,9 +138,13 @@ resholve.mkDerivation rec {
     symlinkJoin {
       name = "bats-with-libraries-${bats.version}";
 
-      paths = [ bats ] ++ selector bats.libraries;
+      paths = [
+        bats
+      ] ++ selector bats.libraries;
 
-      nativeBuildInputs = [ makeWrapper ];
+      nativeBuildInputs = [
+        makeWrapper
+      ];
 
       postBuild = ''
         wrapProgram "$out/bin/bats" \

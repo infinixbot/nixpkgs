@@ -44,9 +44,14 @@ localPython.pkgs.buildPythonApplication rec {
     substituteInPlace setup.py --replace "scripts=['bin/eb']," ""
   '';
 
-  nativeBuildInputs = with localPython.pkgs; [ ];
+  nativeBuildInputs =
+    with localPython.pkgs;
+    [
+    ];
 
-  buildInputs = [ glibcLocales ];
+  buildInputs = [
+    glibcLocales
+  ];
 
   propagatedBuildInputs = with localPython.pkgs; [
     blessed
@@ -80,7 +85,9 @@ localPython.pkgs.buildPythonApplication rec {
     git
   ];
 
-  pytestFlagsArray = [ "tests/unit" ];
+  pytestFlagsArray = [
+    "tests/unit"
+  ];
 
   disabledTests = [
     # Needs docker installed to run.

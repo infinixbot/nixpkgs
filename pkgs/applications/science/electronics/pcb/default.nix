@@ -56,7 +56,9 @@ stdenv.mkDerivation rec {
     xorg.libXmu
   ];
 
-  configureFlags = [ "--disable-update-desktop-database" ];
+  configureFlags = [
+    "--disable-update-desktop-database"
+  ];
 
   meta = with lib; {
     description = "Printed Circuit Board editor";

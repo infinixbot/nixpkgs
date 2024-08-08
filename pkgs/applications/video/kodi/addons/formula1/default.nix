@@ -17,7 +17,9 @@ buildKodiAddon rec {
     sha256 = "sha256-aClAgkJKvixeKzrwgEsfDhPXiFv9+ULLmb8c9QTaUgM=";
   };
 
-  propagatedBuildInputs = [ requests ];
+  propagatedBuildInputs = [
+    requests
+  ];
 
   passthru = {
     updateScript = addonUpdateScript {

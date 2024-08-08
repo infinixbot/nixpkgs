@@ -36,7 +36,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-gXLWHkT+h/wvmmi7PyIx16gbeYznVOT7CwuBgF3bjOY=";
   };
 
-  patches = [ ./installed-tests-path.patch ];
+  patches = [
+    ./installed-tests-path.patch
+  ];
 
   nativeBuildInputs = [
     docbook_xml_dtd_43

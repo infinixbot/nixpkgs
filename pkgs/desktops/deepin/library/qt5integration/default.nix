@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
     gtest
   ];
 
-  cmakeFlags = [ "-DPLUGIN_INSTALL_BASE_DIR=${placeholder "out"}/${qtbase.qtPluginPrefix}" ];
+  cmakeFlags = [
+    "-DPLUGIN_INSTALL_BASE_DIR=${placeholder "out"}/${qtbase.qtPluginPrefix}"
+  ];
 
   dontWrapQtApps = true;
 

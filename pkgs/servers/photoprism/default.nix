@@ -57,7 +57,9 @@ in
 stdenv.mkDerivation {
   inherit pname version;
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   dontUnpack = true;
   dontBuild = true;

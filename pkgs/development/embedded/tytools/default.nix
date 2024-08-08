@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     pkg-config
     wrapQtAppsHook
   ];
-  buildInputs = [ qtbase ];
+  buildInputs = [
+    qtbase
+  ];
 
   meta = with lib; {
     description = "Collection of tools to manage Teensy boards";

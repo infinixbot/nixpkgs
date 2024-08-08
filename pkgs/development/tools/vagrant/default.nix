@@ -91,7 +91,9 @@ buildRubyGem rec {
     let
       pathAdditions = lib.makeSearchPath "bin" (
         map (x: lib.getBin x) (
-          [ libarchive ]
+          [
+            libarchive
+          ]
           ++ lib.optionals withLibvirt [
             libguestfs
             qemu

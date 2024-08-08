@@ -32,7 +32,9 @@ python3Packages.buildPythonApplication rec {
 
   # - test_borgmatic_version_matches_news_version
   # The file NEWS not available on the pypi source, and this test is useless
-  disabledTests = [ "test_borgmatic_version_matches_news_version" ];
+  disabledTests = [
+    "test_borgmatic_version_matches_news_version"
+  ];
 
   nativeBuildInputs = [ installShellFiles ];
 

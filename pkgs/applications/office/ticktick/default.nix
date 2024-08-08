@@ -40,7 +40,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   # Needed to make the process get past zygote_linux fork()'ing
-  runtimeDependencies = [ systemd ];
+  runtimeDependencies = [
+    systemd
+  ];
 
   unpackPhase = ''
     runHook preUnpack

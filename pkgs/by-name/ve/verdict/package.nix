@@ -17,9 +17,13 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-VrjyAMou5BajOIb13RjEqVgOsDcllfzI/OJ81fyILjs=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  nativeCheckInputs = [ gtest ];
+  nativeCheckInputs = [
+    gtest
+  ];
 
   doCheck = true;
 

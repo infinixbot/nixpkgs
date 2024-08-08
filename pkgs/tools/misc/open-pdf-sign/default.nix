@@ -16,7 +16,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-jtaEystCiZUK93HkVPuWzAUISO4RMMxjMmFbooWZJGU=";
   };
 
-  nativeBuildInputs = [ makeBinaryWrapper ];
+  nativeBuildInputs = [
+    makeBinaryWrapper
+  ];
 
   buildCommand = ''
     install -Dm644 $src $out/lib/open-pdf-sign.jar

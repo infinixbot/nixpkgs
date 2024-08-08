@@ -30,9 +30,13 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  nativeBuildInputs = lib.optionals stdenv.isDarwin [ cctools ];
+  nativeBuildInputs = lib.optionals stdenv.isDarwin [
+    cctools
+  ];
 
-  buildInputs = [ openssl ];
+  buildInputs = [
+    openssl
+  ];
 
   makeFlags = [
     "PREFIX=${placeholder "out"}"

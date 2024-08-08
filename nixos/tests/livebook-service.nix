@@ -7,7 +7,9 @@ import ./make-test-python.nix (
       machine =
         { config, pkgs, ... }:
         {
-          imports = [ ./common/user-account.nix ];
+          imports = [
+            ./common/user-account.nix
+          ];
 
           services.livebook = {
             enableUserService = true;

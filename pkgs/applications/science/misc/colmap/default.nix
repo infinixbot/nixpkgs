@@ -71,10 +71,14 @@ stdenv'.mkDerivation rec {
       cudaPackages.cuda_cudart.static
     ];
 
-  nativeBuildInputs = [
-    cmake
-    qt5.wrapQtAppsHook
-  ] ++ lib.optionals cudaSupport [ autoAddDriverRunpath ];
+  nativeBuildInputs =
+    [
+      cmake
+      qt5.wrapQtAppsHook
+    ]
+    ++ lib.optionals cudaSupport [
+      autoAddDriverRunpath
+    ];
 
   meta = with lib; {
     description = "COLMAP - Structure-From-Motion and Multi-View Stereo pipeline";

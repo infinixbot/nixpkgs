@@ -25,7 +25,9 @@ mkDerivation {
     hash = "sha256-L0ZEyovnfMzM7JuITBuhb4tJ2Aqgw52IiKEfEGq7Yo0=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = [
     csxcad

@@ -57,7 +57,9 @@ mkDerivation rec {
     substituteInPlace "$out/share/applications/barrier.desktop" --replace "Exec=barrier" "Exec=$out/bin/barrier"
   '';
 
-  qtWrapperArgs = [ ''--prefix PATH : ${lib.makeBinPath [ openssl ]}'' ];
+  qtWrapperArgs = [
+    ''--prefix PATH : ${lib.makeBinPath [ openssl ]}''
+  ];
 
   meta = {
     description = "Open-source KVM software";

@@ -14,7 +14,9 @@ buildOctavePackage rec {
     sha256 = "sha256-ubh/iOZlWTOYsTA6hJfPOituNBKTn2LbBnx+tmmSEug=";
   };
 
-  nativeBuildInputs = [ gfortran ];
+  nativeBuildInputs = [
+    gfortran
+  ];
 
   meta = with lib; {
     homepage = "https://octave.sourceforge.io/optiminterp/index.html";

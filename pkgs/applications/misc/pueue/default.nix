@@ -22,9 +22,13 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-sTpxcJs5I7LzVw56ka5PlFixJSiJeCae9serS0FhmuA=";
 
-  nativeBuildInputs = [
-    installShellFiles
-  ] ++ lib.optionals stdenv.isDarwin [ rustPlatform.bindgenHook ];
+  nativeBuildInputs =
+    [
+      installShellFiles
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      rustPlatform.bindgenHook
+    ];
 
   buildInputs = lib.optionals stdenv.isDarwin [
     Libsystem

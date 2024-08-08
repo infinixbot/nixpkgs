@@ -24,7 +24,9 @@ let
       hash = "sha256-uFA1JRR05cNcUGaJj9IyGNONB2hU9IOBPzOj/HucNH4=";
     };
 
-    nativeBuildInputs = [ cmake ];
+    nativeBuildInputs = [
+      cmake
+    ];
 
     cmakeFlags = [
       "-DBLAS_LIBRARIES=${blas}/lib"
@@ -74,7 +76,9 @@ stdenv.mkDerivation (finalAttrs: {
       --replace '"rU"' '"r"'
   '';
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs =
     [

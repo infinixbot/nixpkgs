@@ -36,7 +36,9 @@ stdenv.mkDerivation (
 
     setupHooks =
       args.setupHooks or [ ]
-      ++ [ ./dotnet-setup-hook.sh ]
+      ++ [
+        ./dotnet-setup-hook.sh
+      ]
       ++ lib.optional (type == "sdk") (substituteAll {
         src = ./dotnet-sdk-setup-hook.sh;
         inherit lndir;
@@ -207,7 +209,9 @@ stdenv.mkDerivation (
               template = "console";
               usePackageSource = true;
               buildInputs =
-                [ zlib ]
+                [
+                  zlib
+                ]
                 ++ lib.optional stdenv.isDarwin (
                   with darwin;
                   with apple_sdk.frameworks;

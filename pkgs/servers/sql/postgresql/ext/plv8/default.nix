@@ -32,7 +32,9 @@ stdenv.mkDerivation (finalAttrs: {
     ./0001-build-Allow-using-V8-from-system.patch
   ];
 
-  nativeBuildInputs = [ perl ];
+  nativeBuildInputs = [
+    perl
+  ];
 
   buildInputs = [
     libv8
@@ -71,7 +73,9 @@ stdenv.mkDerivation (finalAttrs: {
   passthru = {
     tests =
       let
-        postgresqlWithSelf = postgresql.withPackages (_: [ finalAttrs.finalPackage ]);
+        postgresqlWithSelf = postgresql.withPackages (_: [
+          finalAttrs.finalPackage
+        ]);
       in
       {
         smoke = runCommand "plv8-smoke-test" { } ''

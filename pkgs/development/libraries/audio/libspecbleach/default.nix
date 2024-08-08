@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     ninja
     pkg-config
   ];
-  buildInputs = [ fftwFloat ];
+  buildInputs = [
+    fftwFloat
+  ];
 
   meta = with lib; {
     description = "C library for audio noise reduction";

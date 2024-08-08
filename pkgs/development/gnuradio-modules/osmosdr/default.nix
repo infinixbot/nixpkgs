@@ -72,8 +72,12 @@ mkDerivation {
       rtl-sdr
       soapysdr-with-plugins
     ]
-    ++ lib.optionals (gnuradio.hasFeature "gr-blocks") [ libsndfile ]
-    ++ lib.optionals (gnuradio.hasFeature "gr-uhd") [ uhd ]
+    ++ lib.optionals (gnuradio.hasFeature "gr-blocks") [
+      libsndfile
+    ]
+    ++ lib.optionals (gnuradio.hasFeature "gr-uhd") [
+      uhd
+    ]
     ++ lib.optionals (gnuradio.hasFeature "gr-ctrlport") [
       thrift
       python.pkgs.thrift

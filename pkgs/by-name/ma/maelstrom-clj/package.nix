@@ -33,7 +33,9 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   runtimeDependencies = [
     git

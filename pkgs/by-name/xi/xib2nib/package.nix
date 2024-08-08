@@ -24,7 +24,9 @@ stdenv.mkDerivation {
     pugixml
   ];
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
 
   meta = with lib; {
     maintainers = with maintainers; [ matthewbauer ];

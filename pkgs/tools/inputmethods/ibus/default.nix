@@ -137,7 +137,9 @@ stdenv.mkDerivation rec {
     gobject-introspection
   ];
 
-  propagatedBuildInputs = [ glib ];
+  propagatedBuildInputs = [
+    glib
+  ];
 
   buildInputs =
     [

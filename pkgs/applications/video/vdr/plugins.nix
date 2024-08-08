@@ -111,7 +111,9 @@ in
       "REGEXLIB=pcre"
     ];
 
-    installFlags = [ "DESTDIR=$(out)" ];
+    installFlags = [
+      "DESTDIR=$(out)"
+    ];
 
     outputs = [
       "out"

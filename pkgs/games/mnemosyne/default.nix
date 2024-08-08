@@ -45,7 +45,9 @@ python.pkgs.buildPythonApplication rec {
 
   dontWrapQtApps = true;
 
-  makeWrapperArgs = [ "\${qtWrapperArgs[@]}" ];
+  makeWrapperArgs = [
+    "\${qtWrapperArgs[@]}"
+  ];
 
   meta = {
     homepage = "https://mnemosyne-proj.org/";

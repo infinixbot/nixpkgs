@@ -16,9 +16,13 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-2juP2SuCfY4z2J27BlodrsP+29BjGxKDIDOW0mmwCPY=";
   };
 
-  pythonRelaxDeps = [ "impacket" ];
+  pythonRelaxDeps = [
+    "impacket"
+  ];
 
-  nativeBuildInputs = with python3.pkgs; [ poetry-core ];
+  nativeBuildInputs = with python3.pkgs; [
+    poetry-core
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     chardet
@@ -31,7 +35,9 @@ python3.pkgs.buildPythonApplication rec {
   # Project has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "hekatomb" ];
+  pythonImportsCheck = [
+    "hekatomb"
+  ];
 
   meta = with lib; {
     description = "Tool to connect to LDAP directory to retrieve informations";

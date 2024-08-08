@@ -53,7 +53,8 @@ stdenv.mkDerivation rec {
   '';
 
   cmakeFlags =
-    [ ]
+    [
+    ]
     ++ lib.optional enableCfp "-DBUILD_CFP=ON"
     ++ lib.optional enableCuda "-DZFP_WITH_CUDA=ON"
     ++ lib.optional enableFortran "-DBUILD_ZFORP=ON"

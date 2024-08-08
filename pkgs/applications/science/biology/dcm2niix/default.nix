@@ -53,12 +53,16 @@ stdenv.mkDerivation (finalAttrs: {
       "-DBATCH_VERSION=ON"
       "-DYAML-CPP_DIR=${yaml-cpp}/lib/cmake/yaml-cpp"
     ]
-    ++ lib.optionals withJpegLs [ "-DUSE_JPEGLS=ON" ]
+    ++ lib.optionals withJpegLs [
+      "-DUSE_JPEGLS=ON"
+    ]
     ++ lib.optionals withOpenJpeg [
       "-DUSE_OPENJPEG=ON"
       "-DOpenJPEG_DIR=${openjpeg}/lib/${openjpeg.pname}-${lib.versions.majorMinor openjpeg.version}"
     ]
-    ++ lib.optionals withCloudflareZlib [ "-DZLIB_IMPLEMENTATION=Cloudflare" ];
+    ++ lib.optionals withCloudflareZlib [
+      "-DZLIB_IMPLEMENTATION=Cloudflare"
+    ];
 
   meta = {
     description = "DICOM to NIfTI converter";

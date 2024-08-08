@@ -62,7 +62,9 @@ stdenv.mkDerivation (finalAttrs: {
   dontAddPrefix = true;
   dontDisableStatic = true;
 
-  installFlags = [ "PREFIX=${placeholder "out"}" ];
+  installFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   passthru.tests.test = nixosTests.terminal-emulators.ctx;
 

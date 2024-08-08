@@ -37,7 +37,9 @@ stdenv.mkDerivation {
   hardeningDisable = [ "format" ];
 
   strictDeps = true;
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
   nativeBuildInputs = [
     pkg-config
     asciidoc

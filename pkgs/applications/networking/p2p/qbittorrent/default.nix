@@ -56,21 +56,35 @@ stdenv.mkDerivation rec {
       qtsvg
       qttools
     ]
-    ++ lib.optionals stdenv.isDarwin [ Cocoa ]
-    ++ lib.optionals guiSupport [ dbus ]
-    ++ lib.optionals (guiSupport && stdenv.isLinux) [ qtwayland ]
-    ++ lib.optionals trackerSearch [ python3 ];
+    ++ lib.optionals stdenv.isDarwin [
+      Cocoa
+    ]
+    ++ lib.optionals guiSupport [
+      dbus
+    ]
+    ++ lib.optionals (guiSupport && stdenv.isLinux) [
+      qtwayland
+    ]
+    ++ lib.optionals trackerSearch [
+      python3
+    ];
 
   cmakeFlags =
-    lib.optionals (qtVersion == "6") [ "-DQT6=ON" ]
+    lib.optionals (qtVersion == "6") [
+      "-DQT6=ON"
+    ]
     ++ lib.optionals (!guiSupport) [
       "-DGUI=OFF"
       "-DSYSTEMD=ON"
       "-DSYSTEMD_SERVICES_INSTALL_DIR=${placeholder "out"}/lib/systemd/system"
     ]
-    ++ lib.optionals (!webuiSupport) [ "-DWEBUI=OFF" ];
+    ++ lib.optionals (!webuiSupport) [
+      "-DWEBUI=OFF"
+    ];
 
-  qtWrapperArgs = lib.optionals trackerSearch [ "--prefix PATH : ${lib.makeBinPath [ python3 ]}" ];
+  qtWrapperArgs = lib.optionals trackerSearch [
+    "--prefix PATH : ${lib.makeBinPath [ python3 ]}"
+  ];
 
   dontWrapGApps = true;
 

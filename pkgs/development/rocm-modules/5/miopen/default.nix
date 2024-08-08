@@ -125,7 +125,16 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  outputs = [ "out" ] ++ lib.optionals buildDocs [ "doc" ] ++ lib.optionals buildTests [ "test" ];
+  outputs =
+    [
+      "out"
+    ]
+    ++ lib.optionals buildDocs [
+      "doc"
+    ]
+    ++ lib.optionals buildTests [
+      "test"
+    ];
 
   nativeBuildInputs = [
     pkg-config
@@ -179,7 +188,9 @@ stdenv.mkDerivation (finalAttrs: {
       "-DCMAKE_CXX_COMPILER=hipcc"
       "-DMIOPEN_BACKEND=HIP"
     ]
-    ++ lib.optionals useOpenCL [ "-DMIOPEN_BACKEND=OpenCL" ]
+    ++ lib.optionals useOpenCL [
+      "-DMIOPEN_BACKEND=OpenCL"
+    ]
     ++ lib.optionals buildTests [
       "-DBUILD_TESTS=ON"
       "-DMIOPEN_TEST_ALL=ON"

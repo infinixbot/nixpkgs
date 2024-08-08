@@ -38,7 +38,9 @@ stdenv.mkDerivation {
     "man"
   ];
 
-  configureFlags = [ (lib.enableFeature true "ssl") ];
+  configureFlags = [
+    (lib.enableFeature true "ssl")
+  ];
 
   strictDeps = true;
 

@@ -34,7 +34,9 @@ mkDerivation rec {
     hash = "sha256-qJ6MGxnxXcibF2qXZ2w7Ey/aBIEIx8Gg0dM2PnCl09Y=";
   };
 
-  patches = [ ./qt5.patch ];
+  patches = [
+    ./qt5.patch
+  ];
 
   postPatch = ''
     echo "${lib.getDev qtwebengine}"
@@ -84,7 +86,9 @@ mkDerivation rec {
     kdelibs4support
   ];
 
-  wafConfigureFlags = [ "--qtlibs=${lib.getLib qtbase}/lib" ];
+  wafConfigureFlags = [
+    "--qtlibs=${lib.getLib qtbase}/lib"
+  ];
 
   meta = with lib; {
     description = "Mind-mapping application for KDE";

@@ -20,7 +20,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-EI2PDVdS9JB8ACkRTsfCBLz4JEmHQ6hApFSSfSvD/cQ=";
 
-  checkFlags = [ "-short" ];
+  checkFlags = [
+    "-short"
+  ];
 
   passthru.updateScript = nix-update-script { };
 

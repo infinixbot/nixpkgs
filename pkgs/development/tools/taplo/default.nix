@@ -21,9 +21,17 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-oT7U9htu7J22MqLZb+YXohlB1CVGxHGQvHJu18PeLf8=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ Security ];
+  buildInputs =
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Security
+    ];
 
   buildFeatures = lib.optional withLsp "lsp";
 

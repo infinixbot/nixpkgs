@@ -25,9 +25,13 @@ buildDunePackage rec {
     hash = "sha256-G4B1llsHnGcuGIarDB248QMaRBvS47IEQB5B93wY7nA=";
   };
 
-  nativeBuildInputs = [ capnproto ];
+  nativeBuildInputs = [
+    capnproto
+  ];
 
-  buildInputs = [ stdio ];
+  buildInputs = [
+    stdio
+  ];
 
   propagatedBuildInputs = [
     ocplib-endian

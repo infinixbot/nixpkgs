@@ -72,18 +72,22 @@ stdenv.mkDerivation rec {
     python3.pkgs.wrapPython
   ] ++ pythonPath;
 
-  buildInputs = [
-    asio
-    glib
-    jsoncpp
-    libcap_ng
-    libnl
-    libuuid
-    lz4
-    openssl
-    protobuf
-    tinyxml-2
-  ] ++ lib.optionals enableSystemdResolved [ systemd ];
+  buildInputs =
+    [
+      asio
+      glib
+      jsoncpp
+      libcap_ng
+      libnl
+      libuuid
+      lz4
+      openssl
+      protobuf
+      tinyxml-2
+    ]
+    ++ lib.optionals enableSystemdResolved [
+      systemd
+    ];
 
   # runtime deps
   pythonPath = with python3.pkgs; [

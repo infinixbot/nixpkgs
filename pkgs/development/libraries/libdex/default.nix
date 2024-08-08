@@ -42,7 +42,9 @@ stdenv.mkDerivation (finalAttrs: {
     liburing
   ];
 
-  mesonFlags = [ "-Ddocs=true" ];
+  mesonFlags = [
+    "-Ddocs=true"
+  ];
 
   doCheck = true;
 

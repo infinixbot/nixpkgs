@@ -21,7 +21,9 @@ buildPythonPackage rec {
     sed -i '/poetry =/d' pyproject.toml
   '';
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   # infinite recursion with poetry
   doCheck = false;

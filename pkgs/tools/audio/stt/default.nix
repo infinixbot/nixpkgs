@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
 
   sourceRoot = ".";
 
-  nativeBuildInputs = [ autoPatchelfHook ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+  ];
 
   buildInputs = [
     bzip2

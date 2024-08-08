@@ -26,7 +26,9 @@ python3Packages.buildPythonApplication rec {
     argcomplete
   ];
 
-  build-system = with python3Packages; [ pdm-backend ];
+  build-system = with python3Packages; [
+    pdm-backend
+  ];
 
   dependencies = with python3Packages; [
     argcomplete

@@ -70,7 +70,11 @@ stdenv.mkDerivation rec {
 
   nativeInstallCheckInputs = [
     perl
-    (python3.withPackages (pp: with pp; [ docopt ]))
+    (python3.withPackages (
+      pp: with pp; [
+        docopt
+      ]
+    ))
   ];
 
   installCheckPhase = ''

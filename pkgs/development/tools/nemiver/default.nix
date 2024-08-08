@@ -69,7 +69,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  configureFlags = [ "--enable-gsettings" ];
+  configureFlags = [
+    "--enable-gsettings"
+  ];
 
   passthru = {
     updateScript = gnome.updateScript {

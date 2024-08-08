@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     systemd
   ];
 
-  makeFlags = [ "prefix=$(out)" ];
+  makeFlags = [
+    "prefix=$(out)"
+  ];
 
   meta = with lib; {
     description = "Audio converter and CD ripper with support for various popular formats and encoders";

@@ -23,7 +23,9 @@ stdenv.mkDerivation (finalAttrs: {
     ninja
   ];
 
-  buildInputs = [ tbb ];
+  buildInputs = [
+    tbb
+  ];
 
   cmakeFlags = [
     "-DOPENPGL_BUILD_STATIC=OFF"

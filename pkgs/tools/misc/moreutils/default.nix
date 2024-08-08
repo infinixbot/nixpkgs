@@ -32,13 +32,17 @@ stdenv.mkDerivation rec {
     docbook-xsl
     docbook_xml_dtd_44
   ];
-  buildInputs = [
-    (perl.withPackages (p: [
-      p.IPCRun
-      p.TimeDate
-      p.TimeDuration
-    ]))
-  ] ++ lib.optionals stdenv.isDarwin [ cctools ];
+  buildInputs =
+    [
+      (perl.withPackages (p: [
+        p.IPCRun
+        p.TimeDate
+        p.TimeDuration
+      ]))
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      cctools
+    ];
 
   makeFlags = [
     "CC=${stdenv.cc.targetPrefix}cc"

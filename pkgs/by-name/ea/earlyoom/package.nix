@@ -29,7 +29,9 @@ stdenv.mkDerivation (finalAttrs: {
     pandoc
   ];
 
-  makeFlags = [ "VERSION=${finalAttrs.version}" ];
+  makeFlags = [
+    "VERSION=${finalAttrs.version}"
+  ];
 
   installPhase =
     ''

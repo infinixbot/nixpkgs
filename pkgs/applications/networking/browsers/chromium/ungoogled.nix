@@ -26,7 +26,9 @@ stdenv.mkDerivation {
     patch
   ];
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   patchPhase = ''
     sed -i '/chromium-widevine/d' patches/series

@@ -35,7 +35,9 @@ stdenvNoCC.mkDerivation {
     hash = "sha256-AgpNjeRz0RHf8D3ib7x1zixBxh32UUZJleub5W/suuM=";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   installPhase = ''
     install -D -m755 "gh-notify" "$out/bin/gh-notify"

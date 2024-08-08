@@ -50,7 +50,9 @@ stdenv.mkDerivation {
     '';
     homepage = "https://github.com/seife/spice-autorandr";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [ dmytrokyrychuk ];
+    maintainers = with lib.maintainers; [
+      dmytrokyrychuk
+    ];
     platforms = lib.platforms.linux;
   };
 }

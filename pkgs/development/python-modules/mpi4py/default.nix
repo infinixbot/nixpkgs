@@ -29,7 +29,9 @@ buildPythonPackage rec {
     setuptools
     mpi
   ];
-  dependencies = [ mpi ];
+  dependencies = [
+    mpi
+  ];
 
   __darwinAllowLocalNetworking = true;
 

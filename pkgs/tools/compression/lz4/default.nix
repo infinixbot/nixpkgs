@@ -18,9 +18,13 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-YiMCD3vvrG+oxBUghSrCmP2LAfAGZrEaKz0YoaQJhpI=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = lib.optionals finalAttrs.finalPackage.doCheck [ valgrind ];
+  buildInputs = lib.optionals finalAttrs.finalPackage.doCheck [
+    valgrind
+  ];
 
   outputs = [
     "dev"
@@ -29,7 +33,9 @@ stdenv.mkDerivation (finalAttrs: {
     "out"
   ];
 
-  patches = [ ./0001-Create-a-unified-lz4-target.patch ];
+  patches = [
+    ./0001-Create-a-unified-lz4-target.patch
+  ];
 
   cmakeDir = "../build/cmake";
   cmakeBuildDir = "build-dist";

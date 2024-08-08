@@ -25,7 +25,9 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/BlockchainCommons/bc-ur";

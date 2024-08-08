@@ -13,7 +13,9 @@ let
     (python3.buildEnv.override {
       extraLibs = [ python3.pkgs.jupyter-console ];
       makeWrapperArgs =
-        [ "--set JUPYTER_PATH ${jupyter-kernel.create { inherit definitions; }}" ]
+        [
+          "--set JUPYTER_PATH ${jupyter-kernel.create { inherit definitions; }}"
+        ]
         ++ lib.optionals (kernel != null) [
           "--add-flags --kernel"
           "--add-flags ${kernel}"

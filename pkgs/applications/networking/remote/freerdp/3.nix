@@ -159,7 +159,9 @@ stdenv.mkDerivation (finalAttrs: {
       Cocoa
       CoreMedia
     ]
-    ++ lib.optionals withUnfree [ faac ];
+    ++ lib.optionals withUnfree [
+      faac
+    ];
 
   # https://github.com/FreeRDP/FreeRDP/issues/8526#issuecomment-1357134746
   cmakeFlags =
@@ -196,10 +198,16 @@ stdenv.mkDerivation (finalAttrs: {
       "-DTARGET_OS_WATCH=0"
       "-include AudioToolbox/AudioToolbox.h"
     ]
-    ++ lib.optionals stdenv.cc.isClang [ "-Wno-error=incompatible-function-pointer-types" ]
+    ++ lib.optionals stdenv.cc.isClang [
+      "-Wno-error=incompatible-function-pointer-types"
+    ]
   );
 
-  env.NIX_LDFLAGS = toString (lib.optionals stdenv.isDarwin [ "-framework AudioToolbox" ]);
+  env.NIX_LDFLAGS = toString (
+    lib.optionals stdenv.isDarwin [
+      "-framework AudioToolbox"
+    ]
+  );
 
   meta = with lib; {
     description = "Remote Desktop Protocol Client";

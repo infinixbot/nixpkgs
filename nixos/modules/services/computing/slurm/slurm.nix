@@ -402,7 +402,9 @@ in
         };
       };
 
-      systemd.tmpfiles.rules = mkIf cfg.client.enable [ "d /var/spool/slurmd 755 root root -" ];
+      systemd.tmpfiles.rules = mkIf cfg.client.enable [
+        "d /var/spool/slurmd 755 root root -"
+      ];
 
       services.openssh.settings.X11Forwarding = mkIf cfg.client.enable (mkDefault true);
 

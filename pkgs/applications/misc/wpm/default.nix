@@ -14,7 +14,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-swT9E5Tto4yWnm0voowcJXtY3cIY3MNqAdfrTnuGbdg=";
   };
 
-  propagatedBuildInputs = with python3.pkgs; [ setuptools ];
+  propagatedBuildInputs = with python3.pkgs; [
+    setuptools
+  ];
 
   pythonImportsCheck = [ "wpm" ];
 

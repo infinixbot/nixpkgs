@@ -68,9 +68,13 @@ stdenv.mkDerivation rec {
     double-conversion
   ];
 
-  nativeCheckInputs = [ gtest ];
+  nativeCheckInputs = [
+    gtest
+  ];
 
-  cmakeFlags = [ "-D2GEOM_BUILD_SHARED=ON" ];
+  cmakeFlags = [
+    "-D2GEOM_BUILD_SHARED=ON"
+  ];
 
   doCheck = true;
 

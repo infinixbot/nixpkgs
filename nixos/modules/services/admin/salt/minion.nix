@@ -52,14 +52,18 @@ in
       description = "Salt Minion";
       wantedBy = [ "multi-user.target" ];
       after = [ "network.target" ];
-      path = with pkgs; [ util-linux ];
+      path = with pkgs; [
+        util-linux
+      ];
       serviceConfig = {
         ExecStart = "${pkgs.salt}/bin/salt-minion";
         LimitNOFILE = 8192;
         Type = "notify";
         NotifyAccess = "all";
       };
-      restartTriggers = [ config.environment.etc."salt/minion".source ];
+      restartTriggers = [
+        config.environment.etc."salt/minion".source
+      ];
     };
   };
 }

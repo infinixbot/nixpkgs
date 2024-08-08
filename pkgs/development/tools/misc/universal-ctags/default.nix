@@ -27,7 +27,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-f8+Ifjn7bhSYozOy7kn+zCLdHGrH3iFupHUZEGynz9Y=";
   };
 
-  depsBuildBuild = [ buildPackages.stdenv.cc ];
+  depsBuildBuild = [
+    buildPackages.stdenv.cc
+  ];
 
   nativeBuildInputs = [
     autoreconfHook
@@ -45,7 +47,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   configureFlags = [ "--enable-tmpdir=/tmp" ];
 
-  patches = [ ./000-nixos-specific.patch ];
+  patches = [
+    ./000-nixos-specific.patch
+  ];
 
   postPatch = ''
     substituteInPlace Tmain/utils.sh \

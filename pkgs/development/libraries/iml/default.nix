@@ -17,7 +17,9 @@ stdenv.mkDerivation rec {
     gmp
     blas
   ];
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
   configureFlags = [
     "--with-gmp-include=${gmp.dev}/include"
     "--with-gmp-lib=${gmp}/lib"

@@ -20,7 +20,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-zUAIesBeuh1zlxXcjKSNmMawZGgUr9z3NzT0XKn/YCQ=";
 
-  buildInputs = [ openssl ];
+  buildInputs = [
+    openssl
+  ];
 
   meta = with lib; {
     description = "SSH agent with support for TPM sealed keys for public key authentication";

@@ -82,7 +82,9 @@ stdenv.mkDerivation rec {
     pkg-config
     git
   ];
-  propagatedBuildInputs = [ nlohmann_json ];
+  propagatedBuildInputs = [
+    nlohmann_json
+  ];
   buildInputs =
     [
       davix
@@ -128,7 +130,9 @@ stdenv.mkDerivation rec {
       OpenGL
     ];
 
-  patches = [ ./sw_vers.patch ];
+  patches = [
+    ./sw_vers.patch
+  ];
 
   preConfigure =
     ''

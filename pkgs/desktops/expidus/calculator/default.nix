@@ -14,7 +14,9 @@ flutter.buildFlutterApplication rec {
     hash = "sha256-O3LHp10Fo3PW3zoN7mFSQEKh+AAaR+IqkRtc6nQrIZE=";
   };
 
-  flutterBuildFlags = [ "--dart-define=COMMIT_HASH=a5d8f54404b9994f83beb367a1cd11e04a6420cb" ];
+  flutterBuildFlags = [
+    "--dart-define=COMMIT_HASH=a5d8f54404b9994f83beb367a1cd11e04a6420cb"
+  ];
 
   pubspecLock = lib.importJSON ./pubspec.lock.json;
 

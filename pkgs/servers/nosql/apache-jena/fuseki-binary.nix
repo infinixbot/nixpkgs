@@ -17,7 +17,9 @@ stdenv.mkDerivation rec {
     url = "mirror://apache/jena/binaries/apache-jena-fuseki-${version}.tar.gz";
     hash = "sha256-t25Q0lb+ecR12cDD1p6eZnzLxW0kZpPOFGvo5YK7AlI=";
   };
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
   installPhase = ''
     cp -r . "$out"
     chmod +x $out/fuseki

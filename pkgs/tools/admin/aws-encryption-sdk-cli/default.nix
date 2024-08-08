@@ -34,7 +34,9 @@ localPython.pkgs.buildPythonApplication rec {
     hash = "sha256-OCbt0OkDVfpzUIogbsKzaPAle2L6l6N3cmZoS2hEaSM=";
   };
 
-  build-system = with localPython.pkgs; [ setuptools ];
+  build-system = with localPython.pkgs; [
+    setuptools
+  ];
 
   dependencies = with localPython.pkgs; [
     attrs

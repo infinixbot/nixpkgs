@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-u+/IXevDt4mlnQ4a1M1t2Zh26/FBd9yAtpr71NrdXTY=";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   makeFlags = [
     "DESTDIR=$(out)/bin"

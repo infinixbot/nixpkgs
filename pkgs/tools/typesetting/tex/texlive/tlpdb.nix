@@ -46,7 +46,9 @@
     license = [ "gpl1Only" ];
     version = "2.84p";
   };
-  a2ping.binfiles = [ "a2ping" ];
+  a2ping.binfiles = [
+    "a2ping"
+  ];
   a4wide = {
     revision = 20943;
     shortdesc = "\"Wide\" a4 layout";
@@ -220,7 +222,9 @@
     revision = 64844;
     shortdesc = "Accanthis fonts, with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map accanthis.map" ];
+    fontMaps = [
+      "Map accanthis.map"
+    ];
     sha512.run = "5727125c85e06501f009267bab8c1eff674a76db618c6155fd9c6b41bb2407a3a201a008c7f5aa6d73ecf100a3fc917961d20f547c2f6040fe72760a4dcd9a44";
     sha512.doc = "6789c3c330d1e6a0d20364e4e98ef72fd1c6294655f704366b0e6c1fd081d1aea312dc9e6767fb3e076b3cd91ea5a67606e8bf62f7f92af097ba766c99ab0cff";
     hasRunfiles = true;
@@ -436,7 +440,9 @@
     revision = 54512;
     shortdesc = "OrnementsADF font with TeX/LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map OrnementsADF.map" ];
+    fontMaps = [
+      "Map OrnementsADF.map"
+    ];
     sha512.run = "7a4a4da6c72ff2f8ab4b2a9a5e92887306a8e2aee4bcc5a93c18bf41d1bf9c05bd23fd6401bda054994aafa8d6002dbc16d8483b951acb705cd46fda08aaf060";
     sha512.doc = "2a287f8685154359c914b13e8e153aa64bb19708a9f5b122180cead53ee31ab829dc934dcab43f09ded4fe5d2a81ee32528855f1a4a1bd07b795eaabcb204f48";
     hasRunfiles = true;
@@ -472,7 +478,9 @@
     hasRunfiles = true;
     license = [ "lppl13c" ];
   };
-  adhocfilelist.binfiles = [ "adhocfilelist" ];
+  adhocfilelist.binfiles = [
+    "adhocfilelist"
+  ];
   adigraph = {
     revision = 70427;
     shortdesc = "Augmenting directed graphs";
@@ -583,7 +591,9 @@
     revision = 58253;
     shortdesc = "Special support for the ae character";
     stripPrefix = 0;
-    fontMaps = [ "Map aesupp.map" ];
+    fontMaps = [
+      "Map aesupp.map"
+    ];
     sha512.run = "7a42831624c30db319a81420e1142bf827f21daeb4719e1a179a63632586b1fb43709c17faef073eb67f27f1303b4f7db92a40425506f4d8e0bc6b456e4f6114";
     sha512.doc = "ece447f4c12da8509be155f2743ca52988f32ce62edb361a85fdcd7733bb401cf8ecbbc0fa6bbd7d1662593f1084aa89a29b2f1b822a765bc6f7e581b46bc153";
     sha512.source = "cb628c51f7f4d972f81b2e23495e7ac6e82e422c7e85ffcdd7c3cbb753b055178adb9ea386bb4b1f1f1c4d2cdc561eba27cd82c7ef33830db0cde9af99e7730f";
@@ -612,7 +622,9 @@
     hasManpages = true;
     hasRunfiles = true;
   };
-  afm2pl.binfiles = [ "afm2pl" ];
+  afm2pl.binfiles = [
+    "afm2pl"
+  ];
   afparticle = {
     revision = 35900;
     shortdesc = "Typesetting articles for Archives of Forensic Psychology";
@@ -710,11 +722,15 @@
     hasManpages = true;
     sha512.source = "49ef73f529b8484def315efb0f9bef230697f532fd8138b42404ab5e98a880ea3d7e4ab660a9b3e83be73690f0a762ca09b1b9c964f9d461a0022853006d76be";
     hasRunfiles = true;
-    scriptExts = [ "jar" ];
+    scriptExts = [
+      "jar"
+    ];
     license = [ "bsd3" ];
     version = "0.5.1";
   };
-  albatross.binfiles = [ "albatross" ];
+  albatross.binfiles = [
+    "albatross"
+  ];
   alchemist = {
     revision = 66924;
     shortdesc = "Typeset alchemist and astrological symbols";
@@ -732,7 +748,9 @@
     revision = 64384;
     shortdesc = "Alegreya fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map Alegreya.map" ];
+    fontMaps = [
+      "Map Alegreya.map"
+    ];
     sha512.run = "2bd5aa12890cecfa42b119f456ea63bf8b8f64edc4e2c55ed738cd24a80527245b0219330e1dc89e0a10e8ca17bb17ba928056ebf69955f2481d468a5cf97104";
     sha512.doc = "dcff5d4a47c3649155a79659012aa07123e5108b85804da9c1697d1f93d7b336ef7e37e1272c8e2e8f283971bfbfebc2e0cd2ebae3ff8ee69531629635ed7d74";
     hasRunfiles = true;
@@ -770,7 +788,9 @@
     hasManpages = true;
     license = [ "gpl1Only" ];
   };
-  aleph.binfiles = [ "aleph" ];
+  aleph.binfiles = [
+    "aleph"
+  ];
   alertmessage = {
     revision = 38055;
     shortdesc = "Alert messages for LaTeX";
@@ -786,7 +806,9 @@
     revision = 57452;
     shortdesc = "The Alfa Slab One font face with support for LaTeX and pdfLaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map AlphaSlabOne.map" ];
+    fontMaps = [
+      "Map AlphaSlabOne.map"
+    ];
     sha512.run = "b958ac7987363fcefa3d8b7016f13851b91446a2a252e9561fd1a15df78b867b928f3e45a6fa1556abffa0de03b2b70543266ef9627b7474167c5672ac98d9ed";
     sha512.doc = "375ca21d23599fe365f53f461264351982340d151ebdd2ce143189d8fd3c22d191501520d571f207a1f956f433ae6491e171c7ebb3c9c5421e30b358cc79f9fa";
     hasRunfiles = true;
@@ -818,7 +840,9 @@
     revision = 56864;
     shortdesc = "A revival of Frutiger's Algol alphabet";
     stripPrefix = 0;
-    fontMaps = [ "Map AlgolRevived.map" ];
+    fontMaps = [
+      "Map AlgolRevived.map"
+    ];
     sha512.run = "bb038512d7ade0cf90217150d276d8ed7fb4279b8a3088bcb38dfe8f48373e8957909f5fdfdd2f6247682623414f04e732262a393cc0042279705ceb345cd608";
     sha512.doc = "c42976e8fe3d53240de84845a0c4428363868629b5137a57863b5fc922ed8f557e2e4451446277cead1dba0dff036e843e5ead35e6e591a04f2edeb640c7932c";
     hasRunfiles = true;
@@ -903,7 +927,9 @@
     revision = 42221;
     shortdesc = "Fonts and LaTeX package for almost all runes";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap allrunes.map" ];
+    fontMaps = [
+      "MixedMap allrunes.map"
+    ];
     sha512.run = "d05513d484f11a9fcb5d202d02e7ea586cc82c44abe0488294e58c6f31185b083026bad3f17186ff03456481200e05e2ec4a7a7348f6b8fa4e952702b15274eb";
     sha512.doc = "569f61370178f2517ea4d4625209a1359cd56913073344816f4fa8aa19edc8bc63c073de4373adb0a0a8c8d45fe392da9869bd16bd7477da65d5b0decfe6de61";
     sha512.source = "9765fe328824806dd96ca1a0e9678ba385eb61acf95d8447213492843f908de65209022d76303be816ee1c500e95aeb35280f3377369315a87752a0c4478feb5";
@@ -915,7 +941,9 @@
     revision = 64539;
     shortdesc = "Almendra fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map almendra.map" ];
+    fontMaps = [
+      "Map almendra.map"
+    ];
     sha512.run = "9bfdffc9a634df297dc9b5c406c0681ad78b81619900126110b978bc5a7a2ec0f91a1e351100281c794972d87f33c7088725f55928e120a743001080887ad4b3";
     sha512.doc = "477d5d068353d06e591af13e7e970cccd3d5229765f89150e4d9bb5f1de2b0283e4212bc475fdd6771f4e33f046a3e64dd4ca794c3691af95f7e36f77c7eed76";
     hasRunfiles = true;
@@ -1175,7 +1203,9 @@
     license = [ "lppl13c" ];
     version = "2.01";
   };
-  amstex.binfiles = [ "amstex" ];
+  amstex.binfiles = [
+    "amstex"
+  ];
   amsthdoc-it = {
     revision = 45662;
     shortdesc = "Italian translation of amsthdoc: Using the amsthm package";
@@ -1187,7 +1217,9 @@
     revision = 64540;
     shortdesc = "andika fonts with support for all LaTeX engines";
     stripPrefix = 0;
-    fontMaps = [ "Map andika.map" ];
+    fontMaps = [
+      "Map andika.map"
+    ];
     sha512.run = "4da9904459345033aa87deeb0019c8c4a39fbafcd59d973717ed2c4a410ece528944c69669b6a5ecf6ef8bb790f60bba909468e001485c405e7cf8775b7533e5";
     sha512.doc = "50684857dc25ad942aff18eedec04c9e27e4e408f748c208f8527c5096e600d26769ec6f82e2f02e72ab472dfb662f12bb009156293a12daa2dc0676d63ed446";
     hasRunfiles = true;
@@ -1260,7 +1292,9 @@
     revision = 51631;
     shortdesc = "Use AnonymousPro fonts with LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map AnonymousPro.map" ];
+    fontMaps = [
+      "Map AnonymousPro.map"
+    ];
     sha512.run = "105334748bce7fa8a78edd599d6a8466729937f0008c479213a4d3d4b6b3e24b91bd1e124d0e3c1354fd68f99fdf621538696ba9b32ecbf09f5c7202b0b34997";
     sha512.doc = "ced94c5fd0be106433e99cbe66305b60ac6ddee82d3a1c8046d1467b11fe9ca10c2ba3b4ceba56a0ff439e7fa82d09c303f29200fdcec1600145fe7623773e47";
     sha512.source = "75d70833e574ab7847208d76d1012105f42712fc1558b9fbb35349871068bd60099d4ffe189eb28f5276807e6d1e48969283c7ea5a48f991cdb959077c1444dc";
@@ -1294,7 +1328,9 @@
     revision = 24266;
     shortdesc = "URW Antiqua condensed font, for use with TeX";
     stripPrefix = 0;
-    fontMaps = [ "Map uaq.map" ];
+    fontMaps = [
+      "Map uaq.map"
+    ];
     sha512.run = "0318b6f81d365cbb4b320642ddb6d8f909b5b136daf952da01c22508c392c58c9f8a25b33e4dd0e5afe777bb0b366633afd6567c3992df2a2e286cc9f41e6211";
     sha512.doc = "4158160d42fc776891f974cf8de13631aed17578ad2e5a67225442b7e783a36e2a0d3be640d92dce0fa66097dc617ad54b2779a3a3ef9878b46d900c5dc2ed7d";
     hasRunfiles = true;
@@ -1314,7 +1350,9 @@
     revision = 21933;
     shortdesc = "Alternative language support for Omega/Lambda";
     stripPrefix = 0;
-    deps = [ "omega" ];
+    deps = [
+      "omega"
+    ];
     sha512.run = "af2cbe945ac3495e94fbf69797c05d9a7cd8c3874148c54c602a4a152c669638cf7a861949a3cc2d08aa21f378b57beffddf2d13e3afc1157c74472c348f5405";
     sha512.doc = "298b2e796736f7598a83a2d4fee53f48e78d0c8b255cc09c686371a3a05a4d36736cef96d812281cfd3fe1024af433f32e117c1c60d7559809220ed8dd5e56a9";
     sha512.source = "7ee92461e60834af1f736f387823788a44d680171d9a7acbfd71c858885e190f724b5db11074efb74faf63b471af5c34688af1be5b765de67b170dbcf123fe2f";
@@ -1326,7 +1364,9 @@
     revision = 18651;
     shortdesc = "Antykwa Torunska: a Type 1 family of a Polish traditional type";
     stripPrefix = 0;
-    fontMaps = [ "Map antt.map" ];
+    fontMaps = [
+      "Map antt.map"
+    ];
     sha512.run = "c31e92701d14e0559ca1807389d3f1d95a166e9dee918fc7218ee671227381e3c37a991756e9c19c7e7d3681597c3c012037a74249c7c8eaaefc7c8a3bc2fc36";
     sha512.doc = "00533390612e68b48dbbe9c1ba11e46a0e48f8b87cea8f6623267d53795ee9170daa1f34adc8cde12356ef779990fcd7fe7a10b601bfc11c9a0f590b5a25f3b2";
     hasRunfiles = true;
@@ -1536,7 +1576,9 @@
     revision = 44662;
     shortdesc = "(La)TeX support for Arabic and Farsi, compliant with Babel";
     stripPrefix = 0;
-    fontMaps = [ "Map arabi.map" ];
+    fontMaps = [
+      "Map arabi.map"
+    ];
     sha512.run = "6f59ea8c986078f388f4c8f067b12863422728cb1a56464ece4d793189bf0e6dcded476a3b86317c2bd5f9b4b3cbc475fd748c2ab9bbf60b3d8c8cd4c162ea62";
     sha512.doc = "c851b0cca46b11d7297a03488cc72adafb6409e0406de809a1a18d4993068702f03e17cbeda1399914005c9885108d747c844719764145c746b2a0ae45d9121f";
     hasRunfiles = true;
@@ -1591,7 +1633,9 @@
     revision = 64260;
     shortdesc = "Macros and fonts for typesetting Arabic";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap arabtex.map" ];
+    fontMaps = [
+      "MixedMap arabtex.map"
+    ];
     sha512.run = "df47df09eaf935bd8921d8ad475190fe6651f1cbf198473ee82099242b6f4cd63ae5873a2b2fbd7a75a4f9ae77f5ce3f56ffec0e668fdd649c4d3fe051b2ac68";
     sha512.doc = "a73aed53cc1cf4f5600312f58e0ae8a29c57fb04ebc87b91f13526c780567a5ba076a0b63b0abed791880efccffcfc52bb0f43131da4b8e2a60b48184d2f66de";
     hasRunfiles = true;
@@ -1613,7 +1657,9 @@
     revision = 30042;
     shortdesc = "Fonts and LaTeX for Syriac written in Serto";
     stripPrefix = 0;
-    fontMaps = [ "Map syriac.map" ];
+    fontMaps = [
+      "Map syriac.map"
+    ];
     sha512.run = "6731d62d8a24c9f0d26061b8b2574a880df30df333fbe16408d0830657ea36f04f50c56b574de5eb081f490a4c5782595fe17bdb9208b6602c1a0ac81a1f10f5";
     sha512.doc = "433018891123aebb201d6c4f2b00dd15a558344b758899f85b9bdc21556ad4fc4845ce72084863b243e42beba643c5ae4dd210b74e2588af4825e3c83d6d7997";
     hasRunfiles = true;
@@ -1628,11 +1674,15 @@
     hasManpages = true;
     sha512.source = "0cd47d01d950c9ab685264027ae92c978a5539dc67b937d25e36a60e2a1ae50760f1da73be7e39132d74e5e4ea751c0a7ad9e9e00097bdfe270d235d87b64502";
     hasRunfiles = true;
-    scriptExts = [ "jar" ];
+    scriptExts = [
+      "jar"
+    ];
     license = [ "bsd3" ];
     version = "7.1.3";
   };
-  arara.binfiles = [ "arara" ];
+  arara.binfiles = [
+    "arara"
+  ];
   archaeologie = {
     revision = 68476;
     shortdesc = "A citation-style which covers rules of the German Archaeological Institute";
@@ -1648,7 +1698,9 @@
     revision = 38005;
     shortdesc = "A collection of archaic fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map archaicprw.map" ];
+    fontMaps = [
+      "Map archaicprw.map"
+    ];
     sha512.run = "5e841f4a8e5df375fd660c998d3d54221e6c8e383fe4a69fb082c98d62b44a1fab2e9ec88db37964e015abbc20cd0f2af5aa26cffd4fd92fece5e24661c0efa5";
     sha512.doc = "457eedb06a3a09a73a2ce0b20c18b643530aa2659d7b1b98be14238b9d40e8a6bdc39085654e8589fb134921f40d211d93f553cab25d7901e40286b3075f268a";
     sha512.source = "5a39568546651ef10937849550c3305bde9379737b21e24b2adbec532dee8192ddbdaaa77f2e6bc135d518f354c1b20d7c43bc03f65ccf47d423f4af1e75d620";
@@ -1659,7 +1711,9 @@
     revision = 57283;
     shortdesc = "The Archivo font face with support for LaTeX and pdfLaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map ArchivZero.map" ];
+    fontMaps = [
+      "Map ArchivZero.map"
+    ];
     sha512.run = "0f6b7985d73ba3e62874bee7a05c215cea0008bdfd1b0c3df6795a2d6363ee2a209df956b4f9698ec93ee8d9c6bd62ab5bf3bf19cff78c968a97da58a80b5f40";
     sha512.doc = "88cf002d557401730c035727251e228effdd25d52e9d76edc950d0f3ee639e2eb5bf623c77a4e80dd902b7095076030b32aa017c8adea9f57912ca9de51ab7b0";
     hasRunfiles = true;
@@ -1684,7 +1738,9 @@
     revision = 15878;
     shortdesc = "Fonts and LaTeX support files for Arev Sans";
     stripPrefix = 0;
-    fontMaps = [ "Map arev.map" ];
+    fontMaps = [
+      "Map arev.map"
+    ];
     sha512.run = "8b6e88a41052740831fdfa03299f665fad9eaa0e45d1d235392aa0b849bd6ca03f1e18892c879d3a5289430a5d236b9544d617ea2c3af62a59b38b4d7ff8ce90";
     sha512.doc = "a8dcb8bf0fff3be9c99550623f12651df09b151d6e28bee03d7aa80c7b0eb8c86603b4d8037232e4998bc5603ab3dd368ff7a262b7c7f62f2903338774a9b8aa";
     sha512.source = "6c92c2f3ef59dcb93207ea90643d11aa8cf81850e2696414f489c40cef97737d00ee4444893669f12d4592c6573a71cb229c232b62f10db38195aabbe83fe523";
@@ -1705,7 +1761,9 @@
     revision = 68950;
     shortdesc = "Arimo sans serif fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map arimo.map" ];
+    fontMaps = [
+      "Map arimo.map"
+    ];
     sha512.run = "3c84fc274ebd29dfa65a8db214ef2ea74bb22da21827844be3b5648b7f10cba81a73772ccffe758b19ac16e58a75b1eb578a0ec8e85957f9693858065665a085";
     sha512.doc = "dc70491f5b2b5a900f3d6f9bd543974b81976907a7c3dd53fd7530e3d0a6d83fc44a61607b27d9644eeca6f6228faa171916e67fc7517c35d466d9c50a186808";
     hasRunfiles = true;
@@ -1827,7 +1885,9 @@
     revision = 57213;
     shortdesc = "The Arvo font face with support for LaTeX and pdfLaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map Arvo.map" ];
+    fontMaps = [
+      "Map Arvo.map"
+    ];
     sha512.run = "3a6236c3f5e07f3ad709c6a5e0f7d2c90574cc897f6f5d470aa1523b537370587b5942e1a8c581fd96e43e80189fb1c7c4a2475823077feeb929ec594a90ffa9";
     sha512.doc = "3d3c6a92159b47e8dd5ae7360c06c8d5db8ccab609dd5f3db47db2ddc9d62badc3e6bd7c881ec5955003ac2b460c550ce56154cb2323ebd2bdb8205318a709ce";
     hasRunfiles = true;
@@ -1900,7 +1960,9 @@
     revision = 29989;
     shortdesc = "Use the ASCII \"font\" in LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map ascii.map" ];
+    fontMaps = [
+      "Map ascii.map"
+    ];
     sha512.run = "e92e312e38432a7294c71a76604e5a3c2aa6b65937d39933fcbc9fc9b61e00a1e2f35ba739f64c29a3ebf6d2e388cd29da384a2a6456f71576101a1f12e36f0d";
     sha512.doc = "2d681a41d213fe260e3491a3b410239fa2e025ba19894d133a27e47b417ccf27648aa13ae431b4c42549c1692cbe517f2595c2de675b14d9ea0460d469e4f036";
     sha512.source = "1bbadf44599ad29f843ef17d1b437f951f5b167e9bf84a73600a0a9dc5633d94d76c91ec23493250ac894d9114c1b2d1d1f182690aef5dea92c9ec51c96e69a9";
@@ -1923,7 +1985,9 @@
     revision = 53411;
     shortdesc = "Boxes and picture macros with Japanese vertical writing support";
     stripPrefix = 0;
-    fontMaps = [ "Map ascmac.map" ];
+    fontMaps = [
+      "Map ascmac.map"
+    ];
     sha512.run = "f03ff628aced70ac2406863aa4b23eac26cf47fa09ee377ba78a8df3af633ac1f3fad8d005022c1555d957ec9d84f98eebf2dc97b296713a2edf5f0060d4180e";
     sha512.doc = "e35257d0992717350e78e611f31f864651a1762dcefb76ba60510180de177fab02f634423b0f3c78c03394fe0eeb6191db0d534190d4f168922263526a85b1b9";
     sha512.source = "3613b89f600ca51f1234f711816d041c4a3c58f72217b299505d90d0b7316606b3015c43edf3546fe93625dc628f232179ddcb0dce7a2f26375b93af7e6e7171";
@@ -1976,7 +2040,9 @@
     revision = 25243;
     shortdesc = "Capital A and capital R ligature for Aspect Ratio";
     stripPrefix = 0;
-    fontMaps = [ "Map aspectratio.map" ];
+    fontMaps = [
+      "Map aspectratio.map"
+    ];
     sha512.run = "1447c3037f5477aeadfe3e5fe18a004ffa1b8c5c18b7c68295b8065e32c5a3e6a044e7f9868bafe3d8b81e391b2c614e2153302ef34e1e4aabe84c92ada2f129";
     sha512.doc = "5ee4918a3d90e9e4b51a2985352133331b77a8a87bdd8d41fab9348e5c548670ab56b5f0afc63756b65fdb6e45aa7594335995ac0d146d542b571eefbaa84d78";
     hasRunfiles = true;
@@ -2130,7 +2196,9 @@
     revision = 64385;
     shortdesc = "Support for the Atkinson Hyperlegible family of fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map atkinson.map" ];
+    fontMaps = [
+      "Map atkinson.map"
+    ];
     sha512.run = "8b763a29fbd529b91d586e00f13176c1cff3777541816a02913e57e8f8586357331615ba4d16549b9a98a0e049a42b2f49af39b3f950fc4845a46e37435dce2b";
     sha512.doc = "f5bcfd015fc4292f4568e9d960e921739a9ebcd8f198f648323d475f6ae5d803d3f0ef77d368fa9fe36f53947908e4bcf1cfbdbd621e780221c5e8432ca9db05";
     hasRunfiles = true;
@@ -2161,7 +2229,9 @@
     license = [ "lppl13c" ];
     version = "2.12";
   };
-  attachfile2.binfiles = [ "pdfatfi" ];
+  attachfile2.binfiles = [
+    "pdfatfi"
+  ];
   atveryend = {
     revision = 53108;
     shortdesc = "Hooks at the very end of a document";
@@ -2186,7 +2256,9 @@
     revision = 61719;
     shortdesc = "Calligraphic font for typesetting handwriting";
     stripPrefix = 0;
-    fontMaps = [ "Map augie.map" ];
+    fontMaps = [
+      "Map augie.map"
+    ];
     sha512.run = "a862fc140ee85e9f48908e7251dca78f6f328bb194bc1031ce7b521feabc62bb148764e7574341b9ba39a1bc76bb4a718c3cfa45bba7480aff168eb17661d74a";
     sha512.doc = "434c1d88522ae41e8a41fbeda6685a059fafb8f6cdec26d8737b5f6a6ddcf1e4f2a443ffdffa6b62a74f4abd2ed2e947176f59e64bf5691debeb62d9d54e719b";
     hasRunfiles = true;
@@ -2196,7 +2268,9 @@
     revision = 62977;
     shortdesc = "Artificial Uncial font and LaTeX support macros";
     stripPrefix = 0;
-    fontMaps = [ "Map auncial.map" ];
+    fontMaps = [
+      "Map auncial.map"
+    ];
     sha512.run = "625ddb6342c2ed4e5491e63ae13619b18892bc5d2cc005aac489cf1b6d193a28acdff9404f51b4cc76e8950ac182a4f8d5845bad85fd4c4afbdf33e7b8c225b3";
     sha512.doc = "4d3880a12e8dab72fa5278e4507bdc03786cfe94bfa43e81068629327d1e70a251ca58c7cbf6c58560c03b9e1e4d79257a674370e89c780f5c81589d54084270";
     sha512.source = "bb35718db33f7c4cb6889570def1b4f8a47e05896a14c8867ff7dba362028017d4e64d66b31e2f2cef45b749784704ea6cf9c1731543c3277496fc6c128b08fb";
@@ -2208,7 +2282,9 @@
     revision = 15878;
     shortdesc = "Calligraphic fonts for use with LaTeX in T1 encoding";
     stripPrefix = 0;
-    fontMaps = [ "Map aurical.map" ];
+    fontMaps = [
+      "Map aurical.map"
+    ];
     sha512.run = "1c48c36d6121005c123018cfe1266783288572c0ce8a9ea4b9b47ac28f46206de61b7a73804121f9a57c056c871c547c97ff10a529fedaca57bcb3ab78f3bea0";
     sha512.doc = "89de4991373a50d673f569e72f4727bd66a2b40b385006c3c7e4605812e7f8d3d346e3b08be55241f9926a58b40126d123d6ecea912d09db3973985d0cf9e90c";
     hasRunfiles = true;
@@ -2264,7 +2340,9 @@
     hasRunfiles = true;
     license = [ "lppl13c" ];
   };
-  authorindex.binfiles = [ "authorindex" ];
+  authorindex.binfiles = [
+    "authorindex"
+  ];
   auto-pst-pdf = {
     revision = 56596;
     shortdesc = "Wrapper for pst-pdf (with some psfrag features)";
@@ -2285,7 +2363,9 @@
     revision = 66637;
     shortdesc = "Using LuaLaTeX together with PostScript code";
     stripPrefix = 0;
-    deps = [ "iftex" ];
+    deps = [
+      "iftex"
+    ];
     sha512.run = "7d9882f2c80021409602f343e99dca9613f060056614f2fa8445b4f427f53287c4eb95af0a252ee3cddb2d6b47e1ecbc0ee3032dd55c209eb946b686f8037023";
     sha512.doc = "ab6cc1b954ff26f5d7b44f12cffc7aa2d5ac1aa64e37a68a5952616debeecab0e34dd2bcb6e06a3f49e90d45e9b5f60955d8b62cb8d124ae35625b398e97fd44";
     hasRunfiles = true;
@@ -2415,7 +2495,9 @@
     revision = 61983;
     shortdesc = "URW 'Base 35' font pack for LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map uag.map" ];
+    fontMaps = [
+      "Map uag.map"
+    ];
     sha512.run = "c08c987c385bf9eeca0f4f5b7edcd41570c81f18751593824da8eea770c29d63725bed100fa2ff37a80a5c70086533ddc1e91848d5ddeedec3c5c669907ed20b";
     hasRunfiles = true;
     license = [ "gpl1Only" ];
@@ -2463,7 +2545,9 @@
     license = [ "gpl3Plus" ];
     version = "2.1.1c";
   };
-  axodraw2.binfiles = [ "axohelp" ];
+  axodraw2.binfiles = [
+    "axohelp"
+  ];
   b1encoding = {
     revision = 21271;
     shortdesc = "LaTeX encoding tools for Bookhands fonts";
@@ -3302,7 +3386,9 @@
     revision = 19490;
     shortdesc = "Baskervald ADF fonts collection with TeX/LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map ybv.map" ];
+    fontMaps = [
+      "Map ybv.map"
+    ];
     sha512.run = "3c0451c43f81396038c3ccff2b4a9b07bf31023fa7afafd2884506928dffc8a9345ff0b8c8114f20b3016026f4532ab138a8b4787a37811501659a0f53c98941";
     sha512.doc = "e9e2c8749e29351b59690027b019da441de5c74068aa5a8457e3014c751fb23dddb0e8b94bf56529879086ea8c58e023a23b85ed9bbaece10f6dcc65ddcf3ff6";
     sha512.source = "60122d6a04e88fecd4c6baae3a657f40bbfd48895cc674e95ee9e2b3f9172e01d009064a616f2d7b3f48c41d43f75efda19c3ca54feee612f1866fe64eef366e";
@@ -3314,7 +3400,9 @@
     revision = 69273;
     shortdesc = "Extension and modification of BaskervaldADF with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map Baskervaldx.map" ];
+    fontMaps = [
+      "Map Baskervaldx.map"
+    ];
     sha512.run = "f78b61573fc99c6696dd9aac4f108f473996c5e67223e721db88f355b2e55a68f2b8a21c7bf994f2ee36a8fa465b55b970d65407b1ecfe1ffd7e00061bb70753";
     sha512.doc = "8d1b8a3e12b958fe5dee50255c291ebe8ed75e8733a28a5fda7c927a9253e0d94e68b51e81ce8805e3c3855893f53947429fa9684c99925d80176522c72119e9";
     hasRunfiles = true;
@@ -3328,7 +3416,9 @@
     revision = 55475;
     shortdesc = "Fry's Baskerville look-alike, with math support";
     stripPrefix = 0;
-    fontMaps = [ "Map BaskervilleF.map" ];
+    fontMaps = [
+      "Map BaskervilleF.map"
+    ];
     sha512.run = "d7ff1eaee4b050128ac89aff0d48d50c99936b1e04e778d0594d28ad3b225002012cfa56ff515486c98d9769d499ba5f4584358f8969c6286f07bd535b478ff6";
     sha512.doc = "131117d2170aa77f83954d61d630cd0714c7542f3b4f5e868f834bd091d0b4cd76185d478ae2e4d35c8b9930262d3f14e675681540fa8363b4aa060ea5fd96d9";
     hasRunfiles = true;
@@ -3425,7 +3515,9 @@
     revision = 33143;
     shortdesc = "An Adobe Type 1 format version of the bbold font";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap bbold.map" ];
+    fontMaps = [
+      "MixedMap bbold.map"
+    ];
     sha512.run = "86631e16388a447db7c521087eccbb666612933f6fee8eace091e00b20b5070d38ebc2d4d0a754536eacef9e9e6470f237d184e00cc4419bff85087f54b81566";
     sha512.doc = "ad841ac652a7985ab907572f66462091b1c40f7cdab2b00086209a2d96056e0a9e32842dfbc22c829b27799882252da95e3d10d4a9dd174f487327d5f3ac3899";
     hasRunfiles = true;
@@ -3435,7 +3527,9 @@
     revision = 65424;
     shortdesc = "Extension of the bbold package with a Blackboard Bold alphabet";
     stripPrefix = 0;
-    fontMaps = [ "Map bboldx.map" ];
+    fontMaps = [
+      "Map bboldx.map"
+    ];
     sha512.run = "b75c9f544bc0c6d1c046d614a6e0ba52a9cf920d73e8066e2d5e656e1a8774d42677c5a5bc9848e45bd4892e3ed19f6c3c281333f437b541d30d3410be2618a8";
     sha512.doc = "671259c208ea744654b82f25fddc3589fdda650c2121c71763ca4fb4c0ebe3a99906763c5adc354f49edec4beec59897445f5864a37640f67e47c8df6473f2fe";
     hasRunfiles = true;
@@ -3875,7 +3969,9 @@
     revision = 70050;
     shortdesc = "Write your books in a colorful way";
     stripPrefix = 0;
-    deps = [ "colorist" ];
+    deps = [
+      "colorist"
+    ];
     sha512.run = "e8566d352bb39bbe6256dabb57d6743db7dfc98e491683eab76ffa86ae9d6d0cf53726999620920b4845015bbbaa6cf48e8d4c82dbffd841d00d55bd2f2cb464";
     sha512.doc = "efb52d0b4df908a4425fb9d5f2767c54dd7b2d614076374d81b15f53322528a24231feb9145de9bf1f0086a6ffcff37d529a925fca879984b4c5860b00b12a1d";
     hasRunfiles = true;
@@ -3943,7 +4039,9 @@
     revision = 66115;
     shortdesc = "Free replacement for basic MathTime fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map belleek.map" ];
+    fontMaps = [
+      "Map belleek.map"
+    ];
     sha512.run = "4ae91c01e67fcefd46da99d6bc8379b3829e4e0e88f512f36bfc9743d075090d0c26d0eef11dde5125b344e85ccc3c5a31569f3a1078d00d364ea80120bec30d";
     sha512.doc = "93266af4f4293639a123f5ba88e2680d87e6d815f49cd7dc6c9322866dfb22308716da1e362699aeded819e7817987938f70cf48c9166e7127836de743e5dd63";
     sha512.source = "b8547d1b3da8be829b7fe99d0cd7cee8fc6b7158c1799712ea85614534d0b020cfafdc1696a0e5037ad15b215173e1461c64f86a1f52795209272aed9991d107";
@@ -3964,7 +4062,9 @@
     revision = 20031;
     shortdesc = "Bera fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map bera.map" ];
+    fontMaps = [
+      "Map bera.map"
+    ];
     sha512.run = "103b2db8f7bccf6a9729faae793246d2933667295ba404fdaa7b61cfbce0f1209ea27e7a2a63846c6550b41214ff496a62598bbb9b731c087b8bba9e0abade80";
     sha512.doc = "2606c87871d6f6ed27b2a5e49117c50f00573bc6b9ce249d1433da214764b220eb00c73e59be43e32e8a4827c397c53504103e00b7e5602de5df5bb817e2145d";
     hasRunfiles = true;
@@ -3974,7 +4074,9 @@
     revision = 32215;
     shortdesc = "Berenis ADF fonts and TeX/LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map ybd.map" ];
+    fontMaps = [
+      "Map ybd.map"
+    ];
     sha512.run = "70dd547d0c5138f2a61e20b4585160e5fef281bbba72ba8dcc7032efa957d80c158ba88fdc0dda9982dbcd69a48d5d54286f52d1425a5819e54e05d79eb9dd49";
     sha512.doc = "f076717ff948247589225fbe4fcd92114d719526e535d645d767a3f7fdaafd3a6ca84c3a60997074186974ebf045e31a51d16d53c8a5fdc78a2461733cc66372";
     hasRunfiles = true;
@@ -4024,7 +4126,9 @@
     revision = 46374;
     shortdesc = "The script of the Beuronese art school";
     stripPrefix = 0;
-    fontMaps = [ "Map beuron.map" ];
+    fontMaps = [
+      "Map beuron.map"
+    ];
     sha512.run = "623d3b7d8747ce1776de9d0ee6eec013c2050f9cb4a521167bcf23435d5e30c1233ee869ccb299360cfb6f8f4b4034a77d4fe601f789211b290684c0858462a2";
     sha512.doc = "812dd30a9b49d7ab5e529f3c7ef934be5d72b75adeec1a38cba77c867525243ffd0d4f4901c9100e6518eb0a8c35e208157b8e3669d3700203ab7fe95aa29845";
     hasRunfiles = true;
@@ -4116,7 +4220,9 @@
     revision = 27401;
     shortdesc = "Improved quantifier stroke for Begriffsschrift packages";
     stripPrefix = 0;
-    fontMaps = [ "Map bguq.map" ];
+    fontMaps = [
+      "Map bguq.map"
+    ];
     sha512.run = "8a795ba517941a07ec1445a16947ce5028cfd61ba2b5c818bc894ffa73d439162271d6269c67c8ee7afd6d13551d4a9bf73763c00b719bf3a9019a8e7d368256";
     sha512.doc = "1bfe38f2d904af63a5a0fd2ab4accd04fbd294083cc462f7d53f79819f40dccf1c3c729ad591d15327eb120bce847ae62c2bc9b9554ea278c1974e3b37296dc5";
     sha512.source = "108ecf4268a4491904d46f5aebdace10f8aab84a4333fddf94788b677088a584da284fd763a8f0ab19cbc335a3a143489a49836ba059971483faeaf40ecbb0de";
@@ -4147,13 +4253,17 @@
   bib2gls = {
     revision = 69635;
     shortdesc = "Command line application to convert .bib files to glossaries-extra.sty resource files";
-    deps = [ "glossaries-extra" ];
+    deps = [
+      "glossaries-extra"
+    ];
     sha512.run = "e73d6e0c7596252dade43291fb26ae02c0ed8f2650498294d2b1c36d69e777411fc1637619226f34f80c7e5cc06d3ae07f3b5d2eb144a2e69bde16a22c4aa449";
     sha512.doc = "46d4a219969aaf897cb4c7705a00d1558b7b16cf0d4b16121672df8df2bdb0c0d0ee3350687b430f1d1d29eacee330aaee3206ef664c406c1d2b1c8c316de0ff";
     hasManpages = true;
     sha512.source = "662855e5579429694325042e0256385b9a5c40a4b54e6cf98712432469243de567cd5ea68f1ea93a593428eaeaf09d9d5a97e3e670dfe9ba90cd6f8c2383a3d4";
     hasRunfiles = true;
-    scriptExts = [ "jar" ];
+    scriptExts = [
+      "jar"
+    ];
     license = [ "gpl3Plus" ];
     version = "3.9";
   };
@@ -4187,7 +4297,9 @@
     license = [ "mit" ];
     version = "0.0.19";
   };
-  bibcop.binfiles = [ "bibcop" ];
+  bibcop.binfiles = [
+    "bibcop"
+  ];
   biber = {
     revision = 68188;
     shortdesc = "A BibTeX replacement for users of BibLaTeX";
@@ -4206,8 +4318,12 @@
     license = [ "artistic2" ];
     version = "4.0-1";
   };
-  biber-ms.binfiles = [ "biber-ms" ];
-  biber.binfiles = [ "biber" ];
+  biber-ms.binfiles = [
+    "biber-ms"
+  ];
+  biber.binfiles = [
+    "biber"
+  ];
   bibexport = {
     revision = 50677;
     shortdesc = "Extract a BibTeX file based on a .aux file";
@@ -4218,7 +4334,9 @@
     license = [ "lppl13c" ];
     version = "3.03";
   };
-  bibexport.binfiles = [ "bibexport" ];
+  bibexport.binfiles = [
+    "bibexport"
+  ];
   bibhtml = {
     revision = 31607;
     shortdesc = "BibTeX support for HTML files";
@@ -4983,7 +5101,9 @@
   bibtex = {
     revision = 66186;
     shortdesc = "Process bibliographies (bib files) for LaTeX or other formats";
-    deps = [ "kpathsea" ];
+    deps = [
+      "kpathsea"
+    ];
     sha512.run = "568a72b269dbcb0d5c723e346e8118a0ed923273460d9518891616cbf7b174b17cd75acff02f092176d71b6020483de75df20994bfb66c2cd46432c33d5ade3d";
     sha512.doc = "4f95c010ded89688791e1115ce4e167740b43e9e48d596b2621e6c18b4529479da9441351b463946e7efa1e428cba3d60112c5f7a5e008733a00fc64050723a9";
     hasManpages = true;
@@ -4991,7 +5111,9 @@
     license = [ "knuth" ];
     version = "0.99d";
   };
-  bibtex.binfiles = [ "bibtex" ];
+  bibtex.binfiles = [
+    "bibtex"
+  ];
   bibtex8 = {
     revision = 66186;
     shortdesc = "BibTeX variant supporting 8-bit encodings";
@@ -5002,7 +5124,9 @@
     license = [ "gpl1Only" ];
     version = "3.72";
   };
-  bibtex8.binfiles = [ "bibtex8" ];
+  bibtex8.binfiles = [
+    "bibtex8"
+  ];
   bibtexperllibs = {
     revision = 68910;
     shortdesc = "BibTeX Perl Libraries";
@@ -5018,7 +5142,9 @@
     ];
     version = "1.9";
   };
-  bibtexperllibs.binfiles = [ "ltx2unitxt" ];
+  bibtexperllibs.binfiles = [
+    "ltx2unitxt"
+  ];
   bibtexu = {
     revision = 66186;
     shortdesc = "BibTeX variant supporting Unicode (UTF-8), via ICU";
@@ -5028,7 +5154,9 @@
     license = [ "gpl1Only" ];
     version = "3.72";
   };
-  bibtexu.binfiles = [ "bibtexu" ];
+  bibtexu.binfiles = [
+    "bibtexu"
+  ];
   bibtools = {
     revision = 67386;
     shortdesc = "Bib management tools";
@@ -5272,7 +5400,9 @@
     revision = 53837;
     shortdesc = "Handle bit-vector datatype";
     stripPrefix = 0;
-    deps = [ "bigintcalc" ];
+    deps = [
+      "bigintcalc"
+    ];
     sha512.run = "b1c9121312404d3daf6907623972c35e0f36cfb4197e589bd937c145506cb5a2d9d8c1f665ae3b4d3ec093e55bb146c0b67cd0858425b704fe29989b9924ccb7";
     sha512.doc = "a5a3ba9d27dc3d9658c1d261f798fdc5e6dc4cedd85287ef77d2a0341048d71f8575d4fbd711e499233e0991c51765953931d87d40dd22fa2a4e8ecb9f2a8dab";
     sha512.source = "40580c17ac81137d533eb013ed14bc092281b354ce42883c0a3c33ee7843be7ebed0ce642746ba9e173bedf8ee6f6c243b65e692ef2a50654ada23e323166c89";
@@ -5284,7 +5414,9 @@
     revision = 67598;
     shortdesc = "The Bitter family of fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map bitter.map" ];
+    fontMaps = [
+      "Map bitter.map"
+    ];
     sha512.run = "217870554e509c3bbfb70d3da9e3ccc4fb1013db4508034ace728ff114e31eb9f56511b1e89c702d21cf1b522ae799601a0908ffe70a3856aee29c595a22483e";
     sha512.doc = "2bff9fef75632fb43c59cba04ea531eba8420c3841a0343cbb1d56995a8c322beff036da61d494112e9c89f82d367ec3bcc9e39ecbe153c99dc012cbc8c15bea";
     hasRunfiles = true;
@@ -5595,7 +5727,9 @@
     revision = 46480;
     shortdesc = "A collection of book-hand fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map sqrcaps.map" ];
+    fontMaps = [
+      "Map sqrcaps.map"
+    ];
     sha512.run = "8a341131397637618acdb9bedc835a4ea98f40d55a8a2b312ac820821b00a1f059f37cde2aeb3f5b715eff9928b579a531c4c12d3bdbb3a7629a50d363f1a4cb";
     sha512.doc = "b5901beafa849a52afaaa7cf09ebab327640eb5ad1c627bea5f8dde2c98aaf176f23f0c9460e7fb2212ce9b4038800c3a3c572830d08d059a04d3574d1015a75";
     sha512.source = "4df12247bff50722ae11636ecc0071e03d8d296ea958d2a1b84b5b2952f35d890be66af4b85dcf1fe2599e787e71c1b9e7f727a8be9b4ec79eb1bd6aec21925d";
@@ -5617,7 +5751,9 @@
     revision = 61719;
     shortdesc = "URW 'Base 35' font pack for LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map ubk.map" ];
+    fontMaps = [
+      "Map ubk.map"
+    ];
     sha512.run = "8bef9b6e467384a2b5adc6bd61ed2e410f026f6ee867a5a62239c55391ebd6eb5e521c82f9bd0e4de995591458ec32f98ce821493a85113beaeef6535b938ff4";
     hasRunfiles = true;
     license = [ "gpl1Only" ];
@@ -5688,7 +5824,9 @@
     revision = 54512;
     shortdesc = "Mathematical alphabets derived from the STIX fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map boondox.map" ];
+    fontMaps = [
+      "Map boondox.map"
+    ];
     sha512.run = "0e1cbb6ec227a2cd17852e71f16b4972de18a076fdd4c4416ffef1416f3332fd351036fead4d82a69b5aecdf392bc7e1af85ca5bb1e44c153d25cc86ccfc631c";
     sha512.doc = "72e77b36b79bdad663db8c707daaca8d324fd3f50edc8cb7780a641f5d0217d3fe4c2b758c1775de0ce5fea3d44e9ea08e745df51485b4d1e3de11e2a98c74f0";
     hasRunfiles = true;
@@ -5907,7 +6045,9 @@
     revision = 28363;
     shortdesc = "A handwriting script font";
     stripPrefix = 0;
-    fontMaps = [ "Map pbsi.map" ];
+    fontMaps = [
+      "Map pbsi.map"
+    ];
     sha512.run = "f8c7107b0e98cc6e402ec8ee6f5e6f9a1b8e0d046dddae9486e4ca68327f370a75a0f90000939828605334b3ad3c5caaf5e541c7933c5545fe3e531066fa650f";
     sha512.doc = "41ad7b1afc7cb0f4bfdf0bcff4c1d85f3d9603c3d48ccb62f94a6fa2258cf3f60f03ee1b4b5756d85a77ba4ff9afddbccaba1c4bd5b69d85ce4fed206aa16b1c";
     hasRunfiles = true;
@@ -5964,7 +6104,9 @@
     revision = 25185;
     shortdesc = "Basic Support for Writing Burmese";
     stripPrefix = 0;
-    fontMaps = [ "Map burmese.map" ];
+    fontMaps = [
+      "Map burmese.map"
+    ];
     sha512.run = "7bce3a31febfc6a959ba4779d975cf93276a0bd1115e06a50a3c8d705e49e8d6747ecebc7eac2147f021a538dda1bb241d8f320ef1486229c930141e06d6ae26";
     sha512.doc = "4a7f3628efd913a362786564dd260dc1a63e51a397af3d92222db6f758b7a7792b13e58422d2604ae98f615fb5fc42e77f265e505236db9bc981d7951e0ee1ed";
     sha512.source = "066d164d97f4fa9e1050d75c3c20997be859718a2be37c465010040f969b2d3aa17edc3c241f5aca45d91dd12517d72a731d02954088ee83ff5aeec3be0b0fcd";
@@ -6251,7 +6393,9 @@
     revision = 68373;
     shortdesc = "A humanist Sans Serif font, with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map cabin.map" ];
+    fontMaps = [
+      "Map cabin.map"
+    ];
     sha512.run = "8227929382396ece0ddac74095387ee0c96d2102fffe5121f89182836792933a6ad66ded538229c5bd12f65fe7518d00a333835c17537761f309db578e81bd3b";
     sha512.doc = "95353266181cfda03973d68472ad564185abac4d828141e339183f69380f99151e0a3165f099235db54be8a3ee35ffe069512240633972f4b7dbf14ca1e06126";
     hasRunfiles = true;
@@ -6266,11 +6410,15 @@
     sha512.run = "a0405befc4ed9217cedc4abc78c355b869bb803fa4be32245198ba4aa8151884ace023b3465db3b4757c923d0425fd1d186e25facd7c29d05d5072668a9f0e3d";
     sha512.doc = "93108475f74b2356cea79a8403729df7c24e95871680b0b53f9316a7b158aa973ce108632a121198459352968bfdfd79f265d4aa301ecd00ce55cf56db5f976c";
     hasRunfiles = true;
-    scriptExts = [ "tlu" ];
+    scriptExts = [
+      "tlu"
+    ];
     license = [ "lppl13c" ];
     version = "1.0";
   };
-  cachepic.binfiles = [ "cachepic" ];
+  cachepic.binfiles = [
+    "cachepic"
+  ];
   cahierprof = {
     revision = 68148;
     shortdesc = "Schedule and grade books for French teachers";
@@ -6285,7 +6433,9 @@
     revision = 64549;
     shortdesc = "Support for the Caladea family of fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map caladea.map" ];
+    fontMaps = [
+      "Map caladea.map"
+    ];
     sha512.run = "d5dccec03c75e7ae315067527ae4d88515d6bbfb6d9b1336420ea78daaa7718497e8040f75a0a531c91c2b0eae728cfddc824e623bd5c73471192c809550dbf1";
     sha512.doc = "e3f84460394d1a806a06836535c8f9110715608e2110743863e4c9d37abe696a3169e904a4ef507105d54790af4165d3a5a7559b28568b86b73761975b8c0b3e";
     hasRunfiles = true;
@@ -6360,7 +6510,9 @@
     revision = 24302;
     shortdesc = "Type 1 version of Calligra";
     stripPrefix = 0;
-    fontMaps = [ "Map calligra.map" ];
+    fontMaps = [
+      "Map calligra.map"
+    ];
     sha512.run = "325764734735203d4e355d33b30a289d699fa10377212e39bf33d3195f2dfdebd4397785d69d6ca392e040cd2fd5bad20b0055b5f92620149fc96ed0d6d337a7";
     sha512.doc = "c1acbd3ae35c423b9414b5e132e1a164d4b102ecf9d7305548bb5d203a8d3a25309e2aa5a5d09277d310b9446013ca2db65f9ce6d5783432ed325838bfc9a48f";
     hasRunfiles = true;
@@ -6431,7 +6583,9 @@
     revision = 54512;
     shortdesc = "LaTeX support for the Cantarell font family";
     stripPrefix = 0;
-    fontMaps = [ "Map cantarell.map" ];
+    fontMaps = [
+      "Map cantarell.map"
+    ];
     sha512.run = "37fd0c1986f76d823be6feecdb76bdfdc8222872355d0cd66c340950ed0ad90e057acee0f90ad0e41fc77b61a682f8bd390d98c8ed559015f9a0a65014b11b2f";
     sha512.doc = "17c118e49fb173158f7c5cfc31c1bee1063cd38bd1ba976e2629a648c795295e3796e845b735cab07de99296088d09ed9d87ed92c22af3e1dd1ec1a7a90a04d4";
     hasRunfiles = true;
@@ -6505,7 +6659,9 @@
     revision = 64624;
     shortdesc = "Support for Carlito sans-serif fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map carlito.map" ];
+    fontMaps = [
+      "Map carlito.map"
+    ];
     sha512.run = "7b958d163439d9f3e7d6f8cf998beb799013a051a1b79719930d0efbc13e167170e330908a947a9708f55897e6c0e56ea020fee5876b6f3bb9e76dcc5997a66a";
     sha512.doc = "6718aed70469e95dc4d077552b453f81c9fbbcad6201194eb264bba6aa9c9f9b1b1b09d1ed987b963d6b09e13afe5dfda1436333f0c44ee3c368caa90d790613";
     hasRunfiles = true;
@@ -6515,7 +6671,9 @@
     revision = 15878;
     shortdesc = "Adobe Type 1 format of Carolingian Minuscule fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map cmin.map" ];
+    fontMaps = [
+      "Map cmin.map"
+    ];
     sha512.run = "61ae809b5e4e7ff493de30ebb825870ab9caa8dc64d6d3c82d4654fece82dece4937c798e3c1e5086a84411edbcaf8c2ea777a9534865b38d4bc5457ae59aa25";
     sha512.doc = "284d9f740d1e4b1a4c989b527bac80e54afa74013d1234bf9e1c2d42ac2ca4387c3b0d24004818e1fb92b001582114a4432480804c721cc7df0bd3b85835f111";
     hasRunfiles = true;
@@ -6547,7 +6705,9 @@
     revision = 68485;
     shortdesc = "The Cascadia Code font with support for LaTeX and pdfLaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map CascadiaCode.map" ];
+    fontMaps = [
+      "Map CascadiaCode.map"
+    ];
     sha512.run = "3164663a54bc3ffe39aee9cbe9501a3d405fd8879059081ee2f0f66bb523686e25f3a7fdb69e61cb623a17ed21f21b0d6752f8c05b09590672d04315d5d6594a";
     sha512.doc = "c84b14187b080c744a33319a4ef791be09b4517d8cd0e9ed2dbedfbb37a09785dd6244a4e4dd1cf67cc8f6ff608b6ba8d2299c7074921f6443d6208c702feac7";
     hasRunfiles = true;
@@ -6665,8 +6825,12 @@
     revision = 54080;
     shortdesc = "Complete set of Greek fonts";
     stripPrefix = 0;
-    deps = [ "cbfonts-fd" ];
-    fontMaps = [ "MixedMap cbgreek-full.map" ];
+    deps = [
+      "cbfonts-fd"
+    ];
+    fontMaps = [
+      "MixedMap cbgreek-full.map"
+    ];
     sha512.run = "0e7cecfdfa102113f75f46f9c8bc76f578fca6c967128bb8b203af76cc64cbefd123ae87a8b04a9780f498517bd9f660d12e2dc586220f2c12cc8aa76f1aa40a";
     sha512.doc = "a069b7ca1b46e5656a05a5e38a0f9ea5c3ab1e5301edc47d7fdd43817a8f5d641980c2e54b7731dcbcf16e12f0dff17df5a816d66f7bd2b613232788815bb8e0";
     hasRunfiles = true;
@@ -6687,7 +6851,9 @@
     revision = 58602;
     shortdesc = "Polish extension of Computer Concrete fonts";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap ccpl.map" ];
+    fontMaps = [
+      "MixedMap ccpl.map"
+    ];
     sha512.run = "3d0bef5ca5c37f1cae98bd0555d714ed4408b6fde4ffcfa78cf2512114c9aa09b81b23bc6d76705f64dd08ea493add2027e7af997357ff5c4cc360deae11ba92";
     sha512.doc = "f5503008430e969a604973e4481f8ab51269a2c3570f757787eb7a1a9d11b8508ec7ca1709a21b9e2299059a9c8ca20e5806093bd24166eb44e167c06e4fd0ee";
     hasRunfiles = true;
@@ -6719,7 +6885,9 @@
     revision = 54512;
     shortdesc = "LaTeX support for Creative Commons icons";
     stripPrefix = 0;
-    fontMaps = [ "Map ccicons.map" ];
+    fontMaps = [
+      "Map ccicons.map"
+    ];
     sha512.run = "4e755538440c87c2bc1f8d57d41ce78ddaeae9a0e3c1c85aeed172c2a25e952963b26245cd1ddc3222285c883ed4574ac4228d17f1263db31cc330bdb1f345a4";
     sha512.doc = "0e4216adcbe01d8feb95d31e2df143ad739f66c2239196f9f5c58638a87d320949256baee32703663d6116bd13b4af607dd38d16d4ccae218af55f5402308c03";
     sha512.source = "af84fa01272028018fbcb4fa9e04971b9580b1e6fd63f0e07419a088005b75e852a122a5ee0416afb7391ff165ae39549f8931a157aae1ea272d97be05132e8d";
@@ -6892,7 +7060,9 @@
     revision = 36195;
     shortdesc = "Enhanced support for the Latin Modern fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map clm.map" ];
+    fontMaps = [
+      "Map clm.map"
+    ];
     sha512.run = "02e30f6d6d19bede2121ee0a8db20c3d96c26ef000ffeab08e800bb1da994dfa2cb356a6d67c815e8579566cf97b33b956c79940de61725524c4a239f7c1a251";
     sha512.doc = "32488ecec8a781f5548419a782775725e6b32276bab5e1d7f660b99468d47e71087fb35b8f4534f874b1dcf236d04eae9d7920fcf0bb46e139a4e7fedc415ef1";
     sha512.source = "643e7f1b48e3947506e97e1596972b686fab538511c2a0749ad936285c1e097ca8677730ea0748d1def6d6318030e7bb289e55d0c8f0ae9fc01fb308e974c24d";
@@ -6979,7 +7149,9 @@
     revision = 64998;
     shortdesc = "CharisSIL fonts with support for all LaTeX engines";
     stripPrefix = 0;
-    fontMaps = [ "Map charssil.map" ];
+    fontMaps = [
+      "Map charssil.map"
+    ];
     sha512.run = "214d5ac5b367e863424c54f86a841c4d1d0eac7e54cb6421619906df0e6d81661ac74e6db7369281637252ff295535e8f930442851cd0268fe9d007ddf07a913";
     sha512.doc = "3f492d929afbaff4d5c1aac1d57fc719caa04e4428de280cb8f3a6d376f6f7c3084ea8ccdac891aaa9f754be12eab99ace392d4090fe692b1d195ed12b619b49";
     hasRunfiles = true;
@@ -7025,11 +7197,15 @@
     sha512.run = "4782a9fb2223102492071b20efa40bdfaf9447165a108f680d2148c057507349a0c14f9274265ee2954b75e5f6fc8b1457115f60324e4b6598954babc565dedb";
     sha512.doc = "dceee4bd22f760a6bc1a48fa49b0c68a0579123dbbb7422ce71db2eff910156425a0d90f62b9d62c4f4763d657c552f0cc5298a8627dbe98f0d5b6bca782b8db";
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "lppl13c" ];
     version = "2.7";
   };
-  checkcites.binfiles = [ "checkcites" ];
+  checkcites.binfiles = [
+    "checkcites"
+  ];
   checkend = {
     revision = 51475;
     shortdesc = "Extend \"improperly closed environment\" messages";
@@ -7050,7 +7226,9 @@
     license = [ "lppl12" ];
     version = "1.0";
   };
-  checklistings.binfiles = [ "checklistings" ];
+  checklistings.binfiles = [
+    "checklistings"
+  ];
   chem-journal = {
     revision = 15878;
     shortdesc = "Various BibTeX formats for journals in Chemistry";
@@ -7063,7 +7241,9 @@
     revision = 17146;
     shortdesc = "Arrows for use in chemistry";
     stripPrefix = 0;
-    fontMaps = [ "Map chemarrow.map" ];
+    fontMaps = [
+      "Map chemarrow.map"
+    ];
     sha512.run = "4a95a6b81bd649764dea052984eb21c7f9e89c612ff96d23907eefce29e2d33fe92bd7944d94a6b108213d1820b3340feab35e3646f727288cb1df9b78302990";
     sha512.doc = "882e6c6fbeb5223fc1d2404e8b9ef9bce2c3b2ed1279d2bdc45616476a856c63fe07cdeb42e27f3bc459199f3537fc620ef08c00f4eea83df77502463fc30ca6";
     sha512.source = "19903052aaa97902f721892bf4a9df8d685db46ffddb4cdeb4df280c24a72d2166bc13408a32d5c760272aee45ad5516b899c0024ff3f077fec6825f94e36736";
@@ -7126,7 +7306,9 @@
     revision = 61719;
     shortdesc = "Command for typesetting chemical formulas and reactions";
     stripPrefix = 0;
-    deps = [ "units" ];
+    deps = [
+      "units"
+    ];
     sha512.run = "907efcb72ebf3a315bffc11a8d78caa82b510993b4a4de1da8a960bbd6c66bdf5bc202933fce5f4f0626ad4507a5095b571487beb2414bc49bd37e735f0299f1";
     sha512.doc = "c839fed7313744c6abb77fd4f803524c47af7f9ca0e4b533b307a198cc2fefc072541d58afca8cfab6a17b85ecdda4d3bacd451ac9616b47a448560a97f3b62a";
     hasRunfiles = true;
@@ -7402,7 +7584,9 @@
     revision = 65029;
     shortdesc = "Using the free Chivo fonts with LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map Chivo.map" ];
+    fontMaps = [
+      "Map Chivo.map"
+    ];
     sha512.run = "ef91cfbaa46c34bdfd891c3bb752e203d1cf495d5a9f12523b3c59fc591c7abd78ad943d3f4da8abb46fea9f25cfbd280785c721cde155851fa34f3f3a71afdb";
     sha512.doc = "b174894b8ebc6bf729ca8c8cabeb9d3fcc709d4f3e0947c689489e4caaec985f35265d476e44763fa5bfccb83308857b03cdd01ec8e7e47cf406d6a86a10d071";
     sha512.source = "768f1a93665644d547e611abb5b773390205ba2839812ce222bd7d7b184851d46c7e1915d290e6ee87490faa6a8b0a2c59c3fe4a16d86bdb28fa77d6df4e8f3e";
@@ -7433,7 +7617,9 @@
     license = [ "gpl3Only" ];
     version = "3.1.2";
   };
-  chklref.binfiles = [ "chklref" ];
+  chklref.binfiles = [
+    "chklref"
+  ];
   chktex = {
     revision = 64797;
     shortdesc = "Check for errors in LaTeX documents";
@@ -7565,7 +7751,9 @@
     revision = 64550;
     shortdesc = "LaTeX support for Cinzel and Cinzel Decorative fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map cinzel.map" ];
+    fontMaps = [
+      "Map cinzel.map"
+    ];
     sha512.run = "5e02892250c5b787e4c6288beae9be2b9a2a2929a31a18c40ab3bb7609a23741e829747aaaa639f8579f229005a2171070853ca79e23b7185ee5edfa090bcf13";
     sha512.doc = "7edcb9894dfbae936ef6dbde1645890feb50ba5914ffdcfd4539a44f8c8ce24f150662fec06663de54e8bfa69479c8ce006038f063f6587bf70f7c3449623a4e";
     hasRunfiles = true;
@@ -7658,14 +7846,18 @@
     sha512.doc = "3a432364b82ccbbe402e5aa10e2c17ff5a9d6e9e8611c8ac0e8385fbcc43418adf9a3d2237d10fe9f98e8b60336945fa5ade19583f35c9224a5ec3885932559b";
     hasManpages = true;
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [
       "mit"
       "cc-by-sa-30"
     ];
     version = "0.4.7";
   };
-  citation-style-language.binfiles = [ "citeproc-lua" ];
+  citation-style-language.binfiles = [
+    "citeproc-lua"
+  ];
   cite = {
     revision = 36428;
     shortdesc = "Improved citation handling in LaTeX";
@@ -7710,7 +7902,9 @@
     revision = 43444;
     shortdesc = "Typeset Hebrew with LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map cjhebrew.map" ];
+    fontMaps = [
+      "Map cjhebrew.map"
+    ];
     sha512.run = "65a73380bcfd8892ab2eb93d088076e2d5371019244bc8a65a4695e69a45f743248fce59557533add032a02a0b7ea4f02d6ea4634265d2d9718a5b100f5a18c6";
     sha512.doc = "591d932ae099aa168d55f9479842d25c5212dd7aed27eac1a5d05a111a8a396baae7c73ddafe1087a7b8008528c50b1a85825851643d8107133d41470ce1e397";
     hasRunfiles = true;
@@ -7746,12 +7940,16 @@
     license = [ "gpl3Only" ];
     version = "20210625.0";
   };
-  cjk-gs-integrate.binfiles = [ "cjk-gs-integrate" ];
+  cjk-gs-integrate.binfiles = [
+    "cjk-gs-integrate"
+  ];
   cjk-ko = {
     revision = 70332;
     shortdesc = "Extension of the CJK package for Korean typesetting";
     stripPrefix = 0;
-    deps = [ "cjk" ];
+    deps = [
+      "cjk"
+    ];
     sha512.run = "e5b28f36f37e407cdcebf10dbbcc34b4a286b6bf04e6722c1821ca9cde7037893109a81e5195622b5c57de726c408371734aa69b0e1cebef25508794e86a1422";
     sha512.doc = "cbd60b19403c80674b3d2954dbc2728529b81c38fdf84ad25607e188aec9aa14c5496b73d5c998773ebc9a4825748f85a5b6f37f53fcf8fdccd99f7288f6f426";
     hasRunfiles = true;
@@ -7824,7 +8022,9 @@
     revision = 54512;
     shortdesc = "A serif font family";
     stripPrefix = 0;
-    fontMaps = [ "Map Clara.map" ];
+    fontMaps = [
+      "Map Clara.map"
+    ];
     sha512.run = "549efe7ed1b523e0f414d8f6401137cb0078256f514253199f85e436a5bac595d7525380fd986fd0c674d087decb23fc401f41a67b193c58f1e8e3bf95a8283c";
     sha512.doc = "6b7912050fd352e3095f6abede303f67d3c779b778825852bdaa37345dfec91df860e5b9d0f2fccb7e4e20abfb93740f7f8dba5959aa1d630b7cd990bc0fcf77";
     hasRunfiles = true;
@@ -7878,7 +8078,9 @@
     revision = 64400;
     shortdesc = "Clear Sans fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map ClearSans.map" ];
+    fontMaps = [
+      "Map ClearSans.map"
+    ];
     sha512.run = "010e18c8a29e46acba07013b8ed1ec535373199cb2c62d895c906b24800e2055ab3aeadc0ef8bf761c1d47925c8741bdfec4d18b5cbcb680b07fc258c1313126";
     sha512.doc = "a2be117afd912bab15e5ef69cfd54dd66385699677dc357233efaa73e2bd2cfaa9a29c0cf492f48ecf152a9640c95a4ebdee9366f2c27bcead571b5177345ed1";
     hasRunfiles = true;
@@ -7985,7 +8187,9 @@
     license = [ "gpl3Plus" ];
     version = "1.3";
   };
-  clojure-pamphlet.binfiles = [ "pamphletangler" ];
+  clojure-pamphlet.binfiles = [
+    "pamphletangler"
+  ];
   cloze = {
     revision = 55763;
     shortdesc = "A LuaLaTeX package for creating cloze texts";
@@ -8044,7 +8248,9 @@
     sha512.doc = "5dec8c3c1ecebea760f25d5acdf6371ee67c40b38f64b24d2b47346caaa3a2a20d18578c37e14586fc16aa81a4f50761444f26206b01901913e684e413ecc0ed";
     hasManpages = true;
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "gpl3Plus" ];
     version = "0.6";
   };
@@ -8057,7 +8263,9 @@
     revision = 57963;
     shortdesc = "Computer Modern fonts";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap cmtext-bsr-interpolated.map" ];
+    fontMaps = [
+      "MixedMap cmtext-bsr-interpolated.map"
+    ];
     sha512.run = "e65b2096ca183ca21d8ff987489223bc98750fcbaf4f9f9a9996f5153a76c5587d1ad77693234d02f80753b8b8cb86fd957514f82065bd7aab9eb64bad9003a3";
     sha512.doc = "39ccdee82d86f01e11aaeb53844639b4f976677c0baef7675817fafe4263e8e44cfec144f6fce265c9c80d9a9373a2f46ac8a55b7f20923c680eaddd0222a045";
     hasRunfiles = true;
@@ -8067,7 +8275,9 @@
     revision = 28250;
     shortdesc = "Type 1 CM-based fonts for Latin, Greek and Cyrillic";
     stripPrefix = 0;
-    fontMaps = [ "Map cm-lgc.map" ];
+    fontMaps = [
+      "Map cm-lgc.map"
+    ];
     sha512.run = "5fcf591d132314d8ce160e3070036f6fba56962ed40d8fee7b58b0e8219a8124bcf380b1be4e943209ba230f05cfcd374c96e3e799695a018356d12be3215760";
     sha512.doc = "eda2082e865dec858a010b757a2d60e0be9526d2e5f2c276d1c5e8d386a71f4d7631d1af8dee009f9d61e0682904697bfdc89222863499c8e1aca2b11d0f3ed9";
     hasRunfiles = true;
@@ -8136,7 +8346,9 @@
     revision = 56414;
     shortdesc = "Computer modern mathematical blackboard bold font";
     stripPrefix = 0;
-    fontMaps = [ "Map cmathbb.map" ];
+    fontMaps = [
+      "Map cmathbb.map"
+    ];
     sha512.run = "8e720662ac4d00557b143c883e9d410da8593cdfa056b5320e0ff348c2c0e37f9c0045341c28e583aa544790e576d9b7db8c80f93cffd8c4da699e46e35f73e0";
     sha512.doc = "f1b0b1067260287c66347e52111883834d575e5857a3aede8e14930252a284b5c0bd6bd7247c9ee36462d57a63d351110582cb66ca894d9430d476445f37da44";
     hasRunfiles = true;
@@ -8158,7 +8370,9 @@
     revision = 68681;
     shortdesc = "Computer Modern fonts with cyrillic extensions";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap cmcyr.map" ];
+    fontMaps = [
+      "MixedMap cmcyr.map"
+    ];
     sha512.run = "c42006e8d596b231c3ef7f3f7123292a9563f6bb0881a7807625bd05e49a67ffd37d6e0965e6da36cdff816cdbf780e54b79b999ee5d0a18fad315f2724cc839";
     sha512.doc = "153db17097c5a1e6bbad3e13e7bbfaf13bd8380633f62e9323d2c0514a2649b001c997bad9e7495a88f5cf9c1289f2987d147e22bdca6100e7adc1d88561d443";
     hasRunfiles = true;
@@ -8188,7 +8402,9 @@
     revision = 54074;
     shortdesc = "cmexb10 metrics and Type 1";
     stripPrefix = 0;
-    fontMaps = [ "Map cmexb.map" ];
+    fontMaps = [
+      "Map cmexb.map"
+    ];
     sha512.run = "584aa7d96c86be809a1da92955c92c9e73946fc236e9991925431bae4041001f6b4d7029b13004ada0435ae291a90fce8990e527188e1f35a3be922a39faefed";
     sha512.doc = "e6f362bfa79f6c32537245af645f8b6a343ef5a9204b9cd50cfab9337e9617554bfc3fc813fe4c65d2664fc617d460f15a4ea099961699bbee82381df0856760";
     hasRunfiles = true;
@@ -8205,7 +8421,9 @@
     revision = 17964;
     shortdesc = "Symbols for linear logic";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap cmll.map" ];
+    fontMaps = [
+      "MixedMap cmll.map"
+    ];
     sha512.run = "8470819c5a37b3d8d1d44aae53b62ff020087e1125f381e51ef4a639fd6b2394c3d6f15a3a86fe70e61a4545213059bde6fc3e9d06cd054e46218e90e64c0543";
     sha512.doc = "71a7cd27a2744e8e3ab09b8fbbc514eb2e38d9740349139212f0861c67948fa1a98728acb1d22a4397fe95d8efd5c6fcb87a1843a1f9dbd0d161e2e835e1ac11";
     sha512.source = "de17c8e0627408358ae3de41a5bf557d99abf76bb480ab28ef9df424d8b7ae1f73ca2e30f4eeb26ac9eb2dd36ddafa143cd49ce6618b2ca36fcfc6e22e83d217";
@@ -8244,7 +8462,9 @@
     revision = 54706;
     shortdesc = "Computer Modern for Serbian and Macedonian";
     stripPrefix = 0;
-    fontMaps = [ "Map cmsrb.map" ];
+    fontMaps = [
+      "Map cmsrb.map"
+    ];
     sha512.run = "2fef47e94ba1a5ad0774667ac84e29040a3715c413990585aa09c866297beb61c7da533685bc1e102c8edb30d7bf6bddf8fee5486dd6d4d6ea9ebe51d2424196";
     sha512.doc = "9200b4da942f308cc60dc53b2fba9cefb7448e95d89f0c34d03604e5f7a9119aea4e762d70cfa35fd12f555f8c4ae1ab4c0b12abb04742e17b6e680bd80cc9d3";
     hasRunfiles = true;
@@ -8265,7 +8485,9 @@
     revision = 54735;
     shortdesc = "Upright integral symbols for Computer Modern";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap cmupint.map" ];
+    fontMaps = [
+      "MixedMap cmupint.map"
+    ];
     sha512.run = "ce08962145a80b7b6748145a7385cc78e361295d85ea96f24397aad3025b7eaa2e962d4d30380ca1a8d22da7175a3135abacef78a76d9d4615f03aed049a4b10";
     sha512.doc = "80cab8f9387e74db3b3650b8e7b055ecf1e094f75f0e43c4540b32658e43e392c82f3fa8ab6a6c08495ef6f9f2773501a7f282acaf7d7d640f0bd891cb8b1f08";
     hasRunfiles = true;
@@ -8326,7 +8548,9 @@
     revision = 70537;
     shortdesc = "Cochineal fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map Cochineal.map" ];
+    fontMaps = [
+      "Map Cochineal.map"
+    ];
     sha512.run = "c8468bf472552dbbcbb84a5134a5ddc84405aab0d3b98015aba60d6da0e02896d929582778bfecf3694a7a0174d31214c9231a1da11284af6fdf3362b95e179b";
     sha512.doc = "43f7de109858a3e9a120b51022d3cab77dd0ae4ee2dd5e2d032ed3f9ba669ce2f5280bd359d8dbf158181727442e1e00ac8914d8cbe3edb93c40ab01362a2dbf";
     hasRunfiles = true;
@@ -8426,7 +8650,9 @@
     revision = 64558;
     shortdesc = "Coelacanth fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map Coelacanth.map" ];
+    fontMaps = [
+      "Map Coelacanth.map"
+    ];
     sha512.run = "279faeb81ba3169bc72848c691ab42729c670bed5c41a2add3e338bec0c109ff15ffcb492e19834d0ab2293040a659e3994f374b5a6028d505823e372eab7f48";
     sha512.doc = "ae548dfea88ab4315674caca7e0531bf52512b6ac8198853e0c70661e91061e3fdc15c82be7d6f1ee5c92a7cf340e65b0ce99665da82507b9d9f9b119722c2b7";
     hasRunfiles = true;
@@ -13338,7 +13564,9 @@
     revision = 70101;
     shortdesc = "Write your articles or books in a colorful way";
     stripPrefix = 0;
-    deps = [ "projlib" ];
+    deps = [
+      "projlib"
+    ];
     sha512.run = "5ff0c8affd4c3fe364bf9832811f5536316c383c212a85d78cbff62af4155092f6602b3a82d6a1bdadfa5bfb60c257a3b066658ec1704b31e24e1844c61f2a2d";
     sha512.doc = "133f8e9e5e504aa069ed60e7549579064664bb375af27e9e6457bc0347201a5902c1a3c699c4eecec5485fa905c7f026af9fe8a2de3aa8d5d2daac8c95efac83";
     hasRunfiles = true;
@@ -13471,7 +13699,9 @@
     revision = 54512;
     shortdesc = "Sans serif font, with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map comfortaa.map" ];
+    fontMaps = [
+      "Map comfortaa.map"
+    ];
     sha512.run = "6b851b6c56ef5b6ae6e59c5a3606238671af34963c5dfb8a39a9bd6b84597f673d12963abdd687013f11edade4fb9ae37794a4789650c38c29f64bea1d41dea5";
     sha512.doc = "b1b4efa42012646538316af9bdd5c724f285aa784e18e85a1239376dc02cf1b79bf43bb0ce07a822995a82811eb6562e6943aca0b903f9241bda088ac0675fce";
     hasRunfiles = true;
@@ -13749,19 +13979,25 @@
       "mflogo-font"
       "stmaryrd"
     ];
-    fontMaps = [ "Map original-context-symbol.map" ];
+    fontMaps = [
+      "Map original-context-symbol.map"
+    ];
     sha512.run = "8951a79ae04a0bbcf7ec5f4d5f68e0f6ad3f79cfcce7379523b9bc74dc6ce3d0f07f628f3e182198ff37d313ca549b7b2512eeb28ce4a9c5460ec20ed7f2d2e7";
     sha512.doc = "b2558db5417c5c1ca10dd80be258fca33d9e5fd1b16c3f1baa7c871bb4d65e42a75c95336ae988864e7c4dd350c722eaa96c446839ca6d147949b38fa78461d9";
     hasManpages = true;
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "free" ];
   };
   context-calendar-examples = {
     revision = 66947;
     shortdesc = "Collection of calendars based on the PocketDiary-module";
     stripPrefix = 0;
-    deps = [ "context" ];
+    deps = [
+      "context"
+    ];
     sha512.run = "aae09b844ae244839f82088ffbad9c777355696023fa95c24221b6ae0e4ac6dfce6a4d70efe9f09d5e5dc89e6e7a17d98282a77b90697ee6a3496ed0568734b4";
     sha512.doc = "62a63d54d0388a027cb6afa58141a6fc303fde6cc0f989348fe29fd10e825a03d86ff682f480723b223b606e296591cf03092c886cf13cde03463ff8012caca1";
     hasRunfiles = true;
@@ -13771,7 +14007,9 @@
     revision = 68696;
     shortdesc = "Environment to place collating marks on the spine of a section";
     stripPrefix = 0;
-    deps = [ "context" ];
+    deps = [
+      "context"
+    ];
     sha512.run = "dec8338854260467eb5d6542d4561e38a87183290e53e75c3fa188fc8f537a466ce4a5974f4f5644b9f2e62591cd4e8860f8e2b314c8918ae45e90e00c61ba4d";
     sha512.doc = "6a5d88d6091e95025e7a4f12a6e831e5bf462156afa06c7b49d35086f9b555ed8fc1ed9cde970146106f3efc29b70bf0699c1b5eadcf970c1f8978c46ad590bc";
     hasRunfiles = true;
@@ -13781,7 +14019,9 @@
     revision = 47085;
     shortdesc = "Write numbers as cyrillic glyphs";
     stripPrefix = 0;
-    deps = [ "context" ];
+    deps = [
+      "context"
+    ];
     sha512.run = "14a90656d706d68ce441301aa6bccf2033c36f9c8d8605ec9dedeeedb71a5670dae325a5a198b2ca25373eb2b495e57fff31b85089c6c0fb987738c76ac636b2";
     sha512.doc = "d95b1df26033aaff0a9f6759268ac3e68bff02556001e3f9b2bae1db68aa13c839a87047a6ae0a296f8e5817398ba35b7cbacc4f194dd93cf72684904190e7e3";
     hasRunfiles = true;
@@ -13791,7 +14031,9 @@
     revision = 62070;
     shortdesc = "Run external programs on the contents of a start-stop environment";
     stripPrefix = 0;
-    deps = [ "context" ];
+    deps = [
+      "context"
+    ];
     sha512.run = "c2534b543fd5444776a054f43fafa393040af5bcb67f869d61d200a4a1d0355f1d81c64adab683d15a6be806a21dfc9ad661995bbe51da3c0bfb841ade4b077f";
     sha512.doc = "a9c2ea88b0e2514840c368ea7686894dda4b86c93ec8f34989238ffdf5704f1c1898d0ee5e0724035314d2d37803f1a1afdd445dd802a94f5ff4223148f81767";
     hasRunfiles = true;
@@ -13801,7 +14043,9 @@
     revision = 47085;
     shortdesc = "Inclusion of Gnuplot graphs in ConTeXt";
     stripPrefix = 0;
-    deps = [ "context" ];
+    deps = [
+      "context"
+    ];
     sha512.run = "d3d7dce105707bd8fd903038e458cae614ec63da7932231e1f659570ec3a7960ea0fab338a8405f2ca8ce8b03946b58db8255333d2a4ab5a659566f4d272b0b0";
     sha512.doc = "40e471b27d53ced33590792ac62992a220357c6db1c78cba901197362a36817bc14b049f2573ee2e5b5adad5182c5bea2880c4f7a2477bcd1a06ee7ccf88b0b9";
     hasRunfiles = true;
@@ -13811,7 +14055,9 @@
     revision = 70074;
     shortdesc = "Data merging for automatic document creation";
     stripPrefix = 0;
-    deps = [ "context" ];
+    deps = [
+      "context"
+    ];
     sha512.run = "b4a38aa0e04812e328e3d6225462078ddf45d8791d789e2730461630db55b397754ca192acf37b9ae7f1fc10c61d412022a9e56d3465d19ceca7f5875e3d580f";
     sha512.doc = "763f75ab94a317788d9d96b88f1b7e25847ed316b4dcd84158719ef1c3cc48c90c884ec3158412d574839adf1ce8bcb12f9c0cefb6650338afa424fbd0213be3";
     hasRunfiles = true;
@@ -13842,7 +14088,9 @@
     sha512.doc = "6fbf5f1194771c9dc4a19b49aa343656bdcad3620e14a68a0bf9d05cad8f8c813f717b66b12526c2f11a87d4ded75e1cab56d3e72ca1cabe81c9818aa11399a7";
     hasManpages = true;
     hasRunfiles = true;
-    scriptExts = [ "rb" ];
+    scriptExts = [
+      "rb"
+    ];
   };
   context-legacy.binfiles = [
     "texexec"
@@ -13852,7 +14100,9 @@
     revision = 60787;
     shortdesc = "ConTeXt package for writing letters";
     stripPrefix = 0;
-    deps = [ "context" ];
+    deps = [
+      "context"
+    ];
     sha512.run = "558836a8c95743270f627a18dfe7a29ffc7a2eaeb4cf663d589ef5c07eab4dad6f09db31511379c90a41d1e9e7da5766e8dc3c8bb0902fa06bda4fb33caa97c9";
     sha512.doc = "94e1bf68371f3e8c426cfff5c471f93c86ce51fdd92dfad59669d32cc73d86de606113ece55d13a0f25ac4a26f16916407de9175b84acc79ba107156c20cd20a";
     hasRunfiles = true;
@@ -13862,7 +14112,9 @@
     revision = 47085;
     shortdesc = "Set notation in ConTeXt";
     stripPrefix = 0;
-    deps = [ "context" ];
+    deps = [
+      "context"
+    ];
     sha512.run = "e4c689c745d06c61d6f693a9832001aa8c79d51664c2a5d6d0c6148a95b30870063f50eecca31ac0924193c6dab8c12cd5ccaca16eeaf5f83a99cef1a8889ec3";
     sha512.doc = "f2c33244814da8e8838483038f507fe6b3e146f37691e55a37bb5355985d2af4c5fc423318133c4f13837a3e66a4fe72d5c14f6721bb5ee0417a59691b86d3f1";
     hasRunfiles = true;
@@ -13872,7 +14124,9 @@
     revision = 66725;
     shortdesc = "Notes on using ConTeXt MkIV";
     stripPrefix = 0;
-    deps = [ "context" ];
+    deps = [
+      "context"
+    ];
     sha512.run = "46be6b5f9f86d6da5514f0ae0cd77aa9beab67572699f9779f3a6cd461a8600336103eaf71d6e6d99fd7ac300a3e5fedcd6e378d349cf648c9aa5a8be2aaa5b5";
     sha512.doc = "a49b1c85508128e0a2e9ae0218e3622f7479da528f51380c1e109bf877f401531689e8119cab3bde6a91e507f0bd7f16e334cb3affaba7fae5927cc23b17a207";
     license = [ "gpl3Only" ];
@@ -13881,7 +14135,9 @@
     revision = 66953;
     shortdesc = "A personal organiser";
     stripPrefix = 0;
-    deps = [ "context" ];
+    deps = [
+      "context"
+    ];
     sha512.run = "fd90eca9b9642a16aa203984165302b111d4058ed970aab3867018f48d16884fe543d3067a0ad2fc2c0e2684924ef11e9788a7deacb20ad06d7451dc5b19383b";
     sha512.doc = "a78ed374f6a7ad63a93aef4c9cb2ecc0937c2e3df821c543f49a3ad762ed6949a7d1c4c5a03c7cf54eeb0b9ad891a18c5d10b97a42bbb840c74fef2bf8f14cfb";
     hasRunfiles = true;
@@ -13891,7 +14147,9 @@
     revision = 67070;
     shortdesc = "A module for preparing presentations";
     stripPrefix = 0;
-    deps = [ "context" ];
+    deps = [
+      "context"
+    ];
     sha512.run = "083b1f0b70a74a3648501314fa993632534f476376fb80eb4444b0273866bf4a4d562e4bfffbd14ed79be0020361ab6cc5c40fde1f99544b76d6f33939781f19";
     sha512.doc = "e7a410ec0d99f945dae91c041b396875a6350aa06333f5a5d2d7aa4c6bb62f926ec53a27a1c95a724ce7b320ddef11d6550b0b92a34c00ac63c7c0da96a35928";
     hasRunfiles = true;
@@ -13901,7 +14159,9 @@
     revision = 70141;
     shortdesc = "Typesetting Magic and Latin squares";
     stripPrefix = 0;
-    deps = [ "context" ];
+    deps = [
+      "context"
+    ];
     sha512.run = "1ff4b50cf1bf75c6908b968c0fa35bdbd3571ef680ccf591ce5b0bd65370bc1dbd3bbb54b55c881d4d76ad09aa36a496248560874ad6e14e39b5f94cdec5ee23";
     sha512.doc = "08b652e69c1719991daf36b9d9360b5736c25283ef10bdb5859bdfaecf1dd3a47d7417b9884d7bf51a32b073f99e08f35d8f172ff0d6a4817923c00f81dd6dfc";
     hasRunfiles = true;
@@ -13911,7 +14171,9 @@
     revision = 67289;
     shortdesc = "Sudokus for ConTeXt";
     stripPrefix = 0;
-    deps = [ "context" ];
+    deps = [
+      "context"
+    ];
     sha512.run = "b33ece74cc5578c4dca8df816715d7106b674fdc653d149992cf637b11799a21eb03708c0efcc79da9d4658c5f8a801c6bb32dc681f43f3d4b3900dfa588ca99";
     sha512.doc = "e7f9b6c0ae6bad729074ffb2e4e1673336954adb9013ee6525e87715f3d22720efbe1f7e2cb6b695e01940a4d7f58489889612749ea2f4dbcba3ac6faaa741c4";
     hasRunfiles = true;
@@ -13928,7 +14190,9 @@
     revision = 61127;
     shortdesc = "Transliterate text from 'other' alphabets";
     stripPrefix = 0;
-    deps = [ "context" ];
+    deps = [
+      "context"
+    ];
     sha512.run = "f919d3f9e6ab25932cfaeadfc07f86ebdbe00d84dc21236e4775930fc3866cee69cf9a25d373e13655f4396a3c395ea6ea103a28ffb4f00a4e95b7ceaec155c9";
     sha512.doc = "8473c1ca7b48009055f5c33031ec60f80d84dc43396789b0c0c7e6d65bcf014a237088dca07211beae4bfb80377f55cf12a9f379995cff50f52143fc4bc81295";
     hasRunfiles = true;
@@ -13938,7 +14202,9 @@
     revision = 60422;
     shortdesc = "Small modules to load various fonts for use in ConTeXt";
     stripPrefix = 0;
-    deps = [ "context" ];
+    deps = [
+      "context"
+    ];
     sha512.run = "a13d06b9a792cbd2352016df508a7860e45b541d04cef1c9d9c8b5a6199120a71dfd69f990700c4a76ac31ec11209caef431a190b9045bdc46cc44f88cbef0a3";
     sha512.doc = "3d948f22da14b1d481817477235657cee714e4a2a69834729c20e18157f1175890ddc7fce992e8f5f27e26cd6d08186ff1521e2186681557cfff1a4778267324";
     hasRunfiles = true;
@@ -13961,7 +14227,9 @@
     revision = 47085;
     shortdesc = "Visual display of ConTeXt counters";
     stripPrefix = 0;
-    deps = [ "context" ];
+    deps = [
+      "context"
+    ];
     sha512.run = "da7799ee31a4298f8e8cb02cb4e480fa49fb4188b776df877648c663c93523636bdd7fa6ca5eb403fc8f3483064bf223fed042c1d27eb0817c224ddf8e21c673";
     sha512.doc = "1788355ea4109e7e2bbaa9bbc3798f60a814d549d082638a59a453cc5fb39b54ff8a00471a28a96a5501e91899874ae19981ae0f8a09b6353d19275b851b9f80";
     sha512.source = "39bba551e9f0bb8d70c0b60a2b0fba3d7cad30555d4052fc6ae722bfd9cb79d5cca784474a9f1847faccccb1618662bc4dd2fadd1fdacaf2f4cc9c035b5501ec";
@@ -14038,11 +14306,15 @@
     sha512.run = "01bb9621459bac7eecc99b1d9aa59de420ba805b2e0ecdb2a89f5c86fa4a3021d957b4ddc69617ea406e77865d68e40c657979c488fc51f4676d084cfe6181cd";
     sha512.doc = "937d436cb9387eac601883ced516fa40f60e606bb4bae0be62e1ded2a31754a1d00461a34ad533cce1cc48f4d11e880233eaac128d80841e0b22f18801e86506";
     hasRunfiles = true;
-    scriptExts = [ "rb" ];
+    scriptExts = [
+      "rb"
+    ];
     license = [ "mit" ];
     version = "0.30";
   };
-  convbkmk.binfiles = [ "convbkmk" ];
+  convbkmk.binfiles = [
+    "convbkmk"
+  ];
   cooking = {
     revision = 15878;
     shortdesc = "Typeset recipes";
@@ -14156,7 +14428,9 @@
     revision = 64967;
     shortdesc = "LaTeX, pdfLaTeX, XeLaTeX and LuaLaTeX support for the Cooper Hewitt family of sans serif fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map CooperHewitt.map" ];
+    fontMaps = [
+      "Map CooperHewitt.map"
+    ];
     sha512.run = "91047a9831d2f1bd9ce8c3d6b1089316a40312b4920d9e8e26df4a5fc64293eadc45ac211c039ac8bc83df5d3406cfd006d1192945bb3776983f5d571c9e364c";
     sha512.doc = "211601a3a1fe2092a1cbb67cf6fa71f7ea2225f425a8556c1b88396c3f0d721ee144346fbd29204c4d68da77363653b1f0b14693139278f2b22a6104bdf949d0";
     hasRunfiles = true;
@@ -14201,7 +14475,9 @@
     revision = 64411;
     shortdesc = "Cormorant Garamond family of fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map CormorantGaramond.map" ];
+    fontMaps = [
+      "Map CormorantGaramond.map"
+    ];
     sha512.run = "1f1707a00298fc2015ba01259dc8558a79e72a10753f3c101f318359f0d4a3b6a9ae16cb1c1825ccf152fb50045f2cca429b00da27607fa8ba1046ad15e5a86f";
     sha512.doc = "85a5ba16ec8756b5052b4e6342d47e83c9fc8f348ac3b4c067afba131a7ed853cab04c22f8723a912a1178cc8ed373ab5fdd9d2be0d9816918bd22233c13ba95";
     hasRunfiles = true;
@@ -14256,7 +14532,9 @@
     revision = 54512;
     shortdesc = "A font with the images of the countries of Europe";
     stripPrefix = 0;
-    fontMaps = [ "Map countriesofeurope.map" ];
+    fontMaps = [
+      "Map countriesofeurope.map"
+    ];
     sha512.run = "fa0faa88db3e7c1baf73d5fad1fa196915c752e15dc024cef051127581f1e8a3d218d5f2f815b44bbedc9bd6fce6292825929471b595771e9ecd0b5131b11d26";
     sha512.doc = "e99ac6f4b57a2aed80cfd1214da7625ae94336677f0cfa0306125b06054835c2c3b23ac901cc3f421d56e4d021dd468db12e21acd6b3883c8b937919dbda056a";
     hasRunfiles = true;
@@ -14281,7 +14559,9 @@
     revision = 61719;
     shortdesc = "URW 'Base 35' font pack for LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map ucr.map" ];
+    fontMaps = [
+      "Map ucr.map"
+    ];
     sha512.run = "30d6c8906671239b9ef04b3c4d571f59e928ffefc965cd592ecd3277062c778b6f8cb0782f5eb8c6bc27d03b69a88a120593477ced93bcc44cdd4fbc3e5b8adb";
     hasRunfiles = true;
     license = [ "gpl1Only" ];
@@ -14299,7 +14579,9 @@
     revision = 55436;
     shortdesc = "Courier 10 Pitch BT with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map CourierOneZeroPitch.map" ];
+    fontMaps = [
+      "Map CourierOneZeroPitch.map"
+    ];
     sha512.run = "06343c68149c28b8808a38d5d7f2a57e9bff996d836c90a352ed77da4637fff150a18c13b8807f401e3d9cc9e7ecc773275f8ca18e2dc8d315ec5647c3f6b55c";
     sha512.doc = "737818c02e35e5502eca7bd80427fb814f54d495bd1315b124ad32a033da0ba0b9b4a2cc5a1f8c19b0f8d91f8534a783253742728ad1c8499d97e14fc3a67938";
     hasRunfiles = true;
@@ -14405,7 +14687,9 @@
     revision = 70180;
     shortdesc = "Initializing and configuring theorem-like environments, with multilingual support";
     stripPrefix = 0;
-    deps = [ "crefthe" ];
+    deps = [
+      "crefthe"
+    ];
     sha512.run = "b65a610bb508fc169db8447d234e656fb3b63647ccc7a6656bb015fd871c762ed2b8bd59304808f5db1ce528f8227283a6172aafee9cb84f24c5fd41041acd9f";
     sha512.doc = "4ce2d32999518c46478fb6563da42d073a04fcda76391ca722e20a4b0651819722fe62325c7bc858162368645c259de2407bf6b67681a7990e225195459c54af";
     hasRunfiles = true;
@@ -14434,7 +14718,9 @@
     revision = 64559;
     shortdesc = "Crimson fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map crimson.map" ];
+    fontMaps = [
+      "Map crimson.map"
+    ];
     sha512.run = "fb807f6602365c65470ceb947e72c63171fc401145b83a63429836d274ca1a0877008c27e4f6416b2a89a3fceb2912062749deeec81346e59c734fa14e4cc289";
     sha512.doc = "105068d0dd81b33a8c073ab33542f2ba7893d4e1d95dcf7af58b413d54a3e7e0cf24911fc2e56ee9821d6d55f016355d4e42db2d981e48e1feaa98b498e20e73";
     hasRunfiles = true;
@@ -14447,7 +14733,9 @@
     revision = 64565;
     shortdesc = "CrimsonPro fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map CrimsonPro.map" ];
+    fontMaps = [
+      "Map CrimsonPro.map"
+    ];
     sha512.run = "e119ee9df715d799231eece3e5c5c0c125077b9ca526d1293f943dd2700b45da0bbbac90a964248415bf9cb1a51923bef26995acf25397216edca531594d321d";
     sha512.doc = "3f151947afe36a62d958804ffafddf533b9970162511ff2038629582acb15b4614d9bd5ffa28b53961c53996d2a8ebc0852b511007ae83d2b4f5f908a1d1b04e";
     hasRunfiles = true;
@@ -14579,7 +14867,9 @@
     revision = 41553;
     shortdesc = "Czech/Slovak-tuned Computer Modern fonts";
     stripPrefix = 0;
-    deps = [ "cmexb" ];
+    deps = [
+      "cmexb"
+    ];
     fontMaps = [
       "Map cs-charter.map"
       "Map csfonts.map"
@@ -14774,7 +15064,9 @@
     revision = 64389;
     shortdesc = "Context sensitive quotation facilities";
     stripPrefix = 0;
-    deps = [ "etoolbox" ];
+    deps = [
+      "etoolbox"
+    ];
     sha512.run = "68427cbe486f3b53bdb24869a3ad52cf6a006d7872ff9408560d9e4b0f1e8184fcb437d54e10f11d7a3585ff8ff7ad40ab4a95aa66091bb69a75a3e8e60aede8";
     sha512.doc = "ceba04fab9ec257c6bbc2fc903e3888bae9ef6bfa5664c8e01da14ee2b1482005aece22b6bf4fa7fb893c2dc1b0cb7f762eb048e0b2c039be80ef73b0bfef131";
     hasRunfiles = true;
@@ -14874,7 +15166,9 @@
     license = [ "bsd3" ];
     version = "1.2";
   };
-  ctan-o-mat.binfiles = [ "ctan-o-mat" ];
+  ctan-o-mat.binfiles = [
+    "ctan-o-mat"
+  ];
   ctan_chk = {
     revision = 36304;
     shortdesc = "CTAN guidelines verifier and corrector for uploading projects";
@@ -14894,7 +15188,9 @@
     license = [ "lppl13c" ];
     version = "0.2d";
   };
-  ctanbib.binfiles = [ "ctanbib" ];
+  ctanbib.binfiles = [
+    "ctanbib"
+  ];
   ctanify = {
     revision = 44129;
     shortdesc = "Prepare a package for upload to CTAN";
@@ -14905,7 +15201,9 @@
     license = [ "lppl13c" ];
     version = "1.9.1";
   };
-  ctanify.binfiles = [ "ctanify" ];
+  ctanify.binfiles = [
+    "ctanify"
+  ];
   ctanupload = {
     revision = 26313;
     shortdesc = "Support for users uploading to CTAN";
@@ -14915,7 +15213,9 @@
     license = [ "gpl3Only" ];
     version = "1.2c";
   };
-  ctanupload.binfiles = [ "ctanupload" ];
+  ctanupload.binfiles = [
+    "ctanupload"
+  ];
   ctex = {
     revision = 66115;
     shortdesc = "LaTeX classes and packages for Chinese typesetting";
@@ -14987,14 +15287,18 @@
   ctie = {
     revision = 66186;
     shortdesc = "C version of tie (merging Web change files)";
-    deps = [ "kpathsea" ];
+    deps = [
+      "kpathsea"
+    ];
     sha512.run = "0180080c48fea7b717ff0ad27e060ad4564841fe2929b8db919aa0402886a00e0fa40f1398ef82bbf9e983343c9f9f6c797606045d55ed07e572e006588c7353";
     sha512.doc = "178a88260131781b6678ee63b1b35ecc0734525309b99c0d5bd4498127970bd67e30c23072392b6678186532a845c7e27188b1902b5dca52180720bc98fe3dd6";
     hasManpages = true;
     license = [ "gpl1Only" ];
     version = "1.1";
   };
-  ctie.binfiles = [ "ctie" ];
+  ctie.binfiles = [
+    "ctie"
+  ];
   cuisine = {
     revision = 34453;
     shortdesc = "Typeset recipes";
@@ -15028,7 +15332,9 @@
     revision = 49909;
     shortdesc = "Cuprum font family support for LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map cuprum.map" ];
+    fontMaps = [
+      "Map cuprum.map"
+    ];
     sha512.run = "578ce2e5af01e81ba80c0cfcc0225985722c1515e8f98460a1cb5d71d8ee4630d400f28dee04bb505c429b13f5cb604364d26503af0b5d9bf98164b218b09413";
     sha512.doc = "b9a9bda8eab6087a134b3b0660282998c7c3fa7fda8890e61ba107b9f7576d85ca01b59664c1c198679151e01cef6ebce5b8de29644a2e249a6ca2100f526fe2";
     hasRunfiles = true;
@@ -15248,7 +15554,9 @@
     revision = 18651;
     shortdesc = "The Cyclop typeface";
     stripPrefix = 0;
-    fontMaps = [ "Map cyklop.map" ];
+    fontMaps = [
+      "Map cyklop.map"
+    ];
     sha512.run = "dd6584831fae3eb388f66e42f289f9bdeff401412c7df471752c4aa56bc67c16c56f6f271d11c289a1389faae138ac15abc41bb716bf344bc2f49fa087ecd380";
     sha512.doc = "4d81a01eea30a4f86b2f0a7c9c21923196dbd28c7d5ba5c1639068318ef227720550b3052cf0ead6f3194450d50dce9acaa325a0dace0e6fd230e0ed11d9b106";
     hasRunfiles = true;
@@ -15259,7 +15567,9 @@
     revision = 63613;
     shortdesc = "Support for Cyrillic fonts in LaTeX";
     stripPrefix = 0;
-    deps = [ "cyrillic-bin" ];
+    deps = [
+      "cyrillic-bin"
+    ];
     sha512.run = "1b8889d33e5433b32d0b84bd31ef7ea96fe338456ef8e1732ea6c254dfe2f21d3600766b1e51bafa4ddbf0144e8420ad8ba6ad593eaa32c3d45dde99b0b4ec8c";
     sha512.doc = "b0b1d24d3e8887c5b9c251922157de7cf042845009c07e62fd324ba850dff9f39bc6ebad04ab216ad69070da93f77f68693d1be57cd15b038374f0253329c8fa";
     sha512.source = "4dc564f475a883cb75ae0fad6b5aecb936c1ab9cdaae857dc7cdfb3d8f06f6534542c36b053cc7b74f455a2646f081060c670b35f1eda5fa69418b1c1f97e5dd";
@@ -15291,7 +15601,9 @@
     revision = 54191;
     shortdesc = "Simple typesetting system for mixed Arabic/Latin documents";
     stripPrefix = 0;
-    fontMaps = [ "Map dad.map" ];
+    fontMaps = [
+      "Map dad.map"
+    ];
     sha512.run = "600bd3267a47e5513f51e67135920c15aa7aefb51f2c3dea6e912f26d1a45071f936e4c568afd322aa7e89d5139e68398b394c287d5076c17e310297fa7f8fa8";
     sha512.doc = "97d4596972c436762e33bd1d5077f7fdbe7da2a74b016a8841ad98536c2e9d9a2bd01a91b1ad2fb306c7ba06a0a5532d47c7b813d42b0bd82a3390f3bd17760b";
     hasRunfiles = true;
@@ -15310,7 +15622,9 @@
     revision = 38599;
     shortdesc = "A font for DANTE's logo";
     stripPrefix = 0;
-    fontMaps = [ "Map dante.map" ];
+    fontMaps = [
+      "Map dante.map"
+    ];
     sha512.run = "883c5d6f8368bed41002eae123329954fe38cc23a5e6db7feecd57c16540b6b9277cf7d13af6ce8f63994c11148708e1d3dd10ddd9d17457b015d40477f91eac";
     sha512.doc = "4612de774c6a39c7f09dfc99aa182fd37d9f3e32dece37726f1e87e48e5faae246f2959992267f5b2cb685c26177e47c5112fbe42b8f1ac3a60da92e6276a681";
     hasRunfiles = true;
@@ -15697,7 +16011,9 @@
     revision = 54779;
     shortdesc = "Italian full text styles for the datetime2 package";
     stripPrefix = 0;
-    deps = [ "iftex" ];
+    deps = [
+      "iftex"
+    ];
     sha512.run = "29a67f9c4414d08adce673ac2b501e92be5822470511b55677b041fa1d89b55760246fea08ba0f4cac7ef6f8e7ff52498f0459d50f94bf2bc6b3e4a944976a99";
     sha512.doc = "24bceb74337abc4ae74bbf9101bd32cc65371d60a0461cec91c8e3ecc3822c848eb8c7f0bc8706ec1b2118294df659b44f3139c3a3ed1c0c243f9654ae1b3d6d";
     sha512.source = "89a91a69a45100324b24c5cca3e0bdedc8dec2a466c414e65044f55a6c1ec3c715946dd5c5ed942fc9dc8f6a597fe5f2075dd7d05c88d241da4bccb27ba9cb3d";
@@ -15989,7 +16305,9 @@
     license = [ "free" ];
     version = "1.4.1";
   };
-  de-macro.binfiles = [ "de-macro" ];
+  de-macro.binfiles = [
+    "de-macro"
+  ];
   debate = {
     revision = 64846;
     shortdesc = "Debates between reviewers";
@@ -16112,7 +16430,9 @@
     revision = 31771;
     shortdesc = "LaTeX support for the DejaVu fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map dejavu-type1.map" ];
+    fontMaps = [
+      "Map dejavu-type1.map"
+    ];
     sha512.run = "a26a57bd02b14c6e67d328c2c00174730b819f7da37ac147ec7f34f37195b6aa17e3223ac4d03617f5239700b1dfa45ca1741eed7b4488d2e604f02ac34ef2a3";
     sha512.doc = "7e3364a3e0863c63f2a66057780fa922cb53f4da2f81e42ce9e200d5a034854216f4d4b833756a6d4d6837385e48aa8d03f608846f2f95caa84a7ebffe3257b0";
     hasRunfiles = true;
@@ -16213,7 +16533,9 @@
     hasManpages = true;
     license = [ "free" ];
   };
-  detex.binfiles = [ "detex" ];
+  detex.binfiles = [
+    "detex"
+  ];
   dhua = {
     revision = 24035;
     shortdesc = "German abbreviations using thin space";
@@ -16240,11 +16562,15 @@
     sha512.run = "55a246d4e3ab86d6300210d830ce464a935bb83c9ffd29b5387f0a56f5c82d4c5a71cf107f78ffe0cde07f17897e2f949acf1fe70da9da7c7992b330a07b1c68";
     sha512.doc = "e7487bb47fbe8aee714304150c00866780782a9ad32bf6ccbb02799aeb251345ce1cf042e8b4d7b4011083a3be2fe3b16b78f25a4a4206d173ac1384716592ab";
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "lppl13c" ];
     version = "1.1";
   };
-  diadia.binfiles = [ "diadia" ];
+  diadia.binfiles = [
+    "diadia"
+  ];
   diagbox = {
     revision = 54080;
     shortdesc = "Table heads with diagonal lines";
@@ -16316,7 +16642,9 @@
     revision = 69720;
     shortdesc = "DictSym font and macro package";
     stripPrefix = 0;
-    fontMaps = [ "Map dictsym.map" ];
+    fontMaps = [
+      "Map dictsym.map"
+    ];
     sha512.run = "1f1c145c9231616b8fd603604b252903938ced0d0a85f4ce2bf6775f123d47a153d0f1231fc78e965da56befd94b71901c5ae441253d0266fc984d47e9b113b3";
     sha512.doc = "787f3d06b1239c95022c8dd64f07d98cca654250f9846e70f2e7571def724b0e316d66d60289ebbcef204088d6f603d7702af36b985cc640a4f963adb7d347aa";
     hasRunfiles = true;
@@ -16348,7 +16676,9 @@
     sha512.run = "098d625749cee42f965d21ef5ec2843211db36fd0f4cced882ed15f32a20a2d70bf292b01e6797e7ca097adfadf2fd40d3c5eef6c694da39e8302770cfb784d3";
     sha512.doc = "fabc6d0ea5a1e55b7ecd6430b2373c15e413c985485331bd7bd5bca437947a76ac7d8ac6ed2ea3d6afe687284aef673b0e302a1c9925737c6e1d95cecf2ea8cb";
     hasRunfiles = true;
-    scriptExts = [ "texlua" ];
+    scriptExts = [
+      "texlua"
+    ];
     license = [
       "gpl3Plus"
       "lppl13c"
@@ -16356,7 +16686,9 @@
     ];
     version = "0.5.1";
   };
-  digestif.binfiles = [ "digestif" ];
+  digestif.binfiles = [
+    "digestif"
+  ];
   digiconfigs = {
     revision = 15878;
     shortdesc = "Writing \"configurations\"";
@@ -16663,7 +16995,9 @@
     revision = 55286;
     shortdesc = "Drop-in replacement for Palatino";
     stripPrefix = 0;
-    fontMaps = [ "Map Domitian.map" ];
+    fontMaps = [
+      "Map Domitian.map"
+    ];
     sha512.run = "f228d1670e7904b08ba6064d0d1e8c23432fa826d52229d575bc2067e27adc904c3684d76889a8beb4885c3c9de5cd4a5004b9afd3f7140ae5e90d36b4961b9a";
     sha512.doc = "81af6be4f2707ec5d46d5f78d459f42d81e0cf62a17a8e695e42b666076637183447a9f1888b3f4c84e4832362eefe01b8d8dc5d748a640eb8e20c72bdfc1f3e";
     hasRunfiles = true;
@@ -16685,7 +17019,9 @@
     license = [ "artistic1-cl8" ];
     version = "1.2";
   };
-  dosepsbin.binfiles = [ "dosepsbin" ];
+  dosepsbin.binfiles = [
+    "dosepsbin"
+  ];
   dot2texi = {
     revision = 26237;
     shortdesc = "Create graphs within LaTeX using the dot2tex tool";
@@ -16743,7 +17079,9 @@
     revision = 15878;
     shortdesc = "Typeset mathematical double stroke symbols";
     stripPrefix = 0;
-    fontMaps = [ "Map dstroke.map" ];
+    fontMaps = [
+      "Map dstroke.map"
+    ];
     sha512.run = "ff1be47939d9a2e8ec4fe8e6852d9fa31c2776511de158611ef8b853ac73291d1aa4ffe81985bed60c75a16e3cfc963a3a8ce3fb9494dcf6664cd6d92a549e73";
     sha512.doc = "2cf0cc8936393be2b01ed06158b250a43514098aeec4007bf493bd9232fda911f4a59f45716fba5837e475bdc39a86cf6e1180d4220e6aef26ff9e0315389200";
     hasRunfiles = true;
@@ -16998,7 +17336,9 @@
     revision = 60898;
     shortdesc = "A double-struck serifed font for mathematical use";
     stripPrefix = 0;
-    fontMaps = [ "Map DSSerif.map" ];
+    fontMaps = [
+      "Map DSSerif.map"
+    ];
     sha512.run = "7fa159e85b370a1327a8cace1a20ed54b37f2413e553dbcd42c6e75cd224da35b47402d89d39971873e888cc9f89117fe5403887299ad8c43e6bf2f706df357d";
     sha512.doc = "e831d9ba6233cd260cd6f212f4f8b3adb360f6d701d121d26f0de95360dd56ccf7e3a5fb6fde990d875e60ca20f7632a4badaa9df8e3b98f16bfa5b176308761";
     sha512.source = "dcdf454c0d970338951b5b458df039ecc0287020fbf13c3ef46d2effc4aace39cdb424937d506783f572ccfd7cc136e9059e9894d4339b53f4b1be4b52d93579";
@@ -17071,7 +17411,9 @@
     license = [ "gpl1Only" ];
     version = "1.08";
   };
-  dtxgen.binfiles = [ "dtxgen" ];
+  dtxgen.binfiles = [
+    "dtxgen"
+  ];
   dtxtut = {
     revision = 69587;
     shortdesc = "Tutorial on writing .dtx and .ins files";
@@ -17136,7 +17478,9 @@
     revision = 54080;
     shortdesc = "A reworking of ESSTIX13, adding a bold version";
     stripPrefix = 0;
-    fontMaps = [ "Map dutchcal.map" ];
+    fontMaps = [
+      "Map dutchcal.map"
+    ];
     sha512.run = "308253e2b148cab892ef0ea5004cce0c3e3fbea4c0555b67f49e554734b16bc5be9baa08119fd0a2186360cef20e165b5133ce85c793eceaa9955673ec4594ec";
     sha512.doc = "1ac89d2c4ef090edc8c354a3f869485d3af9c374da012fb51edfd22f0644d63a5c380aad115b6dbe83e70846904b722b69fe4093f4a7ac8a4a3eb1c1c97f25b1";
     hasRunfiles = true;
@@ -17184,10 +17528,14 @@
     sha512.doc = "116a7b02005ced75ae3e712de7d66513ce7d6d3ae9ee4e6e94b347d6000b27bb58d4fc1cf76cec7f19fd7cdd316f42c02e8ad7b8e0f0ccf88d405e17ef2ff155";
     hasManpages = true;
     hasRunfiles = true;
-    scriptExts = [ "py" ];
+    scriptExts = [
+      "py"
+    ];
     license = [ "gpl3Plus" ];
   };
-  dviasm.binfiles = [ "dviasm" ];
+  dviasm.binfiles = [
+    "dviasm"
+  ];
   dvicopy = {
     revision = 66186;
     shortdesc = "Copy DVI files, flattening VFs";
@@ -17197,7 +17545,9 @@
     license = [ "gpl1Only" ];
     version = "1.5";
   };
-  dvicopy.binfiles = [ "dvicopy" ];
+  dvicopy.binfiles = [
+    "dvicopy"
+  ];
   dvidvi = {
     revision = 65952;
     shortdesc = "Convert one DVI file into another";
@@ -17206,7 +17556,9 @@
     hasManpages = true;
     license = [ "free" ];
   };
-  dvidvi.binfiles = [ "dvidvi" ];
+  dvidvi.binfiles = [
+    "dvidvi"
+  ];
   dviincl = {
     revision = 29349;
     shortdesc = "Include a DVI page into MetaPost output";
@@ -17226,7 +17578,9 @@
     license = [ "mit" ];
     version = "1.06";
   };
-  dviinfox.binfiles = [ "dviinfox" ];
+  dviinfox.binfiles = [
+    "dviinfox"
+  ];
   dviljk = {
     revision = 66186;
     shortdesc = "DVI to Laserjet output";
@@ -17256,7 +17610,9 @@
   dvipdfmx = {
     revision = 69127;
     shortdesc = "An extended version of dvipdfm";
-    deps = [ "glyphlist" ];
+    deps = [
+      "glyphlist"
+    ];
     postactionScript = "tlpkg/tlpostcode/dvipdfmx.pl";
     sha512.run = "75703f600365c90379c5d009e00d35d2e514a76b2556c96c84fc2a717287441af419a26fc9ef087d111f2e77c7180f6371ca2ec33b66052ab63ca3d11f48e788";
     sha512.doc = "d2fb71e116470d2d629613401f448ad9aa8cfdfa9ada68ed324061e4ac614efc4fd2c4ea2542c8fae32f476b92aafbabe4a5be648f28f16708c43958d7aa99fd";
@@ -17294,7 +17650,9 @@
     sha512.doc = "254a1db41636608a133e7807a8d4ea8ddd99ac646f35b66a43205ac7fdaf4a15c21eafbb85e23a182506e509895776d1fcbe63b3b8a7f197d577c6405ece5c44";
     hasManpages = true;
   };
-  dvipos.binfiles = [ "dvipos" ];
+  dvipos.binfiles = [
+    "dvipos"
+  ];
   dvips = {
     revision = 66203;
     shortdesc = "A DVI to PostScript driver";
@@ -17327,7 +17685,9 @@
     license = [ "gpl3Plus" ];
     version = "3.2.2";
   };
-  dvisvgm.binfiles = [ "dvisvgm" ];
+  dvisvgm.binfiles = [
+    "dvisvgm"
+  ];
   dynamicnumber = {
     revision = 38726;
     shortdesc = "Dynamically typeset numbers and values in LaTeX through \"symbolic links\"";
@@ -17449,7 +17809,9 @@
     license = [ "gpl3Plus" ];
     version = "0.1.0";
   };
-  easydtx.binfiles = [ "edtx2dtx" ];
+  easydtx.binfiles = [
+    "edtx2dtx"
+  ];
   easyfig = {
     revision = 64967;
     shortdesc = "Simplifying the use of common figures";
@@ -17525,7 +17887,9 @@
     revision = 66604;
     shortdesc = "LaTeX support for EBGaramond fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map EBGaramond.map" ];
+    fontMaps = [
+      "Map EBGaramond.map"
+    ];
     sha512.run = "4a676d0016c5b3c4e513dca01e7e2f1b5bfbc061e111935380af4937bdfe2493927b226b28972c060ee0c09e7c27c6bf828ea09151eec0b8df67530f62e30aac";
     sha512.doc = "82713ea36e1eeb1d2673a049d9ffcae97627406571e6e8e47fa6a6853511beb5a5eeef8a63fbe88e6c79539b1fbde880d0b2779f6f01f20eb7b1c7fc716104bc";
     hasRunfiles = true;
@@ -17538,7 +17902,9 @@
     revision = 52168;
     shortdesc = "LaTeX support for EBGaramond fonts in mathematics";
     stripPrefix = 0;
-    fontMaps = [ "Map EBGaramond-Maths.map" ];
+    fontMaps = [
+      "Map EBGaramond-Maths.map"
+    ];
     sha512.run = "5d65f676daee62f96875def0faf6d1fa217143046768985956372473b4cd3c6c00ca650cdedcdf677d6ae6a03c65743d30df6d32c36cc8366d8a1a9961bc11d3";
     sha512.doc = "d2207e0f6535be6ed1a53fc15717a60fab0d473da4f307cfc70c7271fbd93e7f6cbd92d1c0f0738da6d1b607832cbed95e5c87edd53cc5423f35f287289b4573";
     hasRunfiles = true;
@@ -17551,10 +17917,14 @@
     sha512.run = "c38185b31613af4d6b27ffb5442cd404c1eb05669605a2140db85ae3074a3a7739c3e375e3cc16736f9c2889224f33f685d503b3908f4009fa308be7737aa499";
     sha512.doc = "a3337ca9bfe756672a66554b88feb59a49f66ecd7d1aec3702d74f29bc53ac1052394bda679a4cb4aa7509c5eb712938ed943a28c6f56a749c926b8d566eecf2";
     hasRunfiles = true;
-    scriptExts = [ "py" ];
+    scriptExts = [
+      "py"
+    ];
     license = [ "publicDomain" ];
   };
-  ebong.binfiles = [ "ebong" ];
+  ebong.binfiles = [
+    "ebong"
+  ];
   ebook = {
     revision = 29466;
     shortdesc = "Helps creating an ebook by providing an ebook class";
@@ -17887,7 +18257,9 @@
     revision = 70318;
     shortdesc = "Write your articles in a simple and clear way";
     stripPrefix = 0;
-    deps = [ "minimalist" ];
+    deps = [
+      "minimalist"
+    ];
     sha512.run = "5e15f55394c35e033661c00295fcde0ccd424532ecdcf3c55f134ba7f990ee95961fe9b620a1addb2cfaddc97b030296b4ec9dae29a1d025aa2944d7130574e0";
     sha512.doc = "56b8b1415b0526af7610502a65d13f304f05f18def4fd4c2870be9adaacefbd6e9cf34d318f135d358a85d56eb57f4f2fb583a529c43d4ffe9bed729310ce4ca";
     hasRunfiles = true;
@@ -17954,7 +18326,9 @@
     revision = 19705;
     shortdesc = "Electrum ADF fonts collection";
     stripPrefix = 0;
-    fontMaps = [ "Map yes.map" ];
+    fontMaps = [
+      "Map yes.map"
+    ];
     sha512.run = "c12af3a1e6a76d4a94f0d02fa5802179fd1f47e31be29e2151e7be3f569f027137c9d0268c86696d822b8d7a4c88ae2ef264341345c6a7421a8ec1026c104213";
     sha512.doc = "b840b153a134fd9cd923aa9f70576b7e586bca87d7f1b9cfbf7a1f25ac4972905989876545a914ce845096dd32579901ece93851012d057114c0c61b1eceffa4";
     sha512.source = "caec0c43c2870a6640863bc060e02c764b235336123777181ae1fab42e32053af0e2c09c226dccbf8bc31b450c720b69ae67f01b66b36d0ba308282637afb414";
@@ -18434,7 +18808,9 @@
     revision = 56615;
     shortdesc = "A new interface for environments in LaTeX";
     stripPrefix = 0;
-    deps = [ "trimspaces" ];
+    deps = [
+      "trimspaces"
+    ];
     sha512.run = "c8dec70e56651a89ae8da15abc0ad81cc2edb4487837469238e2adc0e7c58cae4c5da82b637a3336839b50103e3d846c5cee8c73141488f644469a0f3e9d363f";
     sha512.doc = "78d4d3f570470619c938687a6c9a6925aad901d781e3e893bd731a49bb8eca62bf1870e68d84f7125e10d91d7bec02a323ae42278ff59c04d7e33eefa2261496";
     sha512.source = "b30607d21bbf5ddf1c7d36bd9173a16d91bdfcfa004782be50e50f17bf54d94e943d5e524e2331b75f3ce65e81193ba98e69ab56c38959d632007f5b0a87bd6a";
@@ -18473,12 +18849,16 @@
     license = [ "mit" ];
     version = "0.18.1";
   };
-  eolang.binfiles = [ "eolang" ];
+  eolang.binfiles = [
+    "eolang"
+  ];
   epigrafica = {
     revision = 17210;
     shortdesc = "A Greek and Latin font";
     stripPrefix = 0;
-    fontMaps = [ "Map epigrafica.map" ];
+    fontMaps = [
+      "Map epigrafica.map"
+    ];
     sha512.run = "82e5dd9f781b6c3ad0bef743b117d9658ae9e0162fec524fbb59f35f13008d3ce9b37daef8d6b977a5ec4834a1ecdc06346627857445c5f19c89f4b202706beb";
     sha512.doc = "c90061813a408ea74da7c0a9a53c1dc0f4ef65a9ec1d96e92002127ef401abb5211b7f029630fa445725497018a6e5ed3415e31c40001674405b13a4b4ebf6de";
     hasRunfiles = true;
@@ -18518,7 +18898,9 @@
     revision = 15878;
     shortdesc = "Typesetting the Epi-Olmec Language";
     stripPrefix = 0;
-    fontMaps = [ "Map epiolmec.map" ];
+    fontMaps = [
+      "Map epiolmec.map"
+    ];
     sha512.run = "5cbe40240b14ed494500c3831a02659be437ad9710708929a69670d00b788ffc99d4d35e66fba04f170c9844faf2432c116d75e6b01988736ab483e7d0255a8c";
     sha512.doc = "d2c54da2821e850f17ea0a21d0bc67385e2d986948503fbc23ce6df5229708f0700cdd30a94d09cb310cbd911c183c40935e944341b6ee7ec56cdd9c2602011e";
     sha512.source = "a52ef99c57524444151175f8e345cc59ae99c962e31420363c01e3121e1b4ecfbaeed28a01c3185d9d57beae90aaa8fe55dec15fd0790088f72fc4ee8860ea12";
@@ -18586,7 +18968,9 @@
     license = [ "gpl2Plus" ];
     version = "3.13";
   };
-  eplain.binfiles = [ "eplain" ];
+  eplain.binfiles = [
+    "eplain"
+  ];
   epsdice = {
     revision = 15878;
     shortdesc = "A scalable dice \"font\"";
@@ -18795,7 +19179,9 @@
     revision = 63312;
     shortdesc = "Font package derived from Heuristica and Utopia";
     stripPrefix = 0;
-    fontMaps = [ "Map erewhon.map" ];
+    fontMaps = [
+      "Map erewhon.map"
+    ];
     sha512.run = "760818dc93dc0564680d76c152f6db9f69870008f50c43227b329df3403e7b6b50f241b96822fa63aee6b6c64ae42ecc69369e8e94f43836d6cbb9125f197e94";
     sha512.doc = "bf9219328f592300b90c3aa0ad425a4adf6e6cf2e190dc21cccb4b15ebe9db8f3dcb88c3e72b6f89f7b9085ecaf28f8ef628fa3175e7fb7d59545c61e2d76f42";
     hasRunfiles = true;
@@ -18905,8 +19291,12 @@
     revision = 15878;
     shortdesc = "Font esint10 in Type 1 format";
     stripPrefix = 0;
-    deps = [ "esint" ];
-    fontMaps = [ "MixedMap esint.map" ];
+    deps = [
+      "esint"
+    ];
+    fontMaps = [
+      "MixedMap esint.map"
+    ];
     sha512.run = "5a663d01e9241adf1961c922c588888561f495e6378fdd7aaa90954c3e51c5f0f8e6dc1e1947c9f03ce3472e1aab3dde1b35e6b5f0814f5e2cda564a31a45a1f";
     sha512.doc = "081a225225f503fac403d306fac3ee3b2747341ef5c4ee9420f49a56ca959c7757f154c24f90ed9506041b13464ea216e6edb52f29790d189ea7b33c7c797f8e";
     hasRunfiles = true;
@@ -18958,7 +19348,9 @@
     revision = 37236;
     shortdesc = "Provides a symbol set for describing relations between ordered pairs";
     stripPrefix = 0;
-    fontMaps = [ "Map esrelation.map" ];
+    fontMaps = [
+      "Map esrelation.map"
+    ];
     sha512.run = "a6d8a0a9bde08e3582826affa52142fe5b5a0dba43c4ff15f5fdd19cb24b561bcdcdd761c2a84238c9b31d3fe0a023949d2d0c716e105852443e06ced9df13f1";
     sha512.doc = "6698e9f57df458d9652ae98abbea08ce1f14c6c31677c32ab8cdf9b8fa0866a57c50028ea36d2c7cde133588358dce0b2bb37b7085995e4bab9ce7d3de1a541c";
     sha512.source = "17b0495b4b19ca5166835549c62c9c5e1dbcb59e2252e321860dc7254b9ebc9d073f317a344a2a8a4ec772ee1a931a5181d9d3b1af45f913b0ad04ebf189bd3a";
@@ -18969,7 +19361,9 @@
     revision = 22426;
     shortdesc = "PostScript versions of the ESSTIX, with macro support";
     stripPrefix = 0;
-    fontMaps = [ "Map ESSTIX.map" ];
+    fontMaps = [
+      "Map ESSTIX.map"
+    ];
     sha512.run = "e503f25cb713918329f297a4ed088b63967eb06828fb753653aaf60ef99c5fb7db6507d6f0f74080b9fad2050ca1917f7ab873be2fb0bd3fcd126f29a43eb775";
     sha512.doc = "1233a284b88e5c8bfb29350b3b534e7a4c81b5692a9ac7aff5d69f77210e026dede300b511bc45efd18d6a96f6df9be2add166c80f0ee5d17c93732c0c242bf0";
     hasRunfiles = true;
@@ -18991,7 +19385,9 @@
     revision = 32098;
     shortdesc = "Vector arrows";
     stripPrefix = 0;
-    fontMaps = [ "Map esvect.map" ];
+    fontMaps = [
+      "Map esvect.map"
+    ];
     sha512.run = "1a6940862940d8ca29bcb19c69817b84a7f71f7a8762d3a63829fb0e0e88eccd940f3e2973d8d05dbe9323aa1f80dc9045b531e3509239eab399f02a55e7988c";
     sha512.doc = "502d2cce629280d7c192ad11764c0c12e65f9f1318286d1acdc3e08c9d7d36b07fc3e5939c053aa57ad59ee91e73b4035c9bd1aafee3672ddeed4a64bf3cd7ad";
     sha512.source = "658e98e4c97dfdfcb34b396ff644fda060a645d15760bd975ad1397ca73f4ed24331a77bfd914bfe6f8f218aec9ab3fcc0a2a48efc19a0c6adc1024943584a47";
@@ -19014,7 +19410,9 @@
     revision = 69098;
     shortdesc = "An expansion of Edward Tufte's ET-Bembo family";
     stripPrefix = 0;
-    fontMaps = [ "Map ETbb.map" ];
+    fontMaps = [
+      "Map ETbb.map"
+    ];
     sha512.run = "e034a9a750043f459b8682229bf01c08b341b4494fd6fc6669e1065652ae9154e0eef74038f1e5f16c2d57390ebfa70056198d563f3e454ee3e4806971a707d5";
     sha512.doc = "cc4ebfcb831cdd9f02c93248d5083b81a69c59163fec85d469a17841607affb51310858b022ea819055c6bdade821d330599c97838ab9f92de7b8fa4d8f8f0a8";
     hasRunfiles = true;
@@ -19090,7 +19488,9 @@
     revision = 15878;
     shortdesc = "Type 1 versions of Amharic fonts";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap ethiop.map" ];
+    fontMaps = [
+      "MixedMap ethiop.map"
+    ];
     sha512.run = "84f97fb5320ada95562aade797fdb62577e533feee9d7ece5cc51e17303012b198c0b1e6b4f720dc1539c4cb917ac71e3da6f48776d6fcfe84d4527ffd7b78dd";
     sha512.doc = "81f2ed72d5cef9119c94c4b0025e31be6739153e36b7b31a2c59b0cbe5a683a67746da8346345d561472fdbb760c07831d1936222ce1388ee12d70c9053ca8ac";
     hasRunfiles = true;
@@ -19289,7 +19689,9 @@
     revision = 17265;
     shortdesc = "Metafont and macros for Euro sign";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap eurosym.map" ];
+    fontMaps = [
+      "MixedMap eurosym.map"
+    ];
     sha512.run = "9624b0a91a8491d4178051e8e8264e506725ace0eb1b4e4ee9f3cf38cf7868d392f0f4fae92947c74182a6cdf7d4cfb46319a269e4e3aac686ecf4a4cd2f7b3d";
     sha512.doc = "db226757ec82087da3e67fe69b5e9c2429e3cc2addb126bc528dda8bc421a4e9da2a367e64f119eb109e8898409a4e50177b81f9035ed1e0672bb902836bb61f";
     hasRunfiles = true;
@@ -19457,7 +19859,9 @@
     license = [ "gpl1Only" ];
     version = "0.5.1";
   };
-  exceltex.binfiles = [ "exceltex" ];
+  exceltex.binfiles = [
+    "exceltex"
+  ];
   excludeonly = {
     revision = 17262;
     shortdesc = "Prevent files being \include-ed";
@@ -19954,7 +20358,9 @@
     revision = 55728;
     shortdesc = "A free Bembo-like font";
     stripPrefix = 0;
-    fontMaps = [ "Map fbb.map" ];
+    fontMaps = [
+      "Map fbb.map"
+    ];
     sha512.run = "d63e140b60941f114b7aa7c82888c224715d6d173b88ca85aacdb3f7635aa928846e804e807830674d3bec0fc801435eb9e07406270c156d40e8c1994f50aa3c";
     sha512.doc = "c63214ea5a91ea6bab66a866a65c2ee43c64f49afbc3235e2f55cc0de89fb3a269bea45fb7d67ccbcda4bac3249b2f2ab14f780fde7cbd112231b16e58eac67c";
     hasRunfiles = true;
@@ -20039,7 +20445,9 @@
     revision = 61719;
     shortdesc = "A maths symbol font";
     stripPrefix = 0;
-    fontMaps = [ "Map fdsymbol.map" ];
+    fontMaps = [
+      "Map fdsymbol.map"
+    ];
     sha512.run = "e8b2d08c3e64def77a688dc9d96c0b9da9eaa4c942e571578fa0a7e6dff9eb3910ecc66a7be9334ecd41fdc0023f89d8c98facc2d42cd0095c75d6e1b4da69ac";
     sha512.doc = "88efcb300a84b6c214fec37603ea23cb51043af78e1af8aa6e3ce157bab1c8e395e71991c7ea7854051f4706c6b702fe0d48edd76e919a4592e57320b1f77b98";
     sha512.source = "7be26193e05d57fba2a91d57b49cbadaf5594d9ea843b9d9f1ae15608cf7d45e40112aa286bee73ee16da976c7ca7bb7aef5627cf8f0023cded506a493426b31";
@@ -20103,7 +20511,9 @@
     revision = 43812;
     shortdesc = "Extended version of Knuth's logo typeface";
     stripPrefix = 0;
-    fontMaps = [ "Map fetamont.map" ];
+    fontMaps = [
+      "Map fetamont.map"
+    ];
     sha512.run = "20c5c83119d70a94e66aeec0bbb9a0494525deaf9addb9b91d8d5595397ab5a1195eb9d72056a5fd1c3ca490aef66b43558f5c5b86688e7d164360a697c331a2";
     sha512.doc = "16cfb520cf8b3030d546e1c7f7cd41772fc9d16ea55db6920a50945a7aa3034050d873d3d5da05c108ee303dc1c77217c8a1f014c2e9beaf36d932e33aefeb93";
     sha512.source = "de4a25f0a86f29d10fd1cf799ac6c8efc58633a7ba0c48bb33716c46e6b0e1c9d5be6ee4e8e4955739ddb324270e44d6fa658c360d03123c18cc275ba6abff06";
@@ -20207,7 +20617,9 @@
     revision = 68353;
     shortdesc = "A font for Frege's Grundgesetze der Arithmetik";
     stripPrefix = 0;
-    fontMaps = [ "Map fge.map" ];
+    fontMaps = [
+      "Map fge.map"
+    ];
     sha512.run = "0f97109ffa1daa97d4ad496c2e948a123a9fb04393e668c9c3b1a14131f6ed7a21ac9056c6f3766e3ab2d3a2caa2baeb67c4b59d6c6489299090976d697e10f8";
     sha512.doc = "8505aadb706e79e6e1d0faec203de577cf76acef5360ed7c29febc2239d2719a717a59e9d4f8fbf5d2eefe67be1ec3cc1ebbf9be47930750582df29bef2fa9fe";
     sha512.source = "c1d966e094ce4a61c6250717731a20c3db0a0e438b5d8acf1b5332cd05a2f6dfde1d0e99bd02ef5ee725c1242da9ef183f680a03bb7f10d7ed50d0ce4c2bb1ae";
@@ -20256,7 +20668,9 @@
     license = [ "gpl3Only" ];
     version = "0.2";
   };
-  fig4latex.binfiles = [ "fig4latex" ];
+  fig4latex.binfiles = [
+    "fig4latex"
+  ];
   figbas = {
     revision = 28943;
     shortdesc = "Mini-fonts for figured-bass notation in music";
@@ -20397,7 +20811,9 @@
     license = [ "gpl2Only" ];
     version = "3.4";
   };
-  findhyph.binfiles = [ "findhyph" ];
+  findhyph.binfiles = [
+    "findhyph"
+  ];
   fink = {
     revision = 24329;
     shortdesc = "The LaTeX2e File Name Keeper";
@@ -20424,7 +20840,9 @@
     revision = 64422;
     shortdesc = "Fira fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map fira.map" ];
+    fontMaps = [
+      "Map fira.map"
+    ];
     sha512.run = "5faf4cdf1690f9d6c690cddbef813c8973517309144495016ef5d61ff5e5df9ce73f70b262d1c36ba72fa92f93c7a1d550b96acc4965d7ab88efce21ee20d682";
     sha512.doc = "b97fa7ebaefc3a057eae0a3fd14f43fad1a9789af0b2c43ca8a0c6969610b1786e24508b1367002527841a8095486d6eea180c59d95b1df904df846c943b88f2";
     hasRunfiles = true;
@@ -20448,7 +20866,9 @@
     revision = 68233;
     shortdesc = "Use OpenType math font Fira Math";
     stripPrefix = 0;
-    deps = [ "firamath" ];
+    deps = [
+      "firamath"
+    ];
     sha512.run = "6c713fe81dd006707b987930e8c8835c21122607d9488ce997bd9b76cbe85bb91fe7017f4282fa91c11ab41827ce70de62d0baccc78a543d56b0d873ad153c12";
     sha512.doc = "39c2eab4cf1dc638194d81effa1b442b87e96b1ebb2efc72d0ce26041bb04fc3cee8f44b939f904b07cc0332708d8ae8cd7a1f41087d363888306c0f0583274d";
     hasRunfiles = true;
@@ -20943,7 +21363,9 @@
     revision = 15878;
     shortdesc = "The title font of the Mads Fok magazine";
     stripPrefix = 0;
-    fontMaps = [ "Map foekfont.map" ];
+    fontMaps = [
+      "Map foekfont.map"
+    ];
     sha512.run = "45342633aec41f2a5fe7213dc418960d76ff196a08b906965e3b68f2c5ed264b3192ea45756133f12662e451fcad11d08232995c0de2493495c40b9b59cef7ea";
     sha512.doc = "7e1aa7a240d825c014be6af7be5cd7c1bbcbc6e52bd55be36f987b4a25223179bcc4c4d342906c10f9df624536252fe4dc5a45cd3b5ddb63f91e9f4c7401a239";
     hasRunfiles = true;
@@ -20974,7 +21396,9 @@
     revision = 21326;
     shortdesc = "Support for the Danish \"Dania\" phonetic system";
     stripPrefix = 0;
-    fontMaps = [ "Map fonetika.map" ];
+    fontMaps = [
+      "Map fonetika.map"
+    ];
     sha512.run = "4db9e50fde60ac69373f5abd151f3e17275f5c492b6855a7f5dd8895650a79cda1feda43398fffebbecdd6f7e032f8935972ef573f79ae1cccc5844dc148352b";
     sha512.doc = "ac3f0de2a9a5b5052d4ae626b4368f8b1fef419503cab9a88d4bf89db348c1a756555a6cef7aa70bcf733fa032840fe9ae7cfe347fb40bae32b54506e60ccf37";
     hasRunfiles = true;
@@ -21004,7 +21428,9 @@
     revision = 48145;
     shortdesc = "Font containing web-related icons";
     stripPrefix = 0;
-    fontMaps = [ "Map fontawesome.map" ];
+    fontMaps = [
+      "Map fontawesome.map"
+    ];
     sha512.run = "e08643104006c9e14c40bb965b4401a8fe296f43e5f39b285cd19d5aa0ed33602cc0eb6ffcc996e1d6e5aaa57dd906903324626ee40facdcb3cedc5216a3deb6";
     sha512.doc = "bbd18a60db734922ea006ebd00b0c9f90c34907a7b519a08bf007daf01cceaaf6db3b31c3dd8c76e1dac199d4f7c312116f6935b764afb62248b7dcfd92ac78c";
     hasRunfiles = true;
@@ -21015,7 +21441,9 @@
     revision = 63207;
     shortdesc = "Font Awesome 5 with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map fontawesome5.map" ];
+    fontMaps = [
+      "Map fontawesome5.map"
+    ];
     sha512.run = "d7f6a40797b2968c31b28f1bf273af9d27b7a87e7c2953748f354db2e760b027feb5a8fd52c8f367649fba24cd629d71c1b1368b8864d42eb84269e0b22b59d4";
     sha512.doc = "1727133ca0e1713c356a647e08a7e22af50ad6a67e66c54f3d9e9a0601bd4a693c365cda625b37be83cb4ece42aba8312488f4ba5e885cc44f68f7930dfd7add";
     hasRunfiles = true;
@@ -21068,7 +21496,9 @@
     license = [ "lppl13c" ];
     version = "1.933";
   };
-  fontinst.binfiles = [ "fontinst" ];
+  fontinst.binfiles = [
+    "fontinst"
+  ];
   fontinstallationguide = {
     revision = 59755;
     shortdesc = "Font installation guide";
@@ -21241,7 +21671,9 @@
     revision = 69729;
     shortdesc = "A range of footnote options";
     stripPrefix = 0;
-    deps = [ "bigfoot" ];
+    deps = [
+      "bigfoot"
+    ];
     sha512.run = "7e205e392bbc933c6592f91afa053573f174ea83b07d81a17a144b29bc3837ba4e6639c56f5b07a9840e141e408163cbc2edbcee5fb7b159264ebc54f4a09645";
     sha512.doc = "93d3ca6476356b7a0ed955edbe442764740d32db58dba91276f6bd891ca4009c3731872a703f1621e344a69c401cd70a7cd9e5fe2845d7667a8e0dc61e2ad2a5";
     sha512.source = "6b2960dd45ec7ff85cbeeac863a068c3eae5d161b19811f447fe31b572a7a11006c3608ddd34a677ade6c69e781bcd7938dbe451b0dbebb6c82708b393d363e6";
@@ -21420,7 +21852,9 @@
     revision = 64566;
     shortdesc = "Forum fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map forum.map" ];
+    fontMaps = [
+      "Map forum.map"
+    ];
     sha512.run = "17336de3385fe31437577e541a63fe10a9ff6f972e02776448a2012337499633eb118d86f7c1995cfbfd5b84360370c614a3687b18880e24a7e4ce06c1874117";
     sha512.doc = "6598777d072ce157440923c767ec77f710ef38bfb019b7134d0ef8ee216d1a66af185a63a54a6af0c17d537a4027c7fa322ebdad07466787e400b6ff4fd77d99";
     hasRunfiles = true;
@@ -21496,7 +21930,9 @@
     license = [ "gpl1Only" ];
     version = "1.6";
   };
-  fragmaster.binfiles = [ "fragmaster" ];
+  fragmaster.binfiles = [
+    "fragmaster"
+  ];
   fragments = {
     revision = 15878;
     shortdesc = "Fragments of LaTeX code";
@@ -21551,7 +21987,9 @@
     revision = 24559;
     shortdesc = "French cursive hand fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map frcursive.map" ];
+    fontMaps = [
+      "Map frcursive.map"
+    ];
     sha512.run = "5ac038493648ad14626e2a015c7dbf96a41257ab1d1086f9e79b0128df2c85af1a279e021e52c722636f8647364791bcf7580cccc1d80d60084f5a9a55a23317";
     sha512.doc = "eb0559574af52a711f61ab84cbda996c7cf4b2314b4d5faaa18824ae3396f041b7a5948151b2b5cffae6675bbe09c2e4358b81e9ad7792e5ece8a2912d7ff030";
     hasRunfiles = true;
@@ -21851,7 +22289,9 @@
     revision = 64412;
     shortdesc = "The Garamond Libre font face";
     stripPrefix = 0;
-    fontMaps = [ "Map GaramondLibre.map" ];
+    fontMaps = [
+      "Map GaramondLibre.map"
+    ];
     sha512.run = "2c8a9057bccac0b8187e7e7b38445102e2ee89885595d93eb3dcd88bea4fe18d73786b471812f9a0ba256a6fe16ceb3724902e587b3ce6a98a1461d554182698";
     sha512.doc = "b8a575d15c7020287313aed6fc7f08d4d6d9cc02633527a657db4fd0fe39a25154f7dbbd9d6516ecd4662d08644d803822a19da43348f955f553725558c0dd6a";
     hasRunfiles = true;
@@ -21883,8 +22323,12 @@
     revision = 60832;
     shortdesc = "TeX support (from CJK) for the garuda font";
     stripPrefix = 0;
-    deps = [ "fonts-tlwg" ];
-    fontMaps = [ "Map garuda-c90.map" ];
+    deps = [
+      "fonts-tlwg"
+    ];
+    fontMaps = [
+      "Map garuda-c90.map"
+    ];
     sha512.run = "a806538598cae0365968ab20936631a052dc65f9f6056c39197f7b1c7a5aad717a7a8b72ed2a1af347f8ce91f27d7dcd74b758db8f01fc7810a8d658990bcc28";
     sha512.source = "58f62ec8020489b69743c0591129967730f9ad0729f7cca343ab6e6fa6675122a1e37bf73f090cae050cb695a14dbfb3c52346e3c528e660484d2cb576aaca65";
     hasRunfiles = true;
@@ -21998,7 +22442,9 @@
     revision = 66805;
     shortdesc = "LaTeX support for the Gelasio family of fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map gelasio.map" ];
+    fontMaps = [
+      "Map gelasio.map"
+    ];
     sha512.run = "d5ef910eee7b3e26a180c88ae104da77becb4bed3a955938486d6763c2a0dc51e71ab6f9351304894d5e531fab714cf75f6a0cc421d074b3ac86931698582274";
     sha512.doc = "aa49c6e0bebb4c097b78ba11781f7027b783c6280a5fa0e3077f9c1eb20f6b372b3910f5c78b0103afa2429938a94b277bdcacd210afb8bad2bac92f5022ed8a";
     hasRunfiles = true;
@@ -22082,7 +22528,9 @@
     revision = 63470;
     shortdesc = "Gentium fonts (in two formats) and support files";
     stripPrefix = 0;
-    fontMaps = [ "Map gentium-type1.map" ];
+    fontMaps = [
+      "Map gentium-type1.map"
+    ];
     sha512.run = "03a32d7926747e42f25daf87ef08f866b9145a7782fd372a4688404951211a3528bcad7ee5e4a6888cd8ede2602930f628141953c840268041edbde2624006ec";
     sha512.doc = "7cef5c563fa13b5b8458e2932be450edd48168da9db9ac45ab16ba608323beb4ea79f8dabf2c38b13b479de9ff3065a0cfa84ff5c259aea95495248e9794ec18";
     sha512.source = "b2743e38fe079ca3d46711fbcf810f4feaa1bf781e35bbe33b62cf45cca3b2ee1ab6da22d61965c440f987f9850e614d3f1691f8aa0d01beb0f56984c31e66f8";
@@ -22204,11 +22652,15 @@
     sha512.run = "e5287152442820e20087b45c50a750af621e71e2175cd6790231d81e1f338e50aa75f29d9fbc31c2e5802229c8f15c4e0c7769d0513f1d1b0bafc96a8a3b120f";
     sha512.doc = "bb55c60ec958182aaaa6dfc292a06fbad8a0ebdcb56a6799f1358ad2009bcb72b06611672219c5e9bd6d7cb4db76c4fa030be5e06f9bb38d04fa6744f8bca330";
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "lppl13c" ];
     version = "1.11";
   };
-  getmap.binfiles = [ "getmapdl" ];
+  getmap.binfiles = [
+    "getmapdl"
+  ];
   getoptk = {
     revision = 23567;
     shortdesc = "Define macros with sophisticated options";
@@ -22258,7 +22710,9 @@
     revision = 19469;
     shortdesc = "A modern Greek font design";
     stripPrefix = 0;
-    fontMaps = [ "Map gfsartemisia.map" ];
+    fontMaps = [
+      "Map gfsartemisia.map"
+    ];
     sha512.run = "28cb811a30c06bd6390b9268dd2a7a4dadcb2fa9d426d9461af1ba5593b2c419ed1c7886c3aef9bdbb0f1fea3d6bf127ff6088a6b2c2048dcccfb21c2a06a5ee";
     sha512.doc = "9f2efd76c243177240f237f7232fc87eb33d7ea1177a7bfdf7d506077e19c40d3fd923a960595c46f50fa19979598bd06a1865cae8794d45f91da1d6a9a60a7b";
     hasRunfiles = true;
@@ -22269,7 +22723,9 @@
     revision = 19440;
     shortdesc = "A Greek font, from one such by Baskerville";
     stripPrefix = 0;
-    fontMaps = [ "Map gfsbaskerville.map" ];
+    fontMaps = [
+      "Map gfsbaskerville.map"
+    ];
     sha512.run = "b545ec586b3bdfe3da2cabaa959ceeeb4ff513b48024575b1b5e3c57bb2d10a0b4e2cd7507726275eed0826dabf03d05c20eb9d5ec341aaedc0313264214ef78";
     sha512.doc = "a45ed2b35774755a6558431f784faad4bbd63aa81ad5d80c3cfe3f7726604aea3e4de2baa72bb27a4e2271e9bfe180c8963d06b880a0efd2dc5f7789dcabb51b";
     hasRunfiles = true;
@@ -22280,7 +22736,9 @@
     revision = 28484;
     shortdesc = "A Greek and Latin font based on Bodoni";
     stripPrefix = 0;
-    fontMaps = [ "Map gfsbodoni.map" ];
+    fontMaps = [
+      "Map gfsbodoni.map"
+    ];
     sha512.run = "e01cca38176330bdc0a4b523bd2bd4f73a497d90a34682d29920e145d11ea099f163fa08470c79e10a27a137a5901d7da9db54e461667af61c687adca1960249";
     sha512.doc = "c70b1a32e945d82e50b8a37319ee2bf63d4800b381f317168fd945311485cf6c41c7a3112e89457f4ee40bd29736accf681bd61494120e3d41f0c8fb28ad466a";
     hasRunfiles = true;
@@ -22291,7 +22749,9 @@
     revision = 19469;
     shortdesc = "A Greek font with a long history";
     stripPrefix = 0;
-    fontMaps = [ "Map gfscomplutum.map" ];
+    fontMaps = [
+      "Map gfscomplutum.map"
+    ];
     sha512.run = "4013ef92910c3c1145708afa5a9ff13cfb0aae05e6b225c56c98090ea7cd223799e73212982312a14cf504a355dddce08e3364df8c046dfe462d07429cfa617d";
     sha512.doc = "5854b000522120f6a1b065300943fd8aebcd75f57da15d667616a3706d35ffa35cac0422712d0b008dc2abf2b9deceb0248fc044be68f893f6ad0eefcd50b316";
     hasRunfiles = true;
@@ -22302,7 +22762,9 @@
     revision = 69112;
     shortdesc = "A Greek font based on Didot's work";
     stripPrefix = 0;
-    fontMaps = [ "Map gfsdidot.map" ];
+    fontMaps = [
+      "Map gfsdidot.map"
+    ];
     sha512.run = "436a8cb4ea88663ff3358d6991fce9364f197027797903eb1b5c74ec0a857059579f0a58597ca6427c1651bf89440d7b7c8965e79fc668ecf444dbcc9f7ed4a3";
     sha512.doc = "29b49271f62496e6537e84301b361d372b24cf208365d97f3ac1d6d5b82fae84ff82954ad45e87201eee0df9dfc58f3486049e219480d20add06e9eef934f17e";
     hasRunfiles = true;
@@ -22322,7 +22784,9 @@
     revision = 63944;
     shortdesc = "A font in the Neo-Hellenic style";
     stripPrefix = 0;
-    fontMaps = [ "Map gfsneohellenic.map" ];
+    fontMaps = [
+      "Map gfsneohellenic.map"
+    ];
     sha512.run = "7290de85142975c61b28cc8d3e5919805590e2be5f5b442f0c371c393f92012ef6b00997bbac1aa1fb63914578e99eb5e6b26f6af8f51cb5ec7f4c53ede51fd6";
     sha512.doc = "231ea0eb57834e5b781cc3e8f49a85e2564756abe3812a432212fa7e85468117a1d80d6af5db8cec754eb1996d3b9716c12c403b1865d60b18660f454a2323b8";
     hasRunfiles = true;
@@ -22343,7 +22807,9 @@
     revision = 18651;
     shortdesc = "A Greek font, originally from Porson";
     stripPrefix = 0;
-    fontMaps = [ "Map gfsporson.map" ];
+    fontMaps = [
+      "Map gfsporson.map"
+    ];
     sha512.run = "f52d6cd8d0b674771dd56a5d2974fd3edd8b4685bb201489e578c62d1e31b5dcb6f2cb2e9b05702ec439ec7f0b35740e291d3a92de53b75870fd791858f8a474";
     sha512.doc = "3dbcafd00a88537db9e27aece276df08da805b59076d5e65395a4752d8ce57a794f23508238e96ec26b8d7e6d25e11992c2a567e44ca2f930bc44b9dc980202c";
     hasRunfiles = true;
@@ -22354,7 +22820,9 @@
     revision = 18651;
     shortdesc = "A Greek-alphabet font";
     stripPrefix = 0;
-    fontMaps = [ "Map gfssolomos.map" ];
+    fontMaps = [
+      "Map gfssolomos.map"
+    ];
     sha512.run = "6e6ac03cf7ee20accfb67855b3dce136e3caa2466fce760adef0a2c1633e0a170543cf861a6a07a0c80344ab026dc2f74a35c5543ea92a53f7ce8a1042f778b7";
     sha512.doc = "67640d1a95ad7ec43d7df407916cde264c5460cf400011cf0cdb3dc4caffabba370f2fc15ae945e20b6a9bb6623645f6ffe80034a781cdeb11c400bd23985e3b";
     hasRunfiles = true;
@@ -22395,7 +22863,9 @@
     revision = 64865;
     shortdesc = "Gillius fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map gillius.map" ];
+    fontMaps = [
+      "Map gillius.map"
+    ];
     sha512.run = "f2ce20c1650588af9f446ffc6d69835e4e970def915e3912ef36ed8d065d717ccbeb125a783768c360328ba6d44e15f954348957d774dec8eb3b84f4b8e00406";
     sha512.doc = "df8f143a6a80e9e5038744744b649fc26d042672eca7080fc8493a965ef4e3bcfb714735e83ae9a3bb500e3a298bc9bc9d940ff343caaed4ebfb8bf8d8101fb8";
     hasRunfiles = true;
@@ -22446,7 +22916,9 @@
     license = [ "bsd2" ];
     version = "1.6.0";
   };
-  git-latexdiff.binfiles = [ "git-latexdiff" ];
+  git-latexdiff.binfiles = [
+    "git-latexdiff"
+  ];
   gitfile-info = {
     revision = 51928;
     shortdesc = "Get git metadata for a specific file";
@@ -22576,7 +23048,9 @@
     hasManpages = true;
     sha512.source = "01ebc5d8d91a666a2693a039305103a98de9b2c7a958a40be04275e948664b3c5dd4818e4bb686a3a2a681b0ee38360a43fa795ac4537f8d083a2637ccd3df72";
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "lppl13c" ];
     version = "4.53";
   };
@@ -22907,7 +23381,9 @@
     revision = 64358;
     shortdesc = "GoSans and GoMono fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map go.map" ];
+    fontMaps = [
+      "Map go.map"
+    ];
     sha512.run = "c30a0fa1e76d0d287ed9296bb379bbb284873593f8136aa567e2573ec9d20310ad5d2ff993b00714fc472b6d365e2556c488278216c95898ca44f1f5b5c681f2";
     sha512.doc = "6a9d31a1d55f65d05922b71d9651198f9f9a8c6df754cdc93c4605fb6bc241b5c7cb56d0313a2681f60f4d92c45cbc42a9f61eba0c1eb1ba447a0363ff72593a";
     hasRunfiles = true;
@@ -23227,11 +23703,15 @@
     sha512.doc = "67f018fe0eb9568b0ecc6977de8eb8fc1b0b9503372e2f674a97723c537d8a8fb4f48d48b95ee8979e4d4490d3725cf4a1411ab9d7da2ea14f72d0dad0fddd95";
     sha512.source = "0ae6211b33a256f1b10a2b167f3f5886f712688ae73baf13f698af37f69f83a9be754efbc6b0d5b3a1cdf11e7d459a98986b27c27b6318cba8fbb3e48d7f682a";
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "gpl3Only" ];
     version = "6.0.0";
   };
-  gregoriotex.binfiles = [ "gregorio" ];
+  gregoriotex.binfiles = [
+    "gregorio"
+  ];
   grfext = {
     revision = 53024;
     shortdesc = "Manipulate the graphics package's list of extensions";
@@ -23324,7 +23804,9 @@
     revision = 35859;
     shortdesc = "URW Grotesq font pack for LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map ugq.map" ];
+    fontMaps = [
+      "Map ugq.map"
+    ];
     sha512.run = "30d0d52c98f44945ed40f45f1e73ed60e6b98a8a74dbf57cdae5c2d400ef613f8bed2b89b3b6afbf7b98e449738f637911dc1becf0c0dd33c21a23ecac9a9767";
     sha512.doc = "d41ae946f315d87b483a03d8b5a1034706f5bda765c69fa692f117b79bd5046b409e42c7b17577ee086ec98795e8a93acd761e30815c6083520b4bd244c33cd5";
     hasRunfiles = true;
@@ -23373,7 +23855,9 @@
     license = [ "gpl1Only" ];
     version = "1.19.2";
   };
-  gsftopk.binfiles = [ "gsftopk" ];
+  gsftopk.binfiles = [
+    "gsftopk"
+  ];
   gtl = {
     revision = 69297;
     shortdesc = "Manipulating generalized token lists";
@@ -23419,7 +23903,9 @@
     revision = 57359;
     shortdesc = "The Gudea font face with support for LaTeX and pdfLaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map Gudea.map" ];
+    fontMaps = [
+      "Map Gudea.map"
+    ];
     sha512.run = "e32cd699f60de092f9bf04e0eae725555735478db9ae7bf0a01a8aa78ff303c5dedee7eefcfa94bc1d8012f4062160dcbcb25cd405debccf7eed20abec056cdd";
     sha512.doc = "633f6cace4db98c88e3a7ea1f68deeaf9b0fe980ace490807688b629b1e3b2b00a12717b66b641dd9949065e4f72f423f78788693ddfe2128752f8ac990fd43c";
     hasRunfiles = true;
@@ -23537,7 +24023,9 @@
     revision = 27671;
     shortdesc = "Font support for the Arka language";
     stripPrefix = 0;
-    fontMaps = [ "Map hacm.map" ];
+    fontMaps = [
+      "Map hacm.map"
+    ];
     sha512.run = "6f4373f4e30d95c747ecbec45c53a9af23b78acb84a063dc0b2d4d5ed218e7c5f70d4f29817d39f6cf62cacc455cc3117ced589d41bf3f321a6f9d882823164a";
     sha512.doc = "bb6d5cd50e68ce84abd5f7296d8216d929b772f30e946508ca9bad2ffcd8d077d1927fcc76a5ea2e338799109b34adc8272f9f7f6d316f5af1312070f57fcc3e";
     hasRunfiles = true;
@@ -23853,7 +24341,9 @@
     revision = 61719;
     shortdesc = "URW 'Base 35' font pack for LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map uhv.map" ];
+    fontMaps = [
+      "Map uhv.map"
+    ];
     sha512.run = "243904e50c3458e62bf346f5a48332709db226e54b17c731ed0bdac5fce04d76b19411a12b01b51ca93b5ff7f06eee38f78a8375f6244d7b7d53116713d601b8";
     hasRunfiles = true;
     license = [ "gpl1Only" ];
@@ -24083,7 +24573,9 @@
     revision = 69649;
     shortdesc = "Fonts extending Utopia, with LaTeX support files";
     stripPrefix = 0;
-    fontMaps = [ "Map Heuristica.map" ];
+    fontMaps = [
+      "Map Heuristica.map"
+    ];
     sha512.run = "de0cae8f801f690e2d07ef7b63ad4c91d91ddafb8c3044441acb9d6a8e943f1c1667e17c0d2d9e4677b3a1a562b072747bebeeb01ded4bbd713b4e6103221a4f";
     sha512.doc = "406d07cc807454c429e644b7572456b2d9f49d2f48093007c43cbd3087d108beec1806f810508a849bfced690c97141ab34a2daec7ec641c8bdc71cbb55a43cc";
     hasRunfiles = true;
@@ -24129,7 +24621,9 @@
     revision = 29349;
     shortdesc = "The hfbright fonts";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap hfbright.map" ];
+    fontMaps = [
+      "MixedMap hfbright.map"
+    ];
     sha512.run = "91c8b007dd8ce71af9dbc98a66a82a395d68fc87a0abcf9518b5b89a98dc23b28f1b9b9aa551f82b920dc3e2d8b6500884eaa3bc98be48371a9774f9f283a641";
     sha512.doc = "7de24b513093d965fab1f8d7d13ec4b356e7f5495cb3a8f17204b1a786288488b4921df6b7e184262bdd3aa11fed6483a25d0bf8e898db05c8b1f7dff769c175";
     hasRunfiles = true;
@@ -24219,7 +24713,9 @@
     revision = 57360;
     shortdesc = "The HindMadurai font face with support for LaTeX and pdfLaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map HindMadurai.map" ];
+    fontMaps = [
+      "Map HindMadurai.map"
+    ];
     sha512.run = "24a585a4452895c901b41e64613d0bf3b2438c0bdded45b38ec6b61206cca96d5f0dc12ee5fb0073bcce95f208971e0838469e000108bb2d24567b2c239ba936";
     sha512.doc = "9cde302caf78d14cef5c191c6df0179991d07d8dcf40dd46941a966062d3df2ed5ccd21b6f5e5333bbab9245962cfed9ba75161c16bd8e0a914c231f9f420ef6";
     hasRunfiles = true;
@@ -24452,7 +24948,9 @@
     revision = 70050;
     shortdesc = "A LaTeX class for writing your homework";
     stripPrefix = 0;
-    deps = [ "einfart" ];
+    deps = [
+      "einfart"
+    ];
     sha512.run = "df7e3907150a637b948ead1db86158058a096ca1df98789f012a6e2ad2aef2d4b84c17dbe0d11ef2a459f1fcf9708d5775bbdee25c4542eb3f5439b95c346c89";
     sha512.doc = "6dbf5889b71e0022f87c59008b884b49c7e882d99dc2e7dd39a2e04d8429a71064b71ea389279dcbe919b1d04da9dd3bb6a4998c066aa507ae64f96e95c1e94c";
     hasRunfiles = true;
@@ -24844,7 +25342,9 @@
     license = [ "lppl13c" ];
     version = "5.12";
   };
-  hyperxmp.binfiles = [ "hyperxmp-add-bytecount" ];
+  hyperxmp.binfiles = [
+    "hyperxmp-add-bytecount"
+  ];
   hyph-utf8 = {
     revision = 61719;
     shortdesc = "Hyphenation patterns expressed in UTF-8";
@@ -26382,7 +26882,9 @@
     revision = 66892;
     shortdesc = "LaTeX support for the Ibarra Real Nova family of fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map ibarra.map" ];
+    fontMaps = [
+      "Map ibarra.map"
+    ];
     sha512.run = "7de51f4d206481dadbd4409a0c98dafb36a415e75053b78f40349edfd8b122e9449e749967eada07507ada1f6f22658c02b0a4993e39c2b0e97334076072d6a8";
     sha512.doc = "318a4bb5d2fd012c783053f457023604d53cdb2b02739ef8a1780f1856d5a63713774568cfa7a230f8ca1eb4711fa65f99d5a99b5c4e9235fb1b449751bc50b0";
     hasRunfiles = true;
@@ -26417,7 +26919,9 @@
     revision = 15878;
     shortdesc = "Fonts and macros to typeset ancient Greek";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap iby.map" ];
+    fontMaps = [
+      "MixedMap iby.map"
+    ];
     sha512.run = "89002af0024ec804ebffcc45f3a33337ffdb66f71e1ca70224b0936388892dadf99605a8ca3f59a2b879e76e24acc91b1da92622d602f49b236aecb8aafe64b9";
     sha512.doc = "9dd3bd7a8ef3267965f30048e4a71314b6a9813cb400b7a94dfe285606d7554cde80aa429603d0fb1f587935e193e5ece5ed67870fc4e0c66eb5152c392a9cdc";
     hasRunfiles = true;
@@ -26534,7 +27038,9 @@
     revision = 69420;
     shortdesc = "Execute shell commands and input their output";
     stripPrefix = 0;
-    deps = [ "pgf" ];
+    deps = [
+      "pgf"
+    ];
     sha512.run = "c9b89b8d93868060d969ff2943fc5915b831f5354a78b87fe99edc3b475875ed10349934e6cc23376d23d3fbd8e84234028bb4d2ccd49a30e8cd3e3b20035311";
     sha512.doc = "7226a854dba47fd91eca3ff5781e312fdf1650b8b3596d4232b353e8854d5cc213cb3f31ba4010016daf4d8683249697290b7886ca8db651b0bce2856bb7e08c";
     sha512.source = "53b295fced75d6a8451d1d6e9130b3aad977fe7b1e0ad57d67e899920dbedefc297b36636772cedb94bace189efa7f2a65172e44069ba62609961ea0cf8fe2f2";
@@ -26743,7 +27249,9 @@
     revision = 64568;
     shortdesc = "IM Fell English fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map imfellEnglish.map" ];
+    fontMaps = [
+      "Map imfellEnglish.map"
+    ];
     sha512.run = "59c575a0c08ea995ebdf871c627734e47d48de927f3176f7ebfe54fc9f73d0a026159ac75e5673b180ac3cd5b8af9bc59aecc9879ee1a30084609c3d5828ede9";
     sha512.doc = "ca9e465e985ad5568713c5cd79f4b6d8b0474ecff9e35356bb2c88cbd6e71e451c44cd9e407bf0e8b15b4267d44bfce2a64fcc052a7f4be662b560695c34a865";
     hasRunfiles = true;
@@ -26842,7 +27350,9 @@
     revision = 54512;
     shortdesc = "A monospaced font, with support files for use with TeX";
     stripPrefix = 0;
-    fontMaps = [ "Map zi4.map" ];
+    fontMaps = [
+      "Map zi4.map"
+    ];
     sha512.run = "3b33a1627083b50019e0c66ad49319d3ae699943f217daa21f57b19dd2733d29c6f1e9fbaddc1e3e39ea96623581b1d6a388f1a0009e84e4c3f381887b05d4c7";
     sha512.doc = "9139f7769536398c2822c41fe1fd0850a81fb54d70524904b266c8e231c95e344e27468187f474d51a9ab8c4028d6e5f9cc4513d1b38e306b739a1572c387e88";
     hasRunfiles = true;
@@ -27073,7 +27583,9 @@
     license = [ "lppl13c" ];
     version = "1.7";
   };
-  installfont.binfiles = [ "installfont-tl" ];
+  installfont.binfiles = [
+    "installfont-tl"
+  ];
   intcalc = {
     revision = 53168;
     shortdesc = "Expandable arithmetic operations with integers";
@@ -27089,7 +27601,9 @@
     revision = 68966;
     shortdesc = "The inter font face with support for LaTeX, XeLaTeX, and LuaLaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map Inter.map" ];
+    fontMaps = [
+      "Map Inter.map"
+    ];
     sha512.run = "3e2799fdcbb3648912d99ae0fee49b3e34098204e742ffd8bac5fda212f3e452606124e5503f99a52f7f647b54c31858256e7e1dcee4a566f3ca8e9d5aab5eb8";
     sha512.doc = "64260a91b781bc0ca36a73e1b44ffc34847b26b977a950cefa27649d7382e9cb9d34f70f982831912489d86e343d4abfc81ae0d91302d3276aaa5c8567c3ba42";
     hasRunfiles = true;
@@ -27261,7 +27775,9 @@
     revision = 47700;
     shortdesc = "IPAex fonts converted to Type-1 format Unicode subfonts";
     stripPrefix = 0;
-    fontMaps = [ "Map ipaex-type1.map" ];
+    fontMaps = [
+      "Map ipaex-type1.map"
+    ];
     sha512.run = "0dd513aa3cbb9dba7e1099f7f08d839e80002fc5f5bcfc2a2a013dc799a0a6389f128fe72ebc32b673afd66f3ebbc7fab9b97c31763f94b7ad64eebc83b2f569";
     sha512.doc = "1c2974ec35c0291207ddf560b6cef4cb5b161fb59e80a6508b4f88aab5ecf93c6a3dda2a3107a40e838235f5af22ce23704bf4f13fc4a0b344f0805c29655605";
     hasRunfiles = true;
@@ -27461,7 +27977,9 @@
     revision = 19611;
     shortdesc = "A two-element sans-serif font";
     stripPrefix = 0;
-    fontMaps = [ "Map iwona.map" ];
+    fontMaps = [
+      "Map iwona.map"
+    ];
     sha512.run = "2a125919a015c82e00bff575407f02a6c9a176f83a6017df682b98af55473e7e36ca0a94ff27091a3a4279d42fea9c49f0d8ae6da7e852ae9c44389dd5d8f7fe";
     sha512.doc = "87128ca46f7f2f13f8f886fc1c3da11f17636637632c0d39ebae07dfe70ec92024e1136da7a736a3fc8d494e856b86407ef9c01cd54a56fc2e41372bc0f1c4fe";
     hasRunfiles = true;
@@ -27777,7 +28295,9 @@
     license = [ "mit" ];
     version = "1.3.3";
   };
-  jfmutil.binfiles = [ "jfmutil" ];
+  jfmutil.binfiles = [
+    "jfmutil"
+  ];
   jieeetran = {
     revision = 65642;
     shortdesc = "UnofficiaL BibTeX style for citing Japanese articles in IEEE format";
@@ -27928,7 +28448,9 @@
     revision = 64569;
     shortdesc = "Josefin fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map josefin.map" ];
+    fontMaps = [
+      "Map josefin.map"
+    ];
     sha512.run = "6be43db9172d51a84374aa836cf9e2baf02f087336685a37c321449ba06461f08b08a8d98c12cb3aba0dbc9c0e2e8b3316362f65c7393b9286ab50b11f70174d";
     sha512.doc = "cc41ce980515708238256db38ff05c74a22f78ee5a8f4dc63d68339a064799e1beacab7be71ec15b2c97a6d9aecc7a39064fcadf4d7c67ff172eb9b8f7a939db";
     hasRunfiles = true;
@@ -28028,7 +28550,9 @@
     revision = 69355;
     shortdesc = "A TrueType and OpenType font family for mediaevalists";
     stripPrefix = 0;
-    fontMaps = [ "Map Junicode.map" ];
+    fontMaps = [
+      "Map Junicode.map"
+    ];
     sha512.run = "e368f15bb9adcf7ed15527e4e381424896590866cdb9a214b7f8310e9fd0c660ff5abe442a2206aa88f4032665f40fbdc21b33eba910ff1b299c5940eba82982";
     sha512.doc = "937127e4089bf632b62dc1a218645b1c2903a700183e9d9e7456b16a47b089846509d5d3f89424417a19dd540badabdc6a8a6024826e5cfbad97c19ae9f4bdd4";
     hasRunfiles = true;
@@ -28129,7 +28653,9 @@
     revision = 69162;
     shortdesc = "A personal class for writing journals";
     stripPrefix = 0;
-    deps = [ "einfart" ];
+    deps = [
+      "einfart"
+    ];
     sha512.run = "9778eb2f8a5999584afdb07b9604691d9ed1253a8a2bdedf569a10e892e876288a74c525bab2e0d26f8ed851d94f81e4a3625a54f1246cb0428a24308546d502";
     sha512.doc = "dde16cc247d095b61e09b62039f081afa1855778b7d804e6e5692213c25a14c2746204a730f7934a531142f5b9151dc183b20f1d2aa14429d448cc5d4e543996";
     hasRunfiles = true;
@@ -28276,7 +28802,9 @@
     revision = 56271;
     shortdesc = "Kerkis (Greek) font family";
     stripPrefix = 0;
-    fontMaps = [ "Map kerkis.map" ];
+    fontMaps = [
+      "Map kerkis.map"
+    ];
     sha512.run = "b4a8465264a174320180ac5f9bd89900f7a3b351af21d3a138db40b0781228bac8f8e9ea66a54a1910b3750d65eed17f74880f1c7396780dcd631eda164aff58";
     sha512.doc = "b9c57f71b2c5e48ab3b96984b231f5ad418d884caad0a3747c78bdf0a5688c4ac05993e43707236b02650750d5b7507d39e50668b7cc16e00a35547d63d0bbb3";
     hasRunfiles = true;
@@ -28300,11 +28828,15 @@
     sha512.run = "da33a0bdc989fcb6f4521d23e5d44bae70d608ed8ac10f05d6962a252e99bbd80380afa2cbe9e02b9c652b044dfff79218f951144da6ce55f8a53033c11ff346";
     sha512.doc = "1704411b3e7c41b6318ff6f8da56007dbf1bec67bb495d25364d6274d9b8acf234430081c22bab6ad13ffd0ea47586e6e24c9f27da8a97a309e2128ec74f89e9";
     hasRunfiles = true;
-    scriptExts = [ "jar" ];
+    scriptExts = [
+      "jar"
+    ];
     license = [ "gpl3Plus" ];
     version = "20191225.0";
   };
-  ketcindy.binfiles = [ "ketcindy" ];
+  ketcindy.binfiles = [
+    "ketcindy"
+  ];
   keycommand = {
     revision = 18042;
     shortdesc = "Simple creation of commands with key-value arguments";
@@ -28455,7 +28987,9 @@
     revision = 50782;
     shortdesc = "Produce knitting charts, in Plain TeX or LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map knitfont.map" ];
+    fontMaps = [
+      "Map knitfont.map"
+    ];
     sha512.run = "af3f7d2355054293c2c7973cfd40f0b741c8821884cca6ceec7562efeb92433bb81aa204b7b0ed4dae77cf674f4a63005f36133fbb5bf3d239f0cd5ef61a69ac";
     sha512.doc = "effaaf06a5593a9d73f2e93a722355009a0a957a2067a1432edb40d8dda7649c42571cbc37fc7aa4103ae2094dea7b1bfd861273566102c55546f71b326e7118";
     hasRunfiles = true;
@@ -28628,7 +29162,9 @@
     revision = 63690;
     shortdesc = "Typeset Hangul, coded in UTF-8";
     stripPrefix = 0;
-    deps = [ "cjk-ko" ];
+    deps = [
+      "cjk-ko"
+    ];
     sha512.run = "be75556f3857a405d235f920866f8089f105a57f9accff07a541fe110bb8124e049ebe75368ce3282bcd329cc6a02eed0ccffdfad49020986d61221839cae4b5";
     sha512.doc = "7226874594b10ee48e8aea30a72e6d6f4db9f770d5d5830dc83a41f828bfe36b0b11f679aff02722e457150548860f1ad719758e6ffd239bbf9ac18d907acded";
     hasRunfiles = true;
@@ -28638,7 +29174,9 @@
   kotex-utils = {
     revision = 38727;
     shortdesc = "Utility scripts and support files for typesetting Korean";
-    deps = [ "kotex-utf" ];
+    deps = [
+      "kotex-utf"
+    ];
     sha512.run = "569e9677ef0f346e5a53f4cc84302a8ddf2b4ad85708f4ab8ba7d076ebf339ec60998a41fa92fa815167e9bfc37085ebfd921dd13a60b017a0574e4a5d205802";
     sha512.doc = "a46c5d09d119fa2fe8b9acea87a37776536e3216b776af6b7037fc5b0a522af5c1a58baf081e60f06c9a4054e8ac2372458c276c779038a030dc92efdfa3aef6";
     hasRunfiles = true;
@@ -28670,7 +29208,9 @@
     revision = 65583;
     shortdesc = "A complete set of fonts for text and mathematics";
     stripPrefix = 0;
-    fontMaps = [ "Map kpfonts.map" ];
+    fontMaps = [
+      "Map kpfonts.map"
+    ];
     sha512.run = "d4d035c30acd5d5731a16e144cb45df6a3ce12c06d290f50c9e721ac67aa4808eade4eeae4c91a5093e29c64f91ec4d7a8d65d42307238c472d87d22eb5298c0";
     sha512.doc = "d030abf78988bc21f0e4afc06f0fda95339864036883877f5ceec11210640fcea8cd0ba54eb4d7b7dcc33b9eee8a0b2593739b4e2260b9db6e23cd480861e79d";
     hasRunfiles = true;
@@ -28747,7 +29287,9 @@
     revision = 19612;
     shortdesc = "A two-element sans-serif typeface";
     stripPrefix = 0;
-    fontMaps = [ "Map kurier.map" ];
+    fontMaps = [
+      "Map kurier.map"
+    ];
     sha512.run = "4f727e8733824e8c516e3ab1286cf0c834413a6ab52bccb5519c9a14a526cd3397a6d0a264679dc8b7d80cfc1d75ab11dcd2c02734ea63d5a2a5cebd3ea3c24c";
     sha512.doc = "7fda14c05f105d341a31561e761517ce12b3e5ceabc01e0c5c8552ddaf55be1863a22545b268026c844b23f03e8700350f0dede79ca8fda62e7a2672fa510407";
     hasRunfiles = true;
@@ -28870,21 +29412,29 @@
   l3build = {
     revision = 69748;
     shortdesc = "A testing and building system for (La)TeX";
-    deps = [ "luatex" ];
+    deps = [
+      "luatex"
+    ];
     sha512.run = "32999f257488429d109eecff598df6f7cba7e4511aa2b9cedcdd7cdb9acbbb959f13a1d3253d73f75e02c5c91e29744fdd934230d186ae7e76c057e51145cce1";
     sha512.doc = "aeca997d50468e929d32c727606273fb01ddbce1fde2ec8f03f7e92f3f334ff7cf537432516b584f0420b9a93d7dfdf1f277d789222d9a3fe346009d2d46d72a";
     hasManpages = true;
     sha512.source = "5969f5f85c71844c7d3abea497059f2bcf8b7bf96294ad746d2acfb876f3edc5e573aeee081f2ef45baee4eeef5465e69c1591412d45d2912f0391d6dfe35d18";
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "lppl13c" ];
   };
-  l3build.binfiles = [ "l3build" ];
+  l3build.binfiles = [
+    "l3build"
+  ];
   l3experimental = {
     revision = 70027;
     shortdesc = "Experimental LaTeX3 concepts";
     stripPrefix = 0;
-    deps = [ "l3kernel" ];
+    deps = [
+      "l3kernel"
+    ];
     sha512.run = "c25e7d14f3208e59bca4da786df9f63bf64455e9adf3517438e4065e99dc0e89fdfdc0325f7aa26aec7e9622b99029a370a5d0fed6bcc780a62094cf26b1a03b";
     sha512.doc = "4606266a1a8d5022594e7239821afc9d02b735b68bab4da681699851f748c0893763cb1943fe20eb7484f16ba955ee193e961b7f6235710f8d813198529245db";
     sha512.source = "834b404c08acc25cdcc1124512d527e7f094c18ca6283ddecf85bebe25ed8bbcd40f2c9dbf56c19280f8dc1db3a2f35a6bb996175ef2a85a15280c9be6cd3ce2";
@@ -28895,7 +29445,9 @@
     revision = 70027;
     shortdesc = "LaTeX3 programming conventions";
     stripPrefix = 0;
-    deps = [ "l3backend" ];
+    deps = [
+      "l3backend"
+    ];
     sha512.run = "0908782021ed4318ee3d43eedd7b0a9b83621fc04f9e6ad3d540d2f87b24cda8bd69accdb9691495bb3f7320808b976d1b798b3c4c95778b9b2804f4401ff893";
     sha512.doc = "d57cc53087b1a164c9cf7586313acc176a4de52b3da6734df1e36603b5ccfdae9fb19542e46246474936363020ecfa65e12f024b1fb50097c3205bb6b6aa2961";
     sha512.source = "e9b7b0e179fb168106277716bc8519b6a39d8062e3dce86212d582d42680ff7bb594542210a8ed1ee969226485db1d4055df071da898234cfeb9edad92d675fe";
@@ -28906,7 +29458,9 @@
     revision = 69992;
     shortdesc = "High-level LaTeX3 concepts";
     stripPrefix = 0;
-    deps = [ "l3kernel" ];
+    deps = [
+      "l3kernel"
+    ];
     sha512.run = "906dd058afdec3fdc416e1a39e3cddc0b8c8079dea35bc1dc453ca4f287b849aef55b71bf9d8fac9a0c428d1ea3c6f0bccb0dfb9e895a2511cf31852024e3cb5";
     sha512.doc = "49e8d52bf64ccd22827ca9faf65dfbe3a4af727feb089509fb512aa5ca8263be2c10294485e6da5bdd6a3426215ec5c83a434322ead9604aa029414b1047cf33";
     sha512.source = "9afaf6e363b3a1a3402b64bbd6ef2236dd062c933583ab8be5f57217d90196b456aa477f5c9c830fe6fffcb79d2e0f2dc3ad51ab3c9cc764b61b5252cb211aa2";
@@ -28973,7 +29527,9 @@
     hasManpages = true;
     license = [ "gpl1Only" ];
   };
-  lacheck.binfiles = [ "lacheck" ];
+  lacheck.binfiles = [
+    "lacheck"
+  ];
   ladder = {
     revision = 44394;
     shortdesc = "Draw simple ladder diagrams using TikZ";
@@ -29510,7 +30066,9 @@
     license = [ "gpl3Plus" ];
     version = "1.0.0";
   };
-  latex-git-log.binfiles = [ "latex-git-log" ];
+  latex-git-log.binfiles = [
+    "latex-git-log"
+  ];
   latex-graphics-companion = {
     revision = 29235;
     shortdesc = "Examples from The LaTeX Graphics Companion";
@@ -29523,7 +30081,9 @@
     revision = 68730;
     shortdesc = "Development pre-release of the LaTeX graphics bundle";
     stripPrefix = 0;
-    deps = [ "graphics-cfg" ];
+    deps = [
+      "graphics-cfg"
+    ];
     sha512.run = "a6357498f8bb7b6e47dc78f22163955e6f207df84a5270bec98d003ff7c0c31d82a13f3ca8e6d1242721bbeee6d5c8bc4e6bf744708fda9a3e5e9ebe30eaf9bb";
     sha512.doc = "0edf4d8f6b4d48df6e5f46ea5836a30f7608701a0470fdb713333b4e17c0348bbbde8df2e9dbfafb8bae924eb70c34e351aabe4a0e460821790adfa0ee52e384";
     sha512.source = "f2d2b4e1c67d5159c14426df49065edd0605a1db88ee0c2d72d582edab070c6f8f11bb517f969893761c0c22935df69e5b9dc6d981e0f6136326277e1e2be927";
@@ -29587,11 +30147,15 @@
     sha512.run = "00010f764235c6d9e4d6667c8c8b9f0ec6ae4b65afb53109f8179e0429d4b3787bd6b0985cd511f770cd74512483d1077e0f42136fe7ce1871984b372f2f2e54";
     sha512.doc = "8ebddd884e3e533d06332f2d6f8657ed54c9c376b3de68c7e7652f3b2835ec6601f5326ea70dc830b645440f0bd9ba2281e4f71a847946bb595771c6a950c0a6";
     hasRunfiles = true;
-    scriptExts = [ "py" ];
+    scriptExts = [
+      "py"
+    ];
     license = [ "asl20" ];
     version = "1.63";
   };
-  latex-papersize.binfiles = [ "latex-papersize" ];
+  latex-papersize.binfiles = [
+    "latex-papersize"
+  ];
   latex-refsheet = {
     revision = 45076;
     shortdesc = "LaTeX Reference Sheet for a thesis with KOMA-Script";
@@ -29686,18 +30250,24 @@
     license = [ "lppl1" ];
     version = "1.29";
   };
-  latex2man.binfiles = [ "latex2man" ];
+  latex2man.binfiles = [
+    "latex2man"
+  ];
   latex2nemeth = {
     revision = 65269;
     shortdesc = "Convert LaTeX source to Braille with math in Nemeth";
     sha512.run = "f2669a9e58857094c922b968f337e2cb2cf475b07811d53c61a8e0b4dc8bcc41d95186940361676bc62c0f235edb4fe7a7c0d5ee0f6d74c541d1108960e18e7e";
     sha512.doc = "7fa7ae1c628e29549fc3cb2c98164e27f60cc0bcbf14e26b7a325aee313a5f41c3144d5adf2993c20999016f4798dcd436d96c637c4258ace0efc3bda4a54a43";
     hasRunfiles = true;
-    scriptExts = [ "jar" ];
+    scriptExts = [
+      "jar"
+    ];
     license = [ "gpl3Only" ];
     version = "1.1.3";
   };
-  latex2nemeth.binfiles = [ "latex2nemeth" ];
+  latex2nemeth.binfiles = [
+    "latex2nemeth"
+  ];
   latex2pydata = {
     revision = 68919;
     shortdesc = "Write data to file in Python literal format";
@@ -29865,7 +30435,9 @@
     license = [ "lppl13c" ];
     version = "0.3";
   };
-  latexfileversion.binfiles = [ "latexfileversion" ];
+  latexfileversion.binfiles = [
+    "latexfileversion"
+  ];
   latexgit = {
     revision = 54811;
     shortdesc = "A LaTeX git wrapper";
@@ -29885,7 +30457,9 @@
     license = [ "gpl3Only" ];
     version = "3.23.6";
   };
-  latexindent.binfiles = [ "latexindent" ];
+  latexindent.binfiles = [
+    "latexindent"
+  ];
   latexmk = {
     revision = 69657;
     shortdesc = "Fully automated LaTeX document generation";
@@ -29896,7 +30470,9 @@
     license = [ "gpl2Only" ];
     version = "4.83";
   };
-  latexmk.binfiles = [ "latexmk" ];
+  latexmk.binfiles = [
+    "latexmk"
+  ];
   latexmp = {
     revision = 55643;
     shortdesc = "Interface for LaTeX-based typesetting in MetaPost";
@@ -29916,7 +30492,9 @@
     license = [ "bsd3" ];
     version = "1.7.2";
   };
-  latexpand.binfiles = [ "latexpand" ];
+  latexpand.binfiles = [
+    "latexpand"
+  ];
   latino-sine-flexione = {
     revision = 69568;
     shortdesc = "LaTeX support for documents written in Peano's Interlingua";
@@ -29931,7 +30509,9 @@
     revision = 54512;
     shortdesc = "Lato font family and LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map lato.map" ];
+    fontMaps = [
+      "Map lato.map"
+    ];
     sha512.run = "2f8454888913ec6a024c53cf157509b8b769f948ac2c92d0683e80ff8e22865545a6a65864876be35569bf4a5d56ed871c8112b216561e3ce585136bd062c9ce";
     sha512.doc = "0965bdda9b3c106bc49d8156f497c4c85a80d76a4740964b2d24c58155e8afed57989166bc5ac3eb44daf377b7e8985b406a0955dc419ced4a7011f328ce0c62";
     hasRunfiles = true;
@@ -29998,7 +30578,9 @@
   lcdftypetools = {
     revision = 52851;
     shortdesc = "A bundle of outline font manipulation tools";
-    deps = [ "glyphlist" ];
+    deps = [
+      "glyphlist"
+    ];
     sha512.run = "3f3cc8f7cce233eb36315b21db408847a267ff393d6d4118de61c4b03ec408f3f29b2d41fdcf84995bfbf5d07bcb25984d7ffc76458d4f2dc12fdb6dfb85e23f";
     sha512.doc = "5a1dd1e2fd79351afc65d6786b24aebd9681a2b9e92755b44a836b47da5ceb1817f085483f306991a113dc0c26edfcd84839dec93bb46a003034536f31b31e5f";
     hasManpages = true;
@@ -30075,7 +30657,9 @@
     revision = 70050;
     shortdesc = "Write your articles in a colorful way";
     stripPrefix = 0;
-    deps = [ "colorist" ];
+    deps = [
+      "colorist"
+    ];
     sha512.run = "693591f7f1316f2e04408500a958db59528cf12e9c93bc38b9fb88edad1e3bea01d8adbe00546cfe8d448c30e1f34144b53ab9182f81a18c4b30b2167fc86306";
     sha512.doc = "9932c964d79640a85a28dcbf523625c4b291f9a2a6f89be6a4c416c7318a7e55c15923406457ad5ccac8ab4257aba21b1f97ca3e2acba6339178c7307895ee10";
     hasRunfiles = true;
@@ -30310,7 +30894,9 @@
     revision = 15878;
     shortdesc = "Cyrillic fonts that support LaTeX standard encodings";
     stripPrefix = 0;
-    deps = [ "ec" ];
+    deps = [
+      "ec"
+    ];
     sha512.run = "265aeba5ee99cbec2eca77a273a9e4857d78280e0ff17089a358e7f85d0595025e259b2edd471ce5287479531fe37cfeeaeba405ac9cabc7ac9616242815b6cf";
     sha512.doc = "33f1cd39b2e68caa750ca5867bebbbc43c9948a7606f6fe44ba3bd8be84661fb562b5472ec57ccc3f6c18ef2823188c2f81ca4444b562f935e6f041d8ec0f39d";
     sha512.source = "a81d3d7295101718dc4e66c6daafca8c480b281d7219956b0007adb4fd7e0f35959277931254fc778bf69c581b7d15ccf445f5037b589cee937211c39f59529e";
@@ -30348,7 +30934,9 @@
       "mweights"
       "xkeyval"
     ];
-    fontMaps = [ "Map libertine.map" ];
+    fontMaps = [
+      "Map libertine.map"
+    ];
     sha512.run = "5c1dfc8bac01acd0e6e0d3412c08ee8672f01ebe1c7e22f36f313541139bea13d8967e53f5959a04b31d08c0ba88334b30c3e909eef310567b07ead39edafd3f";
     sha512.doc = "54963a7cf440750aba83feb1a55d1de26ea6995716049d22d3f0ff742364db4c4ddc366d2937d022a3a8ed9951a114367a6ae1bef74c0a655b47007d38c2422f";
     hasRunfiles = true;
@@ -30363,7 +30951,9 @@
     revision = 44616;
     shortdesc = "Libertine add-on to support Greek and Cyrillic";
     stripPrefix = 0;
-    fontMaps = [ "Map libertinegc.map" ];
+    fontMaps = [
+      "Map libertinegc.map"
+    ];
     sha512.run = "0af71c5bd17a2c89d85c2df056e76e4f8ff98b24de40dd306a9c4207c15dbe9dfd08864736a3a45f1c82f51717396ea843082f6798b89f7e9ea8c316453a707f";
     sha512.doc = "010db594b034a5e401fd17a7772dd3dbf95c37d533fad97f7b1568336beca31523384da1eab42e74b2e8bf294b25a8d19df7469eddd65cc1bb61abd5dbe79d03";
     hasRunfiles = true;
@@ -30404,7 +30994,9 @@
     revision = 67450;
     shortdesc = "Support for using Libertinus fonts with LaTeX/pdfLaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map libertinus.map" ];
+    fontMaps = [
+      "Map libertinus.map"
+    ];
     sha512.run = "6c84de57b1778ec35d9f56b00e577f9f8c1293132cedba43e657f4425e9bf01ab4243fe6ffb872aeb99b446019539a640d29c88cf29cc86d649d2a00f77952f7";
     sha512.doc = "c656af53b98735bec8c63c3e56160da943379f4b908f553a27cd1c82111b201eb15c1f1eb1b6ff89fee281c27ea36d6fffc5592b75722cd561c8770ef2d3f6a6";
     hasRunfiles = true;
@@ -30418,7 +31010,9 @@
     revision = 69440;
     shortdesc = "A Type 1 font and LaTeX support for Libertinus Math";
     stripPrefix = 0;
-    fontMaps = [ "Map libertinust1math.map" ];
+    fontMaps = [
+      "Map libertinust1math.map"
+    ];
     sha512.run = "ad93607e4accadbc0a429bab7d6bb8ba964a98324a9c65fc1993db025a728dfb8b3e48e3d67552a88bbecad247db573d1b1f7386e1aacce7954b00ace4feacb3";
     sha512.doc = "012227a7d46da30dc4a20b403a0f0abc0010d6902585c18a0bb3fea1e4b7cf58b629ae8c49597c6c39a264cf25a7a80877cb09e99b0f59b01d37198c5c4db769";
     hasRunfiles = true;
@@ -30453,7 +31047,9 @@
     revision = 64421;
     shortdesc = "The Libre Baskerville family of fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map LibreBaskerville.map" ];
+    fontMaps = [
+      "Map LibreBaskerville.map"
+    ];
     sha512.run = "671894db7ebd325e35efba47a8b84dc9afbeb213358503f65e246e97af090be03f6591fe124d4f5b4c53ae99bdc7a56bf84d385597ed7564fa63f7fad5265e4e";
     sha512.doc = "9cfecbbfea90ff99af78bac088674061c7123ea046aa42da806fc09d6fe5e88c94fbaa3053bf87b563e55f514eda5cda108d5bf6b096253e79fa0d09567221ee";
     hasRunfiles = true;
@@ -30466,7 +31062,9 @@
     revision = 64431;
     shortdesc = "Libre Bodoni fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map LibreBodoni.map" ];
+    fontMaps = [
+      "Map LibreBodoni.map"
+    ];
     sha512.run = "e1bc9e0560febac6f6e56737ddc070fb9642ca6e701699dd3546e63fa681ce28a995e61b4190edaf4d9b9f9a4131b77436d69cbce47e601b11b63caa25bccc7a";
     sha512.doc = "be63dcbe34c1f09f560f85aba54e469b3b14331a4ccaf8e44ce7ffcc649ec1a0c4ba2494ff844cede73943a646cc8c62c8bf7a949b602389e4abf9ae5181331e";
     hasRunfiles = true;
@@ -30479,7 +31077,9 @@
     revision = 64432;
     shortdesc = "Libre Caslon fonts, with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map LibreCaslon.map" ];
+    fontMaps = [
+      "Map LibreCaslon.map"
+    ];
     sha512.run = "96c3193cfc16b5cb312ff67303825c7e9733642108a601ee2b8dccc6e8d6aaa0db28e2da7c84faf71eaa1576ddab230bb6f385972d95f4aaba547e57a82b1e54";
     sha512.doc = "9f7c6662af462f0c73b97de098cc4bbff5a3060e44a72ce294b175c5d5a3f520a93026b1bab17bdaf5c48d2de55c4045730386f7f8f046b3ff797c4d715acb8f";
     hasRunfiles = true;
@@ -30492,7 +31092,9 @@
     revision = 64441;
     shortdesc = "LaTeX support for the Libre-Franklin family of fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map LibreFranklin.map" ];
+    fontMaps = [
+      "Map LibreFranklin.map"
+    ];
     sha512.run = "35b304ca5b24ea88fc6a5227361db7f825a99eeba4b1ddcc31e5e71bda3f6ec911b00e2ec7ae9f54022748f39a26baa61aecff267628343dceae8eb8cb07bfd2";
     sha512.doc = "092dfd68010c10942f030828552e4609ded2b27bbd13d213556ad301629893748ace3380aefda1adc8ad23261b2de253599f6784b461fac8a1bf49cd6e1370d8";
     hasRunfiles = true;
@@ -30505,7 +31107,9 @@
     revision = 19409;
     shortdesc = "Libris ADF fonts, with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map yly.map" ];
+    fontMaps = [
+      "Map yly.map"
+    ];
     sha512.run = "1a754d896846d0db358cf4f878928dcb511d76a7de6e7dfabee71970908e3ed7caab98f854695318ead334e052282b690712069597f42505b00c41e328ad141d";
     sha512.doc = "04378b8461d6ea0284f038974fed6ae6fc48fc362f63dfb8b8d57a81a721da7bf17ca3aeabb198c373a68a4c8e5516b66f12c240e081dabcf1b9c79fd2d2b388";
     sha512.source = "8ccb8a6beb30c508d582dc905136cc8b1b053a8d71a7701bdeccb0ff1eecfa69e32d7167b871d4e38eb0c98ef49c8ee9a00a9ea3bbc30e51c8a81d903ac147ff";
@@ -30540,11 +31144,15 @@
     sha512.doc = "f5bb10465cf3dd983f59b101f6c631e202ce655282319c773cd0d83c0a9a8a3b9cee7790ef1f803b0c68215b553a2668d861a51dd9ec35b2dfe4b07ef0cf3a08";
     hasManpages = true;
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "mit" ];
     version = "1.2.0";
   };
-  light-latex-make.binfiles = [ "llmk" ];
+  light-latex-make.binfiles = [
+    "llmk"
+  ];
   ligtype = {
     revision = 67601;
     shortdesc = "Comprehensive ligature suppression functionalities";
@@ -30562,7 +31170,9 @@
     sha512.doc = "4d9ac765c6a4b2b736d08569eeb6d0d8b168fe96563526264f2485d3d27a944a3e81c6144cd8f1d8cb5162d425b436fc688172db18b09610b3088df4ce868a27";
     sha512.source = "e0a1db8b5c4e57374ea19a7f8da3f4a89a2947869eba3f57411a9e815d645f4cb4200832276e3d3c869e2b3a8e3018e8e0f20f942f2396395b7739d7e9b23951";
     hasRunfiles = true;
-    scriptExts = [ "py" ];
+    scriptExts = [
+      "py"
+    ];
     license = [ "lppl13c" ];
     version = "0.2.4";
   };
@@ -30597,7 +31207,9 @@
     revision = 63169;
     shortdesc = "Linear A script fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map linearA.map" ];
+    fontMaps = [
+      "Map linearA.map"
+    ];
     sha512.run = "b87051ba4647ed2f0beb8e5bfe8419d8558421f509cb6eaa931f47a10488dfac4e36b3ece1cfdbf3e46eb431c3d15e7a7005f27522dbc4cfe6de52ce6127bea5";
     sha512.doc = "4c87a47d08606416e5d6605edb3a89bb3a67babcc621dd28b8ca02bfcb5ba6108e56e76fc166ff0d6a54c058459acfc8ee6b46d49309d6333d13305d00d3179a";
     sha512.source = "6476de5673f0e0f4896b0f579bd37e31c7301916dff1de1a957044b7782c04c43b5b5add887960d1a7013648a7e352d2655bd9a8e57dd0cafd31c851cef5f21e";
@@ -30658,7 +31270,9 @@
     revision = 64858;
     shortdesc = "LinguisticsPro fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map LinguisticsPro.map" ];
+    fontMaps = [
+      "Map LinguisticsPro.map"
+    ];
     sha512.run = "6bf94e8910ae03314a3ff55157e52586b5f2550c2aaca1a8989b1f02400c87363c74e00658ee953c13a44dd69cb253bda6128e66a96b865e6169310165a7f9e4";
     sha512.doc = "8f0c8937cacdec2e2ea4999dd1bb45af96a99a3707ef22b54a2bf1e0c745d663550ff0b68d80cf895e8bdfa1f279873c4725c7851af547f06155589d8e5bfde5";
     hasRunfiles = true;
@@ -30718,7 +31332,9 @@
     license = [ "gpl1Only" ];
     version = "2.2";
   };
-  listbib.binfiles = [ "listbib" ];
+  listbib.binfiles = [
+    "listbib"
+  ];
   listing = {
     revision = 17373;
     shortdesc = "Produce formatted program listings";
@@ -30750,7 +31366,9 @@
     license = [ "lppl12" ];
     version = "67";
   };
-  listings-ext.binfiles = [ "listings-ext.sh" ];
+  listings-ext.binfiles = [
+    "listings-ext.sh"
+  ];
   listingsutf8 = {
     revision = 53097;
     shortdesc = "Allow UTF-8 in listings input";
@@ -30838,7 +31456,9 @@
     revision = 66461;
     shortdesc = "Lithuanian language support";
     stripPrefix = 0;
-    fontMaps = [ "Map l7x-urwvn.map" ];
+    fontMaps = [
+      "Map l7x-urwvn.map"
+    ];
     sha512.run = "c2cd1b54daf74e78e6087159fa827ece77f2dc835eda81e03fce861581e812536292f3f0b70b8bb77107c0a4032d12006e870303156a3f3c7cb653020ed9b97c";
     sha512.doc = "ae7a5e3bea2bd62a0cdbbfbde7e0d9e06554fa4b3bb825b45febed42556fa101fd2e6c611ad9fc1cc87ed5c92540977780fde47ae78a89dd37b70f89c94b5e8d";
     hasRunfiles = true;
@@ -30889,7 +31509,9 @@
     revision = 67718;
     shortdesc = "Latin modern fonts in outline formats";
     stripPrefix = 0;
-    fontMaps = [ "Map lm.map" ];
+    fontMaps = [
+      "Map lm.map"
+    ];
     sha512.run = "9e05642ab07ebe05c13d5fa98f3212527aa66a9d049f8eade506cbd9f0652315363a01ae20a9df873055e5283bba7574d51251c7dd86e56ebc37055b92379421";
     sha512.doc = "d15569c1f55553b068b8d3a73efdbdb74137d02fdda5db5d57f29203dcd92dea7746b73a3f30293b2932f046e60697ea015b83d2587cde2783300fa41967c5b0";
     hasRunfiles = true;
@@ -30932,7 +31554,9 @@
     revision = 64442;
     shortdesc = "Lobster Two fonts, with support for all LaTeX engines";
     stripPrefix = 0;
-    fontMaps = [ "Map LobsterTwo.map" ];
+    fontMaps = [
+      "Map LobsterTwo.map"
+    ];
     sha512.run = "ff9a64e40eb1e8d19ed353e4c6e46472f48eaa057a1283e8203eafd895cc622c031a849cf2cd941a664b07c4acc0e9fa18ca65acf6420cb3d40ce09c6ab6f391";
     sha512.doc = "a02034161dcd7d09ab14d907fde0b4cbc570ee7e13fc1945e18c71eaffe90e5dc039266f0ac83dd7887fa1e298add0d2be9e4259cb58f6dbfe13b7bce228ab8c";
     hasRunfiles = true;
@@ -31043,7 +31667,9 @@
     revision = 53003;
     shortdesc = "Support for automation of the LaTeX workflow";
     stripPrefix = 0;
-    deps = [ "etoolbox" ];
+    deps = [
+      "etoolbox"
+    ];
     sha512.run = "df61c0c6c0b8520f5ec38780d8eb69cfd5fccd21f5120e48eee71e02b004d3da4cc9cb9371a36766852e3ca09a3db86655f1a2639a49741f00134cff1246acd2";
     sha512.doc = "fa9277da81dfb3aa235bd795780e8d3e629558fede90fa9234528b50a11507e59e65e49a0ca787af037186890392dfd45bf6de7bd859cec369626fb7d57b543f";
     hasRunfiles = true;
@@ -31075,7 +31701,9 @@
     license = [ "gpl3Only" ];
     version = "1.07";
   };
-  lollipop.binfiles = [ "lollipop" ];
+  lollipop.binfiles = [
+    "lollipop"
+  ];
   longdivision = {
     revision = 68609;
     shortdesc = "Typesets long division";
@@ -31533,7 +32161,9 @@
     license = [ "gpl1Only" ];
     version = "2.04";
   };
-  ltxfileinfo.binfiles = [ "ltxfileinfo" ];
+  ltxfileinfo.binfiles = [
+    "ltxfileinfo"
+  ];
   ltxguidex = {
     revision = 50992;
     shortdesc = "An extended ltxguide class";
@@ -31554,7 +32184,9 @@
     license = [ "gpl3Plus" ];
     version = "2.1";
   };
-  ltximg.binfiles = [ "ltximg" ];
+  ltximg.binfiles = [
+    "ltximg"
+  ];
   ltxkeys = {
     revision = 28332;
     shortdesc = "A robust key parser for LaTeX";
@@ -31805,11 +32437,15 @@
     sha512.doc = "fd16f72bba665cffaad3102d6573117300c7df4ea7b4a3104be3de7c26c9f127fccdb54e373cf47220df2652fd405c6dd3f956d2278ec9339e70ea390333af75";
     hasManpages = true;
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "lppl13c" ];
     version = "0.13";
   };
-  luafindfont.binfiles = [ "luafindfont" ];
+  luafindfont.binfiles = [
+    "luafindfont"
+  ];
   luagcd = {
     revision = 68893;
     shortdesc = "Computation of gcd of integers inside LaTeX using Lua";
@@ -31860,7 +32496,9 @@
     sha512.doc = "3016c12de8386af715932819701a6da1b106c504a7d13ba9bb5a04999737709f474b50c08311c1d4c23b5532ba7c1546cb0585e5375babbcd2091adf52d05664";
     hasManpages = true;
   };
-  luahbtex.binfiles = [ "luahbtex" ];
+  luahbtex.binfiles = [
+    "luahbtex"
+  ];
   luahttp = {
     revision = 67348;
     shortdesc = "Compile-time internet-interactive PDF-documents using Lua and LuaTeX";
@@ -32131,16 +32769,22 @@
     hasManpages = true;
     sha512.source = "5ff132658ec2fab529595dc150674f19fcb266f87b6f294f42de04c4aa2c067091cec7a416c201b5970e56dfa3adb6772ed4276370aef7bd97eb6bf661bf2e8a";
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "gpl2Only" ];
     version = "3.28";
   };
-  luaotfload.binfiles = [ "luaotfload-tool" ];
+  luaotfload.binfiles = [
+    "luaotfload-tool"
+  ];
   luapackageloader = {
     revision = 54779;
     shortdesc = "Allow LuaTeX to load external Lua packages";
     stripPrefix = 0;
-    deps = [ "iftex" ];
+    deps = [
+      "iftex"
+    ];
     sha512.run = "7f2558dc265746f143520c2c6f3bf2ed05ac8c54988e573519321a7fb5a2a991220d0eb8906893f77964dc01f0e3f16b783dcd20f809042a11d29cd137f557fd";
     sha512.doc = "64719d715fc98bc09ab17db5f2053ea3e34d703adda6677f50ffe178a974230e8a03a9019b995238d073580e1faa745e655a7207468965ccb9f67bfccb5b5a49";
     hasRunfiles = true;
@@ -32300,7 +32944,9 @@
     revision = 52663;
     shortdesc = "Basic resource management for LuaTeX code";
     stripPrefix = 0;
-    deps = [ "ctablestack" ];
+    deps = [
+      "ctablestack"
+    ];
     sha512.run = "cb187dcd0f9e454a3b9d021b802ac6f7d09c3eee68adb5da31035f5b7bb36d2938ca940505ee08c8410ee0e5e5c81ffdd21617ea5ba0e9ca7b58abb6ede3defb";
     sha512.doc = "5dc696009e84662fc56443d7a5d61b3f30adbfeae3cf7176e81e676087d0fe580cb0575add49999ea8d5651850b7562c775b0727de01934465f3613ab7344be3";
     sha512.source = "ebb46d5d4c3f6ccfdbc758f9dab64d7e83c2fe988f7da6852dfd5e786bc757f2438f86010a695eb2e780a02830f15dea941de7fb5bdd6e6561df0774b476dd5a";
@@ -32312,7 +32958,9 @@
     revision = 69988;
     shortdesc = "Typeset Japanese with Lua(La)TeX";
     stripPrefix = 0;
-    deps = [ "luatexbase" ];
+    deps = [
+      "luatexbase"
+    ];
     sha512.run = "07d0f7ff77fd6f59561c176e6fc25d4b1d4860696aa728c0f9586921f1f32c5a3e01a2f463d5ad3830648fb19ebf6899857259cfa042263f3f17a66b1ec6e0de";
     sha512.doc = "bf01874cca52c561a4ce76d7111596b5a0a20dc0c6f7c383f8bbc9149f4fbe31aaf652d4902ab0b8d10f4719811fd16b9e8d5cfc97740429dd67f3c6a8bdf312";
     sha512.source = "5a92e1abd52c044957a160e41b74b15094b3a85bd8d29ac06ad35b8117ab9ece4d98b93e988994811846ba8bfa4d56f27b41708776489fd9957ecb0ae783ade8";
@@ -32398,16 +33046,22 @@
     sha512.doc = "1f818d8419e2e7d986fb35ef662f95a3ec24c6a3f439c3ee08f9ca9d8917871d4d21a8ba8f960346479bccf8c926b32751604912fa0274786bfdca641f83b803";
     sha512.source = "70fbe22a77b4494f2dff7e09448a1dbba42d115ef1a8739a305dabba55f8bcdf47cc3e632f09285c6de0442a5050551f7f13d15f573c88459ef8bec2f29a5f70";
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "lppl13c" ];
     version = "0.916";
   };
-  lwarp.binfiles = [ "lwarpmk" ];
+  lwarp.binfiles = [
+    "lwarpmk"
+  ];
   lxfonts = {
     revision = 32354;
     shortdesc = "Set of slide fonts based on CM";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap lxfonts.map" ];
+    fontMaps = [
+      "MixedMap lxfonts.map"
+    ];
     sha512.run = "aa732f403af1adc898e6ac462412a59e4d2c8821ef47807ec5d8c1ce565a73299d472377117bca3fb30add468b546280b1603feff95d35090b338f87b279bdf4";
     sha512.doc = "fed48ea91eb5ad414463d3b929dd4deb5cf433be63aa2753acc251aa1e8b85f0db7307a0ea96ea0bf9c4d9b14d0b90d26cde703bed2761a4a1b789ab3d117eba";
     sha512.source = "18da6f216135745887160dcc1df6ed72eb0e49f60a445e45326c84bed8fd98cd66316e21a6e0e7528d551917092f9715641fc68e02371b609690e00403ca5d96";
@@ -32441,7 +33095,9 @@
     sha512.doc = "316fbc2b37b903cae8da6bb9f44b8afad0e3e577c6fd84664e1724ffe318bbdbf9609dcadd5cde6a14cc5acbc134f69bd7a87dd90d9da7d4442a5f913b8132f5";
     hasManpages = true;
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "mit" ];
     version = "0.63d";
   };
@@ -32527,7 +33183,9 @@
     revision = 57373;
     shortdesc = "The Magra font face with support for LaTeX and pdfLaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map Magra.map" ];
+    fontMaps = [
+      "Map Magra.map"
+    ];
     sha512.run = "2b182272dcf5bf3469ccc38daf9ad24081002d118de77d2dd012b136152f2147a63c6c8fad5ffe2f758efbfbf7665ae0c61ef6281cf16112b740da95d2334b63";
     sha512.doc = "8364aaf47ee07d7462dcb13bb370c88c47556e23491233e580dee165528b417bf3dd139f0cdb3db6c565c0ffbac40ea2fb995a0dd2981dd227d1a70561f2f619";
     hasRunfiles = true;
@@ -32575,15 +33233,21 @@
   make4ht = {
     revision = 70117;
     shortdesc = "A build system for tex4ht";
-    deps = [ "tex4ht" ];
+    deps = [
+      "tex4ht"
+    ];
     sha512.run = "f16c8062b72932b24673df223850f58521ee5766536c9c210eed123b62c77efa3829f7cd38e2f9f7b62a516dd8fca860def52599be702f22e2d60a8683b52138";
     sha512.doc = "f7f45fcbf92488c2c97fd2b8916b1715cbf76512f43f7e60d29293ae7553416f9a7969e1b5a9e29c88319a5d0ecf6b8fb8a2254b201cafba597122a6d594ff11";
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "lppl13c" ];
     version = "0.4";
   };
-  make4ht.binfiles = [ "make4ht" ];
+  make4ht.binfiles = [
+    "make4ht"
+  ];
   makebarcode = {
     revision = 15878;
     shortdesc = "Print various kinds 2/5 and Code 39 bar codes";
@@ -32665,7 +33329,9 @@
     license = [ "lppl13c" ];
     version = "1.2";
   };
-  makedtx.binfiles = [ "makedtx" ];
+  makedtx.binfiles = [
+    "makedtx"
+  ];
   makeglos = {
     revision = 15878;
     shortdesc = "Include a glossary into a document";
@@ -32766,7 +33432,9 @@
     revision = 45777;
     shortdesc = "Knuth's \"manual\" fonts";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap manfnt.map" ];
+    fontMaps = [
+      "MixedMap manfnt.map"
+    ];
     sha512.run = "fe7ddf667368990f988005a44013aab80af9c097f4f824f717d84fddfd61dfc658f507d5b1bf8f7c076be1bd5a4363f117b388ecd39b0ce2b0ee5fc8aa83fd4c";
     hasRunfiles = true;
     license = [ "knuth" ];
@@ -32810,7 +33478,9 @@
     revision = 64451;
     shortdesc = "Marcellus fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map marcellus.map" ];
+    fontMaps = [
+      "Map marcellus.map"
+    ];
     sha512.run = "b6ba86cea7e275ae2cb6f35468300035fec789b85280307e65784bca9844aa8c834aa23e9f7e59de75d53879dbc609e64c084adcb1c38811483eeab15543f95f";
     sha512.doc = "5267a43751ac7a0aadfba28ec4427da7c1afbafac2425f09582a736520ab4bbd769e08ef02b86816225cd76bedcbb23f6cfd3e77352c9e4008f9443b826b48e9";
     hasRunfiles = true;
@@ -32877,7 +33547,9 @@
     revision = 29349;
     shortdesc = "Martin Vogel's Symbols (marvosym) font";
     stripPrefix = 0;
-    fontMaps = [ "Map marvosym.map" ];
+    fontMaps = [
+      "Map marvosym.map"
+    ];
     sha512.run = "64093dc5de012c6a50762ef34001ff2305e6b59b667ac7b1ef72cc53f8b0ed3852b4d307a8d421ece996e78f2e32c8871038b6b66659b0866dbdc536445dc7a3";
     sha512.doc = "d6f72ee7ed64404acce5c37c216a7e23193f2053c18910d80fc6d5fde73ba86c07045102488f17f4cbeb9e1d148567973713bb4d9ce2cdd3cb166936ba5623e1";
     sha512.source = "c28a69567c593160c7d04b4fc0fe7f0106db12ab588d3f02139e55ad99a1b4e33f1bba92f5af103b6f2a7e720d243b919d1f39f28031ad95dde3ae7e723f6e36";
@@ -32927,7 +33599,9 @@
     license = [ "gpl1Only" ];
     version = "1.44";
   };
-  match_parens.binfiles = [ "match_parens" ];
+  match_parens.binfiles = [
+    "match_parens"
+  ];
   math-into-latex-4 = {
     revision = 44131;
     shortdesc = "Samples from Math into LaTeX, 4th Edition";
@@ -32949,8 +33623,12 @@
     revision = 21129;
     shortdesc = "Outline version of the mathabx fonts";
     stripPrefix = 0;
-    deps = [ "mathabx" ];
-    fontMaps = [ "Map mathabx.map" ];
+    deps = [
+      "mathabx"
+    ];
+    fontMaps = [
+      "Map mathabx.map"
+    ];
     sha512.run = "ae2272ac7d79a3bb1a655000a2d5fa1c3d948363763abe194cbac4084d5ef60492648977660c3d9dfbc2c70bea3c207d031d2147097fb1d7af503aa80f257d1c";
     sha512.doc = "2504e85d659cba06fa25ae4e154309a6d3dcba2ac8bae0d4066b6637f19081987b0bc774902365e5b723f4b6c35cad07709e316ec1893a018baabc699d755e8b";
     hasRunfiles = true;
@@ -33156,7 +33834,9 @@
     license = [ "lppl13c" ];
     version = "1.13";
   };
-  mathspic.binfiles = [ "mathspic" ];
+  mathspic.binfiles = [
+    "mathspic"
+  ];
   mathtools = {
     revision = 70607;
     shortdesc = "Mathematical tools to use with amsmath";
@@ -33315,7 +33995,9 @@
     revision = 28399;
     shortdesc = "Symbol fonts to match Adobe Myriad Pro";
     stripPrefix = 0;
-    fontMaps = [ "Map mdsymbol.map" ];
+    fontMaps = [
+      "Map mdsymbol.map"
+    ];
     sha512.run = "49b52141928fedfdf5fdd63251de182761825a6cdcbf423bff562a863df159ac0d1c001239f777e7aef68ddce23c52407758c70f7da42f066775e204ac8c841d";
     sha512.doc = "ea4ddd0fd65204ec0ed980108d86e97be267ba46c1cf45711c36721bfab9302766ec1d0849b38de75003af564a797f8566def377d8d947d464367bfa40b91399";
     sha512.source = "0b649eba13871f6da834bbfb2c6523db6d50bd6a491b042a19f0e061ce9794d2ca03c39d277669b6698b48806fd0b705f322a69743c4fc50233559fd10406280";
@@ -33451,7 +34133,9 @@
     hasManpages = true;
     sha512.source = "06f1c38900d1daf52ceef138a658937dd85e1cae8280afdaa44e32eb9049ce444970becd3e0936a9f8f732ec8b32120cb55a343f5c8c523e217d8b7172de763d";
     hasRunfiles = true;
-    scriptExts = [ "py" ];
+    scriptExts = [
+      "py"
+    ];
     license = [ "lppl13c" ];
     version = "1.1.2";
   };
@@ -33559,7 +34243,9 @@
     revision = 64452;
     shortdesc = "Merriweather and MerriweatherSans fonts, with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map merriweather.map" ];
+    fontMaps = [
+      "Map merriweather.map"
+    ];
     sha512.run = "363cf63b7211464fba6fd7686dc7d1ab6914c64d724128eeaec90b3dac39002c0653a2c54ff6932c8ce1f16577cf27b1e4665a3e1dbe92bbb81e0a15419ae36d";
     sha512.doc = "8762dfd5b3f3443177e0900c434c74d4b8ccca6c8817b1d8353c41ee8310b2299e2fa67113881bb47dd6def3295663aeeefafb15d7b808def000b6e253ac2d3f";
     hasRunfiles = true;
@@ -33679,8 +34365,12 @@
   metapost = {
     revision = 66815;
     shortdesc = "A development of Metafont for creating graphics";
-    deps = [ "kpathsea" ];
-    fontMaps = [ "Map troff-updmap.map" ];
+    deps = [
+      "kpathsea"
+    ];
+    fontMaps = [
+      "Map troff-updmap.map"
+    ];
     sha512.run = "fb50b9d45a36cbe11d07fe2d0a1307bf257132e195825a2007894d5accb33ae1d10e0ca6d6a27405e79d3c439fca4dc1df00f21814eb530ac3707ca516bb9a0a";
     sha512.doc = "6b10e2a6183e6c7b9515ebfa0186b13d48bd87fb25cb69b010ac82b885fbb1f88f31340f7161e34f61cfa7478d50ebad6e82eddb14d8c746ef1bd4c480fe4b58";
     hasManpages = true;
@@ -33787,7 +34477,9 @@
     revision = 68175;
     shortdesc = "The package provides dedicated TeX commands to generate (vectorial) meteorological symbols";
     stripPrefix = 0;
-    fontMaps = [ "Map metsymb.map" ];
+    fontMaps = [
+      "Map metsymb.map"
+    ];
     sha512.run = "02864640550428b4869f0682d5571f463d21089f85e4e03336890cd7d37d08b9ec89b9bdc7b09b0f3ff5ea8bd612acfc2974655439fdcc5b617846d5f3d1c2a4";
     sha512.doc = "a3afc302c345de9e00f89f6e0781d4763d4ca5461f498e2cedcd0ee0494483db9cf7cd0ceb68823e7b1806caebc85a22751d5d4ce3b8041968036c8b2514e5d7";
     sha512.source = "29ccd5eb8915077ca09b568c7fd1924d61243266dc2fdfebba00691bb35a0dd908f2311caee865a044a78a9e485f78a4b91065c8d17f08b13420bdcf1b64a05f";
@@ -33882,7 +34574,9 @@
     license = [ "lppl13c" ];
     version = "2.7";
   };
-  mf2pt1.binfiles = [ "mf2pt1" ];
+  mf2pt1.binfiles = [
+    "mf2pt1"
+  ];
   mfirstuc = {
     revision = 64743;
     shortdesc = "Uppercase the first letter of a word";
@@ -33909,7 +34603,9 @@
     revision = 54512;
     shortdesc = "Metafont logo font";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap mflogo.map" ];
+    fontMaps = [
+      "MixedMap mflogo.map"
+    ];
     sha512.run = "4b2552a2f38c68c755f3966aedee8e054af48e0b0a61267d7a4b1a29a4bd6be15c8754d657a2f08d88dcd42a03ed768d336747d2c35107b4dd2d5bb0e1f649aa";
     sha512.doc = "8ce49b7bf7bdbc46589da02c461f98746e13e13f19eb79af1c2ede084174204c128b27f88e164d5192415b6f464238e7f04fe95fe8e0873ce8aac84bc1e56713";
     hasRunfiles = true;
@@ -33937,7 +34633,9 @@
     ];
     sha512.run = "fa735fa117e7bd433339efbb709caa5fc25007088500dd5e4f6999cc417d188fd43435f74d526186880ac857f9bfc52e1fb7f1055974cea959e28536150b1a19";
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
   };
   mflua.binfiles = [
     "mflua"
@@ -34061,7 +34759,9 @@
     revision = 54512;
     shortdesc = "The Miama Nueva handwriting font with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map miama.map" ];
+    fontMaps = [
+      "Map miama.map"
+    ];
     sha512.run = "b9a5416b1de4cb487575894f3dacac8b07eda2b37b90fa0c5ca0ebc5d9d412c896fb7cd028c6af5627368c44d442670990949c9ceb9fe3a60179d3f70874135a";
     sha512.doc = "a76db9f49bcdc225d9206ebaa3b7ca42bc7148a44d1d66b72d2033b68fe9a1137eec265316d3a24077e3e3712687e80ea948d4f1c9cd819e6a4afb8c9bbf91df";
     sha512.source = "2b9e1a649f944ce6b36b1dc09d28112f7d5ea3c0a26a1f292576448171aa2f51449988ce85703ba7c2098f6dce62093ccf5af256bff1993268f31dc884bd3b63";
@@ -34249,7 +34949,9 @@
     revision = 70329;
     shortdesc = "Write your articles or books in a simple and clear way";
     stripPrefix = 0;
-    deps = [ "projlib" ];
+    deps = [
+      "projlib"
+    ];
     sha512.run = "899476ca5e7ef145520819cf365e1afd9056b377e5eb3d64e63743d1eb041e6775d9d6ea616e241a6575e57789eea70dee3651a1dc4098c32b72021835d330f8";
     sha512.doc = "9f887a4043097a7fad52699d2568bf3e534d27df57f0567e392560e5153d7706068f2835ed03f5543bcb8e9021393e526b1499180bf00da851ac661cc86e2443";
     hasRunfiles = true;
@@ -34329,7 +35031,9 @@
     revision = 64461;
     shortdesc = "LaTeX support for MintSpirit font families";
     stripPrefix = 0;
-    fontMaps = [ "Map mintspirit.map" ];
+    fontMaps = [
+      "Map mintspirit.map"
+    ];
     sha512.run = "18167b9d0b5c167e2679cfb135812e3cbc20a90a182acb3eef15a54f4029298ebb39f6db626b5cbd8368389c9f0656f7575eb4f1970fd242d77d976762ca8d5b";
     sha512.doc = "8a7855b5cd117a5a11eda118b8a4b08eff4183a427655c501c5e3c40e1e9617397d58e6622058187a48d04948fad9164b866e58c76080404d7bdf4ff9fbc4d9b";
     hasRunfiles = true;
@@ -34392,7 +35096,9 @@
     license = [ "free" ];
     version = "2.0";
   };
-  mkgrkindex.binfiles = [ "mkgrkindex" ];
+  mkgrkindex.binfiles = [
+    "mkgrkindex"
+  ];
   mkjobtexmf = {
     revision = 29725;
     shortdesc = "Generate a texmf tree for a particular job";
@@ -34404,7 +35110,9 @@
     license = [ "artistic1-cl8" ];
     version = "0.8";
   };
-  mkjobtexmf.binfiles = [ "mkjobtexmf" ];
+  mkjobtexmf.binfiles = [
+    "mkjobtexmf"
+  ];
   mkpattern = {
     revision = 15878;
     shortdesc = "A utility for making hyphenation patterns";
@@ -34424,7 +35132,9 @@
     license = [ "gpl1Only" ];
     version = "1.02";
   };
-  mkpic.binfiles = [ "mkpic" ];
+  mkpic.binfiles = [
+    "mkpic"
+  ];
   mla-paper = {
     revision = 54080;
     shortdesc = "Proper MLA formatting";
@@ -34481,7 +35191,9 @@
     revision = 57458;
     shortdesc = "A blacker Type 1 version of Computer Modern, with multilingual support";
     stripPrefix = 0;
-    fontMaps = [ "Map mlm.map" ];
+    fontMaps = [
+      "Map mlm.map"
+    ];
     sha512.run = "6fe8c67f768cde92e38741885c336786f65f9793fce0027b0476a8e45366e33c4a559c3bb6367014646e89f0ac39bd92219bc59921c3b3e0fa3a9c4314f2a632";
     sha512.doc = "bd5ac414d3b3ff53b059543d25cf0296d59365dc219748d849f89a085225d864361923b4220a0a989585d99e9dc221f9a4209b622be5f279e0f02e5e1cc2d966";
     hasRunfiles = true;
@@ -34617,7 +35329,9 @@
     revision = 18651;
     shortdesc = "Mathematical symbol font for Adobe MinionPro";
     stripPrefix = 0;
-    fontMaps = [ "Map MnSymbol.map" ];
+    fontMaps = [
+      "Map MnSymbol.map"
+    ];
     sha512.run = "68df6dcaca1d2f3b743c62e205a22427152ec6ac1deaa126e7511842ad7817ba4a7a232b72b45c6dae88d930837f46597c5f89e50b1057ba313a590157342ff5";
     sha512.doc = "bf06a1534665ad50d33073e5d7332337c05f5d5315ba41af399f73f98d54b22a0610c65fa0e96b311925f40bebc1458fd0f0fa9c5fb41330f6d0b9b49aa12aba";
     sha512.source = "1d622e81bfa0c2e61ab64f058a356e66c98f75a2511728bc49c6cb3d998caf132def2f092db7ff18b4283829e7c118368fb09a39ba2e9c05b0a0be5e4cada210";
@@ -34777,8 +35491,12 @@
     revision = 29349;
     shortdesc = "Mongolian LaTeX";
     stripPrefix = 0;
-    deps = [ "cbfonts" ];
-    fontMaps = [ "MixedMap mongolian.map" ];
+    deps = [
+      "cbfonts"
+    ];
+    fontMaps = [
+      "MixedMap mongolian.map"
+    ];
     sha512.run = "9676cef9e0fbe7a0196b1ea0fb3ea4f0399a3ee8ed76ef06e824848a57922dc4f7cc1f50a1fcea47fc265465407653447ab80e80dbac3c4bc00488d0929f87bc";
     sha512.doc = "1965f31e28a9f54d86a495b4b8cea50dc59f409d066918dedf77f86448b60ea547565dcf2069ee0e0a646d53f34d244868600951c4b1a4d4e099fe50e3c2b477";
     hasRunfiles = true;
@@ -34789,7 +35507,9 @@
     revision = 54512;
     shortdesc = "Montserrat sans serif, otf and pfb, with LaTeX support files";
     stripPrefix = 0;
-    fontMaps = [ "Map Montserrat.map" ];
+    fontMaps = [
+      "Map Montserrat.map"
+    ];
     sha512.run = "58c8b4a1f6eceb10c7fef8e6dd951985ae6108cb3f93eedf20949923237cb8af6a834674dcea48b1c68b51284ef37fe2d4120d52fee82753fd873f60b585e685";
     sha512.doc = "694ee7f51b0fe1622981bfa636263bbe18f89ec481071af587a683648f4ee900d9100864e51669d65b9952e6acf64794b5610989d2bd86f6e4701e1e41193242";
     hasRunfiles = true;
@@ -34878,7 +35598,9 @@
     revision = 46946;
     shortdesc = "Enables selection of 5 standard Japanese fonts for pLaTeX + dvips";
     stripPrefix = 0;
-    fontMaps = [ "KanjiMap morisawa5.map" ];
+    fontMaps = [
+      "KanjiMap morisawa5.map"
+    ];
     sha512.run = "7f149fab67905d6b21670becb1c3e3afbc8fb4c45fa3c376960e5a87d7fe17abe091af63930a8385b5bcb63e550fc0b9bb16d522f50f90b911b09599dc5ccafa";
     sha512.doc = "7af68b3a8233cec22efb49e8131c65e33db4076ed4f254f2d62f629c03d0122e8dddc3ba68d283affb5ca663d3b1f744780dc98c14eadfa1a69028df281e5bb2";
     sha512.source = "7e3821bc1f5dad076307ebf00cacb68cdeb9e18a060c9c024c0fea85c558f7373f214f16952fa643f8b832376101ec8c8bb839a902e6e8213912a4cbc10862ad";
@@ -35034,7 +35756,9 @@
     hasManpages = true;
     hasRunfiles = true;
   };
-  mptopdf.binfiles = [ "mptopdf" ];
+  mptopdf.binfiles = [
+    "mptopdf"
+  ];
   mptrees = {
     revision = 70117;
     shortdesc = "Probability trees with MetaPost";
@@ -35194,7 +35918,9 @@
     license = [ "lppl13c" ];
     version = "1.03";
   };
-  multibibliography.binfiles = [ "multibibliography" ];
+  multibibliography.binfiles = [
+    "multibibliography"
+  ];
   multicap = {
     revision = 15878;
     shortdesc = "Format captions inside multicols";
@@ -35368,7 +36094,9 @@
     hasManpages = true;
     sha512.source = "61984af8c6a5b024a6e5afa310b42953bb12c68cbcde2af24dc885bcdf28854eb0bc44a764d6ee25d6dacdb7395c62941964fea8768f11e75e11835dfc6e1363";
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "gpl2Plus" ];
     version = "1.37";
   };
@@ -35376,7 +36104,9 @@
     revision = 65517;
     shortdesc = "Fonts used by MusixTeX";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap musix.map" ];
+    fontMaps = [
+      "MixedMap musix.map"
+    ];
     sha512.run = "53c6f1b80b789608ad1187a2d593474c12d71b27ce9bd8c9c0cc7d2ba1bf3501c2dbab6375f51eb4841646b1f0dc7ed1c641efef6bc32dbaae3cec56f6583e09";
     sha512.doc = "eff2e4596dd426f1f57003d6441eb0632f7b9bbbb216ab4e2b069a1a624e77e06f032f191ba13afd2e55b472f5a719936f34fcf2ba6997336a3c3716c4d936c3";
     hasRunfiles = true;
@@ -35389,14 +36119,18 @@
   musixtnt = {
     revision = 69742;
     shortdesc = "A MusiXTeX extension library that enables transformations of the effect of notes commands";
-    deps = [ "musixtex" ];
+    deps = [
+      "musixtex"
+    ];
     sha512.run = "cd36d0240d3874930da5ceb759254e6b6e3d7cff6ef12aa74ce3d532580b731fe79cce0ce729d4304659691c13a5e28e3c02098cff7ece22f010e8051afcbf56";
     sha512.doc = "9d5646e3657c74a6d6c6be0c3f07e91ece88c9f0430e7cd54fec45769ac308b813a0f39ed202b518092d856e3fa0876c589f36f37c38b62adf078647aab42a63";
     hasManpages = true;
     hasRunfiles = true;
     license = [ "gpl2Only" ];
   };
-  musixtnt.binfiles = [ "msxlint" ];
+  musixtnt.binfiles = [
+    "msxlint"
+  ];
   musuos = {
     revision = 24857;
     shortdesc = "Typeset papers for the department of music, Osnabruck";
@@ -35463,7 +36197,9 @@
     revision = 30021;
     shortdesc = "A pair of fonts for different Georgian alphabets";
     stripPrefix = 0;
-    fontMaps = [ "Map mxedruli.map" ];
+    fontMaps = [
+      "Map mxedruli.map"
+    ];
     sha512.run = "f721b48b71ae2eb74104e23989cae84d3316b322ebff4703d9bddf74e0ddacf742e279813977bf29883fd17f01049112169d02aa3e4a9be887c049f8484ca0fe";
     sha512.doc = "ea9de17ac138af2fdfbd624e0c516faa2eca674ae1c423cc7f972f87c1bfbd37812e199f68b463c07213fa263636490b7207baf68506514f73fdef1d6c041a49";
     hasRunfiles = true;
@@ -35574,7 +36310,9 @@
     revision = 55881;
     shortdesc = "TeX definitions with named parameters";
     stripPrefix = 0;
-    deps = [ "l3kernel" ];
+    deps = [
+      "l3kernel"
+    ];
     sha512.run = "c413d600911ab1107554ec2aacadc80fad12a95e7486817c002274f282e047915d06f4878e68e423af649569752cd27d7c1b3a802a9abff68e91038719b2fd28";
     sha512.doc = "72031cf2858a3b68092c852c216f96aaea212c721e47d90e870c8153f83db921590246fb11b59009d431754720791e3c625fb3abd7bdd9010cd1a49894023ebb";
     sha512.source = "adff08a774126c8faff52ba14044a8e2140f9586358dab6ce95e7a941706bf57c32acf0ad75282bd3b01dec8a73fea105c0c65a1453f5903d5eaeb3fe0349b15";
@@ -35616,7 +36354,9 @@
     revision = 29558;
     shortdesc = "Type1 subfonts of Nanum Korean fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map nanumfonts.map" ];
+    fontMaps = [
+      "Map nanumfonts.map"
+    ];
     sha512.run = "fc775dae204d8f1ca7e05005ccba0bd568f00819519d34b2282028d7f2b89b9c1f9a091ed192def7281de97ea97c75b9327727489e8ff88585bb97cf5e8b8f10";
     sha512.doc = "ff0bd0bcc32eb8166e7bff9d440692a3c21c5cc7fd7b8139b472fbc2e079cba0591d162e2a81090919990dba31d1e04b57d50c35ac1d0670ef9102c64abc88ad";
     hasRunfiles = true;
@@ -35729,7 +36469,9 @@
     revision = 61719;
     shortdesc = "URW 'Base 35' font pack for LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map unc.map" ];
+    fontMaps = [
+      "Map unc.map"
+    ];
     sha512.run = "cafa6f6ba366c07bfa0fe37ae415cf924ca54249288a52726eed52b9c8147925b6ac4a85fcb69a19596944ed8585cab4ce8fc2710a7c32998b360ea2ab143d56";
     hasRunfiles = true;
     license = [ "gpl1Only" ];
@@ -35890,7 +36632,9 @@
     revision = 69777;
     shortdesc = "Alternative uses of the PX fonts, with improved metrics";
     stripPrefix = 0;
-    fontMaps = [ "Map newpx.map" ];
+    fontMaps = [
+      "Map newpx.map"
+    ];
     sha512.run = "979e5e67eaf5891a96c127f9726061bb0a480388b0f67cf27bf753f0171521118f68bb82beb127bb2c18d866643830125089518436d1be56c58acf49ba0ccd75";
     sha512.doc = "fcea214e98b92d697699976c245f841f87bb5a314ec738fb551e6f546e32e79fcfc0b1e78d9cf1ad5299bf691a833b2ba69aa9c917a6cb1abe891c39556123dc";
     sha512.source = "7928e84f2c5523c72a30061e99fac64c37e1c5fecbeaf6ad9aa8ddb1be55c26bb4198adb8c303afed7267d33c12f9f73336453bf32bef98c999547e7f9f4a952";
@@ -35925,8 +36669,12 @@
     revision = 70496;
     shortdesc = "Alternative uses of the TX fonts, with improved metrics";
     stripPrefix = 0;
-    deps = [ "kastrup" ];
-    fontMaps = [ "Map newtx.map" ];
+    deps = [
+      "kastrup"
+    ];
+    fontMaps = [
+      "Map newtx.map"
+    ];
     sha512.run = "140e03a3dd5a59ee6b5a81b7cbc5531e92bd2d2296ff74df4f1805d44f6d136dde2aadb0af145f4f7f0a9e223d39122a8320b3858850fb49dd8cb59e80d692f9";
     sha512.doc = "c0344d8e74e412b1ebc8b9db86579672cd878eaa004adc081c73ba48258a57e4093361237410122198f71ed0a6c3f1fd1989e9ca028118d5f93dbf9b21f6e5d4";
     hasRunfiles = true;
@@ -35937,7 +36685,9 @@
     revision = 69597;
     shortdesc = "Sans-math fonts for use with newtx";
     stripPrefix = 0;
-    fontMaps = [ "Map newtxsf.map" ];
+    fontMaps = [
+      "Map newtxsf.map"
+    ];
     sha512.run = "4d44962a7bc466faa60d39791f18be3b5d3bc5a1eb2b22e233c80a81ad3280b0a89c03717881ee858e327b67040f5859fcde7d465420e43df547ee56f00f5b93";
     sha512.doc = "992123b7b5f30b827b4cb49b933cdaa323a007c1d41632993a2a8d52588b5f5d97612808dcb48423dba309f025d851cf15aeb892c8bfe10d0929cb5744515b7c";
     hasRunfiles = true;
@@ -35951,7 +36701,9 @@
     revision = 70403;
     shortdesc = "Enhancement of typewriter fonts from newtx";
     stripPrefix = 0;
-    fontMaps = [ "Map newtxtt.map" ];
+    fontMaps = [
+      "Map newtxtt.map"
+    ];
     sha512.run = "fe95d2c4d2ff7a83f362f55bf2579576b94251fdeb3556c2f417e0118b2dd215a705d06d79e66b9aadeca09cadd5c19f2898cbba8624ea089fef804749d350cc";
     sha512.doc = "02879af2ae05a703502966acc561df08762a9fe01a873180672652a9c931ceadcfb85d411523eb81425e7f1944f514673e8d04a208d54b27d0d26916077a81a3";
     hasRunfiles = true;
@@ -36038,7 +36790,9 @@
     revision = 68091;
     shortdesc = "Type 1 versions of the fonts recommended in niceframe";
     stripPrefix = 0;
-    fontMaps = [ "Map niceframe.map" ];
+    fontMaps = [
+      "Map niceframe.map"
+    ];
     sha512.run = "b43c19a164d9d6eeadd11072f07d29d00763863724a5b5168ef8640b2411fa4c02c4955e769b23a39e06db8d02d168ac7b2a987e1ab8a9dbe4c19063b8f4bbac";
     sha512.doc = "9f30b52e177fd2fe5bb3ef1f23a16b29a80f049cf33d8ade3dbfb187663e4a8872a18bef0fec1531cabe610839ba21b118623db244b52ab16418a7ad4dfb3d67";
     hasRunfiles = true;
@@ -36098,8 +36852,12 @@
     revision = 58839;
     shortdesc = "Support files for Nimbus 2015 Core fonts";
     stripPrefix = 0;
-    deps = [ "fontools" ];
-    fontMaps = [ "Map nimbus15.map" ];
+    deps = [
+      "fontools"
+    ];
+    fontMaps = [
+      "Map nimbus15.map"
+    ];
     sha512.run = "9e39f92dea1fa293d6249d16877dd6b2d990d1d48cfd31f4ac1d66233b97ff178d2b70f428978a084fc9a50b9dd994adb6a8ad29375e54f5d5ccf6ca7ed62f64";
     sha512.doc = "8fb9ece6ca17549572a0d79a541397c6545dc01ac0422a5270314bba1cb83b1451fb0f56e34f449cc3d3de326e063e4ea1f2ea03a0fbda7342e9d0a101fb5ed1";
     hasRunfiles = true;
@@ -36357,8 +37115,12 @@
     revision = 60831;
     shortdesc = "TeX support (from CJK) for the norasi font";
     stripPrefix = 0;
-    deps = [ "fonts-tlwg" ];
-    fontMaps = [ "Map norasi-c90.map" ];
+    deps = [
+      "fonts-tlwg"
+    ];
+    fontMaps = [
+      "Map norasi-c90.map"
+    ];
     sha512.run = "5f65927546348815b07c93003a2b0922403d274bfa3d1665d4649c9dbc737df924958c2fd61c1d06cd5e7c1862aff392c8d1e9d827f4ae79e70d9b76467f651d";
     sha512.source = "8fb30cc3a1e762ec15c813fff0191b08b64a0d259dbdd21a9edcf70c6eb1b327cff5ef3f48b9dba0b7d99d1ec31b3accef65deca7285e27790261ca659bd525d";
     hasRunfiles = true;
@@ -36450,7 +37212,9 @@
     revision = 64351;
     shortdesc = "Support for Noto fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map noto.map" ];
+    fontMaps = [
+      "Map noto.map"
+    ];
     sha512.run = "6b1c2961ca9199ec9f0c9eb6e8c2ce61eda6d4eb0157ef292a176831df2df83bf09c3aea23825818ef5ed03128ba838f4377e42b53409c96d388422ce9dfd467";
     sha512.doc = "20b8371eec90440f2a491e1f34a0fce79b700e7b2f0aea2a808baaaf4e3275dd253b65d32429a78be6ed2b31b576f4291cc1f3cc2f625a675cd7a317bab90759";
     hasRunfiles = true;
@@ -36482,7 +37246,9 @@
     revision = 68014;
     shortdesc = "Math support for Noto fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map NotoMath.map" ];
+    fontMaps = [
+      "Map NotoMath.map"
+    ];
     sha512.run = "908ef695e1eeeeee1bbff53956b1d890fc9327cf985602877abc26aa787bbb7a09c18d592c2f5b2d1840aa91e0c1c0b071b8af0d576c5110eba5f62cc1f3184e";
     sha512.doc = "708eab7029720af202b7af3d45becbdcd8c8fe6def7327b70f3c67bdbbe6c17c53c1e42912f4dedde1f805f7d7009a75e7d8279f7e3a6faf091ca6990cd4f5ca";
     hasRunfiles = true;
@@ -36701,7 +37467,9 @@
     revision = 57429;
     shortdesc = "The Nunito font face with support for LaTeX and pdfLaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map Nunito.map" ];
+    fontMaps = [
+      "Map Nunito.map"
+    ];
     sha512.run = "920e074987e7e75fa6db92e3c05d76f7aad3e7d9b4f0166a8a8ca79bc5183549299b56a10f1cb6c7fdaa63f7f55aa6b9c1b2bcb4cbf03567b26e9fcb0240472e";
     sha512.doc = "e0de75f22da96d229a6465a4d47baa8e4c3199567f8d2e3255893e5b2a2d16ab73eabec1a103b355518c4cb98ea3146ff067af54938c21a910aa65aee3f429db";
     hasRunfiles = true;
@@ -36810,7 +37578,9 @@
     revision = 25689;
     shortdesc = "LaTeX Support for the Cherokee language";
     stripPrefix = 0;
-    fontMaps = [ "Map cherokee.map" ];
+    fontMaps = [
+      "Map cherokee.map"
+    ];
     sha512.run = "9638c408e96fa861d395881d1bac87b55048a25de61561823242d78f836522205c9621f5a01bbb5ad1c8390230dac727b4fae333c22966a04ff5df1f923b5909";
     sha512.doc = "40bb5e47b2ac627007d349c0b043f299f09321aa0d6fc11ad9f345576fd7a902be4d012d56ceede9e66c8a5972828e7b5a5646c101c08fd28fa3ab1c935f8256";
     hasRunfiles = true;
@@ -36829,7 +37599,9 @@
     revision = 20969;
     shortdesc = "OCR-B fonts in Type 1 and OpenType";
     stripPrefix = 0;
-    fontMaps = [ "Map ocrb.map" ];
+    fontMaps = [
+      "Map ocrb.map"
+    ];
     sha512.run = "ac15acebab9c9f81f0e7786cb3222b336aae3fa4a379592d5fa231e145cfcab536e28c9078ac617bf9b8b672f6dd24b30caa998242ba1e3f4633873ae8d54609";
     sha512.doc = "7bafe00b9c5d846f21cac682d9577ffe696eb54a55f4bee9314646451fec37d883eca7531f594a7994fa8038f7bb5c78a55dd8a8264255a6e60ff90929596d00";
     sha512.source = "b2fa5f4561a4fe61c216e800fcb47bf99a09a62d41d62e30669753139484b58b137649248ec152f7631461c54ab4e51873f3c7a42d43ccf2db86d3cd21d3493f";
@@ -36908,7 +37680,9 @@
     revision = 28668;
     shortdesc = "LaTeX Support for the Inuktitut Language";
     stripPrefix = 0;
-    fontMaps = [ "Map oinuit.map" ];
+    fontMaps = [
+      "Map oinuit.map"
+    ];
     sha512.run = "4d6b72ce539766a3453f7edb24c243a2a495f3916ee9fd650917c510a0e8fe36e12399843c1de3dc0b0de704bf5362ea20e9bd0d6c3100e659c5641395d658dc";
     sha512.doc = "dfb7275002731695086aa8733a543ca1eaa207bc57cd0b324666940ab932cd9301cb1c0b0bbfa4df36278ac8e289ac1be78a2e0a58ec656c470ff4b841a70803";
     sha512.source = "0d81c9803b9b45b20c096ab00d0c0e5ca26e71d5af463e511660c5bbd28b5b962afe243f21418883575b5d40f503bada65b5c34ba48486aa74a6f9ddcbd48680";
@@ -36919,7 +37693,9 @@
     revision = 42872;
     shortdesc = "Computer Modern old-style arrows with smaller arrowheads";
     stripPrefix = 0;
-    fontMaps = [ "Map oasy.map" ];
+    fontMaps = [
+      "Map oasy.map"
+    ];
     sha512.run = "2b67317d41349c6d601d8ddcba6ba58cf503756f5bb2f4343c1447cbe4e24c8949a4de58e7cf3863a730bfa809dd09f5f1ce9944e3dc5d4de104e4817d6add17";
     sha512.doc = "d142a95119386f85d1e6ff0f6a24bcf09b9bf7ec83a581ca43be67376cd4a44453d090e4eedf97bcba1026827eff29f97add3a6ed676833b02b718da4811a3ef";
     hasRunfiles = true;
@@ -36940,7 +37716,9 @@
     revision = 70428;
     shortdesc = "OldStandard fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map OldStandard.map" ];
+    fontMaps = [
+      "Map OldStandard.map"
+    ];
     sha512.run = "838a3c6e29a37b060c2f5e158a7145a6119432006b213e4fb3da956d7df66e76e1fb6d963c67d4833b5d45bbdd203e689c9a54302dc3ee28de5d630b200f3dbb";
     sha512.doc = "7933ef5fcdd97201d269547c981bbdf50ebf11b5a11d417cdd1df9f3e0f35fd5fd618a198050865746f9fcb31cedd61abeea25540d2a70bac45b0ad9065c81d5";
     hasRunfiles = true;
@@ -36977,7 +37755,9 @@
     revision = 33046;
     shortdesc = "A wide-character-set extension of TeX";
     stripPrefix = 0;
-    fontMaps = [ "Map omega.map" ];
+    fontMaps = [
+      "Map omega.map"
+    ];
     sha512.run = "bd07f654ad56219136e2f9e7612b87892bf8c6d0c8f2e41434a7fabb8b159bc43f79444301383adf560f1985f64e639dd496dad6d3ea97ccbd85fcee4d7a36e0";
     sha512.doc = "31eb2aa643ec37d68d902f4de7be391e7da3af61bde93e78beb1e6df1c6367fcfe00f88e29c8cc878b9cd40f2e3a45f9e46bf24ca3a5608aeae09be491130fef";
     hasRunfiles = true;
@@ -37073,7 +37853,9 @@
     revision = 54512;
     shortdesc = "The Open Sans font family, and LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map opensans.map" ];
+    fontMaps = [
+      "Map opensans.map"
+    ];
     sha512.run = "d92d10da8d6d8adfa62d440767ed1fa9abf413a575b122dff275eb2e46d501436edd90c215611cd943308f32a197c72b8fcdf56b72268f76237c2227cc9dd5ff";
     sha512.doc = "00e5243e465d948b6bd63bfd161d4e549cc6e5b008a8cf8aff1ea5a31bc7a1406858c045cf6fb52c254d61869f1bcd5ef8c6a43ea66164e842fe3fcff2b26540";
     hasRunfiles = true;
@@ -37141,7 +37923,9 @@
     license = [ "publicDomain" ];
     version = "1.14";
   };
-  optex.binfiles = [ "optex" ];
+  optex.binfiles = [
+    "optex"
+  ];
   optexcount = {
     revision = 59817;
     shortdesc = "Python script for counting words in OpTeX documents";
@@ -37152,7 +37936,9 @@
     license = [ "mit" ];
     version = "1.1";
   };
-  optexcount.binfiles = [ "optexcount" ];
+  optexcount.binfiles = [
+    "optexcount"
+  ];
   optidef = {
     revision = 50941;
     shortdesc = "Environments for writing optimization problems";
@@ -37249,7 +38035,9 @@
     revision = 60784;
     shortdesc = "The Oswald family of fonts with support for LaTeX and pdfLaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map Zeroswald.map" ];
+    fontMaps = [
+      "Map Zeroswald.map"
+    ];
     sha512.run = "92d4d3a7d8bd09031368a89ab7b49483e653750e1c348908aa3fdb62cdb8ce14ecb7d7a29b37e6774c613e658591622891e4bd6b348492c669716f220b46f9ec";
     sha512.doc = "1f6606c8786b0eb54a4c3aad0220347eac3b2bead83ca5540345737cfae509be42b9eb10f27a5ff1ced559aacad7413b69708eacd215afd47636d17194b40082";
     hasRunfiles = true;
@@ -37398,7 +38186,9 @@
     revision = 64495;
     shortdesc = "Overlock sans fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map overlock.map" ];
+    fontMaps = [
+      "Map overlock.map"
+    ];
     sha512.run = "0c934c6f34922772336f39dae801a83c705197d7a7dbcf95cb890c25b8209697b3cfacc6899c57016ff32066979b665198d30ae45caf60748599e4c6ac052ad2";
     sha512.doc = "44aec04d96e2867a074ca1ac85fb3449cd276d6a14c893c8cd73dfaa91e60ef5f98ec7ed3859cc57efe746ae1454a5fcd01b44ac580369a87f69bf5cff3e3b22";
     hasRunfiles = true;
@@ -37550,7 +38340,9 @@
     revision = 61719;
     shortdesc = "URW 'Base 35' font pack for LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map upl.map" ];
+    fontMaps = [
+      "Map upl.map"
+    ];
     sha512.run = "5db043495b8daf0a5a854367ca1c82007a154d09b2bcae9f399e8f851f30a554fa98970cf45ccd8f0681f70ae7e01f54dfd414bcbd888b802e93993c2ed172df";
     hasRunfiles = true;
     license = [ "gpl1Only" ];
@@ -37688,7 +38480,9 @@
     revision = 68624;
     shortdesc = "LaTeX support for free fonts by ParaType";
     stripPrefix = 0;
-    fontMaps = [ "Map paratype-type1.map" ];
+    fontMaps = [
+      "Map paratype-type1.map"
+    ];
     sha512.run = "b6f50e5c3063357e04e94a9454cc34b17e522c54effe14696d3d81e6de1f4732953b608c0c0d13965dde5c9c95e125d967afc888ecc9396001c1deb89e9b70ef";
     sha512.doc = "ba91b90030c703dc35a77b9a51a23d90e5cd6f0a6490f74e151023248b05a6a0ea5bcf188e3c8e69611b9b7d5f72b4569538a9da02193ca737e94e744c83c107";
     hasRunfiles = true;
@@ -37857,14 +38651,18 @@
   patgen = {
     revision = 66186;
     shortdesc = "Generate hyphenation patterns";
-    deps = [ "kpathsea" ];
+    deps = [
+      "kpathsea"
+    ];
     sha512.run = "f37ecebfd74a30b2f4fcba5db893b31e7672f2d91d2be7f003bf625512dd54be056a23165ba8b1f5ed2165595405220df20dbd711e63a3be9901424aaf1fb0de";
     sha512.doc = "c7bf5af0965cb675a82ee13c6ec467f88395438d07d59379f4850a36c783cfd6661d6fa6493e67bf39e78be615e3148cda9452003b5e9f5d5ceb1fbd305d4ee6";
     hasManpages = true;
     license = [ "publicDomain" ];
     version = "2.4";
   };
-  patgen.binfiles = [ "patgen" ];
+  patgen.binfiles = [
+    "patgen"
+  ];
   patgen2-tutorial = {
     revision = 58841;
     shortdesc = "A tutorial on the use of Patgen 2";
@@ -37913,13 +38711,17 @@
     sha512.doc = "a2e0e7129e98efc8a44184d445118220e16f8149166c2093b7c44a936885845c0d49d37a7588f32e2c06fc834f808b0e4a1b15808a32183bf9e457a9a1c19ba7";
     sha512.source = "3920502e3ef59332129792eb87b771bac81ec3061d6cf35d77fcf785fdc88434824592b6f0d5b74041d372977e17b85d9253e7280a5ce9bc361ce56857397dd1";
     hasRunfiles = true;
-    scriptExts = [ "jar" ];
+    scriptExts = [
+      "jar"
+    ];
     license = [
       "lppl13c"
       "gpl1Only"
     ];
   };
-  pax.binfiles = [ "pdfannotextractor" ];
+  pax.binfiles = [
+    "pdfannotextractor"
+  ];
   pb-diagram = {
     revision = 15878;
     shortdesc = "A commutative diagram package using LAMSTeX or Xy-pic fonts";
@@ -38031,7 +38833,9 @@
     license = [ "gpl3Only" ];
     version = "1.4";
   };
-  pdfbook2.binfiles = [ "pdfbook2" ];
+  pdfbook2.binfiles = [
+    "pdfbook2"
+  ];
   pdfcol = {
     revision = 64469;
     shortdesc = "Macros for maintaining colour stacks under pdfTeX";
@@ -38129,7 +38933,9 @@
     license = [ "gpl2Plus" ];
     version = "3.10";
   };
-  pdfjam.binfiles = [ "pdfjam" ];
+  pdfjam.binfiles = [
+    "pdfjam"
+  ];
   pdflatexpicscale = {
     revision = 46617;
     shortdesc = "Support software for downscaling graphics to be included by pdfLaTeX";
@@ -38139,7 +38945,9 @@
     license = [ "lppl13c" ];
     version = "0.32";
   };
-  pdflatexpicscale.binfiles = [ "pdflatexpicscale" ];
+  pdflatexpicscale.binfiles = [
+    "pdflatexpicscale"
+  ];
   pdflscape = {
     revision = 64851;
     shortdesc = "Make landscape pages display as landscape";
@@ -38364,7 +39172,9 @@
         ];
       }
     ];
-    fontMaps = [ "Map dummy-space.map" ];
+    fontMaps = [
+      "Map dummy-space.map"
+    ];
     sha512.run = "c0158cb19918ea2bba57cc68e32af1d2c4ef50ba45bf05e0c8b7e64057daee19843ff77633e4dd0ad660df39983c46f755c691f85d4aa2000086c02d48498d0e";
     sha512.doc = "d059f01596573efacc4ca80333b07236f860375f49b82d0cd3ab6b3f441f379163a37c820e713a2d96a8f69b821b3dbd68f360c5b5f005dccac54575df4b5d4e";
     hasManpages = true;
@@ -38380,7 +39190,9 @@
     license = [ "gpl3Only" ];
     version = "1.1.0";
   };
-  pdftex-quiet.binfiles = [ "pdftex-quiet" ];
+  pdftex-quiet.binfiles = [
+    "pdftex-quiet"
+  ];
   pdftex.binfiles = [
     "etex"
     "pdfetex"
@@ -38405,7 +39217,9 @@
     sha512.doc = "01598180f8eff2913eeebf5bc3d5f3aba32029286fc6e0c072aa8c0f4dabaf0c6e71ae7451ba9a7b65b4d0075a7f0a3baf345b02c5826eab64d74e39eb82798e";
     hasManpages = true;
   };
-  pdftosrc.binfiles = [ "pdftosrc" ];
+  pdftosrc.binfiles = [
+    "pdftosrc"
+  ];
   pdftricks = {
     revision = 15878;
     shortdesc = "Support for PSTricks in pdfTeX";
@@ -38455,7 +39269,9 @@
     license = [ "lppl13c" ];
     version = "2.10";
   };
-  pdfxup.binfiles = [ "pdfxup" ];
+  pdfxup.binfiles = [
+    "pdfxup"
+  ];
   pecha = {
     revision = 15878;
     shortdesc = "Print Tibetan text in the classic pecha layout style";
@@ -38477,7 +39293,9 @@
     license = [ "gpl2Only" ];
     version = "2.1";
   };
-  pedigree-perl.binfiles = [ "pedigree" ];
+  pedigree-perl.binfiles = [
+    "pedigree"
+  ];
   penlight = {
     revision = 67716;
     shortdesc = "Penlight Lua libraries made available to LuaLaTeX users";
@@ -38526,7 +39344,9 @@
     license = [ "lppl13c" ];
     version = "2.2";
   };
-  perltex.binfiles = [ "perltex" ];
+  perltex.binfiles = [
+    "perltex"
+  ];
   permute = {
     revision = 15878;
     shortdesc = "Support for symmetric groups";
@@ -38565,7 +39385,9 @@
     hasRunfiles = true;
     license = [ "gpl1Only" ];
   };
-  petri-nets.binfiles = [ "pn2pdf" ];
+  petri-nets.binfiles = [
+    "pn2pdf"
+  ];
   pfarrei = {
     revision = 68950;
     shortdesc = "LaTeX support of pastors' and priests' work";
@@ -38573,7 +39395,9 @@
     sha512.doc = "4e5eb99b0e0409395954170339a744d18f8d0f8ee389ad1bacc684a037cc8b2b6121850a7674ec9b699596bcfa8e9e36521d13571bcad0db271cd1f9fa619488";
     sha512.source = "65d865d2e79ff7476a3629fd3ffaed09b3edc8fea9224fd7126cce0203bfa6f5ecb5caee6727bd6d01196666f138786ca409f3530a577efae4fccd405cbd845b";
     hasRunfiles = true;
-    scriptExts = [ "tlu" ];
+    scriptExts = [
+      "tlu"
+    ];
     license = [ "lppl13c" ];
     version = "r37";
   };
@@ -38720,7 +39544,9 @@
     revision = 52662;
     shortdesc = "Draw Gantt charts with TikZ";
     stripPrefix = 0;
-    deps = [ "pgf" ];
+    deps = [
+      "pgf"
+    ];
     sha512.run = "0269703fc00f10981d5ce8958159a24814b9f410c1b00516608c039b1ea8a3381392bf1d89e98f3011d42210047bf2e1fec2f103467087f9172e143d9ab6fcf1";
     sha512.doc = "4890ae174c92db8df7befcef30d03724ae52fa4b26ac796d247a703794ce745ee892f0d2ab8a4f62e96a5e5f792791a6f7e8b9e71f1c0f11b68e8cbcf5165472";
     sha512.source = "668987bd37aebd38697c02bc39d85371c7d40613aba13c0f3b62ece8145608057cf3f76cda03de6df25f7ba820359ff2ba1c340aa1b9ebff94bbd42aed39e401";
@@ -38784,7 +39610,9 @@
     revision = 56615;
     shortdesc = "LaTeX package options with pgfkeys";
     stripPrefix = 0;
-    deps = [ "pgf" ];
+    deps = [
+      "pgf"
+    ];
     sha512.run = "7d672d626428c37fa749a810c57be43c6102e1325a6d3e16c57bc560b6d65a57bae94e619a73f3e0efb46ce7b4783d05a6e98c64b1e90c6e0f94f1dd9acd676f";
     sha512.doc = "ff82e0502fdeefe6afe90aad4e7615de9be4ef8e2e6a69e7a537202af77aed00c0895269ceed3d38e0f34345efbdd771d22b0c8759fcb46ff8e91ce639dcd21d";
     sha512.source = "758da1f3daa0ef888b484ea657fdd4384102868e4eee543bc97e73f103b67c367277f5c00efd06a2080f9ac3fb82c909cd30f641363120e70357450179dab6c5";
@@ -38815,7 +39643,9 @@
     revision = 61719;
     shortdesc = "Create normal/logarithmic plots in two and three dimensions";
     stripPrefix = 0;
-    deps = [ "pgf" ];
+    deps = [
+      "pgf"
+    ];
     sha512.run = "8244e65860f37d74d05535a627ef6cd321407a69a142d156bae190c562a9402a0d7e927df732c32cc5f556dede1b51f7aeca5d7d3a26167348a21f2e3d8be5ac";
     sha512.doc = "720a77c574c81e7c3619e3b988c8a359bd6cf284ad3fa7c795eb01c371ede85ad727dde8e5f19d8f683947b5dc5752324581e364c59e8a644b5ae34d6b75a96f";
     sha512.source = "d840015854794de1a311f1d8a9935a93c71a098c46fb1c5cec8a57228a924685f75ea76fc9cf2a9f9f30ed39920bbf2092fbdef2645ddaa5ad5a3787839c1d2a";
@@ -38827,7 +39657,9 @@
     revision = 18651;
     shortdesc = "Disk of Phaistos font";
     stripPrefix = 0;
-    fontMaps = [ "Map phaistos.map" ];
+    fontMaps = [
+      "Map phaistos.map"
+    ];
     sha512.run = "d5cb8a051e1e80629385bff368896c47bdfccfcf38a24a723ddc5f9056a59c57703986799253812c9a4651f4e16dc55cee0876ddd0552900f978dab0381c9aac";
     sha512.doc = "96eb22628467289f72aaa0d4983e494c75b3a2315d8b9d2921f8ab29d93fffae4f459ef852529dfa4ff48a65e25d652662c54d84db54e0118b1c021bbe39eafa";
     sha512.source = "5ba2b04fe4e3aef136de2dc40568ecb81f437561ee8e6c320927bb816819889666f57ad07c3b8bf6eb7f6eb84b69147f9233449a26529b61712d158abf889f91";
@@ -39188,7 +40020,9 @@
     revision = 69687;
     shortdesc = "A font for the pigpen (or masonic) cipher";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap pigpen.map" ];
+    fontMaps = [
+      "MixedMap pigpen.map"
+    ];
     sha512.run = "54e472281b1ad2f98b8f49df945fc89ea2e28bbec4088c15b4b73a411ad42936f408926a006e46656eb70b90172f39dec376b2eace6fd22923dd4881e1659618";
     sha512.doc = "94be29262f4d00ff65c1679029bc76b33ebc10051862cdbd4da08ef9802975378efda5c2b2cbf85877382d093bb408feda0d53d3458337bdff5239cc851c1dc6";
     hasRunfiles = true;
@@ -39285,8 +40119,12 @@
     license = [ "lppl13c" ];
     version = "1.6";
   };
-  pkfix-helper.binfiles = [ "pkfix-helper" ];
-  pkfix.binfiles = [ "pkfix" ];
+  pkfix-helper.binfiles = [
+    "pkfix-helper"
+  ];
+  pkfix.binfiles = [
+    "pkfix"
+  ];
   pkgloader = {
     revision = 47486;
     shortdesc = "Manage the options and loading order of other packages";
@@ -39570,7 +40408,9 @@
     revision = 64857;
     shortdesc = "Playfair Display fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map PlayfairDisplay.map" ];
+    fontMaps = [
+      "Map PlayfairDisplay.map"
+    ];
     sha512.run = "2c75ccda034c607fa67993922e498347cf8a708c31360ac63d8304ebcf538e2012529864c6c3102a63b0320db68101fddae021ec396efaf0396d4d609cd0d711";
     sha512.doc = "006319162a3a7035955064d7ab99e704bf828cc7441a9c930cfccf4cb7e70ac52ff672de3ce8b415fbfb20f29a0b4c09703fe0e3715d15e38c1293973bd3a86a";
     hasRunfiles = true;
@@ -39583,7 +40423,9 @@
     revision = 69154;
     shortdesc = "Support for IBM Plex fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map plex.map" ];
+    fontMaps = [
+      "Map plex.map"
+    ];
     sha512.run = "4180d4b5ff2d6843ac375a52bc3c63570638cc29f7d3bbda476dee962998293ce4b201817e056d5e87c20bd8280336b65bc689a8e1580ab8aa6f24164002732c";
     sha512.doc = "175abcc07f213d5837070171b7fc483aec2c26b80f530ca7ad7a6f571de028c833e32d71a4c465fbfbb803afcba934e68df560944b8b54b20827d31cd21fa9f0";
     hasRunfiles = true;
@@ -39606,7 +40448,9 @@
     revision = 56605;
     shortdesc = "Fonts with the Plimsoll symbol and LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map plimsoll.map" ];
+    fontMaps = [
+      "Map plimsoll.map"
+    ];
     sha512.run = "c0b44cf022ca470767d296af1ad80b2d5ede92adb22635f7ef34b9fa81ec523f769dfbfa6a78005a46bd9a4886507fa7b3a4f761bcb8f686dbf736e3ad92676e";
     sha512.doc = "9ee880e89387986e228f357f59981b18fa8565d60e88d6f1b15c4109f9f7f20108c447fb995f0edaf64723ac37635b56cb5d097e93e0374a0f64adda4215eed5";
     sha512.source = "2967c9b53daaeba02405da837050a53c69b725da8daeba1d6a9c58dbef0387628aa6dceb07815c5bb0d2cc37c6a1b66f5c64037ad33d74e1179dc3fc0f0431a5";
@@ -39728,11 +40572,15 @@
     sha512.doc = "d4075306620fa1ce037a37b9d2646d197348f6482e1286ff6fd99641a8b441b3d830a1420dbf6c025b8d11af78363b717a1acc7ea6b9e2954aa4f11ef04452ad";
     hasManpages = true;
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "gpl2Only" ];
     version = "2.0.2";
   };
-  pmxchords.binfiles = [ "pmxchords" ];
+  pmxchords.binfiles = [
+    "pmxchords"
+  ];
   pnas2009 = {
     revision = 16287;
     shortdesc = "BibTeX style for PNAS (newer version)";
@@ -39779,7 +40627,9 @@
     revision = 64856;
     shortdesc = "PoiretOne family of fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map PoiretOne.map" ];
+    fontMaps = [
+      "Map PoiretOne.map"
+    ];
     sha512.run = "07e1479df1d89b568388a855236d997580cb76ca6ea8f45b55622425d10584037cec5e17a734c24a0eb0a9746966e94137026c37d4696b475e641806d07a7ef5";
     sha512.doc = "c164f53258e08e74cade46f03f1e6d3d538a0f65cf3086629150c2741488bd33a82fca89d91bcbb83045d126defc3ee9493fc5e1d05e2c567464d4d29afc0cd9";
     hasRunfiles = true;
@@ -39817,7 +40667,9 @@
     revision = 67718;
     shortdesc = "Antykwa Poltawskiego Family of Fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map ap.map" ];
+    fontMaps = [
+      "Map ap.map"
+    ];
     sha512.run = "620708dd3f1d2d8b2601377486631c2bdc779d06d2016e1c9ab5869afe00cb88dcb1ebd055b6859ad3e3dd25200c1079b723613283f048c7cd7354977b66b8b9";
     sha512.doc = "51067d3e930f9cae71d5cdf11d6ac83738e23539c020c93e6f4d8b460e63b04e77caaa41927ed8658056d96ff4fdcfc087e591be991e10c7e95a6b58d56ee368";
     hasRunfiles = true;
@@ -40216,7 +41068,9 @@
     revision = 21893;
     shortdesc = "A font that provides the product integral symbol";
     stripPrefix = 0;
-    fontMaps = [ "Map prodint.map" ];
+    fontMaps = [
+      "Map prodint.map"
+    ];
     sha512.run = "ab2b0ababfad124b38b018c7313df0114c36fed0dbbaa42de04295b09142740ef43f34c4c6ad926c97c1ce28521c1d87274486588609197c2178b631b4ee6876";
     sha512.doc = "addad035cb9e7b88d9da2bf161723db51897342872dd6c671695bb7bb0a6a4c7bac872ce40f31b22f5fdd84cc03994562a6f78f14d9203977d5b7c8d17130db8";
     hasRunfiles = true;
@@ -40317,7 +41171,9 @@
     revision = 70327;
     shortdesc = "A collection of facilitative tools";
     stripPrefix = 0;
-    deps = [ "create-theorem" ];
+    deps = [
+      "create-theorem"
+    ];
     sha512.run = "180698941fa86735f83bb4d93886c2cd637aa7ac50103ba68d3369bcefcbe6200a377a9975e04db9f0e528a0b821bbd82a5fe6deb4e85832523798e1523fd976";
     sha512.doc = "362d152dd0c82a9807cba5b6fe49da6b4a8335af6b23f6958273e370140f3b48e1a52424cfd9c41736bf672f4552afb43f897a8624bdfc300e09db363d501dde";
     sha512.source = "0d943cd81f384da704841841fab42276b66db825258b4aaa0392ee651527960be60a80d87469a679ee7292a0096c5d438f4c76ad39154981b113cfd12e273d44";
@@ -41249,7 +42105,9 @@
     license = [ "lppl12" ];
     version = "1.2f";
   };
-  pst-pdf.binfiles = [ "ps4pdf" ];
+  pst-pdf.binfiles = [
+    "ps4pdf"
+  ];
   pst-pdgr = {
     revision = 45875;
     shortdesc = "Draw medical pedigrees using PSTricks";
@@ -41519,7 +42377,9 @@
     revision = 15878;
     shortdesc = "UML diagrams with PSTricks";
     stripPrefix = 0;
-    deps = [ "multido" ];
+    deps = [
+      "multido"
+    ];
     sha512.run = "e4ff8ea9b7fb9f530e33280de3e9eb20d653c0c062fa80611a544daf74da0b1dd2481b43d8f5258f9ebc1d1bf95b393b32c7152ab8464a9e980cefa105c45ceb";
     sha512.doc = "d8aa92785c241b6346762d98349d8464ce604afceb8774ef160e8c24e0a40d3fd8dba7cac3f78cbf38cbf6cfebb79939ad3c76e6b4014c1028859aba38123efe";
     sha512.source = "8b7e551154c1b1966046268ed3353b6c78c3a66bfa20f44c7fba3b58f661f2585b71d49d2dd673368f732b2f9446dc7783bad4ae5248169a79721d330a49514c";
@@ -41576,7 +42436,9 @@
     license = [ "gpl2Only" ];
     version = "0.20";
   };
-  pst2pdf.binfiles = [ "pst2pdf" ];
+  pst2pdf.binfiles = [
+    "pst2pdf"
+  ];
   pstool = {
     revision = 46393;
     shortdesc = "Support for psfrag within pdfLaTeX";
@@ -41688,7 +42550,9 @@
         ];
       }
     ];
-    fontMaps = [ "KanjiMap ptex-@jaEmbed@@jaVariant@.map" ];
+    fontMaps = [
+      "KanjiMap ptex-@jaEmbed@@jaVariant@.map"
+    ];
     sha512.run = "dca32af2c2742207b380c909190204049e29eb9c824f534c39757e3544e305a9395c9fd6ff76d855f1e7fc67e0999bfd863640fc2d2f45dc44bdaa7df543568f";
     sha512.doc = "160902b1b32b9725f4c7cabd06dfb612fbbeef31845df108efd50917d85ef619ba62d03760852d31a21a23e2bdcb5035292b317982d7fede260a696041bb2293";
     hasManpages = true;
@@ -41762,11 +42626,15 @@
     sha512.doc = "5635ead2dfa20ce9b616073272452de5c68c55104d88b2362b87cafe4762608d681b0c370169bff78466520d14f9055e509efdaa4ecdb083c3c3111ad829978c";
     hasRunfiles = true;
     hasTlpkg = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "gpl2Only" ];
     version = "20200520.0";
   };
-  ptex2pdf.binfiles = [ "ptex2pdf" ];
+  ptex2pdf.binfiles = [
+    "ptex2pdf"
+  ];
   ptext = {
     revision = 30171;
     shortdesc = "A 'lipsum' for Persian";
@@ -41848,7 +42716,9 @@
     license = [ "lppl13c" ];
     version = "1.1";
   };
-  purifyeps.binfiles = [ "purifyeps" ];
+  purifyeps.binfiles = [
+    "purifyeps"
+  ];
   puyotikz = {
     revision = 57254;
     shortdesc = "Quickly typeset board states of Puyo Puyo games";
@@ -41903,7 +42773,9 @@
     revision = 15878;
     shortdesc = "Palatino-like fonts in support of mathematics";
     stripPrefix = 0;
-    fontMaps = [ "Map pxfonts.map" ];
+    fontMaps = [
+      "Map pxfonts.map"
+    ];
     sha512.run = "3b50d3f04c00cd080495c71d9387fe9c810ade7d83ead1178d661a618374a3a67c0fc70ae2a809d2b91db4afaf352b1596a588f6998a4eda220a6f181390b6d1";
     sha512.doc = "71898d307cabff64078bbb98bee9417c79504fd56f1cfc1427b9e4ccc9448b5e2e8436fa085a63d6fa6601e591673ef52eb2225ddfad5e34943456a2239206a5";
     hasRunfiles = true;
@@ -42008,11 +42880,15 @@
     sha512.run = "097a1eec7e6a969b0c2aef3915d8231d7e6b6c234abe79caa7f7325df22f4976d1bcf2b111c87c9b457250a2c89b5b0a29afd7deb81ee309753901768fb3fd08";
     sha512.doc = "050bf2576a7305eda104ac928cb332e6fd1437e1852726442694fb7ec88ebe7fb9e7e54987a13b76aa103afcc446019a57b8e011f4e638469ea34a9788a8e7cf";
     hasRunfiles = true;
-    scriptExts = [ "py" ];
+    scriptExts = [
+      "py"
+    ];
     license = [ "lppl13c" ];
     version = "0.11";
   };
-  pygmentex.binfiles = [ "pygmentex" ];
+  pygmentex.binfiles = [
+    "pygmentex"
+  ];
   pyluatex = {
     revision = 69372;
     shortdesc = "Execute Python code on the fly in your LaTeX documents";
@@ -42078,7 +42954,9 @@
     sha512.doc = "3ec2fe0f095384734575c2c9fd1bc9d485b628485c8ee75cd8fb9ebd6d1f56edbec6f378c7c9e1d5ba9c10c4bbcc3934ddb957dc47a258ac81ca89b5ce3a2e92";
     sha512.source = "8a3cf562716df588d4ada0273c3340b73e16a01524e02a9c83c4ca781b8dd1763a1deb9e303635878721831e0d57b780c0666b694629106650f639061d2f32f4";
     hasRunfiles = true;
-    scriptExts = [ "py" ];
+    scriptExts = [
+      "py"
+    ];
     license = [ "lppl13c" ];
     version = "0.18";
   };
@@ -42090,7 +42968,9 @@
     revision = 69164;
     shortdesc = "Typesetting Q&A-style conversation made easier";
     stripPrefix = 0;
-    deps = [ "einfart" ];
+    deps = [
+      "einfart"
+    ];
     sha512.run = "6a2ba84da635b700df2a39d69240b62749454d245ad6bb7e7ee8d87f8125f82575fa7c9e2ce4fb2b51bc0af2749135c5ba3bbfde443344ef950f6ce61a79b678";
     sha512.doc = "885a499e877514022277317c5f4d4fef22e5a0593b9a69cea2021e2326b4f57662daf55977da5078ac45f0146a76a0cc644498ae6c2c9dc49d5e5c8a39565037";
     hasRunfiles = true;
@@ -42236,7 +43116,9 @@
     revision = 64372;
     shortdesc = "Quattrocento and Quattrocento Sans fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map quattrocento.map" ];
+    fontMaps = [
+      "Map quattrocento.map"
+    ];
     sha512.run = "cc6819b03992528b4a564757caf4767c92a00b8ecdd6053595c5561483287be88014b6cfe60c1eedde75160669981baaef1e71cc293d1585e9a7c54e0186fe35";
     sha512.doc = "f3881de285a603b1fb11c470f0c16698cdb4a4b165750a2bcc17fd4deaf44d5d94a7af531ddb1135d12556317731639ea779d25663a81bd25b578241ae3fab1d";
     hasRunfiles = true;
@@ -42423,7 +43305,9 @@
     revision = 42629;
     shortdesc = "Use Raleway with TeX(-alike) systems";
     stripPrefix = 0;
-    fontMaps = [ "Map Raleway.map" ];
+    fontMaps = [
+      "Map Raleway.map"
+    ];
     sha512.run = "8ce708ec993b1405dc04ddd96b6d39da324799f404e2798448c12cd03749f11685f840ba4f986b1b0f7696f9141923f3b91f5318de634979720af5af5b07781c";
     sha512.doc = "eae288de26c57ac27172e83bc6985b0edf80ac88538561468924c34656f31507e008097a1e8452ce47729ab501493733a1c022440c31c34cd99f8211383e889c";
     hasRunfiles = true;
@@ -42692,7 +43576,9 @@
     revision = 15878;
     shortdesc = "A font providing the \"recyclable\" logo";
     stripPrefix = 0;
-    fontMaps = [ "Map recycle.map" ];
+    fontMaps = [
+      "Map recycle.map"
+    ];
     sha512.run = "3bc28ed41a8205534d34593429429768bdfa64e61cc212017ba4be32f7a985e8d65ab296137cffbb7ad5be4dec90bbfd30d675ab314bb79ec0ea10b277c33d66";
     sha512.doc = "3bbe68b48915c6fa662fb72072eb9e130613587e86d3d4172766c8fe690a995d23d252cbda9a226a7716c9da8741b3ed0e18eae1cab2f547d08265ee493a64dc";
     hasRunfiles = true;
@@ -43140,7 +44026,9 @@
     revision = 64350;
     shortdesc = "Support for the Roboto family of fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map roboto.map" ];
+    fontMaps = [
+      "Map roboto.map"
+    ];
     sha512.run = "d82d9ce9480bf0c9d7f6559e7bcbb5fe8f22179adc44113121f67fc0daadd66c938b9fcf9a41073843e1cc981162972a79f15fe6162f68ba7a01b74732b0f01a";
     sha512.doc = "2ceaedd2b273c252e8510a98cb05d581dad8aff94f3c8be1dc47fbbc9b52a0546ba8025c6bf0c51d97d0573d208af2f8a635c0cf405a980ae8cf8e4a1f13e499";
     hasRunfiles = true;
@@ -43193,7 +44081,9 @@
     revision = 56895;
     shortdesc = "A font with the images of the counties of Romania";
     stripPrefix = 0;
-    fontMaps = [ "Map rojud.map" ];
+    fontMaps = [
+      "Map rojud.map"
+    ];
     sha512.run = "cd7065dc6a916941a0fd05ea342d29499b6f7496d1934e06c49e7ea1a99c5be5cd515bbcbc2b5935ff8132adcc7b94e653d55de967700410ace55697f6fc156e";
     sha512.doc = "fb9c9f00433ba959ad8f7b5acc93b1e7b0db1cffec96b7c988eeaaae89ceecc815071a1e21f78d36279e529f4e9095602b1887d3c5d4164494be502cf4a19873";
     hasRunfiles = true;
@@ -43226,7 +44116,9 @@
     revision = 19537;
     shortdesc = "Romande ADF fonts and LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map yrd.map" ];
+    fontMaps = [
+      "Map yrd.map"
+    ];
     sha512.run = "874883eb3592852dd6dfe2dc675a768bed8db80c0c617cad7c28bbefb2ca111adb410a584f75fad935bfec330765650ea9d0f73c8c5a9fe567526b5fb46ff17e";
     sha512.doc = "708ffe5a4dccf8241eaee7d22787e0e30bbd10faa1cfd538836da676cbd4f67b16a80772f8a4cea08f59af6d41a697426c4a4254c481d13ac3a10157b2a679e0";
     sha512.source = "040b154c19ee55910b05d0bfe355bbf000403fcc5c536a081e4569390c599123d64000680cb847ad710204d1c33d7ceb0ab7ea049847ff4ad0762fd9c0acfeeb";
@@ -43269,7 +44161,9 @@
     revision = 51688;
     shortdesc = "Using the free Rosario fonts with LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map Rosario.map" ];
+    fontMaps = [
+      "Map Rosario.map"
+    ];
     sha512.run = "e1e200c49ba98fb1d2bd5cd927ff209a1f72b9681b1cf3b49baa263985790f7d4854ac1cd9fedd464e2076488b3042456c7fede5648dd8ef23d1ba6701705437";
     sha512.doc = "1e5a12a62b7e62587b452d0f8926757b987e83a2980698deb94c6955cff1e45ef634ec8ac1c1051f6567db8a3de9fe8d4df23a5f80317ddfd2ba863ef15935c1";
     sha512.source = "4c7613a697439feba9e52ebe40dcbf738370f3ad5278ef0232f0e0e13ba9ac2c46d60233c8159c626b97b53af5238f75c096106b0b8529423d5fa3feaaf57a87";
@@ -43355,7 +44249,9 @@
     revision = 15878;
     shortdesc = "Ralph Smith's Formal Script font";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap rsfs.map" ];
+    fontMaps = [
+      "MixedMap rsfs.map"
+    ];
     sha512.run = "f5d52f49ead227b058841bb88571ae0d6fb40b95dd652536887acf13c0a5dc5b61e3813faaef2effc26539125c2776e113937a1612e7bc7146e7d5517b02aeb6";
     sha512.doc = "2d23715b38d90c686d7edae77f2a774041d3b679035e0399b7b6089f9b17db3ea4c6c3cdd655bb6e5f3a3cae782e30984c1fe89f5f263a0cd86b441c5376848a";
     hasRunfiles = true;
@@ -43365,7 +44261,9 @@
     revision = 60849;
     shortdesc = "A mathematical calligraphic font based on rsfs";
     stripPrefix = 0;
-    fontMaps = [ "Map rsfso.map" ];
+    fontMaps = [
+      "Map rsfso.map"
+    ];
     sha512.run = "7632b0cafcb0d28f5f4b742f8c457634a9cd1ec7fd59e61e01fd5f3da3964ae941fdf2fbaba94b0d0934270ba56a2224352e11075970e28bcf16bd9b6f97f236";
     sha512.doc = "ccb3ce73add1f2a4f269728b8189569637327d85cd1a4d29a03904872cff10ce3057bd01a9d74a94373c3aaa52afe74a98d07bcad248fd18943efb0bace6db36";
     hasRunfiles = true;
@@ -43412,7 +44310,9 @@
     license = [ "lppl13c" ];
     version = "5.0";
   };
-  rubik.binfiles = [ "rubikrotation" ];
+  rubik.binfiles = [
+    "rubikrotation"
+  ];
   ruhyphen = {
     revision = 21081;
     shortdesc = "Russian hyphenation";
@@ -43469,11 +44369,15 @@
     sha512.run = "8e681e06b29e235d76b21370614c22ba57cf69debff19869f3589ac5a1342f368621083a17b7a1ddc1ddee37478bdb9b81f4050bb9a2f7d28a7d753909238233";
     sha512.doc = "4f2754641930105b1bd70a0a116e724e019c1930ec49e27c3ae895c35b7840c54082285cb6241554915234c16a59dbcea9ee07c509d09d5315ff6f04e0137168";
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "mit" ];
     version = "0.5";
   };
-  runtexshebang.binfiles = [ "runtexshebang" ];
+  runtexshebang.binfiles = [
+    "runtexshebang"
+  ];
   russ = {
     revision = 25209;
     shortdesc = "LaTeX in Russian, without babel";
@@ -43605,7 +44509,9 @@
     revision = 55475;
     shortdesc = "Type 1 version of 'skt' fonts for Sanskrit";
     stripPrefix = 0;
-    fontMaps = [ "Map skt.map" ];
+    fontMaps = [
+      "Map skt.map"
+    ];
     sha512.run = "50f7a12443730bb017334ed1bad840dd2086a0225586eeae02f1386f410ae802fd043b1ce8a90e495aac7bdb20e2a8532c4cf98d48f0fc32b96da24f28de26bc";
     sha512.doc = "11a0bbb4212f72a18df5eb1ce1e2259774c6376a3c107fe32bed4176d23da2f5bda5cab71a7df618c67113ac9d65969ea8e680ab939c7c6cb2542ebd4c7e5efa";
     hasRunfiles = true;
@@ -43625,7 +44531,9 @@
     revision = 53628;
     shortdesc = "Correct placement of accents in sans-serif maths";
     stripPrefix = 0;
-    fontMaps = [ "Map sansmathaccent.map" ];
+    fontMaps = [
+      "Map sansmathaccent.map"
+    ];
     sha512.run = "685b0c604978aac45efd75c37652471aa165bfbbf12dfa686320a6a9ef926f9043382333ecc26db6d2ff4d12732d135947145ba937eb6d01d4a4e9aa17784315";
     sha512.doc = "c9bf7d65a232d668243df9867b2eca64e0288fd733c6b39ce200f64fc5b0a07c98ea6a971446f67f1766998e169c14a80eda71104c1653ed54d3865e6e145fc0";
     hasRunfiles = true;
@@ -43635,7 +44543,9 @@
     revision = 68777;
     shortdesc = "Extended Computer Modern sans serif fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map sansmathfonts.map" ];
+    fontMaps = [
+      "Map sansmathfonts.map"
+    ];
     sha512.run = "d31d37820883b0fa2a97dc878d11b6866554839acbae8c56fc10fb164fcfc2af5590d0d562512aa313ca950c32aecb4d4b89ea4113326446a75006b34a2f677c";
     sha512.doc = "5972253d34cb39cb0151050b4e9dab45dea50901a84f736ee8a25beb5ad647a112462ed5b3d46c61ff20a3a20852000c64736c88df9ed59defa2da5bf54b5638";
     hasRunfiles = true;
@@ -43694,7 +44604,9 @@
     revision = 65346;
     shortdesc = "Save environment content verbatim";
     stripPrefix = 0;
-    deps = [ "precattl" ];
+    deps = [
+      "precattl"
+    ];
     sha512.run = "e0e368dcf3add9d59b22d8e04da1de9110d6f1ad2e31cd2cd44f894ea1d7f0cbd4eb41b500637e896eb179539e19c4a1d0601035e2404726dfc98677f9db0927";
     sha512.doc = "2016c815add27dca5b498f4cca3ce69c9c18f544b9651305d5d9a9a7a10b30fe187c526da37813218388f8305fc3df83257b2e9b6289171febb770c7d59d9274";
     hasRunfiles = true;
@@ -43768,7 +44680,9 @@
     revision = 42633;
     shortdesc = "Support importing and embellishing scanned documents";
     stripPrefix = 0;
-    fontMaps = [ "Map scanpages.map" ];
+    fontMaps = [
+      "Map scanpages.map"
+    ];
     sha512.run = "e13f7849b2b1cbe9fc60fc2e3d3bb7f2879644c282e8664a5ec46b3143f4ac7fbd21f2976183ad410bf778a181d5063b23832734f0ff43a617c9020b16587fb6";
     sha512.doc = "34eb2549a4d809602cf69eb562fd3c03c8d3fc4063820ce41b52d733228a6a83ace819e5bb82e77cd3be3cb8093e7997377fadeded652d20509eecde458d9b78";
     hasRunfiles = true;
@@ -44015,7 +44929,9 @@
     revision = 54191;
     shortdesc = "minimal scheme (plain only)";
     stripPrefix = 0;
-    deps = [ "collection-basic" ];
+    deps = [
+      "collection-basic"
+    ];
     sha512.run = "ac177b74d9d5b9fa599831275a4084a0eeb7b764a6ed837d8f14f8391f0e6c0757f7b2d4a8e71868e0c8ea4d497f29d78c4c73fb9e6311dbecf29626516bbf82";
   };
   scheme-small = {
@@ -44156,7 +45072,9 @@
     revision = 61836;
     shortdesc = "Extension of TeXGyreSchola (New Century Schoolbook) with math support";
     stripPrefix = 0;
-    fontMaps = [ "Map ScholaX.map" ];
+    fontMaps = [
+      "Map ScholaX.map"
+    ];
     sha512.run = "f7062ca975c2801c220c6c34844d87e410e501442313974c77281aaa0927b27fdfbd2328676405cd1820c809e0354edd332e9fba0d04fa1e9a8d28f91543905c";
     sha512.doc = "7c64a884165087b72f052e7d3fe8c57857d62b92532bdfc6bcd46e66b12f8b12112bd71ab88d4a9603237b612d1eab5ad10e7de0c14e69ccabeefafcfd380302";
     hasRunfiles = true;
@@ -44575,7 +45493,9 @@
     revision = 65679;
     shortdesc = "Semantic, keyval-based mathematics";
     stripPrefix = 0;
-    deps = [ "semtex" ];
+    deps = [
+      "semtex"
+    ];
     sha512.run = "156ef55009e52bc91bead46963d5f383c9b760d4c72a45097de1e3ce3fcb1aae4686386efbf8a3abc2f18d16f59d02f297acd825a9cfa21e544ba2dde9986c13";
     sha512.doc = "1f94edb17be3e148a913e98ce020f5273085507537b51b4737c5c4d1589e415aa361cdb25264c412af8b93025b6dde204c625180c5182d319c199d5e8e591757";
     hasRunfiles = true;
@@ -44606,7 +45526,9 @@
     revision = 18651;
     shortdesc = "Semaphore alphabet font";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap semaf.map" ];
+    fontMaps = [
+      "MixedMap semaf.map"
+    ];
     sha512.run = "b8741be1544d8ab488632e05464cf607069f0d09df7a727bc05d06175dc16bff461d551e7130e01edbb53863d56fbf4cd0cc9085c51186e19e5f2fae986b400b";
     sha512.doc = "ef0c85ca5e86a17d59c03255d679d54cc8fb36eec02c8546f29e1c514408559788d1dbe3ac7565224b320b71e9ad77979b1092fb0f098a1c48c3a7093b72b172";
     hasRunfiles = true;
@@ -45273,7 +46195,9 @@
     revision = 70519;
     shortdesc = "Simple Icons for LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map simpleicons.map" ];
+    fontMaps = [
+      "Map simpleicons.map"
+    ];
     sha512.run = "336d8cc4f3a20bb6b9f7f956dc09dcb3184a333b0e82f9b72ebfdc7f73c757fa53a48ce0bc31a1b397c42bda9826944e3004d881ee1d6dac4f3430919b4cb9cd";
     sha512.doc = "93e23215d137d04ed4086269aa79dc8f81b70147f5115edbdf7e43865b20bb241275eda4b519db5d9a3857f36d956707d936156c002c155333d72b1f60edbed5";
     hasRunfiles = true;
@@ -45362,7 +46286,9 @@
     revision = 70317;
     shortdesc = "Write your books in a simple and clear way";
     stripPrefix = 0;
-    deps = [ "minimalist" ];
+    deps = [
+      "minimalist"
+    ];
     sha512.run = "864101fbbd4d71ce75960255e0df965ff1dcaa7c323bcf34fe4893190c81877cb2b86d50559b20f8698ccf015cbcd111a3b6e052eb62cea28e9a5f62335d0121";
     sha512.doc = "890638ab256f56c1a964e89d990ba57288fe4ff2d8149065b1a6d24b056eca50751a932c5ac91a453bcffd1b909a7e8c277c3e240d525a97bee259d6a40bf91b";
     hasRunfiles = true;
@@ -45451,7 +46377,9 @@
     revision = 20031;
     shortdesc = "The skak chess fonts redone in Adobe Type 1";
     stripPrefix = 0;
-    fontMaps = [ "Map SkakNew.map" ];
+    fontMaps = [
+      "Map SkakNew.map"
+    ];
     sha512.run = "879107f0bb96441082ccc4afb560e4fd0f625e7fb7cab84ebbd642af1ef180bc27540eb9ff26c689039dd6abb11e9b88bcea30d5b1e75b40f0e3499c981ae6e2";
     sha512.doc = "8c26115910f2e9a9ae28e1b6c0933db3308c9f59eb151bb37b23de3f0f790b9726aef895def0826e00928b75753d925c5c9db0a6b91ebf7035fad5a4e473a315";
     hasRunfiles = true;
@@ -45756,7 +46684,9 @@
     revision = 54512;
     shortdesc = "Use SourceCodePro with TeX(-alike) systems";
     stripPrefix = 0;
-    fontMaps = [ "Map SourceCodePro.map" ];
+    fontMaps = [
+      "Map SourceCodePro.map"
+    ];
     sha512.run = "98ae07aa0c29c1c1cf2e181b1a5d68f85736b90b8f381bc9c1a2368cea2b8c62fb0c8007f5ce6b53b8e87195b8b0859c54bb2656cb7361119c29ed87d9259c62";
     sha512.doc = "e786d75bedbf5c5d155a69fda50e9fe6fe07914ca01aa10d7ab66800cd37a4bdfeb543ad34c9ca2eec53de226e68d7a1849a9a0510291d135001c5228f19e2e8";
     hasRunfiles = true;
@@ -45770,7 +46700,9 @@
     revision = 54892;
     shortdesc = "Use SourceSansPro with TeX(-alike) systems";
     stripPrefix = 0;
-    fontMaps = [ "Map SourceSansPro.map" ];
+    fontMaps = [
+      "Map SourceSansPro.map"
+    ];
     sha512.run = "0511dcf736273d80f7143c9dad96dd9f631b016183b4078243ed061d35889fea62e50c5f48e9842ffae7b654fd2e08a21d1c46403e56349c0b515ff2eb62e164";
     sha512.doc = "174def8872588c27b8f90b3c384ee356aec43e4e42014bb1c02d648d8b309dfa8fb9cea03f65fa9bd86dc3ff1e64483f1312dbaca6e212f65d2d379a1d9935e3";
     hasRunfiles = true;
@@ -45784,7 +46716,9 @@
     revision = 54512;
     shortdesc = "Use SourceSerifPro with TeX(-alike) systems";
     stripPrefix = 0;
-    fontMaps = [ "Map SourceSerifPro.map" ];
+    fontMaps = [
+      "Map SourceSerifPro.map"
+    ];
     sha512.run = "5125dc5b72d960fefffcc4c8651f3d176c18c32d111440a16a0319f90b8dc973a4af0e20fc3b571578184e31749312c0c1f0ec3bba36b3715a3c59fc03768d65";
     sha512.doc = "c469f7beb0e99c8a9891c4222171525004c63e9feeaea9be57e663541ba4e2f259d2a3674f3029e4609fc08292d749f005f971bfcc542115d53e1845a02680f8";
     hasRunfiles = true;
@@ -45873,7 +46807,9 @@
     revision = 64528;
     shortdesc = "Spectral fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map spectral.map" ];
+    fontMaps = [
+      "Map spectral.map"
+    ];
     sha512.run = "e260d7605cb89a7ff33f530c5f6448f2ae512e9ac1b22880f3d76147701ae458fa5acb3525d49cae3973c24b51858ad687b76f5a00ca8d914edf4e329f3dabc7";
     sha512.doc = "4fba6fa0576a84b05d0a0bc3520ac6e08dbedb7f37e5af5a0cc961c80deb98d53065be3c645c0eb0dc08a495d113e72f4474de32dad5d080ce67b000aaf4042d";
     hasRunfiles = true;
@@ -45938,11 +46874,15 @@
     sha512.doc = "b783636e01e976f3a0020d6e5b8c87918277fb0caae09057e68b2e216e504618f0b784b1214fdf99fde79cae5a6169c585bacf093de149a99534ef7069e6cb2a";
     hasManpages = true;
     hasRunfiles = true;
-    scriptExts = [ "py" ];
+    scriptExts = [
+      "py"
+    ];
     license = [ "gpl3Plus" ];
     version = "1.3.0";
   };
-  spix.binfiles = [ "spix" ];
+  spix.binfiles = [
+    "spix"
+  ];
   splines = {
     revision = 15878;
     shortdesc = "MetaPost macros for drawing cubic spline interpolants";
@@ -45973,11 +46913,15 @@
     hasManpages = true;
     sha512.source = "8aa928bdf6f2e8fb6274c1fe8d0b4567d03a1c6ffbd078726bf6a36ff1bdab981d5150cf0250602a64d2a0a9be92695fdd399c04d041b7a9579a7d3a71910151";
     hasRunfiles = true;
-    scriptExts = [ "tlu" ];
+    scriptExts = [
+      "tlu"
+    ];
     license = [ "lppl13c" ];
     version = "1.2c";
   };
-  splitindex.binfiles = [ "splitindex" ];
+  splitindex.binfiles = [
+    "splitindex"
+  ];
   spot = {
     revision = 22408;
     shortdesc = "Spotlight highlighting for Beamer";
@@ -46044,7 +46988,9 @@
     revision = 63308;
     shortdesc = "Font STIX2 for Serbian and Macedonian";
     stripPrefix = 0;
-    fontMaps = [ "Map srbtiks.map" ];
+    fontMaps = [
+      "Map srbtiks.map"
+    ];
     sha512.run = "7caf4046990b6708f753ffe9eda73f564fd1d18a97fbb78d72fc0db72e0b8a2af2974e6348ab2f62973805398581c7bacf6b9937fcfffb33057cc3586e4de6cf";
     sha512.doc = "1b393eddee48395dcd94889c3e5d530c9c4ec736e41f901bf6a66ebb9d4929f363407d026ac9824ae82c852823e9f4d87a618ab4aaa0cc25247c3be03ec00f31";
     hasRunfiles = true;
@@ -46075,7 +47021,9 @@
     license = [ "gpl2Only" ];
     version = "1.0";
   };
-  srcredact.binfiles = [ "srcredact" ];
+  srcredact.binfiles = [
+    "srcredact"
+  ];
   srdp-mathematik = {
     revision = 69288;
     shortdesc = "Typeset Austrian SRDP in mathematics";
@@ -46120,7 +47068,9 @@
     revision = 60019;
     shortdesc = "Highly customised stacking of objects, insets, baseline changes, etc";
     stripPrefix = 0;
-    deps = [ "listofitems" ];
+    deps = [
+      "listofitems"
+    ];
     sha512.run = "15327eda5a6eda2b58055efc419ef50b8d8cf8c35283bcc41ee85e354f61ede6efeabf5e75bbb4cd022b95e52109bce1ee2e28fc701c5940723f3b15dd44c75a";
     sha512.doc = "a0edeaed3766af88d1c5e0508fd285382850bfd072cf4f6fdc1c329c8ca9f5e1eb5fe75357d9a86dd8b2476381747c9a3f7cd7dad0d7c32419bef0d37849928b";
     hasRunfiles = true;
@@ -46173,7 +47123,9 @@
     revision = 19982;
     shortdesc = "The StarFont Sans astrological font";
     stripPrefix = 0;
-    fontMaps = [ "Map starfont.map" ];
+    fontMaps = [
+      "Map starfont.map"
+    ];
     sha512.run = "1f45f97813f5e51b45e1cbd3246b877aad823895a4b087294d0754c560db5796d8b4f9d09972b5c90c4c569db82a2d70bd1c39a9dfe6e1fcc4e0deeceb44f876";
     sha512.doc = "def94e1e2995e20e282d9319f763ddbc5e152a48c18ba98ef4d168e69a9a6deb5d7d87923a3259553f990f2da73c78929858852c6165acf7a94a6010382f786b";
     hasRunfiles = true;
@@ -46261,7 +47213,9 @@
     revision = 15878;
     shortdesc = "Typeset Icelandic staves and runic letters";
     stripPrefix = 0;
-    fontMaps = [ "Map icelandic.map" ];
+    fontMaps = [
+      "Map icelandic.map"
+    ];
     sha512.run = "f6a1aea97a3293ffb514ccc526faa71ea5ea3ab32990da8725cc3ff998d15a2909001976d9705ba13110fbde869001bec2f286e58c05f1fe31f345ecd5882482";
     sha512.doc = "b839484325cc6d06a407ea685dd705b3616d1e87f22d4a625c20dbc507647b602417a085328f9ba886766ee0fca2516da397c742198569477bc1009271a4db23";
     sha512.source = "9dbe40efcd1699cc9267b739bc1b182fc0e5dc23ae52d19ea89c1742b815e4ea9b7612e4fb80aeb83f3d9206ab408cb0ca3fcb99c85883fb86f89f3ac26f0b5d";
@@ -46338,7 +47292,9 @@
     revision = 57307;
     shortdesc = "A free Times-like font";
     stripPrefix = 0;
-    fontMaps = [ "Map STEP.map" ];
+    fontMaps = [
+      "Map STEP.map"
+    ];
     sha512.run = "d1f19415ceeefb879a3b4017fa286e5e5806e193fc75159b515fe21a9a6093c6a95d04e2e2e3c7ee457edb8ad717b88043c58727fb3924cb192e05aec12c5c07";
     sha512.doc = "bbf49f36bf7588c83e237d58d49ff7453c368cbe7e3a32c431944a2249c0dd75c2c1081d10bc2279e0836384602268ad163ffa3eb7108cd28a6c510a18f001c5";
     hasRunfiles = true;
@@ -46349,7 +47305,9 @@
     revision = 57074;
     shortdesc = "A free Times/Elsevier-style Greek font";
     stripPrefix = 0;
-    fontMaps = [ "Map STEPGreekTest.map" ];
+    fontMaps = [
+      "Map STEPGreekTest.map"
+    ];
     sha512.run = "c322bb089a887b36c4008502160f0970ff2ca33f05391010adc38c12726b2079085bb1775934597fa1758effee14eda76647b886644971e7c40a451154e446f9";
     sha512.doc = "c3f4c2b1ea06a012ba4d5f5ca72faa0a6c1b4ae5c132b17bda0b6bb895f34e555724f93cd791fad8c6ff846027dbedd723f874ae1e772de95c64bf54f5fa0265";
     hasRunfiles = true;
@@ -46371,7 +47329,9 @@
     revision = 60793;
     shortdesc = "A reworking of STIX2";
     stripPrefix = 0;
-    fontMaps = [ "Map SticksTooText.map" ];
+    fontMaps = [
+      "Map SticksTooText.map"
+    ];
     sha512.run = "aa2ede628a273b4fc0796153d243bf89dce6d3c1b0097b29327bf21836340d11f6e6368f312d76ff726030c05d012c3890f86277ac7eef79d5c5ca579f47cea7";
     sha512.doc = "e1437dd3b47c8799b4a8a60fcfc215a303f1eb289e0424e51d29fad78c9fb4cc4890896baa77251681d000f2eb08365f9f16a2fbc1c37881b852790257432088";
     hasRunfiles = true;
@@ -46385,7 +47345,9 @@
     revision = 54512;
     shortdesc = "OpenType Unicode maths fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map stix.map" ];
+    fontMaps = [
+      "Map stix.map"
+    ];
     sha512.run = "7e639f7a534e24afd9d009e224d87c9c2a502cbc77ff882c6dcc9ca0bff512f849d1f3e658dff8badab3843a658171b88ab66d8e731392dc456f9c5f4e032318";
     sha512.doc = "b01c3dfaa96a6bbcaa83e803514c8090546dcdd54595d7c66a1ac280286f5baa98947fe9d513da3d8baa1e83cdd174443751fc79c07cf66093af4e9044fd9010";
     sha512.source = "594af38fdb72d632c36cf6ae6165518553b10127281ef8a6ec71f4ced16481f2582a13f1f6f0ee98e900c3147c574647c508f7c9e51afdc57ce68614a394d007";
@@ -46410,7 +47372,9 @@
     revision = 57448;
     shortdesc = "Type1 versions of the STIX Two OpenType fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map stix2.map" ];
+    fontMaps = [
+      "Map stix2.map"
+    ];
     sha512.run = "802ea99ccb3b8e2e727537113843846dd6629f722508219be88cddd9e7f1e6f67a1bf48ae3a61c51991ec91ba5c543467d3aaba64116e4be08707def58c70f34";
     sha512.doc = "b4f1e6e8962fd77ecaf0df94b156783d9f77c07231e6cc258e04c26a8190dcd0a3175c71bd3a1187ad6cc083595ee80925712f12e0f838c474ac93701b47401e";
     sha512.source = "5963bee636210eb89d31ea8d5954468fe9959429d516fb988c8ceab3c591f53b47a5a77df8f10d8e20f136adbf2fe23f546fa62b1768db7164ed74fcf706a228";
@@ -46425,7 +47389,9 @@
     revision = 22027;
     shortdesc = "St Mary Road symbols for theoretical computer science";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap stmaryrd.map" ];
+    fontMaps = [
+      "MixedMap stmaryrd.map"
+    ];
     sha512.run = "8abe58b84fff2f4fd6846b6c267f3b245fb1dfc2f38d0db54ce7cd9d456abd07627247613073f09dcf7e11e3e9c5940d8ff657327232ce638abc6babcc5b3d77";
     sha512.doc = "caf883d1c5021b52d6471c4c2145e708ac3c05c8944eaae621a3ea7b602b683ba2ef2bc0052f9caf67adc1415e7db02b5b55d3642ed82727a926ec193dd984f4";
     sha512.source = "ebefe2836daed0dd4db99517af0f40c73f0a7b19453d5415c80ae6cf723f4ec4e4ae6f9700a21722b4c0d9b8507c58a596697017893716111b46222f54676aa2";
@@ -46569,7 +47535,9 @@
     license = [ "gpl3Only" ];
     version = "2.4";
   };
-  sty2dtx.binfiles = [ "sty2dtx" ];
+  sty2dtx.binfiles = [
+    "sty2dtx"
+  ];
   styledcmd = {
     revision = 70496;
     shortdesc = "Handling multiple versions of user-defined macros";
@@ -46669,7 +47637,9 @@
     revision = 56977;
     shortdesc = "Individual typesetting of subfiles of a \"main\" document";
     stripPrefix = 0;
-    deps = [ "import" ];
+    deps = [
+      "import"
+    ];
     sha512.run = "8f842b0debcae3110f0a4b2f59047cd55c2726d128bf3e159f2745a4b8a645c3f8471fe218ca34c32f2b35d42d1c5023a25f09fc3bf0c1a4f0c33197776b1cec";
     sha512.doc = "f54f52c5cee01b7ae8e01bff5a4d828b5c6708c31f2cf40d7e83c8a91c4c597945695dd7062b6088d3f91f7a9858e3227c850d658ae7a7bf94392e00e3eaf9c7";
     sha512.source = "2623a0ec244722c1e3194d9ff1237305c1b7bf8c3baf6f60edd69b165bbd5ea83fb73ad23bf9aac1937b4ecf1059754e798eb2c97f7bab5d550fabbe84b752c0";
@@ -46860,7 +47830,9 @@
     license = [ "lppl13c" ];
     version = "2.4d";
   };
-  svn-multi.binfiles = [ "svn-multi" ];
+  svn-multi.binfiles = [
+    "svn-multi"
+  ];
   svn-prov = {
     revision = 64967;
     shortdesc = "Subversion variants of \Provides... macros";
@@ -46887,7 +47859,9 @@
     revision = 50019;
     shortdesc = "A font with symbols for use in physics texts";
     stripPrefix = 0;
-    fontMaps = [ "Map svrsymbols.map" ];
+    fontMaps = [
+      "Map svrsymbols.map"
+    ];
     sha512.run = "1fadd5259d527daf316502aae6072865b9c6e2efc1ab92f4bc0c3d1070ca4dd863b8f7366c9e6909b7885858c1745cd723003a9f4bd28e8208889da2c21f18d3";
     sha512.doc = "6ff7b9c1efa4b59c453b42fd37dc66e3c79912ff0bf9765b2745fd0cd946a4cfc4a063fc943d1b5919368f8a5809eef5cb7f3a4bf3b6cbdf8200f42180d21f92";
     sha512.source = "916ca0f14ff1b9ae99fc609c41fa655eef39bb053ad39274dbe43167dbeed06ebbb9990cde6c040fcbf9b432b4ff89651195df094aa9c35bc172e7932917148d";
@@ -46965,7 +47939,9 @@
     revision = 61719;
     shortdesc = "URW 'Base 35' font pack for LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map usy.map" ];
+    fontMaps = [
+      "Map usy.map"
+    ];
     sha512.run = "1a2d3239cf7c9910b19db527d5c2b43af2b399114b3186505e790a139ae5ef82c2ff1ecd5adc858a46febaf2e46e028037ba65bd5b84fec0737edd89d5061c09";
     hasRunfiles = true;
     license = [ "gpl1Only" ];
@@ -46998,7 +47974,9 @@
     sha512.doc = "14e1f266182ee0be47a7b3841435f79594cdeb959245e6226520e81248691beeaa73f365c1112ef3bb4eacf4ca77e55265bd0d13c190858144bdc3064fa88a59";
     hasManpages = true;
   };
-  synctex.binfiles = [ "synctex" ];
+  synctex.binfiles = [
+    "synctex"
+  ];
   synproof = {
     revision = 15878;
     shortdesc = "Easy drawing of syntactic proofs";
@@ -47240,7 +48218,9 @@
     revision = 61719;
     shortdesc = "Flexible LaTeX tabulars";
     stripPrefix = 0;
-    deps = [ "varwidth" ];
+    deps = [
+      "varwidth"
+    ];
     sha512.run = "b40dc1e91084912df03175a6529223c6f24ae3c0ec77cfb8f1f8625816ea78c044c8f01f1b473e84696421d6772d9201fa4b59aa93e6f014b73598d16c09a6cd";
     sha512.doc = "5ef0a71d643bf5069a622aa8c807bf87db7445caab1f17b5202ee25ddab5368e94e796eb16de4fb183f294cedc232d48cbdba68f45d2451e01a2483d6869822d";
     sha512.source = "7c80ee8d25933e5d1c579357cffdf7177b0a419a847ca1e671cb1dda19fbde9b3680658df6b814d5d92953dd13eeee5100a5aa2fdb5fec3cbc1e213545cb3a78";
@@ -47305,7 +48285,9 @@
     revision = 63921;
     shortdesc = "Typesetting tables showing variations of functions";
     stripPrefix = 0;
-    fontMaps = [ "Map tabvar.map" ];
+    fontMaps = [
+      "Map tabvar.map"
+    ];
     sha512.run = "255b93a8eda59386b798e85741422c529903acfc0d06cb77f4b128c2e32e4a68ef32097888e921397c3e22434b581de30bb79c8cc6dc8357eaef94f26e6da04f";
     sha512.doc = "117158275aef7f9e5ee3e423e65d9ada5c2f6d28b660941a3d5d80ebb9716f4e35658e070911280e375b29290e2056ad3521acefa1eabfeda95ca9051d64a0c4";
     sha512.source = "48fd599f93d6a5310ebb7dab44aedc9ac017878bbd85d2f1bdb21a676ba95ce717be96f8a26f24d67c4ac4530d233fa8b9842f13fb124a8cc8ce3badf44c6bb8";
@@ -47562,7 +48544,9 @@
     revision = 39596;
     shortdesc = "Greek and Cyrillic to accompany Times";
     stripPrefix = 0;
-    fontMaps = [ "Map tempora.map" ];
+    fontMaps = [
+      "Map tempora.map"
+    ];
     sha512.run = "0e1cc1a13f7937e5497f454b15ca66e0975b784b80223a902bf12a9587abdfdb56116b100e04306b1999e053b7c3716b32e1183dd7e6624162611f3b70388df6";
     sha512.doc = "18259e25b2c9f2a9cfbce9a9303d8827af069bbe2a7ade5c14518ce2c19dc973a86fadaa99b2abc8bc65644ee5371c745abba03cca76a685382b7d8b6d20bc6e";
     hasRunfiles = true;
@@ -47883,11 +48867,15 @@
     sha512.run = "7b2cc47523db8f9b987d2423e10d30d50684f2cdd45dceb846a0bec634ae5ee1514312d8cca46dce701ba1d86c9cfb21f0a0bccf67376f453fa5fec99165b19d";
     sha512.doc = "6011f8dbfe4308e17e8dae72227404374afd1c47e8ab2568248be67913ad1f170d7c83cd01a9e01e39607486579d2e9a1f0a1bbdd3230299109d12a3aba536db";
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "lppl13c" ];
     version = "0.4";
   };
-  tex4ebook.binfiles = [ "tex4ebook" ];
+  tex4ebook.binfiles = [
+    "tex4ebook"
+  ];
   tex4ht = {
     revision = 69739;
     shortdesc = "Convert (La)TeX to HTML/XML";
@@ -47922,11 +48910,15 @@
     hasManpages = true;
     sha512.source = "8bf5d4957008833d54f87eff9feb14f60694ea02e7e9fd2cd5c5d2e2db3f6de3a33784121208ffab516763fbf578125399cbd6f39750e6bb0162a65c2fc44f24";
     hasRunfiles = true;
-    scriptExts = [ "sno" ];
+    scriptExts = [
+      "sno"
+    ];
     license = [ "mit" ];
     version = "1.0.1";
   };
-  texaccents.binfiles = [ "texaccents" ];
+  texaccents.binfiles = [
+    "texaccents"
+  ];
   texapi = {
     revision = 54080;
     shortdesc = "Macros to write format-independent packages";
@@ -47946,7 +48938,9 @@
     license = [ "lppl13c" ];
     version = "0.1";
   };
-  texblend.binfiles = [ "texblend" ];
+  texblend.binfiles = [
+    "texblend"
+  ];
   texbytopic = {
     revision = 68950;
     shortdesc = "Freed version of the book TeX by Topic";
@@ -47964,7 +48958,9 @@
     license = [ "lppl13c" ];
     version = "3.1.1";
   };
-  texcount.binfiles = [ "texcount" ];
+  texcount.binfiles = [
+    "texcount"
+  ];
   texdate = {
     revision = 49362;
     shortdesc = "Date printing, formatting, and manipulation in TeX";
@@ -48000,7 +48996,9 @@
     license = [ "artistic1-cl8" ];
     version = "0.4";
   };
-  texdiff.binfiles = [ "texdiff" ];
+  texdiff.binfiles = [
+    "texdiff"
+  ];
   texdimens = {
     revision = 61070;
     shortdesc = "Conversion of TeX dimensions to decimals";
@@ -48021,24 +49019,34 @@
     license = [ "artistic1-cl8" ];
     version = "1.3";
   };
-  texdirflatten.binfiles = [ "texdirflatten" ];
+  texdirflatten.binfiles = [
+    "texdirflatten"
+  ];
   texdoc = {
     revision = 70583;
     shortdesc = "Documentation access for TeX Live";
-    deps = [ "kpathsea" ];
+    deps = [
+      "kpathsea"
+    ];
     sha512.run = "f81535eda231bd03ffcc2c46bc05d04f73f6ec7c6ff0c436da0d42417f0a8b21c444489762a33dec5cefebbee9113f403205b621e51ee2ac33a2b23aa0eff431";
     sha512.doc = "fc6d8041f21e00214dfed376b29bf47c52a24f09358255d0587c24eb1a046a6d8e65c448109c63d485f76b2cbe90ec8b609c20bbd8490206224457b1fca2499d";
     hasManpages = true;
     hasRunfiles = true;
-    scriptExts = [ "tlu" ];
+    scriptExts = [
+      "tlu"
+    ];
     license = [ "gpl1Only" ];
     version = "4.1";
   };
-  texdoc.binfiles = [ "texdoc" ];
+  texdoc.binfiles = [
+    "texdoc"
+  ];
   texdoctk = {
     revision = 62186;
     shortdesc = "Easy access to package documentation";
-    deps = [ "kpathsea" ];
+    deps = [
+      "kpathsea"
+    ];
     sha512.run = "f3300a088f5ecedfe66ca277f793d3565b5b0f111721a0d73a788d65b72f09d0103a11edda13679fb9e919f11ce9ed3662717c18e46be99a83b744a1f7ec88fe";
     sha512.doc = "fb403dc17ad839ea64bcf6da84e59288a8745b5eb731051d7df8593138aa5d3b6891d56f52bdbe5c9a41e590f1f36db390e7e7a825d9aaf00d4fbc01c8dc16ba";
     hasManpages = true;
@@ -48046,7 +49054,9 @@
     license = [ "gpl1Only" ];
     version = "0.6.0";
   };
-  texdoctk.binfiles = [ "texdoctk" ];
+  texdoctk.binfiles = [
+    "texdoctk"
+  ];
   texdraw = {
     revision = 64477;
     shortdesc = "Graphical macros, using embedded PostScript";
@@ -48066,11 +49076,15 @@
     hasManpages = true;
     sha512.source = "d784abf4241ccd65c8c910c16171b30d686a53933043d8f6ecf787866e5508d4e89866c90fe2627ae4b536ed7647006f6ce257c8b47676adb77221d08b6ef690";
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "gpl3Only" ];
     version = "2023E";
   };
-  texfindpkg.binfiles = [ "texfindpkg" ];
+  texfindpkg.binfiles = [
+    "texfindpkg"
+  ];
   texfot = {
     revision = 68110;
     shortdesc = "Filter clutter from the output of a TeX run";
@@ -48081,7 +49095,9 @@
     license = [ "publicDomain" ];
     version = "1.50";
   };
-  texfot.binfiles = [ "texfot" ];
+  texfot.binfiles = [
+    "texfot"
+  ];
   texilikechaps = {
     revision = 28553;
     shortdesc = "Format chapters with a texi-like format";
@@ -48189,8 +49205,12 @@
   texlive-scripts = {
     revision = 70585;
     shortdesc = "TeX Live infrastructure programs";
-    deps = [ "texlive.infra" ];
-    fontMaps = [ "Map mathpple.map" ];
+    deps = [
+      "texlive.infra"
+    ];
+    fontMaps = [
+      "Map mathpple.map"
+    ];
     sha512.run = "fb5abd894d2ac7021391b7ee270cc833131c2a30f406e8b63e1b3c713abda08c3a28a30067d89e905fa40d7092c9529e8ed954a020833724cc867c6f2eab5272";
     sha512.doc = "3d497cf7940b0b6410a537da324da33276b8af004c00b54462f40986d7a2af818c817b57663d47c714c3e4237dbbe622627bb64dedbaf2017732bc76e59492f5";
     hasManpages = true;
@@ -48277,10 +49297,14 @@
     sha512.run = "63353a768b700ea11982e9552046dfd1dc3d844883f03099833cabe2af5ccddecebd7ef737fbcd256c90304174165a4d283d4912f8311508e61c723d751619a7";
     sha512.doc = "46d57a6ebd68a56d55ccddc68006693fcbad8ed8f809243a3ffac7adb82da58cbc28239b57556d5d8d6388ea034b6571557588ff9365d4891145d5cc3fabfaea";
     hasRunfiles = true;
-    scriptExts = [ "py" ];
+    scriptExts = [
+      "py"
+    ];
     license = [ "gpl3Only" ];
   };
-  texliveonfly.binfiles = [ "texliveonfly" ];
+  texliveonfly.binfiles = [
+    "texliveonfly"
+  ];
   texloganalyser = {
     revision = 54526;
     shortdesc = "Analyse TeX logs";
@@ -48290,7 +49314,9 @@
     license = [ "bsd3" ];
     version = "0.11";
   };
-  texloganalyser.binfiles = [ "texloganalyser" ];
+  texloganalyser.binfiles = [
+    "texloganalyser"
+  ];
   texlogfilter = {
     revision = 69919;
     shortdesc = "Filter LaTeX engines output or log file";
@@ -48301,7 +49327,9 @@
     license = [ "lppl13c" ];
     version = "1.3";
   };
-  texlogfilter.binfiles = [ "texlogfilter" ];
+  texlogfilter.binfiles = [
+    "texlogfilter"
+  ];
   texlogos = {
     revision = 19083;
     shortdesc = "Ready-to-use LaTeX logos";
@@ -48321,7 +49349,9 @@
     license = [ "gpl3Plus" ];
     version = "1.4.1";
   };
-  texlogsieve.binfiles = [ "texlogsieve" ];
+  texlogsieve.binfiles = [
+    "texlogsieve"
+  ];
   texmate = {
     revision = 15878;
     shortdesc = "Comprehensive chess annotation in LaTeX";
@@ -48371,7 +49401,9 @@
     sha512.doc = "51bc4e5a9f62b4526198b380fa69dd2d79ff69ccf0915aef4269d890fed057c4130ccca65e0c279e58ebfb72347d627b186534138f9c4bc8d395677c73a2a0fc";
     sha512.source = "5ed0dddadb7e8f406635d7a2cc309a030826607a76b4520b1f47a07affb603d96577118ba1fb5b9797322aa49a68616acbbcdde39bc8538c54c5d2fa1aebe510";
     hasRunfiles = true;
-    scriptExts = [ "jar" ];
+    scriptExts = [
+      "jar"
+    ];
     license = [ "lppl13c" ];
     version = "1.7";
   };
@@ -48387,16 +49419,22 @@
     sha512.doc = "bfcbb319719b9f8d4473c50afcd435eaa1cfb906f6107dd7e859bf40a30b452dc135ea1ce0a733c297112647fbc76d6bef16b9474a65d85e6d93e5df96acc549";
     sha512.source = "e11a6716016b40525f3ecb4906dc1b54650177f28e7759499928ce78af410ea9a159fa3703cf2098aae227b6bc126cb4be35f8637ef6e15c7df94fb8ce4145bd";
     hasRunfiles = true;
-    scriptExts = [ "jar" ];
+    scriptExts = [
+      "jar"
+    ];
     license = [ "bsd3" ];
     version = "1.0.4";
   };
-  texplate.binfiles = [ "texplate" ];
+  texplate.binfiles = [
+    "texplate"
+  ];
   texpower = {
     revision = 29349;
     shortdesc = "Create dynamic online presentations with LaTeX";
     stripPrefix = 0;
-    deps = [ "tpslifonts" ];
+    deps = [
+      "tpslifonts"
+    ];
     sha512.run = "7e2efadabaf173fd30c592cbcd2338563b8690048ccaffd86efb079a04b7b95c8ab113b99205cbb2912eae3a709a110d7b152270422cf2cbfd2ab85d42f12d69";
     sha512.doc = "e61965b5e31b487daba383a4e6ebc0dba85475f8cade2faae6adb8576ec7ec544b518a6e0e105aa185ff82fd6aba7a9ea4abda2a9446d52f5b3acdb42580e315";
     sha512.source = "3add8eeda886ce6422d3b7ea53a55dc69bb2f5c2e64cdede105a7b4756b008807bef6245ddc2596b45809311874e566263c51e98ec6751b4db9d3c5c5f58efd3";
@@ -48455,7 +49493,9 @@
     license = [ "lppl13c" ];
     version = "2.18";
   };
-  texsis.binfiles = [ "texsis" ];
+  texsis.binfiles = [
+    "texsis"
+  ];
   texsurgery = {
     revision = 59885;
     shortdesc = "A LaTeX companion to the \"texsurgery\" python project";
@@ -48516,7 +49556,9 @@
     revision = 44192;
     shortdesc = "Upright greek letters in text";
     stripPrefix = 0;
-    deps = [ "greek-fontenc" ];
+    deps = [
+      "greek-fontenc"
+    ];
     sha512.run = "2370f666c2cef43a579e32a755675431717ccfb4bad6f30261a6c67e0617816ffc272c25e0d076d91c4047c41926c92ae375507f36f2fab01673bd7e708f5188";
     sha512.doc = "9107ca31b645977d56a3b1e37f7b12f0302b1b2531bd2a21883f7931831e70c4383beae77469aab4663253da3109cdd9c53589cbab95f7f0126389d12509127f";
     sha512.source = "367b63cd318c1e69944444f4cab82af7a7b1dde667d6469ade4c6433960b21a6f8922280d5a46e96fc88ddf4c2d5d3f3a440b55045a67512459208ae181bda96";
@@ -48611,7 +49653,9 @@
     revision = 20770;
     shortdesc = "A font offering the new (Indian) Rupee symbol";
     stripPrefix = 0;
-    fontMaps = [ "Map tfrupee.map" ];
+    fontMaps = [
+      "Map tfrupee.map"
+    ];
     sha512.run = "ee935ea5c6563fd8da4f403a1c3583b289b64e212aed4b9e3703ec345dc47c5521d291e1ae0a10c9aec2ebfed407fbf14e804bf51ae4c4a1e03046fc7cd0ad5c";
     sha512.doc = "19da18d665a8369e58a26d4e979d5fd6c8b3187dfba97a281008627aeb8c5ee824dc2ad3f5c94c3b35c67fe28a646f44aa5f532912de5f5640b0a7d56afec2f8";
     sha512.source = "30133dbf65f1a33f79ad8b2c8ee84ff376b39d12cf0d48c4e72e86b393e0d55f5768c7af5f5f3f6ff1d78fe2c7d4f2b09d2980107dd5aa1d94fb5ea27545ee9d";
@@ -48654,7 +49698,9 @@
     revision = 64518;
     shortdesc = "TheanoDidot fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map TheanoDidot.map" ];
+    fontMaps = [
+      "Map TheanoDidot.map"
+    ];
     sha512.run = "f7c8f9506516c52ef1714e0abbf594f1f6be8492aced3f502a7f49c2a1b12c69b6c57c01300f71f582639f42001c3ece2bad4f9b4ff2b1a1266c3e36e9bd0d91";
     sha512.doc = "0396291a9213e2b80607572a2313801a6a93f4ca2f54889a4c18e8330ffe9f057b856ff957d58d61ddc2828838c6db9e45e26cf611ff88ee80f3b2073668ed64";
     hasRunfiles = true;
@@ -48667,7 +49713,9 @@
     revision = 64520;
     shortdesc = "Theano Modern fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map TheanoModern.map" ];
+    fontMaps = [
+      "Map TheanoModern.map"
+    ];
     sha512.run = "c940c73df2143395fc4f2887e0273850787cda96cf586b0a2067ae39efdcde999338eb7826fac9af5e97bca978bb309b0478e1dcda43cae0a0b3266430d3348b";
     sha512.doc = "934ad9a47609277dc1a10bd20f55f0ca01b6f1167a574ee8609352d94f4aff6305db9ca0e3ca5b83cad1f1eac74e5227fa92acd65df9de3f91abcb653f60d21e";
     hasRunfiles = true;
@@ -48680,7 +49728,9 @@
     revision = 64519;
     shortdesc = "Theano OldStyle fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map TheanoOldStyle.map" ];
+    fontMaps = [
+      "Map TheanoOldStyle.map"
+    ];
     sha512.run = "b2df891fef113bcd50ba63cea16942738a9c8665a1644187401ba471e53c2f35070c8a339c1281e4d679dae39e22497de92d854ab311720903e676dd7e7b7413";
     sha512.doc = "cb896fd78684c8c21ae5579da4b510636336e4959c0943577657aa90d2d843415eaaa2eb42e7d1cc031f6a50044a7702c7d01abb8af7dabd4b6132545c799a07";
     hasRunfiles = true;
@@ -48897,7 +49947,9 @@
     license = [ "lppl13c" ];
     version = "3.17";
   };
-  thumbpdf.binfiles = [ "thumbpdf" ];
+  thumbpdf.binfiles = [
+    "thumbpdf"
+  ];
   thumbs = {
     revision = 33134;
     shortdesc = "Create thumb indexes";
@@ -48963,14 +50015,18 @@
   tie = {
     revision = 66186;
     shortdesc = "Allow multiple web change files";
-    deps = [ "kpathsea" ];
+    deps = [
+      "kpathsea"
+    ];
     sha512.run = "ca58ca773fd1e4e786f12e1acf9b0e39afe1709c73cc7a0da4331576933c1a4aafd9eed3a0181bcb20b6087d409c73f78fc2a77d96bb75d183996593b8aadadc";
     sha512.doc = "66e92b91bcf9b6c44d8d2af141d4980a2b0e0ee3a9dcab778eae118debe4ce4459c933cde6a5cb8cf07af8b5d5d001bc1bcafa2776ae64121ba6308a7b19b3cf";
     hasManpages = true;
     license = [ "free" ];
     version = "2.4";
   };
-  tie.binfiles = [ "tie" ];
+  tie.binfiles = [
+    "tie"
+  ];
   tikz-3dplot = {
     revision = 25087;
     shortdesc = "Coordinate transformation styles for 3d plotting in TikZ";
@@ -49308,7 +50364,9 @@
     revision = 64967;
     shortdesc = "Easy generation of timing diagrams as TikZ pictures";
     stripPrefix = 0;
-    deps = [ "svn-prov" ];
+    deps = [
+      "svn-prov"
+    ];
     sha512.run = "2c3af958ff5509a470b4e1f93bdbb063f5b911a81de12d749fbd7dc6810715a473814d6d8694a81a49d2f45f1f468ef9d441fe07c2269c9c9a9094e350228b36";
     sha512.doc = "33ab52c8b2a60b9bad41a60375aa75432aea20a71c9fa7816d5dbc868e6a70b491dca9572d5c63ea486053294b6b709aa313de464e375e4f0a7a04f76764630a";
     sha512.source = "f1c7c0be255d533898bd65e85f2a36b2f86abb6580b716cb239821a243f67a2706cbcfffb99628b060aadc9b56dfee45f66e54851861df2e0cf12e6cd331aa4e";
@@ -49581,7 +50639,9 @@
     license = [ "gpl3Only" ];
     version = "0.3.0";
   };
-  tikztosvg.binfiles = [ "tikztosvg" ];
+  tikztosvg.binfiles = [
+    "tikztosvg"
+  ];
   tikzviolinplots = {
     revision = 66659;
     shortdesc = "Draws violin plots from data";
@@ -49628,7 +50688,9 @@
     revision = 61719;
     shortdesc = "URW 'Base 35' font pack for LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map utm.map" ];
+    fontMaps = [
+      "Map utm.map"
+    ];
     sha512.run = "06f93b823a6141a51554bbd682c128977676775b1c097f7787916c0c14b76d6e9c4041645003111d5a1b905de4faafde5b3efb61d9be9740b9627ab57f3f8eef";
     hasRunfiles = true;
     license = [ "gpl1Only" ];
@@ -49654,7 +50716,9 @@
     revision = 68950;
     shortdesc = "Tinos fonts with LaTeX support";
     stripPrefix = 0;
-    fontMaps = [ "Map tinos.map" ];
+    fontMaps = [
+      "Map tinos.map"
+    ];
     sha512.run = "0212c5d1d87d1c73c66926a7bf06b2b62a0be51b3a03daec2086a15a4facd80e175ba3f4e23f486e181fb6d3910b77f7d26c28a8f76a9802b5112b010efccc2a";
     sha512.doc = "e7f6fa5253e729b602c1bde603e568d5cdcb953e2a4f1e478c52959d25f58f7678cd107466d7a99b459af70250076c5f16224e4ee549998356c1b1957aaa60cd";
     hasRunfiles = true;
@@ -49667,7 +50731,9 @@
     revision = 29349;
     shortdesc = "Fonts and macros for IPA phonetics characters";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap tipa.map" ];
+    fontMaps = [
+      "MixedMap tipa.map"
+    ];
     sha512.run = "7919b8f5a416cab24c02675ee0a24c60f64e9dfb3bbacb416eb74e29badf6b4dfd8a0528cc8b38dab6395b8c74ec5c808ad84d3a8d4ae5e8212691bed9066129";
     sha512.doc = "213c4eb24943e655c03087dbc5a51eb3cfeff09ece1d31fd11f1734ab3b219db94cc8b5f4735f3d6381b79a5d6ee2cfe727acd17f823b21163e910c09f48e413";
     hasRunfiles = true;
@@ -49930,11 +50996,15 @@
     hasManpages = true;
     sha512.source = "01a9038bab5226f57922215e6dac5acf69ba2bae866f72df1d2d4a3a6252fef78e18d1e7b2a8baf327bd4b89262abe6750b0dd1166f47868e797e50b205322a2";
     hasRunfiles = true;
-    scriptExts = [ "jar" ];
+    scriptExts = [
+      "jar"
+    ];
     license = [ "gpl3Plus" ];
     version = "1.2";
   };
-  tlcockpit.binfiles = [ "tlcockpit" ];
+  tlcockpit.binfiles = [
+    "tlcockpit"
+  ];
   tlmgr-intro-zh-cn = {
     revision = 59100;
     shortdesc = "A short tutorial on using tlmgr in Chinese";
@@ -49958,9 +51028,13 @@
     sha512.doc = "a4e686c57454adbbead87afc078720e294bd865dc5f77905e0f8e183efe83fcd2f0057336aac17ba6bc91eccf785bf1b3b47959359fc3ea49069bceae3d21d6f";
     hasRunfiles = true;
     hasTlpkg = true;
-    scriptExts = [ "tcl" ];
+    scriptExts = [
+      "tcl"
+    ];
   };
-  tlshell.binfiles = [ "tlshell" ];
+  tlshell.binfiles = [
+    "tlshell"
+  ];
   to-be-determined = {
     revision = 64882;
     shortdesc = "Highlight text passages that need further work";
@@ -50182,7 +51256,9 @@
     hasManpages = true;
     license = [ "gpl1Only" ];
   };
-  tpic2pdftex.binfiles = [ "tpic2pdftex" ];
+  tpic2pdftex.binfiles = [
+    "tpic2pdftex"
+  ];
   tpslifonts = {
     revision = 42428;
     shortdesc = "A LaTeX package for configuring presentation fonts";
@@ -50220,7 +51296,9 @@
     revision = 15878;
     shortdesc = "Fonts from the Trajan column in Rome";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap trajan.map" ];
+    fontMaps = [
+      "MixedMap trajan.map"
+    ];
     sha512.run = "66fe869b94f489a3240078fa28da32fab71767d93befefca62fda3a39ae53ab975b13b7ddf84e490658e915c100f16225ea0ed8e7787b099bf4cb067a9fd4e09";
     sha512.doc = "c6b6137d1952660b99bf077eae0ddc0f40b4ea9ff6308e4f461fd0e34c7b4b35b4ad79f3e42e4d0077c9d2947db642d0add032f2413d580748ba786a8abbf029";
     sha512.source = "36b85f870cd9b006f89df594193877a2188635be840636ae9300f511e5ab2a1ea60eac7f927ccb3e9832ab01972bf585460b47cf7ef30f36a6049ab0ce0fd95b";
@@ -50748,7 +51826,9 @@
     revision = 15878;
     shortdesc = "Times-like fonts in support of mathematics";
     stripPrefix = 0;
-    fontMaps = [ "Map txfonts.map" ];
+    fontMaps = [
+      "Map txfonts.map"
+    ];
     sha512.run = "2e6a195791067ec85f4eeaea5970467c97915dfa48f59d17b5a73c90ba221de1b41ed35502c6714335cd190af05ccaefc6cd5855c5f35f49bd8e15a2b4ca0726";
     sha512.doc = "f19a988305799931023026f714b63ee539ebaddcd39e9be1f1bf765cc4cc89428b626ff4d6bfc91ea2f324f08cf09b618b6a0f8db6b01dc9d8685618daa1e2d1";
     hasRunfiles = true;
@@ -50758,7 +51838,9 @@
     revision = 54512;
     shortdesc = "Extensions to txfonts, using GNU Freefont";
     stripPrefix = 0;
-    fontMaps = [ "Map gptimes.map" ];
+    fontMaps = [
+      "Map gptimes.map"
+    ];
     sha512.run = "7b73b199b6d1f109b14154ff659089b2f3c36feaad10c26fdca80f5c4ab464f8a52fdd52a6191a89538661a3a9cac8fc45748cddd09b6e32e79f23db9e8586e9";
     sha512.doc = "982d29750320bc1709ff8329effb3f7bedc6ded888a537aeb7f080c6fc37414956b1b1e149225cea3f3a60982575fbc943433cd4f9cc5e5d61c596973c07b3ed";
     sha512.source = "f9e4d922abced380458f9fbb25c25a55d55e3a4b938c612bde03c0dd60d55573735816acd745c2785356e5956078615ada3c1396148f8d84a6ba9a805f4ae0fa";
@@ -50784,7 +51866,9 @@
     revision = 43327;
     shortdesc = "Upright calligraphic font based on TX calligraphic";
     stripPrefix = 0;
-    fontMaps = [ "Map TXUprCal.map" ];
+    fontMaps = [
+      "Map TXUprCal.map"
+    ];
     sha512.run = "f6840ff0846b52130b65c81513d4bf358dfea413ac6d7f324eab592b96d5277d7036e5d991dbfc1ecf6376fd35baaf0351818eed69a21b6ba88e25f878a41ef1";
     sha512.doc = "f5bd216c689b0368bbbfe29f7fbd57bb7c02344d8696af488fdd7f1078fc5ad9ac7ad5565f1408b7b7d19224093d1418c1e3d8920b8cb0cece770811576c894a";
     hasRunfiles = true;
@@ -50836,14 +51920,18 @@
   typeoutfileinfo = {
     revision = 67526;
     shortdesc = "Display class/package/file information";
-    deps = [ "fileinfo" ];
+    deps = [
+      "fileinfo"
+    ];
     sha512.run = "6f448ade3e08de1512064cdefbc1811f97f0a32141dc6123788bbd1147fe3d5c3f8709f6316c0268529017e611cf455d1488a8565a128c4c45d1de0ee9311ede";
     sha512.doc = "d8c8e568d87a0107789db201875f2116df08a2c3dc9bf235951d5b675a8b1d01ab8b2170301581f18cfed4fec98e8d63fe127999f0273c9c59da163e72debeb8";
     hasRunfiles = true;
     license = [ "lppl13c" ];
     version = "0.32";
   };
-  typeoutfileinfo.binfiles = [ "typeoutfileinfo" ];
+  typeoutfileinfo.binfiles = [
+    "typeoutfileinfo"
+  ];
   typewriter = {
     revision = 46641;
     shortdesc = "Typeset with a randomly variable monospace font";
@@ -51099,7 +52187,9 @@
     revision = 16791;
     shortdesc = "Fonts for the Korean language";
     stripPrefix = 0;
-    fontMaps = [ "Map umj.map" ];
+    fontMaps = [
+      "Map umj.map"
+    ];
     sha512.run = "b5e722e7a72d2efcd89c969c10291779a2885603817374e4318f59b4042b8890df967503016d08a91e30ba8cbbc6f1838843644f06cf44766a7096efdd3bf905";
     sha512.doc = "c37c5041d155f9a175a6761154211a683405d094850cc829a6b942afcb93af987b4049e663d260ae2b066827007d8c6576fdcd5d14d3ff599f031b13c00e162f";
     hasRunfiles = true;
@@ -51186,7 +52276,9 @@
     license = [ "lppl13c" ];
     version = "1.1";
   };
-  ulqda.binfiles = [ "ulqda" ];
+  ulqda.binfiles = [
+    "ulqda"
+  ];
   ulthese = {
     revision = 60217;
     shortdesc = "Thesis class and templates for Universite Laval";
@@ -51629,7 +52721,9 @@
     revision = 64505;
     shortdesc = "Universalis font, with support";
     stripPrefix = 0;
-    fontMaps = [ "Map universalis.map" ];
+    fontMaps = [
+      "Map universalis.map"
+    ];
     sha512.run = "4fee20d63395348a021573af4e4e8897f267d69cc59dd7dd8e9fd6ec06041fbb00608dd3adc103b1886638e9783fdb010fbccdebd3ee7cf91a4b57dfd85b67b9";
     sha512.doc = "79c500724365b3fec6f25dc49dd019ca23d0d3bfc9889f75f10a090250eb1614549c8f3ef215102fe5d5ea8c317bd1f1b60557133be0afe376cfd74d73d67fea";
     hasRunfiles = true;
@@ -51841,7 +52935,9 @@
     license = [ "bsd3" ];
     version = "1.07";
   };
-  upmendex.binfiles = [ "upmendex" ];
+  upmendex.binfiles = [
+    "upmendex"
+  ];
   upmethodology = {
     revision = 64613;
     shortdesc = "Writing specifications such as for UP-based methodologies";
@@ -52012,7 +53108,9 @@
     ];
     version = "0.9.1";
   };
-  urlbst.binfiles = [ "urlbst" ];
+  urlbst.binfiles = [
+    "urlbst"
+  ];
   urwchancal = {
     revision = 21701;
     shortdesc = "Use URW's clone of Zapf Chancery as a maths alphabet";
@@ -52334,8 +53432,12 @@
   velthuis = {
     revision = 66186;
     shortdesc = "Typeset Devanagari";
-    deps = [ "xetex-devanagari" ];
-    fontMaps = [ "MixedMap dvng.map" ];
+    deps = [
+      "xetex-devanagari"
+    ];
+    fontMaps = [
+      "MixedMap dvng.map"
+    ];
     sha512.run = "b7901813517790a92a921b1202c39a058d53a4159634cae79960ec7ce2da08acb757b307b5066ab1251e4b460234fd9dd98c2e404c05fc6384c656472302e3ec";
     sha512.doc = "06a9330410b55052759e18efa8720ef65f0f3dc8a2f15d3c0a0c8f70edaf8de65eeef8ec10a9a376b4b285b1c8f619278f68e9a2bd7ba1622da72b6ff488f8f7";
     hasManpages = true;
@@ -52343,7 +53445,9 @@
     license = [ "gpl1Only" ];
     version = "2.17.1";
   };
-  velthuis.binfiles = [ "devnag" ];
+  velthuis.binfiles = [
+    "devnag"
+  ];
   venn = {
     revision = 15878;
     shortdesc = "Creating Venn diagrams with MetaPost";
@@ -52579,7 +53683,9 @@
     sha512.doc = "921d76535cbe7e940617355c74b82acfc61edb840db8ed9cae1aaf987fe6b83245505048c7c550d59829b204f139ae1cfd44601435e2fff2b0d5230b45a27b77";
     hasManpages = true;
   };
-  vlna.binfiles = [ "vlna" ];
+  vlna.binfiles = [
+    "vlna"
+  ];
   vmargin = {
     revision = 15878;
     shortdesc = "Set various page dimensions";
@@ -52653,7 +53759,9 @@
     license = [ "lppl13c" ];
     version = "0.2";
   };
-  vpe.binfiles = [ "vpe" ];
+  vpe.binfiles = [
+    "vpe"
+  ];
   vruler = {
     revision = 21598;
     shortdesc = "Numbering text";
@@ -52778,8 +53886,12 @@
     revision = 53534;
     shortdesc = "Type 1 versions of wasy fonts";
     stripPrefix = 0;
-    deps = [ "wasy" ];
-    fontMaps = [ "MixedMap wasy.map" ];
+    deps = [
+      "wasy"
+    ];
+    fontMaps = [
+      "MixedMap wasy.map"
+    ];
     sha512.run = "d7131c025bd97bdaf62697feb698da97d175783e4b0502d3e85b60a663f46a0520268a6063956afaddc6308ddd21954992bf8d216049cb324133e3760ac20825";
     sha512.doc = "d9c88d39deabe19393df0b6d83bddd644e347592735cd7511dc70374ea015cd7fdf36ac9f320b44c612c8276eee3d7cd94f9e0b26de050c0771c85ec7dbae53c";
     hasRunfiles = true;
@@ -52800,7 +53912,9 @@
   web = {
     revision = 66186;
     shortdesc = "The original literate programming system";
-    deps = [ "kpathsea" ];
+    deps = [
+      "kpathsea"
+    ];
     sha512.run = "cc8b2b6525ef1ee49162dc157e8d735225f5fc3bee54e56ac01ad47f85f639e4c43b4409e949d68804e650e243da0a8a6d098ca7c37587f14c810112cc82abee";
     sha512.doc = "ed04fce861ae2adda602a2a50d560cc9a5863ab1668dd9512baa96b6c37acd8334e4800bc4ca853c0b1f58bd3a643abc82a96f31de9d4980806ad0572ea2a92a";
     hasManpages = true;
@@ -52826,11 +53940,15 @@
     sha512.doc = "58faed1d21c5f0abe004d5aff0ef6f754012722dace25948e236c940f3e9f3a49d4f661d6692afa0bbd0a654424017e84611c32cdd99a0ef60e510c4b2fa01e9";
     hasManpages = true;
     hasRunfiles = true;
-    scriptExts = [ "py" ];
+    scriptExts = [
+      "py"
+    ];
     license = [ "gpl3Plus" ];
     version = "5.2";
   };
-  webquiz.binfiles = [ "webquiz" ];
+  webquiz.binfiles = [
+    "webquiz"
+  ];
   weiqi = {
     revision = 70179;
     shortdesc = "Use LaTeX3 to typeset Weiqi (Go)";
@@ -52965,7 +54083,9 @@
     license = [ "lppl13c" ];
     version = "1.7";
   };
-  wordcount.binfiles = [ "wordcount" ];
+  wordcount.binfiles = [
+    "wordcount"
+  ];
   wordle = {
     revision = 68170;
     shortdesc = "Create wordle grids";
@@ -53113,7 +54233,9 @@
     revision = 67742;
     shortdesc = "Extension of Bitstream Charter fonts";
     stripPrefix = 0;
-    fontMaps = [ "Map XCharter.map" ];
+    fontMaps = [
+      "Map XCharter.map"
+    ];
     sha512.run = "9e71217c7df0e41de44aa8cfe09b36955910ccca4337d878b0f18f4352f52d14b9dc1cafae01e9b06ed1a094282bb73b25e5328ccbf60e6070b57262e106018f";
     sha512.doc = "04b1aa9efceb7b87551ffb6743605861ebe695118376940fa84e8c3a8b0ff7c073d86850713f8df98381c674fff210bd2f4dddfd82de4f152945207ec4c44354";
     hasRunfiles = true;
@@ -53303,7 +54425,9 @@
     revision = 64059;
     shortdesc = "Support for CJK documents in XeLaTeX";
     stripPrefix = 0;
-    deps = [ "ctex" ];
+    deps = [
+      "ctex"
+    ];
     sha512.run = "3382b181053c76e58ba3f77b195765d83e5515a48b0c73580fc19305bd395de8d19b98be3494da8201b0a22a851a53c82dda14beb54a545b652cd0bd5719af67";
     sha512.doc = "b2dd0caf3317d708cc001b5aba57979f86eaa20d9d38d360650b45fbb683603e2075658a0c0a9c0631c81ea06ecac27694c45df47f053d9e7440901d66280295";
     sha512.source = "07fe51d62358a376d2f3cc2774cf606bd4e9f8b3bd3fb202427f34c3c15b004fed5985f7fe776b3529a83ea4aa3e3e176311e14bb0a02cf055eb501a3f474839";
@@ -53403,7 +54527,9 @@
     ];
     sha512.run = "088c917758f727ba08b8571d302c93f0b14fc15ca6dcb0ef7a89df4ba144c508d8d42265cc6b1915707329b64aa1d1030ed0b5513987fbd4437d0a58a232b5db";
   };
-  xelatex-dev.binfiles = [ "xelatex-dev" ];
+  xelatex-dev.binfiles = [
+    "xelatex-dev"
+  ];
   xellipsis = {
     revision = 47546;
     shortdesc = "Extremely configurable ellipses with formats for various style manuals";
@@ -53623,7 +54749,9 @@
     revision = 68929;
     shortdesc = "Fake a regular font for bold characters";
     stripPrefix = 0;
-    deps = [ "iftex" ];
+    deps = [
+      "iftex"
+    ];
     sha512.run = "96d7c43d4aa975f5e948038f07c765397dfa240b41daee453064e8c7abd90a1a52cb8af02715de51b6e56aaacc4f8e6f72e40c562371541ac94c00e2f5b6aa2b";
     sha512.doc = "11b63158d7e780d390a1d4cb4d046108fa34212431d41dec582404047a8fa272e625898d4f1181fd8728bba789962b63b5462a9ea5556fb896b68ad2eab3c038";
     hasRunfiles = true;
@@ -53704,11 +54832,15 @@
     sha512.run = "bf812f7ea5f981969b1963f470a0006c4afd937ab27f6b40f7897dc2b6ddd1a0ae60f347b8ed13483ec4fd9feccff257a79dd7b8a2720be1d49a40fe2b325fc6";
     sha512.doc = "ec93cf3bb639326dc6905be018481da8438ebc5558e4c161419910e1a4427f6f7bb7bbf35ac779ea6769b6c009f9b6bf657b78c7c42bf7100725e8cc6252c975";
     hasRunfiles = true;
-    scriptExts = [ "lua" ];
+    scriptExts = [
+      "lua"
+    ];
     license = [ "lppl13c" ];
     version = "0.55";
   };
-  xindex.binfiles = [ "xindex" ];
+  xindex.binfiles = [
+    "xindex"
+  ];
   xindy = {
     revision = 65958;
     shortdesc = "A general-purpose index processor";
@@ -53835,7 +54967,9 @@
     revision = 56594;
     shortdesc = "\"Extras\" for LaTeX users of XeTeX";
     stripPrefix = 0;
-    deps = [ "metalogo" ];
+    deps = [
+      "metalogo"
+    ];
     sha512.run = "ff75c7b2f36f0e3cdc466dde35d83ccbb76c9c95f5d191a5498831247d1d418b69a8f0df8b263eae78e4a13694e628eba64c24e7480c7dbf56948cd5b1504a76";
     sha512.doc = "6fc84121dd3486f5f7744d757520e2b4d7baf83686e2630990be7e72ccb121e5b417779e4682e6e8a566b016a8995f80d7d4c6dfb3d6d2c9f70ed506bee99d64";
     sha512.source = "c177b99366479f6ed5ef935be07fbfc3425b48f2c3d274e175bbde9c63cbcc93ee4bca4c3c2886fdc2894b627332ff7edffa5b1083ad86dcced56bfb0d9fe03f";
@@ -53851,7 +54985,9 @@
     hasManpages = true;
     license = [ "gpl3Plus" ];
   };
-  xml2pmx.binfiles = [ "xml2pmx" ];
+  xml2pmx.binfiles = [
+    "xml2pmx"
+  ];
   xmltex = {
     revision = 69742;
     shortdesc = "Support for parsing XML documents";
@@ -54159,7 +55295,9 @@
     revision = 30466;
     shortdesc = "Generate Unicode characters from accented glyphs";
     stripPrefix = 0;
-    deps = [ "tipa" ];
+    deps = [
+      "tipa"
+    ];
     sha512.run = "f49628013bc54e82bc38a2c749ddde9426c65716f04c5c8d8264398b9595e571d380e07c045db9e7ed5d6df7d0b7b1f8e81eaa28d6b67a6756d2c5023b731176";
     sha512.doc = "fbd368180c97649944aa23fae4f50f8a8d1aaa776f643ba520f121b9aae196dca94c11906f9d5b2f961b6d494256329670af1f4563502b44a8fc9633e29373e0";
     hasRunfiles = true;
@@ -54211,7 +55349,9 @@
     revision = 61719;
     shortdesc = "Flexible diagramming macros";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap xypic.map" ];
+    fontMaps = [
+      "MixedMap xypic.map"
+    ];
     sha512.run = "431451f2028cc87d2d22b4d6ce95ac8f216755da312301195ba7af46146382cf76c27f9964a94817e90afdcdbc7a01dbd887d45808296984fa0b3a3a1770b46d";
     sha512.doc = "9664336d5bd14145603a8c3e861f8fdf062cd4587b8f739a29d93ac78a946c06a0985da4f011030df575276bd43555e55ba467eb4c640d60b2db0a07be706908";
     hasRunfiles = true;
@@ -54430,7 +55570,9 @@
     revision = 36013;
     shortdesc = "Old German-style fonts, in Adobe type 1 format";
     stripPrefix = 0;
-    fontMaps = [ "Map yfrak.map" ];
+    fontMaps = [
+      "Map yfrak.map"
+    ];
     sha512.run = "ec4cfa0d4f08f506b3bf7a3acc8e303ba51c7761f32498f040e062264e595bebe64a4f5adc7d6ab5aa2180c55b817d0124d5b07b276cb39c775539113a08f490";
     sha512.doc = "dd37c5163de0bdcce937a1866a48d9f924faff81da11e566e9525a6d5a81ae82419ee7eaebdff1cd8512957a878f849f43e9cd71dd39625e6dc0e2ba18f4ac9b";
     hasRunfiles = true;
@@ -54441,7 +55583,9 @@
     revision = 54377;
     shortdesc = "Extended maths fonts for LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "MixedMap yhmath.map" ];
+    fontMaps = [
+      "MixedMap yhmath.map"
+    ];
     sha512.run = "88476f5355d041f1920c4f0f954853828bdfaf27b9d0441982a38e3dfe79b40377a83614794024ee8c8463eaf5d1c350bff033f1c53e031451ab7cd095e14948";
     sha512.doc = "56fb12fcc4099f14c5746727b3c3051d84097cd8a715023545c3a2fafcc5a5abe55980a12e4384f674ef6cad2c7d6dab2beb8374e4cb3af81f711c2e8320d97b";
     sha512.source = "57a97c1310cfefcc453d031dd3c4701bac2a36c04f435f7a823e1b83671afccadc33d213e9578f4bbf806b6c73aaf33d3816dcafa86fb4447d53659e11f83072";
@@ -54489,7 +55633,9 @@
     hasRunfiles = true;
     license = [ "lppl13c" ];
   };
-  yplan.binfiles = [ "yplan" ];
+  yplan.binfiles = [
+    "yplan"
+  ];
   yquant = {
     revision = 68997;
     shortdesc = "Typesetting quantum circuits in a human-readable language";
@@ -54504,7 +55650,9 @@
     revision = 69663;
     shortdesc = "Ysabeau fonts with LaTeX support for traditional TeX engines";
     stripPrefix = 0;
-    fontMaps = [ "Map ysabeau.map" ];
+    fontMaps = [
+      "Map ysabeau.map"
+    ];
     sha512.run = "c5545488723a4408a771c083d191942fc7b10e85e6c2df65e6ae0839dcaa7202459ba8774497562b7e55f432fdcca904de132ac7d89fbf3d935aa238ff63fede";
     sha512.doc = "a37a971140b1ac12724f2710e6f017690ef151aed9a88ed00bd00cd80ca6ca8524b0347b34bf83cf8e2e34fb000e4ac53c1a8a88684a0e3792e4cded362513ae";
     hasRunfiles = true;
@@ -54530,7 +55678,9 @@
     revision = 61719;
     shortdesc = "URW 'Base 35' font pack for LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map uzc.map" ];
+    fontMaps = [
+      "Map uzc.map"
+    ];
     sha512.run = "a5a8a672e1753cd39b44dfb43b9b83673f7bd20dfb4e4640630ba0908c228dd75dda7933432d6d6f7e2c4920d554aa8cd41a523ebe665832edbc4aa7b8034332";
     hasRunfiles = true;
     license = [ "gpl1Only" ];
@@ -54539,7 +55689,9 @@
     revision = 61719;
     shortdesc = "URW 'Base 35' font pack for LaTeX";
     stripPrefix = 0;
-    fontMaps = [ "Map uzd.map" ];
+    fontMaps = [
+      "Map uzd.map"
+    ];
     sha512.run = "3e0503c2d4e30c8d727caa1d9438d4c6b12c3a15729eae65d5c4a8dd9ab0d0c8eee2f63138e9d267f4ae98ef7607388888f7acd78e189a5c322bda22827166fe";
     hasRunfiles = true;
     license = [ "gpl1Only" ];

@@ -26,7 +26,9 @@ buildDunePackage rec {
     substituteInPlace stubs/dune --replace-warn 'ctypes))' 'ctypes ctypes.stubs))'
   '';
 
-  buildInputs = [ dune-configurator ];
+  buildInputs = [
+    dune-configurator
+  ];
 
   propagatedBuildInputs = [
     ctypes
@@ -36,7 +38,9 @@ buildDunePackage rec {
 
   doCheck = true;
 
-  checkInputs = [ ppx_expect ];
+  checkInputs = [
+    ppx_expect
+  ];
 
   meta = {
     homepage = "https://github.com/314eter/ocaml-xxhash";

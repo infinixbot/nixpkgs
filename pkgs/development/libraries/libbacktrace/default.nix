@@ -33,7 +33,9 @@ stdenv.mkDerivation {
     ./0004-libbacktrace-Support-NIX_DEBUG_INFO_DIRS-environment.patch
   ];
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   configureFlags = [
     (lib.enableFeature enableStatic "static")

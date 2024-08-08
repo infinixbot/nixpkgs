@@ -14,7 +14,9 @@ import ./make-test-python.nix (
       server =
         { config, ... }:
         {
-          networking.firewall.allowedTCPPorts = [ port ];
+          networking.firewall.allowedTCPPorts = [
+            port
+          ];
 
           services.pinnwand = {
             enable = true;
@@ -34,7 +36,9 @@ import ./make-test-python.nix (
                   appdirs
                   toml
                 ];
-                flakeIgnore = [ "E501" ];
+                flakeIgnore = [
+                  "E501"
+                ];
               }
               ''
                 import appdirs

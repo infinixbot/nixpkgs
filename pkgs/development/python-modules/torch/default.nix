@@ -467,7 +467,9 @@ buildPythonPackage rec {
         libcusolver
         libcusparse
       ]
-      ++ lists.optionals (cudaPackages ? cudnn) [ cudnn ]
+      ++ lists.optionals (cudaPackages ? cudnn) [
+        cudnn
+      ]
       ++ lists.optionals useSystemNccl [
         # Some platforms do not support NCCL (i.e., Jetson)
         nccl # Provides nccl.h AND a static copy of NCCL!

@@ -36,7 +36,9 @@ python3Packages.buildPythonApplication rec {
   ];
 
   buildInputs =
-    [ libadwaita ]
+    [
+      libadwaita
+    ]
     ++ (with gst_all_1; [
       gstreamer
       gst-plugins-good

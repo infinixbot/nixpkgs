@@ -26,9 +26,17 @@ rustPlatform.buildRustPackage {
 
   cargoHash = "sha256-qz77c2IZGaWsinfkVTWqfEeBEtHng6W738jBwJAkrl4=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs =
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+    ];
 
   postInstall = ''
     moveToOutput bin/nyarr $nyarr

@@ -29,7 +29,9 @@ stdenv.mkDerivation (finalAttrs: {
     "man"
   ];
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     meson

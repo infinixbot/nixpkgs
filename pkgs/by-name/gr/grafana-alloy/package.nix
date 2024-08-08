@@ -57,7 +57,9 @@ buildGoModule rec {
     "promtail_journal_enabled"
   ];
 
-  subPackages = [ "." ];
+  subPackages = [
+    "."
+  ];
 
   yarnOfflineCache = fetchYarnDeps {
     yarnLock = "${src}/internal/web/ui/yarn.lock";

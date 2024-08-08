@@ -45,7 +45,9 @@ stdenv.mkDerivation rec {
     gtest
   ];
 
-  cmakeFlags = [ "-DSYSTEMD_USER_UNIT_DIR=${placeholder "out"}/lib/systemd/user" ];
+  cmakeFlags = [
+    "-DSYSTEMD_USER_UNIT_DIR=${placeholder "out"}/lib/systemd/user"
+  ];
 
   meta = with lib; {
     description = "DDE optional clipboard manager componment";

@@ -20,9 +20,13 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-zPgaZPDyNVPmBXz6QwOYnmh/sbJ8aPST8znLMfIWejk=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.Security
+  ];
 
-  cargoBuildFlags = [ "--example formatjson5" ];
+  cargoBuildFlags = [
+    "--example formatjson5"
+  ];
 
   postInstall =
     let

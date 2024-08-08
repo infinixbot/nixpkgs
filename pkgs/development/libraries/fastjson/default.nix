@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-WnM6lQjHz0n5BwWWZoDBavURokcaROXJW46RZen9vj4=";
   };
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   meta = with lib; {
     description = "Fast json library for C";

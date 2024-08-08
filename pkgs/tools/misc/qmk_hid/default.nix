@@ -19,9 +19,13 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-GrerrNDoSFtOEAf0vB9MlkBl+yLnzd/szrpFsAmkB6s=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ systemd ];
+  buildInputs = [
+    systemd
+  ];
 
   checkFlags = [
     # test doesn't compile

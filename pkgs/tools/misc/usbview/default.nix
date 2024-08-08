@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     imagemagick
   ];
 
-  buildInputs = [ gtk3 ];
+  buildInputs = [
+    gtk3
+  ];
 
   meta = with lib; {
     description = "USB viewer for Linux";

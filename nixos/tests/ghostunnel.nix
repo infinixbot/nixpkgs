@@ -42,7 +42,9 @@ import ./make-test-python.nix (
       client =
         { pkgs, ... }:
         {
-          environment.systemPackages = [ pkgs.curl ];
+          environment.systemPackages = [
+            pkgs.curl
+          ];
         };
     };
 
@@ -107,6 +109,8 @@ import ./make-test-python.nix (
       client.fail("bash -c 'diff <(curl -v --no-progress-meter --cacert /root/ca.pem https://service:1443/hi.txt) <(echo hi)'")
     '';
 
-    meta.maintainers = with pkgs.lib.maintainers; [ roberth ];
+    meta.maintainers = with pkgs.lib.maintainers; [
+      roberth
+    ];
   }
 )

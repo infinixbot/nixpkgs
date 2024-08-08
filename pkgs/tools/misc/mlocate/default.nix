@@ -13,7 +13,9 @@ stdenv.mkDerivation rec {
     sha256 = "0gi6y52gkakhhlnzy0p6izc36nqhyfx5830qirhvk3qrzrwxyqrh";
   };
 
-  makeFlags = [ "dbfile=/var/cache/locatedb" ];
+  makeFlags = [
+    "dbfile=/var/cache/locatedb"
+  ];
 
   meta = with lib; {
     description = "Merging locate is an utility to index and quickly search for files";

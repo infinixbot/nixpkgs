@@ -55,7 +55,9 @@ let
       dontBuild = true;
       doCheck = false;
 
-      nativeBuildInputs = [ makeWrapper ];
+      nativeBuildInputs = [
+        makeWrapper
+      ];
 
       propagatedBuildInputs = plugins ++ buildbot.propagatedBuildInputs;
 
@@ -84,9 +86,13 @@ buildPythonApplication rec {
     hash = "sha256-0ctOInVRJqjmcqy67PTriRmqo3fz1qMEVV+K5lXvZ6k=";
   };
 
-  build-system = [ ];
+  build-system =
+    [
+    ];
 
-  pythonRelaxDeps = [ "twisted" ];
+  pythonRelaxDeps = [
+    "twisted"
+  ];
 
   propagatedBuildInputs =
     [

@@ -45,7 +45,9 @@ in
     // {
       # depends on 'chicken' egg, which doesn't exist,
       # so we specify all the deps here
-      propagatedBuildInputs = [ chickenEggs.foreigners ];
+      propagatedBuildInputs = [
+        chickenEggs.foreigners
+      ];
     };
   breadline = addToBuildInputs pkgs.readline;
   blas = addToBuildInputsWithPkgConfig pkgs.blas;
@@ -74,13 +76,17 @@ in
     old:
     (addToBuildInputsWithPkgConfig pkgs.expat old)
     // lib.optionalAttrs stdenv.cc.isClang {
-      env.NIX_CFLAGS_COMPILE = toString [ "-Wno-error=incompatible-function-pointer-types" ];
+      env.NIX_CFLAGS_COMPILE = toString [
+        "-Wno-error=incompatible-function-pointer-types"
+      ];
     };
   ezxdisp =
     old:
     (addToBuildInputsWithPkgConfig pkgs.xorg.libX11 old)
     // lib.optionalAttrs stdenv.cc.isClang {
-      env.NIX_CFLAGS_COMPILE = toString [ "-Wno-error=implicit-function-declaration" ];
+      env.NIX_CFLAGS_COMPILE = toString [
+        "-Wno-error=implicit-function-declaration"
+      ];
     };
   freetype = addToBuildInputsWithPkgConfig pkgs.freetype;
   fuse = addToBuildInputsWithPkgConfig pkgs.fuse;

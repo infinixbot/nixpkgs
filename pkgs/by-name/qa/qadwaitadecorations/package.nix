@@ -30,7 +30,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-aqjm93tmBfDkmce1WG5xx8MCDCvo6AOrRHArj/+Ko9E=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = with qt; [
     qtbase
@@ -42,7 +44,9 @@ stdenv.mkDerivation (finalAttrs: {
   dontWrapQtApps = true;
 
   cmakeFlags =
-    [ "-DQT_PLUGINS_DIR=${placeholder "out"}/${qt.qtbase.qtPluginPrefix}" ]
+    [
+      "-DQT_PLUGINS_DIR=${placeholder "out"}/${qt.qtbase.qtPluginPrefix}"
+    ]
     ++ lib.optional useQt6 "-DUSE_QT6=true" ++ lib.optional qt5ShadowsSupport "-DHAS_QT6_SUPPORT=true";
 
   passthru.updateScript = nix-update-script { };

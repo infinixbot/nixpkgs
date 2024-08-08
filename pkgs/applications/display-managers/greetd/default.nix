@@ -25,7 +25,9 @@ rustPlatform.buildRustPackage rec {
     installShellFiles
   ];
 
-  buildInputs = [ pam ];
+  buildInputs = [
+    pam
+  ];
 
   postInstall = ''
     for f in man/*; do

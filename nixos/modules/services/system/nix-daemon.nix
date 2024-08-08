@@ -205,7 +205,9 @@ in
         packages = [ nixPackage ];
       })
       (mkIf (!isNixAtLeast "2.8") {
-        rules = [ "d /nix/var/nix/daemon-socket 0755 root root - -" ];
+        rules = [
+          "d /nix/var/nix/daemon-socket 0755 root root - -"
+        ];
       })
     ];
 
@@ -286,7 +288,9 @@ in
     services.displayManager.hiddenUsers = attrNames nixbldUsers;
 
     # Legacy configuration conversion.
-    nix.settings = mkMerge [ (mkIf (isNixAtLeast "2.3pre") { sandbox-fallback = false; }) ];
+    nix.settings = mkMerge [
+      (mkIf (isNixAtLeast "2.3pre") { sandbox-fallback = false; })
+    ];
 
   };
 

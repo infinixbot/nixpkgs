@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-i+ssZzHC8MPfyOaRqvjq0z7w772BJqIA6BwntW1fRek=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = [
     aws-c-cal
@@ -34,7 +36,9 @@ stdenv.mkDerivation rec {
     s2n-tls
   ];
 
-  cmakeFlags = [ "-DBUILD_SHARED_LIBS=ON" ];
+  cmakeFlags = [
+    "-DBUILD_SHARED_LIBS=ON"
+  ];
 
   passthru.tests = {
     inherit nix;

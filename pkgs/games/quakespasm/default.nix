@@ -62,7 +62,9 @@ stdenv.mkDerivation rec {
       IOKit
       OpenGL
     ]
-    ++ lib.optionals (stdenv.isDarwin && useSDL2) [ CoreFoundation ];
+    ++ lib.optionals (stdenv.isDarwin && useSDL2) [
+      CoreFoundation
+    ];
 
   buildFlags =
     [

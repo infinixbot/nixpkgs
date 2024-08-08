@@ -6,7 +6,9 @@
 }:
 
 {
-  imports = [ ../profiles/qemu-guest.nix ];
+  imports = [
+    ../profiles/qemu-guest.nix
+  ];
 
   config = {
     fileSystems."/" = {

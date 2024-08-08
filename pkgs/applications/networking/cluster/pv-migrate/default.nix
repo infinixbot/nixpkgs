@@ -28,7 +28,9 @@ buildGoModule rec {
     "-X main.date=1970-01-01-00:00:01"
   ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   postInstall = ''
     installShellCompletion --cmd pv-migrate \

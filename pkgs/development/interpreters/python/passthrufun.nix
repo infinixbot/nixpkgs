@@ -31,7 +31,9 @@ let
       ensurePythonModules =
         items:
         let
-          exceptions = [ stdenv ];
+          exceptions = [
+            stdenv
+          ];
           providesSetupHook = lib.attrByPath [
             "provides"
             "setupHook"
@@ -85,9 +87,13 @@ let
                 hooks
                 pythonExtension
               ]
-              ++ (optionalExtensions (!self.isPy3k) [ python2Extension ])
+              ++ (optionalExtensions (!self.isPy3k) [
+                python2Extension
+              ])
               ++ pythonPackagesExtensions
-              ++ [ overrides ]
+              ++ [
+                overrides
+              ]
             );
             aliases =
               self: super:

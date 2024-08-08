@@ -43,26 +43,30 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [
-    indilib
-    libnova
-    curl
-    cfitsio
-    libusb1
-    zlib
-    boost
-    gsl
-    gpsd
-    libjpeg
-    libgphoto2
-    libraw
-    libftdi1
-    libdc1394
-    ffmpeg
-    fftw
-    limesuite
-    zeromq
-  ] ++ lib.optionals withFirmware [ firmware ];
+  buildInputs =
+    [
+      indilib
+      libnova
+      curl
+      cfitsio
+      libusb1
+      zlib
+      boost
+      gsl
+      gpsd
+      libjpeg
+      libgphoto2
+      libraw
+      libftdi1
+      libdc1394
+      ffmpeg
+      fftw
+      limesuite
+      zeromq
+    ]
+    ++ lib.optionals withFirmware [
+      firmware
+    ];
 
   postPatch = ''
     for f in $(find . -name "CMakeLists.txt"); do

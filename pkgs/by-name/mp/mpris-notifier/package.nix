@@ -19,7 +19,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-8WzG712/soPgooyR35L8aFIRfPC2MvV3vCcPbkTgoF0=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.Security
+  ];
 
   meta = with lib; {
     description = "Dependency-light, highly-customizable, XDG desktop notification generator for MPRIS status changes";

@@ -532,7 +532,9 @@ stdenv.mkDerivation (
         (enableFeature buildFfplay "ffplay")
         (enableFeature buildFfprobe "ffprobe")
       ]
-      ++ optionals withBin [ "--bindir=${placeholder "bin"}/bin" ]
+      ++ optionals withBin [
+        "--bindir=${placeholder "bin"}/bin"
+      ]
       ++ [
         # Library flags
         (enableFeature buildAvcodec "avcodec")
@@ -560,19 +562,25 @@ stdenv.mkDerivation (
         (enableFeature withHtmlDoc "htmlpages")
         (enableFeature withManPages "manpages")
       ]
-      ++ optionals withManPages [ "--mandir=${placeholder "man"}/share/man" ]
+      ++ optionals withManPages [
+        "--mandir=${placeholder "man"}/share/man"
+      ]
       ++ [
         (enableFeature withPodDoc "podpages")
         (enableFeature withTxtDoc "txtpages")
       ]
-      ++ optionals withDoc [ "--docdir=${placeholder "doc"}/share/doc/ffmpeg" ]
+      ++ optionals withDoc [
+        "--docdir=${placeholder "doc"}/share/doc/ffmpeg"
+      ]
       ++ [
         # External libraries
         (enableFeature withAlsa "alsa")
         (enableFeature withAom "libaom")
         (enableFeature withAppKit "appkit")
       ]
-      ++ optionals (versionAtLeast version "6.1") [ (enableFeature withAribcaption "libaribcaption") ]
+      ++ optionals (versionAtLeast version "6.1") [
+        (enableFeature withAribcaption "libaribcaption")
+      ]
       ++ [
         (enableFeature withAss "libass")
         (enableFeature withAudioToolbox "audiotoolbox")
@@ -610,16 +618,28 @@ stdenv.mkDerivation (
         (enableFeature withGnutls "gnutls")
         (enableFeature withGsm "libgsm")
       ]
-      ++ optionals (versionAtLeast version "6.1") [ (enableFeature withHarfbuzz "libharfbuzz") ]
+      ++ optionals (versionAtLeast version "6.1") [
+        (enableFeature withHarfbuzz "libharfbuzz")
+      ]
       ++ [
         (enableFeature withIconv "iconv")
         (enableFeature withJack "libjack")
       ]
-      ++ optionals (versionAtLeast finalAttrs.version "5.0") [ (enableFeature withJxl "libjxl") ]
-      ++ [ (enableFeature withLadspa "ladspa") ]
-      ++ optionals (versionAtLeast version "5.1") [ (enableFeature withLcms2 "lcms2") ]
-      ++ [ (enableFeature withLzma "lzma") ]
-      ++ optionals (versionAtLeast version "5.0") [ (enableFeature withMetal "metal") ]
+      ++ optionals (versionAtLeast finalAttrs.version "5.0") [
+        (enableFeature withJxl "libjxl")
+      ]
+      ++ [
+        (enableFeature withLadspa "ladspa")
+      ]
+      ++ optionals (versionAtLeast version "5.1") [
+        (enableFeature withLcms2 "lcms2")
+      ]
+      ++ [
+        (enableFeature withLzma "lzma")
+      ]
+      ++ optionals (versionAtLeast version "5.0") [
+        (enableFeature withMetal "metal")
+      ]
       ++ [
         (enableFeature withMfx "libmfx")
         (enableFeature withModplug "libmodplug")
@@ -637,8 +657,12 @@ stdenv.mkDerivation (
         (enableFeature withOpenmpt "libopenmpt")
         (enableFeature withOpus "libopus")
       ]
-      ++ optionals (versionAtLeast version "5.0") [ (enableFeature withPlacebo "libplacebo") ]
-      ++ [ (enableFeature withPulse "libpulse") ]
+      ++ optionals (versionAtLeast version "5.0") [
+        (enableFeature withPlacebo "libplacebo")
+      ]
+      ++ [
+        (enableFeature withPulse "libpulse")
+      ]
       ++ optionals (versionAtLeast version "7") [
         (enableFeature withQrencode "libqrencode")
         (enableFeature withQuirc "libquirc")
@@ -649,7 +673,9 @@ stdenv.mkDerivation (
         (enableFeature withSamba "libsmbclient")
         (enableFeature withSdl2 "sdl2")
       ]
-      ++ optionals (versionAtLeast version "5.0") [ (enableFeature withShaderc "libshaderc") ]
+      ++ optionals (versionAtLeast version "5.0") [
+        (enableFeature withShaderc "libshaderc")
+      ]
       ++ [
         (enableFeature withSoxr "libsoxr")
         (enableFeature withSpeex "libspeex")
@@ -665,7 +691,9 @@ stdenv.mkDerivation (
         (enableFeature withVaapi "vaapi")
         (enableFeature withVdpau "vdpau")
       ]
-      ++ optionals (versionAtLeast version "6.0") [ (enableFeature withVpl "libvpl") ]
+      ++ optionals (versionAtLeast version "6.0") [
+        (enableFeature withVpl "libvpl")
+      ]
       ++ [
         (enableFeature withVideoToolbox "videotoolbox")
         (enableFeature withVidStab "libvidstab") # Actual min. version 2.0

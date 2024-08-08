@@ -14,7 +14,9 @@ buildNimPackage (finalAttrs: {
     rev = "v${finalAttrs.version}";
     hash = "sha256-yJu+8P446gzRFOi9/+TcN8AKL0jKHUxhOvi/HXNWL1A=";
   };
-  nimFlags = [ "--maxLoopIterationsVM:1000000000" ];
+  nimFlags = [
+    "--maxLoopIterationsVM:1000000000"
+  ];
   env.EMOCLI_DATAFILE = "${unicode-emoji}/share/unicode/emoji/emoji-test.txt";
   meta = {
     homepage = "https://gitlab.com/AsbjornOlling/emocli";

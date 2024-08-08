@@ -27,7 +27,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-yYLoHn3/2xlefBeErnydNfkvtJva8/9f9JHhfschBpQ=";
   };
 
-  patches = [ ./fix-paths.patch ];
+  patches = [
+    ./fix-paths.patch
+  ];
 
   # TODO: switch to substituteAll with placeholder
   # https://github.com/NixOS/nix/issues/1846

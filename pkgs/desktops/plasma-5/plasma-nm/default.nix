@@ -70,7 +70,9 @@ mkDerivation {
     openconnect
   ];
 
-  cmakeFlags = [ "-DBUILD_MOBILE=ON" ];
+  cmakeFlags = [
+    "-DBUILD_MOBILE=ON"
+  ];
 
   patches = [
     (substituteAll {

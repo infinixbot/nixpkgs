@@ -403,13 +403,17 @@ stdenv.mkDerivation (
             "--with-iconv-includes=${libiconv}/include"
             "--with-iconv-libraries=${libiconv}/lib"
           ]
-      ++ lib.optionals (targetPlatform != hostPlatform) [ "--enable-bootstrap-with-devel-snapshot" ]
+      ++ lib.optionals (targetPlatform != hostPlatform) [
+        "--enable-bootstrap-with-devel-snapshot"
+      ]
       ++ lib.optionals useLdGold [
         "CFLAGS=-fuse-ld=gold"
         "CONF_GCC_LINKER_OPTS_STAGE1=-fuse-ld=gold"
         "CONF_GCC_LINKER_OPTS_STAGE2=-fuse-ld=gold"
       ]
-      ++ lib.optionals (disableLargeAddressSpace) [ "--disable-large-address-space" ];
+      ++ lib.optionals (disableLargeAddressSpace) [
+        "--disable-large-address-space"
+      ];
 
     # Make sure we never relax`$PATH` and hooks support for compatibility.
     strictDeps = true;
@@ -430,8 +434,12 @@ stdenv.mkDerivation (
         bootPkgs.happy
         bootPkgs.hscolour
       ]
-      ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [ autoSignDarwinBinariesHook ]
-      ++ lib.optionals enableDocs [ sphinx ];
+      ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [
+        autoSignDarwinBinariesHook
+      ]
+      ++ lib.optionals enableDocs [
+        sphinx
+      ];
 
     # For building runtime libs
     depsBuildTarget = toolsForTarget;
@@ -487,7 +495,12 @@ stdenv.mkDerivation (
     meta = {
       homepage = "http://haskell.org/ghc";
       description = "Glasgow Haskell Compiler";
-      maintainers = with lib.maintainers; [ guibou ] ++ lib.teams.haskell.members;
+      maintainers =
+        with lib.maintainers;
+        [
+          guibou
+        ]
+        ++ lib.teams.haskell.members;
       timeout = 24 * 3600;
       inherit (ghc.meta) license platforms;
     };

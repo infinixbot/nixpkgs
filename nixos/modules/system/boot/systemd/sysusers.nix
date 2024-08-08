@@ -137,7 +137,9 @@ in
         }
       ) (lib.filterAttrs (_groupname: opts: opts.gid == null) userCfg.groups);
 
-      additionalUpstreamSystemUnits = [ "systemd-sysusers.service" ];
+      additionalUpstreamSystemUnits = [
+        "systemd-sysusers.service"
+      ];
 
       services.systemd-sysusers = {
         # Enable switch-to-configuration to restart the service.

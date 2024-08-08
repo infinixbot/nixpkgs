@@ -24,7 +24,9 @@ stdenv.mkDerivation (oldAttrs: {
     fetchSubmodules = true;
   };
 
-  patches = [ ./pkgs0001-Make-DBUS_SYSTEM_POLICY_INSTALL_DIR-externally-overr.patch ];
+  patches = [
+    ./pkgs0001-Make-DBUS_SYSTEM_POLICY_INSTALL_DIR-externally-overr.patch
+  ];
 
   nativeBuildInputs = [
     cmake

@@ -18,7 +18,9 @@ stdenv.mkDerivation {
     hash = "sha512-KMHgj73eXHT++IE8DbCsFeJ87ngc9R3XxMUJy4Z3s4/MtMeB9zblADHkyJqz9oyeugeJTrDtuVETPBRo7M4Y8A==";
   };
 
-  env.NIX_CFLAGS_COMPILE = toString [ "-march=armv8-a+crc" ];
+  env.NIX_CFLAGS_COMPILE = toString [
+    "-march=armv8-a+crc"
+  ];
 
   preConfigure = ''
     cd armstubs

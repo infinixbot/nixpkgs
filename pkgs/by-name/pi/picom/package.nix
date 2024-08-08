@@ -83,7 +83,9 @@ stdenv.mkDerivation (finalAttrs: {
   mesonBuildType = if withDebug then "debugoptimized" else "release";
   dontStrip = withDebug;
 
-  mesonFlags = [ "-Dwith_docs=true" ];
+  mesonFlags = [
+    "-Dwith_docs=true"
+  ];
 
   installFlags = [ "PREFIX=$(out)" ];
 

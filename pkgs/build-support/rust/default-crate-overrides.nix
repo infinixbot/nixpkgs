@@ -109,7 +109,9 @@ in
 
   evdev-sys = attrs: {
     nativeBuildInputs =
-      [ pkg-config ]
+      [
+        pkg-config
+      ]
       ++ lib.optionals (stdenv.buildPlatform.config != stdenv.hostPlatform.config) [
         python3
         autoconf

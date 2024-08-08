@@ -81,7 +81,9 @@ stdenv.mkDerivation rec {
   #  Fatal: (1018) Compilation aborted
   enableParallelBuilding = false;
 
-  nativeBuildInputs = [ makeWrapper ] ++ lib.optional withQt wrapQtAppsHook;
+  nativeBuildInputs = [
+    makeWrapper
+  ] ++ lib.optional withQt wrapQtAppsHook;
 
   makeFlags = [
     "FPC=fpc"

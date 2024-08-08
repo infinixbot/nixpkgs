@@ -18,10 +18,14 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-pC2uoog+nev/Xa6UbXX4vX00VQQLHtZzbVkxrxO/Pg8=";
   };
 
-  nativeBuildInputs = [
-    gettext
-    installShellFiles
-  ] ++ (with python3Packages; [ setuptools ]);
+  nativeBuildInputs =
+    [
+      gettext
+      installShellFiles
+    ]
+    ++ (with python3Packages; [
+      setuptools
+    ]);
 
   propagatedBuildInputs = with python3Packages; [
     yt-dlp
@@ -29,7 +33,9 @@ python3Packages.buildPythonApplication rec {
     wcwidth
   ];
 
-  nativeCheckInputs = with python3Packages; [ pytestCheckHook ];
+  nativeCheckInputs = with python3Packages; [
+    pytestCheckHook
+  ];
 
   # Disable tests that touch network or shell out to commands
   disabledTests = [

@@ -25,7 +25,9 @@ python3Packages.buildPythonApplication rec {
     wrapQtAppsHook
   ] ++ lib.optionals stdenv.isDarwin [ desktopToDarwinBundle ];
 
-  makeWrapperArgs = [ "\${qtWrapperArgs[@]}" ];
+  makeWrapperArgs = [
+    "\${qtWrapperArgs[@]}"
+  ];
 
   propagatedBuildInputs = with python3Packages; [
     pyqt5

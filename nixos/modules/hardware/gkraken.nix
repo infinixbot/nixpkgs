@@ -16,6 +16,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.udev.packages = with pkgs; [ gkraken ];
+    services.udev.packages = with pkgs; [
+      gkraken
+    ];
   };
 }

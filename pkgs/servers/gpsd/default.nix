@@ -62,7 +62,9 @@ stdenv.mkDerivation rec {
       ncurses
       python3Packages.python
     ]
-    ++ lib.optionals kppsSupport [ pps-tools ]
+    ++ lib.optionals kppsSupport [
+      pps-tools
+    ]
     ++ lib.optionals guiSupport [
       atk
       dbus-glib

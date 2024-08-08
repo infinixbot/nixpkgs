@@ -69,8 +69,12 @@ stdenv.mkDerivation (finalAttrs: {
   version = "6.0.2";
 
   outputs =
-    [ "out" ]
-    ++ lib.optionals buildDocs [ "doc" ]
+    [
+      "out"
+    ]
+    ++ lib.optionals buildDocs [
+      "doc"
+    ]
     ++ lib.optionals buildMan [
       "man"
       "info" # Avoid `attribute 'info' missing` when using with wrapCC
@@ -98,7 +102,9 @@ stdenv.mkDerivation (finalAttrs: {
       sphinx
       python3Packages.recommonmark
     ]
-    ++ lib.optionals (buildTests && !finalAttrs.passthru.isLLVM) [ lit ]
+    ++ lib.optionals (buildTests && !finalAttrs.passthru.isLLVM) [
+      lit
+    ]
     ++ extraNativeBuildInputs;
 
   buildInputs = [
@@ -117,13 +123,17 @@ stdenv.mkDerivation (finalAttrs: {
   sourceRoot = "${finalAttrs.src.name}/${targetDir}";
 
   cmakeFlags =
-    [ "-DLLVM_TARGETS_TO_BUILD=${builtins.concatStringsSep ";" llvmTargetsToBuild'}" ]
+    [
+      "-DLLVM_TARGETS_TO_BUILD=${builtins.concatStringsSep ";" llvmTargetsToBuild'}"
+    ]
     ++ lib.optionals (finalAttrs.passthru.isLLVM && targetProjects != [ ]) [
       "-DLLVM_ENABLE_PROJECTS=${lib.concatStringsSep ";" targetProjects}"
     ]
-    ++ lib.optionals (
-      (finalAttrs.passthru.isLLVM || targetDir == "runtimes") && targetRuntimes != [ ]
-    ) [ "-DLLVM_ENABLE_RUNTIMES=${lib.concatStringsSep ";" targetRuntimes}" ]
+    ++
+      lib.optionals ((finalAttrs.passthru.isLLVM || targetDir == "runtimes") && targetRuntimes != [ ])
+        [
+          "-DLLVM_ENABLE_RUNTIMES=${lib.concatStringsSep ";" targetRuntimes}"
+        ]
     ++ lib.optionals finalAttrs.passthru.isLLVM [
       "-DLLVM_INSTALL_UTILS=ON"
       "-DLLVM_INSTALL_GTEST=ON"

@@ -26,7 +26,9 @@ python3Packages.buildPythonApplication rec {
       --replace "/opt/metasploit-framework" "${metasploit}/bin"
   '';
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   propagatedBuildInputs = with python3Packages; [
     pexpect

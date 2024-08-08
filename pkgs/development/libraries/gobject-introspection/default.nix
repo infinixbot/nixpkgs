@@ -96,7 +96,9 @@ stdenv.mkDerivation (finalAttrs: {
     ]
     ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [ gobject-introspection-unwrapped ];
 
-  buildInputs = [ (python3.withPackages pythonModules) ];
+  buildInputs = [
+    (python3.withPackages pythonModules)
+  ];
 
   nativeCheckInputs = lib.optionals stdenv.isDarwin [
     cctools # for otool

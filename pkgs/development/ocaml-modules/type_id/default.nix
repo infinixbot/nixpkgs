@@ -17,9 +17,13 @@ buildDunePackage rec {
     hash = "sha256-hmVAD9vgU1HLnB7d1TX17V+Alf5ZXmvQgd2nLHnLhDk=";
   };
 
-  propagatedBuildInputs = [ type_eq ];
+  propagatedBuildInputs = [
+    type_eq
+  ];
 
-  checkInputs = [ alcotest ];
+  checkInputs = [
+    alcotest
+  ];
 
   doCheck = true;
 

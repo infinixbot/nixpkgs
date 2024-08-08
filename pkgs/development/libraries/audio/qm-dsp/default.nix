@@ -32,7 +32,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [ kissfft ];
+  buildInputs = [
+    kissfft
+  ];
 
   makefile = "build/linux/Makefile.linux32";
 

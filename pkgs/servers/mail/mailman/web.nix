@@ -40,7 +40,9 @@ buildPythonPackage rec {
   # Tries to check runtime configuration.
   doCheck = false;
 
-  makeWrapperArgs = [ "--suffix PATH : ${lib.makeBinPath [ sassc ]}" ];
+  makeWrapperArgs = [
+    "--suffix PATH : ${lib.makeBinPath [ sassc ]}"
+  ];
 
   passthru.tests = {
     inherit (nixosTests) mailman;

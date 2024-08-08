@@ -27,7 +27,9 @@ buildGoModule rec {
     "-extldflags '-static'"
   ];
 
-  subPackages = [ "cmd/gobgpd" ];
+  subPackages = [
+    "cmd/gobgpd"
+  ];
 
   meta = with lib; {
     description = "BGP implemented in Go";

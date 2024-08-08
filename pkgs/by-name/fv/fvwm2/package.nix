@@ -58,7 +58,9 @@ stdenv.mkDerivation rec {
     readline
   ] ++ lib.optional enableGestures libstroke;
 
-  pythonPath = [ python3Packages.pyxdg ];
+  pythonPath = [
+    python3Packages.pyxdg
+  ];
 
   configureFlags = [
     "--enable-mandoc"

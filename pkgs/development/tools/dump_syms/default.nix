@@ -32,10 +32,14 @@ rustPlatform.buildRustPackage {
 
   cargoHash = "sha256-srphb7jFSJB08hSShk3f5QYPoYu8UwbUzkzn0zpMqyg=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs =
-    [ openssl ]
+    [
+      openssl
+    ]
     ++ lib.optionals (stdenv.isDarwin) [
       Security
       SystemConfiguration

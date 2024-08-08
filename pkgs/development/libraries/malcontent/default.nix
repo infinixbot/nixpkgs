@@ -62,10 +62,16 @@ stdenv.mkDerivation rec {
     pam
     polkit
     glib-testing
-    (python3.withPackages (pp: with pp; [ pygobject3 ]))
+    (python3.withPackages (
+      pp: with pp; [
+        pygobject3
+      ]
+    ))
   ];
 
-  propagatedBuildInputs = [ glib ];
+  propagatedBuildInputs = [
+    glib
+  ];
 
   mesonFlags = [
     "-Dinstalled_tests=true"

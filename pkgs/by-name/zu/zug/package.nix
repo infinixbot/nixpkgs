@@ -15,9 +15,15 @@ stdenv.mkDerivation rec {
     rev = "v${version}";
     hash = "sha256-7xTMDhPIx1I1PiYNanGUsK8pdrWuemMWM7BW+NQs2BQ=";
   };
-  nativeBuildInputs = [ cmake ];
-  buildInputs = [ boost ];
-  cmakeFlags = [ "-Dzug_BUILD_EXAMPLES=OFF" ];
+  nativeBuildInputs = [
+    cmake
+  ];
+  buildInputs = [
+    boost
+  ];
+  cmakeFlags = [
+    "-Dzug_BUILD_EXAMPLES=OFF"
+  ];
   meta = with lib; {
     homepage = "https://github.com/arximboldi/zug";
     description = "library for functional interactive c++ programs";

@@ -57,11 +57,15 @@ stdenv.mkDerivation (finalAttrs: {
       # https://gitlab.freedesktop.org/upower/upower/-/issues/214
       ./i686-test-remove-battery-check.patch
     ]
-    ++ [ ./installed-tests-path.patch ];
+    ++ [
+      ./installed-tests-path.patch
+    ];
 
   strictDeps = true;
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs =
     [
@@ -75,28 +79,36 @@ stdenv.mkDerivation (finalAttrs: {
       pkg-config
       glib
     ]
-    ++ lib.optionals withIntrospection [ gobject-introspection ]
-    ++ lib.optionals withDocs [ gtk-doc ]
+    ++ lib.optionals withIntrospection [
+      gobject-introspection
+    ]
+    ++ lib.optionals withDocs [
+      gtk-doc
+    ]
     ++ lib.optionals (withDocs && !stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
       mesonEmulatorHook
     ];
 
-  buildInputs = [
-    libgudev
-    libusb1
-    udev
-    systemd
-    # Duplicate from nativeCheckInputs until https://github.com/NixOS/nixpkgs/issues/161570 is solved
-    umockdev
+  buildInputs =
+    [
+      libgudev
+      libusb1
+      udev
+      systemd
+      # Duplicate from nativeCheckInputs until https://github.com/NixOS/nixpkgs/issues/161570 is solved
+      umockdev
 
-    # For installed tests.
-    (python3.withPackages (pp: [
-      pp.dbus-python
-      pp.python-dbusmock
-      pp.pygobject3
-      pp.packaging
-    ]))
-  ] ++ lib.optionals useIMobileDevice [ libimobiledevice ];
+      # For installed tests.
+      (python3.withPackages (pp: [
+        pp.dbus-python
+        pp.python-dbusmock
+        pp.pygobject3
+        pp.packaging
+      ]))
+    ]
+    ++ lib.optionals useIMobileDevice [
+      libimobiledevice
+    ];
 
   nativeCheckInputs = [
     python3.pkgs.dbus-python
@@ -108,7 +120,9 @@ stdenv.mkDerivation (finalAttrs: {
     python3.pkgs.packaging
   ];
 
-  propagatedBuildInputs = [ glib ];
+  propagatedBuildInputs = [
+    glib
+  ];
 
   mesonFlags = [
     "--localstatedir=/var"
@@ -188,7 +202,11 @@ stdenv.mkDerivation (finalAttrs: {
           umockdev.out
         ]
       }" \
-      --prefix PATH : "${lib.makeBinPath [ umockdev ]}"
+      --prefix PATH : "${
+        lib.makeBinPath [
+          umockdev
+        ]
+      }"
   '';
 
   env = {

@@ -50,7 +50,12 @@ stdenv.mkDerivation rec {
       xxHash
       vulkan-headers
     ]
-    ++ lib.optionals vulkanSupport [ vulkan-loader ] ++ lib.optionals (!stdenv.cc.isGNU) [ fast-float ];
+    ++ lib.optionals vulkanSupport [
+      vulkan-loader
+    ]
+    ++ lib.optionals (!stdenv.cc.isGNU) [
+      fast-float
+    ];
 
   mesonFlags =
     with lib;

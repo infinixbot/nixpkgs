@@ -19,7 +19,9 @@ buildDunePackage rec {
     ];
   };
 
-  nativeBuildInputs = [ reason ];
+  nativeBuildInputs = [
+    reason
+  ];
 
   buildInputs = [
     ppxlib

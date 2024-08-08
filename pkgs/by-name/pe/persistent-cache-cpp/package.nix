@@ -79,9 +79,13 @@ stdenv.mkDerivation (finalAttrs: {
     leveldb
   ];
 
-  nativeCheckInputs = [ python3 ];
+  nativeCheckInputs = [
+    python3
+  ];
 
-  checkInputs = [ gtest ];
+  checkInputs = [
+    gtest
+  ];
 
   cmakeFlags = [
     # error: 'old_version' may be used uninitialized
@@ -108,6 +112,8 @@ stdenv.mkDerivation (finalAttrs: {
     license = licenses.lgpl3Only;
     maintainers = teams.lomiri.members;
     platforms = platforms.unix;
-    pkgConfigModules = [ "libpersistent-cache-cpp" ];
+    pkgConfigModules = [
+      "libpersistent-cache-cpp"
+    ];
   };
 })

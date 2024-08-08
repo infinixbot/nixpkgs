@@ -20,7 +20,9 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ cmake ];
   buildInputs = [ obs-studio ];
 
-  cmakeFlags = [ (lib.cmakeBool "BUILD_OUT_OF_TREE" true) ];
+  cmakeFlags = [
+    (lib.cmakeBool "BUILD_OUT_OF_TREE" true)
+  ];
 
   postInstall = ''
     rm -rf $out/obs-plugins $out/data

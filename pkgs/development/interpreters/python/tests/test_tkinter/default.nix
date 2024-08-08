@@ -6,7 +6,9 @@
 
 let
 
-  pythonEnv = interpreter.withPackages (ps: [ ps.tkinter ]);
+  pythonEnv = interpreter.withPackages (ps: [
+    ps.tkinter
+  ]);
 
   pythonScript = writeText "myscript.py" ''
     import tkinter

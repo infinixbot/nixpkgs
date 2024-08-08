@@ -115,7 +115,9 @@ stdenv.mkDerivation (finalAttrs: {
       libogg
       libvorbis
     ]
-    ++ lib.optionals (buildClient && !stdenv.hostPlatform.isDarwin) [ xorg.libX11 ]
+    ++ lib.optionals (buildClient && !stdenv.hostPlatform.isDarwin) [
+      xorg.libX11
+    ]
     ++ lib.optionals buildServer [
       leveldb
       postgresql

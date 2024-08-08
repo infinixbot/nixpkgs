@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     sha256 = "LpDfJmH2FbL37Fk86CAC/bxFqM035DBN6c6FPfGpaIw=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     requests
@@ -26,7 +28,9 @@ python3.pkgs.buildPythonApplication rec {
   # Project has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "websploit" ];
+  pythonImportsCheck = [
+    "websploit"
+  ];
 
   meta = with lib; {
     description = "High level MITM framework";

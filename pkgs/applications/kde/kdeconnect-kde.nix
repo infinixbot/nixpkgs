@@ -74,7 +74,9 @@ mkDerivation {
     makeWrapper
   ];
 
-  qtWrapperArgs = [ "--prefix PATH : ${lib.makeBinPath [ sshfs ]}" ];
+  qtWrapperArgs = [
+    "--prefix PATH : ${lib.makeBinPath [ sshfs ]}"
+  ];
 
   meta = with lib; {
     description = "KDE Connect provides several features to integrate your phone and your computer";

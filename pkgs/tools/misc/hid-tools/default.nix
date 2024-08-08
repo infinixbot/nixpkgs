@@ -32,7 +32,9 @@ python3.pkgs.buildPythonPackage rec {
     typing-extensions
   ];
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
   # Tests require /dev/uhid
   # https://gitlab.freedesktop.org/libevdev/hid-tools/-/issues/18#note_166353

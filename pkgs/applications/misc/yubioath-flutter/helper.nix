@@ -19,7 +19,9 @@ buildPythonApplication {
 
   sourceRoot = "${src.name}/helper";
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   pythonRelaxDeps = true;
 

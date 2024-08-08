@@ -19,7 +19,9 @@ python3.pkgs.buildPythonApplication rec {
       --replace-fail 'typer = "^0.4.0"' 'typer = "*"'
   '';
 
-  build-system = with python3.pkgs; [ poetry-core ];
+  build-system = with python3.pkgs; [
+    poetry-core
+  ];
 
   dependencies = with python3.pkgs; [
     beautifulsoup4
@@ -32,7 +34,9 @@ python3.pkgs.buildPythonApplication rec {
   # No tests available on Pypi and there is only a failing version assertion test in the repo.
   doCheck = false;
 
-  pythonImportsCheck = [ "markdown_anki_decks" ];
+  pythonImportsCheck = [
+    "markdown_anki_decks"
+  ];
 
   meta = with lib; {
     description = "Tool to convert Markdown files into Anki Decks";

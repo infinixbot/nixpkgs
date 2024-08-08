@@ -44,7 +44,9 @@ stdenv.mkDerivation {
       patchShebangs --build src/engine/build.sh
     '';
 
-  nativeBuildInputs = [ bison ];
+  nativeBuildInputs = [
+    bison
+  ];
 
   buildPhase = ''
     runHook preBuild

@@ -58,7 +58,9 @@ stdenv.mkDerivation rec {
       qtmultimedia
       qttools
     ]
-    ++ lib.optionals stdenv.isLinux [ qtwayland ]
+    ++ lib.optionals stdenv.isLinux [
+      qtwayland
+    ]
     ++ lib.optionals useMupdf [
       freetype
       gumbo
@@ -66,7 +68,9 @@ stdenv.mkDerivation rec {
       mupdf
       openjpeg
     ]
-    ++ lib.optionals usePoppler [ poppler ];
+    ++ lib.optionals usePoppler [
+      poppler
+    ];
 
   cmakeFlags = [
     "-DGIT_VERSION=OFF"

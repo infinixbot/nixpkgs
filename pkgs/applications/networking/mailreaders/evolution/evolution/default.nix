@@ -98,7 +98,9 @@ stdenv.mkDerivation rec {
     webkitgtk_4_1
   ];
 
-  propagatedUserEnvPkgs = [ evolution-data-server ];
+  propagatedUserEnvPkgs = [
+    evolution-data-server
+  ];
 
   cmakeFlags = [
     "-DENABLE_AUTOAR=OFF"
@@ -109,7 +111,9 @@ stdenv.mkDerivation rec {
     "-DWITH_OPENLDAP=${openldap}"
   ];
 
-  requiredSystemFeatures = [ "big-parallel" ];
+  requiredSystemFeatures = [
+    "big-parallel"
+  ];
 
   doCheck = true;
 

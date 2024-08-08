@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ unzip ];
   buildInputs = [ portaudio ];
 
-  patches = [ ./gcc6.patch ];
+  patches = [
+    ./gcc6.patch
+  ];
 
   prePatch =
     ''

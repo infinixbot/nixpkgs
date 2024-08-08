@@ -50,7 +50,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   installPhase =
     let

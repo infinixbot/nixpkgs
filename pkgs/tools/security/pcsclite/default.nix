@@ -66,8 +66,12 @@ stdenv.mkDerivation (finalAttrs: {
       (lib.mesonBool "polkit" polkitSupport)
       (lib.mesonOption "ipcdir" "/run/pcscd")
     ]
-    ++ lib.optionals systemdSupport [ (lib.mesonOption "systemdunit" "system") ]
-    ++ lib.optionals (!udevSupport) [ (lib.mesonBool "libudev" false) ];
+    ++ lib.optionals systemdSupport [
+      (lib.mesonOption "systemdunit" "system")
+    ]
+    ++ lib.optionals (!udevSupport) [
+      (lib.mesonBool "libudev" false)
+    ];
 
   # disable building pcsc-wirecheck{,-gen} when cross compiling
   # see also: https://github.com/LudovicRousseau/PCSC/issues/25

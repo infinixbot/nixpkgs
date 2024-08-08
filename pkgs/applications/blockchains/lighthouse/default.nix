@@ -90,7 +90,9 @@ rustPlatform.buildRustPackage rec {
   LIGHTHOUSE_DEPOSIT_CONTRACT_SPEC_URL = "file://${depositContractSpec}";
   LIGHTHOUSE_DEPOSIT_CONTRACT_TESTNET_URL = "file://${testnetDepositContractSpec}";
 
-  cargoBuildFlags = [ "--package lighthouse" ];
+  cargoBuildFlags = [
+    "--package lighthouse"
+  ];
 
   __darwinAllowLocalNetworking = true;
 

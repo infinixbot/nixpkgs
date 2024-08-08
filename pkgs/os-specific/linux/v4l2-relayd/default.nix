@@ -19,7 +19,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-oU6naDFZ0PQVHZ3brANfMULDqYMYxeJN+MCUCvN/DpU=";
   };
 
-  patches = [ ./upstream-v4l2loopback-compatibility.patch ];
+  patches = [
+    ./upstream-v4l2loopback-compatibility.patch
+  ];
 
   nativeBuildInputs = [
     autoreconfHook

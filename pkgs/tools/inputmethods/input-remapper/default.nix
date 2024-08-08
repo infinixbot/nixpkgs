@@ -57,7 +57,9 @@ in
     '';
 
   doCheck = withDoCheck;
-  nativeCheckInputs = [ psutil ];
+  nativeCheckInputs = [
+    psutil
+  ];
   pythonImportsCheck = [
     "evdev"
     "inputremapper"

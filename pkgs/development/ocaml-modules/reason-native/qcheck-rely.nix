@@ -14,7 +14,9 @@ buildDunePackage {
   pname = "qcheck-rely";
   version = "1.0.2-unstable-2024-05-07";
 
-  nativeBuildInputs = [ reason ];
+  nativeBuildInputs = [
+    reason
+  ];
 
   propagatedBuildInputs = [
     qcheck-core

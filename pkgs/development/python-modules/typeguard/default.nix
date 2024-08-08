@@ -41,7 +41,9 @@ buildPythonPackage rec {
     sphinx-rtd-theme
   ];
 
-  dependencies = [ typing-extensions ] ++ lib.optionals (pythonOlder "3.10") [ importlib-metadata ];
+  dependencies = [
+    typing-extensions
+  ] ++ lib.optionals (pythonOlder "3.10") [ importlib-metadata ];
 
   env.LC_ALL = "en_US.utf-8";
 

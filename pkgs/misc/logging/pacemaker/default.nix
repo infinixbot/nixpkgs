@@ -78,7 +78,9 @@ stdenv.mkDerivation rec {
   installFlags = [ "DESTDIR=${placeholder "out"}" ];
 
   env.NIX_CFLAGS_COMPILE = toString (
-    lib.optionals stdenv.cc.isGNU [ "-Wno-error=strict-prototypes" ]
+    lib.optionals stdenv.cc.isGNU [
+      "-Wno-error=strict-prototypes"
+    ]
   );
 
   enableParallelBuilding = true;

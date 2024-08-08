@@ -42,7 +42,13 @@ rustPlatform.buildRustPackage rec {
     makeWrapper
   ];
 
-  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs =
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+    ];
 
   postFixup = ''
     wrapProgram $out/bin/cargo-info \

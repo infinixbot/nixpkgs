@@ -26,11 +26,15 @@ stdenv.mkDerivation (finalAttrs: {
     perl
   ];
 
-  buildInputs = [
-    libjpeg
-    libpng
-    libtiff
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Carbon ];
+  buildInputs =
+    [
+      libjpeg
+      libpng
+      libtiff
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Carbon
+    ];
 
   meta = {
     description = "Free software suite for authoring and displaying virtual reality panoramas";

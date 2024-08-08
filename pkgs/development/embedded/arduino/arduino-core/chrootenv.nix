@@ -17,7 +17,11 @@ buildFHSEnv {
       ncurses
       arduino-unwrapped
       zlib
-      (python3.withPackages (p: with p; [ pyserial ]))
+      (python3.withPackages (
+        p: with p; [
+          pyserial
+        ]
+      ))
     ]);
 
   extraInstallCommands = ''

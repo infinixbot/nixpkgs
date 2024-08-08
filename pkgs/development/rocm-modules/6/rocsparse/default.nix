@@ -23,9 +23,15 @@ stdenv.mkDerivation (finalAttrs: {
   version = "6.0.2";
 
   outputs =
-    [ "out" ]
-    ++ lib.optionals (buildTests || buildBenchmarks) [ "test" ]
-    ++ lib.optionals buildBenchmarks [ "benchmark" ];
+    [
+      "out"
+    ]
+    ++ lib.optionals (buildTests || buildBenchmarks) [
+      "test"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "benchmark"
+    ];
 
   src = fetchFromGitHub {
     owner = "ROCm";
@@ -62,13 +68,17 @@ stdenv.mkDerivation (finalAttrs: {
       "-DCMAKE_INSTALL_LIBDIR=lib"
       "-DCMAKE_INSTALL_INCLUDEDIR=include"
     ]
-    ++ lib.optionals (gpuTargets != [ ]) [ "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}" ]
+    ++ lib.optionals (gpuTargets != [ ]) [
+      "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
+    ]
     ++ lib.optionals (buildTests || buildBenchmarks) [
       "-DBUILD_CLIENTS_TESTS=ON"
       "-DCMAKE_MATRICES_DIR=/build/source/matrices"
       "-Dpython=python3"
     ]
-    ++ lib.optionals buildBenchmarks [ "-DBUILD_CLIENTS_BENCHMARKS=ON" ];
+    ++ lib.optionals buildBenchmarks [
+      "-DBUILD_CLIENTS_BENCHMARKS=ON"
+    ];
 
   # We have to manually generate the matrices
   postPatch = lib.optionalString (buildTests || buildBenchmarks) ''

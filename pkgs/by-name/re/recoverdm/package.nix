@@ -34,7 +34,9 @@ stdenv.mkDerivation (finalAttrs: {
       --replace-fail '$(DESTDIR)/usr/bin' $out/bin
   '';
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   preInstall = ''
     mkdir -p $out/bin

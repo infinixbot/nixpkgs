@@ -21,9 +21,16 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "rocsolver";
   version = "5.7.1";
 
-  outputs = [
-    "out"
-  ] ++ lib.optionals buildTests [ "test" ] ++ lib.optionals buildBenchmarks [ "benchmark" ];
+  outputs =
+    [
+      "out"
+    ]
+    ++ lib.optionals buildTests [
+      "test"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "benchmark"
+    ];
 
   src = fetchFromGitHub {
     owner = "ROCm";
@@ -32,11 +39,15 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-qxmjm4tgpCnfJ2SqUXndk6y0MsPJUKHvjv/3Uc0smr4=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    rocm-cmake
-    clr
-  ] ++ lib.optionals (buildTests || buildBenchmarks) [ gfortran ];
+  nativeBuildInputs =
+    [
+      cmake
+      rocm-cmake
+      clr
+    ]
+    ++ lib.optionals (buildTests || buildBenchmarks) [
+      gfortran
+    ];
 
   buildInputs =
     [
@@ -44,8 +55,12 @@ stdenv.mkDerivation (finalAttrs: {
       rocsparse
       fmt
     ]
-    ++ lib.optionals buildTests [ gtest ]
-    ++ lib.optionals (buildTests || buildBenchmarks) [ lapack-reference ];
+    ++ lib.optionals buildTests [
+      gtest
+    ]
+    ++ lib.optionals (buildTests || buildBenchmarks) [
+      lapack-reference
+    ];
 
   cmakeFlags =
     [
@@ -57,9 +72,15 @@ stdenv.mkDerivation (finalAttrs: {
       "-DCMAKE_INSTALL_LIBDIR=lib"
       "-DCMAKE_INSTALL_INCLUDEDIR=include"
     ]
-    ++ lib.optionals (gpuTargets != [ ]) [ "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}" ]
-    ++ lib.optionals buildTests [ "-DBUILD_CLIENTS_TESTS=ON" ]
-    ++ lib.optionals buildBenchmarks [ "-DBUILD_CLIENTS_BENCHMARKS=ON" ];
+    ++ lib.optionals (gpuTargets != [ ]) [
+      "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
+    ]
+    ++ lib.optionals buildTests [
+      "-DBUILD_CLIENTS_TESTS=ON"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "-DBUILD_CLIENTS_BENCHMARKS=ON"
+    ];
 
   postInstall =
     lib.optionalString buildTests ''

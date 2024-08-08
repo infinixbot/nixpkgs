@@ -36,7 +36,9 @@ stdenv.mkDerivation rec {
     sha256 = "3YWS7rZRKtCoz1yL6McudvdL/msj5N2T8HVu4HFoBMc=";
   };
 
-  patches = [ ./installed-tests-path.patch ];
+  patches = [
+    ./installed-tests-path.patch
+  ];
 
   nativeBuildInputs = [
     gettext

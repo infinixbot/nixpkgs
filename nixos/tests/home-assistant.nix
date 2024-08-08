@@ -29,7 +29,10 @@ import ./make-test-python.nix (
           # provide dependencies through package overrides
           package = (
             pkgs.home-assistant.override {
-              extraPackages = ps: with ps; [ colorama ];
+              extraPackages =
+                ps: with ps; [
+                  colorama
+                ];
               extraComponents = [
                 # test char-tty device allow propagation into the service
                 "zha"
@@ -38,10 +41,15 @@ import ./make-test-python.nix (
           );
 
           # provide component dependencies explicitly from the module
-          extraComponents = [ "mqtt" ];
+          extraComponents = [
+            "mqtt"
+          ];
 
           # provide package for postgresql support
-          extraPackages = python3Packages: with python3Packages; [ psycopg2 ];
+          extraPackages =
+            python3Packages: with python3Packages; [
+              psycopg2
+            ];
 
           # test loading custom components
           customComponents = with pkgs.home-assistant-custom-components; [
@@ -51,7 +59,9 @@ import ./make-test-python.nix (
           ];
 
           # test loading lovelace modules
-          customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [ mini-graph-card ];
+          customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
+            mini-graph-card
+          ];
 
           config = {
             homeassistant = {

@@ -42,7 +42,9 @@ pythonPackages.buildPythonApplication rec {
     wrapGAppsHook3
   ];
 
-  propagatedNativeBuildInputs = [ gobject-introspection ];
+  propagatedNativeBuildInputs = [
+    gobject-introspection
+  ];
 
   propagatedBuildInputs =
     [

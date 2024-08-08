@@ -24,9 +24,17 @@ rustPlatform.buildRustPackage {
 
   cargoHash = "sha256-cJS9HgbnLYXkZrAyGNEeu6q+znH+7cj8CUGIbTCbB9Y=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ bzip2 ] ++ lib.optionals stdenv.isDarwin [ CoreServices ];
+  buildInputs =
+    [
+      bzip2
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      CoreServices
+    ];
 
   meta = with lib; {
     description = "mdbook backend for generating an e-book in the EPUB format";

@@ -19,11 +19,15 @@ stdenv.mkDerivation rec {
     hash = "sha256-ObAnHFP1Hp0knf/jtGHynVF0CCqK47eqetePx4NLmlM=";
   };
 
-  nativeBuildInputs = [
-    gfortran
-    meson
-    ninja
-  ] ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [ mesonEmulatorHook ];
+  nativeBuildInputs =
+    [
+      gfortran
+      meson
+      ninja
+    ]
+    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+      mesonEmulatorHook
+    ];
 
   meta = with lib; {
     description = "Procedural Fortran testing framework";

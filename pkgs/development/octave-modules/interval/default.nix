@@ -14,7 +14,9 @@ buildOctavePackage rec {
     sha256 = "sha256-OOUmQnN1cTIpqz2Gpf4/WghVB0fYQgVBcG/eqQk/3Og=";
   };
 
-  propagatedBuildInputs = [ mpfr ];
+  propagatedBuildInputs = [
+    mpfr
+  ];
 
   meta = with lib; {
     homepage = "https://octave.sourceforge.io/interval/index.html";

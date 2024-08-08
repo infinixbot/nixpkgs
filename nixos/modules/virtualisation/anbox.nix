@@ -39,7 +39,9 @@ let
 
         runCommandNoCC "${cfg.image.name}-modified.img"
           {
-            nativeBuildInputs = [ squashfsTools ];
+            nativeBuildInputs = [
+              squashfsTools
+            ];
           }
           ''
             echo "-> Extracting Anbox root image..."

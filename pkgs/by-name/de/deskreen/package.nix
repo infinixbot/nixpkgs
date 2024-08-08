@@ -18,7 +18,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     src = finalAttrs.src;
   };
 
-  buildInputs = [ finalAttrs.deskreenUnwrapped ];
+  buildInputs = [
+    finalAttrs.deskreenUnwrapped
+  ];
 
   dontUnpack = true;
   dontBuild = true;

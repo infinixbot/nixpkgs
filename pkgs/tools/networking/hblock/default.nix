@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
   ];
   nativeBuildInputs = [ makeWrapper ];
 
-  installFlags = [ "prefix=$(out)" ];
+  installFlags = [
+    "prefix=$(out)"
+  ];
   postInstall = ''
     wrapProgram "$out/bin/hblock" \
       --prefix PATH : ${

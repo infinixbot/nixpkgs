@@ -25,7 +25,9 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "nvidia-ml-py" ];
 
-  nativeBuildInputs = [ setuptools-scm ];
+  nativeBuildInputs = [
+    setuptools-scm
+  ];
 
   propagatedBuildInputs = [
     blessed

@@ -81,7 +81,9 @@ python.pkgs.buildPythonApplication rec {
     cp -r lektor/translations "$out/${python.sitePackages}/lektor/"
   '';
 
-  pythonImportsCheck = [ "lektor" ];
+  pythonImportsCheck = [
+    "lektor"
+  ];
 
   disabledTests = [
     # Tests require network access

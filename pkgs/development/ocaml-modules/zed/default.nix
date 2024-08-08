@@ -42,6 +42,8 @@ buildDunePackage rec {
     homepage = "https://github.com/ocaml-community/zed";
     changelog = "https://github.com/ocaml-community/zed/blob/${version}/CHANGES.md";
     license = lib.licenses.bsd3;
-    maintainers = [ lib.maintainers.gal_bolle ];
+    maintainers = [
+      lib.maintainers.gal_bolle
+    ];
   };
 }

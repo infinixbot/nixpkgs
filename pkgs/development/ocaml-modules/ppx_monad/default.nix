@@ -18,10 +18,14 @@ buildDunePackage rec {
     sha256 = "sha256-cbguAddSlUxBK7pmT7vNmtJW9TrVZZjdSJRMT3lqxOA=";
   };
 
-  propagatedBuildInputs = [ ppxlib ];
+  propagatedBuildInputs = [
+    ppxlib
+  ];
 
   doCheck = true;
-  checkInputs = [ ];
+  checkInputs =
+    [
+    ];
 
   meta = {
     description = "OCaml Syntax Extension for all Monadic Syntaxes";

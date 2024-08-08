@@ -26,9 +26,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-fmWe4vyGwUPof3bBRGYBnarPulx3kL3QW7yQQdi9LEQ=";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
-  buildInputs = [ (python3.withPackages (ps: [ ps.requests ])) ];
+  buildInputs = [
+    (python3.withPackages (ps: [ ps.requests ]))
+  ];
 
   dontPatchELF = true; # stay away from exploit executables
 

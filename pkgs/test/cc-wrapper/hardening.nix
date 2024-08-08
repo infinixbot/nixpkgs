@@ -149,7 +149,9 @@ let
     testBin:
     runCommand "exec-test"
       {
-        buildInputs = [ testBin ];
+        buildInputs = [
+          testBin
+        ];
         meta.broken = !(stdenv.buildPlatform.canExecute stdenv.hostPlatform);
       }
       ''

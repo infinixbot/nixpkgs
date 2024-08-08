@@ -20,7 +20,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-qePoZYkzzWuK6j1NM+q6fPuWVRDEe4OkPmXc9Nbqobo=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = [
     eigen

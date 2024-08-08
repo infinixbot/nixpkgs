@@ -49,8 +49,12 @@ rustPlatform.buildRustPackage rec {
       gtk-layer-shell
       pango
     ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ]
-    ++ lib.optionals stdenv.isLinux [ wayland ];
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      wayland
+    ];
 
   preFixup = ''
     gappsWrapperArgs+=(

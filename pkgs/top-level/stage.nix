@@ -360,7 +360,9 @@ let
       configOverrides
     ]
     ++ overlays
-    ++ [ stdenvOverrides ]
+    ++ [
+      stdenvOverrides
+    ]
   );
 
 in

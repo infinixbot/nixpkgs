@@ -42,9 +42,13 @@ stdenv.mkDerivation (finalAttrs: {
 
   ];
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = [ xercesc ];
+  buildInputs = [
+    xercesc
+  ];
 
   cmakeFlags = [
     # See https://github.com/asmaloney/libE57Format/blob/9372bdea8db2cc0c032a08f6d655a53833d484b8/test/README.md

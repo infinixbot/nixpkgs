@@ -26,7 +26,9 @@ stdenv.mkDerivation (finalAttrs: {
     wxGTK32 # in nativeBuildInputs because of wx-config
   ];
 
-  buildInputs = [ libGL ];
+  buildInputs = [
+    libGL
+  ];
 
   preConfigure = ''
     bash generate-version-header.sh

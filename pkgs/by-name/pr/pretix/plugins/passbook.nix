@@ -47,7 +47,9 @@ buildPythonPackage rec {
 
   doCheck = false; # no tests
 
-  pythonImportsCheck = [ "pretix_passbook" ];
+  pythonImportsCheck = [
+    "pretix_passbook"
+  ];
 
   meta = with lib; {
     description = "Support for Apple Wallet/Passbook files in pretix";

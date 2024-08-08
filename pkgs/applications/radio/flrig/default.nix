@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     eudev
   ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   meta = {
     description = "Digital modem rig control program";

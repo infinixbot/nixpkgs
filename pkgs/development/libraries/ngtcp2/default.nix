@@ -32,14 +32,21 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    brotli
-    libev
-    nghttp3
-    quictls
-  ] ++ lib.optionals stdenv.isDarwin [ CoreServices ] ++ lib.optional withJemalloc jemalloc;
+  buildInputs =
+    [
+      brotli
+      libev
+      nghttp3
+      quictls
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      CoreServices
+    ]
+    ++ lib.optional withJemalloc jemalloc;
 
-  cmakeFlags = [ (lib.cmakeBool "ENABLE_STATIC_LIB" false) ];
+  cmakeFlags = [
+    (lib.cmakeBool "ENABLE_STATIC_LIB" false)
+  ];
 
   doCheck = true;
 

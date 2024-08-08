@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-I95nxZD65tHiok4MzsGG7gyaxPHbqQLuRWdHUPNhLu8=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   meta = with lib; {
     description = "Minimalist init process designed for Docker";

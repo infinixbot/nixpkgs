@@ -30,19 +30,23 @@ stdenv.mkDerivation rec {
     pkg-config
     texinfo
   ];
-  buildInputs = [
-    guile
-    glib
-    loudmouth
-    gmp
-    libidn
-    readline
-    libtool
-    libunwind
-    ncurses
-    curl
-    jansson
-  ] ++ lib.optionals stdenv.isDarwin [ argp-standalone ];
+  buildInputs =
+    [
+      guile
+      glib
+      loudmouth
+      gmp
+      libidn
+      readline
+      libtool
+      libunwind
+      ncurses
+      curl
+      jansson
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      argp-standalone
+    ];
 
   env.NIX_LDFLAGS = lib.optionalString stdenv.isDarwin "-largp";
 

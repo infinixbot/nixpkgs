@@ -46,23 +46,31 @@ builder rec {
     makeWrapper
     pkg-config
   ];
-  buildInputs = [
-    libffi
-    libtool
-    libunistring
-    readline
-  ] ++ lib.optionals stdenv.isLinux [ libxcrypt ];
-  propagatedBuildInputs = [
-    boehmgc
-    gmp
+  buildInputs =
+    [
+      libffi
+      libtool
+      libunistring
+      readline
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      libxcrypt
+    ];
+  propagatedBuildInputs =
+    [
+      boehmgc
+      gmp
 
-    # These ones aren't normally needed here, but `libguile*.la' has '-l'
-    # flags for them without corresponding '-L' flags. Adding them here will
-    # add the needed `-L' flags.  As for why the `.la' file lacks the `-L'
-    # flags, see below.
-    libtool
-    libunistring
-  ] ++ lib.optionals stdenv.isLinux [ libxcrypt ];
+      # These ones aren't normally needed here, but `libguile*.la' has '-l'
+      # flags for them without corresponding '-L' flags. Adding them here will
+      # add the needed `-L' flags.  As for why the `.la' file lacks the `-L'
+      # flags, see below.
+      libtool
+      libunistring
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      libxcrypt
+    ];
 
   # According to
   # https://git.savannah.gnu.org/cgit/guix.git/tree/gnu/packages/guile.scm?h=a39207f7afd977e4e4299c6f0bb34bcb6d153818#n405
@@ -71,7 +79,9 @@ builder rec {
   enableParallelBuilding = stdenv.buildPlatform == stdenv.hostPlatform;
 
   patches =
-    [ ./eai_system.patch ]
+    [
+      ./eai_system.patch
+    ]
     ++ lib.optional (coverageAnalysis != null) ./gcov-file-name.patch
     ++ lib.optional stdenv.isDarwin (fetchpatch {
       url = "https://gitlab.gnome.org/GNOME/gtk-osx/raw/52898977f165777ad9ef169f7d4818f2d4c9b731/patches/guile-clocktime.patch";
@@ -85,7 +95,9 @@ builder rec {
   LDFLAGS = lib.optionalString (stdenv.cc.isGNU && !stdenv.hostPlatform.isStatic) "-lgcc_s";
 
   configureFlags =
-    [ "--with-libreadline-prefix=${lib.getDev readline}" ]
+    [
+      "--with-libreadline-prefix=${lib.getDev readline}"
+    ]
     ++ lib.optionals stdenv.isSunOS [
       # Make sure the right <gmp.h> is found, and not the incompatible
       # /usr/include/mp.h from OpenSolaris.  See

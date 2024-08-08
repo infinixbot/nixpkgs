@@ -68,7 +68,9 @@ stdenv.mkDerivation (finalAttrs: {
       pkg-config
       gtest
     ]
-    ++ lib.optionals stdenv.isLinux [ lsb-release ]
+    ++ lib.optionals stdenv.isLinux [
+      lsb-release
+    ]
     ++ lib.optionals stdenv.isDarwin [
       DarwinTools
       makeWrapper
@@ -81,7 +83,9 @@ stdenv.mkDerivation (finalAttrs: {
       dbus
       flac
     ]
-    ++ lib.optionals (stdenv.isDarwin && stdenv.isx86_64) [ AppKit ]
+    ++ lib.optionals (stdenv.isDarwin && stdenv.isx86_64) [
+      AppKit
+    ]
     ++ [
       gtk3
       glew
@@ -117,13 +121,19 @@ stdenv.mkDerivation (finalAttrs: {
       xorg.libXdmcp
       xorg.libXtst
     ]
-    ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [ elfutils ]
-    ++ lib.optionals stdenv.isDarwin [ lame ];
+    ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [
+      elfutils
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      lame
+    ];
 
   cmakeFlags = [ "-DOCPN_BUNDLE_DOCS=true" ];
 
   env.NIX_CFLAGS_COMPILE = toString (
-    lib.optionals (!stdenv.hostPlatform.isx86) [ "-DSQUISH_USE_SSE=0" ]
+    lib.optionals (!stdenv.hostPlatform.isx86) [
+      "-DSQUISH_USE_SSE=0"
+    ]
   );
 
   postInstall = lib.optionals stdenv.isDarwin ''

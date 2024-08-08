@@ -18,9 +18,13 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ autoreconfHook ];
-  buildInputs = [ libarchive ];
+  buildInputs = [
+    libarchive
+  ];
 
-  configureFlags = [ "--enable-libarchive" ];
+  configureFlags = [
+    "--enable-libarchive"
+  ];
 
   doCheck = true;
   checkPhase = ''

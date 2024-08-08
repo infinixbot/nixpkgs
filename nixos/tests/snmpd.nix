@@ -4,7 +4,9 @@ import ./make-test-python.nix (
     name = "snmpd";
 
     nodes.snmpd = {
-      environment.systemPackages = with pkgs; [ net-snmp ];
+      environment.systemPackages = with pkgs; [
+        net-snmp
+      ];
 
       services.snmpd = {
         enable = true;

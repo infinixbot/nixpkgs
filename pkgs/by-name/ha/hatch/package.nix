@@ -43,7 +43,9 @@ python3.pkgs.buildPythonApplication rec {
   ];
 
   nativeCheckInputs =
-    [ cargo ]
+    [
+      cargo
+    ]
     ++ (with python3.pkgs; [
       binary
       git
@@ -80,7 +82,9 @@ python3.pkgs.buildPythonApplication rec {
       # See https://github.com/pypa/hatch/pull/709 for the relevant code.
       "test_populate_default_popen_kwargs_executable"
     ]
-    ++ lib.optionals stdenv.isAarch64 [ "test_resolve" ];
+    ++ lib.optionals stdenv.isAarch64 [
+      "test_resolve"
+    ];
 
   meta = with lib; {
     description = "Modern, extensible Python project manager";

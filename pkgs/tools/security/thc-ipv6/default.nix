@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     libnfnetlink
   ];
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
 
   meta = with lib; {
     description = "IPv6 attack toolkit";

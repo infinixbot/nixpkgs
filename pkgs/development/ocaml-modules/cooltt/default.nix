@@ -79,7 +79,9 @@ buildDunePackage {
     hash = "sha256-48bEf59rtPRrCRjab7+GxppjfR2c87HjQ+uKY2Bag0I=";
   };
 
-  nativeBuildInputs = [ menhir ];
+  nativeBuildInputs = [
+    menhir
+  ];
 
   buildInputs = [
     cmdliner

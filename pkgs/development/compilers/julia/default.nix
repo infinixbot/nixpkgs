@@ -45,14 +45,18 @@ in
     callPackage (import ./generic.nix {
       version = "1.9.4";
       hash = "sha256-YYQ7lkf9BtOymU8yd6ZN4ctaWlKX2TC4yOO8DpN0ACQ=";
-      patches = [ ./patches/1.9/0002-skip-failing-and-flaky-tests.patch ];
+      patches = [
+        ./patches/1.9/0002-skip-failing-and-flaky-tests.patch
+      ];
     }) { }
   );
   julia_110 = wrapJulia (
     callPackage (import ./generic.nix {
       version = "1.10.4";
       hash = "sha256-8y5Sd/XYKmOCSILN6/rBWBmbuEgUw8AZo/7MNgFYYZE=";
-      patches = [ ./patches/1.10/0002-skip-failing-and-flaky-tests.patch ];
+      patches = [
+        ./patches/1.10/0002-skip-failing-and-flaky-tests.patch
+      ];
     }) { }
   );
 }

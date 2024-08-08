@@ -34,11 +34,17 @@ in
 
     in
     {
-      environment.systemPackages = [ package ];
+      environment.systemPackages = [
+        package
+      ];
 
-      services.dbus.packages = [ package ];
+      services.dbus.packages = [
+        package
+      ];
 
-      systemd.packages = [ package ];
+      systemd.packages = [
+        package
+      ];
 
       programs.xfconf.enable = true;
     }

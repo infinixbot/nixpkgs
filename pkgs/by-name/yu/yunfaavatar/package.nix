@@ -19,7 +19,9 @@ stdenvNoCC.mkDerivation rec {
   strictDeps = true;
   nativeBuildInputs = [ makeWrapper ];
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   postInstall = ''
     wrapProgram "$out/bin/yunfaavatar" \

@@ -1155,7 +1155,9 @@ in
       ];
 
     virtualisation.qemu.options = mkMerge [
-      (mkIf cfg.qemu.virtioKeyboard [ "-device virtio-keyboard" ])
+      (mkIf cfg.qemu.virtioKeyboard [
+        "-device virtio-keyboard"
+      ])
       (mkIf pkgs.stdenv.hostPlatform.isx86 [
         "-usb"
         "-device usb-tablet,bus=usb-bus.0"
@@ -1184,8 +1186,12 @@ in
         "-drive if=pflash,format=raw,unit=0,readonly=on,file=${cfg.efi.firmware}"
         "-drive if=pflash,format=raw,unit=1,readonly=off,file=$NIX_EFI_VARS"
       ])
-      (mkIf (cfg.bios != null) [ "-bios ${cfg.bios}/bios.bin" ])
-      (mkIf (!cfg.graphics) [ "-nographic" ])
+      (mkIf (cfg.bios != null) [
+        "-bios ${cfg.bios}/bios.bin"
+      ])
+      (mkIf (!cfg.graphics) [
+        "-nographic"
+      ])
       (mkIf (cfg.tpm.enable) [
         "-chardev socket,id=chrtpm,path=\"$NIX_SWTPM_DIR\"/socket"
         "-tpmdev emulator,id=tpm_dev_0,chardev=chrtpm"
@@ -1368,7 +1374,9 @@ in
         (isYes "SERIAL_8250_CONSOLE")
         (isYes "SERIAL_8250")
       ]
-      ++ optionals (cfg.writableStore) [ (isEnabled "OVERLAY_FS") ];
+      ++ optionals (cfg.writableStore) [
+        (isEnabled "OVERLAY_FS")
+      ];
 
   };
 

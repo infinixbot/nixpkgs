@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
     gtkmm2
   ];
 
-  makeFlags = [ "INSTALL_DIR=$(out)/lib/lv2" ];
+  makeFlags = [
+    "INSTALL_DIR=$(out)/lib/lv2"
+  ];
 
   meta = with lib; {
     homepage = "https://hyperglitch.com/dev/VocProc";

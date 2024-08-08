@@ -19,7 +19,13 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-5tQaNT6QVN9mxa9t6OvMux4ZGy4flUqszTAwet2QL0w=";
   };
 
-  nativeBuildInputs = [ installShellFiles ] ++ (with python3.pkgs; [ setuptools-scm ]);
+  nativeBuildInputs =
+    [
+      installShellFiles
+    ]
+    ++ (with python3.pkgs; [
+      setuptools-scm
+    ]);
 
   propagatedBuildInputs = with python3.pkgs; [
     atomicwrites
@@ -66,7 +72,9 @@ python3.pkgs.buildPythonApplication rec {
     "test_sorting_fields"
   ];
 
-  pythonImportsCheck = [ "todoman" ];
+  pythonImportsCheck = [
+    "todoman"
+  ];
 
   meta = {
     homepage = "https://github.com/pimutils/todoman";

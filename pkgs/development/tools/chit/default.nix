@@ -26,8 +26,12 @@ rustPlatform.buildRustPackage rec {
   nativeBuildInputs = lib.optionals stdenv.isLinux [ pkg-config ];
 
   buildInputs =
-    lib.optionals stdenv.isLinux [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+    lib.optionals stdenv.isLinux [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+    ];
 
   # update Carg.lock to work with openssl 3
   postPatch = ''

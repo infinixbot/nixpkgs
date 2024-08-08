@@ -27,9 +27,17 @@ rustPlatform.buildRustPackage {
 
   env.OPENSSL_NO_VENDOR = 1;
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ Security ];
+  buildInputs =
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Security
+    ];
 
   passthru.updateScript = nix-update-script { };
 

@@ -18,9 +18,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-L52h94uohLMnj29lZj+i9hM8n9hIYo20nRS8RCW8npY=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = [ zlib ];
+  buildInputs = [
+    zlib
+  ];
 
   # Some targets are not enabled by default
   makeFlags = [

@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-SAdbgPmApmFToYrAm8acUapZMEMQr5MO7bQOTO2hd2c=";
   };
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   buildInputs = [
     libnet

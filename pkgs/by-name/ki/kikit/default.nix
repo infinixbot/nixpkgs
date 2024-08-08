@@ -67,7 +67,9 @@ buildPythonApplication rec {
     bats
   ];
 
-  pythonImportsCheck = [ "kikit" ];
+  pythonImportsCheck = [
+    "kikit"
+  ];
 
   preCheck = ''
     export PATH=$PATH:$out/bin

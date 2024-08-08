@@ -43,19 +43,27 @@ let
   knownFormatters = {
     ormolu = {
       cabalFlag = "ormolu";
-      packages = [ "hls-ormolu-plugin" ];
+      packages = [
+        "hls-ormolu-plugin"
+      ];
     };
     fourmolu = {
       cabalFlag = "fourmolu";
-      packages = [ "hls-fourmolu-plugin" ];
+      packages = [
+        "hls-fourmolu-plugin"
+      ];
     };
     floskell = {
       cabalFlag = "floskell";
-      packages = [ "hls-floskell-plugin" ];
+      packages = [
+        "hls-floskell-plugin"
+      ];
     };
     stylish-haskell = {
       cabalFlag = "stylishhaskell";
-      packages = [ "hls-stylish-haskell-plugin" ];
+      packages = [
+        "hls-stylish-haskell-plugin"
+      ];
     };
   };
 
@@ -127,7 +135,9 @@ let
         ((if dynamic then enableCabalFlag else disableCabalFlag) "dynamic")
         removeUnnecessaryFormatters
       ]
-      ++ lib.optionals (!dynamic) [ justStaticExecutables ]
+      ++ lib.optionals (!dynamic) [
+        justStaticExecutables
+      ]
     );
 
   targets =

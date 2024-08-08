@@ -49,7 +49,9 @@ stdenv.mkDerivation rec {
   buildFlags = [ "texpresso" ];
 
   env.NIX_CFLAGS_COMPILE = toString (
-    lib.optionals stdenv.isDarwin [ "-Wno-error=implicit-function-declaration" ]
+    lib.optionals stdenv.isDarwin [
+      "-Wno-error=implicit-function-declaration"
+    ]
   );
 
   installPhase = ''

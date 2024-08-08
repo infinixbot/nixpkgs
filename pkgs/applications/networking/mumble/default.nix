@@ -141,7 +141,9 @@ let
       type = "murmur";
 
       configureFlags =
-        [ "-D client=OFF" ]
+        [
+          "-D client=OFF"
+        ]
         ++ lib.optional (!iceSupport) "-D ice=OFF"
         ++ lib.optionals iceSupport [
           "-D Ice_HOME=${lib.getDev zeroc-ice};${lib.getLib zeroc-ice}"

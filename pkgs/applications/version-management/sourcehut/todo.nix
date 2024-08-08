@@ -49,7 +49,9 @@ buildPythonPackage rec {
       --replace "all: api" ""
   '';
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   propagatedBuildInputs = [
     srht

@@ -47,7 +47,9 @@ let
         urllib3 = prev.urllib3.overridePythonAttrs (prev: rec {
           pyproject = true;
           version = "1.26.18";
-          nativeBuildInputs = with final; [ setuptools ];
+          nativeBuildInputs = with final; [
+            setuptools
+          ];
           src = prev.src.override {
             inherit version;
             hash = "sha256-+OzBu6VmdBNFfFKauVW/jGe0XbeZ0VkGYmFxnjKFgKA=";
@@ -87,9 +89,13 @@ py.pkgs.buildPythonApplication rec {
     sed -i '/pip>=/d' requirements/bootstrap.txt
   '';
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
-  build-system = with py.pkgs; [ flit-core ];
+  build-system = with py.pkgs; [
+    flit-core
+  ];
 
   dependencies = with py.pkgs; [
     awscrt
@@ -133,7 +139,9 @@ py.pkgs.buildPythonApplication rec {
     export HOME=$(mktemp -d)
   '';
 
-  pytestFlagsArray = [ "-Wignore::DeprecationWarning" ];
+  pytestFlagsArray = [
+    "-Wignore::DeprecationWarning"
+  ];
 
   disabledTestPaths = [
     "tests/dependencies"
@@ -147,7 +155,9 @@ py.pkgs.buildPythonApplication rec {
     "tests/functional"
   ];
 
-  pythonImportsCheck = [ "awscli" ];
+  pythonImportsCheck = [
+    "awscli"
+  ];
 
   passthru = {
     python = py; # for aws_shell

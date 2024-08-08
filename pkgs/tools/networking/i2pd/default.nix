@@ -38,7 +38,9 @@ stdenv.mkDerivation rec {
     openssl
   ] ++ lib.optional upnpSupport miniupnpc;
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   makeFlags =
     let

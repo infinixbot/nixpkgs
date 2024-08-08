@@ -32,16 +32,20 @@ stdenv.mkDerivation (finalAttrs: {
     wrapQtAppsHook
     pkg-config
   ];
-  buildInputs = [
-    hunspell
-    poppler
-    qt5compat
-    qtbase
-    qtsvg
-    qttools
-    quazip
-    zlib
-  ] ++ lib.optionals stdenv.isLinux [ qtwayland ];
+  buildInputs =
+    [
+      hunspell
+      poppler
+      qt5compat
+      qtbase
+      qtsvg
+      qttools
+      quazip
+      zlib
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      qtwayland
+    ];
 
   postInstall = lib.optionalString stdenv.isDarwin ''
     mkdir -p "$out/Applications"

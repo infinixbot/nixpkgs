@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     installShellFiles
   ];
 
-  buildInputs = [ libpcap ];
+  buildInputs = [
+    libpcap
+  ];
 
   installPhase = ''
     runHook preBuild

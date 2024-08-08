@@ -39,7 +39,9 @@ stdenv.mkDerivation rec {
       bash-completion
       libGL
     ]
-    ++ lib.optionals (with stdenv.hostPlatform; isUnix && !isDarwin) [ libglvnd ]
+    ++ lib.optionals (with stdenv.hostPlatform; isUnix && !isDarwin) [
+      libglvnd
+    ]
     ++ lib.optionals x11Support [
       libX11
       libxcb

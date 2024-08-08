@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-l4tIK157Qo4m611etwMSk564+eC28x4RbmjX3J57/7Q=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     fuse
@@ -27,7 +29,9 @@ stdenv.mkDerivation rec {
 
   env.NIX_CFLAGS_COMPILE = "-D_FILE_OFFSET_BITS=64";
 
-  makeFlags = [ "prefix=${placeholder "out"}" ];
+  makeFlags = [
+    "prefix=${placeholder "out"}"
+  ];
 
   meta = with lib; {
     description = "Serve an archive or a compressed file as a read-only FUSE file system";

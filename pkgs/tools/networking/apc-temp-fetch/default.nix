@@ -20,11 +20,17 @@ buildPythonApplication rec {
     hash = "sha256-lXGj/xrOkdMMYvuyVVSCojjQlzISFUT14VTn//iOARo=";
   };
 
-  build-system = [ setuptools ];
+  build-system = [
+    setuptools
+  ];
 
-  dependencies = [ requests ];
+  dependencies = [
+    requests
+  ];
 
-  pythonImportsCheck = [ "APC_Temp_fetch" ];
+  pythonImportsCheck = [
+    "APC_Temp_fetch"
+  ];
 
   meta = with lib; {
     description = "unified temperature fetcher interface to several UPS network adapters";

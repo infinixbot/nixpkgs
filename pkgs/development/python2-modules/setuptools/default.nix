@@ -25,7 +25,9 @@ let
       name = "${pname}-${version}-source";
     };
 
-    patches = [ ./tag-date.patch ];
+    patches = [
+      ./tag-date.patch
+    ];
 
     buildPhase = ''
       ${python.pythonOnBuildForHost.interpreter} bootstrap.py

@@ -17,7 +17,9 @@ buildGoModule {
 
   vendorHash = "sha256-DiAqFJ8E5V0/eHztm92WVrf1XGPXmmOaVXaWHfQMn2k=";
 
-  nativeCheckInputs = [ git ];
+  nativeCheckInputs = [
+    git
+  ];
 
   preCheck = ''
     export HOME=`mktemp -d`

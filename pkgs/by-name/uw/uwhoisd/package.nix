@@ -21,7 +21,9 @@ python3.pkgs.buildPythonApplication rec {
     "tornado"
   ];
 
-  build-system = with python3.pkgs; [ poetry-core ];
+  build-system = with python3.pkgs; [
+    poetry-core
+  ];
 
   propagatedBuildInputs =
     with python3.pkgs;

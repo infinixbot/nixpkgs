@@ -120,7 +120,9 @@ stdenv.mkDerivation (finalAttrs: {
       libcxx
     ];
 
-  patches = [ ./no-usr-local-search-paths.patch ];
+  patches = [
+    ./no-usr-local-search-paths.patch
+  ];
 
   # Test of the examples for package 'tcltk' fails in Darwin sandbox. See:
   # https://github.com/NixOS/nixpkgs/issues/146131

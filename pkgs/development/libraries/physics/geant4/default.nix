@@ -99,9 +99,13 @@ lib.warnIf (enableQT != false) "geant4: enableQT is deprecated, please use enabl
         "-DINVENTOR_LIBRARY_RELEASE=${coin3d}/lib/libCoin.so"
       ];
 
-    nativeBuildInputs = [ cmake ];
+    nativeBuildInputs = [
+      cmake
+    ];
 
-    propagatedNativeBuildInputs = lib.optionals enableQt [ wrapQtAppsHook ];
+    propagatedNativeBuildInputs = lib.optionals enableQt [
+      wrapQtAppsHook
+    ];
     dontWrapQtApps = true; # no binaries
 
     buildInputs =

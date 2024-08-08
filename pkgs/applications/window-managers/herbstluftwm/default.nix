@@ -39,14 +39,18 @@ stdenv.mkDerivation rec {
     "man"
   ];
 
-  cmakeFlags = [ "-DCMAKE_INSTALL_SYSCONF_PREFIX=${placeholder "out"}/etc" ];
+  cmakeFlags = [
+    "-DCMAKE_INSTALL_SYSCONF_PREFIX=${placeholder "out"}/etc"
+  ];
 
   nativeBuildInputs = [
     cmake
     pkg-config
   ];
 
-  depsBuildBuild = [ asciidoc ];
+  depsBuildBuild = [
+    asciidoc
+  ];
 
   buildInputs = [
     libX11

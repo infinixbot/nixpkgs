@@ -86,12 +86,20 @@ in
       aliases = [ "display-manager.service" ];
 
       unitConfig = {
-        Wants = [ "systemd-user-sessions.service" ];
-        After = [
+        Wants = [
           "systemd-user-sessions.service"
+        ];
+        After =
+          [
+            "systemd-user-sessions.service"
+            "getty@${tty}.service"
+          ]
+          ++ lib.optionals (!cfg.greeterManagesPlymouth) [
+            "plymouth-quit-wait.service"
+          ];
+        Conflicts = [
           "getty@${tty}.service"
-        ] ++ lib.optionals (!cfg.greeterManagesPlymouth) [ "plymouth-quit-wait.service" ];
-        Conflicts = [ "getty@${tty}.service" ];
+        ];
       };
 
       serviceConfig = {
@@ -118,7 +126,9 @@ in
 
     # Create directories potentially required by supported greeters
     # See https://github.com/NixOS/nixpkgs/issues/248323
-    systemd.tmpfiles.rules = [ "d '/var/cache/tuigreet' - greeter greeter - -" ];
+    systemd.tmpfiles.rules = [
+      "d '/var/cache/tuigreet' - greeter greeter - -"
+    ];
 
     users.users.greeter = {
       isSystemUser = true;

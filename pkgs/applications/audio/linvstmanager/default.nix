@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     wrapQtAppsHook
   ];
 
-  buildInputs = [ qtbase ];
+  buildInputs = [
+    qtbase
+  ];
 
   meta = with lib; {
     description = "Graphical companion application for various bridges like LinVst, etc";

@@ -16,7 +16,9 @@ pythonPackages.buildPythonApplication rec {
     sha256 = "sha256-GFReOgM8zi5oyePpJm5HxtizUVqqUUINTRwyG/LGWB8=";
   };
 
-  nativeBuildInputs = [ wrapGAppsHook3 ];
+  nativeBuildInputs = [
+    wrapGAppsHook3
+  ];
 
   propagatedBuildInputs = with pythonPackages; [
     pyopengl

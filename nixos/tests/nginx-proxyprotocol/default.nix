@@ -15,7 +15,9 @@ import ../make-test-python.nix (
         { pkgs, lib, ... }:
         {
           environment.systemPackages = [ pkgs.netcat ];
-          security.pki.certificateFiles = [ certs.ca.cert ];
+          security.pki.certificateFiles = [
+            certs.ca.cert
+          ];
 
           networking.extraHosts = ''
             127.0.0.5 proxy.test.nix

@@ -53,7 +53,9 @@ runTest (
       nextcloud =
         { config, pkgs, ... }:
         {
-          systemd.tmpfiles.rules = [ "d /var/lib/nextcloud-data 0750 nextcloud nginx - -" ];
+          systemd.tmpfiles.rules = [
+            "d /var/lib/nextcloud-data 0750 nextcloud nginx - -"
+          ];
 
           services.nextcloud = {
             enable = true;

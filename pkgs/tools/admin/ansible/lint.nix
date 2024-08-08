@@ -27,7 +27,9 @@ python3.pkgs.buildPythonApplication rec {
     setuptools-scm
   ];
 
-  pythonRelaxDeps = [ "ruamel.yaml" ];
+  pythonRelaxDeps = [
+    "ruamel.yaml"
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     # https://github.com/ansible/ansible-lint/blob/master/.config/requirements.in

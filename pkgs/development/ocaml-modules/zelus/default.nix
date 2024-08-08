@@ -25,9 +25,13 @@ buildDunePackage rec {
     patchShebangs configure
   '';
 
-  nativeBuildInputs = [ menhir ];
+  nativeBuildInputs = [
+    menhir
+  ];
 
-  buildInputs = [ menhirLib ];
+  buildInputs = [
+    menhirLib
+  ];
 
   meta = with lib; {
     description = "Synchronous language with ODEs";

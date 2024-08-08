@@ -29,8 +29,12 @@ rustPlatform.buildRustPackage {
   nativeBuildInputs = lib.optionals stdenv.isLinux [ pkg-config ];
 
   buildInputs =
-    lib.optionals stdenv.isLinux [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.SystemConfiguration ];
+    lib.optionals stdenv.isLinux [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.SystemConfiguration
+    ];
 
   passthru.tests.version = testers.testVersion {
     inherit version;

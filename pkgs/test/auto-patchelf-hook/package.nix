@@ -49,7 +49,9 @@ stdenv.mkDerivation {
     mv usr $out
   '';
 
-  buildInputs = [ freetype ];
+  buildInputs = [
+    freetype
+  ];
 
   autoPatchelfIgnoreMissingDeps = [
     "libGL.so.1"

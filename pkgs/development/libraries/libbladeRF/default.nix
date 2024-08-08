@@ -47,7 +47,9 @@ stdenv.mkDerivation rec {
   '';
 
   cmakeFlags =
-    [ "-DBUILD_DOCUMENTATION=ON" ]
+    [
+      "-DBUILD_DOCUMENTATION=ON"
+    ]
     ++ lib.optionals stdenv.isLinux [
       "-DUDEV_RULES_PATH=etc/udev/rules.d"
       "-DINSTALL_UDEV_RULES=ON"

@@ -32,9 +32,13 @@ python3.pkgs.buildPythonApplication rec {
     requests
   ];
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
-  pythonImportsCheck = [ "gcp_scanner" ];
+  pythonImportsCheck = [
+    "gcp_scanner"
+  ];
 
   disabledTests = [
     # Tests require credentials

@@ -36,7 +36,9 @@ mkDerivationWith python3.pkgs.buildPythonApplication {
   ];
 
   buildInputs =
-    [ gtk3 ]
+    [
+      gtk3
+    ]
     ++ lib.optionals waylandSupport [
       qtwayland
       wayland

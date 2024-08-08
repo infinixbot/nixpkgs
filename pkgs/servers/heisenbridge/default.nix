@@ -26,7 +26,9 @@ python3.pkgs.buildPythonApplication rec {
     python-socks
   ];
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
   meta = with lib; {
     description = "Bouncer-style Matrix-IRC bridge";

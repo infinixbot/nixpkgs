@@ -54,7 +54,11 @@ rustPlatform.buildRustPackage rec {
     ''
       patchelf --set-rpath ${rpath} $out/bin/onagre
       wrapProgram $out/bin/onagre \
-        --prefix PATH ':' ${lib.makeBinPath [ pop-launcher ]}
+        --prefix PATH ':' ${
+          lib.makeBinPath [
+            pop-launcher
+          ]
+        }
     '';
 
   meta = with lib; {

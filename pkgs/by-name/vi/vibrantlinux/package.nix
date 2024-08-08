@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs =
-    [ makeWrapper ]
+    [
+      makeWrapper
+    ]
     ++ (with qt5; [
       qmake
       wrapQtAppsHook

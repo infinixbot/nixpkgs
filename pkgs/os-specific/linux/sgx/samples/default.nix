@@ -26,13 +26,17 @@ let
         which
       ];
 
-      buildInputs = [ sgx-sdk ];
+      buildInputs = [
+        sgx-sdk
+      ];
 
       # The samples don't have proper support for parallel building
       # causing them to fail randomly.
       enableParallelBuilding = false;
 
-      buildFlags = [ "SGX_MODE=${sgxMode}" ];
+      buildFlags = [
+        "SGX_MODE=${sgxMode}"
+      ];
 
       installPhase = ''
         runHook preInstall

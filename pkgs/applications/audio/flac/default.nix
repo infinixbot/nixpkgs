@@ -26,9 +26,13 @@ stdenv.mkDerivation rec {
     graphviz
   ];
 
-  buildInputs = [ libogg ];
+  buildInputs = [
+    libogg
+  ];
 
-  cmakeFlags = lib.optionals (!stdenv.hostPlatform.isStatic) [ "-DBUILD_SHARED_LIBS=ON" ];
+  cmakeFlags = lib.optionals (!stdenv.hostPlatform.isStatic) [
+    "-DBUILD_SHARED_LIBS=ON"
+  ];
 
   CFLAGS = [
     "-O3"

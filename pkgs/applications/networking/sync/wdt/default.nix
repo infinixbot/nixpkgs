@@ -41,7 +41,9 @@ stdenv.mkDerivation {
     ln -s $sourceRoot wdt
   '';
 
-  cmakeFlags = [ "-DWDT_USE_SYSTEM_FOLLY=ON" ];
+  cmakeFlags = [
+    "-DWDT_USE_SYSTEM_FOLLY=ON"
+  ];
 
   passthru = {
     updateScript = unstableGitUpdater {

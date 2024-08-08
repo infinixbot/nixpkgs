@@ -17,9 +17,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-VSoQLoqiq8xBYJDewvb4DaWfl/kfV5aOnp17PcAF268=";
   };
 
-  patches = [ ./nixos-darwin-no-fat-dylib.patch ];
+  patches = [
+    ./nixos-darwin-no-fat-dylib.patch
+  ];
 
-  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
+  makeFlags = [
+    "CC=${stdenv.cc.targetPrefix}cc"
+  ];
 
   installPhase = ''
     runHook preInstall

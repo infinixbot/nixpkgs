@@ -171,7 +171,9 @@ stdenv.mkDerivation (finalAttrs: {
       bash
       gnum4 # install glib-gettextize and m4 macros for other apps to use
     ]
-    ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [ elfutils ]
+    ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [
+      elfutils
+    ]
     ++ lib.optionals stdenv.isLinux [
       libselinux
       util-linuxMinimal # for libmount
@@ -232,7 +234,9 @@ stdenv.mkDerivation (finalAttrs: {
       # relocation R_X86_64_32 against hidden symbol `__TMC_END__' can not be used when making a shared object
       "-Dtests=${lib.boolToString (!stdenv.hostPlatform.isStatic)}"
     ]
-    ++ lib.optionals (!lib.meta.availableOn stdenv.hostPlatform elfutils) [ "-Dlibelf=disabled" ]
+    ++ lib.optionals (!lib.meta.availableOn stdenv.hostPlatform elfutils) [
+      "-Dlibelf=disabled"
+    ]
     ++ lib.optionals stdenv.isFreeBSD [
       "-Db_lundef=false"
       "-Dxattr=false"

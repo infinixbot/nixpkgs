@@ -155,7 +155,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [ cfg.finalPackage ];
+    environment.systemPackages = [
+      cfg.finalPackage
+    ];
     environment.variables.EDITOR = lib.mkIf cfg.defaultEditor (lib.mkOverride 900 "nvim");
     # On most NixOS configurations /share is already included, so it includes
     # this directory as well. But  This makes sure that /share/nvim/site paths

@@ -26,7 +26,9 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "pydantic" ];
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   propagatedBuildInputs = [
     click

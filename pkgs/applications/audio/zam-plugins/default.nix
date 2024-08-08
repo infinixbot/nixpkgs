@@ -47,7 +47,9 @@ stdenv.mkDerivation rec {
     patchShebangs ./dpf/utils/generate-ttl.sh
   '';
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   enableParallelBuilding = true;
 

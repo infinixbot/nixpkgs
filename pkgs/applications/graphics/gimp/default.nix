@@ -83,14 +83,18 @@ stdenv.mkDerivation (finalAttrs: {
     ./hardcode-plugin-interpreters.patch
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook # hardcode-plugin-interpreters.patch changes Makefile.am
-    pkg-config
-    intltool
-    gettext
-    makeWrapper
-    gtk-doc
-  ] ++ lib.optionals stdenv.isDarwin [ desktopToDarwinBundle ];
+  nativeBuildInputs =
+    [
+      autoreconfHook # hardcode-plugin-interpreters.patch changes Makefile.am
+      pkg-config
+      intltool
+      gettext
+      makeWrapper
+      gtk-doc
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      desktopToDarwinBundle
+    ];
 
   buildInputs =
     [
@@ -135,7 +139,9 @@ stdenv.mkDerivation (finalAttrs: {
       Cocoa
       gtk-mac-integration-gtk2
     ]
-    ++ lib.optionals stdenv.isLinux [ libgudev ]
+    ++ lib.optionals stdenv.isLinux [
+      libgudev
+    ]
     ++ lib.optionals withPython [
       python
       # Duplicated here because python.withPackages does not expose the dev output with pkg-config files
@@ -143,7 +149,9 @@ stdenv.mkDerivation (finalAttrs: {
     ];
 
   # needed by gimp-2.0.pc
-  propagatedBuildInputs = [ gegl ];
+  propagatedBuildInputs = [
+    gegl
+  ];
 
   configureFlags =
     [

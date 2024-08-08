@@ -15,7 +15,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-tdLcil3oYptx7l02ErboTYhBi4bFzTm6MV6esEYvGMs=";
   };
 
-  cmakeFlags = [ (lib.cmakeBool "WITH_KDE" false) ];
+  cmakeFlags = [
+    (lib.cmakeBool "WITH_KDE" false)
+  ];
 
   nativeBuildInputs = [ cmake ];
 

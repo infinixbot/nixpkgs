@@ -212,7 +212,9 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   passthru = {
-    ayatana-indicators = [ "telephony-service-indicator" ];
+    ayatana-indicators = [
+      "telephony-service-indicator"
+    ];
     tests.vm = nixosTests.ayatana-indicators;
     updateScript = gitUpdater { };
   };

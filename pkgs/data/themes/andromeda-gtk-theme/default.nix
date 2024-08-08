@@ -29,7 +29,9 @@ stdenvNoCC.mkDerivation {
 
   sourceRoot = ".";
 
-  propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+  propagatedUserEnvPkgs = [
+    gtk-engine-murrine
+  ];
 
   installPhase = ''
     runHook preInstall

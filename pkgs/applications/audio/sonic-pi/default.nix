@@ -90,7 +90,9 @@ stdenv.mkDerivation rec {
       boost
       aubio
     ]
-    ++ lib.optionals withTauWidget [ qtwebengine ]
+    ++ lib.optionals withTauWidget [
+      qtwebengine
+    ]
     ++ lib.optionals withImGui [
       gl3w
       SDL2

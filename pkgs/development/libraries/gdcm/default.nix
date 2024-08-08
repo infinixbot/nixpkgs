@@ -44,7 +44,9 @@ stdenv.mkDerivation rec {
       "-DCMAKE_INSTALL_BINDIR=bin"
       "-DCMAKE_INSTALL_INCLUDEDIR=include"
     ]
-    ++ lib.optionals enableVTK [ "-DGDCM_USE_VTK=ON" ]
+    ++ lib.optionals enableVTK [
+      "-DGDCM_USE_VTK=ON"
+    ]
     ++ lib.optionals enablePython [
       "-DGDCM_WRAP_PYTHON:BOOL=ON"
       "-DGDCM_INSTALL_PYTHONMODULE_DIR=${placeholder "out"}/${python.sitePackages}"
@@ -62,7 +64,9 @@ stdenv.mkDerivation rec {
       openjpeg
       zlib
     ]
-    ++ lib.optionals enableVTK [ vtk ]
+    ++ lib.optionals enableVTK [
+      vtk
+    ]
     ++ lib.optionals stdenv.isDarwin [
       ApplicationServices
       Cocoa
@@ -73,18 +77,22 @@ stdenv.mkDerivation rec {
       python
     ];
 
-  disabledTests = [
-    # require networking:
-    "TestEcho"
-    "TestFind"
-    "gdcmscu-echo-dicomserver"
-    "gdcmscu-find-dicomserver"
-    # seemingly ought to be disabled when the test data submodule is not present:
-    "TestvtkGDCMImageReader2_3"
-    "TestSCUValidation"
-    # errors because 3 classes not wrapped:
-    "TestWrapPython"
-  ] ++ lib.optionals (stdenv.isAarch64 && stdenv.isLinux) [ "TestRescaler2" ];
+  disabledTests =
+    [
+      # require networking:
+      "TestEcho"
+      "TestFind"
+      "gdcmscu-echo-dicomserver"
+      "gdcmscu-find-dicomserver"
+      # seemingly ought to be disabled when the test data submodule is not present:
+      "TestvtkGDCMImageReader2_3"
+      "TestSCUValidation"
+      # errors because 3 classes not wrapped:
+      "TestWrapPython"
+    ]
+    ++ lib.optionals (stdenv.isAarch64 && stdenv.isLinux) [
+      "TestRescaler2"
+    ];
 
   checkPhase = ''
     runHook preCheck

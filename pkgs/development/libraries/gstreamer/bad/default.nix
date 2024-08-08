@@ -147,7 +147,9 @@ stdenv.mkDerivation rec {
       gstreamer # for gst-tester-1.0
       gobject-introspection
     ]
-    ++ lib.optionals enableDocumentation [ hotdoc ]
+    ++ lib.optionals enableDocumentation [
+      hotdoc
+    ]
     ++ lib.optionals (gst-plugins-base.waylandEnabled && stdenv.isLinux) [
       wayland # for wayland-scanner
     ];
@@ -205,18 +207,30 @@ stdenv.mkDerivation rec {
       wildmidi
       svt-av1
     ]
-    ++ lib.optionals opencvSupport [ opencv4 ]
-    ++ lib.optionals enableZbar [ zbar ]
-    ++ lib.optionals faacSupport [ faac ]
+    ++ lib.optionals opencvSupport [
+      opencv4
+    ]
+    ++ lib.optionals enableZbar [
+      zbar
+    ]
+    ++ lib.optionals faacSupport [
+      faac
+    ]
     ++ lib.optionals enableGplPlugins [
       libmpeg2
       mjpegtools
       faad2
       x265
     ]
-    ++ lib.optionals bluezSupport [ bluez ]
-    ++ lib.optionals microdnsSupport [ libmicrodns ]
-    ++ lib.optionals openh264Support [ openh264 ]
+    ++ lib.optionals bluezSupport [
+      bluez
+    ]
+    ++ lib.optionals microdnsSupport [
+      libmicrodns
+    ]
+    ++ lib.optionals openh264Support [
+      openh264
+    ]
     ++ lib.optionals (gst-plugins-base.waylandEnabled && stdenv.isLinux) [
       libva # vaapi requires libva -> libdrm -> libpciaccess, which is Linux-only in nixpkgs
       wayland
@@ -248,8 +262,12 @@ stdenv.mkDerivation rec {
       libGL
       libGLU
     ]
-    ++ lib.optionals guiSupport [ gtk3 ]
-    ++ lib.optionals (stdenv.isLinux && guiSupport) [ directfb ]
+    ++ lib.optionals guiSupport [
+      gtk3
+    ]
+    ++ lib.optionals (stdenv.isLinux && guiSupport) [
+      directfb
+    ]
     ++ lib.optionals stdenv.isDarwin [
       # For unknown reasons the order is important, e.g. if
       # VideoToolbox is last, we get:
@@ -317,7 +335,9 @@ stdenv.mkDerivation rec {
     ++ lib.optionals (!stdenv.isLinux || !gst-plugins-base.waylandEnabled) [
       "-Dva=disabled" # see comment on `libva` in `buildInputs`
     ]
-    ++ lib.optionals (!stdenv.isLinux || !guiSupport) [ "-Ddirectfb=disabled" ]
+    ++ lib.optionals (!stdenv.isLinux || !guiSupport) [
+      "-Ddirectfb=disabled"
+    ]
     ++ lib.optionals stdenv.isDarwin [
       "-Daja=disabled"
       "-Dchromaprint=disabled"
@@ -336,7 +356,9 @@ stdenv.mkDerivation rec {
     ++ lib.optionals (!stdenv.isLinux || !stdenv.isx86_64 || !gst-plugins-base.waylandEnabled) [
       "-Dqsv=disabled" # Linux (and Windows) x86 only, makes va required
     ]
-    ++ lib.optionals (!gst-plugins-base.glEnabled) [ "-Dgl=disabled" ]
+    ++ lib.optionals (!gst-plugins-base.glEnabled) [
+      "-Dgl=disabled"
+    ]
     ++ lib.optionals (!gst-plugins-base.waylandEnabled || !guiSupport) [
       "-Dgtk3=disabled" # Wayland-based GTK sink
       "-Dwayland=disabled"
@@ -348,7 +370,9 @@ stdenv.mkDerivation rec {
     ]
     ++ (
       if enableGplPlugins then
-        [ "-Dgpl=enabled" ]
+        [
+          "-Dgpl=enabled"
+        ]
       else
         [
           "-Ddts=disabled"

@@ -32,10 +32,14 @@ buildGoModule rec {
 
   vendorHash = "sha256-bLQLRPu1Kvtx1+Lc8VpPAlOoGzYZo7dzEPwT0iauDWs=";
 
-  nativeBuildInputs = [
-    copyDesktopItems
-    pkg-config
-  ] ++ lib.optionals stdenv.isDarwin [ desktopToDarwinBundle ];
+  nativeBuildInputs =
+    [
+      copyDesktopItems
+      pkg-config
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      desktopToDarwinBundle
+    ];
 
   # go-glfw doesn't support both X11 and Wayland in single build
   tags = lib.optionals waylandSupport [ "wayland" ];

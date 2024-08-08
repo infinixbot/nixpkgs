@@ -49,7 +49,9 @@ buildDunePackage rec {
   ];
 
   doCheck = true;
-  checkInputs = [ alcotest-lwt ];
+  checkInputs = [
+    alcotest-lwt
+  ];
 
   meta = {
     description = "OCaml web framework";

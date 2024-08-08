@@ -46,10 +46,17 @@
       ))
     ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ] ++ lib.optionals cudaSupport (with cudaPackages; [ cuda_nvcc ]);
+  nativeBuildInputs =
+    [
+      cmake
+      pkg-config
+    ]
+    ++ lib.optionals cudaSupport (
+      with cudaPackages;
+      [
+        cuda_nvcc
+      ]
+    );
 
   buildInputs =
     [

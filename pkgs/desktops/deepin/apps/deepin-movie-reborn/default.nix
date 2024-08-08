@@ -42,7 +42,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-dWN2IVVpwYwzEuLtT3JvhzKiBwaBq4lzmaEhA9S1hjE=";
   };
 
-  patches = [ ./dont_use_libPath.diff ];
+  patches = [
+    ./dont_use_libPath.diff
+  ];
 
   postPatch = ''
     # https://github.com/linuxdeepin/deepin-movie-reborn/pull/198
@@ -107,7 +109,9 @@ stdenv.mkDerivation rec {
     "-I${gst_all_1.gst-plugins-base.dev}/include/gstreamer-1.0"
   ];
 
-  cmakeFlags = [ "-DVERSION=${version}" ];
+  cmakeFlags = [
+    "-DVERSION=${version}"
+  ];
 
   strictDeps = true;
 

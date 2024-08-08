@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-SiQ4RMha6dMV7V2fh+UxtAIgEEH/6/hF9fe+bPtoGIw=";
   };
 
-  patches = [ ./remove-unused-command-line-argument.patch ];
+  patches = [
+    ./remove-unused-command-line-argument.patch
+  ];
 
   # Workaround for https://github.com/clasp-developers/clasp/issues/1590
   postPatch = ''

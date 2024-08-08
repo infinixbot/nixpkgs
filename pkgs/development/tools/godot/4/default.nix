@@ -63,7 +63,9 @@ stdenv.mkDerivation rec {
     installShellFiles
   ];
 
-  buildInputs = [ scons ];
+  buildInputs = [
+    scons
+  ];
 
   runtimeDependencies =
     [

@@ -78,7 +78,9 @@ stdenv.mkDerivation (finalAttrs: {
     sqlite
   ];
 
-  checkInputs = [ gtest ];
+  checkInputs = [
+    gtest
+  ];
 
   dontWrapQtApps = true;
 
@@ -113,6 +115,8 @@ stdenv.mkDerivation (finalAttrs: {
     maintainers = teams.lomiri.members;
     mainProgram = "biometryd";
     platforms = platforms.linux;
-    pkgConfigModules = [ "biometryd" ];
+    pkgConfigModules = [
+      "biometryd"
+    ];
   };
 })

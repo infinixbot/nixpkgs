@@ -45,9 +45,13 @@ let
         pkg-config
       ];
 
-      buildInputs = [ openssl ] ++ lib.optional stdenv.isDarwin Security;
+      buildInputs = [
+        openssl
+      ] ++ lib.optional stdenv.isDarwin Security;
 
-      checkInputs = [ cacert ];
+      checkInputs = [
+        cacert
+      ];
 
       OPENSSL_NO_VENDOR = true;
 

@@ -33,9 +33,13 @@ python3.pkgs.buildPythonApplication rec {
     ]
     ++ publicsuffixlist.optional-dependencies.update;
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
-  pythonImportsCheck = [ "trustymail" ];
+  pythonImportsCheck = [
+    "trustymail"
+  ];
 
   meta = with lib; {
     description = "Tool to scan domains and return data based on trustworthy email best practices";

@@ -16,7 +16,9 @@ in
 mkDerivation rec {
   pname = "kdev-python";
 
-  cmakeFlags = [ "-DPYTHON_EXECUTABLE=${python}/bin/python" ];
+  cmakeFlags = [
+    "-DPYTHON_EXECUTABLE=${python}/bin/python"
+  ];
 
   nativeBuildInputs = [
     cmake

@@ -29,7 +29,9 @@ rustPlatform.buildRustPackage rec {
     installShellFiles
   ];
 
-  buildInputs = [ nettle ];
+  buildInputs = [
+    nettle
+  ];
   buildFeatures = [ "cli" ];
 
   # Install manual pages

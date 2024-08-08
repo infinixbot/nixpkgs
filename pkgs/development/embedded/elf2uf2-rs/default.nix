@@ -19,7 +19,9 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-cmiCOykORue0Cg2uUUWa/nXviX1ddbGNC5gRKe+1kYs=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs =
     lib.optional stdenv.isLinux udev

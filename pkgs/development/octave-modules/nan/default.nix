@@ -14,7 +14,9 @@ buildOctavePackage rec {
     sha256 = "sha256-d9J6BfNFeM5LtMqth0boSPd9giYU42KBnxrsUCmKK1s=";
   };
 
-  buildInputs = [ blas ];
+  buildInputs = [
+    blas
+  ];
 
   meta = with lib; {
     homepage = "https://octave.sourceforge.io/nan/index.html";

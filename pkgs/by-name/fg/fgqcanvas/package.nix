@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     pkg-config
     qt5.qttools
   ];
-  buildInputs = [ qt5.qtwebsockets ];
+  buildInputs = [
+    qt5.qtwebsockets
+  ];
 
   configurePhase = ''
     runHook preConfigure

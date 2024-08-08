@@ -50,6 +50,8 @@ stdenv.mkDerivation rec {
       operating systems is planned, but not yet available.
     '';
     inherit (ocaml.meta) platforms;
-    maintainers = [ lib.maintainers.maggesi ];
+    maintainers = [
+      lib.maintainers.maggesi
+    ];
   };
 }

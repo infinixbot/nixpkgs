@@ -55,7 +55,9 @@ stdenv.mkDerivation rec {
     gsettings-desktop-schemas
   ];
 
-  mesonFlags = [ "-Dgtk_doc=true" ];
+  mesonFlags = [
+    "-Dgtk_doc=true"
+  ];
 
   doCheck = true;
 

@@ -296,11 +296,17 @@ in
         # loading all the gems takes time
         TimeoutStartSec = 1200;
       };
-      after = [
-        "network.target"
+      after =
+        [
+          "network.target"
+          "postgresql.service"
+        ]
+        ++ optionals cfg.redis.createLocally [
+          "redis-${cfg.redis.name}.service"
+        ];
+      requires = [
         "postgresql.service"
-      ] ++ optionals cfg.redis.createLocally [ "redis-${cfg.redis.name}.service" ];
-      requires = [ "postgresql.service" ];
+      ];
       description = "Zammad web";
       wantedBy = [ "multi-user.target" ];
       preStart = ''

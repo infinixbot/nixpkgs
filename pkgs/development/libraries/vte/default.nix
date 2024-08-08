@@ -69,15 +69,19 @@ stdenv.mkDerivation (finalAttrs: {
     gi-docgen
   ];
 
-  buildInputs = [
-    cairo
-    fribidi
-    gnutls
-    pango # duplicated with propagatedBuildInputs to support gtkVersion == null
-    pcre2
-    lz4
-    icu
-  ] ++ lib.optionals systemdSupport [ systemd ];
+  buildInputs =
+    [
+      cairo
+      fribidi
+      gnutls
+      pango # duplicated with propagatedBuildInputs to support gtkVersion == null
+      pcre2
+      lz4
+      icu
+    ]
+    ++ lib.optionals systemdSupport [
+      systemd
+    ];
 
   # Required by vte-2.91.pc.
   propagatedBuildInputs = lib.optionals (gtkVersion != null) [
@@ -95,7 +99,9 @@ stdenv.mkDerivation (finalAttrs: {
       (lib.mesonBool "gtk3" (gtkVersion == "3"))
       (lib.mesonBool "gtk4" (gtkVersion == "4"))
     ]
-    ++ lib.optionals (!systemdSupport) [ "-D_systemd=false" ]
+    ++ lib.optionals (!systemdSupport) [
+      "-D_systemd=false"
+    ]
     ++ lib.optionals stdenv.isDarwin [
       # -Bsymbolic-functions is not supported on darwin
       "-D_b_symbolic_functions=false"

@@ -40,6 +40,8 @@ stdenvNoCC.mkDerivation {
     '';
     license = lib.licenses.gpl2;
     platforms = lib.platforms.linux;
-    maintainers = with lib.maintainers; [ johnrtitor ];
+    maintainers = with lib.maintainers; [
+      johnrtitor
+    ];
   };
 }

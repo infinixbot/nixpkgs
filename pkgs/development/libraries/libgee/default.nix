@@ -31,7 +31,9 @@ stdenv.mkDerivation (finalAttrs: {
     gobject-introspection
   ];
 
-  buildInputs = [ glib ];
+  buildInputs = [
+    glib
+  ];
 
   doCheck = true;
 

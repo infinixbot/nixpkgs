@@ -39,7 +39,9 @@ mkDerivation rec {
     qttools
   ];
 
-  patches = [ ./yt-dlp-path.patch ];
+  patches = [
+    ./yt-dlp-path.patch
+  ];
 
   postPatch =
     ''

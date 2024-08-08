@@ -17,7 +17,9 @@ python3.pkgs.buildPythonApplication rec {
 
   format = "pyproject";
 
-  buildInputs = [ python3.pkgs.setuptools ];
+  buildInputs = [
+    python3.pkgs.setuptools
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/akuukis/beancount_share";

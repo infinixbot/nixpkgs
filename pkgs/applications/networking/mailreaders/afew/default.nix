@@ -36,13 +36,17 @@ python3Packages.buildPythonApplication rec {
   ];
 
   nativeCheckInputs =
-    [ pkgs.notmuch ]
+    [
+      pkgs.notmuch
+    ]
     ++ (with python3Packages; [
       freezegun
       pytestCheckHook
     ]);
 
-  makeWrapperArgs = [ ''--prefix PATH ':' "${pkgs.notmuch}/bin"'' ];
+  makeWrapperArgs = [
+    ''--prefix PATH ':' "${pkgs.notmuch}/bin"''
+  ];
 
   outputs = [
     "out"

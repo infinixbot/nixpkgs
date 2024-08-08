@@ -64,7 +64,9 @@ stdenv.mkDerivation rec {
     sha256 = "e155c280d15f2db4b5e638f244319dbec938d6de267f2fed1b4ba2b55fbb8a9b";
   };
 
-  nativeBuildInputs = [ p7zip ];
+  nativeBuildInputs = [
+    p7zip
+  ];
 
   buildInputs = [
     alsa-lib

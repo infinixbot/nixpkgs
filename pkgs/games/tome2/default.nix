@@ -47,7 +47,9 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ cmake ];
 
-  cmakeFlags = [ "-DSYSTEM_INSTALL=ON" ];
+  cmakeFlags = [
+    "-DSYSTEM_INSTALL=ON"
+  ];
 
   postInstall = ''
     mkdir -p $out/share/applications

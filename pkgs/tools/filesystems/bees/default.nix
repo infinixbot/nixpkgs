@@ -42,7 +42,9 @@ let
       unset -f git
     '';
 
-    buildFlags = [ "ETC_PREFIX=/var/run/bees/configs" ];
+    buildFlags = [
+      "ETC_PREFIX=/var/run/bees/configs"
+    ];
 
     makeFlags = [
       "SHELL=bash"

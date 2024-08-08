@@ -96,7 +96,9 @@ let
 
     dontUnpack = true;
 
-    nativeBuildInputs = [ cacert ];
+    nativeBuildInputs = [
+      cacert
+    ];
 
     installPhase = ''
       runHook preInstall

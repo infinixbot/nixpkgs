@@ -36,7 +36,12 @@ stdenv.mkDerivation rec {
 
   preFixup =
     let
-      ldLibraryPath = lib.makeLibraryPath ([ tpm2-tss ] ++ (lib.optional abrmdSupport tpm2-abrmd));
+      ldLibraryPath = lib.makeLibraryPath (
+        [
+          tpm2-tss
+        ]
+        ++ (lib.optional abrmdSupport tpm2-abrmd)
+      );
     in
     ''
       wrapProgram $out/bin/tpm2 --suffix LD_LIBRARY_PATH : "${ldLibraryPath}"

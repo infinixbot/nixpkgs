@@ -20,7 +20,9 @@ stdenv.mkDerivation {
     sha256 = "0npmlnybblp82mfpinjbz7dhwqgpdqc1s63wc1zs8mlcs19pdh98";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   cmakeBuildType = "MinSizeRel";
 

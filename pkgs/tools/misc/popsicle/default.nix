@@ -47,7 +47,9 @@ stdenv.mkDerivation rec {
     gtk3
   ];
 
-  makeFlags = [ "prefix=$(out)" ];
+  makeFlags = [
+    "prefix=$(out)"
+  ];
 
   meta = with lib; {
     description = "Multiple USB File Flasher";

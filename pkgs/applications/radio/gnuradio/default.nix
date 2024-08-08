@@ -83,7 +83,9 @@ let
     };
     python-support = {
       pythonRuntime = [ python.pkgs.six ];
-      native = [ python ];
+      native = [
+        python
+      ];
       cmakeEnableFlag = "PYTHON";
     };
     testing-support = {
@@ -95,7 +97,9 @@ let
     };
     gnuradio-runtime = {
       cmakeEnableFlag = "GNURADIO_RUNTIME";
-      pythonRuntime = [ python.pkgs.pybind11 ];
+      pythonRuntime = [
+        python.pkgs.pybind11
+      ];
     };
     gr-ctrlport = {
       runtime = [
@@ -117,7 +121,9 @@ let
         numpy
         pygobject3
       ];
-      native = [ python.pkgs.pytest ];
+      native = [
+        python.pkgs.pytest
+      ];
       runtime = [
         gtk3
         pango
@@ -128,7 +134,9 @@ let
       cmakeEnableFlag = "GRC";
     };
     jsonyaml_blocks = {
-      pythonRuntime = [ python.pkgs.jsonschema ];
+      pythonRuntime = [
+        python.pkgs.jsonschema
+      ];
       cmakeEnableFlag = "JSONYAML_BLOCKS";
     };
     gr-blocks = {
@@ -185,7 +193,9 @@ let
     };
     gr-iio = {
       cmakeEnableFlag = "GR_IIO";
-      runtime = [ libiio ];
+      runtime = [
+        libiio
+      ];
     };
     common-precompiled-headers = {
       cmakeEnableFlag = "COMMON_PCH";
@@ -202,11 +212,15 @@ let
       cmakeEnableFlag = "GR_TRELLIS";
     };
     gr-uhd = {
-      runtime = [ uhd ];
+      runtime = [
+        uhd
+      ];
       cmakeEnableFlag = "GR_UHD";
     };
     gr-uhd-rfnoc = {
-      runtime = [ uhd ];
+      runtime = [
+        uhd
+      ];
       cmakeEnableFlag = "UHD_RFNOC";
     };
     gr-utils = {
@@ -260,7 +274,9 @@ let
     };
     gr-soapy = {
       cmakeEnableFlag = "GR_SOAPY";
-      runtime = [ soapysdr ];
+      runtime = [
+        soapysdr
+      ];
     };
   };
   shared = (

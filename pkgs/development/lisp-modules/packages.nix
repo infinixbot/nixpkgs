@@ -108,8 +108,12 @@ let
           url = "https://repo.or.cz/cl-notify.git/snapshot/138ca703861f4a1fbccbed557f92cf4d213668a1.tar.gz";
           sha256 = "0k6ns6fzvjcbpsqgx85r4g5m25fvrdw9481i9vyabwym9q8bbqwx";
         };
-        lispLibs = [ self.cffi ];
-        nativeLibs = [ pkgs.libnotify ];
+        lispLibs = [
+          self.cffi
+        ];
+        nativeLibs = [
+          pkgs.libnotify
+        ];
       };
 
       cl-liballegro-nuklear = build-with-compile-into-pwd {
@@ -641,7 +645,9 @@ let
           rev = "84b128192d6b11cf03f1150e474a23368f07edff";
           hash = "sha256-A56Yz+W4n1rAxxZg15zfkrLMbKMEG/zsWqaX7+kx4Qg=";
         };
-        lispLibs = with self; [ cl-gobject-introspection-wrapper ];
+        lispLibs = with self; [
+          cl-gobject-introspection-wrapper
+        ];
       };
 
       cl-gtk4 = build-asdf-system {
@@ -662,7 +668,9 @@ let
           pkgs.gobject-introspection
           pkgs.gtk4
         ];
-        nativeLibs = [ pkgs.gtk4 ];
+        nativeLibs = [
+          pkgs.gtk4
+        ];
       };
 
       cl-gtk4_dot_adw = build-asdf-system {
@@ -678,8 +686,12 @@ let
           cl-gobject-introspection-wrapper
           cl-gtk4
         ];
-        nativeBuildInputs = [ pkgs.libadwaita ];
-        nativeLibs = [ pkgs.libadwaita ];
+        nativeBuildInputs = [
+          pkgs.libadwaita
+        ];
+        nativeLibs = [
+          pkgs.libadwaita
+        ];
       };
 
       cl-gtk4_dot_webkit2 = build-asdf-system {
@@ -695,8 +707,12 @@ let
           cl-gobject-introspection-wrapper
           cl-gtk4
         ];
-        nativeBuildInputs = [ pkgs.webkitgtk_6_0 ];
-        nativeLibs = [ pkgs.webkitgtk_6_0 ];
+        nativeBuildInputs = [
+          pkgs.webkitgtk_6_0
+        ];
+        nativeLibs = [
+          pkgs.webkitgtk_6_0
+        ];
         # Requires old webkitgtk_5_0 which was replaced by webkitgtk_6_0
         meta.broken = true;
       };
@@ -890,9 +906,13 @@ let
           yason
         ];
 
-        nativeLibs = [ pkgs.openssl ];
+        nativeLibs = [
+          pkgs.openssl
+        ];
 
-        nativeBuildInputs = [ pkgs.makeWrapper ];
+        nativeBuildInputs = [
+          pkgs.makeWrapper
+        ];
 
         buildScript = pkgs.writeText "build-qlot-cli" ''
           (load "${self.qlot-cli.asdfFasl}/asdf.${self.qlot-cli.faslExt}")

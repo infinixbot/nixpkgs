@@ -14,7 +14,9 @@ symlinkJoin {
     etlegacy-unwrapped
   ];
 
-  nativeBuildInputs = [ makeBinaryWrapper ];
+  nativeBuildInputs = [
+    makeBinaryWrapper
+  ];
 
   postBuild = ''
     wrapProgram $out/bin/etl.* \

@@ -210,7 +210,9 @@ stdenv.mkDerivation (finalAttrs: {
     ++ optionals stdenv.targetPlatform.isMusl [
       "${setTarget}.musl-root=${pkgsBuildTarget.targetPackages.stdenv.cc.libc}"
     ]
-    ++ optionals stdenv.targetPlatform.rust.isNoStdTarget [ "--disable-docs" ]
+    ++ optionals stdenv.targetPlatform.rust.isNoStdTarget [
+      "--disable-docs"
+    ]
     ++ optionals (stdenv.isDarwin && stdenv.isx86_64) [
       # https://github.com/rust-lang/rust/issues/92173
       "--set rust.jemalloc"

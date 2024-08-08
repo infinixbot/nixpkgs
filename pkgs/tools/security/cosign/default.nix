@@ -34,7 +34,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-LYdbHpucF/lUzMu0m5y0Gt3A/8ISUs9oLM79mTF/REM=";
 
-  subPackages = [ "cmd/cosign" ];
+  subPackages = [
+    "cmd/cosign"
+  ];
 
   tags =
     [ ] ++ lib.optionals pivKeySupport [ "pivkey" ] ++ lib.optionals pkcs11Support [ "pkcs11key" ];

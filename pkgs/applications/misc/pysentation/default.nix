@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-TwHDXWgGWuQVgatBDc1iympnb6dy4xYThLR5MouEZHA=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools
+  ];
 
   pythonRelaxDeps = [
     "click"

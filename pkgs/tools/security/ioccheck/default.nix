@@ -47,7 +47,9 @@ py.pkgs.buildPythonApplication rec {
     hash = "sha256-qf5tHIpbj/BfrzUST+EzohKh1hUg09KwF+vT0tj1+FE=";
   };
 
-  nativeBuildInputs = with py.pkgs; [ poetry-core ];
+  nativeBuildInputs = with py.pkgs; [
+    poetry-core
+  ];
 
   pythonRelaxDeps = [
     "backoff"
@@ -72,7 +74,9 @@ py.pkgs.buildPythonApplication rec {
     vt-py
   ];
 
-  nativeCheckInputs = with py.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with py.pkgs; [
+    pytestCheckHook
+  ];
 
   postPatch = ''
     # Can be removed with the next release
@@ -80,7 +84,9 @@ py.pkgs.buildPythonApplication rec {
       --replace '"hurry.filesize" = "^0.9"' ""
   '';
 
-  pythonImportsCheck = [ "ioccheck" ];
+  pythonImportsCheck = [
+    "ioccheck"
+  ];
 
   meta = with lib; {
     description = "Tool for researching IOCs";

@@ -261,7 +261,9 @@ in
       source = "${doas}/bin/doas";
     };
 
-    environment.systemPackages = [ doas ];
+    environment.systemPackages = [
+      doas
+    ];
 
     security.pam.services.doas = {
       allowNullPassword = true;

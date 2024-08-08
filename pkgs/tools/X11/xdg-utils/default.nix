@@ -70,7 +70,9 @@ let
       scripts = [ "bin/xdg-desktop-icon" ];
       interpreter = "${bash}/bin/bash";
       inputs = commonDeps ++ [ xdg-user-dirs ];
-      execer = [ "cannot:${xdg-user-dirs}/bin/xdg-user-dir" ];
+      execer = [
+        "cannot:${xdg-user-dirs}/bin/xdg-user-dir"
+      ];
       # These are desktop-specific, so we don't want xdg-utils to be able to
       # call them when in a different setup.
       fake.external = commonFakes ++ [
@@ -178,7 +180,9 @@ let
         glib.bin
         "${placeholder "out"}/bin"
       ];
-      execer = [ "cannot:${placeholder "out"}/bin/xdg-mime" ];
+      execer = [
+        "cannot:${placeholder "out"}/bin/xdg-mime"
+      ];
       # These are desktop-specific, so we don't want xdg-utils to be able to
       # call them when in a different setup.
       fake.external = commonFakes ++ [
@@ -238,7 +242,9 @@ let
         "$XPROP" = true;
         "$lockfile_command" = true;
       };
-      execer = [ "cannot:${perl}/bin/perl" ];
+      execer = [
+        "cannot:${perl}/bin/perl"
+      ];
       prologue = "${writeText "xdg-screensaver-prologue" ''
         export PERL5LIB=${
           with perlPackages;
@@ -260,7 +266,9 @@ let
         jq
         "${placeholder "out"}/bin"
       ];
-      execer = [ "cannot:${placeholder "out"}/bin/xdg-mime" ];
+      execer = [
+        "cannot:${placeholder "out"}/bin/xdg-mime"
+      ];
       # These are desktop-specific, so we don't want xdg-utils to be able to
       # call them when in a different setup.
       fake.external = commonFakes ++ [

@@ -16,14 +16,19 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-2yOATSCXqv28OE+GdF9F9Dhi3AIkxSe/YJ9ILLnd/nw=";
   };
 
-  pythonRelaxDeps = [ "pluggy" ];
+  pythonRelaxDeps = [
+    "pluggy"
+  ];
 
   build-system = with python3.pkgs; [
     setuptools
     setuptools-scm
   ];
 
-  nativeBuildInputs = with python3.pkgs; [ ];
+  nativeBuildInputs =
+    with python3.pkgs;
+    [
+    ];
 
   dependencies = with python3.pkgs; [
     boto3
@@ -52,7 +57,9 @@ python3.pkgs.buildPythonApplication rec {
     "test_multiple_resources_with_wildcard_resources_are_detected"
   ];
 
-  pythonImportsCheck = [ "cfripper" ];
+  pythonImportsCheck = [
+    "cfripper"
+  ];
 
   meta = with lib; {
     description = "Tool for analysing CloudFormation templates";

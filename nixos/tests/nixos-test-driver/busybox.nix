@@ -5,7 +5,9 @@
     machine = (
       { pkgs, ... }:
       {
-        environment.systemPackages = [ pkgs.busybox ];
+        environment.systemPackages = [
+          pkgs.busybox
+        ];
       }
     );
   };

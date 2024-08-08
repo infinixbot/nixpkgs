@@ -20,7 +20,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-jvGm2gFdMS61otETF7gOEpYn6IuLfqI95IpEVfIv+C4=";
   };
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     wayland-protocols

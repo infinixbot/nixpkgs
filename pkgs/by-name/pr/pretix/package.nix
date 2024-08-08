@@ -216,7 +216,9 @@ python.pkgs.buildPythonApplication rec {
     ++ plugins;
 
   optional-dependencies = with python.pkgs; {
-    memcached = [ pylibmc ];
+    memcached = [
+      pylibmc
+    ];
   };
 
   postInstall = ''

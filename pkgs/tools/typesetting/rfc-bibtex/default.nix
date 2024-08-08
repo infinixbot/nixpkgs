@@ -22,7 +22,9 @@ buildPythonApplication rec {
     vcrpy
   ];
 
-  pythonImportsCheck = [ "rfc_bibtex" ];
+  pythonImportsCheck = [
+    "rfc_bibtex"
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/iluxonchik/rfc-bibtex/";

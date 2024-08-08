@@ -51,7 +51,9 @@ buildPythonPackage rec {
     hash = "sha256-PPHt9GG5XJzrhnuAS8L+0Pa3El3RNCdEbXbLnHopDWg=";
   };
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   pythonRelaxDeps = [
     "dulwich"
@@ -82,9 +84,15 @@ buildPythonPackage rec {
       trove-classifiers
       virtualenv
     ]
-    ++ lib.optionals (stdenv.isDarwin) [ xattr ]
-    ++ lib.optionals (pythonOlder "3.11") [ tomli ]
-    ++ lib.optionals (pythonOlder "3.10") [ importlib-metadata ]
+    ++ lib.optionals (stdenv.isDarwin) [
+      xattr
+    ]
+    ++ lib.optionals (pythonOlder "3.11") [
+      tomli
+    ]
+    ++ lib.optionals (pythonOlder "3.10") [
+      importlib-metadata
+    ]
     ++ cachecontrol.optional-dependencies.filecache;
 
   postInstall = ''
@@ -94,13 +102,17 @@ buildPythonPackage rec {
       --zsh <($out/bin/poetry completions zsh) \
   '';
 
-  nativeCheckInputs = [
-    deepdiff
-    pytestCheckHook
-    httpretty
-    pytest-mock
-    pytest-xdist
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.ps ];
+  nativeCheckInputs =
+    [
+      deepdiff
+      pytestCheckHook
+      httpretty
+      pytest-mock
+      pytest-xdist
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.ps
+    ];
 
   preCheck = (
     ''
@@ -123,10 +135,14 @@ buildPythonPackage rec {
     "test_install_warning_corrupt_root"
   ];
 
-  pytestFlagsArray = [ "-m 'not network'" ];
+  pytestFlagsArray = [
+    "-m 'not network'"
+  ];
 
   # Allow for package to use pep420's native namespaces
-  pythonNamespaces = [ "poetry" ];
+  pythonNamespaces = [
+    "poetry"
+  ];
 
   # Unset ambient PYTHONPATH in the wrapper, so Poetry only ever runs with its own,
   # isolated set of dependencies. This works because the correct PYTHONPATH is set

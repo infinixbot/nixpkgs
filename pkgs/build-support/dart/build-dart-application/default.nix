@@ -153,7 +153,9 @@ let
           makeWrapper
           jq
         ]
-        ++ lib.optionals stdenv.isDarwin [ darwin.sigtool ]
+        ++ lib.optionals stdenv.isDarwin [
+          darwin.sigtool
+        ]
         ++
           # Ensure that we inherit the propagated build inputs from the dependencies.
           builtins.attrValues pubspecLockData.dependencySources;

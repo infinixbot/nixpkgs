@@ -26,13 +26,17 @@ stdenv.mkDerivation rec {
     hash = "sha256-Dv3adRXZ2VT2MyTDSzTFYOYPc6gcOSSnEmCizJHV+YE=";
   };
 
-  buildInputs = [
-    gmp
-    libX11
-    perl
-    readline
-    texliveBasic
-  ] ++ lib.optionals withThread [ libpthreadstubs ];
+  buildInputs =
+    [
+      gmp
+      libX11
+      perl
+      readline
+      texliveBasic
+    ]
+    ++ lib.optionals withThread [
+      libpthreadstubs
+    ];
 
   configureScript = "./Configure";
   configureFlags = [

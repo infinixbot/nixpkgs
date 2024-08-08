@@ -64,7 +64,9 @@ stdenv.mkDerivation rec {
     gtest
   ];
 
-  qmakeFlags = [ "DEFINES+=VERSION=${version}" ];
+  qmakeFlags = [
+    "DEFINES+=VERSION=${version}"
+  ];
 
   meta = with lib; {
     description = "Simple memo software with texts and voice recordings";

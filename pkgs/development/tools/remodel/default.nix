@@ -21,9 +21,17 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-YCYs+MMTxnJEKhzjddBp7lnSYPrpf3G+ktr1ez/ZKkg=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ Security ];
+  buildInputs =
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Security
+    ];
 
   meta = with lib; {
     description = "Roblox file manipulation tool";

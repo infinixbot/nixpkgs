@@ -32,7 +32,9 @@ stdenv.mkDerivation rec {
   };
 
   patches =
-    [ ./v3-CVE-2023-4016.patch ]
+    [
+      ./v3-CVE-2023-4016.patch
+    ]
     ++ lib.optionals stdenv.hostPlatform.isMusl [
       # NOTE: Starting from 4.x we will not need a patch anymore, but need to add
       # "--disable-w" to configureFlags instead to prevent the utmp errors

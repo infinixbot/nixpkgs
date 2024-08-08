@@ -35,7 +35,9 @@ buildOctavePackage rec {
     autoconf-archive
   ];
 
-  requiredOctavePackages = [ parallel ];
+  requiredOctavePackages = [
+    parallel
+  ];
 
   preBuild = ''
     mkdir -p $out

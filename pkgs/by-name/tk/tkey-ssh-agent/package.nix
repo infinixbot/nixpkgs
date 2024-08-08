@@ -17,7 +17,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-SFyp1UB6+m7/YllRyY56SwweJ3X175bChXQYiG2M7zM=";
 
-  subPackages = [ "cmd/tkey-ssh-agent" ];
+  subPackages = [
+    "cmd/tkey-ssh-agent"
+  ];
 
   meta = with lib; {
     description = "SSH Agent for TKey, the flexible open hardware/software USB security key";

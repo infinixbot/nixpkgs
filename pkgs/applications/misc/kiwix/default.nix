@@ -36,7 +36,9 @@ mkDerivation {
     qtimageformats
   ];
 
-  qtWrapperArgs = [ "--prefix PATH : ${lib.makeBinPath [ aria2 ]}" ];
+  qtWrapperArgs = [
+    "--prefix PATH : ${lib.makeBinPath [ aria2 ]}"
+  ];
 
   meta = with lib; {
     description = "Offline reader for Web content";

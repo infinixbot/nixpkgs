@@ -21,7 +21,9 @@ mkDerivation {
     pkg-config
   ];
 
-  buildInputs = [ qtbase ];
+  buildInputs = [
+    qtbase
+  ];
 
   makeFlags = [
     "MOC=${qtbase.dev}/bin/moc"

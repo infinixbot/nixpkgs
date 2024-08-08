@@ -39,7 +39,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-CcziIkFIHcE2D8S8XU2h0xgV16JWO56fohemcrqXS/I=";
   };
 
-  patches = [ ./tuxpaint-completion.diff ];
+  patches = [
+    ./tuxpaint-completion.diff
+  ];
 
   postPatch = ''
     grep -Zlr include.*SDL . | xargs -0 \

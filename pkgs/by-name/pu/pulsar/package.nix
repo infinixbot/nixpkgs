@@ -93,7 +93,9 @@ stdenv.mkDerivation {
       inherit hash;
     };
 
-  patches = [ ./001-patch-wrapper.patch ];
+  patches = [
+    ./001-patch-wrapper.patch
+  ];
 
   nativeBuildInputs = [
     wrapGAppsHook3

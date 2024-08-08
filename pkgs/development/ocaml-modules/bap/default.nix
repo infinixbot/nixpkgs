@@ -127,7 +127,9 @@ else
     disableIda = "--disable-ida";
     disableGhidra = "--disable-ghidra";
 
-    patches = [ ./curses_is_ncurses.patch ];
+    patches = [
+      ./curses_is_ncurses.patch
+    ];
 
     preConfigure = ''
       substituteInPlace oasis/elf-loader --replace bitstring.ppx ppx_bitstring

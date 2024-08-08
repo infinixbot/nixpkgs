@@ -28,7 +28,9 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "flask" ];
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   propagatedBuildInputs = [
     flask

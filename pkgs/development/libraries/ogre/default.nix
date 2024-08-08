@@ -98,13 +98,21 @@ let
           libXxf86vm
           xorgproto
         ]
-        ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Cocoa ]
-        ++ lib.optionals withNvidiaCg [ nvidia_cg_toolkit ];
+        ++ lib.optionals stdenv.isDarwin [
+          darwin.apple_sdk.frameworks.Cocoa
+        ]
+        ++ lib.optionals withNvidiaCg [
+          nvidia_cg_toolkit
+        ];
 
-      cmakeFlags = [
-        (lib.cmakeBool "OGRE_BUILD_DEPENDENCIES" false)
-        (lib.cmakeBool "OGRE_BUILD_SAMPLES" withSamples)
-      ] ++ lib.optionals stdenv.isDarwin [ (lib.cmakeBool "OGRE_BUILD_LIBS_AS_FRAMEWORKS" false) ];
+      cmakeFlags =
+        [
+          (lib.cmakeBool "OGRE_BUILD_DEPENDENCIES" false)
+          (lib.cmakeBool "OGRE_BUILD_SAMPLES" withSamples)
+        ]
+        ++ lib.optionals stdenv.isDarwin [
+          (lib.cmakeBool "OGRE_BUILD_LIBS_AS_FRAMEWORKS" false)
+        ];
 
       meta = {
         description = "3D Object-Oriented Graphics Rendering Engine";

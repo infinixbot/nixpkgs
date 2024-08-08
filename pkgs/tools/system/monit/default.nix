@@ -38,7 +38,9 @@ stdenv.mkDerivation rec {
   ] ++ lib.optionals useSSL [ openssl ] ++ lib.optionals usePAM [ pam ];
 
   configureFlags =
-    [ (lib.withFeature usePAM "pam") ]
+    [
+      (lib.withFeature usePAM "pam")
+    ]
     ++ (
       if useSSL then
         [
@@ -46,7 +48,9 @@ stdenv.mkDerivation rec {
           "--with-ssl-lib-dir=${lib.getLib openssl}/lib"
         ]
       else
-        [ "--without-ssl" ]
+        [
+          "--without-ssl"
+        ]
     )
     ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
       # will need to check both these are true for musl

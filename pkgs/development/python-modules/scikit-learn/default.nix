@@ -50,7 +50,9 @@ buildPythonPackage rec {
     glibcLocales
   ] ++ lib.optionals stdenv.cc.isClang [ llvmPackages.openmp ];
 
-  nativeBuildInputs = [ gfortran ];
+  nativeBuildInputs = [
+    gfortran
+  ];
 
   build-system = [
     cython

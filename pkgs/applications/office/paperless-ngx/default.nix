@@ -77,13 +77,19 @@ let
 
     npmDepsHash = "sha256-gbHavMUmsZaRSfBkdrrNpTO0R8zacb8110U8n5Y09oU=";
 
-    nativeBuildInputs = [
-      pkg-config
-      python3
-    ] ++ lib.optionals stdenv.isDarwin [ xcbuild ];
+    nativeBuildInputs =
+      [
+        pkg-config
+        python3
+      ]
+      ++ lib.optionals stdenv.isDarwin [
+        xcbuild
+      ];
 
     buildInputs =
-      [ pango ]
+      [
+        pango
+      ]
       ++ lib.optionals stdenv.isDarwin [
         giflib
         darwin.apple_sdk.frameworks.CoreText
@@ -119,7 +125,9 @@ python.pkgs.buildPythonApplication rec {
 
   inherit version src;
 
-  nativeBuildInputs = [ gettext ];
+  nativeBuildInputs = [
+    gettext
+  ];
 
   propagatedBuildInputs =
     with python.pkgs;
@@ -228,7 +236,9 @@ python.pkgs.buildPythonApplication rec {
     pytestCheckHook
   ];
 
-  pytestFlagsArray = [ "src" ];
+  pytestFlagsArray = [
+    "src"
+  ];
 
   # The tests require:
   # - PATH with runtime binaries

@@ -50,7 +50,9 @@ stdenv.mkDerivation {
     (debianPatch "includes" "1n11j5695hs9pspslf748w2cq5d78s6bwhyl476wp6gcq6jw20bw")
   ];
 
-  makeFlags = [ "-C src" ];
+  makeFlags = [
+    "-C src"
+  ];
   nativeBuildInputs = [
     bison
     perl

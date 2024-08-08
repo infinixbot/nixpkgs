@@ -20,7 +20,9 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [ perl ];
+  buildInputs = [
+    perl
+  ];
 
   propagatedBuildInputs = with perlPackages; [
     DateTimeFormatDateParse

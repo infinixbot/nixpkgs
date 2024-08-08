@@ -30,7 +30,9 @@ buildDunePackage rec {
     hash = "sha256-lTmwcNKiaq5EdJdM4UaaAVdZ+hTCX5U9MPKY/r3i7fw=";
   };
 
-  buildInputs = [ ppx_cstruct ];
+  buildInputs = [
+    ppx_cstruct
+  ];
 
   propagatedBuildInputs = [
     ppx_sexp_conv

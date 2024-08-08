@@ -64,13 +64,17 @@ stdenv.mkDerivation (finalAttrs: {
     '';
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    meson
-    ninja
-    docbook-xsl-nons
-    gobject-introspection
-  ] ++ lib.optionals (!stdenv.isDarwin) [ gtk-doc ];
+  nativeBuildInputs =
+    [
+      pkg-config
+      meson
+      ninja
+      docbook-xsl-nons
+      gobject-introspection
+    ]
+    ++ lib.optionals (!stdenv.isDarwin) [
+      gtk-doc
+    ];
 
   buildInputs =
     [
@@ -108,7 +112,9 @@ stdenv.mkDerivation (finalAttrs: {
     ];
 
   # Required by .pc file
-  propagatedBuildInputs = [ glib ];
+  propagatedBuildInputs = [
+    glib
+  ];
 
   mesonFlags =
     [

@@ -79,7 +79,14 @@ stdenv.mkDerivation (finalAttrs: {
     makeWrapper
     pkg-config
     (python3.withPackages (
-      ps: with ps; [ setuptools ] ++ lib.optionals finalAttrs.finalPackage.doCheck [ python-dbusmock ]
+      ps:
+      with ps;
+      [
+        setuptools
+      ]
+      ++ lib.optionals finalAttrs.finalPackage.doCheck [
+        python-dbusmock
+      ]
     ))
     wrapQtAppsHook
   ];
@@ -166,6 +173,8 @@ stdenv.mkDerivation (finalAttrs: {
     ];
     maintainers = teams.lomiri.members;
     platforms = platforms.linux;
-    pkgConfigModules = [ "lomiri-url-dispatcher" ];
+    pkgConfigModules = [
+      "lomiri-url-dispatcher"
+    ];
   };
 })

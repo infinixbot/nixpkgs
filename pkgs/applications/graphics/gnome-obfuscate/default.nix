@@ -59,12 +59,16 @@ stdenv.mkDerivation (finalAttrs: {
     desktop-file-utils
   ];
 
-  buildInputs = [
-    glib
-    gtk4
-    gdk-pixbuf
-    libadwaita
-  ] ++ lib.optionals stdenv.isDarwin [ Foundation ];
+  buildInputs =
+    [
+      glib
+      gtk4
+      gdk-pixbuf
+      libadwaita
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Foundation
+    ];
 
   meta = with lib; {
     description = "Censor private information";

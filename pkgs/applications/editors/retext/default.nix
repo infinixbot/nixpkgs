@@ -84,7 +84,9 @@ python3.pkgs.buildPythonApplication rec {
 
   doCheck = false;
 
-  pythonImportsCheck = [ "ReText" ];
+  pythonImportsCheck = [
+    "ReText"
+  ];
 
   meta = with lib; {
     description = "Editor for Markdown and reStructuredText";

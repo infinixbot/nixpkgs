@@ -117,7 +117,9 @@ in
               renew-timer = 1000;
               rebind-timer = 2000;
               interfaces-config = {
-                interfaces = [ "eth0" ];
+                interfaces = [
+                  "eth0"
+                ];
               };
               lease-database = {
                 type = "memfile";
@@ -180,7 +182,9 @@ in
               rebind-timer = 2000;
               preferred-lifetime = 3000;
               interfaces-config = {
-                interfaces = [ "eth0" ];
+                interfaces = [
+                  "eth0"
+                ];
               };
               lease-database = {
                 type = "memfile";
@@ -296,7 +300,9 @@ in
               "https://kea.readthedocs.io/en/kea-${package.version}/arm/agent.html"
             ];
 
-            wants = [ "network-online.target" ];
+            wants = [
+              "network-online.target"
+            ];
             after = [
               "network-online.target"
               "time-sync.target"
@@ -312,7 +318,9 @@ in
               KEA_LOCKFILE_DIR = "/run/kea";
             };
 
-            restartTriggers = [ ctrlAgentConfig ];
+            restartTriggers = [
+              ctrlAgentConfig
+            ];
 
             serviceConfig = {
               ExecStart = "${package}/bin/kea-ctrl-agent -c /etc/kea/ctrl-agent.conf ${lib.escapeShellArgs cfg.ctrl-agent.extraArgs}";
@@ -343,15 +351,21 @@ in
               "network-online.target"
               "time-sync.target"
             ];
-            wants = [ "network-online.target" ];
-            wantedBy = [ "multi-user.target" ];
+            wants = [
+              "network-online.target"
+            ];
+            wantedBy = [
+              "multi-user.target"
+            ];
 
             environment = {
               KEA_PIDFILE_DIR = "/run/kea";
               KEA_LOCKFILE_DIR = "/run/kea";
             };
 
-            restartTriggers = [ dhcp4Config ];
+            restartTriggers = [
+              dhcp4Config
+            ];
 
             serviceConfig = {
               ExecStart = "${package}/bin/kea-dhcp4 -c /etc/kea/dhcp4-server.conf ${lib.escapeShellArgs cfg.dhcp4.extraArgs}";
@@ -389,21 +403,31 @@ in
               "network-online.target"
               "time-sync.target"
             ];
-            wants = [ "network-online.target" ];
-            wantedBy = [ "multi-user.target" ];
+            wants = [
+              "network-online.target"
+            ];
+            wantedBy = [
+              "multi-user.target"
+            ];
 
             environment = {
               KEA_PIDFILE_DIR = "/run/kea";
               KEA_LOCKFILE_DIR = "/run/kea";
             };
 
-            restartTriggers = [ dhcp6Config ];
+            restartTriggers = [
+              dhcp6Config
+            ];
 
             serviceConfig = {
               ExecStart = "${package}/bin/kea-dhcp6 -c /etc/kea/dhcp6-server.conf ${lib.escapeShellArgs cfg.dhcp6.extraArgs}";
               # Kea does not request capabilities by itself
-              AmbientCapabilities = [ "CAP_NET_BIND_SERVICE" ];
-              CapabilityBoundingSet = [ "CAP_NET_BIND_SERVICE" ];
+              AmbientCapabilities = [
+                "CAP_NET_BIND_SERVICE"
+              ];
+              CapabilityBoundingSet = [
+                "CAP_NET_BIND_SERVICE"
+              ];
             } // commonServiceConfig;
           };
         })
@@ -430,19 +454,27 @@ in
               "network-online.target"
               "time-sync.target"
             ];
-            wantedBy = [ "multi-user.target" ];
+            wantedBy = [
+              "multi-user.target"
+            ];
 
             environment = {
               KEA_PIDFILE_DIR = "/run/kea";
               KEA_LOCKFILE_DIR = "/run/kea";
             };
 
-            restartTriggers = [ dhcpDdnsConfig ];
+            restartTriggers = [
+              dhcpDdnsConfig
+            ];
 
             serviceConfig = {
               ExecStart = "${package}/bin/kea-dhcp-ddns -c /etc/kea/dhcp-ddns.conf ${lib.escapeShellArgs cfg.dhcp-ddns.extraArgs}";
-              AmbientCapabilities = [ "CAP_NET_BIND_SERVICE" ];
-              CapabilityBoundingSet = [ "CAP_NET_BIND_SERVICE" ];
+              AmbientCapabilities = [
+                "CAP_NET_BIND_SERVICE"
+              ];
+              CapabilityBoundingSet = [
+                "CAP_NET_BIND_SERVICE"
+              ];
             } // commonServiceConfig;
           };
         })

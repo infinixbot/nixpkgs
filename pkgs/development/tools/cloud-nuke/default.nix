@@ -18,7 +18,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-4ZPLscZWF9GfNMU70TjR5+Hi/rvm43n+GvqxFUu13JU=";
 
-  nativeBuildInputs = [ makeBinaryWrapper ];
+  nativeBuildInputs = [
+    makeBinaryWrapper
+  ];
 
   ldflags = [
     "-s"

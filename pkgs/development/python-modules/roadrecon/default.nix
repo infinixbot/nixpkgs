@@ -30,7 +30,9 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "flask" ];
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   propagatedBuildInputs = [
     aiohttp

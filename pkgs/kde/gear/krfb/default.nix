@@ -9,7 +9,9 @@
 mkKdeDerivation {
   pname = "krfb";
 
-  extraCmakeFlags = [ "-DQtWaylandScanner_EXECUTABLE=${qtwayland}/libexec/qtwaylandscanner" ];
+  extraCmakeFlags = [
+    "-DQtWaylandScanner_EXECUTABLE=${qtwayland}/libexec/qtwaylandscanner"
+  ];
 
   extraNativeBuildInputs = [ pkg-config ];
   extraBuildInputs = [

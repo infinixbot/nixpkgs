@@ -34,7 +34,9 @@ stdenv.mkDerivation rec {
     ncurses
   ];
 
-  cmakeFlags = [ "-DBUILD_SPECTRE_TESTS=ON" ];
+  cmakeFlags = [
+    "-DBUILD_SPECTRE_TESTS=ON"
+  ];
 
   preConfigure = ''
     echo "${version}" > VERSION

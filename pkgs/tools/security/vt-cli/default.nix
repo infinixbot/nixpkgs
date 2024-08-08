@@ -17,7 +17,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-XN6dJpoJe9nJn+Tr9SYD64LE0XFiO2vlpdyI9SrZZjQ=";
 
-  ldflags = [ "-X github.com/VirusTotal/vt-cli/cmd.Version=${version}" ];
+  ldflags = [
+    "-X github.com/VirusTotal/vt-cli/cmd.Version=${version}"
+  ];
 
   subPackages = [ "vt" ];
 

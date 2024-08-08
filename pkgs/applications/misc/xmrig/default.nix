@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-1lIrxJ1Y5YRoXbZn77Msah5lSVW71gDczYUlXQjf01s=";
   };
 
-  patches = [ ./donate-level.patch ];
+  patches = [
+    ./donate-level.patch
+  ];
 
   postPatch = ''
     substituteAllInPlace src/donate.h
@@ -33,7 +35,9 @@ stdenv.mkDerivation rec {
       --replace "set(OPENSSL_USE_STATIC_LIBS TRUE)" "set(OPENSSL_USE_STATIC_LIBS FALSE)"
   '';
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs =
     [

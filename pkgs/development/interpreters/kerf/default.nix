@@ -32,7 +32,9 @@ stdenv.mkDerivation rec {
       ncurses
     ]
     ++ lib.optionals stdenv.isDarwin (
-      [ Accelerate ]
+      [
+        Accelerate
+      ]
       ++
         lib.optionals stdenv.isx86_64 # && isDarwin
           [

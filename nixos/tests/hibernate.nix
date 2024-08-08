@@ -21,7 +21,9 @@ makeTest {
         ...
       }:
       {
-        imports = [ ./common/auto-format-root-device.nix ];
+        imports = [
+          ./common/auto-format-root-device.nix
+        ];
 
         systemd.services.backdoor.conflicts = [ "sleep.target" ];
         powerManagement.resumeCommands = "systemctl --no-block restart backdoor.service";

@@ -21,7 +21,9 @@ buildPythonApplication rec {
     hash = "sha256-8eTK7jTwxgSjlxEzjFlL5mzt4tBolmS6fSRnbXDWYJc=";
   };
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   passthru.updateScript = nix-update-script { };
 

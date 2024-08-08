@@ -164,11 +164,15 @@ rustPlatform.buildRustPackage {
 
   OPENSSL_NO_VENDOR = 1;
 
-  nativeBuildInputs = [
-    pkg-config
-    protobuf
-    git
-  ] ++ optionals enableCuda [ autoAddDriverRunpath ];
+  nativeBuildInputs =
+    [
+      pkg-config
+      protobuf
+      git
+    ]
+    ++ optionals enableCuda [
+      autoAddDriverRunpath
+    ];
 
   buildInputs =
     [ openssl ]

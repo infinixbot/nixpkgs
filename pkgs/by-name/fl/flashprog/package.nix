@@ -32,9 +32,15 @@ stdenv.mkDerivation (finalAttrs: {
       libftdi1
       libusb1
     ]
-    ++ lib.optionals (!stdenv.isDarwin) [ pciutils ]
-    ++ lib.optionals (withJlink) [ libjaylink ]
-    ++ lib.optionals (withGpio) [ libgpiod ];
+    ++ lib.optionals (!stdenv.isDarwin) [
+      pciutils
+    ]
+    ++ lib.optionals (withJlink) [
+      libjaylink
+    ]
+    ++ lib.optionals (withGpio) [
+      libgpiod
+    ];
 
   makeFlags =
     let

@@ -27,7 +27,9 @@ rustPlatform.buildRustPackage rec {
   # Running cargo test -- . fails because it expects to have two mp4 files so that it can test the video merging functionalities
   doCheck = false;
 
-  buildInputs = [ ffmpeg ];
+  buildInputs = [
+    ffmpeg
+  ];
 
   meta = with lib; {
     description = "Merge video & audio files via CLI";

@@ -29,7 +29,9 @@ buildPythonPackage rec {
     hash = "sha256-Mr+mWRvOXoy7+SosMae80o0V1jBMn1dEoGmaR/BGHrc=";
   };
 
-  build-system = [ setuptools ];
+  build-system = [
+    setuptools
+  ];
 
   dependencies = [
     rope

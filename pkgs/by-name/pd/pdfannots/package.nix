@@ -16,11 +16,17 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-C0Ss6kZvPx0hHnpBKquEolxeuTfjshhSBSIDXcCKtM8=";
   };
 
-  nativeBuildInputs = [ python3.pkgs.setuptools ];
+  nativeBuildInputs = [
+    python3.pkgs.setuptools
+  ];
 
-  propagatedBuildInputs = [ python3.pkgs.pdfminer-six ];
+  propagatedBuildInputs = [
+    python3.pkgs.pdfminer-six
+  ];
 
-  pythonImportsCheck = [ "pdfannots" ];
+  pythonImportsCheck = [
+    "pdfannots"
+  ];
 
   meta = with lib; {
     description = "Extracts and formats text annotations from a PDF file";

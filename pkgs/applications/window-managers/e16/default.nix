@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-LvLiw6+hduAl8dNBTtBwqvgKBRwojBUd5tNm1hZl5Hs=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     freetype

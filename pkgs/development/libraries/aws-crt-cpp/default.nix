@@ -43,7 +43,9 @@ stdenv.mkDerivation rec {
     substituteInPlace CMakeLists.txt --replace '-Werror' ""
   '';
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   propagatedBuildInputs = [
     aws-c-auth

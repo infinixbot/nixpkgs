@@ -293,7 +293,9 @@ rec {
             nixos-rebuild
           ];
         interpreter = "none";
-        execer = [ "cannot:${esh}/bin/esh" ];
+        execer = [
+          "cannot:${esh}/bin/esh"
+        ];
         fix = {
           mount = true;
         };

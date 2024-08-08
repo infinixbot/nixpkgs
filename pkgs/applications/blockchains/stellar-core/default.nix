@@ -53,7 +53,9 @@ stdenv.mkDerivation (finalAttrs: {
     ripgrep
   ];
 
-  buildInputs = [ libunwind ];
+  buildInputs = [
+    libunwind
+  ];
 
   propagatedBuildInputs = [
     bison

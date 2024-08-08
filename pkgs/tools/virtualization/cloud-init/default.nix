@@ -29,7 +29,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-BhTcOeSKZ1XRIx+xJQkqkSw9M8ilr+BRKXDy5MUXB6E=";
   };
 
-  patches = [ ./0001-add-nixos-support.patch ];
+  patches = [
+    ./0001-add-nixos-support.patch
+  ];
 
   prePatch = ''
     substituteInPlace setup.py \
@@ -53,7 +55,9 @@ python3.pkgs.buildPythonApplication rec {
     done
   '';
 
-  build-system = with python3.pkgs; [ setuptools ];
+  build-system = with python3.pkgs; [
+    setuptools
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     configobj
@@ -125,7 +129,9 @@ python3.pkgs.buildPythonApplication rec {
     export TMPDIR=/tmp
   '';
 
-  pythonImportsCheck = [ "cloudinit" ];
+  pythonImportsCheck = [
+    "cloudinit"
+  ];
 
   passthru = {
     tests = {

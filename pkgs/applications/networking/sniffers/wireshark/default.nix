@@ -69,7 +69,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-zlFTUgsEKraE9crS5SZ13r93JJzUb6eyBhusJbbGwsE=";
   };
 
-  patches = [ ./patches/lookup-dumpcap-in-path.patch ];
+  patches = [
+    ./patches/lookup-dumpcap-in-path.patch
+  ];
 
   depsBuildBuild = lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
     buildPackages.stdenv.cc
@@ -131,7 +133,9 @@ stdenv.mkDerivation rec {
         qttools
       ]
     )
-    ++ lib.optionals (withQt && stdenv.isLinux) [ qt6.qtwayland ]
+    ++ lib.optionals (withQt && stdenv.isLinux) [
+      qt6.qtwayland
+    ]
     ++ lib.optionals stdenv.isLinux [
       libcap
       libnl

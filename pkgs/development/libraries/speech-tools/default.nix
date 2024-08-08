@@ -28,8 +28,12 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    [ ncurses ]
-    ++ lib.optionals stdenv.isLinux [ alsa-lib ]
+    [
+      ncurses
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      alsa-lib
+    ]
     ++ lib.optionals stdenv.isDarwin [
       CoreServices
       AudioUnit

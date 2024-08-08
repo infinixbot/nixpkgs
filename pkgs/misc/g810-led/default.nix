@@ -26,7 +26,9 @@ stdenv.mkDerivation (finalAttrs: {
   # GCC 13 cannot find `uint16_t` and other similar types by default anymore
   env.CXXFLAGS = "-include cstdint";
 
-  buildInputs = [ hidapi ];
+  buildInputs = [
+    hidapi
+  ];
 
   installPhase = ''
     runHook preInstall

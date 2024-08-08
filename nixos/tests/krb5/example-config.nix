@@ -19,8 +19,12 @@ import ../make-test-python.nix (
           enable = true;
           package = pkgs.krb5;
           settings = {
-            includedir = [ "/etc/krb5.conf.d" ];
-            include = [ "/etc/krb5-extra.conf" ];
+            includedir = [
+              "/etc/krb5.conf.d"
+            ];
+            include = [
+              "/etc/krb5-extra.conf"
+            ];
             libdefaults = {
               default_realm = "ATHENA.MIT.EDU";
             };

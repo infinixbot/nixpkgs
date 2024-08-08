@@ -107,7 +107,11 @@ stdenv.mkDerivation (finalAttrs: {
     # Ensure zenity is available, or it won't be able to open new files.
     # These X11 libs get dlopen'd, they cause visual bugs when unavailable.
     wrapProgram $out/bin/plugdata \
-      --prefix PATH : '${lib.makeBinPath [ zenity ]}' \
+      --prefix PATH : '${
+        lib.makeBinPath [
+          zenity
+        ]
+      }' \
       --prefix LD_LIBRARY_PATH : '${
         lib.makeLibraryPath [
           xorg.libXrandr

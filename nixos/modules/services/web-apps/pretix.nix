@@ -114,7 +114,9 @@ in
 
     gunicorn.extraArgs = mkOption {
       type = with types; listOf str;
-      default = [ "--name=pretix" ];
+      default = [
+        "--name=pretix"
+      ];
       example = [
         "--name=pretix"
         "--workers=4"
@@ -467,13 +469,19 @@ in
           serviceConfig = {
             User = "pretix";
             Group = "pretix";
-            EnvironmentFile = optionals (cfg.environmentFile != null) [ cfg.environmentFile ];
-            StateDirectory = [ "pretix" ];
+            EnvironmentFile = optionals (cfg.environmentFile != null) [
+              cfg.environmentFile
+            ];
+            StateDirectory = [
+              "pretix"
+            ];
             StateDirectoryMode = "0750";
             CacheDirectory = "pretix";
             LogsDirectory = "pretix";
             WorkingDirectory = cfg.settings.pretix.datadir;
-            SupplementaryGroups = optionals withRedis [ "redis-pretix" ];
+            SupplementaryGroups = optionals withRedis [
+              "redis-pretix"
+            ];
             AmbientCapabilities = "";
             CapabilityBoundingSet = [ "" ];
             DevicePolicy = "closed";

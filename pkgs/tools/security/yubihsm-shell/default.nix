@@ -50,13 +50,17 @@ stdenv.mkDerivation rec {
       curl
       openssl
     ]
-    ++ lib.optionals stdenv.isLinux [ pcsclite ]
+    ++ lib.optionals stdenv.isLinux [
+      pcsclite
+    ]
     ++ lib.optionals stdenv.isDarwin [
       darwin.apple_sdk.frameworks.PCSC
       libiconv
     ];
 
-  cmakeFlags = lib.optionals stdenv.isDarwin [ "-DDISABLE_LTO=ON" ];
+  cmakeFlags = lib.optionals stdenv.isDarwin [
+    "-DDISABLE_LTO=ON"
+  ];
 
   # causes redefinition of _FORTIFY_SOURCE
   hardeningDisable = [ "fortify3" ];

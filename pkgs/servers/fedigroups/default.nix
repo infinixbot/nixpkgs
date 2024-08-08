@@ -40,7 +40,9 @@ rustPlatform.buildRustPackage rec {
     git
   ];
 
-  buildInputs = [ openssl ] ++ lib.optional stdenv.isDarwin Security;
+  buildInputs = [
+    openssl
+  ] ++ lib.optional stdenv.isDarwin Security;
 
   meta = with lib; {
     homepage = "https://git.ondrovo.com/MightyPork/group-actor#fedi-groups";

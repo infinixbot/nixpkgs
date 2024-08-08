@@ -21,7 +21,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-5Uwi1apowHoUtvkSgmUV9WbfpVQFTqJ9GA2sRnC5nFw=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     alsa-lib

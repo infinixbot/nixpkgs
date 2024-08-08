@@ -22,9 +22,13 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  propagatedBuildInputs = [ SDL ];
+  propagatedBuildInputs = [
+    SDL
+  ];
 
-  configureFlags = [ (lib.enableFeature enableSdltest "sdltest") ];
+  configureFlags = [
+    (lib.enableFeature enableSdltest "sdltest")
+  ];
 
   strictDeps = true;
 

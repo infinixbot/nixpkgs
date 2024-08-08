@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     openssl
     libre
   ];
-  cmakeFlags = [ "-DRE_INCLUDE_DIR=${libre}/include/re" ];
+  cmakeFlags = [
+    "-DRE_INCLUDE_DIR=${libre}/include/re"
+  ];
   makeFlags =
     [
       "LIBRE_MK=${libre}/share/re/re.mk"

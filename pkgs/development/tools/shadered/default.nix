@@ -36,7 +36,9 @@ stdenv.mkDerivation rec {
     sfml
   ];
 
-  patches = [ ./install_path_fix.patch ];
+  patches = [
+    ./install_path_fix.patch
+  ];
 
   env.NIX_CFLAGS_COMPILE = "-Wno-error=format-security";
 

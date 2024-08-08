@@ -54,7 +54,9 @@ stdenv.mkDerivation rec {
     export OUTDIR=$out
   '';
 
-  cmakeFlags = [ "-DBUILD_THBOOK=OFF" ];
+  cmakeFlags = [
+    "-DBUILD_THBOOK=OFF"
+  ];
 
   buildInputs = [
     expat

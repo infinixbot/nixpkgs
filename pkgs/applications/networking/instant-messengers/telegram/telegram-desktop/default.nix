@@ -114,7 +114,9 @@ stdenv.mkDerivation (finalAttrs: {
       wrapGAppsHook3
       extra-cmake-modules
     ]
-    ++ lib.optionals stdenv.isDarwin [ lld ];
+    ++ lib.optionals stdenv.isDarwin [
+      lld
+    ];
 
   buildInputs =
     [

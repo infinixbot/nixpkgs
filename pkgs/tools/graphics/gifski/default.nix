@@ -29,7 +29,9 @@ rustPlatform.buildRustPackage rec {
     rustPlatform.bindgenHook
   ];
 
-  buildInputs = [ ffmpeg ];
+  buildInputs = [
+    ffmpeg
+  ];
 
   buildFeatures = [ "video" ];
 

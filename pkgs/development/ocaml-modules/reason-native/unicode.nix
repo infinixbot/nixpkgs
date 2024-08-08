@@ -11,7 +11,9 @@ buildDunePackage {
   pname = "unicode";
   version = "0.0.0-unstable-2024-05-07";
 
-  nativeBuildInputs = [ reason ];
+  nativeBuildInputs = [
+    reason
+  ];
 
   meta = {
     description = "Easy to use and well documented Unicode symbols";

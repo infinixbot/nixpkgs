@@ -46,8 +46,12 @@ stdenv.mkDerivation rec {
   '';
 
   env.NIX_CFLAGS_COMPILE = toString (
-    [ "-Wno-error=maybe-uninitialized" ]
-    ++ lib.optionals stdenv.cc.isGNU [ "-Wno-error=deprecated-copy" ]
+    [
+      "-Wno-error=maybe-uninitialized"
+    ]
+    ++ lib.optionals stdenv.cc.isGNU [
+      "-Wno-error=deprecated-copy"
+    ]
   );
 
   meta = with lib; {

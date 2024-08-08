@@ -25,7 +25,9 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "pysigma" ];
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   propagatedBuildInputs = [ pysigma ];
 

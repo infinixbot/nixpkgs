@@ -33,7 +33,9 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  mesonFlags = [ (lib.mesonBool "demo" false) ];
+  mesonFlags = [
+    (lib.mesonBool "demo" false)
+  ];
 
   nativeBuildInputs = [
     meson

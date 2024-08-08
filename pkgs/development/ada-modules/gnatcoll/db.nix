@@ -20,7 +20,9 @@
 
 let
   libsFor = {
-    gnatcoll_db2ada = [ gnatcoll-sql ];
+    gnatcoll_db2ada = [
+      gnatcoll-sql
+    ];
     gnatinspect = [
       gnatcoll-sqlite
       gnatcoll-readline

@@ -39,11 +39,15 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    sqlite
-    postgresql
-    boost
-  ] ++ lib.optionals stdenv.isDarwin [ Kerberos ];
+  buildInputs =
+    [
+      sqlite
+      postgresql
+      boost
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Kerberos
+    ];
 
   meta = with lib; {
     description = "Database access library for C++";

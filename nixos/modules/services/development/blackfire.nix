@@ -59,6 +59,8 @@ in
 
     services.blackfire-agent.settings.socket = "unix:///run/${agentSock}";
 
-    systemd.packages = [ pkgs.blackfire ];
+    systemd.packages = [
+      pkgs.blackfire
+    ];
   };
 }

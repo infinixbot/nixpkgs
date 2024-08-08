@@ -37,10 +37,14 @@ stdenv.mkDerivation (finalAttrs: {
     "-DFETCHCONTENT_SOURCE_DIR_OPENFST:PATH=${finalAttrs.passthru.sources.openfst}"
   ];
 
-  buildInputs = [
-    openblas
-    icu
-  ] ++ lib.optionals stdenv.isDarwin [ Accelerate ];
+  buildInputs =
+    [
+      openblas
+      icu
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Accelerate
+    ];
 
   nativeBuildInputs = [
     cmake

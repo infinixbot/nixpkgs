@@ -623,7 +623,9 @@ in
                         description = ''
                           List of resources to host on this listener.
                         '';
-                        example = [ "client" ];
+                        example = [
+                          "client"
+                        ];
                       };
                       compress = mkOption {
                         default = false;
@@ -1643,7 +1645,9 @@ in
       user = "matrix-synapse";
     };
 
-    environment.systemPackages = lib.optionals cfg.enableRegistrationScript [ registerNewMatrixUser ];
+    environment.systemPackages = lib.optionals cfg.enableRegistrationScript [
+      registerNewMatrixUser
+    ];
   };
 
   meta = {

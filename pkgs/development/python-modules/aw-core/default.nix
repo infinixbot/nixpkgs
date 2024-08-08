@@ -33,7 +33,9 @@ buildPythonPackage rec {
 
   disabled = pythonOlder "3.8";
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   propagatedBuildInputs = [
     jsonschema

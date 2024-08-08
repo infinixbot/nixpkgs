@@ -54,8 +54,12 @@ stdenv.mkDerivation (finalAttrs: {
       qtmultimedia
       zeromq
     ]
-    ++ lib.optionals stdenv.isLinux [ alsa-lib ]
-    ++ lib.optionals stdenv.isDarwin [ llvmPackages.openmp ];
+    ++ lib.optionals stdenv.isLinux [
+      alsa-lib
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      llvmPackages.openmp
+    ];
 
   strictDeps = true;
 

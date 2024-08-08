@@ -60,7 +60,9 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ gtk_engines ];
 
-  propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+  propagatedUserEnvPkgs = [
+    gtk-engine-murrine
+  ];
 
   postPatch = "patchShebangs .";
 

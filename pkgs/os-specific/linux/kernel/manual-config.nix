@@ -334,7 +334,9 @@ lib.makeOverridable (
           ++ extraMakeFlags;
 
         installFlags =
-          [ "INSTALL_PATH=$(out)" ]
+          [
+            "INSTALL_PATH=$(out)"
+          ]
           ++ (optional isModular "INSTALL_MOD_PATH=$(out)")
           ++ optionals buildDTBs [
             "dtbs_install"
@@ -501,7 +503,9 @@ lib.makeOverridable (
             );
           license = lib.licenses.gpl2Only;
           homepage = "https://www.kernel.org/";
-          maintainers = lib.teams.linux-kernel.members ++ [ maintainers.thoughtpolice ];
+          maintainers = lib.teams.linux-kernel.members ++ [
+            maintainers.thoughtpolice
+          ];
           platforms = platforms.linux;
           badPlatforms =
             lib.optionals (lib.versionOlder version "4.15") [

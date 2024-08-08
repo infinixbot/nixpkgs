@@ -60,7 +60,9 @@ stdenv.mkDerivation (finalAttrs: {
     wayland
   ] ++ cubeb.passthru.backendLibs;
 
-  cmakeFlags = [ (lib.cmakeBool "BUILD_TESTS" true) ];
+  cmakeFlags = [
+    (lib.cmakeBool "BUILD_TESTS" true)
+  ];
 
   strictDeps = true;
 
@@ -98,9 +100,16 @@ stdenv.mkDerivation (finalAttrs: {
 
   qtWrapperArgs =
     let
-      libPath = lib.makeLibraryPath ([ vulkan-loader ] ++ cubeb.passthru.backendLibs);
+      libPath = lib.makeLibraryPath (
+        [
+          vulkan-loader
+        ]
+        ++ cubeb.passthru.backendLibs
+      );
     in
-    [ "--prefix LD_LIBRARY_PATH : ${libPath}" ];
+    [
+      "--prefix LD_LIBRARY_PATH : ${libPath}"
+    ];
 
   # https://github.com/stenzek/duckstation/blob/master/scripts/appimage/apprun-hooks/default-to-x11.sh
   # Can't avoid the double wrapping, the binary wrapper from qtWrapperArgs doesn't support --run

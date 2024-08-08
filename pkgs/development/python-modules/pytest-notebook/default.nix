@@ -29,7 +29,9 @@ buildPythonPackage rec {
     hash = "sha256-LoK0wb7rAbVbgyURCbSfckWvJDef3tPY+7V4YU1IBRU=";
   };
 
-  nativeBuildInputs = [ flit-core ];
+  nativeBuildInputs = [
+    flit-core
+  ];
 
   pythonRelaxDeps = [
     "attrs"

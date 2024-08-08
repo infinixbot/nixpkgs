@@ -25,7 +25,9 @@ stdenv.mkDerivation (finalAttrs: {
     dpkg
   ];
 
-  buildInputs = [ cups ];
+  buildInputs = [
+    cups
+  ];
 
   dontConfigure = true;
   dontBuild = true;

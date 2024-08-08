@@ -23,7 +23,9 @@ buildPythonPackage rec {
     hash = "sha256-ZMtZSKOIIRSqH6eyC7bBeua7YLKyWW6NOXN/MDv9fy4=";
   };
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   propagatedBuildInputs = [
     django
@@ -31,7 +33,9 @@ buildPythonPackage rec {
     pymemcache
   ];
 
-  pythonImportsCheck = [ "django_ratelimit" ];
+  pythonImportsCheck = [
+    "django_ratelimit"
+  ];
 
   checkPhase = ''
     runHook preCheck

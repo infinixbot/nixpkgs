@@ -77,7 +77,9 @@ gnuradioMinimal.pkgs.mkDerivation rec {
         else
           "Gr-audio";
     in
-    [ "-DLINUX_AUDIO_BACKEND=${audioBackend}" ];
+    [
+      "-DLINUX_AUDIO_BACKEND=${audioBackend}"
+    ];
 
   # Prevent double-wrapping, inject wrapper args manually instead.
   dontWrapGApps = true;

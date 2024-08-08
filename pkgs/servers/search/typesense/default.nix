@@ -22,7 +22,9 @@ stdenv.mkDerivation {
     inherit hash;
   };
 
-  nativeBuildInputs = lib.optionals stdenv.isLinux [ autoPatchelfHook ];
+  nativeBuildInputs = lib.optionals stdenv.isLinux [
+    autoPatchelfHook
+  ];
 
   # The tar.gz contains no subdirectory
   sourceRoot = ".";

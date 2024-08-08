@@ -54,7 +54,9 @@ buildDunePackage rec {
   ];
 
   doCheck = lib.versionAtLeast ocaml.version "4.08" && lib.versionOlder ocaml.version "5.0";
-  checkInputs = [ (if lib.versionAtLeast version "5.2" then ounit2 else ounit) ];
+  checkInputs = [
+    (if lib.versionAtLeast version "5.2" then ounit2 else ounit)
+  ];
 
   meta = with lib; {
     description = "deriving is a library simplifying type-driven code generation on OCaml >=4.02";

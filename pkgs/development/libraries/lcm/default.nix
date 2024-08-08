@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
     cmake
   ];
 
-  buildInputs = [ glib ];
+  buildInputs = [
+    glib
+  ];
 
   meta = with lib; {
     description = "Lightweight Communications and Marshalling (LCM)";

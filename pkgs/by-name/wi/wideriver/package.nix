@@ -23,7 +23,9 @@ stdenv.mkDerivation (finalAttrs: {
     wayland-scanner
   ];
 
-  buildInputs = [ wayland ];
+  buildInputs = [
+    wayland
+  ];
 
   installFlags = [ "PREFIX=$(out)" ];
 

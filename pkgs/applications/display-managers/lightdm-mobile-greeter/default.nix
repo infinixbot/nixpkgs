@@ -33,7 +33,9 @@ rustPlatform.buildRustPackage rec {
     libhandy_0
     lightdm
   ];
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   postInstall = ''
     mkdir -p $out/share/xgreeters

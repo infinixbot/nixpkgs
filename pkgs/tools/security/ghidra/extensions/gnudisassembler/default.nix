@@ -37,14 +37,20 @@ buildGhidraExtension {
 
   __darwinAllowLocalNetworking = true;
 
-  nativeBuildInputs = [
-    flex
-    bison
-    texinfo
-    perl
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ xcbuild ];
+  nativeBuildInputs =
+    [
+      flex
+      bison
+      texinfo
+      perl
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      xcbuild
+    ];
 
-  buildInputs = [ zlib ];
+  buildInputs = [
+    zlib
+  ];
   gradleBuildTask = "assemble";
 
   installPhase = ''

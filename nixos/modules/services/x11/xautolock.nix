@@ -120,7 +120,9 @@ in
             "-notify ${toString cfg.notify}"
             "-notifier '${cfg.notifier}'"
           ]
-          ++ optionals (cfg.nowlocker != null) [ "-nowlocker '${cfg.nowlocker}'" ]
+          ++ optionals (cfg.nowlocker != null) [
+            "-nowlocker '${cfg.nowlocker}'"
+          ]
           ++ optionals (cfg.killer != null) [
             "-killer '${cfg.killer}'"
             "-killtime ${toString cfg.killtime}"

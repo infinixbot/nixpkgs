@@ -168,7 +168,9 @@ lib.makeExtensible (
           (common {
             version = "2.3.18";
             hash = "sha256-jBz2Ub65eFYG+aWgSI3AJYvLSghio77fWQiIW1svA9U=";
-            patches = [ patch-monitorfdhup ];
+            patches = [
+              patch-monitorfdhup
+            ];
             self_attribute_name = "nix_2_3";
             maintainers = with lib.maintainers; [ flokli ];
           }).override

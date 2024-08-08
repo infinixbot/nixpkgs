@@ -24,10 +24,14 @@ stdenv.mkDerivation rec {
     automake
     libtool
   ];
-  buildInputs = [
-    freetype
-    SDL
-  ] ++ lib.optionals stdenv.isLinux [ libX11 ];
+  buildInputs =
+    [
+      freetype
+      SDL
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      libX11
+    ];
 
   postPatch = ''
     substituteInPlace include/agg_renderer_outline_aa.h \

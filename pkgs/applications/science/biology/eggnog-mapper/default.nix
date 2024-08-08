@@ -24,12 +24,18 @@ python3Packages.buildPythonApplication rec {
       --replace "==" ">="
   '';
 
-  nativeBuildInputs = [ autoPatchelfHook ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+  ];
 
-  buildInputs = [ zlib ];
+  buildInputs = [
+    zlib
+  ];
 
   propagatedBuildInputs =
-    [ wget ]
+    [
+      wget
+    ]
     ++ (with python3Packages; [
       biopython
       psutil

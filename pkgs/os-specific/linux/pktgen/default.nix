@@ -33,19 +33,25 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [
-    dpdk
-    libbsd
-    libpcap
-    lua5_3
-    numactl
-    which
-  ] ++ lib.optionals withGtk [ gtk2 ];
+  buildInputs =
+    [
+      dpdk
+      libbsd
+      libpcap
+      lua5_3
+      numactl
+      which
+    ]
+    ++ lib.optionals withGtk [
+      gtk2
+    ];
 
   RTE_SDK = dpdk;
   GUI = lib.optionalString withGtk "true";
 
-  env.NIX_CFLAGS_COMPILE = toString [ "-Wno-error=sign-compare" ];
+  env.NIX_CFLAGS_COMPILE = toString [
+    "-Wno-error=sign-compare"
+  ];
 
   # requires symbols from this file
   NIX_LDFLAGS = "-lrte_net_bond";

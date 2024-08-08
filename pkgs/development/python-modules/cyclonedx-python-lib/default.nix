@@ -57,8 +57,12 @@ buildPythonPackage rec {
       jsonschema
       lxml
     ];
-    json-validation = [ jsonschema ];
-    xml-validation = [ lxml ];
+    json-validation = [
+      jsonschema
+    ];
+    xml-validation = [
+      lxml
+    ];
   };
 
   nativeCheckInputs = [

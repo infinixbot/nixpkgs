@@ -26,7 +26,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   passthru = {
     tests.pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
@@ -44,6 +46,8 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     ];
     maintainers = teams.lomiri.members;
     platforms = platforms.all;
-    pkgConfigModules = [ "lomiri-sounds" ];
+    pkgConfigModules = [
+      "lomiri-sounds"
+    ];
   };
 })

@@ -58,9 +58,13 @@ stdenv.mkDerivation rec {
     sed -i '/ACX_PTHREAD/d' configure.ac
   '';
 
-  configureFlags = [ "CPPFLAGS=-I${glee}/include/GL" ];
+  configureFlags = [
+    "CPPFLAGS=-I${glee}/include/GL"
+  ];
 
-  makeFlags = [ ''CXXFLAGS+="-DGL_GLEXT_PROTOTYPES"'' ];
+  makeFlags = [
+    ''CXXFLAGS+="-DGL_GLEXT_PROTOTYPES"''
+  ];
 
   preBuild = ''
     sed -i "s|/usr|$out|" Makefile

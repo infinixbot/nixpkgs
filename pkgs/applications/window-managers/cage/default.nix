@@ -33,7 +33,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-Suq14YRw/MReDRvO/TQqjpZvpzAEDnHUyVbQj0BPT4c=";
   };
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     meson

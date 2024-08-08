@@ -32,7 +32,9 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "typer" ];
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   propagatedBuildInputs = [
     orjson

@@ -56,8 +56,12 @@ stdenv.mkDerivation {
     ]
   );
   env.LDFLAGS = lib.optionalString enableStatic "-static";
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
-  installFlags = [ "PREFIX_TROFF=${placeholder "troff"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
+  installFlags = [
+    "PREFIX_TROFF=${placeholder "troff"}"
+  ];
 
   outputs = [
     "out"

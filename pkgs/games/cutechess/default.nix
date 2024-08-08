@@ -24,7 +24,9 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
     wrapQtAppsHook
   ];
-  buildInputs = [ qtbase ];
+  buildInputs = [
+    qtbase
+  ];
 
   postInstall = ''
     install -Dm555 cutechess{,-cli} -t $out/bin/

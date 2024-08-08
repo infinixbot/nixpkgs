@@ -43,7 +43,9 @@ stdenv.mkDerivation (finalAttrs: {
       libtirpc
       avahi
     ]
-    ++ [ libxml2 ];
+    ++ [
+      libxml2
+    ];
 
   meta = with lib; {
     description = "Library for communicating with LXI compatible instruments";

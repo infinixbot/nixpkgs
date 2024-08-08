@@ -30,7 +30,9 @@ stdenvNoCC.mkDerivation rec {
     xcursorgen
   ];
 
-  propagatedBuildInputs = [ hicolor-icon-theme ];
+  propagatedBuildInputs = [
+    hicolor-icon-theme
+  ];
 
   dontDropIconThemeCache = true;
 

@@ -22,7 +22,9 @@ buildDunePackage rec {
 
   duneVersion = "3";
 
-  nativeBuildInputs = [ menhir ];
+  nativeBuildInputs = [
+    menhir
+  ];
 
   propagatedBuildInputs = [
     menhirLib

@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-DpRoGTVB1vaif4UNiCEaVO/pyQY8Hc/QG1vmYkVr3Iw=";
   };
 
-  nativeBuildInputs = [ glib ];
+  nativeBuildInputs = [
+    glib
+  ];
 
   installPhase = ''
     mkdir $out

@@ -19,9 +19,13 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-GcMSglLKuUD3nVj0/8Nbrk4qs5gl5PlCj7r1MYq/vQg=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ luajit ];
+  buildInputs = [
+    luajit
+  ];
 
   meta = with lib; {
     description = "Write your own river layout generator in lua";

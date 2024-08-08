@@ -44,7 +44,9 @@ stdenv.mkDerivation rec {
 
   doCheck = !stdenv.isDarwin;
 
-  nativeCheckInputs = [ guile-quickcheck ];
+  nativeCheckInputs = [
+    guile-quickcheck
+  ];
 
   postInstall = ''
     wrapProgram $out/bin/disarchive \

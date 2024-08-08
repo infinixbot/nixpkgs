@@ -41,6 +41,8 @@ mkFranzDerivation' rec {
     maintainers = with maintainers; [ davidtwco ];
     platforms = [ "x86_64-linux" ];
     hydraPlatforms = [ ];
-    knownVulnerabilities = [ "CVE-2022-32320" ];
+    knownVulnerabilities = [
+      "CVE-2022-32320"
+    ];
   };
 }

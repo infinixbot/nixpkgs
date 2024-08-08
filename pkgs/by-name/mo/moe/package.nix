@@ -21,9 +21,13 @@ stdenv.mkDerivation (finalAttrs: {
       "insert( 0U, 1U,"
   '';
 
-  nativeBuildInputs = [ lzip ];
+  nativeBuildInputs = [
+    lzip
+  ];
 
-  buildInputs = [ ncurses ];
+  buildInputs = [
+    ncurses
+  ];
 
   strictDeps = true;
 

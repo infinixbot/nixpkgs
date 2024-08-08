@@ -39,9 +39,13 @@ buildPythonApplication rec {
     hash = "sha256-ZouUU4p1FSGMxPuzDo5P971R+rDXpBdJn2MqvkJO+Fw=";
   };
 
-  patches = [ ./pytest-executable-name.patch ];
+  patches = [
+    ./pytest-executable-name.patch
+  ];
 
-  nativeBuildInputs = with py.pkgs; [ setuptools ];
+  nativeBuildInputs = with py.pkgs; [
+    setuptools
+  ];
 
   propagatedBuildInputs = with py.pkgs; [
     beautifulsoup4
@@ -58,7 +62,9 @@ buildPythonApplication rec {
   ];
 
   nativeCheckInputs =
-    [ glibcLocales ]
+    [
+      glibcLocales
+    ]
     ++ (with python3.pkgs; [
       pytestCheckHook
       pytest-cov

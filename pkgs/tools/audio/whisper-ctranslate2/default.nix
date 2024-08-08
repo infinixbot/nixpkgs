@@ -32,7 +32,9 @@ python3.pkgs.buildPythonApplication {
     tqdm
   ];
 
-  nativeCheckInputs = with python3.pkgs; [ nose2 ];
+  nativeCheckInputs = with python3.pkgs; [
+    nose2
+  ];
 
   checkPhase = ''
     runHook preCheck

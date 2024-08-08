@@ -30,7 +30,9 @@ buildPythonPackage rec {
       --replace "humanize>=0.5.1,<0.6" "humanize>=0.5.1"
   '';
 
-  buildInputs = [ matrix-synapse-unwrapped ];
+  buildInputs = [
+    matrix-synapse-unwrapped
+  ];
 
   propagatedBuildInputs =
     [
@@ -46,7 +48,9 @@ buildPythonPackage rec {
   # Tests need network access
   doCheck = false;
 
-  pythonImportsCheck = [ "s3_storage_provider" ];
+  pythonImportsCheck = [
+    "s3_storage_provider"
+  ];
 
   meta = with lib; {
     description = "Synapse storage provider to fetch and store media in Amazon S3";

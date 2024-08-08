@@ -21,7 +21,9 @@ buildGoModule rec {
 
   nativeBuildInputs = [ installShellFiles ];
 
-  ldflags = [ "-X github.com/tursodatabase/turso-cli/internal/cmd.version=v${version}" ];
+  ldflags = [
+    "-X github.com/tursodatabase/turso-cli/internal/cmd.version=v${version}"
+  ];
 
   preCheck = ''
     export HOME=$(mktemp -d)

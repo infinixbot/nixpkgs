@@ -12,7 +12,9 @@ import ./make-test-python.nix (
           services.minidlna.openFirewall = true;
           services.minidlna.settings = {
             log_level = "error";
-            media_dir = [ "PV,/tmp/stuff" ];
+            media_dir = [
+              "PV,/tmp/stuff"
+            ];
             friendly_name = "rpi3";
             root_container = "B";
             notify_interval = 60;

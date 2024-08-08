@@ -24,9 +24,13 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-b4dgke3PfubQwNsE4IAFbonvwaYavmI1XZfOjnNXadY=";
   };
 
-  nativeBuildInputs = [ cmake ] ++ lib.optional withPython python.pkgs.pythonImportsCheckHook;
+  nativeBuildInputs = [
+    cmake
+  ] ++ lib.optional withPython python.pkgs.pythonImportsCheckHook;
 
-  buildInputs = [ root_py ] ++ lib.optional withPython python;
+  buildInputs = [
+    root_py
+  ] ++ lib.optional withPython python;
 
   # error: invalid version number in 'MACOSX_DEPLOYMENT_TARGET=11.0'
   preConfigure =

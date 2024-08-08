@@ -43,7 +43,9 @@ python3Packages.buildPythonApplication rec {
     wrapGAppsHook3
   ];
 
-  buildInputs = [ gtk3 ];
+  buildInputs = [
+    gtk3
+  ];
 
   propagatedBuildInputs = with python3Packages; [
     dbus-python
@@ -78,7 +80,9 @@ python3Packages.buildPythonApplication rec {
 
     wrapPythonProgramsIn $out/lib/waydroid/ "${
       lib.concatStringsSep " " (
-        [ "$out" ]
+        [
+          "$out"
+        ]
         ++ propagatedBuildInputs
         ++ [
           gawk

@@ -126,7 +126,9 @@ stdenv.mkDerivation (finalAttrs: {
       "--without-mysql"
       "--without-odbc"
     ]
-    ++ lib.optionals (!withOpenGL) [ "--without-opengl" ]
+    ++ lib.optionals (!withOpenGL) [
+      "--without-opengl"
+    ]
     ++ lib.optionals stdenv.isDarwin [
       "--without-cairo"
       "--without-freetype"

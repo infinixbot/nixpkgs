@@ -25,7 +25,9 @@ mkDerivation {
     "dev"
   ];
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   cmakeFlags = [
     "-DCSXCAD_ROOT_DIR=${csxcad}"

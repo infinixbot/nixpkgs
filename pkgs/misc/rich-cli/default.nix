@@ -31,11 +31,18 @@ python3.pkgs.buildPythonApplication rec {
     })
   ];
 
-  pythonRelaxDeps = [ "textual" ];
+  pythonRelaxDeps = [
+    "textual"
+  ];
 
-  build-system = with python3.pkgs; [ poetry-core ];
+  build-system = with python3.pkgs; [
+    poetry-core
+  ];
 
-  nativeBuildInputs = with python3.pkgs; [ ];
+  nativeBuildInputs =
+    with python3.pkgs;
+    [
+    ];
 
   dependencies = with python3.pkgs; [
     click
@@ -45,7 +52,9 @@ python3.pkgs.buildPythonApplication rec {
     textual
   ];
 
-  pythonImportsCheck = [ "rich_cli" ];
+  pythonImportsCheck = [
+    "rich_cli"
+  ];
 
   meta = with lib; {
     description = "Command Line Interface to Rich";

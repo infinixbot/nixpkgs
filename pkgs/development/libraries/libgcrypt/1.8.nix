@@ -81,6 +81,8 @@ stdenv.mkDerivation rec {
     description = "General-purpose cryptographic library";
     license = licenses.lgpl2Plus;
     platforms = platforms.all;
-    knownVulnerabilities = [ "CVE-2021-40528" ];
+    knownVulnerabilities = [
+      "CVE-2021-40528"
+    ];
   };
 }

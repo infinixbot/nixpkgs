@@ -55,7 +55,9 @@ in
     systemd.tmpfiles.rules =
       (
         if isNull config.environment.ldso then
-          [ "r /${libDir}/${ldsoBasename} - - - - -" ]
+          [
+            "r /${libDir}/${ldsoBasename} - - - - -"
+          ]
         else
           [
             "d /${libDir} 0755 root root - -"
@@ -64,7 +66,9 @@ in
       )
       ++ optionals pkgs.stdenv.isx86_64 (
         if isNull config.environment.ldso32 then
-          [ "r /${libDir32}/${ldsoBasename32} - - - - -" ]
+          [
+            "r /${libDir32}/${ldsoBasename32} - - - - -"
+          ]
         else
           [
             "d /${libDir32} 0755 root root - -"

@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
     sed -i -e '/$(LDCONFIG)/d' common/include/lib.mak.in
   '';
 
-  patches = [ ./fix-ar.diff ];
+  patches = [
+    ./fix-ar.diff
+  ];
 
   buildInputs = [
     bluez

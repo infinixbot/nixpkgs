@@ -42,7 +42,9 @@ in
             "tcp://aa.bb.cc.dd:eeeee"
             "tcp://[aaaa:bbbb:cccc:dddd::eeee]:fffff"
           ];
-          Listen = [ "tcp://0.0.0.0:xxxxx" ];
+          Listen = [
+            "tcp://0.0.0.0:xxxxx"
+          ];
         };
         description = ''
           Configuration for yggdrasil, as a Nix attribute set.

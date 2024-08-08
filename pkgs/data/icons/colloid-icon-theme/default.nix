@@ -58,7 +58,9 @@ lib.checkListOfEnum "${pname}: scheme variants"
       jdupes
     ];
 
-    propagatedBuildInputs = [ hicolor-icon-theme ];
+    propagatedBuildInputs = [
+      hicolor-icon-theme
+    ];
 
     dontDropIconThemeCache = true;
 

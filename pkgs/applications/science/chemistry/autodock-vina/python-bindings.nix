@@ -45,12 +45,18 @@ buildPythonPackage {
     swig
   ];
 
-  buildInputs = [ boost ];
+  buildInputs = [
+    boost
+  ];
 
-  propagatedBuildInputs = [ numpy ];
+  propagatedBuildInputs = [
+    numpy
+  ];
 
   # upstrem has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "vina" ];
+  pythonImportsCheck = [
+    "vina"
+  ];
 }

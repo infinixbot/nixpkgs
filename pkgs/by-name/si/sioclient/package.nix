@@ -19,7 +19,9 @@ stdenv.mkDerivation {
     hash = "sha256-iUKWDv/CS2e68cCSM0QUobkfz2A8ZjJ7S0zw7rowQJ0=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = [
     asio

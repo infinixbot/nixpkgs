@@ -32,7 +32,9 @@ buildPythonPackage rec {
     pytestCheckHook
   ];
 
-  pytestFlagsArray = [ "--benchmark-disable" ];
+  pytestFlagsArray = [
+    "--benchmark-disable"
+  ];
 
   disabledTestPaths = [
     "tests/test_bits.py"

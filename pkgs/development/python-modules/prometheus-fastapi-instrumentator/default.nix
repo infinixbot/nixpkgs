@@ -27,7 +27,9 @@ buildPythonPackage rec {
     hash = "sha256-yvKdhQdbY0+jEc8TEHNNgtdnqE0abnd4MN/JZFQwQ2E=";
   };
 
-  build-system = [ poetry-core ];
+  build-system = [
+    poetry-core
+  ];
 
   dependencies = [
     prometheus-client

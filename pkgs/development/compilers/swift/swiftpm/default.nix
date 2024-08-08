@@ -225,7 +225,9 @@ let
     name = "swift-tools-support-core";
     src = generated.sources.swift-tools-support-core;
 
-    patches = [ swift-tools-support-core-glibc-fix ];
+    patches = [
+      swift-tools-support-core-glibc-fix
+    ];
 
     buildInputs = [
       swift-system
@@ -291,7 +293,9 @@ let
       sqlite
     ];
 
-    patches = [ ./patches/llbuild-cmake-disable-rpath.patch ];
+    patches = [
+      ./patches/llbuild-cmake-disable-rpath.patch
+    ];
 
     postPatch = ''
       # Substitute ncurses for curses.
@@ -309,7 +313,9 @@ let
         --replace 'add_subdirectory(Xcode/' '#add_subdirectory(Xcode/'
     '';
 
-    cmakeFlags = [ "-DLLBUILD_SUPPORT_BINDINGS=Swift" ];
+    cmakeFlags = [
+      "-DLLBUILD_SUPPORT_BINDINGS=Swift"
+    ];
 
     postInstall =
       cmakeGlue.LLBuild
@@ -390,7 +396,9 @@ let
         swift-tools-support-core
       ];
 
-      cmakeFlags = [ "-DUSE_CMAKE_INSTALL=ON" ];
+      cmakeFlags = [
+        "-DUSE_CMAKE_INSTALL=ON"
+      ];
 
       postInstall = ''
         for program in $out/bin/swift-*; do

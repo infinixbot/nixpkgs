@@ -39,13 +39,17 @@ stdenv.mkDerivation rec {
     hash = "sha256-TJUTQcTGSGMLb+EjTsET2B3S0khSm/K1R44K0HfIDtM=";
   };
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    gettext
-    pkg-config
-    python3
-  ] ++ lib.optionals enableDocumentation [ hotdoc ];
+  nativeBuildInputs =
+    [
+      meson
+      ninja
+      gettext
+      pkg-config
+      python3
+    ]
+    ++ lib.optionals enableDocumentation [
+      hotdoc
+    ];
 
   buildInputs =
     [
@@ -74,7 +78,9 @@ stdenv.mkDerivation rec {
     ]
     ++ (
       if enableGplPlugins then
-        [ "-Dgpl=enabled" ]
+        [
+          "-Dgpl=enabled"
+        ]
       else
         [
           "-Da52dec=disabled"

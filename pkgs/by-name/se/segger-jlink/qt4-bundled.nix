@@ -12,7 +12,9 @@ stdenv.mkDerivation {
   pname = "segger-jlink-qt4";
   inherit src version;
 
-  nativeBuildInputs = [ autoPatchelfHook ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+  ];
 
   buildInputs = [
     stdenv.cc.cc.lib

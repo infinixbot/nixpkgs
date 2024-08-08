@@ -21,7 +21,9 @@ stdenv.mkDerivation (finalAttrs: {
     nativeBuildInputs = [ dpkg ];
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   installPhase =
     let

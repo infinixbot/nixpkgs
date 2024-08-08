@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
   # It can be neither used nor tested if the kernel is not told to allow this
   doCheck = false;
 
-  checkFlags = [ "PYTHON_CMD=${python.interpreter}" ];
+  checkFlags = [
+    "PYTHON_CMD=${python.interpreter}"
+  ];
 
   meta = {
     platforms = [

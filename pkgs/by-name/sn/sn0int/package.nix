@@ -34,8 +34,12 @@ rustPlatform.buildRustPackage rec {
       libsodium
       sqlite
     ]
-    ++ lib.optionals stdenv.isLinux [ libseccomp ]
-    ++ lib.optionals stdenv.isDarwin [ pkgs.darwin.apple_sdk.frameworks.Security ];
+    ++ lib.optionals stdenv.isLinux [
+      libseccomp
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      pkgs.darwin.apple_sdk.frameworks.Security
+    ];
 
   # One of the dependencies (chrootable-https) tries to read "/etc/resolv.conf"
   # in "checkPhase", hence fails in sandbox of "nix".

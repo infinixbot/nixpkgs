@@ -24,7 +24,9 @@ python3.pkgs.buildPythonApplication rec {
   # No tests present
   doCheck = false;
 
-  pythonImportsCheck = [ "crlfsuite" ];
+  pythonImportsCheck = [
+    "crlfsuite"
+  ];
 
   meta = with lib; {
     description = "CRLF injection (HTTP Response Splitting) scanner";

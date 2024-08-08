@@ -23,7 +23,9 @@ pkg.overrideAttrs (o: {
     libxkbcommon
   ];
 
-  makeFlags = o.makeFlags ++ [ "PLAYERCTL=1" ];
+  makeFlags = o.makeFlags ++ [
+    "PLAYERCTL=1"
+  ];
 
   patches = (o.patches or [ ]) ++ [
     (fetchpatch {

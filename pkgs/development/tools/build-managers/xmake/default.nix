@@ -20,7 +20,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-deLd4r0qSKMymJuAGuZQd8RS1JH+xRep2yeoHIcTzcU=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     lua

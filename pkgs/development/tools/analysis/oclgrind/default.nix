@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
     readline
   ];
 
-  cmakeFlags = [ "-DCLANG_ROOT=${llvmPackages_12.clang-unwrapped}" ];
+  cmakeFlags = [
+    "-DCLANG_ROOT=${llvmPackages_12.clang-unwrapped}"
+  ];
 
   meta = with lib; {
     description = "OpenCL device simulator and debugger";

@@ -58,7 +58,9 @@ buildPythonPackage rec {
     pytestCheckHook
   ];
 
-  pytestFlagsArray = [ "intents/tests" ];
+  pytestFlagsArray = [
+    "intents/tests"
+  ];
 
   meta = with lib; {
     description = "Intents to be used with Home Assistant";

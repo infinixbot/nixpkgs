@@ -73,7 +73,14 @@ buildPythonPackage {
     ]
   );
 
-  nativeBuildInputs = [ which ] ++ lib.optionals cudaSupport (with cudaPackages; [ cuda_nvcc ]);
+  nativeBuildInputs =
+    [ which ]
+    ++ lib.optionals cudaSupport (
+      with cudaPackages;
+      [
+        cuda_nvcc
+      ]
+    );
 
   propagatedBuildInputs = [
     numpy

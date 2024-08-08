@@ -20,7 +20,9 @@ python3.pkgs.buildPythonApplication rec {
 
   doCheck = false; # no tests available
 
-  buildInputs = [ gtk3 ];
+  buildInputs = [
+    gtk3
+  ];
 
   nativeBuildInputs = [
     wrapGAppsHook3

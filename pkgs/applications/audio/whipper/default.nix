@@ -72,7 +72,12 @@ python3.pkgs.buildPythonApplication rec {
     glib
   ];
 
-  nativeCheckInputs = with python3.pkgs; [ twisted ] ++ bins;
+  nativeCheckInputs =
+    with python3.pkgs;
+    [
+      twisted
+    ]
+    ++ bins;
 
   makeWrapperArgs = [
     "--prefix"

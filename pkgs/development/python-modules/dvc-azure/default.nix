@@ -22,7 +22,9 @@ buildPythonPackage rec {
   # Prevent circular dependency
   pythonRemoveDeps = [ "dvc" ];
 
-  nativeBuildInputs = [ setuptools-scm ];
+  nativeBuildInputs = [
+    setuptools-scm
+  ];
 
   propagatedBuildInputs = [
     adlfs

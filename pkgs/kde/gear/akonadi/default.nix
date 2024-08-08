@@ -16,7 +16,9 @@ mkKdeDerivation {
     ./ignore-mysql-config-timestamp.patch
   ];
 
-  extraCmakeFlags = [ "-DMYSQLD_SCRIPTS_PATH=${lib.getBin mariadb}/bin" ];
+  extraCmakeFlags = [
+    "-DMYSQLD_SCRIPTS_PATH=${lib.getBin mariadb}/bin"
+  ];
 
   extraNativeBuildInputs = [
     qttools

@@ -209,7 +209,9 @@ in
           WorkingDirectory = cfg.dataDir;
           User = cfg.user;
           Group = cfg.group;
-          EnvironmentFile = [ environmentFile ] ++ lib.optional (cfg.settingsFile != null) cfg.settingsFile;
+          EnvironmentFile = [
+            environmentFile
+          ] ++ lib.optional (cfg.settingsFile != null) cfg.settingsFile;
           StateDirectory = mkIf (cfg.dataDir == "/var/lib/healthchecks") "healthchecks";
           StateDirectoryMode = mkIf (cfg.dataDir == "/var/lib/healthchecks") "0750";
         };

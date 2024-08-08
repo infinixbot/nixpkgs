@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     updateScript = nix-update-script { };
   };
 
-  configureFlags = [ "--with-python=no" ];
+  configureFlags = [
+    "--with-python=no"
+  ];
 
   nativeBuildInputs = [
     autoreconfHook

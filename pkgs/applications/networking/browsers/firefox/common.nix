@@ -248,7 +248,9 @@ buildStdenv.mkDerivation {
 
   inherit src unpackPhase meta;
 
-  outputs = [ "out" ] ++ lib.optionals crashreporterSupport [ "symbols" ];
+  outputs = [
+    "out"
+  ] ++ lib.optionals crashreporterSupport [ "symbols" ];
 
   # Add another configure-build-profiling run before the final configure phase if we build with pgo
   preConfigurePhases = lib.optionals pgoSupport [
@@ -280,7 +282,9 @@ buildStdenv.mkDerivation {
         hash = "sha256-cWOyvjIPUU1tavPRqg61xJ53XE4EJTdsFzadfVxyTyM=";
       })
     ]
-    ++ lib.optionals (lib.versionOlder version "122") [ ./bindgen-0.64-clang-18.patch ]
+    ++ lib.optionals (lib.versionOlder version "122") [
+      ./bindgen-0.64-clang-18.patch
+    ]
     ++ lib.optionals (lib.versionAtLeast version "122" && lib.versionOlder version "123") [
       ./122.0-libvpx-mozbz1875201.patch
     ]
@@ -291,7 +295,9 @@ buildStdenv.mkDerivation {
         hash = "sha256-2IpdSyye3VT4VB95WurnyRFtdN1lfVtYpgEiUVhfNjw=";
       })
     ]
-    ++ lib.optionals (lib.versionOlder version "115.12") [ ./rust-1.78.patch ]
+    ++ lib.optionals (lib.versionOlder version "115.12") [
+      ./rust-1.78.patch
+    ]
     ++ extraPatches;
 
   postPatch =

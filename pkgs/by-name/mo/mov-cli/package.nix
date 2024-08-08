@@ -57,7 +57,9 @@ python3.pkgs.buildPythonPackage {
         mpv
       ];
     in
-    [ "--prefix PATH : ${binPath}" ];
+    [
+      "--prefix PATH : ${binPath}"
+    ];
 
   meta = with lib; {
     homepage = "https://github.com/mov-cli/mov-cli";

@@ -26,7 +26,9 @@ python3.pkgs.buildPythonApplication rec {
     "python-daemon"
   ];
 
-  nativeBuildInputs = with python3.pkgs; [ poetry-core ];
+  nativeBuildInputs = with python3.pkgs; [
+    poetry-core
+  ];
 
   propagatedBuildInputs =
     with python3.pkgs;
@@ -44,10 +46,14 @@ python3.pkgs.buildPythonApplication rec {
       python-box
       tomli-w
     ]
-    ++ lib.optionals (pythonOlder "3.11") [ tomli ]
+    ++ lib.optionals (pythonOlder "3.11") [
+      tomli
+    ]
     ++ lib.optional withInotify inotify;
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
   passthru = {
     updateScript = nix-update-script { };

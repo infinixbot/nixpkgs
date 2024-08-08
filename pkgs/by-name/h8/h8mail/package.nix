@@ -21,7 +21,9 @@ python3.pkgs.buildPythonApplication rec {
     wheel
   ];
 
-  propagatedBuildInputs = with python3.pkgs; [ requests ];
+  propagatedBuildInputs = with python3.pkgs; [
+    requests
+  ];
 
   pythonImportsCheck = [ "h8mail" ];
 

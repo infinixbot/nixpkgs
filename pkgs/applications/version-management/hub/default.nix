@@ -67,7 +67,9 @@ buildGoModule rec {
       --suffix PATH : ${lib.makeBinPath [ git ]}
   '';
 
-  nativeCheckInputs = [ git ];
+  nativeCheckInputs = [
+    git
+  ];
 
   passthru.tests = {
     inherit (nixosTests) hub;

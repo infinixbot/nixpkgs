@@ -82,7 +82,9 @@ stdenv.mkDerivation (finalAttrs: {
       perlPackages.Po4a
       w3m
     ]
-    ++ lib.optionals withNLS [ gettext ];
+    ++ lib.optionals withNLS [
+      gettext
+    ];
 
   cmakeFlags = [
     (lib.cmakeOptionType "filepath" "BERKELEY_INCLUDE_DIRS" "${lib.getDev db}/include")

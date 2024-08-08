@@ -13,7 +13,9 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-mAgm9lKdJXbCZ8ofVk1b7wRstH5UIVu1mO1sS5stCig=";
   };
 
-  propagatedBuildInputs = with python3Packages; [ pynacl ];
+  propagatedBuildInputs = with python3Packages; [
+    pynacl
+  ];
 
   meta = with lib; {
     homepage = "https://git.kernel.org/pub/scm/utils/patatt/patatt.git/about/";

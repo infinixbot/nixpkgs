@@ -50,16 +50,20 @@ stdenv.mkDerivation rec {
     hash = "sha256:1y8dh1gdffq38hgy6x1228l51l6p56iaiqlflw7w1dcbgw15llcd";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    # For glib we want the `dev` output for the same library we are
-    # also linking against, since pkgsHostTarget.glib.dev exposes
-    # some extra tools that are built for build->host execution.
-    # To achieve this, we coerce the output to a string to prevent
-    # mkDerivation's splicing logic from kicking in.
-    "${glib.dev}"
-  ] ++ optional enableAirplay2 [ unixtools.xxd ];
+  nativeBuildInputs =
+    [
+      autoreconfHook
+      pkg-config
+      # For glib we want the `dev` output for the same library we are
+      # also linking against, since pkgsHostTarget.glib.dev exposes
+      # some extra tools that are built for build->host execution.
+      # To achieve this, we coerce the output to a string to prevent
+      # mkDerivation's splicing logic from kicking in.
+      "${glib.dev}"
+    ]
+    ++ optional enableAirplay2 [
+      unixtools.xxd
+    ];
 
   buildInputs =
     [

@@ -63,7 +63,9 @@ python.pkgs.buildPythonApplication rec {
     hash = "sha256-hdBUEX2tOWN2b11w6aG3x7MP7KQTj4Rwc2w8XvABGf4=";
   };
 
-  nativeBuildInputs = with python.pkgs; [ pdm-backend ];
+  nativeBuildInputs = with python.pkgs; [
+    pdm-backend
+  ];
 
   propagatedBuildInputs = with python.pkgs; [
     croniter
@@ -91,9 +93,13 @@ python.pkgs.buildPythonApplication rec {
     ]
     ++ (
       if (lib.meta.availableOn stdenv.hostPlatform chromium) then
-        [ "--set CHROME_BINARY ${chromium}/bin/chromium-browser" ]
+        [
+          "--set CHROME_BINARY ${chromium}/bin/chromium-browser"
+        ]
       else
-        [ "--set-default USE_CHROME False" ]
+        [
+          "--set-default USE_CHROME False"
+        ]
     );
 
   meta = with lib; {

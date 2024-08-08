@@ -83,7 +83,9 @@ stdenv.mkDerivation (finalAttrs: {
     "out"
   ];
 
-  propagatedBuildInputs = lib.optionals stdenv.isDarwin [ Security ];
+  propagatedBuildInputs = lib.optionals stdenv.isDarwin [
+    Security
+  ];
 
   nativeBuildInputs = [
     autoreconfHook

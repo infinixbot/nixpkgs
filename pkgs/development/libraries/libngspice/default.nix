@@ -25,16 +25,22 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    [ fftw ]
+    [
+      fftw
+    ]
     ++ lib.optionals (!withNgshared) [
       libXaw
       libXext
     ];
 
-  configureFlags = lib.optionals withNgshared [ "--with-ngshared" ] ++ [
-    "--enable-xspice"
-    "--enable-cider"
-  ];
+  configureFlags =
+    lib.optionals withNgshared [
+      "--with-ngshared"
+    ]
+    ++ [
+      "--enable-xspice"
+      "--enable-cider"
+    ];
 
   enableParallelBuilding = true;
 

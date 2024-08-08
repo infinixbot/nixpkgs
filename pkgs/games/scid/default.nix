@@ -25,7 +25,9 @@ tcl.mkTclDerivation rec {
       --replace "set var(INSTALL) {install_mac}" ""
   '';
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   buildInputs = [
     tk
@@ -38,7 +40,9 @@ tcl.mkTclDerivation rec {
     "SHAREDIR=$(out)/share"
   ];
 
-  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
+  makeFlags = [
+    "CC=${stdenv.cc.targetPrefix}cc"
+  ];
 
   enableParallelBuilding = true;
 

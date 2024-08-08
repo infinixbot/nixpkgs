@@ -17,7 +17,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-/iGNVP7Bz/UZAR+dFxAKMKM9jm07h0x0F3VGpdxlHdk=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   passthru.updateScript = gitUpdater {
     rev-prefix = "v";

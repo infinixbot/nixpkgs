@@ -32,7 +32,9 @@ buildDunePackage rec {
 
   minimalOCamlVersion = "4.08";
 
-  nativeBuildInputs = [ bisect_ppx ];
+  nativeBuildInputs = [
+    bisect_ppx
+  ];
 
   propagatedBuildInputs = [
     cstruct

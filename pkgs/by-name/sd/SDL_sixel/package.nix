@@ -21,7 +21,9 @@ stdenv.mkDerivation {
 
   buildInputs = [ libsixel ];
 
-  configureFlags = [ (lib.enableFeature true "video-sixel") ];
+  configureFlags = [
+    (lib.enableFeature true "video-sixel")
+  ];
 
   strictDeps = true;
 

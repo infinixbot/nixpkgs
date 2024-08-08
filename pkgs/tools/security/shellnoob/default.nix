@@ -16,7 +16,9 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "xF9OTFFe8godW4+z9MFaFEkjE9FB42bKWwdl9xRcmEo=";
   };
 
-  buildInputs = [ python3 ];
+  buildInputs = [
+    python3
+  ];
 
   installPhase = ''
     runHook preInstall

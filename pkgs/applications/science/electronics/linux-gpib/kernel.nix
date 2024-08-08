@@ -19,8 +19,12 @@ stdenv.mkDerivation (
 
     buildInputs = [ pahole ] ++ kernel.moduleBuildDependencies;
 
-    makeFlags = [ "LINUX_SRCDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build" ];
+    makeFlags = [
+      "LINUX_SRCDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
+    ];
 
-    installFlags = [ "INSTALL_MOD_PATH=$(out)" ];
+    installFlags = [
+      "INSTALL_MOD_PATH=$(out)"
+    ];
   }
 )

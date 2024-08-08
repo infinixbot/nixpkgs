@@ -16,9 +16,13 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-kax4gnvRkHSqj0Y6Rk8eyPpT7Wia2QngCQtxpqWSl9s=";
   };
 
-  pythonRelaxDeps = [ "semver" ];
+  pythonRelaxDeps = [
+    "semver"
+  ];
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools-scm ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools-scm
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     appdirs
@@ -30,13 +34,17 @@ python3.pkgs.buildPythonApplication rec {
     update-checker
   ];
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
   postBuild = ''
     export HOME=$(mktemp -d);
   '';
 
-  pythonImportsCheck = [ "circup" ];
+  pythonImportsCheck = [
+    "circup"
+  ];
 
   meta = with lib; {
     description = "CircuitPython library updater";

@@ -199,6 +199,8 @@ stdenv.mkDerivation (finalAttrs: {
     license = licenses.gpl3Only;
     maintainers = teams.lomiri.members;
     platforms = platforms.linux;
-    pkgConfigModules = [ "history-service" ];
+    pkgConfigModules = [
+      "history-service"
+    ];
   };
 })

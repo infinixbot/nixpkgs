@@ -37,7 +37,9 @@ let
     ++ optionals (stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
       "-DCMAKE_CROSSCOMPILING_EMULATOR=env"
     ]
-    ++ optionals stdenv.hostPlatform.isStatic [ "-DCMAKE_LINK_SEARCH_START_STATIC=ON" ]
+    ++ optionals stdenv.hostPlatform.isStatic [
+      "-DCMAKE_LINK_SEARCH_START_STATIC=ON"
+    ]
   );
 
   makeCMakeFlags =

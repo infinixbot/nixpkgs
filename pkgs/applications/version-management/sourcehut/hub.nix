@@ -69,7 +69,9 @@ buildPythonPackage rec {
   # Module has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "hubsrht" ];
+  pythonImportsCheck = [
+    "hubsrht"
+  ];
 
   meta = with lib; {
     homepage = "https://git.sr.ht/~sircmpwn/hub.sr.ht";

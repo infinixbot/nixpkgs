@@ -51,7 +51,9 @@ rustPlatform.buildRustPackage rec {
     ];
 
   # requires internet access
-  checkFlags = [ "--skip=secondary_threads::check_updates::tests::fetch_latest_release_from_github" ];
+  checkFlags = [
+    "--skip=secondary_threads::check_updates::tests::fetch_latest_release_from_github"
+  ];
 
   postInstall = ''
     for res in $(ls resources/packaging/linux/graphics | sed -e 's/sniffnet_//g' -e 's/x.*//g'); do

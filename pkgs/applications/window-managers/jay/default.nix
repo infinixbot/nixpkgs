@@ -29,7 +29,9 @@ rustPlatform.buildRustPackage rec {
 
   SHADERC_LIB_DIR = "${lib.getLib shaderc}/lib";
 
-  nativeBuildInputs = [ autoPatchelfHook ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+  ];
 
   buildInputs = [
     libGL

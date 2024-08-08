@@ -29,7 +29,13 @@ stdenv.mkDerivation rec {
     makeWrapper
   ];
 
-  buildInputs = [ wxGTK ] ++ lib.optionals stdenv.isDarwin [ Cocoa ];
+  buildInputs =
+    [
+      wxGTK
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Cocoa
+    ];
 
   env.NIX_CFLAGS_COMPILE = "-DPACKAGE_VERSION=\"${
     builtins.replaceStrings [ "unstable-" ] [ "" ] version

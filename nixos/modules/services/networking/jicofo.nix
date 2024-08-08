@@ -123,7 +123,9 @@ in
         wantedBy = [ "multi-user.target" ];
         after = [ "network.target" ];
 
-        restartTriggers = [ configFile ];
+        restartTriggers = [
+          configFile
+        ];
         environment.JAVA_SYS_PROPS = concatStringsSep " " (
           mapAttrsToList (k: v: "${k}=${toString v}") jicofoProps
         );

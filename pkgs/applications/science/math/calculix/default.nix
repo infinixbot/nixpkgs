@@ -34,7 +34,9 @@ stdenv.mkDerivation rec {
     "-std=legacy"
   ];
 
-  patches = [ ./calculix.patch ];
+  patches = [
+    ./calculix.patch
+  ];
 
   postPatch = ''
     cd ccx*/src

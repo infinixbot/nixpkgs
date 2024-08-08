@@ -78,7 +78,9 @@ lib.genAttrs plugins (
       ln -s ${static_gtest}/lib source/third_party/googletest/build/lib
     '';
 
-    makeFlags = [ "PLUGIN_LIST=${plugin}" ];
+    makeFlags = [
+      "PLUGIN_LIST=${plugin}"
+    ];
 
     buildFlags = [
       "YOSYS_PLUGINS_DIR=\${out}/share/yosys/plugins/"

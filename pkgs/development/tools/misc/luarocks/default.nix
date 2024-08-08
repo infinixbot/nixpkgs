@@ -34,7 +34,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-GglygI8HP+aDFEuucOkjQ2Pgfv4+jW+og+2vL3KoZCQ=";
   };
 
-  patches = [ ./darwin-3.7.0.patch ];
+  patches = [
+    ./darwin-3.7.0.patch
+  ];
 
   postPatch = lib.optionalString stdenv.targetPlatform.isDarwin ''
     substituteInPlace src/luarocks/core/cfg.lua --subst-var-by 'darwinMinVersion' '${stdenv.targetPlatform.darwinMinVersion}'

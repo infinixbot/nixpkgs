@@ -54,7 +54,9 @@ stdenv.mkDerivation (finalAttrs: {
     ncurses
   ];
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   installFlags = [
     "CPPFLAGS=$NIX_CFLAGS_COMPILE"

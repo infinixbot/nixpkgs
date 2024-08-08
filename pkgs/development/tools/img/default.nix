@@ -26,7 +26,9 @@ buildGoModule rec {
         --replace "/usr/bin/$V" "${wrapperDir}/$V"
   '';
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   tags = [
     "seccomp"

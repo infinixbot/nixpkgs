@@ -55,6 +55,8 @@ stdenv.mkDerivation (finalAttrs: {
     license = licenses.lgpl21Plus;
     maintainers = teams.lomiri.members;
     platforms = platforms.linux;
-    pkgConfigModules = [ "lomiri-schemas" ];
+    pkgConfigModules = [
+      "lomiri-schemas"
+    ];
   };
 })

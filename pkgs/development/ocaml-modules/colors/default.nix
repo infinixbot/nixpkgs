@@ -18,9 +18,13 @@ buildDunePackage rec {
 
   doCheck = true;
 
-  checkInputs = [ mdx ];
+  checkInputs = [
+    mdx
+  ];
 
-  nativeCheckInputs = [ mdx.bin ];
+  nativeCheckInputs = [
+    mdx.bin
+  ];
 
   meta = {
     description = "Pure OCaml library for manipulating colors across color spaces";

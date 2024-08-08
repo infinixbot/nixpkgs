@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [ talloc ];
+  buildInputs = [
+    talloc
+  ];
 
   enableParallelBuilding = true;
 

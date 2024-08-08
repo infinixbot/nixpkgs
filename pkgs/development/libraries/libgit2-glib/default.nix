@@ -52,7 +52,9 @@ stdenv.mkDerivation rec {
     python3.pkgs.pygobject3 # this should really be a propagated input of python output
   ];
 
-  mesonFlags = [ "-Dgtk_doc=true" ];
+  mesonFlags = [
+    "-Dgtk_doc=true"
+  ];
 
   postPatch = ''
     chmod +x meson_python_compile.py

@@ -37,10 +37,14 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-LhhO/zZ4wNiRd235NB2b08SQcCZt1awN/flcsLs2m8U=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optionals withDocumentation [ "doc" ];
+  outputs =
+    [
+      "out"
+      "dev"
+    ]
+    ++ lib.optionals withDocumentation [
+      "doc"
+    ];
 
   patches = [
     # This change seems incomplete, potentially breaks things on systems that don't use AppArmor mediation
@@ -96,7 +100,9 @@ stdenv.mkDerivation (finalAttrs: {
     xvfb-run
   ];
 
-  checkInputs = [ gtest ];
+  checkInputs = [
+    gtest
+  ];
 
   cmakeFlags = [
     (lib.cmakeBool "ENABLE_DOC" withDocumentation)
@@ -105,7 +111,13 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.cmakeBool "ENABLE_WERROR" false)
   ];
 
-  makeTargets = [ "all" ] ++ lib.optionals withDocumentation [ "doc" ];
+  makeTargets =
+    [
+      "all"
+    ]
+    ++ lib.optionals withDocumentation [
+      "doc"
+    ];
 
   doCheck = stdenv.buildPlatform.canExecute stdenv.hostPlatform;
 

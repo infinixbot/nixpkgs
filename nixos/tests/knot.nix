@@ -142,7 +142,9 @@ import ./make-test-python.nix (
             };
 
             xdp = {
-              listen = [ "eth1" ];
+              listen = [
+                "eth1"
+              ];
               tcp = true;
             };
 

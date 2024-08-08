@@ -31,7 +31,9 @@ buildOctavePackage rec {
     dolfin
   ];
 
-  buildInputs = [ dolfin ];
+  buildInputs = [
+    dolfin
+  ];
 
   propagatedBuildInputs = [
     gmsh
@@ -39,7 +41,9 @@ buildOctavePackage rec {
     dolfin
   ];
 
-  requiredOctavePackages = [ splines ];
+  requiredOctavePackages = [
+    splines
+  ];
 
   meta = with lib; {
     homepage = "https://octave.sourceforge.io/msh/index.html";

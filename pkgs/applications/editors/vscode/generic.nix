@@ -91,7 +91,9 @@ stdenv.mkDerivation (
           ])
           ++ additionalPkgs pkgs;
 
-        extraBwrapArgs = [ "--bind-try /etc/nixos/ /etc/nixos/" ];
+        extraBwrapArgs = [
+          "--bind-try /etc/nixos/ /etc/nixos/"
+        ];
 
         # symlink shared assets, including icons and desktop entries
         extraInstallCommands = ''

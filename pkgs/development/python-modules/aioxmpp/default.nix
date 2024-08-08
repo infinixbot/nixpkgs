@@ -34,7 +34,9 @@ buildPythonPackage rec {
     hash = "sha256-bQPKEM5eKhFI3Kx3U1espdxqjnG4yUgOXmYCrd98PDo=";
   };
 
-  pythonRelaxDeps = [ "lxml" ];
+  pythonRelaxDeps = [
+    "lxml"
+  ];
 
   build-system = [ setuptools ];
 

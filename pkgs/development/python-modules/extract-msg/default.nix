@@ -33,7 +33,9 @@ buildPythonPackage rec {
     "red-black-tree-mod"
   ];
 
-  build-system = [ setuptools ];
+  build-system = [
+    setuptools
+  ];
 
   dependencies = [
     beautifulsoup4

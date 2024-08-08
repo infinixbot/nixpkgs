@@ -18,9 +18,13 @@ buildGoModule rec {
 
   vendorHash = "sha256-0Wi9FCTaOD+kzO5cRjpqbXHqx5UAKSGu+hc9bpj+PWo=";
 
-  excludedPackages = [ "restapi" ];
+  excludedPackages = [
+    "restapi"
+  ];
 
-  checkFlags = [ "-tags=fast" ];
+  checkFlags = [
+    "-tags=fast"
+  ];
 
   postInstall = ''
     # aligns the binary with what is expected from go-ios

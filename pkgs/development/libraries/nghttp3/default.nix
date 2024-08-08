@@ -26,9 +26,13 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = lib.optionals stdenv.isDarwin [ CoreServices ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    CoreServices
+  ];
 
-  cmakeFlags = [ (lib.cmakeBool "ENABLE_STATIC_LIB" false) ];
+  cmakeFlags = [
+    (lib.cmakeBool "ENABLE_STATIC_LIB" false)
+  ];
 
   doCheck = true;
 

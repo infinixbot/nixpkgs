@@ -75,7 +75,9 @@ buildPythonPackage rec {
     })
   ];
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   # setuptools is necessary since pkg_resources is required at runtime.
   propagatedBuildInputs = [

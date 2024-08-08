@@ -87,7 +87,9 @@ in
           # 2. fix runtime folder owner-ship, happens when socket activation
           #    creates the folder
           PermissionsStartOnly = true;
-          ExecStartPre = [ "${pkgs.coreutils}/bin/chown lirc /run/lirc/" ];
+          ExecStartPre = [
+            "${pkgs.coreutils}/bin/chown lirc /run/lirc/"
+          ];
 
           ExecStart = ''
             ${pkgs.lirc}/bin/lircd --nodaemon \

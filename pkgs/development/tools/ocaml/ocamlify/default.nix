@@ -46,6 +46,8 @@ lib.throwIf (lib.versionAtLeast ocaml.version "5.0")
       description = "Generate OCaml modules from source files";
       platforms = ocaml.meta.platforms or [ ];
       license = lib.licenses.lgpl21;
-      maintainers = with lib.maintainers; [ maggesi ];
+      maintainers = with lib.maintainers; [
+        maggesi
+      ];
     };
   }

@@ -99,7 +99,9 @@ stdenv.mkDerivation rec {
     sed -i -e 's@CF="-O3 -Wall -I. -DASM_CRC $(LOC)"@CF="-O3 -Wall -I. -DASM_CRC -DLARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 $(LOC)"@' unix/Makefile
   '';
 
-  installFlags = [ "prefix=${placeholder "out"}" ];
+  installFlags = [
+    "prefix=${placeholder "out"}"
+  ];
 
   setupHook = ./setup-hook.sh;
 

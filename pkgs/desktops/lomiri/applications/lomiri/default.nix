@@ -227,7 +227,13 @@ stdenv.mkDerivation (finalAttrs: {
     telephony-service
   ];
 
-  nativeCheckInputs = [ (python3.withPackages (ps: with ps; [ python-dbusmock ])) ];
+  nativeCheckInputs = [
+    (python3.withPackages (
+      ps: with ps; [
+        python-dbusmock
+      ]
+    ))
+  ];
 
   checkInputs = [
     libqtdbustest
@@ -240,7 +246,9 @@ stdenv.mkDerivation (finalAttrs: {
   # Manually calling, to avoid double & unnecessary wrapping
   dontWrapQtApps = true;
 
-  cmakeFlags = [ (lib.cmakeBool "NO_TESTS" (!finalAttrs.finalPackage.doCheck)) ];
+  cmakeFlags = [
+    (lib.cmakeBool "NO_TESTS" (!finalAttrs.finalPackage.doCheck))
+  ];
 
   postInstall = ''
     install -Dm755 ../data/lomiri-greeter-wrapper $out/bin/lomiri-greeter-wrapper

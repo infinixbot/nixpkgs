@@ -29,9 +29,17 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-hlFI2xpZ4ldMcxZbg/T5/4JuFFdO9THLcU0DQKSFqrw=";
   };
 
-  buildInputs = [ libusb1' ] ++ lib.optionals withGUI [ gtk3 ];
+  buildInputs =
+    [
+      libusb1'
+    ]
+    ++ lib.optionals withGUI [
+      gtk3
+    ];
   nativeBuildInputs =
-    [ cmake ]
+    [
+      cmake
+    ]
     ++ lib.optionals withGUI [
       pkg-config
       wrapGAppsHook3

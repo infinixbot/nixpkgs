@@ -264,7 +264,11 @@ stdenv.mkDerivation {
     if [ -f $out/dfhack-run ]; then
       wrapProgram $out/dfhack-run \
         --inherit-argv0 \
-        --suffix PATH : ${lib.makeBinPath [ coreutils ]}
+        --suffix PATH : ${
+          lib.makeBinPath [
+            coreutils
+          ]
+        }
     fi
 
     # Create a dfhackrc that changes to the correct home directory.

@@ -21,9 +21,13 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  cmakeFlags = [
-    "-DBUILD_SHARED_LIBS=ON"
-  ] ++ lib.optionals stdenv.isDarwin [ "-DCMAKE_OSX_ARCHITECTURES=" ];
+  cmakeFlags =
+    [
+      "-DBUILD_SHARED_LIBS=ON"
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      "-DCMAKE_OSX_ARCHITECTURES="
+    ];
 
   installPhase = ''
     runHook preInstall

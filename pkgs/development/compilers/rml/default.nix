@@ -18,9 +18,13 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = with ocamlPackages; [ ocaml ];
+  nativeBuildInputs = with ocamlPackages; [
+    ocaml
+  ];
 
-  buildInputs = with ocamlPackages; [ num ];
+  buildInputs = with ocamlPackages; [
+    num
+  ];
 
   prefixKey = "-prefix ";
 

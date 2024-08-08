@@ -52,12 +52,18 @@ gccStdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ perl ];
+  nativeBuildInputs = [
+    perl
+  ];
 
-  buildInputs = [
-    libpng
-    zlib
-  ] ++ lib.optionals (!gccStdenv.hostPlatform.isDarwin) [ SDL2 ];
+  buildInputs =
+    [
+      libpng
+      zlib
+    ]
+    ++ lib.optionals (!gccStdenv.hostPlatform.isDarwin) [
+      SDL2
+    ];
 
   enableParallelBuilding = true;
 

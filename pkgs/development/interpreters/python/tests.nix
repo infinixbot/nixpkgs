@@ -213,7 +213,9 @@ let
               condaUnpackHook
               condaInstallHook
             ]);
-          buildInputs = [ pythonCondaPackages.condaPatchelfLibs ];
+          buildInputs = [
+            pythonCondaPackages.condaPatchelfLibs
+          ];
           propagatedBuildInputs = with python.pkgs; [
             chardet
             idna

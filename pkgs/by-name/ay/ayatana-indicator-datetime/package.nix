@@ -90,7 +90,11 @@ stdenv.mkDerivation (finalAttrs: {
   nativeCheckInputs = [
     dbus
     dbus-test-runner
-    (python3.withPackages (ps: with ps; [ python-dbusmock ]))
+    (python3.withPackages (
+      ps: with ps; [
+        python-dbusmock
+      ]
+    ))
     tzdata
   ];
 
@@ -130,7 +134,9 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   passthru = {
-    ayatana-indicators = [ "ayatana-indicator-datetime" ];
+    ayatana-indicators = [
+      "ayatana-indicator-datetime"
+    ];
     tests = {
       inherit (nixosTests) ayatana-indicators;
     };

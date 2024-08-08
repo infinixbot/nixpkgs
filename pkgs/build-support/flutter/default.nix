@@ -32,7 +32,9 @@ let
     lib.optionalString (!flutter.engine.isOptimized) "_unopt"
   }";
 
-  flutterBuildFlags = [ "--${flutterMode}" ] ++ (args.flutterBuildFlags or [ ]) ++ flutterFlags;
+  flutterBuildFlags = [
+    "--${flutterMode}"
+  ] ++ (args.flutterBuildFlags or [ ]) ++ flutterFlags;
 
   builderArgs =
     rec {

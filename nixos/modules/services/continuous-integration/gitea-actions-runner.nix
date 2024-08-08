@@ -51,7 +51,9 @@ let
     || (instance.token != null && instance.tokenFile == null);
 in
 {
-  meta.maintainers = with lib.maintainers; [ hexa ];
+  meta.maintainers = with lib.maintainers; [
+    hexa
+  ];
 
   options.services.gitea-actions-runner = with types; {
     package = mkPackageOption pkgs "gitea-actions-runner" { };
@@ -193,10 +195,19 @@ in
             inherit (instance) enable;
             description = "Gitea Actions Runner";
             wants = [ "network-online.target" ];
-            after = [
-              "network-online.target"
-            ] ++ optionals (wantsDocker) [ "docker.service" ] ++ optionals (wantsPodman) [ "podman.service" ];
-            wantedBy = [ "multi-user.target" ];
+            after =
+              [
+                "network-online.target"
+              ]
+              ++ optionals (wantsDocker) [
+                "docker.service"
+              ]
+              ++ optionals (wantsPodman) [
+                "podman.service"
+              ];
+            wantedBy = [
+              "multi-user.target"
+            ];
             environment =
               optionalAttrs (instance.token != null) {
                 TOKEN = "${instance.token}";
@@ -207,7 +218,12 @@ in
               // {
                 HOME = "/var/lib/gitea-runner/${name}";
               };
-            path = with pkgs; [ coreutils ] ++ lib.optionals wantsHost instance.hostPackages;
+            path =
+              with pkgs;
+              [
+                coreutils
+              ]
+              ++ lib.optionals wantsHost instance.hostPackages;
             serviceConfig =
               {
                 DynamicUser = true;
@@ -249,7 +265,13 @@ in
                   '')
                 ];
                 ExecStart = "${cfg.package}/bin/act_runner daemon --config ${configFile}";
-                SupplementaryGroups = optionals (wantsDocker) [ "docker" ] ++ optionals (wantsPodman) [ "podman" ];
+                SupplementaryGroups =
+                  optionals (wantsDocker) [
+                    "docker"
+                  ]
+                  ++ optionals (wantsPodman) [
+                    "podman"
+                  ];
               }
               // optionalAttrs (instance.tokenFile != null) {
                 EnvironmentFile = instance.tokenFile;

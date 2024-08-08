@@ -34,7 +34,9 @@ buildDunePackage rec {
     integers
   ];
 
-  checkInputs = [ alcotest ];
+  checkInputs = [
+    alcotest
+  ];
 
   doCheck = true;
 

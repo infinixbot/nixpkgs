@@ -22,8 +22,12 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   nativeBuildInputs =
-    lib.optionals stdenv.isDarwin [ cctools ]
-    ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [ darwin.autoSignDarwinBinariesHook ];
+    lib.optionals stdenv.isDarwin [
+      cctools
+    ]
+    ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [
+      darwin.autoSignDarwinBinariesHook
+    ];
   buildInputs = [
     ncurses
     libiconv

@@ -16,9 +16,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-G9mcvUPGQw+0AtvlHdnnfAmcZtcUH/Sc77UVeA/FYZc=";
   };
 
-  buildInputs = [ python3 ];
+  buildInputs = [
+    python3
+  ];
 
-  makeFlags = [ "prefix=$(out)" ];
+  makeFlags = [
+    "prefix=$(out)"
+  ];
 
   # fix the plugins directory
   postPatch = ''

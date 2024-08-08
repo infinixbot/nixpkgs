@@ -22,7 +22,9 @@ stdenvNoCC.mkDerivation rec {
     hash = "sha256-8ujkyqby5sPcnscIPkay1gvd/1CH4R9yMJs1nH/mx8M=";
   };
 
-  nativeBuildInputs = [ clickgen ];
+  nativeBuildInputs = [
+    clickgen
+  ];
 
   buildPhase = ''
     runHook preBuild

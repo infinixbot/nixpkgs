@@ -49,7 +49,12 @@ buildGoModule rec {
 
   patches = [ ./fixup-addonmanager-lib-path.patch ];
 
-  WHAT = lib.concatStringsSep " " ([ "cmd/kubeadm" ] ++ components);
+  WHAT = lib.concatStringsSep " " (
+    [
+      "cmd/kubeadm"
+    ]
+    ++ components
+  );
 
   buildPhase = ''
     runHook preBuild

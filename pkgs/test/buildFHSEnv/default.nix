@@ -15,7 +15,9 @@ let
     stdenv.mkDerivation {
       name = "${sharedObjectName}-fetcher";
       inherit src;
-      nativeBuildInputs = [ dpkg ];
+      nativeBuildInputs = [
+        dpkg
+      ];
       dontBuild = true;
       dontConfigure = true;
       dontFixup = true;
@@ -38,7 +40,9 @@ let
       ldd = "${lib.getBin glibc}/bin/ldd";
       find_libFHSEnv = buildFHSEnv {
         name = "ls-with-ncurses-FHS-env";
-        targetPkgs = p: [ p.ncurses5 ];
+        targetPkgs = p: [
+          p.ncurses5
+        ];
         runScript = "find /lib/ -executable";
       };
       find_lib-in-FHS = "${find_libFHSEnv}/bin/${find_libFHSEnv.name}";

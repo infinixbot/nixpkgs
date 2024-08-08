@@ -42,7 +42,9 @@ stdenv.mkDerivation rec {
     python3
   ];
 
-  mesonFlags = [ (lib.mesonBool "video" vaapiSupport) ];
+  mesonFlags = [
+    (lib.mesonBool "video" vaapiSupport)
+  ];
 
   passthru = {
     updateScript = gitUpdater {

@@ -32,17 +32,23 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [
-    boost # for tests
-    fontconfig
-  ] ++ lib.optionals stdenv.isDarwin [ ApplicationServices ];
+  buildInputs =
+    [
+      boost # for tests
+      fontconfig
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      ApplicationServices
+    ];
 
   propagatedBuildInputs = [
     cairo
     libsigcxx30
   ];
 
-  mesonFlags = [ "-Dbuild-tests=true" ];
+  mesonFlags = [
+    "-Dbuild-tests=true"
+  ];
 
   # Tests fail on Darwin, possibly because of sandboxing.
   doCheck = !stdenv.isDarwin;

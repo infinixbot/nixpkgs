@@ -53,7 +53,9 @@ stdenv.mkDerivation rec {
       "FFLAGS=-fallow-argument-mismatch" # https://github.com/pmodels/mpich/issues/4300
       "FCFLAGS=-fallow-argument-mismatch"
     ]
-    ++ lib.optionals pmixSupport [ "--with-pmix" ];
+    ++ lib.optionals pmixSupport [
+      "--with-pmix"
+    ];
 
   enableParallelBuilding = true;
 

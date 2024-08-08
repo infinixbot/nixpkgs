@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
     yascreen
   ];
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
 
   meta = with lib; {
     description = "BPF based visual packet rate monitor";

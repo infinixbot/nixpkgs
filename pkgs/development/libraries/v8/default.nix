@@ -161,7 +161,12 @@ stdenv.mkDerivation rec {
     ++ lib.optional stdenv.isDarwin ''use_lld=false'';
 
   env.NIX_CFLAGS_COMPILE = toString (
-    [ "-O2" ] ++ lib.optionals stdenv.cc.isClang [ "-Wno-error=enum-constexpr-conversion" ]
+    [
+      "-O2"
+    ]
+    ++ lib.optionals stdenv.cc.isClang [
+      "-Wno-error=enum-constexpr-conversion"
+    ]
   );
   FORCE_MAC_SDK_MIN = stdenv.hostPlatform.sdkVer or "10.12";
 

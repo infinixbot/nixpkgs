@@ -24,7 +24,9 @@ stdenv.mkDerivation (finalAttrs: {
       --replace broguedir= "broguedir=$out/opt/brogue-ce #"
   '';
 
-  nativeBuildInputs = [ copyDesktopItems ];
+  nativeBuildInputs = [
+    copyDesktopItems
+  ];
 
   buildInputs = [
     SDL2

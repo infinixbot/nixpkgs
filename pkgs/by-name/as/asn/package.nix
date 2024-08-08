@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-A2Z6xNoC6X6ZDL8jecRE3MkW7EmNQ6EHyCBIlNlBoxA=";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   installPhase = ''
     install -Dv asn "$out/bin/asn"

@@ -48,8 +48,12 @@ stdenv.mkDerivation (finalAttrs: {
       rtaudio_6
       rtmidi
     ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [ qtwayland ]
-    ++ lib.optionals (lib.versionAtLeast qtbase.version "6.0") [ qt5compat ];
+    ++ lib.optionals stdenv.hostPlatform.isLinux [
+      qtwayland
+    ]
+    ++ lib.optionals (lib.versionAtLeast qtbase.version "6.0") [
+      qt5compat
+    ];
 
   qmakeFlags = [
     "CONFIG+=system_rtaudio"

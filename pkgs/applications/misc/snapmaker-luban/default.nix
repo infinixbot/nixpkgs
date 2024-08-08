@@ -102,7 +102,9 @@ stdenv.mkDerivation rec {
     udev
   ];
 
-  autoPatchelfIgnoreMissingDeps = [ "libc.musl-x86_64.so.1" ];
+  autoPatchelfIgnoreMissingDeps = [
+    "libc.musl-x86_64.so.1"
+  ];
 
   dontWrapGApps = true;
   dontConfigure = true;

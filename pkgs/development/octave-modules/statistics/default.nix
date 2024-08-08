@@ -16,7 +16,9 @@ buildOctavePackage rec {
     hash = "sha256-cXAjUiv4xWPrWf7HQg9Y+JkR7ON9iefKFUGbEr9FGNA=";
   };
 
-  requiredOctavePackages = [ io ];
+  requiredOctavePackages = [
+    io
+  ];
 
   meta = with lib; {
     homepage = "https://packages.octave.org/statistics";

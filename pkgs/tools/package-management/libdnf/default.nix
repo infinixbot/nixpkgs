@@ -72,7 +72,9 @@ stdenv.mkDerivation rec {
     cp ${libsolv}/share/cmake/Modules/FindLibSolv.cmake cmake/modules/
   '';
 
-  patches = [ ./fix-python-install-dir.patch ];
+  patches = [
+    ./fix-python-install-dir.patch
+  ];
 
   postPatch = ''
     # https://github.com/rpm-software-management/libdnf/issues/1518

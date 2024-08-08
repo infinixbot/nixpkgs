@@ -31,7 +31,9 @@ in
 
   config = mkIf cfg.enable {
 
-    services.displayManager.sessionPackages = [ pkgs.lumina.lumina ];
+    services.displayManager.sessionPackages = [
+      pkgs.lumina.lumina
+    ];
 
     environment.systemPackages = pkgs.lumina.preRequisitePackages ++ pkgs.lumina.corePackages;
 

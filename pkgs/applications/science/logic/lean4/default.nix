@@ -33,9 +33,13 @@ stdenv.mkDerivation (finalAttrs: {
     patchShebangs stage0/src/bin/ src/bin/
   '';
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = [ gmp ];
+  buildInputs = [
+    gmp
+  ];
 
   nativeCheckInputs = [
     git

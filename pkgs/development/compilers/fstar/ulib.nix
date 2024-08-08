@@ -10,7 +10,9 @@ stdenv.mkDerivation {
   pname = "fstar-ulib";
   inherit version src;
 
-  nativeBuildInputs = [ z3 ];
+  nativeBuildInputs = [
+    z3
+  ];
 
   postPatch = ''
     mkdir -p bin

@@ -13,7 +13,9 @@ stdenv.mkDerivation rec {
     sha256 = "18qfn5kjzvnyh29x40zm2maqzfmrnay9r58n8pfpq5lcphdhhv8p";
   };
 
-  patches = [ ./nlojet_clang_fix.patch ];
+  patches = [
+    ./nlojet_clang_fix.patch
+  ];
 
   env.CXXFLAGS = "-std=c++11";
 

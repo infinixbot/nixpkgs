@@ -21,7 +21,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-MEhUmy4ijR/zHm/qMt4PqNGYnCfIgjNaL9SlMmXCMmc=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [ Security ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    Security
+  ];
 
   # Many tests try to access the file system.
   doCheck = false;

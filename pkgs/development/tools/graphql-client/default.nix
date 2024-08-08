@@ -20,8 +20,12 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-fEjt7ax818hlIq2+UrIG6EismQUGdaq7/C3xN+Nrw2s=";
 
-  nativeBuildInputs = [ pkg-config ];
-  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ Security ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
+  buildInputs = [
+    openssl
+  ] ++ lib.optionals stdenv.isDarwin [ Security ];
 
   meta = with lib; {
     description = "GraphQL tool for Rust projects";

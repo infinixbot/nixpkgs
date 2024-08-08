@@ -21,7 +21,9 @@ buildDunePackage rec {
     hash = "sha256-mgTFwkuFJVwJmHrzHSdNh8v4ehZIcWemK+eLqjglw5o=";
   };
 
-  buildInputs = [ dune-configurator ];
+  buildInputs = [
+    dune-configurator
+  ];
 
   propagatedBuildInputs = [
     SDL2

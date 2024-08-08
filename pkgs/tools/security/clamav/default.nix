@@ -72,7 +72,9 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  checkInputs = [ python3.pkgs.pytest ];
+  checkInputs = [
+    python3.pkgs.pytest
+  ];
 
   meta = with lib; {
     homepage = "https://www.clamav.net";

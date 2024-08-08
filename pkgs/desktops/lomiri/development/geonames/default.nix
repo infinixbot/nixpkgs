@@ -31,10 +31,17 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-AhRnUoku17kVY0UciHQXFDa6eCH6HQ4ZGIOobCaGTKQ=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optionals withExamples [ "bin" ] ++ lib.optionals withDocumentation [ "devdoc" ];
+  outputs =
+    [
+      "out"
+      "dev"
+    ]
+    ++ lib.optionals withExamples [
+      "bin"
+    ]
+    ++ lib.optionals withDocumentation [
+      "devdoc"
+    ];
 
   postPatch = ''
     patchShebangs src/generate-locales.sh tests/setup-test-env.sh
@@ -56,11 +63,19 @@ stdenv.mkDerivation (finalAttrs: {
       gtk-doc
     ];
 
-  buildInputs = [ glib ] ++ lib.optionals withExamples [ gtk3 ];
+  buildInputs =
+    [
+      glib
+    ]
+    ++ lib.optionals withExamples [
+      gtk3
+    ];
 
   # Tests need to be able to check locale
   LC_ALL = lib.optionalString finalAttrs.finalPackage.doCheck "en_US.UTF-8";
-  nativeCheckInputs = [ glibcLocales ];
+  nativeCheckInputs = [
+    glibcLocales
+  ];
 
   makeFlags = [
     # gtkdoc-scan runs ld, can't find qsort & strncpy symbols
@@ -104,6 +119,8 @@ stdenv.mkDerivation (finalAttrs: {
     # https://gitlab.com/ubports/development/core/geonames/-/issues/1
     broken =
       stdenv.buildPlatform != stdenv.hostPlatform && !stdenv.hostPlatform.emulatorAvailable buildPackages;
-    pkgConfigModules = [ "geonames" ];
+    pkgConfigModules = [
+      "geonames"
+    ];
   };
 })

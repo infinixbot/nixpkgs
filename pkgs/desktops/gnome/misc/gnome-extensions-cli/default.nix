@@ -44,7 +44,9 @@ buildPythonApplication rec {
     tqdm
   ];
 
-  pythonImportsCheck = [ "gnome_extensions_cli" ];
+  pythonImportsCheck = [
+    "gnome_extensions_cli"
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/essembeh/gnome-extensions-cli";

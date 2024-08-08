@@ -34,15 +34,25 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    [ qtbase ]
-    ++ lib.optionals stdenv.isLinux [ xorg.libxcb ]
-    ++ lib.optionals (!useQt6) [ qt5.qtx11extras ]
-    ++ lib.optionals useQt6 [ qtwayland ];
+    [
+      qtbase
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      xorg.libxcb
+    ]
+    ++ lib.optionals (!useQt6) [
+      qt5.qtx11extras
+    ]
+    ++ lib.optionals useQt6 [
+      qtwayland
+    ];
 
   # Qt setup hook complains about missing `wrapQtAppsHook` otherwise.
   dontWrapQtApps = true;
 
-  cmakeFlags = lib.optionals useQt6 [ "-DUSE_QT6=true" ];
+  cmakeFlags = lib.optionals useQt6 [
+    "-DUSE_QT6=true"
+  ];
 
   postPatch = ''
     # Fix plugin dir

@@ -47,7 +47,9 @@ stdenv.mkDerivation rec {
   ] ++ lib.optional odbcSupport libiodbc;
 
   env.NIX_CFLAGS_COMPILE = toString (
-    lib.optionals stdenv.isDarwin [ "-Wno-error=int-conversion" ]
+    lib.optionals stdenv.isDarwin [
+      "-Wno-error=int-conversion"
+    ]
     ++ lib.optionals (stdenv.isDarwin && stdenv.isx86_64) [
       # error: '__builtin_ia32_aeskeygenassist128' needs target feature aes
       "-maes"

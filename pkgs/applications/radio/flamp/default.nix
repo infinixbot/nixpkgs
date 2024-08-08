@@ -24,7 +24,9 @@ stdenv.mkDerivation (finalAttrs: {
     gettext
   ];
 
-  buildInputs = [ fltk13 ];
+  buildInputs = [
+    fltk13
+  ];
 
   enableParallelBuilding = true;
 

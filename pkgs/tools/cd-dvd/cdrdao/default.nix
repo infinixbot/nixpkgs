@@ -27,7 +27,9 @@ stdenv.mkDerivation (finalAttrs: {
     "MV=mv"
   ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs =
     [

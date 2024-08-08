@@ -24,15 +24,23 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-Z3TgVunC/qNzUe0X9xIg3fTFXFk2w9yDA+EskSCg0Qo=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [
-    libgit2
-    oniguruma
-    zlib
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs =
+    [
+      libgit2
+      oniguruma
+      zlib
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+    ];
 
-  nativeCheckInputs = [ git ];
+  nativeCheckInputs = [
+    git
+  ];
 
   # don't use vendored libgit2
   buildNoDefaultFeatures = true;

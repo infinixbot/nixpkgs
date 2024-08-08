@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
 
   hardeningDisable = [ "format" ];
 
-  makeFlags = [ "BACKEND=SDL" ];
+  makeFlags = [
+    "BACKEND=SDL"
+  ];
 
   patches = [
     (fetchpatch {

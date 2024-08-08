@@ -15447,7 +15447,9 @@ with pkgs;
   computecpp-unwrapped = callPackage ../development/compilers/computecpp { };
   computecpp = wrapCCWith rec {
     cc = computecpp-unwrapped;
-    extraPackages = [ llvmPackages.compiler-rt ];
+    extraPackages = [
+      llvmPackages.compiler-rt
+    ];
     extraBuildCommands = ''
       wrap compute $wrapper $ccPath/compute
       wrap compute++ $wrapper $ccPath/compute++
@@ -19574,7 +19576,9 @@ with pkgs;
       # this works out as one of the submodule sources seems to be flakey.
       fetchSubmodules = false;
     };
-    nativeBuildInputs = old.nativeBuildInputs ++ [ autoreconfHook ];
+    nativeBuildInputs = old.nativeBuildInputs ++ [
+      autoreconfHook
+    ];
   });
 
   oprofile = callPackage ../development/tools/profiling/oprofile {
@@ -26718,7 +26722,9 @@ with pkgs;
     toPythonApplication (
       napalm.overridePythonAttrs (attrs: {
         # add community frontends that depend on the napalm python package
-        propagatedBuildInputs = attrs.propagatedBuildInputs ++ [ napalm-hp-procurve ];
+        propagatedBuildInputs = attrs.propagatedBuildInputs ++ [
+          napalm-hp-procurve
+        ];
       })
     );
 
@@ -33739,7 +33745,9 @@ with pkgs;
     inherit (darwin.apple_sdk.frameworks) Carbon Cocoa;
     libvgm = libvgm.override {
       withAllEmulators = false;
-      emulators = [ "_PRESET_SMD" ];
+      emulators = [
+        "_PRESET_SMD"
+      ];
       enableLibplayer = false;
     };
   };
@@ -39370,7 +39378,9 @@ with pkgs;
 
   lammps-mpi = lowPrio (
     lammps.override {
-      extraBuildInputs = [ mpi ];
+      extraBuildInputs = [
+        mpi
+      ];
     }
   );
 
@@ -40033,8 +40043,12 @@ with pkgs;
 
   golly = callPackage ../applications/science/misc/golly {
     wxGTK = wxGTK32.overrideAttrs (x: {
-      configureFlags = x.configureFlags ++ [ "--enable-webrequest" ];
-      buildInputs = x.buildInputs ++ [ curl ];
+      configureFlags = x.configureFlags ++ [
+        "--enable-webrequest"
+      ];
+      buildInputs = x.buildInputs ++ [
+        curl
+      ];
     });
     perl = perl536;
   };

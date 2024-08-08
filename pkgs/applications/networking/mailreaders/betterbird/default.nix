@@ -100,7 +100,9 @@ in
         done < <(cat $patches/series $patches/series-M-C)
       '';
 
-    extraBuildInputs = [ libdbusmenu-gtk3 ];
+    extraBuildInputs = [
+      libdbusmenu-gtk3
+    ];
 
     meta = with lib; {
       description = "Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will";

@@ -21,7 +21,9 @@ qt5.mkDerivation {
     autoPatchelfHook
   ];
 
-  buildInputs = [ portaudio ];
+  buildInputs = [
+    portaudio
+  ];
 
   installPhase = ''
     install -D SoundWire-Server.desktop $out/share/applications/SoundWireServer.desktop

@@ -28,7 +28,9 @@ lib.throwIfNot (lib.versionAtLeast ocaml.version "4.08")
       topkg
     ];
 
-    buildInputs = [ topkg ];
+    buildInputs = [
+      topkg
+    ];
 
     strictDeps = true;
 

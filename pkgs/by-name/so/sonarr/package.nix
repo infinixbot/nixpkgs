@@ -30,7 +30,9 @@ buildDotnetModule {
   pname = "sonarr";
   inherit version src;
 
-  patches = [ ./nuget-config.patch ];
+  patches = [
+    ./nuget-config.patch
+  ];
 
   strictDeps = true;
   nativeBuildInputs = [

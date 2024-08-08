@@ -18,11 +18,17 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Cf3MvoRWGAy+vlE59JSpTGOBl07dI4mbIaL1HIiLN/I=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = [ aws-c-common ];
+  buildInputs = [
+    aws-c-common
+  ];
 
-  cmakeFlags = [ "-DBUILD_SHARED_LIBS=ON" ];
+  cmakeFlags = [
+    "-DBUILD_SHARED_LIBS=ON"
+  ];
 
   passthru.tests = {
     inherit nix;

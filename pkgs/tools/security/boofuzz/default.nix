@@ -17,7 +17,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-ffZVFmfDAJ+Qn3hbeHY/CvYgpDLxB+jaYOiYyZqZ7mo=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ poetry-core ];
+  nativeBuildInputs = with python3.pkgs; [
+    poetry-core
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     attrs
@@ -40,14 +42,20 @@ python3.pkgs.buildPythonApplication rec {
     pytestCheckHook
   ];
 
-  disabledTests = [
-    "TestNetworkMonitor"
-    "TestNoResponseFailure"
-    "TestProcessMonitor"
-    "TestSocketConnection"
-  ] ++ lib.optionals stdenv.isDarwin [ "test_time_repeater" ];
+  disabledTests =
+    [
+      "TestNetworkMonitor"
+      "TestNoResponseFailure"
+      "TestProcessMonitor"
+      "TestSocketConnection"
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      "test_time_repeater"
+    ];
 
-  pythonImportsCheck = [ "boofuzz" ];
+  pythonImportsCheck = [
+    "boofuzz"
+  ];
 
   meta = with lib; {
     description = "Network protocol fuzzing tool";

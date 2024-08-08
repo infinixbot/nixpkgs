@@ -19,7 +19,9 @@ stdenv.mkDerivation rec {
 
   # Makefile is currently missing -lbctoolbox so the build fails when linking
   # the libraries. This patch adds that flag.
-  patches = [ ./add_bctoolbox_ldlib.patch ];
+  patches = [
+    ./add_bctoolbox_ldlib.patch
+  ];
 
   buildInputs = [
     alsa-lib

@@ -52,7 +52,9 @@ stdenv.mkDerivation {
     libXfixes
   ];
 
-  patches = [ ./0001-Don-t-install-systemd-unit-files-using-absolute-path.patch ];
+  patches = [
+    ./0001-Don-t-install-systemd-unit-files-using-absolute-path.patch
+  ];
 
   mesonFlags = [
     "-Dsystemd=true"

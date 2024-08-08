@@ -145,7 +145,9 @@ stdenv.mkDerivation (finalAttrs: {
       xorg.libX11
       xorg.libxkbfile
     ]
-    ++ lib.optionals (!stdenv.isDarwin) [ libsecret ]
+    ++ lib.optionals (!stdenv.isDarwin) [
+      libsecret
+    ]
     ++ lib.optionals stdenv.isDarwin [
       AppKit
       Cocoa

@@ -199,8 +199,12 @@ in
       };
     };
 
-    networking.firewall.allowedTCPPorts = lib.mkIf cfg.openFirewall [ cfg.settings.port ];
-    networking.firewall.allowedUDPPorts = lib.mkIf cfg.openFirewall [ cfg.settings.port ];
+    networking.firewall.allowedTCPPorts = lib.mkIf cfg.openFirewall [
+      cfg.settings.port
+    ];
+    networking.firewall.allowedUDPPorts = lib.mkIf cfg.openFirewall [
+      cfg.settings.port
+    ];
   };
 
   meta.maintainers = with lib.maintainers; [ CobaltCause ];

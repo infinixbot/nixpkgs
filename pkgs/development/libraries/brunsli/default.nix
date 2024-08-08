@@ -45,9 +45,13 @@ stdenv.mkDerivation rec {
       rm -r build
     '';
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = [ brotli ];
+  buildInputs = [
+    brotli
+  ];
 
   meta = {
     description = "Lossless JPEG repacking library";

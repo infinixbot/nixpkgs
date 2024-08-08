@@ -40,13 +40,17 @@ stdenv.mkDerivation rec {
     hash = "sha256-CsP8gyDI0B+hR8Jyun+gOAY4nGsD08QG0II+MONf9as=";
   };
 
-  nativeBuildInputs = [
-    glib
-    meson
-    ninja
-    pkg-config
-    makeWrapper
-  ] ++ lib.optionals withIntrospection [ gobject-introspection ];
+  nativeBuildInputs =
+    [
+      glib
+      meson
+      ninja
+      pkg-config
+      makeWrapper
+    ]
+    ++ lib.optionals withIntrospection [
+      gobject-introspection
+    ];
 
   buildInputs =
     [
@@ -85,7 +89,9 @@ stdenv.mkDerivation rec {
       # Same as the above, but for dbus-broker
       "-Ddbus_broker=/run/current-system/sw/bin/dbus-broker-launch"
     ]
-    ++ lib.optionals (!systemdSupport) [ "-Duse_systemd=false" ];
+    ++ lib.optionals (!systemdSupport) [
+      "-Duse_systemd=false"
+    ];
 
   passthru = {
     updateScript = gnome.updateScript {

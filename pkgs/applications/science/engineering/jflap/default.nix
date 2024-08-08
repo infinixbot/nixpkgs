@@ -22,7 +22,9 @@ stdenvNoCC.mkDerivation rec {
     copyDesktopItems
   ];
 
-  buildInputs = [ jre8 ];
+  buildInputs = [
+    jre8
+  ];
 
   dontUnpack = true;
 

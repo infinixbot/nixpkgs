@@ -51,9 +51,13 @@ buildGoModule rec {
 
   doCheck = false;
 
-  subPackages = [ "cmd/argo" ];
+  subPackages = [
+    "cmd/argo"
+  ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   preBuild = ''
     mkdir -p ui/dist/app

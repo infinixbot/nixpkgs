@@ -24,7 +24,9 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "154e13ba15c0ea93f54525793b0699e496b2db7281e1555f08d785a528f3f7fc";
   };
 
-  nativeBuildInputs = [ go_1_21 ];
+  nativeBuildInputs = [
+    go_1_21
+  ];
 
   # Build parameters
   CFGPATH = cfgPath;

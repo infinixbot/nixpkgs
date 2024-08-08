@@ -47,13 +47,19 @@ in
         "network-online.target"
         "mosquitto.target"
       ];
-      wantedBy = [ "multi-user.target" ];
+      wantedBy = [
+        "multi-user.target"
+      ];
       environment.HOME = "/var/lib/evcc";
-      path = with pkgs; [ getent ];
+      path = with pkgs; [
+        getent
+      ];
       serviceConfig = {
         ExecStart = "${package}/bin/evcc --config ${configFile} ${escapeShellArgs cfg.extraArgs}";
         CapabilityBoundingSet = [ "" ];
-        DeviceAllow = [ "char-ttyUSB" ];
+        DeviceAllow = [
+          "char-ttyUSB"
+        ];
         DevicePolicy = "closed";
         DynamicUser = true;
         LockPersonality = true;

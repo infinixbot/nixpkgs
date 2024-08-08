@@ -52,7 +52,9 @@ import ./make-test-python.nix (
           enable = true;
           networks."vlan1" = {
             matchConfig.Name = "eth1";
-            address = [ "100.64.0.2/24" ];
+            address = [
+              "100.64.0.2/24"
+            ];
             routes = [
               {
                 Destination = "192.0.2.0/24";
@@ -220,7 +222,9 @@ import ./make-test-python.nix (
           enable = true;
           networks."vlan1" = {
             matchConfig.Name = "eth1";
-            address = [ "2001:db8::2/64" ];
+            address = [
+              "2001:db8::2/64"
+            ];
             routes = [
               {
                 Destination = "64:ff9b::/96";

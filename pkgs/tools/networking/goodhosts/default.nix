@@ -16,7 +16,9 @@ buildGoModule rec {
     hash = "sha256-ZasS7AYGYPV+nzp9JbJC5pD0yQ+ik+QnuL+3qC1uqFk=";
   };
 
-  ldflags = [ "-s -w -X main.version=${version}" ];
+  ldflags = [
+    "-s -w -X main.version=${version}"
+  ];
 
   postInstall = ''
     mv $out/bin/cli $out/bin/goodhosts

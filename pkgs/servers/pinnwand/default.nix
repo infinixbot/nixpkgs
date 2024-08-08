@@ -27,7 +27,9 @@ buildPythonApplication rec {
     })
   ];
 
-  nativeBuildInputs = [ pdm-pep517 ];
+  nativeBuildInputs = [
+    pdm-pep517
+  ];
 
   pythonRelaxDeps = [
     "docutils"
@@ -46,7 +48,9 @@ buildPythonApplication rec {
     tornado
   ];
 
-  nativeCheckInputs = [ pytestCheckHook ];
+  nativeCheckInputs = [
+    pytestCheckHook
+  ];
 
   __darwinAllowLocalNetworking = true;
 

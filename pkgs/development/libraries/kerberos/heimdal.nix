@@ -113,11 +113,21 @@ stdenv.mkDerivation {
       "--without-x"
       "--disable-afs-string-to-key"
     ]
-    ++ lib.optionals (withCapNG) [ "--with-capng" ]
-    ++ lib.optionals (withCJSON) [ "--with-cjson=${cjson}" ]
-    ++ lib.optionals (withOpenLDAP) [ "--with-openldap=${openldap.dev}" ]
-    ++ lib.optionals (withOpenLDAPAsHDBModule) [ "--enable-hdb-openldap-module" ]
-    ++ lib.optionals (withSQLite3) [ "--with-sqlite3=${sqlite.dev}" ];
+    ++ lib.optionals (withCapNG) [
+      "--with-capng"
+    ]
+    ++ lib.optionals (withCJSON) [
+      "--with-cjson=${cjson}"
+    ]
+    ++ lib.optionals (withOpenLDAP) [
+      "--with-openldap=${openldap.dev}"
+    ]
+    ++ lib.optionals (withOpenLDAPAsHDBModule) [
+      "--enable-hdb-openldap-module"
+    ]
+    ++ lib.optionals (withSQLite3) [
+      "--with-sqlite3=${sqlite.dev}"
+    ];
 
   # (check-ldap) slapd resides within ${openldap}/libexec,
   #              which is not part of $PATH by default.

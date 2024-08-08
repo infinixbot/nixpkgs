@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
   };
 
   patches =
-    [ ./honor-XKB_CONFIG_ROOT.patch ]
+    [
+      ./honor-XKB_CONFIG_ROOT.patch
+    ]
     ++ lib.optionals stdenv.isDarwin [
       (fetchpatch {
         url = "https://gitlab.freedesktop.org/archived-projects/libxklavier/-/commit/1387c21a788ec1ea203c8392ea1460fc29d83f70.patch";

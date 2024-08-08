@@ -40,7 +40,11 @@
 }:
 
 let
-  testPython = python3.withPackages (p: with p; [ pyyaml ]);
+  testPython = python3.withPackages (
+    p: with p; [
+      pyyaml
+    ]
+  );
 in
 stdenv.mkDerivation rec {
   pname = "ostree";

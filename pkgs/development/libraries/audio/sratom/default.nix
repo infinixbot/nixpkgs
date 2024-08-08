@@ -43,7 +43,9 @@ stdenv.mkDerivation rec {
     patchShebangs --build scripts/dox_to_sphinx.py
   '';
 
-  mesonFlags = [ "-Ddocs=disabled" ];
+  mesonFlags = [
+    "-Ddocs=disabled"
+  ];
 
   passthru = {
     updateScript = writeScript "update-sratom" ''

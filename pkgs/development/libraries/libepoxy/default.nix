@@ -61,8 +61,12 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals (x11Support && !stdenv.isDarwin) [ libGL ]
-    ++ lib.optionals x11Support [ libX11 ]
+    lib.optionals (x11Support && !stdenv.isDarwin) [
+      libGL
+    ]
+    ++ lib.optionals x11Support [
+      libX11
+    ]
     ++ lib.optionals stdenv.isDarwin [
       Carbon
       OpenGL

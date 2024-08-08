@@ -23,7 +23,9 @@ python3.pkgs.buildPythonApplication rec {
     glib
     gsettings-desktop-schemas
   ];
-  nativeBuildInputs = [ wrapGAppsHook3 ];
+  nativeBuildInputs = [
+    wrapGAppsHook3
+  ];
   propagatedBuildInputs = with python3.pkgs; [
     future
     pyserial

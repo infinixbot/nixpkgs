@@ -28,7 +28,9 @@ mkXfceDerivation {
 
   sha256 = "sha256-/N79YK233k9rVg5fGr27b8AZD9bCXllNQvrN4ghir/M=";
 
-  nativeBuildInputs = [ wayland-scanner ];
+  nativeBuildInputs = [
+    wayland-scanner
+  ];
 
   buildInputs = [
     exo

@@ -37,7 +37,9 @@ stdenv.mkDerivation (finalAttrs: {
     qt5.qtbase
   ];
 
-  configureFlags = [ "--enable-release-build" ];
+  configureFlags = [
+    "--enable-release-build"
+  ];
 
   postInstall = ''
     mkdir -p $out/lib

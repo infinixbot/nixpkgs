@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
     "dev"
   ];
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   meta = with lib; {
     homepage = "https://www.genivia.com/doc/reflex/html";

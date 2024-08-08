@@ -17,7 +17,9 @@ buildNpmPackage rec {
     hash = "sha256-2yfF14hR/avl67cOwo+Gr95w2jf+7KYlsMrlBTAKswM=";
   };
 
-  patches = [ ./disable-dprint-dstBundler.patch ];
+  patches = [
+    ./disable-dprint-dstBundler.patch
+  ];
 
   npmDepsHash = "sha256-YihnUZgM+74EmImalyTFtp9xyiOOfjZVohDfpcvlSEg=";
 

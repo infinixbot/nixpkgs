@@ -83,7 +83,9 @@ buildPythonPackage rec {
     in
     [ ''--prefix PATH : "${lib.makeBinPath packagesToBinPath}"'' ];
 
-  setupPyBuildFlags = [ "build_lazy_extractors" ];
+  setupPyBuildFlags = [
+    "build_lazy_extractors"
+  ];
 
   postInstall = ''
     installShellCompletion youtube-dl.zsh
@@ -108,6 +110,8 @@ buildPythonPackage rec {
     ];
     platforms = with platforms; linux ++ darwin;
     mainProgram = "youtube-dl";
-    knownVulnerabilities = [ "youtube-dl is unmaintained, migrate to yt-dlp, if possible" ];
+    knownVulnerabilities = [
+      "youtube-dl is unmaintained, migrate to yt-dlp, if possible"
+    ];
   };
 }

@@ -45,7 +45,9 @@ lib.throwIf (lib.versionAtLeast ocaml.version "5.2")
       re
     ];
 
-    propagatedBuildInputs = [ ctypes ];
+    propagatedBuildInputs = [
+      ctypes
+    ];
 
     meta = with lib; {
       homepage = "https://github.com/fdopen/ppx_cstubs";

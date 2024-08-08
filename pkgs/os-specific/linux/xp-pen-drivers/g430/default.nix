@@ -22,7 +22,9 @@ mkDerivation rec {
     }
     + /Linux_Pentablet_V1.2.13.1.tar.gz;
 
-  nativeBuildInputs = [ autoPatchelfHook ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+  ];
 
   buildInputs = [
     libusb1

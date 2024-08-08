@@ -35,7 +35,9 @@ buildPythonPackage rec {
     hash = "sha256-G914NvxRmKGkxrozoWNUIoI74YkYRbeNcQwIG4iSeXU=";
   };
 
-  build-system = [ setuptools ];
+  build-system = [
+    setuptools
+  ];
 
   dependencies = [
     django

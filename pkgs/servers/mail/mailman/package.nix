@@ -40,7 +40,9 @@ buildPythonPackage rec {
     zope-configuration
   ];
 
-  checkInputs = [ sphinx ];
+  checkInputs = [
+    sphinx
+  ];
 
   patches = [
     (fetchpatch {

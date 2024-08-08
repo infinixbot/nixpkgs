@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     ninja
   ];
 
-  buildInputs = [ cairo ];
+  buildInputs = [
+    cairo
+  ];
 
   meta = with lib; {
     homepage = "https://gitlab.com/mildlyparallel/pscircle";

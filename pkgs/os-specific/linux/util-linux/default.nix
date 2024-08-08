@@ -34,7 +34,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-bE+HI9r9QcOdk+y/FlCfyIwzzVvTJ3iArlodl6AU/Q4=";
   };
 
-  patches = [ ./rtcwake-search-PATH-for-shutdown.patch ];
+  patches = [
+    ./rtcwake-search-PATH-for-shutdown.patch
+  ];
 
   # We separate some of the utilities into their own outputs. This
   # allows putting together smaller systems depending on only part of

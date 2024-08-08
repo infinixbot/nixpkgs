@@ -47,7 +47,9 @@ import ./make-test-python.nix (
               sha256 = "1h4qi34gcxcx63z8wiqcf2aaywmvv8lys5g8gvsk13kkqhlmag25";
             };
           in
-          [ mattermostDemoPlugin ];
+          [
+            mattermostDemoPlugin
+          ];
       };
       immutable = makeMattermost {
         mutableConfig = false;

@@ -28,9 +28,11 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-DN1ExvQ5wcIUyhMAfiakFbZkDsx+5l8VMtYGvSdboPA=";
   };
 
-  patches = lib.optionals (
-    stdenv.isDarwin && !(lib.versionAtLeast stdenv.hostPlatform.darwinMinVersion "11")
-  ) [ ./0001-remove-unifiedtypeidentifiers-framework ];
+  patches =
+    lib.optionals (stdenv.isDarwin && !(lib.versionAtLeast stdenv.hostPlatform.darwinMinVersion "11"))
+      [
+        ./0001-remove-unifiedtypeidentifiers-framework
+      ];
 
   nativeBuildInputs = [ pkg-config ];
 

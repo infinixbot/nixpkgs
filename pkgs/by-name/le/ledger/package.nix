@@ -39,7 +39,9 @@ stdenv.mkDerivation rec {
       libedit
       gnused
     ]
-    ++ lib.optionals gpgmeSupport [ gpgme ]
+    ++ lib.optionals gpgmeSupport [
+      gpgme
+    ]
     ++ (
       if usePython then
         [

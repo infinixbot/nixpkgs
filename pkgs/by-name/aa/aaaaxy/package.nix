@@ -91,7 +91,9 @@ buildGoModule rec {
     }
   );
 
-  makeFlags = [ "BUILDTYPE=release" ];
+  makeFlags = [
+    "BUILDTYPE=release"
+  ];
 
   buildPhase = ''
     runHook preBuild

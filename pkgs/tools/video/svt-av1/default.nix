@@ -26,7 +26,9 @@ stdenv.mkDerivation (finalAttrs: {
     nasm
   ];
 
-  cmakeFlags = [ "-DSVT_AV1_LTO=ON" ];
+  cmakeFlags = [
+    "-DSVT_AV1_LTO=ON"
+  ];
 
   passthru = {
     updateScript = gitUpdater {

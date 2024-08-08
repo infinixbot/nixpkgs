@@ -27,7 +27,9 @@ buildNpmPackage rec {
     python3
   ];
   buildInputs =
-    lib.optionals stdenv.isLinux [ libsecret ]
+    lib.optionals stdenv.isLinux [
+      libsecret
+    ]
     ++ lib.optionals stdenv.isDarwin (
       with darwin;
       [

@@ -36,9 +36,13 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = [ lomiri.cmake-extras ];
+  buildInputs = [
+    lomiri.cmake-extras
+  ];
 
-  checkInputs = [ gtest ];
+  checkInputs = [
+    gtest
+  ];
 
   doCheck = stdenv.buildPlatform.canExecute stdenv.hostPlatform;
 
@@ -53,6 +57,8 @@ stdenv.mkDerivation (finalAttrs: {
     license = licenses.lgpl3Only;
     maintainers = with maintainers; [ edwtjo ];
     platforms = platforms.linux;
-    pkgConfigModules = [ "properties-cpp" ];
+    pkgConfigModules = [
+      "properties-cpp"
+    ];
   };
 })

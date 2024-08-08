@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ ncurses ];
 
-  configureFlags = [ "--libdir=$(out)/lib" ];
+  configureFlags = [
+    "--libdir=$(out)/lib"
+  ];
 
   meta = with lib; {
     description = "REXX interpreter";

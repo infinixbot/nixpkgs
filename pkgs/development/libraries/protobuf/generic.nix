@@ -47,10 +47,14 @@ stdenv.mkDerivation (finalAttrs: {
         hash = "sha256-SmwaUjOjjZulg/wgNmR/F5b8rhYA2wkKAjHIOxjcQdQ=";
       })
     ]
-    ++ lib.optionals stdenv.hostPlatform.isStatic [ ./static-executables-have-no-rpath.patch ];
+    ++ lib.optionals stdenv.hostPlatform.isStatic [
+      ./static-executables-have-no-rpath.patch
+    ];
 
   nativeBuildInputs =
-    [ cmake ]
+    [
+      cmake
+    ]
     ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
       # protoc of the same version must be available for build. For non-cross builds, it's able to
       # re-use the executable generated as part of the build
@@ -62,7 +66,9 @@ stdenv.mkDerivation (finalAttrs: {
     zlib
   ];
 
-  propagatedBuildInputs = [ abseil-cpp ];
+  propagatedBuildInputs = [
+    abseil-cpp
+  ];
 
   strictDeps = true;
 
@@ -72,7 +78,9 @@ stdenv.mkDerivation (finalAttrs: {
       "-Dprotobuf_USE_EXTERNAL_GTEST=ON"
       "-Dprotobuf_ABSL_PROVIDER=package"
     ]
-    ++ lib.optionals enableShared [ "-Dprotobuf_BUILD_SHARED_LIBS=ON" ]
+    ++ lib.optionals enableShared [
+      "-Dprotobuf_BUILD_SHARED_LIBS=ON"
+    ]
     # Tests fail to build on 32-bit platforms; fixed in 22.x
     # https://github.com/protocolbuffers/protobuf/issues/10418
     ++ lib.optionals (stdenv.hostPlatform.is32bit && lib.versionOlder version "22") [

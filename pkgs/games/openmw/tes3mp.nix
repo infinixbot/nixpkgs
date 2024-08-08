@@ -37,7 +37,9 @@ let
       })
     ];
 
-    cmakeFlags = [ "-DCRABNET_ENABLE_DLL=OFF" ];
+    cmakeFlags = [
+      "-DCRABNET_ENABLE_DLL=OFF"
+    ];
 
     nativeBuildInputs = [ cmake ];
 

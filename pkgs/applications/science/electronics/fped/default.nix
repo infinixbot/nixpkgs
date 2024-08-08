@@ -43,7 +43,9 @@ stdenv.mkDerivation {
     netpbm
   ];
 
-  buildInputs = [ gtk2 ];
+  buildInputs = [
+    gtk2
+  ];
 
   meta = {
     description = "Editor that allows the interactive creation of footprints electronic components";

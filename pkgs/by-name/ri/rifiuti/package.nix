@@ -42,7 +42,9 @@ stdenv.mkDerivation (finalAttrs: {
       --replace-fail gcc cc
   '';
 
-  makeFlags = [ "-C src" ];
+  makeFlags = [
+    "-C src"
+  ];
 
   enableParallelBuilding = true;
 

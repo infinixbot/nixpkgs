@@ -44,7 +44,9 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "pydantic" ];
 
-  build-system = [ setuptools ];
+  build-system = [
+    setuptools
+  ];
 
   dependencies = [
     numpy

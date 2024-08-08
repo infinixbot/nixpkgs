@@ -13,7 +13,9 @@ build-idris-package rec {
 
   idrisDeps = [ effects ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   extraBuildInputs = [
     SDL2

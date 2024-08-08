@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
     xmlto
     zip
   ];
-  buildInputs = [ zlib ];
+  buildInputs = [
+    zlib
+  ];
 
   # test/zziptests.py requires network access
   # (https://github.com/gdraheim/zziplib/issues/24)

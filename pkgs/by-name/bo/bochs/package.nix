@@ -46,8 +46,12 @@ stdenv.mkDerivation (finalAttrs: {
       readline
       wget
     ]
-    ++ lib.optionals enableSDL2 [ SDL2 ]
-    ++ lib.optionals enableTerm [ ncurses ]
+    ++ lib.optionals enableSDL2 [
+      SDL2
+    ]
+    ++ lib.optionals enableTerm [
+      ncurses
+    ]
     ++ lib.optionals enableWx [
       gtk3
       wxGTK32
@@ -58,7 +62,9 @@ stdenv.mkDerivation (finalAttrs: {
       libX11
       libXpm
     ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.libobjc ];
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.libobjc
+    ];
 
   configureFlags =
     [
@@ -117,9 +123,15 @@ stdenv.mkDerivation (finalAttrs: {
       "--enable-x86-64"
       "--enable-x86-debugger"
     ]
-    ++ lib.optionals enableSDL2 [ "--with-sdl2" ]
-    ++ lib.optionals enableTerm [ "--with-term" ]
-    ++ lib.optionals enableWx [ "--with-wx" ]
+    ++ lib.optionals enableSDL2 [
+      "--with-sdl2"
+    ]
+    ++ lib.optionals enableTerm [
+      "--with-term"
+    ]
+    ++ lib.optionals enableWx [
+      "--with-wx"
+    ]
     ++ lib.optionals enableX11 [
       "--with-x"
       "--with-x11"

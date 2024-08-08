@@ -33,7 +33,9 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "importlib-metadata" ];
 
-  build-system = [ hatchling ];
+  build-system = [
+    hatchling
+  ];
 
   dependencies = [
     click

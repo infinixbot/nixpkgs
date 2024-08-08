@@ -14,7 +14,9 @@ import ./make-test-python.nix (
         ...
       }:
       {
-        imports = [ "${modulesPath}/../tests/common/auto-format-root-device.nix" ];
+        imports = [
+          "${modulesPath}/../tests/common/auto-format-root-device.nix"
+        ];
         virtualisation = {
           emptyDiskImages = [ 512 ];
           useBootLoader = true;

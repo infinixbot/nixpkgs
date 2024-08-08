@@ -23,7 +23,9 @@ python3Packages.buildPythonApplication rec {
     echo ${version} > ./flac2all_pkg/version
   '';
 
-  propagatedBuildInputs = [ python3Packages.pyzmq ];
+  propagatedBuildInputs = [
+    python3Packages.pyzmq
+  ];
 
   postInstall = ''
     wrapProgram $out/bin/flac2all \

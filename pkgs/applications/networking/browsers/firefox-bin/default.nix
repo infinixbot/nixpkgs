@@ -86,7 +86,9 @@ stdenv.mkDerivation {
     libva.out
     pciutils
   ];
-  appendRunpaths = [ "${pipewire}/lib" ];
+  appendRunpaths = [
+    "${pipewire}/lib"
+  ];
   # Firefox uses "relrhack" to manually process relocations from a fixed offset
   patchelfFlags = [ "--no-clobber-old-sections" ];
 

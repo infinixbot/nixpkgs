@@ -16,9 +16,13 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-y1cX1BKhAbr0MPWYysfWkjGITa5DctjirfPd7rxffrs=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  propagatedBuildInputs = [ omniorb ];
+  propagatedBuildInputs = [
+    omniorb
+  ];
 
   configureFlags = [
     "--with-omniorb=${omniorb}"

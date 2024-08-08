@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-TDc6aIFkxShlfC6fLYMKULfrFUAYhQZrIHZNDuMh68g=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ poetry-core ];
+  nativeBuildInputs = with python3.pkgs; [
+    poetry-core
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     aiohttp
@@ -31,7 +33,9 @@ python3.pkgs.buildPythonApplication rec {
     pytestCheckHook
   ];
 
-  pythonImportsCheck = [ "graphinder" ];
+  pythonImportsCheck = [
+    "graphinder"
+  ];
 
   disabledTests = [
     # Tests require network access

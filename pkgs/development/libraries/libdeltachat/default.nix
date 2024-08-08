@@ -42,17 +42,23 @@ stdenv.mkDerivation rec {
     hash = "sha256-BSbvgKiI89B+nxp5McBKTJAwgePt27C1QvSQLhTL7pQ=";
   };
 
-  patches = [ ./no-static-lib.patch ];
+  patches = [
+    ./no-static-lib.patch
+  ];
 
   cargoDeps = rustPlatform.importCargoLock cargoLock;
 
-  nativeBuildInputs = [
-    cmake
-    perl
-    pkg-config
-    rustPlatform.cargoSetupHook
-    cargo
-  ] ++ lib.optionals stdenv.isDarwin [ fixDarwinDylibNames ];
+  nativeBuildInputs =
+    [
+      cmake
+      perl
+      pkg-config
+      rustPlatform.cargoSetupHook
+      cargo
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      fixDarwinDylibNames
+    ];
 
   buildInputs =
     [
@@ -67,7 +73,9 @@ stdenv.mkDerivation rec {
       libiconv
     ];
 
-  nativeCheckInputs = with rustPlatform; [ cargoCheckHook ];
+  nativeCheckInputs = with rustPlatform; [
+    cargoCheckHook
+  ];
 
   # Sometimes -fmacro-prefix-map= can redirect __FILE__ to non-existent
   # paths. This breaks packages like `python3.pkgs.deltachat`. We embed

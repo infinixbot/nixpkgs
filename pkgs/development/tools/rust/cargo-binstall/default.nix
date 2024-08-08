@@ -23,13 +23,19 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-GPDDKFM2dxsjQcrNK7y2lydnqGnFBUMcDJZ420jmzlo=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [
-    bzip2
-    xz
-    zstd
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.SystemConfiguration ];
+  buildInputs =
+    [
+      bzip2
+      xz
+      zstd
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.SystemConfiguration
+    ];
 
   buildNoDefaultFeatures = true;
   buildFeatures = [

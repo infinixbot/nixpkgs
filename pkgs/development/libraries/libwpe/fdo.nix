@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     sha256 = "k8l2aumGTurq7isKdPIsvKCN9CwaG9tVsIbyUo44DTg=";
   };
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     pkg-config

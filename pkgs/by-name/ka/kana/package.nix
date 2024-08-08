@@ -45,14 +45,18 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    [ libadwaita ]
+    [
+      libadwaita
+    ]
     ++ (with gst_all_1; [
       gstreamer
       gst-plugins-base
       gst-plugins-bad
       gst-plugins-good
     ])
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Foundation ];
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Foundation
+    ];
 
   # Workaround for the gettext-sys issue
   # https://github.com/Koka/gettext-rs/issues/114

@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
   makeFlags = [ "PREFIX=${placeholder "out"}" ];
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [ texinfo ];
+  nativeBuildInputs = [
+    texinfo
+  ];
 
   postBuild = ''
     (cd doc

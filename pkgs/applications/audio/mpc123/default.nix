@@ -21,7 +21,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ gettext ];
+  nativeBuildInputs = [
+    gettext
+  ];
 
   buildInputs = [
     gettext
@@ -29,7 +31,9 @@ stdenv.mkDerivation (finalAttrs: {
     libmpcdec
   ];
 
-  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
+  makeFlags = [
+    "CC=${stdenv.cc.targetPrefix}cc"
+  ];
 
   # Workaround build failure on -fno-common toolchains like upstream
   # gcc-10. Otherwise build fails as:

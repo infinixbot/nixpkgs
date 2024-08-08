@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-2ZxU1g5HDWnSxTabnmfyQwz1ZCXK+7kJXLofeFBiwn0=";
   };
 
-  patches = [ ./fix-python-install-dir.patch ];
+  patches = [
+    ./fix-python-install-dir.patch
+  ];
 
   postPatch = ''
     substituteInPlace libcomps/src/python/src/CMakeLists.txt \

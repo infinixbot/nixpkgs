@@ -54,7 +54,9 @@ let
     ];
 
   flags =
-    [ "--server" ]
+    [
+      "--server"
+    ]
     ++ (
       if cfg.configPath != null then
         [

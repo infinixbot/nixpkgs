@@ -51,7 +51,9 @@ import ../make-test-python.nix (
               listeners = [
                 {
                   # The default but tls=false
-                  bind_addresses = [ "0.0.0.0" ];
+                  bind_addresses = [
+                    "0.0.0.0"
+                  ];
                   port = 8448;
                   resources = [
                     {
@@ -116,7 +118,12 @@ import ../make-test-python.nix (
           environment.systemPackages = [
             (pkgs.writers.writePython3Bin "create_management_room_and_invite_mjolnir"
               {
-                libraries = with pkgs.python3Packages; [ matrix-nio ] ++ matrix-nio.optional-dependencies.e2e;
+                libraries =
+                  with pkgs.python3Packages;
+                  [
+                    matrix-nio
+                  ]
+                  ++ matrix-nio.optional-dependencies.e2e;
               }
               ''
                 import asyncio

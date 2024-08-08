@@ -32,7 +32,9 @@ rustPlatform.buildRustPackage rec {
   ];
 
   buildInputs =
-    [ oniguruma ]
+    [
+      oniguruma
+    ]
     ++ lib.optionals stdenv.isDarwin (
       with darwin.apple_sdk.frameworks;
       [

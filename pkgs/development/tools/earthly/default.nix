@@ -26,14 +26,18 @@ buildGoModule rec {
 
   CGO_ENABLED = 0;
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X main.Version=v${version}"
-    "-X main.DefaultBuildkitdImage=docker.io/earthly/buildkitd:v${version}"
-    "-X main.GitSha=v${version}"
-    "-X main.DefaultInstallationName=earthly"
-  ] ++ lib.optionals stdenv.isLinux [ "-extldflags '-static'" ];
+  ldflags =
+    [
+      "-s"
+      "-w"
+      "-X main.Version=v${version}"
+      "-X main.DefaultBuildkitdImage=docker.io/earthly/buildkitd:v${version}"
+      "-X main.GitSha=v${version}"
+      "-X main.DefaultInstallationName=earthly"
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      "-extldflags '-static'"
+    ];
 
   tags = [
     "dfrunmount"

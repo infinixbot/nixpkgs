@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
 
   dontBuild = true;
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   buildInputs = [
     openldap

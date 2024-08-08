@@ -44,7 +44,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-uLiXhigYz3v7NgY38twot3sBHxZS5QCrOiPfME4wWzE=";
   };
 
-  patches = [ ./FindMagic_EP.cmake.patch ];
+  patches = [
+    ./FindMagic_EP.cmake.patch
+  ];
 
   postPatch = ''
     # copy pre-fetched external project to directory where it is expected to be
@@ -77,7 +79,9 @@ stdenv.mkDerivation rec {
     doxygen
   ] ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
 
-  nativeCheckInputs = [ gtest ];
+  nativeCheckInputs = [
+    gtest
+  ];
 
   buildInputs = [
     zlib

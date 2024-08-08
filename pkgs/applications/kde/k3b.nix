@@ -95,7 +95,9 @@ mkDerivation {
         vcdimager
         flac
       ];
-      libraryPath = lib.makeLibraryPath [ cdparanoia ];
+      libraryPath = lib.makeLibraryPath [
+        cdparanoia
+      ];
     in
     ''
       wrapProgram "$out/bin/k3b"     \

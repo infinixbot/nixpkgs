@@ -22,7 +22,9 @@ python3.pkgs.buildPythonPackage rec {
       --replace-fail 'dynamic = ["version"]' 'version = "${version}"'
   '';
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     bellows
@@ -44,7 +46,9 @@ python3.pkgs.buildPythonPackage rec {
     pytestCheckHook
   ];
 
-  pythonImportsCheck = [ "zigpy_cli" ];
+  pythonImportsCheck = [
+    "zigpy_cli"
+  ];
 
   meta = with lib; {
     description = "Command line interface for zigpy";

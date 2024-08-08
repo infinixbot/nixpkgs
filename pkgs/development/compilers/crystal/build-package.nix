@@ -91,7 +91,9 @@ stdenv.mkDerivation (
 
     configurePhase =
       args.configurePhase or (lib.concatStringsSep "\n" (
-        [ "runHook preConfigure" ]
+        [
+          "runHook preConfigure"
+        ]
         ++ lib.optional (lockFile != null) "cp ${lockFile} ./shard.lock"
         ++ lib.optionals (shardsFile != null) [
           "test -e lib || mkdir lib"
@@ -131,7 +133,9 @@ stdenv.mkDerivation (
 
     buildPhase =
       args.buildPhase or (lib.concatStringsSep "\n" (
-        [ "runHook preBuild" ]
+        [
+          "runHook preBuild"
+        ]
         ++ lib.optional (format == "make") "make \${buildTargets:-build} $makeFlags"
         ++ lib.optionals (format == "crystal") (lib.mapAttrsToList mkCrystalBuildArgs crystalBinaries)
         ++
@@ -142,7 +146,9 @@ stdenv.mkDerivation (
 
     installPhase =
       args.installPhase or (lib.concatStringsSep "\n" (
-        [ "runHook preInstall" ]
+        [
+          "runHook preInstall"
+        ]
         ++ lib.optional (format == "make") "make \${installTargets:-install} $installFlags"
         ++ lib.optionals (format == "crystal") (
           map (bin: ''
@@ -177,7 +183,9 @@ stdenv.mkDerivation (
 
     checkPhase =
       args.checkPhase or (lib.concatStringsSep "\n" (
-        [ "runHook preCheck" ]
+        [
+          "runHook preCheck"
+        ]
         ++ lib.optional (format == "make") "make \${checkTarget:-test} $checkFlags"
         ++ lib.optional (format != "make") "crystal \${checkTarget:-spec} $checkFlags"
         ++ [ "runHook postCheck" ]

@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     libarchive
   ];
 
-  patches = [ ./cert-paths.patch ];
+  patches = [
+    ./cert-paths.patch
+  ];
 
   env.NIX_CFLAGS_COMPILE = "-Wno-error=unused-result -Wno-error=deprecated-declarations";
 

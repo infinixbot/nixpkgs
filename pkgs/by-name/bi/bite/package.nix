@@ -67,12 +67,18 @@ rustPlatform.buildRustPackage rec {
       darwin.apple_sdk.frameworks.Metal
       darwin.apple_sdk.frameworks.QuartzCore
     ]
-    ++ lib.optionals stdenv.isLinux [ wayland ];
+    ++ lib.optionals stdenv.isLinux [
+      wayland
+    ];
 
-  runtimeDependencies = [
-    libxkbcommon
-    vulkan-loader
-  ] ++ lib.optionals stdenv.isLinux [ wayland ];
+  runtimeDependencies =
+    [
+      libxkbcommon
+      vulkan-loader
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      wayland
+    ];
 
   postInstall = ''
     wrapProgram $out/bin/bite \

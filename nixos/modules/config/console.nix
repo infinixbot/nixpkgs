@@ -198,7 +198,9 @@ in
             source = "${consoleEnv config.boot.initrd.systemd.package.kbd}/share/keymaps";
           };
         };
-        boot.initrd.systemd.additionalUpstreamUnits = [ "systemd-vconsole-setup.service" ];
+        boot.initrd.systemd.additionalUpstreamUnits = [
+          "systemd-vconsole-setup.service"
+        ];
         boot.initrd.systemd.storePaths =
           [
             "${config.boot.initrd.systemd.package}/lib/systemd/systemd-vconsole-setup"
@@ -206,8 +208,12 @@ in
             "${config.boot.initrd.systemd.package.kbd}/bin/loadkeys"
             "${config.boot.initrd.systemd.package.kbd.gzip}/bin/gzip" # Fonts and keyboard layouts are compressed
           ]
-          ++ optionals (cfg.font != null && hasPrefix builtins.storeDir cfg.font) [ "${cfg.font}" ]
-          ++ optionals (hasPrefix builtins.storeDir cfg.keyMap) [ "${cfg.keyMap}" ];
+          ++ optionals (cfg.font != null && hasPrefix builtins.storeDir cfg.font) [
+            "${cfg.font}"
+          ]
+          ++ optionals (hasPrefix builtins.storeDir cfg.keyMap) [
+            "${cfg.keyMap}"
+          ];
 
         systemd.services.reload-systemd-vconsole-setup = {
           description = "Reset console on configuration changes";

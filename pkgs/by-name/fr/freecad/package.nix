@@ -122,7 +122,9 @@ stdenv.mkDerivation (finalAttrs: {
       qtx11extras
     ];
 
-  patches = [ ./0001-NIXOS-don-t-ignore-PYTHONPATH.patch ];
+  patches = [
+    ./0001-NIXOS-don-t-ignore-PYTHONPATH.patch
+  ];
 
   cmakeFlags = [
     "-Wno-dev" # turns off warnings which otherwise makes it hard to see what is going on

@@ -23,7 +23,9 @@ stdenv.mkDerivation (finalAttrs: {
     autoreconfHook
   ];
 
-  buildInputs = [ systemd ];
+  buildInputs = [
+    systemd
+  ];
 
   doCheck = true;
 

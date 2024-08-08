@@ -22,7 +22,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
   buildInputs = [ base ];
 
-  patches = [ ./fixup-all.patch ];
+  patches = [
+    ./fixup-all.patch
+  ];
   meta = {
     changelog = "https://github.com/gnustep/libs-gui/releases/tag/gui-${
       builtins.replaceStrings [ "." ] [ "_" ] finalAttrs.version

@@ -37,10 +37,14 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-+cvgSNlSYSJ2Zr2iWk96AacyQ38ru9/RK8yeK3ceqCo=";
   };
 
-  configureFlags = [ "--datarootdir=${placeholder "out"}/share" ];
+  configureFlags = [
+    "--datarootdir=${placeholder "out"}/share"
+  ];
 
   buildInputs =
-    lib.optionals dbusSupport [ dbus ]
+    lib.optionals dbusSupport [
+      dbus
+    ]
     ++ [
       perlPackages.perl
       pcsclite

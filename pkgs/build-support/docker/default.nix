@@ -1046,7 +1046,13 @@ rec {
         paths = contentsList;
         extraCommands = (lib.optionalString includeNixDB (mkDbExtraCommand contents)) + extraCommands;
         inherit fakeRootCommands;
-        nativeBuildInputs = [ fakeroot ] ++ optionals enableFakechroot [ proot ];
+        nativeBuildInputs =
+          [
+            fakeroot
+          ]
+          ++ optionals enableFakechroot [
+            proot
+          ];
         postBuild = ''
           mv $out old_out
           (cd old_out; eval "$extraCommands" )
@@ -1368,7 +1374,9 @@ rec {
           extraPasswdLines = [
             "nixbld:x:${toString uid}:${toString gid}:Build user:${homeDirectory}:/noshell"
           ];
-          extraGroupLines = [ "nixbld:!:${toString gid}:" ];
+          extraGroupLines = [
+            "nixbld:!:${toString gid}:"
+          ];
         })
       ];
 

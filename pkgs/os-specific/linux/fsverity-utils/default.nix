@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-FZN4MKNmymIXZ2Q0woA0SLzPf4SaUJkj4ssKPsY4xXc=";
   };
 
-  patches = lib.optionals (!enableShared) [ ./remove-dynamic-libs.patch ];
+  patches = lib.optionals (!enableShared) [
+    ./remove-dynamic-libs.patch
+  ];
 
   enableParallelBuilding = true;
   strictDeps = true;

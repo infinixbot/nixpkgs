@@ -36,7 +36,9 @@ python3Packages.buildPythonApplication rec {
     gtk4
   ];
 
-  buildInputs = [ libadwaita ];
+  buildInputs = [
+    libadwaita
+  ];
 
   propagatedBuildInputs = with python3Packages; [
     pygobject3
@@ -44,7 +46,9 @@ python3Packages.buildPythonApplication rec {
     wand
   ];
 
-  nativeCheckInputs = with python3Packages; [ pytest ];
+  nativeCheckInputs = with python3Packages; [
+    pytest
+  ];
 
   dontWrapGApps = true;
 

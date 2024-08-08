@@ -37,7 +37,9 @@ buildPythonPackage rec {
   # There is an AssertionError
   doCheck = false;
 
-  pythonImportsCheck = [ "mailman_hyperkitty" ];
+  pythonImportsCheck = [
+    "mailman_hyperkitty"
+  ];
 
   passthru.tests = {
     inherit (nixosTests) mailman;

@@ -62,7 +62,10 @@ let
     remote_read = filterValidPrometheus cfg.remoteRead;
     rule_files = optionals (!(cfg.enableAgentMode)) (
       map (promtoolCheck "check rules" "rules") (
-        cfg.ruleFiles ++ [ (pkgs.writeText "prometheus.rules" (concatStringsSep "\n" cfg.rules)) ]
+        cfg.ruleFiles
+        ++ [
+          (pkgs.writeText "prometheus.rules" (concatStringsSep "\n" cfg.rules))
+        ]
       )
     );
     alerting = {
@@ -90,7 +93,9 @@ let
     ]
     ++ (
       if (cfg.enableAgentMode) then
-        [ "--enable-feature=agent" ]
+        [
+          "--enable-feature=agent"
+        ]
       else
         [
           "--alertmanager.notification-queue-capacity=${toString cfg.alertmanagerNotificationQueueCapacity}"
@@ -111,7 +116,12 @@ let
           let
             v = x.${name};
           in
-          if pred name v then [ (nameValuePair name (filterAttrsListRecursive pred v)) ] else [ ]
+          if pred name v then
+            [
+              (nameValuePair name (filterAttrsListRecursive pred v))
+            ]
+          else
+            [ ]
         ) (attrNames x)
       )
     else if isList x then

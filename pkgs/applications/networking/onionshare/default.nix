@@ -102,7 +102,9 @@ rec {
       tor
     ];
 
-    nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+    nativeCheckInputs = with python3.pkgs; [
+      pytestCheckHook
+    ];
 
     preCheck = ''
       # Tests use the home directory

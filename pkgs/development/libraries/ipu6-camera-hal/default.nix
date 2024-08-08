@@ -52,7 +52,9 @@ stdenv.mkDerivation {
     "-DUSE_PG_LITE_PIPE=ON"
   ];
 
-  NIX_CFLAGS_COMPILE = [ "-Wno-error" ];
+  NIX_CFLAGS_COMPILE = [
+    "-Wno-error"
+  ];
 
   enableParallelBuilding = true;
 

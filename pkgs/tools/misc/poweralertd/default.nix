@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
     substituteInPlace meson.build --replace-fail "systemd.get_pkgconfig_variable('systemduserunitdir')" "'${placeholder "out"}/lib/systemd/user'"
   '';
 
-  buildInputs = [ systemd ];
+  buildInputs = [
+    systemd
+  ];
 
   nativeBuildInputs = [
     meson

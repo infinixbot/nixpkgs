@@ -19,7 +19,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-w3bfCn8A2ETJ6i1hm1FTNpTDXPFXF4vvkFAZCO/y7HE=";
 
-  ldflags = [ "-X main.version=${version}" ];
+  ldflags = [
+    "-X main.version=${version}"
+  ];
 
   postConfigure = ''
     export CGO_ENABLED=0

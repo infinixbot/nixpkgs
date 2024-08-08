@@ -30,15 +30,25 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  nativeBuildInputs = [
-    installShellFiles
-    pkg-config
-  ] ++ lib.optionals stdenv.isLinux [ perl ];
+  nativeBuildInputs =
+    [
+      installShellFiles
+      pkg-config
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      perl
+    ];
 
   buildInputs =
-    [ oniguruma ]
-    ++ lib.optionals stdenv.isLinux [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.SystemConfiguration ];
+    [
+      oniguruma
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.SystemConfiguration
+    ];
 
   env = {
     PYO3_PYTHON = "${python3}/bin/python3";

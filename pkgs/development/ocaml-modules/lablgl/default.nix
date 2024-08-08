@@ -34,7 +34,9 @@ else
       libglut
       camlp-streams
     ];
-    propagatedBuildInputs = [ libGLU ];
+    propagatedBuildInputs = [
+      libGLU
+    ];
 
     patches = [ ./META.patch ];
 

@@ -56,7 +56,9 @@ stdenv.mkDerivation (finalAttrs: {
   # gdk-pixbuf-thumbnailer is not wrapped therefore strictDeps will work
   strictDeps = true;
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs =
     [
@@ -71,7 +73,9 @@ stdenv.mkDerivation (finalAttrs: {
       # for man pages
       docutils
     ]
-    ++ lib.optionals stdenv.isDarwin [ fixDarwinDylibNames ]
+    ++ lib.optionals stdenv.isDarwin [
+      fixDarwinDylibNames
+    ]
     ++ lib.optionals withIntrospection [
       gi-docgen
       gobject-introspection

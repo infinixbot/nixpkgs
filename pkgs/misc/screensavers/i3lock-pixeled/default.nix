@@ -26,7 +26,9 @@ stdenv.mkDerivation rec {
     playerctl
   ];
 
-  makeFlags = [ "PREFIX=$(out)/bin" ];
+  makeFlags = [
+    "PREFIX=$(out)/bin"
+  ];
 
   patchPhase = ''
     substituteInPlace i3lock-pixeled \

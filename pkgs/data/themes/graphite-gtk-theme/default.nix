@@ -87,9 +87,13 @@ lib.checkListOfEnum "${pname}: theme variants"
       sassc
     ];
 
-    buildInputs = [ gnome-themes-extra ];
+    buildInputs = [
+      gnome-themes-extra
+    ];
 
-    propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+    propagatedUserEnvPkgs = [
+      gtk-engine-murrine
+    ];
 
     installPhase = ''
       runHook preInstall

@@ -58,7 +58,9 @@ stdenv.mkDerivation (finalAttrs: {
       zlib
       zziplib
     ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [ alsa-lib ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [
+      alsa-lib
+    ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       Cocoa
       CoreAudio

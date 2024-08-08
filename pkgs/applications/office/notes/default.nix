@@ -28,10 +28,14 @@ stdenv.mkDerivation (finalAttrs: {
     wrapQtAppsHook
   ];
 
-  buildInputs = [
-    qtbase
-    qtdeclarative
-  ] ++ lib.optionals stdenv.isDarwin [ Cocoa ];
+  buildInputs =
+    [
+      qtbase
+      qtdeclarative
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Cocoa
+    ];
 
   postInstall = lib.optionalString stdenv.isDarwin ''
     mkdir $out/Applications

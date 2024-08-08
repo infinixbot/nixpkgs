@@ -27,7 +27,9 @@ stdenv.mkDerivation (finalAttrs: {
       --replace "ursadb_test" ""
   '';
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/CERT-Polska/ursadb";

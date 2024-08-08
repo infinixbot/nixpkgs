@@ -28,8 +28,12 @@ buildDotnetModule rec {
 
   projectFile = "ArchiSteamFarm.sln";
   executable = "ArchiSteamFarm";
-  dotnetFlags = [ "-p:UseAppHost=false" ];
-  dotnetInstallFlags = [ "--framework=net8.0" ];
+  dotnetFlags = [
+    "-p:UseAppHost=false"
+  ];
+  dotnetInstallFlags = [
+    "--framework=net8.0"
+  ];
 
   runtimeDeps = [
     libkrb5

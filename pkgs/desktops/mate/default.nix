@@ -104,7 +104,9 @@ let
         pluma
       ];
 
-      cajaExtensions = [ caja-extensions ];
+      cajaExtensions = [
+        caja-extensions
+      ];
 
       panelApplets = [
         mate-applets

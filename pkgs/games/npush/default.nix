@@ -19,11 +19,15 @@ stdenv.mkDerivation rec {
     "doc"
   ];
 
-  buildInputs = [ ncurses ];
+  buildInputs = [
+    ncurses
+  ];
 
   dontConfigure = true;
 
-  makeFlags = [ "CC=${stdenv.cc.targetPrefix}c++" ];
+  makeFlags = [
+    "CC=${stdenv.cc.targetPrefix}c++"
+  ];
   env.NIX_CFLAGS_COMPILE = "-Wno-error=format-security";
 
   installPhase = ''

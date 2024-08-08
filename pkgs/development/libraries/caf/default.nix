@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ openssl ];
 
-  cmakeFlags = [ "-DCAF_ENABLE_EXAMPLES:BOOL=OFF" ];
+  cmakeFlags = [
+    "-DCAF_ENABLE_EXAMPLES:BOOL=OFF"
+  ];
 
   env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.isDarwin "-faligned-allocation";
 

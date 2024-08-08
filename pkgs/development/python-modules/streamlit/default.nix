@@ -43,7 +43,9 @@ buildPythonPackage rec {
     hash = "sha256-Rj73KLoh504FEi43BOivZEp727WCLigbja9KCkh2GHk=";
   };
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   pythonRelaxDeps = [ "packaging" ];
 

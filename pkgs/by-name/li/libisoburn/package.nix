@@ -47,7 +47,9 @@ stdenv.mkDerivation (finalAttrs: {
       attr
     ];
 
-  propagatedBuildInputs = lib.optionals stdenv.isLinux [ acl ];
+  propagatedBuildInputs = lib.optionals stdenv.isLinux [
+    acl
+  ];
 
   outputs = [
     "out"

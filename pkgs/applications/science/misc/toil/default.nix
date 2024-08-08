@@ -33,7 +33,9 @@ python3.pkgs.buildPythonApplication rec {
   ];
 
   nativeCheckInputs =
-    [ rsync ]
+    [
+      rsync
+    ]
     ++ (with python3.pkgs; [
       boto
       botocore
@@ -42,9 +44,13 @@ python3.pkgs.buildPythonApplication rec {
       stubserver
     ]);
 
-  pytestFlagsArray = [ "src/toil/test" ];
+  pytestFlagsArray = [
+    "src/toil/test"
+  ];
 
-  pythonImportsCheck = [ "toil" ];
+  pythonImportsCheck = [
+    "toil"
+  ];
 
   disabledTestPaths = [
     # Tests are reaching their timeout

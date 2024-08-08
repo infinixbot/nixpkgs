@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
     sphinx
   ];
 
-  buildInputs = [ ffmpeg-headless ];
+  buildInputs = [
+    ffmpeg-headless
+  ];
 
   passthru.tests = {
     inherit (nixosTests) paperless;

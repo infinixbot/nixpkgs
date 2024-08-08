@@ -86,7 +86,9 @@ let
         ];
 
       buildInputs =
-        [ gtk3 ]
+        [
+          gtk3
+        ]
         ++ lib.optional withRandr libxcb
         ++ lib.optional withGeoclue geoclue
         ++ lib.optional withDrm libdrm

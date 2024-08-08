@@ -21,7 +21,9 @@ mkXfceDerivation {
   version = "1.6.6";
   sha256 = "sha256-wdEoM4etco+s0+dULkBvWJZ3WBCW3Ph2bdY0E/l5VRc=";
 
-  nativeBuildInputs = [ wayland-scanner ];
+  nativeBuildInputs = [
+    wayland-scanner
+  ];
 
   buildInputs = [
     glib

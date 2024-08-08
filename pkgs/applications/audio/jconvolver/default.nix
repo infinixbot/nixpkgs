@@ -84,7 +84,9 @@ stdenv.mkDerivation rec {
     cd source
   '';
 
-  makeFlags = [ "PREFIX=$(bin)" ];
+  makeFlags = [
+    "PREFIX=$(bin)"
+  ];
 
   postInstall = ''
     mkdir -p $doc/share/doc/jconvolver

@@ -21,7 +21,10 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-4GCLmPEoCX1Cw+H6Bo1KA4+9GX35HgONAmMF/WNX6ag=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ ];
+  nativeBuildInputs =
+    with python3.pkgs;
+    [
+    ];
 
   propagatedBuildInputs =
     with python3.pkgs;
@@ -54,7 +57,9 @@ python3.pkgs.buildPythonApplication rec {
       pkg-config
       zlib
     ]
-    ++ lib.optionals (stdenv.isDarwin) [ xcbuild.xcrun ]
+    ++ lib.optionals (stdenv.isDarwin) [
+      xcbuild.xcrun
+    ]
     ++ (with python3.pkgs; [
       mock
       parameterized
@@ -65,7 +70,9 @@ python3.pkgs.buildPythonApplication rec {
 
   __darwinAllowLocalNetworking = true;
 
-  pythonImportsCheck = [ "conan" ];
+  pythonImportsCheck = [
+    "conan"
+  ];
 
   pytestFlagsArray = [
     "-n"

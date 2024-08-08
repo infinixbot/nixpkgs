@@ -44,9 +44,13 @@ buildPythonPackage rec {
     })
   ];
 
-  pythonRelaxDeps = [ "pyarrow" ];
+  pythonRelaxDeps = [
+    "pyarrow"
+  ];
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   propagatedBuildInputs = [
     alembic

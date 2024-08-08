@@ -59,7 +59,9 @@ buildDunePackage {
   ];
 
   doCheck = true;
-  checkInputs = [ alcotest ];
+  checkInputs = [
+    alcotest
+  ];
 
   meta = dns.meta // {
     description = "Unix command line utilities using uDNS";

@@ -26,7 +26,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-Qqemee13V5+k56Q4hPOKjRsw6pmfALGRcKi4gHBj6eI=";
   };
 
-  patches = [ ./patches/override-python-version-check.patch ];
+  patches = [
+    ./patches/override-python-version-check.patch
+  ];
 
   dontBuild = true;
   doCheck = false;

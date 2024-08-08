@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-YjLU3Cxb2dMxE5s7AfQ0PD4fucp4mDYaaZIGcwlBoHs=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
   buildInputs = [
     cairo
     expat

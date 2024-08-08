@@ -52,7 +52,9 @@ buildPythonPackage rec {
       "test_capture_pane_start"
     ];
 
-  disabledTestPaths = lib.optionals stdenv.isDarwin [ "tests/test_test.py" ];
+  disabledTestPaths = lib.optionals stdenv.isDarwin [
+    "tests/test_test.py"
+  ];
 
   pythonImportsCheck = [ "libtmux" ];
 

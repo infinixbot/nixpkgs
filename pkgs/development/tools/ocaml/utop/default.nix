@@ -89,6 +89,8 @@ buildDunePackage rec {
     changelog = "https://github.com/ocaml-community/utop/blob/${version}/CHANGES.md";
     license = lib.licenses.bsd3;
     platforms = ocaml.meta.platforms or [ ];
-    maintainers = [ lib.maintainers.gal_bolle ];
+    maintainers = [
+      lib.maintainers.gal_bolle
+    ];
   };
 }

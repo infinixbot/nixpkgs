@@ -40,7 +40,9 @@ stdenv.mkDerivation rec {
   ];
 
   cmakeFlags =
-    [ "-DBUILD_SHARED_LIBS=${if stdenv.isDarwin then "OFF" else "ON"}" ]
+    [
+      "-DBUILD_SHARED_LIBS=${if stdenv.isDarwin then "OFF" else "ON"}"
+    ]
     ++ lib.optionals stdenv.isDarwin [
       "-DCMAKE_OSX_DEPLOYMENT_TARGET=10.14" # For aligned allocation
     ];

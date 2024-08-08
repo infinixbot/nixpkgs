@@ -22,7 +22,9 @@ buildGoModule rec {
 
   nativeBuildInputs = [ clang ];
 
-  hardeningDisable = [ "zerocallusedregs" ];
+  hardeningDisable = [
+    "zerocallusedregs"
+  ];
 
   buildPhase = ''
     runHook preBuild

@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     yoda
   ] ++ lib.optional withPython python ++ lib.optional (withPython && python.isPy3k) ncurses;
 
-  propagatedBuildInputs = [ zlib ] ++ lib.optional withPython swig;
+  propagatedBuildInputs = [
+    zlib
+  ] ++ lib.optional withPython swig;
 
   preConfigure = ''
     substituteInPlace ./fastnlotoolkit/Makefile.in \
@@ -42,7 +44,9 @@ stdenv.mkDerivation rec {
     chmod +x check/fnlo-tk-stattest.pl.in
   '';
 
-  configureFlags = [ "--with-yoda=${yoda}" ] ++ lib.optional withPython "--enable-pyext";
+  configureFlags = [
+    "--with-yoda=${yoda}"
+  ] ++ lib.optional withPython "--enable-pyext";
 
   enableParallelBuilding = true;
 

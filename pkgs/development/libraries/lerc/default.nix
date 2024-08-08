@@ -32,7 +32,9 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   passthru.tests.pkg-config = testers.hasPkgConfigModules {
     package = finalAttrs.finalPackage;

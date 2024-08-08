@@ -27,9 +27,16 @@ rustPlatform.buildRustPackage {
     makeWrapper
   ];
 
-  buildInputs = [
-    openssl
-  ] ++ lib.optionals stdenv.isDarwin (with darwin.apple_sdk.frameworks; [ SystemConfiguration ]);
+  buildInputs =
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin (
+      with darwin.apple_sdk.frameworks;
+      [
+        SystemConfiguration
+      ]
+    );
 
   checkFlags =
     [

@@ -40,7 +40,9 @@ stdenv.mkDerivation (finalAttrs: {
     autoreconfHook
     doxygen
   ];
-  depsBuildBuild = [ buildPackages.stdenv.cc ];
+  depsBuildBuild = [
+    buildPackages.stdenv.cc
+  ];
 
   buildInputs = [
     curl

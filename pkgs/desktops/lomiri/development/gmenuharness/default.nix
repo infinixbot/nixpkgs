@@ -61,7 +61,9 @@ stdenv.mkDerivation (finalAttrs: {
     libqtdbustest
   ];
 
-  cmakeFlags = [ "-Denable_tests=${lib.boolToString finalAttrs.finalPackage.doCheck}" ];
+  cmakeFlags = [
+    "-Denable_tests=${lib.boolToString finalAttrs.finalPackage.doCheck}"
+  ];
 
   dontWrapQtApps = true;
 
@@ -88,6 +90,8 @@ stdenv.mkDerivation (finalAttrs: {
     license = licenses.gpl3Only;
     maintainers = teams.lomiri.members;
     platforms = platforms.unix;
-    pkgConfigModules = [ "libgmenuharness" ];
+    pkgConfigModules = [
+      "libgmenuharness"
+    ];
   };
 })

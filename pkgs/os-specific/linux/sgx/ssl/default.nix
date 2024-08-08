@@ -50,9 +50,17 @@ stdenv.mkDerivation {
     which
   ];
 
-  makeFlags = [ "-C Linux" ] ++ lib.optionals debug [ "DEBUG=1" ];
+  makeFlags =
+    [
+      "-C Linux"
+    ]
+    ++ lib.optionals debug [
+      "DEBUG=1"
+    ];
 
-  installFlags = [ "DESTDIR=$(out)" ];
+  installFlags = [
+    "DESTDIR=$(out)"
+  ];
 
   # These tests build on any x86_64-linux but BOTH SIM and HW will only _run_ on
   # real Intel hardware. Split these out so OfBorg doesn't choke on this pkg.

@@ -47,13 +47,19 @@ stdenv.mkDerivation rec {
     rustc
   ];
 
-  buildInputs = [
-    libadwaita
-    libxml2
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Foundation ];
+  buildInputs =
+    [
+      libadwaita
+      libxml2
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Foundation
+    ];
 
   env.NIX_CFLAGS_COMPILE = toString (
-    lib.optionals stdenv.isDarwin [ "-Wno-error=incompatible-function-pointer-types" ]
+    lib.optionals stdenv.isDarwin [
+      "-Wno-error=incompatible-function-pointer-types"
+    ]
   );
 
   meta = {

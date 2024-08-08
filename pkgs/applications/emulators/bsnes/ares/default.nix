@@ -40,12 +40,16 @@ stdenv.mkDerivation (finalAttrs: {
     ./003-darwin-specific.patch
   ];
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    pkg-config
-    which
-    wrapGAppsHook3
-  ] ++ lib.optionals stdenv.isDarwin [ libicns ];
+  nativeBuildInputs =
+    [
+      autoPatchelfHook
+      pkg-config
+      which
+      wrapGAppsHook3
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      libicns
+    ];
 
   buildInputs =
     [
@@ -74,7 +78,9 @@ stdenv.mkDerivation (finalAttrs: {
   enableParallelBuilding = true;
 
   makeFlags =
-    lib.optionals stdenv.isLinux [ "hiro=gtk3" ]
+    lib.optionals stdenv.isLinux [
+      "hiro=gtk3"
+    ]
     ++ lib.optionals stdenv.isDarwin [
       "hiro=cocoa"
       "lto=false"

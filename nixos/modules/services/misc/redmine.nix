@@ -415,7 +415,8 @@ in
       environment.SCHEMA = "${cfg.stateDir}/cache/schema.db";
       path =
         with pkgs;
-        [ ]
+        [
+        ]
         ++ optional cfg.components.subversion subversion
         ++ optional cfg.components.mercurial mercurial
         ++ optional cfg.components.git git

@@ -54,7 +54,9 @@ stdenv.mkDerivation {
     qtdeclarative
   ];
 
-  cmakeFlags = [ (cmakeBool "USE_SYSTEM_BOX2D" true) ];
+  cmakeFlags = [
+    (cmakeBool "USE_SYSTEM_BOX2D" true)
+  ];
 
   meta = with lib; {
     description = "QML plugin for Box2D engine";

@@ -21,13 +21,21 @@ stdenv.mkDerivation rec {
   pname = "cbqn" + lib.optionalString (!generateBytecode) "-standalone";
   inherit (sources.cbqn) version src;
 
-  nativeBuildInputs = [
-    pkg-config
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ fixDarwinDylibNames ];
+  nativeBuildInputs =
+    [
+      pkg-config
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      fixDarwinDylibNames
+    ];
 
-  buildInputs = [ libffi ];
+  buildInputs = [
+    libffi
+  ];
 
-  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
+  makeFlags = [
+    "CC=${stdenv.cc.targetPrefix}cc"
+  ];
 
   buildFlags =
     [
@@ -36,14 +44,18 @@ stdenv.mkDerivation rec {
       "notui=1" # display build progress in a plain-text format
       "REPLXX=${if enableReplxx then "1" else "0"}"
     ]
-    ++ lib.optionals stdenv.hostPlatform.avx2Support [ "has=avx2" ]
+    ++ lib.optionals stdenv.hostPlatform.avx2Support [
+      "has=avx2"
+    ]
     ++ lib.optionals enableLibcbqn [
       # embeddable interpreter as a shared lib
       "shared-o3"
     ];
 
   outputs =
-    [ "out" ]
+    [
+      "out"
+    ]
     ++ lib.optionals enableLibcbqn [
       "lib"
       "dev"

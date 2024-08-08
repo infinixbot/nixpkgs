@@ -32,7 +32,9 @@ stdenv.mkDerivation rec {
     hicolor-icon-theme
   ];
 
-  propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+  propagatedUserEnvPkgs = [
+    gtk-engine-murrine
+  ];
 
   dontDropIconThemeCache = true;
 

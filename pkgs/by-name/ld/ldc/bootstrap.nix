@@ -37,7 +37,9 @@ stdenv.mkDerivation {
   dontBuild = true;
 
   nativeBuildInputs =
-    lib.optionals hostPlatform.isLinux [ autoPatchelfHook ]
+    lib.optionals hostPlatform.isLinux [
+      autoPatchelfHook
+    ]
     ++ lib.optional hostPlatform.isDarwin fixDarwinDylibNames;
 
   buildInputs = lib.optionals stdenv.hostPlatform.isLinux [

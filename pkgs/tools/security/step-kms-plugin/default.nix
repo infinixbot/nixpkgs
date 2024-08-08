@@ -25,7 +25,9 @@ buildGoModule rec {
 
   proxyVendor = true;
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     opensc

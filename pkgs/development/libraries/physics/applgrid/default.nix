@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
     zlib
   ] ++ lib.optionals stdenv.isDarwin [ Cocoa ];
 
-  patches = [ ./bad_code.patch ];
+  patches = [
+    ./bad_code.patch
+  ];
 
   preConfigure =
     ''

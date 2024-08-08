@@ -13,7 +13,9 @@ buildGoModule {
     ;
   pname = "tailscale-gitops-pusher";
 
-  subPackages = [ "cmd/gitops-pusher" ];
+  subPackages = [
+    "cmd/gitops-pusher"
+  ];
 
   ldflags = [
     "-w"

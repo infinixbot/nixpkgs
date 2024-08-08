@@ -64,7 +64,9 @@ stdenv.mkDerivation rec {
     libbsd
   ];
   propagatedBuildInputs =
-    [ protobufc ]
+    [
+      protobufc
+    ]
     ++ (with python3.pkgs; [
       python
       python3.pkgs.protobuf

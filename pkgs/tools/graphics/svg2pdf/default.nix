@@ -17,7 +17,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-PaAhTSfw+enirVg9WHBpI+GjMwHA02/SiKkRa1A6QXc=";
 
-  cargoBuildFlags = [ "-p=svg2pdf-cli" ];
+  cargoBuildFlags = [
+    "-p=svg2pdf-cli"
+  ];
 
   meta = with lib; {
     description = "Convert SVG files to PDFs";

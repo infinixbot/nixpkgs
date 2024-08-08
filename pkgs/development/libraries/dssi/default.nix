@@ -48,7 +48,9 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "Plugin SDK for virtual instruments";
-    maintainers = with maintainers; [ raskin ];
+    maintainers = with maintainers; [
+      raskin
+    ];
     platforms = platforms.linux;
     license = licenses.lgpl21;
     downloadPage = "https://sourceforge.net/projects/dssi/files/dssi/";

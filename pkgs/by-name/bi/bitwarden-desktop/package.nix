@@ -40,7 +40,9 @@ buildNpmPackage rec {
     hash = "sha256-oQ2VZoxePdYUC+xMKlRMpvPubSPULvt31XSh/OBw3Ec=";
   };
 
-  patches = [ ./electron-builder-package-lock.patch ];
+  patches = [
+    ./electron-builder-package-lock.patch
+  ];
 
   # The nested package-lock.json from upstream is out-of-date, so copy the
   # lock metadata from the root package-lock.json.
@@ -130,7 +132,9 @@ buildNpmPackage rec {
     (gnome-keyring.override { useWrappedDaemon = false; })
   ];
 
-  checkFlags = [ "--skip=password::password::tests::test" ];
+  checkFlags = [
+    "--skip=password::password::tests::test"
+  ];
 
   checkPhase = ''
     runHook preCheck

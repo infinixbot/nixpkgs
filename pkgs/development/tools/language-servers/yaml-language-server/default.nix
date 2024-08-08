@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     yarn
   ];
 
-  buildInputs = [ nodejs ];
+  buildInputs = [
+    nodejs
+  ];
 
   configurePhase = ''
     runHook preConfigure

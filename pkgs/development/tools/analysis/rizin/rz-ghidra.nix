@@ -44,7 +44,9 @@ stdenv.mkDerivation (finalAttrs: {
   dontWrapQtApps = true;
 
   cmakeFlags =
-    [ "-DUSE_SYSTEM_PUGIXML=ON" ]
+    [
+      "-DUSE_SYSTEM_PUGIXML=ON"
+    ]
     ++ lib.optionals enableCutterPlugin [
       "-DBUILD_CUTTER_PLUGIN=ON"
       "-DCUTTER_INSTALL_PLUGDIR=share/rizin/cutter/plugins/native"

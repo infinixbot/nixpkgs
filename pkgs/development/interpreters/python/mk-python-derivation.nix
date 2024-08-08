@@ -84,7 +84,9 @@ let
       "pyproject-hooks"
       "wheel"
     ]
-    ++ optionals (python.pythonOlder "3.11") [ "tomli" ]
+    ++ optionals (python.pythonOlder "3.11") [
+      "tomli"
+    ]
   );
 
   isSetuptoolsDependency' = lib.flip elem [
@@ -315,10 +317,18 @@ let
             #
             pythonCatchConflictsHook
           ]
-          ++ optionals (attrs ? pythonRelaxDeps || attrs ? pythonRemoveDeps) [ pythonRelaxDepsHook ]
-          ++ optionals removeBinBytecode [ pythonRemoveBinBytecodeHook ]
-          ++ optionals (hasSuffix "zip" (attrs.src.name or "")) [ unzip ]
-          ++ optionals (format' == "setuptools") [ setuptoolsBuildHook ]
+          ++ optionals (attrs ? pythonRelaxDeps || attrs ? pythonRemoveDeps) [
+            pythonRelaxDepsHook
+          ]
+          ++ optionals removeBinBytecode [
+            pythonRemoveBinBytecodeHook
+          ]
+          ++ optionals (hasSuffix "zip" (attrs.src.name or "")) [
+            unzip
+          ]
+          ++ optionals (format' == "setuptools") [
+            setuptoolsBuildHook
+          ]
           ++ optionals (format' == "pyproject") [
             (
               if isBootstrapPackage then
@@ -338,7 +348,9 @@ let
                 pythonRuntimeDepsCheckHook
             )
           ]
-          ++ optionals (format' == "wheel") [ wheelUnpackHook ]
+          ++ optionals (format' == "wheel") [
+            wheelUnpackHook
+          ]
           ++ optionals (format' == "egg") [
             eggUnpackHook
             eggBuildHook
@@ -362,7 +374,9 @@ let
             # Optionally enforce PEP420 for python3
             pythonNamespacesHook
           ]
-          ++ optionals withDistOutput [ pythonOutputDistHook ]
+          ++ optionals withDistOutput [
+            pythonOutputDistHook
+          ]
           ++ nativeBuildInputs
           ++ build-system;
 
@@ -387,7 +401,8 @@ let
         doCheck = false;
         doInstallCheck = attrs.doCheck or true;
         nativeInstallCheckInputs =
-          [ ]
+          [
+          ]
           ++ optionals (format' == "setuptools") [
             # Longer-term we should get rid of this and require
             # users of this function to set the `installCheckPhase` or

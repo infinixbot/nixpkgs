@@ -86,7 +86,9 @@ stdenvNoCC.mkDerivation rec {
   dontConfigure = true;
   dontBuild = true;
 
-  patches = [ ./ndk-version.patch ];
+  patches = [
+    ./ndk-version.patch
+  ];
 
   postPatch = ''
     substituteInPlace libc/include/sys/cdefs.h --replace \

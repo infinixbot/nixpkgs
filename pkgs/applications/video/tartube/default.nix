@@ -65,7 +65,9 @@ python3Packages.buildPythonApplication rec {
 
   doCheck = false;
 
-  makeWrapperArgs = [ "--prefix PATH : ${lib.makeBinPath [ youtube-dl ]}" ];
+  makeWrapperArgs = [
+    "--prefix PATH : ${lib.makeBinPath [ youtube-dl ]}"
+  ];
 
   meta = with lib; {
     description = "GUI front-end for youtube-dl";

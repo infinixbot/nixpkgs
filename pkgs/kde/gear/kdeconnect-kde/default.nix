@@ -41,5 +41,7 @@ mkKdeDerivation {
     libfakekey
   ];
 
-  extraCmakeFlags = [ "-DQtWaylandScanner_EXECUTABLE=${qtwayland}/libexec/qtwaylandscanner" ];
+  extraCmakeFlags = [
+    "-DQtWaylandScanner_EXECUTABLE=${qtwayland}/libexec/qtwaylandscanner"
+  ];
 }

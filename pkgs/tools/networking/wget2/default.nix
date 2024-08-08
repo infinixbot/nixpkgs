@@ -73,8 +73,12 @@ stdenv.mkDerivation rec {
       zlib
       zstd
     ]
-    ++ lib.optionals sslSupport [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.CoreServices ];
+    ++ lib.optionals sslSupport [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.CoreServices
+    ];
 
   # TODO: include translation files
   autoreconfPhase = ''

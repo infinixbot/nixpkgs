@@ -65,7 +65,9 @@ import ./make-test-python.nix (
             test-support.displayManager.auto.user = "alice";
             environment.systemPackages = [
               (pkgs.vscode-with-extensions.override {
-                vscodeExtensions = [ pkgs.vscode-extensions.ms-vscode-remote.remote-ssh ];
+                vscodeExtensions = [
+                  pkgs.vscode-extensions.ms-vscode-remote.remote-ssh
+                ];
               })
             ];
           };

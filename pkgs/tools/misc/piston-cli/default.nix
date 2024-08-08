@@ -28,7 +28,9 @@ python3Packages.buildPythonApplication rec {
     $out/bin/piston --help > /dev/null
   '';
 
-  nativeBuildInputs = with python3Packages; [ poetry-core ];
+  nativeBuildInputs = with python3Packages; [
+    poetry-core
+  ];
 
   pythonRelaxDeps = [
     "rich"

@@ -106,7 +106,9 @@ in
     users.users.schleuder.isSystemUser = true;
     users.users.schleuder.group = "schleuder";
     users.groups.schleuder = { };
-    environment.systemPackages = [ pkgs.schleuder-cli ];
+    environment.systemPackages = [
+      pkgs.schleuder-cli
+    ];
     services.postfix = lib.mkIf cfg.enablePostfix {
       extraMasterConf = ''
         schleuder  unix  -       n       n       -       -       pipe
@@ -134,7 +136,9 @@ in
       {
         schleuder-init = {
           serviceConfig = commonServiceConfig // {
-            ExecStartPre = lib.mkIf (cfg.extraSettingsFile != null) [ "+${configScript}" ];
+            ExecStartPre = lib.mkIf (cfg.extraSettingsFile != null) [
+              "+${configScript}"
+            ];
             ExecStart = [ "${pkgs.schleuder}/bin/schleuder install" ];
             Type = "oneshot";
           };

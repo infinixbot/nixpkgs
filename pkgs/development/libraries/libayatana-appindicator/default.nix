@@ -43,7 +43,9 @@ stdenv.mkDerivation rec {
     libdbusmenu-gtk3
   ];
 
-  cmakeFlags = [ "-DENABLE_BINDINGS_MONO=False" ];
+  cmakeFlags = [
+    "-DENABLE_BINDINGS_MONO=False"
+  ];
 
   meta = with lib; {
     description = "Ayatana Application Indicators Shared Library";

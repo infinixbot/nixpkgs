@@ -20,7 +20,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-0ZSMKARX16/33sIWR8LOVOFblI/Q+iZgnfVq/xqRMnI=";
   };
 
-  configureFlags = [ "--INSTALL=install" ];
+  configureFlags = [
+    "--INSTALL=install"
+  ];
 
   nativeBuildInputs = [
     docutils

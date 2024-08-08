@@ -88,7 +88,9 @@ stdenv.mkDerivation {
     sha256 = "0n40927c8cnjackfns68zwl7h4d7dvhf7cyqdkazzwwx4k2xxvma";
   };
 
-  patches = [ ./0001-fix-locale.patch ];
+  patches = [
+    ./0001-fix-locale.patch
+  ];
 
   nativeBuildInputs = [
     makeWrapper

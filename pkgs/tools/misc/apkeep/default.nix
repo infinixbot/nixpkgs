@@ -24,10 +24,14 @@ rustPlatform.buildRustPackage rec {
     rm .cargo/config.toml
   '';
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs =
-    [ openssl ]
+    [
+      openssl
+    ]
     ++ lib.optionals stdenv.isDarwin [
       Security
       SystemConfiguration

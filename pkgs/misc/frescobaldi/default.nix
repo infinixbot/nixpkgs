@@ -42,7 +42,9 @@ buildPythonApplication rec {
   doCheck = false;
 
   dontWrapQtApps = true;
-  makeWrapperArgs = [ "\${qtWrapperArgs[@]}" ];
+  makeWrapperArgs = [
+    "\${qtWrapperArgs[@]}"
+  ];
 
   meta = with lib; {
     homepage = "https://frescobaldi.org/";

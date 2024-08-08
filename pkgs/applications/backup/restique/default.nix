@@ -21,7 +21,9 @@ mkDerivation rec {
     hash = "sha256-EYoADtYX+gm8T3/3gxTtdFOFGJf2rXryiTu8NIO0Ez4=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = [
     libsecret

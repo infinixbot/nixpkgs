@@ -137,7 +137,9 @@ in
           {
             virtualisation.memorySize = 2048;
 
-            security.pki.certificateFiles = [ certs.ca.cert ];
+            security.pki.certificateFiles = [
+              certs.ca.cert
+            ];
 
             networking.extraHosts = ''
               127.0.0.1 ${parsedmarcDomain}
@@ -156,7 +158,9 @@ in
               };
             };
 
-            environment.systemPackages = [ pkgs.jq ];
+            environment.systemPackages = [
+              pkgs.jq
+            ];
           };
 
         mail =

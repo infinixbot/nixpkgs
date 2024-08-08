@@ -28,7 +28,9 @@ qt5.mkDerivation {
     mv bin $out
   '';
 
-  nativeBuildInputs = [ qt5.wrapQtAppsHook ];
+  nativeBuildInputs = [
+    qt5.wrapQtAppsHook
+  ];
 
   buildInputs = [
     qtbase

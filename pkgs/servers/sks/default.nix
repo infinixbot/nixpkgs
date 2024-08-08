@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
   };
 
   # pkgs.db provides db_stat, not db$major.$minor_stat
-  patches = [ ./adapt-to-nixos.patch ];
+  patches = [
+    ./adapt-to-nixos.patch
+  ];
 
   outputs = [
     "out"

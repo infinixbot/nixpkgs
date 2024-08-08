@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-4V/2UOgGWgL+tFJO/k90bCDjWSVyIpxw3nYi9NU/OxA=";
   };
 
-  patches = [ ./canokey-qemu-memcpy.patch ];
+  patches = [
+    ./canokey-qemu-memcpy.patch
+  ];
 
   postPatch = ''
     substituteInPlace canokey-core/CMakeLists.txt \
@@ -33,7 +35,9 @@ stdenv.mkDerivation rec {
             "-Wno-error=unused-but-set-parameter"
             "-Wno-error=unused-but-set-variable"
           ]
-          ++ lib.optionals stdenv.cc.isClang [ "-Wno-error=documentation" ]
+          ++ lib.optionals stdenv.cc.isClang [
+            "-Wno-error=documentation"
+          ]
         )
       }
     )

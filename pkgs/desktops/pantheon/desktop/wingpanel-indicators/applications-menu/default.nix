@@ -74,7 +74,9 @@ stdenv.mkDerivation rec {
     # its plugins for search.
     switchboard-with-plugs.buildInputs;
 
-  mesonFlags = [ "--sysconfdir=${placeholder "out"}/etc" ];
+  mesonFlags = [
+    "--sysconfdir=${placeholder "out"}/etc"
+  ];
 
   postPatch = ''
     chmod +x meson/post_install.py

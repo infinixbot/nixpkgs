@@ -66,7 +66,9 @@ stdenv.mkDerivation rec {
     fixup_yarn_lock yarn.lock
   '';
 
-  mesonFlags = [ "-Dyarnrc=../.yarnrc" ];
+  mesonFlags = [
+    "-Dyarnrc=../.yarnrc"
+  ];
 
   postPatch = ''
     meson rewrite kwargs set project / version '${version}'

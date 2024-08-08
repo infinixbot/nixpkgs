@@ -130,7 +130,9 @@ stdenv.mkDerivation rec {
       unixODBCDrivers.sqlite
       unixODBCDrivers.mariadb
     ]
-    ++ lib.optionals systemdSupport [ systemd ]
+    ++ lib.optionals systemdSupport [
+      systemd
+    ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       util-linux
       mtdev
@@ -175,15 +177,21 @@ stdenv.mkDerivation rec {
       GSS
       MetalKit
     ]
-    ++ lib.optionals libGLSupported [ libGL ]
+    ++ lib.optionals libGLSupported [
+      libGL
+    ]
     ++ lib.optionals stdenv.hostPlatform.isMinGW [
       vulkan-headers
       vulkan-loader
     ];
 
   buildInputs =
-    lib.optionals (lib.meta.availableOn stdenv.hostPlatform at-spi2-core) [ at-spi2-core ]
-    ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform libinput) [ libinput ]
+    lib.optionals (lib.meta.availableOn stdenv.hostPlatform at-spi2-core) [
+      at-spi2-core
+    ]
+    ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform libinput) [
+      libinput
+    ]
     ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isx86_64) [
       AppKit
       CoreBluetooth

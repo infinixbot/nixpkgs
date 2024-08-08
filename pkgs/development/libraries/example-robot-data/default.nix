@@ -32,18 +32,26 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = lib.optionals pythonSupport [ python3Packages.pinocchio ];
+  buildInputs = lib.optionals pythonSupport [
+    python3Packages.pinocchio
+  ];
 
-  cmakeFlags = lib.optionals (!pythonSupport) [ "-DBUILD_PYTHON_INTERFACE=OFF" ];
+  cmakeFlags = lib.optionals (!pythonSupport) [
+    "-DBUILD_PYTHON_INTERFACE=OFF"
+  ];
 
   doCheck = true;
   # The package expect to find an `example-robot-data/robots` folder somewhere
   # either in install prefix or in the sources
   # where it can find the meshes for unit tests
   preCheck = "ln -s source ../../${finalAttrs.pname}";
-  pythonImportsCheck = [ "example_robot_data" ];
+  pythonImportsCheck = [
+    "example_robot_data"
+  ];
 
   meta = with lib; {
     description = "Set of robot URDFs for benchmarking and developed examples";

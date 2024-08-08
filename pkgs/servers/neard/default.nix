@@ -33,12 +33,16 @@ stdenv.mkDerivation rec {
     python2Packages.wrapPython
   ];
 
-  buildInputs = [
-    systemd
-    glib
-    dbus
-    libnl
-  ] ++ (with python2Packages; [ python ]);
+  buildInputs =
+    [
+      systemd
+      glib
+      dbus
+      libnl
+    ]
+    ++ (with python2Packages; [
+      python
+    ]);
 
   pythonPath = with python2Packages; [
     pygobject2

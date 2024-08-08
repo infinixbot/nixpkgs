@@ -16,7 +16,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-Gk7t9wnVCRWwnqcItS3j031VqJnBqk6rHw1SABtzqfE=";
   };
 
-  buildInputs = [ SDL ];
+  buildInputs = [
+    SDL
+  ];
 
   makeFlags = [
     "CC:=$(CC)"

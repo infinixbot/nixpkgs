@@ -12,7 +12,9 @@ let
     pname = "kramdown-asciidoc";
     gemdir = ./.;
 
-    exes = [ "kramdoc" ];
+    exes = [
+      "kramdoc"
+    ];
 
     # nativeBuildInputs = [ makeWrapper ];
 

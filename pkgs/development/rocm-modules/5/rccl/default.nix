@@ -19,7 +19,13 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "rccl";
   version = "5.7.1";
 
-  outputs = [ "out" ] ++ lib.optionals buildTests [ "test" ];
+  outputs =
+    [
+      "out"
+    ]
+    ++ lib.optionals buildTests [
+      "test"
+    ];
 
   src = fetchFromGitHub {
     owner = "ROCm";
@@ -36,10 +42,14 @@ stdenv.mkDerivation (finalAttrs: {
     hipify
   ];
 
-  buildInputs = [
-    rocm-smi
-    gtest
-  ] ++ lib.optionals buildTests [ chrpath ];
+  buildInputs =
+    [
+      rocm-smi
+      gtest
+    ]
+    ++ lib.optionals buildTests [
+      chrpath
+    ];
 
   cmakeFlags =
     [
@@ -51,8 +61,12 @@ stdenv.mkDerivation (finalAttrs: {
       "-DCMAKE_INSTALL_LIBDIR=lib"
       "-DCMAKE_INSTALL_INCLUDEDIR=include"
     ]
-    ++ lib.optionals (gpuTargets != [ ]) [ "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}" ]
-    ++ lib.optionals buildTests [ "-DBUILD_TESTS=ON" ];
+    ++ lib.optionals (gpuTargets != [ ]) [
+      "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
+    ]
+    ++ lib.optionals buildTests [
+      "-DBUILD_TESTS=ON"
+    ];
 
   postPatch = ''
     patchShebangs src tools

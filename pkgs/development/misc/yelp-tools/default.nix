@@ -39,7 +39,9 @@ python3.pkgs.buildPythonApplication rec {
     yelp-xsl
   ];
 
-  pythonPath = [ python3.pkgs.lxml ];
+  pythonPath = [
+    python3.pkgs.lxml
+  ];
 
   strictDeps = false; # TODO: Meson cannot find xmllint oherwise. Maybe add it to machine file?
 

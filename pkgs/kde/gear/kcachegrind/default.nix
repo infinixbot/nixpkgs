@@ -9,5 +9,7 @@ mkKdeDerivation {
 
   extraNativeBuildInputs = [ qttools ];
 
-  qtWrapperArgs = [ "--suffix PATH : ${lib.makeBinPath [ graphviz ]}" ];
+  qtWrapperArgs = [
+    "--suffix PATH : ${lib.makeBinPath [ graphviz ]}"
+  ];
 }

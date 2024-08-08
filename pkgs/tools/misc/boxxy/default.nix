@@ -20,9 +20,13 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-PaH0WBBGK37T59RU4ofL0XjYX3cV5lR7WmCw+H/MeuA=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ oniguruma ];
+  buildInputs = [
+    oniguruma
+  ];
 
   env = {
     RUSTONIG_SYSTEM_LIBONIG = true;

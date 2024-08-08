@@ -21,7 +21,9 @@ python3.pkgs.buildPythonApplication rec {
       --replace-warn "-stable" ""
   '';
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools
+  ];
 
   postInstall = ''
     # Helper files are not handled by setup.py

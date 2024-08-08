@@ -26,7 +26,9 @@ let
         ])
       );
     generate = lib.cli.toGNUCommandLineShell {
-      mkBool = k: v: [ "--${k}=${if v then "true" else "false"}" ];
+      mkBool = k: v: [
+        "--${k}=${if v then "true" else "false"}"
+      ];
     };
   };
 in

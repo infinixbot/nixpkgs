@@ -31,7 +31,9 @@ stdenv.mkDerivation {
     gdb
   ] ++ lib.optional freetypeSupport freetype;
 
-  patches = [ ./build-use-optional-freetype-with-pkg-config.patch ];
+  patches = [
+    ./build-use-optional-freetype-with-pkg-config.patch
+  ];
 
   postPatch = lib.forEach extensions (ext: ''
     cp ${ext} ./${ext.name or (builtins.baseNameOf ext)}

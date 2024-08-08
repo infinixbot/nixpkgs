@@ -32,17 +32,26 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [
-    boost # for tests
-    fontconfig
-  ] ++ lib.optionals stdenv.isDarwin (with darwin.apple_sdk.frameworks; [ ApplicationServices ]);
+  buildInputs =
+    [
+      boost # for tests
+      fontconfig
+    ]
+    ++ lib.optionals stdenv.isDarwin (
+      with darwin.apple_sdk.frameworks;
+      [
+        ApplicationServices
+      ]
+    );
 
   propagatedBuildInputs = [
     cairo
     libsigcxx
   ];
 
-  mesonFlags = [ "-Dbuild-tests=true" ];
+  mesonFlags = [
+    "-Dbuild-tests=true"
+  ];
 
   doCheck = !stdenv.isDarwin;
 

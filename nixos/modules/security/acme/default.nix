@@ -614,7 +614,9 @@ let
       };
     in
     {
-      imports = [ (mkRenamedOptionModule [ "credentialsFile" ] [ "environmentFile" ]) ];
+      imports = [
+        (mkRenamedOptionModule [ "credentialsFile" ] [ "environmentFile" ])
+      ];
 
       options = {
         validMinDays = mkOption {

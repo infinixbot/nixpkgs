@@ -30,7 +30,9 @@
       cfg = config.programs.kdeconnect;
     in
     lib.mkIf cfg.enable {
-      environment.systemPackages = [ cfg.package ];
+      environment.systemPackages = [
+        cfg.package
+      ];
       networking.firewall = rec {
         allowedTCPPortRanges = [
           {

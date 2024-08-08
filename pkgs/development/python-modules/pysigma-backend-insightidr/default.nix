@@ -22,7 +22,9 @@ buildPythonPackage rec {
     hash = "sha256-wQMnnJ0KU+53MS3PIBkwIhUiyUdCrDbdUT6upk2Pp/8=";
   };
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   propagatedBuildInputs = [ pysigma ];
 

@@ -47,7 +47,9 @@ stdenv.mkDerivation rec {
       runHook postPatch
     '';
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   buildInputs = [
     bison

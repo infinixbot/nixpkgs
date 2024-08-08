@@ -33,7 +33,9 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [ libuv ];
+  buildInputs = [
+    libuv
+  ];
 
   meta = with lib; {
     description = "DPS8M: GE / Honeywell / Bull DPS‑8/M mainframe simulator";

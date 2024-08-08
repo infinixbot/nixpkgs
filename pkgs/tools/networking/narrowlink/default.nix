@@ -21,7 +21,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-LqPfgnN1J/OMAPsaBg9c5YSPbEDhOOOSujLthwIK79U=";
 
-  nativeBuildInputs = [ rustPlatform.bindgenHook ];
+  nativeBuildInputs = [
+    rustPlatform.bindgenHook
+  ];
 
   buildInputs = lib.optionals stdenv.isDarwin [
     darwin.apple_sdk.frameworks.IOKit

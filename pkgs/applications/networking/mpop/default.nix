@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Ncx94X492spHQ4Y0ZEiPjIKoOsGzdk/d1/QjiBQ1v0s=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs =
     lib.optional stdenv.isDarwin Security

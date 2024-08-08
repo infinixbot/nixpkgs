@@ -81,7 +81,9 @@ buildPythonApplication rec {
     install -Dm 644 ${src}/rpmbuild/SOURCES/proton-vpn-logo.svg $out/share/pixmaps
   '';
 
-  nativeCheckInputs = [ pytestCheckHook ];
+  nativeCheckInputs = [
+    pytestCheckHook
+  ];
 
   preCheck = ''
     # Needed for Permission denied: '/homeless-shelter'

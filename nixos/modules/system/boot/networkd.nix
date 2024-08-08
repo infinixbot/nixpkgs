@@ -299,7 +299,9 @@ let
         sectionIPVTAP = checkUnitConfig "IPVTAP" ipVlanVtapChecks;
 
         sectionMACVLAN = checkUnitConfig "MACVLAN" [
-          (assertOnlyFields [ "Mode" ])
+          (assertOnlyFields [
+            "Mode"
+          ])
           (assertValueOneOf "Mode" [
             "private"
             "vepa"
@@ -611,7 +613,9 @@ let
         ];
 
         sectionVRF = checkUnitConfig "VRF" [
-          (assertOnlyFields [ "Table" ])
+          (assertOnlyFields [
+            "Table"
+          ])
           (assertInt "Table")
           (assertMinimum "Table" 0)
         ];
@@ -1376,7 +1380,11 @@ let
         (assertRange "VLANId" 0 4094)
       ];
 
-      sectionLLDP = checkUnitConfig "LLDP" [ (assertOnlyFields [ "MUDURL" ]) ];
+      sectionLLDP = checkUnitConfig "LLDP" [
+        (assertOnlyFields [
+          "MUDURL"
+        ])
+      ];
 
       sectionCAN = checkUnitConfig "CAN" [
         (assertOnlyFields [

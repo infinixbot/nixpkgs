@@ -50,7 +50,9 @@ rustPlatform.buildRustPackage rec {
   OPENSSL_NO_VENDOR = 1;
 
   # Getting app_config_path fails with a permission denied
-  checkFlags = [ "--skip=keys::key_config::tests::test_symbolic_links" ];
+  checkFlags = [
+    "--skip=keys::key_config::tests::test_symbolic_links"
+  ];
 
   meta = {
     description = "Blazing fast terminal-ui for Git written in Rust";

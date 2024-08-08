@@ -26,7 +26,9 @@ stdenv.mkDerivation rec {
     zlib
   ];
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   meta = with lib; {
     description = "Tools for capturing wlan traffic and conversion to hashcat and John the Ripper formats";

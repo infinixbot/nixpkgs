@@ -20,7 +20,9 @@ buildDunePackage rec {
     sha256 = "sha256-UXQIIsCyJZN4qos7Si7LLm9vQueOduUmLeYHuyT2GZo=";
   };
 
-  propagatedBuildInputs = [ camomile ];
+  propagatedBuildInputs = [
+    camomile
+  ];
 
   passthru.updateScript = nix-update-script { };
 

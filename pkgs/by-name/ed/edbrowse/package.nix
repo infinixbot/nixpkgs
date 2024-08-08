@@ -34,7 +34,9 @@ stdenv.mkDerivation (finalAttrs: {
     ./0001-small-fixes.patch
   ];
 
-  patchFlags = [ "-p2" ];
+  patchFlags = [
+    "-p2"
+  ];
 
   postPatch = ''
     for file in $(find ./tools/ -type f ! -name '*.c'); do
@@ -47,18 +49,24 @@ stdenv.mkDerivation (finalAttrs: {
     which
   ];
 
-  buildInputs = [
-    curl
-    duktape
-    html-tidy
-    openssl
-    pcre
-    perl
-    quickjs
-    readline
-  ] ++ lib.optionals withODBC [ unixODBC ];
+  buildInputs =
+    [
+      curl
+      duktape
+      html-tidy
+      openssl
+      pcre
+      perl
+      quickjs
+      readline
+    ]
+    ++ lib.optionals withODBC [
+      unixODBC
+    ];
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   preBuild = ''
     buildFlagsArray+=(

@@ -10,7 +10,9 @@ mkPulumiPackage rec {
   vendorHash = "sha256-8mu0msSq59f5GZNo7YIGuNTYealGyEL9kwk0jCcSO68=";
   cmdGen = "pulumi-tfgen-yandex";
   cmdRes = "pulumi-resource-yandex";
-  extraLdflags = [ "-X github.com/regrau/${repo}/provider/pkg/version.Version=v${version}" ];
+  extraLdflags = [
+    "-X github.com/regrau/${repo}/provider/pkg/version.Version=v${version}"
+  ];
   __darwinAllowLocalNetworking = true;
   env.GOWORK = "off";
   meta = with lib; {

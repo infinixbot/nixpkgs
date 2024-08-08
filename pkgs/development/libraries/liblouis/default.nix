@@ -53,7 +53,9 @@ stdenv.mkDerivation (finalAttrs: {
     libyaml
   ];
 
-  nativeCheckInputs = [ perl ];
+  nativeCheckInputs = [
+    perl
+  ];
 
   configureFlags = [
     # Required by Python bindings

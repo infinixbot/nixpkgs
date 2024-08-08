@@ -39,7 +39,9 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  patches = [ ./fix-installation.patch ];
+  patches = [
+    ./fix-installation.patch
+  ];
 
   nativeBuildInputs = [
     bison
@@ -50,33 +52,44 @@ stdenv.mkDerivation rec {
     swig
   ];
 
-  buildInputs = [
-    broker
-    curl
-    gperftools
-    libmaxminddb
-    libpcap
-    ncurses
-    openssl
-    zlib
-    python
-  ] ++ lib.optionals stdenv.isLinux [ libkqueue ] ++ lib.optionals stdenv.isDarwin [ gettext ];
+  buildInputs =
+    [
+      broker
+      curl
+      gperftools
+      libmaxminddb
+      libpcap
+      ncurses
+      openssl
+      zlib
+      python
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      libkqueue
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      gettext
+    ];
 
   postPatch = ''
     patchShebangs ./ci/collect-repo-info.py
     patchShebangs ./auxil/spicy/scripts
   '';
 
-  cmakeFlags = [
-    "-DBroker_ROOT=${broker}"
-    "-DENABLE_PERFTOOLS=true"
-    "-DINSTALL_AUX_TOOLS=true"
-    "-DZEEK_ETC_INSTALL_DIR=/etc/zeek"
-    "-DZEEK_LOG_DIR=/var/log/zeek"
-    "-DZEEK_STATE_DIR=/var/lib/zeek"
-    "-DZEEK_SPOOL_DIR=/var/spool/zeek"
-    "-DDISABLE_JAVASCRIPT=ON"
-  ] ++ lib.optionals stdenv.isLinux [ "-DLIBKQUEUE_ROOT_DIR=${libkqueue}" ];
+  cmakeFlags =
+    [
+      "-DBroker_ROOT=${broker}"
+      "-DENABLE_PERFTOOLS=true"
+      "-DINSTALL_AUX_TOOLS=true"
+      "-DZEEK_ETC_INSTALL_DIR=/etc/zeek"
+      "-DZEEK_LOG_DIR=/var/log/zeek"
+      "-DZEEK_STATE_DIR=/var/lib/zeek"
+      "-DZEEK_SPOOL_DIR=/var/spool/zeek"
+      "-DDISABLE_JAVASCRIPT=ON"
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      "-DLIBKQUEUE_ROOT_DIR=${libkqueue}"
+    ];
 
   env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.isDarwin "-faligned-allocation";
 

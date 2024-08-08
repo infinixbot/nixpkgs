@@ -58,6 +58,8 @@ in
       };
     };
 
-    systemd.tmpfiles.rules = [ "d /etc/target 0700 root root - -" ];
+    systemd.tmpfiles.rules = [
+      "d /etc/target 0700 root root - -"
+    ];
   };
 }

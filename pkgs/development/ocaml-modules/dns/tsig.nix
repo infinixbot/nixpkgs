@@ -19,7 +19,9 @@ buildDunePackage {
   ];
 
   doCheck = true;
-  checkInputs = [ alcotest ];
+  checkInputs = [
+    alcotest
+  ];
 
   meta = dns.meta // {
     description = "TSIG support for DNS";

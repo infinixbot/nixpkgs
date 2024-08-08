@@ -47,16 +47,20 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    gettext
-    gobject-introspection
-    gtk-doc
-    docbook_xsl
-    docbook_xml_dtd_412
-  ] ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [ mesonEmulatorHook ];
+  nativeBuildInputs =
+    [
+      meson
+      ninja
+      pkg-config
+      gettext
+      gobject-introspection
+      gtk-doc
+      docbook_xsl
+      docbook_xml_dtd_412
+    ]
+    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+      mesonEmulatorHook
+    ];
 
   buildInputs = [
     libX11
@@ -71,7 +75,9 @@ stdenv.mkDerivation rec {
     gtk3
   ];
 
-  mesonFlags = [ "-Dgtk_doc=true" ];
+  mesonFlags = [
+    "-Dgtk_doc=true"
+  ];
 
   passthru = {
     updateScript = gnome.updateScript {

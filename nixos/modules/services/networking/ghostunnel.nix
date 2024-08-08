@@ -241,5 +241,7 @@ in
     systemd = lib.mkMerge (map (v: v.atRoot.systemd) (attrValues mainCfg.servers));
   };
 
-  meta.maintainers = with lib.maintainers; [ roberth ];
+  meta.maintainers = with lib.maintainers; [
+    roberth
+  ];
 }

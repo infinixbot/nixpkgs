@@ -15,7 +15,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-3fzCC911aQCpq2xCx9r5CiiTv38ZzjR0IM42uuvEGJA=";
   };
 
-  buildInputs = [ flex ];
+  buildInputs = [
+    flex
+  ];
   nativeBuildInputs = [ makeWrapper ];
 
   configureFlags = [

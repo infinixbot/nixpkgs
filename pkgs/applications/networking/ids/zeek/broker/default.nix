@@ -30,7 +30,9 @@ let
       rev = "e3048cdd13e085c97870a55eb1f9de04e25320f3";
       hash = "sha256-uisoYXiZbFQa/TfWGRrCJ23MX4bg8Ds86ffC8sZSRNQ=";
     };
-    cmakeFlags = old.cmakeFlags ++ [ "-DCAF_ENABLE_TESTING=OFF" ];
+    cmakeFlags = old.cmakeFlags ++ [
+      "-DCAF_ENABLE_TESTING=OFF"
+    ];
     doCheck = false;
   });
 in
@@ -60,7 +62,9 @@ stdenv.mkDerivation rec {
     touch $sourceRoot/bindings/python/3rdparty/pybind11/CMakeLists.txt
   '';
 
-  patches = [ ./0001-Fix-include-path-in-exported-CMake-targets.patch ];
+  patches = [
+    ./0001-Fix-include-path-in-exported-CMake-targets.patch
+  ];
 
   postPatch = lib.optionalString stdenv.isDarwin ''
     substituteInPlace bindings/python/CMakeLists.txt --replace " -u -r" ""

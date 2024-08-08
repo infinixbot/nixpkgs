@@ -1669,7 +1669,9 @@ in
       (
         sources."configstore-2.1.0"
         // {
-          dependencies = [ sources."mkdirp-0.5.6" ];
+          dependencies = [
+            sources."mkdirp-0.5.6"
+          ];
         }
       )
       sources."console-control-strings-1.1.0"
@@ -1703,7 +1705,9 @@ in
       (
         sources."fs-minipass-2.1.0"
         // {
-          dependencies = [ sources."minipass-3.3.6" ];
+          dependencies = [
+            sources."minipass-3.3.6"
+          ];
         }
       )
       sources."fs-promise-0.3.1"
@@ -1765,7 +1769,9 @@ in
       (
         sources."make-dir-3.1.0"
         // {
-          dependencies = [ sources."semver-6.3.0" ];
+          dependencies = [
+            sources."semver-6.3.0"
+          ];
         }
       )
       sources."map-obj-1.0.1"
@@ -1776,7 +1782,9 @@ in
       (
         sources."minizlib-2.1.2"
         // {
-          dependencies = [ sources."minipass-3.3.6" ];
+          dependencies = [
+            sources."minipass-3.3.6"
+          ];
         }
       )
       sources."mkdirp-1.0.4"
@@ -1789,7 +1797,9 @@ in
       (
         sources."normalize-package-data-2.5.0"
         // {
-          dependencies = [ sources."semver-5.7.1" ];
+          dependencies = [
+            sources."semver-5.7.1"
+          ];
         }
       )
       sources."npmlog-5.0.1"
@@ -1803,7 +1813,9 @@ in
       (
         sources."package-json-2.4.0"
         // {
-          dependencies = [ sources."semver-5.7.1" ];
+          dependencies = [
+            sources."semver-5.7.1"
+          ];
         }
       )
       sources."parse-json-2.2.0"
@@ -1843,7 +1855,9 @@ in
       (
         sources."semver-diff-2.1.0"
         // {
-          dependencies = [ sources."semver-5.7.1" ];
+          dependencies = [
+            sources."semver-5.7.1"
+          ];
         }
       )
       sources."set-blocking-2.0.0"

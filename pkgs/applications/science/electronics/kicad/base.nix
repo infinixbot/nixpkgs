@@ -109,15 +109,25 @@ stdenv.mkDerivation rec {
       stdenv.hostPlatform.system == "aarch64-linux"
     ) "-DCMAKE_CTEST_ARGUMENTS=--exclude-regex;'qa_spice|qa_cli'"
     ++ optional (stable && !withNgspice) "-DKICAD_SPICE=OFF"
-    ++ optionals (!withScripting) [ "-DKICAD_SCRIPTING_WXPYTHON=OFF" ]
-    ++ optionals (withI18n) [ "-DKICAD_BUILD_I18N=ON" ]
-    ++ optionals (!doInstallCheck) [ "-DKICAD_BUILD_QA_TESTS=OFF" ]
+    ++ optionals (!withScripting) [
+      "-DKICAD_SCRIPTING_WXPYTHON=OFF"
+    ]
+    ++ optionals (withI18n) [
+      "-DKICAD_BUILD_I18N=ON"
+    ]
+    ++ optionals (!doInstallCheck) [
+      "-DKICAD_BUILD_QA_TESTS=OFF"
+    ]
     ++ optionals (debug) [
       "-DKICAD_STDLIB_DEBUG=ON"
       "-DKICAD_USE_VALGRIND=ON"
     ]
-    ++ optionals (sanitizeAddress) [ "-DKICAD_SANITIZE_ADDRESS=ON" ]
-    ++ optionals (sanitizeThreads) [ "-DKICAD_SANITIZE_THREADS=ON" ];
+    ++ optionals (sanitizeAddress) [
+      "-DKICAD_SANITIZE_ADDRESS=ON"
+    ]
+    ++ optionals (sanitizeThreads) [
+      "-DKICAD_SANITIZE_THREADS=ON"
+    ];
 
   cmakeBuildType = if debug then "Debug" else "Release";
 

@@ -83,8 +83,12 @@ stdenv.mkDerivation (finalAttrs: {
   hardeningDisable = [ "format" ];
 
   configureFlags =
-    lib.optionals stdenv.hostPlatform.sse4_1Support [ "--enable-sse41" ]
-    ++ lib.optionals stdenv.hostPlatform.avx2Support [ "--enable-avx2" ];
+    lib.optionals stdenv.hostPlatform.sse4_1Support [
+      "--enable-sse41"
+    ]
+    ++ lib.optionals stdenv.hostPlatform.avx2Support [
+      "--enable-avx2"
+    ];
 
   preConfigure = ''
     cd ${if withGtk then "gtk" else "unix"}

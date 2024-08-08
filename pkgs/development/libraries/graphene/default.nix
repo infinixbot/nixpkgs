@@ -58,7 +58,9 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs =
     [
@@ -73,12 +75,20 @@ stdenv.mkDerivation (finalAttrs: {
       docbook_xsl
       gtk-doc
     ]
-    ++ lib.optionals withIntrospection [ gobject-introspection ]
-    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [ mesonEmulatorHook ];
+    ++ lib.optionals withIntrospection [
+      gobject-introspection
+    ]
+    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+      mesonEmulatorHook
+    ];
 
-  buildInputs = [ glib ];
+  buildInputs = [
+    glib
+  ];
 
-  nativeCheckInputs = [ mutest ];
+  nativeCheckInputs = [
+    mutest
+  ];
 
   mesonFlags =
     [

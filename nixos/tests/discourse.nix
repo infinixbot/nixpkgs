@@ -39,7 +39,9 @@ import ./make-test-python.nix (
 
         imports = [ common/user-account.nix ];
 
-        security.pki.certificateFiles = [ certs.ca.cert ];
+        security.pki.certificateFiles = [
+          certs.ca.cert
+        ];
 
         networking.extraHosts = ''
           127.0.0.1 ${discourseDomain}
@@ -90,7 +92,9 @@ import ./make-test-python.nix (
       {
         imports = [ common/user-account.nix ];
 
-        security.pki.certificateFiles = [ certs.ca.cert ];
+        security.pki.certificateFiles = [
+          certs.ca.cert
+        ];
 
         networking.extraHosts = ''
           127.0.0.1 ${clientDomain}

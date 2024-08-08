@@ -42,7 +42,9 @@ stdenv.mkDerivation rec {
     ]))
   ];
 
-  configureFlags = [ "--with-gtk=3.0" ];
+  configureFlags = [
+    "--with-gtk=3.0"
+  ];
 
   meta = with lib; {
     isIbusEngine = true;

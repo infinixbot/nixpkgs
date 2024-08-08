@@ -50,7 +50,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-iIHi434S7+Q9S1EU7Bpa7iYB7MJDTuyMdB/bbTrbl5Q=";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   dontBuild = true;
 

@@ -55,7 +55,9 @@ python3Packages.buildPythonApplication rec {
 
   dontWrapGApps = true;
 
-  patches = [ ./fix-build.patch ];
+  patches = [
+    ./fix-build.patch
+  ];
 
   postPatch = ''
     echo "${version}" > version

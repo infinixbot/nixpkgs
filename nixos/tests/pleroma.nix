@@ -220,7 +220,9 @@ import ./make-test-python.nix (
           services = {
             pleroma = {
               enable = true;
-              configs = [ pleroma-conf ];
+              configs = [
+                pleroma-conf
+              ];
             };
             postgresql = {
               enable = true;

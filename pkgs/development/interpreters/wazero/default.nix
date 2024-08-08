@@ -19,7 +19,9 @@ buildGoModule rec {
 
   vendorHash = null;
 
-  subPackages = [ "cmd/wazero" ];
+  subPackages = [
+    "cmd/wazero"
+  ];
 
   ldflags = [
     "-s"

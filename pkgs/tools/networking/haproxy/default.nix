@@ -74,8 +74,12 @@ stdenv.mkDerivation (finalAttrs: {
       "SSL_LIB=${lib.getDev sslPkg}/lib"
       "USE_QUIC=yes"
     ]
-    ++ lib.optionals (sslLibrary == "openssl") [ "USE_QUIC_OPENSSL_COMPAT=yes" ]
-    ++ lib.optionals (sslLibrary == "wolfssl") [ "USE_OPENSSL_WOLFSSL=yes" ]
+    ++ lib.optionals (sslLibrary == "openssl") [
+      "USE_QUIC_OPENSSL_COMPAT=yes"
+    ]
+    ++ lib.optionals (sslLibrary == "wolfssl") [
+      "USE_OPENSSL_WOLFSSL=yes"
+    ]
     ++ lib.optionals usePcre [
       "USE_PCRE2=yes"
       "USE_PCRE2_JIT=yes"
@@ -90,7 +94,9 @@ stdenv.mkDerivation (finalAttrs: {
       "USE_SYSTEMD=yes"
       "USE_GETADDRINFO=1"
     ]
-    ++ lib.optionals withPrometheusExporter [ "USE_PROMEX=yes" ]
+    ++ lib.optionals withPrometheusExporter [
+      "USE_PROMEX=yes"
+    ]
     ++ [ "CC=${stdenv.cc.targetPrefix}cc" ];
 
   enableParallelBuilding = true;

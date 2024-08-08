@@ -28,7 +28,9 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   makeFlags =
-    [ "PREFIX=${placeholder "out"}" ]
+    [
+      "PREFIX=${placeholder "out"}"
+    ]
     ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
       "HOST_SCDOC=${lib.getExe buildPackages.scdoc}"
     ];

@@ -18,7 +18,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-xOlPuPVwfVT7jfBJPqZ5FbOs80HE0k2ZqcA+Jcxh9p4=";
   };
 
-  pythonRelaxDeps = [ "textual" ];
+  pythonRelaxDeps = [
+    "textual"
+  ];
 
   nativeBuildInputs = with python3.pkgs; [
     makeWrapper
@@ -33,7 +35,9 @@ python3.pkgs.buildPythonApplication rec {
     textual
   ];
 
-  pythonImportsCheck = [ "tftui" ];
+  pythonImportsCheck = [
+    "tftui"
+  ];
 
   postInstall = lib.optionalString (!enableUsageTracking) ''
     wrapProgram $out/bin/tftui \

@@ -42,7 +42,9 @@ rustPlatform.buildRustPackage rec {
     Security
   ];
 
-  cargoBuildFlags = [ "--workspace" ];
+  cargoBuildFlags = [
+    "--workspace"
+  ];
 
   RUSTFLAGS = "--cfg tokio_unstable";
 

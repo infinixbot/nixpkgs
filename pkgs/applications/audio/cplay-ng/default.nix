@@ -18,7 +18,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-M9WpB59AWSaGMnGrO37Fc+7O6pVBc2BDAv/BGlPmo8E=";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   postInstall = ''
     wrapProgram $out/bin/cplay-ng \

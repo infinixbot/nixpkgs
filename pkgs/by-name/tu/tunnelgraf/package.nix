@@ -21,7 +21,9 @@ python3.pkgs.buildPythonApplication rec {
     "pydantic"
   ];
 
-  build-system = with python3.pkgs; [ hatchling ];
+  build-system = with python3.pkgs; [
+    hatchling
+  ];
 
   dependencies = with python3.pkgs; [
     click
@@ -36,7 +38,9 @@ python3.pkgs.buildPythonApplication rec {
   # Project has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "tunnelgraf" ];
+  pythonImportsCheck = [
+    "tunnelgraf"
+  ];
 
   meta = with lib; {
     description = "Tool to manage SSH tunnel hops to many endpoints";

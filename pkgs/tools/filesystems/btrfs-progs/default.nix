@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs =
-    [ pkg-config ]
+    [
+      pkg-config
+    ]
     ++ [
       (buildPackages.python3.withPackages (
         ps: with ps; [
@@ -62,8 +64,12 @@ stdenv.mkDerivation rec {
       # Built separately, see python3Packages.btrfsutil
       "--disable-python"
     ]
-    ++ lib.optionals stdenv.hostPlatform.isMusl [ "--disable-backtrace" ]
-    ++ lib.optionals (!udevSupport) [ "--disable-libudev" ];
+    ++ lib.optionals stdenv.hostPlatform.isMusl [
+      "--disable-backtrace"
+    ]
+    ++ lib.optionals (!udevSupport) [
+      "--disable-libudev"
+    ];
 
   makeFlags = [ "udevruledir=$(out)/lib/udev/rules.d" ];
 

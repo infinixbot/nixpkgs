@@ -25,7 +25,9 @@ rustPlatform.buildRustPackage rec {
   # Found argument '--test-threads' which wasn't expected, or isn't valid in this context
   doCheck = false;
 
-  nativeBuildInputs = [ rustPlatform.bindgenHook ];
+  nativeBuildInputs = [
+    rustPlatform.bindgenHook
+  ];
 
   env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.isDarwin "-faligned-allocation";
 

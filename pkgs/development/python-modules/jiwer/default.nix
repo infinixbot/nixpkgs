@@ -22,7 +22,9 @@ buildPythonPackage rec {
     hash = "sha256-2LzAOgABK00Pz3v5WWYUAcZOYcTbRKfgw7U5DOohB/Q=";
   };
 
-  build-system = [ poetry-core ];
+  build-system = [
+    poetry-core
+  ];
 
   dependencies = [
     rapidfuzz

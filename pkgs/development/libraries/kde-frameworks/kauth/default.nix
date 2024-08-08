@@ -15,7 +15,9 @@ mkDerivation {
   nativeBuildInputs = [ extra-cmake-modules ];
   buildInputs = lib.optional enablePolkit polkit-qt ++ [ qttools ];
   propagatedBuildInputs = [ kcoreaddons ];
-  patches = [ ./cmake-install-paths.patch ];
+  patches = [
+    ./cmake-install-paths.patch
+  ];
   # library stores reference to plugin path,
   # separating $out from $bin would create a reference cycle
   outputs = [

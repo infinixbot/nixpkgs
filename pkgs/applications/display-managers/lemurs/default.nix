@@ -19,7 +19,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-uuHPJe+1VsnLRGbHtgTMrib6Tk359cwTDVfvtHnDToo=";
 
-  buildInputs = [ linux-pam ];
+  buildInputs = [
+    linux-pam
+  ];
 
   passthru.tests.version = testers.testVersion {
     package = lemurs;

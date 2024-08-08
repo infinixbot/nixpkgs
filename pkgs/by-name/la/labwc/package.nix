@@ -70,7 +70,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  mesonFlags = [ (lib.mesonEnable "xwayland" true) ];
+  mesonFlags = [
+    (lib.mesonEnable "xwayland" true)
+  ];
 
   passthru = {
     providedSessions = [ "labwc" ];

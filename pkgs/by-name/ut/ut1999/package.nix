@@ -94,7 +94,9 @@ stdenv.mkDerivation {
       autoPatchelfHook
       imagemagick
     ]
-    ++ lib.optionals stdenv.isDarwin [ undmg ];
+    ++ lib.optionals stdenv.isDarwin [
+      undmg
+    ];
 
   installPhase =
     let

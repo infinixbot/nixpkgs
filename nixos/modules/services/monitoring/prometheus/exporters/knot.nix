@@ -44,7 +44,9 @@ in
     };
   };
   serviceOpts = {
-    path = with pkgs; [ procps ];
+    path = with pkgs; [
+      procps
+    ];
     serviceConfig = {
       ExecStart = ''
         ${pkgs.prometheus-knot-exporter}/bin/knot-exporter \
@@ -55,7 +57,9 @@ in
           ${lib.optionalString (cfg.knotLibraryPath != null) "--knot-library-path ${cfg.knotLibraryPath}"} \
           ${concatStringsSep " \\\n  " cfg.extraFlags}
       '';
-      SupplementaryGroups = [ "knot" ];
+      SupplementaryGroups = [
+        "knot"
+      ];
       RestrictAddressFamilies = [
         # Need AF_UNIX to collect data
         "AF_UNIX"

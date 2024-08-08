@@ -19,9 +19,13 @@ buildGoModule rec {
 
   vendorHash = "sha256-+VA9xq1ilZ/NOrnEOIvw5YWcmAsqZKfQMGz9vPVNmzU=";
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
-  buildInputs = [ go ];
+  buildInputs = [
+    go
+  ];
 
   doCheck = false;
 

@@ -30,7 +30,9 @@ python3.pkgs.buildPythonApplication rec {
     })
   ];
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     argcomplete
@@ -65,7 +67,9 @@ python3.pkgs.buildPythonApplication rec {
     "test_add_non_standard"
   ];
 
-  pythonImportsCheck = [ "pubs" ];
+  pythonImportsCheck = [
+    "pubs"
+  ];
 
   meta = with lib; {
     description = "Command-line bibliography manager";

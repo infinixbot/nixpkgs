@@ -61,7 +61,9 @@ stdenv.mkDerivation rec {
     doxygen
   ];
 
-  buildInputs = [ zlib ];
+  buildInputs = [
+    zlib
+  ];
 
   patches = [
     # This patch replaces the bundled (outdated) zlib with our zlib
@@ -79,7 +81,9 @@ stdenv.mkDerivation rec {
     make doc-devkit-full
   '';
 
-  nativeCheckInputs = [ python3Packages.robotframework ];
+  nativeCheckInputs = [
+    python3Packages.robotframework
+  ];
 
   doCheck = true;
 

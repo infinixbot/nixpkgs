@@ -24,10 +24,14 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-8petNuCJ1qS6XKt+24Lg/bZh96yj9oO6fu/z65Xhi4k=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs =
-    [ openssl ]
+    [
+      openssl
+    ]
     ++ lib.optional stdenv.isLinux pcsclite
     ++ lib.optionals stdenv.isDarwin [
       IOKit

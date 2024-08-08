@@ -51,11 +51,15 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
+  makeFlags = [
+    "CC=${stdenv.cc.targetPrefix}cc"
+  ];
 
   NIX_LDFLAGS = "-lcrypt";
 
-  installFlags = [ "sysconfdir=$(out)/etc" ];
+  installFlags = [
+    "sysconfdir=$(out)/etc"
+  ];
 
   postInstall = ''
     install -Dm755 -t $out/bin scripts/{pon,poff,plog}

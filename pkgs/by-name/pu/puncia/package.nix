@@ -17,14 +17,20 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-xGJk8y26tluHUPm9ikrBBiWGuzq6MKl778BF8wNDmps=";
   };
 
-  build-system = with python3.pkgs; [ setuptools ];
+  build-system = with python3.pkgs; [
+    setuptools
+  ];
 
-  dependencies = with python3.pkgs; [ requests ];
+  dependencies = with python3.pkgs; [
+    requests
+  ];
 
   # Project has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "puncia" ];
+  pythonImportsCheck = [
+    "puncia"
+  ];
 
   meta = with lib; {
     description = "CLI utility for Subdomain Center & Exploit Observer";

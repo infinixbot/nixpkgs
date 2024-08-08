@@ -112,7 +112,9 @@ in
     #
     makeFlags =
       (previousAttrs.makeFlags or [ ])
-      ++ lib.optionals (libgcc != null) [ "user-defined-trusted-dirs=${libgcc}/lib" ];
+      ++ lib.optionals (libgcc != null) [
+        "user-defined-trusted-dirs=${libgcc}/lib"
+      ];
 
     postInstall =
       previousAttrs.postInstall

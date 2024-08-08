@@ -24,7 +24,9 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = [ pixman ];
+  buildInputs = [
+    pixman
+  ];
 
   outputs = [
     "out"

@@ -74,7 +74,9 @@ clangStdenv.mkDerivation rec {
     "--with-systemdsystemunitdir=${placeholder "out"}/lib/systemd/system"
   ];
 
-  makeFlags = [ "sbindir=${placeholder "out"}/bin" ];
+  makeFlags = [
+    "sbindir=${placeholder "out"}/bin"
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/tihmstar/usbmuxd2";

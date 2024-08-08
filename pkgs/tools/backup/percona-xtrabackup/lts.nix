@@ -9,7 +9,9 @@ callPackage ./generic.nix (
     # includes https://github.com/Percona-Lab/libkmip.git
     fetchSubmodules = true;
 
-    extraPatches = [ ./abi-check.patch ];
+    extraPatches = [
+      ./abi-check.patch
+    ];
 
     extraPostInstall = ''
       rm -r "$out"/docs

@@ -67,7 +67,9 @@ with lib;
           gnutar
           gzip
         ])
-        ++ [ config.nix.package ]
+        ++ [
+          config.nix.package
+        ]
         ++ cfg.extraPackages;
 
       serviceConfig = mkMerge [

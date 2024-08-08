@@ -21,7 +21,9 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-3SCfsLYB4qhvsVo0Ji4WPwIDGcMwQ4M4zKnCOsXGTS0=";
   };
 
-  buildInputs = lib.optionals stdenv.isLinux [ qt5.qtwayland ];
+  buildInputs = lib.optionals stdenv.isLinux [
+    qt5.qtwayland
+  ];
 
   propagatedBuildInputs = with python3Packages; [
     setuptools
@@ -43,10 +45,14 @@ python3Packages.buildPythonApplication rec {
     pytestCheckHook
   ];
 
-  disabledTestPaths = [
-    "qtpy/"
-    "contrib/win32"
-  ] ++ lib.optionals stdenv.isDarwin [ "cola/inotify.py" ];
+  disabledTestPaths =
+    [
+      "qtpy/"
+      "contrib/win32"
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      "cola/inotify.py"
+    ];
 
   preFixup = ''
     makeWrapperArgs+=("''${qtWrapperArgs[@]}")

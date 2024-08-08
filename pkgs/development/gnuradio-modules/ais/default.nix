@@ -36,7 +36,9 @@ mkDerivation rec {
     python
   ];
 
-  cmakeFlags = [ "-DCMAKE_EXE_LINKER_FLAGS=-pthread" ];
+  cmakeFlags = [
+    "-DCMAKE_EXE_LINKER_FLAGS=-pthread"
+  ];
 
   buildInputs = [
     cppunit

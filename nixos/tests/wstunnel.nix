@@ -60,8 +60,12 @@ in
         clients.my-client = {
           autoStart = false;
           connectTo = "wss://${domain}:443";
-          localToRemote = [ "tcp://8080:localhost:2080" ];
-          remoteToLocal = [ "tcp://2081:localhost:8081" ];
+          localToRemote = [
+            "tcp://8080:localhost:2080"
+          ];
+          remoteToLocal = [
+            "tcp://2081:localhost:8081"
+          ];
         };
       };
     };

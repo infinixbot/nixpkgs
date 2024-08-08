@@ -26,9 +26,13 @@ stdenv.mkDerivation rec {
     iconnamingutils
   ];
 
-  buildInputs = [ librsvg ];
+  buildInputs = [
+    librsvg
+  ];
 
-  propagatedBuildInputs = [ hicolor-icon-theme ];
+  propagatedBuildInputs = [
+    hicolor-icon-theme
+  ];
 
   dontDropIconThemeCache = true;
 

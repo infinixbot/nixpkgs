@@ -16,13 +16,17 @@ buildGoModule rec {
     hash = "sha256-q7+Fpttgx62GbKxCCiEDlX//e/pNO24e7KhhBeGRDH0=";
   };
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   subPackages = [ "." ];
 
   CGO_ENABLED = 1;
 
-  tags = [ "sqlite" ];
+  tags = [
+    "sqlite"
+  ];
 
   vendorHash = "sha256-B0y1JVjJmC5eitn7yIcDpl+9+xaBDJBMdvm+7N/ZxTk=";
 

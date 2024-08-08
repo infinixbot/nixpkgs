@@ -59,7 +59,9 @@ python3Packages.buildPythonApplication rec {
       --replace-fail "self.install_libbase" '"${placeholder "out"}/${python3.sitePackages}"'
   '';
 
-  build-system = [ python3Packages.setuptools ];
+  build-system = [
+    python3Packages.setuptools
+  ];
 
   nativeBuildInputs = [ qt5.wrapQtAppsHook ];
   buildInputs = [
@@ -93,7 +95,9 @@ python3Packages.buildPythonApplication rec {
       cp -r "${desktopItem}/share/applications/" "$out/share/"
     '';
 
-  pythonImportsCheck = [ "pymol" ];
+  pythonImportsCheck = [
+    "pymol"
+  ];
 
   nativeCheckInputs = with python3Packages; [
     python3Packages.msgpack

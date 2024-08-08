@@ -98,8 +98,12 @@ stdenv.mkDerivation (
         "LIBSEPOLA=${lib.getLib libsepol}/lib/libsepol.a"
         "ARCH=${stdenv.hostPlatform.linuxArch}"
       ]
-      ++ optionals (fts != null) [ "FTS_LDLIBS=-lfts" ]
-      ++ optionals stdenv.hostPlatform.isStatic [ "DISABLE_SHARED=y" ]
+      ++ optionals (fts != null) [
+        "FTS_LDLIBS=-lfts"
+      ]
+      ++ optionals stdenv.hostPlatform.isStatic [
+        "DISABLE_SHARED=y"
+      ]
       ++ optionals enablePython [
         "PYTHON=${python3.pythonOnBuildForHost.interpreter}"
         "PYTHONLIBDIR=$(py)/${python3.sitePackages}"

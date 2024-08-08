@@ -23,7 +23,9 @@ import ./make-test-python.nix (
       };
     # the machine where we need the debuginfo
     nodes.machine = {
-      imports = [ ../modules/installer/cd-dvd/channel.nix ];
+      imports = [
+        ../modules/installer/cd-dvd/channel.nix
+      ];
       services.nixseparatedebuginfod.enable = true;
       nix.settings = {
         substituters = lib.mkForce [ "http://cache:5000" ];

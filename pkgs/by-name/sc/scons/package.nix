@@ -21,7 +21,9 @@ python3Packages.buildPythonApplication rec {
     ./no-man-pages.patch
   ];
 
-  build-system = [ python3Packages.setuptools ];
+  build-system = [
+    python3Packages.setuptools
+  ];
 
   setupHook = ./setup-hook.sh;
 

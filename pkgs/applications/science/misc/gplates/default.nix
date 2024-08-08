@@ -22,7 +22,11 @@
 }:
 
 let
-  python = python3.withPackages (ps: with ps; [ numpy ]);
+  python = python3.withPackages (
+    ps: with ps; [
+      numpy
+    ]
+  );
   boost' = boost.override {
     enablePython = true;
     inherit python;

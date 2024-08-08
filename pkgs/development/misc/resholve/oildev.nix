@@ -64,7 +64,9 @@ rec {
       "${patchSrc}/0015-fix-compiled-extension-import-paths.patch"
     ];
 
-    configureFlags = [ "--without-readline" ];
+    configureFlags = [
+      "--without-readline"
+    ];
 
     nativeBuildInputs = [
       re2c

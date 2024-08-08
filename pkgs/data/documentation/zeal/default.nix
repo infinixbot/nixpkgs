@@ -48,7 +48,9 @@ stdenv.mkDerivation (finalAttrs: {
     xcbutilkeysyms
   ] ++ lib.optionals isQt5 [ qtx11extras ];
 
-  cmakeFlags = [ (lib.cmakeBool "ZEAL_RELEASE_BUILD" true) ];
+  cmakeFlags = [
+    (lib.cmakeBool "ZEAL_RELEASE_BUILD" true)
+  ];
 
   meta = {
     description = "Simple offline API documentation browser";

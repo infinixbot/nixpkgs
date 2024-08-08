@@ -34,7 +34,9 @@ buildHomeAssistantComponent {
 
   dontBuild = true;
 
-  propagatedBuildInputs = [ govee-led-wez ];
+  propagatedBuildInputs = [
+    govee-led-wez
+  ];
 
   # AttributeError: 'async_generator' object has no attribute 'config'
   doCheck = false;

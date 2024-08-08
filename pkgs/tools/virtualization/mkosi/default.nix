@@ -39,7 +39,11 @@ let
     withKernelInstall = true;
   };
 
-  python3pefile = python3.withPackages (ps: with ps; [ pefile ]);
+  python3pefile = python3.withPackages (
+    ps: with ps; [
+      pefile
+    ]
+  );
 in
 buildPythonApplication rec {
   pname = "mkosi";
@@ -79,25 +83,33 @@ buildPythonApplication rec {
     wheel
   ];
 
-  propagatedBuildInputs = [
-    bash
-    btrfs-progs
-    bubblewrap
-    coreutils
-    cpio
-    gnutar
-    kmod
-    systemdForMkosi
-    util-linux
-  ] ++ lib.optional withQemu [ qemu ];
+  propagatedBuildInputs =
+    [
+      bash
+      btrfs-progs
+      bubblewrap
+      coreutils
+      cpio
+      gnutar
+      kmod
+      systemdForMkosi
+      util-linux
+    ]
+    ++ lib.optional withQemu [
+      qemu
+    ];
 
   postBuild = ''
     ./tools/make-man-page.sh
   '';
 
-  checkInputs = [ pytestCheckHook ];
+  checkInputs = [
+    pytestCheckHook
+  ];
 
-  pythonImportsCheck = [ "mkosi" ];
+  pythonImportsCheck = [
+    "mkosi"
+  ];
 
   postInstall = ''
     mkdir -p $out/share/man/man1

@@ -35,7 +35,9 @@ stdenv.mkDerivation rec {
     rev = "v${version}";
     hash = "sha256-E2Dqe1IYXjFb/nShQX+ARZW/AWpNonRimb3yQ6/2CFw=";
   };
-  patches = [ ./polkit-dir.patch ];
+  patches = [
+    ./polkit-dir.patch
+  ];
 
   nativeBuildInputs = [
     extra-cmake-modules

@@ -23,7 +23,9 @@ beamPackages.mixRelease rec {
     sha256 = "sha256-ZiupcCu6ES/G9rsdNo5+JXOIPhb4CHT2YhKThWiLisw=";
   };
 
-  patches = [ ./Revert-Config-Restrict-permissions-of-OTP-config.patch ];
+  patches = [
+    ./Revert-Config-Restrict-permissions-of-OTP-config.patch
+  ];
 
   mixNixDeps = import ./mix.nix {
     inherit beamPackages lib;

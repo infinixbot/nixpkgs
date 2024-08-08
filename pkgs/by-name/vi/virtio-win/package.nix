@@ -14,7 +14,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-1bVznPKX8FONJj4wZ41aCbukcKfGvL2N/3TkQVPxZUk=";
   };
 
-  nativeBuildInputs = [ libarchive ];
+  nativeBuildInputs = [
+    libarchive
+  ];
 
   unpackCmd = "mkdir source; bsdtar -xf $curSrc -C source";
 

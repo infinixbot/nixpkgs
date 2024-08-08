@@ -18,7 +18,9 @@ let
   };
 
   appWithoutFallback = app.overrideAttrs (oldAttrs: {
-    nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ removeReferencesTo ];
+    nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [
+      removeReferencesTo
+    ];
     postFixup =
       (oldAttrs.postFixup or "")
       + ''

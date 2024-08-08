@@ -22,9 +22,13 @@ stdenv.mkDerivation (finalAttrs: {
     "projects"
   ];
 
-  nativeBuildInputs = [ SDL2 ];
+  nativeBuildInputs = [
+    SDL2
+  ];
 
-  buildInputs = [ SDL2 ];
+  buildInputs = [
+    SDL2
+  ];
 
   strictDeps = true;
 

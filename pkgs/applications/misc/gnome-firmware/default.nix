@@ -51,7 +51,9 @@ stdenv.mkDerivation rec {
     systemd
   ];
 
-  mesonFlags = [ "-Dconsolekit=false" ];
+  mesonFlags = [
+    "-Dconsolekit=false"
+  ];
 
   passthru.updateScript = gitUpdater {
     ignoredVersions = "(alpha|beta|rc).*";

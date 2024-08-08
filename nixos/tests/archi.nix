@@ -7,7 +7,9 @@ import ./make-test-python.nix (
     nodes.machine =
       { pkgs, ... }:
       {
-        imports = [ ./common/x11.nix ];
+        imports = [
+          ./common/x11.nix
+        ];
 
         environment.systemPackages = with pkgs; [ archi ];
       };

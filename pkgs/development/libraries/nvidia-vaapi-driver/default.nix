@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-ETdHbPI3rZR4026rOT5K9/pjKTZxD5+RioKzUVGMwsA=";
   };
 
-  patches = [ ./0001-hardcode-install_dir.patch ];
+  patches = [
+    ./0001-hardcode-install_dir.patch
+  ];
 
   nativeBuildInputs = [
     meson

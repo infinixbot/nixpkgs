@@ -69,8 +69,12 @@ stdenv.mkDerivation (finalAttrs: {
       libzip
       zlib
     ]
-    ++ lib.optionals useSystemFfmpeg [ ffmpeg ]
-    ++ lib.optionals useSystemSnappy [ snappy ]
+    ++ lib.optionals useSystemFfmpeg [
+      ffmpeg
+    ]
+    ++ lib.optionals useSystemSnappy [
+      snappy
+    ]
     ++ lib.optionals enableQt [
       qtbase
       qtmultimedia
@@ -106,11 +110,17 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   installPhase = lib.concatStringsSep "\n" (
-    [ ''runHook preInstall'' ]
-    ++ [ ''mkdir -p $out/share/{applications,ppsspp/bin,icons}'' ]
+    [
+      ''runHook preInstall''
+    ]
+    ++ [
+      ''mkdir -p $out/share/{applications,ppsspp/bin,icons}''
+    ]
     ++ (
       if enableQt then
-        [ ''install -Dm555 PPSSPPQt $out/share/ppsspp/bin/'' ]
+        [
+          ''install -Dm555 PPSSPPQt $out/share/ppsspp/bin/''
+        ]
       else
         [
           ''install -Dm555 PPSSPPHeadless $out/share/ppsspp/bin/''
@@ -122,13 +132,17 @@ stdenv.mkDerivation (finalAttrs: {
       ''mv assets $out/share/ppsspp''
       ''mv ../icons/hicolor $out/share/icons''
     ]
-    ++ [ ''runHook postInstall'' ]
+    ++ [
+      ''runHook postInstall''
+    ]
   );
 
   postFixup =
     let
       wrapperArgs = lib.concatStringsSep " " (
-        lib.optionals enableVulkan [ "--prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ vulkan-loader ]}" ]
+        lib.optionals enableVulkan [
+          "--prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ vulkan-loader ]}"
+        ]
         ++ lib.optionals (!enableQt) [
           "--set SDL_VIDEODRIVER ${if forceWayland then "wayland" else "x11"}"
         ]

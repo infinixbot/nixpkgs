@@ -58,7 +58,9 @@ mkDerivation rec {
     libkdcraw
   ];
 
-  qtWrapperArgs = [ "--prefix PATH : ${lib.makeBinPath [ ffmpeg ]}" ];
+  qtWrapperArgs = [
+    "--prefix PATH : ${lib.makeBinPath [ ffmpeg ]}"
+  ];
 
   meta = with lib; {
     description = "Efficient image organization and indexing";

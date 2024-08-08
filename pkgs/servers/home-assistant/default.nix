@@ -40,7 +40,9 @@ let
           rev = "refs/tags/v${version}";
           hash = "sha256-q06B40c0uvSuzH/3YCoxg4p9aNIOPrphsoESktF+B14=";
         };
-        nativeCheckInputs = with self; [ aresponses ];
+        nativeCheckInputs = with self; [
+          aresponses
+        ];
       });
 
       aiolyric = super.aiolyric.overridePythonAttrs (oldAttrs: rec {
@@ -105,7 +107,9 @@ let
             --replace-fail "poetry>=1.0.0b1" "poetry-core" \
             --replace-fail "poetry.masonry" "poetry.core.masonry"
         '';
-        propagatedBuildInputs = oldAttrs.propagatedBuildInputs ++ [ self.pytz ];
+        propagatedBuildInputs = oldAttrs.propagatedBuildInputs ++ [
+          self.pytz
+        ];
       });
 
       debugpy = super.debugpy.overridePythonAttrs (oldAttrs: {
@@ -143,7 +147,9 @@ let
           rev = "refs/tags/v${version}";
           hash = "sha256-i+QbnF0Y/kUMvt91Wzb8wseO/1rZn9xzeA5BWg1haks=";
         };
-        dependencies = with self; [ requests ];
+        dependencies = with self; [
+          requests
+        ];
       });
 
       intellifire4py = super.intellifire4py.overridePythonAttrs (oldAttrs: rec {
@@ -154,7 +160,9 @@ let
           rev = "refs/tags/${version}";
           hash = "sha256-iqlKfpnETLqQwy5sNcK2x/TgmuN2hCfYoHEFK2WWVXI=";
         };
-        nativeBuildInputs = with self; [ setuptools ];
+        nativeBuildInputs = with self; [
+          setuptools
+        ];
         propagatedBuildInputs = with self; [
           aenum
           aiohttp
@@ -194,9 +202,13 @@ let
           hash = "sha256-adkcUuPl0jdJjkBINCTW4Kmc16C/HzL+jaRZB/Qr09A=";
         };
 
-        nativeBuildInputs = with self; [ setuptools ];
+        nativeBuildInputs = with self; [
+          setuptools
+        ];
 
-        propagatedBuildInputs = with self; [ requests ];
+        propagatedBuildInputs = with self; [
+          requests
+        ];
 
         doCheck = false; # no tests
       });
@@ -350,8 +362,12 @@ let
           version = "0.1.0";
           hash = "sha256-YistIxYToo7T5mYKzYeBhnW06DSG9JoPDBmKxUdfy4E=";
         };
-        nativeBuildInputs = with self; [ flit-core ];
-        pythonRelaxDeps = [ "betterproto" ];
+        nativeBuildInputs = with self; [
+          flit-core
+        ];
+        pythonRelaxDeps = [
+          "betterproto"
+        ];
       };
 
       slack-sdk = super.slack-sdk.overridePythonAttrs (oldAttrs: rec {
@@ -378,7 +394,9 @@ let
           rev = "refs/tags/v${version}";
           hash = "sha256-MdPctAZuKn/YAwpMJ5gWU7PXJD3iK7bYprLXV52wNQQ=";
         };
-        disabledTests = [ "test_sign_failures" ];
+        disabledTests = [
+          "test_sign_failures"
+        ];
       };
 
       versioningit = super.versioningit.overridePythonAttrs {
@@ -424,7 +442,9 @@ let
           pydantic
           ecdsa
         ];
-        nativeCheckInputs = with self; [ aresponses ];
+        nativeCheckInputs = with self; [
+          aresponses
+        ];
       });
 
       youtubeaio = super.youtubeaio.overridePythonAttrs (old: {
@@ -493,7 +513,9 @@ python.pkgs.buildPythonApplication rec {
     hash = "sha256-NJ5gD6k05ahIPCwktJgTz9zczxgnfuLesfjR58fbRL4=";
   };
 
-  build-system = with python.pkgs; [ setuptools ];
+  build-system = with python.pkgs; [
+    setuptools
+  ];
 
   pythonRelaxDeps = [
     "aiohttp"

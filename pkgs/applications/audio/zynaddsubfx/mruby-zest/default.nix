@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-rIb6tQimwrUj+623IU5zDyKNWsNYYBElLQClOsP+5Dc=";
   };
 
-  patches = [ ./force-cxx-as-linker.patch ];
+  patches = [
+    ./force-cxx-as-linker.patch
+  ];
 
   nativeBuildInputs = [
     bison

@@ -33,7 +33,9 @@ python3.pkgs.buildPythonApplication rec {
   ];
 
   nativeCheckInputs =
-    [ git ]
+    [
+      git
+    ]
     ++ (with python3.pkgs; [
       httpretty
       pytestCheckHook
@@ -51,7 +53,9 @@ python3.pkgs.buildPythonApplication rec {
     "test_get_free_databases"
   ];
 
-  pythonImportsCheck = [ "gigalixir" ];
+  pythonImportsCheck = [
+    "gigalixir"
+  ];
 
   meta = with lib; {
     broken = stdenv.isDarwin;

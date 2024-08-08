@@ -27,7 +27,9 @@ stdenv.mkDerivation (finalAttrs: {
     "man"
   ] ++ lib.optionals withPDFDoc [ "doc" ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     curl

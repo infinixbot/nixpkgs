@@ -57,7 +57,12 @@ stdenv.mkDerivation (finalAttrs: {
     ./fix-launch.diff
   ];
 
-  enginesPath = lib.makeBinPath ([ tesseract4 ] ++ extraOcrEngines);
+  enginesPath = lib.makeBinPath (
+    [
+      tesseract4
+    ]
+    ++ extraOcrEngines
+  );
 
   preFixup = ''
     gappsWrapperArgs+=(--prefix PATH : "${finalAttrs.enginesPath}")

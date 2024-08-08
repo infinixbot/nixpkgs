@@ -19,9 +19,13 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-EQvIJXIQ6UrevNkhqMZddUde+6iNBcBTOaanimZNkaA=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ sqlite ];
+  buildInputs = [
+    sqlite
+  ];
 
   meta = {
     description = "CLI for indexing and searching packages in Nix expressions";

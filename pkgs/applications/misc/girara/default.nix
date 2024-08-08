@@ -55,7 +55,9 @@ stdenv.mkDerivation rec {
     gtk
   ];
 
-  nativeCheckInputs = [ xvfb-run ];
+  nativeCheckInputs = [
+    xvfb-run
+  ];
 
   doCheck = !stdenv.isDarwin;
 

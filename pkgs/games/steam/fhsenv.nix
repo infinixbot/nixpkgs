@@ -331,7 +331,9 @@ buildFHSEnv rec {
     ''
     + args.extraPreBwrapCmds or "";
 
-  extraBwrapArgs = [ "--bind-try /tmp/dumps /tmp/dumps" ] ++ args.extraBwrapArgs or [ ];
+  extraBwrapArgs = [
+    "--bind-try /tmp/dumps /tmp/dumps"
+  ] ++ args.extraBwrapArgs or [ ];
 
   meta =
     if steam != null then

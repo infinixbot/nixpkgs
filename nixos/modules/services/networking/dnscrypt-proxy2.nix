@@ -84,8 +84,12 @@ in
         "network-online.target"
         "nss-lookup.target"
       ];
-      before = [ "nss-lookup.target" ];
-      wantedBy = [ "multi-user.target" ];
+      before = [
+        "nss-lookup.target"
+      ];
+      wantedBy = [
+        "multi-user.target"
+      ];
       serviceConfig = {
         AmbientCapabilities = "CAP_NET_BIND_SERVICE";
         CacheDirectory = "dnscrypt-proxy";

@@ -257,7 +257,10 @@ in
 
       systemd.packages =
         with pkgs.gnome;
-        [ gnome-flashback ] ++ map gnome-flashback.mkSystemdTargetForWm flashbackWms;
+        [
+          gnome-flashback
+        ]
+        ++ map gnome-flashback.mkSystemdTargetForWm flashbackWms;
 
       environment.systemPackages =
         with pkgs.gnome;
@@ -320,7 +323,9 @@ in
 
       # gnome has a custom alert theme but it still
       # inherits from the freedesktop theme.
-      environment.systemPackages = with pkgs; [ sound-theme-freedesktop ];
+      environment.systemPackages = with pkgs; [
+        sound-theme-freedesktop
+      ];
 
       # Needed for themes and backgrounds
       environment.pathsToLink = [
@@ -331,8 +336,12 @@ in
     (lib.mkIf serviceCfg.core-shell.enable {
       services.xserver.desktopManager.gnome.sessionPath =
         let
-          mandatoryPackages = [ pkgs.gnome.gnome-shell ];
-          optionalPackages = [ pkgs.gnome.gnome-shell-extensions ];
+          mandatoryPackages = [
+            pkgs.gnome.gnome-shell
+          ];
+          optionalPackages = [
+            pkgs.gnome.gnome-shell-extensions
+          ];
         in
         mandatoryPackages
         ++ utils.removePackagesByName optionalPackages config.environment.gnome.excludePackages;
@@ -387,7 +396,9 @@ in
       # Adapt from https://gitlab.gnome.org/GNOME/gnome-build-meta/blob/gnome-3-38/elements/core/meta-gnome-core-shell.bst
       environment.systemPackages =
         let
-          mandatoryPackages = with pkgs.gnome; [ gnome-shell ];
+          mandatoryPackages = with pkgs.gnome; [
+            gnome-shell
+          ];
           optionalPackages = with pkgs.gnome; [
             pkgs.adwaita-icon-theme
             nixos-background-info
@@ -467,7 +478,9 @@ in
       # Override default mimeapps for nautilus
       environment.sessionVariables.XDG_DATA_DIRS = [ "${mimeAppsList}/share" ];
 
-      environment.pathsToLink = [ "/share/nautilus-python/extensions" ];
+      environment.pathsToLink = [
+        "/share/nautilus-python/extensions"
+      ];
     })
 
     (lib.mkIf serviceCfg.games.enable {

@@ -21,7 +21,9 @@ let
       rev = "v${version}";
       sha256 = "sha256-9zlWYAY4lOQsL9+MYukqavBi5k96FvglRgznLIwwRyw=";
     };
-    nativeBuildInputs = [ cmake ];
+    nativeBuildInputs = [
+      cmake
+    ];
   };
 
 in

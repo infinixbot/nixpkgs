@@ -33,7 +33,9 @@ symlinkJoin rec {
     glib-networking
   ];
 
-  nativeBuildInputs = [ wrapGAppsHook3 ];
+  nativeBuildInputs = [
+    wrapGAppsHook3
+  ];
 
   runtimeDependencies = lib.optionalString stdenv.isLinux (
     lib.makeLibraryPath [

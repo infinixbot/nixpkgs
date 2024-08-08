@@ -38,7 +38,9 @@ stdenv.mkDerivation rec {
     wayland
   ];
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   meta = with lib; {
     description = "Bind gestures via libinput touch events";

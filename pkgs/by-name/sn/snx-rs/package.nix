@@ -31,7 +31,9 @@ rustPlatform.buildRustPackage {
     webkitgtk_4_1
   ];
 
-  checkFlags = [ "--skip=platform::linux::net::tests::test_default_ip" ];
+  checkFlags = [
+    "--skip=platform::linux::net::tests::test_default_ip"
+  ];
 
   cargoLock = {
     lockFile = ./Cargo.lock;

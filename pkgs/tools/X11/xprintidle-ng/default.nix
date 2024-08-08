@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
     sha256 = "0a5024vimpfrpj6w60j1ad8qvjkrmxiy8w1yijxfwk917ag9rkpq";
   };
 
-  patches = [ ./fix-config_h-includes-should-be-first.patch ];
+  patches = [
+    ./fix-config_h-includes-should-be-first.patch
+  ];
 
   postPatch = ''
     substituteInPlace configure.ac \

@@ -73,14 +73,18 @@ stdenv.mkDerivation (
         makeWrapper
         lua5_3
       ]
-      ++ lib.optionals enableManpages [ python3.pkgs.sphinx ]
+      ++ lib.optionals enableManpages [
+        python3.pkgs.sphinx
+      ]
       ++ lib.optionals (lib.versionOlder release_version "18" && enableManpages) [
         python3.pkgs.recommonmark
       ]
       ++ lib.optionals (lib.versionAtLeast release_version "18" && enableManpages) [
         python3.pkgs.myst-parser
       ]
-      ++ lib.optionals (lib.versionAtLeast release_version "14") [ ninja ];
+      ++ lib.optionals (lib.versionAtLeast release_version "14") [
+        ninja
+      ];
 
     buildInputs =
       [
@@ -135,7 +139,9 @@ stdenv.mkDerivation (
         "-DClang_DIR=${lib.getDev libclang}/lib/cmake"
         "-DLLVM_EXTERNAL_LIT=${lit}/bin/lit"
       ]
-      ++ lib.optionals stdenv.isDarwin [ "-DLLDB_USE_SYSTEM_DEBUGSERVER=ON" ]
+      ++ lib.optionals stdenv.isDarwin [
+        "-DLLDB_USE_SYSTEM_DEBUGSERVER=ON"
+      ]
       ++ lib.optionals (!stdenv.isDarwin) [
         "-DLLDB_CODESIGN_IDENTITY=" # codesigning makes nondeterministic
       ]

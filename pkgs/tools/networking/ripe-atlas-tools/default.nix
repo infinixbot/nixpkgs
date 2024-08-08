@@ -50,9 +50,13 @@ python3.pkgs.buildPythonApplication rec {
     installShellCompletion --cmd ripe-atlas --bash ./ripe-atlas-bash-completion.sh
   '';
 
-  pythonImportsCheck = [ "ripe.atlas.tools" ];
+  pythonImportsCheck = [
+    "ripe.atlas.tools"
+  ];
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
   disabledTests = [
     # Network tests: https://github.com/RIPE-NCC/ripe-atlas-tools/issues/234

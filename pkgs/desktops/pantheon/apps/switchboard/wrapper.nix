@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
 
   src = null;
 
-  paths = [ switchboard ] ++ selectedPlugs;
+  paths = [
+    switchboard
+  ] ++ selectedPlugs;
 
   passAsFile = [ "paths" ];
 

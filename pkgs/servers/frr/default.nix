@@ -121,12 +121,20 @@ lib.warnIf (!(stdenv.buildPlatform.canExecute stdenv.hostPlatform))
         rtrlib
         protobufc
       ]
-      ++ lib.optionals stdenv.isLinux [ libcap ]
-      ++ lib.optionals snmpSupport [ net-snmp ]
-      ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [ elfutils ];
+      ++ lib.optionals stdenv.isLinux [
+        libcap
+      ]
+      ++ lib.optionals snmpSupport [
+        net-snmp
+      ]
+      ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [
+        elfutils
+      ];
 
     # otherwise in cross-compilation: "configure: error: no working python version found"
-    depsBuildBuild = [ buildPackages.python3 ];
+    depsBuildBuild = [
+      buildPackages.python3
+    ];
 
     # cross-compiling: clippy is compiled with the build host toolchain, split it out to ease
     # navigation in dependency hell

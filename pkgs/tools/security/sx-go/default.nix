@@ -28,7 +28,9 @@ buildGoModule rec {
     })
   ];
 
-  buildInputs = [ libpcap ];
+  buildInputs = [
+    libpcap
+  ];
 
   postFixup = ''
     # Rename binary to avoid conflict with sx

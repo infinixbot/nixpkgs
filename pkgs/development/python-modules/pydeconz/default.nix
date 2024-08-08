@@ -32,7 +32,9 @@ buildPythonPackage rec {
       --replace-fail "wheel==" "wheel>="
   '';
 
-  build-system = [ setuptools ];
+  build-system = [
+    setuptools
+  ];
 
   dependencies = [
     aiohttp

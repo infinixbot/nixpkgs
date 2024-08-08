@@ -53,9 +53,13 @@ stdenv.mkDerivation (finalAttrs: {
     properties-cpp
   ];
 
-  checkInputs = [ gtest ];
+  checkInputs = [
+    gtest
+  ];
 
-  cmakeFlags = [ (lib.cmakeBool "BUILD_TESTING" finalAttrs.finalPackage.doCheck) ];
+  cmakeFlags = [
+    (lib.cmakeBool "BUILD_TESTING" finalAttrs.finalPackage.doCheck)
+  ];
 
   doCheck = stdenv.buildPlatform.canExecute stdenv.hostPlatform;
 

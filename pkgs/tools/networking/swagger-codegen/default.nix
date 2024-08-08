@@ -12,7 +12,9 @@ stdenv.mkDerivation rec {
 
   jarfilename = "${pname}-cli-${version}.jar";
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   src = fetchurl {
     url = "mirror://maven/io/swagger/${pname}-cli/${version}/${jarfilename}";

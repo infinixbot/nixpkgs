@@ -42,7 +42,9 @@ stdenv.mkDerivation (finalAttrs: {
     "-Wp,-D_FORTIFY_SOURCE=0"
   ];
 
-  installFlags = [ "PREFIX=${placeholder "out"}" ];
+  installFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   postInstall = ''
     install -Dm644 linux/zsnes.desktop $out/share/applications/zsnes.desktop

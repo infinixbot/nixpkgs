@@ -19,9 +19,13 @@ stdenv.mkDerivation rec {
   };
   sourceRoot = ".";
 
-  buildInputs = [ makeWrapper ];
+  buildInputs = [
+    makeWrapper
+  ];
 
-  nativeBuildInputs = [ nextflow ];
+  nativeBuildInputs = [
+    nextflow
+  ];
 
   installPhase = ''
     runHook preInstall

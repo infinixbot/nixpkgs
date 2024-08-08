@@ -78,7 +78,9 @@ let
       meta
       ;
 
-    nativeBuildInputs = [ autoPatchelfHook ];
+    nativeBuildInputs = [
+      autoPatchelfHook
+    ];
 
     buildInputs =
       [

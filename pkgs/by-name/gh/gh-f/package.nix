@@ -34,7 +34,9 @@ stdenvNoCC.mkDerivation rec {
     hash = "sha256-ITl8T8Oe21m047ygFlxWVjzUYPG4rlcTjfSpsropYJw=";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   installPhase = ''
     install -D -m755 "gh-f" "$out/bin/gh-f"

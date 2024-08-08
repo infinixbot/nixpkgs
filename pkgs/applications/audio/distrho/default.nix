@@ -16,7 +16,9 @@
 }:
 
 let
-  rpathLibs = [ fftwFloat ];
+  rpathLibs = [
+    fftwFloat
+  ];
 in
 stdenv.mkDerivation rec {
   pname = "distrho-ports";

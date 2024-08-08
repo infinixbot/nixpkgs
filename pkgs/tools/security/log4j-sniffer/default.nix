@@ -18,7 +18,9 @@ buildGoModule rec {
 
   vendorHash = null;
 
-  nativeCheckInputs = [ git ];
+  nativeCheckInputs = [
+    git
+  ];
 
   preCheck = ''
     export HOME=$(mktemp -d);

@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
     librsvg
   ];
 
-  mesonFlags = [ "-Dlayershell=enabled" ];
+  mesonFlags = [
+    "-Dlayershell=enabled"
+  ];
 
   # G_APPLICATION_FLAGS_NONE is deprecated in GLib 2.73.3+.
   env.NIX_CFLAGS_COMPILE = "-Wno-error=deprecated-declarations";

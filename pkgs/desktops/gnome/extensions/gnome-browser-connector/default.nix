@@ -30,9 +30,13 @@ buildPythonApplication rec {
     gobject-introspection # for setup-hook
   ];
 
-  buildInputs = [ gnome.gnome-shell ];
+  buildInputs = [
+    gnome.gnome-shell
+  ];
 
-  pythonPath = [ pygobject3 ];
+  pythonPath = [
+    pygobject3
+  ];
 
   postPatch = ''
     patchShebangs contrib/merge_json.py

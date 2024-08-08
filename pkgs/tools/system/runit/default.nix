@@ -17,7 +17,9 @@ stdenv.mkDerivation rec {
     sha256 = "065s8w62r6chjjs6m9hapcagy33m75nlnxb69vg0f4ngn061dl3g";
   };
 
-  patches = [ ./fix-ar-ranlib.patch ];
+  patches = [
+    ./fix-ar-ranlib.patch
+  ];
 
   outputs = [
     "out"

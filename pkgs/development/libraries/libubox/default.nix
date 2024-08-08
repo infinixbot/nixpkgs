@@ -42,7 +42,9 @@ stdenv.mkDerivation {
   '';
 
   env.NIX_CFLAGS_COMPILE = toString (
-    lib.optionals (stdenv.isDarwin && stdenv.isx86_64) [ "-Wno-error=gnu-folding-constant" ]
+    lib.optionals (stdenv.isDarwin && stdenv.isx86_64) [
+      "-Wno-error=gnu-folding-constant"
+    ]
   );
 
   meta = with lib; {

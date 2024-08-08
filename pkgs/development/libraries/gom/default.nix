@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
     sha256 = "17ca07hpg7dqxjn0jpqim3xqcmplk2a87wbwrrlq3dd3m8381l38";
   };
 
-  patches = [ ./longer-stress-timeout.patch ];
+  patches = [
+    ./longer-stress-timeout.patch
+  ];
 
   nativeBuildInputs = [
     gobject-introspection

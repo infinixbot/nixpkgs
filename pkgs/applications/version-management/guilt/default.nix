@@ -44,7 +44,9 @@ stdenv.mkDerivation rec {
     git
     gnused
   ] ++ lib.optionals stdenv.isDarwin [ openssl ];
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
 
   postBuild = ''
     make -j $NIX_BUILD_CORES doc

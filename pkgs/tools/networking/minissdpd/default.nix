@@ -15,7 +15,9 @@ stdenv.mkDerivation rec {
     name = "${pname}-${version}.tar.gz";
   };
 
-  patches = [ ./makefile-install-dir.patch ];
+  patches = [
+    ./makefile-install-dir.patch
+  ];
 
   buildInputs = [ libnfnetlink ];
 

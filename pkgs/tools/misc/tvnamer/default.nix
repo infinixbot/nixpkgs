@@ -17,7 +17,9 @@ let
           sha256 = "sha256-gTAjJpaGBF+OAeIonMHn6a5asi3dHihJqQk6s6tycOs=";
         };
 
-        nativeBuildInputs = with final; [ setuptools ];
+        nativeBuildInputs = with final; [
+          setuptools
+        ];
 
         # too many changes have been made to requests-cache based on version 0.6 so
         # simply disable tests

@@ -105,7 +105,9 @@ in
       before = [ "honk.service" ];
 
       serviceConfig = {
-        LoadCredential = [ "honk_passwordFile:${cfg.passwordFile}" ];
+        LoadCredential = [
+          "honk_passwordFile:${cfg.passwordFile}"
+        ];
         Type = "oneshot";
         StateDirectory = "honk";
         DynamicUser = true;

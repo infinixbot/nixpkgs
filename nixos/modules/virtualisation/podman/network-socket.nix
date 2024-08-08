@@ -11,7 +11,9 @@ let
 
 in
 {
-  imports = [ ./network-socket-ghostunnel.nix ];
+  imports = [
+    ./network-socket-ghostunnel.nix
+  ];
 
   options.virtualisation.podman.networkSocket = {
     enable = mkOption {

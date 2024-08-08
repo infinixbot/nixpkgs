@@ -99,9 +99,13 @@ stdenv.mkDerivation (finalAttrs: {
     gnome-autoar
   ];
 
-  propagatedBuildInputs = [ gtk4 ];
+  propagatedBuildInputs = [
+    gtk4
+  ];
 
-  mesonFlags = [ "-Ddocs=true" ];
+  mesonFlags = [
+    "-Ddocs=true"
+  ];
 
   preFixup = ''
     gappsWrapperArgs+=(

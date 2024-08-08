@@ -36,10 +36,17 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ autoreconfHook ];
 
-  makeFlags = [ "AR=${stdenv.cc.targetPrefix}ar" ];
+  makeFlags = [
+    "AR=${stdenv.cc.targetPrefix}ar"
+  ];
 
   env.NIX_CFLAGS_COMPILE = toString (
-    [ "-DSTDC_HEADERS" ] ++ lib.optionals stdenv.cc.isClang [ "-Wno-implicit-function-declaration" ]
+    [
+      "-DSTDC_HEADERS"
+    ]
+    ++ lib.optionals stdenv.cc.isClang [
+      "-Wno-implicit-function-declaration"
+    ]
   );
 
   # Library only statically links by default

@@ -361,7 +361,9 @@ in
     })
 
     (mkIf (cfg.carbon.enableCache || cfg.carbon.enableAggregator || cfg.carbon.enableRelay) {
-      environment.systemPackages = [ pkgs.python3Packages.carbon ];
+      environment.systemPackages = [
+        pkgs.python3Packages.carbon
+      ];
     })
 
     (mkIf cfg.web.enable ({
@@ -374,7 +376,9 @@ in
           PYTHONPATH =
             let
               penv = pkgs.python3.buildEnv.override {
-                extraLibs = [ pkgs.python3Packages.graphite-web ];
+                extraLibs = [
+                  pkgs.python3Packages.graphite-web
+                ];
               };
               penvPack = "${penv}/${pkgs.python3.sitePackages}";
             in

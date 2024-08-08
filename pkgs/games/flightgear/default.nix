@@ -100,7 +100,9 @@ stdenv.mkDerivation rec {
     curl
   ];
 
-  qtWrapperArgs = [ "--set FG_ROOT ${data}/share/FlightGear" ];
+  qtWrapperArgs = [
+    "--set FG_ROOT ${data}/share/FlightGear"
+  ];
 
   meta = with lib; {
     description = "Flight simulator";

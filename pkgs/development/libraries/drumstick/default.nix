@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-p0N8EeCtVEPCGzPwiRxPdI1XT5XQ5pcKYEDJXbYYTrM=";
   };
 
-  patches = [ ./drumstick-plugins.patch ];
+  patches = [
+    ./drumstick-plugins.patch
+  ];
 
   postPatch = ''
     substituteInPlace library/rt/backendmanager.cpp --subst-var out

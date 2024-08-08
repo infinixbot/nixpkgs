@@ -130,7 +130,9 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs =
-    [ makeWrapper ]
+    [
+      makeWrapper
+    ]
     ++ lib.optionals stdenv.isDarwin [
       xar
       cpio

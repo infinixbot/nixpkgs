@@ -74,7 +74,9 @@ stdenvNoCC.mkDerivation {
     vulkan-loader
   ];
 
-  binPath = lib.makeBinPath [ zenity ];
+  binPath = lib.makeBinPath [
+    zenity
+  ];
 
   prepareParsec = ''
     if [[ ! -e "$HOME/.parsec/appdata.json" ]]; then

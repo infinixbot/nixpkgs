@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-5IHJXlpHZJFKj7rdmRsWA5FXZFJf3usGsLgXx1cYEmU=";
   };
 
-  build-system = with python3.pkgs; [ flit-core ];
+  build-system = with python3.pkgs; [
+    flit-core
+  ];
 
   pythonRelaxDeps = true;
 
@@ -38,7 +40,9 @@ python3.pkgs.buildPythonApplication rec {
   # Project has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "trueseeing" ];
+  pythonImportsCheck = [
+    "trueseeing"
+  ];
 
   meta = with lib; {
     description = "Non-decompiling Android vulnerability scanner";

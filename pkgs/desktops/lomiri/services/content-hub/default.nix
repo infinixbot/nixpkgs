@@ -131,7 +131,9 @@ stdenv.mkDerivation (finalAttrs: {
     xvfb-run
   ];
 
-  checkInputs = [ gtest ];
+  checkInputs = [
+    gtest
+  ];
 
   dontWrapQtApps = true;
 

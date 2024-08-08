@@ -54,7 +54,11 @@ let
     hash = "sha256-wyrVoaDdCkSe5z6C7EAw04G87s6tQ1cfc2d6ygGU0DM=";
   };
 
-  anki-build-python = python3.withPackages (ps: with ps; [ mypy-protobuf ]);
+  anki-build-python = python3.withPackages (
+    ps: with ps; [
+      mypy-protobuf
+    ]
+  );
 
   # anki shells out to git to check its revision, and also to update submodules
   # We don't actually need the submodules, so we stub that out

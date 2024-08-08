@@ -42,7 +42,9 @@ stdenv.mkDerivation rec {
   ];
 
   env.NIX_CFLAGS_COMPILE = toString (
-    lib.optionals stdenv.cc.isClang [ "-Wno-error=implicit-function-declaration" ]
+    lib.optionals stdenv.cc.isClang [
+      "-Wno-error=implicit-function-declaration"
+    ]
   );
 
   postInstall = ''

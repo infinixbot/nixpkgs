@@ -40,16 +40,22 @@ stdenv.mkDerivation rec {
     hash = "sha256-t0RchAHTJbuI5YW4uyBPykTvcjy90JW9AOPNjIhwh6U=";
   };
 
-  patches = [ ./fix-cmake-config-includedir.patch ];
+  patches = [
+    ./fix-cmake-config-includedir.patch
+  ];
 
   nativeBuildInputs = [
     cmake
     ninja
   ];
 
-  cmakeFlags = [
-    "-DBUILD_SHARED_LIBS=${if static then "OFF" else "ON"}"
-  ] ++ lib.optionals (cxx_standard != null) [ "-DCMAKE_CXX_STANDARD=${cxx_standard}" ];
+  cmakeFlags =
+    [
+      "-DBUILD_SHARED_LIBS=${if static then "OFF" else "ON"}"
+    ]
+    ++ lib.optionals (cxx_standard != null) [
+      "-DCMAKE_CXX_STANDARD=${cxx_standard}"
+    ];
 
   meta = with lib; {
     description = "Google's framework for writing C++ tests";

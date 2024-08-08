@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-HIYUMFj5yiEC+liZLMXD9otPyoEb1sxHlECTYtYXc2I=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     expat
@@ -36,7 +38,9 @@ stdenv.mkDerivation rec {
     zlib
   ];
 
-  makeFlags = [ "prefix=$(out)" ];
+  makeFlags = [
+    "prefix=$(out)"
+  ];
 
   meta = with lib; {
     description = "Component library used by the fre:ac audio converter";

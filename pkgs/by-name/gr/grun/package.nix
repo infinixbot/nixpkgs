@@ -18,14 +18,18 @@ stdenv.mkDerivation {
     hash = "sha256-VbvX0wrgMIPmPnu3aQdtQ6H0X3umi8aJ42QvmmeMrJ0=";
   };
 
-  buildInputs = [ gtk2 ];
+  buildInputs = [
+    gtk2
+  ];
 
   nativeBuildInputs = [
     pkg-config
     autoreconfHook
   ];
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   meta = {
     description = "Application launcher written in C and using GTK for the interface";

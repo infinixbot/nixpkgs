@@ -80,9 +80,16 @@ stdenv.mkDerivation (self: {
   };
 
   nativeBuildInputs =
-    [ texinfo ]
+    [
+      texinfo
+    ]
     ++ lib.optionals self.doCheck (
-      [ which ] ++ lib.optionals (builtins.elem stdenv.system strace.meta.platforms) [ strace ]
+      [
+        which
+      ]
+      ++ lib.optionals (builtins.elem stdenv.system strace.meta.platforms) [
+        strace
+      ]
     );
   buildInputs = lib.optionals self.coreCompression (
     # Declare at the point of actual use in case the caller wants to override
@@ -203,7 +210,9 @@ stdenv.mkDerivation (self: {
     ]
     ++ builtins.map (x: "--with-${x}") self.enableFeatures
     ++ builtins.map (x: "--without-${x}") self.disableFeatures
-    ++ lib.optionals (stdenv.hostPlatform.system == "aarch64-darwin") [ "--arch=arm64" ];
+    ++ lib.optionals (stdenv.hostPlatform.system == "aarch64-darwin") [
+      "--arch=arm64"
+    ];
 
   # Fails to find `O_LARGEFILE` otherwise.
   env.NIX_CFLAGS_COMPILE = "-D_GNU_SOURCE";

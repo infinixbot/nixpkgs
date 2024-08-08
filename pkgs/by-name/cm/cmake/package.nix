@@ -99,7 +99,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs =
     finalAttrs.setupHooks
-    ++ [ pkg-config ]
+    ++ [
+      pkg-config
+    ]
     ++ lib.optionals buildDocs [ texinfo ]
     ++ lib.optionals qt5UI [ wrapQtAppsHook ];
 
@@ -148,7 +150,9 @@ stdenv.mkDerivation (finalAttrs: {
           "--system-libs"
         ]
       else
-        [ "--no-system-libs" ]
+        [
+          "--no-system-libs"
+        ]
     ) # FIXME: cleanup
     ++ lib.optional qt5UI "--qt-gui"
     ++ lib.optionals buildDocs [

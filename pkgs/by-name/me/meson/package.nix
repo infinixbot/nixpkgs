@@ -91,7 +91,9 @@ python3.pkgs.buildPythonApplication rec {
     })
   ];
 
-  buildInputs = lib.optionals (python3.pythonOlder "3.9") [ libxcrypt ];
+  buildInputs = lib.optionals (python3.pythonOlder "3.9") [
+    libxcrypt
+  ];
 
   nativeBuildInputs = [ installShellFiles ];
 
@@ -101,7 +103,9 @@ python3.pkgs.buildPythonApplication rec {
   ];
 
   checkInputs =
-    [ zlib ]
+    [
+      zlib
+    ]
     ++ lib.optionals stdenv.isDarwin [
       AppKit
       Cocoa

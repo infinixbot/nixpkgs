@@ -25,13 +25,17 @@ buildGoModule rec {
 
   vendorHash = null;
 
-  patches = [ ./000-add-nixos-dirs-to-default-wallpapers.patch ];
+  patches = [
+    ./000-add-nixos-dirs-to-default-wallpapers.patch
+  ];
 
   excludedPackages = [
     "./pkg/event/cmd" # Development tools
   ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     libX11

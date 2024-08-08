@@ -22,10 +22,16 @@ stdenv.mkDerivation rec {
     hash = "sha256-h3Stt1n1057ASf3n16plr5cNGIKOjHiiuOfqrcCJ5tA=";
   };
 
-  nativeBuildInputs = [ build2 ];
-  buildInputs = [ libbutl ];
+  nativeBuildInputs = [
+    build2
+  ];
+  buildInputs = [
+    libbutl
+  ];
 
-  build2ConfigureFlags = [ "config.bin.lib=${build2.configSharedStatic enableShared enableStatic}" ];
+  build2ConfigureFlags = [
+    "config.bin.lib=${build2.configSharedStatic enableShared enableStatic}"
+  ];
 
   strictDeps = true;
 

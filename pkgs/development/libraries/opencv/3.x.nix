@@ -203,7 +203,9 @@ stdenv.mkDerivation {
   '';
 
   # Ensures that we use the system OpenEXR rather than the vendored copy of the source included with OpenCV.
-  patches = [ ./cmake-don-t-use-OpenCVFindOpenEXR.patch ];
+  patches = [
+    ./cmake-don-t-use-OpenCVFindOpenEXR.patch
+  ];
 
   # This prevents cmake from using libraries in impure paths (which
   # causes build failure on non NixOS)
@@ -340,7 +342,9 @@ stdenv.mkDerivation {
       "-DBUILD_PNG=OFF"
       "-DBUILD_WEBP=OFF"
     ]
-    ++ lib.optionals enablePython [ "-DOPENCV_SKIP_PYTHON_LOADER=ON" ]
+    ++ lib.optionals enablePython [
+      "-DOPENCV_SKIP_PYTHON_LOADER=ON"
+    ]
     ++ lib.optionals enableEigen [
       # Autodetection broken by https://github.com/opencv/opencv/pull/13337
       "-DEIGEN_INCLUDE_PATH=${eigen}/include/eigen3"

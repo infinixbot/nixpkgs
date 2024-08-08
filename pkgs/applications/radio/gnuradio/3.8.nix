@@ -71,7 +71,9 @@ let
     };
     volk = {
       cmakeEnableFlag = "VOLK";
-      runtime = [ volk ];
+      runtime = [
+        volk
+      ];
     };
     doxygen = {
       native = [ doxygen ];
@@ -98,8 +100,12 @@ let
     };
     gr-ctrlport = {
       cmakeEnableFlag = "GR_CTRLPORT";
-      native = [ swig ];
-      runtime = [ thrift ];
+      native = [
+        swig
+      ];
+      runtime = [
+        thrift
+      ];
       pythonRuntime = [
         python.pkgs.thrift
         # For gr-perf-monitorx
@@ -303,7 +309,9 @@ stdenv.mkDerivation (
           "-DLIBGSM_LIBRARIES=${gsm}/lib/libgsm${stdenv.hostPlatform.extensions.sharedLibrary}"
           "-DLIBGSM_INCLUDE_DIRS=${gsm}/include/gsm"
         ]
-        ++ lib.optionals (hasFeature "volk" && volk != null) [ "-DENABLE_INTERNAL_VOLK=OFF" ];
+        ++ lib.optionals (hasFeature "volk" && volk != null) [
+          "-DENABLE_INTERNAL_VOLK=OFF"
+        ];
 
       postInstall =
         shared.postInstall

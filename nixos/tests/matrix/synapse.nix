@@ -35,11 +35,15 @@ import ../make-test-python.nix (
         x_forwarded = false;
         resources = [
           {
-            names = [ "client" ];
+            names = [
+              "client"
+            ];
             compress = true;
           }
           {
-            names = [ "federation" ];
+            names = [
+              "federation"
+            ];
             compress = false;
           }
         ];
@@ -171,7 +175,9 @@ import ../make-test-python.nix (
         let
         in
         {
-          security.pki.certificateFiles = [ mailerCerts.ca.cert ];
+          security.pki.certificateFiles = [
+            mailerCerts.ca.cert
+          ];
 
           networking.firewall.enable = false;
 

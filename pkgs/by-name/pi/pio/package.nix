@@ -19,7 +19,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-jVOpk+Z3yEEoDexvxT9I0aVHJKVq47y8km/9ltoqrDA=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Accelerate ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.Accelerate
+  ];
 
   meta = with lib; {
     description = "Utility to compress image files while maintaining quality";

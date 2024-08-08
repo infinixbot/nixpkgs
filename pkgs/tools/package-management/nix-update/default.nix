@@ -20,7 +20,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-gldeiq/R7EIvMZ3tkedSSumBour47LFrwDEiNS9tSSA=";
   };
 
-  nativeBuildInputs = [ python3.pkgs.setuptools ];
+  nativeBuildInputs = [
+    python3.pkgs.setuptools
+  ];
 
   makeWrapperArgs = [
     "--prefix"

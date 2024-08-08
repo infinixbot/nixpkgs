@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-Rz8O1Tf81kzpTGPq7dkZJvv444F1/VqKu7VuRvH59kQ=";
   };
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   buildInputs = [
     glpk

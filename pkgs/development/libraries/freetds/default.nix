@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-qafyTwp6hxYX526MxuZVaueIBC8cAGGVZlUFSZsjNLE=";
   };
 
-  buildInputs = [ openssl ] ++ lib.optional odbcSupport unixODBC;
+  buildInputs = [
+    openssl
+  ] ++ lib.optional odbcSupport unixODBC;
 
   nativeBuildInputs = [
     autoreconfHook

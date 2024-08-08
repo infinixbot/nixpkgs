@@ -23,7 +23,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-XFVh7e9ooIBhWRkVovPdrSuyosBMQ84PDRjV2o0x9ns=";
   };
 
-  build-system = with python3.pkgs; [ setuptools ];
+  build-system = with python3.pkgs; [
+    setuptools
+  ];
 
   pythonRelaxDeps = [
     "aws-lambda-builders"
@@ -134,7 +136,9 @@ python3.pkgs.buildPythonApplication rec {
     "test_request_with_no_data"
   ];
 
-  pythonImportsCheck = [ "samcli" ];
+  pythonImportsCheck = [
+    "samcli"
+  ];
 
   passthru = {
     tests.version = testers.testVersion {

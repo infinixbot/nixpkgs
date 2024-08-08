@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-icvGQi6FNSZXNGs2oLiUKu6rrVsWcXh1r91kycGjnwY=";
   };
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   meta = with lib; {
     description = "Public domain cross-platform semantic versioning in c99";

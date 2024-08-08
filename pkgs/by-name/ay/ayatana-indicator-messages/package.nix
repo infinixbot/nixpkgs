@@ -35,10 +35,14 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-D1181eD2mAVXEa7RLXXC4b2tVGrxbh0WWgtbC1anHH0=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optionals withDocumentation [ "devdoc" ];
+  outputs =
+    [
+      "out"
+      "dev"
+    ]
+    ++ lib.optionals withDocumentation [
+      "devdoc"
+    ];
 
   postPatch =
     ''
@@ -138,7 +142,9 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   passthru = {
-    ayatana-indicators = [ "ayatana-indicator-messages" ];
+    ayatana-indicators = [
+      "ayatana-indicator-messages"
+    ];
     tests = {
       pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
       vm = nixosTests.ayatana-indicators;
@@ -156,6 +162,8 @@ stdenv.mkDerivation (finalAttrs: {
     license = licenses.gpl3Only;
     platforms = platforms.linux;
     maintainers = with maintainers; [ OPNA2608 ];
-    pkgConfigModules = [ "messaging-menu" ];
+    pkgConfigModules = [
+      "messaging-menu"
+    ];
   };
 })

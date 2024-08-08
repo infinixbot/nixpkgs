@@ -56,7 +56,9 @@ import ../make-test-python.nix (
             tls.cacert = "/root/ca.pem";
           };
 
-          environment.systemPackages = [ pkgs.docker-client ];
+          environment.systemPackages = [
+            pkgs.docker-client
+          ];
 
           users.users.alice = {
             isNormalUser = true;

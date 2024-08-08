@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-kATieFf+dEpcYgSEPoETacP7R+u2dOrg7rOhIkNQ1uE=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = [
     cli11

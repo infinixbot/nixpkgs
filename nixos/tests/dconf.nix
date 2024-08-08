@@ -3,7 +3,9 @@ import ./make-test-python.nix (
   {
     name = "dconf";
 
-    meta.maintainers = with lib.maintainers; [ linsui ];
+    meta.maintainers = with lib.maintainers; [
+      linsui
+    ];
 
     nodes.machine =
       {
@@ -24,7 +26,9 @@ import ./make-test-python.nix (
                 "test/not".locked = mkInt32 1;
                 "test/is".locked = "locked";
               };
-              locks = [ "/test/is/locked" ];
+              locks = [
+                "/test/is/locked"
+              ];
             }
           ];
         };

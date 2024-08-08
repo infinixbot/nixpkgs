@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-HOipeUV9daPSsJ+SHPlsyEAg2SwKQkZBm1JUoNtDZAY=";
   };
 
-  buildInputs = [ glib ];
+  buildInputs = [
+    glib
+  ];
 
   nativeBuildInputs = [
     meson

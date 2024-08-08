@@ -14,12 +14,16 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-expPuffZttyXNRreplPC5Ee/jfWAyOnmjTIMXONtrnw=";
   };
 
-  propagatedBuildInputs = with python3.pkgs; [ click ];
+  propagatedBuildInputs = with python3.pkgs; [
+    click
+  ];
 
   # upstream has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "zsh_history_to_fish" ];
+  pythonImportsCheck = [
+    "zsh_history_to_fish"
+  ];
 
   meta = with lib; {
     description = "Bring your ZSH history to Fish shell";

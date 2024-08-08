@@ -20,7 +20,9 @@
 
 let
   libsolv' = libsolv.overrideAttrs (oldAttrs: {
-    cmakeFlags = oldAttrs.cmakeFlags ++ [ "-DENABLE_CONDA=true" ];
+    cmakeFlags = oldAttrs.cmakeFlags ++ [
+      "-DENABLE_CONDA=true"
+    ];
 
     patches = [
       # Apply the same patch as in the "official" boa-forge build:

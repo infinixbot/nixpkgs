@@ -16,7 +16,9 @@ mkDerivation rec {
     sha256 = "sha256-ZQIUAi/YC+zsYHVhlprZ5K6NGvT6LojmdQ1Z+WCg1lU=";
   };
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
 
   dontUseQmakeConfigure = true;
 

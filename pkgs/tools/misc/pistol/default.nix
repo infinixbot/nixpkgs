@@ -24,7 +24,9 @@ buildGoModule rec {
 
   subPackages = [ "cmd/pistol" ];
 
-  buildInputs = [ file ];
+  buildInputs = [
+    file
+  ];
   nativeBuildInputs = [
     installShellFiles
     asciidoctor

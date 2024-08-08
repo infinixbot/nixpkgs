@@ -65,7 +65,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  autoPatchelfIgnoreMissingDeps = [ "libpcap.so.0.8" ];
+  autoPatchelfIgnoreMissingDeps = [
+    "libpcap.so.0.8"
+  ];
 
   installPhase = ''
     runHook preInstall

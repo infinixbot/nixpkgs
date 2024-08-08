@@ -22,7 +22,9 @@ python3Packages.buildPythonApplication rec {
       --replace "nc" "${lib.getExe netcat-openbsd}"
   '';
 
-  nativeBuildInputs = with python3Packages; [ setuptools ];
+  nativeBuildInputs = with python3Packages; [
+    setuptools
+  ];
 
   pythonRelaxDeps = [
     "pyyaml"

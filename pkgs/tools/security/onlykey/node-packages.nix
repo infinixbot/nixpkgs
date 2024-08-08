@@ -5766,7 +5766,9 @@ in
       (
         sources."@gulp-sourcemaps/map-sources-1.0.0"
         // {
-          dependencies = [ sources."normalize-path-2.1.1" ];
+          dependencies = [
+            sources."normalize-path-2.1.1"
+          ];
         }
       )
       sources."@humanwhocodes/config-array-0.11.10"
@@ -5787,7 +5789,9 @@ in
       (
         sources."anymatch-2.0.0"
         // {
-          dependencies = [ sources."normalize-path-2.1.1" ];
+          dependencies = [
+            sources."normalize-path-2.1.1"
+          ];
         }
       )
       sources."append-buffer-1.0.2"
@@ -5803,20 +5807,26 @@ in
       (
         sources."array-initial-1.1.0"
         // {
-          dependencies = [ sources."is-number-4.0.0" ];
+          dependencies = [
+            sources."is-number-4.0.0"
+          ];
         }
       )
       (
         sources."array-last-1.3.0"
         // {
-          dependencies = [ sources."is-number-4.0.0" ];
+          dependencies = [
+            sources."is-number-4.0.0"
+          ];
         }
       )
       sources."array-slice-1.1.0"
       (
         sources."array-sort-1.0.0"
         // {
-          dependencies = [ sources."kind-of-5.1.0" ];
+          dependencies = [
+            sources."kind-of-5.1.0"
+          ];
         }
       )
       sources."array-unique-0.3.2"
@@ -5837,7 +5847,9 @@ in
       (
         sources."base-0.11.2"
         // {
-          dependencies = [ sources."define-property-1.0.0" ];
+          dependencies = [
+            sources."define-property-1.0.0"
+          ];
         }
       )
       sources."base64-js-1.5.1"
@@ -5850,7 +5862,9 @@ in
       (
         sources."braces-2.3.2"
         // {
-          dependencies = [ sources."extend-shallow-2.0.1" ];
+          dependencies = [
+            sources."extend-shallow-2.0.1"
+          ];
         }
       )
       sources."browser-stdout-1.3.1"
@@ -5882,7 +5896,9 @@ in
             (
               sources."glob-parent-3.1.0"
               // {
-                dependencies = [ sources."is-glob-3.1.0" ];
+                dependencies = [
+                  sources."is-glob-3.1.0"
+                ];
               }
             )
           ];
@@ -5896,13 +5912,17 @@ in
             (
               sources."is-accessor-descriptor-0.1.6"
               // {
-                dependencies = [ sources."kind-of-3.2.2" ];
+                dependencies = [
+                  sources."kind-of-3.2.2"
+                ];
               }
             )
             (
               sources."is-data-descriptor-0.1.4"
               // {
-                dependencies = [ sources."kind-of-3.2.2" ];
+                dependencies = [
+                  sources."kind-of-3.2.2"
+                ];
               }
             )
             sources."is-descriptor-0.1.6"
@@ -5932,7 +5952,9 @@ in
       (
         sources."copy-props-2.0.5"
         // {
-          dependencies = [ sources."is-plain-object-5.0.0" ];
+          dependencies = [
+            sources."is-plain-object-5.0.0"
+          ];
         }
       )
       sources."core-util-is-1.0.3"
@@ -5954,7 +5976,9 @@ in
       (
         sources."debug-fabulous-1.1.0"
         // {
-          dependencies = [ sources."debug-3.2.7" ];
+          dependencies = [
+            sources."debug-3.2.7"
+          ];
         }
       )
       sources."decamelize-1.2.0"
@@ -5964,14 +5988,18 @@ in
       (
         sources."decompress-tarbz2-4.1.1"
         // {
-          dependencies = [ sources."file-type-6.2.0" ];
+          dependencies = [
+            sources."file-type-6.2.0"
+          ];
         }
       )
       sources."decompress-targz-4.1.1"
       (
         sources."decompress-unzip-4.0.1"
         // {
-          dependencies = [ sources."file-type-3.9.0" ];
+          dependencies = [
+            sources."file-type-3.9.0"
+          ];
         }
       )
       (
@@ -5989,7 +6017,9 @@ in
       (
         sources."default-compare-1.0.0"
         // {
-          dependencies = [ sources."kind-of-5.1.0" ];
+          dependencies = [
+            sources."kind-of-5.1.0"
+          ];
         }
       )
       sources."default-resolution-2.0.0"
@@ -6003,7 +6033,9 @@ in
       (
         sources."download-5.0.3"
         // {
-          dependencies = [ sources."get-stream-3.0.0" ];
+          dependencies = [
+            sources."get-stream-3.0.0"
+          ];
         }
       )
       sources."duplexer3-0.1.5"
@@ -6050,13 +6082,17 @@ in
             (
               sources."is-accessor-descriptor-0.1.6"
               // {
-                dependencies = [ sources."kind-of-3.2.2" ];
+                dependencies = [
+                  sources."kind-of-3.2.2"
+                ];
               }
             )
             (
               sources."is-data-descriptor-0.1.4"
               // {
-                dependencies = [ sources."kind-of-3.2.2" ];
+                dependencies = [
+                  sources."kind-of-3.2.2"
+                ];
               }
             )
             sources."is-descriptor-0.1.6"
@@ -6080,14 +6116,18 @@ in
       (
         sources."ext-1.7.0"
         // {
-          dependencies = [ sources."type-2.7.2" ];
+          dependencies = [
+            sources."type-2.7.2"
+          ];
         }
       )
       sources."extend-3.0.2"
       (
         sources."extend-shallow-3.0.2"
         // {
-          dependencies = [ sources."is-extendable-1.0.1" ];
+          dependencies = [
+            sources."is-extendable-1.0.1"
+          ];
         }
       )
       (
@@ -6116,7 +6156,9 @@ in
       (
         sources."fill-range-4.0.0"
         // {
-          dependencies = [ sources."extend-shallow-2.0.1" ];
+          dependencies = [
+            sources."extend-shallow-2.0.1"
+          ];
         }
       )
       sources."find-up-5.0.0"
@@ -6127,7 +6169,9 @@ in
       (
         sources."flat-cache-3.0.4"
         // {
-          dependencies = [ sources."rimraf-3.0.2" ];
+          dependencies = [
+            sources."rimraf-3.0.2"
+          ];
         }
       )
       sources."flatted-3.2.7"
@@ -6185,7 +6229,9 @@ in
       (
         sources."global-prefix-1.0.2"
         // {
-          dependencies = [ sources."which-1.3.1" ];
+          dependencies = [
+            sources."which-1.3.1"
+          ];
         }
       )
       sources."globals-13.20.0"
@@ -6193,7 +6239,9 @@ in
       (
         sources."got-6.7.1"
         // {
-          dependencies = [ sources."get-stream-3.0.0" ];
+          dependencies = [
+            sources."get-stream-3.0.0"
+          ];
         }
       )
       sources."graceful-fs-4.2.11"
@@ -6232,7 +6280,9 @@ in
       (
         sources."has-values-1.0.0"
         // {
-          dependencies = [ sources."kind-of-4.0.0" ];
+          dependencies = [
+            sources."kind-of-4.0.0"
+          ];
         }
       )
       sources."he-1.2.0"
@@ -6268,7 +6318,9 @@ in
       (
         sources."is-number-3.0.0"
         // {
-          dependencies = [ sources."kind-of-3.2.2" ];
+          dependencies = [
+            sources."kind-of-3.2.2"
+          ];
         }
       )
       sources."is-object-1.0.2"
@@ -6332,7 +6384,9 @@ in
       (
         sources."make-dir-1.3.0"
         // {
-          dependencies = [ sources."pify-3.0.0" ];
+          dependencies = [
+            sources."pify-3.0.0"
+          ];
         }
       )
       sources."make-iterator-1.0.1"
@@ -6358,7 +6412,9 @@ in
       (
         sources."mixin-deep-1.3.2"
         // {
-          dependencies = [ sources."is-extendable-1.0.1" ];
+          dependencies = [
+            sources."is-extendable-1.0.1"
+          ];
         }
       )
       sources."mkdirp-0.5.6"
@@ -6383,7 +6439,9 @@ in
             (
               sources."glob-7.2.0"
               // {
-                dependencies = [ sources."minimatch-3.1.2" ];
+                dependencies = [
+                  sources."minimatch-3.1.2"
+                ];
               }
             )
             sources."glob-parent-5.1.2"
@@ -6419,14 +6477,18 @@ in
       (
         sources."npm-conf-1.1.3"
         // {
-          dependencies = [ sources."pify-3.0.0" ];
+          dependencies = [
+            sources."pify-3.0.0"
+          ];
         }
       )
       sources."number-is-nan-1.0.1"
       (
         sources."nw-0.71.1"
         // {
-          dependencies = [ sources."yargs-3.32.0" ];
+          dependencies = [
+            sources."yargs-3.32.0"
+          ];
         }
       )
       sources."nw-autoupdater-1.1.11"
@@ -6462,7 +6524,9 @@ in
             (
               sources."is-descriptor-0.1.6"
               // {
-                dependencies = [ sources."kind-of-5.1.0" ];
+                dependencies = [
+                  sources."kind-of-5.1.0"
+                ];
               }
             )
             sources."kind-of-3.2.2"
@@ -6477,7 +6541,9 @@ in
       (
         sources."object.omit-2.0.1"
         // {
-          dependencies = [ sources."for-own-0.1.5" ];
+          dependencies = [
+            sources."for-own-0.1.5"
+          ];
         }
       )
       sources."object.pick-1.3.0"
@@ -6524,7 +6590,9 @@ in
       (
         sources."postcss-7.0.39"
         // {
-          dependencies = [ sources."source-map-0.6.1" ];
+          dependencies = [
+            sources."source-map-0.6.1"
+          ];
         }
       )
       sources."prelude-ls-1.2.1"
@@ -6544,7 +6612,9 @@ in
       (
         sources."randomatic-3.1.1"
         // {
-          dependencies = [ sources."is-number-4.0.0" ];
+          dependencies = [
+            sources."is-number-4.0.0"
+          ];
         }
       )
       sources."randombytes-2.1.0"
@@ -6561,7 +6631,9 @@ in
       (
         sources."readable-stream-2.3.8"
         // {
-          dependencies = [ sources."safe-buffer-5.1.2" ];
+          dependencies = [
+            sources."safe-buffer-5.1.2"
+          ];
         }
       )
       sources."readdirp-2.2.1"
@@ -6599,7 +6671,9 @@ in
       (
         sources."set-value-2.0.1"
         // {
-          dependencies = [ sources."extend-shallow-2.0.1" ];
+          dependencies = [
+            sources."extend-shallow-2.0.1"
+          ];
         }
       )
       sources."setimmediate-1.0.5"
@@ -6615,13 +6689,17 @@ in
             (
               sources."is-accessor-descriptor-0.1.6"
               // {
-                dependencies = [ sources."kind-of-3.2.2" ];
+                dependencies = [
+                  sources."kind-of-3.2.2"
+                ];
               }
             )
             (
               sources."is-data-descriptor-0.1.4"
               // {
-                dependencies = [ sources."kind-of-3.2.2" ];
+                dependencies = [
+                  sources."kind-of-3.2.2"
+                ];
               }
             )
             sources."is-descriptor-0.1.6"
@@ -6633,13 +6711,17 @@ in
       (
         sources."snapdragon-node-2.1.1"
         // {
-          dependencies = [ sources."define-property-1.0.0" ];
+          dependencies = [
+            sources."define-property-1.0.0"
+          ];
         }
       )
       (
         sources."snapdragon-util-3.0.1"
         // {
-          dependencies = [ sources."kind-of-3.2.2" ];
+          dependencies = [
+            sources."kind-of-3.2.2"
+          ];
         }
       )
       sources."source-map-0.5.7"
@@ -6661,13 +6743,17 @@ in
             (
               sources."is-accessor-descriptor-0.1.6"
               // {
-                dependencies = [ sources."kind-of-3.2.2" ];
+                dependencies = [
+                  sources."kind-of-3.2.2"
+                ];
               }
             )
             (
               sources."is-data-descriptor-0.1.4"
               // {
-                dependencies = [ sources."kind-of-3.2.2" ];
+                dependencies = [
+                  sources."kind-of-3.2.2"
+                ];
               }
             )
             sources."is-descriptor-0.1.6"
@@ -6681,7 +6767,9 @@ in
       (
         sources."string_decoder-1.1.1"
         // {
-          dependencies = [ sources."safe-buffer-5.1.2" ];
+          dependencies = [
+            sources."safe-buffer-5.1.2"
+          ];
         }
       )
       sources."strip-ansi-3.0.1"
@@ -6704,7 +6792,9 @@ in
       (
         sources."tmp-0.2.1"
         // {
-          dependencies = [ sources."rimraf-3.0.2" ];
+          dependencies = [
+            sources."rimraf-3.0.2"
+          ];
         }
       )
       sources."to-absolute-glob-2.0.2"
@@ -6712,7 +6802,9 @@ in
       (
         sources."to-object-path-0.3.0"
         // {
-          dependencies = [ sources."kind-of-3.2.2" ];
+          dependencies = [
+            sources."kind-of-3.2.2"
+          ];
         }
       )
       sources."to-regex-3.0.2"
@@ -6721,7 +6813,9 @@ in
       (
         sources."touch-0.0.3"
         // {
-          dependencies = [ sources."nopt-1.0.10" ];
+          dependencies = [
+            sources."nopt-1.0.10"
+          ];
         }
       )
       sources."tough-cookie-2.5.0"
@@ -6740,7 +6834,9 @@ in
       (
         sources."undertaker-1.3.0"
         // {
-          dependencies = [ sources."fast-levenshtein-1.1.4" ];
+          dependencies = [
+            sources."fast-levenshtein-1.1.4"
+          ];
         }
       )
       sources."undertaker-registry-1.0.1"
@@ -6754,7 +6850,9 @@ in
             (
               sources."has-value-0.3.1"
               // {
-                dependencies = [ sources."isobject-2.1.0" ];
+                dependencies = [
+                  sources."isobject-2.1.0"
+                ];
               }
             )
             sources."has-values-0.1.4"
@@ -6778,7 +6876,9 @@ in
       (
         sources."verror-1.10.0"
         // {
-          dependencies = [ sources."core-util-is-1.0.2" ];
+          dependencies = [
+            sources."core-util-is-1.0.2"
+          ];
         }
       )
       sources."vinyl-2.2.1"
@@ -6786,7 +6886,9 @@ in
       (
         sources."vinyl-sourcemap-1.1.0"
         // {
-          dependencies = [ sources."normalize-path-2.1.1" ];
+          dependencies = [
+            sources."normalize-path-2.1.1"
+          ];
         }
       )
       sources."which-2.0.2"
@@ -6820,7 +6922,9 @@ in
       (
         sources."yargs-parser-5.0.1"
         // {
-          dependencies = [ sources."camelcase-3.0.0" ];
+          dependencies = [
+            sources."camelcase-3.0.0"
+          ];
         }
       )
       (

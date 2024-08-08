@@ -24,7 +24,9 @@ buildGoModule rec {
     "-w"
   ];
 
-  buildInputs = [ libfido2 ];
+  buildInputs = [
+    libfido2
+  ];
 
   meta = with lib; {
     description = "Age plugin to encrypt files with fido2 tokens using the hmac-secret extension and non-discoverable credentials";

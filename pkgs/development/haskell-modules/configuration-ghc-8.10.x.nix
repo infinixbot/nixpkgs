@@ -141,7 +141,9 @@ self: super: {
 
   # Temporarily disabled blaze-textual for GHC >= 9.0 causing hackage2nix ignoring it
   # https://github.com/paul-rouse/mysql-simple/blob/872604f87044ff6d1a240d9819a16c2bdf4ed8f5/Database/MySQL/Internal/Blaze.hs#L4-L10
-  mysql-simple = addBuildDepends [ self.blaze-textual ] super.mysql-simple;
+  mysql-simple = addBuildDepends [
+    self.blaze-textual
+  ] super.mysql-simple;
 
   taffybar = markUnbroken (doDistribute super.taffybar);
 

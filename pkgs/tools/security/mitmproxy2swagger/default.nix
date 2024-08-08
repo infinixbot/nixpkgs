@@ -16,9 +16,13 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-VHxqxee5sQWRS13V4SfY4LWaN0oxxWsNVDOEqUyKHfg=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ poetry-core ];
+  nativeBuildInputs = with python3.pkgs; [
+    poetry-core
+  ];
 
-  pythonRelaxDeps = [ "ruamel.yaml" ];
+  pythonRelaxDeps = [
+    "ruamel.yaml"
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     json-stream
@@ -29,7 +33,9 @@ python3.pkgs.buildPythonApplication rec {
   # No tests available
   doCheck = false;
 
-  pythonImportsCheck = [ "mitmproxy2swagger" ];
+  pythonImportsCheck = [
+    "mitmproxy2swagger"
+  ];
 
   meta = with lib; {
     description = "Tool to automagically reverse-engineer REST APIs";

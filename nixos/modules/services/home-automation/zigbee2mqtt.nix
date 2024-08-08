@@ -98,7 +98,9 @@ in
 
         # Hardening
         CapabilityBoundingSet = "";
-        DeviceAllow = [ config.services.zigbee2mqtt.settings.serial.port ];
+        DeviceAllow = [
+          config.services.zigbee2mqtt.settings.serial.port
+        ];
         DevicePolicy = "closed";
         LockPersonality = true;
         MemoryDenyWriteExecute = false;
@@ -125,7 +127,9 @@ in
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
-        SupplementaryGroups = [ "dialout" ];
+        SupplementaryGroups = [
+          "dialout"
+        ];
         SystemCallArchitectures = "native";
         SystemCallFilter = [
           "@system-service @pkey"

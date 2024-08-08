@@ -24,7 +24,9 @@ buildPythonPackage rec {
     hash = "sha256-jt0+JnpCgvsoqMcC9mANX7uq2WPTiI2JQjwQi7LGWj0=";
   };
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   propagatedBuildInputs = [
     octodns

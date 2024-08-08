@@ -86,7 +86,9 @@ let
   '';
 
   patches =
-    [ ./0001-aa-remove-unknown_empty-ruleset.patch ]
+    [
+      ./0001-aa-remove-unknown_empty-ruleset.patch
+    ]
     ++ lib.optionals stdenv.hostPlatform.isMusl [
       (fetchpatch {
         url = "https://git.alpinelinux.org/aports/plain/testing/apparmor/0003-Added-missing-typedef-definitions-on-parser.patch?id=74b8427cc21f04e32030d047ae92caa618105b53";
@@ -242,7 +244,9 @@ let
       which
     ];
 
-    buildInputs = [ libapparmor ];
+    buildInputs = [
+      libapparmor
+    ];
 
     prePatch = prePatchCommon;
     postPatch = ''

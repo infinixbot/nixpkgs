@@ -18,7 +18,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-W5e19gzkZZjTTSZdww2x7M0LnR/gClQxMeAiDITO3HY=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   meta = with lib; {
     description = "Layout manager for the River window manager";

@@ -22,7 +22,9 @@ buildGoModule rec {
     "-w"
     "-s"
   ];
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
   postInstall = ''
     installShellCompletion --cmd goverview \
       --bash <($out/bin/goverview completion bash) \

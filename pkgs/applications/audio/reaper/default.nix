@@ -54,13 +54,17 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs =
-    [ makeWrapper ]
+    [
+      makeWrapper
+    ]
     ++ lib.optionals stdenv.isLinux [
       which
       autoPatchelfHook
       xdg-utils # Required for desktop integration
     ]
-    ++ lib.optionals stdenv.isDarwin [ undmg ];
+    ++ lib.optionals stdenv.isDarwin [
+      undmg
+    ];
 
   sourceRoot = lib.optionalString stdenv.isDarwin "Reaper.app";
 

@@ -11,7 +11,9 @@ flutter.buildFlutterApplication rec {
 
   pubspecLock = lib.importJSON ./pubspec.lock.json;
 
-  patches = [ ./upgrade-file.patch ];
+  patches = [
+    ./upgrade-file.patch
+  ];
 
   sourceRoot = "./source/packages/firmware_updater";
 

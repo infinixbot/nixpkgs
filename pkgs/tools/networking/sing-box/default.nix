@@ -35,11 +35,15 @@ buildGoModule rec {
     "with_gvisor"
   ];
 
-  subPackages = [ "cmd/sing-box" ];
+  subPackages = [
+    "cmd/sing-box"
+  ];
 
   nativeBuildInputs = [ installShellFiles ];
 
-  ldflags = [ "-X=github.com/sagernet/sing-box/constant.Version=${version}" ];
+  ldflags = [
+    "-X=github.com/sagernet/sing-box/constant.Version=${version}"
+  ];
 
   postInstall =
     let

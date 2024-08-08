@@ -19,7 +19,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-Gjb7v3kz11iOml3Ykxhy43KNxzaprgMbb5DpPNChLTc=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [ Security ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    Security
+  ];
 
   meta = with lib; {
     description = "Like watch -d but for JSON";

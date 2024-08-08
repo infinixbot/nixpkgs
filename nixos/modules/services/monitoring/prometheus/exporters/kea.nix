@@ -16,7 +16,9 @@ let
     ;
 in
 {
-  imports = [ (mkRenamedOptionModule [ "controlSocketPaths" ] [ "targets" ]) ];
+  imports = [
+    (mkRenamedOptionModule [ "controlSocketPaths" ] [ "targets" ])
+  ];
   port = 9547;
   extraOpts = {
     targets = mkOption {

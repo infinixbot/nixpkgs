@@ -14,7 +14,9 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-gsaY02x8hJr0NzR5Q9VB3KkAFnotjrWXRoUjFpBJB0w=";
   };
 
-  nativeBuildInputs = with python3Packages; [ setuptools ];
+  nativeBuildInputs = with python3Packages; [
+    setuptools
+  ];
 
   propagatedBuildInputs = with python3Packages; [
     beautifulsoup4

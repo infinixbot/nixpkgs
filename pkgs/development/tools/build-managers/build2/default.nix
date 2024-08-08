@@ -48,7 +48,9 @@ stdenv.mkDerivation rec {
   ];
 
   strictDeps = true;
-  nativeBuildInputs = [ build2 ];
+  nativeBuildInputs = [
+    build2
+  ];
   disallowedReferences = [
     build2
     libbutl.dev

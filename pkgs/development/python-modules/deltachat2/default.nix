@@ -27,7 +27,9 @@ buildPythonPackage rec {
     })
   ];
 
-  build-system = [ setuptools-scm ];
+  build-system = [
+    setuptools-scm
+  ];
 
   pythonImportsCheck = [ "deltachat2" ];
 

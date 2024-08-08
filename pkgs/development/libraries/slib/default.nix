@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-wvjrmOYFMN9TIRmF1LQDtul6epaYM8Gm0b+DVh2gx4E=";
   };
 
-  patches = [ ./catalog-in-library-vicinity.patch ];
+  patches = [
+    ./catalog-in-library-vicinity.patch
+  ];
 
   # slib:require unsupported feature color-database
   postPatch = ''

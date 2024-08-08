@@ -42,6 +42,8 @@ buildDunePackage rec {
       language.
     '';
     license = lib.licenses.lgpl21Plus;
-    maintainers = [ lib.maintainers.maggesi ];
+    maintainers = [
+      lib.maintainers.maggesi
+    ];
   };
 }

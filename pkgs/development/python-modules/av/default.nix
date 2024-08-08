@@ -62,7 +62,9 @@ buildPythonPackage rec {
   ];
 
   # `__darwinAllowLocalNetworking` doesn’t work for these; not sure why.
-  disabledTestPaths = lib.optionals stdenv.isDarwin [ "tests/test_timeout.py" ];
+  disabledTestPaths = lib.optionals stdenv.isDarwin [
+    "tests/test_timeout.py"
+  ];
 
   pythonImportsCheck = [
     "av"

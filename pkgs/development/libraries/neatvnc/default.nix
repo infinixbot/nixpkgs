@@ -43,7 +43,9 @@ stdenv.mkDerivation rec {
     zlib
   ];
 
-  mesonFlags = [ (lib.mesonBool "tests" true) ];
+  mesonFlags = [
+    (lib.mesonBool "tests" true)
+  ];
 
   doCheck = true;
 

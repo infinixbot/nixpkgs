@@ -41,7 +41,9 @@ buildPythonPackage rec {
     "treeo"
   ];
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   buildInputs = [ jaxlib ];
 

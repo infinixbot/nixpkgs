@@ -260,7 +260,9 @@ qtModule (
     env =
       {
         NIX_CFLAGS_COMPILE = toString (
-          lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [ "-w " ]
+          lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
+            "-w "
+          ]
           ++ lib.optionals stdenv.cc.isGNU [
             # with gcc8, -Wclass-memaccess became part of -Wall and this exceeds the logging limit
             "-Wno-class-memaccess"
@@ -270,7 +272,9 @@ qtModule (
             # TODO: investigate and fix properly
             "-march=westmere"
           ]
-          ++ lib.optionals stdenv.cc.isClang [ "-Wno-elaborated-enum-base" ]
+          ++ lib.optionals stdenv.cc.isClang [
+            "-Wno-elaborated-enum-base"
+          ]
         );
       }
       // lib.optionalAttrs (stdenv.buildPlatform != stdenv.hostPlatform) {

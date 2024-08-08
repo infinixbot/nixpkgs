@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-QBItcrrpOGj22/ShTDdfZjm63bGW2xY4c71R1q8abPE=";
   };
 
-  buildInputs = [ gmp ];
+  buildInputs = [
+    gmp
+  ];
 
   nativeBuildInputs = [
     python3 # needed by ./configure to create the makefile
@@ -41,7 +43,9 @@ stdenv.mkDerivation rec {
     "${libbasename}${libext}"
   ];
 
-  configureFlags = lib.optionals (!tune) [ "--disable-tuning" ];
+  configureFlags = lib.optionals (!tune) [
+    "--disable-tuning"
+  ];
 
   # `make install` fails to install some header files and the lib file.
   installPhase = ''

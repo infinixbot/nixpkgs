@@ -43,7 +43,9 @@ stdenv.mkDerivation rec {
     ++ lib.optionals lzmaSupport [ xz ];
 
   configureFlags =
-    [ "MAX_BLOCK_SIZE=4096" ]
+    [
+      "MAX_BLOCK_SIZE=4096"
+    ]
     ++ lib.optional fuseSupport "--enable-fuse"
     ++ lib.optional selinuxSupport "--with-selinux"
     ++ lib.optional lzmaSupport "--enable-lzma";

@@ -41,30 +41,36 @@ buildDunePackage rec {
     hash = "sha256-NrTBVr4WcCukxteBotqLoUYrIjcNFVcOERYFbL8CUjM=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  propagatedBuildInputs = [
-    cstruct
-    cstruct-lwt
-    mirage-net
-    mirage-clock
-    mirage-random
-    mirage-time
-    ipaddr-cstruct
-    macaddr
-    macaddr-cstruct
-    fmt
-    lwt
-    lwt-dllist
-    logs
-    duration
-    randomconv
-    ethernet
-    lru
-    metrics
-    arp
-    mirage-flow
-  ] ++ lib.optionals withFreestanding [ ocaml-freestanding ];
+  propagatedBuildInputs =
+    [
+      cstruct
+      cstruct-lwt
+      mirage-net
+      mirage-clock
+      mirage-random
+      mirage-time
+      ipaddr-cstruct
+      macaddr
+      macaddr-cstruct
+      fmt
+      lwt
+      lwt-dllist
+      logs
+      duration
+      randomconv
+      ethernet
+      lru
+      metrics
+      arp
+      mirage-flow
+    ]
+    ++ lib.optionals withFreestanding [
+      ocaml-freestanding
+    ];
 
   doCheck = true;
   checkInputs = [

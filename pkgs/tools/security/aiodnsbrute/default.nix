@@ -26,7 +26,9 @@ python3.pkgs.buildPythonApplication rec {
   # Project no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "aiodnsbrute.cli" ];
+  pythonImportsCheck = [
+    "aiodnsbrute.cli"
+  ];
 
   meta = with lib; {
     description = "DNS brute force utility";

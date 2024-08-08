@@ -58,7 +58,9 @@ stdenv.mkDerivation rec {
       CoreServices
     ];
 
-  cmakeFlags = [ "-Denable-framework=off" ];
+  cmakeFlags = [
+    "-Denable-framework=off"
+  ];
 
   meta = with lib; {
     description = "Real-time software synthesizer based on the SoundFont 2 specifications";

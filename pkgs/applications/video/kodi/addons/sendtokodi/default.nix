@@ -25,7 +25,9 @@ buildKodiAddon rec {
     ./use-packaged-yt-dlp.patch
   ];
 
-  propagatedBuildInputs = [ inputstreamhelper ];
+  propagatedBuildInputs = [
+    inputstreamhelper
+  ];
 
   postPatch = ''
     # Remove vendored youtube-dl and yt-dlp libraries.

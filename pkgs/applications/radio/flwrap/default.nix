@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
     libjpeg
   ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   meta = {
     description = "Digital modem file transfer program";

@@ -33,7 +33,9 @@ buildPythonPackage rec {
       'homeassistant = "~${lib.versions.majorMinor home-assistant.version}"'
   '';
 
-  pythonImportsCheck = [ "homeassistant-stubs" ];
+  pythonImportsCheck = [
+    "homeassistant-stubs"
+  ];
 
   doCheck = false;
 

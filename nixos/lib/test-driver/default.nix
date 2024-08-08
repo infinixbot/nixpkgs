@@ -47,7 +47,9 @@ python3Packages.buildPythonApplication {
     ])
     ++ extraPythonPackages python3Packages;
 
-  nativeBuildInputs = [ python3Packages.setuptools ];
+  nativeBuildInputs = [
+    python3Packages.setuptools
+  ];
 
   passthru.tests = {
     inherit (nixosTests.nixos-test-driver) driver-timeout;

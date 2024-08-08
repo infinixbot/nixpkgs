@@ -25,7 +25,9 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   doInstallCheck = true;
   installCheckPhase = ''

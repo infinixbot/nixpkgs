@@ -146,7 +146,9 @@ stdenv.mkDerivation {
       "--with-lua-prefix=${lua}"
       "--enable-luainterp"
     ]
-    ++ lib.optionals lua.pkgs.isLuaJIT [ "--with-luajit" ]
+    ++ lib.optionals lua.pkgs.isLuaJIT [
+      "--with-luajit"
+    ]
     ++ lib.optionals pythonSupport [
       "--enable-python3interp=yes"
       "--with-python3-config-dir=${python3}/lib"
@@ -164,7 +166,9 @@ stdenv.mkDerivation {
     ++ lib.optional sodiumSupport "--enable-sodium";
 
   nativeBuildInputs =
-    [ pkg-config ]
+    [
+      pkg-config
+    ]
     ++ lib.optional wrapPythonDrv makeWrapper
     ++ lib.optional nlsSupport gettext
     ++ lib.optional perlSupport perl

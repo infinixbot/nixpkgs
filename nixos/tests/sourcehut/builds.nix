@@ -19,7 +19,9 @@ import ../make-test-python.nix (
         ...
       }:
       {
-        imports = [ ./nodes/common.nix ];
+        imports = [
+          ./nodes/common.nix
+        ];
 
         networking.domain = domain;
         networking.extraHosts = ''

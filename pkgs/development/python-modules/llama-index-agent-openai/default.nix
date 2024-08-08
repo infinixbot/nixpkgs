@@ -23,7 +23,9 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "llama-index-llms-openai" ];
 
-  build-system = [ poetry-core ];
+  build-system = [
+    poetry-core
+  ];
 
   dependencies = [
     llama-index-core

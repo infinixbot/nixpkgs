@@ -45,7 +45,9 @@ buildPythonPackage rec {
     })
   ];
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   pythonRelaxDeps = [ "packaging" ];
 

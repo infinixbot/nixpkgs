@@ -43,7 +43,9 @@ stdenv.mkDerivation rec {
       appstream-qt
     ]);
 
-  cmakeFlags = [ "-DSYSTEMD_USER_UNIT_DIR=${placeholder "out"}/lib/systemd/user" ];
+  cmakeFlags = [
+    "-DSYSTEMD_USER_UNIT_DIR=${placeholder "out"}/lib/systemd/user"
+  ];
 
   meta = with lib; {
     description = "'launcher' or 'start menu' component for DDE";

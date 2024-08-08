@@ -20,7 +20,9 @@ buildDotnetModule rec {
   };
 
   nativeBuildInputs =
-    [ powershell ]
+    [
+      powershell
+    ]
     ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) [
       autoSignDarwinBinariesHook
     ];

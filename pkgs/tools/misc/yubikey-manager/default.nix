@@ -37,7 +37,9 @@ python3Packages.buildPythonPackage rec {
     keyring
   ];
 
-  pythonRelaxDeps = [ "keyring" ];
+  pythonRelaxDeps = [
+    "keyring"
+  ];
 
   postInstall = ''
     installManPage man/ykman.1

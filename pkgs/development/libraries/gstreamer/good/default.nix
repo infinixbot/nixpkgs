@@ -105,7 +105,9 @@ stdenv.mkDerivation rec {
       libshout
       glib
     ]
-    ++ lib.optionals enableDocumentation [ hotdoc ]
+    ++ lib.optionals enableDocumentation [
+      hotdoc
+    ]
     ++ lib.optionals qt5Support (
       with qt5;
       [
@@ -120,7 +122,9 @@ stdenv.mkDerivation rec {
         qttools
       ]
     )
-    ++ lib.optionals enableWayland [ wayland-protocols ];
+    ++ lib.optionals enableWayland [
+      wayland-protocols
+    ];
 
   buildInputs =
     [
@@ -148,7 +152,9 @@ stdenv.mkDerivation rec {
       wavpack
       openssl
     ]
-    ++ lib.optionals raspiCameraSupport [ libraspberrypi ]
+    ++ lib.optionals raspiCameraSupport [
+      libraspberrypi
+    ]
     ++ lib.optionals enableX11 [
       xorg.libXext
       xorg.libXfixes
@@ -177,7 +183,9 @@ stdenv.mkDerivation rec {
         qtwayland
       ]
     )
-    ++ lib.optionals stdenv.isDarwin [ Cocoa ]
+    ++ lib.optionals stdenv.isDarwin [
+      Cocoa
+    ]
     ++ lib.optionals stdenv.isLinux [
       libdrm
       libGL
@@ -187,8 +195,12 @@ stdenv.mkDerivation rec {
       libiec61883
       libgudev
     ]
-    ++ lib.optionals enableWayland [ wayland ]
-    ++ lib.optionals enableJack [ libjack2 ];
+    ++ lib.optionals enableWayland [
+      wayland
+    ]
+    ++ lib.optionals enableJack [
+      libjack2
+    ];
 
   mesonFlags =
     [
@@ -196,13 +208,21 @@ stdenv.mkDerivation rec {
       "-Dglib-asserts=disabled" # asserts should be disabled on stable releases
       (lib.mesonEnable "doc" enableDocumentation)
     ]
-    ++ lib.optionals (!qt5Support) [ "-Dqt5=disabled" ]
-    ++ lib.optionals (!qt6Support) [ "-Dqt6=disabled" ]
-    ++ lib.optionals (!gtkSupport) [ "-Dgtk3=disabled" ]
+    ++ lib.optionals (!qt5Support) [
+      "-Dqt5=disabled"
+    ]
+    ++ lib.optionals (!qt6Support) [
+      "-Dqt6=disabled"
+    ]
+    ++ lib.optionals (!gtkSupport) [
+      "-Dgtk3=disabled"
+    ]
     ++ lib.optionals (!enableX11) [
       "-Dximagesrc=disabled" # Linux-only
     ]
-    ++ lib.optionals (!enableJack) [ "-Djack=disabled" ]
+    ++ lib.optionals (!enableJack) [
+      "-Djack=disabled"
+    ]
     ++ lib.optionals (!stdenv.isLinux) [
       "-Ddv1394=disabled" # Linux only
       "-Doss4=disabled" # Linux only
@@ -212,7 +232,14 @@ stdenv.mkDerivation rec {
       "-Dv4l2=disabled" # Linux-only
     ]
     ++ (
-      if raspiCameraSupport then [ "-Drpi-lib-dir=${libraspberrypi}/lib" ] else [ "-Drpicamsrc=disabled" ]
+      if raspiCameraSupport then
+        [
+          "-Drpi-lib-dir=${libraspberrypi}/lib"
+        ]
+      else
+        [
+          "-Drpicamsrc=disabled"
+        ]
     );
 
   postPatch = ''

@@ -23,7 +23,9 @@ buildGoModule rec {
     libkrb5
   ];
 
-  patches = [ ./remove-hardcoded-locations.patch ];
+  patches = [
+    ./remove-hardcoded-locations.patch
+  ];
 
   vendorHash = "sha256-TbjpCCo/ZdFP+yE2h8B8kwS08iUilXNgBT2F5Si7/dc=";
 

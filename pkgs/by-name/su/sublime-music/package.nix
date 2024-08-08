@@ -41,7 +41,9 @@ python3.pkgs.buildPythonApplication rec {
     sed -i "/--no-cov-on-fail/d" setup.cfg
   '';
 
-  build-system = with python3.pkgs; [ flit-core ];
+  build-system = with python3.pkgs; [
+    flit-core
+  ];
 
   nativeBuildInputs = [
     gobject-introspection
@@ -72,14 +74,18 @@ python3.pkgs.buildPythonApplication rec {
     ]
     ++ lib.optional keyringSupport keyring;
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
   disabledTests = [
     # https://github.com/sublime-music/sublime-music/issues/439
     "test_get_music_directory"
   ];
 
-  pythonImportsCheck = [ "sublime_music" ];
+  pythonImportsCheck = [
+    "sublime_music"
+  ];
 
   postInstall = ''
     install -Dm444 sublime-music.desktop      -t $out/share/applications

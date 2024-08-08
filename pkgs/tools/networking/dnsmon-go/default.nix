@@ -18,7 +18,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-aiX+NGUsFK0N9vC5baAHHMr28CbF5Xa4WgYLFFLBYTs=";
 
-  buildInputs = [ libpcap ];
+  buildInputs = [
+    libpcap
+  ];
 
   meta = with lib; {
     description = "Tool to collect DNS traffic";

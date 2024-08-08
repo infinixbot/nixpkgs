@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     perlPackages.XMLLibXML
   ];
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   postFixup = ''
     wrapPythonPrograms

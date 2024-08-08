@@ -159,7 +159,9 @@ in
           DynamicUser = true;
           User = "odoo";
           StateDirectory = "odoo";
-          Environment = [ "ODOO_RC=${cfgFile}" ];
+          Environment = [
+            "ODOO_RC=${cfgFile}"
+          ];
         };
       };
 

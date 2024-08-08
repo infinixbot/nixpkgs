@@ -50,8 +50,12 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    lib.optionals withFcitx5Support [ fcitx5 ]
-    ++ lib.optionals withIbusSupport [ ibus ]
+    lib.optionals withFcitx5Support [
+      fcitx5
+    ]
+    ++ lib.optionals withIbusSupport [
+      ibus
+    ]
     ++ [
       qtbase
       zstd
@@ -67,8 +71,12 @@ stdenv.mkDerivation rec {
   };
 
   cmakeFlags =
-    lib.optionals withFcitx5Support [ "-DENABLE_FCITX=YES" ]
-    ++ lib.optionals withIbusSupport [ "-DENABLE_IBUS=YES" ];
+    lib.optionals withFcitx5Support [
+      "-DENABLE_FCITX=YES"
+    ]
+    ++ lib.optionals withIbusSupport [
+      "-DENABLE_IBUS=YES"
+    ];
 
   cargoRoot = "src/engine/riti";
   postPatch = ''

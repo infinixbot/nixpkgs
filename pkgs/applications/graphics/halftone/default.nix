@@ -40,7 +40,9 @@ python3Packages.buildPythonApplication rec {
     gobject-introspection
   ];
 
-  buildInputs = [ libadwaita ];
+  buildInputs = [
+    libadwaita
+  ];
 
   propagatedBuildInputs = with python3Packages; [
     pygobject3

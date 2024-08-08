@@ -22,7 +22,9 @@ python3.pkgs.buildPythonApplication rec {
     "pyasn1"
   ];
 
-  nativeBuildInputs = with python3.pkgs; [ poetry-core ];
+  nativeBuildInputs = with python3.pkgs; [
+    poetry-core
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     cryptography
@@ -36,7 +38,9 @@ python3.pkgs.buildPythonApplication rec {
   # Project has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "donpapi" ];
+  pythonImportsCheck = [
+    "donpapi"
+  ];
 
   meta = with lib; {
     description = "Tool for dumping DPAPI credentials remotely";

@@ -24,7 +24,9 @@ python3.pkgs.buildPythonApplication rec {
   # No test available
   doCheck = false;
 
-  pythonImportsCheck = [ "hyfetch" ];
+  pythonImportsCheck = [
+    "hyfetch"
+  ];
 
   meta = with lib; {
     description = "neofetch with pride flags <3";

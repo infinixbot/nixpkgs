@@ -26,9 +26,13 @@ python3Packages.buildPythonApplication rec {
     })
   ];
 
-  propagatedBuildInputs = [ python3Packages.ruamel-yaml ];
+  propagatedBuildInputs = [
+    python3Packages.ruamel-yaml
+  ];
 
-  pythonImportsCheck = [ "pre_commit_hook_ensure_sops" ];
+  pythonImportsCheck = [
+    "pre_commit_hook_ensure_sops"
+  ];
 
   # Test entrypoint
   checkPhase = ''

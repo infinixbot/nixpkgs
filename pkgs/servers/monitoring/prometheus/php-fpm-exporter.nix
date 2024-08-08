@@ -28,7 +28,9 @@ buildGoModule rec {
     installShellFiles
   ];
 
-  ldflags = [ "-X main.version=${version}" ];
+  ldflags = [
+    "-X main.version=${version}"
+  ];
 
   preFixup = ''
     wrapProgram "$out/bin/php-fpm_exporter" \

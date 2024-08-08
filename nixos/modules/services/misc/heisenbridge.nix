@@ -165,7 +165,9 @@ in
             "--identd-port"
             (toString cfg.identd.port)
           ])
-          ++ [ (lib.escapeShellArg cfg.homeserver) ]
+          ++ [
+            (lib.escapeShellArg cfg.homeserver)
+          ]
           ++ (map (lib.escapeShellArg) cfg.extraArgs)
         );
 

@@ -17,7 +17,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-RF606Aeskqbx94H5ivd+RJ+Hk0iYsds/PUY8TZqirs4=";
   };
 
-  nativeBuildInputs = [ python3.pkgs.flit-core ];
+  nativeBuildInputs = [
+    python3.pkgs.flit-core
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     pyaudio

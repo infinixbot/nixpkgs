@@ -125,7 +125,9 @@ import ./make-test-python.nix (
             name = initiatorName;
           };
 
-          environment.systemPackages = with pkgs; [ xfsprogs ];
+          environment.systemPackages = with pkgs; [
+            xfsprogs
+          ];
 
           environment.etc."initiator-root-disk-closure".source =
             nodes.initiatorRootDisk.config.system.build.toplevel;

@@ -255,7 +255,9 @@ in
 
       xdg.portal.enable = true;
       xdg.portal.extraPortals =
-        [ pkgs.xdg-desktop-portal-gtk ]
+        [
+          pkgs.xdg-desktop-portal-gtk
+        ]
         ++ (with pkgs.pantheon; [
           elementary-files
           elementary-settings-daemon
@@ -303,7 +305,9 @@ in
       programs.file-roller.enable = mkDefault (notExcluded pkgs.file-roller);
 
       environment.systemPackages = utils.removePackagesByName (
-        [ pkgs.gnome-font-viewer ]
+        [
+          pkgs.gnome-font-viewer
+        ]
         ++ (
           with pkgs.pantheon;
           [
@@ -331,7 +335,9 @@ in
       ) config.environment.pantheon.excludePackages;
 
       # needed by screenshot
-      fonts.packages = [ pkgs.pantheon.elementary-redacted-script ];
+      fonts.packages = [
+        pkgs.pantheon.elementary-redacted-script
+      ];
     })
 
     (mkIf serviceCfg.contractor.enable {
@@ -340,7 +346,9 @@ in
         file-roller-contract
       ];
 
-      environment.pathsToLink = [ "/share/contractor" ];
+      environment.pathsToLink = [
+        "/share/contractor"
+      ];
     })
 
   ];

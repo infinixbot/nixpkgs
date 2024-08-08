@@ -36,11 +36,17 @@ buildPythonApplication rec {
     rich
   ];
 
-  nativeBuildInputs = [ pytestCheckHook ];
+  nativeBuildInputs = [
+    pytestCheckHook
+  ];
 
-  nativeCheckInputs = [ requests-mock ];
+  nativeCheckInputs = [
+    requests-mock
+  ];
 
-  pythonImportsCheck = [ "meraki_cli" ];
+  pythonImportsCheck = [
+    "meraki_cli"
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/PackeTsar/meraki-cli";

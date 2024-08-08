@@ -20,7 +20,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-6zBMAi9ruPPlcnpdgqwl35QZ5u4MyFPUa70yvGTkHpo=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     fuse

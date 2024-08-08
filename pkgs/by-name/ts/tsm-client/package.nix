@@ -120,7 +120,9 @@ let
       stdenv.cc.cc
       zlib
     ];
-    runtimeDependencies = [ (lib.attrsets.getLib lvm2) ];
+    runtimeDependencies = [
+      (lib.attrsets.getLib lvm2)
+    ];
     sourceRoot = ".";
 
     postUnpack = ''

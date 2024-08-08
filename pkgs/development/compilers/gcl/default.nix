@@ -51,7 +51,9 @@ stdenv.mkDerivation rec {
     texinfo
   ];
 
-  configureFlags = [ "--enable-ansi" ];
+  configureFlags = [
+    "--enable-ansi"
+  ];
 
   meta = with lib; {
     description = "GNU Common Lisp compiler working via GCC";

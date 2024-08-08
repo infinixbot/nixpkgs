@@ -61,7 +61,9 @@ stdenv.mkDerivation rec {
     "CFLAGS=-Wno-error"
   ];
 
-  installFlags = [ "sysconfdir=${placeholder "out"}/etc" ];
+  installFlags = [
+    "sysconfdir=${placeholder "out"}/etc"
+  ];
 
   postInstall = ''
     # this script requires unpackaged 'augeas' rubygem, no reason

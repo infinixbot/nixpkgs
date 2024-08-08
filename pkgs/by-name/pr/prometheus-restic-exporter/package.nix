@@ -18,7 +18,9 @@ stdenvNoCC.mkDerivation rec {
     hash = "sha256-SC2ZCIQ33RaFI9+l/WI6edNzGEtsxJ2bBdeGNMHuyqY=";
   };
 
-  buildInputs = [ (python3.withPackages (ps: [ ps.prometheus-client ])) ];
+  buildInputs = [
+    (python3.withPackages (ps: [ ps.prometheus-client ]))
+  ];
 
   installPhase = ''
     runHook preInstall

@@ -3,5 +3,7 @@
 }:
 with nixpkgs;
 mkShell {
-  packages = [ pkgs.gh ];
+  packages = [
+    pkgs.gh
+  ];
 }

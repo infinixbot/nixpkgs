@@ -88,14 +88,18 @@ stdenv.mkDerivation rec {
           sed -z -i "s/NSAppearanceName.*systemAppearance//" src/AudacityApp.mm
         '';
 
-  nativeBuildInputs = [
-    cmake
-    gettext
-    pkg-config
-    python3
-    makeWrapper
-    wrapGAppsHook3
-  ] ++ lib.optionals stdenv.isLinux [ linuxHeaders ];
+  nativeBuildInputs =
+    [
+      cmake
+      gettext
+      pkg-config
+      python3
+      makeWrapper
+      wrapGAppsHook3
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      linuxHeaders
+    ];
 
   buildInputs =
     [

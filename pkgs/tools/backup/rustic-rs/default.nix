@@ -25,7 +25,9 @@ rustPlatform.buildRustPackage rec {
   # At the time of writing, upstream defaults to "self-update" and "webdav".
   # "self-update" is a self-updater, which we don't want in nixpkgs.
   buildNoDefaultFeatures = true;
-  buildFeatures = [ "webdav" ];
+  buildFeatures = [
+    "webdav"
+  ];
 
   nativeBuildInputs = [ installShellFiles ];
 

@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
     "dev"
   ];
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   cmakeFlags = [
     # CMakeLists.txt by default points to $out

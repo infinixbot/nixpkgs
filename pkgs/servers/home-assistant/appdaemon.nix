@@ -18,7 +18,9 @@ python3.pkgs.buildPythonApplication rec {
 
   pythonRelaxDeps = true;
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     aiohttp

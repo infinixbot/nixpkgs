@@ -59,7 +59,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [ cfg.package ];
+    environment.systemPackages = [
+      cfg.package
+    ];
 
     environment.etc."htoprc".text =
       ''

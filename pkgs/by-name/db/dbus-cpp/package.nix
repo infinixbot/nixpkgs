@@ -89,11 +89,17 @@ stdenv.mkDerivation (finalAttrs: {
     properties-cpp
   ];
 
-  nativeCheckInputs = [ dbus ];
+  nativeCheckInputs = [
+    dbus
+  ];
 
-  checkInputs = [ gtest ];
+  checkInputs = [
+    gtest
+  ];
 
-  cmakeFlags = [ "-DDBUS_CPP_ENABLE_DOC_GENERATION=ON" ];
+  cmakeFlags = [
+    "-DDBUS_CPP_ENABLE_DOC_GENERATION=ON"
+  ];
 
   # Too flaky on ARM CI & for some amd64 users
   doCheck = false;
@@ -117,6 +123,8 @@ stdenv.mkDerivation (finalAttrs: {
     maintainers = with maintainers; [ OPNA2608 ];
     mainProgram = "dbus-cppc";
     platforms = platforms.linux;
-    pkgConfigModules = [ "dbus-cpp" ];
+    pkgConfigModules = [
+      "dbus-cpp"
+    ];
   };
 })

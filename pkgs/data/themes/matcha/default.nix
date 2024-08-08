@@ -45,14 +45,18 @@ lib.checkListOfEnum "${pname}: color variants"
       sha256 = "trQwRZ/JKIS8TcRIg0eL5GmB/yymDwqqNued0ddRuqU=";
     };
 
-    nativeBuildInputs = [ jdupes ];
+    nativeBuildInputs = [
+      jdupes
+    ];
 
     buildInputs = [
       gdk-pixbuf
       librsvg
     ];
 
-    propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+    propagatedUserEnvPkgs = [
+      gtk-engine-murrine
+    ];
 
     postPatch = ''
       patchShebangs install.sh

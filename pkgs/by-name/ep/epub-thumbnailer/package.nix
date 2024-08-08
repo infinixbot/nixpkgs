@@ -17,9 +17,13 @@ python3.pkgs.buildPythonApplication {
     hash = "sha256-r0t2enybUEminXOHjx6uH6LvQtmzTRPZm/gY3Vi2c64=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools
+  ];
 
-  propagatedBuildInputs = with python3.pkgs; [ pillow ];
+  propagatedBuildInputs = with python3.pkgs; [
+    pillow
+  ];
 
   postInstall = ''
     mv $out/bin/epub-thumbnailer.py $out/bin/epub-thumbnailer

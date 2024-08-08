@@ -16,9 +16,13 @@ buildPythonApplication rec {
     hash = "sha256-p7r+zDakKy/N+RbxAfGatvkYCDKRh5T3owoYUrHJ5N0=";
   };
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
-  propagatedBuildInputs = [ python-gnupg ];
+  propagatedBuildInputs = [
+    python-gnupg
+  ];
 
   # Project has no tests.
   doCheck = false;

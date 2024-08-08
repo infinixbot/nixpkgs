@@ -11,7 +11,11 @@
 }:
 
 let
-  perlenv = perl.withPackages (p: with p; [ TextCharWidth ]);
+  perlenv = perl.withPackages (
+    p: with p; [
+      TextCharWidth
+    ]
+  );
 in
 stdenv.mkDerivation rec {
   pname = "unscii";
@@ -39,7 +43,9 @@ stdenv.mkDerivation rec {
     done
   '';
 
-  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
+  makeFlags = [
+    "CC=${stdenv.cc.targetPrefix}cc"
+  ];
 
   preConfigure = ''
     patchShebangs .

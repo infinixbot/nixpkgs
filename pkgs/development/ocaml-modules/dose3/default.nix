@@ -26,7 +26,9 @@ buildDunePackage rec {
 
   minimalOCamlVersion = "4.07";
 
-  buildInputs = [ parmap ];
+  buildInputs = [
+    parmap
+  ];
 
   propagatedBuildInputs = [
     base64
@@ -37,7 +39,9 @@ buildDunePackage rec {
     stdlib-shims
   ];
 
-  checkInputs = [ ounit ];
+  checkInputs = [
+    ounit
+  ];
   doCheck = lib.versionAtLeast ocaml.version "4.08";
 
   meta = with lib; {

@@ -19,7 +19,11 @@
 }:
 
 let
-  python = python3.withPackages (ps: with ps; [ pygments ]);
+  python = python3.withPackages (
+    ps: with ps; [
+      pygments
+    ]
+  );
 in
 
 stdenv.mkDerivation rec {

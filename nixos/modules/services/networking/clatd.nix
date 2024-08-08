@@ -53,7 +53,9 @@ in
         ExecStart = "${cfg.package}/bin/clatd -c ${configFile}";
 
         # Hardening
-        CapabilityBoundingSet = [ "CAP_NET_ADMIN" ];
+        CapabilityBoundingSet = [
+          "CAP_NET_ADMIN"
+        ];
         LockPersonality = true;
         MemoryDenyWriteExecute = true;
         NoNewPrivileges = true;

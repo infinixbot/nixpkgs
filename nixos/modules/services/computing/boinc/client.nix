@@ -94,7 +94,9 @@ in
     };
     users.groups.boinc = { };
 
-    systemd.tmpfiles.rules = [ "d '${cfg.dataDir}' - boinc boinc - -" ];
+    systemd.tmpfiles.rules = [
+      "d '${cfg.dataDir}' - boinc boinc - -"
+    ];
 
     systemd.services.boinc = {
       description = "BOINC Client";

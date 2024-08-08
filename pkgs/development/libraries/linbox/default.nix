@@ -61,7 +61,9 @@ stdenv.mkDerivation rec {
       "--${if stdenv.hostPlatform.fmaSupport then "enable" else "disable"}-fma"
       "--${if stdenv.hostPlatform.fma4Support then "enable" else "disable"}-fma4"
     ]
-    ++ lib.optionals withSage [ "--enable-sage" ];
+    ++ lib.optionals withSage [
+      "--enable-sage"
+    ];
 
   # https://github.com/linbox-team/linbox/issues/304
   hardeningDisable = [ "fortify3" ];

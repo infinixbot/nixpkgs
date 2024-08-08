@@ -73,7 +73,9 @@ stdenv.mkDerivation {
 
   dontWrapGApps = true;
 
-  runtimeDependencies = map lib.getLib [ systemd ];
+  runtimeDependencies = map lib.getLib [
+    systemd
+  ];
 
   installPhase = ''
     runHook preInstall

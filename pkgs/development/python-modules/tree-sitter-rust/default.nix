@@ -18,10 +18,14 @@ buildPythonPackage rec {
     hash = "sha256-4CTh6fKSV8TuMHLAfEKWsAeCqeCM2uo6hVmF5KWhyPY=";
   };
 
-  build-system = [ setuptools ];
+  build-system = [
+    setuptools
+  ];
 
   passthru.optional-dependencies = {
-    core = [ tree-sitter ];
+    core = [
+      tree-sitter
+    ];
   };
 
   # There are no tests

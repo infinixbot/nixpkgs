@@ -48,7 +48,9 @@ stdenv.mkDerivation rec {
       icu
       libuuid
     ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Foundation ];
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Foundation
+    ];
 
   postPatch =
     ''
@@ -67,7 +69,9 @@ stdenv.mkDerivation rec {
         --replace "__CHAR16_TYPE__ UChar" "char16_t UChar"
     '';
 
-  cmakeFlags = lib.optionals (!stdenv.isDarwin) [ "-DBUILD_SHARED_LIBS=ON" ];
+  cmakeFlags = lib.optionals (!stdenv.isDarwin) [
+    "-DBUILD_SHARED_LIBS=ON"
+  ];
 
   installPhase = ''
     mkdir $out

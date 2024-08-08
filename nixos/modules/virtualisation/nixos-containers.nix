@@ -1004,7 +1004,9 @@ in
           ENV{INTERFACE}=="v[eb]-*", ENV{NM_UNMANAGED}="1"
         '';
 
-        environment.systemPackages = [ nixos-container ];
+        environment.systemPackages = [
+          nixos-container
+        ];
 
         boot.kernelModules = [
           "bridge"

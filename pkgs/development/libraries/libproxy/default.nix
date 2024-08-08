@@ -37,7 +37,8 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   patches =
-    [ ]
+    [
+    ]
     ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [
       # Disable schema presence detection, it would fail because it cannot be autopatched,
       # and it will be hardcoded by the next patch anyway.
@@ -80,7 +81,9 @@ stdenv.mkDerivation (finalAttrs: {
     ]
     ++ (
       if stdenv.hostPlatform.isDarwin then
-        (with darwin.apple_sdk.frameworks; [ Foundation ])
+        (with darwin.apple_sdk.frameworks; [
+          Foundation
+        ])
       else
         [
           glib
@@ -88,10 +91,14 @@ stdenv.mkDerivation (finalAttrs: {
         ]
     );
 
-  mesonFlags = [
-    # Prevent installing commit hook.
-    "-Drelease=true"
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ "-Dconfig-gnome=false" ];
+  mesonFlags =
+    [
+      # Prevent installing commit hook.
+      "-Drelease=true"
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      "-Dconfig-gnome=false"
+    ];
 
   doCheck = !stdenv.hostPlatform.isDarwin;
 

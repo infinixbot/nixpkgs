@@ -1054,7 +1054,9 @@ in
                     || cfg.openssh.authorizedKeys.keyFiles != [ ]
                   )
                 ) cfg.users
-                ++ [ config.security.googleOsLogin.enable ]
+                ++ [
+                  config.security.googleOsLogin.enable
+                ]
               );
             message = ''
               Neither the root account nor any wheel user has a password or SSH authorized key.

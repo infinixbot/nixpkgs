@@ -95,7 +95,9 @@ let
     # Setuptools is trying to do python -m maubot test
     dontUseSetuptoolsCheck = true;
 
-    pythonImportsCheck = [ "maubot" ];
+    pythonImportsCheck = [
+      "maubot"
+    ];
 
     passthru =
       let

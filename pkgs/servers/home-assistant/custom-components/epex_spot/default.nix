@@ -17,7 +17,9 @@ buildHomeAssistantComponent rec {
     hash = "sha256-BwNDI2OMF6bXqFcdr0AJgj9Gb6Uz8BWOfE7M4jqzQJc=";
   };
 
-  propagatedBuildInputs = [ beautifulsoup4 ];
+  propagatedBuildInputs = [
+    beautifulsoup4
+  ];
 
   #skip phases without activity
   dontConfigure = true;

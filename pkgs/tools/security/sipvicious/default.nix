@@ -17,9 +17,17 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-O8/9Vz/u8BoF1dfGceOJdzPPYLfkdBp2DkwA5WQ3dgo=";
   };
 
-  build-system = [ installShellFiles ] ++ (with python3.pkgs; [ setuptools ]);
+  build-system =
+    [
+      installShellFiles
+    ]
+    ++ (with python3.pkgs; [
+      setuptools
+    ]);
 
-  dependencies = with python3.pkgs; [ scapy ];
+  dependencies = with python3.pkgs; [
+    scapy
+  ];
 
   postInstall = ''
     installManPage man1/*.1
@@ -28,7 +36,9 @@ python3.pkgs.buildPythonApplication rec {
   # Project has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "sipvicious" ];
+  pythonImportsCheck = [
+    "sipvicious"
+  ];
 
   meta = with lib; {
     description = "Set of tools to audit SIP based VoIP systems";

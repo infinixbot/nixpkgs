@@ -20,7 +20,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-12nrMAGS7CRTq2Dr8Lnm9B/HTZAzJOaJ8TqTOHknCRE=";
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   subPackages = [
     "cmd/clair"

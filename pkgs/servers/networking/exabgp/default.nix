@@ -18,11 +18,17 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-PrdCAmefKCBmbBFp04KiQGSsZZ4KNFk/ZtMedh9oow4=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools
+  ];
 
-  pythonImportsCheck = [ "exabgp" ];
+  pythonImportsCheck = [
+    "exabgp"
+  ];
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
   passthru.tests = {
     version = testers.testVersion {

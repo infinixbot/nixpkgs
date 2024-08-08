@@ -32,7 +32,9 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   # Default upstream else LDC fails to link
-  mesonBuildType = [ "debugoptimized" ];
+  mesonBuildType = [
+    "debugoptimized"
+  ];
 
   nativeBuildInputs = [
     desktop-file-utils

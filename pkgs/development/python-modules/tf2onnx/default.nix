@@ -34,7 +34,9 @@ buildPythonPackage rec {
     hash = "sha256-qtRzckw/KHWm3gjFwF+cPuBhGbfktjhYIwImwHn2CFk=";
   };
 
-  nativeBuildInputs = [ pytest-runner ];
+  nativeBuildInputs = [
+    pytest-runner
+  ];
 
   pythonRelaxDeps = [ "flatbuffers" ];
 

@@ -18,9 +18,13 @@ buildDunePackage rec {
     sha256 = "sha256-FVR0WubW9VJBGVtVaXdJ+O/ghq0w5+BuItFWXkuVYL8=";
   };
 
-  nativeBuildInputs = [ gen_js_api ];
+  nativeBuildInputs = [
+    gen_js_api
+  ];
 
-  buildInputs = [ gen_js_api ];
+  buildInputs = [
+    gen_js_api
+  ];
 
   propagatedBuildInputs = [
     js_of_ocaml-compiler

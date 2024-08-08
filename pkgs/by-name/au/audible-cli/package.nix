@@ -18,7 +18,14 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-AYL7lcYYY7gK12Id94aHRWRlCiznnF4r+lpI5VFpAWY=";
   };
 
-  nativeBuildInputs = with python3Packages; [ setuptools ] ++ [ installShellFiles ];
+  nativeBuildInputs =
+    with python3Packages;
+    [
+      setuptools
+    ]
+    ++ [
+      installShellFiles
+    ];
 
   propagatedBuildInputs = with python3Packages; [
     aiofiles
@@ -34,7 +41,9 @@ python3Packages.buildPythonApplication rec {
     tqdm
   ];
 
-  pythonRelaxDeps = [ "httpx" ];
+  pythonRelaxDeps = [
+    "httpx"
+  ];
 
   postInstall = ''
     export PATH=$out/bin:$PATH
@@ -47,7 +56,9 @@ python3Packages.buildPythonApplication rec {
   # upstream has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "audible_cli" ];
+  pythonImportsCheck = [
+    "audible_cli"
+  ];
 
   passthru.updateScript = nix-update-script { };
 

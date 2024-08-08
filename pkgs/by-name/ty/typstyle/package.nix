@@ -25,7 +25,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-+iBxVTwAzYpLio9BKD1hYsTw4GgK6CkmbyM5QIiswck=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs =
     [
@@ -40,7 +42,9 @@ rustPlatform.buildRustPackage rec {
     ];
 
   # Disabling tests requiring network access
-  checkFlags = [ "--skip=e2e" ];
+  checkFlags = [
+    "--skip=e2e"
+  ];
 
   passthru = {
     updateScript = nix-update-script { };

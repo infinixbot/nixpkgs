@@ -45,9 +45,13 @@ python3.pkgs.buildPythonApplication rec {
     export LC_ALL=en_US.utf-8
   '';
 
-  nativeBuildInputs = with python3.pkgs; [ pandoc ];
+  nativeBuildInputs = with python3.pkgs; [
+    pandoc
+  ];
 
-  buildInputs = with python3.pkgs; [ glibcLocales ];
+  buildInputs = with python3.pkgs; [
+    glibcLocales
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     attrs

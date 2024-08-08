@@ -8,7 +8,9 @@
 {
 
   # Appliances are always "minimal".
-  imports = [ "${modulesPath}/profiles/minimal.nix" ];
+  imports = [
+    "${modulesPath}/profiles/minimal.nix"
+  ];
 
   # The system cannot be rebuilt.
   nix.enable = false;

@@ -32,7 +32,9 @@ buildPythonPackage rec {
       "\"${placeholder "out"}/${python.sitePackages}/reqif\""
   '';
 
-  nativeBuildInputs = [ hatchling ];
+  nativeBuildInputs = [
+    hatchling
+  ];
 
   propagatedBuildInputs = [
     beautifulsoup4

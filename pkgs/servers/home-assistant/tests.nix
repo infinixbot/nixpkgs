@@ -3,23 +3,45 @@
 let
   # some components' tests have additional dependencies
   extraCheckInputs = with home-assistant.python.pkgs; {
-    airzone_cloud = [ aioairzone ];
+    airzone_cloud = [
+      aioairzone
+    ];
     androidtv = home-assistant.getPackages "asuswrt" home-assistant.python.pkgs;
-    bluetooth = [ pyswitchbot ];
-    govee_ble = [ ibeacon-ble ];
-    lovelace = [ pychromecast ];
-    matrix = [ pydantic ];
-    mopeka = [ pyswitchbot ];
+    bluetooth = [
+      pyswitchbot
+    ];
+    govee_ble = [
+      ibeacon-ble
+    ];
+    lovelace = [
+      pychromecast
+    ];
+    matrix = [
+      pydantic
+    ];
+    mopeka = [
+      pyswitchbot
+    ];
     onboarding = [
       pymetno
       radios
       rpi-bad-power
     ];
-    raspberry_pi = [ rpi-bad-power ];
-    shelly = [ pyswitchbot ];
-    tilt_ble = [ ibeacon-ble ];
-    xiaomi_miio = [ arrow ];
-    zha = [ pydeconz ];
+    raspberry_pi = [
+      rpi-bad-power
+    ];
+    shelly = [
+      pyswitchbot
+    ];
+    tilt_ble = [
+      ibeacon-ble
+    ];
+    xiaomi_miio = [
+      arrow
+    ];
+    zha = [
+      pydeconz
+    ];
   };
 
   extraDisabledTestPaths =

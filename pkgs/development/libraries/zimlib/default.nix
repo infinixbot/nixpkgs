@@ -54,10 +54,14 @@ stdenv.mkDerivation rec {
   mesonFlags = [ "-Dtest_data_dir=${testData}" ];
 
   env.NIX_CFLAGS_COMPILE = toString (
-    lib.optionals (stdenv.cc.isGNU) [ "-Wno-error=mismatched-new-delete" ]
+    lib.optionals (stdenv.cc.isGNU) [
+      "-Wno-error=mismatched-new-delete"
+    ]
   );
 
-  nativeCheckInputs = [ gtest ];
+  nativeCheckInputs = [
+    gtest
+  ];
 
   doCheck = true;
 

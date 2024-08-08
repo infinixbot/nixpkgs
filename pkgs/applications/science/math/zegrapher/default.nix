@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
     qmake
     wrapQtAppsHook
   ];
-  buildInputs = [ boost ];
+  buildInputs = [
+    boost
+  ];
 
   meta = with lib; {
     homepage = "https://zegrapher.com/";

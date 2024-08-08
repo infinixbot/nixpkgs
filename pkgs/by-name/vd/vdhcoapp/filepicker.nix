@@ -27,7 +27,9 @@ rustPlatform.buildRustPackage rec {
     glib
   ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   meta = with lib; {
     description = "File picker used by VDHCoApp";

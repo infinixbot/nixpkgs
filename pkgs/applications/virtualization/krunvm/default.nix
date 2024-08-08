@@ -38,7 +38,11 @@ stdenv.mkDerivation rec {
     makeWrapper
   ] ++ lib.optionals stdenv.isDarwin [ sigtool ];
 
-  buildInputs = [ libkrun ] ++ lib.optionals stdenv.isDarwin [ libiconv ];
+  buildInputs =
+    [ libkrun ]
+    ++ lib.optionals stdenv.isDarwin [
+      libiconv
+    ];
 
   makeFlags = [ "PREFIX=${placeholder "out"}" ];
 

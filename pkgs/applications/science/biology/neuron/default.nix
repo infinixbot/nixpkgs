@@ -57,8 +57,12 @@ stdenv.mkDerivation (finalAttrs: {
       python3.pkgs.scikit-build
       python3.pkgs.matplotlib
     ]
-    ++ optionals useMpi [ mpi ]
-    ++ optionals useMpi [ python3.pkgs.mpi4py ]
+    ++ optionals useMpi [
+      mpi
+    ]
+    ++ optionals useMpi [
+      python3.pkgs.mpi4py
+    ]
     ++ optionals useRx3d [
       python3.pkgs.cython_0 # NOTE: cython<3 is required as of 8.2.6
       python3.pkgs.numpy

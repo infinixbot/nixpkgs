@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     cmake
   ];
 
-  buildInputs = lib.optionals stdenv.isLinux [ libgpiod ];
+  buildInputs = lib.optionals stdenv.isLinux [
+    libgpiod
+  ];
 
   installPhase = ''
     runHook preInstall

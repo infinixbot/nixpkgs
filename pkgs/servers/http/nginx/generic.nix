@@ -143,8 +143,12 @@ stdenv.mkDerivation {
       "--http-uwsgi-temp-path=/tmp/nginx_uwsgi"
       "--http-scgi-temp-path=/tmp/nginx_scgi"
     ]
-    ++ lib.optionals withDebug [ "--with-debug" ]
-    ++ lib.optionals withKTLS [ "--with-openssl-opt=enable-ktls" ]
+    ++ lib.optionals withDebug [
+      "--with-debug"
+    ]
+    ++ lib.optionals withKTLS [
+      "--with-openssl-opt=enable-ktls"
+    ]
     ++ lib.optionals withStream [
       "--with-stream"
       "--with-stream_realip_module"

@@ -29,7 +29,9 @@ let
 
     unpackCmd = "dpkg -x $curSrc source";
 
-    nativeBuildInputs = [ dpkg ];
+    nativeBuildInputs = [
+      dpkg
+    ];
 
     installPhase = ''
       # replace dangling symlinks which are not copied into fhs with actually files

@@ -20,7 +20,9 @@ stdenv.mkDerivation rec {
     sha256 = "1sgzv547h7hrskb9qd0x5yp45kmhvibjwj2mfswv95lg070h074d";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs =
     [
@@ -32,7 +34,9 @@ stdenv.mkDerivation rec {
       libGLU
       libglut
     ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.OpenGL ];
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.OpenGL
+    ];
 
   meta = with lib; {
     homepage = "http://geuz.org/gl2ps";

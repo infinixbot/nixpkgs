@@ -21,15 +21,21 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-U5We19f/X1UKYFacCRl+XRXn67W8cYOBORb2uEjanT4=";
   };
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   buildInputs =
     lib.optionals stdenv.isLinux [
       acl
       attr
     ]
-    ++ lib.optionals stdenv.isDarwin [ libiconv ]
-    ++ [ zlib ];
+    ++ lib.optionals stdenv.isDarwin [
+      libiconv
+    ]
+    ++ [
+      zlib
+    ];
 
   outputs = [
     "out"

@@ -13,7 +13,9 @@ buildDunePackage {
   pname = "file-context-printer";
   version = "0.0.3-unstable-2024-05-07";
 
-  nativeBuildInputs = [ reason ];
+  nativeBuildInputs = [
+    reason
+  ];
 
   propagatedBuildInputs = [
     re

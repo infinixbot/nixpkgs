@@ -40,7 +40,9 @@ let
   # we could enable "regex_stdlib" automatically, but only if
   # we are using libcxxStdenv which is compatible with GPLv2,
   # since the gcc libstdc++ license is GPLv2-incompatible
-  libcxxModules = [ "regex_stdlib" ];
+  libcxxModules = [
+    "regex_stdlib"
+  ];
 
   compatibleModules =
     lib: stdenv:

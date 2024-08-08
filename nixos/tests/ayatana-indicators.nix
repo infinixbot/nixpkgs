@@ -59,9 +59,13 @@ import ./make-test-python.nix (
         networking.networkmanager.enable = true; # lomiri-network-indicator
         # TODO potentially urfkill for lomiri-network-indicator?
 
-        services.dbus.packages = with pkgs.lomiri; [ libusermetrics ];
+        services.dbus.packages = with pkgs.lomiri; [
+          libusermetrics
+        ];
 
-        environment.systemPackages = with pkgs.lomiri; [ lomiri-schemas ];
+        environment.systemPackages = with pkgs.lomiri; [
+          lomiri-schemas
+        ];
 
         services.telepathy.enable = true;
 

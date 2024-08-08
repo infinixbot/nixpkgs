@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
     sqlite
   ];
 
-  cmakeFlags = [ "-DEMBED_SQLITE=OFF" ];
+  cmakeFlags = [
+    "-DEMBED_SQLITE=OFF"
+  ];
 
   meta = with lib; {
     description = "Free, open-source Japanese dictionary and kanji lookup tool";

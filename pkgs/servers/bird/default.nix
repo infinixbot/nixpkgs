@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
     libssh
   ];
 
-  patches = [ ./dont-create-sysconfdir-2.patch ];
+  patches = [
+    ./dont-create-sysconfdir-2.patch
+  ];
 
   CPP = "${stdenv.cc.targetPrefix}cpp -E";
 

@@ -103,13 +103,17 @@ stdenv.mkDerivation rec {
     )
     ++ optionals withVlc [ libvlc ];
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-    pkg-config
-    qttools
-    wrapQtAppsHook
-  ] ++ optionals stdenv.isLinux [ util-linux ];
+  nativeBuildInputs =
+    [
+      cmake
+      ninja
+      pkg-config
+      qttools
+      wrapQtAppsHook
+    ]
+    ++ optionals stdenv.isLinux [
+      util-linux
+    ];
 
   postInstall = optionalString withGstreamer ''
     qtWrapperArgs+=(

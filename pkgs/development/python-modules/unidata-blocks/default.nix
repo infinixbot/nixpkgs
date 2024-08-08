@@ -24,7 +24,9 @@ buildPythonPackage rec {
 
   build-system = [ hatchling ];
 
-  dependencies = [ langcodes ];
+  dependencies = [
+    langcodes
+  ];
 
   nativeCheckInputs = [ pytestCheckHook ];
 

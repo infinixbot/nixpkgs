@@ -48,7 +48,9 @@ python.pkgs.buildPythonApplication rec {
       --replace '{ git = "https://github.com/Pennyw0rth/oscrypto" }' '"*"'
   '';
 
-  nativeBuildInputs = with python.pkgs; [ poetry-core ];
+  nativeBuildInputs = with python.pkgs; [
+    poetry-core
+  ];
 
   propagatedBuildInputs = with python.pkgs; [
     aardwolf
@@ -82,7 +84,9 @@ python.pkgs.buildPythonApplication rec {
     xmltodict
   ];
 
-  nativeCheckInputs = with python.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python.pkgs; [
+    pytestCheckHook
+  ];
 
   preCheck = ''
     export HOME=$(mktemp -d)

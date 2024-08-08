@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
     sha256 = "0ibs575pfr0wmhfcw6ln6iz7gw2y45l3bah11rksf6g9jlwsxy1d";
   };
 
-  buildInputs = [ python3 ]; # ToDo: optional stuff missing
+  buildInputs = [
+    python3
+  ]; # ToDo: optional stuff missing
 
   nativeBuildInputs =
     [
@@ -40,7 +42,9 @@ stdenv.mkDerivation rec {
       gtk-doc
     ];
 
-  propagatedBuildInputs = [ telepathy-glib ];
+  propagatedBuildInputs = [
+    telepathy-glib
+  ];
 
   doCheck = true;
 

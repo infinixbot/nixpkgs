@@ -19,7 +19,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-nyqrHC6UOKp1wn6Yvk+53oBn60wUqSWEPUrcNTuPN04=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     clp

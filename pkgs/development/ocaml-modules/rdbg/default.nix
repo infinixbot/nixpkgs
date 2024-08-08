@@ -23,7 +23,9 @@ buildDunePackage rec {
     ounit
   ];
 
-  propagatedBuildInputs = [ lutils ];
+  propagatedBuildInputs = [
+    lutils
+  ];
 
   meta = with lib; {
     homepage = "https://gricad-gitlab.univ-grenoble-alpes.fr/verimag/synchrone/rdbg";

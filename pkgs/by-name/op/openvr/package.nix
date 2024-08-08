@@ -44,7 +44,9 @@ stdenv.mkDerivation (finalAttrs: {
     mv source/src/json source/thirdparty/jsoncpp
   '';
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs =
     [

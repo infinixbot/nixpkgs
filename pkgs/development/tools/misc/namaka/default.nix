@@ -25,7 +25,9 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ];
 
-  buildInputs = [ oniguruma ];
+  buildInputs = [
+    oniguruma
+  ];
 
   env = {
     GEN_ARTIFACTS = "artifacts";

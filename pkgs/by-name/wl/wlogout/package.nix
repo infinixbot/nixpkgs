@@ -35,7 +35,9 @@ stdenv.mkDerivation (finalAttrs: {
     "man"
   ];
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     meson
@@ -44,12 +46,16 @@ stdenv.mkDerivation (finalAttrs: {
     scdoc
   ];
 
-  buildInputs = [
-    gtk3
-    libxkbcommon
-    wayland
-    wayland-protocols
-  ] ++ lib.optionals withGtkLayerShell [ gtk-layer-shell ];
+  buildInputs =
+    [
+      gtk3
+      libxkbcommon
+      wayland
+      wayland-protocols
+    ]
+    ++ lib.optionals withGtkLayerShell [
+      gtk-layer-shell
+    ];
 
   strictDeps = true;
 

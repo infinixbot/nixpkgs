@@ -488,6 +488,8 @@ in
       ];
     };
 
-    environment.systemPackages = [ pkgs.maddy ];
+    environment.systemPackages = [
+      pkgs.maddy
+    ];
   };
 }

@@ -52,7 +52,9 @@ python3Packages.buildPythonApplication rec {
       setuptools
       qt6.qtbase
     ]
-    ++ lib.optionals stdenv.isLinux [ qt6.qtwayland ];
+    ++ lib.optionals stdenv.isLinux [
+      qt6.qtwayland
+    ];
 
   meta = with lib; {
     description = "GUI for reading and writing GB and GBA cartridges with the GBxCart RW";

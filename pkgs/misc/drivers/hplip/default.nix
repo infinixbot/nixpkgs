@@ -83,20 +83,24 @@ python311Packages.buildPythonApplication {
   inherit pname version src;
   format = "other";
 
-  buildInputs = [
-    libjpeg
-    cups
-    libusb1
-    sane-backends
-    dbus
-    file
-    ghostscript
-    net-snmp
-    openssl
-    perl
-    zlib
-    avahi
-  ] ++ lib.optionals withQt5 [ qt5.qtwayland ];
+  buildInputs =
+    [
+      libjpeg
+      cups
+      libusb1
+      sane-backends
+      dbus
+      file
+      ghostscript
+      net-snmp
+      openssl
+      perl
+      zlib
+      avahi
+    ]
+    ++ lib.optionals withQt5 [
+      qt5.qtwayland
+    ];
 
   nativeBuildInputs = [
     pkg-config

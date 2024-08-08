@@ -29,11 +29,15 @@ stdenv.mkDerivation rec {
   pname = "libhandy";
   version = "1.8.3";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ] ++ lib.optionals enableGlade [ "glade" ];
+  outputs =
+    [
+      "out"
+      "dev"
+      "devdoc"
+    ]
+    ++ lib.optionals enableGlade [
+      "glade"
+    ];
   outputBin = "dev";
 
   src = fetchurl {
@@ -41,7 +45,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-BbSXIpBz/1V/ELMm4HTFBm+HQ6MC1IIKuXvLXNLasIc=";
   };
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs =
     [
@@ -56,10 +62,14 @@ stdenv.mkDerivation rec {
       libxml2 # for xmllint
     ];
 
-  buildInputs = [
-    gdk-pixbuf
-    gtk3
-  ] ++ lib.optionals enableGlade [ glade ];
+  buildInputs =
+    [
+      gdk-pixbuf
+      gtk3
+    ]
+    ++ lib.optionals enableGlade [
+      glade
+    ];
 
   nativeCheckInputs = [
     xvfb-run

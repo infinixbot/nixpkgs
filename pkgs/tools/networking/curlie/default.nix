@@ -17,7 +17,9 @@ buildGoModule rec {
     hash = "sha256-YOsq3cB+Pn2eC1Dky3fobBRR7GMxcf/tvWr6i3Vq/BE=";
   };
 
-  patches = [ ./bump-golang-x-sys.patch ];
+  patches = [
+    ./bump-golang-x-sys.patch
+  ];
 
   vendorHash = "sha256-VsPdMUfS4UVem6uJgFISfFHQEKtIumDQktHQFPC1muc=";
 

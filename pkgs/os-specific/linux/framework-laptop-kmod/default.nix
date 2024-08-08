@@ -19,7 +19,9 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = kernel.moduleBuildDependencies;
 
-  makeFlags = kernel.makeFlags ++ [ "KDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build" ];
+  makeFlags = kernel.makeFlags ++ [
+    "KDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
+  ];
 
   installPhase = ''
     runHook preInstall

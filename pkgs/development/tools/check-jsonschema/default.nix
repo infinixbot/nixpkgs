@@ -39,7 +39,9 @@ buildPythonApplication rec {
     "check_jsonschema.cli"
   ];
 
-  disabledTests = [ "test_schemaloader_yaml_data" ];
+  disabledTests = [
+    "test_schemaloader_yaml_data"
+  ];
 
   meta = with lib; {
     description = "Jsonschema CLI and pre-commit hook";

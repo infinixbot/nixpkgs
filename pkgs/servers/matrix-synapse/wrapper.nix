@@ -28,7 +28,9 @@ in
 stdenv.mkDerivation {
   name = (lib.appendToName "wrapped" matrix-synapse-unwrapped).name;
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   buildCommand = ''
     for bin in ${matrix-synapse-unwrapped}/bin/*; do

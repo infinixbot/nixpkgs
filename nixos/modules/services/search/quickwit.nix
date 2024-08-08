@@ -165,7 +165,9 @@ in
           ProtectKernelTunables = true;
           ProtectProc = "invisible";
           ProtectSystem = "strict";
-          ReadWritePaths = [ cfg.dataDir ];
+          ReadWritePaths = [
+            cfg.dataDir
+          ];
           RestrictAddressFamilies = [
             "AF_NETLINK"
             "AF_INET"

@@ -169,7 +169,9 @@ pkgs.recurseIntoAttrs (rec {
   nvim_with_ftplugin = neovim.override {
     extraName = "-with-ftplugin";
     configure.packages.plugins = {
-      start = [ texFtplugin ];
+      start = [
+        texFtplugin
+      ];
     };
   };
 
@@ -207,7 +209,9 @@ pkgs.recurseIntoAttrs (rec {
   nvim_with_gitsigns_plugin = neovim.override {
     extraName = "-with-gitsigns-plugin";
     configure.packages.plugins = {
-      start = [ vimPlugins.gitsigns-nvim ];
+      start = [
+        vimPlugins.gitsigns-nvim
+      ];
     };
   };
   checkHelpLuaPackages = runTest nvim_with_gitsigns_plugin ''

@@ -36,7 +36,9 @@ stdenv.mkDerivation rec {
       --replace 'wl-copy' "${wl-clipboard}/bin/wl-copy"
   '';
 
-  installFlags = [ "DESTDIR=${placeholder "out"}" ];
+  installFlags = [
+    "DESTDIR=${placeholder "out"}"
+  ];
 
   postInstall = ''
     wrapProgram $out/usr/bin/wl-color-picker \

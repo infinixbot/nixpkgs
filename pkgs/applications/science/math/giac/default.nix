@@ -161,8 +161,12 @@ stdenv.mkDerivation rec {
       "--enable-gui"
       "--with-x"
     ]
-    ++ lib.optionals (!enableGUI) [ "--disable-fltk" ]
-    ++ lib.optionals (!enableMicroPy) [ "--disable-micropy" ];
+    ++ lib.optionals (!enableGUI) [
+      "--disable-fltk"
+    ]
+    ++ lib.optionals (!enableMicroPy) [
+      "--disable-micropy"
+    ];
 
   postInstall =
     ''

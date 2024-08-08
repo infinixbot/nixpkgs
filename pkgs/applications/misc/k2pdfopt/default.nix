@@ -85,7 +85,9 @@ stdenv.mkDerivation rec {
   inherit pname version;
   src = k2pdfopt_src;
 
-  patches = [ ./0001-Fix-CMakeLists.patch ];
+  patches = [
+    ./0001-Fix-CMakeLists.patch
+  ];
 
   postPatch = ''
     substituteInPlace willuslib/bmpdjvu.c \

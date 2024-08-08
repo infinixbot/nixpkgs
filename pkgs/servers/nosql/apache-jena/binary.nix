@@ -13,7 +13,9 @@ stdenv.mkDerivation rec {
     url = "mirror://apache/jena/binaries/apache-jena-${version}.tar.gz";
     hash = "sha256-LsNno/s2KFKykxKN7klTLfmFWu/jtXJCV9TFPX/Osh4=";
   };
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
   installPhase = ''
     cp -r . "$out"
     for i in "$out"/bin/*; do

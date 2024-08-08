@@ -51,7 +51,9 @@ python3.pkgs.buildPythonApplication rec {
     libadwaita
   ];
 
-  propagatedBuildInputs = [ python3.pkgs.pygobject3 ];
+  propagatedBuildInputs = [
+    python3.pkgs.pygobject3
+  ];
 
   preInstall = ''
     patchShebangs ../build-aux/meson/postinstall.py

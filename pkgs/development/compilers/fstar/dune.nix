@@ -26,9 +26,13 @@ buildDunePackage {
     cd ocaml
   '';
 
-  nativeBuildInputs = [ menhir ];
+  nativeBuildInputs = [
+    menhir
+  ];
 
-  buildInputs = [ memtrace ];
+  buildInputs = [
+    memtrace
+  ];
 
   propagatedBuildInputs = [
     batteries

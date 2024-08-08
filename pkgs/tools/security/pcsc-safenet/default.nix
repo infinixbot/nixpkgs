@@ -38,7 +38,9 @@ stdenv.mkDerivation rec {
     pcsclite
   ];
 
-  runtimeDependencies = [ openssl_1_1 ];
+  runtimeDependencies = [
+    openssl_1_1
+  ];
 
   nativeBuildInputs = [
     autoPatchelfHook

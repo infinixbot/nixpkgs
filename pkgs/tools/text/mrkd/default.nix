@@ -17,7 +17,9 @@ let
           hash = "sha256-WaNCnbU8ULXGvMigf4hIywDX3IvbQxpKtBkg0gHUdW4=";
         };
         meta = old.meta // {
-          knownVulnerabilities = [ "CVE-2022-34749" ];
+          knownVulnerabilities = [
+            "CVE-2022-34749"
+          ];
         };
       });
     };

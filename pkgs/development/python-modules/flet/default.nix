@@ -30,7 +30,9 @@ buildPythonPackage rec {
 
   sourceRoot = "${src.name}/sdk/python/packages/flet";
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   makeWrapperArgs = [
     "--prefix"

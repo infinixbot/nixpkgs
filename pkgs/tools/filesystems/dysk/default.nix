@@ -18,7 +18,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-N51M9uEMfcoNyR8r76bd0PW2jSQTpU/0V+cEl82gFqk=";
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   postInstall = ''
     installManPage $releaseDir/build/*/out/dysk.1

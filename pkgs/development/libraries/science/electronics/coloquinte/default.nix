@@ -19,7 +19,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-bPDXaNZCNBM0qiu+46cL/zH/41lwqHPqfqTzJaERgVQ=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = [
     lemon-graph

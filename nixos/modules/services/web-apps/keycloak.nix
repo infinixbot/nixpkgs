@@ -599,14 +599,18 @@ in
       services.keycloak.settings =
         let
           postgresParams = concatStringsSep "&" (
-            optionals cfg.database.useSSL [ "ssl=true" ]
+            optionals cfg.database.useSSL [
+              "ssl=true"
+            ]
             ++ optionals (cfg.database.caCert != null) [
               "sslrootcert=${cfg.database.caCert}"
               "sslmode=verify-ca"
             ]
           );
           mariadbParams = concatStringsSep "&" (
-            [ "characterEncoding=UTF-8" ]
+            [
+              "characterEncoding=UTF-8"
+            ]
             ++ optionals cfg.database.useSSL [
               "useSSL=true"
               "requireSSL=true"

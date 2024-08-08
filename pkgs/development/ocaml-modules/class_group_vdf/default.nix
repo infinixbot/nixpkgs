@@ -33,7 +33,9 @@ buildDunePackage (
       dune-configurator
     ];
 
-    buildInputs = [ dune-configurator ];
+    buildInputs = [
+      dune-configurator
+    ];
 
     propagatedBuildInputs = [
       zarith

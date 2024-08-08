@@ -20,9 +20,13 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-5aLT0JfeFj0fZP/1sHXulCQtoquHYriapMdPtN+fxko=";
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Foundation ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.Foundation
+  ];
 
   # cargo test has an x86-only dependency
   doCheck = stdenv.hostPlatform.isx86;

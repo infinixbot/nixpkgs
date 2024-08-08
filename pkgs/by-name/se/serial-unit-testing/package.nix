@@ -19,9 +19,13 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-PoV2v0p0L3CTtC9VMAx2Z/ZsSAIFi2gh2TtOp64S6ZQ=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ udev ];
+  buildInputs = [
+    udev
+  ];
 
   # tests require a serial port
   doCheck = false;

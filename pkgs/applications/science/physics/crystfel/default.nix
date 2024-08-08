@@ -61,7 +61,9 @@ let
     # preprocessor flag.
     env.NIX_CFLAGS_COMPILE = "-DNIX_PROVIDED_SYMOP_FILE=\"${placeholder "out"}/share/ccp4/syminfo.lib\"";
 
-    patches = [ ./libccp4-use-hardcoded-syminfo-lib.patch ];
+    patches = [
+      ./libccp4-use-hardcoded-syminfo-lib.patch
+    ];
 
     postPatch =
       let
@@ -249,8 +251,12 @@ stdenv.mkDerivation rec {
       gtk3
       gdk-pixbuf
     ]
-    ++ lib.optionals stdenv.isDarwin [ argp-standalone ]
-    ++ lib.optionals (stdenv.isDarwin && !stdenv.isAarch64) [ memorymappingHook ]
+    ++ lib.optionals stdenv.isDarwin [
+      argp-standalone
+    ]
+    ++ lib.optionals (stdenv.isDarwin && !stdenv.isAarch64) [
+      memorymappingHook
+    ]
     ++ lib.optionals withBitshuffle [ hdf5-external-filter-plugins ];
 
   patches = [

@@ -44,7 +44,9 @@ stdenv.mkDerivation (finalAttrs: {
     wayland
   ];
 
-  mesonFlags = [ "-Duse_qt_version=qt6" ];
+  mesonFlags = [
+    "-Duse_qt_version=qt6"
+  ];
 
   dontWrapQtApps = true;
 

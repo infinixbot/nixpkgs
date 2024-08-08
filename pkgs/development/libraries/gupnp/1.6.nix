@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-ydxQ6MeLN5LRsObFxfUsk+k0XT2uKJHjEamTpXT1oE8=";
   };
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     meson
@@ -48,7 +50,9 @@ stdenv.mkDerivation rec {
     libxml2
   ];
 
-  mesonFlags = [ "-Dgtk_doc=true" ];
+  mesonFlags = [
+    "-Dgtk_doc=true"
+  ];
 
   doCheck = true;
 

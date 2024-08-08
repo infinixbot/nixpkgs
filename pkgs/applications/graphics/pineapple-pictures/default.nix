@@ -33,7 +33,9 @@ stdenv.mkDerivation (finalAttrs: {
     exiv2
   ];
 
-  cmakeFlags = [ "-DPREFER_QT_5=OFF" ];
+  cmakeFlags = [
+    "-DPREFER_QT_5=OFF"
+  ];
 
   meta = {
     description = "Homebrew lightweight image viewer";

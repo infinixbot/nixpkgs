@@ -20,7 +20,9 @@ buildGoModule rec {
   proxyVendor = true;
   vendorHash = "sha256-+XYwFYbvZvk0TWoRtCKQIzbQeznQkolB+NFqUiZMkpA=";
 
-  subPackages = [ "cmd/risor" ];
+  subPackages = [
+    "cmd/risor"
+  ];
 
   ldflags = [
     "-s"

@@ -54,16 +54,22 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  depsBuildBuild = [ buildPackages.stdenv.cc ];
+  depsBuildBuild = [
+    buildPackages.stdenv.cc
+  ];
 
   nativeBuildInputs =
-    [ autoreconfHook ]
+    [
+      autoreconfHook
+    ]
     ++ lib.optionals enablePython [
       python3
       swig
     ];
 
-  buildInputs = [ bash ];
+  buildInputs = [
+    bash
+  ];
 
   configureFlags = [
     # z/OS plugin is not useful on Linux, and pulls in an extra openldap

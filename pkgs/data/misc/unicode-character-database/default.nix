@@ -14,7 +14,9 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "sha256-yxxmPQU5JlAM1QEilzYEV1JxOgZr11gCCYWYt6cFYXc=";
   };
 
-  nativeBuildInputs = [ unzip ];
+  nativeBuildInputs = [
+    unzip
+  ];
 
   sourceRoot = ".";
 

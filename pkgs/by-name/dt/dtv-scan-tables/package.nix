@@ -14,11 +14,15 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-P0yJgbOkgpBms5arwNonDlx+Z0tdGQ6SUyoGlRoH6Y4=";
   };
 
-  nativeBuildInputs = [ v4l-utils ];
+  nativeBuildInputs = [
+    v4l-utils
+  ];
 
   sourceRoot = "usr/share/dvb";
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
 
   allowedReferences = [ ];
 

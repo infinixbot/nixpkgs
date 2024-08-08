@@ -22,7 +22,9 @@ rustPlatform.buildRustPackage rec {
     cp rust.capnp $out/include/capnp
   '';
 
-  nativeCheckInputs = [ capnproto ];
+  nativeCheckInputs = [
+    capnproto
+  ];
 
   meta = with lib; {
     description = "Cap'n Proto codegen plugin for Rust";

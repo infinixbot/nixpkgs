@@ -53,7 +53,9 @@ stdenv.mkDerivation rec {
     && !stdenv.hostPlatform.isPower # one test times out
   ;
 
-  mesonFlags = [ "-Dtests=${if doCheck then "enabled" else "disabled"}" ];
+  mesonFlags = [
+    "-Dtests=${if doCheck then "enabled" else "disabled"}"
+  ];
 
   nativeCheckInputs = [
     valgrind

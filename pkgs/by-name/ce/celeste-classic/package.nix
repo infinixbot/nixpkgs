@@ -23,7 +23,9 @@ stdenvNoCC.mkDerivation {
     extension = "zip";
   };
 
-  nativeBuildInputs = [ autoPatchelfHook ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+  ];
 
   buildInputs = [ SDL2 ];
 

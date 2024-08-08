@@ -40,7 +40,9 @@ buildDotnetModule rec {
     gtk3
   ];
 
-  buildInputs = [ gtk3 ];
+  buildInputs = [
+    gtk3
+  ];
 
   nativeBuildInputs = [
     copyDesktopItems

@@ -20,7 +20,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-FCN+0Wx2fYQcj5CRgPubAWbGGyVQcSSfu/Om6SUB6TQ=";
 
-  subPackages = [ "cmd/juju" ];
+  subPackages = [
+    "cmd/juju"
+  ];
 
   nativeBuildInputs = [ installShellFiles ];
 

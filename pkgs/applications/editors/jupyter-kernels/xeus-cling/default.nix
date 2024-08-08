@@ -39,7 +39,9 @@ let
     {
       displayName = "C++" + versionSuffix;
       argv =
-        [ "${xeus-cling}/bin/xcpp" ]
+        [
+          "${xeus-cling}/bin/xcpp"
+        ]
         ++ cling.flags
         ++ [
           "-resource-dir"

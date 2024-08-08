@@ -30,12 +30,16 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    [ glib ]
+    [
+      glib
+    ]
     ++ lib.optionals alsaSupport [
       alsa-lib
       udev
     ]
-    ++ lib.optionals pulseaudioSupport [ libpulseaudio ];
+    ++ lib.optionals pulseaudioSupport [
+      libpulseaudio
+    ];
 
   configureFlags = lib.optional ossSupport "--enable-oss";
 

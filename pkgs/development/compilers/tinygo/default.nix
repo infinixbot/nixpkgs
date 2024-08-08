@@ -46,7 +46,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-rJ8AfJkIpxDkk+9Tf7ORnn7ueJB1kjJUBiLMDV5tias=";
 
-  patches = [ ./0001-GNUmakefile.patch ];
+  patches = [
+    ./0001-GNUmakefile.patch
+  ];
 
   nativeCheckInputs = [ binaryen ];
   nativeBuildInputs = [

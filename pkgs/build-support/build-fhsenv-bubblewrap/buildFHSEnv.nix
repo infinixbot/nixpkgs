@@ -74,7 +74,9 @@ let
     bzip2
     xz
   ];
-  baseMultiPaths = with pkgsi686Linux; [ (toString gcc.cc.lib) ];
+  baseMultiPaths = with pkgsi686Linux; [
+    (toString gcc.cc.lib)
+  ];
 
   ldconfig = writeShellScriptBin "ldconfig" ''
     # due to a glibc bug, 64-bit ldconfig complains about patchelf'd 32-bit libraries, so we use 32-bit ldconfig when we have them

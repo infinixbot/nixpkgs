@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-J2Do1iAbE1GBC8co/4nxOzeGJQiPRc+21fgMDpzKX+A=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   makeFlags = [
     "prefix=$(out)"

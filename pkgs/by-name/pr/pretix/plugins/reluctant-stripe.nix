@@ -25,7 +25,9 @@ buildPythonPackage {
 
   doCheck = false; # no tests
 
-  pythonImportsCheck = [ "pretix_reluctant_stripe" ];
+  pythonImportsCheck = [
+    "pretix_reluctant_stripe"
+  ];
 
   meta = with lib; {
     description = "Nudge users to not use Stripe as a payment provider";

@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     python3
   ];
 
-  configureFlags = [ "--enable-shared" ];
+  configureFlags = [
+    "--enable-shared"
+  ];
 
   outputs = [
     "bin"

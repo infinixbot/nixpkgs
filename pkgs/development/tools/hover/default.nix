@@ -64,7 +64,9 @@ let
 
     checkRun = false;
 
-    patches = [ ./fix-assets-path.patch ];
+    patches = [
+      ./fix-assets-path.patch
+    ];
 
     postPatch = ''
       sed -i 's|@assetsFolder@|'"''${out}/share/assets"'|g' internal/fileutils/assets.go

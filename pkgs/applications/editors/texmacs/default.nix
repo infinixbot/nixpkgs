@@ -63,17 +63,21 @@ stdenv.mkDerivation {
     cmake
   ];
 
-  buildInputs = [
-    guile_1_8
-    qtbase
-    qtsvg
-    ghostscriptX
-    freetype
-    libjpeg
-    sqlite
-    git
-    python3
-  ] ++ lib.optionals stdenv.isDarwin [ qtmacextras ];
+  buildInputs =
+    [
+      guile_1_8
+      qtbase
+      qtsvg
+      ghostscriptX
+      freetype
+      libjpeg
+      sqlite
+      git
+      python3
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      qtmacextras
+    ];
 
   cmakeFlags = lib.optionals stdenv.isDarwin [
     (lib.cmakeFeature "TEXMACS_GUI" "Qt")

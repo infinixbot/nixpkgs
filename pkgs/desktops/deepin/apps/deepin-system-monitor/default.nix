@@ -81,7 +81,9 @@ stdenv.mkDerivation rec {
     dwayland
   ];
 
-  cmakeFlags = [ "-DVERSION=${version}" ];
+  cmakeFlags = [
+    "-DVERSION=${version}"
+  ];
 
   strictDeps = true;
 

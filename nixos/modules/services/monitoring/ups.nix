@@ -602,7 +602,9 @@ in
         };
         environment.NUT_CONFPATH = "/etc/nut";
         environment.NUT_STATEPATH = "/var/lib/nut";
-        restartTriggers = [ config.environment.etc."nut/upsd.conf".source ];
+        restartTriggers = [
+          config.environment.etc."nut/upsd.conf".source
+        ];
       };
 
     systemd.services.upsdrv = {

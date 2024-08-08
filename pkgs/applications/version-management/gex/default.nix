@@ -21,7 +21,13 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [ libgit2 ] ++ lib.optionals stdenv.isDarwin [ Security ];
+  buildInputs =
+    [
+      libgit2
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Security
+    ];
 
   # force the libgit2-sys crate to use the system libgit2 library
   LIBGIT2_NO_VENDOR = 1;

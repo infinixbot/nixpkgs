@@ -16,14 +16,18 @@ stdenv.mkDerivation rec {
     hash = "sha256-DtRYoaAXb9ZD2OLiKbzKzH5vzuu+Lzu4eHaDgPB9hjU=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   # NEON does not work on aarch64, we disable it
   cmakeFlags = lib.optionals stdenv.isAarch64 [ "-DCMAKE_CXX_FLAGS=-DLIBYUV_DISABLE_NEON" ];
 
   buildInputs = [ libjpeg ];
 
-  patches = [ ./link-library-against-libjpeg.patch ];
+  patches = [
+    ./link-library-against-libjpeg.patch
+  ];
 
   postPatch = ''
     mkdir -p $out/lib/pkgconfig

@@ -30,7 +30,11 @@ in
         kmail
         kmail-account-wizard
       ]
-      ++ lib.optionals cfg.kontact [ kontact ]
-      ++ lib.optionals cfg.merkuro [ merkuro ];
+      ++ lib.optionals cfg.kontact [
+        kontact
+      ]
+      ++ lib.optionals cfg.merkuro [
+        merkuro
+      ];
   };
 }

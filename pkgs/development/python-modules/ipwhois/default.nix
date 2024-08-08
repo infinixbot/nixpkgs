@@ -39,7 +39,9 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "dnspython" ];
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   propagatedBuildInputs = [ dnspython ];
 

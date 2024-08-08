@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-MQVUZ7PkxauoPpfxlhhAtsKztMe9tcZOpOzshuz/eb8=";
   };
 
-  patches = [ ./0001-Use-full-path-in-pkgconfig.patch ];
+  patches = [
+    ./0001-Use-full-path-in-pkgconfig.patch
+  ];
 
   nativeBuildInputs = [ cmake ];
 

@@ -32,8 +32,12 @@ python3Packages.buildPythonApplication rec {
     libsoup_3
     libsecret
   ];
-  propagatedBuildInputs = with python3Packages; [ pygobject3 ];
-  checkInputs = with python3Packages; [ freezegun ];
+  propagatedBuildInputs = with python3Packages; [
+    pygobject3
+  ];
+  checkInputs = with python3Packages; [
+    freezegun
+  ];
 
   checkPhase = ''
     patchShebangs ./runtests

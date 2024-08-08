@@ -585,7 +585,9 @@ stdenv.mkDerivation (finalAttrs: {
       "--enable-kf${qtMajor}"
       "--enable-qt${qtMajor}"
     ]
-    ++ optionals (kdeIntegration && qtMajor == "5") [ "--enable-gtk3-kde5" ];
+    ++ optionals (kdeIntegration && qtMajor == "5") [
+      "--enable-gtk3-kde5"
+    ];
 
   env = {
     # FIXME: this is a hack, because the right cflags are not being picked up

@@ -20,7 +20,9 @@ buildPythonApplication rec {
     matplotlib
   ];
 
-  nativeCheckInputs = [ pytest ];
+  nativeCheckInputs = [
+    pytest
+  ];
 
   checkPhase = ''
     runHook preCheck

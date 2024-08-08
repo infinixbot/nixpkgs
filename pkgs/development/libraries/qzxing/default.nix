@@ -22,9 +22,13 @@ stdenv.mkDerivation (finalAttrs: {
   # QMake can't find qtmultimedia in buildInputs
   strictDeps = false;
 
-  nativeBuildInputs = [ qmake ];
+  nativeBuildInputs = [
+    qmake
+  ];
 
-  buildInputs = [ qtmultimedia ];
+  buildInputs = [
+    qtmultimedia
+  ];
 
   dontWrapQtApps = true;
 
@@ -49,6 +53,8 @@ stdenv.mkDerivation (finalAttrs: {
     license = licenses.asl20;
     maintainers = with maintainers; [ OPNA2608 ];
     platforms = platforms.unix;
-    pkgConfigModules = [ "QZXing" ];
+    pkgConfigModules = [
+      "QZXing"
+    ];
   };
 })

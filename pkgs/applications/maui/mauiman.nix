@@ -14,7 +14,9 @@ mkDerivation {
     extra-cmake-modules
   ];
 
-  buildInputs = [ qtsystems ];
+  buildInputs = [
+    qtsystems
+  ];
 
   meta = with lib; {
     homepage = "https://invent.kde.org/maui/mauiman";

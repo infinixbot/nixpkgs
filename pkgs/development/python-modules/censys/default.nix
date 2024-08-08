@@ -35,7 +35,9 @@ buildPythonPackage rec {
       --replace-fail "--cov" ""
   '';
 
-  build-system = [ poetry-core ];
+  build-system = [
+    poetry-core
+  ];
 
   dependencies = [
     argcomplete

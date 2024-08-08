@@ -57,14 +57,18 @@ buildPerlPackage rec {
     ];
 
   # TODO: TermReadKey was temporarily removed from propagatedBuildInputs to unfreeze the build
-  propagatedBuildInputs = lib.optionals (!stdenv.hostPlatform.isMusl) [ TextWrapI18N ] ++ [
-    LocaleGettext
-    SGMLSpm
-    UnicodeLineBreak
-    PodParser
-    YAMLTiny
-    SyntaxKeywordTry
-  ];
+  propagatedBuildInputs =
+    lib.optionals (!stdenv.hostPlatform.isMusl) [
+      TextWrapI18N
+    ]
+    ++ [
+      LocaleGettext
+      SGMLSpm
+      UnicodeLineBreak
+      PodParser
+      YAMLTiny
+      SyntaxKeywordTry
+    ];
 
   buildInputs = [ bash ];
 

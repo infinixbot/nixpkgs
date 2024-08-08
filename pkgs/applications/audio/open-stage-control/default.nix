@@ -36,7 +36,9 @@ buildNpmPackage rec {
     makeBinaryWrapper
   ];
 
-  buildInputs = [ python3.pkgs.python-rtmidi ];
+  buildInputs = [
+    python3.pkgs.python-rtmidi
+  ];
 
   doInstallCheck = true;
 

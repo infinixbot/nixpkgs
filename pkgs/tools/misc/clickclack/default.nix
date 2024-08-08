@@ -16,9 +16,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-YmlbGEmZgT/30c+mWQzdz4rKc69d75zhoNUA5FdxdMc=";
   };
 
-  buildInputs = [ SDL2 ];
+  buildInputs = [
+    SDL2
+  ];
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   meta = with lib; {
     description = "Vibration/audio feedback tool to be used with virtual keyboards";

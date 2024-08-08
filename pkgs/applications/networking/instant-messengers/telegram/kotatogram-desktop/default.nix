@@ -95,7 +95,9 @@ stdenv.mkDerivation rec {
       clang
       gobject-introspection
     ]
-    ++ lib.optionals stdenv.isDarwin [ lld ];
+    ++ lib.optionals stdenv.isDarwin [
+      lld
+    ];
 
   buildInputs =
     [
@@ -170,7 +172,9 @@ stdenv.mkDerivation rec {
     NIX_CFLAGS_LINK = "-fuse-ld=lld";
   };
 
-  cmakeFlags = [ "-DTDESKTOP_API_TEST=ON" ];
+  cmakeFlags = [
+    "-DTDESKTOP_API_TEST=ON"
+  ];
 
   installPhase = lib.optionalString stdenv.isDarwin ''
     mkdir -p $out/Applications

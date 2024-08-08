@@ -25,7 +25,9 @@ stdenvNoCC.mkDerivation rec {
     xcursorgen
   ];
 
-  propagatedBuildInputs = [ papirus-icon-theme ];
+  propagatedBuildInputs = [
+    papirus-icon-theme
+  ];
 
   dontDropIconThemeCache = true;
 

@@ -19,7 +19,9 @@ stdenv.mkDerivation rec {
     stripRoot = false;
   };
 
-  patches = [ ./aligned-alloc.patch ];
+  patches = [
+    ./aligned-alloc.patch
+  ];
 
   # strictoverflow is disabled because it breaks aarch64-darwin
   hardeningDisable = [ "strictoverflow" ];
@@ -65,9 +67,13 @@ stdenv.mkDerivation rec {
     findlib
   ];
 
-  propagatedBuildInputs = [ ctypes ];
+  propagatedBuildInputs = [
+    ctypes
+  ];
 
-  checkInputs = [ cppo ];
+  checkInputs = [
+    cppo
+  ];
 
   strictDeps = true;
 

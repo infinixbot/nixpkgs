@@ -61,9 +61,13 @@ tcl.mkTclDerivation {
   buildInputs = [ ];
 
   propagatedBuildInputs =
-    [ libXft ]
+    [
+      libXft
+    ]
     ++ lib.optionals enableAqua (
-      [ darwin.apple_sdk.frameworks.Cocoa ]
+      [
+        darwin.apple_sdk.frameworks.Cocoa
+      ]
       ++ lib.optionals (lib.versionAtLeast stdenv.hostPlatform.darwinMinVersion "11") [
         darwin.apple_sdk.frameworks.UniformTypeIdentifiers
       ]

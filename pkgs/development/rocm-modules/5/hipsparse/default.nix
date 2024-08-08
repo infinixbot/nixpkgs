@@ -21,9 +21,16 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "hipsparse";
   version = "5.7.1";
 
-  outputs = [
-    "out"
-  ] ++ lib.optionals buildTests [ "test" ] ++ lib.optionals buildSamples [ "sample" ];
+  outputs =
+    [
+      "out"
+    ]
+    ++ lib.optionals buildTests [
+      "test"
+    ]
+    ++ lib.optionals buildSamples [
+      "sample"
+    ];
 
   src = fetchFromGitHub {
     owner = "ROCm";
@@ -39,10 +46,17 @@ stdenv.mkDerivation (finalAttrs: {
     gfortran
   ];
 
-  buildInputs = [
-    rocsparse
-    git
-  ] ++ lib.optionals buildTests [ gtest ] ++ lib.optionals (buildTests || buildSamples) [ openmp ];
+  buildInputs =
+    [
+      rocsparse
+      git
+    ]
+    ++ lib.optionals buildTests [
+      gtest
+    ]
+    ++ lib.optionals (buildTests || buildSamples) [
+      openmp
+    ];
 
   cmakeFlags =
     [
@@ -55,8 +69,12 @@ stdenv.mkDerivation (finalAttrs: {
       "-DCMAKE_INSTALL_LIBDIR=lib"
       "-DCMAKE_INSTALL_INCLUDEDIR=include"
     ]
-    ++ lib.optionals (gpuTargets != [ ]) [ "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}" ]
-    ++ lib.optionals buildTests [ "-DBUILD_CLIENTS_TESTS=ON" ];
+    ++ lib.optionals (gpuTargets != [ ]) [
+      "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
+    ]
+    ++ lib.optionals buildTests [
+      "-DBUILD_CLIENTS_TESTS=ON"
+    ];
 
   # We have to manually generate the matrices
   # CMAKE_MATRICES_DIR seems to be reset in clients/tests/CMakeLists.txt

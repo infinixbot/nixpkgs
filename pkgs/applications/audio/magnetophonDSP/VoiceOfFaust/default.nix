@@ -36,7 +36,9 @@ stdenv.mkDerivation rec {
 
   dontWrapQtApps = true;
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
 
   patchPhase = ''
     sed -i "s@pd -nodac@${pitchTracker}/bin/pd -nodac@g" launchers/synthWrapper

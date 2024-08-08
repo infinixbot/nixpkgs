@@ -24,9 +24,13 @@ buildDunePackage rec {
     ppx_optcomp
   ];
 
-  propagatedBuildInputs = [ kqueue ];
+  propagatedBuildInputs = [
+    kqueue
+  ];
 
-  checkInputs = [ ppx_expect ];
+  checkInputs = [
+    ppx_expect
+  ];
 
   doCheck = true;
 

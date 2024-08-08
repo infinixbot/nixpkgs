@@ -44,7 +44,9 @@ import ./make-test-python.nix (
             networks = {
               "eth1" = {
                 matchConfig.Name = "eth1";
-                address = [ "2001:DB8::1/64" ];
+                address = [
+                  "2001:DB8::1/64"
+                ];
                 networkConfig.IPv4Forwarding = true;
                 networkConfig.IPv6Forwarding = true;
               };
@@ -284,7 +286,9 @@ import ./make-test-python.nix (
             # verify connectivity from the client to the router.
             "01-lo" = {
               name = "lo";
-              addresses = [ { Address = "FD42::1/128"; } ];
+              addresses = [
+                { Address = "FD42::1/128"; }
+              ];
             };
           };
         };

@@ -38,7 +38,9 @@ buildGoModule rec {
     rm cmd/infracost/comment_{azure_repos,bitbucket,github,gitlab}_test.go
   '';
 
-  checkFlags = [ "-short" ];
+  checkFlags = [
+    "-short"
+  ];
 
   postInstall = ''
     export INFRACOST_SKIP_UPDATE_CHECK=true

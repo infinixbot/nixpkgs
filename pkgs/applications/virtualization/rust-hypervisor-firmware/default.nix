@@ -46,7 +46,9 @@ rustPlatform.buildRustPackage rec {
 
   RUSTC_BOOTSTRAP = 1;
 
-  nativeBuildInputs = [ lld ];
+  nativeBuildInputs = [
+    lld
+  ];
 
   RUSTFLAGS = "-C linker=lld -C linker-flavor=ld.lld";
 

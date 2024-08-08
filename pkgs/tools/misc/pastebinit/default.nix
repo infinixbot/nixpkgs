@@ -19,14 +19,18 @@ stdenv.mkDerivation rec {
     hash = "sha256-vuAWkHlQM6QTWarThpSbY0qrxzej0GvLU0jT2JOS/qc=";
   };
 
-  patches = [ ./use-drv-etc.patch ];
+  patches = [
+    ./use-drv-etc.patch
+  ];
 
   nativeBuildInputs = [
     libxslt
     installShellFiles
   ];
 
-  buildInputs = [ (python3.withPackages (p: [ p.distro ])) ];
+  buildInputs = [
+    (python3.withPackages (p: [ p.distro ]))
+  ];
 
   buildPhase = ''
     xsltproc --nonet ${docbook_xsl}/xml/xsl/docbook/manpages/docbook.xsl pastebinit.xml

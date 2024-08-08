@@ -64,7 +64,9 @@ let
           "-DCLANGD_BUILD_XPC=OFF"
           "-DLLVM_ENABLE_RTTI=ON"
         ]
-        ++ lib.optionals (lib.versionAtLeast release_version "17") [ "-DLLVM_INCLUDE_TESTS=OFF" ]
+        ++ lib.optionals (lib.versionAtLeast release_version "17") [
+          "-DLLVM_INCLUDE_TESTS=OFF"
+        ]
         ++ lib.optionals enableManpages [
           "-DCLANG_INCLUDE_DOCS=ON"
           "-DLLVM_ENABLE_SPHINX=ON"

@@ -157,7 +157,9 @@ stdenv.mkDerivation rec {
     runHook postInstallCheck
   '';
 
-  desktopItems = [ (mkDesktopItem { inherit (meta) description; }) ];
+  desktopItems = [
+    (mkDesktopItem { inherit (meta) description; })
+  ];
 
   doInstallCheck = true;
   dontWrapGApps = true; # the target is placed outside of bin/

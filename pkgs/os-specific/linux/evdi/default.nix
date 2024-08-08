@@ -8,7 +8,11 @@
 }:
 
 let
-  python3WithLibs = python3.withPackages (ps: with ps; [ pybind11 ]);
+  python3WithLibs = python3.withPackages (
+    ps: with ps; [
+      pybind11
+    ]
+  );
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "evdi";

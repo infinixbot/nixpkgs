@@ -39,7 +39,9 @@ buildPythonPackage rec {
 
   pythonImportsCheck = [ "hdmedians" ];
 
-  nativeCheckInputs = [ pytestCheckHook ];
+  nativeCheckInputs = [
+    pytestCheckHook
+  ];
 
   preCheck = ''
     cd $out

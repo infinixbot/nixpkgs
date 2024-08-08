@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     xtl
   ];
 
-  cmakeFlags = [ "-DXEUS_BUILD_TESTS=ON" ];
+  cmakeFlags = [
+    "-DXEUS_BUILD_TESTS=ON"
+  ];
 
   doCheck = true;
   preCheck = ''export LD_LIBRARY_PATH=$PWD'';

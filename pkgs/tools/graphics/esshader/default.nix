@@ -24,7 +24,9 @@ stdenv.mkDerivation {
       --replace "-lGLESv2" "-lGL -lGLESv2"
   '';
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
   buildInputs = [
     libGL
     glfw

@@ -40,7 +40,9 @@ maven.buildMavenPackage rec {
     (ensureNewerSourcesHook { year = "1980"; })
   ];
 
-  wrappedPath = lib.makeBinPath [ graphviz ];
+  wrappedPath = lib.makeBinPath [
+    graphviz
+  ];
 
   preBuild = ''
     VERSION=${version}

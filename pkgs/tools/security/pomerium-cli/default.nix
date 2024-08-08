@@ -25,7 +25,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-aQo58i+XuCkdjIg/IPf7kNLXXA0NwZbQMhgWyMb45B4=";
 
-  subPackages = [ "cmd/pomerium-cli" ];
+  subPackages = [
+    "cmd/pomerium-cli"
+  ];
 
   ldflags =
     let
@@ -47,7 +49,9 @@ buildGoModule rec {
         ) setVars
       );
     in
-    [ "${varFlags}" ];
+    [
+      "${varFlags}"
+    ];
 
   installPhase = ''
     runHook preInstall

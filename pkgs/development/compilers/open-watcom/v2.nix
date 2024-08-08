@@ -44,7 +44,13 @@ stdenv.mkDerivation rec {
         --replace '-static' ""
     '';
 
-  nativeBuildInputs = [ dosbox ] ++ lib.optionals withDocs [ ghostscript ];
+  nativeBuildInputs =
+    [
+      dosbox
+    ]
+    ++ lib.optionals withDocs [
+      ghostscript
+    ];
 
   configurePhase = ''
     runHook preConfigure

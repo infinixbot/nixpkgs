@@ -68,7 +68,9 @@ stdenvNoCC.mkDerivation rec {
               python3
               pkg-config
             ];
-            buildInputs = [ libsecret ];
+            buildInputs = [
+              libsecret
+            ];
             postInstall = ''
               yarn --offline run build
               # Remove unnecessary store path references.
@@ -121,7 +123,10 @@ stdenvNoCC.mkDerivation rec {
     description = "Application to save your Sharepoint videos for offline usage";
     homepage = "https://github.com/kylon/Sharedown";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [ ];
+    maintainers =
+      with maintainers;
+      [
+      ];
     platforms = platforms.unix;
     mainProgram = "Sharedown";
   };

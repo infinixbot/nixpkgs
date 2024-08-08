@@ -30,7 +30,9 @@ rustPlatform.buildRustPackage rec {
   ];
 
   buildInputs =
-    [ sqlite ]
+    [
+      sqlite
+    ]
     ++ lib.optionals stdenv.isDarwin [
       Security
       libiconv

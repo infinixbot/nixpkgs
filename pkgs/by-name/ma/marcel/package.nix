@@ -17,9 +17,13 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-hUI5dUqelmRuk65s67rJXrZoPDWAcnNVIHlzxAgRExs=";
   };
 
-  nativeBuildInputs = with python3Packages; [ setuptools ];
+  nativeBuildInputs = with python3Packages; [
+    setuptools
+  ];
 
-  buildInputs = [ bash ];
+  buildInputs = [
+    bash
+  ];
 
   pythonPath = with python3Packages; [
     dill

@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
     rm -r usr
   '';
 
-  makeFlags = [ "DESTDIR=${placeholder "out"}" ];
+  makeFlags = [
+    "DESTDIR=${placeholder "out"}"
+  ];
 
   postInstall = ''
     # Specify binary paths: tor, firejail, iptables

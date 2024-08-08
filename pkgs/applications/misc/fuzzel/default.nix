@@ -35,7 +35,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-I+h93/I1Kra2S5QSi2XgICAVrcUmO9cmb8UttVuzjwg=";
   };
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     pkg-config

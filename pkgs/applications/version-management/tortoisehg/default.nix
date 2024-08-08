@@ -15,7 +15,9 @@ python3Packages.buildPythonApplication rec {
     sha256 = "sha256-9pg1N5uj1ZaZCAm4N8toRwfVHme7nAsNMZkXSRgFves=";
   };
 
-  nativeBuildInputs = [ qt5.wrapQtAppsHook ];
+  nativeBuildInputs = [
+    qt5.wrapQtAppsHook
+  ];
   propagatedBuildInputs = with python3Packages; [
     mercurial
     # The one from python3Packages

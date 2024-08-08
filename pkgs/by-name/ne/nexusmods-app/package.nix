@@ -40,7 +40,9 @@ buildDotnetModule rec {
   projectFile = "src/NexusMods.App/NexusMods.App.csproj";
   testProjectFile = "NexusMods.App.sln";
 
-  nativeBuildInputs = [ copyDesktopItems ];
+  nativeBuildInputs = [
+    copyDesktopItems
+  ];
 
   nugetDeps = ./deps.nix;
 
@@ -71,7 +73,9 @@ buildDotnetModule rec {
     libX11
   ];
 
-  executables = [ nexusmods-app.meta.mainProgram ];
+  executables = [
+    nexusmods-app.meta.mainProgram
+  ];
 
   doCheck = true;
 

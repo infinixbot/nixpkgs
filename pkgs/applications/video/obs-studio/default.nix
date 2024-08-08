@@ -174,11 +174,15 @@ stdenv.mkDerivation (finalAttrs: {
   dontWrapGApps = true;
   preFixup =
     let
-      wrapperLibraries = [
-        xorg.libX11
-        libvlc
-        libGL
-      ] ++ optionals decklinkSupport [ blackmagic-desktop-video ];
+      wrapperLibraries =
+        [
+          xorg.libX11
+          libvlc
+          libGL
+        ]
+        ++ optionals decklinkSupport [
+          blackmagic-desktop-video
+        ];
     in
     ''
       # Remove libcef before patchelf, otherwise it will fail

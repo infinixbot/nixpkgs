@@ -119,12 +119,16 @@ stdenv.mkDerivation {
         "print(f\"{cmdp} doesn't exist (original name: {cmd}, precision: {precision})\", file=sys.stderr)"
   '';
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    cmake
-    ninja
-    gfortran
-  ] ++ lists.optionals cudaSupport [ effectiveCudaPackages.cuda_nvcc ];
+  nativeBuildInputs =
+    [
+      autoPatchelfHook
+      cmake
+      ninja
+      gfortran
+    ]
+    ++ lists.optionals cudaSupport [
+      effectiveCudaPackages.cuda_nvcc
+    ];
 
   buildInputs =
     [

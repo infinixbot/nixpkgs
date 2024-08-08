@@ -23,7 +23,9 @@ buildGoModule rec {
 
   doCheck = false;
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     pango

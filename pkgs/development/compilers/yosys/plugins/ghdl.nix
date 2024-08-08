@@ -28,7 +28,9 @@ stdenv.mkDerivation {
     zlib
     ghdl
   ];
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   doCheck = true;
   installPhase = ''

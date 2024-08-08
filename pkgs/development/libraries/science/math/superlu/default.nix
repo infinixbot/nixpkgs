@@ -38,7 +38,9 @@ stdenv.mkDerivation rec {
     ];
   };
 
-  patches = [ ./add-superlu-lib-as-dependency-for-the-unit-tests.patch ];
+  patches = [
+    ./add-superlu-lib-as-dependency-for-the-unit-tests.patch
+  ];
 
   doCheck = true;
   checkTarget = "test";

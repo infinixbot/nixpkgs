@@ -45,7 +45,9 @@ stdenv.mkDerivation rec {
       license
       platforms
       ;
-    maintainers = with lib.maintainers; [ montchr ];
+    maintainers = with lib.maintainers; [
+      montchr
+    ];
   };
 
   passthru.updateScript = ./update-bin.sh;

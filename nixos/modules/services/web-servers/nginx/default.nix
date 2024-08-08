@@ -1494,7 +1494,12 @@ in
       ++ lib.optional cfg.recommendedZstdSettings pkgs.nginxModules.zstd;
 
     services.nginx.virtualHosts.localhost = mkIf cfg.statusPage {
-      listenAddresses = lib.mkDefault ([ "0.0.0.0" ] ++ lib.optional enableIPv6 "[::]");
+      listenAddresses = lib.mkDefault (
+        [
+          "0.0.0.0"
+        ]
+        ++ lib.optional enableIPv6 "[::]"
+      );
       locations."/nginx_status" = {
         extraConfig = ''
           stub_status on;
@@ -1683,7 +1688,9 @@ in
     boot.kernelModules = optional (versionAtLeast config.boot.kernelPackages.kernel.version "4.17") "tls";
 
     # do not delete the default temp directories created upon nginx startup
-    systemd.tmpfiles.rules = [ "X /tmp/systemd-private-%b-nginx.service-*/tmp/nginx_*" ];
+    systemd.tmpfiles.rules = [
+      "X /tmp/systemd-private-%b-nginx.service-*/tmp/nginx_*"
+    ];
 
     services.logrotate.settings.nginx = mapAttrs (_: mkDefault) {
       files = "/var/log/nginx/*.log";

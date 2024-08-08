@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-8iBG1IdbERB2gOALvVBNJ3/hhiou3D/azSRkRD+u9O8=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     iniparser

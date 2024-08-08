@@ -15,7 +15,9 @@ buildOctavePackage rec {
     sha256 = "1lvfxbqmw8h1nlrxmvrl6j4xffmbzxfhdpxz3vrc6lg2g4jwaa6h";
   };
 
-  buildInputs = [ gsl ];
+  buildInputs = [
+    gsl
+  ];
 
   meta = with lib; {
     homepage = "https://octave.sourceforge.io/gsl/index.html";

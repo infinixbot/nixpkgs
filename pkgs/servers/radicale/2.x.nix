@@ -29,7 +29,9 @@ python3.pkgs.buildPythonApplication rec {
     setuptools
   ];
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
   disabledTests = [
     # uses unsupported crypt method

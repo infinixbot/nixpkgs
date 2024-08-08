@@ -18,7 +18,9 @@ llvmPackages.stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [ llvmPackages.llvm ];
+  buildInputs = [
+    llvmPackages.llvm
+  ];
 
   # M68k is an experimental target, so not enabled by default
   postPatch = ''

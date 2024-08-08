@@ -43,16 +43,22 @@ stdenv.mkDerivation rec {
       vala
       gobject-introspection
     ]
-    ++ lib.optionals withIntrospection [ gobject-introspection ]
+    ++ lib.optionals withIntrospection [
+      gobject-introspection
+    ]
     ++ lib.optionals withDocs [
       gtk-doc
       docbook-xsl-nons
     ];
 
-  buildInputs = [
-    libvirt
-    libxml2
-  ] ++ lib.optionals stdenv.isLinux [ libcap_ng ];
+  buildInputs =
+    [
+      libvirt
+      libxml2
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      libcap_ng
+    ];
 
   strictDeps = true;
 

@@ -24,7 +24,9 @@ stdenv.mkDerivation (finalAttrs: {
     configureFlags="$configureFlags --with-config-file=$out/etc/GNUstep/GNUstep.conf"
   '';
 
-  makeFlags = [ "GNUSTEP_INSTALLATION_DOMAIN=SYSTEM" ];
+  makeFlags = [
+    "GNUSTEP_INSTALLATION_DOMAIN=SYSTEM"
+  ];
 
   buildInputs = [ libobjc ];
 

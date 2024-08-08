@@ -29,7 +29,9 @@ import ../make-test-python.nix (
                 listeners = [
                   {
                     # The default but tls=false
-                    bind_addresses = [ "0.0.0.0" ];
+                    bind_addresses = [
+                      "0.0.0.0"
+                    ];
                     port = 8008;
                     resources = [
                       {

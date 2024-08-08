@@ -30,16 +30,22 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-tES8UGWcCT8lRd/fnOt9EN3wHkNSLRM4j8ONrCDPBK0=";
   };
 
-  nativeBuildInputs = [
-    docbook-xsl-nons
-    gobject-introspection
-    gtk-doc
-    meson
-    ninja
-    pkg-config
-  ] ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [ mesonEmulatorHook ];
+  nativeBuildInputs =
+    [
+      docbook-xsl-nons
+      gobject-introspection
+      gtk-doc
+      meson
+      ninja
+      pkg-config
+    ]
+    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+      mesonEmulatorHook
+    ];
 
-  buildInputs = [ gtk3 ];
+  buildInputs = [
+    gtk3
+  ];
 
   propagatedBuildInputs = [
     # Required by libgedit-gfls-1.pc

@@ -33,9 +33,14 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs =
-    [ ]
-    ++ lib.optionals stdenv.isDarwin [ fixDarwinDylibNames ]
-    ++ lib.optionals enableCuda [ cudaPackages.cuda_nvcc ];
+    [
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      fixDarwinDylibNames
+    ]
+    ++ lib.optionals enableCuda [
+      cudaPackages.cuda_nvcc
+    ];
 
   # Use compatible indexing for lapack and blas used
   buildInputs =
@@ -48,7 +53,9 @@ stdenv.mkDerivation rec {
       gmp
       mpfr
     ]
-    ++ lib.optionals stdenv.cc.isClang [ openmp ]
+    ++ lib.optionals stdenv.cc.isClang [
+      openmp
+    ]
     ++ lib.optionals enableCuda [
       cudaPackages.cuda_cudart
       cudaPackages.cuda_cccl
@@ -67,7 +74,9 @@ stdenv.mkDerivation rec {
       "JOBS=$(NIX_BUILD_CORES)"
       "MY_METIS_LIB=-lmetis"
     ]
-    ++ lib.optionals blas.isILP64 [ "CFLAGS=-DBLAS64" ]
+    ++ lib.optionals blas.isILP64 [
+      "CFLAGS=-DBLAS64"
+    ]
     ++ lib.optionals enableCuda [
       "CUDA_PATH=${cudaPackages.cuda_nvcc}"
       "CUDART_LIB=${lib.getLib cudaPackages.cuda_cudart}/lib/libcudart.so"

@@ -18,7 +18,9 @@ python3.pkgs.buildPythonApplication rec {
 
   pythonRelaxDeps = true;
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools
+  ];
 
   propagatedBuildInputs =
     with python3.pkgs;
@@ -45,7 +47,9 @@ python3.pkgs.buildPythonApplication rec {
   # Project has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "ghunt" ];
+  pythonImportsCheck = [
+    "ghunt"
+  ];
 
   meta = with lib; {
     description = "Offensive Google framework";

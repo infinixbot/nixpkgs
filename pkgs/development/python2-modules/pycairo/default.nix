@@ -37,7 +37,9 @@ buildPythonPackage rec {
     pkg-config
   ];
 
-  buildInputs = [ cairo ];
+  buildInputs = [
+    cairo
+  ];
 
   # HACK: Don't use the pytestCheckHook because PYTHONPATH
   # will be added by the Python setuptook breaking meson.

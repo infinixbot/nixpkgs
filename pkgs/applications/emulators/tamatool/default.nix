@@ -40,11 +40,15 @@ stdenv.mkDerivation (finalAttrs: {
     copyDesktopItems
   ];
 
-  buildInputs = [
-    libpng
-    SDL2
-    SDL2_image
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.CoreFoundation ];
+  buildInputs =
+    [
+      libpng
+      SDL2
+      SDL2_image
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.CoreFoundation
+    ];
 
   makeFlags = [
     "-Clinux"

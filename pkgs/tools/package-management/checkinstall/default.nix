@@ -81,6 +81,8 @@ stdenv.mkDerivation rec {
     maintainers = [ lib.maintainers.eelco ];
     platforms = lib.platforms.linux;
     license = lib.licenses.gpl2Plus;
-    knownVulnerabilities = [ "CVE-2020-25031" ];
+    knownVulnerabilities = [
+      "CVE-2020-25031"
+    ];
   };
 }

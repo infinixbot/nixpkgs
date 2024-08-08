@@ -30,7 +30,9 @@ python3Packages.buildPythonApplication rec {
     "man"
   ];
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     desktop-file-utils

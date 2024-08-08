@@ -60,7 +60,9 @@ stdenv.mkDerivation rec {
     mpg123
   ];
 
-  cmakeFlags = [ "-DGPL=ON" ];
+  cmakeFlags = [
+    "-DGPL=ON"
+  ];
 
   doCheck = true;
 

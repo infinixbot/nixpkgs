@@ -82,7 +82,9 @@ stdenv.mkDerivation (
     ) linuxHeaders;
 
     env.NIX_CFLAGS_COMPILE = toString (
-      [ "-DSCUDO_DEFAULT_OPTIONS=DeleteSizeMismatch=0:DeallocationTypeMismatch=0" ]
+      [
+        "-DSCUDO_DEFAULT_OPTIONS=DeleteSizeMismatch=0:DeallocationTypeMismatch=0"
+      ]
       ++ lib.optionals (!haveLibc) [
         # The compiler got stricter about this, and there is a usellvm patch below
         # which patches out the assert include causing an implicit definition of
@@ -107,10 +109,15 @@ stdenv.mkDerivation (
         "-DSANITIZER_CXX_ABI_LIBNAME=libcxxabi"
         "-DCOMPILER_RT_USE_BUILTINS_LIBRARY=ON"
       ]
-      ++ lib.optionals (
-        (!haveLibc || bareMetal || isMusl || isAarch64) && (lib.versions.major release_version == "13")
-      ) [ "-DCOMPILER_RT_BUILD_LIBFUZZER=OFF" ]
-      ++ lib.optionals (useLLVM && haveLibc) [ "-DCOMPILER_RT_BUILD_SANITIZERS=ON" ]
+      ++
+        lib.optionals
+          ((!haveLibc || bareMetal || isMusl || isAarch64) && (lib.versions.major release_version == "13"))
+          [
+            "-DCOMPILER_RT_BUILD_LIBFUZZER=OFF"
+          ]
+      ++ lib.optionals (useLLVM && haveLibc) [
+        "-DCOMPILER_RT_BUILD_SANITIZERS=ON"
+      ]
       ++ lib.optionals (!haveLibc || bareMetal || isMusl || isDarwinStatic) [
         "-DCOMPILER_RT_BUILD_SANITIZERS=OFF"
       ]
@@ -120,21 +127,31 @@ stdenv.mkDerivation (
         "-DCOMPILER_RT_BUILD_MEMPROF=OFF"
         "-DCOMPILER_RT_BUILD_ORC=OFF" # may be possible to build with musl if necessary
       ]
-      ++ lib.optionals (useLLVM && haveLibc) [ "-DCOMPILER_RT_BUILD_PROFILE=ON" ]
-      ++ lib.optionals (!haveLibc || bareMetal) [ "-DCOMPILER_RT_BUILD_PROFILE=OFF" ]
-      ++ lib.optionals (!haveLibc || bareMetal || isDarwinStatic) [ "-DCMAKE_CXX_COMPILER_WORKS=ON" ]
+      ++ lib.optionals (useLLVM && haveLibc) [
+        "-DCOMPILER_RT_BUILD_PROFILE=ON"
+      ]
+      ++ lib.optionals (!haveLibc || bareMetal) [
+        "-DCOMPILER_RT_BUILD_PROFILE=OFF"
+      ]
+      ++ lib.optionals (!haveLibc || bareMetal || isDarwinStatic) [
+        "-DCMAKE_CXX_COMPILER_WORKS=ON"
+      ]
       ++ lib.optionals (!haveLibc || bareMetal) [
         "-DCMAKE_C_COMPILER_WORKS=ON"
         "-DCOMPILER_RT_BAREMETAL_BUILD=ON"
         "-DCMAKE_SIZEOF_VOID_P=${toString (stdenv.hostPlatform.parsed.cpu.bits / 8)}"
       ]
-      ++ lib.optionals (!haveLibc) [ "-DCMAKE_C_FLAGS=-nodefaultlibs" ]
+      ++ lib.optionals (!haveLibc) [
+        "-DCMAKE_C_FLAGS=-nodefaultlibs"
+      ]
       ++ lib.optionals (useLLVM) [
         "-DCOMPILER_RT_BUILD_BUILTINS=ON"
         #https://stackoverflow.com/questions/53633705/cmake-the-c-compiler-is-not-able-to-compile-a-simple-test-program
         "-DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY"
       ]
-      ++ lib.optionals (bareMetal) [ "-DCOMPILER_RT_OS_DIR=baremetal" ]
+      ++ lib.optionals (bareMetal) [
+        "-DCOMPILER_RT_OS_DIR=baremetal"
+      ]
       ++ lib.optionals (stdenv.hostPlatform.isDarwin) (
         lib.optionals (lib.versionAtLeast release_version "16") [
           "-DCMAKE_LIPO=${lib.getBin stdenv.cc.bintools.bintools}/bin/${stdenv.cc.targetPrefix}lipo"
@@ -150,11 +167,16 @@ stdenv.mkDerivation (
           "-DCOMPILER_RT_ENABLE_IOS=OFF"
         ]
       )
-      ++ lib.optionals (
-        lib.versionAtLeast version "19"
-        && stdenv.isDarwin
-        && lib.versionOlder stdenv.hostPlatform.darwinMinVersion "10.13"
-      ) [ "-DSANITIZER_MIN_OSX_VERSION=10.10" ];
+      ++
+        lib.optionals
+          (
+            lib.versionAtLeast version "19"
+            && stdenv.isDarwin
+            && lib.versionOlder stdenv.hostPlatform.darwinMinVersion "10.13"
+          )
+          [
+            "-DSANITIZER_MIN_OSX_VERSION=10.10"
+          ];
 
     outputs = [
       "out"

@@ -78,7 +78,9 @@ buildPythonPackage rec {
     sed -i "/addopts =/d" pytest.ini
   '';
 
-  build-system = [ setuptools ];
+  build-system = [
+    setuptools
+  ];
 
   dependencies = [
     certifi

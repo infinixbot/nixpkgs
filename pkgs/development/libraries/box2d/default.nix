@@ -59,7 +59,9 @@ stdenv.mkDerivation (finalAttrs: {
       OpenGL
     ];
 
-  cmakeFlags = [ (cmakeBool "BOX2D_BUILD_UNIT_TESTS" finalAttrs.finalPackage.doCheck) ];
+  cmakeFlags = [
+    (cmakeBool "BOX2D_BUILD_UNIT_TESTS" finalAttrs.finalPackage.doCheck)
+  ];
 
   prePatch = ''
     substituteInPlace ${settingsFile}  \

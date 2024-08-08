@@ -29,7 +29,9 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = [ pcre ];
+  buildInputs = [
+    pcre
+  ];
 
   passthru.tests = {
     simple = callPackage ./tests/simple.nix {

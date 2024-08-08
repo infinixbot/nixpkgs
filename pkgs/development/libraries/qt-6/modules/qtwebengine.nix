@@ -214,7 +214,9 @@ qtModule {
       # https://github.com/Homebrew/homebrew-core/issues/104008
       "-DQT_FEATURE_webengine_system_icu=ON"
     ]
-    ++ lib.optionals enableProprietaryCodecs [ "-DQT_FEATURE_webengine_proprietary_codecs=ON" ]
+    ++ lib.optionals enableProprietaryCodecs [
+      "-DQT_FEATURE_webengine_proprietary_codecs=ON"
+    ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       "-DCMAKE_OSX_DEPLOYMENT_TARGET=${stdenv.hostPlatform.darwinSdkVersion}"
     ];
@@ -320,7 +322,9 @@ qtModule {
     ];
 
   buildInputs =
-    [ cups ]
+    [
+      cups
+    ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       libpm
       sandbox

@@ -14,7 +14,9 @@ import ./make-test-python.nix (
   let
     text = "66263666188646651519653683416";
     fontsConf = pkgs.makeFontsConf {
-      fontDirectories = [ pkgs.dejavu_fonts.minimal ];
+      fontDirectories = [
+        pkgs.dejavu_fonts.minimal
+      ];
     };
     # an image with black on white text spelling "${text}"
     # for some reason, the test fails if it's jpg instead of png

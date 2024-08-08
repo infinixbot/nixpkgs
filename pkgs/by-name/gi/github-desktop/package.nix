@@ -90,7 +90,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     )
   '';
 
-  runtimeDependencies = [ (lib.getLib systemd) ];
+  runtimeDependencies = [
+    (lib.getLib systemd)
+  ];
 
   meta = {
     description = "GUI for managing Git and GitHub";

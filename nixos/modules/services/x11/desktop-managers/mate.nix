@@ -55,7 +55,9 @@ in
 
   config = mkMerge [
     (mkIf (cfg.enable || cfg.enableWaylandSession) {
-      services.displayManager.sessionPackages = [ pkgs.mate.mate-session-manager ];
+      services.displayManager.sessionPackages = [
+        pkgs.mate.mate-session-manager
+      ];
 
       # Debugging
       environment.sessionVariables.MATE_SESSION_DEBUG = mkIf cfg.debug "1";

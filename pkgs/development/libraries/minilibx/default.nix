@@ -25,7 +25,9 @@ stdenv.mkDerivation {
     "man"
   ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   buildInputs = [
     libX11
@@ -36,7 +38,9 @@ stdenv.mkDerivation {
 
   makefile = "Makefile.mk";
 
-  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
+  makeFlags = [
+    "CC=${stdenv.cc.targetPrefix}cc"
+  ];
 
   installPhase = ''
     runHook preInstall

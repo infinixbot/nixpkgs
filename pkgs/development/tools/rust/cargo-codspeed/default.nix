@@ -29,12 +29,16 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ];
 
-  buildInputs = [
-    curl
-    libgit2
-    openssl
-    zlib
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs =
+    [
+      curl
+      libgit2
+      openssl
+      zlib
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+    ];
 
   cargoBuildFlags = [ "-p=cargo-codspeed" ];
   cargoTestFlags = cargoBuildFlags;

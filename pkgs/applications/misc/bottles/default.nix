@@ -38,7 +38,9 @@ python3Packages.buildPythonApplication rec {
     sha256 = "sha256-uS3xmTu+LrVFX93bYcJvYjl6179d3IjpxLKrOXn8Z8Y=";
   };
 
-  patches = [ ./vulkan_icd.patch ];
+  patches = [
+    ./vulkan_icd.patch
+  ];
 
   # https://github.com/bottlesdevs/Bottles/wiki/Packaging
   nativeBuildInputs = [

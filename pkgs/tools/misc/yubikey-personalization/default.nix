@@ -42,7 +42,9 @@ stdenv.mkDerivation rec {
     json_c
   ];
 
-  configureFlags = [ "--with-backend=libusb-1.0" ];
+  configureFlags = [
+    "--with-backend=libusb-1.0"
+  ];
 
   doCheck = true;
 

@@ -40,7 +40,9 @@ buildPythonPackage rec {
     patchShebangs tests
   '';
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   propagatedBuildInputs = [
     passlib

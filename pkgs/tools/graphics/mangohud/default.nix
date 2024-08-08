@@ -152,7 +152,12 @@ stdenv.mkDerivation (finalAttrs: {
     substituteInPlace bin/mangohud.in \
       --subst-var-by libraryPath ${
         lib.makeSearchPath "lib/mangohud" (
-          [ (placeholder "out") ] ++ lib.optionals lowerBitnessSupport [ mangohud32 ]
+          [
+            (placeholder "out")
+          ]
+          ++ lib.optionals lowerBitnessSupport [
+            mangohud32
+          ]
         )
       } \
       --subst-var-by version "${finalAttrs.version}" \
@@ -210,7 +215,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   doCheck = true;
 
-  nativeCheckInputs = [ appstream ];
+  nativeCheckInputs = [
+    appstream
+  ];
 
   # Support 32bit Vulkan applications by linking in 32bit Vulkan layers
   # This is needed for the same reason the 32bit preload workaround is needed.

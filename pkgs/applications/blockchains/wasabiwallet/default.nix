@@ -52,7 +52,9 @@ stdenv.mkDerivation rec {
     autoPatchelfHook
     makeWrapper
   ];
-  buildInputs = runtimeLibs ++ [ lttng-ust_2_12 ];
+  buildInputs = runtimeLibs ++ [
+    lttng-ust_2_12
+  ];
 
   installPhase = ''
     mkdir -p $out/opt/${pname} $out/bin $out/share/applications

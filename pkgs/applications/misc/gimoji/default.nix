@@ -19,7 +19,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-pKHhYWEF9L0UX9hc2Ga3WOUWzISA8ONwn3rcI9u2/n0=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.AppKit ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.AppKit
+  ];
 
   meta = with lib; {
     description = "Easily add emojis to your git commit messages";

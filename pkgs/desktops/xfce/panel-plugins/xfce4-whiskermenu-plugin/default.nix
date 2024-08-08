@@ -23,7 +23,9 @@ mkXfceDerivation {
   odd-unstable = false;
   sha256 = "sha256-xRLvjRu/I+wsTWXUhrJUcrQz+JkZCYqoJSqYAYOztgg=";
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = [
     accountsservice

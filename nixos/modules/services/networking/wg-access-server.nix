@@ -125,13 +125,17 @@ in
 
       serviceConfig =
         let
-          capabilities = [ "CAP_NET_ADMIN" ] ++ lib.optional cfg.settings.dns.enabled "CAP_NET_BIND_SERVICE";
+          capabilities = [
+            "CAP_NET_ADMIN"
+          ] ++ lib.optional cfg.settings.dns.enabled "CAP_NET_BIND_SERVICE";
         in
         {
           WorkingDirectory = "/var/lib/wg-access-server";
           StateDirectory = "wg-access-server";
 
-          LoadCredential = [ "SECRETS_FILE:${cfg.secretsFile}" ];
+          LoadCredential = [
+            "SECRETS_FILE:${cfg.secretsFile}"
+          ];
 
           # Hardening
           DynamicUser = true;

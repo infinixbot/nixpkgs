@@ -163,7 +163,12 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Software modular synth with controllers support, scripting and VST";
     homepage = "https://www.bespokesynth.com/";
-    license = with licenses; [ gpl3Plus ] ++ lib.optional enableVST2 unfree;
+    license =
+      with licenses;
+      [
+        gpl3Plus
+      ]
+      ++ lib.optional enableVST2 unfree;
     maintainers = with maintainers; [
       astro
       tobiasBora

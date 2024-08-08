@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     libgcrypt
   ];
 
-  configureFlags = [ "--disable-demos" ];
+  configureFlags = [
+    "--disable-demos"
+  ];
 
   doCheck = true;
 

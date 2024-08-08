@@ -30,7 +30,9 @@ mkXfceDerivation {
 
   sha256 = "sha256-hOhWJoiKoeRgkhXaR8rnDpcJpStMD4BBdll4nwSA+EQ=";
 
-  nativeBuildInputs = [ gobject-introspection ];
+  nativeBuildInputs = [
+    gobject-introspection
+  ];
 
   buildInputs = [
     dbus-glib

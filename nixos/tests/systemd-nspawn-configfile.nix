@@ -126,6 +126,8 @@ import ./make-test-python.nix (
         node.fail("grep --quiet MachineId ${configFile}")
     '';
 
-    meta.maintainers = [ lib.maintainers.zi3m5f ];
+    meta.maintainers = [
+      lib.maintainers.zi3m5f
+    ];
   }
 )

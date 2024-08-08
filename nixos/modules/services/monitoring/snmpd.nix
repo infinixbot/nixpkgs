@@ -82,7 +82,9 @@ in
       };
     };
 
-    networking.firewall.allowedUDPPorts = lib.mkIf cfg.openFirewall [ cfg.port ];
+    networking.firewall.allowedUDPPorts = lib.mkIf cfg.openFirewall [
+      cfg.port
+    ];
   };
 
   meta.maintainers = [ lib.maintainers.eliandoran ];

@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
     autoconf
     automake
   ];
-  buildInputs = [ ncurses ];
+  buildInputs = [
+    ncurses
+  ];
 
   preConfigure = ''
     touch NEWS

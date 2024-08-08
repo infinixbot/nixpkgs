@@ -24,7 +24,9 @@ buildPythonPackage rec {
     twine
   ];
 
-  nativeCheckInputs = [ pytestCheckHook ];
+  nativeCheckInputs = [
+    pytestCheckHook
+  ];
 
   meta = with lib; {
     description = "Weblate commandline client using Weblate's REST API";

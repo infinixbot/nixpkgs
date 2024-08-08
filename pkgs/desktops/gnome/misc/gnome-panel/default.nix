@@ -86,7 +86,9 @@ stdenv.mkDerivation rec {
     systemd
   ];
 
-  configureFlags = [ "--enable-eds" ];
+  configureFlags = [
+    "--enable-eds"
+  ];
 
   enableParallelBuilding = true;
 

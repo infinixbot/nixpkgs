@@ -35,7 +35,9 @@ stdenv.mkDerivation (finalAttrs: {
     openjdk
     glfw
   ];
-  buildInputs = [ libuuid ];
+  buildInputs = [
+    libuuid
+  ];
   propagatedBuildInputs = [
     (python3.withPackages (p: [
       p.edalize

@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-c6J2c9UpuLOW9rUif+k76PUb7Mh2WIH5Nn3alKaVNyw=";
   };
 
-  nativeBuildInputs = [ python3.pkgs.hatchling ];
+  nativeBuildInputs = [
+    python3.pkgs.hatchling
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     libknot
@@ -24,7 +26,9 @@ python3.pkgs.buildPythonApplication rec {
     psutil
   ];
 
-  pythonImportsCheck = [ "knot_exporter" ];
+  pythonImportsCheck = [
+    "knot_exporter"
+  ];
 
   passthru.tests = {
     inherit (nixosTests.prometheus-exporters) knot;

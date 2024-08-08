@@ -51,7 +51,9 @@ buildPythonPackage rec {
     hash = "sha256-mscc3TRMYuaTqrrxGPCVVKa2fg5sXwK/BglpbvLXbLc=";
   };
 
-  nativeBuildInputs = [ hatchling ];
+  nativeBuildInputs = [
+    hatchling
+  ];
 
   pythonRelaxDeps = [
     "elasticsearch"

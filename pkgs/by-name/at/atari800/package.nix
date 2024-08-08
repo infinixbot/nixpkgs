@@ -22,7 +22,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-D66YRRTqdoV9TqDFonJ9XNpfP52AicuYgdiW27RCIuQ=";
   };
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   buildInputs = [
     SDL

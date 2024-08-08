@@ -21,7 +21,9 @@ buildDotnetModule rec {
 
   executables = [ "BoogieDriver" ];
 
-  makeWrapperArgs = [ "--prefix PATH : ${z3}/bin" ];
+  makeWrapperArgs = [
+    "--prefix PATH : ${z3}/bin"
+  ];
 
   postInstall = ''
     # so that this derivation can be used as a vim plugin to install syntax highlighting

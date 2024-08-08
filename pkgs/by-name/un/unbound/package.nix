@@ -95,11 +95,21 @@ stdenv.mkDerivation (finalAttrs: {
       "--enable-pie"
       "--enable-relro-now"
     ]
-    ++ lib.optionals (!withLto) [ "--disable-flto" ]
-    ++ lib.optionals withSystemd [ "--enable-systemd" ]
-    ++ lib.optionals withPythonModule [ "--with-pythonmodule" ]
-    ++ lib.optionals withDoH [ "--with-libnghttp2=${libnghttp2.dev}" ]
-    ++ lib.optionals withECS [ "--enable-subnet" ]
+    ++ lib.optionals (!withLto) [
+      "--disable-flto"
+    ]
+    ++ lib.optionals withSystemd [
+      "--enable-systemd"
+    ]
+    ++ lib.optionals withPythonModule [
+      "--with-pythonmodule"
+    ]
+    ++ lib.optionals withDoH [
+      "--with-libnghttp2=${libnghttp2.dev}"
+    ]
+    ++ lib.optionals withECS [
+      "--enable-subnet"
+    ]
     ++ lib.optionals withDNSCrypt [
       "--enable-dnscrypt"
       "--with-libsodium=${
@@ -112,7 +122,9 @@ stdenv.mkDerivation (finalAttrs: {
         }
       }"
     ]
-    ++ lib.optionals withDNSTAP [ "--enable-dnstap" ]
+    ++ lib.optionals withDNSTAP [
+      "--enable-dnstap"
+    ]
     ++ lib.optionals withTFO [
       "--enable-tfo-client"
       "--enable-tfo-server"

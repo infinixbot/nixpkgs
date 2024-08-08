@@ -29,9 +29,15 @@ rustPlatform.buildRustPackage rec {
   ];
 
   buildInputs =
-    [ libopus ]
-    ++ lib.optionals stdenv.isLinux [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.SystemConfiguration ];
+    [
+      libopus
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.SystemConfiguration
+    ];
 
   OPENSSL_NO_VENDOR = 1;
 

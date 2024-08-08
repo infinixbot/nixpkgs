@@ -42,7 +42,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-OAG5Tes+0bi+vKqm77Y7OykTpUkMdRaXIJYLuomIDMo=";
   };
 
-  patches = [ ./csd-backlight-helper-fix.patch ];
+  patches = [
+    ./csd-backlight-helper-fix.patch
+  ];
 
   buildInputs = [
     cinnamon-desktop

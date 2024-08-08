@@ -21,11 +21,17 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-YW++YcpQM1Al7qD+KoVJitfK41i59sLjb3edBge1cvA=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [
-    openssl
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.SystemConfiguration ];
+  buildInputs =
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.SystemConfiguration
+    ];
 
   # requires the wasm32-wasi target
   doCheck = false;

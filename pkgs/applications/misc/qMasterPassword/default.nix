@@ -44,7 +44,9 @@ stdenv.mkDerivation rec {
     qttools
     wrapQtAppsHook
   ];
-  cmakeFlags = lib.optionals waylandSupport [ "-DDISABLE_FILL_FORM_SHORTCUTS=1" ];
+  cmakeFlags = lib.optionals waylandSupport [
+    "-DDISABLE_FILL_FORM_SHORTCUTS=1"
+  ];
 
   # Upstream install is mostly defunct. It hardcodes target.path and doesn't
   # install anything but the binary.

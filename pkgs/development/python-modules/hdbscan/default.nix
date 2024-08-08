@@ -22,7 +22,9 @@ buildPythonPackage rec {
   };
 
   pythonRemoveDeps = [ "cython" ];
-  nativeBuildInputs = [ cython ];
+  nativeBuildInputs = [
+    cython
+  ];
   propagatedBuildInputs = [
     numpy
     scipy

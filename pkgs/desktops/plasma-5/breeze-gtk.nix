@@ -17,6 +17,8 @@ mkDerivation {
     breeze-qt5
   ];
   buildInputs = [ qtbase ];
-  patches = [ ./patches/0001-fix-add-executable-bit.patch ];
+  patches = [
+    ./patches/0001-fix-add-executable-bit.patch
+  ];
   cmakeFlags = [ "-DWITH_GTK3_VERSION=3.22" ];
 }

@@ -12,7 +12,9 @@ python.pkgs.buildPythonPackage {
 
   sourceRoot = "${piper-tts.src.name}/src/python";
 
-  nativeBuildInputs = with python.pkgs; [ cython ];
+  nativeBuildInputs = with python.pkgs; [
+    cython
+  ];
 
   postBuild = ''
     make -C piper_train/vits/monotonic_align
@@ -34,7 +36,9 @@ python.pkgs.buildPythonPackage {
     torch
   ];
 
-  pythonImportsCheck = [ "piper_train" ];
+  pythonImportsCheck = [
+    "piper_train"
+  ];
 
   doCheck = false; # no tests
 

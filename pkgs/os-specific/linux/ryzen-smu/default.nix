@@ -23,7 +23,9 @@ let
     pname = "monitor-cpu";
     inherit version src;
 
-    makeFlags = [ "-C userspace" ];
+    makeFlags = [
+      "-C userspace"
+    ];
 
     installPhase = ''
       runHook preInstall

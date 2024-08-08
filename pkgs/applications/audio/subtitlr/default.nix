@@ -23,7 +23,9 @@ buildGoModule rec {
     "-w"
   ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   postInstall = ''
     installShellCompletion --cmd Subtitlr \

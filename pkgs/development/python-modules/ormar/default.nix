@@ -45,7 +45,9 @@ buildPythonPackage rec {
     "SQLAlchemy"
   ];
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   propagatedBuildInputs =
     [

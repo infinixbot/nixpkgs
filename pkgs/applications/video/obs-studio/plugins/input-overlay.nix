@@ -45,7 +45,9 @@ stdenv.mkDerivation rec {
     libxkbfile
   ];
 
-  cmakeFlags = [ "-DCMAKE_CXX_FLAGS=-msse4.1" ];
+  cmakeFlags = [
+    "-DCMAKE_CXX_FLAGS=-msse4.1"
+  ];
 
   postUnpack = ''
     sed -i '/set(CMAKE_CXX_FLAGS "-march=native")/d' 'source/CMakeLists.txt'

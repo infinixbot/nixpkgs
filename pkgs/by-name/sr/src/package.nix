@@ -37,7 +37,9 @@ stdenv.mkDerivation (finalAttrs: {
     patchShebangs .
   '';
 
-  makeFlags = [ "prefix=${placeholder "out"}" ];
+  makeFlags = [
+    "prefix=${placeholder "out"}"
+  ];
 
   postInstall = ''
     wrapProgram $out/bin/src \

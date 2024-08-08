@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
         "--with-udevdir=${placeholder "out"}/lib/udev"
       ]
     else
-      [ "--disable-v4l-utils" ]
+      [
+        "--disable-v4l-utils"
+      ]
   );
 
   postFixup = ''

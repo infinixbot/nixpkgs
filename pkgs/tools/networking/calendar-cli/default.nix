@@ -17,7 +17,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-w35ySLnfxXZR/a7BrPLYqXs2kqkuYhh5PcgNxJqjDtE=";
   };
 
-  build-system = with python3.pkgs; [ setuptools ];
+  build-system = with python3.pkgs; [
+    setuptools
+  ];
 
   dependencies = with python3.pkgs; [
     icalendar

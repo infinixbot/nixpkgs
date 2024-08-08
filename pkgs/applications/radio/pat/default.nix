@@ -25,7 +25,9 @@ buildGoModule rec {
     "-w"
   ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   buildInputs = lib.optional stdenv.isLinux [ libax25 ];
 

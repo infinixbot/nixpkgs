@@ -664,7 +664,9 @@ rec {
   layeredImageWithFakeRootCommands = pkgs.dockerTools.buildLayeredImage {
     name = "layered-image-with-fake-root-commands";
     tag = "latest";
-    contents = [ pkgs.pkgsStatic.busybox ];
+    contents = [
+      pkgs.pkgsStatic.busybox
+    ];
     fakeRootCommands = ''
       mkdir -p ./home/alice
       chown 1000 ./home/alice
@@ -883,7 +885,9 @@ rec {
     name = "nix-shell-inputs";
     tag = "latest";
     drv = pkgs.mkShell {
-      nativeBuildInputs = [ pkgs.hello ];
+      nativeBuildInputs = [
+        pkgs.hello
+      ];
     };
     command = ''
       hello
@@ -982,7 +986,9 @@ rec {
     ];
     includeNixDB = true;
     config = {
-      Env = [ "NIX_PAGER=cat" ];
+      Env = [
+        "NIX_PAGER=cat"
+      ];
     };
   };
 

@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [ libcap ];
+  buildInputs = [
+    libcap
+  ];
 
   postPatch = ''
     patchShebangs autogen.sh

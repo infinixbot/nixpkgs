@@ -278,7 +278,9 @@ in
       sha256 = "sha256-S+lPm85+ZEO/3BXYsrxE4FU29EGWzWrSw3y1DLdByrM=";
     };
 
-    propagatedBuildInputs = with super; [ python-periphery ];
+    propagatedBuildInputs = with super; [
+      python-periphery
+    ];
 
     preConfigure = ''
       # optional; RPi.GPIO is broken on vanilla kernels

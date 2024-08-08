@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  propagatedBuildInputs = [ libplist ];
+  propagatedBuildInputs = [
+    libplist
+  ];
 
   outputs = [
     "out"

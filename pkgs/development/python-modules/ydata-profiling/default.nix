@@ -89,7 +89,9 @@ buildPythonPackage rec {
     "test_urls"
   ];
 
-  pythonImportsCheck = [ "ydata_profiling" ];
+  pythonImportsCheck = [
+    "ydata_profiling"
+  ];
 
   meta = with lib; {
     description = "Create HTML profiling reports from Pandas DataFrames";

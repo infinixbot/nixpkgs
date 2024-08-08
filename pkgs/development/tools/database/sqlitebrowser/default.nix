@@ -37,7 +37,9 @@ mkDerivation rec {
     wrapGAppsHook3
   ];
 
-  cmakeFlags = [ "-Dsqlcipher=1" ];
+  cmakeFlags = [
+    "-Dsqlcipher=1"
+  ];
 
   meta = with lib; {
     description = "DB Browser for SQLite";

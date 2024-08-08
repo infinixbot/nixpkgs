@@ -36,7 +36,9 @@ rustPlatform.buildRustPackage rec {
   ];
 
   buildInputs =
-    [ openssl ]
+    [
+      openssl
+    ]
     ++ lib.optionals stdenv.isDarwin [
       libiconv
       DiskArbitration

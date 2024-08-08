@@ -33,7 +33,9 @@ python3Packages.buildPythonApplication rec {
     desktop-file-utils
   ];
 
-  buildInputs = [ libadwaita ];
+  buildInputs = [
+    libadwaita
+  ];
 
   dependencies = with python3Packages; [
     pygobject3

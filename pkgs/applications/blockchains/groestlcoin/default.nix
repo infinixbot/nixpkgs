@@ -104,7 +104,9 @@ stdenv.mkDerivation rec {
       "--with-boost-libdir=${boost.out}/lib"
       "--disable-bench"
     ]
-    ++ lib.optionals (!withWallet) [ "--disable-wallet" ]
+    ++ lib.optionals (!withWallet) [
+      "--disable-wallet"
+    ]
     ++ lib.optionals withGui [
       "--with-gui=qt5"
       "--with-qt-bindir=${qtbase.dev}/bin:${qttools.dev}/bin"

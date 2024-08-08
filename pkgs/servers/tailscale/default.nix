@@ -53,7 +53,9 @@ buildGoModule {
     "-X tailscale.com/version.shortStamp=${version}"
   ];
 
-  tags = [ "ts_include_cli" ];
+  tags = [
+    "ts_include_cli"
+  ];
 
   doCheck = false;
 

@@ -16,8 +16,12 @@ import ./make-test-python.nix (
         };
 
         systemd.user.tmpfiles = {
-          rules = [ "d %h/user_tmpfiles_created" ];
-          users.alice.rules = [ "d %h/only_alice" ];
+          rules = [
+            "d %h/user_tmpfiles_created"
+          ];
+          users.alice.rules = [
+            "d %h/only_alice"
+          ];
         };
       };
 

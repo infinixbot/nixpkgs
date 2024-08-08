@@ -26,7 +26,9 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "requests" ];
 
-  nativeBuildInputs = [ setuptools-scm ];
+  nativeBuildInputs = [
+    setuptools-scm
+  ];
 
   propagatedBuildInputs = [
     requests

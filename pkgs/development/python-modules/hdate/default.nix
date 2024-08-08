@@ -23,9 +23,13 @@ buildPythonPackage rec {
     hash = "sha256-HmdXTvtNiIE2XPFhqs7WpcceEQU7F7RsLFp6/+63yDw=";
   };
 
-  pythonRelaxDeps = [ "astral" ];
+  pythonRelaxDeps = [
+    "astral"
+  ];
 
-  build-system = [ pdm-backend ];
+  build-system = [
+    pdm-backend
+  ];
 
   dependencies = [
     astral

@@ -39,12 +39,17 @@ with pkgs;
               (filter (lib.hasSuffix "Stdenv"))
               (filter (n: n != "gccCrossLibcStdenv"))
             ]
-            ++ lib.optionals (
-              !(
-                (stdenv.buildPlatform.isLinux && stdenv.buildPlatform.isx86_64)
-                && (stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isx86_64)
-              )
-            ) [ (filter (n: !lib.hasSuffix "MultiStdenv" n)) ]
+            ++
+              lib.optionals
+                (
+                  !(
+                    (stdenv.buildPlatform.isLinux && stdenv.buildPlatform.isx86_64)
+                    && (stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isx86_64)
+                  )
+                )
+                [
+                  (filter (n: !lib.hasSuffix "MultiStdenv" n))
+                ]
           );
         in
         lib.genAttrs pkgSets (name: callPackage ./cc-wrapper { stdenv = pkgs.${name}; });

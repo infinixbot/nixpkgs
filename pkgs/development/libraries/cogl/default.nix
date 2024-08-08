@@ -55,7 +55,9 @@ stdenv.mkDerivation rec {
   ];
 
   configureFlags =
-    [ "--enable-introspection" ]
+    [
+      "--enable-introspection"
+    ]
     ++ lib.optionals (!stdenv.isDarwin) [
       "--enable-kms-egl-platform"
       "--enable-wayland-egl-platform"
@@ -70,7 +72,9 @@ stdenv.mkDerivation rec {
       "--disable-glx"
       "--without-x"
     ]
-    ++ lib.optionals gstreamerSupport [ "--enable-cogl-gst" ];
+    ++ lib.optionals gstreamerSupport [
+      "--enable-cogl-gst"
+    ];
 
   # TODO: this shouldn't propagate so many things
   # especially not gobject-introspection

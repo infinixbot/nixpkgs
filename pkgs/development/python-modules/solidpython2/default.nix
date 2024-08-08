@@ -27,7 +27,9 @@ buildPythonPackage rec {
 
   propagatedBuildInputs = lib.optionals withOpenSCAD [ openscad ];
 
-  build-system = [ poetry-core ];
+  build-system = [
+    poetry-core
+  ];
   dependencies = [
     ply
     setuptools

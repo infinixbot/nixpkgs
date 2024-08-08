@@ -48,17 +48,21 @@ let
   versionUrl = "https://download.sublimetext.com/latest/${if dev then "dev" else "stable"}";
   versionFile = builtins.toString ./packages.nix;
 
-  neededLibraries = [
-    xorg.libX11
-    xorg.libXtst
-    glib
-    libglvnd
-    openssl_1_1
-    gtk3
-    cairo
-    pango
-    curl
-  ] ++ lib.optionals (lib.versionAtLeast buildVersion "4145") [ sqlite ];
+  neededLibraries =
+    [
+      xorg.libX11
+      xorg.libXtst
+      glib
+      libglvnd
+      openssl_1_1
+      gtk3
+      cairo
+      pango
+      curl
+    ]
+    ++ lib.optionals (lib.versionAtLeast buildVersion "4145") [
+      sqlite
+    ];
 in
 let
   binaryPackage = stdenv.mkDerivation rec {
@@ -142,7 +146,9 @@ stdenv.mkDerivation (rec {
 
   ${primaryBinary} = binaryPackage;
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   installPhase =
     ''

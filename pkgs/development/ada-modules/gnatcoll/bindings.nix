@@ -51,17 +51,23 @@ stdenv.mkDerivation rec {
     python3
   ];
 
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.CoreFoundation ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.CoreFoundation
+  ];
 
   # propagate since gprbuild needs to find referenced .gpr files
   # and all dependency C libraries when statically linking a
   # downstream executable.
-  propagatedBuildInputs = [ gnatcoll-core ] ++ libsFor."${component}" or [ ];
+  propagatedBuildInputs = [
+    gnatcoll-core
+  ] ++ libsFor."${component}" or [ ];
 
   # explicit flag for GPL acceptance because upstreams
   # allows a gcc runtime exception for all bindings
   # except for readline (since it is GPL w/o exceptions)
-  buildFlags = lib.optionals (component == "readline") [ "--accept-gpl" ];
+  buildFlags = lib.optionals (component == "readline") [
+    "--accept-gpl"
+  ];
 
   buildPhase = ''
     runHook preBuild

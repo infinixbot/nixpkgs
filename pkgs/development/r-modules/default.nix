@@ -91,7 +91,9 @@ let
         version,
         biocVersion,
       }:
-      [ "mirror://bioc/${biocVersion}/data/annotation/src/contrib/${name}_${version}.tar.gz" ];
+      [
+        "mirror://bioc/${biocVersion}/data/annotation/src/contrib/${name}_${version}.tar.gz"
+      ];
     hydraPlatforms = [ ];
   };
   deriveBiocExp = mkDerive {
@@ -102,7 +104,9 @@ let
         version,
         biocVersion,
       }:
-      [ "mirror://bioc/${biocVersion}/data/experiment/src/contrib/${name}_${version}.tar.gz" ];
+      [
+        "mirror://bioc/${biocVersion}/data/experiment/src/contrib/${name}_${version}.tar.gz"
+      ];
     hydraPlatforms = [ ];
   };
   deriveCran = mkDerive {
@@ -1553,7 +1557,9 @@ let
       postPatch = ''
         patchShebangs configure
       '';
-      buildInputs = attrs.buildInputs ++ [ pkgs.arrow-cpp ];
+      buildInputs = attrs.buildInputs ++ [
+        pkgs.arrow-cpp
+      ];
     });
 
     gifski = old.gifski.overrideAttrs (attrs: {
@@ -1826,11 +1832,15 @@ let
     });
 
     Rmpi = old.Rmpi.overrideAttrs (attrs: {
-      configureFlags = [ "--with-Rmpi-type=OPENMPI" ];
+      configureFlags = [
+        "--with-Rmpi-type=OPENMPI"
+      ];
     });
 
     Rmpfr = old.Rmpfr.overrideAttrs (attrs: {
-      configureFlags = [ "--with-mpfr-include=${pkgs.mpfr.dev}/include" ];
+      configureFlags = [
+        "--with-mpfr-include=${pkgs.mpfr.dev}/include"
+      ];
     });
 
     covidsymptom = old.covidsymptom.overrideAttrs (attrs: {

@@ -29,7 +29,9 @@ buildGoModule rec {
 
   subPackages = [ "." ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   postInstall = ''
     export HOME=$(mktemp -d)

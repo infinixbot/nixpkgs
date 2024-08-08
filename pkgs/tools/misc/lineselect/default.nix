@@ -19,7 +19,9 @@ buildNpmPackage rec {
 
   npmDepsHash = "sha256-wBtswfXtJTI7um0HZQk1YygpSggZ4j0/7IBcJiQpOUY=";
 
-  nativeBuildInputs = [ makeBinaryWrapper ];
+  nativeBuildInputs = [
+    makeBinaryWrapper
+  ];
 
   postInstall = ''
     makeWrapper ${lib.getExe nodejs} $out/bin/lineselect \

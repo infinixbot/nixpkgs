@@ -19,7 +19,9 @@ stdenv.mkDerivation rec {
     "dev"
   ];
 
-  buildInputs = [ SDL ];
+  buildInputs = [
+    SDL
+  ];
 
   enableParallelBuilding = true;
 

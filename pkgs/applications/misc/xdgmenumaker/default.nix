@@ -45,7 +45,9 @@ python3Packages.buildPythonApplication rec {
     pyxdg
   ];
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   preFixup = ''
     makeWrapperArgs+=("''${gappsWrapperArgs[@]}")

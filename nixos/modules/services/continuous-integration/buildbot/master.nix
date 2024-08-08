@@ -92,7 +92,9 @@ in
         type = types.listOf types.str;
         description = "Configurator Steps, see https://docs.buildbot.net/latest/manual/configuration/configurators.html";
         default = [ ];
-        example = [ "util.JanitorConfigurator(logHorizon=timedelta(weeks=4), hour=12, dayOfWeek=6)" ];
+        example = [
+          "util.JanitorConfigurator(logHorizon=timedelta(weeks=4), hour=12, dayOfWeek=6)"
+        ];
       };
 
       enable = mkOption {
@@ -134,7 +136,9 @@ in
       builders = mkOption {
         type = types.listOf types.str;
         description = "List of Builders.";
-        default = [ "util.BuilderConfig(name='runtests',workernames=['example-worker'],factory=factory)" ];
+        default = [
+          "util.BuilderConfig(name='runtests',workernames=['example-worker'],factory=factory)"
+        ];
       };
 
       workers = mkOption {

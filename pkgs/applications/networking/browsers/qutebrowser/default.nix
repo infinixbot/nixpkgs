@@ -50,10 +50,14 @@ python3.pkgs.buildPythonApplication {
   # Needs tox
   doCheck = false;
 
-  buildInputs = [
-    qtbase
-    glib-networking
-  ] ++ lib.optionals stdenv.isLinux [ qtwayland ];
+  buildInputs =
+    [
+      qtbase
+      glib-networking
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      qtwayland
+    ];
 
   nativeBuildInputs = [
     wrapQtAppsHook
@@ -83,7 +87,9 @@ python3.pkgs.buildPythonApplication {
     pyperclip
   ];
 
-  patches = [ ./fix-restart.patch ];
+  patches = [
+    ./fix-restart.patch
+  ];
 
   dontWrapQtApps = true;
 

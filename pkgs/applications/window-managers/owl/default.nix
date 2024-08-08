@@ -56,7 +56,9 @@ stdenv.mkDerivation {
       libxkbcommon
       wayland
     ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Cocoa ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Cocoa
+    ]
     ++ lib.optionals (!stdenv.isDarwin) [
       gnustep.back
       gnustep.base

@@ -23,7 +23,9 @@ buildGoModule {
     "-buildmode=c-archive"
   ];
 
-  patches = [ ];
+  patches =
+    [
+    ];
 
   postInstall = ''
     mv $out/lib/libwg{,.a}

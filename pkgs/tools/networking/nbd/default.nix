@@ -47,7 +47,9 @@ stdenv.mkDerivation rec {
       linuxHeaders
     ];
 
-  configureFlags = [ "--sysconfdir=/etc" ];
+  configureFlags = [
+    "--sysconfdir=/etc"
+  ];
 
   # ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
   env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.cc.isClang "-Wno-error=implicit-function-declaration";

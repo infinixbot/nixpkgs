@@ -29,7 +29,9 @@ buildPythonPackage rec {
     hash = "sha256-l4JGodbUmFxHFeEaxgClEozHcbyYP0F2yj5gDqV88IA=";
   };
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   propagatedBuildInputs = [
     dnspython
@@ -40,7 +42,9 @@ buildPythonPackage rec {
     pyyaml
   ];
 
-  nativeCheckInputs = [ pytestCheckHook ];
+  nativeCheckInputs = [
+    pytestCheckHook
+  ];
 
   pythonImportsCheck = [ "octodns" ];
 

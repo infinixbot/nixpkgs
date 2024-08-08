@@ -221,7 +221,9 @@ stdenv.mkDerivation (finalAttrs: {
         "mirtest"
         "mirwayland"
       ]
-      ++ lib.optionals (lib.strings.versionOlder version "2.17.0") [ "mircookie" ]
+      ++ lib.optionals (lib.strings.versionOlder version "2.17.0") [
+        "mircookie"
+      ]
       ++ lib.optionals (lib.strings.versionAtLeast version "2.17.0") [
         "mircommon-internal"
         "mirserver-internal"

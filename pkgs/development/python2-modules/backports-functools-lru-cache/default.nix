@@ -26,7 +26,9 @@ buildPythonPackage rec {
   # backports-functools-lru-cache -> pytest -> wc-width -> backports-functools-lru-cache
   doCheck = false;
 
-  pythonImportsCheck = [ "backports.functools_lru_cache" ];
+  pythonImportsCheck = [
+    "backports.functools_lru_cache"
+  ];
 
   meta = {
     description = "Backport of functools.lru_cache";

@@ -16,7 +16,9 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-VmvOMK+FjYZXKH9kPUT2L7pmJMPSr5eXptCcoGWK+qo=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   doCheck = true;
 

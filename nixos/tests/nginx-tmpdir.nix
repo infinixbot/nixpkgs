@@ -10,7 +10,9 @@ import ./make-test-python.nix {
       environment.etc."tmpfiles.d/nginx-uploads.conf".text = "d ${dst-dir} 0755 nginx nginx 1d";
 
       # overwrite the tmp.conf with a short age, there will be a duplicate line info from systemd-tmpfiles in the log
-      systemd.tmpfiles.rules = [ "q /tmp 1777 root root 1min" ];
+      systemd.tmpfiles.rules = [
+        "q /tmp 1777 root root 1min"
+      ];
 
       services.nginx.enable = true;
       # simple upload service using the nginx client body temp path

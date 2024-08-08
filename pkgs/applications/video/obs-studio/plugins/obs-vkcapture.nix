@@ -42,17 +42,21 @@ stdenv.mkDerivation (finalAttrs: {
     ninja
     wayland-scanner
   ];
-  buildInputs = [
-    libGL
-    libffi
-    libX11
-    libXau
-    libXdmcp
-    libxcb
-    vulkan-headers
-    vulkan-loader
-    wayland
-  ] ++ lib.optionals (!stdenv.isi686) [ obs-studio ];
+  buildInputs =
+    [
+      libGL
+      libffi
+      libX11
+      libXau
+      libXdmcp
+      libxcb
+      vulkan-headers
+      vulkan-loader
+      wayland
+    ]
+    ++ lib.optionals (!stdenv.isi686) [
+      obs-studio
+    ];
 
   postPatch = ''
     substituteInPlace src/glinject.c \

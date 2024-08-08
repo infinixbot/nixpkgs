@@ -21,7 +21,9 @@ import ../make-test-python.nix (
                 scheme = "http";
                 static_configs = [
                   {
-                    targets = [ "alertmanager:${toString config.services.prometheus.alertmanager.port}" ];
+                    targets = [
+                      "alertmanager:${toString config.services.prometheus.alertmanager.port}"
+                    ];
                   }
                 ];
               }
@@ -47,7 +49,9 @@ import ../make-test-python.nix (
                 job_name = "alertmanager";
                 static_configs = [
                   {
-                    targets = [ "alertmanager:${toString config.services.prometheus.alertmanager.port}" ];
+                    targets = [
+                      "alertmanager:${toString config.services.prometheus.alertmanager.port}"
+                    ];
                   }
                 ];
               }
@@ -55,7 +59,9 @@ import ../make-test-python.nix (
                 job_name = "node";
                 static_configs = [
                   {
-                    targets = [ "node:${toString config.services.prometheus.exporters.node.port}" ];
+                    targets = [
+                      "node:${toString config.services.prometheus.exporters.node.port}"
+                    ];
                   }
                 ];
               }

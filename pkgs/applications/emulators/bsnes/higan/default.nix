@@ -32,7 +32,13 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-M8WaPrOPSRKxhYcf6ffNkDzITkCltNF9c/zl0GmfJrI=";
   };
 
-  nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.isDarwin [ libicns ];
+  nativeBuildInputs =
+    [
+      pkg-config
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      libicns
+    ];
 
   buildInputs =
     [

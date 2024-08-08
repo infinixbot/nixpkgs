@@ -59,7 +59,9 @@ let
                       "PLAINTEXT:PLAINTEXT"
                       "CONTROLLER:PLAINTEXT"
                     ];
-                    "controller.quorum.voters" = [ "1@kafka:9093" ];
+                    "controller.quorum.voters" = [
+                      "1@kafka:9093"
+                    ];
                     "controller.listener.names" = [ "CONTROLLER" ];
                   };
                 })

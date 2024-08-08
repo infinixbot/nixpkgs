@@ -180,7 +180,11 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeCheckInputs = [
     dbus
-    (python3.withPackages (ps: with ps; [ python-dbusmock ]))
+    (python3.withPackages (
+      ps: with ps; [
+        python-dbusmock
+      ]
+    ))
     xvfb-run
   ];
 
@@ -259,6 +263,8 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "lomiri-system-settings";
     maintainers = teams.lomiri.members;
     platforms = platforms.linux;
-    pkgConfigModules = [ "LomiriSystemSettings" ];
+    pkgConfigModules = [
+      "LomiriSystemSettings"
+    ];
   };
 })

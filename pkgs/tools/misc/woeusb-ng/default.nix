@@ -27,7 +27,9 @@ buildPythonApplication rec {
       --replace "/usr/" "$out/"
   '';
 
-  nativeBuildInputs = [ wrapGAppsHook3 ];
+  nativeBuildInputs = [
+    wrapGAppsHook3
+  ];
 
   propagatedBuildInputs = [
     p7zip

@@ -24,7 +24,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-o+0bCzt/3G1UMewRJOgtjaD4NDHVDkSewD19rw3GCAI=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs =
     [
@@ -37,7 +39,9 @@ rustPlatform.buildRustPackage rec {
       darwin.apple_sdk.frameworks.Security
     ];
 
-  nativeCheckInputs = [ git ];
+  nativeCheckInputs = [
+    git
+  ];
 
   meta = with lib; {
     description = "TUI Git client inspired by Magit";

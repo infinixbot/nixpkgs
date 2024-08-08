@@ -30,7 +30,9 @@ import ./make-test-python.nix (
               value = 1024;
             }
           ];
-          users.users.root.openssh.authorizedKeys.keys = [ snakeOilPublicKey ];
+          users.users.root.openssh.authorizedKeys.keys = [
+            snakeOilPublicKey
+          ];
         };
 
       server-allowed-users =
@@ -84,7 +86,9 @@ import ./make-test-python.nix (
               value = 1024;
             }
           ];
-          users.users.root.openssh.authorizedKeys.keys = [ snakeOilPublicKey ];
+          users.users.root.openssh.authorizedKeys.keys = [
+            snakeOilPublicKey
+          ];
         };
 
       server-lazy-socket = {
@@ -98,7 +102,9 @@ import ./make-test-python.nix (
           ports = [ 2222 ];
           listenAddresses = [ { addr = "0.0.0.0"; } ];
         };
-        users.users.root.openssh.authorizedKeys.keys = [ snakeOilPublicKey ];
+        users.users.root.openssh.authorizedKeys.keys = [
+          snakeOilPublicKey
+        ];
       };
 
       server-localhost-only =
@@ -197,7 +203,9 @@ import ./make-test-python.nix (
               Macs = null;
             };
           };
-          users.users.root.openssh.authorizedKeys.keys = [ snakeOilEd25519PublicKey ];
+          users.users.root.openssh.authorizedKeys.keys = [
+            snakeOilEd25519PublicKey
+          ];
         };
 
       server-no-pam =
@@ -212,7 +220,9 @@ import ./make-test-python.nix (
               UsePAM = false;
             };
           };
-          users.users.root.openssh.authorizedKeys.keys = [ snakeOilPublicKey ];
+          users.users.root.openssh.authorizedKeys.keys = [
+            snakeOilPublicKey
+          ];
         };
 
       client =

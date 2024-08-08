@@ -36,7 +36,9 @@ stdenv.mkDerivation rec {
         sha256 = "sha256-eznsdLzgdJ7MyWe5WAEg1MHId5VlfyanoZ6+I9nI/0I=";
       };
 
-  nativeBuildInputs = [ autoPatchelfHook ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+  ];
 
   buildInputs = [
     libX11

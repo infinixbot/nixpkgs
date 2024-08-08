@@ -26,14 +26,18 @@ rustPlatform.buildRustPackage rec {
     ./0001-napi-fix-build-error-in-cargo-auditable.patch
   ];
 
-  buildFeatures = [ "cli" ];
+  buildFeatures = [
+    "cli"
+  ];
 
   cargoBuildFlags = [
     "--lib"
     "--bin=lightningcss"
   ];
 
-  cargoTestFlags = [ "--lib" ];
+  cargoTestFlags = [
+    "--lib"
+  ];
 
   passthru.updateScript = nix-update-script { };
 

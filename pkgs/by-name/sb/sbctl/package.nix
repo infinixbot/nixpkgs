@@ -19,7 +19,9 @@ buildGoModule rec {
     hash = "sha256-1TprUr+bLPOlMpe4ReV1S/QbVsA8Q7QIOcLczEaSyAQ=";
   };
 
-  patches = [ ./fix-go-module.patch ];
+  patches = [
+    ./fix-go-module.patch
+  ];
 
   vendorHash = "sha256-LuSewWK/sxaHibJ6a05PM9CPen8J+MJD6lwk4SNOWSA=";
 

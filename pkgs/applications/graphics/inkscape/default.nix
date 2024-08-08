@@ -142,7 +142,9 @@ stdenv.mkDerivation rec {
       perl
       XMLParser
     ])
-    ++ lib.optionals stdenv.isDarwin [ desktopToDarwinBundle ];
+    ++ lib.optionals stdenv.isDarwin [
+      desktopToDarwinBundle
+    ];
 
   buildInputs =
     [
@@ -176,7 +178,9 @@ stdenv.mkDerivation rec {
       zlib
       libepoxy
     ]
-    ++ lib.optionals (!stdenv.isDarwin) [ gspell ]
+    ++ lib.optionals (!stdenv.isDarwin) [
+      gspell
+    ]
     ++ lib.optionals stdenv.isDarwin [
       cairo
       gtk-mac-integration

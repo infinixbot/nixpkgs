@@ -83,7 +83,9 @@ stdenv.mkDerivation {
   ];
 
   # Needed for Zygote
-  runtimeDependencies = [ systemd ];
+  runtimeDependencies = [
+    systemd
+  ];
 
   installPhase = ''
     runHook preInstall

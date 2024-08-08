@@ -3339,7 +3339,9 @@ let
       (
         sources."basic-auth-2.0.1"
         // {
-          dependencies = [ sources."safe-buffer-5.1.2" ];
+          dependencies = [
+            sources."safe-buffer-5.1.2"
+          ];
         }
       )
       sources."better-sqlite3-7.6.2"
@@ -3370,7 +3372,9 @@ let
       (
         sources."clone-response-1.0.3"
         // {
-          dependencies = [ sources."mimic-response-1.0.1" ];
+          dependencies = [
+            sources."mimic-response-1.0.1"
+          ];
         }
       )
       sources."color-3.2.1"
@@ -3430,7 +3434,9 @@ let
       (
         sources."domutils-2.8.0"
         // {
-          dependencies = [ sources."domhandler-4.3.1" ];
+          dependencies = [
+            sources."domhandler-4.3.1"
+          ];
         }
       )
       sources."ee-first-1.1.1"
@@ -3508,7 +3514,9 @@ let
       (
         sources."htmlparser2-4.1.0"
         // {
-          dependencies = [ sources."entities-2.2.0" ];
+          dependencies = [
+            sources."entities-2.2.0"
+          ];
         }
       )
       sources."http-cache-semantics-4.1.0"
@@ -3544,7 +3552,9 @@ let
       (
         sources."make-dir-3.1.0"
         // {
-          dependencies = [ sources."semver-6.3.0" ];
+          dependencies = [
+            sources."semver-6.3.0"
+          ];
         }
       )
       sources."markdown-it-9.1.0"
@@ -3662,7 +3672,9 @@ let
       (
         sources."semver-closest-0.1.2"
         // {
-          dependencies = [ sources."semver-5.7.1" ];
+          dependencies = [
+            sources."semver-5.7.1"
+          ];
         }
       )
       (
@@ -3672,7 +3684,9 @@ let
             (
               sources."debug-2.6.9"
               // {
-                dependencies = [ sources."ms-2.0.0" ];
+                dependencies = [
+                  sources."ms-2.0.0"
+                ];
               }
             )
             sources."mime-1.6.0"
@@ -3716,7 +3730,9 @@ let
       (
         sources."tar-fs-2.1.1"
         // {
-          dependencies = [ sources."chownr-1.1.4" ];
+          dependencies = [
+            sources."chownr-1.1.4"
+          ];
         }
       )
       sources."tar-stream-2.2.0"
@@ -3754,13 +3770,17 @@ let
       (
         sources."useragent-generator-1.1.1-amkt-22079-finish.1"
         // {
-          dependencies = [ sources."semver-5.7.1" ];
+          dependencies = [
+            sources."semver-5.7.1"
+          ];
         }
       )
       (
         sources."util-0.10.4"
         // {
-          dependencies = [ sources."inherits-2.0.3" ];
+          dependencies = [
+            sources."inherits-2.0.3"
+          ];
         }
       )
       sources."util-deprecate-1.0.2"
@@ -3783,14 +3803,18 @@ let
       (
         sources."winston-daily-rotate-file-3.10.0"
         // {
-          dependencies = [ sources."semver-6.3.0" ];
+          dependencies = [
+            sources."semver-6.3.0"
+          ];
         }
       )
       sources."winston-transport-4.5.0"
       (
         sources."wordwrapjs-3.0.0"
         // {
-          dependencies = [ sources."typical-2.6.1" ];
+          dependencies = [
+            sources."typical-2.6.1"
+          ];
         }
       )
       sources."wrappy-1.0.2"

@@ -41,7 +41,11 @@ stdenv.mkDerivation (finalAttrs: {
     gtksourceview5
     libadwaita
     libspelling
-    (python3.withPackages (ps: with ps; [ pygobject3 ]))
+    (python3.withPackages (
+      ps: with ps; [
+        pygobject3
+      ]
+    ))
   ];
 
   preFixup = ''

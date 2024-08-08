@@ -142,7 +142,9 @@ effectiveStdenv.mkDerivation rec {
         wheel
       ]
     )
-    ++ lib.optionals cudaSupport [ cudaPackages.cuda_nvcc ];
+    ++ lib.optionals cudaSupport [
+      cudaPackages.cuda_nvcc
+    ];
 
   buildInputs =
     [
@@ -182,7 +184,9 @@ effectiveStdenv.mkDerivation rec {
     );
 
   nativeCheckInputs =
-    [ gtest ]
+    [
+      gtest
+    ]
     ++ lib.optionals pythonSupport (
       with python3Packages;
       [
@@ -225,7 +229,9 @@ effectiveStdenv.mkDerivation rec {
       (lib.cmakeBool "onnxruntime_USE_CUDA" cudaSupport)
       (lib.cmakeBool "onnxruntime_USE_NCCL" cudaSupport)
     ]
-    ++ lib.optionals pythonSupport [ "-Donnxruntime_ENABLE_PYTHON=ON" ]
+    ++ lib.optionals pythonSupport [
+      "-Donnxruntime_ENABLE_PYTHON=ON"
+    ]
     ++ lib.optionals cudaSupport [
       (lib.cmakeFeature "FETCHCONTENT_SOURCE_DIR_CUTLASS" "${cutlass}")
       (lib.cmakeFeature "onnxruntime_CUDNN_HOME" "${cudaPackages.cudnn}")

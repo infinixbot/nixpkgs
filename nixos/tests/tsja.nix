@@ -13,7 +13,10 @@ import ./make-test-python.nix (
         {
           services.postgresql = {
             enable = true;
-            extraPlugins = ps: with ps; [ tsja ];
+            extraPlugins =
+              ps: with ps; [
+                tsja
+              ];
           };
         };
     };

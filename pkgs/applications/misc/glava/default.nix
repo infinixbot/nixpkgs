@@ -54,7 +54,9 @@ stdenv.mkDerivation rec {
     libXcomposite
   ] ++ optional enableGlfw glfw;
 
-  nativeBuildInputs = [ python3 ];
+  nativeBuildInputs = [
+    python3
+  ];
 
   preConfigure = ''
     for f in $(find -type f);do
@@ -71,7 +73,9 @@ stdenv.mkDerivation rec {
 
   makeFlags = optional (!enableGlfw) "DISABLE_GLFW=1";
 
-  installFlags = [ "DESTDIR=$(out)" ];
+  installFlags = [
+    "DESTDIR=$(out)"
+  ];
 
   fixupPhase = ''
     mkdir -p $out/bin
@@ -94,6 +98,8 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/wacossusca34/glava";
     platforms = platforms.linux;
     license = licenses.gpl3;
-    maintainers = with maintainers; [ eadwu ];
+    maintainers = with maintainers; [
+      eadwu
+    ];
   };
 }

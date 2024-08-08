@@ -29,7 +29,9 @@ rustPlatform.buildRustPackage rec {
     libevdev
   ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   postInstall = ''
     mkdir -p $out/etc/udev/rules.d/

@@ -22,7 +22,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       --replace-warn 'LANGUAGES CXX' 'LANGUAGES NONE'
   '';
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   strictDeps = true;
 

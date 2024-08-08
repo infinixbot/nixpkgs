@@ -50,14 +50,18 @@ python3.pkgs.buildPythonApplication rec {
 
   dontWrapQtApps = true;
 
-  makeWrapperArgs = [ "\${qtWrapperArgs[@]}" ];
+  makeWrapperArgs = [
+    "\${qtWrapperArgs[@]}"
+  ];
 
   nativeCheckInputs = with python3.pkgs; [
     pytestCheckHook
     unittest-xml-reporting
   ];
 
-  pytestFlagsArray = [ "test" ];
+  pytestFlagsArray = [
+    "test"
+  ];
 
   disabledTests = [
     # NoKnownLoaderException

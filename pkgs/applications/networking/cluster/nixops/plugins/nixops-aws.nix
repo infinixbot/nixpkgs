@@ -29,9 +29,13 @@ buildPythonPackage {
     --replace "poetry>=" "poetry-core>="
   '';
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
-  buildInputs = [ nixops ];
+  buildInputs = [
+    nixops
+  ];
 
   propagatedBuildInputs = [
     boto

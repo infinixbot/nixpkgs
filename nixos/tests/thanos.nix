@@ -160,7 +160,9 @@ import ./make-test-python.nix {
         services.thanos.query = {
           enable = true;
           http-address = "0.0.0.0:${toString queryPort}";
-          endpoints = [ "prometheus:${toString grpcPort}" ];
+          endpoints = [
+            "prometheus:${toString grpcPort}"
+          ];
         };
         services.thanos.query-frontend = {
           enable = true;
@@ -194,7 +196,9 @@ import ./make-test-python.nix {
         services.thanos.query = {
           enable = true;
           http-address = "0.0.0.0:${toString queryPort}";
-          endpoints = [ "localhost:${toString grpcPort}" ];
+          endpoints = [
+            "localhost:${toString grpcPort}"
+          ];
         };
       };
 

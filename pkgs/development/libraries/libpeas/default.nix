@@ -42,7 +42,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     pkg-config
@@ -67,7 +69,9 @@ stdenv.mkDerivation rec {
     gobject-introspection
   ];
 
-  mesonFlags = [ "-Dgtk_doc=true" ];
+  mesonFlags = [
+    "-Dgtk_doc=true"
+  ];
 
   postFixup = ''
     # Cannot be in postInstall, otherwise _multioutDocs hook in preFixup will move right back.

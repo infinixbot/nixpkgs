@@ -44,12 +44,16 @@ stdenv.mkDerivation rec {
     ninja
   ];
 
-  buildInputs = [
-    lua52Packages.lua
-    ncurses
-    readline
-    zlib
-  ] ++ lib.optionals stdenv.isLinux [ libXft ];
+  buildInputs =
+    [
+      lua52Packages.lua
+      ncurses
+      readline
+      zlib
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      libXft
+    ];
 
   # To be able to find <Xft.h>
   env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.isLinux "-I${libXft.dev}/include/X11";

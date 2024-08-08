@@ -36,7 +36,9 @@ let
           ${nodes.seed.networking.primaryIPAddress} ${nodes.seed.services.radicle.httpd.nginx.serverName}
         '';
       };
-      security.pki.certificateFiles = [ seed-tls-certs.ca.cert ];
+      security.pki.certificateFiles = [
+        seed-tls-certs.ca.cert
+      ];
     };
 
   radicleConfig =
@@ -44,7 +46,9 @@ let
     alias:
     pkgs.writeText "config.json" (
       builtins.toJSON {
-        preferredSeeds = [ "${seed-nid}@seed:${toString nodes.seed.services.radicle.node.listenPort}" ];
+        preferredSeeds = [
+          "${seed-nid}@seed:${toString nodes.seed.services.radicle.node.listenPort}"
+        ];
         node = {
           inherit alias;
           relay = "never";

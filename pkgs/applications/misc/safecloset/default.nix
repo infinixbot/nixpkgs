@@ -21,8 +21,12 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "sha256-rxNp9dOvy/UTx6Q9pzZGccEKmIiWxzWVYyMxb+h5bqw=";
 
   buildInputs =
-    lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.AppKit ]
-    ++ lib.optionals stdenv.isLinux [ xorg.libxcb ];
+    lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.AppKit
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      xorg.libxcb
+    ];
 
   checkFlags = [
     # skip flaky test

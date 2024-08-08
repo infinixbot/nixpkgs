@@ -12,7 +12,9 @@ stdenv.mkDerivation rec {
   pname = "bctoolbox";
   version = "5.2.109";
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
   buildInputs = [
     # Made by BC
     bcunit

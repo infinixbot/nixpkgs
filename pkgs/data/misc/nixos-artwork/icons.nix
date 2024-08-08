@@ -20,9 +20,13 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ imagemagick ];
+  nativeBuildInputs = [
+    imagemagick
+  ];
 
-  makeFlags = [ "prefix=${placeholder "out"}" ];
+  makeFlags = [
+    "prefix=${placeholder "out"}"
+  ];
 
   enableParallelBuilding = true;
 

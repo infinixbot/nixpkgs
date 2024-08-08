@@ -33,7 +33,9 @@ stdenv.mkDerivation rec {
 
   meta = {
     description = "RDF visualizer";
-    maintainers = with lib.maintainers; [ raskin ];
+    maintainers = with lib.maintainers; [
+      raskin
+    ];
     hydraPlatforms = [ ];
     sourceProvenance = with lib.sourceTypes; [ binaryBytecode ];
     license = lib.licenses.bsd3;

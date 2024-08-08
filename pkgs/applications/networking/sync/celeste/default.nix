@@ -75,7 +75,9 @@ rustPlatform.buildRustPackage rec {
     ];
 
   env.NIX_CFLAGS_COMPILE = toString (
-    lib.optionals stdenv.isDarwin [ "-Wno-error=incompatible-function-pointer-types" ]
+    lib.optionals stdenv.isDarwin [
+      "-Wno-error=incompatible-function-pointer-types"
+    ]
   );
 
   preFixup = ''

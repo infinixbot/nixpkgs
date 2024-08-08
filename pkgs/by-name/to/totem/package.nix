@@ -95,7 +95,9 @@ stdenv.mkDerivation rec {
     python3Packages.pygobject3
   ];
 
-  nativeCheckInputs = [ xvfb-run ];
+  nativeCheckInputs = [
+    xvfb-run
+  ];
 
   mesonFlags = [
     # TODO: https://github.com/NixOS/nixpkgs/issues/36468

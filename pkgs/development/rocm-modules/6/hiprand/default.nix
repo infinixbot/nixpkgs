@@ -16,7 +16,13 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "hiprand";
   version = "6.0.2";
 
-  outputs = [ "out" ] ++ lib.optionals buildTests [ "test" ];
+  outputs =
+    [
+      "out"
+    ]
+    ++ lib.optionals buildTests [
+      "test"
+    ];
 
   src = fetchFromGitHub {
     owner = "ROCm";
@@ -44,8 +50,12 @@ stdenv.mkDerivation (finalAttrs: {
       "-DCMAKE_INSTALL_LIBDIR=lib"
       "-DCMAKE_INSTALL_INCLUDEDIR=include"
     ]
-    ++ lib.optionals (gpuTargets != [ ]) [ "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}" ]
-    ++ lib.optionals buildTests [ "-DBUILD_TEST=ON" ];
+    ++ lib.optionals (gpuTargets != [ ]) [
+      "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
+    ]
+    ++ lib.optionals buildTests [
+      "-DBUILD_TEST=ON"
+    ];
 
   postInstall = lib.optionalString buildTests ''
     mkdir -p $test/bin

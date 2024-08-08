@@ -79,7 +79,9 @@ stdenv.mkDerivation rec {
     qt5.qtbase
   ];
 
-  cmakeFlags = [ "-DCMAKE_BUILD_WITH_INSTALL_RPATH=ON" ];
+  cmakeFlags = [
+    "-DCMAKE_BUILD_WITH_INSTALL_RPATH=ON"
+  ];
 
   postPatch = "cd Build";
 

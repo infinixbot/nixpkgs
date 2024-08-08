@@ -16,7 +16,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-AIzk05T8JZn8HWSI6JDFUIYl4sutd3HR3Zb+xmJll0g=";
   };
 
-  nativeBuildInputs = [ zig_0_13.hook ];
+  nativeBuildInputs = [
+    zig_0_13.hook
+  ];
 
   postPatch = ''
     substituteInPlace build.zig \

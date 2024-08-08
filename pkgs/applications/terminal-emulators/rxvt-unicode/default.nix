@@ -109,9 +109,13 @@ stdenv.mkDerivation {
           })
         ]
       else
-        [ ./patches/9.06-font-width.patch ]
+        [
+          ./patches/9.06-font-width.patch
+        ]
     )
-    ++ [ ./patches/256-color-resources.patch ]
+    ++ [
+      ./patches/256-color-resources.patch
+    ]
     ++ optional (perlSupport && versionAtLeast perl.version "5.38") (fetchpatch {
       name = "perl538-locale-c.patch";
       url = "https://github.com/exg/rxvt-unicode/commit/16634bc8dd5fc4af62faf899687dfa8f27768d15.patch";

@@ -18,9 +18,13 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-aV86k5gjHIbd09YDwC6aHA1tPl+p9Lt0cYVVvtNTDlY=";
   };
 
-  buildInputs = [ nodejs ];
+  buildInputs = [
+    nodejs
+  ];
 
-  nativeBuildInputs = [ yarn ];
+  nativeBuildInputs = [
+    yarn
+  ];
 
   dontConfigure = true;
 

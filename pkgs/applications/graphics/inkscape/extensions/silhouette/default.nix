@@ -57,7 +57,9 @@ python3.pkgs.buildPythonApplication rec {
     umockdev
   ];
 
-  pytestFlagsArray = [ "test" ];
+  pytestFlagsArray = [
+    "test"
+  ];
 
   doCheck = true;
 

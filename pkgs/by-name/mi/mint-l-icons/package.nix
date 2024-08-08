@@ -26,7 +26,9 @@ stdenvNoCC.mkDerivation rec {
     hicolor-icon-theme
   ];
 
-  nativeBuildInputs = [ gtk3 ];
+  nativeBuildInputs = [
+    gtk3
+  ];
 
   dontDropIconThemeCache = true;
 

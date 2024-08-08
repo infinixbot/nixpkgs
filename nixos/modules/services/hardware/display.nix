@@ -9,7 +9,9 @@ let
 in
 {
   meta.doc = ./display.md;
-  meta.maintainers = with lib.maintainers; [ nazarewk ];
+  meta.maintainers = with lib.maintainers; [
+    nazarewk
+  ];
 
   options = {
     hardware.display.edid.enable = lib.mkOption {

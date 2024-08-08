@@ -56,7 +56,9 @@ let
         libXrandr
         libxcb
       ]
-      ++ lib.optionals withWayland [ wayland ];
+      ++ lib.optionals withWayland [
+        wayland
+      ];
 in
 rustPlatform.buildRustPackage rec {
   pname = "rio";
@@ -72,7 +74,9 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "sha256-yyxJi0kK2d2I+9GncYHcRKbdngYSltDjsTuChqaDG/U=";
 
   nativeBuildInputs =
-    [ ncurses ]
+    [
+      ncurses
+    ]
     ++ lib.optionals stdenv.isLinux [
       cmake
       pkg-config

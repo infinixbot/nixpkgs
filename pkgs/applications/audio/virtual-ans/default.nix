@@ -19,7 +19,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-tqR7icgURUFOyLJ8+mS17JRf2gK53I2FW/2m8IJPtJE=";
   };
 
-  nativeBuildInputs = [ autoPatchelfHook ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+  ];
 
   buildInputs = [
     stdenv.cc.cc.lib

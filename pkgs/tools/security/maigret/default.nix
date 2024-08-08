@@ -100,7 +100,9 @@ python3.pkgs.buildPythonApplication rec {
       "test_asyncio_progressbar_executor"
     ];
 
-  pythonImportsCheck = [ "maigret" ];
+  pythonImportsCheck = [
+    "maigret"
+  ];
 
   meta = with lib; {
     description = "Tool to collect details about an username";

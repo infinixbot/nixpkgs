@@ -20,7 +20,9 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ cmake ];
   buildInputs = [ obs-studio ];
 
-  cmakeFlags = [ "-DBUILD_OUT_OF_TREE=On" ];
+  cmakeFlags = [
+    "-DBUILD_OUT_OF_TREE=On"
+  ];
 
   postInstall = ''
     mkdir $out/lib $out/share

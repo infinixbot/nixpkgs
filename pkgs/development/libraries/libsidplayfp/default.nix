@@ -29,7 +29,13 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-qZharhEZ16q3Vd2PwVsKQaP/b6bT/okwEPKKwvRl5D8=";
   };
 
-  outputs = [ "out" ] ++ lib.optionals docSupport [ "doc" ];
+  outputs =
+    [
+      "out"
+    ]
+    ++ lib.optionals docSupport [
+      "doc"
+    ];
 
   postPatch = ''
     patchShebangs .
@@ -54,7 +60,9 @@ stdenv.mkDerivation (finalAttrs: {
     libgcrypt
   ];
 
-  checkInputs = [ unittest-cpp ];
+  checkInputs = [
+    unittest-cpp
+  ];
 
   enableParallelBuilding = true;
 
@@ -75,7 +83,13 @@ stdenv.mkDerivation (finalAttrs: {
     export XDG_CACHE_HOME=$TMPDIR
   '';
 
-  buildFlags = [ "all" ] ++ lib.optionals docSupport [ "doc" ];
+  buildFlags =
+    [
+      "all"
+    ]
+    ++ lib.optionals docSupport [
+      "doc"
+    ];
 
   doCheck = stdenv.buildPlatform.canExecute stdenv.hostPlatform;
 

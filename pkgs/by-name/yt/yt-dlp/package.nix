@@ -26,7 +26,9 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-6FUfJryL9nuZwSNzzIftIHNDbDQ35TKQh40PS0ux9mM=";
   };
 
-  build-system = with python3Packages; [ hatchling ];
+  build-system = with python3Packages; [
+    hatchling
+  ];
 
   dependencies = with python3Packages; [
     brotli
@@ -56,7 +58,9 @@ python3Packages.buildPythonApplication rec {
       ''--prefix PATH : "${lib.makeBinPath packagesToBinPath}"''
     ];
 
-  setupPyBuildFlags = [ "build_lazy_extractors" ];
+  setupPyBuildFlags = [
+    "build_lazy_extractors"
+  ];
 
   # Requires network
   doCheck = false;

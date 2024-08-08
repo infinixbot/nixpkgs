@@ -53,13 +53,17 @@ let
   # Plugins that have dependencies.
   # Please help to extend these!
   plugins = {
-    amqp.buildInputs = [ yajl ] ++ lib.optionals stdenv.isLinux [ rabbitmq-c ];
+    amqp.buildInputs = [
+      yajl
+    ] ++ lib.optionals stdenv.isLinux [ rabbitmq-c ];
     apache.buildInputs = [ curl ];
     ascent.buildInputs = [
       curl
       libxml2
     ];
-    battery.buildInputs = lib.optionals stdenv.isDarwin [ IOKit ];
+    battery.buildInputs = lib.optionals stdenv.isDarwin [
+      IOKit
+    ];
     bind.buildInputs = [
       curl
       libxml2
@@ -75,11 +79,19 @@ let
       libxml2
     ];
     dbi.buildInputs = [ libdbi ];
-    disk.buildInputs = lib.optionals stdenv.isLinux [ udev ] ++ lib.optionals stdenv.isDarwin [ IOKit ];
+    disk.buildInputs =
+      lib.optionals stdenv.isLinux [
+        udev
+      ]
+      ++ lib.optionals stdenv.isDarwin [
+        IOKit
+      ];
     dns.buildInputs = [ libpcap ];
     ipmi.buildInputs = [ openipmi ];
     iptables.buildInputs =
-      [ libpcap ]
+      [
+        libpcap
+      ]
       ++ lib.optionals stdenv.isLinux [
         iptables
         libmnl
@@ -97,8 +109,16 @@ let
     ];
     modbus.buildInputs = lib.optionals stdenv.isLinux [ libmodbus ];
     mqtt.buildInputs = [ mosquitto ];
-    mysql.buildInputs = lib.optionals (libmysqlclient != null) [ libmysqlclient ];
-    netlink.buildInputs = [ libpcap ] ++ lib.optionals stdenv.isLinux [ libmnl ];
+    mysql.buildInputs = lib.optionals (libmysqlclient != null) [
+      libmysqlclient
+    ];
+    netlink.buildInputs =
+      [
+        libpcap
+      ]
+      ++ lib.optionals stdenv.isLinux [
+        libmnl
+      ];
     network.buildInputs = [ libgcrypt ];
     nginx.buildInputs = [ curl ];
     notify_desktop.buildInputs = [

@@ -17,7 +17,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-/aPx8NgGkJ1irU0LGzmYTlsiX2U5or24Vl1PGHWuDyE=";
 
-  subPackages = [ "./cnitool" ];
+  subPackages = [
+    "./cnitool"
+  ];
 
   ldflags = [
     "-s"

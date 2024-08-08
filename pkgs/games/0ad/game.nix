@@ -50,7 +50,9 @@ let
       url = "mirror://mozilla/firefox/releases/${version}esr/source/firefox-${version}esr.source.tar.xz";
       sha256 = "0lyg65v380j8i2lrylwz8a5ya80822l8vcnlx3dfqpd3s6zzjsay";
     };
-    patches = (old.patches or [ ]) ++ [ ./spidermonkey-cargo-toml.patch ];
+    patches = (old.patches or [ ]) ++ [
+      ./spidermonkey-cargo-toml.patch
+    ];
   });
 in
 stdenv.mkDerivation rec {
@@ -106,7 +108,9 @@ stdenv.mkDerivation rec {
     "-I${nvidia-texture-tools.dev}/include"
   ];
 
-  NIX_CFLAGS_LINK = toString [ "-L${nvidia-texture-tools.lib}/lib/static" ];
+  NIX_CFLAGS_LINK = toString [
+    "-L${nvidia-texture-tools.lib}/lib/static"
+  ];
 
   patches = [
     ./rootdir_env.patch

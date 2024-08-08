@@ -39,7 +39,9 @@ stdenv.mkDerivation rec {
     xdg-desktop-portal
   ];
 
-  mesonFlags = [ "-Dsystemduserunitdir=${placeholder "out"}/lib/systemd/user" ];
+  mesonFlags = [
+    "-Dsystemduserunitdir=${placeholder "out"}/lib/systemd/user"
+  ];
 
   meta = with lib; {
     description = "Backend implementation for xdg-desktop-portal for Cinnamon, MATE, Xfce";

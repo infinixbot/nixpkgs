@@ -107,7 +107,9 @@ buildPythonPackage rec {
     setuptools
   ];
 
-  pythonRelaxDeps = [ "networkx" ];
+  pythonRelaxDeps = [
+    "networkx"
+  ];
 
   buildInputs = [
     gd

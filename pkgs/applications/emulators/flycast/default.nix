@@ -54,7 +54,9 @@ stdenv.mkDerivation rec {
     SDL2
   ];
 
-  cmakeFlags = [ "-DUSE_HOST_SDL=ON" ];
+  cmakeFlags = [
+    "-DUSE_HOST_SDL=ON"
+  ];
 
   postFixup = ''
     wrapProgram $out/bin/flycast --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ vulkan-loader ]}

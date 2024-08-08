@@ -53,11 +53,15 @@ stdenv.mkDerivation (finalAttrs: {
     flex
   ];
 
-  buildInputs = [
-    boost
-    texinfo
-    zlib
-  ] ++ lib.optionals withGputils [ gputils ];
+  buildInputs =
+    [
+      boost
+      texinfo
+      zlib
+    ]
+    ++ lib.optionals withGputils [
+      gputils
+    ];
 
   configureFlags =
     let

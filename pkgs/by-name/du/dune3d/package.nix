@@ -57,7 +57,9 @@ stdenv'.mkDerivation (finalAttrs: {
     libspnav
     (if stdenv.isLinux then libuuid else libossp_uuid)
     opencascade-occt
-    (python3.withPackages (pp: [ pp.pygobject3 ]))
+    (python3.withPackages (pp: [
+      pp.pygobject3
+    ]))
   ];
 
   env.CASROOT = opencascade-occt;

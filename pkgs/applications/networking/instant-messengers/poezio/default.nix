@@ -35,9 +35,13 @@ python3.pkgs.buildPythonApplication rec {
     typing-extensions
   ];
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
-  pythonImportsCheck = [ "poezio" ];
+  pythonImportsCheck = [
+    "poezio"
+  ];
 
   # remove poezio directory to prevent pytest import confusion
   preCheck = ''

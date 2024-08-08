@@ -23,9 +23,13 @@ stdenv.mkDerivation (finalAttrs: {
     "dev"
   ];
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  cmakeFlags = [ "-DBUILD_STATIC_LIBS=ON" ];
+  cmakeFlags = [
+    "-DBUILD_STATIC_LIBS=ON"
+  ];
 
   passthru.tests = {
     inherit (python3.pkgs) aiohttp;

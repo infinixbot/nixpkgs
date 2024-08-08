@@ -23,7 +23,9 @@ python3.pkgs.buildPythonApplication rec {
       --replace-warn 'mmh3 = "^3.0.0"' 'mmh3 = "*"'
   '';
 
-  nativeBuildInputs = with python3.pkgs; [ poetry-core ];
+  nativeBuildInputs = with python3.pkgs; [
+    poetry-core
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     dotwiz
@@ -35,7 +37,9 @@ python3.pkgs.buildPythonApplication rec {
     regex
   ];
 
-  pythonImportsCheck = [ "deepsecrets" ];
+  pythonImportsCheck = [
+    "deepsecrets"
+  ];
 
   meta = with lib; {
     description = "Secrets scanner that understands code";

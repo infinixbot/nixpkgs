@@ -82,7 +82,9 @@ let
     "systemd-bsod.service"
   ] ++ cfg.additionalUpstreamUnits;
 
-  upstreamWants = [ "sysinit.target.wants" ];
+  upstreamWants = [
+    "sysinit.target.wants"
+  ];
 
   enabledUpstreamUnits = filter (n: !elem n cfg.suppressedUnits) upstreamUnits;
   enabledUnits = filterAttrs (n: v: !elem n cfg.suppressedUnits) cfg.units;
@@ -439,7 +441,9 @@ in
       ++ lib.optional cfg.package.withEfi "efivarfs";
 
     boot.kernelParams =
-      [ "root=${config.boot.initrd.systemd.root}" ]
+      [
+        "root=${config.boot.initrd.systemd.root}"
+      ]
       ++ lib.optional (config.boot.resumeDevice != "") "resume=${config.boot.resumeDevice}"
       # `systemd` mounts root in initrd as read-only unless "rw" is on the kernel command line.
       # For NixOS activation to succeed, we need to have root writable in initrd.

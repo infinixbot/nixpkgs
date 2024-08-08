@@ -34,7 +34,9 @@ let
           networking.hostName = hostName;
           networking.domain = domain;
 
-          environment.systemPackages = with pkgs; [ inetutils ];
+          environment.systemPackages = with pkgs; [
+            inetutils
+          ];
         };
 
       testScript =

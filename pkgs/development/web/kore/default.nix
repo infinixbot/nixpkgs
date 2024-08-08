@@ -41,12 +41,16 @@ stdenv.mkDerivation rec {
   '';
 
   env.NIX_CFLAGS_COMPILE = toString (
-    [ "-Wno-error=deprecated-declarations" ]
+    [
+      "-Wno-error=deprecated-declarations"
+    ]
     ++ lib.optionals stdenv.cc.isGNU [
       "-Wno-error=pointer-compare"
       "-Wno-error=discarded-qualifiers"
     ]
-    ++ lib.optionals stdenv.cc.isClang [ "-Wno-error=incompatible-pointer-types-discards-qualifiers" ]
+    ++ lib.optionals stdenv.cc.isClang [
+      "-Wno-error=incompatible-pointer-types-discards-qualifiers"
+    ]
   );
 
   enableParallelBuilding = true;

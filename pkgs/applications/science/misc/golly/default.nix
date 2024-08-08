@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     SDL2
   ];
 
-  nativeBuildInputs = [ (python3.withPackages (ps: [ ps.setuptools ])) ];
+  nativeBuildInputs = [
+    (python3.withPackages (ps: [ ps.setuptools ]))
+  ];
 
   setSourceRoot = ''
     sourceRoot=$(echo */gui-wx)

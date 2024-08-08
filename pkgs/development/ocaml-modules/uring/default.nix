@@ -26,11 +26,17 @@ buildDunePackage rec {
     optint
   ];
 
-  buildInputs = [ dune-configurator ];
+  buildInputs = [
+    dune-configurator
+  ];
 
-  checkInputs = [ mdx ];
+  checkInputs = [
+    mdx
+  ];
 
-  nativeCheckInputs = [ mdx.bin ];
+  nativeCheckInputs = [
+    mdx.bin
+  ];
 
   doCheck = true;
 

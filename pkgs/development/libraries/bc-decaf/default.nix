@@ -11,7 +11,9 @@ stdenv.mkDerivation rec {
   version = "unstable-2022-07-20";
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [ python3 ];
+  buildInputs = [
+    python3
+  ];
 
   src = fetchFromGitLab {
     domain = "gitlab.linphone.org";

@@ -21,9 +21,13 @@ stdenv.mkDerivation rec {
     ./csvquote-path.patch
   ];
 
-  nativeBuildInputs = [ patsh ];
+  nativeBuildInputs = [
+    patsh
+  ];
 
-  makeFlags = [ "BINDIR=$(out)/bin" ];
+  makeFlags = [
+    "BINDIR=$(out)/bin"
+  ];
 
   preInstall = ''
     mkdir -p "$out/bin"

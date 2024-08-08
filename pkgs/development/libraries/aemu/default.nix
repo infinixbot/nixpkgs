@@ -23,7 +23,9 @@ stdenv.mkDerivation {
   ];
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Cocoa ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.Cocoa
+  ];
 
   cmakeFlags = [
     "-DAEMU_COMMON_GEN_PKGCONFIG=ON"

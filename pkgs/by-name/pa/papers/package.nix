@@ -98,14 +98,26 @@ stdenv.mkDerivation (finalAttrs: {
       pango
       poppler
     ]
-    ++ lib.optionals withLibsecret [ libsecret ]
-    ++ lib.optionals supportNautilus [ nautilus ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Foundation ];
+    ++ lib.optionals withLibsecret [
+      libsecret
+    ]
+    ++ lib.optionals supportNautilus [
+      nautilus
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Foundation
+    ];
 
   mesonFlags =
-    [ "-Dps=enabled" ]
-    ++ lib.optionals (!withLibsecret) [ "-Dkeyring=disabled" ]
-    ++ lib.optionals (!supportNautilus) [ "-Dnautilus=false" ];
+    [
+      "-Dps=enabled"
+    ]
+    ++ lib.optionals (!withLibsecret) [
+      "-Dkeyring=disabled"
+    ]
+    ++ lib.optionals (!supportNautilus) [
+      "-Dnautilus=false"
+    ];
 
   env.NIX_CFLAGS_COMPILE = lib.optionalString (
     stdenv.cc.isClang && lib.versionAtLeast stdenv.cc.version "16"

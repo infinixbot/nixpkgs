@@ -33,7 +33,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-+4WN6TTIzVu3Jj0SfPq2jnYh0oWRo/C4qDMeJLrj1kk=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.Security ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.Security
+  ];
 
   # Compile-time environment variables for where to find assets needed at runtime
   env = {

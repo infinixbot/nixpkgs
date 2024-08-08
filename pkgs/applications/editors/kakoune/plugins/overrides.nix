@@ -168,7 +168,9 @@ self: super: {
       leaveDotGit = true;
     };
 
-    nativeBuildInputs = [ git ];
+    nativeBuildInputs = [
+      git
+    ];
 
     cargoHash = "sha256-EjSj/+BysGwJBxK6Ccg2+pXHdB2Lg3dxIURRsSVTHVY=";
 

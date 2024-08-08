@@ -17,9 +17,13 @@ buildGoModule rec {
   };
   vendorHash = null;
 
-  buildInputs = [ sqlite ];
+  buildInputs = [
+    sqlite
+  ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   subPackages = [ "." ];
 

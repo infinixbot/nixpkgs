@@ -18,9 +18,13 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-msItKEPe7uSUpDAfCfdYZjt5NyfM3KtOrLUTO9NGqlg=";
   };
 
-  patches = [ ./001-writable-omf-path.diff ];
+  patches = [
+    ./001-writable-omf-path.diff
+  ];
 
-  buildInputs = [ fish ];
+  buildInputs = [
+    fish
+  ];
 
   strictDeps = true;
 

@@ -14,7 +14,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-8P3aa5hjTSlGAolIwiAlPhCg8nx/pfJJE7ZbOsbLsEU=";
   };
 
-  buildInputs = [ zlib ];
+  buildInputs = [
+    zlib
+  ];
 
   configurePhase = ''
     cd src

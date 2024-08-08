@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
     "LDFLAGS=-L${xercesc}/lib"
     "CPPFLAGS=-I${xercesc}/include"
   ];
-  installFlags = buildFlags ++ [ "install_prefix=${placeholder "out"}" ];
+  installFlags = buildFlags ++ [
+    "install_prefix=${placeholder "out"}"
+  ];
 
   buildInputs = [ xercesc ];
 

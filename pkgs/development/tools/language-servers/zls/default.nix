@@ -18,9 +18,13 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-vkFGoKCYUk6B40XW2T/pdhir2wzN1kpFmlLcoLwJx1U=";
   };
 
-  zigBuildFlags = [ "-Dversion_data_path=${zig_0_13.src}/doc/langref.html.in" ];
+  zigBuildFlags = [
+    "-Dversion_data_path=${zig_0_13.src}/doc/langref.html.in"
+  ];
 
-  nativeBuildInputs = [ zig_0_13.hook ];
+  nativeBuildInputs = [
+    zig_0_13.hook
+  ];
 
   postPatch = ''
     ln -s ${callPackage ./deps.nix { }} $ZIG_GLOBAL_CACHE_DIR/p

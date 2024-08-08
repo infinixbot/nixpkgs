@@ -63,7 +63,9 @@ let
       chmod -R a+w tools/cling
     '';
 
-    patches = [ ./no-clang-cpp.patch ];
+    patches = [
+      ./no-clang-cpp.patch
+    ];
 
     nativeBuildInputs = [
       python3
@@ -97,7 +99,9 @@ let
         "-DCLING_INCLUDE_TESTS=ON"
         "-DCLANG-TOOLS=OFF"
       ]
-      ++ lib.optionals debug [ "-DCMAKE_BUILD_TYPE=Debug" ]
+      ++ lib.optionals debug [
+        "-DCMAKE_BUILD_TYPE=Debug"
+      ]
       ++ lib.optionals useLLVMLibcxx [
         "-DLLVM_ENABLE_LIBCXX=ON"
         "-DLLVM_ENABLE_LIBCXXABI=ON"

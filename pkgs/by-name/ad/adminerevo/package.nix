@@ -21,7 +21,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [ php ];
+  nativeBuildInputs = [
+    php
+  ];
 
   buildPhase = ''
     runHook preBuild
@@ -67,7 +69,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       asl20
       gpl2Only
     ];
-    maintainers = with maintainers; [ shyim ];
+    maintainers = with maintainers; [
+      shyim
+    ];
     platforms = platforms.all;
   };
 })

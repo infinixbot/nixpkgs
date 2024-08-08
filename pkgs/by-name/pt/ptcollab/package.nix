@@ -21,7 +21,9 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   nativeBuildInputs =
-    [ pkg-config ]
+    [
+      pkg-config
+    ]
     ++ (with libsForQt5; [
       qmake
       qttools

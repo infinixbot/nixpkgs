@@ -43,7 +43,9 @@ stdenv.mkDerivation rec {
     cd src
   '';
 
-  cmakeFlags = [ "-DBUILD_TEST=OFF" ];
+  cmakeFlags = [
+    "-DBUILD_TEST=OFF"
+  ];
 
   nativeBuildInputs = [
     cmake
@@ -64,7 +66,9 @@ stdenv.mkDerivation rec {
       CoreGraphics
       CoreVideo
     ];
-  propagatedBuildInputs = lib.optionals stdenv.isDarwin [ OpenCL ];
+  propagatedBuildInputs = lib.optionals stdenv.isDarwin [
+    OpenCL
+  ];
 
   strictDeps = true;
 

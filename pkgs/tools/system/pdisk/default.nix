@@ -53,10 +53,14 @@ stdenv.mkDerivation rec {
         --replace '-lbsd' '-framework CoreFoundation -framework IOKit'
     '';
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   buildInputs =
-    lib.optionals (!stdenv.hostPlatform.isDarwin) [ libbsd ]
+    lib.optionals (!stdenv.hostPlatform.isDarwin) [
+      libbsd
+    ]
     ++ lib.optionals (stdenv.hostPlatform.isDarwin) [
       CoreFoundation
       IOKit

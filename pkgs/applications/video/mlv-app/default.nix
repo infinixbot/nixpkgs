@@ -47,7 +47,9 @@ mkDerivation rec {
     wrapQtApp "$out/bin/mlvapp"
   '';
 
-  nativeBuildInputs = [ qmake ];
+  nativeBuildInputs = [
+    qmake
+  ];
 
   meta = with lib; {
     description = "All in one MLV processing app that is pretty great";

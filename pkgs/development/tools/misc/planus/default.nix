@@ -18,7 +18,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-yT/ZK5GG0rXpiaCQlQclK2iY8BXhhmiW/UDX9aL8wBQ=";
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
     installShellCompletion --cmd planus \

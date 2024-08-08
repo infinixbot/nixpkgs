@@ -23,7 +23,9 @@ stdenv.mkDerivation {
     sha256 = "1pqkgw5bk0xcz9x7pc1f0r0b9nsc8jnnvcs1315d8ml8mx23fshm";
   };
 
-  makeFlags = [ "CROSS_COMPILE=${arm-embedded-cc.targetPrefix}" ];
+  makeFlags = [
+    "CROSS_COMPILE=${arm-embedded-cc.targetPrefix}"
+  ];
 
   installPhase = ''
     mkdir -p $out/bin $out/share

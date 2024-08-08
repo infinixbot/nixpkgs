@@ -40,7 +40,9 @@ stdenv.mkDerivation rec {
       findlib
     ]);
   buildInputs =
-    [ libxml2 ]
+    [
+      libxml2
+    ]
     ++ (with perlPackages; [
       perl
       IOStringy

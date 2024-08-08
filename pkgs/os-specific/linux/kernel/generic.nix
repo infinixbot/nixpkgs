@@ -250,7 +250,9 @@ let
           moduleStructuredConfig =
             (lib.evalModules {
               modules =
-                [ module ]
+                [
+                  module
+                ]
                 ++ lib.optionals enableCommonConfig [
                   {
                     settings = commonStructuredConfig;

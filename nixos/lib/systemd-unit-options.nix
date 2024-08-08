@@ -314,7 +314,9 @@ rec {
   };
 
   stage2CommonUnitOptions = {
-    imports = [ commonUnitOptions ];
+    imports = [
+      commonUnitOptions
+    ];
 
     options = {
       restartTriggers = mkOption {

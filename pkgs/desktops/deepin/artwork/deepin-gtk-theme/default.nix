@@ -16,7 +16,9 @@ stdenvNoCC.mkDerivation rec {
     hash = "sha256-2B2BtbPeg3cEbnEIgdGFzy8MjCMWlbP/Sq4jzG5cjmc=";
   };
 
-  propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+  propagatedUserEnvPkgs = [
+    gtk-engine-murrine
+  ];
 
   makeFlags = [ "PREFIX=${placeholder "out"}" ];
 

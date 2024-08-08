@@ -17,7 +17,9 @@ import ./make-test-python.nix (
             agent.interval = "1s";
             agent.flush_interval = "1s";
             inputs.exec = {
-              commands = [ "${pkgs.coreutils}/bin/echo 'foo i=42i'" ];
+              commands = [
+                "${pkgs.coreutils}/bin/echo 'foo i=42i'"
+              ];
               data_format = "influx";
             };
             outputs = {

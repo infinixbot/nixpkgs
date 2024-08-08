@@ -42,7 +42,9 @@ mkDerivation rec {
     qtbase
   ];
 
-  qmakeFlags = [ "INSTALLROOT=$(out)" ];
+  qmakeFlags = [
+    "INSTALLROOT=$(out)"
+  ];
 
   installPhase = ''
     runHook preInstall

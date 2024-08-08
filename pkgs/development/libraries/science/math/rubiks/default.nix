@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
   # everything is done in `make install`
   buildPhase = "true";
 
-  installFlags = [ "PREFIX=$(out)" ];
+  installFlags = [
+    "PREFIX=$(out)"
+  ];
 
   nativeBuildInputs = [ dos2unix ];
 

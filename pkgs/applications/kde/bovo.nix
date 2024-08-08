@@ -22,7 +22,9 @@ mkDerivation {
     license = licenses.gpl2Plus;
     platforms = platforms.linux;
   };
-  nativeBuildInputs = [ extra-cmake-modules ];
+  nativeBuildInputs = [
+    extra-cmake-modules
+  ];
   buildInputs = [
     kdeclarative
     knewstuff

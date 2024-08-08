@@ -606,7 +606,9 @@ stdenv.mkDerivation (finalAttrs: {
           {
             search = "/sbin/mkswap";
             replacement = "${lib.getBin util-linux}/sbin/mkswap";
-            where = [ "man/systemd-makefs@.service.xml" ];
+            where = [
+              "man/systemd-makefs@.service.xml"
+            ];
           }
           {
             search = "/sbin/swapon";
@@ -759,7 +761,9 @@ stdenv.mkDerivation (finalAttrs: {
       "-DSYSTEMD_BINARY_PATH=\"/run/current-system/systemd/lib/systemd/systemd\""
 
     ]
-    ++ lib.optionals stdenv.hostPlatform.isMusl [ "-D__UAPI_DEF_ETHHDR=0" ]
+    ++ lib.optionals stdenv.hostPlatform.isMusl [
+      "-D__UAPI_DEF_ETHHDR=0"
+    ]
   );
 
   doCheck = false; # fails a bunch of tests

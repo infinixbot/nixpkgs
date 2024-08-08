@@ -136,7 +136,9 @@ stdenv.mkDerivation rec {
       "-DBUILD_TESTING:BOOL=ON"
       "-DGOOGLE_CLOUD_CPP_ENABLE_EXAMPLES:BOOL=OFF"
     ]
-    ++ lib.optionals (apis != [ "*" ]) [ "-DGOOGLE_CLOUD_CPP_ENABLE=${lib.concatStringsSep ";" apis}" ];
+    ++ lib.optionals (apis != [ "*" ]) [
+      "-DGOOGLE_CLOUD_CPP_ENABLE=${lib.concatStringsSep ";" apis}"
+    ];
 
   requiredSystemFeatures = [ "big-parallel" ];
 

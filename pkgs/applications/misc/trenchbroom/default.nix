@@ -134,7 +134,9 @@ stdenv.mkDerivation rec {
     # https://github.com/TrenchBroom/TrenchBroom/issues/4002#issuecomment-1125390780
     "-DCMAKE_PREFIX_PATH=cmake/packages"
   ];
-  ninjaFlags = [ "TrenchBroom" ];
+  ninjaFlags = [
+    "TrenchBroom"
+  ];
 
   postInstall = ''
     pushd $out/share/TrenchBroom/icons

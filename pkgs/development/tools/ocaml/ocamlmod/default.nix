@@ -49,6 +49,8 @@ lib.throwIf (lib.versionAtLeast ocaml.version "5.0") "ocamlmod is not available 
       homepage = "https://forge.ocamlcore.org/projects/ocamlmod/ocamlmod";
       description = "Generate OCaml modules from source files";
       platforms = ocaml.meta.platforms or [ ];
-      maintainers = with lib.maintainers; [ maggesi ];
+      maintainers = with lib.maintainers; [
+        maggesi
+      ];
     };
   }

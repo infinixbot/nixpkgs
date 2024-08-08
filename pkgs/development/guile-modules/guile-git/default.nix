@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
     pkg-config
     texinfo
   ];
-  buildInputs = [ guile ];
+  buildInputs = [
+    guile
+  ];
   propagatedBuildInputs = [
     libgit2
     scheme-bytestructures

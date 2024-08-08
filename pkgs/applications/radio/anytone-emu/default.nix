@@ -25,9 +25,13 @@ rustPlatform.buildRustPackage rec {
     ln -s ${./Cargo.lock} Cargo.lock
   '';
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ udev ];
+  buildInputs = [
+    udev
+  ];
 
   meta = with lib; {
     description = "Tiny emulator for AnyTone radios";

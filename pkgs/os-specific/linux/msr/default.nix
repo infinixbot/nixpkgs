@@ -15,9 +15,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-e01qYWbOALkXp5NpexuVodMxA3EBySejJ6ZBpZjyT+E=";
   };
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
-  patches = [ ./000-include-sysmacros.patch ];
+  patches = [
+    ./000-include-sysmacros.patch
+  ];
 
   installPhase = ''
     runHook preInstall

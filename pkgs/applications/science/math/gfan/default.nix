@@ -15,7 +15,9 @@ stdenv.mkDerivation rec {
     sha256 = "02pihqb1lb76a0xbfwjzs1cd6ay3ldfxsm8dvsbl6qs3vkjxax56";
   };
 
-  patches = [ ./gfan-0.6.2-cddlib-prefix.patch ];
+  patches = [
+    ./gfan-0.6.2-cddlib-prefix.patch
+  ];
 
   postPatch = lib.optionalString stdenv.cc.isClang ''
     substituteInPlace Makefile --replace "-fno-guess-branch-probability" ""

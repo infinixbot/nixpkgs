@@ -15,7 +15,9 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-z+zwhd3JH40Vg9yHt9ektvm2jWFOvj1DaCSI9GwXLT8=";
   };
 
-  nativeBuildInputs = with python3Packages; [ poetry-core ];
+  nativeBuildInputs = with python3Packages; [
+    poetry-core
+  ];
 
   propagatedBuildInputs = with python3Packages; [
     open-clip-torch

@@ -102,7 +102,9 @@ stdenv.mkDerivation (finalAttrs: {
       ./git-send-email-honor-PATH.patch
       ./installCheck-path.patch
     ]
-    ++ lib.optionals withSsh [ ./ssh-path.patch ]
+    ++ lib.optionals withSsh [
+      ./ssh-path.patch
+    ]
     ++ lib.optionals (guiSupport && stdenv.isDarwin) [
       # Needed to workaround an issue in macOS where gitk shows a empty window
       # https://github.com/Homebrew/homebrew-core/issues/68798
@@ -177,7 +179,9 @@ stdenv.mkDerivation (finalAttrs: {
     + lib.optionalString (stdenv.isFreeBSD) "-lthr";
 
   configureFlags =
-    [ "ac_cv_prog_CURL_CONFIG=${lib.getDev curl}/bin/curl-config" ]
+    [
+      "ac_cv_prog_CURL_CONFIG=${lib.getDev curl}/bin/curl-config"
+    ]
     ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
       "ac_cv_fread_reads_directories=yes"
       "ac_cv_snprintf_returns_bogus=no"
@@ -189,7 +193,9 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   makeFlags =
-    [ "prefix=\${out}" ]
+    [
+      "prefix=\${out}"
+    ]
     # Git does not allow setting a shell separately for building and run-time.
     # Therefore lets leave it at the default /bin/sh when cross-compiling
     ++ lib.optional (stdenv.buildPlatform == stdenv.hostPlatform) "SHELL_PATH=${stdenv.shell}"

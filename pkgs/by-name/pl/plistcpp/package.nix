@@ -23,7 +23,9 @@ stdenv.mkDerivation {
     sed -i "1i #include <algorithm>" src/Plist.cpp
   '';
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = [
     boost

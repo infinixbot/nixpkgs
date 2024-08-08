@@ -42,7 +42,9 @@ stdenv.mkDerivation rec {
     SDL2_mixer
     libGL
   ];
-  cmakeFlags = [ "-DCMAKE_CXX_FLAGS=-Wno-error=format-overflow" ];
+  cmakeFlags = [
+    "-DCMAKE_CXX_FLAGS=-Wno-error=format-overflow"
+  ];
 
   meta = with lib; {
     description = "strategy game engine";

@@ -52,7 +52,9 @@ mkDerivation rec {
     knewstuff
   ];
 
-  patches = [ ./0001-Disable-autostart.patch ];
+  patches = [
+    ./0001-Disable-autostart.patch
+  ];
 
   postInstall = ''
     mkdir -p $out/etc/xdg/autostart

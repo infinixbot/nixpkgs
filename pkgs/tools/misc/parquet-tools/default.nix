@@ -38,7 +38,9 @@ buildPythonApplication rec {
     "thrift"
   ];
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   propagatedBuildInputs = [
     boto3
@@ -66,7 +68,9 @@ buildPythonApplication rec {
     "test_excute_simple"
   ];
 
-  pythonImportsCheck = [ "parquet_tools" ];
+  pythonImportsCheck = [
+    "parquet_tools"
+  ];
 
   meta = with lib; {
     description = "CLI tool for parquet files";

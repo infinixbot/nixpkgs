@@ -38,7 +38,9 @@ rec {
     "share/lua/${lua.luaversion}/?.lua"
     "share/lua/${lua.luaversion}/?/init.lua"
   ];
-  luaCPathList = [ "lib/lua/${lua.luaversion}/?.so" ];
+  luaCPathList = [
+    "lib/lua/${lua.luaversion}/?.so"
+  ];
 
   # generate paths without a prefix
   luaPathRelStr = lib.concatStringsSep ";" luaPathList;

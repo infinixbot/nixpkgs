@@ -65,7 +65,9 @@ stdenv.mkDerivation rec {
       libexif
       range-v3
     ]
-    ++ lib.optionals enableOpencv [ opencv ]
+    ++ lib.optionals enableOpencv [
+      opencv
+    ]
     ++ lib.optionals enableWayland [
       extra-cmake-modules
       wayland
@@ -77,9 +79,15 @@ stdenv.mkDerivation rec {
     ];
 
   cmakeFlags =
-    lib.optionals (!enableOpencv) [ "-DENABLE_OPENCV=OFF" ]
-    ++ lib.optionals enableWayland [ "-DENABLE_WAYLAND=ON" ]
-    ++ lib.optionals (!enableX11) [ "-DENABLE_X11=OFF" ];
+    lib.optionals (!enableOpencv) [
+      "-DENABLE_OPENCV=OFF"
+    ]
+    ++ lib.optionals enableWayland [
+      "-DENABLE_WAYLAND=ON"
+    ]
+    ++ lib.optionals (!enableX11) [
+      "-DENABLE_X11=OFF"
+    ];
 
   # error: aligned deallocation function of type 'void (void *, std::align_val_t) noexcept' is only available on macOS 10.14 or newer
   preBuild =

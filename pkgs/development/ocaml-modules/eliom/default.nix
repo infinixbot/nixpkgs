@@ -27,7 +27,9 @@ buildDunePackage rec {
     hash = "sha256-j4t6GEd8hYyM87b9XvgcnaV9XMkouz6+v0SYW22/bqg=";
   };
 
-  nativeBuildInputs = [ which ];
+  nativeBuildInputs = [
+    which
+  ];
   buildInputs = [
     js_of_ocaml-ocamlbuild
     js_of_ocaml-ppx_deriving_json

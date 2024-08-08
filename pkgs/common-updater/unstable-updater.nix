@@ -167,8 +167,18 @@ in
   "--url=${builtins.toString url}"
   "--tag-format=${tagFormat}"
 ]
-++ lib.optionals (branch != null) [ "--branch=${branch}" ]
-++ lib.optionals (tagPrefix != null) [ "--tag-prefix=${tagPrefix}" ]
-++ lib.optionals (tagConverter != null) [ "--tag-converter=${tagConverter}" ]
-++ lib.optionals hardcodeZeroVersion [ "--hardcode-zero-version" ]
-++ lib.optionals shallowClone [ "--shallow-clone" ]
+++ lib.optionals (branch != null) [
+  "--branch=${branch}"
+]
+++ lib.optionals (tagPrefix != null) [
+  "--tag-prefix=${tagPrefix}"
+]
+++ lib.optionals (tagConverter != null) [
+  "--tag-converter=${tagConverter}"
+]
+++ lib.optionals hardcodeZeroVersion [
+  "--hardcode-zero-version"
+]
+++ lib.optionals shallowClone [
+  "--shallow-clone"
+]

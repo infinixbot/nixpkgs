@@ -25,7 +25,9 @@ stdenv.mkDerivation (finalAttrs: {
     docbook_xsl
   ];
 
-  buildInputs = [ ncurses ];
+  buildInputs = [
+    ncurses
+  ];
 
   outputs = [
     "out"

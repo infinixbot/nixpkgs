@@ -19,7 +19,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-BS+ItZd6cSMX92M6XGYrIeAiCB2iBdvbMvKdLfwawLQ=";
   };
 
-  patches = [ ./remove-install-exec-hook.patch ];
+  patches = [
+    ./remove-install-exec-hook.patch
+  ];
 
   perlModules = with perlPackages; [
     HTTPDate

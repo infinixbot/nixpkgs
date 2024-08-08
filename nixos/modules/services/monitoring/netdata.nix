@@ -344,7 +344,9 @@ in
           PrivateMounts = true;
         }
         // (lib.optionalAttrs (cfg.claimTokenFile != null) {
-          LoadCredential = [ "netdata_claim_token:${cfg.claimTokenFile}" ];
+          LoadCredential = [
+            "netdata_claim_token:${cfg.claimTokenFile}"
+          ];
 
           ExecStartPre = pkgs.writeShellScript "netdata-claim" ''
             set -euo pipefail

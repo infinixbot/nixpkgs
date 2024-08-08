@@ -17,7 +17,9 @@ buildGoModule rec {
 
   vendorHash = null;
 
-  ldflags = [ "-X github.com/containerd/containerd/version.Version=${version}" ];
+  ldflags = [
+    "-X github.com/containerd/containerd/version.Version=${version}"
+  ];
 
   subPackages = [
     "cmd/ctd-decoder"

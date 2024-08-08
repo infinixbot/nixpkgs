@@ -50,18 +50,24 @@ stdenv.mkDerivation rec {
     python3
   ];
 
-  buildInputs = [
-    gnutls
-    cairo
-    gdk-pixbuf
-    zlib
-    glib
-    libgcrypt
-    cyrus_sasl
-    gtk3
-  ] ++ lib.optionals pulseaudioSupport [ libpulseaudio ];
+  buildInputs =
+    [
+      gnutls
+      cairo
+      gdk-pixbuf
+      zlib
+      glib
+      libgcrypt
+      cyrus_sasl
+      gtk3
+    ]
+    ++ lib.optionals pulseaudioSupport [
+      libpulseaudio
+    ];
 
-  mesonFlags = lib.optionals (!pulseaudioSupport) [ "-Dpulseaudio=disabled" ];
+  mesonFlags = lib.optionals (!pulseaudioSupport) [
+    "-Dpulseaudio=disabled"
+  ];
 
   passthru = {
     updateScript = gnome.updateScript {

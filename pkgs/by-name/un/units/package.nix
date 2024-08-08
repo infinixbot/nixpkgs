@@ -8,7 +8,9 @@
 }:
 
 let
-  pythonEnv = python3.withPackages (p: [ p.requests ]);
+  pythonEnv = python3.withPackages (p: [
+    p.requests
+  ]);
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "units";
@@ -25,7 +27,13 @@ stdenv.mkDerivation (finalAttrs: {
     "man"
   ];
 
-  buildInputs = [ readline ] ++ lib.optionals enableCurrenciesUpdater [ pythonEnv ];
+  buildInputs =
+    [
+      readline
+    ]
+    ++ lib.optionals enableCurrenciesUpdater [
+      pythonEnv
+    ];
 
   prePatch = lib.optionalString enableCurrenciesUpdater ''
     substituteInPlace units_cur \

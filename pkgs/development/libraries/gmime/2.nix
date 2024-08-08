@@ -34,7 +34,9 @@ stdenv.mkDerivation rec {
     libgpg-error
   ];
   configureFlags =
-    [ "--enable-introspection=yes" ]
+    [
+      "--enable-introspection=yes"
+    ]
     ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [ "ac_cv_have_iconv_detect_h=yes" ];
 
   postPatch = ''

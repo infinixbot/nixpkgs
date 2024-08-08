@@ -16,9 +16,13 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-3FGuFOAHCcybPwujWlh58NWtuF5CebaKTgBWgCGpSL8=";
   };
 
-  nativeBuildInputs = [ python3.pkgs.setuptools ];
+  nativeBuildInputs = [
+    python3.pkgs.setuptools
+  ];
 
-  propagatedBuildInputs = [ black ];
+  propagatedBuildInputs = [
+    black
+  ];
 
   nativeCheckInputs = [
     black

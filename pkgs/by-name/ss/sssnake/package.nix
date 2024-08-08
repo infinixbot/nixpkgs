@@ -17,7 +17,9 @@ stdenv.mkDerivation rec {
     substituteInPlace makefile --replace '-lncursesw' '-lncursesw -D_XOPEN_SOURCE=500'
   '';
   buildInputs = [ ncurses ];
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
   meta = with lib; {
     description = "Cli snake game that plays itself";
     mainProgram = "sssnake";

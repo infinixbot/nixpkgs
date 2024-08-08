@@ -31,7 +31,9 @@ buildNpmPackage rec {
     python3
   ];
 
-  buildInputs = [ vips ];
+  buildInputs = [
+    vips
+  ];
 
   dontNpmBuild = true;
 

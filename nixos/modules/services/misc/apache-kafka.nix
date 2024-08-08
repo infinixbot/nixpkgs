@@ -275,5 +275,7 @@ in
   };
 
   meta.doc = ./kafka.md;
-  meta.maintainers = with lib.maintainers; [ srhb ];
+  meta.maintainers = with lib.maintainers; [
+    srhb
+  ];
 }

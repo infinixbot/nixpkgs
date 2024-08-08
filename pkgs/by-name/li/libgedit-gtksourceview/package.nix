@@ -48,7 +48,9 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = [ libxml2 ];
+  buildInputs = [
+    libxml2
+  ];
 
   propagatedBuildInputs = [
     # Required by libgedit-gtksourceview-300.pc

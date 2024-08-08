@@ -709,7 +709,9 @@ rec {
           in
           withoutCargoTomlSearch
           // {
-            expectedTestOutputs = [ "test ignore_main ... ok" ];
+            expectedTestOutputs = [
+              "test ignore_main ... ok"
+            ];
           };
         procMacroInPrelude = {
           procMacro = true;
@@ -747,7 +749,9 @@ rec {
           ];
           src = mkBin "src/foobar.rs";
         };
-        expectedFiles = [ "./bin/test_binary1" ];
+        expectedFiles = [
+          "./bin/test_binary1"
+        ];
       };
 
       crateBinWithPathOutputsDebug = assertOutputs {
@@ -763,7 +767,9 @@ rec {
           src = mkBin "src/foobar.rs";
         };
         expectedFiles =
-          [ "./bin/test_binary1" ]
+          [
+            "./bin/test_binary1"
+          ]
           ++ lib.optionals stdenv.isDarwin [
             # On Darwin, the debug symbols are in a separate directory.
             "./bin/test_binary1.dSYM/Contents/Info.plist"
@@ -777,7 +783,9 @@ rec {
           crateBin = [ { name = "my-binary2"; } ];
           src = mkBin "src/my_binary2.rs";
         };
-        expectedFiles = [ "./bin/my-binary2" ];
+        expectedFiles = [
+          "./bin/my-binary2"
+        ];
       };
 
       crateLibOutputs = assertOutputs {

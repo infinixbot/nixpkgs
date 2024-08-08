@@ -20,7 +20,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-DS56H2XjEgdXC9TKLjwyfLpFHB9dUThhr8pNFEJuAZE=";
 
-  nativeBuildInputs = [ makeBinaryWrapper ];
+  nativeBuildInputs = [
+    makeBinaryWrapper
+  ];
 
   postFixup = ''
     wrapProgram $out/bin/raffi \

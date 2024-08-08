@@ -26,7 +26,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-rX3ngXoW7YISyytpRPLX/lGmQa5LPtFxeA2XdtU1gV0=";
   };
 
-  patches = [ ./0001-Search-connectors-in-OFONO_PLUGIN_PATH.patch ];
+  patches = [
+    ./0001-Search-connectors-in-OFONO_PLUGIN_PATH.patch
+  ];
 
   nativeBuildInputs = [
     autoreconfHook
@@ -49,7 +51,9 @@ stdenv.mkDerivation rec {
     "--sysconfdir=/etc"
   ];
 
-  installFlags = [ "sysconfdir=${placeholder "out"}/etc" ];
+  installFlags = [
+    "sysconfdir=${placeholder "out"}/etc"
+  ];
 
   enableParallelBuilding = true;
   enableParallelChecking = false;

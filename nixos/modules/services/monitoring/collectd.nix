@@ -140,7 +140,9 @@ in
       '') cfg.include}
     '';
 
-    systemd.tmpfiles.rules = [ "d '${cfg.dataDir}' - ${cfg.user} - - -" ];
+    systemd.tmpfiles.rules = [
+      "d '${cfg.dataDir}' - ${cfg.user} - - -"
+    ];
 
     systemd.services.collectd = {
       description = "Collectd Monitoring Agent";

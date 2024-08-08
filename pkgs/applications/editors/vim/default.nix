@@ -75,7 +75,9 @@ stdenv.mkDerivation {
         "vim_cv_timer_create=no"
         "vim_cv_timer_create_with_lrt=yes"
       ]
-      ++ lib.optionals (!stdenv.hostPlatform.isFreeBSD) [ "vim_cv_timer_create=yes" ]
+      ++ lib.optionals (!stdenv.hostPlatform.isFreeBSD) [
+        "vim_cv_timer_create=yes"
+      ]
     );
 
   # which.sh is used to for vim's own shebang patching, so make it find

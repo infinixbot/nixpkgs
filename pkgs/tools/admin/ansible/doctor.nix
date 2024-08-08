@@ -53,7 +53,9 @@ python3.pkgs.buildPythonApplication rec {
   # Module has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "ansibledoctor" ];
+  pythonImportsCheck = [
+    "ansibledoctor"
+  ];
 
   meta = with lib; {
     description = "Annotation based documentation for your Ansible roles";

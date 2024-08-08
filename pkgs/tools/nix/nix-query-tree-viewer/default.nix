@@ -18,7 +18,9 @@ rustPlatform.buildRustPackage rec {
     sha256 = "sha256-Lc9hfjybnRrkd7PZMa2ojxOM04bP4GJyagkZUX2nVwY=";
   };
 
-  nativeBuildInputs = [ wrapGAppsHook3 ];
+  nativeBuildInputs = [
+    wrapGAppsHook3
+  ];
 
   buildInputs = [
     glib

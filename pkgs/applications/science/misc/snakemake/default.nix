@@ -71,11 +71,17 @@ python3.pkgs.buildPythonApplication rec {
     snakemake-executor-plugin-cluster-generic
   ];
 
-  disabledTestPaths = [ "tests/test_conda_python_3_7_script/test_script.py" ];
+  disabledTestPaths = [
+    "tests/test_conda_python_3_7_script/test_script.py"
+  ];
 
-  disabledTests = [ "test_deploy_sources" ];
+  disabledTests = [
+    "test_deploy_sources"
+  ];
 
-  pythonImportsCheck = [ "snakemake" ];
+  pythonImportsCheck = [
+    "snakemake"
+  ];
 
   preCheck = ''
     export HOME="$(mktemp -d)"

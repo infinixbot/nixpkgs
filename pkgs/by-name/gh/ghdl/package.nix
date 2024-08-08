@@ -33,20 +33,31 @@ stdenv.mkDerivation (finalAttrs: {
   LIBRARY_PATH = "${stdenv.cc.libc}/lib";
 
   nativeBuildInputs =
-    [ gnat ]
+    [
+      gnat
+    ]
     ++ lib.optionals (backend == "gcc") [
       texinfo
       makeWrapper
     ];
   buildInputs =
-    [ zlib ]
-    ++ lib.optionals (backend == "llvm") [ llvm ]
+    [
+      zlib
+    ]
+    ++ lib.optionals (backend == "llvm") [
+      llvm
+    ]
     ++ lib.optionals (backend == "gcc") [
       gmp
       mpfr
       libmpc
     ];
-  propagatedBuildInputs = [ ] ++ lib.optionals (backend == "llvm" || backend == "gcc") [ zlib ];
+  propagatedBuildInputs =
+    [
+    ]
+    ++ lib.optionals (backend == "llvm" || backend == "gcc") [
+      zlib
+    ];
 
   preConfigure =
     ''
@@ -63,8 +74,12 @@ stdenv.mkDerivation (finalAttrs: {
       "--disable-werror"
       "--enable-synth"
     ]
-    ++ lib.optionals (backend == "llvm") [ "--with-llvm-config=${llvm.dev}/bin/llvm-config" ]
-    ++ lib.optionals (backend == "gcc") [ "--with-gcc=gcc-${gcc-unwrapped.version}" ];
+    ++ lib.optionals (backend == "llvm") [
+      "--with-llvm-config=${llvm.dev}/bin/llvm-config"
+    ]
+    ++ lib.optionals (backend == "gcc") [
+      "--with-gcc=gcc-${gcc-unwrapped.version}"
+    ];
 
   buildPhase = lib.optionalString (backend == "gcc") ''
     make copy-sources
@@ -89,11 +104,16 @@ stdenv.mkDerivation (finalAttrs: {
 
   postFixup = lib.optionalString (backend == "gcc") ''
     wrapProgram $out/bin/ghdl \
-      --set LIBRARY_PATH ${lib.makeLibraryPath [ glibc ]}
+      --set LIBRARY_PATH ${
+        lib.makeLibraryPath [
+          glibc
+        ]
+      }
   '';
 
   hardeningDisable =
-    [ ]
+    [
+    ]
     ++ lib.optionals (backend == "gcc") [
       # GCC compilation fails with format errors
       "format"

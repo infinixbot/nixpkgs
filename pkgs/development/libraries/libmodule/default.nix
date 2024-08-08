@@ -34,6 +34,8 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/FedeDP/libmodule";
     platforms = platforms.linux;
     license = licenses.mit;
-    maintainers = with maintainers; [ eadwu ];
+    maintainers = with maintainers; [
+      eadwu
+    ];
   };
 }

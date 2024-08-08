@@ -819,14 +819,28 @@ in
     systemd.services.forgejo = {
       description = "Forgejo (Beyond coding. We forge.)";
       after =
-        [ "network.target" ]
-        ++ optionals usePostgresql [ "postgresql.service" ]
-        ++ optionals useMysql [ "mysql.service" ]
-        ++ optionals (!cfg.useWizard) [ "forgejo-secrets.service" ];
+        [
+          "network.target"
+        ]
+        ++ optionals usePostgresql [
+          "postgresql.service"
+        ]
+        ++ optionals useMysql [
+          "mysql.service"
+        ]
+        ++ optionals (!cfg.useWizard) [
+          "forgejo-secrets.service"
+        ];
       requires =
-        optionals (cfg.database.createDatabase && usePostgresql) [ "postgresql.service" ]
-        ++ optionals (cfg.database.createDatabase && useMysql) [ "mysql.service" ]
-        ++ optionals (!cfg.useWizard) [ "forgejo-secrets.service" ];
+        optionals (cfg.database.createDatabase && usePostgresql) [
+          "postgresql.service"
+        ]
+        ++ optionals (cfg.database.createDatabase && useMysql) [
+          "mysql.service"
+        ]
+        ++ optionals (!cfg.useWizard) [
+          "forgejo-secrets.service"
+        ];
       wantedBy = [ "multi-user.target" ];
       path = [
         cfg.package

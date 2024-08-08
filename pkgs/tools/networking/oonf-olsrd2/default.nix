@@ -23,9 +23,13 @@ stdenv.mkDerivation rec {
   # Can be removed once release with https://github.com/OLSR/OONF/pull/40 is out.
   env.NIX_CFLAGS_COMPILE = "-fcommon";
 
-  cmakeFlags = [ "-DOONF_NO_WERROR=yes" ];
+  cmakeFlags = [
+    "-DOONF_NO_WERROR=yes"
+  ];
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   meta = with lib; {
     description = "Adhoc wireless mesh routing daemon";

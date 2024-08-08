@@ -37,7 +37,9 @@ buildGoModule rec {
     fi
   '';
 
-  tags = [ "prod" ];
+  tags = [
+    "prod"
+  ];
 
   ldflags = [
     "-s"

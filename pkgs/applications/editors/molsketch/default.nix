@@ -20,7 +20,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-6wFvl3Aktv8RgEdI2ENsKallKlYy/f8Tsm5C0FB/igI=";
   };
 
-  patches = [ ./openbabel.patch ];
+  patches = [
+    ./openbabel.patch
+  ];
 
   # uses C++17 APIs like std::transform_reduce
   postPatch = ''

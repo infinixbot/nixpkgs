@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
 
   hardeningDisable = lib.optional stdenv.cc.isClang "format";
 
-  buildInputs = [ curl ];
+  buildInputs = [
+    curl
+  ];
 
   nativeCheckInputs = [
     bc

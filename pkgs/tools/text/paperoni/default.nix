@@ -24,12 +24,22 @@ rustPlatform.buildRustPackage rec {
     lockFile = ./Cargo.lock;
   };
 
-  nativeBuildInputs = [ curl ] ++ lib.optionals stdenv.isLinux [ pkg-config ];
+  nativeBuildInputs =
+    [
+      curl
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      pkg-config
+    ];
 
-  buildInputs = [
-    curl
-    zlib
-  ] ++ lib.optionals stdenv.isLinux [ openssl ];
+  buildInputs =
+    [
+      curl
+      zlib
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      openssl
+    ];
 
   # update Cargo.lock to work with openssl 3
   postPatch = ''

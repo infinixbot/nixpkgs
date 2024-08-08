@@ -40,7 +40,9 @@ let
       libedit
     ];
 
-    configureFlags = [ "--disable-java-bindings" ];
+    configureFlags = [
+      "--disable-java-bindings"
+    ];
 
     doCheck = true;
 

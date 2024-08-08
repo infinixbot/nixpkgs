@@ -52,7 +52,9 @@ effectiveStdenv.mkDerivation (finalAttrs: {
     ];
 
   buildInputs =
-    [ SDL2 ]
+    [
+      SDL2
+    ]
     ++ lib.optionals stdenv.isDarwin [
       Accelerate
       CoreGraphics

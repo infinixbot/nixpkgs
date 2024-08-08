@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
     substituteInPlace src/Makefile.am --replace xstow-stow ""
   '';
 
-  buildInputs = [ ncurses ];
+  buildInputs = [
+    ncurses
+  ];
 
   meta = with lib; {
     description = "Replacement of GNU Stow written in C++";

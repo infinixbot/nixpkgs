@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     lapack
   ];
 
-  makeFlags = [ "BLAS=-lcblas" ];
+  makeFlags = [
+    "BLAS=-lcblas"
+  ];
 
   installFlags = [
     "INSTALL_LIB=$(out)/lib"

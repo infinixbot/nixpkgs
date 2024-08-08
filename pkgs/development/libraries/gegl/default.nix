@@ -81,9 +81,15 @@ stdenv.mkDerivation rec {
       openexr
       suitesparse
     ]
-    ++ lib.optionals stdenv.isDarwin [ OpenCL ]
-    ++ lib.optionals stdenv.cc.isClang [ llvmPackages.openmp ]
-    ++ lib.optionals withLuaJIT [ luajit ];
+    ++ lib.optionals stdenv.isDarwin [
+      OpenCL
+    ]
+    ++ lib.optionals stdenv.cc.isClang [
+      llvmPackages.openmp
+    ]
+    ++ lib.optionals withLuaJIT [
+      luajit
+    ];
 
   # for gegl-4.0.pc
   propagatedBuildInputs = [
@@ -92,17 +98,21 @@ stdenv.mkDerivation rec {
     babl
   ];
 
-  mesonFlags = [
-    "-Dmrg=disabled" # not sure what that is
-    "-Dsdl2=disabled"
-    "-Dpygobject=disabled"
-    "-Dlibav=disabled"
-    "-Dlibv4l=disabled"
-    "-Dlibv4l2=disabled"
-    # Disabled due to multiple vulnerabilities, see
-    # https://github.com/NixOS/nixpkgs/pull/73586
-    "-Djasper=disabled"
-  ] ++ lib.optionals (!withLuaJIT) [ "-Dlua=disabled" ];
+  mesonFlags =
+    [
+      "-Dmrg=disabled" # not sure what that is
+      "-Dsdl2=disabled"
+      "-Dpygobject=disabled"
+      "-Dlibav=disabled"
+      "-Dlibv4l=disabled"
+      "-Dlibv4l2=disabled"
+      # Disabled due to multiple vulnerabilities, see
+      # https://github.com/NixOS/nixpkgs/pull/73586
+      "-Djasper=disabled"
+    ]
+    ++ lib.optionals (!withLuaJIT) [
+      "-Dlua=disabled"
+    ];
 
   postPatch = ''
     chmod +x tests/opencl/opencl_test.sh

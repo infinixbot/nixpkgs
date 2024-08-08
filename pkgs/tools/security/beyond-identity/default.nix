@@ -48,7 +48,9 @@ let
       hash = "sha512-aOQi0hG7AZ3lIAPCDgGAjqVmNCuqFC62CjI9XPLBpvbxBgr2yi7alP952i31MufzzruzVweoQb8SWgNIHq/zIw==";
     };
 
-    nativeBuildInputs = [ dpkg ];
+    nativeBuildInputs = [
+      dpkg
+    ];
 
     unpackPhase = ''
       dpkg -x $src .

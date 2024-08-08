@@ -22,9 +22,13 @@ buildPythonPackage rec {
     hash = "sha256-72F1aLLIId+YClTrpOz3bL8LSq6ZhZjjtv8V/GJGkqs=";
   };
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
-  nativeCheckInputs = [ djangorestframework ];
+  nativeCheckInputs = [
+    djangorestframework
+  ];
 
   checkPhase = ''
     runHook preCheck

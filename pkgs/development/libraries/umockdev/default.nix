@@ -50,15 +50,19 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  nativeBuildInputs = [
-    docbook-xsl-nons
-    gobject-introspection
-    gtk-doc
-    meson
-    ninja
-    pkg-config
-    vala
-  ] ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [ mesonEmulatorHook ];
+  nativeBuildInputs =
+    [
+      docbook-xsl-nons
+      gobject-introspection
+      gtk-doc
+      meson
+      ninja
+      pkg-config
+      vala
+    ]
+    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+      mesonEmulatorHook
+    ];
 
   buildInputs = [
     glib
@@ -66,7 +70,9 @@ stdenv.mkDerivation (finalAttrs: {
     libpcap
   ];
 
-  checkInputs = lib.optionals finalAttrs.passthru.withGudev [ libgudev ];
+  checkInputs = lib.optionals finalAttrs.passthru.withGudev [
+    libgudev
+  ];
 
   nativeCheckInputs = [
     python3
@@ -76,7 +82,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  mesonFlags = [ "-Dgtk_doc=true" ];
+  mesonFlags = [
+    "-Dgtk_doc=true"
+  ];
 
   doCheck = true;
 

@@ -32,7 +32,9 @@ stdenv.mkDerivation rec {
     python3
   ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   installPhase = ''
     install -Dm755 -t $out/bin/ ebsnvme-id

@@ -39,7 +39,9 @@
 
 mkDerivation {
   pname = "kdelibs4support";
-  patches = [ ./nix-kde-include-dir.patch ];
+  patches = [
+    ./nix-kde-include-dir.patch
+  ];
   setupHook = ./setup-hook.sh;
   nativeBuildInputs = [
     extra-cmake-modules

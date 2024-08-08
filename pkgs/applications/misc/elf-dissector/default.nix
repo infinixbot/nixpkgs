@@ -24,7 +24,9 @@ stdenv.mkDerivation {
     hash = "sha256-fQFGFw8nZHMs8J1W2CcHAJCdcvaY2l2/CySyBSsKpyE=";
   };
 
-  patches = [ ./fix_build_for_src_lib_disassembler_disassembler.diff ];
+  patches = [
+    ./fix_build_for_src_lib_disassembler_disassembler.diff
+  ];
 
   nativeBuildInputs = [
     cmake

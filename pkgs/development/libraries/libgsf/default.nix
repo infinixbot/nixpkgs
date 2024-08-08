@@ -67,7 +67,9 @@ stdenv.mkDerivation rec {
     zlib
   ];
 
-  nativeCheckInputs = [ perl ];
+  nativeCheckInputs = [
+    perl
+  ];
 
   propagatedBuildInputs = [
     libxml2

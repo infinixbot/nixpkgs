@@ -18,7 +18,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   src = fetchzip {
     urls =
-      [ "https://github.com/i2p/i2p.i2p/archive/i2p-${finalAttrs.version}.tar.gz" ]
+      [
+        "https://github.com/i2p/i2p.i2p/archive/i2p-${finalAttrs.version}.tar.gz"
+      ]
       ++ (map (mirror: "${mirror}${finalAttrs.version}/i2psource_${finalAttrs.version}.tar.bz2") [
         "https://download.i2p2.de/releases/"
         "https://files.i2p-projekt.de/"

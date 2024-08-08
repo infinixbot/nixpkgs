@@ -17,9 +17,13 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-zvFmh4Q1Q6gizxdCCoOX2hgQ7/f8ozczY7IwWqMKGSo=";
   };
 
-  nativeBuildInputs = [ makeBinaryWrapper ];
+  nativeBuildInputs = [
+    makeBinaryWrapper
+  ];
 
-  buildInputs = [ rakudo ];
+  buildInputs = [
+    rakudo
+  ];
 
   installPhase = ''
     runHook preInstall

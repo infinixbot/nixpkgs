@@ -196,7 +196,9 @@ let
       # compiler when needed.
       ./python-2.7-distutils-C++.patch
     ]
-    ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [ ./cross-compile.patch ];
+    ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
+      ./cross-compile.patch
+    ];
 
   preConfigure =
     ''
@@ -217,16 +219,24 @@ let
     '';
 
   configureFlags =
-    lib.optionals enableOptimizations [ "--enable-optimizations" ]
-    ++ lib.optionals (!static) [ "--enable-shared" ]
+    lib.optionals enableOptimizations [
+      "--enable-optimizations"
+    ]
+    ++ lib.optionals (!static) [
+      "--enable-shared"
+    ]
     ++ [
       "--with-threads"
       "--with-system-ffi"
       "--with-system-expat"
       "--enable-unicode=ucs${toString ucsEncoding}"
     ]
-    ++ lib.optionals stdenv.hostPlatform.isCygwin [ "ac_cv_func_bind_textdomain_codeset=yes" ]
-    ++ lib.optionals stdenv.isDarwin [ "--disable-toolbox-glue" ]
+    ++ lib.optionals stdenv.hostPlatform.isCygwin [
+      "ac_cv_func_bind_textdomain_codeset=yes"
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      "--disable-toolbox-glue"
+    ]
     ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
       "PYTHON_FOR_BUILD=${lib.getBin buildPackages.python}/bin/python"
       "ac_cv_buggy_getaddrinfo=no"

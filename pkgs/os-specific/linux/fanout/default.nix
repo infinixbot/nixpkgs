@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
     substituteInPlace Makefile --replace "modules_install" "INSTALL_MOD_PATH=$out modules_install"
   '';
 
-  patches = [ ./remove_auto_mknod.patch ];
+  patches = [
+    ./remove_auto_mknod.patch
+  ];
 
   hardeningDisable = [
     "format"

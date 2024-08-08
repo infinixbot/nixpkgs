@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
 
   NIX_CFLAGS_COMPILE = "-Wno-error=null-dereference";
 
-  cmakeFlags = [ "-DOPENLOCO_BUILD_TESTS=NO" ];
+  cmakeFlags = [
+    "-DOPENLOCO_BUILD_TESTS=NO"
+  ];
 
   nativeBuildInputs = [
     cmake

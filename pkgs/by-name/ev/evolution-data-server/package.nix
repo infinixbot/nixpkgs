@@ -112,11 +112,21 @@ stdenv.mkDerivation rec {
       boost
       protobuf
     ]
-    ++ lib.optionals stdenv.isDarwin [ libiconv ]
-    ++ lib.optionals withGtk3 [ gtk3 ]
-    ++ lib.optionals (withGtk3 && enableOAuth2) [ webkitgtk_4_1 ]
-    ++ lib.optionals withGtk4 [ gtk4 ]
-    ++ lib.optionals (withGtk4 && enableOAuth2) [ webkitgtk_6_0 ];
+    ++ lib.optionals stdenv.isDarwin [
+      libiconv
+    ]
+    ++ lib.optionals withGtk3 [
+      gtk3
+    ]
+    ++ lib.optionals (withGtk3 && enableOAuth2) [
+      webkitgtk_4_1
+    ]
+    ++ lib.optionals withGtk4 [
+      gtk4
+    ]
+    ++ lib.optionals (withGtk4 && enableOAuth2) [
+      webkitgtk_6_0
+    ];
 
   propagatedBuildInputs = [
     db

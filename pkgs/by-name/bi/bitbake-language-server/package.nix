@@ -23,7 +23,12 @@ python3.pkgs.buildPythonApplication rec {
     setuptools-generate
   ];
 
-  propagatedBuildInputs = with python3.pkgs; [ pygls ] ++ [ oelint-adv ];
+  propagatedBuildInputs =
+    with python3.pkgs;
+    [
+      pygls
+    ]
+    ++ [ oelint-adv ];
 
   passthru.updateScript = nix-update-script { };
 

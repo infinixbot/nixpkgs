@@ -43,7 +43,9 @@ stdenv.mkDerivation (finalAttrs: {
     fmt
   ];
 
-  patches = [ ./change-lock-location.patch ];
+  patches = [
+    ./change-lock-location.patch
+  ];
 
   cmakeFlags = [
     "-DVCPKG_DEPENDENCY_EXTERNAL_FMT=ON"

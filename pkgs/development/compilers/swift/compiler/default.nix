@@ -238,7 +238,9 @@ stdenv.mkDerivation {
       swig
       libxml2
     ]
-    ++ lib.optionals stdenv.isLinux [ libuuid ]
+    ++ lib.optionals stdenv.isLinux [
+      libuuid
+    ]
     ++ lib.optionals stdenv.isDarwin [
       CoreServices
       Foundation

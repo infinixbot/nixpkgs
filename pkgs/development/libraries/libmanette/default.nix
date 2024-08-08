@@ -53,10 +53,14 @@ stdenv.mkDerivation rec {
       mesonEmulatorHook
     ];
 
-  buildInputs = [
-    glib
-    libevdev
-  ] ++ lib.optionals withIntrospection [ libgudev ];
+  buildInputs =
+    [
+      glib
+      libevdev
+    ]
+    ++ lib.optionals withIntrospection [
+      libgudev
+    ];
 
   mesonFlags = [
     (lib.mesonBool "doc" withIntrospection)

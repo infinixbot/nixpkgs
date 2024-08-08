@@ -29,14 +29,18 @@ buildPythonPackage {
     meta
     ;
 
-  nativeBuildInputs = [
-    tblite
-    meson
-    ninja
-    pkg-config
-    gfortran
-    mctc-lib
-  ] ++ lib.optionals (pythonAtLeast "3.12") [ setuptools ];
+  nativeBuildInputs =
+    [
+      tblite
+      meson
+      ninja
+      pkg-config
+      gfortran
+      mctc-lib
+    ]
+    ++ lib.optionals (pythonAtLeast "3.12") [
+      setuptools
+    ];
 
   buildInputs = [
     tblite

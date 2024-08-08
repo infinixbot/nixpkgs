@@ -66,13 +66,17 @@ stdenv.mkDerivation {
       rm -r jogl/oculusvr-sdk
     '';
 
-  nativeBuildInputs = [
-    ant
-    jdk11
-    git
-    xmlstarlet
-    stripJavaArchivesHook
-  ] ++ lib.optionals stdenv.isDarwin [ xcbuild ];
+  nativeBuildInputs =
+    [
+      ant
+      jdk11
+      git
+      xmlstarlet
+      stripJavaArchivesHook
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      xcbuild
+    ];
 
   buildInputs =
     lib.optionals stdenv.isLinux [

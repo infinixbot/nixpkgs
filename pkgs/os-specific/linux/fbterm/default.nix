@@ -36,7 +36,9 @@ stdenv.mkDerivation rec {
     ncurses
   ];
 
-  makeFlags = [ "AR:=$(AR)" ];
+  makeFlags = [
+    "AR:=$(AR)"
+  ];
 
   # preConfigure = ''
   #   sed -e '/ifdef SYS_signalfd/atypedef long long loff_t;' -i src/fbterm.cpp

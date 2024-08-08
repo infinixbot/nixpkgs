@@ -15,7 +15,9 @@ mkDerivation {
   meta = {
     license = [ lib.licenses.lgpl21 ];
   };
-  propagatedBuildInputs = [ isocodes ];
+  propagatedBuildInputs = [
+    isocodes
+  ];
   nativeBuildInputs = [ extra-cmake-modules ];
   buildInputs = [
     kcoreaddons

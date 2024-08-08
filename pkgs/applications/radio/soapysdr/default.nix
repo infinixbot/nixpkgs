@@ -50,9 +50,13 @@ stdenv.mkDerivation (finalAttrs: {
       swig2
     ];
 
-  propagatedBuildInputs = lib.optionals usePython [ python.pkgs.numpy ];
+  propagatedBuildInputs = lib.optionals usePython [
+    python.pkgs.numpy
+  ];
 
-  cmakeFlags = lib.optionals usePython [ "-DUSE_PYTHON_CONFIG=ON" ];
+  cmakeFlags = lib.optionals usePython [
+    "-DUSE_PYTHON_CONFIG=ON"
+  ];
 
   postFixup = lib.optionalString (extraPackages != [ ]) (
     # Join all plugins via symlinking

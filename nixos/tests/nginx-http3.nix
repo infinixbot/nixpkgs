@@ -39,7 +39,9 @@ builtins.listToAttrs (
                 firewall.allowedUDPPorts = [ 443 ];
               };
 
-              security.pki.certificates = [ (builtins.readFile ./common/acme/server/ca.cert.pem) ];
+              security.pki.certificates = [
+                (builtins.readFile ./common/acme/server/ca.cert.pem)
+              ];
 
               services.nginx = {
                 enable = true;
@@ -85,7 +87,9 @@ builtins.listToAttrs (
                 extraHosts = hosts;
               };
 
-              security.pki.certificates = [ (builtins.readFile ./common/acme/server/ca.cert.pem) ];
+              security.pki.certificates = [
+                (builtins.readFile ./common/acme/server/ca.cert.pem)
+              ];
             };
         };
 

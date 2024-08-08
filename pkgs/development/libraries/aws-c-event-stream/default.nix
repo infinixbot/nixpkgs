@@ -33,7 +33,9 @@ stdenv.mkDerivation rec {
     s2n-tls
   ] ++ lib.optional stdenv.hostPlatform.isMusl libexecinfo;
 
-  cmakeFlags = [ "-DBUILD_SHARED_LIBS:BOOL=ON" ];
+  cmakeFlags = [
+    "-DBUILD_SHARED_LIBS:BOOL=ON"
+  ];
 
   passthru.tests = {
     inherit nix;

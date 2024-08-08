@@ -34,10 +34,14 @@ stdenv.mkDerivation rec {
     "static"
   ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ] ++ lib.optional cudaSupport [ cudaPackages.cuda_nvcc ];
+  nativeBuildInputs =
+    [
+      cmake
+      pkg-config
+    ]
+    ++ lib.optional cudaSupport [
+      cudaPackages.cuda_nvcc
+    ];
   buildInputs =
     [
       libGLU
@@ -65,7 +69,9 @@ stdenv.mkDerivation rec {
         MetalKit
       ]
     )
-    ++ lib.optionals cudaSupport [ cudaPackages.cuda_cudart ];
+    ++ lib.optionals cudaSupport [
+      cudaPackages.cuda_cudart
+    ];
 
   # It's important to set OSD_CUDA_NVCC_FLAGS,
   # because otherwise OSD might piggyback unwanted architectures:
@@ -89,8 +95,14 @@ stdenv.mkDerivation rec {
       "-DGLEW_INCLUDE_DIR=${glew.dev}/include"
       "-DGLEW_LIBRARY=${glew.dev}/lib"
     ]
-    ++ lib.optionals cudaSupport [ ]
-    ++ lib.optionals (!openclSupport) [ ];
+    ++
+      lib.optionals cudaSupport
+        [
+        ]
+    ++
+      lib.optionals (!openclSupport)
+        [
+        ];
 
   preBuild =
     let

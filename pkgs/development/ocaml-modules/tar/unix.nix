@@ -16,7 +16,9 @@ buildDunePackage rec {
     lwt
   ];
 
-  nativeCheckInputs = [ git ];
+  nativeCheckInputs = [
+    git
+  ];
 
   meta = tar.meta // {
     description = "Decode and encode tar format files from Unix";

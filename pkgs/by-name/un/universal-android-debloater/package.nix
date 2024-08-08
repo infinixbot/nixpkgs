@@ -40,7 +40,9 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ];
 
-  nativeCheckInputs = [ clang ];
+  nativeCheckInputs = [
+    clang
+  ];
 
   preCheck = ''
     export HOME="$(mktemp -d)"

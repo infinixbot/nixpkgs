@@ -79,9 +79,13 @@ stdenv.mkDerivation rec {
       (gst-plugins-good.override { gtkSupport = true; })
       gst-plugins-bad
     ])
-    ++ lib.optionals clapperSupport [ clapper ];
+    ++ lib.optionals clapperSupport [
+      clapper
+    ];
 
-  mesonFlags = [ (lib.mesonBool "clapper" clapperSupport) ];
+  mesonFlags = [
+    (lib.mesonBool "clapper" clapperSupport)
+  ];
 
   env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.cc.isClang "-Wno-error=int-conversion";
 

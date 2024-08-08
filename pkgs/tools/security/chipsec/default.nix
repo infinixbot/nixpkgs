@@ -35,8 +35,12 @@ python3.pkgs.buildPythonApplication rec {
   KSRC = lib.optionalString withDriver "${kernel.dev}/lib/modules/${kernel.modDirVersion}/build";
 
   nativeBuildInputs =
-    [ nasm ]
-    ++ lib.optionals (lib.meta.availableOn stdenv.buildPlatform elfutils) [ elfutils ]
+    [
+      nasm
+    ]
+    ++ lib.optionals (lib.meta.availableOn stdenv.buildPlatform elfutils) [
+      elfutils
+    ]
     ++ lib.optionals withDriver kernel.moduleBuildDependencies;
 
   nativeCheckInputs = with python3.pkgs; [
@@ -60,11 +64,17 @@ python3.pkgs.buildPythonApplication rec {
       $out/${python3.pkgs.python.sitePackages}/drivers/linux/chipsec.ko
   '';
 
-  setupPyBuildFlags = [
-    "--build-lib=$CHIPSEC_BUILD_LIB"
-  ] ++ lib.optionals (!withDriver) [ "--skip-driver" ];
+  setupPyBuildFlags =
+    [
+      "--build-lib=$CHIPSEC_BUILD_LIB"
+    ]
+    ++ lib.optionals (!withDriver) [
+      "--skip-driver"
+    ];
 
-  pythonImportsCheck = [ "chipsec" ];
+  pythonImportsCheck = [
+    "chipsec"
+  ];
 
   meta = with lib; {
     description = "Platform Security Assessment Framework";

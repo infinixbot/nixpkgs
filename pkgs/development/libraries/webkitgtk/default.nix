@@ -183,14 +183,22 @@ stdenv.mkDerivation (finalAttrs: {
       wayland
       xorg.libX11
     ]
-    ++ lib.optionals systemdSupport [ systemd ]
-    ++ lib.optionals enableGeoLocation [ geoclue2 ]
+    ++ lib.optionals systemdSupport [
+      systemd
+    ]
+    ++ lib.optionals enableGeoLocation [
+      geoclue2
+    ]
     ++ lib.optionals enableExperimental [
       flite
       openssl
     ]
-    ++ lib.optionals withLibsecret [ libsecret ]
-    ++ lib.optionals (lib.versionAtLeast gtk3.version "4.0") [ wayland-protocols ];
+    ++ lib.optionals withLibsecret [
+      libsecret
+    ]
+    ++ lib.optionals (lib.versionAtLeast gtk3.version "4.0") [
+      wayland-protocols
+    ];
 
   propagatedBuildInputs = [
     gtk3
@@ -225,8 +233,12 @@ stdenv.mkDerivation (finalAttrs: {
       "-DUSE_APPLE_ICU=OFF"
       "-DUSE_OPENGL_OR_ES=OFF"
     ]
-    ++ lib.optionals (lib.versionOlder gtk3.version "4.0") [ "-DUSE_GTK4=OFF" ]
-    ++ lib.optionals (!systemdSupport) [ "-DENABLE_JOURNALD_LOG=OFF" ];
+    ++ lib.optionals (lib.versionOlder gtk3.version "4.0") [
+      "-DUSE_GTK4=OFF"
+    ]
+    ++ lib.optionals (!systemdSupport) [
+      "-DENABLE_JOURNALD_LOG=OFF"
+    ];
 
   postPatch = ''
     patchShebangs .

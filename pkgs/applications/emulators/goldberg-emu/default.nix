@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ cmake ];
   buildInputs = [ protobuf ];
 
-  cmakeFlags = [ "-DCMAKE_INSTALL_PREFIX=${placeholder "out"}/share/goldberg" ];
+  cmakeFlags = [
+    "-DCMAKE_INSTALL_PREFIX=${placeholder "out"}/share/goldberg"
+  ];
 
   preFixup = ''
     mkdir -p $out/{bin,lib}

@@ -32,7 +32,9 @@ python3Packages.buildPythonApplication rec {
   doCheck = false;
   dontWrapQtApps = true;
 
-  makeWrapperArgs = [ "\${qtWrapperArgs[@]}" ];
+  makeWrapperArgs = [
+    "\${qtWrapperArgs[@]}"
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/kusti8/hue-plus";

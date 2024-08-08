@@ -12,7 +12,9 @@ let
     python = python3;
   };
 
-  gypPatches = callPackage ./gyp-patches.nix { } ++ [ ./gyp-patches-pre-v22-import-sys.patch ];
+  gypPatches = callPackage ./gyp-patches.nix { } ++ [
+    ./gyp-patches-pre-v22-import-sys.patch
+  ];
 in
 buildNodejs {
   inherit enableNpm;

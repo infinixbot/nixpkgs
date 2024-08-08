@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     (if withGtk3 then gtk3 else gtk2)
   ];
 
-  patches = [ ./lxappearance-0.6.3-xdg.system.data.dirs.patch ];
+  patches = [
+    ./lxappearance-0.6.3-xdg.system.data.dirs.patch
+  ];
 
   configureFlags = lib.optional withGtk3 "--enable-gtk3";
 

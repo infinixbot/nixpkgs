@@ -15,7 +15,9 @@ buildOctavePackage rec {
     sha256 = "sha256-ECysYOJMF4gPiCFung9hFSlyyO60X3MGirQ9FlYDix8=";
   };
 
-  requiredOctavePackages = [ matgeom ];
+  requiredOctavePackages = [
+    matgeom
+  ];
 
   meta = with lib; {
     homepage = "https://octave.sourceforge.io/geometry/index.html";

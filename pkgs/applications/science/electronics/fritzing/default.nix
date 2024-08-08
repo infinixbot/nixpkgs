@@ -56,17 +56,21 @@ stdenv.mkDerivation {
     qttools
     wrapQtAppsHook
   ];
-  buildInputs = [
-    qtbase
-    qtsvg
-    qtserialport
-    qt5compat
-    boost
-    libgit2
-    quazip
-    libngspice
-    clipper
-  ] ++ lib.optionals stdenv.isLinux [ qtwayland ];
+  buildInputs =
+    [
+      qtbase
+      qtsvg
+      qtserialport
+      qt5compat
+      boost
+      libgit2
+      quazip
+      libngspice
+      clipper
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      qtwayland
+    ];
 
   postPatch = ''
     # Use packaged quazip, libgit and ngspice
@@ -93,7 +97,9 @@ stdenv.mkDerivation {
   ];
   env.NIX_LDFLAGS = "-lquazip1-qt${lib.versions.major qtbase.version}";
 
-  qmakeFlags = [ "phoenix.pro" ];
+  qmakeFlags = [
+    "phoenix.pro"
+  ];
 
   postInstall = lib.optionalString stdenv.isDarwin ''
     mkdir $out/Applications

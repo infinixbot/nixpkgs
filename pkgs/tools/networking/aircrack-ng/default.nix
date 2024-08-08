@@ -60,7 +60,11 @@ stdenv.mkDerivation rec {
 
   postPatch = lib.optionalString stdenv.isLinux ''
     substituteInPlace lib/osdep/linux.c --replace-warn /usr/local/bin ${
-      lib.escapeShellArg (lib.makeBinPath [ wirelesstools ])
+      lib.escapeShellArg (
+        lib.makeBinPath [
+          wirelesstools
+        ]
+      )
     }
   '';
 

@@ -83,7 +83,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs =
     [
@@ -112,7 +114,9 @@ stdenv.mkDerivation (finalAttrs: {
       vulkan-loader
       glm
     ]
-    ++ lib.optionals enableWsi [ vulkan-headers ]
+    ++ lib.optionals enableWsi [
+      vulkan-headers
+    ]
     ++ lib.optionals enableExecutable (
       wlroots.buildInputs
       ++ [

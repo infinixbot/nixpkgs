@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-BBsQ3u8CL3Aom+hqjeOErOBtWB8imU2PGgzP8+dq4mM=";
   };
 
-  build-system = with python3.pkgs; [ setuptools ];
+  build-system = with python3.pkgs; [
+    setuptools
+  ];
 
   # needs a Docker setup
   doCheck = false;

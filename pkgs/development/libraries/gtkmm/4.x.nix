@@ -39,7 +39,9 @@ stdenv.mkDerivation rec {
     glib # glib-compile-resources
   ];
 
-  buildInputs = [ libepoxy ];
+  buildInputs = [
+    libepoxy
+  ];
 
   propagatedBuildInputs = [
     glibmm_2_68
@@ -48,7 +50,9 @@ stdenv.mkDerivation rec {
     pangomm_2_48
   ];
 
-  nativeCheckInputs = lib.optionals (!stdenv.isDarwin) [ xvfb-run ];
+  nativeCheckInputs = lib.optionals (!stdenv.isDarwin) [
+    xvfb-run
+  ];
 
   # Tests require fontconfig.
   FONTCONFIG_FILE = makeFontsConf {

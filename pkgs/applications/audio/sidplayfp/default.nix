@@ -35,12 +35,22 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    [ libsidplayfp ]
-    ++ lib.optionals alsaSupport [ alsa-lib ]
-    ++ lib.optionals pulseSupport [ libpulseaudio ]
-    ++ lib.optionals out123Support [ mpg123 ];
+    [
+      libsidplayfp
+    ]
+    ++ lib.optionals alsaSupport [
+      alsa-lib
+    ]
+    ++ lib.optionals pulseSupport [
+      libpulseaudio
+    ]
+    ++ lib.optionals out123Support [
+      mpg123
+    ];
 
-  configureFlags = [ (lib.strings.withFeature out123Support "out123") ];
+  configureFlags = [
+    (lib.strings.withFeature out123Support "out123")
+  ];
 
   enableParallelBuilding = true;
 

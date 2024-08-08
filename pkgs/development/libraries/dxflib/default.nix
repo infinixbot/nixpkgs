@@ -12,7 +12,9 @@ stdenv.mkDerivation rec {
     url = "https://qcad.org/archives/dxflib/${pname}-${version}-src.tar.gz";
     sha256 = "0pwic33mj6bp4axai5jiyn4xqf31y0xmb1i0pcf55b2h9fav8zah";
   };
-  nativeBuildInputs = [ qmake ];
+  nativeBuildInputs = [
+    qmake
+  ];
   dontWrapQtApps = true;
   preConfigure = ''
     sed -i 's/CONFIG += staticlib/CONFIG += shared/' dxflib.pro

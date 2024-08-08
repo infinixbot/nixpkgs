@@ -289,7 +289,9 @@ let
         nativeImpl vamPackages;
 
       entries =
-        [ beforePlugins ]
+        [
+          beforePlugins
+        ]
         ++ lib.optional (vam != null) (
           lib.warn "'vam' attribute is deprecated. Use 'packages' instead in your vim configuration" vamImpl
         )

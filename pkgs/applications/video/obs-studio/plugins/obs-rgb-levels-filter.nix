@@ -20,7 +20,9 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ cmake ];
   buildInputs = [ obs-studio ];
 
-  cmakeFlags = [ "-DOBS_SRC_DIR=${obs-studio.src}" ];
+  cmakeFlags = [
+    "-DOBS_SRC_DIR=${obs-studio.src}"
+  ];
 
   meta = with lib; {
     description = "Simple OBS Studio filter to adjust RGB levels";

@@ -115,7 +115,9 @@ let
         fi
       '')
     ]
-    ++ [ "--inherit-argv0" ]
+    ++ [
+      "--inherit-argv0"
+    ]
     ++ extraMakeWrapperArgs
   );
 in

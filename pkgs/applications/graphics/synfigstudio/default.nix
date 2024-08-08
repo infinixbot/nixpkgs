@@ -48,7 +48,9 @@ let
       pkg-config
       autoreconfHook
     ];
-    buildInputs = [ glibmm ];
+    buildInputs = [
+      glibmm
+    ];
   };
 
   synfig = stdenv.mkDerivation {
@@ -85,22 +87,26 @@ let
       gettext
       intltool
     ];
-    buildInputs = [
-      ETL
-      boost
-      cairo
-      glibmm
-      mlt
-      libsigcxx
-      libxmlxx
-      pango
-      imagemagick
-      harfbuzz
-      freetype
-      fribidi
-      openexr
-      fftw
-    ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Foundation ];
+    buildInputs =
+      [
+        ETL
+        boost
+        cairo
+        glibmm
+        mlt
+        libsigcxx
+        libxmlxx
+        pango
+        imagemagick
+        harfbuzz
+        freetype
+        fribidi
+        openexr
+        fftw
+      ]
+      ++ lib.optionals stdenv.isDarwin [
+        darwin.apple_sdk.frameworks.Foundation
+      ];
   };
 in
 stdenv.mkDerivation {

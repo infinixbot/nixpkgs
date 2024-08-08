@@ -28,18 +28,24 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs =
-    [ cmake ]
+    [
+      cmake
+    ]
     ++ lib.optionals stdenv.isDarwin [
       darwin.sigtool
       libicns
       imagemagick
     ];
 
-  buildInputs = [
-    SDL2
-    SDL2_mixer
-    libpng
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Cocoa ];
+  buildInputs =
+    [
+      SDL2
+      SDL2_mixer
+      libpng
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Cocoa
+    ];
 
   installPhase = lib.optionalString stdenv.isDarwin ''
     runHook preInstall

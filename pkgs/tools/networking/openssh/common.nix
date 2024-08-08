@@ -196,7 +196,9 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   installTargets = [ "install-nokeys" ];
-  installFlags = [ "sysconfdir=\${out}/etc/ssh" ];
+  installFlags = [
+    "sysconfdir=\${out}/etc/ssh"
+  ];
 
   passthru = {
     inherit withKerberos;

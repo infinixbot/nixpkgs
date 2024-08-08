@@ -51,7 +51,9 @@ stdenv.mkDerivation (finalAttrs: {
     # when not exported: https://github.com/besser82/libxcrypt/issues/181
     ++ lib.optionals lld17Plus [ "LDFLAGS+=-Wl,--undefined-version" ];
 
-  nativeBuildInputs = [ perl ];
+  nativeBuildInputs = [
+    perl
+  ];
 
   enableParallelBuilding = true;
 

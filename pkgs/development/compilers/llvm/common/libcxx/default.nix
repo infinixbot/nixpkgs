@@ -61,7 +61,9 @@ let
       src;
 
   cxxabiCMakeFlags =
-    lib.optionals (lib.versionAtLeast release_version "18") [ "-DLIBCXXABI_USE_LLVM_UNWINDER=OFF" ]
+    lib.optionals (lib.versionAtLeast release_version "18") [
+      "-DLIBCXXABI_USE_LLVM_UNWINDER=OFF"
+    ]
     ++ lib.optionals (useLLVM && !stdenv.hostPlatform.isWasm) (
       if lib.versionAtLeast release_version "18" then
         [
@@ -78,10 +80,14 @@ let
       "-DLIBCXXABI_ENABLE_THREADS=OFF"
       "-DLIBCXXABI_ENABLE_EXCEPTIONS=OFF"
     ]
-    ++ lib.optionals (!enableShared) [ "-DLIBCXXABI_ENABLE_SHARED=OFF" ];
+    ++ lib.optionals (!enableShared) [
+      "-DLIBCXXABI_ENABLE_SHARED=OFF"
+    ];
 
   cxxCMakeFlags =
-    [ "-DLIBCXX_CXX_ABI=${cxxabiName}" ]
+    [
+      "-DLIBCXX_CXX_ABI=${cxxabiName}"
+    ]
     ++ lib.optionals (cxxabi == null && lib.versionAtLeast release_version "16") [
       # Note: llvm < 16 doesn't support this flag (or it's broken); handled in postInstall instead.
       # Include libc++abi symbols within libc++.a for static linking libc++;
@@ -89,37 +95,52 @@ let
       # which includes both shared objects.
       "-DLIBCXX_STATICALLY_LINK_ABI_IN_STATIC_LIBRARY=ON"
     ]
-    ++ lib.optionals (cxxabi != null) [ "-DLIBCXX_CXX_ABI_INCLUDE_PATHS=${lib.getDev cxxabi}/include" ]
+    ++ lib.optionals (cxxabi != null) [
+      "-DLIBCXX_CXX_ABI_INCLUDE_PATHS=${lib.getDev cxxabi}/include"
+    ]
     ++ lib.optionals (stdenv.hostPlatform.isMusl || stdenv.hostPlatform.isWasi) [
       "-DLIBCXX_HAS_MUSL_LIBC=1"
     ]
-    ++ lib.optionals (
-      lib.versionAtLeast release_version "18"
-      && !useLLVM
-      && stdenv.hostPlatform.libc == "glibc"
-      && !stdenv.hostPlatform.isStatic
-    ) [ "-DLIBCXX_ADDITIONAL_LIBRARIES=gcc_s" ]
+    ++
+      lib.optionals
+        (
+          lib.versionAtLeast release_version "18"
+          && !useLLVM
+          && stdenv.hostPlatform.libc == "glibc"
+          && !stdenv.hostPlatform.isStatic
+        )
+        [
+          "-DLIBCXX_ADDITIONAL_LIBRARIES=gcc_s"
+        ]
     ++ lib.optionals (lib.versionAtLeast release_version "18" && stdenv.hostPlatform.isFreeBSD) [
       # Name and documentation claim this is for libc++abi, but its man effect is adding `-lunwind`
       # to the libc++.so linker script. We want FreeBSD's so-called libgcc instead of libunwind.
       "-DLIBCXXABI_USE_LLVM_UNWINDER=OFF"
     ]
-    ++ lib.optionals useLLVM [ "-DLIBCXX_USE_COMPILER_RT=ON" ]
-    ++ lib.optionals (
-      useLLVM && !stdenv.hostPlatform.isFreeBSD && lib.versionAtLeast release_version "16"
-    ) [ "-DLIBCXX_ADDITIONAL_LIBRARIES=unwind" ]
+    ++ lib.optionals useLLVM [
+      "-DLIBCXX_USE_COMPILER_RT=ON"
+    ]
+    ++
+      lib.optionals (useLLVM && !stdenv.hostPlatform.isFreeBSD && lib.versionAtLeast release_version "16")
+        [
+          "-DLIBCXX_ADDITIONAL_LIBRARIES=unwind"
+        ]
     ++ lib.optionals stdenv.hostPlatform.isWasm [
       "-DLIBCXX_ENABLE_THREADS=OFF"
       "-DLIBCXX_ENABLE_FILESYSTEM=OFF"
       "-DLIBCXX_ENABLE_EXCEPTIONS=OFF"
     ]
-    ++ lib.optionals (!enableShared) [ "-DLIBCXX_ENABLE_SHARED=OFF" ]
+    ++ lib.optionals (!enableShared) [
+      "-DLIBCXX_ENABLE_SHARED=OFF"
+    ]
     ++ lib.optionals (cxxabi != null && cxxabi.libName == "cxxrt") [
       "-DLIBCXX_ENABLE_NEW_DELETE_DEFINITIONS=ON"
     ];
 
   cmakeFlags =
-    [ "-DLLVM_ENABLE_RUNTIMES=${lib.concatStringsSep ";" runtimes}" ]
+    [
+      "-DLLVM_ENABLE_RUNTIMES=${lib.concatStringsSep ";" runtimes}"
+    ]
     ++ lib.optionals stdenv.hostPlatform.isWasm [
       "-DCMAKE_C_COMPILER_WORKS=ON"
       "-DCMAKE_CXX_COMPILER_WORKS=ON"

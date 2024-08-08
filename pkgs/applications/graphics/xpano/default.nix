@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
     exiv2
   ];
 
-  checkInputs = [ catch2_3 ];
+  checkInputs = [
+    catch2_3
+  ];
 
   doCheck = true;
 

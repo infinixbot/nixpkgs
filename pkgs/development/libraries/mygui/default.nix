@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-yBV0ImOFJlqBPqqOjXYe4SFO2liSGZCEwvehED5Ubj4=";
   };
 
-  patches = [ ./disable-framework.patch ];
+  patches = [
+    ./disable-framework.patch
+  ];
 
   nativeBuildInputs = [
     cmake
@@ -44,13 +46,19 @@ stdenv.mkDerivation rec {
       libuuid
       ois
     ]
-    ++ lib.optionals withOgre [ ogre ]
+    ++ lib.optionals withOgre [
+      ogre
+    ]
     ++ lib.optionals (!withOgre && stdenv.isLinux) [
       libGL
       libGLU
     ]
-    ++ lib.optionals stdenv.isLinux [ libX11 ]
-    ++ lib.optionals stdenv.isDarwin [ Cocoa ];
+    ++ lib.optionals stdenv.isLinux [
+      libX11
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Cocoa
+    ];
 
   # Tools are disabled due to compilation failures.
   cmakeFlags = [

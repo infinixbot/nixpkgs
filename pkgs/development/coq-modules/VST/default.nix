@@ -19,7 +19,9 @@ let
     ]
     # floyd/printf.v is broken in VST 2.9
     ++ lib.optional (!lib.versions.isGe "8.13" coq.coq-version) "printf.v"
-    ++ [ "quickprogram.v" ];
+    ++ [
+      "quickprogram.v"
+    ];
 in
 
 mkCoqDerivation {

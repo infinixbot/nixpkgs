@@ -32,7 +32,9 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ installShellFiles ];
 
-  buildInputs = lib.optionals stdenv.isDarwin [ libiconv ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    libiconv
+  ];
 
   postInstall = ''
     installManPage docs/ea.1

@@ -43,7 +43,9 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "R9JXBLYQiDdeJqq6Vr5HwXGJRy5vgMdSq+hvAu9OMwQ=";
   };
 
-  patches = [ ./add-option-for-installation-sysconfdir.patch ];
+  patches = [
+    ./add-option-for-installation-sysconfdir.patch
+  ];
 
   nativeBuildInputs = [
     meson

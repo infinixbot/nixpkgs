@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
     rev = "r${rev}";
   };
 
-  patches = [ ./add-cstdint-include-to-crossfire-server.patch ];
+  patches = [
+    ./add-cstdint-include-to-crossfire-server.patch
+  ];
 
   nativeBuildInputs = [
     autoconf

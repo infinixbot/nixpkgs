@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     ./fixup-miscompilations.patch
   ];
 
-  nativeBuildInputs = [ copyDesktopItems ];
+  nativeBuildInputs = [
+    copyDesktopItems
+  ];
 
   buildInputs = [
     libX11

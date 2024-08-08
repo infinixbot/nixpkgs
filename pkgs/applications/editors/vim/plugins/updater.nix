@@ -21,7 +21,9 @@ buildPythonApplication {
     python3Packages.wrapPython
   ];
 
-  pythonPath = [ python3Packages.gitpython ];
+  pythonPath = [
+    python3Packages.gitpython
+  ];
 
   dontUnpack = true;
 

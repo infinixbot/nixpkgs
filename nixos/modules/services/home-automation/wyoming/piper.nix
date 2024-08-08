@@ -118,9 +118,15 @@ in
         nameValuePair "wyoming-piper-${server}" {
           inherit (options) enable;
           description = "Wyoming Piper server instance ${server}";
-          wants = [ "network-online.target" ];
-          after = [ "network-online.target" ];
-          wantedBy = [ "multi-user.target" ];
+          wants = [
+            "network-online.target"
+          ];
+          after = [
+            "network-online.target"
+          ];
+          wantedBy = [
+            "multi-user.target"
+          ];
           serviceConfig = {
             DynamicUser = true;
             User = "wyoming-piper";

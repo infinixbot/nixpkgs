@@ -33,7 +33,9 @@ stdenv.mkDerivation rec {
     "--with-guile-site-ccache-dir=$(out)/${guile.siteCcacheDir}"
   ];
 
-  makeFlags = [ "GUILE_AUTO_COMPILE=0" ];
+  makeFlags = [
+    "GUILE_AUTO_COMPILE=0"
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/mwitmer/guile-xcb";

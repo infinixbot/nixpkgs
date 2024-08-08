@@ -48,7 +48,9 @@ stdenv.mkDerivation rec {
     ]
     ++ (
       if stdenv.hostPlatform.isDarwin then
-        [ OpenGL ]
+        [
+          OpenGL
+        ]
       else
         [
           libGL

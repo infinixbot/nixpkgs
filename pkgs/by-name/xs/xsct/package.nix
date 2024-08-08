@@ -23,7 +23,9 @@ stdenv.mkDerivation (finalAttrs: {
     libXrandr
   ];
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   passthru.updateScript = gitUpdater { };
 

@@ -21,7 +21,9 @@ import ./make-test-python.nix (
         services.xandikos.address = "localhost";
         services.xandikos.port = 8080;
         services.xandikos.routePrefix = "/xandikos-prefix/";
-        services.xandikos.extraOptions = [ "--defaults" ];
+        services.xandikos.extraOptions = [
+          "--defaults"
+        ];
         services.nginx = {
           enable = true;
           recommendedProxySettings = true;

@@ -45,7 +45,9 @@ buildBazelPackage rec {
       .${system} or (throw "No hash for system: ${system}");
   };
 
-  nativeBuildInputs = [ jdk ];
+  nativeBuildInputs = [
+    jdk
+  ];
   bazel = bazel_6;
 
   bazelBuildFlags = [ "-c opt" ];

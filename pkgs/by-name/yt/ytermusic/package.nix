@@ -32,7 +32,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoBuildType = "release";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     openssl

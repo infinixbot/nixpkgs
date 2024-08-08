@@ -99,7 +99,9 @@ let
   '';
 in
 {
-  imports = [ ./nghttpx-options.nix ];
+  imports = [
+    ./nghttpx-options.nix
+  ];
 
   config = lib.mkIf cfg.enable {
 

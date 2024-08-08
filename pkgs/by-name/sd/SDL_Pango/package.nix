@@ -40,7 +40,9 @@ stdenv.mkDerivation (finalAttrs: {
     pango
   ];
 
-  configureFlags = [ (lib.enableFeature enableSdltest "sdltest") ];
+  configureFlags = [
+    (lib.enableFeature enableSdltest "sdltest")
+  ];
 
   strictDeps = true;
 

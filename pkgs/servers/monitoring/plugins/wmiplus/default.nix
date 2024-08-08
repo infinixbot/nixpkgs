@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
     sha256 = "1as0iyhy4flpm37mb7lvah7rnd6ax88appjm1icwhy7iq03wi8pl";
   };
 
-  patches = [ ./wmiplus_fix_manpage.patch ];
+  patches = [
+    ./wmiplus_fix_manpage.patch
+  ];
 
   propagatedBuildInputs = with perlPackages; [
     BHooksEndOfScope

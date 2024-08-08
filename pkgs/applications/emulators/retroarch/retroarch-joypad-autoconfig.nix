@@ -16,7 +16,9 @@ stdenvNoCC.mkDerivation rec {
     hash = "sha256-iwxTMwGHix2K5UyjBWFamyo3nVULxwbIF+djyQWz5L0=";
   };
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
 
   passthru.updateScript = gitUpdater {
     rev-prefix = "v";

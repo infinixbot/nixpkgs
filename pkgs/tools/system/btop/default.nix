@@ -25,7 +25,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-kjSyIgLTObTOKMG5dk49XmWPXZpCWbLdpkmAsJcFliA=";
   };
 
-  nativeBuildInputs = [ cmake ] ++ lib.optionals cudaSupport [ autoAddDriverRunpath ];
+  nativeBuildInputs =
+    [
+      cmake
+    ]
+    ++ lib.optionals cudaSupport [
+      autoAddDriverRunpath
+    ];
 
   buildInputs = lib.optionals stdenv.isDarwin [
     darwin.apple_sdk_11_0.frameworks.CoreFoundation

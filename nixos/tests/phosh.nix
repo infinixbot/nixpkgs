@@ -30,7 +30,9 @@ import ./make-test-python.nix (
             };
           };
 
-          environment.systemPackages = [ pkgs.phosh-mobile-settings ];
+          environment.systemPackages = [
+            pkgs.phosh-mobile-settings
+          ];
 
           systemd.services.phosh = {
             environment = {

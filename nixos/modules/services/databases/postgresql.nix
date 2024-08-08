@@ -583,7 +583,9 @@ in
 
     environment.systemPackages = [ postgresql ];
 
-    environment.pathsToLink = [ "/share/postgresql" ];
+    environment.pathsToLink = [
+      "/share/postgresql"
+    ];
 
     system.checks = lib.optional (
       cfg.checkConfig && pkgs.stdenv.hostPlatform == pkgs.stdenv.buildPlatform

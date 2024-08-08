@@ -33,7 +33,9 @@ buildDunePackage rec {
     alcotest
   ];
 
-  buildInputs = [ zarith ];
+  buildInputs = [
+    zarith
+  ];
 
   checkInputs = [
     alcotest

@@ -117,10 +117,14 @@ stdenv.mkDerivation rec {
       VideoToolbox
     ];
 
-  cmakeFlags = [
-    "-DOpenGL_GL_PREFERENCE=${GL}"
-    "-DOPENMW_USE_SYSTEM_RECASTNAVIGATION=1"
-  ] ++ lib.optionals stdenv.isDarwin [ "-DOPENMW_OSX_DEPLOYMENT=ON" ];
+  cmakeFlags =
+    [
+      "-DOpenGL_GL_PREFERENCE=${GL}"
+      "-DOPENMW_USE_SYSTEM_RECASTNAVIGATION=1"
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      "-DOPENMW_OSX_DEPLOYMENT=ON"
+    ];
 
   meta = with lib; {
     description = "Unofficial open source engine reimplementation of the game Morrowind";

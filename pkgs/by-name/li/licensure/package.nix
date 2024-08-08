@@ -22,11 +22,15 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-449p+y7qUcTxBOttyQPt+nRtK+s9HJBoVKGdMQaszLQ=";
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    openssl
-    git
-    gitls
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.SystemConfiguration ];
+  buildInputs =
+    [
+      openssl
+      git
+      gitls
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.SystemConfiguration
+    ];
 
   checkFlags = [
     # Checking for files in the git repo (git ls-files),

@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  patches = [ ./Fix-to-string.agda-to-compile-with-Agda-2.6.1.patch ];
+  patches = [
+    ./Fix-to-string.agda-to-compile-with-Agda-2.6.1.patch
+  ];
 
   nativeBuildInputs = [
     alex

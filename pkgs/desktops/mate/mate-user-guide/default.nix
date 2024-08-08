@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     libxml2
   ];
 
-  buildInputs = [ yelp ];
+  buildInputs = [
+    yelp
+  ];
 
   postPatch = ''
     substituteInPlace mate-user-guide.desktop.in.in \

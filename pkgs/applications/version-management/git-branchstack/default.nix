@@ -14,7 +14,9 @@ buildPythonApplication rec {
     hash = "sha256-gja93LOcVCQ6l+Cygvsm+3uomvxtvUl6t23GIb/tKyQ=";
   };
 
-  buildInputs = [ git-revise ];
+  buildInputs = [
+    git-revise
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/krobelus/git-branchstack";

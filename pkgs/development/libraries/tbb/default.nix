@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-zGZHMtAUVzBKFbCshpepm3ce3tW6wQ+F30kYYXAQ/TE=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   patches = [
     # Fix musl build from https://github.com/oneapi-src/oneTBB/pull/899

@@ -18,7 +18,9 @@ import ./make-test-python.nix (
             {
               enable = true;
               package = mypg;
-              extraPlugins = with mypg.pkgs; [ apache_datasketches ];
+              extraPlugins = with mypg.pkgs; [
+                apache_datasketches
+              ];
             };
         };
     };

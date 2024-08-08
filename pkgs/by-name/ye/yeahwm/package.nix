@@ -19,7 +19,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-ySzpiEjIuI2bZ8Eo4wcQlEwEpkVDECVFNcECsrb87gU=";
   };
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   buildInputs = [
     lesstif

@@ -25,7 +25,9 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = [ openssl ];
+  buildInputs = [
+    openssl
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/lenovo/tlmi-auth";

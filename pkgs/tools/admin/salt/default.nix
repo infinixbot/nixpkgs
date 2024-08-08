@@ -19,7 +19,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-uTOsTLPksRGLRtraVcnMa9xvD5S0ySh3rsRLJcaijJo=";
   };
 
-  patches = [ ./fix-libcrypto-loading.patch ];
+  patches = [
+    ./fix-libcrypto-loading.patch
+  ];
 
   postPatch = ''
     substituteInPlace "salt/utils/rsax931.py" \

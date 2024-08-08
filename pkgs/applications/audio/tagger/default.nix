@@ -35,7 +35,9 @@ buildDotnetModule rec {
     libadwaita
   ];
 
-  buildInputs = [ chromaprint ];
+  buildInputs = [
+    chromaprint
+  ];
 
   runtimeDeps = [
     glib

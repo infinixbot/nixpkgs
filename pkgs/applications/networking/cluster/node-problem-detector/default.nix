@@ -35,7 +35,9 @@ buildGoModule rec {
 
   tags = lib.optionals stdenv.isLinux [ "journald" ];
 
-  ldflags = [ "-X k8s.io/${pname}/pkg/version.version=v${version}" ];
+  ldflags = [
+    "-X k8s.io/${pname}/pkg/version.version=v${version}"
+  ];
 
   meta = with lib; {
     description = "Various problem detectors running on the Kubernetes nodes";

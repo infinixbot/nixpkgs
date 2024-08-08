@@ -39,7 +39,9 @@ buildPythonPackage rec {
       --replace 'referencing = ">=0.28.0,<0.30.0"' 'referencing = ">=0.28.0"'
   '';
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   pythonRelaxDeps = [ "referencing" ];
 

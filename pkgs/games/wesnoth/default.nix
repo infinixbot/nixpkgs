@@ -66,7 +66,9 @@ stdenv.mkDerivation rec {
       Foundation
     ];
 
-  cmakeFlags = [ "-DENABLE_SYSTEM_LUA=ON" ];
+  cmakeFlags = [
+    "-DENABLE_SYSTEM_LUA=ON"
+  ];
 
   NIX_LDFLAGS = lib.optionalString stdenv.isDarwin "-framework AppKit";
 

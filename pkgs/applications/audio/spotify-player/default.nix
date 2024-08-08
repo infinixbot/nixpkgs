@@ -56,11 +56,15 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-7vximGisIIXBrwHXSWQjO08OraaweG7ZT6v+gVdYGVc=";
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-    rustPlatform.bindgenHook
-  ] ++ lib.optionals stdenv.isDarwin [ makeBinaryWrapper ];
+  nativeBuildInputs =
+    [
+      pkg-config
+      cmake
+      rustPlatform.bindgenHook
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      makeBinaryWrapper
+    ];
 
   buildInputs =
     [

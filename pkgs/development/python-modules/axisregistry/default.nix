@@ -22,7 +22,9 @@ buildPythonPackage rec {
     fonttools
     protobuf
   ];
-  nativeBuildInputs = [ setuptools-scm ];
+  nativeBuildInputs = [
+    setuptools-scm
+  ];
 
   doCheck = true;
   nativeCheckInputs = [ pytestCheckHook ];

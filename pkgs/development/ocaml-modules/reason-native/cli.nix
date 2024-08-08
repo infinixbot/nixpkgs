@@ -13,7 +13,9 @@ buildDunePackage {
   pname = "cli";
   version = "0.0.1-alpha-unstable-2024-05-07";
 
-  nativeBuildInputs = [ reason ];
+  nativeBuildInputs = [
+    reason
+  ];
 
   buildInputs = [
     re

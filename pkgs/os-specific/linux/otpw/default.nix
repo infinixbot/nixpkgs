@@ -42,7 +42,9 @@ stdenv.mkDerivation rec {
     cp *.8 $out/share/man/man8
   '';
 
-  hardeningDisable = [ "stackprotector" ];
+  hardeningDisable = [
+    "stackprotector"
+  ];
 
   meta = with lib; {
     description = "One-time password login package";

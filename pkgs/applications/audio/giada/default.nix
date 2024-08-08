@@ -39,7 +39,9 @@ stdenv.mkDerivation (finalAttrs: {
     "-Wno-error"
   ];
 
-  cmakeFlags = [ "-DCMAKE_INSTALL_BINDIR=bin" ];
+  cmakeFlags = [
+    "-DCMAKE_INSTALL_BINDIR=bin"
+  ];
 
   nativeBuildInputs = [
     cmake

@@ -54,7 +54,9 @@ mkDerivation rec {
       qtwebengine
       qtx11extras
     ]
-    ++ lib.optionals stdenv.isLinux [ qtwayland ]
+    ++ lib.optionals stdenv.isLinux [
+      qtwayland
+    ]
     ++ lib.optionals stdenv.isDarwin [
       Cocoa
       CoreAudio
@@ -69,10 +71,14 @@ mkDerivation rec {
     python3
   ];
 
-  cmakeFlags = [
-    "-DQTROOT=${qtbase}"
-    "-GNinja"
-  ] ++ lib.optionals (!withDbus) [ "-DLINUX_X11POWER=ON" ];
+  cmakeFlags =
+    [
+      "-DQTROOT=${qtbase}"
+      "-GNinja"
+    ]
+    ++ lib.optionals (!withDbus) [
+      "-DLINUX_X11POWER=ON"
+    ];
 
   postInstall = lib.optionalString stdenv.isDarwin ''
     mkdir -p $out/bin $out/Applications

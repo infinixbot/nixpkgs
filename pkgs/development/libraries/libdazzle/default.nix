@@ -49,15 +49,21 @@ stdenv.mkDerivation rec {
       dbus
       glib
     ]
-    ++ lib.optionals stdenv.isLinux [ xvfb-run ]
-    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [ mesonEmulatorHook ];
+    ++ lib.optionals stdenv.isLinux [
+      xvfb-run
+    ]
+    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+      mesonEmulatorHook
+    ];
 
   buildInputs = [
     glib
     gtk3
   ];
 
-  mesonFlags = [ "-Denable_gtk_doc=true" ];
+  mesonFlags = [
+    "-Denable_gtk_doc=true"
+  ];
 
   doCheck = stdenv.isLinux;
 

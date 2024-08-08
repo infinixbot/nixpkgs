@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     inherit enableWX enableXWin;
   };
 
-  cmakeFlags = [ "-DBUILD_TEST=ON" ];
+  cmakeFlags = [
+    "-DBUILD_TEST=ON"
+  ];
 
   doCheck = true;
 

@@ -96,7 +96,9 @@ let
             lib.optionals withRuby [ rubyEnv ] ++ lib.optionals withNodeJs [ nodejs ]
           );
         in
-        [ "--inherit-argv0" ]
+        [
+          "--inherit-argv0"
+        ]
         ++ lib.optionals withRuby [
           "--set"
           "GEM_HOME"

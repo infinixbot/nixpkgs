@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-IQ0GwxMGy8bq9oFEU8Vsd22djo3zbXTrMG9qUj0caoo=";
   };
 
-  buildInputs = [ gmp ];
+  buildInputs = [
+    gmp
+  ];
 
   nativeBuildInputs = [
     perl # needed for ./configure

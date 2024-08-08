@@ -44,7 +44,9 @@ stdenv.mkDerivation (finalAttrs: {
     substituteInPlace data/gamemoderun \
       --subst-var-by libraryPath ${
         lib.makeLibraryPath (
-          [ (placeholder "lib") ]
+          [
+            (placeholder "lib")
+          ]
           ++ lib.optionals (stdenv.hostPlatform.system == "x86_64-linux") [
             # Support wrapping 32bit applications on a 64bit linux system
             libgamemode32
@@ -79,7 +81,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   doCheck = false; # https://github.com/FeralInteractive/gamemode/issues/468
-  nativeCheckInputs = [ appstream ];
+  nativeCheckInputs = [
+    appstream
+  ];
 
   postFixup = ''
     # Add $lib/lib to gamemoded & gamemode-simulate-game's rpath since

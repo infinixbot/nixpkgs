@@ -18,10 +18,14 @@ buildKodiBinaryAddon rec {
     hash = "sha256-cIo56ZGansBlAj6CFw51UOYJUivN9n1qhVTWAX9c5Tc=";
   };
 
-  extraCMakeFlags = [ "-D2048_LIB=${twenty-fortyeight}/lib/retroarch/cores/2048_libretro.so" ];
+  extraCMakeFlags = [
+    "-D2048_LIB=${twenty-fortyeight}/lib/retroarch/cores/2048_libretro.so"
+  ];
 
   extraBuildInputs = [ twenty-fortyeight ];
-  propagatedBuildInputs = [ libretro ];
+  propagatedBuildInputs = [
+    libretro
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/kodi-game/game.libretro.2048";

@@ -38,7 +38,9 @@ stdenv.mkDerivation rec {
     cd ./source/
   '';
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
 
   enableParallelBuilding = true;
 

@@ -24,15 +24,23 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-ytGbiDamxkTCPjNTBMsW1YjK+qMZfktGG5mVUVdKV5I=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [
-    libgit2
-    rust-jemalloc-sys
-    zlib
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs =
+    [
+      libgit2
+      rust-jemalloc-sys
+      zlib
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+    ];
 
-  nativeCheckInputs = [ git ];
+  nativeCheckInputs = [
+    git
+  ];
 
   cargoBuildFlags = [ "-p=biome_cli" ];
   cargoTestFlags =

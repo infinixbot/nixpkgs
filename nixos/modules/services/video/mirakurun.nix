@@ -205,7 +205,9 @@ in
         let
           getconf = target: config.environment.etc."mirakurun/${target}.yml".source;
           targets =
-            [ "server" ]
+            [
+              "server"
+            ]
             ++ optional (cfg.tunerSettings != null) "tuners"
             ++ optional (cfg.channelSettings != null) "channels";
         in

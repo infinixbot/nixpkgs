@@ -19,7 +19,9 @@ pythonPackages.buildPythonApplication rec {
     pythonPackages.pydbus
   ];
 
-  nativeBuildInputs = [ pythonPackages.pytestCheckHook ];
+  nativeBuildInputs = [
+    pythonPackages.pytestCheckHook
+  ];
 
   pythonImportsCheck = [ "mopidy_notify" ];
 

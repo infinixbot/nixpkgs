@@ -30,7 +30,9 @@ buildGoModule rec {
     })
   ];
 
-  nativeCheckInputs = [ curl ];
+  nativeCheckInputs = [
+    curl
+  ];
 
   ldflags = [
     "-s"

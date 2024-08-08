@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
     sed -e "s|Exec=.*|Exec=$out/libexec/runner.py|" -i ssh-runner.service
   '';
 
-  nativeBuildInputs = [ pythonEnv ];
+  nativeBuildInputs = [
+    pythonEnv
+  ];
 
   installPhase = ''
     runHook preInstall

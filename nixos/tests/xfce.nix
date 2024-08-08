@@ -7,7 +7,9 @@ import ./make-test-python.nix (
       { pkgs, ... }:
 
       {
-        imports = [ ./common/user-account.nix ];
+        imports = [
+          ./common/user-account.nix
+        ];
 
         services.xserver.enable = true;
         services.xserver.displayManager.lightdm.enable = true;

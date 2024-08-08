@@ -50,7 +50,9 @@ substitute {
     ])
   ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   postInstall = ''
     installManPage ${./nixos-rebuild.8}

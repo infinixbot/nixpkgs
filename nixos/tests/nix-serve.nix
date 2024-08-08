@@ -6,7 +6,9 @@ import ./make-test-python.nix (
       { pkgs, ... }:
       {
         services.nix-serve.enable = true;
-        environment.systemPackages = [ pkgs.hello ];
+        environment.systemPackages = [
+          pkgs.hello
+        ];
       };
     testScript =
       let

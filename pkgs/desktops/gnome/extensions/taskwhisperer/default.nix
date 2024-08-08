@@ -19,16 +19,22 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-UVBLFXsbOPRXC4P5laZ82Rs08yXnNnzJ+pp5fbx6Zqc=";
   };
 
-  nativeBuildInputs = [ gettext ];
+  nativeBuildInputs = [
+    gettext
+  ];
 
-  buildInputs = [ taskwarrior ];
+  buildInputs = [
+    taskwarrior
+  ];
 
   passthru = {
     extensionUuid = "taskwhisperer-extension@infinicode.de";
     extensionPortalSlug = "taskwhisperer";
   };
 
-  makeFlags = [ "INSTALLBASE=${placeholder "out"}/share/gnome-shell/extensions" ];
+  makeFlags = [
+    "INSTALLBASE=${placeholder "out"}/share/gnome-shell/extensions"
+  ];
 
   patches = [
     (substituteAll {

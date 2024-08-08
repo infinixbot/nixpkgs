@@ -60,7 +60,9 @@ stdenv.mkDerivation (finalAttrs: {
     qtfeedback
   ];
 
-  cmakeFlags = [ (lib.cmakeBool "ENABLE_LIBHYBRIS" false) ];
+  cmakeFlags = [
+    (lib.cmakeBool "ENABLE_LIBHYBRIS" false)
+  ];
 
   dontWrapQtApps = true;
 

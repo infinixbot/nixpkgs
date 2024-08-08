@@ -130,7 +130,9 @@ in
                 ReadOnlyPaths = [ "+/" ];
                 RuntimeDirectory = [ "confinement/${mkPathSafeName name}" ];
                 RootDirectory = "/run/confinement/${mkPathSafeName name}";
-                InaccessiblePaths = [ "-+/run/confinement/${mkPathSafeName name}" ];
+                InaccessiblePaths = [
+                  "-+/run/confinement/${mkPathSafeName name}"
+                ];
                 PrivateMounts = lib.mkDefault true;
 
                 # https://github.com/NixOS/nixpkgs/issues/14645 is a future attempt

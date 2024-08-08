@@ -67,7 +67,11 @@ let
     nativeBuildInputs = [
       pkg-config
       meson
-      (python3.withPackages (pp: with pp; [ pyyaml ]))
+      (python3.withPackages (
+        pp: with pp; [
+          pyyaml
+        ]
+      ))
       ninja
       cmake
     ];

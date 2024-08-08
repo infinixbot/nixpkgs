@@ -61,7 +61,9 @@ let
       rev = "d8a49303f908a272e6670b7cee65a2ba7c447875";
       hash = "sha256-u87ZgbfeCPJ0qG8gsom3gFaZxbS5NcHEodb0EVakk60=";
     };
-    configureFlags = old.configureFlags ++ [ "--enable-static" ];
+    configureFlags = old.configureFlags ++ [
+      "--enable-static"
+    ];
     installPhase = ''
       runHook preInstall
 

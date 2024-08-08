@@ -21,7 +21,9 @@ stdenvNoCC.mkDerivation {
     hash = "sha256-B9kLiF8iSeitZjErg9xtqM6SU/dMfckR3UNxUd5crcw=";
   };
 
-  propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+  propagatedUserEnvPkgs = [
+    gtk-engine-murrine
+  ];
 
   installPhase = ''
     runHook preInstall

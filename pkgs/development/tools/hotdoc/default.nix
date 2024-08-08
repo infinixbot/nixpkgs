@@ -72,7 +72,9 @@ buildPythonApplication rec {
     wheezy-template
   ];
 
-  nativeCheckInputs = [ pytestCheckHook ];
+  nativeCheckInputs = [
+    pytestCheckHook
+  ];
 
   # CMake is used to build CMARK, but the build system is still python
   dontUseCmakeConfigure = true;

@@ -67,7 +67,9 @@ let
     zxcvbn
   ];
 
-  all_patches = [ ./0001-Fix-flask-2.3-issue.patch ];
+  all_patches = [
+    ./0001-Fix-flask-2.3-issue.patch
+  ];
 
   assets = stdenv.mkDerivation {
     pname = "${pname}-assets";
@@ -78,8 +80,12 @@ let
       hash = "sha256-rXIts+dgOuZQGyiSke1NIG7b4lFlR/Gfu3J6T3wP3aY=";
     };
 
-    nativeBuildInputs = [ yarnConfigHook ] ++ pythonDeps;
-    patches = all_patches ++ [ ./0002-Remove-cssrewrite-filter.patch ];
+    nativeBuildInputs = [
+      yarnConfigHook
+    ] ++ pythonDeps;
+    patches = all_patches ++ [
+      ./0002-Remove-cssrewrite-filter.patch
+    ];
     buildPhase = ''
       SESSION_TYPE=filesystem FLASK_APP=./powerdnsadmin/__init__.py flask assets build
     '';

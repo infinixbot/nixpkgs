@@ -103,9 +103,13 @@ lib.checkListOfEnum "${pname}: button size variants"
       which
     ];
 
-    buildInputs = [ gtk_engines ];
+    buildInputs = [
+      gtk_engines
+    ];
 
-    propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+    propagatedUserEnvPkgs = [
+      gtk-engine-murrine
+    ];
 
     # These fixup steps are slow and unnecessary.
     dontPatchELF = true;

@@ -30,7 +30,9 @@ rustPlatform.buildRustPackage rec {
       SystemConfiguration
     ];
 
-  patches = [ ./Use-full-Perl-path.patch ];
+  patches = [
+    ./Use-full-Perl-path.patch
+  ];
 
   postPatch = ''
     substituteInPlace rc/lsp.kak \

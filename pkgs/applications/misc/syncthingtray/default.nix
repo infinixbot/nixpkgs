@@ -88,7 +88,9 @@ stdenv.mkDerivation (finalAttrs: {
     # Make binary available in PATH like on other platforms
     ln -s $out/Applications/syncthingtray.app/Contents/MacOS/syncthingtray $out/bin/syncthingtray
   '';
-  nativeInstallCheckInputs = [ versionCheckHook ];
+  nativeInstallCheckInputs = [
+    versionCheckHook
+  ];
   doInstallCheck = true;
 
   cmakeFlags =
@@ -108,7 +110,9 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optionals systemdSupport [ "-DSYSTEMD_SUPPORT=ON" ]
     ++ lib.optionals (!webviewSupport) [ "-DWEBVIEW_PROVIDER:STRING=none" ];
 
-  qtWrapperArgs = [ "--prefix PATH : ${lib.makeBinPath [ xdg-utils ]}" ];
+  qtWrapperArgs = [
+    "--prefix PATH : ${lib.makeBinPath [ xdg-utils ]}"
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/Martchus/syncthingtray";

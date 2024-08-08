@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ makeWrapper ];
 
-  installFlags = [ "PREFIX=${builtins.placeholder "out"}" ];
+  installFlags = [
+    "PREFIX=${builtins.placeholder "out"}"
+  ];
 
   postInstall =
     let

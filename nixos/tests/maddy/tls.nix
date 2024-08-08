@@ -58,7 +58,9 @@ import ../make-test-python.nix (
       client =
         { nodes, ... }:
         {
-          security.pki.certificateFiles = [ certs.ca.cert ];
+          security.pki.certificateFiles = [
+            certs.ca.cert
+          ];
           networking.extraHosts = ''
             ${nodes.server.networking.primaryIPAddress} ${domain}
           '';

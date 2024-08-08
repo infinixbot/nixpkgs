@@ -42,7 +42,9 @@ import ../make-test-python.nix (
                 job_name = "node";
                 static_configs = [
                   {
-                    targets = [ "node:${toString config.services.prometheus.exporters.node.port}" ];
+                    targets = [
+                      "node:${toString config.services.prometheus.exporters.node.port}"
+                    ];
                   }
                 ];
               }

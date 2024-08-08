@@ -370,7 +370,9 @@ in
         ++ lib.optional config.services.flatpak.enable flatpak-kcm;
 
       # Extra services for D-Bus activation
-      services.dbus.packages = [ pkgs.plasma5Packages.kactivitymanagerd ];
+      services.dbus.packages = [
+        pkgs.plasma5Packages.kactivitymanagerd
+      ];
 
       environment.pathsToLink = [
         # FIXME: modules should link subdirs of `/share` rather than relying on this

@@ -17,7 +17,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-gryV9MHULY6ZHy6YDFQDIkZsfIX8La0tHT0vrrQJNDQ=";
   };
 
-  propagatedBuildInputs = with python3.pkgs; [ pyshark ];
+  propagatedBuildInputs = with python3.pkgs; [
+    pyshark
+  ];
 
   nativeCheckInputs = with python3.pkgs; [
     py
@@ -25,7 +27,9 @@ python3.pkgs.buildPythonApplication rec {
     wireshark-cli
   ];
 
-  pytestFlagsArray = [ "tests/tests.py" ];
+  pytestFlagsArray = [
+    "tests/tests.py"
+  ];
 
   disabledTests = [
     # Requires a telnet setup
@@ -37,7 +41,9 @@ python3.pkgs.buildPythonApplication rec {
     "test_ntlmssp"
   ];
 
-  pythonImportsCheck = [ "credslayer" ];
+  pythonImportsCheck = [
+    "credslayer"
+  ];
 
   postInstall = ''
     wrapProgram $out/bin/credslayer \

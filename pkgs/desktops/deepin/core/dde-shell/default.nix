@@ -74,7 +74,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   env.PKG_CONFIG_SYSTEMD_SYSTEMDUSERUNITDIR = "${placeholder "out"}/lib/systemd/user";
 
-  cmakeFlags = [ "-DQML_INSTALL_DIR=${placeholder "out"}/${qt6Packages.qtbase.qtQmlPrefix}" ];
+  cmakeFlags = [
+    "-DQML_INSTALL_DIR=${placeholder "out"}/${qt6Packages.qtbase.qtQmlPrefix}"
+  ];
 
   qtWrapperArgs = [
     # qt6integration must be placed before qtsvg in QT_PLUGIN_PATH

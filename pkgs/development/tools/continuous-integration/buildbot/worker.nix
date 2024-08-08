@@ -32,7 +32,9 @@ buildPythonPackage ({
       --replace /usr/bin/tail "${coreutils}/bin/tail"
   '';
 
-  nativeBuildInputs = [ setuptools-trial ];
+  nativeBuildInputs = [
+    setuptools-trial
+  ];
 
   propagatedBuildInputs = [
     autobahn

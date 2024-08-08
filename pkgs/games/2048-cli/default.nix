@@ -28,9 +28,13 @@ stdenv.mkDerivation (finalAttrs: {
       --replace "-lcurses" "-lncurses"
   '';
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
-  buildInputs = [ gettext ] ++ (lib.optional (ui == "curses") ncurses);
+  buildInputs = [
+    gettext
+  ] ++ (lib.optional (ui == "curses") ncurses);
 
   dontConfigure = true;
 

@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     sha256 = "sha256-1al7EMYbE/hFXKV4mYZlkEWTUIKYxgXYU3qBLlczYvs=";
   };
 
-  propagatedBuildInputs = with python3.pkgs; [ requests ];
+  propagatedBuildInputs = with python3.pkgs; [
+    requests
+  ];
 
   installPhase = ''
     runHook preInstall

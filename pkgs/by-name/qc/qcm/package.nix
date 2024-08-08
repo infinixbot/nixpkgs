@@ -39,7 +39,9 @@ stdenv.mkDerivation rec {
     cubeb
   ] ++ cubeb.passthru.backendLibs;
 
-  qtWrapperArgs = [ "--prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath cubeb.passthru.backendLibs}" ];
+  qtWrapperArgs = [
+    "--prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath cubeb.passthru.backendLibs}"
+  ];
 
   postInstall = ''
     rm -r $out/{include,lib/cmake}

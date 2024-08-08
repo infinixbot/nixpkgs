@@ -21,7 +21,9 @@ python3Packages.buildPythonApplication rec {
     dnspython
   ];
 
-  nativeCheckInputs = with python3Packages; [ pytestCheckHook ];
+  nativeCheckInputs = with python3Packages; [
+    pytestCheckHook
+  ];
 
   pytestFlagsArray = [
     # we are not interested in linting the project

@@ -18,11 +18,15 @@ buildGoModule rec {
 
   vendorHash = "sha256-GhnEjlV6b61VH/eswBQ9Lelc0IgGawjDRZHzGt7653Q=";
 
-  buildInputs = [ libpcap ];
+  buildInputs = [
+    libpcap
+  ];
 
   modRoot = "./v2";
 
-  subPackages = [ "cmd/naabu/" ];
+  subPackages = [
+    "cmd/naabu/"
+  ];
 
   ldflags = [
     "-w"

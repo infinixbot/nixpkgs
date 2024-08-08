@@ -25,12 +25,18 @@ buildDunePackage rec {
   duneVersion = "3";
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [ dune-configurator ];
-  propagatedBuildInputs = [
-    cstruct
-    mirage-crypto
-    mirage-crypto-rng
-  ] ++ lib.optionals withFreestanding [ ocaml-freestanding ];
+  buildInputs = [
+    dune-configurator
+  ];
+  propagatedBuildInputs =
+    [
+      cstruct
+      mirage-crypto
+      mirage-crypto-rng
+    ]
+    ++ lib.optionals withFreestanding [
+      ocaml-freestanding
+    ];
 
   strictDeps = true;
 

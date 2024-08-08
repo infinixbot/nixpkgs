@@ -52,12 +52,16 @@ stdenv.mkDerivation (finalAttrs: {
     '';
 
   nativeBuildInputs =
-    [ pkg-config ]
+    [
+      pkg-config
+    ]
     ++ lib.optionals stdenv.isDarwin [
       cctools
       fixDarwinDylibNames
     ]
-    ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [ autoSignDarwinBinariesHook ];
+    ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [
+      autoSignDarwinBinariesHook
+    ];
   buildInputs = [
     libtiff
     libtiff.dev_private

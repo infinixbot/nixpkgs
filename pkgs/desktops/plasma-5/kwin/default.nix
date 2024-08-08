@@ -149,7 +149,9 @@ mkDerivation {
     })
   ];
 
-  CXXFLAGS = [ ''-DNIXPKGS_XWAYLAND=\"${lib.getExe xwayland}\"'' ];
+  CXXFLAGS = [
+    ''-DNIXPKGS_XWAYLAND=\"${lib.getExe xwayland}\"''
+  ];
 
   postInstall = ''
     # Some package(s) refer to these service types by the wrong name.

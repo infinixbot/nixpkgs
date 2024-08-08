@@ -50,7 +50,9 @@ stdenv.mkDerivation (finalAttrs: {
     blend2d
   ];
 
-  cmakeFlags = [ (lib.cmakeBool "PDF4QT_INSTALL_TO_USR" false) ];
+  cmakeFlags = [
+    (lib.cmakeBool "PDF4QT_INSTALL_TO_USR" false)
+  ];
 
   dontWrapGApps = true;
 

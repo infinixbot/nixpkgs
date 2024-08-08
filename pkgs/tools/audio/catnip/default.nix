@@ -21,9 +21,13 @@ buildGoModule rec {
 
   vendorHash = "sha256-Hj453+5fhbUL6YMeupT5D6ydaEMe+ZQNgEYHtCUtTx4=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ portaudio ];
+  buildInputs = [
+    portaudio
+  ];
 
   ldflags = [
     "-s"

@@ -130,6 +130,8 @@ stdenv.mkDerivation rec {
     description = "irssi-inspired, detachable, cross-platform, multi-protocol (IRC, XMPP/Jabber) chat client for the GNOME desktop";
     platforms = platforms.unix;
     license = lib.licenses.gpl2Plus;
-    maintainers = with maintainers; [ meebey ];
+    maintainers = with maintainers; [
+      meebey
+    ];
   };
 }

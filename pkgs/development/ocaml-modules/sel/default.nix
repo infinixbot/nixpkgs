@@ -17,9 +17,13 @@ buildDunePackage rec {
     hash = "sha256-Sp0eSeKyFmMvOQrebqLKP+HbHQB0D0eAmEjDzxnFL1I=";
   };
 
-  buildInputs = [ ppxlib ];
+  buildInputs = [
+    ppxlib
+  ];
 
-  propagatedBuildInputs = [ ppx_deriving ];
+  propagatedBuildInputs = [
+    ppx_deriving
+  ];
 
   meta = {
     description = "Simple event library";

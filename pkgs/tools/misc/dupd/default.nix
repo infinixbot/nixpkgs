@@ -45,7 +45,9 @@ stdenv.mkDerivation rec {
     which
   ];
 
-  makeFlags = [ "INSTALL_PREFIX=$(out)" ];
+  makeFlags = [
+    "INSTALL_PREFIX=$(out)"
+  ];
 
   enableParallelBuilding = true;
 

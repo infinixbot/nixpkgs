@@ -52,7 +52,9 @@ stdenv.mkDerivation rec {
     libevent
   ];
 
-  mesonFlags = [ "-Dversion=${version}" ];
+  mesonFlags = [
+    "-Dversion=${version}"
+  ];
 
   env.NIX_CFLAGS_COMPILE = toString (
     [

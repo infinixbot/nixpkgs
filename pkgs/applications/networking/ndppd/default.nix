@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ gzip ];
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
 
   preConfigure = ''
     substituteInPlace Makefile --replace /bin/gzip gzip

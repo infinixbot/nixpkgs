@@ -37,7 +37,9 @@ rustPlatform.buildRustPackage rec {
     python3
   ];
 
-  buildInputs = [ libmysqlclient ];
+  buildInputs = [
+    libmysqlclient
+  ];
 
   preFixup = ''
     wrapProgram $out/bin/syncserver \

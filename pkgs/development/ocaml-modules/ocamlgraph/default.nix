@@ -16,7 +16,9 @@ buildDunePackage rec {
 
   minimalOCamlVersion = "4.08";
 
-  propagatedBuildInputs = [ stdlib-shims ];
+  propagatedBuildInputs = [
+    stdlib-shims
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/backtracking/ocamlgraph";

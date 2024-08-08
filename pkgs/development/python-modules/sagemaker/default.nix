@@ -57,7 +57,9 @@ buildPythonPackage rec {
     })
   ];
 
-  build-system = [ setuptools ];
+  build-system = [
+    setuptools
+  ];
 
   pythonRelaxDeps = [
     "cloudpickle"

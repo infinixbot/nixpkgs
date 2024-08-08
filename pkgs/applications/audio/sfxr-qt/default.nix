@@ -43,9 +43,13 @@ mkDerivation rec {
     SDL
   ];
 
-  checkInputs = [ catch2_3 ];
+  checkInputs = [
+    catch2_3
+  ];
 
-  cmakeFlags = [ (lib.cmakeBool "USE_SYSTEM_CATCH2" true) ];
+  cmakeFlags = [
+    (lib.cmakeBool "USE_SYSTEM_CATCH2" true)
+  ];
 
   doCheck = true;
 

@@ -46,7 +46,9 @@ stdenv.mkDerivation rec {
     unset CPP
   '';
 
-  configureFlags = lib.optionals stdenv.isDarwin [ "--disable-nls" ];
+  configureFlags = lib.optionals stdenv.isDarwin [
+    "--disable-nls"
+  ];
 
   makeFlags = lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
     "CROSS_COMPILE=${stdenv.cc.targetPrefix}"

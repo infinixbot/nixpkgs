@@ -22,10 +22,14 @@ python3.pkgs.buildPythonApplication rec {
     "typing-extensions"
   ];
 
-  build-system = with python3.pkgs; [ poetry-core ];
+  build-system = with python3.pkgs; [
+    poetry-core
+  ];
 
   propagatedBuildInputs =
-    [ graphviz ]
+    [
+      graphviz
+    ]
     ++ (with python3.pkgs; [
       scapy
       typer
@@ -35,7 +39,9 @@ python3.pkgs.buildPythonApplication rec {
   # Project has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "route_graph" ];
+  pythonImportsCheck = [
+    "route_graph"
+  ];
 
   meta = with lib; {
     description = "CLI tool for creating graphs of routes";

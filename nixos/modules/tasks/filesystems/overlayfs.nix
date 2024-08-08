@@ -96,7 +96,9 @@ let
             upperdir = prefix + config.overlay.upperdir;
             workdir = prefix + config.overlay.workdir;
           in
-          [ "lowerdir=${lib.concatStringsSep ":" lowerdir}" ]
+          [
+            "lowerdir=${lib.concatStringsSep ":" lowerdir}"
+          ]
           ++ lib.optionals (config.overlay.upperdir != null) [
             "upperdir=${upperdir}"
             "workdir=${workdir}"

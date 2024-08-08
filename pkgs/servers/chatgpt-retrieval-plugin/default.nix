@@ -36,7 +36,9 @@ python3Packages.buildPythonApplication {
     ${dasel}/bin/dasel put -t string -f pyproject.toml -v '.well-known/*' '.tool.poetry.include.[]'
   '';
 
-  nativeBuildInputs = with python3Packages; [ poetry-core ];
+  nativeBuildInputs = with python3Packages; [
+    poetry-core
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     fastapi

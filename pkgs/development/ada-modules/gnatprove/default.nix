@@ -68,7 +68,9 @@ stdenv.mkDerivation rec {
     ocamlPackages.zarith
   ];
 
-  propagatedBuildInputs = [ gprbuild ];
+  propagatedBuildInputs = [
+    gprbuild
+  ];
 
   postPatch = ''
     # gnat2why/gnat_src points to the GNAT sources

@@ -61,7 +61,9 @@ stdenv.mkDerivation rec {
   MYSQL_CONFIG = lib.optionalString withMysql "${lib.getDev libmysqlclient}/bin/mysql_config";
 
   configureFlags =
-    [ "--with-pcap-includes=${libpcap}/include" ]
+    [
+      "--with-pcap-includes=${libpcap}/include"
+    ]
     ++ lib.optional withJansson "--enable-jansson"
     ++ lib.optional withNflog "--enable-nflog"
     ++ lib.optional withSQLite "--enable-sqlite3"

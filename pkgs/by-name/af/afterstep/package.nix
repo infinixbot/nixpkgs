@@ -46,7 +46,9 @@ stdenv.mkDerivation (finalAttrs: {
     done
   '';
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     dbus

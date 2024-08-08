@@ -34,7 +34,9 @@ rustPlatform.buildRustPackage rec {
     wrapGAppsHook4
   ];
 
-  buildInputs = [ libadwaita ];
+  buildInputs = [
+    libadwaita
+  ];
 
   postInstall = ''
     cp icons/* ./

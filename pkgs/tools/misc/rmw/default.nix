@@ -26,7 +26,9 @@ stdenv.mkDerivation rec {
     ninja
   ];
 
-  buildInputs = [ ncurses ];
+  buildInputs = [
+    ncurses
+  ];
 
   meta = with lib; {
     description = "Trashcan/ recycle bin utility for the command line";

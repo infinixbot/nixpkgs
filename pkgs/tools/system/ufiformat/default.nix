@@ -9,7 +9,9 @@ stdenv.mkDerivation rec {
   pname = "ufiformat";
   version = "0.9.9";
 
-  buildInputs = [ e2fsprogs ];
+  buildInputs = [
+    e2fsprogs
+  ];
 
   src = fetchFromGitHub {
     owner = "tedigh";

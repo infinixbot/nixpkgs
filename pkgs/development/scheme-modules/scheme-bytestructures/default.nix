@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     guile
     pkg-config
   ];
-  buildInputs = [ guile ];
+  buildInputs = [
+    guile
+  ];
 
   doCheck = true;
   makeFlags = [ "GUILE_AUTO_COMPILE=0" ];

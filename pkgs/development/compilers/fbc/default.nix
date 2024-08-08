@@ -51,7 +51,9 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  hardeningDisable = [ "format" ];
+  hardeningDisable = [
+    "format"
+  ];
 
   makeFlags = lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
     "TARGET=${stdenv.hostPlatform.config}"
@@ -93,7 +95,9 @@ stdenv.mkDerivation rec {
     buildFlagsArray+=("FBC=$PWD/patched-fbc/bin/fbc${stdenv.buildPlatform.extensions.executable} -i $PWD/inc")
   '';
 
-  installFlags = [ "prefix=${placeholder "out"}" ];
+  installFlags = [
+    "prefix=${placeholder "out"}"
+  ];
 
   # Tests do not work when cross-compiling even if build platform can execute
   # host binaries, compiler struggles to find the cross compiler's libgcc_s

@@ -33,7 +33,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-MLfkSO8ru8MKiwgiQ0mPO3zGlnIeSHPc0Op5jjzJ6PE=";
   };
 
-  patches = [ "${src}/patches/fix-library-path.patch" ];
+  patches = [
+    "${src}/patches/fix-library-path.patch"
+  ];
 
   nativeBuildInputs = [
     cmake
@@ -63,7 +65,9 @@ stdenv.mkDerivation rec {
       gst-plugins-good
     ]);
 
-  cmakeFlags = [ "-DVERSION=${version}" ];
+  cmakeFlags = [
+    "-DVERSION=${version}"
+  ];
 
   env.NIX_CFLAGS_COMPILE = toString [
     "-I${libvlc}/include/vlc/plugins"

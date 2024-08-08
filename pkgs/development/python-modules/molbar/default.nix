@@ -31,7 +31,9 @@ buildPythonPackage rec {
 
   pyproject = true;
 
-  nativeBuildInputs = [ gfortran ];
+  nativeBuildInputs = [
+    gfortran
+  ];
 
   pythonRelaxDeps = [ "networkx" ];
 

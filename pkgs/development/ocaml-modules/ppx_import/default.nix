@@ -35,7 +35,9 @@ lib.throwIfNot (lib.versionAtLeast ppxlib.version "0.24.0")
         ."${version}";
     };
 
-    propagatedBuildInputs = [ ppxlib ];
+    propagatedBuildInputs = [
+      ppxlib
+    ];
 
     checkInputs = [
       ounit

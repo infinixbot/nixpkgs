@@ -19,9 +19,13 @@ buildGoModule rec {
 
   vendorHash = "sha256-XW7rEHY3S+M3b6QjmINgrCak+BqCEV3PJP90jz7J47A=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ libusb1 ];
+  buildInputs = [
+    libusb1
+  ];
 
   ldflags = [
     "-s"

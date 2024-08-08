@@ -57,7 +57,9 @@ with lib;
       )
     );
 
-    environment.pathsToLink = [ "/share/terminfo" ];
+    environment.pathsToLink = [
+      "/share/terminfo"
+    ];
 
     environment.etc.terminfo = {
       source = "${config.system.path}/share/terminfo";

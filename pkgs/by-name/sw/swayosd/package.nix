@@ -55,7 +55,9 @@ stdenv.mkDerivation rec {
     sassc
   ];
 
-  patches = [ ./swayosd_systemd_paths.patch ];
+  patches = [
+    ./swayosd_systemd_paths.patch
+  ];
 
   preFixup = ''
     gappsWrapperArgs+=(

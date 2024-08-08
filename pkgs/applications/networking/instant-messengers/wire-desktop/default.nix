@@ -69,7 +69,9 @@ let
       arianvp
       toonn
     ];
-    platforms = platforms.darwin ++ [ "x86_64-linux" ];
+    platforms = platforms.darwin ++ [
+      "x86_64-linux"
+    ];
     hydraPlatforms = [ ];
   };
 

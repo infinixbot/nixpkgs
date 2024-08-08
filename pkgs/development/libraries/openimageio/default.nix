@@ -55,7 +55,9 @@ stdenv.mkDerivation rec {
     robin-map
   ];
 
-  propagatedBuildInputs = [ fmt ];
+  propagatedBuildInputs = [
+    fmt
+  ];
 
   cmakeFlags = [
     "-DUSE_PYTHON=OFF"

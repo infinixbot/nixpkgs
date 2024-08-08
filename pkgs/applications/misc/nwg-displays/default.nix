@@ -29,17 +29,23 @@ python310Packages.buildPythonApplication rec {
     wrapGAppsHook3
   ];
 
-  buildInputs = [ gtk3 ];
+  buildInputs = [
+    gtk3
+  ];
 
-  propagatedBuildInputs = [
-    atk
-    gdk-pixbuf
-    gtk-layer-shell
-    pango
-    python310Packages.gst-python
-    python310Packages.i3ipc
-    python310Packages.pygobject3
-  ] ++ lib.optionals hyprlandSupport [ wlr-randr ];
+  propagatedBuildInputs =
+    [
+      atk
+      gdk-pixbuf
+      gtk-layer-shell
+      pango
+      python310Packages.gst-python
+      python310Packages.i3ipc
+      python310Packages.pygobject3
+    ]
+    ++ lib.optionals hyprlandSupport [
+      wlr-randr
+    ];
 
   dontWrapGApps = true;
 

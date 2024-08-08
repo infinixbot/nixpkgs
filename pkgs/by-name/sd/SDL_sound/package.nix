@@ -19,7 +19,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-OZn9C7tIUomlK+FLL2i1ccuE44DMQzh+rfd49kx55t8=";
   };
 
-  nativeBuildInputs = [ SDL ];
+  nativeBuildInputs = [
+    SDL
+  ];
 
   buildInputs = [
     SDL
@@ -28,7 +30,9 @@ stdenv.mkDerivation (finalAttrs: {
     libvorbis
   ];
 
-  configureFlags = [ (lib.enableFeature enableSdltest "--disable-sdltest") ];
+  configureFlags = [
+    (lib.enableFeature enableSdltest "--disable-sdltest")
+  ];
 
   strictDeps = true;
 

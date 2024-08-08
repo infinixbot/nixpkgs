@@ -89,7 +89,9 @@ mkCommon type rec {
 
   # Some of these dependencies are `dlopen()`ed.
   nativeBuildInputs =
-    [ makeWrapper ]
+    [
+      makeWrapper
+    ]
     ++ lib.optional stdenv.isLinux autoPatchelfHook
     ++ lib.optionals (type == "sdk" && stdenv.isDarwin) [
       xmlstarlet

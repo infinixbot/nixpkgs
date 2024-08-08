@@ -31,7 +31,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    system.requiredKernelConfig = with config.lib.kernelConfig; [ (isEnabled "ZRAM") ];
+    system.requiredKernelConfig = with config.lib.kernelConfig; [
+      (isEnabled "ZRAM")
+    ];
 
     systemd.packages = [ cfg.package ];
     systemd.services."systemd-zram-setup@".path = [ pkgs.util-linux ]; # for mkswap

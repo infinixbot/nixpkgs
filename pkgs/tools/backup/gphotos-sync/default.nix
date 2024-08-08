@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-iTqD/oUQqC7Fju8SEPkSZX7FC9tE4eRCewiJR8STmEw=";
   };
 
-  patches = [ ./skip-network-tests.patch ];
+  patches = [
+    ./skip-network-tests.patch
+  ];
 
   nativeBuildInputs = with python3.pkgs; [
     setuptools
@@ -37,7 +39,9 @@ python3.pkgs.buildPythonApplication rec {
     types-requests
   ];
 
-  buildInputs = [ ffmpeg ];
+  buildInputs = [
+    ffmpeg
+  ];
 
   nativeCheckInputs = with python3.pkgs; [
     mock

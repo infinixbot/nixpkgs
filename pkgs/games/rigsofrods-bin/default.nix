@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
     zlib
   ];
 
-  runtimeDependencies = [ alsa-lib ];
+  runtimeDependencies = [
+    alsa-lib
+  ];
 
   noDumpEnvVars = true;
 

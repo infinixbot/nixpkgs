@@ -22,12 +22,20 @@ stdenv.mkDerivation rec {
     hash = "sha256-NyMZdJwdD3FR6uweYCclJjfcf3Y24Bns1ViwsmJ5izg=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs =
-    lib.optionals withGurobi [ gurobi ]
-    ++ lib.optionals withCplex [ cplex ]
-    ++ lib.optionals withLpsolve [ lp_solve ];
+    lib.optionals withGurobi [
+      gurobi
+    ]
+    ++ lib.optionals withCplex [
+      cplex
+    ]
+    ++ lib.optionals withLpsolve [
+      lp_solve
+    ];
 
   postPatch = lib.optionalString stdenv.isDarwin ''
     substituteInPlace CMakeLists.txt \
@@ -35,9 +43,15 @@ stdenv.mkDerivation rec {
   '';
 
   cmakeFlags =
-    [ "-DBUILD_TESTS=${lib.boolToString doCheck}" ]
-    ++ lib.optionals withGurobi [ "-DGUROBI_DIR=${gurobi}" ]
-    ++ lib.optionals withCplex [ "-DCPLEX_DIR=${cplex}" ];
+    [
+      "-DBUILD_TESTS=${lib.boolToString doCheck}"
+    ]
+    ++ lib.optionals withGurobi [
+      "-DGUROBI_DIR=${gurobi}"
+    ]
+    ++ lib.optionals withCplex [
+      "-DCPLEX_DIR=${cplex}"
+    ];
 
   doCheck = true;
 

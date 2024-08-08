@@ -21,7 +21,9 @@ in
 appimageTools.wrapType2 {
   inherit pname version src;
 
-  extraBwrapArgs = [ "--setenv _JAVA_AWT_WM_NONREPARENTING 1" ];
+  extraBwrapArgs = [
+    "--setenv _JAVA_AWT_WM_NONREPARENTING 1"
+  ];
 
   extraInstallCommands = ''
     install --mode=444 -D ${appimageContents}/chat.simplex.app.desktop --target-directory=$out/share/applications

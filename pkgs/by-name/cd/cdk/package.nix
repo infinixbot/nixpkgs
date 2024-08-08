@@ -14,7 +14,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-Q28U6KdW5j3f9ZJ+73DJ3PceTFnVZYfiYwKk9yahnv8=";
   };
 
-  buildInputs = [ ncurses ];
+  buildInputs = [
+    ncurses
+  ];
 
   enableParallelBuilding = true;
 

@@ -29,8 +29,12 @@ stdenv.mkDerivation rec {
     pkg-config
     texinfo
   ];
-  buildInputs = [ guile ];
-  propagatedBuildInputs = [ libgcrypt ];
+  buildInputs = [
+    guile
+  ];
+  propagatedBuildInputs = [
+    libgcrypt
+  ];
   makeFlags = [ "GUILE_AUTO_COMPILE=0" ];
   doCheck = true;
 

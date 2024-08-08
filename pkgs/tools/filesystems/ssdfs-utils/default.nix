@@ -24,7 +24,9 @@ stdenv.mkDerivation {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   buildInputs = [
     libtool

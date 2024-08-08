@@ -40,7 +40,9 @@ stdenv.mkDerivation rec {
     librsvg
   ];
 
-  propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+  propagatedUserEnvPkgs = [
+    gtk-engine-murrine
+  ];
 
   postPatch = ''
     patchShebangs .

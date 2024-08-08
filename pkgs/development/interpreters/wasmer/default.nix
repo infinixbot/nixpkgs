@@ -26,7 +26,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-xyR5pnwMGE5K4o7X0Q2JEervSgR5LK1vqpOa3Mm6xkU=";
 
-  nativeBuildInputs = [ rustPlatform.bindgenHook ];
+  nativeBuildInputs = [
+    rustPlatform.bindgenHook
+  ];
 
   buildInputs =
     lib.optionals withLLVM [

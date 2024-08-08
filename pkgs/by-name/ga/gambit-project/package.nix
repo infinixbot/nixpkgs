@@ -27,7 +27,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  configureFlags = [ (lib.enableFeature withGui "gui") ];
+  configureFlags = [
+    (lib.enableFeature withGui "gui")
+  ];
 
   meta = {
     description = "Open-source collection of tools for doing computation in game theory";

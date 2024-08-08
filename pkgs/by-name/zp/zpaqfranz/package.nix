@@ -16,7 +16,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-75+HNfxeecl/u8adw3fKRWtCqyyb7mEkT7J4esXD0Is=";
   };
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   buildPhase = ''
     runHook preBuild

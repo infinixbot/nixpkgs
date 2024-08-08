@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-K60xIQ6TWPYlsR6YjIquey5Ioaw4oAId59CPlQNK4yk=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     colorama
@@ -27,7 +29,9 @@ python3.pkgs.buildPythonApplication rec {
   # Project has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "time_decode" ];
+  pythonImportsCheck = [
+    "time_decode"
+  ];
 
   meta = with lib; {
     description = "Timestamp and date decoder";

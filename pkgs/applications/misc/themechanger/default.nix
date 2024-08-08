@@ -43,7 +43,9 @@ python3Packages.buildPythonApplication rec {
     gsettings-desktop-schemas
   ];
 
-  propagatedBuildInputs = with python3Packages; [ pygobject3 ];
+  propagatedBuildInputs = with python3Packages; [
+    pygobject3
+  ];
 
   postPatch = ''
     patchShebangs postinstall.py

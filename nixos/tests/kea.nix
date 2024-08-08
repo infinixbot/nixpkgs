@@ -55,7 +55,9 @@ import ./make-test-python.nix (
 
               interfaces-config = {
                 dhcp-socket-type = "raw";
-                interfaces = [ "eth1" ];
+                interfaces = [
+                  "eth1"
+                ];
               };
 
               subnet4 = [
@@ -120,7 +122,9 @@ import ./make-test-python.nix (
 
           services.prometheus.exporters.kea = {
             enable = true;
-            controlSocketPaths = [ "http://127.0.0.1:8000" ];
+            controlSocketPaths = [
+              "http://127.0.0.1:8000"
+            ];
           };
         };
 
@@ -168,9 +172,13 @@ import ./make-test-python.nix (
             in
             {
               enable = true;
-              extraArgs = [ "-v" ];
+              extraArgs = [
+                "-v"
+              ];
               settings = {
-                server.listen = [ "0.0.0.0@53" ];
+                server.listen = [
+                  "0.0.0.0@53"
+                ];
 
                 log.syslog.any = "info";
 
@@ -188,7 +196,9 @@ import ./make-test-python.nix (
 
                 zone."lan.nixos.test" = {
                   file = "lan.nixos.test.zone";
-                  acl = [ "dhcp_ddns" ];
+                  acl = [
+                    "dhcp_ddns"
+                  ];
                 };
               };
             };

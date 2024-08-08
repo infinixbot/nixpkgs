@@ -15,11 +15,15 @@ buildOctavePackage rec {
     sha256 = "sha256-CFspqPJDSU1Pg+o6dub1/+g+mPDps9sPlus6keDj6h0=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   dontUseCmakeConfigure = true;
 
-  propagatedBuildInputs = [ gdcm ];
+  propagatedBuildInputs = [
+    gdcm
+  ];
 
   meta = with lib; {
     homepage = "https://octave.sourceforge.io/dicom/index.html";

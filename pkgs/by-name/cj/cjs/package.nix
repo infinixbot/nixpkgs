@@ -35,15 +35,19 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    which # for locale detection
-    libxml2 # for xml-stripblanks
-    dbus # for dbus-run-session
-    gobject-introspection
-  ] ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [ mesonEmulatorHook ];
+  nativeBuildInputs =
+    [
+      meson
+      ninja
+      pkg-config
+      which # for locale detection
+      libxml2 # for xml-stripblanks
+      dbus # for dbus-run-session
+      gobject-introspection
+    ]
+    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+      mesonEmulatorHook
+    ];
 
   buildInputs = [
     cairo
@@ -52,9 +56,13 @@ stdenv.mkDerivation rec {
     spidermonkey_115
   ];
 
-  propagatedBuildInputs = [ glib ];
+  propagatedBuildInputs = [
+    glib
+  ];
 
-  mesonFlags = lib.optionals stdenv.hostPlatform.isMusl [ "-Dprofiler=disabled" ];
+  mesonFlags = lib.optionals stdenv.hostPlatform.isMusl [
+    "-Dprofiler=disabled"
+  ];
 
   postPatch = ''
     patchShebangs --build build/choose-tests-locale.sh

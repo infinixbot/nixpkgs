@@ -127,7 +127,9 @@ in
 
     environment.etc."vmalert/rules.yml".source = format.generate "rules.yml" cfg.rules;
 
-    services.vmalert.settings.rule = [ "/etc/vmalert/rules.yml" ];
+    services.vmalert.settings.rule = [
+      "/etc/vmalert/rules.yml"
+    ];
 
     systemd.services.vmalert = {
       description = "vmalert service";

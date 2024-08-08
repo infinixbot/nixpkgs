@@ -34,7 +34,9 @@ else
       findlib
     ];
 
-    propagatedBuildInputs = [ bzip2 ];
+    propagatedBuildInputs = [
+      bzip2
+    ];
 
     strictDeps = true;
 

@@ -27,8 +27,12 @@ rustPlatform.buildRustPackage rec {
   ];
 
   buildInputs =
-    lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.AudioUnit ]
-    ++ lib.optionals stdenv.isLinux [ alsa-lib ];
+    lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.AudioUnit
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      alsa-lib
+    ];
 
   meta = with lib; {
     description = "Cross-platform music live coding in terminal";

@@ -72,7 +72,9 @@ symlinkJoin {
   name = "google-cloud-sdk-${google-cloud-sdk.version}";
   inherit (google-cloud-sdk) meta;
 
-  paths = [ google-cloud-sdk ] ++ comps;
+  paths = [
+    google-cloud-sdk
+  ] ++ comps;
 
   postBuild = ''
     sed -i ';' $out/google-cloud-sdk/bin/.gcloud-wrapped

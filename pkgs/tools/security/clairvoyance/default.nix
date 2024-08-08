@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-CVXa2HvX7M0cwqnTeZVETg07j324ATQuMNreEgAC2QA=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ poetry-core ];
+  nativeBuildInputs = with python3.pkgs; [
+    poetry-core
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     aiohttp
@@ -33,7 +35,9 @@ python3.pkgs.buildPythonApplication rec {
       --replace 'asyncio = "^3.4.3"' ""
   '';
 
-  pythonImportsCheck = [ "clairvoyance" ];
+  pythonImportsCheck = [
+    "clairvoyance"
+  ];
 
   disabledTests = [
     # KeyError

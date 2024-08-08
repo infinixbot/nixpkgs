@@ -55,14 +55,18 @@ stdenv.mkDerivation rec {
           # See https://github.com/google/glog/issues/937
           "DeathNoAllocNewHook.logging"
         ]
-        ++ lib.optionals stdenv.isDarwin [ "LogBacktraceAt.DoesBacktraceAtRightLineWhenEnabled" ];
+        ++ lib.optionals stdenv.isDarwin [
+          "LogBacktraceAt.DoesBacktraceAtRightLineWhenEnabled"
+        ];
     in
     "-${builtins.concatStringsSep ":" filteredTests}";
 
   checkPhase =
     let
       excludedTests =
-        lib.optionals stdenv.isDarwin [ "mock-log" ]
+        lib.optionals stdenv.isDarwin [
+          "mock-log"
+        ]
         ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [
           "logging" # works around segfaults on aarch64-darwin for now
         ];

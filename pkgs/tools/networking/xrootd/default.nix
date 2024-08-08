@@ -136,7 +136,9 @@ stdenv.mkDerivation (finalAttrs: {
     '';
 
   cmakeFlags =
-    [ "-DXRootD_VERSION_STRING=${finalAttrs.version}" ]
+    [
+      "-DXRootD_VERSION_STRING=${finalAttrs.version}"
+    ]
     ++ lib.optionals enableTestRunner [
       "-DFORCE_ENABLED=TRUE"
       "-DENABLE_DAVIX=TRUE"

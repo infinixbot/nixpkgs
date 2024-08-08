@@ -26,7 +26,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     hicolor-icon-theme # theme setup hook
   ];
 
-  propagatedBuildInputs = [ ubuntu-themes ];
+  propagatedBuildInputs = [
+    ubuntu-themes
+  ];
 
   dontConfigure = true;
   dontBuild = true;

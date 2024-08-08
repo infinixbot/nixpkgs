@@ -46,7 +46,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-xBCJu89OV+JMGsd/txAqj2Kce91mnOsRK31WGz7qS40=";
   };
 
-  patches = [ ./0001-hardcode-fallback-background.diff ];
+  patches = [
+    ./0001-hardcode-fallback-background.diff
+  ];
 
   # Avoid using absolute path to distinguish applications
   postPatch = ''
@@ -100,7 +102,9 @@ stdenv.mkDerivation rec {
     xorg.libXScrnSaver
   ];
 
-  cmakeFlags = [ "-DKWIN_BUILD_RUNNERS=OFF" ];
+  cmakeFlags = [
+    "-DKWIN_BUILD_RUNNERS=OFF"
+  ];
 
   outputs = [
     "out"

@@ -37,13 +37,19 @@ buildNpmPackage' rec {
   '';
   makeCacheWritable = true;
 
-  nativeBuildInputs = [
-    nodePackages.node-gyp
-    python3
-  ] ++ lib.optionals stdenv.isDarwin [ cctools ];
+  nativeBuildInputs =
+    [
+      nodePackages.node-gyp
+      python3
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      cctools
+    ];
 
   buildInputs =
-    lib.optionals stdenv.isLinux [ udev ]
+    lib.optionals stdenv.isLinux [
+      udev
+    ]
     ++ lib.optionals stdenv.isDarwin [
       darwin.apple_sdk.frameworks.Foundation
       darwin.apple_sdk.frameworks.Cocoa

@@ -25,7 +25,9 @@ rustPlatform.buildRustPackage rec {
   env.TEST_SYSTEMD = systemd;
   doCheck = lib.meta.availableOn stdenv.hostPlatform systemd;
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   postInstall = ''
     # Clean PATH to only contain what we need to do objcopy.

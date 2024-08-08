@@ -28,9 +28,13 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [ libopenmpt ];
+  buildInputs = [
+    libopenmpt
+  ];
 
-  configureFlags = [ "--enable-libmodplug" ];
+  configureFlags = [
+    "--enable-libmodplug"
+  ];
 
   meta = with lib; {
     description = "Libmodplug emulation layer based on libopenmpt";

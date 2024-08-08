@@ -29,7 +29,9 @@ rustPlatform.buildRustPackage rec {
   ];
 
   buildInputs =
-    [ alsa-lib ]
+    [
+      alsa-lib
+    ]
     ++ lib.optionals stdenv.isDarwin [
       darwin.apple_sdk.frameworks.CoreAudio
       darwin.apple_sdk.frameworks.CoreFoundation

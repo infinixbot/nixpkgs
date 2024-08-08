@@ -25,10 +25,18 @@ rustPlatform.buildRustPackage rec {
     lockFile = ./Cargo.lock;
   };
 
-  nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.isDarwin [ curl ];
+  nativeBuildInputs =
+    [
+      pkg-config
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      curl
+    ];
 
   buildInputs =
-    [ openssl ]
+    [
+      openssl
+    ]
     ++ lib.optionals stdenv.isDarwin [
       curl
       darwin.apple_sdk.frameworks.Security

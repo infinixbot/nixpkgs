@@ -108,9 +108,15 @@ in
         server: options:
         nameValuePair "tts-${server}" {
           description = "Coqui TTS server instance ${server}";
-          after = [ "network-online.target" ];
-          wantedBy = [ "multi-user.target" ];
-          path = with pkgs; [ espeak-ng ];
+          after = [
+            "network-online.target"
+          ];
+          wantedBy = [
+            "multi-user.target"
+          ];
+          path = with pkgs; [
+            espeak-ng
+          ];
           environment.HOME = "/var/lib/tts";
           serviceConfig = {
             DynamicUser = true;

@@ -32,12 +32,18 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [
-    libsodium
-    sqlite
-  ] ++ lib.optionals stdenv.isDarwin [ Security ];
+  buildInputs =
+    [
+      libsodium
+      sqlite
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Security
+    ];
 
   passthru = {
     updateScript = nix-update-script { };

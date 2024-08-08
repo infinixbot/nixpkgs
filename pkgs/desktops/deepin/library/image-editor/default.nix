@@ -46,7 +46,9 @@ stdenv.mkDerivation rec {
     pcre
   ];
 
-  cmakeFlags = [ "-DCMAKE_INSTALL_LIBDIR=lib" ];
+  cmakeFlags = [
+    "-DCMAKE_INSTALL_LIBDIR=lib"
+  ];
 
   meta = with lib; {
     description = "Image editor lib for dtk";

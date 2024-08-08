@@ -44,15 +44,31 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    [ glib ]
-    ++ lib.optionals withHunspell [ hunspell ]
-    ++ lib.optionals withNuspell [ nuspell ]
-    ++ lib.optionals withAppleSpell [ Cocoa ];
+    [
+      glib
+    ]
+    ++ lib.optionals withHunspell [
+      hunspell
+    ]
+    ++ lib.optionals withNuspell [
+      nuspell
+    ]
+    ++ lib.optionals withAppleSpell [
+      Cocoa
+    ];
 
-  checkInputs = [ unittest-cpp ];
+  checkInputs = [
+    unittest-cpp
+  ];
 
   # libtool puts these to .la files
-  propagatedBuildInputs = lib.optionals withHspell [ hspell ] ++ lib.optionals withAspell [ aspell ];
+  propagatedBuildInputs =
+    lib.optionals withHspell [
+      hspell
+    ]
+    ++ lib.optionals withAspell [
+      aspell
+    ];
 
   enableParallelBuilding = true;
 

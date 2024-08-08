@@ -195,7 +195,11 @@ in
 
   config = mkIf (eachGeth != { }) {
 
-    environment.systemPackages = flatten (mapAttrsToList (gethName: cfg: [ cfg.package ]) eachGeth);
+    environment.systemPackages = flatten (
+      mapAttrsToList (gethName: cfg: [
+        cfg.package
+      ]) eachGeth
+    );
 
     systemd.services = mapAttrs' (
       gethName: cfg:

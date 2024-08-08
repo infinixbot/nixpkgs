@@ -54,7 +54,9 @@ rustPlatform.buildRustPackage rec {
     sqlite
   ];
 
-  nativeCheckInputs = [ file ];
+  nativeCheckInputs = [
+    file
+  ];
 
   postInstall = ''
     installManPage meli/docs/*.{1,5,7}

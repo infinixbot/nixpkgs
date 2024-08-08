@@ -57,7 +57,9 @@ buildPythonPackage rec {
       requests-cache
       requests-ratelimiter
     ];
-    repair = [ scipy ];
+    repair = [
+      scipy
+    ];
   };
 
   # Tests require internet access

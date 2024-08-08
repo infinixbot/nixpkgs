@@ -21,7 +21,9 @@ python3Packages.buildPythonApplication rec {
     sed -i '/^addopts = "--cov/d' pyproject.toml
   '';
 
-  nativeBuildInputs = with python3Packages; [ poetry-core ];
+  nativeBuildInputs = with python3Packages; [
+    poetry-core
+  ];
 
   propagatedBuildInputs = with python3Packages; [
     mypy
@@ -49,7 +51,9 @@ python3Packages.buildPythonApplication rec {
     "test_checks" # broken because new mypy release added new checks
   ];
 
-  pythonImportsCheck = [ "refurb" ];
+  pythonImportsCheck = [
+    "refurb"
+  ];
 
   meta = with lib; {
     description = "Tool for refurbishing and modernizing Python codebases";

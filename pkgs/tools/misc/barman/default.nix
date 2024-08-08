@@ -16,7 +16,9 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-38r1CwS4BUqhzAUmBvxuqKquGfGlgSekKXe7EbumSe0=";
   };
 
-  patches = [ ./unwrap-subprocess.patch ];
+  patches = [
+    ./unwrap-subprocess.patch
+  ];
 
   nativeCheckInputs = with python3Packages; [
     mock

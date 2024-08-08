@@ -40,7 +40,9 @@ runCommand cri-o-unwrapped.name
       "man"
     ];
 
-    nativeBuildInputs = [ makeWrapper ];
+    nativeBuildInputs = [
+      makeWrapper
+    ];
 
   }
   ''

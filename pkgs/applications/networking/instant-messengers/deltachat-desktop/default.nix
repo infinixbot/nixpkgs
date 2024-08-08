@@ -65,14 +65,24 @@ buildNpmPackage rec {
       || (echo 'error: electron version doesn not match package-lock.json' && exit 1)
   '';
 
-  nativeBuildInputs = [
-    jq
-    makeWrapper
-    pkg-config
-    python3
-  ] ++ lib.optionals stdenv.isLinux [ copyDesktopItems ];
+  nativeBuildInputs =
+    [
+      jq
+      makeWrapper
+      pkg-config
+      python3
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      copyDesktopItems
+    ];
 
-  buildInputs = [ deltachat-rpc-server ] ++ lib.optionals stdenv.isDarwin [ CoreServices ];
+  buildInputs =
+    [
+      deltachat-rpc-server
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      CoreServices
+    ];
 
   env = {
     ELECTRON_SKIP_BINARY_DOWNLOAD = "1";

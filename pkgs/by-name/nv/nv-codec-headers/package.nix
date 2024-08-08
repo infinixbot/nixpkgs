@@ -21,7 +21,9 @@ in
 stdenvNoCC.mkDerivation {
   inherit (pick) pname version src;
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
 
   passthru = {
     inherit sources;

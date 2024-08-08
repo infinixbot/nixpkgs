@@ -20,7 +20,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-ergTa6uR1SyR27H2HAWp/rtgalCnQge07Pi24PrsW+8=";
   };
 
-  nativeBuildInputs = [ ];
+  nativeBuildInputs =
+    [
+    ];
 
   pythonRemoveDeps = [
     "pylibfdt"

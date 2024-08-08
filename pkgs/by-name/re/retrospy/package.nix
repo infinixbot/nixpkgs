@@ -42,7 +42,9 @@ buildDotnetModule {
 
   inherit src;
 
-  nativeBuildInputs = [ copyDesktopItems ];
+  nativeBuildInputs = [
+    copyDesktopItems
+  ];
 
   runtimeDeps = [
     fontconfig

@@ -33,7 +33,9 @@ stdenv.mkDerivation rec {
 
   sourceRoot = "${src.name}/mlir";
 
-  patches = [ ./gnu-install-dirs.patch ];
+  patches = [
+    ./gnu-install-dirs.patch
+  ];
 
   nativeBuildInputs = [
     cmake

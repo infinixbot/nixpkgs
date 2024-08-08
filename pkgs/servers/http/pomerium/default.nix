@@ -54,10 +54,14 @@ buildGoModule rec {
     doDist = false;
   };
 
-  subPackages = [ "cmd/pomerium" ];
+  subPackages = [
+    "cmd/pomerium"
+  ];
 
   # patch pomerium to allow use of external envoy
-  patches = [ ./0001-envoy-allow-specification-of-external-binary.patch ];
+  patches = [
+    ./0001-envoy-allow-specification-of-external-binary.patch
+  ];
 
   ldflags =
     let
@@ -82,7 +86,9 @@ buildGoModule rec {
         ) setVars
       );
     in
-    [ "${varFlags}" ];
+    [
+      "${varFlags}"
+    ];
 
   preBuild = ''
     # Replace embedded envoy with nothing.

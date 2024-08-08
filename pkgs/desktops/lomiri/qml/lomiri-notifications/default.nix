@@ -59,9 +59,13 @@ stdenv.mkDerivation (finalAttrs: {
     qtdeclarative
   ];
 
-  nativeCheckInputs = [ dbus ];
+  nativeCheckInputs = [
+    dbus
+  ];
 
-  checkInputs = [ libqtdbustest ];
+  checkInputs = [
+    libqtdbustest
+  ];
 
   dontWrapQtApps = true;
 

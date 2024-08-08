@@ -41,7 +41,9 @@ let
     pname = "forgejo-frontend";
     inherit src version npmDepsHash;
 
-    patches = [ ./package-json-npm-build-frontend.patch ];
+    patches = [
+      ./package-json-npm-build-frontend.patch
+    ];
 
     # override npmInstallHook
     installPhase = ''
@@ -65,7 +67,9 @@ buildGoModule rec {
     "data"
   ];
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   buildInputs = lib.optional pamSupport pam;
 
@@ -74,7 +78,9 @@ buildGoModule rec {
     openssh
   ];
 
-  patches = [ ./static-root-path.patch ];
+  patches = [
+    ./static-root-path.patch
+  ];
 
   postPatch = ''
     substituteInPlace modules/setting/server.go --subst-var data

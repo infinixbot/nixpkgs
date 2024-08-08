@@ -18,7 +18,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-zn+e/svaxeJU9P1sIaRrVuKW0+FM0GLKZTUx3PfuThk=";
   };
 
-  build-system = with python3.pkgs; [ setuptools ];
+  build-system = with python3.pkgs; [
+    setuptools
+  ];
 
   passthru.optional-dependencies = {
     black = [ black ];

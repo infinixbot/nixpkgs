@@ -50,7 +50,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   propagatedBuildInputs =
     [
@@ -62,12 +64,16 @@ stdenv.mkDerivation (finalAttrs: {
       boost
       eigen
     ]
-    ++ lib.optionals (!pythonSupport && collisionSupport) [ hpp-fcl ]
+    ++ lib.optionals (!pythonSupport && collisionSupport) [
+      hpp-fcl
+    ]
     ++ lib.optionals pythonSupport [
       python3Packages.boost
       python3Packages.eigenpy
     ]
-    ++ lib.optionals (pythonSupport && collisionSupport) [ python3Packages.hpp-fcl ];
+    ++ lib.optionals (pythonSupport && collisionSupport) [
+      python3Packages.hpp-fcl
+    ];
 
   cmakeFlags =
     [
@@ -82,7 +88,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   doCheck = true;
 
-  pythonImportsCheck = lib.optionals (!pythonSupport) [ "pinocchio" ];
+  pythonImportsCheck = lib.optionals (!pythonSupport) [
+    "pinocchio"
+  ];
 
   meta = {
     description = "Fast and flexible implementation of Rigid Body Dynamics algorithms and their analytical derivatives";

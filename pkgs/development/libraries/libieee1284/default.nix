@@ -39,7 +39,9 @@ stdenv.mkDerivation rec {
     docbook_xsl
   ];
 
-  configureFlags = [ "--without-python" ];
+  configureFlags = [
+    "--without-python"
+  ];
 
   prePatch = ''
     ./bootstrap

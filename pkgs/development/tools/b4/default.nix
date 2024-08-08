@@ -18,7 +18,9 @@ python3Packages.buildPythonApplication rec {
   # tests make dns requests and fails
   doCheck = false;
 
-  build-system = with python3Packages; [ setuptools ];
+  build-system = with python3Packages; [
+    setuptools
+  ];
 
   propagatedBuildInputs = with python3Packages; [
     requests

@@ -21,7 +21,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-O9/YvvFOaZ1F7HYO/AplWLz1vw0hysJEvGketk8zb9w=";
 
-  nativeBuildInputs = [ rustPlatform.bindgenHook ];
+  nativeBuildInputs = [
+    rustPlatform.bindgenHook
+  ];
   buildInputs = lib.optionals stdenv.isDarwin [
     IOKit
     Security

@@ -40,10 +40,18 @@ stdenv.mkDerivation (finalAttrs: {
   version = "5.5.0";
 
   outputs =
-    [ "out" ]
-    ++ lib.optionals buildDocs [ "doc" ]
-    ++ lib.optionals buildTests [ "test" ]
-    ++ lib.optionals buildBenchmarks [ "benchmark" ];
+    [
+      "out"
+    ]
+    ++ lib.optionals buildDocs [
+      "doc"
+    ]
+    ++ lib.optionals buildTests [
+      "test"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "benchmark"
+    ];
 
   # Deprecated? https://github.com/ROCmSoftwarePlatform/MIOpenGEMM/issues/62
   src = fetchFromGitHub {
@@ -67,7 +75,9 @@ stdenv.mkDerivation (finalAttrs: {
       python3Packages.sphinx-rtd-theme
       python3Packages.breathe
     ]
-    ++ lib.optionals buildTests [ openblas ]
+    ++ lib.optionals buildTests [
+      openblas
+    ]
     ++ lib.optionals buildBenchmarks [
       clblast
       python3Packages.triton
@@ -81,7 +91,9 @@ stdenv.mkDerivation (finalAttrs: {
       "-DCMAKE_INSTALL_LIBDIR=lib"
       "-DCMAKE_INSTALL_INCLUDEDIR=include"
     ]
-    ++ lib.optionals buildTests [ "-DOPENBLAS=ON" ]
+    ++ lib.optionals buildTests [
+      "-DOPENBLAS=ON"
+    ]
     ++ lib.optionals buildBenchmarks [
       "-DAPI_BENCH_MIOGEMM=ON"
       "-DAPI_BENCH_CLBLAST=ON"

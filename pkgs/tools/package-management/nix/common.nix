@@ -142,8 +142,12 @@ let
         (lib.getBin lowdown)
         mdbook
       ]
-      ++ lib.optionals (atLeast213 && enableDocumentation) [ mdbook-linkcheck ]
-      ++ lib.optionals stdenv.isLinux [ util-linuxMinimal ];
+      ++ lib.optionals (atLeast213 && enableDocumentation) [
+        mdbook-linkcheck
+      ]
+      ++ lib.optionals stdenv.isLinux [
+        util-linuxMinimal
+      ];
 
     buildInputs =
       [
@@ -160,17 +164,43 @@ let
         libarchive
         lowdown
       ]
-      ++ lib.optionals atLeast220 [ libgit2 ]
-      ++ lib.optionals (atLeast224 || lib.versionAtLeast version "pre20240626") [ toml11 ]
-      ++ lib.optionals stdenv.isDarwin [ Security ]
-      ++ lib.optionals (stdenv.isx86_64) [ libcpuid ]
-      ++ lib.optionals atLeast214 [ rapidcheck ]
-      ++ lib.optionals withLibseccomp [ libseccomp ]
-      ++ lib.optionals withAWS [ aws-sdk-cpp ];
+      ++ lib.optionals atLeast220 [
+        libgit2
+      ]
+      ++ lib.optionals (atLeast224 || lib.versionAtLeast version "pre20240626") [
+        toml11
+      ]
+      ++ lib.optionals stdenv.isDarwin [
+        Security
+      ]
+      ++ lib.optionals (stdenv.isx86_64) [
+        libcpuid
+      ]
+      ++ lib.optionals atLeast214 [
+        rapidcheck
+      ]
+      ++ lib.optionals withLibseccomp [
+        libseccomp
+      ]
+      ++ lib.optionals withAWS [
+        aws-sdk-cpp
+      ];
 
-    installCheckInputs = lib.optionals atLeast221 [ git ] ++ lib.optionals atLeast219 [ man ];
+    installCheckInputs =
+      lib.optionals atLeast221 [
+        git
+      ]
+      ++ lib.optionals atLeast219 [
+        man
+      ];
 
-    propagatedBuildInputs = [ boehmgc ] ++ lib.optionals (atLeast27) [ nlohmann_json ];
+    propagatedBuildInputs =
+      [
+        boehmgc
+      ]
+      ++ lib.optionals (atLeast27) [
+        nlohmann_json
+      ];
 
     postPatch = ''
       patchShebangs --build tests
@@ -213,21 +243,32 @@ let
         "--sysconfdir=${confDir}"
         "--enable-gc"
       ]
-      ++ lib.optionals (!enableDocumentation) [ "--disable-doc-gen" ]
-      ++ lib.optionals stdenv.isLinux [ "--with-sandbox-shell=${busybox-sandbox-shell}/bin/busybox" ]
+      ++ lib.optionals (!enableDocumentation) [
+        "--disable-doc-gen"
+      ]
+      ++ lib.optionals stdenv.isLinux [
+        "--with-sandbox-shell=${busybox-sandbox-shell}/bin/busybox"
+      ]
       ++ lib.optionals (atLeast210 && stdenv.isLinux && stdenv.hostPlatform.isStatic) [
         "--enable-embedded-sandbox-shell"
       ]
-      ++ lib.optionals (
-        stdenv.hostPlatform != stdenv.buildPlatform
-        && stdenv.hostPlatform ? nix
-        && stdenv.hostPlatform.nix ? system
-      ) [ "--with-system=${stdenv.hostPlatform.nix.system}" ]
+      ++
+        lib.optionals
+          (
+            stdenv.hostPlatform != stdenv.buildPlatform
+            && stdenv.hostPlatform ? nix
+            && stdenv.hostPlatform.nix ? system
+          )
+          [
+            "--with-system=${stdenv.hostPlatform.nix.system}"
+          ]
       ++ lib.optionals (!withLibseccomp) [
         # RISC-V support in progress https://github.com/seccomp/libseccomp/pull/50
         "--disable-seccomp-sandboxing"
       ]
-      ++ lib.optionals (atLeast210 && stdenv.cc.isGNU && !enableStatic) [ "--enable-lto" ];
+      ++ lib.optionals (atLeast210 && stdenv.cc.isGNU && !enableStatic) [
+        "--enable-lto"
+      ];
 
     makeFlags =
       [

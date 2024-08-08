@@ -28,11 +28,15 @@ rustPlatform.buildRustPackage {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    libgit2
-    openssl
-    zlib
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.AppKit ];
+  buildInputs =
+    [
+      libgit2
+      openssl
+      zlib
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.AppKit
+    ];
 
   env = {
     LIBGIT2_NO_VENDOR = 1;

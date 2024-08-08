@@ -266,7 +266,9 @@ in
             "15-force-s16-info" = {
               "pulse.rules" = [
                 {
-                  matches = [ { "application.process.binary" = "my-broken-app"; } ];
+                  matches = [
+                    { "application.process.binary" = "my-broken-app"; }
+                  ];
                   actions = {
                     quirks = [ "force-s16-info" ];
                   };

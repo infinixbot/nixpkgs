@@ -19,7 +19,9 @@ stdenv.mkDerivation rec {
     "--enable-obj"
   ];
 
-  patches = [ ./cudd.patch ];
+  patches = [
+    ./cudd.patch
+  ];
 
   nativeBuildInputs = [ autoreconfHook ];
 

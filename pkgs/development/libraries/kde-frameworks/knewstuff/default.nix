@@ -46,5 +46,7 @@ mkDerivation {
     kservice
     kxmlgui
   ];
-  patches = [ ./0001-Delay-resolving-knsrcdir.patch ];
+  patches = [
+    ./0001-Delay-resolving-knsrcdir.patch
+  ];
 }

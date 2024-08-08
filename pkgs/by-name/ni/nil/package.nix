@@ -19,7 +19,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-E4wmVunaX5SeBlXaLEpzMZ+IY0YVeJ1NORPo9msHr6M=";
 
-  nativeBuildInputs = [ (lib.getBin nixVersions.latest) ];
+  nativeBuildInputs = [
+    (lib.getBin nixVersions.latest)
+  ];
 
   env.CFG_RELEASE = version;
 

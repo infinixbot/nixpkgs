@@ -21,7 +21,9 @@ python3.pkgs.buildPythonApplication rec {
     sed -i '/addopts/d' setup.cfg
   '';
 
-  build-system = with python3.pkgs; [ setuptools ];
+  build-system = with python3.pkgs; [
+    setuptools
+  ];
 
   dependencies =
     with python3.pkgs;

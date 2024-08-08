@@ -299,7 +299,9 @@ in
         ''}
       '';
 
-      restartTriggers = [ confFile ];
+      restartTriggers = [
+        confFile
+      ];
 
       serviceConfig = {
         ExecStart = "${cfg.package}/bin/unbound -p -d -c /etc/unbound/unbound.conf";

@@ -14,7 +14,9 @@ bundlerApp {
 
   installManpages = false;
 
-  exes = [ "schleuder-cli" ];
+  exes = [
+    "schleuder-cli"
+  ];
 
   passthru.updateScript = bundlerUpdateScript "schleuder-cli";
 

@@ -37,7 +37,13 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "rocmlir${suffix}";
   version = "6.0.2";
 
-  outputs = [ "out" ] ++ lib.optionals (!buildRockCompiler) [ "external" ];
+  outputs =
+    [
+      "out"
+    ]
+    ++ lib.optionals (!buildRockCompiler) [
+      "external"
+    ];
 
   src = fetchFromGitHub {
     owner = "ROCm";
@@ -80,8 +86,12 @@ stdenv.mkDerivation (finalAttrs: {
       "-DCMAKE_INSTALL_LIBDIR=lib"
       "-DCMAKE_INSTALL_INCLUDEDIR=include"
     ]
-    ++ lib.optionals buildRockCompiler [ "-DBUILD_FAT_LIBROCKCOMPILER=ON" ]
-    ++ lib.optionals (!buildRockCompiler) [ "-DROCM_TEST_CHIPSET=gfx000" ];
+    ++ lib.optionals buildRockCompiler [
+      "-DBUILD_FAT_LIBROCKCOMPILER=ON"
+    ]
+    ++ lib.optionals (!buildRockCompiler) [
+      "-DROCM_TEST_CHIPSET=gfx000"
+    ];
 
   postPatch = ''
     patchShebangs mlir

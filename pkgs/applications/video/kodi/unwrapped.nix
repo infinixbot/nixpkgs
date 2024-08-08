@@ -198,7 +198,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-xrFWqgwTkurEwt3/+/e4SCM6Uk9nxuW62SrCFWWqZO0=";
   };
 
-  patches = [ ./no-python-lib.patch ];
+  patches = [
+    ./no-python-lib.patch
+  ];
 
   # make  derivations declared in the let binding available here, so
   # they can be overridden
@@ -356,7 +358,9 @@ stdenv.mkDerivation (finalAttrs: {
       waylandpp.bin
     ];
 
-  depsBuildBuild = [ buildPackages.stdenv.cc ];
+  depsBuildBuild = [
+    buildPackages.stdenv.cc
+  ];
 
   cmakeFlags =
     [

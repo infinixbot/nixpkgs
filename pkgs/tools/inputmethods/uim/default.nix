@@ -65,17 +65,21 @@ stdenv.mkDerivation rec {
     sha256 = "1hkjxi5r49gcna37m3jvykny5hz9ram4y8a3q7lw4qzr52mz9pdp";
   };
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-    intltool
-    libtool
-    pkg-config
-    cmake
+  nativeBuildInputs =
+    [
+      autoconf
+      automake
+      intltool
+      libtool
+      pkg-config
+      cmake
 
-    ruby # used by sigscheme build to generate function tables
-    librsvg # used by uim build to generate png pixmaps from svg
-  ] ++ lib.optionals withQt5 [ qt5.wrapQtAppsHook ];
+      ruby # used by sigscheme build to generate function tables
+      librsvg # used by uim build to generate png pixmaps from svg
+    ]
+    ++ lib.optionals withQt5 [
+      qt5.wrapQtAppsHook
+    ];
 
   buildInputs =
     [

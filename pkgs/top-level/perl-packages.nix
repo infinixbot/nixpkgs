@@ -4674,7 +4674,9 @@ with self;
     buildInputs = [ pkgs.pcsclite ];
     nativeBuildInputs = [ pkgs.pkg-config ];
     env.NIX_CFLAGS_COMPILE = toString (
-      [ "-I${pkgs.pcsclite.dev}/include/PCSC" ]
+      [
+        "-I${pkgs.pcsclite.dev}/include/PCSC"
+      ]
       ++ lib.optionals stdenv.cc.isClang [
         "-Wno-error=implicit-int"
         "-Wno-error=int-conversion"
@@ -7943,7 +7945,9 @@ with self;
       hash = "sha256-L+XheYgqa5Jt/vChCLSiyHof+waJK88vuI5Mj0uEODw=";
     };
     buildInputs = [ TestRequires ];
-    patches = [ ../development/perl-modules/Data-Clone-fix-apostrophe-package-separator.patch ];
+    patches = [
+      ../development/perl-modules/Data-Clone-fix-apostrophe-package-separator.patch
+    ];
     meta = {
       description = "Polymorphic data cloning";
       license = with lib.licenses; [
@@ -8662,7 +8666,9 @@ with self;
       url = "mirror://cpan/authors/id/R/RJ/RJBS/Data-UUID-1.226.tar.gz";
       hash = "sha256-CT1X/6DUEalLr6+uSVaX2yb1ydAncZj+P3zyviKZZFM=";
     };
-    patches = [ ../development/perl-modules/Data-UUID-CVE-2013-4184.patch ];
+    patches = [
+      ../development/perl-modules/Data-UUID-CVE-2013-4184.patch
+    ];
     meta = {
       description = "Globally/Universally Unique Identifiers (GUIDs/UUIDs)";
       license = with lib.licenses; [ bsd0 ];
@@ -12241,7 +12247,9 @@ with self;
       hash = "sha256-VyPdePSsC00mKgXqRq9mPqANgJay6cCkNRXCEHYOHnU=";
     };
     buildInputs = [ TestUnitLite ];
-    patches = [ ../development/perl-modules/Exception-Base-remove-smartmatch-when-5.38.0.patch ];
+    patches = [
+      ../development/perl-modules/Exception-Base-remove-smartmatch-when-5.38.0.patch
+    ];
     meta = {
       description = "Lightweight exceptions";
       license = with lib.licenses; [
@@ -12448,7 +12456,9 @@ with self;
       url = "mirror://cpan/authors/id/N/NW/NWCLARK/ExtUtils-Constant-0.25.tar.gz";
       hash = "sha256-aTPQ6WO2IoHvdWEGjmrsrIxKwrR2srugmrC5D7rJ11c=";
     };
-    patches = [ ../development/perl-modules/ExtUtils-Constant-fix-indirect-method-call-in-test.patch ];
+    patches = [
+      ../development/perl-modules/ExtUtils-Constant-fix-indirect-method-call-in-test.patch
+    ];
     meta = {
       description = "Generate XS code to import C header constants";
       license = with lib.licenses; [
@@ -15388,7 +15398,9 @@ with self;
       namespaceclean
     ];
     nativeBuildInputs = lib.optional stdenv.isDarwin shortenPerlShebang;
-    patches = [ ../development/perl-modules/Hailo-fix-test-gld.patch ];
+    patches = [
+      ../development/perl-modules/Hailo-fix-test-gld.patch
+    ];
     postPatch = ''
       patchShebangs bin
     '';
@@ -23447,7 +23459,9 @@ with self;
       url = "mirror://cpan/authors/id/G/GF/GFUJI/MouseX-Getopt-0.38.tar.gz";
       hash = "sha256-3j6o70Ut2VAeqMTtqHRLciRgJgKwRpJgft19YrefA48=";
     };
-    patches = [ ../development/perl-modules/MouseX-Getopt-gld-tests.patch ];
+    patches = [
+      ../development/perl-modules/MouseX-Getopt-gld-tests.patch
+    ];
     buildInputs = [
       ModuleBuildTiny
       MouseXConfigFromFile
@@ -27807,7 +27821,9 @@ with self;
       HTTPMessage
       TryTiny
     ];
-    patches = [ ../development/perl-modules/Plack-test-replace-DES-hash-with-bcrypt.patch ];
+    patches = [
+      ../development/perl-modules/Plack-test-replace-DES-hash-with-bcrypt.patch
+    ];
     meta = {
       description = "Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)";
       homepage = "https://github.com/plack/Plack";
@@ -32268,12 +32284,16 @@ with self;
       url = "mirror://cpan/authors/id/V/VK/VKON/Tcl-1.27.tar.gz";
       hash = "sha256-+DhYd6Sp7Z89OQPS0PfNcPrDzmgyxg9gCmghzuP7WHI=";
     };
-    propagatedBuildInputs = [
-      pkgs.bwidget
-      pkgs.tcl
-      pkgs.tix
-      pkgs.tk
-    ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.CoreServices ];
+    propagatedBuildInputs =
+      [
+        pkgs.bwidget
+        pkgs.tcl
+        pkgs.tix
+        pkgs.tk
+      ]
+      ++ lib.optionals stdenv.isDarwin [
+        darwin.apple_sdk.frameworks.CoreServices
+      ];
     makeMakerFlags = lib.optionals stdenv.isLinux [
       "--tclsh=${pkgs.tcl}/bin/tclsh"
       "--nousestubs"
@@ -32598,7 +32618,9 @@ with self;
       );
 
       # TermReadKey uses itself in the build process
-      nativeBuildInputs = lib.optionals cross [ perl.perlOnBuild.pkgs.TermReadKey ];
+      nativeBuildInputs = lib.optionals cross [
+        perl.perlOnBuild.pkgs.TermReadKey
+      ];
       meta = {
         description = "Perl module for simple terminal control";
         license = with lib.licenses; [

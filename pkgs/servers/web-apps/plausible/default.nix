@@ -60,7 +60,9 @@ beamPackages.mixRelease {
     mixFodDeps
     ;
 
-  nativeBuildInputs = [ nodejs ];
+  nativeBuildInputs = [
+    nodejs
+  ];
 
   passthru = {
     tests = {

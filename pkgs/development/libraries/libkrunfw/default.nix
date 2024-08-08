@@ -44,9 +44,17 @@ stdenv.mkDerivation (finalAttrs: {
     python3.pkgs.pyelftools
   ];
 
-  buildInputs = [ elfutils ];
+  buildInputs = [
+    elfutils
+  ];
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ] ++ lib.optionals sevVariant [ "SEV=1" ];
+  makeFlags =
+    [
+      "PREFIX=${placeholder "out"}"
+    ]
+    ++ lib.optionals sevVariant [
+      "SEV=1"
+    ];
 
   # Fixes https://github.com/containers/libkrunfw/issues/55
   NIX_CFLAGS_COMPILE = lib.optionalString stdenv.targetPlatform.isAarch64 "-march=armv8-a+crypto";

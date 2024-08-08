@@ -28,7 +28,9 @@ python3Packages.buildPythonApplication {
     sha256 = "sha256-Oda+zQQJE2D3fiNWTzxYvI8cZVHG5JAoV2Wf5Z6IU3M=";
   };
 
-  patches = [ ./0001-setup.py-remove-dbus-python-from-list.patch ];
+  patches = [
+    ./0001-setup.py-remove-dbus-python-from-list.patch
+  ];
 
   propagatedBuildInputs =
     with python3Packages;

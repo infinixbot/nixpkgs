@@ -12,7 +12,9 @@ stdenv.mkDerivation {
   buildInputs = [ linuxHeaders ];
   dontUnpack = true;
   CFLAGS =
-    [ ''-DSOURCE_PROG="${sourceProg}"'' ]
+    [
+      ''-DSOURCE_PROG="${sourceProg}"''
+    ]
     ++ (
       if debug then
         [

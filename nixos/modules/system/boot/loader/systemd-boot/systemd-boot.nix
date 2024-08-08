@@ -513,7 +513,9 @@ in
 
       boot.loader.id = "systemd-boot";
 
-      requiredKernelConfig = with config.lib.kernelConfig; [ (isYes "EFI_STUB") ];
+      requiredKernelConfig = with config.lib.kernelConfig; [
+        (isYes "EFI_STUB")
+      ];
     };
   };
 }

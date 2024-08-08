@@ -24,13 +24,17 @@ stdenv.mkDerivation rec {
     hash = "sha256-i7c1jSawHshj1kaXl8tdpelIKU24okeg9K5/+ht6t2k=";
   };
 
-  patches = [ ./avoid-stack-overflow-for-lockfile-buf.patch ];
+  patches = [
+    ./avoid-stack-overflow-for-lockfile-buf.patch
+  ];
 
   passthru = {
     inherit libtorrent;
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = [
     curl
@@ -39,13 +43,17 @@ stdenv.mkDerivation rec {
   ] ++ lib.optional jsonRpcSupport nlohmann_json ++ lib.optional xmlRpcSupport xmlrpc_c;
 
   cmakeFlags =
-    [ "-DUSE_RUNTIME_CA_DETECTION=NO" ]
+    [
+      "-DUSE_RUNTIME_CA_DETECTION=NO"
+    ]
     ++ lib.optional (!jsonRpcSupport) "-DUSE_JSONRPC=NO"
     ++ lib.optional (!xmlRpcSupport) "-DUSE_XMLRPC=NO";
 
   doCheck = true;
 
-  nativeCheckInputs = [ gtest ];
+  nativeCheckInputs = [
+    gtest
+  ];
 
   prePatch = ''
     substituteInPlace src/main.cc \

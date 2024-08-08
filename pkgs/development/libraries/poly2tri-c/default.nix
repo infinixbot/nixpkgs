@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [ glib ];
+  buildInputs = [
+    glib
+  ];
 
   env.NIX_CFLAGS_COMPILE = toString [
     "--std=gnu99"

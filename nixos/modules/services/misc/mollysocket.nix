@@ -87,7 +87,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ package ];
+    environment.systemPackages = [
+      package
+    ];
 
     # see https://github.com/mollyim/mollysocket/blob/main/mollysocket.service
     systemd.services.mollysocket = {

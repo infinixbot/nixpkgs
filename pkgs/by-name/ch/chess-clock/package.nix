@@ -39,7 +39,11 @@ stdenv.mkDerivation rec {
     gsound
     gtk4
     libadwaita
-    (python3.withPackages (ps: with ps; [ pygobject3 ]))
+    (python3.withPackages (
+      ps: with ps; [
+        pygobject3
+      ]
+    ))
   ];
 
   meta = with lib; {

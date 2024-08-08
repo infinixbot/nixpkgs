@@ -31,7 +31,9 @@ buildDunePackage rec {
     json-data-encoding-bson
   ];
 
-  buildInputs = [ ppx_expect ];
+  buildInputs = [
+    ppx_expect
+  ];
 
   meta = {
     homepage = "https://gitlab.com/nomadic-labs/data-encoding";

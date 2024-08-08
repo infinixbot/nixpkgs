@@ -37,7 +37,9 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ makeWrapper ];
 
-  makeFlags = [ "UWUFETCH_VERSION=${version}" ];
+  makeFlags = [
+    "UWUFETCH_VERSION=${version}"
+  ];
 
   installFlags = [
     "DESTDIR=${placeholder "out"}"

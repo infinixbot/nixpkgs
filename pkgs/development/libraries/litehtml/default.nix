@@ -25,9 +25,13 @@ stdenv.mkDerivation (finalAttrs: {
       --replace-fail "find_dependency(gumbo)" ""
   '';
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = [ gumbo ];
+  buildInputs = [
+    gumbo
+  ];
 
   cmakeFlags = [
     "-DEXTERNAL_GUMBO=ON"

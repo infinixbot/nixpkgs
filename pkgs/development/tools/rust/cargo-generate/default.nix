@@ -25,10 +25,14 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    libgit2
-    openssl
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs =
+    [
+      libgit2
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+    ];
 
   nativeCheckInputs = [ git ];
 
@@ -44,9 +48,13 @@ rustPlatform.buildRustPackage rec {
   # Exclude some tests that don't work in sandbox:
   # - favorites_default_to_git_if_not_defined: requires network access to github.com
   # - should_canonicalize: the test assumes that it will be called from the /Users/<project_dir>/ folder on darwin variant.
-  checkFlags = [
-    "--skip=favorites::favorites_default_to_git_if_not_defined"
-  ] ++ lib.optionals stdenv.isDarwin [ "--skip=git::utils::should_canonicalize" ];
+  checkFlags =
+    [
+      "--skip=favorites::favorites_default_to_git_if_not_defined"
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      "--skip=git::utils::should_canonicalize"
+    ];
 
   env = {
     LIBGIT2_NO_VENDOR = 1;

@@ -78,7 +78,9 @@ stdenv.mkDerivation rec {
       systemd
     ];
 
-  propagatedBuildInputs = [ gsettings-desktop-schemas ];
+  propagatedBuildInputs = [
+    gsettings-desktop-schemas
+  ];
 
   mesonFlags =
     [

@@ -56,7 +56,9 @@ stdenv.mkDerivation rec {
   # work just fine though, so we disable the error here.
   env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.cc.isClang "-Wno-error=incompatible-function-pointer-types";
   configureFlags =
-    [ "--datarootdir=${placeholder "out"}" ]
+    [
+      "--datarootdir=${placeholder "out"}"
+    ]
     ++ lib.optionals withReadline [
       "--with-readline"
       "--readline=${readline-all}"

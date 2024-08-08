@@ -20,7 +20,9 @@ buildGoModule rec {
 
   doCheck = false;
 
-  buildInputs = [ chromium ];
+  buildInputs = [
+    chromium
+  ];
 
   meta = with lib; {
     description = "Archiving tool with an IM-style interface";

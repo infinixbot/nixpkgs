@@ -40,7 +40,9 @@ stdenv.mkDerivation rec {
     ++ lib.optional (defaultLoader != null) "DEFAULT_LOADER=${defaultLoader}";
 
   installTargets = [ "install-as-data" ];
-  installFlags = [ "DATATARGETDIR=$(out)/share/shim" ];
+  installFlags = [
+    "DATATARGETDIR=$(out)/share/shim"
+  ];
 
   passthru = {
     # Expose the arch suffix and target file names so that consumers

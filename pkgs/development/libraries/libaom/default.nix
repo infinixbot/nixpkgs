@@ -60,7 +60,9 @@ stdenv.mkDerivation rec {
       "-DBUILD_SHARED_LIBS=ON"
       "-DENABLE_TESTS=OFF"
     ]
-    ++ lib.optionals enableVmaf [ "-DCONFIG_TUNE_VMAF=1" ]
+    ++ lib.optionals enableVmaf [
+      "-DCONFIG_TUNE_VMAF=1"
+    ]
     ++ lib.optionals (isCross && !stdenv.hostPlatform.isx86) [
       "-DCMAKE_ASM_COMPILER=${stdenv.cc.targetPrefix}as"
     ]

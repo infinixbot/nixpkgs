@@ -379,12 +379,21 @@ let
       (enableFeature (!dontStrip) "library-stripping")
       (enableFeature (!dontStrip) "executable-stripping")
     ]
-    ++ optionals isGhcjs [ "--ghcjs" ]
+    ++ optionals isGhcjs [
+      "--ghcjs"
+    ]
     ++ optionals isCross (
-      [ "--configure-option=--host=${stdenv.hostPlatform.config}" ] ++ crossCabalFlags
+      [
+        "--configure-option=--host=${stdenv.hostPlatform.config}"
+      ]
+      ++ crossCabalFlags
     )
-    ++ optionals enableSeparateBinOutput [ "--bindir=${binDir}" ]
-    ++ optionals (doHaddockInterfaces && isLibrary) [ "--ghc-option=-haddock" ];
+    ++ optionals enableSeparateBinOutput [
+      "--bindir=${binDir}"
+    ]
+    ++ optionals (doHaddockInterfaces && isLibrary) [
+      "--ghc-option=-haddock"
+    ];
 
   postPhases = optional doInstallIntermediates "installIntermediatesPhase";
 

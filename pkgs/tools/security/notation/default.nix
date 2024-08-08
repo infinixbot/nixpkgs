@@ -20,7 +20,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-REJPSBLXzIPAmxwzckufTqJvZCWUUkJLBmHTx2nv9QM=";
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   # This is a Go sub-module and cannot be built directly (e2e tests).
   excludedPackages = [ "./test" ];

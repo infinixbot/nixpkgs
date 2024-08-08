@@ -20,9 +20,13 @@ stdenv.mkDerivation (finalAttrs: {
     "man"
   ];
 
-  patches = [ ./01-cygwin.patch ];
+  patches = [
+    ./01-cygwin.patch
+  ];
 
-  propagatedBuildInputs = [ ncurses ];
+  propagatedBuildInputs = [
+    ncurses
+  ];
 
   # GCC automatically include `stdc-predefs.h` while Clang does not do this by
   # default. While Musl is ISO 10646 compliant, it does not define

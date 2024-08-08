@@ -84,7 +84,9 @@ stdenv.mkDerivation rec {
     hicolor-icon-theme
   ] ++ perlModules;
 
-  makeFlags = [ "prefix=${placeholder "out"}" ];
+  makeFlags = [
+    "prefix=${placeholder "out"}"
+  ];
 
   postPatch = ''
     patchShebangs po2mo.sh

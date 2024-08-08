@@ -78,7 +78,9 @@ python3.pkgs.buildPythonApplication rec {
     mkdocstrings-python
   ];
 
-  nativeBuildInputs = [ python3.pkgs.mkdocs ];
+  nativeBuildInputs = [
+    python3.pkgs.mkdocs
+  ];
 
   postBuild = ''
     PYTHONPATH=$PYTHONPATH:netbox/

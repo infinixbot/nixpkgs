@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
     "dev"
   ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs =
     [
@@ -46,7 +48,9 @@ stdenv.mkDerivation rec {
       avahi
       gnutls
     ]
-    ++ lib.optionals withPAMSupport [ pam ];
+    ++ lib.optionals withPAMSupport [
+      pam
+    ];
 
   # testing requires some networking
   # doCheck = true;

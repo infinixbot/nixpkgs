@@ -16,11 +16,17 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-0mjnZiF8DxVbI8Lr12b7jzn+x+mn6Mel8LaIy8heEdI=";
   };
 
-  pythonRelaxDeps = [ "urllib3" ];
+  pythonRelaxDeps = [
+    "urllib3"
+  ];
 
-  pythonRemoveDeps = [ "bs4" ];
+  pythonRemoveDeps = [
+    "bs4"
+  ];
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     beautifulsoup4
@@ -29,7 +35,9 @@ python3.pkgs.buildPythonApplication rec {
     xlsxwriter
   ];
 
-  pythonImportsCheck = [ "rdwatool" ];
+  pythonImportsCheck = [
+    "rdwatool"
+  ];
 
   meta = with lib; {
     description = "Tool to extract information from a Microsoft Remote Desktop Web Access (RDWA) application";

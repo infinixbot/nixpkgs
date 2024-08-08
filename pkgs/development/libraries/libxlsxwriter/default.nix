@@ -33,7 +33,9 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  nativeCheckInputs = [ python3.pkgs.pytest ];
+  nativeCheckInputs = [
+    python3.pkgs.pytest
+  ];
 
   checkTarget = "test";
 

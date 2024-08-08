@@ -45,7 +45,9 @@ python3.pkgs.buildPythonApplication rec {
     qtwayland
   ];
 
-  nativeBuildInputs = [ wrapQtAppsHook ];
+  nativeBuildInputs = [
+    wrapQtAppsHook
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     configobj

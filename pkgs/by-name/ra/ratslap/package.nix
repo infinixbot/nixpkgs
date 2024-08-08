@@ -26,7 +26,9 @@ stdenv.mkDerivation (finalAttrs: {
     git
   ];
 
-  buildInputs = [ libusb1 ];
+  buildInputs = [
+    libusb1
+  ];
 
   preBuild = ''
     makeFlagsArray+=(

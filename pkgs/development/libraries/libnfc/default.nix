@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
     readline
   ];
 
-  configureFlags = [ "sysconfdir=/etc" ];
+  configureFlags = [
+    "sysconfdir=/etc"
+  ];
 
   cmakeFlags = lib.optionals stdenv.isDarwin [
     "-DLIBNFC_DRIVER_PN532_I2C=OFF"

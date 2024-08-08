@@ -19,7 +19,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [ cmake ];
 
-  cmakeFlags = [ (lib.cmakeBool "BUILD_SHARED_LIBS" true) ];
+  cmakeFlags = [
+    (lib.cmakeBool "BUILD_SHARED_LIBS" true)
+  ];
 
   postPatch = ''
     patchShebangs tools/build

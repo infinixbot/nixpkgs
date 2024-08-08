@@ -168,7 +168,9 @@ stdenv.mkDerivation rec {
           ];
         builtin = [ "setopt" ];
       };
-      execer = [ "cannot:${iconv}/bin/iconv" ];
+      execer = [
+        "cannot:${iconv}/bin/iconv"
+      ];
     }}
     ${resholve.phraseSolution "lesscomplete" {
       scripts = [ "bin/lesscomplete" ];

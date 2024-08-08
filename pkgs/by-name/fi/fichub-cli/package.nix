@@ -15,7 +15,9 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-MTExXpuCwi/IfNDUVLMcxfFRwHHNfGJerHkHnh6/hls=";
   };
 
-  build-system = with python3Packages; [ setuptools ];
+  build-system = with python3Packages; [
+    setuptools
+  ];
 
   dependencies = with python3Packages; [
     platformdirs
@@ -29,9 +31,13 @@ python3Packages.buildPythonApplication rec {
     typer
   ];
 
-  pythonImportsCheck = [ "fichub_cli" ];
+  pythonImportsCheck = [
+    "fichub_cli"
+  ];
 
-  nativeCheckInputs = with python3Packages; [ pytestCheckHook ];
+  nativeCheckInputs = with python3Packages; [
+    pytestCheckHook
+  ];
 
   # The package tries to create a file under the home directory on import
   preCheck = ''

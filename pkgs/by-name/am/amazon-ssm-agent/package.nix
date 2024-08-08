@@ -62,7 +62,13 @@ buildGoModule rec {
     ./0002-version-gen-don-t-use-unnecessary-constants.patch
   ];
 
-  nativeBuildInputs = [ makeWrapper ] ++ lib.optionals stdenv.isDarwin [ darwin.DarwinTools ];
+  nativeBuildInputs =
+    [
+      makeWrapper
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.DarwinTools
+    ];
 
   # See the list https://github.com/aws/amazon-ssm-agent/blob/3.2.2143.0/makefile#L121-L147
   # The updater is not built because it cannot work on NixOS

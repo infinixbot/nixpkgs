@@ -19,9 +19,13 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     hash = "sha256-AUuquYXRwI4JvEiUdx/l3Tk/kxENrXG1RtzBzrsrZyg=";
   };
 
-  nativeBuildInputs = [ makeBinaryWrapper ];
+  nativeBuildInputs = [
+    makeBinaryWrapper
+  ];
 
-  buildInputs = [ jre_headless ];
+  buildInputs = [
+    jre_headless
+  ];
 
   installPhase = ''
     runHook preInstall

@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-xyVEvD8s1J9Wj9NB4Gg+0ldvde7M8IVpzCOTttC1IY0=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
   buildInputs = [
     fontconfig
     libX11

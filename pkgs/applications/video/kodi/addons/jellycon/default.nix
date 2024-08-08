@@ -26,7 +26,9 @@ buildKodiAddon rec {
     sha256 = "sha256-60my7Y60KV5WWALQiamnmAJZJi82cV21rIGYPiV7T+A=";
   };
 
-  nativeBuildInputs = [ python ];
+  nativeBuildInputs = [
+    python
+  ];
 
   prePatch = ''
     # ZIP does not support timestamps before 1980 - https://bugs.python.org/issue34097

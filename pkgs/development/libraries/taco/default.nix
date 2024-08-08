@@ -37,7 +37,9 @@ stdenv.mkDerivation rec {
 
   propagatedBuildInputs = lib.optional enablePython pyEnv;
 
-  cmakeFlags = [ "-DOPENMP=ON" ] ++ lib.optional enablePython "-DPYTHON=ON";
+  cmakeFlags = [
+    "-DOPENMP=ON"
+  ] ++ lib.optional enablePython "-DPYTHON=ON";
 
   postInstall = lib.strings.optionalString enablePython ''
     mkdir -p $out/${python.sitePackages}

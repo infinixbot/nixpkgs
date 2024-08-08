@@ -39,11 +39,17 @@ stdenv.mkDerivation rec {
     "-DCCTAG_BUILD_APPS=OFF"
   ];
 
-  patches = [ ./cmake-install-include-dir.patch ];
+  patches = [
+    ./cmake-install-include-dir.patch
+  ];
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  propagatedBuildInputs = [ tbb ];
+  propagatedBuildInputs = [
+    tbb
+  ];
 
   buildInputs = [
     boost179

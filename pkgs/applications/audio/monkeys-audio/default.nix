@@ -14,7 +14,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-AxRADWS5Ka62NLj6IqX5uF39mPxoWy+zQZQ7A2+DM7Y=";
     stripRoot = false;
   };
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   meta = with lib; {
     description = "APE codec and decompressor";

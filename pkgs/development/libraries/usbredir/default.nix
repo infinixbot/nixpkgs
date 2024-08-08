@@ -27,9 +27,13 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [ glib ];
+  buildInputs = [
+    glib
+  ];
 
-  propagatedBuildInputs = [ libusb1 ];
+  propagatedBuildInputs = [
+    libusb1
+  ];
 
   mesonFlags = [
     "-Dgit_werror=disabled"

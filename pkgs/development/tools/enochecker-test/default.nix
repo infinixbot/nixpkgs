@@ -33,7 +33,9 @@ buildPythonApplication rec {
     hash = "sha256-M0RTstFePU7O51YVEncVDuuR6F7R8mfdKbO0j7k/o8Q=";
   };
 
-  nativeBuildInputs = [ ];
+  nativeBuildInputs =
+    [
+    ];
 
   pythonRelaxDeps = true;
 

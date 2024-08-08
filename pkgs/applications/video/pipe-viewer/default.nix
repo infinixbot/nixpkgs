@@ -36,7 +36,9 @@ let
       TextParsewords
       UnicodeLineBreak
     ]
-    ++ lib.optionals withGtk3 [ FileShareDir ]
+    ++ lib.optionals withGtk3 [
+      FileShareDir
+    ]
   );
 in
 buildPerlModule rec {
@@ -66,7 +68,9 @@ buildPerlModule rec {
     substituteInPlace Build.PL --replace 'my $gtk ' 'my $gtk = 1;#'
   '';
 
-  nativeCheckInputs = [ TestPod ];
+  nativeCheckInputs = [
+    TestPod
+  ];
 
   dontWrapGApps = true;
 

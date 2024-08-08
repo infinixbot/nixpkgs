@@ -31,7 +31,9 @@ let
   # NOTE: Update the default GPU targets on every update
   gfx80 =
     (rocblas.override {
-      gpuTargets = [ "gfx803" ];
+      gpuTargets = [
+        "gfx803"
+      ];
     }).overrideAttrs
       { pname = "rocblas-tensile-gfx80"; };
 
@@ -84,9 +86,16 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "rocblas";
   version = "5.7.1";
 
-  outputs = [
-    "out"
-  ] ++ lib.optionals buildTests [ "test" ] ++ lib.optionals buildBenchmarks [ "benchmark" ];
+  outputs =
+    [
+      "out"
+    ]
+    ++ lib.optionals buildTests [
+      "test"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "benchmark"
+    ];
 
   src = fetchFromGitHub {
     owner = "ROCm";
@@ -102,20 +111,26 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    [ python3 ]
+    [
+      python3
+    ]
     ++ lib.optionals buildTensile [
       msgpack
       libxml2
       python3Packages.msgpack
       python3Packages.joblib
     ]
-    ++ lib.optionals buildTests [ gtest ]
+    ++ lib.optionals buildTests [
+      gtest
+    ]
     ++ lib.optionals (buildTests || buildBenchmarks) [
       gfortran
       openmp
       amd-blis
     ]
-    ++ lib.optionals (buildTensile || buildTests || buildBenchmarks) [ python3Packages.pyyaml ];
+    ++ lib.optionals (buildTensile || buildTests || buildBenchmarks) [
+      python3Packages.pyyaml
+    ];
 
   cmakeFlags =
     [
@@ -140,9 +155,15 @@ stdenv.mkDerivation (finalAttrs: {
       "-DTensile_LAZY_LIBRARY_LOADING=${if tensileLazyLib then "ON" else "OFF"}"
       "-DTensile_LIBRARY_FORMAT=${tensileLibFormat}"
     ]
-    ++ lib.optionals buildTests [ "-DBUILD_CLIENTS_TESTS=ON" ]
-    ++ lib.optionals buildBenchmarks [ "-DBUILD_CLIENTS_BENCHMARKS=ON" ]
-    ++ lib.optionals (buildTests || buildBenchmarks) [ "-DCMAKE_CXX_FLAGS=-I${amd-blis}/include/blis" ];
+    ++ lib.optionals buildTests [
+      "-DBUILD_CLIENTS_TESTS=ON"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "-DBUILD_CLIENTS_BENCHMARKS=ON"
+    ]
+    ++ lib.optionals (buildTests || buildBenchmarks) [
+      "-DCMAKE_CXX_FLAGS=-I${amd-blis}/include/blis"
+    ];
 
   postPatch =
     lib.optionalString (finalAttrs.pname != "rocblas") ''

@@ -79,7 +79,9 @@ stdenv.mkDerivation rec {
     "--enable-post-processing"
   ];
 
-  makeFlagsArray = [ "BORINGSSL_LIBS=-L${lib.getLib boringssl}/lib" ];
+  makeFlagsArray = [
+    "BORINGSSL_LIBS=-L${lib.getLib boringssl}/lib"
+  ];
 
   outputs = [
     "out"

@@ -17,7 +17,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-W3kS6Kkmp8iWMOYFL7r1GyjSQvFotBXQCuTMK0vyHQ8=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ poetry-core ];
+  nativeBuildInputs = with python3.pkgs; [
+    poetry-core
+  ];
 
   pythonRelaxDeps = [
     "bidict"

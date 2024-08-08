@@ -26,12 +26,16 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    openssl
-    gmp
-    libmpc
-    mpfr
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.SystemConfiguration ];
+  buildInputs =
+    [
+      openssl
+      gmp
+      libmpc
+      mpfr
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.SystemConfiguration
+    ];
 
   CARGO_FEATURE_USE_SYSTEM_LIBS = true;
 

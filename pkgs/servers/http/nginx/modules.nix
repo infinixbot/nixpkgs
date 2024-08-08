@@ -47,7 +47,9 @@ let
       hash = "sha256-AzMhTSzmk3osSYy2q28/hko1v2AOTnY/dP5IprqGlQo=";
     };
 
-    patches = [ "${src}/patch/${patchName}.patch" ];
+    patches = [
+      "${src}/patch/${patchName}.patch"
+    ];
 
     meta = with lib; {
       description = "Forward proxy module for CONNECT request handling";

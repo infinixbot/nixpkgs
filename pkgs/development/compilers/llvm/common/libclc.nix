@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
     "dev"
   ];
 
-  patches = [ ./libclc/libclc-gnu-install-dirs.patch ];
+  patches = [
+    ./libclc/libclc-gnu-install-dirs.patch
+  ];
 
   # cmake expects all required binaries to be in the same place, so it will not be able to find clang without the patch
   postPatch =

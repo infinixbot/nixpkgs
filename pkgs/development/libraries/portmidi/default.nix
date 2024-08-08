@@ -47,7 +47,9 @@ stdenv.mkDerivation rec {
     cmake
   ];
   buildInputs =
-    lib.optionals stdenv.isLinux [ alsa-lib ]
+    lib.optionals stdenv.isLinux [
+      alsa-lib
+    ]
     ++ lib.optionals stdenv.isDarwin [
       Carbon
       CoreAudio

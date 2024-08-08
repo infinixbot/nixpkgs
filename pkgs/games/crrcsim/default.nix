@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
     libjpeg
   ];
 
-  patches = [ ./gcc6.patch ];
+  patches = [
+    ./gcc6.patch
+  ];
 
   meta = {
     description = "Model-airplane flight simulator";

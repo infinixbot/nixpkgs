@@ -23,7 +23,9 @@ import ./make-test-python.nix (
                   inputs = [
                     {
                       path = "http://127.0.0.1:8080";
-                      roles = [ "record" ];
+                      roles = [
+                        "record"
+                      ];
                     }
                   ];
                 };
@@ -35,8 +37,12 @@ import ./make-test-python.nix (
 
           systemd.services.video-stream = {
             description = "Start a test stream that frigate can capture";
-            before = [ "frigate.service" ];
-            wantedBy = [ "multi-user.target" ];
+            before = [
+              "frigate.service"
+            ];
+            wantedBy = [
+              "multi-user.target"
+            ];
             serviceConfig = {
               DynamicUser = true;
               ExecStart = "${lib.getBin pkgs.ffmpeg-headless}/bin/ffmpeg -re -f lavfi -i smptebars=size=800x600:rate=10 -f mpegts -listen 1 http://0.0.0.0:8080";

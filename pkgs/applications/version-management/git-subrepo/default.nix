@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     installShellFiles
   ];
 
-  buildInputs = [ git ];
+  buildInputs = [
+    git
+  ];
 
   makeFlags = [
     "PREFIX=${placeholder "out"}"

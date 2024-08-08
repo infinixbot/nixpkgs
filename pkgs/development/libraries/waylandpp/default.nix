@@ -40,7 +40,9 @@ stdenv.mkDerivation rec {
   ];
 
   cmakeFlags =
-    [ "-DCMAKE_INSTALL_DATADIR=${placeholder "dev"}" ]
+    [
+      "-DCMAKE_INSTALL_DATADIR=${placeholder "dev"}"
+    ]
     ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
       "-DWAYLAND_SCANNERPP=${buildPackages.waylandpp}/bin/wayland-scanner++"
     ];

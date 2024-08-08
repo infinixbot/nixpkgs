@@ -57,7 +57,9 @@ rustPlatform.buildRustPackage rec {
     patchShebangs tests
   '';
 
-  patches = [ ./fix-just-path-in-tests.patch ];
+  patches = [
+    ./fix-just-path-in-tests.patch
+  ];
 
   postBuild = ''
     cargo run --package generate-book

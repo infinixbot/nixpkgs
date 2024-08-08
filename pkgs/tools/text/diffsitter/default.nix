@@ -44,9 +44,13 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "sha256-re0FRoyENpo+BF88U9ARuB05W03Slgm4nw1yxcpOA4o=";
 
   buildNoDefaultFeatures = true;
-  buildFeatures = [ "dynamic-grammar-libs" ];
+  buildFeatures = [
+    "dynamic-grammar-libs"
+  ];
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   postInstall = ''
     # completions are not yet implemented

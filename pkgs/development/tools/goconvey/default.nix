@@ -24,7 +24,9 @@ buildGoModule rec {
     "-w"
   ];
 
-  checkFlags = [ "-short" ];
+  checkFlags = [
+    "-short"
+  ];
 
   meta = {
     description = "Go testing in the browser. Integrates with `go test`. Write behavioral tests in Go";

@@ -23,7 +23,10 @@ appimageTools.wrapType2 {
 
   src = "${src}/Keet.AppImage";
 
-  extraPkgs = pkgs: with pkgs; [ gtk4 ];
+  extraPkgs =
+    pkgs: with pkgs; [
+      gtk4
+    ];
 
   extraInstallCommands = ''
     install -m 444 -D ${appimageContents}/Keet.desktop -t $out/share/applications

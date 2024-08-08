@@ -45,6 +45,8 @@ stdenv.mkDerivation rec {
     homepage = "https://osmocom.org/projects/libosmo-sccp";
     license = licenses.gpl2Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [ markuskowa ];
+    maintainers = with maintainers; [
+      markuskowa
+    ];
   };
 }

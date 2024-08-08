@@ -112,7 +112,9 @@ let
       "-D HAVE_LONG_LONG_STUB=1"
       "-D HAVE_SETJMP=1"
     ];
-    libtccBuildOptions = [ "-D HAVE_LONG_LONG_STUB=1" ];
+    libtccBuildOptions = [
+      "-D HAVE_LONG_LONG_STUB=1"
+    ];
   };
 
   tinycc-boot1 = buildTinyccMes {
@@ -124,7 +126,9 @@ let
       "-D HAVE_LONG_LONG=1"
       "-D HAVE_SETJMP=1"
     ];
-    libtccBuildOptions = [ "-D HAVE_LONG_LONG=1" ];
+    libtccBuildOptions = [
+      "-D HAVE_LONG_LONG=1"
+    ];
   };
 
   tinycc-boot2 = buildTinyccMes {

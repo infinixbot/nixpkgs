@@ -23,7 +23,9 @@ python3.pkgs.buildPythonApplication rec {
     "typer"
   ];
 
-  nativeBuildInputs = with python3.pkgs; [ poetry-core ];
+  nativeBuildInputs = with python3.pkgs; [
+    poetry-core
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     impacket
@@ -33,7 +35,9 @@ python3.pkgs.buildPythonApplication rec {
     typer
   ];
 
-  pythonImportsCheck = [ "pre2k" ];
+  pythonImportsCheck = [
+    "pre2k"
+  ];
 
   meta = with lib; {
     description = "Tool to query for the existence of pre-windows 2000 computer objects";

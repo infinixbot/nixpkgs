@@ -75,7 +75,9 @@ in
       description = "Mycelium network";
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
-      restartTriggers = [ cfg.keyFile ];
+      restartTriggers = [
+        cfg.keyFile
+      ];
 
       unitConfig.Documentation = "https://github.com/threefoldtech/mycelium";
 

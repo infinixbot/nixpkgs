@@ -89,7 +89,9 @@ in
         DynamicUser = true;
         User = "gocamo";
         Group = "gocamo";
-        LoadCredential = [ "hmac:${cfg.keyFile}" ];
+        LoadCredential = [
+          "hmac:${cfg.keyFile}"
+        ];
       };
     };
   };

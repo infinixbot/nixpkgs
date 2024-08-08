@@ -68,7 +68,9 @@ stdenvNoCC.mkDerivation rec {
 
   inherit src version;
 
-  patches = [ ./Remove-git-reset.patch ];
+  patches = [
+    ./Remove-git-reset.patch
+  ];
 
   nativeBuildInputs = [
     cmake

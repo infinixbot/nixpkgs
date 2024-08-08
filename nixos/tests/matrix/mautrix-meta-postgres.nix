@@ -27,7 +27,9 @@ import ../make-test-python.nix (
               }
             ];
 
-            ensureDatabases = [ "mautrix-meta-instagram" ];
+            ensureDatabases = [
+              "mautrix-meta-instagram"
+            ];
           };
 
           systemd.services.mautrix-meta-instagram = {
@@ -48,7 +50,9 @@ import ../make-test-python.nix (
               listeners = [
                 {
                   # The default but tls=false
-                  bind_addresses = [ "0.0.0.0" ];
+                  bind_addresses = [
+                    "0.0.0.0"
+                  ];
                   port = 8008;
                   resources = [
                     {

@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
 
   CXXFLAGS = [ "-std=c++14" ];
 
-  configureFlags = [ "--disable-build-html" ];
+  configureFlags = [
+    "--disable-build-html"
+  ];
 
   postInstall = ''
     # Disable html help

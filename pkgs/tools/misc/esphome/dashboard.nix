@@ -47,7 +47,9 @@ buildPythonPackage rec {
   # no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "esphome_dashboard" ];
+  pythonImportsCheck = [
+    "esphome_dashboard"
+  ];
 
   meta = with lib; {
     description = "ESPHome dashboard";

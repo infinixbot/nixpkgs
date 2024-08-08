@@ -30,7 +30,9 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ];
   buildInputs =
-    [ openssl ]
+    [
+      openssl
+    ]
     ++ lib.optional stdenv.isDarwin [
       libiconv
       darwin.apple_sdk.frameworks.CoreServices

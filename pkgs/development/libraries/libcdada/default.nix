@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-fgH4gl8Uq8mY9gxa968suU66VJYnFzpSLj4JGpJcJA4=";
   };
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   configureFlags = [
     "--without-tests"

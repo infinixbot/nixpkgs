@@ -20,11 +20,17 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    openssl
-  ] ++ lib.optionals stdenv.hostPlatform.isMinGW [ windows.mingw_w64_pthreads ];
+  buildInputs =
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isMinGW [
+      windows.mingw_w64_pthreads
+    ];
 
-  patches = lib.optionals stdenv.hostPlatform.isMinGW [ ./no-msvc-compat-headers.patch ];
+  patches = lib.optionals stdenv.hostPlatform.isMinGW [
+    ./no-msvc-compat-headers.patch
+  ];
 
   cmakeFlags = [
     # the cmake package does not handle absolute CMAKE_INSTALL_INCLUDEDIR correctly

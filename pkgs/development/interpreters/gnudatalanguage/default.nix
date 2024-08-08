@@ -154,9 +154,13 @@ stdenv.mkDerivation rec {
     ++ lib.optional enableLibtirpc hdf4-custom.libtirpc
     ++ lib.optional enableSzip szip;
 
-  propagatedBuildInputs = [ (python3.withPackages (ps: with ps; [ numpy ])) ];
+  propagatedBuildInputs = [
+    (python3.withPackages (ps: with ps; [ numpy ]))
+  ];
 
-  nativeBuildInputs = [ cmake ] ++ lib.optional enableWX wrapGAppsHook3;
+  nativeBuildInputs = [
+    cmake
+  ] ++ lib.optional enableWX wrapGAppsHook3;
 
   cmakeFlags =
     lib.optional (!enableHDF4) "-DHDF=OFF"

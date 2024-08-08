@@ -671,7 +671,9 @@ in
         # https://github.com/NixOS/nixpkgs/issues/106093
         kernelParams = lib.optionals (!config.boot.zfs.allowHibernation) [ "nohibernate" ];
 
-        extraModulePackages = [ cfgZfs.modulePackage ];
+        extraModulePackages = [
+          cfgZfs.modulePackage
+        ];
       };
 
       boot.initrd = mkIf inInitrd {

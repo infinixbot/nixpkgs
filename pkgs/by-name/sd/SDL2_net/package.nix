@@ -30,7 +30,9 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.libobjc ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.libobjc
+  ];
 
   propagatedBuildInputs = [ SDL2 ];
 

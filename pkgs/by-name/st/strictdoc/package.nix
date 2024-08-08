@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-0X74Lv25pUdOUgQzqQU6p+fjuxhC/JqfKEFI7c5t67U=";
   };
 
-  nativeBuildInputs = [ python3.pkgs.hatchling ];
+  nativeBuildInputs = [
+    python3.pkgs.hatchling
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     beautifulsoup4

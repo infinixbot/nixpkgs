@@ -36,7 +36,9 @@ stdenv.mkDerivation (finalAttrs: {
     "man"
   ];
 
-  mesonFlags = [ "-Ddocs=disabled" ];
+  mesonFlags = [
+    "-Ddocs=disabled"
+  ];
 
   strictDeps = true;
 

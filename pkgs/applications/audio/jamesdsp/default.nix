@@ -50,7 +50,9 @@ stdenv.mkDerivation (finalAttrs: {
       qtsvg
       qtwayland
     ]
-    ++ lib.optionals usePipewire [ pipewire ]
+    ++ lib.optionals usePipewire [
+      pipewire
+    ]
     ++ lib.optionals usePulseaudio [
       pulseaudio
       gst_all_1.gst-plugins-base

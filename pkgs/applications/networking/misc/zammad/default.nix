@@ -85,7 +85,9 @@ let
         buildFlags = [ "--without-imlib2-config" ];
       };
       mini_racer = attrs: {
-        buildFlags = [ "--with-v8-dir=\"${nodejs.libv8}\"" ];
+        buildFlags = [
+          "--with-v8-dir=\"${nodejs.libv8}\""
+        ];
         dontBuild = false;
         postPatch = ''
           substituteInPlace ext/mini_racer_extension/extconf.rb \
@@ -126,7 +128,9 @@ stdenv.mkDerivation {
     cacert
   ];
 
-  nativeBuildInputs = [ redis ];
+  nativeBuildInputs = [
+    redis
+  ];
 
   RAILS_ENV = "production";
 

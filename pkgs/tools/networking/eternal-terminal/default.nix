@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-vukh3a6SxHaVCT4hmoVt4hEGB8Sqylu53Nz8fgBWkTM";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = [
     gflags
@@ -43,7 +45,9 @@ stdenv.mkDerivation rec {
     "-DDISABLE_CRASH_LOG=TRUE"
   ];
 
-  CXXFLAGS = lib.optionals stdenv.cc.isClang [ "-std=c++17" ];
+  CXXFLAGS = lib.optionals stdenv.cc.isClang [
+    "-std=c++17"
+  ];
 
   doCheck = true;
 

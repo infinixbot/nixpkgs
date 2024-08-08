@@ -26,7 +26,9 @@ stdenv.mkDerivation rec {
     export GNULIBHEADERS_OVERRIDE_WINT_T=0
   '';
 
-  configureFlags = [ "--${if withShishi then "enable" else "disable"}-kerberos5" ];
+  configureFlags = [
+    "--${if withShishi then "enable" else "disable"}-kerberos5"
+  ];
 
   # krb5context test uses certificates that expired on 2024-07-11.
   # Reported to bug-gss@gnu.org with Message-ID: <87cyngavtt.fsf@alyssa.is>.

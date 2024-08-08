@@ -24,7 +24,9 @@ rustPlatform.buildRustPackage rec {
     "lib"
   ];
 
-  nativeBuildInputs = [ rust-cbindgen ];
+  nativeBuildInputs = [
+    rust-cbindgen
+  ];
 
   postInstall = ''
     cbindgen -o $dev/include/orz.h

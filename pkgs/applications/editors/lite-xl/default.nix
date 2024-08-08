@@ -29,14 +29,20 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [
-    freetype
-    lua5_4
-    pcre2
-    SDL2
-  ] ++ lib.optionals stdenv.isDarwin [ Foundation ];
+  buildInputs =
+    [
+      freetype
+      lua5_4
+      pcre2
+      SDL2
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Foundation
+    ];
 
-  mesonFlags = [ "-Duse_system_lua=true" ];
+  mesonFlags = [
+    "-Duse_system_lua=true"
+  ];
 
   meta = with lib; {
     description = "Lightweight text editor written in Lua";

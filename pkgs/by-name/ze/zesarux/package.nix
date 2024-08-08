@@ -26,7 +26,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-1PWFpUNekDKyCUNuV/cNUZ7hWGZBMu0nxswD6pap8pg=";
   };
 
-  nativeBuildInputs = [ which ];
+  nativeBuildInputs = [
+    which
+  ];
 
   buildInputs = [
     SDL2

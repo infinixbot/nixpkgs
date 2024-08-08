@@ -38,7 +38,9 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = [ gtk3 ];
+  buildInputs = [
+    gtk3
+  ];
 
   enableParallelBuilding = true;
 
@@ -53,6 +55,8 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "rdacheck";
     maintainers = with maintainers; [ OPNA2608 ];
     platforms = platforms.linux;
-    pkgConfigModules = [ "rda" ];
+    pkgConfigModules = [
+      "rda"
+    ];
   };
 })

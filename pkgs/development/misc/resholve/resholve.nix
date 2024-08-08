@@ -40,7 +40,9 @@ python27.pkgs.buildPythonApplication {
     sedparse
   ];
 
-  makeWrapperArgs = [ "--prefix PATH : ${lib.makeBinPath [ gawk ]}" ];
+  makeWrapperArgs = [
+    "--prefix PATH : ${lib.makeBinPath [ gawk ]}"
+  ];
 
   postPatch = ''
     for file in setup.cfg _resholve/version.py; do

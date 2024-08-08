@@ -117,7 +117,9 @@ ocamlPackages.buildDunePackage rec {
       stdint
       tezt
     ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+    ];
 
   nativeCheckInputs = [
     cacert

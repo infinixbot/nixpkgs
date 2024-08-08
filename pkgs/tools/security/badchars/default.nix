@@ -20,7 +20,9 @@ python3.pkgs.buildPythonApplication rec {
       --replace-fail "argparse" ""
   '';
 
-  build-system = with python3.pkgs; [ setuptools ];
+  build-system = with python3.pkgs; [
+    setuptools
+  ];
 
   # no tests are available and it can't be imported (it's only a script, not a module)
   doCheck = false;

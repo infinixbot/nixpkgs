@@ -35,7 +35,9 @@ buildGoModule rec {
     runHook postPatch
   '';
 
-  runtimeDependencies = [ coreutils ];
+  runtimeDependencies = [
+    coreutils
+  ];
 
   passthru.updateScript = nix-update-script { };
 

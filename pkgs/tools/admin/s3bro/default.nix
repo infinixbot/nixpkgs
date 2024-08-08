@@ -29,7 +29,9 @@ python3.pkgs.buildPythonApplication rec {
   # No tests
   doCheck = false;
 
-  pythonImportsCheck = [ "s3bro" ];
+  pythonImportsCheck = [
+    "s3bro"
+  ];
 
   meta = with lib; {
     description = "s3 CLI tool";

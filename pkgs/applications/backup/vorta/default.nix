@@ -27,7 +27,9 @@ python3Packages.buildPythonApplication rec {
     wrapQtAppsHook
   ];
 
-  buildInputs = lib.optionals stdenv.isLinux [ qtwayland ];
+  buildInputs = lib.optionals stdenv.isLinux [
+    qtwayland
+  ];
 
   propagatedBuildInputs = with python3Packages; [
     peewee

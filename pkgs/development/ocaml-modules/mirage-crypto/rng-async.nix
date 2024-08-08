@@ -14,7 +14,9 @@ buildDunePackage {
 
   duneVersion = "3";
 
-  buildInputs = [ dune-configurator ];
+  buildInputs = [
+    dune-configurator
+  ];
 
   propagatedBuildInputs = [
     async

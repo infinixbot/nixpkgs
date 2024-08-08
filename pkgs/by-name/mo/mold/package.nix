@@ -38,18 +38,26 @@ stdenv.mkDerivation rec {
     ninja
   ];
 
-  buildInputs = [
-    tbb
-    zlib
-    zstd
-  ] ++ lib.optionals (!stdenv.isDarwin) [ mimalloc ];
+  buildInputs =
+    [
+      tbb
+      zlib
+      zstd
+    ]
+    ++ lib.optionals (!stdenv.isDarwin) [
+      mimalloc
+    ];
 
   cmakeFlags = [
     "-DMOLD_USE_SYSTEM_MIMALLOC:BOOL=ON"
     "-DMOLD_USE_SYSTEM_TBB:BOOL=ON"
   ];
 
-  env.NIX_CFLAGS_COMPILE = toString (lib.optionals stdenv.isDarwin [ "-faligned-allocation" ]);
+  env.NIX_CFLAGS_COMPILE = toString (
+    lib.optionals stdenv.isDarwin [
+      "-faligned-allocation"
+    ]
+  );
 
   passthru = {
     updateScript = nix-update-script { };

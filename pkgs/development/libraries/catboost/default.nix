@@ -32,7 +32,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-2dfCCCa0LheytkLRbYuBd25M320f1kbhBWKIVjslor0=";
   };
 
-  patches = [ ./remove-conan.patch ];
+  patches = [
+    ./remove-conan.patch
+  ];
 
   postPatch = ''
     substituteInPlace cmake/common.cmake \
@@ -63,15 +65,24 @@ stdenv.mkDerivation (finalAttrs: {
       ragel
       yasm
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ cctools ]
-    ++ lib.optionals cudaSupport (with cudaPackages; [ cuda_nvcc ]);
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      cctools
+    ]
+    ++ lib.optionals cudaSupport (
+      with cudaPackages;
+      [
+        cuda_nvcc
+      ]
+    );
 
   buildInputs =
     [
       openssl
       zlib
     ]
-    ++ lib.optionals stdenv.isDarwin [ libiconv ]
+    ++ lib.optionals stdenv.isDarwin [
+      libiconv
+    ]
     ++ lib.optionals cudaSupport (
       with cudaPackages;
       [

@@ -46,7 +46,9 @@ stdenv.mkDerivation rec {
     lz4
   ];
 
-  configureFlags = lib.optionals (!isx86) [ "--disable-asm" ];
+  configureFlags = lib.optionals (!isx86) [
+    "--disable-asm"
+  ];
 
   meta = with lib; {
     homepage = "http://ck.kolivas.org/apps/lrzip/";

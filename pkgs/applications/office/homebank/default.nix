@@ -19,7 +19,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-YMNf6v40GuyP7Z3ksKh13A9cFnTF9YBP9xkKbGxT3AE=";
   };
 
-  patches = [ ./fix-clang-build.diff ];
+  patches = [
+    ./fix-clang-build.diff
+  ];
 
   nativeBuildInputs = [
     pkg-config

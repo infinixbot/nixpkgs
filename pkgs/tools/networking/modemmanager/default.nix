@@ -70,16 +70,23 @@ stdenv.mkDerivation rec {
       vala
     ];
 
-  buildInputs = [
-    glib
-    libgudev
-    ppp
-    libmbim
-    libqmi
-    bash-completion
-    dbus
-    bash # shebangs in share/ModemManager/fcc-unlock.available.d/
-  ] ++ lib.optionals withPolkit [ polkit ] ++ lib.optionals withSystemd [ systemd ];
+  buildInputs =
+    [
+      glib
+      libgudev
+      ppp
+      libmbim
+      libqmi
+      bash-completion
+      dbus
+      bash # shebangs in share/ModemManager/fcc-unlock.available.d/
+    ]
+    ++ lib.optionals withPolkit [
+      polkit
+    ]
+    ++ lib.optionals withSystemd [
+      systemd
+    ];
 
   nativeInstallCheckInputs = [
     python3

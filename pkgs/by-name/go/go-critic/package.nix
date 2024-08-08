@@ -20,11 +20,15 @@ buildGoModule rec {
 
   vendorHash = "sha256-Qw4t2v/5IZnpZX8sR26DL0SYrjvfuJSzDUpZ4G0u6hU=";
 
-  subPackages = [ "cmd/gocritic" ];
+  subPackages = [
+    "cmd/gocritic"
+  ];
 
   allowGoReference = true;
 
-  ldflags = [ "-X main.Version=${version}" ];
+  ldflags = [
+    "-X main.Version=${version}"
+  ];
 
   passthru = {
     tests.version = testers.testVersion {

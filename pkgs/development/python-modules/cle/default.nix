@@ -58,7 +58,9 @@ buildPythonPackage rec {
     sortedcontainers
   ];
 
-  nativeCheckInputs = [ pytestCheckHook ];
+  nativeCheckInputs = [
+    pytestCheckHook
+  ];
 
   # Place test binaries in the right location (location is hard-coded in the tests)
   preCheck = ''

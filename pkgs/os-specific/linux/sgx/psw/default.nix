@@ -67,10 +67,14 @@ stdenv.mkDerivation rec {
     protobuf
   ];
 
-  hardeningDisable = [
-    # causes redefinition of _FORTIFY_SOURCE
-    "fortify3"
-  ] ++ lib.optionals debug [ "fortify" ];
+  hardeningDisable =
+    [
+      # causes redefinition of _FORTIFY_SOURCE
+      "fortify3"
+    ]
+    ++ lib.optionals debug [
+      "fortify"
+    ];
 
   postPatch = ''
     patchShebangs \
@@ -81,7 +85,13 @@ stdenv.mkDerivation rec {
 
   dontUseCmakeConfigure = true;
 
-  buildFlags = [ "psw_install_pkg" ] ++ lib.optionals debug [ "DEBUG=1" ];
+  buildFlags =
+    [
+      "psw_install_pkg"
+    ]
+    ++ lib.optionals debug [
+      "DEBUG=1"
+    ];
 
   installFlags = [
     "-C linux/installer/common/psw/output"

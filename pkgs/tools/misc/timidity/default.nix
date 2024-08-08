@@ -36,7 +36,9 @@ stdenv.mkDerivation rec {
       libjack2
       ncurses
     ]
-    ++ lib.optionals stdenv.isLinux [ alsa-lib ]
+    ++ lib.optionals stdenv.isLinux [
+      alsa-lib
+    ]
     ++ lib.optionals stdenv.isDarwin [
       CoreAudio
       libobjc
@@ -66,7 +68,9 @@ stdenv.mkDerivation rec {
       "ac_cv_func_open_memstream=yes"
     ];
 
-  makeFlags = [ "AR=${stdenv.cc.targetPrefix}ar" ];
+  makeFlags = [
+    "AR=${stdenv.cc.targetPrefix}ar"
+  ];
 
   instruments = fetchurl {
     url = "http://www.csee.umbc.edu/pub/midia/instruments.tar.gz";

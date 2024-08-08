@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [ ncurses ];
+  buildInputs = [
+    ncurses
+  ];
 
   makeFlags = [ "PREFIX=$(out)" ];
 

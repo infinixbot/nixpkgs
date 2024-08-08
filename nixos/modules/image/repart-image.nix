@@ -138,10 +138,15 @@ stdenvNoCC.mkDerivation (
   // {
     __structuredAttrs = true;
 
-    nativeBuildInputs = [
-      systemd
-      fakeroot
-    ] ++ lib.optionals (compression.enable) [ compressionPkg ] ++ fileSystemTools;
+    nativeBuildInputs =
+      [
+        systemd
+        fakeroot
+      ]
+      ++ lib.optionals (compression.enable) [
+        compressionPkg
+      ]
+      ++ fileSystemTools;
 
     env = mkfsEnv;
 
@@ -160,8 +165,12 @@ stdenvNoCC.mkDerivation (
         "--split=${lib.boolToString split}"
         "--json=pretty"
       ]
-      ++ lib.optionals createEmpty [ "--empty=create" ]
-      ++ lib.optionals (sectorSize != null) [ "--sector-size=${toString sectorSize}" ];
+      ++ lib.optionals createEmpty [
+        "--empty=create"
+      ]
+      ++ lib.optionals (sectorSize != null) [
+        "--sector-size=${toString sectorSize}"
+      ];
 
     dontUnpack = true;
     dontConfigure = true;

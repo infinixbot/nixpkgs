@@ -17,7 +17,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-l/Rp9405Wf6vh85PFrRTtTLJE7GPODowseNqEw42J18=";
   };
 
-  buildInputs = [ python3 ];
+  buildInputs = [
+    python3
+  ];
 
   installPhase = ''
     runHook preInstall

@@ -42,10 +42,14 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    less
-    makeWrapper
-  ] ++ lib.optionals stdenv.isLinux [ autoPatchelfHook ];
+  nativeBuildInputs =
+    [
+      less
+      makeWrapper
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      autoPatchelfHook
+    ];
 
   buildInputs =
     [
@@ -55,7 +59,9 @@ stdenv.mkDerivation rec {
       libunwind
       openssl
     ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.Libsystem ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.Libsystem
+    ]
     ++ lib.optionals stdenv.isLinux [
       lttng-ust
       pam

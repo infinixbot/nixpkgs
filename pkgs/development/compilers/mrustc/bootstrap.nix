@@ -38,7 +38,9 @@ stdenv.mkDerivation rec {
   # the rust build system complains that nix alters the checksums
   dontFixLibtool = true;
 
-  patches = [ ./patches/0001-dont-download-rustc.patch ];
+  patches = [
+    ./patches/0001-dont-download-rustc.patch
+  ];
 
   postPatch = ''
     echo "applying patch ./rustc-${rustcVersion}-src.patch"

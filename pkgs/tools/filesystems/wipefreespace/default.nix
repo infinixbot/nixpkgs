@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-Pt6MDQ9wSJbL4tW/qckTpFsvE9FdXIkp/QmnYSlWR/M=";
   };
 
-  nativeBuildInputs = [ texinfo ];
+  nativeBuildInputs = [
+    texinfo
+  ];
 
   # missed: Reiser3 FAT12/16/32 MinixFS HFS+ OCFS
   buildInputs = [

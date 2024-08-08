@@ -55,7 +55,9 @@ in
       after = [ "networking.target" ];
       serviceConfig = {
         CacheDirectory = "govee2mqtt";
-        Environment = [ "GOVEE_CACHE_DIR=/var/cache/govee2mqtt" ];
+        Environment = [
+          "GOVEE_CACHE_DIR=/var/cache/govee2mqtt"
+        ];
         EnvironmentFile = cfg.environmentFile;
         ExecStart =
           "${lib.getExe cfg.package} serve --govee-iot-key=/var/lib/govee2mqtt/iot.key --govee-iot-cert=/var/lib/govee2mqtt/iot.cert"

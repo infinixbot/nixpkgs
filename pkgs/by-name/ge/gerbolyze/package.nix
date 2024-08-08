@@ -52,7 +52,9 @@ python3Packages.buildPythonApplication rec {
 
   format = "setuptools";
 
-  nativeBuildInputs = [ python3Packages.setuptools ];
+  nativeBuildInputs = [
+    python3Packages.setuptools
+  ];
 
   propagatedBuildInputs = [
     python3Packages.beautifulsoup4

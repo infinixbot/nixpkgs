@@ -15,7 +15,9 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-kmgdk634zM0W0OoRoP/RzepArSipa5bNqdVgdZO9gxo=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   meta = {
     description = "Tool for analyzing Clang's -ftime-trace files";

@@ -25,7 +25,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-Xb/ohGzgXR8B6Zfd2pUqgpxK6WQnk2xF4bbCyz1g2os=";
 
-  buildInputs = [ linux-pam ];
+  buildInputs = [
+    linux-pam
+  ];
 
   # The majority of tests rely on impure environment
   # (such as systemd socket, ssh socket), and some of them

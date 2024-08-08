@@ -44,7 +44,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-0Adq/gEIKBS4U97smfk0ns5fLOg5CLjlj/c2tB94qWs=";
   };
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs =
     [
@@ -74,12 +76,16 @@ stdenv.mkDerivation (finalAttrs: {
       ]
     );
 
-  propagatedBuildInputs = [
-    cairo
-    glib
-    libintl
-    harfbuzz
-  ] ++ lib.optionals x11Support [ libXft ];
+  propagatedBuildInputs =
+    [
+      cairo
+      glib
+      libintl
+      harfbuzz
+    ]
+    ++ lib.optionals x11Support [
+      libXft
+    ];
 
   mesonFlags = [
     (lib.mesonBool "gtk_doc" withIntrospection)

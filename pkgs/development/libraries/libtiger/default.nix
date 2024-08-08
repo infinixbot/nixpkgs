@@ -19,7 +19,9 @@ stdenv.mkDerivation rec {
     sha256 = "0rj1bmr9kngrgbxrjbn4f4f9pww0wmf6viflinq7ava7zdav4hkk";
   };
 
-  patches = [ ./pkg-config.patch ];
+  patches = [
+    ./pkg-config.patch
+  ];
 
   postPatch = ''
     substituteInPlace configure.ac --replace "-Werror" "-Wno-error"

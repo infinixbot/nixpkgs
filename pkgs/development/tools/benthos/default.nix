@@ -21,7 +21,9 @@ buildGoModule rec {
 
   doCheck = false;
 
-  subPackages = [ "cmd/benthos" ];
+  subPackages = [
+    "cmd/benthos"
+  ];
 
   ldflags = [
     "-s"

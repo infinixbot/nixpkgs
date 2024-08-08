@@ -39,7 +39,9 @@ stdenv.mkDerivation rec {
   LDFLAGS = lib.optionalString stdenv.isSunOS "-lm -lmd -lmp -luutil -lnvpair -lnsl -lidmap -lavl -lsec";
 
   configureFlags =
-    [ "--disable-csharp" ]
+    [
+      "--disable-csharp"
+    ]
     ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
       # On cross building, gettext supposes that the wchar.h from libc
       # does not fulfill gettext needs, so it tries to work with its
@@ -64,9 +66,13 @@ stdenv.mkDerivation rec {
     '';
 
   strictDeps = true;
-  nativeBuildInputs = [ updateAutotoolsGnuConfigScriptsHook ];
+  nativeBuildInputs = [
+    updateAutotoolsGnuConfigScriptsHook
+  ];
   buildInputs =
-    lib.optionals (!stdenv.hostPlatform.isMinGW) [ bash ]
+    lib.optionals (!stdenv.hostPlatform.isMinGW) [
+      bash
+    ]
     ++ lib.optionals (!stdenv.isLinux && !stdenv.hostPlatform.isCygwin) [
       # HACK, see #10874 (and 14664)
       libiconv

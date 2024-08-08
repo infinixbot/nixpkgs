@@ -37,5 +37,7 @@ mkDerivation {
   ];
   outputs = [ "out" ]; # plugins only
   CXXFLAGS = "-I${getDev ilmbase}/include/OpenEXR";
-  cmakeFlags = [ "-DKIMAGEFORMATS_HEIF=ON" ];
+  cmakeFlags = [
+    "-DKIMAGEFORMATS_HEIF=ON"
+  ];
 }

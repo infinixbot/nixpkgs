@@ -46,9 +46,13 @@ stdenv.mkDerivation rec {
     libxml2
   ];
 
-  NIX_CFLAGS_COMPILE = [ "-Wno-error=deprecated-declarations" ];
+  NIX_CFLAGS_COMPILE = [
+    "-Wno-error=deprecated-declarations"
+  ];
 
-  mesonFlags = [ "-Dgtk_doc=true" ];
+  mesonFlags = [
+    "-Dgtk_doc=true"
+  ];
 
   doCheck = true;
 

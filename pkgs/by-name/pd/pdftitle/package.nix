@@ -17,9 +17,13 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-kj1pJpyWRgEaAADF6YqzdD8QnJ6iu0eXFMR4NGM4/+Y=";
   };
 
-  build-system = with python3Packages; [ setuptools ];
+  build-system = with python3Packages; [
+    setuptools
+  ];
 
-  dependencies = with python3Packages; [ pdfminer ];
+  dependencies = with python3Packages; [
+    pdfminer
+  ];
 
   pythonImportsCheck = [ "pdftitle" ];
 

@@ -19,7 +19,9 @@ python3.pkgs.buildPythonApplication rec {
 
   __darwinAllowLocalNetworking = true;
 
-  build-system = [ makeWrapper ];
+  build-system = [
+    makeWrapper
+  ];
 
   dependencies =
     with python3.pkgs;

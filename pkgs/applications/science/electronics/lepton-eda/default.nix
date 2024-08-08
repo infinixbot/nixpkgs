@@ -52,7 +52,9 @@ stdenv.mkDerivation rec {
     "--with-gtk3"
   ];
 
-  CFLAGS = [ "-DSCM_DEBUG_TYPING_STRICTNESS=2" ];
+  CFLAGS = [
+    "-DSCM_DEBUG_TYPING_STRICTNESS=2"
+  ];
 
   postInstall = ''
     libs="${lib.makeLibraryPath propagatedBuildInputs}"

@@ -18,7 +18,9 @@ buildGoModule rec {
   };
   vendorHash = "sha256-ndMME9m3kbv/c1iKlU2Pn/YoiRQy7jfVQri3M+qhujk=";
 
-  patches = [ ./go.mod.patch ];
+  patches = [
+    ./go.mod.patch
+  ];
 
   ldflags = [
     "-s"

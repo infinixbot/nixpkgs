@@ -34,7 +34,9 @@ buildGoModule rec {
       --replace "/bin/echo" "${coreutils}/bin/echo"
   '';
 
-  subPackages = [ "cmd/crc" ];
+  subPackages = [
+    "cmd/crc"
+  ];
 
   tags = [ "containers_image_openpgp" ];
 

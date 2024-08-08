@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-TJ/oSSMvgtKuz7PVyIoFEbBW6EZz7t2wr/kP093HF/w=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   patches = [
     # port of https://github.com/oneapi-src/oneTBB/pull/1031

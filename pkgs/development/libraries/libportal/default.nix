@@ -33,7 +33,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-3roZJHnGFM7ClxbB7I/haexPTwYskidz9F+WV3RL9Ho=";
   };
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs =
     [
@@ -48,9 +50,15 @@ stdenv.mkDerivation rec {
     ];
 
   propagatedBuildInputs =
-    [ glib ]
-    ++ lib.optionals (variant == "gtk3") [ gtk3 ]
-    ++ lib.optionals (variant == "gtk4") [ gtk4 ]
+    [
+      glib
+    ]
+    ++ lib.optionals (variant == "gtk3") [
+      gtk3
+    ]
+    ++ lib.optionals (variant == "gtk4") [
+      gtk4
+    ]
     ++ lib.optionals (variant == "qt5") [
       libsForQt5.qtbase
       libsForQt5.qtx11extras

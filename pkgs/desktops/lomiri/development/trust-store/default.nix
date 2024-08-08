@@ -81,9 +81,13 @@ stdenv.mkDerivation (finalAttrs: {
     qtdeclarative
   ];
 
-  nativeCheckInputs = [ dbus ];
+  nativeCheckInputs = [
+    dbus
+  ];
 
-  checkInputs = [ gtest ];
+  checkInputs = [
+    gtest
+  ];
 
   dontWrapQtApps = true;
 
@@ -121,6 +125,8 @@ stdenv.mkDerivation (finalAttrs: {
     license = licenses.lgpl3Only;
     maintainers = teams.lomiri.members;
     platforms = platforms.linux;
-    pkgConfigModules = [ "trust-store" ];
+    pkgConfigModules = [
+      "trust-store"
+    ];
   };
 })

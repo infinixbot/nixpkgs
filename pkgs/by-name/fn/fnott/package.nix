@@ -34,7 +34,9 @@ stdenv.mkDerivation rec {
   PKG_CONFIG_DBUS_1_SESSION_BUS_SERVICES_DIR = "${placeholder "out"}/share/dbus-1/services";
 
   strictDeps = true;
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
   nativeBuildInputs = [
     pkg-config
     meson

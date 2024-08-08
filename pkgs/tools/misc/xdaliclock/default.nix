@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     pkg-config
     wrapGAppsHook3
   ];
-  buildInputs = [ gtk3 ];
+  buildInputs = [
+    gtk3
+  ];
 
   preInstall = ''
     mkdir -vp $out/bin $out/share/man/man1 $out/share/gsettings-schemas/$name/glib-2.0/schemas $out/share/pixmaps $out/share/applications

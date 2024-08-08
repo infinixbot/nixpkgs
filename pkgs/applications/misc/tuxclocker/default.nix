@@ -50,7 +50,9 @@ stdenv.mkDerivation (finalAttrs: {
       --prefix "PYTHONPATH" : "${python3.pkgs.hwdata}/${python3.sitePackages}"
   '';
 
-  mesonFlags = [ "-Dplugins=false" ];
+  mesonFlags = [
+    "-Dplugins=false"
+  ];
 
   passthru.tests = {
     inherit tuxclocker-without-unfree;

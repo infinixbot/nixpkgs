@@ -42,7 +42,9 @@ stdenv.mkDerivation rec {
     xmkmf
   '';
 
-  makeFlags = [ "DESTDIR=build" ];
+  makeFlags = [
+    "DESTDIR=build"
+  ];
 
   postInstall = ''
     # Fix up install paths

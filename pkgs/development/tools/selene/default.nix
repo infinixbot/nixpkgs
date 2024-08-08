@@ -22,11 +22,17 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-e3oQUFtgdjqPiB2YpmqnFUG2scmYJhLSpUaw0W6RxIk=";
 
-  nativeBuildInputs = lib.optionals robloxSupport [ pkg-config ];
+  nativeBuildInputs = lib.optionals robloxSupport [
+    pkg-config
+  ];
 
   buildInputs =
-    lib.optionals robloxSupport [ openssl ]
-    ++ lib.optionals (robloxSupport && stdenv.isDarwin) [ darwin.apple_sdk.frameworks.Security ];
+    lib.optionals robloxSupport [
+      openssl
+    ]
+    ++ lib.optionals (robloxSupport && stdenv.isDarwin) [
+      darwin.apple_sdk.frameworks.Security
+    ];
 
   buildNoDefaultFeatures = !robloxSupport;
 

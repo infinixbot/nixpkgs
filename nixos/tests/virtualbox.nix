@@ -127,7 +127,9 @@ let
       cfg =
         (import ../lib/eval-config.nix {
           system = if use64bitGuest then "x86_64-linux" else "i686-linux";
-          modules = [ (testVMConfig vmName vmScript) ];
+          modules = [
+            (testVMConfig vmName vmScript)
+          ];
         }).config;
     in
     pkgs.vmTools.runInLinuxVM (
@@ -347,7 +349,9 @@ let
   ];
 
   # The VirtualBox Oracle Extension Pack lets you use USB 3.0 (xHCI).
-  enableExtensionPackVMFlags = [ "--usbxhci on" ];
+  enableExtensionPackVMFlags = [
+    "--usbxhci on"
+  ];
 
   dhcpScript = pkgs: ''
     ${pkgs.dhcpcd}/bin/dhcpcd eth0 eth1

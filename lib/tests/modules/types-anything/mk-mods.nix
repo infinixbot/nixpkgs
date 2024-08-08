@@ -19,7 +19,9 @@
       value.mkdefault = 1;
     }
     {
-      value.mkmerge = lib.mkMerge [ { } ];
+      value.mkmerge = lib.mkMerge [
+        { }
+      ];
     }
     {
       value.mkbefore = lib.mkBefore true;

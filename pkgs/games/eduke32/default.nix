@@ -65,12 +65,16 @@ stdenv.mkDerivation (finalAttrs: {
       OpenGL
     ];
 
-  nativeBuildInputs = [
-    makeWrapper
-    pkg-config
-    copyDesktopItems
-    graphicsmagick
-  ] ++ lib.optionals (stdenv.hostPlatform.system == "i686-linux") [ nasm ];
+  nativeBuildInputs =
+    [
+      makeWrapper
+      pkg-config
+      copyDesktopItems
+      graphicsmagick
+    ]
+    ++ lib.optionals (stdenv.hostPlatform.system == "i686-linux") [
+      nasm
+    ];
 
   postPatch =
     ''
@@ -86,7 +90,9 @@ stdenv.mkDerivation (finalAttrs: {
       done
     '';
 
-  makeFlags = [ "SDLCONFIG=${SDL2}/bin/sdl2-config" ];
+  makeFlags = [
+    "SDLCONFIG=${SDL2}/bin/sdl2-config"
+  ];
 
   buildFlags = [
     "duke3d"

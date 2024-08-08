@@ -14,7 +14,9 @@ stdenv.mkDerivation rec {
     sha256 = "1fk0b8vic04a3i3vmq73hbk7mzbi57s8ks6ighn3mvr6m2v8yc9d";
   };
 
-  buildInputs = [ libinklevel ];
+  buildInputs = [
+    libinklevel
+  ];
 
   outputs = [
     "out"

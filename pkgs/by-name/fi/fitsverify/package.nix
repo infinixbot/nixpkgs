@@ -14,7 +14,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-bEXoA6fg7by30TkYYVuuY2HSszPCkrhJxQnsm+vbGLQ=";
   };
 
-  buildInputs = [ cfitsio ];
+  buildInputs = [
+    cfitsio
+  ];
 
   # See build instructions in the README file in src.
   buildPhase = ''

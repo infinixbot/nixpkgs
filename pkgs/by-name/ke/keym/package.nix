@@ -24,7 +24,9 @@ stdenv.mkDerivation {
     libXi
   ];
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/cwkx/keym";

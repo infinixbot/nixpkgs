@@ -176,8 +176,12 @@ in
         "network-online.target"
         "sound.target"
       ];
-      wantedBy = [ "multi-user.target" ];
-      path = with pkgs; [ alsa-utils ];
+      wantedBy = [
+        "multi-user.target"
+      ];
+      path = with pkgs; [
+        alsa-utils
+      ];
       script =
         let
           optionalParam =
@@ -245,7 +249,9 @@ in
         ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
-        SupplementaryGroups = [ "audio" ];
+        SupplementaryGroups = [
+          "audio"
+        ];
         SystemCallArchitectures = "native";
         SystemCallFilter = [
           "@system-service"

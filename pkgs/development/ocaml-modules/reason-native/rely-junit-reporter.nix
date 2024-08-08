@@ -16,9 +16,13 @@ buildDunePackage {
   pname = "rely-junit-reporter";
   version = "1.0.0-unstable-2024-05-07";
 
-  nativeBuildInputs = [ reason ];
+  nativeBuildInputs = [
+    reason
+  ];
 
-  buildInputs = [ atdgen ];
+  buildInputs = [
+    atdgen
+  ];
 
   propagatedBuildInputs = [
     junit

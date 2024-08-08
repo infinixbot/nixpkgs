@@ -28,7 +28,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-ZmY88WcoQiDLSXkBbnE/+jPX713qh6n+nyNXeWWTBKA=";
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   buildInputs = lib.optionals stdenv.isDarwin [
     AppKit

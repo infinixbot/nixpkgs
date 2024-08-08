@@ -81,7 +81,9 @@ stdenv.mkDerivation rec {
       "-DOPENMM_BUILD_RPMD_PLUGIN=ON"
       "-DOPENMM_BUILD_SHARED_LIB=ON"
     ]
-    ++ lib.optionals enablePython [ "-DOPENMM_BUILD_PYTHON_WRAPPERS=ON" ]
+    ++ lib.optionals enablePython [
+      "-DOPENMM_BUILD_PYTHON_WRAPPERS=ON"
+    ]
     ++ lib.optionals enableOpencl [
       "-DOPENMM_BUILD_OPENCL_LIB=ON"
       "-DOPENMM_BUILD_AMOEBA_OPENCL_LIB=ON"

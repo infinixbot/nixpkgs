@@ -25,10 +25,18 @@ stdenv.mkDerivation (finalAttrs: {
   version = "5.7.1";
 
   outputs =
-    [ "out" ]
-    ++ lib.optionals buildTests [ "test" ]
-    ++ lib.optionals buildBenchmarks [ "benchmark" ]
-    ++ lib.optionals buildSamples [ "sample" ];
+    [
+      "out"
+    ]
+    ++ lib.optionals buildTests [
+      "test"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "benchmark"
+    ]
+    ++ lib.optionals buildSamples [
+      "sample"
+    ];
 
   src = fetchFromGitHub {
     owner = "ROCm";
@@ -44,14 +52,18 @@ stdenv.mkDerivation (finalAttrs: {
     git
   ];
 
-  buildInputs = [
-    rocblas
-    rocsparse
-    rocprim
-    rocrand
-    openmp
-    openmpi
-  ] ++ lib.optionals buildTests [ gtest ];
+  buildInputs =
+    [
+      rocblas
+      rocsparse
+      rocprim
+      rocrand
+      openmp
+      openmpi
+    ]
+    ++ lib.optionals buildTests [
+      gtest
+    ];
 
   cmakeFlags =
     [
@@ -71,8 +83,12 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optionals (gpuTargets != [ ]) [
       "-DAMDGPU_TARGETS=${lib.strings.concatStringsSep ";" gpuTargets}"
     ]
-    ++ lib.optionals buildTests [ "-DBUILD_CLIENTS_TESTS=ON" ]
-    ++ lib.optionals buildBenchmarks [ "-DBUILD_CLIENTS_BENCHMARKS=ON" ];
+    ++ lib.optionals buildTests [
+      "-DBUILD_CLIENTS_TESTS=ON"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "-DBUILD_CLIENTS_BENCHMARKS=ON"
+    ];
 
   postInstall =
     lib.optionalString buildTests ''

@@ -79,7 +79,9 @@ stdenv.mkDerivation rec {
     adwaita-icon-theme
   ];
 
-  mesonFlags = [ "-Dupdate_mimedb=false" ];
+  mesonFlags = [
+    "-Dupdate_mimedb=false"
+  ];
 
   passthru = {
     updateScript = gnome.updateScript {

@@ -492,7 +492,9 @@ in
         rustPlatform.cargoSetupHook
         rustPlatform.bindgenHook
       ];
-      disallowedReferences = [ rustc.unwrapped ];
+      disallowedReferences = [
+        rustc.unwrapped
+      ];
       preBuild = ''
         cat ../.cargo/config > ext/fast_mmaped_file_rs/.cargo/config.toml
         sed -i "s|cargo-vendor-dir|$PWD/../cargo-vendor-dir|" ext/fast_mmaped_file_rs/.cargo/config.toml
@@ -964,7 +966,9 @@ in
 
   re2 = attrs: {
     buildInputs = [ re2 ];
-    buildFlags = [ "--enable-system-libraries" ];
+    buildFlags = [
+      "--enable-system-libraries"
+    ];
   };
 
   rest-client = attrs: {
@@ -1091,7 +1095,9 @@ in
       {
         nativeBuildInputs = [ pkg-config ];
         buildInputs = [ sqlite ];
-        buildFlags = [ "--enable-system-libraries" ];
+        buildFlags = [
+          "--enable-system-libraries"
+        ];
       }
     else
       {

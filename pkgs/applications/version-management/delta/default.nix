@@ -28,9 +28,13 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ];
 
-  buildInputs = [
-    oniguruma
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk_11_0.frameworks.Foundation ];
+  buildInputs =
+    [
+      oniguruma
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk_11_0.frameworks.Foundation
+    ];
 
   nativeCheckInputs = [ git ];
 
@@ -48,7 +52,9 @@ rustPlatform.buildRustPackage rec {
   # https://github.com/dandavison/delta/issues/1660
   dontUseCargoParallelTests = true;
 
-  checkFlags = lib.optionals stdenv.isDarwin [ "--skip=test_diff_same_non_empty_file" ];
+  checkFlags = lib.optionals stdenv.isDarwin [
+    "--skip=test_diff_same_non_empty_file"
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/dandavison/delta";

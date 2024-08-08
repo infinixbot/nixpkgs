@@ -28,7 +28,9 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  propagatedBuildInputs = [ udev ];
+  propagatedBuildInputs = [
+    udev
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/pololu/libusbp";

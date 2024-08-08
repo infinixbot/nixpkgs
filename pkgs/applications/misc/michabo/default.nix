@@ -29,7 +29,9 @@ mkDerivation rec {
     sha256 = "0pl4ymdb36r0kwlclfjjp6b1qml3fm9ql7ag5inprny5y8vcjpzn";
   };
 
-  nativeBuildInputs = [ qmake ];
+  nativeBuildInputs = [
+    qmake
+  ];
   buildInputs = [
     qtbase
     qtwebsockets

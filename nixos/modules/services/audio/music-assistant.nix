@@ -73,7 +73,12 @@ in
       };
 
       serviceConfig = {
-        ExecStart = utils.escapeSystemdExecArgs ([ (lib.getExe cfg.package) ] ++ cfg.extraOptions);
+        ExecStart = utils.escapeSystemdExecArgs (
+          [
+            (lib.getExe cfg.package)
+          ]
+          ++ cfg.extraOptions
+        );
         DynamicUser = true;
         StateDirectory = "music-assistant";
         AmbientCapabilities = "";

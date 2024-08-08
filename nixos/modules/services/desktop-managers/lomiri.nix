@@ -104,8 +104,12 @@ in
         )
         ++ (
           with pkgs.lomiri;
-          [ telephony-service ]
-          ++ lib.optionals config.networking.networkmanager.enable [ lomiri-indicator-network ]
+          [
+            telephony-service
+          ]
+          ++ lib.optionals config.networking.networkmanager.enable [
+            lomiri-indicator-network
+          ]
         );
     };
 

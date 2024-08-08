@@ -27,10 +27,14 @@ stdenv.mkDerivation (finalAttrs: {
 
   sourceRoot = "${finalAttrs.src.name}/gpt4all-chat";
 
-  nativeBuildInputs = [
-    cmake
-    qt6.wrapQtAppsHook
-  ] ++ lib.optionals cudaSupport [ cudaPackages.cuda_nvcc ];
+  nativeBuildInputs =
+    [
+      cmake
+      qt6.wrapQtAppsHook
+    ]
+    ++ lib.optionals cudaSupport [
+      cudaPackages.cuda_nvcc
+    ];
 
   buildInputs =
     [
@@ -54,11 +58,15 @@ stdenv.mkDerivation (finalAttrs: {
       ]
     );
 
-  cmakeFlags = [
-    "-DKOMPUTE_OPT_USE_BUILT_IN_VULKAN_HEADER=OFF"
-    "-DKOMPUTE_OPT_DISABLE_VULKAN_VERSION_CHECK=ON"
-    "-DKOMPUTE_OPT_USE_BUILT_IN_FMT=OFF"
-  ] ++ lib.optionals (!cudaSupport) [ "-DLLMODEL_CUDA=OFF" ];
+  cmakeFlags =
+    [
+      "-DKOMPUTE_OPT_USE_BUILT_IN_VULKAN_HEADER=OFF"
+      "-DKOMPUTE_OPT_DISABLE_VULKAN_VERSION_CHECK=ON"
+      "-DKOMPUTE_OPT_USE_BUILT_IN_FMT=OFF"
+    ]
+    ++ lib.optionals (!cudaSupport) [
+      "-DLLMODEL_CUDA=OFF"
+    ];
 
   postInstall = ''
     rm -rf $out/include

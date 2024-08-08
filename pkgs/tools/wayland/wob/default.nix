@@ -26,7 +26,9 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
   nativeBuildInputs = [
     meson
     ninja

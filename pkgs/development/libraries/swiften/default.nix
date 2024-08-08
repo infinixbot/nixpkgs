@@ -35,7 +35,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [ scons ];
+  nativeBuildInputs = [
+    scons
+  ];
 
   buildInputs = [
     libidn
@@ -72,7 +74,9 @@ stdenv.mkDerivation rec {
 
   installTargets = "${placeholder "out"}";
 
-  installFlags = [ "SWIFTEN_INSTALLDIR=${placeholder "out"}" ];
+  installFlags = [
+    "SWIFTEN_INSTALLDIR=${placeholder "out"}"
+  ];
 
   enableParallelBuilding = true;
 

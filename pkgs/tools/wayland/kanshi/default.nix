@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
   nativeBuildInputs = [
     meson
     ninja
@@ -38,7 +40,9 @@ stdenv.mkDerivation rec {
     libscfg
   ];
 
-  env.NIX_CFLAGS_COMPILE = toString [ "-Wno-error=maybe-uninitialized" ];
+  env.NIX_CFLAGS_COMPILE = toString [
+    "-Wno-error=maybe-uninitialized"
+  ];
 
   meta = with lib; {
     homepage = "https://sr.ht/~emersion/kanshi";

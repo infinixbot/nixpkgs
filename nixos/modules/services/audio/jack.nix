@@ -38,7 +38,9 @@ in
 
         extraOptions = mkOption {
           type = types.listOf types.str;
-          default = [ "-dalsa" ];
+          default = [
+            "-dalsa"
+          ];
           example = literalExpression ''
             [ "-dalsa" "--device" "hw:1" ];
           '';

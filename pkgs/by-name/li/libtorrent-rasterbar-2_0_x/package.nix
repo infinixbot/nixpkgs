@@ -74,7 +74,9 @@ stdenv.mkDerivation {
     "python"
   ];
 
-  cmakeFlags = [ "-Dpython-bindings=on" ];
+  cmakeFlags = [
+    "-Dpython-bindings=on"
+  ];
 
   meta = with lib; {
     homepage = "https://libtorrent.org/";

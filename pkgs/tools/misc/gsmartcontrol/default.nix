@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-/ECfK4qEzEC7ED1sgkAbnUwBgtWjsiPJOVnHrWYZGEc=";
   };
 
-  patches = [ ./fix-paths.patch ];
+  patches = [
+    ./fix-paths.patch
+  ];
 
   postPatch = ''
     substituteInPlace data/org.gsmartcontrol.policy --replace "/usr/sbin" $out/bin

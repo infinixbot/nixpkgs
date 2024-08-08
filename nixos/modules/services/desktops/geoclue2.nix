@@ -222,7 +222,9 @@ in
       wants = lib.optionals cfg.enableWifi [ "network-online.target" ];
       after = lib.optionals cfg.enableWifi [ "network-online.target" ];
       # restart geoclue service when the configuration changes
-      restartTriggers = [ config.environment.etc."geoclue/geoclue.conf".source ];
+      restartTriggers = [
+        config.environment.etc."geoclue/geoclue.conf".source
+      ];
       serviceConfig.StateDirectory = "geoclue";
     };
 

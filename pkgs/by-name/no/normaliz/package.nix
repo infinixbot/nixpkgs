@@ -33,7 +33,9 @@ stdenv.mkDerivation (finalAttrs: {
     "dev"
   ];
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   meta = with lib; {
     homepage = "https://www.normaliz.uni-osnabrueck.de/";

@@ -69,7 +69,9 @@ let
     bzip2
     xz
   ];
-  baseMultiPkgs = with pkgsi686Linux; [ (toString gcc.cc.lib) ];
+  baseMultiPkgs = with pkgsi686Linux; [
+    (toString gcc.cc.lib)
+  ];
 
   etcProfile = writeText "profile" ''
     export PS1='${name}-chrootenv:\u@\h:\w\$ '

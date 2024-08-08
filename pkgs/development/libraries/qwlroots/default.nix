@@ -51,9 +51,13 @@ stdenv.mkDerivation (finalAttrs: {
     seatd
   ];
 
-  propagatedBuildInputs = [ wlroots ];
+  propagatedBuildInputs = [
+    wlroots
+  ];
 
-  cmakeFlags = [ (lib.cmakeBool "PREFER_QT_5" (lib.versionOlder qtbase.version "6")) ];
+  cmakeFlags = [
+    (lib.cmakeBool "PREFER_QT_5" (lib.versionOlder qtbase.version "6"))
+  ];
 
   meta = {
     description = "Qt and QML bindings for wlroots";

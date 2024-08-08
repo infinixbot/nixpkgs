@@ -25,7 +25,9 @@ let
       inherit ignoreCollisions;
       extraOutputsToInstall = [ "out" ] ++ extraOutputsToInstall;
 
-      nativeBuildInputs = [ makeWrapper ];
+      nativeBuildInputs = [
+        makeWrapper
+      ];
 
       # we create wrapper for the binaries in the different packages
       postBuild =

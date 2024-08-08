@@ -45,7 +45,9 @@ rustPlatform.buildRustPackage {
     };
   };
 
-  cargoBuildFlags = [ "-p neothesia -p neothesia-cli" ];
+  cargoBuildFlags = [
+    "-p neothesia -p neothesia-cli"
+  ];
 
   postInstall = ''
     wrapProgram $out/bin/neothesia --prefix LD_LIBRARY_PATH : "${
@@ -73,6 +75,8 @@ rustPlatform.buildRustPackage {
     license = lib.licenses.gpl3;
     platforms = lib.platforms.linux;
     mainProgram = "neothesia";
-    maintainers = [ lib.maintainers.naxdy ];
+    maintainers = [
+      lib.maintainers.naxdy
+    ];
   };
 }

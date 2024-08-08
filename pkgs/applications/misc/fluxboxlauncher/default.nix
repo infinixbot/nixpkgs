@@ -45,7 +45,9 @@ python3.pkgs.buildPythonApplication rec {
     "--set CHARSET en_us.UTF-8"
   ];
 
-  propagatedBuildInputs = with python3.pkgs; [ pygobject3 ];
+  propagatedBuildInputs = with python3.pkgs; [
+    pygobject3
+  ];
 
   postInstall = ''
     install -Dm444 fluxboxlauncher.desktop -t $out/share/applications

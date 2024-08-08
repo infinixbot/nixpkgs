@@ -217,7 +217,9 @@ stdenv.mkDerivation rec {
       cudaPackages.cudnn
       cudaPackages.cuda_cccl
     ]
-    ++ lib.optionals openclSupport [ mesa ];
+    ++ lib.optionals openclSupport [
+      mesa
+    ];
 
   nativeBuildInputs = [
     cmake

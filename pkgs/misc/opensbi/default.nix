@@ -25,12 +25,20 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ python3 ];
 
-  installFlags = [ "I=$(out)" ];
+  installFlags = [
+    "I=$(out)"
+  ];
 
   makeFlags =
-    [ "PLATFORM=${withPlatform}" ]
-    ++ lib.optionals (withPayload != null) [ "FW_PAYLOAD_PATH=${withPayload}" ]
-    ++ lib.optionals (withFDT != null) [ "FW_FDT_PATH=${withFDT}" ];
+    [
+      "PLATFORM=${withPlatform}"
+    ]
+    ++ lib.optionals (withPayload != null) [
+      "FW_PAYLOAD_PATH=${withPayload}"
+    ]
+    ++ lib.optionals (withFDT != null) [
+      "FW_FDT_PATH=${withFDT}"
+    ];
 
   enableParallelBuilding = true;
 

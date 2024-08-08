@@ -19,7 +19,9 @@ let
         ../modules/profiles/qemu-guest.nix
         {
           # Needed by nixos-rebuild due to lack of network access.
-          system.extraDependencies = with pkgs; [ stdenv ];
+          system.extraDependencies = with pkgs; [
+            stdenv
+          ];
         }
       ];
     }).config.system.build.openstackImage

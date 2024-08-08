@@ -19,7 +19,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-M7fa46BERNRHbCsAiGqt4GHVVTyrW6iIb6gRc4UuZxA=";
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   ldflags = [
     "-s"

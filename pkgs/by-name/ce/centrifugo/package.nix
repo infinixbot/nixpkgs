@@ -35,7 +35,9 @@ buildGoModule rec {
     "-X=github.com/centrifugal/centrifugo/v5/internal/build.UsageStatsToken=${statsToken}"
   ];
 
-  excludedPackages = [ "./internal/gen/api" ];
+  excludedPackages = [
+    "./internal/gen/api"
+  ];
 
   passthru = {
     updateScript = nix-update-script { };

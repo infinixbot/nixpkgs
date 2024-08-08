@@ -15,7 +15,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-/GSN6YPzoqbJ543qHxgGOb0vrWwG1VbUNnpwH+XDVXc=";
   };
 
-  patches = [ ./cross-assume-dev-zero-mmappable.patch ];
+  patches = [
+    ./cross-assume-dev-zero-mmappable.patch
+  ];
 
   # This test needs the net
   postPatch = ''

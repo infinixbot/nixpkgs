@@ -18,9 +18,13 @@ mkDerivation rec {
     hash = "sha256-paTas3KbV4yZ0ePnrOH1S3bLLHDddFml1h6b6azK4RQ=";
   };
 
-  nativeBuildInputs = [ qmake ];
+  nativeBuildInputs = [
+    qmake
+  ];
 
-  buildInputs = [ qtbase ];
+  buildInputs = [
+    qtbase
+  ];
 
   installPhase = ''
     runHook preInstall

@@ -14,9 +14,13 @@ stdenv.mkDerivation rec {
     sha256 = "0d7hnpshifq6gy9a0g6il6h1hgqqjyys36n8w84hr8d4nhg4d1ji";
   };
 
-  buildInputs = [ expat ];
+  buildInputs = [
+    expat
+  ];
 
-  patches = [ ./server-gcc5.patch ];
+  patches = [
+    ./server-gcc5.patch
+  ];
 
   meta = with lib; {
     description = "Multiplayer X11 space combat game (server part)";

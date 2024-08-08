@@ -4,7 +4,9 @@
   meta.maintainers = with lib.maintainers; [ Luflosi ];
 
   nodes.machine = {
-    imports = [ ./common/x11.nix ];
+    imports = [
+      ./common/x11.nix
+    ];
   };
 
   # This starts the game from a known state, feeds it a prerecorded set of button presses

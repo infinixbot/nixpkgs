@@ -42,7 +42,9 @@ mkDerivation rec {
     ./pass-path.patch
   ];
 
-  CXXFLAGS = [ ''-DNIXPKGS_PASS=\"${lib.getBin pass}/bin/pass\"'' ];
+  CXXFLAGS = [
+    ''-DNIXPKGS_PASS=\"${lib.getBin pass}/bin/pass\"''
+  ];
 
   cmakeFlags = [
     # there are *lots* of pointless warnings in v1.3.0

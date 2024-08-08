@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
     zlib
   ];
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
 
   meta = with lib; {
     description = "srt live server for low latency";

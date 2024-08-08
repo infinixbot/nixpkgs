@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
     "INSTALL=install"
   ];
 
-  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
+  makeFlags = [
+    "CC=${stdenv.cc.targetPrefix}cc"
+  ];
 
   postPatch = ''
     # Disable stripping during installation, stripping will be done anyway.

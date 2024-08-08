@@ -23,11 +23,19 @@ stdenv.mkDerivation rec {
     hash = "sha256-Ko40WZErbL77B4eoJ5FFko/gTFYhADGlBzxPLuy8Wqc=";
   };
 
-  nativeBuildInputs = [ build2 ];
-  buildInputs = [ libodb ];
-  propagatedBuildInputs = [ sqlite ];
+  nativeBuildInputs = [
+    build2
+  ];
+  buildInputs = [
+    libodb
+  ];
+  propagatedBuildInputs = [
+    sqlite
+  ];
 
-  build2ConfigureFlags = [ "config.bin.lib=${build2.configSharedStatic enableShared enableStatic}" ];
+  build2ConfigureFlags = [
+    "config.bin.lib=${build2.configSharedStatic enableShared enableStatic}"
+  ];
 
   doCheck = true;
 

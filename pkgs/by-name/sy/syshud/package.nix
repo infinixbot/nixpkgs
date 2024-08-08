@@ -37,7 +37,9 @@ stdenv.mkDerivation (finalAttrs: {
     wireplumber
   ];
 
-  makeFlags = [ "DESTDIR=${placeholder "out"}" ];
+  makeFlags = [
+    "DESTDIR=${placeholder "out"}"
+  ];
 
   # populate version info used by `syshud -v`:
   configurePhase = ''

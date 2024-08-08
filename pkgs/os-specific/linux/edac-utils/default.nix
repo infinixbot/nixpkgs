@@ -42,7 +42,9 @@ stdenv.mkDerivation {
     sysfsutils
   ];
 
-  installFlags = [ "sbindir=${placeholder "out"}/bin" ];
+  installFlags = [
+    "sbindir=${placeholder "out"}/bin"
+  ];
 
   # SysV init script is not relevant.
   postInstall = ''

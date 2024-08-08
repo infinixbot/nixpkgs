@@ -47,18 +47,22 @@ stdenv.mkDerivation rec {
     ./hardcode-gsettings.patch
   ];
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    gettext
-    pkg-config
-    gobject-introspection
-    gtk-doc
-    docbook_xsl
-    docbook_xml_dtd_43
-    libxml2
-    vala
-  ] ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [ mesonEmulatorHook ];
+  nativeBuildInputs =
+    [
+      meson
+      ninja
+      gettext
+      pkg-config
+      gobject-introspection
+      gtk-doc
+      docbook_xsl
+      docbook_xml_dtd_43
+      libxml2
+      vala
+    ]
+    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+      mesonEmulatorHook
+    ];
 
   buildInputs =
     [
@@ -67,7 +71,9 @@ stdenv.mkDerivation rec {
       isocodes
       mobile-broadband-provider-info
     ]
-    ++ lib.optionals withGtk4 [ gtk4 ]
+    ++ lib.optionals withGtk4 [
+      gtk4
+    ]
     ++ lib.optionals withGnome [
       # advanced certificate chooser
       gcr_4

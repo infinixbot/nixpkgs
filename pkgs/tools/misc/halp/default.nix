@@ -26,11 +26,17 @@ rustPlatform.buildRustPackage rec {
     ./fix-target-dir.patch
   ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.Security
+  ];
 
-  nativeCheckInputs = [ unixtools.script ];
+  nativeCheckInputs = [
+    unixtools.script
+  ];
 
   # tests are failing on darwin
   doCheck = !stdenv.isDarwin;

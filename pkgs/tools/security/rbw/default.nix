@@ -35,7 +35,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-MHNc8MjKbisgCRulO7xSiurHlp60rytPqxiGEV7TLMY=";
 
-  nativeBuildInputs = [ installShellFiles ] ++ lib.optionals stdenv.isLinux [ pkg-config ];
+  nativeBuildInputs = [
+    installShellFiles
+  ] ++ lib.optionals stdenv.isLinux [ pkg-config ];
 
   buildInputs =
     [ bash ] # for git-credential-rbw

@@ -65,7 +65,9 @@ stdenv.mkDerivation rec {
       xkeyboardconfig
       libxkbfile
     ]
-    ++ lib.optionals (lib.versions.major qtbase.version == "5") [ qtx11extras ]
+    ++ lib.optionals (lib.versions.major qtbase.version == "5") [
+      qtx11extras
+    ]
     ++ lib.optionals kcmSupport (
       [
         qtdeclarative

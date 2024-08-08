@@ -29,7 +29,9 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs =
     [
@@ -41,7 +43,9 @@ rustPlatform.buildRustPackage rec {
       darwin.apple_sdk.frameworks.SystemConfiguration
     ];
 
-  nativeCheckInputs = [ git ];
+  nativeCheckInputs = [
+    git
+  ];
 
   # disable vendored-libgit2 and vendored-openssl
   buildNoDefaultFeatures = true;

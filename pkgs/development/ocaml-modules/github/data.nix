@@ -11,7 +11,9 @@ buildDunePackage {
 
   duneVersion = "3";
 
-  nativeBuildInputs = [ atdgen ];
+  nativeBuildInputs = [
+    atdgen
+  ];
 
   propagatedBuildInputs = [
     yojson

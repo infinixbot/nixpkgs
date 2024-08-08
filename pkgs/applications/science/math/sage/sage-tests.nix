@@ -30,7 +30,9 @@ stdenv.mkDerivation {
   inherit src;
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [ sage-with-env ];
+  buildInputs = [
+    sage-with-env
+  ];
 
   dontUnpack = true;
   configurePhase = "#do nothing";

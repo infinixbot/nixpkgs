@@ -37,7 +37,9 @@ python3.pkgs.buildPythonApplication rec {
     gitpython
   ];
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
   meta = with lib; {
     description = "Minimalist command line knowledge base manager";

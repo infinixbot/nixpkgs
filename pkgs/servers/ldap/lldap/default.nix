@@ -82,7 +82,9 @@ rustPlatform.buildRustPackage (
       "lldap_set_password"
     ];
 
-    patches = [ ./static-frontend-path.patch ];
+    patches = [
+      ./static-frontend-path.patch
+    ];
 
     postPatch = ''
       substituteInPlace server/src/infra/tcp_server.rs --subst-var-by frontend '${frontend}'

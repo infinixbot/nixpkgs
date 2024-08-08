@@ -17,7 +17,9 @@ buildOctavePackage rec {
     sha256 = "sha256-/4akeeOQnvTlk9ah+e8RJfwJG2Eq2HAGOCejhiIUjF4=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   propagatedBuildInputs = [
     jack2

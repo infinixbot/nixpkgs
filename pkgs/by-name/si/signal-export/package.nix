@@ -15,7 +15,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-Hm0BVF2RUsxDacsAB3MJtk1t9FYmBPjeb5JzwaLkZ14=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools-scm ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools-scm
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     setuptools

@@ -19,7 +19,9 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ cmake ];
 
   env.NIX_CFLAGS_COMPILE = toString (
-    lib.optionals stdenv.cc.isClang [ "-Wno-error=deprecated-declarations" ]
+    lib.optionals stdenv.cc.isClang [
+      "-Wno-error=deprecated-declarations"
+    ]
   );
 
   doInstallCheck = true;

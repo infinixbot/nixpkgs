@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
     libtool
   ];
 
-  configureFlags = [ "--disable-update-desktop-database" ];
+  configureFlags = [
+    "--disable-update-desktop-database"
+  ];
 
   meta = with lib; {
     description = "Gerber (RS-274X) viewer";

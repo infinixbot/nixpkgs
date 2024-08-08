@@ -632,7 +632,9 @@ in
         bindsTo = [ "postgresql.service" ];
         wantedBy = [ "outline.service" ];
         partOf = [ "outline.service" ];
-        path = [ pgsql.package ];
+        path = [
+          pgsql.package
+        ];
         script = ''
           set -o errexit -o pipefail -o nounset -o errtrace
           shopt -s inherit_errexit

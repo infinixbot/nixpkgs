@@ -19,11 +19,17 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-ZmuntI3NfIYkM2Fxt3J4pKOOilzgphF240mCer3cJ6c=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ glib ];
+  buildInputs = [
+    glib
+  ];
 
-  nativeCheckInputs = [ perl ];
+  nativeCheckInputs = [
+    perl
+  ];
 
   doCheck = true;
 

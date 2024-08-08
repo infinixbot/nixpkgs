@@ -38,7 +38,9 @@ stdenv.mkDerivation (finalAttrs: {
     sqlite.dev
   ];
 
-  propagatedBuildInputs = [ rpm ];
+  propagatedBuildInputs = [
+    rpm
+  ];
 
   cmakeFlags = [
     "-DCMAKE_INSTALL_PREFIX=$out"

@@ -83,7 +83,12 @@ stdenv.mkDerivation rec {
       unzip
       yq
     ]
-    ++ lib.optionals (lib.versionAtLeast version "9") [ nodejs ] ++ lib.optionals isDarwin [ getconf ];
+    ++ lib.optionals (lib.versionAtLeast version "9") [
+      nodejs
+    ]
+    ++ lib.optionals isDarwin [
+      getconf
+    ];
 
   buildInputs =
     [
@@ -133,7 +138,9 @@ stdenv.mkDerivation rec {
                        (global-name "com.apple.system.opendirectoryd.membership"))
   '';
 
-  patches = lib.optionals (lib.versionOlder version "9") [ ./fix-aspnetcore-portable-build.patch ];
+  patches = lib.optionals (lib.versionOlder version "9") [
+    ./fix-aspnetcore-portable-build.patch
+  ];
 
   postPatch =
     ''
@@ -374,7 +381,9 @@ stdenv.mkDerivation rec {
       "--release-manifest"
       releaseManifestFile
     ]
-    ++ lib.optionals (lib.versionAtLeast version "9") [ "--source-build" ]
+    ++ lib.optionals (lib.versionAtLeast version "9") [
+      "--source-build"
+    ]
     ++ [
       "--"
       "-p:PortableBuild=true"

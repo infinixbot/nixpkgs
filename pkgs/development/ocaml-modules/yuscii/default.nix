@@ -21,7 +21,9 @@ buildDunePackage rec {
     sha256 = "0idywlkw0fbakrxv65swnr5bj7f2vns9kpay7q03gzlv82p670hy";
   };
 
-  nativeCheckInputs = [ gcc ];
+  nativeCheckInputs = [
+    gcc
+  ];
   checkInputs = [
     alcotest
     fmt

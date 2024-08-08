@@ -19,7 +19,9 @@ buildDunePackage rec {
 
   minimalOCamlVersion = "4.08";
 
-  propagatedBuildInputs = [ core ];
+  propagatedBuildInputs = [
+    core
+  ];
 
   passthru.updateScript = nix-update-script { };
 

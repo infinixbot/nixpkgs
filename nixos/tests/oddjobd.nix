@@ -7,7 +7,9 @@ import ./make-test-python.nix (
     nodes.machine =
       { ... }:
       {
-        environment.systemPackages = [ pkgs.oddjob ];
+        environment.systemPackages = [
+          pkgs.oddjob
+        ];
 
         programs.oddjobd.enable = true;
       };

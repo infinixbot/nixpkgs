@@ -16,9 +16,13 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-MquLChDuJe3DdkxxKV4W0o49IIt7Am+yuhdOqUqexS8=";
   };
 
-  build-system = with python3.pkgs; [ setuptools ];
+  build-system = with python3.pkgs; [
+    setuptools
+  ];
 
-  dependencies = with python3.pkgs; [ scapy ];
+  dependencies = with python3.pkgs; [
+    scapy
+  ];
 
   installPhase = ''
     install -Dm755 pig.py $out/bin/dhcpig

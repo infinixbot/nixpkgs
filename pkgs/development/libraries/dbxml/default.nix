@@ -32,7 +32,9 @@ stdenv.mkDerivation rec {
     xqilla
   ];
 
-  propagatedBuildInputs = [ db62 ];
+  propagatedBuildInputs = [
+    db62
+  ];
 
   configureFlags = [
     "--with-berkeleydb=${db62.out}"

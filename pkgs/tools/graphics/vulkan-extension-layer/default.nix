@@ -46,7 +46,9 @@ stdenv.mkDerivation rec {
   '';
 
   # Tests are not for gpu-less and headless environments
-  cmakeFlags = [ "-DBUILD_TESTS=false" ];
+  cmakeFlags = [
+    "-DBUILD_TESTS=false"
+  ];
 
   # Include absolute paths to layer libraries in their associated
   # layer definition json files.

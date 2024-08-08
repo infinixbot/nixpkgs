@@ -15,7 +15,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [ cfg.package ];
+    environment.systemPackages = [
+      cfg.package
+    ];
 
     systemd.user.services.hypridle = {
       description = "Hypridle idle daemon";

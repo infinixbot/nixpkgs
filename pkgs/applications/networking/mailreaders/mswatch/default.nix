@@ -25,7 +25,9 @@ stdenv.mkDerivation (finalAttrs: {
     bison # For yacc
     flex
   ];
-  buildInputs = [ glib ];
+  buildInputs = [
+    glib
+  ];
 
   meta = with lib; {
     description = "Command-line Linux utility that efficiently directs mail synchronization between a pair of mailboxes";

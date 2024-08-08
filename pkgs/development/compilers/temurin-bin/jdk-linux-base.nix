@@ -33,7 +33,9 @@
 let
   cpuName = stdenv.hostPlatform.parsed.cpu.name;
   runtimeDependencies =
-    [ cups ]
+    [
+      cups
+    ]
     ++ lib.optionals gtkSupport [
       cairo
       glib

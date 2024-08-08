@@ -18,7 +18,9 @@ stdenv.mkDerivation {
 
   buildInputs =
     if stdenv.hostPlatform.isDarwin then
-      [ Carbon ]
+      [
+        Carbon
+      ]
     else
       [
         libGL

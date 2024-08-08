@@ -35,7 +35,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-5Ld8Qc/EyMWgNfzcMgx7xs+3XvfFoDQVPfFBP6HZLxM=";
   };
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs =
     [
@@ -49,26 +51,34 @@ stdenv.mkDerivation rec {
       vala
     ];
 
-  buildInputs = [
-    sqlite
-    libpsl
-    glib.out
-    brotli
-  ] ++ lib.optionals stdenv.isLinux [ libsysprof-capture ];
+  buildInputs =
+    [
+      sqlite
+      libpsl
+      glib.out
+      brotli
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      libsysprof-capture
+    ];
 
   propagatedBuildInputs = [
     glib
     libxml2
   ];
 
-  mesonFlags = [
-    "-Dtls_check=false" # glib-networking is a runtime dependency, not a compile-time dependency
-    "-Dgssapi=disabled"
-    "-Dvapi=${if withIntrospection then "enabled" else "disabled"}"
-    "-Dintrospection=${if withIntrospection then "enabled" else "disabled"}"
-    "-Dgnome=${lib.boolToString gnomeSupport}"
-    "-Dntlm=disabled"
-  ] ++ lib.optionals (!stdenv.isLinux) [ "-Dsysprof=disabled" ];
+  mesonFlags =
+    [
+      "-Dtls_check=false" # glib-networking is a runtime dependency, not a compile-time dependency
+      "-Dgssapi=disabled"
+      "-Dvapi=${if withIntrospection then "enabled" else "disabled"}"
+      "-Dintrospection=${if withIntrospection then "enabled" else "disabled"}"
+      "-Dgnome=${lib.boolToString gnomeSupport}"
+      "-Dntlm=disabled"
+    ]
+    ++ lib.optionals (!stdenv.isLinux) [
+      "-Dsysprof=disabled"
+    ];
 
   env.NIX_CFLAGS_COMPILE = "-lpthread";
 

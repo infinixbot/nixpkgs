@@ -42,7 +42,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals stdenv.isLinux [ alsa-lib ]
+    lib.optionals stdenv.isLinux [
+      alsa-lib
+    ]
     ++ (
       if stdenv.isDarwin then
         [

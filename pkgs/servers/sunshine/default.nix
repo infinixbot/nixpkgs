@@ -86,14 +86,18 @@ stdenv'.mkDerivation rec {
     '';
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    python3
-    makeWrapper
-    # Avoid fighting upstream's usage of vendored ffmpeg libraries
-    autoPatchelfHook
-  ] ++ lib.optionals cudaSupport [ autoAddDriverRunpath ];
+  nativeBuildInputs =
+    [
+      cmake
+      pkg-config
+      python3
+      makeWrapper
+      # Avoid fighting upstream's usage of vendored ffmpeg libraries
+      autoPatchelfHook
+    ]
+    ++ lib.optionals cudaSupport [
+      autoAddDriverRunpath
+    ];
 
   buildInputs =
     [
@@ -136,8 +140,12 @@ stdenv'.mkDerivation rec {
       libnotify
       miniupnpc
     ]
-    ++ lib.optionals cudaSupport [ cudaPackages.cudatoolkit ]
-    ++ lib.optionals stdenv.isx86_64 [ intel-media-sdk ];
+    ++ lib.optionals cudaSupport [
+      cudaPackages.cudatoolkit
+    ]
+    ++ lib.optionals stdenv.isx86_64 [
+      intel-media-sdk
+    ];
 
   runtimeDependencies = [
     avahi
@@ -175,7 +183,9 @@ stdenv'.mkDerivation rec {
     cp -r ${ui}/build ../
   '';
 
-  buildFlags = [ "sunshine" ];
+  buildFlags = [
+    "sunshine"
+  ];
 
   # allow Sunshine to find libvulkan
   postFixup = lib.optionalString cudaSupport ''

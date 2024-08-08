@@ -51,7 +51,9 @@
             what = "/sysroot${config.system.build.etcMetadataImage}";
             type = "erofs";
             options = "loop";
-            unitConfig.RequiresMountsFor = [ "/sysroot/nix/store" ];
+            unitConfig.RequiresMountsFor = [
+              "/sysroot/nix/store"
+            ];
           }
           {
             where = "/sysroot/etc";
@@ -69,7 +71,9 @@
                 "upperdir=/sysroot/.rw-etc/upper"
                 "workdir=/sysroot/.rw-etc/work"
               ]
-              ++ lib.optionals (!config.system.etc.overlay.mutable) [ "ro" ]
+              ++ lib.optionals (!config.system.etc.overlay.mutable) [
+                "ro"
+              ]
             );
             wantedBy = [ "initrd-fs.target" ];
             before = [ "initrd-fs.target" ];

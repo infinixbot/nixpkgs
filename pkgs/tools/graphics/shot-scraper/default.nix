@@ -26,7 +26,9 @@ python3.pkgs.buildPythonApplication rec {
   # skip tests due to network access
   doCheck = false;
 
-  pythonImportsCheck = [ "shot_scraper" ];
+  pythonImportsCheck = [
+    "shot_scraper"
+  ];
 
   meta = with lib; {
     description = "Command-line utility for taking automated screenshots of websites";

@@ -21,7 +21,9 @@ import ./make-test-python.nix (
       { ... }:
 
       {
-        imports = [ ./common/x11.nix ];
+        imports = [
+          ./common/x11.nix
+        ];
 
         services.xserver.enable = true;
         environment.systemPackages = with pkgs; [

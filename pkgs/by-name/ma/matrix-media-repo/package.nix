@@ -23,7 +23,9 @@ let
     pname = "${pname}-compile_assets";
     inherit version src vendorHash;
 
-    subPackages = [ "cmd/utilities/compile_assets" ];
+    subPackages = [
+      "cmd/utilities/compile_assets"
+    ];
   };
 in
 

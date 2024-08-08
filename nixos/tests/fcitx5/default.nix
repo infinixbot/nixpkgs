@@ -7,7 +7,9 @@ import ../make-test-python.nix (
     nodes.machine =
       { pkgs, ... }:
       {
-        imports = [ ../common/user-account.nix ];
+        imports = [
+          ../common/user-account.nix
+        ];
 
         environment.systemPackages = [
           # To avoid clashing with xfce4-terminal

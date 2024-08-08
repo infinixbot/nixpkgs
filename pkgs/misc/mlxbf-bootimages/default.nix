@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-e13XZhxf41240Qu+hh2a9+KIvZCL+8k5JyZrpJCHmI8=";
   };
 
-  nativeBuildInputs = [ dpkg ];
+  nativeBuildInputs = [
+    dpkg
+  ];
 
   unpackCmd = "dpkg -x $curSrc src";
 

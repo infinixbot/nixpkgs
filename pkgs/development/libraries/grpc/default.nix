@@ -104,7 +104,9 @@ stdenv.mkDerivation rec {
   '';
 
   env.NIX_CFLAGS_COMPILE = toString (
-    [ "-Wno-error" ]
+    [
+      "-Wno-error"
+    ]
     ++ lib.optionals stdenv.isDarwin [
       # Workaround for https://github.com/llvm/llvm-project/issues/48757
       "-Wno-elaborated-enum-base"

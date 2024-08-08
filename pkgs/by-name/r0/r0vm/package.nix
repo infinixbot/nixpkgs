@@ -26,9 +26,13 @@ rustPlatform.buildRustPackage rec {
     perl
   ];
 
-  buildInputs = [
-    openssl.dev
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.SystemConfiguration ];
+  buildInputs =
+    [
+      openssl.dev
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.SystemConfiguration
+    ];
 
   doCheck = false;
 

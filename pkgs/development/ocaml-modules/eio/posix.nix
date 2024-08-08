@@ -26,7 +26,9 @@ buildDunePackage {
     NIX_CFLAGS_COMPILE = "-Wno-implicit-function-declaration";
   };
 
-  buildInputs = [ dune-configurator ];
+  buildInputs = [
+    dune-configurator
+  ];
 
   propagatedBuildInputs = [
     eio

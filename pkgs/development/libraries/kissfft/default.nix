@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
     sha256 = "1yfws5bn4kh62yk6hdyp9h9775l6iz7wsfisbn58jap6b56s8j5s";
   };
 
-  patches = [ ./0001-pkgconfig-darwin.patch ];
+  patches = [
+    ./0001-pkgconfig-darwin.patch
+  ];
 
   # https://bugs.llvm.org/show_bug.cgi?id=45034
   postPatch =

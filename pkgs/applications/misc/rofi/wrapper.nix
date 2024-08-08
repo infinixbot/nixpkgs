@@ -14,7 +14,9 @@
 symlinkJoin {
   name = "rofi-${rofi-unwrapped.version}";
 
-  paths = [ rofi-unwrapped.out ] ++ (lib.forEach plugins (p: p.out));
+  paths = [
+    rofi-unwrapped.out
+  ] ++ (lib.forEach plugins (p: p.out));
 
   nativeBuildInputs = [
     makeWrapper

@@ -770,16 +770,22 @@ in
               allowPaths = if isList value then value else singleton value;
             in
             [ "${cfg.configDir}" ] ++ allowPaths;
-          RestrictAddressFamilies = [
-            "AF_INET"
-            "AF_INET6"
-            "AF_NETLINK"
-            "AF_UNIX"
-          ] ++ optionals (any useComponent componentsUsingBluetooth) [ "AF_BLUETOOTH" ];
+          RestrictAddressFamilies =
+            [
+              "AF_INET"
+              "AF_INET6"
+              "AF_NETLINK"
+              "AF_UNIX"
+            ]
+            ++ optionals (any useComponent componentsUsingBluetooth) [
+              "AF_BLUETOOTH"
+            ];
           RestrictNamespaces = true;
           RestrictRealtime = true;
           RestrictSUIDSGID = true;
-          SupplementaryGroups = optionals (any useComponent componentsUsingSerialDevices) [ "dialout" ];
+          SupplementaryGroups = optionals (any useComponent componentsUsingSerialDevices) [
+            "dialout"
+          ];
           SystemCallArchitectures = "native";
           SystemCallFilter =
             [

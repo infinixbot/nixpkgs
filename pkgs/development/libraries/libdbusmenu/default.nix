@@ -49,7 +49,9 @@ stdenv.mkDerivation (finalAttrs: {
       }
       .${gtkVersion} or (throw "unknown GTK version ${gtkVersion}");
 
-  patches = [ ./requires-glib.patch ];
+  patches = [
+    ./requires-glib.patch
+  ];
 
   postPatch = ''
     for f in {configure,ltmain.sh,m4/libtool.m4}; do

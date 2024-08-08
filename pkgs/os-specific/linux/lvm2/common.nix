@@ -46,10 +46,18 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
   buildInputs =
-    [ libaio ]
-    ++ lib.optionals udevSupport [ udev ]
-    ++ lib.optionals (!onlyLib) [ libuuid ]
-    ++ lib.optionals enableVDO [ vdo ];
+    [
+      libaio
+    ]
+    ++ lib.optionals udevSupport [
+      udev
+    ]
+    ++ lib.optionals (!onlyLib) [
+      libuuid
+    ]
+    ++ lib.optionals enableVDO [
+      vdo
+    ];
 
   configureFlags =
     [
@@ -80,8 +88,12 @@ stdenv.mkDerivation rec {
       "--enable-udev_rules"
       "--enable-udev_sync"
     ]
-    ++ lib.optionals enableVDO [ "--enable-vdo" ]
-    ++ lib.optionals stdenv.hostPlatform.isStatic [ "--enable-static_link" ];
+    ++ lib.optionals enableVDO [
+      "--enable-vdo"
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isStatic [
+      "--enable-static_link"
+    ];
 
   preConfigure = ''
     sed -i /DEFAULT_SYS_DIR/d Makefile.in
@@ -125,7 +137,9 @@ stdenv.mkDerivation rec {
     lib.optionals udevSupport [
       "SYSTEMD_GENERATOR_DIR=${placeholder "out"}/lib/systemd/system-generators"
     ]
-    ++ lib.optionals onlyLib [ "libdm.device-mapper" ];
+    ++ lib.optionals onlyLib [
+      "libdm.device-mapper"
+    ];
 
   # To prevent make install from failing.
   installFlags = [
@@ -153,7 +167,9 @@ stdenv.mkDerivation rec {
 
   # only split bin and lib out from out if cmdlib isn't enabled
   outputs =
-    [ "out" ]
+    [
+      "out"
+    ]
     ++ lib.optionals (!onlyLib) [
       "dev"
       "man"

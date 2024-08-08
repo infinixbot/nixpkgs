@@ -65,7 +65,9 @@ stdenv.mkDerivation (finalAttrs: {
     sed -i 's,malloc.h,stdlib.h,g' src-ILU/ilur/ilur.c
   '';
 
-  patches = [ ./0001-il_endian.h-Fix-endian-handling.patch ];
+  patches = [
+    ./0001-il_endian.h-Fix-endian-handling.patch
+  ];
 
   enableParallelBuilding = true;
 

@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Y40oLjddunrd7ZF1JbCcgjSCn8jFTubq69jhAVxInXw=";
   };
 
-  nativeBuildInputs = [ p7zip ];
+  nativeBuildInputs = [
+    p7zip
+  ];
 
   buildInputs = [
     curl

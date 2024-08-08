@@ -30,7 +30,9 @@ stdenv.mkDerivation (finalAttrs: {
       --replace "/usr/bin/install" "install"
   '';
 
-  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
+  makeFlags = [
+    "CC=${stdenv.cc.targetPrefix}cc"
+  ];
 
   installPhase = ''
     runHook preInstall
@@ -38,7 +40,9 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postInstall
   '';
 
-  installFlags = [ "PREFIX=${placeholder "out"}/bin" ];
+  installFlags = [
+    "PREFIX=${placeholder "out"}/bin"
+  ];
 
   meta = {
     description = "System monitor for Windowmaker";

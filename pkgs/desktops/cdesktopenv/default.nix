@@ -108,7 +108,9 @@ stdenv.mkDerivation rec {
     export LOCALE_ARCHIVE="${glibcLocales}/lib/locale/locale-archive"
   '';
 
-  configureFlags = [ "--with-tcl=${tcl}/lib" ];
+  configureFlags = [
+    "--with-tcl=${tcl}/lib"
+  ];
 
   preInstall = ''
     mkdir -p $out/opt/dt/bin

@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
     kdePackages.wrapQtAppsHook
   ];
 
-  buildInputs = [ kdePackages.libplasma ];
+  buildInputs = [
+    kdePackages.libplasma
+  ];
 
   meta = {
     description = "KDE Plasma plasmoid for supergfxctl";

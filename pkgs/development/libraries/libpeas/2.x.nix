@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     gi-docgen
@@ -66,7 +68,9 @@ stdenv.mkDerivation rec {
     gobject-introspection
   ];
 
-  mesonFlags = [ "-Dgtk_doc=true" ];
+  mesonFlags = [
+    "-Dgtk_doc=true"
+  ];
 
   postPatch = ''
     # Checks lua51 and lua5.1 executable but we have non of them.

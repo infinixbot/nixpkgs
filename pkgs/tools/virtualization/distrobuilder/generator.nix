@@ -15,7 +15,9 @@ stdenvNoCC.mkDerivation {
 
   inherit src version;
 
-  patches = [ ./nixos-generator.patch ];
+  patches = [
+    ./nixos-generator.patch
+  ];
 
   dontBuild = true;
   nativeBuildInputs = [ makeWrapper ];

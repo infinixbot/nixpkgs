@@ -24,7 +24,9 @@ rustPlatform.buildRustPackage rec {
     "--skip=format::tests::code_str_display"
   ];
 
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.IOKit ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.IOKit
+  ];
 
   meta = with lib; {
     description = "Least recently used (LRU) eviction of Docker images";

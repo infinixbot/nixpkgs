@@ -34,7 +34,9 @@ ocamlPackages.buildDunePackage {
     done
   '';
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   buildInputs = with ocamlPackages; [
     core_unix

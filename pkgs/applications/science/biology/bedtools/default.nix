@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ python3 ];
+  nativeBuildInputs = [
+    python3
+  ];
 
   buildInputs = [
     zlib

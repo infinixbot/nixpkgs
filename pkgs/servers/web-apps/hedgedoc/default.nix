@@ -57,7 +57,9 @@ stdenv.mkDerivation {
     python311 # needed for sqlite node-gyp
   ];
 
-  buildInputs = [ nodejs ];
+  buildInputs = [
+    nodejs
+  ];
 
   dontConfigure = true;
 

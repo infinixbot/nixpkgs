@@ -25,7 +25,9 @@ python3.pkgs.buildPythonApplication rec {
     rev = "refs/tags/v${version}";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ wrapQtAppsHook ];
+  nativeBuildInputs = with python3.pkgs; [
+    wrapQtAppsHook
+  ];
 
   propagatedBuildInputs =
     with python3.pkgs;
@@ -40,7 +42,9 @@ python3.pkgs.buildPythonApplication rec {
       truststore
       qt5.qtwayland
     ]
-    ++ lib.optionals (pythonOlder "3.9") [ importlib-resources ];
+    ++ lib.optionals (pythonOlder "3.9") [
+      importlib-resources
+    ];
 
   dontWrapQtApps = true;
 
@@ -50,7 +54,9 @@ python3.pkgs.buildPythonApplication rec {
 
   doCheck = true;
 
-  checkInputs = with python3.pkgs; [ pytestCheckHook ];
+  checkInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
   preCheck = ''
     export HOME=$(mktemp -d)

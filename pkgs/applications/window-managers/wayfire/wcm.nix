@@ -48,7 +48,9 @@ stdenv.mkDerivation (finalAttrs: {
     libxkbcommon
   ];
 
-  mesonFlags = [ "-Denable_wdisplays=false" ];
+  mesonFlags = [
+    "-Denable_wdisplays=false"
+  ];
 
   meta = {
     homepage = "https://github.com/WayfireWM/wcm";

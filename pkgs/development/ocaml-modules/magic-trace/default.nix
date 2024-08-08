@@ -29,7 +29,9 @@ buildDunePackage rec {
     hash = "sha256-cAoaAXZOeWNQh6emm17a9oCis8s4jJxPQMI/NfiUa7g=";
   };
 
-  nativeBuildInputs = [ ocaml-crunch ];
+  nativeBuildInputs = [
+    ocaml-crunch
+  ];
   buildInputs = [
     angstrom
     async

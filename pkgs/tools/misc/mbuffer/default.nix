@@ -15,8 +15,12 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-fzkm6S+qgblqMkIPgCiLVfGFBIDyoDLBbtYbUyZ8rgk=";
   };
 
-  buildInputs = [ openssl ];
-  nativeBuildInputs = [ which ];
+  buildInputs = [
+    openssl
+  ];
+  nativeBuildInputs = [
+    which
+  ];
 
   doCheck = true;
 

@@ -194,7 +194,11 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs =
     let
-      python = python3.withPackages (ps: with ps; [ urllib3 ]);
+      python = python3.withPackages (
+        ps: with ps; [
+          urllib3
+        ]
+      );
       svn = writeScriptBin "svn" ''
         #!${runtimeShell} -e
         if [ "$1" = checkout ]; then

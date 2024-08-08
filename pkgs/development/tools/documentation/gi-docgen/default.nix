@@ -18,7 +18,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-hwx3+WIEYszknjVUKkLcFhL8hYcz6D274kjFNUWK7B4=";
   };
 
-  depsBuildBuild = [ python3 ];
+  depsBuildBuild = [
+    python3
+  ];
 
   nativeBuildInputs = [
     meson

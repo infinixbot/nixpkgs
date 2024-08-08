@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
     python3Packages.pefile
   ];
 
-  buildInputs = [ gnu-efi ];
+  buildInputs = [
+    gnu-efi
+  ];
 
   postPatch = ''
     patchShebangs \

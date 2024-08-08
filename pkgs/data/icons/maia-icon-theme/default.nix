@@ -31,7 +31,9 @@ stdenv.mkDerivation {
     kwindowsystem
   ];
 
-  propagatedBuildInputs = [ hicolor-icon-theme ];
+  propagatedBuildInputs = [
+    hicolor-icon-theme
+  ];
 
   dontDropIconThemeCache = true;
 

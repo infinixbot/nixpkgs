@@ -97,9 +97,13 @@ stdenv.mkDerivation rec {
     (lib.cmakeFeature "CHIAKI_USE_SYSTEM_CURL" "true")
   ];
 
-  qtWrapperArgs = [ "--prefix LD_LIBRARY_PATH : ${vulkan-loader}/lib" ];
+  qtWrapperArgs = [
+    "--prefix LD_LIBRARY_PATH : ${vulkan-loader}/lib"
+  ];
 
-  pythonPath = [ python3.pkgs.requests ];
+  pythonPath = [
+    python3.pkgs.requests
+  ];
 
   postInstall = ''
     install -Dm755 $src/scripts/psn-account-id.py $out/bin/psn-account-id

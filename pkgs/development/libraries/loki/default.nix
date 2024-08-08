@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
     make build-shared
   '';
 
-  env.NIX_CFLAGS_COMPILE = toString [ "-std=c++11" ];
+  env.NIX_CFLAGS_COMPILE = toString [
+    "-std=c++11"
+  ];
 
   enableParallelBuilding = true;
 

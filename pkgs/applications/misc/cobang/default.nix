@@ -70,7 +70,9 @@ buildPythonApplication rec {
     gst-python
   ];
 
-  nativeCheckInputs = [ pytestCheckHook ];
+  nativeCheckInputs = [
+    pytestCheckHook
+  ];
 
   # Wrapping this manually for SVG recognition
   dontWrapGApps = true;

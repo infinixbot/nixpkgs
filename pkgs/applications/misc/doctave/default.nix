@@ -22,7 +22,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-keLcNttdM9JUnn3qi/bWkcObIHl3MRACDHKPSZuScOc=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [ CoreServices ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    CoreServices
+  ];
 
   meta = with lib; {
     description = "Batteries-included developer documentation site generator";

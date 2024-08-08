@@ -43,7 +43,9 @@ buildGoModule rec {
   ];
 
   buildInputs =
-    [ gpgme ]
+    [
+      gpgme
+    ]
     ++ lib.optionals stdenv.isLinux [
       btrfs-progs
       libapparmor

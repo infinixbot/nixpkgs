@@ -29,7 +29,9 @@ let
       cmdLineToolsVersion = "13.0";
       platformTools = "35.0.1";
       buildTools = "34.0.0";
-      ndk = [ "26.3.11579264" ];
+      ndk = [
+        "26.3.11579264"
+      ];
       cmake = "3.6.4111459";
       emulator = "35.1.4";
     };

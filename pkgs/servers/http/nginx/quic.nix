@@ -5,5 +5,7 @@ callPackage ./generic.nix args {
 
   inherit (nginxMainline) src version;
 
-  configureFlags = [ "--with-http_v3_module" ];
+  configureFlags = [
+    "--with-http_v3_module"
+  ];
 }

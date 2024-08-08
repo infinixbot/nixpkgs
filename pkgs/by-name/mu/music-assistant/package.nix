@@ -63,7 +63,9 @@ python.pkgs.buildPythonApplication rec {
       --replace-fail "0.0.0" "${version}"
   '';
 
-  build-system = with python.pkgs; [ setuptools ];
+  build-system = with python.pkgs; [
+    setuptools
+  ];
 
   dependencies =
     with python.pkgs;

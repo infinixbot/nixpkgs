@@ -39,7 +39,9 @@ in
     };
   };
   config = mkIf cfg.enable {
-    environment.systemPackages = [ cfg.package ];
+    environment.systemPackages = [
+      cfg.package
+    ];
     services.scion = {
       scion-dispatcher.enable = true;
       scion-daemon.enable = true;

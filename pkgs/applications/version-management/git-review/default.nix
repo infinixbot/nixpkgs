@@ -29,7 +29,9 @@ buildPythonApplication rec {
     "man"
   ];
 
-  nativeBuildInputs = [ pbr ];
+  nativeBuildInputs = [
+    pbr
+  ];
 
   propagatedBuildInputs = [
     requests

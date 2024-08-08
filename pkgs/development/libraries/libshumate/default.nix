@@ -63,9 +63,13 @@ stdenv.mkDerivation (finalAttrs: {
     protobufc
   ];
 
-  nativeCheckInputs = [ xvfb-run ];
+  nativeCheckInputs = [
+    xvfb-run
+  ];
 
-  mesonFlags = [ "-Ddemos=true" ];
+  mesonFlags = [
+    "-Ddemos=true"
+  ];
 
   doCheck = !stdenv.isDarwin;
 

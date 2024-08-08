@@ -25,7 +25,9 @@ python3.pkgs.buildPythonApplication {
     wrapQtAppsHook
   ];
 
-  buildInputs = [ qtsvg ];
+  buildInputs = [
+    qtsvg
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     python-dateutil

@@ -31,7 +31,9 @@ let
       hash = "sha256-4IwKqXlG7jh1siuPT5pVgiYB+KlmCzF6+OMPT3I3yTQ=";
     };
 
-    patches = [ ./keep-pythonpath-in-testing.patch ];
+    patches = [
+      ./keep-pythonpath-in-testing.patch
+    ];
 
     postPatch =
       ''
@@ -101,7 +103,9 @@ let
       ++ lib.optionals stdenv.isLinux [
         util-linux # Add 'setsid' to PATH.
       ]
-      ++ lib.optionals stdenv.isDarwin [ getconf ]
+      ++ lib.optionals stdenv.isDarwin [
+        getconf
+      ]
       ++ (with python3.pkgs; [
         lockfile
         mock
@@ -122,7 +126,9 @@ let
             ncftp
             rsync
           ]
-          ++ lib.optionals stdenv.isDarwin [ getconf ]
+          ++ lib.optionals stdenv.isDarwin [
+            getconf
+          ]
         );
       in
       ''

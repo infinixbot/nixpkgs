@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
     wrapQtAppsHook
   ];
 
-  buildInputs = [ qtbase ];
+  buildInputs = [
+    qtbase
+  ];
 
   meta = with lib; {
     description = "Quickly display a calendar";

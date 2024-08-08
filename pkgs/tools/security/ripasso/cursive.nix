@@ -27,9 +27,13 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-9wBaFq2KVfLTd1j8ZPoUlmZJDW2UhvGBAaCGX+qg92s=";
   };
 
-  patches = [ ./fix-tests.patch ];
+  patches = [
+    ./fix-tests.patch
+  ];
 
-  cargoPatches = [ ./fix-build.patch ];
+  cargoPatches = [
+    ./fix-build.patch
+  ];
 
   cargoLock = {
     lockFile = ./Cargo.lock;

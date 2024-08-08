@@ -43,9 +43,13 @@ python3Packages.buildPythonApplication rec {
     rustPlatform.maturinBuildHook
   ];
 
-  buildInputs = [
-    libiconv
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.SystemConfiguration ];
+  buildInputs =
+    [
+      libiconv
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.SystemConfiguration
+    ];
 
   dontUseCmakeConfigure = true;
 
@@ -62,7 +66,9 @@ python3Packages.buildPythonApplication rec {
       --zsh <($out/bin/uv --generate-shell-completion zsh)
   '';
 
-  pythonImportsCheck = [ "uv" ];
+  pythonImportsCheck = [
+    "uv"
+  ];
 
   passthru = {
     tests.version = testers.testVersion {

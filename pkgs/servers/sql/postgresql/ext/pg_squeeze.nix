@@ -17,7 +17,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-YS13iIpQ4NJe0N6bRVa2RDxEMwEzBc2mjNYM5/Vqjn8=";
   };
 
-  buildInputs = [ postgresql ];
+  buildInputs = [
+    postgresql
+  ];
 
   installPhase = ''
     runHook preInstall

@@ -26,7 +26,9 @@ stdenv.mkDerivation rec {
     qtbase
   ];
 
-  cmakeFlags = [ "-DBUILD_OUT_OF_TREE=On" ];
+  cmakeFlags = [
+    "-DBUILD_OUT_OF_TREE=On"
+  ];
 
   dontWrapQtApps = true;
 

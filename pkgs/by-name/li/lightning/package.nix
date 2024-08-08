@@ -32,7 +32,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  configureFlags = [ (lib.enableFeature true "disassembler") ];
+  configureFlags = [
+    (lib.enableFeature true "disassembler")
+  ];
 
   doCheck = true;
 

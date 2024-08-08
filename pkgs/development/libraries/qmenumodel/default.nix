@@ -73,7 +73,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   dontWrapQtApps = true;
 
-  cmakeFlags = [ "-DENABLE_TESTS=${lib.boolToString finalAttrs.finalPackage.doCheck}" ];
+  cmakeFlags = [
+    "-DENABLE_TESTS=${lib.boolToString finalAttrs.finalPackage.doCheck}"
+  ];
 
   doCheck = stdenv.buildPlatform.canExecute stdenv.hostPlatform;
 
@@ -100,6 +102,8 @@ stdenv.mkDerivation (finalAttrs: {
     license = licenses.lgpl3Only;
     maintainers = teams.lomiri.members;
     platforms = platforms.linux;
-    pkgConfigModules = [ "qmenumodel" ];
+    pkgConfigModules = [
+      "qmenumodel"
+    ];
   };
 })

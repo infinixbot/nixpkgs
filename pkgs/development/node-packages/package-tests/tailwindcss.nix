@@ -15,7 +15,9 @@ let
   '';
 
   tailwindcssWithPlugins = tailwindcss.overrideAttrs (oldAttrs: {
-    plugins = [ nodePackages."@tailwindcss/typography" ];
+    plugins = [
+      nodePackages."@tailwindcss/typography"
+    ];
   });
 
   tailwindcssWithPluginsConfig = builtins.toFile "tailwind.config.js" ''

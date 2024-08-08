@@ -25,9 +25,13 @@ stdenv.mkDerivation rec {
     ninja
   ];
 
-  mesonFlags = [ "-Dnix-system=${stdenv.system}" ];
+  mesonFlags = [
+    "-Dnix-system=${stdenv.system}"
+  ];
 
-  hardeningDisable = [ "stackprotector" ];
+  hardeningDisable = [
+    "stackprotector"
+  ];
 
   postInstall = ''
     mkdir -p $out/nix-support

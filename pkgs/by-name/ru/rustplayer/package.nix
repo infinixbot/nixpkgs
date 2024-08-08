@@ -20,7 +20,9 @@ rustPlatform.buildRustPackage {
   };
 
   # This patch is from the source
-  patches = [ ./dynamic-lib.patch ];
+  patches = [
+    ./dynamic-lib.patch
+  ];
 
   cargoLock = {
     lockFile = ./Cargo.lock;

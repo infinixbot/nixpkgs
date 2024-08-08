@@ -100,14 +100,20 @@ stdenv.mkDerivation rec {
   # of /usr/X11 in the host system, leading to an impure build of the
   # package. To avoid this issue, X11 support is explicitly disabled.
   configureFlags =
-    lib.optionals (!enableGhostscript) [ "--without-x" ]
-    ++ [ "ac_cv_path_PERL=${buildPackages.perl}/bin/perl" ]
+    lib.optionals (!enableGhostscript) [
+      "--without-x"
+    ]
+    ++ [
+      "ac_cv_path_PERL=${buildPackages.perl}/bin/perl"
+    ]
     ++ lib.optionals enableGhostscript [
       "--with-gs=${lib.getBin ghostscript}/bin/gs"
       "--with-awk=${lib.getBin gawk}/bin/gawk"
       "--with-appresdir=${placeholder "out"}/lib/X11/app-defaults"
     ]
-    ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [ "gl_cv_func_signbit=yes" ];
+    ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
+      "gl_cv_func_signbit=yes"
+    ];
 
   makeFlags = lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
     # Trick to get the build system find the proper 'native' groff

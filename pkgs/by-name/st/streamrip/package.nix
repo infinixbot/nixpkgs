@@ -18,9 +18,13 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-KwMt89lOPGt6nX7ywliG/iAJ1WnG0CRPwhAVlPR85q0=";
   };
 
-  patches = [ ./patches/ensure-the-default-config-file-is-writable.patch ];
+  patches = [
+    ./patches/ensure-the-default-config-file-is-writable.patch
+  ];
 
-  nativeBuildInputs = with python3Packages; [ poetry-core ];
+  nativeBuildInputs = with python3Packages; [
+    poetry-core
+  ];
 
   propagatedBuildInputs = with python3Packages; [
     aiodns
@@ -44,7 +48,9 @@ python3Packages.buildPythonApplication rec {
     tqdm
   ];
 
-  nativeCheckInputs = with python3Packages; [ pytestCheckHook ];
+  nativeCheckInputs = with python3Packages; [
+    pytestCheckHook
+  ];
 
   prePatch = ''
     sed -i 's#aiofiles = ".*"#aiofiles = "*"#' pyproject.toml

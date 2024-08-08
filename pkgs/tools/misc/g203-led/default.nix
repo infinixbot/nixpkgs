@@ -14,7 +14,13 @@ stdenv.mkDerivation rec {
     sha256 = "1fhaimci80xmihg84bgrml61zr56pi9rkxfbs13vvw9dwjf031k0";
   };
 
-  buildInputs = [ (python3.withPackages (ps: with ps; [ pyusb ])) ];
+  buildInputs = [
+    (python3.withPackages (
+      ps: with ps; [
+        pyusb
+      ]
+    ))
+  ];
 
   postPatch = ''
     patchShebangs g203-led.py

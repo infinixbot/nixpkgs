@@ -21,11 +21,17 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-6zD9WRPWEt0ubppaMRTOusy0zm3z6SGB/5/kMxcJ/Ag=";
 
-  nativeBuildInputs = lib.optionals stdenv.isLinux [ pkg-config ];
+  nativeBuildInputs = lib.optionals stdenv.isLinux [
+    pkg-config
+  ];
 
   buildInputs =
-    lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.AppKit ]
-    ++ lib.optionals stdenv.isLinux [ xorg.libX11 ];
+    lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.AppKit
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      xorg.libX11
+    ];
 
   meta = with lib; {
     description = "Keyboard tester in terminal";

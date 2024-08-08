@@ -27,10 +27,18 @@ stdenv.mkDerivation rec {
     "BINDIR="
   ];
 
-  nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.isDarwin [ fixDarwinDylibNames ];
+  nativeBuildInputs =
+    [
+      pkg-config
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      fixDarwinDylibNames
+    ];
 
   buildInputs =
-    [ libusb1 ]
+    [
+      libusb1
+    ]
     ++ lib.optionals stdenv.isDarwin (
       with darwin.apple_sdk.frameworks;
       [

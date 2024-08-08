@@ -33,7 +33,9 @@ python3Packages.buildPythonApplication rec {
     patchShebangs repo_utils/test_files
   '';
 
-  build-system = [ python3Packages.setuptools ];
+  build-system = [
+    python3Packages.setuptools
+  ];
 
   dependencies = with python3Packages; [
     pywfa
@@ -61,10 +63,14 @@ python3Packages.buildPythonApplication rec {
 
   pythonImportsCheck = [ "truvari" ];
 
-  nativeCheckInputs = [
-    bcftools
-    htslib
-  ] ++ (with python3Packages; [ coverage ]);
+  nativeCheckInputs =
+    [
+      bcftools
+      htslib
+    ]
+    ++ (with python3Packages; [
+      coverage
+    ]);
 
   checkPhase = ''
     runHook preCheck

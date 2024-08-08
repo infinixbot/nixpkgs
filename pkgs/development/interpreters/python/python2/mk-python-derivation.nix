@@ -201,23 +201,39 @@ let
             ensureNewerSourcesForZipFilesHook # move to wheel installer (pip) or builder (setuptools, ...)?
             pythonRemoveTestsDirHook
           ]
-          ++ lib.optionals catchConflicts [ pythonCatchConflictsHook ]
-          ++ lib.optionals removeBinBytecode [ pythonRemoveBinBytecodeHook ]
-          ++ lib.optionals (lib.hasSuffix "zip" (attrs.src.name or "")) [ unzip ]
-          ++ lib.optionals (format == "setuptools") [ setuptoolsBuildHook ]
-          ++ lib.optionals (format == "pyproject") [ (pipBuildHook) ]
-          ++ lib.optionals (format == "wheel") [ wheelUnpackHook ]
+          ++ lib.optionals catchConflicts [
+            pythonCatchConflictsHook
+          ]
+          ++ lib.optionals removeBinBytecode [
+            pythonRemoveBinBytecodeHook
+          ]
+          ++ lib.optionals (lib.hasSuffix "zip" (attrs.src.name or "")) [
+            unzip
+          ]
+          ++ lib.optionals (format == "setuptools") [
+            setuptoolsBuildHook
+          ]
+          ++ lib.optionals (format == "pyproject") [
+            (pipBuildHook)
+          ]
+          ++ lib.optionals (format == "wheel") [
+            wheelUnpackHook
+          ]
           ++ lib.optionals (format == "egg") [
             eggUnpackHook
             eggBuildHook
             eggInstallHook
           ]
-          ++ lib.optionals (format != "other") [ (pipInstallHook) ]
+          ++ lib.optionals (format != "other") [
+            (pipInstallHook)
+          ]
           ++ lib.optionals (stdenv.buildPlatform == stdenv.hostPlatform) [
             # This is a test, however, it should be ran independent of the checkPhase and checkInputs
             pythonImportsCheckHook
           ]
-          ++ lib.optionals withDistOutput [ pythonOutputDistHook ]
+          ++ lib.optionals withDistOutput [
+            pythonOutputDistHook
+          ]
           ++ nativeBuildInputs;
 
         buildInputs = validatePythonMatches "buildInputs" (buildInputs ++ pythonPath);
@@ -240,7 +256,8 @@ let
         doCheck = false;
         doInstallCheck = attrs.doCheck or true;
         nativeInstallCheckInputs =
-          [ ]
+          [
+          ]
           ++ lib.optionals (format == "setuptools") [
             # Longer-term we should get rid of this and require
             # users of this function to set the `installCheckPhase` or

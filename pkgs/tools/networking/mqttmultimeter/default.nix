@@ -31,7 +31,9 @@ buildDotnetModule rec {
   dotnet-runtime = dotnet-runtime_8;
   executables = [ "mqttMultimeter" ];
 
-  nativeBuildInputs = [ copyDesktopItems ];
+  nativeBuildInputs = [
+    copyDesktopItems
+  ];
 
   buildInputs = [
     stdenv.cc.cc.lib

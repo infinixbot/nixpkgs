@@ -26,7 +26,9 @@ let
   postPatch = ''
     sed '1i#include <ctime>' -i zod_src/common.cpp # gcc12
   '';
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
   buildInputs = [
     SDL
     SDL_image

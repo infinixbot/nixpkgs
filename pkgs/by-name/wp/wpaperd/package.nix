@@ -21,7 +21,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-EkCGLxUQeSCR88Y95Hog9TAjpYMmZHlOqEM//ENiCco=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
   buildInputs = [
     wayland
     libGL

@@ -56,15 +56,23 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   cmakeFlags =
-    [ "-DROCM_PATH=${clr}" ]
-    ++ lib.optionals (gpuTargets != [ ]) [ "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}" ]
+    [
+      "-DROCM_PATH=${clr}"
+    ]
+    ++ lib.optionals (gpuTargets != [ ]) [
+      "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
+    ]
     ++ lib.optionals (!useOpenCL && !useCPU) [
       "-DCMAKE_C_COMPILER=hipcc"
       "-DCMAKE_CXX_COMPILER=hipcc"
       "-DBACKEND=HIP"
     ]
-    ++ lib.optionals (useOpenCL && !useCPU) [ "-DBACKEND=OCL" ]
-    ++ lib.optionals useCPU [ "-DBACKEND=CPU" ];
+    ++ lib.optionals (useOpenCL && !useCPU) [
+      "-DBACKEND=OCL"
+    ]
+    ++ lib.optionals useCPU [
+      "-DBACKEND=CPU"
+    ];
 
   postPatch = lib.optionalString (!useOpenCL && !useCPU) ''
     # Bad path

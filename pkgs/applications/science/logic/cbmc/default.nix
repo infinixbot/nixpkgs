@@ -35,7 +35,9 @@ stdenv.mkDerivation rec {
 
   # do not download sources
   # link existing cadical instead
-  patches = [ ./0001-Do-not-download-sources-in-cmake.patch ];
+  patches = [
+    ./0001-Do-not-download-sources-in-cmake.patch
+  ];
 
   postPatch =
     ''

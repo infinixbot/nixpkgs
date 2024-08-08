@@ -46,7 +46,9 @@ stdenv.mkDerivation {
     hash = "sha256-qee9/WTvTy5jWLowvZJOwAjrqznRhJR+u9dYsnCN/Qs=";
   };
 
-  cmakeFlags = [ "-DBUILD_QT6=1" ];
+  cmakeFlags = [
+    "-DBUILD_QT6=1"
+  ];
 
   patches = [
     (fetchpatch {

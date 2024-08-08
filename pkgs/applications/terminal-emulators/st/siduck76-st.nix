@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-5n+QkSlVhhku7adtl7TuWhDl3zdwFaXc7Ot1RaIN54A=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
   buildInputs = [
     fontconfig
     harfbuzz

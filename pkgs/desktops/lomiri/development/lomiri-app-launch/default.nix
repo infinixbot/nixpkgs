@@ -34,10 +34,14 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "lomiri-app-launch";
   version = "0.1.9";
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optionals withDocumentation [ "doc" ];
+  outputs =
+    [
+      "out"
+      "dev"
+    ]
+    ++ lib.optionals withDocumentation [
+      "doc"
+    ];
 
   src = fetchFromGitLab {
     owner = "ubports";
@@ -102,7 +106,11 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeCheckInputs = [
     dbus
-    (python3.withPackages (ps: with ps; [ python-dbusmock ]))
+    (python3.withPackages (
+      ps: with ps; [
+        python-dbusmock
+      ]
+    ))
   ];
 
   checkInputs = [
@@ -151,6 +159,8 @@ stdenv.mkDerivation (finalAttrs: {
     license = lib.licenses.gpl3Only;
     maintainers = lib.teams.lomiri.members;
     platforms = lib.platforms.linux;
-    pkgConfigModules = [ "lomiri-app-launch-0" ];
+    pkgConfigModules = [
+      "lomiri-app-launch-0"
+    ];
   };
 })

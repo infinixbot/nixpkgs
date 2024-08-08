@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
     desktop-file-utils
   ];
 
-  buildInputs = [ libadwaita ];
+  buildInputs = [
+    libadwaita
+  ];
 
   meta = with lib; {
     description = "Your plan for improving personal life and workflow";

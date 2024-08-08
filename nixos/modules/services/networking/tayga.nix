@@ -154,7 +154,9 @@ in
             prefixLength = 32;
           }
         ];
-        routes = [ cfg.ipv4.pool ];
+        routes = [
+          cfg.ipv4.pool
+        ];
       };
       ipv6 = {
         addresses = [
@@ -163,7 +165,9 @@ in
             prefixLength = 128;
           }
         ];
-        routes = [ cfg.ipv6.pool ];
+        routes = [
+          cfg.ipv6.pool
+        ];
       };
     };
 
@@ -188,7 +192,9 @@ in
           "~@resources"
         ];
         ProtectKernelLogs = true;
-        AmbientCapabilities = [ "CAP_NET_ADMIN" ];
+        AmbientCapabilities = [
+          "CAP_NET_ADMIN"
+        ];
         CapabilityBoundingSet = "";
         RestrictAddressFamilies = [
           "AF_INET"

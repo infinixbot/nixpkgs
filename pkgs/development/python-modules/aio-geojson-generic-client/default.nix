@@ -29,7 +29,9 @@ buildPythonPackage rec {
 
   __darwinAllowLocalNetworking = true;
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   pythonRelaxDeps = [
     # geojson>=2.4.0,<3, but we have 3.x

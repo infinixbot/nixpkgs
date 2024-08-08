@@ -259,7 +259,8 @@ let
               # needed for `_FORTIFY_SOURCE`.
             ]
             ++ lib.optional stdenv.cc.isGNU "CFLAGS=-O3"
-            ++ [ ]
+            ++ [
+            ]
             ++ ops stdenv.isDarwin [
               # on darwin, we have /usr/include/tk.h -- so the configure script detects
               # that tk is installed

@@ -101,7 +101,9 @@ let
               prevStage.stdenv.hasCC or false && prevStage.stdenv.cc != "/dev/null"
             ) prevStage.expand-response-params;
 
-            extraPackages = [ prevStage.llvmPackages.compiler-rt ];
+            extraPackages = [
+              prevStage.llvmPackages.compiler-rt
+            ];
 
             extraBuildCommands =
               let
@@ -2072,7 +2074,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
 
                     inherit (prevStage) expand-response-params;
 
-                    extraPackages = [ self.llvmPackages.compiler-rt ];
+                    extraPackages = [
+                      self.llvmPackages.compiler-rt
+                    ];
 
                     extraBuildCommands =
                       let
@@ -2302,7 +2306,9 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
         initialPath = ((import ../generic/common-path.nix) { pkgs = prevStage; });
 
         extraNativeBuildInputs =
-          lib.optionals localSystem.isAarch64 [ prevStage.updateAutotoolsGnuConfigScriptsHook ]
+          lib.optionals localSystem.isAarch64 [
+            prevStage.updateAutotoolsGnuConfigScriptsHook
+          ]
           ++ [ prevStage.darwin.apple_sdk.sdkRoot ];
 
         extraBuildInputs = [ prevStage.darwin.CF ];

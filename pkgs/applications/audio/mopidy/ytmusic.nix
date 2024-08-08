@@ -25,7 +25,9 @@ python.pkgs.buildPythonApplication rec {
     rm pyproject.toml
   '';
 
-  nativeBuildInputs = with python.pkgs; [ setuptools ];
+  nativeBuildInputs = with python.pkgs; [
+    setuptools
+  ];
 
   propagatedBuildInputs = [
     (mopidy.override { pythonPackages = python.pkgs; })

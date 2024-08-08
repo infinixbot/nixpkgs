@@ -249,8 +249,12 @@ stdenv.mkDerivation {
       (lib.mesonEnable "android-libbacktrace" false)
       (lib.mesonEnable "microsoft-clc" false) # Only relevant on Windows (OpenCL 1.2 API on top of D3D12)
     ]
-    ++ lib.optionals enablePatentEncumberedCodecs [ (lib.mesonOption "video-codecs" "all") ]
-    ++ lib.optionals needNativeCLC [ (lib.mesonOption "intel-clc" "system") ];
+    ++ lib.optionals enablePatentEncumberedCodecs [
+      (lib.mesonOption "video-codecs" "all")
+    ]
+    ++ lib.optionals needNativeCLC [
+      (lib.mesonOption "intel-clc" "system")
+    ];
 
   strictDeps = true;
 
@@ -293,29 +297,35 @@ stdenv.mkDerivation {
     buildPackages.stdenv.cc
   ];
 
-  nativeBuildInputs = [
-    meson
-    pkg-config
-    ninja
-    intltool
-    bison
-    flex
-    file
-    python3Packages.python
-    python3Packages.packaging
-    python3Packages.pycparser
-    python3Packages.mako
-    python3Packages.ply
-    jdupes
-    glslang
-    rustc
-    rust-bindgen
-    rust-cbindgen
-    rustPlatform.bindgenHook
-    wayland-scanner
-  ] ++ lib.optionals needNativeCLC [ buildPackages.mesa.driversdev ];
+  nativeBuildInputs =
+    [
+      meson
+      pkg-config
+      ninja
+      intltool
+      bison
+      flex
+      file
+      python3Packages.python
+      python3Packages.packaging
+      python3Packages.pycparser
+      python3Packages.mako
+      python3Packages.ply
+      jdupes
+      glslang
+      rustc
+      rust-bindgen
+      rust-cbindgen
+      rustPlatform.bindgenHook
+      wayland-scanner
+    ]
+    ++ lib.optionals needNativeCLC [
+      buildPackages.mesa.driversdev
+    ];
 
-  disallowedRequisites = lib.optionals needNativeCLC [ buildPackages.mesa.driversdev ];
+  disallowedRequisites = lib.optionals needNativeCLC [
+    buildPackages.mesa.driversdev
+  ];
 
   propagatedBuildInputs = [ libdrm ];
 

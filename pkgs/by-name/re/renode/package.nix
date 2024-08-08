@@ -54,7 +54,9 @@ stdenv.mkDerivation (finalAttrs: {
     makeWrapper
   ];
 
-  propagatedBuildInputs = [ gtk-sharp-3_0 ];
+  propagatedBuildInputs = [
+    gtk-sharp-3_0
+  ];
 
   strictDeps = true;
 

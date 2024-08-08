@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ gettext ];
+  nativeBuildInputs = [
+    gettext
+  ];
 
   buildInputs = [
     bzip2

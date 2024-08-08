@@ -30,11 +30,15 @@ stdenv.mkDerivation rec {
     sha256 = "zPwnC2qd28fA1saG4nysPlKU1nnXhfuSG3DpCY6T+kM=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    hexdump
-  ] ++ lib.optionals withGui [ wrapQtAppsHook ];
+  nativeBuildInputs =
+    [
+      autoreconfHook
+      pkg-config
+      hexdump
+    ]
+    ++ lib.optionals withGui [
+      wrapQtAppsHook
+    ];
 
   buildInputs =
     [
@@ -53,7 +57,9 @@ stdenv.mkDerivation rec {
   enableParallelBuilding = true;
 
   configureFlags =
-    [ "--with-boost-libdir=${boost.out}/lib" ]
+    [
+      "--with-boost-libdir=${boost.out}/lib"
+    ]
     ++ lib.optionals withGui [
       "--with-gui=qt5"
       "--with-qt-bindir=${qtbase.dev}/bin:${qttools.dev}/bin"

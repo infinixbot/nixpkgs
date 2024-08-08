@@ -85,7 +85,9 @@ python3.pkgs.buildPythonPackage rec {
     six
   ];
 
-  nativeBuildInputs = [ copyDesktopItems ];
+  nativeBuildInputs = [
+    copyDesktopItems
+  ];
 
   postUnpack = ''
     # Find the absolute source root to link correctly to the previous root

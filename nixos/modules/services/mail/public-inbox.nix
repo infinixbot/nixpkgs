@@ -67,7 +67,9 @@ let
         #LimitNOFILE = 30000;
         User = config.users.users."public-inbox".name;
         Group = config.users.groups."public-inbox".name;
-        RuntimeDirectory = [ "public-inbox-${srv}/perl-inline" ];
+        RuntimeDirectory = [
+          "public-inbox-${srv}/perl-inline"
+        ];
         RuntimeDirectoryMode = "700";
         # This is for BindPaths= and BindReadOnlyPaths=
         # to allow traversal of directories they create inside RootDirectory=

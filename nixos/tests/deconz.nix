@@ -6,7 +6,9 @@ import ./make-test-python.nix (
   {
     name = "deconz";
 
-    meta.maintainers = with lib.maintainers; [ bjornfor ];
+    meta.maintainers = with lib.maintainers; [
+      bjornfor
+    ];
 
     nodes.machine =
       {

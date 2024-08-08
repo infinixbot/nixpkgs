@@ -91,15 +91,23 @@ stdenv.mkDerivation rec {
       networkmanager
       glib
     ]
-    ++ lib.optionals withSensors [ lm_sensors ];
+    ++ lib.optionals withSensors [
+      lm_sensors
+    ];
 
   configureFlags =
     [
       "--disable-wifi-coconut" # Until https://github.com/kismetwireless/kismet/issues/478
     ]
-    ++ lib.optionals (!withNetworkManager) [ "--disable-libnm" ]
-    ++ lib.optionals (!withPython) [ "--disable-python-tools" ]
-    ++ lib.optionals (!withSensors) [ "--disable-lmsensors" ];
+    ++ lib.optionals (!withNetworkManager) [
+      "--disable-libnm"
+    ]
+    ++ lib.optionals (!withPython) [
+      "--disable-python-tools"
+    ]
+    ++ lib.optionals (!withSensors) [
+      "--disable-lmsensors"
+    ];
 
   enableParallelBuilding = true;
 

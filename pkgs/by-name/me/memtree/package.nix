@@ -17,9 +17,13 @@ python3Packages.buildPythonApplication {
     hash = "sha256-Ifp8hwkuyBw57fGer3GbDiJaRjL4TD3hzj+ecGXWqI0=";
   };
 
-  nativeBuildInputs = with python3Packages; [ poetry-core ];
+  nativeBuildInputs = with python3Packages; [
+    poetry-core
+  ];
 
-  propagatedBuildInputs = with python3Packages; [ rich ];
+  propagatedBuildInputs = with python3Packages; [
+    rich
+  ];
 
   nativeCheckInputs = with python3Packages; [
     hypothesis

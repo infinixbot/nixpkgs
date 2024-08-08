@@ -18,7 +18,9 @@ rustPlatform.buildRustPackage {
 
   cargoHash = "sha256-3OjZhWAgfmMZ0OGeRawk3KZpPqz1QCVkwsyGM+E7o88=";
 
-  buildInputs = [ libxkbcommon ];
+  buildInputs = [
+    libxkbcommon
+  ];
 
   meta = with lib; {
     description = "Tool to freeze the screen of a Wayland compositor";

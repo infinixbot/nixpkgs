@@ -60,7 +60,9 @@ import ./make-test-python.nix (
             port = "/run/public-inbox-http.sock";
             #port = 8080;
             args = [ "-W0" ];
-            mounts = [ "https://machine.${domain}/inbox" ];
+            mounts = [
+              "https://machine.${domain}/inbox"
+            ];
           };
           nntp = {
             enable = true;

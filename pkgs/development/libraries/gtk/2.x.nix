@@ -129,7 +129,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   enableParallelBuilding = true;
 
-  installFlags = [ "sysconfdir=${placeholder "out"}/etc" ];
+  installFlags = [
+    "sysconfdir=${placeholder "out"}/etc"
+  ];
 
   doCheck = false; # needs X11
 

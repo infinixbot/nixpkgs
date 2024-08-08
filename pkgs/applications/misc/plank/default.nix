@@ -71,7 +71,9 @@ stdenv.mkDerivation rec {
   ];
 
   # Make plank's application launcher hidden in Pantheon
-  patches = [ ./hide-in-pantheon.patch ];
+  patches = [
+    ./hide-in-pantheon.patch
+  ];
 
   postPatch = ''
     substituteInPlace ./configure \

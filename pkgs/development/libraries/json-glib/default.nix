@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs =
     [
@@ -52,13 +54,17 @@ stdenv.mkDerivation rec {
       glib
       libxslt
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ fixDarwinDylibNames ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      fixDarwinDylibNames
+    ]
     ++ lib.optionals withIntrospection [
       gobject-introspection
       gi-docgen
     ];
 
-  propagatedBuildInputs = [ glib ];
+  propagatedBuildInputs = [
+    glib
+  ];
 
   mesonFlags = [
     "-Dinstalled_test_prefix=${placeholder "installedTests"}"

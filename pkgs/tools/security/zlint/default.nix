@@ -26,7 +26,9 @@ buildGoModule rec {
     rm -rf v3/cmd/genTestCerts
   '';
 
-  excludedPackages = [ "lints" ];
+  excludedPackages = [
+    "lints"
+  ];
 
   ldflags = [
     "-s"

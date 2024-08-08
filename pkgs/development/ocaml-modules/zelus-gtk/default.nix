@@ -10,9 +10,13 @@ buildDunePackage {
 
   minimalOCamlVersion = "4.10";
 
-  nativeBuildInputs = [ zelus ];
+  nativeBuildInputs = [
+    zelus
+  ];
 
-  buildInputs = [ lablgtk ];
+  buildInputs = [
+    lablgtk
+  ];
 
   meta = {
     description = "Zelus GTK library";

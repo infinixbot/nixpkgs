@@ -41,7 +41,9 @@ buildPythonPackage rec {
     hatchling
   ];
 
-  dependencies = [ httpx ];
+  dependencies = [
+    httpx
+  ];
 
   optional-dependencies = rec {
     all = ext ++ http2 ++ passport ++ socks;

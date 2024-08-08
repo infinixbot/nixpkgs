@@ -16,7 +16,9 @@ stdenv.mkDerivation {
     hash = "sha256-zyxjUFxg+VufEVycYGCQPdjERE3p5Vz5iIi2UDujEjI=";
   };
 
-  nativeBuildInputs = [ zig_0_11.hook ];
+  nativeBuildInputs = [
+    zig_0_11.hook
+  ];
 
   meta = with lib; {
     description = "Minisign reimplemented in Zig";

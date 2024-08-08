@@ -16,7 +16,9 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-b8juIhJ3kh+NJc8RUVVoatqjWISSW0ir/vk2Dz/428Y=";
   };
   cargoHash = "sha256-LGxFRGzQ8jOfxT5di3+YGqfS5KM4+Br6KlTFpPbkJyU=";
-  buildInputs = [ wayland ];
+  buildInputs = [
+    wayland
+  ];
   nativeBuildInputs = [
     pkg-config
     makeWrapper

@@ -25,7 +25,9 @@ stdenv.mkDerivation (finalAttrs: {
     wrapQtAppsHook
   ];
 
-  buildInputs = [ pulseaudio ];
+  buildInputs = [
+    pulseaudio
+  ];
 
   meta = with lib; {
     description = "Pulseaudio bindings for Qt";

@@ -8,7 +8,13 @@
 }:
 
 let
-  perlInterpreter = perl.withPackages (ps: [ ps.PadWalker ] ++ extraPerlPackages);
+  perlInterpreter = perl.withPackages (
+    ps:
+    [
+      ps.PadWalker
+    ]
+    ++ extraPerlPackages
+  );
 in
 buildNpmPackage rec {
   pname = "perl-debug-adapter";

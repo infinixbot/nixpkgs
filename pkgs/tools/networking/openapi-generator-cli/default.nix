@@ -14,7 +14,9 @@ let
 
     jarfilename = "openapi-generator-cli-${finalAttrs.version}.jar";
 
-    nativeBuildInputs = [ makeWrapper ];
+    nativeBuildInputs = [
+      makeWrapper
+    ];
 
     src = fetchurl {
       url = "mirror://maven/org/openapitools/openapi-generator-cli/${finalAttrs.version}/${finalAttrs.jarfilename}";

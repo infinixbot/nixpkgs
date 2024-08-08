@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     libevent
   ];
 
-  configureFlags = [ "PREFIX=${placeholder "out"}" ];
+  configureFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   meta = with lib; {
     description = "Simple and secure Gemini server";

@@ -42,7 +42,9 @@ python.pkgs.buildPythonApplication rec {
 
   __darwinAllowLocalNetworking = true;
 
-  nativeCheckInputs = with python.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python.pkgs; [
+    pytestCheckHook
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/balta2ar/brotab";

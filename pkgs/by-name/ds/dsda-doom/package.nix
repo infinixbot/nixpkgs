@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
 
   sourceRoot = "${src.name}/prboom2";
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = [
     SDL2

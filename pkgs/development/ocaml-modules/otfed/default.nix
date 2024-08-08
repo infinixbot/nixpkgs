@@ -22,7 +22,9 @@ buildDunePackage rec {
     hash = "sha256-6QCom9nrz0B5vCmuBzqsM0zCs8tBLJC6peig+vCgMVA=";
   };
 
-  buildInputs = [ uutf ];
+  buildInputs = [
+    uutf
+  ];
 
   propagatedBuildInputs = [
     base
@@ -30,7 +32,9 @@ buildDunePackage rec {
     ppx_inline_test
   ];
 
-  checkInputs = [ alcotest ];
+  checkInputs = [
+    alcotest
+  ];
 
   doCheck = true;
 

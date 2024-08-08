@@ -47,10 +47,14 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "librsvg";
   version = "2.58.2";
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optionals withIntrospection [ "devdoc" ];
+  outputs =
+    [
+      "out"
+      "dev"
+    ]
+    ++ lib.optionals withIntrospection [
+      "devdoc"
+    ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/librsvg/${lib.versions.majorMinor finalAttrs.version}/librsvg-${finalAttrs.version}.tar.xz";
@@ -67,7 +71,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs =
     [

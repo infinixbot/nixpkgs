@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  mesonFlags = [ (lib.mesonEnable "use_libcap" withLibcap) ];
+  mesonFlags = [
+    (lib.mesonEnable "use_libcap" withLibcap)
+  ];
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
   nativeBuildInputs = [

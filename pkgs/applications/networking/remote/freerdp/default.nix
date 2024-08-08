@@ -160,7 +160,9 @@ stdenv.mkDerivation rec {
       Cocoa
       CoreMedia
     ]
-    ++ optionals withUnfree [ faac ];
+    ++ optionals withUnfree [
+      faac
+    ];
 
   nativeBuildInputs = [
     cmake
@@ -203,10 +205,14 @@ stdenv.mkDerivation rec {
       "-DTARGET_OS_WATCH=0"
       "-include AudioToolbox/AudioToolbox.h"
     ]
-    ++ lib.optionals stdenv.cc.isClang [ "-Wno-error=incompatible-function-pointer-types" ]
+    ++ lib.optionals stdenv.cc.isClang [
+      "-Wno-error=incompatible-function-pointer-types"
+    ]
   );
 
-  NIX_LDFLAGS = lib.optionals stdenv.isDarwin [ "-framework AudioToolbox" ];
+  NIX_LDFLAGS = lib.optionals stdenv.isDarwin [
+    "-framework AudioToolbox"
+  ];
 
   meta = with lib; {
     description = "Remote Desktop Protocol Client";

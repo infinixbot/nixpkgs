@@ -14,7 +14,9 @@ buildPythonApplication rec {
     hash = "sha256-73ZLgb5YcXlAOjbKLVv8oqgS6pstBdJxa7LFUgIHpUE=";
   };
 
-  propagatedBuildInputs = [ pycryptodome ];
+  propagatedBuildInputs = [
+    pycryptodome
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/cyanomiko/dcnnt-py";

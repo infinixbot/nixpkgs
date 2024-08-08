@@ -36,7 +36,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-nE+axTUxWCcgrxQ5y2cjkVswW2rwv/We0m7XgB4shko=";
   };
 
-  patches = [ ./dont_use_libPath.diff ];
+  patches = [
+    ./dont_use_libPath.diff
+  ];
 
   # disable dock plugins, it's part of dde-shell now
   postPatch = ''

@@ -24,7 +24,9 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "pywebpush" ];
 
-  build-system = [ setuptools-scm ];
+  build-system = [
+    setuptools-scm
+  ];
 
   dependencies = [
     django

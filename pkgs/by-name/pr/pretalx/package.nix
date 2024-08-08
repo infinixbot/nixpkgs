@@ -80,9 +80,13 @@ python.pkgs.buildPythonApplication rec {
       --replace "--cov=./ --cov-report=" ""
   '';
 
-  nativeBuildInputs = [ gettext ];
+  nativeBuildInputs = [
+    gettext
+  ];
 
-  build-system = with python.pkgs; [ setuptools ];
+  build-system = with python.pkgs; [
+    setuptools
+  ];
 
   pythonRelaxDeps = [
     "celery"
@@ -148,9 +152,15 @@ python.pkgs.buildPythonApplication rec {
     ++ plugins;
 
   optional-dependencies = {
-    mysql = with python.pkgs; [ mysqlclient ];
-    postgres = with python.pkgs; [ psycopg2 ];
-    redis = with python.pkgs; [ redis ];
+    mysql = with python.pkgs; [
+      mysqlclient
+    ];
+    postgres = with python.pkgs; [
+      psycopg2
+    ];
+    redis = with python.pkgs; [
+      redis
+    ];
   };
 
   postBuild = ''

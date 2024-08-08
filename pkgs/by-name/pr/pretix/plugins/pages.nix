@@ -25,7 +25,9 @@ buildPythonPackage rec {
 
   doCheck = false; # no tests
 
-  pythonImportsCheck = [ "pretix_pages" ];
+  pythonImportsCheck = [
+    "pretix_pages"
+  ];
 
   meta = with lib; {
     description = "Plugin to add static pages to your pretix event";

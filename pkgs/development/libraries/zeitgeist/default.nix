@@ -59,7 +59,9 @@ stdenv.mkDerivation rec {
     python3.pkgs.rdflib
   ];
 
-  configureFlags = [ "--disable-telepathy" ];
+  configureFlags = [
+    "--disable-telepathy"
+  ];
 
   enableParallelBuilding = true;
 

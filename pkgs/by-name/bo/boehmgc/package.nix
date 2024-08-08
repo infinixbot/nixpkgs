@@ -28,7 +28,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
   separateDebugInfo = stdenv.isLinux && stdenv.hostPlatform.libc != "musl";
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   configureFlags =
     [

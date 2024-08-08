@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     sed -i 's/docs//' Makefile.am
   '';
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   buildInputs = lib.optionals stdenv.isDarwin [
     libiconv

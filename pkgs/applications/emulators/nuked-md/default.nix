@@ -46,9 +46,13 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = [ SDL2 ];
+  buildInputs = [
+    SDL2
+  ];
 
   installPhase = ''
     runHook preInstall

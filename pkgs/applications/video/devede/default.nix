@@ -41,7 +41,9 @@ buildPythonApplication rec {
     gobject-introspection
   ];
 
-  buildInputs = [ ffmpeg ];
+  buildInputs = [
+    ffmpeg
+  ];
 
   propagatedBuildInputs = [
     gtk3

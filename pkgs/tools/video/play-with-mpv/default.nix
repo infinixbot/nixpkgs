@@ -46,7 +46,9 @@ python3Packages.buildPythonApplication rec {
     wheel
   ];
 
-  propagatedBuildInputs = [ youtube-dl ];
+  propagatedBuildInputs = [
+    youtube-dl
+  ];
 
   # package has no tests
   doCheck = false;

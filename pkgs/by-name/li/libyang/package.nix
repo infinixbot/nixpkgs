@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [ pcre2 ];
+  buildInputs = [
+    pcre2
+  ];
 
   cmakeFlags = [
     "-DCMAKE_INSTALL_LIBDIR=lib"

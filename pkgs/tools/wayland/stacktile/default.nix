@@ -22,9 +22,13 @@ stdenv.mkDerivation (finalAttrs: {
     "man"
   ];
 
-  nativeBuildInputs = [ wayland-scanner ];
+  nativeBuildInputs = [
+    wayland-scanner
+  ];
 
-  buildInputs = [ wayland ];
+  buildInputs = [
+    wayland
+  ];
 
   makeFlags = [
     "PREFIX=${placeholder "out"}"

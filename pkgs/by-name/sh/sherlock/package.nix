@@ -68,7 +68,9 @@ python3.pkgs.buildPythonApplication rec {
     pythonRelaxDepsHook
   ];
 
-  pythonRelaxDeps = [ "stem" ];
+  pythonRelaxDeps = [
+    "stem"
+  ];
 
   pytestFlagsArray = [
     "-m"

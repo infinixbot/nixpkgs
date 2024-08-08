@@ -38,7 +38,9 @@ python.pkgs.buildPythonApplication rec {
     sha256 = "09f02cn4i1l2aksb3azwfb70axqhn7d0d0vl2r6640hqr74nc1cv";
   };
 
-  nativeCheckInputs = with python.pkgs; [ mock ];
+  nativeCheckInputs = with python.pkgs; [
+    mock
+  ];
 
   propagatedBuildInputs =
     with python.pkgs;
@@ -53,11 +55,21 @@ python.pkgs.buildPythonApplication rec {
         sleekxmpp
         dnspython
       ])
-      ++ (lib.optionals withMatrix [ matrix-client ])
-      ++ (lib.optionals withSlack [ slack-sdk ])
-      ++ (lib.optionals withEmoji [ emoji ])
-      ++ (lib.optionals withPid [ psutil ])
-      ++ (lib.optionals withDbus [ dbus-python ])
+      ++ (lib.optionals withMatrix [
+        matrix-client
+      ])
+      ++ (lib.optionals withSlack [
+        slack-sdk
+      ])
+      ++ (lib.optionals withEmoji [
+        emoji
+      ])
+      ++ (lib.optionals withPid [
+        psutil
+      ])
+      ++ (lib.optionals withDbus [
+        dbus-python
+      ])
     );
 
   patches = [

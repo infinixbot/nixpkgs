@@ -36,9 +36,13 @@ stdenv.mkDerivation {
     wrapQtAppsHook
   ];
 
-  buildInputs = [ qtwebengine ];
+  buildInputs = [
+    qtwebengine
+  ];
 
-  cmakeFlags = [ "-DQOLIBRI_EB_SOURCE_DIR=${eb}" ];
+  cmakeFlags = [
+    "-DQOLIBRI_EB_SOURCE_DIR=${eb}"
+  ];
 
   postInstall = ''
     install -Dm644 $src/qolibri.desktop -t $out/share/applications

@@ -65,7 +65,13 @@ stdenv.mkDerivation (finalAttrs: {
     installShellFiles
   ];
 
-  buildInputs = [ ncurses ] ++ lib.optionals readlineSupport [ readline ];
+  buildInputs =
+    [
+      ncurses
+    ]
+    ++ lib.optionals readlineSupport [
+      readline
+    ];
 
   strictDeps = true;
 
@@ -77,7 +83,13 @@ stdenv.mkDerivation (finalAttrs: {
     "EDIT=${lineEditingLibrary}"
   ];
 
-  buildFlags = [ "all" ] ++ lib.optionals historySupport [ "history" ];
+  buildFlags =
+    [
+      "all"
+    ]
+    ++ lib.optionals historySupport [
+      "history"
+    ];
 
   postInstall = lib.optionalString historySupport ''
     installManPage history.1

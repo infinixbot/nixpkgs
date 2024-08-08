@@ -110,7 +110,9 @@ stdenv.mkDerivation rec {
       "--enable-inband"
       "--enable-rdmem"
     ]
-    ++ lib.optionals enableDPA [ "--enable-dpa" ];
+    ++ lib.optionals enableDPA [
+      "--enable-dpa"
+    ];
 
   enableParallelBuilding = true;
 

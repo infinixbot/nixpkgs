@@ -58,7 +58,9 @@ stdenv.mkDerivation rec {
     python3
   ];
 
-  depsBuildBuild = [ graphviz ];
+  depsBuildBuild = [
+    graphviz
+  ];
 
   # Functionality not currently provided by this package
   # that the cmake build can apparently use:
@@ -119,8 +121,12 @@ stdenv.mkDerivation rec {
       # * the `gimp` one, which allows GIMP to load jpeg-xl files
       "-DJPEGXL_ENABLE_PLUGINS=ON"
     ]
-    ++ lib.optionals stdenv.hostPlatform.isStatic [ "-DJPEGXL_STATIC=ON" ]
-    ++ lib.optionals stdenv.hostPlatform.isAarch32 [ "-DJPEGXL_FORCE_NEON=ON" ];
+    ++ lib.optionals stdenv.hostPlatform.isStatic [
+      "-DJPEGXL_STATIC=ON"
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isAarch32 [
+      "-DJPEGXL_FORCE_NEON=ON"
+    ];
 
   postPatch = ''
     substituteInPlace plugins/gdk-pixbuf/jxl.thumbnailer \

@@ -63,27 +63,38 @@ stdenv.mkDerivation rec {
       sphinx
       graphviz
     ]
-    ++ lib.optionals withAravis [ meson ]
-    ++ lib.optionals withGui [ qt5.wrapQtAppsHook ];
+    ++ lib.optionals withAravis [
+      meson
+    ]
+    ++ lib.optionals withGui [
+      qt5.wrapQtAppsHook
+    ];
 
-  buildInputs = [
-    elfutils
-    libselinux
-    libsepol
-    libunwind
-    libusb1
-    libuuid
-    libzip
-    orc
-    pcre
-    zstd
-    glib
-    gst_all_1.gstreamer
-    gst_all_1.gst-plugins-base
-    gst_all_1.gst-plugins-good
-    gst_all_1.gst-plugins-bad
-    gst_all_1.gst-plugins-ugly
-  ] ++ lib.optionals withAravis [ aravis ] ++ lib.optionals withGui [ qt5.qtbase ];
+  buildInputs =
+    [
+      elfutils
+      libselinux
+      libsepol
+      libunwind
+      libusb1
+      libuuid
+      libzip
+      orc
+      pcre
+      zstd
+      glib
+      gst_all_1.gstreamer
+      gst_all_1.gst-plugins-base
+      gst_all_1.gst-plugins-good
+      gst_all_1.gst-plugins-bad
+      gst_all_1.gst-plugins-ugly
+    ]
+    ++ lib.optionals withAravis [
+      aravis
+    ]
+    ++ lib.optionals withGui [
+      qt5.qtbase
+    ];
 
   hardeningDisable = [ "format" ];
 

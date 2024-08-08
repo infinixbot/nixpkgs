@@ -46,7 +46,9 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  cmakeFlags = [ "-DSURGE_BUILD_LV2=TRUE" ];
+  cmakeFlags = [
+    "-DSURGE_BUILD_LV2=TRUE"
+  ];
 
   CXXFLAGS = [
     # GCC 13: error: 'uint32_t' has not been declared

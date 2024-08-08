@@ -84,7 +84,9 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postInstall
   '';
 
-  desktopItems = [ "../apvlv.desktop" ];
+  desktopItems = [
+    "../apvlv.desktop"
+  ];
 
   passthru = {
     tests.version = testers.testVersion {

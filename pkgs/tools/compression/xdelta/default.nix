@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
     cd xdelta3
   '';
 
-  configureFlags = [ (mkWith lzmaSupport "liblzma") ];
+  configureFlags = [
+    (mkWith lzmaSupport "liblzma")
+  ];
 
   enableParallelBuilding = true;
 

@@ -66,18 +66,27 @@ stdenv.mkDerivation (finalAttrs: {
     };
 
   strictDeps = true;
-  depsBuildBuild = [ pkg-config ];
-  nativeBuildInputs = [
-    meson
-    ninja
+  depsBuildBuild = [
     pkg-config
-    python3
-    gettext
-    orc
-    glib
-    gstreamer
-    gobject-introspection
-  ] ++ lib.optionals enableDocumentation [ hotdoc ] ++ lib.optionals enableWayland [ wayland ];
+  ];
+  nativeBuildInputs =
+    [
+      meson
+      ninja
+      pkg-config
+      python3
+      gettext
+      orc
+      glib
+      gstreamer
+      gobject-introspection
+    ]
+    ++ lib.optionals enableDocumentation [
+      hotdoc
+    ]
+    ++ lib.optionals enableWayland [
+      wayland
+    ];
 
   buildInputs =
     [
@@ -97,8 +106,12 @@ stdenv.mkDerivation (finalAttrs: {
       libGL
       libvisual
     ]
-    ++ lib.optionals stdenv.isDarwin [ OpenGL ]
-    ++ lib.optionals enableAlsa [ alsa-lib ]
+    ++ lib.optionals stdenv.isDarwin [
+      OpenGL
+    ]
+    ++ lib.optionals enableAlsa [
+      alsa-lib
+    ]
     ++ lib.optionals enableX11 [
       libXext
       libXi
@@ -111,7 +124,13 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional enableCocoa Cocoa
     ++ lib.optional enableCdparanoia cdparanoia;
 
-  propagatedBuildInputs = [ gstreamer ] ++ lib.optionals (!stdenv.isDarwin) [ libdrm ];
+  propagatedBuildInputs =
+    [
+      gstreamer
+    ]
+    ++ lib.optionals (!stdenv.isDarwin) [
+      libdrm
+    ];
 
   mesonFlags =
     [
@@ -126,7 +145,9 @@ stdenv.mkDerivation (finalAttrs: {
       }"
       (lib.mesonEnable "doc" enableDocumentation)
     ]
-    ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [ "-Dtests=disabled" ]
+    ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
+      "-Dtests=disabled"
+    ]
     ++ lib.optional (!enableX11) "-Dx11=disabled"
     # TODO How to disable Wayland?
     ++ lib.optional (!enableGl) "-Dgl=disabled"

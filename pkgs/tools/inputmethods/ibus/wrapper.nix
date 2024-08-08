@@ -27,7 +27,9 @@ buildEnv {
     "/share/systemd/user/gnome-session.target.wants"
   ];
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   buildInputs = [ ibus ] ++ plugins;
 

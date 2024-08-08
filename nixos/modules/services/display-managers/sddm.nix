@@ -576,7 +576,9 @@ in
 
     environment = {
       etc."sddm.conf".source = cfgFile;
-      pathsToLink = [ "/share/sddm" ];
+      pathsToLink = [
+        "/share/sddm"
+      ];
       systemPackages = [ sddm ];
     };
 
@@ -602,7 +604,9 @@ in
           "plymouth-quit.service"
           "systemd-logind.service"
         ];
-        conflicts = [ "getty@tty7.service" ];
+        conflicts = [
+          "getty@tty7.service"
+        ];
       };
     };
   };

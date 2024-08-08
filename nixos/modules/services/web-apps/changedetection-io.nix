@@ -190,8 +190,12 @@ in
               SCREEN_HEIGHT = "1080";
               SCREEN_DEPTH = "24";
             };
-            ports = [ "127.0.0.1:${toString cfg.chromePort}:4444" ];
-            volumes = [ "/dev/shm:/dev/shm" ];
+            ports = [
+              "127.0.0.1:${toString cfg.chromePort}:4444"
+            ];
+            volumes = [
+              "/dev/shm:/dev/shm"
+            ];
             extraOptions = [ "--network=bridge" ];
           };
         })
@@ -211,7 +215,9 @@ in
               DEFAULT_BLOCK_ADS = "true";
               DEFAULT_STEALTH = "true";
             };
-            ports = [ "127.0.0.1:${toString cfg.chromePort}:3000" ];
+            ports = [
+              "127.0.0.1:${toString cfg.chromePort}:3000"
+            ];
             extraOptions = [ "--network=bridge" ];
           };
         })

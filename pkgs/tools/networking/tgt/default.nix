@@ -50,7 +50,9 @@ stdenv.mkDerivation rec {
     "fortify3"
   ];
 
-  installFlags = [ "sysconfdir=${placeholder "out"}/etc" ];
+  installFlags = [
+    "sysconfdir=${placeholder "out"}/etc"
+  ];
 
   preConfigure = ''
     sed -i 's|/usr/bin/||' doc/Makefile

@@ -16,11 +16,17 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-LfnylJ9NCHlqjT76Tgku4NwxULJ+WDAcJQ2lDKGWSI4=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = [ eigen ];
+  buildInputs = [
+    eigen
+  ];
 
-  cmakeFlakes = [ (lib.cmakeFeature "CMAKE_BUILD_TYPE" "Release") ];
+  cmakeFlakes = [
+    (lib.cmakeFeature "CMAKE_BUILD_TYPE" "Release")
+  ];
 
   meta = {
     description = "Collection of computer vision methods for solving geometric vision problems";

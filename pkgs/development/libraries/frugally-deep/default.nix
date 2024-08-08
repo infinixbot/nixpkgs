@@ -24,7 +24,9 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   nativeBuildInputs =
-    [ cmake ]
+    [
+      cmake
+    ]
     ++ lib.optionals buildTests [
       python3Packages.python
       python3Packages.numpy

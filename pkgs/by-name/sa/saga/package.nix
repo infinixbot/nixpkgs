@@ -75,7 +75,9 @@ stdenv.mkDerivation rec {
       sqlite
     ];
 
-  cmakeFlags = [ (lib.cmakeBool "OpenMP_SUPPORT" (!stdenv.isDarwin)) ];
+  cmakeFlags = [
+    (lib.cmakeBool "OpenMP_SUPPORT" (!stdenv.isDarwin))
+  ];
 
   meta = with lib; {
     description = "System for Automated Geoscientific Analyses";

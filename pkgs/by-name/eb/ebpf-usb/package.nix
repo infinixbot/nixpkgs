@@ -17,9 +17,15 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-n3ttFej9sroTqAOgyAejwKT+aMt/z7HlVPV6CVGPNUQ=";
   };
 
-  makeWrapperArgs = [ "--set PYTHONUNBUFFERED 1" ];
+  makeWrapperArgs = [
+    "--set PYTHONUNBUFFERED 1"
+  ];
 
-  pythonPath = [ bcc ] ++ (with python3Packages; [ hexdump ]);
+  pythonPath =
+    [ bcc ]
+    ++ (with python3Packages; [
+      hexdump
+    ]);
 
   postPatch = ''
     substituteInPlace ebpf-usb.py \

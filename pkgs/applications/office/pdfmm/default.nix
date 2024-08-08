@@ -28,7 +28,9 @@ resholve.mkDerivation rec {
   '';
 
   solutions.default = {
-    scripts = [ "bin/pdfmm" ];
+    scripts = [
+      "bin/pdfmm"
+    ];
     interpreter = "${bash}/bin/bash";
     inputs = [
       coreutils
@@ -41,7 +43,9 @@ resholve.mkDerivation rec {
       # only need xmessage if zenity is unavailable
       external = [ "xmessage" ];
     };
-    execer = [ "cannot:${zenity}/bin/zenity" ];
+    execer = [
+      "cannot:${zenity}/bin/zenity"
+    ];
     keep."$toutLu" = true;
   };
 

@@ -49,7 +49,9 @@ stdenv.mkDerivation (finalAttrs: {
     fetchSubmodules = true;
   };
 
-  patches = [ ./darwin-fixes.patch ];
+  patches = [
+    ./darwin-fixes.patch
+  ];
 
   # This would get fetched at build time otherwise, see:
   # https://github.com/HarbourMasters/Shipwright/blob/e46c60a7a1396374e23f7a1f7122ddf9efcadff7/soh/CMakeLists.txt#L736

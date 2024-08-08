@@ -49,7 +49,9 @@ let
       gettext
     ];
 
-    patches = [ ./0001-Ignore-missing-data-for-installation.patch ];
+    patches = [
+      ./0001-Ignore-missing-data-for-installation.patch
+    ];
 
     buildPhase = ''
       sed -i -e s,/usr/local,$out, SConstruct

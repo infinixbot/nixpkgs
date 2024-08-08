@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     sha256 = "1894g6fymr8kra9vwhbmnrcr58l022mcd7g9ans4zd3izla2j3gx";
   };
 
-  patches = lib.optionalString (rubies != null) [ ./env.patch ];
+  patches = lib.optionalString (rubies != null) [
+    ./env.patch
+  ];
 
   postPatch = lib.optionalString (rubies != null) ''
     substituteInPlace share/chruby/chruby.sh --replace "@rubiesEnv@" ${rubiesEnv}

@@ -59,7 +59,9 @@ stdenv.mkDerivation rec {
     openssl
   ];
 
-  mesonFlags = [ (lib.mesonOption "profile" "release") ];
+  mesonFlags = [
+    (lib.mesonOption "profile" "release")
+  ];
 
   passthru.updateScript = gitUpdater {
     rev-prefix = "v";

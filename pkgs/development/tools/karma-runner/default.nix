@@ -15,7 +15,9 @@ buildNpmPackage rec {
     hash = "sha256-v6IiLz65NS8GwM/FPqRxR5qcFDDu7EqloR0SIensdDI=";
   };
 
-  patches = [ ./fix-package-lock.patch ];
+  patches = [
+    ./fix-package-lock.patch
+  ];
 
   npmDepsHash = "sha256-nX4/96WdPEDZ6DASp+AOBbBbHyq+p2zIh2dZUbtmIPI=";
 

@@ -31,7 +31,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-FUKR5nceEhm9GWa61hHO8+y4GBz7LYKXPB0OpQcQ674=";
   };
 
-  patches = [ ./000-dont-set-compiler.diff ];
+  patches = [
+    ./000-dont-set-compiler.diff
+  ];
 
   nativeBuildInputs = [
     cmake

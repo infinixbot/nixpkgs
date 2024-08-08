@@ -46,7 +46,9 @@ python3.pkgs.buildPythonApplication rec {
   # Tests uses XDG
   doCheck = false;
 
-  pythonImportsCheck = [ "powerhub" ];
+  pythonImportsCheck = [
+    "powerhub"
+  ];
 
   preCheck = ''
     cd tests/helpers

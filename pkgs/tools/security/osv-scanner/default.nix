@@ -19,7 +19,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-FeLxMmq1BwbDYc+FGXjn8n8YaechTpn9XwODLDOnuTo=";
 
-  subPackages = [ "cmd/osv-scanner" ];
+  subPackages = [
+    "cmd/osv-scanner"
+  ];
 
   ldflags = [
     "-s"

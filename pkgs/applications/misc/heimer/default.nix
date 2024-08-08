@@ -18,7 +18,9 @@ mkDerivation rec {
     hash = "sha256-47bQmT2bHcbWpeosuF/vpSJcws4SqTmalY/XFEf7cxQ=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = [
     qttools

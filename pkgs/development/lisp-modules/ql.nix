@@ -253,14 +253,18 @@ let
         ];
       });
       mcclim-render = super.mcclim-render.overrideLispAttrs (o: {
-        lispLibs = o.lispLibs ++ [ self.mcclim-fonts ];
+        lispLibs = o.lispLibs ++ [
+          self.mcclim-fonts
+        ];
       });
       mcclim-layouts = super.mcclim-layouts.overrideLispAttrs (o: {
         systems = [
           "mcclim-layouts"
           "mcclim-layouts/tab"
         ];
-        lispLibs = o.lispLibs ++ [ self.mcclim ];
+        lispLibs = o.lispLibs ++ [
+          self.mcclim
+        ];
       });
       cl-charms = super.cl-charms.overrideLispAttrs (o: {
         nativeLibs = [ pkgs.ncurses ];

@@ -16,7 +16,9 @@ stdenvNoCC.mkDerivation {
     hash = "sha256-XdYjxWf8R4b1GK2iFQnoEOWykc19ZT37ki83WeESQBM=";
   };
 
-  nativeBuildInputs = [ gtk3 ];
+  nativeBuildInputs = [
+    gtk3
+  ];
 
   dontDropIconThemeCache = true;
 

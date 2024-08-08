@@ -71,7 +71,9 @@ rustPlatform.buildRustPackage {
   LLVM_COV = "${llvm}/bin/llvm-cov";
   LLVM_PROFDATA = "${llvm}/bin/llvm-profdata";
 
-  nativeCheckInputs = [ git ];
+  nativeCheckInputs = [
+    git
+  ];
 
   # `cargo-llvm-cov` tests rely on `git ls-files.
   preCheck = ''

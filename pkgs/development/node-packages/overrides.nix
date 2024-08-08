@@ -108,10 +108,14 @@ final: prev: {
   });
 
   joplin = prev.joplin.override (oldAttrs: {
-    nativeBuildInputs = [
-      pkgs.pkg-config
-      (pkgs.python3.withPackages (ps: [ ps.setuptools ]))
-    ] ++ lib.optionals stdenv.isDarwin [ pkgs.xcbuild ];
+    nativeBuildInputs =
+      [
+        pkgs.pkg-config
+        (pkgs.python3.withPackages (ps: [ ps.setuptools ]))
+      ]
+      ++ lib.optionals stdenv.isDarwin [
+        pkgs.xcbuild
+      ];
     buildInputs =
       with pkgs;
       [
@@ -174,7 +178,9 @@ final: prev: {
         cairo
         pango
       ]
-      ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.CoreText ];
+      ++ lib.optionals stdenv.isDarwin [
+        darwin.apple_sdk.frameworks.CoreText
+      ];
   };
 
   makam = prev.makam.override {
@@ -337,7 +343,11 @@ final: prev: {
 
     nativeBuildInputs = [ pkgs.buildPackages.makeWrapper ];
     postInstall = ''
-      wrapProgram "$out/bin/pulp" --suffix PATH : ${lib.makeBinPath [ pkgs.purescript ]}
+      wrapProgram "$out/bin/pulp" --suffix PATH : ${
+        lib.makeBinPath [
+          pkgs.purescript
+        ]
+      }
     '';
   };
 
@@ -432,7 +442,9 @@ final: prev: {
         pango
         libjpeg
       ]
-      ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.CoreText ];
+      ++ lib.optionals stdenv.isDarwin [
+        darwin.apple_sdk.frameworks.CoreText
+      ];
   };
 
   vega-lite = prev.vega-lite.override {
@@ -466,7 +478,9 @@ final: prev: {
         cairo
         pango
       ]
-      ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.CoreText ];
+      ++ lib.optionals stdenv.isDarwin [
+        darwin.apple_sdk.frameworks.CoreText
+      ];
   };
 
   webtorrent-cli = prev.webtorrent-cli.override {

@@ -17,9 +17,13 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-L6bgCJ0fdiWmtlgTzDmTenTMP74UFUEqiDmE1+gg3zw=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = [ darwin.apple_sdk.frameworks.Foundation ];
+  buildInputs = [
+    darwin.apple_sdk.frameworks.Foundation
+  ];
 
   installPhase = ''
     runHook preInstall

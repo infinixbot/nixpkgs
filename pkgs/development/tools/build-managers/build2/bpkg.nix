@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [ build2 ];
+  nativeBuildInputs = [
+    build2
+  ];
   buildInputs = [
     build2
     libbpkg
@@ -49,7 +51,9 @@ stdenv.mkDerivation rec {
     rm tests/rep-create.testscript
   '';
 
-  build2ConfigureFlags = [ "config.bin.lib=${build2.configSharedStatic enableShared enableStatic}" ];
+  build2ConfigureFlags = [
+    "config.bin.lib=${build2.configSharedStatic enableShared enableStatic}"
+  ];
 
   postInstall = lib.optionalString stdenv.isDarwin ''
     install_name_tool -add_rpath '${lib.getLib build2}/lib' "''${!outputBin}/bin/bpkg"

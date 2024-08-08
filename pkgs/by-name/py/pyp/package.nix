@@ -21,14 +21,22 @@ let
 
     pyproject = true;
 
-    build-system = with pythonPackages; [ flit-core ];
-
-    nativeCheckInputs = (with pythonPackages; [ pytestCheckHook ]) ++ [
-      bc
-      jq
+    build-system = with pythonPackages; [
+      flit-core
     ];
 
-    pythonImportsCheck = [ "pyp" ];
+    nativeCheckInputs =
+      (with pythonPackages; [
+        pytestCheckHook
+      ])
+      ++ [
+        bc
+        jq
+      ];
+
+    pythonImportsCheck = [
+      "pyp"
+    ];
 
     # without this, the tests fail because they are unable to find the pyp tool
     # itself...

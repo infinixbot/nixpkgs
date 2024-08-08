@@ -48,7 +48,9 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  buildInputs = [ qt5.qtbase ];
+  buildInputs = [
+    qt5.qtbase
+  ];
 
   nativeBuildInputs = [
     qt5.wrapQtAppsHook

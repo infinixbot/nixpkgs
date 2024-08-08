@@ -18,9 +18,13 @@ stdenvNoCC.mkDerivation rec {
 
   sourceRoot = ".";
 
-  nativeBuildInputs = [ jdupes ];
+  nativeBuildInputs = [
+    jdupes
+  ];
 
-  propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+  propagatedUserEnvPkgs = [
+    gtk-engine-murrine
+  ];
 
   installPhase = ''
     runHook preInstall

@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     sha256 = "05h42nrggb6znzjcbh4lqqfcm41h4r85n3vwimp3l4lq5p90igr2";
   };
 
-  nativeBuildInputs = [ gtk3 ];
+  nativeBuildInputs = [
+    gtk3
+  ];
 
   buildInputs = [
     gdk-pixbuf
@@ -37,7 +39,9 @@ stdenv.mkDerivation rec {
     hicolor-icon-theme
   ];
 
-  propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+  propagatedUserEnvPkgs = [
+    gtk-engine-murrine
+  ];
 
   dontDropIconThemeCache = true;
 

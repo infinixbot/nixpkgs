@@ -92,7 +92,9 @@ stdenv.mkDerivation rec {
     mainProgram = "tuntox";
     homepage = "https://github.com/gjedeer/tuntox";
     license = licenses.gpl3;
-    maintainers = with maintainers; [ willcohen ];
+    maintainers = with maintainers; [
+      willcohen
+    ];
     platforms = platforms.unix;
   };
 }

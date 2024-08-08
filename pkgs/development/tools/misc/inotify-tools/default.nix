@@ -18,7 +18,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-6kM2JzxRcwUjUmbUWGnQ+gAvZcn7C32/enRwiYiuQGU=";
   };
 
-  configureFlags = [ (lib.enableFeature fanotifySupport "fanotify") ];
+  configureFlags = [
+    (lib.enableFeature fanotifySupport "fanotify")
+  ];
 
   nativeBuildInputs = [ autoreconfHook ];
 

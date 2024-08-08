@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
       substituteInPlace src/jiffy/rebar.config.script --replace '"-flto"' '""'
     '';
 
-  nativeBuildInputs = [ erlang ];
+  nativeBuildInputs = [
+    erlang
+  ];
 
   buildInputs = [
     icu
@@ -42,9 +44,13 @@ stdenv.mkDerivation rec {
 
   dontAddPrefix = "True";
 
-  configureFlags = [ "--spidermonkey-version=91" ];
+  configureFlags = [
+    "--spidermonkey-version=91"
+  ];
 
-  buildFlags = [ "release" ];
+  buildFlags = [
+    "release"
+  ];
 
   installPhase = ''
     runHook preInstall

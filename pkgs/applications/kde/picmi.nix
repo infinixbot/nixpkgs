@@ -22,7 +22,9 @@ mkDerivation {
     platforms = platforms.linux;
   };
 
-  nativeBuildInputs = [ extra-cmake-modules ];
+  nativeBuildInputs = [
+    extra-cmake-modules
+  ];
   buildInputs = [
     kdeclarative
     knewstuff

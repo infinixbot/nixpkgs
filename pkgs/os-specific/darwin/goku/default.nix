@@ -22,9 +22,13 @@ stdenv.mkDerivation rec {
         hash = "sha256-8HdIwtpzR6O2WCbMYIJ6PHcM27Xmb+4Tc5Fmjl0dABQ=";
       };
 
-  nativeBuildInputs = [ unzip ];
+  nativeBuildInputs = [
+    unzip
+  ];
 
-  buildInputs = [ joker ];
+  buildInputs = [
+    joker
+  ];
 
   sourceRoot = if stdenv.isAarch64 then "goku" else ".";
 

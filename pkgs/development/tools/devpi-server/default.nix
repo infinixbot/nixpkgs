@@ -50,7 +50,9 @@ buildPythonApplication rec {
       --replace "--flake8" ""
   '';
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   propagatedBuildInputs = [
     aiohttp
@@ -105,7 +107,9 @@ buildPythonApplication rec {
 
   __darwinAllowLocalNetworking = true;
 
-  pythonImportsCheck = [ "devpi_server" ];
+  pythonImportsCheck = [
+    "devpi_server"
+  ];
 
   passthru.tests = {
     devpi-server = nixosTests.devpi-server;

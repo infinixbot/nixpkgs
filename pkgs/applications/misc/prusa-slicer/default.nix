@@ -115,8 +115,12 @@ stdenv.mkDerivation (finalAttrs: {
       heatshrink
       catch2
     ]
-    ++ lib.optionals withSystemd [ systemd ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk_11_0.frameworks.CoreWLAN ];
+    ++ lib.optionals withSystemd [
+      systemd
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk_11_0.frameworks.CoreWLAN
+    ];
 
   separateDebugInfo = true;
 

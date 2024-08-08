@@ -47,7 +47,9 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "tiktoken" ];
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   propagatedBuildInputs = [
     appdirs

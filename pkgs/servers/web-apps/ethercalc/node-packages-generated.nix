@@ -1787,7 +1787,9 @@ in
           (
             sources."body-parser-1.6.7"
             // {
-              dependencies = [ sources."iconv-lite-0.4.4" ];
+              dependencies = [
+                sources."iconv-lite-0.4.4"
+              ];
             }
           )
           sources."brace-expansion-2.0.1"
@@ -1798,13 +1800,17 @@ in
           (
             sources."cfb-1.2.2"
             // {
-              dependencies = [ sources."adler-32-1.3.1" ];
+              dependencies = [
+                sources."adler-32-1.3.1"
+              ];
             }
           )
           (
             sources."codepage-1.14.0"
             // {
-              dependencies = [ sources."commander-2.14.1" ];
+              dependencies = [
+                sources."commander-2.14.1"
+              ];
             }
           )
           sources."coffee-css-0.0.5"
@@ -1812,7 +1818,9 @@ in
           (
             sources."coffeecup-0.3.21"
             // {
-              dependencies = [ sources."uglify-js-1.2.6" ];
+              dependencies = [
+                sources."uglify-js-1.2.6"
+              ];
             }
           )
           sources."colors-0.6.2"
@@ -1824,7 +1832,9 @@ in
           (
             sources."compression-1.0.11"
             // {
-              dependencies = [ sources."vary-1.0.1" ];
+              dependencies = [
+                sources."vary-1.0.1"
+              ];
             }
           )
           sources."concat-stream-2.0.0"
@@ -1849,13 +1859,17 @@ in
           (
             sources."engine.io-1.3.1"
             // {
-              dependencies = [ sources."debug-0.6.0" ];
+              dependencies = [
+                sources."debug-0.6.0"
+              ];
             }
           )
           (
             sources."engine.io-client-1.3.1"
             // {
-              dependencies = [ sources."debug-0.7.4" ];
+              dependencies = [
+                sources."debug-0.7.4"
+              ];
             }
           )
           sources."engine.io-parser-1.0.6"
@@ -1874,7 +1888,9 @@ in
           (
             sources."express-session-1.7.6"
             // {
-              dependencies = [ sources."uid-safe-1.0.1" ];
+              dependencies = [
+                sources."uid-safe-1.0.1"
+              ];
             }
           )
           sources."fast-levenshtein-2.0.6"
@@ -1912,7 +1928,9 @@ in
                 (
                   sources."xlsx-0.9.13"
                   // {
-                    dependencies = [ sources."commander-2.9.0" ];
+                    dependencies = [
+                      sources."commander-2.9.0"
+                    ];
                   }
                 )
               ];
@@ -1927,7 +1945,9 @@ in
           (
             sources."method-override-2.1.3"
             // {
-              dependencies = [ sources."vary-1.0.1" ];
+              dependencies = [
+                sources."vary-1.0.1"
+              ];
             }
           )
           sources."methods-1.1.0"
@@ -1938,7 +1958,9 @@ in
           (
             sources."mkdirp-0.5.0"
             // {
-              dependencies = [ sources."minimist-0.0.8" ];
+              dependencies = [
+                sources."minimist-0.0.8"
+              ];
             }
           )
           sources."morgan-1.2.3"
@@ -1978,7 +2000,9 @@ in
           (
             sources."raw-body-1.3.0"
             // {
-              dependencies = [ sources."iconv-lite-0.4.4" ];
+              dependencies = [
+                sources."iconv-lite-0.4.4"
+              ];
             }
           )
           sources."readable-stream-3.6.2"
@@ -1994,14 +2018,18 @@ in
           (
             sources."serve-static-1.5.4"
             // {
-              dependencies = [ sources."send-0.8.5" ];
+              dependencies = [
+                sources."send-0.8.5"
+              ];
             }
           )
           sources."socialcalc-2.3.0"
           (
             sources."socket.io-1.0.6"
             // {
-              dependencies = [ sources."debug-0.7.4" ];
+              dependencies = [
+                sources."debug-0.7.4"
+              ];
             }
           )
           (
@@ -2017,13 +2045,17 @@ in
           (
             sources."socket.io-client-1.0.6"
             // {
-              dependencies = [ sources."debug-0.7.4" ];
+              dependencies = [
+                sources."debug-0.7.4"
+              ];
             }
           )
           (
             sources."socket.io-parser-2.2.0"
             // {
-              dependencies = [ sources."debug-0.7.4" ];
+              dependencies = [
+                sources."debug-0.7.4"
+              ];
             }
           )
           sources."source-map-0.5.7"
@@ -2041,7 +2073,9 @@ in
           (
             sources."stylus-0.27.2"
             // {
-              dependencies = [ sources."mkdirp-0.3.5" ];
+              dependencies = [
+                sources."mkdirp-0.3.5"
+              ];
             }
           )
           sources."thenify-3.3.1"
@@ -2075,7 +2109,9 @@ in
           (
             sources."ws-0.4.31"
             // {
-              dependencies = [ sources."commander-0.6.1" ];
+              dependencies = [
+                sources."commander-0.6.1"
+              ];
             }
           )
           (

@@ -5,7 +5,9 @@ buildDunePackage {
 
   inherit (mirage-clock) version src;
 
-  propagatedBuildInputs = [ mirage-clock ];
+  propagatedBuildInputs = [
+    mirage-clock
+  ];
 
   meta = mirage-clock.meta // {
     description = "Paravirtual implementation of the MirageOS Clock interface";

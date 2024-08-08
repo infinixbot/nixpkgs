@@ -18,7 +18,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-Zo4lAV/1TIblTbFrZcwvVecvAAgX+8N6OmdeNyI6Ja0=";
 
-  ldflags = [ "-X github.com/nats-io/nats-kafka/server/core.Version=v${version}" ];
+  ldflags = [
+    "-X github.com/nats-io/nats-kafka/server/core.Version=v${version}"
+  ];
 
   # do not build & install test binaries
   subPackages = [ "." ];

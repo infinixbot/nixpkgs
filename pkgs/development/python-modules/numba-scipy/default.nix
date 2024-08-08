@@ -25,7 +25,9 @@ buildPythonPackage rec {
     numba
   ];
 
-  nativeCheckInputs = [ pytestCheckHook ];
+  nativeCheckInputs = [
+    pytestCheckHook
+  ];
   pythonRelaxDeps = [
     "scipy"
     "numba"

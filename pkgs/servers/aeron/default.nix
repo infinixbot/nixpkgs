@@ -80,7 +80,9 @@ stdenv.mkDerivation {
     aeronSamples
   ];
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   dontUnpack = true;
   dontConfigure = true;
@@ -123,6 +125,8 @@ stdenv.mkDerivation {
     license = licenses.asl20;
     mainProgram = "${pname}-media-driver";
     maintainers = [ maintainers.vaci ];
-    sourceProvenance = [ sourceTypes.binaryBytecode ];
+    sourceProvenance = [
+      sourceTypes.binaryBytecode
+    ];
   };
 }

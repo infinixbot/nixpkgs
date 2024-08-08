@@ -30,7 +30,9 @@ python3.pkgs.buildPythonApplication rec {
   '';
 
   nativeBuildInputs =
-    [ git ]
+    [
+      git
+    ]
     ++ (with python3.pkgs; [
       setuptools
       setuptools-scm
@@ -79,7 +81,9 @@ python3.pkgs.buildPythonApplication rec {
     "tests/test_provenance.py"
   ];
 
-  pythonImportsCheck = [ "cwltool" ];
+  pythonImportsCheck = [
+    "cwltool"
+  ];
 
   meta = with lib; {
     description = "Common Workflow Language reference implementation";

@@ -29,7 +29,9 @@ let
       "rsa"
     ];
 
-    build-system = [ python3.pkgs.setuptools ];
+    build-system = [
+      python3.pkgs.setuptools
+    ];
 
     propagatedBuildInputs = with python3.pkgs; [
       botocore

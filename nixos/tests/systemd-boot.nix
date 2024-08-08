@@ -492,7 +492,9 @@ rec {
             imports = [ common ];
             boot.loader.systemd-boot.bootCounting.enable = withBootCounting;
             # These are configs for different nodes, but we'll use them here in `machine`
-            system.extraDependencies = [ nodes.common.system.build.toplevel ];
+            system.extraDependencies = [
+              nodes.common.system.build.toplevel
+            ];
           };
       };
 

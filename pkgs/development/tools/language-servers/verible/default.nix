@@ -35,7 +35,9 @@ buildBazelPackage rec {
   };
 
   bazel = bazel_6;
-  bazelFlags = [ "--//bazel:use_local_flex_bison" ];
+  bazelFlags = [
+    "--//bazel:use_local_flex_bison"
+  ];
 
   fetchAttrs = {
     sha256 = "sha256-bKASgc5KftCWtMvJkGA4nweBAtgdnyC9uXIJxPjKYS0=";
@@ -63,7 +65,9 @@ buildBazelPackage rec {
   removeRulesCC = false;
   bazelTargets = [ ":install-binaries" ];
   bazelTestTargets = [ "//..." ];
-  bazelBuildFlags = [ "-c opt" ];
+  bazelBuildFlags = [
+    "-c opt"
+  ];
   buildAttrs = {
     installPhase = ''
       mkdir -p "$out/bin"

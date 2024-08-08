@@ -15,7 +15,9 @@ stdenv.mkDerivation {
     hash = "sha256-QSouqZiBmKBU6FqRRfWtTGRIl5sqJ8tVPYwdytt/43w=";
   };
 
-  nativeBuildInputs = [ ncurses ];
+  nativeBuildInputs = [
+    ncurses
+  ];
 
   postPatch = ''
     substituteInPlace Makefile --replace "lcurses" "lncurses"

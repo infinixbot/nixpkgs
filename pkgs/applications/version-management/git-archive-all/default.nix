@@ -35,7 +35,9 @@ buildPythonApplication rec {
       --replace "import pycodestyle" ""
   '';
 
-  nativeCheckInputs = [ git ];
+  nativeCheckInputs = [
+    git
+  ];
 
   checkInputs = [
     pytestCheckHook

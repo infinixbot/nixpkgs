@@ -54,7 +54,9 @@ mkDerivation rec {
     "DISABLE_UPDATE_CHECK=1"
   ];
 
-  qtWrapperArgs = [ "--set-default LEOCAD_LIB ${parts}" ];
+  qtWrapperArgs = [
+    "--set-default LEOCAD_LIB ${parts}"
+  ];
 
   meta = with lib; {
     description = "CAD program for creating virtual LEGO models";

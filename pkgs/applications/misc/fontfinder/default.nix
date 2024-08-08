@@ -45,7 +45,9 @@ stdenv.mkDerivation rec {
     webkitgtk_4_1
   ];
 
-  makeFlags = [ "prefix=$(out)" ];
+  makeFlags = [
+    "prefix=$(out)"
+  ];
 
   meta = with lib; {
     description = "GTK application for browsing and installing fonts from Google's font archive";

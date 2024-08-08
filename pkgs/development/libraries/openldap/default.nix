@@ -37,7 +37,9 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [ groff ];
+  nativeBuildInputs = [
+    groff
+  ];
 
   buildInputs =
     [

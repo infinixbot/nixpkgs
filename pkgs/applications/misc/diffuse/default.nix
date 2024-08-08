@@ -53,12 +53,16 @@ python3.pkgs.buildPythonApplication rec {
     substituteInPlace src/diffuse/meson.build data/icons/meson.build src/diffuse/mac-os-app/diffuse-mac.in --replace-fail "/Applications" "$out/Applications";
   '';
 
-  mesonFlags = [ "-Db_ndebug=true" ];
+  mesonFlags = [
+    "-Db_ndebug=true"
+  ];
 
   # to avoid running gtk-update-icon-cache, update-desktop-database and glib-compile-schemas
   DESTDIR = "/";
 
-  makeWrapperArgs = [ "--prefix XDG_DATA_DIRS : ${hicolor-icon-theme}/share" ];
+  makeWrapperArgs = [
+    "--prefix XDG_DATA_DIRS : ${hicolor-icon-theme}/share"
+  ];
 
   passthru = {
     updateScript = gitUpdater {

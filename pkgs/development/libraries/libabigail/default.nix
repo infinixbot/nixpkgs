@@ -36,7 +36,9 @@ stdenv.mkDerivation rec {
     libxml2
   ];
 
-  nativeCheckInputs = [ python3 ];
+  nativeCheckInputs = [
+    python3
+  ];
 
   configureFlags = [
     "--enable-bash-completion=yes"

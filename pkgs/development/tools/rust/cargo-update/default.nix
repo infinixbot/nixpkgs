@@ -26,12 +26,16 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-pdWVp9+CLnNO7+U0a8WXWHZ+EeGNYx9J7WWAI1MTDvc=";
 
-  nativeBuildInputs = [
-    cmake
-    installShellFiles
-    pkg-config
-    ronn
-  ] ++ lib.optionals stdenv.isDarwin [ curl ];
+  nativeBuildInputs =
+    [
+      cmake
+      installShellFiles
+      pkg-config
+      ronn
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      curl
+    ];
 
   buildInputs =
     [

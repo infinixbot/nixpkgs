@@ -237,7 +237,9 @@ in
     services.displayManager.environment.XDG_DATA_DIRS = "${dmcfg.sessionData.desktops}/share/";
 
     # setSessionScript wants AccountsService
-    systemd.services.display-manager.wants = [ "accounts-daemon.service" ];
+    systemd.services.display-manager.wants = [
+      "accounts-daemon.service"
+    ];
 
     # lightdm relaunches itself via just `lightdm`, so needs to be on the PATH
     services.displayManager.execCmd = ''
@@ -262,10 +264,14 @@ in
     ];
 
     # user.slice needs to be present
-    systemd.services.display-manager.requires = [ "user.slice" ];
+    systemd.services.display-manager.requires = [
+      "user.slice"
+    ];
 
     # lightdm stops plymouth so when it fails make sure plymouth stops.
-    systemd.services.display-manager.onFailure = [ "plymouth-quit.service" ];
+    systemd.services.display-manager.onFailure = [
+      "plymouth-quit.service"
+    ];
 
     systemd.services.display-manager.serviceConfig = {
       BusName = "org.freedesktop.DisplayManager";

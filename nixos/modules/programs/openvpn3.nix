@@ -27,7 +27,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.dbus.packages = [ cfg.package ];
+    services.dbus.packages = [
+      cfg.package
+    ];
 
     users.users.openvpn = {
       isSystemUser = true;
@@ -39,7 +41,9 @@ in
       gid = config.ids.gids.openvpn;
     };
 
-    environment.systemPackages = [ cfg.package ];
+    environment.systemPackages = [
+      cfg.package
+    ];
   };
 
 }

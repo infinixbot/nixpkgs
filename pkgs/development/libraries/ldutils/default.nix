@@ -22,7 +22,9 @@ mkDerivation rec {
     qtsvg
   ];
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   qmakeFlags = [ "ldutils.pro" ];
 

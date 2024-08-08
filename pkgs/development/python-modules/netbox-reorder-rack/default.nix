@@ -19,7 +19,9 @@ buildPythonPackage rec {
     hash = "sha256-UbTq3DHxSczDxQIUyAHCVJG3SZdqgyS9ULNvuDKQvEY=";
   };
 
-  build-system = [ setuptools ];
+  build-system = [
+    setuptools
+  ];
 
   checkInputs = [ netbox ];
 

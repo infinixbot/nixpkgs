@@ -51,7 +51,9 @@ stdenv.mkDerivation (finalAttrs: {
       gpl3Only
     ];
     pkgConfigModules =
-      lib.optionals stdenv.isDarwin [ "hidapi" ]
+      lib.optionals stdenv.isDarwin [
+        "hidapi"
+      ]
       ++ lib.optionals stdenv.isLinux [
         "hidapi-hidraw"
         "hidapi-libusb"

@@ -29,7 +29,9 @@ rustPlatform.buildRustPackage rec {
     udev
   ];
 
-  buildInputs = [ openssl.dev ];
+  buildInputs = [
+    openssl.dev
+  ];
 
   meta = with lib; {
     description = "Interactive CLI for creating conventional commits";

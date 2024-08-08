@@ -30,7 +30,9 @@ buildGoModule rec {
         "TestExtractMermaidImage"
       ];
     in
-    [ "-skip=^${builtins.concatStringsSep "$|^" skippedTests}$" ];
+    [
+      "-skip=^${builtins.concatStringsSep "$|^" skippedTests}$"
+    ];
 
   meta = with lib; {
     description = "Tool for syncing your markdown documentation with Atlassian Confluence pages";

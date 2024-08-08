@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-VCYgekhWgPjhdkukBbs4w5pODIMGvIJxkQ8bgZozbO0=";
   };
 
-  patches = [ ./insert_utillinux_path_hooks.patch ];
+  patches = [
+    ./insert_utillinux_path_hooks.patch
+  ];
 
   postPatch = ''
     substituteInPlace src/mtcrypt.c \

@@ -21,7 +21,9 @@ buildGoModule rec {
 
   vendorHash = null;
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   postInstall = ''
     wrapProgram $out/bin/wp4nix \

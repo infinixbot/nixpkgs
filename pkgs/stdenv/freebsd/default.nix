@@ -83,7 +83,9 @@ let
       shellPath = "/bin/bash";
     };
     curl = linkBootstrap {
-      paths = [ "bin/curl" ];
+      paths = [
+        "bin/curl"
+      ];
     };
     llvmPackages = {
       clang-unwrapped = linkBootstrap {
@@ -366,7 +368,9 @@ let
           nativeLibc = false;
           cc = prevStage.llvmPackages.clang-unwrapped;
           isClang = true;
-          extraPackages = lib.optionals hascxx [ prevStage.llvmPackages.compiler-rt ];
+          extraPackages = lib.optionals hascxx [
+            prevStage.llvmPackages.compiler-rt
+          ];
           nixSupport = {
             libcxx-cxxflags = lib.optionals (!hascxx) [ "-isystem ${prevStage.freebsd.libc}/include/c++/v1" ];
           };
@@ -463,7 +467,9 @@ in
                     name = "freebsd-boot-0.5-bintools";
                     libc = self.freebsd.libc;
                   };
-                  extraPackages = [ self.llvmPackages.compiler-rt ];
+                  extraPackages = [
+                    self.llvmPackages.compiler-rt
+                  ];
                   extraBuildCommands = mkExtraBuildCommands self.llvmPackages.clang-unwrapped self.llvmPackages.compiler-rt;
                 }
               );

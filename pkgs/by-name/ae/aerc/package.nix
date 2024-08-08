@@ -30,7 +30,9 @@ buildGoModule rec {
     python3Packages.wrapPython
   ];
 
-  patches = [ ./runtime-libexec.patch ];
+  patches = [
+    ./runtime-libexec.patch
+  ];
 
   postPatch = ''
     substituteAllInPlace config/aerc.conf
@@ -43,7 +45,9 @@ buildGoModule rec {
 
   makeFlags = [ "PREFIX=${placeholder "out"}" ];
 
-  pythonPath = [ python3Packages.vobject ];
+  pythonPath = [
+    python3Packages.vobject
+  ];
 
   buildInputs = [
     python3Packages.python

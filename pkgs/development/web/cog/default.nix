@@ -46,9 +46,13 @@ stdenv.mkDerivation rec {
     wrapGAppsHook3
   ];
 
-  depsBuildsBuild = [ pkg-config ];
+  depsBuildsBuild = [
+    pkg-config
+  ];
 
-  cmakeFlags = [ "-DCOG_USE_WEBKITGTK=ON" ];
+  cmakeFlags = [
+    "-DCOG_USE_WEBKITGTK=ON"
+  ];
 
   # https://github.com/Igalia/cog/issues/438
   postPatch = ''

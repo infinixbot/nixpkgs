@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ which ];
   buildInputs = [ gmp ];
 
-  patches = [ ./fix-install-path.patch ];
+  patches = [
+    ./fix-install-path.patch
+  ];
 
   enableParallelBuilding = true;
 

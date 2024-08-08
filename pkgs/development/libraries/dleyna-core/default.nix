@@ -32,7 +32,9 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  propagatedBuildInputs = [ gupnp ];
+  propagatedBuildInputs = [
+    gupnp
+  ];
 
   env.NIX_CFLAGS_COMPILE = toString (
     lib.optionals stdenv.cc.isClang [

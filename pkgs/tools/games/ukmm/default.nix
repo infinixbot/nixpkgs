@@ -53,7 +53,9 @@ rustPlatform.buildRustPackage rec {
     "-Wl,--pop-state"
   ];
 
-  cargoTestFlags = [ "--all" ];
+  cargoTestFlags = [
+    "--all"
+  ];
 
   checkFlags = [
     # Requires a game dump of Breath of the Wild

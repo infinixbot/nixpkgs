@@ -22,7 +22,9 @@ stdenv.mkDerivation (finalAttrs: {
     installShellFiles
   ];
 
-  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
+  makeFlags = [
+    "CC=${stdenv.cc.targetPrefix}cc"
+  ];
 
   installPhase = ''
     runHook preInstall

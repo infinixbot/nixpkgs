@@ -40,7 +40,9 @@ python3.pkgs.buildPythonApplication rec {
     pytestCheckHook
   ];
 
-  pythonImportsCheck = [ "gato" ];
+  pythonImportsCheck = [
+    "gato"
+  ];
 
   meta = with lib; {
     description = "GitHub Self-Hosted Runner Enumeration and Attack Tool";

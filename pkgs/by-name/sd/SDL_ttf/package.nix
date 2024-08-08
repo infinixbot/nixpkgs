@@ -38,7 +38,9 @@ stdenv.mkDerivation (finalAttrs: {
     freetype
   ];
 
-  configureFlags = [ (lib.enableFeature enableSdltest "-sdltest") ];
+  configureFlags = [
+    (lib.enableFeature enableSdltest "-sdltest")
+  ];
 
   strictDeps = true;
 

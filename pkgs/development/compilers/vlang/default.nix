@@ -73,8 +73,12 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ makeWrapper ];
 
   buildInputs =
-    [ binaryen ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Cocoa ]
+    [
+      binaryen
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Cocoa
+    ]
     ++ lib.optionals stdenv.isLinux [
       xorg.libX11
       xorg.libXau
@@ -82,7 +86,9 @@ stdenv.mkDerivation {
       xorg.xorgproto
     ];
 
-  makeFlags = [ "local=1" ];
+  makeFlags = [
+    "local=1"
+  ];
 
   env.VC = vc;
 

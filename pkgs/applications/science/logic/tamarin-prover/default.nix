@@ -22,7 +22,9 @@ let
       rev = version;
       sha256 = "sha256-ujnaUdbjqajmkphOS4Fs4QBCRGX4JZkQ2p1X2jripww=";
     };
-    patches = [ ./tamarin-prover-1.8.0-ghc-9.6.patch ];
+    patches = [
+      ./tamarin-prover-1.8.0-ghc-9.6.patch
+    ];
   };
 
   # tamarin has its own dependencies, but they're kept inside the repo,
@@ -102,7 +104,11 @@ let
     // {
       postPatch = "cp --remove-destination ${src}/LICENSE .";
       doHaddock = false; # broken
-      libraryHaskellDepends = (with haskellPackages; [ raw-strings-qq ]) ++ [ tamarin-prover-theory ];
+      libraryHaskellDepends =
+        (with haskellPackages; [
+          raw-strings-qq
+        ])
+        ++ [ tamarin-prover-theory ];
     }
   );
 
@@ -111,11 +117,15 @@ let
     // {
       postPatch = "cp --remove-destination ${src}/LICENSE .";
       doHaddock = false; # broken
-      libraryHaskellDepends = (with haskellPackages; [ raw-strings-qq ]) ++ [
-        tamarin-prover-utils
-        tamarin-prover-term
-        tamarin-prover-theory
-      ];
+      libraryHaskellDepends =
+        (with haskellPackages; [
+          raw-strings-qq
+        ])
+        ++ [
+          tamarin-prover-utils
+          tamarin-prover-term
+          tamarin-prover-theory
+        ];
     }
   );
 
@@ -124,12 +134,16 @@ let
     // {
       postPatch = "cp --remove-destination ${src}/LICENSE .";
       doHaddock = false; # broken
-      libraryHaskellDepends = (with haskellPackages; [ HStringTemplate ]) ++ [
-        tamarin-prover-utils
-        tamarin-prover-term
-        tamarin-prover-theory
-        tamarin-prover-sapic
-      ];
+      libraryHaskellDepends =
+        (with haskellPackages; [
+          HStringTemplate
+        ])
+        ++ [
+          tamarin-prover-utils
+          tamarin-prover-term
+          tamarin-prover-theory
+          tamarin-prover-sapic
+        ];
     }
   );
 

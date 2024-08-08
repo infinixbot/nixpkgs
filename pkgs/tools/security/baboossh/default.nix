@@ -26,7 +26,9 @@ python3.pkgs.buildPythonApplication rec {
   # No tests available
   doCheck = false;
 
-  pythonImportsCheck = [ "baboossh" ];
+  pythonImportsCheck = [
+    "baboossh"
+  ];
 
   meta = with lib; {
     description = "Tool to do SSH spreading";

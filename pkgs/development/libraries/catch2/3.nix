@@ -17,7 +17,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-xGPfXjk+oOnR7JqTrZd2pKJxalrlS8CMs7HWDClXaS8=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   hardeningDisable = [ "trivialautovarinit" ];
 
@@ -44,7 +46,9 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  nativeCheckInputs = [ python3 ];
+  nativeCheckInputs = [
+    python3
+  ];
 
   meta = {
     description = "Modern, C++-native, test framework for unit-tests";

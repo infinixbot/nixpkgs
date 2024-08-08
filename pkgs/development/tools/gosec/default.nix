@@ -17,7 +17,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-VWbsSS3j8zgsZQzsO/ZyKoOUqhNhmMmDICImUZHmC9Y=";
 
-  subPackages = [ "cmd/gosec" ];
+  subPackages = [
+    "cmd/gosec"
+  ];
 
   ldflags = [
     "-s"

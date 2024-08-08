@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ aws-c-common ];
 
-  cmakeFlags = [ "-DBUILD_SHARED_LIBS=ON" ];
+  cmakeFlags = [
+    "-DBUILD_SHARED_LIBS=ON"
+  ];
 
   passthru.tests = {
     inherit nix;

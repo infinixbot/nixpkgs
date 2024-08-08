@@ -46,7 +46,9 @@ stdenv.mkDerivation (finalAttrs: {
       hash = "sha256-EiXvSjKfrhytxexyfaskmtVn6AcoeUk1Yc65HtNKpBQ=";
     };
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   strictDeps = true;
   nativeBuildInputs =
@@ -67,21 +69,29 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optionals stdenv.isLinux [
       libcap # for setcap binary
     ]
-    ++ lib.optionals enableDocumentation [ hotdoc ];
+    ++ lib.optionals enableDocumentation [
+      hotdoc
+    ];
 
   buildInputs =
-    [ bash-completion ]
+    [
+      bash-completion
+    ]
     ++ lib.optionals stdenv.isLinux [
       libcap
       libunwind
     ]
-    ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [ elfutils ]
+    ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [
+      elfutils
+    ]
     ++ lib.optionals stdenv.isDarwin [
       Cocoa
       CoreServices
     ];
 
-  propagatedBuildInputs = [ glib ];
+  propagatedBuildInputs = [
+    glib
+  ];
 
   mesonFlags =
     [
@@ -124,7 +134,9 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Open source multimedia framework";
     homepage = "https://gstreamer.freedesktop.org";
     license = licenses.lgpl2Plus;
-    pkgConfigModules = [ "gstreamer-controller-1.0" ];
+    pkgConfigModules = [
+      "gstreamer-controller-1.0"
+    ];
     platforms = platforms.unix;
     maintainers = with maintainers; [
       ttuegel

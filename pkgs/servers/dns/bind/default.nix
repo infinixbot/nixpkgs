@@ -42,7 +42,9 @@ stdenv.mkDerivation rec {
     "host"
   ];
 
-  patches = [ ./dont-keep-configure-flags.patch ];
+  patches = [
+    ./dont-keep-configure-flags.patch
+  ];
 
   nativeBuildInputs = [
     perl
@@ -109,7 +111,13 @@ stdenv.mkDerivation rec {
       && !is32bit;
   */
   checkTarget = "unit";
-  checkInputs = [ cmocka ] ++ lib.optionals (!stdenv.hostPlatform.isMusl) [ tzdata ];
+  checkInputs =
+    [
+      cmocka
+    ]
+    ++ lib.optionals (!stdenv.hostPlatform.isMusl) [
+      tzdata
+    ];
   preCheck =
     lib.optionalString stdenv.hostPlatform.isMusl ''
       # musl doesn't respect TZDIR, skip timezone-related tests

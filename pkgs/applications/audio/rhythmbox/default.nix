@@ -90,7 +90,9 @@ stdenv.mkDerivation rec {
     libnotify
   ] ++ gst_plugins;
 
-  nativeCheckInputs = [ check ];
+  nativeCheckInputs = [
+    check
+  ];
 
   mesonFlags = [
     "-Ddaap=enabled"

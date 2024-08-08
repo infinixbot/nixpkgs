@@ -29,7 +29,9 @@ stdenv.mkDerivation (finalAttrs: {
         --replace "INTERPROCEDURAL_OPTIMIZATION TRUE" ""
     '';
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = [
     h3_4

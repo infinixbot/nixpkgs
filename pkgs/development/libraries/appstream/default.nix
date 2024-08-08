@@ -66,7 +66,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs =
     [
@@ -89,28 +91,36 @@ stdenv.mkDerivation (finalAttrs: {
       appstream
     ];
 
-  buildInputs = [
-    libstemmer
-    pcre
-    glib
-    xapian
-    libxml2
-    libxmlb
-    libyaml
-    curl
-    cairo
-    gdk-pixbuf
-    pango
-    librsvg
-  ] ++ lib.optionals withSystemd [ systemd ];
+  buildInputs =
+    [
+      libstemmer
+      pcre
+      glib
+      xapian
+      libxml2
+      libxmlb
+      libyaml
+      curl
+      cairo
+      gdk-pixbuf
+      pango
+      librsvg
+    ]
+    ++ lib.optionals withSystemd [
+      systemd
+    ];
 
-  mesonFlags = [
-    "-Dapidocs=false"
-    "-Ddocs=false"
-    "-Dvapi=true"
-    "-Dinstalled_test_prefix=${placeholder "installedTests"}"
-    "-Dcompose=true"
-  ] ++ lib.optionals (!withSystemd) [ "-Dsystemd=false" ];
+  mesonFlags =
+    [
+      "-Dapidocs=false"
+      "-Ddocs=false"
+      "-Dvapi=true"
+      "-Dinstalled_test_prefix=${placeholder "installedTests"}"
+      "-Dcompose=true"
+    ]
+    ++ lib.optionals (!withSystemd) [
+      "-Dsystemd=false"
+    ];
 
   passthru.tests = {
     installed-tests = nixosTests.installed-tests.appstream;

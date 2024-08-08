@@ -63,10 +63,14 @@ stdenv.mkDerivation rec {
     # don't seem to be packaged in Nixpkgs, so don't unbundle them.
   '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ] ++ lib.optionals (buildClient && stdenv.isLinux) [ icoutils ];
+  nativeBuildInputs =
+    [
+      cmake
+      pkg-config
+    ]
+    ++ lib.optionals (buildClient && stdenv.isLinux) [
+      icoutils
+    ];
 
   buildInputs =
     [
@@ -75,7 +79,9 @@ stdenv.mkDerivation rec {
       zlib
       wavpack
     ]
-    ++ lib.optionals stdenv.isDarwin [ Cocoa ]
+    ++ lib.optionals stdenv.isDarwin [
+      Cocoa
+    ]
     ++ lib.optionals buildClient (
       [
         SDL2
@@ -88,7 +94,9 @@ stdenv.mkDerivation rec {
       ]
     );
 
-  cmakeFlags = [ "-DCLIENT=${if buildClient then "ON" else "OFF"}" ];
+  cmakeFlags = [
+    "-DCLIENT=${if buildClient then "ON" else "OFF"}"
+  ];
 
   postInstall = lib.optionalString buildClient (
     lib.optionalString stdenv.isLinux ''

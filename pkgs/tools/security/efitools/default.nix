@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
   };
 
   # https://github.com/ncroxon/gnu-efi/issues/7#issuecomment-2122741592
-  patches = [ ./aarch64.patch ];
+  patches = [
+    ./aarch64.patch
+  ];
 
   postPatch = ''
     sed -i -e 's#/usr/include/efi#${gnu-efi}/include/efi/#g' Make.rules

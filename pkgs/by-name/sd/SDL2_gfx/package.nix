@@ -25,7 +25,13 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = [ SDL2 ] ++ lib.optionals stdenv.isDarwin [ darwin.libobjc ];
+  buildInputs =
+    [
+      SDL2
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.libobjc
+    ];
 
   outputs = [
     "out"

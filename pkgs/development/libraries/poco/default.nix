@@ -50,7 +50,9 @@ stdenv.mkDerivation rec {
   MYSQL_DIR = libmysqlclient;
   MYSQL_INCLUDE_DIR = "${MYSQL_DIR}/include/mysql";
 
-  configureFlags = [ "--unbundled" ];
+  configureFlags = [
+    "--unbundled"
+  ];
 
   postFixup = ''
     grep -rlF INTERFACE_INCLUDE_DIRECTORIES "$dev/lib/cmake/Poco" | while read -r f; do

@@ -110,34 +110,58 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-gfs5cdwUUwSBWwJJSaxrQGWJvLkI27RMlk5QvDALEDg=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    autoconf
-  ] ++ lib.optionals enableTools.mlconfig [ wrapGAppsHook3 ];
+  nativeBuildInputs =
+    [
+      pkg-config
+      autoconf
+    ]
+    ++ lib.optionals enableTools.mlconfig [
+      wrapGAppsHook3
+    ];
   buildInputs =
     [
       gtk
       vte
       gdk-pixbuf
     ]
-    ++ lib.optionals enableTypeEngines.xcore [ libX11 ]
-    ++ lib.optionals enableTypeEngines.xft [ libXft ]
-    ++ lib.optionals enableTypeEngines.cairo [ cairo ]
+    ++ lib.optionals enableTypeEngines.xcore [
+      libX11
+    ]
+    ++ lib.optionals enableTypeEngines.xft [
+      libXft
+    ]
+    ++ lib.optionals enableTypeEngines.cairo [
+      cairo
+    ]
     ++ lib.optionals enableGuis.wayland [
       libxkbcommon
       wayland
     ]
-    ++ lib.optionals enableGuis.sdl2 [ SDL2 ]
-    ++ lib.optionals enableFeatures.otl [ harfbuzz ]
-    ++ lib.optionals enableFeatures.bidi [ fribidi ]
-    ++ lib.optionals enableFeatures.ssh2 [ libssh2 ]
-    ++ lib.optionals enableFeatures.m17n [ m17n_lib ]
+    ++ lib.optionals enableGuis.sdl2 [
+      SDL2
+    ]
+    ++ lib.optionals enableFeatures.otl [
+      harfbuzz
+    ]
+    ++ lib.optionals enableFeatures.bidi [
+      fribidi
+    ]
+    ++ lib.optionals enableFeatures.ssh2 [
+      libssh2
+    ]
+    ++ lib.optionals enableFeatures.m17n [
+      m17n_lib
+    ]
     ++ lib.optionals enableFeatures.fcitx [
       fcitx5
       fcitx5-gtk
     ]
-    ++ lib.optionals enableFeatures.ibus [ ibus ]
-    ++ lib.optionals enableFeatures.uim [ uim ];
+    ++ lib.optionals enableFeatures.ibus [
+      ibus
+    ]
+    ++ lib.optionals enableFeatures.uim [
+      uim
+    ];
 
   #bad configure.ac and Makefile.in everywhere
   preConfigure = ''
@@ -170,9 +194,12 @@ stdenv.mkDerivation (finalAttrs: {
       (withFeaturesList "gui" enableGuis)
       (lib.withFeature enableX11 "x")
     ]
-    ++ lib.optionals (gtk != null) [ "--with-gtk=${lib.versions.major gtk.version}.0" ]
+    ++ lib.optionals (gtk != null) [
+      "--with-gtk=${lib.versions.major gtk.version}.0"
+    ]
     ++ (lib.mapAttrsToList (n: v: lib.enableFeature v n) enableFeatures)
-    ++ [ ];
+    ++ [
+    ];
 
   enableParallelBuilding = true;
 

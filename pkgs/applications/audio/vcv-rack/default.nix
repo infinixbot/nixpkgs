@@ -147,7 +147,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-Gn/sFltLXX2mLv4dDqmr/UPd+JBXVkIZGwMI6Rm0Ih4=";
   };
 
-  patches = [ ./rack-minimize-vendoring.patch ];
+  patches = [
+    ./rack-minimize-vendoring.patch
+  ];
 
   prePatch = ''
     # As we can't use `make dep` to set up the dependencies (as explained

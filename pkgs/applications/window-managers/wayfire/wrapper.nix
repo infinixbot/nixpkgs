@@ -11,7 +11,9 @@ symlinkJoin {
 
   nativeBuildInputs = [ makeWrapper ];
 
-  paths = [ wayfire ] ++ plugins;
+  paths = [
+    wayfire
+  ] ++ plugins;
 
   postBuild = ''
     for binary in $out/bin/*; do

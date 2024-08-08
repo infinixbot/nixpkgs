@@ -52,7 +52,9 @@ stdenv.mkDerivation rec {
       --replace "read EvtGenDecayer.in" ""
   '';
 
-  configureFlags = [ "--with-thepeg=${thepeg}" ];
+  configureFlags = [
+    "--with-thepeg=${thepeg}"
+  ];
 
   enableParallelBuilding = true;
 

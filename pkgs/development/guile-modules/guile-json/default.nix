@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
     pkg-config
     texinfo
   ];
-  buildInputs = [ guile ];
+  buildInputs = [
+    guile
+  ];
   doCheck = true;
   makeFlags = [ "GUILE_AUTO_COMPILE=0" ];
 

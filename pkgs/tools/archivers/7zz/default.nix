@@ -48,7 +48,9 @@ stdenv.mkDerivation (finalAttrs: {
     '';
   };
 
-  patches = [ ./fix-cross-mingw-build.patch ];
+  patches = [
+    ./fix-cross-mingw-build.patch
+  ];
 
   postPatch = lib.optionalString stdenv.hostPlatform.isMinGW ''
     substituteInPlace CPP/7zip/7zip_gcc.mak C/7zip_gcc_c.mak \
@@ -56,7 +58,9 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   env.NIX_CFLAGS_COMPILE = toString (
-    lib.optionals stdenv.isDarwin [ "-Wno-deprecated-copy-dtor" ]
+    lib.optionals stdenv.isDarwin [
+      "-Wno-deprecated-copy-dtor"
+    ]
     ++ lib.optionals stdenv.hostPlatform.isMinGW [
       "-Wno-conversion"
       "-Wno-unused-macros"

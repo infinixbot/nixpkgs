@@ -317,7 +317,9 @@ let
           throw "Unhandled backend: ${cfg.backend}";
 
       script = concatStringsSep " \\\n  " (
-        [ "exec ${cfg.backend} " ]
+        [
+          "exec ${cfg.backend} "
+        ]
         ++ map escapeShellArg container.preRunExtraOptions
         ++ [
           "run"

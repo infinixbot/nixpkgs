@@ -17,7 +17,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-OehyKcO8AwQ8D+KeMg9T/0/T9wSuzdkVVfbginlQJro=";
 
-  subPackages = [ "cmd/katana" ];
+  subPackages = [
+    "cmd/katana"
+  ];
 
   ldflags = [
     "-w"

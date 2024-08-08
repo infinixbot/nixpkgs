@@ -27,9 +27,13 @@ buildGoModule rec {
 
   doCheck = false;
 
-  ldflags = [ "-X github.com/xetys/hetzner-kube/cmd.version=${version}" ];
+  ldflags = [
+    "-X github.com/xetys/hetzner-kube/cmd.version=${version}"
+  ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   postInstall = ''
     # Need a writable home, because it fails if unable to write config.

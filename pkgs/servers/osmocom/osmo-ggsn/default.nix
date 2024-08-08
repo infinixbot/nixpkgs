@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [ libosmocore ];
+  buildInputs = [
+    libosmocore
+  ];
 
   enableParallelBuilding = true;
 

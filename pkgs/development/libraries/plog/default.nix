@@ -22,9 +22,13 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  cmakeFlags = [ "-DPLOG_BUILD_SAMPLES=NO" ];
+  cmakeFlags = [
+    "-DPLOG_BUILD_SAMPLES=NO"
+  ];
 
   meta = with lib; {
     description = "Portable, simple and extensible C++ logging library";

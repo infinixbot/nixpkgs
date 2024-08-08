@@ -40,7 +40,9 @@ stdenv.mkDerivation (finalAttrs: {
     libxkbcommon
   ];
 
-  propagatedBuildInputs = [ libxkbcommon ];
+  propagatedBuildInputs = [
+    libxkbcommon
+  ];
 
   passthru = {
     tests.unl0kr = nixosTests.systemd-initrd-luks-unl0kr;

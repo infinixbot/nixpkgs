@@ -78,7 +78,9 @@ buildPythonApplication rec {
     patchShebangs pre_commit/resources/hook-tmpl
   '';
 
-  pytestFlagsArray = [ "--forked" ];
+  pytestFlagsArray = [
+    "--forked"
+  ];
 
   preCheck =
     lib.optionalString (!(stdenv.isLinux && stdenv.isAarch64)) ''
@@ -175,7 +177,9 @@ buildPythonApplication rec {
     "test_docker_"
   ];
 
-  pythonImportsCheck = [ "pre_commit" ];
+  pythonImportsCheck = [
+    "pre_commit"
+  ];
 
   passthru.tests.version = testers.testVersion {
     package = pre-commit;

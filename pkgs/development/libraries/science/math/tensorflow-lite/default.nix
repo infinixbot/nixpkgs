@@ -52,7 +52,9 @@ buildBazelPackage rec {
   ];
 
   bazelFlags =
-    [ "--config=opt" ]
+    [
+      "--config=opt"
+    ]
     ++ lib.optionals (hostPlatform.system != buildPlatform.system) [
       "--config=${bazelHostConfigName.${hostPlatform.system}}"
     ];

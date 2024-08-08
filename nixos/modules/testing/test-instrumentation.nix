@@ -140,7 +140,9 @@ in
           }
         ];
 
-        storePaths = [ "${pkgs.coreutils}/bin/env" ];
+        storePaths = [
+          "${pkgs.coreutils}/bin/env"
+        ];
       })
     ];
 

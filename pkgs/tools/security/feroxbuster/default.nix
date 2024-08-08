@@ -29,10 +29,14 @@ rustPlatform.buildRustPackage rec {
 
   OPENSSL_NO_VENDOR = true;
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs =
-    [ openssl ]
+    [
+      openssl
+    ]
     ++ lib.optionals stdenv.isDarwin [
       Security
       SystemConfiguration

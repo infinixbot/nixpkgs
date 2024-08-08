@@ -52,7 +52,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-d32lcJq24MXeIWbNbo6putWaol5kF2io6cz4ZuL+DbE=";
   };
 
-  patches = [ ./0001-set-__STDC_CONSTANT_MACROS-to-make-rocAL-compile.patch ];
+  patches = [
+    ./0001-set-__STDC_CONSTANT_MACROS-to-make-rocAL-compile.patch
+  ];
 
   nativeBuildInputs =
     [
@@ -98,10 +100,18 @@ stdenv.mkDerivation (finalAttrs: {
       "-DCMAKE_INSTALL_PREFIX_PYTHON=lib"
       # "-DAMD_FP16_SUPPORT=ON" `error: typedef redefinition with different types ('__half' vs 'half_float::half')`
     ]
-    ++ lib.optionals (gpuTargets != [ ]) [ "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}" ]
-    ++ lib.optionals (!useOpenCL && !useCPU) [ "-DBACKEND=HIP" ]
-    ++ lib.optionals (useOpenCL && !useCPU) [ "-DBACKEND=OCL" ]
-    ++ lib.optionals useCPU [ "-DBACKEND=CPU" ];
+    ++ lib.optionals (gpuTargets != [ ]) [
+      "-DAMDGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
+    ]
+    ++ lib.optionals (!useOpenCL && !useCPU) [
+      "-DBACKEND=HIP"
+    ]
+    ++ lib.optionals (useOpenCL && !useCPU) [
+      "-DBACKEND=OCL"
+    ]
+    ++ lib.optionals useCPU [
+      "-DBACKEND=CPU"
+    ];
 
   postPatch = ''
     # We need to not use hipcc and define the CXXFLAGS manually due to `undefined hidden symbol: tensorflow:: ...`

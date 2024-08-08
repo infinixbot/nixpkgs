@@ -640,5 +640,7 @@ pipe
           ;
       })
     ]
-    ++ optionals atLeast11 [ (callPackage ./common/checksum.nix { inherit langC langCC; }) ]
+    ++ optionals atLeast11 [
+      (callPackage ./common/checksum.nix { inherit langC langCC; })
+    ]
   )

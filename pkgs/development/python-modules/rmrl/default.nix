@@ -27,7 +27,9 @@ buildPythonPackage rec {
     hash = "sha256-jGWYrw6kcNSb4zhyCjap3l8+YCdOkk5kb5UCiBgW8u0=";
   };
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   pythonRelaxDeps = [
     "reportlab"

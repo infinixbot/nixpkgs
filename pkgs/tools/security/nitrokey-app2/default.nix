@@ -27,7 +27,11 @@ python3.pkgs.buildPythonApplication rec {
     wrapQtAppsHook
   ];
 
-  buildInputs = [ qtbase ] ++ lib.optionals stdenv.isLinux [ qtwayland ];
+  buildInputs =
+    [ qtbase ]
+    ++ lib.optionals stdenv.isLinux [
+      qtwayland
+    ];
 
   propagatedBuildInputs = with python3.pkgs; [
     pynitrokey
@@ -38,7 +42,9 @@ python3.pkgs.buildPythonApplication rec {
 
   pythonRelaxDeps = [ "pynitrokey" ];
 
-  pythonImportsCheck = [ "nitrokeyapp" ];
+  pythonImportsCheck = [
+    "nitrokeyapp"
+  ];
 
   meta = with lib; {
     description = "This application allows to manage Nitrokey 3 devices";

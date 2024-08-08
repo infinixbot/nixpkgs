@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
     zstd
   ];
 
-  configureFlags = [ "--enable-embedded-cryptopp" ];
+  configureFlags = [
+    "--enable-embedded-cryptopp"
+  ];
 
   enableParallelBuilding = true;
 

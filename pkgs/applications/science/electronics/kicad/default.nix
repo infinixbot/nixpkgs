@@ -249,7 +249,9 @@ stdenv.mkDerivation rec {
       in
       [ "--set-default NIX_KICAD8_STOCK_DATA_PATH ${stockDataPath}" ]
     )
-    ++ optionals (with3d) [ "--set-default KICAD8_3DMODEL_DIR ${packages3d}/share/kicad/3dmodels" ]
+    ++ optionals (with3d) [
+      "--set-default KICAD8_3DMODEL_DIR ${packages3d}/share/kicad/3dmodels"
+    ]
     ++ optionals (withNgspice) [ "--prefix LD_LIBRARY_PATH : ${libngspice}/lib" ]
 
     # infinisil's workaround for #39493

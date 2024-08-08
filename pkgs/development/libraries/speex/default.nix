@@ -37,7 +37,9 @@ stdenv.mkDerivation rec {
   # TODO: Remove this will help with immediate backward compatibility
   propagatedBuildInputs = [ speexdsp ];
 
-  configureFlags = lib.optionals withFft [ "--with-fft=gpl-fftw3" ];
+  configureFlags = lib.optionals withFft [
+    "--with-fft=gpl-fftw3"
+  ];
 
   meta = with lib; {
     homepage = "https://www.speex.org/";

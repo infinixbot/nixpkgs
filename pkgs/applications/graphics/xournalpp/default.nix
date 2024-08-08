@@ -52,7 +52,9 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    lib.optionals stdenv.isLinux [ alsa-lib ]
+    lib.optionals stdenv.isLinux [
+      alsa-lib
+    ]
     ++ [
       glib
       gsettings-desktop-schemas

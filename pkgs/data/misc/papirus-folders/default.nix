@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-BY1hnAGz31Deffy/EGKy/nuPKmpAA0u8FzPYgr1Plfs=";
   };
 
-  buildInputs = [ getent ];
+  buildInputs = [
+    getent
+  ];
 
   makeFlags = [ "PREFIX=${placeholder "out"}" ];
 

@@ -67,7 +67,9 @@ stdenv.mkDerivation (finalAttrs: {
     qttools
   ] ++ lib.optionals enableDiscordRpc [ discord-rpc ];
 
-  cmakeFlags = [ (lib.cmakeBool "USE_DISCORD_RPC" enableDiscordRpc) ];
+  cmakeFlags = [
+    (lib.cmakeBool "USE_DISCORD_RPC" enableDiscordRpc)
+  ];
 
   strictDeps = true;
 

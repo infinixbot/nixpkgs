@@ -25,7 +25,9 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = [ snappy ];
+  buildInputs = [
+    snappy
+  ];
 
   meta = with lib; {
     description = "Compression/decompression tool based on snappy";

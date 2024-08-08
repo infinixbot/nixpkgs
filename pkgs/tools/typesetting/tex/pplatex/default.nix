@@ -23,7 +23,9 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = [ pcre ];
+  buildInputs = [
+    pcre
+  ];
 
   installPhase = ''
     runHook preInstall

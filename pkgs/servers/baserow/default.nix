@@ -64,7 +64,9 @@ buildPythonApplication rec {
       -e 's/\[standard\]//'
   '';
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   propagatedBuildInputs = [
     autobahn

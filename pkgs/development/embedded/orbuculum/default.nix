@@ -40,7 +40,9 @@ stdenv.mkDerivation rec {
     SDL2
   ];
 
-  installFlags = [ "INSTALL_ROOT=$(out)/" ];
+  installFlags = [
+    "INSTALL_ROOT=$(out)/"
+  ];
 
   postInstall = ''
     mkdir -p $out/etc/udev/rules.d/

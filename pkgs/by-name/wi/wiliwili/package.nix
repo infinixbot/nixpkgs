@@ -28,10 +28,14 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-Fl8YV7yBW9dmcpcHCDVvkAzICTopNb4zKziDkR6NEwU=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ] ++ lib.optionals stdenv.isLinux [ wayland-scanner ];
+  nativeBuildInputs =
+    [
+      cmake
+      pkg-config
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      wayland-scanner
+    ];
 
   buildInputs =
     [

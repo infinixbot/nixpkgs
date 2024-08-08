@@ -43,9 +43,13 @@ python3.pkgs.buildPythonPackage rec {
     typer
   ];
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
-  pythonImportsCheck = [ "robusta_krr" ];
+  pythonImportsCheck = [
+    "robusta_krr"
+  ];
 
   passthru.tests.version = testers.testVersion {
     package = krr;

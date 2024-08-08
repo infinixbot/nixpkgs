@@ -44,7 +44,9 @@ python3.pkgs.buildPythonApplication rec {
     tree-sitter-languages
     lsp-tree-sitter
   ];
-  nativeCheckInputs = [ python3.pkgs.pytestCheckHook ];
+  nativeCheckInputs = [
+    python3.pkgs.pytestCheckHook
+  ];
 
   meta = with lib; {
     description = "Autotools language server, support configure.ac, Makefile.am, Makefile";

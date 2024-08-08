@@ -224,6 +224,8 @@ stdenv.mkDerivation (finalAttrs: {
     ];
     maintainers = teams.lomiri.members;
     platforms = platforms.linux;
-    pkgConfigModules = [ "liblomiri-thumbnailer-qt" ];
+    pkgConfigModules = [
+      "liblomiri-thumbnailer-qt"
+    ];
   };
 })

@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
     [
       runtimeShellPackage # So patchShebangs finds a bash suitable for the installed scripts
     ]
-    ++ lib.optionals stdenv.isLinux [ udev ]
+    ++ lib.optionals stdenv.isLinux [
+      udev
+    ]
     ++ lib.optionals stdenv.isFreeBSD [
       freebsd.libcapsicum
       freebsd.libcasper

@@ -16,7 +16,9 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "sha256-AyHl4zMyFE2/5Cui3Y/SB1yEUuyafDdybFPrafo4Ki0=";
   };
 
-  nativeBuildInputs = [ gtk3 ];
+  nativeBuildInputs = [
+    gtk3
+  ];
 
   propagatedBuildInputs = [
     adwaita-icon-theme

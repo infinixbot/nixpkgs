@@ -186,7 +186,9 @@ in
       # added with order 501 to allow modules to go before with mkBefore
       system.nssDatabases.hosts = (mkOrder 501 [ "resolve [!UNAVAIL=return]" ]);
 
-      systemd.additionalUpstreamSystemUnits = [ "systemd-resolved.service" ];
+      systemd.additionalUpstreamSystemUnits = [
+        "systemd-resolved.service"
+      ];
 
       systemd.services.systemd-resolved = {
         wantedBy = [ "sysinit.target" ];

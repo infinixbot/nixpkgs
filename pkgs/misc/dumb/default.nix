@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     sha256 = "1cnq6rb14d4yllr0yi32p9jmcig8avs3f43bvdjrx4r1mpawspi6";
   };
 
-  cmakeFlags = [ "-DBUILD_EXAMPLES='OFF'" ];
+  cmakeFlags = [
+    "-DBUILD_EXAMPLES='OFF'"
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/kode54/dumb";

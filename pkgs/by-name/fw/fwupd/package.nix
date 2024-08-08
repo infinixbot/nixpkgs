@@ -181,31 +181,35 @@ stdenv.mkDerivation (finalAttrs: {
     vala
   ];
 
-  buildInputs = [
-    polkit
-    libxmlb
-    gusb
-    sqlite
-    libarchive
-    libdrm
-    curl
-    elfutils
-    libgudev
-    libjcat
-    libuuid
-    json-glib
-    umockdev
-    bash-completion
-    pango
-    tpm2-tss
-    fwupd-efi
-    protobufc
-    modemmanager
-    libmbim
-    libcbor
-    libqmi
-    xz # for liblzma
-  ] ++ lib.optionals haveFlashrom [ flashrom ];
+  buildInputs =
+    [
+      polkit
+      libxmlb
+      gusb
+      sqlite
+      libarchive
+      libdrm
+      curl
+      elfutils
+      libgudev
+      libjcat
+      libuuid
+      json-glib
+      umockdev
+      bash-completion
+      pango
+      tpm2-tss
+      fwupd-efi
+      protobufc
+      modemmanager
+      libmbim
+      libcbor
+      libqmi
+      xz # for liblzma
+    ]
+    ++ lib.optionals haveFlashrom [
+      flashrom
+    ];
 
   mesonFlags =
     [
@@ -225,11 +229,21 @@ stdenv.mkDerivation (finalAttrs: {
       # We do not want to place the daemon into lib (cyclic reference)
       "--libexecdir=${placeholder "out"}/libexec"
     ]
-    ++ lib.optionals (!enablePassim) [ "-Dpassim=disabled" ]
-    ++ lib.optionals (!haveDell) [ "-Dplugin_synaptics_mst=disabled" ]
-    ++ lib.optionals (!haveRedfish) [ "-Dplugin_redfish=disabled" ]
-    ++ lib.optionals (!haveFlashrom) [ "-Dplugin_flashrom=disabled" ]
-    ++ lib.optionals (!haveMSR) [ "-Dplugin_msr=disabled" ];
+    ++ lib.optionals (!enablePassim) [
+      "-Dpassim=disabled"
+    ]
+    ++ lib.optionals (!haveDell) [
+      "-Dplugin_synaptics_mst=disabled"
+    ]
+    ++ lib.optionals (!haveRedfish) [
+      "-Dplugin_redfish=disabled"
+    ]
+    ++ lib.optionals (!haveFlashrom) [
+      "-Dplugin_flashrom=disabled"
+    ]
+    ++ lib.optionals (!haveMSR) [
+      "-Dplugin_msr=disabled"
+    ];
 
   # TODO: wrapGAppsHook3 wraps efi capsule even though it is not ELF
   dontWrapGApps = true;

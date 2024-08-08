@@ -16,7 +16,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-yrYLP2ewOtiry+EgH1IEaxz2Q55mqQ6mRGSxzVUnJ8Q=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   meta = with lib; {
     description = "Utility to extract Wolfstone data from Wolfenstein II";

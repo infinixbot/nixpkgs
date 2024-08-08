@@ -39,7 +39,9 @@ python3.pkgs.buildPythonApplication rec {
       --bash contrib/completion/you-get-completion.bash
   '';
 
-  pythonImportsCheck = [ "you_get" ];
+  pythonImportsCheck = [
+    "you_get"
+  ];
 
   meta = with lib; {
     description = "Tiny command line utility to download media contents from the web";

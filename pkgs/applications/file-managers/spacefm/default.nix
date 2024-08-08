@@ -44,7 +44,9 @@ stdenv.mkDerivation rec {
   # or equivalent is merged upstream.
   env.NIX_CFLAGS_COMPILE = "-fcommon";
 
-  configureFlags = [ "--with-bash-path=${pkgs.bash}/bin/bash" ];
+  configureFlags = [
+    "--with-bash-path=${pkgs.bash}/bin/bash"
+  ];
 
   preConfigure = ''
     configureFlags="$configureFlags --sysconfdir=$out/etc"

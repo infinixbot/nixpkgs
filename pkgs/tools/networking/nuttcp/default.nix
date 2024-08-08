@@ -14,7 +14,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-fq16ieeqoFnSDjQELFihmMKYHK1ylVDROI3fyQNtOYM=";
   };
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
 

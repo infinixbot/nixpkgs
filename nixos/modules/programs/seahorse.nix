@@ -27,9 +27,13 @@
 
     programs.ssh.askPassword = lib.mkDefault "${pkgs.seahorse}/libexec/seahorse/ssh-askpass";
 
-    environment.systemPackages = [ pkgs.seahorse ];
+    environment.systemPackages = [
+      pkgs.seahorse
+    ];
 
-    services.dbus.packages = [ pkgs.seahorse ];
+    services.dbus.packages = [
+      pkgs.seahorse
+    ];
 
   };
 

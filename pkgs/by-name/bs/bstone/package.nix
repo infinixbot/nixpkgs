@@ -18,7 +18,9 @@ gcc12Stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-wtW595cSoVTZaVykxOkJViNs3OmuIch9nA5s1SqwbJo=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = [
     libGL

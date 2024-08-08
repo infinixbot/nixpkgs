@@ -26,7 +26,9 @@ stdenv.mkDerivation rec {
     libmad
   ];
 
-  makeFlags = [ "AR:=$(AR)" ];
+  makeFlags = [
+    "AR:=$(AR)"
+  ];
 
   meta = with lib; {
     homepage = "https://streamripper.sourceforge.net/";

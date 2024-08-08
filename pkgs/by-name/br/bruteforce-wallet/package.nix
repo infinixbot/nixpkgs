@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-ngzG39c/bWv++PHVgce9r1PXElFhpgYoAepbqD/1Dq0=";
   };
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   buildInputs = [
     openssl

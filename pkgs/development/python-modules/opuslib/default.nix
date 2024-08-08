@@ -48,7 +48,9 @@ buildPythonPackage rec {
 
   nativeCheckInputs = [ pytestCheckHook ];
 
-  pytestFlagsArray = [ "tests/{decoder,encoder,hl_decoder,hl_encoder}.py" ];
+  pytestFlagsArray = [
+    "tests/{decoder,encoder,hl_decoder,hl_encoder}.py"
+  ];
 
   meta = with lib; {
     description = "Python bindings to the libopus, IETF low-delay audio codec";

@@ -22,9 +22,13 @@ stdenv.mkDerivation (finalAttrs: {
     "man"
   ];
 
-  nativeBuildInputs = [ asciidoctor ];
+  nativeBuildInputs = [
+    asciidoctor
+  ];
 
-  buildInputs = [ ncurses ];
+  buildInputs = [
+    ncurses
+  ];
 
   strictDeps = true;
 

@@ -22,9 +22,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-JPL5+GoL4zvHgStgTV9pJBPsQtAeE2DJe02YrZEtdJ8=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = [ qtbase ];
+  buildInputs = [
+    qtbase
+  ];
 
   propagatedBuildInputs = [
     zlib

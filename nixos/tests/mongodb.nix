@@ -40,7 +40,9 @@ import ./make-test-python.nix (
       node =
         { ... }:
         {
-          environment.systemPackages = with pkgs; [ mongodb-5_0 ];
+          environment.systemPackages = with pkgs; [
+            mongodb-5_0
+          ];
         };
     };
 

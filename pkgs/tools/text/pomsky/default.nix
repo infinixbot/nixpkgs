@@ -29,7 +29,9 @@ rustPlatform.buildRustPackage rec {
     rustPlatform.bindgenHook
   ];
 
-  buildInputs = [ oniguruma ];
+  buildInputs = [
+    oniguruma
+  ];
 
   env = {
     RUSTONIG_SYSTEM_LIBONIG = true;

@@ -37,7 +37,9 @@ stdenv.mkDerivation (finalAttrs: {
     gettext
   ];
 
-  cmakeFlags = [ "-DwxWidgets_LIBRARIES=${wxGTK}/lib" ];
+  cmakeFlags = [
+    "-DwxWidgets_LIBRARIES=${wxGTK}/lib"
+  ];
 
   preConfigure = ''
     gappsWrapperArgs+=(--prefix PATH ":" ${maxima}/bin)

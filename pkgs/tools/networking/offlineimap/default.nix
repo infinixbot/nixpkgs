@@ -81,7 +81,9 @@ python3.pkgs.buildPythonApplication rec {
   # Test requires credentials
   doCheck = false;
 
-  pythonImportsCheck = [ "offlineimap" ];
+  pythonImportsCheck = [
+    "offlineimap"
+  ];
 
   passthru.tests.version = testers.testVersion { package = offlineimap; };
 

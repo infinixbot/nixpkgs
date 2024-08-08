@@ -39,7 +39,9 @@ buildGoModule rec {
       "-X ${constants}.FullAppName=ProtonMailBridge" # Should be "Proton Mail Bridge", but quoting doesn't seems to work in nix's ldflags
     ];
 
-  subPackages = [ "cmd/Desktop-Bridge" ];
+  subPackages = [
+    "cmd/Desktop-Bridge"
+  ];
 
   postInstall = ''
     mv $out/bin/Desktop-Bridge $out/bin/protonmail-bridge # The cli is named like that in other distro packages

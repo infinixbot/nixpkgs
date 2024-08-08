@@ -27,7 +27,9 @@ stdenv.mkDerivation (finalAttrs: {
     imagemagick
   ];
 
-  makeFlags = [ "INSTALL_ROOT=${placeholder "out"}" ];
+  makeFlags = [
+    "INSTALL_ROOT=${placeholder "out"}"
+  ];
 
   postInstall = ''
     mkdir -p $out/{bin,share/applications}

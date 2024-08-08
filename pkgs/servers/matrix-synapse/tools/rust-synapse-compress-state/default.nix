@@ -26,7 +26,9 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  cargoBuildFlags = [ "--all" ];
+  cargoBuildFlags = [
+    "--all"
+  ];
 
   # Needed to get openssl-sys to use pkgconfig.
   env.OPENSSL_NO_VENDOR = 1;

@@ -137,13 +137,17 @@ rec {
       substituteInPlace backend/drm/meson.build \
         --replace /usr/share/hwdata/ ${hwdata}/share/hwdata/
     '';
-    extraBuildInputs = [ ffmpeg_4 ];
+    extraBuildInputs = [
+      ffmpeg_4
+    ];
   };
 
   wlroots_0_17 = generic {
     version = "0.17.4";
     hash = "sha256-AzmXf+HMX/6VAr0LpfHwfmDB9dRrrLQHt7l35K98MVo=";
-    extraNativeBuildInputs = [ hwdata ];
+    extraNativeBuildInputs = [
+      hwdata
+    ];
     extraBuildInputs = [
       ffmpeg
       libliftoff
@@ -154,7 +158,9 @@ rec {
   wlroots_0_18 = generic {
     version = "0.18.0";
     hash = "sha256-LiRnvu7qCbfSg+ONWVCtWwdzxxFZHfbgmy7zApCIW40=";
-    extraNativeBuildInputs = [ hwdata ];
+    extraNativeBuildInputs = [
+      hwdata
+    ];
     extraBuildInputs = [
       ffmpeg
       libliftoff

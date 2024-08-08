@@ -34,7 +34,9 @@ stdenv.mkDerivation rec {
       "common_CFLAGS = -DXD3_USE_LARGESIZET=1"
   '';
 
-  configureFlags = [ (mkWith lzmaSupport "liblzma") ];
+  configureFlags = [
+    (mkWith lzmaSupport "liblzma")
+  ];
 
   enableParallelBuilding = true;
 

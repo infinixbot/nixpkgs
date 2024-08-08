@@ -7,7 +7,9 @@ let
   runShellcheck = testers.shellcheck {
     src = fileset.toSource {
       root = ./.;
-      fileset = fileset.unions [ ./activation-check.sh ];
+      fileset = fileset.unions [
+        ./activation-check.sh
+      ];
     };
   };
 

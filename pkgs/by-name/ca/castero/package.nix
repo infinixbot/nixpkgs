@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-6/7oCKBMEcQeJ8PaFP15Xef9sQRYCpigtzINv2M6GUY=";
   };
 
-  build-system = with python3.pkgs; [ wheel ];
+  build-system = with python3.pkgs; [
+    wheel
+  ];
 
   propagatedBuildInputs =
     with python3.pkgs;
@@ -32,13 +34,19 @@ python3.pkgs.buildPythonApplication rec {
     ]
     ++ requests.optional-dependencies.socks;
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
-  pytestFlagsArray = [ "tests" ];
+  pytestFlagsArray = [
+    "tests"
+  ];
 
   disabledTests = [ "test_datafile_download" ];
 
-  pythonImportsCheck = [ "castero" ];
+  pythonImportsCheck = [
+    "castero"
+  ];
 
   # Resolve configuration tests, which access $HOME
   preCheck = ''

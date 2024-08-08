@@ -26,9 +26,13 @@ rustPlatform.buildRustPackage rec {
     rm .cargo/config
   '';
 
-  nativeBuildInputs = [ rustPlatform.bindgenHook ];
+  nativeBuildInputs = [
+    rustPlatform.bindgenHook
+  ];
 
-  nativeCheckInputs = [ python3 ];
+  nativeCheckInputs = [
+    python3
+  ];
 
   buildInputs = lib.optionals (stdenv.isDarwin && stdenv.isx86_64) [
     # Pull a header that contains a definition of proc_pid_rusage().

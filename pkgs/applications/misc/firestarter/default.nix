@@ -69,11 +69,15 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    cmake
-    git
-    pkg-config
-  ] ++ lib.optionals withCuda [ addDriverRunpath ];
+  nativeBuildInputs =
+    [
+      cmake
+      git
+      pkg-config
+    ]
+    ++ lib.optionals withCuda [
+      addDriverRunpath
+    ];
 
   buildInputs =
     [ hwloc ]
@@ -87,13 +91,19 @@ stdenv.mkDerivation rec {
         [ glibc.static ]
     );
 
-  NIX_LDFLAGS = lib.optionals withCuda [ "-L${cudatoolkit}/lib/stubs" ];
+  NIX_LDFLAGS = lib.optionals withCuda [
+    "-L${cudatoolkit}/lib/stubs"
+  ];
 
-  cmakeFlags = [
-    "-DFIRESTARTER_BUILD_HWLOC=OFF"
-    "-DCMAKE_C_COMPILER_WORKS=1"
-    "-DCMAKE_CXX_COMPILER_WORKS=1"
-  ] ++ lib.optionals withCuda [ "-DFIRESTARTER_BUILD_TYPE=FIRESTARTER_CUDA" ];
+  cmakeFlags =
+    [
+      "-DFIRESTARTER_BUILD_HWLOC=OFF"
+      "-DCMAKE_C_COMPILER_WORKS=1"
+      "-DCMAKE_CXX_COMPILER_WORKS=1"
+    ]
+    ++ lib.optionals withCuda [
+      "-DFIRESTARTER_BUILD_TYPE=FIRESTARTER_CUDA"
+    ];
 
   installPhase = ''
     runHook preInstall

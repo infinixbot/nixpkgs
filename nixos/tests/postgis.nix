@@ -14,7 +14,10 @@ import ./make-test-python.nix (
           services.postgresql = {
             enable = true;
             package = pkgs.postgresql;
-            extraPlugins = ps: with ps; [ postgis ];
+            extraPlugins =
+              ps: with ps; [
+                postgis
+              ];
           };
         };
     };

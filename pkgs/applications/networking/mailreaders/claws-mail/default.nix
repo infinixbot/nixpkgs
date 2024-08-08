@@ -287,7 +287,9 @@ stdenv.mkDerivation rec {
     "dev"
   ];
 
-  patches = [ ./mime.patch ];
+  patches = [
+    ./mime.patch
+  ];
 
   preConfigure = ''
     # autotools check tries to dlopen libpython as a requirement for the python plugin

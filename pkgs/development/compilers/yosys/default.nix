@@ -114,7 +114,11 @@ stdenv.mkDerivation (finalAttrs: {
     readline
     libffi
     zlib
-    (python3.withPackages (pp: with pp; [ click ]))
+    (python3.withPackages (
+      pp: with pp; [
+        click
+      ]
+    ))
   ] ++ lib.optional enablePython boost_python;
 
   makeFlags = [ "PREFIX=${placeholder "out"}" ];

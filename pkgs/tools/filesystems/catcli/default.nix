@@ -26,7 +26,9 @@ python3.pkgs.buildPythonApplication rec {
     types-docopt
   ];
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
   meta = with lib; {
     description = "Command line catalog tool for your offline data";

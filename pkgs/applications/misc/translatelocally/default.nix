@@ -30,7 +30,9 @@ stdenv.mkDerivation (finalAttrs: {
     fetchSubmodules = true;
   };
 
-  patches = [ ./version_without_git.patch ];
+  patches = [
+    ./version_without_git.patch
+  ];
 
   postPatch = ''
     echo '#define GIT_REVISION "${rev} ${finalAttrs.version}"' > \

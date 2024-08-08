@@ -37,7 +37,9 @@ buildGoModule {
       --zsh <($out/bin/dependabot completion zsh)
   '';
 
-  checkFlags = [ "-skip=TestIntegration|TestNewProxy_customCert|TestRun" ];
+  checkFlags = [
+    "-skip=TestIntegration|TestNewProxy_customCert|TestRun"
+  ];
 
   doInstallCheck = true;
   installCheckPhase = ''

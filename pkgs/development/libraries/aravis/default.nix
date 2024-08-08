@@ -72,7 +72,8 @@ stdenv.mkDerivation rec {
     ++ lib.optionals (enableViewer) [ gtk3 ];
 
   mesonFlags =
-    [ ]
+    [
+    ]
     ++ lib.optional enableFastHeartbeat "-Dfast-heartbeat=enabled"
     ++ lib.optional (!enableGstPlugin) "-Dgst-plugin=disabled"
     ++ lib.optional (!enableViewer) "-Dviewer=disabled"

@@ -84,9 +84,13 @@ stdenv.mkDerivation (finalAttrs: {
       gst-plugins-good
     ]);
 
-  checkInputs = [ gtest ];
+  checkInputs = [
+    gtest
+  ];
 
-  cmakeFlags = [ "-DENABLE_TESTS=${lib.boolToString finalAttrs.finalPackage.doCheck}" ];
+  cmakeFlags = [
+    "-DENABLE_TESTS=${lib.boolToString finalAttrs.finalPackage.doCheck}"
+  ];
 
   doCheck = stdenv.buildPlatform.canExecute stdenv.hostPlatform;
 
@@ -114,6 +118,8 @@ stdenv.mkDerivation (finalAttrs: {
     maintainers = teams.lomiri.members;
     mainProgram = "mediascanner-service-2.0";
     platforms = platforms.linux;
-    pkgConfigModules = [ "mediascanner-2.0" ];
+    pkgConfigModules = [
+      "mediascanner-2.0"
+    ];
   };
 })

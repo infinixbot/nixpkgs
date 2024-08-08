@@ -83,7 +83,9 @@ mkDerivation rec {
       --replace-warn "MESHLAB_LIB_INSTALL_DIR" "CMAKE_INSTALL_LIBDIR"
   '';
 
-  cmakeFlags = [ "-DVCGDIR=${vcg.src}" ];
+  cmakeFlags = [
+    "-DVCGDIR=${vcg.src}"
+  ];
 
   postFixup = ''
     patchelf --add-needed $out/lib/meshlab/libmeshlab-common.so $out/bin/.meshlab-wrapped

@@ -57,7 +57,13 @@ python3.pkgs.buildPythonApplication rec {
     rustc
   ];
 
-  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ libiconv ];
+  buildInputs =
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      libiconv
+    ];
 
   propagatedBuildInputs =
     with python3.pkgs;
@@ -96,23 +102,49 @@ python3.pkgs.buildPythonApplication rec {
     ++ twisted.optional-dependencies.tls;
 
   passthru.optional-dependencies = with python3.pkgs; {
-    postgres = if isPyPy then [ psycopg2cffi ] else [ psycopg2 ];
-    saml2 = [ pysaml2 ];
-    oidc = [ authlib ];
-    systemd = [ systemd ];
-    url-preview = [ lxml ];
-    sentry = [ sentry-sdk ];
-    jwt = [ authlib ];
+    postgres =
+      if isPyPy then
+        [
+          psycopg2cffi
+        ]
+      else
+        [
+          psycopg2
+        ];
+    saml2 = [
+      pysaml2
+    ];
+    oidc = [
+      authlib
+    ];
+    systemd = [
+      systemd
+    ];
+    url-preview = [
+      lxml
+    ];
+    sentry = [
+      sentry-sdk
+    ];
+    jwt = [
+      authlib
+    ];
     redis = [
       hiredis
       txredisapi
     ];
-    cache-memory = [ pympler ];
-    user-search = [ pyicu ];
+    cache-memory = [
+      pympler
+    ];
+    user-search = [
+      pyicu
+    ];
   };
 
   nativeCheckInputs =
-    [ openssl ]
+    [
+      openssl
+    ]
     ++ (with python3.pkgs; [
       mock
       parameterized

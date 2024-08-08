@@ -49,7 +49,9 @@ rec {
           (
             {
               inherit makeWrapperArgs;
-              nativeBuildInputs = [ makeBinaryWrapper ];
+              nativeBuildInputs = [
+                makeBinaryWrapper
+              ];
               meta.mainProgram = name;
             }
             // (
@@ -144,7 +146,9 @@ rec {
           (
             {
               inherit makeWrapperArgs;
-              nativeBuildInputs = [ makeBinaryWrapper ];
+              nativeBuildInputs = [
+                makeBinaryWrapper
+              ];
               meta.mainProgram = name;
             }
             // (
@@ -540,7 +544,9 @@ rec {
       node-env = pkgs.buildEnv {
         name = "node";
         paths = libraries;
-        pathsToLink = [ "/lib/node_modules" ];
+        pathsToLink = [
+          "/lib/node_modules"
+        ];
       };
     in
     writeDash name ''

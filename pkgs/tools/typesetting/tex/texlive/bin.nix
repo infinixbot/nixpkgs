@@ -255,7 +255,9 @@ rec {
     ] ++ (builtins.map (builtins.replaceStrings [ "-" ] [ "_" ]) corePackages);
 
     nativeBuildInputs =
-      [ pkg-config ]
+      [
+        pkg-config
+      ]
       ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) (
         with texlive.bin.core;
         [

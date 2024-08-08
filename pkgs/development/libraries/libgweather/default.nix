@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
     ./fix-pkgconfig.patch
   ];
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs =
     [
@@ -66,10 +68,14 @@ stdenv.mkDerivation rec {
     geocode-glib_2
   ];
 
-  mesonFlags = [
-    "-Dzoneinfo_dir=${tzdata}/share/zoneinfo"
-    (lib.mesonBool "introspection" withIntrospection)
-  ] ++ lib.optionals stdenv.isDarwin [ "-Dc_args=-D_DARWIN_C_SOURCE" ];
+  mesonFlags =
+    [
+      "-Dzoneinfo_dir=${tzdata}/share/zoneinfo"
+      (lib.mesonBool "introspection" withIntrospection)
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      "-Dc_args=-D_DARWIN_C_SOURCE"
+    ];
 
   postPatch = ''
     patchShebangs build-aux/meson/gen_locations_variant.py

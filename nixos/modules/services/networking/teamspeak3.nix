@@ -143,7 +143,9 @@ in
       gid = config.ids.gids.teamspeak;
     };
 
-    systemd.tmpfiles.rules = [ "d '${cfg.logPath}' - ${user} ${group} - -" ];
+    systemd.tmpfiles.rules = [
+      "d '${cfg.logPath}' - ${user} ${group} - -"
+    ];
 
     networking.firewall = mkIf cfg.openFirewall {
       allowedTCPPorts =

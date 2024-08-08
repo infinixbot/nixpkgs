@@ -72,7 +72,9 @@ import ./make-test-python.nix (
           containerTarball
         ];
 
-        systemd.tmpfiles.rules = [ "d /var/lib/machines/shared-decl 0755 root root - -" ];
+        systemd.tmpfiles.rules = [
+          "d /var/lib/machines/shared-decl 0755 root root - -"
+        ];
         systemd.nspawn.shared-decl = {
           execConfig = {
             Boot = false;

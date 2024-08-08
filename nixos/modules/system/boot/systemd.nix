@@ -47,7 +47,9 @@ let
       "cryptsetup-pre.target"
       "remote-cryptsetup.target"
     ]
-    ++ optionals cfg.package.withTpm2Tss [ "tpm2.target" ]
+    ++ optionals cfg.package.withTpm2Tss [
+      "tpm2.target"
+    ]
     ++ [
       "sigpwr.target"
       "timers.target"
@@ -177,7 +179,9 @@ let
       # Slices / containers.
       "slices.target"
     ]
-    ++ optionals cfg.package.withImportd [ "systemd-importd.service" ]
+    ++ optionals cfg.package.withImportd [
+      "systemd-importd.service"
+    ]
     ++ optionals cfg.package.withMachined [
       "machine.slice"
       "machines.target"
@@ -565,7 +569,11 @@ in
           (mkOrder 999 [ "myhostname" ]) # after files (which is 998), but before regular nss modules
         ]
       );
-      passwd = (mkMerge [ (mkAfter [ "systemd" ]) ]);
+      passwd = (
+        mkMerge [
+          (mkAfter [ "systemd" ])
+        ]
+      );
       group = (
         mkMerge [
           (mkAfter [ "[success=merge] systemd" ]) # need merge so that NSS won't stop at file-based groups

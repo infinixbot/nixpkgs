@@ -44,7 +44,9 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    [ libseccomp ]
+    [
+      libseccomp
+    ]
     ++ lib.optional debugBuild libunwind
     ++ lib.optionals installTests [
       gnumake

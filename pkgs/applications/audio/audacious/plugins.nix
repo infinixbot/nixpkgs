@@ -105,7 +105,9 @@ stdenv.mkDerivation rec {
     libopenmpt
   ];
 
-  mesonFlags = [ "-Dgtk=false" ];
+  mesonFlags = [
+    "-Dgtk=false"
+  ];
 
   dontWrapQtApps = true;
 

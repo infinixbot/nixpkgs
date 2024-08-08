@@ -17,7 +17,9 @@ buildHomeAssistantComponent rec {
     hash = "sha256-k5pCgPM5xjVfWjOcr0UDFzYl/8z7yUwgYdBmC3+2F5k=";
   };
 
-  propagatedBuildInputs = [ ulid-transform ];
+  propagatedBuildInputs = [
+    ulid-transform
+  ];
 
   meta = with lib; {
     changelog = "https://github.com/basnijholt/adaptive-lighting/releases/tag/${version}";

@@ -40,10 +40,14 @@ stdenv.mkDerivation (finalAttrs: {
     vala
   ];
 
-  buildInputs = [ lcms2 ];
+  buildInputs = [
+    lcms2
+  ];
 
   mesonFlags =
-    [ "-Dprefix-dev=${placeholder "dev"}" ]
+    [
+      "-Dprefix-dev=${placeholder "dev"}"
+    ]
     ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
       # Docs are opt-out in native but opt-in in cross builds.
       "-Dwith-docs=true"

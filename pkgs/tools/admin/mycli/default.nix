@@ -42,7 +42,9 @@ buildPythonApplication rec {
     export LC_ALL="en_US.UTF-8"
   '';
 
-  disabledTestPaths = [ "mycli/packages/paramiko_stub/__init__.py" ];
+  disabledTestPaths = [
+    "mycli/packages/paramiko_stub/__init__.py"
+  ];
 
   postPatch = ''
     substituteInPlace setup.py \

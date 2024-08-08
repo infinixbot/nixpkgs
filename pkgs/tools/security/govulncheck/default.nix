@@ -26,7 +26,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-jESQV4Na4Hooxxd0RL96GHkA7Exddco5izjnhfH6xTg=";
 
-  subPackages = [ "cmd/govulncheck" ];
+  subPackages = [
+    "cmd/govulncheck"
+  ];
 
   # Vendoring breaks tests
   doCheck = false;

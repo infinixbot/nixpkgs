@@ -68,7 +68,9 @@ stdenv.mkDerivation {
       xercesc
       zlib
     ]
-    ++ lib.optionals stdenv.isLinux [ glibc ]
+    ++ lib.optionals stdenv.isLinux [
+      glibc
+    ]
     ++ lib.optionals stdenv.isDarwin [
       darwin.Libsystem
       libxml2

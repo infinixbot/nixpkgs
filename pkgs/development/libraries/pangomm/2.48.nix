@@ -27,12 +27,16 @@ stdenv.mkDerivation rec {
     hash = "sha256-NKE0EmpkhP8S93Q1jDbsxE0OnfCU4bg3ltl3S7fSSUc=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    meson
-    ninja
-    python3
-  ] ++ lib.optionals stdenv.isDarwin [ ApplicationServices ];
+  nativeBuildInputs =
+    [
+      pkg-config
+      meson
+      ninja
+      python3
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      ApplicationServices
+    ];
 
   propagatedBuildInputs = [
     pango

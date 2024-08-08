@@ -48,7 +48,9 @@ stdenv.mkDerivation (finalAttrs: {
     qtdeclarative
   ];
 
-  nativeCheckInputs = [ python3 ];
+  nativeCheckInputs = [
+    python3
+  ];
 
   # No apps, just QML components
   dontWrapQtApps = true;

@@ -35,14 +35,18 @@ rustPlatform.buildRustPackage rec {
   doCheck = false;
 
   nativeBuildInputs =
-    [ pkg-config ]
+    [
+      pkg-config
+    ]
     ++ lib.optionals withGui [
       copyDesktopItems
       cmake
     ];
 
   buildInputs =
-    [ openssl ]
+    [
+      openssl
+    ]
     ++ lib.optionals withGui [
       fontconfig
       glib
@@ -74,7 +78,9 @@ rustPlatform.buildRustPackage rec {
     desktopName = "rusty-psn";
     exec = "rusty-psn-gui";
     comment = "A simple tool to grab updates for PS3 games, directly from Sony's servers using their updates API.";
-    categories = [ "Network" ];
+    categories = [
+      "Network"
+    ];
     keywords = [
       "psn"
       "ps3"

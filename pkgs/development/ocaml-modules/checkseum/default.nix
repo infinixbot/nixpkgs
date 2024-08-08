@@ -25,7 +25,9 @@ buildDunePackage rec {
   };
 
   buildInputs = [ dune-configurator ];
-  propagatedBuildInputs = [ optint ];
+  propagatedBuildInputs = [
+    optint
+  ];
 
   checkInputs = [
     alcotest

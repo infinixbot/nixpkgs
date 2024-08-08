@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     qtsvg
   ];
 
-  nativeBuildInputs = [ wrapQtAppsHook ];
+  nativeBuildInputs = [
+    wrapQtAppsHook
+  ];
 
   sourceRoot = "${src.name}/src";
 

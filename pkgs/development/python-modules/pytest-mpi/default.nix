@@ -22,12 +22,16 @@ buildPythonPackage rec {
     hash = "sha256-m3HTGLoPnYeg0oeIA1nzTzch7FtkuXTYpox4rRgo5MU=";
   };
 
-  build-system = [ setuptools ];
+  build-system = [
+    setuptools
+  ];
   buildInputs = [
     # Don't propagate it to let a different pytest version be used if needed
     pytest
   ];
-  dependencies = [ sybil ];
+  dependencies = [
+    sybil
+  ];
 
   nativeCheckInputs = [
     pytestCheckHook

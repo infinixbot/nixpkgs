@@ -125,7 +125,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.displayManager.sessionPackages = [ pkgs.surf-display ];
+    services.displayManager.sessionPackages = [
+      pkgs.surf-display
+    ];
 
     environment.etc."default/surf-display".text = surfDisplayConf;
   };

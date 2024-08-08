@@ -101,7 +101,9 @@ stdenv.mkDerivation rec {
   propagatedBuildInputs = [ aws-crt-cpp ];
 
   cmakeFlags =
-    [ "-DBUILD_DEPS=OFF" ]
+    [
+      "-DBUILD_DEPS=OFF"
+    ]
     ++ lib.optional (!customMemoryManagement) "-DCUSTOM_MEMORY_MANAGEMENT=0"
     ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
       "-DENABLE_TESTING=OFF"

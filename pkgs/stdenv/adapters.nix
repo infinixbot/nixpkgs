@@ -155,7 +155,9 @@ rec {
         );
       }
       // lib.optionalAttrs (stdenv0.hostPlatform.libc == "glibc") {
-        extraBuildInputs = (old.extraBuildInputs or [ ]) ++ [ pkgs.glibc.static ];
+        extraBuildInputs = (old.extraBuildInputs or [ ]) ++ [
+          pkgs.glibc.static
+        ];
       }
     );
 

@@ -98,15 +98,26 @@ stdenv.mkDerivation rec {
       gdbm
       db
     ]
-    ++ lib.optionals isPy3k [ xz ]
-    ++ lib.optionals (stdenv ? cc && stdenv.cc.libc != null) [ stdenv.cc.libc ]
-    ++ lib.optionals zlibSupport [ zlib ]
-    ++ lib.optionals (lib.any (l: l == optimizationLevel) [
-      "0"
-      "1"
-      "2"
-      "3"
-    ]) [ boehmgc ]
+    ++ lib.optionals isPy3k [
+      xz
+    ]
+    ++ lib.optionals (stdenv ? cc && stdenv.cc.libc != null) [
+      stdenv.cc.libc
+    ]
+    ++ lib.optionals zlibSupport [
+      zlib
+    ]
+    ++
+      lib.optionals
+        (lib.any (l: l == optimizationLevel) [
+          "0"
+          "1"
+          "2"
+          "3"
+        ])
+        [
+          boehmgc
+        ]
     ++ lib.optionals stdenv.isDarwin [
       libunwind
       Security
@@ -242,7 +253,9 @@ stdenv.mkDerivation rec {
           "curses"
           "sqlite3"
         ]
-        ++ lib.optionals (!isPy3k) [ "Tkinter" ]
+        ++ lib.optionals (!isPy3k) [
+          "Tkinter"
+        ]
         ++ lib.optionals isPy3k [
           "tkinter"
           "lzma"

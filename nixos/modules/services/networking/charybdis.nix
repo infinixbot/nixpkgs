@@ -102,7 +102,9 @@ in
           description = "Charybdis IRC daemon";
           wantedBy = [ "multi-user.target" ];
           reloadIfChanged = true;
-          restartTriggers = [ configFile ];
+          restartTriggers = [
+            configFile
+          ];
           environment = {
             BANDB_DBPATH = "${cfg.statedir}/ban.db";
           };

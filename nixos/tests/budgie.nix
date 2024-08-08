@@ -8,7 +8,9 @@ import ./make-test-python.nix (
     nodes.machine =
       { ... }:
       {
-        imports = [ ./common/user-account.nix ];
+        imports = [
+          ./common/user-account.nix
+        ];
 
         services.xserver.enable = true;
 
@@ -26,7 +28,9 @@ import ./make-test-python.nix (
 
         services.xserver.desktopManager.budgie = {
           enable = true;
-          extraPlugins = [ pkgs.budgie-analogue-clock-applet ];
+          extraPlugins = [
+            pkgs.budgie-analogue-clock-applet
+          ];
         };
       };
 

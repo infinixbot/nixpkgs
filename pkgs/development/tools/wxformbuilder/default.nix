@@ -37,17 +37,25 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   nativeBuildInputs =
-    [ cmake ]
+    [
+      cmake
+    ]
     ++ lib.optionals stdenv.isDarwin [
       darwin.sigtool
       makeWrapper
     ]
-    ++ lib.optionals stdenv.isLinux [ shared-mime-info ];
+    ++ lib.optionals stdenv.isLinux [
+      shared-mime-info
+    ];
 
-  buildInputs = [
-    boost
-    wxGTK32
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Cocoa ];
+  buildInputs =
+    [
+      boost
+      wxGTK32
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Cocoa
+    ];
 
   postInstall = lib.optionalString stdenv.isDarwin ''
     mkdir -p $out/{Applications,bin}

@@ -73,20 +73,26 @@ stdenv.mkDerivation (finalAttrs: {
   # `perlPackages.Test2Harness` is marked broken for Darwin
   doCheck = !stdenv.isDarwin;
 
-  nativeCheckInputs = [ perl.pkgs.Test2Harness ];
+  nativeCheckInputs = [
+    perl.pkgs.Test2Harness
+  ];
 
-  ${if atLeast223 then "mesonFlags" else "configureFlags"} = [
-    (mkConfigureOption {
-      mesonOption = "dbi_path";
-      autoconfOption = "dbi";
-      value = "${perl.pkgs.DBI}/${perl.libPrefix}";
-    })
-    (mkConfigureOption {
-      mesonOption = "dbd_sqlite_path";
-      autoconfOption = "dbd-sqlite";
-      value = "${perl.pkgs.DBDSQLite}/${perl.libPrefix}";
-    })
-  ] ++ lib.optionals atLeast223 [ (lib.mesonEnable "tests" finalAttrs.finalPackage.doCheck) ];
+  ${if atLeast223 then "mesonFlags" else "configureFlags"} =
+    [
+      (mkConfigureOption {
+        mesonOption = "dbi_path";
+        autoconfOption = "dbi";
+        value = "${perl.pkgs.DBI}/${perl.libPrefix}";
+      })
+      (mkConfigureOption {
+        mesonOption = "dbd_sqlite_path";
+        autoconfOption = "dbd-sqlite";
+        value = "${perl.pkgs.DBDSQLite}/${perl.libPrefix}";
+      })
+    ]
+    ++ lib.optionals atLeast223 [
+      (lib.mesonEnable "tests" finalAttrs.finalPackage.doCheck)
+    ];
 
   preConfigure = "export NIX_STATE_DIR=$TMPDIR";
 })

@@ -20,7 +20,9 @@ ocamlPackages.buildDunePackage rec {
 
   minimalOCamlVersion = "5.0";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs =
     [ libdrm ]

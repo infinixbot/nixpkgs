@@ -29,7 +29,9 @@ buildDunePackage rec {
     bigstring
   ];
 
-  buildInputs = [ dune-configurator ];
+  buildInputs = [
+    dune-configurator
+  ];
 
   checkInputs = [
     alcotest

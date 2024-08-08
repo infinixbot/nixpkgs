@@ -55,7 +55,9 @@ import ../make-test-python.nix (
 
           virtualisation.podman.dockerSocket.enable = true;
 
-          environment.systemPackages = [ pkgs.docker-client ];
+          environment.systemPackages = [
+            pkgs.docker-client
+          ];
 
           users.users.alice = {
             isNormalUser = true;

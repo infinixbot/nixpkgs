@@ -23,7 +23,9 @@ rustPlatform.buildRustPackage rec {
     ninja
   ];
 
-  buildInputs = [ xdg-desktop-portal ];
+  buildInputs = [
+    xdg-desktop-portal
+  ];
 
   # Needed for letting meson run. rustPackage will overwrite it otherwise.
   configurePhase = "";

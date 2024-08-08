@@ -62,9 +62,13 @@ stdenv.mkDerivation (finalAttrs: {
     mate.mate-settings-daemon
   ];
 
-  nativeCheckInputs = [ dbus ];
+  nativeCheckInputs = [
+    dbus
+  ];
 
-  checkInputs = [ gtest ];
+  checkInputs = [
+    gtest
+  ];
 
   cmakeFlags = [
     (lib.cmakeBool "ENABLE_TESTS" finalAttrs.finalPackage.doCheck)

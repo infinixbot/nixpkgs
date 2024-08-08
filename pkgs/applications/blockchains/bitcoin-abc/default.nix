@@ -70,7 +70,9 @@ mkDerivation rec {
       qrencode
     ];
 
-  cmakeFlags = lib.optionals (!withGui) [ "-DBUILD_BITCOIN_QT=OFF" ];
+  cmakeFlags = lib.optionals (!withGui) [
+    "-DBUILD_BITCOIN_QT=OFF"
+  ];
 
   # many of the generated scripts lack execute permissions
   postConfigure = ''

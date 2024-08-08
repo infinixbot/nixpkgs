@@ -33,7 +33,9 @@ stdenv.mkDerivation rec {
     gettext
   ];
 
-  cmakeFlags = [ (lib.cmakeBool "USE_QT6" (lib.versions.major qtbase.version == "6")) ];
+  cmakeFlags = [
+    (lib.cmakeBool "USE_QT6" (lib.versions.major qtbase.version == "6"))
+  ];
 
   dontWrapQtApps = true;
 

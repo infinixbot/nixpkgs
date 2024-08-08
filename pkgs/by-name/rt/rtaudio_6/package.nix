@@ -37,10 +37,18 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    lib.optionals alsaSupport [ alsa-lib ]
-    ++ lib.optionals pulseaudioSupport [ libpulseaudio ]
-    ++ lib.optionals jackSupport [ libjack2 ]
-    ++ lib.optionals coreaudioSupport [ darwin.apple_sdk.frameworks.CoreAudio ];
+    lib.optionals alsaSupport [
+      alsa-lib
+    ]
+    ++ lib.optionals pulseaudioSupport [
+      libpulseaudio
+    ]
+    ++ lib.optionals jackSupport [
+      libjack2
+    ]
+    ++ lib.optionals coreaudioSupport [
+      darwin.apple_sdk.frameworks.CoreAudio
+    ];
 
   cmakeFlags = [
     (lib.cmakeBool "RTAUDIO_API_ALSA" alsaSupport)
@@ -58,6 +66,8 @@ stdenv.mkDerivation (finalAttrs: {
     license = lib.licenses.mit;
     maintainers = with lib.maintainers; [ magnetophon ];
     platforms = lib.platforms.unix;
-    pkgConfigModules = [ "rtaudio" ];
+    pkgConfigModules = [
+      "rtaudio"
+    ];
   };
 })

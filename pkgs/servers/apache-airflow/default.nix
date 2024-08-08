@@ -16,8 +16,12 @@ let
           rev = "refs/tags/${version}";
           hash = "sha256-1v1xCHY3ZnZG/Vu9wN/it7rLKC/StoDefoMNs+hMjIs=";
         };
-        nativeBuildInputs = with pySelf; [ setuptools ];
-        pythonRelaxDeps = [ "werkzeug" ];
+        nativeBuildInputs = with pySelf; [
+          setuptools
+        ];
+        pythonRelaxDeps = [
+          "werkzeug"
+        ];
         propagatedBuildInputs = with pySelf; [
           aiohttp
           aiohttp-jinja2
@@ -52,7 +56,9 @@ let
           inherit version;
           hash = "sha256-7e6bCn/yZiG9WowQ/0hK4oc3okENmbC7mmhQx/uXeqA=";
         };
-        nativeBuildInputs = (o.nativeBuildInputs or [ ]) ++ [ pySelf.setuptools ];
+        nativeBuildInputs = (o.nativeBuildInputs or [ ]) ++ [
+          pySelf.setuptools
+        ];
       });
       # flask-appbuilder doesn't work with sqlalchemy 2.x, flask-appbuilder 3.x
       # https://github.com/dpgaspar/Flask-AppBuilder/issues/2038

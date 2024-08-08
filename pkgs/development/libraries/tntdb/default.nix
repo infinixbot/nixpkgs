@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-ciqHv077sXnvCx+TJjdY1uPrlCP7/s972koXjGLgWhU=";
   };
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   buildInputs = [
     cxxtools

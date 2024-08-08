@@ -36,7 +36,9 @@ python3Packages.buildPythonApplication rec {
   ];
 
   propagatedBuildInputs =
-    [ nix ]
+    [
+      nix
+    ]
     ++ (with python3Packages; [
       click
       colorama

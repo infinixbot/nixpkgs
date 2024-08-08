@@ -24,12 +24,16 @@ stdenv.mkDerivation (finalAttrs: {
 
   dontUnpack = true;
 
-  nativeBuildInputs = [
-    makeBinaryWrapper
-    copyDesktopItems
-    unzip
-    imagemagick
-  ] ++ lib.optionals stdenv.isDarwin [ desktopToDarwinBundle ];
+  nativeBuildInputs =
+    [
+      makeBinaryWrapper
+      copyDesktopItems
+      unzip
+      imagemagick
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      desktopToDarwinBundle
+    ];
 
   desktopItems = [
     (makeDesktopItem {

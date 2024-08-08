@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-wvFdjsDtKH7CpbEpQjzWtLC4RVOU9+D2rSK0Xo1cJqo=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   meta = with lib; {
     description = "Header-only C++ library for JSON Schema validation, with support for many popular parsers";

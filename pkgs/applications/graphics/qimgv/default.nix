@@ -30,7 +30,9 @@ mkDerivation rec {
     pkg-config
   ];
 
-  cmakeFlags = [ "-DVIDEO_SUPPORT=ON" ];
+  cmakeFlags = [
+    "-DVIDEO_SUPPORT=ON"
+  ];
 
   buildInputs = [
     exiv2
@@ -48,7 +50,9 @@ mkDerivation rec {
 
   # Wrap the library path so it can see `libqimgv_player_mpv.so`, which is used
   # to play video files within qimgv itself.
-  qtWrapperArgs = [ "--prefix LD_LIBRARY_PATH : ${placeholder "out"}/lib" ];
+  qtWrapperArgs = [
+    "--prefix LD_LIBRARY_PATH : ${placeholder "out"}/lib"
+  ];
 
   meta = with lib; {
     description = "Qt5 image viewer with optional video support";

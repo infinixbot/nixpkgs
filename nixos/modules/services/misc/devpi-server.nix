@@ -86,7 +86,9 @@ in
         + strings.optionalString cfg.replica "--role=replica --master-url=${cfg.primaryUrl}";
 
       serviceConfig = {
-        LoadCredential = lib.mkIf (!isNull cfg.secretFile) [ "devpi-secret:${cfg.secretFile}" ];
+        LoadCredential = lib.mkIf (!isNull cfg.secretFile) [
+          "devpi-secret:${cfg.secretFile}"
+        ];
         Restart = "always";
         ExecStart =
           let
@@ -97,7 +99,9 @@ in
                 "--host=${cfg.host}"
                 "--port=${builtins.toString cfg.port}"
               ]
-              ++ lib.optionals (!isNull cfg.secretFile) [ "--secretfile=${runtimeDir}/${secretsFileName}" ]
+              ++ lib.optionals (!isNull cfg.secretFile) [
+                "--secretfile=${runtimeDir}/${secretsFileName}"
+              ]
               ++ (
                 if cfg.replica then
                   [

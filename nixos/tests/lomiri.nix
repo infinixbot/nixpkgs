@@ -16,7 +16,9 @@ import ./make-test-python.nix (
     nodes.machine =
       { config, ... }:
       {
-        imports = [ ./common/user-account.nix ];
+        imports = [
+          ./common/user-account.nix
+        ];
 
         users.users.${user} = {
           inherit description password;

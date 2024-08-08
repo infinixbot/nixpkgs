@@ -11,7 +11,10 @@ buildFHSEnv {
       pcsclite
     ];
 
-  multiPkgs = pkgs: with pkgs; [ pcsclite ];
+  multiPkgs =
+    pkgs: with pkgs; [
+      pcsclite
+    ];
 
   extraInstallCommands = ''
     mkdir -p $out/share

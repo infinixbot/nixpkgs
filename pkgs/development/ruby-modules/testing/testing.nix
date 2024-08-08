@@ -57,7 +57,9 @@ let
         res = tests under;
       in
       if isBool res then
-        [ (prefixName name (if tests under then passed "passed" else failed "failed")) ]
+        [
+          (prefixName name (if tests under then passed "passed" else failed "failed"))
+        ]
       else
         [ (prefixName name res) ]
     else

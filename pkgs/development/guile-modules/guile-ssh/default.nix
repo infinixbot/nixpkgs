@@ -39,9 +39,13 @@ stdenv.mkDerivation (finalAttrs: {
     which
   ];
 
-  buildInputs = [ guile ];
+  buildInputs = [
+    guile
+  ];
 
-  propagatedBuildInputs = [ libssh ];
+  propagatedBuildInputs = [
+    libssh
+  ];
 
   enableParallelBuilding = true;
 

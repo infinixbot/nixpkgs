@@ -50,7 +50,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  configureFlags = [ "--enable-frontends=conf,mconf,nconf" ];
+  configureFlags = [
+    "--enable-frontends=conf,mconf,nconf"
+  ];
 
   env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.cc.isClang "-Wno-error=format-security";
 

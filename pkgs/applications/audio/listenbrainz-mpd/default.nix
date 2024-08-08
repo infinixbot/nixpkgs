@@ -45,10 +45,18 @@ rustPlatform.buildRustPackage rec {
           CoreFoundation
         ]
       else
-        [ openssl ]
+        [
+          openssl
+        ]
     );
 
-  buildFeatures = [ "shell_completion" ] ++ lib.optionals stdenv.isLinux [ "systemd" ];
+  buildFeatures =
+    [
+      "shell_completion"
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      "systemd"
+    ];
 
   postInstall = ''
     installShellCompletion \

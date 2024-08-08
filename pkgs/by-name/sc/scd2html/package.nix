@@ -18,14 +18,18 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ scdoc ];
+  nativeBuildInputs = [
+    scdoc
+  ];
 
   postPatch = ''
     substituteInPlace Makefile \
       --replace "LDFLAGS+=-static" "LDFLAGS+="
   '';
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   enableParallelBuilding = true;
 

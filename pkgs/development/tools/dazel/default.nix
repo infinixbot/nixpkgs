@@ -16,6 +16,8 @@ buildPythonApplication rec {
     homepage = "https://github.com/nadirizr/dazel";
     description = "Run Google's bazel inside a docker container via a seamless proxy.";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [ malt3 ];
+    maintainers = with lib.maintainers; [
+      malt3
+    ];
   };
 }

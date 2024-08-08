@@ -29,7 +29,9 @@ stdenv.mkDerivation (finalAttrs: {
       --replace "LDFLAGS = -lc" "LDFLAGS ?= -lc"
   '';
 
-  makeFlags = [ "DESTDIR:=${placeholder "out"}" ];
+  makeFlags = [
+    "DESTDIR:=${placeholder "out"}"
+  ];
 
   enableParallelBuilding = true;
 

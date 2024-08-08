@@ -25,7 +25,9 @@ mkDerivation rec {
 
   nativeBuildInputs = [ extra-cmake-modules ];
 
-  cmakeFlags = [ "-Wno-dev" ];
+  cmakeFlags = [
+    "-Wno-dev"
+  ];
 
   meta = with lib; {
     description = "Disable screensaver and auto suspend";

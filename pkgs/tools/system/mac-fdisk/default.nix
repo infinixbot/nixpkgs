@@ -73,7 +73,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   enableParallelBuilding = true;
 

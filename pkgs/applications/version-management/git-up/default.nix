@@ -16,11 +16,15 @@ pythonPackages.buildPythonApplication rec {
     hash = "sha256-GTX2IWLQ48yWfPnmtEa9HJ5umQLttqgTlgZQlaWgeE4=";
   };
 
-  nativeBuildInputs = with pythonPackages; [ poetry-core ];
+  nativeBuildInputs = with pythonPackages; [
+    poetry-core
+  ];
 
   # git should be on path for tool to work correctly
   propagatedBuildInputs =
-    [ git ]
+    [
+      git
+    ]
     ++ (with pythonPackages; [
       colorama
       gitpython

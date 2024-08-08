@@ -203,7 +203,9 @@ rec {
     system:
     (import lib/eval-config.nix {
       inherit system;
-      modules = [ ./modules/installer/netboot/netboot-minimal.nix ];
+      modules = [
+        ./modules/installer/netboot/netboot-minimal.nix
+      ];
     }).config.system.build.kexecTree
   );
 
@@ -358,7 +360,9 @@ rec {
     hydraJob (
       (import lib/eval-config.nix {
         inherit system;
-        modules = [ ./modules/virtualisation/proxmox-image.nix ];
+        modules = [
+          ./modules/virtualisation/proxmox-image.nix
+        ];
       }).config.system.build.VMA
     )
   );
@@ -371,7 +375,9 @@ rec {
     hydraJob (
       (import lib/eval-config.nix {
         inherit system;
-        modules = [ ./modules/virtualisation/proxmox-lxc.nix ];
+        modules = [
+          ./modules/virtualisation/proxmox-lxc.nix
+        ];
       }).config.system.build.tarball
     )
   );

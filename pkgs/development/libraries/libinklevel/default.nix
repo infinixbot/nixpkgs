@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [ libusb1 ];
+  buildInputs = [
+    libusb1
+  ];
 
   outputs = [
     "out"

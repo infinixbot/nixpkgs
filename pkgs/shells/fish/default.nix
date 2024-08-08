@@ -220,9 +220,13 @@ let
       pcre2
     ];
 
-    cmakeFlags = [
-      "-DCMAKE_INSTALL_DOCDIR=${placeholder "doc"}/share/doc/fish"
-    ] ++ lib.optionals stdenv.isDarwin [ "-DMAC_CODESIGN_ID=OFF" ];
+    cmakeFlags =
+      [
+        "-DCMAKE_INSTALL_DOCDIR=${placeholder "doc"}/share/doc/fish"
+      ]
+      ++ lib.optionals stdenv.isDarwin [
+        "-DMAC_CODESIGN_ID=OFF"
+      ];
 
     # Fish’s test suite needs to be able to look up process information and send signals.
     sandboxProfile = lib.optionalString stdenv.isDarwin ''

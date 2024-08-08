@@ -15,7 +15,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-VycEgu7uHYwDnNE1eoVxgaWZAnC6mZLBxT8Le3PI4Rs=";
   };
 
-  patches = [ ./paths.patch ];
+  patches = [
+    ./paths.patch
+  ];
 
   installPhase = ''
     mkdir $out/

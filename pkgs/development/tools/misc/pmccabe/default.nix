@@ -13,7 +13,9 @@ stdenv.mkDerivation rec {
     sha256 = "0a3h1b9fb87c82d5fbql5lc4gp338pa5s9i66dhw7zk8jdygx474";
   };
 
-  patches = [ ./getopt_on_darwin.patch ];
+  patches = [
+    ./getopt_on_darwin.patch
+  ];
 
   configurePhase = ''
     sed -i -r Makefile \

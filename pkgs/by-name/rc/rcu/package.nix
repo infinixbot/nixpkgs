@@ -32,7 +32,9 @@ python3Packages.buildPythonApplication rec {
       mv rcu $out
     '';
 
-  patches = [ ./Port-to-paramiko-3.x.patch ];
+  patches = [
+    ./Port-to-paramiko-3.x.patch
+  ];
 
   postPatch = ''
     substituteInPlace src/main.py \
@@ -42,10 +44,14 @@ python3Packages.buildPythonApplication rec {
       --replace-fail 'GROUP="yourgroup"' 'GROUP="users"'
   '';
 
-  nativeBuildInputs = [
-    copyDesktopItems
-    libsForQt5.wrapQtAppsHook
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ desktopToDarwinBundle ];
+  nativeBuildInputs =
+    [
+      copyDesktopItems
+      libsForQt5.wrapQtAppsHook
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      desktopToDarwinBundle
+    ];
 
   buildInputs = [
     libsForQt5.qtbase

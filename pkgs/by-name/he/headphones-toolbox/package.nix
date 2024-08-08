@@ -21,7 +21,9 @@ stdenv.mkDerivation (finalAttrs: {
     autoPatchelfHook
   ];
 
-  buildInputs = [ webkitgtk ];
+  buildInputs = [
+    webkitgtk
+  ];
 
   installPhase = ''
     runHook preInstall

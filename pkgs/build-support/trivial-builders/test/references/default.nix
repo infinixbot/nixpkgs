@@ -74,7 +74,9 @@ let
     '';
 
     doInstallCheck = true;
-    nativeInstallCheckInputs = [ shellcheck-minimal ];
+    nativeInstallCheckInputs = [
+      shellcheck-minimal
+    ];
     installCheckPhase = ''
       runHook preInstallCheck
       shellcheck "$out/bin/${finalAttrs.meta.mainProgram}"

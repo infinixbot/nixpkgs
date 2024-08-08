@@ -46,14 +46,20 @@ let
       or (throw "Unsupported platform: ${stdenv.hostPlatform.parsed.kernel.name}");
 
   runtimeDependencies =
-    [ cups ]
+    [
+      cups
+    ]
     ++ lib.optionals gtkSupport [
       cairo
       glib
       gtk3
     ]
-    ++ lib.optionals (gtkSupport && lib.versionOlder dist.jdkVersion "17") [ gtk2 ]
-    ++ lib.optionals (stdenv.isLinux && enableJavaFX) [ ffmpeg.lib ];
+    ++ lib.optionals (gtkSupport && lib.versionOlder dist.jdkVersion "17") [
+      gtk2
+    ]
+    ++ lib.optionals (stdenv.isLinux && enableJavaFX) [
+      ffmpeg.lib
+    ];
 
   runtimeLibraryPath = lib.makeLibraryPath runtimeDependencies;
 
@@ -77,7 +83,9 @@ let
     };
 
     nativeBuildInputs =
-      [ unzip ]
+      [
+        unzip
+      ]
       ++ lib.optionals stdenv.isLinux [
         autoPatchelfHook
         makeWrapper

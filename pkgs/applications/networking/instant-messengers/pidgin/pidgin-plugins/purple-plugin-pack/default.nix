@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
     ninja
   ];
 
-  buildInputs = [ pidgin ];
+  buildInputs = [
+    pidgin
+  ];
 
   meta = with lib; {
     homepage = "https://keep.imfreedom.org/pidgin/purple-plugin-pack";

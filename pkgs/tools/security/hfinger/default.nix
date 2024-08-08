@@ -17,7 +17,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-gxwirAqtY4R3KDHyNmDIknABO+SFuoDua9nm1UyXbxA=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools
+  ];
 
   propagatedBuildInputs =
     with python3.pkgs;
@@ -25,12 +27,16 @@ python3.pkgs.buildPythonApplication rec {
       fnvhash
       python-magic
     ]
-    ++ [ wireshark-cli ];
+    ++ [
+      wireshark-cli
+    ];
 
   # Project has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "hfinger" ];
+  pythonImportsCheck = [
+    "hfinger"
+  ];
 
   meta = with lib; {
     description = "Fingerprinting tool for HTTP requests";

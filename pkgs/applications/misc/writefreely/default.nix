@@ -17,7 +17,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-6RTshhxX+w/gdK53wCHVMpm6EkkRtEJ2/Fe7MfZ0WvY=";
 
-  patches = [ ./fix-go-version-error.patch ];
+  patches = [
+    ./fix-go-version-error.patch
+  ];
 
   ldflags = [
     "-s"

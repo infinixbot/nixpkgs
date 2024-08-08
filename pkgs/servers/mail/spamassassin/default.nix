@@ -63,7 +63,9 @@ perlPackages.buildPerlPackage rec {
       MailDMARC
       MaxMindDBReaderXS
     ])
-    ++ [ openssl ];
+    ++ [
+      openssl
+    ];
 
   makeFlags = [
     "PERL_BIN=${perlPackages.perl}/bin/perl"

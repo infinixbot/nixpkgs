@@ -53,7 +53,9 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  installFlags = [ "DESTDIR=${placeholder "out"}" ];
+  installFlags = [
+    "DESTDIR=${placeholder "out"}"
+  ];
 
   meta = with lib; {
     changelog = "https://github.com/opencryptoki/opencryptoki/blob/${src.rev}/ChangeLog";

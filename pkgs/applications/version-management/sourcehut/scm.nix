@@ -23,7 +23,9 @@ buildPythonPackage rec {
     hash = "sha256-9IgMmYzInfrten7z8bznlSFJlUjHf3k3z76lkP6tP50=";
   };
 
-  nativeBuildInputs = [ setuptools ];
+  nativeBuildInputs = [
+    setuptools
+  ];
 
   propagatedBuildInputs = [
     srht

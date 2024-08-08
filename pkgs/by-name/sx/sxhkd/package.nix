@@ -36,7 +36,9 @@ stdenv.mkDerivation (finalAttrs: {
     "man"
   ];
 
-  nativeBuildInputs = [ asciidoc ];
+  nativeBuildInputs = [
+    asciidoc
+  ];
 
   buildInputs = [
     libxcb

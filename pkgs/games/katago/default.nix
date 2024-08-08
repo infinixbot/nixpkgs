@@ -56,7 +56,9 @@ stdenv.mkDerivation rec {
       libzip
       boost
     ]
-    ++ lib.optionals (backend == "eigen") [ eigen ]
+    ++ lib.optionals (backend == "eigen") [
+      eigen
+    ]
     ++ lib.optionals (backend == "cuda") [
       cudaPackages.cudnn
       cudaPackages.cudatoolkit
@@ -69,8 +71,12 @@ stdenv.mkDerivation rec {
       opencl-headers
       ocl-icd
     ]
-    ++ lib.optionals enableContrib [ openssl ]
-    ++ lib.optionals enableTcmalloc [ gperftools ];
+    ++ lib.optionals enableContrib [
+      openssl
+    ]
+    ++ lib.optionals enableTcmalloc [
+      gperftools
+    ];
 
   cmakeFlags =
     [

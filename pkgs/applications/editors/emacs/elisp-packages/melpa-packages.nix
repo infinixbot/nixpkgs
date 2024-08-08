@@ -376,7 +376,9 @@ let
               libExt = pkgs.stdenv.hostPlatform.extensions.sharedLibrary;
             in
             {
-              nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ pkgs.pkg-config ];
+              nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
+                pkgs.pkg-config
+              ];
 
               buildInputs = (old.buildInputs or [ ]) ++ [ pkgs.enchant2 ];
 

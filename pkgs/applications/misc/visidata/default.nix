@@ -130,7 +130,9 @@ buildPythonApplication rec {
     ]
     ++ lib.optional withXclip xclip;
 
-  nativeCheckInputs = [ git ];
+  nativeCheckInputs = [
+    git
+  ];
 
   # check phase uses the output bin, which is not possible when cross-compiling
   doCheck = stdenv.buildPlatform == stdenv.hostPlatform;

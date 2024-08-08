@@ -59,18 +59,22 @@ stdenv.mkDerivation rec {
     flex
   ];
 
-  buildInputs = [
-    boost_static
-    libclang
-    llvm
-    openexr
-    openimageio
-    partio
-    pugixml
-    python3.pkgs.pybind11
-    util-linux # needed just for hexdump
-    zlib
-  ] ++ lib.optionals stdenv.isDarwin [ libxml2 ];
+  buildInputs =
+    [
+      boost_static
+      libclang
+      llvm
+      openexr
+      openimageio
+      partio
+      pugixml
+      python3.pkgs.pybind11
+      util-linux # needed just for hexdump
+      zlib
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      libxml2
+    ];
 
   postFixup = ''
     substituteInPlace "$out"/lib/pkgconfig/*.pc \

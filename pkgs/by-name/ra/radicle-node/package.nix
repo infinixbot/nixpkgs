@@ -36,7 +36,9 @@ rustPlatform.buildRustPackage rec {
     makeWrapper
   ];
   nativeCheckInputs = [ git ];
-  buildInputs = lib.optionals stdenv.buildPlatform.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs = lib.optionals stdenv.buildPlatform.isDarwin [
+    darwin.apple_sdk.frameworks.Security
+  ];
 
   # tests regularly time out on aarch64
   doCheck = stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isx86;

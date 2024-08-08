@@ -36,7 +36,9 @@ let
         sourceProvenance = with sourceTypes; [ binaryNativeCode ];
         license = licenses.unfree;
         platforms = [ "x86_64-linux" ];
-        maintainers = with maintainers; [ vidbina ];
+        maintainers = with maintainers; [
+          vidbina
+        ];
       }
       // (attrs.meta or { });
 

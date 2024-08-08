@@ -18,7 +18,9 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-9w2jP4s1HXf1gYiXX05Dt2iXt0bR0U48yc8h9T5M+EQ=";
   };
 
-  patches = [ ./disable-bootstrap.patch ];
+  patches = [
+    ./disable-bootstrap.patch
+  ];
 
   postPatch = ''
     rm aws_gate/bootstrap.py tests/unit/test_bootstrap.py

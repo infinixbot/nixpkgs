@@ -50,7 +50,9 @@ in
         };
         healthcheck = {
           path = "/";
-          allowed_status_codes = [ 200 ];
+          allowed_status_codes = [
+            200
+          ];
           timeout = "1s";
           interval = "10s";
           filter_by_response_time = {

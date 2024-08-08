@@ -43,7 +43,9 @@ let
       };
     };
 
-    nativeBuildInputs = [ pkg-config ];
+    nativeBuildInputs = [
+      pkg-config
+    ];
 
     buildInputs =
       [

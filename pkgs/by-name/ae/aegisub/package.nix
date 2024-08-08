@@ -103,7 +103,9 @@ stdenv.mkDerivation (finalAttrs: {
       zlib
     ]
     ++ lib.optionals alsaSupport [ alsa-lib ]
-    ++ lib.optionals openalSupport [ (if stdenv.isDarwin then OpenAL else openal) ]
+    ++ lib.optionals openalSupport [
+      (if stdenv.isDarwin then OpenAL else openal)
+    ]
     ++ lib.optionals portaudioSupport [ portaudio ]
     ++ lib.optionals pulseaudioSupport [ libpulseaudio ]
     ++ lib.optionals spellcheckSupport [ hunspell ]
@@ -121,13 +123,17 @@ stdenv.mkDerivation (finalAttrs: {
     "relro"
   ];
 
-  patches = [
-    (fetchpatch {
-      name = "move-iconv-include-to-charset_conv.h.patch";
-      url = "https://github.com/arch1t3cht/Aegisub/commit/b8f4c98c4cbc698e4adbba302c2dc328fe193435.patch";
-      hash = "sha256-dCm/VG+8yK7qWKWF4Ew/M2hbbAC/d3hiuRglR9BvWtw=";
-    })
-  ] ++ lib.optionals (!useBundledLuaJIT) [ ./000-remove-bundled-luajit.patch ];
+  patches =
+    [
+      (fetchpatch {
+        name = "move-iconv-include-to-charset_conv.h.patch";
+        url = "https://github.com/arch1t3cht/Aegisub/commit/b8f4c98c4cbc698e4adbba302c2dc328fe193435.patch";
+        hash = "sha256-dCm/VG+8yK7qWKWF4Ew/M2hbbAC/d3hiuRglR9BvWtw=";
+      })
+    ]
+    ++ lib.optionals (!useBundledLuaJIT) [
+      ./000-remove-bundled-luajit.patch
+    ];
 
   # error: unknown type name 'NSUInteger'
   postPatch = ''
@@ -159,7 +165,9 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     # The Aegisub sources are itself BSD/ISC, but they are linked against GPL'd
     # softwares - so the resulting program will be GPL
-    license = with lib.licenses; [ bsd3 ];
+    license = with lib.licenses; [
+      bsd3
+    ];
     mainProgram = "aegisub";
     maintainers = with lib.maintainers; [
       AndersonTorres

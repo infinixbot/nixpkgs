@@ -25,7 +25,9 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "pillow" ];
 
-  build-system = [ setuptools ];
+  build-system = [
+    setuptools
+  ];
 
   dependencies = [
     click

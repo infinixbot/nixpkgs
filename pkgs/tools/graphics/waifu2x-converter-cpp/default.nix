@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    [ opencv4 ]
+    [
+      opencv4
+    ]
     ++ lib.optional cudaSupport cudatoolkit
     ++ lib.optional stdenv.isDarwin OpenCL
     ++ lib.optionals stdenv.isLinux [

@@ -62,11 +62,17 @@ stdenv.mkDerivation (finalAttrs: {
       "TARGET_CXX_COMPILER=${stdenv.cc}/bin/${stdenv.cc.targetPrefix}c++"
     ]);
 
-  nativeBuildInputs = [
-    makeWrapper
-  ] ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [ darwin.autoSignDarwinBinariesHook ];
+  nativeBuildInputs =
+    [
+      makeWrapper
+    ]
+    ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [
+      darwin.autoSignDarwinBinariesHook
+    ];
 
-  buildInputs = lib.optionals (bootstrap-chicken != null) [ bootstrap-chicken ];
+  buildInputs = lib.optionals (bootstrap-chicken != null) [
+    bootstrap-chicken
+  ];
 
   doCheck = !stdenv.isDarwin;
   postCheck = ''

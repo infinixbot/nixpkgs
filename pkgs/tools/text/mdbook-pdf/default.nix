@@ -25,7 +25,13 @@ rustPlatform.buildRustPackage rec {
     rustfmt
   ];
 
-  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ CoreServices ];
+  buildInputs =
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      CoreServices
+    ];
 
   # Stop downloading from the Internet to
   # generate the Chrome Devtools Protocol

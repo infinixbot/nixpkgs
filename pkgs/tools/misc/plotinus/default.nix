@@ -32,7 +32,9 @@ stdenv.mkDerivation rec {
     gettext
     libxml2
   ];
-  buildInputs = [ gtk3 ];
+  buildInputs = [
+    gtk3
+  ];
 
   meta = with lib; {
     description = "Searchable command palette in every modern GTK application";

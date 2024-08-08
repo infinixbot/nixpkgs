@@ -32,13 +32,19 @@ let
     environment = env // {
       RUST_LOG = mkDefault "info";
     };
-    path = [ pkgs.gitMinimal ];
-    documentation = [ "https://docs.radicle.xyz/guides/seeder" ];
+    path = [
+      pkgs.gitMinimal
+    ];
+    documentation = [
+      "https://docs.radicle.xyz/guides/seeder"
+    ];
     after = [
       "network.target"
       "network-online.target"
     ];
-    requires = [ "network-online.target" ];
+    requires = [
+      "network-online.target"
+    ];
     wantedBy = [ "multi-user.target" ];
     serviceConfig = mkMerge [
       {
@@ -276,7 +282,9 @@ in
               "@timer"
             ];
           };
-          confinement.packages = [ cfg.package ];
+          confinement.packages = [
+            cfg.package
+          ];
         }
         # Give only access to the private key to radicle-node.
         {
@@ -302,7 +310,9 @@ in
         }
       ];
 
-      environment.systemPackages = [ rad-system ];
+      environment.systemPackages = [
+        rad-system
+      ];
 
       networking.firewall = mkIf cfg.node.openFirewall {
         allowedTCPPorts = [ cfg.node.listenPort ];
@@ -338,7 +348,9 @@ in
                 "@timer"
               ];
             };
-            confinement.packages = [ cfg.httpd.package ];
+            confinement.packages = [
+              cfg.httpd.package
+            ];
           }
         ];
       }

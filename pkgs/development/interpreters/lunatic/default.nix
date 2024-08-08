@@ -21,9 +21,17 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-ALjlQsxmZVREyi3ZGMJMv/38kkMjYh+hTSr/0avYJVs=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs =
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+    ];
 
   checkFlags = [
     # requires simd support which is not always available on hydra

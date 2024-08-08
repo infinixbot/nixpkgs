@@ -44,6 +44,8 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/osmocom/libosmo-abis";
     license = licenses.gpl3Only;
     platforms = platforms.linux;
-    maintainers = with maintainers; [ markuskowa ];
+    maintainers = with maintainers; [
+      markuskowa
+    ];
   };
 }

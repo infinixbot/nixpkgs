@@ -45,7 +45,9 @@ rustPlatform.buildRustPackage rec {
       Security
     ];
 
-  nativeCheckInputs = [ git ];
+  nativeCheckInputs = [
+    git
+  ];
 
   preCheck = ''
     git init

@@ -33,7 +33,13 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = [ gtest ] ++ lib.optionals stdenv.hostPlatform.isWindows [ windows.pthreads ];
+  buildInputs =
+    [
+      gtest
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isWindows [
+      windows.pthreads
+    ];
 
   strictDeps = true;
 

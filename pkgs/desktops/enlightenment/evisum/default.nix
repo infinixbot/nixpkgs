@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [ efl ];
+  buildInputs = [
+    efl
+  ];
 
   passthru.updateScript = directoryListingUpdater { };
 

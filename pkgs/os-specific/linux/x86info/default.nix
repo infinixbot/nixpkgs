@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     python3
   ];
 
-  buildInputs = [ pciutils ];
+  buildInputs = [
+    pciutils
+  ];
 
   # causes redefinition of _FORTIFY_SOURCE
   hardeningDisable = [ "fortify3" ];

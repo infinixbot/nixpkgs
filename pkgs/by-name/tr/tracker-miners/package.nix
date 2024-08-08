@@ -55,22 +55,28 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-50OIFUtcGXtLfuQvDc6MX7vd1NNhCT74jU+zA+M9pf4=";
   };
 
-  patches = [ ./tracker-landlock-nix-store-permission.patch ];
+  patches = [
+    ./tracker-landlock-nix-store-permission.patch
+  ];
 
-  nativeBuildInputs = [
-    asciidoc
-    docbook-xsl-nons
-    docbook_xml_dtd_45
-    gettext
-    glib
-    itstool
-    libxslt
-    meson
-    ninja
-    pkg-config
-    vala
-    wrapGAppsNoGuiHook
-  ] ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [ mesonEmulatorHook ];
+  nativeBuildInputs =
+    [
+      asciidoc
+      docbook-xsl-nons
+      docbook_xml_dtd_45
+      gettext
+      glib
+      itstool
+      libxslt
+      meson
+      ninja
+      pkg-config
+      vala
+      wrapGAppsNoGuiHook
+    ]
+    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+      mesonEmulatorHook
+    ];
 
   # TODO: add libenca, libosinfo
   buildInputs =
@@ -110,7 +116,9 @@ stdenv.mkDerivation (finalAttrs: {
       systemd
       upower
     ]
-    ++ lib.optionals stdenv.isDarwin [ e2fsprogs ];
+    ++ lib.optionals stdenv.isDarwin [
+      e2fsprogs
+    ];
 
   mesonFlags =
     [

@@ -63,7 +63,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-RnzdGIp/c5vHBq28HWlfYf/e/JWRatsBWUfYCCnwCj0=";
   };
 
-  patches = [ ./000-nixos-sanitization.patch ];
+  patches = [
+    ./000-nixos-sanitization.patch
+  ];
 
   postPatch = ''
     # Fix permissions.

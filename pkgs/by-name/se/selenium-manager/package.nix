@@ -21,7 +21,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-1CPUOAfBfUeZt5S8t5SM3oyrNwXKHplhHG5idVy4YrE=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.SystemConfiguration ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.SystemConfiguration
+  ];
 
   # TODO: enable tests
   # The test suite depends on a number of browsers and network requests,

@@ -74,9 +74,13 @@ stdenv.mkDerivation (finalAttrs: {
     sharutils
   ];
 
-  pythonPath = [ python3Packages.pyxdg ];
+  pythonPath = [
+    python3Packages.pyxdg
+  ];
 
-  configureFlags = [ (lib.enableFeature true "mandoc") ];
+  configureFlags = [
+    (lib.enableFeature true "mandoc")
+  ];
 
   postFixup = ''
     wrapPythonPrograms

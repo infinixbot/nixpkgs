@@ -18,16 +18,22 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-8s2Jd1fI8iNmFyMbCEaGZdpqvYFB1tVNZ41ICLN4AeI=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  cmakeFlags = lib.optionals finalAttrs.finalPackage.doCheck [ "-DRAPIDFUZZ_BUILD_TESTING=ON" ];
+  cmakeFlags = lib.optionals finalAttrs.finalPackage.doCheck [
+    "-DRAPIDFUZZ_BUILD_TESTING=ON"
+  ];
 
   CXXFLAGS = lib.optionals stdenv.cc.isClang [
     # error: no member named 'fill' in namespace 'std'
     "-include algorithm"
   ];
 
-  nativeCheckInputs = [ catch2_3 ];
+  nativeCheckInputs = [
+    catch2_3
+  ];
 
   passthru = {
     tests = {

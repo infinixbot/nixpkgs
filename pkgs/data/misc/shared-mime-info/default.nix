@@ -44,7 +44,9 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  mesonFlags = [ "-Dupdate-mimedb=true" ];
+  mesonFlags = [
+    "-Dupdate-mimedb=true"
+  ];
 
   meta = with lib; {
     description = "Database of common MIME types";

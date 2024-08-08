@@ -50,8 +50,12 @@ stdenv.mkDerivation (finalAttrs: {
       kytea
       msgpack-c
     ]
-    ++ lib.optionals lz4Support [ lz4 ]
-    ++ lib.optional zlibSupport [ zlib ]
+    ++ lib.optionals lz4Support [
+      lz4
+    ]
+    ++ lib.optional zlibSupport [
+      zlib
+    ]
     ++ lib.optionals suggestSupport [
       zeromq
       libevent

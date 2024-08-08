@@ -14,7 +14,9 @@ buildOctavePackage rec {
     sha256 = "sha256-VVreL/gPcRiQk5XDNAXwoXpPvNIrxtL7nD9/Rf72SOc=";
   };
 
-  requiredOctavePackages = [ control ];
+  requiredOctavePackages = [
+    control
+  ];
 
   meta = with lib; {
     homepage = "https://octave.sourceforge.io/signal/index.html";

@@ -24,7 +24,9 @@ rec {
       sha256 = "12a0sn82n98jybh72zb39fdddmr5k4785xglxb16750fhy8rmjwi";
     };
 
-    buildInputs = [ setup-helper ];
+    buildInputs = [
+      setup-helper
+    ];
   };
 
   crypto-tools = eggDerivation {
@@ -64,7 +66,9 @@ rec {
       sha256 = "07nvyadhkd52q0kkvch1a5d7ivpmrhmyg295s4mxb1nw4wz46gfz";
     };
 
-    buildInputs = [ matchable ];
+    buildInputs = [
+      matchable
+    ];
   };
 
   lookup-table = eggDerivation {
@@ -94,7 +98,9 @@ rec {
       sha256 = "0z6g3106c4j21v968hfzy9nnbfq2d83y0nyd20aifpq4g55c0d40";
     };
 
-    buildInputs = [ record-variants ];
+    buildInputs = [
+      record-variants
+    ];
   };
 
   matchable = eggDerivation {
@@ -296,7 +302,9 @@ rec {
       sha256 = "0qhnghhx1wrvav4s7l780mspwlh8s6kzq4bl0cslwp1km90fx9bk";
     };
 
-    buildInputs = [ matchable ];
+    buildInputs = [
+      matchable
+    ];
   };
 
   string-utils = eggDerivation {
@@ -355,7 +363,9 @@ rec {
       sha256 = "0j9dsbjp9cw0y4w4srg0qwgh53jw2v3mx4y4h040ds0fkxlzzknx";
     };
 
-    buildInputs = [ message-digest ];
+    buildInputs = [
+      message-digest
+    ];
   };
 
   ugarit = eggDerivation {

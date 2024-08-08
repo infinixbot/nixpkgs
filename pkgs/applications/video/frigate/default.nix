@@ -162,7 +162,9 @@ python.pkgs.buildPythonApplication rec {
     runHook postInstall
   '';
 
-  nativeCheckInputs = with python.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python.pkgs; [
+    pytestCheckHook
+  ];
 
   disabledTests = [
     # Test needs network access

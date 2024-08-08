@@ -17,11 +17,17 @@ stdenv.mkDerivation rec {
     hash = "sha256-GuwDSCYTfSwqTnzZSft3ufVSKL7255lVvbJhBxKxjJw=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  cmakeFlags = lib.optionals doCheck [ "-DJARO_WINKLER_BUILD_TESTING=ON" ];
+  cmakeFlags = lib.optionals doCheck [
+    "-DJARO_WINKLER_BUILD_TESTING=ON"
+  ];
 
-  nativeCheckInputs = [ catch2_3 ];
+  nativeCheckInputs = [
+    catch2_3
+  ];
 
   doCheck = true;
 

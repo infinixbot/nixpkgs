@@ -9,7 +9,9 @@ import ./make-test-python.nix (
     nodes.machine =
       { config, pkgs, ... }:
       {
-        imports = [ ./common/x11.nix ];
+        imports = [
+          ./common/x11.nix
+        ];
 
         services.xserver.enable = true;
         environment.systemPackages = [

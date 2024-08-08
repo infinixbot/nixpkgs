@@ -135,10 +135,15 @@ let
     '';
   };
 
-  packages = [
-    pkgs.modemmanager
-    pkgs.networkmanager
-  ] ++ cfg.plugins ++ lib.optionals (!delegateWireless && !enableIwd) [ pkgs.wpa_supplicant ];
+  packages =
+    [
+      pkgs.modemmanager
+      pkgs.networkmanager
+    ]
+    ++ cfg.plugins
+    ++ lib.optionals (!delegateWireless && !enableIwd) [
+      pkgs.wpa_supplicant
+    ];
 
 in
 {

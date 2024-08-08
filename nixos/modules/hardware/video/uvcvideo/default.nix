@@ -58,9 +58,13 @@ in
 
   config = mkIf cfg.dynctrl.enable {
 
-    services.udev.packages = [ (uvcdynctrl-udev-rules cfg.dynctrl.packages) ];
+    services.udev.packages = [
+      (uvcdynctrl-udev-rules cfg.dynctrl.packages)
+    ];
 
-    environment.systemPackages = [ pkgs.libwebcam ];
+    environment.systemPackages = [
+      pkgs.libwebcam
+    ];
 
   };
 }

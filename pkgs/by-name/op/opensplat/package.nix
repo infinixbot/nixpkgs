@@ -45,15 +45,19 @@ stdenv'.mkDerivation {
       autoAddDriverRunpath
     ];
 
-  buildInputs = [
-    nlohmann_json
-    nanoflann
-    glm
-    cxxopts
-    torch.cxxdev
-    torch
-    opencv
-  ] ++ lib.optionals cudaSupport [ cudaPackages.cuda_cudart ];
+  buildInputs =
+    [
+      nlohmann_json
+      nanoflann
+      glm
+      cxxopts
+      torch.cxxdev
+      torch
+      opencv
+    ]
+    ++ lib.optionals cudaSupport [
+      cudaPackages.cuda_cudart
+    ];
 
   env.TORCH_CUDA_ARCH_LIST = "${lib.concatStringsSep ";" python3.pkgs.torch.cudaCapabilities}";
 

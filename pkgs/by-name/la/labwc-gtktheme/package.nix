@@ -25,9 +25,13 @@ python3Packages.buildPythonApplication rec {
     wrapGAppsHook3
   ];
 
-  buildInputs = [ gtk3 ];
+  buildInputs = [
+    gtk3
+  ];
 
-  pythonPath = with python3Packages; [ pygobject3 ];
+  pythonPath = with python3Packages; [
+    pygobject3
+  ];
 
   strictDeps = true;
 

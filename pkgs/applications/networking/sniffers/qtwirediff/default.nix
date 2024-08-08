@@ -25,7 +25,13 @@ stdenv.mkDerivation {
     wrapQtAppsHook
   ];
 
-  buildInputs = [ qtbase ] ++ lib.optionals stdenv.isLinux [ qtwayland ];
+  buildInputs =
+    [
+      qtbase
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      qtwayland
+    ];
 
   installPhase =
     ''

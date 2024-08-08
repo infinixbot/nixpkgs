@@ -19,7 +19,9 @@ buildDunePackage rec {
     hash = "sha256-KVIRPFPLB+KwVLLchs5yk5Ex2rggfI8xOa2yPmTN+m8=";
   };
 
-  propagatedBuildInputs = [ thread-table ];
+  propagatedBuildInputs = [
+    thread-table
+  ];
 
   doCheck = true;
 
@@ -29,7 +31,9 @@ buildDunePackage rec {
     mdx
   ];
 
-  nativeCheckInputs = [ mdx.bin ];
+  nativeCheckInputs = [
+    mdx.bin
+  ];
 
   meta = {
     homepage = "https://github.com/ocaml-multicore/ocaml-${pname}";

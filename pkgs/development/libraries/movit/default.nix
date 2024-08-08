@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
 
   GTEST_DIR = "${gtest.src}/googletest";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs =
     [

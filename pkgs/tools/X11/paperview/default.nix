@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
     libX11
   ];
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   meta = with lib; {
     description = "High performance X11 animated wallpaper setter";

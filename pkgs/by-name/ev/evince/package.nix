@@ -55,7 +55,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-lFwgpvI4ObDVMycpFxRY6QaA2oJk6Zxvn0HCGcfu7nw=";
   };
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     appstream
@@ -93,7 +95,9 @@ stdenv.mkDerivation (finalAttrs: {
       poppler
       texlive.bin.core # kpathsea for DVI support
     ]
-    ++ lib.optionals withLibsecret [ libsecret ]
+    ++ lib.optionals withLibsecret [
+      libsecret
+    ]
     ++ lib.optionals supportMultimedia (
       with gst_all_1;
       [
@@ -111,8 +115,12 @@ stdenv.mkDerivation (finalAttrs: {
       "-Dnautilus=false"
       "-Dps=enabled"
     ]
-    ++ lib.optionals (!withLibsecret) [ "-Dkeyring=disabled" ]
-    ++ lib.optionals (!supportMultimedia) [ "-Dmultimedia=disabled" ];
+    ++ lib.optionals (!withLibsecret) [
+      "-Dkeyring=disabled"
+    ]
+    ++ lib.optionals (!supportMultimedia) [
+      "-Dmultimedia=disabled"
+    ];
 
   preFixup = ''
     gappsWrapperArgs+=(--prefix XDG_DATA_DIRS : "${shared-mime-info}/share")

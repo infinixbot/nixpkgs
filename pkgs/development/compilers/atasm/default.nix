@@ -27,7 +27,9 @@ stdenv.mkDerivation rec {
 
   dontConfigure = true;
 
-  buildInputs = [ zlib ];
+  buildInputs = [
+    zlib
+  ];
 
   preBuild = ''
     makeFlagsArray+=(

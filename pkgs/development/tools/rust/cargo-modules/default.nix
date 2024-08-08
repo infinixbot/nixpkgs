@@ -19,7 +19,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-j3AYWKq7SrlNlsY7A80iwcWKW8wi6hx0U9UwDIQkXZs=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.CoreServices ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.CoreServices
+  ];
 
   checkFlags = [
     "--skip=cfg_test::smoke"

@@ -50,7 +50,9 @@ mkDerivation rec {
     glm
   ];
 
-  cmakeFlags = [ (lib.cmakeFeature "CMAKE_CXX_FLAGS" "-DGLM_ENABLE_EXPERIMENTAL") ];
+  cmakeFlags = [
+    (lib.cmakeFeature "CMAKE_CXX_FLAGS" "-DGLM_ENABLE_EXPERIMENTAL")
+  ];
 
   preFixup = ''
     mkdir $lib/

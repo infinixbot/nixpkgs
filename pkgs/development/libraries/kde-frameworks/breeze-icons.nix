@@ -13,7 +13,9 @@ mkDerivation {
     gtk3
   ];
   buildInputs = [ qtsvg ];
-  propagatedBuildInputs = [ hicolor-icon-theme ];
+  propagatedBuildInputs = [
+    hicolor-icon-theme
+  ];
   dontDropIconThemeCache = true;
   outputs = [ "out" ]; # only runtime outputs
   postInstall = ''

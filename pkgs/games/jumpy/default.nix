@@ -41,7 +41,9 @@ rustPlatform.buildRustPackage rec {
   ];
 
   buildInputs =
-    [ zstd ]
+    [
+      zstd
+    ]
     ++ lib.optionals stdenv.isLinux [
       alsa-lib
       libxkbcommon

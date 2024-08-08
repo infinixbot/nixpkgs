@@ -98,7 +98,9 @@ in
           ExecStart = "${pkgs.windmill}/bin/windmill";
 
           Restart = "always";
-          LoadCredential = [ "DATABASE_URL_FILE:${cfg.database.urlPath}" ];
+          LoadCredential = [
+            "DATABASE_URL_FILE:${cfg.database.urlPath}"
+          ];
         };
       in
       {

@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
     substituteInPlace src/Makefile --replace "modules_install" "INSTALL_MOD_PATH=$out modules_install"
   '';
 
-  makeFlags = [ "BASEDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}" ];
+  makeFlags = [
+    "BASEDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}"
+  ];
 
   buildFlags = [ "modules" ];
 

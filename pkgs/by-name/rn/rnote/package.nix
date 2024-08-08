@@ -64,7 +64,9 @@ stdenv.mkDerivation rec {
 
   dontUseCmakeConfigure = true;
 
-  mesonFlags = [ (lib.mesonBool "cli" true) ];
+  mesonFlags = [
+    (lib.mesonBool "cli" true)
+  ];
 
   buildInputs =
     [
@@ -76,8 +78,12 @@ stdenv.mkDerivation rec {
       libxml2
       poppler
     ]
-    ++ lib.optionals stdenv.isLinux [ alsa-lib ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.AudioUnit ];
+    ++ lib.optionals stdenv.isLinux [
+      alsa-lib
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.AudioUnit
+    ];
 
   postPatch = ''
     chmod +x build-aux/*.py

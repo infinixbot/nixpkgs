@@ -26,7 +26,9 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  buildInputs = [ vdr ];
+  buildInputs = [
+    vdr
+  ];
 
   meta = with lib; {
     inherit (src.meta) homepage;

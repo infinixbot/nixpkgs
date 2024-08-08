@@ -129,7 +129,9 @@ makeSetupHook {
             wrapGAppsHook3
           ];
 
-          buildInputs = [ typelib-Mahjong ];
+          buildInputs = [
+            typelib-Mahjong
+          ];
 
           installFlags = [
             "bin-foo"
@@ -167,7 +169,9 @@ makeSetupHook {
 
           strictDeps = true;
 
-          makeFlags = [ "LIBDIR=${placeholder "lib"}/lib" ];
+          makeFlags = [
+            "LIBDIR=${placeholder "lib"}/lib"
+          ];
 
           installFlags = [ "typelib-Bechamel" ];
         };
@@ -184,7 +188,9 @@ makeSetupHook {
             wrapGAppsHook3
           ];
 
-          buildInputs = [ typelib-Bechamel ];
+          buildInputs = [
+            typelib-Bechamel
+          ];
 
           installFlags = [
             "bin-foo"

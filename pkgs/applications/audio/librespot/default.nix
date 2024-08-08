@@ -29,10 +29,14 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-tbDlWP0sUIa0W9HhdYNOvo9cGeqFemclhA7quh7f/Rw=";
 
-  nativeBuildInputs = [
-    pkg-config
-    makeWrapper
-  ] ++ lib.optionals stdenv.isDarwin [ rustPlatform.bindgenHook ];
+  nativeBuildInputs =
+    [
+      pkg-config
+      makeWrapper
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      rustPlatform.bindgenHook
+    ];
 
   buildInputs =
     [ openssl ]

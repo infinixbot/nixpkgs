@@ -38,7 +38,9 @@ stdenv.mkDerivation rec {
     patchShebangs contrib reports
   '';
 
-  configureFlags = [ "--with-milter=${libmilter}" ];
+  configureFlags = [
+    "--with-milter=${libmilter}"
+  ];
 
   postFixup = ''
     for b in $bin/bin/opendmarc-{expire,import,params,reports}; do

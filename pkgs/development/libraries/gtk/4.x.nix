@@ -90,7 +90,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-RDUYuX6DSPn2QwrENbEBD5psUgf03Gp81dJOOCDO5jM=";
   };
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs =
     [
@@ -108,7 +110,9 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optionals (compileSchemas && !stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
       mesonEmulatorHook
     ]
-    ++ lib.optionals waylandSupport [ wayland-scanner ]
+    ++ lib.optionals waylandSupport [
+      wayland-scanner
+    ]
     ++ lib.optionals vulkanSupport [
       shaderc # for glslc
     ]
@@ -142,17 +146,29 @@ stdenv.mkDerivation (finalAttrs: {
       libXrandr
       libXrender
     ])
-    ++ lib.optionals stdenv.isDarwin [ AppKit ]
-    ++ lib.optionals trackerSupport [ tracker ]
+    ++ lib.optionals stdenv.isDarwin [
+      AppKit
+    ]
+    ++ lib.optionals trackerSupport [
+      tracker
+    ]
     ++ lib.optionals waylandSupport [
       libGL
       wayland
       wayland-protocols
     ]
-    ++ lib.optionals xineramaSupport [ xorg.libXinerama ]
-    ++ lib.optionals cupsSupport [ cups ]
-    ++ lib.optionals stdenv.isDarwin [ Cocoa ]
-    ++ lib.optionals stdenv.hostPlatform.isMusl [ libexecinfo ];
+    ++ lib.optionals xineramaSupport [
+      xorg.libXinerama
+    ]
+    ++ lib.optionals cupsSupport [
+      cups
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Cocoa
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isMusl [
+      libexecinfo
+    ];
   #TODO: colord?
 
   propagatedBuildInputs =
@@ -164,8 +180,12 @@ stdenv.mkDerivation (finalAttrs: {
       graphene
       pango
     ]
-    ++ lib.optionals waylandSupport [ wayland ]
-    ++ lib.optionals vulkanSupport [ vulkan-loader ]
+    ++ lib.optionals waylandSupport [
+      wayland
+    ]
+    ++ lib.optionals vulkanSupport [
+      vulkan-loader
+    ]
     ++ [
       # Required for GSettings schemas at runtime.
       # Will be picked up by wrapGAppsHook4.
@@ -292,10 +312,20 @@ stdenv.mkDerivation (finalAttrs: {
     platforms = platforms.all;
     changelog = "https://gitlab.gnome.org/GNOME/gtk/-/raw/${finalAttrs.version}/NEWS";
     pkgConfigModules =
-      [ "gtk4" ]
-      ++ lib.optionals broadwaySupport [ "gtk4-broadway" ]
-      ++ lib.optionals stdenv.hostPlatform.isUnix [ "gtk4-unix-print" ]
-      ++ lib.optionals waylandSupport [ "gtk4-wayland" ]
-      ++ lib.optionals x11Support [ "gtk4-x11" ];
+      [
+        "gtk4"
+      ]
+      ++ lib.optionals broadwaySupport [
+        "gtk4-broadway"
+      ]
+      ++ lib.optionals stdenv.hostPlatform.isUnix [
+        "gtk4-unix-print"
+      ]
+      ++ lib.optionals waylandSupport [
+        "gtk4-wayland"
+      ]
+      ++ lib.optionals x11Support [
+        "gtk4-x11"
+      ];
   };
 })

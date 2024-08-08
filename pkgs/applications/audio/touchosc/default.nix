@@ -39,7 +39,9 @@ let
     libglvnd
   ];
 
-  runBinDeps = [ zenity ];
+  runBinDeps = [
+    zenity
+  ];
 in
 
 stdenv.mkDerivation rec {

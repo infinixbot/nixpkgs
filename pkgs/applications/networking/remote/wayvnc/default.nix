@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     meson
@@ -51,7 +53,9 @@ stdenv.mkDerivation rec {
     wayland
   ];
 
-  mesonFlags = [ (lib.mesonBool "tests" true) ];
+  mesonFlags = [
+    (lib.mesonBool "tests" true)
+  ];
 
   doCheck = true;
 

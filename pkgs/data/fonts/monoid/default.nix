@@ -17,7 +17,13 @@ stdenv.mkDerivation {
     sha256 = "sha256-u2jwVOC9QM2JHsdAVBuEpqqdiBAVs+IWnpp48A5Xk28=";
   };
 
-  nativeBuildInputs = [ (python3.withPackages (pp: with pp; [ fontforge ])) ];
+  nativeBuildInputs = [
+    (python3.withPackages (
+      pp: with pp; [
+        fontforge
+      ]
+    ))
+  ];
 
   patches = [
     # port to python 3

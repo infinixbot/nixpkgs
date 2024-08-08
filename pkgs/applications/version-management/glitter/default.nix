@@ -18,7 +18,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-7JQcY3HCG3UQ0Mfz/+ZZ0axGEpQoH410FT72tjHW7EE=";
 
-  nativeCheckInputs = [ git ];
+  nativeCheckInputs = [
+    git
+  ];
 
   # tests require it to be in a git repository
   preCheck = ''

@@ -4,7 +4,9 @@
   diffutils,
   findutils,
   coreutils,
-  firmwarePaths ? [ "/run/current-system/firmware" ],
+  firmwarePaths ? [
+    "/run/current-system/firmware"
+  ],
 }:
 writeShellApplication {
   name = "edido";

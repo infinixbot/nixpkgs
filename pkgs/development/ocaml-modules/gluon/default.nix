@@ -20,7 +20,9 @@ buildDunePackage rec {
     hash = "sha256-YWJCPokY1A7TGqCGoxJl14oKDVeMNybEEB7KiK92WSo=";
   };
 
-  buildInputs = [ config ];
+  buildInputs = [
+    config
+  ];
 
   propagatedBuildInputs = [
     bytestring

@@ -34,7 +34,9 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs =
-    [ cmake ]
+    [
+      cmake
+    ]
     ++ lib.optionals withManual [
       # manpage
       help2man
@@ -73,8 +75,12 @@ stdenv.mkDerivation rec {
       "-DF3D_PLUGIN_BUILD_ASSIMP=ON"
       "-DF3D_PLUGIN_BUILD_OCCT=ON"
     ]
-    ++ lib.optionals withManual [ "-DF3D_LINUX_GENERATE_MAN=ON" ]
-    ++ lib.optionals withPythonBinding [ "-DF3D_BINDINGS_PYTHON=ON" ];
+    ++ lib.optionals withManual [
+      "-DF3D_LINUX_GENERATE_MAN=ON"
+    ]
+    ++ lib.optionals withPythonBinding [
+      "-DF3D_BINDINGS_PYTHON=ON"
+    ];
 
   meta = with lib; {
     description = "Fast and minimalist 3D viewer using VTK";

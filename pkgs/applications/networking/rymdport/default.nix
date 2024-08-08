@@ -23,7 +23,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-RsmwTRVjhEgKAT9aekSfkRuai2165KG7q5aFjAiLSPU=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs =
     with xorg;

@@ -78,12 +78,16 @@ stdenv.mkDerivation {
   '';
 
   nativeBuildInputs =
-    [ cmake ]
+    [
+      cmake
+    ]
     ++ lib.optionals withGui [
       imagemagick # to make icons
       wrapQtAppsHook
     ]
-    ++ lib.optionals withNonFreePlugins [ autoPatchelfHook ];
+    ++ lib.optionals withNonFreePlugins [
+      autoPatchelfHook
+    ];
 
   buildInputs =
     [
@@ -97,13 +101,19 @@ stdenv.mkDerivation {
       copyDesktopItems
       qtbase
     ]
-    ++ lib.optionals withNonFreePlugins [ libtool.lib ];
+    ++ lib.optionals withNonFreePlugins [
+      libtool.lib
+    ];
 
-  cmakeFlags = [
-    # The non-free (Debian) packages uses this directory structure so do the same when compiling
-    # from source so we can easily merge them.
-    "-DCMAKE_INSTALL_LIBDIR=lib/${system}-gnu"
-  ] ++ lib.optionals (!withGui) [ "-DNO_GUI=ON" ];
+  cmakeFlags =
+    [
+      # The non-free (Debian) packages uses this directory structure so do the same when compiling
+      # from source so we can easily merge them.
+      "-DCMAKE_INSTALL_LIBDIR=lib/${system}-gnu"
+    ]
+    ++ lib.optionals (!withGui) [
+      "-DNO_GUI=ON"
+    ];
 
   postInstall =
     ''

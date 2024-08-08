@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-fUaVHE3nxq3fU7DYCvaQTOoMzax/qFH8cMegFLLybNk=";
   };
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
   meta = with lib; {
     description = "Creates a bidirectional virtual data connection tunnelled in HTTP requests";

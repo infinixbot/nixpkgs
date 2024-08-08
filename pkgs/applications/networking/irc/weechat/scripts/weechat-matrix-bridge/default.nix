@@ -18,7 +18,9 @@ stdenv.mkDerivation {
     sha256 = "0qqd6qmkrdc0r3rnl53c3yp93fbcz7d3mdw3vq5gmdqxyym4s9lj";
   };
 
-  patches = [ ./library-path.patch ];
+  patches = [
+    ./library-path.patch
+  ];
 
   buildInputs = [
     curl

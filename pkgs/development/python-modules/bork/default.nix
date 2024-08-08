@@ -28,9 +28,13 @@ buildPythonPackage rec {
     hash = "sha256-YqvtOwd00TXD4I3fIQolvjHnjREvQgbdrEO9Z96v1Kk=";
   };
 
-  build-system = [ setuptools ];
+  build-system = [
+    setuptools
+  ];
 
-  pythonRelaxDeps = [ "packaging" ];
+  pythonRelaxDeps = [
+    "packaging"
+  ];
 
   dependencies =
     [

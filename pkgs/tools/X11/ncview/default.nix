@@ -20,7 +20,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ netcdf ];
+  nativeBuildInputs = [
+    netcdf
+  ];
 
   buildInputs = [
     expat

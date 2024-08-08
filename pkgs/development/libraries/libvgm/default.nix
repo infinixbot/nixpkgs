@@ -57,20 +57,28 @@ stdenv.mkDerivation {
     "dev"
   ] ++ optional enableTools "bin";
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   propagatedBuildInputs =
     [
       libiconv
       zlib
     ]
-    ++ optionals withALSA [ alsa-lib ]
-    ++ optionals withPulseAudio [ libpulseaudio ]
+    ++ optionals withALSA [
+      alsa-lib
+    ]
+    ++ optionals withPulseAudio [
+      libpulseaudio
+    ]
     ++ optionals withCoreAudio [
       CoreAudio
       AudioToolbox
     ]
-    ++ optionals withLibao [ libao ];
+    ++ optionals withLibao [
+      libao
+    ];
 
   cmakeFlags =
     [
@@ -97,7 +105,9 @@ stdenv.mkDerivation {
       "-DAUDIODRV_LIBAO=${onOff withLibao}"
     ]
     ++ optionals enableEmulation (
-      [ "-DSNDEMU__ALL=${onOff withAllEmulators}" ]
+      [
+        "-DSNDEMU__ALL=${onOff withAllEmulators}"
+      ]
       ++ optionals (!withAllEmulators) (lib.lists.forEach emulators (x: "-DSNDEMU_${x}=ON"))
     )
     ++ optionals enableTools [

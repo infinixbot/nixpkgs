@@ -24,7 +24,9 @@ buildGoModule rec {
       --replace-fail /usr/sbin/smartctl ${lib.getExe smartmontools}
   '';
 
-  ldflags = [ "-X github.com/prometheus/common/version.Version=${version}" ];
+  ldflags = [
+    "-X github.com/prometheus/common/version.Version=${version}"
+  ];
 
   passthru.tests = {
     inherit (nixosTests.prometheus-exporters) smartctl;

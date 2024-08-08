@@ -115,9 +115,13 @@ in
     boot.initrd.availableKernelModules = lib.optional initrdCfg.enable "loop";
 
     boot.initrd.systemd = lib.mkIf initrdCfg.enable {
-      additionalUpstreamUnits = [ "systemd-repart.service" ];
+      additionalUpstreamUnits = [
+        "systemd-repart.service"
+      ];
 
-      storePaths = [ "${config.boot.initrd.systemd.package}/bin/systemd-repart" ];
+      storePaths = [
+        "${config.boot.initrd.systemd.package}/bin/systemd-repart"
+      ];
 
       contents."/etc/repart.d".source = definitionsDirectory;
 
@@ -162,7 +166,9 @@ in
     };
 
     systemd = lib.mkIf cfg.enable {
-      additionalUpstreamSystemUnits = [ "systemd-repart.service" ];
+      additionalUpstreamSystemUnits = [
+        "systemd-repart.service"
+      ];
     };
   };
 

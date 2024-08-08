@@ -20,9 +20,13 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-QcFNaCTqj6CFiOzQ6ezfBL0mu8PDU11hyNdkcsLOPzA=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = lib.optionals stdenv.cc.isClang [ llvmPackages.openmp ];
+  buildInputs = lib.optionals stdenv.cc.isClang [
+    llvmPackages.openmp
+  ];
 
   cmakeFlags =
     # these flags are ON by default

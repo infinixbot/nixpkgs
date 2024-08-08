@@ -33,19 +33,27 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  depsBuildBuild = [ pkg-config ];
-
-  nativeBuildInputs = [
-    meson
-    ninja
+  depsBuildBuild = [
     pkg-config
-    gobject-introspection
-    gtk-doc
-    docbook-xsl-nons
-    docbook_xml_dtd_43
-  ] ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [ mesonEmulatorHook ];
+  ];
 
-  buildInputs = [ glib ];
+  nativeBuildInputs =
+    [
+      meson
+      ninja
+      pkg-config
+      gobject-introspection
+      gtk-doc
+      docbook-xsl-nons
+      docbook_xml_dtd_43
+    ]
+    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+      mesonEmulatorHook
+    ];
+
+  buildInputs = [
+    glib
+  ];
 
   meta = with lib; {
     homepage = "https://gitlab.freedesktop.org/mobile-broadband/libqrtr-glib";

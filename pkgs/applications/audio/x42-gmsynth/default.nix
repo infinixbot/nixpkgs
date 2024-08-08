@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     lv2
   ];
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
 
   enableParallelBuilding = true;
 

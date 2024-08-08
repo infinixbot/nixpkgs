@@ -302,7 +302,9 @@ makeScopeWithSplicing' {
 
           nixos = import ../../nixos {
             configuration = {
-              imports = [ ../../nixos/modules/profiles/macos-builder.nix ] ++ modules;
+              imports = [
+                ../../nixos/modules/profiles/macos-builder.nix
+              ] ++ modules;
 
               # If you need to override this, consider starting with the right Nixpkgs
               # in the first place, ie change `pkgs` in `pkgs.darwin.linux-builder`.

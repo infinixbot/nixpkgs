@@ -35,9 +35,13 @@ buildGoModule rec {
 
   vendorHash = "sha256-aoeAnyFotKWWaRZQsgQPwwmhih/1zfL9eBV/2r1VPBM=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ yara ];
+  buildInputs = [
+    yara
+  ];
 
   meta = with lib; {
     description = "YARA-based IOC scanner";

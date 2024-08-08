@@ -28,7 +28,9 @@ stdenv.mkDerivation (finalAttrs: {
     gtk2 # for autoconf macros
   ];
 
-  buildInputs = [ gtk2 ];
+  buildInputs = [
+    gtk2
+  ];
 
   meta = with lib; {
     description = "Simple screen testing tool";

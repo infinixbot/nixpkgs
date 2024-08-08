@@ -29,9 +29,13 @@ stdenv.mkDerivation (finalAttrs: {
     texinfo
   ];
 
-  buildInputs = [ guile ];
+  buildInputs = [
+    guile
+  ];
 
-  propagatedBuildInputs = [ aspell ];
+  propagatedBuildInputs = [
+    aspell
+  ];
 
   meta = with lib; {
     description = "Guile bindings for the aspell library";

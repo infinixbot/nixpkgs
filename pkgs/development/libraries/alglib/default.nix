@@ -20,7 +20,9 @@ stdenv.mkDerivation rec {
     clang
   ];
 
-  patches = [ ./patch-alglib-CMakeLists.patch ];
+  patches = [
+    ./patch-alglib-CMakeLists.patch
+  ];
 
   meta = with lib; {
     description = "Numerical analysis and data processing library";

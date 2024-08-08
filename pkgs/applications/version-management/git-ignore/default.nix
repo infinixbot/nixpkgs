@@ -20,9 +20,13 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-UicChl0wD2GSCCHAqF4/FKVq15g9qusNOnNJJW2B/nw=";
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.Security
+  ];
 
   postInstall = ''
     assets=$releaseDir/../assets

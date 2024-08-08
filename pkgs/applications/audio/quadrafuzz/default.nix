@@ -32,7 +32,9 @@ stdenv.mkDerivation rec {
     lv2
   ];
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
 
   installPhase = ''
     runHook preInstall

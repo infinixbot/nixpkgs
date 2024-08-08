@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-UiaU+LCevrWBxZg5LAimGIJB0CElWBnO6qoadUc3VVM=";
   };
 
-  patches = [ ./cmakelists.patch ];
+  patches = [
+    ./cmakelists.patch
+  ];
 
   cmakeFlags =
     [

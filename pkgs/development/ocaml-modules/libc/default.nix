@@ -14,7 +14,9 @@ buildDunePackage rec {
     hash = "sha256-e5x5Yae7V6qOpq+aLZaV+6L9ldy9qDqd9Kc8nkAsENg=";
   };
 
-  buildInputs = [ config ];
+  buildInputs = [
+    config
+  ];
 
   meta = {
     description = "Raw definitions and bindings to platforms system libraries";

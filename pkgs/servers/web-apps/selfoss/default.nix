@@ -14,7 +14,9 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "5JxHUOlyMneWPKaZtgLwn5FI4rnyWPzmsUQpSYrw5Pw=";
   };
 
-  nativeBuildInputs = [ unzip ];
+  nativeBuildInputs = [
+    unzip
+  ];
 
   installPhase = ''
     runHook preInstall

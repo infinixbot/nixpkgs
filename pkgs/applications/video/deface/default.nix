@@ -20,7 +20,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-/mXWeL6OSgW4BMXtAZD/3UxQUGt7UE5ZvH8CXNCueJo=";
   };
 
-  build-system = with python3.pkgs; [ setuptools-scm ];
+  build-system = with python3.pkgs; [
+    setuptools-scm
+  ];
 
   dependencies = with python3.pkgs; [
     imageio
@@ -34,7 +36,9 @@ python3.pkgs.buildPythonApplication rec {
   ];
 
   # Native onnxruntime lib used by Python module onnxruntime can't find its other libs without this
-  makeWrapperArgs = [ ''--prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ pkgs.onnxruntime ]}"'' ];
+  makeWrapperArgs = [
+    ''--prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ pkgs.onnxruntime ]}"''
+  ];
 
   postPatch = ''
     substituteInPlace pyproject.toml \

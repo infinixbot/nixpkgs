@@ -21,7 +21,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     jdk
   ];
 
-  nativeBuildInputs = [ makeBinaryWrapper ];
+  nativeBuildInputs = [
+    makeBinaryWrapper
+  ];
 
   installPhase = ''
     runHook preInstall

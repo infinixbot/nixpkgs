@@ -22,10 +22,17 @@ stdenv.mkDerivation (finalAttrs: {
     fetchSubmodules = true;
   };
 
-  outputs = [
-    "out"
-    "doc"
-  ] ++ lib.optionals enableManpages [ "man" ] ++ lib.optionals finalAttrs.doCheck [ "test" ];
+  outputs =
+    [
+      "out"
+      "doc"
+    ]
+    ++ lib.optionals enableManpages [
+      "man"
+    ]
+    ++ lib.optionals finalAttrs.doCheck [
+      "test"
+    ];
 
   postUnpack = ''
     patchShebangs .
@@ -45,9 +52,13 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.getBin openssl)
   ];
 
-  configureFlags = [
-    "--disable-dbus"
-  ] ++ lib.optionals (!enableManpages) [ "--disable-manual-pages" ];
+  configureFlags =
+    [
+      "--disable-dbus"
+    ]
+    ++ lib.optionals (!enableManpages) [
+      "--disable-manual-pages"
+    ];
 
   enableParallelBuilding = true;
 

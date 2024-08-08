@@ -83,7 +83,9 @@ stdenv.mkDerivation (finalAttrs: {
     qtbase
   ];
 
-  nativeCheckInputs = [ dbus ];
+  nativeCheckInputs = [
+    dbus
+  ];
 
   checkInputs = [
     gtest

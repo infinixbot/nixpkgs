@@ -28,7 +28,9 @@ stdenv.mkDerivation {
     gtk2
   ];
 
-  patches = [ ./gdk-libs.patch ];
+  patches = [
+    ./gdk-libs.patch
+  ];
 
   buildPhase = ''
     make PREFIX=$out

@@ -64,7 +64,9 @@ stdenv.mkDerivation (finalAttrs: {
       --replace-fail '"''${_Qt5_PLUGIN_INSTALL_DIR}/' "\"$out/$qtPluginPrefix/"
   '';
 
-  cmakeFlags = [ (lib.cmakeBool "ENABLE_QT5" isQt5) ];
+  cmakeFlags = [
+    (lib.cmakeBool "ENABLE_QT5" isQt5)
+  ];
 
   postInstall = lib.optionalString isQt5 ''
     # make default Kvantum themes available for Qt 5 apps

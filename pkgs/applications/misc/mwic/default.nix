@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
 
   makeFlags = [ "PREFIX=\${out}" ];
 
-  nativeBuildInputs = [ pythonPackages.wrapPython ];
+  nativeBuildInputs = [
+    pythonPackages.wrapPython
+  ];
 
   propagatedBuildInputs = with pythonPackages; [
     pyenchant

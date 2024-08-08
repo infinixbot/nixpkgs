@@ -37,7 +37,9 @@ stdenv.mkDerivation rec {
     catch2
   ];
 
-  cmakeFlags = [ "-DVK_BOOTSTRAP_VULKAN_HEADER_DIR=${vulkan-headers}/include" ];
+  cmakeFlags = [
+    "-DVK_BOOTSTRAP_VULKAN_HEADER_DIR=${vulkan-headers}/include"
+  ];
 
   meta = with lib; {
     description = "Vulkan Bootstrapping Library";

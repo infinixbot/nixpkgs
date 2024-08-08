@@ -52,7 +52,9 @@ in
     services = lib.mkIf cfg.enableWebserver {
       tomcat = {
         enable = true;
-        webapps = [ cfg.package ];
+        webapps = [
+          cfg.package
+        ];
       };
     };
   };

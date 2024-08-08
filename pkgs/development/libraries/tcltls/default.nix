@@ -16,7 +16,9 @@ tcl.mkTclDerivation rec {
 
   buildInputs = [ openssl ];
 
-  configureFlags = [ "--with-ssl-dir=${openssl.dev}" ];
+  configureFlags = [
+    "--with-ssl-dir=${openssl.dev}"
+  ];
 
   meta = {
     homepage = "https://core.tcl-lang.org/tcltls/index";

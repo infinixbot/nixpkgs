@@ -26,7 +26,9 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs =
-    [ makeWrapper ]
+    [
+      makeWrapper
+    ]
     ++ (with ocamlPackages; [
       ocaml
       findlib

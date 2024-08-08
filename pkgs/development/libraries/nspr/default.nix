@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-fqMpfqWWm10lpd2NR/JEPNqI6e50YwH24eFCb4pqvI8=";
   };
 
-  patches = [ ./0001-Makefile-use-SOURCE_DATE_EPOCH-for-reproducibility.patch ];
+  patches = [
+    ./0001-Makefile-use-SOURCE_DATE_EPOCH-for-reproducibility.patch
+  ];
 
   outputs = [
     "out"

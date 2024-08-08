@@ -36,7 +36,9 @@ stdenv.mkDerivation {
   pname = "adi1090x-plymouth-themes";
   inherit version srcs;
 
-  nativeBuildInputs = [ unzip ];
+  nativeBuildInputs = [
+    unzip
+  ];
 
   sourceRoot = ".";
   unpackCmd = "tar xzf $curSrc";

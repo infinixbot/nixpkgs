@@ -34,16 +34,22 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [ getopt ];
 
-  nativeCheckInputs = [
-    bc
-    tzdata
-  ] ++ lib.optionals (stdenv.hostPlatform.libc != "musl") [ ksh ];
+  nativeCheckInputs =
+    [
+      bc
+      tzdata
+    ]
+    ++ lib.optionals (stdenv.hostPlatform.libc != "musl") [
+      ksh
+    ];
 
   # The generated makefile is a small wrapper for calling ./boot-strap with a
   # given op. On a case-insensitive filesystem this generated makefile clobbers
   # a distinct, shipped Makefile and causes infinite recursion during tests
   # which eventually fail with "fork: Resource temporarily unavailable"
-  configureFlags = [ "--without-makefile" ];
+  configureFlags = [
+    "--without-makefile"
+  ];
 
   # Disabled tests:
   # * directive-export{,-gmake}: another failure related to TZ variables

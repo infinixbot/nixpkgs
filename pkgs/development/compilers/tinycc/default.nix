@@ -53,21 +53,27 @@ stdenv.mkDerivation (finalAttrs: {
         description = "Tiny C compiler backend";
       };
     in
-    [ (makePkgconfigItem libtcc-pcitem) ];
+    [
+      (makePkgconfigItem libtcc-pcitem)
+    ];
 
   postPatch = ''
     patchShebangs texi2pod.pl
   '';
 
-  configureFlags = [
-    "--cc=$CC"
-    "--ar=$AR"
-    "--crtprefix=${lib.getLib stdenv.cc.libc}/lib"
-    "--sysincludepaths=${lib.getDev stdenv.cc.libc}/include:{B}/include"
-    "--libpaths=${lib.getLib stdenv.cc.libc}/lib"
-    # build cross compilers
-    "--enable-cross"
-  ] ++ lib.optionals stdenv.hostPlatform.isMusl [ "--config-musl" ];
+  configureFlags =
+    [
+      "--cc=$CC"
+      "--ar=$AR"
+      "--crtprefix=${lib.getLib stdenv.cc.libc}/lib"
+      "--sysincludepaths=${lib.getDev stdenv.cc.libc}/include:{B}/include"
+      "--libpaths=${lib.getLib stdenv.cc.libc}/lib"
+      # build cross compilers
+      "--enable-cross"
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isMusl [
+      "--config-musl"
+    ];
 
   preConfigure =
     let

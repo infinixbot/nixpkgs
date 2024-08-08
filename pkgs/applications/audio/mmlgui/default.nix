@@ -48,7 +48,9 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs =
     [
@@ -65,9 +67,13 @@ stdenv.mkDerivation rec {
       Cocoa
     ];
 
-  checkInputs = [ cppunit ];
+  checkInputs = [
+    cppunit
+  ];
 
-  makeFlags = [ "RELEASE=1" ];
+  makeFlags = [
+    "RELEASE=1"
+  ];
 
   enableParallelBuilding = true;
 

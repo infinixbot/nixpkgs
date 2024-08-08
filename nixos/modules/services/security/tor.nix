@@ -793,7 +793,9 @@ in
           example = {
             "example.org/www" = {
               map = [ 80 ];
-              authorizedClients = [ "descriptor:x25519:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" ];
+              authorizedClients = [
+                "descriptor:x25519:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+              ];
             };
           };
           type = types.attrsOf (

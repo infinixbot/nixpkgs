@@ -101,7 +101,9 @@ let
           runHook postCheck
         '';
 
-        pythonImportsCheck = [ (builtins.replaceStrings [ "-" ] [ "_" ] pname) ];
+        pythonImportsCheck = [
+          (builtins.replaceStrings [ "-" ] [ "_" ] pname)
+        ];
       }
     ) { };
 in
@@ -158,7 +160,9 @@ mkBasePackage (
 
     pname = repo;
 
-    nativeBuildInputs = [ pulumi-gen ];
+    nativeBuildInputs = [
+      pulumi-gen
+    ];
 
     cmd = cmdRes;
 

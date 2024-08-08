@@ -13,7 +13,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-HYrMIMTRPmgAac/vaZ1jaUFchyAl5B0quxgHH0DHJ84=";
   };
 
-  patches = [ ./darwin.diff ];
+  patches = [
+    ./darwin.diff
+  ];
 
   meta = with lib; {
     description = "Data recovery program for NTFS file systems";

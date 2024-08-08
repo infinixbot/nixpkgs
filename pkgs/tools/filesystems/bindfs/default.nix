@@ -16,7 +16,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-wLBg6Uw6IxodSqC88mb/GJmBpO845C++IylqfYFxm3o=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = if stdenv.isDarwin then [ fuse ] else [ fuse3 ];
 

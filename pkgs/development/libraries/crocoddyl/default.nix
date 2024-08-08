@@ -22,7 +22,13 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ cmake ] ++ lib.optionals pythonSupport [ python3Packages.python ];
+  nativeBuildInputs =
+    [
+      cmake
+    ]
+    ++ lib.optionals pythonSupport [
+      python3Packages.python
+    ];
 
   propagatedBuildInputs =
     lib.optionals (!pythonSupport) [
@@ -47,8 +53,12 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   doCheck = true;
-  pythonImportsCheck = [ "crocoddyl" ];
-  checkInputs = lib.optionals pythonSupport [ python3Packages.scipy ];
+  pythonImportsCheck = [
+    "crocoddyl"
+  ];
+  checkInputs = lib.optionals pythonSupport [
+    python3Packages.scipy
+  ];
 
   meta = with lib; {
     description = "Crocoddyl optimal control library";

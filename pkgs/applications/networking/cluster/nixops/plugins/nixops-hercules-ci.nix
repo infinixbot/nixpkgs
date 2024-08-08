@@ -19,9 +19,13 @@ buildPythonPackage {
     hash = "sha256-4IZ+qzhERJIhLcIq9FvVml+xAFJ8R4QpUjFRw2DZl2U=";
   };
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
-  buildInputs = [ nixops ];
+  buildInputs = [
+    nixops
+  ];
 
   pythonImportsCheck = [ "nixops_hercules_ci" ];
 

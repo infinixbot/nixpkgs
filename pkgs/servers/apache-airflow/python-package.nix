@@ -151,79 +151,86 @@ buildPythonPackage rec {
 
   disabled = pythonOlder "3.7";
 
-  propagatedBuildInputs = [
-    alembic
-    argcomplete
-    asgiref
-    attrs
-    blinker
-    cached-property
-    cattrs
-    clickclick
-    colorlog
-    configupdater
-    connexion
-    cron-descriptor
-    croniter
-    cryptography
-    deprecated
-    dill
-    flask
-    flask-appbuilder
-    flask-caching
-    flask-session
-    flask-wtf
-    flask-login
-    gitpython
-    google-re2
-    graphviz
-    gunicorn
-    httpx
-    iso8601
-    importlib-resources
-    inflection
-    itsdangerous
-    jinja2
-    jsonschema
-    lazy-object-proxy
-    linkify-it-py
-    lockfile
-    markdown
-    markupsafe
-    marshmallow-oneofschema
-    mdit-py-plugins
-    numpy
-    openapi-spec-validator
-    opentelemetry-api
-    opentelemetry-exporter-otlp
-    pandas
-    pathspec
-    pendulum
-    psutil
-    pydantic
-    pygments
-    pyjwt
-    python-daemon
-    python-dateutil
-    python-nvd3
-    python-slugify
-    python3-openid
-    pyyaml
-    rich
-    rich-argparse
-    setproctitle
-    sqlalchemy
-    sqlalchemy-jsonfield
-    swagger-ui-bundle
-    tabulate
-    tenacity
-    termcolor
-    typing-extensions
-    unicodecsv
-    werkzeug
-  ] ++ lib.optionals (pythonOlder "3.9") [ importlib-metadata ] ++ providerDependencies;
+  propagatedBuildInputs =
+    [
+      alembic
+      argcomplete
+      asgiref
+      attrs
+      blinker
+      cached-property
+      cattrs
+      clickclick
+      colorlog
+      configupdater
+      connexion
+      cron-descriptor
+      croniter
+      cryptography
+      deprecated
+      dill
+      flask
+      flask-appbuilder
+      flask-caching
+      flask-session
+      flask-wtf
+      flask-login
+      gitpython
+      google-re2
+      graphviz
+      gunicorn
+      httpx
+      iso8601
+      importlib-resources
+      inflection
+      itsdangerous
+      jinja2
+      jsonschema
+      lazy-object-proxy
+      linkify-it-py
+      lockfile
+      markdown
+      markupsafe
+      marshmallow-oneofschema
+      mdit-py-plugins
+      numpy
+      openapi-spec-validator
+      opentelemetry-api
+      opentelemetry-exporter-otlp
+      pandas
+      pathspec
+      pendulum
+      psutil
+      pydantic
+      pygments
+      pyjwt
+      python-daemon
+      python-dateutil
+      python-nvd3
+      python-slugify
+      python3-openid
+      pyyaml
+      rich
+      rich-argparse
+      setproctitle
+      sqlalchemy
+      sqlalchemy-jsonfield
+      swagger-ui-bundle
+      tabulate
+      tenacity
+      termcolor
+      typing-extensions
+      unicodecsv
+      werkzeug
+    ]
+    ++ lib.optionals (pythonOlder "3.9") [
+      importlib-metadata
+    ]
+    ++ providerDependencies;
 
-  buildInputs = [ airflow-frontend ];
+  buildInputs = [
+    airflow-frontend
+  ];
 
   nativeCheckInputs = [
     freezegun
@@ -257,7 +264,9 @@ buildPythonPackage rec {
   ];
 
   # allow for gunicorn processes to have access to Python packages
-  makeWrapperArgs = [ "--prefix PYTHONPATH : $PYTHONPATH" ];
+  makeWrapperArgs = [
+    "--prefix PYTHONPATH : $PYTHONPATH"
+  ];
 
   postInstall = ''
     cp -rv ${airflow-frontend}/static/dist $out/${python.sitePackages}/airflow/www/static
@@ -265,7 +274,9 @@ buildPythonPackage rec {
     export HOME=$(mktemp -d)
   '';
 
-  pythonImportsCheck = [ "airflow" ] ++ providerImports;
+  pythonImportsCheck = [
+    "airflow"
+  ] ++ providerImports;
 
   preCheck = ''
     export AIRFLOW_HOME=$HOME
@@ -278,7 +289,9 @@ buildPythonPackage rec {
     airflow db reset -y
   '';
 
-  pytestFlagsArray = [ "tests/core/test_core.py" ];
+  pytestFlagsArray = [
+    "tests/core/test_core.py"
+  ];
 
   disabledTests = lib.optionals stdenv.isDarwin [
     "bash_operator_kill" # psutil.AccessDenied

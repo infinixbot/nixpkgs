@@ -43,7 +43,9 @@ stdenv.mkDerivation rec {
       --replace '$'{exec_prefix}/@CMAKE_INSTALL_INCLUDEDIR@ @CMAKE_INSTALL_FULL_INCLUDEDIR@
   '';
 
-  cmakeFlags = [ "-DWILDMIDI_CFG=${defaultCfgPath}" ];
+  cmakeFlags = [
+    "-DWILDMIDI_CFG=${defaultCfgPath}"
+  ];
 
   postInstall =
     let

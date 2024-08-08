@@ -23,9 +23,13 @@ stdenv.mkDerivation rec {
       --replace "\''${prefix}/@CMAKE_INSTALL_INCLUDEDIR@" "@CMAKE_INSTALL_FULL_INCLUDEDIR@"
   '';
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = lib.optionals stdenv.cc.isClang [ llvmPackages.openmp ];
+  buildInputs = lib.optionals stdenv.cc.isClang [
+    llvmPackages.openmp
+  ];
 
   meta = {
     description = "Extensible high performance math expression parser library written in C++";

@@ -61,7 +61,9 @@ let
     sourceRoot = "${src.name}/etc/SuperBuild";
 
     nativeBuildInputs = [ cmake ];
-    buildInputs = [ libGL ];
+    buildInputs = [
+      libGL
+    ];
 
     postPatch = ''
       chmod -R +w .

@@ -26,7 +26,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-Juie/Hq3i6rvAK19x6ah3SCQJL0uCrmV9gvzHih3crY=";
 
-  subPackages = [ "cmd/cli" ];
+  subPackages = [
+    "cmd/cli"
+  ];
   proxyVendor = true;
   nativeBuildInputs = lib.optionals enableGUI [ pkg-config ];
   buildInputs = lib.optionals enableGUI [

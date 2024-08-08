@@ -198,7 +198,9 @@ in
         "frr/vtysh.conf".text = "";
       };
 
-    systemd.tmpfiles.rules = [ "d /run/frr 0750 frr frr -" ];
+    systemd.tmpfiles.rules = [
+      "d /run/frr 0750 frr frr -"
+    ];
 
     systemd.services =
       let
@@ -223,7 +225,9 @@ in
             unitConfig.Documentation =
               if service == "zebra" then "man:zebra(8)" else "man:${daemon}(8) man:zebra(8)";
 
-            restartTriggers = mkIf (service != "mgmt") [ (configFile service) ];
+            restartTriggers = mkIf (service != "mgmt") [
+              (configFile service)
+            ];
             reloadIfChanged = (service != "mgmt");
 
             serviceConfig = {

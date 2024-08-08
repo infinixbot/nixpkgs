@@ -30,7 +30,9 @@ flutter319.buildFlutterApplication rec {
 
   sourceRoot = "${src.name}/client";
 
-  cmakeFlags = [ "-DMIMALLOC_LIB=${mimalloc}/lib/mimalloc.o" ];
+  cmakeFlags = [
+    "-DMIMALLOC_LIB=${mimalloc}/lib/mimalloc.o"
+  ];
 
   pubspecLock = lib.importJSON ./pubspec.lock.json;
 

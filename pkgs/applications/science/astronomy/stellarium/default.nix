@@ -60,20 +60,24 @@ stdenv.mkDerivation (finalAttrs: {
     qttools
   ];
 
-  buildInputs = [
-    qtbase
-    qtcharts
-    qtpositioning
-    qtmultimedia
-    qtserialport
-    qtwebengine
-    calcmysky
-    qxlsx
-    indilib
-    libnova
-    exiv2
-    nlopt
-  ] ++ lib.optionals stdenv.isLinux [ qtwayland ];
+  buildInputs =
+    [
+      qtbase
+      qtcharts
+      qtpositioning
+      qtmultimedia
+      qtserialport
+      qtwebengine
+      calcmysky
+      qxlsx
+      indilib
+      libnova
+      exiv2
+      nlopt
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      qtwayland
+    ];
 
   preConfigure =
     ''

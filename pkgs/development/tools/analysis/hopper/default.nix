@@ -67,7 +67,9 @@ stdenv.mkDerivation rec {
     homepage = "https://www.hopperapp.com/index.html";
     description = "MacOS and Linux Disassembler";
     license = licenses.unfree;
-    maintainers = with maintainers; [ Enteee ];
+    maintainers = with maintainers; [
+      Enteee
+    ];
     platforms = platforms.linux;
   };
 }

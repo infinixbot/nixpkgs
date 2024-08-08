@@ -19,7 +19,9 @@ buildGoModule rec {
 
   vendorHash = null;
 
-  subPackages = [ "cmd/yaegi" ];
+  subPackages = [
+    "cmd/yaegi"
+  ];
 
   ldflags = [
     "-s"

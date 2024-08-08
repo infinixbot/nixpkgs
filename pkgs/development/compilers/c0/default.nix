@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-lRIEtclx+NKxAO72nsvnxVeEGCEe6glC6w8MXh1HEwY=";
   };
 
-  patches = [ ./use-system-libraries.patch ];
+  patches = [
+    ./use-system-libraries.patch
+  ];
 
   postPatch =
     ''

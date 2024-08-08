@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     help2man
   ];
 
-  configureFlags = [ "--with-backend=pcsc" ];
+  configureFlags = [
+    "--with-backend=pcsc"
+  ];
 
   meta = with lib; {
     description = "C library to interact with the CCID-part of the Yubikey NEO";

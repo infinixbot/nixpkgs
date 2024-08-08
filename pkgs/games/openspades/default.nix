@@ -43,19 +43,23 @@ stdenv.mkDerivation rec {
     file
   ];
 
-  buildInputs = [
-    freetype
-    SDL2
-    SDL2_image
-    libGL
-    zlib
-    curl
-    glew
-    opusfile
-    openal
-    libogg
-    libXext
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Cocoa ];
+  buildInputs =
+    [
+      freetype
+      SDL2
+      SDL2_image
+      libGL
+      zlib
+      curl
+      glew
+      opusfile
+      openal
+      libogg
+      libXext
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      Cocoa
+    ];
 
   patches = [
     # https://github.com/yvt/openspades/pull/793 fix Darwin build
@@ -65,7 +69,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  cmakeFlags = [ "-DOPENSPADES_INSTALL_BINARY=bin" ];
+  cmakeFlags = [
+    "-DOPENSPADES_INSTALL_BINARY=bin"
+  ];
 
   devPak = fetchurl {
     url = "https://github.com/yvt/openspades-paks/releases/download/r${devPakVersion}/OpenSpadesDevPackage-r${devPakVersion}.zip";

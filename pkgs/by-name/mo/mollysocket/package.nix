@@ -23,12 +23,18 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-3yTbwbgOIm69Nf8stPMMhgR6g0sfenycx07by8AM01M=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [
-    openssl
-    sqlite
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs =
+    [
+      openssl
+      sqlite
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+    ];
 
   checkFlags = [
     # tests interact with Signal servers

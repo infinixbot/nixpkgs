@@ -50,9 +50,13 @@ in
       package = if cfg.useUnfree then pkgs.tuxclocker else pkgs.tuxclocker-without-unfree;
     in
     mkIf cfg.enable {
-      environment.systemPackages = [ package ];
+      environment.systemPackages = [
+        package
+      ];
 
-      services.dbus.packages = [ package ];
+      services.dbus.packages = [
+        package
+      ];
 
       # MSR is used for some features
       boot.kernelModules = [ "msr" ];

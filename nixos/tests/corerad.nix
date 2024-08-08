@@ -52,7 +52,9 @@ import ./make-test-python.nix ({
           boot.kernel.sysctl = {
             "net.ipv6.conf.all.autoconf" = true;
           };
-          environment.systemPackages = with pkgs; [ ndisc6 ];
+          environment.systemPackages = with pkgs; [
+            ndisc6
+          ];
         };
       };
   };

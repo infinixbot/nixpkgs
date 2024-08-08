@@ -26,10 +26,17 @@ rustPlatform.buildRustPackage {
     installShellFiles
   ];
 
-  buildInputs = [
-    nix
-    boost
-  ] ++ lib.optionals stdenv.isDarwin (with darwin.apple_sdk.frameworks; [ SystemConfiguration ]);
+  buildInputs =
+    [
+      nix
+      boost
+    ]
+    ++ lib.optionals stdenv.isDarwin (
+      with darwin.apple_sdk.frameworks;
+      [
+        SystemConfiguration
+      ]
+    );
 
   cargoLock = {
     lockFile = ./Cargo.lock;

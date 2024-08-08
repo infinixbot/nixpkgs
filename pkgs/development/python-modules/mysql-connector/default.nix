@@ -64,6 +64,8 @@ buildPythonPackage rec {
     homepage = "https://github.com/mysql/mysql-connector-python";
     changelog = "https://raw.githubusercontent.com/mysql/mysql-connector-python/${version}/CHANGES.txt";
     license = licenses.gpl2Only;
-    maintainers = with maintainers; [ neosimsim ];
+    maintainers = with maintainers; [
+      neosimsim
+    ];
   };
 }

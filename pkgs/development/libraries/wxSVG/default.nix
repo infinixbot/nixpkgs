@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
     sed -i src/cairo/SVGCanvasCairo.cpp -e '1i #include <cstdint>'
   '';
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     cairo

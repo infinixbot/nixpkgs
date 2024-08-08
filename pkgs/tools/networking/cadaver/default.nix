@@ -17,9 +17,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-Rs/y8+vTLNMoNoEspHvMdTU/wr51fwk9qIwN2PEP1fY=";
   };
 
-  configureFlags = [ "--with-ssl" ];
+  configureFlags = [
+    "--with-ssl"
+  ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     neon

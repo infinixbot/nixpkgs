@@ -43,7 +43,9 @@ stdenv.mkDerivation (finalAttrs: {
         paths = finalAttrs.buildInputs;
       };
     in
-    [ "SDLMINUSI=-I${sdl-env}/include/SDL" ];
+    [
+      "SDLMINUSI=-I${sdl-env}/include/SDL"
+    ];
 
   strictDeps = true;
 

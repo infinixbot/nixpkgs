@@ -19,7 +19,9 @@ buildGoModule rec {
 
   subPackages = [ "cmd/vendir" ];
 
-  ldflags = [ "-X carvel.dev/vendir/pkg/vendir/version.Version=${version}" ];
+  ldflags = [
+    "-X carvel.dev/vendir/pkg/vendir/version.Version=${version}"
+  ];
 
   meta = with lib; {
     description = "CLI tool to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively";

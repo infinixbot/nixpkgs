@@ -75,7 +75,9 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.mesonOption "cmakepackagedir" "${placeholder "dev"}/lib/cmake")
   ];
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     meson

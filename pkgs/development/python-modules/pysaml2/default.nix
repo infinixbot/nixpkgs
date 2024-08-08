@@ -51,7 +51,9 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "xmlschema" ];
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   propagatedBuildInputs = [
     cryptography

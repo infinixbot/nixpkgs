@@ -32,16 +32,24 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    cmake
-    qt6.qttools
-    qt6.wrapQtAppsHook
-  ] ++ lib.optionals stdenv.isDarwin [ desktopToDarwinBundle ];
+  nativeBuildInputs =
+    [
+      cmake
+      qt6.qttools
+      qt6.wrapQtAppsHook
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      desktopToDarwinBundle
+    ];
 
-  buildInputs = [
-    qt6.qtbase
-    qt6.qtsvg
-  ] ++ lib.optionals stdenv.isLinux [ qt6.qtwayland ];
+  buildInputs =
+    [
+      qt6.qtbase
+      qt6.qtsvg
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      qt6.qtwayland
+    ];
 
   meta = with lib; {
     description = "Application designed to make reading enjoyable and straightforward";

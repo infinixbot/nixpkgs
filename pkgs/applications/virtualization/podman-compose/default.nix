@@ -20,7 +20,9 @@ buildPythonApplication rec {
     hash = "sha256-40RatexY/6eRfCodaiBeJpyt1sDUj2STSPL0gBECdRs=";
   };
 
-  build-system = [ setuptools ];
+  build-system = [
+    setuptools
+  ];
 
   dependencies = [
     python-dotenv

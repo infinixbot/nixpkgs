@@ -68,7 +68,9 @@ stdenv.mkDerivation (finalAttrs: {
     );
 
   buildInputs =
-    [ cuda-redist ]
+    [
+      cuda-redist
+    ]
     ++ lib.optionals pythonSupport (
       with python3Packages;
       [
@@ -77,7 +79,12 @@ stdenv.mkDerivation (finalAttrs: {
       ]
     );
 
-  propagatedBuildInputs = lib.optionals pythonSupport (with python3Packages; [ torch ]);
+  propagatedBuildInputs = lib.optionals pythonSupport (
+    with python3Packages;
+    [
+      torch
+    ]
+  );
 
   # NOTE: We cannot use pythonImportsCheck for this module because it uses torch to immediately
   #   initailize CUDA and GPU access is not allowed in the nix build environment.

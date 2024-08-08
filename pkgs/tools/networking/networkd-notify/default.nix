@@ -22,7 +22,9 @@ buildPythonApplication rec {
     hash = "sha256-fanP1EWERT2Jy4OnMo8OMdR9flginYUgMw+XgmDve3o=";
   };
 
-  nativeBuildInputs = [ wrapGAppsNoGuiHook ];
+  nativeBuildInputs = [
+    wrapGAppsNoGuiHook
+  ];
 
   propagatedBuildInputs = [
     dbus-python

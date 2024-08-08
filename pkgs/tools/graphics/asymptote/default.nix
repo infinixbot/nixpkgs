@@ -105,7 +105,9 @@ stdenv.mkDerivation (finalAttrs: {
   ] ++ lib.optionals stdenv.isLinux [ libtirpc ];
 
   propagatedBuildInputs =
-    [ glm ]
+    [
+      glm
+    ]
     ++ lib.optionals stdenv.isLinux [
       libglut
       libGLU

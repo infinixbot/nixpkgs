@@ -23,9 +23,13 @@ python3Packages.buildPythonPackage rec {
     urllib3
   ];
 
-  build-system = with python3Packages; [ setuptools ];
+  build-system = with python3Packages; [
+    setuptools
+  ];
 
-  pythonImportsCheck = [ "httpy" ];
+  pythonImportsCheck = [
+    "httpy"
+  ];
 
   nativeCheckInputs = [
     python3Packages.pytest

@@ -27,7 +27,9 @@ buildGoModule rec {
     "-extldflags=-static"
   ];
 
-  tags = [ "withoutebpf" ];
+  tags = [
+    "withoutebpf"
+  ];
 
   subPackages = [ "cmd/kubectl-gadget" ];
 

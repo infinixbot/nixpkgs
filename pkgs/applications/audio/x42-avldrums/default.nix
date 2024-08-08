@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     pango
   ];
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
 
   enableParallelBuilding = true;
 

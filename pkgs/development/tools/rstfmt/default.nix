@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-zvmKgNzfxyWYHoaD+q84I48r1Mpp4kU4oIGAwMSRRlA=";
   };
 
-  build-system = with python3.pkgs; [ setuptools ];
+  build-system = with python3.pkgs; [
+    setuptools
+  ];
 
   dependencies = with python3.pkgs; [
     black
@@ -27,7 +29,9 @@ python3.pkgs.buildPythonApplication rec {
   # Project has no unittest just sample files
   doCheck = false;
 
-  pythonImportsCheck = [ "rstfmt" ];
+  pythonImportsCheck = [
+    "rstfmt"
+  ];
 
   meta = with lib; {
     description = "Formatter for reStructuredText";

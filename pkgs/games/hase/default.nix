@@ -20,7 +20,9 @@ stdenv.mkDerivation {
 
   patches = [ ./prefer-dynamic.patch ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     sparrow3d

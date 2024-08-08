@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
   ];
 
   strictDeps = true;
-  nativeBuildInputs = [ librsvg ];
+  nativeBuildInputs = [
+    librsvg
+  ];
 
   buildInputs = [
     libjpeg

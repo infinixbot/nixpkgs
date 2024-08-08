@@ -15,7 +15,9 @@ import ./make-test-python.nix (
         { options, config, ... }:
         {
 
-          security.pki.certificateFiles = [ certs.ca.cert ];
+          security.pki.certificateFiles = [
+            certs.ca.cert
+          ];
 
           networking.extraHosts = ''
             127.0.0.1 ${domain}

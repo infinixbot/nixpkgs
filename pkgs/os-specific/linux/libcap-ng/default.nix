@@ -19,7 +19,9 @@ stdenv.mkDerivation rec {
     "man"
   ];
 
-  configureFlags = [ "--without-python" ];
+  configureFlags = [
+    "--without-python"
+  ];
 
   meta = with lib; {
     description = "Library for working with POSIX capabilities";

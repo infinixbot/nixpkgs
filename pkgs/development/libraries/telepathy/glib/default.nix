@@ -35,14 +35,18 @@ stdenv.mkDerivation rec {
     python3
   ];
 
-  buildInputs = [ glibcLocales ];
+  buildInputs = [
+    glibcLocales
+  ];
 
   propagatedBuildInputs = [
     dbus-glib
     glib
   ];
 
-  configureFlags = [ "--enable-vala-bindings" ];
+  configureFlags = [
+    "--enable-vala-bindings"
+  ];
 
   LC_ALL = "en_US.UTF-8";
 

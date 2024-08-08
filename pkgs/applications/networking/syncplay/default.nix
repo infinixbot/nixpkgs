@@ -25,7 +25,9 @@ buildPythonApplication rec {
     sha256 = "sha256-ipo027XyN4BpMkxzXznbnaufsaG/YkHxFJYo+XWzbyE=";
   };
 
-  patches = [ ./trusted_certificates.patch ];
+  patches = [
+    ./trusted_certificates.patch
+  ];
 
   buildInputs = lib.optionals enableGUI [ (if stdenv.isLinux then qt6.qtwayland else qt6.qtbase) ];
   propagatedBuildInputs =

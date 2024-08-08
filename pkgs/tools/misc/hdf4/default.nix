@@ -50,9 +50,14 @@ stdenv.mkDerivation rec {
     ./darwin-aarch64.patch
   ];
 
-  nativeBuildInputs = [
-    cmake
-  ] ++ lib.optionals stdenv.isDarwin [ fixDarwinDylibNames ] ++ lib.optional fortranSupport gfortran;
+  nativeBuildInputs =
+    [
+      cmake
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      fixDarwinDylibNames
+    ]
+    ++ lib.optional fortranSupport gfortran;
 
   buildInputs =
     [

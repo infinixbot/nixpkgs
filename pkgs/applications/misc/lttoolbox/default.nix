@@ -44,7 +44,9 @@ stdenv.mkDerivation rec {
     libxml2
     icu
   ];
-  buildFlags = [ "CPPFLAGS=-I${utf8cpp}/include/utf8cpp" ];
+  buildFlags = [
+    "CPPFLAGS=-I${utf8cpp}/include/utf8cpp"
+  ];
   configurePhase = ''
     ./autogen.sh --prefix $out
   '';

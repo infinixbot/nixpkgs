@@ -23,7 +23,9 @@ python3Packages.buildPythonApplication rec {
     })
   ];
 
-  nativeBuildInputs = with python3Packages; [ setuptools ];
+  nativeBuildInputs = with python3Packages; [
+    setuptools
+  ];
 
   nativeCheckInputs = with python3Packages; [
     pytestCheckHook

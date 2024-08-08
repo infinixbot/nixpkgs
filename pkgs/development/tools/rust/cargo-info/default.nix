@@ -21,9 +21,17 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-zp7qklME28HNGomAcQgrEi7W6zQ1QCJc4FjxtnKySUE=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs =
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+    ];
 
   meta = with lib; {
     description = "Cargo subcommand to show crates info from crates.io";

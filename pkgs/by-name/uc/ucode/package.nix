@@ -18,7 +18,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-dJjlwuQLS73D6W/bmhWLPPaT7himQyO1RvD+MXVxBMw=";
   };
 
-  buildInputs = [ json_c ];
+  buildInputs = [
+    json_c
+  ];
 
   nativeBuildInputs = [
     cmake

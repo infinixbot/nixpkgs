@@ -122,7 +122,9 @@ let
             stripLen = 1;
           })
         ];
-        pollyPatches = [ ./llvm/gnu-install-dirs-polly.patch ];
+        pollyPatches = [
+          ./llvm/gnu-install-dirs-polly.patch
+        ];
       };
 
       # `llvm` historically had the binaries.  When choosing an output explicitly,
@@ -181,20 +183,26 @@ let
         cc = tools.clang-unwrapped;
         # libstdcxx is taken from gcc in an ad-hoc way in cc-wrapper.
         libcxx = null;
-        extraPackages = [ targetLlvmLibraries.compiler-rt ];
+        extraPackages = [
+          targetLlvmLibraries.compiler-rt
+        ];
         extraBuildCommands = mkExtraBuildCommands cc;
       };
 
       libcxxClang = wrapCCWith rec {
         cc = tools.clang-unwrapped;
         libcxx = targetLlvmLibraries.libcxx;
-        extraPackages = [ targetLlvmLibraries.compiler-rt ];
+        extraPackages = [
+          targetLlvmLibraries.compiler-rt
+        ];
         extraBuildCommands = mkExtraBuildCommands cc;
       };
 
       lld = callPackage ../common/lld {
         src = fetch "lld" "0qg3fgc7wj34hdkqn21y03zcmsdd01szhhm1hfki63iifrm3y2v9";
-        patches = [ ./lld/gnu-install-dirs.patch ];
+        patches = [
+          ./lld/gnu-install-dirs.patch
+        ];
         inherit (libraries) libunwind;
       };
 
@@ -239,9 +247,13 @@ let
         cc = tools.clang-unwrapped;
         libcxx = targetLlvmLibraries.libcxx;
         bintools = bintools';
-        extraPackages = [
-          targetLlvmLibraries.compiler-rt
-        ] ++ lib.optionals (!stdenv.targetPlatform.isWasm) [ targetLlvmLibraries.libunwind ];
+        extraPackages =
+          [
+            targetLlvmLibraries.compiler-rt
+          ]
+          ++ lib.optionals (!stdenv.targetPlatform.isWasm) [
+            targetLlvmLibraries.libunwind
+          ];
         extraBuildCommands =
           ''
             echo "-rtlib=compiler-rt -Wno-unused-command-line-argument" >> $out/nix-support/cc-cflags
@@ -264,9 +276,13 @@ let
         cc = tools.clang-unwrapped;
         libcxx = targetLlvmLibraries.libcxx;
         bintools = bintools';
-        extraPackages = [
-          targetLlvmLibraries.compiler-rt-no-libc
-        ] ++ lib.optionals (!stdenv.targetPlatform.isWasm) [ targetLlvmLibraries.libunwind ];
+        extraPackages =
+          [
+            targetLlvmLibraries.compiler-rt-no-libc
+          ]
+          ++ lib.optionals (!stdenv.targetPlatform.isWasm) [
+            targetLlvmLibraries.libunwind
+          ];
         extraBuildCommands =
           ''
             echo "-rtlib=compiler-rt" >> $out/nix-support/cc-cflags
@@ -280,7 +296,9 @@ let
         cc = tools.clang-unwrapped;
         libcxx = null;
         bintools = bintools';
-        extraPackages = [ targetLlvmLibraries.compiler-rt-no-libc ];
+        extraPackages = [
+          targetLlvmLibraries.compiler-rt-no-libc
+        ];
         extraBuildCommands =
           ''
             echo "-rtlib=compiler-rt" >> $out/nix-support/cc-cflags
@@ -294,7 +312,9 @@ let
         cc = tools.clang-unwrapped;
         libcxx = null;
         bintools = bintoolsNoLibc';
-        extraPackages = [ targetLlvmLibraries.compiler-rt-no-libc ];
+        extraPackages = [
+          targetLlvmLibraries.compiler-rt-no-libc
+        ];
         extraBuildCommands =
           ''
             echo "-rtlib=compiler-rt" >> $out/nix-support/cc-cflags
@@ -449,7 +469,9 @@ let
 
       libunwind = callPackage ../common/libunwind {
         src = fetch "libunwind" "192ww6n81lj2mb9pj4043z79jp3cf58a9c2qrxjwm5c3a64n1shb";
-        patches = [ ./libunwind/gnu-install-dirs.patch ];
+        patches = [
+          ./libunwind/gnu-install-dirs.patch
+        ];
         stdenv = overrideCC stdenv buildLlvmTools.clangWithLibcAndBasicRt;
       };
 

@@ -24,9 +24,13 @@ buildPythonApplication rec {
     ./kitti3-fix-build-system.patch
   ];
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
-  propagatedBuildInputs = [ i3ipc ];
+  propagatedBuildInputs = [
+    i3ipc
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/LandingEllipse/kitti3";

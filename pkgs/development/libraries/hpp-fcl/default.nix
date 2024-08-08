@@ -27,10 +27,14 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    cmake
-    doxygen
-  ] ++ lib.optionals pythonSupport [ python3Packages.numpy ];
+  nativeBuildInputs =
+    [
+      cmake
+      doxygen
+    ]
+    ++ lib.optionals pythonSupport [
+      python3Packages.numpy
+    ];
 
   propagatedBuildInputs =
     [
@@ -47,13 +51,19 @@ stdenv.mkDerivation (finalAttrs: {
       python3Packages.eigenpy
     ];
 
-  cmakeFlags = [
-    "-DHPP_FCL_HAS_QHULL=ON"
-    "-DINSTALL_DOCUMENTATION=ON"
-  ] ++ lib.optionals (!pythonSupport) [ "-DBUILD_PYTHON_INTERFACE=OFF" ];
+  cmakeFlags =
+    [
+      "-DHPP_FCL_HAS_QHULL=ON"
+      "-DINSTALL_DOCUMENTATION=ON"
+    ]
+    ++ lib.optionals (!pythonSupport) [
+      "-DBUILD_PYTHON_INTERFACE=OFF"
+    ];
 
   doCheck = true;
-  pythonImportsCheck = lib.optionals (!pythonSupport) [ "hppfcl" ];
+  pythonImportsCheck = lib.optionals (!pythonSupport) [
+    "hppfcl"
+  ];
 
   outputs = [
     "dev"

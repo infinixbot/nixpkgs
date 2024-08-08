@@ -15,7 +15,9 @@
 pkgs.runCommand "lib-path-tests"
   {
     nativeBuildInputs =
-      [ nixVersions.stable ]
+      [
+        nixVersions.stable
+      ]
       ++ (with pkgs; [
         jq
         bc

@@ -30,7 +30,9 @@ buildGoModule rec {
     '';
   };
 
-  subPackages = [ "cmd/fastly" ];
+  subPackages = [
+    "cmd/fastly"
+  ];
 
   vendorHash = "sha256-rQLnCY4tdNKYJcCpRs/J5SII0hSkxHxtVZkl4O4Ytyk=";
 

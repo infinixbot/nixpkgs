@@ -19,7 +19,9 @@ python3.pkgs.buildPythonApplication rec {
   # All requirements are pinned
   pythonRelaxDeps = true;
 
-  build-system = with python3.pkgs; [ poetry-core ];
+  build-system = with python3.pkgs; [
+    poetry-core
+  ];
 
   dependencies = with python3.pkgs; [
     neo4j
@@ -31,7 +33,9 @@ python3.pkgs.buildPythonApplication rec {
   # Project has no tests
   doCheck = false;
 
-  pythonImportsCheck = [ "ad_miner" ];
+  pythonImportsCheck = [
+    "ad_miner"
+  ];
 
   meta = with lib; {
     description = "Active Directory audit tool that leverages cypher queries to crunch data from Bloodhound";

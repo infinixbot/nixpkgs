@@ -115,12 +115,18 @@ stdenv.mkDerivation (finalAttrs: {
         lib.optionalString (libmysqlclient.pname != "mysql") "mysql/"
       }libmysqlclient${stdenv.hostPlatform.extensions.sharedLibrary}"
     ]
-    ++ lib.optionals finalAttrs.doInstallCheck [ "-DBUILD_TESTING=ON" ]
+    ++ lib.optionals finalAttrs.doInstallCheck [
+      "-DBUILD_TESTING=ON"
+    ]
     ++ lib.optionals (!stdenv.isDarwin) [
       "-DCMAKE_SKIP_BUILD_RPATH=ON" # without, libgdal.so can't find libmariadb.so
     ]
-    ++ lib.optionals stdenv.isDarwin [ "-DCMAKE_BUILD_WITH_INSTALL_NAME_DIR=ON" ]
-    ++ lib.optionals (!useTiledb) [ "-DGDAL_USE_TILEDB=OFF" ]
+    ++ lib.optionals stdenv.isDarwin [
+      "-DCMAKE_BUILD_WITH_INSTALL_NAME_DIR=ON"
+    ]
+    ++ lib.optionals (!useTiledb) [
+      "-DGDAL_USE_TILEDB=OFF"
+    ]
     ++ lib.optionals (!useJava) [
       # This is not strictly needed as the Java bindings wouldn't build anyway if
       # ant/jdk were not available.
@@ -244,7 +250,9 @@ stdenv.mkDerivation (finalAttrs: {
     filelock
     lxml
   ];
-  pytestFlagsArray = [ "--benchmark-disable" ];
+  pytestFlagsArray = [
+    "--benchmark-disable"
+  ];
   disabledTestPaths = [
     # tests that attempt to make network requests
     "gcore/vsis3.py"
@@ -281,7 +289,9 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optionals (lib.versionOlder proj.version "8") [
       "test_ogr_parquet_write_crs_without_id_in_datum_ensemble_members"
     ]
-    ++ lib.optionals (!usePoppler) [ "test_pdf_jpx_compression" ];
+    ++ lib.optionals (!usePoppler) [
+      "test_pdf_jpx_compression"
+    ];
   postCheck = ''
     popd # autotest
   '';

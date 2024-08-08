@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-0EGPCPmCf6bxbso3aHCeJ1XBOpYp3jtMXv8LGdwrsbs=";
   };
 
-  propagatedBuildInputs = [ python3.pkgs.requests ];
+  propagatedBuildInputs = [
+    python3.pkgs.requests
+  ];
 
   doCheck = false; # no tests
 

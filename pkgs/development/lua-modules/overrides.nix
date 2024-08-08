@@ -92,12 +92,16 @@ in
     # Small patch in order to no longer redefine a Lua 5.2 function that Luajit
     # 2.1 also provides, see https://github.com/LuaJIT/LuaJIT/issues/325 for
     # more
-    patches = [ ./bit32.patch ];
+    patches = [
+      ./bit32.patch
+    ];
     meta.broken = luaOlder "5.1" || luaAtLeast "5.4";
   });
 
   busted = prev.busted.overrideAttrs (oa: {
-    nativeBuildInputs = oa.nativeBuildInputs ++ [ installShellFiles ];
+    nativeBuildInputs = oa.nativeBuildInputs ++ [
+      installShellFiles
+    ];
     postConfigure = ''
       substituteInPlace ''${rockspecFilename} \
         --replace-fail "'lua_cliargs = 3.0'," "'lua_cliargs >= 3.0-1',"
@@ -123,7 +127,9 @@ in
 
     meta.broken = luaOlder "5.1" || luaAtLeast "5.4";
 
-    nativeBuildInputs = oa.nativeBuildInputs ++ [ gnum4 ];
+    nativeBuildInputs = oa.nativeBuildInputs ++ [
+      gnum4
+    ];
 
     externalDeps = [
       {
@@ -156,7 +162,9 @@ in
   });
 
   fennel = prev.fennel.overrideAttrs (oa: {
-    nativeBuildInputs = oa.nativeBuildInputs ++ [ installShellFiles ];
+    nativeBuildInputs = oa.nativeBuildInputs ++ [
+      installShellFiles
+    ];
     postInstall = ''
       installManPage fennel.1
     '';
@@ -202,7 +210,9 @@ in
         DBUS_INCDIR = "${dbus.dev}/include/dbus-1.0";
       };
     };
-    buildInputs = [ dbus ];
+    buildInputs = [
+      dbus
+    ];
   });
 
   ljsyscall = prev.ljsyscall.overrideAttrs (oa: rec {
@@ -225,7 +235,9 @@ in
   });
 
   lgi = prev.lgi.overrideAttrs (oa: {
-    nativeBuildInputs = oa.nativeBuildInputs ++ [ pkg-config ];
+    nativeBuildInputs = oa.nativeBuildInputs ++ [
+      pkg-config
+    ];
     buildInputs = [
       glib
       gobject-introspection
@@ -314,7 +326,9 @@ in
   });
 
   lrexlib-gnu = prev.lrexlib-gnu.overrideAttrs (oa: {
-    buildInputs = oa.buildInputs ++ [ gnulib ];
+    buildInputs = oa.buildInputs ++ [
+      gnulib
+    ];
   });
 
   lrexlib-pcre = prev.lrexlib-pcre.overrideAttrs (oa: {
@@ -327,15 +341,21 @@ in
   });
 
   lrexlib-posix = prev.lrexlib-posix.overrideAttrs (oa: {
-    buildInputs = oa.buildInputs ++ [ glibc.dev ];
+    buildInputs = oa.buildInputs ++ [
+      glibc.dev
+    ];
   });
 
   lua-curl = prev.lua-curl.overrideAttrs (oa: {
-    buildInputs = oa.buildInputs ++ [ curl.dev ];
+    buildInputs = oa.buildInputs ++ [
+      curl.dev
+    ];
   });
 
   lua-iconv = prev.lua-iconv.overrideAttrs (oa: {
-    buildInputs = oa.buildInputs ++ [ libiconv ];
+    buildInputs = oa.buildInputs ++ [
+      libiconv
+    ];
   });
 
   lua-lsp = prev.lua-lsp.overrideAttrs (oa: {
@@ -353,7 +373,9 @@ in
   });
 
   lua-zlib = prev.lua-zlib.overrideAttrs (oa: {
-    buildInputs = oa.buildInputs ++ [ zlib.dev ];
+    buildInputs = oa.buildInputs ++ [
+      zlib.dev
+    ];
     meta = oa.meta // {
       broken = luaOlder "5.1" || luaAtLeast "5.4";
     };
@@ -375,7 +397,9 @@ in
   });
 
   luadbi-postgresql = prev.luadbi-postgresql.overrideAttrs (oa: {
-    buildInputs = oa.buildInputs ++ [ postgresql ];
+    buildInputs = oa.buildInputs ++ [
+      postgresql
+    ];
   });
 
   luadbi-sqlite3 = prev.luadbi-sqlite3.overrideAttrs (oa: {
@@ -388,7 +412,9 @@ in
   });
 
   luaevent = prev.luaevent.overrideAttrs (oa: {
-    propagatedBuildInputs = oa.propagatedBuildInputs ++ [ final.luasocket ];
+    propagatedBuildInputs = oa.propagatedBuildInputs ++ [
+      final.luasocket
+    ];
     externalDeps = [
       {
         name = "EVENT";
@@ -526,7 +552,9 @@ in
   );
 
   luazip = prev.luazip.overrideAttrs (oa: {
-    buildInputs = oa.buildInputs ++ [ zziplib ];
+    buildInputs = oa.buildInputs ++ [
+      zziplib
+    ];
   });
 
   # lua-resty-session =  prev.lua-resty-session.overrideAttrs (oa: {
@@ -542,7 +570,9 @@ in
   });
 
   lua-yajl = prev.lua-yajl.overrideAttrs (oa: {
-    buildInputs = oa.buildInputs ++ [ yajl ];
+    buildInputs = oa.buildInputs ++ [
+      yajl
+    ];
   });
 
   luaunbound = prev.luaunbound.overrideAttrs (oa: {
@@ -589,7 +619,9 @@ in
     # 5.1: http://webserver2.tecgraf.puc-rio.br/~lhf/ftp/lua/5.1/luuid.tar.gz
     # 5.2: http://webserver2.tecgraf.puc-rio.br/~lhf/ftp/lua/5.2/luuid.tar.gz
     patchFlags = [ "-p2" ];
-    patches = [ ./luuid.patch ];
+    patches = [
+      ./luuid.patch
+    ];
     postConfigure = ''
       sed -Ei ''${rockspecFilename} -e 's|lua >= 5.2|lua >= 5.1,|'
     '';
@@ -731,14 +763,20 @@ in
   });
 
   lyaml = prev.lyaml.overrideAttrs (oa: {
-    buildInputs = [ libyaml ];
+    buildInputs = [
+      libyaml
+    ];
   });
 
   magick = prev.magick.overrideAttrs (oa: {
-    buildInputs = oa.buildInputs ++ [ imagemagick ];
+    buildInputs = oa.buildInputs ++ [
+      imagemagick
+    ];
 
     # Fix MagickWand not being found in the pkg-config search path
-    patches = [ ./magick.patch ];
+    patches = [
+      ./magick.patch
+    ];
 
     postPatch = ''
       substituteInPlace magick/wand/lib.lua \
@@ -923,7 +961,9 @@ in
         lua = lib.head oa.propagatedBuildInputs;
       in
       oa.nativeBuildInputs
-      ++ [ lua.pkgs.luarocks-build-treesitter-parser ]
+      ++ [
+        lua.pkgs.luarocks-build-treesitter-parser
+      ]
       ++ (lib.optionals stdenv.isDarwin [
         clang
         tree-sitter

@@ -29,7 +29,9 @@ buildPythonPackage rec {
     hash = "sha256-C/O+wt3dykQJmH+VsVkpQwEAdyW8goMUMKR0Z3Y7jdo=";
   };
 
-  build-system = [ setuptools ];
+  build-system = [
+    setuptools
+  ];
 
   pythonRelaxDeps = [ "tokenizers" ];
 

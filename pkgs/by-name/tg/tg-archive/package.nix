@@ -34,7 +34,9 @@ python3.pkgs.buildPythonApplication {
     pytz
   ];
 
-  pythonImportsCheck = [ "tgarchive" ];
+  pythonImportsCheck = [
+    "tgarchive"
+  ];
 
   meta = {
     description = "A tool for exporting Telegram group chats into static websites like mailing list archives";

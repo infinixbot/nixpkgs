@@ -17,9 +17,13 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-TmaXsyJLRkmIN9D77jOXd8fLj7kYPCBLg0AHIImAtgA=";
   };
 
-  buildInputs = [ python3 ];
+  buildInputs = [
+    python3
+  ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   installPhase = ''
     runHook preInstall

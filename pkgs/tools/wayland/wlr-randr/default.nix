@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
     wayland-scanner
   ];
   buildInputs = [ wayland ];
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   meta = with lib; {
     description = "Xrandr clone for wlroots compositors";

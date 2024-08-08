@@ -962,7 +962,9 @@ self: super:
   # because the wrappers in curlc.c don't use static values for the different
   # arguments to curl_easy_getinfo, it complains and needs to be disabled.
   # https://github.com/GaloisInc/curl/issues/28
-  curl = appendConfigureFlags [ "--ghc-option=-DCURL_DISABLE_TYPECHECK" ] super.curl;
+  curl = appendConfigureFlags [
+    "--ghc-option=-DCURL_DISABLE_TYPECHECK"
+  ] super.curl;
 
   # https://github.com/hvr/token-bucket/issues/3
   token-bucket = dontCheck super.token-bucket;
@@ -2324,7 +2326,9 @@ self: super:
       compilerConfig =
         pkgs.runCommand "hackage2nix-${self.ghc.haskellCompilerName}-config.yaml"
           {
-            nativeBuildInputs = [ self.ghc ];
+            nativeBuildInputs = [
+              self.ghc
+            ];
           }
           ''
             cat > "$out" << EOF
@@ -2481,7 +2485,9 @@ self: super:
             self.cryptonite
             self.memory
           ];
-          testHaskellDepends = drv.testHaskellDepends or [ ] ++ [ self.inspection-testing ];
+          testHaskellDepends = drv.testHaskellDepends or [ ] ++ [
+            self.inspection-testing
+          ];
         }))
         # https://github.com/factisresearch/large-hashable/issues/24
         (overrideCabal (drv: {
@@ -2695,13 +2701,18 @@ self: super:
 
   # Fixes compilation with GHC 9.0 and above
   # https://hub.darcs.net/shelarcy/regex-compat-tdfa/issue/3
-  regex-compat-tdfa = appendPatches [ ./patches/regex-compat-tdfa-ghc-9.0.patch ] (
-    overrideCabal {
-      # Revision introduces bound base < 4.15
-      revision = null;
-      editedCabalFile = null;
-    } super.regex-compat-tdfa
-  );
+  regex-compat-tdfa =
+    appendPatches
+      [
+        ./patches/regex-compat-tdfa-ghc-9.0.patch
+      ]
+      (
+        overrideCabal {
+          # Revision introduces bound base < 4.15
+          revision = null;
+          editedCabalFile = null;
+        } super.regex-compat-tdfa
+      );
 
   # https://github.com/kowainik/validation-selective/issues/64
   validation-selective = doJailbreak super.validation-selective;

@@ -33,7 +33,9 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = [ dbus ];
+  buildInputs = [
+    dbus
+  ];
 
   meta = with lib; {
     description = "C++ wrapper for libdbus-1";

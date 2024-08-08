@@ -27,11 +27,26 @@ python3Packages.buildPythonApplication rec {
   ];
 
   nativeBuildInputs =
-    (with libsForQt5; [ wrapQtAppsHook ]) ++ (with python3Packages; [ poetry-core ]);
+    (with libsForQt5; [
+      wrapQtAppsHook
+    ])
+    ++ (with python3Packages; [
+      poetry-core
+    ]);
 
-  buildInputs = [
-    ffmpeg
-  ] ++ (with libsForQt5; [ qtbase ] ++ lib.optionals stdenv.hostPlatform.isLinux [ qtwayland ]);
+  buildInputs =
+    [
+      ffmpeg
+    ]
+    ++ (
+      with libsForQt5;
+      [
+        qtbase
+      ]
+      ++ lib.optionals stdenv.hostPlatform.isLinux [
+        qtwayland
+      ]
+    );
 
   propagatedBuildInputs = with python3Packages; [
     appdirs

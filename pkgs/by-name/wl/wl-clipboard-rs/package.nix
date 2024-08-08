@@ -20,14 +20,22 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-C3vhZq5IHtbfg2mYYdQRqaLSA0iSER8zRaKi72FCd+E=";
 
-  cargoBuildFlags = [
-    "--package=wl-clipboard-rs"
-    "--package=wl-clipboard-rs-tools"
-  ] ++ lib.optionals withNativeLibs [ "--features=native_lib" ];
+  cargoBuildFlags =
+    [
+      "--package=wl-clipboard-rs"
+      "--package=wl-clipboard-rs-tools"
+    ]
+    ++ lib.optionals withNativeLibs [
+      "--features=native_lib"
+    ];
 
-  nativeBuildInputs = lib.optionals withNativeLibs [ pkg-config ];
+  nativeBuildInputs = lib.optionals withNativeLibs [
+    pkg-config
+  ];
 
-  buildInputs = lib.optionals withNativeLibs [ wayland ];
+  buildInputs = lib.optionals withNativeLibs [
+    wayland
+  ];
 
   preCheck = ''
     export XDG_RUNTIME_DIR=$(mktemp -d)

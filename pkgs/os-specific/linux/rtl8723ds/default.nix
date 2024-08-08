@@ -22,7 +22,9 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ bc ] ++ kernel.moduleBuildDependencies;
 
   makeFlags =
-    [ "ARCH=${stdenv.hostPlatform.linuxArch}" ]
+    [
+      "ARCH=${stdenv.hostPlatform.linuxArch}"
+    ]
     ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
       "CROSS_COMPILE=${stdenv.cc.targetPrefix}"
     ];

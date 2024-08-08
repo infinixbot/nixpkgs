@@ -206,7 +206,9 @@ in
     };
 
     systemd.tmpfiles.rules =
-      [ "d /run/gdm/.config 0711 gdm gdm" ]
+      [
+        "d /run/gdm/.config 0711 gdm gdm"
+      ]
       ++ optionals config.hardware.pulseaudio.enable [
         "d /run/gdm/.config/pulse 0711 gdm gdm"
         "L+ /run/gdm/.config/pulse/${pulseConfig.name} - - - - ${pulseConfig}"
@@ -248,7 +250,9 @@ in
       "getty@tty${gdm.initialVT}.service"
       "plymouth-quit.service"
     ];
-    systemd.services.display-manager.onFailure = [ "plymouth-quit.service" ];
+    systemd.services.display-manager.onFailure = [
+      "plymouth-quit.service"
+    ];
 
     # Prevent nixos-rebuild switch from bringing down the graphical
     # session. (If multi-user.target wants plymouth-quit.service which

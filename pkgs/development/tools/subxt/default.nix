@@ -29,7 +29,9 @@ rustPlatform.buildRustPackage rec {
   # Needed by wabt-sys
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.Security
+  ];
 
   # Requires a running substrate node
   doCheck = false;

@@ -28,7 +28,9 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-asrVQR0d+5l76COsXp88srtGZQHU+AwbP3HwDiwRlnE=";
   };
 
-  patches = [ ./locale-path.patch ];
+  patches = [
+    ./locale-path.patch
+  ];
 
   postPatch = ''
     substituteInPlace udiskie/locale.py --subst-var out
@@ -41,7 +43,9 @@ python3Packages.buildPythonApplication rec {
     wrapGAppsHook3
   ];
 
-  build-system = with python3Packages; [ setuptools ];
+  build-system = with python3Packages; [
+    setuptools
+  ];
 
   dontWrapGApps = true;
 
@@ -76,7 +80,9 @@ python3Packages.buildPythonApplication rec {
     makeWrapperArgs+=("''${gappsWrapperArgs[@]}")
   '';
 
-  nativeCheckInputs = with python3Packages; [ pytestCheckHook ];
+  nativeCheckInputs = with python3Packages; [
+    pytestCheckHook
+  ];
 
   passthru.tests.version = testers.testVersion {
     package = udiskie;

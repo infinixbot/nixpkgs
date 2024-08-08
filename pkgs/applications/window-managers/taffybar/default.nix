@@ -7,7 +7,13 @@
 }:
 
 let
-  taffybarEnv = ghcWithPackages (self: [ self.taffybar ] ++ packages self);
+  taffybarEnv = ghcWithPackages (
+    self:
+    [
+      self.taffybar
+    ]
+    ++ packages self
+  );
 in
 stdenv.mkDerivation {
   pname = "taffybar-with-packages";

@@ -73,7 +73,9 @@ stdenv.mkDerivation (final: {
     zlib
   ];
 
-  patches = [ ./dont-create-empty-dirs.patch ];
+  patches = [
+    ./dont-create-empty-dirs.patch
+  ];
 
   postPatch =
     let

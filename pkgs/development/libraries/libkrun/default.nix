@@ -65,7 +65,9 @@ stdenv.mkDerivation (finalAttrs: {
   env.LIBCLANG_PATH = "${llvmPackages.clang-unwrapped.lib}/lib/libclang.so";
 
   makeFlags =
-    [ "PREFIX=${placeholder "out"}" ]
+    [
+      "PREFIX=${placeholder "out"}"
+    ]
     ++ lib.optional withGpu "GPU=1"
     ++ lib.optional withSound "SND=1"
     ++ lib.optional withNet "NET=1"

@@ -52,7 +52,9 @@ stdenv.mkDerivation (finalAttrs: {
     xvfb-run
   ];
 
-  checkInputs = [ lomiri-ui-toolkit ];
+  checkInputs = [
+    lomiri-ui-toolkit
+  ];
 
   dontWrapQtApps = true;
 

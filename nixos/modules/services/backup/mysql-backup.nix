@@ -137,7 +137,9 @@ in
         };
         script = backupScript;
       };
-      tmpfiles.rules = [ "d ${cfg.location} 0700 ${cfg.user} - - -" ];
+      tmpfiles.rules = [
+        "d ${cfg.location} 0700 ${cfg.user} - - -"
+      ];
     };
   };
 

@@ -215,7 +215,9 @@ in
         ) | ${cfg.package}/bin/pgadmin4-cli setup-db
       '';
 
-      restartTriggers = [ "/etc/pgadmin/config_system.py" ];
+      restartTriggers = [
+        "/etc/pgadmin/config_system.py"
+      ];
 
       serviceConfig = {
         User = "pgadmin";

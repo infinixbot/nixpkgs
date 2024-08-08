@@ -76,7 +76,9 @@ stdenv.mkDerivation rec {
     fixup-yarn-lock yarn.lock
   '';
 
-  mesonFlags = [ "-Dyarnrc=../.yarnrc" ];
+  mesonFlags = [
+    "-Dyarnrc=../.yarnrc"
+  ];
 
   postFixup = ''
     sed -i "1 a imports.package._findEffectiveEntryPointName = () => 'com.vixalien.muzika';" $out/bin/.com.vixalien.muzika-wrapped

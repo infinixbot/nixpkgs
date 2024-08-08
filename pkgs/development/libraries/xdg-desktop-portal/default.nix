@@ -95,9 +95,15 @@ stdenv.mkDerivation (finalAttrs: {
       librsvg
 
       # For document-fuse installed test.
-      (python3.withPackages (pp: with pp; [ pygobject3 ]))
+      (python3.withPackages (
+        pp: with pp; [
+          pygobject3
+        ]
+      ))
     ]
-    ++ lib.optionals enableGeoLocation [ geoclue2 ]
+    ++ lib.optionals enableGeoLocation [
+      geoclue2
+    ]
     ++ lib.optionals enableSystemd [
       systemdMinimal # libsystemd
     ];
@@ -110,12 +116,16 @@ stdenv.mkDerivation (finalAttrs: {
     python3.pkgs.dbus-python
   ];
 
-  mesonFlags = [
-    "--sysconfdir=/etc"
-    "-Dinstalled-tests=true"
-    "-Dinstalled_test_prefix=${placeholder "installedTests"}"
-    (lib.mesonEnable "systemd" enableSystemd)
-  ] ++ lib.optionals (!enableGeoLocation) [ "-Dgeoclue=disabled" ];
+  mesonFlags =
+    [
+      "--sysconfdir=/etc"
+      "-Dinstalled-tests=true"
+      "-Dinstalled_test_prefix=${placeholder "installedTests"}"
+      (lib.mesonEnable "systemd" enableSystemd)
+    ]
+    ++ lib.optionals (!enableGeoLocation) [
+      "-Dgeoclue=disabled"
+    ];
 
   doCheck = true;
 

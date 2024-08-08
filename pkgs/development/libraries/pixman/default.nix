@@ -54,7 +54,9 @@ stdenv.mkDerivation (finalAttrs: {
   #   https://gitlab.freedesktop.org/pixman/pixman/-/issues/88
   mesonAutoFeatures = "auto";
   mesonFlags =
-    [ "-Diwmmxt=disabled" ]
+    [
+      "-Diwmmxt=disabled"
+    ]
     # Disable until https://gitlab.freedesktop.org/pixman/pixman/-/issues/46 is resolved
     ++ lib.optional (stdenv.isAarch64 && !stdenv.cc.isGNU) "-Da64-neon=disabled";
 

@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     makeWrapper
   ];
 
-  buildInputs = [ SDL2 ];
+  buildInputs = [
+    SDL2
+  ];
 
   installPhase = ''
     runHook preInstall

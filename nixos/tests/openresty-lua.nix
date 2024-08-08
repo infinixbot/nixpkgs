@@ -1,7 +1,9 @@
 import ./make-test-python.nix (
   { pkgs, lib, ... }:
   let
-    lualibs = [ pkgs.lua.pkgs.markdown ];
+    lualibs = [
+      pkgs.lua.pkgs.markdown
+    ];
 
     getPath = lib: type: "${lib}/share/lua/${pkgs.lua.luaversion}/?.${type}";
     getLuaPath = lib: getPath lib "lua";

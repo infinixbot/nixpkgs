@@ -30,9 +30,13 @@ buildPythonPackage rec {
     hash = "sha256-VMq+WTW+njK34QUUTE6fR2j2OmHxVzR0wrC92zYb1rY=";
   };
 
-  build-system = [ hatchling ];
+  build-system = [
+    hatchling
+  ];
 
-  nativeCheckInputs = [ pytestCheckHook ];
+  nativeCheckInputs = [
+    pytestCheckHook
+  ];
 
   doCheck = !stdenv.isDarwin;
 

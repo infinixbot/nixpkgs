@@ -24,7 +24,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-MGL6P/lG2sJdJXZiTcDvdy4jmU+2jYHsvaX4eEO9J2g=";
   };
 
-  nativeBuildInputs = [ build2 ] ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
+  nativeBuildInputs =
+    [
+      build2
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      DarwinTools
+    ];
 
   patches = [
     # Install missing .h files needed by dependers
@@ -43,7 +49,9 @@ stdenv.mkDerivation rec {
       --replace '"libuuid.so' '"${lib.getLib libuuid}/lib/libuuid.so'
   '';
 
-  build2ConfigureFlags = [ "config.bin.lib=${build2.configSharedStatic enableShared enableStatic}" ];
+  build2ConfigureFlags = [
+    "config.bin.lib=${build2.configSharedStatic enableShared enableStatic}"
+  ];
 
   doCheck = true;
 

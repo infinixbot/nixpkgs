@@ -6,7 +6,9 @@ import ./make-test-python.nix (
       { pkgs, ... }:
       {
         systemd.services.dummy-serial = {
-          wantedBy = [ "multi-user.target" ];
+          wantedBy = [
+            "multi-user.target"
+          ];
           serviceConfig = {
             ExecStart = "${pkgs.socat}/bin/socat pty,link=/dev/ttyACM0,mode=666 pty,link=/dev/ttyACM1";
           };

@@ -36,7 +36,9 @@ rustPlatform.buildRustPackage rec {
       openssl
       zlib
     ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+    ]
     ++ lib.optionals (stdenv.isDarwin && stdenv.isx86_64) [
       darwin.apple_sdk.frameworks.CoreFoundation
     ];

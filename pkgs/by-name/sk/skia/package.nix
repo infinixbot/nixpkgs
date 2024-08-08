@@ -85,7 +85,9 @@ stdenv.mkDerivation (finalAttrs: {
           "libpng"
           "libwebp"
         ]
-        ++ lib.optionals enableVulkan [ "skia_use_vulkan=true" ]
+        ++ lib.optionals enableVulkan [
+          "skia_use_vulkan=true"
+        ]
       )
     }'
     cd build

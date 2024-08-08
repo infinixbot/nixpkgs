@@ -27,9 +27,13 @@ stdenv.mkDerivation (finalAttrs: {
 
   enableParallelBuilding = true;
 
-  buildInputs = [ zlib ];
+  buildInputs = [
+    zlib
+  ];
 
-  buildFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
+  buildFlags = [
+    "CC=${stdenv.cc.targetPrefix}cc"
+  ];
 
   installPhase = ''
     runHook preInstall

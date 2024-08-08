@@ -62,7 +62,9 @@ stdenv.mkDerivation rec {
   ];
   dontWrapGApps = true;
 
-  patches = [ ./patch_check_v23_interface.diff ];
+  patches = [
+    ./patch_check_v23_interface.diff
+  ];
 
   postPatch = ''
     patchShebangs .
@@ -131,7 +133,9 @@ stdenv.mkDerivation rec {
   enableParallelBuilding = true;
 
   # qt5integration must be placed before qtsvg in QT_PLUGIN_PATH
-  qtWrapperArgs = [ "--prefix QT_PLUGIN_PATH : ${qt5integration}/${qtbase.qtPluginPrefix}" ];
+  qtWrapperArgs = [
+    "--prefix QT_PLUGIN_PATH : ${qt5integration}/${qtbase.qtPluginPrefix}"
+  ];
 
   preFixup = ''
     qtWrapperArgs+=("''${gappsWrapperArgs[@]}")

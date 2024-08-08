@@ -28,7 +28,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-gmRWAqE9/HBb0S9rK0DXoaCoiGbtat0gmdeozhbv0NI=";
   };
 
-  patches = [ ./common.patch ];
+  patches = [
+    ./common.patch
+  ];
 
   patchFlags = [ "-p2" ];
 
@@ -53,18 +55,26 @@ stdenv.mkDerivation rec {
       libGLX
     ];
 
-  runtimeDependencies = [
-    coreutils
-    unixtools.nettools
-    unixtools.locale
-    targetPackages.stdenv.cc
-    gnugrep
-    gawk
-  ] ++ lib.optionals withX11perf [ xorg.x11perf ];
+  runtimeDependencies =
+    [
+      coreutils
+      unixtools.nettools
+      unixtools.locale
+      targetPackages.stdenv.cc
+      gnugrep
+      gawk
+    ]
+    ++ lib.optionals withX11perf [
+      xorg.x11perf
+    ];
 
-  makeFlags = [
-    "CC=${stdenv.cc.targetPrefix}cc"
-  ] ++ lib.optionals withGL [ "GRAPHIC_TESTS=defined" ];
+  makeFlags =
+    [
+      "CC=${stdenv.cc.targetPrefix}cc"
+    ]
+    ++ lib.optionals withGL [
+      "GRAPHIC_TESTS=defined"
+    ];
 
   installPhase = ''
     runHook preInstall

@@ -31,9 +31,13 @@ stdenv.mkDerivation (finalAttrs: {
     texinfo
   ];
 
-  buildInputs = [ ncurses ];
+  buildInputs = [
+    ncurses
+  ];
 
-  makeFlags = [ "execgamesdir=$(out)/bin" ];
+  makeFlags = [
+    "execgamesdir=$(out)/bin"
+  ];
 
   postInstall = ''
     install -Dm644 nki/vanilla.nki -t $out/share/games/robotfindskitten/

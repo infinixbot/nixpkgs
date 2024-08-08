@@ -117,10 +117,14 @@ let
           netcat-gnu
           which
         ] ++ optionals withSystemd [ systemd ];
-        execer = [
-          "cannot:${getBin binaries}/bin/msmtp"
-          "cannot:${getBin netcat-gnu}/bin/nc"
-        ] ++ optionals withSystemd [ "cannot:${getBin systemd}/bin/systemd-cat" ];
+        execer =
+          [
+            "cannot:${getBin binaries}/bin/msmtp"
+            "cannot:${getBin netcat-gnu}/bin/nc"
+          ]
+          ++ optionals withSystemd [
+            "cannot:${getBin systemd}/bin/systemd-cat"
+          ];
         fix."$MSMTP" = [ "msmtp" ];
         fake.external = [ "ping" ] ++ optionals (!withSystemd) [ "systemd-cat" ];
       };

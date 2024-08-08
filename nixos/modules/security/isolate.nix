@@ -121,7 +121,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ isolate ];
+    environment.systemPackages = [
+      isolate
+    ];
 
     systemd.services.isolate = {
       description = "Isolate control group hierarchy daemon";

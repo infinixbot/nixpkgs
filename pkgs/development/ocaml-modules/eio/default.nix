@@ -60,7 +60,9 @@ buildDunePackage rec {
     mdx
   ];
 
-  nativeCheckInputs = [ mdx.bin ];
+  nativeCheckInputs = [
+    mdx.bin
+  ];
 
   meta = {
     homepage = "https://github.com/ocaml-multicore/${pname}";

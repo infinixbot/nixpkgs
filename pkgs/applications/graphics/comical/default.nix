@@ -17,14 +17,22 @@ stdenv.mkDerivation rec {
     hash = "sha256-C2UnzAayWpNwQfHrJI0P2IHPBVNiCXA2uTmBf3hauF4=";
   };
 
-  patches = [ ./wxgtk-3.2.patch ];
+  patches = [
+    ./wxgtk-3.2.patch
+  ];
 
-  nativeBuildInputs = [ hexdump ];
+  nativeBuildInputs = [
+    hexdump
+  ];
 
-  buildInputs = [
-    wxGTK32
-    zlib
-  ] ++ lib.optionals stdenv.isDarwin [ Cocoa ];
+  buildInputs =
+    [
+      wxGTK32
+      zlib
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Cocoa
+    ];
 
   makeFlags = [
     "prefix=${placeholder "out"}"

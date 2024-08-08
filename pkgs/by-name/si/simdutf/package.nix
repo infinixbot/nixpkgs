@@ -22,9 +22,13 @@ stdenv.mkDerivation (finalAttrs: {
     substituteInPlace tools/CMakeLists.txt --replace "-Wl,--gc-sections" ""
   '';
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = [ libiconv ];
+  buildInputs = [
+    libiconv
+  ];
 
   meta = with lib; {
     description = "Unicode routines validation and transcoding at billions of characters per second";

@@ -94,7 +94,9 @@ stdenv.mkDerivation {
       libXext
     ];
 
-  patches = [ ./gnulib_aarch64.patch ];
+  patches = [
+    ./gnulib_aarch64.patch
+  ];
 
   # First, replace port 9090 (rather low, can be used)
   # with 64237 (much higher, IANA private area, not

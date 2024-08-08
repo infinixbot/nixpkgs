@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
     lz4
   ];
 
-  buildFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
+  buildFlags = [
+    "CC=${stdenv.cc.targetPrefix}cc"
+  ];
 
   # Upstream's install target is broken; copy manually
   installPhase = ''

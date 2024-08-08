@@ -67,7 +67,9 @@ stdenv.mkDerivation {
     clang
   ];
 
-  env.NIX_CFLAGS_COMPILE = toString [ "-I${SDL2.dev}/include/SDL2" ];
+  env.NIX_CFLAGS_COMPILE = toString [
+    "-I${SDL2.dev}/include/SDL2"
+  ];
 
   enableParallelBuilding = true;
 

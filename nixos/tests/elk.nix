@@ -69,7 +69,9 @@ let
 
                 inputs.log = {
                   enabled = true;
-                  paths = [ "/var/lib/filebeat/test" ];
+                  paths = [
+                    "/var/lib/filebeat/test"
+                  ];
                 };
 
                 settings = {

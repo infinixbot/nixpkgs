@@ -170,7 +170,9 @@ let
   version = with sourceVersion; "${major}.${minor}.${patch}${suffix}";
 
   nativeBuildInputs =
-    [ nukeReferences ]
+    [
+      nukeReferences
+    ]
     ++ optionals (!stdenv.isDarwin) [
       autoconf-archive # needed for AX_CHECK_COMPILE_FLAG
       autoreconfHook
@@ -180,11 +182,16 @@ let
       buildPackages.stdenv.cc
       pythonOnBuildForHost
     ]
-    ++ optionals (
-      stdenv.cc.isClang
-      && (!stdenv.hostPlatform.useAndroidPrebuilt or false)
-      && (enableLTO || enableOptimizations)
-    ) [ stdenv.cc.cc.libllvm.out ];
+    ++
+      optionals
+        (
+          stdenv.cc.isClang
+          && (!stdenv.hostPlatform.useAndroidPrebuilt or false)
+          && (enableLTO || enableOptimizations)
+        )
+        [
+          stdenv.cc.cc.libllvm.out
+        ];
 
   buildInputs = lib.filter (p: p != null) (
     [
@@ -199,16 +206,28 @@ let
       xz
       zlib
     ]
-    ++ optionals bluezSupport [ bluez ]
-    ++ optionals enableFramework [ darwin.apple_sdk.frameworks.Cocoa ]
+    ++ optionals bluezSupport [
+      bluez
+    ]
+    ++ optionals enableFramework [
+      darwin.apple_sdk.frameworks.Cocoa
+    ]
     ++ optionals stdenv.hostPlatform.isMinGW [
       windows.dlfcn
       windows.mingw_w64_pthreads
     ]
-    ++ optionals stdenv.isDarwin [ configd ]
-    ++ optionals tzdataSupport [ tzdata ]
-    ++ optionals withGdbm [ gdbm ]
-    ++ optionals withReadline [ readline ]
+    ++ optionals stdenv.isDarwin [
+      configd
+    ]
+    ++ optionals tzdataSupport [
+      tzdata
+    ]
+    ++ optionals withGdbm [
+      gdbm
+    ]
+    ++ optionals withReadline [
+      readline
+    ]
     ++ optionals x11Support [
       libX11
       tcl
@@ -364,7 +383,9 @@ stdenv.mkDerivation (finalAttrs: {
       # errors.
       ./virtualenv-permissions.patch
     ]
-    ++ optionals (pythonAtLeast "3.13") [ ./3.13/virtualenv-permissions.patch ]
+    ++ optionals (pythonAtLeast "3.13") [
+      ./3.13/virtualenv-permissions.patch
+    ]
     ++ optionals mimetypesSupport [
       # Make the mimetypes module refer to the right file
       ./mimetypes.patch
@@ -373,7 +394,9 @@ stdenv.mkDerivation (finalAttrs: {
       # Fix darwin build https://bugs.python.org/issue34027
       ./3.7/darwin-libutil.patch
     ]
-    ++ optionals (pythonAtLeast "3.11") [ ./3.11/darwin-libutil.patch ]
+    ++ optionals (pythonAtLeast "3.11") [
+      ./3.11/darwin-libutil.patch
+    ]
     ++ optionals (pythonAtLeast "3.9" && pythonOlder "3.11" && stdenv.isDarwin) [
       # Stop checking for TCL/TK in global macOS locations
       ./3.9/darwin-tcl-tk.patch
@@ -419,7 +442,9 @@ stdenv.mkDerivation (finalAttrs: {
           sha256 = "sha256-KIyNvO6MlYTrmSy9V/DbzXm5OsIuyT/BEpuo7Umm9DI=";
         };
       in
-      [ "${mingw-patch}/*.patch" ]
+      [
+        "${mingw-patch}/*.patch"
+      ]
     )
     ++ optionals isPy312 [
       # backport fix for various platforms; armv7l, riscv64, s390
@@ -464,19 +489,37 @@ stdenv.mkDerivation (finalAttrs: {
       "--with-system-expat"
       "--with-system-libmpdec"
     ]
-    ++ optionals (openssl != null) [ "--with-openssl=${openssl.dev}" ]
-    ++ optionals tzdataSupport [ "--with-tzpath=${tzdata}/share/zoneinfo" ]
-    ++ optionals (execSuffix != "") [ "--with-suffix=${execSuffix}" ]
-    ++ optionals enableLTO [ "--with-lto" ]
-    ++ optionals (!static && !enableFramework) [ "--enable-shared" ]
-    ++ optionals enableFramework [ "--enable-framework=${placeholder "out"}/Library/Frameworks" ]
-    ++ optionals (pythonAtLeast "3.13") [ (enableFeature enableGIL "gil") ]
-    ++ optionals enableOptimizations [ "--enable-optimizations" ]
+    ++ optionals (openssl != null) [
+      "--with-openssl=${openssl.dev}"
+    ]
+    ++ optionals tzdataSupport [
+      "--with-tzpath=${tzdata}/share/zoneinfo"
+    ]
+    ++ optionals (execSuffix != "") [
+      "--with-suffix=${execSuffix}"
+    ]
+    ++ optionals enableLTO [
+      "--with-lto"
+    ]
+    ++ optionals (!static && !enableFramework) [
+      "--enable-shared"
+    ]
+    ++ optionals enableFramework [
+      "--enable-framework=${placeholder "out"}/Library/Frameworks"
+    ]
+    ++ optionals (pythonAtLeast "3.13") [
+      (enableFeature enableGIL "gil")
+    ]
+    ++ optionals enableOptimizations [
+      "--enable-optimizations"
+    ]
     ++ optionals (stdenv.isDarwin && configd == null) [
       # Make conditional on Darwin for now to avoid causing Linux rebuilds.
       "py_cv_module__scproxy=n/a"
     ]
-    ++ optionals (sqlite != null) [ "--enable-loadable-sqlite-extensions" ]
+    ++ optionals (sqlite != null) [
+      "--enable-loadable-sqlite-extensions"
+    ]
     ++ optionals (libxcrypt != null) [
       "CFLAGS=-I${libxcrypt}/include"
       "LIBS=-L${libxcrypt}/lib"
@@ -512,7 +555,9 @@ stdenv.mkDerivation (finalAttrs: {
       # don't rely on detecting glibc-isms.
       "ac_cv_func_lchmod=no"
     ]
-    ++ optionals static [ "LDFLAGS=-static" ];
+    ++ optionals static [
+      "LDFLAGS=-static"
+    ];
 
   preConfigure =
     ''
@@ -565,7 +610,9 @@ stdenv.mkDerivation (finalAttrs: {
     let
       # References *not* to nuke from (sys)config files
       keep-references = concatMapStringsSep " " (val: "-e ${val}") (
-        [ (placeholder "out") ]
+        [
+          (placeholder "out")
+        ]
         ++ lib.optional (libxcrypt != null) libxcrypt
         ++ lib.optional tzdataSupport tzdata
       );
@@ -697,7 +744,9 @@ stdenv.mkDerivation (finalAttrs: {
   # Enforce that we don't have references to the OpenSSL -dev package, which we
   # explicitly specify in our configure flags above.
   disallowedReferences =
-    lib.optionals (openssl != null && !static && !enableFramework) [ openssl.dev ]
+    lib.optionals (openssl != null && !static && !enableFramework) [
+      openssl.dev
+    ]
     ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
       # Ensure we don't have references to build-time packages.
       # These typically end up in shebangs.

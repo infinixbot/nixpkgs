@@ -29,7 +29,9 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   buildInputs =
-    [ qtserialport ]
+    [
+      qtserialport
+    ]
     ++ (
       if isQt6 then
         [
@@ -39,7 +41,9 @@ stdenv.mkDerivation (finalAttrs: {
           qt5compat
         ]
       else
-        [ qtlocation ]
+        [
+          qtlocation
+        ]
     );
 
   nativeBuildInputs = [

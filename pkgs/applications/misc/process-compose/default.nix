@@ -41,7 +41,9 @@ buildGoModule rec {
     "-w"
   ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   vendorHash = "sha256-9tSNqdngkx2Tbb5m6UByu8Q+UYeWnwdGmm5De6ITw3k=";
 

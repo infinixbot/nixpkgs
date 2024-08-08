@@ -25,7 +25,9 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
     doxygen
   ];
-  buildInputs = [ glib ];
+  buildInputs = [
+    glib
+  ];
 
   postInstall = ''
     make doc

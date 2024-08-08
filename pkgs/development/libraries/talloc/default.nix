@@ -23,13 +23,17 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-hez55GXiD5j5lQpS6aQR4UMgvFVfolfYdpe356mx2KY=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    python3
-    wafHook
-    docbook-xsl-nons
-    docbook_xml_dtd_42
-  ] ++ lib.optionals stdenv.isDarwin [ fixDarwinDylibNames ];
+  nativeBuildInputs =
+    [
+      pkg-config
+      python3
+      wafHook
+      docbook-xsl-nons
+      docbook_xml_dtd_42
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      fixDarwinDylibNames
+    ];
 
   buildInputs = [
     python3

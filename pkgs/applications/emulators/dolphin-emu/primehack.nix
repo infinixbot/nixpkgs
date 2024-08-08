@@ -110,10 +110,14 @@ stdenv.mkDerivation rec {
       IOKit
     ];
 
-  cmakeFlags = [
-    "-DUSE_SHARED_ENET=ON"
-    "-DENABLE_LTO=ON"
-  ] ++ lib.optionals stdenv.isDarwin [ "-DOSX_USE_DEFAULT_SEARCH_PATH=True" ];
+  cmakeFlags =
+    [
+      "-DUSE_SHARED_ENET=ON"
+      "-DENABLE_LTO=ON"
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      "-DOSX_USE_DEFAULT_SEARCH_PATH=True"
+    ];
 
   qtWrapperArgs = lib.optionals stdenv.isLinux [
     "--prefix LD_LIBRARY_PATH : ${vulkan-loader}/lib"

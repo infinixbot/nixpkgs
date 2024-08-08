@@ -32,7 +32,9 @@ buildPythonPackage rec {
 
   pythonRemoveDeps = [ "ruff" ];
 
-  build-system = [ hatchling ];
+  build-system = [
+    hatchling
+  ];
 
   buildInputs = [ pytest ];
 

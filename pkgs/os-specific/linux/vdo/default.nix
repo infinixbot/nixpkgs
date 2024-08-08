@@ -20,7 +20,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-+2w9jzJemI2xr+i/Jd5TIBZ/o8Zv+Ett0fbJbkOD7KI=";
   };
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   buildInputs = [
     libuuid
@@ -29,7 +31,9 @@ stdenv.mkDerivation rec {
     python3.pkgs.wrapPython
   ];
 
-  propagatedBuildInputs = with python3.pkgs; [ pyyaml ];
+  propagatedBuildInputs = with python3.pkgs; [
+    pyyaml
+  ];
 
   pythonPath = propagatedBuildInputs;
 

@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
   hardeningDisable = [ "pic" ];
   nativeBuildInputs = kernel.moduleBuildDependencies;
 
-  makeFlags = [ "-C${kernel.dev}/lib/modules/${kernel.modDirVersion}/build" ];
+  makeFlags = [
+    "-C${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
+  ];
   postConfigure = ''
     makeFlags="$makeFlags M=$(pwd)"
   '';

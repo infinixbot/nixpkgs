@@ -26,7 +26,9 @@ buildGoModule rec {
     "-X github.com/metacubex/mihomo/constant.Version=${version}"
   ];
 
-  tags = [ "with_gvisor" ];
+  tags = [
+    "with_gvisor"
+  ];
 
   # network required
   doCheck = false;

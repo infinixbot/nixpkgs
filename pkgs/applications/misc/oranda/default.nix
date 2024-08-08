@@ -28,7 +28,9 @@ rustPlatform.buildRustPackage rec {
   ];
 
   buildInputs =
-    [ oniguruma ]
+    [
+      oniguruma
+    ]
     ++ lib.optionals stdenv.isDarwin [
       darwin.apple_sdk.frameworks.CoreServices
       darwin.apple_sdk.frameworks.SystemConfiguration

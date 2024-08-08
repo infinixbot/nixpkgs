@@ -58,7 +58,12 @@ perlPackages.buildPerlPackage rec {
         NetCUPS # cups-filters is broken on darwin
       ]
     )
-    ++ lib.optionals stdenv.isDarwin (with perlPackages; [ MacSysProfile ]);
+    ++ lib.optionals stdenv.isDarwin (
+      with perlPackages;
+      [
+        MacSysProfile
+      ]
+    );
 
   postInstall =
     let

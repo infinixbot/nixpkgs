@@ -96,7 +96,9 @@ stdenv.mkDerivation (finalAttrs: {
     qtsystems
   ];
 
-  nativeCheckInputs = [ xvfb-run ];
+  nativeCheckInputs = [
+    xvfb-run
+  ];
 
   cmakeFlags = [
     (lib.cmakeFeature "CMAKE_CTEST_ARGUMENTS" (

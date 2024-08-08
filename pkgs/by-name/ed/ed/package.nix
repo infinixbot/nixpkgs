@@ -25,7 +25,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   buildInputs = [ runtimeShellPackage ];
 
-  configureFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
+  configureFlags = [
+    "CC=${stdenv.cc.targetPrefix}cc"
+  ];
 
   strictDeps = true;
 

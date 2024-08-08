@@ -126,7 +126,9 @@ pythonpkgs.buildPythonPackage rec {
         --set OUT "$out"
     '';
 
-  checkInputs = with python.pkgs; [ pytestCheckHook ];
+  checkInputs = with python.pkgs; [
+    pytestCheckHook
+  ];
 
   passthru.tests = {
     inherit (nixosTests) mealie;

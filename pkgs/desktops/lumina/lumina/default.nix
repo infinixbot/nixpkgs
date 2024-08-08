@@ -53,7 +53,9 @@ mkDerivation rec {
 
   dontDropIconThemeCache = true;
 
-  patches = [ ./LuminaOS-NixOS.cpp.patch ];
+  patches = [
+    ./LuminaOS-NixOS.cpp.patch
+  ];
 
   prePatch = ''
     # Copy Gentoo setup as NixOS setup and then patch it

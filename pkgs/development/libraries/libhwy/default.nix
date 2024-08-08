@@ -60,7 +60,9 @@ stdenv.mkDerivation rec {
       "-DGTEST_LIBRARY=${lib.getLib gtest}/lib/libgtest${libExt}"
       "-DGTEST_MAIN_LIBRARY=${lib.getLib gtest}/lib/libgtest_main${libExt}"
     ]
-    ++ lib.optionals stdenv.hostPlatform.isAarch32 [ "-DHWY_CMAKE_ARM7=ON" ]
+    ++ lib.optionals stdenv.hostPlatform.isAarch32 [
+      "-DHWY_CMAKE_ARM7=ON"
+    ]
     ++ lib.optionals stdenv.hostPlatform.isx86_32 [
       # Quoting CMakelists.txt:
       #   This must be set on 32-bit x86 with GCC < 13.1, otherwise math_test will be

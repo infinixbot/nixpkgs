@@ -22,12 +22,18 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-AkagcIewHGPBYrITzI1YNPSJIN13bViDU6tbC+IeakY=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [
-    dbus
-    openssl
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Security ];
+  buildInputs =
+    [
+      dbus
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+    ];
 
   meta = with lib; {
     description = "Show the weather in the terminal, in style";

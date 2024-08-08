@@ -28,7 +28,9 @@ let
 
     cargoHash = "sha256-sAjgGVVjgXaWbmN/eGEvatYjkHeFTZNX1GXFcJqs3GI=";
 
-    nativeBuildInputs = [ python3Packages.python ];
+    nativeBuildInputs = [
+      python3Packages.python
+    ];
 
     doCheck = false;
   };
@@ -83,7 +85,12 @@ python3Packages.buildPythonApplication rec {
     fasteners
   ];
 
-  nativeCheckInputs = with python3Packages; [ pytestCheckHook ] ++ bin-programs;
+  nativeCheckInputs =
+    with python3Packages;
+    [
+      pytestCheckHook
+    ]
+    ++ bin-programs;
 
   preCheck = ''
     cp ${portmod-rust}/lib/libportmod.so portmodlib/portmod.so

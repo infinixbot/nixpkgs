@@ -30,7 +30,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-WA/VJqHXzBfVUBNtxCVsGBRzSRQ0pvDvAy03ntc0KZE=";
   };
 
-  patches = [ ./darwin-cmake-no-fixup-bundle.patch ];
+  patches = [
+    ./darwin-cmake-no-fixup-bundle.patch
+  ];
 
   nativeBuildInputs = [
     cmake

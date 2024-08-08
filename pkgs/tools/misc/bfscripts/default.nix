@@ -45,7 +45,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-pTubrnZKEFmtAj/omycFYeYwrCog39zBDEszoCrsQNQ=";
   };
 
-  buildInputs = [ python3 ];
+  buildInputs = [
+    python3
+  ];
 
   installPhase = ''
     ${lib.concatStringsSep "\n" (map (b: "install -D ${b} $out/bin/${b}") binaries)}

@@ -31,7 +31,9 @@ rustPlatform.buildRustPackage rec {
     rustPlatform.bindgenHook
   ];
 
-  nativeCheckInputs = [ gnupg ];
+  nativeCheckInputs = [
+    gnupg
+  ];
 
   buildInputs =
     [

@@ -95,7 +95,9 @@ let
           rustPlatform.bindgenHook
         ];
 
-        disallowedReferences = [ rustc.unwrapped ];
+        disallowedReferences = [
+          rustc.unwrapped
+        ];
 
         preInstall = ''
           export CARGO_HOME="$PWD/../.cargo/"

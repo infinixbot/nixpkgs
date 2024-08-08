@@ -38,7 +38,9 @@ stdenv.mkDerivation rec {
     libwebp
   ];
 
-  mesonFlags = [ "-Dgdk_pixbuf_moduledir=${placeholder "out"}/${moduleDir}" ];
+  mesonFlags = [
+    "-Dgdk_pixbuf_moduledir=${placeholder "out"}/${moduleDir}"
+  ];
 
   postPatch = ''
     # It looks for gdk-pixbuf-thumbnailer in this package's bin rather than the gdk-pixbuf bin. We need to patch that.

@@ -13,7 +13,9 @@ buildDunePackage {
   pname = "pastel-console";
   version = "0.0.0-unstable-2024-05-07";
 
-  nativeBuildInputs = [ reason ];
+  nativeBuildInputs = [
+    reason
+  ];
 
   propagatedBuildInputs = [
     console

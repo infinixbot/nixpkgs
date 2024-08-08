@@ -26,7 +26,9 @@ stdenv.mkDerivation rec {
     python3.pkgs.libxml2
   ];
 
-  pythonPath = [ python3.pkgs.libxml2 ];
+  pythonPath = [
+    python3.pkgs.libxml2
+  ];
 
   postFixup = ''
     wrapPythonPrograms

@@ -20,7 +20,9 @@ stdenv.mkDerivation rec {
       --replace "tests/" "$out/share/davtest/tests/"
   '';
 
-  buildInputs = [ (perl.withPackages (p: with p; [ HTTPDAV ])) ];
+  buildInputs = [
+    (perl.withPackages (p: with p; [ HTTPDAV ]))
+  ];
 
   installPhase = ''
     runHook preInstall

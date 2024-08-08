@@ -197,7 +197,9 @@ in
               description = ''
                 Extra arguments passed to restic backup.
               '';
-              example = [ "--exclude-file=/etc/nixos/restic-ignore" ];
+              example = [
+                "--exclude-file=/etc/nixos/restic-ignore"
+              ];
             };
 
             extraOptions = mkOption {
@@ -206,7 +208,9 @@ in
               description = ''
                 Extra extended options to be passed to the restic --option flag.
               '';
-              example = [ "sftp.command='ssh backup@192.168.1.100 -i /home/user/.ssh/id_rsa -s sftp'" ];
+              example = [
+                "sftp.command='ssh backup@192.168.1.100 -i /home/user/.ssh/id_rsa -s sftp'"
+              ];
             };
 
             initialize = mkOption {
@@ -248,7 +252,9 @@ in
               description = ''
                 A list of options for 'restic check'.
               '';
-              example = [ "--with-cache" ];
+              example = [
+                "--with-cache"
+              ];
             };
 
             dynamicFilesFrom = mkOption {

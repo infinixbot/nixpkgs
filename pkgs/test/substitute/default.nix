@@ -74,7 +74,9 @@ in
         Hello world!
       '';
       # Not great that this works at all, but is supported
-      replacements = [ "--replace-fail world list" ];
+      replacements = [
+        "--replace-fail world list"
+      ];
     };
     expected = builtins.toFile "expected" ''
       Hello list!

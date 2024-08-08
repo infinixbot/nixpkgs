@@ -46,7 +46,9 @@ rustPlatform.buildRustPackage rec {
   ];
 
   buildInputs =
-    lib.optionals stdenv.isLinux [ openssl ]
+    lib.optionals stdenv.isLinux [
+      openssl
+    ]
     ++ lib.optionals stdenv.isDarwin [
       CoreFoundation
       Security

@@ -19,7 +19,9 @@ python3Packages.buildPythonApplication rec {
 
   format = "other";
 
-  propagatedBuildInputs = with python3Packages; [ broadlink ];
+  propagatedBuildInputs = with python3Packages; [
+    broadlink
+  ];
 
   installPhase = ''
     runHook preInstall

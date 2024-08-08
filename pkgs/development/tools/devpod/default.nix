@@ -54,7 +54,9 @@ rec {
 
     CGO_ENABLED = 0;
 
-    ldflags = [ "-X github.com/loft-sh/devpod/pkg/version.version=v${version}" ];
+    ldflags = [
+      "-X github.com/loft-sh/devpod/pkg/version.version=v${version}"
+    ];
 
     excludedPackages = [ "./e2e" ];
 
@@ -137,10 +139,17 @@ rec {
           mv tauri.conf.json.merged tauri.conf.json
         '';
 
-      nativeBuildInputs = [
-        copyDesktopItems
-        pkg-config
-      ] ++ lib.optionals stdenv.isLinux [ jq ] ++ lib.optionals stdenv.isDarwin [ desktopToDarwinBundle ];
+      nativeBuildInputs =
+        [
+          copyDesktopItems
+          pkg-config
+        ]
+        ++ lib.optionals stdenv.isLinux [
+          jq
+        ]
+        ++ lib.optionals stdenv.isDarwin [
+          desktopToDarwinBundle
+        ];
 
       buildInputs =
         [

@@ -22,10 +22,18 @@ stdenv.mkDerivation (finalAttrs: {
   version = "5.7.1";
 
   outputs =
-    [ "out" ]
-    ++ lib.optionals (buildTests || buildBenchmarks) [ "test" ]
-    ++ lib.optionals buildBenchmarks [ "benchmark" ]
-    ++ lib.optionals buildSamples [ "sample" ];
+    [
+      "out"
+    ]
+    ++ lib.optionals (buildTests || buildBenchmarks) [
+      "test"
+    ]
+    ++ lib.optionals buildBenchmarks [
+      "benchmark"
+    ]
+    ++ lib.optionals buildSamples [
+      "sample"
+    ];
 
   src = fetchFromGitHub {
     owner = "ROCm";
@@ -34,7 +42,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-0otJxgVYLwvVYIWT/hjrrpuSj5jslP1dbJRt6GUOrDs=";
   };
 
-  patches = lib.optionals (buildTests || buildBenchmarks) [ ./0000-dont-fetch-googletest.patch ];
+  patches = lib.optionals (buildTests || buildBenchmarks) [
+    ./0000-dont-fetch-googletest.patch
+  ];
 
   nativeBuildInputs = [
     cmake
@@ -43,7 +53,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    [ openmp ]
+    [
+      openmp
+    ]
     ++ lib.optionals (buildTests || buildBenchmarks) [
       rocm-smi
       gtest
@@ -61,8 +73,12 @@ stdenv.mkDerivation (finalAttrs: {
       "-DCMAKE_INSTALL_LIBDIR=lib"
       "-DCMAKE_INSTALL_INCLUDEDIR=include"
     ]
-    ++ lib.optionals (gpuTargets != [ ]) [ "-DGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}" ]
-    ++ lib.optionals buildExtendedTests [ "-DROCWMMA_BUILD_EXTENDED_TESTS=ON" ]
+    ++ lib.optionals (gpuTargets != [ ]) [
+      "-DGPU_TARGETS=${lib.concatStringsSep ";" gpuTargets}"
+    ]
+    ++ lib.optionals buildExtendedTests [
+      "-DROCWMMA_BUILD_EXTENDED_TESTS=ON"
+    ]
     ++ lib.optionals buildBenchmarks [
       "-DROCWMMA_BUILD_BENCHMARK_TESTS=ON"
       "-DROCWMMA_BENCHMARK_WITH_ROCBLAS=ON"

@@ -23,14 +23,18 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-SbgH67XuxBa7WFirSdOIUxfJGlIYezISCEA3LJGN3ys=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     libusb1
     openssl
   ] ++ lib.optional stdenv.isDarwin AppKit;
 
-  nativeCheckInputs = [ rage ];
+  nativeCheckInputs = [
+    rage
+  ];
 
   meta = with lib; {
     description = "Ledger Nano plugin for age";

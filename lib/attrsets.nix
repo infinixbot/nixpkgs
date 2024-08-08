@@ -705,7 +705,9 @@ rec {
           v = set.${name};
         in
         if pred name v then
-          [ (nameValuePair name (if isAttrs v then filterAttrsRecursive pred v else v)) ]
+          [
+            (nameValuePair name (if isAttrs v then filterAttrsRecursive pred v else v))
+          ]
         else
           [ ]
       ) (attrNames set)

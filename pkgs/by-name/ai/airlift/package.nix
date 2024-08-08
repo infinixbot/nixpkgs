@@ -22,9 +22,13 @@ python3.pkgs.buildPythonApplication rec {
     sed -i '/argparse/d' pyproject.toml
   '';
 
-  pythonRelaxDeps = [ "hiyapyco" ];
+  pythonRelaxDeps = [
+    "hiyapyco"
+  ];
 
-  nativeBuildInputs = [ python3.pkgs.poetry-core ];
+  nativeBuildInputs = [
+    python3.pkgs.poetry-core
+  ];
 
   buildInputs = [
     kubernetes-helm
@@ -40,7 +44,9 @@ python3.pkgs.buildPythonApplication rec {
     dotmap
     requests
   ];
-  pythonImportsCheck = [ "airlift" ];
+  pythonImportsCheck = [
+    "airlift"
+  ];
   meta = with lib; {
     description = "Flexible, configuration driven CLI for Apache Airflow local development";
     homepage = "https://github.com/jl178/airlift";

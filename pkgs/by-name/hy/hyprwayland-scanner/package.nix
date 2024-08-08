@@ -23,7 +23,9 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  buildInputs = [ pugixml ];
+  buildInputs = [
+    pugixml
+  ];
 
   doCheck = true;
 

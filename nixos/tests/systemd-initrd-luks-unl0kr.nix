@@ -22,7 +22,9 @@ import ./make-test-python.nix (
           useBootLoader = true;
           mountHostNixStore = true;
           useEFIBoot = true;
-          qemu.options = [ "-vga virtio" ];
+          qemu.options = [
+            "-vga virtio"
+          ];
         };
         boot.loader.systemd-boot.enable = true;
 

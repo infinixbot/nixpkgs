@@ -14,9 +14,13 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-5b86/M8xqzwWMCRtsH1qwmooyfOhORgXgctRjzQEmlU=";
   };
 
-  nativeBuildInputs = with python3Packages; [ setuptools-scm ];
+  nativeBuildInputs = with python3Packages; [
+    setuptools-scm
+  ];
 
-  propagatedBuildInputs = with python3Packages; [ platformdirs ];
+  propagatedBuildInputs = with python3Packages; [
+    platformdirs
+  ];
 
   meta = with lib; {
     description = "Program to rename and remove files and directories using your editor";

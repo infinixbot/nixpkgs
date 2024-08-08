@@ -26,7 +26,9 @@ stdenv.mkDerivation (final: {
     sha256 = "sha256-sq7/Jfwo//yMiK0JSN99HMnXswNP4vPElZIRmSb+R8g=";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   postPatch = ''
     # Compat for Deno >=1.26

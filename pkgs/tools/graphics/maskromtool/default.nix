@@ -37,6 +37,8 @@ stdenv.mkDerivation rec {
       lib.licenses.beerware
       lib.licenses.gpl1Plus
     ];
-    maintainers = [ lib.maintainers.evanrichter ];
+    maintainers = [
+      lib.maintainers.evanrichter
+    ];
   };
 }

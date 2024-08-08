@@ -40,9 +40,15 @@ let
   };
 
   platformConfigurations =
-    lib.optionals stdenv.hostPlatform.isAarch [ (configurationArm { inherit pkgs haskellLib; }) ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ (configurationDarwin { inherit pkgs haskellLib; }) ]
-    ++ lib.optionals stdenv.hostPlatform.isGhcjs [ (configurationJS { inherit pkgs haskellLib; }) ];
+    lib.optionals stdenv.hostPlatform.isAarch [
+      (configurationArm { inherit pkgs haskellLib; })
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      (configurationDarwin { inherit pkgs haskellLib; })
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isGhcjs [
+      (configurationJS { inherit pkgs haskellLib; })
+    ];
 
   extensions = lib.composeManyExtensions (
     [

@@ -41,7 +41,9 @@ buildPythonPackage rec {
   # fix downstrem usage of markdown-it-py[linkify]
   pythonRelaxDeps = [ "linkify-it-py" ];
 
-  nativeBuildInputs = [ flit-core ];
+  nativeBuildInputs = [
+    flit-core
+  ];
 
   propagatedBuildInputs = [ mdurl ];
 

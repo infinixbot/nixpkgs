@@ -108,7 +108,9 @@ stdenv.mkDerivation (finalAttrs: rec {
       autoconf213
       yasm # to buid icu? seems weird
     ]
-    ++ lib.optionals stdenv.isDarwin [ xcbuild ];
+    ++ lib.optionals stdenv.isDarwin [
+      xcbuild
+    ];
 
   buildInputs =
     [
@@ -122,7 +124,9 @@ stdenv.mkDerivation (finalAttrs: rec {
       libiconv
     ];
 
-  depsBuildBuild = [ buildPackages.stdenv.cc ];
+  depsBuildBuild = [
+    buildPackages.stdenv.cc
+  ];
 
   setOutputFlags = false; # Configure script only understands --includedir
 
@@ -140,7 +144,9 @@ stdenv.mkDerivation (finalAttrs: rec {
       "--enable-release"
       "--enable-shared-js"
     ]
-    ++ lib.optionals (lib.versionAtLeast version "91") [ "--disable-debug" ]
+    ++ lib.optionals (lib.versionAtLeast version "91") [
+      "--disable-debug"
+    ]
     ++ [
       "--disable-jemalloc"
       "--disable-strip"

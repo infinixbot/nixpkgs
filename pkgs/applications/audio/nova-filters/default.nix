@@ -36,7 +36,9 @@ stdenv.mkDerivation (finalAttrs: {
       --replace "BOOST_LITTLE_ENDIAN" "BOOST_ENDIAN_LITTLE_BYTE"
   '';
 
-  nativeBuildInputs = [ scons ];
+  nativeBuildInputs = [
+    scons
+  ];
 
   meta = with lib; {
     description = "LADSPA plugins based on filters of nova";

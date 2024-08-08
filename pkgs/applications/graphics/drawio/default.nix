@@ -42,8 +42,12 @@ stdenv.mkDerivation rec {
       nodejs
       yarn
     ]
-    ++ lib.optionals (!stdenv.isDarwin) [ copyDesktopItems ]
-    ++ lib.optionals stdenv.isDarwin [ autoSignDarwinBinariesHook ];
+    ++ lib.optionals (!stdenv.isDarwin) [
+      copyDesktopItems
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      autoSignDarwinBinariesHook
+    ];
 
   ELECTRON_SKIP_BINARY_DOWNLOAD = true;
 

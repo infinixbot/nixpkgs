@@ -34,7 +34,9 @@ python3.pkgs.buildPythonApplication rec {
     wrapGAppsHook4
   ];
 
-  buildInputs = [ libadwaita ];
+  buildInputs = [
+    libadwaita
+  ];
 
   dependencies = with python3.pkgs; [
     dbus-python

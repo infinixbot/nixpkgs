@@ -46,23 +46,31 @@ builtins.mapAttrs
   {
     calico-apiserver = {
       mainProgram = "apiserver";
-      subPackages = [ "apiserver/cmd/..." ];
+      subPackages = [
+        "apiserver/cmd/..."
+      ];
     };
     calico-app-policy = {
       # integration tests require network
       doCheck = false;
       mainProgram = "dikastes";
-      subPackages = [ "app-policy/cmd/..." ];
+      subPackages = [
+        "app-policy/cmd/..."
+      ];
     };
     calico-cni-plugin = {
       mainProgram = "calico";
-      subPackages = [ "cni-plugin/cmd/..." ];
+      subPackages = [
+        "cni-plugin/cmd/..."
+      ];
     };
     calico-kube-controllers = {
       # integration tests require network and docker
       doCheck = false;
       mainProgram = "kube-controllers";
-      subPackages = [ "kube-controllers/cmd/..." ];
+      subPackages = [
+        "kube-controllers/cmd/..."
+      ];
     };
     calico-pod2daemon = {
       mainProgram = "flexvol";
@@ -73,13 +81,19 @@ builtins.mapAttrs
       ];
     };
     calico-typha = {
-      subPackages = [ "typha/cmd/..." ];
+      subPackages = [
+        "typha/cmd/..."
+      ];
     };
     calicoctl = {
-      subPackages = [ "calicoctl/calicoctl" ];
+      subPackages = [
+        "calicoctl/calicoctl"
+      ];
     };
     confd-calico = {
       mainProgram = "confd";
-      subPackages = [ "confd" ];
+      subPackages = [
+        "confd"
+      ];
     };
   }

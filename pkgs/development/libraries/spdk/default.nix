@@ -63,7 +63,9 @@ stdenv.mkDerivation rec {
     zstd
   ];
 
-  propagatedBuildInputs = [ python3.pkgs.configshell ];
+  propagatedBuildInputs = [
+    python3.pkgs.configshell
+  ];
 
   postPatch = ''
     patchShebangs .
@@ -71,7 +73,9 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  configureFlags = [ "--with-dpdk=${dpdk}" ];
+  configureFlags = [
+    "--with-dpdk=${dpdk}"
+  ];
 
   postCheck = ''
     python3 -m spdk

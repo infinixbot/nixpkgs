@@ -79,7 +79,9 @@ let
       postInstall = null;
       separateDebugInfo = true;
 
-      buildInputs = super.buildInputs ++ [ libspnav ];
+      buildInputs = super.buildInputs ++ [
+        libspnav
+      ];
 
       desktopItems = [
         (makeDesktopItem {

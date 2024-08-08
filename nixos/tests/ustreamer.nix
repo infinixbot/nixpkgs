@@ -56,7 +56,9 @@ import ./make-test-python.nix (
               ExecStart = "${pkgs.ustreamer}/bin/ustreamer --host=0.0.0.0 --port 8000 --device /dev/video9 --device-timeout=8";
               PrivateTmp = true;
               BindReadOnlyPaths = "/dev/video9";
-              SupplementaryGroups = [ "video" ];
+              SupplementaryGroups = [
+                "video"
+              ];
               Restart = "always";
             };
           };

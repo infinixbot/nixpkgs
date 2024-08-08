@@ -18,7 +18,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   sourceRoot = "./src";
 
-  patches = [ ./0001-darwin-build-fixes.patch ];
+  patches = [
+    ./0001-darwin-build-fixes.patch
+  ];
 
   installPhase = ''
     runHook preInstall

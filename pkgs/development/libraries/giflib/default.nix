@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
   };
 
   patches =
-    [ ./CVE-2021-40633.patch ]
+    [
+      ./CVE-2021-40633.patch
+    ]
     ++ lib.optionals stdenv.hostPlatform.isMinGW [
       # Build dll libraries.
       (fetchurl {
@@ -28,9 +30,13 @@ stdenv.mkDerivation rec {
       ./mingw-install-exes.patch
     ];
 
-  nativeBuildInputs = lib.optionals stdenv.isDarwin [ fixDarwinDylibNames ];
+  nativeBuildInputs = lib.optionals stdenv.isDarwin [
+    fixDarwinDylibNames
+  ];
 
-  makeFlags = [ "PREFIX=${builtins.placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${builtins.placeholder "out"}"
+  ];
 
   postPatch =
     ''

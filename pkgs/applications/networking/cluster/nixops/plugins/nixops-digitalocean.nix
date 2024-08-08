@@ -29,11 +29,17 @@ buildPythonPackage {
     --replace "poetry>=" "poetry-core>="
   '';
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
-  buildInputs = [ nixops ];
+  buildInputs = [
+    nixops
+  ];
 
-  propagatedBuildInputs = [ python-digitalocean ];
+  propagatedBuildInputs = [
+    python-digitalocean
+  ];
 
   pythonImportsCheck = [ "nixops_digitalocean" ];
 

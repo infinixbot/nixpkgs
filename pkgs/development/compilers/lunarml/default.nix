@@ -26,9 +26,13 @@ stdenvNoCC.mkDerivation {
     "doc"
   ];
 
-  nativeBuildInputs = [ mlton ];
+  nativeBuildInputs = [
+    mlton
+  ];
 
-  nativeCheckInputs = [ lua5_3 ];
+  nativeCheckInputs = [
+    lua5_3
+  ];
 
   postBuild = ''
     make -C thirdparty install

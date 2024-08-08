@@ -17,7 +17,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-OKTRxExgJ2V3736fIVvQX3FEa44jGngwCi2D/uk0F58=";
 
-  subPackages = [ "cmd/protoc-gen-connect-go" ];
+  subPackages = [
+    "cmd/protoc-gen-connect-go"
+  ];
 
   preCheck = ''
     # test all paths

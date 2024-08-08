@@ -90,7 +90,9 @@ in
 
     systemd.packages = [ cfg.package ]; # include the upstream bee.service file
 
-    systemd.tmpfiles.rules = [ "d '${cfg.settings.data-dir}' 0750 ${cfg.user} ${cfg.group}" ];
+    systemd.tmpfiles.rules = [
+      "d '${cfg.settings.data-dir}' 0750 ${cfg.user} ${cfg.group}"
+    ];
 
     systemd.services.bee = {
       wantedBy = [ "multi-user.target" ];

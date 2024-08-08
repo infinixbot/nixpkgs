@@ -214,7 +214,9 @@ in
 
     services.postgresql = lib.mkIf cfg.database.createLocally {
       enable = true;
-      ensureDatabases = [ cfg.database.database ];
+      ensureDatabases = [
+        cfg.database.database
+      ];
       ensureUsers = [
         {
           name = cfg.user;

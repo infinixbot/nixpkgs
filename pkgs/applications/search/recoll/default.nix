@@ -102,7 +102,9 @@ mkDerivation rec {
       "-Dqtgui=false"
       "-Dx11mon=false"
     ]
-    ++ [ "-Dinotify=${useInotify}" ];
+    ++ [
+      "-Dinotify=${useInotify}"
+    ];
 
   env.NIX_CFLAGS_COMPILE = toString [
     "-DNIXPKGS"
@@ -128,7 +130,9 @@ mkDerivation rec {
       qtbase
       qttools
     ]
-    ++ lib.optionals withPython [ python3Packages.setuptools ];
+    ++ lib.optionals withPython [
+      python3Packages.setuptools
+    ];
 
   buildInputs =
     [
@@ -145,10 +149,16 @@ mkDerivation rec {
       zlib
       file
     ]
-    ++ lib.optionals withGui [ qtbase ]
-    ++ lib.optionals stdenv.isDarwin [ libiconv ];
+    ++ lib.optionals withGui [
+      qtbase
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      libiconv
+    ];
 
-  qtWrapperArgs = [ "--prefix PATH : ${filterPath}" ];
+  qtWrapperArgs = [
+    "--prefix PATH : ${filterPath}"
+  ];
 
   # the filters search through ${PATH} using a sh proc 'checkcmds' for the
   # filtering utils. Short circuit this by replacing the filtering command with

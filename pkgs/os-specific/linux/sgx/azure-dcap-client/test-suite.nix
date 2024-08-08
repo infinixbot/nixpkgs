@@ -10,9 +10,13 @@ sgx-azure-dcap-client.overrideAttrs (old: {
     gtest
   ];
 
-  patches = (old.patches or [ ]) ++ [ ./tests-missing-includes.patch ];
+  patches = (old.patches or [ ]) ++ [
+    ./tests-missing-includes.patch
+  ];
 
-  buildFlags = [ "tests" ];
+  buildFlags = [
+    "tests"
+  ];
 
   installPhase = ''
     runHook preInstall

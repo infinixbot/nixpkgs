@@ -215,7 +215,9 @@ import ./make-test-python.nix (
             someuser = {
               isSystemUser = true;
               group = "someuser";
-              extraGroups = [ config.users.users.unbound.group ];
+              extraGroups = [
+                config.users.users.unbound.group
+              ];
             };
 
             # user that is not permitted to access the unix socket

@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-7WXy+1NHwFvYmyi5xGfWpq/mbVGJ3WkgP5WQd5pvcC0=";
   };
 
-  nativeBuildInputs = [ python3.pkgs.setuptools ];
+  nativeBuildInputs = [
+    python3.pkgs.setuptools
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     defusedxml

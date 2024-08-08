@@ -17,7 +17,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-bHT8VWSUqxiM/g7opRXZmEOAs2d61dWBTtuwwlzPgBc=";
   };
 
-  nativeBuildInputs = [ makeBinaryWrapper ];
+  nativeBuildInputs = [
+    makeBinaryWrapper
+  ];
 
   buildInputs = [
     bash

@@ -22,7 +22,9 @@ stdenv.mkDerivation (finalAttrs: {
   # QMake can't find Qt modules from buildInputs
   strictDeps = false;
 
-  nativeBuildInputs = [ qmake ];
+  nativeBuildInputs = [
+    qmake
+  ];
 
   buildInputs = [
     qtdeclarative

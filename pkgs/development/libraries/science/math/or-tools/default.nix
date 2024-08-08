@@ -80,7 +80,9 @@ stdenv.mkDerivation rec {
       swig4
       unzip
     ]
-    ++ lib.optionals stdenv.isDarwin [ DarwinTools ]
+    ++ lib.optionals stdenv.isDarwin [
+      DarwinTools
+    ]
     ++ (with python.pythonOnBuildForHost.pkgs; [
       pip
       mypy-protobuf

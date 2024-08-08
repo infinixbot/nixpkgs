@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
   ];
   buildInputs = [ perl ];
 
-  env.NIX_CFLAGS_COMPILE = toString [ "-Wno-error=format-security" ];
+  env.NIX_CFLAGS_COMPILE = toString [
+    "-Wno-error=format-security"
+  ];
 
   postPatch = ''
     patchShebangs ./MPC/prj_install.pl

@@ -17,7 +17,9 @@ python3Packages.buildPythonApplication {
 
   format = "other";
 
-  nativeBuildInputs = [ python3Packages.wrapPython ];
+  nativeBuildInputs = [
+    python3Packages.wrapPython
+  ];
 
   pythonPath = with python3Packages; [
     pycryptodome

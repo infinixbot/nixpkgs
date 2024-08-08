@@ -46,7 +46,9 @@ stdenv.mkDerivation (finalAttrs: {
     wrapGAppsHook4
   ];
 
-  buildInputs = [ libadwaita ];
+  buildInputs = [
+    libadwaita
+  ];
 
   meta = {
     description = "Test your regular expressions";

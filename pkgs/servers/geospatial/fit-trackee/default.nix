@@ -43,7 +43,9 @@ python.pkgs.buildPythonApplication rec {
       --replace-fail psycopg2-binary psycopg2
   '';
 
-  build-system = [ python3.pkgs.poetry-core ];
+  build-system = [
+    python3.pkgs.poetry-core
+  ];
 
   dependencies =
     with python.pkgs;
@@ -80,7 +82,9 @@ python.pkgs.buildPythonApplication rec {
     postgresql
   ];
 
-  pytestFlagsArray = [ "fittrackee" ];
+  pytestFlagsArray = [
+    "fittrackee"
+  ];
 
   postgresqlTestSetupPost = ''
     export DATABASE_TEST_URL=postgresql://$PGUSER/$PGDATABAS?host=$PGHOST

@@ -98,7 +98,9 @@ buildDotnetModule rec {
       exec = "ILSpy";
       icon = "ILSpy";
       comment = ".NET assembly browser and decompiler";
-      categories = [ "Development" ];
+      categories = [
+        "Development"
+      ];
       keywords = [
         ".net"
         "il"

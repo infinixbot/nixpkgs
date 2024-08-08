@@ -196,7 +196,9 @@ stdenv.mkDerivation (
       ]
       ++ lib.optional withGd "--with-gd";
 
-    makeFlags = (args.makeFlags or [ ]) ++ [ "OBJCOPY=${stdenv.cc.targetPrefix}objcopy" ];
+    makeFlags = (args.makeFlags or [ ]) ++ [
+      "OBJCOPY=${stdenv.cc.targetPrefix}objcopy"
+    ];
 
     postInstall =
       (args.postInstall or "")

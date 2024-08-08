@@ -24,7 +24,9 @@ stdenv.mkDerivation rec {
     zip
   ];
 
-  buildInputs = [ himitsu ];
+  buildInputs = [
+    himitsu
+  ];
 
   preConfigure = ''
     export HARECACHE=$(mktemp -d)

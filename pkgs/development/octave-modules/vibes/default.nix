@@ -14,7 +14,9 @@ buildOctavePackage rec {
     sha256 = "1zn86rcsjkqg67hphz5inxc5xkgr18sby8za68zhppc2z7pd91ng";
   };
 
-  buildInputs = [ vibes ];
+  buildInputs = [
+    vibes
+  ];
 
   meta = with lib; {
     homepage = "https://octave.sourceforge.io/vibes/index.html";

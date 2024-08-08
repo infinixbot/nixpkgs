@@ -67,7 +67,9 @@ buildPythonApplication rec {
     (fetchpatch {
       url = "https://github.com/mypaint/mypaint/commit/d7d2496401a112a178d5fa2e491f0cc7537d24cd.patch";
       hash = "sha256-dIW6qWqY96+bsUDQQtGtjENvypnh//Ep3xW+wooCJ14=";
-      includes = [ "gui/colors/hcywheel.py" ];
+      includes = [
+        "gui/colors/hcywheel.py"
+      ];
     })
     # Fix crash with hcy wheel masking
     (fetchpatch {
@@ -108,7 +110,9 @@ buildPythonApplication rec {
     pygobject3
   ];
 
-  nativeCheckInputs = [ gtk3 ];
+  nativeCheckInputs = [
+    gtk3
+  ];
 
   buildPhase = ''
     runHook preBuild

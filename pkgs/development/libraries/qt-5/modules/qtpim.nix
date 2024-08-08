@@ -18,7 +18,9 @@ qtModule {
     qtdeclarative
   ];
 
-  qmakeFlags = [ "CONFIG+=git_build" ];
+  qmakeFlags = [
+    "CONFIG+=git_build"
+  ];
 
   meta = {
     maintainers = with lib.maintainers; [ OPNA2608 ];

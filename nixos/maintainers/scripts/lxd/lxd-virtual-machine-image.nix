@@ -1,7 +1,9 @@
 { lib, pkgs, ... }:
 
 {
-  imports = [ ../../../modules/virtualisation/lxd-virtual-machine.nix ];
+  imports = [
+    ../../../modules/virtualisation/lxd-virtual-machine.nix
+  ];
 
   virtualisation.lxc.templates.nix = {
     enable = true;

@@ -27,22 +27,28 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-mkmOmKO2tiAysZhwC8kNuCXNml8NdFPfaNFykdxYFAY=";
   };
 
-  buildInputs = [
-    curl
-    fftw
-    gmp
-    gnuplot
-    gtk3
-    gtksourceview3
-    json-glib
-    lapack
-    libxml2
-    mpfr
-    openblas
-    readline
-  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Accelerate ];
+  buildInputs =
+    [
+      curl
+      fftw
+      gmp
+      gnuplot
+      gtk3
+      gtksourceview3
+      json-glib
+      lapack
+      libxml2
+      mpfr
+      openblas
+      readline
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      Accelerate
+    ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   enableParallelBuilding = true;
   # Missing install depends:

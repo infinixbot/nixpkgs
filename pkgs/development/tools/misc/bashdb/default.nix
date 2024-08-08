@@ -26,7 +26,9 @@ stdenv.mkDerivation rec {
   ];
   patchFlags = [ "-p0" ];
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   postInstall = ''
     wrapProgram $out/bin/bashdb --prefix PYTHONPATH ":" "$(toPythonPath ${python3Packages.pygments})"

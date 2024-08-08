@@ -51,7 +51,9 @@ in
       description = ''
         Extra command line options.
       '';
-      example = [ "--alertmanager.timeout 10s" ];
+      example = [
+        "--alertmanager.timeout 10s"
+      ];
     };
 
     settings = mkOption {

@@ -21,7 +21,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-V7WzletBFOOXBXClDJZIGT2comnC5WDApO1ZCoPKThY=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
   buildInputs = [
     fontconfig
     libX11

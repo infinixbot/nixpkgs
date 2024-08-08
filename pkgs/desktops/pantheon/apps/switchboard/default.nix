@@ -42,7 +42,9 @@ stdenv.mkDerivation rec {
     libhandy
   ];
 
-  patches = [ ./plugs-path-env.patch ];
+  patches = [
+    ./plugs-path-env.patch
+  ];
 
   postPatch = ''
     chmod +x meson/post_install.py

@@ -74,18 +74,22 @@ stdenv.mkDerivation rec {
     "python"
   ];
 
-  nativeBuildInputs = [
-    addDriverRunpath
-    autoPatchelfHook
-    cmake
-    git
-    libarchive
-    patchelf
-    pkg-config
-    python
-    scons'
-    shellcheck
-  ] ++ lib.optionals cudaSupport [ cudaPackages.cuda_nvcc ];
+  nativeBuildInputs =
+    [
+      addDriverRunpath
+      autoPatchelfHook
+      cmake
+      git
+      libarchive
+      patchelf
+      pkg-config
+      python
+      scons'
+      shellcheck
+    ]
+    ++ lib.optionals cudaSupport [
+      cudaPackages.cuda_nvcc
+    ];
 
   postPatch = ''
     mkdir -p temp/tbbbind_${tbbbind_version}
@@ -131,19 +135,25 @@ stdenv.mkDerivation rec {
     (cmakeBool "ENABLE_SYSTEM_TBB" true)
   ];
 
-  autoPatchelfIgnoreMissingDeps = [ "libngraph_backend.so" ];
+  autoPatchelfIgnoreMissingDeps = [
+    "libngraph_backend.so"
+  ];
 
-  buildInputs = [
-    flatbuffers
-    level-zero
-    libusb1
-    libxml2
-    ocl-icd
-    opencv.cxxdev
-    pugixml
-    snappy
-    tbb_2021_5
-  ] ++ lib.optionals cudaSupport [ cudaPackages.cuda_cudart ];
+  buildInputs =
+    [
+      flatbuffers
+      level-zero
+      libusb1
+      libxml2
+      ocl-icd
+      opencv.cxxdev
+      pugixml
+      snappy
+      tbb_2021_5
+    ]
+    ++ lib.optionals cudaSupport [
+      cudaPackages.cuda_cudart
+    ];
 
   enableParallelBuilding = true;
 

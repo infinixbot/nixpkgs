@@ -22,7 +22,9 @@ buildNpmPackage rec {
 
   dontNpmBuild = true;
 
-  nativeBuildInputs = [ python3 ] ++ lib.optional stdenv.isDarwin cctools;
+  nativeBuildInputs = [
+    python3
+  ] ++ lib.optional stdenv.isDarwin cctools;
 
   # Fixes `semantic-release --version` output
   postPatch = ''

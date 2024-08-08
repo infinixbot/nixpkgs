@@ -108,7 +108,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.displayManager.sessionPackages = with pkgs; [ budgie-desktop ];
+    services.displayManager.sessionPackages = with pkgs; [
+      budgie-desktop
+    ];
 
     services.xserver.displayManager.lightdm.greeters.slick = {
       enable = mkDefault true;
@@ -265,10 +267,14 @@ in
     services.gvfs.enable = mkDefault true;
 
     # Register packages for DBus.
-    services.dbus.packages = [ budgie-control-center' ];
+    services.dbus.packages = [
+      budgie-control-center'
+    ];
 
     # Register packages for udev.
-    services.udev.packages = with pkgs; [ magpie ];
+    services.udev.packages = with pkgs; [
+      magpie
+    ];
 
     # Shell integration for MATE Terminal.
     programs.bash.vteIntegration = true;

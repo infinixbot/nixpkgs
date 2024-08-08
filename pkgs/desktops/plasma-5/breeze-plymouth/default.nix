@@ -44,7 +44,9 @@ mkDerivation {
       perl
     ];
   buildInputs = [ plymouth ];
-  patches = [ ./install-paths.patch ];
+  patches = [
+    ./install-paths.patch
+  ];
   cmakeFlags =
     [ ]
     ++ lib.optional (osName != null) "-DDISTRO_NAME=${osName}"

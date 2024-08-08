@@ -43,7 +43,9 @@ stdenv.mkDerivation rec {
     python2
   ];
 
-  cmakeFlags = [ "-DCMAKE_CXX_STANDARD=14" ];
+  cmakeFlags = [
+    "-DCMAKE_CXX_STANDARD=14"
+  ];
 
   env.NIX_CFLAGS_COMPILE = toString [
     "-Wno-error=maybe-uninitialized"

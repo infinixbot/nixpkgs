@@ -15,7 +15,9 @@ qtModule {
       qtbase
       libwebp
     ]
-    ++ lib.optionals (!jasper.meta.broken) [ jasper ]
+    ++ lib.optionals (!jasper.meta.broken) [
+      jasper
+    ]
     ++ [
       libmng
       libtiff

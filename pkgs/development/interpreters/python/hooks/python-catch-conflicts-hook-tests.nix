@@ -111,7 +111,9 @@ in
         src = projectSource pname;
         pyproject = true;
         catchConflicts = true;
-        buildInputs = [ pythonPkgs.setuptools ];
+        buildInputs = [
+          pythonPkgs.setuptools
+        ];
         # depend on two different versions of packaging
         # (an actual runtime dependency conflict)
         propagatedBuildInputs = [

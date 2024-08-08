@@ -86,14 +86,18 @@ in
       RSTUDIO_VERSION_SUFFIX
       ;
 
-    nativeBuildInputs = [
-      cmake
-      unzip
-      ant
-      jdk
-      pandoc
-      nodejs
-    ] ++ lib.optionals (!server) [ copyDesktopItems ];
+    nativeBuildInputs =
+      [
+        cmake
+        unzip
+        ant
+        jdk
+        pandoc
+        nodejs
+      ]
+      ++ lib.optionals (!server) [
+        copyDesktopItems
+      ];
 
     buildInputs =
       [
@@ -123,16 +127,20 @@ in
           ]
       );
 
-    cmakeFlags = [
-      "-DRSTUDIO_TARGET=${if server then "Server" else "Desktop"}"
-      "-DRSTUDIO_USE_SYSTEM_SOCI=ON"
-      "-DRSTUDIO_USE_SYSTEM_BOOST=ON"
-      "-DRSTUDIO_USE_SYSTEM_YAML_CPP=ON"
-      "-DRSTUDIO_DISABLE_CHECK_FOR_UPDATES=ON"
-      "-DQUARTO_ENABLED=TRUE"
-      "-DPANDOC_VERSION=${pandoc.version}"
-      "-DCMAKE_INSTALL_PREFIX=${placeholder "out"}/lib/rstudio"
-    ] ++ lib.optionals (!server) [ "-DQT_QMAKE_EXECUTABLE=${qmake}/bin/qmake" ];
+    cmakeFlags =
+      [
+        "-DRSTUDIO_TARGET=${if server then "Server" else "Desktop"}"
+        "-DRSTUDIO_USE_SYSTEM_SOCI=ON"
+        "-DRSTUDIO_USE_SYSTEM_BOOST=ON"
+        "-DRSTUDIO_USE_SYSTEM_YAML_CPP=ON"
+        "-DRSTUDIO_DISABLE_CHECK_FOR_UPDATES=ON"
+        "-DQUARTO_ENABLED=TRUE"
+        "-DPANDOC_VERSION=${pandoc.version}"
+        "-DCMAKE_INSTALL_PREFIX=${placeholder "out"}/lib/rstudio"
+      ]
+      ++ lib.optionals (!server) [
+        "-DQT_QMAKE_EXECUTABLE=${qmake}/bin/qmake"
+      ];
 
     # Hack RStudio to only use the input R and provided libclang.
     patches = [
@@ -246,7 +254,9 @@ in
     };
   }
   // lib.optionalAttrs (!server) {
-    qtWrapperArgs = [ "--suffix PATH : ${lib.makeBinPath [ gnumake ]}" ];
+    qtWrapperArgs = [
+      "--suffix PATH : ${lib.makeBinPath [ gnumake ]}"
+    ];
 
     desktopItems = [
       (makeDesktopItem {

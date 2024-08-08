@@ -52,7 +52,9 @@ python3Packages.buildPythonApplication {
       truststore
       yarl
     ]
-    ++ lib.optionals (pythonOlder "3.9") [ importlib-resources ];
+    ++ lib.optionals (pythonOlder "3.9") [
+      importlib-resources
+    ];
 
   postInstall = lib.optionalString (!stdenv.hostPlatform.isWindows) ''
     rm $out/bin/gns3loopback

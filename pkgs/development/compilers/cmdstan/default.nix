@@ -45,9 +45,13 @@ stdenv.mkDerivation rec {
       ln -s ${buildPackages.stanc}/bin/stanc bin/stanc
     '';
 
-  makeFlags = [
-    "build"
-  ] ++ lib.optionals stdenv.isDarwin [ "arch=${stdenv.hostPlatform.darwinArch}" ];
+  makeFlags =
+    [
+      "build"
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      "arch=${stdenv.hostPlatform.darwinArch}"
+    ];
 
   # Disable inclusion of timestamps in PCH files when using Clang.
   env.CXXFLAGS = lib.optionalString stdenv.cc.isClang "-Xclang -fno-pch-timestamp";

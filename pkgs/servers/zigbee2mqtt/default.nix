@@ -22,7 +22,9 @@ buildNpmPackage rec {
 
   npmDepsHash = "sha256-+/WLjypVYDE4b6gcxXInU9ukntPH5GZpd8T3rlqrINs=";
 
-  buildInputs = lib.optionals withSystemd [ systemdMinimal ];
+  buildInputs = lib.optionals withSystemd [
+    systemdMinimal
+  ];
 
   npmFlags = lib.optionals (!withSystemd) [ "--omit=optional" ];
 

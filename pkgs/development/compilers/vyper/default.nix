@@ -76,7 +76,9 @@ buildPythonPackage rec {
     $out/bin/vyper "${sample-contract}"
   '';
 
-  pythonImportsCheck = [ "vyper" ];
+  pythonImportsCheck = [
+    "vyper"
+  ];
 
   meta = with lib; {
     description = "Pythonic Smart Contract Language for the EVM";

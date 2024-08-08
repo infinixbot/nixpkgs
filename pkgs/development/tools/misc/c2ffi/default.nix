@@ -30,7 +30,9 @@ llvmPackages.stdenv.mkDerivation {
     hardcodeZeroVersion = true;
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs = [
     llvmPackages.llvm

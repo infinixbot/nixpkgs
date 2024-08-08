@@ -136,7 +136,9 @@ stdenv.mkDerivation (finalAttrs: {
       "-Dgoogle=false"
       "-Donedrive=false"
     ]
-    ++ lib.optionals (avahi == null) [ "-Ddnssd=false" ]
+    ++ lib.optionals (avahi == null) [
+      "-Ddnssd=false"
+    ]
     ++ lib.optionals (samba == null) [
       # Xfce don't want samba
       "-Dsmb=false"

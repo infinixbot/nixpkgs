@@ -14,7 +14,9 @@ stdenv.mkDerivation rec {
     sha256 = "099nbif0x5cbcf18snc58nx1a3q7z0v9br9p2jiq9pcc7ic2015d";
   };
 
-  configureFlags = [ "--disable-opensearch" ];
+  configureFlags = [
+    "--disable-opensearch"
+  ];
 
   nativeBuildInputs = [ perl ];
 

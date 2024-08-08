@@ -17,7 +17,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-sRZngmivNvSWcjkIqcqjjaIgXFH8aMq+/caNroXmzIk=";
   };
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   meta = {
     maintainers = [ lib.maintainers.viraptor ];

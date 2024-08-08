@@ -29,7 +29,9 @@ let
     system.stateVersion = stateVersion;
   };
   eval = lib.evalModules {
-    modules = (map (m: "${modulesPath}/${m}") modules) ++ [ config ];
+    modules = (map (m: "${modulesPath}/${m}") modules) ++ [
+      config
+    ];
     specialArgs = {
       inherit config pkgs utils;
       class = "nixos";

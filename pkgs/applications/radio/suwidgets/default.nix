@@ -38,7 +38,9 @@ stdenv.mkDerivation rec {
     fftwSinglePrec
   ];
 
-  qmakeFlags = [ "SuWidgetsLib.pro" ];
+  qmakeFlags = [
+    "SuWidgetsLib.pro"
+  ];
 
   meta = with lib; {
     description = "Sigutils-related widgets";

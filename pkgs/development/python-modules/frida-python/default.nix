@@ -48,7 +48,9 @@ buildPythonPackage rec {
 
   propagatedBuildInputs = [ typing-extensions ];
 
-  buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.AppKit ];
+  buildInputs = lib.optionals stdenv.isDarwin [
+    darwin.apple_sdk.frameworks.AppKit
+  ];
 
   pythonImportsCheck = [ "frida" ];
 

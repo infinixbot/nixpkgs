@@ -30,7 +30,9 @@ python3Packages.buildPythonApplication rec {
   ];
 
   nativeBuildInputs = [ qt5.wrapQtAppsHook ];
-  makeWrapperArgs = [ "\${qtWrapperArgs[@]}" ];
+  makeWrapperArgs = [
+    "\${qtWrapperArgs[@]}"
+  ];
 
   postInstall = ''
     install -m666 -Dt $out/share/applications krop.desktop

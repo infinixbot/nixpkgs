@@ -16,14 +16,18 @@ stdenv.mkDerivation rec {
     hash = "sha256-HJOk2vlDD7ADrLdf/eLEp+teu9XN0KrghEe6y4FIDoI=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     libbsd
     libressl
   ];
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   meta = with lib; {
     description = "Secure ACME/Let's Encrypt client";

@@ -67,7 +67,9 @@ in
       '';
       default = [ ];
       type = types.listOf types.str;
-      example = [ "-Xmx512m" ];
+      example = [
+        "-Xmx512m"
+      ];
     };
   };
 

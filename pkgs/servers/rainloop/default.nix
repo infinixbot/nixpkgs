@@ -35,7 +35,9 @@ let
         dos2unix ./rainloop/rainloop/v/1.16.0/app/libraries/MailSo/Base/HtmlUtils.php
       '';
 
-      patches = [ ./fix-cve-2022-29360.patch ];
+      patches = [
+        ./fix-cve-2022-29360.patch
+      ];
 
       postPatch = ''
         unix2dos ./rainloop/rainloop/v/1.16.0/app/libraries/MailSo/Base/HtmlUtils.php

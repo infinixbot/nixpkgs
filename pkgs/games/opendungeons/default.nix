@@ -14,7 +14,9 @@
 
 let
   ogre' = ogre_13.overrideAttrs (old: {
-    cmakeFlags = old.cmakeFlags ++ [ "-DOGRE_RESOURCEMANAGER_STRICT=0" ];
+    cmakeFlags = old.cmakeFlags ++ [
+      "-DOGRE_RESOURCEMANAGER_STRICT=0"
+    ];
   });
   cegui' = cegui.override {
     ogre = ogre';
@@ -57,7 +59,9 @@ stdenv.mkDerivation {
     ois
   ];
 
-  cmakeFlags = [ "-DOD_TREAT_WARNINGS_AS_ERRORS=FALSE" ];
+  cmakeFlags = [
+    "-DOD_TREAT_WARNINGS_AS_ERRORS=FALSE"
+  ];
 
   meta = with lib; {
     description = "Open source, real time strategy game sharing game elements with the Dungeon Keeper series and Evil Genius";

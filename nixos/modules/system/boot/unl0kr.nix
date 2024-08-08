@@ -47,7 +47,9 @@ in
             "systemd-vconsole-setup.service"
             "udev.service"
           ];
-          before = [ "shutdown.target" ];
+          before = [
+            "shutdown.target"
+          ];
           script = ''
             # This script acts as a Password Agent: https://systemd.io/PASSWORD_AGENTS/
 

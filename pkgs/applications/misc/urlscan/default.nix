@@ -21,12 +21,16 @@ python3.pkgs.buildPythonApplication rec {
     hatch-vcs
   ];
 
-  propagatedBuildInputs = with python3.pkgs; [ urwid ];
+  propagatedBuildInputs = with python3.pkgs; [
+    urwid
+  ];
 
   # No tests available
   doCheck = false;
 
-  pythonImportsCheck = [ "urlscan" ];
+  pythonImportsCheck = [
+    "urlscan"
+  ];
 
   meta = with lib; {
     description = "Mutt and terminal url selector (similar to urlview)";

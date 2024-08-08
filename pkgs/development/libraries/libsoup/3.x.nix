@@ -36,7 +36,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-KRxncl827ZDqQ+//JQZLacWi0ZgUiEd8BcSBo7Swxao=";
   };
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs =
     [
@@ -52,15 +54,21 @@ stdenv.mkDerivation rec {
       vala
     ];
 
-  buildInputs = [
-    sqlite
-    libpsl
-    glib.out
-    brotli
-    libnghttp2
-  ] ++ lib.optionals stdenv.isLinux [ libsysprof-capture ];
+  buildInputs =
+    [
+      sqlite
+      libpsl
+      glib.out
+      brotli
+      libnghttp2
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      libsysprof-capture
+    ];
 
-  propagatedBuildInputs = [ glib ];
+  propagatedBuildInputs = [
+    glib
+  ];
 
   mesonFlags = [
     "-Dtls_check=false" # glib-networking is a runtime dependency, not a compile-time dependency

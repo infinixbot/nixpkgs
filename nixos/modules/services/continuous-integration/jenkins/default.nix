@@ -170,7 +170,9 @@ in
   config = mkIf cfg.enable {
     environment = {
       # server references the dejavu fonts
-      systemPackages = [ pkgs.dejavu_fonts ] ++ optional cfg.withCLI cfg.package;
+      systemPackages = [
+        pkgs.dejavu_fonts
+      ] ++ optional cfg.withCLI cfg.package;
 
       variables =
         { }

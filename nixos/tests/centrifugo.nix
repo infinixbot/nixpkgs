@@ -31,12 +31,16 @@ in
                   toRedisAddresses = map (name: "${name}:${toString redisPort}");
                 in
                 toRedisAddresses (lib.take index nodes)
-                ++ [ "unix://${config.services.redis.servers.centrifugo.unixSocket}" ]
+                ++ [
+                  "unix://${config.services.redis.servers.centrifugo.unixSocket}"
+                ]
                 ++ toRedisAddresses (lib.drop (index + 1) nodes);
               usage_stats_disable = true;
               api_insecure = true;
             };
-            extraGroups = [ config.services.redis.servers.centrifugo.user ];
+            extraGroups = [
+              config.services.redis.servers.centrifugo.user
+            ];
           };
           services.redis.servers.centrifugo = {
             enable = true;

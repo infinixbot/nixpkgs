@@ -26,7 +26,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     librsvg
   ];
 
-  propagatedUserEnvPkgs = [ gtk-engine-murrine ];
+  propagatedUserEnvPkgs = [
+    gtk-engine-murrine
+  ];
 
   installPhase = ''
     runHook preInstall

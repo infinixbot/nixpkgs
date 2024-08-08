@@ -44,7 +44,9 @@ stdenv.mkDerivation (finalAttrs: {
     autoreconfHook
   ];
 
-  nativeCheckInputs = [ which ];
+  nativeCheckInputs = [
+    which
+  ];
 
   buildInputs =
     [
@@ -60,7 +62,13 @@ stdenv.mkDerivation (finalAttrs: {
       libseccomp
     ];
 
-  configureFlags = [ "--localstatedir=/var" ] ++ lib.optionals stdenv.isLinux [ "--with-cuse" ];
+  configureFlags =
+    [
+      "--localstatedir=/var"
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      "--with-cuse"
+    ];
 
   postPatch = ''
     patchShebangs tests/*

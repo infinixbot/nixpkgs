@@ -72,7 +72,9 @@ stdenv.mkDerivation rec {
   enableParallelBuilding = true;
 
   configurePlatforms = [ "host" ];
-  configureFlags = [ "--enable-release" ];
+  configureFlags = [
+    "--enable-release"
+  ];
 
   # They use 'install -s', that calls the native strip instead of the cross
   postConfigure =

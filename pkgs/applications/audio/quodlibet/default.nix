@@ -90,7 +90,9 @@ python3.pkgs.buildPythonApplication rec {
       libsoup
       webkitgtk
     ]
-    ++ lib.optionals (withXineBackend) [ xine-lib ]
+    ++ lib.optionals (withXineBackend) [
+      xine-lib
+    ]
     ++ lib.optionals (withGstreamerBackend) (
       with gst_all_1;
       [

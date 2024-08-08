@@ -21,13 +21,23 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-XOtPtOEKZMJzNeBZBT3Mc/KOjMOcz71byIv/ftcRP48=";
 
-  cargoPatches = [ ./Cargo.lock.patch ];
+  cargoPatches = [
+    ./Cargo.lock.patch
+  ];
 
   doCheck = false;
 
-  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ Security ];
+  buildInputs =
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Security
+    ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   meta = with lib; {
     description = "Background process that saves uncommitted changes on git";

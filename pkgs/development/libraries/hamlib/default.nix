@@ -56,7 +56,9 @@ stdenv.mkDerivation rec {
     ++ lib.optionals tclBindings [ tcl ];
 
   configureFlags =
-    [ "CC_FOR_BUILD=${stdenv.cc.targetPrefix}cc" ]
+    [
+      "CC_FOR_BUILD=${stdenv.cc.targetPrefix}cc"
+    ]
     ++ lib.optionals perlBindings [ "--with-perl-binding" ]
     ++ lib.optionals tclBindings [
       "--with-tcl-binding"

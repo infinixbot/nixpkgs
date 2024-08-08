@@ -54,7 +54,9 @@ stdenv.mkDerivation rec {
     mpg123
   ];
 
-  cmakeFlags = [ "-DwxWidgets_LIBRARIES=${wxGTK}/lib" ];
+  cmakeFlags = [
+    "-DwxWidgets_LIBRARIES=${wxGTK}/lib"
+  ];
 
   env.NIX_CFLAGS_COMPILE = "-Wno-narrowing";
 

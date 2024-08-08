@@ -22,7 +22,9 @@ buildDunePackage {
 
   duneVersion = "3";
 
-  nativeBuildInputs = [ reason ];
+  nativeBuildInputs = [
+    reason
+  ];
 
   buildInputs = [
     reason

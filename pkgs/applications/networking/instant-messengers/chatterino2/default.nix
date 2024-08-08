@@ -25,16 +25,20 @@ stdenv.mkDerivation rec {
     pkg-config
     qt6.wrapQtAppsHook
   ];
-  buildInputs = [
-    qt6.qtbase
-    qt6.qtsvg
-    qt6.qtimageformats
-    qt6.qttools
-    qt6.qt5compat
-    boost
-    openssl
-    libsecret
-  ] ++ lib.optionals stdenv.isLinux [ qt6.qtwayland ];
+  buildInputs =
+    [
+      qt6.qtbase
+      qt6.qtsvg
+      qt6.qtimageformats
+      qt6.qttools
+      qt6.qt5compat
+      boost
+      openssl
+      libsecret
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      qt6.qtwayland
+    ];
   cmakeFlags = [ "-DBUILD_WITH_QT6=ON" ];
   postInstall =
     lib.optionalString stdenv.isDarwin ''

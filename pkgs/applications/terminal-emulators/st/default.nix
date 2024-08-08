@@ -43,7 +43,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  makeFlags = [ "PKG_CONFIG=${stdenv.cc.targetPrefix}pkg-config" ];
+  makeFlags = [
+    "PKG_CONFIG=${stdenv.cc.targetPrefix}pkg-config"
+  ];
 
   nativeBuildInputs = [
     pkg-config

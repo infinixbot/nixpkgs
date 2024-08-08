@@ -265,5 +265,7 @@ in
       in
       [ klipper-genconf ] ++ firmwareFlasher ++ attrValues firmwares;
   };
-  meta.maintainers = [ maintainers.cab404 ];
+  meta.maintainers = [
+    maintainers.cab404
+  ];
 }

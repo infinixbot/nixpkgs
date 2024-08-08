@@ -99,7 +99,9 @@ stdenv.mkDerivation (
         autoPatchelfHook
         glibc
       ]
-      ++ lib.optionals (lib.meta.availableOn stdenv.buildPlatform elfutils) [ elfutils ];
+      ++ lib.optionals (lib.meta.availableOn stdenv.buildPlatform elfutils) [
+        elfutils
+      ];
 
     postPatch =
       lib.optionalString (stdenv.hostPlatform.isDarwin) ''

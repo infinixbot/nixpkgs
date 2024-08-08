@@ -29,7 +29,9 @@ stdenv.mkDerivation (finalAttrs: {
     wrapGAppsHook3
   ];
 
-  buildInputs = [ wxGTK32 ];
+  buildInputs = [
+    wxGTK32
+  ];
 
   meta = with lib; {
     description = "Berkeley Logo interpreter";

@@ -27,10 +27,17 @@ stdenv.mkDerivation rec {
     makeWrapper
   ];
 
-  buildInputs = [
-    fftw
-    libjack2
-  ] ++ lib.optionals stdenv.isLinux [ alsa-lib ] ++ lib.optionals stdenv.isDarwin [ portaudio ];
+  buildInputs =
+    [
+      fftw
+      libjack2
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      alsa-lib
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      portaudio
+    ];
 
   configureFlags =
     [
@@ -38,7 +45,9 @@ stdenv.mkDerivation rec {
       "--enable-fftw"
       "--enable-jack"
     ]
-    ++ lib.optionals stdenv.isLinux [ "--enable-alsa" ]
+    ++ lib.optionals stdenv.isLinux [
+      "--enable-alsa"
+    ]
     ++ lib.optionals stdenv.isDarwin [
       "--enable-portaudio"
       "--without-local-portaudio"

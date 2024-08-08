@@ -79,7 +79,8 @@ let
   pname = unwrapped.pname + "-wrapped";
   inherit (unwrapped) version;
   makeWrapperArgs = builtins.concatStringsSep " " (
-    [ ]
+    [
+    ]
     # Emulating wrapGAppsHook3 & wrapQtAppsHook working together
     ++
       lib.optionals ((unwrapped.hasFeature "gnuradio-companion") || (unwrapped.hasFeature "gr-qtgui"))
@@ -165,7 +166,12 @@ let
               ":"
               "${lib.makeSearchPath unwrapped.qt.qtbase.qtPluginPrefix (
                 builtins.map lib.getBin (
-                  [ unwrapped.qt.qtbase ] ++ lib.optionals stdenv.isLinux [ unwrapped.qt.qtwayland ]
+                  [
+                    unwrapped.qt.qtbase
+                  ]
+                  ++ lib.optionals stdenv.isLinux [
+                    unwrapped.qt.qtwayland
+                  ]
                 )
               )}"
               "--prefix"
@@ -173,7 +179,12 @@ let
               ":"
               "${lib.makeSearchPath unwrapped.qt.qtbase.qtQmlPrefix (
                 builtins.map lib.getBin (
-                  [ unwrapped.qt.qtbase ] ++ lib.optionals stdenv.isLinux [ unwrapped.qt.qtwayland ]
+                  [
+                    unwrapped.qt.qtbase
+                  ]
+                  ++ lib.optionals stdenv.isLinux [
+                    unwrapped.qt.qtwayland
+                  ]
                 )
               )}"
             ]
@@ -199,7 +210,9 @@ let
       stdenv.mkDerivation {
         inherit pname version passthru;
         nativeBuildInputs = [ makeWrapper ];
-        buildInputs = [ xorg.lndir ];
+        buildInputs = [
+          xorg.lndir
+        ];
         buildCommand = ''
           mkdir $out
           cd $out

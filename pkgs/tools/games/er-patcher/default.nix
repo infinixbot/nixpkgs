@@ -16,7 +16,9 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "sha256-D+XYZI3kmK5sb+i8RxtODTvbTgzhpDzwB/JM61ddcTA=";
   };
 
-  buildInputs = [ python3 ];
+  buildInputs = [
+    python3
+  ];
 
   installPhase = ''
     mkdir -p $out/bin

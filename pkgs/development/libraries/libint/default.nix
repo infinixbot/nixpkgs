@@ -246,7 +246,9 @@ let
     # AVX support is advertised, but does not work.
     # Fortran interface is incompatible with changing the LIBINT2_REALTYPE.
     cmakeFlags =
-      [ "-DLIBINT2_SHGAUSS_ORDERING=${shGaussOrd}" ]
+      [
+        "-DLIBINT2_SHGAUSS_ORDERING=${shGaussOrd}"
+      ]
       ++ lib.optional enableFortran "-DENABLE_FORTRAN=ON"
       ++ lib.optional enableSSE "-DLIBINT2_REALTYPE=libint2::simd::VectorSSEDouble";
 

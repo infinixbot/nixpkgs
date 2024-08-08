@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-5csJqRLNqhyeXR4dEQtnPUSwuZ8oY+BIt6AVICkm1+o=";
   };
 
-  mesonFlags = [ "-Dwerror=false" ];
+  mesonFlags = [
+    "-Dwerror=false"
+  ];
 
   nativeBuildInputs = [
     meson

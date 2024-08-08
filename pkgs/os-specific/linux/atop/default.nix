@@ -22,16 +22,24 @@ stdenv.mkDerivation rec {
     hash = "sha256-m5TGZmAu//e/QC7M5wbDR/OMOctjSY+dOWJoYeVkbiA=";
   };
 
-  nativeBuildInputs = lib.optionals withAtopgpu [ python3.pkgs.wrapPython ];
+  nativeBuildInputs = lib.optionals withAtopgpu [
+    python3.pkgs.wrapPython
+  ];
 
-  buildInputs = [
-    glib
-    zlib
-    ncurses
-    pkg-config
-  ] ++ lib.optionals withAtopgpu [ python3 ];
+  buildInputs =
+    [
+      glib
+      zlib
+      ncurses
+      pkg-config
+    ]
+    ++ lib.optionals withAtopgpu [
+      python3
+    ];
 
-  pythonPath = lib.optionals withAtopgpu [ python3.pkgs.pynvml ];
+  pythonPath = lib.optionals withAtopgpu [
+    python3.pkgs.pynvml
+  ];
 
   makeFlags = [
     "DESTDIR=$(out)"

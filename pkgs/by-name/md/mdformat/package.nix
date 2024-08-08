@@ -15,7 +15,9 @@ let
       {
         inherit (python.pkgs.mdformat) pname version meta;
 
-        nativeBuildInputs = [ python.pkgs.wrapPython ];
+        nativeBuildInputs = [
+          python.pkgs.wrapPython
+        ];
 
         plugins = selector python.pkgs;
 

@@ -39,7 +39,11 @@ stdenv.mkDerivation rec {
     patchelf --set-interpreter ${pkgsi686Linux.glibc.out}/lib/ld-linux.so.2 $dir/lpd/brmfc5890cnfilter
 
     wrapProgram $dir/inf/setupPrintcapij \
-      --prefix PATH : ${lib.makeBinPath [ coreutils ]}
+      --prefix PATH : ${
+        lib.makeBinPath [
+          coreutils
+        ]
+      }
 
     substituteInPlace $dir/lpd/filtermfc5890cn \
       --replace "/usr/" "$out/usr/"

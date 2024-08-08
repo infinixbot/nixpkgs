@@ -23,7 +23,9 @@ bambu-studio.overrideAttrs (
       ./dont-link-opencv-world.patch
     ];
 
-    buildInputs = previousAttrs.buildInputs ++ [ opencv2 ];
+    buildInputs = previousAttrs.buildInputs ++ [
+      opencv2
+    ];
 
     preFixup = ''
       gappsWrapperArgs+=(

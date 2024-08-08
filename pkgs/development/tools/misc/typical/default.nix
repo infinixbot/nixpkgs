@@ -19,7 +19,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-U6dRk8fqhxxMbu283jvkjGMjbIOYqy9jN64M2VmdZ/g=";
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   preCheck = ''
     export NO_COLOR=true

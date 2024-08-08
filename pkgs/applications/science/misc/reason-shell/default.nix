@@ -21,11 +21,17 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-4AEuFSM2dY6UjjIFRU8ipkRMoEb2LjnOr3H6rZrLokE=";
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
-  buildInputs = [
-    openssl
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.CoreServices ];
+  buildInputs =
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.CoreServices
+    ];
 
   meta = with lib; {
     description = "Shell for research papers";

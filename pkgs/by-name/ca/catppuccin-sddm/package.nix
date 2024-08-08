@@ -23,9 +23,13 @@ stdenvNoCC.mkDerivation rec {
 
   dontWrapQtApps = true;
 
-  nativeBuildInputs = [ just ];
+  nativeBuildInputs = [
+    just
+  ];
 
-  propagatedBuildInputs = [ kdePackages.qtsvg ];
+  propagatedBuildInputs = [
+    kdePackages.qtsvg
+  ];
 
   buildPhase = ''
     runHook preBuild

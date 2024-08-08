@@ -42,7 +42,9 @@ stdenv.mkDerivation (finalAttrs: {
     wrapGAppsHook4
   ];
 
-  buildInputs = [ libadwaita ];
+  buildInputs = [
+    libadwaita
+  ];
 
   passthru.updateScript = nix-update-script { };
 

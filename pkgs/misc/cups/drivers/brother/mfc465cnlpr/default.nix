@@ -36,7 +36,11 @@ stdenv.mkDerivation rec {
     dir=$out/usr/local/Brother/Printer/mfc465cn
     patchelf --set-interpreter ${pkgsi686Linux.glibc.out}/lib/ld-linux.so.2 $dir/lpd/brmfc465cnfilter
     wrapProgram $dir/inf/setupPrintcapij \
-      --prefix PATH : ${lib.makeBinPath [ coreutils ]}
+      --prefix PATH : ${
+        lib.makeBinPath [
+          coreutils
+        ]
+      }
     substituteInPlace $dir/lpd/filtermfc465cn \
       --replace "BR_PRT_PATH=" "BR_PRT_PATH=\"$dir/\" #"
     wrapProgram $dir/lpd/filtermfc465cn \

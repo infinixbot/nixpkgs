@@ -20,7 +20,9 @@ python3.pkgs.buildPythonApplication rec {
     substituteInPlace setup.cfg --replace-fail "--flake8 --pylint --cov=marge" ""
   '';
 
-  nativeBuildInputs = [ python3.pkgs.setuptools ];
+  nativeBuildInputs = [
+    python3.pkgs.setuptools
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     configargparse

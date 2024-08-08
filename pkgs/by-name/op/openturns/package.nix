@@ -38,7 +38,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-csl5cZvxU8fdLKvh04ZWKizClrHqF79c7tAMSejo2lk=";
   };
 
-  nativeBuildInputs = [ cmake ] ++ lib.optionals enablePython [ python3Packages.sphinx ];
+  nativeBuildInputs = [
+    cmake
+  ] ++ lib.optionals enablePython [ python3Packages.sphinx ];
 
   buildInputs =
     [
@@ -63,7 +65,9 @@ stdenv.mkDerivation (finalAttrs: {
       python3Packages.psutil
       python3Packages.python
     ]
-    ++ lib.optionals stdenv.isDarwin [ Accelerate ];
+    ++ lib.optionals stdenv.isDarwin [
+      Accelerate
+    ];
 
   cmakeFlags = [
     (lib.cmakeBool "BUILD_PYTHON" enablePython)

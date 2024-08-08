@@ -17,8 +17,12 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-JM67lpXGacA0w8luQLc/83mAdHgtXnYlw543gUqUpRM=";
   };
 
-  nativeBuildInputs = [ cmake ];
-  buildInputs = [ cunit ];
+  nativeBuildInputs = [
+    cmake
+  ];
+  buildInputs = [
+    cunit
+  ];
 
   cmakeFlags = [
     "-DLIBDICT_TESTS=${if finalAttrs.finalPackage.doCheck then "ON" else "OFF"}"

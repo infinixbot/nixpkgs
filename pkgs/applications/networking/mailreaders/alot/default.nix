@@ -14,7 +14,13 @@ buildPythonApplication rec {
   pname = "alot";
   version = "0.10";
 
-  outputs = [ "out" ] ++ lib.optionals withManpage [ "man" ];
+  outputs =
+    [
+      "out"
+    ]
+    ++ lib.optionals withManpage [
+      "man"
+    ];
 
   disabled = !isPy3k;
 
@@ -53,7 +59,9 @@ buildPythonApplication rec {
     pytestCheckHook
   ];
 
-  postBuild = lib.optionalString withManpage [ "make -C docs man" ];
+  postBuild = lib.optionalString withManpage [
+    "make -C docs man"
+  ];
 
   disabledTests = [
     # Some twisted tests need internet access

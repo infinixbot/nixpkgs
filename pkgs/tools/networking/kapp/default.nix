@@ -24,7 +24,9 @@ buildGoModule rec {
 
   CGO_ENABLED = 0;
 
-  ldflags = [ "-X carvel.dev/kapp/pkg/kapp/version.Version=${version}" ];
+  ldflags = [
+    "-X carvel.dev/kapp/pkg/kapp/version.Version=${version}"
+  ];
 
   nativeBuildInputs = [ installShellFiles ];
 

@@ -36,7 +36,9 @@ stdenv.mkDerivation rec {
     python3Packages.lz4
   ];
 
-  makeFlags = [ "PLATFORM=simulator" ];
+  makeFlags = [
+    "PLATFORM=simulator"
+  ];
 
   installPhase = ''
     runHook preInstall

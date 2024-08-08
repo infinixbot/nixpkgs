@@ -19,7 +19,9 @@ python3.pkgs.buildPythonApplication rec {
   # Project has no test
   doCheck = false;
 
-  pythonImportsCheck = [ "lil_pwny" ];
+  pythonImportsCheck = [
+    "lil_pwny"
+  ];
 
   meta = with lib; {
     description = "Offline auditing of Active Directory passwords";

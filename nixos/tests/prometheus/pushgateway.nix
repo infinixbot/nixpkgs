@@ -21,7 +21,9 @@ import ../make-test-python.nix (
                 job_name = "pushgateway";
                 static_configs = [
                   {
-                    targets = [ "pushgateway:9091" ];
+                    targets = [
+                      "pushgateway:9091"
+                    ];
                   }
                 ];
               }

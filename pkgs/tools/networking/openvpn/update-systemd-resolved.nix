@@ -22,7 +22,9 @@ stdenv.mkDerivation rec {
   };
 
   # set SCRIPT_NAME in case we are wrapped and inject PATH
-  patches = [ ./update-systemd-resolved.patch ];
+  patches = [
+    ./update-systemd-resolved.patch
+  ];
 
   PREFIX = "${placeholder "out"}/libexec/openvpn";
 

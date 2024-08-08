@@ -44,9 +44,13 @@ stdenv.mkDerivation {
     inherit (platform) hash;
   };
 
-  runtimeDependencies = [ segger-jlink ];
+  runtimeDependencies = [
+    segger-jlink
+  ];
 
-  nativeBuildInputs = [ autoPatchelfHook ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+  ];
 
   buildInputs = [
     udev

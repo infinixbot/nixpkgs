@@ -32,7 +32,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     scdoc
   ];
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [
+    "PREFIX=$(out)"
+  ];
 
   sourceRoot = "${finalAttrs.src.name}/grimblast";
 

@@ -38,9 +38,13 @@ stdenv.mkDerivation rec {
     ]
     ++ (
       if lib.versions.major hepmc.version == "3" then
-        [ "--with-hepmc3=${hepmc}" ]
+        [
+          "--with-hepmc3=${hepmc}"
+        ]
       else
-        [ "--with-hepmc2=${hepmc}" ]
+        [
+          "--with-hepmc2=${hepmc}"
+        ]
     );
 
   enableParallelBuilding = true;

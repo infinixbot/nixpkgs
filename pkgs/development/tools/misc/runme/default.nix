@@ -24,14 +24,18 @@ buildGoModule rec {
 
   vendorHash = "sha256-QoZzEq1aC7cjY/RVp5Z5HhSuTFf2BSYQnfg0jSaeTJU=";
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   nativeCheckInputs = [
     nodejs
     python3
   ];
 
-  subPackages = [ "." ];
+  subPackages = [
+    "."
+  ];
 
   ldflags = [
     "-s"

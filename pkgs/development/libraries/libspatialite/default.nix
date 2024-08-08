@@ -35,16 +35,20 @@ stdenv.mkDerivation rec {
     geos # for geos-config
   ];
 
-  buildInputs = [
-    freexl
-    geos
-    librttopo
-    (libxml2.override { enableHttp = true; })
-    minizip
-    proj
-    sqlite
-    zlib
-  ] ++ lib.optionals stdenv.isDarwin [ libiconv ];
+  buildInputs =
+    [
+      freexl
+      geos
+      librttopo
+      (libxml2.override { enableHttp = true; })
+      minizip
+      proj
+      sqlite
+      zlib
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      libiconv
+    ];
 
   enableParallelBuilding = true;
 

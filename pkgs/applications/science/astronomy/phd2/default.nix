@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
     libnova
   ];
 
-  cmakeFlags = [ "-DOPENSOURCE_ONLY=1" ];
+  cmakeFlags = [
+    "-DOPENSOURCE_ONLY=1"
+  ];
 
   # Fix broken wrapped name scheme by moving wrapped binary to where wrapper expects it
   postFixup = ''

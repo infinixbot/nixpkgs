@@ -74,18 +74,28 @@ stdenv.mkDerivation rec {
       which
     ];
 
-  buildInputs = lib.optionals pythonSupport [ python3 ];
+  buildInputs = lib.optionals pythonSupport [
+    python3
+  ];
 
-  propagatedBuildInputs = [
-    glib
-    libassuan
-    libgpg-error
-    pth
-  ] ++ lib.optionals (qtbase != null) [ qtbase ];
+  propagatedBuildInputs =
+    [
+      glib
+      libassuan
+      libgpg-error
+      pth
+    ]
+    ++ lib.optionals (qtbase != null) [
+      qtbase
+    ];
 
-  nativeCheckInputs = [ which ];
+  nativeCheckInputs = [
+    which
+  ];
 
-  depsBuildBuild = [ buildPackages.stdenv.cc ];
+  depsBuildBuild = [
+    buildPackages.stdenv.cc
+  ];
 
   dontWrapQtApps = true;
 

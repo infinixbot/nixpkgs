@@ -34,7 +34,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   propagatedBuildInputs =
-    [ dtk6gui ]
+    [
+      dtk6gui
+    ]
     ++ (with qt6Packages; [
       qtbase
       qtdeclarative

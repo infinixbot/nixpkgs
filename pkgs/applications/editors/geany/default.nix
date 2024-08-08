@@ -46,7 +46,9 @@ stdenv.mkDerivation (finalAttrs: {
     wrapGAppsHook3
   ];
 
-  buildInputs = [ gtk3 ];
+  buildInputs = [
+    gtk3
+  ];
 
   preCheck = ''
     patchShebangs --build tests/ctags/runner.sh

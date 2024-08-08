@@ -32,7 +32,9 @@ let
     '';
   });
 
-  luaWithModule = lua.withPackages (ps: [ ps.lua-cjson ]);
+  luaWithModule = lua.withPackages (ps: [
+    ps.lua-cjson
+  ]);
 
   golden_LUA_PATHS = {
 

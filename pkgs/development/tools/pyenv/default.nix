@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-JXNEAgppFbeNKxjvrI/jUyHmN6pSWUFGSrxeVZi5pHw=";
   };
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   configureScript = "src/configure";
 

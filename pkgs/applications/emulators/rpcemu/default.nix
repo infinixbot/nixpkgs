@@ -18,7 +18,9 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-UyjfTfUpSvJNFPkQWPKppxp/kO0hVGo5cE9RuCU8GJI=";
   };
 
-  nativeBuildInputs = [ wrapQtAppsHook ];
+  nativeBuildInputs = [
+    wrapQtAppsHook
+  ];
 
   buildInputs = [
     qtbase

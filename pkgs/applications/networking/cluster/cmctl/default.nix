@@ -31,7 +31,9 @@ buildGoModule rec {
     "-X github.com/cert-manager/cert-manager/pkg/util.AppGitCommit=${src.rev}"
   ];
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   # Trusted by this computer: no: x509: “cert-manager” certificate is not trusted
   doCheck = !stdenv.isDarwin;

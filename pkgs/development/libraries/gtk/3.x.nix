@@ -101,7 +101,9 @@ stdenv.mkDerivation (finalAttrs: {
       ./patches/3.0-darwin-x11.patch
     ];
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
   nativeBuildInputs =
     [
       gettext
@@ -122,16 +124,28 @@ stdenv.mkDerivation (finalAttrs: {
       # For xmllint
       libxml2
     ]
-    ++ lib.optionals (
-      (withIntrospection || compileSchemas) && !stdenv.buildPlatform.canExecute stdenv.hostPlatform
-    ) [ mesonEmulatorHook ]
-    ++ lib.optionals waylandSupport [ wayland-scanner ];
+    ++
+      lib.optionals
+        ((withIntrospection || compileSchemas) && !stdenv.buildPlatform.canExecute stdenv.hostPlatform)
+        [
+          mesonEmulatorHook
+        ]
+    ++ lib.optionals waylandSupport [
+      wayland-scanner
+    ];
 
-  buildInputs = [
-    libxkbcommon
-    (libepoxy.override { inherit x11Support; })
-    isocodes
-  ] ++ lib.optionals stdenv.isDarwin [ AppKit ] ++ lib.optionals trackerSupport [ tracker ];
+  buildInputs =
+    [
+      libxkbcommon
+      (libepoxy.override { inherit x11Support; })
+      isocodes
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      AppKit
+    ]
+    ++ lib.optionals trackerSupport [
+      tracker
+    ];
   #TODO: colord?
 
   propagatedBuildInputs =
@@ -166,8 +180,12 @@ stdenv.mkDerivation (finalAttrs: {
       wayland
       wayland-protocols
     ]
-    ++ lib.optionals xineramaSupport [ libXinerama ]
-    ++ lib.optionals cupsSupport [ cups ];
+    ++ lib.optionals xineramaSupport [
+      libXinerama
+    ]
+    ++ lib.optionals cupsSupport [
+      cups
+    ];
 
   mesonFlags = [
     "-Dgtk_doc=${lib.boolToString withIntrospection}"

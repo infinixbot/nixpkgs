@@ -65,18 +65,22 @@ stdenv.mkDerivation rec {
     "-DFOLLY_MOBILE=${if follyMobile then "1" else "0"}"
     "-fpermissive"
   ];
-  cmakeFlags = [
-    "-DBUILD_SHARED_LIBS=ON"
+  cmakeFlags =
+    [
+      "-DBUILD_SHARED_LIBS=ON"
 
-    # temporary hack until folly builds work on aarch64,
-    # see https://github.com/facebook/folly/issues/1880
-    "-DCMAKE_LIBRARY_ARCHITECTURE=${if stdenv.isx86_64 then "x86_64" else "dummy"}"
+      # temporary hack until folly builds work on aarch64,
+      # see https://github.com/facebook/folly/issues/1880
+      "-DCMAKE_LIBRARY_ARCHITECTURE=${if stdenv.isx86_64 then "x86_64" else "dummy"}"
 
-    # ensure correct dirs in $dev/lib/pkgconfig/libfolly.pc
-    # see https://github.com/NixOS/nixpkgs/issues/144170
-    "-DCMAKE_INSTALL_INCLUDEDIR=include"
-    "-DCMAKE_INSTALL_LIBDIR=lib"
-  ] ++ lib.optional (stdenv.isDarwin && stdenv.isx86_64) [ "-DCMAKE_OSX_DEPLOYMENT_TARGET=10.13" ];
+      # ensure correct dirs in $dev/lib/pkgconfig/libfolly.pc
+      # see https://github.com/NixOS/nixpkgs/issues/144170
+      "-DCMAKE_INSTALL_INCLUDEDIR=include"
+      "-DCMAKE_INSTALL_LIBDIR=lib"
+    ]
+    ++ lib.optional (stdenv.isDarwin && stdenv.isx86_64) [
+      "-DCMAKE_OSX_DEPLOYMENT_TARGET=10.13"
+    ];
 
   # split outputs to reduce downstream closure sizes
   outputs = [

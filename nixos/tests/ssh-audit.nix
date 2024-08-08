@@ -12,11 +12,15 @@ import ./make-test-python.nix (
 
     nodes = {
       "${serverName}" = {
-        networking.firewall.allowedTCPPorts = [ sshAuditPort ];
+        networking.firewall.allowedTCPPorts = [
+          sshAuditPort
+        ];
         services.openssh.enable = true;
         users.users."${sshUsername}" = {
           isNormalUser = true;
-          openssh.authorizedKeys.keys = [ sshKeys.snakeOilPublicKey ];
+          openssh.authorizedKeys.keys = [
+            sshKeys.snakeOilPublicKey
+          ];
         };
       };
       "${clientName}" = {

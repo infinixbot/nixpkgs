@@ -127,7 +127,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   doCheck = stdenv.hostPlatform.isLinux;
 
-  checkInputs = [ gtest ];
+  checkInputs = [
+    gtest
+  ];
 
   meta = with lib; {
     description = "Multi-protocol data management library by CERN";

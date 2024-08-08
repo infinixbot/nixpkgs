@@ -25,7 +25,9 @@ python3Packages.buildPythonApplication rec {
     pygobject3
   ];
 
-  buildInputs = [ gdk-pixbuf ];
+  buildInputs = [
+    gdk-pixbuf
+  ];
 
   nativeBuildInputs = [
     gettext

@@ -65,10 +65,16 @@ stdenv.mkDerivation (finalAttrs: {
     dbus
     dbus-test-runner
     procps
-    (python3.withPackages (ps: with ps; [ python-dbusmock ]))
+    (python3.withPackages (
+      ps: with ps; [
+        python-dbusmock
+      ]
+    ))
   ];
 
-  checkInputs = [ gtest ];
+  checkInputs = [
+    gtest
+  ];
 
   dontWrapQtApps = true;
 
@@ -93,6 +99,8 @@ stdenv.mkDerivation (finalAttrs: {
     platforms = platforms.unix;
     maintainers = teams.lomiri.members;
     mainProgram = "qdbus-simple-test-runner";
-    pkgConfigModules = [ "libqtdbustest-1" ];
+    pkgConfigModules = [
+      "libqtdbustest-1"
+    ];
   };
 })

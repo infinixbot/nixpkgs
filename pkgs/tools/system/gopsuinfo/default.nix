@@ -19,7 +19,9 @@ buildGoModule rec {
 
   # Remove installing of binary from the Makefile (already taken care of by
   # `buildGoModule`)
-  patches = [ ./no_bin_install.patch ];
+  patches = [
+    ./no_bin_install.patch
+  ];
 
   # Fix absolute path of icons in the code
   postPatch = ''

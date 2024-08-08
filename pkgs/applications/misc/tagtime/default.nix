@@ -18,7 +18,9 @@ stdenv.mkDerivation {
     sha256 = "1xpmra3f9618b0gajfxqh061r4phkiklvcgpglsyx82bhmgf9n1f";
   };
 
-  buildInputs = [ perl ];
+  buildInputs = [
+    perl
+  ];
 
   installPhase = ''
     runHook preInstall

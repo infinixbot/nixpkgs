@@ -30,7 +30,9 @@ stdenv.mkDerivation rec {
       --replace "curl" "${curl}/bin/curl"
   '';
 
-  nativeBuildInputs = [ installShellFiles ];
+  nativeBuildInputs = [
+    installShellFiles
+  ];
 
   buildInputs = [
     perl

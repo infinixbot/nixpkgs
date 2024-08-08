@@ -27,7 +27,9 @@ in
   boot.loader.grub.enable = false;
 
   services.openssh.enable = true;
-  users.users.root.openssh.authorizedKeys.keys = [ snakeOilPublicKey ];
+  users.users.root.openssh.authorizedKeys.keys = [
+    snakeOilPublicKey
+  ];
   security.pam.services.sshd.limits = [
     {
       domain = "*";

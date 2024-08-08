@@ -42,7 +42,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-NCQCd/QnJg2fEI6q5ys8HQXinGnKaoxhMUHd8rwxAmk=";
   };
 
-  depsBuildBuild = [ pkg-config ];
+  depsBuildBuild = [
+    pkg-config
+  ];
 
   nativeBuildInputs = [
     gi-docgen
@@ -55,9 +57,13 @@ stdenv.mkDerivation (finalAttrs: {
     desktop-file-utils # for validate-desktop-file
   ];
 
-  mesonFlags = [
-    "-Dgtk_doc=true"
-  ] ++ lib.optionals (!finalAttrs.finalPackage.doCheck) [ "-Dtests=false" ];
+  mesonFlags =
+    [
+      "-Dgtk_doc=true"
+    ]
+    ++ lib.optionals (!finalAttrs.finalPackage.doCheck) [
+      "-Dtests=false"
+    ];
 
   buildInputs =
     [
@@ -69,9 +75,17 @@ stdenv.mkDerivation (finalAttrs: {
       Foundation
     ];
 
-  propagatedBuildInputs = [ gtk4 ];
+  propagatedBuildInputs = [
+    gtk4
+  ];
 
-  nativeCheckInputs = [ adwaita-icon-theme ] ++ lib.optionals (!stdenv.isDarwin) [ xvfb-run ];
+  nativeCheckInputs =
+    [
+      adwaita-icon-theme
+    ]
+    ++ lib.optionals (!stdenv.isDarwin) [
+      xvfb-run
+    ];
 
   # Tests had to be disabled on Darwin because test-button-content fails
   #

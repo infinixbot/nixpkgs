@@ -19,7 +19,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Xqjl12xT30ZXWYzPWNN3jWY9pxojhd7Kq0OC7rABt4M=";
   };
 
-  configureFlags = [ "--with-enginesdir=${placeholder "out"}/lib/engines" ];
+  configureFlags = [
+    "--with-enginesdir=${placeholder "out"}/lib/engines"
+  ];
 
   nativeBuildInputs = [
     autoreconfHook

@@ -80,7 +80,9 @@ buildPythonPackage rec {
       // binary-hash
     );
 
-  nativeBuildInputs = [ autoPatchelfHook ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+  ];
 
   pythonRelaxDeps = [
     "click"

@@ -88,7 +88,9 @@ python3.pkgs.buildPythonApplication rec {
     export HOME=$(mktemp -d)
   '';
 
-  pythonImportsCheck = [ "khoj" ];
+  pythonImportsCheck = [
+    "khoj"
+  ];
 
   disabledTests = [
     # Tests require network access

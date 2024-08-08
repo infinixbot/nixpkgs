@@ -20,7 +20,9 @@ stdenv.mkDerivation {
     hash = "sha256-aidETIZaQYzC3liDGM915wyBWpMrn4OudxEcFS/Iucw=";
   };
 
-  patches = [ ./sunrpc.patch ];
+  patches = [
+    ./sunrpc.patch
+  ];
 
   buildInputs = [
     libnsl

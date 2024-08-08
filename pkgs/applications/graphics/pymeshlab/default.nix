@@ -74,7 +74,9 @@ stdenv.mkDerivation (finalAttrs: {
     python3Packages.pybind11
   ];
 
-  propagatedBuildInputs = [ python3Packages.numpy ];
+  propagatedBuildInputs = [
+    python3Packages.numpy
+  ];
 
   preConfigure = ''
     substituteInPlace src/meshlab/src/external/libigl.cmake \
@@ -92,7 +94,9 @@ stdenv.mkDerivation (finalAttrs: {
     "
   '';
 
-  cmakeFlags = [ "-DVCGDIR=${vcg.src}" ];
+  cmakeFlags = [
+    "-DVCGDIR=${vcg.src}"
+  ];
 
   meta = {
     description = "Open source mesh processing python library";

@@ -31,7 +31,9 @@ mkOpenModelicaDerivation rec {
     boost
   ];
 
-  env.CFLAGS = toString [ "-Wno-error=implicit-function-declaration" ];
+  env.CFLAGS = toString [
+    "-Wno-error=implicit-function-declaration"
+  ];
 
   meta = with lib; {
     description = "OpenModelica FMI & SSP-based co-simulation environment";

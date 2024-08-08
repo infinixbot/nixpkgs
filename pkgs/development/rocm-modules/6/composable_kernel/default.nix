@@ -20,9 +20,16 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "composable_kernel";
   version = "6.0.2";
 
-  outputs = [
-    "out"
-  ] ++ lib.optionals buildTests [ "test" ] ++ lib.optionals buildExamples [ "example" ];
+  outputs =
+    [
+      "out"
+    ]
+    ++ lib.optionals buildTests [
+      "test"
+    ]
+    ++ lib.optionals buildExamples [
+      "example"
+    ];
 
   src = fetchFromGitHub {
     owner = "ROCm";

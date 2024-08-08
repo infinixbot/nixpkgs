@@ -38,7 +38,9 @@ stdenv.mkDerivation rec {
     ];
 
   # https://github.com/google/jsonnet/issues/778
-  patches = [ ./fix-cpp-unresolved-symbols.patch ];
+  patches = [
+    ./fix-cpp-unresolved-symbols.patch
+  ];
 
   enableParallelBuilding = true;
 

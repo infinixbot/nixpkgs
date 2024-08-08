@@ -25,7 +25,9 @@ rustPlatform.buildRustPackage {
     protobuf
   ];
 
-  buildInputs = [ sqlite ];
+  buildInputs = [
+    sqlite
+  ];
 
   postInstall = ''
     mv $out/bin/downloader $out/bin/hamtransfer-downloader

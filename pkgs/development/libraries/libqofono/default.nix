@@ -40,7 +40,9 @@ mkDerivation rec {
       --replace '$$[QT_INSTALL_QML]' $out'/${qtbase.qtQmlPrefix}'
   '';
 
-  nativeBuildInputs = [ qmake ];
+  nativeBuildInputs = [
+    qmake
+  ];
 
   buildInputs = [
     qtbase

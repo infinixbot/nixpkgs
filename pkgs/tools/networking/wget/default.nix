@@ -29,7 +29,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-V6EHFR5O+U/flK/+z6xZiWPzcvEyk+2cdAMhBTkLNu4=";
   };
 
-  patches = [ ./remove-runtime-dep-on-openssl-headers.patch ];
+  patches = [
+    ./remove-runtime-dep-on-openssl-headers.patch
+  ];
 
   preConfigure = ''
     patchShebangs doc
@@ -58,7 +60,9 @@ stdenv.mkDerivation rec {
     ];
 
   configureFlags =
-    [ (lib.withFeatureAs withOpenssl "ssl" "openssl") ]
+    [
+      (lib.withFeatureAs withOpenssl "ssl" "openssl")
+    ]
     ++ lib.optionals stdenv.isDarwin [
       # https://lists.gnu.org/archive/html/bug-wget/2021-01/msg00076.html
       "--without-included-regex"
@@ -89,10 +93,14 @@ stdenv.mkDerivation rec {
         sed -i 's/^exit/exit 77 #/' $f
       done
     '';
-  checkInputs = [
-    perlPackages.HTTPDaemon
-    python3
-  ] ++ lib.optionals stdenv.isDarwin [ perlPackages.IOSocketSSL ];
+  checkInputs =
+    [
+      perlPackages.HTTPDaemon
+      python3
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      perlPackages.IOSocketSSL
+    ];
 
   meta = with lib; {
     description = "Tool for retrieving files using HTTP, HTTPS, and FTP";

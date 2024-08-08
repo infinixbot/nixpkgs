@@ -33,15 +33,19 @@ stdenv.mkDerivation rec {
     hash = "sha256-z3QyFWiLATkFzSyff+3aIeLTTIRDQJkMbqJdEKA3KT8=";
   };
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    gettext
-    gobject-introspection
-    python3
-    flex
-  ] ++ lib.optionals enableDocumentation [ hotdoc ];
+  nativeBuildInputs =
+    [
+      meson
+      ninja
+      pkg-config
+      gettext
+      gobject-introspection
+      python3
+      flex
+    ]
+    ++ lib.optionals enableDocumentation [
+      hotdoc
+    ];
 
   buildInputs = [
     bash-completion
@@ -55,7 +59,9 @@ stdenv.mkDerivation rec {
     gst-plugins-bad
   ];
 
-  mesonFlags = [ (lib.mesonEnable "doc" enableDocumentation) ];
+  mesonFlags = [
+    (lib.mesonEnable "doc" enableDocumentation)
+  ];
 
   postPatch = ''
     patchShebangs \

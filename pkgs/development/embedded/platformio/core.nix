@@ -62,28 +62,32 @@ buildPythonApplication rec {
 
   pythonRelaxDeps = true;
 
-  propagatedBuildInputs = [
-    aiofiles
-    ajsonrpc
-    bottle
-    click
-    click-completion
-    colorama
-    git
-    lockfile
-    marshmallow
-    pyelftools
-    pyserial
-    requests
-    semantic-version
-    setuptools
-    spdx-license-list-data.json
-    starlette
-    tabulate
-    uvicorn
-    wsproto
-    zeroconf
-  ] ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [ chardet ];
+  propagatedBuildInputs =
+    [
+      aiofiles
+      ajsonrpc
+      bottle
+      click
+      click-completion
+      colorama
+      git
+      lockfile
+      marshmallow
+      pyelftools
+      pyserial
+      requests
+      semantic-version
+      setuptools
+      spdx-license-list-data.json
+      starlette
+      tabulate
+      uvicorn
+      wsproto
+      zeroconf
+    ]
+    ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [
+      chardet
+    ];
 
   preCheck = ''
     export HOME=$(mktemp -d)
@@ -138,7 +142,9 @@ buildPythonApplication rec {
   ];
 
   pytestFlagsArray =
-    [ "tests" ]
+    [
+      "tests"
+    ]
     ++ (map (e: "--deselect tests/${e}") [
       "commands/pkg/test_exec.py::test_pkg_specified"
       "commands/pkg/test_exec.py::test_unrecognized_options"

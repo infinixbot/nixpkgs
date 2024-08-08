@@ -35,7 +35,9 @@ stdenv.mkDerivation rec {
     zlib
   ];
 
-  depsBuildBuild = [ buildPackages.stdenv.cc ];
+  depsBuildBuild = [
+    buildPackages.stdenv.cc
+  ];
 
   configureFlags = [
     "--enable-threadsafe"

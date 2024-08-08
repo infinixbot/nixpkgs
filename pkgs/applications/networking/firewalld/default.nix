@@ -46,7 +46,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-MaBYJLNVlDEsMlnyNtf8G8D1Tnvcfv0/bXQ/8f7kBao=";
   };
 
-  patches = [ ./respect-xml-catalog-files-var.patch ];
+  patches = [
+    ./respect-xml-catalog-files-var.patch
+  ];
 
   postPatch =
     ''

@@ -37,7 +37,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   env.NIX_CFLAGS_COMPILE = toString (
-    lib.optionals (stdenv.isLinux && stdenv.isAarch64) [ "-Wno-error=stringop-overflow" ]
+    lib.optionals (stdenv.isLinux && stdenv.isAarch64) [
+      "-Wno-error=stringop-overflow"
+    ]
   );
 
   postInstall = ''

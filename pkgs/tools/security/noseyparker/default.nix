@@ -23,7 +23,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-xf70RKPZY96oUuifBC0mg5lV0MjGpzR2qDQbNJMSYtM=";
 
-  nativeCheckInputs = [ git ];
+  nativeCheckInputs = [
+    git
+  ];
 
   checkFlags = [
     # These tests expect access to network to clone and use GitHub API

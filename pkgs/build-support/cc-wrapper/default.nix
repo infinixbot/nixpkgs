@@ -525,7 +525,9 @@ stdenvNoCC.mkDerivation {
   depsTargetTargetPropagated = optional (libcxx != null) libcxx ++ extraPackages;
 
   setupHooks =
-    [ ../setup-hooks/role.bash ]
+    [
+      ../setup-hooks/role.bash
+    ]
     ++ optional (cc.langC or true) ./setup-hook.sh
     ++ optional (cc.langFortran or false) ./fortran-hook.sh
     ++ optional (targetPlatform.isWindows) (

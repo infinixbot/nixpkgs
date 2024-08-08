@@ -50,9 +50,15 @@ stdenv.mkDerivation rec {
       "-DUDEV_RULES_DIR=${placeholder "out"}/etc/udev/rules.d"
       "-DCMAKE_INSTALL_LIBDIR=lib"
     ]
-    ++ lib.optionals stdenv.isDarwin [ "-DUSE_HIDAPI=1" ]
-    ++ lib.optionals stdenv.isLinux [ "-DNFC_LINUX=1" ]
-    ++ lib.optionals (stdenv.isLinux && withPcsclite) [ "-DUSE_PCSC=1" ];
+    ++ lib.optionals stdenv.isDarwin [
+      "-DUSE_HIDAPI=1"
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      "-DNFC_LINUX=1"
+    ]
+    ++ lib.optionals (stdenv.isLinux && withPcsclite) [
+      "-DUSE_PCSC=1"
+    ];
 
   # causes possible redefinition of _FORTIFY_SOURCE?
   hardeningDisable = [ "fortify3" ];

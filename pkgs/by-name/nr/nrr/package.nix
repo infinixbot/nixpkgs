@@ -29,7 +29,9 @@ rustPlatform.buildRustPackage rec {
     libiconv
   ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   postInstall = lib.optionalString nrxAlias "ln -s $out/bin/nr{r,x}";
 

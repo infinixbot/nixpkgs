@@ -8,7 +8,9 @@ import ./make-test-python.nix (
     nodes.machine =
       { ... }:
       {
-        imports = [ ./common/user-account.nix ];
+        imports = [
+          ./common/user-account.nix
+        ];
 
         services.xserver.enable = true;
         services.displayManager = {

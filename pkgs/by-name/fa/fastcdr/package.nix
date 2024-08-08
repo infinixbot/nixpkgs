@@ -20,7 +20,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-x+lkbssrNQQXmnlfYM2cGMVQZRiONNeImHj5EPm93ls=";
   };
 
-  patches = [ ./0001-Do-not-require-wget-and-unzip.patch ];
+  patches = [
+    ./0001-Do-not-require-wget-and-unzip.patch
+  ];
 
   cmakeFlags =
     lib.optional (stdenv.hostPlatform.isStatic) "-DBUILD_SHARED_LIBS=OFF"
@@ -31,7 +33,9 @@ stdenv.mkDerivation (finalAttrs: {
   outputs = [ "out" ] ++ lib.optional withDocs "doc";
 
   nativeBuildInputs =
-    [ cmake ]
+    [
+      cmake
+    ]
     ++ lib.optionals withDocs [
       doxygen
       graphviz-nox

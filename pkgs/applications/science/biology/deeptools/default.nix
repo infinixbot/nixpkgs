@@ -16,7 +16,9 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-2kSlL7Y5f/FjVtStnmz+GlTw2oymrtxOCaXlqgbQ7FU=";
   };
 
-  nativeBuildInputs = with python3.pkgs; [ setuptools ];
+  nativeBuildInputs = with python3.pkgs; [
+    setuptools
+  ];
 
   propagatedBuildInputs = with python3.pkgs; [
     numpy
@@ -31,7 +33,9 @@ python3.pkgs.buildPythonApplication rec {
     importlib-metadata
   ];
 
-  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
+  nativeCheckInputs = with python3.pkgs; [
+    pytestCheckHook
+  ];
 
   preCheck = ''
     export PATH="$out/bin:$PATH"

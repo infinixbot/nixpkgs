@@ -23,7 +23,9 @@ stdenv.mkDerivation (finalAttrs: {
     installShellFiles
   ];
 
-  buildInputs = [ libusb-compat-0_1 ];
+  buildInputs = [
+    libusb-compat-0_1
+  ];
 
   installPhase = ''
     runHook preInstall

@@ -35,9 +35,13 @@ stdenv.mkDerivation rec {
       --replace '::getenv("TZDIR")' '"${tzdata}/share/zoneinfo"'
   '';
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
 
-  buildInputs = [ openssl ];
+  buildInputs = [
+    openssl
+  ];
 
   enableParallelBuilding = true;
 

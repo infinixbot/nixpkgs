@@ -14,7 +14,9 @@ callPackage ./generic.nix (
       sha256 = "sha256-LmX6BpojNlRAo8VsVWuGc7XjKig4ANjZslfj9YTOBnU=";
     };
 
-    patches = [ ./tk-8_6_13-find-library.patch ];
+    patches = [
+      ./tk-8_6_13-find-library.patch
+    ];
 
   }
 )

@@ -121,9 +121,13 @@ stdenv.mkDerivation (finalAttrs: {
       cmocka
       rpcsvc-proto
     ]
-    ++ optionals stdenv.isLinux [ buildPackages.stdenv.cc ]
+    ++ optionals stdenv.isLinux [
+      buildPackages.stdenv.cc
+    ]
     ++ optional (stdenv.buildPlatform != stdenv.hostPlatform) samba # asn1_compile/compile_et
-    ++ optionals stdenv.isDarwin [ fixDarwinDylibNames ];
+    ++ optionals stdenv.isDarwin [
+      fixDarwinDylibNames
+    ];
 
   wafPath = "buildtools/bin/waf";
 

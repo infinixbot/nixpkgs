@@ -16,7 +16,9 @@ mkDerivation rec {
     sha256 = "sha256-B1eT6F0Dp2zto50ulf+K/KYMlMp8Pgc/tO9qkcqn+O8=";
   };
 
-  buildInputs = [ standard-library ];
+  buildInputs = [
+    standard-library
+  ];
 
   # everythingFile = "./README.agda";
 

@@ -135,7 +135,9 @@ stdenv.mkDerivation (finalAttrs: {
   doCheck = true;
 
   makeFlags =
-    [ "PREFIX=${stdenv.cc.targetPrefix}" ]
+    [
+      "PREFIX=${stdenv.cc.targetPrefix}"
+    ]
     ++ lib.optionals stdenv.hostPlatform.isMinGW [
       "-f"
       "win32/Makefile.gcc"

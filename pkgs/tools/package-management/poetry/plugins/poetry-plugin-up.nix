@@ -20,7 +20,9 @@ buildPythonPackage rec {
     hash = "sha256-O82oFEU67o0bZVBtkEZsOLtLBkuLHglr/4+Hkd/8Lvc=";
   };
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   nativeCheckInputs = [
     pytestCheckHook

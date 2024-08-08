@@ -39,7 +39,9 @@ stdenv.mkDerivation rec {
     cmake
   ];
 
-  cmakeFlags = [ "-DVMIME_SENDMAIL_PATH=${sendmailPath}" ];
+  cmakeFlags = [
+    "-DVMIME_SENDMAIL_PATH=${sendmailPath}"
+  ];
 
   meta = {
     homepage = "https://www.vmime.org/";

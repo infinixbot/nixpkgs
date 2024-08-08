@@ -12,7 +12,9 @@
 mkDerivation rec {
   pname = "kpmcore";
 
-  patches = [ ./nixostrustedprefix.patch ];
+  patches = [
+    ./nixostrustedprefix.patch
+  ];
 
   nativeBuildInputs = [ extra-cmake-modules ];
 

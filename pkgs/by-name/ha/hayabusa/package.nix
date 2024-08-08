@@ -22,7 +22,9 @@ rustPlatform.buildRustPackage {
 
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     openssl

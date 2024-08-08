@@ -40,9 +40,13 @@ stdenv.mkDerivation (finalAttrs: {
     python3
   ];
 
-  buildInputs = [ expat ] ++ lib.optional stdenv.isDarwin CoreFoundation;
+  buildInputs = [
+    expat
+  ] ++ lib.optional stdenv.isDarwin CoreFoundation;
 
-  propagatedBuildInputs = [ freetype ];
+  propagatedBuildInputs = [
+    freetype
+  ];
 
   postPatch = ''
     # Requires networking.

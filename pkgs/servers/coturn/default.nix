@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-BKIto762W7UkKjzIm3eVU18oiHpYUMQYJihebYxBOZs=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     openssl
@@ -34,7 +36,9 @@ stdenv.mkDerivation rec {
     sqlite.dev
   ];
 
-  patches = [ ./pure-configure.patch ];
+  patches = [
+    ./pure-configure.patch
+  ];
 
   # Workaround build failure on -fno-common toolchains like upstream
   # gcc-10. Otherwise build fails as:

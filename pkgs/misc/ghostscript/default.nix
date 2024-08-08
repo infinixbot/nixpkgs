@@ -85,7 +85,9 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  depsBuildBuild = [ buildPackages.stdenv.cc ];
+  depsBuildBuild = [
+    buildPackages.stdenv.cc
+  ];
 
   nativeBuildInputs = [
     pkg-config
@@ -141,8 +143,12 @@ stdenv.mkDerivation rec {
       "--enable-dynamic"
       "--disable-hidden-visibility"
     ]
-    ++ lib.optionals x11Support [ "--with-x" ]
-    ++ lib.optionals cupsSupport [ "--enable-cups" ];
+    ++ lib.optionals x11Support [
+      "--with-x"
+    ]
+    ++ lib.optionals cupsSupport [
+      "--enable-cups"
+    ];
 
   # make check does nothing useful
   doCheck = false;

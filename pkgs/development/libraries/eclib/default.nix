@@ -34,12 +34,18 @@ stdenv.mkDerivation rec {
     url = "https://github.com/JohnCremona/eclib/releases/download/v${version}/eclib-${version}.tar.bz2";
     sha256 = "sha256-O6kI4gGd5T/LoUFEnKpvqC8DYFv4O/nagJLfU4ravnw=";
   };
-  buildInputs = [
-    pari
-    ntl
-    gmp
-  ] ++ lib.optionals withFlint [ flint ];
-  nativeBuildInputs = [ autoreconfHook ];
+  buildInputs =
+    [
+      pari
+      ntl
+      gmp
+    ]
+    ++ lib.optionals withFlint [
+      flint
+    ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
   doCheck = true;
   meta = with lib; {
     description = "Elliptic curve tools";

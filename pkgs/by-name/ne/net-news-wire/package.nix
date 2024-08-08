@@ -16,7 +16,9 @@ stdenvNoCC.mkDerivation rec {
 
   sourceRoot = ".";
 
-  nativeBuildInputs = [ unzip ];
+  nativeBuildInputs = [
+    unzip
+  ];
 
   installPhase = ''
     runHook preInstall

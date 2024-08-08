@@ -23,7 +23,9 @@ buildPythonPackage rec {
     echo -e "import flet_runtime._setup_runtime\n$(cat src/flet_runtime/__init__.py)" > src/flet_runtime/__init__.py
   '';
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   pythonRelaxDeps = [ "httpx" ];
 

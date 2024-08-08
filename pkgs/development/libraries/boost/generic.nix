@@ -138,7 +138,9 @@ let
     ++ lib.optional (!enablePython) "--without-python"
     ++ lib.optional needUserConfig "--user-config=user-config.jam"
     ++ lib.optional (stdenv.buildPlatform.isDarwin && stdenv.hostPlatform.isLinux) "pch=off"
-    ++ lib.optionals stdenv.hostPlatform.isMinGW [ "threadapi=win32" ]
+    ++ lib.optionals stdenv.hostPlatform.isMinGW [
+      "threadapi=win32"
+    ]
     ++ extraB2Args
   );
 

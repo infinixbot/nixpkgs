@@ -94,7 +94,9 @@ stdenv.mkDerivation {
       OpenGL
       GLUT
     ]
-    ++ optionals enablePython [ python ];
+    ++ optionals enablePython [
+      python
+    ];
   propagatedBuildInputs =
     optionals stdenv.isDarwin [ libobjc ]
     ++ optionals stdenv.isLinux [
@@ -143,7 +145,9 @@ stdenv.mkDerivation {
       "-DCMAKE_INSTALL_BINDIR=bin"
       "-DVTK_VERSIONED_INSTALL=OFF"
     ]
-    ++ optionals enableQt [ "-DVTK_GROUP_ENABLE_Qt:STRING=YES" ]
+    ++ optionals enableQt [
+      "-DVTK_GROUP_ENABLE_Qt:STRING=YES"
+    ]
     ++ optionals stdenv.isDarwin [ "-DOPENGL_INCLUDE_DIR=${OpenGL}/Library/Frameworks" ]
     ++ optionals enablePython [
       "-DVTK_WRAP_PYTHON:BOOL=ON"

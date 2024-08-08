@@ -113,7 +113,9 @@ in
         BindReadOnlyPaths = [
           builtins.storeDir # Needed to run the python interpreter
         ];
-        BindPaths = [ cfg.downloadDirectory ];
+        BindPaths = [
+          cfg.downloadDirectory
+        ];
 
         # Hardening options
         LockPersonality = true;

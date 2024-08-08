@@ -24,7 +24,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   makeFlags = [ "PREFIX=$(out)" ];
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [
+    pkg-config
+  ];
 
   buildInputs = [
     curl

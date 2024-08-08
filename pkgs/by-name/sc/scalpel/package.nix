@@ -39,7 +39,9 @@ stdenv.mkDerivation (finalAttrs: {
     ./bootstrap
   '';
 
-  configureFlags = [ "--with-pic" ];
+  configureFlags = [
+    "--with-pic"
+  ];
 
   postInstall = ''
     install -Dm644 scalpel.conf -t $out/share/scalpel/

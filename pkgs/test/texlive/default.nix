@@ -88,7 +88,9 @@ rec {
   chktex =
     runCommand "texlive-test-chktex"
       {
-        nativeBuildInputs = [ (texlive.withPackages (ps: [ ps.chktex ])) ];
+        nativeBuildInputs = [
+          (texlive.withPackages (ps: [ ps.chktex ]))
+        ];
         input = builtins.toFile "chktex-sample.tex" ''
           \documentclass{article}
           \begin{document}

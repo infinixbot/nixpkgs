@@ -31,7 +31,9 @@ rustPlatform.buildRustPackage.override { stdenv = clangStdenv; } {
 
   nativeBuildInputs = [ pkg-config ];
 
-  hardeningDisable = [ "zerocallusedregs" ];
+  hardeningDisable = [
+    "zerocallusedregs"
+  ];
 
   meta = {
     description = "Dynamic real-time view of running eBPF programs";

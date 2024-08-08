@@ -32,7 +32,9 @@ buildPythonApplication rec {
     })
   ];
 
-  nativeBuildInputs = [ ];
+  nativeBuildInputs =
+    [
+    ];
 
   propagatedBuildInputs = [
     click
@@ -42,7 +44,9 @@ buildPythonApplication rec {
     six
   ];
 
-  pythonRelaxDeps = [ "click" ];
+  pythonRelaxDeps = [
+    "click"
+  ];
 
   nativeCheckInputs = [
     cogapp

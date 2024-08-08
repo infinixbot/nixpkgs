@@ -174,7 +174,9 @@ rec {
 
     {
       command = commandsToShellInvocation (builtins.map ({ command, ... }: command) scripts);
-      supportedFeatures = lib.optionals hasCommitSupport [ "commit" ];
+      supportedFeatures = lib.optionals hasCommitSupport [
+        "commit"
+      ];
     };
 
   /*

@@ -560,7 +560,9 @@ in
                 somewhere, put those directories here.
               '';
               default = [ ];
-              example = [ "/var/backup/mysqldump" ];
+              example = [
+                "/var/backup/mysqldump"
+              ];
             };
 
             privateTmp = mkOption {

@@ -26,17 +26,25 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   nativeBuildInputs =
-    [ cmake ]
+    [
+      cmake
+    ]
     ++ lib.optionals (python != null) [
       python
       swig
     ];
 
-  cmakeFlags = [
-    "-DPLFIT_USE_OPENMP=ON"
-  ] ++ lib.optionals (python != null) [ "-DPLFIT_COMPILE_PYTHON_MODULE=ON" ];
+  cmakeFlags =
+    [
+      "-DPLFIT_USE_OPENMP=ON"
+    ]
+    ++ lib.optionals (python != null) [
+      "-DPLFIT_COMPILE_PYTHON_MODULE=ON"
+    ];
 
-  buildInputs = lib.optionals stdenv.cc.isClang [ llvmPackages.openmp ];
+  buildInputs = lib.optionals stdenv.cc.isClang [
+    llvmPackages.openmp
+  ];
 
   doCheck = true;
 

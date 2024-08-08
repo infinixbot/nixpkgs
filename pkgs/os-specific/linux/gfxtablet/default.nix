@@ -9,7 +9,9 @@ stdenv.mkDerivation rec {
   version = "1.4";
   pname = "gfxtablet-uinput-driver";
 
-  buildInputs = [ linuxHeaders ];
+  buildInputs = [
+    linuxHeaders
+  ];
 
   src = fetchFromGitHub {
     owner = "rfc2822";

@@ -66,7 +66,9 @@ buildRustPackage' {
       ]
     );
 
-  nativeCheckInputs = [ xvfb-run ];
+  nativeCheckInputs = [
+    xvfb-run
+  ];
 
   strictDeps = true;
 

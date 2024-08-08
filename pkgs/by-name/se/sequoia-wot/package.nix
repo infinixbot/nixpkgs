@@ -39,7 +39,9 @@ rustPlatform.buildRustPackage rec {
       darwin.apple_sdk.frameworks.SystemConfiguration
       # See comment near sequoia-openpgp/crypto- buildFeatures
     ]
-    ++ lib.optionals (!stdenv.targetPlatform.isWindows) [ nettle ];
+    ++ lib.optionals (!stdenv.targetPlatform.isWindows) [
+      nettle
+    ];
 
   buildFeatures = [
     # Upstream uses the sequoia-openpgp crate, which doesn't force you to use a

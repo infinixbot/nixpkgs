@@ -55,7 +55,9 @@ let
 
     # this only works for some binaries, others may need to be added to `binPath` or in the modules
     paths =
-      [ gvproxy ]
+      [
+        gvproxy
+      ]
       ++ lib.optionals stdenv.isLinux [
         aardvark-dns
         catatonit # added here for the pause image and also set in `containersConf` for `init_path`

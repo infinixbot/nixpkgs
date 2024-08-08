@@ -20,9 +20,13 @@ stdenv.mkDerivation {
 
   src = fetchurl serverSource;
 
-  nativeBuildInputs = [ autoPatchelfHook ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+  ];
 
-  buildInputs = [ stdenv.cc.cc.lib ];
+  buildInputs = [
+    stdenv.cc.cc.lib
+  ];
 
   patches = [
     # patch logger to use console instead of rolling files

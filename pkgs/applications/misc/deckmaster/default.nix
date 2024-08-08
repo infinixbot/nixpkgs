@@ -21,7 +21,9 @@ buildGoModule rec {
 
   proxyVendor = true;
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   ldflags = [
     "-s"

@@ -38,7 +38,9 @@ buildPythonApplication {
     makeWrapper
     python3Packages.wrapPython
   ];
-  propagatedBuildInputs = [ python3Packages.gitpython ];
+  propagatedBuildInputs = [
+    python3Packages.gitpython
+  ];
 
   dontUnpack = true;
 

@@ -10,7 +10,9 @@ mkDerivation {
 
   outputs = [ "out" ];
 
-  nativeBuildInputs = [ extra-cmake-modules ];
+  nativeBuildInputs = [
+    extra-cmake-modules
+  ];
 
   buildInputs = [
     kcmutils

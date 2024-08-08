@@ -22,13 +22,21 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-1lHF8S0Xf5iOLQyARoYeWGGC9i68GVpk3EvSHo21Q2w=";
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = [
-    zlib
-  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.SystemConfiguration ];
+  buildInputs =
+    [
+      zlib
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.SystemConfiguration
+    ];
 
-  nativeCheckInputs = [ git ];
+  nativeCheckInputs = [
+    git
+  ];
 
   checkFlags = [
     # requires nightly version of cargo-rustdoc

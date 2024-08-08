@@ -43,20 +43,24 @@ stdenv.mkDerivation rec {
     hash = "sha256-VsRKFwNFmOlgdFivrhvnXz3l798OYjVfCbpY/HvDEqw=";
   };
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    gettext
-    itstool
-    pkg-config
-    libxml2
-    wrapGAppsHook4
-    gobject-introspection
-    gtk-doc
-    docbook-xsl-nons
-    docbook_xml_dtd_43
-    python3
-  ] ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [ mesonEmulatorHook ];
+  nativeBuildInputs =
+    [
+      meson
+      ninja
+      gettext
+      itstool
+      pkg-config
+      libxml2
+      wrapGAppsHook4
+      gobject-introspection
+      gtk-doc
+      docbook-xsl-nons
+      docbook_xml_dtd_43
+      python3
+    ]
+    ++ lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
+      mesonEmulatorHook
+    ];
 
   buildInputs = [
     glib
@@ -69,7 +73,9 @@ stdenv.mkDerivation rec {
     gsettings-desktop-schemas
   ];
 
-  mesonFlags = [ "-Dgtk_doc=true" ];
+  mesonFlags = [
+    "-Dgtk_doc=true"
+  ];
 
   passthru = {
     updateScript = gnome.updateScript {

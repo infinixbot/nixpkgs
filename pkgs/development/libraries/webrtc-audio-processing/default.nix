@@ -42,7 +42,9 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  propagatedBuildInputs = [ abseil-cpp ];
+  propagatedBuildInputs = [
+    abseil-cpp
+  ];
 
   buildInputs = lib.optionals stdenv.isDarwin (
     with darwin.apple_sdk.frameworks;

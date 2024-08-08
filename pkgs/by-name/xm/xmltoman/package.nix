@@ -23,7 +23,9 @@ stdenvNoCC.mkDerivation rec {
     installShellFiles
   ];
 
-  buildInputs = [ perlPackages.XMLTokeParser ];
+  buildInputs = [
+    perlPackages.XMLTokeParser
+  ];
 
   dontBuild = true;
 

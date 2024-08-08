@@ -16,7 +16,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-yBRnhdCDeA0bL+kkrmnIqyXAlhZzO2Vthc4Dnba80j4=";
   };
 
-  buildInputs = [ glib ];
+  buildInputs = [
+    glib
+  ];
 
   buildPhase = ''
     runHook preBuild

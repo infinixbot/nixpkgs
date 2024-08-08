@@ -369,8 +369,12 @@ in
           User = "knot";
           Group = "knot";
 
-          AmbientCapabilities = [ "CAP_NET_BIND_SERVICE" ] ++ xdpCapabilities;
-          CapabilityBoundingSet = [ "CAP_NET_BIND_SERVICE" ] ++ xdpCapabilities;
+          AmbientCapabilities = [
+            "CAP_NET_BIND_SERVICE"
+          ] ++ xdpCapabilities;
+          CapabilityBoundingSet = [
+            "CAP_NET_BIND_SERVICE"
+          ] ++ xdpCapabilities;
           DeviceAllow = "";
           DevicePolicy = "closed";
           LockPersonality = true;
@@ -408,10 +412,14 @@ in
           StateDirectory = "knot";
           StateDirectoryMode = "0700";
           SystemCallArchitectures = "native";
-          SystemCallFilter = [
-            "@system-service"
-            "~@privileged"
-          ] ++ optionals (cfg.enableXDP) [ "bpf" ];
+          SystemCallFilter =
+            [
+              "@system-service"
+              "~@privileged"
+            ]
+            ++ optionals (cfg.enableXDP) [
+              "bpf"
+            ];
           UMask = "0077";
         };
     };

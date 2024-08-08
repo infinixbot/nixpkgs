@@ -39,9 +39,13 @@ stdenv.mkDerivation {
 
   nativeCheckInputs = [ perl ];
 
-  makeFlags = [ "LIBTOOL=${lib.getExe libtool}" ];
+  makeFlags = [
+    "LIBTOOL=${lib.getExe libtool}"
+  ];
 
-  installFlags = [ "PREFIX=${placeholder "out"}" ];
+  installFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   enableParallelBuilding = true;
 

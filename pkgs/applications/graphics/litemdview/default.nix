@@ -20,7 +20,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-XGjP+7i3mYCEzPYwVY+75DARdXJFY4vUWHFpPeoNqAE=";
   };
 
-  buildInputs = [ gtkmm3 ];
+  buildInputs = [
+    gtkmm3
+  ];
 
   nativeBuildInputs = [
     autoreconfHook

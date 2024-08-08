@@ -173,7 +173,9 @@ builtins.intersectAttrs super {
     (
       let
         installHledgerExtraFiles = overrideCabal (drv: {
-          buildTools = drv.buildTools or [ ] ++ [ pkgs.buildPackages.installShellFiles ];
+          buildTools = drv.buildTools or [ ] ++ [
+            pkgs.buildPackages.installShellFiles
+          ];
           postInstall = ''
             for i in $(seq 1 9); do
               installManPage *.$i
@@ -286,7 +288,9 @@ builtins.intersectAttrs super {
       done
     '';
     # One test uses timezone data
-    testToolDepends = drv.testToolDepends or [ ] ++ [ pkgs.tzdata ];
+    testToolDepends = drv.testToolDepends or [ ] ++ [
+      pkgs.tzdata
+    ];
   }) super.arbtt;
 
   hzk = appendConfigureFlag "--extra-include-dirs=${pkgs.zookeeper_mt}/include/zookeeper" super.hzk;
@@ -557,7 +561,9 @@ builtins.intersectAttrs super {
     let
       g = addBuildDepend pkgs.perl super.ginsu;
       g' = overrideCabal (drv: {
-        executableSystemDepends = (drv.executableSystemDepends or [ ]) ++ [ pkgs.ncurses ];
+        executableSystemDepends = (drv.executableSystemDepends or [ ]) ++ [
+          pkgs.ncurses
+        ];
       }) g;
     in
     g';
@@ -596,10 +602,14 @@ builtins.intersectAttrs super {
   tasty = overrideCabal (drv: {
     libraryHaskellDepends =
       (drv.libraryHaskellDepends or [ ])
-      ++ lib.optionals (
-        !(pkgs.stdenv.hostPlatform.isAarch64 || pkgs.stdenv.hostPlatform.isx86_64)
-        || (self.ghc.isGhcjs or false)
-      ) [ self.unbounded-delays ];
+      ++ lib.optionals
+        (
+          !(pkgs.stdenv.hostPlatform.isAarch64 || pkgs.stdenv.hostPlatform.isx86_64)
+          || (self.ghc.isGhcjs or false)
+        )
+        [
+          self.unbounded-delays
+        ];
   }) super.tasty;
 
   tasty-discover = overrideCabal (drv: {
@@ -622,8 +632,12 @@ builtins.intersectAttrs super {
   # Additional note: nixpkgs' freeglut and macOS's OpenGL implementation do not cooperate,
   # so disable this on Darwin only
   ${if pkgs.stdenv.isDarwin then null else "GLUT"} = overrideCabal (drv: {
-    pkg-configDepends = drv.pkg-configDepends or [ ] ++ [ pkgs.freeglut ];
-    patches = drv.patches or [ ] ++ [ ./patches/GLUT.patch ];
+    pkg-configDepends = drv.pkg-configDepends or [ ] ++ [
+      pkgs.freeglut
+    ];
+    patches = drv.patches or [ ] ++ [
+      ./patches/GLUT.patch
+    ];
     prePatch =
       drv.prePatch or ""
       + ''
@@ -887,7 +901,9 @@ builtins.intersectAttrs super {
               }"
           ''
           + (drv.postFixup or "");
-        buildTools = [ pkgs.buildPackages.makeWrapper ] ++ (drv.buildTools or [ ]);
+        buildTools = [
+          pkgs.buildPackages.makeWrapper
+        ] ++ (drv.buildTools or [ ]);
 
         # Git annex provides a restricted login shell. Setting
         # passthru.shellPath here allows a user's login shell to be set to
@@ -1131,7 +1147,9 @@ builtins.intersectAttrs super {
   }) super.hlint;
 
   taglib = overrideCabal (drv: {
-    librarySystemDepends = [ pkgs.zlib ] ++ (drv.librarySystemDepends or [ ]);
+    librarySystemDepends = [
+      pkgs.zlib
+    ] ++ (drv.librarySystemDepends or [ ]);
   }) super.taglib;
 
   # random 1.2.0 has tests that indirectly depend on
@@ -1156,7 +1174,9 @@ builtins.intersectAttrs super {
   # not used to link against by anyone, we can make it’s closure smaller and
   # add its runtime dependencies in `haskellPackages` (as opposed to cabal2nix).
   cabal2nix-unstable = overrideCabal (drv: {
-    buildTools = (drv.buildTools or [ ]) ++ [ pkgs.buildPackages.makeWrapper ];
+    buildTools = (drv.buildTools or [ ]) ++ [
+      pkgs.buildPackages.makeWrapper
+    ];
     postInstall = ''
       ${drv.postInstall or ""}
 
@@ -1285,7 +1305,9 @@ builtins.intersectAttrs super {
           ''
           + (drv.preCompileBuildDriver or "");
         # install man page
-        buildTools = [ pkgs.buildPackages.installShellFiles ] ++ (drv.buildTools or [ ]);
+        buildTools = [
+          pkgs.buildPackages.installShellFiles
+        ] ++ (drv.buildTools or [ ]);
         postInstall =
           ''
             installManPage man/atsfmt.1
@@ -1439,7 +1461,9 @@ builtins.intersectAttrs super {
   # is not commonly installed on systems, so we add it to PATH. Closure size
   # penalty is about 10MB at the time of writing this (2022-08-20).
   cabal-install = overrideCabal (old: {
-    executableToolDepends = [ pkgs.buildPackages.makeWrapper ] ++ old.buildToolDepends or [ ];
+    executableToolDepends = [
+      pkgs.buildPackages.makeWrapper
+    ] ++ old.buildToolDepends or [ ];
     postInstall =
       old.postInstall
       + ''

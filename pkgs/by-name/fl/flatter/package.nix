@@ -25,15 +25,21 @@ stdenv.mkDerivation {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
-  buildInputs = [
-    blas
-    gmp
-    mpfr
-    fplll
-    eigen
-  ] ++ lib.optionals stdenv.isDarwin [ llvmPackages.openmp ];
+  buildInputs =
+    [
+      blas
+      gmp
+      mpfr
+      fplll
+      eigen
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      llvmPackages.openmp
+    ];
 
   passthru.updateScript = unstableGitUpdater { };
 

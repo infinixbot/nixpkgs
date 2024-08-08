@@ -18,7 +18,9 @@ buildPythonPackage rec {
     hash = "sha256-UJxBgTmEe8suR6WmttJKLi3KKQvEaNrWtrgCnoqGW/0=";
   };
 
-  nativeBuildInputs = [ poetry-core ];
+  nativeBuildInputs = [
+    poetry-core
+  ];
 
   propagatedBuildInputs = [
     tkinter

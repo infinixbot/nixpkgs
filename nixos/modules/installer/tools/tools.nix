@@ -18,7 +18,9 @@ let
       // {
         dir = "bin";
         isExecutable = true;
-        nativeBuildInputs = [ pkgs.installShellFiles ];
+        nativeBuildInputs = [
+          pkgs.installShellFiles
+        ];
         postInstall = ''
           installManPage ${args.manPage}
         '';
@@ -85,7 +87,9 @@ let
     name = "nixos-enter";
     src = ./nixos-enter.sh;
     inherit (pkgs) runtimeShell;
-    path = makeBinPath [ pkgs.util-linuxMinimal ];
+    path = makeBinPath [
+      pkgs.util-linuxMinimal
+    ];
     manPage = ./manpages/nixos-enter.8;
   };
 

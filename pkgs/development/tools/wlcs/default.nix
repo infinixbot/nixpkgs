@@ -66,6 +66,8 @@ stdenv.mkDerivation (finalAttrs: {
     license = licenses.gpl3Only;
     maintainers = with maintainers; [ OPNA2608 ];
     platforms = platforms.linux;
-    pkgConfigModules = [ "wlcs" ];
+    pkgConfigModules = [
+      "wlcs"
+    ];
   };
 })

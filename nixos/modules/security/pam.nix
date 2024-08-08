@@ -822,7 +822,9 @@ let
                     enable = cfg.p11Auth;
                     control = p11.control;
                     modulePath = "${pkgs.pam_p11}/lib/security/pam_p11.so";
-                    args = [ "${pkgs.opensc}/lib/opensc-pkcs11.so" ];
+                    args = [
+                      "${pkgs.opensc}/lib/opensc-pkcs11.so"
+                    ];
                   }
                 )
                 (
@@ -894,7 +896,9 @@ let
                     enable = dp9ik.enable;
                     control = dp9ik.control;
                     modulePath = "${pkgs.pam_dp9ik}/lib/security/pam_p9.so";
-                    args = [ dp9ik.authserver ];
+                    args = [
+                      dp9ik.authserver
+                    ];
                   }
                 )
                 {

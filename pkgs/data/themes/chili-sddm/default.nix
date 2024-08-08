@@ -33,7 +33,9 @@ stdenv.mkDerivation {
     sha256 = "036fxsa7m8ymmp3p40z671z163y6fcsa9a641lrxdrw225ssq5f3";
   };
 
-  propagatedBuildInputs = [ qtgraphicaleffects ];
+  propagatedBuildInputs = [
+    qtgraphicaleffects
+  ];
 
   dontWrapQtApps = true;
 

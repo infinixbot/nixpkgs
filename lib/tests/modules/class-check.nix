@@ -43,7 +43,9 @@
     _module.freeformType = lib.types.anything;
     ok = lib.evalModules {
       class = "nixos";
-      modules = [ ./module-class-is-nixos.nix ];
+      modules = [
+        ./module-class-is-nixos.nix
+      ];
     };
 
     fail = lib.evalModules {

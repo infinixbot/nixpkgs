@@ -31,7 +31,9 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    [ xercesc ]
+    [
+      xercesc
+    ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin (
       with darwin.apple_sdk.frameworks;
       [

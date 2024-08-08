@@ -134,7 +134,9 @@ stdenv.mkDerivation rec {
     "INTROSPECTION_TYPELIBDIR=$(out)/lib/girepository-1.0"
   ];
 
-  installFlags = [ "sysconfdir=${placeholder "out"}/etc" ];
+  installFlags = [
+    "sysconfdir=${placeholder "out"}/etc"
+  ];
 
   enableParallelBuilding = true;
 

@@ -25,7 +25,9 @@ stdenv.mkDerivation {
 
   strictDeps = true;
 
-  nativeBuildInputs = [ cmake ];
+  nativeBuildInputs = [
+    cmake
+  ];
 
   buildInputs =
     [
@@ -41,7 +43,9 @@ stdenv.mkDerivation {
     ];
 
   cmakeFlags =
-    [ "-DCEGUI_OPTION_DEFAULT_IMAGECODEC=OgreRenderer-0" ]
+    [
+      "-DCEGUI_OPTION_DEFAULT_IMAGECODEC=OgreRenderer-0"
+    ]
     ++ lib.optionals (stdenv.hostPlatform.isDarwin) [
       "-DCMAKE_OSX_ARCHITECTURES=${stdenv.hostPlatform.darwinArch}"
     ];

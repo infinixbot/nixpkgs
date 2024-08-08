@@ -39,8 +39,12 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   nativeBuildInputs =
-    lib.optionals stdenv.hostPlatform.isLinux [ autoPatchelfHook ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ makeWrapper ];
+    lib.optionals stdenv.hostPlatform.isLinux [
+      autoPatchelfHook
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      makeWrapper
+    ];
 
   buildInputs = lib.optionals stdenv.hostPlatform.isLinux [
     alsa-lib
@@ -50,7 +54,9 @@ stdenv.mkDerivation (finalAttrs: {
     SDL2
   ];
 
-  runtimeDependencies = lib.optionals stdenv.hostPlatform.isLinux [ libjack2 ];
+  runtimeDependencies = lib.optionals stdenv.hostPlatform.isLinux [
+    libjack2
+  ];
 
   dontConfigure = true;
   dontBuild = true;

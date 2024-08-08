@@ -79,7 +79,9 @@ python3.pkgs.buildPythonApplication rec {
     pyyaml
   ];
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [
+    "PREFIX=${placeholder "out"}"
+  ];
 
   preFixup = ''
     gappsWrapperArgs+=(

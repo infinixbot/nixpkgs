@@ -16,7 +16,9 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "sha256-gbn0vhk+lYBPnAPwWwbAd+2AQKOkYW+akal/9tUVKVI=";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    makeWrapper
+  ];
 
   buildCommand = ''
     makeWrapper ${jdk17_headless}/bin/java $out/bin/komga --add-flags "-jar $src"

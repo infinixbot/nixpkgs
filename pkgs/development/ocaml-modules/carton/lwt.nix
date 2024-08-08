@@ -40,7 +40,9 @@ buildDunePackage {
   # Tests fail with git 2.41
   # see https://github.com/mirage/ocaml-git/issues/617
   doCheck = false;
-  nativeCheckInputs = [ git-binary ];
+  nativeCheckInputs = [
+    git-binary
+  ];
   checkInputs = [
     alcotest
     alcotest-lwt

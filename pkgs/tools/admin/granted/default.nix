@@ -35,7 +35,9 @@ buildGoModule rec {
     "-X github.com/common-fate/granted/internal/build.BuiltBy=Nix"
   ];
 
-  subPackages = [ "cmd/granted" ];
+  subPackages = [
+    "cmd/granted"
+  ];
 
   postInstall =
     ''

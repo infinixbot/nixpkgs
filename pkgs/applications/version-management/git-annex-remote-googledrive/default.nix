@@ -31,7 +31,9 @@ buildPythonApplication rec {
   # testing this special remote obviously depends on authenticating with google
   doCheck = false;
 
-  pythonImportsCheck = [ "git_annex_remote_googledrive" ];
+  pythonImportsCheck = [
+    "git_annex_remote_googledrive"
+  ];
 
   meta = with lib; {
     description = "Git-annex special remote for Google Drive";

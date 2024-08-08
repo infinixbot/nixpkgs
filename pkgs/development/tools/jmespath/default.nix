@@ -17,7 +17,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-Q12muprcKB7fCxemESb4sGPyYIdmgOt3YXVUln7oabw=";
 
-  excludedPackages = [ "./internal/testify" ];
+  excludedPackages = [
+    "./internal/testify"
+  ];
 
   ldflags = [
     "-s"

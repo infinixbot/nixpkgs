@@ -20,7 +20,9 @@ stdenv.mkDerivation rec {
     dpkg
   ];
 
-  buildInputs = [ libcxx ];
+  buildInputs = [
+    libcxx
+  ];
 
   unpackPhase = ''
     mkdir bin pkg

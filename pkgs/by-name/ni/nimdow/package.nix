@@ -20,7 +20,9 @@ buildNimPackage (finalAttrs: {
 
   lockFile = ./lock.json;
 
-  nimFlags = [ "--deepcopy:on" ];
+  nimFlags = [
+    "--deepcopy:on"
+  ];
 
   postInstall = ''
     install -D config.default.toml $out/share/nimdow/config.default.toml

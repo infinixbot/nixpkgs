@@ -33,15 +33,21 @@ stdenv.mkDerivation rec {
     }
     .${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
 
-  buildInputs = [ libsecret ];
+  buildInputs = [
+    libsecret
+  ];
 
   nativeBuildInputs =
     [
       makeWrapper
       wrapGAppsHook3
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [ _7zz ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [ autoPatchelfHook ];
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      _7zz
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [
+      autoPatchelfHook
+    ];
 
   sourceRoot = if stdenv.isDarwin then "." else null;
 

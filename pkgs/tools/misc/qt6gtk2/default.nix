@@ -31,7 +31,9 @@ stdenv.mkDerivation {
 
   dontWrapQtApps = true;
 
-  qmakeFlags = [ "PLUGINDIR=${placeholder "out"}/${qtbase.qtPluginPrefix}" ];
+  qmakeFlags = [
+    "PLUGINDIR=${placeholder "out"}/${qtbase.qtPluginPrefix}"
+  ];
 
   passthru.updateScript = unstableGitUpdater { };
 

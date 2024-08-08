@@ -25,7 +25,9 @@ stdenv.mkDerivation rec {
     inherit base;
   };
 
-  buildInputs = base.buildInputs ++ [ libspnav ];
+  buildInputs = base.buildInputs ++ [
+    libspnav
+  ];
 
   nativeBuildInputs = base.nativeBuildInputs ++ [
     boost.dev

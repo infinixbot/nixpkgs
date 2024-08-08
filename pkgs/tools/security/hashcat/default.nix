@@ -36,7 +36,13 @@ stdenv.mkDerivation rec {
       --replace '-i ""' '-i'
   '';
 
-  nativeBuildInputs = [ makeWrapper ] ++ lib.optionals cudaSupport [ addDriverRunpath ];
+  nativeBuildInputs =
+    [
+      makeWrapper
+    ]
+    ++ lib.optionals cudaSupport [
+      addDriverRunpath
+    ];
 
   buildInputs =
     [
@@ -76,7 +82,12 @@ stdenv.mkDerivation rec {
   postFixup =
     let
       LD_LIBRARY_PATH = builtins.concatStringsSep ":" (
-        [ "${ocl-icd}/lib" ] ++ lib.optionals cudaSupport [ "${cudaPackages.cudatoolkit}/lib" ]
+        [
+          "${ocl-icd}/lib"
+        ]
+        ++ lib.optionals cudaSupport [
+          "${cudaPackages.cudatoolkit}/lib"
+        ]
       );
     in
     ''

@@ -227,7 +227,9 @@ self: super:
       meta = meta // {
         homepage = "https://gitlab.freedesktop.org/xorg/lib/libxcvt";
         mainProgram = "cvt";
-        badPlatforms = meta.badPlatforms or [ ] ++ [ lib.systems.inspect.platformPatterns.isStatic ];
+        badPlatforms = meta.badPlatforms or [ ] ++ [
+          lib.systems.inspect.platformPatterns.isStatic
+        ];
       };
     }
   );
@@ -240,7 +242,9 @@ self: super:
     ];
     configureFlags = attrs.configureFlags or [ ] ++ malloc0ReturnsNullCrossFlag;
     depsBuildBuild =
-      [ buildPackages.stdenv.cc ]
+      [
+        buildPackages.stdenv.cc
+      ]
       ++ lib.optionals stdenv.hostPlatform.isStatic [
         (xorg.buildPackages.stdenv.cc.libc.static or null)
       ];
@@ -339,7 +343,9 @@ self: super:
     buildInputs = attrs.buildInputs ++ [ libxcrypt ];
     configureFlags =
       attrs.configureFlags or [ ]
-      ++ [ "ac_cv_path_RAWCPP=${stdenv.cc.targetPrefix}cpp" ]
+      ++ [
+        "ac_cv_path_RAWCPP=${stdenv.cc.targetPrefix}cpp"
+      ]
       ++
         lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform)
           # checking for /dev/urandom... configure: error: cannot check for file existence when cross compiling
@@ -478,7 +484,9 @@ self: super:
       xorg.libXext
     ];
     configureFlags =
-      lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [ "xorg_cv_malloc0_returns_null=no" ]
+      lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
+        "xorg_cv_malloc0_returns_null=no"
+      ]
       ++ lib.optional stdenv.hostPlatform.isStatic "--disable-shared";
   });
 
@@ -751,18 +759,24 @@ self: super:
       "dev"
     ]; # to get rid of xorgserver.dev; man is tiny
     preBuild = "sed -e '/motion_history_proc/d; /history_size/d;' -i src/*.c";
-    configureFlags = [ "--with-sdkdir=${placeholder "dev"}/include/xorg" ];
+    configureFlags = [
+      "--with-sdkdir=${placeholder "dev"}/include/xorg"
+    ];
   });
 
   xf86inputmouse = super.xf86inputmouse.overrideAttrs (attrs: {
-    configureFlags = [ "--with-sdkdir=${placeholder "out"}/include/xorg" ];
+    configureFlags = [
+      "--with-sdkdir=${placeholder "out"}/include/xorg"
+    ];
     meta = attrs.meta // {
       broken = isDarwin; # never worked: https://hydra.nixos.org/job/nixpkgs/trunk/xorg.xf86inputmouse.x86_64-darwin
     };
   });
 
   xf86inputjoystick = super.xf86inputjoystick.overrideAttrs (attrs: {
-    configureFlags = [ "--with-sdkdir=${placeholder "out"}/include/xorg" ];
+    configureFlags = [
+      "--with-sdkdir=${placeholder "out"}/include/xorg"
+    ];
     meta = attrs.meta // {
       broken = isDarwin; # never worked: https://hydra.nixos.org/job/nixpkgs/trunk/xorg.xf86inputjoystick.x86_64-darwin
     };
@@ -779,7 +793,9 @@ self: super:
       "out"
       "dev"
     ];
-    configureFlags = [ "--with-sdkdir=${placeholder "dev"}/include/xorg" ];
+    configureFlags = [
+      "--with-sdkdir=${placeholder "dev"}/include/xorg"
+    ];
   });
 
   xf86inputsynaptics = super.xf86inputsynaptics.overrideAttrs (attrs: {
@@ -967,7 +983,9 @@ self: super:
       libxslt # xsltproc
       gettext # msgfmt
     ];
-    mesonFlags = [ (lib.mesonBool "xorg-rules-symlinks" true) ];
+    mesonFlags = [
+      (lib.mesonBool "xorg-rules-symlinks" true)
+    ];
     # 1: compatibility for X11/xkb location
     # 2: I think pkg-config/ is supposed to be in /lib/
     postInstall = ''
@@ -1150,25 +1168,31 @@ self: super:
               attrs.propagatedBuildInputs or [ ]
               ++ [ libpciaccess ]
               ++ commonPropagatedBuildInputs
-              ++ lib.optionals stdenv.isLinux [ udev ];
+              ++ lib.optionals stdenv.isLinux [
+                udev
+              ];
             depsBuildBuild = [ buildPackages.stdenv.cc ];
             prePatch = lib.optionalString stdenv.hostPlatform.isMusl ''
               export CFLAGS+=" -D__uid_t=uid_t -D__gid_t=gid_t"
             '';
-            configureFlags = [
-              "--enable-kdrive" # not built by default
-              "--enable-xephyr"
-              "--enable-xcsecurity" # enable SECURITY extension
-              "--with-default-font-path="
-              # there were only paths containing "${prefix}",
-              # and there are no fonts in this package anyway
-              "--with-xkb-bin-directory=${xorg.xkbcomp}/bin"
-              "--with-xkb-path=${xorg.xkeyboardconfig}/share/X11/xkb"
-              "--with-xkb-output=$out/share/X11/xkb/compiled"
-              "--with-log-dir=/var/log"
-              "--enable-glamor"
-              "--with-os-name=Nix" # r13y, embeds the build machine's kernel version otherwise
-            ] ++ lib.optionals stdenv.hostPlatform.isMusl [ "--disable-tls" ];
+            configureFlags =
+              [
+                "--enable-kdrive" # not built by default
+                "--enable-xephyr"
+                "--enable-xcsecurity" # enable SECURITY extension
+                "--with-default-font-path="
+                # there were only paths containing "${prefix}",
+                # and there are no fonts in this package anyway
+                "--with-xkb-bin-directory=${xorg.xkbcomp}/bin"
+                "--with-xkb-path=${xorg.xkeyboardconfig}/share/X11/xkb"
+                "--with-xkb-output=$out/share/X11/xkb/compiled"
+                "--with-log-dir=/var/log"
+                "--enable-glamor"
+                "--with-os-name=Nix" # r13y, embeds the build machine's kernel version otherwise
+              ]
+              ++ lib.optionals stdenv.hostPlatform.isMusl [
+                "--disable-tls"
+              ];
 
             env.NIX_CFLAGS_COMPILE = toString [
               # Needed with GCC 12
@@ -1282,20 +1306,24 @@ self: super:
   # and doesn't support hardware accelerated rendering
   # so remove it from the rebuild heavy path for mesa
   xvfb = super.xorgserver.overrideAttrs (old: {
-    configureFlags = [
-      "--enable-xvfb"
-      "--disable-xorg"
-      "--disable-xquartz"
-      "--disable-xwayland"
-      "--disable-glamor"
-      "--disable-glx"
-      "--disable-dri"
-      "--disable-dri2"
-      "--disable-dri3"
-      "--with-xkb-bin-directory=${xorg.xkbcomp}/bin"
-      "--with-xkb-path=${xorg.xkeyboardconfig}/share/X11/xkb"
-      "--with-xkb-output=$out/share/X11/xkb/compiled"
-    ] ++ lib.optional stdenv.isDarwin [ "--without-dtrace" ];
+    configureFlags =
+      [
+        "--enable-xvfb"
+        "--disable-xorg"
+        "--disable-xquartz"
+        "--disable-xwayland"
+        "--disable-glamor"
+        "--disable-glx"
+        "--disable-dri"
+        "--disable-dri2"
+        "--disable-dri3"
+        "--with-xkb-bin-directory=${xorg.xkbcomp}/bin"
+        "--with-xkb-path=${xorg.xkeyboardconfig}/share/X11/xkb"
+        "--with-xkb-output=$out/share/X11/xkb/compiled"
+      ]
+      ++ lib.optional stdenv.isDarwin [
+        "--without-dtrace"
+      ];
 
     buildInputs =
       old.buildInputs
@@ -1371,7 +1399,9 @@ self: super:
         nativeBuildInputs = attrs.nativeBuildInputs ++ lib.optional isDarwin bootstrap_cmds;
         depsBuildBuild = [ buildPackages.stdenv.cc ];
         configureFlags =
-          [ "--with-xserver=${xorg.xorgserver.out}/bin/X" ]
+          [
+            "--with-xserver=${xorg.xorgserver.out}/bin/X"
+          ]
           ++ lib.optionals isDarwin [
             "--with-bundle-id-prefix=org.nixos.xquartz"
             "--with-launchdaemons-dir=\${out}/LaunchDaemons"

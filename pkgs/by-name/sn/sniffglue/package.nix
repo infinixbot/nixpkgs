@@ -23,7 +23,13 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [ libpcap ] ++ lib.optionals stdenv.isLinux [ libseccomp ];
+  buildInputs =
+    [
+      libpcap
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      libseccomp
+    ];
 
   meta = with lib; {
     description = "Secure multithreaded packet sniffer";

@@ -23,7 +23,9 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [ libstrophe ];
+  buildInputs = [
+    libstrophe
+  ];
 
   strictDeps = true;
 

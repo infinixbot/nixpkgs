@@ -26,7 +26,9 @@ stdenv.mkDerivation rec {
     "--enable-rxvt_osc"
   ];
 
-  nativeBuildInputs = [ autoreconfHook ];
+  nativeBuildInputs = [
+    autoreconfHook
+  ];
   buildInputs = [
     ncurses
     libxcrypt
