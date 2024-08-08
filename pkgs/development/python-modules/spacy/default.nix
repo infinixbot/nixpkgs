@@ -55,9 +55,7 @@ buildPythonPackage rec {
     "typer"
   ];
 
-  nativeBuildInputs = [
-    cython_0
-  ];
+  nativeBuildInputs = [ cython_0 ];
 
   propagatedBuildInputs = [
     blis

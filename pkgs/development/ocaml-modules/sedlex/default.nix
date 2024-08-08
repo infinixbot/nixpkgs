@@ -1,24 +1,27 @@
-{ lib
-, fetchFromGitHub
-, fetchurl
-, buildDunePackage
-, gen
-, ppxlib
-, uchar
-, ppx_expect
+{
+  lib,
+  fetchFromGitHub,
+  fetchurl,
+  buildDunePackage,
+  gen,
+  ppxlib,
+  uchar,
+  ppx_expect,
 }:
 
-let param =
-  if lib.versionAtLeast ppxlib.version "0.26.0" then
-    {
-      version = "3.2";
-      sha256 = "sha256-5Vf1LRhSotNpTPzHmRgCMRYtrpgaspLlyzv1XdGt+u8=";
-    }
-  else {
-    version = "2.5";
-    sha256 = "sha256:062a5dvrzvb81l3a9phljrhxfw9nlb61q341q0a6xn65hll3z2wy";
-  }
-; in
+let
+  param =
+    if lib.versionAtLeast ppxlib.version "0.26.0" then
+      {
+        version = "3.2";
+        sha256 = "sha256-5Vf1LRhSotNpTPzHmRgCMRYtrpgaspLlyzv1XdGt+u8=";
+      }
+    else
+      {
+        version = "2.5";
+        sha256 = "sha256:062a5dvrzvb81l3a9phljrhxfw9nlb61q341q0a6xn65hll3z2wy";
+      };
+in
 
 let
   unicodeVersion = "15.0.0";
@@ -55,9 +58,7 @@ buildDunePackage rec {
   propagatedBuildInputs = [
     gen
     ppxlib
-  ] ++ lib.optionals (!atLeast31) [
-    uchar
-  ];
+  ] ++ lib.optionals (!atLeast31) [ uchar ];
 
   preBuild = ''
     rm src/generator/data/dune
@@ -66,9 +67,7 @@ buildDunePackage rec {
     ln -s ${PropList} src/generator/data/PropList.txt
   '';
 
-  checkInputs = lib.optionals atLeast31 [
-    ppx_expect
-  ];
+  checkInputs = lib.optionals atLeast31 [ ppx_expect ];
 
   doCheck = true;
 

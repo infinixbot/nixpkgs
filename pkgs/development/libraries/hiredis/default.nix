@@ -1,4 +1,9 @@
-{ lib, stdenv, fetchFromGitHub, openssl }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  openssl,
+}:
 
 stdenv.mkDerivation rec {
   pname = "hiredis";
@@ -11,9 +16,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-ZxUITm3OcbERcvaNqGQU46bEfV+jN6safPalG0TVfBg=";
   };
 
-  buildInputs = [
-    openssl
-  ];
+  buildInputs = [ openssl ];
 
   PREFIX = "\${out}";
   USE_SSL = 1;

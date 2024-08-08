@@ -1,20 +1,21 @@
-{ lib
-, stdenv
-, SDL2
-, callPackage
-, cmake
-, cubeb
-, curl
-, extra-cmake-modules
-, libXrandr
-, libbacktrace
-, libwebp
-, makeWrapper
-, ninja
-, pkg-config
-, qt6
-, vulkan-loader
-, wayland
+{
+  lib,
+  stdenv,
+  SDL2,
+  callPackage,
+  cmake,
+  cubeb,
+  curl,
+  extra-cmake-modules,
+  libXrandr,
+  libbacktrace,
+  libwebp,
+  makeWrapper,
+  ninja,
+  pkg-config,
+  qt6,
+  vulkan-loader,
+  wayland,
 }:
 
 let
@@ -25,7 +26,7 @@ let
     qttools
     qtwayland
     wrapQtAppsHook
-  ;
+    ;
 in
 stdenv.mkDerivation (finalAttrs: {
   inherit (sources.duckstation) pname version src;
@@ -57,12 +58,9 @@ stdenv.mkDerivation (finalAttrs: {
     qtwayland
     sources.shaderc-patched
     wayland
-  ]
-  ++ cubeb.passthru.backendLibs;
+  ] ++ cubeb.passthru.backendLibs;
 
-  cmakeFlags = [
-    (lib.cmakeBool "BUILD_TESTS" true)
-  ];
+  cmakeFlags = [ (lib.cmakeBool "BUILD_TESTS" true) ];
 
   strictDeps = true;
 
@@ -100,12 +98,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   qtWrapperArgs =
     let
-      libPath = lib.makeLibraryPath ([
-        vulkan-loader
-      ] ++ cubeb.passthru.backendLibs);
-    in [
-      "--prefix LD_LIBRARY_PATH : ${libPath}"
-    ];
+      libPath = lib.makeLibraryPath ([ vulkan-loader ] ++ cubeb.passthru.backendLibs);
+    in
+    [ "--prefix LD_LIBRARY_PATH : ${libPath}" ];
 
   # https://github.com/stenzek/duckstation/blob/master/scripts/appimage/apprun-hooks/default-to-x11.sh
   # Can't avoid the double wrapping, the binary wrapper from qtWrapperArgs doesn't support --run
@@ -120,7 +115,10 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Fast PlayStation 1 emulator for x86-64/AArch32/AArch64";
     license = lib.licenses.gpl3Only;
     mainProgram = "duckstation-qt";
-    maintainers = with lib.maintainers; [ guibou AndersonTorres ];
+    maintainers = with lib.maintainers; [
+      guibou
+      AndersonTorres
+    ];
     platforms = lib.platforms.linux;
   };
 })

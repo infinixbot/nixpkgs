@@ -1,12 +1,13 @@
-{ lib
-, buildPythonPackage
-, fetchFromGitHub
-, fetchNpmDeps
+{
+  lib,
+  buildPythonPackage,
+  fetchFromGitHub,
+  fetchNpmDeps,
 
-# build-system
-, setuptools
-, nodejs
-, npmHooks
+  # build-system
+  setuptools,
+  nodejs,
+  npmHooks,
 
 }:
 
@@ -46,9 +47,7 @@ buildPythonPackage rec {
   # no tests
   doCheck = false;
 
-  pythonImportsCheck = [
-    "esphome_dashboard"
-  ];
+  pythonImportsCheck = [ "esphome_dashboard" ];
 
   meta = with lib; {
     description = "ESPHome dashboard";

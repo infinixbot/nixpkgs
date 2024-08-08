@@ -1,27 +1,33 @@
-{ lib
-, newScope
-, pidgin
-, texliveBasic
-, config
+{
+  lib,
+  newScope,
+  pidgin,
+  texliveBasic,
+  config,
 }:
 
-lib.makeScope newScope (self:
-  let callPackage = self.callPackage;
-  in {
+lib.makeScope newScope (
+  self:
+  let
+    callPackage = self.callPackage;
+  in
+  {
     pidgin = callPackage ../. {
       withOpenssl = config.pidgin.openssl or true;
       withGnutls = config.pidgin.gnutls or false;
-      plugins = [];
+      plugins = [ ];
     };
 
     # Prevent `pkgs/top-level/release-attrpaths-superset.nix` from recursing here.
-    pidginPackages = self // { pidginPackages = self.pidginPackages // { __attrsFailEvaluation = true; }; };
+    pidginPackages = self // {
+      pidginPackages = self.pidginPackages // {
+        __attrsFailEvaluation = true;
+      };
+    };
 
     pidgin-indicator = callPackage ./pidgin-indicator { };
 
-    pidgin-latex = callPackage ./pidgin-latex {
-      texLive = texliveBasic;
-    };
+    pidgin-latex = callPackage ./pidgin-latex { texLive = texliveBasic; };
 
     pidgin-msn-pecan = callPackage ./msn-pecan { };
 
@@ -68,4 +74,5 @@ lib.makeScope newScope (self:
     pidgin-opensteamworks = callPackage ./pidgin-opensteamworks { };
 
     purple-facebook = callPackage ./purple-facebook { };
-})
+  }
+)

@@ -4,7 +4,7 @@
   stdenv,
   libiconv,
   updateAutotoolsGnuConfigScriptsHook,
-  darwin
+  darwin,
 }:
 
 # Note: this package is used for bootstrapping fetchurl, and thus
@@ -30,9 +30,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
   propagatedBuildInputs = lib.optional (!stdenv.isLinux) libiconv;
-  buildInputs = lib.optionals stdenv.isDarwin [
-    darwin.apple_sdk.frameworks.CoreServices
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.CoreServices ];
   nativeBuildInputs = [ updateAutotoolsGnuConfigScriptsHook ];
 
   configureFlags = [ "--with-libiconv-prefix=${libiconv}" ];

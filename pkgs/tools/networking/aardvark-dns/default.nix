@@ -1,7 +1,8 @@
-{ lib
-, rustPlatform
-, fetchFromGitHub
-, nixosTests
+{
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
+  nixosTests,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -17,7 +18,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-IvDBtu2DSQUmFtfx81wW+Z82cvMtoWEEH+tyX0FjYFg=";
 
-  passthru.tests = { inherit (nixosTests) podman; };
+  passthru.tests = {
+    inherit (nixosTests) podman;
+  };
 
   meta = with lib; {
     changelog = "https://github.com/containers/aardvark-dns/releases/tag/${src.rev}";

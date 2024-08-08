@@ -1,12 +1,13 @@
-{ lib
-, substituteAll
-, mkDerivation
-, fetchFromGitHub
-, gitUpdater
-, mobile-broadband-provider-info
-, qmake
-, qtbase
-, qtdeclarative
+{
+  lib,
+  substituteAll,
+  mkDerivation,
+  fetchFromGitHub,
+  gitUpdater,
+  mobile-broadband-provider-info,
+  qmake,
+  qtbase,
+  qtdeclarative,
 }:
 
 mkDerivation rec {
@@ -39,9 +40,7 @@ mkDerivation rec {
       --replace '$$[QT_INSTALL_QML]' $out'/${qtbase.qtQmlPrefix}'
   '';
 
-  nativeBuildInputs = [
-    qmake
-  ];
+  nativeBuildInputs = [ qmake ];
 
   buildInputs = [
     qtbase

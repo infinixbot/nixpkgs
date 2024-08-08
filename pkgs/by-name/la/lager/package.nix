@@ -1,10 +1,11 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, cmake
-, boost
-, immer
-, zug
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  cmake,
+  boost,
+  immer,
+  zug,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -23,12 +24,8 @@ stdenv.mkDerivation (finalAttrs: {
     immer
     zug
   ];
-  nativeBuildInputs = [
-    cmake
-  ];
-  cmakeFlags = [
-    "-Dlager_BUILD_EXAMPLES=OFF"
-  ];
+  nativeBuildInputs = [ cmake ];
+  cmakeFlags = [ "-Dlager_BUILD_EXAMPLES=OFF" ];
 
   meta = {
     homepage = "https://github.com/arximboldi/lager";

@@ -8,11 +8,15 @@
   overlays,
   crossOverlays ? [ ],
   bootstrapFiles ?
-    let table = {
-      x86_64-freebsd = import ./bootstrap-files/x86_64-unknown-freebsd.nix;
-    };
-    files = table.${localSystem.system} or (throw "unsupported platform ${localSystem.system} for the pure FreeBSD stdenv");
-    in files
+    let
+      table = {
+        x86_64-freebsd = import ./bootstrap-files/x86_64-unknown-freebsd.nix;
+      };
+      files =
+        table.${localSystem.system}
+          or (throw "unsupported platform ${localSystem.system} for the pure FreeBSD stdenv");
+    in
+    files,
 }:
 
 assert crossSystem == localSystem;
@@ -39,7 +43,10 @@ let
       pname = "bootstrap-archive";
       version = "9.9.9";
       builder = "${bootstrapFiles.unpack}/libexec/ld-elf.so.1";
-      args = [ "${bootstrapFiles.unpack}/bin/bash" ./unpack-bootstrap-files.sh ];
+      args = [
+        "${bootstrapFiles.unpack}/bin/bash"
+        ./unpack-bootstrap-files.sh
+      ];
       LD_LIBRARY_PATH = "${bootstrapFiles.unpack}/lib";
       src = bootstrapFiles.unpack;
       inherit (bootstrapFiles) bootstrapTools;
@@ -75,11 +82,7 @@ let
       shell = "bin/bash";
       shellPath = "/bin/bash";
     };
-    curl = linkBootstrap {
-      paths = [
-        "bin/curl"
-      ];
-    };
+    curl = linkBootstrap { paths = [ "bin/curl" ]; };
     llvmPackages = {
       clang-unwrapped = linkBootstrap {
         paths = [
@@ -361,9 +364,7 @@ let
           nativeLibc = false;
           cc = prevStage.llvmPackages.clang-unwrapped;
           isClang = true;
-          extraPackages = lib.optionals hascxx [
-            prevStage.llvmPackages.compiler-rt
-          ];
+          extraPackages = lib.optionals hascxx [ prevStage.llvmPackages.compiler-rt ];
           nixSupport = {
             libcxx-cxxflags = lib.optionals (!hascxx) [ "-isystem ${prevStage.freebsd.libc}/include/c++/v1" ];
           };
@@ -434,21 +435,21 @@ in
         tzdata = super.tzdata.overrideAttrs { NIX_CFLAGS_COMPILE = "-DHAVE_GETTEXT=0"; };
 
         # make it so libcxx/libunwind are built in this stdenv and not the next
-        freebsd = super.freebsd.overrideScope (self': super': {
-          inherit (prevStage.freebsd) locales;
-              stdenvNoLibcxx =
-                self.overrideCC (self.stdenv // { name = "stdenv-freebsd-boot-0.4"; })
-                  (
-                    self.stdenv.cc.override {
-                      name = "freebsd-boot-0.4-cc";
-                      libc = self.freebsd.libc;
-                      bintools = self.stdenv.cc.bintools.override {
-                        name = "freebsd-boot-0.4-bintools";
-                        libc = self.freebsd.libc;
-                      };
-                    }
-                  );
-        });
+        freebsd = super.freebsd.overrideScope (
+          self': super': {
+            inherit (prevStage.freebsd) locales;
+            stdenvNoLibcxx = self.overrideCC (self.stdenv // { name = "stdenv-freebsd-boot-0.4"; }) (
+              self.stdenv.cc.override {
+                name = "freebsd-boot-0.4-cc";
+                libc = self.freebsd.libc;
+                bintools = self.stdenv.cc.bintools.override {
+                  name = "freebsd-boot-0.4-bintools";
+                  libc = self.freebsd.libc;
+                };
+              }
+            );
+          }
+        );
         llvmPackages = super.llvmPackages // {
           libcxx =
             (super.llvmPackages.libcxx.override {
@@ -460,9 +461,7 @@ in
                     name = "freebsd-boot-0.5-bintools";
                     libc = self.freebsd.libc;
                   };
-                  extraPackages = [
-                    self.llvmPackages.compiler-rt
-                  ];
+                  extraPackages = [ self.llvmPackages.compiler-rt ];
                   extraBuildCommands = mkExtraBuildCommands self.llvmPackages.clang-unwrapped self.llvmPackages.compiler-rt;
                 }
               );

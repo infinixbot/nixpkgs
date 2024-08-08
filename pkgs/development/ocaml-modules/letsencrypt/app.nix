@@ -1,17 +1,18 @@
-{ buildDunePackage
-, letsencrypt
-, letsencrypt-dns
-, cmdliner
-, cohttp-lwt-unix
-, logs
-, fmt
-, lwt
-, mirage-crypto-rng
-, ptime
-, bos
-, fpath
-, randomconv
-, cstruct
+{
+  buildDunePackage,
+  letsencrypt,
+  letsencrypt-dns,
+  cmdliner,
+  cohttp-lwt-unix,
+  logs,
+  fmt,
+  lwt,
+  mirage-crypto-rng,
+  ptime,
+  bos,
+  fpath,
+  randomconv,
+  cstruct,
 }:
 
 buildDunePackage {
@@ -19,10 +20,7 @@ buildDunePackage {
   duneVersion = "3";
   minimalOCamlVersion = "4.08";
 
-  inherit (letsencrypt)
-    src
-    version
-    ;
+  inherit (letsencrypt) src version;
 
   buildInputs = [
     letsencrypt

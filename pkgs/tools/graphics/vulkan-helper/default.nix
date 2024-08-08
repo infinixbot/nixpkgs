@@ -1,8 +1,9 @@
-{ lib
-, rustPlatform
-, fetchFromGitHub
-, vulkan-loader
-, addDriverRunpath
+{
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
+  vulkan-loader,
+  addDriverRunpath,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -18,9 +19,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-OXMz1qu4/LDeQbwe7shhn2Eee15xKmBpWSsP0IbjoGM=";
 
-  nativeBuildInputs = [
-    addDriverRunpath
-  ];
+  nativeBuildInputs = [ addDriverRunpath ];
 
   postFixup = ''
     patchelf --add-rpath ${vulkan-loader}/lib $out/bin/vulkan-helper

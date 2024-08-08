@@ -1,16 +1,17 @@
-{ lib
-, rustPlatform
-, fetchFromGitHub
-, pkg-config
-, openssl
-, stdenv
-, darwin
-, coreutils
-, gnome-keyring
-, libsecret
-, openvpn
-, gzip
-, killall
+{
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
+  pkg-config,
+  openssl,
+  stdenv,
+  darwin,
+  coreutils,
+  gnome-keyring,
+  libsecret,
+  openvpn,
+  gzip,
+  killall,
 }:
 
 rustPlatform.buildRustPackage {
@@ -28,22 +29,17 @@ rustPlatform.buildRustPackage {
   cargoHash = "sha256-vTUiagI0eTrADr6zCMI5btLRvXgZSaohldg4jYmjfyA=";
 
   # Patch to disable prompt change of the shell when a target machine is run. Needed due to Nix declarative nature
-  patches = [
-    ./disable-shell-prompt-change.patch
-  ];
+  patches = [ ./disable-shell-prompt-change.patch ];
 
-  nativeBuildInputs = [
-    pkg-config
-  ];
+  nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    openssl
-  ] ++ lib.optionals stdenv.isLinux [
-    gnome-keyring
-  ] ++ lib.optionals stdenv.isDarwin [
-    darwin.apple_sdk.frameworks.Security
-    darwin.apple_sdk.frameworks.SystemConfiguration
-  ];
+  buildInputs =
+    [ openssl ]
+    ++ lib.optionals stdenv.isLinux [ gnome-keyring ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.Security
+      darwin.apple_sdk.frameworks.SystemConfiguration
+    ];
 
   postPatch = ''
     substituteInPlace src/manage.rs \

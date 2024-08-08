@@ -1,4 +1,10 @@
-{ stdenv, lib, fetchurl, dpkg, autoPatchelfHook }:
+{
+  stdenv,
+  lib,
+  fetchurl,
+  dpkg,
+  autoPatchelfHook,
+}:
 
 stdenv.mkDerivation rec {
   pname = "mblock-mlink";
@@ -13,13 +19,9 @@ stdenv.mkDerivation rec {
     ${dpkg}/bin/dpkg -x $src $out
   '';
 
-  buildInputs = [
-    stdenv.cc.cc.lib
-  ];
+  buildInputs = [ stdenv.cc.cc.lib ];
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-  ];
+  nativeBuildInputs = [ autoPatchelfHook ];
 
   installPhase = ''
     mv $out/usr/local/makeblock $out/usr/makeblock

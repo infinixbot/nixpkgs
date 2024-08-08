@@ -1,6 +1,7 @@
-{ lib
-, fetchFromGitHub
-, python3
+{
+  lib,
+  fetchFromGitHub,
+  python3,
 }:
 
 python3.pkgs.buildPythonApplication rec {
@@ -15,28 +16,25 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-6/7oCKBMEcQeJ8PaFP15Xef9sQRYCpigtzINv2M6GUY=";
   };
 
-  build-system = with python3.pkgs; [
-    wheel
-  ];
+  build-system = with python3.pkgs; [ wheel ];
 
-  propagatedBuildInputs = with python3.pkgs; [
-    requests
-    grequests
-    cjkwrap
-    pytz
-    beautifulsoup4
-    lxml
-    mpv
-    python-vlc
-  ] ++ requests.optional-dependencies.socks;
+  propagatedBuildInputs =
+    with python3.pkgs;
+    [
+      requests
+      grequests
+      cjkwrap
+      pytz
+      beautifulsoup4
+      lxml
+      mpv
+      python-vlc
+    ]
+    ++ requests.optional-dependencies.socks;
 
-  nativeCheckInputs = with python3.pkgs; [
-    pytestCheckHook
-  ];
+  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook ];
 
-  pytestFlagsArray = [
-    "tests"
-  ];
+  pytestFlagsArray = [ "tests" ];
 
   # Disable tests that are problematic with pytest
   # Check NixOS/nixpkgs#333019 for more info about these
@@ -46,9 +44,7 @@ python3.pkgs.buildPythonApplication rec {
     "test_display_get_y_n"
   ];
 
-  pythonImportsCheck = [
-    "castero"
-  ];
+  pythonImportsCheck = [ "castero" ];
 
   # Resolve configuration tests, which access $HOME
   preCheck = ''

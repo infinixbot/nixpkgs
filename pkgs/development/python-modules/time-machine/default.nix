@@ -26,9 +26,7 @@ buildPythonPackage rec {
 
   build-system = [ setuptools ];
 
-  dependencies = [
-    python-dateutil
-  ] ++ lib.optionals (pythonOlder "3.9") [ backports-zoneinfo ];
+  dependencies = [ python-dateutil ] ++ lib.optionals (pythonOlder "3.9") [ backports-zoneinfo ];
 
   nativeCheckInputs = [ pytestCheckHook ];
 

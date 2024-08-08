@@ -1,14 +1,15 @@
-{ lib
-, rustPlatform
-, fetchFromGitHub
-, fetchNpmDeps
-, npmHooks
-, binaryen
-, gzip
-, nodejs
-, rustc
-, wasm-bindgen-cli
-, wasm-pack
+{
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
+  fetchNpmDeps,
+  npmHooks,
+  binaryen,
+  gzip,
+  nodejs,
+  rustc,
+  wasm-bindgen-cli,
+  wasm-pack,
 }:
 
 let

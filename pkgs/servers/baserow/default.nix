@@ -1,8 +1,9 @@
-{ lib
-, fetchFromGitLab
-, makeWrapper
-, python3
-, antlr4_9
+{
+  lib,
+  fetchFromGitLab,
+  makeWrapper,
+  python3,
+  antlr4_9,
 }:
 
 let
@@ -10,9 +11,7 @@ let
   python = python3.override {
     self = python;
     packageOverrides = self: super: {
-      antlr4-python3-runtime = super.antlr4-python3-runtime.override {
-        antlr4 = antlr4_9;
-      };
+      antlr4-python3-runtime = super.antlr4-python3-runtime.override { antlr4 = antlr4_9; };
 
       baserow_premium = self.buildPythonPackage rec {
         pname = "baserow_premium";
@@ -36,7 +35,8 @@ let
   };
 in
 
-with python.pkgs; buildPythonApplication rec {
+with python.pkgs;
+buildPythonApplication rec {
   pname = "baserow";
   version = "1.12.1";
   format = "setuptools";
@@ -62,9 +62,7 @@ with python.pkgs; buildPythonApplication rec {
       -e 's/\[standard\]//'
   '';
 
-  nativeBuildInputs = [
-    makeWrapper
-  ];
+  nativeBuildInputs = [ makeWrapper ];
 
   propagatedBuildInputs = [
     autobahn

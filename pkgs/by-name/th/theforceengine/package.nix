@@ -1,21 +1,20 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, SDL2
-, SDL2_image
-, rtaudio
-, rtmidi
-, glew
-, alsa-lib
-, cmake
-, pkg-config
-, zenity
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  SDL2,
+  SDL2_image,
+  rtaudio,
+  rtmidi,
+  glew,
+  alsa-lib,
+  cmake,
+  pkg-config,
+  zenity,
 }:
 let
   # package depends on SDL2main static library
-  SDL2' = SDL2.override {
-    withStatic = true;
-  };
+  SDL2' = SDL2.override { withStatic = true; };
 in
 stdenv.mkDerivation rec {
   pname = "theforceengine";

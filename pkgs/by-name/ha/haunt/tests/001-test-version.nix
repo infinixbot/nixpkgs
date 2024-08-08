@@ -1,6 +1,4 @@
-{ stdenv
-, haunt
-}:
+{ stdenv, haunt }:
 
 stdenv.mkDerivation {
   pname = "haunt-test-version";

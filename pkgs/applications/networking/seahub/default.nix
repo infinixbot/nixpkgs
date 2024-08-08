@@ -1,16 +1,15 @@
-{ lib
-, fetchFromGitHub
-, fetchpatch
-, python3
-, makeWrapper
-, nixosTests
+{
+  lib,
+  fetchFromGitHub,
+  fetchpatch,
+  python3,
+  makeWrapper,
+  nixosTests,
 }:
 let
   python = python3.override {
     self = python;
-    packageOverrides = self: super: {
-      django = super.django_3;
-    };
+    packageOverrides = self: super: { django = super.django_3; };
   };
 in
 python.pkgs.buildPythonApplication rec {
@@ -37,9 +36,7 @@ python.pkgs.buildPythonApplication rec {
 
   doCheck = false; # disabled because it requires a ccnet environment
 
-  nativeBuildInputs = [
-    makeWrapper
-  ];
+  nativeBuildInputs = [ makeWrapper ];
 
   propagatedBuildInputs = with python.pkgs; [
     django
@@ -86,7 +83,10 @@ python.pkgs.buildPythonApplication rec {
     description = "Web end of seafile server";
     homepage = "https://github.com/haiwen/seahub";
     license = licenses.asl20;
-    maintainers = with maintainers; [ greizgh schmittlauch ];
+    maintainers = with maintainers; [
+      greizgh
+      schmittlauch
+    ];
     platforms = platforms.linux;
   };
 }

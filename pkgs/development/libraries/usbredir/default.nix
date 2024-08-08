@@ -1,11 +1,12 @@
-{ lib
-, stdenv
-, fetchFromGitLab
-, pkg-config
-, meson
-, ninja
-, glib
-, libusb1
+{
+  lib,
+  stdenv,
+  fetchFromGitLab,
+  pkg-config,
+  meson,
+  ninja,
+  glib,
+  libusb1,
 }:
 
 stdenv.mkDerivation rec {
@@ -26,13 +27,9 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [
-    glib
-  ];
+  buildInputs = [ glib ];
 
-  propagatedBuildInputs = [
-    libusb1
-  ];
+  propagatedBuildInputs = [ libusb1 ];
 
   mesonFlags = [
     "-Dgit_werror=disabled"
@@ -40,7 +37,10 @@ stdenv.mkDerivation rec {
     "-Dfuzzing=disabled"
   ];
 
-  outputs = [ "out" "dev" ];
+  outputs = [
+    "out"
+    "dev"
+  ];
 
   meta = with lib; {
     description = "USB traffic redirection protocol";

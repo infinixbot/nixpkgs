@@ -1,13 +1,14 @@
-{ lib
-, stdenv
-, rustPlatform
-, fetchFromGitHub
-, pkg-config
-, openssl
-, pcsclite
-, PCSC
-, Foundation
-, IOKit
+{
+  lib,
+  stdenv,
+  rustPlatform,
+  fetchFromGitHub,
+  pkg-config,
+  openssl,
+  pcsclite,
+  PCSC,
+  Foundation,
+  IOKit,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -23,26 +24,29 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-8petNuCJ1qS6XKt+24Lg/bZh96yj9oO6fu/z65Xhi4k=";
 
-  nativeBuildInputs = [
-    pkg-config
-  ];
+  nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    openssl
-  ]
-  ++ lib.optional stdenv.isLinux pcsclite
-  ++ lib.optionals stdenv.isDarwin [
-    IOKit
-    Foundation
-    PCSC
-  ];
+  buildInputs =
+    [ openssl ]
+    ++ lib.optional stdenv.isLinux pcsclite
+    ++ lib.optionals stdenv.isDarwin [
+      IOKit
+      Foundation
+      PCSC
+    ];
 
   meta = with lib; {
     description = "YubiKey plugin for age";
     mainProgram = "age-plugin-yubikey";
     homepage = "https://github.com/str4d/age-plugin-yubikey";
     changelog = "https://github.com/str4d/age-plugin-yubikey/blob/${src.rev}/CHANGELOG.md";
-    license = with licenses; [ mit asl20 ];
-    maintainers = with maintainers; [ kranzes vtuan10 ];
+    license = with licenses; [
+      mit
+      asl20
+    ];
+    maintainers = with maintainers; [
+      kranzes
+      vtuan10
+    ];
   };
 }

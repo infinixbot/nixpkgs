@@ -1,15 +1,19 @@
-{ lib
-, stdenv
-, writers
-, temurin-jre-bin-17
-, fetchurl
-, makeWrapper
+{
+  lib,
+  stdenv,
+  writers,
+  temurin-jre-bin-17,
+  fetchurl,
+  makeWrapper,
 }:
 stdenv.mkDerivation rec {
   pname = "cgoban";
   version = "3.5.144";
 
-  nativeBuildInputs = [ temurin-jre-bin-17 makeWrapper ];
+  nativeBuildInputs = [
+    temurin-jre-bin-17
+    makeWrapper
+  ];
 
   src = fetchurl {
     url = "https://web.archive.org/web/20240314222506/https://files.gokgs.com/javaBin/cgoban.jar";

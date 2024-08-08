@@ -1,7 +1,8 @@
-{ buildOctavePackage
-, lib
-, fetchFromGitHub
-, io
+{
+  buildOctavePackage,
+  lib,
+  fetchFromGitHub,
+  io,
 }:
 
 buildOctavePackage rec {
@@ -15,13 +16,14 @@ buildOctavePackage rec {
     hash = "sha256-cXAjUiv4xWPrWf7HQg9Y+JkR7ON9iefKFUGbEr9FGNA=";
   };
 
-  requiredOctavePackages = [
-    io
-  ];
+  requiredOctavePackages = [ io ];
 
   meta = with lib; {
     homepage = "https://packages.octave.org/statistics";
-    license = with licenses; [ gpl3Plus publicDomain ];
+    license = with licenses; [
+      gpl3Plus
+      publicDomain
+    ];
     maintainers = with maintainers; [ KarlJoad ];
     description = "Statistics package for GNU Octave";
   };

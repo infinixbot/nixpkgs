@@ -1,4 +1,10 @@
-{ lib, stdenv, fetchFromGitHub, python311Packages, lilypond }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  python311Packages,
+  lilypond,
+}:
 
 python311Packages.buildPythonApplication rec {
   pname = "frescobaldi";
@@ -34,9 +40,7 @@ python311Packages.buildPythonApplication rec {
   doCheck = false;
 
   dontWrapQtApps = true;
-  makeWrapperArgs = [
-    "\${qtWrapperArgs[@]}"
-  ];
+  makeWrapperArgs = [ "\${qtWrapperArgs[@]}" ];
 
   meta = with lib; {
     homepage = "https://frescobaldi.org/";

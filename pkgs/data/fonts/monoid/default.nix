@@ -1,4 +1,10 @@
-{ lib, stdenv, fetchFromGitHub, fetchpatch, python3 }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  fetchpatch,
+  python3,
+}:
 
 stdenv.mkDerivation {
   pname = "monoid";
@@ -11,11 +17,7 @@ stdenv.mkDerivation {
     sha256 = "sha256-u2jwVOC9QM2JHsdAVBuEpqqdiBAVs+IWnpp48A5Xk28=";
   };
 
-  nativeBuildInputs = [
-    (python3.withPackages (pp: with pp; [
-      fontforge
-    ]))
-  ];
+  nativeBuildInputs = [ (python3.withPackages (pp: with pp; [ fontforge ])) ];
 
   patches = [
     # port to python 3
@@ -43,9 +45,11 @@ stdenv.mkDerivation {
   meta = with lib; {
     homepage = "http://larsenwork.com/monoid";
     description = "Customisable coding font with alternates, ligatures and contextual positioning";
-    license = [ licenses.ofl licenses.mit ];
+    license = [
+      licenses.ofl
+      licenses.mit
+    ];
     platforms = platforms.all;
     maintainers = [ maintainers.romildo ];
   };
 }
-

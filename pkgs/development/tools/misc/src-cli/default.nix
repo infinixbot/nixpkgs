@@ -1,11 +1,12 @@
-{ lib
-, buildGoModule
-, fetchFromGitHub
-, stdenv
-, xorg
-, darwin
-, testers
-, src-cli
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+  stdenv,
+  xorg,
+  darwin,
+  testers,
+  src-cli,
 }:
 
 buildGoModule rec {
@@ -21,15 +22,11 @@ buildGoModule rec {
 
   vendorHash = "sha256-F6TEw9hk8Fu7uY8/KW4etyZMqOb/GL/g4NV87JjfAsY=";
 
-  subPackages = [
-    "cmd/src"
-  ];
+  subPackages = [ "cmd/src" ];
 
-  buildInputs = lib.optionals stdenv.isLinux [
-    xorg.libX11
-  ] ++ lib.optionals stdenv.isDarwin [
-    darwin.apple_sdk.frameworks.Cocoa
-  ];
+  buildInputs =
+    lib.optionals stdenv.isLinux [ xorg.libX11 ]
+    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.Cocoa ];
 
   ldflags = [
     "-s"
