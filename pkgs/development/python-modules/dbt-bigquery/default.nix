@@ -28,9 +28,7 @@ buildPythonPackage rec {
 
   pythonRelaxDeps = [ "agate" ];
 
-  build-system = [
-    setuptools
-  ];
+  build-system = [ setuptools ];
 
   dependencies = [
     agate

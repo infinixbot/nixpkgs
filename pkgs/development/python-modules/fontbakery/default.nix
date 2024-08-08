@@ -68,9 +68,7 @@ buildPythonPackage rec {
     setuptools-scm
   ];
 
-  nativeBuildInputs = [
-    installShellFiles
-  ];
+  nativeBuildInputs = [ installShellFiles ];
 
   dependencies = [
     axisregistry

@@ -52,7 +52,6 @@ buildPythonPackage rec {
     "zigpy"
   ];
 
-
   build-system = [
     setuptools
     wheel

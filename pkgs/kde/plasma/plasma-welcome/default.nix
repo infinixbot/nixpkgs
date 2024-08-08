@@ -1,10 +1,7 @@
-{
-  mkKdeDerivation,
-  qtsvg,
-}:
+{ mkKdeDerivation, qtsvg }:
 mkKdeDerivation {
   pname = "plasma-welcome";
 
-  extraBuildInputs = [qtsvg];
+  extraBuildInputs = [ qtsvg ];
   meta.mainProgram = "plasma-welcome";
 }

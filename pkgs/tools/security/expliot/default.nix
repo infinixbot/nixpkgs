@@ -1,6 +1,7 @@
-{ lib
-, fetchFromGitLab
-, python3
+{
+  lib,
+  fetchFromGitLab,
+  python3,
 }:
 let
   py = python3.override {
@@ -40,8 +41,7 @@ buildPythonApplication rec {
     "zeroconf"
   ];
 
-  nativeBuildInputs = [
-  ];
+  nativeBuildInputs = [ ];
 
   propagatedBuildInputs = [
     aiocoap
@@ -65,9 +65,7 @@ buildPythonApplication rec {
   # Project has no tests
   doCheck = false;
 
-  pythonImportsCheck = [
-    "expliot"
-  ];
+  pythonImportsCheck = [ "expliot" ];
 
   meta = with lib; {
     description = "IoT security testing and exploitation framework";

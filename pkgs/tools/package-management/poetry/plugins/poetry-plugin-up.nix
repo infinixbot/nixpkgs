@@ -1,10 +1,11 @@
-{ lib
-, fetchFromGitHub
-, buildPythonPackage
-, poetry-core
-, pytestCheckHook
-, pytest-mock
-, poetry
+{
+  lib,
+  fetchFromGitHub,
+  buildPythonPackage,
+  poetry-core,
+  pytestCheckHook,
+  pytest-mock,
+  poetry,
 }:
 
 buildPythonPackage rec {
@@ -19,9 +20,7 @@ buildPythonPackage rec {
     hash = "sha256-O82oFEU67o0bZVBtkEZsOLtLBkuLHglr/4+Hkd/8Lvc=";
   };
 
-  nativeBuildInputs = [
-    poetry-core
-  ];
+  nativeBuildInputs = [ poetry-core ];
 
   nativeCheckInputs = [
     pytestCheckHook

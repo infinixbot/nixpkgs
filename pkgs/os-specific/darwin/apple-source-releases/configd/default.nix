@@ -1,5 +1,19 @@
-{ lib, stdenv, stdenvNoCC, appleDerivation', launchd, bootstrap_cmds, swift-corelibs-foundation, xnu, xpc, ppp, IOKit, eap8021x, Security
-, headersOnly ? false }:
+{
+  lib,
+  stdenv,
+  stdenvNoCC,
+  appleDerivation',
+  launchd,
+  bootstrap_cmds,
+  swift-corelibs-foundation,
+  xnu,
+  xpc,
+  ppp,
+  IOKit,
+  eap8021x,
+  Security,
+  headersOnly ? false,
+}:
 
 let
   # Copy the headers out of CF instead of building it to avoid an infinite recursion.
@@ -29,7 +43,14 @@ appleDerivation' stdenv {
   meta.broken = stdenv.cc.nativeLibc;
 
   nativeBuildInputs = lib.optionals (!headersOnly) [ bootstrap_cmds ];
-  buildInputs = lib.optionals (!headersOnly) [ privateHeaders launchd ppp xpc IOKit eap8021x ];
+  buildInputs = lib.optionals (!headersOnly) [
+    privateHeaders
+    launchd
+    ppp
+    xpc
+    IOKit
+    eap8021x
+  ];
 
   propagatedBuildInputs = lib.optionals (!headersOnly) [ Security ];
 
@@ -190,11 +211,13 @@ appleDerivation' stdenv {
     popd >/dev/null
   '';
 
-  installPhase = ''
-    mkdir -p $out/include
-    cp dnsinfo/*.h $out/include/
-  '' + lib.optionalString (!headersOnly) ''
-    mkdir -p $out/Library/Frameworks/
-    mv SystemConfiguration.fproj/SystemConfiguration.framework $out/Library/Frameworks
-  '';
+  installPhase =
+    ''
+      mkdir -p $out/include
+      cp dnsinfo/*.h $out/include/
+    ''
+    + lib.optionalString (!headersOnly) ''
+      mkdir -p $out/Library/Frameworks/
+      mv SystemConfiguration.fproj/SystemConfiguration.framework $out/Library/Frameworks
+    '';
 }

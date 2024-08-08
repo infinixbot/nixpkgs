@@ -1,4 +1,8 @@
-{ lib, fetchurl, appimageTools }:
+{
+  lib,
+  fetchurl,
+  appimageTools,
+}:
 
 let
   pname = "plexamp";
@@ -10,9 +14,7 @@ let
     hash = "sha512-t5ImqZvwKrZoobXFHX8wfQBQBPnAp4rJq4p1GLG/6CxAeKYuYMTPr7+xjwVqhGm/DGw7vSVY9sdMyFodq8rJ2A==";
   };
 
-  appimageContents = appimageTools.extractType2 {
-    inherit pname version src;
-  };
+  appimageContents = appimageTools.extractType2 { inherit pname version src; };
 in
 appimageTools.wrapType2 {
   inherit pname version src;
@@ -32,7 +34,11 @@ appimageTools.wrapType2 {
     homepage = "https://plexamp.com/";
     changelog = "https://forums.plex.tv/t/plexamp-release-notes/221280/74";
     license = licenses.unfree;
-    maintainers = with maintainers; [ killercup redhawk synthetica ];
+    maintainers = with maintainers; [
+      killercup
+      redhawk
+      synthetica
+    ];
     platforms = [ "x86_64-linux" ];
   };
 }

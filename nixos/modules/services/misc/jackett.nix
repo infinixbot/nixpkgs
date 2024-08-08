@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 with lib;
 
@@ -48,9 +53,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    systemd.tmpfiles.rules = [
-      "d '${cfg.dataDir}' 0700 ${cfg.user} ${cfg.group} - -"
-    ];
+    systemd.tmpfiles.rules = [ "d '${cfg.dataDir}' 0700 ${cfg.user} ${cfg.group} - -" ];
 
     systemd.services.jackett = {
       description = "Jackett";
@@ -66,9 +69,7 @@ in
       };
     };
 
-    networking.firewall = mkIf cfg.openFirewall {
-      allowedTCPPorts = [ cfg.port ];
-    };
+    networking.firewall = mkIf cfg.openFirewall { allowedTCPPorts = [ cfg.port ]; };
 
     users.users = mkIf (cfg.user == "jackett") {
       jackett = {
@@ -78,8 +79,6 @@ in
       };
     };
 
-    users.groups = mkIf (cfg.group == "jackett") {
-      jackett.gid = config.ids.gids.jackett;
-    };
+    users.groups = mkIf (cfg.group == "jackett") { jackett.gid = config.ids.gids.jackett; };
   };
 }

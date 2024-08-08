@@ -1,14 +1,15 @@
-{ lib
-, stdenv
-, fetchurl
-, meson
-, ninja
-, pkg-config
-, gnome
-, gtk3
-, gdk-pixbuf
-, librsvg
-, hicolor-icon-theme
+{
+  lib,
+  stdenv,
+  fetchurl,
+  meson,
+  ninja,
+  pkg-config,
+  gnome,
+  gtk3,
+  gdk-pixbuf,
+  librsvg,
+  hicolor-icon-theme,
 }:
 
 stdenv.mkDerivation rec {
@@ -40,9 +41,7 @@ stdenv.mkDerivation rec {
   dontDropIconThemeCache = true;
 
   passthru = {
-    updateScript = gnome.updateScript {
-      packageName = "adwaita-icon-theme";
-    };
+    updateScript = gnome.updateScript { packageName = "adwaita-icon-theme"; };
   };
 
   meta = with lib; {

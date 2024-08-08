@@ -1,9 +1,9 @@
-{ lib
-, buildGoModule
-, fetchFromGitHub
-, autoPatchelfHook
-, xclip
-,
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+  autoPatchelfHook,
+  xclip,
 }:
 
 buildGoModule rec {

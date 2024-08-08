@@ -1,16 +1,25 @@
-{ lib
-, stdenv
-, rustPlatform
-, fetchFromGitHub
-, boost
-, nix
-, pkg-config
-# Whether to build the nix-doc plugin for Nix
-, withPlugin ? true
+{
+  lib,
+  stdenv,
+  rustPlatform,
+  fetchFromGitHub,
+  boost,
+  nix,
+  pkg-config,
+  # Whether to build the nix-doc plugin for Nix
+  withPlugin ? true,
 }:
 
 let
-  packageFlags = [ "-p" "nix-doc" ] ++ lib.optionals withPlugin [ "-p" "nix-doc-plugin" ];
+  packageFlags =
+    [
+      "-p"
+      "nix-doc"
+    ]
+    ++ lib.optionals withPlugin [
+      "-p"
+      "nix-doc-plugin"
+    ];
 in
 rustPlatform.buildRustPackage rec {
   pname = "nix-doc";
@@ -24,9 +33,15 @@ rustPlatform.buildRustPackage rec {
   };
 
   doCheck = true;
-  buildInputs = lib.optionals withPlugin [ boost nix ];
+  buildInputs = lib.optionals withPlugin [
+    boost
+    nix
+  ];
 
-  nativeBuildInputs = lib.optionals withPlugin [ pkg-config nix ];
+  nativeBuildInputs = lib.optionals withPlugin [
+    pkg-config
+    nix
+  ];
 
   cargoBuildFlags = packageFlags;
   cargoTestFlags = packageFlags;
@@ -38,9 +53,7 @@ rustPlatform.buildRustPackage rec {
 
   # Due to a Rust bug, setting -C relro-level to anything including "off" on
   # macOS will cause link errors
-  env = lib.optionalAttrs (withPlugin && stdenv.isLinux) {
-    RUSTFLAGS = "-C relro-level=partial";
-  };
+  env = lib.optionalAttrs (withPlugin && stdenv.isLinux) { RUSTFLAGS = "-C relro-level=partial"; };
 
   cargoHash = "sha256-CHagzXTG9AfrFd3WmHanQ+YddMgmVxSuB8vK98A1Mlw=";
 

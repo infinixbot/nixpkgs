@@ -1,11 +1,12 @@
-{ lib
-, fetchFromGitHub
-, rustPlatform
-, installShellFiles
-, pkg-config
-, libpulseaudio
-, dbus
-, speechd-minimal
+{
+  lib,
+  fetchFromGitHub,
+  rustPlatform,
+  installShellFiles,
+  pkg-config,
+  libpulseaudio,
+  dbus,
+  speechd-minimal,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -71,4 +72,3 @@ rustPlatform.buildRustPackage rec {
     maintainers = with maintainers; [ errnoh ];
   };
 }
-

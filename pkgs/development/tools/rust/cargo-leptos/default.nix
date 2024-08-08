@@ -1,14 +1,12 @@
-{ darwin
-, fetchFromGitHub
-, lib
-, rustPlatform
-, stdenv
+{
+  darwin,
+  fetchFromGitHub,
+  lib,
+  rustPlatform,
+  stdenv,
 }:
 let
-  inherit (darwin.apple_sdk.frameworks)
-    CoreServices
-    SystemConfiguration
-    Security;
+  inherit (darwin.apple_sdk.frameworks) CoreServices SystemConfiguration Security;
   inherit (lib) optionals;
   inherit (stdenv) isDarwin;
 in

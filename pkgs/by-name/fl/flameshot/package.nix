@@ -1,13 +1,14 @@
-{ libsForQt5
-, stdenv
-, lib
-, fetchFromGitHub
-, cmake
-, nix-update-script
-, fetchpatch
-, grim
-, makeBinaryWrapper
-, enableWlrSupport ? false
+{
+  libsForQt5,
+  stdenv,
+  lib,
+  fetchFromGitHub,
+  cmake,
+  nix-update-script,
+  fetchpatch,
+  grim,
+  makeBinaryWrapper,
+  enableWlrSupport ? false,
 }:
 
 stdenv.mkDerivation {
@@ -33,9 +34,7 @@ stdenv.mkDerivation {
   ];
 
   passthru = {
-    updateScript = nix-update-script {
-      extraArgs = [ "--version=branch" ];
-    };
+    updateScript = nix-update-script { extraArgs = [ "--version=branch" ]; };
   };
 
   cmakeFlags = [
@@ -68,7 +67,10 @@ stdenv.mkDerivation {
     description = "Powerful yet simple to use screenshot software";
     homepage = "https://github.com/flameshot-org/flameshot";
     mainProgram = "flameshot";
-    maintainers = with maintainers; [ scode oxalica ];
+    maintainers = with maintainers; [
+      scode
+      oxalica
+    ];
     license = licenses.gpl3Plus;
     platforms = platforms.linux ++ platforms.darwin;
   };

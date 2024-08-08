@@ -1,15 +1,16 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, fetchurl
-, flex
-, bison
-, bc
-, cpio
-, perl
-, elfutils
-, python3
-, sevVariant ? false
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  fetchurl,
+  flex,
+  bison,
+  bc,
+  cpio,
+  perl,
+  elfutils,
+  python3,
+  sevVariant ? false,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -43,15 +44,9 @@ stdenv.mkDerivation (finalAttrs: {
     python3.pkgs.pyelftools
   ];
 
-  buildInputs = [
-    elfutils
-  ];
+  buildInputs = [ elfutils ];
 
-  makeFlags = [
-    "PREFIX=${placeholder "out"}"
-  ] ++ lib.optionals sevVariant [
-    "SEV=1"
-  ];
+  makeFlags = [ "PREFIX=${placeholder "out"}" ] ++ lib.optionals sevVariant [ "SEV=1" ];
 
   # Fixes https://github.com/containers/libkrunfw/issues/55
   NIX_CFLAGS_COMPILE = lib.optionalString stdenv.targetPlatform.isAarch64 "-march=armv8-a+crypto";
@@ -61,8 +56,17 @@ stdenv.mkDerivation (finalAttrs: {
   meta = with lib; {
     description = "Dynamic library bundling the guest payload consumed by libkrun";
     homepage = "https://github.com/containers/libkrunfw";
-    license = with licenses; [ lgpl2Only lgpl21Only ];
-    maintainers = with maintainers; [ nickcao RossComputerGuy ];
-    platforms = [ "x86_64-linux" "aarch64-linux" ];
+    license = with licenses; [
+      lgpl2Only
+      lgpl21Only
+    ];
+    maintainers = with maintainers; [
+      nickcao
+      RossComputerGuy
+    ];
+    platforms = [
+      "x86_64-linux"
+      "aarch64-linux"
+    ];
   };
 })

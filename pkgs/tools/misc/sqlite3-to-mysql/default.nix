@@ -1,10 +1,11 @@
-{ lib
-, fetchFromGitHub
-, python3Packages
-, nixosTests
-, testers
-, sqlite3-to-mysql
-, mysql80
+{
+  lib,
+  fetchFromGitHub,
+  python3Packages,
+  nixosTests,
+  testers,
+  sqlite3-to-mysql,
+  mysql80,
 }:
 
 python3Packages.buildPythonApplication rec {
@@ -21,9 +22,7 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-XmjPGY8+WiuWkfWvzHsLbgopV0qBtqC2jjMeBU/XtFw=";
   };
 
-  build-system = with python3Packages; [
-    hatchling
-  ];
+  build-system = with python3Packages; [ hatchling ];
 
   dependencies = with python3Packages; [
     click
@@ -43,9 +42,7 @@ python3Packages.buildPythonApplication rec {
     types-python-dateutil
   ];
 
-  pythonRelaxDeps = [
-    "mysql-connector-python"
-  ];
+  pythonRelaxDeps = [ "mysql-connector-python" ];
 
   # tests require a mysql server instance
   doCheck = false;

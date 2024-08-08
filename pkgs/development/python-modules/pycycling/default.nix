@@ -17,9 +17,7 @@ buildPythonPackage rec {
 
   build-system = [ setuptools ];
 
-  propagatedBuildInputs = [
-    bleak
-  ];
+  propagatedBuildInputs = [ bleak ];
 
   pythonImportsCheck = [ pname ];
 

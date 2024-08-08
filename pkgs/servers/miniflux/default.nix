@@ -1,4 +1,11 @@
-{ lib, buildGoModule, fetchFromGitHub, fetchpatch2, installShellFiles, nixosTests }:
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+  fetchpatch2,
+  installShellFiles,
+  nixosTests,
+}:
 
 buildGoModule rec {
   pname = "miniflux";
@@ -27,7 +34,9 @@ buildGoModule rec {
   checkFlags = [ "-skip=TestClient" ]; # skip client tests as they require network access
 
   ldflags = [
-    "-s" "-w" "-X miniflux.app/v2/internal/version.Version=${version}"
+    "-s"
+    "-w"
+    "-X miniflux.app/v2/internal/version.Version=${version}"
   ];
 
   postInstall = ''
@@ -41,7 +50,11 @@ buildGoModule rec {
     description = "Minimalist and opinionated feed reader";
     homepage = "https://miniflux.app/";
     license = licenses.asl20;
-    maintainers = with maintainers; [ rvolosatovs benpye emilylange ];
+    maintainers = with maintainers; [
+      rvolosatovs
+      benpye
+      emilylange
+    ];
     mainProgram = "miniflux";
   };
 }

@@ -1,6 +1,7 @@
-{ lib
-, buildPythonPackage
-, fetchPypi
+{
+  lib,
+  buildPythonPackage,
+  fetchPypi,
 }:
 
 buildPythonPackage rec {
@@ -23,9 +24,7 @@ buildPythonPackage rec {
     cp -R tests $testout/tests
   '';
 
-  pythonImportsCheck = [
-    "attr"
-  ];
+  pythonImportsCheck = [ "attr" ];
 
   # pytest depends on attrs, so we can't do this out-of-the-box.
   # Instead, we do this as a passthru.tests test.

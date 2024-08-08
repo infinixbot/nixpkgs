@@ -89,9 +89,7 @@ stdenv.mkDerivation rec {
     libraw1394
     libxmlxx3
     python
-  ] ++ lib.optionals (!stdenv.hostPlatform.isGnu) [
-    argp-standalone
-  ];
+  ] ++ lib.optionals (!stdenv.hostPlatform.isGnu) [ argp-standalone ];
 
   NIX_LDFLAGS = lib.optionalString (!stdenv.hostPlatform.isGnu) "-largp";
 
@@ -111,9 +109,7 @@ stdenv.mkDerivation rec {
     homepage = "http://www.ffado.org";
     description = "FireWire audio drivers";
     license = licenses.gpl3;
-    maintainers = with maintainers; [
-      michojel
-    ];
+    maintainers = with maintainers; [ michojel ];
     platforms = platforms.linux;
   };
 }

@@ -1,15 +1,16 @@
-{ lib
-, python3
-, fetchFromGitHub
-, desktop-file-utils
-, glib
-, gobject-introspection
-, meson
-, ninja
-, wrapGAppsHook4
-, libadwaita
-, xdotool
-, wl-clipboard
+{
+  lib,
+  python3,
+  fetchFromGitHub,
+  desktop-file-utils,
+  glib,
+  gobject-introspection,
+  meson,
+  ninja,
+  wrapGAppsHook4,
+  libadwaita,
+  xdotool,
+  wl-clipboard,
 }:
 
 python3.pkgs.buildPythonApplication rec {
@@ -33,9 +34,7 @@ python3.pkgs.buildPythonApplication rec {
     wrapGAppsHook4
   ];
 
-  buildInputs = [
-    libadwaita
-  ];
+  buildInputs = [ libadwaita ];
 
   dependencies = with python3.pkgs; [
     dbus-python
@@ -48,10 +47,12 @@ python3.pkgs.buildPythonApplication rec {
   preFixup = ''
     makeWrapperArgs+=(
       "''${gappsWrapperArgs[@]}"
-      --prefix PATH : ${lib.makeBinPath [
-        xdotool
-        wl-clipboard
-      ]}
+      --prefix PATH : ${
+        lib.makeBinPath [
+          xdotool
+          wl-clipboard
+        ]
+      }
     )
   '';
 
@@ -62,6 +63,9 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "https://mijorus.it/projects/smile/";
     license = lib.licenses.gpl3Plus;
     mainProgram = "smile";
-    maintainers = with lib.maintainers; [ koppor aleksana ];
+    maintainers = with lib.maintainers; [
+      koppor
+      aleksana
+    ];
   };
 }

@@ -1,18 +1,19 @@
-{ stdenv
-, lib
-, fetchFromGitLab
-, biometryd
-, cmake
-, libqtdbusmock
-, libqtdbustest
-, lomiri-system-settings-unwrapped
-, pkg-config
-, polkit
-, python3
-, qtbase
-, qtdeclarative
-, trust-store
-, xvfb-run
+{
+  stdenv,
+  lib,
+  fetchFromGitLab,
+  biometryd,
+  cmake,
+  libqtdbusmock,
+  libqtdbustest,
+  lomiri-system-settings-unwrapped,
+  pkg-config,
+  polkit,
+  python3,
+  qtbase,
+  qtdeclarative,
+  trust-store,
+  xvfb-run,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -57,13 +58,9 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   # QML components and schemas the wrapper needs
-  propagatedBuildInputs = [
-    biometryd
-  ];
+  propagatedBuildInputs = [ biometryd ];
 
-  nativeCheckInputs = [
-    xvfb-run
-  ];
+  nativeCheckInputs = [ xvfb-run ];
 
   checkInputs = [
     libqtdbusmock
@@ -73,9 +70,7 @@ stdenv.mkDerivation (finalAttrs: {
   # Plugin library & modules for LSS
   dontWrapQtApps = true;
 
-  cmakeFlags = [
-    (lib.cmakeBool "ENABLE_TESTS" finalAttrs.finalPackage.doCheck)
-  ];
+  cmakeFlags = [ (lib.cmakeBool "ENABLE_TESTS" finalAttrs.finalPackage.doCheck) ];
 
   doCheck = stdenv.buildPlatform.canExecute stdenv.hostPlatform;
 

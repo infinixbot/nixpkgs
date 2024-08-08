@@ -77,7 +77,10 @@ stdenv.mkDerivation rec {
     '';
 
     platforms = with platforms; linux ++ darwin;
-    maintainers = with maintainers; [ PopeRigby ylh ];
+    maintainers = with maintainers; [
+      PopeRigby
+      ylh
+    ];
     mainProgram = "vkquake";
   };
 }

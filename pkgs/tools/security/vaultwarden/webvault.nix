@@ -1,10 +1,11 @@
-{ lib
-, buildNpmPackage
-, fetchFromGitHub
-, git
-, nixosTests
-, python311
-, vaultwarden
+{
+  lib,
+  buildNpmPackage,
+  fetchFromGitHub,
+  git,
+  nixosTests,
+  python311,
+  vaultwarden,
 }:
 
 let
@@ -17,7 +18,8 @@ let
     hash = "sha256-5nlFt05ari9ovl+CaoyR/X9BzhsmsGyDt6eGLJ5ae/4=";
   };
 
-in buildNpmPackage rec {
+in
+buildNpmPackage rec {
   pname = "vaultwarden-webvault";
   inherit version;
 
@@ -48,7 +50,8 @@ in buildNpmPackage rec {
   npmBuildScript = "dist:oss:selfhost";
 
   npmBuildFlags = [
-    "--workspace" "apps/web"
+    "--workspace"
+    "apps/web"
   ];
 
   npmFlags = [ "--legacy-peer-deps" ];

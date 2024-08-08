@@ -1,9 +1,10 @@
-{ buildGoModule
-, dependabot-cli
-, fetchFromGitHub
-, installShellFiles
-, lib
-, testers
+{
+  buildGoModule,
+  dependabot-cli,
+  fetchFromGitHub,
+  installShellFiles,
+  lib,
+  testers,
 }:
 let
   pname = "dependabot-cli";
@@ -36,9 +37,7 @@ buildGoModule {
       --zsh <($out/bin/dependabot completion zsh)
   '';
 
-  checkFlags = [
-    "-skip=TestIntegration|TestNewProxy_customCert|TestRun"
-  ];
+  checkFlags = [ "-skip=TestIntegration|TestNewProxy_customCert|TestRun" ];
 
   doInstallCheck = true;
   installCheckPhase = ''

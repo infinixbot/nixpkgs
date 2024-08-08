@@ -1,6 +1,7 @@
-{ lib
-, python3
-, fetchFromGitHub
+{
+  lib,
+  python3,
+  fetchFromGitHub,
 }:
 
 python3.pkgs.buildPythonApplication rec {
@@ -20,9 +21,7 @@ python3.pkgs.buildPythonApplication rec {
     prometheus-client
   ];
 
-  pythonImportsCheck = [
-    "deluge_exporter"
-  ];
+  pythonImportsCheck = [ "deluge_exporter" ];
 
   meta = with lib; {
     description = "Prometheus exporter for Deluge";

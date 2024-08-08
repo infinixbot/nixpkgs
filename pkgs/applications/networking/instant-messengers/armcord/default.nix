@@ -1,12 +1,13 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, pnpm
-, nodejs
-, electron_30
-, makeWrapper
-, copyDesktopItems
-, makeDesktopItem
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  pnpm,
+  nodejs,
+  electron_30,
+  makeWrapper,
+  copyDesktopItems,
+  makeDesktopItem,
 }:
 stdenv.mkDerivation rec {
   pname = "armcord";
@@ -19,7 +20,12 @@ stdenv.mkDerivation rec {
     hash = "sha256-+o/w3bYW3IR3APo7HppSMOTl+cU+01J+p1L0YrYgsUU=";
   };
 
-  nativeBuildInputs = [ pnpm.configHook nodejs makeWrapper copyDesktopItems ];
+  nativeBuildInputs = [
+    pnpm.configHook
+    nodejs
+    makeWrapper
+    copyDesktopItems
+  ];
 
   pnpmDeps = pnpm.fetchDeps {
     inherit pname version src;
@@ -77,8 +83,14 @@ stdenv.mkDerivation rec {
     homepage = "https://armcord.app";
     downloadPage = "https://github.com/ArmCord/ArmCord";
     license = licenses.osl3;
-    maintainers = with maintainers; [ wrmilling water-sucks ];
-    platforms = [ "x86_64-linux" "aarch64-linux" ];
+    maintainers = with maintainers; [
+      wrmilling
+      water-sucks
+    ];
+    platforms = [
+      "x86_64-linux"
+      "aarch64-linux"
+    ];
     mainProgram = "armcord";
   };
 }

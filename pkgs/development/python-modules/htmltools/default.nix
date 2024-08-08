@@ -1,12 +1,13 @@
-{ lib
-, buildPythonPackage
-, pythonOlder
-, fetchFromGitHub
-, setuptools
-, packaging
-, typing-extensions
-, pytestCheckHook
-, syrupy
+{
+  lib,
+  buildPythonPackage,
+  pythonOlder,
+  fetchFromGitHub,
+  setuptools,
+  packaging,
+  typing-extensions,
+  pytestCheckHook,
+  syrupy,
 }:
 
 buildPythonPackage rec {
@@ -23,9 +24,7 @@ buildPythonPackage rec {
     hash = "sha256-+BSbJdWmqoEQGEJWBgoTVe4bbvlGJiMyfvvj0lAy9ZA=";
   };
 
-  build-system = [
-    setuptools
-  ];
+  build-system = [ setuptools ];
 
   dependencies = [
     packaging
