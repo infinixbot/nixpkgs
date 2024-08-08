@@ -1,4 +1,7 @@
-{ stdenv, ucg }:
+{
+  stdenv,
+  ucg,
+}:
 
 stdenv.mkDerivation {
   pname = "ucg-test";

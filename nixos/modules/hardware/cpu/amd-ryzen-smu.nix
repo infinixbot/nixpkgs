@@ -1,4 +1,8 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.hardware.cpu.amd.ryzen-smu;

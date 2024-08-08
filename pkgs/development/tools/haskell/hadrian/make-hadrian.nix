@@ -21,7 +21,10 @@
 # related packages that are managed in the GHC source tree. Its main job is to
 # expose all possible compile time customization in a common interface and
 # take care of all differences between Hadrian versions.
-{ bootPkgs, lib }:
+{
+  bootPkgs,
+  lib,
+}:
 
 {
   # GHC source tree and version to build hadrian & friends from.

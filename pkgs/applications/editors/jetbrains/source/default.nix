@@ -1,4 +1,6 @@
-{ callPackage }:
+{
+  callPackage,
+}:
 
 {
   idea-community = callPackage ./build.nix {

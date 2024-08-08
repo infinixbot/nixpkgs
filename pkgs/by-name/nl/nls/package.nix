@@ -1,4 +1,7 @@
-{ symlinkJoin, nickel }:
+{
+  symlinkJoin,
+  nickel,
+}:
 
 symlinkJoin {
   name = "nls-${nickel.version}";

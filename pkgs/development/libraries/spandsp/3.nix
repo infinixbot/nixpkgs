@@ -1,4 +1,7 @@
-{ fetchFromGitHub, callPackage }:
+{
+  fetchFromGitHub,
+  callPackage,
+}:
 
 (callPackage ./common.nix { }).overrideAttrs (previousAttrs: {
   version = "3.0.0";

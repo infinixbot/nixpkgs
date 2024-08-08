@@ -1,4 +1,7 @@
-{ buildDunePackage, qcheck-multicoretests-util }:
+{
+  buildDunePackage,
+  qcheck-multicoretests-util,
+}:
 
 buildDunePackage {
   pname = "qcheck-stm";

@@ -1,4 +1,7 @@
-{ unrar, fetchzip }:
+{
+  unrar,
+  fetchzip,
+}:
 
 unrar.overrideAttrs (
   finalAttrs: _: {

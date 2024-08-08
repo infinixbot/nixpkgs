@@ -1,4 +1,7 @@
-{ lib, makeGaugePlugin }:
+{
+  lib,
+  makeGaugePlugin,
+}:
 makeGaugePlugin {
   pname = "screenshot";
   data = lib.importJSON ./data.json;

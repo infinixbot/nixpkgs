@@ -1,4 +1,7 @@
-{ python3, fetchFromGitHub }:
+{
+  python3,
+  fetchFromGitHub,
+}:
 
 let
   python = python3.override {

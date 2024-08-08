@@ -683,7 +683,10 @@ rec {
     ```
   */
   makeScopeWithSplicing' =
-    { splicePackages, newScope }:
+    {
+      splicePackages,
+      newScope,
+    }:
     {
       otherSplices,
       # Attrs from `self` which won't be spliced.

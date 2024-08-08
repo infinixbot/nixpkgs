@@ -1,4 +1,7 @@
-{ lib, python3 }:
+{
+  lib,
+  python3,
+}:
 
 # This file contains an extra mapping from Julia packages to the Python packages they depend on.
 

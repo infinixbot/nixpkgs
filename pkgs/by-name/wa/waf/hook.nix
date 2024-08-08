@@ -1,4 +1,7 @@
-{ makeSetupHook, waf }:
+{
+  makeSetupHook,
+  waf,
+}:
 
 makeSetupHook {
   name = "waf-setup-hook";

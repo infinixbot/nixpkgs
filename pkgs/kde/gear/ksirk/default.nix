@@ -1,4 +1,7 @@
-{ mkKdeDerivation, qtmultimedia }:
+{
+  mkKdeDerivation,
+  qtmultimedia,
+}:
 mkKdeDerivation {
   pname = "ksirk";
 

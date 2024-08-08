@@ -1,4 +1,7 @@
-{ buildDunePackage, mirage-clock }:
+{
+  buildDunePackage,
+  mirage-clock,
+}:
 
 buildDunePackage {
   pname = "mirage-clock-solo5";

@@ -1,4 +1,7 @@
-{ buildFHSEnv, sparrow-unwrapped }:
+{
+  buildFHSEnv,
+  sparrow-unwrapped,
+}:
 
 buildFHSEnv {
   name = "sparrow-desktop";

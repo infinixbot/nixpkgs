@@ -1,4 +1,7 @@
-{ lib, bundlerApp }:
+{
+  lib,
+  bundlerApp,
+}:
 
 # Jupyter console:
 # nix run --impure --expr 'with import <nixpkgs> {}; jupyter-console.withSingleKernel iruby.definition'

@@ -1,4 +1,7 @@
-{ substituteAll, callPackage }:
+{
+  substituteAll,
+  callPackage,
+}:
 let
   sigtool = callPackage ./sigtool.nix { };
 

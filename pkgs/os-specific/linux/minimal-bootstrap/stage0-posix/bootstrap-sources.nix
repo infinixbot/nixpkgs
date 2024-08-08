@@ -1,4 +1,6 @@
-{ hostPlatform }:
+{
+  hostPlatform,
+}:
 
 rec {
   name = "stage0-posix-${version}-source";

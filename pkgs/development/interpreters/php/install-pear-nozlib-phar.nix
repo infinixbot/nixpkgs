@@ -1,4 +1,6 @@
-{ fetchurl }:
+{
+  fetchurl,
+}:
 
 fetchurl {
   url = "https://github.com/pear/pearweb_phars/raw/v1.10.21/install-pear-nozlib.phar";

@@ -1,4 +1,7 @@
-{ callPackage, idris2Packages }:
+{
+  callPackage,
+  idris2Packages,
+}:
 
 let
 in

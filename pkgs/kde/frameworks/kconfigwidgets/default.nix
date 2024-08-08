@@ -1,4 +1,7 @@
-{ mkKdeDerivation, qttools }:
+{
+  mkKdeDerivation,
+  qttools,
+}:
 mkKdeDerivation {
   pname = "kconfigwidgets";
 

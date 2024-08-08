@@ -11,7 +11,11 @@ import ./make-test-python.nix {
   name = "ntfy-sh";
 
   nodes.machine =
-    { lib, pkgs, ... }:
+    {
+      lib,
+      pkgs,
+      ...
+    }:
     {
       environment.etc."ntfy-sh-dynamic-user.conf".text = ''
         [Service]

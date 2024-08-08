@@ -1,4 +1,7 @@
-{ callPackage, ... }:
+{
+  callPackage,
+  ...
+}:
 
 {
   pages = callPackage ./pages.nix { };

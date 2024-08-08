@@ -28,7 +28,10 @@ let
       nodes =
         let
           mkGaleraNode =
-            { id, method }:
+            {
+              id,
+              method,
+            }:
             let
               address = "192.168.1.${toString id}";
               isFirstClusterNode = id == 1 || id == 4;

@@ -1,4 +1,7 @@
-{ stdenv, curl }:
+{
+  stdenv,
+  curl,
+}:
 
 {
   ipfs,

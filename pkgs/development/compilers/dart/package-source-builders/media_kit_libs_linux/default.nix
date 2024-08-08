@@ -1,4 +1,6 @@
-{ stdenv }:
+{
+  stdenv,
+}:
 
 # Implementation notes
 

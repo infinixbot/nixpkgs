@@ -1,4 +1,8 @@
-{ pkgs, python, ... }:
+{
+  pkgs,
+  python,
+  ...
+}:
 # propagatedBuildInputs are for Python libraries and executables
 # buildInputs are for libraries
 let

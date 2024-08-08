@@ -1,4 +1,7 @@
-{ lib, writeTextFile }:
+{
+  lib,
+  writeTextFile,
+}:
 let
   inherit (builtins) typeOf;
 in

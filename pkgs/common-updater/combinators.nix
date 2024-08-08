@@ -1,4 +1,6 @@
-{ lib }:
+{
+  lib,
+}:
 
 /*
   This is a set of tools to manipulate update scripts as recognized by update.nix.

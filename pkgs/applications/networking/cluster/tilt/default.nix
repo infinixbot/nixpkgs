@@ -1,4 +1,7 @@
-{ fetchFromGitHub, callPackage }:
+{
+  fetchFromGitHub,
+  callPackage,
+}:
 let
   args = rec {
     /*

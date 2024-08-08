@@ -39,7 +39,11 @@ in
       '';
       default = { };
       type = types.submodule (
-        { config, options, ... }:
+        {
+          config,
+          options,
+          ...
+        }:
         {
           freeformType = types.attrsOf (pkgs.formats.json { }).type;
 
@@ -115,7 +119,11 @@ in
       '';
       default = { };
       type = types.submodule (
-        { config, options, ... }:
+        {
+          config,
+          options,
+          ...
+        }:
         {
           freeformType = types.attrsOf (pkgs.formats.json { }).type;
 

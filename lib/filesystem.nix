@@ -347,7 +347,11 @@ in
     :::
   */
   packagesFromDirectoryRecursive =
-    { callPackage, directory, ... }:
+    {
+      callPackage,
+      directory,
+      ...
+    }:
     let
       # Determine if a directory entry from `readDir` indicates a package or
       # directory of packages.

@@ -1,4 +1,7 @@
-{ lib, stdenv }:
+{
+  lib,
+  stdenv,
+}:
 
 # Trick to build a gcc that is capable of emitting shared libraries *without* having the
 # targetPlatform libc available beforehand.  Taken from:

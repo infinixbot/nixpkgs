@@ -1,4 +1,6 @@
-{ callPackage }:
+{
+  callPackage,
+}:
 
 {
   adaptive_lighting = callPackage ./adaptive_lighting { };

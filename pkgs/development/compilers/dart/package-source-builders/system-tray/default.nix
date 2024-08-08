@@ -1,4 +1,7 @@
-{ stdenv, libayatana-appindicator }:
+{
+  stdenv,
+  libayatana-appindicator,
+}:
 
 { version, src, ... }:
 

@@ -1,4 +1,7 @@
-{ runCommand, python3 }:
+{
+  runCommand,
+  python3,
+}:
 
 let
   env = {

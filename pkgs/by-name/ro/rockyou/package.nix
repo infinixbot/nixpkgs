@@ -1,4 +1,7 @@
-{ seclists, stdenvNoCC }:
+{
+  seclists,
+  stdenvNoCC,
+}:
 stdenvNoCC.mkDerivation {
   pname = "rockyou";
   inherit (seclists) version src;

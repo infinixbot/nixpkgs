@@ -1,4 +1,7 @@
-{ version, src }:
+{
+  version,
+  src,
+}:
 
 {
   lib,

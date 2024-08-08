@@ -1,4 +1,7 @@
-{ callPackage, wolfram-engine }:
+{
+  callPackage,
+  wolfram-engine,
+}:
 
 # Jupyter console:
 # nix run --impure --expr 'with import <nixpkgs> {}; jupyter-console.withSingleKernel wolfram-for-jupyter-kernel.definition'

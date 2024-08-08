@@ -1,5 +1,8 @@
 # Platform specific constants
-{ lib, hostPlatform }:
+{
+  lib,
+  hostPlatform,
+}:
 
 rec {
   # meta.platforms

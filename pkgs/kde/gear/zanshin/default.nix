@@ -1,4 +1,7 @@
-{ mkKdeDerivation, boost }:
+{
+  mkKdeDerivation,
+  boost,
+}:
 mkKdeDerivation {
   pname = "zanshin";
 

@@ -1,4 +1,7 @@
-{ symlinkJoin, makeWrapper }:
+{
+  symlinkJoin,
+  makeWrapper,
+}:
 flutter:
 
 let

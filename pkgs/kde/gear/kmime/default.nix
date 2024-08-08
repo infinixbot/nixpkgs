@@ -1,4 +1,7 @@
-{ mkKdeDerivation, ki18n }:
+{
+  mkKdeDerivation,
+  ki18n,
+}:
 mkKdeDerivation {
   pname = "kmime";
 

@@ -1,4 +1,7 @@
-{ lib, buildPackages }:
+{
+  lib,
+  buildPackages,
+}:
 
 let
   # rudimentary support for cross-compiling

@@ -1,4 +1,6 @@
-{ fetchFromGitHub }:
+{
+  fetchFromGitHub,
+}:
 
 {
   letoram-arcan =

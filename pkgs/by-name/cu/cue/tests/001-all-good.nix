@@ -1,4 +1,7 @@
-{ cue, runCommand }:
+{
+  cue,
+  runCommand,
+}:
 
 runCommand "cue-test-001-all-good-${cue.version}"
   {

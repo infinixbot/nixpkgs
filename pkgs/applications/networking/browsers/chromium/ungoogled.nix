@@ -6,7 +6,10 @@
   patch,
 }:
 
-{ rev, hash }:
+{
+  rev,
+  hash,
+}:
 
 stdenv.mkDerivation {
   pname = "ungoogled-chromium";

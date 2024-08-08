@@ -99,7 +99,9 @@ import ./make-test-python.nix (
     # systemd unit's bash script ran, and afterwards - whether the systemd unit
     # worked.
     checkSettingsToDelete =
-      { not }:
+      {
+        not,
+      }:
       lib.pipe IDsToDelete [
         (lib.mapAttrsToList (
           t: id:

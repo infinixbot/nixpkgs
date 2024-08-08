@@ -1,4 +1,7 @@
-{ lib, pkgs }:
+{
+  lib,
+  pkgs,
+}:
 
 lib.makeScope pkgs.newScope (self: {
   stdenv = if pkgs.stdenv.isDarwin then pkgs.darwin.apple_sdk_11_0.stdenv else pkgs.stdenv;

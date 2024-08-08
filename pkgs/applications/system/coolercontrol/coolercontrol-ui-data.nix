@@ -1,4 +1,6 @@
-{ buildNpmPackage }:
+{
+  buildNpmPackage,
+}:
 
 {
   version,

@@ -1,4 +1,7 @@
-{ lib, makeGaugePlugin }:
+{
+  lib,
+  makeGaugePlugin,
+}:
 makeGaugePlugin {
   pname = "ruby";
   data = lib.importJSON ./data.json;

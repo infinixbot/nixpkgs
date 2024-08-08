@@ -1,4 +1,7 @@
-{ makeSetupHook, teensy-cmake-macros }:
+{
+  makeSetupHook,
+  teensy-cmake-macros,
+}:
 
 makeSetupHook {
   name = "teensy-cmake-macros-hook";

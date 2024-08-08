@@ -7,7 +7,9 @@
   buildPackages,
 }:
 
-{ extraLoaders }:
+{
+  extraLoaders,
+}:
 
 let
   # Get packages to generate the cache for. We always include gdk-pixbuf.

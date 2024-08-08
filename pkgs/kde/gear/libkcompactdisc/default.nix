@@ -1,4 +1,7 @@
-{ mkKdeDerivation, alsa-lib }:
+{
+  mkKdeDerivation,
+  alsa-lib,
+}:
 mkKdeDerivation {
   pname = "libkcompactdisc";
 

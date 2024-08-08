@@ -1,4 +1,6 @@
-{ callPackage }:
+{
+  callPackage,
+}:
 
 {
   android-tv-card = callPackage ./android-tv-card { };

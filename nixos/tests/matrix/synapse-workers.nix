@@ -8,7 +8,11 @@ import ../make-test-python.nix (
 
     nodes = {
       homeserver =
-        { pkgs, nodes, ... }:
+        {
+          pkgs,
+          nodes,
+          ...
+        }:
         {
           services.postgresql = {
             enable = true;

@@ -1,4 +1,8 @@
-{ lib, extendModules, ... }:
+{
+  lib,
+  extendModules,
+  ...
+}:
 
 let
   inherit (lib) mkOption mkOverride types;
@@ -10,7 +14,11 @@ in
       options.sub = mkOption {
         default = { };
         type = types.submodule (
-          { config, extendModules, ... }:
+          {
+            config,
+            extendModules,
+            ...
+          }:
           {
             options.value = mkOption {
               type = types.int;

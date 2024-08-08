@@ -1,4 +1,7 @@
-{ buildDunePackage, timedesc }:
+{
+  buildDunePackage,
+  timedesc,
+}:
 
 buildDunePackage {
   pname = "timedesc-tzdb";

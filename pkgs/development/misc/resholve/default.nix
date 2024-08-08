@@ -1,4 +1,8 @@
-{ lib, pkgsBuildHost, ... }:
+{
+  lib,
+  pkgsBuildHost,
+  ...
+}:
 
 let
   removeKnownVulnerabilities =

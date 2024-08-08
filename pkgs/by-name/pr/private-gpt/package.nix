@@ -1,4 +1,7 @@
-{ python3Packages, makeBinaryWrapper }:
+{
+  python3Packages,
+  makeBinaryWrapper,
+}:
 
 python3Packages.toPythonApplication (
   python3Packages.private-gpt.overrideAttrs (oldAttrs: {

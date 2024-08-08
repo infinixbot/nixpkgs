@@ -1,4 +1,7 @@
-{ lib, mkPulumiPackage }:
+{
+  lib,
+  mkPulumiPackage,
+}:
 # Note that we are not using https://github.com/pulumi/pulumi-yandex because
 # it has been archived in 2022.
 mkPulumiPackage rec {

@@ -1,4 +1,7 @@
-{ python, makeSetupHook }:
+{
+  python,
+  makeSetupHook,
+}:
 
 makeSetupHook {
   name = "manifest-requirements-check-hook";

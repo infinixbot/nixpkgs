@@ -1,4 +1,7 @@
-{ mkKdeDerivation, libcanberra }:
+{
+  mkKdeDerivation,
+  libcanberra,
+}:
 mkKdeDerivation {
   pname = "knotifyconfig";
 

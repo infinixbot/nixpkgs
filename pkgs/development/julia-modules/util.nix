@@ -1,4 +1,7 @@
-{ git, runCommand }:
+{
+  git,
+  runCommand,
+}:
 
 {
   # Add packages to a Python environment. Works if you pass something like either

@@ -1,4 +1,7 @@
-{ fetchurl, callPackage }:
+{
+  fetchurl,
+  callPackage,
+}:
 
 (callPackage ./common.nix { }).overrideAttrs (_: rec {
   version = "0.0.6";

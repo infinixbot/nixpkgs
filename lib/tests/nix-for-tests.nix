@@ -1,4 +1,6 @@
-{ pkgs }:
+{
+  pkgs,
+}:
 
 # The aws-sdk-cpp tests are flaky.  Since pull requests to staging
 # cause nix to be rebuilt, this means that staging PRs end up

@@ -402,7 +402,10 @@ in
     :::
   */
   toSource =
-    { root, fileset }:
+    {
+      root,
+      fileset,
+    }:
     let
       # We cannot rename matched attribute arguments, so let's work around it with an extra `let in` statement
       filesetArg = fileset;

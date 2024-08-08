@@ -1,4 +1,7 @@
-{ stdenv, spigot }:
+{
+  stdenv,
+  spigot,
+}:
 
 stdenv.mkDerivation {
   pname = "spigot-approximation";

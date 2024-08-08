@@ -1,4 +1,7 @@
-{ lib, stdenvNoCC }:
+{
+  lib,
+  stdenvNoCC,
+}:
 stdenvNoCC.mkDerivation {
   pname = "meletrix-udev-rules";
   version = "0-unstable-2023-10-20";

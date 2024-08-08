@@ -1,4 +1,6 @@
-{ fetchzip }:
+{
+  fetchzip,
+}:
 let
   fetchzip' =
     args:

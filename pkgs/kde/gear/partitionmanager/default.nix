@@ -1,4 +1,7 @@
-{ mkKdeDerivation, kpmcore }:
+{
+  mkKdeDerivation,
+  kpmcore,
+}:
 mkKdeDerivation {
   pname = "partitionmanager";
 
