@@ -27,11 +27,18 @@ let
 
   listHasPrefix = lib.lists.hasPrefix;
 
-  inherit (lib.strings) concatStringsSep substring;
+  inherit (lib.strings)
+    concatStringsSep
+    substring
+    ;
 
-  inherit (lib.asserts) assertMsg;
+  inherit (lib.asserts)
+    assertMsg
+    ;
 
-  inherit (lib.path.subpath) isValid;
+  inherit (lib.path.subpath)
+    isValid
+    ;
 
   # Return the reason why a subpath is invalid, or `null` if it's valid
   subpathInvalidReason =

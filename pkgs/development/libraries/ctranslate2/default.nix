@@ -88,7 +88,10 @@ stdenv.mkDerivation rec {
     ];
 
   passthru.tests = {
-    inherit libretranslate wyoming-faster-whisper;
+    inherit
+      libretranslate
+      wyoming-faster-whisper
+      ;
   };
 
   meta = with lib; {

@@ -19,7 +19,10 @@
 buildDunePackage {
   pname = "paf-cohttp";
 
-  inherit (paf) version src;
+  inherit (paf)
+    version
+    src
+    ;
 
   duneVersion = "3";
 

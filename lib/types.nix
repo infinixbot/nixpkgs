@@ -57,9 +57,15 @@ let
     hasInfix
     isStringLike
     ;
-  inherit (lib.trivial) boolToString;
+  inherit (lib.trivial)
+    boolToString
+    ;
 
-  inherit (lib.modules) mergeDefinitions fixupOptionType mergeOptionDecls;
+  inherit (lib.modules)
+    mergeDefinitions
+    fixupOptionType
+    mergeOptionDecls
+    ;
 
   inAttrPosSuffix =
     v: name:
@@ -966,7 +972,10 @@ let
                 def: lib.setDefaultModuleLocation "${def.file}, via option ${showOption loc}" def.value
               ) defs;
           };
-          inherit (submoduleWith { modules = staticModules; }) getSubOptions getSubModules;
+          inherit (submoduleWith { modules = staticModules; })
+            getSubOptions
+            getSubModules
+            ;
           substSubModules =
             m:
             deferredModuleWith (

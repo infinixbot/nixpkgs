@@ -25,7 +25,10 @@ in
 {
   options.services.rosenpass =
     let
-      inherit (lib) literalExpression mkOption;
+      inherit (lib)
+        literalExpression
+        mkOption
+        ;
       inherit (lib.types)
         enum
         listOf

@@ -58,7 +58,9 @@ let
     showOption
     unknownModule
     ;
-  inherit (lib.strings) isConvertibleWithToString;
+  inherit (lib.strings)
+    isConvertibleWithToString
+    ;
 
   showDeclPrefix =
     loc: decl: prefix:

@@ -6,7 +6,11 @@
 }:
 
 let
-  inherit (lib) assertOneOf makeOverridable optionalString;
+  inherit (lib)
+    assertOneOf
+    makeOverridable
+    optionalString
+    ;
 in
 
 makeOverridable (

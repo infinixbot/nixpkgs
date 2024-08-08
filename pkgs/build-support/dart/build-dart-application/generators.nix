@@ -80,5 +80,7 @@ let
     );
 in
 {
-  inherit linkPackageConfig;
+  inherit
+    linkPackageConfig
+    ;
 }

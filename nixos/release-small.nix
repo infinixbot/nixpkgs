@@ -66,10 +66,17 @@ rec {
         simple
         ;
       installer = {
-        inherit (nixos'.tests.installer) lvm separateBoot simple;
+        inherit (nixos'.tests.installer)
+          lvm
+          separateBoot
+          simple
+          ;
       };
       boot = {
-        inherit (nixos'.tests.boot) biosCdrom uefiCdrom;
+        inherit (nixos'.tests.boot)
+          biosCdrom
+          uefiCdrom
+          ;
       };
     };
   };

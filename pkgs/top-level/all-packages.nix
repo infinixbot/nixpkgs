@@ -1764,7 +1764,10 @@ with pkgs;
     inherit (plasma5Packages) kdialog;
   };
 
-  inherit (recurseIntoAttrs (callPackage ../tools/package-management/akku { })) akku akkuPackages;
+  inherit (recurseIntoAttrs (callPackage ../tools/package-management/akku { }))
+    akku
+    akkuPackages
+    ;
 
   albert = qt6Packages.callPackage ../applications/misc/albert { };
 
@@ -3286,7 +3289,10 @@ with pkgs;
 
   amberol = callPackage ../applications/audio/amberol { };
 
-  inherit (callPackages ../development/tools/ammonite { }) ammonite_2_12 ammonite_2_13;
+  inherit (callPackages ../development/tools/ammonite { })
+    ammonite_2_12
+    ammonite_2_13
+    ;
   ammonite = ammonite_2_13;
 
   amp = callPackage ../applications/editors/amp { };
@@ -3412,7 +3418,10 @@ with pkgs;
 
   arp-scan = callPackage ../tools/misc/arp-scan { };
 
-  inherit (callPackages ../data/fonts/arphic { }) arphic-ukai arphic-uming;
+  inherit (callPackages ../data/fonts/arphic { })
+    arphic-ukai
+    arphic-uming
+    ;
 
   artyFX = callPackage ../applications/audio/artyFX { };
 
@@ -4166,7 +4175,11 @@ with pkgs;
   kerf = kerf_1; # kerf2 is WIP
   kerf_1 = callPackage ../development/interpreters/kerf {
     stdenv = clangStdenv;
-    inherit (darwin.apple_sdk.frameworks) Accelerate CoreGraphics CoreVideo;
+    inherit (darwin.apple_sdk.frameworks)
+      Accelerate
+      CoreGraphics
+      CoreVideo
+      ;
   };
 
   kwakd = callPackage ../servers/kwakd { };
@@ -4453,7 +4466,10 @@ with pkgs;
   buttercup-desktop = callPackage ../tools/security/buttercup-desktop { };
 
   charles = charles4;
-  inherit (callPackages ../applications/networking/charles { }) charles3 charles4;
+  inherit (callPackages ../applications/networking/charles { })
+    charles3
+    charles4
+    ;
 
   quaternion-qt5 =
     libsForQt5.callPackage ../applications/networking/instant-messengers/quaternion
@@ -6448,7 +6464,10 @@ with pkgs;
 
   svt-av1 = callPackage ../tools/video/svt-av1 { };
 
-  inherit (callPackages ../servers/rainloop { }) rainloop-community rainloop-standard;
+  inherit (callPackages ../servers/rainloop { })
+    rainloop-community
+    rainloop-standard
+    ;
 
   raven-reader = callPackage ../applications/networking/newsreaders/raven-reader { };
 
@@ -6994,7 +7013,11 @@ with pkgs;
 
   libpinyin = callPackage ../development/libraries/libpinyin { };
 
-  inherit (import ../development/libraries/libsbsms pkgs) libsbsms libsbsms_2_0_2 libsbsms_2_3_0;
+  inherit (import ../development/libraries/libsbsms pkgs)
+    libsbsms
+    libsbsms_2_0_2
+    libsbsms_2_3_0
+    ;
 
   libskk = callPackage ../development/libraries/libskk { };
 
@@ -7445,7 +7468,11 @@ with pkgs;
 
   ddrutility = callPackage ../tools/system/ddrutility { };
 
-  inherit (callPackages ../applications/networking/p2p/deluge { }) deluge-gtk deluged deluge;
+  inherit (callPackages ../applications/networking/p2p/deluge { })
+    deluge-gtk
+    deluged
+    deluge
+    ;
 
   deluge-2_x = deluge;
 
@@ -8364,7 +8391,9 @@ with pkgs;
 
   fdbPackages = dontRecurseIntoAttrs (callPackage ../servers/foundationdb { });
 
-  inherit (fdbPackages) foundationdb71;
+  inherit (fdbPackages)
+    foundationdb71
+    ;
 
   foundationdb = foundationdb71;
 
@@ -10260,7 +10289,10 @@ with pkgs;
 
   npmHooks = callPackage ../build-support/node/build-npm-package/hooks { };
 
-  inherit (callPackages ../build-support/node/fetch-npm-deps { }) fetchNpmDeps prefetch-npm-deps;
+  inherit (callPackages ../build-support/node/fetch-npm-deps { })
+    fetchNpmDeps
+    prefetch-npm-deps
+    ;
 
   importNpmLock = callPackages ../build-support/node/import-npm-lock { };
 
@@ -11066,7 +11098,11 @@ with pkgs;
 
   netbootxyz-efi = callPackage ../tools/misc/netbootxyz-efi { };
 
-  inherit (callPackage ../servers/web-apps/netbox { }) netbox netbox_3_6 netbox_3_7;
+  inherit (callPackage ../servers/web-apps/netbox { })
+    netbox
+    netbox_3_6
+    netbox_3_7
+    ;
 
   netbox2netshot = callPackage ../tools/admin/netbox2netshot { };
 
@@ -11132,7 +11168,10 @@ with pkgs;
 
   grocy = callPackage ../servers/grocy { };
 
-  inherit (callPackages ../servers/nextcloud { }) nextcloud28 nextcloud29;
+  inherit (callPackages ../servers/nextcloud { })
+    nextcloud28
+    nextcloud29
+    ;
 
   nextcloud28Packages = callPackage ../servers/nextcloud/packages {
     apps = lib.importJSON ../servers/nextcloud/packages/28.json;
@@ -12073,7 +12112,10 @@ with pkgs;
 
   plujain-ramp = callPackage ../applications/audio/plujain-ramp { };
 
-  inherit (callPackage ../servers/plik { }) plik plikd;
+  inherit (callPackage ../servers/plik { })
+    plik
+    plikd
+    ;
 
   plex = callPackage ../servers/plex { };
 
@@ -12128,7 +12170,10 @@ with pkgs;
 
   pngquant = callPackage ../tools/graphics/pngquant { };
 
-  inherit (callPackage ../development/tools/pnpm { }) pnpm_8 pnpm_9;
+  inherit (callPackage ../development/tools/pnpm { })
+    pnpm_8
+    pnpm_9
+    ;
   pnpm = pnpm_9;
 
   po4a = perlPackages.Po4a;
@@ -12564,7 +12609,10 @@ with pkgs;
 
   rewrk = callPackage ../tools/networking/rewrk { };
 
-  inherit (callPackage ../tools/security/rekor { }) rekor-cli rekor-server;
+  inherit (callPackage ../tools/security/rekor { })
+    rekor-cli
+    rekor-server
+    ;
 
   rhai-doc = callPackage ../development/tools/misc/rhai-doc { };
 
@@ -12660,7 +12708,9 @@ with pkgs;
 
   rescuetime = libsForQt5.callPackage ../applications/misc/rescuetime { };
 
-  inherit (callPackage ../development/misc/resholve { }) resholve;
+  inherit (callPackage ../development/misc/resholve { })
+    resholve
+    ;
 
   restool = callPackage ../os-specific/linux/restool { };
 
@@ -13395,7 +13445,10 @@ with pkgs;
 
   sshuttle = callPackage ../tools/security/sshuttle { };
 
-  inherit (callPackages ../tools/misc/sshx { }) sshx sshx-server;
+  inherit (callPackages ../tools/misc/sshx { })
+    sshx
+    sshx-server
+    ;
 
   ssldump = callPackage ../tools/networking/ssldump { };
 
@@ -13976,7 +14029,10 @@ with pkgs;
 
   triggerhappy = callPackage ../tools/inputmethods/triggerhappy { };
 
-  inherit (callPackage ../applications/office/trilium { }) trilium-desktop trilium-server;
+  inherit (callPackage ../applications/office/trilium { })
+    trilium-desktop
+    trilium-server
+    ;
 
   trippy = callPackage ../tools/networking/trippy { };
 
@@ -14715,7 +14771,11 @@ with pkgs;
 
   valum = callPackage ../development/web/valum { };
 
-  inherit (callPackages ../servers/varnish { }) varnish60 varnish74 varnish75;
+  inherit (callPackages ../servers/varnish { })
+    varnish60
+    varnish74
+    varnish75
+    ;
   inherit (callPackages ../servers/varnish/packages.nix { })
     varnish60Packages
     varnish74Packages
@@ -15896,7 +15956,10 @@ with pkgs;
   gnat13Packages = recurseIntoAttrs (callPackage ./ada-packages.nix { gnat = buildPackages.gnat13; });
   gnatPackages = gnat12Packages;
 
-  inherit (gnatPackages) gprbuild gnatprove;
+  inherit (gnatPackages)
+    gprbuild
+    gnatprove
+    ;
 
   gnu-smalltalk = callPackage ../development/compilers/gnu-smalltalk { };
 
@@ -16187,7 +16250,10 @@ with pkgs;
 
   inherit (idris2Packages) idris2;
 
-  inherit (callPackage ../development/tools/database/indradb { }) indradb-server indradb-client;
+  inherit (callPackage ../development/tools/database/indradb { })
+    indradb-server
+    indradb-client
+    ;
 
   instawow = callPackage ../games/instawow/default.nix { };
 
@@ -17146,7 +17212,10 @@ with pkgs;
 
   vcard = python3Packages.toPythonApplication python3Packages.vcard;
 
-  inherit (callPackage ../development/compilers/vala { }) vala_0_56 vala;
+  inherit (callPackage ../development/compilers/vala { })
+    vala_0_56
+    vala
+    ;
 
   vyper = with python3Packages; toPythonApplication vyper;
 
@@ -17470,7 +17539,11 @@ with pkgs;
 
   groovy = callPackage ../development/interpreters/groovy { };
 
-  inherit (callPackages ../applications/networking/cluster/hadoop { }) hadoop_3_4 hadoop_3_3 hadoop2;
+  inherit (callPackages ../applications/networking/cluster/hadoop { })
+    hadoop_3_4
+    hadoop_3_3
+    hadoop2
+    ;
   hadoop3 = hadoop_3_4;
   hadoop = hadoop3;
 
@@ -17892,7 +17965,10 @@ with pkgs;
 
   smiley-sans = callPackage ../data/fonts/smiley-sans { };
 
-  inherit (callPackages ../applications/networking/cluster/spark { }) spark_3_5 spark_3_4;
+  inherit (callPackages ../applications/networking/cluster/spark { })
+    spark_3_5
+    spark_3_4
+    ;
   spark3 = spark_3_5;
   spark = spark3;
 
@@ -18089,7 +18165,11 @@ with pkgs;
 
   aeron = callPackage ../servers/aeron { };
 
-  inherit (callPackage ../development/tools/alloy { }) alloy5 alloy6 alloy;
+  inherit (callPackage ../development/tools/alloy { })
+    alloy5
+    alloy6
+    alloy
+    ;
 
   altair = callPackage ../development/tools/altair-graphql-client { };
 
@@ -18265,7 +18345,10 @@ with pkgs;
   apacheAnt = callPackage ../development/tools/build-managers/apache-ant { };
   ant = apacheAnt;
 
-  inherit (callPackages ../servers/apache-kafka { }) apacheKafka_3_6 apacheKafka_3_7;
+  inherit (callPackages ../servers/apache-kafka { })
+    apacheKafka_3_6
+    apacheKafka_3_7
+    ;
 
   apacheKafka = apacheKafka_3_7;
 
@@ -19241,7 +19324,10 @@ with pkgs;
 
   inotify-tools = callPackage ../development/tools/misc/inotify-tools { };
 
-  inherit (callPackage ../applications/misc/inochi2d { }) inochi-creator inochi-session;
+  inherit (callPackage ../applications/misc/inochi2d { })
+    inochi-creator
+    inochi-session
+    ;
 
   intel-gpu-tools = callPackage ../development/tools/misc/intel-gpu-tools { };
 
@@ -19257,7 +19343,10 @@ with pkgs;
 
   jake = callPackage ../development/tools/jake { };
 
-  inherit (callPackage ../development/tools/build-managers/jam { }) jam ftjam;
+  inherit (callPackage ../development/tools/build-managers/jam { })
+    jam
+    ftjam
+    ;
 
   javacc = callPackage ../development/tools/parsing/javacc {
     # Upstream doesn't support anything newer than Java 8.
@@ -19764,7 +19853,10 @@ with pkgs;
 
   replacement = callPackage ../development/tools/misc/replacement { };
 
-  inherit (callPackage ../development/tools/replay-io { }) replay-io replay-node-cli;
+  inherit (callPackage ../development/tools/replay-io { })
+    replay-io
+    replay-node-cli
+    ;
 
   requestly = callPackage ../tools/networking/requestly { };
 
@@ -19867,7 +19959,10 @@ with pkgs;
 
   shallot = callPackage ../tools/misc/shallot { };
 
-  inherit (callPackage ../development/tools/build-managers/shards { }) shards_0_17 shards;
+  inherit (callPackage ../development/tools/build-managers/shards { })
+    shards_0_17
+    shards
+    ;
 
   shellcheck = callPackage ../development/tools/shellcheck {
     inherit (__splicedPackages.haskellPackages) ShellCheck;
@@ -20591,7 +20686,10 @@ with pkgs;
     withCMake = false;
   };
 
-  inherit (callPackages ../development/libraries/c-blosc { }) c-blosc c-blosc2;
+  inherit (callPackages ../development/libraries/c-blosc { })
+    c-blosc
+    c-blosc2
+    ;
 
   cachix = lib.getBin haskellPackages.cachix;
 
@@ -21297,7 +21395,10 @@ with pkgs;
 
   getdata = callPackage ../development/libraries/getdata { };
 
-  inherit (callPackages ../development/libraries/getdns { }) getdns stubby;
+  inherit (callPackages ../development/libraries/getdns { })
+    getdns
+    stubby
+    ;
 
   gettext = callPackage ../development/libraries/gettext { };
 
@@ -24119,7 +24220,10 @@ with pkgs;
   nv-codec-headers-12 = nv-codec-headers.override { majorVersion = "12"; };
 
   nvidiaCtkPackages = callPackage ../by-name/nv/nvidia-container-toolkit/packages.nix { };
-  inherit (nvidiaCtkPackages) nvidia-docker nvidia-podman;
+  inherit (nvidiaCtkPackages)
+    nvidia-docker
+    nvidia-podman
+    ;
 
   nvidia-vaapi-driver = lib.hiPrio (callPackage ../development/libraries/nvidia-vaapi-driver { });
 
@@ -24135,7 +24239,10 @@ with pkgs;
 
   ode = callPackage ../development/libraries/ode { };
 
-  inherit (callPackages ../development/libraries/ogre { }) ogre_13 ogre_14;
+  inherit (callPackages ../development/libraries/ogre { })
+    ogre_13
+    ogre_14
+    ;
 
   ogre = ogre_14;
 
@@ -25581,7 +25688,9 @@ with pkgs;
   wlr-protocols = callPackage ../development/libraries/wlroots/protocols.nix { };
 
   wt = wt4;
-  inherit (libsForQt5.callPackage ../development/libraries/wt { }) wt4;
+  inherit (libsForQt5.callPackage ../development/libraries/wt { })
+    wt4
+    ;
 
   wxformbuilder = callPackage ../development/tools/wxformbuilder { };
 
@@ -25625,7 +25734,9 @@ with pkgs;
 
   xandikos = callPackage ../servers/xandikos { };
 
-  inherit (callPackages ../development/libraries/xapian { }) xapian_1_4;
+  inherit (callPackages ../development/libraries/xapian { })
+    xapian_1_4
+    ;
   xapian = xapian_1_4;
 
   xapian-omega = callPackage ../development/libraries/xapian/tools/omega {
@@ -26709,7 +26820,9 @@ with pkgs;
 
   morty = callPackage ../servers/web-apps/morty { };
 
-  inherit (callPackage ../applications/networking/mullvad { }) mullvad;
+  inherit (callPackage ../applications/networking/mullvad { })
+    mullvad
+    ;
 
   mullvad-vpn = callPackage ../applications/networking/mullvad-vpn { };
 
@@ -27013,7 +27126,10 @@ with pkgs;
 
   miniflux = callPackage ../servers/miniflux { };
 
-  inherit (callPackage ../servers/mir { }) mir mir_2_15;
+  inherit (callPackage ../servers/mir { })
+    mir
+    mir_2_15
+    ;
 
   miriway = callPackage ../applications/window-managers/miriway { };
 
@@ -27453,7 +27569,10 @@ with pkgs;
 
   trafficserver = callPackage ../servers/http/trafficserver { };
 
-  inherit (callPackages ../servers/http/tomcat { }) tomcat9 tomcat10;
+  inherit (callPackages ../servers/http/tomcat { })
+    tomcat9
+    tomcat10
+    ;
 
   tomcat_mysql_jdbc = callPackage ../servers/http/tomcat/jdbc/mysql { };
 
@@ -27477,11 +27596,18 @@ with pkgs;
 
   slskd = callPackage ../servers/web-apps/slskd { };
 
-  inherit (callPackages ../servers/web-apps/matomo { }) matomo matomo_5 matomo-beta;
+  inherit (callPackages ../servers/web-apps/matomo { })
+    matomo
+    matomo_5
+    matomo-beta
+    ;
 
   axis2 = callPackage ../servers/http/tomcat/axis2 { };
 
-  inherit (callPackages ../servers/unifi { }) unifi7 unifi8;
+  inherit (callPackages ../servers/unifi { })
+    unifi7
+    unifi8
+    ;
 
   unifi = unifi7;
 
@@ -28963,7 +29089,10 @@ with pkgs;
     ;
 
   # Upstream Barebox:
-  inherit (callPackage ../misc/barebox { }) buildBarebox bareboxTools;
+  inherit (callPackage ../misc/barebox { })
+    buildBarebox
+    bareboxTools
+    ;
 
   uclibc-ng-cross = uclibc-ng.override {
     stdenv = crossLibcStdenv;
@@ -29601,7 +29730,10 @@ with pkgs;
 
   libGDSII = callPackage ../development/libraries/science/chemistry/libGDSII { };
 
-  inherit (callPackages ../data/fonts/liberation-fonts { }) liberation_ttf_v1 liberation_ttf_v2;
+  inherit (callPackages ../data/fonts/liberation-fonts { })
+    liberation_ttf_v1
+    liberation_ttf_v2
+    ;
   liberation_ttf = liberation_ttf_v2;
 
   liberation-sans-narrow = callPackage ../data/fonts/liberation-sans-narrow { };
@@ -30323,7 +30455,11 @@ with pkgs;
   ### APPLICATIONS / GIS
 
   gmt = callPackage ../applications/gis/gmt {
-    inherit (darwin.apple_sdk.frameworks) Accelerate CoreGraphics CoreVideo;
+    inherit (darwin.apple_sdk.frameworks)
+      Accelerate
+      CoreGraphics
+      CoreVideo
+      ;
   };
 
   gshhg-gmt = callPackage ../applications/gis/gmt/gshhg.nix { };
@@ -32649,7 +32785,11 @@ with pkgs;
 
   super-productivity = callPackage ../applications/office/super-productivity { };
 
-  inherit (callPackages ../development/libraries/wlroots { }) wlroots_0_16 wlroots_0_17 wlroots_0_18;
+  inherit (callPackages ../development/libraries/wlroots { })
+    wlroots_0_16
+    wlroots_0_17
+    wlroots_0_18
+    ;
 
   sway-contrib = recurseIntoAttrs (callPackages ../applications/misc/sway-contrib { });
 
@@ -37142,7 +37282,10 @@ with pkgs;
 
   taproot-assets = callPackage ../applications/blockchains/taproot-assets { };
 
-  inherit (callPackages ../applications/blockchains/teos { }) teos teos-watchtower-plugin;
+  inherit (callPackages ../applications/blockchains/teos { })
+    teos
+    teos-watchtower-plugin
+    ;
 
   terra-station = callPackage ../applications/blockchains/terra-station { };
 
@@ -37275,7 +37418,11 @@ with pkgs;
 
   freenukum = callPackage ../games/freenukum { };
 
-  inherit (callPackages ../games/fteqw { }) fteqw fteqw-dedicated fteqcc;
+  inherit (callPackages ../games/fteqw { })
+    fteqw
+    fteqw-dedicated
+    fteqcc
+    ;
 
   gamepad-tool = callPackage ../games/gamepad-tool { };
 
@@ -37639,9 +37786,15 @@ with pkgs;
 
   dxx-rebirth = callPackage ../games/dxx-rebirth { };
 
-  inherit (callPackages ../games/dxx-rebirth/assets.nix { }) descent1-assets descent2-assets;
+  inherit (callPackages ../games/dxx-rebirth/assets.nix { })
+    descent1-assets
+    descent2-assets
+    ;
 
-  inherit (callPackages ../games/dxx-rebirth/full.nix { }) d1x-rebirth-full d2x-rebirth-full;
+  inherit (callPackages ../games/dxx-rebirth/full.nix { })
+    d1x-rebirth-full
+    d2x-rebirth-full
+    ;
 
   easyrpg-player = callPackage ../games/easyrpg-player {
     inherit (darwin.apple_sdk.frameworks) Foundation AudioUnit AudioToolbox;
@@ -38546,7 +38699,10 @@ with pkgs;
 
   xmoto = callPackage ../games/xmoto { };
 
-  inherit (callPackage ../games/xonotic { }) xonotic-data xonotic;
+  inherit (callPackage ../games/xonotic { })
+    xonotic-data
+    xonotic
+    ;
 
   xonotic-glx =
     (callPackage ../games/xonotic {
@@ -39088,7 +39244,11 @@ with pkgs;
 
   strelka = callPackage ../applications/science/biology/strelka { };
 
-  inherit (callPackages ../applications/science/biology/sumatools { }) sumalibs sumaclust sumatra;
+  inherit (callPackages ../applications/science/biology/sumatools { })
+    sumalibs
+    sumaclust
+    sumatra
+    ;
 
   seaview = callPackage ../applications/science/biology/seaview { };
 
@@ -39738,7 +39898,9 @@ with pkgs;
     z3_4_11
     z3_4_8
     ;
-  inherit (callPackages ../applications/science/logic/z3 { python = python311; }) z3_4_8_5;
+  inherit (callPackages ../applications/science/logic/z3 { python = python311; })
+    z3_4_8_5
+    ;
   z3 = z3_4_8;
   z3-tptp = callPackage ../applications/science/logic/z3/tptp.nix { };
 
@@ -41528,7 +41690,11 @@ with pkgs;
 
   wmutils-opt = callPackage ../tools/X11/wmutils-opt { };
 
-  inherit (callPackage ../servers/web-apps/wordpress { }) wordpress wordpress_6_5 wordpress_6_6;
+  inherit (callPackage ../servers/web-apps/wordpress { })
+    wordpress
+    wordpress_6_5
+    wordpress_6_6
+    ;
 
   wordpressPackages = (
     callPackage ../servers/web-apps/wordpress/packages {

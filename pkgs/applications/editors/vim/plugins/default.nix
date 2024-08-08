@@ -13,7 +13,9 @@
 
 let
 
-  inherit (vimUtils.override { inherit vim; }) buildVimPlugin;
+  inherit (vimUtils.override { inherit vim; })
+    buildVimPlugin
+    ;
 
   inherit (lib) extends;
 

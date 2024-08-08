@@ -12,7 +12,10 @@ let
     else
       ./ssh-keys.nix;
 
-  inherit (import ssh-keys pkgs) snakeOilPrivateKey snakeOilPublicKey;
+  inherit (import ssh-keys pkgs)
+    snakeOilPrivateKey
+    snakeOilPublicKey
+    ;
 in
 {
   imports = [

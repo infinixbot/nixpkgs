@@ -7,7 +7,10 @@
   fetchFromGitHub,
 }:
 let
-  inherit (lib) licenses maintainers;
+  inherit (lib)
+    licenses
+    maintainers
+    ;
 
   version = "0.2.7";
 in

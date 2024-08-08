@@ -6,7 +6,10 @@
 buildGoModule {
   pname = "libwg";
 
-  inherit (mullvad) version src;
+  inherit (mullvad)
+    version
+    src
+    ;
 
   sourceRoot = "${mullvad.src.name}/wireguard/libwg";
 

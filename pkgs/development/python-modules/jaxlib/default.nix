@@ -52,7 +52,11 @@
 }@inputs:
 
 let
-  inherit (cudaPackages) cudaFlags cudaVersion nccl;
+  inherit (cudaPackages)
+    cudaFlags
+    cudaVersion
+    nccl
+    ;
 
   pname = "jaxlib";
   version = "0.4.28";

@@ -24,7 +24,11 @@ let
   pkgs = callPackage ./pkgs { };
 
   self = {
-    inherit callPackage stable git;
+    inherit
+      callPackage
+      stable
+      git
+      ;
 
     inherit (lib)
       buildMod

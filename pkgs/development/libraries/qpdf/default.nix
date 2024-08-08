@@ -60,7 +60,11 @@ stdenv.mkDerivation (finalAttrs: {
   passthru.tests = {
     pkg-config = testers.hasPkgConfigModules { package = finalAttrs.finalPackage; };
     inherit (python3.pkgs) pikepdf;
-    inherit cups-filters pdfmixtool pdfslicer;
+    inherit
+      cups-filters
+      pdfmixtool
+      pdfslicer
+      ;
   };
 
   meta = {

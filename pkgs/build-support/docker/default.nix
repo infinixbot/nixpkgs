@@ -42,11 +42,19 @@
 }:
 
 let
-  inherit (lib) optionals optionalString;
+  inherit (lib)
+    optionals
+    optionalString
+    ;
 
-  inherit (lib) escapeShellArgs toList;
+  inherit (lib)
+    escapeShellArgs
+    toList
+    ;
 
-  inherit (devShellTools) valueToString;
+  inherit (devShellTools)
+    valueToString
+    ;
 
   mkDbExtraCommand =
     contents:

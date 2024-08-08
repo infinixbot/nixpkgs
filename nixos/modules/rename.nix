@@ -1,7 +1,10 @@
 { lib, ... }:
 
 let
-  inherit (lib) mkAliasOptionModuleMD mkRemovedOptionModule;
+  inherit (lib)
+    mkAliasOptionModuleMD
+    mkRemovedOptionModule
+    ;
 in
 {
   imports = [

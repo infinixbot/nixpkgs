@@ -10,7 +10,10 @@
 }:
 
 let
-  inherit (lib) optionalAttrs warn;
+  inherit (lib)
+    optionalAttrs
+    warn
+    ;
 in
 
 rec {

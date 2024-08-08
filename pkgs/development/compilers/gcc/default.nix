@@ -475,7 +475,11 @@ pipe
             if profiledCompiler then "profiledbootstrap" else "bootstrap"
           );
 
-      inherit (callFile ./common/strip-attributes.nix { }) stripDebugList stripDebugListTarget preFixup;
+      inherit (callFile ./common/strip-attributes.nix { })
+        stripDebugList
+        stripDebugListTarget
+        preFixup
+        ;
 
       # https://gcc.gnu.org/PR109898
       enableParallelInstalling = false;

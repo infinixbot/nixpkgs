@@ -1,6 +1,9 @@
 { pkgs, ... }:
 let
-  inherit (import ./../ssh-keys.nix pkgs) snakeOilPrivateKey snakeOilPublicKey;
+  inherit (import ./../ssh-keys.nix pkgs)
+    snakeOilPrivateKey
+    snakeOilPublicKey
+    ;
 in
 {
   networking.firewall.allowedTCPPorts = [ 80 ];

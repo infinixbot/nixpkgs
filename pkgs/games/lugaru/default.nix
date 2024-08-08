@@ -15,7 +15,11 @@
 }:
 
 let
-  inherit (lib) licenses maintainers platforms;
+  inherit (lib)
+    licenses
+    maintainers
+    platforms
+    ;
 in
 
 stdenv.mkDerivation rec {

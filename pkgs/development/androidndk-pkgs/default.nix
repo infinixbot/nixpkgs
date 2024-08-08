@@ -25,7 +25,10 @@ let
     in
     import ./androidndk-pkgs.nix {
       inherit lib;
-      inherit (buildPackages) makeWrapper autoPatchelfHook;
+      inherit (buildPackages)
+        makeWrapper
+        autoPatchelfHook
+        ;
       inherit (pkgs)
         stdenv
         runCommand

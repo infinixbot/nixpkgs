@@ -14,7 +14,10 @@
 
 buildDunePackage {
   pname = "conduit-async";
-  inherit (conduit) version src;
+  inherit (conduit)
+    version
+    src
+    ;
 
   buildInputs = [
     ppx_sexp_conv

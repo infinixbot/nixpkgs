@@ -3,7 +3,10 @@ import ./make-test-python.nix (
   let
 
     # We'll need to be able to trade cert files between nodes via scp.
-    inherit (import ./ssh-keys.nix pkgs) snakeOilPrivateKey snakeOilPublicKey;
+    inherit (import ./ssh-keys.nix pkgs)
+      snakeOilPrivateKey
+      snakeOilPublicKey
+      ;
 
     makeNebulaNode =
       { config, ... }:

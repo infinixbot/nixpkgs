@@ -280,7 +280,10 @@ stdenv.mkDerivation (
         shared.passthru
         // {
           # Deps that are potentially overridden and are used inside GR plugins - the same version must
-          inherit boost volk;
+          inherit
+            boost
+            volk
+            ;
           # Used by many gnuradio modules, the same attribute is present in
           # gnuradio3.10 where there it's spdlog.
           logLib = log4cpp;

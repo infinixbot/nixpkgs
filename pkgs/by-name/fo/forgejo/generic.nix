@@ -55,7 +55,11 @@ in
 buildGoModule rec {
   pname = "forgejo" + lib.optionalString lts "-lts";
 
-  inherit version src vendorHash;
+  inherit
+    version
+    src
+    vendorHash
+    ;
 
   subPackages = [
     "."

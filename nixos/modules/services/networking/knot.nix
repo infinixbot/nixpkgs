@@ -32,7 +32,9 @@ let
     types
     ;
 
-  inherit (utils) escapeSystemdExecArgs;
+  inherit (utils)
+    escapeSystemdExecArgs
+    ;
 
   cfg = config.services.knot;
 

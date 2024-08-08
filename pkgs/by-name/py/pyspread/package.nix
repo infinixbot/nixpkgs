@@ -15,7 +15,10 @@ let
     inherit pname version;
     hash = "sha256-oNMDDXpl6Y0N7j+qgboSTJA9SR5KzKxhoMh/44ngjdA=";
   };
-  inherit (libsForQt5) qtsvg wrapQtAppsHook;
+  inherit (libsForQt5)
+    qtsvg
+    wrapQtAppsHook
+    ;
 in
 python3.pkgs.buildPythonApplication {
   inherit pname version src;

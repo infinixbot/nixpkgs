@@ -104,7 +104,10 @@ let
       plplot-forced
     else
       plplot.override {
-        inherit enableWX enableXWin;
+        inherit
+          enableWX
+          enableXWin
+          ;
       };
 in
 stdenv.mkDerivation rec {

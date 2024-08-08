@@ -461,7 +461,10 @@ let
         isOptionType
         mkOptionType
         ;
-      inherit (self.asserts) assertMsg assertOneOf;
+      inherit (self.asserts)
+        assertMsg
+        assertOneOf
+        ;
       inherit (self.debug)
         traceIf
         traceVal
@@ -512,7 +515,9 @@ let
         nixType
         imap
         ;
-      inherit (self.versions) splitVersion;
+      inherit (self.versions)
+        splitVersion
+        ;
     }
   );
 in

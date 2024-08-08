@@ -14,7 +14,10 @@ buildDunePackage {
   duneVersion = "3";
   minimalOCamlVersion = "4.08";
 
-  inherit (letsencrypt) version src;
+  inherit (letsencrypt)
+    version
+    src
+    ;
 
   propagatedBuildInputs = [
     letsencrypt

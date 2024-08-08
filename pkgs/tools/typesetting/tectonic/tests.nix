@@ -68,7 +68,11 @@ let
           in `name` to induce rebuild of this fixed-output derivation whenever
           the `tectonic` derivation is updated.
         */
-        inherit (emptyFile) outputHashAlgo outputHashMode outputHash;
+        inherit (emptyFile)
+          outputHashAlgo
+          outputHashMode
+          outputHash
+          ;
         allowSubstitutes = false;
         inherit nativeBuildInputs;
       }

@@ -35,9 +35,13 @@ let
     elem
     ;
 
-  inherit (lib.meta) availableOn;
+  inherit (lib.meta)
+    availableOn
+    ;
 
-  inherit (lib.generators) toPretty;
+  inherit (lib.generators)
+    toPretty
+    ;
 
   # If we're in hydra, we can dispense with the more verbose error
   # messages and make problems easier to spot.

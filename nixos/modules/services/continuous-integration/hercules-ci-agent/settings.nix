@@ -1,7 +1,11 @@
 # Not a module
 { pkgs, lib }:
 let
-  inherit (lib) types literalExpression mkOption;
+  inherit (lib)
+    types
+    literalExpression
+    mkOption
+    ;
 
   format = pkgs.formats.toml { };
 

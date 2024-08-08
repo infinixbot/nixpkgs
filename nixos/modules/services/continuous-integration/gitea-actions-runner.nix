@@ -26,7 +26,9 @@ let
     types
     ;
 
-  inherit (utils) escapeSystemdPath;
+  inherit (utils)
+    escapeSystemdPath
+    ;
 
   cfg = config.services.gitea-actions-runner;
 

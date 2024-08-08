@@ -28,7 +28,10 @@ stdenv.mkDerivation rec {
 
   passthru = {
     inherit (xorg) libX11;
-    inherit enableWX enableXWin;
+    inherit
+      enableWX
+      enableXWin
+      ;
   };
 
   cmakeFlags = [

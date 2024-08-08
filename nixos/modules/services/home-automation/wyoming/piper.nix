@@ -16,7 +16,9 @@ let
     types
     ;
 
-  inherit (builtins) toString;
+  inherit (builtins)
+    toString
+    ;
 
 in
 
@@ -110,7 +112,11 @@ in
 
   config =
     let
-      inherit (lib) mapAttrs' mkIf nameValuePair;
+      inherit (lib)
+        mapAttrs'
+        mkIf
+        nameValuePair
+        ;
     in
     mkIf (cfg.servers != { }) {
       systemd.services = mapAttrs' (

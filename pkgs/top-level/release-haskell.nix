@@ -263,7 +263,11 @@ let
       tests.haskell = packagePlatforms pkgs.tests.haskell;
 
       nixosTests = {
-        inherit (packagePlatforms pkgs.nixosTests) agda xmonad xmonad-xdg-autostart;
+        inherit (packagePlatforms pkgs.nixosTests)
+          agda
+          xmonad
+          xmonad-xdg-autostart
+          ;
       };
 
       agdaPackages = packagePlatforms pkgs.agdaPackages;
@@ -422,7 +426,11 @@ let
             "aarch64-darwin"
           ]
           {
-            inherit (packagePlatforms pkgs.pkgsMusl.haskellPackages) hello lens random;
+            inherit (packagePlatforms pkgs.pkgsMusl.haskellPackages)
+              hello
+              lens
+              random
+              ;
           };
 
       # Test some statically linked packages to catch regressions
@@ -480,15 +488,27 @@ let
           ]
           {
             haskellPackages = {
-              inherit (packagePlatforms pkgs.pkgsCross.ghcjs.haskellPackages) ghc hello microlens;
+              inherit (packagePlatforms pkgs.pkgsCross.ghcjs.haskellPackages)
+                ghc
+                hello
+                microlens
+                ;
             };
 
             haskell.packages.ghc98 = {
-              inherit (packagePlatforms pkgs.pkgsCross.ghcjs.haskell.packages.ghc98) ghc hello microlens;
+              inherit (packagePlatforms pkgs.pkgsCross.ghcjs.haskell.packages.ghc98)
+                ghc
+                hello
+                microlens
+                ;
             };
 
             haskell.packages.ghcHEAD = {
-              inherit (packagePlatforms pkgs.pkgsCross.ghcjs.haskell.packages.ghcHEAD) ghc hello microlens;
+              inherit (packagePlatforms pkgs.pkgsCross.ghcjs.haskell.packages.ghcHEAD)
+                ghc
+                hello
+                microlens
+                ;
             };
           };
     })

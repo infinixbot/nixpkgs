@@ -5,7 +5,11 @@
 }:
 
 let
-  inherit (lib) mkOption mkOverride types;
+  inherit (lib)
+    mkOption
+    mkOverride
+    types
+    ;
 in
 {
   imports = [

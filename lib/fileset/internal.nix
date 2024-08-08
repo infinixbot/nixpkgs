@@ -25,7 +25,9 @@ let
     zipAttrsWith
     ;
 
-  inherit (lib.filesystem) pathType;
+  inherit (lib.filesystem)
+    pathType
+    ;
 
   inherit (lib.lists)
     all
@@ -49,7 +51,10 @@ let
     splitStorePath
     ;
 
-  inherit (lib.path.subpath) components join;
+  inherit (lib.path.subpath)
+    components
+    join
+    ;
 
   inherit (lib.strings)
     isStringLike
@@ -60,7 +65,9 @@ let
     versionAtLeast
     ;
 
-  inherit (lib.trivial) inPureEvalMode;
+  inherit (lib.trivial)
+    inPureEvalMode
+    ;
 in
 # Rare case of justified usage of rec:
 # - This file is internal, so the return value doesn't matter, no need to make things overridable

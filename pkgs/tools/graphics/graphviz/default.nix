@@ -109,7 +109,11 @@ stdenv.mkDerivation rec {
       pygraphviz
       xdot
       ;
-    inherit exiv2 fltk graphicsmagick;
+    inherit
+      exiv2
+      fltk
+      graphicsmagick
+      ;
   };
 
   meta = with lib; {

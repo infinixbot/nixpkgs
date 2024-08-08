@@ -150,7 +150,9 @@ let
       "${lib.getLib stdenv.cc.cc.libgcc}/lib"
     ];
 
-  inherit (if variant == "macport" then llvmPackages_14.stdenv else stdenv) mkDerivation;
+  inherit (if variant == "macport" then llvmPackages_14.stdenv else stdenv)
+    mkDerivation
+    ;
 in
 mkDerivation (finalAttrs: {
   pname =

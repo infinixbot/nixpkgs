@@ -20,7 +20,10 @@
 buildDunePackage rec {
   pname = "mirage-crypto-ec";
 
-  inherit (mirage-crypto) src version;
+  inherit (mirage-crypto)
+    src
+    version
+    ;
 
   duneVersion = "3";
 

@@ -13,7 +13,10 @@
 }:
 
 let
-  inherit (darwin.apple_sdk.frameworks) AudioToolbox CoreAudio;
+  inherit (darwin.apple_sdk.frameworks)
+    AudioToolbox
+    CoreAudio
+    ;
 in
 stdenv.mkDerivation rec {
   pname = "SDL2_sound";

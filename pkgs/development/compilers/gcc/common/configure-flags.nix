@@ -51,7 +51,11 @@ assert langJava -> lib.versionOlder version "7";
 # ref: https://stackoverflow.com/questions/15670169/what-is-difference-between-sjlj-vs-dwarf-vs-seh
 
 let
-  inherit (stdenv) buildPlatform hostPlatform targetPlatform;
+  inherit (stdenv)
+    buildPlatform
+    hostPlatform
+    targetPlatform
+    ;
 
   # See https://github.com/NixOS/nixpkgs/pull/209870#issuecomment-1500550903
   disableBootstrap' = disableBootstrap && !langFortran && !langGo;

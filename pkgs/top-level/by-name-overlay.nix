@@ -9,9 +9,15 @@ let
   # Because of Nix's import-value cache, importing lib is free
   lib = import ../../lib;
 
-  inherit (builtins) readDir;
+  inherit (builtins)
+    readDir
+    ;
 
-  inherit (lib.attrsets) mapAttrs mapAttrsToList mergeAttrsList;
+  inherit (lib.attrsets)
+    mapAttrs
+    mapAttrsToList
+    mergeAttrsList
+    ;
 
   # Package files for a single shard
   # Type: String -> String -> AttrsOf Path

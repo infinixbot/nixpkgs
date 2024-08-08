@@ -1801,7 +1801,9 @@ mapAliases ({
     plasma-applet-virtual-desktop-bar
     ;
 
-  inherit (libsForQt5) sddm;
+  inherit (libsForQt5)
+    sddm
+    ;
 
   inherit (pidginPackages)
     pidgin-indicator

@@ -8,7 +8,10 @@ with import ../lib/testing-python.nix { inherit system pkgs; };
 with pkgs.lib;
 
 let
-  inherit (import ./ssh-keys.nix pkgs) snakeOilPrivateKey snakeOilPublicKey;
+  inherit (import ./ssh-keys.nix pkgs)
+    snakeOilPrivateKey
+    snakeOilPublicKey
+    ;
 
   metadataDrive = pkgs.stdenv.mkDerivation {
     name = "metadata";

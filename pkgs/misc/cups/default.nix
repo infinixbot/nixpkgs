@@ -178,7 +178,10 @@ stdenv.mkDerivation rec {
     '';
 
   passthru.tests = {
-    inherit (nixosTests) printing-service printing-socket;
+    inherit (nixosTests)
+      printing-service
+      printing-socket
+      ;
   };
 
   meta = with lib; {

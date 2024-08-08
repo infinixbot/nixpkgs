@@ -190,5 +190,8 @@ self: super:
       # the workaround on 9.6 is to revert to the LLVM backend (which is used
       # for these sorts of situations even on 9.2 and 9.4).
       # https://gitlab.haskell.org/ghc/ghc/-/issues/23746#note_525318
-      inherit (lib.mapAttrs (_: self.forceLlvmCodegenBackend) super) tls mmark;
+      inherit (lib.mapAttrs (_: self.forceLlvmCodegenBackend) super)
+        tls
+        mmark
+        ;
     }

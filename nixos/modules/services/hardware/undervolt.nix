@@ -19,7 +19,11 @@ let
       ) "Both power limit and window must be set";
       "${toString limit} ${toString window}";
   cliArgs = lib.cli.toGNUCommandLine { } {
-    inherit (cfg) verbose temp turbo;
+    inherit (cfg)
+      verbose
+      temp
+      turbo
+      ;
     # `core` and `cache` are both intentionally set to `cfg.coreOffset` as according to the undervolt docs:
     #
     #     Core or Cache offsets have no effect. It is not possible to set different offsets for

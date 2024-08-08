@@ -15,7 +15,11 @@ let
     types
     ;
 
-  inherit (types) listOf enum str;
+  inherit (types)
+    listOf
+    enum
+    str
+    ;
 
   cfg = config.services.music-assistant;
 

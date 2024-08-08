@@ -12,7 +12,11 @@
 }:
 
 let
-  inherit (import ./release-lib.nix { inherit supportedSystems; }) mapTestOn packagePlatforms pkgs;
+  inherit (import ./release-lib.nix { inherit supportedSystems; })
+    mapTestOn
+    packagePlatforms
+    pkgs
+    ;
 in
 
 mapTestOn {

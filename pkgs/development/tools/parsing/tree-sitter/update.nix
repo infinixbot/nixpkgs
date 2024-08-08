@@ -468,7 +468,10 @@ let
           nix-prefetch-git = "${nix-prefetch-git}/bin/nix-prefetch-git";
           printf = "${coreutils}/bin/printf";
         };
-        inherit knownTreeSitterOrgGrammarRepos ignoredTreeSitterOrgRepos;
+        inherit
+          knownTreeSitterOrgGrammarRepos
+          ignoredTreeSitterOrgRepos
+          ;
       }
       (
         writers.writePython3 "updateImpl" {
@@ -518,7 +521,10 @@ let
              nixRepoAttrName: attrs:
              attrs
              // {
-               inherit nixRepoAttrName outputDir;
+               inherit
+                 nixRepoAttrName
+                 outputDir
+                 ;
              }
            ) allGrammars
          )

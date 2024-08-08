@@ -324,7 +324,9 @@ let
               "ghc98"
             ]
             (compilerName: {
-              inherit (packagePlatforms pkgs.haskell.packages.${compilerName}) haskell-language-server;
+              inherit (packagePlatforms pkgs.haskell.packages.${compilerName})
+                haskell-language-server
+                ;
             });
         idrisPackages = packagePlatforms pkgs.idrisPackages;
         agdaPackages = packagePlatforms pkgs.agdaPackages;

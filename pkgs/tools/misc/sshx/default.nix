@@ -71,7 +71,10 @@ in
     passthru.web = buildNpmPackage {
       pname = "sshx-web";
 
-      inherit version src;
+      inherit
+        version
+        src
+        ;
 
       postPatch = ''
         substituteInPlace vite.config.ts \

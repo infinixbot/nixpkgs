@@ -166,9 +166,17 @@ stdenv.mkDerivation (finalAttrs: rec {
     inherit testData;
     tests = {
       # These depend on internal poppler code that frequently changes.
-      inherit cups-filters inkscape scribus;
+      inherit
+        cups-filters
+        inkscape
+        scribus
+        ;
 
-      inherit gegl pdfslicer vips;
+      inherit
+        gegl
+        pdfslicer
+        vips
+        ;
       gdal = gdal.override { usePoppler = true; };
       python-poppler-qt5 = python3.pkgs.poppler-qt5;
     };

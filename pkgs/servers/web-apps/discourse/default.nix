@@ -454,7 +454,9 @@ let
         mkDiscoursePlugin
         assets
         ;
-      inherit (pkgs) discourseAllPlugins;
+      inherit (pkgs)
+        discourseAllPlugins
+        ;
       enabledPlugins = plugins;
       plugins = callPackage ./plugins/all-plugins.nix { inherit mkDiscoursePlugin; };
       ruby = rubyEnv.wrappedRuby;

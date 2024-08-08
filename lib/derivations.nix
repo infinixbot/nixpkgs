@@ -1,7 +1,11 @@
 { lib }:
 
 let
-  inherit (lib) genAttrs isString throwIfNot;
+  inherit (lib)
+    genAttrs
+    isString
+    throwIfNot
+    ;
 
   showMaybeAttrPosPre =
     prefix: attrName: v:

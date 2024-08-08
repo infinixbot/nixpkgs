@@ -32,7 +32,9 @@
 }:
 
 let
-  inherit (lib) cmakeBool;
+  inherit (lib)
+    cmakeBool
+    ;
 
   stdenv = gcc12Stdenv;
 

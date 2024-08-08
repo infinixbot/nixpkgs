@@ -7,7 +7,10 @@
 }:
 
 let
-  inherit (lib) mkOption types;
+  inherit (lib)
+    mkOption
+    types
+    ;
 
   systemBuilderArgs = {
     activationScript = config.system.activationScripts.script;

@@ -58,7 +58,9 @@ let
     storeDir
     ;
 
-  inherit (pkgs) substituteAll;
+  inherit (pkgs)
+    substituteAll
+    ;
 
   # Stolen from python-packages.nix
   # Actually no idea how this works

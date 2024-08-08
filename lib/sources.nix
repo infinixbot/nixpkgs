@@ -3,14 +3,20 @@
 
 # Tested in lib/tests/sources.sh
 let
-  inherit (builtins) match split storeDir;
+  inherit (builtins)
+    match
+    split
+    storeDir
+    ;
   inherit (lib)
     boolToString
     filter
     isString
     readFile
     ;
-  inherit (lib.filesystem) pathIsRegularFile;
+  inherit (lib.filesystem)
+    pathIsRegularFile
+    ;
 
   /*
     A basic filter for `cleanSourceWith` that removes

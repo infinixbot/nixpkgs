@@ -6,7 +6,10 @@
 let
   # rudimentary support for cross-compiling
   # see: https://github.com/NixOS/nixpkgs/pull/279487#discussion_r1444449726
-  inherit (buildPackages) mktemp rsync;
+  inherit (buildPackages)
+    mktemp
+    rsync
+    ;
 in
 
 rec {

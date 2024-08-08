@@ -1,7 +1,9 @@
 { lib }:
 
 let
-  inherit (builtins) intersectAttrs;
+  inherit (builtins)
+    intersectAttrs
+    ;
   inherit (lib)
     functionArgs
     isFunction

@@ -6,13 +6,25 @@
 
 # Tested in lib/tests/filesystem.sh
 let
-  inherit (builtins) readDir pathExists toString;
+  inherit (builtins)
+    readDir
+    pathExists
+    toString
+    ;
 
-  inherit (lib.attrsets) mapAttrs' filterAttrs;
+  inherit (lib.attrsets)
+    mapAttrs'
+    filterAttrs
+    ;
 
-  inherit (lib.filesystem) pathType;
+  inherit (lib.filesystem)
+    pathType
+    ;
 
-  inherit (lib.strings) hasSuffix removeSuffix;
+  inherit (lib.strings)
+    hasSuffix
+    removeSuffix
+    ;
 in
 
 {

@@ -34,6 +34,9 @@ in
     evalModules
     ;
 
-  inherit (testing-lib) evalTest runTest;
+  inherit (testing-lib)
+    evalTest
+    runTest
+    ;
 
 }

@@ -13,7 +13,9 @@ let
     versionSuffix
     warn
     ;
-  inherit (lib) isString;
+  inherit (lib)
+    isString
+    ;
 in
 {
 

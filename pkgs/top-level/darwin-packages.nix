@@ -93,7 +93,9 @@ makeScopeWithSplicing' {
           ]
         )
         // {
-          inherit (if useAppleSDKLibs then apple_sdk.frameworks else appleSourcePackages) Security;
+          inherit (if useAppleSDKLibs then apple_sdk.frameworks else appleSourcePackages)
+            Security
+            ;
         };
     in
 

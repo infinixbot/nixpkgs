@@ -25,10 +25,20 @@ let
     optionals
     take
     ;
-  inherit (lib.attrsets) attrByPath optionalAttrs;
-  inherit (lib.strings) concatMapStrings concatStringsSep;
-  inherit (lib.types) mkOptionType;
-  inherit (lib.lists) last;
+  inherit (lib.attrsets)
+    attrByPath
+    optionalAttrs
+    ;
+  inherit (lib.strings)
+    concatMapStrings
+    concatStringsSep
+    ;
+  inherit (lib.types)
+    mkOptionType
+    ;
+  inherit (lib.lists)
+    last
+    ;
   prioritySuggestion = ''
     Use `lib.mkForce value` or `lib.mkDefault value` to change the priority on any of these definitions.
   '';

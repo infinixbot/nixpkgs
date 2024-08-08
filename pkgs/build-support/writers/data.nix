@@ -5,7 +5,11 @@
   runCommand,
 }:
 let
-  inherit (lib) last optionalString types;
+  inherit (lib)
+    last
+    optionalString
+    types
+    ;
 in
 {
   /**

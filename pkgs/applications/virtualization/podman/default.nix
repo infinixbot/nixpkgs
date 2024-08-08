@@ -174,7 +174,9 @@ buildGoModule rec {
     // lib.optionalAttrs stdenv.isLinux {
       inherit (nixosTests) podman;
       # related modules
-      inherit (nixosTests) podman-tls-ghostunnel;
+      inherit (nixosTests)
+        podman-tls-ghostunnel
+        ;
       oci-containers-podman = nixosTests.oci-containers.podman;
     };
 

@@ -15,7 +15,10 @@
 let
   source = import ./source.nix;
 
-  inherit (source) version vendorHash;
+  inherit (source)
+    version
+    vendorHash
+    ;
 
   src = fetchFromGitHub {
     owner = "axllent";

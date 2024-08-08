@@ -1,7 +1,10 @@
 import ./make-test-python.nix (
   { pkgs, lib, ... }:
   let
-    inherit (import ./ssh-keys.nix pkgs) snakeOilPrivateKey snakeOilPublicKey;
+    inherit (import ./ssh-keys.nix pkgs)
+      snakeOilPrivateKey
+      snakeOilPublicKey
+      ;
 
     setUpPrivateKey = name: ''
       ${name}.succeed(

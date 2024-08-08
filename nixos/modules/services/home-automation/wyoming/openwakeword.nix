@@ -20,7 +20,9 @@ let
     types
     ;
 
-  inherit (builtins) toString;
+  inherit (builtins)
+    toString
+    ;
 
 in
 

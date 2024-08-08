@@ -61,7 +61,9 @@ let
     systems
     ;
 
-  inherit (release-lib.lib.attrsets) removeAttrs;
+  inherit (release-lib.lib.attrsets)
+    removeAttrs
+    ;
 
   nativePlatforms = all;
 

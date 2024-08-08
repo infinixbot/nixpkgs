@@ -14,7 +14,11 @@
 buildDunePackage {
   pname = "mirage-net-xen";
 
-  inherit (netchannel) src version meta;
+  inherit (netchannel)
+    src
+    version
+    meta
+    ;
 
   duneVersion = "3";
 

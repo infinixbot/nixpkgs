@@ -202,7 +202,11 @@ let
     gnuradio = unwrapped;
   };
   passthru = unwrapped.passthru // {
-    inherit pythonEnv pythonPkgs unwrapped;
+    inherit
+      pythonEnv
+      pythonPkgs
+      unwrapped
+      ;
     pkgs = packages;
   };
   self =

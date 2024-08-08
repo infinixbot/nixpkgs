@@ -126,17 +126,33 @@ let
     nixVersion
     ;
 
-  inherit (lib.lists) elemAt imap0;
+  inherit (lib.lists)
+    elemAt
+    imap0
+    ;
 
-  inherit (lib.path) hasPrefix splitRoot;
+  inherit (lib.path)
+    hasPrefix
+    splitRoot
+    ;
 
-  inherit (lib.strings) isStringLike versionOlder;
+  inherit (lib.strings)
+    isStringLike
+    versionOlder
+    ;
 
-  inherit (lib.filesystem) pathType;
+  inherit (lib.filesystem)
+    pathType
+    ;
 
-  inherit (lib.sources) cleanSourceWith;
+  inherit (lib.sources)
+    cleanSourceWith
+    ;
 
-  inherit (lib.trivial) isFunction pipe;
+  inherit (lib.trivial)
+    isFunction
+    pipe
+    ;
 
 in
 {

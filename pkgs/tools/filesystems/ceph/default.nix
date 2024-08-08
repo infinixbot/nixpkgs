@@ -521,7 +521,11 @@ rec {
     passthru = {
       inherit version;
       tests = {
-        inherit (nixosTests) ceph-multi-node ceph-single-node ceph-single-node-bluestore;
+        inherit (nixosTests)
+          ceph-multi-node
+          ceph-single-node
+          ceph-single-node-bluestore
+          ;
       };
     };
   };

@@ -23,7 +23,10 @@
 buildDunePackage {
   pname = "cohttp-async";
 
-  inherit (cohttp) version src;
+  inherit (cohttp)
+    version
+    src
+    ;
 
   duneVersion = "3";
 

@@ -10,7 +10,10 @@
 
 buildDunePackage {
   pname = "cohttp-lwt";
-  inherit (cohttp) version src;
+  inherit (cohttp)
+    version
+    src
+    ;
 
   duneVersion = "3";
 

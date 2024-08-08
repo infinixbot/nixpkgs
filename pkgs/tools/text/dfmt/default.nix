@@ -5,7 +5,10 @@
 }:
 
 let
-  inherit (python3.pkgs) buildPythonApplication pythonOlder;
+  inherit (python3.pkgs)
+    buildPythonApplication
+    pythonOlder
+    ;
 in
 buildPythonApplication rec {
   pname = "dfmt";

@@ -29,7 +29,10 @@ lib.makeScope pkgs.newScope (
   {
     sources = import ./sources.nix {
       inherit lib;
-      inherit (pkgs) fetchFromBitbucket fetchFromSavannah;
+      inherit (pkgs)
+        fetchFromBitbucket
+        fetchFromSavannah
+        ;
     };
 
     emacs28 = callPackage (self.sources.emacs28) inheritedArgs;

@@ -23,7 +23,11 @@ let
     platforms
     ;
 
-  inherit (lib.strings) concatMapStrings concatMapStringsSep optionalString;
+  inherit (lib.strings)
+    concatMapStrings
+    concatMapStringsSep
+    optionalString
+    ;
 
   mkLibraryFile =
     pkgs:
