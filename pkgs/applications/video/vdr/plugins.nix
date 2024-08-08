@@ -49,7 +49,8 @@ in
       "servicedemo"
       "status"
       "svdrpdemo"
-    ] mkPlugin);
+    ] mkPlugin)
+    ;
 
   femon = stdenv.mkDerivation rec {
     pname = "vdr-femon";
