@@ -1,5 +1,12 @@
-{ stdenv, lib, callPackage, fetchurl, fetchpatch, nixosTests, buildMozillaMach
-, python311
+{
+  stdenv,
+  lib,
+  callPackage,
+  fetchurl,
+  fetchpatch,
+  nixosTests,
+  buildMozillaMach,
+  python311,
 }:
 
 {
@@ -11,18 +18,23 @@
       sha512 = "27c463e8277994c62bab85cf0e2f0cea16a9b272694b61fa56a6b3bd7c70d6481774288386094836a54df54c1b1144d61be67f4f5eac418c05479d452221c027";
     };
 
-    extraPatches = [
-    ];
+    extraPatches =
+      [
+      ];
 
     meta = {
       changelog = "https://www.mozilla.org/en-US/firefox/${version}/releasenotes/";
       description = "Web browser built from Firefox source tree";
       homepage = "http://www.mozilla.com/en-US/firefox/";
-      maintainers = with lib.maintainers; [ lovesegfault hexa ];
+      maintainers = with lib.maintainers; [
+        lovesegfault
+        hexa
+      ];
       platforms = lib.platforms.unix;
       badPlatforms = lib.platforms.darwin;
-      broken = stdenv.buildPlatform.is32bit; # since Firefox 60, build on 32-bit platforms fails with "out of memory".
-                                             # not in `badPlatforms` because cross-compilation on 64-bit machine might work.
+      broken = stdenv.buildPlatform.is32bit;
+      # since Firefox 60, build on 32-bit platforms fails with "out of memory".
+      # not in `badPlatforms` because cross-compilation on 64-bit machine might work.
       maxSilent = 14400; # 4h, double the default of 7200s (c.f. #129212, #129115)
       license = lib.licenses.mpl20;
       mainProgram = "firefox";
@@ -49,8 +61,9 @@
       maintainers = with lib.maintainers; [ jopejoe1 ];
       platforms = lib.platforms.unix;
       badPlatforms = lib.platforms.darwin;
-      broken = stdenv.buildPlatform.is32bit; # since Firefox 60, build on 32-bit platforms fails with "out of memory".
-                                             # not in `badPlatforms` because cross-compilation on 64-bit machine might work.
+      broken = stdenv.buildPlatform.is32bit;
+      # since Firefox 60, build on 32-bit platforms fails with "out of memory".
+      # not in `badPlatforms` because cross-compilation on 64-bit machine might work.
       maxSilent = 14400; # 4h, double the default of 7200s (c.f. #129212, #129115)
       license = lib.licenses.mpl20;
       mainProgram = "firefox";
@@ -80,8 +93,9 @@
       maintainers = with lib.maintainers; [ jopejoe1 ];
       platforms = lib.platforms.unix;
       badPlatforms = lib.platforms.darwin;
-      broken = stdenv.buildPlatform.is32bit; # since Firefox 60, build on 32-bit platforms fails with "out of memory".
-                                             # not in `badPlatforms` because cross-compilation on 64-bit machine might work.
+      broken = stdenv.buildPlatform.is32bit;
+      # since Firefox 60, build on 32-bit platforms fails with "out of memory".
+      # not in `badPlatforms` because cross-compilation on 64-bit machine might work.
       maxSilent = 14400; # 4h, double the default of 7200s (c.f. #129212, #129115)
       license = lib.licenses.mpl20;
       mainProgram = "firefox";
@@ -109,8 +123,9 @@
       maintainers = with lib.maintainers; [ hexa ];
       platforms = lib.platforms.unix;
       badPlatforms = lib.platforms.darwin;
-      broken = stdenv.buildPlatform.is32bit; # since Firefox 60, build on 32-bit platforms fails with "out of memory".
-                                             # not in `badPlatforms` because cross-compilation on 64-bit machine might work.
+      broken = stdenv.buildPlatform.is32bit;
+      # since Firefox 60, build on 32-bit platforms fails with "out of memory".
+      # not in `badPlatforms` because cross-compilation on 64-bit machine might work.
       maxSilent = 14400; # 4h, double the default of 7200s (c.f. #129212, #129115)
       license = lib.licenses.mpl20;
       mainProgram = "firefox";
@@ -123,33 +138,35 @@
     };
   };
 
-  firefox-esr-115 = (buildMozillaMach rec {
-    pname = "firefox-esr-115";
-    version = "115.14.0esr";
-    applicationName = "Mozilla Firefox ESR";
-    src = fetchurl {
-      url = "mirror://mozilla/firefox/releases/${version}/source/firefox-${version}.source.tar.xz";
-      sha512 = "dd40c1fd3cf454dbf33a85d38e47bb0e736ed89b829643653e239f43232441f4e9f3c7876f058ff2e6f19daf2b50a8f2d13274e9a107d8a258a6067d1fc43f54";
-    };
+  firefox-esr-115 =
+    (buildMozillaMach rec {
+      pname = "firefox-esr-115";
+      version = "115.14.0esr";
+      applicationName = "Mozilla Firefox ESR";
+      src = fetchurl {
+        url = "mirror://mozilla/firefox/releases/${version}/source/firefox-${version}.source.tar.xz";
+        sha512 = "dd40c1fd3cf454dbf33a85d38e47bb0e736ed89b829643653e239f43232441f4e9f3c7876f058ff2e6f19daf2b50a8f2d13274e9a107d8a258a6067d1fc43f54";
+      };
 
-    meta = {
-      changelog = "https://www.mozilla.org/en-US/firefox/${lib.removeSuffix "esr" version}/releasenotes/";
-      description = "Web browser built from Firefox Extended Support Release source tree";
-      homepage = "http://www.mozilla.com/en-US/firefox/";
-      maintainers = with lib.maintainers; [ hexa ];
-      platforms = lib.platforms.unix;
-      badPlatforms = lib.platforms.darwin;
-      broken = stdenv.buildPlatform.is32bit; # since Firefox 60, build on 32-bit platforms fails with "out of memory".
-                                             # not in `badPlatforms` because cross-compilation on 64-bit machine might work.
-      license = lib.licenses.mpl20;
-      mainProgram = "firefox";
-    };
-    tests = [ nixosTests.firefox-esr-115 ];
-    updateScript = callPackage ./update.nix {
-      attrPath = "firefox-esr-115-unwrapped";
-      versionPrefix = "115";
-      versionSuffix = "esr";
-    };
-  })
-   .override { python3 = python311; };
+      meta = {
+        changelog = "https://www.mozilla.org/en-US/firefox/${lib.removeSuffix "esr" version}/releasenotes/";
+        description = "Web browser built from Firefox Extended Support Release source tree";
+        homepage = "http://www.mozilla.com/en-US/firefox/";
+        maintainers = with lib.maintainers; [ hexa ];
+        platforms = lib.platforms.unix;
+        badPlatforms = lib.platforms.darwin;
+        broken = stdenv.buildPlatform.is32bit;
+        # since Firefox 60, build on 32-bit platforms fails with "out of memory".
+        # not in `badPlatforms` because cross-compilation on 64-bit machine might work.
+        license = lib.licenses.mpl20;
+        mainProgram = "firefox";
+      };
+      tests = [ nixosTests.firefox-esr-115 ];
+      updateScript = callPackage ./update.nix {
+        attrPath = "firefox-esr-115-unwrapped";
+        versionPrefix = "115";
+        versionSuffix = "esr";
+      };
+    }).override
+      { python3 = python311; };
 }

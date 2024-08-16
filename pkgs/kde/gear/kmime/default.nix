@@ -5,5 +5,5 @@
 mkKdeDerivation {
   pname = "kmime";
 
-  extraBuildInputs = [ki18n];
+  extraBuildInputs = [ ki18n ];
 }

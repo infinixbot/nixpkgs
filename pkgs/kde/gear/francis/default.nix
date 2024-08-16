@@ -16,5 +16,8 @@ mkKdeDerivation {
     })
   ];
 
-  extraBuildInputs = [qtsvg knotifications];
+  extraBuildInputs = [
+    qtsvg
+    knotifications
+  ];
 }

@@ -1,4 +1,8 @@
-{ lib, buildGoModule, fetchFromGitHub }:
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+}:
 
 buildGoModule rec {
   pname = "atmos";
@@ -13,7 +17,11 @@ buildGoModule rec {
 
   vendorHash = "sha256-swQN0WjVfLo/LjZrvjX46CnfBGnrVzLj8Cv4IP0eL7Y=";
 
-  ldflags = [ "-s" "-w" "-X github.com/cloudposse/atmos/cmd.Version=v${version}" ];
+  ldflags = [
+    "-s"
+    "-w"
+    "-X github.com/cloudposse/atmos/cmd.Version=v${version}"
+  ];
 
   preCheck = ''
     # Remove tests that depend on a network connection.

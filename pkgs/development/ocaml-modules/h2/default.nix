@@ -1,14 +1,15 @@
-{ buildDunePackage
-, fetchFromGitHub
-, hpack
-, angstrom
-, faraday
-, base64
-, psq
-, httpaf
-, alcotest
-, yojson
-, hex
+{
+  buildDunePackage,
+  fetchFromGitHub,
+  hpack,
+  angstrom,
+  faraday,
+  base64,
+  psq,
+  httpaf,
+  alcotest,
+  yojson,
+  hex,
 }:
 
 let

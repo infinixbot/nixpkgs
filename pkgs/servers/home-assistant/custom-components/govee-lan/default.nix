@@ -1,10 +1,11 @@
-{ lib
-, buildHomeAssistantComponent
-, fetchFromGitHub
-, fetchpatch2
-, govee-led-wez
-, pytest-homeassistant-custom-component
-, pytestCheckHook
+{
+  lib,
+  buildHomeAssistantComponent,
+  fetchFromGitHub,
+  fetchpatch2,
+  govee-led-wez,
+  pytest-homeassistant-custom-component,
+  pytestCheckHook,
 }:
 
 buildHomeAssistantComponent {
@@ -44,7 +45,6 @@ buildHomeAssistantComponent {
     pytest-homeassistant-custom-component
     pytestCheckHook
   ];
-
 
   meta = with lib; {
     description = "Control Govee lights via the LAN API from Home Assistant";

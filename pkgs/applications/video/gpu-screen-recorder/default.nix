@@ -1,22 +1,23 @@
-{ stdenv
-, lib
-, fetchurl
-, makeWrapper
-, meson
-, ninja
-, pkg-config
-, libXcomposite
-, libpulseaudio
-, ffmpeg
-, wayland
-, libdrm
-, libva
-, libglvnd
-, libXdamage
-, libXi
-, libXrandr
-, libXfixes
-, wrapperDir ? "/run/wrappers/bin"
+{
+  stdenv,
+  lib,
+  fetchurl,
+  makeWrapper,
+  meson,
+  ninja,
+  pkg-config,
+  libXcomposite,
+  libpulseaudio,
+  ffmpeg,
+  wayland,
+  libdrm,
+  libva,
+  libglvnd,
+  libXdamage,
+  libXi,
+  libXrandr,
+  libXfixes,
+  wrapperDir ? "/run/wrappers/bin",
 }:
 
 stdenv.mkDerivation {

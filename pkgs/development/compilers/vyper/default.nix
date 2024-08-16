@@ -1,19 +1,20 @@
-{ lib
-, asttokens
-, buildPythonPackage
-, cbor2
-, fetchPypi
-, git
-, importlib-metadata
-, packaging
-, pycryptodome
-, pytest-runner
-, pythonOlder
-, recommonmark
-, setuptools-scm
-, sphinx
-, sphinx-rtd-theme
-, writeText
+{
+  lib,
+  asttokens,
+  buildPythonPackage,
+  cbor2,
+  fetchPypi,
+  git,
+  importlib-metadata,
+  packaging,
+  pycryptodome,
+  pytest-runner,
+  pythonOlder,
+  recommonmark,
+  setuptools-scm,
+  sphinx,
+  sphinx-rtd-theme,
+  writeText,
 }:
 
 let

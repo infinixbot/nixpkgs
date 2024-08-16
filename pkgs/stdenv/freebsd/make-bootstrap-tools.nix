@@ -1,14 +1,21 @@
-{ pkgs ? import ../../.. {} }:
-  let
-    inherit (pkgs) runCommand lib;
-    # splicing doesn't seem to work right here
-    inherit (pkgs.buildPackages) nix rsync;
-    pack-all =
-      packCmd: name: pkgs: fixups:
-      (runCommand name {
+{
+  pkgs ? import ../../.. { },
+}:
+let
+  inherit (pkgs) runCommand lib;
+  # splicing doesn't seem to work right here
+  inherit (pkgs.buildPackages) nix rsync;
+  pack-all =
+    packCmd: name: pkgs: fixups:
+    (runCommand name
+      {
         requiredSystemFeatures = [ "recursive-nix" ];
-        nativeBuildInputs = [ nix rsync ];
-      } ''
+        nativeBuildInputs = [
+          nix
+          rsync
+        ];
+      }
+      ''
         base=$PWD
         requisites="$(nix-store --query --requisites ${lib.concatStringsSep " " pkgs} | tac)"
 
@@ -34,22 +41,34 @@
 
         rm .nix-socket
         ${packCmd}
-      '');
-    nar-all = pack-all "nix-store --dump . | xz -9 -e -T $NIX_BUILD_CORES >$out";
-    tar-all = pack-all "XZ_OPT=\"-9 -e -T $NIX_BUILD_CORES\" tar cJf $out --hard-dereference --sort=name --numeric-owner --owner=0 --group=0 --mtime=@1 .";
-    coreutils-big = pkgs.coreutils.override { singleBinary = false; };
-    mkdir = runCommand "mkdir" { coreutils = coreutils-big; } ''
-      mkdir -p $out/bin
-      cp $coreutils/bin/mkdir $out/bin
-    '';
-  in rec {
-  unpack = nar-all "unpack.nar.xz" (with pkgs; [bash mkdir xz gnutar]) ''
-    rm -rf include lib/*.a lib/i18n lib/bash share
+      ''
+    );
+  nar-all = pack-all "nix-store --dump . | xz -9 -e -T $NIX_BUILD_CORES >$out";
+  tar-all = pack-all "XZ_OPT=\"-9 -e -T $NIX_BUILD_CORES\" tar cJf $out --hard-dereference --sort=name --numeric-owner --owner=0 --group=0 --mtime=@1 .";
+  coreutils-big = pkgs.coreutils.override { singleBinary = false; };
+  mkdir = runCommand "mkdir" { coreutils = coreutils-big; } ''
+    mkdir -p $out/bin
+    cp $coreutils/bin/mkdir $out/bin
   '';
+in
+rec {
+  unpack =
+    nar-all "unpack.nar.xz"
+      (with pkgs; [
+        bash
+        mkdir
+        xz
+        gnutar
+      ])
+      ''
+        rm -rf include lib/*.a lib/i18n lib/bash share
+      '';
   bootstrap-tools = tar-all "bootstrap-tools.tar.xz" (
     with pkgs;
     # SYNCME: this version number must be synced with the one in default.nix
-    let llvmPackages = llvmPackages_18; in
+    let
+      llvmPackages = llvmPackages_18;
+    in
     [
       (runCommand "bsdcp" { } "mkdir -p $out/bin; cp ${freebsd.cp}/bin/cp $out/bin/bsdcp")
       coreutils

@@ -1,9 +1,15 @@
-{ buildDunePackage, dns, dns-client, lwt
-, mirage-crypto-rng, mtime
-, ipaddr, alcotest
-, ca-certs
-, happy-eyeballs
-, tls-lwt
+{
+  buildDunePackage,
+  dns,
+  dns-client,
+  lwt,
+  mirage-crypto-rng,
+  mtime,
+  ipaddr,
+  alcotest,
+  ca-certs,
+  happy-eyeballs,
+  tls-lwt,
 }:
 
 buildDunePackage {

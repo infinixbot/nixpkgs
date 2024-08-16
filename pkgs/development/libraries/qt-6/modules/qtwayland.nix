@@ -1,17 +1,24 @@
-{ qtModule
-, qtbase
-, qtdeclarative
-, wayland
-, pkg-config
-, libdrm
-, fetchpatch
+{
+  qtModule,
+  qtbase,
+  qtdeclarative,
+  wayland,
+  pkg-config,
+  libdrm,
+  fetchpatch,
 }:
 
 qtModule {
   pname = "qtwayland";
-  propagatedBuildInputs = [ qtbase qtdeclarative ];
+  propagatedBuildInputs = [
+    qtbase
+    qtdeclarative
+  ];
   propagatedNativeBuildInputs = [ wayland ];
-  buildInputs = [ wayland libdrm ];
+  buildInputs = [
+    wayland
+    libdrm
+  ];
   nativeBuildInputs = [ pkg-config ];
 
   patches = [

@@ -1,22 +1,28 @@
-{ stdenv
-, lib
-, buildGoModule
-, fetchFromGitHub
-, makeWrapper
-, llvmPackages
-, go
-, xar
-, binaryen
-, avrdude
-, gdb
-, openocd
-, runCommand
-, tinygoTests ? [ "smoketest" ]
+{
+  stdenv,
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+  makeWrapper,
+  llvmPackages,
+  go,
+  xar,
+  binaryen,
+  avrdude,
+  gdb,
+  openocd,
+  runCommand,
+  tinygoTests ? [ "smoketest" ],
 }:
 
 let
   llvmMajor = lib.versions.major llvm.version;
-  inherit (llvmPackages) llvm clang compiler-rt lld;
+  inherit (llvmPackages)
+    llvm
+    clang
+    compiler-rt
+    lld
+    ;
 
   # only doing this because only on darwin placing clang.cc in nativeBuildInputs
   # doesn't build
@@ -45,9 +51,14 @@ buildGoModule rec {
   ];
 
   nativeCheckInputs = [ binaryen ];
-  nativeBuildInputs = [ makeWrapper lld ];
-  buildInputs = [ llvm clang.cc ]
-    ++ lib.optionals stdenv.isDarwin [ xar ];
+  nativeBuildInputs = [
+    makeWrapper
+    lld
+  ];
+  buildInputs = [
+    llvm
+    clang.cc
+  ] ++ lib.optionals stdenv.isDarwin [ xar ];
 
   doCheck = (stdenv.buildPlatform.canExecute stdenv.hostPlatform);
   inherit tinygoTests;
@@ -104,8 +115,14 @@ buildGoModule rec {
   '';
 
   # GDB upstream does not support ARM darwin
-  runtimeDeps = [ go clang.cc lld avrdude openocd binaryen ]
-    ++ lib.optionals (!(stdenv.isDarwin && stdenv.isAarch64)) [ gdb ];
+  runtimeDeps = [
+    go
+    clang.cc
+    lld
+    avrdude
+    openocd
+    binaryen
+  ] ++ lib.optionals (!(stdenv.isDarwin && stdenv.isAarch64)) [ gdb ];
 
   installPhase = ''
     runHook preInstall
@@ -113,7 +130,7 @@ buildGoModule rec {
     make build/release USE_SYSTEM_BINARYEN=1
 
     wrapProgram $out/bin/tinygo \
-      --prefix PATH : ${lib.makeBinPath runtimeDeps }
+      --prefix PATH : ${lib.makeBinPath runtimeDeps}
 
     runHook postInstall
   '';
@@ -122,6 +139,9 @@ buildGoModule rec {
     homepage = "https://tinygo.org/";
     description = "Go compiler for small places";
     license = licenses.bsd3;
-    maintainers = with maintainers; [ Madouura muscaln ];
+    maintainers = with maintainers; [
+      Madouura
+      muscaln
+    ];
   };
 }

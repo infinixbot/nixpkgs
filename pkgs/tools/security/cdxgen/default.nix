@@ -1,12 +1,13 @@
-{ fetchFromGitHub
-, lib
-, makeWrapper
-, nodejs
-, node-gyp
-, pnpm_9
-, python3
-, stdenv
-, xcbuild
+{
+  fetchFromGitHub,
+  lib,
+  makeWrapper,
+  nodejs,
+  node-gyp,
+  pnpm_9,
+  python3,
+  stdenv,
+  xcbuild,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -55,7 +56,6 @@ stdenv.mkDerivation (finalAttrs: {
 
     runHook postInstall
   '';
-
 
   meta = with lib; {
     description = "Creates CycloneDX Software Bill-of-Materials (SBOM) for your projects from source and container images";
