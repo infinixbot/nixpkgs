@@ -378,9 +378,7 @@ stdenvNoCC.mkDerivation {
     # install the wrapper, you get tools like objdump (same for any
     # binaries of libc).
     + optionalString (!nativeTools) ''
-      printWords ${bintools_bin} ${
-        optionalString (libc != null) libc_bin
-      } > $out/nix-support/propagated-user-env-packages
+      printWords ${bintools_bin} ${optionalString (libc != null) libc_bin} > $out/nix-support/propagated-user-env-packages
     ''
 
     ##

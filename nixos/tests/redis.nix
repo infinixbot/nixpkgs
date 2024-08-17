@@ -78,9 +78,7 @@ let
 
           machine.succeed("${pkgs.redis}/bin/redis-cli ping | grep PONG")
           machine.succeed("${pkgs.redis}/bin/redis-cli -s ${redis.servers."".unixSocket} ping | grep PONG")
-          machine.succeed("${pkgs.redis}/bin/redis-cli -s ${
-            redis.servers."test".unixSocket
-          } ping | grep PONG")
+          machine.succeed("${pkgs.redis}/bin/redis-cli -s ${redis.servers."test".unixSocket} ping | grep PONG")
         '';
     };
 in

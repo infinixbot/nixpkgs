@@ -469,9 +469,7 @@ lib.recursiveUpdate orig rec {
   # hardcode revision numbers (since texlive.infra, tlshell are not in either system or user texlive.tlpdb)
   tlshell.postFixup = ''
     substituteInPlace "$out"/bin/tlshell \
-      --replace-fail '[dict get $::pkgs texlive.infra localrev]' '${
-        toString orig."texlive.infra".revision
-      }' \
+      --replace-fail '[dict get $::pkgs texlive.infra localrev]' '${toString orig."texlive.infra".revision}' \
       --replace-fail '[dict get $::pkgs tlshell localrev]' '${toString orig.tlshell.revision}'
   '';
 

@@ -79,9 +79,7 @@ rec {
   */
   assertOneOf =
     name: val: xs:
-    assertMsg (lib.elem val xs) "${name} must be one of ${lib.generators.toPretty { } xs}, but is: ${
-      lib.generators.toPretty { } val
-    }";
+    assertMsg (lib.elem val xs) "${name} must be one of ${lib.generators.toPretty { } xs}, but is: ${lib.generators.toPretty { } val}";
 
   /**
     Specialized `assertMsg` for checking if every one of `vals` is one of the elements
@@ -128,7 +126,5 @@ rec {
   assertEachOneOf =
     name: vals: xs:
     assertMsg (lib.all (val: lib.elem val xs) vals)
-      "each element in ${name} must be one of ${lib.generators.toPretty { } xs}, but is: ${
-        lib.generators.toPretty { } vals
-      }";
+      "each element in ${name} must be one of ${lib.generators.toPretty { } xs}, but is: ${lib.generators.toPretty { } vals}";
 }

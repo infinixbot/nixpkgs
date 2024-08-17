@@ -200,9 +200,7 @@ runCommand "julia-package-closure.yml"
 
     # See if we need to add any extra package names based on the closure
     # and the packageImplications
-    python ${./python}/find_package_implications.py "$out" '${
-      lib.generators.toJSON { } packageImplications
-    }' extra_package_names.txt
+    python ${./python}/find_package_implications.py "$out" '${lib.generators.toJSON { } packageImplications}' extra_package_names.txt
 
     if [ -f extra_package_names.txt ]; then
       echo "Re-resolving with additional package names"

@@ -1338,9 +1338,7 @@ in
         extraServices.listssrht-api = {
           serviceConfig.Restart = "always";
           serviceConfig.RestartSec = "5s";
-          serviceConfig.ExecStart = "${pkgs.sourcehut.listssrht}/bin/listssrht-api -b ${cfg.listenAddress}:${
-            toString (cfg.lists.port + 100)
-          }";
+          serviceConfig.ExecStart = "${pkgs.sourcehut.listssrht}/bin/listssrht-api -b ${cfg.listenAddress}:${toString (cfg.lists.port + 100)}";
         };
         # Receive the mail from Postfix and enqueue them into Redis and PostgreSQL
         extraServices.listssrht-lmtp = {
@@ -1470,9 +1468,7 @@ in
             cd /run/sourcehut/${srvsrht}
 
             if test ! -e ${stateDir}/db; then
-              ${postgresql.package}/bin/psql '${
-                cfg.settings.${iniKey}.connection-string
-              }' -f ${pkgs.sourcehut.pagessrht}/share/sql/schema.sql
+              ${postgresql.package}/bin/psql '${cfg.settings.${iniKey}.connection-string}' -f ${pkgs.sourcehut.pagessrht}/share/sql/schema.sql
               echo ${version} >${stateDir}/db
             fi
 
@@ -1498,9 +1494,7 @@ in
       extraServices.pastesrht-api = {
         serviceConfig.Restart = "always";
         serviceConfig.RestartSec = "5s";
-        serviceConfig.ExecStart = "${pkgs.sourcehut.pastesrht}/bin/pastesrht-api -b ${cfg.listenAddress}:${
-          toString (cfg.paste.port + 100)
-        }";
+        serviceConfig.ExecStart = "${pkgs.sourcehut.pastesrht}/bin/pastesrht-api -b ${cfg.listenAddress}:${toString (cfg.paste.port + 100)}";
       };
     })
 

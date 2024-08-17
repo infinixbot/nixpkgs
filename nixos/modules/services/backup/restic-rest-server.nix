@@ -69,9 +69,7 @@ in
     assertions = [
       {
         assertion = lib.substring 0 1 cfg.listenAddress != ":";
-        message = "The restic-rest-server now uses systemd socket activation, which expects only the Port number: services.restic.server.listenAddress = \"${
-          lib.substring 1 6 cfg.listenAddress
-        }\";";
+        message = "The restic-rest-server now uses systemd socket activation, which expects only the Port number: services.restic.server.listenAddress = \"${lib.substring 1 6 cfg.listenAddress}\";";
       }
     ];
 

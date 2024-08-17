@@ -420,9 +420,7 @@ let
         [ ]
       else
         [
-          "key 'meta.${k}' has invalid value; expected ${metaTypes.${k}.name}, got\n    ${
-            toPretty { indent = "    "; } v
-          }"
+          "key 'meta.${k}' has invalid value; expected ${metaTypes.${k}.name}, got\n    ${toPretty { indent = "    "; } v}"
         ]
     else
       [

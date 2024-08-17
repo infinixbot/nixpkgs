@@ -58,9 +58,7 @@ runCommand "julia-depot"
     # and the packageImplications. We're using the full closure YAML here since
     # it's available, which is slightly weird, but it should work just as well
     # for finding the extra packages we need to add
-    python ${./python}/find_package_implications.py "${closureYaml}" '${
-      lib.generators.toJSON { } packageImplications
-    }' extra_package_names.txt
+    python ${./python}/find_package_implications.py "${closureYaml}" '${lib.generators.toJSON { } packageImplications}' extra_package_names.txt
 
     # Work around new git security features added in git 2.44.1
     # See https://github.com/NixOS/nixpkgs/issues/315890

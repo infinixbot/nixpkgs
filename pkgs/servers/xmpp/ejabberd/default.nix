@@ -168,9 +168,7 @@ stdenv.mkDerivation rec {
         libwebp
       ]
     }"
-    ${lib.optionalString withImagemagick ''wrapProgram $out/lib/ejabberd-*/priv/bin/captcha.sh --prefix PATH : "${
-      lib.makeBinPath [ imagemagick ]
-    }"''}
+    ${lib.optionalString withImagemagick ''wrapProgram $out/lib/ejabberd-*/priv/bin/captcha.sh --prefix PATH : "${lib.makeBinPath [ imagemagick ]}"''}
     rm $out/bin/{mix,iex,elixir}
   '';
 
