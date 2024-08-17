@@ -1,9 +1,10 @@
-{ lib
-, python3
-, python3Packages
-, fetchFromGitLab
-, fetchpatch
-, rspamd
+{
+  lib,
+  python3,
+  python3Packages,
+  fetchFromGitLab,
+  fetchpatch,
+  rspamd,
 }:
 
 python3Packages.buildPythonApplication {

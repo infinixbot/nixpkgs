@@ -1,29 +1,29 @@
-{ lib
-, stdenv
-, fetchurl
-, pkg-config
-, libressl
-, libbsd
-, libevent
-, libuuid
-, libossp_uuid
-, libmd
-, zlib
-, ncurses
-, bison
-, autoPatchelfHook
-, testers
-, signify
-, overrideSDK
-, withSsh ? true, openssh
-# Default editor to use when neither VISUAL nor EDITOR are defined
-, defaultEditor ? null
+{
+  lib,
+  stdenv,
+  fetchurl,
+  pkg-config,
+  libressl,
+  libbsd,
+  libevent,
+  libuuid,
+  libossp_uuid,
+  libmd,
+  zlib,
+  ncurses,
+  bison,
+  autoPatchelfHook,
+  testers,
+  signify,
+  overrideSDK,
+  withSsh ? true,
+  openssh,
+  # Default editor to use when neither VISUAL nor EDITOR are defined
+  defaultEditor ? null,
 }:
 
 let
-  stdenv' = if stdenv.isDarwin && stdenv.isx86_64
-    then overrideSDK stdenv "11.0"
-    else stdenv;
+  stdenv' = if stdenv.isDarwin && stdenv.isx86_64 then overrideSDK stdenv "11.0" else stdenv;
 in
 stdenv'.mkDerivation (finalAttrs: {
   pname = "got";
@@ -34,11 +34,20 @@ stdenv'.mkDerivation (finalAttrs: {
     hash = "sha256-qstQ6mZLCdYL5uQauMt7nGlEdPkPneGfu36RbaboN3c=";
   };
 
-  nativeBuildInputs = [ pkg-config bison ]
-    ++ lib.optionals stdenv.isLinux [ autoPatchelfHook ];
+  nativeBuildInputs = [
+    pkg-config
+    bison
+  ] ++ lib.optionals stdenv.isLinux [ autoPatchelfHook ];
 
-  buildInputs = [ libressl libbsd libevent libuuid libmd zlib ncurses ]
-    ++ lib.optionals stdenv.isDarwin [ libossp_uuid ];
+  buildInputs = [
+    libressl
+    libbsd
+    libevent
+    libuuid
+    libmd
+    zlib
+    ncurses
+  ] ++ lib.optionals stdenv.isDarwin [ libossp_uuid ];
 
   preConfigure = lib.optionalString stdenv.isDarwin ''
     # The configure script assumes dependencies on Darwin are installed via
@@ -48,22 +57,27 @@ stdenv'.mkDerivation (finalAttrs: {
   '';
 
   env.NIX_CFLAGS_COMPILE = toString (
-  lib.optionals (defaultEditor != null) [
-    ''-DGOT_DEFAULT_EDITOR="${lib.getExe defaultEditor}"''
-  ] ++ lib.optionals withSsh [
-    ''-DGOT_DIAL_PATH_SSH="${lib.getExe openssh}"''
-    ''-DGOT_TAG_PATH_SSH_KEYGEN="${lib.getExe' openssh "ssh-keygen"}"''
-  ] ++ lib.optionals stdenv.isLinux [
-    ''-DGOT_TAG_PATH_SIGNIFY="${lib.getExe signify}"''
-  ] ++ lib.optionals stdenv.cc.isClang [
-    "-Wno-error=implicit-function-declaration"
-    "-Wno-error=int-conversion"
-  ] ++ lib.optionals stdenv.isDarwin [
-    # error: conflicting types for 'strmode'
-    "-DHAVE_STRMODE=1"
-    # Undefined symbols for architecture arm64: "_bsd_getopt"
-    "-include getopt.h"
-  ]);
+    lib.optionals (defaultEditor != null) [
+      ''-DGOT_DEFAULT_EDITOR="${lib.getExe defaultEditor}"''
+    ]
+    ++ lib.optionals withSsh [
+      ''-DGOT_DIAL_PATH_SSH="${lib.getExe openssh}"''
+      ''-DGOT_TAG_PATH_SSH_KEYGEN="${lib.getExe' openssh "ssh-keygen"}"''
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      ''-DGOT_TAG_PATH_SIGNIFY="${lib.getExe signify}"''
+    ]
+    ++ lib.optionals stdenv.cc.isClang [
+      "-Wno-error=implicit-function-declaration"
+      "-Wno-error=int-conversion"
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      # error: conflicting types for 'strmode'
+      "-DHAVE_STRMODE=1"
+      # Undefined symbols for architecture arm64: "_bsd_getopt"
+      "-include getopt.h"
+    ]
+  );
 
   passthru.tests.version = testers.testVersion {
     package = finalAttrs.finalPackage;
@@ -83,7 +97,10 @@ stdenv'.mkDerivation (finalAttrs: {
     '';
     homepage = "https://gameoftrees.org";
     license = lib.licenses.isc;
-    maintainers = with lib.maintainers; [ abbe afh ];
+    maintainers = with lib.maintainers; [
+      abbe
+      afh
+    ];
     mainProgram = "got";
     platforms = with lib.platforms; darwin ++ linux;
   };

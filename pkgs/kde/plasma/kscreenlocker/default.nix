@@ -7,6 +7,9 @@
 mkKdeDerivation {
   pname = "kscreenlocker";
 
-  extraNativeBuildInputs = [wayland];
-  extraBuildInputs = [pam qqc2-breeze-style];
+  extraNativeBuildInputs = [ wayland ];
+  extraBuildInputs = [
+    pam
+    qqc2-breeze-style
+  ];
 }

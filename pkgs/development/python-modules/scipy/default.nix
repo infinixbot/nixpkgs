@@ -95,22 +95,24 @@ buildPythonPackage {
       --replace-fail "pybind11>=2.12.0,<2.13.0" "pybind11>=2.12.0" \
   '';
 
-  nativeBuildInputs = [
-    cython
-    gfortran
-    meson-python
-    nukeReferences
-    pythran
-    pkg-config
-    wheel
-    setuptools
-  ] ++ lib.optionals stdenv.isDarwin [
-    # Minimal version required according to:
-    # https://github.com/scipy/scipy/blob/v1.14.0/scipy/meson.build#L185-L188
-    (xcbuild.override {
-      sdkVer = "13.3";
-    })
-  ];
+  nativeBuildInputs =
+    [
+      cython
+      gfortran
+      meson-python
+      nukeReferences
+      pythran
+      pkg-config
+      wheel
+      setuptools
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      # Minimal version required according to:
+      # https://github.com/scipy/scipy/blob/v1.14.0/scipy/meson.build#L185-L188
+      (xcbuild.override {
+        sdkVer = "13.3";
+      })
+    ];
 
   buildInputs = [
     blas

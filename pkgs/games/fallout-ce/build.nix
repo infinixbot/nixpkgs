@@ -1,15 +1,16 @@
-{ cmake
-, fpattern
-, lib
-, SDL2
-, stdenv
-, writeShellScript
+{
+  cmake,
+  fpattern,
+  lib,
+  SDL2,
+  stdenv,
+  writeShellScript,
 
-, extraBuildInputs ? [ ]
-, extraMeta
-, pname
-, version
-, src
+  extraBuildInputs ? [ ],
+  extraMeta,
+  pname,
+  version,
+  src,
 }:
 
 let
@@ -69,9 +70,12 @@ stdenv.mkDerivation {
     runHook postInstall
   '';
 
-  meta = with lib; {
-    license = licenses.sustainableUse;
-    maintainers = with maintainers; [ hughobrien ];
-    platforms = platforms.linux;
-  } // extraMeta;
+  meta =
+    with lib;
+    {
+      license = licenses.sustainableUse;
+      maintainers = with maintainers; [ hughobrien ];
+      platforms = platforms.linux;
+    }
+    // extraMeta;
 }

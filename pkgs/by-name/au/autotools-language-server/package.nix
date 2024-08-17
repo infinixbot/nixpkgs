@@ -1,7 +1,8 @@
-{ lib
-, python311
-, fetchFromGitHub
-, fetchpatch
+{
+  lib,
+  python311,
+  fetchFromGitHub,
+  fetchpatch,
 }:
 
 let

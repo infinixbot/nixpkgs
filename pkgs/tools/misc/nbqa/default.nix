@@ -1,9 +1,10 @@
-{ black
-, blacken-docs
-, fetchFromGitHub
-, lib
-, python3
-, ruff
+{
+  black,
+  blacken-docs,
+  fetchFromGitHub,
+  lib,
+  python3,
+  ruff,
 }:
 python3.pkgs.buildPythonApplication rec {
   pname = "nbqa";
@@ -33,7 +34,8 @@ python3.pkgs.buildPythonApplication rec {
     ruff = [ ruff ];
   };
 
-  dependencies = with python3.pkgs;
+  dependencies =
+    with python3.pkgs;
     [
       autopep8
       ipython

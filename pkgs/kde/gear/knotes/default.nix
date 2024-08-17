@@ -5,5 +5,5 @@
 mkKdeDerivation {
   pname = "knotes";
 
-  extraNativeBuildInputs = [libxslt];
+  extraNativeBuildInputs = [ libxslt ];
 }

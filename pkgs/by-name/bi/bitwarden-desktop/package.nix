@@ -1,33 +1,35 @@
-{ lib
-, buildNpmPackage
-, cargo
-, copyDesktopItems
-, dbus
-, electron_29
-, fetchFromGitHub
-, glib
-, gnome-keyring
-, gtk3
-, jq
-, libsecret
-, makeDesktopItem
-, makeWrapper
-, moreutils
-, napi-rs-cli
-, nodejs_20
-, patchutils_0_4_2
-, pkg-config
-, python3
-, runCommand
-, rustc
-, rustPlatform
+{
+  lib,
+  buildNpmPackage,
+  cargo,
+  copyDesktopItems,
+  dbus,
+  electron_29,
+  fetchFromGitHub,
+  glib,
+  gnome-keyring,
+  gtk3,
+  jq,
+  libsecret,
+  makeDesktopItem,
+  makeWrapper,
+  moreutils,
+  napi-rs-cli,
+  nodejs_20,
+  patchutils_0_4_2,
+  pkg-config,
+  python3,
+  runCommand,
+  rustc,
+  rustPlatform,
 }:
 
 let
   description = "Secure and free password manager for all of your devices";
   icon = "bitwarden";
   electron = electron_29;
-in buildNpmPackage rec {
+in
+buildNpmPackage rec {
   pname = "bitwarden-desktop";
   version = "2024.6.4";
 
@@ -58,22 +60,22 @@ in buildNpmPackage rec {
   nodejs = nodejs_20;
 
   makeCacheWritable = true;
-  npmFlags = [ "--engine-strict" "--legacy-peer-deps" ];
+  npmFlags = [
+    "--engine-strict"
+    "--legacy-peer-deps"
+  ];
   npmWorkspace = "apps/desktop";
   npmDepsHash = "sha256-9d9pWrFYelAx/PPDHY3m92Frp8RSQuBqpiOjmWtm/1g=";
 
   cargoDeps = rustPlatform.fetchCargoTarball {
     name = "${pname}-${version}";
     inherit src;
-    patches = map
-      (patch: runCommand
-        (builtins.baseNameOf patch)
-        { nativeBuildInputs = [ patchutils_0_4_2 ]; }
-        ''
-          < ${patch} filterdiff -p1 --include=${lib.escapeShellArg cargoRoot}'/*' > $out
-        ''
-      )
-      patches;
+    patches = map (
+      patch:
+      runCommand (builtins.baseNameOf patch) { nativeBuildInputs = [ patchutils_0_4_2 ]; } ''
+        < ${patch} filterdiff -p1 --include=${lib.escapeShellArg cargoRoot}'/*' > $out
+      ''
+    ) patches;
     patchFlags = [ "-p4" ];
     sourceRoot = "${src.name}/${cargoRoot}";
     hash = "sha256-ZmblY1APVa8moAR1waVBZPhrf5Wt1Gi6dvAxkhizckQ=";
