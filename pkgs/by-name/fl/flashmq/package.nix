@@ -1,4 +1,11 @@
-{ lib, stdenv, fetchFromGitHub, cmake, installShellFiles, openssl }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  cmake,
+  installShellFiles,
+  openssl,
+}:
 
 stdenv.mkDerivation rec {
   pname = "flashmq";
@@ -11,7 +18,10 @@ stdenv.mkDerivation rec {
     hash = "sha256-oKH2cH1GuNrBzxAVvmO01+IfkuNzQEgGpL4gSfjpjqg=";
   };
 
-  nativeBuildInputs = [ cmake installShellFiles ];
+  nativeBuildInputs = [
+    cmake
+    installShellFiles
+  ];
 
   buildInputs = [ openssl ];
 

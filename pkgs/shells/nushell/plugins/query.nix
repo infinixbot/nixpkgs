@@ -1,13 +1,14 @@
-{ stdenv
-, lib
-, rustPlatform
-, nushell
-, IOKit
-, CoreFoundation
-, nix-update-script
-, pkg-config
-, openssl
-, curl
+{
+  stdenv,
+  lib,
+  rustPlatform,
+  nushell,
+  IOKit,
+  CoreFoundation,
+  nix-update-script,
+  pkg-config,
+  openssl,
+  curl,
 }:
 
 rustPlatform.buildRustPackage {
@@ -15,10 +16,16 @@ rustPlatform.buildRustPackage {
   inherit (nushell) version src;
   cargoHash = "sha256-m5DYMvvNWfd86e7P7JI7KLlp7AjqtKO+n9jjORaW9ss=";
 
-  nativeBuildInputs = [ pkg-config ]
-    ++ lib.optionals stdenv.cc.isClang [ rustPlatform.bindgenHook ];
-  buildInputs = [ openssl curl ]
-    ++ lib.optionals stdenv.isDarwin [ IOKit CoreFoundation ];
+  nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.cc.isClang [ rustPlatform.bindgenHook ];
+  buildInputs =
+    [
+      openssl
+      curl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      IOKit
+      CoreFoundation
+    ];
   cargoBuildFlags = [ "--package nu_plugin_query" ];
 
   checkPhase = ''
@@ -35,7 +42,10 @@ rustPlatform.buildRustPackage {
     mainProgram = "nu_plugin_query";
     homepage = "https://github.com/nushell/nushell/tree/${version}/crates/nu_plugin_query";
     license = licenses.mit;
-    maintainers = with maintainers; [ happysalada aidalgol ];
+    maintainers = with maintainers; [
+      happysalada
+      aidalgol
+    ];
     platforms = with platforms; all;
   };
 }

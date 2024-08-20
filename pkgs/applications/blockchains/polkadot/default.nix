@@ -1,16 +1,17 @@
-{ fetchFromGitHub
-, fetchpatch
-, lib
-, openssl
-, pkg-config
-, protobuf
-, rocksdb_8_3
-, rust-jemalloc-sys-unprefixed
-, rustPlatform
-, rustc
-, stdenv
-, Security
-, SystemConfiguration
+{
+  fetchFromGitHub,
+  fetchpatch,
+  lib,
+  openssl,
+  pkg-config,
+  protobuf,
+  rocksdb_8_3,
+  rust-jemalloc-sys-unprefixed,
+  rustPlatform,
+  rustc,
+  stdenv,
+  Security,
+  SystemConfiguration,
 }:
 
 let
@@ -63,7 +64,10 @@ rustPlatform.buildRustPackage rec {
 
   buildType = "production";
 
-  cargoBuildFlags = [ "-p" "polkadot" ];
+  cargoBuildFlags = [
+    "-p"
+    "polkadot"
+  ];
 
   # NOTE: tests currently fail to compile due to an issue with cargo-auditable
   # and resolution of features flags, potentially related to this:
@@ -78,9 +82,13 @@ rustPlatform.buildRustPackage rec {
   ];
 
   # NOTE: jemalloc is used by default on Linux with unprefixed enabled
-  buildInputs = [ openssl ] ++
-    lib.optionals stdenv.isLinux [ rust-jemalloc-sys-unprefixed ] ++
-    lib.optionals stdenv.isDarwin [ Security SystemConfiguration ];
+  buildInputs =
+    [ openssl ]
+    ++ lib.optionals stdenv.isLinux [ rust-jemalloc-sys-unprefixed ]
+    ++ lib.optionals stdenv.isDarwin [
+      Security
+      SystemConfiguration
+    ];
 
   # NOTE: disable building `core`/`std` in wasm environment since rust-src isn't
   # available for `rustc-wasm32`
@@ -94,8 +102,15 @@ rustPlatform.buildRustPackage rec {
     description = "Polkadot Node Implementation";
     homepage = "https://polkadot.network";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [ akru andresilva FlorianFranzen RaghavSood ];
+    maintainers = with maintainers; [
+      akru
+      andresilva
+      FlorianFranzen
+      RaghavSood
+    ];
     # See Iso::from_arch in src/isa/mod.rs in cranelift-codegen-meta.
-    platforms = intersectLists platforms.unix (platforms.aarch64 ++ platforms.s390x ++ platforms.riscv64 ++ platforms.x86);
+    platforms = intersectLists platforms.unix (
+      platforms.aarch64 ++ platforms.s390x ++ platforms.riscv64 ++ platforms.x86
+    );
   };
 }

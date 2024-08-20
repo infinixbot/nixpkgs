@@ -1,42 +1,44 @@
-{ stdenv
-, lib
-, fetchFromGitLab
-, fetchpatch
-, gitUpdater
-, nixosTests
-, ayatana-indicator-messages
-, bash
-, cmake
-, dbus
-, dbus-glib
-, dbus-test-runner
-, dconf
-, gettext
-, glib
-, gnome-keyring
-, history-service
-, libnotify
-, libphonenumber
-, libpulseaudio
-, libusermetrics
-, lomiri-url-dispatcher
-, makeWrapper
-, pkg-config
-, protobuf
-, python3
-, qtbase
-, qtdeclarative
-, qtfeedback
-, qtmultimedia
-, qtpim
-, telepathy
-, telepathy-glib
-, telepathy-mission-control
-, xvfb-run
+{
+  stdenv,
+  lib,
+  fetchFromGitLab,
+  fetchpatch,
+  gitUpdater,
+  nixosTests,
+  ayatana-indicator-messages,
+  bash,
+  cmake,
+  dbus,
+  dbus-glib,
+  dbus-test-runner,
+  dconf,
+  gettext,
+  glib,
+  gnome-keyring,
+  history-service,
+  libnotify,
+  libphonenumber,
+  libpulseaudio,
+  libusermetrics,
+  lomiri-url-dispatcher,
+  makeWrapper,
+  pkg-config,
+  protobuf,
+  python3,
+  qtbase,
+  qtdeclarative,
+  qtfeedback,
+  qtmultimedia,
+  qtpim,
+  telepathy,
+  telepathy-glib,
+  telepathy-mission-control,
+  xvfb-run,
 }:
 
 let
-  replaceDbusService = pkg: name: "--replace \"\\\${DBUS_SERVICES_DIR}/${name}\" \"${pkg}/share/dbus-1/services/${name}\"";
+  replaceDbusService =
+    pkg: name: "--replace \"\\\${DBUS_SERVICES_DIR}/${name}\" \"${pkg}/share/dbus-1/services/${name}\"";
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "telephony-service";
@@ -65,23 +67,25 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  postPatch = ''
-    # Queries qmake for the QML installation path, which returns a reference to Qt5's build directory
-    # Patch out failure if QMake is not found, since we don't use it
-    substituteInPlace CMakeLists.txt \
-      --replace "\''${QMAKE_EXECUTABLE} -query QT_INSTALL_QML" "echo $out/${qtbase.qtQmlPrefix}" \
-      --replace-fail 'QMAKE_EXECUTABLE STREQUAL "QMAKE_EXECUTABLE-NOTFOUND"' 'FALSE'
+  postPatch =
+    ''
+      # Queries qmake for the QML installation path, which returns a reference to Qt5's build directory
+      # Patch out failure if QMake is not found, since we don't use it
+      substituteInPlace CMakeLists.txt \
+        --replace "\''${QMAKE_EXECUTABLE} -query QT_INSTALL_QML" "echo $out/${qtbase.qtQmlPrefix}" \
+        --replace-fail 'QMAKE_EXECUTABLE STREQUAL "QMAKE_EXECUTABLE-NOTFOUND"' 'FALSE'
 
-  '' + lib.optionalString finalAttrs.finalPackage.doCheck ''
-    substituteInPlace tests/common/dbus-services/CMakeLists.txt \
-      ${replaceDbusService telepathy-mission-control "org.freedesktop.Telepathy.MissionControl5.service"} \
-      ${replaceDbusService telepathy-mission-control "org.freedesktop.Telepathy.AccountManager.service"} \
-      ${replaceDbusService dconf "ca.desrt.dconf.service"}
+    ''
+    + lib.optionalString finalAttrs.finalPackage.doCheck ''
+      substituteInPlace tests/common/dbus-services/CMakeLists.txt \
+        ${replaceDbusService telepathy-mission-control "org.freedesktop.Telepathy.MissionControl5.service"} \
+        ${replaceDbusService telepathy-mission-control "org.freedesktop.Telepathy.AccountManager.service"} \
+        ${replaceDbusService dconf "ca.desrt.dconf.service"}
 
-    substituteInPlace cmake/modules/GenerateTest.cmake \
-      --replace '/usr/lib/dconf' '${lib.getLib dconf}/libexec' \
-      --replace '/usr/lib/telepathy' '${lib.getLib telepathy-mission-control}/libexec'
-  '';
+      substituteInPlace cmake/modules/GenerateTest.cmake \
+        --replace '/usr/lib/dconf' '${lib.getLib dconf}/libexec' \
+        --replace '/usr/lib/telepathy' '${lib.getLib telepathy-mission-control}/libexec'
+    '';
 
   strictDeps = true;
 
@@ -106,10 +110,12 @@ stdenv.mkDerivation (finalAttrs: {
     libusermetrics
     lomiri-url-dispatcher
     protobuf
-    (python3.withPackages (ps: with ps; [
-      dbus-python
-      pygobject3
-    ]))
+    (python3.withPackages (
+      ps: with ps; [
+        dbus-python
+        pygobject3
+      ]
+    ))
     qtbase
     qtdeclarative
     qtfeedback
@@ -134,22 +140,27 @@ stdenv.mkDerivation (finalAttrs: {
     # These rely on libphonenumber reformatting inputs to certain results
     # Seem to be broken for a small amount of numbers, maybe libphonenumber version change?
     (lib.cmakeBool "SKIP_QML_TESTS" true)
-    (lib.cmakeFeature "CMAKE_CTEST_ARGUMENTS" (lib.concatStringsSep ";" [
-      # Exclude tests
-      "-E" (lib.strings.escapeShellArg "(${lib.concatStringsSep "|" [
-        # Flaky, randomly failing to launch properly & stuck until test timeout
-        # https://gitlab.com/ubports/development/core/lomiri-telephony-service/-/issues/70
-        "^HandlerTest"
-        "^OfonoAccountEntryTest"
-        "^TelepathyHelperSetupTest"
-        "^AuthHandlerTest"
-        "^ChatManagerTest"
-        "^AccountEntryTest"
-        "^AccountEntryFactoryTest"
-        "^PresenceRequestTest"
-        "^CallEntryTest"
-      ]})")
-    ]))
+    (lib.cmakeFeature "CMAKE_CTEST_ARGUMENTS" (
+      lib.concatStringsSep ";" [
+        # Exclude tests
+        "-E"
+        (lib.strings.escapeShellArg "(${
+          lib.concatStringsSep "|" [
+            # Flaky, randomly failing to launch properly & stuck until test timeout
+            # https://gitlab.com/ubports/development/core/lomiri-telephony-service/-/issues/70
+            "^HandlerTest"
+            "^OfonoAccountEntryTest"
+            "^TelepathyHelperSetupTest"
+            "^AuthHandlerTest"
+            "^ChatManagerTest"
+            "^AccountEntryTest"
+            "^AccountEntryFactoryTest"
+            "^PresenceRequestTest"
+            "^CallEntryTest"
+          ]
+        })")
+      ]
+    ))
   ];
 
   env.NIX_CFLAGS_COMPILE = toString ([
@@ -165,7 +176,12 @@ stdenv.mkDerivation (finalAttrs: {
 
   preCheck = ''
     export QT_QPA_PLATFORM=minimal
-    export QT_PLUGIN_PATH=${lib.makeSearchPathOutput "bin" qtbase.qtPluginPrefix [ qtbase qtpim ]}
+    export QT_PLUGIN_PATH=${
+      lib.makeSearchPathOutput "bin" qtbase.qtPluginPrefix [
+        qtbase
+        qtpim
+      ]
+    }
   '';
 
   postInstall = ''
@@ -173,7 +189,15 @@ stdenv.mkDerivation (finalAttrs: {
 
     # Still missing getprop from libhybris, we don't have it packaged (yet?)
     wrapProgram $out/bin/ofono-setup \
-      --prefix PATH : ${lib.makeBinPath [ dbus dconf gettext glib telepathy-mission-control ]}
+      --prefix PATH : ${
+        lib.makeBinPath [
+          dbus
+          dconf
+          gettext
+          glib
+          telepathy-mission-control
+        ]
+      }
 
     # These SystemD services are referenced by the installed D-Bus services, but not part of the installation. Why?
     for service in telephony-service-{approver,indicator}; do

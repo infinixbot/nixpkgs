@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ...}:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.services.ifm;
 
@@ -9,13 +14,14 @@ let
   };
 
   php = pkgs.php83;
-in {
+in
+{
   options.services.ifm = {
     enable = lib.mkEnableOption ''
       Improved file manager, a single-file web-based filemanager
 
       Lightweight and minimal, served using PHP's built-in server
-  '';
+    '';
 
     dataDir = lib.mkOption {
       type = lib.types.str;
@@ -37,7 +43,7 @@ in {
 
     settings = lib.mkOption {
       type = with lib.types; attrsOf anything;
-      default = {};
+      default = { };
       description = ''
         Configuration of the IFM service.
 

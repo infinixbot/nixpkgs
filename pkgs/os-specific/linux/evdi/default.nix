@@ -1,15 +1,18 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, kernel
-, libdrm
-, python3
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  kernel,
+  libdrm,
+  python3,
 }:
 
 let
-  python3WithLibs = python3.withPackages (ps: with ps; [
-    pybind11
-  ]);
+  python3WithLibs = python3.withPackages (
+    ps: with ps; [
+      pybind11
+    ]
+  );
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "evdi";
@@ -43,7 +46,11 @@ stdenv.mkDerivation (finalAttrs: {
     "KDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
   ];
 
-  hardeningDisable = [ "format" "pic" "fortify" ];
+  hardeningDisable = [
+    "format"
+    "pic"
+    "fortify"
+  ];
 
   installPhase = ''
     runHook preInstall
@@ -59,7 +66,10 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://github.com/DisplayLink/evdi/releases/tag/v${finalAttrs.version}";
     description = "Extensible Virtual Display Interface";
     homepage = "https://www.displaylink.com/";
-    license = with licenses; [ lgpl21Only gpl2Only ];
+    license = with licenses; [
+      lgpl21Only
+      gpl2Only
+    ];
     maintainers = [ ];
     platforms = platforms.linux;
   };

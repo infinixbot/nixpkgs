@@ -1,11 +1,12 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, rustPlatform
-, pkg-config
-, openssl
-, nixosTests
-, CoreServices
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  rustPlatform,
+  pkg-config,
+  openssl,
+  nixosTests,
+  CoreServices,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -25,17 +26,21 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ];
 
-  buildInputs = [
-    openssl
-  ] ++ lib.optionals stdenv.isDarwin [
-    CoreServices
-  ];
+  buildInputs =
+    [
+      openssl
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      CoreServices
+    ];
 
   __darwinAllowLocalNetworking = true;
 
   doCheck = false; # https://github.com/rapiz1/rathole/issues/222
 
-  passthru.tests = { inherit (nixosTests) rathole; };
+  passthru.tests = {
+    inherit (nixosTests) rathole;
+  };
 
   meta = with lib; {
     description = "Reverse proxy for NAT traversal";

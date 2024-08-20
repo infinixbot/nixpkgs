@@ -1,10 +1,11 @@
-{ lib
-, rustPlatform
-, fetchFromGitHub
-, stdenv
-, openssl
-, darwin
-, nixosTests
+{
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
+  stdenv,
+  openssl,
+  darwin,
+  nixosTests,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -38,14 +39,19 @@ rustPlatform.buildRustPackage rec {
     OPENSSL_DIR = "${lib.getDev openssl}";
   };
 
-  passthru.tests = { inherit (nixosTests) mycelium; };
+  passthru.tests = {
+    inherit (nixosTests) mycelium;
+  };
 
   meta = with lib; {
     description = "End-2-end encrypted IPv6 overlay network";
     homepage = "https://github.com/threefoldtech/mycelium";
     changelog = "https://github.com/threefoldtech/mycelium/blob/${src.rev}/CHANGELOG.md";
     license = licenses.asl20;
-    maintainers = with maintainers; [ flokli matthewcroughan ];
+    maintainers = with maintainers; [
+      flokli
+      matthewcroughan
+    ];
     mainProgram = "mycelium";
   };
 }

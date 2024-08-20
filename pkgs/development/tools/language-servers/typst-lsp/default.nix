@@ -1,8 +1,9 @@
-{ lib
-, rustPlatform
-, fetchFromGitHub
-, stdenv
-, darwin
+{
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
+  stdenv,
+  darwin,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -30,14 +31,16 @@ rustPlatform.buildRustPackage rec {
     darwin.apple_sdk.frameworks.SystemConfiguration
   ];
 
-  checkFlags = [
-    # requires internet access
-    "--skip=workspace::package::external::remote_repo::test::full_download"
-  ] ++ lib.optionals stdenv.isDarwin [
-    # both tests fail on darwin with 'Attempted to create a NULL object.'
-    "--skip=workspace::fs::local::test::read"
-    "--skip=workspace::package::external::manager::test::local_package"
-  ];
+  checkFlags =
+    [
+      # requires internet access
+      "--skip=workspace::package::external::remote_repo::test::full_download"
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      # both tests fail on darwin with 'Attempted to create a NULL object.'
+      "--skip=workspace::fs::local::test::read"
+      "--skip=workspace::package::external::manager::test::local_package"
+    ];
 
   # workspace::package::external::manager::test::local_package tries to access the data directory
   preCheck = ''
@@ -49,8 +52,14 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/nvarner/typst-lsp";
     mainProgram = "typst-lsp";
     changelog = "https://github.com/nvarner/typst-lsp/releases/tag/${src.rev}";
-    license = with lib.licenses; [ asl20 mit ];
-    maintainers = with lib.maintainers; [ figsoda GaetanLepage ];
+    license = with lib.licenses; [
+      asl20
+      mit
+    ];
+    maintainers = with lib.maintainers; [
+      figsoda
+      GaetanLepage
+    ];
     # Incompatible with Rust >= 1.80
     # Fix to be merged upstream: https://github.com/nvarner/typst-lsp/pull/515
     broken = true;

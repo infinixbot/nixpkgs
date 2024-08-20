@@ -7,18 +7,19 @@
 }:
 
 {
-  pcsx2 = let
-    self = {
-      pname = "pcsx2";
-      version = "2.1.17";
-      src = fetchFromGitHub {
-        owner = "PCSX2";
-        repo = "pcsx2";
-        rev = "v${self.version}";
-        hash = "sha256-yVao/8ZAssM0llKMR66fMbzsRL3WCkFyUk6ZD/MEaSc=";
+  pcsx2 =
+    let
+      self = {
+        pname = "pcsx2";
+        version = "2.1.17";
+        src = fetchFromGitHub {
+          owner = "PCSX2";
+          repo = "pcsx2";
+          rev = "v${self.version}";
+          hash = "sha256-yVao/8ZAssM0llKMR66fMbzsRL3WCkFyUk6ZD/MEaSc=";
+        };
       };
-    };
-  in
+    in
     self;
 
   # The pre-zipped files in releases don't have a versioned link, we need to zip
@@ -34,16 +35,17 @@
     };
   };
 
-  shaderc-patched = let
-    pname = "shaderc-patched-for-pcsx2";
-    version = "2024.1";
-    src = fetchFromGitHub {
-      owner = "google";
-      repo = "shaderc";
-      rev = "v${version}";
-      hash = "sha256-2L/8n6KLVZWXt6FrYraVlZV5YqbPHD7rzXPCkD0d4kg=";
-    };
-  in
+  shaderc-patched =
+    let
+      pname = "shaderc-patched-for-pcsx2";
+      version = "2024.1";
+      src = fetchFromGitHub {
+        owner = "google";
+        repo = "shaderc";
+        rev = "v${version}";
+        hash = "sha256-2L/8n6KLVZWXt6FrYraVlZV5YqbPHD7rzXPCkD0d4kg=";
+      };
+    in
     shaderc.overrideAttrs (old: {
       inherit pname version src;
       patches = (old.patches or [ ]) ++ [
