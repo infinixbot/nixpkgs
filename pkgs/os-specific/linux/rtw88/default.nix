@@ -37,14 +37,8 @@ stdenv.mkDerivation {
   meta = with lib; {
     description = "Backport of the latest Realtek RTW88 driver from wireless-next for older kernels";
     homepage = "https://github.com/lwfinger/rtw88";
-    license = with licenses; [
-      bsd3
-      gpl2Only
-    ];
-    maintainers = with maintainers; [
-      tvorog
-      atila
-    ];
+    license = with licenses; [ bsd3 gpl2Only ];
+    maintainers = with maintainers; [ tvorog atila ];
     platforms = platforms.linux;
     broken = kernel.kernelOlder "4.20";
     priority = -1;

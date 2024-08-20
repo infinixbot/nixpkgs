@@ -46,18 +46,8 @@ let
       # Consult either sshd_config(5) or, as last resort, the OpehSSH source for parsing
       # the options at servconf.c:process_server_config_line_depth() to determine the right "mode"
       # for each. But fortunaly this fact is documented for most of them in the manpage.
-      commaSeparated = [
-        "Ciphers"
-        "KexAlgorithms"
-        "Macs"
-      ];
-      spaceSeparated = [
-        "AuthorizedKeysFile"
-        "AllowGroups"
-        "AllowUsers"
-        "DenyGroups"
-        "DenyUsers"
-      ];
+      commaSeparated = [ "Ciphers" "KexAlgorithms" "Macs" ];
+      spaceSeparated = [ "AuthorizedKeysFile" "AllowGroups" "AllowUsers" "DenyGroups" "DenyUsers" ];
     in
     {
       inherit (base) type;
@@ -180,173 +170,69 @@ in
 
 {
   imports = [
-    (mkAliasOptionModuleMD
-      [
-        "services"
-        "sshd"
-        "enable"
-      ]
-      [
-        "services"
-        "openssh"
-        "enable"
-      ]
-    )
-    (mkAliasOptionModuleMD
-      [
-        "services"
-        "openssh"
-        "knownHosts"
-      ]
-      [
-        "programs"
-        "ssh"
-        "knownHosts"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "openssh"
-        "challengeResponseAuthentication"
-      ]
-      [
-        "services"
-        "openssh"
-        "kbdInteractiveAuthentication"
-      ]
-    )
+    (mkAliasOptionModuleMD [ "services" "sshd" "enable" ] [ "services" "openssh" "enable" ])
+    (mkAliasOptionModuleMD [ "services" "openssh" "knownHosts" ] [ "programs" "ssh" "knownHosts" ])
+    (mkRenamedOptionModule [ "services" "openssh" "challengeResponseAuthentication" ] [
+      "services"
+      "openssh"
+      "kbdInteractiveAuthentication"
+    ])
 
-    (mkRenamedOptionModule
-      [
-        "services"
-        "openssh"
-        "kbdInteractiveAuthentication"
-      ]
-      [
-        "services"
-        "openssh"
-        "settings"
-        "KbdInteractiveAuthentication"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "openssh"
-        "passwordAuthentication"
-      ]
-      [
-        "services"
-        "openssh"
-        "settings"
-        "PasswordAuthentication"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "openssh"
-        "useDns"
-      ]
-      [
-        "services"
-        "openssh"
-        "settings"
-        "UseDns"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "openssh"
-        "permitRootLogin"
-      ]
-      [
-        "services"
-        "openssh"
-        "settings"
-        "PermitRootLogin"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "openssh"
-        "logLevel"
-      ]
-      [
-        "services"
-        "openssh"
-        "settings"
-        "LogLevel"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "openssh"
-        "macs"
-      ]
-      [
-        "services"
-        "openssh"
-        "settings"
-        "Macs"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "openssh"
-        "ciphers"
-      ]
-      [
-        "services"
-        "openssh"
-        "settings"
-        "Ciphers"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "openssh"
-        "kexAlgorithms"
-      ]
-      [
-        "services"
-        "openssh"
-        "settings"
-        "KexAlgorithms"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "openssh"
-        "gatewayPorts"
-      ]
-      [
-        "services"
-        "openssh"
-        "settings"
-        "GatewayPorts"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "openssh"
-        "forwardX11"
-      ]
-      [
-        "services"
-        "openssh"
-        "settings"
-        "X11Forwarding"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "openssh" "kbdInteractiveAuthentication" ] [
+      "services"
+      "openssh"
+      "settings"
+      "KbdInteractiveAuthentication"
+    ])
+    (mkRenamedOptionModule [ "services" "openssh" "passwordAuthentication" ] [
+      "services"
+      "openssh"
+      "settings"
+      "PasswordAuthentication"
+    ])
+    (mkRenamedOptionModule [ "services" "openssh" "useDns" ] [
+      "services"
+      "openssh"
+      "settings"
+      "UseDns"
+    ])
+    (mkRenamedOptionModule [ "services" "openssh" "permitRootLogin" ] [
+      "services"
+      "openssh"
+      "settings"
+      "PermitRootLogin"
+    ])
+    (mkRenamedOptionModule [ "services" "openssh" "logLevel" ] [
+      "services"
+      "openssh"
+      "settings"
+      "LogLevel"
+    ])
+    (mkRenamedOptionModule [ "services" "openssh" "macs" ] [ "services" "openssh" "settings" "Macs" ])
+    (mkRenamedOptionModule [ "services" "openssh" "ciphers" ] [
+      "services"
+      "openssh"
+      "settings"
+      "Ciphers"
+    ])
+    (mkRenamedOptionModule [ "services" "openssh" "kexAlgorithms" ] [
+      "services"
+      "openssh"
+      "settings"
+      "KexAlgorithms"
+    ])
+    (mkRenamedOptionModule [ "services" "openssh" "gatewayPorts" ] [
+      "services"
+      "openssh"
+      "settings"
+      "GatewayPorts"
+    ])
+    (mkRenamedOptionModule [ "services" "openssh" "forwardX11" ] [
+      "services"
+      "openssh"
+      "settings"
+      "X11Forwarding"
+    ])
   ];
 
   ###### interface
@@ -403,10 +289,7 @@ in
       sftpFlags = mkOption {
         type = with types; listOf str;
         default = [ ];
-        example = [
-          "-f AUTHPRIV"
-          "-l INFO"
-        ];
+        example = [ "-f AUTHPRIV" "-l INFO" ];
         description = ''
           Commandline flags to add to sftp-server.
         '';
@@ -585,17 +468,7 @@ in
               };
               LogLevel = mkOption {
                 type = types.nullOr (
-                  types.enum [
-                    "QUIET"
-                    "FATAL"
-                    "ERROR"
-                    "INFO"
-                    "VERBOSE"
-                    "DEBUG"
-                    "DEBUG1"
-                    "DEBUG2"
-                    "DEBUG3"
-                  ]
+                  types.enum [ "QUIET" "FATAL" "ERROR" "INFO" "VERBOSE" "DEBUG" "DEBUG1" "DEBUG2" "DEBUG3" ]
                 );
                 default = "INFO"; # upstream default
                 description = ''
@@ -635,13 +508,7 @@ in
               PermitRootLogin = mkOption {
                 default = "prohibit-password";
                 type = types.nullOr (
-                  types.enum [
-                    "yes"
-                    "without-password"
-                    "prohibit-password"
-                    "forced-commands-only"
-                    "no"
-                  ]
+                  types.enum [ "yes" "without-password" "prohibit-password" "forced-commands-only" "no" ]
                 );
                 description = ''
                   Whether the root user can login using ssh.
@@ -820,10 +687,7 @@ in
           wantedBy = optional (!cfg.startWhenNeeded) "multi-user.target";
           after = [ "network.target" ];
           stopIfChanged = false;
-          path = [
-            cfg.package
-            pkgs.gawk
-          ];
+          path = [ cfg.package pkgs.gawk ];
           environment.LD_LIBRARY_PATH = nssModulesPath;
 
           restartTriggers = optionals (!cfg.startWhenNeeded) [

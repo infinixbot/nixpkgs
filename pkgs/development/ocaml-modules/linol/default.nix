@@ -20,13 +20,7 @@ buildDunePackage rec {
     hash = "sha256-MwEisPJdzZN1VRnssotvExNMYOQdffS+Y2B8ZSUDVfo=";
   };
 
-  propagatedBuildInputs = [
-    yojson
-    logs
-    lsp
-    ppx_yojson_conv_lib
-    trace
-  ];
+  propagatedBuildInputs = [ yojson logs lsp ppx_yojson_conv_lib trace ];
 
   meta = with lib; {
     description = "LSP server library";

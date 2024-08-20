@@ -31,23 +31,9 @@ stdenv.mkDerivation rec {
 
   preConfigure = "make -f Makefile.svn";
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-    intltool
-    libtool
-    pkg-config
-    which
-  ];
+  nativeBuildInputs = [ autoconf automake intltool libtool pkg-config which ];
 
-  buildInputs = [
-    docbook_xml_dtd_45
-    docbook_xsl
-    gtkmm2_with_pango242
-    libgig
-    libsndfile
-    libxslt
-  ];
+  buildInputs = [ docbook_xml_dtd_45 docbook_xsl gtkmm2_with_pango242 libgig libsndfile libxslt ];
 
   enableParallelBuilding = true;
 

@@ -14,13 +14,7 @@ buildDunePackage {
 
   duneVersion = "3";
 
-  propagatedBuildInputs = [
-    lwt
-    logs
-    cstruct
-    mirage-clock
-    mirage-flow
-  ];
+  propagatedBuildInputs = [ lwt logs cstruct mirage-clock mirage-flow ];
 
   meta = mirage-flow.meta // {
     description = "Flow implementations and combinators for MirageOS specialized to lwt";

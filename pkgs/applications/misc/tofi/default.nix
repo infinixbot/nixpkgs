@@ -36,14 +36,7 @@ stdenv.mkDerivation rec {
     wayland-protocols
     wayland-scanner
   ];
-  buildInputs = [
-    freetype
-    harfbuzz
-    cairo
-    pango
-    wayland
-    libxkbcommon
-  ];
+  buildInputs = [ freetype harfbuzz cairo pango wayland libxkbcommon ];
 
   meta = with lib; {
     description = "Tiny dynamic menu for Wayland";

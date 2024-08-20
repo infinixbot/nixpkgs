@@ -60,10 +60,7 @@ stdenv.mkDerivation rec {
     sha256 = "1cs26pawjkv6qvwhfirfvzh21xvnmx8yh7f4xcr79cxv5c6hhnrw";
   };
 
-  nativeBuildInputs = [
-    flac
-    unzip
-  ];
+  nativeBuildInputs = [ flac unzip ];
 
   buildInputs = [
     fftwFloat
@@ -74,11 +71,7 @@ stdenv.mkDerivation rec {
     zita-convolver
   ];
 
-  outputs = [
-    "bin"
-    "out"
-    "doc"
-  ];
+  outputs = [ "bin" "out" "doc" ];
 
   preConfigure = ''
     cd source

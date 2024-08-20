@@ -173,10 +173,7 @@ in
 {
   config = {
     extraBaseModules = {
-      imports = [
-        networkModule
-        nodeNumberModule
-      ];
+      imports = [ networkModule nodeNumberModule ];
     };
   };
 }

@@ -36,11 +36,7 @@ stdenv.mkDerivation rec {
   inherit patches;
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libX11
-    libXau
-    libXdmcp
-  ];
+  buildInputs = [ libX11 libXau libXdmcp ];
 
   installFlags = [ "PREFIX=$(out)" ];
 
@@ -50,10 +46,7 @@ stdenv.mkDerivation rec {
     homepage = "https://tools.suckless.org/slstatus/";
     description = "status monitor for window managers that use WM_NAME like dwm";
     license = licenses.isc;
-    maintainers = with maintainers; [
-      oxzi
-      qusic
-    ];
+    maintainers = with maintainers; [ oxzi qusic ];
     platforms = platforms.linux;
     mainProgram = "slstatus";
   };

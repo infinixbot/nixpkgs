@@ -83,13 +83,7 @@
     version = "1.3.3";
   };
   gettext = {
-    dependencies = [
-      "erubi"
-      "locale"
-      "prime"
-      "racc"
-      "text"
-    ];
+    dependencies = [ "erubi" "locale" "prime" "racc" "text" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -100,11 +94,7 @@
     version = "3.4.9";
   };
   gettext-setup = {
-    dependencies = [
-      "fast_gettext"
-      "gettext"
-      "locale"
-    ];
+    dependencies = [ "fast_gettext" "gettext" "locale" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -176,10 +166,7 @@
     version = "0.4.1";
   };
   prime = {
-    dependencies = [
-      "forwardable"
-      "singleton"
-    ];
+    dependencies = [ "forwardable" "singleton" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -190,12 +177,7 @@
     version = "0.1.2";
   };
   puppet_forge = {
-    dependencies = [
-      "faraday"
-      "faraday-follow_redirects"
-      "minitar"
-      "semantic_puppet"
-    ];
+    dependencies = [ "faraday" "faraday-follow_redirects" "minitar" "semantic_puppet" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

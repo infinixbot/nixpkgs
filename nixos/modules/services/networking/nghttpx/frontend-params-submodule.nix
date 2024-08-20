@@ -2,10 +2,7 @@
 {
   options = {
     tls = lib.mkOption {
-      type = lib.types.enum [
-        "tls"
-        "no-tls"
-      ];
+      type = lib.types.enum [ "tls" "no-tls" ];
       default = "tls";
       description = ''
         Enable or disable TLS. If true (enabled) the key and

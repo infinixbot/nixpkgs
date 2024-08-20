@@ -46,13 +46,7 @@ stdenv.mkDerivation rec {
         --replace 'DBUS_DAEMONDIR"/dbus-daemon"' '"/run/current-system/sw/bin/dbus-daemon"'
     '';
 
-  outputs = [
-    "out"
-    "dev"
-    "lib"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "dev" "lib" "doc" "man" ];
   separateDebugInfo = true;
 
   strictDeps = true;
@@ -79,10 +73,7 @@ stdenv.mkDerivation rec {
       ]
     )
     ++ lib.optional enableSystemd systemdMinimal
-    ++ lib.optionals stdenv.isLinux [
-      audit
-      libapparmor
-    ];
+    ++ lib.optionals stdenv.isLinux [ audit libapparmor ];
   # ToDo: optional selinux?
 
   __darwinAllowLocalNetworking = true;
@@ -103,10 +94,7 @@ stdenv.mkDerivation rec {
       "--with-systemduserunitdir=${placeholder "out"}/etc/systemd/user"
     ]
     ++ lib.optional (!x11Support) "--without-x"
-    ++ lib.optionals stdenv.isLinux [
-      "--enable-apparmor"
-      "--enable-libaudit"
-    ]
+    ++ lib.optionals stdenv.isLinux [ "--enable-apparmor" "--enable-libaudit" ]
     ++ lib.optionals enableSystemd [ "SYSTEMCTL=${systemdMinimal}/bin/systemctl" ];
 
   NIX_CFLAGS_LINK = lib.optionalString (!stdenv.isDarwin) "-Wl,--as-needed";

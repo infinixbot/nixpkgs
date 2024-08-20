@@ -28,12 +28,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-zVpoRlB5xDfo6wJkCJGGptuCXkNkriudtZF2Job9YD4=";
   };
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "man"
-  ] ++ lib.optional pythonSupport "py";
+  outputs = [ "bin" "dev" "out" "man" ] ++ lib.optional pythonSupport "py";
 
   enableParallelBuilding = true;
 

@@ -27,10 +27,7 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    fuse
-    perl
-  ];
+  buildInputs = [ fuse perl ];
 
   makeFlags = [ "CXXFLAGS=-std=c++03" ];
 

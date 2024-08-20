@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
     sha256 = "1x9avjq0fgw0svcbw6b6873qnsqxbacls9sipmcv86xia4bxh8dn";
   };
 
-  buildInputs = [
-    libX11
-    libXfixes
-  ];
+  buildInputs = [ libX11 libXfixes ];
 
   installPhase = ''
     mkdir -p $out/bin

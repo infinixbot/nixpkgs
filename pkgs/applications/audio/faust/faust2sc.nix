@@ -20,11 +20,7 @@ stdenv.mkDerivation (
 
     nativeBuildInputs = [ makeWrapper ];
 
-    propagatedBuildInputs = [
-      python3
-      faust
-      supercollider
-    ];
+    propagatedBuildInputs = [ python3 faust supercollider ];
 
     postInstall = ''
       mv "$out/bin/${baseName}.py" "$out"/bin/${baseName}

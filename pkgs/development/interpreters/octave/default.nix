@@ -234,10 +234,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = {
     homepage = "https://www.gnu.org/software/octave/";
     license = lib.licenses.gpl3Plus;
-    maintainers = with lib.maintainers; [
-      raskin
-      doronbehar
-    ];
+    maintainers = with lib.maintainers; [ raskin doronbehar ];
     description = "Scientific Programming Language";
   };
 })

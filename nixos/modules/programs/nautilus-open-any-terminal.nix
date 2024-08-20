@@ -38,9 +38,6 @@ in
     };
   };
   meta = {
-    maintainers = with lib.maintainers; [
-      stunkymonkey
-      linsui
-    ];
+    maintainers = with lib.maintainers; [ stunkymonkey linsui ];
   };
 }

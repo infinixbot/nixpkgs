@@ -41,10 +41,7 @@ stdenvNoCC.mkDerivation rec {
     })
   ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   strictDeps = true;
   buildInputs = [ bash ];
@@ -68,10 +65,7 @@ stdenvNoCC.mkDerivation rec {
     homepage = "https://github.com/dylanaraps/neofetch";
     license = licenses.mit;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      alibabzo
-      konimex
-    ];
+    maintainers = with maintainers; [ alibabzo konimex ];
     mainProgram = "neofetch";
   };
 }

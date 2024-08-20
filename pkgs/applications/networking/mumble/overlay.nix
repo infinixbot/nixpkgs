@@ -8,10 +8,7 @@
 }:
 
 let
-  binPath = lib.makeBinPath [
-    which
-    file
-  ];
+  binPath = lib.makeBinPath [ which file ];
 in
 stdenv.mkDerivation {
   pname = "mumble-overlay";

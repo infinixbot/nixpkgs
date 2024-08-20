@@ -117,10 +117,7 @@ in
           trusted_third_party_id_servers = lib.mkOption {
             type = lib.types.listOf lib.types.str;
             example = [ "matrix.org" ];
-            default = [
-              "matrix.org"
-              "vector.im"
-            ];
+            default = [ "matrix.org" "vector.im" ];
             description = ''
               Lists of domains that the server will trust as identity
               servers to verify third party identifiers such as phone

@@ -43,9 +43,6 @@ buildGoModule rec {
     mainProgram = "fly";
     homepage = "https://concourse-ci.org";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      ivanbrennan
-      SuperSandro2000
-    ];
+    maintainers = with maintainers; [ ivanbrennan SuperSandro2000 ];
   };
 }

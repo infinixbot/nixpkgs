@@ -113,17 +113,7 @@ in
         '';
 
     depsBuildBuild = [ buildPackages.stdenv.cc ];
-    nativeBuildInputs = [
-      bison
-      flex
-      python3
-      pkg-config
-      gettext
-      freetype
-      autoconf
-      automake
-      help2man
-    ];
+    nativeBuildInputs = [ bison flex python3 pkg-config gettext freetype autoconf automake help2man ];
     buildInputs = [
       ncurses
       libusb-compat-0_1
@@ -256,13 +246,7 @@ in
       license = licenses.gpl3Plus;
 
       platforms =
-        if xenSupport then
-          [
-            "x86_64-linux"
-            "i686-linux"
-          ]
-        else
-          platforms.gnu ++ platforms.linux;
+        if xenSupport then [ "x86_64-linux" "i686-linux" ] else platforms.gnu ++ platforms.linux;
 
       maintainers = [ ];
     };

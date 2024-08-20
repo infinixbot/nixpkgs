@@ -29,9 +29,6 @@ in
         waitPID=$!
       '';
     };
-    environment.systemPackages = [
-      cfg.package
-      pkgs.st
-    ];
+    environment.systemPackages = [ cfg.package pkgs.st ];
   };
 }

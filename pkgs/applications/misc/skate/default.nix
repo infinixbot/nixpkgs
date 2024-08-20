@@ -18,21 +18,14 @@ buildGoModule rec {
   proxyVendor = true;
   vendorHash = "sha256-/qZB/GGEkoqRoNhEmZw9Q2lsUPZRg5/xVxWgdBZTMLk=";
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X=main.Version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X=main.Version=${version}" ];
 
   meta = with lib; {
     description = "Personal multi-machine syncable key value store";
     homepage = "https://github.com/charmbracelet/skate";
     changelog = "https://github.com/charmbracelet/skate/releases/tag/${src.rev}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      figsoda
-      penguwin
-    ];
+    maintainers = with maintainers; [ figsoda penguwin ];
     mainProgram = "skate";
   };
 }

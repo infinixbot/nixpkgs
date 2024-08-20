@@ -38,10 +38,7 @@ let
   # Dependencies needed by specific checks
   dependenciesForChecks = {
     "Smb" = pkgs.samba;
-    "XIdleTime" = [
-      pkgs.xprintidle
-      pkgs.sudo
-    ];
+    "XIdleTime" = [ pkgs.xprintidle pkgs.sudo ];
   };
 
   autosuspend-conf = settingsFormat.generate "autosuspend.conf" (

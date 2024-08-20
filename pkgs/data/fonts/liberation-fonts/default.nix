@@ -8,10 +8,7 @@
 let
   inherit (python3.pkgs) fonttools;
 
-  commonNativeBuildInputs = [
-    fontforge
-    python3
-  ];
+  commonNativeBuildInputs = [ fontforge python3 ];
   common =
     {
       version,
@@ -66,25 +63,14 @@ in
   liberation_ttf_v1 = common {
     repo = "liberation-1.7-fonts";
     version = "1.07.5";
-    docsToInstall = [
-      "AUTHORS"
-      "ChangeLog"
-      "COPYING"
-      "License.txt"
-      "README"
-    ];
+    docsToInstall = [ "AUTHORS" "ChangeLog" "COPYING" "License.txt" "README" ];
     nativeBuildInputs = commonNativeBuildInputs;
     sha256 = "1ffl10mf78hx598sy9qr5m6q2b8n3mpnsj73bwixnd4985gsz56v";
   };
   liberation_ttf_v2 = common {
     repo = "liberation-fonts";
     version = "2.1.5";
-    docsToInstall = [
-      "AUTHORS"
-      "ChangeLog"
-      "LICENSE"
-      "README.md"
-    ];
+    docsToInstall = [ "AUTHORS" "ChangeLog" "LICENSE" "README.md" ];
     nativeBuildInputs = commonNativeBuildInputs ++ [ fonttools ];
     postPatch = ''
       substituteInPlace scripts/setisFixedPitch-fonttools.py --replace \

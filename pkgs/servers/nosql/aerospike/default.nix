@@ -22,16 +22,8 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-    cmake
-    libtool
-  ];
-  buildInputs = [
-    openssl
-    zlib
-  ];
+  nativeBuildInputs = [ autoconf automake cmake libtool ];
+  buildInputs = [ openssl zlib ];
 
   dontUseCmakeConfigure = true;
 

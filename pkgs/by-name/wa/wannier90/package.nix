@@ -38,10 +38,7 @@ stdenv.mkDerivation rec {
     cp config/make.inc.gfort make.inc
   '';
 
-  buildFlags = [
-    "all"
-    "dynlib"
-  ];
+  buildFlags = [ "all" "dynlib" ];
 
   preInstall = ''
     installFlagsArray+=(

@@ -22,14 +22,7 @@ stdenv.mkDerivation rec {
   pname = "libjcat";
   version = "0.2.1";
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-    "devdoc"
-    "man"
-    "installedTests"
-  ];
+  outputs = [ "bin" "out" "dev" "devdoc" "man" "installedTests" ];
 
   src = fetchFromGitHub {
     owner = "hughsie";

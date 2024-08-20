@@ -138,10 +138,7 @@ stdenv.mkDerivation (finalAttrs: {
       https://dosbox-x.com/wiki/DOSBox%E2%80%90X%E2%80%99s-Feature-Highlights
     '';
     license = lib.licenses.gpl2Plus;
-    maintainers = with lib.maintainers; [
-      hughobrien
-      OPNA2608
-    ];
+    maintainers = with lib.maintainers; [ hughobrien OPNA2608 ];
     platforms = lib.platforms.unix;
     mainProgram = "dosbox-x";
   };

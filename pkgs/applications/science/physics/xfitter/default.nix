@@ -38,33 +38,11 @@ stdenv.mkDerivation rec {
     ./0001-src-GetChisquare.f-use-correct-types-in-calls-to-DSY.patch
   ];
 
-  nativeBuildInputs = [
-    cmake
-    gfortran
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake gfortran pkg-config ];
   buildInputs =
-    [
-      apfel
-      blas
-      ceres-solver
-      lhapdf
-      lapack
-      libyaml
-      root
-      qcdnum
-      gsl
-      yaml-cpp
-      zlib
-    ]
-    ++ lib.optionals ("5" == lib.versions.major root.version) [
-      apfelgrid
-      applgrid
-    ]
-    ++ lib.optionals (stdenv.system == "x86_64-darwin") [
-      memorymappingHook
-      memstreamHook
-    ]
+    [ apfel blas ceres-solver lhapdf lapack libyaml root qcdnum gsl yaml-cpp zlib ]
+    ++ lib.optionals ("5" == lib.versions.major root.version) [ apfelgrid applgrid ]
+    ++ lib.optionals (stdenv.system == "x86_64-darwin") [ memorymappingHook memstreamHook ]
     ++ lib.optional (stdenv.hostPlatform.libc == "glibc") libtirpc;
 
   env.NIX_CFLAGS_COMPILE = lib.optionalString (

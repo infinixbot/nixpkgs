@@ -14,10 +14,7 @@
 
 mkDerivation {
   pname = "kbookmarks";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    qttools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules qttools ];
   buildInputs = [
     kcodecs
     kconfig
@@ -26,12 +23,6 @@ mkDerivation {
     kiconthemes
     kxmlgui
   ];
-  propagatedBuildInputs = [
-    kwidgetsaddons
-    qtbase
-  ];
-  outputs = [
-    "out"
-    "dev"
-  ];
+  propagatedBuildInputs = [ kwidgetsaddons qtbase ];
+  outputs = [ "out" "dev" ];
 }

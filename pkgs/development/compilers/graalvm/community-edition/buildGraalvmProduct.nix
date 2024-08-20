@@ -66,10 +66,7 @@ stdenv.mkDerivation (
     dontStrip = true;
 
     passthru = {
-      updateScript = [
-        ./update.sh
-        product
-      ];
+      updateScript = [ ./update.sh product ];
     } // (args.passhtru or { });
 
     meta = (

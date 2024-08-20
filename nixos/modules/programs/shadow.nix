@@ -55,23 +55,14 @@ in
             DEFAULT_HOME = lib.mkOption {
               description = "Indicate if login is allowed if we can't cd to the home directory.";
               default = "yes";
-              type = lib.types.enum [
-                "yes"
-                "no"
-              ];
+              type = lib.types.enum [ "yes" "no" ];
             };
 
             ENCRYPT_METHOD = lib.mkOption {
               description = "This defines the system default encryption algorithm for encrypting passwords.";
               # The default crypt() method, keep in sync with the PAM default
               default = "YESCRYPT";
-              type = lib.types.enum [
-                "YESCRYPT"
-                "SHA512"
-                "SHA256"
-                "MD5"
-                "DES"
-              ];
+              type = lib.types.enum [ "YESCRYPT" "SHA512" "SHA256" "MD5" "DES" ];
             };
 
             SYS_UID_MIN = lib.mkOption {

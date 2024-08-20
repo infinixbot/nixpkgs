@@ -189,11 +189,7 @@ in
       };
 
       criticalPowerAction = mkOption {
-        type = types.enum [
-          "PowerOff"
-          "Hibernate"
-          "HybridSleep"
-        ];
+        type = types.enum [ "PowerOff" "Hibernate" "HybridSleep" ];
         default = "HybridSleep";
         description = ''
           The action to take when `timeAction` or

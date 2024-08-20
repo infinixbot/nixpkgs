@@ -53,16 +53,8 @@ let
       npm run generate-backend-client
     '';
 
-    buildInputs = [
-      pixman
-      cairo
-      pango
-      giflib
-    ];
-    nativeBuildInputs = [
-      python3
-      pkg-config
-    ];
+    buildInputs = [ pixman cairo pango giflib ];
+    nativeBuildInputs = [ python3 pkg-config ];
 
     installPhase = ''
       mkdir -p $out/share
@@ -163,15 +155,7 @@ rustPlatform.buildRustPackage {
     patchelf --set-rpath ${lib.makeLibraryPath [ openssl ]} $out/bin/windmill
 
     wrapProgram "$out/bin/windmill" \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          go
-          pythonEnv
-          deno
-          nsjail
-          bash
-        ]
-      } \
+      --prefix PATH : ${lib.makeBinPath [ go pythonEnv deno nsjail bash ]} \
       --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ stdenv.cc.cc.lib ]} \
       --set PYTHON_PATH "${pythonEnv}/bin/python3" \
       --set GO_PATH "${go}/bin/go" \
@@ -184,17 +168,9 @@ rustPlatform.buildRustPackage {
     description = "Open-source developer platform to turn scripts into workflows and UIs";
     homepage = "https://windmill.dev";
     license = lib.licenses.agpl3Only;
-    maintainers = with lib.maintainers; [
-      dit7ya
-      happysalada
-    ];
+    maintainers = with lib.maintainers; [ dit7ya happysalada ];
     mainProgram = "windmill";
     # limited by librusty_v8
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
   };
 }

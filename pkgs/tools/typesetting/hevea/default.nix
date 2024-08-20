@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = with ocamlPackages; [
-    ocaml
-    ocamlbuild
-  ];
+  nativeBuildInputs = with ocamlPackages; [ ocaml ocamlbuild ];
 
   makeFlags = [ "PREFIX=$(out)" ];
 

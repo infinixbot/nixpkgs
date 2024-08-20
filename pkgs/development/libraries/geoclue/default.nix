@@ -29,11 +29,7 @@ stdenv.mkDerivation rec {
   pname = "geoclue";
   version = "2.7.0";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.freedesktop.org";
@@ -112,10 +108,7 @@ stdenv.mkDerivation rec {
     broken = stdenv.isDarwin && withDemoAgent;
     description = "Geolocation framework and some data providers";
     homepage = "https://gitlab.freedesktop.org/geoclue/geoclue/wikis/home";
-    maintainers = with maintainers; [
-      raskin
-      mimame
-    ];
+    maintainers = with maintainers; [ raskin mimame ];
     platforms = with platforms; linux ++ darwin;
     license = licenses.lgpl2Plus;
   };

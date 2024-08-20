@@ -104,12 +104,7 @@ maven.buildMavenPackage {
     EOF
 
     wrapProgram $out/bin/refine \
-      --prefix PATH : '${
-        lib.makeBinPath [
-          jdk
-          curl
-        ]
-      }' \
+      --prefix PATH : '${lib.makeBinPath [ jdk curl ]}' \
       --set-default REFINE_INI_PATH "$out/etc/refine.ini"
   '';
 

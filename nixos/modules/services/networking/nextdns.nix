@@ -21,10 +21,7 @@ in
       arguments = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "-config"
-          "10.0.3.0/24=abcdef"
-        ];
+        example = [ "-config" "10.0.3.0/24=abcdef" ];
         description = "Additional arguments to be passed to nextdns run.";
       };
     };

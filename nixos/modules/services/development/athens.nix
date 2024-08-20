@@ -185,10 +185,7 @@ in
     };
 
     goEnv = mkOption {
-      type = types.enum [
-        "development"
-        "production"
-      ];
+      type = types.enum [ "development" "production" ];
       description = "Specifies the type of environment to run. One of 'development' or 'production'.";
       default = "development";
       example = "production";
@@ -231,17 +228,7 @@ in
     };
 
     logLevel = mkOption {
-      type = types.nullOr (
-        types.enum [
-          "panic"
-          "fatal"
-          "error"
-          "warning"
-          "info"
-          "debug"
-          "trace"
-        ]
-      );
+      type = types.nullOr (types.enum [ "panic" "fatal" "error" "warning" "info" "debug" "trace" ]);
       description = ''
         Log level for Athens.
         Supports all logrus log levels (https://github.com/Sirupsen/logrus#level-logging)".
@@ -251,10 +238,7 @@ in
     };
 
     cloudRuntime = mkOption {
-      type = types.enum [
-        "GCP"
-        "none"
-      ];
+      type = types.enum [ "GCP" "none" ];
       description = ''
         Specifies the Cloud Provider on which the Proxy/registry is running.
       '';
@@ -303,16 +287,7 @@ in
     };
 
     storageType = mkOption {
-      type = types.enum [
-        "memory"
-        "disk"
-        "mongo"
-        "gcp"
-        "minio"
-        "s3"
-        "azureblob"
-        "external"
-      ];
+      type = types.enum [ "memory" "disk" "mongo" "gcp" "minio" "s3" "azureblob" "external" ];
       description = "Specifies the type of storage backend to use.";
       default = "disk";
     };
@@ -434,12 +409,7 @@ in
     };
 
     traceExporter = mkOption {
-      type = types.nullOr (
-        types.enum [
-          "jaeger"
-          "datadog"
-        ]
-      );
+      type = types.nullOr (types.enum [ "jaeger" "datadog" ]);
       description = ''
         Trace exporter to use.
       '';
@@ -481,13 +451,7 @@ in
 
     downloadMode = mkOption {
       type = types.oneOf [
-        (types.enum [
-          "sync"
-          "async"
-          "redirect"
-          "async_redirect"
-          "none"
-        ])
+        (types.enum [ "sync" "async" "redirect" "async_redirect" "none" ])
         (types.strMatching "^file:.*$|^custom:.*$")
       ];
       description = ''
@@ -513,11 +477,7 @@ in
     };
 
     networkMode = mkOption {
-      type = types.enum [
-        "strict"
-        "offline"
-        "fallback"
-      ];
+      type = types.enum [ "strict" "offline" "fallback" ];
       description = ''
         Configures how Athens will return the results
         of the /list endpoint as it can be assembled from both its own
@@ -543,14 +503,7 @@ in
     };
 
     singleFlightType = mkOption {
-      type = types.enum [
-        "memory"
-        "etcd"
-        "redis"
-        "redis-sentinel"
-        "gcp"
-        "azureblob"
-      ];
+      type = types.enum [ "memory" "etcd" "redis" "redis-sentinel" "gcp" "azureblob" ];
       description = ''
         Determines what mechanism Athens uses to manage concurrency flowing into the Athens backend.
       '';
@@ -558,12 +511,7 @@ in
     };
 
     indexType = mkOption {
-      type = types.enum [
-        "none"
-        "memory"
-        "mysql"
-        "postgres"
-      ];
+      type = types.enum [ "none" "memory" "mysql" "postgres" ];
       description = ''
         Type of index backend Athens will use.
       '';

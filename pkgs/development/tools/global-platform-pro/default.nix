@@ -38,10 +38,7 @@ maven.buildMavenPackage rec {
   mvnJdk = jdk8;
   mvnHash = "sha256-es8M7gV2z1V9VpWOxanJwQyiemabiUw3n4heJB8Q75A=";
 
-  nativeBuildInputs = [
-    jdk8
-    makeWrapper
-  ];
+  nativeBuildInputs = [ jdk8 makeWrapper ];
 
   # Fix build error due to missing .git directory:
   #  Failed to execute goal pl.project13.maven:git-commit-id-plugin:4.0.0:revision (retrieve-git-info) on project gppro: .git directory is not found! Please specify a valid [dotGitDirectory] in your pom.xml -> [Help 1]

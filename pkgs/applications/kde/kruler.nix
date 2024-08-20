@@ -18,10 +18,7 @@ mkDerivation {
     license = with lib.licenses; [ gpl2 ];
     maintainers = [ lib.maintainers.vandenoever ];
   };
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     kwindowsystem
     knotifications

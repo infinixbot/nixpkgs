@@ -62,12 +62,7 @@ import ./make-test-python.nix (
         touch /testfile
         chown 12345:12345 /testfile
       '';
-      config.Cmd = [
-        "${pkgs.coreutils}/bin/stat"
-        "-c"
-        "%u:%g"
-        "/testfile"
-      ];
+      config.Cmd = [ "${pkgs.coreutils}/bin/stat" "-c" "%u:%g" "/testfile" ];
     };
 
     nonRootTestImage = pkgs.dockerTools.streamLayeredImage {
@@ -79,22 +74,14 @@ import ./make-test-python.nix (
       gname = "user";
       config = {
         User = "user";
-        Cmd = [
-          "${pkgs.coreutils}/bin/stat"
-          "-c"
-          "%u:%g"
-          "${pkgs.coreutils}/bin/stat"
-        ];
+        Cmd = [ "${pkgs.coreutils}/bin/stat" "-c" "%u:%g" "${pkgs.coreutils}/bin/stat" ];
       };
     };
   in
   {
     name = "docker-tools";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        lnl7
-        roberth
-      ];
+      maintainers = [ lnl7 roberth ];
     };
 
     nodes = {

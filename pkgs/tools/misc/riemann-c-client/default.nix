@@ -27,22 +27,11 @@ stdenv.mkDerivation rec {
     hash = "sha256-GAinZtEetRAl04CjxNCTCkGbvdhSZei7gon3KxEqiIY=";
   };
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-  ];
+  outputs = [ "bin" "dev" "out" ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    check
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook check pkg-config ];
   buildInputs =
-    [
-      file
-      protobufc
-    ]
+    [ file protobufc ]
     ++ lib.optional withWolfSSL wolfssl
     ++ lib.optional withGnuTLS gnutls
     ++ lib.optional withJSON json_c;

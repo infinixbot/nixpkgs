@@ -42,10 +42,7 @@ stdenv.mkDerivation rec {
     homepage = "https://gitlab.com/dps8m/dps8m";
     changelog = "https://gitlab.com/dps8m/dps8m/-/wikis/DPS8M-${src.rev}-Release-Notes";
     license = licenses.icu;
-    maintainers = with maintainers; [
-      matthewcroughan
-      sarcasticadmin
-    ];
+    maintainers = with maintainers; [ matthewcroughan sarcasticadmin ];
     mainProgram = "dps8m";
     platforms = platforms.all;
   };

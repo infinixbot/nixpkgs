@@ -50,9 +50,6 @@ python3.pkgs.buildPythonApplication rec {
       on mobile phones or computers.
     '';
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      edwtjo
-      pSub
-    ];
+    maintainers = with maintainers; [ edwtjo pSub ];
   };
 }

@@ -24,25 +24,12 @@ stdenv.mkDerivation rec {
     hash = "sha256-3e4kna63jPkrq3lMzQacyLV1mSJl6iDiOeiHFW6IAmU=";
   };
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
   outputMan = "out"; # users will want `man man` to work
 
   strictDeps = true;
-  nativeBuildInputs = [
-    autoreconfHook
-    groff
-    makeWrapper
-    pkg-config
-    zstd
-  ];
-  buildInputs = [
-    libpipeline
-    db
-    groff
-  ]; # (Yes, 'groff' is both native and build input)
+  nativeBuildInputs = [ autoreconfHook groff makeWrapper pkg-config zstd ];
+  buildInputs = [ libpipeline db groff ]; # (Yes, 'groff' is both native and build input)
   nativeCheckInputs = [
     libiconv # for 'iconv' binary
   ];
@@ -89,13 +76,7 @@ stdenv.mkDerivation rec {
     # make sure that we don't wrap symlinks (since that changes argv[0] to the -wrapped name)
     find "$out/bin" -type f | while read file; do
       wrapProgram "$file" \
-        --prefix PATH : "${
-          lib.makeBinPath [
-            groff
-            gzip
-            zstd
-          ]
-        }"
+        --prefix PATH : "${lib.makeBinPath [ groff gzip zstd ]}"
     done
   '';
 

@@ -220,13 +220,7 @@ stdenv.mkDerivation rec {
 
       mkWrappers = lib.concatMapStringsSep "\n";
 
-      toWrap = [
-        "wfica"
-        "selfservice"
-        "util/configmgr"
-        "util/conncenter"
-        "util/ctx_rehash"
-      ];
+      toWrap = [ "wfica" "selfservice" "util/configmgr" "util/conncenter" "util/ctx_rehash" ];
     in
     ''
       runHook preInstall
@@ -245,12 +239,7 @@ stdenv.mkDerivation rec {
         ln -sf "$ICAInstDir/util/setlog" "$out/bin/citrix-setlog"
       fi
       ${mkWrappers wrapLink toWrap}
-      ${mkWrappers wrap [
-        "PrimaryAuthManager"
-        "ServiceRecord"
-        "AuthManagerDaemon"
-        "util/ctxwebhelper"
-      ]}
+      ${mkWrappers wrap [ "PrimaryAuthManager" "ServiceRecord" "AuthManagerDaemon" "util/ctxwebhelper" ]}
 
       ln -sf $ICAInstDir/util/storebrowse $out/bin/storebrowse
 

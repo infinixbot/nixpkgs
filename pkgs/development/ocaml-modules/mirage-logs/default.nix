@@ -22,19 +22,10 @@ buildDunePackage rec {
     hash = "sha256-rorCsgw7QCQmjotr465KShQGWdoUM88djpwgqwBGnLs=";
   };
 
-  propagatedBuildInputs = [
-    logs
-    fmt
-    ptime
-    mirage-clock
-    cmdliner
-  ];
+  propagatedBuildInputs = [ logs fmt ptime mirage-clock cmdliner ];
 
   doCheck = true;
-  checkInputs = [
-    lwt
-    alcotest
-  ];
+  checkInputs = [ lwt alcotest ];
 
   meta = {
     description = "Reporter for the Logs library that writes log messages to stderr, using a Mirage `CLOCK` to add timestamps";

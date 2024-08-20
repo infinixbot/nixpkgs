@@ -169,10 +169,7 @@ stdenv.mkDerivation (finalAttrs: {
       free = false;
     };
     mainProgram = "dyalog";
-    maintainers = with lib.maintainers; [
-      tomasajt
-      markus1189
-    ];
+    maintainers = with lib.maintainers; [ tomasajt markus1189 ];
     platforms = [ "x86_64-linux" ];
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
   };

@@ -224,13 +224,7 @@ stdenv.mkDerivation rec {
       copyDesktopItems
     ];
 
-  buildInputs = [
-    glib
-    libxml2
-    gtk2
-    libGLU
-    gnome2.gtkglext
-  ];
+  buildInputs = [ glib libxml2 gtk2 libGLU gnome2.gtkglext ];
 
   enableParallelBuilding = true;
 
@@ -272,11 +266,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Level editor for idTech games";
     homepage = "https://icculus.org/gtkradiant/";
-    license = with licenses; [
-      gpl2Only
-      bsdOriginal
-      lgpl21Only
-    ];
+    license = with licenses; [ gpl2Only bsdOriginal lgpl21Only ];
     maintainers = with maintainers; [ astro ];
     platforms = platforms.unix;
   };

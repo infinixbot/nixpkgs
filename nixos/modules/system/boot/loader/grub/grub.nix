@@ -119,21 +119,9 @@ let
         path =
           with pkgs;
           makeBinPath (
-            [
-              coreutils
-              gnused
-              gnugrep
-              findutils
-              diffutils
-              btrfs-progs
-              util-linux
-              mdadm
-            ]
+            [ coreutils gnused gnugrep findutils diffutils btrfs-progs util-linux mdadm ]
             ++ optional cfg.efiSupport efibootmgr
-            ++ optionals cfg.useOSProber [
-              busybox
-              os-prober
-            ]
+            ++ optionals cfg.useOSProber [ busybox os-prober ]
           );
         font = lib.optionalString (cfg.font != null) (
           if lib.last (lib.splitString "." cfg.font) == "pf2" then cfg.font else "${convertedFont}"
@@ -327,10 +315,7 @@ in
 
               devices = mkOption {
                 default = [ ];
-                example = [
-                  "/dev/disk/by-id/wwn-0x500001234567890a"
-                  "/dev/disk/by-id/wwn-0x500009876543210a"
-                ];
+                example = [ "/dev/disk/by-id/wwn-0x500001234567890a" "/dev/disk/by-id/wwn-0x500009876543210a" ];
                 type = types.listOf types.str;
                 description = ''
                   The path to the devices which will have the GRUB MBR written.
@@ -516,11 +501,7 @@ in
 
       timeoutStyle = mkOption {
         default = "menu";
-        type = types.enum [
-          "menu"
-          "countdown"
-          "hidden"
-        ];
+        type = types.enum [ "menu" "countdown" "hidden" ];
         description = ''
            - `menu` shows the menu.
            - `countdown` uses a text-mode countdown.
@@ -566,10 +547,7 @@ in
       };
 
       splashMode = mkOption {
-        type = types.enum [
-          "normal"
-          "stretch"
-        ];
+        type = types.enum [ "normal" "stretch" ];
         default = "stretch";
         description = ''
           Whether to stretch the image or show the image in the top-left corner unstretched.
@@ -664,11 +642,7 @@ in
 
       fsIdentifier = mkOption {
         default = "uuid";
-        type = types.enum [
-          "uuid"
-          "label"
-          "provided"
-        ];
+        type = types.enum [ "uuid" "label" "provided" ];
         description = ''
           Determines how GRUB will identify devices when generating the
           configuration file. A value of uuid / label signifies that grub
@@ -909,122 +883,40 @@ in
   ];
 
   imports = [
-    (mkRemovedOptionModule [
+    (mkRemovedOptionModule [ "boot" "loader" "grub" "bootDevice" ] "")
+    (mkRenamedOptionModule [ "boot" "copyKernels" ] [ "boot" "loader" "grub" "copyKernels" ])
+    (mkRenamedOptionModule [ "boot" "extraGrubEntries" ] [ "boot" "loader" "grub" "extraEntries" ])
+    (mkRenamedOptionModule [ "boot" "extraGrubEntriesBeforeNixos" ] [
       "boot"
       "loader"
       "grub"
-      "bootDevice"
-    ] "")
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "copyKernels"
-      ]
-      [
-        "boot"
-        "loader"
-        "grub"
-        "copyKernels"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "extraGrubEntries"
-      ]
-      [
-        "boot"
-        "loader"
-        "grub"
-        "extraEntries"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "extraGrubEntriesBeforeNixos"
-      ]
-      [
-        "boot"
-        "loader"
-        "grub"
-        "extraEntriesBeforeNixOS"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "grubDevice"
-      ]
-      [
-        "boot"
-        "loader"
-        "grub"
-        "device"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "bootMount"
-      ]
-      [
-        "boot"
-        "loader"
-        "grub"
-        "bootDevice"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "grubSplashImage"
-      ]
-      [
-        "boot"
-        "loader"
-        "grub"
-        "splashImage"
-      ]
-    )
-    (mkRemovedOptionModule
-      [
-        "boot"
-        "loader"
-        "grub"
-        "trustedBoot"
-      ]
-      ''
-        Support for Trusted GRUB has been removed, because the project
-        has been retired upstream.
-      ''
-    )
-    (mkRemovedOptionModule
-      [
-        "boot"
-        "loader"
-        "grub"
-        "extraInitrd"
-      ]
-      ''
-        This option has been replaced with the bootloader agnostic
-        boot.initrd.secrets option. To migrate to the initrd secrets system,
-        extract the extraInitrd archive into your main filesystem:
+      "extraEntriesBeforeNixOS"
+    ])
+    (mkRenamedOptionModule [ "boot" "grubDevice" ] [ "boot" "loader" "grub" "device" ])
+    (mkRenamedOptionModule [ "boot" "bootMount" ] [ "boot" "loader" "grub" "bootDevice" ])
+    (mkRenamedOptionModule [ "boot" "grubSplashImage" ] [ "boot" "loader" "grub" "splashImage" ])
+    (mkRemovedOptionModule [ "boot" "loader" "grub" "trustedBoot" ] ''
+      Support for Trusted GRUB has been removed, because the project
+      has been retired upstream.
+    '')
+    (mkRemovedOptionModule [ "boot" "loader" "grub" "extraInitrd" ] ''
+      This option has been replaced with the bootloader agnostic
+      boot.initrd.secrets option. To migrate to the initrd secrets system,
+      extract the extraInitrd archive into your main filesystem:
 
-          # zcat /boot/extra_initramfs.gz | cpio -idvmD /etc/secrets/initrd
-          /path/to/secret1
-          /path/to/secret2
+        # zcat /boot/extra_initramfs.gz | cpio -idvmD /etc/secrets/initrd
+        /path/to/secret1
+        /path/to/secret2
 
-        then replace boot.loader.grub.extraInitrd with boot.initrd.secrets:
+      then replace boot.loader.grub.extraInitrd with boot.initrd.secrets:
 
-          boot.initrd.secrets = {
-            "/path/to/secret1" = "/etc/secrets/initrd/path/to/secret1";
-            "/path/to/secret2" = "/etc/secrets/initrd/path/to/secret2";
-          };
+        boot.initrd.secrets = {
+          "/path/to/secret1" = "/etc/secrets/initrd/path/to/secret1";
+          "/path/to/secret2" = "/etc/secrets/initrd/path/to/secret2";
+        };
 
-        See the boot.initrd.secrets option documentation for more information.
-      ''
-    )
+      See the boot.initrd.secrets option documentation for more information.
+    '')
   ];
 
 }

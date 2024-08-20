@@ -42,16 +42,10 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [
-    marisa
-    libkkc-data
-  ];
+  buildInputs = [ marisa libkkc-data ];
   enableParallelBuilding = true;
 
-  propagatedBuildInputs = [
-    libgee
-    json-glib
-  ];
+  propagatedBuildInputs = [ libgee json-glib ];
 
   postInstall = ''
     ln -s ${libkkc-data}/lib/libkkc/models $out/share/libkkc/models

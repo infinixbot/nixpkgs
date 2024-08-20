@@ -29,30 +29,17 @@
 }:
 
 let
-  extraTools = [
-    p7zip
-    lrzip
-    unar
-  ] ++ lib.optional unfreeEnableUnrar unrar;
+  extraTools = [ p7zip lrzip unar ] ++ lib.optional unfreeEnableUnrar unrar;
 in
 
 mkDerivation {
   pname = "ark";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
 
-  buildInputs = [
-    libarchive
-    libzip
-  ] ++ extraTools;
+  buildInputs = [ libarchive libzip ] ++ extraTools;
 
   propagatedBuildInputs = [
     breeze-icons
@@ -71,24 +58,13 @@ mkDerivation {
     kwidgetsaddons
   ];
 
-  qtWrapperArgs = [
-    "--prefix"
-    "PATH"
-    ":"
-    (lib.makeBinPath extraTools)
-  ];
+  qtWrapperArgs = [ "--prefix" "PATH" ":" (lib.makeBinPath extraTools) ];
 
   meta = with lib; {
     homepage = "https://apps.kde.org/ark/";
     description = "Graphical file compression/decompression utility";
     mainProgram = "ark";
-    license =
-      with licenses;
-      [
-        gpl2
-        lgpl3
-      ]
-      ++ optional unfreeEnableUnrar unfree;
+    license = with licenses; [ gpl2 lgpl3 ] ++ optional unfreeEnableUnrar unfree;
     maintainers = [ maintainers.ttuegel ];
   };
 }

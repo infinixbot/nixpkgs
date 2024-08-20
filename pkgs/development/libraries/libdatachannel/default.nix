@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-3fax57oaJvOgbTDPCiiUdtsfAGhICfPkuMihawq06SA=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   strictDeps = true;
   nativeBuildInputs = [

@@ -33,10 +33,7 @@ let
         in
         {
           virtualisation = {
-            emptyDiskImages = [
-              4096
-              4096
-            ];
+            emptyDiskImages = [ 4096 4096 ];
             useBootLoader = true;
             useEFIBoot = true;
           };
@@ -240,14 +237,7 @@ in
           networking.hostId = "00000000";
 
           virtualisation = {
-            emptyDiskImages = [
-              20480
-              20480
-              20480
-              20480
-              20480
-              20480
-            ];
+            emptyDiskImages = [ 20480 20480 20480 20480 20480 20480 ];
           };
 
           specialisation.resize.configuration = {

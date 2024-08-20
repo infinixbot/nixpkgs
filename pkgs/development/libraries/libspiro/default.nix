@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-/9UCrdq69RO22593qiA8pZ4qfY9UVGqlGYB9zatsOgw=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
 
   meta = with lib; {
     description = "Library that simplifies the drawing of beautiful curves";

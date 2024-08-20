@@ -39,10 +39,7 @@ stdenv.mkDerivation rec {
   # TODO: remove it for 1.7.7+ release as it was fixed upstream.
   env.NIX_CFLAGS_COMPILE = "-fcommon";
 
-  buildFlags = [
-    "PREFIX=${placeholder "out"}"
-    "CFG=release"
-  ];
+  buildFlags = [ "PREFIX=${placeholder "out"}" "CFG=release" ];
 
   installPhase = ''
     install -Dm755 bin.release/klystrack $out/bin/klystrack

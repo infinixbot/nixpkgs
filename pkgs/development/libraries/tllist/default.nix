@@ -18,10 +18,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-4WW0jGavdFO3LX9wtMPzz3Z1APCPgUQOktpmwAM0SQw=";
   };
 
-  nativeBuildInputs = [
-    meson
-    ninja
-  ];
+  nativeBuildInputs = [ meson ninja ];
 
   mesonBuildType = "release";
 
@@ -43,10 +40,7 @@ stdenv.mkDerivation (finalAttrs: {
       structs, enums and unions.
     '';
     license = licenses.mit;
-    maintainers = with maintainers; [
-      fionera
-      AndersonTorres
-    ];
+    maintainers = with maintainers; [ fionera AndersonTorres ];
     platforms = platforms.all;
   };
 })

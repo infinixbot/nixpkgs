@@ -18,18 +18,12 @@
   acousticbrainz.propagatedBuildInputs = [ python3Packages.requests ];
   albumtypes = { };
   aura = {
-    propagatedBuildInputs = with python3Packages; [
-      flask
-      pillow
-    ];
+    propagatedBuildInputs = with python3Packages; [ flask pillow ];
     testPaths = [ ];
   };
   badfiles = {
     testPaths = [ ];
-    wrapperBins = [
-      mp3val
-      flac
-    ];
+    wrapperBins = [ mp3val flac ];
   };
   bareasc = { };
   beatport.propagatedBuildInputs = [ python3Packages.requests-oauthlib ];
@@ -47,10 +41,7 @@
     propagatedBuildInputs = [ python3Packages.requests ];
     testPaths = [ ];
   };
-  discogs.propagatedBuildInputs = with python3Packages; [
-    discogs-client
-    requests
-  ];
+  discogs.propagatedBuildInputs = with python3Packages; [ discogs-client requests ];
   duplicates.testPaths = [ ];
   edit = { };
   embedart = {
@@ -60,10 +51,7 @@
   embyupdate.propagatedBuildInputs = [ python3Packages.requests ];
   export = { };
   fetchart = {
-    propagatedBuildInputs = with python3Packages; [
-      requests
-      pillow
-    ];
+    propagatedBuildInputs = with python3Packages; [ requests pillow ];
     wrapperBins = [ imagemagick ];
   };
   filefilter = { };
@@ -111,11 +99,7 @@
   playlist.propagatedBuildInputs = [ python3Packages.requests ];
   plexupdate = { };
   random = { };
-  replaygain.wrapperBins = [
-    aacgain
-    ffmpeg
-    mp3gain
-  ];
+  replaygain.wrapperBins = [ aacgain ffmpeg mp3gain ];
   rewrite.testPaths = [ ];
   scrub.testPaths = [ ];
   smartplaylist = { };
@@ -131,10 +115,7 @@
   subsonicupdate.propagatedBuildInputs = [ python3Packages.requests ];
   the = { };
   thumbnails = {
-    propagatedBuildInputs = with python3Packages; [
-      pillow
-      pyxdg
-    ];
+    propagatedBuildInputs = with python3Packages; [ pillow pyxdg ];
     wrapperBins = [ imagemagick ];
   };
   types.testPaths = [ "test/plugins/test_types_plugin.py" ];

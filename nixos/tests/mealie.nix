@@ -4,10 +4,7 @@ import ./make-test-python.nix (
   {
     name = "mealie";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        litchipi
-        anoa
-      ];
+      maintainers = [ litchipi anoa ];
     };
 
     nodes = {

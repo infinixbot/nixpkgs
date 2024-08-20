@@ -100,10 +100,7 @@ let
         description = "Unlock bcachefs for ${fs.mountPoint}";
         requiredBy = [ mountUnit ];
         after = [ deviceUnit ];
-        before = [
-          mountUnit
-          "shutdown.target"
-        ];
+        before = [ mountUnit "shutdown.target" ];
         bindsTo = [ deviceUnit ];
         conflicts = [ "shutdown.target" ];
         unitConfig.DefaultDependencies = false;
@@ -180,12 +177,7 @@ in
       (lib.mkIf ((config.boot.initrd.supportedFilesystems.bcachefs or false) || (bootFs != { })) {
         inherit assertions;
         # chacha20 and poly1305 are required only for decryption attempts
-        boot.initrd.availableKernelModules = [
-          "bcachefs"
-          "sha256"
-          "chacha20"
-          "poly1305"
-        ];
+        boot.initrd.availableKernelModules = [ "bcachefs" "sha256" "chacha20" "poly1305" ];
         boot.initrd.systemd.extraBin = {
           # do we need this? boot/systemd.nix:566 & boot/systemd/initrd.nix:357
           "bcachefs" = "${pkgs.bcachefs-tools}/bin/bcachefs";

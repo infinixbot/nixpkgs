@@ -35,10 +35,7 @@ stdenv.mkDerivation {
 
   meta = with lib; {
     description = "DNS root data including root zone and DNSSEC key";
-    maintainers = with maintainers; [
-      fpletz
-      vcunat
-    ];
+    maintainers = with maintainers; [ fpletz vcunat ];
     license = licenses.gpl3Plus;
   };
 }

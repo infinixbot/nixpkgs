@@ -24,11 +24,7 @@ buildPythonPackage rec {
 
   buildInputs = lib.optional stdenv.isLinux glib-networking;
 
-  nativeBuildInputs = [
-    wrapGAppsHook3
-    gobject-introspection
-    glib-networking
-  ];
+  nativeBuildInputs = [ wrapGAppsHook3 gobject-introspection glib-networking ];
 
   propagatedBuildInputs = [
     requests

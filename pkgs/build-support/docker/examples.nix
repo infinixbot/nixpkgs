@@ -111,11 +111,7 @@ rec {
       '';
 
       config = {
-        Cmd = [
-          "nginx"
-          "-c"
-          nginxConf
-        ];
+        Cmd = [ "nginx" "-c" nginxConf ];
         ExposedPorts = {
           "${nginxPort}/tcp" = { };
         };
@@ -231,11 +227,7 @@ rec {
     tag = "latest";
     extraCommands = ''echo "(extraCommand)" > extraCommands'';
     config.Cmd = [ "${pkgs.hello}/bin/hello" ];
-    contents = [
-      pkgs.hello
-      pkgs.bash
-      pkgs.coreutils
-    ];
+    contents = [ pkgs.hello pkgs.bash pkgs.coreutils ];
   };
 
   # 11. Create an image on top of a layered image
@@ -387,10 +379,7 @@ rec {
     name = "two-layered-image";
     tag = "latest";
     config.Cmd = [ "${pkgs.hello}/bin/hello" ];
-    contents = [
-      pkgs.bash
-      pkgs.hello
-    ];
+    contents = [ pkgs.bash pkgs.hello ];
     maxLayers = 2;
   };
 
@@ -596,10 +585,7 @@ rec {
       name = "bash-layered-with-user";
       tag = "latest";
       contents =
-        [
-          pkgs.bash
-          pkgs.coreutils
-        ]
+        [ pkgs.bash pkgs.coreutils ]
         ++ nonRootShadowSetup {
           uid = 999;
           user = "somebody";
@@ -635,10 +621,7 @@ rec {
     pkgs.dockerTools.buildLayeredImage {
       name = "layeredstoresymlink";
       tag = "latest";
-      contents = [
-        pkgs.bash
-        symlink
-      ];
+      contents = [ pkgs.bash symlink ];
     }
     // {
       passthru = {
@@ -810,19 +793,13 @@ rec {
     name = "build-image-with-path";
     tag = "latest";
     # Not recommended. Use `buildEnv` between copy and packages to avoid file duplication.
-    copyToRoot = [
-      pkgs.bashInteractive
-      ./test-dummy
-    ];
+    copyToRoot = [ pkgs.bashInteractive ./test-dummy ];
   };
 
   layered-image-with-path = pkgs.dockerTools.streamLayeredImage {
     name = "layered-image-with-path";
     tag = "latest";
-    contents = [
-      pkgs.bashInteractive
-      ./test-dummy
-    ];
+    contents = [ pkgs.bashInteractive ./test-dummy ];
   };
 
   build-image-with-architecture = buildImage {
@@ -830,20 +807,14 @@ rec {
     tag = "latest";
     architecture = "arm64";
     # Not recommended. Use `buildEnv` between copy and packages to avoid file duplication.
-    copyToRoot = [
-      pkgs.bashInteractive
-      ./test-dummy
-    ];
+    copyToRoot = [ pkgs.bashInteractive ./test-dummy ];
   };
 
   layered-image-with-architecture = pkgs.dockerTools.streamLayeredImage {
     name = "layered-image-with-architecture";
     tag = "latest";
     architecture = "arm64";
-    contents = [
-      pkgs.bashInteractive
-      ./test-dummy
-    ];
+    contents = [ pkgs.bashInteractive ./test-dummy ];
   };
 
   # ensure that caCertificates builds
@@ -980,10 +951,7 @@ rec {
   nix-layered = pkgs.dockerTools.streamLayeredImage {
     name = "nix-layered";
     tag = "latest";
-    contents = [
-      pkgs.nix
-      pkgs.bash
-    ];
+    contents = [ pkgs.nix pkgs.bash ];
     includeNixDB = true;
     config = {
       Env = [

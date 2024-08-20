@@ -25,11 +25,7 @@ stdenv.mkDerivation rec {
   inherit version;
   inherit src;
 
-  buildInputs_libraries = [
-    openssl
-    zlib
-    sqlite
-  ];
+  buildInputs_libraries = [ openssl zlib sqlite ];
 
   # TODO: either fix all of Gerbil's dependencies to provide static libraries,
   # or give up and delete all tentative support for static libraries.

@@ -18,11 +18,7 @@ buildGoModule rec {
 
   vendorHash = null;
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X github.com/tektoncd/cli/pkg/cmd/version.clientVersion=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X github.com/tektoncd/cli/pkg/cmd/version.clientVersion=${version}" ];
 
   nativeBuildInputs = [ installShellFiles ];
 
@@ -70,11 +66,7 @@ buildGoModule rec {
       Pipelines.
     '';
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      jk
-      mstrangfeld
-      vdemeester
-    ];
+    maintainers = with maintainers; [ jk mstrangfeld vdemeester ];
     mainProgram = "tkn";
   };
 }

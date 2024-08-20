@@ -28,13 +28,7 @@ let
     ++ lib.optional withSQLite "sqlite3_drv"
     ++ lib.optional withDB "libdb4_drv"
   );
-  maintenancePath = lib.makeBinPath [
-    gawk
-    gnused
-    gnugrep
-    coreutils
-    which
-  ];
+  maintenancePath = lib.makeBinPath [ gawk gnused gnugrep coreutils which ];
 
 in
 stdenv.mkDerivation rec {
@@ -52,10 +46,7 @@ stdenv.mkDerivation rec {
 
   buildInputs =
     [ perlPackages.perl ]
-    ++ lib.optionals withMySQL [
-      zlib
-      mariadb-connector-c.out
-    ]
+    ++ lib.optionals withMySQL [ zlib mariadb-connector-c.out ]
     ++ lib.optional withPgSQL postgresql
     ++ lib.optional withSQLite sqlite
     ++ lib.optional withDB db;

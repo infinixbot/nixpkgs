@@ -51,10 +51,7 @@ let
         homepage = "https://sensu.io";
         description = "Open source monitoring tool for ephemeral infrastructure & distributed applications";
         license = lib.licenses.mit;
-        maintainers = with lib.maintainers; [
-          thefloweringash
-          teutat3s
-        ];
+        maintainers = with lib.maintainers; [ thefloweringash teutat3s ];
       };
     };
 in

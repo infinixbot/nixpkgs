@@ -26,11 +26,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-BiX0shPBGA8sshee8rxs41x+mdsrJzBqhpDDic6sYwA=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    copyDesktopItems
-    imagemagick
-  ];
+  nativeBuildInputs = [ cmake copyDesktopItems imagemagick ];
 
   buildInputs = [ SDL ];
 

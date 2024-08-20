@@ -31,12 +31,7 @@ let
 
   moduleConfigFile = pkgs.writeText "module-config.yaml" (
     generators.toYAML { } (
-      filterAttrs (_: v: v != null) (
-        fold recursiveUpdate { } [
-          yamlConfig
-          cfg.settings
-        ]
-      )
+      filterAttrs (_: v: v != null) (fold recursiveUpdate { } [ yamlConfig cfg.settings ])
     )
   );
 

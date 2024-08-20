@@ -23,27 +23,17 @@ stdenv.mkDerivation rec {
     hash = "sha256-q6qxMY0h0mLs5Bb7inEy+pN0vaifb6UrhqmKL1cSth4=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   buildInputs =
-    [
-      libcbor
-      zlib
-    ]
+    [ libcbor zlib ]
     ++ lib.optionals stdenv.isDarwin [ hidapi ]
     ++ lib.optionals stdenv.isLinux [ udev ]
     ++ lib.optionals (stdenv.isLinux && withPcsclite) [ pcsclite ];
 
   propagatedBuildInputs = [ openssl ];
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
   cmakeFlags =
     [

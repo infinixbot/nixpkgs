@@ -24,27 +24,10 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-w2BUIF44z78syLroQk2asVXA5bt9P9POiuwxpnlkc8o=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
-  nativeBuildInputs = [
-    pkg-config
-    (php.withExtensions (_: [ ]))
-    makeWrapper
-  ];
-  buildInputs = [
-    jack2
-    libsndfile
-    libGLU
-    libGL
-    lv2
-    cairo
-    ladspaH
-    libXrandr
-  ];
+  nativeBuildInputs = [ pkg-config (php.withExtensions (_: [ ])) makeWrapper ];
+  buildInputs = [ jack2 libsndfile libGLU libGL lv2 cairo ladspaH libXrandr ];
 
   makeFlags = [
     "PREFIX=${placeholder "out"}"
@@ -123,10 +106,7 @@ stdenv.mkDerivation rec {
       - Trigger
     '';
     homepage = "https://lsp-plug.in";
-    maintainers = with maintainers; [
-      magnetophon
-      PowerUser64
-    ];
+    maintainers = with maintainers; [ magnetophon PowerUser64 ];
     license = licenses.gpl2;
     platforms = platforms.linux;
   };

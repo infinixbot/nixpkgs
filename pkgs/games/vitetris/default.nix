@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
 
   hardeningDisable = [ "format" ];
 
-  makeFlags = [
-    "INSTALL=install"
-    "CPPFLAGS=-Wno-implicit-int"
-  ];
+  makeFlags = [ "INSTALL=install" "CPPFLAGS=-Wno-implicit-int" ];
 
   meta = {
     description = "Terminal-based Tetris clone by Victor Nilsson";

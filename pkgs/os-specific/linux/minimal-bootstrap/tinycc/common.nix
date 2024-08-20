@@ -58,12 +58,7 @@ rec {
     let
       options = lib.strings.concatStringsSep " " buildOptions;
       libtccOptions = lib.strings.concatStringsSep " " (
-        [
-          "-c"
-          "-D"
-          "TCC_TARGET_I386=1"
-        ]
-        ++ libtccBuildOptions
+        [ "-c" "-D" "TCC_TARGET_I386=1" ] ++ libtccBuildOptions
       );
       compiler =
         kaem.runCommand "${pname}-${version}"

@@ -199,11 +199,7 @@ writeTextFile rec {
 
         # for find_library
           export DYLD_LIBRARY_PATH="${
-            lib.makeLibraryPath [
-              stdenv.cc.libc
-              singular
-              giac
-            ]
+            lib.makeLibraryPath [ stdenv.cc.libc singular giac ]
           }''${DYLD_LIBRARY_PATH:+:}$DYLD_LIBRARY_PATH"
       '';
 }

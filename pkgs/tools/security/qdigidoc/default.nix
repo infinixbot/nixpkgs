@@ -39,12 +39,7 @@ mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    cmake
-    gettext
-    pkg-config
-    qttools
-  ];
+  nativeBuildInputs = [ cmake gettext pkg-config qttools ];
 
   postPatch = ''
     substituteInPlace client/CMakeLists.txt \
@@ -78,9 +73,6 @@ mkDerivation rec {
     homepage = "https://www.id.ee/";
     license = licenses.lgpl21Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      flokli
-      mmahut
-    ];
+    maintainers = with maintainers; [ flokli mmahut ];
   };
 }

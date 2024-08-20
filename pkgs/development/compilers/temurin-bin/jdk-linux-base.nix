@@ -72,10 +72,7 @@ let
       zlib
     ] ++ lib.optional stdenv.isAarch32 libffi;
 
-    nativeBuildInputs = [
-      autoPatchelfHook
-      makeWrapper
-    ];
+    nativeBuildInputs = [ autoPatchelfHook makeWrapper ];
 
     # See: https://github.com/NixOS/patchelf/issues/10
     dontStrip = 1;
@@ -131,10 +128,7 @@ let
 
     meta = with lib; {
       license = licenses.gpl2Classpath;
-      sourceProvenance = with sourceTypes; [
-        binaryNativeCode
-        binaryBytecode
-      ];
+      sourceProvenance = with sourceTypes; [ binaryNativeCode binaryBytecode ];
       description = "${brand-name}, prebuilt OpenJDK binary";
       platforms = builtins.map (arch: arch + "-linux") providedCpuTypes; # some inherit jre.meta.platforms
       maintainers = with maintainers; [ taku0 ];

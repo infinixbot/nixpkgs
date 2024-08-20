@@ -50,11 +50,7 @@ stdenv.mkDerivation rec {
       --replace "install_icons install_desktop" ""
   '';
 
-  nativeBuildInputs = [
-    qmake
-    wrapQtAppsHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ qmake wrapQtAppsHook pkg-config ];
 
   buildInputs = [
     qtbase

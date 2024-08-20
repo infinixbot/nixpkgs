@@ -105,11 +105,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-cj/F/DWUDm2AHTJvHgkKa+KdIrfxPWLzI570Dp4VFhs=";
   };
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
 
   # Unpack subproject sources
   postUnpack = ''
@@ -267,9 +263,6 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://github.com/flightlessmango/MangoHud/releases/tag/v${finalAttrs.version}";
     platforms = platforms.linux;
     license = licenses.mit;
-    maintainers = with maintainers; [
-      kira-bruneau
-      zeratax
-    ];
+    maintainers = with maintainers; [ kira-bruneau zeratax ];
   };
 })

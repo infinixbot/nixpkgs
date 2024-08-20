@@ -79,18 +79,8 @@ import ./make-test-python.nix (
             enable = true;
             settings = {
               server = {
-                interface = [
-                  "192.168.0.1"
-                  "fd21::1"
-                  "::1"
-                  "127.0.0.1"
-                ];
-                access-control = [
-                  "192.168.0.0/24 allow"
-                  "fd21::/64 allow"
-                  "::1 allow"
-                  "127.0.0.0/8 allow"
-                ];
+                interface = [ "192.168.0.1" "fd21::1" "::1" "127.0.0.1" ];
+                access-control = [ "192.168.0.0/24 allow" "fd21::/64 allow" "::1 allow" "127.0.0.0/8 allow" ];
                 local-data = [
                   ''"example.local. IN A 1.2.3.4"''
                   ''"example.local. IN AAAA abcd::eeff"''
@@ -143,12 +133,7 @@ import ./make-test-python.nix (
                   "::1@443"
                   "127.0.0.1@443"
                 ];
-                access-control = [
-                  "192.168.0.0/24 allow"
-                  "fd21::/64 allow"
-                  "::1 allow"
-                  "127.0.0.0/8 allow"
-                ];
+                access-control = [ "192.168.0.0/24 allow" "fd21::/64 allow" "::1 allow" "127.0.0.0/8 allow" ];
                 tls-service-pem = "${cert}/cert.pem";
                 tls-service-key = "${cert}/key.pem";
               };
@@ -196,14 +181,8 @@ import ./make-test-python.nix (
             enable = true;
             settings = {
               server = {
-                interface = [
-                  "::1"
-                  "127.0.0.1"
-                ];
-                access-control = [
-                  "::1 allow"
-                  "127.0.0.0/8 allow"
-                ];
+                interface = [ "::1" "127.0.0.1" ];
+                access-control = [ "::1 allow" "127.0.0.0/8 allow" ];
               };
               include = "/etc/unbound/extra*.conf";
             };

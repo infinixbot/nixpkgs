@@ -19,20 +19,10 @@ stdenv.mkDerivation rec {
     sha256 = "0slzlzcr3h8jikpz5a5amqd0csqh2m40gdk910ws2hnaf5m6hjbi";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
-  nativeBuildInputs = [
-    pkg-config
-    gobject-introspection
-  ];
-  propagatedBuildInputs = [
-    glib
-    zlib
-    libgpg-error
-  ];
+  nativeBuildInputs = [ pkg-config gobject-introspection ];
+  propagatedBuildInputs = [ glib zlib libgpg-error ];
   configureFlags =
     [
       "--enable-introspection=yes"

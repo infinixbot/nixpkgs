@@ -21,11 +21,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   buildInputs = [ qtbase ];
-  nativeBuildInputs = [
-    qmake
-    wrapQtAppsHook
-    imagemagick
-  ];
+  nativeBuildInputs = [ qmake wrapQtAppsHook imagemagick ];
 
   makeFlags = [
     "INSTALL_ROOT=${placeholder "out"}"

@@ -49,27 +49,21 @@ args@{
 }:
 
 let
-  fArgs =
-    removeAttrs args [
-      "buildAttrs"
-      "fetchAttrs"
-      "removeRulesCC"
-    ]
-    // {
-      inherit
-        name
-        bazelFlags
-        bazelBuildFlags
-        bazelTestFlags
-        bazelRunFlags
-        runTargetFlags
-        bazelFetchFlags
-        bazelTargets
-        bazelTestTargets
-        bazelRunTarget
-        dontAddBazelOpts
-        ;
-    };
+  fArgs = removeAttrs args [ "buildAttrs" "fetchAttrs" "removeRulesCC" ] // {
+    inherit
+      name
+      bazelFlags
+      bazelBuildFlags
+      bazelTestFlags
+      bazelRunFlags
+      runTargetFlags
+      bazelFetchFlags
+      bazelTargets
+      bazelTestTargets
+      bazelRunTarget
+      dontAddBazelOpts
+      ;
+  };
   fBuildAttrs = fArgs // buildAttrs;
   fFetchAttrs = fArgs // removeAttrs fetchAttrs [ "sha256" ];
   bazelCmd =
@@ -156,22 +150,12 @@ stdenv.mkDerivation (
 
             ${bazelCmd {
               cmd = if fetchConfigured then "build --nobuild" else "fetch";
-              additionalFlags =
-                [
-                  # We disable multithreading for the fetching phase since it can lead to timeouts with many dependencies/threads:
-                  # https://github.com/bazelbuild/bazel/issues/6502
-                  "--loading_phase_threads=1"
-                  "$bazelFetchFlags"
-                ]
-                ++ (
-                  if fetchConfigured then
-                    [
-                      "--jobs"
-                      "$NIX_BUILD_CORES"
-                    ]
-                  else
-                    [ ]
-                );
+              additionalFlags = [
+                # We disable multithreading for the fetching phase since it can lead to timeouts with many dependencies/threads:
+                # https://github.com/bazelbuild/bazel/issues/6502
+                "--loading_phase_threads=1"
+                "$bazelFetchFlags"
+              ] ++ (if fetchConfigured then [ "--jobs" "$NIX_BUILD_CORES" ] else [ ]);
               targets = fFetchAttrs.bazelTargets ++ fFetchAttrs.bazelTestTargets;
             }}
 
@@ -302,29 +286,19 @@ stdenv.mkDerivation (
 
         ${bazelCmd {
           cmd = "test";
-          additionalFlags =
-            [ "--test_output=errors" ]
-            ++ fBuildAttrs.bazelTestFlags
-            ++ [
-              "--jobs"
-              "$NIX_BUILD_CORES"
-            ];
+          additionalFlags = [
+            "--test_output=errors"
+          ] ++ fBuildAttrs.bazelTestFlags ++ [ "--jobs" "$NIX_BUILD_CORES" ];
           targets = fBuildAttrs.bazelTestTargets;
         }}
         ${bazelCmd {
           cmd = "build";
-          additionalFlags = fBuildAttrs.bazelBuildFlags ++ [
-            "--jobs"
-            "$NIX_BUILD_CORES"
-          ];
+          additionalFlags = fBuildAttrs.bazelBuildFlags ++ [ "--jobs" "$NIX_BUILD_CORES" ];
           targets = fBuildAttrs.bazelTargets;
         }}
         ${bazelCmd {
           cmd = "run";
-          additionalFlags = fBuildAttrs.bazelRunFlags ++ [
-            "--jobs"
-            "$NIX_BUILD_CORES"
-          ];
+          additionalFlags = fBuildAttrs.bazelRunFlags ++ [ "--jobs" "$NIX_BUILD_CORES" ];
           # Bazel run only accepts a single target, but `bazelCmd` expects `targets` to be a list.
           targets = lib.optionals (fBuildAttrs.bazelRunTarget != null) [ fBuildAttrs.bazelRunTarget ];
           targetRunFlags = fBuildAttrs.runTargetFlags;

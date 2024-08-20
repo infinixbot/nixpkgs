@@ -6,8 +6,5 @@
 
 qtModule {
   pname = "qthttpserver";
-  propagatedBuildInputs = [
-    qtbase
-    qtwebsockets
-  ];
+  propagatedBuildInputs = [ qtbase qtwebsockets ];
 }

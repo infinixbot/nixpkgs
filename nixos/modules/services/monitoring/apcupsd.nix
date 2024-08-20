@@ -87,10 +87,7 @@ let
   apcupsdWrapped = pkgs.symlinkJoin {
     name = "apcupsd-wrapped";
     # Put wrappers first so they "win"
-    paths = [
-      wrappedBinaries
-      pkgs.apcupsd
-    ];
+    paths = [ wrappedBinaries pkgs.apcupsd ];
   };
 in
 

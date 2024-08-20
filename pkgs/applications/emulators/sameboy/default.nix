@@ -22,11 +22,7 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
   # glib and wrapGAppsHook3 are needed to make the Open ROM menu work.
-  nativeBuildInputs = [
-    rgbds
-    glib
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ rgbds glib wrapGAppsHook3 ];
   buildInputs = [ SDL2 ];
 
   makeFlags = [

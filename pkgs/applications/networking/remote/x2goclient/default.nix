@@ -53,22 +53,11 @@ qt5.mkDerivation rec {
       --replace "-o root -g root" ""
   '';
 
-  makeFlags = [
-    "PREFIX=$(out)"
-    "ETCDIR=$(out)/etc"
-    "build_client"
-    "build_man"
-  ];
+  makeFlags = [ "PREFIX=$(out)" "ETCDIR=$(out)/etc" "build_client" "build_man" ];
 
-  installTargets = [
-    "install_client"
-    "install_man"
-  ];
+  installTargets = [ "install_client" "install_man" ];
 
-  qtWrapperArgs = [
-    "--suffix PATH : ${nx-libs}/bin:${openssh}/libexec"
-    "--set QT_QPA_PLATFORM xcb"
-  ];
+  qtWrapperArgs = [ "--suffix PATH : ${nx-libs}/bin:${openssh}/libexec" "--set QT_QPA_PLATFORM xcb" ];
 
   meta = with lib; {
     description = "Graphical NoMachine NX3 remote desktop client";

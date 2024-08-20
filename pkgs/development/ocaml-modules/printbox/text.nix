@@ -12,11 +12,7 @@ buildDunePackage {
   pname = "printbox-text";
   inherit (printbox) src version;
 
-  propagatedBuildInputs = [
-    printbox
-    uucp
-    uutf
-  ];
+  propagatedBuildInputs = [ printbox uucp uutf ];
 
   doCheck = printbox.doCheck && lib.versionOlder ocaml.version "5.0";
   nativeCheckInputs = [ mdx.bin ];

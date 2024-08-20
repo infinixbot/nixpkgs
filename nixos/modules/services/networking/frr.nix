@@ -30,10 +30,7 @@ let
     "fabric"
   ];
 
-  allServices = services ++ [
-    "zebra"
-    "mgmt"
-  ];
+  allServices = services ++ [ "zebra" "mgmt" ];
 
   isEnabled = service: cfg.${service}.enable;
 

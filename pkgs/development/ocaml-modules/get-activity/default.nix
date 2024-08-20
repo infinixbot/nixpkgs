@@ -24,10 +24,7 @@ buildDunePackage rec {
     logs
   ];
 
-  checkInputs = [
-    ppx_expect
-    alcotest
-  ];
+  checkInputs = [ ppx_expect alcotest ];
 
   doCheck = true;
 

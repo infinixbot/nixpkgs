@@ -9,10 +9,7 @@ build-idris-package {
   pname = "semidirect";
   version = "2018-07-02";
 
-  idrisDeps = [
-    contrib
-    patricia
-  ];
+  idrisDeps = [ contrib patricia ];
 
   src = fetchFromGitHub {
     owner = "clayrat";

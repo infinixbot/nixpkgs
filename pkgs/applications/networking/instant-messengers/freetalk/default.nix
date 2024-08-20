@@ -26,10 +26,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-u1tPKacGry+JGYeAIgDia3N7zs5EM4FyQZdV8e7htYA=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    texinfo
-  ];
+  nativeBuildInputs = [ pkg-config texinfo ];
   buildInputs =
     [
       guile

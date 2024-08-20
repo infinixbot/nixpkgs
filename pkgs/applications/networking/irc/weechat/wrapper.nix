@@ -103,10 +103,7 @@ let
         // {
           inherit (weechat) name man;
           unwrapped = weechat;
-          outputs = [
-            "out"
-            "man"
-          ];
+          outputs = [ "out" "man" ];
         };
     in
     buildEnv {

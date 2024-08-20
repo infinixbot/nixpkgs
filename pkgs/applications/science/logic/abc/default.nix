@@ -33,10 +33,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Tool for squential logic synthesis and formal verification";
     homepage = "https://people.eecs.berkeley.edu/~alanmi/abc";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      thoughtpolice
-      Luflosi
-    ];
+    maintainers = with maintainers; [ thoughtpolice Luflosi ];
     mainProgram = "abc";
     platforms = platforms.unix;
   };

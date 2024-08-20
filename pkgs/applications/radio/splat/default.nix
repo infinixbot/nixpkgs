@@ -19,15 +19,9 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs =
     # configure script needs `clear`
-    [
-      groff
-      ncurses
-    ];
+    [ groff ncurses ];
 
-  buildInputs = [
-    bzip2
-    zlib
-  ];
+  buildInputs = [ bzip2 zlib ];
 
   postPatch = "patchShebangs build utils/build";
 

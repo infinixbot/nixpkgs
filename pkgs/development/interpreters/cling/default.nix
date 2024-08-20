@@ -67,16 +67,8 @@ let
       ./no-clang-cpp.patch
     ];
 
-    nativeBuildInputs = [
-      python3
-      git
-      cmake
-    ];
-    buildInputs = [
-      libffi
-      ncurses
-      zlib
-    ];
+    nativeBuildInputs = [ python3 git cmake ];
+    buildInputs = [ libffi ncurses zlib ];
 
     strictDeps = true;
 
@@ -120,10 +112,7 @@ let
       description = "Interactive C++ Interpreter";
       mainProgram = "cling";
       homepage = "https://root.cern/cling/";
-      license = with licenses; [
-        lgpl21
-        ncsa
-      ];
+      license = with licenses; [ lgpl21 ncsa ];
       maintainers = with maintainers; [ thomasjm ];
       platforms = platforms.unix;
     };

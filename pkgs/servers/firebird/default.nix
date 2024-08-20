@@ -21,20 +21,14 @@ let
       downloadPage = "https://github.com/FirebirdSQL/firebird/";
       homepage = "https://firebirdsql.org/";
       changelog = "https://github.com/FirebirdSQL/firebird/blob/master/CHANGELOG.md";
-      license = [
-        "IDPL"
-        "Interbase-1.0"
-      ];
+      license = [ "IDPL" "Interbase-1.0" ];
       platforms = platforms.linux;
       maintainers = with maintainers; [ marcweber ];
     };
 
     nativeBuildInputs = [ autoreconfHook271 ];
 
-    buildInputs = [
-      libedit
-      icu
-    ];
+    buildInputs = [ libedit icu ];
 
     LD_LIBRARY_PATH = lib.makeLibraryPath [ icu ];
 
@@ -92,10 +86,7 @@ rec {
         sha256 = "sha256-PT2b3989n/7xLGNREWinEey9SGnAXShITdum+yiFlHY=";
       };
 
-      buildInputs = base.buildInputs ++ [
-        zlib
-        libtommath
-      ];
+      buildInputs = base.buildInputs ++ [ zlib libtommath ];
 
       meta = base.meta // {
         platforms = [ "x86_64-linux" ];
@@ -115,12 +106,7 @@ rec {
         sha256 = "sha256-hddW/cozboGw693q4k5f4+x9ccQFWFytXPUaBVkFnL4=";
       };
 
-      buildInputs = base.buildInputs ++ [
-        zlib
-        unzip
-        libtommath
-        libtomcrypt
-      ];
+      buildInputs = base.buildInputs ++ [ zlib unzip libtommath libtomcrypt ];
     }
   );
 

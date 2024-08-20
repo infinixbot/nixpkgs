@@ -24,23 +24,14 @@ crystal.buildCrystalPackage {
   format = "crystal";
   shardsFile = ./shards.nix;
 
-  nativeBuildInputs = [
-    llvmPackages.llvm
-    openssl
-    makeWrapper
-  ];
+  nativeBuildInputs = [ llvmPackages.llvm openssl makeWrapper ];
 
   doCheck = false;
   doInstallCheck = false;
 
   crystalBinaries.crystalline = {
     src = "src/crystalline.cr";
-    options = [
-      "--release"
-      "--no-debug"
-      "--progress"
-      "-Dpreview_mt"
-    ];
+    options = [ "--release" "--no-debug" "--progress" "-Dpreview_mt" ];
   };
 
   postInstall = ''

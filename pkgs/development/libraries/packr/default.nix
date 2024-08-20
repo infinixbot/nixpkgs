@@ -76,8 +76,5 @@ let
 in
 symlinkJoin {
   name = "packr";
-  paths = [
-    p1
-    p2
-  ];
+  paths = [ p1 p2 ];
 }

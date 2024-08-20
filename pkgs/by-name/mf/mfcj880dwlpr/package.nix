@@ -45,12 +45,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [
-    cups
-    ghostscript
-    dpkg
-    a2ps
-  ];
+  buildInputs = [ cups ghostscript dpkg a2ps ];
 
   dontUnpack = true;
 
@@ -98,23 +93,9 @@ stdenv.mkDerivation rec {
     ln -s $out/opt/brother/Printers/mfcj880dw/lpd/filtermfcj880dw $out/lib/cups/filter/brother_lpdwrapper_mfcj880dw
 
     wrapProgram $out/opt/brother/Printers/mfcj880dw/lpd/psconvertij2 \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          coreutils
-          gnused
-          gawk
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ coreutils gnused gawk ]}
     wrapProgram $out/opt/brother/Printers/mfcj880dw/lpd/filtermfcj880dw \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          coreutils
-          gnused
-          file
-          ghostscript
-          a2ps
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ coreutils gnused file ghostscript a2ps ]}
   '';
 
   meta = with lib; {

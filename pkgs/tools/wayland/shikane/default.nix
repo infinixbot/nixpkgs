@@ -40,10 +40,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://gitlab.com/w0lff/shikane";
     changelog = "https://gitlab.com/w0lff/shikane/-/tags/v${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      michaelpachec0
-      natsukium
-    ];
+    maintainers = with maintainers; [ michaelpachec0 natsukium ];
     platforms = platforms.linux;
     mainProgram = "shikane";
   };

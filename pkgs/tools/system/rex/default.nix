@@ -57,10 +57,7 @@ perlPackages.buildPerlPackage rec {
     })
   ];
 
-  nativeBuildInputs = with perlPackages; [
-    installShellFiles
-    ParallelForkManager
-  ];
+  nativeBuildInputs = with perlPackages; [ installShellFiles ParallelForkManager ];
 
   propagatedBuildInputs = with perlPackages; [
     AWSSignature4

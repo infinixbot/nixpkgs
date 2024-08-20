@@ -27,10 +27,7 @@ rustPlatform.buildRustPackage rec {
       --replace-fail '/opt/findex/style.css' "$out/share/findex/style.css"
   '';
 
-  nativeBuildInputs = [
-    pkg-config
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ pkg-config wrapGAppsHook3 ];
 
   buildInputs = [ keybinder3 ];
 

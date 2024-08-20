@@ -24,10 +24,7 @@ stdenv.mkDerivation {
     meta
     ;
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs = [
     bison

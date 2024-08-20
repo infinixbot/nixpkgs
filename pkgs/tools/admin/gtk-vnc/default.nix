@@ -27,12 +27,7 @@ stdenv.mkDerivation rec {
   pname = "gtk-vnc";
   version = "1.3.1";
 
-  outputs = [
-    "out"
-    "bin"
-    "man"
-    "dev"
-  ];
+  outputs = [ "out" "bin" "man" "dev" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";
@@ -80,10 +75,7 @@ stdenv.mkDerivation rec {
     description = "GTK VNC widget";
     homepage = "https://gitlab.gnome.org/GNOME/gtk-vnc";
     license = licenses.lgpl2Plus;
-    maintainers = with maintainers; [
-      raskin
-      offline
-    ];
+    maintainers = with maintainers; [ raskin offline ];
     platforms = platforms.unix;
     mainProgram = "gvnccapture";
   };

@@ -89,9 +89,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/sonnyp/Tangram";
     license = licenses.gpl3Only;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      austinbutler
-      chuangzhu
-    ];
+    maintainers = with maintainers; [ austinbutler chuangzhu ];
   };
 }

@@ -59,25 +59,11 @@ in
   # Prevent ``undefined reference to `qt_version_tag''' in SSL check
   env.NIX_CFLAGS_COMPILE = "-DQT_NO_VERSION_TAGGING=1";
 
-  nativeBuildInputs = [
-    cmake
-    makeWrapper
-  ];
+  nativeBuildInputs = [ cmake makeWrapper ];
   buildInputs =
-    [
-      qtbase
-      boost
-      zlib
-    ]
-    ++ lib.optionals buildCore [
-      qtscript
-      qca-qt5
-      openldap
-    ]
-    ++ lib.optionals buildClient [
-      libdbusmenu
-      phonon
-    ]
+    [ qtbase boost zlib ]
+    ++ lib.optionals buildCore [ qtscript qca-qt5 openldap ]
+    ++ lib.optionals buildClient [ libdbusmenu phonon ]
     ++ lib.optionals (buildClient && withKDE) [
       extra-cmake-modules
       kconfigwidgets

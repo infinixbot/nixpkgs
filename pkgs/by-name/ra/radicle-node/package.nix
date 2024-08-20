@@ -30,11 +30,7 @@ rustPlatform.buildRustPackage rec {
   };
   cargoHash = "sha256-Qipt1IstoFGo1qQn/ZSwm3d1jrqj4mwIJep/A+/21WY=";
 
-  nativeBuildInputs = [
-    asciidoctor
-    installShellFiles
-    makeWrapper
-  ];
+  nativeBuildInputs = [ asciidoctor installShellFiles makeWrapper ];
   nativeCheckInputs = [ git ];
   buildInputs = lib.optionals stdenv.buildPlatform.isDarwin [
     darwin.apple_sdk.frameworks.Security
@@ -68,14 +64,7 @@ rustPlatform.buildRustPackage rec {
     for program in $out/bin/* ;
     do
       wrapProgram "$program" \
-        --prefix PATH : "${
-          lib.makeBinPath [
-            git
-            man-db
-            openssh
-            xdg-utils
-          ]
-        }"
+        --prefix PATH : "${lib.makeBinPath [ git man-db openssh xdg-utils ]}"
     done
   '';
 
@@ -88,11 +77,7 @@ rustPlatform.buildRustPackage rec {
       basic =
         runCommand "${package.name}-basic-test"
           {
-            nativeBuildInputs = [
-              jq
-              openssh
-              radicle-node
-            ];
+            nativeBuildInputs = [ jq openssh radicle-node ];
           }
           ''
             set -e
@@ -136,15 +121,9 @@ rustPlatform.buildRustPackage rec {
       Repositories are replicated across peers in a decentralized manner, and users are in full control of their data and workflow.
     '';
     homepage = "https://radicle.xyz";
-    license = with lib.licenses; [
-      asl20
-      mit
-    ];
+    license = with lib.licenses; [ asl20 mit ];
     platforms = lib.platforms.unix;
-    maintainers = with lib.maintainers; [
-      amesgen
-      lorenzleutgeb
-    ];
+    maintainers = with lib.maintainers; [ amesgen lorenzleutgeb ];
     mainProgram = "rad";
   };
 }

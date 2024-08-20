@@ -24,12 +24,7 @@ stdenv.mkDerivation rec {
     install -D --target-directory=$out/bin/ ./rofi-pulse-select
 
     wrapProgram $out/bin/rofi-pulse-select \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          rofi-unwrapped
-          ponymix
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ rofi-unwrapped ponymix ]}
 
     runHook postInstall
   '';

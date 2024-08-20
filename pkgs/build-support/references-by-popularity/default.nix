@@ -11,10 +11,7 @@ runCommand "closure-paths"
     exportReferencesGraph.graph = path;
     __structuredAttrs = true;
     preferLocalBuild = true;
-    nativeBuildInputs = [
-      coreutils
-      python3
-    ];
+    nativeBuildInputs = [ coreutils python3 ];
   }
   ''
     python3 ${./closure-graph.py} "$NIX_ATTRS_JSON_FILE" graph > ''${outputs[out]}

@@ -29,11 +29,7 @@ let
     optionalString
     ;
   runtimePath = makeBinPath (
-    optional tiffSupport libraw
-    ++ optionals jpgSupport [
-      graphicsmagick
-      exiftool
-    ]
+    optional tiffSupport libraw ++ optionals jpgSupport [ graphicsmagick exiftool ]
   );
 in
 stdenv.mkDerivation (finalAttrs: {
@@ -80,10 +76,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://gitlab.com/megapixels-org/Megapixels";
     changelog = "https://gitlab.com/megapixels-org/Megapixels/-/tags/${finalAttrs.version}";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      dotlambda
-      Luflosi
-    ];
+    maintainers = with maintainers; [ dotlambda Luflosi ];
     platforms = platforms.linux;
     mainProgram = "megapixels";
   };

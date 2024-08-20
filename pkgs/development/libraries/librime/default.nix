@@ -14,10 +14,7 @@
   pkg-config,
   librime-lua,
   librime-octagram,
-  plugins ? [
-    librime-lua
-    librime-octagram
-  ],
+  plugins ? [ librime-lua librime-octagram ],
 }:
 
 let
@@ -39,21 +36,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-QHuzpitxSYQ4EcBPY1f0R5zl4UFtefu0bFXA76Iv+j0=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
-  buildInputs = [
-    boost
-    glog
-    leveldb
-    marisa
-    opencc
-    yaml-cpp
-    gtest
-    capnproto
-  ] ++ plugins; # for propagated build inputs
+  buildInputs = [ boost glog leveldb marisa opencc yaml-cpp gtest capnproto ] ++ plugins; # for propagated build inputs
 
   preConfigure = copyPlugins;
 

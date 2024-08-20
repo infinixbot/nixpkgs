@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    libusb1
-    ncurses5
-  ];
+  buildInputs = [ libusb1 ncurses5 ];
 
   installPhase = ''
     install -D lguf_brightness $out/bin/lguf_brightness

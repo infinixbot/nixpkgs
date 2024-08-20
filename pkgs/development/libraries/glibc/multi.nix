@@ -12,11 +12,7 @@ in
 runCommand "${nameVersion.name}-multi-${nameVersion.version}"
   # out as the first output is an exception exclusive to glibc
   {
-    outputs = [
-      "out"
-      "bin"
-      "dev"
-    ]; # TODO: no static version here (yet)
+    outputs = [ "out" "bin" "dev" ]; # TODO: no static version here (yet)
     passthru = {
       libgcc = lib.lists.filter (x: x != null) [
         (glibc64.libgcc or null)

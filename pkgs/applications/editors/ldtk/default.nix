@@ -19,12 +19,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-i7HIcKs10srfvwihGdMEnnmGoqgFWNJhC6vGf81QJWY=";
   };
 
-  nativeBuildInputs = [
-    unzip
-    makeWrapper
-    copyDesktopItems
-    appimage-run
-  ];
+  nativeBuildInputs = [ unzip makeWrapper copyDesktopItems appimage-run ];
 
   buildInputs = [ appimage-run ];
 

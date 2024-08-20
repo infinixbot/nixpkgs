@@ -4,19 +4,13 @@ import ./make-test-python.nix (
     client =
       { config, pkgs, ... }:
       {
-        environment.systemPackages = [
-          pkgs.seafile-shared
-          pkgs.curl
-        ];
+        environment.systemPackages = [ pkgs.seafile-shared pkgs.curl ];
       };
   in
   {
     name = "seafile";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        kampfschlaefer
-        schmittlauch
-      ];
+      maintainers = [ kampfschlaefer schmittlauch ];
     };
 
     nodes = {

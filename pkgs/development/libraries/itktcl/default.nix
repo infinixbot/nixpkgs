@@ -16,10 +16,7 @@ tcl.mkTclDerivation rec {
     sha256 = "1iy964jfgsfnc1agk1w6bbm44x18ily8d4wmr7cc9z9f4acn2r6s";
   };
 
-  buildInputs = [
-    tk
-    incrtcl
-  ];
+  buildInputs = [ tk incrtcl ];
   enableParallelBuilding = true;
 
   configureFlags = [
@@ -36,11 +33,7 @@ tcl.mkTclDerivation rec {
     rmdir $out/lib/itk${version}
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
   meta = with lib; {
     homepage = "https://incrtcl.sourceforge.net/";

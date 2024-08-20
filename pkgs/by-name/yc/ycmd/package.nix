@@ -39,17 +39,8 @@ stdenv.mkDerivation {
   buildInputs =
     with python.pkgs;
     with llvmPackages;
-    [
-      abseil-cpp
-      boost
-      libllvm.all
-      libclang.all
-    ]
-    ++ [
-      jedi
-      jedi-language-server
-      pybind11
-    ]
+    [ abseil-cpp boost libllvm.all libclang.all ]
+    ++ [ jedi jedi-language-server pybind11 ]
     ++ lib.optional stdenv.isDarwin Cocoa;
 
   buildPhase = ''
@@ -118,11 +109,7 @@ stdenv.mkDerivation {
     mainProgram = "ycmd";
     homepage = "https://github.com/ycm-core/ycmd";
     license = licenses.gpl3;
-    maintainers = with maintainers; [
-      rasendubi
-      lnl7
-      siriobalmelli
-    ];
+    maintainers = with maintainers; [ rasendubi lnl7 siriobalmelli ];
     platforms = platforms.all;
   };
 }

@@ -22,20 +22,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-kYU3dcP6qVIkaOwSPNbedGYqy21RFkdZlqyk3Cw778g=";
   };
 
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools wrapQtAppsHook ];
 
-  buildInputs = [
-    boost
-    kconfig
-    kcrash
-    kinit
-    kparts
-    kiconthemes
-  ];
+  buildInputs = [ boost kconfig kcrash kinit kparts kiconthemes ];
 
   cmakeFlags = [ "-Wno-dev" ];
 

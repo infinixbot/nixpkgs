@@ -94,17 +94,8 @@ in
   imports = [
     (lib.mkRenamedOptionModuleWith {
       sinceRelease = 2311;
-      from = [
-        "services"
-        "xserver"
-        "extraLayouts"
-      ];
-      to = [
-        "services"
-        "xserver"
-        "xkb"
-        "extraLayouts"
-      ];
+      from = [ "services" "xserver" "extraLayouts" ];
+      to = [ "services" "xserver" "xkb" "extraLayouts" ];
     })
   ];
 

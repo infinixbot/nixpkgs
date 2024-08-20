@@ -25,18 +25,8 @@ stdenv.mkDerivation rec {
 
   cmakeFlags = [ "-DCMAKE_BUILD_TYPE='Release'" ];
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-  ];
-  buildInputs = [
-    libebur128
-    taglib
-    ffmpeg
-    inih
-    fmt
-    zlib
-  ];
+  nativeBuildInputs = [ pkg-config cmake ];
+  buildInputs = [ libebur128 taglib ffmpeg inih fmt zlib ];
 
   meta = with lib; {
     description = "Simple, but powerful ReplayGain 2.0 tagging utility";

@@ -36,17 +36,9 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
-  nativeBuildInputs = [
-    cmake
-    perl
-    groff
-  ];
+  nativeBuildInputs = [ cmake perl groff ];
   propagatedBuildInputs = [ zlib ];
   buildInputs =
     lib.optionals withLZMA [ xz ]

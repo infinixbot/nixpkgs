@@ -151,29 +151,15 @@ let
           strictDeps = true;
 
           nativeBuildInputs =
-            [
-              autoreconfHook
-              bison
-              removeReferencesTo
-            ]
+            [ autoreconfHook bison removeReferencesTo ]
             ++ (op docSupport groff)
-            ++ (ops (dtraceSupport && stdenv.isLinux) [
-              systemtap
-              libsystemtap
-            ])
-            ++ ops yjitSupport [
-              rustPlatform.cargoSetupHook
-              cargo
-              rustc
-            ]
+            ++ (ops (dtraceSupport && stdenv.isLinux) [ systemtap libsystemtap ])
+            ++ ops yjitSupport [ rustPlatform.cargoSetupHook cargo rustc ]
             ++ op useBaseRuby baseRuby;
           buildInputs =
             [ autoconf ]
             ++ (op fiddleSupport libffi)
-            ++ (ops cursesSupport [
-              ncurses
-              readline
-            ])
+            ++ (ops cursesSupport [ ncurses readline ])
             ++ (op zlibSupport zlib)
             ++ (op opensslSupport openssl)
             ++ (op gdbmSupport gdbm)
@@ -183,12 +169,7 @@ let
             # support is disabled (if it's enabled, we already have it) and we're
             # running on darwin
             ++ op (!cursesSupport && stdenv.isDarwin) readline
-            ++ ops stdenv.isDarwin [
-              libiconv
-              libobjc
-              libunwind
-              Foundation
-            ];
+            ++ ops stdenv.isDarwin [ libiconv libobjc libunwind Foundation ];
           propagatedBuildInputs = op jemallocSupport jemalloc;
 
           enableParallelBuilding = true;

@@ -69,11 +69,7 @@ let
 in
 mkDerivation {
   pname = "plasma-desktop";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-    wayland-scanner
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools wayland-scanner ];
   buildInputs = [
     boost
     fontconfig

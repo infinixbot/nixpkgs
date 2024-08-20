@@ -50,11 +50,7 @@ in
     };
     engine = rec {
       version = "release-20181215";
-      mods = [
-        "cnc"
-        "d2k"
-        "ra"
-      ];
+      mods = [ "cnc" "d2k" "ra" ];
       src = fetchFromGitHub {
         owner = "OpenRA";
         repo = "OpenRA";
@@ -272,10 +268,7 @@ in
     };
     engine = {
       version = "SP-22-04-19";
-      mods = [
-        "as"
-        "ts"
-      ];
+      mods = [ "as" "ts" ];
       src = fetchFromGitHub {
         owner = "ABrandau";
         repo = "OpenRA";

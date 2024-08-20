@@ -26,18 +26,9 @@ let
 
     enableParallelBuilding = true;
 
-    nativeBuildInputs = [
-      pkg-config
-      swig
-      perl
-    ] ++ lib.optional stdenv.isDarwin gcc;
+    nativeBuildInputs = [ pkg-config swig perl ] ++ lib.optional stdenv.isDarwin gcc;
 
-    buildInputs = [
-      getopt
-      lua
-      boost
-      libxcrypt
-    ];
+    buildInputs = [ getopt lua boost libxcrypt ];
 
     postPatch =
       ''

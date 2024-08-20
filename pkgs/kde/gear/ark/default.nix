@@ -16,9 +16,6 @@ mkKdeDerivation {
     })
   ];
 
-  extraBuildInputs = [
-    libarchive
-    libzip
-  ];
+  extraBuildInputs = [ libarchive libzip ];
   meta.mainProgram = "ark";
 }

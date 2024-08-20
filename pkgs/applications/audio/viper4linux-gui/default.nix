@@ -16,13 +16,7 @@
 }:
 let
   gstPluginPath = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (
-    with gst_all_1;
-    [
-      gstreamer
-      gst-plugins-viperfx
-      gst-plugins-base
-      gst-plugins-good
-    ]
+    with gst_all_1; [ gstreamer gst-plugins-viperfx gst-plugins-base gst-plugins-good ]
   );
 in
 stdenv.mkDerivation rec {
@@ -44,10 +38,7 @@ stdenv.mkDerivation rec {
       desktopName = "viper4linux";
       genericName = "Equalizer";
       comment = meta.description;
-      categories = [
-        "AudioVideo"
-        "Audio"
-      ];
+      categories = [ "AudioVideo" "Audio" ];
       startupNotify = false;
     })
   ];
@@ -73,12 +64,7 @@ stdenv.mkDerivation rec {
   qmakeFlags = [ "V4L_Frontend.pro" ];
 
   qtWrapperArgs = [
-    "--prefix PATH : ${
-      lib.makeBinPath [
-        viper4linux
-        gst_all_1.gstreamer
-      ]
-    }"
+    "--prefix PATH : ${lib.makeBinPath [ viper4linux gst_all_1.gstreamer ]}"
     "--prefix GST_PLUGIN_SYSTEM_PATH_1_0 : ${gstPluginPath}"
   ];
 

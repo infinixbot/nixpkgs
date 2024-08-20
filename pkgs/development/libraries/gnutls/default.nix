@@ -67,16 +67,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-LhWIquU8sy1Dk38fTsoo/r2cDHqhc0/F3WGn6B4OvN0=";
   };
 
-  outputs =
-    [
-      "bin"
-      "dev"
-      "out"
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isMinGW) [
-      "man"
-      "devdoc"
-    ];
+  outputs = [ "bin" "dev" "out" ] ++ lib.optionals (!stdenv.hostPlatform.isMinGW) [ "man" "devdoc" ];
 
   # Not normally useful docs.
   outputInfo = "devdoc";
@@ -146,21 +137,11 @@ stdenv.mkDerivation rec {
     libiconv
   ] ++ lib.optional (withP11-kit) p11-kit ++ lib.optional (tpmSupport && stdenv.isLinux) trousers;
 
-  nativeBuildInputs =
-    [
-      perl
-      pkg-config
-      texinfo
-    ]
-    ++ [
-      autoconf
-      automake
-    ]
-    ++ lib.optionals doCheck [
-      which
-      nettools
-      util-linux
-    ];
+  nativeBuildInputs = [
+    perl
+    pkg-config
+    texinfo
+  ] ++ [ autoconf automake ] ++ lib.optionals doCheck [ which nettools util-linux ];
 
   propagatedBuildInputs =
     [ nettle ]

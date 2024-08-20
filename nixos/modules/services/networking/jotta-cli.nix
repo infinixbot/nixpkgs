@@ -17,11 +17,7 @@ in
       enable = mkEnableOption "Jottacloud Command-line Tool";
 
       options = mkOption {
-        default = [
-          "stdoutlog"
-          "datadir"
-          "%h/.jottad/"
-        ];
+        default = [ "stdoutlog" "datadir" "%h/.jottad/" ];
         example = [ ];
         type = with types; listOf str;
         description = "Command-line options passed to jottad.";

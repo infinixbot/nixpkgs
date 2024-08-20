@@ -19,11 +19,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-QLtf42Il+XHWeaUdh8jNNWU1sXaVe82sYOKiHLoXw2M=";
 
-  buildInputs = [
-    libbfd
-    libopcodes
-    libunwind
-  ];
+  buildInputs = [ libbfd libopcodes libunwind ];
 
   passthru = {
     updateScript = nix-update-script { };

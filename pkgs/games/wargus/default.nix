@@ -31,11 +31,7 @@ let
   data =
     runCommand "warcraft2"
       {
-        buildInputs = [
-          unzip
-          bchunk
-          p7zip
-        ];
+        buildInputs = [ unzip bchunk p7zip ];
         meta.license = lib.licenses.unfree;
       }
       ''
@@ -59,17 +55,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-yJeMFxCD0ikwVPQApf+IBuMQ6eOjn1fVKNmqh6r760c=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    makeWrapper
-    ffmpeg
-  ];
-  buildInputs = [
-    zlib
-    bzip2
-    libpng
-  ];
+  nativeBuildInputs = [ cmake pkg-config makeWrapper ffmpeg ];
+  buildInputs = [ zlib bzip2 libpng ];
   cmakeFlags = [
     "-DSTRATAGUS=${stratagus}/games/stratagus"
     "-DSTRATAGUS_INCLUDE_DIR=${stratagus.src}/gameheaders"

@@ -87,10 +87,7 @@ else
 
       inherit src;
 
-      nativeBuildInputs = [
-        ocaml
-        findlib
-      ];
+      nativeBuildInputs = [ ocaml findlib ];
 
       strictDeps = true;
 

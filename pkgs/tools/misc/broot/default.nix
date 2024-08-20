@@ -38,11 +38,7 @@ rustPlatform.buildRustPackage rec {
   ];
 
   buildInputs =
-    [
-      libgit2
-      oniguruma
-      xorg.libxcb
-    ]
+    [ libgit2 oniguruma xorg.libxcb ]
     ++ lib.optionals stdenv.isDarwin [
       Foundation
       libiconv

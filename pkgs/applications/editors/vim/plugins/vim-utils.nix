@@ -215,10 +215,7 @@ let
             ln -s ${python3Env}/${python3Env.sitePackages} $out/pack/${packageName}/start/__python3_dependencies/python3
           '';
         in
-        [
-          packdirStart
-          packdirOpt
-        ]
+        [ packdirStart packdirOpt ]
         ++ lib.optional (allPython3Dependencies python3.pkgs != [ ]) python3link;
     in
     buildEnv {
@@ -402,10 +399,7 @@ rec {
             else
               buildEnv {
                 inherit name;
-                paths = [
-                  (lib.lowPrio vim)
-                  bin
-                ];
+                paths = [ (lib.lowPrio vim) bin ];
               }
           );
 
@@ -492,10 +486,7 @@ rec {
     drv.overrideAttrs (oldAttrs: {
       name = "vimplugin-${oldAttrs.name}";
       # dont move the "doc" folder since vim expects it
-      forceShare = [
-        "man"
-        "info"
-      ];
+      forceShare = [ "man" "info" ];
 
       nativeBuildInputs =
         oldAttrs.nativeBuildInputs or [ ]

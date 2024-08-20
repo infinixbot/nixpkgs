@@ -79,9 +79,6 @@ python3.pkgs.buildPythonApplication rec {
     license = licenses.gpl3Plus;
     platforms = platforms.linux;
     mainProgram = "dev.tchx84.Portfolio";
-    maintainers = with maintainers; [
-      dotlambda
-      chuangzhu
-    ];
+    maintainers = with maintainers; [ dotlambda chuangzhu ];
   };
 }

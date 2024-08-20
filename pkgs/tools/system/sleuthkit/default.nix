@@ -29,10 +29,7 @@ stdenv.mkDerivation (finalAttrs: {
     name = "sleuthkit-${finalAttrs.version}-deps";
     inherit (finalAttrs) src;
 
-    nativeBuildInputs = [
-      ant
-      jdk
-    ];
+    nativeBuildInputs = [ ant jdk ];
 
     # unpack, build, install
     dontConfigure = true;
@@ -105,10 +102,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Forensic/data recovery tool";
     homepage = "https://www.sleuthkit.org/";
     changelog = "https://github.com/sleuthkit/sleuthkit/blob/${finalAttrs.src.rev}/NEWS.txt";
-    maintainers = with maintainers; [
-      raskin
-      gfrascadorio
-    ];
+    maintainers = with maintainers; [ raskin gfrascadorio ];
     platforms = platforms.linux;
     sourceProvenance = with sourceTypes; [
       fromSource

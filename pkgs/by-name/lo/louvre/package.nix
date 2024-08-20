@@ -57,10 +57,7 @@ stdenv.mkDerivation (self: {
     xorgproto
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   preConfigure = ''
     # The root meson.build file is in src/

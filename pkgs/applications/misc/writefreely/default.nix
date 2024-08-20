@@ -22,11 +22,7 @@ buildGoModule rec {
     ./fix-go-version-error.patch
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X github.com/writefreely/writefreely.softwareVer=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X github.com/writefreely/writefreely.softwareVer=${version}" ];
 
   tags = [ "sqlite" ];
 

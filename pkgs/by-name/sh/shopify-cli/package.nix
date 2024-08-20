@@ -61,9 +61,6 @@ buildNpmPackage {
     homepage = "https://github.com/Shopify/cli";
     changelog = "https://github.com/Shopify/cli/releases/tag/${version}";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [
-      fd
-      onny
-    ];
+    maintainers = with lib.maintainers; [ fd onny ];
   };
 }

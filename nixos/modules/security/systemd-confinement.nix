@@ -91,10 +91,7 @@ in
           };
 
           options.confinement.mode = lib.mkOption {
-            type = types.enum [
-              "full-apivfs"
-              "chroot-only"
-            ];
+            type = types.enum [ "full-apivfs" "chroot-only" ];
             default = "full-apivfs";
             description = ''
               The value `full-apivfs` (the default) sets up

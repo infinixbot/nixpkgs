@@ -20,12 +20,7 @@ mkDerivation rec {
     hash = "sha256-FBHbPtMZeIgcR1pQflfEWK2FS8bquctXaeY/yaZofHg=";
   };
 
-  buildInputs = [
-    qtbase
-    qttools
-    qtserialport
-    libGLU
-  ];
+  buildInputs = [ qtbase qttools qtserialport libGLU ];
   nativeBuildInputs = [ qmake ];
   postPatch = ''
     substituteInPlace oscar/oscar.pro --replace "/bin/bash" "${stdenv.shell}"

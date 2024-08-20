@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    gtk2
-    libxml2
-  ];
+  buildInputs = [ gtk2 libxml2 ];
 
   enableParallelBuilding = true;
 

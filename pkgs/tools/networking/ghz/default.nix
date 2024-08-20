@@ -19,10 +19,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-7TrYWmVKxHKVTyiIak7tRYKE4hgG/4zfsM76bJRxnAk=";
 
-  subPackages = [
-    "cmd/ghz"
-    "cmd/ghz-web"
-  ];
+  subPackages = [ "cmd/ghz" "cmd/ghz-web" ];
 
   ldflags = [
     "-s"

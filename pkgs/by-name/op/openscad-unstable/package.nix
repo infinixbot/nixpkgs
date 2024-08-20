@@ -52,10 +52,7 @@ let
       hash = "sha256-azHDAuK0rAHrH+XkN3gHDrbwZOclP3zbEMe8VRpMjDQ=";
     };
     patches = [ ./thrust-cmake.patch ];
-    nativeBuildInputs = [
-      cmake
-      pkg-config
-    ];
+    nativeBuildInputs = [ cmake pkg-config ];
     buildInputs = [ tbb_2021_11 ];
     cmakeFlags = [
       # only enable what we need
@@ -96,12 +93,7 @@ clangStdenv.mkDerivation rec {
   };
   patches = [ ./test.diff ];
   nativeBuildInputs = [
-    (python3.withPackages (
-      ps: with ps; [
-        numpy
-        pillow
-      ]
-    ))
+    (python3.withPackages (ps: with ps; [ numpy pillow ]))
     bison
     cmake
     flex
@@ -189,10 +181,7 @@ clangStdenv.mkDerivation rec {
     # note that the *binary license* is gpl3 due to CGAL
     license = lib.licenses.gpl3;
     platforms = lib.platforms.unix;
-    maintainers = with lib.maintainers; [
-      pca006132
-      raskin
-    ];
+    maintainers = with lib.maintainers; [ pca006132 raskin ];
     mainProgram = "openscad";
   };
 }

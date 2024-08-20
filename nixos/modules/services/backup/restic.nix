@@ -40,14 +40,7 @@ in
             };
 
             rcloneOptions = mkOption {
-              type =
-                with types;
-                nullOr (
-                  attrsOf (oneOf [
-                    str
-                    bool
-                  ])
-                );
+              type = with types; nullOr (attrsOf (oneOf [ str bool ]));
               default = null;
               description = ''
                 Options to pass to rclone to control its behavior.
@@ -64,14 +57,7 @@ in
             };
 
             rcloneConfig = mkOption {
-              type =
-                with types;
-                nullOr (
-                  attrsOf (oneOf [
-                    str
-                    bool
-                  ])
-                );
+              type = with types; nullOr (attrsOf (oneOf [ str bool ]));
               default = null;
               description = ''
                 Configuration for the rclone remote being used for backup.

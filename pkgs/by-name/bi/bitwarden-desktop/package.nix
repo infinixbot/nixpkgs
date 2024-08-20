@@ -60,10 +60,7 @@ buildNpmPackage rec {
   nodejs = nodejs_20;
 
   makeCacheWritable = true;
-  npmFlags = [
-    "--engine-strict"
-    "--legacy-peer-deps"
-  ];
+  npmFlags = [ "--engine-strict" "--legacy-peer-deps" ];
   npmWorkspace = "apps/desktop";
   npmDepsHash = "sha256-9d9pWrFYelAx/PPDHY3m92Frp8RSQuBqpiOjmWtm/1g=";
 

@@ -18,15 +18,9 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ gfortran ];
 
-  buildInputs = [
-    blas
-    lapack
-  ];
+  buildInputs = [ blas lapack ];
 
-  configureFlags = [
-    "--with-blas=-lblas"
-    "--with-lapack=-llapack"
-  ];
+  configureFlags = [ "--with-blas=-lblas" "--with-lapack=-llapack" ];
 
   meta = with lib; {
     description = "Just Another Gibbs Sampler";

@@ -154,10 +154,7 @@ let
     gr-audio = {
       runtime =
         [ ]
-        ++ lib.optionals stdenv.isLinux [
-          alsa-lib
-          libjack2
-        ]
+        ++ lib.optionals stdenv.isLinux [ alsa-lib libjack2 ]
         ++ lib.optionals stdenv.isDarwin [ CoreAudio ];
       cmakeEnableFlag = "GR_AUDIO";
     };
@@ -165,10 +162,7 @@ let
       cmakeEnableFlag = "GR_CHANNELS";
     };
     gr-qtgui = {
-      runtime = [
-        qt5.qtbase
-        libsForQt5.qwt
-      ];
+      runtime = [ qt5.qtbase libsForQt5.qwt ];
       pythonRuntime = [ python.pkgs.pyqt5 ];
       cmakeEnableFlag = "GR_QTGUI";
     };
@@ -199,10 +193,7 @@ let
       cmakeEnableFlag = "GR_VIDEO_SDL";
     };
     gr-vocoder = {
-      runtime = [
-        codec2
-        gsm
-      ];
+      runtime = [ codec2 gsm ];
       cmakeEnableFlag = "GR_VOCODER";
     };
     gr-wavelet = {

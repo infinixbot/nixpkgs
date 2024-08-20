@@ -33,17 +33,10 @@ mkDerivation {
     homepage = "https://apps.kde.org/korganizer/";
     description = "Personal organizer";
     mainProgram = "korganizer";
-    license = with lib.licenses; [
-      gpl2Plus
-      lgpl21Plus
-      fdl12Plus
-    ];
+    license = with lib.licenses; [ gpl2Plus lgpl21Plus fdl12Plus ];
     maintainers = kdepimTeam;
   };
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   propagatedBuildInputs = [
     qtbase
     qttools

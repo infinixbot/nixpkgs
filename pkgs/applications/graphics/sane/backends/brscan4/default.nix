@@ -38,11 +38,7 @@ stdenv.mkDerivation rec {
     tar xfvz data.tar.gz
   '';
 
-  nativeBuildInputs = [
-    makeWrapper
-    patchelf
-    udevRules
-  ];
+  nativeBuildInputs = [ makeWrapper patchelf udevRules ];
   buildInputs = [ libusb-compat-0_1 ];
   dontBuild = true;
 
@@ -102,10 +98,7 @@ stdenv.mkDerivation rec {
   meta = {
     description = "Brother brscan4 sane backend driver";
     homepage = "http://www.brother.com";
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
     license = lib.licenses.unfree;
     maintainers = with lib.maintainers; [ jraygauthier ];

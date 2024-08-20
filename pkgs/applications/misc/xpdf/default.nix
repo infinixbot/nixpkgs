@@ -49,10 +49,7 @@ stdenv.mkDerivation rec {
   ] ++ lib.optional (!enablePrinting) "-DXPDFWIDGET_PRINTING=OFF";
 
   buildInputs =
-    [
-      zlib
-      libpng
-    ]
+    [ zlib libpng ]
     ++ lib.optional enableGUI qtbase
     ++ lib.optional enablePrinting cups
     ++ lib.optional enablePDFtoPPM freetype;
@@ -87,10 +84,7 @@ stdenv.mkDerivation rec {
         pdffonts:  lists fonts used in PDF files
         pdfdetach: extracts attached files from PDF files
     '';
-    license = with licenses; [
-      gpl2Only
-      gpl3Only
-    ];
+    license = with licenses; [ gpl2Only gpl3Only ];
     platforms = platforms.unix;
     maintainers = with maintainers; [ sikmir ];
     knownVulnerabilities = [

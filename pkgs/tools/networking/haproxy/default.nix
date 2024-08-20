@@ -17,12 +17,7 @@
   pcre2,
 }:
 
-assert lib.assertOneOf "sslLibrary" sslLibrary [
-  "quictls"
-  "openssl"
-  "libressl"
-  "wolfssl"
-];
+assert lib.assertOneOf "sslLibrary" sslLibrary [ "quictls" "openssl" "libressl" "wolfssl" ];
 let
   sslPkgs = {
     inherit quictls openssl libressl;
@@ -42,11 +37,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-Oac8GHoLANJgLLP/ylLRtZ2Q8JAyc0/owD6y4pp9Gd8=";
   };
 
-  buildInputs = [
-    sslPkg
-    zlib
-    libxcrypt
-  ] ++ lib.optional useLua lua5_4 ++ lib.optional usePcre pcre2;
+  buildInputs = [ sslPkg zlib libxcrypt ] ++ lib.optional useLua lua5_4 ++ lib.optional usePcre pcre2;
 
   # TODO: make it work on bsd as well
   makeFlags = [
@@ -107,10 +98,7 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://www.haproxy.org/download/${lib.versions.majorMinor finalAttrs.version}/src/CHANGELOG";
     description = "Reliable, high performance TCP/HTTP load balancer";
     homepage = "https://haproxy.org";
-    license = with lib.licenses; [
-      gpl2Plus
-      lgpl21Only
-    ];
+    license = with lib.licenses; [ gpl2Plus lgpl21Only ];
     longDescription = ''
       HAProxy is a free, very fast and reliable solution offering high
       availability, load balancing, and proxying for TCP and HTTP-based

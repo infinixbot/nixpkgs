@@ -53,10 +53,7 @@ import ./make-test-python.nix (
       client =
         { pkgs, ... }:
         {
-          imports = [
-            ./common/x11.nix
-            ./common/user-account.nix
-          ];
+          imports = [ ./common/x11.nix ./common/user-account.nix ];
           test-support.displayManager.auto.user = "alice";
 
           environment.systemPackages = [ pkgs.freerdp ];

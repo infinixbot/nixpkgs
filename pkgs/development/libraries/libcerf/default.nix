@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-CAswrlZMPavjuJJkUira9WR+x1QCFXK+5UkpaXsnbNw=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    perl
-  ];
+  nativeBuildInputs = [ cmake perl ];
 
   passthru.tests = {
     inherit gnuplot;

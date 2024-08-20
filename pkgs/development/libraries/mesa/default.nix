@@ -95,10 +95,7 @@
     ++ lib.optionals stdenv.hostPlatform.isx86 [
       "intel_hasvk" # Intel Haswell/Broadwell, "legacy" Vulkan driver (https://www.phoronix.com/news/Intel-HasVK-Drop-Dead-Code)
     ],
-  eglPlatforms ? [
-    "x11"
-    "wayland"
-  ],
+  eglPlatforms ? [ "x11" "wayland" ],
   vulkanLayers ? [
     "device-select"
     "overlay"
@@ -420,10 +417,7 @@ stdenv.mkDerivation {
       buildCommand = ''
         echo ${mesa.dev} >>$out
       '';
-      disallowedRequisites = [
-        llvmPackages.llvm
-        mesa.drivers
-      ];
+      disallowedRequisites = [ llvmPackages.llvm mesa.drivers ];
     };
 
     llvmpipeHook = makeSetupHook {

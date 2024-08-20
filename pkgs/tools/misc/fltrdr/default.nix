@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    icu
-    openssl
-  ];
+  buildInputs = [ icu openssl ];
 
   meta = with lib; {
     homepage = "https://octobanana.com/software/fltrdr";

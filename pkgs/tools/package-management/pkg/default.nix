@@ -28,19 +28,8 @@ stdenv.mkDerivation (finalAttrs: {
   setOutputFlags = false;
   separateDebugInfo = true;
 
-  nativeBuildInputs = [
-    m4
-    pkg-config
-    tcl
-  ];
-  buildInputs = [
-    bzip2
-    elfutils
-    libarchive
-    openssl
-    xz
-    zlib
-  ] ++ lib.optional stdenv.isLinux libbsd;
+  nativeBuildInputs = [ m4 pkg-config tcl ];
+  buildInputs = [ bzip2 elfutils libarchive openssl xz zlib ] ++ lib.optional stdenv.isLinux libbsd;
 
   enableParallelBuilding = true;
 

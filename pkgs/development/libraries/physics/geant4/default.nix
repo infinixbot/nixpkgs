@@ -109,29 +109,12 @@ lib.warnIf (enableQT != false) "geant4: enableQT is deprecated, please use enabl
     dontWrapQtApps = true; # no binaries
 
     buildInputs =
-      lib.optionals enableOpenGLX11 [
-        libGLU
-        libXext
-        libXmu
-      ]
-      ++ lib.optionals enableInventor [
-        libXpm
-        coin3d
-        soxt
-        motif
-      ]
-      ++ lib.optionals enablePython [
-        boost_python
-        python3
-      ];
+      lib.optionals enableOpenGLX11 [ libGLU libXext libXmu ]
+      ++ lib.optionals enableInventor [ libXpm coin3d soxt motif ]
+      ++ lib.optionals enablePython [ boost_python python3 ];
 
     propagatedBuildInputs =
-      [
-        clhep
-        expat
-        xercesc
-        zlib
-      ]
+      [ clhep expat xercesc zlib ]
       ++ lib.optionals enableOpenGLX11 [ libGL ]
       ++ lib.optionals enableXM [ motif ]
       ++ lib.optionals enableQt [ qtbase ];
@@ -170,10 +153,7 @@ lib.warnIf (enableQT != false) "geant4: enableQT is deprecated, please use enabl
       '';
       homepage = "http://www.geant4.org";
       license = licenses.g4sl;
-      maintainers = with maintainers; [
-        omnipotententity
-        veprbl
-      ];
+      maintainers = with maintainers; [ omnipotententity veprbl ];
       platforms = platforms.unix;
     };
   }

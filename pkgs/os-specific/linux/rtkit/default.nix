@@ -44,18 +44,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    unixtools.xxd
-  ];
-  buildInputs = [
-    dbus
-    libcap
-    polkit
-    systemd
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config unixtools.xxd ];
+  buildInputs = [ dbus libcap polkit systemd ];
 
   mesonFlags = [
     "-Dinstalled_tests=false"
@@ -71,10 +61,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/heftig/rtkit";
     description = "Daemon that hands out real-time priority to processes";
     mainProgram = "rtkitctl";
-    license = with licenses; [
-      gpl3
-      bsd0
-    ]; # lib is bsd license
+    license = with licenses; [ gpl3 bsd0 ]; # lib is bsd license
     platforms = platforms.linux;
   };
 }

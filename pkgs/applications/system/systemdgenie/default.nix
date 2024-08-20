@@ -19,16 +19,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-y+A2OuK1ZooPY5W0SsXEb1aaOAJ2b7QSwiumolmAaR4=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    extra-cmake-modules
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake extra-cmake-modules wrapQtAppsHook ];
 
-  buildInputs = [
-    kxmlgui
-    kdelibs4support
-  ];
+  buildInputs = [ kxmlgui kdelibs4support ];
 
   meta = with lib; {
     description = "Systemd management utility";

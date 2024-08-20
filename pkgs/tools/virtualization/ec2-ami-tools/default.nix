@@ -13,10 +13,7 @@ stdenv.mkDerivation rec {
 
   version = "1.5.7";
 
-  nativeBuildInputs = [
-    makeWrapper
-    unzip
-  ];
+  nativeBuildInputs = [ makeWrapper unzip ];
 
   src = fetchurl {
     url = "https://s3.amazonaws.com/ec2-downloads/${pname}-${version}.zip";
@@ -39,12 +36,7 @@ stdenv.mkDerivation rec {
     for i in $out/bin/*; do
         wrapProgram $i \
           --set EC2_HOME $out \
-          --prefix PATH : ${
-            lib.makeBinPath [
-              ruby
-              openssl
-            ]
-          }
+          --prefix PATH : ${lib.makeBinPath [ ruby openssl ]}
     done
 
     sed -i 's|/bin/bash|${stdenv.shell}|' $out/lib/ec2/platform/base/pipeline.rb

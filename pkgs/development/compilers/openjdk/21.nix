@@ -66,12 +66,7 @@ let
       hash = "sha256-zRN16lrc5gtDlTVIQJRRx103w/VbRkatCLeEc9AXWPE=";
     };
 
-    nativeBuildInputs = [
-      pkg-config
-      autoconf
-      unzip
-      ensureNewerSourcesForZipFilesHook
-    ];
+    nativeBuildInputs = [ pkg-config autoconf unzip ensureNewerSourcesForZipFilesHook ];
     buildInputs =
       [
         cpio
@@ -144,10 +139,7 @@ let
     # JDK's build system attempts to specifically detect
     # and special-case WSL, and we don't want it to do that,
     # so pass the correct platform names explicitly
-    configurePlatforms = [
-      "build"
-      "host"
-    ];
+    configurePlatforms = [ "build" "host" ];
 
     configureFlags =
       [

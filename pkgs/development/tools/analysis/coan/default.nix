@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
     ./fix-big-endian-config-check.diff
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    perl
-  ];
+  nativeBuildInputs = [ autoreconfHook perl ];
 
   configureFlags = [ "CXXFLAGS=-std=c++11" ];
 

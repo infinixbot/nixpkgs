@@ -25,13 +25,7 @@ stdenv.mkDerivation rec {
 
   installPhase =
     let
-      binPath = lib.makeBinPath [
-        openssh
-        perl
-        gnutar
-        bash
-        inotify-tools
-      ];
+      binPath = lib.makeBinPath [ openssh perl gnutar bash inotify-tools ];
     in
     ''
       mkdir -p $out/bin

@@ -11,10 +11,7 @@ let
 in
 {
   meta = {
-    maintainers = with lib.maintainers; [
-      n8henrie
-      numkem
-    ];
+    maintainers = with lib.maintainers; [ n8henrie numkem ];
   };
 
   options = {

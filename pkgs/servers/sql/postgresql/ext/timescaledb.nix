@@ -15,11 +15,7 @@ stdenv.mkDerivation rec {
   version = "2.14.2";
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    postgresql
-    openssl
-    libkrb5
-  ];
+  buildInputs = [ postgresql openssl libkrb5 ];
 
   src = fetchFromGitHub {
     owner = "timescale";
@@ -29,11 +25,7 @@ stdenv.mkDerivation rec {
   };
 
   cmakeFlags =
-    [
-      "-DSEND_TELEMETRY_DEFAULT=OFF"
-      "-DREGRESS_CHECKS=OFF"
-      "-DTAP_CHECKS=OFF"
-    ]
+    [ "-DSEND_TELEMETRY_DEFAULT=OFF" "-DREGRESS_CHECKS=OFF" "-DTAP_CHECKS=OFF" ]
     ++ lib.optionals (!enableUnfree) [ "-DAPACHE_ONLY=ON" ]
     ++ lib.optionals stdenv.isDarwin [ "-DLINTER=OFF" ];
 

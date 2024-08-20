@@ -34,11 +34,7 @@ stdenv.mkDerivation rec {
   dontConfigure = true;
   dontBuild = true;
 
-  nativeBuildInputs = [
-    unzip
-    autoPatchelfHook
-    makeWrapper
-  ];
+  nativeBuildInputs = [ unzip autoPatchelfHook makeWrapper ];
 
   buildInputs = [
     stdenv.cc.cc.lib

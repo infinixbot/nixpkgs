@@ -36,10 +36,7 @@ rustPlatform.buildRustPackage rec {
       darwin.apple_sdk.frameworks.Security
     ];
 
-  cargoBuildFlags = [
-    "--bin"
-    "httplz"
-  ];
+  cargoBuildFlags = [ "--bin" "httplz" ];
 
   postInstall = ''
     sed -E 's/http(`| |\(|$)/httplz\1/g' http.md > httplz.1.ronn

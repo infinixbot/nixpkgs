@@ -100,13 +100,7 @@ in
     package = mkPackageOption pkgs "jirafeau" { };
 
     poolConfig = mkOption {
-      type =
-        with types;
-        attrsOf (oneOf [
-          str
-          int
-          bool
-        ]);
+      type = with types; attrsOf (oneOf [ str int bool ]);
       default = {
         "pm" = "dynamic";
         "pm.max_children" = 32;

@@ -95,11 +95,7 @@ stdenv.mkDerivation rec {
     changelog = "https://github.com/flxzt/rnote/releases/tag/${src.rev}";
     description = "Simple drawing application to create handwritten notes";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      dotlambda
-      gepbird
-      yrd
-    ];
+    maintainers = with maintainers; [ dotlambda gepbird yrd ];
     platforms = platforms.unix;
     # compiler error since 2023-11-17
     broken = stdenv.isDarwin;

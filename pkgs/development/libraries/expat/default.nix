@@ -35,10 +35,7 @@ stdenv.mkDerivation (finalAttrs: {
   strictDeps = true;
   nativeBuildInputs = [ updateAutotoolsGnuConfigScriptsHook ];
 
-  outputs = [
-    "out"
-    "dev"
-  ]; # TODO: fix referrers
+  outputs = [ "out" "dev" ]; # TODO: fix referrers
   outputBin = "dev";
 
   enableParallelBuilding = true;

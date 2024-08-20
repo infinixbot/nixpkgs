@@ -108,16 +108,10 @@ in
       "nesting"
       "children"
     ] "Use `specialisation.«name».configuration = { ... }` instead.")
-    (mkRenamedOptionModule
-      [
-        "system"
-        "forbiddenDependenciesRegex"
-      ]
-      [
-        "system"
-        "forbiddenDependenciesRegexes"
-      ]
-    )
+    (mkRenamedOptionModule [ "system" "forbiddenDependenciesRegex" ] [
+      "system"
+      "forbiddenDependenciesRegexes"
+    ])
   ];
 
   options = {
@@ -341,12 +335,7 @@ in
         installBootLoader = config.system.build.installBootLoader;
         localeArchive = "${config.i18n.glibcLocales}/lib/locale/locale-archive";
         distroId = config.system.nixos.distroId;
-        perl = pkgs.perl.withPackages (
-          p: with p; [
-            ConfigIniFiles
-            FileSlurp
-          ]
-        );
+        perl = pkgs.perl.withPackages (p: with p; [ ConfigIniFiles FileSlurp ]);
         # End if legacy environment variables
 
         # Not actually used in the builder. `passedChecks` is just here to create

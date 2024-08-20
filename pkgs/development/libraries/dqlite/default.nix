@@ -22,11 +22,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-XQvJO4sFKRKDVdtoXP2Ue80otDC0Ry6EB1Z0shetuhw=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    file
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook file pkg-config ];
   buildInputs = [
     libuv
     raft-canonical.dev
@@ -38,10 +34,7 @@ stdenv.mkDerivation rec {
   # tests fail
   doCheck = false;
 
-  outputs = [
-    "dev"
-    "out"
-  ];
+  outputs = [ "dev" "out" ];
 
   passthru.tests = {
     inherit lxd-lts;

@@ -13,10 +13,7 @@ stdenv.mkDerivation rec {
   pname = "poweralertd";
   version = "0.3.0";
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   src = fetchFromSourcehut {
     owner = "~kennylevinsen";

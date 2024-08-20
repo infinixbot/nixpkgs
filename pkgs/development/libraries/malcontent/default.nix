@@ -22,15 +22,7 @@ stdenv.mkDerivation rec {
   pname = "malcontent";
   version = "0.12.0";
 
-  outputs = [
-    "bin"
-    "out"
-    "lib"
-    "pam"
-    "dev"
-    "man"
-    "installedTests"
-  ];
+  outputs = [ "bin" "out" "lib" "pam" "dev" "man" "installedTests" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.freedesktop.org";
@@ -104,11 +96,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     # We need to install Polkit & AccountsService data files in `out`
     # but `buildEnv` only uses `bin` when both `bin` and `out` are present.
-    outputsToInstall = [
-      "bin"
-      "out"
-      "man"
-    ];
+    outputsToInstall = [ "bin" "out" "man" ];
 
     description = "Parental controls library";
     mainProgram = "malcontent-client";

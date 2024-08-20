@@ -23,12 +23,7 @@ let
     src = speech-denoiser-src;
     sourceRoot = "${speech-denoiser-src.name}/rnnoise";
     nativeBuildInputs = [ autoreconfHook ];
-    configureFlags = [
-      "--disable-examples"
-      "--disable-doc"
-      "--disable-shared"
-      "--enable-static"
-    ];
+    configureFlags = [ "--disable-examples" "--disable-doc" "--disable-shared" "--enable-static" ];
     installTargets = [ "install-rnnoise-nu" ];
   };
 in
@@ -38,15 +33,8 @@ stdenv.mkDerivation {
 
   src = speech-denoiser-src;
 
-  nativeBuildInputs = [
-    pkg-config
-    meson
-    ninja
-  ];
-  buildInputs = [
-    lv2
-    rnnoise-nu
-  ];
+  nativeBuildInputs = [ pkg-config meson ninja ];
+  buildInputs = [ lv2 rnnoise-nu ];
 
   mesonFlags = [ "--prefix=${placeholder "out"}/lib/lv2" ];
 

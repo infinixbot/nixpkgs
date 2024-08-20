@@ -89,10 +89,7 @@ rec {
       libcxx =
         pkgs.runCommand "${stdenvLibcxx.name}-${llvmLibcxxVersion}"
           {
-            outputs = [
-              "out"
-              "dev"
-            ];
+            outputs = [ "out" "dev" ];
             isLLVM = true;
           }
           ''
@@ -216,10 +213,7 @@ rec {
     lib.foldl (lib.flip lib.id) stdenv (
       lib.optional stdenv.hostPlatform.isDarwin makeStaticDarwin
 
-      ++ [
-        makeStaticLibraries
-        propagateBuildInputs
-      ]
+      ++ [ makeStaticLibraries propagateBuildInputs ]
 
       # Apple does not provide a static version of libSystem or crt0.o
       # So we can’t build static binaries without extensive hacks.

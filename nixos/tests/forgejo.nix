@@ -45,19 +45,12 @@ let
 
   metricSecret = "fakesecret";
 
-  supportedDbTypes = [
-    "mysql"
-    "postgres"
-    "sqlite3"
-  ];
+  supportedDbTypes = [ "mysql" "postgres" "sqlite3" ];
   makeForgejoTest =
     type:
     nameValuePair type (makeTest {
       name = "forgejo-${type}";
-      meta.maintainers = with maintainers; [
-        bendlas
-        emilylange
-      ];
+      meta.maintainers = with maintainers; [ bendlas emilylange ];
 
       nodes = {
         server =

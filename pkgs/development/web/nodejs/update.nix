@@ -14,17 +14,7 @@
 
 writeScript "update-nodejs" ''
   #!${runtimeShell}
-  PATH=${
-    lib.makeBinPath [
-      common-updater-scripts
-      coreutils
-      curl
-      gnugrep
-      jq
-      gnupg
-      nix
-    ]
-  }
+  PATH=${lib.makeBinPath [ common-updater-scripts coreutils curl gnugrep jq gnupg nix ]}
 
   HOME=`mktemp -d`
   cat ${./nodejs-release-keys.asc} | gpg --import

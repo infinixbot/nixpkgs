@@ -14,13 +14,7 @@ mkDerivation {
 
   nativeBuildInputs = [ extra-cmake-modules ];
 
-  buildInputs = [
-    qtquickcontrols2
-    kcoreaddons
-    kconfig
-    ki18n
-    kirigami2
-  ];
+  buildInputs = [ qtquickcontrols2 kcoreaddons kconfig ki18n kirigami2 ];
 
   meta = {
     description = "Convergent Kirigami TV guide";

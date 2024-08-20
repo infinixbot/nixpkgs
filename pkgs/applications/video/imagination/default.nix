@@ -32,12 +32,7 @@ stdenv.mkDerivation rec {
     wrapGAppsHook3
   ];
 
-  buildInputs = [
-    ffmpeg-full
-    glib
-    gtk3
-    sox
-  ];
+  buildInputs = [ ffmpeg-full glib gtk3 sox ];
 
   preBuild = ''
     substituteInPlace src/main-window.c \
@@ -49,12 +44,7 @@ stdenv.mkDerivation rec {
 
   preFixup = ''
     gappsWrapperArgs+=(
-       --prefix PATH : "${
-         lib.makeBinPath [
-           ffmpeg-full
-           sox
-         ]
-       }"
+       --prefix PATH : "${lib.makeBinPath [ ffmpeg-full sox ]}"
     )
   '';
 

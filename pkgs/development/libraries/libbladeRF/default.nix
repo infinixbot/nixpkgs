@@ -25,13 +25,7 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    git
-    doxygen
-    help2man
-  ];
+  nativeBuildInputs = [ cmake pkg-config git doxygen help2man ];
   # ncurses used due to https://github.com/Nuand/bladeRF/blob/ab4fc672c8bab4f8be34e8917d3f241b1d52d0b8/host/utilities/bladeRF-cli/CMakeLists.txt#L208
   buildInputs = [
     tecla

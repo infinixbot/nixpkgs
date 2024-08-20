@@ -58,51 +58,18 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-iWZQpLe+shdepCVOHZDp7QEQoqelbHGRJh09KWb6aD0=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-    pkg-config
-    m4
-    perl
-    makeWrapper
-  ];
+  nativeBuildInputs = [ cmake ninja pkg-config m4 perl makeWrapper ];
 
   buildInputs =
     lib.optional withTTYX libX11
     ++ lib.optional withGUI wxGTK32
     ++ lib.optional withUCD libuchardet
-    ++ lib.optionals withColorer [
-      spdlog
-      xercesc
-    ]
-    ++ lib.optionals withMultiArc [
-      libarchive
-      pcre
-    ]
-    ++ lib.optionals withNetRocks [
-      openssl
-      libssh
-      libnfs
-      neon
-    ]
+    ++ lib.optionals withColorer [ spdlog xercesc ]
+    ++ lib.optionals withMultiArc [ libarchive pcre ]
+    ++ lib.optionals withNetRocks [ openssl libssh libnfs neon ]
     ++ lib.optional (withNetRocks && !stdenv.isDarwin) samba # broken on darwin
-    ++ lib.optionals withPython (
-      with python3Packages;
-      [
-        python
-        cffi
-        debugpy
-        pcpp
-      ]
-    )
-    ++ lib.optionals stdenv.isDarwin [
-      IOKit
-      Carbon
-      Cocoa
-      AudioToolbox
-      OpenGL
-      System
-    ];
+    ++ lib.optionals withPython (with python3Packages; [ python cffi debugpy pcpp ])
+    ++ lib.optionals stdenv.isDarwin [ IOKit Carbon Cocoa AudioToolbox OpenGL System ];
 
   postPatch = ''
     patchShebangs python/src/prebuild.sh
@@ -124,15 +91,7 @@ stdenv.mkDerivation rec {
       (lib.cmakeFeature "VIRTUAL_PYTHON_VERSION" "python")
     ];
 
-  runtimeDeps = [
-    unzip
-    zip
-    p7zip
-    xz
-    gzip
-    bzip2
-    gnutar
-  ];
+  runtimeDeps = [ unzip zip p7zip xz gzip bzip2 gnutar ];
 
   postInstall = ''
     wrapProgram $out/bin/far2l \

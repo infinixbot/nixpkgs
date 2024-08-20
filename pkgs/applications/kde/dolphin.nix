@@ -36,16 +36,10 @@ mkDerivation {
   meta = {
     homepage = "https://apps.kde.org/dolphin/";
     description = "KDE file manager";
-    license = with lib.licenses; [
-      gpl2Plus
-      fdl12Plus
-    ];
+    license = with lib.licenses; [ gpl2Plus fdl12Plus ];
     maintainers = [ lib.maintainers.ttuegel ];
   };
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   propagatedUserEnvPkgs = [ baloo ];
   propagatedBuildInputs = [
     baloo
@@ -75,8 +69,5 @@ mkDerivation {
     qtx11extras
     qtimageformats
   ];
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 }

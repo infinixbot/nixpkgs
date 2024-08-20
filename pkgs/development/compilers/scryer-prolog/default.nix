@@ -36,9 +36,6 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "scryer-prolog";
     homepage = "https://github.com/mthom/scryer-prolog";
     license = with licenses; [ bsd3 ];
-    maintainers = with maintainers; [
-      malbarbo
-      wkral
-    ];
+    maintainers = with maintainers; [ malbarbo wkral ];
   };
 }

@@ -19,11 +19,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   dontUnpack = true;
   dontBuild = true;
 
-  nativeBuildInputs = [
-    jre
-    makeWrapper
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ jre makeWrapper wrapGAppsHook3 ];
 
   dontWrapGApps = true;
 

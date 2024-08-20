@@ -27,10 +27,7 @@ let
   webSettings = {
     DEFAULT_FROM_EMAIL = cfg.siteOwner;
     SERVER_EMAIL = cfg.siteOwner;
-    ALLOWED_HOSTS = [
-      "localhost"
-      "127.0.0.1"
-    ] ++ cfg.webHosts;
+    ALLOWED_HOSTS = [ "localhost" "127.0.0.1" ] ++ cfg.webHosts;
     COMPRESS_OFFLINE = true;
     STATIC_ROOT = "/var/lib/mailman-web-static";
     MEDIA_ROOT = "/var/lib/mailman-web/media";
@@ -85,42 +82,21 @@ in
   ###### interface
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "mailman"
-        "hyperkittyBaseUrl"
-      ]
-      [
-        "services"
-        "mailman"
-        "hyperkitty"
-        "baseUrl"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "mailman" "hyperkittyBaseUrl" ] [
+      "services"
+      "mailman"
+      "hyperkitty"
+      "baseUrl"
+    ])
 
-    (mkRemovedOptionModule
-      [
-        "services"
-        "mailman"
-        "hyperkittyApiKey"
-      ]
-      ''
-        The Hyperkitty API key is now generated on first run, and not
-        stored in the world-readable Nix store.  To continue using
-        Hyperkitty, you must set services.mailman.hyperkitty.enable = true.
-      ''
-    )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "mailman"
-        "package"
-      ]
-      ''
-        Didn't have an effect for several years.
-      ''
-    )
+    (mkRemovedOptionModule [ "services" "mailman" "hyperkittyApiKey" ] ''
+      The Hyperkitty API key is now generated on first run, and not
+      stored in the world-readable Nix store.  To continue using
+      Hyperkitty, you must set services.mailman.hyperkitty.enable = true.
+    '')
+    (mkRemovedOptionModule [ "services" "mailman" "package" ] ''
+      Didn't have an effect for several years.
+    '')
   ];
 
   options = {
@@ -450,18 +426,9 @@ in
             for more info.
           '';
         }
-        (requirePostfixHash [
-          "config"
-          "relay_domains"
-        ] "postfix_domains")
-        (requirePostfixHash [
-          "config"
-          "transport_maps"
-        ] "postfix_lmtp")
-        (requirePostfixHash [
-          "config"
-          "local_recipient_maps"
-        ] "postfix_lmtp")
+        (requirePostfixHash [ "config" "relay_domains" ] "postfix_domains")
+        (requirePostfixHash [ "config" "transport_maps" ] "postfix_lmtp")
+        (requirePostfixHash [ "config" "local_recipient_maps" ] "postfix_lmtp")
       ]);
 
     users.users.mailman = {
@@ -553,10 +520,7 @@ in
         # interpreter etc. so let's pick only the stuff we actually
         # want from {web,mailman}Env
         pathsToLink = [ "/bin" ];
-        paths = [
-          mailmanEnv
-          webEnv
-        ];
+        paths = [ mailmanEnv webEnv ];
         # Only mailman-related stuff is installed, the rest is removed
         # in `postBuild`.
         ignoreCollisions = true;
@@ -750,10 +714,7 @@ in
           description = "GNU Hyperkitty QCluster Process";
           after = [ "network.target" ];
           restartTriggers = [ config.environment.etc."mailman3/settings.py".source ];
-          wantedBy = [
-            "mailman.service"
-            "multi-user.target"
-          ];
+          wantedBy = [ "mailman.service" "multi-user.target" ];
           serviceConfig = {
             ExecStart = "${webEnv}/bin/mailman-web qcluster";
             User = cfg.webUser;

@@ -213,19 +213,13 @@ in
           dep1 = derivation {
             name = "dep1";
             builder = "/bin/sh";
-            args = [
-              "-c"
-              ": > $out"
-            ];
+            args = [ "-c" ": > $out" ];
             system = builtins.currentSystem;
           };
           dep2 = derivation {
             name = "dep2";
             builder = "/bin/sh";
-            args = [
-              "-c"
-              ": > $out"
-            ];
+            args = [ "-c" ": > $out" ];
             system = builtins.currentSystem;
           };
           passAsFile = [ "dep2" ];
@@ -235,10 +229,7 @@ in
     in
     runCommand "test-inputDerivation"
       {
-        exportReferencesGraph = [
-          "graph"
-          inputDerivation
-        ];
+        exportReferencesGraph = [ "graph" inputDerivation ];
       }
       ''
         grep ${inputDerivation.dep1} graph
@@ -253,19 +244,13 @@ in
           dep1 = derivation {
             name = "dep1";
             builder = "/bin/sh";
-            args = [
-              "-c"
-              ": > $out"
-            ];
+            args = [ "-c" ": > $out" ];
             system = builtins.currentSystem;
           };
           dep2 = derivation {
             name = "dep2";
             builder = "/bin/sh";
-            args = [
-              "-c"
-              ": > $out"
-            ];
+            args = [ "-c" ": > $out" ];
             system = builtins.currentSystem;
           };
           name = "meow";
@@ -282,10 +267,7 @@ in
     in
     runCommand "test-inputDerivation"
       {
-        exportReferencesGraph = [
-          "graph"
-          inputDerivation
-        ];
+        exportReferencesGraph = [ "graph" inputDerivation ];
       }
       ''
         grep ${inputDerivation.dep1} graph
@@ -339,10 +321,7 @@ in
         # declare -a list=('a' 'b' )
         # and a json array in attrs.json
         # "list":["a","b"]
-        list = [
-          "a"
-          "b"
-        ];
+        list = [ "a" "b" ];
         # will be a bash associative array(dictionary) in attrs.sh
         # declare -A array=(['a']='1' ['b']='2' )
         # and a json object in attrs.json
@@ -422,17 +401,8 @@ in
         EXAMPLE_INT = 123;
         EXAMPLE_INT_NEG = -123;
         EXAMPLE_STR = "foo bar";
-        EXAMPLE_LIST = [
-          "foo"
-          "bar"
-        ];
-        EXAMPLE_NESTED_LIST = [
-          [
-            "foo"
-            "bar"
-          ]
-          [ "baz" ]
-        ];
+        EXAMPLE_LIST = [ "foo" "bar" ];
+        EXAMPLE_NESTED_LIST = [ [ "foo" "bar" ] [ "baz" ] ];
         EXAMPLE_ATTRS = {
           foo = "bar";
         };

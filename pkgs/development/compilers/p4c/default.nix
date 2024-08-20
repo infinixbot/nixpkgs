@@ -81,14 +81,8 @@ stdenv.mkDerivation (finalAttrs: {
       protobuf
       python3
     ]
-    ++ lib.optionals enableDocumentation [
-      doxygen
-      graphviz
-    ]
-    ++ lib.optionals enableBPF [
-      libllvm
-      libbpf
-    ];
+    ++ lib.optionals enableDocumentation [ doxygen graphviz ]
+    ++ lib.optionals enableBPF [ libllvm libbpf ];
 
   buildInputs = [
     protobuf
@@ -103,10 +97,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Reference compiler for the P4 programming language";
     homepage = "https://github.com/p4lang/p4c";
     license = lib.licenses.asl20;
-    maintainers = with lib.maintainers; [
-      raitobezarius
-      govanify
-    ];
+    maintainers = with lib.maintainers; [ raitobezarius govanify ];
     platforms = lib.platforms.linux;
   };
 })

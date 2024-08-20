@@ -33,11 +33,7 @@ buildGoModule rec {
       hash = "sha256-PwByNIegKYTOT8Yg3nDMDFZiLRVkbX07z99YaDiBsIY=";
     };
 
-    nativeBuildInputs = [
-      nodejs
-      yarn
-      fixup-yarn-lock
-    ];
+    nativeBuildInputs = [ nodejs yarn fixup-yarn-lock ];
     configurePhase = ''
       runHook preConfigure
 

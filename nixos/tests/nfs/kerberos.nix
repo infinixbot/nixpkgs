@@ -46,11 +46,7 @@ import ../make-test-python.nix (
             "/data" = {
               device = "server.nfs.test:/";
               fsType = "nfs";
-              options = [
-                "nfsvers=4"
-                "sec=krb5p"
-                "noauto"
-              ];
+              options = [ "nfsvers=4" "sec=krb5p" "noauto" ];
             };
           };
         };

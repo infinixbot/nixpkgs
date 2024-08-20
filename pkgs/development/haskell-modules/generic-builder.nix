@@ -327,11 +327,7 @@ let
       ]))
       (optionalString useCpphs (
         "--with-cpphs=${cpphs}/bin/cpphs "
-        + (makeGhcOptions [
-          "-cpp"
-          "-pgmP${cpphs}/bin/cpphs"
-          "-optP--cpp"
-        ])
+        + (makeGhcOptions [ "-cpp" "-pgmP${cpphs}/bin/cpphs" "-optP--cpp" ])
       ))
       (enableFeature enableLibraryProfiling "library-profiling")
       (optionalString (
@@ -442,10 +438,7 @@ let
     ++ optionals doCheck testToolDepends
     ++ optionals doBenchmark benchmarkToolDepends;
   nativeBuildInputs =
-    [
-      ghc
-      removeReferencesTo
-    ]
+    [ ghc removeReferencesTo ]
     ++ optional (allPkgconfigDepends != [ ]) (
       assert pkg-config != null;
       pkg-config

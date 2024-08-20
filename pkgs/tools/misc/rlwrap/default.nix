@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
       --replace "if(*p >= 0 && *p < ' ')" "if(*p >= 0 && (*p >= 0) && (*p < ' '))"
   '';
 
-  nativeBuildInputs = [
-    autoreconfHook
-    perl
-  ];
+  nativeBuildInputs = [ autoreconfHook perl ];
 
   buildInputs = [ readline ];
 

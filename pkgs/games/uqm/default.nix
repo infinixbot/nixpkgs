@@ -77,15 +77,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    SDL2
-    libpng
-    libvorbis
-    libogg
-    libmikmod
-    libGLU
-    libGL
-  ];
+  buildInputs = [ SDL2 libpng libvorbis libogg libmikmod libGLU libGL ];
 
   postUnpack =
     ''
@@ -143,10 +135,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://sc2.sourceforge.net/";
     license = lib.licenses.gpl2Plus;
-    maintainers = with lib.maintainers; [
-      jcumming
-      aszlig
-    ];
+    maintainers = with lib.maintainers; [ jcumming aszlig ];
     platforms = with lib.platforms; linux;
   };
 }

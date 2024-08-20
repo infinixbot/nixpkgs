@@ -18,16 +18,8 @@
   platformVersions ? [ ],
   includeSources ? false,
   includeSystemImages ? false,
-  systemImageTypes ? [
-    "google_apis"
-    "google_apis_playstore"
-  ],
-  abiVersions ? [
-    "x86"
-    "x86_64"
-    "armeabi-v7a"
-    "arm64-v8a"
-  ],
+  systemImageTypes ? [ "google_apis" "google_apis_playstore" ],
+  abiVersions ? [ "x86" "x86_64" "armeabi-v7a" "arm64-v8a" ],
   cmakeVersions ? [ ],
   includeNDK ? false,
   ndkVersion ? "26.3.11579264",
@@ -58,27 +50,11 @@ let
       addons ? [ ],
     }:
     let
-      mkRepoRuby = (
-        ruby.withPackages (
-          pkgs: with pkgs; [
-            slop
-            nokogiri
-          ]
-        )
-      );
+      mkRepoRuby = (ruby.withPackages (pkgs: with pkgs; [ slop nokogiri ]));
       mkRepoRubyArguments = lib.lists.flatten [
-        (builtins.map (package: [
-          "--packages"
-          "${package}"
-        ]) packages)
-        (builtins.map (image: [
-          "--images"
-          "${image}"
-        ]) images)
-        (builtins.map (addon: [
-          "--addons"
-          "${addon}"
-        ]) addons)
+        (builtins.map (package: [ "--packages" "${package}" ]) packages)
+        (builtins.map (image: [ "--images" "${image}" ]) images)
+        (builtins.map (addon: [ "--addons" "${addon}" ]) addons)
       ];
     in
     stdenv.mkDerivation {
@@ -177,12 +153,7 @@ rec {
       ...
     }@args:
     let
-      extraParams = removeAttrs args [
-        "package"
-        "os"
-        "buildInputs"
-        "patchInstructions"
-      ];
+      extraParams = removeAttrs args [ "package" "os" "buildInputs" "patchInstructions" ];
     in
     deployAndroidPackages (
       {
@@ -199,12 +170,7 @@ rec {
   # put a much nicer error message that includes the available options.
   check-version =
     packages: package: version:
-    if
-      lib.hasAttrByPath [
-        package
-        version
-      ] packages
-    then
+    if lib.hasAttrByPath [ package version ] packages then
       packages.${package}.${version}
     else
       throw ''
@@ -308,12 +274,7 @@ rec {
         let
           availablePackages = map (abiVersion: system-images-packages.${apiVersion}.${type}.${abiVersion}) (
             builtins.filter (
-              abiVersion:
-              lib.hasAttrByPath [
-                apiVersion
-                type
-                abiVersion
-              ] system-images-packages
+              abiVersion: lib.hasAttrByPath [ apiVersion type abiVersion ] system-images-packages
             ) abiVersions
           );
 

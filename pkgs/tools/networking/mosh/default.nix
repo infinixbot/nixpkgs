@@ -28,13 +28,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-tlSsHu7JnXO+sorVuWWubNUNdb9X0/pCaiGG5Y0X/g8=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    makeWrapper
-    protobuf
-    perl
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config makeWrapper protobuf perl ];
   buildInputs = [
     protobuf
     ncurses

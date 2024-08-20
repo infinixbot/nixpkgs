@@ -45,11 +45,7 @@ let
     attrsets: zipAttrsWithNames (filterAttrNames isList (head attrsets)) (_: concatLists) attrsets;
 
   template = {
-    nativeBuildInputs = [
-      pkg-config
-      xfce4-dev-tools
-      wrapGAppsHook3
-    ];
+    nativeBuildInputs = [ pkg-config xfce4-dev-tools wrapGAppsHook3 ];
     buildInputs = [ hicolor-icon-theme ];
     configureFlags = [ "--enable-maintainer-mode" ];
 
@@ -61,10 +57,7 @@ let
     };
 
     enableParallelBuilding = true;
-    outputs = [
-      "out"
-      "dev"
-    ];
+    outputs = [ "out" "dev" ];
 
     pos = builtins.unsafeGetAttrPos "pname" args;
 
@@ -84,18 +77,8 @@ let
       // meta;
   };
 
-  publicArgs = removeAttrs args [
-    "category"
-    "sha256"
-  ];
+  publicArgs = removeAttrs args [ "category" "sha256" ];
 in
 
-stdenv.mkDerivation (
-  publicArgs
-  // template
-  // concatAttrLists [
-    template
-    args
-  ]
-)
+stdenv.mkDerivation (publicArgs // template // concatAttrLists [ template args ])
 # TODO [ AndersonTorres ]: verify if it allows using hash attribute as an option to sha256

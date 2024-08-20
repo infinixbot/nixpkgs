@@ -24,10 +24,7 @@ stdenv.mkDerivation {
   '';
 
   nativeBuildInputs = [ xcbuildHook ];
-  buildInputs = [
-    Foundation
-    AddressBook
-  ];
+  buildInputs = [ Foundation AddressBook ];
 
   installPhase = ''
     mkdir -p $out/bin

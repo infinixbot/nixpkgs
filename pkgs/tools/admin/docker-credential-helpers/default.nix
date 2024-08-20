@@ -34,17 +34,7 @@ buildGoModule rec {
 
   buildPhase =
     let
-      cmds =
-        if stdenv.isDarwin then
-          [
-            "osxkeychain"
-            "pass"
-          ]
-        else
-          [
-            "secretservice"
-            "pass"
-          ];
+      cmds = if stdenv.isDarwin then [ "osxkeychain" "pass" ] else [ "secretservice" "pass" ];
     in
     ''
       for cmd in ${builtins.toString cmds}; do

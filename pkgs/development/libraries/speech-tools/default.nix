@@ -40,10 +40,7 @@ stdenv.mkDerivation rec {
       Cocoa
     ];
 
-  makeFlags = [
-    "CC=${stdenv.cc.targetPrefix}cc"
-    "CXX=${stdenv.cc.targetPrefix}c++"
-  ];
+  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" "CXX=${stdenv.cc.targetPrefix}c++" ];
 
   # Workaround build failure on -fno-common toolchains:
   #   ld: libestools.a(editline.o):(.bss+0x28): multiple definition of

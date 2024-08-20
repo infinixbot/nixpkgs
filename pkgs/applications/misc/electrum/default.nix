@@ -155,11 +155,7 @@ python.pkgs.buildPythonApplication {
     wrapQtApp $out/bin/electrum
   '';
 
-  nativeCheckInputs = with python.pkgs; [
-    pytestCheckHook
-    pyaes
-    pycryptodomex
-  ];
+  nativeCheckInputs = with python.pkgs; [ pytestCheckHook pyaes pycryptodomex ];
 
   pytestFlagsArray = [ "tests" ];
 
@@ -182,12 +178,7 @@ python.pkgs.buildPythonApplication {
     changelog = "https://github.com/spesmilo/electrum/blob/master/RELEASE-NOTES";
     license = licenses.mit;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      joachifm
-      np
-      prusnak
-      chewblacka
-    ];
+    maintainers = with maintainers; [ joachifm np prusnak chewblacka ];
     mainProgram = "electrum";
   };
 }

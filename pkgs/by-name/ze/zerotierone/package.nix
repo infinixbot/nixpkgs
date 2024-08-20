@@ -120,10 +120,7 @@ stdenv.mkDerivation {
           ./rustybits/target/release/
       '';
 
-  buildFlags = [
-    "all"
-    "selftest"
-  ];
+  buildFlags = [ "all" "selftest" ];
 
   doCheck = stdenv.hostPlatform == stdenv.buildPlatform;
   checkPhase = ''
@@ -148,10 +145,7 @@ stdenv.mkDerivation {
     rm -rf $out/upstream
   '';
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   passthru.updateScript = ./update.sh;
 

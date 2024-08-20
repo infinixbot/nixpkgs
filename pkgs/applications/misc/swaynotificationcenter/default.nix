@@ -97,9 +97,6 @@ stdenv.mkDerivation (finalAttrs: rec {
     license = licenses.gpl3;
     platforms = platforms.linux;
     mainProgram = "swaync";
-    maintainers = with maintainers; [
-      berbiche
-      pedrohlc
-    ];
+    maintainers = with maintainers; [ berbiche pedrohlc ];
   };
 })

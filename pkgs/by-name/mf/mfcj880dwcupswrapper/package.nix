@@ -21,11 +21,7 @@ stdenv.mkDerivation rec {
     bash # shebang
   ];
 
-  makeFlags = [
-    "-C"
-    "brcupsconfig"
-    "all"
-  ];
+  makeFlags = [ "-C" "brcupsconfig" "all" ];
 
   installPhase = ''
     runHook preInstall

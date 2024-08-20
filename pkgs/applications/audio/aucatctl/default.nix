@@ -17,10 +17,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   buildInputs = [ sndio ] ++ lib.optional (!stdenv.isDarwin && !stdenv.hostPlatform.isBSD) libbsd;
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   preBuild =
     ''

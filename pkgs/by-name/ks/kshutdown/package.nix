@@ -17,19 +17,9 @@ stdenv.mkDerivation (finalAttrs: {
     name = "kshutdown-source-${finalAttrs.version}.zip";
   };
 
-  nativeBuildInputs = [
-    cmake
-    unzip
-    kdePackages.wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake unzip kdePackages.wrapQtAppsHook ];
 
-  buildInputs = with kdePackages; [
-    qtbase
-    kxmlgui
-    knotifyconfig
-    kidletime
-    kstatusnotifieritem
-  ];
+  buildInputs = with kdePackages; [ qtbase kxmlgui knotifyconfig kidletime kstatusnotifieritem ];
 
   meta = with lib; {
     homepage = "https://kshutdown.sourceforge.io/";

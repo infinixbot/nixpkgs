@@ -75,18 +75,7 @@ stdenv.mkDerivation rec {
     chmod +x $out/bin/$binName
   '';
 
-  buildInputs = [
-    libvorbis
-    libogg
-    libtheora
-    SDL
-    libXft
-    SDL_image
-    zlib
-    libX11
-    libpng
-    openal
-  ];
+  buildInputs = [ libvorbis libogg libtheora SDL libXft SDL_image zlib libX11 libpng openal ];
 
   meta = with lib; {
     description = "Physics/Gravity Platform game";

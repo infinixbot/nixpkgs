@@ -33,16 +33,9 @@ stdenv.mkDerivation rec {
   ld_preload = ./isatty.c;
 
   libPath =
-    lib.makeLibraryPath [
-      stdenv.cc.cc
-      stdenv.cc.libc
-    ]
+    lib.makeLibraryPath [ stdenv.cc.cc stdenv.cc.libc ]
     + ":"
-    + lib.makeLibraryPath [
-      SDL
-      libpulseaudio
-      alsa-lib
-    ];
+    + lib.makeLibraryPath [ SDL libpulseaudio alsa-lib ];
 
   installPhase = ''
     mkdir -p $out/libexec/strangeloop/vessel/

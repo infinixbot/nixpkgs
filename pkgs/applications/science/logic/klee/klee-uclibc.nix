@@ -97,10 +97,7 @@ llvmPackages.stdenv.mkDerivation rec {
   enableParallelBuilding = true;
 
   passthru.updateScript = nix-update-script {
-    extraArgs = [
-      "--version-regex"
-      "v(\d\.\d)"
-    ];
+    extraArgs = [ "--version-regex" "v(\d\.\d)" ];
   };
 
   meta = with lib; {

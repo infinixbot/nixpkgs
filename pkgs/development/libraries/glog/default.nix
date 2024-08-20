@@ -85,9 +85,6 @@ stdenv.mkDerivation rec {
     license = licenses.bsd3;
     description = "Library for application-level logging";
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      nh2
-      r-burns
-    ];
+    maintainers = with maintainers; [ nh2 r-burns ];
   };
 }

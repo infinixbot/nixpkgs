@@ -21,10 +21,7 @@
 stdenv.mkDerivation rec {
   pname = "libfprint";
   version = "1.94.6";
-  outputs = [
-    "out"
-    "devdoc"
-  ];
+  outputs = [ "out" "devdoc" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.freedesktop.org";

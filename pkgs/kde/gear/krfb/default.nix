@@ -14,10 +14,5 @@ mkKdeDerivation {
   ];
 
   extraNativeBuildInputs = [ pkg-config ];
-  extraBuildInputs = [
-    qtwayland
-    libvncserver
-    pipewire
-    xorg.libXdamage
-  ];
+  extraBuildInputs = [ qtwayland libvncserver pipewire xorg.libXdamage ];
 }

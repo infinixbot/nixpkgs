@@ -26,21 +26,13 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    python3
-  ];
+  nativeBuildInputs = [ autoreconfHook python3 ];
 
   configureFlags = [
     "--enable-shared"
   ];
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-    "lib"
-  ];
+  outputs = [ "bin" "out" "dev" "lib" ];
 
   meta = with lib; {
     homepage = "https://udis86.sourceforge.net";

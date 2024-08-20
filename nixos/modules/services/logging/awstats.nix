@@ -15,10 +15,7 @@ let
     {
       options = {
         type = mkOption {
-          type = types.enum [
-            "mail"
-            "web"
-          ];
+          type = types.enum [ "mail" "web" ];
           default = "web";
           example = "mail";
           description = ''
@@ -111,18 +108,7 @@ in
       "service"
       "urlPrefix"
     ] "Please set per domain with `services.awstats.configs.<name>.webService.urlPrefix`")
-    (mkRenamedOptionModule
-      [
-        "services"
-        "awstats"
-        "vardir"
-      ]
-      [
-        "services"
-        "awstats"
-        "dataDir"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "awstats" "vardir" ] [ "services" "awstats" "dataDir" ])
   ];
 
   options.services.awstats = {

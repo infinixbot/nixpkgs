@@ -58,16 +58,10 @@ import ./make-test-python.nix (
             {
               users = [ "test2" ];
               noPass = true;
-              setEnv = [
-                "CORRECT"
-                "HORSE=BATTERY"
-              ];
+              setEnv = [ "CORRECT" "HORSE=BATTERY" ];
             }
             {
-              groups = [
-                "barfoo"
-                1337
-              ];
+              groups = [ "barfoo" 1337 ];
               noPass = true;
             }
             {

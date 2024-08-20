@@ -25,10 +25,7 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "wolfstoneextract";
     homepage = "https://bitbucket.org/ecwolf/wolfstoneextract/src/master/";
     platforms = [ "x86_64-linux" ];
-    license = with licenses; [
-      gpl3Only
-      bsd3
-    ];
+    license = with licenses; [ gpl3Only bsd3 ];
     maintainers = with maintainers; [ keenanweaver ];
   };
 })

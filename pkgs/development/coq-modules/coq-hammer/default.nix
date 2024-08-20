@@ -22,10 +22,7 @@ mkCoqDerivation {
 
   mlPlugin = true;
 
-  propagatedBuildInputs = [
-    coq.ocamlPackages.findlib
-    coq-hammer-tactics
-  ];
+  propagatedBuildInputs = [ coq.ocamlPackages.findlib coq-hammer-tactics ];
 
   meta = coq-hammer-tactics.meta // {
     description = "General-purpose automated reasoning hammer tool for Coq";

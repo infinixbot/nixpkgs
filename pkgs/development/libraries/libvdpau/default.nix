@@ -19,20 +19,10 @@ stdenv.mkDerivation rec {
   };
   patches = [ ./installdir.patch ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-  ];
-  buildInputs = with xorg; [
-    xorgproto
-    libXext
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config ];
+  buildInputs = with xorg; [ xorgproto libXext ];
 
   propagatedBuildInputs = [ xorg.libX11 ];
 

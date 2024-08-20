@@ -92,10 +92,7 @@ stdenv.mkDerivation (finalAttrs: {
     gtk3 # needed for GSETTINGS_SCHEMAS_PATH
   ];
 
-  nativeBuildInputs = [
-    makeWrapper
-    unzip
-  ];
+  nativeBuildInputs = [ makeWrapper unzip ];
 
   dontBuild = true;
 

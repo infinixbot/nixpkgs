@@ -76,11 +76,7 @@ stdenv.mkDerivation rec {
     patch -p1 -i ${./sane-desc-cross.patch}
   '';
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
 

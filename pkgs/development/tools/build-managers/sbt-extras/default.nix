@@ -42,12 +42,7 @@ stdenv.mkDerivation rec {
 
     install bin/sbt $out/bin
 
-    wrapProgram $out/bin/sbt --prefix PATH : ${
-      lib.makeBinPath [
-        which
-        curl
-      ]
-    }
+    wrapProgram $out/bin/sbt --prefix PATH : ${lib.makeBinPath [ which curl ]}
 
     runHook postInstall
   '';
@@ -91,10 +86,7 @@ stdenv.mkDerivation rec {
     description = "A more featureful runner for sbt, the simple/scala/standard build tool";
     homepage = "https://github.com/paulp/sbt-extras";
     license = lib.licenses.bsd3;
-    maintainers = with lib.maintainers; [
-      nequissimus
-      puffnfresh
-    ];
+    maintainers = with lib.maintainers; [ nequissimus puffnfresh ];
     mainProgram = "sbt";
     platforms = lib.platforms.unix;
   };

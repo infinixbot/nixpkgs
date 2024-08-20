@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    gtk2
-    libpng
-  ];
+  buildInputs = [ gtk2 libpng ];
 
   hardeningDisable = [ "format" ];
 

@@ -164,14 +164,7 @@ let
     '';
   });
 
-  binPath = lib.makeBinPath (
-    [
-      acl
-      gnugrep
-      procps
-    ]
-    ++ lib.optional enableGui jdk
-  );
+  binPath = lib.makeBinPath ([ acl gnugrep procps ] ++ lib.optional enableGui jdk);
 
 in
 

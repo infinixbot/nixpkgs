@@ -129,12 +129,7 @@ let
     };
 
     proxyType = mkOption {
-      type =
-        with types;
-        nullOr (enum [
-          ""
-          "socks"
-        ]);
+      type = with types; nullOr (enum [ "" "socks" ]);
       default = null;
       example = "";
       description = ''
@@ -289,14 +284,7 @@ in
     systemd.services = mapAttrs' (
       name: tunnel:
       let
-        filterConfig = lib.attrsets.filterAttrsRecursive (
-          _: v:
-          !builtins.elem v [
-            null
-            [ ]
-            { }
-          ]
-        );
+        filterConfig = lib.attrsets.filterAttrsRecursive (_: v: !builtins.elem v [ null [ ] { } ]);
 
         filterIngressSet = filterAttrs (_: v: builtins.typeOf v == "set");
         filterIngressStr = filterAttrs (_: v: builtins.typeOf v == "string");
@@ -327,14 +315,8 @@ in
         mkConfigFile = pkgs.writeText "cloudflared.yml" (builtins.toJSON fullConfig);
       in
       nameValuePair "cloudflared-tunnel-${name}" ({
-        after = [
-          "network.target"
-          "network-online.target"
-        ];
-        wants = [
-          "network.target"
-          "network-online.target"
-        ];
+        after = [ "network.target" "network-online.target" ];
+        wants = [ "network.target" "network-online.target" ];
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
           User = cfg.user;
@@ -357,8 +339,5 @@ in
     };
   };
 
-  meta.maintainers = with maintainers; [
-    bbigras
-    anpin
-  ];
+  meta.maintainers = with maintainers; [ bbigras anpin ];
 }

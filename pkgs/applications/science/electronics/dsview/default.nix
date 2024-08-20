@@ -55,9 +55,6 @@ stdenv.mkDerivation rec {
     homepage = "https://www.dreamsourcelab.com/";
     license = licenses.gpl3Plus;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      bachp
-      carlossless
-    ];
+    maintainers = with maintainers; [ bachp carlossless ];
   };
 }

@@ -162,11 +162,7 @@ in
       services.gvfs.enable = true;
       services.gnome.rygel.enable = mkDefault true;
       services.gsignond.enable = mkDefault true;
-      services.gsignond.plugins = with pkgs.gsignondPlugins; [
-        lastfm
-        mail
-        oauth
-      ];
+      services.gsignond.plugins = with pkgs.gsignondPlugins; [ lastfm mail oauth ];
       services.udisks2.enable = true;
       services.upower.enable = config.powerManagement.enable;
       services.libinput.enable = mkDefault true;

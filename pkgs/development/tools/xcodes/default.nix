@@ -25,11 +25,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-ARrSQ9ozM90Yg7y4WdU7jjNQ64sXHuhxZh/iNJcFfY0=";
   };
 
-  nativeBuildInputs = [
-    swift
-    swiftpm
-    makeWrapper
-  ];
+  nativeBuildInputs = [ swift swiftpm makeWrapper ];
 
   buildInputs = [
     CryptoKit
@@ -59,10 +55,7 @@ stdenv.mkDerivation (finalAttrs: {
       # unxip
       lgpl3Only
     ];
-    maintainers = with maintainers; [
-      _0x120581f
-      emilytrau
-    ];
+    maintainers = with maintainers; [ _0x120581f emilytrau ];
     platforms = platforms.darwin;
   };
 })

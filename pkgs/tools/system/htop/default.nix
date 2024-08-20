@@ -32,18 +32,12 @@ stdenv.mkDerivation rec {
   buildInputs =
     [ ncurses ]
     ++ lib.optional stdenv.isDarwin IOKit
-    ++ lib.optionals stdenv.isLinux [
-      libcap
-      libnl
-    ]
+    ++ lib.optionals stdenv.isLinux [ libcap libnl ]
     ++ lib.optional sensorsSupport lm_sensors
     ++ lib.optional systemdSupport systemd;
 
   configureFlags =
-    [
-      "--enable-unicode"
-      "--sysconfdir=/etc"
-    ]
+    [ "--enable-unicode" "--sysconfdir=/etc" ]
     ++ lib.optionals stdenv.isLinux [
       "--enable-affinity"
       "--enable-capabilities"
@@ -65,11 +59,7 @@ stdenv.mkDerivation rec {
     homepage = "https://htop.dev";
     license = licenses.gpl2Only;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      rob
-      relrod
-      SuperSandro2000
-    ];
+    maintainers = with maintainers; [ rob relrod SuperSandro2000 ];
     changelog = "https://github.com/htop-dev/htop/blob/${version}/ChangeLog";
     mainProgram = "htop";
   };

@@ -20,10 +20,7 @@ let
 
   bar = stdenv.mkDerivation {
     name = "bar-test";
-    outputs = [
-      "out"
-      "dev"
-    ];
+    outputs = [ "out" "dev" ];
 
     dontUnpack = true;
 
@@ -44,10 +41,7 @@ stdenv.mkDerivation {
   name = "stdenv-inputs-test";
   phases = [ "buildPhase" ];
 
-  buildInputs = [
-    foo
-    bar
-  ];
+  buildInputs = [ foo bar ];
 
   buildPhase = ''
     env

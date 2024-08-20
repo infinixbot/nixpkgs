@@ -46,31 +46,13 @@ stdenv.mkDerivation rec {
       --replace 'SDL_image.h' 'SDL2/SDL_image.h'
   '';
 
-  nativeBuildInputs = [
-    pkg-config
-    which
-    perl
-    pngcrush
-    advancecomp
-  ];
+  nativeBuildInputs = [ pkg-config which perl pngcrush advancecomp ];
 
   # Still unstable with luajit
   buildInputs =
-    [
-      lua5_1
-      zlib
-      sqlite
-      ncurses
-    ]
+    [ lua5_1 zlib sqlite ncurses ]
     ++ (with python3.pkgs; [ pyyaml ])
-    ++ lib.optionals tileMode [
-      libpng
-      SDL2
-      SDL2_image
-      freetype
-      libGLU
-      libGL
-    ]
+    ++ lib.optionals tileMode [ libpng SDL2 SDL2_image freetype libGLU libGL ]
     ++ lib.optional enableSound SDL2_mixer
     ++ (lib.optionals stdenv.isDarwin (
       with darwin.apple_sdk.frameworks;
@@ -138,14 +120,7 @@ stdenv.mkDerivation rec {
       mystifyingly fabulous Orb of Zot.
     '';
     platforms = platforms.linux ++ platforms.darwin;
-    license = with licenses; [
-      gpl2Plus
-      bsd2
-      bsd3
-      mit
-      licenses.zlib
-      cc0
-    ];
+    license = with licenses; [ gpl2Plus bsd2 bsd3 mit licenses.zlib cc0 ];
     maintainers = [ maintainers.abbradar ];
   };
 }

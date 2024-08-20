@@ -36,18 +36,9 @@ stdenv.mkDerivation {
     docbook_xml_dtd_45
   ];
 
-  buildInputs = [
-    perl
-    perlPackages.StringEscape
-    perlPackages.DataHexdumper
-    libdvdcss
-    libdvdread
-  ];
+  buildInputs = [ perl perlPackages.StringEscape perlPackages.DataHexdumper libdvdcss libdvdread ];
 
-  patches = [
-    ./nrgtool_fix_my.patch
-    ./removed_dvdcss_interface_2.patch
-  ];
+  patches = [ ./nrgtool_fix_my.patch ./removed_dvdcss_interface_2.patch ];
 
   postFixup = ''
     for cmd in raw96cdconv nrgtool; do
@@ -55,15 +46,9 @@ stdenv.mkDerivation {
     done
   '';
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
-  installTargets = [
-    "install"
-    "install-doc"
-  ];
+  installTargets = [ "install" "install-doc" ];
 
   meta = with lib; {
     homepage = "https://repo.or.cz/cdimgtools.git/blob_plain/refs/heads/release:/README.html";

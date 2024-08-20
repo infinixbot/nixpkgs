@@ -1,11 +1,6 @@
 {
   activesupport = {
-    dependencies = [
-      "concurrent-ruby"
-      "i18n"
-      "minitest"
-      "tzinfo"
-    ];
+    dependencies = [ "concurrent-ruby" "i18n" "minitest" "tzinfo" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -66,10 +61,7 @@
     version = "1.4.0";
   };
   dry-core = {
-    dependencies = [
-      "concurrent-ruby"
-      "zeitwerk"
-    ];
+    dependencies = [ "concurrent-ruby" "zeitwerk" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -100,11 +92,7 @@
     version = "3.1.1";
   };
   dry-logic = {
-    dependencies = [
-      "concurrent-ruby"
-      "dry-core"
-      "zeitwerk"
-    ];
+    dependencies = [ "concurrent-ruby" "dry-core" "zeitwerk" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -115,12 +103,7 @@
     version = "1.5.0";
   };
   dry-struct = {
-    dependencies = [
-      "dry-core"
-      "dry-types"
-      "ice_nine"
-      "zeitwerk"
-    ];
+    dependencies = [ "dry-core" "dry-types" "ice_nine" "zeitwerk" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -131,13 +114,7 @@
     version = "1.6.0";
   };
   dry-types = {
-    dependencies = [
-      "concurrent-ruby"
-      "dry-core"
-      "dry-inflector"
-      "dry-logic"
-      "zeitwerk"
-    ];
+    dependencies = [ "concurrent-ruby" "dry-core" "dry-inflector" "dry-logic" "zeitwerk" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -286,10 +263,7 @@
     version = "3.2.1.1";
   };
   pastel = {
-    dependencies = [
-      "equatable"
-      "tty-color"
-    ];
+    dependencies = [ "equatable" "tty-color" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -300,10 +274,7 @@
     version = "0.7.2";
   };
   pry = {
-    dependencies = [
-      "coderay"
-      "method_source"
-    ];
+    dependencies = [ "coderay" "method_source" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -354,11 +325,7 @@
     version = "3.2.5";
   };
   rspec = {
-    dependencies = [
-      "rspec-core"
-      "rspec-expectations"
-      "rspec-mocks"
-    ];
+    dependencies = [ "rspec-core" "rspec-expectations" "rspec-mocks" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -380,10 +347,7 @@
     version = "3.12.1";
   };
   rspec-expectations = {
-    dependencies = [
-      "diff-lcs"
-      "rspec-support"
-    ];
+    dependencies = [ "diff-lcs" "rspec-support" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -405,10 +369,7 @@
     version = "2.4.0";
   };
   rspec-its = {
-    dependencies = [
-      "rspec-core"
-      "rspec-expectations"
-    ];
+    dependencies = [ "rspec-core" "rspec-expectations" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -419,10 +380,7 @@
     version = "1.3.0";
   };
   rspec-mocks = {
-    dependencies = [
-      "diff-lcs"
-      "rspec-support"
-    ];
+    dependencies = [ "diff-lcs" "rspec-support" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -485,10 +443,7 @@
     version = "1.2.0";
   };
   rubocop-performance = {
-    dependencies = [
-      "rubocop"
-      "rubocop-ast"
-    ];
+    dependencies = [ "rubocop" "rubocop-ast" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -541,11 +496,7 @@
     version = "1.6.3";
   };
   simplecov = {
-    dependencies = [
-      "docile"
-      "simplecov-html"
-      "simplecov_json_formatter"
-    ];
+    dependencies = [ "docile" "simplecov-html" "simplecov_json_formatter" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -556,10 +507,7 @@
     version = "0.22.0";
   };
   simplecov-cobertura = {
-    dependencies = [
-      "rexml"
-      "simplecov"
-    ];
+    dependencies = [ "rexml" "simplecov" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -590,11 +538,7 @@
     version = "0.1.4";
   };
   strings = {
-    dependencies = [
-      "strings-ansi"
-      "unicode-display_width"
-      "unicode_utils"
-    ];
+    dependencies = [ "strings-ansi" "unicode-display_width" "unicode_utils" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -615,11 +559,7 @@
     version = "0.2.0";
   };
   tty-box = {
-    dependencies = [
-      "pastel"
-      "strings"
-      "tty-cursor"
-    ];
+    dependencies = [ "pastel" "strings" "tty-cursor" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -681,13 +621,7 @@
     version = "0.9.3";
   };
   tty-table = {
-    dependencies = [
-      "equatable"
-      "necromancer"
-      "pastel"
-      "strings"
-      "tty-screen"
-    ];
+    dependencies = [ "equatable" "necromancer" "pastel" "strings" "tty-screen" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

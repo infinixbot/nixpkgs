@@ -39,19 +39,12 @@ stdenv.mkDerivation rec {
   propagatedBuildInputs = [ libGL ];
 
   nativeBuildInputs =
-    [
-      cmake
-      extra-cmake-modules
-    ]
+    [ cmake extra-cmake-modules ]
     ++ lib.optional stdenv.isDarwin fixDarwinDylibNames
     ++ lib.optionals stdenv.isLinux [ wayland-scanner ];
 
   buildInputs =
-    lib.optionals stdenv.isDarwin [
-      Carbon
-      Cocoa
-      Kernel
-    ]
+    lib.optionals stdenv.isDarwin [ Carbon Cocoa Kernel ]
     ++ lib.optionals stdenv.isLinux [
       wayland
       wayland-protocols
@@ -91,10 +84,7 @@ stdenv.mkDerivation rec {
     description = "Multi-platform library for creating OpenGL contexts and managing input, including keyboard, mouse, joystick and time";
     homepage = "https://www.glfw.org/";
     license = licenses.zlib;
-    maintainers = with maintainers; [
-      marcweber
-      twey
-    ];
+    maintainers = with maintainers; [ marcweber twey ];
     platforms = platforms.unix ++ platforms.windows;
   };
 }

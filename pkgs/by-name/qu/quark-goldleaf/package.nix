@@ -84,15 +84,8 @@ maven.buildMavenPackage rec {
       desktopName = "Quark";
       comment = meta.description;
       terminal = false;
-      categories = [
-        "Utility"
-        "FileTransfer"
-      ];
-      keywords = [
-        "nintendo"
-        "switch"
-        "goldleaf"
-      ];
+      categories = [ "Utility" "FileTransfer" ];
+      keywords = [ "nintendo" "switch" "goldleaf" ];
     })
   ];
 

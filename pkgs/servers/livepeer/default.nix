@@ -26,10 +26,7 @@ buildGoModule rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    ffmpeg
-    gnutls
-  ];
+  buildInputs = [ ffmpeg gnutls ];
 
   meta = with lib; {
     description = "Official Go implementation of the Livepeer protocol";

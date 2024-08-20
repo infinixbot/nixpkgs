@@ -40,11 +40,7 @@ buildNpmPackage rec {
   npmRootPath = "/lib/node_modules/epgstation";
 
   buildInputs = [ bash ];
-  nativeBuildInputs = [
-    installShellFiles
-    makeWrapper
-    python3
-  ];
+  nativeBuildInputs = [ installShellFiles makeWrapper python3 ];
 
   clientDir = buildNpmPackage {
     pname = "${pname}-client";
@@ -85,10 +81,7 @@ buildNpmPackage rec {
 
   postInstall =
     let
-      runtimeDeps = [
-        nodejs
-        bash
-      ];
+      runtimeDeps = [ nodejs bash ];
     in
     ''
       mkdir -p $out/{bin,libexec,share/doc/epgstation}

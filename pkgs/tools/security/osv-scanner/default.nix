@@ -44,9 +44,6 @@ buildGoModule rec {
     homepage = "https://github.com/google/osv-scanner";
     changelog = "https://github.com/google/osv-scanner/releases/tag/v${version}";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      stehessel
-      urandom
-    ];
+    maintainers = with maintainers; [ stehessel urandom ];
   };
 }

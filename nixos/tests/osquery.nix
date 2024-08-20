@@ -8,10 +8,7 @@ import ./make-test-python.nix (
   in
   {
     name = "osquery";
-    meta.maintainers = with lib.maintainers; [
-      znewman01
-      lewo
-    ];
+    meta.maintainers = with lib.maintainers; [ znewman01 lewo ];
 
     nodes.machine =
       { config, pkgs, ... }:

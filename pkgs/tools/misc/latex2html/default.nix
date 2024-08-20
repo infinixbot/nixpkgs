@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-MF+S6x+k+lkutJQ60HCxFpdR96K3AFZcP/4guK9RvsA=";
   };
 
-  buildInputs = [
-    ghostscript
-    netpbm
-    perl
-  ];
+  buildInputs = [ ghostscript netpbm perl ];
 
   nativeBuildInputs = [ makeWrapper ];
 

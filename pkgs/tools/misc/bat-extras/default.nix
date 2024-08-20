@@ -66,11 +66,7 @@ let
 
     # Run the library tests as they don't have external dependencies
     doCheck = true;
-    nativeCheckInputs = [
-      bash
-      fish
-      zsh
-    ] ++ (lib.optionals stdenv.isDarwin [ getconf ]);
+    nativeCheckInputs = [ bash fish zsh ] ++ (lib.optionals stdenv.isDarwin [ getconf ]);
     checkPhase = ''
       runHook preCheck
       # test list repeats suites. Unique them
@@ -127,12 +123,7 @@ let
       dontBuild = true; # we've already built
 
       doCheck = true;
-      nativeCheckInputs = [
-        bat
-        bash
-        fish
-        zsh
-      ] ++ (lib.optionals stdenv.isDarwin [ getconf ]);
+      nativeCheckInputs = [ bat bash fish zsh ] ++ (lib.optionals stdenv.isDarwin [ getconf ]);
       checkPhase = ''
         runHook preCheck
         bash ./test.sh --compiled --suite ${name}
@@ -166,28 +157,11 @@ let
     lib.optional cond dep;
 in
 {
-  batdiff = script "batdiff" (
-    [
-      less
-      coreutils
-      gitMinimal
-    ]
-    ++ optionalDep withDelta delta
-  );
-  batgrep = script "batgrep" [
-    less
-    coreutils
-    ripgrep
-  ];
+  batdiff = script "batdiff" ([ less coreutils gitMinimal ] ++ optionalDep withDelta delta);
+  batgrep = script "batgrep" [ less coreutils ripgrep ];
   batman = script "batman" (lib.optionals stdenv.isLinux [ util-linux ]);
   batpipe = script "batpipe" [ less ];
-  batwatch = script "batwatch" (
-    [
-      less
-      coreutils
-    ]
-    ++ optionalDep withEntr entr
-  );
+  batwatch = script "batwatch" ([ less coreutils ] ++ optionalDep withEntr entr);
   prettybat = script "prettybat" (
     [ ]
     ++ optionalDep withShFmt shfmt

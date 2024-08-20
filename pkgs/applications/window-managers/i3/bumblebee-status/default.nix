@@ -42,14 +42,7 @@ python.pkgs.buildPythonPackage {
   buildInputs = lib.concatMap (p: p.buildInputs or [ ]) selectedPlugins;
   propagatedBuildInputs = lib.concatMap (p: p.propagatedBuildInputs or [ ]) selectedPlugins;
 
-  checkInputs = with python.pkgs; [
-    freezegun
-    netifaces
-    psutil
-    pytest
-    pytest-mock
-    requests
-  ];
+  checkInputs = with python.pkgs; [ freezegun netifaces psutil pytest pytest-mock requests ];
 
   checkPhase = ''
     runHook preCheck

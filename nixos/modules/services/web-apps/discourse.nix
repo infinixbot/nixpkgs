@@ -113,16 +113,7 @@ in
       };
 
       backendSettings = lib.mkOption {
-        type =
-          with lib.types;
-          attrsOf (
-            nullOr (oneOf [
-              str
-              int
-              bool
-              float
-            ])
-          );
+        type = with lib.types; attrsOf (nullOr (oneOf [ str int bool float ]));
         default = { };
         example = lib.literalExpression ''
           {
@@ -418,13 +409,7 @@ in
           };
 
           authentication = lib.mkOption {
-            type =
-              with lib.types;
-              nullOr (enum [
-                "plain"
-                "login"
-                "cram_md5"
-              ]);
+            type = with lib.types; nullOr (enum [ "plain" "login" "cram_md5" ]);
             default = null;
             description = ''
               Authentication type to use, see https://api.rubyonrails.org/classes/ActionMailer/Base.html
@@ -678,17 +663,11 @@ in
       allow_impersonation = true;
     };
 
-    services.redis.servers.discourse =
-      lib.mkIf
-        (lib.elem cfg.redis.host [
-          "localhost"
-          "127.0.0.1"
-        ])
-        {
-          enable = true;
-          bind = cfg.redis.host;
-          port = cfg.backendSettings.redis_port;
-        };
+    services.redis.servers.discourse = lib.mkIf (lib.elem cfg.redis.host [ "localhost" "127.0.0.1" ]) {
+      enable = true;
+      bind = cfg.redis.host;
+      port = cfg.backendSettings.redis_port;
+    };
 
     services.postgresql = lib.mkIf databaseActuallyCreateLocally {
       enable = true;

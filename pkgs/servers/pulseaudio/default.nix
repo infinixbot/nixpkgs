@@ -95,21 +95,10 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs =
-    [
-      pkg-config
-      meson
-      ninja
-      makeWrapper
-      perlPackages.perl
-      perlPackages.XMLParser
-      m4
-    ]
+    [ pkg-config meson ninja makeWrapper perlPackages.perl perlPackages.XMLParser m4 ]
     ++ lib.optionals stdenv.isLinux [ glib ]
     # gstreamer plugin discovery requires wrapping
     ++ lib.optional (bluetoothSupport && advancedBluetoothCodecs) wrapGAppsHook3;
@@ -117,48 +106,17 @@ stdenv.mkDerivation rec {
   propagatedBuildInputs = lib.optionals stdenv.isLinux [ libcap ];
 
   buildInputs =
-    [
-      libtool
-      libsndfile
-      soxr
-      speexdsp
-      fftwFloat
-      check
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      glib
-      dbus
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      AudioUnit
-      Cocoa
-      CoreServices
-      CoreAudio
-      libintl
-    ]
+    [ libtool libsndfile soxr speexdsp fftwFloat check ]
+    ++ lib.optionals stdenv.isLinux [ glib dbus ]
+    ++ lib.optionals stdenv.isDarwin [ AudioUnit Cocoa CoreServices CoreAudio libintl ]
     ++ lib.optionals (!libOnly) (
-      [
-        libasyncns
-        webrtc-audio-processing_1
-      ]
+      [ libasyncns webrtc-audio-processing_1 ]
       ++ lib.optional jackaudioSupport libjack2
-      ++ lib.optionals x11Support [
-        xorg.libICE
-        xorg.libSM
-        xorg.libX11
-        xorg.libXi
-        xorg.libXtst
-      ]
+      ++ lib.optionals x11Support [ xorg.libICE xorg.libSM xorg.libX11 xorg.libXi xorg.libXtst ]
       ++ lib.optional useSystemd systemd
-      ++ lib.optionals stdenv.isLinux [
-        alsa-lib
-        udev
-      ]
+      ++ lib.optionals stdenv.isLinux [ alsa-lib udev ]
       ++ lib.optional airtunesSupport openssl
-      ++ lib.optionals bluetoothSupport [
-        bluez5
-        sbc
-      ]
+      ++ lib.optionals bluetoothSupport [ bluez5 sbc ]
       # aptX and LDAC codecs are in gst-plugins-bad so far, rtpldacpay is in -good
       ++ lib.optionals (bluetoothSupport && advancedBluetoothCodecs) (
         builtins.attrValues {

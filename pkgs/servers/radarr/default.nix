@@ -79,16 +79,8 @@ stdenv.mkDerivation rec {
     homepage = "https://radarr.video/";
     changelog = "https://github.com/Radarr/Radarr/releases/tag/v${version}";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      edwtjo
-      purcell
-    ];
+    maintainers = with maintainers; [ edwtjo purcell ];
     mainProgram = "Radarr";
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
   };
 }

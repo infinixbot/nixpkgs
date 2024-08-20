@@ -18,14 +18,7 @@ stdenv.mkDerivation rec {
 
   sourceRoot = "jasmin-compiler-v${version}/compiler";
 
-  nativeBuildInputs = with ocamlPackages; [
-    ocaml
-    findlib
-    dune_3
-    menhir
-    camlidl
-    cmdliner
-  ];
+  nativeBuildInputs = with ocamlPackages; [ ocaml findlib dune_3 menhir camlidl cmdliner ];
 
   buildInputs =
     [
@@ -44,11 +37,7 @@ stdenv.mkDerivation rec {
     zarith
   ];
 
-  outputs = [
-    "bin"
-    "lib"
-    "out"
-  ];
+  outputs = [ "bin" "lib" "out" ];
 
   installPhase = ''
     runHook preInstall

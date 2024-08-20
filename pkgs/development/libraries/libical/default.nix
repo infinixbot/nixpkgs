@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
   pname = "libical";
   version = "3.0.18";
 
-  outputs = [
-    "out"
-    "dev"
-  ]; # "devdoc" ];
+  outputs = [ "out" "dev" ]; # "devdoc" ];
 
   src = fetchFromGitHub {
     owner = "libical";

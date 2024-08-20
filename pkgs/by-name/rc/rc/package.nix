@@ -14,19 +14,8 @@
     if (stdenv.hostPlatform.isDarwin || stdenv.hostPlatform.isStatic) then "null" else "readline",
 }:
 
-assert lib.elem lineEditingLibrary [
-  "null"
-  "edit"
-  "editline"
-  "readline"
-  "vrl"
-];
-assert
-  !(lib.elem lineEditingLibrary [
-    "edit"
-    "editline"
-    "vrl"
-  ]); # broken
+assert lib.elem lineEditingLibrary [ "null" "edit" "editline" "readline" "vrl" ];
+assert !(lib.elem lineEditingLibrary [ "edit" "editline" "vrl" ]); # broken
 assert (lineEditingLibrary == "readline") -> readlineSupport;
 stdenv.mkDerivation (finalAttrs: {
   pname = "rc";
@@ -39,10 +28,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-Yql3mt7hTO2W7wTfPje+X2zBGTHiNXGGXYORJewJIM8=";
   };
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   # TODO: think on a less ugly fixup
   postPatch = ''
@@ -105,10 +91,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Plan 9 shell";
     license = [ lib.licenses.zlib ];
     mainProgram = "rc";
-    maintainers = with lib.maintainers; [
-      ramkromberg
-      AndersonTorres
-    ];
+    maintainers = with lib.maintainers; [ ramkromberg AndersonTorres ];
     platforms = lib.platforms.unix;
   };
 })

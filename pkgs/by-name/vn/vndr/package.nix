@@ -28,10 +28,7 @@ buildGoModule {
     description = "Stupid golang vendoring tool, inspired by docker vendor script";
     mainProgram = "vndr";
     homepage = "https://github.com/LK4D4/vndr";
-    maintainers = with lib.maintainers; [
-      vdemeester
-      rvolosatovs
-    ];
+    maintainers = with lib.maintainers; [ vdemeester rvolosatovs ];
     license = lib.licenses.asl20;
   };
 }

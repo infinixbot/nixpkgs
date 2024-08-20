@@ -454,12 +454,7 @@ in
 {
 
   imports = [
-    (mkRemovedOptionModule
-      [
-        "services"
-        "httpd"
-        "extraSubservices"
-      ]
+    (mkRemovedOptionModule [ "services" "httpd" "extraSubservices" ]
       "Most existing subservices have been ported to the NixOS module system. Please update your configuration accordingly."
     )
     (mkRemovedOptionModule [
@@ -467,18 +462,7 @@ in
       "httpd"
       "stateDir"
     ] "The httpd module now uses /run/httpd as a runtime directory.")
-    (mkRenamedOptionModule
-      [
-        "services"
-        "httpd"
-        "multiProcessingModule"
-      ]
-      [
-        "services"
-        "httpd"
-        "mpm"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "httpd" "multiProcessingModule" ] [ "services" "httpd" "mpm" ])
 
     # virtualHosts options
     (mkRemovedOptionModule [
@@ -708,11 +692,7 @@ in
       };
 
       mpm = mkOption {
-        type = types.enum [
-          "event"
-          "prefork"
-          "worker"
-        ];
+        type = types.enum [ "event" "prefork" "worker" ];
         default = "event";
         example = "worker";
         description = ''
@@ -941,11 +921,7 @@ in
       before = map (certName: "acme-${certName}.service") dependentCertNames;
       restartTriggers = [ cfg.configFile ];
 
-      path = [
-        pkg
-        pkgs.coreutils
-        pkgs.gnugrep
-      ];
+      path = [ pkg pkgs.coreutils pkgs.gnugrep ];
 
       environment =
         optionalAttrs cfg.enablePHP { PHPRC = phpIni; }

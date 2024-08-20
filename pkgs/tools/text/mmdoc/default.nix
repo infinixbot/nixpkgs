@@ -22,18 +22,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-NS8i5xvCwq0pSdfxnaxnpuwmDAkfH6Tkc4N2F6aGvWY=";
   };
 
-  nativeBuildInputs = [
-    ninja
-    meson
-    pkg-config
-    xxd
-  ];
+  nativeBuildInputs = [ ninja meson pkg-config xxd ];
 
-  buildInputs = [
-    cmark-gfm
-    fastJson
-    libzip
-  ];
+  buildInputs = [ cmark-gfm fastJson libzip ];
 
   meta = with lib; {
     description = "Minimal Markdown Documentation";

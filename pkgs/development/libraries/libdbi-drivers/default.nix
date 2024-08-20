@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
     sha256 = "0m680h8cc4428xin4p733azysamzgzcmv4psjvraykrsaz6ymlj3";
   };
 
-  buildInputs = [
-    libdbi
-    sqlite
-    postgresql
-  ] ++ lib.optional (libmysqlclient != null) libmysqlclient;
+  buildInputs = [ libdbi sqlite postgresql ] ++ lib.optional (libmysqlclient != null) libmysqlclient;
 
   patches = [
     # https://sourceforge.net/p/libdbi-drivers/libdbi-drivers/ci/24f48b86c8988ee3aaebc5f303d71e9d789f77b6

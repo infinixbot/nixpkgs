@@ -17,10 +17,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-hvWuxFkzhOSCplPtyjRtn36bIk6KdPBcpr3lAmiAyfE=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    installShellFiles
-  ];
+  nativeBuildInputs = [ pkg-config installShellFiles ];
 
   makeFlags = [
     "CC=${stdenv.cc.targetPrefix}cc"

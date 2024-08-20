@@ -28,10 +28,7 @@ callPackage ./generic.nix args {
     nixosTests.zfs.series_2_2
   ];
 
-  maintainers = with lib.maintainers; [
-    adamcstephens
-    amarshall
-  ];
+  maintainers = with lib.maintainers; [ adamcstephens amarshall ];
 
   hash = "sha256-BkwcNPk+jX8CXp5xEVrg4THof7o/5j8RY2SY6+IPNTg=";
 }

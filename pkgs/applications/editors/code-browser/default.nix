@@ -17,11 +17,7 @@
 let
   onlyOneEnabled = xs: 1 == builtins.length (builtins.filter lib.id xs);
 in
-assert onlyOneEnabled [
-  withQt
-  withGtk2
-  withGtk3
-];
+assert onlyOneEnabled [ withQt withGtk2 withGtk3 ];
 mkDerivation rec {
   pname = "code-browser";
   version = "8.0";
@@ -52,10 +48,7 @@ mkDerivation rec {
     ]
     ++ lib.optionals withGtk2 [ gtk2 ]
     ++ lib.optionals withGtk3 [ gtk3 ]
-    ++ lib.optionals withQt [
-      qtbase
-      wrapQtAppsHook
-    ];
+    ++ lib.optionals withQt [ qtbase wrapQtAppsHook ];
   buildInputs =
     lib.optionals withQt [ qtbase ]
     ++ lib.optionals withGtk2 [ gtk2 ]

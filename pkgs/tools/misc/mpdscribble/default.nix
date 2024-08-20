@@ -35,11 +35,7 @@ stdenv.mkDerivation rec {
     sed '1i#include <ctime>' -i src/Log.cxx # gcc12
   '';
 
-  nativeBuildInputs = [
-    pkg-config
-    meson
-    ninja
-  ];
+  nativeBuildInputs = [ pkg-config meson ninja ];
   buildInputs = [
     libmpdclient
     curl

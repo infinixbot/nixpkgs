@@ -25,15 +25,9 @@ stdenv.mkDerivation rec {
 
   sourceRoot = "${src.name}/src";
 
-  nativeBuildInputs = [
-    pkg-config
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ pkg-config wrapGAppsHook3 ];
   buildInputs =
-    lib.optionals withUdisks [
-      udisks
-      glib
-    ]
+    lib.optionals withUdisks [ udisks glib ]
     ++ lib.optional (!withLibui) libX11
     ++ lib.optional withLibui gtk3;
   # libui is bundled with the source of usbimager as a compiled static library

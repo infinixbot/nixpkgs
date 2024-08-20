@@ -17,11 +17,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ gettext ];
-  buildInputs = [
-    gettext
-    gawk
-    bash
-  ];
+  buildInputs = [ gettext gawk bash ];
 
   strictDeps = true;
 

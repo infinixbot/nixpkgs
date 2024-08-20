@@ -32,10 +32,7 @@ buildDunePackage rec {
   minimalOCamlVersion = "4.02";
   duneVersion = "3";
 
-  propagatedBuildInputs = [
-    cstruct
-    mirage-crypto
-  ];
+  propagatedBuildInputs = [ cstruct mirage-crypto ];
 
   # alcotest isn't available for OCaml < 4.05 due to fmt
   doCheck = lib.versionAtLeast ocaml.version "4.05";

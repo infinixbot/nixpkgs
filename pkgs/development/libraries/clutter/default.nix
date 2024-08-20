@@ -36,16 +36,10 @@ stdenv.mkDerivation rec {
     sha256 = "1rn4cd1an6a9dfda884aqpcwcgq8dgydpqvb19nmagw4b70zlj4b";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   buildInputs = [ gtk3 ];
-  nativeBuildInputs = [
-    pkg-config
-    gobject-introspection
-  ];
+  nativeBuildInputs = [ pkg-config gobject-introspection ];
   propagatedBuildInputs =
     [
       cogl

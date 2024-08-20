@@ -21,15 +21,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-qMBsk8dLmneAYx8FJ9QqW0kLKFTn11EvV9VeVJkr5FU=";
 
-  cargoBuildFlags = [
-    "--bin"
-    pname
-  ];
+  cargoBuildFlags = [ "--bin" pname ];
 
-  buildFeatures = [
-    "env_logger"
-    "structopt"
-  ];
+  buildFeatures = [ "env_logger" "structopt" ];
 
   # Setting $HOME to a temporary directory is necessary to prevent checks from failing, as
   # the test suite creates a cache directory at $HOME/Library/Caches/BytecodeAlliance.wasmtime.
@@ -46,9 +40,6 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "wizer";
     homepage = "https://github.com/bytecodealliance/wizer";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      lucperkins
-      amesgen
-    ];
+    maintainers = with maintainers; [ lucperkins amesgen ];
   };
 }

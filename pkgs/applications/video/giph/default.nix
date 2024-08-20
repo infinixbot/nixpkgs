@@ -31,15 +31,7 @@ stdenvNoCC.mkDerivation rec {
 
   postInstall = ''
     wrapProgram $out/bin/giph \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          ffmpeg
-          xdotool
-          libnotify
-          slop
-          procps
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ ffmpeg xdotool libnotify slop procps ]}
   '';
 
   meta = with lib; {

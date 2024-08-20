@@ -41,10 +41,7 @@ python3Packages.buildPythonApplication {
       socat
       vde2
     ]
-    ++ (lib.optionals enableOCR [
-      imagemagick_light
-      tesseract4
-    ])
+    ++ (lib.optionals enableOCR [ imagemagick_light tesseract4 ])
     ++ extraPythonPackages python3Packages;
 
   nativeBuildInputs = [
@@ -56,11 +53,7 @@ python3Packages.buildPythonApplication {
   };
 
   doCheck = true;
-  nativeCheckInputs = with python3Packages; [
-    mypy
-    ruff
-    black
-  ];
+  nativeCheckInputs = with python3Packages; [ mypy ruff black ];
   checkPhase = ''
     echo -e "\x1b[32m## run mypy\x1b[0m"
     mypy test_driver extract-docstrings.py

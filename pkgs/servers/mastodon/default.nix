@@ -99,10 +99,7 @@ stdenv.mkDerivation rec {
 
   propagatedBuildInputs = [ mastodonGems.wrappedRuby ];
   nativeBuildInputs = [ brotli ];
-  buildInputs = [
-    mastodonGems
-    nodejs-slim
-  ];
+  buildInputs = [ mastodonGems nodejs-slim ];
 
   buildPhase = ''
     runHook preBuild
@@ -170,16 +167,7 @@ stdenv.mkDerivation rec {
     description = "Self-hosted, globally interconnected microblogging software based on ActivityPub";
     homepage = "https://joinmastodon.org";
     license = licenses.agpl3Plus;
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-      "aarch64-linux"
-    ];
-    maintainers = with maintainers; [
-      happy-river
-      erictapen
-      izorkin
-      ghuntley
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" "aarch64-linux" ];
+    maintainers = with maintainers; [ happy-river erictapen izorkin ghuntley ];
   };
 }

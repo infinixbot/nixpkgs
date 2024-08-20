@@ -103,17 +103,7 @@ let
   # }
   dependencies =
     runCommand "julia-sources.nix"
-      {
-        buildInputs = [
-          (python3.withPackages (
-            ps: with ps; [
-              toml
-              pyyaml
-            ]
-          ))
-          git
-        ];
-      }
+      { buildInputs = [ (python3.withPackages (ps: with ps; [ toml pyyaml ])) git ]; }
       ''
         python ${./python}/sources_nix.py \
           "${augmentedRegistry}" \
@@ -162,17 +152,7 @@ let
   );
   minimalRegistry =
     runCommand "minimal-julia-registry"
-      {
-        buildInputs = [
-          (python3.withPackages (
-            ps: with ps; [
-              toml
-              pyyaml
-            ]
-          ))
-          git
-        ];
-      }
+      { buildInputs = [ (python3.withPackages (ps: with ps; [ toml pyyaml ])) git ]; }
       ''
         python ${./python}/minimal_registry.py \
           "${augmentedRegistry}" \
@@ -186,16 +166,7 @@ let
   # produces the desired Overrides.toml.
   artifactsNix =
     runCommand "julia-artifacts.nix"
-      {
-        buildInputs = [
-          (python3.withPackages (
-            ps: with ps; [
-              toml
-              pyyaml
-            ]
-          ))
-        ];
-      }
+      { buildInputs = [ (python3.withPackages (ps: with ps; [ toml pyyaml ])) ]; }
       ''
         python ${./python}/extract_artifacts.py \
           "${dependencyUuidToRepoYaml}" \

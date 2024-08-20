@@ -55,9 +55,6 @@ buildGoModule rec {
     homepage = "https://datree.io/";
     changelog = "https://github.com/datreeio/datree/releases/tag/${version}";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      azahi
-      jceb
-    ];
+    maintainers = with maintainers; [ azahi jceb ];
   };
 }

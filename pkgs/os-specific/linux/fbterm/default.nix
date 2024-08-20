@@ -99,10 +99,7 @@ stdenv.mkDerivation rec {
     description = "Framebuffer terminal emulator";
     mainProgram = "fbterm";
     homepage = "https://salsa.debian.org/debian/fbterm";
-    maintainers = with maintainers; [
-      lovesegfault
-      raskin
-    ];
+    maintainers = with maintainers; [ lovesegfault raskin ];
     license = licenses.gpl2Plus;
     platforms = platforms.linux;
   };

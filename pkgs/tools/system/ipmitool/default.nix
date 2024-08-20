@@ -28,10 +28,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ autoreconfHook ];
-  buildInputs = [
-    openssl
-    readline
-  ];
+  buildInputs = [ openssl readline ];
 
   postPatch = ''
     substituteInPlace configure.ac \

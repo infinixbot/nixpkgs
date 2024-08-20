@@ -20,17 +20,10 @@ buildDunePackage rec {
     hash = "sha256-KMJd+6XZmUSXNsXW/KXgvnFtgY9vODeW3vhL77mDXQE=";
   };
 
-  propagatedBuildInputs = [
-    domain-local-await
-    saturn
-  ];
+  propagatedBuildInputs = [ domain-local-await saturn ];
 
   doCheck = true;
-  checkInputs = [
-    kcas
-    mirage-clock-unix
-    qcheck-stm
-  ];
+  checkInputs = [ kcas mirage-clock-unix qcheck-stm ];
 
   meta = {
     homepage = "https://github.com/ocaml-multicore/domainslib";

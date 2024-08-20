@@ -20,16 +20,6 @@ mkDerivation {
     license = with lib.licenses; [ gpl2 ];
     maintainers = [ lib.maintainers.globin ];
   };
-  nativeBuildInputs = [
-    cmake
-    extra-cmake-modules
-  ];
-  buildInputs = [
-    qtbase
-    kconfigwidgets
-    kxmlgui
-    kcrash
-    kdoctools
-    kitemviews
-  ];
+  nativeBuildInputs = [ cmake extra-cmake-modules ];
+  buildInputs = [ qtbase kconfigwidgets kxmlgui kcrash kdoctools kitemviews ];
 }

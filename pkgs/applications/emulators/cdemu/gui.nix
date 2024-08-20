@@ -24,18 +24,8 @@ python3Packages.buildPythonApplication {
     meta
     ;
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    wrapGAppsHook3
-    intltool
-    gobject-introspection
-  ];
-  buildInputs = [
-    libnotify
-    adwaita-icon-theme
-    gdk-pixbuf
-  ];
+  nativeBuildInputs = [ cmake pkg-config wrapGAppsHook3 intltool gobject-introspection ];
+  buildInputs = [ libnotify adwaita-icon-theme gdk-pixbuf ];
   propagatedBuildInputs = with python3Packages; [ pygobject3 ];
 
   pyproject = false;

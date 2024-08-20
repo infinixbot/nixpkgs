@@ -10,10 +10,7 @@ stdenv.mkDerivation rec {
   pname = "quantlib";
   version = "1.34";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "lballabio";

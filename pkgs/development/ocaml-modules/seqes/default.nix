@@ -18,11 +18,7 @@ buildDunePackage rec {
   minimalOCamlVersion = "4.14";
 
   doCheck = true;
-  checkInputs = [
-    qcheck
-    qcheck-alcotest
-    alcotest
-  ];
+  checkInputs = [ qcheck qcheck-alcotest alcotest ];
 
   meta = with lib; {
     description = "Variations of the Seq module with monads folded into the type";

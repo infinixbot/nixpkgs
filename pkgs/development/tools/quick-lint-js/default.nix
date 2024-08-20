@@ -23,10 +23,7 @@ let
     pname = "quick-lint-js-build-tools";
     inherit version src;
 
-    nativeBuildInputs = [
-      cmake
-      ninja
-    ];
+    nativeBuildInputs = [ cmake ninja ];
     doCheck = false;
 
     cmakeFlags = [
@@ -47,10 +44,7 @@ stdenv.mkDerivation rec {
   pname = "quick-lint-js";
   inherit version src;
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-  ];
+  nativeBuildInputs = [ cmake ninja ];
   doCheck = true;
 
   cmakeFlags = [

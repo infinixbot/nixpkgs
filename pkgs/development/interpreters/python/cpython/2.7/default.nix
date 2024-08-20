@@ -268,23 +268,8 @@ let
   strictDeps = true;
   buildInputs =
     lib.optional (stdenv ? cc && stdenv.cc.libc != null) stdenv.cc.libc
-    ++ [
-      bzip2
-      openssl
-      zlib
-      libffi
-      expat
-      db
-      gdbm
-      ncurses
-      sqlite
-      readline
-    ]
-    ++ lib.optionals x11Support [
-      tcl
-      tk
-      libX11
-    ]
+    ++ [ bzip2 openssl zlib libffi expat db gdbm ncurses sqlite readline ]
+    ++ lib.optionals x11Support [ tcl tk libX11 ]
     ++ lib.optional (stdenv.isDarwin && configd != null) configd;
   nativeBuildInputs =
     [ autoreconfHook ]

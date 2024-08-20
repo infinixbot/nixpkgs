@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
   pname = "libgnomekbd";
   version = "3.28.1";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";

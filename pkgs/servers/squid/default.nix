@@ -26,21 +26,15 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs =
-    [
-      perl
-      openldap
-      db
-      cyrus_sasl
-      expat
-      libxml2
-      openssl
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      libcap
-      pam
-      systemd
-    ];
+  buildInputs = [
+    perl
+    openldap
+    db
+    cyrus_sasl
+    expat
+    libxml2
+    openssl
+  ] ++ lib.optionals stdenv.isLinux [ libcap pam systemd ];
 
   enableParallelBuilding = true;
 

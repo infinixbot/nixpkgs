@@ -26,10 +26,7 @@ in
   options = {
     services.bcg = {
       enable = mkEnableOption "BigClown gateway";
-      package = mkPackageOption pkgs [
-        "python3Packages"
-        "bcg"
-      ] { };
+      package = mkPackageOption pkgs [ "python3Packages" "bcg" ] { };
       environmentFiles = mkOption {
         type = types.listOf types.path;
         default = [ ];
@@ -42,13 +39,7 @@ in
         '';
       };
       verbose = mkOption {
-        type = types.enum [
-          "CRITICAL"
-          "ERROR"
-          "WARNING"
-          "INFO"
-          "DEBUG"
-        ];
+        type = types.enum [ "CRITICAL" "ERROR" "WARNING" "INFO" "DEBUG" ];
         default = "WARNING";
         description = "Verbosity level.";
       };

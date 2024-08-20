@@ -59,12 +59,7 @@ stdenv.mkDerivation rec {
       '') testInputs}
     '';
 
-  nativeBuildInputs = [
-    jdk
-    ant
-    makeWrapper
-    stripJavaArchivesHook
-  ];
+  nativeBuildInputs = [ jdk ant makeWrapper stripJavaArchivesHook ];
 
   buildPhase = ''
     runHook preBuild
@@ -93,11 +88,7 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  passthru.updateScript = [
-    ../update.sh
-    "mkgmap-splitter"
-    meta.downloadPage
-  ];
+  passthru.updateScript = [ ../update.sh "mkgmap-splitter" meta.downloadPage ];
 
   meta = with lib; {
     description = "Utility for splitting OpenStreetMap maps into tiles";

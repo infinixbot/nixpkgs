@@ -25,10 +25,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "plymouth";
   version = "24.004.60";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.freedesktop.org";

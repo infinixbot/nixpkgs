@@ -43,10 +43,7 @@ let # un-indented, over the whole file
       hash = "sha256-a22m7PBoKAQa+tRN+iJ3gfCuNK0YOmZwCFCTVdGL2cg=";
     };
 
-    outputs = [
-      "out"
-      "dev"
-    ];
+    outputs = [ "out" "dev" ];
 
     # Path fixups for the NixOS service.
     postPatch =
@@ -81,35 +78,19 @@ let # un-indented, over the whole file
       patchShebangs scripts/
     '';
 
-    nativeBuildInputs = [
-      pkg-config
-      meson
-      ninja
-    ];
+    nativeBuildInputs = [ pkg-config meson ninja ];
 
     # http://knot-resolver.readthedocs.io/en/latest/build.html#requirements
     buildInputs =
-      [
-        knot-dns
-        lua.lua
-        libuv
-        gnutls
-        lmdb
-      ]
+      [ knot-dns lua.lua libuv gnutls lmdb ]
       ## the rest are optional dependencies
       ++ optionals stdenv.isLinux [
         # lib
         systemd
         libcap_ng
       ]
-      ++ [
-        jemalloc
-        nghttp2
-      ]
-      ++ [
-        fstrm
-        protobufc
-      ] # dnstap support
+      ++ [ jemalloc nghttp2 ]
+      ++ [ fstrm protobufc ] # dnstap support
     ;
 
     mesonFlags =
@@ -136,14 +117,7 @@ let # un-indented, over the whole file
       '';
 
     doInstallCheck = with stdenv; hostPlatform == buildPlatform;
-    nativeInstallCheckInputs = [
-      cmocka
-      which
-      cacert
-      lua.cqueues
-      lua.basexx
-      lua.http
-    ];
+    nativeInstallCheckInputs = [ cmocka which cacert lua.cqueues lua.basexx lua.http ];
     installCheckPhase = ''
       meson test --print-errorlogs --no-suite snowflake
     '';

@@ -24,20 +24,12 @@ let
   '';
   signingPrivateKeyId = "4D642DE8B678C79D";
 
-  supportedDbTypes = [
-    "mysql"
-    "postgres"
-    "sqlite3"
-  ];
+  supportedDbTypes = [ "mysql" "postgres" "sqlite3" ];
   makeGiteaTest =
     type:
     nameValuePair type (makeTest {
       name = "${giteaPackage.pname}-${type}";
-      meta.maintainers = with maintainers; [
-        aanderse
-        kolaente
-        ma27
-      ];
+      meta.maintainers = with maintainers; [ aanderse kolaente ma27 ];
 
       nodes = {
         server =
@@ -56,11 +48,7 @@ let
               settings.actions.ENABLED = true;
               settings.metrics.ENABLED = true;
             };
-            environment.systemPackages = [
-              giteaPackage
-              pkgs.gnupg
-              pkgs.jq
-            ];
+            environment.systemPackages = [ giteaPackage pkgs.gnupg pkgs.jq ];
             services.openssh.enable = true;
 
             specialisation.runner = {

@@ -39,10 +39,7 @@ buildGoModule rec {
     description = "Simple, scriptable keybind retrieval utility for Hyprland";
     homepage = "https://github.com/hyprland-community/Hyprkeys";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      NotAShelf
-      donovanglover
-    ];
+    maintainers = with maintainers; [ NotAShelf donovanglover ];
     mainProgram = "hyprkeys";
   };
 }

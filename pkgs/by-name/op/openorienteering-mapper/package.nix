@@ -92,10 +92,7 @@ stdenv.mkDerivation rec {
     description = "Orienteering mapmaking program";
     changelog = "https://github.com/OpenOrienteering/mapper/releases/tag/v${version}";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      mpickering
-      sikmir
-    ];
+    maintainers = with maintainers; [ mpickering sikmir ];
     platforms = with platforms; unix;
     mainProgram = "Mapper";
   };

@@ -41,10 +41,7 @@ stdenv.mkDerivation {
     mkdir -p config
   '';
 
-  configureFlags = [
-    "--with-gd"
-    "--with-glib"
-  ];
+  configureFlags = [ "--with-gd" "--with-glib" ];
   CFLAGS = "-Wall";
 
   strictDeps = true;

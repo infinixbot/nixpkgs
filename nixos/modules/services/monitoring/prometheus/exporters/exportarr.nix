@@ -53,10 +53,7 @@ in
       ExecStart = ''${cfg.package}/bin/exportarr ${type} "$@"'';
       ProcSubset = "pid";
       ProtectProc = "invisible";
-      SystemCallFilter = [
-        "@system-service"
-        "~@privileged"
-      ];
+      SystemCallFilter = [ "@system-service" "~@privileged" ];
     };
     environment = exportarrEnvironment;
   };

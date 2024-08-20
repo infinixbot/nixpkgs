@@ -30,10 +30,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [
-    ncurses
-    libX11
-  ];
+  buildInputs = [ ncurses libX11 ];
 
   # Makefile(s) and config are not top-level
   sourceRoot = "${src.name}/src";

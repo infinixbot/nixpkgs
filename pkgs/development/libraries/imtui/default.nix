@@ -26,10 +26,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-eHQPDEfxKGLdiOi0lUUgqJcmme1XJLSPAafT223YK+U=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-  ];
+  nativeBuildInputs = [ cmake ninja ];
 
   buildInputs =
     lib.optional withEmscripten emscripten

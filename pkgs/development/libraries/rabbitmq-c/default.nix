@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    openssl
-    popt
-    xmlto
-  ];
+  buildInputs = [ openssl popt xmlto ];
 
   meta = with lib; {
     description = "RabbitMQ C AMQP client library";

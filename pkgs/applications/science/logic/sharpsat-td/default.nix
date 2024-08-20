@@ -51,10 +51,7 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    gmp
-    mpfr
-  ];
+  buildInputs = [ gmp mpfr ];
 
   installPhase = ''
     runHook preInstall
@@ -80,15 +77,9 @@ stdenv.mkDerivation rec {
   meta = {
     description = "Fast solver for the #SAT model counting problem";
     homepage = "https://github.com/Laakeri/sharpsat-td";
-    license = with lib.licenses; [
-      mit
-      asl20
-    ];
+    license = with lib.licenses; [ mit asl20 ];
     maintainers = with lib.maintainers; [ ris ];
     # uses clhash, which is non-portable
-    platforms = [
-      "x86_64-linux"
-      "x86_64-darwin"
-    ];
+    platforms = [ "x86_64-linux" "x86_64-darwin" ];
   };
 }

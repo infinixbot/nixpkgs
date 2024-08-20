@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libevent
-    openssl
-    c-ares
-  ] ++ lib.optional stdenv.isLinux systemd;
+  buildInputs = [ libevent openssl c-ares ] ++ lib.optional stdenv.isLinux systemd;
   enableParallelBuilding = true;
   configureFlags = lib.optional stdenv.isLinux "--with-systemd";
 

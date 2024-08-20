@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-KHJL1N72Hc1B1m0olxoZxBHIpq/d/T3m2VdS5XC9+tk=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
   buildInputs = [ gtk3 ];
 
   # screen-message installs its binary in $(prefix)/games per default

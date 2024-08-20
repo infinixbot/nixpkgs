@@ -109,9 +109,6 @@ stdenv.mkDerivation rec {
     changelog = "https://github.com/h3poteto/whalebird-desktop/releases/tag/v${version}";
     license = licenses.gpl3Only;
     maintainers = with maintainers; [ weathercold ];
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
   };
 }

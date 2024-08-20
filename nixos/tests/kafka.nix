@@ -67,10 +67,7 @@ let
                 })
               ];
 
-              networking.firewall.allowedTCPPorts = [
-                9092
-                9093
-              ];
+              networking.firewall.allowedTCPPorts = [ 9092 9093 ];
               # i686 tests: qemu-system-i386 can simulate max 2047MB RAM (not 2048)
               virtualisation.memorySize = 2047;
             };

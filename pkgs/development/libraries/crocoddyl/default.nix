@@ -64,10 +64,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Crocoddyl optimal control library";
     homepage = "https://github.com/loco-3d/crocoddyl";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      nim65s
-      wegank
-    ];
+    maintainers = with maintainers; [ nim65s wegank ];
     platforms = platforms.unix;
   };
 })

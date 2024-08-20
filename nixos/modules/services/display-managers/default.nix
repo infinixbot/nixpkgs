@@ -180,141 +180,56 @@ in
   };
 
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "autoLogin"
-      ]
-      [
-        "services"
-        "displayManager"
-        "autoLogin"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "defaultSession"
-      ]
-      [
-        "services"
-        "displayManager"
-        "defaultSession"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "hiddenUsers"
-      ]
-      [
-        "services"
-        "displayManager"
-        "hiddenUsers"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "job"
-        "environment"
-      ]
-      [
-        "services"
-        "displayManager"
-        "environment"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "job"
-        "execCmd"
-      ]
-      [
-        "services"
-        "displayManager"
-        "execCmd"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "job"
-        "logToFile"
-      ]
-      [
-        "services"
-        "displayManager"
-        "logToFile"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "job"
-        "logToJournal"
-      ]
-      [
-        "services"
-        "displayManager"
-        "logToJournal"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "job"
-        "preStart"
-      ]
-      [
-        "services"
-        "displayManager"
-        "preStart"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "sessionData"
-      ]
-      [
-        "services"
-        "displayManager"
-        "sessionData"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "sessionPackages"
-      ]
-      [
-        "services"
-        "displayManager"
-        "sessionPackages"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "autoLogin" ] [
+      "services"
+      "displayManager"
+      "autoLogin"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "defaultSession" ] [
+      "services"
+      "displayManager"
+      "defaultSession"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "hiddenUsers" ] [
+      "services"
+      "displayManager"
+      "hiddenUsers"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "job" "environment" ] [
+      "services"
+      "displayManager"
+      "environment"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "job" "execCmd" ] [
+      "services"
+      "displayManager"
+      "execCmd"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "job" "logToFile" ] [
+      "services"
+      "displayManager"
+      "logToFile"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "job" "logToJournal" ] [
+      "services"
+      "displayManager"
+      "logToJournal"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "job" "preStart" ] [
+      "services"
+      "displayManager"
+      "preStart"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "sessionData" ] [
+      "services"
+      "displayManager"
+      "sessionData"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "sessionPackages" ] [
+      "services"
+      "displayManager"
+      "sessionPackages"
+    ])
   ];
 
   config = lib.mkIf cfg.enable {
@@ -359,11 +274,7 @@ in
 
     systemd.services.display-manager = {
       description = "Display Manager";
-      after = [
-        "acpid.service"
-        "systemd-logind.service"
-        "systemd-user-sessions.service"
-      ];
+      after = [ "acpid.service" "systemd-logind.service" "systemd-user-sessions.service" ];
       restartIfChanged = false;
 
       environment = cfg.environment;

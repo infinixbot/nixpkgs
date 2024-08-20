@@ -33,25 +33,12 @@ stdenv.mkDerivation rec {
     ./work-around-unexpected-EOF-error-messages-at-end-of-SSL-connections.patch
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    perl
-  ] ++ lib.optionals withCyrusSaslXoauth2 [ makeWrapper ];
-  buildInputs = [
-    openssl
-    db
-    cyrus_sasl
-    zlib
-  ] ++ lib.optionals stdenv.isDarwin [ Security ];
+  nativeBuildInputs = [ pkg-config perl ] ++ lib.optionals withCyrusSaslXoauth2 [ makeWrapper ];
+  buildInputs = [ openssl db cyrus_sasl zlib ] ++ lib.optionals stdenv.isDarwin [ Security ];
 
   postInstall = lib.optionalString withCyrusSaslXoauth2 ''
     wrapProgram "$out/bin/mbsync" \
-        --prefix SASL_PATH : "${
-          lib.makeSearchPath "lib/sasl2" [
-            cyrus-sasl-xoauth2
-            cyrus_sasl.out
-          ]
-        }"
+        --prefix SASL_PATH : "${lib.makeSearchPath "lib/sasl2" [ cyrus-sasl-xoauth2 cyrus_sasl.out ]}"
   '';
 
   meta = with lib; {

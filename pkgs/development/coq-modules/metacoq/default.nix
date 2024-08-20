@@ -82,13 +82,7 @@ let
         "all"
       ]
     else
-      [
-        "template-coq"
-        "pcuic"
-        "safechecker"
-        "erasure"
-        "all"
-      ];
+      [ "template-coq" "pcuic" "safechecker" "erasure" "all" ];
 
   template-coq = metacoq_ "template-coq";
 
@@ -119,10 +113,7 @@ let
               ;
 
             mlPlugin = true;
-            propagatedBuildInputs = [
-              equations
-              coq.ocamlPackages.zarith
-            ] ++ metacoq-deps;
+            propagatedBuildInputs = [ equations coq.ocamlPackages.zarith ] ++ metacoq-deps;
 
             patchPhase =
               if lib.versionAtLeast coq.coq-version "8.17" || coq.coq-version == "dev" then

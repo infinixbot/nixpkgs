@@ -55,10 +55,7 @@ mkDerivation rec {
     ./0008-Change-default-location-where-calamares-searches-for.patch
   ];
 
-  nativeBuildInputs = [
-    cmake
-    extra-cmake-modules
-  ];
+  nativeBuildInputs = [ cmake extra-cmake-modules ];
   buildInputs = [
     boost
     kparts.dev
@@ -123,15 +120,8 @@ mkDerivation rec {
   meta = with lib; {
     description = "Distribution-independent installer framework";
     homepage = "https://calamares.io/";
-    license = with licenses; [
-      gpl3Plus
-      bsd2
-      cc0
-    ];
-    maintainers = with maintainers; [
-      manveru
-      vlinkz
-    ];
+    license = with licenses; [ gpl3Plus bsd2 cc0 ];
+    maintainers = with maintainers; [ manveru vlinkz ];
     platforms = platforms.linux;
     mainProgram = "calamares";
   };

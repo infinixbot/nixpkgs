@@ -36,10 +36,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "xdg-desktop-portal";
   version = "1.18.4";
 
-  outputs = [
-    "out"
-    "installedTests"
-  ];
+  outputs = [ "out" "installedTests" ];
 
   src = fetchFromGitHub {
     owner = "flatpak";

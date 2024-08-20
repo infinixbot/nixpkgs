@@ -101,14 +101,7 @@ let
           --set testScript "$out/test-script" \
           --set globalTimeout "${toString config.globalTimeout}" \
           --set vlans '${toString vlans}' \
-          ${
-            lib.escapeShellArgs (
-              lib.concatMap (arg: [
-                "--add-flags"
-                arg
-              ]) config.extraDriverArgs
-            )
-          }
+          ${lib.escapeShellArgs (lib.concatMap (arg: [ "--add-flags" arg ]) config.extraDriverArgs)}
       '';
 
 in

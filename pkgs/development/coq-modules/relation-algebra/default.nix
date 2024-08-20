@@ -67,10 +67,7 @@ mkCoqDerivation {
 
   mlPlugin = true;
 
-  propagatedBuildInputs = [
-    aac-tactics
-    mathcomp.ssreflect
-  ];
+  propagatedBuildInputs = [ aac-tactics mathcomp.ssreflect ];
 
   meta = with lib; {
     description = "Relation algebra library for Coq";

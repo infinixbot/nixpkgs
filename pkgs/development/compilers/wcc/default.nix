@@ -21,13 +21,7 @@ stdenv.mkDerivation {
     fetchSubmodules = true;
   };
 
-  buildInputs = [
-    capstone
-    libbfd
-    libelf
-    libiberty
-    readline
-  ];
+  buildInputs = [ capstone libbfd libelf libiberty readline ];
 
   postPatch = ''
     sed -i src/wsh/include/libwitch/wsh.h src/wsh/scripts/INDEX \

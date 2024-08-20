@@ -5,10 +5,7 @@ import ./make-test-python.nix (
   {
     name = "docker";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        nequissimus
-        offline
-      ];
+      maintainers = [ nequissimus offline ];
     };
 
     nodes = {

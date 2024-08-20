@@ -10,10 +10,7 @@ stdenv.mkDerivation rec {
   pname = "tbb";
   version = "2021.5.0";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "oneapi-src";
@@ -78,9 +75,6 @@ stdenv.mkDerivation rec {
       details and threading mechanisms for scalability and performance.
     '';
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      thoughtpolice
-      tmarkus
-    ];
+    maintainers = with maintainers; [ thoughtpolice tmarkus ];
   };
 }

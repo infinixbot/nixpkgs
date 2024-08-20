@@ -447,10 +447,7 @@ mkDerivation (finalAttrs: {
 
   enableParallelBuilding = true;
 
-  installTargets = [
-    "tags"
-    "install"
-  ];
+  installTargets = [ "tags" "install" ];
 
   postInstall =
     ''

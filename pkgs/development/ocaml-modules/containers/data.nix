@@ -18,11 +18,7 @@ buildDunePackage {
 
   buildInputs = [ dune-configurator ];
   nativeCheckInputs = [ mdx.bin ];
-  checkInputs = [
-    gen
-    iter
-    qcheck-core
-  ];
+  checkInputs = [ gen iter qcheck-core ];
 
   propagatedBuildInputs = [ containers ];
 

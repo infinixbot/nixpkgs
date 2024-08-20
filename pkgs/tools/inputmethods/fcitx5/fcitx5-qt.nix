@@ -52,10 +52,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Fcitx5 Qt Library";
     homepage = "https://github.com/fcitx/fcitx5-qt";
-    license = with licenses; [
-      lgpl21Plus
-      bsd3
-    ];
+    license = with licenses; [ lgpl21Plus bsd3 ];
     maintainers = with maintainers; [ poscat ];
     platforms = platforms.linux;
   };

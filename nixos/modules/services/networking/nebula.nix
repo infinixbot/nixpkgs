@@ -55,10 +55,7 @@ in
               };
 
               key = mkOption {
-                type = types.oneOf [
-                  types.nonEmptyStr
-                  types.path
-                ];
+                type = types.oneOf [ types.nonEmptyStr types.path ];
                 description = "Path or reference to the host key.";
                 example = "/etc/nebula/host.key";
               };
@@ -239,10 +236,7 @@ in
           "nebula@${netName}" = {
             description = "Nebula VPN service for ${netName}";
             wants = [ "basic.target" ];
-            after = [
-              "basic.target"
-              "network.target"
-            ];
+            after = [ "basic.target" "network.target" ];
             before = [ "sshd.service" ];
             wantedBy = [ "multi-user.target" ];
             serviceConfig = {

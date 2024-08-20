@@ -51,10 +51,7 @@ stdenv.mkDerivation rec {
 
   env.CXXFLAGS = "-fpermissive";
 
-  cmakeFlags = [
-    "-DSYSTEM_NAME=NixOS"
-    "-DWITH_PYTHON_BINDINGS=false"
-  ];
+  cmakeFlags = [ "-DSYSTEM_NAME=NixOS" "-DWITH_PYTHON_BINDINGS=false" ];
 
   meta = with lib; {
     homepage = "https://htcondor.org/";

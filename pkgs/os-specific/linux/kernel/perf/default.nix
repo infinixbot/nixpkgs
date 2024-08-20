@@ -108,11 +108,7 @@ stdenv.mkDerivation {
     '';
 
   makeFlags =
-    [
-      "prefix=$(out)"
-      "WERROR=0"
-      "ASCIIDOC8=1"
-    ]
+    [ "prefix=$(out)" "WERROR=0" "ASCIIDOC8=1" ]
     ++ kernel.makeFlags
     ++ lib.optional (!withGtk) "NO_GTK2=1"
     ++ lib.optional (!withZstd) "NO_LIBZSTD=1"
@@ -152,15 +148,9 @@ stdenv.mkDerivation {
     ]
     ++ (
       if (lib.versionAtLeast kernel.version "5.19") then
-        [
-          libbfd
-          libopcodes
-        ]
+        [ libbfd libopcodes ]
       else
-        [
-          libbfd_2_38
-          libopcodes_2_38
-        ]
+        [ libbfd_2_38 libopcodes_2_38 ]
     )
     ++ lib.optional (lib.meta.availableOn stdenv.hostPlatform systemtap) systemtap.stapBuild
     ++ lib.optional withGtk gtk2
@@ -178,10 +168,7 @@ stdenv.mkDerivation {
 
   doCheck = false; # requires "sparse"
 
-  installTargets = [
-    "install"
-    "install-man"
-  ];
+  installTargets = [ "install" "install-man" ];
 
   # TODO: Add completions based on perf-completion.sh
   postInstall = ''
@@ -196,12 +183,7 @@ stdenv.mkDerivation {
     # The embedded Python interpreter will search PATH to calculate the Python path configuration(Should be fixed by upstream).
     # Add python.interpreter to PATH for now.
     wrapProgram $out/bin/perf \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          binutils-unwrapped
-          python3
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ binutils-unwrapped python3 ]}
   '';
 
   meta = with lib; {

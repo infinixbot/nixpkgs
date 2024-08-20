@@ -19,11 +19,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "gtk4-layer-shell";
   version = "1.0.2";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
   outputBin = "devdoc";
 
   src = fetchFromGitHub {

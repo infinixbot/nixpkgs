@@ -10,10 +10,7 @@ import ./make-test-python.nix (
 
         # Use systemd-boot
         virtualisation = {
-          emptyDiskImages = [
-            512
-            512
-          ];
+          emptyDiskImages = [ 512 512 ];
           useBootLoader = true;
           useEFIBoot = true;
           # To boot off the encrypted disk, we need to have a init script which comes from the Nix store

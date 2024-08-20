@@ -28,11 +28,7 @@ mkKdeDerivation {
     NIX_CFLAGS_COMPILE+=" -DGSETTINGS_SCHEMAS_PATH=\"$GSETTINGS_SCHEMAS_PATH\""
   '';
 
-  extraNativeBuildInputs = [
-    pkg-config
-    wrapGAppsHook3
-    sass
-  ];
+  extraNativeBuildInputs = [ pkg-config wrapGAppsHook3 sass ];
   extraBuildInputs = [ qtsvg ];
   dontWrapGApps = true; # There is nothing to wrap
 

@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
   # description
   patches = lib.optional stdenv.hostPlatform.isStatic ./no-shared-libs.patch;
 
-  nativeBuildInputs = [
-    cmake
-    python3
-  ];
+  nativeBuildInputs = [ cmake python3 ];
 
   cmakeFlags = [
     "-DSPIRV-Headers_SOURCE_DIR=${spirv-headers.src}"

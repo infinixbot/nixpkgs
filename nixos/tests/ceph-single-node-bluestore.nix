@@ -45,11 +45,7 @@ import ./make-test-python.nix (
       }:
       {
         virtualisation = {
-          emptyDiskImages = [
-            20480
-            20480
-            20480
-          ];
+          emptyDiskImages = [ 20480 20480 20480 ];
           vlans = [ 1 ];
         };
 
@@ -88,11 +84,7 @@ import ./make-test-python.nix (
         };
         osd = {
           enable = true;
-          daemons = [
-            cfg.osd0.name
-            cfg.osd1.name
-            cfg.osd2.name
-          ];
+          daemons = [ cfg.osd0.name cfg.osd1.name cfg.osd2.name ];
         };
       };
     };

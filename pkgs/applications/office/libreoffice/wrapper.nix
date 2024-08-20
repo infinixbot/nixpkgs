@@ -58,10 +58,7 @@ let
       "--suffix"
       "PATH"
       ":"
-      "${lib.makeBinPath [
-        coreutils
-        gnugrep
-      ]}"
+      "${lib.makeBinPath [ coreutils gnugrep ]}"
     ]
     ++ lib.optionals unwrapped.kdeIntegration [
       "--prefix"
@@ -125,10 +122,7 @@ runCommand "${unwrapped.name}-wrapped"
   {
     inherit (unwrapped) meta;
     paths = [ unwrapped ];
-    nativeBuildInputs = [
-      makeWrapper
-      xorg.lndir
-    ];
+    nativeBuildInputs = [ makeWrapper xorg.lndir ];
     passthru = {
       inherit unwrapped;
       # For backwards compatibility:

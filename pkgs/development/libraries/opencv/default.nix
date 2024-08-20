@@ -57,10 +57,7 @@ stdenv.mkDerivation rec {
     sed -i '/Add these standard paths to the search paths for FIND_LIBRARY/,/^\s*$/{d}' CMakeLists.txt
   '';
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   buildInputs =
     [ zlib ]
@@ -68,31 +65,13 @@ stdenv.mkDerivation rec {
     ++ lib.optional enableJPEG libjpeg
     ++ lib.optional enablePNG libpng
     ++ lib.optional enableTIFF libtiff
-    ++ lib.optionals enableEXR [
-      openexr
-      ilmbase
-    ]
+    ++ lib.optionals enableEXR [ openexr ilmbase ]
     ++ lib.optional enableFfmpeg ffmpeg
-    ++ lib.optionals enableGStreamer (
-      with gst_all_1;
-      [
-        gstreamer
-        gst-plugins-base
-      ]
-    )
+    ++ lib.optionals enableGStreamer (with gst_all_1; [ gstreamer gst-plugins-base ])
     ++ lib.optional enableEigen eigen
-    ++ lib.optionals stdenv.isDarwin [
-      AVFoundation
-      Cocoa
-      QTKit
-      Accelerate
-    ];
+    ++ lib.optionals stdenv.isDarwin [ AVFoundation Cocoa QTKit Accelerate ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    unzip
-  ];
+  nativeBuildInputs = [ cmake pkg-config unzip ];
 
   CXXFLAGS = lib.optionalString stdenv.cc.isClang "-std=c++14";
 
@@ -106,10 +85,7 @@ stdenv.mkDerivation rec {
     (opencvFlag "GSTREAMER" enableGStreamer)
   ] ++ lib.optional (!enableUnfree) "-DBUILD_opencv_nonfree=OFF";
 
-  hardeningDisable = [
-    "bindnow"
-    "relro"
-  ];
+  hardeningDisable = [ "bindnow" "relro" ];
 
   # Fix pkg-config file that gets broken with multiple outputs
   postFixup = ''

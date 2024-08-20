@@ -44,10 +44,6 @@ in
     homepage = "https://woodpecker-ci.org/";
     changelog = "https://github.com/woodpecker-ci/woodpecker/blob/v${version}/CHANGELOG.md";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      ambroisie
-      techknowlogick
-      adamcstephens
-    ];
+    maintainers = with maintainers; [ ambroisie techknowlogick adamcstephens ];
   };
 }

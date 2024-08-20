@@ -26,10 +26,7 @@ let
     icon = "plugdata_logo.png";
     comment = "Pure Data as a plugin, with a new GUI";
     type = "Application";
-    categories = [
-      "AudioVideo"
-      "Music"
-    ];
+    categories = [ "AudioVideo" "Music" ];
   };
 in
 stdenv.mkDerivation (finalAttrs: {

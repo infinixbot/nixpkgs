@@ -34,10 +34,7 @@ buildGoModule rec {
     curl
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   # tests sometimes fail with SIGQUIT on darwin
   doCheck = !stdenv.isDarwin;

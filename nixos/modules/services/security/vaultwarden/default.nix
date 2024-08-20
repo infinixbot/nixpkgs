@@ -68,27 +68,14 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "bitwarden_rs"
-      ]
-      [
-        "services"
-        "vaultwarden"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "bitwarden_rs" ] [ "services" "vaultwarden" ])
   ];
 
   options.services.vaultwarden = {
     enable = lib.mkEnableOption "vaultwarden";
 
     dbBackend = lib.mkOption {
-      type = lib.types.enum [
-        "sqlite"
-        "mysql"
-        "postgresql"
-      ];
+      type = lib.types.enum [ "sqlite" "mysql" "postgresql" ];
       default = "sqlite";
       description = ''
         Which database backend vaultwarden will be using.
@@ -105,15 +92,7 @@ in
     };
 
     config = lib.mkOption {
-      type =
-        with lib.types;
-        attrsOf (
-          nullOr (oneOf [
-            bool
-            int
-            str
-          ])
-        );
+      type = with lib.types; attrsOf (nullOr (oneOf [ bool int str ]));
       default = {
         ROCKET_ADDRESS = "::1"; # default to localhost
         ROCKET_PORT = 8222;
@@ -321,9 +300,6 @@ in
   meta = {
     # uses attributes of the linked package
     buildDocsInSandbox = false;
-    maintainers = with lib.maintainers; [
-      dotlambda
-      SuperSandro2000
-    ];
+    maintainers = with lib.maintainers; [ dotlambda SuperSandro2000 ];
   };
 }

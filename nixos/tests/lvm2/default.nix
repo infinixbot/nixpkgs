@@ -3,14 +3,7 @@
   config ? { },
   pkgs ? import ../../.. { inherit system config; },
   lib ? pkgs.lib,
-  kernelVersionsToTest ? [
-    "4.19"
-    "5.4"
-    "5.10"
-    "5.15"
-    "6.1"
-    "latest"
-  ],
+  kernelVersionsToTest ? [ "4.19" "5.4" "5.10" "5.15" "6.1" "latest" ],
 }:
 
 # For quickly running a test, the nixosTests.lvm2.lvm-thinpool-linux-latest attribute is recommended
@@ -67,10 +60,7 @@ lib.listToAttrs (
                 kernelPackages = pkgs."linuxPackages_${v'}";
                 inherit mkXfsFlags;
               }
-              // builtins.removeAttrs t [
-                "test"
-                "kernelFilter"
-              ]
+              // builtins.removeAttrs t [ "test" "kernelFilter" ]
             )
           )
         )

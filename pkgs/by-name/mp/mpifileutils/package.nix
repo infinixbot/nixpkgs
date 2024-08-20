@@ -24,16 +24,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-3nls82awMMCwlfafsOy3AY8OvT9sE+BvvsDOY14YvQc=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
   buildInputs = [
     attr
     dtcmp

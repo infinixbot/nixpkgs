@@ -20,11 +20,7 @@ let
       gear = import ./gear { inherit (self) callPackage; };
       plasma = import ./plasma { inherit (self) callPackage; };
 
-      sets = [
-        "gear"
-        "frameworks"
-        "plasma"
-      ];
+      sets = [ "gear" "frameworks" "plasma" ];
 
       loadUrls = set: lib.importJSON (./generated/sources + "/${set}.json");
       allUrls = lib.attrsets.mergeAttrsList (map loadUrls sets);

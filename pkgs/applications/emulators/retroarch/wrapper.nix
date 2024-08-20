@@ -23,16 +23,8 @@ let
   # but let's be safe here
   coresPath = lib.lists.unique (map (c: c.libretroCore) cores);
   wrapperArgs = lib.strings.escapeShellArgs (
-    (lib.lists.flatten (
-      map (p: [
-        "--add-flags"
-        "-L ${placeholder "out" + p}"
-      ]) coresPath
-    ))
-    ++ [
-      "--add-flags"
-      "--appendconfig=${settingsPath}"
-    ]
+    (lib.lists.flatten (map (p: [ "--add-flags" "-L ${placeholder "out" + p}" ]) coresPath))
+    ++ [ "--add-flags" "--appendconfig=${settingsPath}" ]
   );
 in
 symlinkJoin {

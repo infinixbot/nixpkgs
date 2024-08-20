@@ -56,11 +56,7 @@ mkDerivation rec {
     sqlcipher
   ] ++ lib.optionals stdenv.isDarwin [ AVFoundation ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    qttools
-  ] ++ lib.optionals stdenv.isDarwin [ perl ];
+  nativeBuildInputs = [ cmake pkg-config qttools ] ++ lib.optionals stdenv.isDarwin [ perl ];
 
   cmakeFlags = [
     "-DGIT_DESCRIBE=v${version}"
@@ -76,10 +72,7 @@ mkDerivation rec {
     mainProgram = "qtox";
     homepage = "https://tox.chat";
     license = licenses.gpl3;
-    maintainers = with maintainers; [
-      akaWolf
-      peterhoeg
-    ];
+    maintainers = with maintainers; [ akaWolf peterhoeg ];
     platforms = platforms.all;
   };
 }

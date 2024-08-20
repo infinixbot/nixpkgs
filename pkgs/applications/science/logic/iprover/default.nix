@@ -32,11 +32,7 @@ stdenv.mkDerivation rec {
       findlib
     ]);
   buildInputs =
-    [
-      zlib
-      ocamlPackages.z3
-      z3
-    ]
+    [ zlib ocamlPackages.z3 z3 ]
     ++ (with ocamlPackages; [
       ocamlgraph
       yojson
@@ -58,10 +54,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Automated first-order logic theorem prover";
     homepage = "http://www.cs.man.ac.uk/~korovink/iprover/";
-    maintainers = with maintainers; [
-      raskin
-      gebner
-    ];
+    maintainers = with maintainers; [ raskin gebner ];
     platforms = platforms.linux;
     license = licenses.gpl3;
   };

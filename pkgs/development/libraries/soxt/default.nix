@@ -23,14 +23,7 @@ stdenv.mkDerivation {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    coin3d
-    motif
-    libGLU
-    libGL
-    libXext
-    libXmu
-  ];
+  buildInputs = [ coin3d motif libGLU libGL libXext libXmu ];
 
   meta = with lib; {
     homepage = "https://bitbucket.org/Coin3D/coin/wiki/Home";

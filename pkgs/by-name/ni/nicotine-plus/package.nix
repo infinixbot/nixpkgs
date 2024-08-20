@@ -20,11 +20,7 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-3OMcCMHx+uRid9MF2LMaqUOVQEDlvJiLIVDpCunhxw8=";
   };
 
-  nativeBuildInputs = [
-    gettext
-    wrapGAppsHook4
-    gobject-introspection
-  ];
+  nativeBuildInputs = [ gettext wrapGAppsHook4 gobject-introspection ];
 
   propagatedBuildInputs = [
     gdk-pixbuf

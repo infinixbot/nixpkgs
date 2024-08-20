@@ -41,10 +41,7 @@ stdenv.mkDerivation {
   # Needed for autoPatchelfHook.
   runtimeDependencies = [ (lib.getLib cups) ];
 
-  ppdFileCommands = [
-    "CommandFileFilterG2"
-    "rerouteprintoption"
-  ];
+  ppdFileCommands = [ "CommandFileFilterG2" "rerouteprintoption" ];
 
   installPhase =
     let
@@ -82,9 +79,6 @@ stdenv.mkDerivation {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
     maintainers = [ maintainers.tobim ];
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
   };
 }

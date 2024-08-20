@@ -28,35 +28,14 @@ stdenv.mkDerivation rec {
     hash = "sha256-CzKfvQzhF4Mz2WZaJM/Nt6XjF6ThlX4jyQSaXfZukG8=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
-  nativeBuildInputs = [
-    buildPackages.stdenv.cc
-    pkg-config
-    cmake
-  ];
+  nativeBuildInputs = [ buildPackages.stdenv.cc pkg-config cmake ];
 
   buildInputs =
-    [
-      glib
-      libsndfile
-      libjack2
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      alsa-lib
-      libpulseaudio
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      AppKit
-      AudioUnit
-      CoreAudio
-      CoreMIDI
-      CoreServices
-    ];
+    [ glib libsndfile libjack2 ]
+    ++ lib.optionals stdenv.isLinux [ alsa-lib libpulseaudio ]
+    ++ lib.optionals stdenv.isDarwin [ AppKit AudioUnit CoreAudio CoreMIDI CoreServices ];
 
   cmakeFlags = [
     "-Denable-framework=off"

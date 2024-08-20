@@ -39,9 +39,6 @@ buildGoModule rec {
     homepage = "https://sr.ht/~craftyguy/superd/";
     license = licenses.gpl3Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      chuangzhu
-      wentam
-    ];
+    maintainers = with maintainers; [ chuangzhu wentam ];
   };
 }

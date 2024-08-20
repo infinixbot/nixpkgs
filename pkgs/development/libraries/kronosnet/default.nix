@@ -30,11 +30,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-GRjoNNF9jW2uNQAJjOM9TQtq9rS+12s94LhCXQr5aoQ=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    doxygen
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config doxygen ];
 
   buildInputs = [
     libqb
@@ -54,10 +50,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "VPN on steroids";
     homepage = "https://kronosnet.org/";
-    license = with licenses; [
-      lgpl21Plus
-      gpl2Plus
-    ];
+    license = with licenses; [ lgpl21Plus gpl2Plus ];
     maintainers = with maintainers; [ ryantm ];
   };
 }

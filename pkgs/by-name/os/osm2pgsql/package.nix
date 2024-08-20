@@ -54,12 +54,7 @@ stdenv.mkDerivation (finalAttrs: {
     potrace
     proj
     protozero
-    (python3.withPackages (
-      p: with p; [
-        psycopg2
-        pyosmium
-      ]
-    ))
+    (python3.withPackages (p: with p; [ psycopg2 pyosmium ]))
     zlib
   ] ++ lib.optional withLuaJIT luajit ++ lib.optional (!withLuaJIT) lua;
 
@@ -81,12 +76,6 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://osm2pgsql.org";
     license = licenses.gpl2Plus;
     platforms = platforms.unix;
-    maintainers =
-      with maintainers;
-      teams.geospatial.members
-      ++ [
-        jglukasik
-        das-g
-      ];
+    maintainers = with maintainers; teams.geospatial.members ++ [ jglukasik das-g ];
   };
 })

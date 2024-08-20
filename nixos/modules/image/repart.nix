@@ -56,13 +56,7 @@ let
       };
 
       repartConfig = lib.mkOption {
-        type =
-          with lib.types;
-          attrsOf (oneOf [
-            str
-            int
-            bool
-          ]);
+        type = with lib.types; attrsOf (oneOf [ str int bool ]);
         example = {
           Type = "home";
           SizeMinBytes = "512M";
@@ -125,10 +119,7 @@ in
       enable = lib.mkEnableOption "Image compression";
 
       algorithm = lib.mkOption {
-        type = lib.types.enum [
-          "zstd"
-          "xz"
-        ];
+        type = lib.types.enum [ "zstd" "xz" ];
         default = "zstd";
         description = "Compression algorithm";
       };
@@ -174,10 +165,7 @@ in
     package = lib.mkPackageOption pkgs "systemd-repart" {
       # We use buildPackages so that repart images are built with the build
       # platform's systemd, allowing for cross-compiled systems to work.
-      default = [
-        "buildPackages"
-        "systemd"
-      ];
+      default = [ "buildPackages" "systemd" ];
       example = "pkgs.buildPackages.systemdMinimal.override { withCryptsetup = true; }";
     };
 
@@ -368,10 +356,7 @@ in
           ;
       };
 
-    meta.maintainers = with lib.maintainers; [
-      nikstur
-      willibutz
-    ];
+    meta.maintainers = with lib.maintainers; [ nikstur willibutz ];
 
   };
 }

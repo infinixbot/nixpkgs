@@ -99,16 +99,9 @@ let
       sha256 = "11gpl0ak757ilrq4fi0brj0chmlcr1hihc32yd7qza4fxjw2yx2v";
     };
 
-    nativeBuildInputs = [
-      cmake
-      pkg-config
-    ];
+    nativeBuildInputs = [ cmake pkg-config ];
 
-    buildInputs = [
-      alsa-lib
-      libjack2
-      libpulseaudio
-    ];
+    buildInputs = [ alsa-lib libjack2 libpulseaudio ];
 
     cmakeFlags = [
       "-DRTAUDIO_API_ALSA=ON"
@@ -131,11 +124,7 @@ stdenv.mkDerivation rec {
       comment = "Create music by patching together virtual synthesizer modules";
       exec = "Rack";
       icon = "Rack";
-      categories = [
-        "AudioVideo"
-        "AudioVideoEditing"
-        "Audio"
-      ];
+      categories = [ "AudioVideo" "AudioVideoEditing" "Audio" ];
       keywords = [ "music" ];
     })
   ];
@@ -262,16 +251,8 @@ stdenv.mkDerivation rec {
     homepage = "https://vcvrack.com/";
     # The source is GPL3+ licensed, some of the art is CC-BY-NC 4.0 or under a
     # no-derivatives clause
-    license = with licenses; [
-      gpl3Plus
-      cc-by-nc-40
-      unfreeRedistributable
-    ];
-    maintainers = with maintainers; [
-      nathyong
-      jpotier
-      ddelabru
-    ];
+    license = with licenses; [ gpl3Plus cc-by-nc-40 unfreeRedistributable ];
+    maintainers = with maintainers; [ nathyong jpotier ddelabru ];
     mainProgram = "Rack";
     platforms = platforms.linux;
   };

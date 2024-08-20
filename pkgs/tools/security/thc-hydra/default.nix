@@ -44,10 +44,7 @@ stdenv.mkDerivation rec {
 
   env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.isDarwin "-Wno-undef-prefix";
 
-  nativeBuildInputs = lib.optionals withGUI [
-    pkg-config
-    makeWrapper
-  ];
+  nativeBuildInputs = lib.optionals withGUI [ pkg-config makeWrapper ];
 
   buildInputs = [
     zlib

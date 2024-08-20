@@ -25,10 +25,7 @@ buildGoModule rec {
     })
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     description = "Very simple compile daemon for Go";

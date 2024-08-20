@@ -95,11 +95,7 @@ stdenv.mkDerivation (finalAttrs: {
       more.
     '';
     license = lib.licenses.gpl3Plus;
-    maintainers = with lib.maintainers; [
-      sikmir
-      McSinyx
-      laalsaas
-    ];
+    maintainers = with lib.maintainers; [ sikmir McSinyx laalsaas ];
     platforms = lib.platforms.linux;
   };
 })

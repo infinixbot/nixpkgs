@@ -66,10 +66,7 @@ stdenv.mkDerivation rec {
     xorg.libXres
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   cmakeFlags = [ "-DVERSION=${version}" ];
 

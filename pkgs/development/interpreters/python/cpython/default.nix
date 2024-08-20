@@ -784,10 +784,7 @@ stdenv.mkDerivation (finalAttrs: {
         mv $out/share/doc/* $out/share/doc/python${pythonVersion}-${version}
       '';
 
-      nativeBuildInputs = with pkgsBuildBuild.python3.pkgs; [
-        sphinxHook
-        python-docs-theme
-      ];
+      nativeBuildInputs = with pkgsBuildBuild.python3.pkgs; [ sphinxHook python-docs-theme ];
     };
 
     tests = passthru.tests // {
@@ -802,19 +799,7 @@ stdenv.mkDerivation (finalAttrs: {
     changelog =
       let
         majorMinor = versions.majorMinor version;
-        dashedVersion =
-          replaceStrings
-            [
-              "."
-              "a"
-              "b"
-            ]
-            [
-              "-"
-              "-alpha-"
-              "-beta-"
-            ]
-            version;
+        dashedVersion = replaceStrings [ "." "a" "b" ] [ "-" "-alpha-" "-beta-" ] version;
       in
       if sourceVersion.suffix == "" then
         "https://docs.python.org/release/${version}/whatsnew/changelog.html"

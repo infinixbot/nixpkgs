@@ -30,13 +30,7 @@
     version = "0.4.0";
   };
   neocities = {
-    dependencies = [
-      "httpclient-fixcerts"
-      "pastel"
-      "rake"
-      "tty-prompt"
-      "tty-table"
-    ];
+    dependencies = [ "httpclient-fixcerts" "pastel" "rake" "tty-prompt" "tty-table" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -47,10 +41,7 @@
     version = "0.0.18";
   };
   pastel = {
-    dependencies = [
-      "equatable"
-      "tty-color"
-    ];
+    dependencies = [ "equatable" "tty-color" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -71,11 +62,7 @@
     version = "12.3.3";
   };
   strings = {
-    dependencies = [
-      "strings-ansi"
-      "unicode-display_width"
-      "unicode_utils"
-    ];
+    dependencies = [ "strings-ansi" "unicode-display_width" "unicode_utils" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -116,12 +103,7 @@
     version = "0.4.0";
   };
   tty-prompt = {
-    dependencies = [
-      "necromancer"
-      "pastel"
-      "tty-cursor"
-      "wisper"
-    ];
+    dependencies = [ "necromancer" "pastel" "tty-cursor" "wisper" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -142,13 +124,7 @@
     version = "0.6.5";
   };
   tty-table = {
-    dependencies = [
-      "equatable"
-      "necromancer"
-      "pastel"
-      "strings"
-      "tty-screen"
-    ];
+    dependencies = [ "equatable" "necromancer" "pastel" "strings" "tty-screen" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

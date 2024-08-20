@@ -95,10 +95,7 @@ let
   extraUtils =
     pkgs.runCommand "extra-utils"
       {
-        nativeBuildInputs = with pkgs.buildPackages; [
-          nukeReferences
-          bintools
-        ];
+        nativeBuildInputs = with pkgs.buildPackages; [ nukeReferences bintools ];
         allowedReferences = [ "out" ]; # prevent accidents like glibc being included in the initrd
       }
       ''
@@ -797,17 +794,6 @@ in
   };
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "initrd"
-        "mdadmConf"
-      ]
-      [
-        "boot"
-        "swraid"
-        "mdadmConf"
-      ]
-    )
+    (mkRenamedOptionModule [ "boot" "initrd" "mdadmConf" ] [ "boot" "swraid" "mdadmConf" ])
   ];
 }

@@ -18,13 +18,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-P+txcfFqhO6CyhijbXub4QmlLAT0kqBTMx19EJUAfDU=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-    "doc"
-    "info"
-  ];
+  outputs = [ "out" "dev" "man" "doc" "info" ];
 
   strictDeps = true;
   propagatedBuildInputs = [ curses-library ];

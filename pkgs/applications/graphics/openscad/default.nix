@@ -64,14 +64,7 @@ mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    bison
-    flex
-    pkg-config
-    gettext
-    qmake
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ bison flex pkg-config gettext qmake wrapGAppsHook3 ];
 
   buildInputs =
     [
@@ -94,13 +87,7 @@ mkDerivation rec {
       qscintilla
       cairo
     ]
-    ++ lib.optionals stdenv.isLinux [
-      libGLU
-      libGL
-      wayland
-      wayland-protocols
-      qtwayland
-    ]
+    ++ lib.optionals stdenv.isLinux [ libGLU libGL wayland wayland-protocols qtwayland ]
     ++ lib.optional stdenv.isDarwin qtmacextras
     ++ lib.optional spacenavSupport libspnav;
 
@@ -149,11 +136,7 @@ mkDerivation rec {
     homepage = "https://openscad.org/";
     license = lib.licenses.gpl2;
     platforms = lib.platforms.unix;
-    maintainers = with lib.maintainers; [
-      bjornfor
-      raskin
-      gebner
-    ];
+    maintainers = with lib.maintainers; [ bjornfor raskin gebner ];
     mainProgram = "openscad";
   };
 

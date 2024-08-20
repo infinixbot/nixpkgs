@@ -76,18 +76,8 @@ let
 in
 pkgs.lib.mapAttrs mkKeyboardTest {
   swap-ab_and_ctrl-as-shift = {
-    test.press = [
-      "a"
-      "ctrl-b"
-      "c"
-      "alt_r-h"
-    ];
-    test.expect = [
-      "b"
-      "A"
-      "c"
-      "q"
-    ];
+    test.press = [ "a" "ctrl-b" "c" "alt_r-h" ];
+    test.expect = [ "b" "A" "c" "q" ];
 
     default = {
       settings.main = {

@@ -39,10 +39,7 @@ stdenv.mkDerivation (finalAttrs: rec {
   pname = "spidermonkey";
   inherit version;
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "mirror://mozilla/firefox/releases/${version}esr/source/firefox-${version}esr.source.tar.xz";
@@ -239,11 +236,7 @@ stdenv.mkDerivation (finalAttrs: rec {
     description = "Mozilla's JavaScript engine written in C/C++";
     homepage = "https://spidermonkey.dev/";
     license = licenses.mpl20; # TODO: MPL/GPL/LGPL tri-license for 78.
-    maintainers = with maintainers; [
-      abbradar
-      lostnet
-      catap
-    ];
+    maintainers = with maintainers; [ abbradar lostnet catap ];
     broken = stdenv.isDarwin && versionAtLeast version "115"; # Requires SDK 13.3 (see #242666).
     platforms = platforms.unix;
   };

@@ -14,18 +14,7 @@ let
     in
     ver;
 
-  cleanName =
-    name:
-    lib.replaceStrings
-      [
-        "/"
-        ":"
-      ]
-      [
-        "-"
-        "-"
-      ]
-      name;
+  cleanName = name: lib.replaceStrings [ "/" ":" ] [ "-" "-" ] name;
 
   fetchbower =
     name: version: target: outputHash:
@@ -42,10 +31,7 @@ let
       outputHashMode = "recursive";
       outputHashAlgo = "sha256";
       inherit outputHash;
-      nativeBuildInputs = [
-        bower2nix
-        cacert
-      ];
+      nativeBuildInputs = [ bower2nix cacert ];
     };
 
 in

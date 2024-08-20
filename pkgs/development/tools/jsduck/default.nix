@@ -34,10 +34,7 @@ stdenv.mkDerivation rec {
     mainProgram = "jsduck";
     homepage = "https://github.com/senchalabs/jsduck";
     license = with licenses; gpl3;
-    maintainers = with maintainers; [
-      periklis
-      nicknovitski
-    ];
+    maintainers = with maintainers; [ periklis nicknovitski ];
     platforms = platforms.unix;
   };
 }

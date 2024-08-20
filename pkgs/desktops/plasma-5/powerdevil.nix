@@ -23,10 +23,7 @@
 
 mkDerivation {
   pname = "powerdevil";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     kconfig
     kdbusaddons

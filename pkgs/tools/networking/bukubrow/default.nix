@@ -29,10 +29,7 @@ rustPlatform.buildRustPackage rec {
 
   buildInputs = [ sqlite ];
 
-  passAsFile = [
-    "firefoxManifest"
-    "chromeManifest"
-  ];
+  passAsFile = [ "firefoxManifest" "chromeManifest" ];
   firefoxManifest = builtins.toJSON (
     manifest
     // {

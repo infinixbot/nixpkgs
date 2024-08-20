@@ -16,11 +16,7 @@ buildGoModule rec {
   };
 
   vendorHash = "sha256-6RrnsRbQ1+Cx7vnqauisBICgwmvTpJQT32DnIDVc6ts=";
-  ldflags = [
-    "-s"
-    "-w"
-    "-X github.com/sunny0826/kubecm/version.Version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X github.com/sunny0826/kubecm/version.Version=${version}" ];
 
   doCheck = false;
 

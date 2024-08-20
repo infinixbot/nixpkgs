@@ -44,13 +44,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "VNC client web application";
     homepage = "https://novnc.com";
-    license = with licenses; [
-      mpl20
-      ofl
-      bsd3
-      bsd2
-      mit
-    ];
+    license = with licenses; [ mpl20 ofl bsd3 bsd2 mit ];
     maintainers = with maintainers; [ neverbehave ];
     mainProgram = "novnc";
   };

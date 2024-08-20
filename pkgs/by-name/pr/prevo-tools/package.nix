@@ -20,15 +20,8 @@ stdenv.mkDerivation rec {
     sha256 = "1fyrc4g9qdq04nxs4g8x0krxfani5xady6v9m0qfqpbh4xk2ry2d";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    installShellFiles
-  ];
-  buildInputs = [
-    glib
-    expat
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config installShellFiles ];
+  buildInputs = [ glib expat ];
 
   postInstall = ''
     installShellCompletion --bash src/prevo-completion
@@ -47,10 +40,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/bpeel/prevodb";
     license = lib.licenses.gpl2Only;
     mainProgram = "prevo";
-    maintainers = with lib.maintainers; [
-      das-g
-      ehmry
-    ];
+    maintainers = with lib.maintainers; [ das-g ehmry ];
     platforms = lib.platforms.unix;
   };
 }

@@ -42,17 +42,8 @@ stdenv.mkDerivation rec {
     "AVR=avr-"
   ];
 
-  nativeBuildInputs = [
-    which
-    pkg-config
-    avrgcc
-  ] ++ lib.optional stdenv.isDarwin setupHookDarwin;
-  buildInputs = [
-    libelf
-    libglut
-    libGLU
-    libGL
-  ] ++ lib.optional stdenv.isDarwin GLUT;
+  nativeBuildInputs = [ which pkg-config avrgcc ] ++ lib.optional stdenv.isDarwin setupHookDarwin;
+  buildInputs = [ libelf libglut libGLU libGL ] ++ lib.optional stdenv.isDarwin GLUT;
 
   # remove forbidden references to $TMPDIR
   preFixup = lib.optionalString stdenv.isLinux ''

@@ -17,10 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-VlH41hOWC5QBCYZxiKCUZRmw2vHRbbPyzToRMU6kDO8=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     description = "Secure private tunnel to your local servers";

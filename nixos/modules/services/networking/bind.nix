@@ -142,10 +142,7 @@ in
       package = mkPackageOption pkgs "bind" { };
 
       cacheNetworks = mkOption {
-        default = [
-          "127.0.0.0/24"
-          "::1/128"
-        ];
+        default = [ "127.0.0.0/24" "::1/128" ];
         type = types.listOf types.str;
         description = ''
           What networks are allowed to use us as a resolver.  Note
@@ -185,10 +182,7 @@ in
 
       forward = mkOption {
         default = "first";
-        type = types.enum [
-          "first"
-          "only"
-        ];
+        type = types.enum [ "first" "only" ];
         description = ''
           Whether to forward 'first' (try forwarding but lookup directly if forwarding fails) or 'only'.
         '';

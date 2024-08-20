@@ -38,10 +38,7 @@ let
         "network-online.target"
         "time-sync.target"
       ] ++ optional (daemonType == "osd") "ceph-mon.target";
-      wants = [
-        "network-online.target"
-        "time-sync.target"
-      ];
+      wants = [ "network-online.target" "time-sync.target" ];
       partOf = [ "ceph-${daemonType}.target" ];
       wantedBy = [ "ceph-${daemonType}.target" ];
 
@@ -52,12 +49,7 @@ let
       startLimitBurst =
         if daemonType == "osd" then
           30
-        else if
-          lib.elem daemonType [
-            "mgr"
-            "mds"
-          ]
-        then
+        else if lib.elem daemonType [ "mgr" "mds" ] then
           3
         else
           5;
@@ -167,10 +159,7 @@ in
       };
 
       authClusterRequired = mkOption {
-        type = types.enum [
-          "cephx"
-          "none"
-        ];
+        type = types.enum [ "cephx" "none" ];
         default = "cephx";
         description = ''
           Enables requiring daemons to authenticate with eachother in the cluster.
@@ -178,10 +167,7 @@ in
       };
 
       authServiceRequired = mkOption {
-        type = types.enum [
-          "cephx"
-          "none"
-        ];
+        type = types.enum [ "cephx" "none" ];
         default = "cephx";
         description = ''
           Enables requiring clients to authenticate with the cluster to access services in the cluster (e.g. radosgw, mds or osd).
@@ -189,10 +175,7 @@ in
       };
 
       authClientRequired = mkOption {
-        type = types.enum [
-          "cephx"
-          "none"
-        ];
+        type = types.enum [ "cephx" "none" ];
         default = "cephx";
         description = ''
           Enables requiring the cluster to authenticate itself to the client.
@@ -247,10 +230,7 @@ in
       daemons = mkOption {
         type = with types; listOf str;
         default = [ ];
-        example = [
-          "name1"
-          "name2"
-        ];
+        example = [ "name1" "name2" ];
         description = ''
           A list of names for manager daemons that should have a service created. The names correspond
           to the id part in ceph i.e. [ "name1" ] would result in mgr.name1
@@ -271,10 +251,7 @@ in
       daemons = mkOption {
         type = with types; listOf str;
         default = [ ];
-        example = [
-          "name1"
-          "name2"
-        ];
+        example = [ "name1" "name2" ];
         description = ''
           A list of monitor daemons that should have a service created. The names correspond
           to the id part in ceph i.e. [ "name1" ] would result in mon.name1
@@ -295,10 +272,7 @@ in
       daemons = mkOption {
         type = with types; listOf str;
         default = [ ];
-        example = [
-          "name1"
-          "name2"
-        ];
+        example = [ "name1" "name2" ];
         description = ''
           A list of OSD daemons that should have a service created. The names correspond
           to the id part in ceph i.e. [ "name1" ] would result in osd.name1
@@ -326,10 +300,7 @@ in
       daemons = mkOption {
         type = with types; listOf str;
         default = [ ];
-        example = [
-          "name1"
-          "name2"
-        ];
+        example = [ "name1" "name2" ];
         description = ''
           A list of metadata service daemons that should have a service created. The names correspond
           to the id part in ceph i.e. [ "name1" ] would result in mds.name1
@@ -351,10 +322,7 @@ in
       daemons = mkOption {
         type = with types; listOf str;
         default = [ ];
-        example = [
-          "name1"
-          "name2"
-        ];
+        example = [ "name1" "name2" ];
         description = ''
           A list of rados gateway daemons that should have a service created. The names correspond
           to the id part in ceph i.e. [ "name1" ] would result in client.name1, radosgw daemons

@@ -54,11 +54,7 @@ in
         freeformType =
           with types;
           let
-            primitive = oneOf [
-              bool
-              int
-              str
-            ];
+            primitive = oneOf [ bool int str ];
           in
           lazyAttrsOf (nullOr (either primitive (listOf primitive)));
 
@@ -165,45 +161,24 @@ in
   };
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "apache-kafka"
-        "brokerId"
-      ]
-      [
-        "services"
-        "apache-kafka"
-        "settings"
-        ''broker.id''
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "apache-kafka"
-        "logDirs"
-      ]
-      [
-        "services"
-        "apache-kafka"
-        "settings"
-        ''log.dirs''
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "apache-kafka"
-        "zookeeper"
-      ]
-      [
-        "services"
-        "apache-kafka"
-        "settings"
-        ''zookeeper.connect''
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "apache-kafka" "brokerId" ] [
+      "services"
+      "apache-kafka"
+      "settings"
+      ''broker.id''
+    ])
+    (mkRenamedOptionModule [ "services" "apache-kafka" "logDirs" ] [
+      "services"
+      "apache-kafka"
+      "settings"
+      ''log.dirs''
+    ])
+    (mkRenamedOptionModule [ "services" "apache-kafka" "zookeeper" ] [
+      "services"
+      "apache-kafka"
+      "settings"
+      ''zookeeper.connect''
+    ])
 
     (mkRemovedOptionModule [
       "services"

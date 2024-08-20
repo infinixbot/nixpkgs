@@ -33,12 +33,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    tbb
-    zlib
-    python3
-    perl
-  ];
+  buildInputs = [ tbb zlib python3 perl ];
 
   cmakeFlags = lib.optional (!stdenv.hostPlatform.isx86) [
     "-DCMAKE_CXX_FLAGS=-I${finalAttrs.src}/third_party"

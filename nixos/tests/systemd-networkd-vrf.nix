@@ -33,10 +33,7 @@ import ./make-test-python.nix (
       client =
         { pkgs, ... }:
         {
-          virtualisation.vlans = [
-            1
-            2
-          ];
+          virtualisation.vlans = [ 1 2 ];
 
           networking = {
             useDHCP = false;

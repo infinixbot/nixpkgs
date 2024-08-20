@@ -44,10 +44,6 @@ buildGoModule rec {
     changelog = "https://github.com/FerretDB/FerretDB/releases/tag/v${version}";
     homepage = "https://www.ferretdb.com/";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      dit7ya
-      noisersup
-      julienmalka
-    ];
+    maintainers = with maintainers; [ dit7ya noisersup julienmalka ];
   };
 }

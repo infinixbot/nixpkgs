@@ -37,10 +37,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     pnpm_9.configHook
   ];
 
-  buildInputs = [
-    libsass
-    vips
-  ];
+  buildInputs = [ libsass vips ];
 
   extraBuildInputs = [ libsass ];
   pnpmDeps = pnpm_9.fetchDeps {
@@ -81,11 +78,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     description = "Building a federated alternative to reddit in rust";
     homepage = "https://join-lemmy.org/";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [
-      happysalada
-      billewanick
-      georgyo
-    ];
+    maintainers = with maintainers; [ happysalada billewanick georgyo ];
     inherit (nodejs.meta) platforms;
   };
 })

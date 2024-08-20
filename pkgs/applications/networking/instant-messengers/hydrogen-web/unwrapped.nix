@@ -24,11 +24,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-N9lUAhfYLlEAIaWSNS3Ecq+aBTz+f7Z22Sclwj9rp6w=";
   };
 
-  nativeBuildInputs = [
-    yarn
-    fixup-yarn-lock
-    nodejs
-  ];
+  nativeBuildInputs = [ yarn fixup-yarn-lock nodejs ];
 
   configurePhase = ''
     runHook preConfigure

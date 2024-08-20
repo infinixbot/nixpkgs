@@ -71,11 +71,7 @@
     version = "0.2.1";
   };
   haml = {
-    dependencies = [
-      "temple"
-      "thor"
-      "tilt"
-    ];
+    dependencies = [ "temple" "thor" "tilt" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -127,10 +123,7 @@
     version = "3.0.0";
   };
   net-ftp = {
-    dependencies = [
-      "net-protocol"
-      "time"
-    ];
+    dependencies = [ "net-protocol" "time" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -215,10 +208,7 @@
     version = "0.30.1";
   };
   oxidized-script = {
-    dependencies = [
-      "oxidized"
-      "slop"
-    ];
+    dependencies = [ "oxidized" "slop" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -283,10 +273,7 @@
     version = "3.1.7";
   };
   rack-protection = {
-    dependencies = [
-      "base64"
-      "rack"
-    ];
+    dependencies = [ "base64" "rack" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -328,13 +315,7 @@
     version = "1.7.2";
   };
   sinatra = {
-    dependencies = [
-      "mustermann"
-      "rack"
-      "rack-protection"
-      "rack-session"
-      "tilt"
-    ];
+    dependencies = [ "mustermann" "rack" "rack-protection" "rack-session" "tilt" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -345,13 +326,7 @@
     version = "4.0.0";
   };
   sinatra-contrib = {
-    dependencies = [
-      "multi_json"
-      "mustermann"
-      "rack-protection"
-      "sinatra"
-      "tilt"
-    ];
+    dependencies = [ "multi_json" "mustermann" "rack-protection" "sinatra" "tilt" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

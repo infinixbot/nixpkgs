@@ -31,21 +31,8 @@ stdenv.mkDerivation rec {
   '';
 
   strictDeps = true;
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    scdoc
-    wayland-scanner
-  ];
-  buildInputs = [
-    wayland
-    wayland-protocols
-    libxkbcommon
-    cairo
-    gdk-pixbuf
-    pam
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config scdoc wayland-scanner ];
+  buildInputs = [ wayland wayland-protocols libxkbcommon cairo gdk-pixbuf pam ];
 
   mesonFlags = [
     "-Dpam=enabled"

@@ -23,19 +23,9 @@ stdenv.mkDerivation rec {
 
   patches = [ ./rsvg-convert.patch ];
 
-  nativeBuildInputs = [
-    pkg-config
-    intltool
-  ];
-  buildInputs = [
-    iconnamingutils
-    imagemagick
-    librsvg
-  ];
-  propagatedBuildInputs = [
-    gnome-icon-theme
-    hicolor-icon-theme
-  ];
+  nativeBuildInputs = [ pkg-config intltool ];
+  buildInputs = [ iconnamingutils imagemagick librsvg ];
+  propagatedBuildInputs = [ gnome-icon-theme hicolor-icon-theme ];
   # still missing parent icon themes: cristalsvg
 
   dontDropIconThemeCache = true;

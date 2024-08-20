@@ -12,10 +12,7 @@ runTest (
   {
     inherit name;
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        eqyiel
-        ma27
-      ];
+      maintainers = [ eqyiel ma27 ];
     };
 
     imports = [ testBase ];

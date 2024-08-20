@@ -22,10 +22,7 @@ buildGoModule rec {
     description = "Gitea official CLI client";
     homepage = "https://gitea.com/gitea/tea";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      j4m3s
-      techknowlogick
-    ];
+    maintainers = with maintainers; [ j4m3s techknowlogick ];
     mainProgram = "tea";
   };
 }

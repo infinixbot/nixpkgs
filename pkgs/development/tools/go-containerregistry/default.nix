@@ -6,10 +6,7 @@
 }:
 
 let
-  bins = [
-    "crane"
-    "gcrane"
-  ];
+  bins = [ "crane" "gcrane" ];
 in
 
 buildGoModule rec {
@@ -26,10 +23,7 @@ buildGoModule rec {
 
   nativeBuildInputs = [ installShellFiles ];
 
-  subPackages = [
-    "cmd/crane"
-    "cmd/gcrane"
-  ];
+  subPackages = [ "cmd/crane" "cmd/gcrane" ];
 
   outputs = [ "out" ] ++ bins;
 

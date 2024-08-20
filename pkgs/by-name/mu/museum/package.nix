@@ -39,10 +39,7 @@ buildGoModule rec {
     description = "API server for ente.io";
     homepage = "https://github.com/ente-io/ente/tree/main/server";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [
-      surfaceflinger
-      pinpox
-    ];
+    maintainers = with maintainers; [ surfaceflinger pinpox ];
     mainProgram = "museum";
     platforms = platforms.linux;
   };

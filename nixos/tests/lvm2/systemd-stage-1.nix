@@ -78,10 +78,7 @@ import ../make-test-python.nix (
         imports = [ extraConfig ];
         # Use systemd-boot
         virtualisation = {
-          emptyDiskImages = [
-            8192
-            8192
-          ];
+          emptyDiskImages = [ 8192 8192 ];
           useBootLoader = true;
           useEFIBoot = true;
           # To boot off the LVM disk, we need to have a init script which comes from the Nix store.

@@ -21,11 +21,7 @@ lib.fix (self: {
       inherit (nixosTests) netbox-upgrade;
     };
 
-    maintainers = with lib.maintainers; [
-      minijackson
-      n0emis
-      raitobezarius
-    ];
+    maintainers = with lib.maintainers; [ minijackson n0emis raitobezarius ];
     eol = true;
   };
 
@@ -41,10 +37,6 @@ lib.fix (self: {
       inherit (nixosTests) netbox-upgrade;
     };
 
-    maintainers = with lib.maintainers; [
-      minijackson
-      n0emis
-      raitobezarius
-    ];
+    maintainers = with lib.maintainers; [ minijackson n0emis raitobezarius ];
   };
 })

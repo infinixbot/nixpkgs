@@ -21,19 +21,9 @@ stdenv.mkDerivation rec {
   };
 
   # fails with make 4.4
-  nativeBuildInputs = [
-    gnumake42
-    perl
-    ocaml
-    findlib
-    camlidl
-  ];
+  nativeBuildInputs = [ gnumake42 perl ocaml findlib camlidl ];
 
-  propagatedBuildInputs = [
-    apron
-    gmp
-    mpfr
-  ];
+  propagatedBuildInputs = [ apron gmp mpfr ];
 
   strictDeps = true;
 

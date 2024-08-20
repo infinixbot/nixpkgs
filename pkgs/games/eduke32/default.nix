@@ -163,10 +163,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Enhanched port of Duke Nukem 3D for various platforms";
     homepage = "http://eduke32.com";
     license = with lib.licenses; [ gpl2Plus ];
-    maintainers = with lib.maintainers; [
-      mikroskeem
-      sander
-    ];
+    maintainers = with lib.maintainers; [ mikroskeem sander ];
     platforms = lib.platforms.all;
   };
 })

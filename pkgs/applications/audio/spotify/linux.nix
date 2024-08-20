@@ -129,11 +129,7 @@ stdenv.mkDerivation {
     hash = "sha512-3kT7SA2Q1OxgDa5duivIiHaxcROBAFjDnTx6rw2ya6o5yOVygseS02zBgWg2Qd8jq0721KbYC83u9M+MWtWhhA==";
   };
 
-  nativeBuildInputs = [
-    wrapGAppsHook3
-    makeShellWrapper
-    squashfsTools
-  ];
+  nativeBuildInputs = [ wrapGAppsHook3 makeShellWrapper squashfsTools ];
 
   dontStrip = true;
   dontPatchELF = true;
@@ -227,12 +223,6 @@ stdenv.mkDerivation {
   '';
 
   meta = meta // {
-    maintainers = with lib.maintainers; [
-      eelco
-      ftrvxmtrx
-      sheenobu
-      timokau
-      ma27
-    ];
+    maintainers = with lib.maintainers; [ eelco ftrvxmtrx sheenobu timokau ma27 ];
   };
 }

@@ -529,12 +529,7 @@ final: prev: {
         hash = "sha256-cqQoWR4lIvYAWp5o9jivpjiILO1ECFhCyXG1+vc2yIM=";
       };
 
-      propagatedBuildInputs = [
-        argparse
-        luafilesystem
-        luasystem
-        tl
-      ];
+      propagatedBuildInputs = [ argparse luafilesystem luasystem tl ];
 
       meta = {
         homepage = "https://github.com/teal-language/cyan";
@@ -725,11 +720,7 @@ final: prev: {
       };
 
       disabled = luaOlder "5.1";
-      propagatedBuildInputs = [
-        cldr
-        luaepnf
-        penlight
-      ];
+      propagatedBuildInputs = [ cldr luaepnf penlight ];
 
       meta = {
         homepage = "https://github.com/alerque/fluent-lua";
@@ -1092,10 +1083,7 @@ final: prev: {
         hash = "sha256-Me2LT+UzO8G2vHqG7DjjoCRAtLmhiJHlSEYQGkprxTw=";
       };
 
-      propagatedBuildInputs = [
-        markdown
-        penlight
-      ];
+      propagatedBuildInputs = [ markdown penlight ];
 
       meta = {
         homepage = "http://lunarmodules.github.io/ldoc";
@@ -1220,13 +1208,7 @@ final: prev: {
       };
 
       disabled = luaOlder "5.1";
-      propagatedBuildInputs = [
-        ansicolors
-        argparse
-        lua-cjson
-        luafilesystem
-        penlight
-      ];
+      propagatedBuildInputs = [ ansicolors argparse lua-cjson luafilesystem penlight ];
 
       meta = {
         homepage = "https://github.com/jeffzi/llscheck";
@@ -1693,11 +1675,7 @@ final: prev: {
       };
 
       disabled = luaOlder "5.1" || luaAtLeast "5.4";
-      propagatedBuildInputs = [
-        dkjson
-        inspect
-        lpeglabel
-      ];
+      propagatedBuildInputs = [ dkjson inspect lpeglabel ];
 
       meta = {
         homepage = "https://github.com/Alloyed/lua-lsp";
@@ -1861,11 +1839,7 @@ final: prev: {
       };
 
       disabled = luaOlder "5.1";
-      propagatedBuildInputs = [
-        lua-resty-http
-        lua-resty-jwt
-        lua-resty-session
-      ];
+      propagatedBuildInputs = [ lua-resty-http lua-resty-jwt lua-resty-session ];
 
       meta = {
         homepage = "https://github.com/zmartzone/lua-resty-openidc";
@@ -1929,10 +1903,7 @@ final: prev: {
       };
 
       disabled = luaOlder "5.1";
-      propagatedBuildInputs = [
-        lua-ffi-zlib
-        lua-resty-openssl
-      ];
+      propagatedBuildInputs = [ lua-ffi-zlib lua-resty-openssl ];
 
       meta = {
         homepage = "https://github.com/bungle/lua-resty-session";
@@ -2237,10 +2208,7 @@ final: prev: {
       };
 
       disabled = luaOlder "5.1";
-      propagatedBuildInputs = [
-        argparse
-        luafilesystem
-      ];
+      propagatedBuildInputs = [ argparse luafilesystem ];
 
       meta = {
         homepage = "https://github.com/lunarmodules/luacheck";
@@ -2512,10 +2480,7 @@ final: prev: {
       meta = {
         homepage = "https://lunarmodules.github.io/luaexpat";
         description = "XML Expat parsing";
-        maintainers = with lib.maintainers; [
-          arobyn
-          flosse
-        ];
+        maintainers = with lib.maintainers; [ arobyn flosse ];
         license.fullName = "MIT/X11";
       };
     }
@@ -2706,10 +2671,7 @@ final: prev: {
       meta = {
         homepage = "http://github.com/luaposix/luaposix/";
         description = "Lua bindings for POSIX";
-        maintainers = with lib.maintainers; [
-          vyp
-          lblasc
-        ];
+        maintainers = with lib.maintainers; [ vyp lblasc ];
         license.fullName = "MIT/X11";
       };
     }
@@ -2803,10 +2765,7 @@ final: prev: {
       meta = {
         homepage = "http://www.luarocks.org";
         description = "A package manager for Lua modules.";
-        maintainers = with lib.maintainers; [
-          mrcjkb
-          teto
-        ];
+        maintainers = with lib.maintainers; [ mrcjkb teto ];
         license.fullName = "MIT";
       };
     }
@@ -3595,11 +3554,7 @@ final: prev: {
       };
 
       disabled = luaOlder "5.1";
-      propagatedBuildInputs = [
-        argparse
-        lpeg
-        luafilesystem
-      ];
+      propagatedBuildInputs = [ argparse lpeg luafilesystem ];
 
       meta = {
         homepage = "http://moonscript.org";
@@ -3656,10 +3611,7 @@ final: prev: {
       };
 
       disabled = luaOlder "5.1";
-      propagatedBuildInputs = [
-        nvim-nio
-        plenary-nvim
-      ];
+      propagatedBuildInputs = [ nvim-nio plenary-nvim ];
 
       meta = {
         homepage = "https://github.com/nvim-neotest/neotest";
@@ -3971,12 +3923,7 @@ final: prev: {
       };
 
       disabled = luaOlder "5.1";
-      propagatedBuildInputs = [
-        lua-curl
-        mimetypes
-        nvim-nio
-        xml2lua
-      ];
+      propagatedBuildInputs = [ lua-curl mimetypes nvim-nio xml2lua ];
 
       meta = {
         homepage = "https://github.com/rest-nvim/rest.nvim";
@@ -4044,11 +3991,7 @@ final: prev: {
       };
 
       disabled = luaOlder "5.1";
-      propagatedBuildInputs = [
-        nvim-nio
-        rocks-nvim
-        rtp-nvim
-      ];
+      propagatedBuildInputs = [ nvim-nio rocks-nvim rtp-nvim ];
 
       meta = {
         homepage = "https://github.com/nvim-neorocks/rocks-dev.nvim";
@@ -4082,10 +4025,7 @@ final: prev: {
       };
 
       disabled = luaOlder "5.1";
-      propagatedBuildInputs = [
-        nvim-nio
-        rocks-nvim
-      ];
+      propagatedBuildInputs = [ nvim-nio rocks-nvim ];
 
       meta = {
         homepage = "https://github.com/nvim-neorocks/rocks-git.nvim";
@@ -4123,14 +4063,7 @@ final: prev: {
       };
 
       disabled = luaOlder "5.1";
-      propagatedBuildInputs = [
-        fidget-nvim
-        fzy
-        luarocks
-        nvim-nio
-        rtp-nvim
-        toml-edit
-      ];
+      propagatedBuildInputs = [ fidget-nvim fzy luarocks nvim-nio rtp-nvim toml-edit ];
 
       meta = {
         homepage = "https://github.com/nvim-neorocks/rocks.nvim";
@@ -4421,11 +4354,7 @@ final: prev: {
         hash = "sha256-fUuOjJrwpLU1YoJm3yn+X15ioRf4GZoi6323On1W2Io=";
       };
 
-      propagatedBuildInputs = [
-        cyan
-        dkjson
-        luafilesystem
-      ];
+      propagatedBuildInputs = [ cyan dkjson luafilesystem ];
 
       meta = {
         homepage = "https://github.com/teal-language/teal-language-server";
@@ -4560,11 +4489,7 @@ final: prev: {
         hash = "sha256-nkwPYI4uB1rTtcBsZ7TKNPusWXtXViyBDSkiL9UH+Wo=";
       };
 
-      propagatedBuildInputs = [
-        argparse
-        compat53
-        luafilesystem
-      ];
+      propagatedBuildInputs = [ argparse compat53 luafilesystem ];
 
       meta = {
         homepage = "https://github.com/teal-language/tl";
@@ -4693,10 +4618,7 @@ final: prev: {
         hash = "sha256-Zh54mHNrbFH5qygzsXVv+Vc7oUP+RIQXBvK+UvaGvxY=";
       };
 
-      propagatedBuildInputs = [
-        busted
-        luasystem
-      ];
+      propagatedBuildInputs = [ busted luasystem ];
 
       meta = {
         homepage = "https://github.com/notomo/vusted";

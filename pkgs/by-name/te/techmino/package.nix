@@ -40,10 +40,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [
-    love
-    ccloader
-  ];
+  buildInputs = [ love ccloader ];
 
   dontUnpack = true;
 

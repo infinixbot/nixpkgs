@@ -22,10 +22,7 @@ let
     makeTest {
       name = "hostname-${fqdn}";
       meta = with pkgs.lib.maintainers; {
-        maintainers = [
-          primeos
-          blitz
-        ];
+        maintainers = [ primeos blitz ];
       };
 
       nodes.machine =

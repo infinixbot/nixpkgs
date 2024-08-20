@@ -33,12 +33,7 @@ stdenv.mkDerivation rec {
 
   # All platforms inputs then Linux-only ones
   buildInputs =
-    [
-      judy
-      libbsd
-      libgcrypt
-      zlib
-    ]
+    [ judy libbsd libgcrypt zlib ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       attr
       keyutils

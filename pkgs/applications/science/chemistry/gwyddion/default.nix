@@ -40,20 +40,11 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-N3vtzSsNjRM6MpaG2p9fkYB/8dR5N/mZEZXx6GN5LVI=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    file
-  ];
+  nativeBuildInputs = [ pkg-config file ];
 
   buildInputs =
-    [
-      gtk2
-      fftw
-    ]
-    ++ lib.optionals openglSupport [
-      gnome2.gtkglext
-      libGL
-    ]
+    [ gtk2 fftw ]
+    ++ lib.optionals openglSupport [ gnome2.gtkglext libGL ]
     ++ lib.optional openexrSupport openexr
     ++ lib.optional libXmuSupport xorg.libXmu
     ++ lib.optional fitsSupport cfitsio

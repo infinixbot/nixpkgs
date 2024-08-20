@@ -205,10 +205,7 @@ let
     icon = pname;
     desktopName = "Android Studio (${channel} channel)";
     comment = "The official Android IDE";
-    categories = [
-      "Development"
-      "IDE"
-    ];
+    categories = [ "Development" "IDE" ];
     startupNotify = true;
     startupWMClass = "jetbrains-studio";
   };
@@ -285,10 +282,7 @@ let
             full = withSdk androidenv.androidPkgs.androidsdk;
             inherit withSdk;
             sdk = androidSdk;
-            updateScript = [
-              ./update.sh
-              "${channel}"
-            ];
+            updateScript = [ ./update.sh "${channel}" ];
           };
         meta = {
           description = "Official IDE for Android (${channel} channel)";
@@ -301,10 +295,7 @@ let
               "https://developer.android.com/studio/index.html"
             else
               "https://developer.android.com/studio/preview/index.html";
-          license = with lib.licenses; [
-            asl20
-            unfree
-          ]; # The code is under Apache-2.0, but:
+          license = with lib.licenses; [ asl20 unfree ]; # The code is under Apache-2.0, but:
           # If one selects Help -> Licenses in Android Studio, the dialog shows the following:
           # "Android Studio includes proprietary code subject to separate license,
           # including JetBrains CLion(R) (www.jetbrains.com/clion) and IntelliJ(R)
@@ -316,11 +307,7 @@ let
           maintainers =
             with lib.maintainers;
             rec {
-              stable = [
-                alapshin
-                johnrtitor
-                numinit
-              ];
+              stable = [ alapshin johnrtitor numinit ];
               beta = stable;
               canary = stable;
               dev = stable;

@@ -17,10 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-myMUs9urHjYaOQ/UaPYlLZstvClOuvF5xJao4lTP5bY=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = {
     description = "Convert text to JSON using only regular expressions";

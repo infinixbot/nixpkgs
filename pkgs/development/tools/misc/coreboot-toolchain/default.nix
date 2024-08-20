@@ -41,17 +41,8 @@ let
           allowedRequisites = [ ];
         };
 
-        nativeBuildInputs = [
-          bison
-          curl
-          git
-          perl
-        ];
-        buildInputs = [
-          flex
-          zlib
-          (if withAda then gnat else gcc)
-        ];
+        nativeBuildInputs = [ bison curl git perl ];
+        buildInputs = [ flex zlib (if withAda then gnat else gcc) ];
 
         enableParallelBuilding = true;
         dontConfigure = true;
@@ -77,17 +68,8 @@ let
         meta = with lib; {
           homepage = "https://www.coreboot.org";
           description = "coreboot toolchain for ${arch} targets";
-          license = with licenses; [
-            bsd2
-            bsd3
-            gpl2
-            lgpl2Plus
-            gpl3Plus
-          ];
-          maintainers = with maintainers; [
-            felixsinger
-            jmbaur
-          ];
+          license = with licenses; [ bsd2 bsd3 gpl2 lgpl2Plus gpl3Plus ];
+          maintainers = with maintainers; [ felixsinger jmbaur ];
           platforms = platforms.linux;
         };
       })

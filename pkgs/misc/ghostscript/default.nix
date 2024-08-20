@@ -76,12 +76,7 @@ stdenv.mkDerivation rec {
     ./doc-no-ref.diff
   ];
 
-  outputs = [
-    "out"
-    "man"
-    "doc"
-    "fonts"
-  ];
+  outputs = [ "out" "man" "doc" "fonts" ];
 
   enableParallelBuilding = true;
 
@@ -89,11 +84,7 @@ stdenv.mkDerivation rec {
     buildPackages.stdenv.cc
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    autoconf
-    zlib
-  ] ++ lib.optional cupsSupport cups;
+  nativeBuildInputs = [ pkg-config autoconf zlib ] ++ lib.optional cupsSupport cups;
 
   buildInputs =
     [
@@ -113,12 +104,7 @@ stdenv.mkDerivation rec {
       bash
       openjpeg
     ]
-    ++ lib.optionals x11Support [
-      xorg.libICE
-      xorg.libX11
-      xorg.libXext
-      xorg.libXt
-    ]
+    ++ lib.optionals x11Support [ xorg.libICE xorg.libX11 xorg.libXext xorg.libXt ]
     ++ lib.optional cupsSupport cups;
 
   preConfigure = ''

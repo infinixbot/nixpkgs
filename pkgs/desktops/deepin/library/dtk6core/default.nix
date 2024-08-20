@@ -49,10 +49,7 @@ stdenv.mkDerivation (finalAttrs: {
     libuchardet
   ];
 
-  propagatedBuildInputs = [
-    dtkcommon
-    dtk6log
-  ];
+  propagatedBuildInputs = [ dtkcommon dtk6log ];
 
   cmakeFlags = [
     "-DDTK_VERSION=${finalAttrs.version}"
@@ -70,11 +67,7 @@ stdenv.mkDerivation (finalAttrs: {
     export QT_PLUGIN_PATH=${lib.getBin qt6Packages.qtbase}/${qt6Packages.qtbase.qtPluginPrefix}
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
   postFixup = ''
     for binary in $out/libexec/dtk6/DCore/bin/*; do

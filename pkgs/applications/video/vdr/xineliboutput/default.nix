@@ -51,12 +51,7 @@ let
     postFixup = ''
       for f in $out/bin/*; do
         wrapProgram $f \
-          --prefix XINE_PLUGIN_PATH ":" "${
-            makeXinePluginPath [
-              "$out"
-              xine-lib
-            ]
-          }"
+          --prefix XINE_PLUGIN_PATH ":" "${makeXinePluginPath [ "$out" xine-lib ]}"
       done
     '';
 
@@ -81,10 +76,7 @@ let
       wayland
     ];
 
-    passthru.requiredXinePlugins = [
-      xine-lib
-      self
-    ];
+    passthru.requiredXinePlugins = [ xine-lib self ];
 
     meta = with lib; {
       homepage = "https://sourceforge.net/projects/xineliboutput/";

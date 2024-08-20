@@ -65,10 +65,7 @@ import ./make-test-python.nix (
               pkgs.writers.writePython3Bin "browser-test"
                 {
                   libraries = [ pkgs.python3Packages.selenium ];
-                  flakeIgnore = [
-                    "E124"
-                    "E501"
-                  ];
+                  flakeIgnore = [ "E124" "E501" ];
                 }
                 ''
                   from selenium.webdriver.common.by import By

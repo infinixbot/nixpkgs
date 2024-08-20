@@ -29,11 +29,7 @@ in
     extraOptions = mkOption {
       type = with types; listOf str;
       default = [ ];
-      example = [
-        "-6"
-        "-d 9000"
-        "-v"
-      ];
+      example = [ "-6" "-d 9000" "-v" ];
       description = ''
         Additional command line options to pass to the endlessh daemon.
       '';
@@ -96,19 +92,12 @@ in
           ProtectProc = "noaccess";
           ProcSubset = "pid";
           RemoveIPC = true;
-          RestrictAddressFamilies = [
-            "AF_INET"
-            "AF_INET6"
-          ];
+          RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
           RestrictNamespaces = true;
           RestrictRealtime = true;
           RestrictSUIDSGID = true;
           SystemCallArchitectures = "native";
-          SystemCallFilter = [
-            "@system-service"
-            "~@resources"
-            "~@privileged"
-          ];
+          SystemCallFilter = [ "@system-service" "~@resources" "~@privileged" ];
         };
     };
 

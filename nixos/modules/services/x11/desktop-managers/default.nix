@@ -50,13 +50,7 @@ in
 
       wallpaper = {
         mode = mkOption {
-          type = types.enum [
-            "center"
-            "fill"
-            "max"
-            "scale"
-            "tile"
-          ];
+          type = types.enum [ "center" "fill" "max" "scale" "tile" ];
           default = "scale";
           example = "fill";
           description = ''

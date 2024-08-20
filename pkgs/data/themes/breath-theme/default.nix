@@ -33,10 +33,7 @@ stdenv.mkDerivation {
 
   dontWrapQtApps = true;
 
-  cmakeFlags = [
-    "-DBUILD_PLASMA_THEMES=ON"
-    "-DBUILD_SDDM_THEME=ON"
-  ];
+  cmakeFlags = [ "-DBUILD_PLASMA_THEMES=ON" "-DBUILD_SDDM_THEME=ON" ];
 
   meta = with lib; {
     description = "Manjaro KDE default theme";

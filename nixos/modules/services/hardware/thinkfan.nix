@@ -27,17 +27,9 @@ let
           description = "tuple of" + concatMapStrings (t: " (${t.description})") ts;
         };
       level = ints.unsigned;
-      special = enum [
-        "level auto"
-        "level full-speed"
-        "level disengaged"
-      ];
+      special = enum [ "level auto" "level full-speed" "level disengaged" ];
     in
-    tuple [
-      (either level special)
-      level
-      level
-    ];
+    tuple [ (either level special) level level ];
 
   # sensor or fan config
   sensorType =
@@ -47,12 +39,7 @@ let
       options =
         {
           type = mkOption {
-            type = types.enum [
-              "hwmon"
-              "atasmart"
-              "tpacpi"
-              "nvml"
-            ];
+            type = types.enum [ "hwmon" "atasmart" "tpacpi" "nvml" ];
             description = ''
               The ${name} type, can be
               `hwmon` for standard ${name}s,
@@ -105,17 +92,7 @@ let
   # removes NixOS special and unused attributes
   sensorToConf =
     { type, query, ... }@args:
-    (filterAttrs (
-      k: v:
-      v != null
-      && !(elem k [
-        "type"
-        "query"
-      ])
-    ) args)
-    // {
-      "${type}" = query;
-    };
+    (filterAttrs (k: v: v != null && !(elem k [ "type" "query" ])) args) // { "${type}" = query; };
 
   syntaxNote = name: ''
     ::: {.note}
@@ -195,41 +172,13 @@ in
       levels = mkOption {
         type = types.listOf levelType;
         default = [
-          [
-            0
-            0
-            55
-          ]
-          [
-            1
-            48
-            60
-          ]
-          [
-            2
-            50
-            61
-          ]
-          [
-            3
-            52
-            63
-          ]
-          [
-            6
-            56
-            65
-          ]
-          [
-            7
-            60
-            85
-          ]
-          [
-            "level auto"
-            80
-            32767
-          ]
+          [ 0 0 55 ]
+          [ 1 48 60 ]
+          [ 2 50 61 ]
+          [ 3 52 63 ]
+          [ 6 56 65 ]
+          [ 7 60 85 ]
+          [ "level auto" 80 32767 ]
         ];
         description = ''
           [LEVEL LOW HIGH]
@@ -246,10 +195,7 @@ in
       extraArgs = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "-b"
-          "0"
-        ];
+        example = [ "-b" "0" ];
         description = ''
           A list of extra command line arguments to pass to thinkfan.
           Check the thinkfan(1) manpage for available arguments.
@@ -285,13 +231,7 @@ in
     systemd.packages = [ thinkfan ];
 
     systemd.services = {
-      thinkfan.environment.THINKFAN_ARGS = escapeShellArgs (
-        [
-          "-c"
-          configFile
-        ]
-        ++ cfg.extraArgs
-      );
+      thinkfan.environment.THINKFAN_ARGS = escapeShellArgs ([ "-c" configFile ] ++ cfg.extraArgs);
       thinkfan.serviceConfig = {
         Restart = "on-failure";
         RestartSec = "30s";

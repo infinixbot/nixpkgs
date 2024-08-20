@@ -33,23 +33,14 @@ rustPlatform.buildRustPackage rec {
 
   buildFeatures = lib.optional withTTS "tts";
 
-  nativeBuildInputs = [
-    pkg-config
-    rustPlatform.bindgenHook
-  ];
+  nativeBuildInputs = [ pkg-config rustPlatform.bindgenHook ];
 
   buildInputs =
     [ openssl ]
     ++ lib.optionals (withTTS && stdenv.isLinux) [ speechd-minimal ]
     ++ lib.optionals stdenv.isLinux [ alsa-lib ]
-    ++ lib.optionals (withTTS && stdenv.isDarwin) [
-      AVFoundation
-      AppKit
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      CoreAudio
-      AudioUnit
-    ];
+    ++ lib.optionals (withTTS && stdenv.isDarwin) [ AVFoundation AppKit ]
+    ++ lib.optionals stdenv.isDarwin [ CoreAudio AudioUnit ];
 
   checkFlags =
     let

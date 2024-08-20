@@ -29,11 +29,7 @@ stdenv.mkDerivation rec {
     })
   ] ++ lib.optional (!opensslSupport) ./0002-disable-openssl.patch;
 
-  buildInputs = [
-    bzip2
-    lzo
-    zlib
-  ] ++ lib.optional (opensslSupport) openssl_1_1;
+  buildInputs = [ bzip2 lzo zlib ] ++ lib.optional (opensslSupport) openssl_1_1;
 
   makeFlags = [ "PREFIX=$(out)" ];
 

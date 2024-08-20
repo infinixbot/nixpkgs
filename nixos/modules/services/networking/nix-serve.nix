@@ -74,10 +74,7 @@ in
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
 
-      path = [
-        config.nix.package.out
-        pkgs.bzip2.bin
-      ];
+      path = [ config.nix.package.out pkgs.bzip2.bin ];
       environment.NIX_REMOTE = "daemon";
 
       script = ''

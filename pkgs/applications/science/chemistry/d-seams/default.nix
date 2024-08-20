@@ -35,22 +35,8 @@ clangStdenv.mkDerivation rec {
       hash = "sha256-PLbT1lqdw+69lIHH96MPcGRjfIeZyb88vc875QLYyqw=";
     })
   ];
-  nativeBuildInputs = [
-    cmake
-    lua
-    luaPackages.luafilesystem
-  ];
-  buildInputs = [
-    fmt
-    rang
-    yaml-cpp
-    eigen
-    catch2
-    boost
-    gsl
-    liblapack
-    blas
-  ];
+  nativeBuildInputs = [ cmake lua luaPackages.luafilesystem ];
+  buildInputs = [ fmt rang yaml-cpp eigen catch2 boost gsl liblapack blas ];
 
   meta = with lib; {
     description = "d-SEAMS: Deferred Structural Elucidation Analysis for Molecular Simulations";

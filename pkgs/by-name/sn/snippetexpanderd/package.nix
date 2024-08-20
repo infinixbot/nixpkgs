@@ -55,14 +55,7 @@ buildGoModule rec {
   postFixup = ''
     # Ensure xclip/wcopy and xdotool/wtype are available for copy and paste duties.
     wrapProgram $out/bin/snippetexpanderd \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          xclip
-          wl-clipboard
-          xdotool
-          wtype
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ xclip wl-clipboard xdotool wtype ]}
   '';
 
   meta = {

@@ -27,10 +27,7 @@ buildGoModule rec {
     mainProgram = "assetfinder";
     maintainers = with maintainers; [ shard7 ];
     platforms = platforms.unix;
-    sourceProvenance = with sourceTypes; [
-      fromSource
-      binaryNativeCode
-    ];
+    sourceProvenance = with sourceTypes; [ fromSource binaryNativeCode ];
     license = with licenses; [ mit ];
   };
 }

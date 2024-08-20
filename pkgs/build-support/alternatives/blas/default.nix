@@ -181,10 +181,7 @@ stdenv.mkDerivation {
   pname = "blas";
   inherit version;
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   meta = (blasProvider'.meta or { }) // {
     description = "${lib.getName blasProvider} with just the BLAS C and FORTRAN ABI";

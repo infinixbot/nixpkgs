@@ -11,11 +11,7 @@
 }:
 
 let
-  handledArgs = [
-    "meta"
-    "preUnpack"
-    "postUnpack"
-  ];
+  handledArgs = [ "meta" "preUnpack" "postUnpack" ];
   genericBuild = import ./generic.nix {
     inherit
       lib

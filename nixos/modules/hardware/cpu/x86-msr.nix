@@ -62,16 +62,9 @@ in
       };
       settings = mkOption {
         type = submodule {
-          freeformType = attrsOf (oneOf [
-            bool
-            int
-            str
-          ]);
+          freeformType = attrsOf (oneOf [ bool int str ]);
           options.allow-writes = mkOption {
-            type = nullOr (enum [
-              "on"
-              "off"
-            ]);
+            type = nullOr (enum [ "on" "off" ]);
             default = null;
             description = "Whether to allow writes to MSRs (`\"on\"`) or not (`\"off\"`).";
           };

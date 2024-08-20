@@ -18,12 +18,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "fontconfig";
   version = "2.15.0";
 
-  outputs = [
-    "bin"
-    "dev"
-    "lib"
-    "out"
-  ]; # $out contains all the config
+  outputs = [ "bin" "dev" "lib" "out" ]; # $out contains all the config
 
   src = fetchurl {
     url =

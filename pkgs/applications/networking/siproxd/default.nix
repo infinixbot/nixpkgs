@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
 
   patches = [ ./cheaders.patch ];
 
-  buildInputs = [
-    libosip
-    sqlite
-  ];
+  buildInputs = [ libosip sqlite ];
 
   meta = {
     homepage = "http://siproxd.sourceforge.net/";

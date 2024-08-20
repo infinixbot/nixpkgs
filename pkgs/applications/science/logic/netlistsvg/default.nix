@@ -40,10 +40,7 @@ buildNpmPackage rec {
   passthru.tests.netlistsvg-yosys-integration-test =
     runCommandLocal "netlistsvg-yosys-integration-test"
       {
-        nativeBuildInputs = [
-          netlistsvg
-          yosys
-        ];
+        nativeBuildInputs = [ netlistsvg yosys ];
       }
       ''
         yosys -p "prep -top helloworld -flatten; aigmap; write_json circuit.json" ${./test.v}

@@ -11,10 +11,7 @@ buildDunePackage {
 
   duneVersion = "3";
 
-  propagatedBuildInputs = [
-    macaddr
-    cstruct
-  ];
+  propagatedBuildInputs = [ macaddr cstruct ];
 
   doCheck = true;
 

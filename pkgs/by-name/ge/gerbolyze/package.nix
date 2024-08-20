@@ -82,11 +82,7 @@ python3Packages.buildPythonApplication rec {
 
   pythonImportsCheck = [ "gerbolyze" ];
 
-  nativeCheckInputs = [
-    python3Packages.pytestCheckHook
-    resvg
-    svg-flatten
-  ];
+  nativeCheckInputs = [ python3Packages.pytestCheckHook resvg svg-flatten ];
 
   passthru.updateScript = gitUpdater {
     rev-prefix = "v";

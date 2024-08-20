@@ -92,18 +92,8 @@ in
     ++ optionals (lib.versionOlder version "5" && cloog != null) [ cloog ]
     ++ optionals (isl != null) [ isl ]
     ++ optionals (zlib != null) [ zlib ]
-    ++ optionals langJava [
-      boehmgc
-      zip
-      unzip
-    ]
-    ++ optionals javaAwtGtk (
-      [
-        gtk2
-        libart_lgpl
-      ]
-      ++ xlibs
-    )
+    ++ optionals langJava [ boehmgc zip unzip ]
+    ++ optionals javaAwtGtk ([ gtk2 libart_lgpl ] ++ xlibs)
     ++ optionals (langGo && stdenv.hostPlatform.isMusl) [ libucontext ]
     ++ optionals (lib.versionAtLeast version "14" && stdenv.hostPlatform.isDarwin) [
       darwin.apple_sdk.frameworks.CoreServices

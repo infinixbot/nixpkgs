@@ -28,9 +28,6 @@ buildGoModule rec {
     description = "Find deprecated Kubernetes apiVersions";
     mainProgram = "pluto";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      peterromfeldhk
-      kashw2
-    ];
+    maintainers = with maintainers; [ peterromfeldhk kashw2 ];
   };
 }

@@ -95,14 +95,7 @@ stdenv.mkDerivation {
       extraWrapperArgs = ''
         --set LD_PRELOAD "${libredirect}/lib/libredirect.so" \
         --set NIX_REDIRECTS "/bin/ls=${coreutils}/bin/ls" \
-        --prefix PATH : "${
-          lib.makeBinPath [
-            coreutils
-            gnugrep
-            util-linux
-            which
-          ]
-        }"
+        --prefix PATH : "${lib.makeBinPath [ coreutils gnugrep util-linux which ]}"
       '';
     in
     ''

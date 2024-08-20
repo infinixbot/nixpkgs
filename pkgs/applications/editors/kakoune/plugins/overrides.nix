@@ -71,10 +71,7 @@ self: super: {
       description = "Kakoune support for rendering ANSI code";
       homepage = "https://github.com/eraserhd/kak-ansi";
       license = licenses.unlicense;
-      maintainers = with maintainers; [
-        eraserhd
-        philiptaron
-      ];
+      maintainers = with maintainers; [ eraserhd philiptaron ];
       platforms = platforms.all;
     };
   };
@@ -104,10 +101,7 @@ self: super: {
       description = "Kakoune integration with the Plan 9 plumber";
       homepage = "https://github.com/eraserhd/kak-plumb";
       license = licenses.unlicense;
-      maintainers = with maintainers; [
-        eraserhd
-        philiptaron
-      ];
+      maintainers = with maintainers; [ eraserhd philiptaron ];
       platforms = platforms.all;
     };
   };
@@ -138,10 +132,7 @@ self: super: {
       description = "Help Kakoune save and restore state between sessions";
       homepage = "https://gitlab.com/Screwtapello/kakoune-state-save";
       license = licenses.mit;
-      maintainers = with maintainers; [
-        Flakebi
-        philiptaron
-      ];
+      maintainers = with maintainers; [ Flakebi philiptaron ];
       platforms = platforms.all;
     };
   };

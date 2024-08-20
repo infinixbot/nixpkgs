@@ -33,23 +33,8 @@ stdenv.mkDerivation rec {
     ./disable-network-tests.patch
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    protobuf
-  ];
-  buildInputs = [
-    systemd
-    boost
-    libsodium
-    libedit
-    re2
-    net-snmp
-    lua
-    openssl
-    zlib
-    h2o
-    nghttp2
-  ];
+  nativeBuildInputs = [ pkg-config protobuf ];
+  buildInputs = [ systemd boost libsodium libedit re2 net-snmp lua openssl zlib h2o nghttp2 ];
 
   configureFlags = [
     "--with-libsodium"

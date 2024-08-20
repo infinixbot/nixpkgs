@@ -135,12 +135,7 @@ stdenv.mkDerivation rec {
   # the glib setup hook will populate GSETTINGS_SCHEMAS_PATH,
   # wrapGAppHooks (among other things) adds it to XDG_DATA_DIRS
   # so 'save as...' works:
-  nativeBuildInputs = [
-    glib
-    stripJavaArchivesHook
-    wrapGAppsHook3
-    unzip
-  ];
+  nativeBuildInputs = [ glib stripJavaArchivesHook wrapGAppsHook3 unzip ];
   buildInputs = [
     jdk
     ant
@@ -182,14 +177,7 @@ stdenv.mkDerivation rec {
   javaPath = lib.makeBinPath [ jdk ];
 
   # Everything else will be patched into rpath
-  rpath = lib.makeLibraryPath [
-    zlib
-    libusb-compat-0_1
-    libusb1
-    readline
-    ncurses5
-    stdenv.cc.cc
-  ];
+  rpath = lib.makeLibraryPath [ zlib libusb-compat-0_1 libusb1 readline ncurses5 stdenv.cc.cc ];
 
   installPhase = ''
     mkdir -p $out/share/arduino
@@ -284,12 +272,6 @@ stdenv.mkDerivation rec {
       binaryNativeCode
     ];
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      antono
-      auntie
-      robberer
-      bjornfor
-      bergey
-    ];
+    maintainers = with maintainers; [ antono auntie robberer bjornfor bergey ];
   };
 }

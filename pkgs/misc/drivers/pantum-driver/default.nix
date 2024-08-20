@@ -30,15 +30,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-TUk6CTnWlSvyG8MOpDRhg/eblAo6X/MDUFOiWuOuro0=";
   };
 
-  buildInputs = [
-    libusb1
-    libjpeg8
-    cups
-  ];
-  nativeBuildInputs = [
-    dpkg
-    autoPatchelfHook
-  ];
+  buildInputs = [ libusb1 libjpeg8 cups ];
+  nativeBuildInputs = [ dpkg autoPatchelfHook ];
 
   installPhase =
     ''
@@ -62,10 +55,7 @@ stdenv.mkDerivation rec {
     homepage = "https://global.pantum.com/";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = lib.licenses.unfree;
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
     maintainers = with maintainers; [ deinferno ];
   };
 }

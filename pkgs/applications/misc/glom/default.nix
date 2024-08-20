@@ -59,13 +59,7 @@ stdenv.mkDerivation rec {
   pname = "glom";
   version = "1.32.0";
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-    "doc"
-    "devdoc"
-  ];
+  outputs = [ "out" "lib" "dev" "doc" "devdoc" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";
@@ -139,10 +133,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Easy-to-use database designer and user interface";
     homepage = "http://www.glom.org/";
-    license = [
-      licenses.lgpl2
-      licenses.gpl2
-    ];
+    license = [ licenses.lgpl2 licenses.gpl2 ];
     maintainers = teams.gnome.members;
     platforms = platforms.linux;
   };

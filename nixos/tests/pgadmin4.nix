@@ -3,10 +3,7 @@ import ./make-test-python.nix (
 
   {
     name = "pgadmin4";
-    meta.maintainers = with lib.maintainers; [
-      mkg20001
-      gador
-    ];
+    meta.maintainers = with lib.maintainers; [ mkg20001 gador ];
 
     nodes = {
       machine =

@@ -31,25 +31,11 @@ qtModule {
   nativeBuildInputs = [ pkg-config ];
   buildInputs =
     [ ffmpeg_7 ]
-    ++ lib.optionals (!stdenv.hostPlatform.isMinGW) [
-      libunwind
-      orc
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      libpulseaudio
-      alsa-lib
-      wayland
-      libXrandr
-      libva
-    ]
+    ++ lib.optionals (!stdenv.hostPlatform.isMinGW) [ libunwind orc ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [ libpulseaudio alsa-lib wayland libXrandr libva ]
     ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [ elfutils ];
   propagatedBuildInputs =
-    [
-      qtbase
-      qtdeclarative
-      qtsvg
-      qtshadertools
-    ]
+    [ qtbase qtdeclarative qtsvg qtshadertools ]
     ++ lib.optionals (!stdenv.hostPlatform.isMinGW) [ qtquick3d ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       gstreamer

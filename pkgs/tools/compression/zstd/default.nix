@@ -101,10 +101,7 @@ stdenv.mkDerivation rec {
       ''
     );
 
-  outputs = [
-    "bin"
-    "dev"
-  ] ++ lib.optional stdenv.hostPlatform.isUnix "man" ++ [ "out" ];
+  outputs = [ "bin" "dev" ] ++ lib.optional stdenv.hostPlatform.isUnix "man" ++ [ "out" ];
 
   passthru = {
     updateScript = nix-update-script { };

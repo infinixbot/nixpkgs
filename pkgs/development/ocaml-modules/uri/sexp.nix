@@ -19,10 +19,6 @@ else
     duneVersion = "3";
 
     checkInputs = [ ounit ];
-    propagatedBuildInputs = [
-      ppx_sexp_conv
-      sexplib0
-      uri
-    ];
+    propagatedBuildInputs = [ ppx_sexp_conv sexplib0 uri ];
     doCheck = lib.versionAtLeast ocaml.version "4.08";
   }

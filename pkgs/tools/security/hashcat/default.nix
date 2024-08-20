@@ -44,18 +44,10 @@ stdenv.mkDerivation rec {
       addDriverRunpath
     ];
 
-  buildInputs =
-    [
-      opencl-headers
-      xxHash
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Foundation
-      IOKit
-      Metal
-      OpenCL
-      libiconv
-    ];
+  buildInputs = [
+    opencl-headers
+    xxHash
+  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Foundation IOKit Metal OpenCL libiconv ];
 
   makeFlags =
     [
@@ -107,10 +99,6 @@ stdenv.mkDerivation rec {
     homepage = "https://hashcat.net/hashcat/";
     license = licenses.mit;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      felixalbrigtsen
-      kierdavis
-      zimbatm
-    ];
+    maintainers = with maintainers; [ felixalbrigtsen kierdavis zimbatm ];
   };
 }

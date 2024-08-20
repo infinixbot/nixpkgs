@@ -17,29 +17,15 @@ stdenv.mkDerivation rec {
   pname = "goocanvas";
   version = "2.0.4";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/goocanvas/2.0/${pname}-${version}.tar.xz";
     sha256 = "141fm7mbqib0011zmkv3g8vxcjwa7hypmq71ahdyhnj2sjvy4a67";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    gettext
-    gtk-doc
-    python3
-    gobject-introspection
-  ];
-  buildInputs = [
-    gtk3
-    cairo
-    glib
-  ];
+  nativeBuildInputs = [ pkg-config gettext gtk-doc python3 gobject-introspection ];
+  buildInputs = [ gtk3 cairo glib ];
 
   configureFlags = [
     "--disable-python"

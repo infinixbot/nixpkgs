@@ -27,10 +27,7 @@ python3Packages.buildPythonApplication rec {
     description = "Robots.txt audit tool";
     homepage = "https://github.com/behindthefirewalls/Parsero";
     license = licenses.gpl2Only;
-    maintainers = with maintainers; [
-      emilytrau
-      fab
-    ];
+    maintainers = with maintainers; [ emilytrau fab ];
     mainProgram = "parsero";
   };
 }

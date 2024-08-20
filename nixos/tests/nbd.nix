@@ -59,10 +59,7 @@ import ./make-test-python.nix (
               };
               vault-priv = {
                 path = "/dev/loop0";
-                allowAddresses = [
-                  "127.0.0.1"
-                  "::1"
-                ];
+                allowAddresses = [ "127.0.0.1" "::1" ];
               };
             };
             listenAddress = "0.0.0.0";

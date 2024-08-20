@@ -28,10 +28,6 @@ buildNimPackage {
     homepage = "https://github.com/tridactyl/native_messenger";
     license = licenses.bsd2;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      timokau
-      dit7ya
-      kiike
-    ];
+    maintainers = with maintainers; [ timokau dit7ya kiike ];
   };
 }

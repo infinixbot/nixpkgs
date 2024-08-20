@@ -24,13 +24,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-iwhwiXrFrGfe1Wjc+t9Flpz6imvrD9YK8qnq3Coycqo=";
   };
 
-  outputs = [
-    "bin"
-    "lib"
-    "dev"
-    "info"
-    "out"
-  ];
+  outputs = [ "bin" "lib" "dev" "info" "out" ];
 
   # The CPU Jitter random number generator must not be compiled with
   # optimizations and the optimize -O0 pragma only works for gcc.
@@ -57,10 +51,7 @@ stdenv.mkDerivation rec {
 
   # Necessary to generate correct assembly when compiling for aarch32 on
   # aarch64
-  configurePlatforms = [
-    "host"
-    "build"
-  ];
+  configurePlatforms = [ "host" "build" ];
 
   postConfigure = ''
     sed -i configure \

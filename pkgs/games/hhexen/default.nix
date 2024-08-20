@@ -50,10 +50,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Linux port of Raven Game's Hexen";
     homepage = "https://hhexen.sourceforge.net/hhexen.html";
     license = lib.licenses.gpl2Plus;
-    maintainers = with lib.maintainers; [
-      moody
-      djanatyn
-    ];
+    maintainers = with lib.maintainers; [ moody djanatyn ];
     mainProgram = "hhexen-gl";
     inherit (SDL.meta) platforms;
     broken = stdenv.isDarwin;

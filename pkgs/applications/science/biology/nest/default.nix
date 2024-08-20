@@ -83,10 +83,7 @@ stdenv.mkDerivation rec {
     homepage = "https://www.nest-simulator.org/";
     changelog = "https://github.com/nest/nest-simulator/releases/tag/v${version}";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      jiegec
-      davidcromp
-    ];
+    maintainers = with maintainers; [ jiegec davidcromp ];
     platforms = platforms.unix;
   };
 }

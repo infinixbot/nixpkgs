@@ -19,10 +19,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-X1rE6/sgpB6jeTjLZJL/a7ghjRJYTXSQDHB4PmEFUmU=";
 
-  subPackages = [
-    "cmd/zed"
-    "cmd/zq"
-  ];
+  subPackages = [ "cmd/zed" "cmd/zq" ];
 
   ldflags = [
     "-s"
@@ -45,9 +42,6 @@ buildGoModule rec {
     homepage = "https://zed.brimdata.io";
     changelog = "https://github.com/brimdata/zed/blob/v${version}/CHANGELOG.md";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      dit7ya
-      knl
-    ];
+    maintainers = with maintainers; [ dit7ya knl ];
   };
 }

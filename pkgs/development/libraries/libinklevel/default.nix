@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
     libusb1
   ];
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
   meta = with lib; {
     description = "Library for checking the ink level of your printer";

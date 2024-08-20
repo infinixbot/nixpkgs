@@ -56,10 +56,7 @@ in
     systemd.sockets.static-web-server = {
       wantedBy = [ "sockets.target" ];
       # Start with empty string to reset upstream option
-      listenStreams = [
-        ""
-        cfg.listen
-      ];
+      listenStreams = [ "" cfg.listen ];
     };
     systemd.services.static-web-server = {
       wantedBy = [ "multi-user.target" ];

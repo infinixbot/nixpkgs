@@ -26,9 +26,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/bnjbvr/cargo-machete";
     changelog = "https://github.com/bnjbvr/cargo-machete/blob/${src.rev}/CHANGELOG.md";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      figsoda
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ figsoda matthiasbeyer ];
   };
 }

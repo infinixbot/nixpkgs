@@ -10,10 +10,7 @@ let
     (runCommand name
       {
         requiredSystemFeatures = [ "recursive-nix" ];
-        nativeBuildInputs = [
-          nix
-          rsync
-        ];
+        nativeBuildInputs = [ nix rsync ];
       }
       ''
         base=$PWD
@@ -52,17 +49,9 @@ let
   '';
 in
 rec {
-  unpack =
-    nar-all "unpack.nar.xz"
-      (with pkgs; [
-        bash
-        mkdir
-        xz
-        gnutar
-      ])
-      ''
-        rm -rf include lib/*.a lib/i18n lib/bash share
-      '';
+  unpack = nar-all "unpack.nar.xz" (with pkgs; [ bash mkdir xz gnutar ]) ''
+    rm -rf include lib/*.a lib/i18n lib/bash share
+  '';
   bootstrap-tools = tar-all "bootstrap-tools.tar.xz" (
     with pkgs;
     # SYNCME: this version number must be synced with the one in default.nix

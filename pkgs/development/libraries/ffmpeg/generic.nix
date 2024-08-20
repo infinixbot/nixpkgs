@@ -350,11 +350,7 @@ let
     ;
 in
 
-assert lib.elem ffmpegVariant [
-  "headless"
-  "small"
-  "full"
-];
+assert lib.elem ffmpegVariant [ "headless" "small" "full" ];
 
 # Licensing dependencies
 assert withGPLv3 -> withGPL && withVersion3;
@@ -728,13 +724,7 @@ stdenv.mkDerivation (
     strictDeps = true;
 
     nativeBuildInputs =
-      [
-        removeReferencesTo
-        addDriverRunpath
-        perl
-        pkg-config
-        yasm
-      ]
+      [ removeReferencesTo addDriverRunpath perl pkg-config yasm ]
       # Texinfo version 7.1 introduced breaking changes, which older versions of ffmpeg do not handle.
       ++ (if versionOlder version "5" then [ texinfo6 ] else [ texinfo ])
       ++ optionals withCudaLLVM [ clang ];
@@ -758,10 +748,7 @@ stdenv.mkDerivation (
       ++ optionals withCodec2 [ codec2 ]
       ++ optionals withCoreImage [ CoreImage ]
       ++ optionals withDav1d [ dav1d ]
-      ++ optionals withDc1394 [
-        libdc1394
-        libraw1394
-      ]
+      ++ optionals withDc1394 [ libdc1394 libraw1394 ]
       ++ optionals withDrm [ libdrm ]
       ++ optionals withDvdnav [ libdvdnav ]
       ++ optionals withDvdread [ libdvdread ]
@@ -790,15 +777,9 @@ stdenv.mkDerivation (
       ++ optionals withMysofa [ libmysofa ]
       ++ optionals withOgg [ libogg ]
       ++ optionals withOpenal [ openal ]
-      ++ optionals withOpencl [
-        ocl-icd
-        opencl-headers
-      ]
+      ++ optionals withOpencl [ ocl-icd opencl-headers ]
       ++ optionals (withOpencoreAmrnb || withOpencoreAmrwb) [ opencore-amr ]
-      ++ optionals withOpengl [
-        libGL
-        libGLU
-      ]
+      ++ optionals withOpengl [ libGL libGLU ]
       ++ optionals withOpenh264 [ openh264 ]
       ++ optionals withOpenjpeg [ openjpeg ]
       ++ optionals withOpenmpt [ libopenmpt ]
@@ -834,10 +815,7 @@ stdenv.mkDerivation (
       ++ optionals withVorbis [ libvorbis ]
       ++ optionals withVpl [ libvpl ]
       ++ optionals withVpx [ libvpx ]
-      ++ optionals withVulkan [
-        vulkan-headers
-        vulkan-loader
-      ]
+      ++ optionals withVulkan [ vulkan-headers vulkan-loader ]
       ++ optionals withWebp [ libwebp ]
       ++ optionals withX264 [ x264 ]
       ++ optionals withX265 [ x265 ]
@@ -845,11 +823,7 @@ stdenv.mkDerivation (
       ++ optionals withXcb [ libxcb ]
       ++ optionals withXevd [ xevd ]
       ++ optionals withXeve [ xeve ]
-      ++ optionals withXlib [
-        libX11
-        libXv
-        libXext
-      ]
+      ++ optionals withXlib [ libX11 libXv libXext ]
       ++ optionals withXml2 [ libxml2 ]
       ++ optionals withXvid [ xvidcore ]
       ++ optionals withZimg [ zimg ]
@@ -882,16 +856,10 @@ stdenv.mkDerivation (
 
     outputs =
       optionals withBin [ "bin" ] # The first output is the one that gets symlinked by default!
-      ++ optionals withLib [
-        "lib"
-        "dev"
-      ]
+      ++ optionals withLib [ "lib" "dev" ]
       ++ optionals withDoc [ "doc" ]
       ++ optionals withManPages [ "man" ]
-      ++ [
-        "data"
-        "out"
-      ] # We need an "out" output because we get an error otherwise. It's just an empty dir.
+      ++ [ "data" "out" ] # We need an "out" output because we get an error otherwise. It's just an empty dir.
     ;
 
     postInstall = optionalString buildQtFaststart ''
@@ -949,11 +917,7 @@ stdenv.mkDerivation (
       platforms = platforms.all;
       # See https://github.com/NixOS/nixpkgs/pull/295344#issuecomment-1992263658
       broken = stdenv.hostPlatform.isMinGW && stdenv.hostPlatform.is64bit;
-      maintainers = with maintainers; [
-        atemu
-        jopejoe1
-        emily
-      ];
+      maintainers = with maintainers; [ atemu jopejoe1 emily ];
       mainProgram = "ffmpeg";
     };
   }

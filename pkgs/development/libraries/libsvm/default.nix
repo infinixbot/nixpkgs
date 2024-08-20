@@ -20,16 +20,9 @@ stdenv.mkDerivation rec {
 
   buildInputs = lib.optionals (stdenv.cc.isClang && withOpenMP) [ llvmPackages.openmp ];
 
-  buildFlags = [
-    "lib"
-    "all"
-  ];
+  buildFlags = [ "lib" "all" ];
 
-  outputs = [
-    "out"
-    "bin"
-    "dev"
-  ];
+  outputs = [ "out" "bin" "dev" ];
 
   nativeBuildInputs = lib.optionals stdenv.isDarwin [ fixDarwinDylibNames ];
 

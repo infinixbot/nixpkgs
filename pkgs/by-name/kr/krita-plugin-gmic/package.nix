@@ -28,10 +28,7 @@ stdenv.mkDerivation (finalAttrs: {
       translations/lrelease.sh
   '';
 
-  nativeBuildInputs = [
-    cmake
-    extra-cmake-modules
-  ];
+  nativeBuildInputs = [ cmake extra-cmake-modules ];
 
   buildInputs = [
     fftw

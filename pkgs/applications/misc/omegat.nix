@@ -17,10 +17,7 @@ stdenv.mkDerivation {
     sha256 = "sha256-dsbT5iuZBudUL4Kw4rdvi4y98mcvnYNj9jRvC5wJoYI=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    unzip
-  ];
+  nativeBuildInputs = [ makeWrapper unzip ];
 
   unpackCmd = "unzip -o $curSrc"; # tries to go interactive without -o
 
@@ -48,9 +45,6 @@ stdenv.mkDerivation {
     sourceProvenance = with sourceTypes; [ binaryBytecode ];
     license = licenses.gpl3Plus;
     maintainers = with maintainers; [ t184256 ];
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
   };
 }

@@ -14,35 +14,9 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "locate"
-        "period"
-      ]
-      [
-        "services"
-        "locate"
-        "interval"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "locate"
-        "locate"
-      ]
-      [
-        "services"
-        "locate"
-        "package"
-      ]
-    )
-    (lib.mkRemovedOptionModule [
-      "services"
-      "locate"
-      "includeStore"
-    ] "Use services.locate.prunePaths")
+    (lib.mkRenamedOptionModule [ "services" "locate" "period" ] [ "services" "locate" "interval" ])
+    (lib.mkRenamedOptionModule [ "services" "locate" "locate" ] [ "services" "locate" "package" ])
+    (lib.mkRemovedOptionModule [ "services" "locate" "includeStore" ] "Use services.locate.prunePaths")
   ];
 
   options.services.locate = {
@@ -55,15 +29,9 @@ in
       '';
     };
 
-    package =
-      lib.mkPackageOption pkgs
-        [
-          "findutils"
-          "locate"
-        ]
-        {
-          example = "mlocate";
-        };
+    package = lib.mkPackageOption pkgs [ "findutils" "locate" ] {
+      example = "mlocate";
+    };
 
     interval = lib.mkOption {
       type = lib.types.str;
@@ -212,13 +180,7 @@ in
 
     pruneNames = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = lib.optionals (!isFindutils) [
-        ".bzr"
-        ".cache"
-        ".git"
-        ".hg"
-        ".svn"
-      ];
+      default = lib.optionals (!isFindutils) [ ".bzr" ".cache" ".git" ".hg" ".svn" ];
       defaultText = lib.literalMD ''
         `[ ".bzr" ".cache" ".git" ".hg" ".svn" ]`, if
         supported by the locate implementation (i.e. mlocate or plocate).
@@ -262,17 +224,8 @@ in
         };
       in
       lib.mkIf isMorPLocate {
-        locate = lib.mkMerge [
-          common
-          mlocate
-          plocate
-        ];
-        plocate = lib.mkIf isPLocate (
-          lib.mkMerge [
-            common
-            plocate
-          ]
-        );
+        locate = lib.mkMerge [ common mlocate plocate ];
+        plocate = lib.mkIf isPLocate (lib.mkMerge [ common plocate ]);
       };
 
     environment = {
@@ -312,13 +265,7 @@ in
           let
             toFlags =
               x: lib.optional (cfg.${x} != [ ]) "--${lib.toLower x} '${lib.concatStringsSep " " cfg.${x}}'";
-            args = lib.concatLists (
-              map toFlags [
-                "pruneFS"
-                "pruneNames"
-                "prunePaths"
-              ]
-            );
+            args = lib.concatLists (map toFlags [ "pruneFS" "pruneNames" "prunePaths" ]);
           in
           ''
             exec ${cfg.package}/bin/updatedb \

@@ -15,10 +15,7 @@ rustPlatform.buildRustPackage rec {
   pname = "phetch";
   version = "1.2.0";
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   src = fetchFromGitHub {
     owner = "xvxx";
@@ -29,12 +26,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-y3Y5PnZ51Zc3LmVTijUGnb0KaGm28sWOSYxjuM3A1Zk=";
 
-  nativeBuildInputs = [
-    installShellFiles
-    pkg-config
-    scdoc
-    which
-  ];
+  nativeBuildInputs = [ installShellFiles pkg-config scdoc which ];
   buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ Security ];
 
   postInstall = ''

@@ -84,11 +84,7 @@ python.pkgs.buildPythonPackage rec {
     description = "Matrix-Telegram hybrid puppeting/relaybot bridge";
     license = licenses.agpl3Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      nyanloutre
-      ma27
-      nickcao
-    ];
+    maintainers = with maintainers; [ nyanloutre ma27 nickcao ];
     mainProgram = "mautrix-telegram";
   };
 }

@@ -19,10 +19,7 @@ stdenv.mkDerivation {
     sha256 = "uvajxSelk1Wfd5is5kmT2fzDShlufBgC0PDCeabEOSE=";
   };
 
-  buildInputs = [
-    AppKit
-    Cocoa
-  ];
+  buildInputs = [ AppKit Cocoa ];
 
   installPhase = ''
     mkdir -p $out/bin

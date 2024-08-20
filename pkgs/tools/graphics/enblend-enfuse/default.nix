@@ -29,26 +29,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-0gCUSdg3HR3YeIbOByEBCZh2zGlYur6DeCOzUM53fdc=";
   };
 
-  buildInputs = [
-    boost
-    libglut
-    glew
-    gsl
-    lcms2
-    libpng
-    libtiff
-    libGLU
-    libGL
-    vigra
-  ];
+  buildInputs = [ boost libglut glew gsl lcms2 libpng libtiff libGLU libGL vigra ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    help2man
-    perl
-    pkg-config
-    texliveSmall
-  ];
+  nativeBuildInputs = [ autoreconfHook help2man perl pkg-config texliveSmall ];
 
   preConfigure = ''
     patchShebangs src/embrace

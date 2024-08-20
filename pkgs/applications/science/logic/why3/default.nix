@@ -66,18 +66,9 @@ stdenv.mkDerivation rec {
     ]
     ++
       # Coq Support
-      (with coqPackages; [
-        coq
-        flocq
-      ]);
+      (with coqPackages; [ coq flocq ]);
 
-  propagatedBuildInputs = with ocamlPackages; [
-    camlzip
-    menhirLib
-    num
-    re
-    sexplib
-  ];
+  propagatedBuildInputs = with ocamlPackages; [ camlzip menhirLib num re sexplib ];
 
   enableParallelBuilding = true;
 
@@ -86,15 +77,9 @@ stdenv.mkDerivation rec {
     (lib.enableFeature ideSupport "ide")
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
-  installTargets = [
-    "install"
-    "install-lib"
-  ];
+  installTargets = [ "install" "install-lib" ];
 
   postInstall = ''
     mkdir -p $dev/lib
@@ -108,9 +93,6 @@ stdenv.mkDerivation rec {
     homepage = "https://why3.lri.fr/";
     license = licenses.lgpl21;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      thoughtpolice
-      vbgl
-    ];
+    maintainers = with maintainers; [ thoughtpolice vbgl ];
   };
 }

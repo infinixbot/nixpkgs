@@ -179,11 +179,7 @@ let
   optionsNix = builtins.listToAttrs (
     map (o: {
       name = o.name;
-      value = removeAttrs o [
-        "name"
-        "visible"
-        "internal"
-      ];
+      value = removeAttrs o [ "name" "visible" "internal" ];
     }) optionsList
   );
 

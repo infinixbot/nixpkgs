@@ -28,10 +28,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   passthru.updateScript = nix-update-script {
-    extraArgs = [
-      "--version-regex"
-      "uuu_\([0-9.]+\)"
-    ];
+    extraArgs = [ "--version-regex" "uuu_\([0-9.]+\)" ];
   };
 
   nativeBuildInputs = [

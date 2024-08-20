@@ -118,12 +118,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     license = licenses.mit;
     homepage = "https://github.com/yshui/picom";
-    maintainers = with maintainers; [
-      ertes
-      gepbird
-      twey
-      thiagokokada
-    ];
+    maintainers = with maintainers; [ ertes gepbird twey thiagokokada ];
     platforms = platforms.linux;
     mainProgram = "picom";
   };

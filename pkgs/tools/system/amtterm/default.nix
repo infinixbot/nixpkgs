@@ -11,10 +11,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "amtterm";
   version = "1.7-1";
 
-  buildInputs = with perlPackages; [
-    perl
-    SOAPLite
-  ];
+  buildInputs = with perlPackages; [ perl SOAPLite ];
   nativeBuildInputs = [ makeWrapper ];
 
   src = fetchurl {
@@ -22,10 +19,7 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-WrYWAXLW74hb/DfSiPyiFIGAUfDQFdNEPx+XevZYcyk=";
   };
 
-  makeFlags = [
-    "prefix=$(out)"
-    "STRIP="
-  ];
+  makeFlags = [ "prefix=$(out)" "STRIP=" ];
 
   postInstall = "wrapProgram $out/bin/amttool --prefix PERL5LIB : $PERL5LIB";
 

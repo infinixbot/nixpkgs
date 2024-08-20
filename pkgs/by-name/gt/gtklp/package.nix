@@ -36,11 +36,7 @@ stdenv.mkDerivation (finalAttrs: {
     openssl
   ];
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
 
   strictDeps = true;
 

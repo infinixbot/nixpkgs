@@ -19,17 +19,11 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs = [ autoreconfHook ];
   depsBuildBuild = [ buildPackages.stdenv.cc ];
-  propagatedBuildInputs = [
-    audiofile
-    libtiff
-  ];
+  propagatedBuildInputs = [ audiofile libtiff ];
 
   configureFlags = [
     # This flag is required to prevent linking error in the cross-compilation case.

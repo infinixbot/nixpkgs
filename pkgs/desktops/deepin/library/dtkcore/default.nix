@@ -51,10 +51,7 @@ stdenv.mkDerivation rec {
     libuchardet
   ];
 
-  propagatedBuildInputs = [
-    dtkcommon
-    dtklog
-  ];
+  propagatedBuildInputs = [ dtkcommon dtklog ];
 
   cmakeFlags = [
     "-DDTK_VERSION=${version}"
@@ -73,11 +70,7 @@ stdenv.mkDerivation rec {
     export QT_PLUGIN_PATH=${libsForQt5.qtbase.bin}/${libsForQt5.qtbase.qtPluginPrefix}
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
   postFixup = ''
     for binary in $out/libexec/dtk5/DCore/bin/*; do

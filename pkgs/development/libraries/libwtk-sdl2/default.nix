@@ -34,11 +34,7 @@ stdenv.mkDerivation (finalAttrs: {
   # From some reason, this is needed as otherwise SDL.h is not found
   NIX_CFLAGS_COMPILE = "-I${SDL2.dev}/include/SDL2";
 
-  outputs = [
-    "out"
-    "dev"
-    "lib"
-  ];
+  outputs = [ "out" "dev" "lib" ];
 
   meta = with lib; {
     description = "Simplistic SDL2 GUI framework in early developement";

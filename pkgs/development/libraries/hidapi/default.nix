@@ -22,22 +22,13 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-p3uzBq5VxxQbVuy1lEHEEQdxXwnhQgJDIyAAWjVWNIg=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
-  buildInputs = lib.optionals stdenv.isLinux [
-    libusb1
-    udev
-  ];
+  buildInputs = lib.optionals stdenv.isLinux [ libusb1 udev ];
 
   enableParallelBuilding = true;
 
-  propagatedBuildInputs = lib.optionals stdenv.isDarwin [
-    Cocoa
-    IOKit
-  ];
+  propagatedBuildInputs = lib.optionals stdenv.isDarwin [ Cocoa IOKit ];
 
   passthru.tests.pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
 

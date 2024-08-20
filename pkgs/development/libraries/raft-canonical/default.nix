@@ -21,15 +21,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-ogTw0+ZFhMRaLAxAAXzHSlLRYFuX8W/zjqglXHfvUv4=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    file
-    pkg-config
-  ];
-  buildInputs = [
-    libuv
-    lz4
-  ];
+  nativeBuildInputs = [ autoreconfHook file pkg-config ];
+  buildInputs = [ libuv lz4 ];
 
   enableParallelBuilding = true;
 
@@ -47,10 +40,7 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  outputs = [
-    "dev"
-    "out"
-  ];
+  outputs = [ "dev" "out" ];
 
   passthru.tests = {
     inherit lxd-lts;

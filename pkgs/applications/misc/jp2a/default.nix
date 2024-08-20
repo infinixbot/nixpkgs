@@ -30,11 +30,7 @@ stdenv.mkDerivation rec {
     pkg-config
     bash-completion
   ];
-  buildInputs = [
-    libjpeg
-    libpng
-    ncurses
-  ];
+  buildInputs = [ libjpeg libpng ncurses ];
 
   installFlags = [ "bashcompdir=\${out}/share/bash-completion/completions" ];
 

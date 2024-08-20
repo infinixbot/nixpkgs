@@ -145,10 +145,7 @@ let
     runCommand "addonsJoined"
       {
         inherit addonsDrvs;
-        nativeBuildInputs = [
-          unzip
-          jq
-        ];
+        nativeBuildInputs = [ unzip jq ];
       }
       ''
         mkdir $out
@@ -199,12 +196,7 @@ stdenv.mkDerivation rec {
   dontFixup = true;
 
   pythonPath =
-    optionals (withScripting) [
-      wxPython
-      python.pkgs.six
-      python.pkgs.requests
-    ]
-    ++ addonsDrvs;
+    optionals (withScripting) [ wxPython python.pkgs.six python.pkgs.requests ] ++ addonsDrvs;
 
   nativeBuildInputs = [ makeWrapper ] ++ optionals (withScripting) [ python.pkgs.wrapPython ];
 
@@ -262,22 +254,8 @@ stdenv.mkDerivation rec {
   installPhase =
     let
       bin = if stdenv.isDarwin then "*.app/Contents/MacOS" else "bin";
-      tools = [
-        "kicad"
-        "pcbnew"
-        "eeschema"
-        "gerbview"
-        "pcb_calculator"
-        "pl_editor"
-        "bitmap2component"
-      ];
-      utils = [
-        "dxf2idf"
-        "idf2vrml"
-        "idfcyl"
-        "idfrect"
-        "kicad-cli"
-      ];
+      tools = [ "kicad" "pcbnew" "eeschema" "gerbview" "pcb_calculator" "pl_editor" "bitmap2component" ];
+      utils = [ "dxf2idf" "idf2vrml" "idfcyl" "idfrect" "kicad-cli" ];
     in
     (concatStringsSep "\n" (flatten [
       "runHook preInstall"
@@ -306,10 +284,7 @@ stdenv.mkDerivation rec {
   '';
 
   passthru.updateScript = {
-    command = [
-      ./update.sh
-      "${pname}"
-    ];
+    command = [ ./update.sh "${pname}" ];
     supportedFeatures = [ "commit" ];
   };
 

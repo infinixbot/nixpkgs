@@ -44,13 +44,7 @@ stdenv.mkDerivation rec {
     popd
   '';
 
-  nativeBuildInputs = [
-    pkg-config
-    autoconf
-    automake
-    libtool
-    which
-  ];
+  nativeBuildInputs = [ pkg-config autoconf automake libtool which ];
 
   buildInputs = [
     mono

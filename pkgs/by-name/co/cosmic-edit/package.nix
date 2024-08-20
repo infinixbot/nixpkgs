@@ -57,11 +57,7 @@ rustPlatform.buildRustPackage rec {
     substituteInPlace justfile --replace '#!/usr/bin/env' "#!$(command -v env)"
   '';
 
-  nativeBuildInputs = [
-    just
-    pkg-config
-    makeBinaryWrapper
-  ];
+  nativeBuildInputs = [ just pkg-config makeBinaryWrapper ];
   buildInputs = [
     libxkbcommon
     xorg.libX11
@@ -117,10 +113,7 @@ rustPlatform.buildRustPackage rec {
     description = "Text Editor for the COSMIC Desktop Environment";
     mainProgram = "cosmic-edit";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      ahoneybun
-      nyanbinary
-    ];
+    maintainers = with maintainers; [ ahoneybun nyanbinary ];
     platforms = platforms.linux;
   };
 }

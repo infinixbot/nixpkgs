@@ -23,10 +23,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = {
     description = "Purely functional dialect of Lisp";
     homepage = "https://yuriy-chumak.github.io/ol/";
-    license = with lib.licenses; [
-      mit
-      lgpl3Only
-    ]; # dual licensed
+    license = with lib.licenses; [ mit lgpl3Only ]; # dual licensed
     platforms = lib.platforms.unix;
     maintainers = with lib.maintainers; [ nagy ];
     mainProgram = "ol";

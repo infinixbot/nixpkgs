@@ -24,11 +24,7 @@ stdenv.mkDerivation rec {
 
   buildInputs =
     lib.optionals stdenv.isLinux [ libX11 ]
-    ++ lib.optionals stdenv.isDarwin [
-      Cocoa
-      IOKit
-      Kernel
-    ];
+    ++ lib.optionals stdenv.isDarwin [ Cocoa IOKit Kernel ];
 
   cmakeFlags = [
     "-DCMAKE_INSTALL_LIBDIR=lib"

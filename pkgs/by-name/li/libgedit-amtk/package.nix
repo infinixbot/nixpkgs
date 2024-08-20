@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
   pname = "libgedit-amtk";
   version = "5.8.0";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchFromGitHub {
     owner = "gedit-technology";
@@ -76,10 +72,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "https://github.com/gedit-technology/libgedit-amtk";
     description = "Actions, Menus and Toolbars Kit for GTK applications";
-    maintainers = with maintainers; [
-      manveru
-      bobby285271
-    ];
+    maintainers = with maintainers; [ manveru bobby285271 ];
     license = licenses.lgpl21Plus;
     platforms = platforms.linux;
   };

@@ -109,10 +109,7 @@ stdenv.mkDerivation (finalAttrs: {
   doCheck = true;
   enableParallelBuilding = true;
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   passthru.tests = {
     inherit (nixosTests) systemd-cryptenroll;

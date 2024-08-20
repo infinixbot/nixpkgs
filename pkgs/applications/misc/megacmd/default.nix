@@ -35,10 +35,7 @@ stdenv.mkDerivation rec {
   };
 
   enableParallelBuilding = true;
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
   buildInputs = [
     c-ares
@@ -78,14 +75,8 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "MEGA Command Line Interactive and Scriptable Application";
     homepage = "https://mega.io/cmd";
-    license = with licenses; [
-      bsd2
-      gpl3Only
-    ];
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    license = with licenses; [ bsd2 gpl3Only ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
     maintainers = with maintainers; [ lunik1 ];
   };
 }

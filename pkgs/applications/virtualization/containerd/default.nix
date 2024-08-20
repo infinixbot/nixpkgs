@@ -23,11 +23,7 @@ buildGoModule rec {
 
   vendorHash = null;
 
-  nativeBuildInputs = [
-    go-md2man
-    installShellFiles
-    util-linux
-  ];
+  nativeBuildInputs = [ go-md2man installShellFiles util-linux ];
 
   buildInputs = [ btrfs-progs ];
 
@@ -57,10 +53,7 @@ buildGoModule rec {
     homepage = "https://containerd.io/";
     description = "Daemon to control runC";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      offline
-      vdemeester
-    ];
+    maintainers = with maintainers; [ offline vdemeester ];
     platforms = platforms.linux;
   };
 }

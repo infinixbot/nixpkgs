@@ -14,10 +14,7 @@ let
 
   cudatoolkit_joined = symlinkJoin {
     name = "${cudatoolkit.name}-unsplit";
-    paths = [
-      cudatoolkit.out
-      cudatoolkit.lib
-    ];
+    paths = [ cudatoolkit.out cudatoolkit.lib ];
   };
 
   # We do not have access to /run/opengl-driver/lib in the sandbox,

@@ -13,10 +13,7 @@
   ch4backend,
   # Process managers to build (`--with-pm`),
   # cf. https://github.com/pmodels/mpich/blob/b80a6d7c24defe7cdf6c57c52430f8075a0a41d6/README.vin#L562-L586
-  withPm ? [
-    "hydra"
-    "gforker"
-  ],
+  withPm ? [ "hydra" "gforker" ],
   pmix,
   # PMIX support is likely incompatible with process managers (`--with-pm`)
   # https://github.com/NixOS/nixpkgs/pull/274804#discussion_r1432601476
@@ -38,11 +35,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-iD9bs66r9ifLhJLKAqA7GR0Jg2u+D1mdhQg1EXl4HUE=";
   };
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
 
   configureFlags =
     [
@@ -59,16 +52,9 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [
-    gfortran
-    python3
-  ];
+  nativeBuildInputs = [ gfortran python3 ];
   buildInputs =
-    [
-      perl
-      openssh
-      hwloc
-    ]
+    [ perl openssh hwloc ]
     ++ lib.optional (!stdenv.isDarwin) ch4backend
     ++ lib.optional pmixSupport pmix
     ++ lib.optional stdenv.isDarwin darwin.apple_sdk.frameworks.Foundation;

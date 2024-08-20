@@ -35,10 +35,7 @@ stdenv.mkDerivation rec {
   pname = "x265";
   version = "3.6";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   # Check that x265Version.txt contains the expected version number
   # whether we fetch a source tarball or a tag from the git repo
@@ -68,10 +65,7 @@ stdenv.mkDerivation rec {
       echo 'set(X265_LATEST_TAG "${version}")' >> ./cmake/Version.cmake
     '';
 
-  nativeBuildInputs = [
-    cmake
-    nasm
-  ] ++ lib.optionals (numaSupport) [ numactl ];
+  nativeBuildInputs = [ cmake nasm ] ++ lib.optionals (numaSupport) [ numactl ];
 
   cmakeFlags =
     [

@@ -162,10 +162,7 @@ stdenv.mkDerivation (
 
     src = src';
 
-    outputs = [
-      "out"
-      "dev"
-    ];
+    outputs = [ "out" "dev" ];
 
     preConfigure = lib.optionalString stdenv.hostPlatform.isMusl ''
       patchShebangs utils/cat_files.py
@@ -230,10 +227,7 @@ stdenv.mkDerivation (
       '';
       # "All of the code in libc++ is dual licensed under the MIT license and the
       # UIUC License (a BSD-like license)":
-      license = with lib.licenses; [
-        mit
-        ncsa
-      ];
+      license = with lib.licenses; [ mit ncsa ];
     };
   }
   // (

@@ -21,10 +21,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [ ponyc ];
 
-  installFlags = [
-    "prefix=${placeholder "out"}"
-    "install"
-  ];
+  installFlags = [ "prefix=${placeholder "out"}" "install" ];
 
   passthru.updateScript = nix-update-script { };
 

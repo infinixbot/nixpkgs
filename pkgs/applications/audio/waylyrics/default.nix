@@ -21,14 +21,8 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-v1+1ivbJAZLqnnFaR6vmpcZ7vd5j3afZliggXaHiwWM=";
 
-  nativeBuildInputs = [
-    pkg-config
-    wrapGAppsHook4
-  ];
-  buildInputs = [
-    openssl
-    dbus
-  ];
+  nativeBuildInputs = [ pkg-config wrapGAppsHook4 ];
+  buildInputs = [ openssl dbus ];
 
   checkFlags = [
     "--skip=tests::netease_lyric::get_netease_lyric" # Requires network access
@@ -64,14 +58,8 @@ rustPlatform.buildRustPackage rec {
     description = "Desktop lyrics with QQ and NetEase Music source";
     mainProgram = "waylyrics";
     homepage = "https://github.com/waylyrics/waylyrics";
-    license = with licenses; [
-      mit
-      cc-by-40
-    ];
-    maintainers = with maintainers; [
-      shadowrz
-      aleksana
-    ];
+    license = with licenses; [ mit cc-by-40 ];
+    maintainers = with maintainers; [ shadowrz aleksana ];
     platforms = platforms.linux;
   };
 }

@@ -48,10 +48,7 @@ rustPlatform.buildRustPackage rec {
   RUSTFLAGS = "--cfg tokio_unstable";
 
   # Some users might want to add "rustls-tls(-native)" for Rust TLS instead of OpenSSL.
-  buildFeatures = [
-    "video-ffmpeg"
-    "lang-cjk"
-  ];
+  buildFeatures = [ "video-ffmpeg" "lang-cjk" ];
 
   nativeBuildInputs = [
     cmake
@@ -93,13 +90,7 @@ rustPlatform.buildRustPackage rec {
 
   postFixup = ''
     patchelf $out/bin/gossip \
-      --add-rpath ${
-        lib.makeLibraryPath [
-          libGL
-          libxkbcommon
-          wayland
-        ]
-      }
+      --add-rpath ${lib.makeLibraryPath [ libGL libxkbcommon wayland ]}
   '';
 
   desktopItems = [
@@ -109,11 +100,7 @@ rustPlatform.buildRustPackage rec {
       icon = "gossip";
       comment = meta.description;
       desktopName = "Gossip";
-      categories = [
-        "Chat"
-        "Network"
-        "InstantMessaging"
-      ];
+      categories = [ "Chat" "Network" "InstantMessaging" ];
       startupWMClass = "gossip";
     })
   ];

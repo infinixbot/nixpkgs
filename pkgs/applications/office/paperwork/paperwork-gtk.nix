@@ -22,12 +22,7 @@
 
 let
   documentation_deps = [
-    (texliveSmall.withPackages (
-      ps: with ps; [
-        wrapfig
-        gensymb
-      ]
-    ))
+    (texliveSmall.withPackages (ps: with ps; [ wrapfig gensymb ]))
     xvfb-run
     imagemagick
     perlPackages.Po4a
@@ -152,10 +147,7 @@ python3Packages.buildPythonApplication rec {
     description = "Personal document manager for scanned documents";
     homepage = "https://openpaper.work/";
     license = lib.licenses.gpl3Plus;
-    maintainers = with lib.maintainers; [
-      aszlig
-      symphorien
-    ];
+    maintainers = with lib.maintainers; [ aszlig symphorien ];
     platforms = lib.platforms.linux;
   };
 }

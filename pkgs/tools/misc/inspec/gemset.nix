@@ -1,11 +1,6 @@
 {
   activesupport = {
-    dependencies = [
-      "concurrent-ruby"
-      "i18n"
-      "minitest"
-      "tzinfo"
-    ];
+    dependencies = [ "concurrent-ruby" "i18n" "minitest" "tzinfo" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -57,10 +52,7 @@
     version = "1.864.0";
   };
   aws-sdk-account = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -71,10 +63,7 @@
     version = "1.20.0";
   };
   aws-sdk-alexaforbusiness = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -85,10 +74,7 @@
     version = "1.67.0";
   };
   aws-sdk-amplify = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -99,10 +85,7 @@
     version = "1.32.0";
   };
   aws-sdk-apigateway = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -113,10 +96,7 @@
     version = "1.90.0";
   };
   aws-sdk-apigatewayv2 = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -127,10 +107,7 @@
     version = "1.53.0";
   };
   aws-sdk-applicationautoscaling = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -141,10 +118,7 @@
     version = "1.51.0";
   };
   aws-sdk-athena = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -155,10 +129,7 @@
     version = "1.79.0";
   };
   aws-sdk-autoscaling = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -169,10 +140,7 @@
     version = "1.92.0";
   };
   aws-sdk-batch = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -183,10 +151,7 @@
     version = "1.73.0";
   };
   aws-sdk-budgets = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -197,10 +162,7 @@
     version = "1.62.0";
   };
   aws-sdk-cloudformation = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -211,10 +173,7 @@
     version = "1.97.0";
   };
   aws-sdk-cloudfront = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -225,10 +184,7 @@
     version = "1.86.0";
   };
   aws-sdk-cloudhsm = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -239,10 +195,7 @@
     version = "1.50.0";
   };
   aws-sdk-cloudhsmv2 = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -253,10 +206,7 @@
     version = "1.53.0";
   };
   aws-sdk-cloudtrail = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -267,10 +217,7 @@
     version = "1.74.0";
   };
   aws-sdk-cloudwatch = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -281,10 +228,7 @@
     version = "1.84.0";
   };
   aws-sdk-cloudwatchevents = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -295,10 +239,7 @@
     version = "1.62.0";
   };
   aws-sdk-cloudwatchlogs = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -309,10 +250,7 @@
     version = "1.75.0";
   };
   aws-sdk-codecommit = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -323,10 +261,7 @@
     version = "1.62.0";
   };
   aws-sdk-codedeploy = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -337,10 +272,7 @@
     version = "1.63.0";
   };
   aws-sdk-codepipeline = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -351,10 +283,7 @@
     version = "1.67.0";
   };
   aws-sdk-cognitoidentity = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -365,10 +294,7 @@
     version = "1.45.0";
   };
   aws-sdk-cognitoidentityprovider = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -379,10 +305,7 @@
     version = "1.76.0";
   };
   aws-sdk-configservice = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -393,12 +316,7 @@
     version = "1.103.0";
   };
   aws-sdk-core = {
-    dependencies = [
-      "aws-eventstream"
-      "aws-partitions"
-      "aws-sigv4"
-      "jmespath"
-    ];
+    dependencies = [ "aws-eventstream" "aws-partitions" "aws-sigv4" "jmespath" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -409,10 +327,7 @@
     version = "3.190.0";
   };
   aws-sdk-costandusagereportservice = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -423,10 +338,7 @@
     version = "1.53.0";
   };
   aws-sdk-databasemigrationservice = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -437,10 +349,7 @@
     version = "1.80.0";
   };
   aws-sdk-dynamodb = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -451,10 +360,7 @@
     version = "1.98.0";
   };
   aws-sdk-ec2 = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -465,10 +371,7 @@
     version = "1.430.0";
   };
   aws-sdk-ecr = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -479,10 +382,7 @@
     version = "1.68.0";
   };
   aws-sdk-ecrpublic = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -493,10 +393,7 @@
     version = "1.25.0";
   };
   aws-sdk-ecs = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -507,10 +404,7 @@
     version = "1.135.0";
   };
   aws-sdk-efs = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -521,10 +415,7 @@
     version = "1.71.0";
   };
   aws-sdk-eks = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -535,10 +426,7 @@
     version = "1.95.0";
   };
   aws-sdk-elasticache = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -549,10 +437,7 @@
     version = "1.95.0";
   };
   aws-sdk-elasticbeanstalk = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -563,10 +448,7 @@
     version = "1.63.0";
   };
   aws-sdk-elasticloadbalancing = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -577,10 +459,7 @@
     version = "1.51.0";
   };
   aws-sdk-elasticloadbalancingv2 = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -591,10 +470,7 @@
     version = "1.96.0";
   };
   aws-sdk-elasticsearchservice = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -605,10 +481,7 @@
     version = "1.79.0";
   };
   aws-sdk-emr = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -619,10 +492,7 @@
     version = "1.53.0";
   };
   aws-sdk-eventbridge = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -633,10 +503,7 @@
     version = "1.46.0";
   };
   aws-sdk-firehose = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -647,10 +514,7 @@
     version = "1.60.0";
   };
   aws-sdk-glue = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -661,10 +525,7 @@
     version = "1.145.0";
   };
   aws-sdk-guardduty = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -675,10 +536,7 @@
     version = "1.85.0";
   };
   aws-sdk-iam = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -689,10 +547,7 @@
     version = "1.92.0";
   };
   aws-sdk-kafka = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -703,10 +558,7 @@
     version = "1.67.0";
   };
   aws-sdk-kinesis = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -717,10 +569,7 @@
     version = "1.54.0";
   };
   aws-sdk-kms = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -731,10 +580,7 @@
     version = "1.74.0";
   };
   aws-sdk-lambda = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -745,10 +591,7 @@
     version = "1.113.0";
   };
   aws-sdk-mq = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -759,10 +602,7 @@
     version = "1.40.0";
   };
   aws-sdk-networkfirewall = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -773,10 +613,7 @@
     version = "1.39.0";
   };
   aws-sdk-networkmanager = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -787,10 +624,7 @@
     version = "1.40.0";
   };
   aws-sdk-organizations = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -801,10 +635,7 @@
     version = "1.77.0";
   };
   aws-sdk-ram = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -815,10 +646,7 @@
     version = "1.26.0";
   };
   aws-sdk-rds = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -829,10 +657,7 @@
     version = "1.208.0";
   };
   aws-sdk-redshift = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -843,10 +668,7 @@
     version = "1.107.0";
   };
   aws-sdk-route53 = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -857,10 +679,7 @@
     version = "1.83.0";
   };
   aws-sdk-route53domains = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -871,10 +690,7 @@
     version = "1.54.0";
   };
   aws-sdk-route53resolver = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -885,11 +701,7 @@
     version = "1.51.0";
   };
   aws-sdk-s3 = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sdk-kms"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sdk-kms" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -900,10 +712,7 @@
     version = "1.141.0";
   };
   aws-sdk-s3control = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -914,10 +723,7 @@
     version = "1.43.0";
   };
   aws-sdk-secretsmanager = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -928,10 +734,7 @@
     version = "1.46.0";
   };
   aws-sdk-securityhub = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -942,10 +745,7 @@
     version = "1.99.0";
   };
   aws-sdk-servicecatalog = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -956,10 +756,7 @@
     version = "1.60.0";
   };
   aws-sdk-ses = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -970,10 +767,7 @@
     version = "1.41.0";
   };
   aws-sdk-shield = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -984,10 +778,7 @@
     version = "1.60.0";
   };
   aws-sdk-signer = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -998,10 +789,7 @@
     version = "1.32.0";
   };
   aws-sdk-simpledb = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv2"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv2" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1012,10 +800,7 @@
     version = "1.29.0";
   };
   aws-sdk-sms = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1026,10 +811,7 @@
     version = "1.52.0";
   };
   aws-sdk-sns = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1040,10 +822,7 @@
     version = "1.70.0";
   };
   aws-sdk-sqs = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1054,10 +833,7 @@
     version = "1.69.0";
   };
   aws-sdk-ssm = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1068,10 +844,7 @@
     version = "1.162.0";
   };
   aws-sdk-states = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1082,10 +855,7 @@
     version = "1.39.0";
   };
   aws-sdk-synthetics = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1096,10 +866,7 @@
     version = "1.19.0";
   };
   aws-sdk-transfer = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1110,10 +877,7 @@
     version = "1.73.0";
   };
   aws-sdk-waf = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1220,14 +984,7 @@
     version = "3.2.4";
   };
   chef-config = {
-    dependencies = [
-      "addressable"
-      "chef-utils"
-      "fuzzyurl"
-      "mixlib-config"
-      "mixlib-shellout"
-      "tomlrb"
-    ];
+    dependencies = [ "addressable" "chef-utils" "fuzzyurl" "mixlib-config" "mixlib-shellout" "tomlrb" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1256,10 +1013,7 @@
     version = "0.7.5";
   };
   chef-telemetry = {
-    dependencies = [
-      "chef-config"
-      "concurrent-ruby"
-    ];
+    dependencies = [ "chef-config" "concurrent-ruby" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1332,10 +1086,7 @@
     version = "1.5.0";
   };
   docker-api = {
-    dependencies = [
-      "excon"
-      "multi_json"
-    ];
+    dependencies = [ "excon" "multi_json" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1356,10 +1107,7 @@
     version = "0.6.20231109";
   };
   dry-configurable = {
-    dependencies = [
-      "concurrent-ruby"
-      "dry-core"
-    ];
+    dependencies = [ "concurrent-ruby" "dry-core" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1381,10 +1129,7 @@
     version = "0.11.0";
   };
   dry-core = {
-    dependencies = [
-      "concurrent-ruby"
-      "zeitwerk"
-    ];
+    dependencies = [ "concurrent-ruby" "zeitwerk" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1405,11 +1150,7 @@
     version = "0.3.0";
   };
   dry-logic = {
-    dependencies = [
-      "concurrent-ruby"
-      "dry-core"
-      "zeitwerk"
-    ];
+    dependencies = [ "concurrent-ruby" "dry-core" "zeitwerk" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1420,12 +1161,7 @@
     version = "1.3.0";
   };
   dry-struct = {
-    dependencies = [
-      "dry-core"
-      "dry-types"
-      "ice_nine"
-      "zeitwerk"
-    ];
+    dependencies = [ "dry-core" "dry-types" "ice_nine" "zeitwerk" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1497,10 +1233,7 @@
     version = "1.10.3";
   };
   faraday-cookie_jar = {
-    dependencies = [
-      "faraday"
-      "http-cookie"
-    ];
+    dependencies = [ "faraday" "http-cookie" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1685,14 +1418,7 @@
     version = "0.52.0";
   };
   googleauth = {
-    dependencies = [
-      "faraday"
-      "jwt"
-      "memoist"
-      "multi_json"
-      "os"
-      "signet"
-    ];
+    dependencies = [ "faraday" "jwt" "memoist" "multi_json" "os" "signet" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1714,10 +1440,7 @@
     version = "1.3.1";
   };
   gyoku = {
-    dependencies = [
-      "builder"
-      "rexml"
-    ];
+    dependencies = [ "builder" "rexml" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1899,10 +1622,7 @@
     version = "2.7.1";
   };
   jsonpath = {
-    dependencies = [
-      "multi_json"
-      "to_regexp"
-    ];
+    dependencies = [ "multi_json" "to_regexp" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1944,12 +1664,7 @@
     version = "0.14.0";
   };
   license-acceptance = {
-    dependencies = [
-      "pastel"
-      "tomlrb"
-      "tty-box"
-      "tty-prompt"
-    ];
+    dependencies = [ "pastel" "tomlrb" "tty-box" "tty-prompt" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1970,10 +1685,7 @@
     version = "1.1.4";
   };
   logging = {
-    dependencies = [
-      "little-plugger"
-      "multi_json"
-    ];
+    dependencies = [ "little-plugger" "multi_json" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2067,11 +1779,7 @@
     version = "2.13.2";
   };
   ms_rest = {
-    dependencies = [
-      "concurrent-ruby"
-      "faraday"
-      "timeliness"
-    ];
+    dependencies = [ "concurrent-ruby" "faraday" "timeliness" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2082,12 +1790,7 @@
     version = "0.7.6";
   };
   ms_rest_azure = {
-    dependencies = [
-      "concurrent-ruby"
-      "faraday"
-      "faraday-cookie_jar"
-      "ms_rest"
-    ];
+    dependencies = [ "concurrent-ruby" "faraday" "faraday-cookie_jar" "ms_rest" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2179,10 +1882,7 @@
     version = "1.23.0";
   };
   parser = {
-    dependencies = [
-      "ast"
-      "racc"
-    ];
+    dependencies = [ "ast" "racc" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2214,10 +1914,7 @@
     version = "0.8.0";
   };
   progress_bar = {
-    dependencies = [
-      "highline"
-      "options"
-    ];
+    dependencies = [ "highline" "options" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2228,10 +1925,7 @@
     version = "1.3.3";
   };
   pry = {
-    dependencies = [
-      "coderay"
-      "method_source"
-    ];
+    dependencies = [ "coderay" "method_source" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2302,11 +1996,7 @@
     version = "2.8.3";
   };
   representable = {
-    dependencies = [
-      "declarative"
-      "trailblazer-option"
-      "uber"
-    ];
+    dependencies = [ "declarative" "trailblazer-option" "uber" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2337,11 +2027,7 @@
     version = "3.2.6";
   };
   rspec = {
-    dependencies = [
-      "rspec-core"
-      "rspec-expectations"
-      "rspec-mocks"
-    ];
+    dependencies = [ "rspec-core" "rspec-expectations" "rspec-mocks" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2363,10 +2049,7 @@
     version = "3.12.2";
   };
   rspec-expectations = {
-    dependencies = [
-      "diff-lcs"
-      "rspec-support"
-    ];
+    dependencies = [ "diff-lcs" "rspec-support" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2377,10 +2060,7 @@
     version = "3.12.3";
   };
   rspec-its = {
-    dependencies = [
-      "rspec-core"
-      "rspec-expectations"
-    ];
+    dependencies = [ "rspec-core" "rspec-expectations" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2391,10 +2071,7 @@
     version = "1.3.0";
   };
   rspec-mocks = {
-    dependencies = [
-      "diff-lcs"
-      "rspec-support"
-    ];
+    dependencies = [ "diff-lcs" "rspec-support" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2496,12 +2173,7 @@
     version = "3.0.2";
   };
   signet = {
-    dependencies = [
-      "addressable"
-      "faraday"
-      "jwt"
-      "multi_json"
-    ];
+    dependencies = [ "addressable" "faraday" "jwt" "multi_json" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2522,11 +2194,7 @@
     version = "1.3.1";
   };
   strings = {
-    dependencies = [
-      "strings-ansi"
-      "unicode-display_width"
-      "unicode_utils"
-    ];
+    dependencies = [ "strings-ansi" "unicode-display_width" "unicode_utils" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2709,14 +2377,7 @@
     version = "0.2.36";
   };
   train-core = {
-    dependencies = [
-      "addressable"
-      "ffi"
-      "json"
-      "mixlib-shellout"
-      "net-scp"
-      "net-ssh"
-    ];
+    dependencies = [ "addressable" "ffi" "json" "mixlib-shellout" "net-scp" "net-ssh" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2737,10 +2398,7 @@
     version = "0.2.22";
   };
   train-kubernetes = {
-    dependencies = [
-      "k8s-ruby"
-      "train"
-    ];
+    dependencies = [ "k8s-ruby" "train" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2751,11 +2409,7 @@
     version = "0.1.12";
   };
   train-winrm = {
-    dependencies = [
-      "winrm"
-      "winrm-elevated"
-      "winrm-fs"
-    ];
+    dependencies = [ "winrm" "winrm-elevated" "winrm-fs" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2766,11 +2420,7 @@
     version = "0.2.13";
   };
   tty-box = {
-    dependencies = [
-      "pastel"
-      "strings"
-      "tty-cursor"
-    ];
+    dependencies = [ "pastel" "strings" "tty-cursor" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2801,10 +2451,7 @@
     version = "0.7.1";
   };
   tty-prompt = {
-    dependencies = [
-      "pastel"
-      "tty-reader"
-    ];
+    dependencies = [ "pastel" "tty-reader" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2815,11 +2462,7 @@
     version = "0.23.1";
   };
   tty-reader = {
-    dependencies = [
-      "tty-cursor"
-      "tty-screen"
-      "wisper"
-    ];
+    dependencies = [ "tty-cursor" "tty-screen" "wisper" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2851,11 +2494,7 @@
     version = "0.9.3";
   };
   tty-table = {
-    dependencies = [
-      "pastel"
-      "strings"
-      "tty-screen"
-    ];
+    dependencies = [ "pastel" "strings" "tty-screen" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2907,16 +2546,7 @@
     version = "1.4.0";
   };
   winrm = {
-    dependencies = [
-      "builder"
-      "erubi"
-      "gssapi"
-      "gyoku"
-      "httpclient"
-      "logging"
-      "nori"
-      "rubyntlm"
-    ];
+    dependencies = [ "builder" "erubi" "gssapi" "gyoku" "httpclient" "logging" "nori" "rubyntlm" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2927,11 +2557,7 @@
     version = "2.3.6";
   };
   winrm-elevated = {
-    dependencies = [
-      "erubi"
-      "winrm"
-      "winrm-fs"
-    ];
+    dependencies = [ "erubi" "winrm" "winrm-fs" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2942,12 +2568,7 @@
     version = "1.2.3";
   };
   winrm-fs = {
-    dependencies = [
-      "erubi"
-      "logging"
-      "rubyzip"
-      "winrm"
-    ];
+    dependencies = [ "erubi" "logging" "rubyzip" "winrm" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

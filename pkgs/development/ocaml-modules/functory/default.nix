@@ -33,10 +33,7 @@ lib.throwIf (lib.versionAtLeast ocaml.version "5.0")
       inherit (param) sha256;
     };
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-    ];
+    nativeBuildInputs = [ ocaml findlib ];
 
     strictDeps = true;
 

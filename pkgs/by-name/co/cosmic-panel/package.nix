@@ -35,15 +35,8 @@ rustPlatform.buildRustPackage {
     };
   };
 
-  nativeBuildInputs = [
-    just
-    pkg-config
-  ];
-  buildInputs = [
-    libglvnd
-    libxkbcommon
-    wayland
-  ];
+  nativeBuildInputs = [ just pkg-config ];
+  buildInputs = [ libglvnd libxkbcommon wayland ];
 
   dontUseJustBuild = true;
 
@@ -70,10 +63,7 @@ rustPlatform.buildRustPackage {
     description = "Panel for the COSMIC Desktop Environment";
     mainProgram = "cosmic-panel";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      qyliss
-      nyanbinary
-    ];
+    maintainers = with maintainers; [ qyliss nyanbinary ];
     platforms = platforms.linux;
   };
 }

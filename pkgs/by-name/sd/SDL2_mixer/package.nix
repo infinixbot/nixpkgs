@@ -58,10 +58,7 @@ stdenv.mkDerivation (finalAttrs: {
     timidity
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   strictDeps = true;
 

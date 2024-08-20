@@ -23,11 +23,7 @@ buildGoModule rec {
   nativeBuildInputs = [ installShellFiles ];
 
   CGO_ENABLED = 0;
-  ldflags = [
-    "-s"
-    "-w"
-    "-X github.com/zu1k/nali/internal/constant.Version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X github.com/zu1k/nali/internal/constant.Version=${version}" ];
 
   postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
     export HOME="$TMPDIR"
@@ -42,10 +38,7 @@ buildGoModule rec {
     description = "Offline tool for querying IP geographic information and CDN provider";
     homepage = "https://github.com/zu1k/nali";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      diffumist
-      xyenon
-    ];
+    maintainers = with maintainers; [ diffumist xyenon ];
     mainProgram = "nali";
   };
 }

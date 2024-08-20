@@ -81,11 +81,7 @@ stdenv.mkDerivation (finalAttrs: {
       "4.${if lib.versions.major libsoup.version == "2" then "0" else "1"}"
   }";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   # https://github.com/NixOS/nixpkgs/issues/153528
   # Can't be linked within a 4GB address space.

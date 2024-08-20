@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    popt
-    pkg-config
-  ];
+  nativeBuildInputs = [ popt pkg-config ];
   buildInputs = [ gdk-pixbuf ];
 
   meta = with lib; {

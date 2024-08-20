@@ -16,18 +16,7 @@ let
   pname = "reversal-icon-theme";
 in
 lib.checkListOfEnum "${pname}: color variants"
-  [
-    "-blue"
-    "-red"
-    "-pink"
-    "-purple"
-    "-green"
-    "-orange"
-    "-brown"
-    "-grey"
-    "-black"
-    "-cyan"
-  ]
+  [ "-blue" "-red" "-pink" "-purple" "-green" "-orange" "-brown" "-grey" "-black" "-cyan" ]
   colorVariants
 
   stdenvNoCC.mkDerivation

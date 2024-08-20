@@ -77,10 +77,7 @@ stdenv.mkDerivation {
     description = "MPD client based on rofi/fzf";
     homepage = "https://github.com/carnager/clerk";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      anderspapitto
-      rewine
-    ];
+    maintainers = with maintainers; [ anderspapitto rewine ];
     mainProgram = "clerk";
     platforms = platforms.linux;
   };

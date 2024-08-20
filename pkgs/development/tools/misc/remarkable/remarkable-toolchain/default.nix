@@ -38,10 +38,7 @@ stdenv.mkDerivation rec {
     homepage = "https://remarkable.engineering/";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      nickhu
-      siraben
-    ];
+    maintainers = with maintainers; [ nickhu siraben ];
     platforms = [ "x86_64-linux" ];
   };
 }

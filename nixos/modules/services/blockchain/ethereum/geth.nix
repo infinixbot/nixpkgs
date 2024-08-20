@@ -47,10 +47,7 @@ let
             type = types.nullOr (types.listOf types.str);
             default = null;
             description = "APIs to enable over WebSocket";
-            example = [
-              "net"
-              "eth"
-            ];
+            example = [ "net" "eth" ];
           };
         };
 
@@ -72,10 +69,7 @@ let
             type = types.nullOr (types.listOf types.str);
             default = null;
             description = "APIs to enable over WebSocket";
-            example = [
-              "net"
-              "eth"
-            ];
+            example = [ "net" "eth" ];
           };
         };
 
@@ -97,10 +91,7 @@ let
             type = types.nullOr (types.listOf types.str);
             default = [ "localhost" ];
             description = "List of virtual hostnames from which to accept requests.";
-            example = [
-              "localhost"
-              "geth.example.org"
-            ];
+            example = [ "localhost" "geth.example.org" ];
           };
 
           jwtsecret = mkOption {
@@ -127,34 +118,19 @@ let
         };
 
         network = mkOption {
-          type = types.nullOr (
-            types.enum [
-              "goerli"
-              "rinkeby"
-              "yolov2"
-              "ropsten"
-            ]
-          );
+          type = types.nullOr (types.enum [ "goerli" "rinkeby" "yolov2" "ropsten" ]);
           default = null;
           description = "The network to connect to. Mainnet (null) is the default ethereum network.";
         };
 
         syncmode = mkOption {
-          type = types.enum [
-            "snap"
-            "fast"
-            "full"
-            "light"
-          ];
+          type = types.enum [ "snap" "fast" "full" "light" ];
           default = "snap";
           description = "Blockchain sync mode.";
         };
 
         gcmode = mkOption {
-          type = types.enum [
-            "full"
-            "archive"
-          ];
+          type = types.enum [ "full" "archive" ];
           default = "full";
           description = "Blockchain garbage collection mode.";
         };
@@ -171,10 +147,7 @@ let
           default = [ ];
         };
 
-        package = mkPackageOption pkgs [
-          "go-ethereum"
-          "geth"
-        ] { };
+        package = mkPackageOption pkgs [ "go-ethereum" "geth" ] { };
       };
     };
 in

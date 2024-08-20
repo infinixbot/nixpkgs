@@ -50,12 +50,7 @@
     runHook postInstall
   '';
 
-  propagatedBuildInputs = with coq.ocamlPackages; [
-    dune-build-info
-    menhir
-    uri
-    yojson
-  ];
+  propagatedBuildInputs = with coq.ocamlPackages; [ dune-build-info menhir uri yojson ];
 
   meta = with lib; {
     description = "Language Server Protocol and VS Code Extension for Coq";
@@ -71,10 +66,7 @@
         o.propagatedBuildInputs
         ++ (
           if o.version != null && lib.versions.isLe "0.1.9+8.19" o.version && o.version != "dev" then
-            [
-              camlp-streams
-              serapi
-            ]
+            [ camlp-streams serapi ]
           else
             [
               cmdliner

@@ -37,9 +37,6 @@ buildGoModule rec {
     mainProgram = "shiori";
     homepage = "https://github.com/go-shiori/shiori";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      minijackson
-      CaptainJawZ
-    ];
+    maintainers = with maintainers; [ minijackson CaptainJawZ ];
   };
 }

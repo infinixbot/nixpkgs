@@ -58,11 +58,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-VrTO7TNjlSIAD9lndVdt34eCuzYXYQcV1/Hnd8XsHb8=";
   };
 
-  outputs = [
-    "out"
-    "lib"
-    "man"
-  ]; # "dev" would only split ~20 kB
+  outputs = [ "out" "lib" "man" ]; # "dev" would only split ~20 kB
 
   nativeBuildInputs =
     lib.optionals withMakeWrapper [ makeWrapper ]
@@ -71,12 +67,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optionals withPythonModule [ swig ];
 
   buildInputs =
-    [
-      openssl
-      nettle
-      expat
-      libevent
-    ]
+    [ openssl nettle expat libevent ]
     ++ lib.optionals withSystemd [ systemd ]
     ++ lib.optionals withDoH [ libnghttp2 ]
     ++ lib.optionals withPythonModule [ python ];
@@ -115,10 +106,7 @@ stdenv.mkDerivation (finalAttrs: {
       "--with-libsodium=${
         symlinkJoin {
           name = "libsodium-full";
-          paths = [
-            libsodium.dev
-            libsodium.out
-          ];
+          paths = [ libsodium.dev libsodium.out ];
         }
       }"
     ]

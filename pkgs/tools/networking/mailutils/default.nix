@@ -104,10 +104,7 @@ stdenv.mkDerivation rec {
     ++ lib.optional (!pythonSupport) "--without-python"
     ++ lib.optional (!guileSupport) "--without-guile";
 
-  nativeCheckInputs = [
-    dejagnu
-    mkpasswd
-  ];
+  nativeCheckInputs = [ dejagnu mkpasswd ];
   doCheck = !stdenv.isDarwin; # ERROR: All 46 tests were run, 46 failed unexpectedly.
   doInstallCheck = false; # fails
 

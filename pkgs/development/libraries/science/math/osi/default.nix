@@ -31,10 +31,7 @@ stdenv.mkDerivation rec {
     bzip2
     coin-utils
   ] ++ lib.optional withGurobi gurobi ++ lib.optional withCplex cplex;
-  nativeBuildInputs = [
-    gfortran
-    pkg-config
-  ];
+  nativeBuildInputs = [ gfortran pkg-config ];
   configureFlags =
     lib.optionals withGurobi [
       "--with-gurobi-incdir=${gurobi}/include"

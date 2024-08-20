@@ -105,10 +105,7 @@ in
   config = mkMerge [
     (mkIf cfgC.enable {
       systemd.user.services.synergy-client = {
-        after = [
-          "network.target"
-          "graphical-session.target"
-        ];
+        after = [ "network.target" "graphical-session.target" ];
         description = "Synergy client";
         wantedBy = optional cfgC.autoStart "graphical-session.target";
         path = [ pkgs.synergy ];
@@ -120,10 +117,7 @@ in
     })
     (mkIf cfgS.enable {
       systemd.user.services.synergy-server = {
-        after = [
-          "network.target"
-          "graphical-session.target"
-        ];
+        after = [ "network.target" "graphical-session.target" ];
         description = "Synergy server";
         wantedBy = optional cfgS.autoStart "graphical-session.target";
         path = [ pkgs.synergy ];

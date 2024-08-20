@@ -72,12 +72,7 @@ stdenv.mkDerivation {
 
   src = allSources.cardboard;
 
-  outputs = [
-    "out"
-    "dev"
-    "lib"
-    "man"
-  ];
+  outputs = [ "out" "dev" "lib" "man" ];
 
   nativeBuildInputs = [
     meson

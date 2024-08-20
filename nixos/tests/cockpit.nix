@@ -125,11 +125,7 @@ import ./make-test-python.nix (
                   '';
             in
             with pkgs;
-            [
-              firefox-unwrapped
-              geckodriver
-              seleniumScript
-            ];
+            [ firefox-unwrapped geckodriver seleniumScript ];
         };
     };
 

@@ -20,15 +20,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-irKpVerxzjJIiLofoTdySk/PzojuVLgMq2DYF0qPaAM=";
   };
 
-  buildInputs = lib.optionals stdenv.isLinux [
-    libpulseaudio
-    libX11
-  ];
+  buildInputs = lib.optionals stdenv.isLinux [ libpulseaudio libX11 ];
 
-  nativeBuildInputs = [
-    cmake
-    makeWrapper
-  ];
+  nativeBuildInputs = [ cmake makeWrapper ];
 
   postInstall = ''
     wrapProgram $out/bin/multimon-ng --prefix PATH : "${lib.makeBinPath [ sox ]}"

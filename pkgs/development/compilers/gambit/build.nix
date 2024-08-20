@@ -53,10 +53,7 @@ gccStdenv.mkDerivation rec {
       ;
   };
 
-  nativeBuildInputs = [
-    git
-    autoconf
-  ];
+  nativeBuildInputs = [ git autoconf ];
 
   # TODO: if/when we can get all the library packages we depend on to have static versions,
   # we could use something like (makeStaticLibraries openssl) to enable creation

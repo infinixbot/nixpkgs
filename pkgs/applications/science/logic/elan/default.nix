@@ -27,17 +27,10 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-f8YVUTxHX1FY2p73DlnLDtCJaG/0JImUtJFraV6ErNM=";
 
-  nativeBuildInputs = [
-    pkg-config
-    makeWrapper
-  ];
+  nativeBuildInputs = [ pkg-config makeWrapper ];
 
   OPENSSL_NO_VENDOR = 1;
-  buildInputs = [
-    curl
-    zlib
-    openssl
-  ] ++ lib.optional stdenv.isDarwin libiconv;
+  buildInputs = [ curl zlib openssl ] ++ lib.optional stdenv.isDarwin libiconv;
 
   buildFeatures = [ "no-self-update" ];
 

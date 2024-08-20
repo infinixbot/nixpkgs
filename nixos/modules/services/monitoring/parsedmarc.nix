@@ -394,14 +394,7 @@ in
           "Starting in 8.0.0, the `${optname}` option has been moved from the `services.parsedmarc.settings.imap`"
           + "configuration section to the `services.parsedmarc.settings.mailbox` configuration section.";
         hasImapOpt = lib.flip builtins.hasAttr cfg.settings.imap;
-        movedOptions = [
-          "reports_folder"
-          "archive_folder"
-          "watch"
-          "delete"
-          "test"
-          "batch_size"
-        ];
+        movedOptions = [ "reports_folder" "archive_folder" "watch" "delete" "test" "batch_size" ];
       in
       builtins.map deprecationWarning (builtins.filter hasImapOpt movedOptions);
 
@@ -506,12 +499,7 @@ in
         # list interesting options in `settings` without them always
         # ending up in the resulting config.
         filteredConfig = lib.converge (lib.filterAttrsRecursive (
-          _: v:
-          !elem v [
-            null
-            [ ]
-            { }
-          ]
+          _: v: !elem v [ null [ ] { } ]
         )) cfg.settings;
 
         # Extract secrets (attributes set to an attrset with a
@@ -521,27 +509,15 @@ in
         parsedmarcConfig = ini.generate "parsedmarc.ini" filteredConfig;
         mkSecretReplacement = file: ''
           replace-secret ${
-            lib.escapeShellArgs [
-              (hashString "sha256" file)
-              file
-              "/run/parsedmarc/parsedmarc.ini"
-            ]
+            lib.escapeShellArgs [ (hashString "sha256" file) file "/run/parsedmarc/parsedmarc.ini" ]
           }
         '';
         secretReplacements = lib.concatMapStrings mkSecretReplacement secretPaths;
       in
       {
         wantedBy = [ "multi-user.target" ];
-        after = [
-          "postfix.service"
-          "dovecot2.service"
-          "elasticsearch.service"
-        ];
-        path = with pkgs; [
-          replace-secret
-          openssl
-          shadow
-        ];
+        after = [ "postfix.service" "dovecot2.service" "elasticsearch.service" ];
+        path = with pkgs; [ replace-secret openssl shadow ];
         serviceConfig = {
           ExecStartPre =
             let
@@ -582,16 +558,8 @@ in
           ProtectKernelTunables = true;
           ProtectProc = "invisible";
           ProcSubset = "pid";
-          SystemCallFilter = [
-            "@system-service"
-            "~@privileged"
-            "~@resources"
-          ];
-          RestrictAddressFamilies = [
-            "AF_UNIX"
-            "AF_INET"
-            "AF_INET6"
-          ];
+          SystemCallFilter = [ "@system-service" "~@privileged" "~@resources" ];
+          RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
           RestrictRealtime = true;
           RestrictNamespaces = true;
           MemoryDenyWriteExecute = true;

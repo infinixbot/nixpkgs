@@ -29,17 +29,9 @@ stdenv.mkDerivation (finalAttrs: {
     rev = "refs/tags/v${finalAttrs.version}";
   };
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-  ];
+  outputs = [ "out" "lib" "dev" ];
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-    python3
-  ];
+  nativeBuildInputs = [ cmake ninja python3 ];
   buildInputs = [
     openssl
   ] ++ lib.optionals withJdbc [ openjdk11 ] ++ lib.optionals withOdbc [ unixODBC ];
@@ -136,10 +128,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://duckdb.org/";
     license = licenses.mit;
     mainProgram = "duckdb";
-    maintainers = with maintainers; [
-      costrouc
-      cpcloud
-    ];
+    maintainers = with maintainers; [ costrouc cpcloud ];
     platforms = platforms.all;
   };
 })

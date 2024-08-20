@@ -67,11 +67,7 @@ mkDerivation rec {
     hash = "sha256-BOdXgA+z3sFE4ngAEhSbp1gDbsti1STJY2Yy6Hp+zTE=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ cmake pkg-config wrapGAppsHook3 ];
 
   dontWrapGApps = true;
 
@@ -152,10 +148,7 @@ mkDerivation rec {
     description = "Digital DJ mixing software";
     mainProgram = "mixxx";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      bfortz
-      benley
-    ];
+    maintainers = with maintainers; [ bfortz benley ];
     platforms = platforms.linux;
   };
 }

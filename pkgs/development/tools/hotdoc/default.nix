@@ -87,10 +87,7 @@ buildPythonApplication rec {
   ];
 
   # Run the tests by package instead of current dir
-  pytestFlagsArray = [
-    "--pyargs"
-    "hotdoc"
-  ];
+  pytestFlagsArray = [ "--pyargs" "hotdoc" ];
 
   disabledTests =
     [

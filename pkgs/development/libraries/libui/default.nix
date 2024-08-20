@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
     sha256 = "0bm6xvqk4drg2kw6d304x6mlfal7gh8mbl5a9f0509smmdzgdkwm";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
   propagatedBuildInputs = lib.optional stdenv.isLinux gtk3 ++ lib.optionals stdenv.isDarwin [ Cocoa ];
 
   preConfigure = lib.optionalString stdenv.isDarwin ''

@@ -69,10 +69,6 @@ python3Packages.buildPythonApplication rec {
     '';
     license = lib.licenses.bsd2;
     mainProgram = "streamlink";
-    maintainers = with lib.maintainers; [
-      dezgeg
-      zraexy
-      DeeUnderscore
-    ];
+    maintainers = with lib.maintainers; [ dezgeg zraexy DeeUnderscore ];
   };
 }

@@ -23,15 +23,8 @@ stdenv.mkDerivation rec {
   # Adds the CMakeLists.txt not provided by upstream
   patches = [ ./cmake.patch ];
   postPatch = "rm build";
-  nativeBuildInputs = [
-    cmake
-    extra-cmake-modules
-  ];
-  buildInputs = [
-    plasma-framework
-    kwindowsystem
-    plasma-pa
-  ];
+  nativeBuildInputs = [ cmake extra-cmake-modules ];
+  buildInputs = [ plasma-framework kwindowsystem plasma-pa ];
 
   dontWrapQtApps = true;
 

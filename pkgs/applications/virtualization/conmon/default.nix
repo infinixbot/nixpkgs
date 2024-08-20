@@ -22,22 +22,14 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs =
-    [
-      glib
-      libseccomp
-      systemd
-    ]
-    ++ lib.optionals (!stdenv.hostPlatform.isMusl) [
-      glibc
-      glibc.static
-    ];
+  buildInputs = [
+    glib
+    libseccomp
+    systemd
+  ] ++ lib.optionals (!stdenv.hostPlatform.isMusl) [ glibc glibc.static ];
 
   # manpage requires building the vendored go-md2man
-  makeFlags = [
-    "bin/conmon"
-    "VERSION=${version}"
-  ];
+  makeFlags = [ "bin/conmon" "VERSION=${version}" ];
 
   installPhase = ''
     runHook preInstall

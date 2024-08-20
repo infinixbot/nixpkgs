@@ -60,10 +60,7 @@ buildPythonPackage rec {
   meta = with lib; {
     description = "ROCm Documentation Python package for ReadTheDocs build standardization";
     homepage = "https://github.com/RadeonOpenCompute/rocm-docs-core";
-    license = with licenses; [
-      mit
-      cc-by-40
-    ];
+    license = with licenses; [ mit cc-by-40 ];
     maintainers = teams.rocm.members;
     platforms = platforms.linux;
   };

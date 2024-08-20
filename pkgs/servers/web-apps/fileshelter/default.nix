@@ -23,16 +23,8 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
-  buildInputs = [
-    libzip
-    boost
-    wt4
-    libconfig
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
+  buildInputs = [ libzip boost wt4 libconfig ];
 
   NIX_LDFLAGS = "-lpthread";
 

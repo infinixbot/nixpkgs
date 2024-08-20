@@ -36,10 +36,7 @@ stdenv.mkDerivation rec {
 
   sourceRoot = ".";
 
-  nativeBuildInputs = [
-    makeWrapper
-    unzip
-  ];
+  nativeBuildInputs = [ makeWrapper unzip ];
 
   installPhase = ''
     runHook preInstall
@@ -48,20 +45,8 @@ stdenv.mkDerivation rec {
     cp -vR ./* $out/share/davmail
     makeWrapper $out/share/davmail/davmail $out/bin/davmail \
       --set-default JAVA_OPTS "-Xmx512M -Dsun.net.inetaddr.ttl=60 -Djdk.gtk.version=${lib.versions.major gtk'.version}" \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          jre'
-          coreutils
-          gnugrep
-        ]
-      } \
-      --prefix LD_LIBRARY_PATH : ${
-        lib.makeLibraryPath [
-          glib
-          gtk'
-          libXtst
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ jre' coreutils gnugrep ]} \
+      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ glib gtk' libXtst ]}
 
     runHook postInstall
   '';

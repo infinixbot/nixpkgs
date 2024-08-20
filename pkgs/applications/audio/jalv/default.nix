@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-ktFBeBtmQ3MgfDQ868XpuM7UYfryb9zLld8AB7BjnhY=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    wafHook
-  ];
+  nativeBuildInputs = [ pkg-config wafHook ];
   buildInputs = [
     gtk2
     libjack2

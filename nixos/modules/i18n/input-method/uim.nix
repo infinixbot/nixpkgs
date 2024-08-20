@@ -16,13 +16,7 @@ in
 
     i18n.inputMethod.uim = {
       toolbar = mkOption {
-        type = types.enum [
-          "gtk"
-          "gtk3"
-          "gtk-systray"
-          "gtk3-systray"
-          "qt5"
-        ];
+        type = types.enum [ "gtk" "gtk3" "gtk-systray" "gtk3-systray" "qt5" ];
         default = "gtk";
         example = "gtk-systray";
         description = ''

@@ -158,11 +158,7 @@ stdenv.mkDerivation rec {
       url = "https://www.teamspeak.com/en/privacy-and-terms/";
       free = false;
     };
-    maintainers = with maintainers; [
-      lhvwb
-      lukegb
-      atemu
-    ];
+    maintainers = with maintainers; [ lhvwb lukegb atemu ];
     mainProgram = "ts3client";
     platforms = [ "x86_64-linux" ];
   };

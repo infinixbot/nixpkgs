@@ -28,10 +28,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-R6J+ACYDQpOzJZFBizsQGOexR7lMyeoZqz9TnWxfwyM=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ makeWrapper copyDesktopItems ];
 
   buildInputs = [ dotnet-runtime_7 ];
 
@@ -94,9 +91,6 @@ stdenv.mkDerivation rec {
     description = "In-development indie sandbox game about innovation and exploration";
     homepage = "https://www.vintagestory.at/";
     license = licenses.unfree;
-    maintainers = with maintainers; [
-      artturin
-      gigglesquid
-    ];
+    maintainers = with maintainers; [ artturin gigglesquid ];
   };
 }

@@ -28,12 +28,7 @@ stdenv.mkDerivation (
     pname = "akku-${pname}";
     propagatedBuildInputs = buildInputs;
     buildInputs = [ ];
-    nativeBuildInputs = [
-      makeWrapper
-      akku
-      chez
-      chibi
-    ] ++ nativeBuildInputs;
+    nativeBuildInputs = [ makeWrapper akku chez chibi ] ++ nativeBuildInputs;
     buildPhase = ''
       runHook preBuild
 
@@ -118,10 +113,5 @@ stdenv.mkDerivation (
     } // args.meta or { };
     setupHook = ./setup-hook.sh;
   }
-  // builtins.removeAttrs args [
-    "name"
-    "buildInputs"
-    "meta"
-    "nativeBuildInputs"
-  ]
+  // builtins.removeAttrs args [ "name" "buildInputs" "meta" "nativeBuildInputs" ]
 )

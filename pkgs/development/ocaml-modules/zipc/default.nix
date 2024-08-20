@@ -30,10 +30,7 @@ lib.throwIfNot (lib.versionAtLeast ocaml.version "4.14")
       ocamlbuild
     ];
 
-    buildInputs = [
-      cmdliner
-      topkg
-    ];
+    buildInputs = [ cmdliner topkg ];
 
     inherit (topkg) buildPhase installPhase;
 

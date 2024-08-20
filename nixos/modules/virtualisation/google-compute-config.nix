@@ -28,16 +28,9 @@ in
   };
 
   boot.growPartition = true;
-  boot.kernelParams = [
-    "console=ttyS0"
-    "panic=1"
-    "boot.panic_on_fail"
-  ];
+  boot.kernelParams = [ "console=ttyS0" "panic=1" "boot.panic_on_fail" ];
   boot.initrd.kernelModules = [ "virtio_scsi" ];
-  boot.kernelModules = [
-    "virtio_pci"
-    "virtio_net"
-  ];
+  boot.kernelModules = [ "virtio_pci" "virtio_net" ];
 
   # Generate a GRUB menu.
   boot.loader.grub.device = "/dev/sda";

@@ -35,29 +35,15 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-0eOYxyMt2M2lkhoWOhoUQgP/1LYY3QQqSF5TdRUuCbs=";
   };
 
-  outputs = [
-    "dev"
-    "out"
-  ];
+  outputs = [ "dev" "out" ];
 
   depsBuildBuild = [ pkg-config ];
 
-  nativeBuildInputs = [
-    meson
-    pkg-config
-    ninja
-  ] ++ lib.optional (!minimal) wayland-scanner;
+  nativeBuildInputs = [ meson pkg-config ninja ] ++ lib.optional (!minimal) wayland-scanner;
 
-  buildInputs =
-    [ libdrm ]
-    ++ lib.optionals (!minimal) [
-      libX11
-      libXext
-      libXfixes
-      wayland
-      libffi
-      libGL
-    ];
+  buildInputs = [
+    libdrm
+  ] ++ lib.optionals (!minimal) [ libX11 libXext libXfixes wayland libffi libGL ];
 
   mesonFlags = lib.optionals stdenv.isLinux [
     # Add FHS and Debian paths for non-NixOS applications
@@ -99,10 +85,7 @@ stdenv.mkDerivation (finalAttrs: {
     license = licenses.mit;
     maintainers = with maintainers; [ SuperSandro2000 ];
     pkgConfigModules =
-      [
-        "libva"
-        "libva-drm"
-      ]
+      [ "libva" "libva-drm" ]
       ++ lib.optionals (!minimal) [
         "libva-glx"
         "libva-wayland"

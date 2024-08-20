@@ -35,15 +35,9 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-HutziAzhIDYP8upNPieL2GNrxPBHUCVs09FFxdSqeBs=";
   };
 
-  nativeBuildInputs = [
-    copyDesktopItems
-    makeWrapper
-  ];
+  nativeBuildInputs = [ copyDesktopItems makeWrapper ];
 
-  propagatedBuildInputs = with python3Packages; [
-    pyside6
-    requests
-  ];
+  propagatedBuildInputs = with python3Packages; [ pyside6 requests ];
 
   # wrap manually to avoid having a bash script in $out/bin with a .py extension
   dontWrapPythonPrograms = true;

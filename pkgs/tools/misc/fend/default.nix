@@ -30,12 +30,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-zmqkGmN0fEYW+6U6cUQK27/OSV4JZW1EQiRswvBnA3M=";
 
-  nativeBuildInputs = [
-    pandoc
-    installShellFiles
-    pkg-config
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ pandoc installShellFiles pkg-config copyDesktopItems ];
   buildInputs = [
     pkg-config
     openssl
@@ -69,11 +64,7 @@ rustPlatform.buildRustPackage rec {
       icon = "fend";
       exec = "fend";
       terminal = true;
-      categories = [
-        "Utility"
-        "Calculator"
-        "ConsoleOnly"
-      ];
+      categories = [ "Utility" "Calculator" "ConsoleOnly" ];
     })
   ];
 
@@ -98,10 +89,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/printfn/fend";
     changelog = "https://github.com/printfn/fend/releases/tag/v${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      djanatyn
-      liff
-    ];
+    maintainers = with maintainers; [ djanatyn liff ];
     mainProgram = "fend";
   };
 }

@@ -31,10 +31,7 @@ buildGoModule rec {
     patchShebangs .
   '';
 
-  nativeBuildInputs = [
-    makeWrapper
-    openssh
-  ];
+  nativeBuildInputs = [ makeWrapper openssh ];
 
   buildInputs = lib.optional pamSupport pam;
 
@@ -43,14 +40,7 @@ buildGoModule rec {
   postInstall = ''
 
     wrapProgram $out/bin/gogs \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          bash
-          git
-          gzip
-          openssh
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ bash git gzip openssh ]}
   '';
 
   meta = with lib; {

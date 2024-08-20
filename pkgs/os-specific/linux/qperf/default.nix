@@ -28,12 +28,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-    perl
-    rdma-core
-  ];
+  nativeBuildInputs = [ autoconf automake perl rdma-core ];
   buildInputs = [ rdma-core ];
 
   postUnpack = ''

@@ -150,10 +150,7 @@ in
       mkInstanceService = instance: {
         description = "Streaming relay for v4l2loopback using GStreamer";
 
-        after = [
-          "modprobe@v4l2loopback.service"
-          "systemd-logind.service"
-        ];
+        after = [ "modprobe@v4l2loopback.service" "systemd-logind.service" ];
         wantedBy = [ "multi-user.target" ];
 
         serviceConfig = {

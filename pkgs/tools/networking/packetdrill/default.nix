@@ -37,12 +37,7 @@ stdenv.mkDerivation rec {
     "-Wno-error=stringop-truncation"
     "-Wno-error=address-of-packed-member"
   ];
-  nativeBuildInputs = [
-    bison
-    flex
-    cmake
-    libpcap
-  ];
+  nativeBuildInputs = [ bison flex cmake libpcap ];
   buildInputs = [ libpcap ];
 
   installPhase = ''
@@ -60,9 +55,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/google/packetdrill";
     license = lib.licenses.gpl2Plus;
     platforms = lib.platforms.linux;
-    maintainers = with lib.maintainers; [
-      dmjio
-      cleverca22
-    ];
+    maintainers = with lib.maintainers; [ dmjio cleverca22 ];
   };
 }

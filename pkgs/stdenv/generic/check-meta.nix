@@ -334,10 +334,7 @@ let
         listOf
         bool
         ;
-      platforms = listOf (union [
-        str
-        (attrsOf any)
-      ]); # see lib.meta.platformMatch
+      platforms = listOf (union [ str (attrsOf any) ]); # see lib.meta.platformMatch
     in
     {
       # These keys are documented

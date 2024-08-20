@@ -61,10 +61,7 @@ let
       homepage = "https://www.nextflow.io/";
       changelog = "https://github.com/nextflow-io/nextflow/releases";
       license = licenses.asl20;
-      maintainers = with maintainers; [
-        Etjean
-        edmundmiller
-      ];
+      maintainers = with maintainers; [ Etjean edmundmiller ];
       mainProgram = "nextflow";
       platforms = platforms.unix;
     };

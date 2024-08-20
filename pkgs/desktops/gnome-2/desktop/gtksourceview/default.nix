@@ -45,10 +45,7 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    intltool
-  ] ++ lib.optionals stdenv.isDarwin [ autoreconfHook ];
+  nativeBuildInputs = [ pkg-config intltool ] ++ lib.optionals stdenv.isDarwin [ autoreconfHook ];
   buildInputs =
     [
       atk

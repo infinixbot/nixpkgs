@@ -1,11 +1,6 @@
 {
   ceedling = {
-    dependencies = [
-      "constructor"
-      "deep_merge"
-      "rake"
-      "thor"
-    ];
+    dependencies = [ "constructor" "deep_merge" "rake" "thor" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

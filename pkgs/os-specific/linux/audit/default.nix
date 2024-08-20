@@ -45,12 +45,7 @@ stdenv.mkDerivation (finalAttrs: {
                 "${linuxHeaders}/include/linux/audit.h"
   '';
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "man"
-  ];
+  outputs = [ "bin" "dev" "out" "man" ];
 
   strictDeps = true;
 

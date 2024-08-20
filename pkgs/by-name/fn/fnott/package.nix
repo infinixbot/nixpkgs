@@ -62,10 +62,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://codeberg.org/dnkl/fnott";
     changelog = "https://codeberg.org/dnkl/fnott/src/tag/${finalAttrs.src.rev}/CHANGELOG.md";
     description = "Keyboard driven and lightweight Wayland notification daemon for wlroots-based compositors";
-    license = with lib.licenses; [
-      mit
-      zlib
-    ];
+    license = with lib.licenses; [ mit zlib ];
     maintainers = with lib.maintainers; [
       jmbaur
       eclairevoyant

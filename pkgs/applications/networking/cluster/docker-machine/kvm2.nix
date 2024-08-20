@@ -33,10 +33,7 @@ buildGoModule rec {
     description = "KVM2 driver for docker-machine";
     mainProgram = "docker-machine-driver-kvm2";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      tadfisher
-      atkinschang
-    ];
+    maintainers = with maintainers; [ tadfisher atkinschang ];
     platforms = platforms.linux;
   };
 }

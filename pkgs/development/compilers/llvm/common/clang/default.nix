@@ -51,10 +51,7 @@ let
         ++ lib.optional enableManpages python3.pkgs.sphinx
         ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
 
-      buildInputs = [
-        libxml2
-        libllvm
-      ];
+      buildInputs = [ libxml2 libllvm ];
 
       cmakeFlags =
         (lib.optionals (lib.versionAtLeast release_version "15") [
@@ -111,12 +108,7 @@ let
           sed -i -e 's/lgcc_s/lgcc_eh/' lib/Driver/ToolChains/*.cpp
         '';
 
-      outputs = [
-        "out"
-        "lib"
-        "dev"
-        "python"
-      ];
+      outputs = [ "out" "lib" "dev" "python" ];
 
       postInstall =
         ''

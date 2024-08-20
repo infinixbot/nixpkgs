@@ -40,11 +40,7 @@ buildBazelPackage rec {
     hash = "sha256-lreGKA0DZiOd1bJq8NNQ+80cyDwiughoXCkKu1RaZmc=";
   };
 
-  nativeBuildInputs = [
-    go_1_21
-    git
-    python3
-  ];
+  nativeBuildInputs = [ go_1_21 git python3 ];
   removeRulesCC = false;
 
   bazel = bazel_5;

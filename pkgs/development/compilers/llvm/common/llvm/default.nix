@@ -115,12 +115,7 @@ stdenv.mkDerivation (
 
     sourceRoot = if lib.versionOlder release_version "13" then null else "${src.name}/${pname}";
 
-    outputs = [
-      "out"
-      "lib"
-      "dev"
-      "python"
-    ];
+    outputs = [ "out" "lib" "dev" "python" ];
 
     hardeningDisable = [
       "trivialautovarinit"
@@ -143,10 +138,7 @@ stdenv.mkDerivation (
         python3Packages.myst-parser
       ];
 
-    buildInputs = [
-      libxml2
-      libffi
-    ] ++ optional enablePFM libpfm; # exegesis
+    buildInputs = [ libxml2 libffi ] ++ optional enablePFM libpfm; # exegesis
 
     propagatedBuildInputs =
       (lib.optional (

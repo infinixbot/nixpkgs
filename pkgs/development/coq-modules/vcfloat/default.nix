@@ -34,12 +34,7 @@ let
     release."2.1.1".sha256 = "sha256-bd/XSQhyFUAnSm2bhZEZBWB6l4/Ptlm9JrWu6w9BOpw=";
     releaseRev = v: "v${v}";
 
-    propagatedBuildInputs = [
-      interval
-      compcert
-      flocq
-      bignums
-    ];
+    propagatedBuildInputs = [ interval compcert flocq bignums ];
 
     meta = {
       description = "Tool for Coq proofs about floating-point round-off error";

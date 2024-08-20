@@ -27,10 +27,7 @@ mkDerivation rec {
     sha256 = "sha256-AKmPxHOlMtea3q0NDULp3XfJ0JnYeF/iFUJw0dDOiio=";
   };
 
-  nativeBuildInputs = [
-    qmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ qmake pkg-config ];
   buildInputs = [
     udev
     qtmultimedia

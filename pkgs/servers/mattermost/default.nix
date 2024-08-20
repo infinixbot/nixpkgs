@@ -76,10 +76,7 @@ buildGoModule rec {
 
   passthru = {
     updateScript = nix-update-script {
-      extraArgs = [
-        "--version-regex"
-        "^v(9\.5\.[0-9]+)$"
-      ];
+      extraArgs = [ "--version-regex" "^v(9\.5\.[0-9]+)$" ];
     };
     tests.mattermost = nixosTests.mattermost;
   };
@@ -87,16 +84,8 @@ buildGoModule rec {
   meta = with lib; {
     description = "Mattermost is an open source platform for secure collaboration across the entire software development lifecycle";
     homepage = "https://www.mattermost.org";
-    license = with licenses; [
-      agpl3Only
-      asl20
-    ];
-    maintainers = with maintainers; [
-      ryantm
-      numinit
-      kranzes
-      mgdelacroix
-    ];
+    license = with licenses; [ agpl3Only asl20 ];
+    maintainers = with maintainers; [ ryantm numinit kranzes mgdelacroix ];
     mainProgram = "mattermost";
   };
 }

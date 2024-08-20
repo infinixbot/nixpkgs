@@ -15,10 +15,7 @@ buildDunePackage rec {
   # opam-state does not call curl at run time
   configureFlags = [ "--disable-checks" ];
 
-  propagatedBuildInputs = [
-    opam-repository
-    spdx_licenses
-  ];
+  propagatedBuildInputs = [ opam-repository spdx_licenses ];
 
   meta = opam.meta // {
     description = "OPAM development library handling the ~/.opam hierarchy, repository and switch states";

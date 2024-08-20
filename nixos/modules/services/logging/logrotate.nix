@@ -13,27 +13,11 @@ let
 
   generateLine =
     n: v:
-    if
-      builtins.elem n [
-        "files"
-        "priority"
-        "enable"
-        "global"
-      ]
-      || v == null
-    then
+    if builtins.elem n [ "files" "priority" "enable" "global" ] || v == null then
       null
     else if builtins.elem n [ "frequency" ] then
       "${v}\n"
-    else if
-      builtins.elem n [
-        "firstaction"
-        "lastaction"
-        "prerotate"
-        "postrotate"
-        "preremove"
-      ]
-    then
+    else if builtins.elem n [ "firstaction" "lastaction" "prerotate" "postrotate" "preremove" ] then
       "${n}\n    ${v}\n  endscript\n"
     else if isInt v then
       "${n} ${toString v}\n"
@@ -195,15 +179,7 @@ in
           types.submodule (
             { name, ... }:
             {
-              freeformType =
-                with types;
-                attrsOf (
-                  nullOr (oneOf [
-                    int
-                    bool
-                    str
-                  ])
-                );
+              freeformType = with types; attrsOf (nullOr (oneOf [ int bool str ]));
 
               options = {
                 enable = mkEnableOption "setting individual kill switch" // {

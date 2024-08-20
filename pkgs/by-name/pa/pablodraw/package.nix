@@ -36,15 +36,9 @@ buildDotnetModule rec {
 
   nugetDeps = ./deps.nix;
 
-  nativeBuildInputs = [
-    wrapGAppsHook3
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ wrapGAppsHook3 copyDesktopItems ];
 
-  runtimeDeps = [
-    gtk3
-    libnotify
-  ];
+  runtimeDeps = [ gtk3 libnotify ];
 
   desktopItems = [
     (makeDesktopItem {
@@ -69,10 +63,7 @@ buildDotnetModule rec {
     homepage = "https://picoe.ca/products/pablodraw";
     license = licenses.mit;
     mainProgram = "PabloDraw";
-    maintainers = with maintainers; [
-      aleksana
-      kip93
-    ];
+    maintainers = with maintainers; [ aleksana kip93 ];
     platforms = platforms.all;
     broken = stdenv.isDarwin; # Eto.Platform.Mac64 not found in nugetSource
   };

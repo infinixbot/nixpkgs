@@ -22,15 +22,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   sourceRoot = "${finalAttrs.src.name}/library";
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  buildInputs = [
-    faad2
-    fftwFloat
-    zlib
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
+  buildInputs = [ faad2 fftwFloat zlib ];
 
   meta = with lib; {
     description = "DAB/DAB+ decoding library";

@@ -25,11 +25,7 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    boost
-    clingo
-    re2c
-  ];
+  buildInputs = [ boost clingo re2c ];
 
   cmakeFlags = [
     "-DASPCUD_GRINGO_PATH=${clingo}/bin/gringo"

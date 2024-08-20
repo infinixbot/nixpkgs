@@ -42,9 +42,6 @@ stdenv.mkDerivation rec {
     homepage = "https://fmv.jku.at/picosat/";
     license = lib.licenses.mit;
     platforms = lib.platforms.unix;
-    maintainers = with lib.maintainers; [
-      roconnor
-      thoughtpolice
-    ];
+    maintainers = with lib.maintainers; [ roconnor thoughtpolice ];
   };
 }

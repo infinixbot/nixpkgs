@@ -24,9 +24,6 @@ buildGoModule rec {
     mainProgram = "jwx";
     homepage = "https://github.com/lestrrat-go/jwx";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      arianvp
-      flokli
-    ];
+    maintainers = with maintainers; [ arianvp flokli ];
   };
 }

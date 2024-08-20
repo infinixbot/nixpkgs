@@ -20,10 +20,7 @@ let
     in
     targets: pkg:
     pkg.override (old: {
-      nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [
-        binwrap
-        binwrap-install
-      ];
+      nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ binwrap binwrap-install ];
 
       # Manually install targets
       # by symlinking binaries into `node_modules`

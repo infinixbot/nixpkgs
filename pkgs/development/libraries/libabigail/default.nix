@@ -14,11 +14,7 @@ stdenv.mkDerivation rec {
   pname = "libabigail";
   version = "2.5";
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-  ];
+  outputs = [ "bin" "out" "dev" ];
 
   src = fetchurl {
     url = "https://mirrors.kernel.org/sourceware/${pname}/${pname}-${version}.tar.xz";

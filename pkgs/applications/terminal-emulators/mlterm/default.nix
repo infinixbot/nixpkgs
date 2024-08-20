@@ -223,10 +223,7 @@ stdenv.mkDerivation (finalAttrs: {
     comment = "Multi Lingual TERMinal emulator";
     desktopName = "mlterm";
     genericName = "Terminal emulator";
-    categories = [
-      "System"
-      "TerminalEmulator"
-    ];
+    categories = [ "System" "TerminalEmulator" ];
     startupNotify = false;
   };
 
@@ -244,11 +241,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Multi Lingual TERMinal emulator";
     homepage = "https://mlterm.sourceforge.net/";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      ramkromberg
-      atemu
-      doronbehar
-    ];
+    maintainers = with maintainers; [ ramkromberg atemu doronbehar ];
     platforms = platforms.all;
     mainProgram = desktopBinary;
   };

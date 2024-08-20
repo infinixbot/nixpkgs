@@ -46,10 +46,7 @@ stdenv.mkDerivation rec {
     description = "Graphics Environment for Multimedia";
     homepage = "http://puredata.info/downloads/gem";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      raboof
-      carlthome
-    ];
+    maintainers = with maintainers; [ raboof carlthome ];
     platforms = platforms.linux;
   };
 }

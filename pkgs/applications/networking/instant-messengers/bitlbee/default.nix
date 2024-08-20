@@ -48,10 +48,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  installTargets = [
-    "install"
-    "install-dev"
-  ];
+  installTargets = [ "install" "install-dev" ];
 
   doCheck = !enableLibPurple; # Checks fail with libpurple for some reason
   checkPhase = ''
@@ -79,10 +76,7 @@ stdenv.mkDerivation rec {
     homepage = "https://www.bitlbee.org/";
     license = licenses.gpl2Plus;
 
-    maintainers = with maintainers; [
-      lassulus
-      pSub
-    ];
+    maintainers = with maintainers; [ lassulus pSub ];
     platforms = platforms.gnu ++ platforms.linux; # arbitrary choice
   };
 }

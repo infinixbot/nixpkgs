@@ -93,12 +93,7 @@ with lib;
     };
 
     return = mkOption {
-      type =
-        with types;
-        nullOr (oneOf [
-          str
-          int
-        ]);
+      type = with types; nullOr (oneOf [ str int ]);
       default = null;
       example = "301 http://example.com$request_uri";
       description = ''

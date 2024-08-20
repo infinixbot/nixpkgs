@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [
-    jdk
-    ant
-  ];
+  buildInputs = [ jdk ant ];
 
   buildPhase = "ant";
 

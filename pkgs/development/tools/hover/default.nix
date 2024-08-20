@@ -55,10 +55,7 @@ let
       sha256 = "sha256-ch59Wx4g72u7x99807ppURI4I+5aJ/W8Zr35q8X68v4=";
     };
 
-    nativeBuildInputs = [
-      addDriverRunpath
-      makeWrapper
-    ];
+    nativeBuildInputs = [ addDriverRunpath makeWrapper ];
 
     buildInputs = libs;
 

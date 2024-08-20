@@ -140,17 +140,8 @@ let
 
     sourceRoot = ".";
 
-    nativeBuildInputs = [
-      pkg-config
-      unzip
-    ];
-    buildInputs = [
-      zlib
-      libpng
-      bzip2
-      SDL
-      SDL_mixer
-    ];
+    nativeBuildInputs = [ pkg-config unzip ];
+    buildInputs = [ zlib libpng bzip2 SDL SDL_mixer ];
 
     configurePhase =
       let
@@ -203,10 +194,7 @@ let
       '';
 
       homepage = "http://www.simutrans.com/";
-      license = with lib.licenses; [
-        artistic1
-        gpl1Plus
-      ];
+      license = with lib.licenses; [ artistic1 gpl1Plus ];
       maintainers = [ ];
       platforms = lib.platforms.linux; # TODO: ++ darwin;
     };

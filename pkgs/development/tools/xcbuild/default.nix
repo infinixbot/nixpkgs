@@ -80,33 +80,18 @@ stdenv.mkDerivation {
 
   cmakeFlags = [ "-GNinja" ];
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-  ];
-  buildInputs =
-    [
-      zlib
-      libxml2
-      libpng
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      CoreServices
-      CoreGraphics
-      ImageIO
-    ];
+  nativeBuildInputs = [ cmake ninja ];
+  buildInputs = [
+    zlib
+    libxml2
+    libpng
+  ] ++ lib.optionals stdenv.isDarwin [ CoreServices CoreGraphics ImageIO ];
 
   meta = with lib; {
     description = "Xcode-compatible build tool";
     homepage = "https://github.com/facebook/xcbuild";
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      copumpkin
-      matthewbauer
-    ];
-    license = with licenses; [
-      bsd2
-      bsd3
-    ];
+    maintainers = with maintainers; [ copumpkin matthewbauer ];
+    license = with licenses; [ bsd2 bsd3 ];
   };
 }

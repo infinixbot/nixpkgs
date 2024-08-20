@@ -57,10 +57,7 @@ import ./make-test-python.nix (
             };
           };
           networking.firewall = {
-            allowedTCPPorts = [
-              80
-              443
-            ];
+            allowedTCPPorts = [ 80 443 ];
             allowedUDPPorts = [ stunPort ];
           };
           environment.systemPackages = [ pkgs.headscale ];

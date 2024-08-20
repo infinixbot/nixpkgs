@@ -25,14 +25,8 @@ stdenv.mkDerivation rec {
     ./Fix-to-string.agda-to-compile-with-Agda-2.6.1.patch
   ];
 
-  nativeBuildInputs = [
-    alex
-    happy
-  ];
-  buildInputs = [
-    Agda
-    (ghcWithPackages (ps: [ ps.ieee ]))
-  ];
+  nativeBuildInputs = [ alex happy ];
+  buildInputs = [ Agda (ghcWithPackages (ps: [ ps.ieee ])) ];
 
   LANG = "en_US.UTF-8";
   LOCALE_ARCHIVE = lib.optionalString (

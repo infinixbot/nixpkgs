@@ -31,11 +31,7 @@ rustPlatform.buildRustPackage rec {
       asl20 # or
       mit
     ];
-    maintainers = with maintainers; [
-      dywedir
-      figsoda
-      SuperSandro2000
-    ];
+    maintainers = with maintainers; [ dywedir figsoda SuperSandro2000 ];
     mainProgram = "hexyl";
   };
 }

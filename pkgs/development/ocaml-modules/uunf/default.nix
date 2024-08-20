@@ -36,16 +36,8 @@ else
       inherit hash;
     };
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-      ocamlbuild
-      topkg
-    ];
-    buildInputs = [
-      topkg
-      uutf
-    ] ++ lib.optional cmdlinerSupport cmdliner;
+    nativeBuildInputs = [ ocaml findlib ocamlbuild topkg ];
+    buildInputs = [ topkg uutf ] ++ lib.optional cmdlinerSupport cmdliner;
 
     strictDeps = true;
 

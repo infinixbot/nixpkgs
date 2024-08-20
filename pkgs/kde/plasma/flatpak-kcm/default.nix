@@ -8,8 +8,5 @@ mkKdeDerivation {
   pname = "flatpak-kcm";
 
   extraNativeBuildInputs = [ pkg-config ];
-  extraBuildInputs = [
-    flatpak
-    qtsvg
-  ];
+  extraBuildInputs = [ flatpak qtsvg ];
 }

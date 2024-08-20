@@ -266,17 +266,11 @@ rec {
           };
         }
       ]
-      ++ map
-        (a: {
-          abi = {
-            abi = a;
-          };
-        })
-        [
-          "n32"
-          "ilp32"
-          "x32"
-        ];
+      ++ map (a: {
+        abi = {
+          abi = a;
+        };
+      }) [ "n32" "ilp32" "x32" ];
     isBigEndian = {
       cpu = {
         significantByte = significantBytes.bigEndian;
@@ -302,14 +296,7 @@ rec {
         };
       };
     };
-    isUnix = [
-      isBSD
-      isDarwin
-      isLinux
-      isSunOS
-      isCygwin
-      isRedox
-    ];
+    isUnix = [ isBSD isDarwin isLinux isSunOS isCygwin isRedox ];
 
     isMacOS = {
       kernel = kernels.macos;
@@ -361,37 +348,12 @@ rec {
       kernel = kernels.none;
     };
 
-    isAndroid = [
-      { abi = abis.android; }
-      { abi = abis.androideabi; }
-    ];
+    isAndroid = [ { abi = abis.android; } { abi = abis.androideabi; } ];
     isGnu =
       with abis;
-      map (a: { abi = a; }) [
-        gnuabi64
-        gnuabin32
-        gnu
-        gnueabi
-        gnueabihf
-        gnuabielfv1
-        gnuabielfv2
-      ];
-    isMusl =
-      with abis;
-      map (a: { abi = a; }) [
-        musl
-        musleabi
-        musleabihf
-        muslabin32
-        muslabi64
-      ];
-    isUClibc =
-      with abis;
-      map (a: { abi = a; }) [
-        uclibc
-        uclibceabi
-        uclibceabihf
-      ];
+      map (a: { abi = a; }) [ gnuabi64 gnuabin32 gnu gnueabi gnueabihf gnuabielfv1 gnuabielfv2 ];
+    isMusl = with abis; map (a: { abi = a; }) [ musl musleabi musleabihf muslabin32 muslabi64 ];
+    isUClibc = with abis; map (a: { abi = a; }) [ uclibc uclibceabi uclibceabihf ];
 
     isEfi = [
       {

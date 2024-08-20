@@ -24,21 +24,10 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [
-    makeWrapper
-    perl
-    libxml2
-    libxslt
-    docbook-xsl
-    docbook_xml_dtd_44
-  ];
+  nativeBuildInputs = [ makeWrapper perl libxml2 libxslt docbook-xsl docbook_xml_dtd_44 ];
   buildInputs =
     [
-      (perl.withPackages (p: [
-        p.IPCRun
-        p.TimeDate
-        p.TimeDuration
-      ]))
+      (perl.withPackages (p: [ p.IPCRun p.TimeDate p.TimeDuration ]))
     ]
     ++ lib.optionals stdenv.isDarwin [
       cctools
@@ -59,10 +48,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Growing collection of the unix tools that nobody thought to write long ago when unix was young";
     homepage = "https://joeyh.name/code/moreutils/";
-    maintainers = with maintainers; [
-      koral
-      pSub
-    ];
+    maintainers = with maintainers; [ koral pSub ];
     platforms = platforms.all;
     license = licenses.gpl2Plus;
   };

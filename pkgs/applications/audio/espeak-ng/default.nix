@@ -51,15 +51,7 @@ stdenv.mkDerivation rec {
       })
     ];
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-    which
-    libtool
-    pkg-config
-    ronn
-    makeWrapper
-  ];
+  nativeBuildInputs = [ autoconf automake which libtool pkg-config ronn makeWrapper ];
 
   buildInputs =
     lib.optional mbrolaSupport mbrola

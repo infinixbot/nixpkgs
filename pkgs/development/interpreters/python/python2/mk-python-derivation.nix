@@ -103,11 +103,7 @@
 let
   inherit (python) stdenv;
 
-  withDistOutput = lib.elem format [
-    "pyproject"
-    "setuptools"
-    "wheel"
-  ];
+  withDistOutput = lib.elem format [ "pyproject" "setuptools" "wheel" ];
 
   name_ = name;
 
@@ -291,10 +287,7 @@ let
     let
       filename = builtins.head (lib.splitString ":" self.meta.position);
     in
-    attrs.passthru.updateScript or [
-      update-python-libraries
-      filename
-    ];
+    attrs.passthru.updateScript or [ update-python-libraries filename ];
 in
 lib.extendDerivation (
   disabled -> throw "${name} not supported for interpreter ${python.executable}"

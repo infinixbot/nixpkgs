@@ -33,15 +33,9 @@ let
         --replace 'os.path.expanduser(os.path.join("~", ".u2net", model_name + ".pth"))' "os.path.join(\"$models\", model_name + \".pth\")"
     '';
 
-    nativeBuildInputs = [
-      p.setuptools
-      p.wheel
-    ];
+    nativeBuildInputs = [ p.setuptools p.wheel ];
 
-    pythonRelaxDeps = [
-      "pillow"
-      "torchvision"
-    ];
+    pythonRelaxDeps = [ "pillow" "torchvision" ];
 
     propagatedBuildInputs = [
       p.certifi

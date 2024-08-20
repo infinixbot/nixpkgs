@@ -3,10 +3,7 @@
   handleTestOn,
 }:
 let
-  supportedSystems = [
-    "x86_64-linux"
-    "i686-linux"
-  ];
+  supportedSystems = [ "x86_64-linux" "i686-linux" ];
 
 in
 {

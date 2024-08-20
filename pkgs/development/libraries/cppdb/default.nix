@@ -19,12 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    sqlite
-    libmysqlclient
-    postgresql
-    unixODBC
-  ];
+  buildInputs = [ sqlite libmysqlclient postgresql unixODBC ];
 
   cmakeFlags = [ "--no-warn-unused-cli" ];
   env.NIX_CFLAGS_COMPILE = "-I${libmysqlclient}/include/mysql -L${libmysqlclient}/lib/mysql";

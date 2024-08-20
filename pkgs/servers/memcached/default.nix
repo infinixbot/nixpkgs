@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
     "ac_cv_c_endian=${if stdenv.hostPlatform.isBigEndian then "big" else "little"}"
   ];
 
-  buildInputs = [
-    cyrus_sasl
-    libevent
-  ];
+  buildInputs = [ cyrus_sasl libevent ];
 
   hardeningEnable = [ "pie" ];
 

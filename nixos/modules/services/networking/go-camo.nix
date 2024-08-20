@@ -71,13 +71,7 @@ in
         exec ${
           lib.escapeShellArgs (
             lib.lists.remove "" (
-              [
-                "${pkgs.go-camo}/bin/go-camo"
-                cfg.listen
-                cfg.sslListen
-                cfg.sslKey
-                cfg.sslCert
-              ]
+              [ "${pkgs.go-camo}/bin/go-camo" cfg.listen cfg.sslListen cfg.sslKey cfg.sslCert ]
               ++ cfg.extraOptions
             )
           )

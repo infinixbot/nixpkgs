@@ -24,16 +24,9 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
   buildInputs =
-    [
-      libGL
-      python3
-    ]
+    [ libGL python3 ]
     ++ lib.optionals stdenv.isDarwin [ Cocoa ]
-    ++ lib.optionals stdenv.isLinux [
-      libX11
-      libXext
-      libXrandr
-    ];
+    ++ lib.optionals stdenv.isLinux [ libX11 libXext libXrandr ];
 
   enableParallelBuilding = true;
 

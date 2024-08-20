@@ -31,10 +31,7 @@ stdenv.mkDerivation {
 
   cmakeFlags = [ "-D${lib.toUpper ssl_implementation.pname}=ON" ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
   buildInputs = [ ssl_implementation ] ++ additional_buildInputs;
 
   passthru = {
@@ -45,10 +42,7 @@ stdenv.mkDerivation {
     description = "ustream SSL wrapper";
     homepage = "https://git.openwrt.org/?p=project/ustream-ssl.git;a=summary";
     license = licenses.isc;
-    maintainers = with maintainers; [
-      fpletz
-      mkg20001
-    ];
+    maintainers = with maintainers; [ fpletz mkg20001 ];
     platforms = platforms.all;
   };
 }

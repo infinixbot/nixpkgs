@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
 
   makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
 
-  buildInputs = [
-    ncurses
-    libiconv
-  ];
+  buildInputs = [ ncurses libiconv ];
 
   # Silence warnings related to use of implicitly declared library functions and implicit ints.
   # TODO: Remove and/or fix with patches the next time this package is updated.

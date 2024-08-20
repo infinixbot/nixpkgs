@@ -31,10 +31,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs = [
     meson
@@ -47,11 +44,7 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs = lib.optionals stdenv.isDarwin (
-    with darwin.apple_sdk.frameworks;
-    [
-      ApplicationServices
-      Foundation
-    ]
+    with darwin.apple_sdk.frameworks; [ ApplicationServices Foundation ]
   );
 
   env = lib.optionalAttrs stdenv.isx86_32 {

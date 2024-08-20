@@ -32,18 +32,7 @@ in
     enable = lib.mkEnableOption "htop process monitor";
 
     settings = lib.mkOption {
-      type =
-        with lib.types;
-        attrsOf (oneOf [
-          str
-          int
-          bool
-          (listOf (oneOf [
-            str
-            int
-            bool
-          ]))
-        ]);
+      type = with lib.types; attrsOf (oneOf [ str int bool (listOf (oneOf [ str int bool ])) ]);
       default = { };
       example = {
         hide_kernel_threads = true;

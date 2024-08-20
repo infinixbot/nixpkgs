@@ -28,27 +28,18 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-B5YuNcJZHjR3dlVs66rySi68j29O3iMtlQvCjTUZBeY=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    doxygen
-  ];
+  nativeBuildInputs = [ cmake pkg-config doxygen ];
 
-  buildInputs =
-    [
-      libGL
-      glew
-      xorg.libX11
-      ffmpeg_4
-      libjpeg
-      libpng
-      libtiff
-      eigen
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      Carbon
-      Cocoa
-    ];
+  buildInputs = [
+    libGL
+    glew
+    xorg.libX11
+    ffmpeg_4
+    libjpeg
+    libpng
+    libtiff
+    eigen
+  ] ++ lib.optionals stdenv.isDarwin [ Carbon Cocoa ];
 
   # The tests use cmake's findPackage to find the installed version of
   # pangolin, which isn't what we want (or available).

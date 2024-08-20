@@ -19,11 +19,7 @@ in
 appimageTools.wrapType2 {
   inherit pname version src;
 
-  extraPkgs =
-    pkgs: with pkgs; [
-      polkit
-      udev
-    ];
+  extraPkgs = pkgs: with pkgs; [ polkit udev ];
 
   extraInstallCommands = ''
     install -m 444 -D ${appimageContents}/sozi.desktop -t $out/share/applications

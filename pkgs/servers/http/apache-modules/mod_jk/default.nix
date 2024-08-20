@@ -29,10 +29,7 @@ stdenv.mkDerivation rec {
     cp apache-2.0/mod_jk.so $out/modules
   '';
 
-  buildInputs = [
-    apacheHttpd
-    jdk
-  ];
+  buildInputs = [ apacheHttpd jdk ];
 
   meta = with lib; {
     description = "Provides web server plugins to connect web servers with Tomcat";

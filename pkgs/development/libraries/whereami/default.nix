@@ -41,10 +41,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Locate the current executable and running module/library";
     homepage = "https://github.com/gpakosz/whereami";
-    license = with licenses; [
-      mit
-      wtfpl
-    ];
+    license = with licenses; [ mit wtfpl ];
     maintainers = with maintainers; [ emilytrau ];
     platforms = platforms.all;
   };

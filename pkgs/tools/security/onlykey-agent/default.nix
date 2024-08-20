@@ -58,11 +58,7 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-SbGb7CjcD7cFPvASZtip56B4uxRiFKZBvbsf6sb8fds=";
   };
 
-  propagatedBuildInputs = with python3Packages; [
-    lib-agent
-    onlykey-cli
-    setuptools
-  ];
+  propagatedBuildInputs = with python3Packages; [ lib-agent onlykey-cli setuptools ];
 
   # move the python library into the sitePackages.
   postInstall = ''

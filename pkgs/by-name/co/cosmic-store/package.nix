@@ -56,11 +56,7 @@ rustPlatform.buildRustPackage rec {
     substituteInPlace justfile --replace '#!/usr/bin/env' "#!$(command -v env)"
   '';
 
-  nativeBuildInputs = [
-    just
-    pkg-config
-    makeBinaryWrapper
-  ];
+  nativeBuildInputs = [ just pkg-config makeBinaryWrapper ];
   buildInputs = [
     appstream
     glib
@@ -118,10 +114,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/pop-os/cosmic-store";
     description = "App Store for the COSMIC Desktop Environment";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      ahoneybun
-      nyanbinary
-    ];
+    maintainers = with maintainers; [ ahoneybun nyanbinary ];
     platforms = platforms.linux;
   };
 }

@@ -21,17 +21,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-7PZNNUMaCZEBf0lOCqkquewRgZPooBOjIbGF7JlLnEo=";
   };
 
-  nativeBuildInputs = with ocamlPackages; [
-    ocamlbuild
-    findlib
-    ocaml
-    z3
-    sail
-  ];
-  buildInputs = with ocamlPackages; [
-    zlib
-    linksem
-  ];
+  nativeBuildInputs = with ocamlPackages; [ ocamlbuild findlib ocaml z3 sail ];
+  buildInputs = with ocamlPackages; [ zlib linksem ];
   strictDeps = true;
 
   patches = [

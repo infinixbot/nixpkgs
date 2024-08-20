@@ -186,18 +186,9 @@ let
     # I am not entirely sure why these three packages end up in
     # the Hydra jobset.  But they do, and they don't meet the
     # criteria above, so at the moment they are special-cased.
-    [
-      "pkgsLLVM"
-      "stdenv"
-    ]
-    [
-      "pkgsStatic"
-      "stdenv"
-    ]
-    [
-      "pkgsMusl"
-      "stdenv"
-    ]
+    [ "pkgsLLVM" "stdenv" ]
+    [ "pkgsStatic" "stdenv" ]
+    [ "pkgsMusl" "stdenv" ]
   ] ++ justAttrNames [ ] filtered;
 
   names = map (path: (lib.concatStringsSep "." path)) paths;

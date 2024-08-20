@@ -38,11 +38,7 @@ lib.throwIf (lib.versionAtLeast ocaml.version "5.0")
     meta = with lib; {
       description = "Simple fork of OCaml parser with support for error recovery";
       homepage = "https://github.com/serokell/ocaml-recovery-parser";
-      license = with licenses; [
-        lgpl2Only
-        mit
-        mpl20
-      ];
+      license = with licenses; [ lgpl2Only mit mpl20 ];
       maintainers = with maintainers; [ romildo ];
       mainProgram = "menhir-recover";
     };

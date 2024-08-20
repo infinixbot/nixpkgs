@@ -25,11 +25,7 @@ stdenv.mkDerivation rec {
 
   inherit (malcontent) version src;
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-  ];
+  outputs = [ "out" "lib" "dev" ];
 
   patches = [
     # Allow installing installed tests to a separate output.

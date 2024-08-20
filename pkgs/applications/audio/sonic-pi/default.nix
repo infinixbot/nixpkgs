@@ -194,13 +194,7 @@ stdenv.mkDerivation rec {
     # Wrap Qt GUI (distributed binary)
     wrapQtApp $out/bin/sonic-pi \
       --prefix PATH : ${
-        lib.makeBinPath [
-          ruby
-          supercollider-with-sc3-plugins
-          jack2
-          jack-example-tools
-          pipewire.jack
-        ]
+        lib.makeBinPath [ ruby supercollider-with-sc3-plugins jack2 jack-example-tools pipewire.jack ]
       }
 
     # If ImGui was built
@@ -209,13 +203,7 @@ stdenv.mkDerivation rec {
       makeWrapper $out/app/build/gui/imgui/sonic-pi-imgui $out/bin/sonic-pi-imgui \
         --inherit-argv0 \
         --prefix PATH : ${
-          lib.makeBinPath [
-            ruby
-            supercollider-with-sc3-plugins
-            jack2
-            jack-example-tools
-            pipewire.jack
-          ]
+          lib.makeBinPath [ ruby supercollider-with-sc3-plugins jack2 jack-example-tools pipewire.jack ]
         }
     fi
 
@@ -225,10 +213,7 @@ stdenv.mkDerivation rec {
     done
   '';
 
-  stripDebugList = [
-    "app"
-    "bin"
-  ];
+  stripDebugList = [ "app" "bin" ];
 
   desktopItems = [
     (makeDesktopItem {
@@ -237,11 +222,7 @@ stdenv.mkDerivation rec {
       icon = "sonic-pi";
       desktopName = "Sonic Pi";
       comment = meta.description;
-      categories = [
-        "Audio"
-        "AudioVideo"
-        "Education"
-      ];
+      categories = [ "Audio" "AudioVideo" "Education" ];
     })
   ];
 
@@ -251,12 +232,7 @@ stdenv.mkDerivation rec {
     homepage = "https://sonic-pi.net/";
     description = "Free live coding synth for everyone originally designed to support computing and music lessons within schools";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      Phlogistique
-      kamilchm
-      c0deaddict
-      sohalt
-    ];
+    maintainers = with maintainers; [ Phlogistique kamilchm c0deaddict sohalt ];
     platforms = platforms.linux;
   };
 }

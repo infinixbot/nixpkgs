@@ -103,17 +103,7 @@ stdenv.mkDerivation rec {
       rm -f $out/lib/xorg/protocol.txt
 
       wrapProgram $out/bin/vncserver \
-        --prefix PATH : ${
-          lib.makeBinPath (
-            with xorg;
-            [
-              xterm
-              twm
-              xsetroot
-              xauth
-            ]
-          )
-        }
+        --prefix PATH : ${lib.makeBinPath (with xorg; [ xterm twm xsetroot xauth ])}
     ''
     + lib.optionalString stdenv.isDarwin ''
       mkdir -p $out/Applications

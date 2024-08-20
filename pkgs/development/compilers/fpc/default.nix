@@ -34,10 +34,7 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs =
-    [
-      startFPC
-      gawk
-    ]
+    [ startFPC gawk ]
     ++ lib.optionals stdenv.isDarwin [
       libiconv
       darwin.apple_sdk.frameworks.CoreFoundation
@@ -78,10 +75,7 @@ stdenv.mkDerivation rec {
     with darwin.apple_sdk.frameworks; "-F${CoreFoundation}/Library/Frameworks"
   );
 
-  makeFlags = [
-    "NOGDB=1"
-    "FPC=${startFPC}/bin/fpc"
-  ];
+  makeFlags = [ "NOGDB=1" "FPC=${startFPC}/bin/fpc" ];
 
   installFlags = [ "INSTALL_PREFIX=\${out}" ];
 
@@ -106,10 +100,7 @@ stdenv.mkDerivation rec {
     description = "Free Pascal Compiler from a source distribution";
     homepage = "https://www.freepascal.org";
     maintainers = [ maintainers.raskin ];
-    license = with licenses; [
-      gpl2
-      lgpl2
-    ];
+    license = with licenses; [ gpl2 lgpl2 ];
     platforms = platforms.unix;
   };
 }

@@ -30,11 +30,7 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ perl ];
-  buildInputs = [
-    trousers
-    openssl
-    opencryptoki
-  ];
+  buildInputs = [ trousers openssl opencryptoki ];
 
   meta = with lib; {
     description = "Management tools for TPM hardware";

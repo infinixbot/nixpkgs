@@ -45,9 +45,6 @@ stdenvNoCC.mkDerivation rec {
     '';
     license = lib.licenses.ofl;
     platforms = lib.platforms.all;
-    maintainers = with lib.maintainers; [
-      mathnerd314
-      emily
-    ];
+    maintainers = with lib.maintainers; [ mathnerd314 emily ];
   };
 }

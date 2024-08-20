@@ -23,20 +23,11 @@ stdenv.mkDerivation rec {
     "CXXFLAGS=-std=c++11"
   ];
 
-  outputs = [
-    "out"
-    "devdoc"
-  ];
+  outputs = [ "out" "devdoc" ];
 
-  nativeBuildInputs = [
-    pkg-config
-    perl
-  ];
+  nativeBuildInputs = [ pkg-config perl ];
 
-  propagatedBuildInputs = [
-    libxml2
-    glibmm
-  ];
+  propagatedBuildInputs = [ libxml2 glibmm ];
 
   passthru = {
     updateScript = gnome.updateScript {

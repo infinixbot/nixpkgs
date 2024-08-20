@@ -17,10 +17,7 @@ buildGoModule rec {
 
   vendorHash = null;
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   checkFlags =
     let
@@ -32,10 +29,7 @@ buildGoModule rec {
         "Test_QueryFull"
       ];
     in
-    [
-      "-skip"
-      "${builtins.concatStringsSep "|" skippedTests}"
-    ];
+    [ "-skip" "${builtins.concatStringsSep "|" skippedTests}" ];
 
   meta = with lib; {
     description = "Autostart and stop minecraft-server when players join/leave";

@@ -41,10 +41,7 @@ buildGoModule rec {
     vte-gtk4
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   enableParallelBuilding = true;
 

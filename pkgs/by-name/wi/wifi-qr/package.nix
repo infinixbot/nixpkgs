@@ -17,10 +17,7 @@ stdenvNoCC.mkDerivation {
   pname = "wifi-qr";
   version = "0.3-unstable-2023-09-30";
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   src = fetchFromGitHub {
     owner = "kokoye2007";

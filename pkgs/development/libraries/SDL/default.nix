@@ -38,19 +38,9 @@
 let
   extraPropagatedBuildInputs =
     [ ]
-    ++ lib.optionals x11Support [
-      libXext
-      libICE
-      libXrandr
-    ]
-    ++ lib.optionals (openglSupport && stdenv.isLinux) [
-      libGL
-      libGLU
-    ]
-    ++ lib.optionals (openglSupport && stdenv.isDarwin) [
-      OpenGL
-      GLUT
-    ]
+    ++ lib.optionals x11Support [ libXext libICE libXrandr ]
+    ++ lib.optionals (openglSupport && stdenv.isLinux) [ libGL libGLU ]
+    ++ lib.optionals (openglSupport && stdenv.isDarwin) [ OpenGL GLUT ]
     ++ lib.optional alsaSupport alsa-lib
     ++ lib.optional pulseaudioSupport libpulseaudio
     ++ lib.optional stdenv.isDarwin Cocoa;
@@ -66,10 +56,7 @@ stdenv.mkDerivation rec {
     sha256 = "005d993xcac8236fpvd1iawkz4wqjybkpn8dbwaliqz5jfkidlyn";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
   outputBin = "dev"; # sdl-config
 
   nativeBuildInputs = [ pkg-config ] ++ lib.optional stdenv.isLinux libcap;
@@ -79,13 +66,7 @@ stdenv.mkDerivation rec {
   buildInputs =
     [ ]
     ++ lib.optional (!stdenv.hostPlatform.isMinGW && alsaSupport) audiofile
-    ++ lib.optionals stdenv.isDarwin [
-      AudioUnit
-      CoreAudio
-      CoreServices
-      Kernel
-      OpenGL
-    ];
+    ++ lib.optionals stdenv.isDarwin [ AudioUnit CoreAudio CoreServices Kernel OpenGL ];
 
   configureFlags =
     [

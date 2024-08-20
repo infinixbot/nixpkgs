@@ -19,12 +19,7 @@ pkgs.releaseTools.sourceTarball {
       toString (nixpkgs.revCount or 0)
   }.${nixpkgs.shortRev or "dirty"}";
 
-  buildInputs = with pkgs; [
-    nix.out
-    jq
-    lib-tests
-    brotli
-  ];
+  buildInputs = with pkgs; [ nix.out jq lib-tests brotli ];
 
   configurePhase = ''
     eval "$preConfigure"

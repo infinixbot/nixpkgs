@@ -38,11 +38,7 @@
         }
       ];
 
-      boot.initrd.availableKernelModules = [
-        "loop"
-        "erofs"
-        "overlay"
-      ];
+      boot.initrd.availableKernelModules = [ "loop" "erofs" "overlay" ];
 
       boot.initrd.systemd = {
         mounts = [

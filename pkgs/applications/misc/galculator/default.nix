@@ -31,15 +31,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    intltool
-    pkg-config
-  ];
-  buildInputs = [
-    gtk
-    flex
-  ];
+  nativeBuildInputs = [ autoreconfHook intltool pkg-config ];
+  buildInputs = [ gtk flex ];
 
   meta = with lib; {
     description = "GTK 2/3 algebraic and RPN calculator";

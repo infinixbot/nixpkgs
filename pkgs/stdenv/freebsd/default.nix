@@ -43,10 +43,7 @@ let
       pname = "bootstrap-archive";
       version = "9.9.9";
       builder = "${bootstrapFiles.unpack}/libexec/ld-elf.so.1";
-      args = [
-        "${bootstrapFiles.unpack}/bin/bash"
-        ./unpack-bootstrap-files.sh
-      ];
+      args = [ "${bootstrapFiles.unpack}/bin/bash" ./unpack-bootstrap-files.sh ];
       LD_LIBRARY_PATH = "${bootstrapFiles.unpack}/lib";
       src = bootstrapFiles.unpack;
       inherit (bootstrapFiles) bootstrapTools;

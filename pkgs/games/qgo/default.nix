@@ -43,12 +43,6 @@ mkDerivation {
   postPatch = ''
     sed -i 's|@out@|'"''${out}"'|g' src/src.pro src/defines.h
   '';
-  nativeBuildInputs = [
-    qmake
-    qttools
-  ];
-  buildInputs = [
-    qtbase
-    qtmultimedia
-  ];
+  nativeBuildInputs = [ qmake qttools ];
+  buildInputs = [ qtbase qtmultimedia ];
 }

@@ -47,12 +47,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   preFixup = ''
     gappsWrapperArgs+=(
-      --prefix PATH : ${
-        lib.makeBinPath [
-          scrot
-          tesseract
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ scrot tesseract ]}
     )
   '';
 

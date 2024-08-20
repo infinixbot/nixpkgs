@@ -168,9 +168,6 @@ stdenv.mkDerivation {
     mainProgram = "powerdns-admin";
     homepage = "https://github.com/PowerDNS-Admin/PowerDNS-Admin";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      Flakebi
-      zhaofengli
-    ];
+    maintainers = with maintainers; [ Flakebi zhaofengli ];
   };
 }

@@ -27,10 +27,7 @@ pkgs.haskell.packages.ghc92.override {
             description = "Formats Elm source code according to a standard set of rules based on the official Elm Style Guide";
             homepage = "https://github.com/avh4/elm-format";
             license = lib.licenses.bsd3;
-            maintainers = with lib.maintainers; [
-              avh4
-              turbomack
-            ];
+            maintainers = with lib.maintainers; [ avh4 turbomack ];
           }) (self.callPackage ./elm-format/elm-format.nix { })
         );
       };

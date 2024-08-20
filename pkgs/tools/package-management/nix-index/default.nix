@@ -24,11 +24,7 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "sha256-c1Ivsj9of/cjEKU0lo4I9BfIUQZ3pPf2QF9fAlZTQn0=";
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    openssl
-    curl
-    sqlite
-  ] ++ lib.optional stdenv.isDarwin Security;
+  buildInputs = [ openssl curl sqlite ] ++ lib.optional stdenv.isDarwin Security;
 
   postInstall = ''
     substituteInPlace command-not-found.sh \
@@ -41,10 +37,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/nix-community/nix-index";
     changelog = "https://github.com/nix-community/nix-index/blob/${src.rev}/CHANGELOG.md";
     license = with licenses; [ bsd3 ];
-    maintainers = with maintainers; [
-      bennofs
-      figsoda
-      ncfavier
-    ];
+    maintainers = with maintainers; [ bennofs figsoda ncfavier ];
   };
 }

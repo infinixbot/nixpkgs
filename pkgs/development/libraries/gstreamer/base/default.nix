@@ -49,10 +49,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "gst-plugins-base";
   version = "1.24.3";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   separateDebugInfo = true;
 

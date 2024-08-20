@@ -42,10 +42,7 @@ mkDerivation rec {
     v4l-utils
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-  ];
+  nativeBuildInputs = [ pkg-config cmake ];
 
   meta = with lib; {
     description = "Webcam Capture Software";

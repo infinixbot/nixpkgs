@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
 
   patches = [ ./mutex_no_nameclash.patch ];
 
-  buildInputs = [
-    alsa-lib
-    gtkmm2
-    libjack2
-  ];
+  buildInputs = [ alsa-lib gtkmm2 libjack2 ];
   nativeBuildInputs = [ pkg-config ];
 
   meta = with lib; {

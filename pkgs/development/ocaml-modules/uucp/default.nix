@@ -33,18 +33,8 @@ else
       hash = "sha256-qR5LiAZHt4oD3ak0x17GqbYXNaJmJxFk/WGoxT+yWYc=";
     };
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-      ocamlbuild
-      topkg
-    ];
-    buildInputs = [
-      topkg
-      uutf
-      uunf
-      uucd
-    ];
+    nativeBuildInputs = [ ocaml findlib ocamlbuild topkg ];
+    buildInputs = [ topkg uutf uunf uucd ];
 
     propagatedBuildInputs = [ uchar ];
 

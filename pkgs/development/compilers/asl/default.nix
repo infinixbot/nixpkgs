@@ -20,11 +20,7 @@ stdenv.mkDerivation (finalAttrs: {
       hash = "sha256-Q50GzXBxFMhbt5s9OgHPNH4bdqz2hhEmTnMmKowVn2E=";
     };
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
 
   nativeBuildInputs = lib.optionals buildDocs [ texliveMedium ];
 

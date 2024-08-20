@@ -21,16 +21,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-ZmSDKZiHko8MCeIuZL53HjupfwO6PAm8QOCc9O3xJOk=";
   };
 
-  nativeBuildInputs = [
-    perl
-    ocaml
-    findlib
-    camlidl
-  ];
-  buildInputs = [
-    gmp
-    mpfr
-  ];
+  nativeBuildInputs = [ perl ocaml findlib camlidl ];
+  buildInputs = [ gmp mpfr ];
   propagatedBuildInputs = [ bigarray-compat ];
 
   strictDeps = true;

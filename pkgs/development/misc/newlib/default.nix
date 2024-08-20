@@ -52,10 +52,7 @@ stdenv.mkDerivation (finalAttrs: {
         substituteInPlace configure --replace 'cross_only="target-libgloss target-newlib' 'cross_only="'
       '';
 
-  configurePlatforms = [
-    "build"
-    "target"
-  ];
+  configurePlatforms = [ "build" "target" ];
   # flags copied from https://community.arm.com/support-forums/f/compilers-and-libraries-forum/53310/gcc-arm-none-eabi-what-were-the-newlib-compilation-options
   # sort alphabetically
   configureFlags =

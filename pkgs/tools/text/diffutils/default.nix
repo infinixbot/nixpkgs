@@ -21,15 +21,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-kOXpPMck5OvhLt6A3xY0Bjx6hVaSaFkZv+YLVWyb0J4=";
   };
 
-  outputs = [
-    "out"
-    "info"
-  ];
+  outputs = [ "out" "info" ];
 
-  nativeBuildInputs = [
-    updateAutotoolsGnuConfigScriptsHook
-    (lib.getBin xz)
-  ];
+  nativeBuildInputs = [ updateAutotoolsGnuConfigScriptsHook (lib.getBin xz) ];
   # If no explicit coreutils is given, use the one from stdenv.
   buildInputs = [ coreutils ];
 

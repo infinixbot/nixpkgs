@@ -19,10 +19,7 @@ import ../../make-test-python.nix (
   in
   {
     name = "mastodon-remote-postgresql";
-    meta.maintainers = with pkgs.lib.maintainers; [
-      erictapen
-      izorkin
-    ];
+    meta.maintainers = with pkgs.lib.maintainers; [ erictapen izorkin ];
 
     nodes = {
       databases =
@@ -88,10 +85,7 @@ import ../../make-test-python.nix (
               ];
             };
             extraHosts = hosts;
-            firewall.allowedTCPPorts = [
-              80
-              443
-            ];
+            firewall.allowedTCPPorts = [ 80 443 ];
           };
 
           security = {

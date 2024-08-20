@@ -55,10 +55,7 @@ in
         8285 # flannel udp
         8472 # flannel vxlan
       ];
-      dhcpcd.denyInterfaces = [
-        "mynet*"
-        "flannel*"
-      ];
+      dhcpcd.denyInterfaces = [ "mynet*" "flannel*" ];
     };
 
     services.kubernetes.pki.certs = {
@@ -89,10 +86,7 @@ in
               {
                 apiGroups = [ "" ];
                 resources = [ "nodes" ];
-                verbs = [
-                  "list"
-                  "watch"
-                ];
+                verbs = [ "list" "watch" ];
               }
               {
                 apiGroups = [ "" ];

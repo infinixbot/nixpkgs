@@ -107,17 +107,9 @@ stdenv.mkDerivation rec {
     ++ lib.optionals zlibSupport [
       zlib
     ]
-    ++
-      lib.optionals
-        (lib.any (l: l == optimizationLevel) [
-          "0"
-          "1"
-          "2"
-          "3"
-        ])
-        [
-          boehmgc
-        ]
+    ++ lib.optionals (lib.any (l: l == optimizationLevel) [ "0" "1" "2" "3" ]) [
+      boehmgc
+    ]
     ++ lib.optionals stdenv.isDarwin [
       libunwind
       Security
@@ -275,12 +267,7 @@ stdenv.mkDerivation rec {
     description = "Fast, compliant alternative implementation of the Python language (${pythonVersion})";
     mainProgram = "pypy";
     license = licenses.mit;
-    platforms = [
-      "aarch64-linux"
-      "x86_64-linux"
-      "aarch64-darwin"
-      "x86_64-darwin"
-    ];
+    platforms = [ "aarch64-linux" "x86_64-linux" "aarch64-darwin" "x86_64-darwin" ];
     broken = optimizationLevel == "0"; # generates invalid code
     maintainers = with maintainers; [ andersk ];
   };

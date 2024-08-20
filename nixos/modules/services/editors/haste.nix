@@ -85,10 +85,7 @@ in
         ExecStart = "${pkg}/bin/haste-server ${format.generate "config.json" cfg.settings}";
       };
 
-      path = with pkgs; [
-        pkg
-        coreutils
-      ];
+      path = with pkgs; [ pkg coreutils ];
     };
   };
 }

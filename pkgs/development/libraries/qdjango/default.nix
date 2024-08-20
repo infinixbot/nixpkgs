@@ -18,11 +18,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-5MfRfsIlv73VMvKMBCLviXFovyGH0On5ukLIEy7zwkk=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
   postPatch =
     ''

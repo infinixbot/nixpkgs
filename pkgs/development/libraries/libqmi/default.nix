@@ -28,10 +28,7 @@ stdenv.mkDerivation rec {
   pname = "libqmi";
   version = "1.34.0";
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optional withIntrospection "devdoc";
+  outputs = [ "out" "dev" ] ++ lib.optional withIntrospection "devdoc";
 
   src = fetchFromGitLab {
     domain = "gitlab.freedesktop.org";

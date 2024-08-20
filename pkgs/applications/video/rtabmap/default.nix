@@ -34,12 +34,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-y/p1uFSxVQNXO383DLGCg4eWW7iu1esqpWlyPMF3huk=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    wrapQtAppsHook
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ cmake pkg-config wrapQtAppsHook wrapGAppsHook3 ];
   buildInputs = [
     ## Required
     opencv

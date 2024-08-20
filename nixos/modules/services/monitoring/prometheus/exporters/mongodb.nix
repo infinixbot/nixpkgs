@@ -31,10 +31,7 @@ in
     collStats = mkOption {
       type = types.listOf types.str;
       default = [ ];
-      example = [
-        "db1.coll1"
-        "db2"
-      ];
+      example = [ "db1.coll1" "db2" ];
       description = ''
         List of comma separared databases.collections to get $collStats
       '';
@@ -42,10 +39,7 @@ in
     indexStats = mkOption {
       type = types.listOf types.str;
       default = [ ];
-      example = [
-        "db1.coll1"
-        "db2"
-      ];
+      example = [ "db1.coll1" "db2" ];
       description = ''
         List of comma separared databases.collections to get $indexStats
       '';

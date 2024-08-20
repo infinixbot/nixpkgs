@@ -91,10 +91,7 @@ in
       description = "OpenConnect SSL VPN server";
       documentation = [ "man:ocserv(8)" ];
       wants = [ "network-online.target" ];
-      after = [
-        "dbus.service"
-        "network-online.target"
-      ];
+      after = [ "dbus.service" "network-online.target" ];
       wantedBy = [ "multi-user.target" ];
 
       serviceConfig = {

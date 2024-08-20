@@ -39,10 +39,7 @@ rustPlatform.buildRustPackage rec {
       asl20 # or
       mit
     ];
-    maintainers = with maintainers; [
-      figsoda
-      thoughtpolice
-    ];
+    maintainers = with maintainers; [ figsoda thoughtpolice ];
     mainProgram = "hyperfine";
   };
 }

@@ -73,10 +73,7 @@ stdenv.mkDerivation rec {
       "GNUEFI_ARM64_TARGET_SUPPORT=y"
     ];
 
-  buildFlags = [
-    "gnuefi"
-    "fs_gnuefi"
-  ];
+  buildFlags = [ "gnuefi" "fs_gnuefi" ];
 
   installPhase = ''
     runHook preInstall
@@ -139,13 +136,7 @@ stdenv.mkDerivation rec {
   postInstall = ''
     wrapProgram $out/bin/refind-install \
       --prefix PATH : ${
-        lib.makeBinPath (
-          [
-            efibootmgr
-            openssl
-          ]
-          ++ lib.optional withSbsigntool sbsigntool
-        )
+        lib.makeBinPath ([ efibootmgr openssl ] ++ lib.optional withSbsigntool sbsigntool)
       }
     wrapProgram $out/bin/refind-mvrefind \
       --prefix PATH : ${lib.makeBinPath [ efibootmgr ]}
@@ -173,15 +164,8 @@ stdenv.mkDerivation rec {
       Linux kernels that provide EFI stub support.
     '';
     homepage = "http://refind.sourceforge.net/";
-    maintainers = with maintainers; [
-      AndersonTorres
-      chewblacka
-    ];
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+    maintainers = with maintainers; [ AndersonTorres chewblacka ];
+    platforms = [ "i686-linux" "x86_64-linux" "aarch64-linux" ];
     license = licenses.gpl3Plus;
   };
 

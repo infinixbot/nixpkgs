@@ -88,10 +88,7 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://github.com/typescript-language-server/typescript-language-server/releases/tag/v${finalAttrs.version}";
     description = "Language Server Protocol implementation for TypeScript using tsserver";
     homepage = "https://github.com/typescript-language-server/typescript-language-server";
-    license = with lib.licenses; [
-      asl20
-      mit
-    ];
+    license = with lib.licenses; [ asl20 mit ];
     mainProgram = "typescript-language-server";
     maintainers = with lib.maintainers; [ marcel ];
   };

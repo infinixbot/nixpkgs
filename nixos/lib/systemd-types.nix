@@ -84,11 +84,7 @@ let
 
         dlopen = {
           usePriority = mkOption {
-            type = enum [
-              "required"
-              "recommended"
-              "suggested"
-            ];
+            type = enum [ "required" "recommended" "suggested" ];
             default = "recommended";
             description = ''
               Priority of dlopen ELF notes to include. "required" is
@@ -128,99 +124,34 @@ in
     )
   );
 
-  services = attrsOf (submodule [
-    stage2ServiceOptions
-    unitConfig
-    stage2ServiceConfig
-  ]);
-  initrdServices = attrsOf (submodule [
-    stage1ServiceOptions
-    unitConfig
-    stage1ServiceConfig
-  ]);
+  services = attrsOf (submodule [ stage2ServiceOptions unitConfig stage2ServiceConfig ]);
+  initrdServices = attrsOf (submodule [ stage1ServiceOptions unitConfig stage1ServiceConfig ]);
 
-  targets = attrsOf (submodule [
-    stage2CommonUnitOptions
-    unitConfig
-    targetConfig
-  ]);
-  initrdTargets = attrsOf (submodule [
-    stage1CommonUnitOptions
-    unitConfig
-    targetConfig
-  ]);
+  targets = attrsOf (submodule [ stage2CommonUnitOptions unitConfig targetConfig ]);
+  initrdTargets = attrsOf (submodule [ stage1CommonUnitOptions unitConfig targetConfig ]);
 
-  sockets = attrsOf (submodule [
-    stage2SocketOptions
-    unitConfig
-    socketConfig
-  ]);
-  initrdSockets = attrsOf (submodule [
-    stage1SocketOptions
-    unitConfig
-    socketConfig
-  ]);
+  sockets = attrsOf (submodule [ stage2SocketOptions unitConfig socketConfig ]);
+  initrdSockets = attrsOf (submodule [ stage1SocketOptions unitConfig socketConfig ]);
 
-  timers = attrsOf (submodule [
-    stage2TimerOptions
-    unitConfig
-    timerConfig
-  ]);
-  initrdTimers = attrsOf (submodule [
-    stage1TimerOptions
-    unitConfig
-    timerConfig
-  ]);
+  timers = attrsOf (submodule [ stage2TimerOptions unitConfig timerConfig ]);
+  initrdTimers = attrsOf (submodule [ stage1TimerOptions unitConfig timerConfig ]);
 
-  paths = attrsOf (submodule [
-    stage2PathOptions
-    unitConfig
-    pathConfig
-  ]);
-  initrdPaths = attrsOf (submodule [
-    stage1PathOptions
-    unitConfig
-    pathConfig
-  ]);
+  paths = attrsOf (submodule [ stage2PathOptions unitConfig pathConfig ]);
+  initrdPaths = attrsOf (submodule [ stage1PathOptions unitConfig pathConfig ]);
 
-  slices = attrsOf (submodule [
-    stage2SliceOptions
-    unitConfig
-    sliceConfig
-  ]);
-  initrdSlices = attrsOf (submodule [
-    stage1SliceOptions
-    unitConfig
-    sliceConfig
-  ]);
+  slices = attrsOf (submodule [ stage2SliceOptions unitConfig sliceConfig ]);
+  initrdSlices = attrsOf (submodule [ stage1SliceOptions unitConfig sliceConfig ]);
 
-  mounts = listOf (submodule [
-    stage2MountOptions
-    unitConfig
-    mountConfig
-  ]);
-  initrdMounts = listOf (submodule [
-    stage1MountOptions
-    unitConfig
-    mountConfig
-  ]);
+  mounts = listOf (submodule [ stage2MountOptions unitConfig mountConfig ]);
+  initrdMounts = listOf (submodule [ stage1MountOptions unitConfig mountConfig ]);
 
-  automounts = listOf (submodule [
-    stage2AutomountOptions
-    unitConfig
-    automountConfig
-  ]);
-  initrdAutomounts = attrsOf (submodule [
-    stage1AutomountOptions
-    unitConfig
-    automountConfig
-  ]);
+  automounts = listOf (submodule [ stage2AutomountOptions unitConfig automountConfig ]);
+  initrdAutomounts = attrsOf (submodule [ stage1AutomountOptions unitConfig automountConfig ]);
 
   initrdStorePath = listOf (
-    coercedTo (oneOf [
-      singleLineStr
-      package
-    ]) (source: { inherit source; }) (submodule initrdStorePathModule)
+    coercedTo (oneOf [ singleLineStr package ]) (source: { inherit source; }) (
+      submodule initrdStorePathModule
+    )
   );
 
   initrdContents = attrsOf (

@@ -57,10 +57,7 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   passthru.updateScript = nix-update-script {
-    extraArgs = [
-      "--version"
-      "branch"
-    ];
+    extraArgs = [ "--version" "branch" ];
   };
 
   meta = {

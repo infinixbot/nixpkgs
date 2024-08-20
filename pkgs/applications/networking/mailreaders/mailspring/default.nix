@@ -18,10 +18,7 @@ let
     '';
     mainProgram = "mailspring";
     maintainers = with maintainers; [ toschmidt ];
-    platforms = [
-      "x86_64-linux"
-      "aarch64-darwin"
-    ];
+    platforms = [ "x86_64-linux" "aarch64-darwin" ];
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
   };
 

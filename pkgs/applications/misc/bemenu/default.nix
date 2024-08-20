@@ -31,10 +31,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [
-    pkg-config
-    scdoc
-  ] ++ lib.optionals waylandSupport [ wayland-scanner ];
+  nativeBuildInputs = [ pkg-config scdoc ] ++ lib.optionals waylandSupport [ wayland-scanner ];
 
   buildInputs =
     [
@@ -45,10 +42,7 @@ stdenv.mkDerivation (finalAttrs: {
       pango
     ]
     ++ lib.optional ncursesSupport ncurses
-    ++ lib.optionals waylandSupport [
-      wayland
-      wayland-protocols
-    ]
+    ++ lib.optionals waylandSupport [ wayland wayland-protocols ]
     ++ lib.optionals x11Support [
       xorg.libX11
       xorg.libXinerama

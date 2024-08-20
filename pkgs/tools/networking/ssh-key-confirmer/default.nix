@@ -17,10 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-CkfZ9dImjdka98eu4xuWZ6Xed7WX6DnXw81Ih7bhPm0=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     description = "Test ssh login key acceptance without having the private key";

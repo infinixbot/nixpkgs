@@ -84,10 +84,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://crates.io/crates/rbw";
     changelog = "https://git.tozt.net/rbw/plain/CHANGELOG.md?id=${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      albakham
-      luc65r
-    ];
+    maintainers = with maintainers; [ albakham luc65r ];
     mainProgram = "rbw";
   };
 }

@@ -32,11 +32,7 @@ buildGoModule rec {
       --replace TestPBcopy SkipTestPBcopy
   '';
 
-  nativeBuildInputs = [
-    installShellFiles
-    makeWrapper
-    pkg-config
-  ];
+  nativeBuildInputs = [ installShellFiles makeWrapper pkg-config ];
 
   buildInputs = lib.optional withGui vte;
 

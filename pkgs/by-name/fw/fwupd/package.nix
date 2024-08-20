@@ -127,14 +127,7 @@ stdenv.mkDerivation (finalAttrs: {
   # libfwupd goes to lib
   # daemon, plug-ins and libfwupdplugin go to out
   # CLI programs go to out
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-    "devdoc"
-    "man"
-    "installedTests"
-  ];
+  outputs = [ "out" "lib" "dev" "devdoc" "man" "installedTests" ];
 
   src = fetchFromGitHub {
     owner = "fwupd";

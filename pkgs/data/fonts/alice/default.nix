@@ -8,10 +8,7 @@ stdenv.mkDerivation (attrs: {
   pname = "Alice";
   version = "2.003";
 
-  outputs = [
-    "out"
-    "woff2"
-  ];
+  outputs = [ "out" "woff2" ];
 
   src = fetchzip {
     url =

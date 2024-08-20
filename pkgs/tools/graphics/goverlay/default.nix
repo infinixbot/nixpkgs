@@ -49,10 +49,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-oXkGrMHjs8uui0pzGYW8jnttet/5IX0r8eat0n5saFk=";
   };
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   patches = [
     # Find MangoHud & vkBasalt Vulkan layers using the XDG Base Directory Specification

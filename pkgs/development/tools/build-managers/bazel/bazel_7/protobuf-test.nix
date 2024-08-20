@@ -50,10 +50,7 @@ let
 
   mergedRepoCache = symlinkJoin {
     name = "mergedDistDir";
-    paths = [
-      protobufRepoCache
-      distDir
-    ];
+    paths = [ protobufRepoCache distDir ];
   };
 
   MODULE = writeText "MODULE.bazel" ''

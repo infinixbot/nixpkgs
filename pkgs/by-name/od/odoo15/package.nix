@@ -26,10 +26,7 @@ let
 
         nativeBuildInputs = [ ];
 
-        nativeCheckInputs = with self; [
-          pytestCheckHook
-          pillow
-        ];
+        nativeCheckInputs = with self; [ pytestCheckHook pillow ];
       });
       flask = super.flask.overridePythonAttrs (old: rec {
         version = "2.1.3";
@@ -71,10 +68,7 @@ python.pkgs.buildPythonApplication rec {
     "--prefix"
     "PATH"
     ":"
-    "${lib.makeBinPath [
-      wkhtmltopdf
-      rtlcss
-    ]}"
+    "${lib.makeBinPath [ wkhtmltopdf rtlcss ]}"
   ];
 
   propagatedBuildInputs = with python.pkgs; [

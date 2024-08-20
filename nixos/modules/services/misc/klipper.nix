@@ -151,12 +151,7 @@ in
           cfg.settings != null
           -> foldl (a: b: a && b) true (
             mapAttrsToList (
-              mcu: _:
-              mcu != null
-              -> (hasAttrByPath [
-                "${mcu}"
-                "serial"
-              ] cfg.settings)
+              mcu: _: mcu != null -> (hasAttrByPath [ "${mcu}" "serial" ] cfg.settings)
             ) cfg.firmwares
           );
         message = "Option services.klipper.settings.$mcu.serial must be set when settings.klipper.firmware.$mcu is specified";

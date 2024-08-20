@@ -43,10 +43,7 @@ stdenv.mkDerivation {
   inherit pname version src;
 
   buildInputs = [ swiProlog ];
-  nativeBuildInputs = [
-    which
-    makeWrapper
-  ];
+  nativeBuildInputs = [ which makeWrapper ];
 
   makeFlags = [
     "CURRYFRONTEND=${curry-frontend}/bin/curry-frontend"
@@ -86,16 +83,7 @@ stdenv.mkDerivation {
 
     # List of dependencies from currytools/cpm/src/CPM/Main.curry
     wrapProgram $out/pakcs/bin/cypm \
-      --prefix PATH ":" "${
-        lib.makeBinPath [
-          curl
-          git
-          unzip
-          gnutar
-          coreutils
-          sqlite
-        ]
-      }"
+      --prefix PATH ":" "${lib.makeBinPath [ curl git unzip gnutar coreutils sqlite ]}"
 
     runHook postInstall
   '';

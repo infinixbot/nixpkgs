@@ -193,10 +193,7 @@ in
         {
           description = "GNS3 Server";
 
-          after = [
-            "network.target"
-            "network-online.target"
-          ];
+          after = [ "network.target" "network-online.target" ];
           wantedBy = [ "multi-user.target" ];
           wants = [ "network-online.target" ];
 

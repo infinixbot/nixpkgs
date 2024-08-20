@@ -21,11 +21,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    readline
-    SDL2
-    knightos-scas
-  ];
+  buildInputs = [ readline SDL2 knightos-scas ];
 
   cmakeFlags = [ "-Denable-sdl=YES" ];
 

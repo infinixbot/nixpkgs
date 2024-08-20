@@ -101,10 +101,7 @@ stdenv.mkDerivation {
     "-DModule_GenericLabelInterpolator=ON"
   ];
 
-  nativeBuildInputs = [
-    cmake
-    xz
-  ];
+  nativeBuildInputs = [ cmake xz ];
   buildInputs = [
     libX11
     libuuid

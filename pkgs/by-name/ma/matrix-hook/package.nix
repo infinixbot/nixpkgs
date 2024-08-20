@@ -23,10 +23,6 @@ buildGoModule rec {
     mainProgram = "matrix-hook";
     homepage = "https://github.com/pinpox/matrix-hook";
     license = licenses.gpl3;
-    maintainers = with maintainers; [
-      pinpox
-      mic92
-      zowoq
-    ];
+    maintainers = with maintainers; [ pinpox mic92 zowoq ];
   };
 }

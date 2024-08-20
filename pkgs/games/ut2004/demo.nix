@@ -43,9 +43,6 @@ stdenv.mkDerivation rec {
     homepage = "http://www.unrealtournament2004.com";
     license = licenses.unfree;
     maintainers = with maintainers; [ abbradar ];
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
   };
 }

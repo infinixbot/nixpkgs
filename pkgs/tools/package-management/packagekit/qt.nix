@@ -24,11 +24,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ packagekit ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    qttools
-  ];
+  nativeBuildInputs = [ cmake pkg-config qttools ];
 
   cmakeFlags = [ (lib.cmakeBool "BUILD_WITH_QT6" isQt6) ];
 

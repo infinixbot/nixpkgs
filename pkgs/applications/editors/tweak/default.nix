@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ ncurses ];
   preBuild = "substituteInPlace Makefile --replace '$(DESTDIR)/usr/local' $out";
-  makeFlags = [
-    "CC:=$(CC)"
-    "LINK:=$(CC)"
-  ];
+  makeFlags = [ "CC:=$(CC)" "LINK:=$(CC)" ];
 
   meta = with lib; {
     description = "Efficient hex editor";

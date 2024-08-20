@@ -273,10 +273,7 @@ stdenv.mkDerivation rec {
 
   env.NIX_CFLAGS_COMPILE = "-DNIXPKGS_QT_PLUGIN_PREFIX=\"${qtPluginPrefix}\"";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   moveToDev = false;
 
@@ -299,17 +296,8 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "https://www.qt.io/";
     description = "Cross-platform application framework for C++";
-    license = with licenses; [
-      fdl13Plus
-      gpl2Plus
-      lgpl21Plus
-      lgpl3Plus
-    ];
-    maintainers = with maintainers; [
-      milahu
-      nickcao
-      LunNova
-    ];
+    license = with licenses; [ fdl13Plus gpl2Plus lgpl21Plus lgpl3Plus ];
+    maintainers = with maintainers; [ milahu nickcao LunNova ];
     platforms = platforms.unix ++ platforms.windows;
   };
 }

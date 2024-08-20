@@ -65,12 +65,7 @@ stdenv.mkDerivation (finalAttrs: {
     "DEST_SHARE_DOC=${placeholder "doc"}/share/doc/p7zip"
   ];
 
-  outputs = [
-    "out"
-    "lib"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "lib" "doc" "man" ];
 
   setupHook = ./setup-hook.sh;
   passthru.updateScript = ./update.sh;
@@ -90,10 +85,7 @@ stdenv.mkDerivation (finalAttrs: {
         # and CPP/7zip/Compress/Rar* are unfree with the unRAR license restriction
         # the unRAR compression code is disabled by default
         lib.optionals enableUnfree [ unfree ];
-    maintainers = with maintainers; [
-      raskin
-      jk
-    ];
+    maintainers = with maintainers; [ raskin jk ];
     platforms = platforms.unix;
     mainProgram = "7z";
   };

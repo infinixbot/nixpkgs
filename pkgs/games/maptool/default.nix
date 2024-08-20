@@ -33,15 +33,7 @@ let
     platforms = [ "x86_64-linux" ];
   };
 
-  javafxModules = [
-    "base"
-    "controls"
-    "media"
-    "swing"
-    "web"
-    "fxml"
-    "graphics"
-  ];
+  javafxModules = [ "base" "controls" "media" "swing" "web" "fxml" "graphics" ];
 
   appClasspath = "share/${pname}";
 

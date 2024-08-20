@@ -41,24 +41,8 @@ stdenv.mkDerivation rec {
   ];
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [
-    bc
-    pkg-config
-    perl
-  ];
-  buildInputs = [
-    openssl
-    srt
-    zlib
-    ffmpeg_4
-    libvpx
-    libopus
-    srtp
-    jemalloc
-    pcre2
-    libuuid
-    hiredis
-  ];
+  nativeBuildInputs = [ bc pkg-config perl ];
+  buildInputs = [ openssl srt zlib ffmpeg_4 libvpx libopus srtp jemalloc pcre2 libuuid hiredis ];
 
   preBuild = ''
     patchShebangs core/colorg++

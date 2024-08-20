@@ -109,10 +109,7 @@ stdenv.mkDerivation rec {
     };
 
     nativeBuildInputs = [ cmake ];
-    buildInputs = [
-      libxml2
-      libxslt
-    ];
+    buildInputs = [ libxml2 libxslt ];
   };
 
   preFixup = ''
@@ -137,13 +134,7 @@ stdenv.mkDerivation rec {
     wrapProgram $out/bin/gnucash-cli "''${gappsWrapperArgs[@]}"
 
     wrapProgram $out/bin/finance-quote-wrapper \
-      --prefix PERL5LIB : "${
-        with perlPackages;
-        makeFullPerlPath [
-          JSONParse
-          FinanceQuote
-        ]
-      }"
+      --prefix PERL5LIB : "${with perlPackages; makeFullPerlPath [ JSONParse FinanceQuote ]}"
   '';
 
   passthru.updateScript = ./update.sh;
@@ -172,12 +163,7 @@ stdenv.mkDerivation rec {
       - Financial Calculations
     '';
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      domenkozar
-      AndersonTorres
-      rski
-      nevivurn
-    ];
+    maintainers = with maintainers; [ domenkozar AndersonTorres rski nevivurn ];
     platforms = platforms.unix;
     mainProgram = "gnucash";
   };

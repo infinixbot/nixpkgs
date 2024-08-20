@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs =
-    [
-      libX11
-      zlib
-      xorgproto
-    ]
+    [ libX11 zlib xorgproto ]
     ++ lib.optional (libGL != null) libGL
     ++ lib.optional (libGLU != null) libGLU
     ++ lib.optional (libglut != null) libglut;

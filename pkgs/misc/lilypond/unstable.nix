@@ -12,10 +12,7 @@ lilypond.overrideAttrs (oldAttrs: rec {
   };
 
   passthru.updateScript = {
-    command = [
-      ./update.sh
-      "unstable"
-    ];
+    command = [ ./update.sh "unstable" ];
     supportedFeatures = [ "commit" ];
   };
 })

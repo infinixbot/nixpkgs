@@ -80,12 +80,7 @@ stdenv.mkDerivation rec {
       ln -s $static $out
     '';
 
-  outputs = [
-    "out"
-    "bin"
-    "dev"
-    "static"
-  ];
+  outputs = [ "out" "bin" "dev" "static" ];
 
   passthru = {
     updateScript = gitUpdater {
@@ -108,11 +103,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://aomedia.org/av1-features/get-started/";
     changelog = "https://aomedia.googlesource.com/aom/+/refs/tags/v${version}/CHANGELOG";
-    maintainers = with maintainers; [
-      primeos
-      kiloreux
-      dandellion
-    ];
+    maintainers = with maintainers; [ primeos kiloreux dandellion ];
     platforms = platforms.all;
     outputsToInstall = [ "bin" ];
     license = licenses.bsd2;

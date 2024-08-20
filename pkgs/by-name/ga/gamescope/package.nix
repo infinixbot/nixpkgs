@@ -153,13 +153,7 @@ stdenv.mkDerivation (finalAttrs: {
 
     # --debug-layers flag expects these in the path
     wrapProgram "$out/bin/gamescope" \
-      --prefix PATH : ${
-        with xorg;
-        lib.makeBinPath [
-          xprop
-          xwininfo
-        ]
-      }
+      --prefix PATH : ${with xorg; lib.makeBinPath [ xprop xwininfo ]}
 
     # Install ReShade shaders
     mkdir -p $out/share/gamescope/reshade
@@ -172,13 +166,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "SteamOS session compositing window manager";
     homepage = "https://github.com/ValveSoftware/gamescope";
     license = licenses.bsd2;
-    maintainers = with maintainers; [
-      nrdxp
-      pedrohlc
-      Scrumplex
-      zhaofengli
-      k900
-    ];
+    maintainers = with maintainers; [ nrdxp pedrohlc Scrumplex zhaofengli k900 ];
     platforms = platforms.linux;
     mainProgram = "gamescope";
   };

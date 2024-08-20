@@ -99,17 +99,11 @@ python3.pkgs.buildPythonApplication rec {
       sqlalchemy
       emoji
     ]
-    ++ lib.optionals enableE2E [
-      pycrypto
-      python-gnupg
-    ]
+    ++ lib.optionals enableE2E [ pycrypto python-gnupg ]
     ++ lib.optional enableRST docutils
     ++ extraPythonPackages python3.pkgs;
 
-  nativeCheckInputs = [
-    xvfb-run
-    dbus
-  ];
+  nativeCheckInputs = [ xvfb-run dbus ];
 
   preBuild = ''
     python pep517build/build_metadata.py -o dist/metadata
@@ -136,10 +130,7 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "http://gajim.org/";
     description = "Jabber client written in PyGTK";
     license = lib.licenses.gpl3Plus;
-    maintainers = with lib.maintainers; [
-      raskin
-      abbradar
-    ];
+    maintainers = with lib.maintainers; [ raskin abbradar ];
     downloadPage = "http://gajim.org/download/";
     platforms = lib.platforms.linux;
     mainProgram = "gajim";

@@ -30,11 +30,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   outputs = [ "out" ];
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ pkg-config cmake wrapQtAppsHook ];
 
   buildInputs = [
     qtbase

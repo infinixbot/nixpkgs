@@ -35,10 +35,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    passthru.pythonPkg
-    libftdi1
-  ];
+  buildInputs = [ passthru.pythonPkg libftdi1 ];
   makeFlags = [ "PREFIX=$(out)" ];
 
   enableParallelBuilding = true;
@@ -72,10 +69,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://github.com/YosysHQ/icestorm/";
     license = lib.licenses.isc;
-    maintainers = with lib.maintainers; [
-      shell
-      thoughtpolice
-    ];
+    maintainers = with lib.maintainers; [ shell thoughtpolice ];
     platforms = lib.platforms.all;
   };
 }

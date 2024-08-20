@@ -38,10 +38,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/Macchina-CLI/macchina";
     changelog = "https://github.com/Macchina-CLI/macchina/releases/tag/v${version}";
     license = with licenses; [ mit ];
-    maintainers = with maintainers; [
-      _414owen
-      figsoda
-    ];
+    maintainers = with maintainers; [ _414owen figsoda ];
     mainProgram = "macchina";
   };
 }

@@ -181,10 +181,7 @@ appleDerivation' stdenv {
 
   meta = with lib; {
     description = "Mac OS libc/libSystem (tapi library with pure headers)";
-    maintainers = with maintainers; [
-      copumpkin
-      gridaphobe
-    ];
+    maintainers = with maintainers; [ copumpkin gridaphobe ];
     platforms = platforms.darwin;
     license = licenses.apple-psl20;
   };

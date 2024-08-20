@@ -37,10 +37,7 @@ buildDunePackage rec {
     yojson
   ];
 
-  checkInputs = [
-    ppx_expect
-    alcotest
-  ];
+  checkInputs = [ ppx_expect alcotest ];
 
   doCheck = true;
 

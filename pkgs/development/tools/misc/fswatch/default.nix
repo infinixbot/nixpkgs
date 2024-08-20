@@ -26,11 +26,7 @@ stdenv.mkDerivation rec {
     autoreconfHook
     makeWrapper
   ] ++ lib.optionals stdenv.isDarwin [ CoreServices ];
-  buildInputs = [
-    gettext
-    libtool
-    texinfo
-  ];
+  buildInputs = [ gettext libtool texinfo ];
 
   enableParallelBuilding = true;
 

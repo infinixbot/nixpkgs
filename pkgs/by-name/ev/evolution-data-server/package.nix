@@ -53,10 +53,7 @@ stdenv.mkDerivation rec {
   pname = "evolution-data-server";
   version = "3.52.4";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/evolution-data-server/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";

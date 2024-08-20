@@ -146,10 +146,7 @@ python3.pkgs.buildPythonApplication rec {
       command = "sam --version";
     };
     updateScript = nix-update-script {
-      extraArgs = [
-        "--version-regex"
-        "^v([0-9.]+)$"
-      ];
+      extraArgs = [ "--version-regex" "^v([0-9.]+)$" ];
     };
   };
 
@@ -161,9 +158,6 @@ python3.pkgs.buildPythonApplication rec {
     changelog = "https://github.com/aws/aws-sam-cli/releases/tag/v${version}";
     license = licenses.asl20;
     mainProgram = "sam";
-    maintainers = with maintainers; [
-      lo1tuma
-      anthonyroussel
-    ];
+    maintainers = with maintainers; [ lo1tuma anthonyroussel ];
   };
 }

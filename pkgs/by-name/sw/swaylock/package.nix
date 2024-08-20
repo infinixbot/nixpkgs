@@ -28,21 +28,8 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
   depsBuildBuild = [ pkg-config ];
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    scdoc
-    wayland-scanner
-  ];
-  buildInputs = [
-    wayland
-    wayland-protocols
-    libxkbcommon
-    cairo
-    gdk-pixbuf
-    pam
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config scdoc wayland-scanner ];
+  buildInputs = [ wayland wayland-protocols libxkbcommon cairo gdk-pixbuf pam ];
 
   mesonFlags = [
     "-Dpam=enabled"

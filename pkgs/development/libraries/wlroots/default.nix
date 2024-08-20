@@ -57,21 +57,12 @@ let
       inherit patches postPatch;
 
       # $out for the library and $examples for the example programs (in examples):
-      outputs = [
-        "out"
-        "examples"
-      ];
+      outputs = [ "out" "examples" ];
 
       strictDeps = true;
       depsBuildBuild = [ pkg-config ];
 
-      nativeBuildInputs = [
-        meson
-        ninja
-        pkg-config
-        wayland-scanner
-        glslang
-      ] ++ extraNativeBuildInputs;
+      nativeBuildInputs = [ meson ninja pkg-config wayland-scanner glslang ] ++ extraNativeBuildInputs;
 
       buildInputs = [
         libGL
@@ -119,11 +110,7 @@ let
         changelog = "https://gitlab.freedesktop.org/wlroots/wlroots/-/tags/${version}";
         license = lib.licenses.mit;
         platforms = lib.platforms.linux;
-        maintainers = with lib.maintainers; [
-          primeos
-          synthetica
-          rewine
-        ];
+        maintainers = with lib.maintainers; [ primeos synthetica rewine ];
       };
     });
 

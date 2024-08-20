@@ -25,18 +25,11 @@ stdenv.mkDerivation rec {
     "--enable-dependency-tracking"
   ] ++ lib.optional stdenv.isDarwin "--disable-sdltest";
 
-  nativeBuildInputs = [
-    autoreconfHook
-    python3
-  ];
+  nativeBuildInputs = [ autoreconfHook python3 ];
 
-  buildInputs =
-    [ SDL2 ]
-    ++ lib.optionals stdenv.isLinux [
-      alsa-lib
-      libXext
-    ]
-    ++ lib.optionals stdenv.isDarwin [ Cocoa ];
+  buildInputs = [
+    SDL2
+  ] ++ lib.optionals stdenv.isLinux [ alsa-lib libXext ] ++ lib.optionals stdenv.isDarwin [ Cocoa ];
 
   enableParallelBuilding = true;
 

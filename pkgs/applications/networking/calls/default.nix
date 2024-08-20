@@ -44,10 +44,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-J1wuhAXPCvLWzPqMU4alVFFpHoCAzX3wVOP3Bw0wW/o=";
   };
 
-  outputs = [
-    "out"
-    "devdoc"
-  ];
+  outputs = [ "out" "devdoc" ];
 
   nativeBuildInputs = [
     meson

@@ -21,19 +21,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-51uFAPR0xsY3z9rFc8SdSGu4ae/VzUmC1qC8RGdt48Y=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pandoc
-    pkg-config
-    qttools
-  ];
+  nativeBuildInputs = [ cmake pandoc pkg-config qttools ];
 
-  buildInputs = [
-    alsa-lib
-    drumstick
-    qtbase
-    qtsvg
-  ];
+  buildInputs = [ alsa-lib drumstick qtbase qtsvg ];
 
   dontWrapQtApps = true;
 

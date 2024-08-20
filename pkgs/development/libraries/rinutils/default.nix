@@ -15,10 +15,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-+eUn03psyMe4hwraY8qiTzKrDSn9ERbfPrtoZYMDCVU=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    perl
-  ];
+  nativeBuildInputs = [ cmake perl ];
 
   # https://github.com/shlomif/rinutils/issues/5
   # (variable was unused at time of writing)

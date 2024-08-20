@@ -97,12 +97,7 @@ in
     };
 
     logLevel = mkOption {
-      type = types.enum [
-        "debug"
-        "info"
-        "warn"
-        "error"
-      ];
+      type = types.enum [ "debug" "info" "warn" "error" ];
       default = "info";
       description = ''
         Only log messages with the given severity or above.
@@ -110,10 +105,7 @@ in
     };
 
     logFormat = mkOption {
-      type = types.enum [
-        "logfmt"
-        "json"
-      ];
+      type = types.enum [ "logfmt" "json" ];
       default = "logfmt";
       description = ''
         Output format of log messages. One of: [logfmt, json]
@@ -182,10 +174,6 @@ in
         ++ cfg.extraFlags
       );
 
-    serviceConfig.RestrictAddressFamilies = [
-      "AF_INET"
-      "AF_INET6"
-      "AF_UNIX"
-    ];
+    serviceConfig.RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_UNIX" ];
   };
 }

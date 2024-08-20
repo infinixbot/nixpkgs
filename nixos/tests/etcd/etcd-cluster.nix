@@ -114,10 +114,7 @@ import ../make-test-python.nix (
         {
           require = [ nodeConfig ];
           services.etcd = {
-            initialCluster = [
-              "node1=https://node1:2380"
-              "node2=https://node2:2380"
-            ];
+            initialCluster = [ "node1=https://node1:2380" "node2=https://node2:2380" ];
             initialAdvertisePeerUrls = [ "https://node1:2380" ];
           };
         };
@@ -127,10 +124,7 @@ import ../make-test-python.nix (
         {
           require = [ nodeConfig ];
           services.etcd = {
-            initialCluster = [
-              "node1=https://node1:2380"
-              "node2=https://node2:2380"
-            ];
+            initialCluster = [ "node1=https://node1:2380" "node2=https://node2:2380" ];
             initialAdvertisePeerUrls = [ "https://node2:2380" ];
           };
         };

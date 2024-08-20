@@ -30,10 +30,7 @@ let
   '';
 in
 {
-  meta.maintainers = with maintainers; [
-    cole-h
-    grahamc
-  ];
+  meta.maintainers = with maintainers; [ cole-h grahamc ];
 
   options = {
     services.lifecycled = {

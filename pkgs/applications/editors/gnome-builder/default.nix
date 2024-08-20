@@ -45,10 +45,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "gnome-builder";
   version = "46.3";
 
-  outputs = [
-    "out"
-    "devdoc"
-  ];
+  outputs = [ "out" "devdoc" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/gnome-builder/${lib.versions.major finalAttrs.version}/gnome-builder-${finalAttrs.version}.tar.xz";

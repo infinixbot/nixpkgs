@@ -62,12 +62,7 @@ python3Packages.buildPythonApplication rec {
 
   preFixup = ''
     gappsWrapperArgs+=(
-      --prefix PATH : ${
-        lib.makeBinPath [
-          glib
-          xdg-user-dirs
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ glib xdg-user-dirs ]}
     )
     makeWrapperArgs+=("''${gappsWrapperArgs[@]}")
   '';

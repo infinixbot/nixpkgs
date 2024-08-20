@@ -38,10 +38,7 @@ buildGoModule rec {
     makeWrapper
   ];
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   postInstall =
     lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
@@ -73,9 +70,6 @@ buildGoModule rec {
     homepage = "https://noborus.github.io/ov";
     changelog = "https://github.com/noborus/ov/releases/tag/v${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      farcaller
-      figsoda
-    ];
+    maintainers = with maintainers; [ farcaller figsoda ];
   };
 }

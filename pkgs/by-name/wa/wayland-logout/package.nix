@@ -14,10 +14,7 @@ stdenv.mkDerivation rec {
     rev = "v${version}";
     hash = "sha256-VSAw6go4v937HWazXfMz8OdHgOnUtrlDXkslsV4eDIg=";
   };
-  nativeBuildInputs = [
-    meson
-    ninja
-  ];
+  nativeBuildInputs = [ meson ninja ];
   meta = with lib; {
     description = ''
       A utility designed to kill a single instance of a wayland compositor

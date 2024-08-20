@@ -65,10 +65,7 @@ stdenv.mkDerivation rec {
       folklore.
     '';
     homepage = "https://taisei-project.org/";
-    license = [
-      licenses.mit
-      licenses.cc-by-40
-    ];
+    license = [ licenses.mit licenses.cc-by-40 ];
     maintainers = [ maintainers.lambda-11235 ];
     platforms = platforms.all;
   };

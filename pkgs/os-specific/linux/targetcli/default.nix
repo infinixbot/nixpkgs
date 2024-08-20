@@ -19,17 +19,10 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-9QYo7jGk9iWr26j0qPQCqYsJ+vLXAsO4Xs7+7VT9/yc=";
   };
 
-  nativeBuildInputs = [
-    wrapGAppsNoGuiHook
-    gobject-introspection
-  ];
+  nativeBuildInputs = [ wrapGAppsNoGuiHook gobject-introspection ];
   buildInputs = [ glib ];
 
-  propagatedBuildInputs = with python3.pkgs; [
-    configshell
-    rtslib
-    pygobject3
-  ];
+  propagatedBuildInputs = with python3.pkgs; [ configshell rtslib pygobject3 ];
 
   postInstall = ''
     install -D targetcli.8 -t $out/share/man/man8/

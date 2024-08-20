@@ -43,15 +43,7 @@ stdenv.mkDerivation rec {
 
     MESSAGE
 
-    export PATH=${
-      lib.makeBinPath [
-        curl
-        jq
-        coreutils
-        gnugrep
-        gnused
-      ]
-    }:"\$PATH"
+    export PATH=${lib.makeBinPath [ curl jq coreutils gnugrep gnused ]}:"\$PATH"
     exec "$out/bin/.slack-wrapped" "\$@"
     WRAPPER
 

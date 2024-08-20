@@ -51,22 +51,10 @@ stdenvNoCC.mkDerivation rec {
       exec = pname;
       desktopName = "Camunda Modeler";
       icon = pname;
-      keywords = [
-        "bpmn"
-        "cmmn"
-        "dmn"
-        "form"
-        "modeler"
-        "camunda"
-      ];
+      keywords = [ "bpmn" "cmmn" "dmn" "form" "modeler" "camunda" ];
       genericName = "Process Modeling Tool";
       comment = meta.description;
-      mimeTypes = [
-        "application/bpmn"
-        "application/cmmn"
-        "application/dmn"
-        "application/camunda-form"
-      ];
+      mimeTypes = [ "application/bpmn" "application/cmmn" "application/dmn" "application/camunda-form" ];
       extraConfig = {
         X-Ayatana-Desktop-Shortcuts = "NewWindow;RepositoryBrowser";
       };

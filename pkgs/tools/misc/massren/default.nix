@@ -26,10 +26,7 @@ buildGoModule rec {
     })
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   checkFlags =
     let

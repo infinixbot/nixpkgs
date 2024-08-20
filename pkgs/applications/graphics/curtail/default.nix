@@ -64,15 +64,7 @@ python3.pkgs.buildPythonApplication rec {
   preFixup = ''
     makeWrapperArgs+=(
       "''${gappsWrapperArgs[@]}"
-      "--prefix" "PATH" ":" "${
-        lib.makeBinPath [
-          jpegoptim
-          libwebp
-          optipng
-          pngquant
-          oxipng
-        ]
-      }"
+      "--prefix" "PATH" ":" "${lib.makeBinPath [ jpegoptim libwebp optipng pngquant oxipng ]}"
     )
   '';
 

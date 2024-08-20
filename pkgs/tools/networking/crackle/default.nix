@@ -19,11 +19,7 @@ stdenv.mkDerivation {
 
   buildInputs = [ libpcap ];
 
-  installFlags = [
-    "DESTDIR=$(out)"
-    "PREFIX="
-    "INSTALL=${coreutils}/bin/install"
-  ];
+  installFlags = [ "DESTDIR=$(out)" "PREFIX=" "INSTALL=${coreutils}/bin/install" ];
 
   meta = with lib; {
     description = "Crack and decrypt BLE encryption";

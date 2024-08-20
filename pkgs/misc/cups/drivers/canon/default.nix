@@ -45,18 +45,7 @@ let
     hash = "sha256-HvuRQYqkHRCwfajSJPridDcADq7VkYwBEo4qr9W5mqA=";
   };
 
-  buildInputs = [
-    cups
-    zlib
-    jbigkit
-    glib
-    gtk3
-    libxml2
-    gdk-pixbuf
-    pango
-    cairo
-    atk
-  ];
+  buildInputs = [ cups zlib jbigkit glib gtk3 libxml2 gdk-pixbuf pango cairo atk ];
 in
 stdenv.mkDerivation rec {
   pname = "canon-cups-ufr2";
@@ -86,14 +75,7 @@ stdenv.mkDerivation rec {
     )
   '';
 
-  nativeBuildInputs = [
-    makeWrapper
-    unzip
-    autoconf
-    automake
-    libtool_1_5
-    pkg-config
-  ];
+  nativeBuildInputs = [ makeWrapper unzip autoconf automake libtool_1_5 pkg-config ];
 
   inherit buildInputs;
 

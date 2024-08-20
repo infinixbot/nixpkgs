@@ -154,12 +154,7 @@ stdenv.mkDerivation (finalAttrs: {
       # Executes qmlplugindump
       export QT_PLUGIN_PATH=${listToQtVar [ qtbase ] qtbase.qtPluginPrefix}
       export QML2_IMPORT_PATH=${
-        listToQtVar [
-          qtdeclarative
-          lomiri-ui-toolkit
-          qtfeedback
-          qtgraphicaleffects
-        ] qtbase.qtQmlPrefix
+        listToQtVar [ qtdeclarative lomiri-ui-toolkit qtfeedback qtgraphicaleffects ] qtbase.qtQmlPrefix
       }
     '';
 
@@ -196,10 +191,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     homepage = "https://gitlab.com/ubports/development/core/content-hub";
     changelog = "https://gitlab.com/ubports/development/core/content-hub/-/blob/${finalAttrs.version}/ChangeLog";
-    license = with lib.licenses; [
-      gpl3Only
-      lgpl3Only
-    ];
+    license = with lib.licenses; [ gpl3Only lgpl3Only ];
     mainProgram = "content-hub-service";
     maintainers = lib.teams.lomiri.members;
     platforms = lib.platforms.linux;

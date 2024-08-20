@@ -75,11 +75,7 @@ stdenv.mkDerivation rec {
     description = "GTK based on screen display for keyboard shortcuts";
     homepage = "https://github.com/ErikReider/SwayOSD";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      aleksana
-      barab-i
-      sergioribera
-    ];
+    maintainers = with maintainers; [ aleksana barab-i sergioribera ];
     platforms = platforms.linux;
   };
 }

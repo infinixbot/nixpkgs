@@ -22,17 +22,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-voHvCLqiUW7Np2p3rffe97wyJ+61eLmjO0X3tB3AZOY=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    scons
-  ];
-  buildInputs = [
-    apr
-    openssl
-    aprutil
-    zlib
-    libiconv
-  ] ++ lib.optional (!stdenv.isCygwin) libkrb5;
+  nativeBuildInputs = [ pkg-config scons ];
+  buildInputs = [ apr openssl aprutil zlib libiconv ] ++ lib.optional (!stdenv.isCygwin) libkrb5;
 
   patches = [
     ./scons.patch
@@ -63,10 +54,7 @@ stdenv.mkDerivation rec {
     description = "HTTP client library based on APR";
     homepage = "https://serf.apache.org/";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      orivej
-      raskin
-    ];
+    maintainers = with maintainers; [ orivej raskin ];
     platforms = platforms.linux ++ platforms.darwin;
   };
 }

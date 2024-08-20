@@ -28,11 +28,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-ZuiZZMq7NzOm6CCJgMBgEWs8PEfM3pVr2yOWbS42l8U=";
   };
 
-  CXXDEFS = [
-    "-DHAVE_RAND"
-    "-DHAVE_CSTRING"
-    "-DHAVE_CSTDIO"
-  ];
+  CXXDEFS = [ "-DHAVE_RAND" "-DHAVE_CSTRING" "-DHAVE_CSTDIO" ];
 
   configureFlags =
     lib.optionals enableAMPL [
@@ -48,20 +44,11 @@ stdenv.mkDerivation rec {
       "--with-spral-lflags=-lspral"
     ];
 
-  nativeBuildInputs = [
-    pkg-config
-    gfortran
-  ];
+  nativeBuildInputs = [ pkg-config gfortran ];
   buildInputs =
-    [
-      blas
-      lapack
-    ]
+    [ blas lapack ]
     ++ lib.optionals enableAMPL [ libamplsolver ]
-    ++ lib.optionals enableMUMPS [
-      mumps
-      mpi
-    ]
+    ++ lib.optionals enableMUMPS [ mumps mpi ]
     ++ lib.optionals enableSPRAL [ spral ];
 
   enableParallelBuilding = true;

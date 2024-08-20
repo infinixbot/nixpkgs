@@ -28,10 +28,7 @@ rustPlatform.buildRustPackage rec {
       mit # or
       unlicense
     ];
-    maintainers = with maintainers; [
-      figsoda
-      gepbird
-    ];
+    maintainers = with maintainers; [ figsoda gepbird ];
     mainProgram = "hck";
   };
 }

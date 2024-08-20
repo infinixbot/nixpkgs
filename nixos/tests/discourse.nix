@@ -81,10 +81,7 @@ import ./make-test-python.nix (
           unicornTimeout = 900;
         };
 
-        networking.firewall.allowedTCPPorts = [
-          25
-          465
-        ];
+        networking.firewall.allowedTCPPorts = [ 25 465 ];
       };
 
     nodes.client =

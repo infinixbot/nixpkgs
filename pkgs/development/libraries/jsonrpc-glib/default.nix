@@ -17,11 +17,7 @@ stdenv.mkDerivation rec {
   pname = "jsonrpc-glib";
   version = "3.44.1";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";

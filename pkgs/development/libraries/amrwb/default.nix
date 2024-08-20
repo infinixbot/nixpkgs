@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ unzip ];
 
-  configureFlags = [
-    "--cache-file=config.cache"
-    "--with-downloader=true"
-  ];
+  configureFlags = [ "--cache-file=config.cache" "--with-downloader=true" ];
 
   postConfigure = ''
     cp $srcAmr 26204-b00.zip

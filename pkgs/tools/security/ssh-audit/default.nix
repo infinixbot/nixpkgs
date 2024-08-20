@@ -10,10 +10,7 @@ python3Packages.buildPythonApplication rec {
   pname = "ssh-audit";
   version = "3.2.0";
   format = "setuptools";
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   src = fetchFromGitHub {
     owner = "jtesta";
@@ -42,9 +39,6 @@ python3Packages.buildPythonApplication rec {
     changelog = "https://github.com/jtesta/ssh-audit/releases/tag/v${version}";
     license = licenses.mit;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      tv
-      SuperSandro2000
-    ];
+    maintainers = with maintainers; [ tv SuperSandro2000 ];
   };
 }

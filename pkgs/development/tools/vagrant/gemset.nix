@@ -60,10 +60,7 @@
     version = "3.3.4";
   };
   diff-lcs = {
-    groups = [
-      "default"
-      "development"
-    ];
+    groups = [ "default" "development" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -144,10 +141,7 @@
     version = "1.13.0";
   };
   grpc = {
-    dependencies = [
-      "google-protobuf"
-      "googleapis-common-protos-types"
-    ];
+    dependencies = [ "google-protobuf" "googleapis-common-protos-types" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -179,10 +173,7 @@
     version = "1.3.1";
   };
   gyoku = {
-    dependencies = [
-      "builder"
-      "rexml"
-    ];
+    dependencies = [ "builder" "rexml" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -234,10 +225,7 @@
     version = "1.2.6";
   };
   listen = {
-    dependencies = [
-      "rb-fsevent"
-      "rb-inotify"
-    ];
+    dependencies = [ "rb-fsevent" "rb-inotify" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -268,10 +256,7 @@
     version = "1.1.10";
   };
   logging = {
-    dependencies = [
-      "little-plugger"
-      "multi_json"
-    ];
+    dependencies = [ "little-plugger" "multi_json" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -313,10 +298,7 @@
     version = "1.15.0";
   };
   net-ftp = {
-    dependencies = [
-      "net-protocol"
-      "time"
-    ];
+    dependencies = [ "net-protocol" "time" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -454,11 +436,7 @@
     version = "3.2.6";
   };
   rgl = {
-    dependencies = [
-      "pairing_heap"
-      "rexml"
-      "stream"
-    ];
+    dependencies = [ "pairing_heap" "rexml" "stream" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -469,11 +447,7 @@
     version = "0.5.10";
   };
   rspec = {
-    dependencies = [
-      "rspec-core"
-      "rspec-expectations"
-      "rspec-mocks"
-    ];
+    dependencies = [ "rspec-core" "rspec-expectations" "rspec-mocks" ];
     groups = [ "development" ];
     platforms = [ ];
     source = {
@@ -485,10 +459,7 @@
   };
   rspec-core = {
     dependencies = [ "rspec-support" ];
-    groups = [
-      "default"
-      "development"
-    ];
+    groups = [ "default" "development" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -498,14 +469,8 @@
     version = "3.13.0";
   };
   rspec-expectations = {
-    dependencies = [
-      "diff-lcs"
-      "rspec-support"
-    ];
-    groups = [
-      "default"
-      "development"
-    ];
+    dependencies = [ "diff-lcs" "rspec-support" ];
+    groups = [ "default" "development" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -515,10 +480,7 @@
     version = "3.13.0";
   };
   rspec-its = {
-    dependencies = [
-      "rspec-core"
-      "rspec-expectations"
-    ];
+    dependencies = [ "rspec-core" "rspec-expectations" ];
     groups = [ "development" ];
     platforms = [ ];
     source = {
@@ -529,14 +491,8 @@
     version = "1.3.0";
   };
   rspec-mocks = {
-    dependencies = [
-      "diff-lcs"
-      "rspec-support"
-    ];
-    groups = [
-      "default"
-      "development"
-    ];
+    dependencies = [ "diff-lcs" "rspec-support" ];
+    groups = [ "default" "development" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -546,10 +502,7 @@
     version = "3.13.0";
   };
   rspec-support = {
-    groups = [
-      "default"
-      "development"
-    ];
+    groups = [ "default" "development" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -620,12 +573,7 @@
     version = "0.4.1";
   };
   vagrant-spec = {
-    dependencies = [
-      "childprocess"
-      "log4r"
-      "rspec"
-      "thor"
-    ];
+    dependencies = [ "childprocess" "log4r" "rspec" "thor" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -638,11 +586,7 @@
     version = "0.0.1";
   };
   vagrant_cloud = {
-    dependencies = [
-      "excon"
-      "log4r"
-      "rexml"
-    ];
+    dependencies = [ "excon" "log4r" "rexml" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -673,16 +617,7 @@
     version = "1.7.0";
   };
   winrm = {
-    dependencies = [
-      "builder"
-      "erubi"
-      "gssapi"
-      "gyoku"
-      "httpclient"
-      "logging"
-      "nori"
-      "rubyntlm"
-    ];
+    dependencies = [ "builder" "erubi" "gssapi" "gyoku" "httpclient" "logging" "nori" "rubyntlm" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -693,11 +628,7 @@
     version = "2.3.6";
   };
   winrm-elevated = {
-    dependencies = [
-      "erubi"
-      "winrm"
-      "winrm-fs"
-    ];
+    dependencies = [ "erubi" "winrm" "winrm-fs" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -708,12 +639,7 @@
     version = "1.2.3";
   };
   winrm-fs = {
-    dependencies = [
-      "erubi"
-      "logging"
-      "rubyzip"
-      "winrm"
-    ];
+    dependencies = [ "erubi" "logging" "rubyzip" "winrm" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

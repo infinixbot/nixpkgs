@@ -29,12 +29,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "gmic";
   version = "3.4.0";
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "lib" "dev" "man" ];
 
   src = fetchFromGitHub {
     owner = "GreycLab";
@@ -95,16 +90,7 @@ stdenv.mkDerivation (finalAttrs: {
 
     updateScript = writeShellScript "gmic-update-script" ''
       set -o errexit
-      PATH=${
-        lib.makeBinPath [
-          common-updater-scripts
-          coreutils
-          curl
-          gnugrep
-          gnused
-          jq
-        ]
-      }
+      PATH=${lib.makeBinPath [ common-updater-scripts coreutils curl gnugrep gnused jq ]}
 
       latestVersion=$(curl 'https://gmic.eu/files/source/' \
                        | grep -E 'gmic_[^"]+\.tar\.gz' \

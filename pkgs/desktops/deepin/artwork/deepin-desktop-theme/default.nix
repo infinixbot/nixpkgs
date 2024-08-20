@@ -48,10 +48,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Provides a variety of well-designed theme resources";
     homepage = "https://github.com/linuxdeepin/deepin-desktop-theme";
-    license = with licenses; [
-      gpl3Plus
-      cc-by-sa-40
-    ];
+    license = with licenses; [ gpl3Plus cc-by-sa-40 ];
     platforms = platforms.linux;
     maintainers = teams.deepin.members;
   };

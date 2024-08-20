@@ -27,11 +27,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "libadwaita";
   version = "1.5.3";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
   outputBin = "devdoc"; # demo app
 
   src = fetchFromGitLab {

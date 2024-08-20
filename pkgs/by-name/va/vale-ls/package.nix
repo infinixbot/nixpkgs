@@ -63,9 +63,6 @@ rustPlatform.buildRustPackage {
     homepage = "https://github.com/errata-ai/vale-ls";
     license = licenses.mit;
     mainProgram = "vale-ls";
-    maintainers = with maintainers; [
-      foo-dogsquared
-      jansol
-    ];
+    maintainers = with maintainers; [ foo-dogsquared jansol ];
   };
 }

@@ -43,13 +43,7 @@ stdenv.mkDerivation rec {
     # or you can check libc/include/sys/cdefs.h in bionic source code
     ++ lib.optional (stdenv.hostPlatform.libc == "bionic") "fortify";
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-    "doc"
-    "info"
-  ];
+  outputs = [ "out" "dev" "man" "doc" "info" ];
 
   separateDebugInfo = true;
 

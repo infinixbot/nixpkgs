@@ -18,10 +18,7 @@ python3Packages.buildPythonApplication {
     hash = "sha256-CahvSypwR1aHVDHTdtty1ZfaKBWPolxc73uZ5OyeqZA=";
   };
 
-  buildInputs = [
-    file
-    desktop-file-utils
-  ];
+  buildInputs = [ file desktop-file-utils ];
 
   propagatedBuildInputs = [ python3Packages.pyxdg ];
 

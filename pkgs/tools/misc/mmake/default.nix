@@ -17,10 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-0z+sujzzBl/rtzXbhL4Os+jYfLUuO9PlXshUDxAH9DU=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   # Almost all tests require non-local networking, trying to resolve githubusercontent.com.
   doCheck = false;

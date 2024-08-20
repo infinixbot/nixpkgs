@@ -112,15 +112,7 @@ in
         };
 
         format = mkOption {
-          type = types.enum [
-            "nothing"
-            "text"
-            "textall"
-            "textalldate"
-            "errors"
-            "errorsdate"
-            "binary"
-          ];
+          type = types.enum [ "nothing" "text" "textall" "textalldate" "errors" "errorsdate" "binary" ];
           default = "errors";
           description = "Determines what will be logged to the LogFile";
         };
@@ -142,11 +134,7 @@ in
 
       backend = {
         service = mkOption {
-          type = types.enum [
-            "null"
-            "files"
-            "sql"
-          ];
+          type = types.enum [ "null" "files" "sql" ];
           default = "null";
           description = "Service to use to store sms data.";
         };
@@ -179,12 +167,7 @@ in
 
         sql = {
           driver = mkOption {
-            type = types.enum [
-              "native_mysql"
-              "native_pgsql"
-              "odbc"
-              "dbi"
-            ];
+            type = types.enum [ "native_mysql" "native_pgsql" "odbc" "dbi" ];
             description = "DB driver to use";
           };
 

@@ -29,9 +29,6 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "https://github.com/jeslie0/npm-lockfile-fix";
     mainProgram = "npm-lockfile-fix";
     license = lib.licenses.mit;
-    maintainers = with maintainers; [
-      lucasew
-      felschr
-    ];
+    maintainers = with maintainers; [ lucasew felschr ];
   };
 }

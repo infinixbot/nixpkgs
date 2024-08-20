@@ -72,11 +72,7 @@ stdenvNoCC.mkDerivation rec {
 
   sourceRoot = ".";
 
-  outputs = [
-    "lib"
-    "art"
-    "out"
-  ];
+  outputs = [ "lib" "art" "out" ];
 
   nativeBuildInputs = [ unzip ];
 
@@ -93,10 +89,7 @@ stdenvNoCC.mkDerivation rec {
 
   meta = {
     description = "Plugin for Dwarf Fortress / DFHack that improves various aspects of the game interface";
-    maintainers = with maintainers; [
-      Baughn
-      numinit
-    ];
+    maintainers = with maintainers; [ Baughn numinit ];
     license = licenses.mit;
     platforms = platforms.linux;
     homepage = "https://github.com/mifki/df-twbt";

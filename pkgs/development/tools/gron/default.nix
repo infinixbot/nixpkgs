@@ -17,11 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-K/QAG9mCIHe7PQhex3TntlGYAK9l0bESWk616N97dBs=";
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X main.gronVersion=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X main.gronVersion=${version}" ];
 
   meta = with lib; {
     description = "Make JSON greppable!";
@@ -34,9 +30,6 @@ buildGoModule rec {
     '';
     homepage = "https://github.com/tomnomnom/gron";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      fgaz
-      SuperSandro2000
-    ];
+    maintainers = with maintainers; [ fgaz SuperSandro2000 ];
   };
 }

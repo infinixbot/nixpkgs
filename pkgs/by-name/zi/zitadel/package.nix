@@ -67,10 +67,7 @@ let
       src = zitadelRepo;
       patches = [ ./console-use-local-protobuf-plugins.patch ];
 
-      nativeBuildInputs = nativeBuildInputs ++ [
-        buf
-        cacert
-      ];
+      nativeBuildInputs = nativeBuildInputs ++ [ buf cacert ];
 
       buildPhase = ''
         cd ${workDir}
@@ -106,10 +103,7 @@ buildGoModule rec {
 
   src = zitadelRepo;
 
-  nativeBuildInputs = [
-    sass
-    statik
-  ];
+  nativeBuildInputs = [ sass statik ];
 
   proxyVendor = true;
   vendorHash = goModulesHash;

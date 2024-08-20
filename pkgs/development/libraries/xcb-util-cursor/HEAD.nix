@@ -30,16 +30,9 @@ stdenv.mkDerivation {
     platforms = platforms.linux ++ platforms.darwin;
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoconf automake pkg-config ];
   buildInputs = [
     gnum4
     gperf

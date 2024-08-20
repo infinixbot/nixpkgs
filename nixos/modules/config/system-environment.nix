@@ -45,10 +45,7 @@ in
       type = types.attrsOf (types.listOf types.str);
       example = {
         PATH = [ "/bin" ];
-        MANPATH = [
-          "/man"
-          "/share/man"
-        ];
+        MANPATH = [ "/man" "/share/man" ];
       };
       description = ''
         Attribute set of environment variable used in the global
@@ -83,16 +80,7 @@ in
         # We're trying to use the same syntax for PAM variables and env variables.
         # That means we need to map the env variables that people might use to their
         # equivalent PAM variable.
-        replaceEnvVars =
-          replaceStrings
-            [
-              "$HOME"
-              "$USER"
-            ]
-            [
-              "@{HOME}"
-              "@{PAM_USER}"
-            ];
+        replaceEnvVars = replaceStrings [ "$HOME" "$USER" ] [ "@{HOME}" "@{PAM_USER}" ];
 
         pamVariable = n: v: ''${n}   DEFAULT="${concatStringsSep ":" (map replaceEnvVars (toList v))}"'';
 

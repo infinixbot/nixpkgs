@@ -35,16 +35,8 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-7kcs1vOM68uKjMrRn8jGI6mgXd90TeMUeYWnAGl8sgE=";
 
-  nativeBuildInputs = [
-    installShellFiles
-    pkg-config
-  ];
-  buildInputs =
-    [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [
-      Security
-      SystemConfiguration
-    ];
+  nativeBuildInputs = [ installShellFiles pkg-config ];
+  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ Security SystemConfiguration ];
 
   postPatch = ''
     patchShebangs --build \

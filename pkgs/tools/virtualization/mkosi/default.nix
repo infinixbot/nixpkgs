@@ -50,10 +50,7 @@ buildPythonApplication rec {
   version = "22";
   format = "pyproject";
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   src = fetchFromGitHub {
     owner = "systemd";
@@ -127,10 +124,7 @@ buildPythonApplication rec {
     changelog = "https://github.com/systemd/mkosi/releases/tag/v${version}";
     license = licenses.lgpl21Only;
     mainProgram = "mkosi";
-    maintainers = with maintainers; [
-      malt3
-      katexochen
-    ];
+    maintainers = with maintainers; [ malt3 katexochen ];
     platforms = platforms.linux;
     # `mkosi qemu` boot fails in the uefi shell, image isn't found.
     broken = withQemu;

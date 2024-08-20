@@ -41,17 +41,8 @@ let
     component: with lib; {
       homepage = "https://apparmor.net/";
       description = "Mandatory access control system - ${component}";
-      license = with licenses; [
-        gpl2Only
-        lgpl21Only
-      ];
-      maintainers =
-        with maintainers;
-        [
-          julm
-          thoughtpolice
-        ]
-        ++ teams.helsinki-systems.members;
+      license = with licenses; [ gpl2Only lgpl21Only ];
+      maintainers = with maintainers; [ julm thoughtpolice ] ++ teams.helsinki-systems.members;
       platforms = platforms.linux;
     };
 
@@ -63,13 +54,7 @@ let
   };
 
   aa-teardown = writeShellScript "aa-teardown" ''
-    PATH="${
-      lib.makeBinPath [
-        coreutils
-        gnused
-        gnugrep
-      ]
-    }:$PATH"
+    PATH="${lib.makeBinPath [ coreutils gnused gnugrep ]}:$PATH"
     . ${apparmor-parser}/lib/apparmor/rc.apparmor.functions
     remove_profiles
   '';
@@ -171,11 +156,7 @@ let
 
     strictDeps = true;
 
-    nativeBuildInputs = [
-      makeWrapper
-      which
-      python
-    ];
+    nativeBuildInputs = [ makeWrapper which python ];
 
     buildInputs = [
       bash
@@ -211,12 +192,7 @@ let
     inherit patches;
     postPatch = "cd ./utils";
     makeFlags = [ "LANGS=" ];
-    installFlags = [
-      "DESTDIR=$(out)"
-      "BINDIR=$(out)/bin"
-      "VIM_INSTALL_PATH=$(out)/share"
-      "PYPREFIX="
-    ];
+    installFlags = [ "DESTDIR=$(out)" "BINDIR=$(out)/bin" "VIM_INSTALL_PATH=$(out)/share" "PYPREFIX=" ];
 
     postInstall = ''
       wrapProgram $out/bin/aa-remove-unknown \
@@ -252,15 +228,8 @@ let
     postPatch = ''
       cd ./binutils
     '';
-    makeFlags = [
-      "LANGS="
-      "USE_SYSTEM=1"
-    ];
-    installFlags = [
-      "DESTDIR=$(out)"
-      "BINDIR=$(out)/bin"
-      "SBINDIR=$(out)/bin"
-    ];
+    makeFlags = [ "LANGS=" "USE_SYSTEM=1" ];
+    installFlags = [ "DESTDIR=$(out)" "BINDIR=$(out)/bin" "SBINDIR=$(out)/bin" ];
 
     inherit doCheck;
 
@@ -273,11 +242,7 @@ let
 
     src = apparmor-sources;
 
-    nativeBuildInputs = [
-      bison
-      flex
-      which
-    ];
+    nativeBuildInputs = [ bison flex which ];
 
     buildInputs = [ libapparmor ];
 
@@ -304,10 +269,7 @@ let
       "INCLUDEDIR=${libapparmor}/include"
       "AR=${stdenv.cc.bintools.targetPrefix}ar"
     ];
-    installFlags = [
-      "DESTDIR=$(out)"
-      "DISTRO=unknown"
-    ];
+    installFlags = [ "DESTDIR=$(out)" "DISTRO=unknown" ];
 
     inherit doCheck;
 
@@ -320,15 +282,9 @@ let
 
     src = apparmor-sources;
 
-    nativeBuildInputs = [
-      pkg-config
-      which
-    ];
+    nativeBuildInputs = [ pkg-config which ];
 
-    buildInputs = [
-      libapparmor
-      pam
-    ];
+    buildInputs = [ libapparmor pam ];
 
     postPatch = ''
       cd ./changehat/pam_apparmor
@@ -353,10 +309,7 @@ let
       cd ./profiles
     '';
 
-    installFlags = [
-      "DESTDIR=$(out)"
-      "EXTRAS_DEST=$(out)/share/apparmor/extra-profiles"
-    ];
+    installFlags = [ "DESTDIR=$(out)" "EXTRAS_DEST=$(out)/share/apparmor/extra-profiles" ];
 
     inherit doCheck;
 

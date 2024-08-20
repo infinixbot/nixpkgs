@@ -20,12 +20,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ imake ];
 
-  buildInputs = [
-    libX11
-    libSM
-    libXext
-    libICE
-  ];
+  buildInputs = [ libX11 libSM libXext libICE ];
 
   dontConfigure = true;
 

@@ -45,11 +45,7 @@ stdenv.mkDerivation rec {
       icon = "sauerbraten";
       desktopName = "Sauerbraten";
       comment = "FPS that uses an improved version of the Cube engine";
-      categories = [
-        "Application"
-        "Game"
-        "ActionGame"
-      ];
+      categories = [ "Application" "Game" "ActionGame" ];
     })
   ];
 
@@ -74,10 +70,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Free multiplayer & singleplayer first person shooter, the successor of the Cube FPS";
     homepage = "http://sauerbraten.org";
-    maintainers = with maintainers; [
-      raskin
-      ajs124
-    ];
+    maintainers = with maintainers; [ raskin ajs124 ];
     mainProgram = "sauerbraten_client";
     hydraPlatforms =
       # raskin: tested amd64-linux;

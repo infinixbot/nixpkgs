@@ -5,21 +5,14 @@ import ./make-test-python.nix (
   {
     name = "netdata";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        cransom
-        raitobezarius
-      ];
+      maintainers = [ cransom raitobezarius ];
     };
 
     nodes = {
       netdata =
         { pkgs, ... }:
         {
-          environment.systemPackages = with pkgs; [
-            curl
-            jq
-            netdata
-          ];
+          environment.systemPackages = with pkgs; [ curl jq netdata ];
           services.netdata = {
             enable = true;
             python.recommendedPythonPackages = true;

@@ -19,10 +19,7 @@ mkDerivation rec {
   pname = "djview";
   version = "4.12";
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   src = fetchurl {
     url = "mirror://sourceforge/djvu/${pname}-${version}.tar.gz";

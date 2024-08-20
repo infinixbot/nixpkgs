@@ -8,10 +8,7 @@ import ./make-test-python.nix (
   {
     name = "zookeeper";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        nequissimus
-        ztzg
-      ];
+      maintainers = [ nequissimus ztzg ];
     };
 
     nodes = {

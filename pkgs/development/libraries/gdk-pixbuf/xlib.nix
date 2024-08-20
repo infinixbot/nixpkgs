@@ -16,11 +16,7 @@ stdenv.mkDerivation rec {
   pname = "gdk-pixbuf-xlib";
   version = "2.40.2";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.gnome.org";

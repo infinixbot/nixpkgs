@@ -12,11 +12,7 @@ buildDunePackage {
 
   buildInputs = [ ppx_sexp_conv ];
 
-  propagatedBuildInputs = [
-    conduit
-    lwt
-    sexplib
-  ];
+  propagatedBuildInputs = [ conduit lwt sexplib ];
 
   meta = conduit.meta // {
     description = "Network connection establishment library for Lwt";

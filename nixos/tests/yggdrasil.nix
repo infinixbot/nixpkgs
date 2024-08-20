@@ -47,10 +47,7 @@ import ./make-test-python.nix (
                 prefixLength = 24;
               }
             ];
-            firewall.allowedTCPPorts = [
-              80
-              12345
-            ];
+            firewall.allowedTCPPorts = [ 80 12345 ];
           };
           services.httpd.enable = true;
           services.httpd.adminAddr = "foo@example.org";
@@ -138,10 +135,7 @@ import ./make-test-python.nix (
           networking.firewall.allowedTCPPorts = [ 43210 ];
           services.yggdrasil = {
             enable = true;
-            extraArgs = [
-              "-loglevel"
-              "error"
-            ];
+            extraArgs = [ "-loglevel" "error" ];
             denyDhcpcdInterfaces = [ "ygg0" ];
             settings = {
               IfTAPMode = true;

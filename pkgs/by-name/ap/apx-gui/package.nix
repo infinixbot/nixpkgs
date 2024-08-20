@@ -36,10 +36,7 @@ stdenv.mkDerivation (finalAttrs: {
     meson
     ninja
     pkg-config
-    (python3.withPackages (ps: [
-      ps.pygobject3
-      ps.requests
-    ]))
+    (python3.withPackages (ps: [ ps.pygobject3 ps.requests ]))
     wrapGAppsHook4
   ];
 
@@ -50,12 +47,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   preFixup = ''
     gappsWrapperArgs+=(
-      --prefix PATH : "${
-        lib.makeBinPath [
-          apx
-          gnome-console
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ apx gnome-console ]}"
     )
   '';
 

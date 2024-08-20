@@ -19,10 +19,7 @@ mkDerivation {
     extra-cmake-modules
     flex
   ] ++ lib.optionals stdenv.isLinux [ media-player-info ];
-  buildInputs = [
-    qtdeclarative
-    qttools
-  ];
+  buildInputs = [ qtdeclarative qttools ];
   propagatedBuildInputs = [ qtbase ];
   propagatedUserEnvPkgs = lib.optionals stdenv.isLinux [ media-player-info ];
 }

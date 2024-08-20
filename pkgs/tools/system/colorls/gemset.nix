@@ -21,14 +21,7 @@
     version = "0.0.4";
   };
   colorls = {
-    dependencies = [
-      "addressable"
-      "clocale"
-      "filesize"
-      "manpages"
-      "rainbow"
-      "unicode-display_width"
-    ];
+    dependencies = [ "addressable" "clocale" "filesize" "manpages" "rainbow" "unicode-display_width" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

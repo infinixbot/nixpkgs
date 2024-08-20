@@ -21,10 +21,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ wrapGAppsHook3 ];
 
-  buildInputs = [
-    ffmpeg_4
-    libui
-  ];
+  buildInputs = [ ffmpeg_4 libui ];
 
   buildPhase = ''
     runHook preBuild

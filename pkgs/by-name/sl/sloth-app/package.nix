@@ -17,10 +17,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   dontUnpack = true;
 
-  nativeBuildInputs = [
-    unzip
-    makeBinaryWrapper
-  ];
+  nativeBuildInputs = [ unzip makeBinaryWrapper ];
 
   installPhase = ''
     runHook preInstall

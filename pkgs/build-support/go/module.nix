@@ -65,11 +65,7 @@
 assert goPackagePath != "" -> throw "`goPackagePath` is not needed with `buildGoModule`";
 
 let
-  args = removeAttrs args' [
-    "overrideModAttrs"
-    "vendorSha256"
-    "vendorHash"
-  ];
+  args = removeAttrs args' [ "overrideModAttrs" "vendorSha256" "vendorHash" ];
 
   GO111MODULE = "on";
   GOTOOLCHAIN = "local";
@@ -81,11 +77,7 @@ let
       (stdenv.mkDerivation {
         name = "${name}-go-modules";
 
-        nativeBuildInputs = (args.nativeBuildInputs or [ ]) ++ [
-          go
-          git
-          cacert
-        ];
+        nativeBuildInputs = (args.nativeBuildInputs or [ ]) ++ [ go git cacert ];
 
         inherit (args) src;
         inherit (go) GOOS GOARCH;

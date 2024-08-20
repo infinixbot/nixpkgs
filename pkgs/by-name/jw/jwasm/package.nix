@@ -15,10 +15,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-xbiyGBTzIkAfUy45JdAl77gbvArzVUQNPOxa+H2uGFo=";
   };
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   dontConfigure = true;
 

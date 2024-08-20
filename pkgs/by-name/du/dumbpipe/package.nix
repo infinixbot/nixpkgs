@@ -29,10 +29,7 @@ rustPlatform.buildRustPackage rec {
   meta = with lib; {
     description = "Connect A to B - Send Data";
     homepage = "https://www.dumbpipe.dev/";
-    license = with licenses; [
-      asl20
-      mit
-    ];
+    license = with licenses; [ asl20 mit ];
     maintainers = with maintainers; [ cameronfyfe ];
     mainProgram = "dumbpipe";
   };

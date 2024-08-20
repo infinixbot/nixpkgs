@@ -101,16 +101,8 @@ stdenv.mkDerivation (finalAttrs: {
       lib.replaceStrings [ "." ] [ "" ] finalAttrs.src.rev
     }";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      aacebedo
-      SuperSandro2000
-    ];
+    maintainers = with maintainers; [ aacebedo SuperSandro2000 ];
     mainProgram = "youtube-music";
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
   };
 })

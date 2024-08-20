@@ -64,97 +64,52 @@ in
   };
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "mbpfan"
-        "pollingInterval"
-      ]
-      [
-        "services"
-        "mbpfan"
-        "settings"
-        "general"
-        "polling_interval"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "mbpfan"
-        "maxTemp"
-      ]
-      [
-        "services"
-        "mbpfan"
-        "settings"
-        "general"
-        "max_temp"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "mbpfan"
-        "lowTemp"
-      ]
-      [
-        "services"
-        "mbpfan"
-        "settings"
-        "general"
-        "low_temp"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "mbpfan"
-        "highTemp"
-      ]
-      [
-        "services"
-        "mbpfan"
-        "settings"
-        "general"
-        "high_temp"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "mbpfan"
-        "minFanSpeed"
-      ]
-      [
-        "services"
-        "mbpfan"
-        "settings"
-        "general"
-        "min_fan1_speed"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "mbpfan"
-        "maxFanSpeed"
-      ]
-      [
-        "services"
-        "mbpfan"
-        "settings"
-        "general"
-        "max_fan1_speed"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "mbpfan" "pollingInterval" ] [
+      "services"
+      "mbpfan"
+      "settings"
+      "general"
+      "polling_interval"
+    ])
+    (mkRenamedOptionModule [ "services" "mbpfan" "maxTemp" ] [
+      "services"
+      "mbpfan"
+      "settings"
+      "general"
+      "max_temp"
+    ])
+    (mkRenamedOptionModule [ "services" "mbpfan" "lowTemp" ] [
+      "services"
+      "mbpfan"
+      "settings"
+      "general"
+      "low_temp"
+    ])
+    (mkRenamedOptionModule [ "services" "mbpfan" "highTemp" ] [
+      "services"
+      "mbpfan"
+      "settings"
+      "general"
+      "high_temp"
+    ])
+    (mkRenamedOptionModule [ "services" "mbpfan" "minFanSpeed" ] [
+      "services"
+      "mbpfan"
+      "settings"
+      "general"
+      "min_fan1_speed"
+    ])
+    (mkRenamedOptionModule [ "services" "mbpfan" "maxFanSpeed" ] [
+      "services"
+      "mbpfan"
+      "settings"
+      "general"
+      "max_fan1_speed"
+    ])
   ];
 
   config = mkIf cfg.enable {
-    boot.kernelModules = [
-      "coretemp"
-      "applesmc"
-    ];
+    boot.kernelModules = [ "coretemp" "applesmc" ];
     environment.systemPackages = [ cfg.package ];
     environment.etc."mbpfan.conf".source = cfgfile;
 

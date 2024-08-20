@@ -115,10 +115,7 @@ stdenv.mkDerivation rec {
     description = "RAW converter and digital photo processing software";
     homepage = "http://www.rawtherapee.com/";
     license = lib.licenses.gpl3Plus;
-    maintainers = with lib.maintainers; [
-      jcumming
-      mahe
-    ];
+    maintainers = with lib.maintainers; [ jcumming mahe ];
     platforms = with lib.platforms; unix;
   };
 }

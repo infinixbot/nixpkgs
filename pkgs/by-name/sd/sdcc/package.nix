@@ -39,11 +39,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-rowSFl6xdoDf9EsyjYh5mWMGtyQe+jqDsuOy0veQanU=";
   };
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
 
   enableParallelBuilding = true;
 
@@ -65,12 +61,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   configureFlags =
     let
-      excludedPorts =
-        excludePorts
-        ++ (lib.optionals (!withGputils) [
-          "pic14"
-          "pic16"
-        ]);
+      excludedPorts = excludePorts ++ (lib.optionals (!withGputils) [ "pic14" "pic16" ]);
     in
     map (f: "--disable-${f}-port") excludedPorts;
 
@@ -93,10 +84,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     license = if withGputils then lib.licenses.unfreeRedistributable else lib.licenses.gpl2Plus;
     mainProgram = "sdcc";
-    maintainers = with lib.maintainers; [
-      bjornfor
-      yorickvp
-    ];
+    maintainers = with lib.maintainers; [ bjornfor yorickvp ];
     platforms = lib.platforms.all;
   };
 })

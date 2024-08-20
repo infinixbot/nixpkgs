@@ -8,12 +8,7 @@
 }:
 
 let
-  pythonEnv = python3.withPackages (
-    ps: with ps; [
-      cheetah3
-      lxml
-    ]
-  );
+  pythonEnv = python3.withPackages (ps: with ps; [ cheetah3 lxml ]);
 in
 stdenv.mkDerivation rec {
   pname = "sickgear";
@@ -34,10 +29,7 @@ stdenv.mkDerivation rec {
   doCheck = false;
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [
-    pythonEnv
-    libarchive
-  ];
+  buildInputs = [ pythonEnv libarchive ];
 
   installPhase = ''
     mkdir -p $out/bin $out/opt/sickgear

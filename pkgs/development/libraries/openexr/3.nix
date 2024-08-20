@@ -20,12 +20,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-mVUxxYe6teiJ18PQ9703/kjBpJ9+a7vcDme+NwtQQQM=";
   };
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "doc"
-  ];
+  outputs = [ "bin" "dev" "out" "doc" ];
 
   patches =
     # Disable broken test on musl libc
@@ -41,14 +36,8 @@ stdenv.mkDerivation rec {
 
   cmakeFlags = lib.optional stdenv.hostPlatform.isStatic "-DCMAKE_SKIP_RPATH=ON";
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  propagatedBuildInputs = [
-    imath
-    libdeflate
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
+  propagatedBuildInputs = [ imath libdeflate ];
 
   # Without 'sse' enforcement tests fail on i686 as due to excessive precision as:
   #   error reading back channel B pixel 21,-76 got -nan expected -nan

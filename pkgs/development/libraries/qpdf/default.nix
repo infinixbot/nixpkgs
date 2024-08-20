@@ -35,15 +35,9 @@ stdenv.mkDerivation (finalAttrs: {
     "out"
   ];
 
-  nativeBuildInputs = [
-    cmake
-    perl
-  ];
+  nativeBuildInputs = [ cmake perl ];
 
-  buildInputs = [
-    zlib
-    libjpeg
-  ];
+  buildInputs = [ zlib libjpeg ];
 
   nativeInstallCheckInputs = [ versionCheckHook ];
   doInstallCheck = true;

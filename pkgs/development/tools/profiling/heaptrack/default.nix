@@ -32,11 +32,7 @@ mkDerivation rec {
     hash = "sha256-pP+s60ERnmOctYTe/vezCg0VYzziApNY0QaF3aTccZU=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    extra-cmake-modules
-    makeBinaryWrapper
-  ];
+  nativeBuildInputs = [ cmake extra-cmake-modules makeBinaryWrapper ];
   buildInputs =
     [
       zlib

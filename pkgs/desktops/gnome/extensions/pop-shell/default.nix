@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-IQJtTMYCkKyjqDKoR35qsgQkvXIrGLq+qtMDOTkvy08=";
   };
 
-  nativeBuildInputs = [
-    glib
-    gjs
-    typescript
-  ];
+  nativeBuildInputs = [ glib gjs typescript ];
 
   buildInputs = [ gjs ];
 

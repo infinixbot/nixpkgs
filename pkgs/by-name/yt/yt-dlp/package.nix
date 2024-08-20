@@ -69,10 +69,7 @@ python3Packages.buildPythonApplication rec {
     ln -s "$out/bin/yt-dlp" "$out/bin/youtube-dl"
   '';
 
-  passthru.updateScript = [
-    update-python-libraries
-    (toString ./.)
-  ];
+  passthru.updateScript = [ update-python-libraries (toString ./.) ];
 
   meta = with lib; {
     homepage = "https://github.com/yt-dlp/yt-dlp/";
@@ -87,10 +84,7 @@ python3Packages.buildPythonApplication rec {
     '';
     changelog = "https://github.com/yt-dlp/yt-dlp/releases/tag/${version}";
     license = licenses.unlicense;
-    maintainers = with maintainers; [
-      mkg20001
-      SuperSandro2000
-    ];
+    maintainers = with maintainers; [ mkg20001 SuperSandro2000 ];
     mainProgram = "yt-dlp";
   };
 }

@@ -37,9 +37,6 @@ stdenv.mkDerivation (finalAttrs: {
     description = "C++ SQLite3 wrapper";
     license = licenses.mit;
     platforms = platforms.unix;
-    maintainers = [
-      maintainers.jbedo
-      maintainers.doronbehar
-    ];
+    maintainers = [ maintainers.jbedo maintainers.doronbehar ];
   };
 })

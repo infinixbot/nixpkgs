@@ -20,17 +20,11 @@ python3Packages.buildPythonApplication {
 
   format = "other";
 
-  nativeBuildInputs = [
-    gobject-introspection
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ gobject-introspection wrapGAppsHook3 ];
 
   buildInputs = [ glib ];
 
-  pythonPath = with python3Packages; [
-    dbus-python
-    pygobject3
-  ];
+  pythonPath = with python3Packages; [ dbus-python pygobject3 ];
 
   strictDeps = false;
 

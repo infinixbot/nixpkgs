@@ -39,18 +39,8 @@ stdenv.mkDerivation rec {
       --replace "/bin/echo" "${coreutils}/bin/echo"
   '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    gettext
-  ];
-  buildInputs = [
-    dbus
-    dbus-glib
-    libgaminggear
-    libgudev
-    lua
-  ];
+  nativeBuildInputs = [ cmake pkg-config gettext ];
+  buildInputs = [ dbus dbus-glib libgaminggear libgudev lua ];
 
   cmakeFlags = [
     "-DUDEVDIR=\${out}/lib/udev/rules.d"

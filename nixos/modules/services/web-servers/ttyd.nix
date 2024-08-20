@@ -19,42 +19,16 @@ let
 
   # Command line arguments for the ttyd daemon
   args =
-    [
-      "--port"
-      (toString cfg.port)
-    ]
-    ++ optionals (cfg.socket != null) [
-      "--interface"
-      cfg.socket
-    ]
-    ++ optionals (cfg.interface != null) [
-      "--interface"
-      cfg.interface
-    ]
-    ++ [
-      "--signal"
-      (toString cfg.signal)
-    ]
-    ++ (concatLists (
-      mapAttrsToList (_k: _v: [
-        "--client-option"
-        "${_k}=${_v}"
-      ]) cfg.clientOptions
-    ))
-    ++ [
-      "--terminal-type"
-      cfg.terminalType
-    ]
+    [ "--port" (toString cfg.port) ]
+    ++ optionals (cfg.socket != null) [ "--interface" cfg.socket ]
+    ++ optionals (cfg.interface != null) [ "--interface" cfg.interface ]
+    ++ [ "--signal" (toString cfg.signal) ]
+    ++ (concatLists (mapAttrsToList (_k: _v: [ "--client-option" "${_k}=${_v}" ]) cfg.clientOptions))
+    ++ [ "--terminal-type" cfg.terminalType ]
     ++ optionals cfg.checkOrigin [ "--check-origin" ]
     ++ optionals cfg.writeable [ "--writable" ] # the typo is correct
-    ++ [
-      "--max-clients"
-      (toString cfg.maxClients)
-    ]
-    ++ optionals (cfg.indexFile != null) [
-      "--index"
-      cfg.indexFile
-    ]
+    ++ [ "--max-clients" (toString cfg.maxClients) ]
+    ++ optionals (cfg.indexFile != null) [ "--index" cfg.indexFile ]
     ++ optionals cfg.enableIPv6 [ "--ipv6" ]
     ++ optionals cfg.enableSSL [
       "--ssl-cert"
@@ -64,10 +38,7 @@ let
       "--ssl-ca"
       cfg.caFile
     ]
-    ++ [
-      "--debug"
-      (toString cfg.logLevel)
-    ];
+    ++ [ "--debug" (toString cfg.logLevel) ];
 
 in
 

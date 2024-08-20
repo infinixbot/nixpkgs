@@ -26,14 +26,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
-  buildInputs = [
-    ncurses
-    readline
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
+  buildInputs = [ ncurses readline ];
 
   meta = {
     homepage = "http://abook.sourceforge.net/";

@@ -36,10 +36,7 @@ stdenv.mkDerivation rec {
   depsBuildBuild = [ buildPackages.stdenv.cc ];
   nativeBuildInputs = [ nukeReferences ] ++ lib.optional sslSupport pkg-config;
 
-  buildInputs = [
-    ncurses
-    gzip
-  ] ++ lib.optional sslSupport openssl;
+  buildInputs = [ ncurses gzip ] ++ lib.optional sslSupport openssl;
 
   # cfg_defs.h captures lots of references to build-only dependencies, derived
   # from config.cache.

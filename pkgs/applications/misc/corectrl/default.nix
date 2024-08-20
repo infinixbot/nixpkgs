@@ -70,13 +70,7 @@ stdenv.mkDerivation rec {
     "-DPOLKIT_POLICY_INSTALL_DIR=${placeholder "out"}/share/polkit-1/actions"
   ];
 
-  runtimeDeps = [
-    hwdata
-    glxinfo
-    vulkan-tools
-    util-linux
-    procps
-  ];
+  runtimeDeps = [ hwdata glxinfo vulkan-tools util-linux procps ];
   binPath = lib.makeBinPath runtimeDeps;
 
   dontWrapQtApps = true;

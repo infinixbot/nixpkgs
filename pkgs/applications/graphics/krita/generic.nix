@@ -76,12 +76,7 @@ mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    cmake
-    extra-cmake-modules
-    pkg-config
-    python3Packages.sip
-  ];
+  nativeBuildInputs = [ cmake extra-cmake-modules pkg-config python3Packages.sip ];
 
   buildInputs = [
     karchive
@@ -140,13 +135,7 @@ mkDerivation rec {
   # Patch the PYTHONPATH so python scripts can import sip successfully.
   postPatch =
     let
-      pythonPath = python3Packages.makePythonPath (
-        with python3Packages;
-        [
-          sip
-          setuptools
-        ]
-      );
+      pythonPath = python3Packages.makePythonPath (with python3Packages; [ sip setuptools ]);
     in
     ''
       substituteInPlace cmake/modules/FindSIP.cmake \
@@ -169,11 +158,7 @@ mkDerivation rec {
   meta = with lib; {
     description = "Free and open source painting application";
     homepage = "https://krita.org/";
-    maintainers = with maintainers; [
-      abbradar
-      sifmelcara
-      nek0
-    ];
+    maintainers = with maintainers; [ abbradar sifmelcara nek0 ];
     mainProgram = "krita";
     platforms = platforms.linux;
     license = licenses.gpl3Only;

@@ -17,10 +17,7 @@ let
     }:
     stdenv.mkDerivation {
       inherit version pname src;
-      nativeBuildInputs = [
-        pkg-config
-        cmake
-      ];
+      nativeBuildInputs = [ pkg-config cmake ];
       propagatedBuildInputs = [ libusb1 ];
 
       cmakeFlags = lib.optionals stdenv.isLinux [
@@ -41,11 +38,7 @@ let
         inherit (meta) longDescription homepage;
         description = "Software to turn the RTL2832U into a SDR receiver";
         license = licenses.gpl2Plus;
-        maintainers = with maintainers; [
-          bjornfor
-          skovati
-          Tungsten842
-        ];
+        maintainers = with maintainers; [ bjornfor skovati Tungsten842 ];
         platforms = platforms.unix;
         mainProgram = "rtl_sdr";
       };

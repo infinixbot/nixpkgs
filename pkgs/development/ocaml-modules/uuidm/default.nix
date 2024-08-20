@@ -27,17 +27,9 @@ lib.throwIfNot (lib.versionAtLeast ocaml.version "4.08")
 
     strictDeps = true;
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-      ocamlbuild
-      topkg
-    ];
+    nativeBuildInputs = [ ocaml findlib ocamlbuild topkg ];
     configurePlatforms = [ ];
-    buildInputs = [
-      topkg
-      cmdliner
-    ];
+    buildInputs = [ topkg cmdliner ];
 
     inherit (topkg) buildPhase installPhase;
 

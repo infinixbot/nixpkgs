@@ -45,12 +45,7 @@ let
   # warn that these attributes are deprecated (2017-2-2)
   # Should be removed in the release after next
   bondDeprecation = rec {
-    deprecated = [
-      "lacp_rate"
-      "miimon"
-      "mode"
-      "xmit_hash_policy"
-    ];
+    deprecated = [ "lacp_rate" "miimon" "mode" "xmit_hash_policy" ];
     filterDeprecated =
       bond: (filterAttrs (attrName: attr: elem attrName deprecated && attr != null) bond);
   };
@@ -121,15 +116,8 @@ let
         networkSetup = lib.mkIf needNetworkSetup {
           description = "Networking Setup";
 
-          after = [
-            "network-pre.target"
-            "systemd-udevd.service"
-            "systemd-sysctl.service"
-          ];
-          before = [
-            "network.target"
-            "shutdown.target"
-          ];
+          after = [ "network-pre.target" "systemd-udevd.service" "systemd-sysctl.service" ];
+          before = [ "network.target" "shutdown.target" ];
           wants = [ "network.target" ];
           # exclude bridges from the partOf relationship to fix container networking bug #47210
           partOf = map (i: "network-addresses-${i.name}.service") (
@@ -302,10 +290,7 @@ let
             description = "Virtual Network Interface ${i.name}";
             bindsTo = optional (!config.boot.isContainer) "dev-net-tun.device";
             after = optional (!config.boot.isContainer) "dev-net-tun.device" ++ [ "network-pre.target" ];
-            wantedBy = [
-              "network-setup.service"
-              (subsystemDevice i.name)
-            ];
+            wantedBy = [ "network-setup.service" (subsystemDevice i.name) ];
             partOf = [ "network-setup.service" ];
             before = [ "network-setup.service" ];
             path = [ pkgs.iproute2 ];
@@ -329,10 +314,7 @@ let
             in
             {
               description = "Bridge Interface ${n}";
-              wantedBy = [
-                "network-setup.service"
-                (subsystemDevice n)
-              ];
+              wantedBy = [ "network-setup.service" (subsystemDevice n) ];
               bindsTo = deps ++ optional v.rstp "mstpd.service";
               partOf = [ "network-setup.service" ] ++ optional v.rstp "mstpd.service";
               after =
@@ -432,27 +414,18 @@ let
             in
             {
               description = "Open vSwitch Interface ${n}";
-              wantedBy = [
-                "network-setup.service"
-                (subsystemDevice n)
-              ] ++ internalConfigs;
+              wantedBy = [ "network-setup.service" (subsystemDevice n) ] ++ internalConfigs;
               # before = [ "network-setup.service" ];
               # should work without internalConfigs dependencies because address/link configuration depends
               # on the device, which is created by ovs-vswitchd with type=internal, but it does not...
               before = [ "network-setup.service" ] ++ internalConfigs;
               partOf = [ "network-setup.service" ]; # shutdown the bridge when network is shutdown
               bindsTo = [ "ovs-vswitchd.service" ]; # requires ovs-vswitchd to be alive at all times
-              after = [
-                "network-pre.target"
-                "ovs-vswitchd.service"
-              ] ++ deps; # start switch after physical interfaces and vswitch daemon
+              after = [ "network-pre.target" "ovs-vswitchd.service" ] ++ deps; # start switch after physical interfaces and vswitch daemon
               wants = deps; # if one or more interface fails, the switch should continue to run
               serviceConfig.Type = "oneshot";
               serviceConfig.RemainAfterExit = true;
-              path = [
-                pkgs.iproute2
-                config.virtualisation.vswitch.package
-              ];
+              path = [ pkgs.iproute2 config.virtualisation.vswitch.package ];
               preStart = ''
                 echo "Resetting Open vSwitch ${n}..."
                 ovs-vsctl --if-exists del-br ${n} -- add-br ${n} \
@@ -502,20 +475,14 @@ let
             in
             {
               description = "Bond Interface ${n}";
-              wantedBy = [
-                "network-setup.service"
-                (subsystemDevice n)
-              ];
+              wantedBy = [ "network-setup.service" (subsystemDevice n) ];
               bindsTo = deps;
               partOf = [ "network-setup.service" ];
               after = [ "network-pre.target" ] ++ deps ++ map (i: "network-addresses-${i}.service") v.interfaces;
               before = [ "network-setup.service" ];
               serviceConfig.Type = "oneshot";
               serviceConfig.RemainAfterExit = true;
-              path = [
-                pkgs.iproute2
-                pkgs.gawk
-              ];
+              path = [ pkgs.iproute2 pkgs.gawk ];
               script = ''
                 echo "Destroying old bond ${n}..."
                 ${destroyBond n}
@@ -551,10 +518,7 @@ let
             in
             {
               description = "Vlan Interface ${n}";
-              wantedBy = [
-                "network-setup.service"
-                (subsystemDevice n)
-              ];
+              wantedBy = [ "network-setup.service" (subsystemDevice n) ];
               bindsTo = deps;
               partOf = [ "network-setup.service" ];
               after = [ "network-pre.target" ] ++ deps;
@@ -595,10 +559,7 @@ let
             in
             {
               description = "FOU endpoint ${n}";
-              wantedBy = [
-                "network-setup.service"
-                (subsystemDevice n)
-              ];
+              wantedBy = [ "network-setup.service" (subsystemDevice n) ];
               bindsTo = deps;
               partOf = [ "network-setup.service" ];
               after = [ "network-pre.target" ] ++ deps;
@@ -625,10 +586,7 @@ let
             in
             {
               description = "6-to-4 Tunnel Interface ${n}";
-              wantedBy = [
-                "network-setup.service"
-                (subsystemDevice n)
-              ];
+              wantedBy = [ "network-setup.service" (subsystemDevice n) ];
               bindsTo = deps;
               partOf = [ "network-setup.service" ];
               after = [ "network-pre.target" ] ++ deps;
@@ -669,10 +627,7 @@ let
             in
             {
               description = "GRE Tunnel Interface ${n}";
-              wantedBy = [
-                "network-setup.service"
-                (subsystemDevice n)
-              ];
+              wantedBy = [ "network-setup.service" (subsystemDevice n) ];
               bindsTo = deps;
               partOf = [ "network-setup.service" ];
               after = [ "network-pre.target" ] ++ deps;
@@ -704,10 +659,7 @@ let
             in
             {
               description = "Vlan Interface ${n}";
-              wantedBy = [
-                "network-setup.service"
-                (subsystemDevice n)
-              ];
+              wantedBy = [ "network-setup.service" (subsystemDevice n) ];
               bindsTo = deps;
               partOf = [ "network-setup.service" ];
               after = [ "network-pre.target" ] ++ deps;

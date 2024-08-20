@@ -87,10 +87,7 @@ if stdenv.isDarwin then
       meta
       ;
 
-    nativeBuildInputs = [
-      _7zz
-      makeWrapper
-    ];
+    nativeBuildInputs = [ _7zz makeWrapper ];
 
     sourceRoot = ".";
 

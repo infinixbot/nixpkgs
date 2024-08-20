@@ -46,10 +46,7 @@ import ./make-test-python.nix (
       router1 =
         { ... }:
         {
-          virtualisation.vlans = [
-            1
-            2
-          ];
+          virtualisation.vlans = [ 1 2 ];
           boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
           networking.firewall.extraCommands = "iptables -A nixos-fw -i eth2 -p ospfigp -j ACCEPT";
           services.frr.ospf = {
@@ -65,10 +62,7 @@ import ./make-test-python.nix (
       router2 =
         { ... }:
         {
-          virtualisation.vlans = [
-            3
-            2
-          ];
+          virtualisation.vlans = [ 3 2 ];
           boot.kernel.sysctl."net.ipv4.ip_forward" = "1";
           networking.firewall.extraCommands = "iptables -A nixos-fw -i eth2 -p ospfigp -j ACCEPT";
           services.frr.ospf = {

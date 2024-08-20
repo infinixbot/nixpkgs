@@ -16,17 +16,9 @@ stdenv.mkDerivation rec {
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
 
-  makeFlags = [
-    "AR:=$(AR)"
-    "CC:=$(CC)"
-    "RANLIB:=$(RANLIB)"
-    "BUILD_CC=$(CC_FOR_BUILD)"
-  ];
+  makeFlags = [ "AR:=$(AR)" "CC:=$(CC)" "RANLIB:=$(RANLIB)" "BUILD_CC=$(CC_FOR_BUILD)" ];
 
-  installFlags = [
-    "PREFIX=$(out)"
-    "LDCONFIG="
-  ];
+  installFlags = [ "PREFIX=$(out)" "LDCONFIG=" ];
 
   meta = with lib; {
     description = "Unicode string library";

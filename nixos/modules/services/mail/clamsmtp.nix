@@ -26,11 +26,7 @@ in
           types.submodule {
             options = {
               action = mkOption {
-                type = types.enum [
-                  "bounce"
-                  "drop"
-                  "pass"
-                ];
+                type = types.enum [ "bounce" "drop" "pass" ];
                 default = "drop";
                 description = ''
                   Action to take when a virus is detected.

@@ -42,10 +42,7 @@ rustPlatform.buildRustPackage rec {
     description = "Trash collector written in Rust";
     homepage = "https://github.com/TD-Sky/conceal";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      jedsek
-      kashw2
-    ];
+    maintainers = with maintainers; [ jedsek kashw2 ];
     broken = stdenv.isDarwin;
   };
 }

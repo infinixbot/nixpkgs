@@ -40,10 +40,7 @@ stdenvNoCC.mkDerivation rec {
       icon = "Sharedown";
       comment = "An Application to save your Sharepoint videos for offline usage.";
       desktopName = "Sharedown";
-      categories = [
-        "Network"
-        "Archiving"
-      ];
+      categories = [ "Network" "Archiving" ];
     })
   ];
 

@@ -22,10 +22,7 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ rustPlatform.bindgenHook ];
 
-  buildInputs = lib.optionals stdenv.isDarwin [
-    Security
-    SystemConfiguration
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ Security SystemConfiguration ];
 
   preCheck = "HOME=$(mktemp -d)";
 
@@ -42,9 +39,6 @@ rustPlatform.buildRustPackage rec {
       asl20 # or
       mit
     ];
-    maintainers = with maintainers; [
-      newam
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ newam matthiasbeyer ];
   };
 }

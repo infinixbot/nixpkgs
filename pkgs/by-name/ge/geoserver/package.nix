@@ -23,10 +23,7 @@ stdenv.mkDerivation (finalAttrs: rec {
   ];
 
   sourceRoot = ".";
-  nativeBuildInputs = [
-    unzip
-    makeWrapper
-  ];
+  nativeBuildInputs = [ unzip makeWrapper ];
 
   installPhase =
     let

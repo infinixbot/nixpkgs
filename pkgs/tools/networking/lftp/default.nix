@@ -27,16 +27,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    openssl
-    readline
-    zlib
-    libidn2
-    gmp
-    libiconv
-    libunistring
-    gettext
-  ];
+  buildInputs = [ openssl readline zlib libidn2 gmp libiconv libunistring gettext ];
 
   hardeningDisable = lib.optional stdenv.isDarwin "format";
 

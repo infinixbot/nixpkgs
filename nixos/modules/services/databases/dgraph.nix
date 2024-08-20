@@ -45,11 +45,7 @@ let
     RemoveIPC = true;
 
     RestrictNamespaces = true;
-    RestrictAddressFamilies = [
-      "AF_INET"
-      "AF_INET6"
-      "AF_UNIX"
-    ];
+    RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_UNIX" ];
     RestrictRealtime = true;
     RestrictSUIDSGID = true;
 
@@ -141,10 +137,7 @@ in
 
     systemd.services.dgraph-alpha = {
       description = "Dgraph native GraphQL database with a graph backend. Alpha serves data";
-      after = [
-        "network.target"
-        "dgraph-zero.service"
-      ];
+      after = [ "network.target" "dgraph-zero.service" ];
       requires = [ "dgraph-zero.service" ];
       wantedBy = [ "multi-user.target" ];
 

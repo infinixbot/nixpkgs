@@ -51,10 +51,7 @@ import ./make-test-python.nix (
         {
           programs.zsh.enable = true;
           users.users.root.shell = pkgs.zsh;
-          environment.systemPackages = with pkgs; [
-            xxh
-            git
-          ];
+          environment.systemPackages = with pkgs; [ xxh git ];
         };
     };
 

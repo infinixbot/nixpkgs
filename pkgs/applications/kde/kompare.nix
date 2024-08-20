@@ -18,10 +18,7 @@ mkDerivation {
     mainProgram = "kompare";
     license = with lib.licenses; [ gpl2 ];
   };
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     kiconthemes
     kparts
@@ -29,8 +26,5 @@ mkDerivation {
     kwidgetsaddons
     libkomparediff2
   ];
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 }

@@ -72,11 +72,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-5XctrI02pfCgK1P76AaSkMjiQqav6LX3SMjKr4F44sw=";
   };
 
-  nativeBuildInputs = [
-    meson
-    pkg-config
-    ninja
-  ];
+  nativeBuildInputs = [ meson pkg-config ninja ];
 
   buildInputs =
     lib.optional (cryptoBackend == "botan" || botanRng) botan3
@@ -132,14 +128,8 @@ stdenv.mkDerivation rec {
   meta = {
     homepage = "https://www.chronox.de/esdm.html";
     description = "Entropy Source and DRNG Manager in user space";
-    license = with lib.licenses; [
-      gpl2Only
-      bsd3
-    ];
+    license = with lib.licenses; [ gpl2Only bsd3 ];
     platforms = lib.platforms.linux;
-    maintainers = with lib.maintainers; [
-      orichter
-      thillux
-    ];
+    maintainers = with lib.maintainers; [ orichter thillux ];
   };
 }

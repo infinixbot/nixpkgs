@@ -36,10 +36,7 @@ import ./make-test-python.nix (
       pname = "demo";
       version = "1.0";
       description = ''A demo "Portable Service" for a shell program built with nix'';
-      units = [
-        demo-service
-        demo-socket
-      ];
+      units = [ demo-service demo-socket ];
     };
   in
   {

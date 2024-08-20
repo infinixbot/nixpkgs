@@ -78,10 +78,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "https://github.com/DelusionalLogic/NeoComp";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      twey
-      moni
-    ];
+    maintainers = with maintainers; [ twey moni ];
     platforms = platforms.linux;
     description = "Fork of Compton, a compositor for X11";
     longDescription = ''

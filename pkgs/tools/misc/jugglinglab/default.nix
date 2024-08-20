@@ -70,10 +70,7 @@ maven.buildMavenPackage rec {
     homepage = "https://jugglinglab.org/";
     license = licenses.gpl2Only;
     mainProgram = "jugglinglab";
-    maintainers = with maintainers; [
-      wnklmnn
-      tomasajt
-    ];
+    maintainers = with maintainers; [ wnklmnn tomasajt ];
     platforms = platforms.all;
   };
 }

@@ -76,10 +76,7 @@ stdenv.mkDerivation {
       icon = "ioquake3";
       comment = "A fast-paced 3D first-person shooter, a community effort to continue supporting/developing id's Quake III Arena";
       desktopName = "ioquake3";
-      categories = [
-        "Game"
-        "ActionGame"
-      ];
+      categories = [ "Game" "ActionGame" ];
     })
   ];
 
@@ -88,12 +85,7 @@ stdenv.mkDerivation {
     description = "Fast-paced 3D first-person shooter, a community effort to continue supporting/developing id's Quake III Arena";
     license = lib.licenses.gpl2Plus;
     mainProgram = "ioquake3";
-    maintainers = with lib.maintainers; [
-      abbradar
-      drupol
-      eelco
-      rvolosatovs
-    ];
+    maintainers = with lib.maintainers; [ abbradar drupol eelco rvolosatovs ];
     platforms = lib.platforms.linux;
   };
 }

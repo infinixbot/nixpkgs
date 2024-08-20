@@ -26,17 +26,8 @@ stdenv.mkDerivation rec {
   depsBuildBuild = [
     pkg-config
   ];
-  nativeBuildInputs = [
-    meson
-    pkg-config
-    ninja
-    wayland-scanner
-    scdoc
-  ];
-  buildInputs = [
-    wayland
-    wayland-protocols
-  ];
+  nativeBuildInputs = [ meson pkg-config ninja wayland-scanner scdoc ];
+  buildInputs = [ wayland wayland-protocols ];
 
   meta = with lib; {
     description = "Day/night gamma adjustments for Wayland";

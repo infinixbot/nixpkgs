@@ -26,10 +26,7 @@ stdenv.mkDerivation rec {
     outputHash = "sha256-86/zeoOO5kSAwh7uQTV7nGUGQoIux1rlH5eUgvn3kvY=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    setJavaClassPath
-  ];
+  nativeBuildInputs = [ makeWrapper setJavaClassPath ];
   buildInputs = [ deps ];
 
   dontUnpack = true;
@@ -48,10 +45,6 @@ stdenv.mkDerivation rec {
     license = licenses.asl20;
     description = "Language server for Scala";
     mainProgram = "metals";
-    maintainers = with maintainers; [
-      fabianhjr
-      jpaju
-      tomahna
-    ];
+    maintainers = with maintainers; [ fabianhjr jpaju tomahna ];
   };
 }

@@ -15,11 +15,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-cppofTzzJHrvG5SsafKgvCIiHc6E5740NyQdWWZxrGI=";
   };
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
 
   makeFlags = [
     "CC=${stdenv.cc.targetPrefix}cc"

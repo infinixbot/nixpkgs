@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
     substituteInPlace Makefile --replace "pkg-config" "$PKG_CONFIG"
   '';
 
-  makeFlags = [
-    "BIN=$(out)/bin"
-    "MAN=$(out)/share/man/man1"
-  ];
+  makeFlags = [ "BIN=$(out)/bin" "MAN=$(out)/share/man/man1" ];
   nativeBuildInputs = [ pkg-config ];
   buildInputs = [ fuse ];
   enableParallelBuilding = true;
@@ -38,9 +35,6 @@ stdenv.mkDerivation rec {
     mainProgram = "9pfs";
     maintainers = [ lib.maintainers.eelco ];
     platforms = lib.platforms.unix;
-    license = with lib.licenses; [
-      lpl-102
-      bsd2
-    ];
+    license = with lib.licenses; [ lpl-102 bsd2 ];
   };
 }

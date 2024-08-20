@@ -8,10 +8,7 @@ buildPerlPackage rec {
   pname = "BioExtAlign";
   version = "1.5.1";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "bioperl";

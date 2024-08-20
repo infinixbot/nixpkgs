@@ -54,15 +54,9 @@ stdenv.mkDerivation {
     ./gprbuild-relocatable-build.patch
   ];
 
-  buildFlags = [
-    "all"
-    "libgpr.build"
-  ];
+  buildFlags = [ "all" "libgpr.build" ];
 
-  installFlags = [
-    "all"
-    "libgpr.install"
-  ];
+  installFlags = [ "all" "libgpr.install" ];
 
   # link gprconfig_kb db from gprbuild-boot into build dir,
   # the install process copies its contents to $out

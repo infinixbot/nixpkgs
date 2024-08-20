@@ -71,9 +71,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/facebook/fbthrift";
     license = licenses.asl20;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      pierreis
-      kylesferrazza
-    ];
+    maintainers = with maintainers; [ pierreis kylesferrazza ];
   };
 }

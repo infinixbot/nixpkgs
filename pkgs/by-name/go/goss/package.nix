@@ -38,10 +38,7 @@ buildGoModule rec {
 
   postInstall =
     let
-      runtimeDependencies = [
-        bash
-        getent
-      ] ++ lib.optionals stdenv.isLinux [ systemd ];
+      runtimeDependencies = [ bash getent ] ++ lib.optionals stdenv.isLinux [ systemd ];
     in
     ''
       wrapProgram $out/bin/goss \
@@ -71,11 +68,7 @@ buildGoModule rec {
     '';
     license = licenses.asl20;
     mainProgram = "goss";
-    maintainers = with maintainers; [
-      hyzual
-      jk
-      anthonyroussel
-    ];
+    maintainers = with maintainers; [ hyzual jk anthonyroussel ];
     platforms = platforms.linux ++ platforms.darwin;
   };
 }

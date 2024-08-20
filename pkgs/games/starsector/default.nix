@@ -21,15 +21,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-KT4n0kBocaljD6dTbpr6xcwy6rBBZTFjov9m+jizDW4=";
   };
 
-  nativeBuildInputs = [
-    copyDesktopItems
-    makeWrapper
-  ];
-  buildInputs = [
-    xorg.libXxf86vm
-    openal
-    libGL
-  ];
+  nativeBuildInputs = [ copyDesktopItems makeWrapper ];
+  buildInputs = [ xorg.libXxf86vm openal libGL ];
 
   dontBuild = true;
 
@@ -59,12 +52,7 @@ stdenv.mkDerivation rec {
       $out/share/icons/hicolor/64x64/apps/starsector.png
 
     wrapProgram $out/share/starsector/starsector.sh \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          openjdk
-          xorg.xrandr
-        ]
-      } \
+      --prefix PATH : ${lib.makeBinPath [ openjdk xorg.xrandr ]} \
       --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath buildInputs} \
       --run 'mkdir -p ''${XDG_DATA_HOME:-~/.local/share}/starsector' \
       --chdir "$out/share/starsector"
@@ -101,9 +89,6 @@ stdenv.mkDerivation rec {
     homepage = "https://fractalsoftworks.com";
     sourceProvenance = with sourceTypes; [ binaryBytecode ];
     license = licenses.unfree;
-    maintainers = with maintainers; [
-      bbigras
-      rafaelrc
-    ];
+    maintainers = with maintainers; [ bbigras rafaelrc ];
   };
 }

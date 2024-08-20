@@ -14,10 +14,7 @@ stdenv.mkDerivation {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    ocaml
-    findlib
-  ];
+  nativeBuildInputs = [ ocaml findlib ];
   buildInputs = [ sawja ];
 
   buildPhase = ''

@@ -31,10 +31,7 @@ mkDerivation {
   meta = {
     homepage = "https://apps.kde.org/gwenview/";
     description = "KDE image viewer";
-    license = with lib.licenses; [
-      gpl2Plus
-      fdl12Plus
-    ];
+    license = with lib.licenses; [ gpl2Plus fdl12Plus ];
     maintainers = [ lib.maintainers.ttuegel ];
     mainProgram = "gwenview";
   };
@@ -42,10 +39,7 @@ mkDerivation {
   # Fix build with versioned kImageAnnotator
   patches = [ ./kimageannotator.patch ];
 
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     baloo
     kactivities
@@ -67,9 +61,5 @@ mkDerivation {
     wayland
     wayland-protocols
   ];
-  propagatedUserEnvPkgs = [
-    kipi-plugins
-    libkipi
-    (lib.getBin kinit)
-  ];
+  propagatedUserEnvPkgs = [ kipi-plugins libkipi (lib.getBin kinit) ];
 }

@@ -64,10 +64,7 @@ rustPlatform.buildRustPackage rec {
     description = "NOAA APT image decoder";
     homepage = "https://noaa-apt.mbernardi.com.ar/";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      trepetti
-      tmarkus
-    ];
+    maintainers = with maintainers; [ trepetti tmarkus ];
     platforms = platforms.all;
     changelog = "https://github.com/martinber/noaa-apt/releases/tag/v${version}";
     mainProgram = "noaa-apt";

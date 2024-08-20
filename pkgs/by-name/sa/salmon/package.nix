@@ -58,10 +58,7 @@ stdenv.mkDerivation (finalAttrs: {
     zlib
   ] ++ lib.optionals stdenv.isDarwin [ libiconv ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   strictDeps = true;
 

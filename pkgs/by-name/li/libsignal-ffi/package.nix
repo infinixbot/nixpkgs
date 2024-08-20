@@ -46,10 +46,7 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  cargoBuildFlags = [
-    "-p"
-    "libsignal-ffi"
-  ];
+  cargoBuildFlags = [ "-p" "libsignal-ffi" ];
 
   meta = with lib; {
     description = "C ABI library which exposes Signal protocol logic";

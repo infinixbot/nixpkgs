@@ -34,11 +34,7 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    perl
-    glib
-    ncurses
-  ];
+  buildInputs = [ perl glib ncurses ];
 
   meta = {
     homepage = "http://silcnet.org/";

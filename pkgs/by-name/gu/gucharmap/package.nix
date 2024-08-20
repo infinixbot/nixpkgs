@@ -49,12 +49,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "gucharmap";
   version = "15.1.5";
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "lib" "dev" "devdoc" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.gnome.org";

@@ -49,10 +49,7 @@ import ../make-test-python.nix (
                 options.services.maddy.config.default;
           };
           # Not covered by openFirewall yet
-          networking.firewall.allowedTCPPorts = [
-            993
-            465
-          ];
+          networking.firewall.allowedTCPPorts = [ 993 465 ];
         };
 
       client =

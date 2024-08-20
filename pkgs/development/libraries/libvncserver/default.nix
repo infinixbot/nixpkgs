@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
   pname = "libvncserver";
   version = "0.9.14";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "LibVNC";

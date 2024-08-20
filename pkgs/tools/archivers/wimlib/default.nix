@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
   version = "1.14.4";
   pname = "wimlib";
 
-  nativeBuildInputs = [
-    pkg-config
-    makeWrapper
-  ];
+  nativeBuildInputs = [ pkg-config makeWrapper ];
   buildInputs = [ ntfs3g ] ++ lib.optionals (!stdenv.isDarwin) [ fuse3 ];
 
   src = fetchurl {
@@ -37,16 +34,7 @@ stdenv.mkDerivation rec {
   postInstall =
     let
       path = lib.makeBinPath (
-        [
-          cabextract
-          mtools
-          ntfs3g
-        ]
-        ++ lib.optionals (!stdenv.isDarwin) [
-          cdrkit
-          syslinux
-          fuse3
-        ]
+        [ cabextract mtools ntfs3g ] ++ lib.optionals (!stdenv.isDarwin) [ cdrkit syslinux fuse3 ]
       );
     in
     ''
@@ -66,10 +54,6 @@ stdenv.mkDerivation rec {
     description = "Library and program to extract, create, and modify WIM files";
     platforms = platforms.unix;
     maintainers = [ ];
-    license = with licenses; [
-      gpl3
-      lgpl3
-      mit
-    ];
+    license = with licenses; [ gpl3 lgpl3 mit ];
   };
 }

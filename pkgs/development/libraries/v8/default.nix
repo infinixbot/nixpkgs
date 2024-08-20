@@ -132,10 +132,7 @@ stdenv.mkDerivation rec {
 
   llvmCcAndBintools = symlinkJoin {
     name = "llvmCcAndBintools";
-    paths = [
-      stdenv.cc
-      llvmPackages.llvm
-    ];
+    paths = [ stdenv.cc llvmPackages.llvm ];
   };
 
   gnFlags =
@@ -182,15 +179,9 @@ stdenv.mkDerivation rec {
       llvmPackages.llvm
       python3.pkgs.setuptools
     ];
-  buildInputs = [
-    glib
-    icu
-  ];
+  buildInputs = [ glib icu ];
 
-  ninjaFlags = [
-    ":d8"
-    "v8_monolith"
-  ];
+  ninjaFlags = [ ":d8" "v8_monolith" ];
 
   enableParallelBuilding = true;
 
@@ -215,10 +206,7 @@ stdenv.mkDerivation rec {
     homepage = "https://v8.dev/";
     description = "Google's open source JavaScript engine";
     mainProgram = "d8";
-    maintainers = with maintainers; [
-      proglodyte
-      matthewbauer
-    ];
+    maintainers = with maintainers; [ proglodyte matthewbauer ];
     platforms = platforms.unix;
     license = licenses.bsd3;
     knownVulnerabilities = [ "Severely outdated with multiple publicly known vulnerabilities" ];

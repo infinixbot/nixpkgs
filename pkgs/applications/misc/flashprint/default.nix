@@ -18,16 +18,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-oi/nEdOjhbYf9IZmppfKiEmlNGXdc907LS2x8jUck+M=";
   };
 
-  nativeBuildInputs = [
-    dpkg
-    autoPatchelfHook
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ dpkg autoPatchelfHook wrapQtAppsHook ];
 
-  buildInputs = [
-    qtbase
-    libGLU
-  ];
+  buildInputs = [ qtbase libGLU ];
 
   qtWrapperArgs = [ "--prefix QT_QPA_PLATFORM : xcb" ];
 

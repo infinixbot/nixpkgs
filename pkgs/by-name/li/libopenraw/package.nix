@@ -21,19 +21,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-VRWyYQNh7zRYC2uXZjURn23ttPCnnVRmL6X+YYakXtU=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    cargo
-    rustc
-  ];
+  nativeBuildInputs = [ pkg-config cargo rustc ];
 
-  buildInputs = [
-    boost
-    gdk-pixbuf
-    glib
-    libjpeg
-    libxml2
-  ];
+  buildInputs = [ boost gdk-pixbuf glib libjpeg libxml2 ];
 
   postPatch = ''
     sed -i configure{,.ac} \
@@ -44,10 +34,7 @@ stdenv.mkDerivation rec {
     description = "RAW camerafile decoding library";
     homepage = "https://libopenraw.freedesktop.org";
     license = licenses.lgpl3Plus;
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
     maintainers = [ maintainers.struan ];
   };
 }

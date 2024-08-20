@@ -237,10 +237,7 @@ let
           type = with types; listOf str;
           default = [ ];
           description = "Extra options for {command}`${defaultBackend}` that go before the `run` argument.";
-          example = [
-            "--runtime"
-            "runsc"
-          ];
+          example = [ "--runtime" "runsc" ];
         };
 
         extraOptions = mkOption {
@@ -298,10 +295,7 @@ let
       wantedBy = [ ] ++ optional (container.autoStart) "multi-user.target";
       wants = lib.optional (container.imageFile == null) "network-online.target";
       after =
-        lib.optionals (cfg.backend == "docker") [
-          "docker.service"
-          "docker.socket"
-        ]
+        lib.optionals (cfg.backend == "docker") [ "docker.service" "docker.socket" ]
         # if imageFile is not set, the service needs the network to download the image from the registry
         ++ lib.optionals (container.imageFile == null) [ "network-online.target" ]
         ++ dependsOn;
@@ -392,33 +386,24 @@ let
 in
 {
   imports = [
-    (lib.mkChangedOptionModule [ "docker-containers" ]
-      [
-        "virtualisation"
-        "oci-containers"
-      ]
-      (oldcfg: {
-        backend = "docker";
-        containers = lib.mapAttrs (
-          n: v:
-          builtins.removeAttrs (
-            v
-            // {
-              extraOptions = v.extraDockerOptions or [ ];
-            }
-          ) [ "extraDockerOptions" ]
-        ) oldcfg.docker-containers;
-      })
-    )
+    (lib.mkChangedOptionModule [ "docker-containers" ] [ "virtualisation" "oci-containers" ] (oldcfg: {
+      backend = "docker";
+      containers = lib.mapAttrs (
+        n: v:
+        builtins.removeAttrs (
+          v
+          // {
+            extraOptions = v.extraDockerOptions or [ ];
+          }
+        ) [ "extraDockerOptions" ]
+      ) oldcfg.docker-containers;
+    }))
   ];
 
   options.virtualisation.oci-containers = {
 
     backend = mkOption {
-      type = types.enum [
-        "podman"
-        "docker"
-      ];
+      type = types.enum [ "podman" "docker" ];
       default = if versionAtLeast config.system.stateVersion "22.05" then "podman" else "docker";
       description = "The underlying Docker implementation to use.";
     };

@@ -72,10 +72,7 @@ stdenv.mkDerivation (
     nativeBuildInputs =
       [ cmake ]
       ++ (lib.optional (lib.versionAtLeast release_version "15") ninja)
-      ++ [
-        python3
-        libllvm.dev
-      ]
+      ++ [ python3 libllvm.dev ]
       ++ lib.optional stdenv.isDarwin xcbuild.xcrun;
     buildInputs = lib.optional (
       stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isRiscV
@@ -178,10 +175,7 @@ stdenv.mkDerivation (
             "-DSANITIZER_MIN_OSX_VERSION=10.10"
           ];
 
-    outputs = [
-      "out"
-      "dev"
-    ];
+    outputs = [ "out" "dev" ];
 
     # TSAN requires XPC on Darwin, which we have no public/free source files for. We can depend on the Apple frameworks
     # to get it, but they're unfree. Since LLVM is rather central to the stdenv, we patch out TSAN support so that Hydra
@@ -270,10 +264,7 @@ stdenv.mkDerivation (
       '';
       # "All of the code in the compiler-rt project is dual licensed under the MIT
       # license and the UIUC License (a BSD-like license)":
-      license = with lib.licenses; [
-        mit
-        ncsa
-      ];
+      license = with lib.licenses; [ mit ncsa ];
       broken =
         # compiler-rt requires a Clang stdenv on 32-bit RISC-V:
         # https://reviews.llvm.org/D43106#1019077

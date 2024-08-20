@@ -23,18 +23,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-2fUHm3d9/8qTAMzFaxCpNYjN+8nd4vrhEZQN+2KS8lE=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "bin"
-  ];
+  outputs = [ "out" "dev" "bin" ];
 
-  nativeBuildInputs = [
-    pkg-config
-    meson
-    ninja
-    docutils
-  ];
+  nativeBuildInputs = [ pkg-config meson ninja docutils ];
   buildInputs = [
     libpthreadstubs
   ] ++ lib.optional withIntel libpciaccess ++ lib.optional withValgrind valgrind-light;

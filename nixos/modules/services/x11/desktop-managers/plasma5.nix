@@ -108,10 +108,7 @@ in
       };
 
       phononBackend = mkOption {
-        type = types.enum [
-          "gstreamer"
-          "vlc"
-        ];
+        type = types.enum [ "gstreamer" "vlc" ];
         default = "vlc";
         example = "gstreamer";
         description = "Phonon audio backend to install.";
@@ -196,34 +193,17 @@ in
       "plasma5"
       "supportDDC"
     ] "DDC/CI is no longer supported upstream.")
-    (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "desktopManager"
-        "kde5"
-      ]
-      [
-        "services"
-        "xserver"
-        "desktopManager"
-        "plasma5"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "desktopManager"
-        "plasma5"
-        "excludePackages"
-      ]
-      [
-        "environment"
-        "plasma5"
-        "excludePackages"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "xserver" "desktopManager" "kde5" ] [
+      "services"
+      "xserver"
+      "desktopManager"
+      "plasma5"
+    ])
+    (mkRenamedOptionModule [ "services" "xserver" "desktopManager" "plasma5" "excludePackages" ] [
+      "environment"
+      "plasma5"
+      "excludePackages"
+    ])
   ];
 
   config = mkMerge [
@@ -353,12 +333,7 @@ in
         ++ lib.optional (cfg.phononBackend == "vlc") pkgs.plasma5Packages.phonon-backend-vlc
 
         # Optional hardware support features
-        ++ lib.optionals config.hardware.bluetooth.enable [
-          bluedevil
-          bluez-qt
-          pkgs.openobex
-          pkgs.obexftp
-        ]
+        ++ lib.optionals config.hardware.bluetooth.enable [ bluedevil bluez-qt pkgs.openobex pkgs.obexftp ]
         ++ lib.optional config.networking.networkmanager.enable plasma-nm
         ++ lib.optional config.hardware.pulseaudio.enable plasma-pa
         ++ lib.optional config.services.pipewire.pulse.enable plasma-pa
@@ -397,15 +372,9 @@ in
       # Enable GTK applications to load SVG icons
       programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
 
-      fonts.packages = with pkgs; [
-        cfg.notoPackage
-        hack-font
-      ];
+      fonts.packages = with pkgs; [ cfg.notoPackage hack-font ];
       fonts.fontconfig.defaultFonts = {
-        monospace = [
-          "Hack"
-          "Noto Sans Mono"
-        ];
+        monospace = [ "Hack" "Noto Sans Mono" ];
         sansSerif = [ "Noto Sans" ];
         serif = [ "Noto Serif" ];
       };

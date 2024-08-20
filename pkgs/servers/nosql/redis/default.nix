@@ -79,11 +79,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   # darwin currently lacks a pure `pgrep` which is extensively used here
   doCheck = !stdenv.isDarwin;
-  nativeCheckInputs = [
-    which
-    tcl
-    ps
-  ] ++ lib.optionals stdenv.hostPlatform.isStatic [ getconf ];
+  nativeCheckInputs = [ which tcl ps ] ++ lib.optionals stdenv.hostPlatform.isStatic [ getconf ];
   checkPhase = ''
     runHook preCheck
 
@@ -117,10 +113,7 @@ stdenv.mkDerivation (finalAttrs: {
     license = licenses.bsd3;
     platforms = platforms.all;
     changelog = "https://github.com/redis/redis/raw/${finalAttrs.version}/00-RELEASENOTES";
-    maintainers = with maintainers; [
-      berdario
-      globin
-    ];
+    maintainers = with maintainers; [ berdario globin ];
     mainProgram = "redis-cli";
   };
 })

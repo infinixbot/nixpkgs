@@ -26,20 +26,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-0XTsYeS4tNAnGhuJ81fmjHhFS6fVq1lirui5b+ojxTQ=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  buildInputs = [
-    libdrm
-    libGL
-    atkmm
-    pcre
-    gtkmm4
-    pugixml
-    mesa
-    pciutils
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
+  buildInputs = [ libdrm libGL atkmm pcre gtkmm4 pugixml mesa pciutils ];
 
   cmakeFlags = [ "-DENABLE_UNIT_TESTS=off" ];
 

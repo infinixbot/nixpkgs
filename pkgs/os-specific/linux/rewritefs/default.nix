@@ -19,10 +19,7 @@ stdenv.mkDerivation {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    fuse3
-    pcre
-  ];
+  buildInputs = [ fuse3 pcre ];
 
   prePatch = ''
     # do not set sticky bit in nix store

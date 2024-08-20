@@ -47,11 +47,7 @@ stdenv.mkDerivation rec {
     findXMLCatalogs
   ];
 
-  buildInputs = [
-    gtk3
-    vte
-    pcre2
-  ];
+  buildInputs = [ gtk3 vte pcre2 ];
 
   patches = [
     ./respect-xml-catalog-files-var.patch

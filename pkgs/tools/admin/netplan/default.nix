@@ -33,14 +33,7 @@ stdenv.mkDerivation rec {
     systemd
     glib
     libyaml
-    (python3.withPackages (
-      p: with p; [
-        pyyaml
-        netifaces
-        dbus-python
-        rich
-      ]
-    ))
+    (python3.withPackages (p: with p; [ pyyaml netifaces dbus-python rich ]))
     libuuid
     bash-completion
   ];

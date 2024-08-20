@@ -23,12 +23,7 @@ mkDerivation rec {
   };
 
   nativeBuildInputs = [ extra-cmake-modules ];
-  buildInputs = [
-    kiconthemes
-    kio
-    kjobwidgets
-    kxmlgui
-  ];
+  buildInputs = [ kiconthemes kio kjobwidgets kxmlgui ];
 
   passthru.tests.version = testers.testVersion {
     package = k4dirstat;

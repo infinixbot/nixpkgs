@@ -28,10 +28,7 @@ stdenv.mkDerivation rec {
   '';
 
   buildInputs =
-    lib.optionals stdenv.isLinux [
-      systemd
-      parted
-    ]
+    lib.optionals stdenv.isLinux [ systemd parted ]
     ++ lib.optionals stdenv.isDarwin [ argp-standalone ];
 
   buildFlags = [
@@ -55,9 +52,6 @@ stdenv.mkDerivation rec {
     description = "Fight Flash Fraud";
     homepage = "https://fight-flash-fraud.readthedocs.io/en/stable/";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      makefu
-      evils
-    ];
+    maintainers = with maintainers; [ makefu evils ];
   };
 }

@@ -17,13 +17,7 @@ buildDunePackage rec {
   pname = "utop";
 
   version = "2.14.0";
-  propagatedBuildInputs = [
-    findlib
-    lambda-term
-    xdg
-    zed
-    logs
-  ];
+  propagatedBuildInputs = [ findlib lambda-term xdg zed logs ];
 
   minimalOCamlVersion = "4.11";
 
@@ -32,10 +26,7 @@ buildDunePackage rec {
     sha256 = "sha256-D9WpvFtFhSSnFGOh/gzRb5t74TZzrjAxGLchbg0nO6k=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    cppo
-  ];
+  nativeBuildInputs = [ makeWrapper cppo ];
 
   postFixup =
     let

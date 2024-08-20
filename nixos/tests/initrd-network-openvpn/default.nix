@@ -87,10 +87,7 @@ import ../make-test-python.nix (
         ovpnserver =
           { ... }:
           {
-            virtualisation.vlans = [
-              1
-              2
-            ];
+            virtualisation.vlans = [ 1 2 ];
 
             # Enable NAT and forward port 12345 to port 1234
             networking.nat = {

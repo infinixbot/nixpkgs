@@ -54,23 +54,8 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "murmur"
-        "welcome"
-      ]
-      [
-        "services"
-        "murmur"
-        "welcometext"
-      ]
-    )
-    (mkRemovedOptionModule [
-      "services"
-      "murmur"
-      "pidfile"
-    ] "Hardcoded to /run/murmur/murmurd.pid now")
+    (mkRenamedOptionModule [ "services" "murmur" "welcome" ] [ "services" "murmur" "welcometext" ])
+    (mkRemovedOptionModule [ "services" "murmur" "pidfile" ] "Hardcoded to /run/murmur/murmurd.pid now")
   ];
 
   options = {
@@ -301,11 +286,7 @@ in
       };
 
       dbus = mkOption {
-        type = types.enum [
-          null
-          "session"
-          "system"
-        ];
+        type = types.enum [ null "session" "system" ];
         default = null;
         description = "Enable D-Bus remote control. Set to the bus you want Murmur to connect to.";
       };

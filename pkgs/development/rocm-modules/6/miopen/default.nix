@@ -240,13 +240,7 @@ stdenv.mkDerivation (finalAttrs: {
       mkdir -p $test/bin
       mv bin/test_* $test/bin
       patchelf --set-rpath $out/lib:${
-        lib.makeLibraryPath (
-          finalAttrs.buildInputs
-          ++ [
-            clr
-            rocm-comgr
-          ]
-        )
+        lib.makeLibraryPath (finalAttrs.buildInputs ++ [ clr rocm-comgr ])
       } $test/bin/*
     '';
 

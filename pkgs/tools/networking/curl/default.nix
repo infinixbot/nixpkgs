@@ -74,15 +74,7 @@
 # cgit) that are needed here should be included directly in Nixpkgs as
 # files.
 
-assert
-  !(
-    (lib.count (x: x) [
-      gnutlsSupport
-      opensslSupport
-      wolfsslSupport
-      rustlsSupport
-    ]) > 1
-  );
+assert !((lib.count (x: x) [ gnutlsSupport opensslSupport wolfsslSupport rustlsSupport ]) > 1);
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "curl";
@@ -105,23 +97,14 @@ stdenv.mkDerivation (finalAttrs: {
     patchShebangs scripts
   '';
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "man"
-    "devdoc"
-  ];
+  outputs = [ "bin" "dev" "out" "man" "devdoc" ];
   separateDebugInfo = stdenv.isLinux;
 
   enableParallelBuilding = true;
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    pkg-config
-    perl
-  ];
+  nativeBuildInputs = [ pkg-config perl ];
 
   # Zlib and OpenSSL must be propagated because `libcurl.la' contains
   # "-lz -lssl", which aren't necessary direct build inputs of
@@ -133,10 +116,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional gsaslSupport gsasl
     ++ lib.optional gssSupport libkrb5
     ++ lib.optional http2Support nghttp2
-    ++ lib.optionals http3Support [
-      nghttp3
-      ngtcp2
-    ]
+    ++ lib.optionals http3Support [ nghttp3 ngtcp2 ]
     ++ lib.optional idnSupport libidn2
     ++ lib.optional ldapSupport openldap
     ++ lib.optional opensslSupport openssl

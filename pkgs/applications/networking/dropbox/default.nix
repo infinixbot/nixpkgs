@@ -7,10 +7,7 @@
 }:
 
 let
-  platforms = [
-    "i686-linux"
-    "x86_64-linux"
-  ];
+  platforms = [ "i686-linux" "x86_64-linux" ];
 in
 
 assert lib.elem stdenv.hostPlatform.system platforms;
@@ -35,10 +32,7 @@ let
     comment = "Sync your files across computers and to the web";
     desktopName = "Dropbox";
     genericName = "File Synchronizer";
-    categories = [
-      "Network"
-      "FileTransfer"
-    ];
+    categories = [ "Network" "FileTransfer" ];
     startupNotify = false;
     icon = "dropbox";
   };
@@ -125,14 +119,8 @@ buildFHSEnv {
     description = "Online stored folders (daemon version)";
     homepage = "http://www.dropbox.com/";
     license = licenses.unfree;
-    maintainers = with maintainers; [
-      eclairevoyant
-      ttuegel
-    ];
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    maintainers = with maintainers; [ eclairevoyant ttuegel ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
     mainProgram = "dropbox";
   };
 }

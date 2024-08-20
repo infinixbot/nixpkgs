@@ -23,10 +23,7 @@ buildPythonApplication {
 
   doCheck = false;
 
-  nativeBuildInputs = [
-    wrapGAppsHook3
-    gobject-introspection
-  ];
+  nativeBuildInputs = [ wrapGAppsHook3 gobject-introspection ];
 
   buildInputs = with gst_all_1; [
     gst-plugins-base
@@ -37,10 +34,7 @@ buildPythonApplication {
     gtk3
   ];
 
-  propagatedBuildInputs = with python3Packages; [
-    gst-python
-    pygobject3
-  ];
+  propagatedBuildInputs = with python3Packages; [ gst-python pygobject3 ];
 
   preFixup = ''
     gappsWrapperArgs+=(

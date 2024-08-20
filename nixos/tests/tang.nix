@@ -37,11 +37,7 @@ import ./make-test-python.nix (
           }
         ];
 
-        environment.systemPackages = with pkgs; [
-          clevis
-          tang
-          cryptsetup
-        ];
+        environment.systemPackages = with pkgs; [ clevis tang cryptsetup ];
         services.tang = {
           enable = true;
           ipAddressAllow = [ "127.0.0.1/32" ];

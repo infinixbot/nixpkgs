@@ -32,11 +32,7 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-wfPSPH+E9cErVvfJZqHttFtjiUYJopM/u6w6NpRHifE=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    makeWrapper
-  ];
+  nativeBuildInputs = [ cmake pkg-config makeWrapper ];
 
   buildInputs =
     [

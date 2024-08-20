@@ -11,10 +11,7 @@ bundlerApp {
 
   inherit ruby;
 
-  exes = [
-    "oxidized"
-    "oxs"
-  ];
+  exes = [ "oxidized" "oxs" ];
 
   passthru.updateScript = bundlerUpdateScript "oxidized";
 

@@ -41,12 +41,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-vSZKTsDMY5bhfniFOQ11VA30gjfb4Y8tCC7JNjNw8Y0=";
   };
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-    "man"
-  ] ++ lib.optional (externalEtc != null) "etc";
+  outputs = [ "bin" "out" "dev" "man" ] ++ lib.optional (externalEtc != null) "etc";
 
   passthru.fetchxrd = callPackage ./fetchxrd.nix { xrootd = finalAttrs.finalPackage; };
   passthru.tests =

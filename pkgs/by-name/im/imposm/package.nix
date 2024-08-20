@@ -19,10 +19,7 @@ buildGoModule rec {
 
   vendorHash = null;
 
-  buildInputs = [
-    leveldb
-    geos
-  ];
+  buildInputs = [ leveldb geos ];
 
   ldflags = [
     "-s -w"

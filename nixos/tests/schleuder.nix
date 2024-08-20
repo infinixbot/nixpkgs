@@ -16,11 +16,7 @@ import ./make-test-python.nix {
         sslKey = "${certs.${domain}.key}";
         inherit domain;
         destination = [ domain ];
-        localRecipients = [
-          "root"
-          "alice"
-          "bob"
-        ];
+        localRecipients = [ "root" "alice" "bob" ];
       };
       services.schleuder = {
         enable = true;
@@ -112,10 +108,7 @@ import ./make-test-python.nix {
           cliconfig =
             pkgs.runCommand "schleuder-cli.yml"
               {
-                nativeBuildInputs = [
-                  pkgs.jq
-                  pkgs.openssl
-                ];
+                nativeBuildInputs = [ pkgs.jq pkgs.openssl ];
               }
               ''
                 fp=$(openssl x509 -in ${certs.${domain}.cert} -noout -fingerprint -sha256 | cut -d = -f 2 | tr -d : | tr 'A-Z' 'a-z')

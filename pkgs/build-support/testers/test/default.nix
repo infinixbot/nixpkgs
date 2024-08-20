@@ -60,10 +60,7 @@ lib.recurseIntoAttrs {
         { pkgs, ... }:
         {
           system.nixos = dummyVersioning;
-          environment.systemPackages = [
-            pkgs.proof-of-overlay-hello
-            pkgs.figlet
-          ];
+          environment.systemPackages = [ pkgs.proof-of-overlay-hello pkgs.figlet ];
         };
       testScript = ''
         machine.succeed("hello | figlet >/dev/console")
@@ -81,10 +78,7 @@ lib.recurseIntoAttrs {
         { pkgs, ... }:
         {
           system.nixos = dummyVersioning;
-          environment.systemPackages = [
-            pkgs.proof-of-overlay-hello
-            pkgs.figlet
-          ];
+          environment.systemPackages = [ pkgs.proof-of-overlay-hello pkgs.figlet ];
         };
       testScript = ''
         machine.succeed("hello | figlet >/dev/console")
@@ -146,11 +140,7 @@ lib.recurseIntoAttrs {
             runCommand "fail"
               {
                 # dev will be the default output
-                outputs = [
-                  "dev"
-                  "doc"
-                  "out"
-                ];
+                outputs = [ "dev" "doc" "out" ];
               }
               ''
                 echo i am failing

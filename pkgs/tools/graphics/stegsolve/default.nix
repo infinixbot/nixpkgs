@@ -31,10 +31,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     })
   ];
 
-  nativeBuildInputs = [
-    makeWrapper
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ makeWrapper copyDesktopItems ];
 
   installPhase = ''
     runHook preInstall

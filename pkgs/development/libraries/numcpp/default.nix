@@ -18,10 +18,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-1LGyDvT+PiGRXn7NorcYUjSPzNuRv/YXhQWIaOa7xdo=";
   };
 
-  nativeCheckInputs = [
-    gtest
-    python3
-  ];
+  nativeCheckInputs = [ gtest python3 ];
 
   nativeBuildInputs = [ cmake ];
 

@@ -47,18 +47,9 @@ stdenv.mkDerivation (finalAttrs: {
         --replace "[ 'cgl_core', [ 'cgl_core.c' ] ]," ""
     '';
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    utilmacros
-    python3
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config utilmacros python3 ];
 
   buildInputs =
     lib.optionals (x11Support && !stdenv.isDarwin) [

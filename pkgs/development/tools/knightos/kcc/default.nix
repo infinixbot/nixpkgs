@@ -22,11 +22,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    bison
-    cmake
-    flex
-  ];
+  nativeBuildInputs = [ bison cmake flex ];
 
   buildInputs = [ boost ];
 

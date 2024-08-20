@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    boost
-    lua
-  ];
+  buildInputs = [ boost lua ];
 
   postPatch = ''
     # avoid timestamp non-determinism with '-n'

@@ -135,13 +135,7 @@ in
     };
 
     class = mkOption {
-      type = types.nullOr (
-        types.enum [
-          "storage"
-          "transaction"
-          "stateless"
-        ]
-      );
+      type = types.nullOr (types.enum [ "storage" "transaction" "stateless" ]);
       default = null;
       description = "Process class";
     };
@@ -338,10 +332,7 @@ in
     };
 
     traceFormat = mkOption {
-      type = types.enum [
-        "xml"
-        "json"
-      ];
+      type = types.enum [ "xml" "json" ];
       default = "xml";
       description = "Trace logging format.";
     };
@@ -401,12 +392,7 @@ in
 
       serviceConfig =
         let
-          rwpaths = [
-            cfg.dataDir
-            cfg.logDir
-            cfg.pidfile
-            "/etc/foundationdb"
-          ] ++ cfg.extraReadWritePaths;
+          rwpaths = [ cfg.dataDir cfg.logDir cfg.pidfile "/etc/foundationdb" ] ++ cfg.extraReadWritePaths;
         in
         {
           Type = "simple";
@@ -430,10 +416,7 @@ in
           ReadWritePaths = lib.concatStringsSep " " (map (x: "-" + x) rwpaths);
         };
 
-      path = [
-        pkg
-        pkgs.coreutils
-      ];
+      path = [ pkg pkgs.coreutils ];
 
       preStart = ''
         if [ ! -f /etc/foundationdb/fdb.cluster ]; then

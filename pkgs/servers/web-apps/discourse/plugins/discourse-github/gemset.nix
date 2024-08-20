@@ -44,10 +44,7 @@
     version = "0.4.1";
   };
   octokit = {
-    dependencies = [
-      "faraday"
-      "sawyer"
-    ];
+    dependencies = [ "faraday" "sawyer" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -68,10 +65,7 @@
     version = "5.0.5";
   };
   sawyer = {
-    dependencies = [
-      "addressable"
-      "faraday"
-    ];
+    dependencies = [ "addressable" "faraday" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

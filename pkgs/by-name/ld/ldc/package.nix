@@ -84,15 +84,9 @@ stdenv.mkDerivation (finalAttrs: {
       gdb
     ];
 
-  buildInputs = [
-    curl
-    tzdata
-  ];
+  buildInputs = [ curl tzdata ];
 
-  outputs = [
-    "out"
-    "include"
-  ];
+  outputs = [ "out" "include" ];
   outputInclude = "include";
 
   cmakeFlags = [
@@ -159,25 +153,10 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/ldc-developers/ldc";
     changelog = "https://github.com/ldc-developers/ldc/releases/tag/v${finalAttrs.version}";
     # from https://github.com/ldc-developers/ldc/blob/master/LICENSE
-    license = with licenses; [
-      bsd3
-      boost
-      mit
-      ncsa
-      gpl2Plus
-    ];
+    license = with licenses; [ bsd3 boost mit ncsa gpl2Plus ];
     mainProgram = "ldc2";
-    maintainers = with maintainers; [
-      lionello
-      jtbx
-    ];
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-      "aarch64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
+    maintainers = with maintainers; [ lionello jtbx ];
+    platforms = [ "x86_64-linux" "i686-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
   };
 
   passthru.ldcBootstrap = ldcBootstrap;

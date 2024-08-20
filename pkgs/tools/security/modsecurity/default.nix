@@ -31,18 +31,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-hJ8wYeC83dl85bkUXGZKHpHzw9QRgtusj1/+Coxsx0k=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
-  buildInputs = [
-    curl
-    apacheHttpd
-    pcre
-    apr
-    aprutil
-    libxml2
-  ] ++ optional luaSupport lua5;
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
+  buildInputs = [ curl apacheHttpd pcre apr aprutil libxml2 ] ++ optional luaSupport lua5;
 
   configureFlags = [
     "--enable-standalone-module"
@@ -56,10 +46,7 @@ stdenv.mkDerivation rec {
     "--with-lua=${luaValue}"
   ];
 
-  outputs = [
-    "out"
-    "nginx"
-  ];
+  outputs = [ "out" "nginx" ];
   # by default modsecurity's install script copies compiled output to httpd's modules folder
   # this patch removes those lines
   patches = [ ./Makefile.am.patch ];

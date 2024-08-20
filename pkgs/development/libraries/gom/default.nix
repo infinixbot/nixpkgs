@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
   pname = "gom";
   version = "0.4";
 
-  outputs = [
-    "out"
-    "py"
-  ];
+  outputs = [ "out" "py" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";

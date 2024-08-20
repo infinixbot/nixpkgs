@@ -25,16 +25,8 @@ lib.throwIfNot (lib.versionAtLeast ocaml.version "4.07")
       hash = "sha256-ZQgcuIVRkJS0KtpzjbO4OPHGg6B0TadWA6XpRir30y8=";
     };
 
-    nativeBuildInputs = [
-      makeWrapper
-      ocamlbuild
-      findlib
-      ocaml
-    ];
-    propagatedBuildInputs = [
-      zarith
-      num
-    ];
+    nativeBuildInputs = [ makeWrapper ocamlbuild findlib ocaml ];
+    propagatedBuildInputs = [ zarith num ];
 
     installFlags = [ "INSTALL_DIR=$(out)" ];
 
@@ -49,10 +41,7 @@ lib.throwIfNot (lib.versionAtLeast ocaml.version "4.07")
       description = "Tool for lightweight executable mathematics";
       mainProgram = "lem";
       maintainers = with maintainers; [ genericnerdyusername ];
-      license = with licenses; [
-        bsd3
-        gpl2
-      ];
+      license = with licenses; [ bsd3 gpl2 ];
       platforms = ocaml.meta.platforms;
     };
   }

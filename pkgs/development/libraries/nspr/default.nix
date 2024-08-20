@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
     ./0001-Makefile-use-SOURCE_DATE_EPOCH-for-reproducibility.patch
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
   outputBin = "dev";
 
   preConfigure =
@@ -58,10 +55,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "https://firefox-source-docs.mozilla.org/nspr/index.html";
     description = "Netscape Portable Runtime, a platform-neutral API for system-level and libc-like functions";
-    maintainers = with maintainers; [
-      ajs124
-      hexa
-    ];
+    maintainers = with maintainers; [ ajs124 hexa ];
     platforms = platforms.all;
     license = licenses.mpl20;
   };

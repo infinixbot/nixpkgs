@@ -17,13 +17,5 @@ mkKdeDerivation {
   patches = [ ./cmake-install-paths.patch ];
 
   extraNativeBuildInputs = [ pkg-config ];
-  extraBuildInputs = [
-    attr
-    ebook_tools
-    exiv2
-    ffmpeg
-    kconfig
-    kdegraphics-mobipocket
-    libappimage
-  ];
+  extraBuildInputs = [ attr ebook_tools exiv2 ffmpeg kconfig kdegraphics-mobipocket libappimage ];
 }

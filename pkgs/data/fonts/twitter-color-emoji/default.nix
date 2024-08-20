@@ -26,12 +26,7 @@ let
     hash = "sha256-FLOqXDpSFyClBlG5u3IRL0EKeu1mckCfRizJh++IWxo=";
   };
 
-  pythonEnv = python3.withPackages (
-    ps: with ps; [
-      fonttools
-      nototools
-    ]
-  );
+  pythonEnv = python3.withPackages (ps: with ps; [ fonttools nototools ]);
 
 in
 stdenv.mkDerivation rec {
@@ -118,12 +113,7 @@ stdenv.mkDerivation rec {
     ## Non-artwork is MIT
     # In Fedora twitter-twemoji-fonts source
     ## spec files are MIT: https://fedoraproject.org/wiki/Licensing:Main#License_of_Fedora_SPEC_Files
-    license = with licenses; [
-      asl20
-      ofl
-      cc-by-40
-      mit
-    ];
+    license = with licenses; [ asl20 ofl cc-by-40 mit ];
     maintainers = with maintainers; [ emily ];
   };
 }

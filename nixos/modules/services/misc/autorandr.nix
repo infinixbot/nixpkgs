@@ -24,15 +24,7 @@ let
         in
         listOfSize n xss && all (xs: listOfSize m xs && all elemType.check xs) xss;
       merge = mergeOneOption;
-      getSubOptions =
-        prefix:
-        elemType.getSubOptions (
-          prefix
-          ++ [
-            "*"
-            "*"
-          ]
-        );
+      getSubOptions = prefix: elemType.getSubOptions (prefix ++ [ "*" "*" ]);
       getSubModules = elemType.getSubModules;
       substSubModules = mod: matrixOf n m (elemType.substSubModules mod);
       functor = (defaultFunctor name) // {
@@ -115,14 +107,7 @@ let
       };
 
       rotate = mkOption {
-        type = types.nullOr (
-          types.enum [
-            "normal"
-            "left"
-            "right"
-            "inverted"
-          ]
-        );
+        type = types.nullOr (types.enum [ "normal" "left" "right" "inverted" ]);
         description = "Output rotate configuration.";
         default = null;
         example = "left";
@@ -157,10 +142,7 @@ let
           types.submodule {
             options = {
               method = mkOption {
-                type = types.enum [
-                  "factor"
-                  "pixel"
-                ];
+                type = types.enum [ "factor" "pixel" ];
                 description = "Output scaling method.";
                 default = "factor";
                 example = "pixel";

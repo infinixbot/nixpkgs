@@ -35,10 +35,7 @@ let
 
             services.mysqlBackup = {
               enable = true;
-              databases = [
-                "doesnotexist"
-                "testdb"
-              ];
+              databases = [ "doesnotexist" "testdb" ];
             };
           };
       };

@@ -84,10 +84,7 @@ import ./make-test-python.nix (
                 };
                 auths.specifics = {
                   description = "new specifics";
-                  readPermissions = [
-                    "users"
-                    "tasks"
-                  ];
+                  readPermissions = [ "users" "tasks" ];
                   writePermissions = [ "tasks" ];
                   tokenFile = pkgs.writeText "tmp-tok" "newspecificstoken";
                 };

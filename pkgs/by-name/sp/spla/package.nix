@@ -20,11 +20,7 @@
   ),
 }:
 
-assert builtins.elem gpuBackend [
-  "none"
-  "cuda"
-  "rocm"
-];
+assert builtins.elem gpuBackend [ "none" "cuda" "rocm" ];
 
 stdenv.mkDerivation rec {
   pname = "spla";
@@ -37,10 +33,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-fNH1IOKV1Re8G7GH9Xfn3itR80eonTbEGKQRRD16/2k=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   postPatch = ''
     substituteInPlace src/gpu_util/gpu_blas_api.hpp \

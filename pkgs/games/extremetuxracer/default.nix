@@ -31,10 +31,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-+jKFzAx1Wlr/Up8/LOo1FkgRFMa0uOHsB2n+7/BHc+U=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    intltool
-  ];
+  nativeBuildInputs = [ pkg-config intltool ];
   buildInputs = [
     libGLU
     libGL

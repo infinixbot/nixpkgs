@@ -20,10 +20,7 @@ buildGoModule rec {
 
   subPackages = [ "." ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   nativeBuildInputs = [ installShellFiles ];
 
@@ -35,12 +32,7 @@ buildGoModule rec {
     description = "Tool for creating identical machine images for multiple platforms from a single source configuration";
     homepage = "https://www.packer.io";
     license = licenses.bsl11;
-    maintainers = with maintainers; [
-      zimbatm
-      ma27
-      techknowlogick
-      qjoly
-    ];
+    maintainers = with maintainers; [ zimbatm ma27 techknowlogick qjoly ];
     changelog = "https://github.com/hashicorp/packer/blob/v${version}/CHANGELOG.md";
   };
 }

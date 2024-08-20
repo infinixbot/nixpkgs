@@ -30,13 +30,7 @@ stdenv.mkDerivation rec {
   };
 
   depsBuildBuild = [ pkg-config ];
-  nativeBuildInputs = [
-    pkg-config
-    makeWrapper
-    meson
-    ninja
-    wayland-scanner
-  ];
+  nativeBuildInputs = [ pkg-config makeWrapper meson ninja wayland-scanner ];
   buildInputs = [
     libjpeg
     libpng

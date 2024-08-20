@@ -34,10 +34,7 @@ mkDerivation rec {
     qt5.qtdeclarative
   ];
 
-  nativeBuildInputs = [
-    cmake
-    extra-cmake-modules
-  ];
+  nativeBuildInputs = [ cmake extra-cmake-modules ];
 
   meta = with lib; {
     description = "Plasma applet to access passwords from pass, the standard UNIX password manager";

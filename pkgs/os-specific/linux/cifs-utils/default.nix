@@ -21,19 +21,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-De+quFvT6kb/xFq0H7DQrVTQWuLPqn5QPehtTxK8gWE=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    docutils
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook docutils pkg-config ];
 
-  buildInputs = [
-    libkrb5
-    keyutils
-    pam
-    talloc
-    python3
-  ];
+  buildInputs = [ libkrb5 keyutils pam talloc python3 ];
 
   configureFlags =
     [ "ROOTSBINDIR=$(out)/sbin" ]

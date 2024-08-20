@@ -25,11 +25,7 @@ let
     version = "0.1.2";
     sourceRoot = "${src.name}/worker";
 
-    nativeBuildInputs = [
-      meson
-      ninja
-      pkg-config
-    ];
+    nativeBuildInputs = [ meson ninja pkg-config ];
 
     buildInputs = [
       boost

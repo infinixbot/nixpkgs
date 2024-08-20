@@ -28,10 +28,7 @@ stdenv.mkDerivation (finalAttrs: {
     SDL_image
   ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   strictDeps = true;
 

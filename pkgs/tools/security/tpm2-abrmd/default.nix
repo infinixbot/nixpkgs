@@ -32,11 +32,7 @@ stdenv.mkDerivation rec {
     pkg-config
     which
   ];
-  buildInputs = [
-    tpm2-tss
-    glib
-    dbus
-  ];
+  buildInputs = [ tpm2-tss glib dbus ];
   nativeCheckInputs = [ cmocka ];
 
   enableParallelBuilding = true;

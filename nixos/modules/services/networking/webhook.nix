@@ -211,18 +211,8 @@ in
       script =
         let
           args =
-            [
-              "-ip"
-              cfg.ip
-              "-port"
-              (toString cfg.port)
-              "-urlprefix"
-              cfg.urlPrefix
-            ]
-            ++ concatMap (hook: [
-              "-hooks"
-              hook
-            ]) hookFiles
+            [ "-ip" cfg.ip "-port" (toString cfg.port) "-urlprefix" cfg.urlPrefix ]
+            ++ concatMap (hook: [ "-hooks" hook ]) hookFiles
             ++ optional cfg.enableTemplates "-template"
             ++ optional cfg.verbose "-verbose"
             ++ cfg.extraArgs;

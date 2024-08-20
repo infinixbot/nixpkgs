@@ -30,10 +30,7 @@ stdenvNoCC.mkDerivation rec {
   ];
 
   buildInputs = [ jre ];
-  nativeBuildInputs = [
-    makeWrapper
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ makeWrapper copyDesktopItems ];
 
   dontConfigure = true;
   dontBuild = true;

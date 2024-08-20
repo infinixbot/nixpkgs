@@ -147,29 +147,21 @@ in
   };
 
   config = mkMerge (
-    map
-      (
-        flavour:
-        let
-          cfg = config.services.${flavour};
-        in
-        mkIf (cfg.instances != { }) {
-          systemd.services = mapAttrs' (
-            name: instance:
-            nameValuePair "${flavour}-${name}" (createAgentInstance {
-              inherit name instance flavour;
-            })
-          ) cfg.instances;
-        }
-      )
-      [
-        "consul-template"
-        "vault-agent"
-      ]
+    map (
+      flavour:
+      let
+        cfg = config.services.${flavour};
+      in
+      mkIf (cfg.instances != { }) {
+        systemd.services = mapAttrs' (
+          name: instance:
+          nameValuePair "${flavour}-${name}" (createAgentInstance {
+            inherit name instance flavour;
+          })
+        ) cfg.instances;
+      }
+    ) [ "consul-template" "vault-agent" ]
   );
 
-  meta.maintainers = with maintainers; [
-    emilylange
-    tcheronneau
-  ];
+  meta.maintainers = with maintainers; [ emilylange tcheronneau ];
 }

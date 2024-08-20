@@ -37,9 +37,6 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "https://getmail6.org";
     changelog = "https://github.com/getmail6/getmail6/blob/${src.rev}/docs/CHANGELOG";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      abbe
-      dotlambda
-    ];
+    maintainers = with maintainers; [ abbe dotlambda ];
   };
 }

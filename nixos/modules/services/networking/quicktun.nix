@@ -75,12 +75,7 @@ in
               };
 
               protocol = mkOption {
-                type = types.enum [
-                  "raw"
-                  "nacl0"
-                  "nacltai"
-                  "salty"
-                ];
+                type = types.enum [ "raw" "nacl0" "nacltai" "salty" ];
                 default = "nacltai";
                 description = "Which protocol to use.";
               };

@@ -15,12 +15,7 @@ let
   settingsFormat =
     let
       listSep = " ";
-      allowedTypes = with types; [
-        bool
-        int
-        float
-        str
-      ];
+      allowedTypes = with types; [ bool int float str ];
       valueToString =
         val:
         if isList val then
@@ -78,10 +73,7 @@ let
   systemdService = name: extraConfig: configFile: {
     wantedBy = [ "multi-user.target" ];
     wants = [ "network-online.target" ];
-    after = [
-      "network.target"
-      "network-online.target"
-    ];
+    after = [ "network.target" "network-online.target" ];
 
     serviceConfig = {
       Type = "forking";
@@ -254,11 +246,7 @@ in
           (lib.optional cfg.client.enable pkgs.moosefs) ++ (lib.optional cfg.master.enable initTool);
 
         networking.firewall.allowedTCPPorts =
-          (lib.optionals cfg.master.openFirewall [
-            9419
-            9420
-            9421
-          ])
+          (lib.optionals cfg.master.openFirewall [ 9419 9420 9421 ])
           ++ (lib.optional cfg.chunkserver.openFirewall 9422);
 
         # Ensure storage directories exist

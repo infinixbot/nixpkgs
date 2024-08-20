@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
     unzip ${src}
   '';
 
-  makeFlags = [
-    "-f"
-    "makefile.u"
-  ];
+  makeFlags = [ "-f" "makefile.u" ];
 
   installPhase = ''
     mkdir -p $out/include $out/lib

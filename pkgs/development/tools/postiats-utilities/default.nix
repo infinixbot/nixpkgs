@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
     maintainers = [ maintainers.ttuegel ];
   };
 
-  buildInputs = [
-    python3
-    python3Packages.wrapPython
-  ];
+  buildInputs = [ python3 python3Packages.wrapPython ];
 
   postPatch = ''
     for f in pats-* postiats/*.py; do

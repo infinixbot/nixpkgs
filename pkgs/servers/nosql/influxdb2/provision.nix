@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [
-    python3Packages.python
-    python3Packages.influxdb-client
-  ];
+  buildInputs = [ python3Packages.python python3Packages.influxdb-client ];
 
   installPhase = ''
     install -Dm0555 influxdb2-provision.py $out/bin/influxdb2-provision

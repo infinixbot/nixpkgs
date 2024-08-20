@@ -25,15 +25,8 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [
-    gettext
-    perlPackages.perl
-    perlPackages.LocaleGettext
-  ];
-  buildInputs = [
-    perlPackages.LocaleGettext
-    libintl
-  ];
+  nativeBuildInputs = [ gettext perlPackages.perl perlPackages.LocaleGettext ];
+  buildInputs = [ perlPackages.LocaleGettext libintl ];
 
   configureFlags = [
     "--enable-nls"

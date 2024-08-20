@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
   pname = "libportal" + lib.optionalString (variant != null) "-${variant}";
   version = "0.7.1";
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optional (variant != "qt5") "devdoc";
+  outputs = [ "out" "dev" ] ++ lib.optional (variant != "qt5") "devdoc";
 
   src = fetchFromGitHub {
     owner = "flatpak";

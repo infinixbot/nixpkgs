@@ -114,11 +114,7 @@ in
             StateDirectory = "manticore";
             ReadWritePaths = "";
             CapabilityBoundingSet = "";
-            RestrictAddressFamilies = [
-              "AF_UNIX"
-              "AF_INET"
-              "AF_INET6"
-            ];
+            RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
             RestrictNamespaces = true;
             PrivateDevices = true;
             PrivateUsers = true;
@@ -129,10 +125,7 @@ in
             ProtectKernelModules = true;
             ProtectKernelTunables = true;
             SystemCallArchitectures = "native";
-            SystemCallFilter = [
-              "@system-service"
-              "~@privileged"
-            ];
+            SystemCallFilter = [ "@system-service" "~@privileged" ];
             RestrictRealtime = true;
             LockPersonality = true;
             MemoryDenyWriteExecute = true;

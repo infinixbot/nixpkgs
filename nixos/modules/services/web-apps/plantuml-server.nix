@@ -148,11 +148,7 @@ in
         ProtectKernelModules = true;
         ProtectKernelTunables = true;
         ProtectSystem = "strict";
-        RestrictAddressFamilies = [
-          "AF_UNIX"
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
@@ -162,8 +158,5 @@ in
     };
   };
 
-  meta.maintainers = with lib.maintainers; [
-    truh
-    anthonyroussel
-  ];
+  meta.maintainers = with lib.maintainers; [ truh anthonyroussel ];
 }

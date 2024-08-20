@@ -5,13 +5,7 @@
   ...
 }:
 let
-  TCPPorts = [
-    21115
-    21116
-    21117
-    21118
-    21119
-  ];
+  TCPPorts = [ 21115 21116 21117 21118 21119 ];
   UDPPorts = [ 21116 ];
 in
 {
@@ -43,10 +37,7 @@ in
       extraSignalArgs = mkOption {
         type = listOf str;
         default = [ ];
-        example = [
-          "-k"
-          "_"
-        ];
+        example = [ "-k" "_" ];
         description = ''
           A list of extra command line arguments to pass to the `hbbs` process.
         '';
@@ -55,10 +46,7 @@ in
       extraRelayArgs = mkOption {
         type = listOf str;
         default = [ ];
-        example = [
-          "-k"
-          "_"
-        ];
+        example = [ "-k" "_" ];
         description = ''
           A list of extra command line arguments to pass to the `hbbr` process.
         '';

@@ -33,10 +33,7 @@ stdenv.mkDerivation rec {
     description = "ZDoom's internal node builder for DOOM maps";
     mainProgram = "zdbsp";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      lassulus
-      siraben
-    ];
+    maintainers = with maintainers; [ lassulus siraben ];
     platforms = platforms.unix;
   };
 }

@@ -11,15 +11,7 @@
 }:
 
 let
-  packageFlags =
-    [
-      "-p"
-      "nix-doc"
-    ]
-    ++ lib.optionals withPlugin [
-      "-p"
-      "nix-doc-plugin"
-    ];
+  packageFlags = [ "-p" "nix-doc" ] ++ lib.optionals withPlugin [ "-p" "nix-doc-plugin" ];
 in
 rustPlatform.buildRustPackage rec {
   pname = "nix-doc";
@@ -33,15 +25,9 @@ rustPlatform.buildRustPackage rec {
   };
 
   doCheck = true;
-  buildInputs = lib.optionals withPlugin [
-    boost
-    nix
-  ];
+  buildInputs = lib.optionals withPlugin [ boost nix ];
 
-  nativeBuildInputs = lib.optionals withPlugin [
-    pkg-config
-    nix
-  ];
+  nativeBuildInputs = lib.optionals withPlugin [ pkg-config nix ];
 
   cargoBuildFlags = packageFlags;
   cargoTestFlags = packageFlags;

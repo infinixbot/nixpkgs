@@ -59,10 +59,7 @@ stdenv.mkDerivation rec {
     isIbusEngine = true;
     description = "Input method (ibus) for entering unicode symbols and emoji by name";
     homepage = "https://github.com/salty-horse/ibus-uniemoji";
-    license = with licenses; [
-      gpl3
-      mit
-    ];
+    license = with licenses; [ gpl3 mit ];
     platforms = platforms.linux;
     maintainers = with maintainers; [ aske ];
   };

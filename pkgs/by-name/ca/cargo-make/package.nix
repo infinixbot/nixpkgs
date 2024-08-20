@@ -44,10 +44,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/sagiegurari/cargo-make";
     changelog = "https://github.com/sagiegurari/cargo-make/blob/${version}/CHANGELOG.md";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      figsoda
-      xrelkd
-    ];
+    maintainers = with maintainers; [ figsoda xrelkd ];
     mainProgram = "cargo-make";
   };
 }

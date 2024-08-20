@@ -54,9 +54,6 @@ stdenvNoCC.mkDerivation rec {
     homepage = "https://github.com/ful1e5/Bibata_Cursor";
     license = lib.licenses.gpl3Only;
     platforms = lib.platforms.linux;
-    maintainers = with lib.maintainers; [
-      rawkode
-      AdsonCicilioti
-    ];
+    maintainers = with lib.maintainers; [ rawkode AdsonCicilioti ];
   };
 }

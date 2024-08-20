@@ -25,11 +25,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-7VPn5YXNoAR3ftYMDQuQRqeMCrbyB56ir1sQWBiPWAI=";
   };
 
-  nativeBuildInputs = [
-    dos2unix
-    makeWrapper
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ dos2unix makeWrapper copyDesktopItems ];
 
   desktopItems = [
     (makeDesktopItem {
@@ -73,14 +69,7 @@ stdenv.mkDerivation rec {
       --replace 'JOBS=1' "JOBS=$NIX_BUILD_CORES"
   '';
 
-  buildInputs = [
-    libX11
-    libXi
-    libGL
-    curl
-    openal
-    liberation_ttf
-  ];
+  buildInputs = [ libX11 libXi libGL curl openal liberation_ttf ];
 
   installPhase = ''
     runHook preInstall

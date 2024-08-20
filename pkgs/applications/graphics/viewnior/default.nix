@@ -74,10 +74,7 @@ stdenv.mkDerivation rec {
     '';
     license = licenses.gpl3;
     homepage = "https://siyanpanayotov.com/project/viewnior/";
-    maintainers = with maintainers; [
-      smironov
-      artturin
-    ];
+    maintainers = with maintainers; [ smironov artturin ];
     platforms = platforms.gnu ++ platforms.linux;
     mainProgram = "viewnior";
   };

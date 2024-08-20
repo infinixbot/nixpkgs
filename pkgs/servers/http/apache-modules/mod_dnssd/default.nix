@@ -21,11 +21,7 @@ stdenv.mkDerivation rec {
   configureFlags = [ "--disable-lynx" ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    apacheHttpd
-    avahi
-    apr
-  ];
+  buildInputs = [ apacheHttpd avahi apr ];
 
   patches = [
     (fetchpatch {

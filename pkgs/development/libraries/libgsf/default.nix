@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
   pname = "libgsf";
   version = "1.14.52";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.gnome.org";

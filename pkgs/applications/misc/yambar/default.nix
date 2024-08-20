@@ -42,10 +42,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-QCwwMpBYuMWYqxE2ugPFpG/QtZDW7VsSBYs5EqKYejA=";
   };
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   depsBuildBuild = [ pkg-config ];
 

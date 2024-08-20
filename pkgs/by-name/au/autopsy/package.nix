@@ -26,15 +26,8 @@ stdenv.mkDerivation rec {
     sha256 = "32iOQA3+ykltCYW/MpqCVxyhh3mm6eYzY+t0smAsWRw=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    findutils
-  ];
-  buildInputs = [
-    testdisk
-    imagemagick
-    jdkWithJfx
-  ];
+  nativeBuildInputs = [ makeWrapper findutils ];
+  buildInputs = [ testdisk imagemagick jdkWithJfx ];
 
   installPhase = ''
     runHook preInstall
@@ -49,13 +42,7 @@ stdenv.mkDerivation rec {
     wrapProgram $out/bin/autopsy \
       --run 'export SOLR_LOGS_DIR="$HOME/.autopsy/dev/var/log"' \
       --run 'export SOLR_PID_DIR="$HOME/.autopsy/dev"' \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          testdisk
-          imagemagick
-          jdkWithJfx
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ testdisk imagemagick jdkWithJfx ]}"
 
     runHook postInstall
   '';

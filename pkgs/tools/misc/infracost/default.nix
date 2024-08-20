@@ -17,11 +17,7 @@ buildGoModule rec {
   };
   vendorHash = "sha256-bLSj4/+7h0uHdR956VL4iLqRddKV5Ac+FIL1zJxPCW8=";
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X github.com/infracost/infracost/internal/version.Version=v${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X github.com/infracost/infracost/internal/version.Version=v${version}" ];
 
   subPackages = [ "cmd/infracost" ];
 
@@ -71,11 +67,7 @@ buildGoModule rec {
       compare different deployment options upfront.
     '';
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      davegallant
-      jk
-      kashw2
-    ];
+    maintainers = with maintainers; [ davegallant jk kashw2 ];
     mainProgram = "infracost";
   };
 }

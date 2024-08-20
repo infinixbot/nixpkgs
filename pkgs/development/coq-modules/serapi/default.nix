@@ -92,10 +92,7 @@ in
     homepage = "https://github.com/ejgallego/coq-serapi";
     description = "SerAPI is a library for machine-to-machine interaction with the Coq proof assistant";
     license = licenses.lgpl21Plus;
-    maintainers = with maintainers; [
-      alizter
-      Zimmi48
-    ];
+    maintainers = with maintainers; [ alizter Zimmi48 ];
   };
 }).overrideAttrs
   (
@@ -138,12 +135,7 @@ in
             ];
 
         propagatedBuildInputs =
-          o.propagatedBuildInputs
-          ++ (with coq.ocamlPackages; [
-            ppx_deriving_yojson
-            yojson
-            zarith
-          ]) # zarith needed because of Coq
+          o.propagatedBuildInputs ++ (with coq.ocamlPackages; [ ppx_deriving_yojson yojson zarith ]) # zarith needed because of Coq
         ;
       }
     else

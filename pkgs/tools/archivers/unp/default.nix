@@ -12,11 +12,7 @@
 }:
 
 let
-  runtime_bins = [
-    file
-    unzip
-    gzip
-  ] ++ extraBackends;
+  runtime_bins = [ file unzip gzip ] ++ extraBackends;
 
 in
 stdenv.mkDerivation {

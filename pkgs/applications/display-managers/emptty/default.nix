@@ -18,10 +18,7 @@ buildGoModule rec {
     hash = "sha256-9qNAQBmcFKPpJ+AqfOy3emA1fvqI/XaT39KwI5fpXHU=";
   };
 
-  buildInputs = [
-    pam
-    libX11
-  ];
+  buildInputs = [ pam libX11 ];
 
   vendorHash = "sha256-PLyemAUcCz9H7+nAxftki3G7rQoEeyPzY3YUEj2RFn4=";
 

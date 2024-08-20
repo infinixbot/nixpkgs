@@ -28,10 +28,7 @@ let
 
   meta = metaCommon // {
     mainProgram = "trilium";
-    platforms = [
-      "x86_64-linux"
-      "x86_64-darwin"
-    ];
+    platforms = [ "x86_64-linux" "x86_64-darwin" ];
   };
 
   linux = stdenv.mkDerivation rec {

@@ -15,10 +15,7 @@ import ./make-test-python.nix (
     name = "sssd-ldap";
 
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        bbigras
-        s1341
-      ];
+      maintainers = [ bbigras s1341 ];
     };
 
     nodes.machine =
@@ -29,10 +26,7 @@ import ./make-test-python.nix (
         environment.etc."key.pem".text = builtins.readFile ./common/acme/server/acme.test.key.pem;
         services.openldap = {
           enable = true;
-          urlList = [
-            "ldap:///"
-            "ldaps:///"
-          ];
+          urlList = [ "ldap:///" "ldaps:///" ];
           settings = {
             attrs = {
               olcTLSCACertificateFile = "/etc/cert.pem";
@@ -52,10 +46,7 @@ import ./make-test-python.nix (
               ];
               "olcDatabase={1}mdb" = {
                 attrs = {
-                  objectClass = [
-                    "olcDatabaseConfig"
-                    "olcMdbConfig"
-                  ];
+                  objectClass = [ "olcDatabaseConfig" "olcMdbConfig" ];
                   olcDatabase = "{1}mdb";
                   olcDbDirectory = "/var/lib/openldap/db";
                   olcSuffix = dbSuffix;

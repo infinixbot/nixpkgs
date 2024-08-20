@@ -19,10 +19,7 @@ mkDerivation rec {
     sha256 = "sha256-XxQv+A5SfYXFIRK7yacxGHHne1Q93pwCGeHhchIKizU=";
   };
 
-  buildInputs = [
-    qtbase
-    qttools
-  ];
+  buildInputs = [ qtbase qttools ];
 
   nativeBuildInputs = [ cmake ];
 
@@ -41,10 +38,7 @@ mkDerivation rec {
       precisions, unlimited variable storage, intelligent automatic completion
       full keyboard-friendly and more than 15 built-in math function.
     '';
-    maintainers = with maintainers; [
-      gebner
-      j0hax
-    ];
+    maintainers = with maintainers; [ gebner j0hax ];
     inherit (qtbase.meta) platforms;
     broken = stdenv.isDarwin;
   };

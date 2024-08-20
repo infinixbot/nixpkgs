@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-sERY8ZKuXiY85cXdNWOm4byiNU7mOVIeA55dgQJHdoE=";
   };
 
-  outputs = [
-    "out"
-    "apparmor"
-  ];
+  outputs = [ "out" "apparmor" ];
 
   # We don't have the required permissions inside the build sandbox:
   # /build/source/build/ping/ping: socket: Operation not permitted
@@ -44,14 +41,7 @@ stdenv.mkDerivation rec {
     # Disable idn usage w/musl (https://github.com/iputils/iputils/pull/111):
     ++ lib.optional stdenv.hostPlatform.isMusl "-DUSE_IDN=false";
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    gettext
-    libxslt.bin
-    docbook_xsl_ns
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config gettext libxslt.bin docbook_xsl_ns ];
   buildInputs = [ libcap ] ++ lib.optional (!stdenv.hostPlatform.isMusl) libidn2;
   nativeCheckInputs = [ iproute2 ];
 
@@ -91,10 +81,7 @@ stdenv.mkDerivation rec {
       - ping: send ICMP ECHO_REQUEST to network hosts
       - tracepath: traces path to a network host discovering MTU along this path
     '';
-    license = with licenses; [
-      gpl2Plus
-      bsd3
-    ];
+    license = with licenses; [ gpl2Plus bsd3 ];
     platforms = platforms.linux;
     maintainers = with maintainers; [ primeos ];
   };

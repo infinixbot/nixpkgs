@@ -23,16 +23,8 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-sSJAlDe1vBYs1vZW/X04cU14Wj1OF4Jy8oI4uWkrEjk=";
 
-  nativeBuildInputs = [
-    python3
-    pkg-config
-  ];
-  buildInputs = [
-    cairo
-    expat
-    libxkbcommon
-    xorg.xcbutilkeysyms
-  ];
+  nativeBuildInputs = [ python3 pkg-config ];
+  buildInputs = [ cairo expat libxkbcommon xorg.xcbutilkeysyms ];
 
   # For now, this is the only available featureset. This is also why the file is
   # in the i3 folder, even though it might be useful for more than just i3

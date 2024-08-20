@@ -74,10 +74,7 @@ gcc9Stdenv.mkDerivation rec {
     '';
     platforms = platforms.unix;
     badPlatforms = [ "aarch64-darwin" ];
-    maintainers = with maintainers; [
-      aciceri
-      kenran
-    ];
+    maintainers = with maintainers; [ aciceri kenran ];
     license = licenses.gpl3Plus;
   };
 }

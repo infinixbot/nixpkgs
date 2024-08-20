@@ -20,10 +20,7 @@ buildDunePackage rec {
   };
 
   nativeBuildInputs = [ menhir ];
-  propagatedBuildInputs = [
-    menhirLib
-    fmt
-  ];
+  propagatedBuildInputs = [ menhirLib fmt ];
 
   doCheck = true;
 

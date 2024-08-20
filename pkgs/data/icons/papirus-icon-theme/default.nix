@@ -63,9 +63,6 @@ stdenvNoCC.mkDerivation rec {
     license = licenses.gpl3Only;
     # darwin gives hash mismatch in source, probably because of file names differing only in case
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      romildo
-      moni
-    ];
+    maintainers = with maintainers; [ romildo moni ];
   };
 }

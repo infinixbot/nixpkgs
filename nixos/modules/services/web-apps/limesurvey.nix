@@ -33,12 +33,7 @@ let
 
   configType =
     with types;
-    oneOf [
-      (attrsOf configType)
-      str
-      int
-      bool
-    ]
+    oneOf [ (attrsOf configType) str int bool ]
     // {
       description = "limesurvey config type (str, int, bool or attribute set thereof)";
     };
@@ -111,22 +106,14 @@ in
 
     database = {
       type = mkOption {
-        type = types.enum [
-          "mysql"
-          "pgsql"
-          "odbc"
-          "mssql"
-        ];
+        type = types.enum [ "mysql" "pgsql" "odbc" "mssql" ];
         example = "pgsql";
         default = "mysql";
         description = "Database engine to use.";
       };
 
       dbEngine = mkOption {
-        type = types.enum [
-          "MyISAM"
-          "InnoDB"
-        ];
+        type = types.enum [ "MyISAM" "InnoDB" ];
         default = "InnoDB";
         description = "Database storage engine to use.";
       };
@@ -207,13 +194,7 @@ in
     };
 
     poolConfig = mkOption {
-      type =
-        with types;
-        attrsOf (oneOf [
-          str
-          int
-          bool
-        ]);
+      type = with types; attrsOf (oneOf [ str int bool ]);
       default = {
         "pm" = "dynamic";
         "pm.max_children" = 32;

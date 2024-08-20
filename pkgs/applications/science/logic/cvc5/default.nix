@@ -27,11 +27,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-d5F4KwPQ1nwYJbEidQsvqyaGwEugo291SpsJE2rr558=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-    flex
-  ];
+  nativeBuildInputs = [ pkg-config cmake flex ];
   buildInputs = [
     cadical.dev
     symfpu
@@ -41,12 +37,7 @@ stdenv.mkDerivation rec {
     antlr3_4
     boost
     jdk
-    (python3.withPackages (
-      ps: with ps; [
-        pyparsing
-        tomli
-      ]
-    ))
+    (python3.withPackages (ps: with ps; [ pyparsing tomli ]))
   ];
 
   preConfigure = ''

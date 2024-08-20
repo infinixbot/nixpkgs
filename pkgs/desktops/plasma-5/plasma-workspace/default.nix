@@ -75,15 +75,9 @@ in
 
 mkDerivation {
   pname = "plasma-workspace";
-  passthru.providedSessions = [
-    "plasma"
-    "plasmawayland"
-  ];
+  passthru.providedSessions = [ "plasma" "plasmawayland" ];
 
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     isocodes
     libdbusmenu
@@ -148,10 +142,7 @@ mkDerivation {
     libdrm
   ];
   propagatedUserEnvPkgs = [ qtgraphicaleffects ];
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   cmakeFlags = [
     ''-DNIXPKGS_BREEZE_WALLPAPERS=${getBin breeze-qt5}/share/wallpapers''

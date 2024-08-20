@@ -91,11 +91,7 @@ effectiveStdenv.mkDerivation (finalAttrs: {
       WHISPER_CUBLAS = "1";
     };
 
-  makeFlags = [
-    "main"
-    "stream"
-    "command"
-  ];
+  makeFlags = [ "main" "stream" "command" ];
 
   installPhase = ''
     runHook preInstall
@@ -122,9 +118,6 @@ effectiveStdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/ggerganov/whisper.cpp";
     license = licenses.mit;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      dit7ya
-      hughobrien
-    ];
+    maintainers = with maintainers; [ dit7ya hughobrien ];
   };
 })

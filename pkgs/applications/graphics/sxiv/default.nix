@@ -23,12 +23,7 @@ stdenv.mkDerivation rec {
   configFile = lib.optionalString (conf != null) (builtins.toFile "config.def.h" conf);
   preBuild = lib.optionalString (conf != null) "cp ${configFile} config.def.h";
 
-  buildInputs = [
-    libXft
-    imlib2
-    giflib
-    libexif
-  ];
+  buildInputs = [ libXft imlib2 giflib libexif ];
 
   makeFlags = [ "PREFIX=${placeholder "out"}" ];
 

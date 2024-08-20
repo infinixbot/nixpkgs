@@ -20,14 +20,7 @@
 let
   repo = "olvid";
 
-  javafxModules = [
-    "swing"
-    "controls"
-    "media"
-    "fxml"
-    "graphics"
-    "base"
-  ];
+  javafxModules = [ "swing" "controls" "media" "fxml" "graphics" "base" ];
 
   classpath =
     lib.concatMap (mod: [

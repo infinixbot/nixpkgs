@@ -32,12 +32,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-11dXwrwPeiiwLuTVLKnksaoboq/+FrmFhU9TNpQOWtc=";
   };
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "lib" "dev" "man" ];
 
   postPatch =
     ''
@@ -57,27 +52,11 @@ stdenv.mkDerivation rec {
             --replace "kIOMainPortDefault" "kIOMasterPortDefault"
         '';
 
-  nativeBuildInputs = [
-    pkg-config
-    removeReferencesTo
-  ];
+  nativeBuildInputs = [ pkg-config removeReferencesTo ];
 
   buildInputs =
-    [
-      zlib
-      libjpeg
-      libpng
-      libtiff
-      libusb1
-      gnutls
-      libpaper
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      avahi
-      pam
-      dbus
-      acl
-    ]
+    [ zlib libjpeg libpng libtiff libusb1 gnutls libpaper ]
+    ++ lib.optionals stdenv.isLinux [ avahi pam dbus acl ]
     ++ lib.optional enableSystemd systemd
     ++ lib.optionals stdenv.isDarwin (
       with darwin;
@@ -89,10 +68,7 @@ stdenv.mkDerivation rec {
 
   propagatedBuildInputs = [ gmp ];
 
-  configurePlatforms = lib.optionals stdenv.isLinux [
-    "build"
-    "host"
-  ];
+  configurePlatforms = lib.optionals stdenv.isLinux [ "build" "host" ];
   configureFlags =
     [
       "--localstatedir=/var"

@@ -41,11 +41,7 @@ mkDerivation rec {
   meta = with lib; {
     description = "Restic GUI for Desktop/Laptop Backups";
     homepage = "https://git.srcbox.net/stefan/restique";
-    license = with licenses; [
-      gpl3Plus
-      cc-by-sa-40
-      cc0
-    ];
+    license = with licenses; [ gpl3Plus cc-by-sa-40 cc0 ];
     maintainers = with maintainers; [ dotlambda ];
     mainProgram = "restique";
   };

@@ -10,11 +10,7 @@
   stdenv,
 }:
 
-assert lib.elem precision [
-  "single"
-  "double"
-  "long-double"
-];
+assert lib.elem precision [ "single" "double" "long-double" ];
 
 let
   fftw' = fftwMpi.override { inherit precision; };
@@ -29,10 +25,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-/aVY/1fuMRl1Q2O7bmc5M4aA0taGD+fcQgCdhVYr1no=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs = [ autoreconfHook ];
 

@@ -47,16 +47,10 @@ ocamlPackages.buildDunePackage rec {
     $out/share/satysfi
   '';
 
-  nativeBuildInputs = with ocamlPackages; [
-    menhir
-    cppo
-  ];
+  nativeBuildInputs = with ocamlPackages; [ menhir cppo ];
 
   buildInputs =
-    [
-      camlpdf
-      yojson-with-position
-    ]
+    [ camlpdf yojson-with-position ]
     ++ (with ocamlPackages; [
       menhirLib
       batteries

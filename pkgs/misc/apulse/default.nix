@@ -25,15 +25,9 @@ stdenv.mkDerivation rec {
     sha256 = "1p6fh6ah5v3qz7dxhcsixx38bxg44ypbim4m03bxk3ls5i9xslmn";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
-  buildInputs = [
-    alsa-lib
-    glib
-  ];
+  buildInputs = [ alsa-lib glib ];
 
   cmakeFlags = [
     "-DWITH_TRACE=${oz tracingSupport}"

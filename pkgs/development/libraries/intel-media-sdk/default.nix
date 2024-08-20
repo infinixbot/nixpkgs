@@ -38,10 +38,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
   buildInputs = [
     libdrm
     libva
@@ -65,10 +62,7 @@ stdenv.mkDerivation rec {
     description = "Intel Media SDK";
     mainProgram = "mfx-tracer-config";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      midchildan
-      pjungkamp
-    ];
+    maintainers = with maintainers; [ midchildan pjungkamp ];
     platforms = [ "x86_64-linux" ];
   };
 }

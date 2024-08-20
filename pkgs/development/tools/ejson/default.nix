@@ -28,10 +28,7 @@ buildGoModule rec {
 
   nativeBuildInputs = [ gems ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   # set HOME, otherwise bundler will insert stuff in the manpages
   postBuild = ''

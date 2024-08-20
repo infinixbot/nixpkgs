@@ -9,11 +9,7 @@ faust.wrapWithBuildEnv {
 
   baseName = "faust2lv2";
 
-  propagatedBuildInputs = [
-    boost
-    lv2
-    qtbase
-  ];
+  propagatedBuildInputs = [ boost lv2 qtbase ];
 
   dontWrapQtApps = true;
 

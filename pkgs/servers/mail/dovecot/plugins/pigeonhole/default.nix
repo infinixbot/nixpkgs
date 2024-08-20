@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-HKcdJlkHZxIFinIDAojxULKwdrAwZFNHHFJhSY097Sc=";
   };
 
-  buildInputs = [
-    dovecot
-    openssl
-  ];
+  buildInputs = [ dovecot openssl ];
 
   preConfigure = ''
     substituteInPlace src/managesieve/managesieve-settings.c --replace \

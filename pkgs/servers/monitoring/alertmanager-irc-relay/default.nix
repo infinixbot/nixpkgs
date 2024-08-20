@@ -17,10 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-KX+TR0n14+95lldF+0KUo5DbqOKpUDaZNuKMBf0KHFQ=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     description = "Alertmanager IRC Relay is a bot relaying Prometheus alerts to IRC";

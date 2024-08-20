@@ -9,11 +9,7 @@ import ./make-test-python.nix (
   {
     name = "jenkins";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        bjornfor
-        coconnor
-        domenkozar
-      ];
+      maintainers = [ bjornfor coconnor domenkozar ];
     };
 
     nodes = {

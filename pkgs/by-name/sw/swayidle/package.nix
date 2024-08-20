@@ -26,17 +26,8 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    scdoc
-    wayland-scanner
-  ];
-  buildInputs = [
-    wayland
-    wayland-protocols
-  ] ++ lib.optionals systemdSupport [ systemd ];
+  nativeBuildInputs = [ meson ninja pkg-config scdoc wayland-scanner ];
+  buildInputs = [ wayland wayland-protocols ] ++ lib.optionals systemdSupport [ systemd ];
 
   mesonFlags = [
     "-Dman-pages=enabled"

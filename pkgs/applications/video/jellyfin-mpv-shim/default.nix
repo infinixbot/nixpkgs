@@ -93,12 +93,7 @@ buildPythonApplication rec {
       exec = pname;
       icon = pname;
       desktopName = "Jellyfin MPV Shim";
-      categories = [
-        "Video"
-        "AudioVideo"
-        "TV"
-        "Player"
-      ];
+      categories = [ "Video" "AudioVideo" "TV" "Player" ];
     })
   ];
 

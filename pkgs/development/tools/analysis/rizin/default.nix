@@ -146,11 +146,7 @@ let
       homepage = "https://rizin.re/";
       license = lib.licenses.gpl3Plus;
       mainProgram = "rizin";
-      maintainers = with lib.maintainers; [
-        raskin
-        makefu
-        mic92
-      ];
+      maintainers = with lib.maintainers; [ raskin makefu mic92 ];
       platforms = with lib.platforms; unix;
     };
   };

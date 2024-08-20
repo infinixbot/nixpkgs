@@ -19,15 +19,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-RDKAuLwcZ3Pbn5JUDmGBcfD0xbM6Jud2ouXh/YKpfS8=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
-  buildInputs = [
-    nix
-    boost
-  ];
+  buildInputs = [ nix boost ];
 
   meta = {
     description = "Collection of miscellaneous plugins for the nix expression language";

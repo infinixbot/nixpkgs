@@ -43,11 +43,6 @@ buildGoModule rec {
     description = "Prometheus exporter for PostgreSQL";
     mainProgram = "postgres_exporter";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      fpletz
-      globin
-      willibutz
-      ma27
-    ];
+    maintainers = with maintainers; [ fpletz globin willibutz ma27 ];
   };
 }

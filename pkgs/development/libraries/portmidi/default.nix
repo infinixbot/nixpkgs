@@ -42,10 +42,7 @@ stdenv.mkDerivation rec {
       ln -s libportmidi${ext} "$out/lib/libporttime${ext}"
     '';
 
-  nativeBuildInputs = [
-    unzip
-    cmake
-  ];
+  nativeBuildInputs = [ unzip cmake ];
   buildInputs =
     lib.optionals stdenv.isLinux [
       alsa-lib

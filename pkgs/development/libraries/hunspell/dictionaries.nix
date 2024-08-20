@@ -67,21 +67,11 @@ let
       meta = with lib; {
         description = "Hunspell dictionary for ${shortDescription} from rla";
         homepage = "https://github.com/sbosio/rla-es";
-        license = with licenses; [
-          gpl3
-          lgpl3
-          mpl11
-        ];
+        license = with licenses; [ gpl3 lgpl3 mpl11 ];
         maintainers = with maintainers; [ renzo ];
         platforms = platforms.all;
       };
-      nativeBuildInputs = [
-        bash
-        coreutils
-        which
-        zip
-        unzip
-      ];
+      nativeBuildInputs = [ bash coreutils which zip unzip ];
       postPatch = ''
         substituteInPlace ortograf/herramientas/make_dict.sh \
            --replace /bin/bash ${bash}/bin/bash \
@@ -300,11 +290,7 @@ let
         sha256 = "1a3055hp2bc4q4nlg3gmg0147p3a1zlfnc65xiv2v9pyql1nya8p";
       };
 
-      nativeBuildInputs = [
-        ispell
-        perl
-        hunspell
-      ];
+      nativeBuildInputs = [ ispell perl hunspell ];
 
       dontBuild = true;
 
@@ -324,10 +310,7 @@ let
       meta = with lib; {
         homepage = "https://www.j3e.de/ispell/igerman98/index_en.html";
         description = shortDescription;
-        license = with licenses; [
-          gpl2
-          gpl3
-        ];
+        license = with licenses; [ gpl2 gpl3 ];
         maintainers = with maintainers; [ timor ];
         platforms = platforms.all;
       };
@@ -724,10 +707,7 @@ rec {
     shortName = "hu-hu";
     dictFileName = "hu_HU";
     shortDescription = "Hungarian (Hungary)";
-    license = with lib.licenses; [
-      mpl20
-      lgpl3
-    ];
+    license = with lib.licenses; [ mpl20 lgpl3 ];
   };
 
   # SWEDISH
@@ -806,10 +786,7 @@ rec {
     shortName = "ru-ru";
     dictFileName = "ru_RU";
     shortDescription = "Russian (Russian)";
-    license = with lib.licenses; [
-      mpl20
-      lgpl3
-    ];
+    license = with lib.licenses; [ mpl20 lgpl3 ];
   };
 
   # CZECH
@@ -831,11 +808,7 @@ rec {
     dictFileName = "sk_SK";
     shortDescription = "Slovak (Slovakia)";
     readmeFile = "README_sk.txt";
-    license = with lib.licenses; [
-      gpl2
-      lgpl21
-      mpl11
-    ];
+    license = with lib.licenses; [ gpl2 lgpl21 mpl11 ];
   };
 
   # DANISH
@@ -862,11 +835,7 @@ rec {
     meta = with lib; {
       description = "Hunspell dictionary for Danish (Denmark) from Stavekontrolden";
       homepage = "https://github.com/jeppebundsgaard/stavekontrolden";
-      license = with lib.licenses; [
-        gpl2Only
-        lgpl21Only
-        mpl11
-      ];
+      license = with lib.licenses; [ gpl2Only lgpl21Only mpl11 ];
       maintainers = with maintainers; [ louisdk1 ];
     };
   };
@@ -946,11 +915,7 @@ rec {
     dictFileName = "hr_HR";
     shortDescription = "Croatian (Croatia)";
     readmeFile = "README_hr_HR.txt";
-    license = with lib.licenses; [
-      gpl2Only
-      lgpl21Only
-      mpl11
-    ];
+    license = with lib.licenses; [ gpl2Only lgpl21Only mpl11 ];
   };
 
   # NORWEGIAN
@@ -993,12 +958,7 @@ rec {
     meta = with lib; {
       description = "Hunspell dictionary for Toki Pona";
       homepage = "https://github.com/somasis/hunspell-tok";
-      license = with lib.licenses; [
-        cc0
-        publicDomain
-        cc-by-sa-30
-        cc-by-sa-40
-      ];
+      license = with lib.licenses; [ cc0 publicDomain cc-by-sa-30 cc-by-sa-40 ];
       maintainers = with maintainers; [ somasis ];
       platforms = platforms.all;
     };
@@ -1013,13 +973,7 @@ rec {
     shortDescription = "Polish (Poland)";
     readmeFile = "README_en.txt";
     # the README doesn't specify versions of licenses :/
-    license = with lib.licenses; [
-      gpl2Plus
-      lgpl2Plus
-      mpl10
-      asl20
-      cc-by-sa-25
-    ];
+    license = with lib.licenses; [ gpl2Plus lgpl2Plus mpl10 asl20 cc-by-sa-25 ];
   };
 
   # PORTUGUESE
@@ -1039,11 +993,7 @@ rec {
     dictFileName = "pt_PT";
     shortDescription = "Portuguese (Portugal)";
     readmeFile = "README_pt_PT.txt";
-    license = with lib.licenses; [
-      gpl2
-      lgpl21
-      mpl11
-    ];
+    license = with lib.licenses; [ gpl2 lgpl21 mpl11 ];
   };
 
   # PERSIAN
@@ -1141,10 +1091,6 @@ rec {
     dictFileName = "el_GR";
     shortDescription = "Greek (Greece)";
     readmeFile = "README_el_GR.txt";
-    license = with lib.licenses; [
-      mpl11
-      gpl2
-      lgpl21
-    ];
+    license = with lib.licenses; [ mpl11 gpl2 lgpl21 ];
   };
 }

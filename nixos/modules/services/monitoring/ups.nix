@@ -247,12 +247,7 @@ let
     };
 
     config = {
-      enable = mkDefault (
-        elem cfg.mode [
-          "standalone"
-          "netserver"
-        ]
-      );
+      enable = mkDefault (elem cfg.mode [ "standalone" "netserver" ]);
     };
   };
 
@@ -353,26 +348,14 @@ let
     };
 
     config = {
-      enable = mkDefault (
-        elem cfg.mode [
-          "standalone"
-          "netserver"
-          "netclient"
-        ]
-      );
+      enable = mkDefault (elem cfg.mode [ "standalone" "netserver" "netclient" ]);
       settings = {
         RUN_AS_USER = "root"; # TODO: replace 'root' by another username.
         MINSUPPLIES = mkDefault 1;
         NOTIFYCMD = mkDefault "${pkgs.nut}/bin/upssched";
         SHUTDOWNCMD = mkDefault "${pkgs.systemd}/bin/shutdown now";
         MONITOR = flip mapAttrsToList cfg.upsmon.monitor (
-          name: monitor: with monitor; [
-            system
-            powerValue
-            user
-            "\"@upsmon_password_${name}@\""
-            type
-          ]
+          name: monitor: with monitor; [ system powerValue user "\"@upsmon_password_${name}@\"" type ]
         );
       };
     };
@@ -431,12 +414,7 @@ in
 
       mode = mkOption {
         default = "standalone";
-        type = types.enum [
-          "none"
-          "standalone"
-          "netserver"
-          "netclient"
-        ];
+        type = types.enum [ "none" "standalone" "netserver" "netclient" ];
         description = ''
           The MODE determines which part of the NUT is to be started, and
           which configuration files must be modified.
@@ -585,10 +563,7 @@ in
       {
         enable = cfg.upsd.enable;
         description = "Uninterruptible Power Supplies (Daemon)";
-        after = [
-          "network.target"
-          "upsmon.service"
-        ];
+        after = [ "network.target" "upsmon.service" ];
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
           Type = "forking";

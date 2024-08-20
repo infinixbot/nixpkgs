@@ -22,10 +22,7 @@ buildGoModule rec {
 
   vendorHash = null;
 
-  nativeBuildInputs = [
-    installShellFiles
-    makeWrapper
-  ];
+  nativeBuildInputs = [ installShellFiles makeWrapper ];
 
   buildInputs = [ git ];
 
@@ -80,11 +77,7 @@ buildGoModule rec {
     description = "Generic, high-level git support for git-flow workflows";
     homepage = "https://www.git-town.com/";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      allonsy
-      blaggacao
-      gabyx
-    ];
+    maintainers = with maintainers; [ allonsy blaggacao gabyx ];
     mainProgram = "git-town";
   };
 }

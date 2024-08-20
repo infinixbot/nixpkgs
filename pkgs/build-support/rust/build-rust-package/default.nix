@@ -121,11 +121,7 @@ in
 assert useSysroot -> !(args.doCheck or true);
 
 stdenv.mkDerivation (
-  (removeAttrs args [
-    "depsExtraArgs"
-    "cargoUpdateHook"
-    "cargoLock"
-  ])
+  (removeAttrs args [ "depsExtraArgs" "cargoUpdateHook" "cargoLock" ])
   // lib.optionalAttrs useSysroot {
     RUSTFLAGS = "--sysroot ${sysroot} " + (args.RUSTFLAGS or "");
   }

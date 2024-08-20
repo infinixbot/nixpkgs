@@ -21,15 +21,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-Oaz5LX4R0vriURueQNklZ1dx1r8SWDaeK8oaUadlGtI=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
   buildInputs = [ gnutls ];
 
   configureFlags = [ "--with-gnutls=yes" ];

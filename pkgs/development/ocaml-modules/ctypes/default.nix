@@ -22,10 +22,7 @@ buildDunePackage rec {
 
   buildInputs = [ dune-configurator ];
 
-  propagatedBuildInputs = [
-    integers
-    bigarray-compat
-  ];
+  propagatedBuildInputs = [ integers bigarray-compat ];
 
   doCheck = lib.versionAtLeast ocaml.version "4.08";
   checkInputs = [ ounit2 ];

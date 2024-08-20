@@ -150,9 +150,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://wezfurlong.org/wezterm";
     license = licenses.mit;
     mainProgram = "wezterm";
-    maintainers = with maintainers; [
-      SuperSandro2000
-      mimame
-    ];
+    maintainers = with maintainers; [ SuperSandro2000 mimame ];
   };
 }

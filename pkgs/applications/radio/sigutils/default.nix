@@ -36,9 +36,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/BatchDrake/sigutils";
     license = licenses.gpl3;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      polygon
-      oxapentane
-    ];
+    maintainers = with maintainers; [ polygon oxapentane ];
   };
 }

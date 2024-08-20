@@ -59,15 +59,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    intltool
-    libxslt
-    libxml2
-    autoreconfHook
-    wrapGAppsHook3
-    vala
-  ];
+  nativeBuildInputs = [ pkg-config intltool libxslt libxml2 autoreconfHook wrapGAppsHook3 vala ];
 
   buildInputs = [
     glib
@@ -81,10 +73,7 @@ stdenv.mkDerivation rec {
     gtk2
   ];
 
-  propagatedBuildInputs = [
-    libgee
-    libxklavier
-  ];
+  propagatedBuildInputs = [ libgee libxklavier ];
 
   postPatch = ''
     patchShebangs .

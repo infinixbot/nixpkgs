@@ -25,12 +25,7 @@ buildGoModule rec {
   nativeBuildInputs = [ makeWrapper ];
 
   postInstall = ''
-    wrapProgram "$out/bin/fwanalyzer" --prefix PATH : "${
-      lib.makeBinPath [
-        e2tools
-        mtools
-      ]
-    }"
+    wrapProgram "$out/bin/fwanalyzer" --prefix PATH : "${lib.makeBinPath [ e2tools mtools ]}"
   '';
 
   # The tests requires an additional setup (unpacking images, etc.)

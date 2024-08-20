@@ -26,10 +26,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-ayFdT0crIdYjLzDyIRF6d34kvP7miVXd77dCZGf5SUs=";
   };
 
-  outputs = [
-    "out"
-    "terminfo"
-  ];
+  outputs = [ "out" "terminfo" ];
 
   inherit patches;
 

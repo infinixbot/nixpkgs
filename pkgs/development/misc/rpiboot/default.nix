@@ -36,10 +36,7 @@ stdenv.mkDerivation rec {
     description = "Utility to boot a Raspberry Pi CM/CM3/CM4/Zero over USB";
     mainProgram = "rpiboot";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      cartr
-      flokli
-    ];
+    maintainers = with maintainers; [ cartr flokli ];
     platforms = [
       "aarch64-linux"
       "aarch64-darwin"

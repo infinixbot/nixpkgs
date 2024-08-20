@@ -41,11 +41,7 @@ stdenv.mkDerivation rec {
     sha256 = "0rb927zknk9kmhprd8rdr4azql4gn2dp75a36iazx2xhkbqhvind";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
   # std::unary_function has been removed in c++17
   makeFlags = [ "CXXFLAGS=-std=c++11" ];

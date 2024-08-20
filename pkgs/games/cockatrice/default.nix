@@ -30,10 +30,7 @@ mkDerivation rec {
     qtwebsockets
   ];
 
-  nativeBuildInputs = [
-    cmake
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake wrapQtAppsHook ];
 
   meta = {
     homepage = "https://github.com/Cockatrice/Cockatrice";

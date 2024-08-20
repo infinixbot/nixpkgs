@@ -247,14 +247,7 @@ rec {
     postInstall = ''
       for f in extrakto.sh open.sh tmux-extrakto.sh; do
         wrapProgram $target/scripts/$f \
-          --prefix PATH : ${
-            with pkgs;
-            lib.makeBinPath ([
-              pkgs.fzf
-              pkgs.python3
-              pkgs.xclip
-            ])
-          }
+          --prefix PATH : ${with pkgs; lib.makeBinPath ([ pkgs.fzf pkgs.python3 pkgs.xclip ])}
       done
 
     '';
@@ -277,11 +270,7 @@ rec {
       rev = "${version}";
       sha256 = "sha256-1YMh6m8M6FKf8RPXsOfWCVC5CXSr/MynguwkG7O+oEY=";
     };
-    nativeBuildInputs = [
-      pkgs.makeWrapper
-      pkgs.crystal
-      pkgs.shards
-    ];
+    nativeBuildInputs = [ pkgs.makeWrapper pkgs.crystal pkgs.shards ];
     postInstall = ''
       shards build --production
       rm -rf $target/* $target/.*
@@ -325,15 +314,7 @@ rec {
       for f in fuzzback.sh preview.sh supported.sh; do
         chmod +x $target/scripts/$f
         wrapProgram $target/scripts/$f \
-          --prefix PATH : ${
-            with pkgs;
-            lib.makeBinPath [
-              coreutils
-              fzf
-              gawk
-              gnused
-            ]
-          }
+          --prefix PATH : ${with pkgs; lib.makeBinPath [ coreutils fzf gawk gnused ]}
       done
     '';
     meta = {
@@ -695,16 +676,7 @@ rec {
       done
       substituteInPlace $target/session-wizard.tmux --replace  \$CURRENT_DIR $target
       wrapProgram $target/bin/t \
-        --prefix PATH : ${
-          with pkgs;
-          lib.makeBinPath ([
-            fzf
-            zoxide
-            coreutils
-            gnugrep
-            gnused
-          ])
-        }
+        --prefix PATH : ${with pkgs; lib.makeBinPath ([ fzf zoxide coreutils gnugrep gnused ])}
     '';
   };
 
@@ -862,13 +834,7 @@ rec {
     nativeBuildInputs = [ pkgs.makeWrapper ];
     postInstall = ''
       wrapProgram $out/share/tmux-plugins/t-smart-tmux-session-manager/bin/t \
-          --prefix PATH : ${
-            with pkgs;
-            lib.makeBinPath ([
-              pkgs.fzf
-              pkgs.zoxide
-            ])
-          }
+          --prefix PATH : ${with pkgs; lib.makeBinPath ([ pkgs.fzf pkgs.zoxide ])}
 
       find $target -type f -print0 | xargs -0 sed -i -e 's|fzf |${pkgs.fzf}/bin/fzf |g'
       find $target -type f -print0 | xargs -0 sed -i -e 's|zoxide |${pkgs.zoxide}/bin/zoxide |g'

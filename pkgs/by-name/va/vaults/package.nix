@@ -47,12 +47,7 @@ stdenv.mkDerivation rec {
 
   preFixup = ''
     gappsWrapperArgs+=(
-      --prefix PATH : "${
-        lib.makeBinPath [
-          gocryptfs
-          cryfs
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ gocryptfs cryfs ]}"
     )
   '';
 

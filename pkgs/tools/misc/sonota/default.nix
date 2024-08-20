@@ -38,11 +38,7 @@ buildPythonApplication rec {
 
   format = "other";
 
-  propagatedBuildInputs = [
-    httplib2
-    netifaces
-    tornado
-  ];
+  propagatedBuildInputs = [ httplib2 netifaces tornado ];
 
   installPhase = ''
     runHook preInstall

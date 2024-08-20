@@ -40,15 +40,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-l3cKsR8HSdtFGw1S12xueQOu/U9ABlOxQQtbHBj2izs=";
   };
 
-  buildInputs = [
-    zeroc_mcpp
-    bzip2
-    expat
-    libedit
-    lmdb
-    openssl
-    libxcrypt
-  ];
+  buildInputs = [ zeroc_mcpp bzip2 expat libedit lmdb openssl libxcrypt ];
 
   preBuild = ''
     makeFlagsArray+=(
@@ -63,11 +55,7 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  outputs = [
-    "out"
-    "bin"
-    "dev"
-  ];
+  outputs = [ "out" "bin" "dev" ];
 
   doCheck = true;
   nativeCheckInputs = with python3.pkgs; [ passlib ];

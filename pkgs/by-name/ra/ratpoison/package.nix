@@ -49,13 +49,7 @@ stdenv.mkDerivation (finalAttrs: {
     xorgproto
   ];
 
-  outputs = [
-    "out"
-    "contrib"
-    "man"
-    "doc"
-    "info"
-  ];
+  outputs = [ "out" "contrib" "man" "doc" "info" ];
 
   strictDeps = true;
 

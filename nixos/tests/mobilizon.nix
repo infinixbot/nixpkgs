@@ -8,10 +8,7 @@ import ./make-test-python.nix (
 
   {
     name = "mobilizon";
-    meta.maintainers = with lib.maintainers; [
-      minijackson
-      erictapen
-    ];
+    meta.maintainers = with lib.maintainers; [ minijackson erictapen ];
 
     nodes.server =
       { ... }:

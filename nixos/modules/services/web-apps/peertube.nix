@@ -144,10 +144,7 @@ in
     dataDirs = lib.mkOption {
       type = lib.types.listOf lib.types.path;
       default = [ ];
-      example = [
-        "/opt/peertube/storage"
-        "/var/cache/peertube"
-      ];
+      example = [ "/opt/peertube/storage" "/var/cache/peertube" ];
       description = "Allow access to custom data locations.";
     };
 
@@ -436,10 +433,7 @@ in
 
     systemd.services.peertube-init-db = lib.mkIf cfg.database.createLocally {
       description = "Initialization database for PeerTube daemon";
-      after = [
-        "network.target"
-        "postgresql.service"
-      ];
+      after = [ "network.target" "postgresql.service" ];
       requires = [ "postgresql.service" ];
 
       script =
@@ -473,26 +467,15 @@ in
       after =
         [ "network.target" ]
         ++ lib.optional cfg.redis.createLocally "redis-peertube.service"
-        ++ lib.optionals cfg.database.createLocally [
-          "postgresql.service"
-          "peertube-init-db.service"
-        ];
+        ++ lib.optionals cfg.database.createLocally [ "postgresql.service" "peertube-init-db.service" ];
       requires =
         lib.optional cfg.redis.createLocally "redis-peertube.service"
-        ++ lib.optionals cfg.database.createLocally [
-          "postgresql.service"
-          "peertube-init-db.service"
-        ];
+        ++ lib.optionals cfg.database.createLocally [ "postgresql.service" "peertube-init-db.service" ];
       wantedBy = [ "multi-user.target" ];
 
       environment = env;
 
-      path = with pkgs; [
-        nodejs_18
-        yarn
-        ffmpeg-headless
-        openssl
-      ];
+      path = with pkgs; [ nodejs_18 yarn ffmpeg-headless openssl ];
 
       script = ''
         #!/bin/sh
@@ -543,19 +526,10 @@ in
         # Environment
         EnvironmentFile = cfg.serviceEnvironmentFile;
         # Sandboxing
-        RestrictAddressFamilies = [
-          "AF_UNIX"
-          "AF_INET"
-          "AF_INET6"
-          "AF_NETLINK"
-        ];
+        RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" "AF_NETLINK" ];
         MemoryDenyWriteExecute = false;
         # System Call Filtering
-        SystemCallFilter = [
-          ("~" + lib.concatStringsSep " " systemCallsList)
-          "pipe"
-          "pipe2"
-        ];
+        SystemCallFilter = [ ("~" + lib.concatStringsSep " " systemCallsList) "pipe" "pipe2" ];
       } // cfgService;
     };
 
@@ -938,18 +912,12 @@ in
           home = cfg.package;
         };
       })
-      (lib.attrsets.setAttrByPath
-        [
-          cfg.user
-          "packages"
-        ]
-        [
-          peertubeEnv
-          pkgs.nodejs_18
-          pkgs.yarn
-          pkgs.ffmpeg-headless
-        ]
-      )
+      (lib.attrsets.setAttrByPath [ cfg.user "packages" ] [
+        peertubeEnv
+        pkgs.nodejs_18
+        pkgs.yarn
+        pkgs.ffmpeg-headless
+      ])
       (lib.mkIf cfg.redis.enableUnixSocket {
         ${config.services.peertube.user}.extraGroups = [ "redis-peertube" ];
       })

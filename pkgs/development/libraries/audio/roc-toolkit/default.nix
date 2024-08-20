@@ -26,10 +26,7 @@ stdenv.mkDerivation rec {
   pname = "roc-toolkit";
   version = "0.4.0";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "roc-streaming";

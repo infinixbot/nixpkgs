@@ -27,16 +27,9 @@ stdenv.mkDerivation {
   };
   patches = [ ./fixbuild.patch ];
 
-  nativeBuildInputs = [
-    rpmextract
-    autoreconfHook
-    file
-  ];
+  nativeBuildInputs = [ rpmextract autoreconfHook file ];
 
-  buildInputs = [
-    libjpeg
-    cups
-  ];
+  buildInputs = [ libjpeg cups ];
 
   unpackPhase = ''
     rpmextract $src
@@ -76,10 +69,7 @@ stdenv.mkDerivation {
           drivers = [ pkgs.epson-201401w ];
         };
     '';
-    license = with licenses; [
-      lgpl21
-      epson
-    ];
+    license = with licenses; [ lgpl21 epson ];
     platforms = platforms.linux;
     maintainers = [ maintainers.lunarequest ];
   };

@@ -17,11 +17,7 @@ stdenv.mkDerivation {
   sourceRoot = "${looking-glass-client.src.name}/obs";
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    obs-studio
-    libbfd
-    SDL2
-  ];
+  buildInputs = [ obs-studio libbfd SDL2 ];
 
   env.NIX_CFLAGS_COMPILE = "-mavx";
 

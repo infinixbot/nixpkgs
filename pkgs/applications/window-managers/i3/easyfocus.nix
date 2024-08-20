@@ -23,14 +23,7 @@ stdenv.mkDerivation {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libxcb
-    xcbutilkeysyms
-    xorgproto
-    xorg.libX11.dev
-    i3ipc-glib
-    glib.dev
-  ];
+  buildInputs = [ libxcb xcbutilkeysyms xorgproto xorg.libX11.dev i3ipc-glib glib.dev ];
 
   # Makefile has no rule for 'install'
   installPhase = ''

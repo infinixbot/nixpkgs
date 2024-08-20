@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    fuse
-    attr
-    uthash
-  ];
+  buildInputs = [ fuse attr uthash ];
 
   patches = [
     ./fix-format-security-error.patch

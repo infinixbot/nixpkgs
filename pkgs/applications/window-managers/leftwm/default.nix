@@ -7,10 +7,7 @@
 }:
 
 let
-  rpathLibs = [
-    libXinerama
-    libX11
-  ];
+  rpathLibs = [ libXinerama libX11 ];
 in
 
 rustPlatform.buildRustPackage rec {

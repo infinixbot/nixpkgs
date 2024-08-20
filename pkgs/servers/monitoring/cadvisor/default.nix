@@ -20,11 +20,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-LEtiJC3L6Q7MZH2gvpR9y2Zn9vig+9mWlRyVuKY3rsA=";
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X github.com/google/cadvisor/version.Version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X github.com/google/cadvisor/version.Version=${version}" ];
 
   postInstall = ''
     mv $out/bin/{cmd,cadvisor}

@@ -44,21 +44,10 @@ rustPlatform.buildRustPackage {
     ++ lib.optionals stdenv.isDarwin [ rustPlatform.bindgenHook ];
 
   buildInputs =
-    [
-      openssl
-      zstd
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      zlib
-      Libsystem
-      Security
-    ]
+    [ openssl zstd ]
+    ++ lib.optionals stdenv.isDarwin [ zlib Libsystem Security ]
     ++ lib.optionals (withDefaultFeatures && stdenv.isLinux) [ xorg.libX11 ]
-    ++ lib.optionals (withDefaultFeatures && stdenv.isDarwin) [
-      AppKit
-      nghttp2
-      libgit2
-    ];
+    ++ lib.optionals (withDefaultFeatures && stdenv.isDarwin) [ AppKit nghttp2 libgit2 ];
 
   buildNoDefaultFeatures = !withDefaultFeatures;
   buildFeatures = additionalFeatures [ ];
@@ -93,11 +82,7 @@ rustPlatform.buildRustPackage {
     description = "Modern shell written in Rust";
     homepage = "https://www.nushell.sh/";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      Br1ght0ne
-      johntitor
-      joaquintrinanes
-    ];
+    maintainers = with maintainers; [ Br1ght0ne johntitor joaquintrinanes ];
     mainProgram = "nu";
   };
 }

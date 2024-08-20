@@ -25,10 +25,7 @@ buildPythonApplication {
   '';
 
   buildInputs = [ libusb1 ];
-  propagatedBuildInputs = [
-    psutil
-    python3Packages.libusb1
-  ];
+  propagatedBuildInputs = [ psutil python3Packages.libusb1 ];
   doCheck = false;
   pythonImportsCheck = [ "steamcontroller" ];
 

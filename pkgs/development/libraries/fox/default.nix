@@ -23,18 +23,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-bu+IEqNkv9OAf96dPYre3CP759pjalVIbYyc3QSQW2w=";
   };
 
-  buildInputs = [
-    libpng
-    libjpeg
-    libtiff
-    zlib
-    bzip2
-    mesa_glu
-    libXcursor
-    libXext
-    libXrandr
-    libXft
-  ];
+  buildInputs = [ libpng libjpeg libtiff zlib bzip2 mesa_glu libXcursor libXext libXrandr libXft ];
 
   doCheck = true;
 

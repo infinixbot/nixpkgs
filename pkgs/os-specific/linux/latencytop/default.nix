@@ -31,11 +31,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    ncurses
-    glib
-    gtk2
-  ];
+  buildInputs = [ ncurses glib gtk2 ];
 
   meta = {
     homepage = "http://latencytop.org";

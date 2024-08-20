@@ -150,9 +150,6 @@ effectiveStdenv.mkDerivation rec {
     license = licenses.asl20;
     mainProgram = "xgboost";
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      abbradar
-      nviets
-    ];
+    maintainers = with maintainers; [ abbradar nviets ];
   };
 }

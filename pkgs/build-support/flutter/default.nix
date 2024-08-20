@@ -220,10 +220,7 @@ let
     .${targetFlutterPlatform} or (throw "Unsupported Flutter host platform: ${targetFlutterPlatform}");
 
   minimalFlutter = flutter.override {
-    supportedTargetFlutterPlatforms = [
-      "universal"
-      targetFlutterPlatform
-    ];
+    supportedTargetFlutterPlatforms = [ "universal" targetFlutterPlatform ];
   };
 
   buildAppWith = flutter: buildDartApplication.override { dart = flutter; };

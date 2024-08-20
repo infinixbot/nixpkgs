@@ -41,8 +41,5 @@ in
     };
   };
 
-  meta.maintainers = with lib.maintainers; [
-    vancluever
-    AndersonTorres
-  ];
+  meta.maintainers = with lib.maintainers; [ vancluever AndersonTorres ];
 }

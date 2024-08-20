@@ -33,11 +33,7 @@ let
     # which is not available in the current environment.
   '';
   # `cacert` is required for tls connections
-  nativeBuildInputs = [
-    curl
-    cacert
-    tectonic
-  ];
+  nativeBuildInputs = [ curl cacert tectonic ];
   checkInternet = ''
     if curl --head "bing.com"; then
       set -e # continue to the tests defined below, fail on error

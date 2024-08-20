@@ -51,12 +51,7 @@ let
           qt5.qttools
         ] ++ (overrides.nativeBuildInputs or [ ]);
 
-        buildInputs = [
-          avahi
-          boost
-          poco
-          protobuf
-        ] ++ (overrides.buildInputs or [ ]);
+        buildInputs = [ avahi boost poco protobuf ] ++ (overrides.buildInputs or [ ]);
 
         cmakeFlags = [
           "-D g15=OFF"
@@ -74,10 +69,7 @@ let
           mainProgram = "mumble-server";
           homepage = "https://mumble.info";
           license = licenses.bsd3;
-          maintainers = with maintainers; [
-            felixsinger
-            lilacious
-          ];
+          maintainers = with maintainers; [ felixsinger lilacious ];
           platforms = platforms.linux;
         };
       }
@@ -90,16 +82,7 @@ let
 
       nativeBuildInputs = [ qt5.qttools ];
       buildInputs =
-        [
-          flac
-          libogg
-          libopus
-          libsndfile
-          libvorbis
-          qt5.qtsvg
-          rnnoise
-          speex
-        ]
+        [ flac libogg libopus libsndfile libvorbis qt5.qtsvg rnnoise speex ]
         ++ lib.optional (!jackSupport) alsa-lib
         ++ lib.optional jackSupport libjack2
         ++ lib.optional speechdSupport speechd-minimal

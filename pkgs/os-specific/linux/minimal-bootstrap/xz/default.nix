@@ -45,10 +45,7 @@ bash.runCommand "${pname}-${version}"
     meta = with lib; {
       description = "General-purpose data compression software, successor of LZMA";
       homepage = "https://tukaani.org/xz";
-      license = with licenses; [
-        gpl2Plus
-        lgpl21Plus
-      ];
+      license = with licenses; [ gpl2Plus lgpl21Plus ];
       maintainers = teams.minimal-bootstrap.members;
       platforms = platforms.unix;
     };

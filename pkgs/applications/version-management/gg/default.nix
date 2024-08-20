@@ -40,20 +40,9 @@ buildGoModule {
 
   vendorHash = "sha256-56Sah030xbWsoOu8r3c3nN2UGHvQORheavebP+Z1Wc8=";
 
-  nativeBuildInputs = [
-    pandoc
-    installShellFiles
-    makeWrapper
-  ];
-  nativeCheckInputs = [
-    bash
-    coreutils
-    git
-  ];
-  buildInputs = [
-    bash
-    git
-  ];
+  nativeBuildInputs = [ pandoc installShellFiles makeWrapper ];
+  nativeCheckInputs = [ bash coreutils git ];
+  buildInputs = [ bash git ];
 
   postInstall = ''
     wrapProgram $out/bin/gg --suffix PATH : ${git}/bin

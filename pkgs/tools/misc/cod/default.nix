@@ -19,11 +19,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-kezfBDTgpOTBYKTNlwuP+M5tXU2w/MXz0B5nBJcL1io=";
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X main.GitSha=${src.rev}"
-  ];
+  ldflags = [ "-s" "-w" "-X main.GitSha=${src.rev}" ];
 
   nativeCheckInputs = [ python3 ];
 

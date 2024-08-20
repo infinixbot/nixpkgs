@@ -24,11 +24,7 @@ stdenv.mkDerivation {
     inherit (release) url sha256;
     name = "ticcutils-${release.version}.tar.gz";
   };
-  nativeBuildInputs = [
-    pkg-config
-    automake
-    autoconf
-  ];
+  nativeBuildInputs = [ pkg-config automake autoconf ];
   buildInputs = [
     libtool
     autoconf-archive

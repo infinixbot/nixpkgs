@@ -37,11 +37,7 @@ stdenv.mkDerivation rec {
     '';
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
-  nativeBuildInputs = [
-    nukeReferences
-    perl
-    which
-  ];
+  nativeBuildInputs = [ nukeReferences perl which ];
   buildInputs = [ ncurses ];
 
   # Stop build scripts from searching global include paths

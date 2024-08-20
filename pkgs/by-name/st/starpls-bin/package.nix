@@ -33,10 +33,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/withered-magic/starpls";
     description = "A language server for Starlark";
     license = licenses.asl20;
-    platforms = [
-      "aarch64-darwin"
-      "x86_64-linux"
-    ];
+    platforms = [ "aarch64-darwin" "x86_64-linux" ];
     maintainers = with maintainers; [ aaronjheng ];
     mainProgram = "starpls";
   };

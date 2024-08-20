@@ -25,25 +25,12 @@ stdenv.mkDerivation rec {
     hash = "sha256-7z21WkPi1v2AGishDmXZPAedMjgXPRnpUiHTzEnc5LY=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    wrapQtAppsHook
-  ] ++ lib.optionals stdenv.isLinux [ autoPatchelfHook ];
+  nativeBuildInputs = [ cmake wrapQtAppsHook ] ++ lib.optionals stdenv.isLinux [ autoPatchelfHook ];
 
   buildInputs =
-    [
-      libxml2
-      freetype
-      glew
-      libjpeg
-      qtbase
-      python3
-    ]
+    [ libxml2 freetype glew libjpeg qtbase python3 ]
     ++ lib.optionals stdenv.isDarwin [ llvmPackages.openmp ]
-    ++ lib.optionals stdenv.isLinux [
-      libGLU
-      libGL
-    ];
+    ++ lib.optionals stdenv.isLinux [ libGLU libGL ];
 
   qtWrapperArgs = [ ''--prefix PATH : ${lib.makeBinPath [ python3 ]}'' ];
 

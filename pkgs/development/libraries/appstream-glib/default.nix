@@ -28,12 +28,7 @@ stdenv.mkDerivation rec {
   pname = "appstream-glib";
   version = "0.8.2";
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-    "installedTests"
-  ];
+  outputs = [ "out" "dev" "man" "installedTests" ];
   outputBin = "dev";
 
   src = fetchFromGitHub {

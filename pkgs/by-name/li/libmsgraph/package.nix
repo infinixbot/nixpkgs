@@ -20,11 +20,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "libmsgraph";
   version = "0.2.2";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/msgraph/${lib.versions.majorMinor finalAttrs.version}/msgraph-${finalAttrs.version}.tar.xz";

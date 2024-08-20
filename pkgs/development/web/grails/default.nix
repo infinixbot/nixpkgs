@@ -13,15 +13,7 @@
 }:
 
 let
-  binpath = lib.makeBinPath (
-    [
-      coreutils
-      ncurses
-      gnused
-      gnugrep
-    ]
-    ++ lib.optional (jdk != null) jdk
-  );
+  binpath = lib.makeBinPath ([ coreutils ncurses gnused gnugrep ] ++ lib.optional (jdk != null) jdk);
 in
 stdenv.mkDerivation rec {
   pname = "grails";

@@ -12,11 +12,7 @@ runTest (
   {
     inherit name;
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        globin
-        eqyiel
-        ma27
-      ];
+      maintainers = [ globin eqyiel ma27 ];
     };
 
     imports = [ testBase ];
@@ -41,11 +37,7 @@ runTest (
                 let
                   davfs2Conf = (pkgs.writeText "davfs2.conf" "secrets /tmp/davfs2-secrets");
                 in
-                [
-                  "conf=${davfs2Conf}"
-                  "x-systemd.automount"
-                  "noauto"
-                ];
+                [ "conf=${davfs2Conf}" "x-systemd.automount" "noauto" ];
             };
           };
         };
@@ -80,10 +72,7 @@ runTest (
           what: drv:
           pkgs.runCommand "find-in-closure"
             {
-              exportReferencesGraph = [
-                "graph"
-                drv
-              ];
+              exportReferencesGraph = [ "graph" drv ];
               inherit what;
             }
             ''

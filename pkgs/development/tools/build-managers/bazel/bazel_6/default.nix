@@ -681,10 +681,7 @@ stdenv.mkDerivation rec {
     in
     lib.optionalString stdenv.hostPlatform.isDarwin darwinPatches + genericPatches;
 
-  buildInputs = [
-    buildJdk
-    bashWithDefaultShellUtils
-  ] ++ defaultShellUtils;
+  buildInputs = [ buildJdk bashWithDefaultShellUtils ] ++ defaultShellUtils;
 
   # when a command can’t be found in a bazel build, you might also
   # need to add it to `defaultShellPath`.

@@ -37,11 +37,7 @@ mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    cmake
-    qttools
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake qttools pkg-config ];
 
   buildInputs = [
     carla
@@ -77,10 +73,7 @@ mkDerivation rec {
     mainProgram = "lmms";
     homepage = "https://lmms.io";
     license = licenses.gpl2Plus;
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
     maintainers = [ ];
   };
 }

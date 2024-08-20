@@ -32,10 +32,7 @@ stdenv.mkDerivation rec {
     libplist
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   passthru.updateScript = nix-update-script { };
 

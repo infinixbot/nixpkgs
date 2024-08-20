@@ -26,10 +26,7 @@ rustPlatform.buildRustPackage rec {
 
   buildInputs =
     lib.optionals stdenv.isLinux [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [
-      Security
-      CoreServices
-    ];
+    ++ lib.optionals stdenv.isDarwin [ Security CoreServices ];
 
   buildFeatures = [
     "trust-dns"

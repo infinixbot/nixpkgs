@@ -10,10 +10,7 @@
 let
   readline-all = symlinkJoin {
     name = "readline-all";
-    paths = [
-      readline
-      readline.dev
-    ];
+    paths = [ readline readline.dev ];
   };
 in
 stdenv.mkDerivation rec {

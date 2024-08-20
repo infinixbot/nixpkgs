@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
 
   # The Kea Migration Assistant lives as a subdirectory of the
   # original ISC DHCP server source code.
-  makeFlags = [
-    "-C"
-    "keama"
-  ];
+  makeFlags = [ "-C" "keama" ];
 
   meta = with lib; {
     description = "Kea Migration Assistent";

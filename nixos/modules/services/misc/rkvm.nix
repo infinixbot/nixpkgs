@@ -44,10 +44,7 @@ in
 
             switch-keys = mkOption {
               type = types.listOf types.str;
-              default = [
-                "left-alt"
-                "left-ctrl"
-              ];
+              default = [ "left-alt" "left-ctrl" ];
               description = ''
                 A key list specifying a host switch combination.
 

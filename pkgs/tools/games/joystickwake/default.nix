@@ -14,11 +14,7 @@ python3.pkgs.buildPythonApplication rec {
     sha256 = "sha256-vSvIpbcDIbRyitVjx3wNSxt5vTIZ9/NPWokOJt0p6oQ=";
   };
 
-  propagatedBuildInputs = with python3.pkgs; [
-    dbus-next
-    pyudev
-    xlib
-  ];
+  propagatedBuildInputs = with python3.pkgs; [ dbus-next pyudev xlib ];
 
   postInstall = ''
     # autostart file

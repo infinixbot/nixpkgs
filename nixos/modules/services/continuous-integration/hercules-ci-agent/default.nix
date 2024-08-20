@@ -22,20 +22,13 @@ in
 {
   imports = [
     ./common.nix
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "hercules-ci-agent"
-        "user"
-      ]
-      [
-        "systemd"
-        "services"
-        "hercules-ci-agent"
-        "serviceConfig"
-        "User"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "hercules-ci-agent" "user" ] [
+      "systemd"
+      "services"
+      "hercules-ci-agent"
+      "serviceConfig"
+      "User"
+    ])
   ];
 
   config = mkIf cfg.enable {
@@ -69,10 +62,7 @@ in
       wantedBy = [ "hercules-ci-agent.service" ];
       pathConfig = {
         Unit = "hercules-ci-agent-restarter.service";
-        PathChanged = [
-          cfg.settings.clusterJoinTokenPath
-          cfg.settings.binaryCachesPath
-        ];
+        PathChanged = [ cfg.settings.clusterJoinTokenPath cfg.settings.binaryCachesPath ];
       };
     };
     systemd.services.hercules-ci-agent-restarter = {

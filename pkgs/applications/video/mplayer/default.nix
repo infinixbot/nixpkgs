@@ -135,24 +135,13 @@ stdenv.mkDerivation rec {
   '';
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
-  nativeBuildInputs = [
-    pkg-config
-    yasm
-  ];
+  nativeBuildInputs = [ pkg-config yasm ];
   buildInputs =
-    [
-      freetype
-      ffmpeg_6
-    ]
+    [ freetype ffmpeg_6 ]
     ++ lib.optional aalibSupport aalib
     ++ lib.optional fontconfigSupport fontconfig
     ++ lib.optional fribidiSupport fribidi
-    ++ lib.optionals x11Support [
-      libX11
-      libXext
-      libGLU
-      libGL
-    ]
+    ++ lib.optionals x11Support [ libX11 libXext libGLU libGL ]
     ++ lib.optional alsaSupport alsa-lib
     ++ lib.optional xvSupport libXv
     ++ lib.optional theoraSupport libtheora
@@ -163,10 +152,7 @@ stdenv.mkDerivation rec {
     ++ lib.optional bluraySupport libbluray
     ++ lib.optional cddaSupport cdparanoia
     ++ lib.optional jackaudioSupport libjack2
-    ++ lib.optionals amrSupport [
-      amrnb
-      amrwb
-    ]
+    ++ lib.optionals amrSupport [ amrnb amrwb ]
     ++ lib.optional x264Support x264
     ++ lib.optional pulseSupport libpulseaudio
     ++ lib.optional screenSaverSupport libXScrnSaver
@@ -251,10 +237,7 @@ stdenv.mkDerivation rec {
   NIX_LDFLAGS = toString (
     lib.optional fontconfigSupport "-lfontconfig"
     ++ lib.optional fribidiSupport "-lfribidi"
-    ++ lib.optionals x11Support [
-      "-lX11"
-      "-lXext"
-    ]
+    ++ lib.optionals x11Support [ "-lX11" "-lXext" ]
     ++ lib.optional x264Support "-lx264"
     ++ [ "-lfreetype" ]
   );
@@ -277,12 +260,6 @@ stdenv.mkDerivation rec {
     homepage = "http://mplayerhq.hu";
     license = licenses.gpl2Only;
     maintainers = with maintainers; [ eelco ];
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-      "aarch64-linux"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" "x86_64-darwin" "aarch64-darwin" "aarch64-linux" ];
   };
 }

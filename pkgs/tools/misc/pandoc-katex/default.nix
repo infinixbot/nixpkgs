@@ -24,10 +24,7 @@ rustPlatform.buildRustPackage rec {
       asl20 # or
       mit
     ];
-    maintainers = with maintainers; [
-      minijackson
-      pacien
-    ];
+    maintainers = with maintainers; [ minijackson pacien ];
     mainProgram = "pandoc-katex";
   };
 }

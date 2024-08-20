@@ -60,10 +60,7 @@ rustPlatform.buildRustPackage rec {
       rustPlatform.bindgenHook
     ];
 
-  cargoBuildFlags = [
-    "--bin"
-    "jumpy"
-  ];
+  cargoBuildFlags = [ "--bin" "jumpy" ];
 
   env = {
     ZSTD_SYS_USE_PKG_CONFIG = true;

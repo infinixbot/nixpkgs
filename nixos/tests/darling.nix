@@ -7,10 +7,7 @@ import ./make-test-python.nix (
       pkgs.runCommand "hello"
         {
           sdk = "${pkgs.darling.sdk}/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk";
-          nativeBuildInputs = with pkgs.llvmPackages_14; [
-            clang-unwrapped
-            lld
-          ];
+          nativeBuildInputs = with pkgs.llvmPackages_14; [ clang-unwrapped lld ];
           src = pkgs.writeText "hello.c" ''
             #include <stdio.h>
             int main() {

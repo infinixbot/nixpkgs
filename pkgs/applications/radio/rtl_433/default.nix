@@ -20,16 +20,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-qCfPweJeYHIuM1DfDmeDilkV/RLzbzlIe1sIpSx/EYc=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-  ];
+  nativeBuildInputs = [ pkg-config cmake ];
 
-  buildInputs = [
-    libusb1
-    rtl-sdr
-    soapysdr-with-plugins
-  ];
+  buildInputs = [ libusb1 rtl-sdr soapysdr-with-plugins ];
 
   doCheck = true;
 
@@ -37,10 +30,7 @@ stdenv.mkDerivation rec {
     description = "Decode traffic from devices that broadcast on 433.9 MHz, 868 MHz, 315 MHz, 345 MHz and 915 MHz";
     homepage = "https://github.com/merbanan/rtl_433";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      earldouglas
-      markuskowa
-    ];
+    maintainers = with maintainers; [ earldouglas markuskowa ];
     platforms = platforms.all;
     mainProgram = "rtl_433";
   };

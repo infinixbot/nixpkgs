@@ -47,11 +47,7 @@ stdenv.mkDerivation rec {
     fypp
   ];
 
-  buildInputs = [
-    blas
-    lapack
-    libxsmm
-  ];
+  buildInputs = [ blas lapack libxsmm ];
 
   propagatedBuildInputs = [ mpi ];
 

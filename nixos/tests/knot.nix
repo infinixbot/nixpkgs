@@ -27,10 +27,7 @@ import ./make-test-python.nix (
 
     knotZonesEnv = pkgs.buildEnv {
       name = "knot-zones";
-      paths = [
-        exampleZone
-        delegatedZone
-      ];
+      paths = [ exampleZone delegatedZone ];
     };
     # DO NOT USE pkgs.writeText IN PRODUCTION. This put secrets in the nix store!
     tsigFile = pkgs.writeText "tsig.conf" ''

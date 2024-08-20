@@ -75,12 +75,7 @@ stdenv.mkDerivation rec {
       icon = pname;
       desktopName = pname;
       comment = "TeamSpeak Voice Communication Client";
-      categories = [
-        "Audio"
-        "AudioVideo"
-        "Chat"
-        "Network"
-      ];
+      categories = [ "Audio" "AudioVideo" "Chat" "Network" ];
     })
   ];
 

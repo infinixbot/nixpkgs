@@ -45,20 +45,11 @@ stdenv.mkDerivation rec {
     libxslt
   ];
 
-  buildInputs = [
-    curl
-    libevent
-  ];
+  buildInputs = [ curl libevent ];
 
-  wafConfigureFlags = [
-    "--saldl-version ${version}"
-    "--no-werror"
-  ];
+  wafConfigureFlags = [ "--saldl-version ${version}" "--no-werror" ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   meta = with lib; {
     description = "CLI downloader optimized for speed and early preview";

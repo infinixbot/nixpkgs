@@ -40,11 +40,7 @@ let
                 bind = "0.0.0.0";
               };
             };
-            networking.firewall.allowedTCPPorts = [
-              22
-              7077
-              8080
-            ];
+            networking.firewall.allowedTCPPorts = [ 22 7077 8080 ];
           };
       };
 

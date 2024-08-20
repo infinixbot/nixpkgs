@@ -27,15 +27,9 @@ rustPlatform.buildRustPackage rec {
     rm .cargo/config.toml
   '';
 
-  cargoBuildFlags = [
-    "--package"
-    "millet-ls"
-  ];
+  cargoBuildFlags = [ "--package" "millet-ls" ];
 
-  cargoTestFlags = [
-    "--package"
-    "millet-ls"
-  ];
+  cargoTestFlags = [ "--package" "millet-ls" ];
 
   meta = with lib; {
     description = "Language server for Standard ML";

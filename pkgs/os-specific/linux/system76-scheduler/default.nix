@@ -22,14 +22,8 @@ rustPlatform.buildRustPackage {
   };
   cargoHash = "sha256-hpFDAhOzm4v3lBWwAl/10pS5xvKCScdKsp5wpCeQ+FE=";
 
-  nativeBuildInputs = [
-    pkg-config
-    rustPlatform.bindgenHook
-  ];
-  buildInputs = [
-    dbus
-    pipewire
-  ];
+  nativeBuildInputs = [ pkg-config rustPlatform.bindgenHook ];
+  buildInputs = [ dbus pipewire ];
 
   EXECSNOOP_PATH = "${bcc}/bin/execsnoop";
 
@@ -47,11 +41,7 @@ rustPlatform.buildRustPackage {
     mainProgram = "system76-scheduler";
     homepage = "https://github.com/pop-os/system76-scheduler";
     license = licenses.mpl20;
-    platforms = [
-      "x86_64-linux"
-      "x86-linux"
-      "aarch64-linux"
-    ];
+    platforms = [ "x86_64-linux" "x86-linux" "aarch64-linux" ];
     maintainers = [ maintainers.cmm ];
   };
 }

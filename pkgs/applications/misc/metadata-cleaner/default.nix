@@ -61,10 +61,7 @@ python3.pkgs.buildPythonApplication rec {
     mainProgram = "metadata-cleaner";
     homepage = "https://gitlab.com/rmnvgr/metadata-cleaner";
     changelog = "https://gitlab.com/rmnvgr/metadata-cleaner/-/blob/${src.rev}/CHANGELOG.md";
-    license = with licenses; [
-      gpl3Plus
-      cc-by-sa-40
-    ];
+    license = with licenses; [ gpl3Plus cc-by-sa-40 ];
     maintainers = with maintainers; [ dotlambda ];
   };
 }

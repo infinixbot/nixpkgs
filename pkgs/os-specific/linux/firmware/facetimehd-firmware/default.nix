@@ -51,10 +51,7 @@ stdenvNoCC.mkDerivation {
   dontUnpack = true;
   dontInstall = true;
 
-  buildInputs = [
-    cpio
-    xz
-  ];
+  buildInputs = [ cpio xz ];
 
   buildPhase = ''
     ${unpack}/bin/unpack
@@ -67,14 +64,8 @@ stdenvNoCC.mkDerivation {
     description = "facetimehd firmware";
     homepage = "https://support.apple.com/kb/DL1877";
     license = licenses.unfree;
-    maintainers = with maintainers; [
-      womfoo
-      grahamc
-    ];
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    maintainers = with maintainers; [ womfoo grahamc ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
   };
 
 }

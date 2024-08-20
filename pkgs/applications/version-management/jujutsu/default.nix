@@ -40,10 +40,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-FxcvLT0YnXcjDCKxuyijYsVSMLjx1glDzmFH5ctSx6s=";
 
-  cargoBuildFlags = [
-    "--bin"
-    "jj"
-  ]; # don't install the fake editors
+  cargoBuildFlags = [ "--bin" "jj" ]; # don't install the fake editors
   useNextest = false; # nextest is the upstream integration framework, but is problematic for test skipping
   ZSTD_SYS_USE_PKG_CONFIG = "1"; # disable vendored zlib
   LIBGIT2_NO_VENDOR = "1"; # disable vendored libgit2
@@ -98,10 +95,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/martinvonz/jj";
     changelog = "https://github.com/martinvonz/jj/blob/v${version}/CHANGELOG.md";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      _0x4A6F
-      thoughtpolice
-    ];
+    maintainers = with maintainers; [ _0x4A6F thoughtpolice ];
     mainProgram = "jj";
   };
 }

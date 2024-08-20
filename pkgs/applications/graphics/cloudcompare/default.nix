@@ -122,15 +122,8 @@ mkDerivation rec {
       comment = "3D point cloud and mesh processing software";
       exec = "CloudCompare";
       terminal = false;
-      categories = [
-        "Graphics"
-        "3DGraphics"
-        "Viewer"
-      ];
-      keywords = [
-        "3d"
-        "processing"
-      ];
+      categories = [ "Graphics" "3DGraphics" "Viewer" ];
+      keywords = [ "3d" "processing" ];
       icon = "CloudCompare";
     })
     (makeDesktopItem {
@@ -139,15 +132,8 @@ mkDerivation rec {
       comment = "3D point cloud and mesh processing software";
       exec = "ccViewer";
       terminal = false;
-      categories = [
-        "Graphics"
-        "3DGraphics"
-        "Viewer"
-      ];
-      keywords = [
-        "3d"
-        "viewer"
-      ];
+      categories = [ "Graphics" "3DGraphics" "Viewer" ];
+      keywords = [ "3d" "viewer" ];
       icon = "ccViewer";
     })
   ];

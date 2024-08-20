@@ -72,10 +72,7 @@ stdenv.mkDerivation rec {
     "-DENABLE_OPENMP=ON"
   ];
 
-  nativeBuildInputs = [
-    cmake
-    gfortran
-  ];
+  nativeBuildInputs = [ cmake gfortran ];
 
   postFixup = lib.optionalString enablePython ''
     mkdir -p $out/lib/python${python.pythonVersion}/site-packages

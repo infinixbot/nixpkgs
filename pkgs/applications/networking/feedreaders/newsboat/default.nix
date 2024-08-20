@@ -39,32 +39,20 @@ rustPlatform.buildRustPackage rec {
       --replace "ncurses5.4" "ncurses"
   '';
 
-  nativeBuildInputs =
-    [
-      pkg-config
-      asciidoctor
-      gettext
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      makeWrapper
-      ncurses
-    ];
+  nativeBuildInputs = [
+    pkg-config
+    asciidoctor
+    gettext
+  ] ++ lib.optionals stdenv.isDarwin [ makeWrapper ncurses ];
 
-  buildInputs =
-    [
-      stfl
-      sqlite
-      curl
-      libxml2
-      json_c
-      ncurses
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      Security
-      Foundation
-      libiconv
-      gettext
-    ];
+  buildInputs = [
+    stfl
+    sqlite
+    curl
+    libxml2
+    json_c
+    ncurses
+  ] ++ lib.optionals stdenv.isDarwin [ Security Foundation libiconv gettext ];
 
   postBuild = ''
     make -j $NIX_BUILD_CORES prefix="$out"
@@ -101,10 +89,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://newsboat.org/";
     changelog = "https://github.com/newsboat/newsboat/blob/${src.rev}/CHANGELOG.md";
     description = "Fork of Newsbeuter, an RSS/Atom feed reader for the text console";
-    maintainers = with lib.maintainers; [
-      dotlambda
-      nicknovitski
-    ];
+    maintainers = with lib.maintainers; [ dotlambda nicknovitski ];
     license = lib.licenses.mit;
     platforms = lib.platforms.unix;
   };

@@ -41,11 +41,7 @@ let
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
     maintainers = [ ];
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-      "x86_64-darwin"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" "x86_64-darwin" ];
   };
 
   linux = stdenv.mkDerivation {
@@ -56,11 +52,7 @@ let
       meta
       ;
 
-    nativeBuildInputs = [
-      rpmextract
-      autoPatchelfHook
-      wrapGAppsHook3
-    ];
+    nativeBuildInputs = [ rpmextract autoPatchelfHook wrapGAppsHook3 ];
     buildInputs =
       (with xorg; [
         libXdamage
@@ -68,16 +60,9 @@ let
         libXScrnSaver
         libxkbfile
       ])
-      ++ [
-        gtk3
-        nss
-        alsa-lib
-      ];
+      ++ [ gtk3 nss alsa-lib ];
 
-    runtimeDependencies = [
-      (lib.getLib udev)
-      libnotify
-    ];
+    runtimeDependencies = [ (lib.getLib udev) libnotify ];
 
     unpackPhase = ''
       rpmextract $src

@@ -164,11 +164,7 @@ in
       };
       ioSchedulingClass = mkOption {
         description = "IO scheduling class for btrbk (see ionice(1) for a quick description). Applies to local instances, and remote ones connecting by ssh if set to idle.";
-        type = types.enum [
-          "idle"
-          "best-effort"
-          "realtime"
-        ];
+        type = types.enum [ "idle" "best-effort" "realtime" ];
         default = "best-effort";
       };
       instances = mkOption {
@@ -200,18 +196,7 @@ in
                         Compress the btrfs send stream before transferring it from/to remote locations using a
                         compression command.
                       '';
-                      type = types.enum [
-                        "gzip"
-                        "pigz"
-                        "bzip2"
-                        "pbzip2"
-                        "bzip3"
-                        "xz"
-                        "lzo"
-                        "lz4"
-                        "zstd"
-                        "no"
-                      ];
+                      type = types.enum [ "gzip" "pigz" "bzip2" "pbzip2" "bzip3" "xz" "lzo" "lz4" "zstd" "no" ];
                       default = "no";
                     };
                   };
@@ -249,20 +234,8 @@ in
                 description = "SSH public key allowed to login as user `btrbk` to run remote backups.";
               };
               roles = mkOption {
-                type = listOf (enum [
-                  "info"
-                  "source"
-                  "target"
-                  "delete"
-                  "snapshot"
-                  "send"
-                  "receive"
-                ]);
-                example = [
-                  "source"
-                  "info"
-                  "send"
-                ];
+                type = listOf (enum [ "info" "source" "target" "delete" "snapshot" "send" "receive" ]);
+                example = [ "source" "info" "send" ];
                 description = "What actions can be performed with this SSH key. See ssh_filter_btrbk(1) for details";
               };
             };

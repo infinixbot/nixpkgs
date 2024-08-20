@@ -125,13 +125,7 @@ buildNpmPackage rec {
       icon = "jitsi-meet-electron";
       desktopName = "Jitsi Meet";
       comment = meta.description;
-      categories = [
-        "VideoConference"
-        "AudioVideo"
-        "Audio"
-        "Video"
-        "Network"
-      ];
+      categories = [ "VideoConference" "AudioVideo" "Audio" "Video" "Network" ];
       mimeTypes = [ "x-scheme-handler/jitsi-meet" ];
       terminal = false;
     })

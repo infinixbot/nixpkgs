@@ -24,27 +24,15 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    spdlog
-    fmt
-    nlohmann_json
-  ];
-  propagatedBuildInputs = [
-    qtbase
-    qtdeclarative
-    qtquickcontrols2
-    qtx11extras
-  ];
+  buildInputs = [ spdlog fmt nlohmann_json ];
+  propagatedBuildInputs = [ qtbase qtdeclarative qtquickcontrols2 qtx11extras ];
 
   dontWrapQtApps = true;
 
   meta = with lib; {
     description = "KDAB's Dock Widget Framework for Qt";
     homepage = "https://www.kdab.com/development-resources/qt-tools/kddockwidgets";
-    license = with licenses; [
-      gpl2Only
-      gpl3Only
-    ];
+    license = with licenses; [ gpl2Only gpl3Only ];
     maintainers = with maintainers; [ _1000teslas ];
   };
 }

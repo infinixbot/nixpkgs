@@ -21,12 +21,7 @@ mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    qtbase
-    qttools
-    qtsvg
-    qwt6_1
-  ];
+  buildInputs = [ qtbase qttools qtsvg qwt6_1 ];
 
   meta = {
     description = "Open source EDA software focused on easy of use and portability";

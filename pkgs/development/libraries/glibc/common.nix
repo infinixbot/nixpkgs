@@ -216,27 +216,12 @@ stdenv.mkDerivation (
     # getent is its own output, not kept in bin, since many things
     # depend on getent but not on the locale generation tools in the bin
     # output. This saves a couple of megabytes of closure size in many cases.
-    outputs = [
-      "out"
-      "bin"
-      "dev"
-      "static"
-      "getent"
-    ];
+    outputs = [ "out" "bin" "dev" "static" "getent" ];
 
     strictDeps = true;
     depsBuildBuild = [ buildPackages.stdenv.cc ];
-    nativeBuildInputs = [
-      bison
-      python3Minimal
-    ] ++ extraNativeBuildInputs;
-    buildInputs =
-      [ linuxHeaders ]
-      ++ lib.optionals withGd [
-        gd
-        libpng
-      ]
-      ++ extraBuildInputs;
+    nativeBuildInputs = [ bison python3Minimal ] ++ extraNativeBuildInputs;
+    buildInputs = [ linuxHeaders ] ++ lib.optionals withGd [ gd libpng ] ++ extraBuildInputs;
 
     env = {
       linuxHeaders = lib.optionalString withLinuxHeaders linuxHeaders;
@@ -254,13 +239,7 @@ stdenv.mkDerivation (
     };
   }
 
-  // (removeAttrs args [
-    "withLinuxHeaders"
-    "withGd"
-    "enableCET"
-    "postInstall"
-    "makeFlags"
-  ])
+  // (removeAttrs args [ "withLinuxHeaders" "withGd" "enableCET" "postInstall" "makeFlags" ])
   //
 
     {
@@ -343,11 +322,7 @@ stdenv.mkDerivation (
 
           license = licenses.lgpl2Plus;
 
-          maintainers = with maintainers; [
-            eelco
-            ma27
-            connorbaker
-          ];
+          maintainers = with maintainers; [ eelco ma27 connorbaker ];
           platforms = platforms.linux;
         }
         // (args.meta or { });

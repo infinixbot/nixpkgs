@@ -44,10 +44,7 @@ buildDunePackage rec {
   strictDeps = true;
 
   nativeBuildInputs = [ cppo ];
-  buildInputs = [
-    findlib
-    ppxlib
-  ];
+  buildInputs = [ findlib ppxlib ];
   propagatedBuildInputs = lib.optional (lib.versionOlder version "5.2") ocaml-migrate-parsetree ++ [
     ppx_derivers
     result

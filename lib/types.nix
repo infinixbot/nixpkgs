@@ -847,10 +847,7 @@ let
                       #        Fortunately, it's only used for error messages, where a "relative" location is kinda ok.
                       #        It is also returned though, but use of the attribute seems rare?
                       [ tagName ]
-                      [
-                        (wrapOptionDecl a.tags.${tagName})
-                        (wrapOptionDecl bOpt)
-                      ]
+                      [ (wrapOptionDecl a.tags.${tagName}) (wrapOptionDecl bOpt) ]
                     // {
                       # mergeOptionDecls is not idempotent in these attrs:
                       declarations = a.tags.${tagName}.declarations ++ bOpt.declarations;
@@ -1247,10 +1244,7 @@ let
             in
             if (name == f'.name) && (mt1 != null) && (mt2 != null) then functor.type mt1 mt2 else null;
           functor = (defaultFunctor name) // {
-            wrapped = [
-              t1
-              t2
-            ];
+            wrapped = [ t1 t2 ];
           };
           nestedTypes.left = t1;
           nestedTypes.right = t2;

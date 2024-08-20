@@ -10,12 +10,7 @@ import ./make-test-python.nix (
   {
     name = "containers-portforward";
     meta = {
-      maintainers = with lib.maintainers; [
-        aristid
-        aszlig
-        kampfschlaefer
-        ianwookim
-      ];
+      maintainers = with lib.maintainers; [ aristid aszlig kampfschlaefer ianwookim ];
     };
 
     nodes.machine =

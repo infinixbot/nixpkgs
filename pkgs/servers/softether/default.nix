@@ -19,12 +19,7 @@ stdenv.mkDerivation rec {
     sha256 = "0d8zahi9lkv72jh8yj66pwrsi4451vk113d3khzrzgbic6s2i0g6";
   };
 
-  buildInputs = [
-    openssl
-    readline
-    ncurses
-    zlib
-  ];
+  buildInputs = [ openssl readline ncurses zlib ];
 
   preConfigure = ''
     ./configure

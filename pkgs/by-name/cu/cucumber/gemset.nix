@@ -53,11 +53,7 @@
     version = "10.0.1";
   };
   cucumber-core = {
-    dependencies = [
-      "cucumber-gherkin"
-      "cucumber-messages"
-      "cucumber-tag-expressions"
-    ];
+    dependencies = [ "cucumber-gherkin" "cucumber-messages" "cucumber-tag-expressions" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

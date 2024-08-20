@@ -38,10 +38,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/casey/intermodal";
     changelog = "https://github.com/casey/intermodal/releases/tag/v${version}";
     license = licenses.cc0;
-    maintainers = with maintainers; [
-      Br1ght0ne
-      xrelkd
-    ];
+    maintainers = with maintainers; [ Br1ght0ne xrelkd ];
     mainProgram = "imdl";
   };
 }

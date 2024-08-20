@@ -36,10 +36,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/pkolaczk/fclones";
     changelog = "https://github.com/pkolaczk/fclones/releases/tag/${src.rev}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      cyounkins
-      figsoda
-    ];
+    maintainers = with maintainers; [ cyounkins figsoda ];
     mainProgram = "fclones";
   };
 }

@@ -19,15 +19,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-3Qqf9i8aSL9z2uJvm8P/QOPp83nODC3fyLL1iBIgf+g=";
   };
 
-  nativeBuildInputs = [
-    gettext
-    pkg-config
-    which
-  ];
-  buildInputs = [
-    glib
-    gtk2
-  ];
+  nativeBuildInputs = [ gettext pkg-config which ];
+  buildInputs = [ glib gtk2 ];
 
   patches = lib.optionals enableSoftening [
     ./encryption.patch

@@ -20,12 +20,7 @@ let
     icon = "xxe";
     desktopName = "xxe";
     genericName = "XML Editor";
-    categories = [
-      "Development"
-      "IDE"
-      "TextEditor"
-      "Java"
-    ];
+    categories = [ "Development" "IDE" "TextEditor" "Java" ];
   };
 in
 stdenv.mkDerivation rec {

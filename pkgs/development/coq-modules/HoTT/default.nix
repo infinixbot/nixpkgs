@@ -53,9 +53,6 @@ mkCoqDerivation {
       Foundations library (which has since been incorporated into the Unimath
       library) and also cross-pollinates with the HoTT-Agda library.
     '';
-    maintainers = with lib.maintainers; [
-      alizter
-      siddharthist
-    ];
+    maintainers = with lib.maintainers; [ alizter siddharthist ];
   };
 }

@@ -43,11 +43,7 @@ let
 in
 runCommand "flutter-artifacts-${flutterPlatform}-${systemPlatform}"
   {
-    nativeBuildInputs = [
-      xorg.lndir
-      flutter'
-      unzip
-    ];
+    nativeBuildInputs = [ xorg.lndir flutter' unzip ];
 
     NIX_FLUTTER_TOOLS_VM_OPTIONS = "--root-certs-file=${cacert}/etc/ssl/certs/ca-bundle.crt";
     NIX_FLUTTER_OPERATING_SYSTEM =

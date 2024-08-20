@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
   pname = "egl-wayland";
   version = "1.1.15";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "Nvidia";

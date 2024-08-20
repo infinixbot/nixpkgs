@@ -23,12 +23,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-oriegEzkuRjvdJAxZ2IQ8glf6jqMsSmAVgKEPHxIhKA=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "dev" "doc" "man" ];
 
   pythonPath = with python3.pkgs; [
     cffi

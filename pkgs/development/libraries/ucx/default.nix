@@ -21,12 +21,7 @@
 }:
 
 let
-  rocmList = with rocmPackages; [
-    rocm-core
-    rocm-runtime
-    rocm-device-libs
-    clr
-  ];
+  rocmList = with rocmPackages; [ rocm-core rocm-runtime rocm-device-libs clr ];
 
   rocm = symlinkJoin {
     name = "rocm";
@@ -45,11 +40,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Qd3c51LeF04haZA4wK6loNZwX2a3ju+ljwdPYPoUKCQ=";
   };
 
-  outputs = [
-    "out"
-    "doc"
-    "dev"
-  ];
+  outputs = [ "out" "doc" "dev" ];
 
   nativeBuildInputs =
     [

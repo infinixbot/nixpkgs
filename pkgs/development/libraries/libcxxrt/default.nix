@@ -19,10 +19,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ cmake ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   installPhase = ''
     mkdir -p $dev/include $out/lib

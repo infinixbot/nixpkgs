@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-aTcvs7QuDOx17U/yP37LhvIGxmm2WR/6qFYRtfjRN6w=";
   };
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config ];
   buildInputs = [ wayland ];
 
   meta = with lib; {

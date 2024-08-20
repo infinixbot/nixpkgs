@@ -21,10 +21,7 @@ crossLibcStdenv.mkDerivation {
     export CC=cc
   '';
 
-  configurePlatforms = [
-    "build"
-    "target"
-  ];
+  configurePlatforms = [ "build" "target" ];
   configureFlags = [
     "--host=${stdenv.buildPlatform.config}"
 

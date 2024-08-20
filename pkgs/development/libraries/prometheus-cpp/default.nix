@@ -22,12 +22,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    gbenchmark
-    gtest
-    zlib
-    curl
-  ];
+  buildInputs = [ gbenchmark gtest zlib curl ];
   propagatedBuildInputs = [ civetweb ];
   strictDeps = true;
 
@@ -36,10 +31,7 @@ stdenv.mkDerivation rec {
     "-DBUILD_SHARED_LIBS=ON"
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   postInstall = ''
     mkdir -p $dev/lib/pkgconfig

@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [
-    SDL
-    SDL_image
-  ];
+  buildInputs = [ SDL SDL_image ];
 
   NIX_LDFLAGS = "-lm";
 

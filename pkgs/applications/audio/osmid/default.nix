@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    alsa-lib
-    libX11
-  ];
+  buildInputs = [ alsa-lib libX11 ];
 
   installPhase = ''
     runHook preInstall

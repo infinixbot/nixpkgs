@@ -34,17 +34,7 @@ stdenv.mkDerivation rec {
   postFixup = ''
       for executable in $(cd $out/bin && ls); do
     wrapProgram $out/bin/$executable \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          bc
-          findutils
-          sox
-          procps
-          opusTools
-          lame
-          flac
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ bc findutils sox procps opusTools lame flac ]}"
       done
   '';
 

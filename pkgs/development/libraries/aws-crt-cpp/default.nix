@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
   pname = "aws-crt-cpp";
   version = "0.26.12";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "awslabs";

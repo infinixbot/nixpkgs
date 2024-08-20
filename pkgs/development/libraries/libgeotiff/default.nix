@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-FUvWZR5BrGEMnApxCBQBwmmi9NU7Tx6Ziq3mbIxjqfc=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   sourceRoot = "${src.name}/libgeotiff";
 
@@ -38,10 +35,7 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [
-    libtiff
-    proj
-  ];
+  buildInputs = [ libtiff proj ];
 
   #hardeningDisable = [ "format" ];
 

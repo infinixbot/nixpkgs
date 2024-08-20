@@ -23,12 +23,7 @@ buildPerlPackage {
   outputs = [ "out" ];
 
   nativeBuildInputs = [ makeWrapper ];
-  propagatedBuildInputs = [
-    openssh
-    GitRepository
-    URI
-    XMLParser
-  ];
+  propagatedBuildInputs = [ openssh GitRepository URI XMLParser ];
 
   preConfigure = ''
     patchShebangs .

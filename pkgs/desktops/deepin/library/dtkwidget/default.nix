@@ -69,11 +69,7 @@ stdenv.mkDerivation rec {
     export QT_PLUGIN_PATH=${libsForQt5.qtbase.bin}/${libsForQt5.qtbase.qtPluginPrefix}
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
   postFixup = ''
     for binary in $out/lib/dtk5/DWidget/bin/*; do

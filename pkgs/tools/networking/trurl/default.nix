@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-BzsDvEsUntVwTPY/+kIKOhznDIabfioT2y4cofD+eTg=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
   separateDebugInfo = stdenv.isLinux;
 
   enableParallelBuilding = true;

@@ -41,10 +41,7 @@ stdenv.mkDerivation (final: {
 
   patches = [ ./dont-fix-app-bundle.diff ];
 
-  outputs = [
-    "out"
-    "terminfo"
-  ];
+  outputs = [ "out" "terminfo" ];
 
   nativeBuildInputs = [
     cmake

@@ -54,10 +54,7 @@ stdenv.mkDerivation rec {
     mainProgram = "flowtime";
     homepage = "https://github.com/Diego-Ivan/Flowtime";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      foo-dogsquared
-      pokon548
-    ];
+    maintainers = with maintainers; [ foo-dogsquared pokon548 ];
     platforms = platforms.linux;
   };
 }

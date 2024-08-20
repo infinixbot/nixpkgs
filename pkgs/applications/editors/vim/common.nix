@@ -2,10 +2,7 @@
 rec {
   version = "9.1.0595";
 
-  outputs = [
-    "out"
-    "xxd"
-  ];
+  outputs = [ "out" "xxd" ];
 
   src = fetchFromGitHub {
     owner = "vim";
@@ -39,16 +36,9 @@ rec {
     description = "Most popular clone of the VI editor";
     homepage = "http://www.vim.org";
     license = licenses.vim;
-    maintainers = with maintainers; [
-      das_j
-      equirosa
-      philiptaron
-    ];
+    maintainers = with maintainers; [ das_j equirosa philiptaron ];
     platforms = platforms.unix;
     mainProgram = "vim";
-    outputsToInstall = [
-      "out"
-      "xxd"
-    ];
+    outputsToInstall = [ "out" "xxd" ];
   };
 }

@@ -20,13 +20,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "libxslt";
   version = "1.1.42";
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "doc"
-    "devdoc"
-  ] ++ lib.optional pythonSupport "py";
+  outputs = [ "bin" "dev" "out" "doc" "devdoc" ] ++ lib.optional pythonSupport "py";
   outputMan = "bin";
 
   src = fetchurl {
@@ -101,10 +95,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "C library and tools to do XSL transformations";
     license = licenses.mit;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      eelco
-      jtojnar
-    ];
+    maintainers = with maintainers; [ eelco jtojnar ];
     broken = pythonSupport && !libxml2.pythonSupport; # see #73102 for why this is not an assert
   };
 })

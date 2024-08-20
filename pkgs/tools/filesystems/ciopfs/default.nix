@@ -18,16 +18,9 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    fuse
-    glib
-    attr
-  ];
+  buildInputs = [ fuse glib attr ];
 
-  makeFlags = [
-    "DESTDIR=$(out)"
-    "PREFIX="
-  ];
+  makeFlags = [ "DESTDIR=$(out)" "PREFIX=" ];
 
   meta = {
     homepage = "https://www.brain-dump.org/projects/ciopfs/";

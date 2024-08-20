@@ -32,10 +32,7 @@ rustPlatform.buildRustPackage rec {
   ];
 
   appendRunpaths = [
-    (lib.makeLibraryPath [
-      fontconfig
-      wayland
-    ])
+    (lib.makeLibraryPath [ fontconfig wayland ])
   ];
 
   checkFlags = [

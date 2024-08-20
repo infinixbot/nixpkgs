@@ -2,10 +2,7 @@
 {
   name = "amd-sev";
   meta = {
-    maintainers = with lib.maintainers; [
-      trundle
-      veehaitch
-    ];
+    maintainers = with lib.maintainers; [ trundle veehaitch ];
   };
 
   nodes.machine =

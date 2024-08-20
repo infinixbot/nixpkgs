@@ -18,13 +18,7 @@
 }:
 
 let
-  bins = [
-    libcdio-paranoia
-    cdrdao
-    flac
-    sox
-    util-linux
-  ];
+  bins = [ libcdio-paranoia cdrdao flac sox util-linux ];
 in
 python3.pkgs.buildPythonApplication rec {
   pname = "whipper";
@@ -69,10 +63,7 @@ python3.pkgs.buildPythonApplication rec {
     setuptools
   ];
 
-  buildInputs = [
-    libsndfile
-    glib
-  ];
+  buildInputs = [ libsndfile glib ];
 
   nativeCheckInputs =
     with python3.pkgs;
@@ -92,10 +83,7 @@ python3.pkgs.buildPythonApplication rec {
 
   dontWrapGApps = true;
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
   postBuild = ''
     make -C man
   '';

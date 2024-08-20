@@ -21,20 +21,15 @@
 }:
 
 let
-  rpathLibs =
-    [
-      fontconfig
-      libGL
-      xorg.libxcb
-      xorg.libX11
-      xorg.libXcursor
-      xorg.libXrandr
-      xorg.libXi
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      libxkbcommon
-      wayland
-    ];
+  rpathLibs = [
+    fontconfig
+    libGL
+    xorg.libxcb
+    xorg.libX11
+    xorg.libXcursor
+    xorg.libXrandr
+    xorg.libXi
+  ] ++ lib.optionals stdenv.isLinux [ libxkbcommon wayland ];
 in
 rustPlatform.buildRustPackage rec {
   pname = "slint-lsp";
@@ -47,11 +42,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-XjVXhXoGEhxWc+LZa0EsPiw3Gq2pg03YjKONTptSQvA=";
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    fontconfig
-  ];
+  nativeBuildInputs = [ cmake pkg-config fontconfig ];
   buildInputs =
     rpathLibs
     ++ [ xorg.libxcb.dev ]

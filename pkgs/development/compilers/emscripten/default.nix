@@ -21,12 +21,7 @@ stdenv.mkDerivation rec {
 
   llvmEnv = symlinkJoin {
     name = "emscripten-llvm-${version}";
-    paths = with llvmPackages; [
-      clang-unwrapped
-      clang-unwrapped.lib
-      lld
-      llvm
-    ];
+    paths = with llvmPackages; [ clang-unwrapped clang-unwrapped.lib lld llvm ];
   };
 
   nodeModules = buildNpmPackage {
@@ -51,10 +46,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [
-    nodejs
-    python3
-  ];
+  buildInputs = [ nodejs python3 ];
 
   patches = [
     (substituteAll {
@@ -152,12 +144,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/emscripten-core/emscripten";
     description = "LLVM-to-JavaScript Compiler";
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      qknight
-      matthewbauer
-      raitobezarius
-      willcohen
-    ];
+    maintainers = with maintainers; [ qknight matthewbauer raitobezarius willcohen ];
     license = licenses.ncsa;
   };
 }

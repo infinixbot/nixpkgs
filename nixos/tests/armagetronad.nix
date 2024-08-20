@@ -13,10 +13,7 @@ let
     { pkgs, ... }:
 
     {
-      imports = [
-        ./common/user-account.nix
-        ./common/x11.nix
-      ];
+      imports = [ ./common/user-account.nix ./common/x11.nix ];
       hardware.graphics.enable = true;
       virtualisation.memorySize = 384;
       environment = {

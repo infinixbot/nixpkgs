@@ -92,10 +92,7 @@ let
           regex-posix
           split
         ])
-        ++ [
-          tamarin-prover-utils
-          tamarin-prover-term
-        ];
+        ++ [ tamarin-prover-utils tamarin-prover-term ];
     }
   );
 
@@ -160,12 +157,7 @@ mkDerivation (
     postFixup = "rm -rf $out/lib $out/nix-support $out/share/doc";
 
     # wrap the prover to be sure it can find maude, sapic, etc
-    executableToolDepends = [
-      makeWrapper
-      which
-      maude
-      graphviz
-    ];
+    executableToolDepends = [ makeWrapper which maude graphviz ];
     postInstall =
       ''
         wrapProgram $out/bin/tamarin-prover \
@@ -174,13 +166,7 @@ mkDerivation (
         --set LOCALE_ARCHIVE "${glibcLocales}/lib/locale/locale-archive" \
       ''
       + ''
-          --prefix PATH : ${
-            lib.makeBinPath [
-              which
-              maude
-              graphviz
-            ]
-          }
+          --prefix PATH : ${lib.makeBinPath [ which maude graphviz ]}
         # so that the package can be used as a vim plugin to install syntax coloration
         install -Dt $out/share/vim-plugins/tamarin-prover/syntax/ etc/syntax/spthy.vim
         install etc/filetype.vim -D $out/share/vim-plugins/tamarin-prover/ftdetect/tamarin.vim

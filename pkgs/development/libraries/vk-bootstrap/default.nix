@@ -11,10 +11,7 @@
 stdenv.mkDerivation rec {
   pname = "vk-bootstrap";
   version = "0.7";
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "charles-lunarg";
@@ -31,11 +28,7 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    vulkan-headers
-    glfw
-    catch2
-  ];
+  buildInputs = [ vulkan-headers glfw catch2 ];
 
   cmakeFlags = [
     "-DVK_BOOTSTRAP_VULKAN_HEADER_DIR=${vulkan-headers}/include"

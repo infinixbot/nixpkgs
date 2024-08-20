@@ -43,10 +43,7 @@ in
       systemd.services.pre-sysinit-before-tmpfiles = {
         wantedBy = [ "sysinit.target" ];
         requiredBy = [ "sysinit-reactivation.target" ];
-        before = [
-          "systemd-tmpfiles-setup.service"
-          "systemd-tmpfiles-resetup.service"
-        ];
+        before = [ "systemd-tmpfiles-setup.service" "systemd-tmpfiles-resetup.service" ];
         unitConfig.DefaultDependencies = false;
         serviceConfig.Type = "oneshot";
         serviceConfig.RemainAfterExit = true;
@@ -57,10 +54,7 @@ in
       systemd.services.pre-sysinit-after-tmpfiles = {
         wantedBy = [ "sysinit.target" ];
         requiredBy = [ "sysinit-reactivation.target" ];
-        after = [
-          "systemd-tmpfiles-setup.service"
-          "systemd-tmpfiles-resetup.service"
-        ];
+        after = [ "systemd-tmpfiles-setup.service" "systemd-tmpfiles-resetup.service" ];
         unitConfig.DefaultDependencies = false;
         serviceConfig.Type = "oneshot";
         serviceConfig.RemainAfterExit = true;

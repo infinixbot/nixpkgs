@@ -58,16 +58,11 @@ stdenv.mkDerivation rec {
       runHook postInstall
     '';
 
-  nativeBuildInputs =
-    [
-      cmake
-      wrapQtAppsHook
-      python3
-    ]
-    ++ lib.optionals (!stdenv.isDarwin) [
-      copyDesktopItems
-      imagemagick
-    ];
+  nativeBuildInputs = [
+    cmake
+    wrapQtAppsHook
+    python3
+  ] ++ lib.optionals (!stdenv.isDarwin) [ copyDesktopItems imagemagick ];
 
   desktopItems = [
     (makeDesktopItem {
@@ -80,10 +75,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [
-    qtbase
-    qttools
-  ] ++ lib.optionals stdenv.isLinux [ qtwayland ];
+  buildInputs = [ qtbase qttools ] ++ lib.optionals stdenv.isLinux [ qtwayland ];
 
   passthru.updateScript = gitUpdater {
     rev-prefix = "v";

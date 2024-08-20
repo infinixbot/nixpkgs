@@ -34,18 +34,9 @@ buildGoModule rec {
 
   doCheck = false;
 
-  nativeBuildInputs = [
-    makeWrapper
-    which
-    rsync
-    installShellFiles
-  ];
+  nativeBuildInputs = [ makeWrapper which rsync installShellFiles ];
 
-  outputs = [
-    "out"
-    "man"
-    "pause"
-  ];
+  outputs = [ "out" "man" "pause" ];
 
   patches = [ ./fixup-addonmanager-lib-path.patch ];
 

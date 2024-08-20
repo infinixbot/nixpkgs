@@ -39,10 +39,7 @@ stdenv.mkDerivation rec {
     "-Dappindicator=yes"
   ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   buildInputs = [
     libnma

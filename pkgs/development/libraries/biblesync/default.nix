@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
     sha256 = "0prmd12jq2cjdhsph5v89y38j7hhd51dr3r1hivgkhczr3m5hf4s";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-  ];
+  nativeBuildInputs = [ pkg-config cmake ];
   buildInputs = [ libuuid ];
 
   meta = with lib; {

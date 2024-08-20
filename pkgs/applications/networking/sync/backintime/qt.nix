@@ -11,13 +11,7 @@
 }:
 
 let
-  python' = python3.withPackages (
-    ps: with ps; [
-      pyqt5
-      backintime-common
-      packaging
-    ]
-  );
+  python' = python3.withPackages (ps: with ps; [ pyqt5 backintime-common packaging ]);
 in
 mkDerivation {
   inherit (backintime-common)
@@ -31,10 +25,7 @@ mkDerivation {
 
   pname = "backintime-qt";
 
-  buildInputs = [
-    python'
-    backintime-common
-  ];
+  buildInputs = [ python' backintime-common ];
 
   configureFlags = [ "--python=${lib.getExe python'}" ];
 

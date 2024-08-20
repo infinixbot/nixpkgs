@@ -28,16 +28,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-/kqhZcIuoN/XA0i1ua3lzVGn4ghkekFYScL1o3kgBX4=";
 
-  nativeBuildInputs = [
-    pkg-config
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ pkg-config wrapGAppsHook3 ];
 
-  buildInputs = [
-    gtk3
-    gtk-layer-shell
-    librsvg
-  ];
+  buildInputs = [ gtk3 gtk-layer-shell librsvg ];
 
   preInstall = ''
     mkdir -p $out/share/nwg-bar

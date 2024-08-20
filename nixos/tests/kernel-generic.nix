@@ -14,11 +14,7 @@ let
       {
         name = "kernel-${linuxPackages.kernel.version}";
         meta = with pkgs.lib.maintainers; {
-          maintainers = [
-            nequissimus
-            atemu
-            ma27
-          ];
+          maintainers = [ nequissimus atemu ma27 ];
         };
 
         nodes.machine =

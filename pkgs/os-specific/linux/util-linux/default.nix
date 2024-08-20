@@ -44,13 +44,7 @@ stdenv.mkDerivation rec {
   # Compatibility is maintained by symlinking the binaries from the
   # smaller outputs in the bin output.
   outputs =
-    [
-      "bin"
-      "dev"
-      "out"
-      "lib"
-      "man"
-    ]
+    [ "bin" "dev" "out" "lib" "man" ]
     ++ lib.optionals stdenv.isLinux [ "mount" ]
     ++ [ "login" ]
     ++ lib.optionals stdenv.isLinux [ "swap" ];
@@ -94,16 +88,10 @@ stdenv.mkDerivation rec {
     "usrsbin_execdir=${placeholder "bin"}/sbin"
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    installShellFiles
-  ] ++ lib.optionals translateManpages [ po4a ];
+  nativeBuildInputs = [ pkg-config installShellFiles ] ++ lib.optionals translateManpages [ po4a ];
 
   buildInputs =
-    [
-      zlib
-      libxcrypt
-    ]
+    [ zlib libxcrypt ]
     ++ lib.optionals pamSupport [ pam ]
     ++ lib.optionals capabilitiesSupport [ libcap_ng ]
     ++ lib.optionals ncursesSupport [ ncurses ]
@@ -156,15 +144,7 @@ stdenv.mkDerivation rec {
     description = "Set of system utilities for Linux";
     changelog = "https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v${lib.versions.majorMinor version}/v${version}-ReleaseNotes";
     # https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git/tree/README.licensing
-    license = with licenses; [
-      gpl2Only
-      gpl2Plus
-      gpl3Plus
-      lgpl21Plus
-      bsd3
-      bsdOriginalUC
-      publicDomain
-    ];
+    license = with licenses; [ gpl2Only gpl2Plus gpl3Plus lgpl21Plus bsd3 bsdOriginalUC publicDomain ];
     platforms = platforms.unix;
     pkgConfigModules = [
       "blkid"

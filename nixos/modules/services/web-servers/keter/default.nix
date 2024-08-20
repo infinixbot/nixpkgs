@@ -14,30 +14,8 @@ in
   };
 
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "keter"
-        "keterRoot"
-      ]
-      [
-        "services"
-        "keter"
-        "root"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "keter"
-        "keterPackage"
-      ]
-      [
-        "services"
-        "keter"
-        "package"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "keter" "keterRoot" ] [ "services" "keter" "root" ])
+    (lib.mkRenamedOptionModule [ "services" "keter" "keterPackage" ] [ "services" "keter" "package" ])
   ];
 
   options.services.keter = {
@@ -191,10 +169,7 @@ in
           mkdir -p ${incoming}
           ${lib.getExe cfg.package} ${globalKeterConfigFile};
         '';
-        wantedBy = [
-          "multi-user.target"
-          "nginx.service"
-        ];
+        wantedBy = [ "multi-user.target" "nginx.service" ];
 
         serviceConfig = {
           Restart = "always";

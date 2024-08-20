@@ -90,10 +90,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://kartkrew.org";
     platforms = platforms.linux;
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      donovanglover
-      thehans255
-    ];
+    maintainers = with maintainers; [ donovanglover thehans255 ];
     mainProgram = "ringracers";
   };
 })

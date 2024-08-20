@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
 
   sourceRoot = "${src.name}/${pname}";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   patches = [
     ./libclc/libclc-gnu-install-dirs.patch
@@ -55,11 +52,7 @@ stdenv.mkDerivation rec {
         --replace 'COMMAND prepare_builtins' 'COMMAND ${buildLlvmTools.libclc.dev}/bin/prepare_builtins'
     '';
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-    python3
-  ];
+  nativeBuildInputs = [ cmake ninja python3 ];
   buildInputs = [ llvm ];
   strictDeps = true;
 

@@ -4,14 +4,7 @@
   unstick,
   fetchurl,
   withQuesta ? true,
-  supportedDevices ? [
-    "Arria II"
-    "Cyclone V"
-    "Cyclone IV"
-    "Cyclone 10 LP"
-    "MAX II/V"
-    "MAX 10 FPGA"
-  ],
+  supportedDevices ? [ "Arria II" "Cyclone V" "Cyclone IV" "Cyclone 10 LP" "MAX II/V" "MAX 10 FPGA" ],
 }:
 
 let
@@ -130,9 +123,6 @@ stdenv.mkDerivation rec {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
     platforms = [ "x86_64-linux" ];
-    maintainers = with maintainers; [
-      bjornfor
-      kwohlfahrt
-    ];
+    maintainers = with maintainers; [ bjornfor kwohlfahrt ];
   };
 }

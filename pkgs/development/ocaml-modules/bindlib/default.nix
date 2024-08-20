@@ -19,10 +19,7 @@ buildDunePackage rec {
     hash = "sha256-058yMbz9ExvgNG/kY9tPk70XSeVRSSKVg4n4F4fmPu4=";
   };
 
-  checkInputs = [
-    earley
-    timed
-  ];
+  checkInputs = [ earley timed ];
   doCheck = true;
 
   meta = with lib; {

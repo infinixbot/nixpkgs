@@ -43,10 +43,7 @@ resholve.mkDerivation rec {
     make install-all prefix=$out
   '';
 
-  nativeBuildInputs = [
-    pandoc
-    man
-  ];
+  nativeBuildInputs = [ pandoc man ];
 
   solutions = {
     git-ftp = {

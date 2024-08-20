@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-NcxdTKra+YkLt/iu9+1QCeQZLV3/qlhma2Ns/+ZYVsk=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   buildInputs = [
     libglut
@@ -50,10 +47,7 @@ stdenv.mkDerivation rec {
     description = "Open Source Lighthouse Tracking System";
     homepage = "https://github.com/cntools/libsurvive";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      expipiplus1
-      prusnak
-    ];
+    maintainers = with maintainers; [ expipiplus1 prusnak ];
     platforms = platforms.linux;
   };
 }

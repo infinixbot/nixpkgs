@@ -136,10 +136,7 @@ stdenv.mkDerivation rec {
         --set LUA_CPATH "${luaEnv}/lib/lua/${lua.luaversion}/?.so" \
         --prefix LUA_PATH : "$NIX_LUA_PATH" \
         --prefix DYLD_LIBRARY_PATH : "${
-          lib.makeLibraryPath [
-            libsForQt5.qtkeychain
-            discord-rpc
-          ]
+          lib.makeLibraryPath [ libsForQt5.qtkeychain discord-rpc ]
         }:$out/lib" \
         --chdir "$out";
 
@@ -150,12 +147,7 @@ stdenv.mkDerivation rec {
       makeQtWrapper $out/bin/mudlet-unwrapped $out/bin/mudlet \
         --set LUA_CPATH "${luaEnv}/lib/lua/${lua.luaversion}/?.so" \
         --prefix LUA_PATH : "$NIX_LUA_PATH" \
-        --prefix LD_LIBRARY_PATH : "${
-          lib.makeLibraryPath [
-            libsForQt5.qtkeychain
-            discord-rpc
-          ]
-        }" \
+        --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ libsForQt5.qtkeychain discord-rpc ]}" \
         --chdir "$out";
 
       mkdir -pv $out/share/applications
@@ -169,12 +161,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Crossplatform mud client";
     homepage = "https://www.mudlet.org/";
-    maintainers = with maintainers; [
-      wyvie
-      pstn
-      cpu
-      felixalbrigtsen
-    ];
+    maintainers = with maintainers; [ wyvie pstn cpu felixalbrigtsen ];
     platforms = platforms.linux ++ platforms.darwin;
     license = licenses.gpl2Plus;
     mainProgram = "mudlet";

@@ -17,10 +17,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-fSzifGoSdWyFGt99slzAsqCMDoeLbBqQGXujX8QAfGc=";
   };
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   nativeBuildInputs = [
     asciidoctor

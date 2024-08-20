@@ -27,18 +27,8 @@ buildGoModule rec {
 
   doCheck = false;
 
-  buildInputs = [
-    atk
-    gtk3
-    gdk-pixbuf
-    gtk-layer-shell
-    pango
-  ];
-  nativeBuildInputs = [
-    pkg-config
-    wrapGAppsHook3
-    gobject-introspection
-  ];
+  buildInputs = [ atk gtk3 gdk-pixbuf gtk-layer-shell pango ];
+  nativeBuildInputs = [ pkg-config wrapGAppsHook3 gobject-introspection ];
 
   prePatch = ''
     for file in main.go tools.go; do

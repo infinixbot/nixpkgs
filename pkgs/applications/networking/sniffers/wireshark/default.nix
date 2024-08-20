@@ -60,10 +60,7 @@ stdenv.mkDerivation rec {
   pname = "wireshark-${if withQt then "qt" else "cli"}";
   version = "4.2.6";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitLab {
     repo = "wireshark";
@@ -229,10 +226,7 @@ stdenv.mkDerivation rec {
     changelog = "https://www.wireshark.org/docs/relnotes/wireshark-${version}.html";
     license = licenses.gpl2Plus;
     platforms = platforms.linux ++ platforms.darwin;
-    maintainers = with maintainers; [
-      bjornfor
-      fpletz
-    ];
+    maintainers = with maintainers; [ bjornfor fpletz ];
     mainProgram = if withQt then "wireshark" else "tshark";
   };
 }

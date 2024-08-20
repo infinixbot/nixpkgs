@@ -16,14 +16,8 @@ stdenv.mkDerivation rec {
     sha256 = "1wl2vc5alisiwyk8m07y1ryq8w3ll9ym83j27g4apm4ixjl8d6x2";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
-  buildInputs = [
-    libX11
-    guile
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
+  buildInputs = [ libX11 guile ];
 
   meta = {
     homepage = "https://www.nongnu.org/xbindkeys/xbindkeys.html";

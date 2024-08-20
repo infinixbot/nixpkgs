@@ -6,16 +6,9 @@
 
 mkDerivation {
   pname = "kapidox";
-  nativeBuildInputs = [
-    python3.pkgs.setuptools
-    qtbase
-  ];
+  nativeBuildInputs = [ python3.pkgs.setuptools qtbase ];
 
-  buildInputs = with python3.pkgs; [
-    jinja2
-    pyyaml
-    requests
-  ];
+  buildInputs = with python3.pkgs; [ jinja2 pyyaml requests ];
 
   postPatch = ''
     sed -i -e 's|"doxy\w\+", ||g' setup.py

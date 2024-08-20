@@ -33,18 +33,9 @@ stdenv.mkDerivation {
   pname = "cups-brother-hl1110";
   inherit version;
 
-  srcs = [
-    lprdeb
-    cupssrc
-    cupsdeb
-  ];
+  srcs = [ lprdeb cupssrc cupsdeb ];
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [
-    cups
-    ghostscript
-    dpkg
-    a2ps
-  ];
+  buildInputs = [ cups ghostscript dpkg a2ps ];
   unpackPhase = ''
     tar -xvf ${cupssrc}
   '';
@@ -65,24 +56,10 @@ stdenv.mkDerivation {
     patchelf --set-interpreter ${stdenv.cc.libc}/lib/ld-linux.so.2 $out/opt/brother/Printers/HL1110/inf/braddprinter
 
     wrapProgram $out/opt/brother/Printers/HL1110/lpd/psconvert2 \
-    --prefix PATH ":" ${
-      lib.makeBinPath [
-        gnused
-        coreutils
-        gawk
-      ]
-    }
+    --prefix PATH ":" ${lib.makeBinPath [ gnused coreutils gawk ]}
 
     wrapProgram $out/opt/brother/Printers/HL1110/lpd/filter_HL1110 \
-    --prefix PATH ":" ${
-      lib.makeBinPath [
-        ghostscript
-        a2ps
-        file
-        gnused
-        coreutils
-      ]
-    }
+    --prefix PATH ":" ${lib.makeBinPath [ ghostscript a2ps file gnused coreutils ]}
 
 
     dpkg-deb -x ${cupsdeb} $out
@@ -96,13 +73,7 @@ stdenv.mkDerivation {
     ln -s $out/opt/brother/Printers/HL1110/cupswrapper/brcupsconfig4 $out/lib/cups/filter/brcupsconfig4
 
     wrapProgram $out/opt/brother/Printers/HL1110/cupswrapper/brother_lpdwrapper_HL1110 \
-    --prefix PATH ":" ${
-      lib.makeBinPath [
-        gnused
-        coreutils
-        gawk
-      ]
-    }
+    --prefix PATH ":" ${lib.makeBinPath [ gnused coreutils gawk ]}
 
   '';
 

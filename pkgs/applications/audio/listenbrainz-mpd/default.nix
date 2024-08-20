@@ -28,11 +28,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-Reglc7UtsFk+VIwg4Q9TIChVrWweuV6yPWxbtTDH6mU=";
 
-  nativeBuildInputs = [
-    pkg-config
-    installShellFiles
-    asciidoctor
-  ];
+  nativeBuildInputs = [ pkg-config installShellFiles asciidoctor ];
 
   buildInputs =
     [ sqlite ]

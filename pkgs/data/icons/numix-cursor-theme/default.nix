@@ -17,10 +17,7 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "1q3w5i0h3ly6i7s9pqjdrb14kp89i78s0havri7lhiqyxizjvcvh";
   };
 
-  nativeBuildInputs = [
-    inkscape
-    xcursorgen
-  ];
+  nativeBuildInputs = [ inkscape xcursorgen ];
 
   buildPhase = ''
     patchShebangs .

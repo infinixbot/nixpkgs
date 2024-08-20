@@ -45,15 +45,8 @@ buildPythonPackage rec {
 
   passthru.optional-dependencies = {
     type-geometry = [ shapely ];
-    type-image-path = [
-      imagehash
-      pillow
-    ];
-    plotting = [
-      matplotlib
-      pydot
-      pygraphviz
-    ];
+    type-image-path = [ imagehash pillow ];
+    plotting = [ matplotlib pydot pygraphviz ];
   };
 
   nativeCheckInputs = [

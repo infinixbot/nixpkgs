@@ -27,17 +27,8 @@ let
     '';
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.mit;
-    maintainers = with maintainers; [
-      liammurphy14
-      yayayayaka
-    ];
-    platforms = [
-      "x86_64-darwin"
-      "x86_64-linux"
-      "armv7l-linux"
-      "aarch64-linux"
-      "aarch64-darwin"
-    ];
+    maintainers = with maintainers; [ liammurphy14 yayayayaka ];
+    platforms = [ "x86_64-darwin" "x86_64-linux" "armv7l-linux" "aarch64-linux" "aarch64-darwin" ];
     mainProgram = "chromedriver";
   };
 
@@ -72,10 +63,7 @@ let
   };
 
   linux = {
-    nativeBuildInputs = [
-      autoPatchelfHook
-      unzip
-    ];
+    nativeBuildInputs = [ autoPatchelfHook unzip ];
 
     dontUnpack = true;
     dontBuild = true;

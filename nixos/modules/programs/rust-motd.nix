@@ -16,10 +16,7 @@ let
       {
         __structuredAttrs = true;
         inherit (cfg) order settings;
-        nativeBuildInputs = [
-          pkgs.remarshal
-          pkgs.jq
-        ];
+        nativeBuildInputs = [ pkgs.remarshal pkgs.jq ];
       }
       ''
         cat "$NIX_ATTRS_JSON_FILE" \

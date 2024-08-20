@@ -21,15 +21,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-CnejQcOyW3QzHuvsAdKe4M4XgmG9ufRaEBdO48+8ZqQ=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    bison
-    flex
-  ];
-  buildInputs = [
-    pam
-    systemdLibs
-  ];
+  nativeBuildInputs = [ autoreconfHook bison flex ];
+  buildInputs = [ pam systemdLibs ];
 
   postPatch = ''
     substituteInPlace src/tools/Makefile.am \

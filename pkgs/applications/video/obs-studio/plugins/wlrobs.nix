@@ -22,16 +22,8 @@ stdenv.mkDerivation {
     hash = "sha256-hiM0d38SSUqbyisP3fAtKRLBDjVKZdU2U1xyXci7yNk=";
   };
 
-  nativeBuildInputs = [
-    meson
-    pkg-config
-    ninja
-  ];
-  buildInputs = [
-    wayland
-    obs-studio
-    libX11
-  ];
+  nativeBuildInputs = [ meson pkg-config ninja ];
+  buildInputs = [ wayland obs-studio libX11 ];
 
   meta = with lib; {
     description = "Obs-studio plugin that allows you to screen capture on wlroots based wayland compositors";

@@ -21,15 +21,8 @@ import ./make-test-python.nix (
               "changes.GitPoller('git://gitrepo/fakerepo.git', workdir='gitpoller-workdir', branch='master', pollInterval=300)"
             ];
           };
-          networking.firewall.allowedTCPPorts = [
-            8010
-            8011
-            9989
-          ];
-          environment.systemPackages = with pkgs; [
-            git
-            buildbot-full
-          ];
+          networking.firewall.allowedTCPPorts = [ 8010 8011 9989 ];
+          environment.systemPackages = with pkgs; [ git buildbot-full ];
         };
 
       bbworker =
@@ -39,35 +32,22 @@ import ./make-test-python.nix (
             enable = true;
             masterUrl = "bbmaster:9989";
           };
-          environment.systemPackages = with pkgs; [
-            git
-            buildbot-worker
-          ];
+          environment.systemPackages = with pkgs; [ git buildbot-worker ];
         };
 
       gitrepo =
         { pkgs, ... }:
         {
           services.openssh.enable = true;
-          networking.firewall.allowedTCPPorts = [
-            22
-            9418
-          ];
+          networking.firewall.allowedTCPPorts = [ 22 9418 ];
           environment.systemPackages = with pkgs; [ git ];
           systemd.services.git-daemon = {
             description = "Git daemon for the test";
             wantedBy = [ "multi-user.target" ];
-            after = [
-              "network.target"
-              "sshd.service"
-            ];
+            after = [ "network.target" "sshd.service" ];
 
             serviceConfig.Restart = "always";
-            path = with pkgs; [
-              coreutils
-              git
-              openssh
-            ];
+            path = with pkgs; [ coreutils git openssh ];
             environment = {
               HOME = "/root";
             };

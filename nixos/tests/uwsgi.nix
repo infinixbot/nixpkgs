@@ -17,10 +17,7 @@ import ./make-test-python.nix (
 
         services.uwsgi = {
           enable = true;
-          plugins = [
-            "python3"
-            "php"
-          ];
+          plugins = [ "python3" "php" ];
           capabilities = [ "CAP_NET_BIND_SERVICE" ];
           instance.type = "emperor";
 

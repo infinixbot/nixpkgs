@@ -74,10 +74,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional withGui qtbase
     ++ lib.optional withPython python3
     ++ lib.optional withBlueshark bluez5
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Foundation
-      AppKit
-    ];
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ Foundation AppKit ];
 
   makeFlags = [
     "PREFIX=${placeholder "out"}"
@@ -93,10 +90,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Client for proxmark3, powerful general purpose RFID tool";
     homepage = "https://github.com/RfidResearchGroup/proxmark3";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      nyanotech
-      emilytrau
-    ];
+    maintainers = with maintainers; [ nyanotech emilytrau ];
     platforms = platforms.unix;
     mainProgram = "pm3";
   };

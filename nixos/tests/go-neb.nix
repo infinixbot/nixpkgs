@@ -3,10 +3,7 @@ import ./make-test-python.nix (
   {
     name = "go-neb";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        hexa
-        maralorn
-      ];
+      maintainers = [ hexa maralorn ];
     };
 
     nodes = {

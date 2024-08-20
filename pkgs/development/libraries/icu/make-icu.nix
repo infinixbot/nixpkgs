@@ -87,10 +87,7 @@ let
   realAttrs = baseAttrs // {
     name = pname + "-" + version;
 
-    outputs = [
-      "out"
-      "dev"
-    ] ++ lib.optional withStatic "static";
+    outputs = [ "out" "dev" ] ++ lib.optional withStatic "static";
     outputBin = "dev";
 
     nativeBuildInputs =

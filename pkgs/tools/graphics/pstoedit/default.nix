@@ -28,21 +28,10 @@ stdenv.mkDerivation rec {
   #
   patches = [ ./pstoedit-gs-9.22-compat.patch ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
   nativeBuildInputs = [ pkg-config ];
   buildInputs =
-    [
-      zlib
-      ghostscript
-      imagemagick
-      plotutils
-      gd
-      libjpeg
-      libwebp
-    ]
+    [ zlib ghostscript imagemagick plotutils gd libjpeg libwebp ]
     ++ lib.optionals stdenv.isDarwin (
       with darwin.apple_sdk.frameworks;
       [

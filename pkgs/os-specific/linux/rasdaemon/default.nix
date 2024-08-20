@@ -36,10 +36,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
   buildInputs = [
     coreutils
@@ -48,12 +45,7 @@ stdenv.mkDerivation rec {
     kmod
     sqlite
     libtraceevent
-    (perl.withPackages (
-      ps: with ps; [
-        DBI
-        DBDSQLite
-      ]
-    ))
+    (perl.withPackages (ps: with ps; [ DBI DBDSQLite ]))
   ] ++ lib.optionals (!stdenv.isAarch64) [ dmidecode ];
 
   configureFlags = [
@@ -88,12 +80,7 @@ stdenv.mkDerivation rec {
       --replace '"$(DESTDIR)/etc/ras/dimm_labels.d"' '"$(prefix)/etc/ras/dimm_labels.d"'
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-    "inject"
-  ];
+  outputs = [ "out" "dev" "man" "inject" ];
 
   postInstall = ''
     install -Dm 0755 contrib/edac-fake-inject $inject/bin/edac-fake-inject

@@ -34,17 +34,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-    installShellFiles
-  ];
+  nativeBuildInputs = [ cmake ninja installShellFiles ];
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
   installPhase = ''
     runHook preInstall
 

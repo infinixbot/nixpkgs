@@ -42,12 +42,7 @@ stdenv.mkDerivation (finalAttrs: {
     pkg-config
   ];
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    wayland-scanner
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config wayland-scanner ];
 
   mesonFlags = [
     (lib.mesonOption "version" finalAttrs.version)

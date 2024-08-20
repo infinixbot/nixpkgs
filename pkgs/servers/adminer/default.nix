@@ -45,10 +45,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Database management in a single PHP file";
     homepage = "https://www.adminer.org";
-    license = with licenses; [
-      asl20
-      gpl2Only
-    ];
+    license = with licenses; [ asl20 gpl2Only ];
     maintainers = with maintainers; [
       jtojnar
       sstef

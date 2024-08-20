@@ -18,11 +18,7 @@ stdenv.mkDerivation {
   pname = "libunity";
   version = "unstable-2021-02-01";
 
-  outputs = [
-    "out"
-    "dev"
-    "py"
-  ];
+  outputs = [ "out" "dev" "py" ];
 
   # Obtained from https://git.launchpad.net/ubuntu/+source/libunity/log/
   src = fetchgit {

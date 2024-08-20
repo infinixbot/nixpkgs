@@ -16,10 +16,7 @@ let
     };
 in
 {
-  meta.maintainers = with lib.maintainers; [
-    pokon548
-    oluceps
-  ];
+  meta.maintainers = with lib.maintainers; [ pokon548 oluceps ];
 
   options = {
     services.dae = with lib; {
@@ -29,10 +26,7 @@ in
 
       assets = mkOption {
         type = with types; (listOf path);
-        default = with pkgs; [
-          v2ray-geoip
-          v2ray-domain-list-community
-        ];
+        default = with pkgs; [ v2ray-geoip v2ray-domain-list-community ];
         defaultText = literalExpression "with pkgs; [ v2ray-geoip v2ray-domain-list-community ]";
         description = ''
           Assets required to run dae.
@@ -153,10 +147,7 @@ in
                 ""
                 "${daeBin} validate -c \${CREDENTIALS_DIRECTORY}/config.dae"
               ] ++ (with lib; optional cfg.disableTxChecksumIpGeneric TxChecksumIpGenericWorkaround);
-              ExecStart = [
-                ""
-                "${daeBin} run --disable-timestamp -c \${CREDENTIALS_DIRECTORY}/config.dae"
-              ];
+              ExecStart = [ "" "${daeBin} run --disable-timestamp -c \${CREDENTIALS_DIRECTORY}/config.dae" ];
               Environment = "DAE_LOCATION_ASSET=${cfg.assetsPath}";
             };
           };

@@ -63,11 +63,7 @@ stdenv.mkDerivation {
     "PREFIX_TROFF=${placeholder "troff"}"
   ];
 
-  outputs = [
-    "out"
-    "man"
-    "troff"
-  ];
+  outputs = [ "out" "man" "troff" ];
 
   meta = with lib; {
     homepage = "https://tools.suckless.org/9base/";

@@ -37,10 +37,7 @@
 
 mkDerivation {
   pname = "kio";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs =
     [
       karchive
@@ -80,10 +77,7 @@ mkDerivation {
     ++ lib.optionals stdenv.isLinux [
       kded
     ];
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
   separateDebugInfo = true;
   patches = [
     ./0001-Remove-impure-smbd-search-path.patch

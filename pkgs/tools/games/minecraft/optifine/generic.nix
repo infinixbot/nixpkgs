@@ -22,10 +22,7 @@ runCommand "optifine-${mcVersion}"
       name = "OptiFine_${version}.jar";
     };
 
-    nativeBuildInputs = [
-      jre
-      makeWrapper
-    ];
+    nativeBuildInputs = [ jre makeWrapper ];
 
     passthru.updateScript = {
       command = [ ./update.py ];

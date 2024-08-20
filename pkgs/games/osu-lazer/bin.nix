@@ -38,16 +38,9 @@ let
       unfreeRedistributable # osu-framework contains libbass.so in repository
     ];
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
-    maintainers = with lib.maintainers; [
-      gepbird
-      stepbrobd
-    ];
+    maintainers = with lib.maintainers; [ gepbird stepbrobd ];
     mainProgram = "osu!";
-    platforms = [
-      "aarch64-darwin"
-      "x86_64-darwin"
-      "x86_64-linux"
-    ];
+    platforms = [ "aarch64-darwin" "x86_64-darwin" "x86_64-linux" ];
   };
 
   passthru.updateScript = ./update-bin.sh;

@@ -22,14 +22,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-O/euB63Dyj+NyfZK42egSEYwZhL8B0jCxSSDYoT4cpo=";
   };
 
-  buildInputs = [
-    bc
-    curl
-    figlet
-    fortune
-    gawk
-    iproute2
-  ];
+  buildInputs = [ bc curl figlet fortune gawk iproute2 ];
 
   postPatch = ''
     substituteInPlace motd.sh \

@@ -19,10 +19,7 @@ buildNpmPackage {
   };
   npmDepsHash = "sha256-wiBpWw9nb/pWVGIc4Vl/IxxR5ic0LzLMMr3WxRNvYdM=";
 
-  nativeCheckInputs = [
-    chromium
-    chromedriver
-  ];
+  nativeCheckInputs = [ chromium chromedriver ];
   doCheck = stdenv.isLinux;
 
   postBuild = ''

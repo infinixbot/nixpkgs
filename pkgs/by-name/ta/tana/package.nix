@@ -30,10 +30,7 @@
   dpkg,
 }:
 let
-  glLibs = [
-    libglvnd
-    mesa
-  ];
+  glLibs = [ libglvnd mesa ];
   libs = [
     alsa-lib
     atkmm
@@ -58,10 +55,7 @@ let
     pango
   ];
   buildInputs = glLibs ++ libs;
-  runpathPackages = glLibs ++ [
-    stdenv.cc.cc
-    stdenv.cc.libc
-  ];
+  runpathPackages = glLibs ++ [ stdenv.cc.cc stdenv.cc.libc ];
   version = "1.0.16";
 in
 stdenv.mkDerivation {

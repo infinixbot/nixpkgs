@@ -79,11 +79,7 @@ stdenv.mkDerivation rec {
       rapidjson
       quirc
     ]
-    ++ lib.optionals trezorSupport [
-      libusb1
-      protobuf
-      python3
-    ]
+    ++ lib.optionals trezorSupport [ libusb1 protobuf python3 ]
     ++ lib.optionals stdenv.isDarwin [ qtmacextras ];
 
   postUnpack = ''
@@ -123,10 +119,7 @@ stdenv.mkDerivation rec {
     icon = "monero";
     desktopName = "Monero";
     genericName = "Wallet";
-    categories = [
-      "Network"
-      "Utility"
-    ];
+    categories = [ "Network" "Utility" ];
   };
 
   postInstall = ''

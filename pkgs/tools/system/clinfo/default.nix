@@ -33,10 +33,7 @@ stdenv.mkDerivation rec {
     description = "Print all known information about all available OpenCL platforms and devices in the system";
     homepage = "https://github.com/Oblomov/clinfo";
     license = licenses.cc0;
-    maintainers = with maintainers; [
-      athas
-      r-burns
-    ];
+    maintainers = with maintainers; [ athas r-burns ];
     platforms = platforms.unix;
     mainProgram = "clinfo";
   };

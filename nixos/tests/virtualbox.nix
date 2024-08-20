@@ -25,12 +25,7 @@ let
 
       miniInit = ''
         #!${pkgs.runtimeShell} -xe
-        export PATH="${
-          lib.makeBinPath [
-            pkgs.coreutils
-            pkgs.util-linux
-          ]
-        }"
+        export PATH="${lib.makeBinPath [ pkgs.coreutils pkgs.util-linux ]}"
 
         mkdir -p /run/dbus /var
         ln -s /run /var
@@ -147,10 +142,7 @@ let
               "$diskImage" "$out/disk.vdi"
           '';
 
-          buildInputs = [
-            pkgs.util-linux
-            pkgs.perl
-          ];
+          buildInputs = [ pkgs.util-linux pkgs.perl ];
         }
         ''
           ${pkgs.parted}/sbin/parted --script /dev/vda mklabel msdos
@@ -397,11 +389,7 @@ let
               mkVMConf = name: val: val.machine // { key = "${name}-config"; };
               vmConfigs = mapAttrsToList mkVMConf vms;
             in
-            [
-              ./common/user-account.nix
-              ./common/x11.nix
-            ]
-            ++ vmConfigs;
+            [ ./common/user-account.nix ./common/x11.nix ] ++ vmConfigs;
           virtualisation.memorySize = 2048;
 
           virtualisation.qemu.options =
@@ -410,10 +398,7 @@ let
               # Intel/AMD hosts and sufficient for the KVM flavor.
               guestCpu = if config.virtualisation.virtualbox.host.enableKvm then "IvyBridge" else "kvm64";
             in
-            [
-              "-cpu"
-              "${guestCpu},svm=on,vmx=on"
-            ];
+            [ "-cpu" "${guestCpu},svm=on,vmx=on" ];
 
           test-support.displayManager.auto.user = "alice";
           users.users.alice.extraGroups =

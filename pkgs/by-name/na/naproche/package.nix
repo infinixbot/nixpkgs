@@ -20,10 +20,7 @@ mkDerivation {
 
   isExecutable = true;
 
-  buildTools = [
-    hpack
-    makeWrapper
-  ];
+  buildTools = [ hpack makeWrapper ];
   executableHaskellDepends = [
     base
     array

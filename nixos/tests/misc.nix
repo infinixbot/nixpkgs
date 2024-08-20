@@ -25,30 +25,18 @@ import ./make-test-python.nix (
         virtualisation.fileSystems = {
           "/tmp2" = {
             fsType = "tmpfs";
-            options = [
-              "mode=1777"
-              "noauto"
-            ];
+            options = [ "mode=1777" "noauto" ];
           };
           # Tests https://discourse.nixos.org/t/how-to-make-a-derivations-executables-have-the-s-permission/8555
           "/user-mount/point" = {
             device = "/user-mount/source";
             fsType = "none";
-            options = [
-              "bind"
-              "rw"
-              "user"
-              "noauto"
-            ];
+            options = [ "bind" "rw" "user" "noauto" ];
           };
           "/user-mount/denied-point" = {
             device = "/user-mount/denied-source";
             fsType = "none";
-            options = [
-              "bind"
-              "rw"
-              "noauto"
-            ];
+            options = [ "bind" "rw" "noauto" ];
           };
         };
         systemd.automounts = lib.singleton {

@@ -44,10 +44,7 @@ buildDotnetModule rec {
     blueprint-compiler
   ];
 
-  buildInputs = [
-    gtk4
-    libadwaita
-  ];
+  buildInputs = [ gtk4 libadwaita ];
 
   runtimeDeps = [
     gtk4
@@ -66,14 +63,7 @@ buildDotnetModule rec {
     install -Dm444 NickvisionTubeConverter.Shared/Linux/org.nickvision.tubeconverter.desktop.in -T $out/share/applications/org.nickvision.tubeconverter.desktop
   '';
 
-  makeWrapperArgs = [
-    "--prefix PATH : ${
-      lib.makeBinPath [
-        pythonEnv
-        ffmpeg
-      ]
-    }"
-  ];
+  makeWrapperArgs = [ "--prefix PATH : ${lib.makeBinPath [ pythonEnv ffmpeg ]}" ];
 
   passthru.updateScript = ./update.sh;
 

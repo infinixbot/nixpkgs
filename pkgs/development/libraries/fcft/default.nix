@@ -13,10 +13,7 @@
   check,
   # Text shaping methods to enable, empty list disables all text shaping.
   # See `availableShapingTypes` or upstream meson_options.txt for available types.
-  withShapingTypes ? [
-    "grapheme"
-    "run"
-  ],
+  withShapingTypes ? [ "grapheme" "run" ],
   harfbuzz,
   utf8proc,
   fcft, # for passthru.tests
@@ -43,19 +40,9 @@ stdenv.mkDerivation rec {
   };
 
   depsBuildBuild = [ pkg-config ];
-  nativeBuildInputs = [
-    pkg-config
-    meson
-    ninja
-    scdoc
-  ];
+  nativeBuildInputs = [ pkg-config meson ninja scdoc ];
   buildInputs =
-    [
-      freetype
-      fontconfig
-      pixman
-      tllist
-    ]
+    [ freetype fontconfig pixman tllist ]
     ++ lib.optionals (withShapingTypes != [ ]) [ harfbuzz ]
     ++ lib.optionals (builtins.elem "run" withShapingTypes) [ utf8proc ];
   nativeCheckInputs = [ check ];
@@ -67,11 +54,7 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
 
   passthru.tests = {
     noShaping = fcft.override { withShapingTypes = [ ]; };
@@ -86,10 +69,7 @@ stdenv.mkDerivation rec {
       fionera
       sternenseemann
     ];
-    license = with licenses; [
-      mit
-      zlib
-    ];
+    license = with licenses; [ mit zlib ];
     platforms = with platforms; linux;
   };
 }

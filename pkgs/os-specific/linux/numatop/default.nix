@@ -20,14 +20,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-GJvTwqgx34ZW10eIJj/xiKe3ZkAfs7GlJImz8jrnjfI=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
-  buildInputs = [
-    numactl
-    ncurses
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
+  buildInputs = [ numactl ncurses ];
   nativeCheckInputs = [ check ];
 
   patches = [

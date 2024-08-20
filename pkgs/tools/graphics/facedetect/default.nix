@@ -25,14 +25,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [
-    python3Packages.python
-    python3Packages.wrapPython
-  ];
-  pythonPath = [
-    python3Packages.numpy
-    python3Packages.opencv4
-  ];
+  buildInputs = [ python3Packages.python python3Packages.wrapPython ];
+  pythonPath = [ python3Packages.numpy python3Packages.opencv4 ];
 
   dontConfigure = true;
 

@@ -267,18 +267,7 @@ in
 {
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "i2pd"
-        "extIp"
-      ]
-      [
-        "services"
-        "i2pd"
-        "address"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "i2pd" "extIp" ] [ "services" "i2pd" "address" ])
   ];
 
   ###### interface
@@ -298,12 +287,7 @@ in
       package = mkPackageOption pkgs "i2pd" { };
 
       logLevel = mkOption {
-        type = types.enum [
-          "debug"
-          "info"
-          "warn"
-          "error"
-        ];
+        type = types.enum [ "debug" "info" "warn" "error" ];
         default = "error";
         description = ''
           The log level. {command}`i2pd` defaults to "info"

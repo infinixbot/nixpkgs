@@ -25,10 +25,7 @@ rustPlatform.buildRustPackage rec {
   LIBCAPNG_LIB_PATH = "${lib.getLib libcap_ng}/lib";
   LIBCAPNG_LINK_TYPE = if stdenv.hostPlatform.isStatic then "static" else "dylib";
 
-  buildInputs = [
-    libcap_ng
-    libseccomp
-  ];
+  buildInputs = [ libcap_ng libseccomp ];
 
   postConfigure = ''
     sed -i "s|/usr/libexec|$out/bin|g" 50-virtiofsd.json
@@ -41,10 +38,7 @@ rustPlatform.buildRustPackage rec {
   meta = with lib; {
     homepage = "https://gitlab.com/virtio-fs/virtiofsd";
     description = "vhost-user virtio-fs device backend written in Rust";
-    maintainers = with maintainers; [
-      qyliss
-      astro
-    ];
+    maintainers = with maintainers; [ qyliss astro ];
     mainProgram = "virtiofsd";
     platforms = platforms.linux;
     license = with licenses; [

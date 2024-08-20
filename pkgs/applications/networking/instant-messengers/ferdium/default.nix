@@ -40,10 +40,7 @@ mkFranzDerivation rec {
     homepage = "https://ferdium.org/";
     license = licenses.asl20;
     maintainers = with maintainers; [ magnouvean ];
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
     hydraPlatforms = [ ];
   };
 }

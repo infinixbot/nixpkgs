@@ -23,11 +23,7 @@ stdenv.mkDerivation rec {
     "INTROSPECTION_TYPELIBDIR=${placeholder "out"}/lib/girepository-1.0"
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    gettext
-    gobject-introspection
-  ];
+  nativeBuildInputs = [ pkg-config gettext gobject-introspection ];
   buildInputs = [ glib ];
 
   passthru = {
@@ -40,10 +36,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "https://gitlab.gnome.org/GNOME/gnome-menus";
     description = "Library that implements freedesktops's Desktop Menu Specification in GNOME";
-    license = with licenses; [
-      gpl2
-      lgpl2
-    ];
+    license = with licenses; [ gpl2 lgpl2 ];
     platforms = platforms.linux;
   };
 }

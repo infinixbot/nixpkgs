@@ -13,10 +13,7 @@ with lib;
 
 {
   imports = [
-    (mkRemovedOptionModule [
-      "ec2"
-      "metadata"
-    ] "")
+    (mkRemovedOptionModule [ "ec2" "metadata" ] "")
   ];
 
   config = {
@@ -24,10 +21,7 @@ with lib;
     systemd.services.apply-ec2-data = {
       description = "Apply EC2 Data";
 
-      wantedBy = [
-        "multi-user.target"
-        "sshd.service"
-      ];
+      wantedBy = [ "multi-user.target" "sshd.service" ];
       before = [ "sshd.service" ];
       after = [ "fetch-ec2-metadata.service" ];
 

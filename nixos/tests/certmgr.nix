@@ -37,10 +37,7 @@ let
       };
       request = {
         CN = host;
-        hosts = [
-          host
-          "www.${host}"
-        ];
+        hosts = [ host "www.${host}" ];
         key = {
           algo = "rsa";
           size = 2048;
@@ -74,17 +71,11 @@ let
             ...
           }:
           {
-            networking.firewall.allowedTCPPorts = with config.services; [
-              cfssl.port
-              certmgr.metricsPort
-            ];
+            networking.firewall.allowedTCPPorts = with config.services; [ cfssl.port certmgr.metricsPort ];
             networking.extraHosts = "127.0.0.1 imp.example.org decl.example.org";
 
             services.cfssl.enable = true;
-            systemd.services.cfssl.after = [
-              "cfssl-init.service"
-              "networking.target"
-            ];
+            systemd.services.cfssl.after = [ "cfssl-init.service" "networking.target" ];
 
             systemd.tmpfiles.rules = [ "d /var/ssl 777 root root" ];
 
@@ -123,23 +114,18 @@ let
             services.nginx = {
               enable = true;
               virtualHosts = lib.mkMerge (
-                map
-                  (host: {
-                    ${host} = {
-                      sslCertificate = "/var/ssl/${host}-cert.pem";
-                      sslCertificateKey = "/var/ssl/${host}-key.pem";
-                      extraConfig = ''
-                        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-                      '';
-                      onlySSL = true;
-                      serverName = host;
-                      root = pkgs.writeTextDir "index.html" "It works!";
-                    };
-                  })
-                  [
-                    "imp.example.org"
-                    "decl.example.org"
-                  ]
+                map (host: {
+                  ${host} = {
+                    sslCertificate = "/var/ssl/${host}-cert.pem";
+                    sslCertificateKey = "/var/ssl/${host}-key.pem";
+                    extraConfig = ''
+                      ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+                    '';
+                    onlySSL = true;
+                    serverName = host;
+                    root = pkgs.writeTextDir "index.html" "It works!";
+                  };
+                }) [ "imp.example.org" "decl.example.org" ]
               );
             };
 

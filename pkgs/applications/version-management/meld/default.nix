@@ -72,10 +72,7 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "https://meld.app/";
     license = licenses.gpl2Plus;
     platforms = platforms.linux ++ platforms.darwin;
-    maintainers = with maintainers; [
-      jtojnar
-      mimame
-    ];
+    maintainers = with maintainers; [ jtojnar mimame ];
     mainProgram = "meld";
   };
 }

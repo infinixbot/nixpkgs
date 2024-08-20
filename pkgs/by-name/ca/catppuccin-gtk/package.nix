@@ -29,22 +29,9 @@ let
     "teal"
     "yellow"
   ];
-  validSizes = [
-    "standard"
-    "compact"
-  ];
-  validTweaks = [
-    "black"
-    "rimless"
-    "normal"
-    "float"
-  ];
-  validVariants = [
-    "latte"
-    "frappe"
-    "macchiato"
-    "mocha"
-  ];
+  validSizes = [ "standard" "compact" ];
+  validTweaks = [ "black" "rimless" "normal" "float" ];
+  validVariants = [ "latte" "frappe" "macchiato" "mocha" ];
 
   pname = "catppuccin-gtk";
   version = "1.0.3";
@@ -110,10 +97,6 @@ lib.checkListOfEnum "${pname}: theme accent" validAccents accents lib.checkListO
       homepage = "https://github.com/catppuccin/gtk";
       license = lib.licenses.gpl3Plus;
       platforms = lib.platforms.all;
-      maintainers = with lib.maintainers; [
-        fufexan
-        dixslyf
-        isabelroses
-      ];
+      maintainers = with lib.maintainers; [ fufexan dixslyf isabelroses ];
     };
   }

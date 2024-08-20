@@ -53,33 +53,18 @@ qtModule {
     qtsensors
     qtwebchannel
   ] ++ lib.optional stdenv.isDarwin qtmultimedia;
-  buildInputs =
-    [
-      fontconfig
-      libwebp
-      libxml2
-      libxslt
-      sqlite
-      glib
-      gst_all_1.gstreamer
-      gst_all_1.gst-plugins-base
-      hyphen
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      ICU
-      OpenGL
-    ];
-  nativeBuildInputs = [
-    bison
-    flex
-    gdb
-    gperf
-    perl
-    pkg-config
-    python3
-    ruby
-    cmake
-  ];
+  buildInputs = [
+    fontconfig
+    libwebp
+    libxml2
+    libxslt
+    sqlite
+    glib
+    gst_all_1.gstreamer
+    gst_all_1.gst-plugins-base
+    hyphen
+  ] ++ lib.optionals stdenv.isDarwin [ ICU OpenGL ];
+  nativeBuildInputs = [ bison flex gdb gperf perl pkg-config python3 ruby cmake ];
 
   cmakeFlags =
     [ "-DPORT=Qt" ]
@@ -111,10 +96,7 @@ qtModule {
   enableParallelBuilding = true;
 
   meta = {
-    maintainers = with lib.maintainers; [
-      abbradar
-      periklis
-    ];
+    maintainers = with lib.maintainers; [ abbradar periklis ];
     knownVulnerabilities = [
       "QtWebkit upstream is unmaintained and receives no security updates, see https://blogs.gnome.org/mcatanzaro/2022/11/04/stop-using-qtwebkit/"
     ];

@@ -32,10 +32,7 @@ mkDerivation rec {
     ${rpmextract}/bin/rpmextract "$src"
   '';
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    rpmextract
-  ];
+  nativeBuildInputs = [ autoPatchelfHook rpmextract ];
 
   buildInputs = [
     alsa-lib
@@ -84,10 +81,7 @@ mkDerivation rec {
   '';
 
   # doc has dependencies on evince that is not required by main app
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   postInstall = ''
     for desktopFile in $out/share/applications/hqplayer4{desktop-nostyle,desktop-highdpi,-client,desktop}.desktop; do

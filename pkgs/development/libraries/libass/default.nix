@@ -26,10 +26,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-6uQl2lDwAVwh97OpxyYqkQ8CGK9GniLikxRi/tPFCVk=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   configureFlags = [
     (lib.enableFeature fontconfigSupport "fontconfig")
@@ -37,17 +34,10 @@ stdenv.mkDerivation rec {
     (lib.enableFeature largeTilesSupport "large-tiles")
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    yasm
-  ];
+  nativeBuildInputs = [ pkg-config yasm ];
 
   buildInputs =
-    [
-      freetype
-      fribidi
-      harfbuzz
-    ]
+    [ freetype fribidi harfbuzz ]
     ++ lib.optional fontconfigSupport fontconfig
     ++ lib.optional stdenv.isDarwin [
       libiconv

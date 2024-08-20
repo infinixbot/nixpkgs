@@ -20,11 +20,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-Xk+iH90Nb2koCdGmVSiRl8Nq26LlFdJBuKmvcbgnkgs=";
 
-  buildInputs = [
-    libxml2
-    ncurses
-    zlib
-  ];
+  buildInputs = [ libxml2 ncurses zlib ];
 
   buildNoDefaultFeatures = true;
   buildFeatures = features;

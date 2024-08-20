@@ -137,10 +137,7 @@ stdenv.mkDerivation {
     echo "user:file_search_path(pack, '$out/lib/swipl/extra-pack')." >> boot/init.pl
   '';
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-  ];
+  nativeBuildInputs = [ cmake ninja ];
 
   buildInputs = [
     libarchive
@@ -175,9 +172,6 @@ stdenv.mkDerivation {
     license = lib.licenses.bsd2;
     mainProgram = "swipl";
     platforms = lib.platforms.linux ++ lib.optionals (!withGui) lib.platforms.darwin;
-    maintainers = [
-      lib.maintainers.meditans
-      lib.maintainers.matko
-    ];
+    maintainers = [ lib.maintainers.meditans lib.maintainers.matko ];
   };
 }

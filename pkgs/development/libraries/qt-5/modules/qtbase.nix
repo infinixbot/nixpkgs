@@ -180,10 +180,7 @@ stdenv.mkDerivation (
         );
 
       buildInputs =
-        [
-          python3
-          at-spi2-core
-        ]
+        [ python3 at-spi2-core ]
         ++ lib.optionals (!stdenv.isDarwin) ([ libinput ] ++ lib.optional withGtk3 gtk3)
         ++ lib.optional developerBuild gdb
         ++ lib.optional (cups != null) cups
@@ -219,11 +216,7 @@ stdenv.mkDerivation (
 
       enableParallelBuilding = true;
 
-      outputs = [
-        "bin"
-        "dev"
-        "out"
-      ];
+      outputs = [ "bin" "dev" "out" ];
 
       inherit patches;
 
@@ -574,18 +567,8 @@ stdenv.mkDerivation (
       meta = with lib; {
         homepage = "https://www.qt.io/";
         description = "Cross-platform application framework for C++";
-        license = with licenses; [
-          fdl13Plus
-          gpl2Plus
-          lgpl21Plus
-          lgpl3Plus
-        ];
-        maintainers = with maintainers; [
-          qknight
-          ttuegel
-          periklis
-          bkchr
-        ];
+        license = with licenses; [ fdl13Plus gpl2Plus lgpl21Plus lgpl3Plus ];
+        maintainers = with maintainers; [ qknight ttuegel periklis bkchr ];
         pkgConfigModules = [
           "Qt5Concurrent"
           "Qt5Core"

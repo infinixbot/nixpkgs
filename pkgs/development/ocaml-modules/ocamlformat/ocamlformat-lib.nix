@@ -27,10 +27,7 @@ buildDunePackage {
   meta = {
     homepage = "https://github.com/ocaml-ppx/ocamlformat";
     description = "Auto-formatter for OCaml code (library)";
-    maintainers = with lib.maintainers; [
-      Zimmi48
-      Julow
-    ];
+    maintainers = with lib.maintainers; [ Zimmi48 Julow ];
     license = lib.licenses.mit;
   };
 }

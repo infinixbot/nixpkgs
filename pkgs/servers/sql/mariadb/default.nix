@@ -63,13 +63,7 @@ let
 
       libExt = stdenv.hostPlatform.extensions.sharedLibrary;
 
-      mytopEnv = buildPackages.perl.withPackages (
-        p: with p; [
-          DBDmysql
-          DBI
-          TermReadKey
-        ]
-      );
+      mytopEnv = buildPackages.perl.withPackages (p: with p; [ DBDmysql DBI TermReadKey ]);
 
       common = rec {
         # attributes common to both builds
@@ -80,16 +74,10 @@ let
           inherit hash;
         };
 
-        outputs = [
-          "out"
-          "man"
-        ];
+        outputs = [ "out" "man" ];
 
         nativeBuildInputs =
-          [
-            cmake
-            pkg-config
-          ]
+          [ cmake pkg-config ]
           ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames
           ++ lib.optional (!stdenv.hostPlatform.isDarwin) makeWrapper;
 
@@ -103,18 +91,9 @@ let
             curl
           ]
           ++ lib.optionals stdenv.hostPlatform.isLinux (
-            [
-              libkrb5
-              systemd
-            ]
-            ++ (if (lib.versionOlder version "10.6") then [ libaio ] else [ liburing ])
+            [ libkrb5 systemd ] ++ (if (lib.versionOlder version "10.6") then [ libaio ] else [ liburing ])
           )
-          ++ lib.optionals stdenv.hostPlatform.isDarwin [
-            CoreServices
-            cctools
-            perl
-            libedit
-          ]
+          ++ lib.optionals stdenv.hostPlatform.isDarwin [ CoreServices cctools perl libedit ]
           ++ lib.optionals (!stdenv.hostPlatform.isDarwin) [ jemalloc ];
 
         prePatch = ''
@@ -191,12 +170,7 @@ let
 
         # perlPackages.DBDmysql is broken on darwin
         postFixup = lib.optionalString (!stdenv.hostPlatform.isDarwin) ''
-          wrapProgram $out/bin/mytop --set PATH ${
-            lib.makeBinPath [
-              less
-              ncurses
-            ]
-          }
+          wrapProgram $out/bin/mytop --set PATH ${lib.makeBinPath [ less ncurses ]}
         '';
 
         passthru.tests =
@@ -257,11 +231,7 @@ let
         // {
           pname = "mariadb-server";
 
-          nativeBuildInputs = common.nativeBuildInputs ++ [
-            bison
-            boost.dev
-            flex
-          ];
+          nativeBuildInputs = common.nativeBuildInputs ++ [ bison boost.dev flex ];
 
           buildInputs =
             common.buildInputs
@@ -280,12 +250,7 @@ let
             ++ lib.optional withNuma numactl
             ++ lib.optionals stdenv.hostPlatform.isLinux [ linux-pam ]
             ++ lib.optional (!stdenv.hostPlatform.isDarwin) mytopEnv
-            ++ lib.optionals withStorageMroonga [
-              kytea
-              libsodium
-              msgpack
-              zeromq
-            ]
+            ++ lib.optionals withStorageMroonga [ kytea libsodium msgpack zeromq ]
             ++ lib.optionals (lib.versionAtLeast common.version "10.7") [ fmt_8 ];
 
           propagatedBuildInputs = lib.optional withNuma numactl;

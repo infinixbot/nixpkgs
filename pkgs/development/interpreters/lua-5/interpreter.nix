@@ -62,10 +62,7 @@ stdenv.mkDerivation (
   {
     pname = "lua";
     inherit version;
-    outputs = [
-      "out"
-      "doc"
-    ];
+    outputs = [ "out" "doc" ];
 
     src = fetchurl {
       url = "https://www.lua.org/ftp/lua-${finalAttrs.version}.tar.gz";

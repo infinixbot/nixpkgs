@@ -39,9 +39,6 @@ stdenv.mkDerivation {
     '';
     homepage = "https://github.com/bpeel/revo";
     license = lib.licenses.gpl2Only;
-    maintainers = with lib.maintainers; [
-      das-g
-      ehmry
-    ];
+    maintainers = with lib.maintainers; [ das-g ehmry ];
   };
 }

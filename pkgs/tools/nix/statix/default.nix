@@ -32,9 +32,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/nerdypepper/statix";
     license = licenses.mit;
     mainProgram = "statix";
-    maintainers = with maintainers; [
-      figsoda
-      nerdypepper
-    ];
+    maintainers = with maintainers; [ figsoda nerdypepper ];
   };
 }

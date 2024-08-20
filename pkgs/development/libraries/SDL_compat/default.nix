@@ -35,11 +35,7 @@ stdenv.mkDerivation rec {
 
   propagatedBuildInputs =
     [ SDL2 ]
-    ++ optionals stdenv.hostPlatform.isDarwin [
-      libiconv
-      Cocoa
-    ]
-    ++ optionals openglSupport [ libGLU ];
+    ++ optionals stdenv.hostPlatform.isDarwin [ libiconv Cocoa ] ++ optionals openglSupport [ libGLU ];
 
   enableParallelBuilding = true;
 

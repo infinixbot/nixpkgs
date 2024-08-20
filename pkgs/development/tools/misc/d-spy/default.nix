@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
   pname = "d-spy";
   version = "1.10.0";
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-  ];
+  outputs = [ "out" "lib" "dev" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/d-spy/${lib.versions.majorMinor version}/d-spy-${version}.tar.xz";

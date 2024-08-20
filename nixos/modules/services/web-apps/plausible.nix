@@ -81,11 +81,7 @@ in
     server = {
       disableRegistration = mkOption {
         default = true;
-        type = types.enum [
-          true
-          false
-          "invite_only"
-        ];
+        type = types.enum [ true false "invite_only" ];
         description = ''
           Whether to prohibit creating an account in plausible's UI or allow on `invite_only`.
         '';
@@ -177,12 +173,7 @@ in
   };
 
   imports = [
-    (mkRemovedOptionModule
-      [
-        "services"
-        "plausible"
-        "releaseCookiePath"
-      ]
+    (mkRemovedOptionModule [ "services" "plausible" "releaseCookiePath" ]
       "Plausible uses no distributed Erlang features, so this option is no longer necessary and was removed"
     )
   ];

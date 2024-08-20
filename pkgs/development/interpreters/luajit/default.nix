@@ -160,12 +160,7 @@ stdenv.mkDerivation (finalAttrs: {
         "riscv64-linux" # See https://github.com/LuaJIT/LuaJIT/issues/628
         "powerpc64le-linux" # `#error "No support for PPC64"`
       ];
-      maintainers = with maintainers; [
-        thoughtpolice
-        smironov
-        vcunat
-        lblasc
-      ];
+      maintainers = with maintainers; [ thoughtpolice smironov vcunat lblasc ];
     }
     // extraMeta;
 })

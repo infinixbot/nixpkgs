@@ -17,11 +17,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-4aotsOippuKUucweWERtqm/5pz2gwW1Sue48KPisQ0I=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    unzip
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ makeWrapper unzip wrapGAppsHook3 ];
   # For wrapGAppsHook3 setup hook
   buildInputs = [ (jre.gtk3 or null) ];
 

@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-t3Y576dXWp2Mj6OSQN5cm9FuNBWNqKq6xxkVRbjIBgE=";
   };
 
-  nativeBuildInputs = [
-    copyDesktopItems
-    makeWrapper
-  ];
+  nativeBuildInputs = [ copyDesktopItems makeWrapper ];
   buildInputs = [ jdk ];
 
   buildPhase = ''

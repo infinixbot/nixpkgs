@@ -41,12 +41,7 @@ let
             List of source directories and files to backup. Globs and tildes are
             expanded. Do not backslash spaces in path names.
           '';
-          example = [
-            "/home"
-            "/etc"
-            "/var/log/syslog*"
-            "/home/user/path with spaces"
-          ];
+          example = [ "/home" "/etc" "/var/log/syslog*" "/home/user/path with spaces" ];
         };
         repositories = mkOption {
           type = listOf repository;

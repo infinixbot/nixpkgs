@@ -51,18 +51,7 @@ in
 {
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "searx"
-        "configFile"
-      ]
-      [
-        "services"
-        "searx"
-        "settingsFile"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "searx" "configFile" ] [ "services" "searx" "settingsFile" ])
   ];
 
   options = {
@@ -234,10 +223,7 @@ in
 
     systemd.services.searx = mkIf (!cfg.runInUwsgi) {
       description = "Searx server, the meta search engine.";
-      wantedBy = [
-        "network.target"
-        "multi-user.target"
-      ];
+      wantedBy = [ "network.target" "multi-user.target" ];
       requires = [ "searx-init.service" ];
       after = [ "searx-init.service" ];
       serviceConfig =
@@ -301,8 +287,5 @@ in
     };
   };
 
-  meta.maintainers = with maintainers; [
-    rnhmjoj
-    _999eagle
-  ];
+  meta.maintainers = with maintainers; [ rnhmjoj _999eagle ];
 }

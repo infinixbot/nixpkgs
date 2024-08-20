@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-6LjR1ZMZsi6toz9swPzNmSAlrUykwvVdYi1mR8Ctq5U=";
   };
 
-  buildInputs = [
-    libuv
-    lz4
-    zlib
-  ];
+  buildInputs = [ libuv lz4 zlib ];
 
   makeFlags = [ "PREFIX=$(out)" ];
 

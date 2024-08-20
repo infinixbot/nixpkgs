@@ -11,10 +11,7 @@ import ./make-test-python.nix (
       {
         security.polkit.enable = true;
         services.power-profiles-daemon.enable = true;
-        environment.systemPackages = [
-          pkgs.glib
-          pkgs.power-profiles-daemon
-        ];
+        environment.systemPackages = [ pkgs.glib pkgs.power-profiles-daemon ];
       };
 
     testScript = ''

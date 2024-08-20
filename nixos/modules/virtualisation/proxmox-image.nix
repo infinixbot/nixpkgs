@@ -59,10 +59,7 @@ with lib;
         '';
       };
       bios = mkOption {
-        type = types.enum [
-          "seabios"
-          "ovmf"
-        ];
+        type = types.enum [ "seabios" "ovmf" ];
         default = "seabios";
         description = ''
           Select BIOS implementation (seabios = Legacy BIOS, ovmf = UEFI).
@@ -132,12 +129,7 @@ with lib;
       };
     };
     qemuExtraConf = mkOption {
-      type =
-        with types;
-        attrsOf (oneOf [
-          str
-          int
-        ]);
+      type = with types; attrsOf (oneOf [ str int ]);
       default = { };
       example = literalExpression ''
         {
@@ -150,12 +142,7 @@ with lib;
       '';
     };
     partitionTableType = mkOption {
-      type = types.enum [
-        "efi"
-        "hybrid"
-        "legacy"
-        "legacy+gpt"
-      ];
+      type = types.enum [ "efi" "hybrid" "legacy" "legacy+gpt" ];
       description = ''
         Partition table type to use. See make-disk-image.nix partitionTableType for details.
         Defaults to 'legacy' for 'proxmox.qemuConf.bios="seabios"' (default), other bios values defaults to 'efi'.
@@ -328,11 +315,7 @@ with lib;
         };
 
         loader.timeout = 0;
-        initrd.availableKernelModules = [
-          "uas"
-          "virtio_blk"
-          "virtio_pci"
-        ];
+        initrd.availableKernelModules = [ "uas" "virtio_blk" "virtio_pci" ];
       };
 
       fileSystems."/" = {

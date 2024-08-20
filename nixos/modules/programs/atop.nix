@@ -111,10 +111,7 @@ in
           '') cfg.settings
         );
       };
-      environment.systemPackages = [
-        atop
-        (lib.mkIf cfg.netatop.enable cfg.netatop.package)
-      ];
+      environment.systemPackages = [ atop (lib.mkIf cfg.netatop.enable cfg.netatop.package) ];
       boot.extraModulePackages = [ (lib.mkIf cfg.netatop.enable cfg.netatop.package) ];
       systemd =
         let
@@ -137,10 +134,7 @@ in
           mkTimer = mkSystemd "timers";
         in
         {
-          packages = [
-            atop
-            (lib.mkIf cfg.netatop.enable cfg.netatop.package)
-          ];
+          packages = [ atop (lib.mkIf cfg.netatop.enable cfg.netatop.package) ];
           services = lib.mkMerge [
             (lib.mkIf cfg.atopService.enable (
               lib.recursiveUpdate (mkService "atop" [ atop ]) {

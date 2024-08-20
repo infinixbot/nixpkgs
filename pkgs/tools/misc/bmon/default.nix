@@ -31,15 +31,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
-  buildInputs = [
-    ncurses
-    libconfuse
-  ] ++ lib.optional stdenv.isLinux libnl;
+  buildInputs = [ ncurses libconfuse ] ++ lib.optional stdenv.isLinux libnl;
 
   preConfigure = ''
     # Must be an absolute path
@@ -54,10 +48,7 @@ stdenv.mkDerivation rec {
     #  - https://github.com/tgraf/bmon/blob/master/LICENSE.MIT
     license = licenses.bsd2;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      bjornfor
-      pSub
-    ];
+    maintainers = with maintainers; [ bjornfor pSub ];
     mainProgram = "bmon";
   };
 }

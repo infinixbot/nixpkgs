@@ -87,10 +87,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Library for reading & writing the E57 file format";
     homepage = "https://github.com/asmaloney/libE57Format";
     license = licenses.boost;
-    maintainers = with maintainers; [
-      chpatrick
-      nh2
-    ];
+    maintainers = with maintainers; [ chpatrick nh2 ];
     platforms = platforms.linux; # because of the .so buiding in `postInstall` above
   };
 })

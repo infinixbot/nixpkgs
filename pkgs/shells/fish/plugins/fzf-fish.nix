@@ -25,16 +25,8 @@ buildFishPlugin rec {
     hash = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
   };
 
-  nativeCheckInputs = [
-    fzf
-    fd
-    unixtools.script
-    procps
-  ];
-  checkPlugins = [
-    clownfish
-    fishtape_3
-  ];
+  nativeCheckInputs = [ fzf fd unixtools.script procps ];
+  checkPlugins = [ clownfish fishtape_3 ];
   checkFunctionDirs = [ "./functions" ];
   checkPhase =
     ''
@@ -63,9 +55,6 @@ buildFishPlugin rec {
     homepage = "https://github.com/PatrickF1/fzf.fish";
     changelog = "https://github.com/PatrickF1/fzf.fish/releases/tag/${src.rev}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      pacien
-      natsukium
-    ];
+    maintainers = with maintainers; [ pacien natsukium ];
   };
 }

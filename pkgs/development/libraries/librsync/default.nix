@@ -21,12 +21,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    perl
-    zlib
-    bzip2
-    popt
-  ];
+  buildInputs = [ perl zlib bzip2 popt ];
 
   dontStrip = stdenv.hostPlatform != stdenv.buildPlatform;
 

@@ -121,10 +121,7 @@ stdenv.mkDerivation rec {
     mkdir -p "$out/lib/udev/rules.d"
   '';
 
-  installTargets = [
-    "install"
-    "udev-install"
-  ];
+  installTargets = [ "install" "udev-install" ];
 
   # remove binaries for x-less install because xgps sconsflag is partially broken
   postFixup = ''
@@ -155,9 +152,6 @@ stdenv.mkDerivation rec {
     changelog = "https://gitlab.com/gpsd/gpsd/-/blob/release-${version}/NEWS";
     license = licenses.bsd2;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      bjornfor
-      rasendubi
-    ];
+    maintainers = with maintainers; [ bjornfor rasendubi ];
   };
 }

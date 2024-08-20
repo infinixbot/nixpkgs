@@ -54,12 +54,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   postInstall = ''
     wrapProgram $out/bin/wio \
-      --prefix PATH ":" "${
-        lib.makeBinPath [
-          alacritty
-          cage
-        ]
-      }"
+      --prefix PATH ":" "${lib.makeBinPath [ alacritty cage ]}"
   '';
 
   passthru = {

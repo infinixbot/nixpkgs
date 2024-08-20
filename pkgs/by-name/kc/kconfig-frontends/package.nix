@@ -28,12 +28,7 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "lib" "dev" "doc" ];
 
   nativeBuildInputs = [
     bison

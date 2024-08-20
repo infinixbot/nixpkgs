@@ -46,10 +46,7 @@ stdenv.mkDerivation rec {
       omniORB is largely CORBA 2.6 compliant.
     '';
     homepage = "http://omniorb.sourceforge.net/";
-    license = with licenses; [
-      gpl2Plus
-      lgpl21Plus
-    ];
+    license = with licenses; [ gpl2Plus lgpl21Plus ];
     maintainers = with maintainers; [ smironov ];
     platforms = platforms.unix;
   };

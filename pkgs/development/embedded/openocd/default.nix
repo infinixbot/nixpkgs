@@ -30,19 +30,11 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-ryVHiL6Yhh8r2RA/5uYKd07Jaow3R0Tu+Rl/YEMHWvo=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    tcl
-  ];
+  nativeBuildInputs = [ pkg-config tcl ];
 
   buildInputs =
     [ libusb1 ]
-    ++ lib.optionals notWindows [
-      hidapi
-      jimtcl
-      libftdi1
-      libjaylink
-    ]
+    ++ lib.optionals notWindows [ hidapi jimtcl libftdi1 libjaylink ]
     ++
       # tracking issue for v2 api changes https://sourceforge.net/p/openocd/tickets/306/
       lib.optional stdenv.isLinux libgpiod_1;
@@ -92,10 +84,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://openocd.sourceforge.net/";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      bjornfor
-      prusnak
-    ];
+    maintainers = with maintainers; [ bjornfor prusnak ];
     platforms = platforms.unix ++ platforms.windows;
   };
 }

@@ -18,18 +18,12 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   nativeBuildInputs = kernel.moduleBuildDependencies;
-  buildInputs = [
-    libgcrypt
-    lvm2
-  ];
+  buildInputs = [ libgcrypt lvm2 ];
   makeFlags = kernel.makeFlags ++ [
     "KERNEL_DIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
   ];
 
-  outputs = [
-    "out"
-    "bin"
-  ];
+  outputs = [ "out" "bin" ];
 
   installPhase = ''
     install -Dm444 dm-sflc.ko $out/lib/modules/${kernel.modDirVersion}/drivers/md/dm-sflc.ko

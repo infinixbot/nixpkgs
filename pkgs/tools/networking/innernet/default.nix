@@ -66,9 +66,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/tonarino/innernet";
     changelog = "https://github.com/tonarino/innernet/releases/tag/v${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      tomberek
-      _0x4A6F
-    ];
+    maintainers = with maintainers; [ tomberek _0x4A6F ];
   };
 }

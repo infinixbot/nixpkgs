@@ -21,17 +21,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-5GUna5k8GhAx1Xe8n9IvXT7IO6gksxCLh+sMANlxTBM=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    autoconf-archive
-    txt2man
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config autoconf-archive txt2man ];
 
-  buildInputs = [
-    gettext
-    libssl
-  ];
+  buildInputs = [ gettext libssl ];
 
   installFlags = [ "ETCDIR=${placeholder "out"}/etc" ];
 

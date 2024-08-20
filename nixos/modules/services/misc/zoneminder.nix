@@ -32,12 +32,7 @@ let
   dirs = dirList: [ dirName ] ++ map (e: "${dirName}/${e}") dirList;
 
   cacheDirs = [ "swap" ];
-  libDirs = [
-    "events"
-    "exports"
-    "images"
-    "sounds"
-  ];
+  libDirs = [ "events" "exports" "images" "sounds" ];
 
   dirStanzas =
     baseDir: lib.concatStringsSep "\n" (map (e: "ZM_DIR_${lib.toUpper e}=${baseDir}/${e}") libDirs);
@@ -89,10 +84,7 @@ in
       '';
 
       webserver = mkOption {
-        type = types.enum [
-          "nginx"
-          "none"
-        ];
+        type = types.enum [ "nginx" "none" ];
         default = "nginx";
         description = ''
           The webserver to configure for the PHP frontend.
@@ -308,14 +300,7 @@ in
       phpfpm = lib.mkIf useNginx {
         pools.zoneminder = {
           inherit user group;
-          phpPackage = pkgs.php.withExtensions (
-            { enabled, all }:
-            enabled
-            ++ [
-              all.apcu
-              all.sysvsem
-            ]
-          );
+          phpPackage = pkgs.php.withExtensions ({ enabled, all }: enabled ++ [ all.apcu all.sysvsem ]);
           phpOptions = ''
             date.timezone = "${config.time.timeZone}"
           '';
@@ -348,10 +333,7 @@ in
         ];
         after = [ "nginx.service" ] ++ lib.optional cfg.database.createLocally "mysql.service";
         wantedBy = [ "multi-user.target" ];
-        restartTriggers = [
-          defaultsFile
-          configFile
-        ];
+        restartTriggers = [ defaultsFile configFile ];
         preStart =
           lib.optionalString useCustomDir ''
             install -dm775 -o ${user} -g ${group} ${cfg.storageDir}/{${lib.concatStringsSep "," libDirs}}

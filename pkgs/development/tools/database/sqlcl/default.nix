@@ -16,10 +16,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-22cLWfeEqJm48KeUDDIMOnPu/R8oEAtBNBn3slfMGAE=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    unzip
-  ];
+  nativeBuildInputs = [ makeWrapper unzip ];
 
   unpackCmd = "unzip $curSrc";
 

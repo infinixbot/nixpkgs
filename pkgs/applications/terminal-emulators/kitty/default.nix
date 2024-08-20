@@ -123,12 +123,7 @@ buildPythonApplication rec {
       libicns # For the png2icns tool.
     ];
 
-  outputs = [
-    "out"
-    "terminfo"
-    "shell_integration"
-    "kitten"
-  ];
+  outputs = [ "out" "terminfo" "shell_integration" "kitten" ];
 
   patches = [
     # Gets `test_ssh_env_vars` to pass when `bzip2` is in the output of `env`.
@@ -270,10 +265,7 @@ buildPythonApplication rec {
     # dereference the `kitty` symlink to make sure the actual executable
     # is wrapped on macOS as well (and not just the symlink)
     wrapProgram $(realpath "$out/bin/kitty") --prefix PATH : "$out/bin:${
-      lib.makeBinPath [
-        imagemagick
-        ncurses.dev
-      ]
+      lib.makeBinPath [ imagemagick ncurses.dev ]
     }"
 
     installShellCompletion --cmd kitty \
@@ -316,11 +308,6 @@ buildPythonApplication rec {
     ];
     platforms = platforms.darwin ++ platforms.linux;
     mainProgram = "kitty";
-    maintainers = with maintainers; [
-      tex
-      rvolosatovs
-      Luflosi
-      kashw2
-    ];
+    maintainers = with maintainers; [ tex rvolosatovs Luflosi kashw2 ];
   };
 }

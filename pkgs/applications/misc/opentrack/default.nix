@@ -40,22 +40,8 @@ mkDerivation {
     sha256 = "sha256-8gpNORTJclYUYp57Vw/0YO3XC9Idurt0a79fhqx0+mo=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    ninja
-    copyDesktopItems
-  ];
-  buildInputs = [
-    qtbase
-    qttools
-    opencv4
-    procps
-    eigen
-    libXdmcp
-    libevdev
-    aruco
-  ];
+  nativeBuildInputs = [ cmake pkg-config ninja copyDesktopItems ];
+  buildInputs = [ qtbase qttools opencv4 procps eigen libXdmcp libevdev aruco ];
 
   env.NIX_CFLAGS_COMPILE = "-Wall -Wextra -Wpedantic -ffast-math -O3";
   dontWrapQtApps = true;

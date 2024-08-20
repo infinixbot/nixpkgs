@@ -29,9 +29,6 @@ buildGoModule rec {
     description = "Dnsmasq exporter for Prometheus";
     mainProgram = "dnsmasq_exporter";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      willibutz
-      globin
-    ];
+    maintainers = with maintainers; [ willibutz globin ];
   };
 }

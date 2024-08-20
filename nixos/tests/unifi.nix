@@ -17,10 +17,7 @@ let
     makeTest {
       name = "unifi-controller-${unifi.version}";
       meta = with pkgs.lib.maintainers; {
-        maintainers = [
-          patryk27
-          zhaofengli
-        ];
+        maintainers = [ patryk27 zhaofengli ];
       };
 
       nodes.server = {

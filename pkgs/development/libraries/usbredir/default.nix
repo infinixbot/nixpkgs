@@ -41,10 +41,7 @@ stdenv.mkDerivation rec {
     "-Dfuzzing=disabled"
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   meta = with lib; {
     description = "USB traffic redirection protocol";

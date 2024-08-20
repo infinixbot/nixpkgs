@@ -52,22 +52,12 @@ stdenvNoCC.mkDerivation (
     '';
 
     passthru = {
-      updateScript = [
-        ./update-grafana-plugin.sh
-        pname
-      ];
+      updateScript = [ ./update-grafana-plugin.sh pname ];
     } // passthru;
 
     meta = {
       homepage = "https://grafana.com/grafana/plugins/${pname}";
     } // meta;
   }
-  // (builtins.removeAttrs args [
-    "zipHash"
-    "pname"
-    "versionPrefix"
-    "version"
-    "sha256"
-    "meta"
-  ])
+  // (builtins.removeAttrs args [ "zipHash" "pname" "versionPrefix" "version" "sha256" "meta" ])
 )

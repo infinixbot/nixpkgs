@@ -53,10 +53,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/latex-lsp/texlab";
     changelog = "https://github.com/latex-lsp/texlab/blob/v${version}/CHANGELOG.md";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      doronbehar
-      kira-bruneau
-    ];
+    maintainers = with maintainers; [ doronbehar kira-bruneau ];
     platforms = platforms.all;
     mainProgram = "texlab";
   };

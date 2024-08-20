@@ -31,17 +31,11 @@ stdenv.mkDerivation {
   pname = "apache_datasketches";
   inherit version;
 
-  srcs = [
-    main_src
-    cpp_src
-  ];
+  srcs = [ main_src cpp_src ];
 
   sourceRoot = main_src.name;
 
-  buildInputs = [
-    postgresql
-    boost182
-  ];
+  buildInputs = [ postgresql boost182 ];
 
   patchPhase = ''
     runHook prePatch

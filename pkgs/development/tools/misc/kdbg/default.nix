@@ -22,19 +22,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-aLX/0GXof77NqQj7I7FUCZjyDtF1P8MJ4/NHJNm4Yr0=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    extra-cmake-modules
-    makeWrapper
-  ];
-  buildInputs = [
-    qt5.qtbase
-    ki18n
-    kconfig
-    kiconthemes
-    kxmlgui
-    kwindowsystem
-  ];
+  nativeBuildInputs = [ cmake extra-cmake-modules makeWrapper ];
+  buildInputs = [ qt5.qtbase ki18n kconfig kiconthemes kxmlgui kwindowsystem ];
 
   postInstall = ''
     wrapProgram $out/bin/kdbg --prefix QT_PLUGIN_PATH : ${qtbase}/${qtbase.qtPluginPrefix}

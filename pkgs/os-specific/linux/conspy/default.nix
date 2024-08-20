@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
     curlOpts = " -A application/octet-stream ";
   };
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-  ];
+  nativeBuildInputs = [ autoconf automake ];
   buildInputs = [
     ncurses
   ];

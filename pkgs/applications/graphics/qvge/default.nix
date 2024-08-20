@@ -30,10 +30,7 @@ stdenv.mkDerivation rec {
     }
   );
 
-  nativeBuildInputs = [
-    wrapQtAppsHook
-    qmake
-  ];
+  nativeBuildInputs = [ wrapQtAppsHook qmake ];
 
   buildInputs = if stdenv.isDarwin then [ qtsvg ] else [ qtx11extras ];
 

@@ -50,15 +50,7 @@
     version = "2.8.1";
   };
   fpm = {
-    dependencies = [
-      "arr-pm"
-      "backports"
-      "cabin"
-      "clamp"
-      "pleaserun"
-      "rexml"
-      "stud"
-    ];
+    dependencies = [ "arr-pm" "backports" "cabin" "clamp" "pleaserun" "rexml" "stud" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -89,14 +81,7 @@
     version = "0.99.8";
   };
   pleaserun = {
-    dependencies = [
-      "cabin"
-      "clamp"
-      "dotenv"
-      "insist"
-      "mustache"
-      "stud"
-    ];
+    dependencies = [ "cabin" "clamp" "dotenv" "insist" "mustache" "stud" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

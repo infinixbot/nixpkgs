@@ -22,10 +22,7 @@ flutter322.buildFlutterApplication {
   };
   pubspecLock = lib.importJSON ./pubspec.lock.json;
 
-  nativeBuildInputs = [
-    patchelf
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ patchelf copyDesktopItems ];
   buildInputs = [ mpv-unwrapped ];
 
   gitHashes = {

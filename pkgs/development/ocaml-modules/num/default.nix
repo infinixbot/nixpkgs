@@ -26,10 +26,7 @@ stdenv.mkDerivation (
       })
     ] ++ lib.optional withStatic ./enable-static.patch;
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-    ];
+    nativeBuildInputs = [ ocaml findlib ];
 
     strictDeps = true;
 

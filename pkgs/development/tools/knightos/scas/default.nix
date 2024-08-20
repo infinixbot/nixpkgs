@@ -31,11 +31,7 @@ stdenv.mkDerivation rec {
   strictDeps = true;
 
   depsBuildBuild = lib.optionals isCrossCompiling [ buildPackages.knightos-scas ];
-  nativeBuildInputs = [
-    asciidoc
-    libxslt.bin
-    cmake
-  ];
+  nativeBuildInputs = [ asciidoc libxslt.bin cmake ];
 
   env.NIX_CFLAGS_COMPILE = toString (
     lib.optionals stdenv.cc.isClang [

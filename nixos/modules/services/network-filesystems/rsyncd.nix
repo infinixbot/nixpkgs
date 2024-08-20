@@ -41,10 +41,7 @@ in
           cvs = {
             path = "/data/cvs";
             comment = "CVS repository (requires authentication)";
-            "auth users" = [
-              "tridge"
-              "susan"
-            ];
+            "auth users" = [ "tridge" "susan" ];
             "secrets file" = "/etc/rsyncd.secrets";
           };
         };
@@ -101,10 +98,7 @@ in
 
           description = "fast remote file copy program daemon";
           after = [ "network.target" ];
-          documentation = [
-            "man:rsync(1)"
-            "man:rsyncd.conf(5)"
-          ];
+          documentation = [ "man:rsync(1)" "man:rsyncd.conf(5)" ];
 
           serviceConfig = serviceConfigSecurity // {
             ExecStart = "${pkgs.rsync}/bin/rsync --daemon --no-detach --config=${configFile}";

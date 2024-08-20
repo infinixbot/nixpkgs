@@ -23,8 +23,5 @@ in
     environment.systemPackages = [ ryzen-smu ];
   };
 
-  meta.maintainers = with lib.maintainers; [
-    Cryolitia
-    phdyellow
-  ];
+  meta.maintainers = with lib.maintainers; [ Cryolitia phdyellow ];
 }

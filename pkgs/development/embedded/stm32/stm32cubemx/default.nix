@@ -24,11 +24,7 @@ let
       stripRoot = false;
     };
 
-    nativeBuildInputs = [
-      fdupes
-      icoutils
-      imagemagick
-    ];
+    nativeBuildInputs = [ fdupes icoutils imagemagick ];
     desktopItem = makeDesktopItem {
       name = "STM32CubeMX";
       exec = "stm32cubemx";
@@ -85,10 +81,7 @@ let
       homepage = "https://www.st.com/en/development-tools/stm32cubemx.html";
       sourceProvenance = with sourceTypes; [ binaryBytecode ];
       license = licenses.unfree;
-      maintainers = with maintainers; [
-        angaz
-        wucke13
-      ];
+      maintainers = with maintainers; [ angaz wucke13 ];
       platforms = [ "x86_64-linux" ];
     };
   };

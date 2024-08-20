@@ -23,13 +23,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    cairo
-    glib
-    libGLU
-    lv2
-    pango
-  ];
+  buildInputs = [ cairo glib libGLU lv2 pango ];
 
   makeFlags = [
     "PREFIX=$(out)"
@@ -41,10 +35,7 @@ stdenv.mkDerivation rec {
     broken = (stdenv.isLinux && stdenv.isAarch64);
     description = "Drum sample player LV2 plugin dedicated to Glen MacArthur's AVLdrums";
     homepage = "https://x42-plugins.com/x42/x42-avldrums";
-    maintainers = with maintainers; [
-      magnetophon
-      orivej
-    ];
+    maintainers = with maintainers; [ magnetophon orivej ];
     license = licenses.gpl2Plus;
     platforms = platforms.linux;
   };

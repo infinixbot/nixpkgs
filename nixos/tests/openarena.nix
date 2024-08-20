@@ -22,12 +22,7 @@ import ./make-test-python.nix (
       server = {
         services.openarena = {
           enable = true;
-          extraFlags = [
-            "+set g_gametype 0"
-            "+map oa_dm7"
-            "+addbot Angelyss"
-            "+addbot Arachna"
-          ];
+          extraFlags = [ "+set g_gametype 0" "+map oa_dm7" "+addbot Angelyss" "+addbot Arachna" ];
           openPorts = true;
         };
       };

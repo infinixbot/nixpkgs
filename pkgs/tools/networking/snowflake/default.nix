@@ -23,10 +23,7 @@ buildGoModule rec {
     description = "System to defeat internet censorship";
     homepage = "https://snowflake.torproject.org/";
     changelog = "https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/-/raw/v${version}/ChangeLog";
-    maintainers = with maintainers; [
-      bbjubjub
-      yayayayaka
-    ];
+    maintainers = with maintainers; [ bbjubjub yayayayaka ];
     license = licenses.bsd3;
   };
 }

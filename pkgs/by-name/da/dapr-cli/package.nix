@@ -47,10 +47,7 @@ buildGoModule rec {
     description = "CLI for managing Dapr, the distributed application runtime";
     homepage = "https://dapr.io";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      joshvanl
-      lucperkins
-    ];
+    maintainers = with maintainers; [ joshvanl lucperkins ];
     mainProgram = "dapr";
   };
 }

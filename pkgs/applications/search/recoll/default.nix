@@ -214,10 +214,7 @@ mkDerivation rec {
     changelog = "https://www.recoll.org/pages/release-history.html";
     license = licenses.gpl2Plus;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      jcumming
-      ehmry
-    ];
+    maintainers = with maintainers; [ jcumming ehmry ];
 
     # `Makefile.am` assumes the ability to run the hostPlatform's python binary at build time
     broken = withPython && (with stdenv; !buildPlatform.canExecute hostPlatform);

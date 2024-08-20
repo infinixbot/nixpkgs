@@ -21,16 +21,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-cLOkXA4kQ15M5TheXy9qZq2je05iY9jwf3tHw20l1Pw=";
   };
 
-  buildInputs = [
-    xapian
-    icu
-    sqlite
-  ];
+  buildInputs = [ xapian icu sqlite ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
   preConfigure = ''
     export PANDOC=false
@@ -46,10 +39,7 @@ stdenv.mkDerivation rec {
     description = "Dovecot FTS plugin based on Xapian";
     changelog = "https://github.com/grosjo/fts-xapian/releases";
     license = licenses.lgpl21Only;
-    maintainers = with maintainers; [
-      julm
-      symphorien
-    ];
+    maintainers = with maintainers; [ julm symphorien ];
     platforms = platforms.unix;
     broken = stdenv.isDarwin; # never built on Hydra https://hydra.nixos.org/job/nixpkgs/trunk/dovecot_fts_xapian.x86_64-darwin
   };

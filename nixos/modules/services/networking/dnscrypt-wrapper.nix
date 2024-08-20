@@ -107,17 +107,10 @@ let
 
       configureFlags = optional stdenv.isLinux "--with-systemd";
 
-      nativeBuildInputs = [
-        autoreconfHook
-        pkg-config
-      ];
+      nativeBuildInputs = [ autoreconfHook pkg-config ];
 
       # <ldns/ldns.h> depends on <openssl/ssl.h>
-      buildInputs = [
-        libsodium
-        openssl.dev
-        ldns
-      ] ++ optional stdenv.isLinux systemd;
+      buildInputs = [ libsodium openssl.dev ldns ] ++ optional stdenv.isLinux systemd;
 
       postInstall = ''
         # Previous versions required libtool files to load plugins; they are
@@ -259,12 +252,7 @@ in
       requires = [ "dnscrypt-wrapper.service" ];
       description = "Rotates DNSCrypt wrapper keys if soon to expire";
 
-      path = with pkgs; [
-        dnscrypt-wrapper
-        dnscrypt-proxy1
-        gawk
-        procps
-      ];
+      path = with pkgs; [ dnscrypt-wrapper dnscrypt-proxy1 gawk procps ];
       script = rotateKeys;
       serviceConfig.User = "dnscrypt-wrapper";
     };

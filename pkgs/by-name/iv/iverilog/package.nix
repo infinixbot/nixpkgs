@@ -26,12 +26,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-J9hedSmC6mFVcoDnXBtaTXigxrSCFa2AhhFd77ueo7I=";
   };
 
-  nativeBuildInputs = [
-    autoconf
-    bison
-    flex
-    gperf
-  ];
+  nativeBuildInputs = [ autoconf bison flex gperf ];
 
   CC_FOR_BUILD = "${stdenv.cc}/bin/cc";
   CXX_FOR_BUILD = "${stdenv.cc}/bin/c++";
@@ -45,12 +40,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [
-    bzip2
-    ncurses
-    readline
-    zlib
-  ];
+  buildInputs = [ bzip2 ncurses readline zlib ];
 
   preConfigure = "sh autoconf.sh";
 
@@ -87,10 +77,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Icarus Verilog compiler";
     homepage = "http://iverilog.icarus.com/"; # https does not work
-    license = with licenses; [
-      gpl2Plus
-      lgpl21Plus
-    ];
+    license = with licenses; [ gpl2Plus lgpl21Plus ];
     maintainers = with maintainers; [ thoughtpolice ];
     platforms = platforms.all;
   };

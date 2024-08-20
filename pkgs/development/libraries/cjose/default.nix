@@ -30,15 +30,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    doxygen
-  ];
-  buildInputs = [
-    jansson
-    openssl
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config doxygen ];
+  buildInputs = [ jansson openssl ];
   nativeCheckInputs = [ check ];
 
   configureFlags = [

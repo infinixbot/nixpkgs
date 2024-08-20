@@ -46,10 +46,7 @@ python3Packages.buildPythonPackage rec {
       comment = meta.description;
       terminal = false;
       type = "Application";
-      categories = [
-        "FileTools"
-        "Utility"
-      ];
+      categories = [ "FileTools" "Utility" ];
     })
   ];
 
@@ -124,10 +121,7 @@ python3Packages.buildPythonPackage rec {
     runHook postCheck
   '';
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   installPhase =
     ''
@@ -166,21 +160,13 @@ python3Packages.buildPythonPackage rec {
   dontWrapQtApps = true;
   preFixup = ''
     makeWrapperArgs+=("''${qtWrapperArgs[@]}")
-    makeWrapperArgs+=(--prefix PATH : ${
-      lib.makeBinPath [
-        ffmpeg
-        miniupnpc
-      ]
-    })
+    makeWrapperArgs+=(--prefix PATH : ${lib.makeBinPath [ ffmpeg miniupnpc ]})
   '';
 
   meta = with lib; {
     description = "Danbooru-like image tagging and searching system for the desktop";
     license = licenses.wtfpl;
     homepage = "https://hydrusnetwork.github.io/hydrus/";
-    maintainers = with maintainers; [
-      dandellion
-      evanjs
-    ];
+    maintainers = with maintainers; [ dandellion evanjs ];
   };
 }

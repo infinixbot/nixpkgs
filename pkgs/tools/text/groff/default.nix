@@ -34,13 +34,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-a5dX9ZK3UYtJAutq9+VFcL3Mujeocf3bLTCuOGNRHBM=";
   };
 
-  outputs = [
-    "out"
-    "man"
-    "doc"
-    "info"
-    "perl"
-  ];
+  outputs = [ "out" "man" "doc" "info" "perl" ];
 
   enableParallelBuilding = true;
 
@@ -69,30 +63,13 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
   nativeBuildInputs =
-    [
-      autoreconfHook
-      pkg-config
-      texinfo
-    ]
+    [ autoreconfHook pkg-config texinfo ]
     # Required due to the patch that changes .ypp files.
     ++ lib.optional (stdenv.cc.isClang && lib.versionAtLeast stdenv.cc.version "9") bison;
   buildInputs =
-    [
-      perl
-      bash
-    ]
-    ++ lib.optionals enableGhostscript [
-      ghostscript
-      gawk
-      libX11
-      libXaw
-      libXt
-      libXmu
-    ]
-    ++ lib.optionals enableHtml [
-      psutils
-      netpbm
-    ]
+    [ perl bash ]
+    ++ lib.optionals enableGhostscript [ ghostscript gawk libX11 libXaw libXt libXmu ]
+    ++ lib.optionals enableHtml [ psutils netpbm ]
     ++ lib.optionals enableIconv [ iconv ]
     ++ lib.optionals enableLibuchardet [ libuchardet ];
 
@@ -176,9 +153,6 @@ stdenv.mkDerivation rec {
       implementation of the -mm macros.
     '';
 
-    outputsToInstall = [
-      "out"
-      "perl"
-    ];
+    outputsToInstall = [ "out" "perl" ];
   };
 }

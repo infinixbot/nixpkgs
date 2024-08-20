@@ -27,21 +27,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-c/0OxUH8iw8nRuVg4Fszf6Z/JiEV+m0B2ofzy81uFu8=";
   };
 
-  nativeBuildInputs = [
-    cscope
-    git
-    pkg-config
-  ];
+  nativeBuildInputs = [ cscope git pkg-config ];
 
-  buildInputs = [
-    libopus
-    libtoxcore
-    libsodium
-    libevent
-    libvpx
-    msgpack
-    python3
-  ];
+  buildInputs = [ libopus libtoxcore libsodium libevent libvpx msgpack python3 ];
 
   pythonBuildInputs = with python3Packages; [
     jinja2

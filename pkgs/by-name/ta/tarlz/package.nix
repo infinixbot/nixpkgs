@@ -10,16 +10,9 @@
 stdenv.mkDerivation rec {
   pname = "tarlz";
   version = "0.25";
-  outputs = [
-    "out"
-    "man"
-    "info"
-  ];
+  outputs = [ "out" "man" "info" ];
 
-  nativeBuildInputs = [
-    lzip
-    texinfo
-  ];
+  nativeBuildInputs = [ lzip texinfo ];
   buildInputs = [ lzlib ];
 
   src = fetchurl {

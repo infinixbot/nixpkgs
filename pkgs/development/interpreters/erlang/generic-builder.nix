@@ -53,13 +53,7 @@
   odbcSupport ? false,
   odbcPackages ? [ unixODBC ],
   opensslPackage ? openssl,
-  wxPackages ? [
-    libGL
-    libGLU
-    wxGTK
-    xorg.libX11
-    wrapGAppsHook3
-  ],
+  wxPackages ? [ libGL libGLU wxGTK xorg.libX11 wrapGAppsHook3 ],
   preUnpack ? "",
   postUnpack ? "",
   patches ? [ ],
@@ -76,10 +70,7 @@
   installPhase ? "",
   preInstall ? "",
   postInstall ? "",
-  installTargets ? [
-    "install"
-    "install-docs"
-  ],
+  installTargets ? [ "install" "install-docs" ],
   checkPhase ? "",
   preCheck ? "",
   postCheck ? "",
@@ -125,33 +116,15 @@ stdenv.mkDerivation (
 
     inherit src version;
 
-    nativeBuildInputs = [
-      autoconf
-      makeWrapper
-      perl
-      gnum4
-      libxslt
-      libxml2
-    ];
+    nativeBuildInputs = [ autoconf makeWrapper perl gnum4 libxslt libxml2 ];
 
     buildInputs =
-      [
-        ncurses
-        opensslPackage
-      ]
+      [ ncurses opensslPackage ]
       ++ optionals wxSupport wxPackages2
       ++ optionals odbcSupport odbcPackages
       ++ optionals javacSupport javacPackages
       ++ optional systemdSupport systemd
-      ++ optionals stdenv.isDarwin (
-        with pkgs.darwin.apple_sdk.frameworks;
-        [
-          AGL
-          Carbon
-          Cocoa
-          WebKit
-        ]
-      );
+      ++ optionals stdenv.isDarwin (with pkgs.darwin.apple_sdk.frameworks; [ AGL Carbon Cocoa WebKit ]);
 
     debugInfo = enableDebugInfo;
 
@@ -216,12 +189,7 @@ stdenv.mkDerivation (
     # Some erlang bin/ scripts run sed and awk
     postFixup = ''
       wrapProgram $out/lib/erlang/bin/erl --prefix PATH ":" "${gnused}/bin/"
-      wrapProgram $out/lib/erlang/bin/start_erl --prefix PATH ":" "${
-        lib.makeBinPath [
-          gnused
-          gawk
-        ]
-      }"
+      wrapProgram $out/lib/erlang/bin/start_erl --prefix PATH ":" "${lib.makeBinPath [ gnused gawk ]}"
     '';
 
     passthru = {
@@ -232,14 +200,7 @@ stdenv.mkDerivation (
         writeScript "update.sh" ''
           #!${stdenv.shell}
           set -ox errexit
-          PATH=${
-            lib.makeBinPath [
-              common-updater-scripts
-              coreutils
-              git
-              gnused
-            ]
-          }
+          PATH=${lib.makeBinPath [ common-updater-scripts coreutils git gnused ]}
           latest=$(list-git-tags --url=https://github.com/erlang/otp.git | sed -n 's/^OTP-${major}/${major}/p' | sort -V | tail -1)
           if [ "$latest" != "${version}" ]; then
             nixpkgs="$(git rev-parse --show-toplevel)"

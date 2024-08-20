@@ -23,20 +23,11 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-rLfCgyRQcYdWcTdnxLPvUAgy1lLtUbNRELkQsR69Rno=";
   };
 
-  outputs = [
-    "out"
-    "tools"
-  ];
+  outputs = [ "out" "tools" ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
-  buildInputs = [
-    libusb1
-    pcsclite
-  ];
+  buildInputs = [ libusb1 pcsclite ];
 
   enableParallelBuilding = true;
 
@@ -54,10 +45,7 @@ stdenv.mkDerivation rec {
     mainProgram = "cjflash";
     homepage = "https://www.reiner-sct.com/";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      aszlig
-      flokli
-    ];
+    maintainers = with maintainers; [ aszlig flokli ];
     platforms = platforms.linux;
   };
 }

@@ -39,10 +39,7 @@ let
   x2go-perl = perlPackages.buildPerlPackage rec {
     pname = "X2Go";
     inherit version src;
-    makeFlags = [
-      "-f"
-      "Makefile.perl"
-    ];
+    makeFlags = [ "-f" "Makefile.perl" ];
     patchPhase = ''
       substituteInPlace X2Go/Config.pm --replace '/etc/x2go' '/var/lib/x2go/conf'
       substituteInPlace X2Go/Server/DB.pm \
@@ -99,10 +96,7 @@ in
 stdenv.mkDerivation rec {
   inherit pname version src;
 
-  buildInputs = [
-    perlEnv
-    bash
-  ];
+  buildInputs = [ perlEnv bash ];
 
   nativeBuildInputs = [ makeWrapper ];
 
@@ -125,10 +119,7 @@ stdenv.mkDerivation rec {
       --replace "[ -f /etc/redhat-release ]" "[ -d /etc/nix ] || [ -f /etc/redhat-release ]"
   '';
 
-  makeFlags = [
-    "PREFIX=/"
-    "NXLIBDIR=${nx-libs}/lib/nx"
-  ];
+  makeFlags = [ "PREFIX=/" "NXLIBDIR=${nx-libs}/lib/nx" ];
 
   installFlags = [ "DESTDIR=$(out)" ];
 

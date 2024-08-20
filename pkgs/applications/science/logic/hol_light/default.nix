@@ -54,11 +54,7 @@ stdenv.mkDerivation {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    ocaml
-    findlib
-    camlp5
-  ];
+  nativeBuildInputs = [ ocaml findlib camlp5 ];
   propagatedBuildInputs = [
     camlp-streams
     (if use_zarith then zarith else num)
@@ -76,10 +72,6 @@ stdenv.mkDerivation {
     homepage = "http://www.cl.cam.ac.uk/~jrh13/hol-light/";
     license = licenses.bsd2;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      thoughtpolice
-      maggesi
-      vbgl
-    ];
+    maintainers = with maintainers; [ thoughtpolice maggesi vbgl ];
   };
 }

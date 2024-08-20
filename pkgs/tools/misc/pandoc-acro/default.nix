@@ -36,12 +36,7 @@ buildPythonApplication {
         nativeBuildInputs = [
           pandoc
           pandoc-acro
-          (texliveTeTeX.withPackages (
-            ps: with ps; [
-              acro
-              translations
-            ]
-          ))
+          (texliveTeTeX.withPackages (ps: with ps; [ acro translations ]))
         ];
       };
     in

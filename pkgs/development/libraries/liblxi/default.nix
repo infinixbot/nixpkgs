@@ -30,13 +30,7 @@ stdenv.mkDerivation (finalAttrs: {
         -i src/bonjour.c
   '';
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    cmake
-    pkg-config
-    rpcsvc-proto
-  ];
+  nativeBuildInputs = [ meson ninja cmake pkg-config rpcsvc-proto ];
 
   buildInputs =
     lib.optionals (!stdenv.isDarwin) [

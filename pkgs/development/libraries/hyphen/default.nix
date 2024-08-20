@@ -13,10 +13,7 @@ let
     let
       parts = splitVersion version;
     in
-    concatStringsSep "." [
-      (elemAt parts 0)
-      (elemAt parts 1)
-    ];
+    concatStringsSep "." [ (elemAt parts 0) (elemAt parts 1) ];
 in
 stdenv.mkDerivation rec {
   pname = "hyphen";
@@ -46,11 +43,7 @@ stdenv.mkDerivation rec {
     mainProgram = "substrings.pl";
     homepage = "https://sourceforge.net/projects/hunspell/files/Hyphen/";
     platforms = platforms.all;
-    license = with licenses; [
-      gpl2
-      lgpl21
-      mpl11
-    ];
+    license = with licenses; [ gpl2 lgpl21 mpl11 ];
     maintainers = with maintainers; [ Br1ght0ne ];
   };
 }

@@ -21,10 +21,7 @@ stdenv.mkDerivation {
     hash = "sha256-/zpw7kVdQeR7QcRsP1+qcu8+hlEQTGwOKClJkwVcBPg=";
   };
 
-  nativeBuildInputs = [
-    nasm
-    unixtools.xxd
-  ];
+  nativeBuildInputs = [ nasm unixtools.xxd ];
 
   buildPhase = ''
     runHook preBuild

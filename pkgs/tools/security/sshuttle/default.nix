@@ -49,17 +49,7 @@ python3Packages.buildPythonApplication rec {
 
     wrapProgram $out/bin/sshuttle \
       --prefix PATH : "${
-        lib.makeBinPath (
-          [
-            coreutils
-            openssh
-            procps
-          ]
-          ++ lib.optionals stdenv.isLinux [
-            iptables
-            nettools
-          ]
-        )
+        lib.makeBinPath ([ coreutils openssh procps ] ++ lib.optionals stdenv.isLinux [ iptables nettools ])
       }" \
   '';
 
@@ -74,9 +64,6 @@ python3Packages.buildPythonApplication rec {
     homepage = "https://github.com/sshuttle/sshuttle";
     changelog = "https://github.com/sshuttle/sshuttle/blob/v${version}/CHANGES.rst";
     license = licenses.lgpl21Plus;
-    maintainers = with maintainers; [
-      domenkozar
-      carlosdagos
-    ];
+    maintainers = with maintainers; [ domenkozar carlosdagos ];
   };
 }

@@ -51,11 +51,7 @@ stdenv.mkDerivation rec {
     texinfo
   ];
 
-  buildInputs = [
-    gfortran
-    texinfo
-    boost
-  ];
+  buildInputs = [ gfortran texinfo boost ];
 
   cmakeFlags =
     optional enablePadding "-DARRAY_LENGTH_PADDING=ON"

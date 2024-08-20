@@ -33,10 +33,7 @@ stdenv.mkDerivation rec {
       which can also easily be used to show your records on a web page.
     '';
     homepage = "https://github.com/rpodgorny/uptimed/";
-    license = with licenses; [
-      gpl2Only
-      lgpl21Plus
-    ];
+    license = with licenses; [ gpl2Only lgpl21Plus ];
     maintainers = [ ];
     platforms = platforms.linux;
   };

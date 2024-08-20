@@ -38,10 +38,7 @@ stdenv.mkDerivation {
 
   __darwinAllowLocalNetworking = true;
 
-  gradleFlags = [
-    "-x"
-    "submodulesUpdate"
-  ];
+  gradleFlags = [ "-x" "submodulesUpdate" ];
 
   installPhase = ''
     runHook preInstall

@@ -42,10 +42,7 @@ stdenv.mkDerivation rec {
     zlib
   ];
 
-  autoreconfFlags = [
-    "-I"
-    "neon/macros"
-  ];
+  autoreconfFlags = [ "-I" "neon/macros" ];
 
   meta = with lib; {
     description = "WebDAV server protocol compliance test suite";

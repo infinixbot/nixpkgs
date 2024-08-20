@@ -29,14 +29,8 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    qmake
-    makeWrapper
-  ];
-  buildInputs = [
-    qtbase
-    qtwebsockets
-  ] ++ lib.optionals stdenv.isDarwin [ Cocoa ];
+  nativeBuildInputs = [ qmake makeWrapper ];
+  buildInputs = [ qtbase qtwebsockets ] ++ lib.optionals stdenv.isDarwin [ Cocoa ];
 
   sourceRoot = "${src.name}/MiniZincIDE";
 

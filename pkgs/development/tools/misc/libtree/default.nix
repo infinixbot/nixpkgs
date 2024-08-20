@@ -34,10 +34,7 @@ stdenv.mkDerivation (finalAttrs: {
     checkCoreUtils =
       runCommand "${finalAttrs.pname}-ls-test"
         {
-          nativeBuildInputs = [
-            finalAttrs.finalPackage
-            dieHook
-          ];
+          nativeBuildInputs = [ finalAttrs.finalPackage dieHook ];
         }
         ''
           libtree ${coreutils}/bin/ls > $out || die "libtree failed to show dependencies."
@@ -51,9 +48,6 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/haampie/libtree";
     license = licenses.mit;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      prusnak
-      rardiol
-    ];
+    maintainers = with maintainers; [ prusnak rardiol ];
   };
 })

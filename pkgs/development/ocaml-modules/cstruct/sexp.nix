@@ -21,8 +21,5 @@ else
     doCheck = true;
     checkInputs = [ alcotest ];
 
-    propagatedBuildInputs = [
-      cstruct
-      sexplib
-    ];
+    propagatedBuildInputs = [ cstruct sexplib ];
   }

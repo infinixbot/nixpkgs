@@ -40,13 +40,7 @@ in
       "nzbget"
       "dataDir"
     ] "The data directory for nzbget is now /var/lib/nzbget.")
-    (mkRemovedOptionModule
-      [
-        "services"
-        "misc"
-        "nzbget"
-        "openFirewall"
-      ]
+    (mkRemovedOptionModule [ "services" "misc" "nzbget" "openFirewall" ]
       "The port used by nzbget is managed through the web interface so you should adjust your firewall rules accordingly."
     )
   ];
@@ -70,13 +64,7 @@ in
       };
 
       settings = mkOption {
-        type =
-          with types;
-          attrsOf (oneOf [
-            bool
-            int
-            str
-          ]);
+        type = with types; attrsOf (oneOf [ bool int str ]);
         default = { };
         description = ''
           NZBGet configuration, passed via command line using switch -o. Refer to

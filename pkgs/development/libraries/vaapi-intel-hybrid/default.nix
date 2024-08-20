@@ -32,19 +32,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
-  buildInputs = [
-    cmrt
-    libdrm
-    libva
-    libX11
-    libGL
-    wayland
-  ];
+  buildInputs = [ cmrt libdrm libva libX11 libGL wayland ];
 
   enableParallelBuilding = true;
 

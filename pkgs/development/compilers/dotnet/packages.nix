@@ -27,11 +27,7 @@ in
       zip
     ];
 
-    outputs = [
-      "out"
-      "packages"
-      "artifacts"
-    ];
+    outputs = [ "out" "packages" "artifacts" ];
 
     installPhase = ''
       runHook preInstall

@@ -32,11 +32,7 @@ stdenv.mkDerivation {
     RegexpCommon
   ];
 
-  makeFlags = [
-    "prefix="
-    "DESTDIR=$(out)"
-    "INSTALL=install"
-  ];
+  makeFlags = [ "prefix=" "DESTDIR=$(out)" "INSTALL=install" ];
 
   postFixup = "wrapProgram $out/bin/cloc --prefix PERL5LIB : $PERL5LIB";
 

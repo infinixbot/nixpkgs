@@ -88,9 +88,6 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     description = "Firefly III: a personal finances manager";
     homepage = "https://github.com/firefly-iii/firefly-iii";
     license = lib.licenses.agpl3Only;
-    maintainers = [
-      lib.maintainers.savyajha
-      lib.maintainers.patrickdag
-    ];
+    maintainers = [ lib.maintainers.savyajha lib.maintainers.patrickdag ];
   };
 })

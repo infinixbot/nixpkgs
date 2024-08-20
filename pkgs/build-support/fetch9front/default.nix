@@ -17,14 +17,7 @@ lib.makeOverridable (
   }@args:
 
   let
-    passthruAttrs = removeAttrs args [
-      "domain"
-      "owner"
-      "repo"
-      "rev"
-      "leaveDotGit"
-      "deepClone"
-    ];
+    passthruAttrs = removeAttrs args [ "domain" "owner" "repo" "rev" "leaveDotGit" "deepClone" ];
 
     useFetchGit = leaveDotGit || deepClone;
     fetcher = if useFetchGit then fetchgit else fetchzip;

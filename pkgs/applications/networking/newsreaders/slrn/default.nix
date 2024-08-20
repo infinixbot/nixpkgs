@@ -29,11 +29,7 @@ stdenv.mkDerivation rec {
     "--with-slrnpull"
   ];
 
-  buildInputs = [
-    slang
-    ncurses
-    openssl
-  ];
+  buildInputs = [ slang ncurses openssl ];
 
   meta = with lib; {
     description = "Slrn (S-Lang read news) newsreader";

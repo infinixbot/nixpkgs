@@ -161,10 +161,7 @@ let
       gitlab_kas.secret_file = "${cfg.statePath}/.gitlab_kas_secret";
       git.bin_path = "git";
       monitoring = {
-        ip_whitelist = [
-          "127.0.0.0/8"
-          "::1/128"
-        ];
+        ip_whitelist = [ "127.0.0.0/8" "::1/128" ];
         sidekiq_exporter = {
           enable = true;
           address = "localhost";
@@ -275,36 +272,9 @@ in
 {
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "gitlab"
-        "stateDir"
-      ]
-      [
-        "services"
-        "gitlab"
-        "statePath"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "gitlab"
-        "backupPath"
-      ]
-      [
-        "services"
-        "gitlab"
-        "backup"
-        "path"
-      ]
-    )
-    (mkRemovedOptionModule [
-      "services"
-      "gitlab"
-      "satelliteDir"
-    ] "")
+    (mkRenamedOptionModule [ "services" "gitlab" "stateDir" ] [ "services" "gitlab" "statePath" ])
+    (mkRenamedOptionModule [ "services" "gitlab" "backupPath" ] [ "services" "gitlab" "backup" "path" ])
+    (mkRemovedOptionModule [ "services" "gitlab" "satelliteDir" ] "")
     (mkRemovedOptionModule [
       "services"
       "gitlab"
@@ -409,10 +379,7 @@ in
           in
           either value (listOf value);
         default = [ ];
-        example = [
-          "artifacts"
-          "lfs"
-        ];
+        example = [ "artifacts" "lfs" ];
         apply = x: if isString x then x else concatStringsSep "," x;
         description = ''
           Directories to exclude from the backup. The example excludes
@@ -762,16 +729,7 @@ in
         '';
 
         type = types.submodule {
-          freeformType =
-            with types;
-            attrsOf (
-              nullOr (oneOf [
-                str
-                int
-                bool
-                attrs
-              ])
-            );
+          freeformType = with types; attrsOf (nullOr (oneOf [ str int bool attrs ]));
 
           options = {
             listen-http = mkOption {
@@ -1210,11 +1168,7 @@ in
       }
     ];
 
-    environment.systemPackages = [
-      gitlab-rake
-      gitlab-rails
-      cfg.packages.gitlab-shell
-    ];
+    environment.systemPackages = [ gitlab-rake gitlab-rails cfg.packages.gitlab-shell ];
 
     systemd.targets.gitlab = {
       description = "Common target for all GitLab services.";
@@ -1511,11 +1465,7 @@ in
     };
 
     systemd.services.gitlab-db-config = {
-      after = [
-        "gitlab-config.service"
-        "gitlab-postgresql.service"
-        "postgresql.service"
-      ];
+      after = [ "gitlab-config.service" "gitlab-postgresql.service" "postgresql.service" ];
       wants =
         optional (cfg.databaseHost == "") "postgresql.service"
         ++ optional databaseActuallyCreateLocally "gitlab-postgresql.service";
@@ -1609,10 +1559,7 @@ in
     };
 
     systemd.services.gitaly = {
-      after = [
-        "network.target"
-        "gitlab-config.service"
-      ];
+      after = [ "network.target" "gitlab-config.service" ];
       bindsTo = [ "gitlab-config.service" ];
       wantedBy = [ "gitlab.target" ];
       partOf = [ "gitlab.target" ];
@@ -1676,15 +1623,8 @@ in
       in
       mkIf cfg.pages.enable {
         description = "GitLab static pages daemon";
-        after = [
-          "network.target"
-          "gitlab-config.service"
-          "gitlab.service"
-        ];
-        bindsTo = [
-          "gitlab-config.service"
-          "gitlab.service"
-        ];
+        after = [ "network.target" "gitlab-config.service" "gitlab.service" ];
+        bindsTo = [ "gitlab-config.service" "gitlab.service" ];
         wantedBy = [ "gitlab.target" ];
         partOf = [ "gitlab.target" ];
 
@@ -1760,11 +1700,7 @@ in
 
     systemd.services.gitlab-mailroom = mkIf (gitlabConfig.production.incoming_email.enabled or false) {
       description = "GitLab incoming mail daemon";
-      after = [
-        "network.target"
-        "redis-gitlab.service"
-        "gitlab-config.service"
-      ];
+      after = [ "network.target" "redis-gitlab.service" "gitlab-config.service" ];
       bindsTo = [ "gitlab-config.service" ];
       wantedBy = [ "gitlab.target" ];
       partOf = [ "gitlab.target" ];

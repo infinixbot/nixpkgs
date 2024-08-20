@@ -87,10 +87,7 @@ in
 
       whitelist = mkOption {
         default = [ ];
-        example = [
-          "198.51.100.56"
-          "198.51.100.2"
-        ];
+        example = [ "198.51.100.56" "198.51.100.2" ];
         type = types.listOf types.str;
         description = ''
           Whitelist a list of addresses, hostnames, or address blocks.
@@ -99,10 +96,7 @@ in
 
       services = mkOption {
         default = [ "sshd" ];
-        example = [
-          "sshd"
-          "exim"
-        ];
+        example = [ "sshd" "exim" ];
         type = types.listOf types.str;
         description = ''
           Systemd services sshguard should receive logs of.
@@ -129,18 +123,9 @@ in
       path =
         with pkgs;
         if config.networking.nftables.enable then
-          [
-            nftables
-            iproute2
-            systemd
-          ]
+          [ nftables iproute2 systemd ]
         else
-          [
-            iptables
-            ipset
-            iproute2
-            systemd
-          ];
+          [ iptables ipset iproute2 systemd ];
 
       # The sshguard ipsets must exist before we invoke
       # iptables. sshguard creates the ipsets after startup if

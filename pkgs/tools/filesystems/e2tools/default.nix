@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
     sha256 = "0nlqynrhj6ww7bnfhhfcx6bawii8iyvhgp6vz60zbnpgd68ifcx7";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
   buildInputs = [ e2fsprogs ];
 
   enableParallelBuilding = true;

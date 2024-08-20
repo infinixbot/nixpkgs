@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs = [ hunspell ];
-  nativeBuildInputs = [
-    ncurses
-    pkg-config
-    perl
-  ];
+  nativeBuildInputs = [ ncurses pkg-config perl ];
 
   meta = {
     homepage = "https://hunspell.sourceforge.net/";

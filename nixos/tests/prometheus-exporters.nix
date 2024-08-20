@@ -791,10 +791,7 @@ let
         networking.networkmanager.enable = true;
         systemd.services.ModemManager = {
           enable = true;
-          wantedBy = [
-            "NetworkManager.service"
-            "prometheus-modemmanager-exporter.service"
-          ];
+          wantedBy = [ "NetworkManager.service" "prometheus-modemmanager-exporter.service" ];
         };
       };
       exporterTest = ''
@@ -993,10 +990,7 @@ let
             ];
             "olcDatabase={1}mdb" = {
               attrs = {
-                objectClass = [
-                  "olcDatabaseConfig"
-                  "olcMdbConfig"
-                ];
+                objectClass = [ "olcDatabaseConfig" "olcMdbConfig" ];
                 olcDatabase = "{1}mdb";
                 olcDbDirectory = "/var/lib/openldap/db";
                 olcSuffix = "dc=example";
@@ -1785,19 +1779,13 @@ let
         exporterConfig.enable = true;
         metricProvider = {
           networking.wireguard.interfaces.wg0 = {
-            ips = [
-              "10.23.42.1/32"
-              "fc00::1/128"
-            ];
+            ips = [ "10.23.42.1/32" "fc00::1/128" ];
             listenPort = 23542;
 
             inherit (snakeoil.peer0) privateKey;
 
             peers = singleton {
-              allowedIPs = [
-                "10.23.42.2/32"
-                "fc00::2/128"
-              ];
+              allowedIPs = [ "10.23.42.2/32" "fc00::2/128" ];
 
               inherit (snakeoil.peer1) publicKey;
             };

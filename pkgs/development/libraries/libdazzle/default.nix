@@ -23,11 +23,7 @@ stdenv.mkDerivation rec {
   pname = "libdazzle";
   version = "3.44.0";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
   outputBin = "dev";
 
   src = fetchurl {

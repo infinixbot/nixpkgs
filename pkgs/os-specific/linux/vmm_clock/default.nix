@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-8z/N/dbkeFd40sH7jatNmSS62B88tC0jVgNljhxslOo=";
   };
 
-  hardeningDisable = [
-    "pic"
-    "format"
-  ];
+  hardeningDisable = [ "pic" "format" ];
   nativeBuildInputs = kernel.moduleBuildDependencies;
 
   extraConfig = ''
@@ -38,10 +35,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/voutilad/vmm_clock";
     license = licenses.gpl2Plus;
     maintainers = with maintainers; [ qbit ];
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
   };
 
   enableParallelBuilding = true;

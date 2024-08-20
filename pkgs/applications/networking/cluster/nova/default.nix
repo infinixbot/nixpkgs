@@ -17,11 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-xhpE+KDEf36kAw1HVm3WhiOwyWkFxkD5S+3mx0Sytv4=";
 
-  ldflags = [
-    "-X main.version=${version}"
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-X main.version=${version}" "-s" "-w" ];
 
   meta = with lib; {
     description = "Find outdated or deprecated Helm charts running in your cluster";

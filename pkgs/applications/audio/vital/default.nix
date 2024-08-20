@@ -52,12 +52,7 @@ stdenv.mkDerivation (finalAttrs: {
     done
 
     wrapProgram $out/bin/Vital \
-      --prefix LD_LIBRARY_PATH : "${
-        lib.makeLibraryPath [
-          curl
-          libjack2
-        ]
-      }"
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ curl libjack2 ]}"
 
     runHook postInstall
   '';
@@ -66,10 +61,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Spectral warping wavetable synth";
     homepage = "https://vital.audio/";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
-    license = with licenses; [
-      unfree
-      gpl3Plus
-    ];
+    license = with licenses; [ unfree gpl3Plus ];
     platforms = [ "x86_64-linux" ];
     maintainers = with maintainers; [ PowerUser64 ];
     mainProgram = "Vital";

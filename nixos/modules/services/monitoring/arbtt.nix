@@ -15,10 +15,7 @@ in
     services.arbtt = {
       enable = mkEnableOption "Arbtt statistics capture service";
 
-      package = mkPackageOption pkgs [
-        "haskellPackages"
-        "arbtt"
-      ] { };
+      package = mkPackageOption pkgs [ "haskellPackages" "arbtt" ] { };
 
       logFile = mkOption {
         type = types.str;

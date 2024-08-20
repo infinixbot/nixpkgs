@@ -22,10 +22,7 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   buildInputs = [
-    (perl.withPackages (p: [
-      p.ParallelForkManager
-      p.LWP
-    ]))
+    (perl.withPackages (p: [ p.ParallelForkManager p.LWP ]))
   ];
 
   installPhase = ''

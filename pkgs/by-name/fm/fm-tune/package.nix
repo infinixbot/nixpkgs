@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    liquid-dsp
-    soapysdr
-  ];
+  buildInputs = [ liquid-dsp soapysdr ];
 
   meta = with lib; {
     description = "Find initial calibration offset for SDR devices";

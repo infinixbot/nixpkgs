@@ -125,13 +125,7 @@ stdenv.mkDerivation (finalAttrs: {
     export QT_PLUGIN_PATH=${listToQtVar qtbase.qtPluginPrefix [ qtbase ]}
     export QML2_IMPORT_PATH=${
       listToQtVar qtbase.qtQmlPrefix (
-        [
-          lomiri-ui-toolkit
-          qtwebengine
-          qtdeclarative
-          qtquickcontrols2
-          qtsystems
-        ]
+        [ lomiri-ui-toolkit qtwebengine qtdeclarative qtquickcontrols2 qtsystems ]
         ++ lomiri-ui-toolkit.propagatedBuildInputs
       )
     }
@@ -159,10 +153,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Lightweight web browser tailored for Ubuntu Touch";
     homepage = "https://gitlab.com/ubports/development/core/morph-browser";
     changelog = "https://gitlab.com/ubports/development/core/morph-browser/-/blob/${finalAttrs.version}/ChangeLog";
-    license = with licenses; [
-      gpl3Only
-      cc-by-sa-30
-    ];
+    license = with licenses; [ gpl3Only cc-by-sa-30 ];
     mainProgram = "morph-browser";
     maintainers = teams.lomiri.members;
     platforms = platforms.linux;

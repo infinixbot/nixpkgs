@@ -32,11 +32,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-  ];
+  outputs = [ "bin" "dev" "out" ];
 
   nativeBuildInputs = [
     autoconf
@@ -54,10 +50,7 @@ stdenv.mkDerivation rec {
 
   configureFlags = [ "--with-udev=${placeholder "out"}/lib/udev" ];
 
-  configurePlatforms = [
-    "build"
-    "host"
-  ];
+  configurePlatforms = [ "build" "host" ];
 
   makeFlags = lib.optionals (stdenv.isLinux && !stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
     "MTP_HOTPLUG=${buildPackages.libmtp}/bin/mtp-hotplug"

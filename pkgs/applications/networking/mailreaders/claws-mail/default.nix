@@ -87,11 +87,7 @@
 }:
 
 let
-  pythonPkgs = with python3.pkgs; [
-    python3
-    wrapPython
-    pygobject3
-  ];
+  pythonPkgs = with python3.pkgs; [ python3 wrapPython pygobject3 ];
 
   features = [
     {
@@ -130,10 +126,7 @@ let
     {
       flags = [ "dbus" ];
       enabled = enableDbus;
-      deps = [
-        dbus
-        dbus-glib
-      ];
+      deps = [ dbus dbus-glib ];
     }
     {
       flags = [ "dillo-plugin" ];
@@ -219,16 +212,9 @@ let
       deps = [ perl ];
     }
     {
-      flags = [
-        "pgpcore-plugin"
-        "pgpinline-plugin"
-        "pgpmime-plugin"
-      ];
+      flags = [ "pgpcore-plugin" "pgpinline-plugin" "pgpmime-plugin" ];
       enabled = enablePluginPgp;
-      deps = [
-        gnupg
-        gpgme
-      ];
+      deps = [ gnupg gpgme ];
     }
     {
       flags = [ "python-plugin" ];
@@ -282,10 +268,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-ldwdiI65FvAoRn+gw8v0W6/2Z4eTt7+zX6u6Ap1YHOE=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   patches = [
     ./mime.patch
@@ -305,13 +288,7 @@ stdenv.mkDerivation rec {
         --subst-var-by MIMEROOTDIR ${shared-mime-info}/share
   '';
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    bison
-    flex
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config bison flex wrapGAppsHook3 ];
   propagatedBuildInputs = pythonPkgs;
 
   buildInputs = [
@@ -349,12 +326,6 @@ stdenv.mkDerivation rec {
     homepage = "https://www.claws-mail.org/";
     license = licenses.gpl3Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      fpletz
-      globin
-      orivej
-      oxzi
-      ajs124
-    ];
+    maintainers = with maintainers; [ fpletz globin orivej oxzi ajs124 ];
   };
 }

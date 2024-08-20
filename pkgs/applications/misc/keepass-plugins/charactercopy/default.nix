@@ -46,8 +46,5 @@ in
 # Mono is required to compile plugin at runtime, after loading.
 buildEnv {
   name = drv.name;
-  paths = [
-    mono
-    drv
-  ];
+  paths = [ mono drv ];
 }

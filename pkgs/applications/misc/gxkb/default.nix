@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-oBIBIkj4p6HlF0PRQtI/K5dhLs7pbPxN7Cgr/YZaI1s=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
   buildInputs = [
     gtk3
     libwnck
@@ -35,10 +32,7 @@ stdenv.mkDerivation rec {
   ] ++ lib.optional appindicatorSupport libayatana-appindicator;
 
   configureFlags = lib.optional appindicatorSupport "--enable-appindicator=yes";
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   # This patch restore data which was wiped by upstream without any technical reasons
   # https://github.com/omgbebebe/gxkb/commit/727ec8b595a91dbb540e6087750f43b85d0dfbc0

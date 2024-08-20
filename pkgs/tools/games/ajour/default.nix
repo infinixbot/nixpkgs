@@ -80,12 +80,7 @@ rustPlatform.buildRustPackage rec {
 
   fixupPhase = ''
     patchelf --set-rpath "${lib.makeLibraryPath rpathLibs}:$(patchelf --print-rpath $out/bin/ajour)" $out/bin/ajour
-    wrapProgram $out/bin/ajour --prefix PATH ":" ${
-      lib.makeBinPath [
-        zenity
-        kdialog
-      ]
-    }
+    wrapProgram $out/bin/ajour --prefix PATH ":" ${lib.makeBinPath [ zenity kdialog ]}
   '';
 
   meta = with lib; {

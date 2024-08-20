@@ -25,10 +25,7 @@
 
 mkDerivation {
   pname = "khtml";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    perl
-  ];
+  nativeBuildInputs = [ extra-cmake-modules perl ];
   buildInputs = [
     giflib
     karchive

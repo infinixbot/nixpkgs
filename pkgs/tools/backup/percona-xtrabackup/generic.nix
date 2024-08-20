@@ -44,39 +44,27 @@ stdenv.mkDerivation (finalAttrs: {
     inherit hash fetchSubmodules;
   };
 
-  nativeBuildInputs = [
-    bison
-    boost
-    cmake
-    makeWrapper
-    pkg-config
-  ];
+  nativeBuildInputs = [ bison boost cmake makeWrapper pkg-config ];
 
-  buildInputs =
-    [
-      (curl.override { inherit openssl; })
-      cyrus_sasl
-      libaio
-      libedit
-      libevent
-      libev
-      libgcrypt
-      libgpg-error
-      lz4
-      ncurses
-      numactl
-      openssl
-      procps
-      protobuf
-      valgrind
-      xxd
-      zlib
-    ]
-    ++ (with perlPackages; [
-      perl
-      DBI
-      DBDmysql
-    ]);
+  buildInputs = [
+    (curl.override { inherit openssl; })
+    cyrus_sasl
+    libaio
+    libedit
+    libevent
+    libev
+    libgcrypt
+    libgpg-error
+    lz4
+    ncurses
+    numactl
+    openssl
+    procps
+    protobuf
+    valgrind
+    xxd
+    zlib
+  ] ++ (with perlPackages; [ perl DBI DBDmysql ]);
 
   patches = extraPatches;
 

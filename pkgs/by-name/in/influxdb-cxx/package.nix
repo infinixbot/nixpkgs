@@ -35,15 +35,10 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs =
-    [
-      boost
-      libcpr
-    ]
-    ++ lib.optionals finalAttrs.finalPackage.doCheck [
-      catch2_3
-      trompeloeil
-    ];
+  buildInputs = [
+    boost
+    libcpr
+  ] ++ lib.optionals finalAttrs.finalPackage.doCheck [ catch2_3 trompeloeil ];
 
   cmakeFlags = [
     (lib.cmakeBool "INFLUXCXX_TESTING" finalAttrs.finalPackage.doCheck)

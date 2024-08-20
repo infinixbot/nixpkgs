@@ -72,10 +72,7 @@ in
         # Hardening
         CapabilityBoundingSet = [ "" ];
         DeviceAllow = [ "/dev/random" ];
-        InaccessiblePaths = [
-          "/dev/shm"
-          "/sys"
-        ];
+        InaccessiblePaths = [ "/dev/shm" "/sys" ];
         LockPersonality = true;
         PrivateDevices = true;
         PrivateUsers = true;
@@ -89,22 +86,12 @@ in
         ProtectKernelModules = true;
         ProtectKernelTunables = true;
         ProtectProc = "invisible";
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-        ];
-        RestrictFilesystems = [
-          "@basic-api"
-          "~sysfs"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
+        RestrictFilesystems = [ "@basic-api" "~sysfs" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         SystemCallArchitectures = "native";
-        SystemCallFilter = [
-          "@system-service"
-          "~@privileged"
-          "~@resources"
-        ];
+        SystemCallFilter = [ "@system-service" "~@privileged" "~@resources" ];
         UMask = "0077";
         RestrictSUIDSGID = true;
         RemoveIPC = true;

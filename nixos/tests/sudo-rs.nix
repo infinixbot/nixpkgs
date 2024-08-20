@@ -88,10 +88,7 @@ import ./make-test-python.nix (
               commands = [ "ALL" ];
             }
             {
-              groups = [
-                "barfoo"
-                1337
-              ];
+              groups = [ "barfoo" 1337 ];
               commands = [
                 {
                   command = "ALL";

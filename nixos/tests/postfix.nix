@@ -69,11 +69,7 @@ import ./make-test-python.nix {
               smtp.quit()
           '';
         in
-        [
-          sendTestMail
-          sendTestMailStarttls
-          sendTestMailSmtps
-        ];
+        [ sendTestMail sendTestMailStarttls sendTestMailSmtps ];
     };
 
   testScript = ''

@@ -28,18 +28,12 @@ stdenv.mkDerivation rec {
     substituteInPlace inifiles.ml --replace 'String.lowercase ' 'String.lowercase_ascii '
   '';
 
-  nativeBuildInputs = [
-    ocaml
-    findlib
-  ];
+  nativeBuildInputs = [ ocaml findlib ];
   propagatedBuildInputs = [ ocaml_pcre ];
 
   strictDeps = true;
 
-  buildFlags = [
-    "all"
-    "opt"
-  ];
+  buildFlags = [ "all" "opt" ];
 
   createFindlibDestdir = true;
 

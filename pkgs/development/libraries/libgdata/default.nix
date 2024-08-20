@@ -25,11 +25,7 @@ stdenv.mkDerivation rec {
   pname = "libgdata";
   version = "0.18.1";
 
-  outputs = [
-    "out"
-    "dev"
-    "installedTests"
-  ];
+  outputs = [ "out" "dev" "installedTests" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";

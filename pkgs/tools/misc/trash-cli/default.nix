@@ -17,10 +17,7 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-ltuMnxtG4jTTSZd6ZHWl8wI0oQMMFqW0HAPetZMfGtc=";
   };
 
-  propagatedBuildInputs = with python3Packages; [
-    psutil
-    six
-  ];
+  propagatedBuildInputs = with python3Packages; [ psutil six ];
 
   nativeBuildInputs = with python3Packages; [
     installShellFiles

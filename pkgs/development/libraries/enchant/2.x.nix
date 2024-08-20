@@ -26,10 +26,7 @@ stdenv.mkDerivation rec {
   pname = "enchant";
   version = "2.6.9";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "https://github.com/AbiWord/${pname}/releases/download/v${version}/${pname}-${version}.tar.gz";

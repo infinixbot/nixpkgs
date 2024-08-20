@@ -22,11 +22,7 @@ import ./make-test-python.nix (
           }
         ];
 
-        networking.firewall.allowedTCPPorts = [
-          5432
-          8008
-          5010
-        ];
+        networking.firewall.allowedTCPPorts = [ 5432 8008 5010 ];
 
         environment.systemPackages = [ pkgs.jq ];
 

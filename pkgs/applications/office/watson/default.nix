@@ -34,18 +34,8 @@ buildPythonApplication rec {
     installShellCompletion --fish watson.fish
   '';
 
-  nativeCheckInputs = [
-    pytestCheckHook
-    pytest-mock
-    mock
-    pytest-datafiles
-  ];
-  propagatedBuildInputs = [
-    arrow
-    click
-    click-didyoumean
-    requests
-  ];
+  nativeCheckInputs = [ pytestCheckHook pytest-mock mock pytest-datafiles ];
+  propagatedBuildInputs = [ arrow click click-didyoumean requests ];
   nativeBuildInputs = [ installShellFiles ];
 
   meta = with lib; {
@@ -53,10 +43,6 @@ buildPythonApplication rec {
     description = "Wonderful CLI to track your time!";
     mainProgram = "watson";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      mguentner
-      nathyong
-      oxzi
-    ];
+    maintainers = with maintainers; [ mguentner nathyong oxzi ];
   };
 }

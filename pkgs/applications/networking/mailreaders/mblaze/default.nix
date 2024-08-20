@@ -18,14 +18,8 @@ stdenv.mkDerivation rec {
   pname = "mblaze";
   version = "1.2";
 
-  nativeBuildInputs = [
-    installShellFiles
-    makeWrapper
-  ];
-  buildInputs = [
-    libiconv
-    ruby
-  ];
+  nativeBuildInputs = [ installShellFiles makeWrapper ];
+  buildInputs = [ libiconv ruby ];
 
   src = fetchFromGitHub {
     owner = "leahneukirchen";

@@ -83,10 +83,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional pulseSupport libpulseaudio
     ++ lib.optional iwSupport wirelesstools
     ++ lib.optional nlSupport libnl
-    ++ lib.optionals i3Support [
-      jsoncpp
-      i3
-    ];
+    ++ lib.optionals i3Support [ jsoncpp i3 ];
 
   patches = [ ./remove-hardcoded-etc.diff ];
 
@@ -115,11 +112,7 @@ stdenv.mkDerivation (finalAttrs: {
       having a black belt in shell scripting.
     '';
     license = licenses.mit;
-    maintainers = with maintainers; [
-      afldcr
-      Br1ght0ne
-      moni
-    ];
+    maintainers = with maintainers; [ afldcr Br1ght0ne moni ];
     mainProgram = "polybar";
     platforms = platforms.linux;
   };

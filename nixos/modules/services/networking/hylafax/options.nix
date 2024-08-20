@@ -343,11 +343,7 @@ in
       '';
     };
     faxqclean.archiving = mkOption {
-      type = enum [
-        "never"
-        "as-flagged"
-        "always"
-      ];
+      type = enum [ "never" "as-flagged" "always" ];
       default = "as-flagged";
       example = "always";
       description = ''

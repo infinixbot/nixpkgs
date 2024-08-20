@@ -25,10 +25,7 @@ let
     gmp = [ gmp ];
     lzma = [ xz ];
     readline = [ readline ];
-    python3 = [
-      python3
-      ncurses
-    ];
+    python3 = [ python3 ncurses ];
     syslog = [ ];
     zlib = [ zlib ];
   };

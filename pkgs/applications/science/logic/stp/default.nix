@@ -52,12 +52,7 @@ stdenv.mkDerivation rec {
     cryptominisat
     python3
   ];
-  nativeBuildInputs = [
-    cmake
-    bison
-    flex
-    perl
-  ];
+  nativeBuildInputs = [ cmake bison flex perl ];
   preConfigure = ''
     python_install_dir=$out/${python3.sitePackages}
     mkdir -p $python_install_dir
@@ -70,10 +65,7 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "Simple Theorem Prover";
-    maintainers = with maintainers; [
-      McSinyx
-      numinit
-    ];
+    maintainers = with maintainers; [ McSinyx numinit ];
     platforms = platforms.linux;
     license = licenses.mit;
   };

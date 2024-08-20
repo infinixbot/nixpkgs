@@ -45,10 +45,7 @@ stdenv.mkDerivation rec {
       ./${path.bin} ${path.asm} fasmg
     '';
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   installPhase = ''
     install -Dm755 fasmg $out/bin/fasmg
@@ -62,10 +59,7 @@ stdenv.mkDerivation rec {
     mainProgram = "fasmg";
     homepage = "https://flatassembler.net";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      orivej
-      luc65r
-    ];
+    maintainers = with maintainers; [ orivej luc65r ];
     platforms = with platforms; intersectLists (linux ++ darwin) x86;
   };
 }

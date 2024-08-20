@@ -32,10 +32,7 @@ stdenv.mkDerivation rec {
     sha256 = "0imi3k5144dsn3ka9khx3dj76klkw46ga7m6rddqjk4yslwabh3k";
   };
 
-  nativeBuildInputs = [
-    patchelf
-    makeWrapper
-  ];
+  nativeBuildInputs = [ patchelf makeWrapper ];
 
   installPhase = ''
     mkdir -p $out/{bin,lib}
@@ -90,14 +87,7 @@ stdenv.mkDerivation rec {
 
     for f in $out/lib/*; do
       patchelf --set-rpath "${
-        lib.makeLibraryPath [
-          stdenv.cc.cc.lib
-          curl
-          xorg.libX11
-          stdenv.cc.libc
-          xorg.libXcursor
-          "$out"
-        ]
+        lib.makeLibraryPath [ stdenv.cc.cc.lib curl xorg.libX11 stdenv.cc.libc xorg.libXcursor "$out" ]
       }:${stdenv.cc.cc.lib}/lib64:${stdenv.cc.libc}/lib64" $f
     done
   '';

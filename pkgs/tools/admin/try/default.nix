@@ -19,12 +19,7 @@ stdenvNoCC.mkDerivation rec {
   installPhase = ''
     runHook preInstall
     install -Dt $out/bin try
-    wrapProgram $out/bin/try --prefix PATH : ${
-      lib.makeBinPath [
-        fuse-overlayfs
-        util-linux
-      ]
-    }
+    wrapProgram $out/bin/try --prefix PATH : ${lib.makeBinPath [ fuse-overlayfs util-linux ]}
     runHook postInstall
   '';
   meta = with lib; {

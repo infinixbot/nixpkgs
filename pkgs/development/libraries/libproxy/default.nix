@@ -23,11 +23,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "libproxy";
   version = "0.5.7";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchFromGitHub {
     owner = "libproxy";

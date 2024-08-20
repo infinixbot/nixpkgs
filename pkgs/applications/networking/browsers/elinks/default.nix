@@ -62,11 +62,7 @@ stdenv.mkDerivation rec {
     ++ lib.optional enablePython python
     ++ lib.optional enablePerl perl;
 
-  nativeBuildInputs = [
-    autoreconfHook
-    gettext
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook gettext pkg-config ];
 
   configureFlags =
     [
@@ -94,9 +90,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/rkd77/elinks";
     license = licenses.gpl2;
     platforms = with platforms; linux ++ darwin;
-    maintainers = with maintainers; [
-      iblech
-      gebner
-    ];
+    maintainers = with maintainers; [ iblech gebner ];
   };
 }

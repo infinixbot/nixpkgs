@@ -81,32 +81,18 @@ in
       "extraConfig"
     ] "Use services.postgresql.settings instead.")
 
-    (mkRenamedOptionModule
-      [
-        "services"
-        "postgresql"
-        "logLinePrefix"
-      ]
-      [
-        "services"
-        "postgresql"
-        "settings"
-        "log_line_prefix"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "postgresql"
-        "port"
-      ]
-      [
-        "services"
-        "postgresql"
-        "settings"
-        "port"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "postgresql" "logLinePrefix" ] [
+      "services"
+      "postgresql"
+      "settings"
+      "log_line_prefix"
+    ])
+    (mkRenamedOptionModule [ "services" "postgresql" "port" ] [
+      "services"
+      "postgresql"
+      "settings"
+      "port"
+    ])
   ];
 
   ###### interface
@@ -174,10 +160,7 @@ in
       initdbArgs = mkOption {
         type = with types; listOf str;
         default = [ ];
-        example = [
-          "--data-checksums"
-          "--allow-group-access"
-        ];
+        example = [ "--data-checksums" "--allow-group-access" ];
         description = ''
           Additional arguments passed to `initdb` during data dir
           initialisation.
@@ -430,12 +413,7 @@ in
         type =
           with types;
           submodule {
-            freeformType = attrsOf (oneOf [
-              bool
-              float
-              int
-              str
-            ]);
+            freeformType = attrsOf (oneOf [ bool float int str ]);
             options = {
               shared_preload_libraries = mkOption {
                 type = nullOr (coercedTo (listOf str) (concatStringsSep ", ") str);
@@ -698,8 +676,5 @@ in
   };
 
   meta.doc = ./postgresql.md;
-  meta.maintainers = with lib.maintainers; [
-    thoughtpolice
-    danbst
-  ];
+  meta.maintainers = with lib.maintainers; [ thoughtpolice danbst ];
 }

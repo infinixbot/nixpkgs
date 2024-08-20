@@ -160,27 +160,16 @@ lib.makeOverridable (
         buildDTBs = kernelConf.DTB or false;
 
         # Dependencies that are required to build kernel modules
-        moduleBuildDependencies =
-          [
-            pahole
-            perl
-            elfutils
-            # module makefiles often run uname commands to find out the kernel version
-            (buildPackages.deterministic-uname.override { inherit modDirVersion; })
-          ]
-          ++ optional (lib.versionAtLeast version "5.13") zstd
-          ++ optionals withRust [
-            rustc
-            rust-bindgen
-          ];
+        moduleBuildDependencies = [
+          pahole
+          perl
+          elfutils
+          # module makefiles often run uname commands to find out the kernel version
+          (buildPackages.deterministic-uname.override { inherit modDirVersion; })
+        ] ++ optional (lib.versionAtLeast version "5.13") zstd ++ optionals withRust [ rustc rust-bindgen ];
 
       in
-      (optionalAttrs isModular {
-        outputs = [
-          "out"
-          "dev"
-        ];
-      })
+      (optionalAttrs isModular { outputs = [ "out" "dev" ]; })
       // {
         passthru = rec {
           inherit
@@ -226,15 +215,8 @@ lib.makeOverridable (
             hexdump
           ]
           ++ optional needsUbootTools ubootTools
-          ++ optionals (lib.versionAtLeast version "5.2") [
-            cpio
-            pahole
-            zlib
-          ]
-          ++ optionals withRust [
-            rustc
-            rust-bindgen
-          ];
+          ++ optionals (lib.versionAtLeast version "5.2") [ cpio pahole zlib ]
+          ++ optionals withRust [ rustc rust-bindgen ];
 
         RUST_LIB_SRC = lib.optionalString withRust rustPlatform.rustLibSrc;
 
@@ -326,22 +308,14 @@ lib.makeOverridable (
             kernelConf.target
             "vmlinux" # for "perf" and things like that
           ]
-          ++ optional isModular "modules"
-          ++ optionals buildDTBs [
-            "dtbs"
-            "DTC_FLAGS=-@"
-          ]
-          ++ extraMakeFlags;
+          ++ optional isModular "modules" ++ optionals buildDTBs [ "dtbs" "DTC_FLAGS=-@" ] ++ extraMakeFlags;
 
         installFlags =
           [
             "INSTALL_PATH=$(out)"
           ]
           ++ (optional isModular "INSTALL_MOD_PATH=$(out)")
-          ++ optionals buildDTBs [
-            "dtbs_install"
-            "INSTALL_DTBS_PATH=$(out)/dtbs"
-          ];
+          ++ optionals buildDTBs [ "dtbs_install" "INSTALL_DTBS_PATH=$(out)/dtbs" ];
 
         preInstall =
           let
@@ -508,10 +482,7 @@ lib.makeOverridable (
           ];
           platforms = platforms.linux;
           badPlatforms =
-            lib.optionals (lib.versionOlder version "4.15") [
-              "riscv32-linux"
-              "riscv64-linux"
-            ]
+            lib.optionals (lib.versionOlder version "4.15") [ "riscv32-linux" "riscv64-linux" ]
             ++ lib.optional (lib.versionOlder version "5.19") "loongarch64-linux";
           timeout = 14400; # 4 hours
         } // extraMeta;
@@ -525,14 +496,7 @@ lib.makeOverridable (
 
       enableParallelBuilding = true;
 
-      hardeningDisable = [
-        "bindnow"
-        "format"
-        "fortify"
-        "stackprotector"
-        "pic"
-        "pie"
-      ];
+      hardeningDisable = [ "bindnow" "format" "fortify" "stackprotector" "pic" "pie" ];
 
       # Absolute paths for compilers avoid any PATH-clobbering issues.
       makeFlags =

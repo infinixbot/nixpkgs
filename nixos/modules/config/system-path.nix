@@ -117,10 +117,7 @@ in
       extraOutputsToInstall = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "dev"
-          "info"
-        ];
+        example = [ "dev" "info" ];
         description = ''
           Entries listed here will be appended to the `meta.outputsToInstall` attribute for each package in `environment.systemPackages`, and the files from the corresponding derivation outputs symlinked into {file}`/run/current-system/sw`.
 

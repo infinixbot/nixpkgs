@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
 
   doCheck = !stdenv.isCygwin;
   # 'make check' uses boost and tcl
-  buildInputs = lib.optionals doCheck [
-    boost
-    tcl
-  ];
+  buildInputs = lib.optionals doCheck [ boost tcl ];
 
   configureFlags = [ "--disable-ccache" ];
 

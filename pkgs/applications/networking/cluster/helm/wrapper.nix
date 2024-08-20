@@ -33,10 +33,7 @@ let
         wrapProgram "$out/bin/helm" \
           "--set" "HELM_PLUGINS" "${pluginsDir}" ${extraMakeWrapperArgs}
       '';
-      paths = [
-        helm
-        pluginsDir
-      ];
+      paths = [ helm pluginsDir ];
 
       preferLocalBuild = true;
 

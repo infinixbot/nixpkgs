@@ -63,11 +63,7 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [ autoreconfHook ];
-  buildInputs = [
-    pidgin
-    glib
-    json-glib
-  ];
+  buildInputs = [ pidgin glib json-glib ];
 
   meta = with lib; {
     inherit (src.meta) homepage;

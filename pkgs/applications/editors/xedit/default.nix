@@ -30,11 +30,7 @@ stdenv.mkDerivation rec {
     done
   '';
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    utilmacros
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config utilmacros ];
   buildInputs = [
     libX11
     libXaw

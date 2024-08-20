@@ -105,12 +105,7 @@ effectiveStdenv.mkDerivation (finalAttrs: {
   '';
 
   nativeBuildInputs =
-    [
-      cmake
-      ninja
-      pkg-config
-      git
-    ]
+    [ cmake ninja pkg-config git ]
     ++ optionals cudaSupport [
       cudaPackages.cuda_nvcc
       autoAddDriverRunpath
@@ -175,10 +170,7 @@ effectiveStdenv.mkDerivation (finalAttrs: {
 
   passthru.updateScript = nix-update-script {
     attrPath = "llama-cpp";
-    extraArgs = [
-      "--version-regex"
-      "b(.*)"
-    ];
+    extraArgs = [ "--version-regex" "b(.*)" ];
   };
 
   meta = with lib; {
@@ -186,11 +178,7 @@ effectiveStdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/ggerganov/llama.cpp/";
     license = licenses.mit;
     mainProgram = "llama";
-    maintainers = with maintainers; [
-      dit7ya
-      elohmeier
-      philiptaron
-    ];
+    maintainers = with maintainers; [ dit7ya elohmeier philiptaron ];
     platforms = platforms.unix;
     badPlatforms = optionals (cudaSupport || openclSupport) lib.platforms.darwin;
     broken = (metalSupport && !effectiveStdenv.isDarwin);

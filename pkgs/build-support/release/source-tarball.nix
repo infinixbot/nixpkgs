@@ -15,11 +15,7 @@
   automake,
   libtool,
   # By default, provide all the GNU Build System as input.
-  bootstrapBuildInputs ? [
-    autoconf
-    automake
-    libtool
-  ],
+  bootstrapBuildInputs ? [ autoconf automake libtool ],
   ...
 }@args:
 

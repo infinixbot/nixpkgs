@@ -141,18 +141,7 @@ rec {
 
   pullImage =
     let
-      fixName =
-        name:
-        builtins.replaceStrings
-          [
-            "/"
-            ":"
-          ]
-          [
-            "-"
-            "-"
-          ]
-          name;
+      fixName = name: builtins.replaceStrings [ "/" ":" ] [ "-" "-" ] name;
     in
     {
       imageName,
@@ -286,13 +275,7 @@ rec {
           inherit fromImage fromImageName fromImageTag;
           memSize = buildVMMemorySize;
 
-          nativeBuildInputs = [
-            util-linux
-            e2fsprogs
-            jshon
-            rsync
-            jq
-          ];
+          nativeBuildInputs = [ util-linux e2fsprogs jshon rsync jq ];
         }
         ''
           mkdir disk
@@ -445,11 +428,7 @@ rec {
       {
         inherit baseJson extraCommands;
         contents = copyToRoot;
-        nativeBuildInputs = [
-          jshon
-          rsync
-          tarsum
-        ];
+        nativeBuildInputs = [ jshon rsync tarsum ];
       }
       ''
         mkdir layer
@@ -723,11 +702,7 @@ rec {
       result =
         runCommand "docker-image-${baseName}.tar${compress.ext}"
           {
-            nativeBuildInputs = [
-              jshon
-              jq
-              moreutils
-            ] ++ compress.nativeInputs;
+            nativeBuildInputs = [ jshon jq moreutils ] ++ compress.nativeInputs;
             # Image name must be lowercase
             imageName = lib.toLower name;
             imageTag = lib.optionalString (tag != null) tag;
@@ -1104,19 +1079,12 @@ rec {
 
       closureRoots =
         lib.optionals includeStorePaths # normally true
-          ([
-            baseJson
-            customisationLayer
-          ]);
+          ([ baseJson customisationLayer ]);
       overallClosure = writeText "closure" (lib.concatStringsSep " " closureRoots);
 
       # These derivations are only created as implementation details of docker-tools,
       # so they'll be excluded from the created images.
-      unnecessaryDrvs = [
-        baseJson
-        overallClosure
-        customisationLayer
-      ];
+      unnecessaryDrvs = [ baseJson overallClosure customisationLayer ];
 
       conf =
         runCommand "${baseName}-conf.json"
@@ -1406,17 +1374,7 @@ rec {
       config.Cmd =
         # https://github.com/NixOS/nix/blob/2.8.0/src/nix-build/nix-build.cc#L185-L186
         # https://github.com/NixOS/nix/blob/2.8.0/src/nix-build/nix-build.cc#L534-L536
-        if run == null then
-          [
-            shell
-            "--rcfile"
-            rcfile
-          ]
-        else
-          [
-            shell
-            rcfile
-          ];
+        if run == null then [ shell "--rcfile" rcfile ] else [ shell rcfile ];
       config.WorkingDir = sandboxBuildDir;
       config.Env = lib.mapAttrsToList (name: value: "${name}=${value}") envVars;
     };

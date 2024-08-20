@@ -97,10 +97,7 @@ stdenv.mkDerivation rec {
     homepage = "https://freedv.org/";
     description = "Digital voice for HF radio";
     license = licenses.lgpl21;
-    maintainers = with maintainers; [
-      mvs
-      wegank
-    ];
+    maintainers = with maintainers; [ mvs wegank ];
     platforms = platforms.unix;
     mainProgram = "freedv";
   };

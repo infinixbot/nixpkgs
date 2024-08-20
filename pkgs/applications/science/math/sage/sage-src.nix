@@ -113,10 +113,7 @@ stdenv.mkDerivation rec {
   patches = nixPatches ++ bugfixPatches ++ packageUpgradePatches;
 
   # do not create .orig backup files if patch applies with fuzz
-  patchFlags = [
-    "--no-backup-if-mismatch"
-    "-p1"
-  ];
+  patchFlags = [ "--no-backup-if-mismatch" "-p1" ];
 
   postPatch = ''
     # Make sure sage can at least be imported without setting any environment

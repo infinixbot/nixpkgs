@@ -37,10 +37,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Suite of utilities for editing and replaying network traffic";
     homepage = "https://tcpreplay.appneta.com/";
-    license = with licenses; [
-      bsdOriginalUC
-      gpl3Only
-    ];
+    license = with licenses; [ bsdOriginalUC gpl3Only ];
     maintainers = with maintainers; [ eleanor ];
     platforms = platforms.unix;
   };

@@ -40,10 +40,7 @@ buildGoModule rec {
     description = "Open Source realtime backend in 1 file";
     homepage = "https://github.com/pocketbase/pocketbase";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      dit7ya
-      thilobillerbeck
-    ];
+    maintainers = with maintainers; [ dit7ya thilobillerbeck ];
     mainProgram = "pocketbase";
   };
 }

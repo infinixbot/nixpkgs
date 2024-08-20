@@ -51,11 +51,7 @@ stdenv.mkDerivation rec {
     description = "Multipurpose command line tool for working with OpenStreetMap data based on the Osmium library";
     homepage = "https://osmcode.org/osmium-tool/";
     changelog = "https://github.com/osmcode/osmium-tool/blob/v${version}/CHANGELOG.md";
-    license = with licenses; [
-      gpl3Plus
-      mit
-      bsd3
-    ];
+    license = with licenses; [ gpl3Plus mit bsd3 ];
     maintainers = with maintainers; teams.geospatial.members ++ [ das-g ];
     mainProgram = "osmium";
   };

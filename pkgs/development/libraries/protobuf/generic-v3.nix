@@ -40,12 +40,7 @@ let
             --replace 'tmpnam(b)' '"'$TMPDIR'/foo"'
         '';
 
-      nativeBuildInputs = [
-        autoreconfHook
-        buildPackages.which
-        buildPackages.stdenv.cc
-        buildProtobuf
-      ];
+      nativeBuildInputs = [ autoreconfHook buildPackages.which buildPackages.stdenv.cc buildProtobuf ];
 
       buildInputs = [ zlib ];
       configureFlags = lib.optional (buildProtobuf != null) "--with-protoc=${buildProtobuf}/bin/protoc";

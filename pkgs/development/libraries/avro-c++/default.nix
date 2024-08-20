@@ -27,10 +27,7 @@ stdenv.mkDerivation rec {
   ];
   patchFlags = [ "-p3" ];
 
-  nativeBuildInputs = [
-    cmake
-    python3
-  ];
+  nativeBuildInputs = [ cmake python3 ];
   buildInputs = [ boost ];
 
   preConfigure = ''

@@ -89,15 +89,7 @@ mkDerivation rec {
     libzip
     libhdhomerun
   ] ++ lib.optional withWebKit qtwebkit;
-  nativeBuildInputs = [
-    pkg-config
-    which
-    yasm
-    libtool
-    autoconf
-    automake
-    file
-  ];
+  nativeBuildInputs = [ pkg-config which yasm libtool autoconf automake file ];
 
   configureFlags = [ "--dvb-path=${linuxHeaders}/include" ];
 

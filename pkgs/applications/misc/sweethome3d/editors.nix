@@ -43,23 +43,11 @@ let
         name = pname;
         comment = description;
         genericName = "Computer Aided (Interior) Design";
-        categories = [
-          "Graphics"
-          "2DGraphics"
-          "3DGraphics"
-        ];
+        categories = [ "Graphics" "2DGraphics" "3DGraphics" ];
       };
 
-      nativeBuildInputs = [
-        makeWrapper
-        stripJavaArchivesHook
-      ];
-      buildInputs = [
-        ant
-        jdk
-        gtk3
-        gsettings-desktop-schemas
-      ];
+      nativeBuildInputs = [ makeWrapper stripJavaArchivesHook ];
+      buildInputs = [ ant jdk gtk3 gsettings-desktop-schemas ];
 
       # upstream targets Java 7 by default
       env.ANT_ARGS = "-DappletClassSource=8 -DappletClassTarget=8 -DclassSource=8 -DclassTarget=8";

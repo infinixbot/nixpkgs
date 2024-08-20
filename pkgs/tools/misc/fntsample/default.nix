@@ -37,10 +37,7 @@ stdenv.mkDerivation rec {
     "-DUNICODE_BLOCKS=${ucd-blocks.outPath}"
   ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   nativeBuildInputs = [
     cmake

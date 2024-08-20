@@ -36,10 +36,7 @@ let
       ...
     }:
     {
-      imports = [
-        common/user-account.nix
-        commonConf
-      ];
+      imports = [ common/user-account.nix commonConf ];
       virtualisation.vlans = [ vlan ];
       systemd.network = {
         enable = true;
@@ -61,10 +58,7 @@ let
       ...
     }:
     {
-      imports = [
-        common/user-account.nix
-        commonConf
-      ];
+      imports = [ common/user-account.nix commonConf ];
       virtualisation.vlans = vlans;
       systemd.network = {
         enable = true;
@@ -109,21 +103,9 @@ import ./make-test-python.nix (
         octet = 3;
         vlan = 6;
       };
-      sw1 = generateSwitchConf [
-        1
-        2
-        4
-      ];
-      sw2 = generateSwitchConf [
-        2
-        3
-        5
-      ];
-      sw3 = generateSwitchConf [
-        4
-        5
-        6
-      ];
+      sw1 = generateSwitchConf [ 1 2 4 ];
+      sw2 = generateSwitchConf [ 2 3 5 ];
+      sw3 = generateSwitchConf [ 4 5 6 ];
     };
     testScript = ''
       network_nodes = [node1, node2, node3]

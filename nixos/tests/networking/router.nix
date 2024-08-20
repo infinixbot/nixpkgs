@@ -7,11 +7,7 @@ let
 in
 {
   environment.systemPackages = [ pkgs.iptables ]; # to debug firewall rules
-  virtualisation.vlans = [
-    1
-    2
-    3
-  ];
+  virtualisation.vlans = [ 1 2 3 ];
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = true;
   networking = {
     useDHCP = false;

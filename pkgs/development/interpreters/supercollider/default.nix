@@ -47,11 +47,7 @@ mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    qttools
-  ];
+  nativeBuildInputs = [ cmake pkg-config qttools ];
 
   buildInputs = [
     gcc

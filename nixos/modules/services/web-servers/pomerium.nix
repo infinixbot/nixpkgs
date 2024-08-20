@@ -130,10 +130,7 @@ in
       systemd.services.pomerium-config-reload = mkIf (cfg.useACMEHost != null) {
         # TODO(lukegb): figure out how to make config reloading work with credentials.
 
-        wantedBy = [
-          "acme-finished-${cfg.useACMEHost}.target"
-          "multi-user.target"
-        ];
+        wantedBy = [ "acme-finished-${cfg.useACMEHost}.target" "multi-user.target" ];
         # Before the finished targets, after the renew services.
         before = [ "acme-finished-${cfg.useACMEHost}.target" ];
         after = [ "acme-${cfg.useACMEHost}.service" ];

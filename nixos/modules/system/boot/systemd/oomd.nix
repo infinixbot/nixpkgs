@@ -6,18 +6,11 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "systemd"
-        "oomd"
-        "enableUserServices"
-      ]
-      [
-        "systemd"
-        "oomd"
-        "enableUserSlices"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "systemd" "oomd" "enableUserServices" ] [
+      "systemd"
+      "oomd"
+      "enableUserSlices"
+    ])
   ];
 
   options.systemd.oomd = {
@@ -32,13 +25,7 @@ in
     enableUserSlices = lib.mkEnableOption "oomd on all user slices (`user@.slice`) and all user owned slices";
 
     extraConfig = lib.mkOption {
-      type =
-        with lib.types;
-        attrsOf (oneOf [
-          str
-          int
-          bool
-        ]);
+      type = with lib.types; attrsOf (oneOf [ str int bool ]);
       default = { };
       example = lib.literalExpression ''{ DefaultMemoryPressureDurationSec = "20s"; }'';
       description = ''

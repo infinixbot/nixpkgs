@@ -66,17 +66,8 @@ stdenv.mkDerivation rec {
   # [1]: https://github.com/apache/trafficserver/pull/5617
   # [2]: https://github.com/apache/trafficserver/blob/3fd2c60/configure.ac#L742-L788
   nativeBuildInputs =
-    [
-      makeWrapper
-      pkg-config
-      file
-      python3
-    ]
-    ++ (with perlPackages; [
-      perl
-      ExtUtilsMakeMaker
-    ])
-    ++ lib.optionals stdenv.isLinux [ linuxHeaders ];
+    [ makeWrapper pkg-config file python3 ]
+    ++ (with perlPackages; [ perl ExtUtilsMakeMaker ]) ++ lib.optionals stdenv.isLinux [ linuxHeaders ];
 
   buildInputs =
     [
@@ -99,10 +90,7 @@ stdenv.mkDerivation rec {
     ++ lib.optional withUnwind libunwind
     ++ lib.optional withMaxmindDB libmaxminddb;
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   postPatch =
     ''

@@ -30,10 +30,7 @@ python3Packages.buildPythonApplication rec {
 
   nativeCheckInputs = with python3Packages; [ pytestCheckHook ];
 
-  pythonRelaxDeps = [
-    "torch"
-    "torchvision"
-  ];
+  pythonRelaxDeps = [ "torch" "torchvision" ];
 
   pythonImportsCheck = [ "rclip" ];
 

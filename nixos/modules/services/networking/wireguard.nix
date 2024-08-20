@@ -203,23 +203,13 @@ let
     options = {
 
       name = mkOption {
-        default =
-          replaceStrings
-            [
-              "/"
-              "-"
-              " "
-              "+"
-              "="
-            ]
-            [
-              "-"
-              "\\x2d"
-              "\\x20"
-              "\\x2b"
-              "\\x3d"
-            ]
-            self.config.publicKey;
+        default = replaceStrings [ "/" "-" " " "+" "=" ] [
+          "-"
+          "\\x2d"
+          "\\x20"
+          "\\x2b"
+          "\\x3d"
+        ] self.config.publicKey;
         defaultText = literalExpression "publicKey";
         example = "bernd";
         type = types.str;
@@ -260,10 +250,7 @@ let
       };
 
       allowedIPs = mkOption {
-        example = [
-          "10.192.122.3/32"
-          "10.192.124.1/24"
-        ];
+        example = [ "10.192.122.3/32" "10.192.124.1/24" ];
         type = with types; listOf str;
         description = ''
           List of IP (v4 or v6) addresses with CIDR masks from
@@ -405,17 +392,11 @@ let
         + optionalString (peer.name != peer.publicKey) " (${peer.publicKey})";
       requires = [ "wireguard-${interfaceName}.service" ];
       wants = [ "network-online.target" ];
-      after = [
-        "wireguard-${interfaceName}.service"
-        "network-online.target"
-      ];
+      after = [ "wireguard-${interfaceName}.service" "network-online.target" ];
       wantedBy = [ "wireguard-${interfaceName}.service" ];
       environment.DEVICE = interfaceName;
       environment.WG_ENDPOINT_RESOLUTION_RETRIES = "infinity";
-      path = with pkgs; [
-        iproute2
-        wireguard-tools
-      ];
+      path = with pkgs; [ iproute2 wireguard-tools ];
 
       serviceConfig =
         if !dynamicRefreshEnabled then
@@ -531,11 +512,7 @@ let
       wants = [ "network.target" ];
       before = [ "network.target" ];
       environment.DEVICE = name;
-      path = with pkgs; [
-        kmod
-        iproute2
-        wireguard-tools
-      ];
+      path = with pkgs; [ kmod iproute2 wireguard-tools ];
 
       serviceConfig = {
         Type = "oneshot";
@@ -574,10 +551,7 @@ let
   nsWrap =
     cmd: src: dst:
     let
-      nsList = filter (ns: ns != null) [
-        src
-        dst
-      ];
+      nsList = filter (ns: ns != null) [ src dst ];
       ns = last nsList;
     in
     if (length nsList > 0 && ns != "init") then ''ip netns exec "${ns}" "${cmd}"'' else cmd;

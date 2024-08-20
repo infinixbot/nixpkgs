@@ -32,11 +32,7 @@ buildGoModule rec {
 
   nativeBuildInputs = [ installShellFiles ];
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X github.com/gohugoio/hugo/common/hugo.vendorInfo=nixpkgs"
-  ];
+  ldflags = [ "-s" "-w" "-X github.com/gohugoio/hugo/common/hugo.vendorInfo=nixpkgs" ];
 
   postInstall =
     let
@@ -63,10 +59,6 @@ buildGoModule rec {
     homepage = "https://gohugo.io";
     license = lib.licenses.asl20;
     mainProgram = "hugo";
-    maintainers = with lib.maintainers; [
-      schneefux
-      Br1ght0ne
-      Frostman
-    ];
+    maintainers = with lib.maintainers; [ schneefux Br1ght0ne Frostman ];
   };
 }

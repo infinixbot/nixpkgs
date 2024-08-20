@@ -21,11 +21,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
   nativeCheckInputs = [ python3 ];
-  buildInputs = [
-    llvmPackages_12.llvm
-    llvmPackages_12.clang-unwrapped
-    readline
-  ];
+  buildInputs = [ llvmPackages_12.llvm llvmPackages_12.clang-unwrapped readline ];
 
   cmakeFlags = [
     "-DCLANG_ROOT=${llvmPackages_12.clang-unwrapped}"

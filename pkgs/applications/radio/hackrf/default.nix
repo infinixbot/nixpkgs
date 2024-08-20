@@ -29,10 +29,7 @@ stdenv.mkDerivation rec {
     fftwSinglePrec
   ];
 
-  cmakeFlags = [
-    "-DUDEV_RULES_GROUP=plugdev"
-    "-DUDEV_RULES_PATH=lib/udev/rules.d"
-  ];
+  cmakeFlags = [ "-DUDEV_RULES_GROUP=plugdev" "-DUDEV_RULES_PATH=lib/udev/rules.d" ];
 
   preConfigure = ''
     cd host

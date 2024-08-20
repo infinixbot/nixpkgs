@@ -16,10 +16,7 @@
 
 mkDerivation {
   pname = "khotkeys";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     kcmutils
     kdbusaddons
@@ -32,9 +29,5 @@ mkDerivation {
     plasma-workspace
     qtx11extras
   ];
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-  ];
+  outputs = [ "bin" "dev" "out" ];
 }

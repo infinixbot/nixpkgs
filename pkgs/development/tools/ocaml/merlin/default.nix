@@ -39,13 +39,7 @@ buildDunePackage rec {
 
   strictDeps = true;
 
-  buildInputs = [
-    dot-merlin-reader
-    yojson
-    csexp
-    result
-    menhirSdk
-  ];
+  buildInputs = [ dot-merlin-reader yojson csexp result menhirSdk ];
 
   meta = with lib; {
     description = "Editor-independent tool to ease the development of programs in OCaml";

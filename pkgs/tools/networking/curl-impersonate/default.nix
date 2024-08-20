@@ -32,10 +32,7 @@ let
       pname = "curl-impersonate-${name}";
       version = "0.6.1";
 
-      outputs = [
-        "out"
-        "dev"
-      ];
+      outputs = [ "out" "dev" ];
 
       src = fetchFromGitHub {
         owner = "lwthiker";
@@ -191,10 +188,7 @@ let
       meta = with lib; {
         description = "Special build of curl that can impersonate Chrome & Firefox";
         homepage = "https://github.com/lwthiker/curl-impersonate";
-        license = with licenses; [
-          curl
-          mit
-        ];
+        license = with licenses; [ curl mit ];
         maintainers = with maintainers; [ deliciouslytyped ];
         platforms = platforms.unix;
         mainProgram = "curl-impersonate-${name}";

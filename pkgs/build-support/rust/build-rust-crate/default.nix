@@ -305,11 +305,7 @@ lib.makeOverridable
         version = crate.version;
         depsBuildBuild = [ pkgsBuildBuild.stdenv.cc ];
         nativeBuildInputs =
-          [
-            rustc'
-            cargo'
-            jq
-          ]
+          [ rustc' cargo' jq ]
           ++ lib.optionals stdenv.hasCC [ stdenv.cc ]
           ++ lib.optionals stdenv.buildPlatform.isDarwin [ libiconv ]
           ++ (crate.nativeBuildInputs or [ ])
@@ -450,14 +446,7 @@ lib.makeOverridable
 
         # depending on the test setting we are either producing something with bins
         # and libs or just test binaries
-        outputs =
-          if buildTests then
-            [ "out" ]
-          else
-            [
-              "out"
-              "lib"
-            ];
+        outputs = if buildTests then [ "out" ] else [ "out" "lib" ];
         outputDev = if buildTests then [ "out" ] else [ "lib" ];
 
         meta = {

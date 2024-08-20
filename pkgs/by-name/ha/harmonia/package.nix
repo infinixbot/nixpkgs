@@ -42,10 +42,7 @@ rustPlatform.buildRustPackage rec {
 
   passthru = {
     updateScript = nix-update-script {
-      extraArgs = [
-        "--version-regex"
-        "harmonia-v(.*)"
-      ];
+      extraArgs = [ "--version-regex" "harmonia-v(.*)" ];
     };
     tests = {
       inherit (nixosTests) harmonia;

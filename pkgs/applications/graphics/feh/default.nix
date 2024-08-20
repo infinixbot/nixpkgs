@@ -25,24 +25,11 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-FtaFoLjI3HTLAxRTucp5VDYS73UuWqw9r9UWKK6T+og=";
   };
 
-  outputs = [
-    "out"
-    "man"
-    "doc"
-  ];
+  outputs = [ "out" "man" "doc" ];
 
   nativeBuildInputs = [ makeWrapper ];
 
-  buildInputs = [
-    xorg.libXt
-    xorg.libX11
-    xorg.libXinerama
-    imlib2
-    libjpeg
-    libpng
-    curl
-    libexif
-  ];
+  buildInputs = [ xorg.libXt xorg.libX11 xorg.libXinerama imlib2 libjpeg libpng curl libexif ];
 
   makeFlags = [
     "PREFIX=${placeholder "out"}"
@@ -51,12 +38,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   installTargets = [ "install" ];
   postInstall = ''
-    wrapProgram "$out/bin/feh" --prefix PATH : "${
-      lib.makeBinPath [
-        libjpeg
-        jpegexiforient
-      ]
-    }" \
+    wrapProgram "$out/bin/feh" --prefix PATH : "${lib.makeBinPath [ libjpeg jpegexiforient ]}" \
                                --add-flags '--theme=feh'
   '';
 
@@ -69,11 +51,7 @@ stdenv.mkDerivation (finalAttrs: {
     # released under a variant of the MIT license
     # https://spdx.org/licenses/MIT-feh.html
     license = licenses.mit-feh;
-    maintainers = with maintainers; [
-      gepbird
-      globin
-      willibutz
-    ];
+    maintainers = with maintainers; [ gepbird globin willibutz ];
     platforms = platforms.unix;
     mainProgram = "feh";
   };

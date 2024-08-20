@@ -24,12 +24,7 @@ stdenv.mkDerivation rec {
     pkg-config
     copyDesktopItems
   ];
-  buildInputs = [
-    alsa-lib
-    audiofile
-    gtk2
-    libxml2
-  ];
+  buildInputs = [ alsa-lib audiofile gtk2 libxml2 ];
 
   patches = [ ./matFix.patch ];
 

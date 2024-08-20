@@ -93,14 +93,7 @@ stdenv.mkDerivation rec {
     mainProgram = "julia";
     homepage = "https://julialang.org/";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      nickcao
-      joshniemela
-      thomasjm
-    ];
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+    maintainers = with maintainers; [ nickcao joshniemela thomasjm ];
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
   };
 }

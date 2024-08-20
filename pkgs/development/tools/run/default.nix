@@ -23,9 +23,6 @@ buildGoModule rec {
     mainProgram = "run";
     homepage = "https://github.com/TekWizely/run";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      rawkode
-      Br1ght0ne
-    ];
+    maintainers = with maintainers; [ rawkode Br1ght0ne ];
   };
 }

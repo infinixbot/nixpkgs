@@ -19,12 +19,7 @@ stdenv.mkDerivation rec {
   pname = "ntfs3g";
   version = "2022.10.3";
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "man" "doc" ];
 
   src = fetchFromGitHub {
     owner = "tuxera";
@@ -34,26 +29,13 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs =
-    [
-      gettext
-      libuuid
-    ]
-    ++ lib.optionals crypto [
-      gnutls
-      libgcrypt
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      macfuse-stubs
-      DiskArbitration
-    ];
+    [ gettext libuuid ]
+    ++ lib.optionals crypto [ gnutls libgcrypt ]
+    ++ lib.optionals stdenv.isDarwin [ macfuse-stubs DiskArbitration ];
 
   # Note: libgcrypt is listed here non-optionally because its m4 macros are
   # being used in ntfs-3g's configure.ac.
-  nativeBuildInputs = [
-    autoreconfHook
-    libgcrypt
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook libgcrypt pkg-config ];
 
   patches = [
     # https://github.com/tuxera/ntfs-3g/pull/39

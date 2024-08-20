@@ -172,10 +172,7 @@ stdenv.mkDerivation (
               name = "web";
               template = "web";
               build = "dotnet publish -o $out/bin";
-              runInputs = [
-                expect
-                curl
-              ];
+              runInputs = [ expect curl ];
               run = ''
                 expect <<"EOF"
                   set status 1

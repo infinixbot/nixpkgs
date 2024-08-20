@@ -28,12 +28,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [
       darwin.autoSignDarwinBinariesHook
     ];
-  buildInputs = [
-    ncurses
-    libiconv
-    libX11
-    libuuid
-  ];
+  buildInputs = [ ncurses libiconv libX11 libuuid ];
 
   enableParallelBuilding = true;
 

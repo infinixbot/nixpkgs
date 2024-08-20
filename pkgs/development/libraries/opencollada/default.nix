@@ -32,16 +32,10 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
   buildInputs = lib.optionals stdenv.isDarwin (with darwin.apple_sdk.frameworks; [ AGL ]);
 
-  propagatedBuildInputs = [
-    libxml2
-    pcre
-  ];
+  propagatedBuildInputs = [ libxml2 pcre ];
 
   postPatch =
     ''

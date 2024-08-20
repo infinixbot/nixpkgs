@@ -24,19 +24,10 @@ stdenv.mkDerivation rec {
   # sh: gcc: not found
   # output does not contain binaries for build
   depsBuildBuild = [ buildPackages.stdenv.cc ];
-  nativeBuildInputs = [
-    pkg-config
-    libintl
-  ];
-  propagatedBuildInputs = [
-    glib
-    libIDL
-  ];
+  nativeBuildInputs = [ pkg-config libintl ];
+  propagatedBuildInputs = [ glib libIDL ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   configureFlags = lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
     "--with-idl-compiler=${lib.getExe' buildPackages.gnome2.ORBit2 "orbit-idl-2"}"

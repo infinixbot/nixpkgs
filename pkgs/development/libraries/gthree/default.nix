@@ -21,11 +21,7 @@ stdenv.mkDerivation rec {
   pname = "gthree";
   version = "0.9.0";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchFromGitHub {
     owner = "alexlarsson";

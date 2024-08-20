@@ -49,11 +49,7 @@ in
 
     extraPackages = mkOption {
       type = with types; listOf package;
-      default = with pkgs; [
-        dmenu
-        i3status
-        i3lock
-      ];
+      default = with pkgs; [ dmenu i3status i3lock ];
       defaultText = literalExpression ''
         with pkgs; [
           dmenu

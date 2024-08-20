@@ -50,12 +50,7 @@ let
 
     buildAndTestSubdir = "lib/srv/desktop/rdp/rdpclient";
 
-    buildInputs =
-      [ openssl ]
-      ++ lib.optionals stdenv.isDarwin [
-        CoreFoundation
-        Security
-      ];
+    buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ CoreFoundation Security ];
     nativeBuildInputs = [ pkg-config ];
 
     # https://github.com/NixOS/nixpkgs/issues/161570 ,
@@ -82,11 +77,7 @@ let
     cargoDeps = rustPlatform.importCargoLock cargoLock;
 
     nativeBuildInputs =
-      [
-        nodejs
-        yarn
-        fixup-yarn-lock
-      ]
+      [ nodejs yarn fixup-yarn-lock ]
       ++ lib.optional (lib.versionAtLeast version "15") [
         binaryen
         cargo
@@ -138,31 +129,14 @@ buildGoModule rec {
   inherit vendorHash;
   proxyVendor = true;
 
-  subPackages = [
-    "tool/tbot"
-    "tool/tctl"
-    "tool/teleport"
-    "tool/tsh"
-  ];
-  tags = [
-    "libfido2"
-    "webassets_embed"
-  ] ++ lib.optional withRdpClient "desktop_access_rdp";
+  subPackages = [ "tool/tbot" "tool/tctl" "tool/teleport" "tool/tsh" ];
+  tags = [ "libfido2" "webassets_embed" ] ++ lib.optional withRdpClient "desktop_access_rdp";
 
-  buildInputs =
-    [
-      openssl
-      libfido2
-    ]
-    ++ lib.optionals (stdenv.isDarwin && withRdpClient) [
-      CoreFoundation
-      Security
-      AppKit
-    ];
-  nativeBuildInputs = [
-    makeWrapper
-    pkg-config
-  ];
+  buildInputs = [
+    openssl
+    libfido2
+  ] ++ lib.optionals (stdenv.isDarwin && withRdpClient) [ CoreFoundation Security AppKit ];
+  nativeBuildInputs = [ makeWrapper pkg-config ];
 
   patches = extPatches ++ [
     ./0001-fix-add-nix-path-to-exec-env.patch
@@ -171,10 +145,7 @@ buildGoModule rec {
   ];
 
   # Reduce closure size for client machines
-  outputs = [
-    "out"
-    "client"
-  ];
+  outputs = [ "out" "client" ];
 
   preBuild =
     ''
@@ -213,14 +184,7 @@ buildGoModule rec {
     description = "Certificate authority and access plane for SSH, Kubernetes, web applications, and databases";
     homepage = "https://goteleport.com/";
     license = if lib.versionAtLeast version "15" then licenses.agpl3Plus else licenses.asl20;
-    maintainers = with maintainers; [
-      arianvp
-      justinas
-      sigma
-      tomberek
-      freezeboy
-      techknowlogick
-    ];
+    maintainers = with maintainers; [ arianvp justinas sigma tomberek freezeboy techknowlogick ];
     platforms = platforms.unix;
     # go-libfido2 is broken on platforms with less than 64-bit because it defines an array
     # which occupies more than 31 bits of address space.

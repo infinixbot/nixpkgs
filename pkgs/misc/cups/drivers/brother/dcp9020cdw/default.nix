@@ -29,16 +29,8 @@ rec {
       sha256 = "1z6nma489s0a0b0a8wyg38yxanz4k99dg29fyjs4jlprsvmwk56y";
     };
 
-    nativeBuildInputs = [
-      dpkg
-      makeWrapper
-    ];
-    buildInputs = [
-      cups
-      ghostscript
-      a2ps
-      gawk
-    ];
+    nativeBuildInputs = [ dpkg makeWrapper ];
+    buildInputs = [ cups ghostscript a2ps gawk ];
     unpackPhase = "dpkg-deb -x $src $out";
 
     installPhase = ''
@@ -86,28 +78,13 @@ rec {
       sha256 = "04yqm1qv9p4hgp1p6mqq4siygl4056s6flv6kqln8mvmcr8zaq1s";
     };
 
-    nativeBuildInputs = [
-      dpkg
-      makeWrapper
-    ];
-    buildInputs = [
-      cups
-      ghostscript
-      a2ps
-      gawk
-    ];
+    nativeBuildInputs = [ dpkg makeWrapper ];
+    buildInputs = [ cups ghostscript a2ps gawk ];
     unpackPhase = "dpkg-deb -x $src $out";
 
     installPhase = ''
       for f in $out/opt/brother/Printers/${model}/cupswrapper/cupswrapper${model}; do
-        wrapProgram $f --prefix PATH : ${
-          lib.makeBinPath [
-            coreutils
-            ghostscript
-            gnugrep
-            gnused
-          ]
-        }
+        wrapProgram $f --prefix PATH : ${lib.makeBinPath [ coreutils ghostscript gnugrep gnused ]}
       done
 
       mkdir -p $out/share/cups/model

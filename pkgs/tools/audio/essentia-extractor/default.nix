@@ -38,10 +38,7 @@ stdenv.mkDerivation rec {
     description = "AcousticBrainz audio feature extractor";
     license = licenses.agpl3Plus;
     maintainers = with maintainers; [ lovesegfault ];
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
     mainProgram = "streaming_extractor_music";
   };
 }

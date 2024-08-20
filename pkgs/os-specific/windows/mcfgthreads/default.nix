@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-FrmeaQhwLrNewS0HDlbWgCvVQ5U1l0jrw0YVuQdt9Ck=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs = [
     autoreconfHook

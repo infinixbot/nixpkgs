@@ -11,10 +11,7 @@ stdenv.mkDerivation {
   pname = "rtl-ais";
   version = "0.8.1";
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    rtl-sdr
-    libusb1
-  ];
+  buildInputs = [ rtl-sdr libusb1 ];
 
   src = fetchFromGitHub {
     owner = "dgiardini";

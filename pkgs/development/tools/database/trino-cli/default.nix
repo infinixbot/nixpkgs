@@ -37,9 +37,6 @@ stdenv.mkDerivation rec {
     mainProgram = "trino";
     homepage = "https://github.com/trinodb/trino";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      regadas
-      cpcloud
-    ];
+    maintainers = with maintainers; [ regadas cpcloud ];
   };
 }

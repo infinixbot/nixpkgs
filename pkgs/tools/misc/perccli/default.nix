@@ -18,10 +18,7 @@ stdenvNoCC.mkDerivation rec {
 
     # Dell seems to block "uncommon" user-agents, such as Nixpkgs's custom one.
     # 403 otherwise
-    curlOptsList = [
-      "--user-agent"
-      "Mozilla/5.0"
-    ];
+    curlOptsList = [ "--user-agent" "Mozilla/5.0" ];
   };
 
   nativeBuildInputs = [ rpmextract ];

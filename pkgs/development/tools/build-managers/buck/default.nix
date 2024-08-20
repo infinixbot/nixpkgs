@@ -27,13 +27,7 @@ stdenv.mkDerivation rec {
     grep -l -r '/bin/bash' --null | xargs -0 sed -i -e "s!/bin/bash!${bash}/bin/bash!g"
   '';
 
-  nativeBuildInputs = [
-    makeWrapper
-    python3
-    jdk8
-    ant
-    watchman
-  ];
+  nativeBuildInputs = [ makeWrapper python3 jdk8 ant watchman ];
 
   buildPhase = ''
     # Set correct version, see https://github.com/facebook/buck/issues/2607
@@ -47,13 +41,7 @@ stdenv.mkDerivation rec {
   installPhase = ''
     install -D -m755 buck-out/gen/*/programs/buck.pex $out/bin/buck
     wrapProgram $out/bin/buck \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          jdk8
-          watchman
-          python3
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ jdk8 watchman python3 ]}"
   '';
 
   meta = with lib; {

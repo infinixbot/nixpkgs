@@ -21,11 +21,7 @@ let
       ...
     }@attrs:
     let
-      attrs' = builtins.removeAttrs attrs [
-        "version"
-        "hash"
-        "vendorHash"
-      ];
+      attrs' = builtins.removeAttrs attrs [ "version" "hash" "vendorHash" ];
     in
     buildGoModule (
       {
@@ -39,11 +35,7 @@ let
           inherit hash;
         };
 
-        ldflags = [
-          "-s"
-          "-w"
-          "-X 'github.com/hashicorp/terraform/version.dev=no'"
-        ];
+        ldflags = [ "-s" "-w" "-X 'github.com/hashicorp/terraform/version.dev=no'" ];
 
         postConfigure = ''
           # speakeasy hardcodes /bin/stty https://github.com/bgentry/speakeasy/issues/22

@@ -57,15 +57,7 @@ let
   scalarType =
     # see the option's description below for the
     # handling/transformation of each possible type
-    oneOf [
-      (enum [
-        true
-        null
-      ])
-      int
-      path
-      singleLineStr
-    ];
+    oneOf [ (enum [ true null ]) int path singleLineStr ];
 
   # TSM rejects servername strings longer than 64 chars.
   servernameType = strMatching "[^[:space:]]{1,64}";
@@ -120,10 +112,7 @@ let
         a random password will be generated and stored
       '';
       options.passwordaccess = mkOption {
-        type = enum [
-          "generate"
-          "prompt"
-        ];
+        type = enum [ "generate" "prompt" ];
         visible = false;
       };
       options.passworddir = mkOption {

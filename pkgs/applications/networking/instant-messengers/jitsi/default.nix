@@ -54,10 +54,7 @@ stdenv.mkDerivation rec {
   ]);
 
   nativeBuildInputs = [ unzip ];
-  buildInputs = [
-    ant
-    jdk
-  ];
+  buildInputs = [ ant jdk ];
 
   buildPhase = "ant make";
 

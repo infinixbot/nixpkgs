@@ -484,19 +484,11 @@ in
   # As a nix user, use this derivation instead of "luarocks_bootstrap"
   luarocks = prev.luarocks.overrideAttrs (oa: {
 
-    nativeBuildInputs = oa.nativeBuildInputs ++ [
-      installShellFiles
-      lua
-      unzip
-    ];
+    nativeBuildInputs = oa.nativeBuildInputs ++ [ installShellFiles lua unzip ];
     # cmake is just to compile packages with "cmake" buildType, not luarocks itself
     dontUseCmakeConfigure = true;
 
-    propagatedBuildInputs = [
-      zip
-      unzip
-      cmake
-    ];
+    propagatedBuildInputs = [ zip unzip cmake ];
 
     postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
       installShellCompletion --cmd luarocks \
@@ -585,10 +577,7 @@ in
       hash = "sha256-EcP4eYsuOVeEol+kMqzsVHd8F2KoBdLzf6K0KsYToUY=";
     };
 
-    propagatedBuildInputs = oa.propagatedBuildInputs ++ [
-      cargo
-      rustPlatform.cargoSetupHook
-    ];
+    propagatedBuildInputs = oa.propagatedBuildInputs ++ [ cargo rustPlatform.cargoSetupHook ];
 
     # ld: symbol(s) not found for architecture arm64
     # clang-16: error: linker command failed with exit code 1 (use -v to see invocation)
@@ -626,10 +615,7 @@ in
 
   lz-n = prev.lz-n.overrideAttrs (oa: {
     doCheck = lua.luaversion == "5.1";
-    nativeCheckInputs = [
-      final.nlua
-      final.busted
-    ];
+    nativeCheckInputs = [ final.nlua final.busted ];
     checkPhase = ''
       runHook preCheck
       export HOME=$(mktemp -d)
@@ -666,10 +652,7 @@ in
 
   haskell-tools-nvim = prev.haskell-tools-nvim.overrideAttrs (oa: {
     doCheck = lua.luaversion == "5.1";
-    nativeCheckInputs = [
-      final.nlua
-      final.busted
-    ];
+    nativeCheckInputs = [ final.nlua final.busted ];
     checkPhase = ''
       runHook preCheck
       export HOME=$(mktemp -d)
@@ -724,15 +707,9 @@ in
       rm -rf deps/lua deps/libuv
     '';
 
-    buildInputs = [
-      libuv
-      final.lua
-    ];
+    buildInputs = [ libuv final.lua ];
 
-    nativeBuildInputs = [
-      pkg-config
-      cmake
-    ] ++ lib.optionals stdenv.isDarwin [ fixDarwinDylibNames ];
+    nativeBuildInputs = [ pkg-config cmake ] ++ lib.optionals stdenv.isDarwin [ fixDarwinDylibNames ];
   };
 
   luv = prev.luv.overrideAttrs (oa: {
@@ -864,10 +841,7 @@ in
 
   rustaceanvim = prev.rustaceanvim.overrideAttrs (oa: {
     doCheck = lua.luaversion == "5.1";
-    nativeCheckInputs = [
-      final.nlua
-      final.busted
-    ];
+    nativeCheckInputs = [ final.nlua final.busted ];
     checkPhase = ''
       runHook preCheck
       export HOME=$(mktemp -d)
@@ -879,10 +853,7 @@ in
   sqlite = prev.sqlite.overrideAttrs (drv: {
 
     doCheck = true;
-    nativeCheckInputs = [
-      final.plenary-nvim
-      neovim-unwrapped
-    ];
+    nativeCheckInputs = [ final.plenary-nvim neovim-unwrapped ];
 
     # the plugin loads the library from either the LIBSQLITE env
     # or the vim.g.sqlite_clib_path variable.
@@ -921,10 +892,7 @@ in
       src = oa.src;
       hash = "sha256-YApsOGfAw34zp069lyGR6FGjxty1bE23+Tic07f8zI4=";
     };
-    nativeBuildInputs = oa.nativeBuildInputs ++ [
-      cargo
-      rustPlatform.cargoSetupHook
-    ];
+    nativeBuildInputs = oa.nativeBuildInputs ++ [ cargo rustPlatform.cargoSetupHook ];
   });
 
   toml-edit = prev.toml-edit.overrideAttrs (oa: {

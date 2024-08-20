@@ -8,10 +8,7 @@
 
 mkCoqDerivation {
 
-  namePrefix = [
-    "coq"
-    "mathcomp"
-  ];
+  namePrefix = [ "coq" "mathcomp" ];
   pname = "bigenough";
   owner = "math-comp";
 

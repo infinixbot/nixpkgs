@@ -23,15 +23,8 @@ stdenv.mkDerivation {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [
-    pkg-config
-    installShellFiles
-  ];
-  buildInputs = [
-    kmod
-    libevdev
-    bash
-  ];
+  nativeBuildInputs = [ pkg-config installShellFiles ];
+  buildInputs = [ kmod libevdev bash ];
 
   installFlags = [
     "PREFIX=$(out)"

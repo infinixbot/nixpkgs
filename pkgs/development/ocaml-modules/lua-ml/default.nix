@@ -24,12 +24,7 @@ else
       sha256 = "sha256-xkjsjKD89W7Y5XK8kfL/ZErYKS14z0u0QCARN0DbTC8=";
     };
 
-    nativeBuildInputs = [
-      opaline
-      ocaml
-      findlib
-      ocamlbuild
-    ];
+    nativeBuildInputs = [ opaline ocaml findlib ocamlbuild ];
 
     strictDeps = true;
 

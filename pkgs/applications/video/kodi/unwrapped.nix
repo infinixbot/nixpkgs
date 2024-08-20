@@ -330,33 +330,28 @@ stdenv.mkDerivation (finalAttrs: {
       libdisplay-info
     ];
 
-  nativeBuildInputs =
-    [
-      cmake
-      doxygen
-      makeWrapper
-      which
-      pkg-config
-      autoconf
-      automake
-      libtool # still needed for some components. Check if that is the case with 19.0
-      jre_headless
-      yasm
-      gettext
-      python3Packages.python
-      flatbuffers
+  nativeBuildInputs = [
+    cmake
+    doxygen
+    makeWrapper
+    which
+    pkg-config
+    autoconf
+    automake
+    libtool # still needed for some components. Check if that is the case with 19.0
+    jre_headless
+    yasm
+    gettext
+    python3Packages.python
+    flatbuffers
 
-      # for TexturePacker
-      giflib
-      zlib
-      libpng
-      libjpeg
-      lzo
-    ]
-    ++ lib.optionals waylandSupport [
-      wayland-protocols
-      waylandpp.bin
-    ];
+    # for TexturePacker
+    giflib
+    zlib
+    libpng
+    libjpeg
+    lzo
+  ] ++ lib.optionals waylandSupport [ wayland-protocols waylandpp.bin ];
 
   depsBuildBuild = [
     buildPackages.stdenv.cc
@@ -424,24 +419,14 @@ stdenv.mkDerivation (finalAttrs: {
       wrapProgram $out/bin/$p \
         --prefix PATH ":" "${
           lib.makeBinPath (
-            [
-              python3Packages.python
-              glxinfo
-            ]
+            [ python3Packages.python glxinfo ]
             ++ lib.optional x11Support xdpyinfo
             ++ lib.optional sambaSupport samba
           )
         }" \
         --prefix LD_LIBRARY_PATH ":" "${
           lib.makeLibraryPath (
-            [
-              curl
-              systemd
-              libmad
-              libcec
-              libcec_platform
-              libass
-            ]
+            [ curl systemd libmad libcec libcec_platform libass ]
             ++ lib.optional vdpauSupport libvdpau
             ++ lib.optional nfsSupport libnfs
             ++ lib.optional rtmpSupport rtmpdump

@@ -51,16 +51,9 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-yXuZZ/qPFbjp9N+2YYTKxqfsncZloQW8UWjY5yD+Fus=";
   };
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools wrapQtAppsHook ];
 
   propagatedBuildInputs = [
     qca-qt5

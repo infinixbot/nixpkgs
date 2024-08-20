@@ -60,19 +60,9 @@ stdenv.mkDerivation rec {
       imath
       minizip-ng
     ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      glew
-      libglut
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Carbon
-      GLUT
-      Cocoa
-    ]
-    ++ lib.optionals pythonBindings [
-      python3Packages.python
-      python3Packages.pybind11
-    ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [ glew libglut ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ Carbon GLUT Cocoa ]
+    ++ lib.optionals pythonBindings [ python3Packages.python python3Packages.pybind11 ]
     ++ lib.optionals buildApps [
       lcms2
       openexr_3

@@ -39,9 +39,6 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "mdbook-kroki-preprocessor";
     homepage = "https://github.com/joelcourtney/mdbook-kroki-preprocessor";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      blaggacao
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ blaggacao matthiasbeyer ];
   };
 }

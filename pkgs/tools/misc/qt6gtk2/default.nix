@@ -20,14 +20,8 @@ stdenv.mkDerivation {
     hash = "sha256-j1PFJEGCd2snQ6bAcsmFNrupoZg+ib/08Xs1oJyWyN0=";
   };
 
-  buildInputs = [
-    gtk2
-    qtbase
-  ];
-  nativeBuildInputs = [
-    pkg-config
-    qmake
-  ];
+  buildInputs = [ gtk2 qtbase ];
+  nativeBuildInputs = [ pkg-config qmake ];
 
   dontWrapQtApps = true;
 

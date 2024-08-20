@@ -163,13 +163,7 @@ in
     };
 
     settings = mkOption {
-      type =
-        with types;
-        (attrsOf (oneOf [
-          bool
-          int
-          str
-        ]));
+      type = with types; (attrsOf (oneOf [ bool int str ]));
       default = { };
       description = "Dolibarr settings, see <https://github.com/Dolibarr/dolibarr/blob/develop/htdocs/conf/conf.php.example> for details.";
     };
@@ -206,13 +200,7 @@ in
     };
 
     poolConfig = mkOption {
-      type =
-        with types;
-        attrsOf (oneOf [
-          str
-          int
-          bool
-        ]);
+      type = with types; attrsOf (oneOf [ str int bool ]);
       default = {
         "pm" = "dynamic";
         "pm.max_children" = 32;

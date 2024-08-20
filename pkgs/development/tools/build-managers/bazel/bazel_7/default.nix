@@ -409,10 +409,7 @@ stdenv.mkDerivation rec {
   # Bazel starts a local server and needs to bind a local address.
   __darwinAllowLocalNetworking = true;
 
-  buildInputs = [
-    buildJdk
-    bashWithDefaultShellUtils
-  ] ++ defaultShellUtils;
+  buildInputs = [ buildJdk bashWithDefaultShellUtils ] ++ defaultShellUtils;
 
   # when a command can’t be found in a bazel build, you might also
   # need to add it to `defaultShellPath`.

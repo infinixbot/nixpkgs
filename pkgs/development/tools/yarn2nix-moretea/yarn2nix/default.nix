@@ -141,11 +141,7 @@ rec {
       inherit preBuild postBuild name;
       dontUnpack = true;
       dontInstall = true;
-      nativeBuildInputs = [
-        yarn
-        nodejs
-        git
-      ] ++ extraNativeBuildInputs;
+      nativeBuildInputs = [ yarn nodejs git ] ++ extraNativeBuildInputs;
       buildInputs = extraBuildInputs;
 
       configurePhase =
@@ -256,10 +252,7 @@ rec {
             package = lib.importJSON packageJSON;
 
             allDependencies = lib.foldl (a: b: a // b) { } (
-              map (field: lib.attrByPath [ field ] { } package) [
-                "dependencies"
-                "devDependencies"
-              ]
+              map (field: lib.attrByPath [ field ] { } package) [ "dependencies" "devDependencies" ]
             );
 
             # { [name: String] : { pname : String, packageJSON : String, ... } } -> { [pname: String] : version } -> [{ pname : String, packageJSON : String, ... }]
@@ -384,22 +377,13 @@ rec {
 
     in
     stdenv.mkDerivation (
-      builtins.removeAttrs attrs [
-        "yarnNix"
-        "pkgConfig"
-        "workspaceDependencies"
-        "packageResolutions"
-      ]
+      builtins.removeAttrs attrs [ "yarnNix" "pkgConfig" "workspaceDependencies" "packageResolutions" ]
       // {
         inherit pname version src;
 
         name = baseName;
 
-        buildInputs = [
-          yarn
-          nodejs
-          rsync
-        ] ++ extraBuildInputs;
+        buildInputs = [ yarn nodejs rsync ] ++ extraBuildInputs;
 
         node_modules = deps + "/node_modules";
 
@@ -500,10 +484,7 @@ rec {
     # we import package.json from the unfiltered source
     packageJSON = ./package.json;
 
-    yarnFlags = defaultYarnFlags ++ [
-      "--ignore-scripts"
-      "--production=true"
-    ];
+    yarnFlags = defaultYarnFlags ++ [ "--ignore-scripts" "--production=true" ];
 
     nativeBuildInputs = [ pkgs.makeWrapper ];
 

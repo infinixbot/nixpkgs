@@ -36,13 +36,7 @@ stdenv.mkDerivation rec {
   pname = "shaderc";
   version = "2024.0";
 
-  outputs = [
-    "out"
-    "lib"
-    "bin"
-    "dev"
-    "static"
-  ];
+  outputs = [ "out" "lib" "bin" "dev" "static" ];
 
   src = fetchFromGitHub {
     owner = "google";
@@ -59,10 +53,7 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs =
-    [
-      cmake
-      python3
-    ]
+    [ cmake python3 ]
     ++ lib.optionals stdenv.isDarwin [ cctools ]
     ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [ autoSignDarwinBinariesHook ];
 

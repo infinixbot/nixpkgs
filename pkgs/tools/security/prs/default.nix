@@ -35,12 +35,7 @@ rustPlatform.buildRustPackage rec {
     done
   '';
 
-  nativeBuildInputs = [
-    gpgme
-    installShellFiles
-    pkg-config
-    python3
-  ];
+  nativeBuildInputs = [ gpgme installShellFiles pkg-config python3 ];
 
   buildInputs = [
     dbus

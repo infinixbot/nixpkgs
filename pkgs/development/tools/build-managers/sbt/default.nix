@@ -59,10 +59,7 @@ stdenv.mkDerivation (finalAttrs: {
       binaryNativeCode
     ];
     description = "Build tool for Scala, Java and more";
-    maintainers = with maintainers; [
-      nequissimus
-      kashw2
-    ];
+    maintainers = with maintainers; [ nequissimus kashw2 ];
     platforms = platforms.unix;
   };
 })

@@ -34,30 +34,15 @@ buildDotnetModule rec {
   nugetDeps = ./deps.nix;
   dotnet-sdk = dotnetCorePackages.sdk_8_0;
   dotnet-runtime = dotnetCorePackages.runtime_8_0;
-  dotnetInstallFlags = [
-    "--framework"
-    "net8.0"
-  ];
+  dotnetInstallFlags = [ "--framework" "net8.0" ];
   executables = [ "git-credential-manager" ];
 
   runtimeDeps =
     [ fontconfig ]
-    ++ lib.optionals withGuiSupport [
-      libX11
-      libICE
-      libSM
-    ]
+    ++ lib.optionals withGuiSupport [ libX11 libICE libSM ]
     ++ lib.optional withLibsecretSupport libsecret;
   makeWrapperArgs = [
-    "--prefix PATH : ${
-      lib.makeBinPath (
-        [ git ]
-        ++ lib.optionals withGpgSupport [
-          gnupg
-          pass
-        ]
-      )
-    }"
+    "--prefix PATH : ${lib.makeBinPath ([ git ] ++ lib.optionals withGpgSupport [ gnupg pass ])}"
   ];
 
   passthru = {

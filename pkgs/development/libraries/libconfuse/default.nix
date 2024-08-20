@@ -36,10 +36,7 @@ stdenv.mkDerivation rec {
       --replace 'TESTS            += print_filter' ""
   '';
 
-  nativeBuildInputs = [
-    autoreconfHook
-    flex
-  ];
+  nativeBuildInputs = [ autoreconfHook flex ];
 
   enableParallelBuilding = true;
 

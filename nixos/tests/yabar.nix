@@ -5,10 +5,7 @@ import ./make-test-python.nix (
     meta.maintainers = [ ];
 
     nodes.machine = {
-      imports = [
-        ./common/x11.nix
-        ./common/user-account.nix
-      ];
+      imports = [ ./common/x11.nix ./common/user-account.nix ];
 
       test-support.displayManager.auto.user = "bob";
 

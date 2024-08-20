@@ -30,10 +30,7 @@ stdenv.mkDerivation {
   pname = "tbs";
   version = "20240506-${kernel.version}";
 
-  srcs = [
-    media
-    build
-  ];
+  srcs = [ media build ];
   sourceRoot = build.name;
 
   # https://github.com/tbsdtv/linux_media/wiki

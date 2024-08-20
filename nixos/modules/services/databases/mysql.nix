@@ -282,11 +282,7 @@ in
 
       replication = {
         role = mkOption {
-          type = types.enum [
-            "master"
-            "slave"
-            "none"
-          ];
+          type = types.enum [ "master" "slave" "none" ];
           default = "none";
           description = "Role of the MySQL server instance.";
         };
@@ -345,11 +341,7 @@ in
         log-bin-index = "mysql-bin-${toString cfg.replication.serverId}.index";
         relay-log = "mysql-relay-bin";
         server-id = cfg.replication.serverId;
-        binlog-ignore-db = [
-          "information_schema"
-          "performance_schema"
-          "mysql"
-        ];
+        binlog-ignore-db = [ "information_schema" "performance_schema" "mysql" ];
       })
       (mkIf (!isMariaDB) {
         plugin-load-add = "auth_socket.so";
@@ -552,11 +544,7 @@ in
           ProtectKernelTunables = true;
           ProtectKernelModules = true;
           ProtectControlGroups = true;
-          RestrictAddressFamilies = [
-            "AF_UNIX"
-            "AF_INET"
-            "AF_INET6"
-          ];
+          RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
           LockPersonality = true;
           MemoryDenyWriteExecute = true;
           RestrictRealtime = true;

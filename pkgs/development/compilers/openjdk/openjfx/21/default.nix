@@ -44,24 +44,8 @@ stdenv.mkDerivation {
     hash = "sha256-7z0GIbkQwG9mXY9dssaicqaKpMo3FkNEpyAvkswoQQ4=";
   };
 
-  buildInputs = [
-    gtk2
-    gtk3
-    libXtst
-    libXxf86vm
-    glib
-    alsa-lib
-    ffmpeg_6
-  ];
-  nativeBuildInputs = [
-    gradle
-    perl
-    pkg-config
-    cmake
-    gperf
-    python3
-    ruby
-  ];
+  buildInputs = [ gtk2 gtk3 libXtst libXxf86vm glib alsa-lib ffmpeg_6 ];
+  nativeBuildInputs = [ gradle perl pkg-config cmake gperf python3 ruby ];
 
   dontUseCmakeConfigure = true;
 
@@ -113,10 +97,7 @@ stdenv.mkDerivation {
     done
   '';
 
-  disallowedReferences = [
-    jdk
-    gradle.jdk
-  ];
+  disallowedReferences = [ jdk gradle.jdk ];
 
   meta = with lib; {
     homepage = "https://openjdk.org/projects/openjfx/";

@@ -28,13 +28,7 @@ stdenv.mkDerivation rec {
     rubberband
     scons
   ];
-  buildInputs = [
-    libsamplerate
-    libsndfile
-    liblo
-    libjack2
-    boost
-  ];
+  buildInputs = [ libsamplerate libsndfile liblo libjack2 boost ];
   prefixKey = "PREFIX=";
 
   meta = {

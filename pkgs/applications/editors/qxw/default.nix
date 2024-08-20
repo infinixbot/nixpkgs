@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    gtk2
-    pcre
-  ];
+  buildInputs = [ gtk2 pcre ];
 
   makeFlags = [ "DESTDIR=$(out)" ];
 

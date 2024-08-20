@@ -61,16 +61,9 @@ buildPythonApplication rec {
   ];
 
   buildInputs =
-    [
-      gtk3
-      pango
-      gexiv2
-    ]
+    [ gtk3 pango gexiv2 ]
     # Map support
-    ++ lib.optionals enableOSM [
-      osm-gps-map
-      glib-networking
-    ]
+    ++ lib.optionals enableOSM [ osm-gps-map glib-networking ]
     # Graphviz support
     ++ lib.optional enableGraphviz graphviz
     # Ghostscript support
@@ -104,11 +97,7 @@ buildPythonApplication rec {
     description = "Genealogy software";
     mainProgram = "gramps";
     homepage = "https://gramps-project.org";
-    maintainers = with maintainers; [
-      jk
-      pinpox
-      tomasajt
-    ];
+    maintainers = with maintainers; [ jk pinpox tomasajt ];
     changelog = "https://github.com/gramps-project/gramps/blob/${src.rev}/ChangeLog";
     longDescription = ''
       Every person has their own story but they are also part of a collective

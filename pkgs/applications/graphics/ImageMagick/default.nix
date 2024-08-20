@@ -91,11 +91,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-Y/tj8IAhsCFK7Yd0MXZ8X6AOLxICyVOIaSaQveMf17k=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ]; # bin/ isn't really big
+  outputs = [ "out" "dev" "doc" ]; # bin/ isn't really big
   outputMan = "out"; # it's tiny
 
   enableParallelBuilding = true;
@@ -121,10 +117,7 @@ stdenv.mkDerivation (finalAttrs: {
       "--disable-shared"
     ];
 
-  nativeBuildInputs = [
-    pkg-config
-    libtool
-  ];
+  nativeBuildInputs = [ pkg-config libtool ];
 
   buildInputs =
     [ potrace ]
@@ -191,16 +184,9 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "http://www.imagemagick.org/";
     changelog = "https://github.com/ImageMagick/Website/blob/main/ChangeLog.md";
     description = "Software suite to create, edit, compose, or convert bitmap images";
-    pkgConfigModules = [
-      "ImageMagick"
-      "MagickWand"
-    ];
+    pkgConfigModules = [ "ImageMagick" "MagickWand" ];
     platforms = platforms.linux ++ platforms.darwin;
-    maintainers = with maintainers; [
-      erictapen
-      dotlambda
-      rhendric
-    ];
+    maintainers = with maintainers; [ erictapen dotlambda rhendric ];
     license = licenses.asl20;
     mainProgram = "magick";
   };

@@ -21,15 +21,8 @@ mkDerivation rec {
 
   dontBuild = true;
 
-  nativeBuildInputs = [
-    wrapQtAppsHook
-    makeWrapper
-    python3
-  ];
-  propagatedBuildInputs = with python3.pkgs; [
-    pyqt5
-    docutils
-  ];
+  nativeBuildInputs = [ wrapQtAppsHook makeWrapper python3 ];
+  propagatedBuildInputs = with python3.pkgs; [ pyqt5 docutils ];
 
   desktopItem = makeDesktopItem {
     name = "leo-editor";
@@ -39,11 +32,7 @@ mkDerivation rec {
     comment = meta.description;
     desktopName = "Leo";
     genericName = "Text Editor";
-    categories = [
-      "Application"
-      "Development"
-      "IDE"
-    ];
+    categories = [ "Application" "Development" "IDE" ];
     startupNotify = false;
     mimeTypes = [
       "text/plain"
@@ -103,10 +92,7 @@ mkDerivation rec {
     description = "A powerful folding editor";
     longDescription = "Leo is a PIM, IDE and outliner that accelerates the work flow of programmers, authors and web designers.";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      leonardoce
-      kashw2
-    ];
+    maintainers = with maintainers; [ leonardoce kashw2 ];
     mainProgram = "leo";
   };
 }

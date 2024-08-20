@@ -11,18 +11,9 @@ import ../make-test-python.nix (
       tag = "local";
       contents = pkgs.buildEnv {
         name = "rke2-pause-image-env";
-        paths = with pkgs; [
-          tini
-          (hiPrio coreutils)
-          busybox
-        ];
+        paths = with pkgs; [ tini (hiPrio coreutils) busybox ];
       };
-      config.Entrypoint = [
-        "/bin/tini"
-        "--"
-        "/bin/sleep"
-        "inf"
-      ];
+      config.Entrypoint = [ "/bin/tini" "--" "/bin/sleep" "inf" ];
     };
     testPodYaml = pkgs.writeText "test.yaml" ''
       apiVersion: v1

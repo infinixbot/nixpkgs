@@ -33,12 +33,7 @@ let
       "chemical/x-xyz"
       "chemical/x-mdl-sdf"
     ];
-    categories = [
-      "Graphics"
-      "Education"
-      "Science"
-      "Chemistry"
-    ];
+    categories = [ "Graphics" "Education" "Science" "Chemistry" ];
   };
 in
 python3Packages.buildPythonApplication rec {
@@ -81,10 +76,7 @@ python3Packages.buildPythonApplication rec {
     ''
       wrapProgram $out/bin/pymol \
         --prefix PYTHONPATH : ${
-          lib.makeSearchPathOutput "lib" python3Packages.python.sitePackages [
-            pyqt5
-            pyqt5.pyqt5-sip
-          ]
+          lib.makeSearchPathOutput "lib" python3Packages.python.sitePackages [ pyqt5 pyqt5.pyqt5-sip ]
         }
 
       mkdir -p "$out/share/icons/"
@@ -139,9 +131,6 @@ python3Packages.buildPythonApplication rec {
     mainProgram = "pymol";
     homepage = "https://www.pymol.org/";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      natsukium
-      samlich
-    ];
+    maintainers = with maintainers; [ natsukium samlich ];
   };
 }

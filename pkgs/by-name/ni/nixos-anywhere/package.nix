@@ -55,10 +55,6 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "nixos-anywhere";
     license = licenses.mit;
     platforms = platforms.all;
-    maintainers = [
-      maintainers.mic92
-      maintainers.lassulus
-      maintainers.phaer
-    ];
+    maintainers = [ maintainers.mic92 maintainers.lassulus maintainers.phaer ];
   };
 })

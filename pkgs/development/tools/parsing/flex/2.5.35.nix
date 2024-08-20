@@ -25,13 +25,7 @@ stdenv.mkDerivation rec {
     patchShebangs tests
   '';
 
-  nativeBuildInputs = [
-    flex
-    bison
-    texinfo
-    help2man
-    autoreconfHook
-  ];
+  nativeBuildInputs = [ flex bison texinfo help2man autoreconfHook ];
 
   propagatedBuildInputs = [ m4 ];
 

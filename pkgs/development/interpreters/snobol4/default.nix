@@ -28,29 +28,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-QeMB6d0YDXARfWTzaU+d1U+e2QmjajJYfIvthatorBU=";
   };
 
-  outputs = [
-    "out"
-    "man"
-    "doc"
-  ];
+  outputs = [ "out" "man" "doc" ];
 
   # gzip used by Makefile to compress man pages
-  nativeBuildInputs = [
-    gnum4
-    gzip
-  ];
+  nativeBuildInputs = [ gnum4 gzip ];
   # enable all features (undocumented, based on manual review of configure script)
   buildInputs =
-    [
-      bzip2
-      libffi
-      openssl
-      readline
-      sqlite
-      tcl
-      xz
-      zlib
-    ]
+    [ bzip2 libffi openssl readline sqlite tcl xz zlib ]
     # ndbm compat library
     ++ lib.optional stdenv.isLinux gdbm;
   configureFlags = lib.optional (tcl != null) "--with-tcl=${tcl}/lib/tclConfig.sh";

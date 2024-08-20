@@ -18,11 +18,7 @@ buildDunePackage rec {
 
   nativeBuildInputs = [ menhir ];
   buildInputs = [ cmdliner ];
-  propagatedBuildInputs = [
-    easy-format
-    re
-    yojson
-  ];
+  propagatedBuildInputs = [ easy-format re yojson ];
 
   passthru.tests = {
     smoke-test = nixosTests.atd;

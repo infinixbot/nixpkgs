@@ -24,29 +24,16 @@ stdenv.mkDerivation rec {
     sha256 = "0hl1i38z9xnbgfjkaz04vv1n8xbgfg88g5z8fyzyb2hxv2z37anf";
   };
 
-  nativeBuildInputs = [
-    imake
-    gccmakedep
-    pkg-config
-  ];
+  nativeBuildInputs = [ imake gccmakedep pkg-config ];
 
-  buildInputs =
-    [
-      libX11
-      libXt
-      libXext
-      libXpm
-    ]
-    ++ lib.optionals svgSupport [
-      librsvg
-      glib
-      gdk-pixbuf
-    ];
+  buildInputs = [
+    libX11
+    libXt
+    libXext
+    libXpm
+  ] ++ lib.optionals svgSupport [ librsvg glib gdk-pixbuf ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   imakeFlags = lib.optionalString svgSupport "-DWITH_SVG_SUPPORT";
 
@@ -59,10 +46,7 @@ stdenv.mkDerivation rec {
     "MANDIR=${placeholder "man"}/share/man"
   ];
 
-  installTargets = [
-    "install"
-    "install.man"
-  ];
+  installTargets = [ "install" "install.man" ];
 
   meta = with lib; {
     description = "Keyboard layout indicator and switcher";

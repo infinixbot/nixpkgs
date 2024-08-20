@@ -16,13 +16,7 @@
   ...
 }@args:
 let
-  otherArgs = lib.attrsets.removeAttrs args [
-    "pname"
-    "data"
-    "repo"
-    "releasePrefix"
-    "isMultiArch"
-  ];
+  otherArgs = lib.attrsets.removeAttrs args [ "pname" "data" "repo" "releasePrefix" "isMultiArch" ];
   inherit (stdenvNoCC.hostPlatform) system;
   inherit (if isCrossArch then data else data.${system}) url hash;
   # Upstream uses a different naming scheme for platforms

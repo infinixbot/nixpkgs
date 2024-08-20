@@ -18,8 +18,5 @@ python3Packages.buildPythonPackage rec {
 
   checkInputs = [ python3Packages.pytest ];
   nativeBuildInputs = [ python3Packages.poetry-core ];
-  propagatedBuildInputs = with python3Packages; [
-    click
-    pexpect
-  ];
+  propagatedBuildInputs = with python3Packages; [ click pexpect ];
 }

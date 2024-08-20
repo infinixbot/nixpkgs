@@ -14,11 +14,7 @@ args@{
   ...
 }:
 let
-  pkgSet = removeAttrs args [
-    "pkgFilter"
-    "extraName"
-    "extraVersion"
-  ];
+  pkgSet = removeAttrs args [ "pkgFilter" "extraName" "extraVersion" ];
 
   # combine a set of TL packages into a single TL meta-package
   combinePkgs =

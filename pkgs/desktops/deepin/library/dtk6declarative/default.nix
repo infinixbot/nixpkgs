@@ -60,11 +60,7 @@ stdenv.mkDerivation (finalAttrs: {
     export QML2_IMPORT_PATH=${lib.getBin qt6Packages.qtdeclarative}/${qt6Packages.qtbase.qtQmlPrefix}
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
   meta = {
     description = "Widget development toolkit based on QtQuick/QtQml";

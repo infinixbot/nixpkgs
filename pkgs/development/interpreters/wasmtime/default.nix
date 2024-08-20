@@ -22,17 +22,9 @@ rustPlatform.buildRustPackage rec {
   # Disable cargo-auditable until https://github.com/rust-secure-code/cargo-auditable/issues/124 is solved.
   auditable = false;
   cargoHash = "sha256-ABDjdkHXSu80yUnXBNsUmpbtl9F3CYxy2GvYGN2fEuY=";
-  cargoBuildFlags = [
-    "--package"
-    "wasmtime-cli"
-    "--package"
-    "wasmtime-c-api"
-  ];
+  cargoBuildFlags = [ "--package" "wasmtime-cli" "--package" "wasmtime-c-api" ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   buildInputs = lib.optional stdenv.isDarwin Security;
 
@@ -75,10 +67,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://wasmtime.dev/";
     license = licenses.asl20;
     mainProgram = "wasmtime";
-    maintainers = with maintainers; [
-      ereslibre
-      matthewbauer
-    ];
+    maintainers = with maintainers; [ ereslibre matthewbauer ];
     platforms = platforms.unix;
     changelog = "https://github.com/bytecodealliance/wasmtime/blob/v${version}/RELEASES.md";
   };

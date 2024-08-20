@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ gfortran ];
-  buildInputs = [
-    blas
-    lapack
-  ];
+  buildInputs = [ blas lapack ];
 
   preConfigure = ''
     mkdir -p $out/lib
@@ -46,11 +43,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "http://faculty.cse.tamu.edu/davis/suitesparse.html";
     description = "Suite of sparse matrix algorithms";
-    license = with licenses; [
-      bsd2
-      gpl2Plus
-      lgpl21Plus
-    ];
+    license = with licenses; [ bsd2 gpl2Plus lgpl21Plus ];
     maintainers = with maintainers; [ ttuegel ];
     platforms = with platforms; unix;
   };

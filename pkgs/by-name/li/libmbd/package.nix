@@ -30,16 +30,9 @@ stdenv.mkDerivation rec {
     EOF
   '';
 
-  nativeBuildInputs = [
-    cmake
-    gfortran
-  ];
+  nativeBuildInputs = [ cmake gfortran ];
 
-  buildInputs = [
-    blas
-    lapack
-    scalapack
-  ];
+  buildInputs = [ blas lapack scalapack ];
 
   propagatedBuildInputs = [ mpi ];
 

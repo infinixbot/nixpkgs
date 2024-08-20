@@ -21,12 +21,7 @@ stdenv.mkDerivation {
 
   strictDeps = true;
 
-  nativeBuildInputs = with ocamlPackages; [
-    menhir
-    ocaml
-    findlib
-    dune_3
-  ];
+  nativeBuildInputs = with ocamlPackages; [ menhir ocaml findlib dune_3 ];
 
   buildInputs = with ocamlPackages; [
     ansiterminal

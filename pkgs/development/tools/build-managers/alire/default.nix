@@ -19,10 +19,7 @@ stdenv.mkDerivation (finalAttrs: {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    gprbuild
-    gnat
-  ];
+  nativeBuildInputs = [ gprbuild gnat ];
 
   postPatch = ''
     patchShebangs ./dev/build.sh

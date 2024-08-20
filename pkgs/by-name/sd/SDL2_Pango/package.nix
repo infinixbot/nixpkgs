@@ -37,10 +37,7 @@ stdenv.mkDerivation (finalAttrs: {
       darwin.libobjc
     ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   strictDeps = true;
 

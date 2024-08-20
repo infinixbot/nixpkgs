@@ -33,33 +33,15 @@ stdenv.mkDerivation rec {
     hash = "sha256-58zpoWX3thnu/Egy8KjcFrAF0p44kK7WAIxQbqKGpec=";
   };
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-    "man"
-    "dnsutils"
-    "host"
-  ];
+  outputs = [ "out" "lib" "dev" "man" "dnsutils" "host" ];
 
   patches = [
     ./dont-keep-configure-flags.patch
   ];
 
-  nativeBuildInputs = [
-    perl
-    pkg-config
-  ];
+  nativeBuildInputs = [ perl pkg-config ];
   buildInputs =
-    [
-      libidn2
-      libtool
-      libxml2
-      openssl
-      libuv
-      nghttp2
-      jemalloc
-    ]
+    [ libidn2 libtool libxml2 openssl libuv nghttp2 jemalloc ]
     ++ lib.optional stdenv.isLinux libcap
     ++ lib.optional enableGSSAPI libkrb5
     ++ lib.optional enablePython (python3.withPackages (ps: with ps; [ ply ]))
@@ -153,10 +135,6 @@ stdenv.mkDerivation rec {
     maintainers = with maintainers; [ globin ];
     platforms = platforms.unix;
 
-    outputsToInstall = [
-      "out"
-      "dnsutils"
-      "host"
-    ];
+    outputsToInstall = [ "out" "dnsutils" "host" ];
   };
 }

@@ -21,10 +21,7 @@ in
 buildGoModule {
   inherit pname version src;
 
-  outputs = [
-    "out"
-    "server"
-  ];
+  outputs = [ "out" "server" ];
 
   nativeBuildInputs = [
     nodejs

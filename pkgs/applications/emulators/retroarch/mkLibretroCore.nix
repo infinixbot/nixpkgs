@@ -81,10 +81,7 @@ stdenv.mkDerivation (
 
     passthru = {
       inherit core libretroCore;
-      updateScript = [
-        ./update_cores.py
-        repo
-      ];
+      updateScript = [ ./update_cores.py repo ];
     };
 
     meta =

@@ -2,10 +2,7 @@ import ./make-test-python.nix (
   { pkgs, lib, ... }:
   {
     name = "noto-fonts";
-    meta.maintainers = with lib.maintainers; [
-      nickcao
-      midchildan
-    ];
+    meta.maintainers = with lib.maintainers; [ nickcao midchildan ];
 
     nodes.machine = {
       imports = [ ./common/x11.nix ];
@@ -19,18 +16,9 @@ import ./make-test-python.nix (
           noto-fonts-color-emoji
         ];
         fontconfig.defaultFonts = {
-          serif = [
-            "Noto Serif"
-            "Noto Serif CJK SC"
-          ];
-          sansSerif = [
-            "Noto Sans"
-            "Noto Sans CJK SC"
-          ];
-          monospace = [
-            "Noto Sans Mono"
-            "Noto Sans Mono CJK SC"
-          ];
+          serif = [ "Noto Serif" "Noto Serif CJK SC" ];
+          sansSerif = [ "Noto Sans" "Noto Sans CJK SC" ];
+          monospace = [ "Noto Sans Mono" "Noto Sans Mono CJK SC" ];
           emoji = [ "Noto Color Emoji" ];
         };
       };

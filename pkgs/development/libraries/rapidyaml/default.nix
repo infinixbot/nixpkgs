@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-NUPx/1DkhSeCTt3Y5WpsN3wX7pMNOeku7eHdmFv/OWw=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    git
-  ];
+  nativeBuildInputs = [ cmake git ];
 
   meta = with lib; {
     description = "Library to parse and emit YAML, and do it fast";

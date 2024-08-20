@@ -72,11 +72,7 @@ stdenv.mkDerivation rec {
 
   CXXFLAGS = " --std=c++11 ";
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-    texinfo
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook texinfo ];
   buildInputs = [
     boost
     zlib

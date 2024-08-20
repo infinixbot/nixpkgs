@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ extra-cmake-modules ];
-  buildInputs = [
-    qtbase
-    qtdeclarative
-  ];
+  buildInputs = [ qtbase qtdeclarative ];
   cmakeFlags = [ "-DQT_MAJOR_VERSION=${lib.versions.major qtbase.version}" ];
   dontWrapQtApps = true;
 

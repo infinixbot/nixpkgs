@@ -40,12 +40,7 @@ let
     {
       pname = "gitaly-aux";
 
-      subPackages = [
-        "cmd/gitaly-hooks"
-        "cmd/gitaly-ssh"
-        "cmd/gitaly-lfs-smudge"
-        "cmd/gitaly-gpg"
-      ];
+      subPackages = [ "cmd/gitaly-hooks" "cmd/gitaly-ssh" "cmd/gitaly-lfs-smudge" "cmd/gitaly-gpg" ];
     }
     // commonOpts
   );
@@ -54,10 +49,7 @@ buildGoModule (
   {
     pname = "gitaly";
 
-    subPackages = [
-      "cmd/gitaly"
-      "cmd/gitaly-backup"
-    ];
+    subPackages = [ "cmd/gitaly" "cmd/gitaly-backup" ];
 
     preConfigure = ''
       mkdir -p _build/bin

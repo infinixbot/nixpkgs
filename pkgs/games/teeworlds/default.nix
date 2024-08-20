@@ -145,10 +145,7 @@ stdenv.mkDerivation rec {
       # zlib src/engine/external/pnglite/
       # zlib src/engine/external/zlib/
     ];
-    maintainers = with lib.maintainers; [
-      astsmtl
-      Luflosi
-    ];
+    maintainers = with lib.maintainers; [ astsmtl Luflosi ];
     platforms = lib.platforms.unix;
   };
 }

@@ -22,22 +22,13 @@ mkDerivation rec {
     sha256 = "sha256-LrDyJEWIgpX/or+8DDaThHoPlzu2sMPkzOAhi+fjkH4=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
-  buildInputs =
-    [
-      glib
-      pcre
-      polkit
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      libselinux
-      libsepol
-      util-linux
-    ];
+  buildInputs = [
+    glib
+    pcre
+    polkit
+  ] ++ lib.optionals stdenv.isLinux [ libselinux libsepol util-linux ];
 
   meta = with lib; {
     description = "Qt wrapper around PolKit";

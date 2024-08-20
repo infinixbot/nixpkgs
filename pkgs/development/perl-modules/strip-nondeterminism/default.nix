@@ -14,10 +14,7 @@ buildPerlPackage rec {
   pname = "strip-nondeterminism";
   version = "1.13.1";
 
-  outputs = [
-    "out"
-    "dev"
-  ]; # no "devdoc"
+  outputs = [ "out" "dev" ]; # no "devdoc"
 
   src = fetchFromGitLab {
     owner = "reproducible-builds";
@@ -69,9 +66,6 @@ buildPerlPackage rec {
     mainProgram = "strip-nondeterminism";
     homepage = "https://reproducible-builds.org/";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      pSub
-      artturin
-    ];
+    maintainers = with maintainers; [ pSub artturin ];
   };
 }

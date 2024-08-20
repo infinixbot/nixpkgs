@@ -25,10 +25,7 @@
   };
 
   boot.consoleLogLevel = lib.mkDefault 7;
-  boot.kernelParams = [
-    "console=tty0"
-    "console=ttyS0,115200n8"
-  ];
+  boot.kernelParams = [ "console=tty0" "console=ttyS0,115200n8" ];
 
   sdImage = {
     populateFirmwareCommands = "";

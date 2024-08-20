@@ -15,11 +15,6 @@ makeGaugePlugin {
     license = lib.licenses.gpl3;
     maintainers = with lib.maintainers; [ marie ];
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
-    platforms = [
-      "x86_64-darwin"
-      "aarch64-darwin"
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "x86_64-darwin" "aarch64-darwin" "aarch64-linux" "x86_64-linux" ];
   };
 }

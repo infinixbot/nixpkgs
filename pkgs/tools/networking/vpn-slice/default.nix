@@ -32,10 +32,7 @@ buildPythonApplication rec {
         --replace "'/sbin/iptables'" "'${iptables}/bin/iptables'"
     '';
 
-  propagatedBuildInputs = with python3Packages; [
-    setproctitle
-    dnspython
-  ];
+  propagatedBuildInputs = with python3Packages; [ setproctitle dnspython ];
 
   doCheck = false;
 

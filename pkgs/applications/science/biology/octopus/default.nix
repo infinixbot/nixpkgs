@@ -23,17 +23,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-FAogksVxUlzMlC0BqRu22Vchj6VX+8yNlHRLyb3g1sE=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  buildInputs = [
-    boost179
-    gmp
-    htslib
-    zlib
-    xz
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
+  buildInputs = [ boost179 gmp htslib zlib xz ];
 
   patches = [
     (fetchurl {

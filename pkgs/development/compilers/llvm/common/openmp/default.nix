@@ -80,10 +80,7 @@ stdenv.mkDerivation (
       '';
       # "All of the code is dual licensed under the MIT license and the UIUC
       # License (a BSD-like license)":
-      license = with lib.licenses; [
-        mit
-        ncsa
-      ];
+      license = with lib.licenses; [ mit ncsa ];
     };
   }
   // (lib.optionalAttrs (lib.versionAtLeast release_version "14") {

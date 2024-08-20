@@ -31,15 +31,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    cmake
-    gtest
-  ];
-  buildInputs = [
-    lingeling
-    btor2tools
-    gmp
-  ];
+  nativeBuildInputs = [ cmake gtest ];
+  buildInputs = [ lingeling btor2tools gmp ];
 
   cmakeFlags = [
     "-DBUILD_SHARED_LIBS=ON"

@@ -128,10 +128,7 @@ stdenv.mkDerivation rec {
   '';
 
   buildInputs =
-    [
-      openssl
-      libnl
-    ]
+    [ openssl libnl ]
     ++ lib.optional dbusSupport dbus
     ++ lib.optional withReadline readline
     ++ lib.optional withPcsclite pcsclite;
@@ -164,10 +161,7 @@ stdenv.mkDerivation rec {
     homepage = "https://w1.fi/wpa_supplicant/";
     description = "Tool for connecting to WPA and WPA2-protected wireless networks";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      marcweber
-      ma27
-    ];
+    maintainers = with maintainers; [ marcweber ma27 ];
     platforms = platforms.linux;
   };
 }

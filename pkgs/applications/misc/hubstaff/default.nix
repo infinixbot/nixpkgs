@@ -60,10 +60,7 @@ stdenv.mkDerivation {
 
   src = fetchurl { inherit sha256 url; };
 
-  nativeBuildInputs = [
-    unzip
-    makeWrapper
-  ];
+  nativeBuildInputs = [ unzip makeWrapper ];
 
   unpackCmd = ''
     # MojoSetups have a ZIP file at the end. ZIP’s magic string is
@@ -124,9 +121,6 @@ stdenv.mkDerivation {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
     platforms = [ "x86_64-linux" ];
-    maintainers = with maintainers; [
-      michalrus
-      srghma
-    ];
+    maintainers = with maintainers; [ michalrus srghma ];
   };
 }

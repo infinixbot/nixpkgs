@@ -99,12 +99,7 @@ let
 
         allowedIPRanges = mkOption {
           type = with types; listOf str;
-          default = [
-            "192.168.0.0/16"
-            "127.0.0.1/8"
-            "172.16.0.1/12"
-            "10.0.0.0/8"
-          ];
+          default = [ "192.168.0.0/16" "127.0.0.1/8" "172.16.0.1/12" "10.0.0.0/8" ];
           description = ''
             Allowed client IP ranges are evaluated first, defaults to ARIN IPv4 private ranges:
               [ "192.168.0.0/16" "127.0.0.0/8" "172.16.0.0/12" "10.0.0.0/8" ]

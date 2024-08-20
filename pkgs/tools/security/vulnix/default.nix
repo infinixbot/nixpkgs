@@ -22,11 +22,7 @@ python3Packages.buildPythonApplication rec {
       --replace "--flake8" ""
   '';
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
   nativeBuildInputs = [ ronn ];
 
   nativeCheckInputs = with python3Packages; [

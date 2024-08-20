@@ -61,10 +61,7 @@ mkDerivation {
     unordered-containers
   ];
   testToolDepends = [ markdown-unlit ];
-  benchmarkHaskellDepends = [
-    base
-    criterion
-  ];
+  benchmarkHaskellDepends = [ base criterion ];
   doHaddock = false;
   homepage = "https://github.com/tibbe/ekg-core";
   description = "Tracking of system metrics";

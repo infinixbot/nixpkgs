@@ -31,27 +31,17 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [
-    autoreconfHook
-    doxygen
-    pkg-config
-    python
-  ];
-  buildInputs =
-    [
-      libzip
-      glib
-      libusb1
-      libftdi1
-      check
-      libserialport
-      glibmm
-      hidapi
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      libieee1284
-      bluez
-    ];
+  nativeBuildInputs = [ autoreconfHook doxygen pkg-config python ];
+  buildInputs = [
+    libzip
+    glib
+    libusb1
+    libftdi1
+    check
+    libserialport
+    glibmm
+    hidapi
+  ] ++ lib.optionals stdenv.isLinux [ libieee1284 bluez ];
 
   strictDeps = true;
 
@@ -76,9 +66,6 @@ stdenv.mkDerivation rec {
     homepage = "https://sigrok.org/";
     license = licenses.gpl3Plus;
     platforms = platforms.linux ++ platforms.darwin;
-    maintainers = with maintainers; [
-      bjornfor
-      vifino
-    ];
+    maintainers = with maintainers; [ bjornfor vifino ];
   };
 }

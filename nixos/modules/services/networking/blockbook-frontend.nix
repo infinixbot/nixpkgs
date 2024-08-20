@@ -190,11 +190,7 @@ let
         extraCmdLineOptions = mkOption {
           type = types.listOf types.str;
           default = [ ];
-          example = [
-            "-workers=1"
-            "-dbcache=0"
-            "-logtosderr"
-          ];
+          example = [ "-workers=1" "-dbcache=0" "-logtosderr" ];
           description = ''
             Extra command line options to pass to Blockbook.
             Run blockbook --help to list all available options.

@@ -28,11 +28,7 @@ stdenv.mkDerivation rec {
     pkg-config
     which
   ];
-  buildInputs = [
-    gtk3
-    blas
-    lapack
-  ];
+  buildInputs = [ gtk3 blas lapack ];
 
   meta = with lib; {
     homepage = "https://www.xnec2c.org/";

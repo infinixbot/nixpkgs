@@ -51,14 +51,8 @@ buildGoModule rec {
   ];
 
   nativeCheckInputs = [ binaryen ];
-  nativeBuildInputs = [
-    makeWrapper
-    lld
-  ];
-  buildInputs = [
-    llvm
-    clang.cc
-  ] ++ lib.optionals stdenv.isDarwin [ xar ];
+  nativeBuildInputs = [ makeWrapper lld ];
+  buildInputs = [ llvm clang.cc ] ++ lib.optionals stdenv.isDarwin [ xar ];
 
   doCheck = (stdenv.buildPlatform.canExecute stdenv.hostPlatform);
   inherit tinygoTests;
@@ -139,9 +133,6 @@ buildGoModule rec {
     homepage = "https://tinygo.org/";
     description = "Go compiler for small places";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      Madouura
-      muscaln
-    ];
+    maintainers = with maintainers; [ Madouura muscaln ];
   };
 }

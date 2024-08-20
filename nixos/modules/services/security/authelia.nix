@@ -143,24 +143,14 @@ let
             freeformType = format.type;
             options = {
               theme = mkOption {
-                type = types.enum [
-                  "light"
-                  "dark"
-                  "grey"
-                  "auto"
-                ];
+                type = types.enum [ "light" "dark" "grey" "auto" ];
                 default = "light";
                 example = "dark";
                 description = "The theme to display.";
               };
 
               default_2fa_method = mkOption {
-                type = types.enum [
-                  ""
-                  "totp"
-                  "webauthn"
-                  "mobile_push"
-                ];
+                type = types.enum [ "" "totp" "webauthn" "mobile_push" ];
                 default = "";
                 example = "webauthn";
                 description = ''
@@ -179,21 +169,14 @@ let
 
               log = {
                 level = mkOption {
-                  type = types.enum [
-                    "info"
-                    "debug"
-                    "trace"
-                  ];
+                  type = types.enum [ "info" "debug" "trace" ];
                   default = "debug";
                   example = "info";
                   description = "Level of verbosity for logs: info, debug, trace.";
                 };
 
                 format = mkOption {
-                  type = types.enum [
-                    "json"
-                    "text"
-                  ];
+                  type = types.enum [ "json" "text" ];
                   default = "json";
                   example = "text";
                   description = "Format the logs are written as.";
@@ -238,11 +221,7 @@ let
         settingsFiles = mkOption {
           type = types.listOf types.path;
           default = [ ];
-          example = [
-            "/etc/authelia/config.yml"
-            "/etc/authelia/access-control.yml"
-            "/etc/authelia/config/"
-          ];
+          example = [ "/etc/authelia/config.yml" "/etc/authelia/access-control.yml" "/etc/authelia/config/" ];
           description = ''
             Here you can provide authelia with configuration files or directories.
             It is possible to give authelia multiple files and use the nix generated configuration
@@ -334,12 +313,7 @@ in
               # as authelia does not allow both old and new settings to be set
               lib.warn
                 "Please replace services.authelia.instances.${instance.name}.settings.{host,port,path} with services.authelia.instances.${instance.name}.settings.address, before release 5.0.0"
-                (
-                  removeAttrByPath instance.settings [
-                    "server"
-                    "address"
-                  ]
-                )
+                (removeAttrByPath instance.settings [ "server" "address" ])
             else
               instance.settings;
 
@@ -350,11 +324,7 @@ in
           );
           configArg = "--config ${
             builtins.concatStringsSep "," (
-              lib.concatLists [
-                [ configFile ]
-                instance.settingsFiles
-                oidcJwksConfigFile
-              ]
+              lib.concatLists [ [ configFile ] instance.settingsFiles oidcJwksConfigFile ]
             )
           }";
         in
@@ -404,11 +374,7 @@ in
             ProtectProc = "noaccess";
             ProtectSystem = "strict";
 
-            RestrictAddressFamilies = [
-              "AF_INET"
-              "AF_INET6"
-              "AF_UNIX"
-            ];
+            RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_UNIX" ];
             RestrictNamespaces = true;
             RestrictRealtime = true;
             RestrictSUIDSGID = true;

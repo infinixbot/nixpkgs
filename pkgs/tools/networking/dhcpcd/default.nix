@@ -60,10 +60,7 @@ stdenv.mkDerivation rec {
 
   # Hack to make installation succeed.  dhcpcd will still use /var/db
   # at runtime.
-  installFlags = [
-    "DBDIR=$(TMPDIR)/db"
-    "SYSCONFDIR=${placeholder "out"}/etc"
-  ];
+  installFlags = [ "DBDIR=$(TMPDIR)/db" "SYSCONFDIR=${placeholder "out"}/etc" ];
 
   # Check that the udev plugin got built.
   postInstall = lib.optionalString (

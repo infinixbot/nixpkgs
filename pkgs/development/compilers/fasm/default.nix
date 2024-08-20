@@ -20,10 +20,7 @@ stdenv.mkDerivation {
     done
   '';
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   installPhase = ''
     install -Dt $out/bin fasm tools/libc/fasm-*

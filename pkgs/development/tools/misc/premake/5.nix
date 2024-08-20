@@ -19,12 +19,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-2R5gq4jaQsp8Ny1oGuIYkef0kn2UG9jMf20vq0714oY=";
   };
 
-  buildInputs =
-    [ libuuid ]
-    ++ lib.optionals stdenv.isDarwin [
-      Foundation
-      readline
-    ];
+  buildInputs = [ libuuid ] ++ lib.optionals stdenv.isDarwin [ Foundation readline ];
 
   patches = [ ./no-curl-ca.patch ];
   postPatch =

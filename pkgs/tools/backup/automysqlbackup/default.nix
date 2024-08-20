@@ -31,14 +31,7 @@ stdenv.mkDerivation rec {
     cp automysqlbackup.conf $out/etc/
 
     wrapProgram $out/bin/automysqlbackup --prefix PATH : ${
-      lib.makeBinPath [
-        mariadb
-        mailutils
-        pbzip2
-        pigz
-        bzip2
-        gzip
-      ]
+      lib.makeBinPath [ mariadb mailutils pbzip2 pigz bzip2 gzip ]
     }
   '';
 

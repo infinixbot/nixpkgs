@@ -13,16 +13,8 @@
   imports = [
     ./lxc-instance-common.nix
 
-    (lib.mkRemovedOptionModule [
-      "virtualisation"
-      "lxc"
-      "nestedContainer"
-    ] "")
-    (lib.mkRemovedOptionModule [
-      "virtualisation"
-      "lxc"
-      "privilegedContainer"
-    ] "")
+    (lib.mkRemovedOptionModule [ "virtualisation" "lxc" "nestedContainer" ] "")
+    (lib.mkRemovedOptionModule [ "virtualisation" "lxc" "privilegedContainer" ] "")
   ];
 
   options = { };

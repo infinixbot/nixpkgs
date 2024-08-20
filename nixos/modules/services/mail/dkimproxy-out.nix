@@ -41,10 +41,7 @@ in
 
       domains = mkOption {
         type = with types; listOf str;
-        example = [
-          "example.org"
-          "example.com"
-        ];
+        example = [ "example.org" "example.com" ];
         description = "List of domains DKIMproxy can sign for.";
       };
 

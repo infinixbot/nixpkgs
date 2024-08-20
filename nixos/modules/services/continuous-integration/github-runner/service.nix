@@ -49,10 +49,7 @@ with lib;
 
       wantedBy = [ "multi-user.target" ];
       wants = [ "network-online.target" ];
-      after = [
-        "network.target"
-        "network-online.target"
-      ];
+      after = [ "network.target" "network-online.target" ];
 
       environment = {
         HOME = workDir;
@@ -207,22 +204,11 @@ with lib;
                 ln -s "$STATE_DIRECTORY"/{${lib.concatStringsSep "," runnerCredFiles}} "$WORK_DIRECTORY/"
               '';
             in
-            map
-              (
-                x:
-                "${x} ${
-                  escapeShellArgs [
-                    stateDir
-                    workDir
-                    logsDir
-                  ]
-                }"
-              )
-              [
-                "+${unconfigureRunner}" # runs as root
-                configureRunner
-                setupWorkDir
-              ];
+            map (x: "${x} ${escapeShellArgs [ stateDir workDir logsDir ]}") [
+              "+${unconfigureRunner}" # runs as root
+              configureRunner
+              setupWorkDir
+            ];
 
           # If running in ephemeral mode, restart the service on-exit (i.e., successful de-registration of the runner)
           # to trigger a fresh registration.
@@ -287,12 +273,7 @@ with lib;
             "~setdomainname"
             "~sethostname"
           ];
-          RestrictAddressFamilies = mkBefore [
-            "AF_INET"
-            "AF_INET6"
-            "AF_UNIX"
-            "AF_NETLINK"
-          ];
+          RestrictAddressFamilies = mkBefore [ "AF_INET" "AF_INET6" "AF_UNIX" "AF_NETLINK" ];
 
           BindPaths = lib.optionals (cfg.workDir != null) [ cfg.workDir ];
 

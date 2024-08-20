@@ -33,25 +33,8 @@ stdenv.mkDerivation {
 
   PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_GIRDIR = "${placeholder "out"}/share/gir-1.0";
   PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_TYPELIBDIR = "${placeholder "out"}/lib/girepository-1.0";
-  buildInputs = [
-    glib
-    libsndfile
-    zlib
-    bzip2
-    xz
-    libsamplerate
-  ];
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    intltool
-    gobject-introspection
-  ];
-  propagatedBuildInputs = [
-    pcre
-    util-linux
-    libselinux
-    libsepol
-  ];
+  buildInputs = [ glib libsndfile zlib bzip2 xz libsamplerate ];
+  nativeBuildInputs = [ cmake pkg-config intltool gobject-introspection ];
+  propagatedBuildInputs = [ pcre util-linux libselinux libsepol ];
 
 }

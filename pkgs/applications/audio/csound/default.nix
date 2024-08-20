@@ -48,18 +48,9 @@ stdenv.mkDerivation rec {
       stdenv.hostPlatform != stdenv.buildPlatform
     ) "-DCMAKE_IGNORE_PATH=${lib.getBin gettext}/bin";
 
-  nativeBuildInputs = [
-    cmake
-    flex
-    bison
-    gettext
-  ];
+  nativeBuildInputs = [ cmake flex bison gettext ];
   buildInputs =
-    [
-      libsndfile
-      libsamplerate
-      boost
-    ]
+    [ libsndfile libsamplerate boost ]
     ++ lib.optionals stdenv.isDarwin [
       Accelerate
       AudioUnit

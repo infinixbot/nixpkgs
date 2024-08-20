@@ -25,23 +25,11 @@ stdenv.mkDerivation rec {
   };
 
   # fuse2fs adds 14mb of dependencies
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "man"
-    "info"
-  ] ++ lib.optionals withFuse [ "fuse2fs" ];
+  outputs = [ "bin" "dev" "out" "man" "info" ] ++ lib.optionals withFuse [ "fuse2fs" ];
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
-  nativeBuildInputs = [
-    pkg-config
-    texinfo
-  ];
-  buildInputs = [
-    libuuid
-    gettext
-  ] ++ lib.optionals withFuse [ fuse3 ];
+  nativeBuildInputs = [ pkg-config texinfo ];
+  buildInputs = [ libuuid gettext ] ++ lib.optionals withFuse [ fuse3 ];
 
   patches = [
     # Avoid trouble with older systems like NixOS 23.05.

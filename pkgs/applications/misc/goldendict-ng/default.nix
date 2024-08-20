@@ -40,12 +40,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-C/0FUFLE3R+tZyCL88BiSFOHPTanILD/fIIQ/OQBSfk=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-    wrapQtAppsHook
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ pkg-config cmake wrapQtAppsHook wrapGAppsHook3 ];
   buildInputs = [
     qtbase
     qtsvg
@@ -91,10 +86,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Advanced multi-dictionary lookup program";
     platforms = platforms.linux;
     mainProgram = "goldendict";
-    maintainers = with maintainers; [
-      slbtty
-      michojel
-    ];
+    maintainers = with maintainers; [ slbtty michojel ];
     license = licenses.gpl3Plus;
   };
 })

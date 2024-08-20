@@ -57,12 +57,7 @@ let
         name = "${name}-${version}";
         inherit version;
 
-        buildInputs = buildInputs ++ [
-          erlang
-          rebar3
-          openssl
-          libyaml
-        ];
+        buildInputs = buildInputs ++ [ erlang rebar3 openssl libyaml ];
         propagatedBuildInputs = lib.unique beamDeps;
 
         inherit src;

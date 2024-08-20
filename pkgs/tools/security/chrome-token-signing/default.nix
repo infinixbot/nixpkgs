@@ -20,10 +20,7 @@ mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    qmake
-    pcsclite
-  ];
+  buildInputs = [ qmake pcsclite ];
   dontUseQmakeConfigure = true;
 
   patchPhase = ''

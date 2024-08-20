@@ -41,10 +41,7 @@ let
         [ python ]
         ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames
         ++ lib.optional javaBindings jdk
-        ++ lib.optionals ocamlBindings [
-          ocaml
-          findlib
-        ];
+        ++ lib.optionals ocamlBindings [ ocaml findlib ];
       propagatedBuildInputs = [ python.pkgs.setuptools ] ++ lib.optionals ocamlBindings [ zarith ];
       enableParallelBuilding = true;
 
@@ -100,10 +97,7 @@ let
         changelog = "https://github.com/Z3Prover/z3/releases/tag/z3-${version}";
         license = licenses.mit;
         platforms = platforms.unix;
-        maintainers = with maintainers; [
-          thoughtpolice
-          ttuegel
-        ];
+        maintainers = with maintainers; [ thoughtpolice ttuegel ];
       };
     };
 in

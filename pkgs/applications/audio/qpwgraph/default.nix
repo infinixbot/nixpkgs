@@ -24,19 +24,9 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-EMBoP0gmJ1JwjkCc1UjTM4BgeYhFSFhUOD14rJRow1o=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake pkg-config wrapQtAppsHook ];
 
-  buildInputs = [
-    qtbase
-    qtsvg
-    qtwayland
-    alsa-lib
-    pipewire
-  ];
+  buildInputs = [ qtbase qtsvg qtwayland alsa-lib pipewire ];
 
   cmakeFlags = [ "-DCONFIG_WAYLAND=ON" ];
 
@@ -50,11 +40,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://gitlab.freedesktop.org/rncbc/qpwgraph";
     license = licenses.gpl2Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      kanashimia
-      exi
-      Scrumplex
-    ];
+    maintainers = with maintainers; [ kanashimia exi Scrumplex ];
     mainProgram = "qpwgraph";
   };
 })

@@ -27,11 +27,7 @@ stdenv.mkDerivation rec {
 
   # vlock is moved into its own output, since it depends on pam. This
   # reduces closure size for most use cases.
-  outputs = [
-    "out"
-    "vlock"
-    "dev"
-  ];
+  outputs = [ "out" "vlock" "dev" ];
 
   configureFlags = [
     "--enable-optional-progs"
@@ -77,16 +73,9 @@ stdenv.mkDerivation rec {
     done
   '';
 
-  buildInputs = [
-    check
-    pam
-  ];
+  buildInputs = [ check pam ];
   NIX_LDFLAGS = lib.optional stdenv.hostPlatform.isStatic "-laudit";
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    flex
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config flex ];
 
   passthru.tests = {
     inherit (nixosTests) keymap kbd-setfont-decompress kbd-update-search-paths-patch;

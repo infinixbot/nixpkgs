@@ -29,14 +29,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-  ];
-  buildInputs = [
-    libinput
-    zlib
-  ];
+  nativeBuildInputs = [ pkg-config cmake ];
+  buildInputs = [ libinput zlib ];
 
   meta = with lib; {
     description = "Gebaar, A Super Simple WM Independent Touchpad Gesture Daemon for libinput";
@@ -44,9 +38,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/Coffee2CodeNL/gebaar-libinput";
     license = licenses.gpl3;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      colemickens
-      lovesegfault
-    ];
+    maintainers = with maintainers; [ colemickens lovesegfault ];
   };
 }

@@ -235,10 +235,7 @@ stdenv.mkDerivation (
 
     enableParallelBuilding = true;
 
-    outputs = [
-      "out"
-      "doc"
-    ];
+    outputs = [ "out" "doc" ];
 
     patches =
       [
@@ -375,10 +372,7 @@ stdenv.mkDerivation (
       '';
 
     # TODO(@Ericson2314): Always pass "--target" and always prefix.
-    configurePlatforms = [
-      "build"
-      "host"
-    ] ++ lib.optional (targetPlatform != hostPlatform) "target";
+    configurePlatforms = [ "build" "host" ] ++ lib.optional (targetPlatform != hostPlatform) "target";
 
     # `--with` flags for libraries needed for RTS linker
     configureFlags =
@@ -444,10 +438,7 @@ stdenv.mkDerivation (
     # For building runtime libs
     depsBuildTarget = toolsForTarget;
 
-    buildInputs = [
-      perl
-      bash
-    ] ++ (libDeps hostPlatform);
+    buildInputs = [ perl bash ] ++ (libDeps hostPlatform);
 
     depsTargetTarget = map lib.getDev (libDeps targetPlatform);
     depsTargetTargetPropagated = map (lib.getOutput "out") (libDeps targetPlatform);

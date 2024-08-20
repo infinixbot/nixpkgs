@@ -70,10 +70,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/linux-surface/iptsd";
     license = licenses.gpl2Plus;
     mainProgram = "iptsd";
-    maintainers = with maintainers; [
-      tomberek
-      dotlambda
-    ];
+    maintainers = with maintainers; [ tomberek dotlambda ];
     platforms = platforms.linux;
   };
 }

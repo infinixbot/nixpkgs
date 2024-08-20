@@ -35,10 +35,7 @@ let
     comment = description;
     desktopName = "URxvt";
     genericName = pname;
-    categories = [
-      "System"
-      "TerminalEmulator"
-    ];
+    categories = [ "System" "TerminalEmulator" ];
   };
 
   fetchPatchFromAUR =
@@ -65,27 +62,18 @@ stdenv.mkDerivation {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs =
-    [
-      libX11
-      libXt
-      libXft
-      ncurses # required to build the terminfo file
-      fontconfig
-      freetype
-      libXrender
-      libptytty
-    ]
-    ++ lib.optionals perlSupport [
-      perl
-      libXext
-    ]
-    ++ lib.optional gdkPixbufSupport gdk-pixbuf;
+  buildInputs = [
+    libX11
+    libXt
+    libXft
+    ncurses # required to build the terminfo file
+    fontconfig
+    freetype
+    libXrender
+    libptytty
+  ] ++ lib.optionals perlSupport [ perl libXext ] ++ lib.optional gdkPixbufSupport gdk-pixbuf;
 
-  outputs = [
-    "out"
-    "terminfo"
-  ];
+  outputs = [ "out" "terminfo" ];
 
   patches =
     (
@@ -129,11 +117,7 @@ stdenv.mkDerivation {
     (lib.enableFeature unicode3Support "unicode3")
   ] ++ lib.optional emojiSupport "--enable-wide-glyphs";
 
-  LDFLAGS = [
-    "-lfontconfig"
-    "-lXrender"
-    "-lpthread"
-  ];
+  LDFLAGS = [ "-lfontconfig" "-lXrender" "-lpthread" ];
   CFLAGS = [ "-I${freetype.dev}/include/freetype2" ];
 
   preConfigure =

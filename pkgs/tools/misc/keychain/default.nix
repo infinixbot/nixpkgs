@@ -26,10 +26,7 @@ stdenv.mkDerivation rec {
     sha256 = "1bkjlg0a2bbdjhwp37ci1rwikvrl4s3xlbf2jq2z4azc96dr83mj";
   };
 
-  nativeBuildInputs = [
-    installShellFiles
-    makeWrapper
-  ];
+  nativeBuildInputs = [ installShellFiles makeWrapper ];
   buildInputs = [ perl ];
 
   installPhase = ''
@@ -38,16 +35,7 @@ stdenv.mkDerivation rec {
     installManPage keychain.1
     wrapProgram $out/bin/keychain \
       --prefix PATH ":" "${
-        lib.makeBinPath [
-          coreutils
-          findutils
-          gawk
-          gnupg
-          gnugrep
-          gnused
-          openssh
-          procps
-        ]
+        lib.makeBinPath [ coreutils findutils gawk gnupg gnugrep gnused openssh procps ]
       }" \
   '';
 

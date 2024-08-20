@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-BpMhu01K46v1VJPQQ86gZTTck/Giwp6GaU2e2xOAoOM=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    perl
-    rinutils
-  ];
+  nativeBuildInputs = [ cmake perl rinutils ];
 
   buildInputs = [ recode ];
 

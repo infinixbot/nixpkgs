@@ -45,50 +45,26 @@ in
 
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "networking"
-        "dnsSingleRequest"
-      ]
-      [
-        "networking"
-        "resolvconf"
-        "dnsSingleRequest"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "networking"
-        "dnsExtensionMechanism"
-      ]
-      [
-        "networking"
-        "resolvconf"
-        "dnsExtensionMechanism"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "networking"
-        "extraResolvconfConf"
-      ]
-      [
-        "networking"
-        "resolvconf"
-        "extraConfig"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "networking"
-        "resolvconfOptions"
-      ]
-      [
-        "networking"
-        "resolvconf"
-        "extraOptions"
-      ]
-    )
+    (mkRenamedOptionModule [ "networking" "dnsSingleRequest" ] [
+      "networking"
+      "resolvconf"
+      "dnsSingleRequest"
+    ])
+    (mkRenamedOptionModule [ "networking" "dnsExtensionMechanism" ] [
+      "networking"
+      "resolvconf"
+      "dnsExtensionMechanism"
+    ])
+    (mkRenamedOptionModule [ "networking" "extraResolvconfConf" ] [
+      "networking"
+      "resolvconf"
+      "extraConfig"
+    ])
+    (mkRenamedOptionModule [ "networking" "resolvconfOptions" ] [
+      "networking"
+      "resolvconf"
+      "extraOptions"
+    ])
     (mkRemovedOptionModule [
       "networking"
       "resolvconf"
@@ -158,10 +134,7 @@ in
       extraOptions = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "ndots:1"
-          "rotate"
-        ];
+        example = [ "ndots:1" "rotate" ];
         description = ''
           Set the options in {file}`/etc/resolv.conf`.
         '';

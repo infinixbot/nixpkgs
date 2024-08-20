@@ -110,10 +110,7 @@ let
     submodule {
       options = {
         keyfiles = lib.mkOption {
-          type = listOf (oneOf [
-            path
-            package
-          ]);
+          type = listOf (oneOf [ path package ]);
           default = [ ];
           description = "A list of dconf keyfile directories.";
         };

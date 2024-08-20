@@ -31,11 +31,7 @@ stdenv.mkDerivation rec {
     sha256 = "00fgqwayd20akww3n2imyqscmyrjyc9jj0ar13k9dhpaxqk2jxbf";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    meson
-    ninja
-  ];
+  nativeBuildInputs = [ pkg-config meson ninja ];
 
   buildInputs = rpathLibs ++ [
     alsa-lib
@@ -97,14 +93,7 @@ stdenv.mkDerivation rec {
         vitalium
         wolpertinger
     '';
-    license = with licenses; [
-      gpl2Only
-      gpl3Only
-      gpl2Plus
-      lgpl2Plus
-      lgpl3Only
-      mit
-    ];
+    license = with licenses; [ gpl2Only gpl3Only gpl2Plus lgpl2Plus lgpl3Only mit ];
     maintainers = [ ];
     platforms = [ "x86_64-linux" ];
   };

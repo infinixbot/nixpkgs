@@ -31,11 +31,7 @@ stdenv.mkDerivation rec {
     sha256 = "1npdixwxxn3s9q1f365x9n9rc5xgfz39hxf23faqvlrklgbhj0q6";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
   patches = [
     # CVE-2021-36217 / CVE-2021-3502
@@ -121,10 +117,7 @@ stdenv.mkDerivation rec {
       name = "core-no-longer-supply-bogus-services-to-callbacks.patch";
       url = "https://github.com/avahi/avahi/commit/93b14365c1c1e04efd1a890e8caa01a2a514bfd8.patch";
       sha256 = "sha256-VBm8vsBZkTbbWAK8FI71SL89lZuYd1yFNoB5o+FvlEU=";
-      excludes = [
-        ".github/workflows/smoke-tests.sh"
-        "fuzz/fuzz-packet.c"
-      ];
+      excludes = [ ".github/workflows/smoke-tests.sh" "fuzz/fuzz-packet.c" ];
     })
   ];
 
@@ -219,10 +212,7 @@ stdenv.mkDerivation rec {
     homepage = "http://avahi.org";
     license = licenses.lgpl2Plus;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      lovek323
-      globin
-    ];
+    maintainers = with maintainers; [ lovek323 globin ];
 
     longDescription = ''
       Avahi is a system which facilitates service discovery on a local

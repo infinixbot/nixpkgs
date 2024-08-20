@@ -409,13 +409,7 @@ in
         };
 
         config = mkOption {
-          type =
-            with types;
-            attrsOf (oneOf [
-              bool
-              str
-              (listOf str)
-            ]);
+          type = with types; attrsOf (oneOf [ bool str (listOf str) ]);
           description = ''
             Addon to postfix configuration
           '';
@@ -511,11 +505,7 @@ in
         ProtectKernelTunables = true;
         ProtectSystem = "strict";
         RemoveIPC = true;
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-          "AF_UNIX"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_UNIX" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
@@ -531,34 +521,20 @@ in
       "rspamd"
       "socketActivation"
     ] "Socket activation never worked correctly and could at this time not be fixed and so was removed")
-    (mkRenamedOptionModule
-      [
-        "services"
-        "rspamd"
-        "bindSocket"
-      ]
-      [
-        "services"
-        "rspamd"
-        "workers"
-        "normal"
-        "bindSockets"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "rspamd"
-        "bindUISocket"
-      ]
-      [
-        "services"
-        "rspamd"
-        "workers"
-        "controller"
-        "bindSockets"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "rspamd" "bindSocket" ] [
+      "services"
+      "rspamd"
+      "workers"
+      "normal"
+      "bindSockets"
+    ])
+    (mkRenamedOptionModule [ "services" "rspamd" "bindUISocket" ] [
+      "services"
+      "rspamd"
+      "workers"
+      "controller"
+      "bindSockets"
+    ])
     (mkRemovedOptionModule [
       "services"
       "rmilter"

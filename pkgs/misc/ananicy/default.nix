@@ -45,12 +45,7 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     wrapProgram $out/bin/ananicy \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          schedtool
-          util-linux
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ schedtool util-linux ]}
 
     substituteInPlace $out/lib/systemd/system/ananicy.service \
       --replace "/sbin/sysctl" "${sysctl}/bin/sysctl" \

@@ -28,11 +28,7 @@ stdenv.mkDerivation rec {
     owner = "martanne";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    makeWrapper
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ pkg-config makeWrapper copyDesktopItems ];
 
   buildInputs =
     [
@@ -62,15 +58,8 @@ stdenv.mkDerivation rec {
       comment = meta.description;
       desktopName = "vis";
       genericName = "Text editor";
-      categories = [
-        "Application"
-        "Development"
-        "IDE"
-      ];
-      mimeTypes = [
-        "text/plain"
-        "application/octet-stream"
-      ];
+      categories = [ "Application" "Development" "IDE" ];
+      mimeTypes = [ "text/plain" "application/octet-stream" ];
       startupNotify = false;
       terminal = true;
     })

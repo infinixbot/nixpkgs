@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-VJBoi1+tHA4oOVOsClUfimB+mOV5ZSQsDcDq3vAZwBA=";
   };
 
-  buildInputs = [
-    zlib
-    bzip2
-    jansson
-  ];
+  buildInputs = [ zlib bzip2 jansson ];
   nativeBuildInputs = [ makeWrapper ];
 
   preConfigure = ''

@@ -39,11 +39,7 @@ perlPackages.buildPerlPackage rec {
   nativeBuildInputs = [ wrapGAppsHook3 ];
 
   buildInputs =
-    [
-      librsvg
-      sane-backends
-      sane-frontends
-    ]
+    [ librsvg sane-backends sane-frontends ]
     ++ (with perlPackages; [
       Gtk3
       Gtk3ImageView
@@ -108,10 +104,7 @@ perlPackages.buildPerlPackage rec {
 
   installTargets = [ "install" ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   nativeCheckInputs =
     [

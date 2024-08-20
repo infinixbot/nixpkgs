@@ -12,16 +12,7 @@ with lib;
 
 let
 
-  moduleSettingsType =
-    with types;
-    attrsOf (
-      nullOr (oneOf [
-        bool
-        str
-        int
-        pathInStore
-      ])
-    );
+  moduleSettingsType = with types; attrsOf (nullOr (oneOf [ bool str int pathInStore ]));
   moduleSettingsDescription = ''
     Boolean values render just the key if true, and nothing if false.
     Null values are ignored.
@@ -135,10 +126,7 @@ let
     {
 
       imports = [
-        (lib.mkRenamedOptionModule [ "enableKwallet" ] [
-          "kwallet"
-          "enable"
-        ])
+        (lib.mkRenamedOptionModule [ "enableKwallet" ] [ "kwallet" "enable" ])
       ];
 
       options = {
@@ -167,12 +155,7 @@ let
             :::
           '';
           type = types.submodule {
-            options = genAttrs [
-              "account"
-              "auth"
-              "password"
-              "session"
-            ] mkRulesTypeOption;
+            options = genAttrs [ "account" "auth" "password" "session" ] mkRulesTypeOption;
           };
         };
 
@@ -662,11 +645,7 @@ let
                 (map (
                   rule:
                   concatStringsSep " " (
-                    [
-                      type
-                      rule.control
-                      rule.modulePath
-                    ]
+                    [ type rule.control rule.modulePath ]
                     ++ map formatModuleArgument rule.args
                     ++ [ "# ${rule.name} (order ${toString rule.order})" ]
                   )
@@ -1489,11 +1468,7 @@ let
 
             type = mkOption {
               description = "Type of this limit";
-              type = enum [
-                "-"
-                "hard"
-                "soft"
-              ];
+              type = enum [ "-" "hard" "soft" ];
               default = "-";
             };
 
@@ -1523,10 +1498,7 @@ let
 
             value = mkOption {
               description = "Value of this limit";
-              type = oneOf [
-                str
-                int
-              ];
+              type = oneOf [ str int ];
             };
           };
         }
@@ -1556,122 +1528,49 @@ in
   meta.maintainers = [ maintainers.majiir ];
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "security"
-        "pam"
-        "enableU2F"
-      ]
-      [
-        "security"
-        "pam"
-        "u2f"
-        "enable"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "security"
-        "pam"
-        "enableSSHAgentAuth"
-      ]
-      [
-        "security"
-        "pam"
-        "sshAgentAuth"
-        "enable"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "security"
-        "pam"
-        "u2f"
-        "authFile"
-      ]
-      [
-        "security"
-        "pam"
-        "u2f"
-        "settings"
-        "authfile"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "security"
-        "pam"
-        "u2f"
-        "appId"
-      ]
-      [
-        "security"
-        "pam"
-        "u2f"
-        "settings"
-        "appid"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "security"
-        "pam"
-        "u2f"
-        "origin"
-      ]
-      [
-        "security"
-        "pam"
-        "u2f"
-        "settings"
-        "origin"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "security"
-        "pam"
-        "u2f"
-        "debug"
-      ]
-      [
-        "security"
-        "pam"
-        "u2f"
-        "settings"
-        "debug"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "security"
-        "pam"
-        "u2f"
-        "interactive"
-      ]
-      [
-        "security"
-        "pam"
-        "u2f"
-        "settings"
-        "interactive"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "security"
-        "pam"
-        "u2f"
-        "cue"
-      ]
-      [
-        "security"
-        "pam"
-        "u2f"
-        "settings"
-        "cue"
-      ]
-    )
+    (mkRenamedOptionModule [ "security" "pam" "enableU2F" ] [ "security" "pam" "u2f" "enable" ])
+    (mkRenamedOptionModule [ "security" "pam" "enableSSHAgentAuth" ] [
+      "security"
+      "pam"
+      "sshAgentAuth"
+      "enable"
+    ])
+    (mkRenamedOptionModule [ "security" "pam" "u2f" "authFile" ] [
+      "security"
+      "pam"
+      "u2f"
+      "settings"
+      "authfile"
+    ])
+    (mkRenamedOptionModule [ "security" "pam" "u2f" "appId" ] [
+      "security"
+      "pam"
+      "u2f"
+      "settings"
+      "appid"
+    ])
+    (mkRenamedOptionModule [ "security" "pam" "u2f" "origin" ] [
+      "security"
+      "pam"
+      "u2f"
+      "settings"
+      "origin"
+    ])
+    (mkRenamedOptionModule [ "security" "pam" "u2f" "debug" ] [
+      "security"
+      "pam"
+      "u2f"
+      "settings"
+      "debug"
+    ])
+    (mkRenamedOptionModule [ "security" "pam" "u2f" "interactive" ] [
+      "security"
+      "pam"
+      "u2f"
+      "settings"
+      "interactive"
+    ])
+    (mkRenamedOptionModule [ "security" "pam" "u2f" "cue" ] [ "security" "pam" "u2f" "settings" "cue" ])
   ];
 
   ###### interface
@@ -1833,12 +1732,7 @@ in
 
       control = mkOption {
         default = "sufficient";
-        type = types.enum [
-          "required"
-          "requisite"
-          "sufficient"
-          "optional"
-        ];
+        type = types.enum [ "required" "requisite" "sufficient" "optional" ];
         description = ''
           This option sets pam "control".
           If you want to have multi factor authentication, use "required".
@@ -1875,12 +1769,7 @@ in
 
       control = mkOption {
         default = "sufficient";
-        type = types.enum [
-          "required"
-          "requisite"
-          "sufficient"
-          "optional"
-        ];
+        type = types.enum [ "required" "requisite" "sufficient" "optional" ];
         description = ''
           This option sets pam "control".
           If you want to have multi factor authentication, use "required".
@@ -2066,12 +1955,7 @@ in
 
       control = mkOption {
         default = "sufficient";
-        type = types.enum [
-          "required"
-          "requisite"
-          "sufficient"
-          "optional"
-        ];
+        type = types.enum [ "required" "requisite" "sufficient" "optional" ];
         description = ''
           This option sets pam "control".
           If you want to have multi factor authentication, use "required".
@@ -2103,12 +1987,7 @@ in
       };
       control = mkOption {
         default = "sufficient";
-        type = types.enum [
-          "required"
-          "requisite"
-          "sufficient"
-          "optional"
-        ];
+        type = types.enum [ "required" "requisite" "sufficient" "optional" ];
         description = ''
           This option sets pam "control".
           If you want to have multi factor authentication, use "required".
@@ -2134,10 +2013,7 @@ in
       };
       mode = mkOption {
         default = "client";
-        type = types.enum [
-          "client"
-          "challenge-response"
-        ];
+        type = types.enum [ "client" "challenge-response" ];
         description = ''
           Mode of operation.
 
@@ -2261,10 +2137,7 @@ in
       ++ optional config.users.ldap.enable pam_ldap
       ++ optional config.services.kanidm.enablePam config.services.kanidm.package
       ++ optional config.services.sssd.enable pkgs.sssd
-      ++ optionals config.security.pam.krb5.enable [
-        pam_krb5
-        pam_ccreds
-      ]
+      ++ optionals config.security.pam.krb5.enable [ pam_krb5 pam_ccreds ]
       ++ optionals config.security.pam.enableOTPW [ pkgs.otpw ]
       ++ optionals config.security.pam.oath.enable [ pkgs.oath-toolkit ]
       ++ optionals config.security.pam.p11.enable [ pkgs.pam_p11 ]

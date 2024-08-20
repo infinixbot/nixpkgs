@@ -23,18 +23,9 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-QIkNsFsWeNHEcXhGHHZyJDMMW2lNvdwMJLGxeCZaLdI=";
   };
 
-  buildInputs = [
-    gtk3
-    adwaita-icon-theme
-  ];
-  propagatedBuildInputs = with python3Packages; [
-    pyxdg
-    pygobject3
-  ];
-  nativeBuildInputs = [
-    gobject-introspection
-    wrapGAppsHook3
-  ];
+  buildInputs = [ gtk3 adwaita-icon-theme ];
+  propagatedBuildInputs = with python3Packages; [ pyxdg pygobject3 ];
+  nativeBuildInputs = [ gobject-introspection wrapGAppsHook3 ];
 
   dontWrapGApps = true;
 

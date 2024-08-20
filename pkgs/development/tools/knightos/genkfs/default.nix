@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    asciidoc
-    libxslt.bin
-    cmake
-  ];
+  nativeBuildInputs = [ asciidoc libxslt.bin cmake ];
 
   hardeningDisable = [ "format" ];
 

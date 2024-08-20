@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = with ocamlPackages; [
-    ocaml
-    findlib
-  ];
+  nativeBuildInputs = with ocamlPackages; [ ocaml findlib ];
 
   buildPhase = ''
     patchShebangs ./bootstrap

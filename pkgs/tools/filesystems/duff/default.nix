@@ -17,10 +17,7 @@ stdenv.mkDerivation {
     owner = "elmindreda";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    gettext
-  ];
+  nativeBuildInputs = [ autoreconfHook gettext ];
 
   preAutoreconf = ''
     # gettexttize rightly refuses to run non-interactively:

@@ -154,10 +154,7 @@ stdenv.mkDerivation (finalAttrs: {
       python3Packages.python
     ]
     ++ lib.optionals gtkSupport [ wrapGAppsHook3 ]
-    ++ lib.optionals enableDocs [
-      python3Packages.sphinx
-      python3Packages.sphinx-rtd-theme
-    ]
+    ++ lib.optionals enableDocs [ python3Packages.sphinx python3Packages.sphinx-rtd-theme ]
     ++ lib.optionals hexagonSupport [ glib ]
     ++ lib.optionals stdenv.isDarwin [ sigtool ]
     ++ lib.optionals (!userOnly) [ dtc ]
@@ -179,56 +176,25 @@ stdenv.mkDerivation (finalAttrs: {
       libslirp
     ]
     ++ lib.optionals ncursesSupport [ ncurses ]
-    ++ lib.optionals stdenv.isDarwin [
-      CoreServices
-      Cocoa
-      Hypervisor
-      rez
-      setfile
-      vmnet
-    ]
+    ++ lib.optionals stdenv.isDarwin [ CoreServices Cocoa Hypervisor rez setfile vmnet ]
     ++ lib.optionals seccompSupport [ libseccomp ]
     ++ lib.optionals numaSupport [ numactl ]
     ++ lib.optionals alsaSupport [ alsa-lib ]
     ++ lib.optionals pulseSupport [ libpulseaudio ]
     ++ lib.optionals pipewireSupport [ pipewire ]
-    ++ lib.optionals sdlSupport [
-      SDL2
-      SDL2_image
-    ]
+    ++ lib.optionals sdlSupport [ SDL2 SDL2_image ]
     ++ lib.optionals jackSupport [ libjack2 ]
-    ++ lib.optionals gtkSupport [
-      gtk3
-      gettext
-      vte
-    ]
-    ++ lib.optionals vncSupport [
-      libjpeg
-      libpng
-    ]
+    ++ lib.optionals gtkSupport [ gtk3 gettext vte ]
+    ++ lib.optionals vncSupport [ libjpeg libpng ]
     ++ lib.optionals smartcardSupport [ libcacard ]
-    ++ lib.optionals spiceSupport [
-      spice-protocol
-      spice
-    ]
+    ++ lib.optionals spiceSupport [ spice-protocol spice ]
     ++ lib.optionals usbredirSupport [ usbredir ]
-    ++ lib.optionals stdenv.isLinux [
-      libcap_ng
-      libcap
-      attr
-    ]
+    ++ lib.optionals stdenv.isLinux [ libcap_ng libcap attr ]
     ++ lib.optionals (stdenv.isLinux && !userOnly) [ libaio ]
     ++ lib.optionals xenSupport [ xen ]
     ++ lib.optionals cephSupport [ ceph ]
-    ++ lib.optionals glusterfsSupport [
-      glusterfs
-      libuuid
-    ]
-    ++ lib.optionals openGLSupport [
-      mesa
-      libepoxy
-      libdrm
-    ]
+    ++ lib.optionals glusterfsSupport [ glusterfs libuuid ]
+    ++ lib.optionals openGLSupport [ mesa libepoxy libdrm ]
     ++ lib.optionals rutabagaSupport [ rutabaga_gfx ]
     ++ lib.optionals virglSupport [ virglrenderer ]
     ++ lib.optionals libiscsiSupport [ libiscsi ]
@@ -302,10 +268,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional spiceSupport "--enable-spice"
     ++ lib.optional usbredirSupport "--enable-usb-redir"
     ++ lib.optional (hostCpuTargets != null) "--target-list=${lib.concatStringsSep "," hostCpuTargets}"
-    ++ lib.optionals stdenv.isDarwin [
-      "--enable-cocoa"
-      "--enable-hvf"
-    ]
+    ++ lib.optionals stdenv.isDarwin [ "--enable-cocoa" "--enable-hvf" ]
     ++ lib.optional (stdenv.isLinux && !userOnly) "--enable-linux-aio"
     ++ lib.optional gtkSupport "--enable-gtk"
     ++ lib.optional xenSupport "--enable-xen"
@@ -429,10 +392,7 @@ stdenv.mkDerivation (finalAttrs: {
       homepage = "https://www.qemu.org/";
       description = "Generic and open source machine emulator and virtualizer";
       license = licenses.gpl2Plus;
-      maintainers = with maintainers; [
-        eelco
-        qyliss
-      ];
+      maintainers = with maintainers; [ eelco qyliss ];
       platforms = platforms.unix;
     }
     # toolsOnly: Does not have qemu-kvm and there's no main support tool

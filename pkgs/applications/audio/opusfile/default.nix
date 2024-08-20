@@ -18,15 +18,9 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    openssl
-    libogg
-  ];
+  buildInputs = [ openssl libogg ];
   propagatedBuildInputs = [ libopus ];
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
   patches =
     [
       ./include-multistream.patch

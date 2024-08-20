@@ -116,10 +116,7 @@ perlPackages.buildPerlPackage rec {
     downloadPage = "https://github.com/OCSInventory-NG/UnixAgent/releases";
     license = licenses.gpl2Only;
     mainProgram = "ocsinventory-agent";
-    maintainers = with maintainers; [
-      totoroot
-      anthonyroussel
-    ];
+    maintainers = with maintainers; [ totoroot anthonyroussel ];
     platforms = platforms.unix;
   };
 }

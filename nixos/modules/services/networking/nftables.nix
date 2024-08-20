@@ -30,14 +30,7 @@ let
 
         family = mkOption {
           description = "Table family.";
-          type = types.enum [
-            "ip"
-            "ip6"
-            "inet"
-            "arp"
-            "bridge"
-            "netdev"
-          ];
+          type = types.enum [ "ip" "ip6" "inet" "arp" "bridge" "netdev" ];
         };
       };
 
@@ -278,15 +271,9 @@ in
     systemd.services.nftables = {
       description = "nftables firewall";
       after = [ "sysinit.target" ];
-      before = [
-        "network-pre.target"
-        "shutdown.target"
-      ];
+      before = [ "network-pre.target" "shutdown.target" ];
       conflicts = [ "shutdown.target" ];
-      wants = [
-        "network-pre.target"
-        "sysinit.target"
-      ];
+      wants = [ "network-pre.target" "sysinit.target" ];
       wantedBy = [ "multi-user.target" ];
       reloadIfChanged = true;
       serviceConfig =
@@ -362,20 +349,10 @@ in
         {
           Type = "oneshot";
           RemainAfterExit = true;
-          ExecStart = [
-            ensureDeletions
-            rulesScript
-          ];
+          ExecStart = [ ensureDeletions rulesScript ];
           ExecStartPost = saveDeletionsScript;
-          ExecReload = [
-            ensureDeletions
-            rulesScript
-            saveDeletionsScript
-          ];
-          ExecStop = [
-            deletionsScriptVar
-            cleanupDeletionsScript
-          ];
+          ExecReload = [ ensureDeletions rulesScript saveDeletionsScript ];
+          ExecStop = [ deletionsScriptVar cleanupDeletionsScript ];
           StateDirectory = "nftables";
         };
       unitConfig.DefaultDependencies = false;

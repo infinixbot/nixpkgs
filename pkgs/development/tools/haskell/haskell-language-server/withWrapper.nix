@@ -18,12 +18,7 @@
   # Which formatters are supported. Pass `[]` to remove all formatters.
   #
   # Maintainers: if a new formatter is added, add it here and down in knownFormatters
-  supportedFormatters ? [
-    "ormolu"
-    "fourmolu"
-    "floskell"
-    "stylish-haskell"
-  ],
+  supportedFormatters ? [ "ormolu" "fourmolu" "floskell" "stylish-haskell" ],
 }:
 
 # make sure the user only sets GHC versions that actually exist

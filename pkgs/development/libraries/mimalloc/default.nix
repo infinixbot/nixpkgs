@@ -30,10 +30,7 @@ stdenv.mkDerivation rec {
       export ${ldLibraryPathEnv}="$(pwd)/build:''${${ldLibraryPathEnv}}"
     '';
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-  ];
+  nativeBuildInputs = [ cmake ninja ];
   cmakeFlags =
     [ "-DMI_INSTALL_TOPLEVEL=ON" ]
     ++ lib.optionals secureBuild [ "-DMI_SECURE=ON" ]
@@ -60,19 +57,13 @@ stdenv.mkDerivation rec {
       ln -sfv $out/lib/mimalloc-secure.o $out/lib/mimalloc.o
     '');
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   meta = with lib; {
     description = "Compact, fast, general-purpose memory allocator";
     homepage = "https://github.com/microsoft/mimalloc";
     license = licenses.bsd2;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      kamadorueda
-      thoughtpolice
-    ];
+    maintainers = with maintainers; [ kamadorueda thoughtpolice ];
   };
 }

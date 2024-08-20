@@ -80,14 +80,7 @@ stdenv.mkDerivation rec {
       })
     ];
 
-  outputs = [
-    "bin"
-    "dev"
-    "lib"
-    "out"
-    "man"
-    "info"
-  ];
+  outputs = [ "bin" "dev" "lib" "out" "man" "info" ];
 
   nativeBuildInputs =
     [
@@ -155,10 +148,7 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "Automated text and program generation tool";
-    license = with licenses; [
-      gpl3Plus
-      lgpl3Plus
-    ];
+    license = with licenses; [ gpl3Plus lgpl3Plus ];
     homepage = "https://www.gnu.org/software/autogen/";
     platforms = platforms.all;
     maintainers = [ ];

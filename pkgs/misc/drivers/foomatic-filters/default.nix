@@ -20,12 +20,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    perl
-    cups
-    dbus
-    enscript
-  ];
+  buildInputs = [ perl cups dbus enscript ];
 
   patches = [
     (fetchpatch {

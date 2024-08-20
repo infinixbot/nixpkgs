@@ -135,10 +135,7 @@ beamPackages.mixRelease rec {
             hash = "sha256-couG5jrAo0Fbk/WABd4n3vhXpDUp+9drxExKc5NM9CI=";
           };
 
-          beamDeps = with final; [
-            phoenix_view
-            temple
-          ];
+          beamDeps = with final; [ phoenix_view temple ];
           patchPhase = mimeTypePatchPhase;
         };
         search_parser = beamPackages.buildMix rec {
@@ -167,14 +164,7 @@ beamPackages.mixRelease rec {
           };
 
           mixEnv = "dev";
-          beamDeps = with final; [
-            earmark_parser
-            ex_doc
-            makeup
-            makeup_elixir
-            makeup_erlang
-            nimble_parsec
-          ];
+          beamDeps = with final; [ earmark_parser ex_doc makeup makeup_elixir makeup_erlang nimble_parsec ];
           patchPhase = mimeTypePatchPhase;
         };
 
@@ -195,12 +185,7 @@ beamPackages.mixRelease rec {
             hash = "sha256-Q/IoVbM/TBgGCmx8AxiBHF2hARb0FbPml8N1HjN3CsE=";
           };
 
-          beamDeps = with final; [
-            credo
-            ex_doc
-            dialyxir
-            temple
-          ];
+          beamDeps = with final; [ credo ex_doc dialyxir temple ];
           patchPhase = ''
             substituteInPlace mix.exs --replace ":logger" ":logger, :public_key"
             ${mimeTypePatchPhase}
@@ -219,15 +204,7 @@ beamPackages.mixRelease rec {
           };
 
           buildInputs = [ file ];
-          beamDeps = with final; [
-            nimble_pool
-            mime
-            plug
-            credo
-            dialyxir
-            ex_doc
-            elixir_make
-          ];
+          beamDeps = with final; [ nimble_pool mime plug credo dialyxir ex_doc elixir_make ];
           patchPhase = mimeTypePatchPhase;
         };
 

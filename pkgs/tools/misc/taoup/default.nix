@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-UHo3c+DQn77CJONy/QXM55rpIdhVkJbhR82tqmUltPQ=";
   };
 
-  buildInputs = [
-    rubyEnv
-    bash
-    ncurses
-  ];
+  buildInputs = [ rubyEnv bash ncurses ];
 
   patches = [
     # Pre-create a cache within this derivation

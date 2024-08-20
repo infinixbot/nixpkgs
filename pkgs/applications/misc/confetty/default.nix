@@ -17,10 +17,7 @@ buildGoModule {
 
   vendorHash = "sha256-RymdnueY674Zd231O8CIw/TEIDaWDzc+AaI6yk9hFgc=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     description = "Confetti in your TTY";

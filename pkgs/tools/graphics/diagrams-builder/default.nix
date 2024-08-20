@@ -32,11 +32,7 @@ let
       --set NIX_GHC_LIBDIR "$(${ghc} --print-libdir)"
   '';
 
-  backends = [
-    "svg"
-    "cairo"
-    "ps"
-  ];
+  backends = [ "svg" "cairo" "ps" ];
 
 in
 

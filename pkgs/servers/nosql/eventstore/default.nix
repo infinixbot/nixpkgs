@@ -31,11 +31,7 @@ buildDotnetModule rec {
   dotnet-sdk = dotnetCorePackages.sdk_6_0;
   dotnet-runtime = dotnetCorePackages.aspnetcore_6_0;
 
-  nativeBuildInputs = [
-    git
-    glibcLocales
-    bintools
-  ];
+  nativeBuildInputs = [ git glibcLocales bintools ];
 
   runtimeDeps = [ mono ];
 
@@ -75,14 +71,8 @@ buildDotnetModule rec {
     homepage = "https://geteventstore.com/";
     description = "Event sourcing database with processing logic in JavaScript";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      puffnfresh
-      mdarocha
-    ];
-    platforms = [
-      "x86_64-linux"
-      "x86_64-darwin"
-    ];
+    maintainers = with maintainers; [ puffnfresh mdarocha ];
+    platforms = [ "x86_64-linux" "x86_64-darwin" ];
     inherit mainProgram;
   };
 }

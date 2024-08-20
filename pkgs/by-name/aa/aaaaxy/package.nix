@@ -53,10 +53,7 @@ buildGoModule rec {
     makeWrapper
   ];
 
-  outputs = [
-    "out"
-    "testing_infra"
-  ];
+  outputs = [ "out" "testing_infra" ];
 
   postPatch = ''
     # Without patching, "go run" fails with the error message:

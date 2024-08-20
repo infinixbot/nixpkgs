@@ -171,11 +171,7 @@ rec {
   manualEpub =
     runCommand "nixos-manual-epub"
       {
-        nativeBuildInputs = [
-          buildPackages.libxml2.bin
-          buildPackages.libxslt.bin
-          buildPackages.zip
-        ];
+        nativeBuildInputs = [ buildPackages.libxml2.bin buildPackages.libxslt.bin buildPackages.zip ];
         doc = ''
           <book xmlns="http://docbook.org/ns/docbook"
                 xmlns:xlink="http://www.w3.org/1999/xlink"

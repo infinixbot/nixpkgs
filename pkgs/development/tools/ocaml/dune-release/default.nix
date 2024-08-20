@@ -31,15 +31,7 @@
 # don't include dune as runtime dep, so user can
 # choose between dune and dune_2
 let
-  runtimeInputs = [
-    opam
-    findlib
-    git
-    mercurial
-    bzip2
-    gnutar
-    coreutils
-  ];
+  runtimeInputs = [ opam findlib git mercurial bzip2 gnutar coreutils ];
 in
 buildDunePackage rec {
   pname = "dune-release";

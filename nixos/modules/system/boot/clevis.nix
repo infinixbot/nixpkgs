@@ -10,16 +10,10 @@ with lib;
 let
   cfg = config.boot.initrd.clevis;
   systemd = config.boot.initrd.systemd;
-  supportedFs = [
-    "zfs"
-    "bcachefs"
-  ];
+  supportedFs = [ "zfs" "bcachefs" ];
 in
 {
-  meta.maintainers = with maintainers; [
-    julienmalka
-    camillemndn
-  ];
+  meta.maintainers = with maintainers; [ julienmalka camillemndn ];
   meta.doc = ./clevis.md;
 
   options = {

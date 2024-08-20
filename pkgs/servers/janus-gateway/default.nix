@@ -43,11 +43,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-3o9XxxTlWppq1mFgIUjstUFz6bT44mvBJa4FBgcc4Pc=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    gengetopt
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config gengetopt ];
 
   buildInputs = [
     glib
@@ -83,12 +79,7 @@ stdenv.mkDerivation rec {
     "BORINGSSL_LIBS=-L${lib.getLib boringssl}/lib"
   ];
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "dev" "doc" "man" ];
 
   postInstall = ''
     moveToOutput share/janus "$doc"

@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    libnl
-    libpcap
-  ];
+  buildInputs = [ libnl libpcap ];
 
   PREFIX = "${placeholder "out"}";
   STANDALONE_VERSION = version;

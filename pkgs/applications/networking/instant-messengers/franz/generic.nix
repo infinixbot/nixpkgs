@@ -61,12 +61,7 @@ stdenv.mkDerivation (
     # Don't remove runtime deps.
     dontPatchELF = true;
 
-    nativeBuildInputs = [
-      autoPatchelfHook
-      makeWrapper
-      wrapGAppsHook3
-      dpkg
-    ];
+    nativeBuildInputs = [ autoPatchelfHook makeWrapper wrapGAppsHook3 dpkg ];
     buildInputs =
       extraBuildInputs
       ++ (with xorg; [

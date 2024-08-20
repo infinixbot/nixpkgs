@@ -17,10 +17,7 @@ python3Packages.buildPythonApplication rec {
 
   patches = [ ./nox-review-wip.patch ];
 
-  buildInputs = [
-    python3Packages.pbr
-    git
-  ];
+  buildInputs = [ python3Packages.pbr git ];
 
   propagatedBuildInputs = with python3Packages; [
     dogpile-cache

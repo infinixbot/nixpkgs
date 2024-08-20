@@ -35,10 +35,7 @@ stdenv.mkDerivation {
   pname = "jogl";
   inherit version;
 
-  srcs = [
-    gluegen-src
-    jogl-src
-  ];
+  srcs = [ gluegen-src jogl-src ];
   sourceRoot = ".";
 
   unpackCmd = "cp -r $curSrc \${curSrc##*-}";

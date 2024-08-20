@@ -20,15 +20,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-zwOSt1eyvuuqfQ1G2bCB4yj6GgixFRc2FLOgcCrdg3Q=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    wrapQtAppsHook
-    qttools
-  ];
-  propagatedBuildInputs = [
-    qtsvg
-    qtwebengine
-  ];
+  nativeBuildInputs = [ cmake wrapQtAppsHook qttools ];
+  propagatedBuildInputs = [ qtsvg qtwebengine ];
   cmakeFlags = [ "-DINSTALL_BUNDLED_DICTS=0" ];
 
   installPhase =

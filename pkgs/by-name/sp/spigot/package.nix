@@ -30,10 +30,7 @@ stdenv.mkDerivation (finalAttrs: {
     ncurses
   ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   strictDeps = true;
 

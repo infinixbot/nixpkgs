@@ -186,10 +186,7 @@ in
       script = ''
         ${cfg.package}/bin/migrate
       '';
-      after = [
-        "engelsystem-init.service"
-        "mysql.service"
-      ];
+      after = [ "engelsystem-init.service" "mysql.service" ];
     };
     systemd.services."phpfpm-engelsystem".after = [ "engelsystem-migrate.service" ];
 

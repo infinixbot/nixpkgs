@@ -12,15 +12,8 @@ stdenv.mkDerivation rec {
   pname = "obs-ndi";
   version = "4.13.2";
 
-  nativeBuildInputs = [
-    cmake
-    qtbase
-  ];
-  buildInputs = [
-    obs-studio
-    qtbase
-    ndi
-  ];
+  nativeBuildInputs = [ cmake qtbase ];
+  buildInputs = [ obs-studio qtbase ndi ];
 
   src = fetchFromGitHub {
     owner = "Palakis";

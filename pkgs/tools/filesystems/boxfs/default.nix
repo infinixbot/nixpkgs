@@ -46,11 +46,7 @@ stdenv.mkDerivation {
     ./libapp-include-ctype.diff
   ];
 
-  buildInputs = [
-    curl
-    fuse
-    libxml2
-  ];
+  buildInputs = [ curl fuse libxml2 ];
   nativeBuildInputs = [ pkg-config ];
 
   buildFlags = [

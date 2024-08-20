@@ -45,14 +45,8 @@ let
       url = "https://ftp.ccp4.ac.uk/opensource/libccp4-${version}.tar.gz";
       hash = "sha256-y4E66GYSoIZjKd6rfO6W6sVz2BvlskA0HUD5rVMi/y0=";
     };
-    nativeBuildInputs = [
-      meson
-      ninja
-    ];
-    buildInputs = [
-      hdf5
-      gsl
-    ];
+    nativeBuildInputs = [ meson ninja ];
+    buildInputs = [ hdf5 gsl ];
 
     configureFlags = [ "FFLAGS=-fallow-argument-mismatch" ];
 
@@ -105,10 +99,7 @@ let
 
       dontBuild = true;
 
-      nativeBuildInputs = [
-        unzip
-        makeWrapper
-      ];
+      nativeBuildInputs = [ unzip makeWrapper ];
 
       sourceRoot = ".";
 
@@ -129,11 +120,7 @@ let
       hash = "sha256-/uZlBwAINSoYqgLQFTMz8rS1Rpadu79JkO6Bu/+Nx9E=";
     };
 
-    nativeBuildInputs = [
-      meson
-      pkg-config
-      ninja
-    ];
+    nativeBuildInputs = [ meson pkg-config ninja ];
     buildInputs = [ eigen ];
   };
 
@@ -145,11 +132,7 @@ let
       hash = "sha256-v/SCJiHAV05Lc905y/dE8uBXlW+lLX9wau4XORYdbQg=";
     };
 
-    nativeBuildInputs = [
-      meson
-      pkg-config
-      ninja
-    ];
+    nativeBuildInputs = [ meson pkg-config ninja ];
     buildInputs = [ eigen ];
   };
 
@@ -161,11 +144,7 @@ let
       hash = "sha256-EaihnW7p//ecgMn+KKlfmBeXrnAqs+HdhN+ovuSrtiQ=";
     };
 
-    nativeBuildInputs = [
-      meson
-      ninja
-      pkg-config
-    ];
+    nativeBuildInputs = [ meson ninja pkg-config ];
     buildInputs = [ eigen ];
   };
 
@@ -187,11 +166,7 @@ let
     ];
 
     nativeBuildInputs = [ cmake ];
-    buildInputs = [
-      hdf5
-      lz4
-      bzip2
-    ];
+    buildInputs = [ hdf5 lz4 bzip2 ];
 
     cmakeFlags = [
       "-DENABLE_BITSHUFFLE_PLUGIN=yes"
@@ -247,10 +222,7 @@ stdenv.mkDerivation rec {
       xgandalf
       pandoc
     ]
-    ++ lib.optionals withGui [
-      gtk3
-      gdk-pixbuf
-    ]
+    ++ lib.optionals withGui [ gtk3 gdk-pixbuf ]
     ++ lib.optionals stdenv.isDarwin [
       argp-standalone
     ]

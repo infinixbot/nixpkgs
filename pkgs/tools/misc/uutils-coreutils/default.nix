@@ -28,15 +28,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-JowORfYHxN8GqvWeUm0ACnHNM3uZviYbhR7BOeAfphw=";
   };
 
-  nativeBuildInputs = [
-    rustPlatform.cargoSetupHook
-    sphinx
-  ];
+  nativeBuildInputs = [ rustPlatform.cargoSetupHook sphinx ];
 
-  buildInputs = lib.optionals stdenv.isDarwin [
-    Security
-    libiconv
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ Security libiconv ];
 
   makeFlags =
     [

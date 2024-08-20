@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
   pname = "gnome-shell-extension-gsconnect";
   version = "57";
 
-  outputs = [
-    "out"
-    "installedTests"
-  ];
+  outputs = [ "out" "installedTests" ];
 
   src = fetchFromGitHub {
     owner = "GSConnect";

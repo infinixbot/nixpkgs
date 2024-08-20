@@ -72,21 +72,10 @@ stdenv.mkDerivation rec {
         --replace checkfor_matrox={yes,no}
     '';
 
-  nativeBuildInputs = [
-    autoreconfHook
-    perl
-    pkg-config
-    flux
-  ];
+  nativeBuildInputs = [ autoreconfHook perl pkg-config flux ];
 
   buildInputs =
-    [
-      zlib
-      libjpeg
-      freetype
-      giflib
-      libpng
-    ]
+    [ zlib libjpeg freetype giflib libpng ]
     ++ lib.optional enableSDL SDL
     ++ lib.optionals enableX11 (
       with xorg;

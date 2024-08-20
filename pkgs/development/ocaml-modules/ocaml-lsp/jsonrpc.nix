@@ -67,23 +67,10 @@ buildDunePackage rec {
   inherit (params) minimalOCamlVersion;
 
   buildInputs =
-    if lib.versionAtLeast version "1.7.0" then
-      [ ]
-    else
-      [
-        yojson
-        stdlib-shims
-        ocaml-syntax-shims
-      ];
+    if lib.versionAtLeast version "1.7.0" then [ ] else [ yojson stdlib-shims ocaml-syntax-shims ];
 
   propagatedBuildInputs =
-    if lib.versionAtLeast version "1.7.0" then
-      [ ]
-    else
-      [
-        ppx_yojson_conv_lib
-        result
-      ];
+    if lib.versionAtLeast version "1.7.0" then [ ] else [ ppx_yojson_conv_lib result ];
 
   meta = with lib; {
     description = "Jsonrpc protocol implementation in OCaml";

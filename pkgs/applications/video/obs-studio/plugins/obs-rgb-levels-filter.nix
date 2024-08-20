@@ -29,9 +29,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/wimpysworld/obs-rgb-levels-filter";
     maintainers = with maintainers; [ flexiondotorg ];
     license = licenses.gpl2Plus;
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
   };
 }

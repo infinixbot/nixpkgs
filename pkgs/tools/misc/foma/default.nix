@@ -23,21 +23,10 @@ stdenv.mkDerivation rec {
 
   sourceRoot = "${src.name}/foma";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
-  nativeBuildInputs = [
-    bison
-    cmake
-    flex
-    pkg-config
-  ];
-  buildInputs = [
-    readline
-    zlib
-  ];
+  nativeBuildInputs = [ bison cmake flex pkg-config ];
+  buildInputs = [ readline zlib ];
 
   cmakeFlags = [
     # the cmake package does not handle absolute CMAKE_INSTALL_XXXDIR

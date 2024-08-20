@@ -17,10 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-znBfzX6oS19auL1ptcVXM0l2Thpnb7DrciYs5Z2XVJY=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   # There's a mixture of tests that use networking and several that fail on aarch64
   doCheck = false;
@@ -39,9 +36,6 @@ buildGoModule rec {
     homepage = "https://github.com/hashicorp/terraform-ls";
     changelog = "https://github.com/hashicorp/terraform-ls/blob/v${version}/CHANGELOG.md";
     license = licenses.mpl20;
-    maintainers = with maintainers; [
-      mbaillie
-      jk
-    ];
+    maintainers = with maintainers; [ mbaillie jk ];
   };
 }

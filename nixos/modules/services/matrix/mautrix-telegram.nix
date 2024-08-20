@@ -145,10 +145,7 @@ in
       wantedBy = [ "multi-user.target" ];
       wants = [ "network-online.target" ] ++ cfg.serviceDependencies;
       after = [ "network-online.target" ] ++ cfg.serviceDependencies;
-      path = [
-        pkgs.lottieconverter
-        pkgs.ffmpeg-full
-      ];
+      path = [ pkgs.lottieconverter pkgs.ffmpeg-full ];
 
       # mautrix-telegram tries to generate a dotfile in the home directory of
       # the running user if using a postgresql database:
@@ -202,8 +199,5 @@ in
     };
   };
 
-  meta.maintainers = with maintainers; [
-    pacien
-    vskilet
-  ];
+  meta.maintainers = with maintainers; [ pacien vskilet ];
 }

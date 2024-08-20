@@ -51,13 +51,7 @@ stdenv.mkDerivation (finalAttrs: {
     acl
   ];
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-    "info"
-    "man"
-  ];
+  outputs = [ "out" "lib" "dev" "info" "man" ];
 
   strictDeps = true;
 

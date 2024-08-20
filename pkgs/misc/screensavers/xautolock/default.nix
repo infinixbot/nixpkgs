@@ -24,26 +24,15 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-T2zAbRqSTxRp9u6EdZmIZfVxaGveeZkJgjp1DWgORoI=";
   };
 
-  nativeBuildInputs = [
-    imake
-    gccmakedep
-  ];
-  buildInputs = [
-    libX11
-    libXext
-    libXScrnSaver
-    xorgproto
-  ];
+  nativeBuildInputs = [ imake gccmakedep ];
+  buildInputs = [ libX11 libXext libXScrnSaver xorgproto ];
 
   makeFlags = [
     "BINDIR=$(out)/bin"
     "MANPATH=$(out)/share/man"
   ];
 
-  installTargets = [
-    "install"
-    "install.man"
-  ];
+  installTargets = [ "install" "install.man" ];
 
   passthru.tests = {
     inherit (nixosTests) xautolock;

@@ -30,10 +30,7 @@ let
   gems = bundlerEnv {
     name = "mikutter-gems"; # leave the version out to enable package reuse
     gemdir = ./deps;
-    groups = [
-      "default"
-      "plugin"
-    ];
+    groups = [ "default" "plugin" ];
     inherit ruby;
 
     # Avoid the following error:
@@ -101,12 +98,7 @@ stdenv.mkDerivation rec {
   ] ++ lib.optionals stdenv.isLinux [ alsa-utils ];
 
   scriptPath = lib.makeBinPath (
-    [
-      wrappedRuby
-      libnotify
-      which
-    ]
-    ++ lib.optionals stdenv.isLinux [ alsa-utils ]
+    [ wrappedRuby libnotify which ] ++ lib.optionals stdenv.isLinux [ alsa-utils ]
   );
 
   postUnpack = ''
@@ -164,11 +156,7 @@ stdenv.mkDerivation rec {
   doInstallCheck = true;
   dontWrapGApps = true; # the target is placed outside of bin/
 
-  passthru.updateScript = [
-    ./update.sh
-    version
-    (toString ./.)
-  ];
+  passthru.updateScript = [ ./update.sh version (toString ./.) ];
 
   meta = with lib; {
     description = "An extensible Mastodon client";

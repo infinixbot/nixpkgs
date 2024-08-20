@@ -45,9 +45,6 @@ stdenv.mkDerivation rec {
     # Dev repo is at https://invent.kde.org/libraries/phonon-vlc
     description = "GStreamer backend for Phonon";
     platforms = platforms.linux;
-    license = with licenses; [
-      bsd3
-      lgpl21Plus
-    ];
+    license = with licenses; [ bsd3 lgpl21Plus ];
   };
 }

@@ -21,20 +21,11 @@ stdenv.mkDerivation rec {
     hash = "sha256-AXjg/ZsitdDf9fNoGVmVal1iZ4/sxjJb7A9W4yye/rg=";
   };
 
-  nativeBuildInputs = [
-    gfortran
-    meson
-    ninja
-    pkg-config
-    python3
-  ];
+  nativeBuildInputs = [ gfortran meson ninja pkg-config python3 ];
 
   buildInputs = [ json-fortran ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   doCheck = true;
 

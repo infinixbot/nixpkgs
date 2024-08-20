@@ -18,10 +18,7 @@ buildDunePackage {
   ];
 
   doCheck = lib.versionAtLeast ocaml.version "4.08";
-  checkInputs = [
-    ounit
-    fileutils
-  ];
+  checkInputs = [ ounit fileutils ];
 
   meta = (builtins.removeAttrs ocaml_gettext.meta [ "mainProgram" ]) // {
     description = "Internationalization library using camomile (i18n)";

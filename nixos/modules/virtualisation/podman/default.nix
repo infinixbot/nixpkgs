@@ -24,10 +24,7 @@ let
   dockerCompat =
     pkgs.runCommand "${podmanPackage.pname}-docker-compat-${podmanPackage.version}"
       {
-        outputs = [
-          "out"
-          "man"
-        ];
+        outputs = [ "out" "man" ];
         inherit (podmanPackage) meta;
       }
       ''

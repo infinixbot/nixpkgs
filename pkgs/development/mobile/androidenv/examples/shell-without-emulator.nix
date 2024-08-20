@@ -88,12 +88,7 @@ let
 in
 pkgs.mkShell rec {
   name = "androidenv-example-without-emulator-demo";
-  packages = [
-    androidSdk
-    platformTools
-    jdk
-    pkgs.android-studio
-  ];
+  packages = [ androidSdk platformTools jdk pkgs.android-studio ];
 
   LANG = "C.UTF-8";
   LC_ALL = "C.UTF-8";
@@ -115,10 +110,7 @@ pkgs.mkShell rec {
     shell-without-emulator-sdkmanager-packages-test =
       pkgs.runCommand "shell-without-emulator-sdkmanager-packages-test"
         {
-          nativeBuildInputs = [
-            androidSdk
-            jdk
-          ];
+          nativeBuildInputs = [ androidSdk jdk ];
         }
         ''
           output="$(sdkmanager --list)"
@@ -143,10 +135,7 @@ pkgs.mkShell rec {
     shell-without-emulator-sdkmanager-excluded-packages-test =
       pkgs.runCommand "shell-without-emulator-sdkmanager-excluded-packages-test"
         {
-          nativeBuildInputs = [
-            androidSdk
-            jdk
-          ];
+          nativeBuildInputs = [ androidSdk jdk ];
         }
         ''
           output="$(sdkmanager --list)"

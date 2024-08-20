@@ -34,11 +34,7 @@ in
     };
 
     log_level = mkOption {
-      type = types.enum [
-        "DEBUG"
-        "INFO"
-        "ERROR"
-      ];
+      type = types.enum [ "DEBUG" "INFO" "ERROR" ];
       description = ''
         Desired log level
       '';
@@ -77,10 +73,7 @@ in
         list of origins allowed to upload
       '';
       default = [ "*" ];
-      example = [
-        "*.staging.domain"
-        "*.prod.domain"
-      ];
+      example = [ "*.staging.domain" "*.prod.domain" ];
     };
 
     tus_extensions = mkOption {
@@ -135,10 +128,7 @@ in
       type = lib.types.submodule {
         options = {
           type = lib.mkOption {
-            type = lib.types.enum [
-              "file-storage"
-              "hybrid-s3"
-            ];
+            type = lib.types.enum [ "file-storage" "hybrid-s3" ];
             description = "Type of storage to use";
           };
           s3_access_key_file = lib.mkOption {

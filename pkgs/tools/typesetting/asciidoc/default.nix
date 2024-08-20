@@ -259,11 +259,7 @@ python3.pkgs.buildPythonApplication rec {
           # We can remove PATH= when those impurities are fixed.
           # TODO: Is this still necessary when using texlive?
           sed -e "s|^ENV =.*|ENV = dict(XML_CATALOG_FILES='${docbook_xml_dtd_45}/xml/dtd/docbook/catalog.xml ${docbook_xsl_ns}/xml/xsl/docbook/catalog.xml ${docbook_xsl}/xml/xsl/docbook/catalog.xml', PATH='${
-            lib.makeBinPath [
-              texlive
-              coreutils
-              gnused
-            ]
+            lib.makeBinPath [ texlive coreutils gnused ]
           }', **(dict(filter(lambda v: v[0] == 'SOURCE_DATE_EPOCH', os.environ.items()))))|" \
               -e "s|^ASCIIDOC =.*|ASCIIDOC = '$out/bin/asciidoc'|" \
               -e "s|^XSLTPROC =.*|XSLTPROC = '${libxslt.bin}/bin/xsltproc'|" \
@@ -338,9 +334,6 @@ python3.pkgs.buildPythonApplication rec {
     changelog = "https://github.com/asciidoc-py/asciidoc-py/blob/${version}/CHANGELOG.adoc";
     license = lib.licenses.gpl2Plus;
     platforms = lib.platforms.unix;
-    maintainers = with lib.maintainers; [
-      bjornfor
-      dotlambda
-    ];
+    maintainers = with lib.maintainers; [ bjornfor dotlambda ];
   };
 }

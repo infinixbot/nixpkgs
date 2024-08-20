@@ -58,17 +58,9 @@ stdenv.mkDerivation rec {
     done
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "lib"
-  ];
+  outputs = [ "out" "dev" "lib" ];
 
-  nativeBuildInputs = [
-    cmake
-    docbook_xsl
-    libxslt
-  ];
+  nativeBuildInputs = [ cmake docbook_xsl libxslt ];
 
   buildInputs = [
     c-ares

@@ -19,10 +19,7 @@ stdenv.mkDerivation {
     hash = "sha256-heV5VByNZ/2doGVtYhGEei4fV4847UPVgOyU0PDDHc8=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
   buildInputs = [ openssl ];
 
   enableParallelBuilding = true;

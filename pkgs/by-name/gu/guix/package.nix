@@ -157,10 +157,7 @@ stdenv.mkDerivation rec {
     homepage = "http://www.gnu.org/software/guix";
     license = licenses.gpl3Plus;
     mainProgram = "guix";
-    maintainers = with maintainers; [
-      cafkafk
-      foo-dogsquared
-    ];
+    maintainers = with maintainers; [ cafkafk foo-dogsquared ];
     platforms = platforms.linux;
   };
 }

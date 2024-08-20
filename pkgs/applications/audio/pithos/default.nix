@@ -34,26 +34,14 @@ pythonPackages.buildPythonApplication rec {
     patchShebangs meson_post_install.py
   '';
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    appstream-glib
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config appstream-glib wrapGAppsHook3 ];
 
   propagatedNativeBuildInputs = [
     gobject-introspection
   ];
 
   propagatedBuildInputs =
-    [
-      gtk3
-      gobject-introspection
-      libnotify
-      libsecret
-      adwaita-icon-theme
-    ]
+    [ gtk3 gobject-introspection libnotify libsecret adwaita-icon-theme ]
     ++ (with gst_all_1; [
       gstreamer
       gst-plugins-base
@@ -61,10 +49,7 @@ pythonPackages.buildPythonApplication rec {
       gst-plugins-ugly
       gst-plugins-bad
     ])
-    ++ (with pythonPackages; [
-      pygobject3
-      pylast
-    ]);
+    ++ (with pythonPackages; [ pygobject3 pylast ]);
 
   meta = with lib; {
     broken = stdenv.isDarwin;

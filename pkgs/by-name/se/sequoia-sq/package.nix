@@ -40,11 +40,7 @@ rustPlatform.buildRustPackage rec {
       nettle
     ]
     ++ lib.optionals stdenv.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        Security
-        SystemConfiguration
-      ]
+      with darwin.apple_sdk.frameworks; [ Security SystemConfiguration ]
     );
 
   checkFlags = [
@@ -77,10 +73,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://sequoia-pgp.org/";
     changelog = "https://gitlab.com/sequoia-pgp/sequoia-sq/-/blob/v${version}/NEWS";
     license = lib.licenses.gpl2Plus;
-    maintainers = with lib.maintainers; [
-      minijackson
-      doronbehar
-    ];
+    maintainers = with lib.maintainers; [ minijackson doronbehar ];
     mainProgram = "sq";
   };
 }

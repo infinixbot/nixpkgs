@@ -14,12 +14,8 @@ let
 
   isConfined = config.systemd.services.akkoma.confinement.enable;
   hasSmtp =
-    (attrByPath [
-      ":pleroma"
-      "Pleroma.Emails.Mailer"
-      "adapter"
-      "value"
-    ] null ex) == "Swoosh.Adapters.SMTP";
+    (attrByPath [ ":pleroma" "Pleroma.Emails.Mailer" "adapter" "value" ] null ex)
+    == "Swoosh.Adapters.SMTP";
 
   isAbsolutePath = v: isString v && substring 0 1 v == "/";
   isSecret = v: isAttrs v && v ? _secret && isAbsolutePath v._secret;
@@ -58,14 +54,7 @@ let
     let
       elixirValue' =
         with types;
-        nullOr (oneOf [
-          bool
-          int
-          float
-          str
-          (attrsOf elixirValue')
-          (listOf elixirValue')
-        ])
+        nullOr (oneOf [ bool int float str (attrsOf elixirValue') (listOf elixirValue') ])
         // {
           description = "Elixir value";
         };
@@ -137,19 +126,11 @@ let
     replaceSec (
       attrsets.updateManyAttrsByPath [
         {
-          path = [
-            ":pleroma"
-            "Pleroma.Web.Endpoint"
-            "http"
-            "ip"
-          ];
+          path = [ ":pleroma" "Pleroma.Web.Endpoint" "http" "ip" ];
           update =
             addr:
             if isAbsolutePath addr then
-              format.lib.mkTuple [
-                (format.lib.mkAtom ":local")
-                addr
-              ]
+              format.lib.mkTuple [ (format.lib.mkAtom ":local") addr ]
             else
               format.lib.mkRaw (erlAddr addr);
         }
@@ -167,10 +148,7 @@ let
 
   genScript = writeShell {
     name = "akkoma-gen-cookie";
-    runtimeInputs = with pkgs; [
-      coreutils
-      util-linux
-    ];
+    runtimeInputs = with pkgs; [ coreutils util-linux ];
     text = ''
       install -m 0400 \
         -o ${escapeShellArg cfg.user} \
@@ -203,10 +181,7 @@ let
 
   initSecretsScript = writeShell {
     name = "akkoma-init-secrets";
-    runtimeInputs = with pkgs; [
-      coreutils
-      cfg.package.elixirPackage
-    ];
+    runtimeInputs = with pkgs; [ coreutils cfg.package.elixirPackage ];
     text =
       let
         key-base = web.secret_key_base;
@@ -234,23 +209,14 @@ let
         ${optionalString (isSecret vapid-public) ''
           { test -e ${escapeShellArg vapid-private._secret} && \
             test -e ${escapeShellArg vapid-public._secret}; } || \
-              elixir ${
-                escapeShellArgs [
-                  vapidKeygen
-                  vapid-public._secret
-                  vapid-private._secret
-                ]
-              }
+              elixir ${escapeShellArgs [ vapidKeygen vapid-public._secret vapid-private._secret ]}
         ''}
       '';
   };
 
   configScript = writeShell {
     name = "akkoma-config";
-    runtimeInputs = with pkgs; [
-      coreutils
-      replace-secret
-    ];
+    runtimeInputs = with pkgs; [ coreutils replace-secret ];
     text = ''
       cd "''${RUNTIME_DIRECTORY%%:*}"
       tmp="$(mktemp config.exs.XXXXXXXXXX)"
@@ -258,12 +224,7 @@ let
 
       cat ${escapeShellArg configFile} >"$tmp"
       ${concatMapStrings (file: ''
-        replace-secret ${
-          escapeShellArgs [
-            (sha256 file)
-            file
-          ]
-        } "$tmp"
+        replace-secret ${escapeShellArgs [ (sha256 file) file ]} "$tmp"
       '') secretPaths}
 
       chown ${escapeShellArg cfg.user}:${escapeShellArg cfg.group} "$tmp"
@@ -274,10 +235,7 @@ let
 
   pgpass =
     let
-      esc = escape [
-        ":"
-        ''\''
-      ];
+      esc = escape [ ":" ''\'' ];
     in
     if (cfg.initDb.password != null) then
       pkgs.writeText "pgpass.conf" ''
@@ -318,11 +276,7 @@ let
 
   initDbScript = writeShell {
     name = "akkoma-initdb";
-    runtimeInputs = with pkgs; [
-      coreutils
-      replace-secret
-      config.services.postgresql.package
-    ];
+    runtimeInputs = with pkgs; [ coreutils replace-secret config.services.postgresql.package ];
     text = ''
       pgpass="$(mktemp -t pgpass-XXXXXXXXXX.conf)"
       setupSql="$(mktemp -t setup-XXXXXXXXXX.psql)"
@@ -430,10 +384,7 @@ let
     if isAbsolutePath web.http.ip then
       writeShell {
         name = "akkoma-socket";
-        runtimeInputs = with pkgs; [
-          coreutils
-          inotify-tools
-        ];
+        runtimeInputs = with pkgs; [ coreutils inotify-tools ];
         text = ''
           coproc {
             inotifywait -q -m -e create ${escapeShellArg (dirOf web.http.ip)}
@@ -577,11 +528,7 @@ in
 
       extraPackages = mkOption {
         type = with types; listOf package;
-        default = with pkgs; [
-          exiftool
-          ffmpeg-headless
-          graphicsmagick-imagemagick-compat
-        ];
+        default = with pkgs; [ exiftool ffmpeg-headless graphicsmagick-imagemagick-compat ];
         defaultText = literalExpression "with pkgs; [ exiftool ffmpeg-headless graphicsmagick-imagemagick-compat ]";
         example = literalExpression "with pkgs; [ exiftool ffmpeg-full imagemagick ]";
         description = ''
@@ -681,14 +628,7 @@ in
           type = with types; listOf str;
           default = [ ];
           description = "Extra flags to pass to Erlang";
-          example = [
-            "+sbwt"
-            "none"
-            "+sbwtdcpu"
-            "none"
-            "+sbwtdio"
-            "none"
-          ];
+          example = [ "+sbwt" "none" "+sbwtdcpu" "none" "+sbwtdio" "none" ];
         };
 
         portMin = mkOption {
@@ -1061,10 +1001,7 @@ in
                 type = types.listOf elixirValue;
                 visible = false;
                 default = with format.lib; [
-                  (mkTuple [
-                    (mkRaw "ExSyslogger")
-                    (mkAtom ":ex_syslogger")
-                  ])
+                  (mkTuple [ (mkRaw "ExSyslogger") (mkAtom ":ex_syslogger") ])
                 ];
               };
 
@@ -1181,10 +1118,7 @@ in
       description = "Akkoma social network database setup";
       requires = [ "akkoma-config.service" ];
       requiredBy = [ "akkoma.service" ];
-      after = [
-        "akkoma-config.service"
-        "postgresql.service"
-      ];
+      after = [ "akkoma-config.service" "postgresql.service" ];
       before = [ "akkoma.service" ];
 
       serviceConfig = {
@@ -1199,14 +1133,7 @@ in
 
     systemd.services.akkoma =
       let
-        runtimeInputs =
-          with pkgs;
-          [
-            coreutils
-            gawk
-            gnused
-          ]
-          ++ cfg.extraPackages;
+        runtimeInputs = with pkgs; [ coreutils gawk gnused ] ++ cfg.extraPackages;
       in
       {
         description = "Akkoma social network";
@@ -1243,10 +1170,7 @@ in
           BindReadOnlyPaths = mkMerge [
             (mkIf (!isStorePath staticDir) [ "${staticDir}:${staticDir}:norbind" ])
             (mkIf isConfined (mkMerge [
-              [
-                "/etc/hosts"
-                "/etc/resolv.conf"
-              ]
+              [ "/etc/hosts" "/etc/resolv.conf" ]
               (mkIf (isStorePath staticDir) (
                 map (dir: "${dir}:${dir}:norbind") (
                   splitString "\n" (readFile ((pkgs.closureInfo { rootPaths = staticDir; }) + "/store-paths"))
@@ -1277,11 +1201,7 @@ in
           ProtectKernelLogs = true;
           ProtectControlGroups = true;
 
-          RestrictAddressFamilies = [
-            "AF_UNIX"
-            "AF_INET"
-            "AF_INET6"
-          ];
+          RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
           RestrictNamespaces = true;
           LockPersonality = true;
           RestrictRealtime = true;
@@ -1295,11 +1215,7 @@ in
           ]) [ "CAP_NET_BIND_SERVICE" ];
 
           NoNewPrivileges = true;
-          SystemCallFilter = [
-            "@system-service"
-            "~@privileged"
-            "@chown"
-          ];
+          SystemCallFilter = [ "@system-service" "~@privileged" "@chown" ];
           SystemCallArchitectures = "native";
 
           DeviceAllow = null;

@@ -30,14 +30,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-jJrKiRdrargk0JzcPWxBZGyOpMfTIONHG8HNRecazVo=";
   };
 
-  nativeBuildInputs = [
-    perl
-    makeWrapper
-  ];
-  buildInputs = [
-    perl
-    bash
-  ];
+  nativeBuildInputs = [ perl makeWrapper ];
+  buildInputs = [ perl bash ];
   strictDeps = true;
 
   postPatch = ''
@@ -45,10 +39,7 @@ stdenv.mkDerivation rec {
     substituteInPlace configure --replace '/etc/bash_completion.d' '/share/bash-completion/completions'
   '';
 
-  configureFlags = [
-    "--shell=${bash}/bin/bash"
-    "--prefix=/"
-  ];
+  configureFlags = [ "--shell=${bash}/bin/bash" "--prefix=/" ];
   configurePlatforms = [ ];
 
   dontBuild = true;
@@ -72,17 +63,7 @@ stdenv.mkDerivation rec {
         procps
         ncurses
       ];
-      keep = [
-        "$prog"
-        "$c1"
-        "$c2"
-        "$c3"
-        "$c4"
-        "$c5"
-        "$cmd"
-        "$colorizer"
-        "$HOME"
-      ];
+      keep = [ "$prog" "$c1" "$c2" "$c3" "$c4" "$c5" "$cmd" "$colorizer" "$HOME" ];
       fake = {
         # script guards usage behind has_cmd test function, it's safe to leave these external and optional
         external =
@@ -182,15 +163,7 @@ stdenv.mkDerivation rec {
         gnused
         gnutar
       ];
-      keep = [
-        "$prog"
-        "$c1"
-        "$c2"
-        "$c3"
-        "$c4"
-        "$c5"
-        "$cmd"
-      ];
+      keep = [ "$prog" "$c1" "$c2" "$c3" "$c4" "$c5" "$cmd" ];
       fake = {
         # script guards usage behind has_cmd test function, it's safe to leave these external and optional
         external = [

@@ -58,16 +58,7 @@ stdenv.mkDerivation (finalAttrs: {
       sed -i '/os-wrappers-test/d' tests/meson.build
     '';
 
-  outputs =
-    [
-      "out"
-      "bin"
-      "dev"
-    ]
-    ++ lib.optionals withDocumentation [
-      "doc"
-      "man"
-    ];
+  outputs = [ "out" "bin" "dev" ] ++ lib.optionals withDocumentation [ "doc" "man" ];
   separateDebugInfo = true;
 
   mesonFlags = [
@@ -149,11 +140,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://wayland.freedesktop.org/";
     license = licenses.mit; # Expat version
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      primeos
-      codyopel
-      qyliss
-    ];
+    maintainers = with maintainers; [ primeos codyopel qyliss ];
     pkgConfigModules =
       [
         "wayland-scanner"

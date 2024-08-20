@@ -41,11 +41,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-WCMedMkaMMhZbB3iJu3c+CTT3AvOjzOSYP45J+NQEDQ=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   postPatch = ''
     patchShebangs scripts
@@ -92,10 +88,7 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://github.com/storaged-project/libblockdev/raw/${finalAttrs.src.rev}/NEWS.rst";
     description = "Library for manipulating block devices";
     homepage = "http://storaged.org/libblockdev/";
-    license = with lib.licenses; [
-      lgpl2Plus
-      gpl2Plus
-    ]; # lgpl2Plus for the library, gpl2Plus for the utils
+    license = with lib.licenses; [ lgpl2Plus gpl2Plus ]; # lgpl2Plus for the library, gpl2Plus for the utils
     maintainers = with lib.maintainers; [ johnazoidberg ];
     platforms = lib.platforms.linux;
   };

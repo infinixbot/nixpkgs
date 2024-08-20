@@ -55,10 +55,7 @@ python3Packages.buildPythonApplication rec {
     "--prefix"
     "PATH"
     ":"
-    (lib.makeBinPath [
-      bcftools
-      htslib
-    ])
+    (lib.makeBinPath [ bcftools htslib ])
   ];
 
   pythonImportsCheck = [ "truvari" ];
@@ -86,10 +83,7 @@ python3Packages.buildPythonApplication rec {
     homepage = "https://github.com/ACEnglish/truvari";
     changelog = "https://github.com/ACEnglish/truvari/releases/tag/${src.rev}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      natsukium
-      scalavision
-    ];
+    maintainers = with maintainers; [ natsukium scalavision ];
     longDescription = ''
       Truvari is a benchmarking tool for comparison sets of SVs.
       It can calculate the recall, precision, and f-measure of a

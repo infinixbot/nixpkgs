@@ -39,12 +39,7 @@ stdenv.mkDerivation {
 
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [
-    automake
-    autoconf
-    libtool
-    pkg-config
-  ];
+  nativeBuildInputs = [ automake autoconf libtool pkg-config ];
 
   buildInputs = [
     boostPython
@@ -62,11 +57,7 @@ stdenv.mkDerivation {
     moveToOutput "lib/${python311.libPrefix}" "$python"
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "python"
-  ];
+  outputs = [ "out" "dev" "python" ];
 
   configureFlags = [
     "--enable-python-binding"

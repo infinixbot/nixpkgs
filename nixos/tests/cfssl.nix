@@ -60,10 +60,7 @@ import ./make-test-python.nix (
         csr = pkgs.writeText "csr.json" (
           builtins.toJSON {
             CN = "www.example.com";
-            hosts = [
-              "example.com"
-              "www.example.com"
-            ];
+            hosts = [ "example.com" "www.example.com" ];
             key = {
               algo = "rsa";
               size = 2048;

@@ -16,26 +16,12 @@ let
 in
 {
   imports = [
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "patroni"
-        "raft"
-      ]
-      ''
-        Raft has been deprecated by upstream.
-      ''
-    )
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "patroni"
-        "raftPort"
-      ]
-      ''
-        Raft has been deprecated by upstream.
-      ''
-    )
+    (lib.mkRemovedOptionModule [ "services" "patroni" "raft" ] ''
+      Raft has been deprecated by upstream.
+    '')
+    (lib.mkRemovedOptionModule [ "services" "patroni" "raftPort" ] ''
+      Raft has been deprecated by upstream.
+    '')
   ];
 
   options.services.patroni = {
@@ -134,10 +120,7 @@ in
 
     otherNodesIps = mkOption {
       type = types.listOf types.str;
-      example = [
-        "192.168.1.2"
-        "192.168.1.3"
-      ];
+      example = [ "192.168.1.2" "192.168.1.3" ];
       description = ''
         IP addresses of the other nodes.
       '';
@@ -171,15 +154,7 @@ in
     };
 
     environmentFiles = mkOption {
-      type =
-        with types;
-        attrsOf (
-          nullOr (oneOf [
-            str
-            path
-            package
-          ])
-        );
+      type = with types; attrsOf (nullOr (oneOf [ str path package ]));
       default = { };
       example = {
         PATRONI_REPLICATION_PASSWORD = "/secret/file";

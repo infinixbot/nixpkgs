@@ -51,9 +51,6 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "rover";
     homepage = "https://www.apollographql.com/docs/rover";
     license = licenses.mit;
-    maintainers = [
-      maintainers.ivanbrennan
-      maintainers.aaronarinder
-    ];
+    maintainers = [ maintainers.ivanbrennan maintainers.aaronarinder ];
   };
 }

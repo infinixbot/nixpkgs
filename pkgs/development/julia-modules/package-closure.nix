@@ -179,12 +179,7 @@ let
 in
 
 runCommand "julia-package-closure.yml"
-  {
-    buildInputs = [
-      julia
-      (python3.withPackages (ps: with ps; [ pyyaml ]))
-    ];
-  }
+  { buildInputs = [ julia (python3.withPackages (ps: with ps; [ pyyaml ])) ]; }
   ''
     mkdir home
     export HOME=$(pwd)/home

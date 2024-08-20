@@ -138,16 +138,8 @@ in
 
   atk = attrs: {
     dependencies = attrs.dependencies ++ [ "gobject-introspection" ];
-    nativeBuildInputs = [
-      rake
-      bundler
-      pkg-config
-    ] ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
-    propagatedBuildInputs = [
-      gobject-introspection
-      wrapGAppsHook3
-      atk
-    ];
+    nativeBuildInputs = [ rake bundler pkg-config ] ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
+    propagatedBuildInputs = [ gobject-introspection wrapGAppsHook3 atk ];
   };
 
   bundler =
@@ -169,31 +161,16 @@ in
 
   cairo = attrs: {
     nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
-    buildInputs = [
-      gtk2
-      pcre2
-      xorg.libpthreadstubs
-      xorg.libXdmcp
-    ];
+    buildInputs = [ gtk2 pcre2 xorg.libpthreadstubs xorg.libXdmcp ];
   };
 
   cairo-gobject = attrs: {
     nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
-    buildInputs = [
-      cairo
-      expat
-      pcre2
-      xorg.libpthreadstubs
-      xorg.libXdmcp
-    ];
+    buildInputs = [ cairo expat pcre2 xorg.libpthreadstubs xorg.libXdmcp ];
   };
 
   charlock_holmes = attrs: {
-    buildInputs = [
-      which
-      icu
-      zlib
-    ];
+    buildInputs = [ which icu zlib ];
   };
 
   cld3 = attrs: {
@@ -282,10 +259,7 @@ in
   };
 
   exiv2 = attrs: {
-    buildFlags = [
-      "--with-exiv2-lib=${exiv2}/lib"
-      "--with-exiv2-include=${exiv2.dev}/include"
-    ];
+    buildFlags = [ "--with-exiv2-lib=${exiv2}/lib" "--with-exiv2-include=${exiv2.dev}/include" ];
   };
 
   fog-dnsimple =
@@ -353,30 +327,13 @@ in
   };
 
   gdk_pixbuf2 = attrs: {
-    nativeBuildInputs = [
-      pkg-config
-      bundler
-      rake
-    ] ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
-    propagatedBuildInputs = [
-      gobject-introspection
-      wrapGAppsHook3
-      gdk-pixbuf
-    ];
+    nativeBuildInputs = [ pkg-config bundler rake ] ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
+    propagatedBuildInputs = [ gobject-introspection wrapGAppsHook3 gdk-pixbuf ];
   };
 
   gdk3 = attrs: {
-    nativeBuildInputs = [
-      pkg-config
-      bundler
-      rake
-    ] ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
-    propagatedBuildInputs = [
-      gobject-introspection
-      wrapGAppsHook3
-      gdk-pixbuf
-      cairo
-    ];
+    nativeBuildInputs = [ pkg-config bundler rake ] ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
+    propagatedBuildInputs = [ gobject-introspection wrapGAppsHook3 gdk-pixbuf cairo ];
   };
 
   gpgme = attrs: {
@@ -390,17 +347,11 @@ in
       pkg-config
       gobject-introspection
     ] ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
-    buildInputs =
-      [
-        gtk2
-        pcre
-        pcre2
-      ]
-      ++ lib.optionals stdenv.isLinux [
-        util-linux
-        libselinux
-        libsepol
-      ];
+    buildInputs = [
+      gtk2
+      pcre
+      pcre2
+    ] ++ lib.optionals stdenv.isLinux [ util-linux libselinux libsepol ];
   };
 
   gitlab-markup = attrs: { meta.priority = 1; };
@@ -506,10 +457,7 @@ in
 
   glib2 = attrs: {
     nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
-    buildInputs = [
-      gtk2
-      pcre2
-    ];
+    buildInputs = [ gtk2 pcre2 ];
   };
 
   gtk2 = attrs: {
@@ -576,15 +524,8 @@ in
   };
 
   gobject-introspection = attrs: {
-    nativeBuildInputs = [
-      pkg-config
-      pcre2
-    ] ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
-    propagatedBuildInputs = [
-      gobject-introspection
-      wrapGAppsHook3
-      glib
-    ];
+    nativeBuildInputs = [ pkg-config pcre2 ] ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
+    propagatedBuildInputs = [ gobject-introspection wrapGAppsHook3 glib ];
   };
 
   gollum = attrs: {
@@ -682,11 +623,7 @@ in
   # otherwise the gem will fail to link to the libv8 binary.
   # see: https://github.com/cowboyd/libv8/pull/161
   libv8 = attrs: {
-    buildInputs = [
-      which
-      nodejs.libv8
-      python2
-    ];
+    buildInputs = [ which nodejs.libv8 python2 ];
     buildFlags = [ "--with-system-v8=true" ];
     dontBuild = false;
     # The gem includes broken symlinks which are ignored during unpacking, but
@@ -760,13 +697,7 @@ in
     postFixup = lib.optionalString stdenv.isLinux ''
       soPath="$out/${ruby.gemPath}/gems/mathematical-${attrs.version}/lib/mathematical/mathematical.so"
       rpath="$(patchelf --print-rpath "$soPath")"
-      patchelf --set-rpath "${
-        lib.makeLibraryPath [
-          lasem
-          glib
-          cairo
-        ]
-      }:$rpath" "$soPath"
+      patchelf --set-rpath "${lib.makeLibraryPath [ lasem glib cairo ]}:$rpath" "$soPath"
       patchelf --replace-needed liblasem.so liblasem-0.4.so "$soPath"
     '';
   };
@@ -793,19 +724,11 @@ in
   };
 
   mysql = attrs: {
-    buildInputs = [
-      libmysqlclient
-      zlib
-      openssl
-    ];
+    buildInputs = [ libmysqlclient zlib openssl ];
   };
 
   mysql2 = attrs: {
-    buildInputs = [
-      libmysqlclient
-      zlib
-      openssl
-    ];
+    buildInputs = [ libmysqlclient zlib openssl ];
   };
 
   ncursesw = attrs: {
@@ -857,10 +780,7 @@ in
   };
 
   ovirt-engine-sdk = attrs: {
-    buildInputs = [
-      curl
-      libxml2
-    ];
+    buildInputs = [ curl libxml2 ];
     dontBuild = false;
   };
 
@@ -874,21 +794,11 @@ in
       xorg.libpthreadstubs
       xorg.libXdmcp
     ] ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
-    buildInputs =
-      [
-        libdatrie
-        libthai
-      ]
-      ++ lib.optionals stdenv.isLinux [
-        libselinux
-        libsepol
-        util-linux
-      ];
-    propagatedBuildInputs = [
-      gobject-introspection
-      wrapGAppsHook3
-      gtk2
-    ];
+    buildInputs = [
+      libdatrie
+      libthai
+    ] ++ lib.optionals stdenv.isLinux [ libselinux libsepol util-linux ];
+    propagatedBuildInputs = [ gobject-introspection wrapGAppsHook3 gtk2 ];
   };
 
   patron = attrs: {
@@ -937,10 +847,7 @@ in
   rbczmq =
     { ... }:
     {
-      buildInputs = [
-        zeromq
-        czmq
-      ];
+      buildInputs = [ zeromq czmq ];
       buildFlags = [ "--with-system-libs" ];
     };
 
@@ -977,10 +884,7 @@ in
 
   rmagick = attrs: {
     nativeBuildInputs = [ pkg-config ];
-    buildInputs = [
-      imagemagick
-      which
-    ];
+    buildInputs = [ imagemagick which ];
   };
 
   rouge = attrs: {
@@ -1035,16 +939,8 @@ in
   };
 
   rugged = attrs: {
-    nativeBuildInputs = [
-      cmake
-      pkg-config
-      which
-    ] ++ lib.optional stdenv.isDarwin libiconv;
-    buildInputs = [
-      openssl
-      libssh2
-      zlib
-    ];
+    nativeBuildInputs = [ cmake pkg-config which ] ++ lib.optional stdenv.isDarwin libiconv;
+    buildInputs = [ openssl libssh2 zlib ];
     dontUseCmakeConfigure = true;
   };
 
@@ -1124,10 +1020,7 @@ in
   };
 
   tiny_tds = attrs: {
-    nativeBuildInputs = [
-      pkg-config
-      openssl
-    ];
+    nativeBuildInputs = [ pkg-config openssl ];
     buildInputs = [ freetds ];
   };
 
@@ -1158,10 +1051,7 @@ in
     };
 
   uuid4r = attrs: {
-    buildInputs = [
-      which
-      libossp_uuid
-    ];
+    buildInputs = [ which libossp_uuid ];
   };
 
   whois = attrs: {
@@ -1171,15 +1061,8 @@ in
   xapian-ruby = attrs: {
     # use the system xapian
     dontBuild = false;
-    nativeBuildInputs = [
-      rake
-      pkg-config
-      bundler
-    ];
-    buildInputs = [
-      xapian
-      zlib
-    ];
+    nativeBuildInputs = [ rake pkg-config bundler ];
+    buildInputs = [ xapian zlib ];
     postPatch = ''
       cp ${./xapian-Rakefile} Rakefile
     '';

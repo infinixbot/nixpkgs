@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-yngd2yP6XtRp8y8ZUd0NISdf8+8wJvpLogrQQMdB0lA=";
   };
 
-  buildInputs = [
-    libnotify
-    glib
-  ];
+  buildInputs = [ libnotify glib ];
   nativeBuildInputs = [ pkg-config ];
   installFlags = [ "PREFIX=${placeholder "out"}" ];
 

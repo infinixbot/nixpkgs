@@ -68,14 +68,8 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-1zxrT7phXeQYNbWHWMyPuHiUglrPSMPP0bfAcfvt8dM=";
   };
 
-  nativeBuildInputs = [
-    wrapGAppsHook3
-    dpkg
-  ];
-  buildInputs = [
-    glib
-    hicolor-icon-theme
-  ];
+  nativeBuildInputs = [ wrapGAppsHook3 dpkg ];
+  buildInputs = [ glib hicolor-icon-theme ];
 
   unpackPhase = ''
     mkdir pkg

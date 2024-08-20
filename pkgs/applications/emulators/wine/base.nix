@@ -125,11 +125,7 @@ stdenv.mkDerivation (
       with supportFlags;
       (
         pkgs:
-        [
-          pkgs.freetype
-          pkgs.perl
-          pkgs.libunwind
-        ]
+        [ pkgs.freetype pkgs.perl pkgs.libunwind ]
         ++ lib.optional stdenv.isLinux pkgs.libcap
         ++ lib.optional stdenv.isDarwin pkgs.libinotify-kqueue
         ++ lib.optional cupsSupport pkgs.cups
@@ -155,27 +151,11 @@ stdenv.mkDerivation (
         ++ lib.optional usbSupport pkgs.libusb1
         ++ lib.optionals gstreamerSupport (
           with pkgs.gst_all_1;
-          [
-            gstreamer
-            gst-plugins-base
-            gst-plugins-good
-            gst-plugins-ugly
-            gst-libav
-            gst-plugins-bad
-          ]
+          [ gstreamer gst-plugins-base gst-plugins-good gst-plugins-ugly gst-libav gst-plugins-bad ]
         )
-        ++ lib.optionals gtkSupport [
-          pkgs.gtk3
-          pkgs.glib
-        ]
-        ++ lib.optionals openclSupport [
-          pkgs.opencl-headers
-          pkgs.ocl-icd
-        ]
-        ++ lib.optionals tlsSupport [
-          pkgs.openssl
-          pkgs.gnutls
-        ]
+        ++ lib.optionals gtkSupport [ pkgs.gtk3 pkgs.glib ]
+        ++ lib.optionals openclSupport [ pkgs.opencl-headers pkgs.ocl-icd ]
+        ++ lib.optionals tlsSupport [ pkgs.openssl pkgs.gnutls ]
         ++ lib.optionals (openglSupport && !stdenv.isDarwin) [
           pkgs.libGLU
           pkgs.libGL
@@ -292,10 +272,7 @@ stdenv.mkDerivation (
     # https://bugs.winehq.org/show_bug.cgi?id=43530
     # https://github.com/NixOS/nixpkgs/issues/31989
     hardeningDisable =
-      [
-        "bindnow"
-        "stackclashprotection"
-      ]
+      [ "bindnow" "stackclashprotection" ]
       ++ lib.optional (stdenv.hostPlatform.isDarwin) "fortify"
       ++ lib.optional (supportFlags.mingwSupport) "format";
 
@@ -316,13 +293,7 @@ stdenv.mkDerivation (
       ];
       description = "Open Source implementation of the Windows API on top of X, OpenGL, and Unix";
       inherit badPlatforms platforms;
-      maintainers = with lib.maintainers; [
-        avnik
-        raskin
-        bendlas
-        jmc-figueira
-        reckenrode
-      ];
+      maintainers = with lib.maintainers; [ avnik raskin bendlas jmc-figueira reckenrode ];
       inherit mainProgram;
     };
   }

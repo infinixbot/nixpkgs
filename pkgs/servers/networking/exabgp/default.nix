@@ -41,9 +41,6 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "https://github.com/Exa-Networks/exabgp";
     changelog = "https://github.com/Exa-Networks/exabgp/blob/${src.rev}/CHANGELOG.rst";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      hexa
-      raitobezarius
-    ];
+    maintainers = with maintainers; [ hexa raitobezarius ];
   };
 }

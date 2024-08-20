@@ -32,14 +32,8 @@ stdenv.mkDerivation (final: {
   # Fix: set_target_properties Can not find target to add properties to: Catch2, et al.
   patches = [ ./remove-target-properties.diff ];
 
-  nativeBuildInputs = [
-    cmake
-    python3
-  ];
-  buildInputs = [
-    catch2
-    fmt
-  ];
+  nativeBuildInputs = [ cmake python3 ];
+  buildInputs = [ catch2 fmt ];
 
   cmakeFlags = [ "-DLIBUNICODE_UCD_DIR=${ucd-src}" ];
 

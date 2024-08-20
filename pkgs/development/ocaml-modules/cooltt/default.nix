@@ -31,11 +31,7 @@ let
       hash = "sha256-s6lUTs3VRl6YhLAn3PO4aniANhFp8ytoTsFAgcOlee4=";
     };
 
-    propagatedBuildInputs = [
-      bos
-      ezjsonm
-      findlib
-    ];
+    propagatedBuildInputs = [ bos ezjsonm findlib ];
 
     meta = {
       description = "Extensible Library Management and Path Resolution";

@@ -115,19 +115,9 @@ let
           "--enable-cross-compile"
         ];
 
-      nativeBuildInputs = [
-        pkg-config
-        perl
-      ];
+      nativeBuildInputs = [ pkg-config perl ];
       buildInputs =
-        [
-          lame
-          yasm
-          zlib
-          bzip2
-          SDL
-          bash
-        ]
+        [ lame yasm zlib bzip2 SDL bash ]
         ++ [ perl ] # for install-man target
         ++ optional mp3Support lame
         ++ optional speexSupport speex
@@ -143,19 +133,11 @@ let
 
       enableParallelBuilding = true;
 
-      outputs = [
-        "bin"
-        "dev"
-        "out"
-      ];
+      outputs = [ "bin" "dev" "out" ];
       setOutputFlags = false;
 
       # alltools to build smaller tools, incl. aviocat, ismindex, qt-faststart, etc.
-      buildFlags = [
-        "all"
-        "alltools"
-        "install-man"
-      ];
+      buildFlags = [ "all" "alltools" "install-man" ];
 
       postInstall = ''
         moveToOutput bin "$bin"
@@ -187,14 +169,8 @@ let
         platforms = with platforms; linux ++ darwin;
         knownVulnerabilities =
           lib.optional (lib.versionOlder version "12.1") "CVE-2017-9051"
-          ++ lib.optionals (lib.versionOlder version "12.3") [
-            "CVE-2018-5684"
-            "CVE-2018-5766"
-          ]
-          ++ lib.optionals (lib.versionOlder version "12.4") [
-            "CVE-2019-9717"
-            "CVE-2019-9720"
-          ];
+          ++ lib.optionals (lib.versionOlder version "12.3") [ "CVE-2018-5684" "CVE-2018-5766" ]
+          ++ lib.optionals (lib.versionOlder version "12.4") [ "CVE-2019-9717" "CVE-2019-9720" ];
       };
     }; # libavFun
 

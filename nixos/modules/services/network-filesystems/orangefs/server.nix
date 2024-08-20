@@ -93,12 +93,7 @@ in
       enable = mkEnableOption "OrangeFS server";
 
       logType = mkOption {
-        type =
-          with types;
-          enum [
-            "file"
-            "syslog"
-          ];
+        type = with types; enum [ "file" "syslog" ];
         default = "syslog";
         description = "Destination for log messages.";
       };
@@ -120,10 +115,7 @@ in
       BMIModules = mkOption {
         type = with types; listOf str;
         default = [ "bmi_tcp" ];
-        example = [
-          "bmi_tcp"
-          "bmi_ib"
-        ];
+        example = [ "bmi_tcp" "bmi_ib" ];
         description = "List of BMI modules to load.";
       };
 

@@ -78,13 +78,7 @@ stdenv.mkDerivation rec {
     mkdir -p $out/bin $out/lib/udev/rules.d $out/share/icons/hicolor/256x256/apps
     makeWrapper $out/share/roomeqwizard/roomeqwizard $out/bin/roomeqwizard \
       --set INSTALL4J_JAVA_HOME_OVERRIDE ${jdk8} \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          gnused
-          gawk
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ coreutils gnused gawk ]}
 
     cp -r "$desktopItem/share/applications" $out/share/
     cp $out/share/roomeqwizard/.install4j/roomeqwizard.png "$out/share/icons/hicolor/256x256/apps/${pname}.png"
@@ -117,10 +111,7 @@ stdenv.mkDerivation rec {
     homepage = "https://www.roomeqwizard.com/";
     license = licenses.unfree;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      orivej
-      zaninime
-    ];
+    maintainers = with maintainers; [ orivej zaninime ];
     description = "Room Acoustics Software";
     longDescription = ''
       REW is free software for room acoustic measurement, loudspeaker

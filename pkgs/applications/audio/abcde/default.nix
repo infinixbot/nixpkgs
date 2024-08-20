@@ -44,12 +44,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ makeWrapper ];
 
-  buildInputs = with perlPackages; [
-    perl
-    MusicBrainz
-    MusicBrainzDiscID
-    IOSocketSSL
-  ];
+  buildInputs = with perlPackages; [ perl MusicBrainz MusicBrainzDiscID IOSocketSSL ];
 
   installFlags = [ "sysconfdir=$(out)/etc" ];
 

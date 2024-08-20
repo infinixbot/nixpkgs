@@ -27,10 +27,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    aws-c-common
-    openssl
-  ];
+  buildInputs = [ aws-c-common openssl ];
 
   propagatedBuildInputs = lib.optionals stdenv.hostPlatform.isDarwin [ Security ];
 

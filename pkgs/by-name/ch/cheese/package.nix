@@ -36,11 +36,7 @@ stdenv.mkDerivation rec {
   pname = "cheese";
   version = "44.1";
 
-  outputs = [
-    "out"
-    "man"
-    "devdoc"
-  ];
+  outputs = [ "out" "man" "devdoc" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/cheese/${lib.versions.major version}/${pname}-${version}.tar.xz";

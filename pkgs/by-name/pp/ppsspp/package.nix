@@ -80,10 +80,7 @@ stdenv.mkDerivation (finalAttrs: {
       qtmultimedia
     ]
     ++ lib.optionals enableVulkan [ vulkan-loader ]
-    ++ lib.optionals vulkanWayland [
-      wayland
-      libffi
-    ];
+    ++ lib.optionals vulkanWayland [ wayland libffi ];
 
   cmakeFlags = [
     (lib.cmakeBool "HEADLESS" (!enableQt))
@@ -102,10 +99,7 @@ stdenv.mkDerivation (finalAttrs: {
       exec = "ppsspp";
       icon = "ppsspp";
       comment = "Play PSP games on your computer";
-      categories = [
-        "Game"
-        "Emulator"
-      ];
+      categories = [ "Game" "Emulator" ];
     })
   ];
 

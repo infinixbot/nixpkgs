@@ -51,12 +51,7 @@ rustPlatform.buildRustPackage rec {
     "static-artifact-load"
   ] ++ lib.optional withLLVM "llvm" ++ lib.optional withSinglepass "singlepass";
 
-  cargoBuildFlags = [
-    "--manifest-path"
-    "lib/cli/Cargo.toml"
-    "--bin"
-    "wasmer"
-  ];
+  cargoBuildFlags = [ "--manifest-path" "lib/cli/Cargo.toml" "--bin" "wasmer" ];
 
   env.LLVM_SYS_150_PREFIX = lib.optionalString withLLVM llvmPackages.llvm.dev;
 
@@ -74,10 +69,6 @@ rustPlatform.buildRustPackage rec {
     '';
     homepage = "https://wasmer.io/";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      Br1ght0ne
-      shamilton
-      nickcao
-    ];
+    maintainers = with maintainers; [ Br1ght0ne shamilton nickcao ];
   };
 }

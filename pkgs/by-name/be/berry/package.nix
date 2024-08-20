@@ -40,10 +40,7 @@ stdenv.mkDerivation (finalAttrs: {
     freetype
   ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   strictDeps = true;
 

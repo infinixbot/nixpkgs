@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    libpcap
-    boost
-  ];
+  buildInputs = [ libpcap boost ];
 
   meta = with lib; {
     homepage = "https://github.com/aguinet/usbtop";

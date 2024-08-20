@@ -124,10 +124,7 @@ stdenv.mkDerivation rec {
       sed '2i echo Skipping cut huge range test && exit 77' -i ./tests/cut/cut-huge-range.sh
     '');
 
-  outputs = [
-    "out"
-    "info"
-  ];
+  outputs = [ "out" "info" ];
   separateDebugInfo = true;
 
   nativeBuildInputs =
@@ -147,10 +144,7 @@ stdenv.mkDerivation rec {
     ++ optional attrSupport attr
     ++ optional gmpSupport gmp
     ++ optional withOpenssl openssl
-    ++ optionals selinuxSupport [
-      libselinux
-      libsepol
-    ]
+    ++ optionals selinuxSupport [ libselinux libsepol ]
     # TODO(@Ericson2314): Investigate whether Darwin could benefit too
     ++ optional (isCross && stdenv.hostPlatform.libc != "glibc") libiconv;
 

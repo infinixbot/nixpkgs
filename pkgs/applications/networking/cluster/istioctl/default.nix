@@ -29,11 +29,7 @@ buildGoModule rec {
         "istio.io/istio/pkg/version.buildHub=docker.io/istio"
       ];
     in
-    [
-      "-s"
-      "-w"
-      "${lib.concatMapStringsSep " " (attr: "-X ${attr}") attrs}"
-    ];
+    [ "-s" "-w" "${lib.concatMapStringsSep " " (attr: "-X ${attr}") attrs}" ];
 
   subPackages = [ "istioctl/cmd/istioctl" ];
 
@@ -54,9 +50,6 @@ buildGoModule rec {
     mainProgram = "istioctl";
     homepage = "https://istio.io/latest/docs/reference/commands/istioctl";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      bryanasdev000
-      veehaitch
-    ];
+    maintainers = with maintainers; [ bryanasdev000 veehaitch ];
   };
 }

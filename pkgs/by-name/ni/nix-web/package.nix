@@ -11,10 +11,7 @@
 }:
 
 let
-  cargoFlags = [
-    "-p"
-    "nix-web"
-  ];
+  cargoFlags = [ "-p" "nix-web" ];
 in
 rustPlatform.buildRustPackage rec {
   pname = "nix-web";
@@ -33,11 +30,7 @@ rustPlatform.buildRustPackage rec {
   buildInputs =
     lib.optional (!stdenv.isDarwin) openssl
     ++ lib.optionals stdenv.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        Security
-        SystemConfiguration
-      ]
+      with darwin.apple_sdk.frameworks; [ Security SystemConfiguration ]
     );
 
   postPatch = ''

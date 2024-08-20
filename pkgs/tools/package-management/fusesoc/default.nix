@@ -24,26 +24,11 @@ buildPythonPackage rec {
 
   nativeBuildInputs = [ setuptools-scm ];
 
-  propagatedBuildInputs = [
-    edalize
-    fastjsonschema
-    pyparsing
-    pyyaml
-    simplesat
-    ipyxact
-  ];
+  propagatedBuildInputs = [ edalize fastjsonschema pyparsing pyyaml simplesat ipyxact ];
 
   pythonImportsCheck = [ "fusesoc" ];
 
-  makeWrapperArgs = [
-    "--suffix PATH : ${
-      lib.makeBinPath [
-        iverilog
-        verilator
-        gnumake
-      ]
-    }"
-  ];
+  makeWrapperArgs = [ "--suffix PATH : ${lib.makeBinPath [ iverilog verilator gnumake ]}" ];
 
   meta = with lib; {
     homepage = "https://github.com/olofk/fusesoc";

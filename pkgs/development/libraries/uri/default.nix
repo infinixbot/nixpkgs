@@ -30,10 +30,7 @@ stdenv.mkDerivation rec {
     ]
   );
 
-  nativeBuildInputs = [
-    cmake
-    doxygen
-  ];
+  nativeBuildInputs = [ cmake doxygen ];
 
   cmakeFlags = [
     "-DUri_BUILD_TESTS=OFF"

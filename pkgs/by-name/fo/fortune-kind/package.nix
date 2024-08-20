@@ -23,14 +23,8 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-hxbvsAQsZWUAgj8QAlcxqBA5YagLO3/vz9lQGJMHUjw=";
 
-  nativeBuildInputs = [
-    makeBinaryWrapper
-    installShellFiles
-  ];
-  buildInputs = lib.optionals stdenv.isDarwin [
-    libiconv
-    darwin.apple_sdk.frameworks.Security
-  ];
+  nativeBuildInputs = [ makeBinaryWrapper installShellFiles ];
+  buildInputs = lib.optionals stdenv.isDarwin [ libiconv darwin.apple_sdk.frameworks.Security ];
 
   buildNoDefaultFeatures = true;
 

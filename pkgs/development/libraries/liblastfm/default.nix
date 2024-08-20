@@ -31,11 +31,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    which
-    cmake
-  ];
+  nativeBuildInputs = [ pkg-config which cmake ];
   buildInputs = [
     fftwSinglePrec
     libsamplerate

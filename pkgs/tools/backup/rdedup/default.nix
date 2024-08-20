@@ -23,15 +23,8 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-I6d3IyPBcUsrvlzF7W0hFM4hcXi4wWro9bCeP4eArHI=";
 
-  nativeBuildInputs = [
-    pkg-config
-    rustPlatform.bindgenHook
-  ];
-  buildInputs = [
-    openssl
-    libsodium
-    xz
-  ] ++ (lib.optional stdenv.isDarwin Security);
+  nativeBuildInputs = [ pkg-config rustPlatform.bindgenHook ];
+  buildInputs = [ openssl libsodium xz ] ++ (lib.optional stdenv.isDarwin Security);
 
   meta = with lib; {
     description = "Data deduplication with compression and public key encryption";

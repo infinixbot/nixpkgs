@@ -11,13 +11,7 @@
 }:
 
 let
-  path = lib.makeBinPath [
-    gnuplot
-    sox
-    flac
-    id3v2
-    vorbis-tools
-  ];
+  path = lib.makeBinPath [ gnuplot sox flac id3v2 vorbis-tools ];
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "bpm-tools";

@@ -25,12 +25,7 @@ makeOverridable (
     ... # For hash agility
   }@args:
 
-  assert (
-    assertOneOf "vc" vc [
-      "hg"
-      "git"
-    ]
-  );
+  assert (assertOneOf "vc" vc [ "hg" "git" ]);
 
   let
     urlFor = resource: "https://${resource}.${domain}/${owner}/${repo}";

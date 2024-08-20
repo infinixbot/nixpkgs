@@ -5,10 +5,7 @@
   texliveBasic,
 }:
 let
-  texliveWithJunicode = texliveBasic.withPackages (p: [
-    p.xetex
-    junicode
-  ]);
+  texliveWithJunicode = texliveBasic.withPackages (p: [ p.xetex junicode ]);
 
   texTest =
     {
@@ -32,14 +29,8 @@ let
 in
 builtins.listToAttrs (
   lib.mapCartesianProduct texTest {
-    tex = [
-      "xelatex"
-      "lualatex"
-    ];
-    fonttype = [
-      "ttf"
-      "otf"
-    ];
+    tex = [ "xelatex" "lualatex" ];
+    fonttype = [ "ttf" "otf" ];
     package = [ "junicode" ];
     file = [ ./test.tex ];
   }

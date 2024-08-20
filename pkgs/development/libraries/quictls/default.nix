@@ -63,13 +63,7 @@ stdenv.mkDerivation (finalAttrs: {
     cryptodev
   ];
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "man"
-    "doc"
-  ];
+  outputs = [ "bin" "dev" "out" "man" "doc" ];
 
   setOutputFlags = false;
 

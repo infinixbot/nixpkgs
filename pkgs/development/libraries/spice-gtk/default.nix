@@ -66,12 +66,7 @@ stdenv.mkDerivation rec {
   pname = "spice-gtk";
   version = "0.42";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-    "man"
-  ];
+  outputs = [ "out" "dev" "devdoc" "man" ];
 
   src = fetchurl {
     url = "https://www.spice-space.org/download/gtk/${pname}-${version}.tar.xz";

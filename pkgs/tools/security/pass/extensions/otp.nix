@@ -33,11 +33,7 @@ stdenv.mkDerivation rec {
     description = "Pass extension for managing one-time-password (OTP) tokens";
     homepage = "https://github.com/tadfisher/pass-otp";
     license = licenses.gpl3;
-    maintainers = with maintainers; [
-      jwiegley
-      tadfisher
-      toonn
-    ];
+    maintainers = with maintainers; [ jwiegley tadfisher toonn ];
     platforms = platforms.unix;
   };
 }

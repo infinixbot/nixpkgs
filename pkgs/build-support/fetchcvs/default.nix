@@ -22,10 +22,7 @@ lib.makeOverridable (
   stdenvNoCC.mkDerivation {
     name = "cvs-export";
     builder = ./builder.sh;
-    nativeBuildInputs = [
-      cvs
-      openssh
-    ];
+    nativeBuildInputs = [ cvs openssh ];
 
     outputHashAlgo = "sha256";
     outputHashMode = "recursive";

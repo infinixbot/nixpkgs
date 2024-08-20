@@ -21,16 +21,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-BwA17lc2yegmOzLfoIu8OmG/PVdc+4sOGzB8Jc4ZjGM=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
   buildInputs =
-    [
-      elfutils
-      zlib
-      libbpf
-    ]
+    [ elfutils zlib libbpf ]
     ++ lib.optionals stdenv.hostPlatform.isMusl [
       argp-standalone
       musl-obstack
@@ -53,10 +46,7 @@ stdenv.mkDerivation rec {
   ];
 
   # Put libraries in "lib" subdirectory, not top level of $out
-  cmakeFlags = [
-    "-D__LIB=lib"
-    "-DLIBBPF_EMBEDDED=OFF"
-  ];
+  cmakeFlags = [ "-D__LIB=lib" "-DLIBBPF_EMBEDDED=OFF" ];
 
   passthru.tests = {
     inherit (nixosTests) bpf;
@@ -68,9 +58,6 @@ stdenv.mkDerivation rec {
     license = licenses.gpl2Only;
 
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      bosu
-      martinetd
-    ];
+    maintainers = with maintainers; [ bosu martinetd ];
   };
 }

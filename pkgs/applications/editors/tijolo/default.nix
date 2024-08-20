@@ -42,23 +42,12 @@ crystal.buildCrystalPackage rec {
     wrapGAppsHook4
     gobject-introspection
   ] ++ lib.optionals stdenv.isDarwin [ desktopToDarwinBundle ];
-  buildInputs = [
-    gtk4
-    libadwaita
-    vte-gtk4
-    libgit2
-    gtksourceview5
-    editorconfig-core-c
-  ];
+  buildInputs = [ gtk4 libadwaita vte-gtk4 libgit2 gtksourceview5 editorconfig-core-c ];
 
   buildTargets = [ "all" ];
   doCheck = false;
 
-  installTargets = [
-    "install"
-    "post-install"
-    "install-fonts"
-  ];
+  installTargets = [ "install" "post-install" "install-fonts" ];
   doInstallCheck = false;
 
   meta = with lib; {

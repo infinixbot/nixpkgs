@@ -17,32 +17,18 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "hardware"
-        "logitech"
-        "enable"
-      ]
-      [
-        "hardware"
-        "logitech"
-        "wireless"
-        "enable"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "hardware"
-        "logitech"
-        "enableGraphical"
-      ]
-      [
-        "hardware"
-        "logitech"
-        "wireless"
-        "enableGraphical"
-      ]
-    )
+    (mkRenamedOptionModule [ "hardware" "logitech" "enable" ] [
+      "hardware"
+      "logitech"
+      "wireless"
+      "enable"
+    ])
+    (mkRenamedOptionModule [ "hardware" "logitech" "enableGraphical" ] [
+      "hardware"
+      "logitech"
+      "wireless"
+      "enableGraphical"
+    ])
   ];
 
   options.hardware.logitech = {
@@ -60,13 +46,7 @@ in
 
       devices = mkOption {
         type = types.listOf types.str;
-        default = [
-          "0a07"
-          "c222"
-          "c225"
-          "c227"
-          "c251"
-        ];
+        default = [ "0a07" "c222" "c225" "c227" "c251" ];
         description = ''
           List of USB device ids supported by g15daemon.
 

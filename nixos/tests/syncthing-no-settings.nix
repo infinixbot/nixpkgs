@@ -6,11 +6,7 @@ import ./make-test-python.nix (
 
     nodes = {
       a = {
-        environment.systemPackages = with pkgs; [
-          curl
-          libxml2
-          syncthing
-        ];
+        environment.systemPackages = with pkgs; [ curl libxml2 syncthing ];
         services.syncthing = {
           enable = true;
         };

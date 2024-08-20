@@ -108,11 +108,7 @@ in
           StateDirectory = "photoprism";
           WorkingDirectory = "/var/lib/photoprism";
           RuntimeDirectory = "photoprism";
-          ReadWritePaths = [
-            cfg.originalsPath
-            cfg.importPath
-            cfg.storagePath
-          ];
+          ReadWritePaths = [ cfg.originalsPath cfg.importPath cfg.storagePath ];
 
           LoadCredential = lib.optionalString (
             cfg.passwordFile != null
@@ -129,18 +125,11 @@ in
           ProtectKernelLogs = true;
           ProtectKernelModules = true;
           ProtectKernelTunables = true;
-          RestrictAddressFamilies = [
-            "AF_UNIX"
-            "AF_INET"
-            "AF_INET6"
-          ];
+          RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
           RestrictNamespaces = true;
           RestrictRealtime = true;
           SystemCallArchitectures = "native";
-          SystemCallFilter = [
-            "@system-service"
-            "~@setuid @keyring"
-          ];
+          SystemCallFilter = [ "@system-service" "~@setuid @keyring" ];
           UMask = "0066";
         }
         // lib.optionalAttrs (cfg.port < 1024) {

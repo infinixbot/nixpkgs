@@ -110,10 +110,7 @@ let
   initrdBinEnv = pkgs.buildEnv {
     name = "initrd-bin-env";
     paths = map getBin cfg.initrdBin;
-    pathsToLink = [
-      "/bin"
-      "/sbin"
-    ];
+    pathsToLink = [ "/bin" "/sbin" ];
 
     # Make sure sbin and bin have the same contents, and add extraBin
     postBuild = ''
@@ -169,15 +166,7 @@ in
     };
 
     managerEnvironment = mkOption {
-      type =
-        with types;
-        attrsOf (
-          nullOr (oneOf [
-            str
-            path
-            package
-          ])
-        );
+      type = with types; attrsOf (nullOr (oneOf [ str path package ]));
       default = { };
       example = {
         SYSTEMD_LOG_LEVEL = "debug";
@@ -243,10 +232,7 @@ in
     };
 
     root = lib.mkOption {
-      type = lib.types.enum [
-        "fstab"
-        "gpt-auto"
-      ];
+      type = lib.types.enum [ "fstab" "gpt-auto" ];
       default = "fstab";
       example = "gpt-auto";
       description = ''
@@ -259,12 +245,7 @@ in
     };
 
     emergencyAccess = mkOption {
-      type =
-        with types;
-        oneOf [
-          bool
-          (nullOr (passwdEntry str))
-        ];
+      type = with types; oneOf [ bool (nullOr (passwdEntry str)) ];
       description = ''
         Set to true for unauthenticated emergency access, and false or
         null for no emergency access.
@@ -286,10 +267,7 @@ in
     additionalUpstreamUnits = mkOption {
       default = [ ];
       type = types.listOf types.str;
-      example = [
-        "debug-shell.service"
-        "systemd-quotacheck.service"
-      ];
+      example = [ "debug-shell.service" "systemd-quotacheck.service" ];
       description = ''
         Additional units shipped with systemd that shall be enabled.
       '';
@@ -428,10 +406,7 @@ in
           [ "extraUdevRulesCommands" ]
           [ "extraUtilsCommands" ]
           [ "extraUtilsCommandsTest" ]
-          [
-            "network"
-            "postCommands"
-          ]
+          [ "network" "postCommands" ]
         ];
 
     system.build = {
@@ -461,12 +436,7 @@ in
 
     boot.initrd.systemd = {
       # bashInteractive is easier to use and also required by debug-shell.service
-      initrdBin = [
-        pkgs.bashInteractive
-        pkgs.coreutils
-        cfg.package.kmod
-        cfg.package
-      ];
+      initrdBin = [ pkgs.bashInteractive pkgs.coreutils cfg.package.kmod cfg.package ];
       extraBin = {
         less = "${pkgs.less}/bin/less";
         mount = "${cfg.package.util-linux}/bin/mount";

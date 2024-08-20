@@ -21,19 +21,13 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-dKHTxVglH10aV44RuSeIFATn83DVdmCYtuaiS3b0+zo=";
   };
 
-  buildInputs = [
-    python3
-    zlib
-  ] ++ lib.optional (!stdenv.isDarwin) libaio;
+  buildInputs = [ python3 zlib ] ++ lib.optional (!stdenv.isDarwin) libaio;
 
   # ./configure does not support autoconf-style --build=/--host=.
   # We use $CC instead.
   configurePlatforms = [ ];
 
-  nativeBuildInputs = [
-    makeWrapper
-    python3.pkgs.wrapPython
-  ];
+  nativeBuildInputs = [ makeWrapper python3.pkgs.wrapPython ];
 
   strictDeps = true;
 

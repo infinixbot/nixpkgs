@@ -58,12 +58,7 @@ mkDerivation rec {
     gsl
     blas
   ];
-  nativeBuildInputs = [
-    flex
-    wrapQtAppsHook
-    qmake
-    bison
-  ];
+  nativeBuildInputs = [ flex wrapQtAppsHook qmake bison ];
 
   patches = [
     # allow building with bison 3.7
@@ -74,12 +69,7 @@ mkDerivation rec {
 
   NIX_LDFLAGS = "-lz -lgsl -lblas";
 
-  qtWrapperArgs = [
-    "--prefix"
-    "LD_LIBRARY_PATH"
-    ":"
-    "${zlib.out}/lib"
-  ];
+  qtWrapperArgs = [ "--prefix" "LD_LIBRARY_PATH" ":" "${zlib.out}/lib" ];
 
   preConfigure = ''
     cp src/gcconfig.pri.in src/gcconfig.pri

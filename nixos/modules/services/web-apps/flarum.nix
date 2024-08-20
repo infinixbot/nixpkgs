@@ -91,13 +91,7 @@ in
     };
 
     database = mkOption rec {
-      type =
-        with types;
-        attrsOf (oneOf [
-          str
-          bool
-          int
-        ]);
+      type = with types; attrsOf (oneOf [ str bool int ]);
       description = "MySQL database parameters";
       default = {
         # the database driver; i.e. MySQL; MariaDB...
@@ -222,8 +216,5 @@ in
     };
   };
 
-  meta.maintainers = with lib.maintainers; [
-    fsagbuya
-    jasonodoom
-  ];
+  meta.maintainers = with lib.maintainers; [ fsagbuya jasonodoom ];
 }

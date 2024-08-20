@@ -27,20 +27,8 @@ stdenv.mkDerivation rec {
     sha256 = "0qvy9fllvg1mad6y1j79iaqa6khs0q2cb0z62yfg4srbr07fi8xr";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    gettext
-    wrapGAppsHook3
-  ];
-  buildInputs = [
-    glib
-    gtk3
-    gmtk
-    dbus
-    dbus-glib
-    libnotify
-    libpulseaudio
-  ];
+  nativeBuildInputs = [ pkg-config gettext wrapGAppsHook3 ];
+  buildInputs = [ glib gtk3 gmtk dbus dbus-glib libnotify libpulseaudio ];
 
   patches = [
     (substituteAll {

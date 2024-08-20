@@ -62,17 +62,10 @@ stdenv.mkDerivation rec {
     (lib.enableFeature libwebpdecoderSupport "libwebpdecoder")
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    libtool
-  ];
+  nativeBuildInputs = [ autoreconfHook libtool ];
   buildInputs =
     [ ]
-    ++ lib.optionals openglSupport [
-      libglut
-      libGL
-      libGLU
-    ]
+    ++ lib.optionals openglSupport [ libglut libGL libGLU ]
     ++ lib.optionals pngSupport [ libpng ]
     ++ lib.optionals jpegSupport [ libjpeg ]
     ++ lib.optionals tiffSupport [ libtiff ]

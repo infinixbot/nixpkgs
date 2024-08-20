@@ -52,10 +52,7 @@ let
         sha256 = "056c04pfsf98nnknphg28l489isqb6y4l2c8g7wqhclwgj7m338i";
       };
 
-      nativeBuildInputs = [
-        autoPatchelfHook
-        rpm
-      ];
+      nativeBuildInputs = [ autoPatchelfHook rpm ];
 
       installPhase = ''
         ${rpm}/bin/rpm2cpio plugins/esci-interpreter-perfection-v330-*.x86_64.rpm | ${cpio}/bin/cpio -idmv
@@ -86,10 +83,7 @@ let
         sha256 = "1ff7adp9mha1i2ibllz540xkagpy8r757h4s3h60bgxbyzv2yggr";
       };
 
-      nativeBuildInputs = [
-        autoPatchelfHook
-        rpm
-      ];
+      nativeBuildInputs = [ autoPatchelfHook rpm ];
 
       installPhase = ''
         cd plugins
@@ -117,10 +111,7 @@ let
       pname = "iscan-perfection-v550-bundle";
       version = "2.30.4";
 
-      nativeBuildInputs = [
-        autoPatchelfHook
-        rpm
-      ];
+      nativeBuildInputs = [ autoPatchelfHook rpm ];
       src = fetchurl {
         urls = [
           "https://download2.ebz.epson.net/iscan/plugin/perfection-v550/rpm/x64/iscan-perfection-v550-bundle-${version}.x64.rpm.tar.gz"
@@ -151,10 +142,7 @@ let
       pname = "iscan-gt-x820-bundle";
       version = "2.30.4";
 
-      nativeBuildInputs = [
-        autoPatchelfHook
-        rpm
-      ];
+      nativeBuildInputs = [ autoPatchelfHook rpm ];
       src = fetchurl {
         urls = [
           "https://download2.ebz.epson.net/iscan/plugin/gt-x820/rpm/x64/iscan-gt-x820-bundle-${version}.x64.rpm.tar.gz"
@@ -185,10 +173,7 @@ let
       pname = "iscan-gt-x770-bundle";
       version = "2.30.4";
 
-      nativeBuildInputs = [
-        autoPatchelfHook
-        rpm
-      ];
+      nativeBuildInputs = [ autoPatchelfHook rpm ];
       src = fetchurl {
         urls = [
           "https://download2.ebz.epson.net/iscan/plugin/gt-x770/rpm/x64/iscan-gt-x770-bundle-${version}.x64.rpm.tar.gz"
@@ -252,10 +237,7 @@ let
       version = "2.30.4";
 
       nativeBuildInputs = [ autoPatchelfHook ];
-      buildInputs = [
-        gcc.cc.lib
-        libtool
-      ];
+      buildInputs = [ gcc.cc.lib libtool ];
       src = fetchurl {
         urls = [
           "https://download2.ebz.epson.net/iscan/plugin/gt-s80/rpm/x64/iscan-gt-s80-bundle-${version}.x64.rpm.tar.gz"
@@ -299,10 +281,7 @@ let
         sha256 = "fe1356b1d5c40bc5ac985a5693166efb9e5049a78b412f49c385eb503eadf2c6";
       };
 
-      nativeBuildInputs = [
-        autoPatchelfHook
-        rpm
-      ];
+      nativeBuildInputs = [ autoPatchelfHook rpm ];
 
       installPhase = ''
         cd plugins
@@ -336,10 +315,7 @@ let
         sha256 = "0fn4lz4g0a8l301v6yv7fwl37wgwhz5y90nf681f655xxc91hqh7";
       };
 
-      nativeBuildInputs = [
-        autoPatchelfHook
-        rpm
-      ];
+      nativeBuildInputs = [ autoPatchelfHook rpm ];
 
       installPhase = ''
         cd plugins
@@ -374,10 +350,7 @@ let
         sha256 = "sha256-9EeBHmh1nwSxnTnevPP8RZ4WBdyY+itR3VXo2I7f5N0=";
       };
 
-      nativeBuildInputs = [
-        autoPatchelfHook
-        rpm
-      ];
+      nativeBuildInputs = [ autoPatchelfHook rpm ];
 
       installPhase = ''
         cd plugins
@@ -411,10 +384,7 @@ let
         sha256 = "sha256-1rVsbBsb+QtCOT1FsyhgvCbZIN6IeQH7rZXNmsD7cl8=";
       };
 
-      nativeBuildInputs = [
-        autoPatchelfHook
-        rpm
-      ];
+      nativeBuildInputs = [ autoPatchelfHook rpm ];
 
       installPhase = ''
         cd plugins
@@ -509,11 +479,7 @@ stdenv.mkDerivation rec {
     sha256 = "1ma76jj0k3bz0fy06fiyl4di4y77rcryb0mwjmzs5ms2vq9rjysr";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    libtool
-    makeWrapper
-  ];
+  nativeBuildInputs = [ pkg-config libtool makeWrapper ];
   buildInputs = [
     gtk2
     libxml2
@@ -537,10 +503,7 @@ stdenv.mkDerivation rec {
   ];
   patchFlags = [ "-p0" ];
 
-  configureFlags = [
-    "--enable-dependency-reduction"
-    "--disable-frontend"
-  ];
+  configureFlags = [ "--enable-dependency-reduction" "--disable-frontend" ];
 
   postConfigure = ''
     echo '#define NIX_ESCI_PREFIX "'${fwdir}'"' >> config.h
@@ -574,9 +537,6 @@ stdenv.mkDerivation rec {
         Supported hardware: at least :
       ''
       + lib.concatStringsSep ", " (lib.mapAttrsToList (name: value: value.passthru.hw) plugins);
-    maintainers = with lib.maintainers; [
-      symphorien
-      dominikh
-    ];
+    maintainers = with lib.maintainers; [ symphorien dominikh ];
   };
 }

@@ -25,16 +25,8 @@ let
     inherit src;
     sourceRoot = "${src.name}/Sources/utils/QtnProperty";
     patches = [ ./qtnproperty-parallel-building.patch ];
-    buildInputs = [
-      qtscript
-      qtbase
-      qtdeclarative
-    ];
-    nativeBuildInputs = [
-      qmake
-      flex
-      bison
-    ];
+    buildInputs = [ qtscript qtbase qtdeclarative ];
+    nativeBuildInputs = [ qmake flex bison ];
     postInstall = ''
       install -D bin-linux/QtnPEG $out/bin/QtnPEG
     '';
@@ -46,11 +38,7 @@ mkDerivation {
 
   inherit src;
 
-  buildInputs = [
-    qtbase
-    qtscript
-    qtdeclarative
-  ];
+  buildInputs = [ qtbase qtscript qtdeclarative ];
 
   nativeBuildInputs = [ qmake ];
 

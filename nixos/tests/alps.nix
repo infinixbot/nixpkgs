@@ -19,11 +19,7 @@ import ./make-test-python.nix (
         networking.extraHosts = ''
           127.0.0.1 ${domain}
         '';
-        networking.firewall.allowedTCPPorts = [
-          25
-          465
-          993
-        ];
+        networking.firewall.allowedTCPPorts = [ 25 465 993 ];
         services.postfix = {
           enable = true;
           enableSubmission = true;

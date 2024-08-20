@@ -23,14 +23,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-LFou8gTF/XDBLNQbA4uurYJHQl7yOTKe2OGklUsmPrg=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    qttools
-  ];
-  buildInputs = [
-    qtbase
-    qtsvg
-  ];
+  nativeBuildInputs = [ cmake qttools ];
+  buildInputs = [ qtbase qtsvg ];
   propagatedBuildInputs = [ kcolorpicker ];
 
   cmakeFlags = [

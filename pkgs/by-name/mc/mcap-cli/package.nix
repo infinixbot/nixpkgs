@@ -47,10 +47,7 @@ buildGoModule {
     description = "MCAP CLI tool to inspect and fix MCAP files";
     homepage = "https://github.com/foxglove/mcap";
     license = with licenses; [ mit ];
-    maintainers = with maintainers; [
-      squalus
-      therishidesai
-    ];
+    maintainers = with maintainers; [ squalus therishidesai ];
     mainProgram = "mcap";
   };
 

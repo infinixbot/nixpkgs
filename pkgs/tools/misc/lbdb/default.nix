@@ -67,10 +67,7 @@ stdenv.mkDerivation rec {
     homepage = "https://www.spinnaker.de/lbdb/";
     description = "Little Brother's Database";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      kaiha
-      bfortz
-    ];
+    maintainers = with maintainers; [ kaiha bfortz ];
     platforms = platforms.all;
   };
 }

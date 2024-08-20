@@ -20,11 +20,7 @@ let
     exec = pname;
     icon = pname;
     comment = description;
-    categories = [
-      "Game"
-      "ArcadeGame"
-      "ActionGame"
-    ];
+    categories = [ "Game" "ArcadeGame" "ActionGame" ];
     genericName = pname;
   };
 

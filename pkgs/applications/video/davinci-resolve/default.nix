@@ -63,10 +63,7 @@ let
 
             impureEnvVars = lib.fetchers.proxyImpureEnvVars;
 
-            nativeBuildInputs = [
-              curl
-              jq
-            ];
+            nativeBuildInputs = [ curl jq ];
 
             # ENV VARS
             SSL_CERT_FILE = "${cacert}/etc/ssl/certs/ca-bundle.crt";
@@ -271,11 +268,7 @@ buildFHSEnv {
     inherit davinci;
     updateScript = lib.getExe (writeShellApplication {
       name = "update-davinci-resolve";
-      runtimeInputs = [
-        curl
-        jq
-        common-updater-scripts
-      ];
+      runtimeInputs = [ curl jq common-updater-scripts ];
       text = ''
         set -o errexit
         drv=pkgs/applications/video/davinci-resolve/default.nix
@@ -298,11 +291,7 @@ buildFHSEnv {
     description = "Professional video editing, color, effects and audio post-processing";
     homepage = "https://www.blackmagicdesign.com/products/davinciresolve";
     license = licenses.unfree;
-    maintainers = with maintainers; [
-      amarshall
-      jshcmpbll
-      orivej
-    ];
+    maintainers = with maintainers; [ amarshall jshcmpbll orivej ];
     platforms = [ "x86_64-linux" ];
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     mainProgram = "davinci-resolve${lib.optionalString studioVariant "-studio"}";

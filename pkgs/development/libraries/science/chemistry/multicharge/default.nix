@@ -37,25 +37,11 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    gfortran
-    meson
-    ninja
-    pkg-config
-    python3
-  ];
+  nativeBuildInputs = [ gfortran meson ninja pkg-config python3 ];
 
-  buildInputs = [
-    blas
-    lapack
-    mctc-lib
-    mstore
-  ];
+  buildInputs = [ blas lapack mctc-lib mstore ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   doCheck = true;
 

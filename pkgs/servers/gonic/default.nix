@@ -29,10 +29,7 @@ buildGoModule rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    taglib
-    zlib
-  ];
+  buildInputs = [ taglib zlib ];
   vendorHash = "sha256-6JkaiaAgtXYAZqVSRZJFObZvhEsHsbPaO9pwmKqIhYI=";
 
   # TODO(Profpatsch): write a test for transcoding support,

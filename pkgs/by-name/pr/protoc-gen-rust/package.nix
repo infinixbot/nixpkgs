@@ -17,10 +17,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-RO3kVYkvHw8kwLaRfANtGtz88knjJ8HtmU3i0xgIDMY=";
 
-  cargoBuildFlags = [
-    "--bin"
-    pname
-  ];
+  cargoBuildFlags = [ "--bin" pname ];
 
   nativeBuildInputs = [ protobuf ];
 

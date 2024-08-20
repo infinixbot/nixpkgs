@@ -51,14 +51,7 @@ let
   pythonEnv = python.withPackages (
     ps:
     lib.optional withManual ps.sphinx
-    ++ lib.optionals pythonSupport (
-      with ps;
-      [
-        pybindgen
-        pygccxml
-        cppyy
-      ]
-    )
+    ++ lib.optionals pythonSupport (with ps; [ pybindgen pygccxml cppyy ])
   );
 in
 stdenv.mkDerivation rec {
@@ -72,32 +65,15 @@ stdenv.mkDerivation rec {
     hash = "sha256-2d8xCCfxRpcCZgt7ne17F7cUo/wIxLyvjQs3izNUnmY=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    pythonEnv
-  ];
+  nativeBuildInputs = [ cmake pkg-config pythonEnv ];
 
   outputs = [ "out" ];
 
   # ncurses is a hidden dependency of waf when checking python
   buildInputs =
-    lib.optionals pythonSupport [
-      castxml
-      ncurses
-    ]
-    ++ lib.optionals enableDoxygen [
-      doxygen
-      graphviz
-      imagemagick
-    ]
-    ++ lib.optionals withManual [
-      dia
-      tetex
-      ghostscript
-      imagemagick
-      texliveMedium
-    ]
+    lib.optionals pythonSupport [ castxml ncurses ]
+    ++ lib.optionals enableDoxygen [ doxygen graphviz imagemagick ]
+    ++ lib.optionals withManual [ dia tetex ghostscript imagemagick texliveMedium ]
     ++ [
       libxml2
       pythonEnv
@@ -154,20 +130,14 @@ stdenv.mkDerivation rec {
   ] ++ lib.optional doCheck "-DNS3_TESTS=ON";
 
   # strictoverflow prevents clang from discovering pyembed when bindings
-  hardeningDisable = [
-    "fortify"
-    "strictoverflow"
-  ];
+  hardeningDisable = [ "fortify" "strictoverflow" ];
 
   meta = with lib; {
     homepage = "http://www.nsnam.org";
     license = licenses.gpl3;
     description = "Discrete time event network simulator";
     platforms = with platforms; unix;
-    maintainers = with maintainers; [
-      teto
-      rgrunbla
-    ];
+    maintainers = with maintainers; [ teto rgrunbla ];
     # never built on aarch64-darwin since first introduction in nixpkgs
     broken = (stdenv.isDarwin && stdenv.isAarch64) || (stdenv.isLinux && stdenv.isAarch64);
   };

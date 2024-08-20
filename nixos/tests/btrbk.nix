@@ -66,12 +66,7 @@ import ./make-test-python.nix (
             sshAccess = [
               {
                 key = publicKey;
-                roles = [
-                  "source"
-                  "send"
-                  "info"
-                  "delete"
-                ];
+                roles = [ "source" "send" "info" "delete" ];
               }
             ];
             instances = {

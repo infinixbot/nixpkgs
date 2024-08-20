@@ -7,10 +7,7 @@ import ./make-test-python.nix (
     nodes.machine =
       { ... }:
       {
-        environment.systemPackages = with pkgs; [
-          curl
-          jq
-        ];
+        environment.systemPackages = with pkgs; [ curl jq ];
         services.pict-rs.enable = true;
       };
 

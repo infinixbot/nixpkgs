@@ -22,13 +22,7 @@ mkDerivation rec {
 
   nativeBuildInputs = [ extra-cmake-modules ];
 
-  buildInputs = [
-    kconfig
-    kcoreaddons
-    kwidgetsaddons
-    kguiaddons
-    qttools
-  ];
+  buildInputs = [ kconfig kcoreaddons kwidgetsaddons kguiaddons qttools ];
 
   propagatedBuildInputs = [ qtbase ];
 

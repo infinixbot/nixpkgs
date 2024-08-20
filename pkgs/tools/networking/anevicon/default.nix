@@ -21,10 +21,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-Id/vjne73w+bDVA8wT7fV1DMXeGtYbSAdwl07UfYJbw=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [
-    libiconv
-    Security
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ libiconv Security ];
 
   cargoPatches = [
     # Add Cargo.lock file, https://github.com/rozgo/anevicon/pull/1

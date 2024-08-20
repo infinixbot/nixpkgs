@@ -36,21 +36,13 @@ stdenv.mkDerivation rec {
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
 
-  nativeBuildInputs =
-    [
-      perl
-      ninja
-      (buildPackages.python3.withPackages (ps: with ps; [ gyp ]))
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      cctools
-      fixDarwinDylibNames
-    ];
+  nativeBuildInputs = [
+    perl
+    ninja
+    (buildPackages.python3.withPackages (ps: with ps; [ gyp ]))
+  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ cctools fixDarwinDylibNames ];
 
-  buildInputs = [
-    zlib
-    sqlite
-  ];
+  buildInputs = [ zlib sqlite ];
 
   propagatedBuildInputs = [ nspr ];
 
@@ -75,11 +67,7 @@ stdenv.mkDerivation rec {
       substituteInPlace coreconf/config.gypi --replace "'DYLIB_INSTALL_NAME_BASE': '@executable_path'" "'DYLIB_INSTALL_NAME_BASE': '$out/lib'"
     '';
 
-  outputs = [
-    "out"
-    "dev"
-    "tools"
-  ];
+  outputs = [ "out" "dev" "tools" ];
 
   buildPhase =
     let
@@ -220,10 +208,7 @@ stdenv.mkDerivation rec {
     homepage = "https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS";
     description = "Set of libraries for development of security-enabled client and server applications";
     changelog = "https://github.com/nss-dev/nss/blob/master/doc/rst/releases/nss_${underscoreVersion}.rst";
-    maintainers = with maintainers; [
-      hexa
-      ajs124
-    ];
+    maintainers = with maintainers; [ hexa ajs124 ];
     license = licenses.mpl20;
     platforms = platforms.all;
   };

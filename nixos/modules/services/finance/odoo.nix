@@ -120,10 +120,7 @@ in
 
       systemd.services.odoo = {
         wantedBy = [ "multi-user.target" ];
-        after = [
-          "network.target"
-          "postgresql.service"
-        ];
+        after = [ "network.target" "postgresql.service" ];
 
         # pg_dump
         path = [ config.services.postgresql.package ];

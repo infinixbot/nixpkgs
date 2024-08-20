@@ -30,14 +30,7 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     wrapProgram $out/bin/fig2ps2tex \
-        --set PATH ${
-          lib.makeBinPath [
-            coreutils
-            bc
-            gnugrep
-            gawk
-          ]
-        }
+        --set PATH ${lib.makeBinPath [ coreutils bc gnugrep gawk ]}
     wrapProgram $out/bin/pic2tpic \
         --set PATH ${lib.makeBinPath [ gnused ]}
   '';

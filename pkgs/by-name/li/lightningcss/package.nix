@@ -46,10 +46,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://lightningcss.dev/";
     changelog = "https://github.com/parcel-bundler/lightningcss/releases/tag/v${version}";
     license = lib.licenses.mpl20;
-    maintainers = with lib.maintainers; [
-      johnrtitor
-      toastal
-    ];
+    maintainers = with lib.maintainers; [ johnrtitor toastal ];
     mainProgram = "lightningcss";
     # never built on aarch64-linux since first introduction in nixpkgs
     broken = stdenv.isLinux && stdenv.isAarch64;

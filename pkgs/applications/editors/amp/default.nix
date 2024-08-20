@@ -26,25 +26,12 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-4c72l3R9OyxvslKC4RrIu/Ka3grGxIUCY6iF/NHS5X8=";
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    python3
-  ];
-  buildInputs =
-    [
-      openssl
-      xorg.libxcb
-      libgit2
-    ]
-    ++ lib.optionals stdenv.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        curl
-        Security
-        AppKit
-      ]
-    );
+  nativeBuildInputs = [ cmake pkg-config python3 ];
+  buildInputs = [
+    openssl
+    xorg.libxcb
+    libgit2
+  ] ++ lib.optionals stdenv.isDarwin (with darwin.apple_sdk.frameworks; [ curl Security AppKit ]);
 
   # Tests need to write to the theme directory in HOME.
   preCheck = "export HOME=`mktemp -d`";

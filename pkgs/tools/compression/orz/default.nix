@@ -18,11 +18,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-aUsRbIajBP6esjW7Wj7mqIkbYUCbZ2GgxjRXMPTnHYg=";
 
-  outputs = [
-    "out"
-    "dev"
-    "lib"
-  ];
+  outputs = [ "out" "dev" "lib" ];
 
   nativeBuildInputs = [
     rust-cbindgen

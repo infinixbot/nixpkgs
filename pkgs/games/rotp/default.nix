@@ -18,10 +18,7 @@ stdenv.mkDerivation {
     sha256 = "sha256-oMA8LRpBoBX7t4G+HuRz0a8g+UEwYO7Ya0Qq4j8AWec=";
   };
 
-  nativeBuildInputs = [
-    jdk
-    makeWrapper
-  ];
+  nativeBuildInputs = [ jdk makeWrapper ];
 
   # By default, the game tries to write to the java class path. If that fails
   # (and it always does, since they are in the read-only nix store), it won't

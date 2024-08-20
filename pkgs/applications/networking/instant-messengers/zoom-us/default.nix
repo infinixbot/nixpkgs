@@ -188,15 +188,7 @@ stdenv.mkDerivation rec {
         --unset QML2_IMPORT_PATH \
         --unset QT_PLUGIN_PATH \
         --unset QT_SCREEN_SCALE_FACTORS \
-        --prefix PATH : ${
-          lib.makeBinPath [
-            coreutils
-            glib.dev
-            pciutils
-            procps
-            util-linux
-          ]
-        } \
+        --prefix PATH : ${lib.makeBinPath [ coreutils glib.dev pciutils procps util-linux ]} \
         --prefix LD_LIBRARY_PATH ":" ${libs}
 
       # Backwards compatibility: we used to call it zoom-us
@@ -214,10 +206,7 @@ stdenv.mkDerivation rec {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
     platforms = builtins.attrNames srcs;
-    maintainers = with maintainers; [
-      danbst
-      tadfisher
-    ];
+    maintainers = with maintainers; [ danbst tadfisher ];
     mainProgram = "zoom";
   };
 }

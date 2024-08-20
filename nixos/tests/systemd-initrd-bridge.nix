@@ -27,14 +27,8 @@ import ./make-test-python.nix (
 
           networking.primaryIPAddress = "192.168.1.${toString config.virtualisation.test.nodeNumber}";
 
-          virtualisation.vlans = [
-            1
-            2
-          ];
-          networking.bridges.br0.interfaces = [
-            "eth1"
-            "eth2"
-          ];
+          virtualisation.vlans = [ 1 2 ];
+          networking.bridges.br0.interfaces = [ "eth1" "eth2" ];
 
           networking.interfaces = {
             eth1.ipv4.addresses = lib.mkForce [ ];

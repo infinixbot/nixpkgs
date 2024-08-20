@@ -12,10 +12,7 @@ import ./make-test-python.nix (
   {
     name = "systemd-networkd-ipv6-prefix-delegation";
     meta = with lib.maintainers; {
-      maintainers = [
-        andir
-        hexa
-      ];
+      maintainers = [ andir hexa ];
     };
     nodes = {
 
@@ -109,15 +106,7 @@ import ./make-test-python.nix (
                     library = "${pkgs.kea}/lib/kea/hooks/libdhcp_run_script.so";
                     parameters = {
                       name = pkgs.writeShellScript "kea-run-hooks" ''
-                        export PATH="${
-                          lib.makeBinPath (
-                            with pkgs;
-                            [
-                              coreutils
-                              iproute2
-                            ]
-                          )
-                        }"
+                        export PATH="${lib.makeBinPath (with pkgs; [ coreutils iproute2 ])}"
 
                         set -euxo pipefail
 
@@ -183,10 +172,7 @@ import ./make-test-python.nix (
       #
       # Here we will actually start using networkd.
       router = {
-        virtualisation.vlans = [
-          1
-          2
-        ];
+        virtualisation.vlans = [ 1 2 ];
         systemd.services.systemd-networkd.environment.SYSTEMD_LOG_LEVEL = "debug";
 
         boot.kernel.sysctl = {

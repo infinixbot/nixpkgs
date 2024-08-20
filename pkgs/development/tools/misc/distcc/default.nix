@@ -38,13 +38,7 @@ let
       which
       (python3.withPackages (p: [ p.setuptools ]))
     ];
-    buildInputs = [
-      popt
-      avahi
-      gtk3
-      procps
-      libiberty_static
-    ];
+    buildInputs = [ popt avahi gtk3 procps libiberty_static ];
     preConfigure = ''
       export CPATH=$(ls -d ${gcc.cc}/lib/gcc/*/${gcc.cc.version}/plugin/include)
 

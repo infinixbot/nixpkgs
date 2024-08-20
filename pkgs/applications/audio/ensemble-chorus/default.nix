@@ -31,10 +31,7 @@ stdenv.mkDerivation rec {
     ./juice-cxx-packing-fix.diff
   ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   buildInputs = [
     fltk

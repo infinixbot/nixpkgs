@@ -60,12 +60,7 @@
 }:
 let
   BUILD_TYPE =
-    assert
-      (lib.count lib.id [
-        with_openblas
-        with_cublas
-        with_clblas
-      ]) <= 1;
+    assert (lib.count lib.id [ with_openblas with_cublas with_clblas ]) <= 1;
     if with_openblas then
       "openblas"
     else if with_cublas then
@@ -99,16 +94,8 @@ let
 
     buildInputs =
       [ ]
-      ++ lib.optionals with_cublas [
-        cuda_cccl
-        cuda_cudart
-        libcublas
-      ]
-      ++ lib.optionals with_clblas [
-        clblast
-        ocl-icd
-        opencl-headers
-      ]
+      ++ lib.optionals with_cublas [ cuda_cccl cuda_cudart libcublas ]
+      ++ lib.optionals with_clblas [ clblast ocl-icd opencl-headers ]
       ++ lib.optionals with_openblas [ openblas.dev ];
 
     nativeBuildInputs = [ cmake ] ++ lib.optionals with_cublas [ cuda_nvcc ];
@@ -231,14 +218,8 @@ let
     name = "piper-phonemize";
     inherit (go-piper) src;
     sourceRoot = "${go-piper.src.name}/piper-phonemize";
-    buildInputs = [
-      espeak-ng'
-      onnxruntime
-    ];
-    nativeBuildInputs = [
-      cmake
-      pkg-config
-    ];
+    buildInputs = [ espeak-ng' onnxruntime ];
+    nativeBuildInputs = [ cmake pkg-config ];
     cmakeFlags = [
       (lib.cmakeFeature "ONNXRUNTIME_DIR" "${onnxruntime.dev}")
       (lib.cmakeFeature "ESPEAK_NG_DIR" "${espeak-ng'}")
@@ -278,15 +259,7 @@ let
         -e '/CXXFLAGS *= / s;$; -DSPDLOG_FMT_EXTERNAL=1;'
     '';
     buildFlags = [ "libpiper_binding.a" ];
-    buildInputs = [
-      piper-tts'
-      espeak-ng'
-      piper-phonemize
-      sonic
-      fmt
-      spdlog
-      onnxruntime
-    ];
+    buildInputs = [ piper-tts' espeak-ng' piper-phonemize sonic fmt spdlog onnxruntime ];
     installPhase = ''
       cp -r --no-preserve=mode $src $out
       mkdir -p $out/piper-phonemize/pi
@@ -323,24 +296,12 @@ let
       hash = "sha256-1yDdJVjIwYDJKn93zn4xOJXMoDTqaG2TvakjdHIMCxk=";
     };
 
-    nativeBuildInputs = [
-      cmake
-      pkg-config
-    ] ++ lib.optionals with_cublas [ cuda_nvcc ];
+    nativeBuildInputs = [ cmake pkg-config ] ++ lib.optionals with_cublas [ cuda_nvcc ];
 
     buildInputs =
       [ ]
-      ++ lib.optionals with_cublas [
-        cuda_cccl
-        cuda_cudart
-        libcublas
-        libcufft
-      ]
-      ++ lib.optionals with_clblas [
-        clblast
-        ocl-icd
-        opencl-headers
-      ]
+      ++ lib.optionals with_cublas [ cuda_cccl cuda_cudart libcublas libcufft ]
+      ++ lib.optionals with_clblas [ clblast ocl-icd opencl-headers ]
       ++ lib.optionals with_openblas [ openblas.dev ];
 
     cmakeFlags = [
@@ -518,16 +479,8 @@ let
 
     buildInputs =
       [ ]
-      ++ lib.optionals with_cublas [
-        cuda_cudart
-        libcublas
-        libcufft
-      ]
-      ++ lib.optionals with_clblas [
-        clblast
-        ocl-icd
-        opencl-headers
-      ]
+      ++ lib.optionals with_cublas [ cuda_cudart libcublas libcufft ]
+      ++ lib.optionals with_clblas [ clblast ocl-icd opencl-headers ]
       ++ lib.optionals with_openblas [ openblas.dev ]
       ++ lib.optionals with_stablediffusion go-stable-diffusion.buildInputs
       ++ lib.optionals with_tts go-piper.buildInputs;
@@ -600,16 +553,10 @@ let
             (lib.getLib libcublas)
             cuda_cudart
           ]
-          ++ lib.optionals with_clblas [
-            clblast
-            ocl-icd
-          ]
+          ++ lib.optionals with_clblas [ clblast ocl-icd ]
           ++ lib.optionals with_openblas [ openblas ]
           ++ lib.optionals with_tts [ piper-phonemize ]
-          ++ lib.optionals (with_tts && enable_upx) [
-            fmt
-            spdlog
-          ];
+          ++ lib.optionals (with_tts && enable_upx) [ fmt spdlog ];
       in
       ''
         wrapProgram $out/bin/${pname} \
@@ -653,10 +600,7 @@ let
       description = "OpenAI alternative to run local LLMs, image and audio generation";
       homepage = "https://localai.io";
       license = licenses.mit;
-      maintainers = with maintainers; [
-        onny
-        ck3d
-      ];
+      maintainers = with maintainers; [ onny ck3d ];
       platforms = platforms.linux;
     };
   };

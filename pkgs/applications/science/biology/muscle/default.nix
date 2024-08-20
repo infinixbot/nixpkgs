@@ -26,9 +26,6 @@ stdenv.mkDerivation rec {
     mainProgram = "muscle";
     license = licenses.gpl3Plus;
     homepage = "https://www.drive5.com/muscle/";
-    maintainers = with maintainers; [
-      unode
-      thyol
-    ];
+    maintainers = with maintainers; [ unode thyol ];
   };
 }

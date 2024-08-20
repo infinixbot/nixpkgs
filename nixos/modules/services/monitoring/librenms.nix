@@ -186,13 +186,7 @@ in
     };
 
     poolConfig = mkOption {
-      type =
-        with types;
-        attrsOf (oneOf [
-          str
-          int
-          bool
-        ]);
+      type = with types; attrsOf (oneOf [ str int bool ]);
       default = {
         "pm" = "dynamic";
         "pm.max_children" = 32;
@@ -518,15 +512,8 @@ in
         "systemd-tmpfiles-setup.service"
       ] ++ (lib.optional (cfg.database.host == "localhost") "mysql.service");
       wantedBy = [ "multi-user.target" ];
-      restartTriggers = [
-        package
-        configFile
-      ];
-      path = [
-        pkgs.mariadb
-        pkgs.unixtools.whereis
-        pkgs.gnused
-      ];
+      restartTriggers = [ package configFile ];
+      path = [ pkgs.mariadb pkgs.unixtools.whereis pkgs.gnused ];
       serviceConfig = {
         Type = "oneshot";
         RemainAfterExit = true;
@@ -663,10 +650,7 @@ in
       };
     };
 
-    environment.systemPackages = [
-      artisanWrapper
-      lnmsWrapper
-    ];
+    environment.systemPackages = [ artisanWrapper lnmsWrapper ];
 
     systemd.tmpfiles.rules =
       [

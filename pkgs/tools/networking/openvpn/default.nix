@@ -32,16 +32,8 @@ stdenv.mkDerivation (finalAttrs: {
   nativeBuildInputs = [ pkg-config ];
 
   buildInputs =
-    [
-      lz4
-      lzo
-      openssl
-    ]
-    ++ optionals stdenv.isLinux [
-      libcap_ng
-      libnl
-      pam
-    ]
+    [ lz4 lzo openssl ]
+    ++ optionals stdenv.isLinux [ libcap_ng libnl pam ]
     ++ optional useSystemd systemd
     ++ optional pkcs11Support pkcs11helper;
 

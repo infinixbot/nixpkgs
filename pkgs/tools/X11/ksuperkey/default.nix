@@ -23,12 +23,7 @@ stdenv.mkDerivation rec {
   makeFlags = [ "PREFIX=${placeholder "out"}" ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libX11
-    libXtst
-    xorgproto
-    libXi
-  ];
+  buildInputs = [ libX11 libXtst xorgproto libXi ];
 
   meta = with lib; {
     description = "Tool to be able to bind the super key as a key rather than a modifier";

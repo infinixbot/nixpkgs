@@ -53,10 +53,7 @@ import ./make-test-python.nix (
   {
     name = "switch-test";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        gleber
-        das_j
-      ];
+      maintainers = [ gleber das_j ];
     };
 
     nodes = {

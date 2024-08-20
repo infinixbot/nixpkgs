@@ -41,10 +41,7 @@ stdenv.mkDerivation rec {
         SystemConfiguration
       ]
     );
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
   configureFlags = [ "--with-xmltooling=${xml-tooling-c}" ];
 

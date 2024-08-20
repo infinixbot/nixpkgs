@@ -37,10 +37,7 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.cmakeBool "SDL_gpu_BUILD_TESTS" false)
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   strictDeps = true;
 

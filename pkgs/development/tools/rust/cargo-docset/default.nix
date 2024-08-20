@@ -31,9 +31,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/Robzz/cargo-docset";
     changelog = "https://github.com/Robzz/cargo-docset/blob/${version}/CHANGELOG.md";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      colinsane
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ colinsane matthiasbeyer ];
   };
 }

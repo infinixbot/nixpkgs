@@ -31,12 +31,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-IYiYC9oAw35YjpptUEnhuZQqoDevku25r7qi6SG8xtk=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    gperf
-    pkg-config
-    ronn
-  ];
+  nativeBuildInputs = [ autoreconfHook gperf pkg-config ronn ];
   buildInputs = [
     nettle
     gnutls

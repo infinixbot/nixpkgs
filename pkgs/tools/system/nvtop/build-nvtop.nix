@@ -24,13 +24,7 @@ let
   drm-postFixup = ''
     patchelf \
       --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-      --set-rpath "${
-        lib.makeLibraryPath [
-          libdrm
-          ncurses
-          udev
-        ]
-      }" \
+      --set-rpath "${lib.makeLibraryPath [ libdrm ncurses udev ]}" \
       $out/bin/nvtop
   '';
   needDrm = (amd || msm || panfrost || panthor);
@@ -58,15 +52,9 @@ stdenv.mkDerivation (finalAttrs: {
     (cmakeBool "PANTHOR_SUPPORT" panthor)
     (cmakeBool "ASCEND_SUPPORT" ascend)
   ];
-  nativeBuildInputs = [
-    cmake
-    gtest
-  ] ++ lib.optional nvidia addDriverRunpath;
+  nativeBuildInputs = [ cmake gtest ] ++ lib.optional nvidia addDriverRunpath;
 
-  buildInputs = [
-    ncurses
-    udev
-  ] ++ lib.optional nvidia cudatoolkit ++ lib.optional needDrm libdrm;
+  buildInputs = [ ncurses udev ] ++ lib.optional nvidia cudatoolkit ++ lib.optional needDrm libdrm;
 
   # this helps cmake to find <drm.h>
   env.NIX_CFLAGS_COMPILE = lib.optionalString needDrm "-isystem ${lib.getDev libdrm}/include/libdrm";
@@ -96,11 +84,7 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://github.com/Syllo/nvtop/releases/tag/${finalAttrs.version}";
     license = licenses.gpl3Only;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      willibutz
-      gbtb
-      anthonyroussel
-    ];
+    maintainers = with maintainers; [ willibutz gbtb anthonyroussel ];
     mainProgram = "nvtop";
   };
 })

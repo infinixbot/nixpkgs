@@ -16,11 +16,7 @@ stdenv.mkDerivation rec {
   pname = "telepathy-mission-control";
   version = "5.16.6";
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-  ];
+  outputs = [ "out" "lib" "dev" ];
 
   src = fetchurl {
     url = "https://telepathy.freedesktop.org/releases/${pname}/${pname}-${version}.tar.gz";

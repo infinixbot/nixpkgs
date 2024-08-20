@@ -30,20 +30,11 @@ stdenv.mkDerivation rec {
     '';
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    python3
-  ];
+  nativeBuildInputs = [ pkg-config python3 ];
 
-  buildInputs = [
-    libffi
-    readline
-  ];
+  buildInputs = [ libffi readline ];
 
-  makeFlags = [
-    "-C"
-    "ports/unix"
-  ]; # also builds mpy-cross
+  makeFlags = [ "-C" "ports/unix" ]; # also builds mpy-cross
 
   enableParallelBuilding = true;
 
@@ -79,9 +70,6 @@ stdenv.mkDerivation rec {
     homepage = "https://micropython.org";
     platforms = platforms.unix;
     license = licenses.mit;
-    maintainers = with maintainers; [
-      prusnak
-      sgo
-    ];
+    maintainers = with maintainers; [ prusnak sgo ];
   };
 }

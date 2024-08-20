@@ -18,14 +18,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-SOhcYi3hZHVsEy6netGoqVzJ/QE3/9DYgnRlic51x10=";
   };
 
-  nativeBuildInputs = [
-    flex
-    bison
-  ];
-  buildInputs = [
-    readline
-    libssh
-  ];
+  nativeBuildInputs = [ flex bison ];
+  buildInputs = [ readline libssh ];
 
   patches = [
     ./dont-create-sysconfdir-2.patch

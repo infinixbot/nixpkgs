@@ -84,16 +84,9 @@ let
           # upstream for reference.  Last updated for 3.3.
           # When changing the set of sections, also update secAllow above.
           [ (sec_list_fa "id" nix_def "module") ]
-          ++ map (sec_plain nix_def) [
-            "server"
-            "xdp"
-            "control"
-          ]
+          ++ map (sec_plain nix_def) [ "server" "xdp" "control" ]
           ++ [ (sec_list_fa "target" nix_def "log") ]
-          ++ map (sec_plain nix_def) [
-            "statistics"
-            "database"
-          ]
+          ++ map (sec_plain nix_def) [ "statistics" "database" ]
           ++ map (sec_list_fa "id" nix_def) [
             "keystore"
             "key"
@@ -230,10 +223,7 @@ in
 
       enableXDP = mkOption {
         type = types.bool;
-        default = lib.hasAttrByPath [
-          "xdp"
-          "listen"
-        ] cfg.settings;
+        default = lib.hasAttrByPath [ "xdp" "listen" ] cfg.settings;
         defaultText = ''
           Enabled when the `xdp.listen` setting is configured through `settings`.
         '';
@@ -308,19 +298,9 @@ in
   };
   imports = [
     # Compatibility with NixOS 23.05.
-    (mkChangedOptionModule
-      [
-        "services"
-        "knot"
-        "extraConfig"
-      ]
-      [
-        "services"
-        "knot"
-        "settingsFile"
-      ]
-      (config: mkConfigFile config.services.knot.extraConfig)
-    )
+    (mkChangedOptionModule [ "services" "knot" "extraConfig" ] [ "services" "knot" "settingsFile" ] (
+      config: mkConfigFile config.services.knot.extraConfig
+    ))
   ];
 
   config = mkIf config.services.knot.enable {

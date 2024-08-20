@@ -94,19 +94,10 @@ stdenv.mkDerivation rec {
     substituteInPlace core/src/version.h --replace "1.1.0" "$version"
   '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   buildInputs =
-    [
-      glfw
-      glew
-      fftwFloat
-      volk
-      zstd
-    ]
+    [ glfw glew fftwFloat volk zstd ]
     ++ lib.optional stdenv.isDarwin AppKit
     ++ lib.optional stdenv.isLinux libX11
     ++ lib.optional airspy_source airspy
@@ -114,20 +105,11 @@ stdenv.mkDerivation rec {
     ++ lib.optional bladerf_source libbladeRF
     ++ lib.optional hackrf_source hackrf
     ++ lib.optional limesdr_source limesuite
-    ++ lib.optionals rtl_sdr_source [
-      rtl-sdr-osmocom
-      libusb1
-    ]
+    ++ lib.optionals rtl_sdr_source [ rtl-sdr-osmocom libusb1 ]
     ++ lib.optional sdrplay_source sdrplay
     ++ lib.optional soapy_source soapysdr
-    ++ lib.optionals plutosdr_source [
-      libiio
-      libad9361
-    ]
-    ++ lib.optionals usrp_source [
-      uhd
-      boost
-    ]
+    ++ lib.optionals plutosdr_source [ libiio libad9361 ]
+    ++ lib.optionals usrp_source [ uhd boost ]
     ++ lib.optional audio_sink rtaudio
     ++ lib.optional portaudio_sink portaudio
     ++ lib.optional m17_decoder codec2;

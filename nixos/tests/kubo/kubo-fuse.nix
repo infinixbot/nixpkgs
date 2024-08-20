@@ -2,10 +2,7 @@
 {
   name = "kubo-fuse";
   meta = with lib.maintainers; {
-    maintainers = [
-      mguentner
-      Luflosi
-    ];
+    maintainers = [ mguentner Luflosi ];
   };
 
   nodes.machine =

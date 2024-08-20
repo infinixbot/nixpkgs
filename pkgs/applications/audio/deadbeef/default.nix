@@ -189,10 +189,7 @@ clangStdenv.mkDerivation {
     homepage = "http://deadbeef.sourceforge.net/";
     downloadPage = "https://github.com/DeaDBeeF-Player/deadbeef";
     license = licenses.gpl2;
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
     maintainers = [ maintainers.abbradar ];
   };
 }

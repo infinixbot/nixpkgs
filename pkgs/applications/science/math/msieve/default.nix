@@ -17,19 +17,12 @@ stdenv.mkDerivation rec {
     hash = "sha256-6ErVn4pYPMG5VFjOQURLsHNpN0pGdp55+rjY8988onU=";
   };
 
-  buildInputs = [
-    zlib
-    gmp
-    ecm
-  ];
+  buildInputs = [ zlib gmp ecm ];
 
   ECM = if ecm == null then "0" else "1";
 
   # Doesn't hurt Linux but lets clang-based platforms like Darwin work fine too
-  makeFlags = [
-    "CC=${stdenv.cc.targetPrefix}cc"
-    "all"
-  ];
+  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" "all" ];
 
   installPhase = ''
     mkdir -p $out/bin/

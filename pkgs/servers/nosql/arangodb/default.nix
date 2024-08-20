@@ -36,20 +36,9 @@ gcc10Stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    cmake
-    git
-    perl
-    python3
-    which
-  ];
+  nativeBuildInputs = [ cmake git perl python3 which ];
 
-  buildInputs = [
-    openssl
-    zlib
-    snappy
-    lzo
-  ];
+  buildInputs = [ openssl zlib snappy lzo ];
 
   # prevent failing with "cmake-3.13.4/nix-support/setup-hook: line 10: ./3rdParty/rocksdb/RocksDBConfig.cmake.in: No such file or directory"
   dontFixCmake = true;
@@ -87,9 +76,6 @@ gcc10Stdenv.mkDerivation rec {
     description = "Native multi-model database with flexible data models for documents, graphs, and key-values";
     license = licenses.asl20;
     platforms = [ "x86_64-linux" ];
-    maintainers = with maintainers; [
-      flosse
-      jsoo1
-    ];
+    maintainers = with maintainers; [ flosse jsoo1 ];
   };
 }

@@ -158,10 +158,7 @@ in
       environment = {
         GRAYLOG_CONF = "${confFile}";
       };
-      path = [
-        pkgs.which
-        pkgs.procps
-      ];
+      path = [ pkgs.which pkgs.procps ];
       preStart = ''
         rm -rf /var/lib/graylog/plugins || true
         mkdir -p /var/lib/graylog/plugins -m 755

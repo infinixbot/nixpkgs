@@ -52,30 +52,12 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "avahi"
-        "interfaces"
-      ]
-      [
-        "services"
-        "avahi"
-        "allowInterfaces"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "avahi"
-        "nssmdns"
-      ]
-      [
-        "services"
-        "avahi"
-        "nssmdns4"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "avahi" "interfaces" ] [
+      "services"
+      "avahi"
+      "allowInterfaces"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "avahi" "nssmdns" ] [ "services" "avahi" "nssmdns4" ])
   ];
 
   options.services.avahi = {
@@ -113,10 +95,7 @@ in
     browseDomains = mkOption {
       type = types.listOf types.str;
       default = [ ];
-      example = [
-        "0pointer.de"
-        "zeroconf.org"
-      ];
+      example = [ "0pointer.de" "zeroconf.org" ];
       description = ''
         List of non-local DNS domains to be browsed.
       '';
@@ -353,10 +332,7 @@ in
       # return a sensible value.
       environment.LD_LIBRARY_PATH = config.system.nssModules.path;
 
-      path = [
-        pkgs.coreutils
-        cfg.package
-      ];
+      path = [ pkgs.coreutils cfg.package ];
 
       serviceConfig = {
         NotifyAccess = "main";

@@ -27,10 +27,7 @@ buildGoModule rec {
 
   subPackages = [ "." ];
 
-  nativeBuildInputs = [
-    installShellFiles
-    makeWrapper
-  ];
+  nativeBuildInputs = [ installShellFiles makeWrapper ];
 
   tags = [ "vault" ];
 
@@ -49,12 +46,7 @@ buildGoModule rec {
     ''
     + lib.optionalString stdenv.isLinux ''
       wrapProgram $out/bin/vault \
-        --prefix PATH ${
-          lib.makeBinPath [
-            gawk
-            glibc
-          ]
-        }
+        --prefix PATH ${lib.makeBinPath [ gawk glibc ]}
     '';
 
   passthru.tests = {
@@ -72,13 +64,6 @@ buildGoModule rec {
     changelog = "https://github.com/hashicorp/vault/blob/v${version}/CHANGELOG.md";
     license = licenses.bsl11;
     mainProgram = "vault";
-    maintainers = with maintainers; [
-      rushmorem
-      lnl7
-      offline
-      pradeepchhetri
-      Chili-Man
-      techknowlogick
-    ];
+    maintainers = with maintainers; [ rushmorem lnl7 offline pradeepchhetri Chili-Man techknowlogick ];
   };
 }

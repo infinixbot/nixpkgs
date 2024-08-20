@@ -25,20 +25,14 @@ in
 }@attrs:
 
 let
-  data' =
-    builtins.removeAttrs
-      (
-        if builtins.isPath data then
-          lib.importJSON data
-        else if builtins.isString data then
-          lib.importJSON "${dirOf pkg.meta.position}/${data}"
-        else
-          data
-      )
-      [
-        "!comment"
-        "!version"
-      ];
+  data' = builtins.removeAttrs (
+    if builtins.isPath data then
+      lib.importJSON data
+    else if builtins.isString data then
+      lib.importJSON "${dirOf pkg.meta.position}/${data}"
+    else
+      data
+  ) [ "!comment" "!version" ];
 
   parseArtifactUrl =
     url:

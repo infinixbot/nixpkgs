@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
     substituteInPlace makefile --replace gcc ${stdenv.cc.targetPrefix}cc
   '';
 
-  nativeBuildInputs = [
-    makeWrapper
-    unixtools.xxd
-  ];
+  nativeBuildInputs = [ makeWrapper unixtools.xxd ];
 
   makeFlags = [ "PREFIX=${placeholder "out"}" ];
 

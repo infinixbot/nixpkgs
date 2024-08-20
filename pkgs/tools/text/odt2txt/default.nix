@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
 
   configurePhase = "export makeFlags=\"DESTDIR=$out\"";
 
-  buildInputs = [
-    zlib
-    libiconv
-  ];
+  buildInputs = [ zlib libiconv ];
 
   meta = {
     description = "Simple .odt to .txt converter";

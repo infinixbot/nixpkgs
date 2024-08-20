@@ -17,12 +17,7 @@ buildDunePackage rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    topkg
-    findlib
-    ocamlbuild
-    ocaml
-  ];
+  nativeBuildInputs = [ topkg findlib ocamlbuild ocaml ];
   buildInputs = [ topkg ];
 
   inherit (topkg) buildPhase installPhase;

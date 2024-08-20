@@ -34,11 +34,7 @@ stdenv.mkDerivation rec {
     pkg-config
   ] ++ lib.optionals doCheck nativeCheckInputs;
 
-  buildInputs = [
-    givaro
-    blas
-    lapack
-  ];
+  buildInputs = [ givaro blas lapack ];
 
   configureFlags =
     [

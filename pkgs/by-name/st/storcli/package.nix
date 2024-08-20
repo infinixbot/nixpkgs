@@ -59,9 +59,6 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     license = licenses.unfree;
     maintainers = with maintainers; [ panicgh ];
     mainProgram = "storcli";
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
   };
 })

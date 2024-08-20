@@ -19,11 +19,7 @@ buildDubPackage rec {
 
   dubLock = ./dub-lock.json;
 
-  nativeBuildInputs = [
-    ldc
-    which
-    clang
-  ];
+  nativeBuildInputs = [ ldc which clang ];
 
   preConfigure = ''
     ./configure --llvm-path ${lib.getLib clang.cc}

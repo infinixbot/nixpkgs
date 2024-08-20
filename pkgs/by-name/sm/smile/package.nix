@@ -65,9 +65,6 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "https://mijorus.it/projects/smile/";
     license = lib.licenses.gpl3Plus;
     mainProgram = "smile";
-    maintainers = with lib.maintainers; [
-      koppor
-      aleksana
-    ];
+    maintainers = with lib.maintainers; [ koppor aleksana ];
   };
 }

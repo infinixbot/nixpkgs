@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-jjpbr+ZqG4U8/z0PurnXR+IUKQkG3QB8YqhDkH8uu2Y=";
   };
 
-  nativeBuildInputs = [
-    perl
-    installShellFiles
-  ];
+  nativeBuildInputs = [ perl installShellFiles ];
   buildInputs = [ python ];
 
   installPhase = ''

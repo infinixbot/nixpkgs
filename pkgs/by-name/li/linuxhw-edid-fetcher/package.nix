@@ -32,13 +32,7 @@ stdenv.mkDerivation rec {
 
   fetch = lib.getExe (writeShellApplication {
     name = "linuxhw-edid-fetch";
-    runtimeInputs = [
-      gawk
-      coreutils
-      unixtools.xxd
-      curl
-      gnutar
-    ];
+    runtimeInputs = [ gawk coreutils unixtools.xxd curl gnutar ];
     text = ''
       repo="''${repo:-"${src}"}"
       ${builtins.readFile ./linuxhw-edid-fetch.sh}

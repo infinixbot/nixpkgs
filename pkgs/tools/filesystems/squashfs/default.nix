@@ -34,13 +34,7 @@ stdenv.mkDerivation rec {
     [ which ]
     # when cross-compiling help2man cannot run the cross-compiled binary
     ++ lib.optionals (stdenv.hostPlatform == stdenv.buildPlatform) [ help2man ];
-  buildInputs = [
-    zlib
-    xz
-    zstd
-    lz4
-    lzo
-  ];
+  buildInputs = [ zlib xz zstd lz4 lzo ];
 
   preBuild = ''
     cd squashfs-tools

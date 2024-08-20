@@ -24,12 +24,7 @@ let
 
   rightsFile = format.generate "radicale.rights" cfg.rights;
 
-  bindLocalhost =
-    cfg.settings != { }
-    && !hasAttrByPath [
-      "server"
-      "hosts"
-    ] cfg.settings;
+  bindLocalhost = cfg.settings != { } && !hasAttrByPath [ "server" "hosts" ] cfg.settings;
 
 in
 {
@@ -179,10 +174,7 @@ in
         StateDirectoryMode = "0750";
         # Hardening
         CapabilityBoundingSet = [ "" ];
-        DeviceAllow = [
-          "/dev/stdin"
-          "/dev/urandom"
-        ];
+        DeviceAllow = [ "/dev/stdin" "/dev/urandom" ];
         DevicePolicy = "strict";
         IPAddressAllow = mkIf bindLocalhost "localhost";
         IPAddressDeny = mkIf bindLocalhost "any";
@@ -207,19 +199,12 @@ in
           "filesystem_folder"
         ] cfg.settings) cfg.settings.storage.filesystem_folder;
         RemoveIPC = true;
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
         SystemCallArchitectures = "native";
-        SystemCallFilter = [
-          "@system-service"
-          "~@privileged"
-          "~@resources"
-        ];
+        SystemCallFilter = [ "@system-service" "~@privileged" "~@resources" ];
         UMask = "0027";
         WorkingDirectory = "/var/lib/radicale";
       };

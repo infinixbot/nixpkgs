@@ -23,12 +23,7 @@ mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    qtbase
-    cfitsio
-    gsl
-    wcslib
-  ];
+  buildInputs = [ qtbase cfitsio gsl wcslib ];
 
   cmakeFlags = [
     "-DBUILD_TESTER=${if withTester then "on" else "off"}"

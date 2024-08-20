@@ -26,12 +26,7 @@ stdenv.mkDerivation rec {
   pname = "build2";
   version = "0.16.0";
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "dev" "doc" "man" ];
 
   setupHook = ./setup-hook.sh;
 
@@ -116,10 +111,7 @@ stdenv.mkDerivation rec {
     '';
     changelog = "https://git.build2.org/cgit/build2/tree/NEWS";
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      hiro98
-      r-burns
-    ];
+    maintainers = with maintainers; [ hiro98 r-burns ];
     mainProgram = "b";
   };
 }

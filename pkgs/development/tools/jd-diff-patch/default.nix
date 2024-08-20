@@ -16,10 +16,7 @@ buildGoModule rec {
   };
 
   # not including web ui
-  excludedPackages = [
-    "gae"
-    "pack"
-  ];
+  excludedPackages = [ "gae" "pack" ];
 
   vendorHash = null;
 
@@ -27,10 +24,7 @@ buildGoModule rec {
     description = "Commandline utility and Go library for diffing and patching JSON values";
     homepage = "https://github.com/josephburnett/jd";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      bryanasdev000
-      blaggacao
-    ];
+    maintainers = with maintainers; [ bryanasdev000 blaggacao ];
     mainProgram = "jd";
   };
 }

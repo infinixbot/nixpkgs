@@ -58,39 +58,17 @@ let
         };
 
         # Can't do separate $lib and $bin, as libs reference bins
-        outputs = [
-          "out"
-          "dev"
-          "man"
-        ];
+        outputs = [ "out" "dev" "man" ];
 
-        nativeBuildInputs = lib.optionals needsAutogen [
-          autoconf
-          libtool
-          python3
-        ];
+        nativeBuildInputs = lib.optionals needsAutogen [ autoconf libtool python3 ];
 
         buildInputs =
-          [
-            zlib
-            apr
-            aprutil
-            sqlite
-            openssl
-            lz4
-            utf8proc
-          ]
+          [ zlib apr aprutil sqlite openssl lz4 utf8proc ]
           ++ lib.optional httpSupport serf
-          ++ lib.optionals pythonBindings [
-            python3
-            py3c
-          ]
+          ++ lib.optionals pythonBindings [ python3 py3c ]
           ++ lib.optional perlBindings perl
           ++ lib.optional saslSupport sasl
-          ++ lib.optionals stdenv.hostPlatform.isDarwin [
-            CoreServices
-            Security
-          ];
+          ++ lib.optionals stdenv.hostPlatform.isDarwin [ CoreServices Security ];
 
         patches = [ ./apr-1.patch ] ++ extraPatches;
 
@@ -167,10 +145,7 @@ let
           license = licenses.asl20;
           homepage = "https://subversion.apache.org/";
           mainProgram = "svn";
-          maintainers = with maintainers; [
-            eelco
-            lovek323
-          ];
+          maintainers = with maintainers; [ eelco lovek323 ];
           platforms = platforms.linux ++ platforms.darwin;
         };
 

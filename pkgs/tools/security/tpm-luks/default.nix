@@ -26,12 +26,7 @@ stdenv.mkDerivation {
   ];
 
   nativeBuildInputs = [ autoreconfHook ];
-  buildInputs = [
-    gawk
-    trousers
-    cryptsetup
-    openssl
-  ];
+  buildInputs = [ gawk trousers cryptsetup openssl ];
 
   installPhase = ''
     mkdir -p $out

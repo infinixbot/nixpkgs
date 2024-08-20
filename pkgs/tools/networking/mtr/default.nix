@@ -44,10 +44,7 @@ stdenv.mkDerivation rec {
 
   configureFlags = lib.optional (!withGtk) "--without-gtk";
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
   buildInputs = [
     ncurses
@@ -60,12 +57,7 @@ stdenv.mkDerivation rec {
     description = "Network diagnostics tool";
     homepage = "https://www.bitwizard.nl/mtr/";
     license = licenses.gpl2Only;
-    maintainers = with maintainers; [
-      koral
-      orivej
-      raskin
-      globin
-    ];
+    maintainers = with maintainers; [ koral orivej raskin globin ];
     mainProgram = "mtr";
     platforms = platforms.unix;
   };

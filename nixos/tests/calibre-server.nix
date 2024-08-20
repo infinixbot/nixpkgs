@@ -33,10 +33,7 @@ let
     };
     multipleLibraries = {
       calibreConfig = {
-        libraries = [
-          "/var/lib/calibre-data"
-          "/var/lib/calibre-server"
-        ];
+        libraries = [ "/var/lib/calibre-data" "/var/lib/calibre-server" ];
       };
       calibreScript = ''
         succeed("ls -la /var/lib/calibre-data")

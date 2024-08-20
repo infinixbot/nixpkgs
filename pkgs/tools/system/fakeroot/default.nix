@@ -47,10 +47,7 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    po4a
-  ];
+  nativeBuildInputs = [ autoreconfHook po4a ];
   buildInputs = lib.optional (!stdenv.isDarwin) libcap;
 
   postUnpack = ''

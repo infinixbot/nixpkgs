@@ -10,10 +10,7 @@ build-idris-package {
   version = "2016-03-09";
 
   ipkgName = "js";
-  idrisDeps = [
-    contrib
-    jheiling-extras
-  ];
+  idrisDeps = [ contrib jheiling-extras ];
 
   src = fetchFromGitHub {
     owner = "jheiling";

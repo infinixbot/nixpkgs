@@ -3,10 +3,7 @@ import ./make-test-python.nix (
   {
     name = "mtp";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        matthewcroughan
-        nixinator
-      ];
+      maintainers = [ matthewcroughan nixinator ];
     };
 
     nodes = {
@@ -22,12 +19,7 @@ import ./make-test-python.nix (
           # gvfs-daemon as root.
           environment.variables.XDG_RUNTIME_DIR = "/run/user/0";
 
-          environment.systemPackages = with pkgs; [
-            usbutils
-            glib
-            jmtpfs
-            tree
-          ];
+          environment.systemPackages = with pkgs; [ usbutils glib jmtpfs tree ];
           services.gvfs.enable = true;
 
           # Creates a usb-mtp device inside the VM, which is mapped to the host's

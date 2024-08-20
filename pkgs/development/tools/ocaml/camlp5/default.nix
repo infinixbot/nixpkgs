@@ -30,17 +30,8 @@ else
             hash = "sha256-hu/279gBvUc7Z4jM6EHiar6Wm4vjkGXl+7bxowj+vlM=";
           };
 
-          nativeBuildInputs = [
-            makeWrapper
-            ocaml
-            findlib
-            perl
-          ];
-          buildInputs = [
-            bos
-            re
-            rresult
-          ];
+          nativeBuildInputs = [ makeWrapper ocaml findlib perl ];
+          buildInputs = [ bos re rresult ];
           propagatedBuildInputs = [ camlp-streams ];
 
         }
@@ -53,10 +44,7 @@ else
             rev = "rel${builtins.replaceStrings [ "." ] [ "" ] version}";
             sha256 = "1dd68bisbpqn5lq2pslm582hxglcxnbkgfkwhdz67z4w9d5nvr7w";
           };
-          nativeBuildInputs = [
-            ocaml
-            perl
-          ];
+          nativeBuildInputs = [ ocaml perl ];
         };
   in
 

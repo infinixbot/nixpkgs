@@ -37,10 +37,7 @@ python3Packages.buildPythonApplication rec {
     description = "Create video contact sheets";
     homepage = "https://github.com/amietn/vcsi";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      dandellion
-      zopieux
-    ];
+    maintainers = with maintainers; [ dandellion zopieux ];
     mainProgram = "vcsi";
   };
 }

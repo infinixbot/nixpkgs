@@ -133,10 +133,7 @@ stdenv.mkDerivation rec {
   meta = {
     description = "Software to create realistic humans";
     homepage = "http://www.makehumancommunity.org/";
-    license = with lib.licenses; [
-      agpl3Plus
-      cc0
-    ];
+    license = with lib.licenses; [ agpl3Plus cc0 ];
     longDescription = ''
       MakeHuman is a GUI program for procedurally generating
       realistic-looking humans.

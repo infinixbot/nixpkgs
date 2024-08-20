@@ -22,12 +22,7 @@ buildDunePackage rec {
 
   # crowbar availability
   doCheck = lib.versionAtLeast ocaml.version "4.08";
-  checkInputs = [
-    fmt
-    alcotest
-    crowbar
-    astring
-  ];
+  checkInputs = [ fmt alcotest crowbar astring ];
 
   meta = with lib; {
     description = "Encoder/Decoder of Quoted-Printable (RFC2045 & RFC2047)";

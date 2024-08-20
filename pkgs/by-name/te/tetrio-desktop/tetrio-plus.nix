@@ -77,10 +77,7 @@ let
       description = "Self contained toolkit for creating, editing, and previewing TPSE files";
       homepage = "https://gitlab.com/UniQMG/tpsecore";
       license = lib.licenses.mit;
-      maintainers = with lib.maintainers; [
-        huantian
-        wackbyte
-      ];
+      maintainers = with lib.maintainers; [ huantian wackbyte ];
       platforms = lib.platforms.linux;
     };
   };
@@ -164,10 +161,7 @@ stdenv.mkDerivation (finalAttrs: {
       # is a modified version of tetrio-desktop, which is unfree.
       lib.licenses.unfree
     ];
-    maintainers = with lib.maintainers; [
-      huantian
-      wackbyte
-    ];
+    maintainers = with lib.maintainers; [ huantian wackbyte ];
     platforms = lib.platforms.linux;
   };
 })

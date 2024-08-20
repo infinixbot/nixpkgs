@@ -20,15 +20,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-8morbrq8zG+2N3ruMeJa85ci9P0wPQOfZ5H56diFEAo=";
   };
 
-  buildInputs = [
-    libsndfile
-    libsamplerate
-  ];
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-  ];
+  buildInputs = [ libsndfile libsamplerate ];
+  nativeBuildInputs = [ meson ninja pkg-config ];
 
   meta = with lib; {
     description = "Library for reading and resampling audio files";

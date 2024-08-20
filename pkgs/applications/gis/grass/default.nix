@@ -52,23 +52,17 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-NKMshd6pr2O62ZjmQ/oPttmeVBYVD0Nqhh3SwQrhZf8=";
   };
 
-  nativeBuildInputs =
-    [
-      makeWrapper
-      wrapGAppsHook3
+  nativeBuildInputs = [
+    makeWrapper
+    wrapGAppsHook3
 
-      bison
-      flex
-      gdal # for `gdal-config`
-      geos # for `geos-config`
-      netcdf # for `nc-config`
-      pkg-config
-    ]
-    ++ (with pyPackages; [
-      python-dateutil
-      numpy
-      wxpython
-    ]);
+    bison
+    flex
+    gdal # for `gdal-config`
+    geos # for `geos-config`
+    netcdf # for `nc-config`
+    pkg-config
+  ] ++ (with pyPackages; [ python-dateutil numpy wxpython ]);
 
   buildInputs = [
     blas

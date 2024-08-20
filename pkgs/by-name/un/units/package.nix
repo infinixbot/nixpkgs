@@ -21,11 +21,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-2Ve0USRZJcnmFMRRM5dEljDq+SvWK4SVugm741Ghc3A=";
   };
 
-  outputs = [
-    "out"
-    "info"
-    "man"
-  ];
+  outputs = [ "out" "info" "man" ];
 
   buildInputs =
     [

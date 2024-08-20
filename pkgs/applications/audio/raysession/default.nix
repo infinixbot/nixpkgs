@@ -34,14 +34,8 @@ buildPythonApplication rec {
     which # which to find lrelease.
     qt5.wrapQtAppsHook
   ];
-  buildInputs = [
-    libjack2
-    bash
-  ];
-  propagatedBuildInputs = [
-    pyliblo
-    pyqt5
-  ];
+  buildInputs = [ libjack2 bash ];
+  propagatedBuildInputs = [ pyliblo pyqt5 ];
 
   dontWrapQtApps = true; # The program is a python script.
 

@@ -50,13 +50,7 @@ rustPlatform.buildRustPackage {
     rustc
   ];
 
-  buildInputs = [
-    dbus
-    gtk4
-    libadwaita
-    bluez
-    libpulseaudio
-  ];
+  buildInputs = [ dbus gtk4 libadwaita bluez libpulseaudio ];
 
   buildPhase = ''
     runHook preBuild

@@ -19,10 +19,7 @@ buildOasisPackage rec {
   };
 
   buildInputs = [ ounit ];
-  propagatedBuildInputs = [
-    tcslib
-    ocaml-sat-solvers
-  ];
+  propagatedBuildInputs = [ tcslib ocaml-sat-solvers ];
 
   meta = {
     description = "Collection of tools for generating, manipulating and - most of all - solving parity games";

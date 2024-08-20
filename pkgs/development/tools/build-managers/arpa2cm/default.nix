@@ -33,9 +33,6 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://gitlab.com/arpa2/arpa2cm";
     license = licenses.bsd2;
-    maintainers = with maintainers; [
-      leenaars
-      fufexan
-    ];
+    maintainers = with maintainers; [ leenaars fufexan ];
   };
 }

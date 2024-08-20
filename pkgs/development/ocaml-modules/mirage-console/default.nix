@@ -18,10 +18,7 @@ buildDunePackage rec {
     hash = "sha256-mjYRisbNOJbYoSuWaGoPueXakmqAwmWh0ATvLLsvpNM=";
   };
 
-  propagatedBuildInputs = [
-    lwt
-    mirage-flow
-  ];
+  propagatedBuildInputs = [ lwt mirage-flow ];
 
   meta = {
     description = "Implementations of Mirage console devices";

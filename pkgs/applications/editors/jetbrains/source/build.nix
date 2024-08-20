@@ -77,15 +77,8 @@ let
   libdbm = stdenv.mkDerivation {
     pname = "libdbm";
     version = buildVer;
-    nativeBuildInputs = [
-      cmake
-      pkg-config
-    ];
-    buildInputs = [
-      glib
-      xorg.libX11
-      libdbusmenu
-    ];
+    nativeBuildInputs = [ cmake pkg-config ];
+    buildInputs = [ glib xorg.libX11 libdbusmenu ];
     inherit src;
     sourceRoot = "${src.name}/native/LinuxGlobalMenu";
     patches = [ ../patches/libdbm-headers.patch ];
@@ -133,10 +126,7 @@ let
         outputHashAlgo = "sha256";
         outputHashMode = "recursive";
         outputHash = jpsHash;
-        nativeBuildInputs = [
-          ant
-          jbr
-        ];
+        nativeBuildInputs = [ ant jbr ];
       }
       ''
         ant -Duser.home=$out -Dbuild.dir=/build/tmp -f ${src}/platform/jps-bootstrap/jps-bootstrap-classpath.xml
@@ -152,11 +142,7 @@ let
     version = buildVer;
     inherit src;
     sourceRoot = "${src.name}/platform/jps-bootstrap";
-    nativeBuildInputs = [
-      ant
-      makeWrapper
-      jbr
-    ];
+    nativeBuildInputs = [ ant makeWrapper jbr ];
     patches = [ ../patches/kotlinc-path.patch ];
     postPatch = "sed -i 's|KOTLIN_PATH_HERE|${kotlin}|' src/main/java/org/jetbrains/jpsBootstrap/KotlinCompiler.kt";
     buildPhase = ''
@@ -240,11 +226,7 @@ stdenvNoCC.mkDerivation rec {
   version = buildVer;
   name = "${pname}-${version}.tar.gz";
   inherit src;
-  nativeBuildInputs = [
-    p7zip
-    jbr
-    jps-bootstrap
-  ];
+  nativeBuildInputs = [ p7zip jbr jps-bootstrap ];
   repo = mvnRepo;
 
   patches = [

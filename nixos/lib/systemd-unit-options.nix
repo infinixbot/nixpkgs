@@ -90,10 +90,7 @@ rec {
 
     overrideStrategy = mkOption {
       default = "asDropinIfExists";
-      type = types.enum [
-        "asDropinIfExists"
-        "asDropin"
-      ];
+      type = types.enum [ "asDropinIfExists" "asDropin" ];
       description = ''
         Defines how unit configuration is provided for systemd:
 
@@ -350,15 +347,7 @@ rec {
 
         environment = mkOption {
           default = { };
-          type =
-            with types;
-            attrsOf (
-              nullOr (oneOf [
-                str
-                path
-                package
-              ])
-            );
+          type = with types; attrsOf (nullOr (oneOf [ str path package ]));
           example = {
             PATH = "/foo/bar/bin";
             LANG = "nl_NL.UTF-8";
@@ -368,12 +357,7 @@ rec {
 
         path = mkOption {
           default = [ ];
-          type =
-            with types;
-            listOf (oneOf [
-              package
-              str
-            ]);
+          type = with types; listOf (oneOf [ package str ]);
           description = ''
             Packages added to the service's {env}`PATH`
             environment variable.  Both the {file}`bin`
@@ -569,10 +553,7 @@ rec {
       listenStreams = mkOption {
         default = [ ];
         type = types.listOf types.str;
-        example = [
-          "0.0.0.0:993"
-          "/run/my-socket"
-        ];
+        example = [ "0.0.0.0:993" "/run/my-socket" ];
         description = ''
           For each item in this list, a `ListenStream`
           option in the `[Socket]` section will be created.
@@ -582,10 +563,7 @@ rec {
       listenDatagrams = mkOption {
         default = [ ];
         type = types.listOf types.str;
-        example = [
-          "0.0.0.0:993"
-          "/run/my-socket"
-        ];
+        example = [ "0.0.0.0:993" "/run/my-socket" ];
         description = ''
           For each item in this list, a `ListenDatagram`
           option in the `[Socket]` section will be created.

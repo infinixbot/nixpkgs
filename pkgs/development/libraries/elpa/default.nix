@@ -53,25 +53,12 @@ stdenv.mkDerivation rec {
     substituteInPlace Makefile.am --replace '#!/bin/bash' '#!${stdenv.shell}'
   '';
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-    "dev"
-  ];
+  outputs = [ "out" "doc" "man" "dev" ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    perl
-  ] ++ lib.optionals enableCuda [ cudaPackages.cuda_nvcc ];
+  nativeBuildInputs = [ autoreconfHook perl ] ++ lib.optionals enableCuda [ cudaPackages.cuda_nvcc ];
 
   buildInputs =
-    [
-      mpi
-      blas
-      lapack
-      scalapack
-    ]
+    [ mpi blas lapack scalapack ]
     ++ lib.optionals enableCuda [
       cudaPackages.cuda_cudart
       cudaPackages.libcublas
@@ -116,10 +103,7 @@ stdenv.mkDerivation rec {
 
   doCheck = !enableCuda;
 
-  nativeCheckInputs = [
-    mpiCheckPhaseHook
-    openssh
-  ];
+  nativeCheckInputs = [ mpiCheckPhaseHook openssh ];
   preCheck = ''
     #patchShebangs ./
 

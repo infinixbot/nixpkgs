@@ -187,11 +187,7 @@ let
 
         # StateDirectory entries are a cleaner, service-level mechanism
         # for dealing with persistent service data
-        StateDirectory = [
-          "acme"
-          "acme/.lego"
-          "acme/.lego/accounts"
-        ];
+        StateDirectory = [ "acme" "acme/.lego" "acme/.lego/accounts" ];
         StateDirectoryMode = 755;
         WorkingDirectory = "/var/lib/acme";
 
@@ -258,34 +254,16 @@ let
       protocolOpts =
         if useDns then
           (
-            [
-              "--dns"
-              data.dnsProvider
-            ]
+            [ "--dns" data.dnsProvider ]
             ++ optionals (!data.dnsPropagationCheck) [ "--dns.disable-cp" ]
-            ++ optionals (data.dnsResolver != null) [
-              "--dns.resolvers"
-              data.dnsResolver
-            ]
+            ++ optionals (data.dnsResolver != null) [ "--dns.resolvers" data.dnsResolver ]
           )
         else if data.s3Bucket != null then
-          [
-            "--http"
-            "--http.s3-bucket"
-            data.s3Bucket
-          ]
+          [ "--http" "--http.s3-bucket" data.s3Bucket ]
         else if data.listenHTTP != null then
-          [
-            "--http"
-            "--http.port"
-            data.listenHTTP
-          ]
+          [ "--http" "--http.port" data.listenHTTP ]
         else
-          [
-            "--http"
-            "--http.webroot"
-            data.webroot
-          ];
+          [ "--http" "--http.webroot" data.webroot ];
 
       commonOpts =
         [
@@ -300,14 +278,8 @@ let
           data.keyType
         ]
         ++ protocolOpts
-        ++ optionals (acmeServer != null) [
-          "--server"
-          acmeServer
-        ]
-        ++ concatMap (name: [
-          "-d"
-          name
-        ]) extraDomains
+        ++ optionals (acmeServer != null) [ "--server" acmeServer ]
+        ++ concatMap (name: [ "-d" name ]) extraDomains
         ++ data.extraLegoFlags;
 
       # Although --must-staple is common to both modes, it is not declared as a
@@ -320,10 +292,7 @@ let
       );
       renewOpts = escapeShellArgs (
         commonOpts
-        ++ [
-          "renew"
-          "--no-random-sleep"
-        ]
+        ++ [ "renew" "--no-random-sleep" ]
         ++ optionals data.ocspMustStaple [ "--must-staple" ]
         ++ data.extraLegoRenewFlags
       );
@@ -430,12 +399,7 @@ let
         # https://github.com/NixOS/nixpkgs/pull/81371#issuecomment-605526099
         wantedBy = optionals (!config.boot.isContainer) [ "multi-user.target" ];
 
-        path = with pkgs; [
-          lego
-          coreutils
-          diffutils
-          openssl
-        ];
+        path = with pkgs; [ lego coreutils diffutils openssl ];
 
         serviceConfig =
           commonServiceConfig
@@ -943,12 +907,7 @@ in
 
       certs = mkOption {
         default = { };
-        type =
-          with types;
-          attrsOf (submodule [
-            (inheritableModule false)
-            certOpts
-          ]);
+        type = with types; attrsOf (submodule [ (inheritableModule false) certOpts ]);
         description = ''
           Attribute set of certificates to get signed and renewed. Creates
           `acme-''${cert}.{service,timer}` systemd units for
@@ -985,127 +944,51 @@ in
   };
 
   imports = [
-    (mkRemovedOptionModule
-      [
-        "security"
-        "acme"
-        "production"
-      ]
-      ''
-        Use security.acme.server to define your staging ACME server URL instead.
+    (mkRemovedOptionModule [ "security" "acme" "production" ] ''
+      Use security.acme.server to define your staging ACME server URL instead.
 
-        To use the let's encrypt staging server, use security.acme.server =
-        "https://acme-staging-v02.api.letsencrypt.org/directory".
-      ''
-    )
-    (mkRemovedOptionModule
-      [
-        "security"
-        "acme"
-        "directory"
-      ]
+      To use the let's encrypt staging server, use security.acme.server =
+      "https://acme-staging-v02.api.letsencrypt.org/directory".
+    '')
+    (mkRemovedOptionModule [ "security" "acme" "directory" ]
       "ACME Directory is now hardcoded to /var/lib/acme and its permissions are managed by systemd. See https://github.com/NixOS/nixpkgs/issues/53852 for more info."
     )
-    (mkRemovedOptionModule
-      [
-        "security"
-        "acme"
-        "preDelay"
-      ]
+    (mkRemovedOptionModule [ "security" "acme" "preDelay" ]
       "This option has been removed. If you want to make sure that something executes before certificates are provisioned, add a RequiredBy=acme-\${cert}.service to the service you want to execute before the cert renewal"
     )
-    (mkRemovedOptionModule
-      [
-        "security"
-        "acme"
-        "activationDelay"
-      ]
+    (mkRemovedOptionModule [ "security" "acme" "activationDelay" ]
       "This option has been removed. If you want to make sure that something executes before certificates are provisioned, add a RequiredBy=acme-\${cert}.service to the service you want to execute before the cert renewal"
     )
-    (mkChangedOptionModule
-      [
-        "security"
-        "acme"
-        "validMin"
-      ]
-      [
-        "security"
-        "acme"
-        "defaults"
-        "validMinDays"
-      ]
-      (config: config.security.acme.validMin / (24 * 3600))
-    )
-    (mkChangedOptionModule
-      [
-        "security"
-        "acme"
-        "validMinDays"
-      ]
-      [
-        "security"
-        "acme"
-        "defaults"
-        "validMinDays"
-      ]
-      (config: config.security.acme.validMinDays)
-    )
-    (mkChangedOptionModule
-      [
-        "security"
-        "acme"
-        "renewInterval"
-      ]
-      [
-        "security"
-        "acme"
-        "defaults"
-        "renewInterval"
-      ]
-      (config: config.security.acme.renewInterval)
-    )
-    (mkChangedOptionModule
-      [
-        "security"
-        "acme"
-        "email"
-      ]
-      [
-        "security"
-        "acme"
-        "defaults"
-        "email"
-      ]
-      (config: config.security.acme.email)
-    )
-    (mkChangedOptionModule
-      [
-        "security"
-        "acme"
-        "server"
-      ]
-      [
-        "security"
-        "acme"
-        "defaults"
-        "server"
-      ]
-      (config: config.security.acme.server)
-    )
-    (mkChangedOptionModule
-      [
-        "security"
-        "acme"
-        "enableDebugLogs"
-      ]
-      [
-        "security"
-        "acme"
-        "defaults"
-        "enableDebugLogs"
-      ]
-      (config: config.security.acme.enableDebugLogs)
-    )
+    (mkChangedOptionModule [ "security" "acme" "validMin" ] [
+      "security"
+      "acme"
+      "defaults"
+      "validMinDays"
+    ] (config: config.security.acme.validMin / (24 * 3600)))
+    (mkChangedOptionModule [ "security" "acme" "validMinDays" ] [
+      "security"
+      "acme"
+      "defaults"
+      "validMinDays"
+    ] (config: config.security.acme.validMinDays))
+    (mkChangedOptionModule [ "security" "acme" "renewInterval" ] [
+      "security"
+      "acme"
+      "defaults"
+      "renewInterval"
+    ] (config: config.security.acme.renewInterval))
+    (mkChangedOptionModule [ "security" "acme" "email" ] [ "security" "acme" "defaults" "email" ] (
+      config: config.security.acme.email
+    ))
+    (mkChangedOptionModule [ "security" "acme" "server" ] [ "security" "acme" "defaults" "server" ] (
+      config: config.security.acme.server
+    ))
+    (mkChangedOptionModule [ "security" "acme" "enableDebugLogs" ] [
+      "security"
+      "acme"
+      "defaults"
+      "enableDebugLogs"
+    ] (config: config.security.acme.enableDebugLogs))
   ];
 
   config = mkMerge [

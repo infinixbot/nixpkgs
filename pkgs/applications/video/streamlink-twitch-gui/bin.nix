@@ -29,10 +29,7 @@
 }:
 let
   basename = "streamlink-twitch-gui";
-  runtimeLibs = lib.makeLibraryPath [
-    gtk3-x11
-    libudev0-shim
-  ];
+  runtimeLibs = lib.makeLibraryPath [ gtk3-x11 libudev0-shim ];
   runtimeBins = lib.makeBinPath [ streamlink ];
 
 in
@@ -124,10 +121,7 @@ stdenv.mkDerivation rec {
       icon = basename;
       desktopName = "Streamlink Twitch GUI";
       genericName = meta.description;
-      categories = [
-        "AudioVideo"
-        "Network"
-      ];
+      categories = [ "AudioVideo" "Network" ];
     })
   ];
 
@@ -140,9 +134,6 @@ stdenv.mkDerivation rec {
     license = licenses.mit;
     mainProgram = "streamlink-twitch-gui";
     maintainers = with maintainers; [ rileyinman ];
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
   };
 }

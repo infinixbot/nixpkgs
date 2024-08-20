@@ -198,13 +198,7 @@ in
       };
 
       network = mkOption {
-        type = types.enum [
-          "mainnet"
-          "gnosis"
-          "chiado"
-          "sepolia"
-          "holesky"
-        ];
+        type = types.enum [ "mainnet" "gnosis" "chiado" "sepolia" "holesky" ];
         default = "mainnet";
         description = ''
           The network to connect to. Mainnet is the default ethereum network.
@@ -275,10 +269,7 @@ in
         RestrictNamespaces = true;
         LockPersonality = true;
         RemoveIPC = true;
-        SystemCallFilter = [
-          "@system-service"
-          "~@privileged"
-        ];
+        SystemCallFilter = [ "@system-service" "~@privileged" ];
       };
     };
 
@@ -321,14 +312,8 @@ in
         RestrictNamespaces = true;
         LockPersonality = true;
         RemoveIPC = true;
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-        ];
-        SystemCallFilter = [
-          "@system-service"
-          "~@privileged"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
+        SystemCallFilter = [ "@system-service" "~@privileged" ];
       };
     };
   };

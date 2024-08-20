@@ -61,11 +61,7 @@ stdenv.mkDerivation rec {
     ln -s ${tracks}/ data/tracks
   '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    makeWrapper
-  ];
+  nativeBuildInputs = [ cmake pkg-config makeWrapper ];
   buildInputs = [
     boost
     stuntrally_ogre

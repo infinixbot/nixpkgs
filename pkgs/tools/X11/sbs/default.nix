@@ -21,11 +21,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    imlib2
-    libX11
-    libXinerama
-  ];
+  buildInputs = [ imlib2 libX11 libXinerama ];
 
   makeFlags = [ "PREFIX=$(out)" ];
 

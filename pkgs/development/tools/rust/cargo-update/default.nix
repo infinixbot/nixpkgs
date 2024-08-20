@@ -69,11 +69,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/nabijaczleweli/cargo-update";
     changelog = "https://github.com/nabijaczleweli/cargo-update/releases/tag/v${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      gerschtli
-      Br1ght0ne
-      johntitor
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ gerschtli Br1ght0ne johntitor matthiasbeyer ];
   };
 }

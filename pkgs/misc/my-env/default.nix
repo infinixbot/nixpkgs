@@ -76,10 +76,7 @@ mkDerivation {
   inherit buildInputs propagatedBuildInputs;
 
   name = "env-${name}";
-  phases = [
-    "buildPhase"
-    "fixupPhase"
-  ];
+  phases = [ "buildPhase" "fixupPhase" ];
   setupNew = substituteAll {
     src = ../../stdenv/generic/setup.sh;
     inherit gcc;

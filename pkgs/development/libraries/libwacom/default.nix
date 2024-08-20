@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
   pname = "libwacom";
   version = "2.12.2";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "linuxwacom";

@@ -131,10 +131,7 @@ let
             # Used to determine if service reload was triggered
             systemd.targets."test-renew-${server}" = {
               wants = [ "acme-${server}-http.example.test.service" ];
-              after = [
-                "acme-${server}-http.example.test.service"
-                "${server}-config-reload.service"
-              ];
+              after = [ "acme-${server}-http.example.test.service" "${server}-config-reload.service" ];
             };
           }
           specialConfig
@@ -204,10 +201,7 @@ in
     dnsserver =
       { nodes, ... }:
       {
-        networking.firewall.allowedTCPPorts = [
-          8055
-          53
-        ];
+        networking.firewall.allowedTCPPorts = [ 8055 53 ];
         networking.firewall.allowedUDPPorts = [ 53 ];
         systemd.services.pebble-challtestsrv = {
           enable = true;
@@ -227,10 +221,7 @@ in
       {
         imports = [ commonConfig ];
         networking.nameservers = lib.mkForce [ (dnsServerIP nodes) ];
-        networking.firewall.allowedTCPPorts = [
-          80
-          443
-        ];
+        networking.firewall.allowedTCPPorts = [ 80 443 ];
 
         # OpenSSL will be used for more thorough certificate validation
         environment.systemPackages = [ pkgs.openssl ];
@@ -320,10 +311,7 @@ in
                 webserverBasicConfig
                 {
                   systemd.services.my-slow-service = {
-                    wantedBy = [
-                      "multi-user.target"
-                      "nginx.service"
-                    ];
+                    wantedBy = [ "multi-user.target" "nginx.service" ];
                     before = [ "nginx.service" ];
                     preStart = "sleep 5";
                     script = "${pkgs.python3}/bin/python -m http.server";

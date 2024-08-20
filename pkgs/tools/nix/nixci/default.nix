@@ -26,11 +26,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-trmWeYJNev7jYJtGp9XR/emmQiiI94NM0cPFrAuD7m0=";
 
-  nativeBuildInputs = [
-    pkg-config
-    installShellFiles
-    nix
-  ];
+  nativeBuildInputs = [ pkg-config installShellFiles nix ];
 
   buildInputs =
     lib.optionals stdenv.isLinux [
@@ -62,11 +58,7 @@ rustPlatform.buildRustPackage rec {
     description = "Define and build CI for Nix projects anywhere";
     homepage = "https://github.com/srid/nixci";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [
-      srid
-      shivaraj-bh
-      rsrohitsingh682
-    ];
+    maintainers = with maintainers; [ srid shivaraj-bh rsrohitsingh682 ];
     mainProgram = "nixci";
   };
 }

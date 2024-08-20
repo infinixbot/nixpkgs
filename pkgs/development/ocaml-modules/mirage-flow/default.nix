@@ -18,11 +18,7 @@ buildDunePackage rec {
     hash = "sha256-SGXj3S4b53O9JENUFuMl3I+QoiZ0QSrYu7zTet7q+1o=";
   };
 
-  propagatedBuildInputs = [
-    cstruct
-    fmt
-    lwt
-  ];
+  propagatedBuildInputs = [ cstruct fmt lwt ];
 
   meta = {
     description = "Flow implementations and combinators for MirageOS";

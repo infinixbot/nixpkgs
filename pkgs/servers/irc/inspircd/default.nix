@@ -160,13 +160,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-4jtIh6wpZ/rexnwhqicU1gUk6DerGLXM9OY+GkmiEnI=";
   };
 
-  outputs = [
-    "bin"
-    "lib"
-    "man"
-    "doc"
-    "out"
-  ];
+  outputs = [ "bin" "lib" "man" "doc" "out" ];
 
   nativeBuildInputs = [
     perl

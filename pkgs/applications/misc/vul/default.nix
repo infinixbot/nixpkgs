@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
     description = "Latin Vulgate Bible on the Command Line";
     homepage = "https://github.com/LukeSmithxyz/vul";
     license = licenses.publicDomain;
-    maintainers = [
-      maintainers.j0hax
-      maintainers.cafkafk
-    ];
+    maintainers = [ maintainers.j0hax maintainers.cafkafk ];
     mainProgram = "vul";
   };
 }

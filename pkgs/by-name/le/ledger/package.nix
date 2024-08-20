@@ -27,10 +27,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-Uym4s8EyzXHlISZqThcb6P1H5bdgD9vmdIOLkk5ikG0=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optionals usePython [ "py" ];
+  outputs = [ "out" "dev" ] ++ lib.optionals usePython [ "py" ];
 
   buildInputs =
     [
@@ -55,11 +52,7 @@ stdenv.mkDerivation rec {
         [ boost ]
     );
 
-  nativeBuildInputs = [
-    cmake
-    texinfo
-    installShellFiles
-  ];
+  nativeBuildInputs = [ cmake texinfo installShellFiles ];
 
   cmakeFlags = [
     "-DCMAKE_INSTALL_LIBDIR=lib"
@@ -75,10 +68,7 @@ stdenv.mkDerivation rec {
       --replace 'DESTINATION ''${Python_SITEARCH}' 'DESTINATION "${placeholder "py"}/${python3.sitePackages}"'
   '';
 
-  installTargets = [
-    "doc"
-    "install"
-  ];
+  installTargets = [ "doc" "install" ];
 
   postInstall = ''
     installShellCompletion --cmd ledger --bash $src/contrib/ledger-completion.bash

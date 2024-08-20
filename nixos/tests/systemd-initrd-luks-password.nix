@@ -8,10 +8,7 @@ import ./make-test-python.nix (
       {
         # Use systemd-boot
         virtualisation = {
-          emptyDiskImages = [
-            512
-            512
-          ];
+          emptyDiskImages = [ 512 512 ];
           useBootLoader = true;
           # Booting off the encrypted disk requires an available init script
           mountHostNixStore = true;

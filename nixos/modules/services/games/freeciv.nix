@@ -36,10 +36,7 @@ let
           else if isBool v then
             optional v ("--" + k)
           else
-            [
-              ("--" + k)
-              v
-            ];
+            [ ("--" + k) v ];
         mkParams = k: v: map (mkParam k) (if isList v then v else [ v ]);
       in
       escapeShellArgs (concatLists (concatLists (mapAttrsToList mkParams value)));
@@ -57,11 +54,7 @@ in
         type = types.submodule {
           freeformType = argsFormat.type;
           options.Announce = mkOption {
-            type = types.enum [
-              "IPv4"
-              "IPv6"
-              "none"
-            ];
+            type = types.enum [ "IPv4" "IPv6" "none" ];
             default = "none";
             description = "Announce game in LAN using given protocol.";
           };
@@ -150,10 +143,7 @@ in
           + "${pkgs.freeciv}/bin/freeciv-server"
           + " "
           + optionalString (cfg.settings.saves != null) (
-            concatStringsSep " " [
-              "--saves"
-              "${escapeShellArg cfg.settings.saves}/$savedir"
-            ]
+            concatStringsSep " " [ "--saves" "${escapeShellArg cfg.settings.saves}/$savedir" ]
           )
           + " "
           + argsFormat.generate "freeciv-server" (cfg.settings // { saves = null; })
@@ -200,10 +190,7 @@ in
         ProtectKernelTunables = true;
         ProtectSystem = "strict";
         RemoveIPC = true;
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;

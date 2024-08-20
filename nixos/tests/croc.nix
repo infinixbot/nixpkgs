@@ -11,10 +11,7 @@ import ./make-test-python.nix (
   {
     name = "croc";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        hax404
-        julm
-      ];
+      maintainers = [ hax404 julm ];
     };
 
     nodes = {

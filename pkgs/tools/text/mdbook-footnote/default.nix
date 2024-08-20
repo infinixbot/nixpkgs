@@ -25,9 +25,6 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "mdbook-footnote";
     homepage = "https://github.com/daviddrysdale/mdbook-footnote";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      brianmcgillion
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ brianmcgillion matthiasbeyer ];
   };
 }

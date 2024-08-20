@@ -36,11 +36,7 @@ rustPlatform.buildRustPackage {
     homepage = "https://github.com/FrameworkComputer/framework-system";
     license = licenses.bsd3;
     platforms = [ "x86_64-linux" ];
-    maintainers = with maintainers; [
-      nickcao
-      leona
-      kloenk
-    ];
+    maintainers = with maintainers; [ nickcao leona kloenk ];
     mainProgram = "framework_tool";
   };
 }

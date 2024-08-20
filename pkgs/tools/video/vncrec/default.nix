@@ -27,10 +27,7 @@ stdenv.mkDerivation {
 
   hardeningDisable = [ "format" ];
 
-  nativeBuildInputs = [
-    imake
-    gccmakedep
-  ];
+  nativeBuildInputs = [ imake gccmakedep ];
   buildInputs = [
     libX11
     xorgproto
@@ -48,10 +45,7 @@ stdenv.mkDerivation {
     "BINDIR=${placeholder "out"}/bin"
     "MANDIR=${placeholder "out"}/share/man"
   ];
-  installTargets = [
-    "install"
-    "install.man"
-  ];
+  installTargets = [ "install" "install.man" ];
 
   meta = {
     description = "VNC recorder";

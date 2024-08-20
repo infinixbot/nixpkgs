@@ -23,10 +23,7 @@ rustPlatform.buildRustPackage rec {
   cargoPatches = [ ./cargo_lock.patch ];
 
   buildInputs =
-    [
-      kclvm
-      rustc
-    ]
+    [ kclvm rustc ]
     ++ (lib.optionals stdenv.isDarwin [
       darwin.apple_sdk.frameworks.Security
       darwin.apple_sdk.frameworks.CoreServices
@@ -38,10 +35,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/kcl-lang/kcl";
     license = licenses.asl20;
     platforms = platforms.linux ++ platforms.darwin;
-    maintainers = with maintainers; [
-      selfuryon
-      peefy
-    ];
+    maintainers = with maintainers; [ selfuryon peefy ];
     mainProgram = "kclvm_cli";
   };
 }

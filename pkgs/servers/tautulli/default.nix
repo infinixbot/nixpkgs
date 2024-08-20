@@ -13,10 +13,7 @@ buildPythonApplication rec {
   format = "other";
 
   pythonPath = [ setuptools ];
-  nativeBuildInputs = [
-    wrapPython
-    makeWrapper
-  ];
+  nativeBuildInputs = [ wrapPython makeWrapper ];
 
   src = fetchFromGitHub {
     owner = "Tautulli";

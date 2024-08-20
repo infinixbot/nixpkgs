@@ -35,15 +35,9 @@ stdenv.mkDerivation rec {
     done
   '';
 
-  buildInputs = [
-    openssl
-    sqlite
-  ];
+  buildInputs = [ openssl sqlite ];
 
-  nativeBuildInputs = [
-    perl
-    which
-  ];
+  nativeBuildInputs = [ perl which ];
 
   makeFlags = [
     "INSTALL_PREFIX=$(out)"

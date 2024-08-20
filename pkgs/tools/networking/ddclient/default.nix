@@ -29,10 +29,7 @@ perlPackages.buildPerlPackage rec {
 
   nativeBuildInputs = [ autoreconfHook ];
 
-  buildInputs = [
-    curl
-    myPerl
-  ];
+  buildInputs = [ curl myPerl ];
 
   # Prevent ddclient from picking up build time perl which is implicitly added
   # by buildPerlPackage.

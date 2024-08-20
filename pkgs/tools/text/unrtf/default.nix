@@ -16,19 +16,13 @@ stdenv.mkDerivation rec {
     sha256 = "1bil6z4niydz9gqm2j861dkxmqnpc8m7hvidsjbzz7x63whj17xl";
   };
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-  ];
+  nativeBuildInputs = [ autoconf automake ];
 
   buildInputs = [ libiconv ];
 
   preConfigure = "./bootstrap";
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   meta = with lib; {
     description = "Converter from Rich Text Format to other formats";

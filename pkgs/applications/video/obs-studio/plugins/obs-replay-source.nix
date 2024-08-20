@@ -20,11 +20,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    libcaption
-    obs-studio
-    qtbase
-  ];
+  buildInputs = [ libcaption obs-studio qtbase ];
 
   postInstall = ''
     mkdir -p "$out/lib" "$out/share"

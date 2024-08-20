@@ -45,34 +45,26 @@ let
   warn = if verbose then builtins.trace else (x: y: y);
   references =
     import
-      (runCommandLocal "references.nix"
-        {
-          exportReferencesGraph = [
-            "graph"
-            drv
-          ];
-        }
-        ''
-          (echo {
-          while read path
-          do
-              echo "  \"$path\" = ["
-              read count
-              read count
-              while [ "0" != "$count" ]
-              do
-                  read ref_path
-                  if [ "$ref_path" != "$path" ]
-                  then
-                      echo "    (builtins.storePath (/. + \"$ref_path\"))"
-                  fi
-                  count=$(($count - 1))
-              done
-              echo "  ];"
-          done < graph
-          echo }) > $out
-        ''
-      ).outPath;
+      (runCommandLocal "references.nix" { exportReferencesGraph = [ "graph" drv ]; } ''
+        (echo {
+        while read path
+        do
+            echo "  \"$path\" = ["
+            read count
+            read count
+            while [ "0" != "$count" ]
+            do
+                read ref_path
+                if [ "$ref_path" != "$path" ]
+                then
+                    echo "    (builtins.storePath (/. + \"$ref_path\"))"
+                fi
+                count=$(($count - 1))
+            done
+            echo "  ];"
+        done < graph
+        echo }) > $out
+      '').outPath;
 
   discard = builtins.unsafeDiscardStringContext;
 

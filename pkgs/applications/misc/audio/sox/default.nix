@@ -70,19 +70,13 @@ stdenv.mkDerivation rec {
     ++ lib.optional enableLibao libao
     ++ lib.optional enableLame lame
     ++ lib.optional enableLibmad libmad
-    ++ lib.optionals enableLibogg [
-      libogg
-      libvorbis
-    ]
+    ++ lib.optionals enableLibogg [ libogg libvorbis ]
     ++ lib.optional enableOpusfile opusfile
     ++ lib.optional enableFLAC flac
     ++ lib.optional enablePNG libpng
     ++ lib.optional enableLibsndfile libsndfile
     ++ lib.optional enableWavpack wavpack
-    ++ lib.optionals enableAMR [
-      amrnb
-      amrwb
-    ]
+    ++ lib.optionals enableAMR [ amrnb amrwb ]
     ++ lib.optional enableLibpulseaudio libpulseaudio
     ++ lib.optional stdenv.isDarwin CoreAudio;
 

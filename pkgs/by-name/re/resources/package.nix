@@ -77,10 +77,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/nokyan/resources";
     license = lib.licenses.gpl3Only;
     mainProgram = "resources";
-    maintainers = with lib.maintainers; [
-      lukas-heiligenbrunner
-      ewuuwe
-    ];
+    maintainers = with lib.maintainers; [ lukas-heiligenbrunner ewuuwe ];
     platforms = lib.platforms.linux;
   };
 })

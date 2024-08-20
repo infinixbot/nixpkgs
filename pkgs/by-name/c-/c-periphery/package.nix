@@ -16,11 +16,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-uUSXvMQcntUqD412UWkMif0wLxPhpPdnMb96Pqqh/B4=";
   };
 
-  outputs = [
-    "dev"
-    "lib"
-    "out"
-  ];
+  outputs = [ "dev" "lib" "out" ];
 
   postPatch = ''
     substituteInPlace src/libperiphery.pc.in \

@@ -20,10 +20,7 @@ import ./make-test-python.nix (
           };
           services.jitsi-videobridge.openFirewall = true;
 
-          networking.firewall.allowedTCPPorts = [
-            80
-            443
-          ];
+          networking.firewall.allowedTCPPorts = [ 80 443 ];
 
           services.nginx.virtualHosts.server = {
             enableACME = true;

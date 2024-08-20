@@ -44,10 +44,7 @@ let
       "-L${libmysqlclient}/lib/mysql"
     ]
     ++ lib.optional withSQLite "-DHAS_SQLITE"
-    ++ lib.optionals withLDAP [
-      "-DHAS_LDAP"
-      "-DUSE_LDAP_SASL"
-    ]
+    ++ lib.optionals withLDAP [ "-DHAS_LDAP" "-DUSE_LDAP_SASL" ]
   );
   auxlibs = lib.concatStringsSep " " (
     [
@@ -74,19 +71,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-VvXkIOfCVFWk6WwZtnL4D5oKNftb7MkkfJ49XcxhfzQ=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    m4
-  ];
+  nativeBuildInputs = [ makeWrapper m4 ];
   buildInputs =
-    [
-      db
-      openssl
-      cyrus_sasl
-      icu
-      libnsl
-      pcre2
-    ]
+    [ db openssl cyrus_sasl icu libnsl pcre2 ]
     ++ lib.optional withPgSQL postgresql
     ++ lib.optional withMySQL libmysqlclient
     ++ lib.optional withSQLite sqlite
@@ -153,23 +140,9 @@ stdenv.mkDerivation rec {
     cp -rv installdir/etc $out
     sed -e '/^PATH=/d' -i $out/libexec/postfix/post-install
     wrapProgram $out/libexec/postfix/post-install \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          coreutils
-          findutils
-          gnugrep
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ coreutils findutils gnugrep ]}
     wrapProgram $out/libexec/postfix/postfix-script \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          coreutils
-          findutils
-          gnugrep
-          gawk
-          gnused
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ coreutils findutils gnugrep gawk gnused ]}
 
     # Avoid dev-only outputs from being retained in final closure.
     # `makedefs.out` is a documenttation-only file. It should be safe
@@ -189,15 +162,8 @@ stdenv.mkDerivation rec {
     homepage = "http://www.postfix.org/";
     changelog = "https://www.postfix.org/announcements/postfix-${version}.html";
     description = "Fast, easy to administer, and secure mail server";
-    license = with licenses; [
-      ipl10
-      epl20
-    ];
+    license = with licenses; [ ipl10 epl20 ];
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      globin
-      dotlambda
-      lewo
-    ];
+    maintainers = with maintainers; [ globin dotlambda lewo ];
   };
 }

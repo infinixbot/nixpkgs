@@ -40,10 +40,7 @@ buildDotnetModule rec {
     blueprint-compiler
   ];
 
-  buildInputs = [
-    gtk4
-    libadwaita
-  ]; # Used by blueprint-compiler
+  buildInputs = [ gtk4 libadwaita ]; # Used by blueprint-compiler
 
   # Denaro switches installation tool frequently (bash -> just -> cake)
   # For maintainability, let's do it ourselves
@@ -69,10 +66,7 @@ buildDotnetModule rec {
     mainProgram = "NickvisionMoney.GNOME";
     license = licenses.mit;
     changelog = "https://github.com/nlogozzo/NickvisionMoney/releases/tag/${version}";
-    maintainers = with maintainers; [
-      chuangzhu
-      kashw2
-    ];
+    maintainers = with maintainers; [ chuangzhu kashw2 ];
     platforms = platforms.linux;
   };
 }

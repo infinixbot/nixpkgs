@@ -26,10 +26,7 @@ in
     }:
     makePythonHook {
       name = "conda-install-hook";
-      propagatedBuildInputs = [
-        gnutar
-        lbzip2
-      ];
+      propagatedBuildInputs = [ gnutar lbzip2 ];
       substitutions = {
         inherit pythonSitePackages;
       };
@@ -79,10 +76,7 @@ in
     }:
     makePythonHook {
       name = "pip-build-hook.sh";
-      propagatedBuildInputs = [
-        pip
-        wheel
-      ];
+      propagatedBuildInputs = [ pip wheel ];
       substitutions = {
         inherit pythonInterpreter pythonSitePackages;
       };
@@ -217,12 +211,7 @@ in
       substitutions = {
         inherit pythonInterpreter pythonSitePackages;
         compileArgs = lib.concatStringsSep " " (
-          [
-            "-q"
-            "-f"
-            "-i -"
-          ]
-          ++ lib.optionals isPy3k [ "-j $NIX_BUILD_CORES" ]
+          [ "-q" "-f" "-i -" ] ++ lib.optionals isPy3k [ "-j $NIX_BUILD_CORES" ]
         );
         bytecodeName = if isPy3k then "__pycache__" else "*.pyc";
       };
@@ -276,10 +265,7 @@ in
     }:
     makePythonHook {
       name = "setuptools-build-hook";
-      propagatedBuildInputs = [
-        setuptools
-        wheel
-      ];
+      propagatedBuildInputs = [ setuptools wheel ];
       substitutions = {
         inherit pythonInterpreter setuppy;
         # python2.pkgs.setuptools does not support parallelism
@@ -343,10 +329,7 @@ in
     { makePythonHook, installShellFiles }:
     makePythonHook {
       name = "python${python.pythonVersion}-sphinx-hook";
-      propagatedBuildInputs = [
-        pythonOnBuildForHost.pkgs.sphinx
-        installShellFiles
-      ];
+      propagatedBuildInputs = [ pythonOnBuildForHost.pkgs.sphinx installShellFiles ];
       substitutions = {
         sphinxBuild = "${pythonOnBuildForHost.pkgs.sphinx}/bin/sphinx-build";
       };

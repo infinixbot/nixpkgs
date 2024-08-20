@@ -78,43 +78,14 @@ lib.recursiveUpdate orig rec {
   texlogsieve.extraBuildInputs = [ bin.luatex ];
 
   #### perl packages
-  crossrefware.extraBuildInputs = [
-    (perl.withPackages (
-      ps: with ps; [
-        LWP
-        URI
-      ]
-    ))
-  ];
-  ctan-o-mat.extraBuildInputs = [
-    (perl.withPackages (
-      ps: with ps; [
-        LWP
-        LWPProtocolHttps
-      ]
-    ))
-  ];
+  crossrefware.extraBuildInputs = [ (perl.withPackages (ps: with ps; [ LWP URI ])) ];
+  ctan-o-mat.extraBuildInputs = [ (perl.withPackages (ps: with ps; [ LWP LWPProtocolHttps ])) ];
   ctanify.extraBuildInputs = [ (perl.withPackages (ps: with ps; [ FileCopyRecursive ])) ];
-  ctanupload.extraBuildInputs = [
-    (perl.withPackages (
-      ps: with ps; [
-        HTMLFormatter
-        WWWMechanize
-      ]
-    ))
-  ];
+  ctanupload.extraBuildInputs = [ (perl.withPackages (ps: with ps; [ HTMLFormatter WWWMechanize ])) ];
   exceltex.extraBuildInputs = [ (perl.withPackages (ps: with ps; [ SpreadsheetParseExcel ])) ];
   latex-git-log.extraBuildInputs = [ (perl.withPackages (ps: with ps; [ IPCSystemSimple ])) ];
   latexindent.extraBuildInputs = [
-    (perl.withPackages (
-      ps: with ps; [
-        FileHomeDir
-        LogDispatch
-        LogLog4perl
-        UnicodeLineBreak
-        YAMLTiny
-      ]
-    ))
+    (perl.withPackages (ps: with ps; [ FileHomeDir LogDispatch LogLog4perl UnicodeLineBreak YAMLTiny ]))
   ];
   pax.extraBuildInputs = [ (perl.withPackages (ps: with ps; [ FileWhich ])) ];
   ptex-fontmaps.extraBuildInputs = [ (perl.withPackages (ps: with ps; [ Tk ])) ];
@@ -133,81 +104,34 @@ lib.recursiveUpdate orig rec {
   cjk-gs-integrate.extraBuildInputs = [ ghostscript_headless ];
   context.extraBuildInputs = [ coreutils ];
   context-legacy.extraBuildInputs = [ ruby ];
-  cyrillic-bin.extraBuildInputs = [
-    coreutils
-    gnused
-  ];
-  dtxgen.extraBuildInputs = [
-    coreutils
-    getopt
-    gnumake
-    zip
-  ];
+  cyrillic-bin.extraBuildInputs = [ coreutils gnused ];
+  dtxgen.extraBuildInputs = [ coreutils getopt gnumake zip ];
   dviljk.extraBuildInputs = [ coreutils ];
   epspdf.extraBuildInputs = [ ghostscript_headless ];
   epstopdf.extraBuildInputs = [ ghostscript_headless ];
   fragmaster.extraBuildInputs = [ ghostscript_headless ];
-  installfont.extraBuildInputs = [
-    coreutils
-    getopt
-    gnused
-  ];
-  latexfileversion.extraBuildInputs = [
-    coreutils
-    gnugrep
-    gnused
-  ];
-  listings-ext.extraBuildInputs = [
-    coreutils
-    getopt
-  ];
-  ltxfileinfo.extraBuildInputs = [
-    coreutils
-    getopt
-    gnused
-  ];
+  installfont.extraBuildInputs = [ coreutils getopt gnused ];
+  latexfileversion.extraBuildInputs = [ coreutils gnugrep gnused ];
+  listings-ext.extraBuildInputs = [ coreutils getopt ];
+  ltxfileinfo.extraBuildInputs = [ coreutils getopt gnused ];
   ltximg.extraBuildInputs = [ ghostscript_headless ];
   luaotfload.extraBuildInputs = [ ncurses ];
-  makeindex.extraBuildInputs = [
-    coreutils
-    gnused
-  ];
-  pagelayout.extraBuildInputs = [
-    gnused
-    ncurses
-  ];
+  makeindex.extraBuildInputs = [ coreutils gnused ];
+  pagelayout.extraBuildInputs = [ gnused ncurses ];
   pdfcrop.extraBuildInputs = [ ghostscript_headless ];
-  pdftex.extraBuildInputs = [
-    coreutils
-    ghostscript_headless
-    gnused
-  ];
+  pdftex.extraBuildInputs = [ coreutils ghostscript_headless gnused ];
   pdftex-quiet.extraBuildInputs = [ coreutils ];
-  pdfxup.extraBuildInputs = [
-    coreutils
-    ghostscript_headless
-  ];
+  pdfxup.extraBuildInputs = [ coreutils ghostscript_headless ];
   pkfix-helper.extraBuildInputs = [ ghostscript_headless ];
   ps2eps.extraBuildInputs = [ ghostscript_headless ];
   pst2pdf.extraBuildInputs = [ ghostscript_headless ];
   tex4ebook.extraBuildInputs = [ html-tidy ];
   texlive-scripts.extraBuildInputs = [ gnused ];
-  texlive-scripts-extra.extraBuildInputs = [
-    coreutils
-    findutils
-    ghostscript_headless
-    gnused
-  ];
+  texlive-scripts-extra.extraBuildInputs = [ coreutils findutils ghostscript_headless gnused ];
   thumbpdf.extraBuildInputs = [ ghostscript_headless ];
   tpic2pdftex.extraBuildInputs = [ gawk ];
-  wordcount.extraBuildInputs = [
-    coreutils
-    gnugrep
-  ];
-  xdvi.extraBuildInputs = [
-    coreutils
-    gnugrep
-  ];
+  wordcount.extraBuildInputs = [ coreutils gnugrep ];
+  xdvi.extraBuildInputs = [ coreutils gnugrep ];
   xindy.extraBuildInputs = [ gzip ];
 
   #### adjustments to binaries
@@ -221,13 +145,7 @@ lib.recursiveUpdate orig rec {
   texlive-scripts.binfiles = lib.remove "man" orig.texlive-scripts.binfiles;
   # xindy is broken on some platforms unfortunately
   xindy.binfiles =
-    if bin ? xindy then
-      lib.subtractLists [
-        "xindy.mem"
-        "xindy.run"
-      ] orig.xindy.binfiles
-    else
-      [ ];
+    if bin ? xindy then lib.subtractLists [ "xindy.mem" "xindy.run" ] orig.xindy.binfiles else [ ];
 
   #### additional symlinks
   cluttex.binlinks = {
@@ -352,12 +270,7 @@ lib.recursiveUpdate orig rec {
   '';
 
   pdftex.postFixup = ''
-    sed -i -e '2iPATH="${
-      lib.makeBinPath [
-        coreutils
-        gnused
-      ]
-    }''${PATH:+:$PATH}"' \
+    sed -i -e '2iPATH="${lib.makeBinPath [ coreutils gnused ]}''${PATH:+:$PATH}"' \
       -e 's!^distillerpath="/usr/local/bin"$!distillerpath="${
         lib.makeBinPath [ ghostscript_headless ]
       }"!' \
@@ -440,24 +353,13 @@ lib.recursiveUpdate orig rec {
   texlive-scripts-extra.postFixup = ''
     patch -R "$out"/bin/texlinks < '${./texlinks.diff}'
     sed -i '2iPATH="${lib.makeBinPath [ coreutils ]}''${PATH:+:$PATH}"' "$out"/bin/{allcm,dvired,mkocp,ps2frag}
+    sed -i '2iPATH="${lib.makeBinPath [ coreutils findutils ]}''${PATH:+:$PATH}"' "$out"/bin/allneeded
     sed -i '2iPATH="${
-      lib.makeBinPath [
-        coreutils
-        findutils
-      ]
-    }''${PATH:+:$PATH}"' "$out"/bin/allneeded
-    sed -i '2iPATH="${
-      lib.makeBinPath [
-        coreutils
-        ghostscript_headless
-      ]
+      lib.makeBinPath [ coreutils ghostscript_headless ]
     }''${PATH:+:$PATH}"' "$out"/bin/dvi2fax
     sed -i '2iPATH="${lib.makeBinPath [ gnused ]}''${PATH:+:$PATH}"' "$out"/bin/{kpsetool,texconfig,texconfig-sys}
     sed -i '2iPATH="${
-      lib.makeBinPath [
-        coreutils
-        gnused
-      ]
+      lib.makeBinPath [ coreutils gnused ]
     }''${PATH:+:$PATH}"' "$out"/bin/texconfig-dialog
   '';
 
@@ -480,10 +382,7 @@ lib.recursiveUpdate orig rec {
   xdvi.deps = (orig.xdvi.deps or [ ]) ++ [ "metafont" ];
 
   # remove dependency-heavy packages from the basic collections
-  collection-basic.deps = lib.subtractLists [
-    "metafont"
-    "xdvi"
-  ] orig.collection-basic.deps;
+  collection-basic.deps = lib.subtractLists [ "metafont" "xdvi" ] orig.collection-basic.deps;
 
   # add them elsewhere so that collections cover all packages
   collection-metapost.deps = orig.collection-metapost.deps ++ [ "metafont" ];
@@ -545,13 +444,7 @@ lib.recursiveUpdate orig rec {
     ] ++ lib.toList bin.core.meta.license.shortName ++ orig."texlive.infra".license or [ ];
 
     scriptsFolder = "texlive";
-    extraBuildInputs = [
-      coreutils
-      gnused
-      gnupg
-      tl.kpathsea
-      (perl.withPackages (ps: with ps; [ Tk ]))
-    ];
+    extraBuildInputs = [ coreutils gnused gnupg tl.kpathsea (perl.withPackages (ps: with ps; [ Tk ])) ];
 
     # make tlmgr believe it can use kpsewhich to evaluate TEXMFROOT
     postFixup = ''
@@ -559,11 +452,7 @@ lib.recursiveUpdate orig rec {
         --replace-fail 'if (-r "$bindir/$kpsewhichname")' 'if (1)'
       sed -i '2i$ENV{PATH}='"'"'${lib.makeBinPath [ gnupg ]}'"'"' . ($ENV{PATH} ? ":$ENV{PATH}" : '"'''"');' "$out"/bin/tlmgr
       sed -i '2iPATH="${
-        lib.makeBinPath [
-          coreutils
-          gnused
-          tl.kpathsea
-        ]
+        lib.makeBinPath [ coreutils gnused tl.kpathsea ]
       }''${PATH:+:$PATH}"' "$out"/bin/mktexlsr
     '';
 

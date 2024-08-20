@@ -54,13 +54,7 @@ let
         };
 
         runtimePackages = lib.mkOption {
-          default = [
-            pkgs.bash
-            pkgs.gnutar
-            pkgs.gzip
-            pkgs.git
-            pkgs.nix
-          ];
+          default = [ pkgs.bash pkgs.gnutar pkgs.gzip pkgs.git pkgs.nix ];
           defaultText = lib.literalExpression "[ pkgs.bash pkgs.gnutar pkgs.gzip pkgs.git pkgs.nix ]";
           description = "Add programs to the buildkite-agent environment";
           type = lib.types.listOf lib.types.package;
@@ -197,10 +191,7 @@ in
         description = "Buildkite Agent";
         wantedBy = [ "multi-user.target" ];
         after = [ "network.target" ];
-        path = cfg.runtimePackages ++ [
-          cfg.package
-          pkgs.coreutils
-        ];
+        path = cfg.runtimePackages ++ [ cfg.package pkgs.coreutils ];
         environment = config.networking.proxy.envVars // {
           HOME = cfg.dataDir;
           NIX_REMOTE = "daemon";

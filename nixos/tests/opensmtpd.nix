@@ -37,10 +37,7 @@ import ./make-test-python.nix {
       {
         imports = [ common/user-account.nix ];
         networking = {
-          firewall.allowedTCPPorts = [
-            25
-            143
-          ];
+          firewall.allowedTCPPorts = [ 25 143 ];
           useDHCP = false;
           interfaces.eth1.ipv4.addresses = pkgs.lib.mkOverride 0 [
             {
@@ -117,10 +114,7 @@ import ./make-test-python.nix {
                 assert lastline.strip() == b'Hello World'
             '';
           in
-          [
-            sendTestMail
-            checkMailLanded
-          ];
+          [ sendTestMail checkMailLanded ];
       };
   };
 

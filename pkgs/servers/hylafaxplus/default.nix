@@ -50,18 +50,8 @@ let
     src = ./post-patch.sh;
     inherit configSite;
     maxuid = lib.optionalString (maxuid != null) (builtins.toString maxuid);
-    faxcover_binpath = lib.makeBinPath [
-      stdenv.shellPackage
-      coreutils
-    ];
-    faxsetup_binpath = lib.makeBinPath [
-      stdenv.shellPackage
-      coreutils
-      findutils
-      gnused
-      gnugrep
-      gawk
-    ];
+    faxcover_binpath = lib.makeBinPath [ stdenv.shellPackage coreutils ];
+    faxsetup_binpath = lib.makeBinPath [ stdenv.shellPackage coreutils findutils gnused gnugrep gawk ];
   };
 
   postInstall = substituteAll {

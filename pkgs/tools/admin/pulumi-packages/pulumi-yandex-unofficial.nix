@@ -22,11 +22,7 @@ mkPulumiPackage rec {
     description = "Unofficial Yandex Cloud Resource Provider";
     homepage = "https://github.com/Regrau/pulumi-yandex";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      tie
-      veehaitch
-      trundle
-    ];
+    maintainers = with maintainers; [ tie veehaitch trundle ];
     mainProgram = cmdRes;
   };
 }

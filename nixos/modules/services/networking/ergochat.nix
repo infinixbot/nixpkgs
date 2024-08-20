@@ -160,8 +160,5 @@ in
     };
 
   };
-  meta.maintainers = with lib.maintainers; [
-    lassulus
-    tv
-  ];
+  meta.maintainers = with lib.maintainers; [ lassulus tv ];
 }

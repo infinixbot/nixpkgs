@@ -142,18 +142,11 @@ let
             homepage = "https://www.denx.de/wiki/U-Boot/";
             description = "Boot loader for embedded systems";
             license = licenses.gpl2Plus;
-            maintainers = with maintainers; [
-              bartsch
-              dezgeg
-              lopsided98
-            ];
+            maintainers = with maintainers; [ bartsch dezgeg lopsided98 ];
           }
           // extraMeta;
       }
-      // removeAttrs args [
-        "extraMeta"
-        "pythonScriptsToInstall"
-      ]
+      // removeAttrs args [ "extraMeta" "pythonScriptsToInstall" ]
     )
   );
 in
@@ -168,16 +161,9 @@ in
     extraMeta.platforms = lib.platforms.linux;
 
     crossTools = true;
-    extraMakeFlags = [
-      "HOST_TOOLS_ALL=y"
-      "NO_SDL=1"
-      "cross_tools"
-    ];
+    extraMakeFlags = [ "HOST_TOOLS_ALL=y" "NO_SDL=1" "cross_tools" ];
 
-    outputs = [
-      "out"
-      "man"
-    ];
+    outputs = [ "out" "man" ];
 
     postInstall = ''
       installManPage doc/*.1
@@ -210,10 +196,7 @@ in
   ubootAmx335xEVM = buildUBoot {
     defconfig = "am335x_evm_defconfig";
     extraMeta.platforms = [ "armv7l-linux" ];
-    filesToInstall = [
-      "MLO"
-      "u-boot.img"
-    ];
+    filesToInstall = [ "MLO" "u-boot.img" ];
   };
 
   ubootBananaPi = buildUBoot {
@@ -258,12 +241,7 @@ in
   ubootJetsonTK1 = buildUBoot {
     defconfig = "jetson-tk1_defconfig";
     extraMeta.platforms = [ "armv7l-linux" ];
-    filesToInstall = [
-      "u-boot"
-      "u-boot.dtb"
-      "u-boot-dtb-tegra.bin"
-      "u-boot-nodtb-tegra.bin"
-    ];
+    filesToInstall = [ "u-boot" "u-boot.dtb" "u-boot-dtb-tegra.bin" "u-boot-nodtb-tegra.bin" ];
     # tegra-uboot-flasher expects this exact directory layout, sigh...
     postInstall = ''
       mkdir -p $out/spl
@@ -328,10 +306,7 @@ in
       license = lib.licenses.unfreeRedistributableFirmware;
     };
     BL31 = "${armTrustedFirmwareRK3399}/bl31.elf";
-    filesToInstall = [
-      "u-boot.itb"
-      "idbloader.img"
-    ];
+    filesToInstall = [ "u-boot.itb" "idbloader.img" ];
     postBuild = ''
       ./tools/mkimage -n rk3399 -T rksd -d ${rkbin}/rk33/rk3399_ddr_800MHz_v1.24.bin idbloader.img
       cat ${rkbin}/rk33/rk3399_miniloader_v1.19.bin >> idbloader.img
@@ -343,21 +318,13 @@ in
     extraMeta.platforms = [ "aarch64-linux" ];
     BL31 = "${armTrustedFirmwareRK3588}/bl31.elf";
     ROCKCHIP_TPL = rkbin.TPL_RK3588;
-    filesToInstall = [
-      "u-boot.itb"
-      "idbloader.img"
-      "u-boot-rockchip.bin"
-      "u-boot-rockchip-spi.bin"
-    ];
+    filesToInstall = [ "u-boot.itb" "idbloader.img" "u-boot-rockchip.bin" "u-boot-rockchip-spi.bin" ];
   };
 
   ubootNovena = buildUBoot {
     defconfig = "novena_defconfig";
     extraMeta.platforms = [ "armv7l-linux" ];
-    filesToInstall = [
-      "u-boot-dtb.img"
-      "SPL"
-    ];
+    filesToInstall = [ "u-boot-dtb.img" "SPL" ];
   };
 
   # Flashing instructions:
@@ -377,11 +344,7 @@ in
     buildUBoot {
       defconfig = "odroid-c2_defconfig";
       extraMeta.platforms = [ "aarch64-linux" ];
-      filesToInstall = [
-        "u-boot.bin"
-        "u-boot.gxbb"
-        "${firmwareBlobs}/bl1.bin.hardkernel"
-      ];
+      filesToInstall = [ "u-boot.bin" "u-boot.gxbb" "${firmwareBlobs}/bl1.bin.hardkernel" ];
       postBuild = ''
         # BL301 image needs at least 64 bytes of padding after it to place
         # signing headers (with amlbootsig)
@@ -440,12 +403,7 @@ in
     extraMeta.platforms = [ "aarch64-linux" ];
     BL31 = "${armTrustedFirmwareRK3588}/bl31.elf";
     ROCKCHIP_TPL = rkbin.TPL_RK3588;
-    filesToInstall = [
-      "u-boot.itb"
-      "idbloader.img"
-      "u-boot-rockchip.bin"
-      "u-boot-rockchip-spi.bin"
-    ];
+    filesToInstall = [ "u-boot.itb" "idbloader.img" "u-boot-rockchip.bin" "u-boot-rockchip-spi.bin" ];
   };
 
   ubootOrangePiPc = buildUBoot {
@@ -527,10 +485,7 @@ in
     defconfig = "pinebook-pro-rk3399_defconfig";
     extraMeta.platforms = [ "aarch64-linux" ];
     BL31 = "${armTrustedFirmwareRK3399}/bl31.elf";
-    filesToInstall = [
-      "u-boot.itb"
-      "idbloader.img"
-    ];
+    filesToInstall = [ "u-boot.itb" "idbloader.img" ];
   };
 
   ubootQemuAarch64 = buildUBoot {
@@ -559,10 +514,7 @@ in
       CONFIG_USB_EHCI_GENERIC=y
       CONFIG_USB_XHCI_HCD=y
     '';
-    extraMeta.platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    extraMeta.platforms = [ "i686-linux" "x86_64-linux" ];
     filesToInstall = [ "u-boot.rom" ];
   };
 
@@ -612,10 +564,7 @@ in
     defconfig = "rock-4c-plus-rk3399_defconfig";
     extraMeta.platforms = [ "aarch64-linux" ];
     BL31 = "${armTrustedFirmwareRK3399}/bl31.elf";
-    filesToInstall = [
-      "u-boot.itb"
-      "idbloader.img"
-    ];
+    filesToInstall = [ "u-boot.itb" "idbloader.img" ];
   };
 
   ubootRock5ModelB = buildUBoot {
@@ -623,23 +572,14 @@ in
     extraMeta.platforms = [ "aarch64-linux" ];
     BL31 = "${armTrustedFirmwareRK3588}/bl31.elf";
     ROCKCHIP_TPL = rkbin.TPL_RK3588;
-    filesToInstall = [
-      "u-boot.itb"
-      "idbloader.img"
-      "u-boot-rockchip.bin"
-      "u-boot-rockchip-spi.bin"
-    ];
+    filesToInstall = [ "u-boot.itb" "idbloader.img" "u-boot-rockchip.bin" "u-boot-rockchip-spi.bin" ];
   };
 
   ubootRock64 = buildUBoot {
     defconfig = "rock64-rk3328_defconfig";
     extraMeta.platforms = [ "aarch64-linux" ];
     BL31 = "${armTrustedFirmwareRK3328}/bl31.elf";
-    filesToInstall = [
-      "u-boot.itb"
-      "idbloader.img"
-      "u-boot-rockchip.bin"
-    ];
+    filesToInstall = [ "u-boot.itb" "idbloader.img" "u-boot-rockchip.bin" ];
   };
 
   # A special build with much lower memory frequency (666 vs 1600 MT/s) which
@@ -656,11 +596,7 @@ in
     defconfig = "rock64-rk3328_defconfig";
     extraMeta.platforms = [ "aarch64-linux" ];
     BL31 = "${armTrustedFirmwareRK3328}/bl31.elf";
-    filesToInstall = [
-      "u-boot.itb"
-      "idbloader.img"
-      "u-boot-rockchip.bin"
-    ];
+    filesToInstall = [ "u-boot.itb" "idbloader.img" "u-boot-rockchip.bin" ];
   };
 
   ubootRockPro64 = buildUBoot {
@@ -674,20 +610,13 @@ in
     defconfig = "rockpro64-rk3399_defconfig";
     extraMeta.platforms = [ "aarch64-linux" ];
     BL31 = "${armTrustedFirmwareRK3399}/bl31.elf";
-    filesToInstall = [
-      "u-boot.itb"
-      "idbloader.img"
-    ];
+    filesToInstall = [ "u-boot.itb" "idbloader.img" ];
   };
 
   ubootROCPCRK3399 = buildUBoot {
     defconfig = "roc-pc-rk3399_defconfig";
     extraMeta.platforms = [ "aarch64-linux" ];
-    filesToInstall = [
-      "spl/u-boot-spl.bin"
-      "u-boot.itb"
-      "idbloader.img"
-    ];
+    filesToInstall = [ "spl/u-boot-spl.bin" "u-boot.itb" "idbloader.img" ];
     BL31 = "${armTrustedFirmwareRK3399}/bl31.elf";
   };
 
@@ -710,11 +639,7 @@ in
     extraMeta.platforms = [ "aarch64-linux" ];
     BL31 = "${armTrustedFirmwareRK3588}/bl31.elf";
     ROCKCHIP_TPL = rkbin.TPL_RK3588;
-    filesToInstall = [
-      "u-boot.itb"
-      "idbloader.img"
-      "u-boot-rockchip.bin"
-    ];
+    filesToInstall = [ "u-boot.itb" "idbloader.img" "u-boot-rockchip.bin" ];
   };
 
   ubootUtilite = buildUBoot {
@@ -732,19 +657,13 @@ in
   ubootWandboard = buildUBoot {
     defconfig = "wandboard_defconfig";
     extraMeta.platforms = [ "armv7l-linux" ];
-    filesToInstall = [
-      "u-boot.img"
-      "SPL"
-    ];
+    filesToInstall = [ "u-boot.img" "SPL" ];
   };
 
   ubootRockPi4 = buildUBoot {
     defconfig = "rock-pi-4-rk3399_defconfig";
     extraMeta.platforms = [ "aarch64-linux" ];
     BL31 = "${armTrustedFirmwareRK3399}/bl31.elf";
-    filesToInstall = [
-      "u-boot.itb"
-      "idbloader.img"
-    ];
+    filesToInstall = [ "u-boot.itb" "idbloader.img" ];
   };
 }

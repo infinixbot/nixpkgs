@@ -69,11 +69,7 @@ stdenv.mkDerivation rec {
     "-DFETCHCONTENT_SOURCE_DIR_TOML11=${toml11}"
   ];
 
-  nativeBuildInputs = [
-    cmake
-    git
-    cacert
-  ];
+  nativeBuildInputs = [ cmake git cacert ];
   buildInputs = [
     (boost179.override {
       enableShared = stdenv.isDarwin;

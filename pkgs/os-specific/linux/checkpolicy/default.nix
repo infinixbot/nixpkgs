@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-GzRrPN1PinihV2J7rWSjs0ecZ7ahnRXm1chpRiDq28E=";
   };
 
-  nativeBuildInputs = [
-    bison
-    flex
-  ];
+  nativeBuildInputs = [ bison flex ];
   buildInputs = [ libsepol ];
 
   makeFlags = [

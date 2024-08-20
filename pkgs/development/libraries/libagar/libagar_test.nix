@@ -29,14 +29,7 @@ stdenv.mkDerivation {
 
   configureFlags = [ "--with-agar=${libagar}" ];
 
-  buildInputs = [
-    perl
-    bsdbuild
-    libagar
-    libjpeg
-    libpng
-    openssl
-  ];
+  buildInputs = [ perl bsdbuild libagar libjpeg libpng openssl ];
 
   meta = with lib; {
     broken = (stdenv.isLinux && stdenv.isAarch64);

@@ -75,10 +75,7 @@ let
       ];
       license = if enableUnfree then licenses.elastic20 else licenses.asl20;
       platforms = platforms.unix;
-      maintainers = with maintainers; [
-        offline
-        basvandijk
-      ];
+      maintainers = with maintainers; [ offline basvandijk ];
     };
     passthru.tests = lib.optionalAttrs (config.allowUnfree && enableUnfree) (
       assert this.drvPath == nixosTests.elk.unfree.ELK-7.elkPackages.logstash.drvPath;

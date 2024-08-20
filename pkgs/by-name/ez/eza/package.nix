@@ -29,26 +29,15 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-z1jrCUstQk272EEeqcjGhm5b/YaxTFw21F+AbguMdmo=";
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    installShellFiles
-    pandoc
-  ];
-  buildInputs =
-    [ zlib ]
-    ++ lib.optionals stdenv.isDarwin [
-      libiconv
-      darwin.apple_sdk.frameworks.Security
-    ];
+  nativeBuildInputs = [ cmake pkg-config installShellFiles pandoc ];
+  buildInputs = [
+    zlib
+  ] ++ lib.optionals stdenv.isDarwin [ libiconv darwin.apple_sdk.frameworks.Security ];
 
   buildNoDefaultFeatures = true;
   buildFeatures = lib.optional gitSupport "git";
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   postInstall =
     ''
@@ -79,10 +68,7 @@ rustPlatform.buildRustPackage rec {
     changelog = "https://github.com/eza-community/eza/releases/tag/v${version}";
     license = licenses.mit;
     mainProgram = "eza";
-    maintainers = with maintainers; [
-      cafkafk
-      _9glenda
-    ];
+    maintainers = with maintainers; [ cafkafk _9glenda ];
     platforms = platforms.unix ++ platforms.windows;
   };
 }

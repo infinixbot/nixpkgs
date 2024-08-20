@@ -16,12 +16,7 @@ stdenv.mkDerivation rec {
   version = "2.1";
 
   nativeBuildInputs = [ copyDesktopItems ];
-  buildInputs = [
-    libX11
-    libXpm
-    libXt
-    motif
-  ];
+  buildInputs = [ libX11 libXpm libXt motif ];
 
   NIX_CFLAGS_LINK = "-lXpm";
 
@@ -42,10 +37,7 @@ stdenv.mkDerivation rec {
       icon = "xbill";
       desktopName = "XBill";
       comment = "Get rid of those Wingdows viruses!";
-      categories = [
-        "Game"
-        "ArcadeGame"
-      ];
+      categories = [ "Game" "ArcadeGame" ];
     })
   ];
 

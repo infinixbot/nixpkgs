@@ -28,10 +28,7 @@ buildNpmPackage rec {
 
   npmDepsHash = "sha256-RAjZGuK0C6R22fVFq82GPQoD1HpRs3MYMluUAV5ZEc8=";
 
-  nativeBuildInputs = [
-    perl
-    makeBinaryWrapper
-  ];
+  nativeBuildInputs = [ perl makeBinaryWrapper ];
 
   buildInputs =
     with perl.pkgs;

@@ -30,12 +30,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   outputs =
-    [
-      "out"
-      "dev"
-      "info"
-      "lib"
-    ]
+    [ "out" "dev" "info" "lib" ]
     # help2man can't cross compile because it runs `poke --help` to
     # generate the man page
     ++ lib.optional (!isCross) "man";
@@ -56,10 +51,7 @@ stdenv.mkDerivation (finalAttrs: {
     ];
 
   buildInputs =
-    [
-      boehmgc
-      readline
-    ]
+    [ boehmgc readline ]
     ++ lib.optional nbdSupport libnbd
     ++ lib.optional textStylingSupport gettext
     ++ lib.optional finalAttrs.finalPackage.doCheck dejagnu;
@@ -99,10 +91,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "http://www.jemarch.net/poke";
     changelog = "https://git.savannah.gnu.org/cgit/poke.git/plain/ChangeLog?h=releases/poke-${finalAttrs.version}";
     license = lib.licenses.gpl3Plus;
-    maintainers = with lib.maintainers; [
-      AndersonTorres
-      kira-bruneau
-    ];
+    maintainers = with lib.maintainers; [ AndersonTorres kira-bruneau ];
     platforms = lib.platforms.unix;
     broken = stdenv.isDarwin && stdenv.isAarch64;
   };

@@ -24,18 +24,11 @@ lib.throwIfNot (lib.versionAtLeast ocaml.version "4.08")
       hash = "sha256-XaI7GTU/O5UEWuYX4yqaIRmEoH7FuvCg/+gtKbE/P1s=";
     };
 
-    nativeBuildInputs = [
-      which
-      ocaml
-      findlib
-    ];
+    nativeBuildInputs = [ which ocaml findlib ];
 
     strictDeps = true;
 
-    patches = [
-      ./configure.sh.patch
-      ./Makefile.config.example.patch
-    ];
+    patches = [ ./configure.sh.patch ./Makefile.config.example.patch ];
 
     createFindlibDestdir = true;
 
@@ -44,10 +37,7 @@ lib.throwIfNot (lib.versionAtLeast ocaml.version "4.08")
     dontAddStaticConfigureFlags = true;
     configurePlatforms = [ ];
 
-    propagatedBuildInputs = [
-      camlzip
-      extlib
-    ];
+    propagatedBuildInputs = [ camlzip extlib ];
 
     meta = with lib; {
       description = "Library that parses Java .class files into OCaml data structures";

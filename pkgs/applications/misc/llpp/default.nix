@@ -42,28 +42,10 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    makeWrapper
-    ocaml
-    pkg-config
-  ];
+  nativeBuildInputs = [ makeWrapper ocaml pkg-config ];
   buildInputs =
-    [
-      mupdf
-      libX11
-      freetype
-      zlib
-      gumbo
-      jbig2dec
-      openjpeg
-      libjpeg
-      lcms2
-      harfbuzz
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      libGLU
-      libGL
-    ]
+    [ mupdf libX11 freetype zlib gumbo jbig2dec openjpeg libjpeg lcms2 harfbuzz ]
+    ++ lib.optionals stdenv.isLinux [ libGLU libGL ]
     ++ lib.optionals stdenv.isDarwin [
       darwin.apple_sdk.frameworks.OpenGL
       darwin.apple_sdk.frameworks.Cocoa
@@ -97,9 +79,6 @@ stdenv.mkDerivation rec {
     description = "MuPDF based PDF pager written in OCaml";
     platforms = platforms.linux ++ platforms.darwin;
     maintainers = with maintainers; [ pSub ];
-    license = [
-      licenses.publicDomain
-      licenses.bsd3
-    ];
+    license = [ licenses.publicDomain licenses.bsd3 ];
   };
 }

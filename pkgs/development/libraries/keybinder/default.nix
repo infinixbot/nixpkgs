@@ -24,12 +24,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-elL6DZtzCwAtoyGZYP0jAma6tHPks2KAtrziWtBENGU=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    autoconf
-    automake
-    gobject-introspection
-  ];
+  nativeBuildInputs = [ pkg-config autoconf automake gobject-introspection ];
 
   buildInputs = [
     libtool

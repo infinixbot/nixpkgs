@@ -26,10 +26,7 @@ tcl.mkTclDerivation rec {
   ];
 
   buildInputs =
-    [
-      xorg.libX11
-      tcllib
-    ]
+    [ xorg.libX11 tcllib ]
     ++ lib.optionals stdenv.isDarwin (
       with darwin.apple_sdk.frameworks;
       [

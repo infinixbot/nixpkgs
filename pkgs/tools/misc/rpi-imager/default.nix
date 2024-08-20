@@ -79,10 +79,7 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://github.com/raspberrypi/rpi-imager/releases/tag/v${finalAttrs.version}";
     license = licenses.asl20;
     mainProgram = "rpi-imager";
-    maintainers = with maintainers; [
-      ymarkus
-      anthonyroussel
-    ];
+    maintainers = with maintainers; [ ymarkus anthonyroussel ];
     platforms = platforms.all;
     # does not build on darwin
     broken = stdenv.isDarwin;

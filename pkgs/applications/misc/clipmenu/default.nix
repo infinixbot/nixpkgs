@@ -27,11 +27,7 @@ stdenv.mkDerivation rec {
   '';
 
   makeFlags = [ "PREFIX=$(out)" ];
-  nativeBuildInputs = [
-    makeWrapper
-    xsel
-    clipnotify
-  ];
+  nativeBuildInputs = [ makeWrapper xsel clipnotify ];
 
   postFixup = ''
     sed -i "$out/bin/clipctl" -e 's,clipmenud\$,\.clipmenud-wrapped\$,'
@@ -40,16 +36,7 @@ stdenv.mkDerivation rec {
       --prefix PATH : "${lib.makeBinPath [ xsel ]}"
 
     wrapProgram "$out/bin/clipmenud" \
-      --set PATH "${
-        lib.makeBinPath [
-          clipnotify
-          coreutils
-          gawk
-          util-linux
-          xdotool
-          xsel
-        ]
-      }"
+      --set PATH "${lib.makeBinPath [ clipnotify coreutils gawk util-linux xdotool xsel ]}"
   '';
 
   meta = with lib; {

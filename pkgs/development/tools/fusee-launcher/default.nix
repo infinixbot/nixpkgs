@@ -38,15 +38,8 @@ stdenv.mkDerivation {
       --prefix PYTHONPATH : "$PYTHONPATH:$(toPythonPath $out)"
   '';
 
-  nativeBuildInputs = [
-    arm-embedded-cc
-    makeWrapper
-    python3Packages.wrapPython
-  ];
-  buildInputs = [
-    python3
-    python3Packages.pyusb
-  ];
+  nativeBuildInputs = [ arm-embedded-cc makeWrapper python3Packages.wrapPython ];
+  buildInputs = [ python3 python3Packages.pyusb ];
   pythonPath = with python3Packages; [ pyusb ];
 
   meta = with lib; {

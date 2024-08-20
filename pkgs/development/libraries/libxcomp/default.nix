@@ -19,16 +19,8 @@ stdenv.mkDerivation rec {
     url = "https://code.x2go.org/releases/source/nx-libs/nx-libs-${version}-lite.tar.gz";
   };
 
-  buildInputs = [
-    libjpeg
-    libpng
-    libX11
-    zlib
-  ];
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  buildInputs = [ libjpeg libpng libX11 zlib ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
   preAutoreconf = ''
     cd nxcomp/

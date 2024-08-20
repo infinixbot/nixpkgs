@@ -15,12 +15,7 @@ stdenv.mkDerivation rec {
 
   patches = [ ./cve-2013-4276.patch ];
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "man"
-  ];
+  outputs = [ "bin" "dev" "out" "man" ];
 
   doCheck = false; # fails with "Error in Linear interpolation (2p): Must be i=8000, But is n=8001"
 

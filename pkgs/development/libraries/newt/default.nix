@@ -33,10 +33,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
   nativeBuildInputs = [ python ];
-  buildInputs = [
-    slang
-    popt
-  ];
+  buildInputs = [ slang popt ];
 
   NIX_LDFLAGS = "-lncurses";
 

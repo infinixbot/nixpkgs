@@ -23,16 +23,8 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    wayland
-  ];
-  buildInputs = [
-    libxkbcommon
-    wayland
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config wayland ];
+  buildInputs = [ libxkbcommon wayland ];
 
   meta = with lib; {
     description = "xdotool type for wayland";

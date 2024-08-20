@@ -33,17 +33,7 @@ let
   targetPrefix = optionalString (targetPlatform != hostPlatform) (targetPlatform.config + "-");
 
   # See description in cc-wrapper.
-  suffixSalt =
-    replaceStrings
-      [
-        "-"
-        "."
-      ]
-      [
-        "_"
-        "_"
-      ]
-      targetPlatform.config;
+  suffixSalt = replaceStrings [ "-" "." ] [ "_" "_" ] targetPlatform.config;
 
   wrapperBinName = "${targetPrefix}${baseBinName}";
 in
@@ -145,19 +135,9 @@ stdenv.mkDerivation {
     let
       pkg-config_ = optionalAttrs (pkg-config != null) pkg-config;
     in
-    (optionalAttrs (pkg-config_ ? meta) (
-      removeAttrs pkg-config.meta [
-        "priority"
-        "mainProgram"
-      ]
-    ))
+    (optionalAttrs (pkg-config_ ? meta) (removeAttrs pkg-config.meta [ "priority" "mainProgram" ]))
     // {
-      description =
-        attrByPath [
-          "meta"
-          "description"
-        ] "pkg-config" pkg-config_
-        + " (wrapper script)";
+      description = attrByPath [ "meta" "description" ] "pkg-config" pkg-config_ + " (wrapper script)";
       priority = 10;
       mainProgram = wrapperBinName;
     };

@@ -10,12 +10,6 @@
 
 qtModule {
   pname = "qtpurchasing";
-  propagatedBuildInputs = [
-    qtbase
-    qtdeclarative
-  ];
-  buildInputs = lib.optionals stdenv.hostPlatform.isDarwin [
-    Foundation
-    StoreKit
-  ];
+  propagatedBuildInputs = [ qtbase qtdeclarative ];
+  buildInputs = lib.optionals stdenv.hostPlatform.isDarwin [ Foundation StoreKit ];
 }

@@ -65,10 +65,6 @@ stdenv.mkDerivation rec {
     homepage = "http://www.ats-lang.org";
     license = licenses.gpl3Plus;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      thoughtpolice
-      ttuegel
-      bbarker
-    ];
+    maintainers = with maintainers; [ thoughtpolice ttuegel bbarker ];
   };
 }

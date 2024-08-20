@@ -58,10 +58,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://www.getzola.org/";
     changelog = "https://github.com/getzola/zola/raw/v${version}/CHANGELOG.md";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      dandellion
-      dywedir
-      _0x4A6F
-    ];
+    maintainers = with maintainers; [ dandellion dywedir _0x4A6F ];
   };
 }

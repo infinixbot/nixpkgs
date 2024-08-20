@@ -288,19 +288,11 @@ stdenv.mkDerivation {
     copyPkgconfigItems
   ] ++ lib.optional stdenv.hostPlatform.isDarwin fixDarwinDylibNames;
   buildInputs =
-    [
-      expat
-      zlib
-      bzip2
-      libiconv
-    ]
+    [ expat zlib bzip2 libiconv ]
     ++ lib.optional (lib.versionAtLeast version "1.69") zstd
     ++ [ xz ]
     ++ lib.optional enableIcu icu
-    ++ lib.optionals enablePython [
-      libxcrypt
-      python
-    ]
+    ++ lib.optionals enablePython [ libxcrypt python ]
     ++ lib.optional enableNumpy python.pkgs.numpy;
 
   configureScript = "./bootstrap.sh";
@@ -345,9 +337,6 @@ stdenv.mkDerivation {
       $RANLIB "$out/lib/"*.a
     '';
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
   setOutputFlags = false;
 }

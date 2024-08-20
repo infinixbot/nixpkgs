@@ -22,17 +22,8 @@ mkDerivation rec {
     sha256 = "sha256-8IT/PxLz6BsLHzY5pM0bTlAO0xvfC7/aI7+Gbw2LyME=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    qttools
-  ];
-  buildInputs = [
-    hunspell
-    qtbase
-    qtsvg
-    qtx11extras
-  ];
+  nativeBuildInputs = [ cmake pkg-config qttools ];
+  buildInputs = [ hunspell qtbase qtsvg qtx11extras ];
 
   meta = with lib; {
     description = "Lightweight Qt5 Plain-Text Editor for Linux";

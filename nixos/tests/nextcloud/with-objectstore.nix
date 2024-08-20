@@ -21,10 +21,7 @@ runTest (
   {
     inherit name;
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        onny
-        ma27
-      ];
+      maintainers = [ onny ma27 ];
     };
 
     imports = [ testBase ];

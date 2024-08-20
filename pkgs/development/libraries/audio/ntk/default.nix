@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-NyEdg6e+9CI9V+TIgdpPyH1ei+Vq8pUxD3wPzWY5fEU=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    wafHook
-  ];
+  nativeBuildInputs = [ pkg-config wafHook ];
   buildInputs = [
     cairo
     libjpeg
@@ -43,10 +40,7 @@ stdenv.mkDerivation rec {
     version = version;
     homepage = "http://non.tuxfamily.org/";
     license = lib.licenses.lgpl21;
-    maintainers = with lib.maintainers; [
-      magnetophon
-      nico202
-    ];
+    maintainers = with lib.maintainers; [ magnetophon nico202 ];
     platforms = lib.platforms.linux;
   };
 }

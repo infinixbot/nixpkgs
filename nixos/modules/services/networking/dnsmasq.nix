@@ -42,19 +42,12 @@ in
 {
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "dnsmasq"
-        "servers"
-      ]
-      [
-        "services"
-        "dnsmasq"
-        "settings"
-        "server"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "dnsmasq" "servers" ] [
+      "services"
+      "dnsmasq"
+      "settings"
+      "server"
+    ])
   ];
 
   ###### interface
@@ -98,10 +91,7 @@ in
           options.server = mkOption {
             type = types.listOf types.str;
             default = [ ];
-            example = [
-              "8.8.8.8"
-              "8.8.4.4"
-            ];
+            example = [ "8.8.8.8" "8.8.4.4" ];
             description = ''
               The DNS servers which dnsmasq should query.
             '';
@@ -179,10 +169,7 @@ in
 
     systemd.services.dnsmasq = {
       description = "Dnsmasq Daemon";
-      after = [
-        "network.target"
-        "systemd-resolved.service"
-      ];
+      after = [ "network.target" "systemd-resolved.service" ];
       wantedBy = [ "multi-user.target" ];
       path = [ dnsmasq ];
       preStart = ''

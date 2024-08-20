@@ -37,19 +37,13 @@ rustPlatform.buildRustPackage rec {
       Security
     ];
 
-  NIX_LDFLAGS = lib.optionals stdenv.isDarwin [
-    "-framework"
-    "AppKit"
-  ];
+  NIX_LDFLAGS = lib.optionals stdenv.isDarwin [ "-framework" "AppKit" ];
 
   meta = with lib; {
     description = "Minimalistic, blazing-fast, and extendable prompt for bash and zsh";
     homepage = "https://github.com/aaqaishtyaq/iay";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      aaqaishtyaq
-      omasanori
-    ];
+    maintainers = with maintainers; [ aaqaishtyaq omasanori ];
     mainProgram = "iay";
   };
 }

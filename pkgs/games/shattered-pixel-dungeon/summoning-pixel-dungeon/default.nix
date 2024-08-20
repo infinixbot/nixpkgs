@@ -20,11 +20,7 @@ callPackage ../generic.nix rec {
   patches = [
     (substitute {
       src = ./disable-git-version.patch;
-      substitutions = [
-        "--subst-var-by"
-        "version"
-        version
-      ];
+      substitutions = [ "--subst-var-by" "version" version ];
     })
   ];
 

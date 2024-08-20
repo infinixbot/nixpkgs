@@ -59,11 +59,7 @@ stdenv.mkDerivation (finalAttrs: {
     ssl
   ];
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
 
   strictDeps = true;
 

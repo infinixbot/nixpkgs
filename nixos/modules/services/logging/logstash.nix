@@ -46,18 +46,11 @@ in
 
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "logstash"
-        "address"
-      ]
-      [
-        "services"
-        "logstash"
-        "listenAddress"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "logstash" "address" ] [
+      "services"
+      "logstash"
+      "listenAddress"
+    ])
     (mkRemovedOptionModule [
       "services"
       "logstash"
@@ -96,13 +89,7 @@ in
       };
 
       logLevel = mkOption {
-        type = types.enum [
-          "debug"
-          "info"
-          "warn"
-          "error"
-          "fatal"
-        ];
+        type = types.enum [ "debug" "info" "warn" "error" "fatal" ];
         default = "warn";
         description = "Logging verbosity level.";
       };

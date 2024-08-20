@@ -9,11 +9,7 @@
   stdenv,
 }:
 
-assert lib.elem precision [
-  "single"
-  "double"
-  "long-double"
-];
+assert lib.elem precision [ "single" "double" "long-double" ];
 
 let
   fftw' = fftwMpi.override { inherit precision; };
@@ -29,10 +25,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-T5nPlkPKjYYRCuT1tSzXNJTPs/o6zwJMv9lPCWOwabw=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs = [ autoreconfHook ];
 
@@ -46,10 +39,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   buildInputs = lib.optional stdenv.cc.isClang llvmPackages.openmp;
 
-  propagatedBuildInputs = [
-    fftw'
-    mpi
-  ];
+  propagatedBuildInputs = [ fftw' mpi ];
 
   doCheck = true;
 

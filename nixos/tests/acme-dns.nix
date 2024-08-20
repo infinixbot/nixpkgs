@@ -22,10 +22,7 @@ import ./make-test-python.nix (
             logconfig.loglevel = "debug";
           };
         };
-        environment.systemPackages = with pkgs; [
-          curl
-          bind
-        ];
+        environment.systemPackages = with pkgs; [ curl bind ];
       };
 
     testScript = ''

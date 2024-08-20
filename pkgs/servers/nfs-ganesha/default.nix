@@ -20,10 +20,7 @@
 stdenv.mkDerivation rec {
   pname = "nfs-ganesha";
   version = "5.9";
-  outputs = [
-    "out"
-    "tools"
-  ];
+  outputs = [ "out" "tools" ];
 
   src = fetchFromGitHub {
     owner = "nfs-ganesha";
@@ -80,9 +77,6 @@ stdenv.mkDerivation rec {
     platforms = platforms.linux;
     license = licenses.lgpl3Plus;
     mainProgram = "ganesha.nfsd";
-    outputsToInstall = [
-      "out"
-      "tools"
-    ];
+    outputsToInstall = [ "out" "tools" ];
   };
 }

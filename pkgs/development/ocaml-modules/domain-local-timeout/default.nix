@@ -22,19 +22,11 @@ buildDunePackage rec {
     hash = "sha256-6sCqUkOjN8E+7OLUwVQntkv0vrQDkGDV8KNqDhVm0d8=";
   };
 
-  propagatedBuildInputs = [
-    mtime
-    psq
-    thread-table
-  ];
+  propagatedBuildInputs = [ mtime psq thread-table ];
 
   doCheck = lib.versionAtLeast ocaml.version "5.0";
   nativeCheckInputs = [ mdx.bin ];
-  checkInputs = [
-    alcotest
-    domain-local-await
-    mdx
-  ];
+  checkInputs = [ alcotest domain-local-await mdx ];
 
   meta = {
     homepage = "https://github.com/ocaml-multicore/domain-local-timeout";

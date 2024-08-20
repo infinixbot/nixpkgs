@@ -31,11 +31,7 @@
     version = "2.8.1";
   };
   faraday = {
-    dependencies = [
-      "base64"
-      "faraday-net_http"
-      "ruby2_keywords"
-    ];
+    dependencies = [ "base64" "faraday-net_http" "ruby2_keywords" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -56,13 +52,7 @@
     version = "3.0.2";
   };
   licensee = {
-    dependencies = [
-      "dotenv"
-      "octokit"
-      "reverse_markdown"
-      "rugged"
-      "thor"
-    ];
+    dependencies = [ "dotenv" "octokit" "reverse_markdown" "rugged" "thor" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -83,10 +73,7 @@
     version = "2.8.5";
   };
   nokogiri = {
-    dependencies = [
-      "mini_portile2"
-      "racc"
-    ];
+    dependencies = [ "mini_portile2" "racc" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -97,10 +84,7 @@
     version = "1.16.0";
   };
   octokit = {
-    dependencies = [
-      "faraday"
-      "sawyer"
-    ];
+    dependencies = [ "faraday" "sawyer" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -162,10 +146,7 @@
     version = "1.7.1";
   };
   sawyer = {
-    dependencies = [
-      "addressable"
-      "faraday"
-    ];
+    dependencies = [ "addressable" "faraday" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

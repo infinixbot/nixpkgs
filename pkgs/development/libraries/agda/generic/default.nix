@@ -32,9 +32,6 @@ mkDerivation rec {
     homepage = src.meta.homepage;
     license = licenses.mit;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      alexarice
-      turion
-    ];
+    maintainers = with maintainers; [ alexarice turion ];
   };
 }

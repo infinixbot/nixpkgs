@@ -27,12 +27,7 @@ stdenv.mkDerivation rec {
   pname = "cryptsetup";
   version = "2.7.3";
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "bin" "out" "dev" "man" ];
   separateDebugInfo = true;
 
   src = fetchurl {
@@ -77,13 +72,7 @@ stdenv.mkDerivation rec {
     ++ (lib.mapAttrsToList (lib.flip lib.enableFeature)) programs;
 
   nativeBuildInputs = [ pkg-config ] ++ lib.optionals rebuildMan [ asciidoctor ];
-  buildInputs = [
-    lvm2
-    json_c
-    openssl
-    libuuid
-    popt
-  ] ++ lib.optional (!withInternalArgon2) libargon2;
+  buildInputs = [ lvm2 json_c openssl libuuid popt ] ++ lib.optional (!withInternalArgon2) libargon2;
 
   # The test [7] header backup in compat-test fails with a mysterious
   # "out of memory" error, even though tons of memory is available.

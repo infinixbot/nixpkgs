@@ -58,10 +58,6 @@ buildGoModule rec {
     changelog = "https://github.com/vmware-tanzu/sonobuoy/releases/tag/v${version}";
     license = licenses.asl20;
     mainProgram = "sonobuoy";
-    maintainers = with maintainers; [
-      carlosdagos
-      saschagrunert
-      wilsonehusin
-    ];
+    maintainers = with maintainers; [ carlosdagos saschagrunert wilsonehusin ];
   };
 }

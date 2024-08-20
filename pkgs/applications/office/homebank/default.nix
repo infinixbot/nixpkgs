@@ -19,27 +19,15 @@ stdenv.mkDerivation rec {
     hash = "sha256-1CpForKKHXp6le8vVlObm22VTh2LqQlI9Qk4bwlzfLA=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    wrapGAppsHook3
-    intltool
-  ];
-  buildInputs = [
-    gtk
-    libofx
-    libsoup_3
-    adwaita-icon-theme
-  ];
+  nativeBuildInputs = [ pkg-config wrapGAppsHook3 intltool ];
+  buildInputs = [ gtk libofx libsoup_3 adwaita-icon-theme ];
 
   meta = with lib; {
     description = "Free, easy, personal accounting for everyone";
     mainProgram = "homebank";
     homepage = "https://www.gethomebank.org";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      pSub
-      frlan
-    ];
+    maintainers = with maintainers; [ pSub frlan ];
     platforms = platforms.linux ++ platforms.darwin;
   };
 }

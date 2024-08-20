@@ -38,10 +38,7 @@ in
       services.auto-cpufreq = {
         # Workaround for https://github.com/NixOS/nixpkgs/issues/81138
         wantedBy = [ "multi-user.target" ];
-        path = with pkgs; [
-          bash
-          coreutils
-        ];
+        path = with pkgs; [ bash coreutils ];
 
         serviceConfig.WorkingDirectory = "";
         serviceConfig.ExecStart = [

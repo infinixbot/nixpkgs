@@ -52,10 +52,7 @@ stdenv.mkDerivation rec {
 
   checkTarget = "test";
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   installFlags = [
     "PREFIX=$(out)"
@@ -64,10 +61,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     python3
-    (with python3.pkgs; [
-      beautifulsoup4
-      markdown
-    ])
+    (with python3.pkgs; [ beautifulsoup4 markdown ])
     which
     installShellFiles
     gnumake42 # fails with make 4.4

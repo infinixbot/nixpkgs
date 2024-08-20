@@ -22,10 +22,7 @@ else
       hash = "sha256-VIHd55GMoxIeAsNNdDOfc0sy1Yg++4wbgFZHHnT5vaY=";
     };
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-    ];
+    nativeBuildInputs = [ ocaml findlib ];
 
     buildInputs = lib.optionals stdenv.isDarwin [
       darwin.apple_sdk.frameworks.CoreServices
@@ -39,10 +36,7 @@ else
     dontAddStaticConfigureFlags = true;
     configurePlatforms = [ ];
 
-    installFlags = [
-      "PREFIX=${placeholder "out"}"
-      "LIBDIR=$(OCAMLFIND_DESTDIR)"
-    ];
+    installFlags = [ "PREFIX=${placeholder "out"}" "LIBDIR=$(OCAMLFIND_DESTDIR)" ];
 
     passthru.tests = {
       inherit ocaml-lsp dune-release;

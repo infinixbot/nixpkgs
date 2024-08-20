@@ -56,11 +56,7 @@ stdenv.mkDerivation rec {
     export QML2_IMPORT_PATH=${libsForQt5.qtdeclarative.bin}/${libsForQt5.qtbase.qtQmlPrefix}
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
   meta = with lib; {
     description = "Widget development toolkit based on QtQuick/QtQml";

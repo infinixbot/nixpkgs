@@ -21,10 +21,7 @@ buildGoModule rec {
 
   subPackages = [ "tool/cmd/kitex" ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   postInstall = ''
     ln -s $out/bin/kitex $out/bin/protoc-gen-kitex

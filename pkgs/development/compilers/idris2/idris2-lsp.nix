@@ -40,10 +40,7 @@ let
       rev = "a77ef2d563418925aa274fa29f06880dde43f4ec";
       hash = "sha256-zjfVfkpiQS9AdmTfq0hYRSelJq5Caa9VGTuFLtSvl5o=";
     };
-    idrisLibraries = [
-      idris2Api
-      lspLib
-    ];
+    idrisLibraries = [ idris2Api lspLib ];
 
     buildInputs = [ makeWrapper ];
     postInstall = ''

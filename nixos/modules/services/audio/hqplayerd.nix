@@ -95,10 +95,7 @@ in
     };
 
     networking.firewall = mkIf cfg.openFirewall {
-      allowedTCPPorts = [
-        8088
-        4321
-      ];
+      allowedTCPPorts = [ 8088 4321 ];
     };
 
     systemd = {
@@ -116,10 +113,7 @@ in
 
         environment.HOME = "${stateDir}/home";
 
-        unitConfig.ConditionPathExists = [
-          configDir
-          stateDir
-        ];
+        unitConfig.ConditionPathExists = [ configDir stateDir ];
 
         restartTriggers = optionals (cfg.config != null) [
           config.environment.etc."hqplayer/hqplayerd.xml".source
@@ -148,10 +142,7 @@ in
     users.users = {
       hqplayer = {
         description = "hqplayer daemon user";
-        extraGroups = [
-          "audio"
-          "video"
-        ];
+        extraGroups = [ "audio" "video" ];
         group = "hqplayer";
         uid = config.ids.uids.hqplayer;
       };

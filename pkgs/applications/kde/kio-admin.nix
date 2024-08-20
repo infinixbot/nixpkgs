@@ -12,12 +12,7 @@ mkDerivation {
   pname = "kio-admin";
 
   nativeBuildInputs = [ extra-cmake-modules ];
-  buildInputs = [
-    qtbase
-    kio
-    ki18n
-    polkit-qt
-  ];
+  buildInputs = [ qtbase kio ki18n polkit-qt ];
 
   meta = with lib; {
     description = "Manage files as administrator using the admin:// KIO protocol";

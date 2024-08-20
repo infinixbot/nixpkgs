@@ -56,11 +56,7 @@ stdenv.mkDerivation (finalAttrs: {
     )
   '';
 
-  installTargets = [
-    "install-code"
-    "install-tex"
-    "install-elisp"
-  ];
+  installTargets = [ "install-code" "install-tex" "install-elisp" ];
 
   postInstall = ''
     substituteInPlace "$out/bin/cpif" --replace "PATH=/bin:/usr/bin" ""
@@ -83,10 +79,7 @@ stdenv.mkDerivation (finalAttrs: {
     ln -s "$tex" "$out/share/texmf"
   '';
 
-  outputs = [
-    "out"
-    "tex"
-  ];
+  outputs = [ "out" "tex" ];
 
   passthru = {
     tlType = "run";

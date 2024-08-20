@@ -33,19 +33,12 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-UIUXayJwTrWbLm1UKnIXy1Df8a7ZoBzdNm/uZ1+H+SQ=";
 
-  cargoBuildFlags = [
-    "--package"
-    "boa_cli"
-  ];
+  cargoBuildFlags = [ "--package" "boa_cli" ];
 
   nativeBuildInputs = [ pkg-config ];
 
   buildInputs =
-    [
-      bzip2
-      openssl
-      zstd
-    ]
+    [ bzip2 openssl zstd ]
     ++ lib.optionals stdenv.isDarwin [
       darwin.apple_sdk.frameworks.CoreFoundation
       darwin.apple_sdk.frameworks.Security

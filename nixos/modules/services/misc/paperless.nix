@@ -88,53 +88,26 @@ let
     # to query CPU and memory information.
     # Note that /proc only contains processes of user `paperless`, so this is safe.
     # ProcSubset = "pid";
-    RestrictAddressFamilies = [
-      "AF_UNIX"
-      "AF_INET"
-      "AF_INET6"
-    ];
+    RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
     RestrictNamespaces = true;
     RestrictRealtime = true;
     RestrictSUIDSGID = true;
     SupplementaryGroups = optional enableRedis redisServer.user;
     SystemCallArchitectures = "native";
-    SystemCallFilter = [
-      "@system-service"
-      "~@privileged @setuid @keyring"
-    ];
+    SystemCallFilter = [ "@system-service" "~@privileged @setuid @keyring" ];
     UMask = "0066";
   };
 in
 {
-  meta.maintainers = with maintainers; [
-    erikarvstedt
-    Flakebi
-    leona
-  ];
+  meta.maintainers = with maintainers; [ erikarvstedt Flakebi leona ];
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "paperless-ng"
-      ]
-      [
-        "services"
-        "paperless"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "paperless"
-        "extraConfig"
-      ]
-      [
-        "services"
-        "paperless"
-        "settings"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "paperless-ng" ] [ "services" "paperless" ])
+    (mkRenamedOptionModule [ "services" "paperless" "extraConfig" ] [
+      "services"
+      "paperless"
+      "settings"
+    ])
   ];
 
   options.services.paperless = {
@@ -219,22 +192,9 @@ in
           with lib.types;
           attrsOf (
             let
-              typeList = [
-                bool
-                float
-                int
-                str
-                path
-                package
-              ];
+              typeList = [ bool float int str path package ];
             in
-            oneOf (
-              typeList
-              ++ [
-                (listOf (oneOf typeList))
-                (attrsOf (oneOf typeList))
-              ]
-            )
+            oneOf (typeList ++ [ (listOf (oneOf typeList)) (attrsOf (oneOf typeList)) ])
           );
       };
       default = { };
@@ -249,10 +209,7 @@ in
       example = {
         PAPERLESS_OCR_LANGUAGE = "deu+eng";
         PAPERLESS_DBHOST = "/run/postgresql";
-        PAPERLESS_CONSUMER_IGNORE_PATTERN = [
-          ".DS_STORE/*"
-          "desktop.ini"
-        ];
+        PAPERLESS_CONSUMER_IGNORE_PATTERN = [ ".DS_STORE/*" "desktop.ini" ];
         PAPERLESS_OCR_USER_ARGS = {
           optimize = 1;
           pdfa_image_compression = "lossless";
@@ -275,14 +232,7 @@ in
             # tesseract fails to build when eng is not present
             enableLanguages =
               if cfg.settings ? PAPERLESS_OCR_LANGUAGE then
-                lists.unique (
-                  [
-                    "equ"
-                    "osd"
-                    "eng"
-                  ]
-                  ++ lib.splitString "+" cfg.settings.PAPERLESS_OCR_LANGUAGE
-                )
+                lists.unique ([ "equ" "osd" "eng" ] ++ lib.splitString "+" cfg.settings.PAPERLESS_OCR_LANGUAGE)
               else
                 null;
           };
@@ -326,11 +276,7 @@ in
       {
         description = "Paperless Celery Beat";
         wantedBy = [ "multi-user.target" ];
-        wants = [
-          "paperless-consumer.service"
-          "paperless-web.service"
-          "paperless-task-queue.service"
-        ];
+        wants = [ "paperless-consumer.service" "paperless-web.service" "paperless-task-queue.service" ];
         serviceConfig = defaultServiceConfig // {
           User = cfg.user;
           ExecStart = "${cfg.package}/bin/celery --app paperless beat --loglevel INFO";

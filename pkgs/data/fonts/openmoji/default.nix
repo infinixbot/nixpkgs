@@ -8,12 +8,7 @@
   xmlstarlet,
   # available color formats: ["cbdt" "glyf_colr_0" "glyf_colr_1" "sbix" "picosvgz" "untouchedsvgz"]
   # available black formats: ["glyf"]
-  fontFormats ? [
-    "glyf"
-    "cbdt"
-    "glyf_colr_0"
-    "glyf_colr_1"
-  ],
+  fontFormats ? [ "glyf" "cbdt" "glyf_colr_0" "glyf_colr_1" ],
   # when at least one of the glyf_colr_0/1 formats is specified, whether to build maximum color fonts
   # "none" to not build any, "svg" to build colr+svg, "bitmap" to build cbdt+colr+svg fonts
   buildMaximumColorFonts ? "bitmap",
@@ -22,14 +17,7 @@ let
   # all available methods
   methods = {
     black = [ "glyf" ];
-    color = [
-      "cbdt"
-      "glyf_colr_0"
-      "glyf_colr_1"
-      "sbix"
-      "picosvgz"
-      "untouchedsvgz"
-    ];
+    color = [ "cbdt" "glyf_colr_0" "glyf_colr_1" "sbix" "picosvgz" "untouchedsvgz" ];
   };
 in
 
@@ -98,10 +86,7 @@ stdenvNoCC.mkDerivation rec {
 
   meta = with lib; {
     license = licenses.cc-by-sa-40;
-    maintainers = with maintainers; [
-      _999eagle
-      fgaz
-    ];
+    maintainers = with maintainers; [ _999eagle fgaz ];
     platforms = platforms.all;
     homepage = "https://openmoji.org/";
     downloadPage = "https://github.com/hfg-gmuend/openmoji/releases";

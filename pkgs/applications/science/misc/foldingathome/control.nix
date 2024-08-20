@@ -31,10 +31,7 @@ stdenv.mkDerivation rec {
     makeWrapper
   ];
 
-  buildInputs = [
-    fahviewer
-    python
-  ];
+  buildInputs = [ fahviewer python ];
 
   unpackPhase = ''
     dpkg-deb -x ${src} ./

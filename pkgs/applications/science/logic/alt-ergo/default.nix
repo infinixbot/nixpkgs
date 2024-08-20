@@ -48,12 +48,7 @@ ocamlPackages.buildDunePackage {
   inherit pname version src;
 
   nativeBuildInputs = [ ocamlPackages.menhir ] ++ lib.optionals stdenv.isDarwin [ darwin.sigtool ];
-  buildInputs =
-    [ alt-ergo-parsers ]
-    ++ (with ocamlPackages; [
-      cmdliner
-      dune-site
-    ]);
+  buildInputs = [ alt-ergo-parsers ] ++ (with ocamlPackages; [ cmdliner dune-site ]);
 
   meta = {
     description = "High-performance theorem prover and SMT solver";

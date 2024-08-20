@@ -19,10 +19,7 @@ buildDunePackage rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    dune-configurator
-    sqlite
-  ];
+  buildInputs = [ dune-configurator sqlite ];
 
   meta = with lib; {
     homepage = "http://mmottl.github.io/sqlite3-ocaml/";

@@ -74,18 +74,8 @@ rustPlatform.buildRustPackage {
     substituteInPlace tauri.conf.json --replace '"distDir": "../out/src",' '"distDir": "frontend-build/src",'
   '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  buildInputs = [
-    dbus
-    openssl
-    freetype
-    libsoup
-    gtk3
-    webkitgtk
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
+  buildInputs = [ dbus openssl freetype libsoup gtk3 webkitgtk ];
 
   checkFlags = [
     # tries to mutate the parent directory

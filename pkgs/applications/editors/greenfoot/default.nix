@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-wpmgWtx2jTDjt+7p6HcjU/uy1PRmnAHpJ1rOYb+hV+U=";
   };
 
-  nativeBuildInputs = [
-    dpkg
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ dpkg wrapGAppsHook3 ];
   buildInputs = [ glib ];
 
   dontWrapGApps = true;

@@ -53,19 +53,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-MSVSd5DyVL+dcfTDv1M99hxickPwT2Pt6QGNsu6DGZI=";
   };
 
-  nativeBuildInputs = [
-    ant
-    jdk
-    wrapGAppsHook3
-    makeWrapper
-    stripJavaArchivesHook
-  ];
+  nativeBuildInputs = [ ant jdk wrapGAppsHook3 makeWrapper stripJavaArchivesHook ];
   buildInputs =
-    lib.optionals stdenv.isLinux [
-      gtk2
-      glib
-      libXtst
-    ]
+    lib.optionals stdenv.isLinux [ gtk2 glib libXtst ]
     ++ lib.optional stdenv.isDarwin Cocoa;
 
   dontWrapGApps = true;
@@ -116,16 +106,8 @@ stdenv.mkDerivation rec {
       binaryBytecode # source bundles dependencies as jars
     ];
     license = licenses.gpl2Plus;
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-      "x86_64-darwin"
-      "aarch64-linux"
-    ];
-    maintainers = with maintainers; [
-      flokli
-      r3dl3g
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" "x86_64-darwin" "aarch64-linux" ];
+    maintainers = with maintainers; [ flokli r3dl3g ];
     mainProgram = "jameica";
   };
 }

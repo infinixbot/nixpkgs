@@ -63,10 +63,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/libsidplayfp/sidplayfp";
     license = with licenses; [ gpl2Plus ];
     mainProgram = "sidplayfp";
-    maintainers = with maintainers; [
-      dezgeg
-      OPNA2608
-    ];
+    maintainers = with maintainers; [ dezgeg OPNA2608 ];
     platforms = platforms.all;
   };
 })

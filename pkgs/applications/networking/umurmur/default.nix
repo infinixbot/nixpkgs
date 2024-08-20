@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ autoreconfHook ];
-  buildInputs = [
-    openssl
-    protobufc
-    libconfig
-  ];
+  buildInputs = [ openssl protobufc libconfig ];
 
   # https://github.com/umurmur/umurmur/issues/176
   postPatch = ''

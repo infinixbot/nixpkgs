@@ -78,10 +78,7 @@ python3.pkgs.buildPythonApplication rec {
     mainProgram = "puddletag";
     homepage = "https://docs.puddletag.net";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      peterhoeg
-      dschrempf
-    ];
+    maintainers = with maintainers; [ peterhoeg dschrempf ];
     platforms = platforms.linux;
   };
 }

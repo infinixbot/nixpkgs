@@ -31,18 +31,10 @@ stdenv.mkDerivation (
 
     patches = extraPatches;
 
-    outputs = [
-      "bin"
-      "out"
-      "dev"
-    ];
+    outputs = [ "bin" "out" "dev" ];
 
     # Required when regenerated the configure script to make sure the vendored macros are found.
-    autoreconfFlags = [
-      "-fi"
-      "-Iaclocal"
-      "-Iaclocal_java"
-    ];
+    autoreconfFlags = [ "-fi" "-Iaclocal" "-Iaclocal_java" ];
 
     preAutoreconf = ''
       pushd dist

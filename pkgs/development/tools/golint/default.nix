@@ -31,9 +31,6 @@ buildGoModule rec {
     description = "Linter for Go source code";
     mainProgram = "golint";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      jhillyerd
-      tomberek
-    ];
+    maintainers = with maintainers; [ jhillyerd tomberek ];
   };
 }

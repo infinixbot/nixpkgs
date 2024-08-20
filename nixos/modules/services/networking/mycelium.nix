@@ -64,10 +64,7 @@ in
   };
   config = lib.mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = lib.optionals cfg.openFirewall [ 9651 ];
-    networking.firewall.allowedUDPPorts = lib.optionals cfg.openFirewall [
-      9650
-      9651
-    ];
+    networking.firewall.allowedUDPPorts = lib.optionals cfg.openFirewall [ 9650 9651 ];
 
     environment.systemPackages = [ cfg.package ];
 
@@ -98,10 +95,7 @@ in
         RestrictNamespaces = true;
         RestrictRealtime = true;
         SystemCallArchitectures = "native";
-        SystemCallFilter = [
-          "@system-service"
-          "~@privileged @keyring"
-        ];
+        SystemCallFilter = [ "@system-service" "~@privileged @keyring" ];
         ExecStart = lib.concatStringsSep " " (
           [
             (lib.getExe cfg.package)
@@ -156,9 +150,6 @@ in
     };
   };
   meta = {
-    maintainers = with lib.maintainers; [
-      flokli
-      lassulus
-    ];
+    maintainers = with lib.maintainers; [ flokli lassulus ];
   };
 }

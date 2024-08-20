@@ -141,15 +141,8 @@ let
   staticUsrProfileTarget = buildEnv {
     name = "${name}-usr-target";
     # ldconfig wrapper must come first so it overrides the original ldconfig
-    paths = [
-      etcPkg
-      ldconfig
-    ] ++ baseTargetPaths ++ targetPaths;
-    extraOutputsToInstall = [
-      "out"
-      "lib"
-      "bin"
-    ] ++ extraOutputsToInstall;
+    paths = [ etcPkg ldconfig ] ++ baseTargetPaths ++ targetPaths;
+    extraOutputsToInstall = [ "out" "lib" "bin" ] ++ extraOutputsToInstall;
     ignoreCollisions = true;
     postBuild = ''
       if [[ -d  $out/share/gsettings-schemas/ ]]; then
@@ -185,10 +178,7 @@ let
   staticUsrProfileMulti = buildEnv {
     name = "${name}-usr-multi";
     paths = baseMultiPaths ++ multiPaths;
-    extraOutputsToInstall = [
-      "out"
-      "lib"
-    ] ++ extraOutputsToInstall;
+    extraOutputsToInstall = [ "out" "lib" ] ++ extraOutputsToInstall;
     ignoreCollisions = true;
   };
 

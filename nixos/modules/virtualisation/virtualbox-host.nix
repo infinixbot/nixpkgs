@@ -161,11 +161,7 @@ in
       ];
     })
     (mkIf (!cfg.enableKvm) {
-      boot.kernelModules = [
-        "vboxdrv"
-        "vboxnetadp"
-        "vboxnetflt"
-      ];
+      boot.kernelModules = [ "vboxdrv" "vboxnetadp" "vboxnetflt" ];
       boot.extraModulePackages = [ kernelModules ];
 
       services.udev.extraRules = ''
@@ -181,10 +177,7 @@ in
         description = "VirtualBox vboxnet0 Interface";
         requires = [ "dev-vboxnetctl.device" ];
         after = [ "dev-vboxnetctl.device" ];
-        wantedBy = [
-          "network.target"
-          "sys-subsystem-net-devices-vboxnet0.device"
-        ];
+        wantedBy = [ "network.target" "sys-subsystem-net-devices-vboxnet0.device" ];
         path = [ virtualbox ];
         serviceConfig.RemainAfterExit = true;
         serviceConfig.Type = "oneshot";

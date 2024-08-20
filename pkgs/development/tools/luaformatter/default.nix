@@ -35,10 +35,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    antlr4.runtime.cpp
-    yaml-cpp
-  ];
+  buildInputs = [ antlr4.runtime.cpp yaml-cpp ];
 
   meta = with lib; {
     description = "Code formatter for Lua";

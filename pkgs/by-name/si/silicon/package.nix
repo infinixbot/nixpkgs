@@ -35,13 +35,7 @@ rustPlatform.buildRustPackage rec {
   };
 
   buildInputs =
-    [
-      expat
-      freetype
-      fira-code
-      fontconfig
-      harfbuzz
-    ]
+    [ expat freetype fira-code fontconfig harfbuzz ]
     ++ lib.optionals stdenv.isLinux [ libxcb ]
     ++ lib.optionals stdenv.isDarwin (
       with darwin.apple_sdk.frameworks;
@@ -70,10 +64,7 @@ rustPlatform.buildRustPackage rec {
       mit # or
       asl20
     ];
-    maintainers = with maintainers; [
-      evanjs
-      _0x4A6F
-    ];
+    maintainers = with maintainers; [ evanjs _0x4A6F ];
     mainProgram = "silicon";
   };
 }

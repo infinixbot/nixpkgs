@@ -17,13 +17,7 @@ python3.pkgs.buildPythonApplication rec {
 
   pythonImportsCheck = [ "semiphemeral" ];
 
-  propagatedBuildInputs = with python3.pkgs; [
-    click
-    sqlalchemy
-    flask
-    tweepy
-    colorama
-  ];
+  propagatedBuildInputs = with python3.pkgs; [ click sqlalchemy flask tweepy colorama ];
 
   meta = with lib; {
     description = "Automatically delete your old tweets, except for the ones you want to keep";

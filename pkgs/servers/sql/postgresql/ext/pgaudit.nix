@@ -45,11 +45,7 @@ stdenv.mkDerivation {
     hash = source.hash;
   };
 
-  buildInputs = [
-    libkrb5
-    openssl
-    postgresql
-  ];
+  buildInputs = [ libkrb5 openssl postgresql ];
 
   makeFlags = [ "USE_PGXS=1" ];
 

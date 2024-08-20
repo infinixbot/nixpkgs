@@ -95,10 +95,7 @@ import ../make-test-python.nix (
       static =
         { ... }@args:
         makeTincNode args "static" {
-          virtualisation.vlans = [
-            1
-            2
-          ];
+          virtualisation.vlans = [ 1 2 ];
 
           networking.interfaces.eth1.ipv4.addresses = [
             {

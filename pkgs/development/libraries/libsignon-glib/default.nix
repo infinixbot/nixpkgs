@@ -21,12 +21,7 @@ stdenv.mkDerivation rec {
   pname = "libsignon-glib";
   version = "2.1";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-    "py"
-  ];
+  outputs = [ "out" "dev" "devdoc" "py" ];
 
   src = fetchgit {
     url = "https://gitlab.com/accounts-sso/${pname}";

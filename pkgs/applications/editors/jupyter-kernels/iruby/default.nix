@@ -33,10 +33,7 @@ let
       description = "Ruby kernel for Jupyter";
       homepage = "https://github.com/SciRuby/iruby";
       license = lib.licenses.mit;
-      maintainers = with lib.maintainers; [
-        costrouc
-        thomasjm
-      ];
+      maintainers = with lib.maintainers; [ costrouc thomasjm ];
       platforms = lib.platforms.unix;
     };
   };

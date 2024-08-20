@@ -45,10 +45,7 @@ stdenv.mkDerivation {
     description = "Wrapper around Spotify that correctly sets class name before opening the window";
     license = lib.licenses.mit;
     platforms = lib.platforms.linux;
-    maintainers = with lib.maintainers; [
-      jqueiroz
-      the-argus
-    ];
+    maintainers = with lib.maintainers; [ jqueiroz the-argus ];
     mainProgram = "spotify";
   };
 }

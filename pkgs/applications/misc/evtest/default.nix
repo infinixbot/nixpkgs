@@ -11,10 +11,7 @@ stdenv.mkDerivation rec {
   pname = "evtest";
   version = "1.35";
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
   buildInputs = [ libxml2 ];
 
   src = fetchgit {

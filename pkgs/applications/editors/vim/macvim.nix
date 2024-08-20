@@ -47,10 +47,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [
-    pkg-config
-    buildSymlinks
-  ];
+  nativeBuildInputs = [ pkg-config buildSymlinks ];
   buildInputs = [
     gettext
     ncurses

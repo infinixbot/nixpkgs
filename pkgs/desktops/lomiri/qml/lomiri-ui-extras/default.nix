@@ -89,11 +89,7 @@ stdenv.mkDerivation (finalAttrs: {
       export QT_PLUGIN_PATH=${listToQtVar qtbase.qtPluginPrefix [ qtbase ]}
       export QML2_IMPORT_PATH=${
         listToQtVar qtbase.qtQmlPrefix (
-          [
-            qtdeclarative
-            lomiri-ui-toolkit
-          ]
-          ++ lomiri-ui-toolkit.propagatedBuildInputs
+          [ qtdeclarative lomiri-ui-toolkit ] ++ lomiri-ui-toolkit.propagatedBuildInputs
         )
       }
       export XDG_RUNTIME_DIR=$PWD

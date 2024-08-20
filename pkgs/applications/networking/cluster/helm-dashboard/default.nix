@@ -20,11 +20,7 @@ buildGoModule rec {
   # tests require internet access
   doCheck = false;
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X main.version=v${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X main.version=v${version}" ];
 
   meta = {
     description = "Simplified way of working with Helm";

@@ -21,10 +21,7 @@ rustPlatform.buildRustPackage rec {
     description = "Fast CLI documentation searcher for Nix";
     homepage = "https://github.com/nix-community/manix";
     license = licenses.mpl20;
-    maintainers = with maintainers; [
-      iogamaster
-      lecoqjacob
-    ];
+    maintainers = with maintainers; [ iogamaster lecoqjacob ];
     mainProgram = "manix";
   };
 }

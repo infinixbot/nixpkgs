@@ -87,13 +87,7 @@ import ./make-test-python.nix (
       httpbin =
         { pkgs, lib, ... }:
         let
-          python = pkgs.python3.withPackages (
-            ps: with ps; [
-              httpbin
-              gunicorn
-              gevent
-            ]
-          );
+          python = pkgs.python3.withPackages (ps: with ps; [ httpbin gunicorn gevent ]);
         in
         {
           systemd.services.httpbin = {

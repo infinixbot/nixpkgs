@@ -26,10 +26,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    cmake
-    python3
-  ];
+  nativeBuildInputs = [ cmake python3 ];
 
   cmakeFlags = [ "-DWITH_TESTS=ON" ];
 
@@ -48,10 +45,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "C++11 port of docopt";
     homepage = "https://github.com/docopt/docopt.cpp";
-    license = with licenses; [
-      mit
-      boost
-    ];
+    license = with licenses; [ mit boost ];
     platforms = platforms.all;
     maintainers = with maintainers; [ knedlsepp ];
   };

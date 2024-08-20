@@ -21,11 +21,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    e2fsprogs
-    ncurses
-    readline
-  ];
+  buildInputs = [ e2fsprogs ncurses readline ];
 
   meta = with lib; {
     homepage = "https://dump.sourceforge.io/";

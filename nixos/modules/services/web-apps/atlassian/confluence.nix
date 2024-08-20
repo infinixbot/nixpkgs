@@ -76,11 +76,7 @@ in
       catalinaOptions = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "-Xms1024m"
-          "-Xmx2048m"
-          "-Dconfluence.disable.peopledirectory.all=true"
-        ];
+        example = [ "-Xms1024m" "-Xmx2048m" "-Dconfluence.disable.peopledirectory.all=true" ];
         description = "Java options to pass to catalina/tomcat.";
       };
 
@@ -199,10 +195,7 @@ in
       requires = [ "postgresql.service" ];
       after = [ "postgresql.service" ];
 
-      path = [
-        cfg.jrePackage
-        pkgs.bash
-      ];
+      path = [ cfg.jrePackage pkgs.bash ];
 
       environment = {
         CONF_USER = cfg.user;

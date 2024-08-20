@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
 
   sourceRoot = "${pname}-${version}-src/native";
 
-  buildInputs = [
-    apr
-    jdk
-    openssl
-  ];
+  buildInputs = [ apr jdk openssl ];
 
   configureFlags = [
     "--with-apr=${apr.dev}"

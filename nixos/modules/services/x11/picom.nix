@@ -62,38 +62,15 @@ in
 {
 
   imports = [
-    (mkAliasOptionModuleMD
-      [
-        "services"
-        "compton"
-      ]
-      [
-        "services"
-        "picom"
-      ]
-    )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "picom"
-        "refreshRate"
-      ]
-      ''
-        This option corresponds to `refresh-rate`, which has been unused
-        since picom v6 and was subsequently removed by upstream.
-        See https://github.com/yshui/picom/commit/bcbc410
-      ''
-    )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "picom"
-        "experimentalBackends"
-      ]
-      ''
-        This option was removed by upstream since picom v10.
-      ''
-    )
+    (mkAliasOptionModuleMD [ "services" "compton" ] [ "services" "picom" ])
+    (mkRemovedOptionModule [ "services" "picom" "refreshRate" ] ''
+      This option corresponds to `refresh-rate`, which has been unused
+      since picom v6 and was subsequently removed by upstream.
+      See https://github.com/yshui/picom/commit/bcbc410
+    '')
+    (mkRemovedOptionModule [ "services" "picom" "experimentalBackends" ] ''
+      This option was removed by upstream since picom v10.
+    '')
   ];
 
   options.services.picom = {
@@ -126,14 +103,8 @@ in
 
     fadeSteps = mkOption {
       type = pairOf (types.numbers.between 1.0e-2 1);
-      default = [
-        2.8e-2
-        3.0e-2
-      ];
-      example = [
-        4.0e-2
-        4.0e-2
-      ];
+      default = [ 2.8e-2 3.0e-2 ];
+      example = [ 4.0e-2 4.0e-2 ];
       description = ''
         Opacity change between fade steps (in and out).
       '';
@@ -163,14 +134,8 @@ in
 
     shadowOffsets = mkOption {
       type = pairOf types.int;
-      default = [
-        (-15)
-        (-15)
-      ];
-      example = [
-        (-10)
-        (-15)
-      ];
+      default = [ (-15) (-15) ];
+      example = [ (-10) (-15) ];
       description = ''
         Left and right offset for shadows (in pixels).
       '';
@@ -261,12 +226,7 @@ in
     };
 
     backend = mkOption {
-      type = types.enum [
-        "egl"
-        "glx"
-        "xrender"
-        "xr_glx_hybrid"
-      ];
+      type = types.enum [ "egl" "glx" "xrender" "xr_glx_hybrid" ];
       default = "xrender";
       description = ''
         Backend to use: `egl`, `glx`, `xrender` or `xr_glx_hybrid`.
@@ -276,14 +236,7 @@ in
     vSync = mkOption {
       type =
         with types;
-        either bool (enum [
-          "none"
-          "drm"
-          "opengl"
-          "opengl-oml"
-          "opengl-swc"
-          "opengl-mswc"
-        ]);
+        either bool (enum [ "none" "drm" "opengl" "opengl-oml" "opengl-swc" "opengl-mswc" ]);
       default = false;
       apply =
         x:
@@ -305,26 +258,13 @@ in
     settings =
       with types;
       let
-        scalar =
-          oneOf [
-            bool
-            int
-            float
-            str
-          ]
-          // {
-            description = "scalar types";
-          };
+        scalar = oneOf [ bool int float str ] // {
+          description = "scalar types";
+        };
 
-        libConfig =
-          oneOf [
-            scalar
-            (listOf libConfig)
-            (attrsOf libConfig)
-          ]
-          // {
-            description = "libconfig type";
-          };
+        libConfig = oneOf [ scalar (listOf libConfig) (attrsOf libConfig) ] // {
+          description = "libconfig type";
+        };
 
         topLevel = attrsOf libConfig // {
           description = ''

@@ -115,13 +115,7 @@ in
           ]
         else if isBool value then
           "${name} = ${boolToString value}"
-        else if
-          any (f: f value) [
-            isString
-            isInt
-            isFloat
-          ]
-        then
+        else if any (f: f value) [ isString isInt isFloat ] then
           "${name} = ${toString value}"
         else
           throw ''

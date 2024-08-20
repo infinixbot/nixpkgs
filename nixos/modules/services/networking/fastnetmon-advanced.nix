@@ -128,10 +128,7 @@ in
       systemd.services.fastnetmon-setup = {
         wantedBy = [ "multi-user.target" ];
         after = [ "ferretdb.service" ];
-        path = with pkgs; [
-          fastnetmon-advanced
-          config.systemd.package
-        ];
+        path = with pkgs; [ fastnetmon-advanced config.systemd.package ];
         script = ''
           fcli create_configuration
           fcli delete hostgroup global
@@ -143,11 +140,7 @@ in
 
       systemd.services.fastnetmon = {
         wantedBy = [ "multi-user.target" ];
-        after = [
-          "ferretdb.service"
-          "fastnetmon-setup.service"
-          "polkit.service"
-        ];
+        after = [ "ferretdb.service" "fastnetmon-setup.service" "polkit.service" ];
         path = with pkgs; [ iproute2 ];
         unitConfig = {
           # Disable logic which shuts service when we do too many restarts

@@ -52,10 +52,7 @@ stdenv.mkDerivation rec {
     chmod -R u+w $sourceRoot
   '';
 
-  makeFlags = [
-    "PREFIX=$(out)"
-    "FONTFILE=${freefont_ttf}/share/fonts/truetype/FreeSansBold.ttf"
-  ];
+  makeFlags = [ "PREFIX=$(out)" "FONTFILE=${freefont_ttf}/share/fonts/truetype/FreeSansBold.ttf" ];
 
   patchPhase = ''
     patchShebangs ./stepseq.lv2/gridgen.sh
@@ -69,14 +66,8 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Collection of LV2 plugins by Robin Gareus";
     homepage = "https://github.com/x42/x42-plugins";
-    maintainers = with maintainers; [
-      magnetophon
-      orivej
-    ];
+    maintainers = with maintainers; [ magnetophon orivej ];
     license = licenses.gpl2;
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
   };
 }

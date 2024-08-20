@@ -24,12 +24,7 @@ stdenv.mkDerivation {
     hash = "sha256-RxFiOp3QDpLeikPqd8vstvhdglFLtOmwpcfGvvdgI5Y=";
   };
 
-  buildInputs = [
-    gperf
-    openssl
-    readline
-    zlib
-  ];
+  buildInputs = [ gperf openssl readline zlib ];
   nativeBuildInputs = [ cmake ];
 
   # https://github.com/tdlib/td/issues/1974

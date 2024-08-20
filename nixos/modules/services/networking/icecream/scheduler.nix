@@ -91,10 +91,7 @@ in
             "-p"
             (toString cfg.port)
           ]
-          ++ optionals (cfg.netName != null) [
-            "-n"
-            (toString cfg.netName)
-          ]
+          ++ optionals (cfg.netName != null) [ "-n" (toString cfg.netName) ]
           ++ optional cfg.persistentClientConnection "-r"
           ++ cfg.extraArgs
         );

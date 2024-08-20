@@ -797,49 +797,33 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
               ;
           in
           # Simple executable tools
-          lib.concatMap
-            (p: [
-              (lib.getBin p)
-              (lib.getLib p)
-            ])
-            [
-              gzip
-              bzip2
-              xz
-              bash
-              binutils.bintools
-              coreutils
-              diffutils
-              findutils
-              gawk
-              gmp
-              gnumake
-              gnused
-              gnutar
-              gnugrep
-              gnupatch
-              patchelf
-              ed
-              file
-            ]
+          lib.concatMap (p: [ (lib.getBin p) (lib.getLib p) ]) [
+            gzip
+            bzip2
+            xz
+            bash
+            binutils.bintools
+            coreutils
+            diffutils
+            findutils
+            gawk
+            gmp
+            gnumake
+            gnused
+            gnutar
+            gnugrep
+            gnupatch
+            patchelf
+            ed
+            file
+          ]
           # Library dependencies
           ++ map lib.getLib (
-            [
-              attr
-              acl
-              zlib
-              gnugrep.pcre2
-              libidn2
-              libunistring
-            ]
+            [ attr acl zlib gnugrep.pcre2 libidn2 libunistring ]
             ++ lib.optional (gawk.libsigsegv != null) gawk.libsigsegv
           )
           # More complicated cases
-          ++ (map (x: lib.getOutput x (getLibc prevStage)) [
-            "out"
-            "dev"
-            "bin"
-          ])
+          ++ (map (x: lib.getOutput x (getLibc prevStage)) [ "out" "dev" "bin" ])
           ++ [
             linuxHeaders # propagated from .dev
             binutils
@@ -851,10 +835,7 @@ assert bootstrapTools.passthru.isFromBootstrapFiles or false; # sanity check
             glibc.passthru.libgcc
           ]
           ++ lib.optionals (localSystem.libc == "musl") [ fortify-headers ]
-          ++ [
-            prevStage.updateAutotoolsGnuConfigScriptsHook
-            prevStage.gnu-config
-          ]
+          ++ [ prevStage.updateAutotoolsGnuConfigScriptsHook prevStage.gnu-config ]
           ++ [
             gcc-unwrapped.gmp
             gcc-unwrapped.libmpc

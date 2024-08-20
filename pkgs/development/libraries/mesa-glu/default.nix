@@ -23,17 +23,10 @@ stdenv.mkDerivation (finalAttrs: {
       hash = "sha256-vUP+EvN0sRkusV/iDkX/RWubwmq1fw7ukZ+Wyg+KMw8=";
     };
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config ];
   propagatedBuildInputs = [ libGLX ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   mesonFlags = lib.optionals stdenv.isDarwin [
     "-Dgl_provider=gl" # glvnd is default

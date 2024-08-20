@@ -78,15 +78,7 @@
     version = "0.1.5";
   };
   cddl = {
-    dependencies = [
-      "abnc"
-      "abnftt"
-      "base32"
-      "cbor-diag"
-      "colorize"
-      "json_pure"
-      "regexp-examples"
-    ];
+    dependencies = [ "abnc" "abnftt" "base32" "cbor-diag" "colorize" "json_pure" "regexp-examples" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

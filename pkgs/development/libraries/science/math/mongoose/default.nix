@@ -14,11 +14,7 @@ stdenv.mkDerivation {
   pname = "mongoose";
   version = "3.3.3";
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-  ];
+  outputs = [ "bin" "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "DrTimothyAldenDavis";

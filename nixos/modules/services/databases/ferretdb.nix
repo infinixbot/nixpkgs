@@ -12,10 +12,7 @@ let
 in
 {
 
-  meta.maintainers = with lib.maintainers; [
-    julienmalka
-    camillemndn
-  ];
+  meta.maintainers = with lib.maintainers; [ julienmalka camillemndn ];
 
   options = {
     services.ferretdb = {

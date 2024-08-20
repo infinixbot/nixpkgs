@@ -47,10 +47,7 @@ with lib;
       description = "djbdns tinydns server";
       wantedBy = [ "multi-user.target" ];
       after = [ "network.target" ];
-      path = with pkgs; [
-        daemontools
-        djbdns
-      ];
+      path = with pkgs; [ daemontools djbdns ];
       preStart = ''
         rm -rf /var/lib/tinydns
         tinydns-conf tinydns tinydns /var/lib/tinydns ${config.services.tinydns.ip}

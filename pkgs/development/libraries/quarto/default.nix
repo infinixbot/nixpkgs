@@ -54,15 +54,7 @@ stdenv.mkDerivation (final: {
       ${
         lib.optionalString (python3 != null)
           "--prefix QUARTO_PYTHON : ${
-            python3.withPackages (
-              ps:
-              with ps;
-              [
-                jupyter
-                ipython
-              ]
-              ++ (extraPythonPackages ps)
-            )
+            python3.withPackages (ps: with ps; [ jupyter ipython ] ++ (extraPythonPackages ps))
           }/bin/python3"
       }
   '';
@@ -103,14 +95,8 @@ stdenv.mkDerivation (final: {
     homepage = "https://quarto.org/";
     changelog = "https://github.com/quarto-dev/quarto-cli/releases/tag/v${version}";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      minijackson
-      mrtarantoga
-    ];
+    maintainers = with maintainers; [ minijackson mrtarantoga ];
     platforms = platforms.all;
-    sourceProvenance = with sourceTypes; [
-      binaryNativeCode
-      binaryBytecode
-    ];
+    sourceProvenance = with sourceTypes; [ binaryNativeCode binaryBytecode ];
   };
 })

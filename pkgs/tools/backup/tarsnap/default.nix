@@ -49,10 +49,7 @@ stdenv.mkDerivation rec {
     homepage = "http://www.tarsnap.com/";
     license = lib.licenses.unfree;
     platforms = lib.platforms.unix;
-    maintainers = with lib.maintainers; [
-      thoughtpolice
-      roconnor
-    ];
+    maintainers = with lib.maintainers; [ thoughtpolice roconnor ];
     mainProgram = "tarsnap";
   };
 }

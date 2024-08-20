@@ -38,10 +38,7 @@ stdenv.mkDerivation rec {
     ln -s ${dr_libs} thirdparty/dr_libs
   '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   buildInputs = [
     freetype

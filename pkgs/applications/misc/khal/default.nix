@@ -64,14 +64,7 @@ python3.pkgs.buildPythonApplication rec {
       --fish <(_KHAL_COMPLETE=fish_source $out/bin/khal)
 
     # man page
-    PATH="${
-      python3.withPackages (
-        ps: with ps; [
-          sphinx
-          sphinxcontrib-newsfeed
-        ]
-      )
-    }/bin:$PATH" \
+    PATH="${python3.withPackages (ps: with ps; [ sphinx sphinxcontrib-newsfeed ])}/bin:$PATH" \
     make -C doc man
     installManPage doc/build/man/khal.1
 

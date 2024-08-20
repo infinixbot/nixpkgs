@@ -13,10 +13,7 @@ let
   serverConfigFile = settingsFormat.generate "server.toml" (filterConfig cfg.serverSettings);
   clientConfigFile = settingsFormat.generate "kanidm-config.toml" (filterConfig cfg.clientSettings);
   unixConfigFile = settingsFormat.generate "kanidm-unixd.toml" (filterConfig cfg.unixSettings);
-  certPaths = builtins.map builtins.dirOf [
-    cfg.serverSettings.tls_chain
-    cfg.serverSettings.tls_key
-  ];
+  certPaths = builtins.map builtins.dirOf [ cfg.serverSettings.tls_chain cfg.serverSettings.tls_key ];
 
   # Merge bind mount paths and remove paths where a prefix is already mounted.
   # This makes sure that if e.g. the tls_chain is in the nix store and /nix/store is already in the mount
@@ -74,10 +71,7 @@ let
     RestrictRealtime = true;
     RestrictSUIDSGID = true;
     SystemCallArchitectures = "native";
-    SystemCallFilter = [
-      "@system-service"
-      "~@privileged @resources @setuid @keyring"
-    ];
+    SystemCallFilter = [ "@system-service" "~@privileged @resources @setuid @keyring" ];
     # Does not work well with the temporary root
     #UMask = "0066";
   };
@@ -239,20 +233,12 @@ in
           log_level = lib.mkOption {
             description = "Log level of the server.";
             default = "info";
-            type = lib.types.enum [
-              "info"
-              "debug"
-              "trace"
-            ];
+            type = lib.types.enum [ "info" "debug" "trace" ];
           };
           role = lib.mkOption {
             description = "The role of this server. This affects the replication relationship and thereby available features.";
             default = "WriteReplica";
-            type = lib.types.enum [
-              "WriteReplica"
-              "WriteReplicaNoUI"
-              "ReadOnlyReplica"
-            ];
+            type = lib.types.enum [ "WriteReplica" "WriteReplicaNoUI" "ReadOnlyReplica" ];
           };
           online_backup = {
             path = lib.mkOption {
@@ -553,11 +539,7 @@ in
                           Determines how multiple values are joined to create the claim value.
                           See [Claim Maps](https://kanidm.github.io/kanidm/master/integrations/oauth2.html#custom-claim-maps) for more information.
                         '';
-                        type = lib.types.enum [
-                          "array"
-                          "csv"
-                          "ssv"
-                        ];
+                        type = lib.types.enum [ "array" "csv" "ssv" ];
                         default = "array";
                       };
 
@@ -809,11 +791,7 @@ in
           PrivateUsers = lib.mkForce false;
           # Port needs to be exposed to the host network
           PrivateNetwork = lib.mkForce false;
-          RestrictAddressFamilies = [
-            "AF_INET"
-            "AF_INET6"
-            "AF_UNIX"
-          ];
+          RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_UNIX" ];
           TemporaryFileSystem = "/:ro";
         }
       ];
@@ -824,10 +802,7 @@ in
       description = "Kanidm PAM daemon";
       wantedBy = [ "multi-user.target" ];
       after = [ "network.target" ];
-      restartTriggers = [
-        unixConfigFile
-        clientConfigFile
-      ];
+      restartTriggers = [ unixConfigFile clientConfigFile ];
       serviceConfig = lib.mkMerge [
         defaultServiceConfig
         {
@@ -852,11 +827,7 @@ in
           ];
           # Needs to connect to kanidmd
           PrivateNetwork = lib.mkForce false;
-          RestrictAddressFamilies = [
-            "AF_INET"
-            "AF_INET6"
-            "AF_UNIX"
-          ];
+          RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_UNIX" ];
           TemporaryFileSystem = "/:ro";
         }
       ];
@@ -866,15 +837,9 @@ in
     systemd.services.kanidm-unixd-tasks = lib.mkIf cfg.enablePam {
       description = "Kanidm PAM home management daemon";
       wantedBy = [ "multi-user.target" ];
-      after = [
-        "network.target"
-        "kanidm-unixd.service"
-      ];
+      after = [ "network.target" "kanidm-unixd.service" ];
       partOf = [ "kanidm-unixd.service" ];
-      restartTriggers = [
-        unixConfigFile
-        clientConfigFile
-      ];
+      restartTriggers = [ unixConfigFile clientConfigFile ];
       serviceConfig = {
         ExecStart = "${cfg.package}/bin/kanidm_unixd_tasks";
 
@@ -894,12 +859,7 @@ in
           "/run/kanidm-unixd:/var/run/kanidm-unixd"
         ];
         # CAP_DAC_OVERRIDE is needed to ignore ownership of unixd socket
-        CapabilityBoundingSet = [
-          "CAP_CHOWN"
-          "CAP_FOWNER"
-          "CAP_DAC_OVERRIDE"
-          "CAP_DAC_READ_SEARCH"
-        ];
+        CapabilityBoundingSet = [ "CAP_CHOWN" "CAP_FOWNER" "CAP_DAC_OVERRIDE" "CAP_DAC_READ_SEARCH" ];
         IPAddressDeny = "any";
         # Need access to users
         PrivateUsers = false;
@@ -957,10 +917,6 @@ in
     ];
   };
 
-  meta.maintainers = with lib.maintainers; [
-    erictapen
-    Flakebi
-    oddlama
-  ];
+  meta.maintainers = with lib.maintainers; [ erictapen Flakebi oddlama ];
   meta.buildDocsInSandbox = false;
 }

@@ -140,10 +140,7 @@ let
       "none";
 
   cryptoLibsMap = {
-    nss = [
-      optNss
-      optNspr
-    ];
+    nss = [ optNss optNspr ];
     cryptopp = [ optCryptopp ];
     none = [ ];
   };
@@ -151,24 +148,9 @@ let
   getMeta = description: {
     homepage = "https://ceph.io/en/";
     inherit description;
-    license = with lib.licenses; [
-      lgpl21
-      gpl2Only
-      bsd3
-      mit
-      publicDomain
-    ];
-    maintainers = with lib.maintainers; [
-      adev
-      ak
-      johanot
-      krav
-      nh2
-    ];
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+    license = with lib.licenses; [ lgpl21 gpl2Only bsd3 mit publicDomain ];
+    maintainers = with lib.maintainers; [ adev ak johanot krav nh2 ];
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
   };
 
   ceph-common =
@@ -433,10 +415,7 @@ rec {
         optLibedit
       ];
 
-    pythonPath = [
-      ceph-python-env
-      "${placeholder "out"}/${ceph-python-env.sitePackages}"
-    ];
+    pythonPath = [ ceph-python-env "${placeholder "out"}/${ceph-python-env.sitePackages}" ];
 
     # replace /sbin and /bin based paths with direct nix store paths
     # increase the `command` buffer size since 2 nix store paths cannot fit within 128 characters
@@ -510,13 +489,7 @@ rec {
       test -f $out/bin/ceph-volume
     '';
 
-    outputs = [
-      "out"
-      "lib"
-      "dev"
-      "doc"
-      "man"
-    ];
+    outputs = [ "out" "lib" "dev" "doc" "man" ];
 
     doCheck = false; # uses pip to install things from the internet
 

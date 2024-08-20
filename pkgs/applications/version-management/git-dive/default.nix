@@ -65,10 +65,7 @@ rustPlatform.buildRustPackage rec {
     description = "Dive into a file's history to find root cause";
     homepage = "https://github.com/gitext-rs/git-dive";
     changelog = "https://github.com/gitext-rs/git-dive/blob/${src.rev}/CHANGELOG.md";
-    license = with licenses; [
-      asl20
-      mit
-    ];
+    license = with licenses; [ asl20 mit ];
     maintainers = with maintainers; [ figsoda ];
     mainProgram = "git-dive";
   };

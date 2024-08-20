@@ -51,10 +51,7 @@ stdenv.mkDerivation (finalAttrs: {
     done
   '';
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs =
     [
@@ -131,10 +128,7 @@ stdenv.mkDerivation (finalAttrs: {
     license = licenses.asl20;
     platforms = platforms.unix;
     homepage = "https://catboost.ai";
-    maintainers = with maintainers; [
-      PlushBeaver
-      natsukium
-    ];
+    maintainers = with maintainers; [ PlushBeaver natsukium ];
     mainProgram = "catboost";
   };
 })

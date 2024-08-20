@@ -48,12 +48,7 @@ ocamlPackages.buildDunePackage {
   src = "${fetched.src}/language-server";
   nativeBuildInputs = [ coq ];
   buildInputs =
-    [
-      coq
-      glib
-      adwaita-icon-theme
-      wrapGAppsHook3
-    ]
+    [ coq glib adwaita-icon-theme wrapGAppsHook3 ]
     ++ (with ocamlPackages; [
       findlib
       lablgtk3-sourceview3

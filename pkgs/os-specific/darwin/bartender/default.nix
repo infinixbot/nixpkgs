@@ -46,9 +46,6 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     license = [ lib.licenses.unfree ];
     sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
     maintainers = with lib.maintainers; [ stepbrobd ];
-    platforms = [
-      "aarch64-darwin"
-      "x86_64-darwin"
-    ];
+    platforms = [ "aarch64-darwin" "x86_64-darwin" ];
   };
 })

@@ -44,12 +44,7 @@ stdenv.mkDerivation rec {
   pname = "rpm-ostree";
   version = "2024.7";
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "man" "devdoc" ];
 
   src = fetchurl {
     url = "https://github.com/coreos/${pname}/releases/download/v${version}/${pname}-${version}.tar.xz";

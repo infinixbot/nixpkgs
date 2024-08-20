@@ -41,11 +41,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ autoPatchelfHook ];
 
-  buildInputs = [
-    libusb1
-    udev
-    stdenv.cc.cc.lib
-  ];
+  buildInputs = [ libusb1 udev stdenv.cc.cc.lib ];
 
   unpackPhase = ''
     sh "$src" --noexec --target source
@@ -79,10 +75,7 @@ stdenv.mkDerivation rec {
     homepage = "https://www.sdrplay.com/downloads/";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
-    maintainers = with maintainers; [
-      pmenke
-      zaninime
-    ];
+    maintainers = with maintainers; [ pmenke zaninime ];
     platforms = platforms.linux;
     mainProgram = "sdrplay_apiService";
   };

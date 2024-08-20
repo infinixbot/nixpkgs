@@ -63,10 +63,7 @@ stdenvNoCC.mkDerivation (
       homepage = "https://affine.pro/";
       downloadPage = "https://affine.pro/download";
       license = licenses.mit;
-      maintainers = with maintainers; [
-        richar
-        redyf
-      ];
+      maintainers = with maintainers; [ richar redyf ];
       mainProgram = "affine";
       platforms = [ "x86_64-linux" ];
     };

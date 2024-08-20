@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  hardeningDisable = [
-    "fortify"
-    "format"
-  ];
+  hardeningDisable = [ "fortify" "format" ];
 
   preConfigure = ''
     # Apply the Debian patches.

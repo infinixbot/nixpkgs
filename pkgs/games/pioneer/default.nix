@@ -35,10 +35,7 @@ stdenv.mkDerivation rec {
       --replace 'string(TIMESTAMP PROJECT_VERSION "%Y%m%d")' 'set(PROJECT_VERSION ${version})'
   '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   buildInputs = [
     assimp
@@ -60,10 +57,7 @@ stdenv.mkDerivation rec {
     "-DUSE_SYSTEM_LIBLUA:BOOL=YES"
   ];
 
-  makeFlags = [
-    "all"
-    "build-data"
-  ];
+  makeFlags = [ "all" "build-data" ];
 
   meta = with lib; {
     description = "Space adventure game set in the Milky Way galaxy at the turn of the 31st century";
@@ -72,9 +66,6 @@ stdenv.mkDerivation rec {
       gpl3Only
       cc-by-sa-30
     ];
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
   };
 }

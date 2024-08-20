@@ -24,18 +24,8 @@ rustPlatform.buildRustPackage rec {
     sha256 = "sha256-xAxVDxuvCs8WWkrxVWjCiqxTkHhGj7sSppr1YMuEdT8=";
   };
 
-  cargoBuildFlags = [
-    "--bin"
-    "rust-analyzer"
-    "--bin"
-    "rust-analyzer-proc-macro-srv"
-  ];
-  cargoTestFlags = [
-    "--package"
-    "rust-analyzer"
-    "--package"
-    "proc-macro-srv-cli"
-  ];
+  cargoBuildFlags = [ "--bin" "rust-analyzer" "--bin" "rust-analyzer-proc-macro-srv" ];
+  cargoTestFlags = [ "--package" "rust-analyzer" "--package" "proc-macro-srv-cli" ];
 
   # Code format check requires more dependencies but don't really matter for packaging.
   # So just ignore it.
@@ -75,10 +65,7 @@ rustPlatform.buildRustPackage rec {
   meta = with lib; {
     description = "Modular compiler frontend for the Rust language";
     homepage = "https://rust-analyzer.github.io";
-    license = with licenses; [
-      mit
-      asl20
-    ];
+    license = with licenses; [ mit asl20 ];
     maintainers = with maintainers; [ oxalica ];
     mainProgram = "rust-analyzer";
   };

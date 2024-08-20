@@ -20,11 +20,7 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-oUy9HhybNMjRBWoqqal1Mw8cC5RddgN4izxAl0cgnKE=";
   };
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    python3
-  ];
+  nativeBuildInputs = [ meson ninja python3 ];
 
   postPatch = ''
     # test-object: ../lib/test-object.c:129: main: Assertion `setlocale(LC_NUMERIC, "de_DE.UTF-8") != 0' failed.

@@ -35,11 +35,7 @@
 mkDerivation {
   pname = "spectacle";
 
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools wrapGAppsHook3 ];
   buildInputs = [
     kconfig
     kcoreaddons
@@ -77,10 +73,7 @@ mkDerivation {
     qtWrapperArgs+=("''${gappsWrapperArgs[@]}")
   '';
 
-  propagatedUserEnvPkgs = [
-    kipi-plugins
-    libkipi
-  ];
+  propagatedUserEnvPkgs = [ kipi-plugins libkipi ];
   meta = with lib; {
     homepage = "https://apps.kde.org/spectacle/";
     description = "Screenshot capture utility";

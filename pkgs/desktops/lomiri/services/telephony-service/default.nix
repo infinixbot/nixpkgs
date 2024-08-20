@@ -176,12 +176,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   preCheck = ''
     export QT_QPA_PLATFORM=minimal
-    export QT_PLUGIN_PATH=${
-      lib.makeSearchPathOutput "bin" qtbase.qtPluginPrefix [
-        qtbase
-        qtpim
-      ]
-    }
+    export QT_PLUGIN_PATH=${lib.makeSearchPathOutput "bin" qtbase.qtPluginPrefix [ qtbase qtpim ]}
   '';
 
   postInstall = ''
@@ -189,15 +184,7 @@ stdenv.mkDerivation (finalAttrs: {
 
     # Still missing getprop from libhybris, we don't have it packaged (yet?)
     wrapProgram $out/bin/ofono-setup \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          dbus
-          dconf
-          gettext
-          glib
-          telepathy-mission-control
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ dbus dconf gettext glib telepathy-mission-control ]}
 
     # These SystemD services are referenced by the installed D-Bus services, but not part of the installation. Why?
     for service in telephony-service-{approver,indicator}; do

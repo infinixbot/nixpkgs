@@ -67,10 +67,7 @@ import ./make-test-python.nix (
         # auto-start container
         systemd.targets.machines.wants = [ "systemd-nspawn@${containerName}.service" ];
 
-        virtualisation.additionalPaths = [
-          containerSystem
-          containerTarball
-        ];
+        virtualisation.additionalPaths = [ containerSystem containerTarball ];
 
         systemd.tmpfiles.rules = [
           "d /var/lib/machines/shared-decl 0755 root root - -"

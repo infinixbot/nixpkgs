@@ -96,25 +96,13 @@ stdenv.mkDerivation rec {
       find examples -type f -executable -exec install {} $examples/bin \;
     '';
 
-  outputs = [
-    "out"
-    "doc"
-  ] ++ lib.optional (withExamples != [ ]) "examples";
+  outputs = [ "out" "doc" ] ++ lib.optional (withExamples != [ ]) "examples";
 
   meta = with lib; {
     description = "Set of libraries and drivers for fast packet processing";
     homepage = "http://dpdk.org/";
-    license = with licenses; [
-      lgpl21
-      gpl2Only
-      bsd2
-    ];
+    license = with licenses; [ lgpl21 gpl2Only bsd2 ];
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      magenbluten
-      orivej
-      mic92
-      zhaofengli
-    ];
+    maintainers = with maintainers; [ magenbluten orivej mic92 zhaofengli ];
   };
 }

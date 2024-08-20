@@ -361,23 +361,14 @@ in
       };
 
       webserver = mkOption {
-        type = types.enum [
-          "apache"
-          "none"
-          "nginx"
-        ];
+        type = types.enum [ "apache" "none" "nginx" ];
         default = "apache";
         description = "Webserver to use.";
       };
 
       database = {
         type = mkOption {
-          type = types.enum [
-            "mysql"
-            "postgres"
-            "mssql"
-            "oracle"
-          ];
+          type = types.enum [ "mysql" "postgres" "mssql" "oracle" ];
           default = "mysql";
           description = "Database engine to use. MySQL/MariaDB is the database of choice by MediaWiki developers.";
         };
@@ -480,13 +471,7 @@ in
       };
 
       poolConfig = mkOption {
-        type =
-          with types;
-          attrsOf (oneOf [
-            str
-            int
-            bool
-          ]);
+        type = with types; attrsOf (oneOf [ str int bool ]);
         default = {
           "pm" = "dynamic";
           "pm.max_children" = 32;
@@ -518,19 +503,12 @@ in
   };
 
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "mediawiki"
-        "virtualHost"
-      ]
-      [
-        "services"
-        "mediawiki"
-        "httpd"
-        "virtualHost"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "mediawiki" "virtualHost" ] [
+      "services"
+      "mediawiki"
+      "httpd"
+      "virtualHost"
+    ])
   ];
 
   # implementation

@@ -25,13 +25,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ autoreconfHook ];
   buildInputs =
-    [
-      zlib
-      curl
-      expat
-      openssl
-      python3
-    ]
+    [ zlib curl expat openssl python3 ]
     ++ lib.optionals (with stdenv; isLinux || isDarwin) [ fuse ]
     ++ lib.optionals stdenv.isDarwin [ libiconv ];
 

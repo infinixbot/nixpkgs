@@ -56,14 +56,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-HtvKy3uQwIO2BiLUqIcv9crf9Ngq0dmYOm6E8Gm2EHs=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
-  buildInputs = [
-    fpc
-    libpng
-  ] ++ sharedLibs;
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
+  buildInputs = [ fpc libpng ] ++ sharedLibs;
 
   postPatch = ''
     substituteInPlace src/config.inc.in \

@@ -66,10 +66,7 @@ stdenv.mkDerivation rec {
       - Shell (nbdsh) for command line and scripting.
     '';
     license = with licenses; lgpl21Plus;
-    maintainers = with maintainers; [
-      AndersonTorres
-      humancalico
-    ];
+    maintainers = with maintainers; [ AndersonTorres humancalico ];
     platforms = with platforms; linux;
   };
 }

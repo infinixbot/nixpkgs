@@ -19,13 +19,7 @@ let
       ...
     }@attrs:
     let
-      attrs' = builtins.removeAttrs attrs [
-        "buildGoModule"
-        "version"
-        "sha256"
-        "vendorHash"
-        "license"
-      ];
+      attrs' = builtins.removeAttrs attrs [ "buildGoModule" "version" "sha256" "vendorHash" "license" ];
     in
     buildGoModule (
       rec {
@@ -58,12 +52,7 @@ let
           description = "Distributed, Highly Available, Datacenter-Aware Scheduler";
           mainProgram = "nomad";
           inherit license;
-          maintainers = with maintainers; [
-            rushmorem
-            pradeepchhetri
-            techknowlogick
-            cottand
-          ];
+          maintainers = with maintainers; [ rushmorem pradeepchhetri techknowlogick cottand ];
         };
       }
       // attrs'

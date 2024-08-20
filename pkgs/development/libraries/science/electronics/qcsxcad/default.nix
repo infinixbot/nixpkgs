@@ -20,10 +20,7 @@ mkDerivation {
     hash = "sha256-kc9Vnx6jGiQC2K88ZH00b61D/DbWxAIZZwYCsINqtrY=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs = [
     cmake

@@ -51,10 +51,7 @@ import ./make-test-python.nix (
 
           security.pki.certificateFiles = [ "${test-certificates}/root_ca.crt" ];
 
-          networking.firewall.allowedTCPPorts = [
-            80
-            443
-          ];
+          networking.firewall.allowedTCPPorts = [ 80 443 ];
 
           services.nginx = {
             enable = true;
@@ -72,10 +69,7 @@ import ./make-test-python.nix (
         {
           security.pki.certificateFiles = [ "${test-certificates}/root_ca.crt" ];
 
-          networking.firewall.allowedTCPPorts = [
-            80
-            443
-          ];
+          networking.firewall.allowedTCPPorts = [ 80 443 ];
 
           services.caddy = {
             enable = true;

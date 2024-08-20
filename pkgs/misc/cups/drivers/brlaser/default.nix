@@ -19,15 +19,9 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    zlib
-    cups
-  ];
+  buildInputs = [ zlib cups ];
 
-  cmakeFlags = [
-    "-DCUPS_SERVER_BIN=lib/cups"
-    "-DCUPS_DATA_DIR=share/cups"
-  ];
+  cmakeFlags = [ "-DCUPS_SERVER_BIN=lib/cups" "-DCUPS_DATA_DIR=share/cups" ];
 
   meta = with lib; {
     description = "CUPS driver for Brother laser printers";

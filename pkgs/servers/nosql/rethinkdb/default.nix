@@ -52,12 +52,7 @@ stdenv.mkDerivation rec {
     icu
   ] ++ lib.optional (!stdenv.isDarwin) jemalloc ++ lib.optional stdenv.isDarwin libtool;
 
-  nativeBuildInputs = [
-    which
-    m4
-    python3Packages.python
-    makeWrapper
-  ];
+  nativeBuildInputs = [ which m4 python3Packages.python makeWrapper ];
 
   enableParallelBuilding = true;
 
@@ -78,9 +73,6 @@ stdenv.mkDerivation rec {
     homepage = "https://rethinkdb.com";
     license = lib.licenses.asl20;
     platforms = lib.platforms.unix;
-    maintainers = with lib.maintainers; [
-      thoughtpolice
-      bluescreen303
-    ];
+    maintainers = with lib.maintainers; [ thoughtpolice bluescreen303 ];
   };
 }

@@ -28,12 +28,7 @@ stdenv.mkDerivation rec {
   pname = "gusb";
   version = "0.4.9";
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "bin" "out" "dev" "devdoc" ];
 
   src = fetchFromGitHub {
     owner = "hughsie";

@@ -10,10 +10,7 @@ stdenv.mkDerivation {
   pname = "mingw-w64";
   inherit (mingw_w64_headers) version src meta;
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   configureFlags =
     [
@@ -28,8 +25,5 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ autoreconfHook ];
   buildInputs = [ windows.mingw_w64_headers ];
-  hardeningDisable = [
-    "stackprotector"
-    "fortify"
-  ];
+  hardeningDisable = [ "stackprotector" "fortify" ];
 }

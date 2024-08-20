@@ -41,12 +41,6 @@ buildGoModule rec {
     mainProgram = "blackbox_exporter";
     homepage = "https://github.com/prometheus/blackbox_exporter";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      globin
-      fpletz
-      willibutz
-      Frostman
-      ma27
-    ];
+    maintainers = with maintainers; [ globin fpletz willibutz Frostman ma27 ];
   };
 }

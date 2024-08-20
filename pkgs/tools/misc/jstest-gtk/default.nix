@@ -20,15 +20,8 @@ stdenv.mkDerivation rec {
     sha256 = "0icbbhrj5aqljhiavdy3hic60vp0zzfzyg0d6vpjaqkbzd5pv9d8";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  buildInputs = [
-    gtkmm3
-    libsigcxx
-    xorg.libX11
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
+  buildInputs = [ gtkmm3 libsigcxx xorg.libX11 ];
 
   meta = with lib; {
     description = "Simple joystick tester based on Gtk+";

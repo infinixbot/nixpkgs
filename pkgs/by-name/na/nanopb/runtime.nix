@@ -26,11 +26,7 @@ stdenv.mkDerivation ({
   pname = "nanopb-runtime";
   inherit src version;
 
-  nativeBuildInputs = [
-    cmake
-    protobuf
-    python3
-  ];
+  nativeBuildInputs = [ cmake protobuf python3 ];
 
   patchPhase =
     let

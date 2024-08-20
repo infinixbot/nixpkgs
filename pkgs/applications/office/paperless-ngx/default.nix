@@ -276,11 +276,7 @@ python.pkgs.buildPythonApplication rec {
       frontend
       tesseract5
       ;
-    nltkData = with nltk-data; [
-      punkt
-      snowball_data
-      stopwords
-    ];
+    nltkData = with nltk-data; [ punkt snowball_data stopwords ];
     tests = {
       inherit (nixosTests) paperless;
     };
@@ -292,11 +288,6 @@ python.pkgs.buildPythonApplication rec {
     changelog = "https://github.com/paperless-ngx/paperless-ngx/releases/tag/v${version}";
     license = licenses.gpl3Only;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      lukegb
-      gador
-      erikarvstedt
-      leona
-    ];
+    maintainers = with maintainers; [ lukegb gador erikarvstedt leona ];
   };
 }

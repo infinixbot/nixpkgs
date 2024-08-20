@@ -26,12 +26,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-vFZxg1mVqE7Kp38vEGA5V8m2tjqhssFsUZURixhlfk0=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "dev" "doc" "man" ];
 
   meta = with lib; {
     description = "Hybrid audio compression format";

@@ -20,11 +20,6 @@ makeGaugePlugin {
       # Jar files
       binaryBytecode
     ];
-    platforms = [
-      "aarch64-darwin"
-      "x86_64-darwin"
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "aarch64-darwin" "x86_64-darwin" "aarch64-linux" "x86_64-linux" ];
   };
 }

@@ -41,13 +41,7 @@ in
       };
 
       logLevel = mkOption {
-        type = types.enum [
-          1
-          3
-          5
-          7
-          8
-        ];
+        type = types.enum [ 1 3 5 7 8 ];
         default = 5;
         description = "Log level (1 = debug, 3 = info, 5 = notice, 7 = error, 8 = fatal)";
       };

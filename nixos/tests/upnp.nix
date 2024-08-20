@@ -24,10 +24,7 @@ import ./make-test-python.nix (
       router =
         { pkgs, nodes, ... }:
         {
-          virtualisation.vlans = [
-            1
-            2
-          ];
+          virtualisation.vlans = [ 1 2 ];
           networking.nat.enable = true;
           networking.nat.internalInterfaces = [ "eth2" ];
           networking.nat.externalInterface = "eth1";
@@ -59,10 +56,7 @@ import ./make-test-python.nix (
       client1 =
         { pkgs, nodes, ... }:
         {
-          environment.systemPackages = [
-            pkgs.miniupnpc
-            pkgs.netcat
-          ];
+          environment.systemPackages = [ pkgs.miniupnpc pkgs.netcat ];
           virtualisation.vlans = [ 2 ];
           networking.defaultGateway = internalRouterAddress;
           networking.interfaces.eth1.ipv4.addresses = [

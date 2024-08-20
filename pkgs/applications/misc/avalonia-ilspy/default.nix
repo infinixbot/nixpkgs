@@ -42,10 +42,7 @@ buildDotnetModule rec {
       copyDesktopItems
       icoutils
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      bintools
-      fixDarwinDylibNames
-    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ bintools fixDarwinDylibNames ]
     ++ lib.optionals (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64) [
       autoSignDarwinBinariesHook
     ];
@@ -118,15 +115,8 @@ buildDotnetModule rec {
       lgpl21Only
       mspl
     ];
-    sourceProvenance = with sourceTypes; [
-      fromSource
-      binaryBytecode
-      binaryNativeCode
-    ];
-    maintainers = with maintainers; [
-      AngryAnt
-      emilytrau
-    ];
+    sourceProvenance = with sourceTypes; [ fromSource binaryBytecode binaryNativeCode ];
+    maintainers = with maintainers; [ AngryAnt emilytrau ];
     mainProgram = "ILSpy";
   };
 }

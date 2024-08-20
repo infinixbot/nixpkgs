@@ -19,10 +19,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-vWDrbT1qZVU/N+V24Egq4cAoqysfX1hjQc+D9M5ViEE=";
 
-  nativeBuildInputs = [
-    pkg-config
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ pkg-config wrapGAppsHook3 ];
   buildInputs = [ openssl ];
 
   meta = {

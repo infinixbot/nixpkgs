@@ -36,10 +36,7 @@ import ./make-test-python.nix (
             services.openssh.enable = true;
           };
       in
-      lib.genAttrs [
-        "sudo"
-        "sudo_rs"
-      ] nodeConfig;
+      lib.genAttrs [ "sudo" "sudo_rs" ] nodeConfig;
 
     testScript =
       let

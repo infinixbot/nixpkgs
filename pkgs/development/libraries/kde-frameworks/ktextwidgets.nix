@@ -24,10 +24,5 @@ mkDerivation {
     kservice
     kwindowsystem
   ];
-  propagatedBuildInputs = [
-    ki18n
-    qtbase
-    qttools
-    sonnet
-  ];
+  propagatedBuildInputs = [ ki18n qtbase qttools sonnet ];
 }

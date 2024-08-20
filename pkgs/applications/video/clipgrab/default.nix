@@ -25,19 +25,8 @@ mkDerivation rec {
     url = "https://download.clipgrab.org/${pname}-${version}.tar.gz";
   };
 
-  buildInputs = [
-    ffmpeg
-    qtbase
-    qtdeclarative
-    qtlocation
-    qtquickcontrols2
-    qtwebchannel
-    qtwebengine
-  ];
-  nativeBuildInputs = [
-    qmake
-    qttools
-  ];
+  buildInputs = [ ffmpeg qtbase qtdeclarative qtlocation qtquickcontrols2 qtwebchannel qtwebengine ];
+  nativeBuildInputs = [ qmake qttools ];
 
   patches = [
     ./yt-dlp-path.patch
@@ -64,12 +53,7 @@ mkDerivation rec {
     desktopName = "ClipGrab";
     comment = meta.description;
     genericName = "Web video downloader";
-    categories = [
-      "Qt"
-      "AudioVideo"
-      "Audio"
-      "Video"
-    ];
+    categories = [ "Qt" "AudioVideo" "Audio" "Video" ];
   };
 
   installPhase = ''

@@ -38,11 +38,7 @@ mkDerivation rec {
     qtsvg
   ];
 
-  nativeBuildInputs = [
-    qmake
-    qttools
-    pkg-config
-  ];
+  nativeBuildInputs = [ qmake qttools pkg-config ];
 
   preConfigure = ''
     cd ./sources/

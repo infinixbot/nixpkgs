@@ -20,15 +20,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-2e8RlIRCGXyfpEvW+63IQrcoCmDfxAV3r2b97WN681Y=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
-  nativeBuildInputs = [
-    cmake
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake wrapQtAppsHook ];
 
   buildInputs = [ qtbase ];
 
@@ -49,11 +43,7 @@ stdenv.mkDerivation rec {
       provides the means to create web services without the need for any further
       component such as a dedicated web server.
     '';
-    license = with licenses; [
-      gpl2
-      gpl3
-      lgpl21
-    ];
+    license = with licenses; [ gpl2 gpl3 lgpl21 ];
     maintainers = [ maintainers.ttuegel ];
   };
 }

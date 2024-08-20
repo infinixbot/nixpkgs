@@ -167,14 +167,8 @@ let
 in
 {
   imports = [
-    (lib.mkRemovedOptionModule [
-      "security"
-      "setuidOwners"
-    ] "Use security.wrappers instead")
-    (lib.mkRemovedOptionModule [
-      "security"
-      "setuidPrograms"
-    ] "Use security.wrappers instead")
+    (lib.mkRemovedOptionModule [ "security" "setuidOwners" ] "Use security.wrappers instead")
+    (lib.mkRemovedOptionModule [ "security" "setuidPrograms" ] "Use security.wrappers instead")
   ];
 
   ###### interface
@@ -303,17 +297,11 @@ in
     systemd.services.suid-sgid-wrappers = {
       description = "Create SUID/SGID Wrappers";
       wantedBy = [ "sysinit.target" ];
-      before = [
-        "sysinit.target"
-        "shutdown.target"
-      ];
+      before = [ "sysinit.target" "shutdown.target" ];
       conflicts = [ "shutdown.target" ];
       after = [ "systemd-sysusers.service" ];
       unitConfig.DefaultDependencies = false;
-      unitConfig.RequiresMountsFor = [
-        "/nix/store"
-        "/run/wrappers"
-      ];
+      unitConfig.RequiresMountsFor = [ "/nix/store" "/run/wrappers" ];
       serviceConfig.Type = "oneshot";
       script = ''
         chmod 755 "${parentWrapperDir}"

@@ -55,15 +55,8 @@ stdenv.mkDerivation (finalAttrs: {
       also to be readily available under other UNIX(R)-like operating
       systems.
     '';
-    license = with lib.licenses; [
-      miros
-      isc
-      unicode-dfs-2016
-    ];
-    maintainers = with lib.maintainers; [
-      AndersonTorres
-      joachifm
-    ];
+    license = with lib.licenses; [ miros isc unicode-dfs-2016 ];
+    maintainers = with lib.maintainers; [ AndersonTorres joachifm ];
     platforms = lib.platforms.unix;
   };
 })

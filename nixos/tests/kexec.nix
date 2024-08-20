@@ -3,10 +3,7 @@ import ./make-test-python.nix (
   {
     name = "kexec";
     meta = with lib.maintainers; {
-      maintainers = [
-        flokli
-        lassulus
-      ];
+      maintainers = [ flokli lassulus ];
     };
 
     nodes = {

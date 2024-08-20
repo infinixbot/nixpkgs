@@ -16,10 +16,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-Bm3yFzm2LXOPYWQDk/UBusV0lPfc/BCKIb3pPlWgDFo=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = {
     description = "HTTP nix store that proxies requests to Google Storage";

@@ -36,11 +36,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ autoreconfHook ];
 
-  outputs = [
-    "out"
-    "dev"
-    "devman"
-  ];
+  outputs = [ "out" "dev" "devman" ];
 
   configureFlags =
     [

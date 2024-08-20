@@ -30,14 +30,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  buildInputs = [
-    codec2
-    boost
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
+  buildInputs = [ codec2 boost ];
 
   meta = with lib; {
     description = "M17 Demodulator in C++";

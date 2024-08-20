@@ -24,16 +24,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-OM/noraW2X8WV5wqWEFiI5/JPOBmsp0fTeDdcZoXxAA=";
   };
 
-  buildInputs = [
-    libpng
-    libuuid
-    zlib
-    bzip2
-    xz
-    openssl
-    curl
-    libmysqlclient
-  ];
+  buildInputs = [ libpng libuuid zlib bzip2 xz openssl curl libmysqlclient ];
 
   postPatch = ''
     substituteInPlace ./src/checkUmask.sh \

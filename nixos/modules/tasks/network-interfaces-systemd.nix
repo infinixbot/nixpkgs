@@ -33,29 +33,24 @@ let
     );
 
   defaultGateways = mkMerge (
-    forEach
-      [
-        cfg.defaultGateway
-        cfg.defaultGateway6
-      ]
-      (
-        gateway:
-        optionalAttrs (gateway != null && gateway.interface != null) {
-          networks."40-${gateway.interface}" = {
-            matchConfig.Name = gateway.interface;
-            routes = [
-              (
-                {
-                  Gateway = gateway.address;
-                }
-                // optionalAttrs (gateway.metric != null) {
-                  Metric = gateway.metric;
-                }
-              )
-            ];
-          };
-        }
-      )
+    forEach [ cfg.defaultGateway cfg.defaultGateway6 ] (
+      gateway:
+      optionalAttrs (gateway != null && gateway.interface != null) {
+        networks."40-${gateway.interface}" = {
+          matchConfig.Name = gateway.interface;
+          routes = [
+            (
+              {
+                Gateway = gateway.address;
+              }
+              // optionalAttrs (gateway.metric != null) {
+                Metric = gateway.metric;
+              }
+            )
+          ];
+        };
+      }
+    )
   );
 
   genericDhcpNetworks =
@@ -75,10 +70,7 @@ let
         # more likely to result in interfaces being configured to
         # use DHCP when they shouldn't.
 
-        matchConfig.Name = [
-          "en*"
-          "eth*"
-        ];
+        matchConfig.Name = [ "en*" "eth*" ];
         DHCP = "yes";
         networkConfig.IPv6PrivacyExtensions = "kernel";
       };
@@ -336,10 +328,7 @@ in
                         PacketsPerSlave = simp "packets_per_slave";
                         GratuitousARP = {
                           valTransform = id;
-                          optNames = [
-                            "num_grat_arp"
-                            "num_unsol_na"
-                          ];
+                          optNames = [ "num_grat_arp" "num_unsol_na" ];
                         };
                         AllSlavesActive = simp "all_slaves_active";
                         MinLinks = simp "min_links";
@@ -516,10 +505,7 @@ in
               in
               {
                 description = "Open vSwitch Interface ${n}";
-                wantedBy = [
-                  "network.target"
-                  (subsystemDevice n)
-                ];
+                wantedBy = [ "network.target" (subsystemDevice n) ];
                 # and create bridge before systemd-networkd starts because it might create internal interfaces
                 before = [ "systemd-networkd.service" ];
                 # shutdown the bridge when network is shutdown
@@ -527,17 +513,11 @@ in
                 # requires ovs-vswitchd to be alive at all times
                 bindsTo = [ "ovs-vswitchd.service" ];
                 # start switch after physical interfaces and vswitch daemon
-                after = [
-                  "network-pre.target"
-                  "ovs-vswitchd.service"
-                ] ++ deps;
+                after = [ "network-pre.target" "ovs-vswitchd.service" ] ++ deps;
                 wants = deps; # if one or more interface fails, the switch should continue to run
                 serviceConfig.Type = "oneshot";
                 serviceConfig.RemainAfterExit = true;
-                path = [
-                  pkgs.iproute2
-                  config.virtualisation.vswitch.package
-                ];
+                path = [ pkgs.iproute2 config.virtualisation.vswitch.package ];
                 preStart = ''
                   echo "Resetting Open vSwitch ${n}..."
                   ovs-vsctl --if-exists del-br ${n} -- add-br ${n} \

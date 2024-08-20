@@ -18,18 +18,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   sourceRoot = "${finalAttrs.src.name}/libdockapp";
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
-  buildInputs = [
-    libX11
-    libXext
-    libXpm
-    fontutil
-    mkfontdir
-  ];
+  buildInputs = [ libX11 libXext libXpm fontutil mkfontdir ];
 
   # There is a bug on --with-font
   configureFlags = [

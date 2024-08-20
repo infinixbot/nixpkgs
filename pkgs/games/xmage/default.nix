@@ -44,10 +44,7 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "xmage";
     sourceProvenance = with sourceTypes; [ binaryBytecode ];
     license = licenses.mit;
-    maintainers = with maintainers; [
-      matthiasbeyer
-      abueide
-    ];
+    maintainers = with maintainers; [ matthiasbeyer abueide ];
     homepage = "http://xmage.de/";
   };
 

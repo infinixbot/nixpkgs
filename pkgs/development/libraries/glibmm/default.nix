@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-/gLB5fWCWUDYK1a27DGhLAbAXBWDz+Yvk00HY+HlQrM=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs = [
     meson
@@ -40,10 +37,7 @@ stdenv.mkDerivation rec {
       Cocoa
     ]
   );
-  propagatedBuildInputs = [
-    glib
-    libsigcxx
-  ];
+  propagatedBuildInputs = [ glib libsigcxx ];
 
   doCheck = false; # fails. one test needs the net, another /etc/fstab
 

@@ -31,12 +31,7 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    ninja
-    libevdev
-    libev
-    udev
-  ];
+  buildInputs = [ ninja libevdev libev udev ];
 
   configurePhase = ''
     bash ./configure

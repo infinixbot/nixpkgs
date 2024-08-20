@@ -36,12 +36,7 @@ stdenv.mkDerivation (finalAttrs: {
     "-DBUILD_PLUGIN=OFF"
   ];
 
-  nativeBuildInputs = [
-    cmake
-    extra-cmake-modules
-    ninja
-    wayland-scanner
-  ];
+  nativeBuildInputs = [ cmake extra-cmake-modules ninja wayland-scanner ];
   buildInputs =
     [
       libGL
@@ -85,10 +80,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "OBS Linux Vulkan/OpenGL game capture";
     homepage = "https://github.com/nowrep/obs-vkcapture";
     changelog = "https://github.com/nowrep/obs-vkcapture/releases/tag/v${finalAttrs.version}";
-    maintainers = with maintainers; [
-      atila
-      pedrohlc
-    ];
+    maintainers = with maintainers; [ atila pedrohlc ];
     license = licenses.gpl2Only;
     platforms = platforms.linux;
   };

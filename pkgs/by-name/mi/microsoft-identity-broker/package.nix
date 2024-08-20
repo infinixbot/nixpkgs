@@ -20,12 +20,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-O9zbImSWMrRsaOozj5PsCRvQ3UsaJzLfoTohmLZvLkM=";
   };
 
-  nativeBuildInputs = [
-    dpkg
-    makeWrapper
-    openjdk11
-    zip
-  ];
+  nativeBuildInputs = [ dpkg makeWrapper openjdk11 zip ];
 
   buildPhase = ''
     runHook preBuild

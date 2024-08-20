@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [
-    guile
-    pkg-config
-  ];
+  nativeBuildInputs = [ guile pkg-config ];
   buildInputs = [ guile ];
 
   doCheck = !stdenv.isDarwin;

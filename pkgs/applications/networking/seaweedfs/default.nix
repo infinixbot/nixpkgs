@@ -55,11 +55,7 @@ buildGoModule rec {
   meta = with lib; {
     description = "Simple and highly scalable distributed file system";
     homepage = "https://github.com/chrislusf/seaweedfs";
-    maintainers = with maintainers; [
-      azahi
-      cmacrae
-      wozeparrot
-    ];
+    maintainers = with maintainers; [ azahi cmacrae wozeparrot ];
     mainProgram = "weed";
     license = licenses.asl20;
   };

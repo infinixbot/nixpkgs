@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  propagatedBuildInputs = [
-    ucommon
-    openssl
-    libgcrypt
-  ];
+  propagatedBuildInputs = [ ucommon openssl libgcrypt ];
 
   configureFlags = [
     "--disable-demos"

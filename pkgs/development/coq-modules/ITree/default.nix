@@ -28,10 +28,7 @@ mkCoqDerivation rec {
   release."5.1.0".sha256 = "sha256-ny7Mi1KgWADiFznkNJiRgD7Djc5SUclNgKOmWRxK+eo=";
   release."4.0.0".sha256 = "0h5rhndl8syc24hxq1gch86kj7mpmgr89bxp2hmf28fd7028ijsm";
   releaseRev = v: "${v}";
-  propagatedBuildInputs = [
-    coq-ext-lib
-    paco
-  ];
+  propagatedBuildInputs = [ coq-ext-lib paco ];
   meta = {
     description = "Library for Representing Recursive and Impure Programs in Coq";
     maintainers = with lib.maintainers; [ larsr ];

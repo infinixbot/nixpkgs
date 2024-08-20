@@ -30,12 +30,7 @@ let
 in
 appleDerivation {
   depsBuildBuild = [ buildPackages.stdenv.cc ];
-  nativeBuildInputs = [
-    bsdmake
-    perl
-    bison
-    flex
-  ];
+  nativeBuildInputs = [ bsdmake perl bison flex ];
   buildInputs = [ flex ];
 
   patchPhase = ''

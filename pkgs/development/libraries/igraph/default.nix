@@ -38,11 +38,7 @@ stdenv.mkDerivation (finalAttrs: {
     echo "${finalAttrs.version}" > IGRAPH_VERSION
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
   nativeBuildInputs = [
     bison
@@ -112,9 +108,6 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://github.com/igraph/igraph/blob/${finalAttrs.src.rev}/CHANGELOG.md";
     license = licenses.gpl2Plus;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      MostAwesomeDude
-      dotlambda
-    ];
+    maintainers = with maintainers; [ MostAwesomeDude dotlambda ];
   };
 })

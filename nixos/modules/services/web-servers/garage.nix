@@ -37,13 +37,7 @@ in
     };
 
     logLevel = mkOption {
-      type = types.enum ([
-        "error"
-        "warn"
-        "info"
-        "debug"
-        "trace"
-      ]);
+      type = types.enum ([ "error" "warn" "info" "debug" "trace" ]);
       default = "info";
       example = "debug";
       description = "Garage log level, see <https://garagehq.deuxfleurs.fr/documentation/quick-start/#launching-the-garage-server> for examples.";
@@ -146,14 +140,8 @@ in
 
     systemd.services.garage = {
       description = "Garage Object Storage (S3 compatible)";
-      after = [
-        "network.target"
-        "network-online.target"
-      ];
-      wants = [
-        "network.target"
-        "network-online.target"
-      ];
+      after = [ "network.target" "network-online.target" ];
+      wants = [ "network.target" "network-online.target" ];
       wantedBy = [ "multi-user.target" ];
       restartTriggers = [
         configFile

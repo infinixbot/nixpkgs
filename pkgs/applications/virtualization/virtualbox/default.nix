@@ -162,24 +162,10 @@ stdenv.mkDerivation (finalAttrs: {
     ++ optional pythonBindings python3 # Python is needed even when not building bindings
     ++ optional pulseSupport libpulseaudio
     ++ optionals headless [ libGL ]
-    ++ optionals (!headless) [
-      qtbase
-      qtx11extras
-      libXinerama
-      SDL2
-      libGLU
-    ]
-    ++ optionals enableWebService [
-      gsoap
-      zlib
-    ];
+    ++ optionals (!headless) [ qtbase qtx11extras libXinerama SDL2 libGLU ]
+    ++ optionals enableWebService [ gsoap zlib ];
 
-  hardeningDisable = [
-    "format"
-    "fortify"
-    "pic"
-    "stackprotector"
-  ];
+  hardeningDisable = [ "format" "fortify" "pic" "stackprotector" ];
 
   prePatch = ''
     set -x
@@ -398,11 +384,7 @@ stdenv.mkDerivation (finalAttrs: {
     ];
     license = lib.licenses.gpl2;
     homepage = "https://www.virtualbox.org/";
-    maintainers = with lib.maintainers; [
-      sander
-      friedrichaltheide
-      blitz
-    ];
+    maintainers = with lib.maintainers; [ sander friedrichaltheide blitz ];
     platforms = [ "x86_64-linux" ];
     mainProgram = "VirtualBox";
   };

@@ -29,25 +29,12 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-ZF2HMfEI0LpvJrnB9MN8sQQDyBl/mRsI7pt6lfN4wdU=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    zip
-  ];
+  nativeBuildInputs = [ cmake pkg-config zip ];
 
   buildInputs =
     [ the-foundation ]
-    ++ lib.optionals (!enableTUI) [
-      fribidi
-      harfbuzz
-      libwebp
-      mpg123
-      SDL2
-    ]
-    ++ lib.optionals enableTUI [
-      ncurses
-      sealcurses
-    ]
+    ++ lib.optionals (!enableTUI) [ fribidi harfbuzz libwebp mpg123 SDL2 ]
+    ++ lib.optionals enableTUI [ ncurses sealcurses ]
     ++ lib.optional stdenv.isDarwin AppKit;
 
   cmakeFlags = lib.optionals enableTUI [

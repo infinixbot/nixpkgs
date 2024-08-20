@@ -90,11 +90,7 @@ stdenv.mkDerivation (finalAttrs: {
       desktop environments.
     '';
     changelog = "https://github.com/realh/roxterm/blob/${finalAttrs.src.rev}/debian/changelog";
-    license = with lib.licenses; [
-      gpl2Plus
-      gpl3Plus
-      lgpl3Plus
-    ];
+    license = with lib.licenses; [ gpl2Plus gpl3Plus lgpl3Plus ];
     mainProgram = "roxterm";
     maintainers = with lib.maintainers; [ AndersonTorres ];
     platforms = lib.platforms.linux;

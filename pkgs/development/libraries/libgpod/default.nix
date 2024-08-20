@@ -28,10 +28,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-Y4p5WdBOlfHmKrrQK9M3AuTo3++YSFrH2dUDlcN+lV0=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   patches = [
     (fetchpatch {
@@ -54,17 +51,11 @@ stdenv.mkDerivation rec {
 
   dontStrip = monoSupport;
 
-  nativeBuildInputs =
-    [
-      autoreconfHook
-      intltool
-      pkg-config
-    ]
-    ++ (with perlPackages; [
-      perl
-      XMLParser
-    ])
-    ++ lib.optional monoSupport mono;
+  nativeBuildInputs = [
+    autoreconfHook
+    intltool
+    pkg-config
+  ] ++ (with perlPackages; [ perl XMLParser ]) ++ lib.optional monoSupport mono;
 
   buildInputs = [
     libxml2

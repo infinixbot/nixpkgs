@@ -68,10 +68,7 @@
           };
 
           # Required for DHCP
-          firewall.allowedUDPPorts = [
-            67
-            68
-          ];
+          firewall.allowedUDPPorts = [ 67 68 ];
         };
 
         services.adguardhome = {

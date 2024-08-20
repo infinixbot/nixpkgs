@@ -43,17 +43,8 @@ let
   # cups-files.conf tells cupsd to use this tree.
   bindir = pkgs.buildEnv {
     name = "cups-progs";
-    paths = [
-      cups.out
-      additionalBackends
-      cups-filters
-      pkgs.ghostscript
-    ] ++ cfg.drivers;
-    pathsToLink = [
-      "/lib"
-      "/share/cups"
-      "/bin"
-    ];
+    paths = [ cups.out additionalBackends cups-filters pkgs.ghostscript ] ++ cfg.drivers;
+    pathsToLink = [ "/lib" "/share/cups" "/bin" ];
     postBuild = cfg.bindirCmds;
     ignoreCollisions = true;
   };
@@ -138,39 +129,15 @@ in
 {
 
   imports = [
-    (mkChangedOptionModule
-      [
-        "services"
-        "printing"
-        "gutenprint"
-      ]
-      [
-        "services"
-        "printing"
-        "drivers"
-      ]
-      (
-        config:
-        let
-          enabled = getAttrFromPath [
-            "services"
-            "printing"
-            "gutenprint"
-          ] config;
-        in
-        if enabled then [ pkgs.gutenprint ] else [ ]
-      )
-    )
-    (mkRemovedOptionModule [
-      "services"
-      "printing"
-      "cupsFilesConf"
-    ] "")
-    (mkRemovedOptionModule [
-      "services"
-      "printing"
-      "cupsdConf"
-    ] "")
+    (mkChangedOptionModule [ "services" "printing" "gutenprint" ] [ "services" "printing" "drivers" ] (
+      config:
+      let
+        enabled = getAttrFromPath [ "services" "printing" "gutenprint" ] config;
+      in
+      if enabled then [ pkgs.gutenprint ] else [ ]
+    ))
+    (mkRemovedOptionModule [ "services" "printing" "cupsFilesConf" ] "")
+    (mkRemovedOptionModule [ "services" "printing" "cupsdConf" ] "")
   ];
 
   ###### interface
@@ -374,10 +341,7 @@ in
 
     # We need xdg-open (part of xdg-utils) for the desktop-file to proper open the users default-browser when opening "Manage Printing"
     # https://github.com/NixOS/nixpkgs/pull/237994#issuecomment-1597510969
-    environment.systemPackages = [
-      cups.out
-      xdg-utils
-    ] ++ optional polkitEnabled cups-pk-helper;
+    environment.systemPackages = [ cups.out xdg-utils ] ++ optional polkitEnabled cups-pk-helper;
     environment.etc.cups.source = "/var/lib/cups";
 
     services.dbus.packages = [ cups.out ] ++ optional polkitEnabled cups-pk-helper;
@@ -407,10 +371,7 @@ in
     systemd.sockets.cups = mkIf cfg.startWhenNeeded {
       wantedBy = [ "sockets.target" ];
       listenStreams =
-        [
-          ""
-          "/run/cups/cups.sock"
-        ]
+        [ "" "/run/cups/cups.sock" ]
         ++ map (
           x: replaceStrings [ "localhost" ] [ "127.0.0.1" ] (removePrefix "*:" x)
         ) cfg.listenAddresses;

@@ -79,18 +79,13 @@ stdenv.mkDerivation (finalAttrs: rec {
 
   nativeBuildInputs = [ java ];
 
-  buildInputs =
-    [
-      polyml
-      veriT
-      vampire
-      eprover-ho
-      nettools
-    ]
-    ++ lib.optionals (!stdenv.isDarwin) [
-      java
-      procps
-    ];
+  buildInputs = [
+    polyml
+    veriT
+    vampire
+    eprover-ho
+    nettools
+  ] ++ lib.optionals (!stdenv.isDarwin) [ java procps ];
 
   sourceRoot = "${dirname}${lib.optionalString stdenv.isDarwin ".app"}";
 
@@ -175,10 +170,7 @@ stdenv.mkDerivation (finalAttrs: rec {
       patchelf --set-interpreter $(cat ${stdenv.cc}/nix-support/dynamic-linker) contrib/bash_process-*/$arch/bash_process
       for d in contrib/kodkodi-*/jni/$arch; do
         patchelf --set-rpath "${
-          lib.concatStringsSep ":" [
-            "${java}/lib/openjdk/lib/server"
-            "${stdenv.cc.cc.lib}/lib"
-          ]
+          lib.concatStringsSep ":" [ "${java}/lib/openjdk/lib/server" "${stdenv.cc.cc.lib}/lib" ]
         }" $d/*.so
       done
     ''
@@ -231,11 +223,7 @@ stdenv.mkDerivation (finalAttrs: rec {
     icon = "isabelle";
     desktopName = "Isabelle";
     comment = meta.description;
-    categories = [
-      "Education"
-      "Science"
-      "Math"
-    ];
+    categories = [ "Education" "Science" "Math" ];
   };
 
   meta = with lib; {
@@ -252,10 +240,7 @@ stdenv.mkDerivation (finalAttrs: rec {
       binaryNativeCode # source bundles binary dependencies
     ];
     license = licenses.bsd3;
-    maintainers = [
-      maintainers.jwiegley
-      maintainers.jvanbruegge
-    ];
+    maintainers = [ maintainers.jwiegley maintainers.jvanbruegge ];
     platforms = platforms.unix;
     broken = stdenv.isDarwin;
   };

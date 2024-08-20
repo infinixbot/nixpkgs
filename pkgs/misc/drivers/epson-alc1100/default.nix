@@ -28,23 +28,11 @@ stdenv.mkDerivation {
     sha256 = "1dfw75a3kj2aa4iicvlk9kz3jarrsikpnpd4cdpw79scfc5mwm2p";
   };
 
-  patches = [
-    ./cups-data-dir.patch
-    ./ppd.patch
-  ];
+  patches = [ ./cups-data-dir.patch ./ppd.patch ];
 
-  nativeBuildInputs = [
-    dpkg
-    makeWrapper
-  ];
+  nativeBuildInputs = [ dpkg makeWrapper ];
 
-  buildInputs = [
-    cups
-    pkgsi686Linux.glibc
-    psutils
-    ghostscript
-    bash
-  ];
+  buildInputs = [ cups pkgsi686Linux.glibc psutils ghostscript bash ];
 
   postUnpack = ''
     dpkg -x ${libstdcpp5} libstdcpp5_i386;
@@ -91,10 +79,7 @@ stdenv.mkDerivation {
     '';
 
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
-    license = with licenses; [
-      mit
-      eapl
-    ];
+    license = with licenses; [ mit eapl ];
     maintainers = [ maintainers.eperuffo ];
     platforms = platforms.linux;
   };

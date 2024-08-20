@@ -32,24 +32,11 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-oKcCodoMUaduxXXgUV+z7zlg5mc783PSsgoECdW/Uug=";
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    installShellFiles
-  ];
+  nativeBuildInputs = [ cmake pkg-config installShellFiles ];
 
-  buildInputs =
-    [ curl ]
-    ++ (
-      if stdenv.isDarwin then
-        [
-          libiconv
-          Security
-          SystemConfiguration
-        ]
-      else
-        [ openssl ]
-    );
+  buildInputs = [
+    curl
+  ] ++ (if stdenv.isDarwin then [ libiconv Security SystemConfiguration ] else [ openssl ]);
 
   preFixup = lib.optionalString canRunCmd ''
     installShellCompletion --cmd gix \

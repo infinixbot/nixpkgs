@@ -157,13 +157,7 @@ in
       }
       {
         assertion =
-          settings != null
-          ->
-            cfg.mutableSettings
-            || hasAttrByPath [
-              "dns"
-              "bootstrap_dns"
-            ] settings;
+          settings != null -> cfg.mutableSettings || hasAttrByPath [ "dns" "bootstrap_dns" ] settings;
         message = "AdGuard setting dns.bootstrap_dns needs to be configured for a minimal working configuration";
       }
       {
@@ -171,12 +165,7 @@ in
           settings != null
           ->
             cfg.mutableSettings
-            ||
-              hasAttrByPath [
-                "dns"
-                "bootstrap_dns"
-              ] settings
-              && isList settings.dns.bootstrap_dns;
+            || hasAttrByPath [ "dns" "bootstrap_dns" ] settings && isList settings.dns.bootstrap_dns;
         message = "AdGuard setting dns.bootstrap_dns needs to be a list";
       }
     ];

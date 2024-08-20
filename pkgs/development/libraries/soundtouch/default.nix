@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-imeeTj+3gXxoGTuC/13+BAplwcnQ0wRJdSVt7MPlBxc=";
   };
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-    libtool
-  ];
+  nativeBuildInputs = [ autoconf automake libtool ];
 
   preConfigure = "./bootstrap";
 

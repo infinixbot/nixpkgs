@@ -54,12 +54,7 @@ let
     description = "Compiler for Ethereum smart contract language Solidity";
     homepage = "https://github.com/ethereum/solidity";
     license = licenses.gpl3;
-    maintainers = with maintainers; [
-      dbrock
-      akru
-      lionello
-      sifmelcara
-    ];
+    maintainers = with maintainers; [ dbrock akru lionello sifmelcara ];
   };
 
   solc =
@@ -102,29 +97,14 @@ let
           ];
 
         nativeBuildInputs = [ cmake ];
-        buildInputs =
-          [ boost ]
-          ++ lib.optionals z3Support [ z3 ]
-          ++ lib.optionals cvc4Support [
-            cvc4
-            cln
-            gmp
-          ];
+        buildInputs = [
+          boost
+        ] ++ lib.optionals z3Support [ z3 ] ++ lib.optionals cvc4Support [ cvc4 cln gmp ];
         nativeCheckInputs = [
           jq
           ncurses
           (python3.withPackages (
-            ps: with ps; [
-              colorama
-              deepdiff
-              devtools
-              docopt
-              docutils
-              requests
-              sphinx
-              tabulate
-              z3-solver
-            ]
+            ps: with ps; [ colorama deepdiff devtools docopt docutils requests sphinx tabulate z3-solver ]
           ))
         ]; # contextlib2 glob2 textwrap3 traceback2 urllib3
 

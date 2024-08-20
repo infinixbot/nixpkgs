@@ -24,17 +24,9 @@ stdenv.mkDerivation rec {
       -e '/mkdir\.sh/d'
   '';
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config ];
 
-  buildInputs = [
-    systemd
-    liburing
-    zstd
-  ];
+  buildInputs = [ systemd liburing zstd ];
 
   mesonFlags = [
     "-Dsystemunitdir=${placeholder "out"}/etc/systemd/system"
@@ -46,10 +38,7 @@ stdenv.mkDerivation rec {
     description = "Much faster locate";
     homepage = "https://plocate.sesse.net/";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      peterhoeg
-      SuperSandro2000
-    ];
+    maintainers = with maintainers; [ peterhoeg SuperSandro2000 ];
     platforms = platforms.linux;
   };
 }

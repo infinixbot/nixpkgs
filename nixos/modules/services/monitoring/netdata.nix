@@ -62,12 +62,7 @@ let
   isThereAnyWireGuardTunnels =
     config.networking.wireguard.enable
     || lib.any (
-      c:
-      lib.hasAttrByPath [
-        "netdevConfig"
-        "Kind"
-      ] c
-      && c.netdevConfig.Kind == "wireguard"
+      c: lib.hasAttrByPath [ "netdevConfig" "Kind" ] c && c.netdevConfig.Kind == "wireguard"
     ) (builtins.attrValues config.systemd.network.netdevs);
 in
 {
@@ -249,10 +244,7 @@ in
 
     systemd.services.netdata = {
       description = "Real time performance monitoring";
-      after = [
-        "network.target"
-        "suid-sgid-wrappers.service"
-      ];
+      after = [ "network.target" "suid-sgid-wrappers.service" ];
       # No wrapper means no "useful" netdata.
       requires = [ "suid-sgid-wrappers.service" ];
       wantedBy = [ "multi-user.target" ];

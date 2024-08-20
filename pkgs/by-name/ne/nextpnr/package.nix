@@ -46,17 +46,11 @@ in
 stdenv.mkDerivation rec {
   inherit pname version;
 
-  srcs = [
-    main_src
-    test_src
-  ];
+  srcs = [ main_src test_src ];
 
   sourceRoot = main_src.name;
 
-  nativeBuildInputs = [
-    cmake
-    python3
-  ] ++ (lib.optional enableGui wrapQtAppsHook);
+  nativeBuildInputs = [ cmake python3 ] ++ (lib.optional enableGui wrapQtAppsHook);
   buildInputs = [
     boostPython
     eigen

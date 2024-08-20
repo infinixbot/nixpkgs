@@ -16,20 +16,9 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "libmicrohttpd";
   inherit version src;
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-    "info"
-  ];
+  outputs = [ "out" "dev" "devdoc" "info" ];
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libgcrypt
-    curl
-    gnutls
-    libiconv
-    libintl
-  ];
+  buildInputs = [ libgcrypt curl gnutls libiconv libintl ];
 
   preCheck = ''
     # Since `localhost' can't be resolved in a chroot, work around it.
@@ -53,10 +42,7 @@ stdenv.mkDerivation (finalAttrs: {
 
       homepage = "https://www.gnu.org/software/libmicrohttpd/";
 
-      maintainers = with maintainers; [
-        eelco
-        fpletz
-      ];
+      maintainers = with maintainers; [ eelco fpletz ];
       platforms = platforms.unix;
     }
     // meta;

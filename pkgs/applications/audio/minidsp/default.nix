@@ -26,10 +26,7 @@ rustPlatform.buildRustPackage rec {
 
   buildInputs =
     lib.optionals stdenv.isLinux [ libusb1 ]
-    ++ lib.optionals stdenv.isDarwin [
-      AppKit
-      IOKit
-    ];
+    ++ lib.optionals stdenv.isDarwin [ AppKit IOKit ];
 
   nativeBuildInputs = lib.optionals stdenv.isLinux [ pkg-config ];
 
@@ -38,9 +35,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/mrene/minidsp-rs";
     license = licenses.asl20;
     platforms = platforms.linux ++ platforms.darwin;
-    maintainers = [
-      maintainers.adamcstephens
-      maintainers.mrene
-    ];
+    maintainers = [ maintainers.adamcstephens maintainers.mrene ];
   };
 }

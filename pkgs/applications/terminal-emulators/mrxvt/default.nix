@@ -24,16 +24,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libX11
-    libXft
-    libXi
-    xorgproto
-    libSM
-    libICE
-    freetype
-    which
-  ];
+  buildInputs = [ libX11 libXft libXi xorgproto libSM libICE freetype which ];
 
   configureFlags = [
     "--with-x"

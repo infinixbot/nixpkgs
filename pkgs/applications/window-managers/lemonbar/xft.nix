@@ -18,16 +18,9 @@ stdenv.mkDerivation {
     sha256 = "sha256-BNYBbUouqqsRQaPkpg+UKg62IV9uI34gKJuiAM94CBU=";
   };
 
-  buildInputs = [
-    libxcb
-    libXft
-    perl
-  ];
+  buildInputs = [ libxcb libXft perl ];
 
-  installFlags = [
-    "DESTDIR=$(out)"
-    "PREFIX="
-  ];
+  installFlags = [ "DESTDIR=$(out)" "PREFIX=" ];
 
   meta = with lib; {
     description = "Lightweight xcb based bar with XFT-support";

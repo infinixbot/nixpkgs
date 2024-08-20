@@ -26,11 +26,7 @@ let
   tincConfType =
     with types;
     let
-      valueType = oneOf [
-        bool
-        str
-        int
-      ];
+      valueType = oneOf [ bool str int ];
     in
     attrsOf (either valueType (listOf valueType));
 
@@ -280,10 +276,7 @@ in
 
                   interfaceType = mkOption {
                     default = "tun";
-                    type = types.enum [
-                      "tun"
-                      "tap"
-                    ];
+                    type = types.enum [ "tun" "tap" ];
                     description = ''
                       The type of virtual interface used for the network connection.
                     '';
@@ -487,8 +480,5 @@ in
     }
   );
 
-  meta.maintainers = with maintainers; [
-    minijackson
-    mic92
-  ];
+  meta.maintainers = with maintainers; [ minijackson mic92 ];
 }

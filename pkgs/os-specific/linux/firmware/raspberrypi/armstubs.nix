@@ -37,15 +37,8 @@ stdenv.mkDerivation {
       "OBJCOPY7=${stdenv.cc.targetPrefix}objcopy"
       "OBJDUMP7=${stdenv.cc.targetPrefix}objdump"
     ]
-    ++ optionals (stdenv.isAarch64) [
-      "armstub8.bin"
-      "armstub8-gic.bin"
-    ]
-    ++ optionals (stdenv.isAarch32) [
-      "armstub7.bin"
-      "armstub8-32.bin"
-      "armstub8-32-gic.bin"
-    ];
+    ++ optionals (stdenv.isAarch64) [ "armstub8.bin" "armstub8-gic.bin" ]
+    ++ optionals (stdenv.isAarch32) [ "armstub7.bin" "armstub8-32.bin" "armstub8-32-gic.bin" ];
 
   installPhase = ''
     runHook preInstall
@@ -58,11 +51,7 @@ stdenv.mkDerivation {
     description = "Firmware related ARM stubs for the Raspberry Pi";
     homepage = "https://github.com/raspberrypi/tools";
     license = licenses.bsd3;
-    platforms = [
-      "armv6l-linux"
-      "armv7l-linux"
-      "aarch64-linux"
-    ];
+    platforms = [ "armv6l-linux" "armv7l-linux" "aarch64-linux" ];
     maintainers = [ ];
   };
 }

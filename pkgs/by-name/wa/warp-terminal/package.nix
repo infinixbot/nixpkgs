@@ -39,11 +39,7 @@ let
         --replace-fail /opt/ $out/opt/
     '';
 
-    nativeBuildInputs = [
-      autoPatchelfHook
-      zstd
-      makeWrapper
-    ];
+    nativeBuildInputs = [ autoPatchelfHook zstd makeWrapper ];
 
     buildInputs = [
       curl
@@ -107,12 +103,7 @@ let
     homepage = "https://www.warp.dev";
     license = licenses.unfree;
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
-    maintainers = with maintainers; [
-      emilytrau
-      imadnyc
-      donteatoreo
-      johnrtitor
-    ];
+    maintainers = with maintainers; [ emilytrau imadnyc donteatoreo johnrtitor ];
     platforms = platforms.darwin ++ [ "x86_64-linux" ];
   };
 

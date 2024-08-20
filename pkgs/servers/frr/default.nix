@@ -236,14 +236,8 @@ lib.warnIf (!(stdenv.buildPlatform.canExecute stdenv.hostPlatform))
         infrastructure, web 2.0 businesses, hyperscale services, and Fortune 500
         private clouds.
       '';
-      license = with licenses; [
-        gpl2Plus
-        lgpl21Plus
-      ];
-      maintainers = with maintainers; [
-        woffs
-        thillux
-      ];
+      license = with licenses; [ gpl2Plus lgpl21Plus ];
+      maintainers = with maintainers; [ woffs thillux ];
       # adapt to platforms stated in http://docs.frrouting.org/en/latest/overview.html#supported-platforms
       platforms = (platforms.linux ++ platforms.freebsd ++ platforms.netbsd ++ platforms.openbsd);
     };

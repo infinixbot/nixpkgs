@@ -20,15 +20,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-GuvmKHJknudyn7ahrn/8+kKUA4NW5UjCfkYoX3aTE+Q=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  buildInputs = [
-    zlib
-    libuv
-    openssl.dev
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
+  buildInputs = [ zlib libuv openssl.dev ];
 
   cmakeFlags =
     (lib.attrsets.mapAttrsToList

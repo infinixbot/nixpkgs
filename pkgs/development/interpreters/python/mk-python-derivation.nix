@@ -65,16 +65,9 @@ let
 
   isMismatchedPython = drv: drv.pythonModule != python;
 
-  withDistOutput' = lib.flip elem [
-    "pyproject"
-    "setuptools"
-    "wheel"
-  ];
+  withDistOutput' = lib.flip elem [ "pyproject" "setuptools" "wheel" ];
 
-  isBootstrapInstallPackage' = lib.flip elem [
-    "flit-core"
-    "installer"
-  ];
+  isBootstrapInstallPackage' = lib.flip elem [ "flit-core" "installer" ];
 
   isBootstrapPackage' = lib.flip elem (
     [
@@ -88,10 +81,7 @@ let
     ]
   );
 
-  isSetuptoolsDependency' = lib.flip elem [
-    "setuptools"
-    "wheel"
-  ];
+  isSetuptoolsDependency' = lib.flip elem [ "setuptools" "wheel" ];
 
   cleanAttrs = lib.flip removeAttrs [
     "disabled"
@@ -275,10 +265,7 @@ let
         let
           filename = head (splitString ":" self.meta.position);
         in
-        attrs.passthru.updateScript or [
-          update-python-libraries
-          filename
-        ];
+        attrs.passthru.updateScript or [ update-python-libraries filename ];
     }
     // optionalAttrs (dependencies != [ ]) {
       inherit dependencies;

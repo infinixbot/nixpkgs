@@ -68,11 +68,7 @@ stdenv.mkDerivation {
       --replace "\''${_IMPORT_PREFIX}/lib" "$out/lib"
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "python"
-  ];
+  outputs = [ "out" "dev" "python" ];
 
   cmakeFlags = [
     "-Dpython-bindings=on"

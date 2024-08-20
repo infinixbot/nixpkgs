@@ -18,34 +18,16 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "boot"
-        "initrd"
-        "services"
-        "swraid"
-        "enable"
-      ]
-      [
-        "boot"
-        "swraid"
-        "enable"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "boot"
-        "initrd"
-        "services"
-        "swraid"
-        "mdadmConf"
-      ]
-      [
-        "boot"
-        "swraid"
-        "mdadmConf"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "boot" "initrd" "services" "swraid" "enable" ] [
+      "boot"
+      "swraid"
+      "enable"
+    ])
+    (lib.mkRenamedOptionModule [ "boot" "initrd" "services" "swraid" "mdadmConf" ] [
+      "boot"
+      "swraid"
+      "mdadmConf"
+    ])
   ];
 
   options.boot.swraid = {
@@ -90,13 +72,7 @@ in
     systemd.packages = [ pkgs.mdadm ];
 
     boot.initrd = {
-      availableKernelModules = [
-        "md_mod"
-        "raid0"
-        "raid1"
-        "raid10"
-        "raid456"
-      ];
+      availableKernelModules = [ "md_mod" "raid0" "raid1" "raid10" "raid456" ];
 
       extraUdevRulesCommands = lib.mkIf (!config.boot.initrd.systemd.enable) ''
         cp -v ${pkgs.mdadm}/lib/udev/rules.d/*.rules $out/

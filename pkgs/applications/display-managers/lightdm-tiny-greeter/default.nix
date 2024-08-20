@@ -24,15 +24,8 @@ stdenv.mkDerivation rec {
     sha256 = "08azpj7b5qgac9bgi1xvd6qy6x2nb7iapa0v40ggr3d1fabyhrg6";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    wrapGAppsHook3
-  ];
-  buildInputs = [
-    lightdm
-    gtk3
-    glib
-  ];
+  nativeBuildInputs = [ pkg-config wrapGAppsHook3 ];
+  buildInputs = [ lightdm gtk3 glib ];
 
   postUnpack = lib.optionalString (conf != "") ''
     cp ${builtins.toFile "config.h" conf} source/config.h

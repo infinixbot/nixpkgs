@@ -22,18 +22,11 @@ stdenv.mkDerivation rec {
     hash = "sha256-dFTraTXbF8ZlVXbC4bD6vv04tNCTbg+H9IzQYs6RoFc=";
   };
 
-  outputs = [
-    "out"
-    "man"
-    "info"
-  ];
+  outputs = [ "out" "man" "info" ];
 
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [
-    updateAutotoolsGnuConfigScriptsHook
-    makeWrapper
-  ];
+  nativeBuildInputs = [ updateAutotoolsGnuConfigScriptsHook makeWrapper ];
   buildInputs = [ runtimeShellPackage ];
 
   makeFlags = [

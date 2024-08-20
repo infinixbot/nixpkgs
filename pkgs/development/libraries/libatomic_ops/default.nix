@@ -19,17 +19,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-0wUgf+IH8rP7XLTAGdoStEzj/LxZPf1QgNhnsaJBm1E=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
-  nativeBuildInputs = lib.optionals stdenv.isCygwin [
-    autoconf
-    automake
-    libtool
-  ];
+  nativeBuildInputs = lib.optionals stdenv.isCygwin [ autoconf automake libtool ];
 
   preConfigure = lib.optionalString stdenv.isCygwin ''
     sed -i -e "/libatomic_ops_gpl_la_SOURCES/a libatomic_ops_gpl_la_LIBADD = libatomic_ops.la" src/Makefile.am

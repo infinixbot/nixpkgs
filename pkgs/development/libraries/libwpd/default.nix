@@ -22,14 +22,7 @@ stdenv.mkDerivation rec {
 
   patches = [ ./gcc-1.0.patch ];
 
-  buildInputs = [
-    glib
-    libgsf
-    libxml2
-    zlib
-    librevenge
-    boost
-  ];
+  buildInputs = [ glib libgsf libxml2 zlib librevenge boost ];
 
   nativeBuildInputs = [ pkg-config ];
 

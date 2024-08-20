@@ -45,10 +45,7 @@ rustPlatform.buildRustPackage {
     description = "Bunch of lints to catch common mistakes and improve your Rust code";
     mainProgram = "cargo-clippy";
     maintainers = with maintainers; [ basvandijk ] ++ teams.rust.members;
-    license = with licenses; [
-      mit
-      asl20
-    ];
+    license = with licenses; [ mit asl20 ];
     platforms = platforms.unix;
   };
 }

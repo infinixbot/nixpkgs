@@ -27,12 +27,7 @@ stdenv.mkDerivation rec {
     configureFlagsArray=(--with-backends="mysql pgsql sqlite3")
   '';
 
-  buildInputs = [
-    readline
-    libmysqlclient
-    postgresql
-    sqlite
-  ];
+  buildInputs = [ readline libmysqlclient postgresql sqlite ];
 
   env.NIX_CFLAGS_COMPILE = toString [
     # Needed with GCC 12

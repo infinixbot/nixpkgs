@@ -43,12 +43,7 @@ stdenvNoCC.mkDerivation rec {
 
   preFixup = ''
     gappsWrapperArgs+=(
-      --prefix PATH : ${
-        lib.makeBinPath [
-          quickemu
-          zenity
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ quickemu zenity ]}
     )
   '';
 

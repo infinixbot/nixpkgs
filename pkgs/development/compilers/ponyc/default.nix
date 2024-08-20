@@ -43,10 +43,7 @@ stdenv.mkDerivation (rec {
     which
     python3
   ] ++ lib.optionals (stdenv.isDarwin) [ cctools ];
-  buildInputs = [
-    libxml2
-    z3
-  ];
+  buildInputs = [ libxml2 z3 ];
 
   # Sandbox disallows network access, so disabling problematic networking tests
   patches =
@@ -97,10 +94,7 @@ stdenv.mkDerivation (rec {
     "prefix=${placeholder "out"}"
   ] ++ lib.optionals stdenv.isDarwin ([ "bits=64" ] ++ lib.optional (!lto) "lto=no");
 
-  env.NIX_CFLAGS_COMPILE = toString [
-    "-Wno-error=redundant-move"
-    "-Wno-error=implicit-fallthrough"
-  ];
+  env.NIX_CFLAGS_COMPILE = toString [ "-Wno-error=redundant-move" "-Wno-error=implicit-fallthrough" ];
 
   # make: *** [Makefile:222: test-full-programs-release] Killed: 9
   doCheck = !stdenv.isDarwin;
@@ -113,13 +107,7 @@ stdenv.mkDerivation (rec {
          wrapProgram $out/bin/ponyc \
            --prefix PATH ":" "${stdenv.cc}/bin" \
            --set-default CC "$CC" \
-           --prefix PONYPATH : "${
-             lib.makeLibraryPath [
-               pcre2
-               openssl
-               (placeholder "out")
-             ]
-           }"
+           --prefix PONYPATH : "${lib.makeLibraryPath [ pcre2 openssl (placeholder "out") ]}"
     '';
 
   # Stripping breaks linking for ponyc
@@ -131,16 +119,7 @@ stdenv.mkDerivation (rec {
     description = "Pony is an Object-oriented, actor-model, capabilities-secure, high performance programming language";
     homepage = "https://www.ponylang.org";
     license = licenses.bsd2;
-    maintainers = with maintainers; [
-      kamilchm
-      patternspandemic
-      redvers
-    ];
-    platforms = [
-      "x86_64-linux"
-      "x86_64-darwin"
-      "aarch64-linux"
-      "aarch64-darwin"
-    ];
+    maintainers = with maintainers; [ kamilchm patternspandemic redvers ];
+    platforms = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
   };
 })

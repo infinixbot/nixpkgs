@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [ autoreconfHook ];
-  buildInputs = [
-    zlib
-    bzip2
-  ];
+  buildInputs = [ zlib bzip2 ];
 
   meta = {
     homepage = "https://github.com/RIPE-NCC/bgpdump";

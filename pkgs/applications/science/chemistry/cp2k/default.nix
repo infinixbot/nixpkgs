@@ -47,11 +47,7 @@
   gpuArch ? (if gpuBackend == "cuda" then "sm_80" else "gfx908"),
 }:
 
-assert builtins.elem gpuBackend [
-  "none"
-  "cuda"
-  "rocm"
-];
+assert builtins.elem gpuBackend [ "none" "cuda" "rocm" ];
 
 let
   cp2kVersion = "psmp";

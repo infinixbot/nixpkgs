@@ -26,10 +26,7 @@ let
       in
       {
         name = "${nixPackage.pname}-misc";
-        meta.maintainers = with lib.maintainers; [
-          raitobezarius
-          artturin
-        ];
+        meta.maintainers = with lib.maintainers; [ raitobezarius artturin ];
 
         nodes.machine =
           { lib, ... }:

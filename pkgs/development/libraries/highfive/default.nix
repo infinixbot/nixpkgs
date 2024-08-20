@@ -25,11 +25,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    boost
-    eigen
-    hdf5
-  ];
+  buildInputs = [ boost eigen hdf5 ];
 
   passthru = {
     inherit mpiSupport mpi;

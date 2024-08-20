@@ -27,28 +27,14 @@ stdenv.mkDerivation rec {
     hash = "sha256-sWnx2UdnuuLcTxhuXhfG2ssnFvuGi9kOBrpc4jiKgTs=";
   };
 
-  buildInputs = [
-    SDL2
-    SDL2_image
-    SDL2_mixer
-    SDL2_ttf
-    libGL
-    boost
-    libvorbis
-    zlib
-    curl
-    python3
-  ];
+  buildInputs = [ SDL2 SDL2_image SDL2_mixer SDL2_ttf libGL boost libvorbis zlib curl python3 ];
 
   preConfigure = ''
     export cmakeFlags="$cmakeFlags -DCMAKE_INSTALL_PREFIX=$out -DSHAREDIR=$out/share"
     export makeFlags="$makeFlags DESTDIR=$(out)"
   '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   postPatch = ''
     NIX_CFLAGS_COMPILE="$NIX_CFLAGS_COMPILE $(sdl2-config --cflags)"

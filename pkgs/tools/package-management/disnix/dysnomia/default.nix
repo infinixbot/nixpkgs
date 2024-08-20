@@ -80,19 +80,13 @@ stdenv.mkDerivation rec {
   ] ++ lib.optional enableLegacy "--enable-legacy";
 
   buildInputs =
-    [
-      getopt
-      netcat
-    ]
+    [ getopt netcat ]
     ++ lib.optional stdenv.isLinux systemd
     ++ lib.optional enableEjabberdDump ejabberd
     ++ lib.optional enableMySQLDatabase mariadb.out
     ++ lib.optional enablePostgreSQLDatabase postgresql
     ++ lib.optional enableSubversionRepository subversion
-    ++ lib.optionals enableMongoDatabase [
-      mongodb
-      mongodb-tools
-    ]
+    ++ lib.optionals enableMongoDatabase [ mongodb mongodb-tools ]
     ++ lib.optional enableInfluxDatabase influxdb
     ++ lib.optional enableSupervisordProgram supervisor
     ++ lib.optional enableDockerContainer docker

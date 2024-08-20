@@ -32,10 +32,7 @@ stdenv.mkDerivation (finalAttrs: {
       --replace "-I/usr/X11R6/include" ""
   '';
 
-  makeFlags = [
-    "PREFIX=$(out)"
-    "SES=$(out)/share/xsessions"
-  ];
+  makeFlags = [ "PREFIX=$(out)" "SES=$(out)/share/xsessions" ];
 
   enableParallelBuilding = true;
 

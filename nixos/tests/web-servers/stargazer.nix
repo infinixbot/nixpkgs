@@ -3,14 +3,7 @@ let
   test_script = pkgs.stdenv.mkDerivation {
     pname = "stargazer-test-script";
     inherit (pkgs.stargazer) version src;
-    buildInputs = with pkgs; [
-      (python3.withPackages (
-        ps: with ps; [
-          cryptography
-          urllib3
-        ]
-      ))
-    ];
+    buildInputs = with pkgs; [ (python3.withPackages (ps: with ps; [ cryptography urllib3 ])) ];
     dontBuild = true;
     doCheck = false;
     installPhase = ''

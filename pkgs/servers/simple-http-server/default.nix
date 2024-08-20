@@ -37,10 +37,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/TheWaWaR/simple-http-server";
     changelog = "https://github.com/TheWaWaR/simple-http-server/releases/tag/v${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      figsoda
-      mephistophiles
-    ];
+    maintainers = with maintainers; [ figsoda mephistophiles ];
     mainProgram = "simple-http-server";
   };
 }

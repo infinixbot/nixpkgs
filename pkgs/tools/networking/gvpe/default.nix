@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    openssl
-    gmp
-    zlib
-  ];
+  buildInputs = [ openssl gmp zlib ];
 
   configureFlags = [
     "--enable-tcp"

@@ -7,10 +7,7 @@ import ./make-test-python.nix {
       {
         imports = [ common/user-account.nix ];
         networking = {
-          firewall.allowedTCPPorts = [
-            25
-            143
-          ];
+          firewall.allowedTCPPorts = [ 25 143 ];
           useDHCP = false;
           interfaces.eth1.ipv4.addresses = pkgs.lib.mkOverride 0 [
             {
@@ -50,10 +47,7 @@ import ./make-test-python.nix {
       {
         imports = [ common/user-account.nix ];
         networking = {
-          firewall.allowedTCPPorts = [
-            25
-            143
-          ];
+          firewall.allowedTCPPorts = [ 25 143 ];
           useDHCP = false;
           interfaces.eth1.ipv4.addresses = pkgs.lib.mkOverride 0 [
             {
@@ -135,10 +129,7 @@ import ./make-test-python.nix {
                 assert b"An error has occurred while attempting to deliver a message" in content
             '';
           in
-          [
-            sendTestMail
-            checkMailBounced
-          ];
+          [ sendTestMail checkMailBounced ];
       };
   };
 

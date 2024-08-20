@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-/VBu+aepIrxWc2padPa/WoXbIdKfIwqmA/M8d1GE5FI=";
   };
 
-  buildInputs = [
-    nettools
-    perl
-  ];
+  buildInputs = [ nettools perl ];
   nativeBuildInputs = [ makeWrapper ];
   propagatedBuildInputs = [ git ];
 
@@ -44,12 +41,7 @@ stdenv.mkDerivation rec {
 
   postFixup = ''
     wrapProgram $out/bin/gitolite-shell \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          git
-          (perl.withPackages (p: [ p.JSON ]))
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ git (perl.withPackages (p: [ p.JSON ])) ]}
   '';
 
   installPhase = ''
@@ -67,10 +59,6 @@ stdenv.mkDerivation rec {
     homepage = "https://gitolite.com/gitolite/index.html";
     license = licenses.gpl2;
     platforms = platforms.unix;
-    maintainers = [
-      maintainers.thoughtpolice
-      maintainers.lassulus
-      maintainers.tomberek
-    ];
+    maintainers = [ maintainers.thoughtpolice maintainers.lassulus maintainers.tomberek ];
   };
 }

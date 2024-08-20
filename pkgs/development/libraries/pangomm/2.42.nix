@@ -31,26 +31,14 @@ stdenv.mkDerivation rec {
     ./2.42.2-add-missing-include-attrlist.cc.patch
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs =
-    [
-      pkg-config
-      meson
-      ninja
-      python3
-    ]
+    [ pkg-config meson ninja python3 ]
     ++ lib.optionals stdenv.isDarwin [
       ApplicationServices
     ];
-  propagatedBuildInputs = [
-    pango
-    glibmm
-    cairomm
-  ];
+  propagatedBuildInputs = [ pango glibmm cairomm ];
 
   doCheck = true;
 
@@ -66,14 +54,8 @@ stdenv.mkDerivation rec {
     broken = (stdenv.isLinux && stdenv.isAarch64) || stdenv.isDarwin;
     description = "C++ interface to the Pango text rendering library";
     homepage = "https://www.pango.org/";
-    license = with licenses; [
-      lgpl2
-      lgpl21
-    ];
-    maintainers = with maintainers; [
-      lovek323
-      raskin
-    ];
+    license = with licenses; [ lgpl2 lgpl21 ];
+    maintainers = with maintainers; [ lovek323 raskin ];
     platforms = platforms.unix;
 
     longDescription = ''

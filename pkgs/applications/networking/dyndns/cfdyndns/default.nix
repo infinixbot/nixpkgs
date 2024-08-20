@@ -28,10 +28,7 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "cfdyndns";
     homepage = "https://github.com/nrdxp/cfdyndns";
     license = lib.licenses.mit;
-    maintainers = with maintainers; [
-      colemickens
-      nrdxp
-    ];
+    maintainers = with maintainers; [ colemickens nrdxp ];
     platforms = with platforms; linux;
   };
 }

@@ -181,13 +181,7 @@ in
       phpPackage = mkPackageOption pkgs "php" { };
 
       phpCfg = mkOption {
-        type =
-          with types;
-          attrsOf (oneOf [
-            int
-            str
-            bool
-          ]);
+        type = with types; attrsOf (oneOf [ int str bool ]);
         defaultText = literalExpression (generators.toPretty { } defaultPHPCfg);
         default = { };
         description = "Extra PHP INI options such as `memory_limit`, `max_execution_time`, etc.";
@@ -399,15 +393,7 @@ in
       };
 
       settings = mkOption {
-        type =
-          with types;
-          attrsOf (
-            nullOr (oneOf [
-              int
-              str
-              bool
-            ])
-          );
+        type = with types; attrsOf (nullOr (oneOf [ int str bool ]));
         default = { };
         description = ".env settings for Movim. Secrets should use `secretFile` option instead. `null`s will be culled.";
       };
@@ -420,10 +406,7 @@ in
 
       database = {
         type = mkOption {
-          type = types.enum [
-            "mysql"
-            "postgresql"
-          ];
+          type = types.enum [ "mysql" "postgresql" ];
           example = "mysql";
           default = "postgresql";
           description = "Database engine to use.";
@@ -479,13 +462,7 @@ in
       };
 
       poolConfig = mkOption {
-        type =
-          with types;
-          attrsOf (oneOf [
-            int
-            str
-            bool
-          ]);
+        type = with types; attrsOf (oneOf [ int str bool ]);
         default = { };
         description = "Options for Movim’s PHP-FPM pool.";
       };

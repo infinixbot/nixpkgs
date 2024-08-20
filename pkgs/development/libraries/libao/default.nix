@@ -40,30 +40,15 @@ stdenv.mkDerivation rec {
     "--enable-alsa-mmap"
   ];
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "man" "doc" ];
 
   buildInputs =
     [ ]
     ++ lib.optional usePulseAudio libpulseaudio
-    ++ lib.optionals stdenv.isLinux [
-      alsa-lib
-      libcap
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      CoreAudio
-      CoreServices
-      AudioUnit
-    ];
+    ++ lib.optionals stdenv.isLinux [ alsa-lib libcap ]
+    ++ lib.optionals stdenv.isDarwin [ CoreAudio CoreServices AudioUnit ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
   meta = with lib; {
     longDescription = ''

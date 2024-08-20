@@ -25,11 +25,7 @@ stdenv.mkDerivation rec {
     python3
   ];
 
-  buildInputs = [
-    zlib
-    bzip2
-    xz
-  ];
+  buildInputs = [ zlib bzip2 xz ];
 
   cxx = if stdenv.cc.isClang then "clang++" else "g++";
   cc = if stdenv.cc.isClang then "clang" else "gcc";

@@ -20,16 +20,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-mFan09oJ+BPVJHAxoROj282WJ+4e7TD0ZqeQH1kDabQ=";
 
-  nativeBuildInputs = [
-    installShellFiles
-    makeWrapper
-  ];
+  nativeBuildInputs = [ installShellFiles makeWrapper ];
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X github.com/alajmo/mani/cmd.version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X github.com/alajmo/mani/cmd.version=${version}" ];
 
   postInstall = ''
     installShellCompletion --cmd mani \

@@ -39,11 +39,7 @@ stdenv.mkDerivation rec {
     ${rpmextract}/bin/rpmextract $src
   '';
 
-  nativeBuildInputs = [
-    addDriverRunpath
-    autoPatchelfHook
-    rpmextract
-  ];
+  nativeBuildInputs = [ addDriverRunpath autoPatchelfHook rpmextract ];
 
   buildInputs = [
     alsa-lib

@@ -15,10 +15,7 @@ buildDunePackage rec {
     hash = "sha256-v+tnPGtOEgpOykxIRIrdR9w/jQLCtA9j/9zMTpHJAt0=";
   };
 
-  propagatedBuildInputs = [
-    uutf
-    re
-  ];
+  propagatedBuildInputs = [ uutf re ];
 
   meta = with lib; {
     homepage = "http://ocsigen.org/tyxml/";

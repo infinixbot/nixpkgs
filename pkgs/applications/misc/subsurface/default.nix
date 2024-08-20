@@ -49,17 +49,9 @@ let
 
     sourceRoot = "${subsurfaceSrc.name}/libdivecomputer";
 
-    nativeBuildInputs = [
-      autoreconfHook
-      pkg-config
-    ];
+    nativeBuildInputs = [ autoreconfHook pkg-config ];
 
-    buildInputs = [
-      zlib
-      libusb1
-      bluez
-      hidapi
-    ];
+    buildInputs = [ zlib libusb1 bluez hidapi ];
 
     enableParallelBuilding = true;
 
@@ -85,11 +77,7 @@ let
 
     nativeBuildInputs = [ qmake ];
 
-    buildInputs = [
-      qtbase
-      qtlocation
-      libXcomposite
-    ];
+    buildInputs = [ qtbase qtlocation libXcomposite ];
 
     dontWrapQtApps = true;
 
@@ -144,11 +132,7 @@ stdenv.mkDerivation {
     qtwebengine
   ];
 
-  nativeBuildInputs = [
-    cmake
-    wrapQtAppsHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake wrapQtAppsHook pkg-config ];
 
   cmakeFlags = [
     "-DLIBDC_FROM_PKGCONFIG=ON"
@@ -170,10 +154,7 @@ stdenv.mkDerivation {
     '';
     homepage = "https://subsurface-divelog.org";
     license = licenses.gpl2;
-    maintainers = with maintainers; [
-      mguentner
-      adisbladis
-    ];
+    maintainers = with maintainers; [ mguentner adisbladis ];
     platforms = platforms.all;
   };
 }

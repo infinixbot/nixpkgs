@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-hRq+MEA+4chqPr3d9bS//X70tYcRBTD+rfAJVNmuLzo=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    unzip
-  ];
+  nativeBuildInputs = [ makeWrapper unzip ];
 
   installPhase = ''
     d=$out/libexec/ec2-api-tools

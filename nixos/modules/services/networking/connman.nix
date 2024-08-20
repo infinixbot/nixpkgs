@@ -19,16 +19,7 @@ in
   meta.maintainers = with lib.maintainers; [ AndersonTorres ];
 
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "networking"
-        "connman"
-      ]
-      [
-        "services"
-        "connman"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "networking" "connman" ] [ "services" "connman" ])
   ];
 
   ###### interface
@@ -69,13 +60,7 @@ in
 
       networkInterfaceBlacklist = lib.mkOption {
         type = with lib.types; listOf str;
-        default = [
-          "vmnet"
-          "vboxnet"
-          "virbr"
-          "ifb"
-          "ve"
-        ];
+        default = [ "vmnet" "vboxnet" "virbr" "ifb" "ve" ];
         description = ''
           Default blacklisted interfaces, this includes NixOS containers interfaces (ve).
         '';
@@ -83,10 +68,7 @@ in
 
       wifi = {
         backend = lib.mkOption {
-          type = lib.types.enum [
-            "wpa_supplicant"
-            "iwd"
-          ];
+          type = lib.types.enum [ "wpa_supplicant" "iwd" ];
           default = "wpa_supplicant";
           description = ''
             Specify the Wi-Fi backend used.

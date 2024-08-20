@@ -20,12 +20,7 @@ let
   configKey = types.strMatching "[^\r\n\t ]+";
   optionType =
     with types;
-    oneOf [
-      str
-      path
-      bool
-      int
-    ]
+    oneOf [ str path bool int ]
     // {
       description = "string, path, bool, or integer";
     };
@@ -106,10 +101,7 @@ let
 
         acl = mkOption {
           type = listOf str;
-          example = [
-            "read A/B"
-            "readwrite A/#"
-          ];
+          example = [ "read A/B" "readwrite A/#" ];
           default = [ ];
           description = ''
             Control client access to topics on the broker.
@@ -356,10 +348,7 @@ let
           description = ''
             Additional ACL items to prepend to the generated ACL file.
           '';
-          example = [
-            "pattern read #"
-            "topic readwrite anon/report/#"
-          ];
+          example = [ "pattern read #" "topic readwrite anon/report/#" ];
           default = [ ];
         };
 
@@ -561,15 +550,7 @@ let
     };
 
     logDest = mkOption {
-      type = listOf (
-        either path (enum [
-          "stdout"
-          "stderr"
-          "syslog"
-          "topic"
-          "dlt"
-        ])
-      );
+      type = listOf (either path (enum [ "stdout" "stderr" "syslog" "topic" "dlt" ]));
       description = ''
         Destinations to send log messages to.
       '';
@@ -680,10 +661,7 @@ in
           let
             listenerCredentials =
               listenerScope: listener:
-              usersCredentials listenerScope listener.users [
-                "password"
-                "hashedPassword"
-              ];
+              usersCredentials listenerScope listener.users [ "password" "hashedPassword" ];
           in
           systemdCredentials cfg.listeners listenerCredentials;
 
@@ -691,10 +669,7 @@ in
           let
             listenerCredentials =
               listenerScope: listener:
-              usersCredentials listenerScope listener.users [
-                "passwordFile"
-                "hashedPasswordFile"
-              ];
+              usersCredentials listenerScope listener.users [ "passwordFile" "hashedPasswordFile" ];
           in
           systemdCredentials cfg.listeners listenerCredentials;
 

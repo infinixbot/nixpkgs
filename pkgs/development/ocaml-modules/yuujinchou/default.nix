@@ -14,10 +14,7 @@ let
       {
         version = "5.2.0";
         hash = "sha256-DJzXjV5Tjf69FKUiRioeHghks72pOOHYd73vqhmecS8=";
-        propagatedBuildInputs = [
-          algaeff
-          bwd
-        ];
+        propagatedBuildInputs = [ algaeff bwd ];
       }
     else
       {

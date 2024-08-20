@@ -65,12 +65,7 @@ lib.makeOverridable mkDerivation (
 
     vmoptsFile = lib.optionalString (vmopts != null) (writeText vmoptsName vmopts);
 
-    nativeBuildInputs = [
-      makeWrapper
-      patchelf
-      unzip
-      autoPatchelfHook
-    ];
+    nativeBuildInputs = [ makeWrapper patchelf unzip autoPatchelfHook ];
     buildInputs = extraBuildInputs;
 
     postPatch = ''
@@ -117,15 +112,7 @@ lib.makeOverridable mkDerivation (
       item=${desktopItem}
 
       wrapProgram  "$out/$pname/bin/${loName}.sh" \
-        --prefix PATH : "${
-          lib.makeBinPath [
-            jdk
-            coreutils
-            gnugrep
-            which
-            git
-          ]
-        }" \
+        --prefix PATH : "${lib.makeBinPath [ jdk coreutils gnugrep which git ]}" \
         --suffix PATH : "${lib.makeBinPath [ python3 ]}" \
         --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath extraLdPath}" \
         ${lib.concatStringsSep " " extraWrapperArgs} \

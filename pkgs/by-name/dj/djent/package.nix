@@ -45,9 +45,6 @@ stdenv.mkDerivation rec {
     mainProgram = "djent";
     license = lib.licenses.gpl2Only;
     platforms = lib.platforms.all;
-    maintainers = with lib.maintainers; [
-      orichter
-      thillux
-    ];
+    maintainers = with lib.maintainers; [ orichter thillux ];
   };
 }

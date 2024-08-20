@@ -15,12 +15,7 @@
 let
   inherit (haskell.lib.compose) overrideCabal addBuildTools justStaticExecutables;
   inherit (lib) makeBinPath;
-  bundledBins = [
-    gnutar
-    gzip
-    git
-    openssh
-  ] ++ lib.optional stdenv.isLinux crun;
+  bundledBins = [ gnutar gzip git openssh ] ++ lib.optional stdenv.isLinux crun;
 
   pkg =
     # justStaticExecutables is needed due to https://github.com/NixOS/nix/issues/2990
@@ -74,10 +69,7 @@ pkg.overrideAttrs (
                     workDirectory = "/var/tmp/hci";
                     binaryCachesPath = "/var/keys/binary-caches.json";
                     labels.foo.bar.baz = "qux";
-                    labels.qux = [
-                      "q"
-                      "u"
-                    ];
+                    labels.qux = [ "q" "u" ];
                     apiBaseUrl = "https://hci.dev.biz.example.com";
                     concurrentTasks = 42;
                   };

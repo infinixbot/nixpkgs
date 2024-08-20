@@ -43,11 +43,7 @@ stdenv.mkDerivation {
     ./drop-build-deps.patch
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    gettext
-    python3
-  ];
+  nativeBuildInputs = [ pkg-config gettext python3 ];
 
   buildInputs = [
     SDL

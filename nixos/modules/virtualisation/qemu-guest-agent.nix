@@ -18,10 +18,7 @@ in
       default = false;
       description = "Whether to enable the qemu guest agent.";
     };
-    package = mkPackageOption pkgs [
-      "qemu_kvm"
-      "ga"
-    ] { };
+    package = mkPackageOption pkgs [ "qemu_kvm" "ga" ] { };
   };
 
   config = mkIf cfg.enable (mkMerge [

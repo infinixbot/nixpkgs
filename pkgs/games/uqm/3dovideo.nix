@@ -42,13 +42,7 @@ let
       isLibrary = false;
       isExecutable = true;
 
-      buildDepends = [
-        base
-        binary
-        bytestring
-        filepath
-        tar
-      ];
+      buildDepends = [ base binary bytestring filepath tar ];
 
       description = "Extract video files from a Star Control II 3DO image";
       license = lib.licenses.bsd3;

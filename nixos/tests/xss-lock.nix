@@ -6,10 +6,7 @@ import ./make-test-python.nix (
 
     nodes = {
       simple = {
-        imports = [
-          ./common/x11.nix
-          ./common/user-account.nix
-        ];
+        imports = [ ./common/x11.nix ./common/user-account.nix ];
         programs.xss-lock.enable = true;
         test-support.displayManager.auto.user = "alice";
       };
@@ -17,18 +14,12 @@ import ./make-test-python.nix (
       custom_lockcmd =
         { pkgs, ... }:
         {
-          imports = [
-            ./common/x11.nix
-            ./common/user-account.nix
-          ];
+          imports = [ ./common/x11.nix ./common/user-account.nix ];
           test-support.displayManager.auto.user = "alice";
 
           programs.xss-lock = {
             enable = true;
-            extraOptions = [
-              "-n"
-              "${pkgs.libnotify}/bin/notify-send 'About to sleep!'"
-            ];
+            extraOptions = [ "-n" "${pkgs.libnotify}/bin/notify-send 'About to sleep!'" ];
             lockerCommand = "${pkgs.xlockmore}/bin/xlock -mode ant";
           };
         };

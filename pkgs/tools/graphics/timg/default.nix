@@ -44,10 +44,7 @@ stdenv.mkDerivation (finalAttrs: {
     stb
   ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   cmakeFlags = [
     "-DTIMG_VERSION_FROM_GIT=Off"

@@ -91,14 +91,7 @@
     version = "2.2.1";
   };
   haveapi-client = {
-    dependencies = [
-      "activesupport"
-      "highline"
-      "json"
-      "require_all"
-      "rest-client"
-      "ruby-progressbar"
-    ];
+    dependencies = [ "activesupport" "highline" "json" "require_all" "rest-client" "ruby-progressbar" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -140,10 +133,7 @@
     version = "1.0.5";
   };
   i18n = {
-    dependencies = [
-      "concurrent-ruby"
-      "racc"
-    ];
+    dependencies = [ "concurrent-ruby" "racc" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -235,12 +225,7 @@
     version = "2.0.0";
   };
   rest-client = {
-    dependencies = [
-      "http-accept"
-      "http-cookie"
-      "mime-types"
-      "netrc"
-    ];
+    dependencies = [ "http-accept" "http-cookie" "mime-types" "netrc" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -272,11 +257,7 @@
     version = "2.0.6";
   };
   vpsadmin-client = {
-    dependencies = [
-      "curses"
-      "haveapi-client"
-      "json"
-    ];
+    dependencies = [ "curses" "haveapi-client" "json" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

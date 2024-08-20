@@ -15,58 +15,26 @@ let
 in
 {
   imports = [
-    (mkAliasOptionModule
-      [
-        "services"
-        "nginx"
-        "tailscaleAuth"
-        "package"
-      ]
-      [
-        "services"
-        "tailscaleAuth"
-        "package"
-      ]
-    )
-    (mkAliasOptionModule
-      [
-        "services"
-        "nginx"
-        "tailscaleAuth"
-        "user"
-      ]
-      [
-        "services"
-        "tailscaleAuth"
-        "user"
-      ]
-    )
-    (mkAliasOptionModule
-      [
-        "services"
-        "nginx"
-        "tailscaleAuth"
-        "group"
-      ]
-      [
-        "services"
-        "tailscaleAuth"
-        "group"
-      ]
-    )
-    (mkAliasOptionModule
-      [
-        "services"
-        "nginx"
-        "tailscaleAuth"
-        "socketPath"
-      ]
-      [
-        "services"
-        "tailscaleAuth"
-        "socketPath"
-      ]
-    )
+    (mkAliasOptionModule [ "services" "nginx" "tailscaleAuth" "package" ] [
+      "services"
+      "tailscaleAuth"
+      "package"
+    ])
+    (mkAliasOptionModule [ "services" "nginx" "tailscaleAuth" "user" ] [
+      "services"
+      "tailscaleAuth"
+      "user"
+    ])
+    (mkAliasOptionModule [ "services" "nginx" "tailscaleAuth" "group" ] [
+      "services"
+      "tailscaleAuth"
+      "group"
+    ])
+    (mkAliasOptionModule [ "services" "nginx" "tailscaleAuth" "socketPath" ] [
+      "services"
+      "tailscaleAuth"
+      "socketPath"
+    ])
   ];
 
   options.services.nginx.tailscaleAuth = {

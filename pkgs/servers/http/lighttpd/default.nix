@@ -50,16 +50,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
   buildInputs =
-    [
-      pcre2
-      pcre2.dev
-      libxml2
-      zlib
-      bzip2
-      which
-      file
-      openssl
-    ]
+    [ pcre2 pcre2.dev libxml2 zlib bzip2 which file openssl ]
     ++ lib.optional enableDbi libdbi
     ++ lib.optional enableMagnet lua5_1
     ++ lib.optional enableMysql libmysqlclient
@@ -107,10 +98,7 @@ stdenv.mkDerivation rec {
     homepage = "http://www.lighttpd.net/";
     license = lib.licenses.bsd3;
     platforms = platforms.linux ++ platforms.darwin;
-    maintainers = with maintainers; [
-      bjornfor
-      brecht
-    ];
+    maintainers = with maintainers; [ bjornfor brecht ];
     mainProgram = "lighttpd";
   };
 }

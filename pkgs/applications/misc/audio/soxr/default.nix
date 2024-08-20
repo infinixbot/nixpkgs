@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
     ./arm64-check.patch
   ];
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
   nativeBuildInputs = [ cmake ];
 

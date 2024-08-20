@@ -21,21 +21,13 @@ stdenv.mkDerivation rec {
   # perl is only used during the check phase.
   nativeBuildInputs = [ perl ];
 
-  buildInputs = [
-    zlib
-    bzip2
-    xz
-    curl
-  ];
+  buildInputs = [ zlib bzip2 xz curl ];
 
   configureFlags =
     if !stdenv.hostPlatform.isStatic then
       [ "--enable-libcurl" ] # optional but strongly recommended
     else
-      [
-        "--disable-libcurl"
-        "--disable-plugins"
-      ];
+      [ "--disable-libcurl" "--disable-plugins" ];
 
   # In the case of static builds, we need to replace the build and install phases
   buildPhase = lib.optional stdenv.hostPlatform.isStatic ''

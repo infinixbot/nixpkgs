@@ -144,17 +144,8 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs =
-    [
-      python3
-      vmware-unpack-env
-      autoPatchelfHook
-      makeWrapper
-    ]
-    ++ lib.optionals enableInstaller [
-      bzip2
-      sqlite
-      readline70_compat63
-    ]
+    [ python3 vmware-unpack-env autoPatchelfHook makeWrapper ]
+    ++ lib.optionals enableInstaller [ bzip2 sqlite readline70_compat63 ]
     ++ lib.optionals enableMacOSGuests [ unzip ];
 
   src =
@@ -454,10 +445,6 @@ stdenv.mkDerivation rec {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
     platforms = [ "x86_64-linux" ];
-    maintainers = with maintainers; [
-      cawilliamson
-      deinferno
-      vifino
-    ];
+    maintainers = with maintainers; [ cawilliamson deinferno vifino ];
   };
 }

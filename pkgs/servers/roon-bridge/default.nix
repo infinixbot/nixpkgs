@@ -12,17 +12,7 @@
 }:
 let
   version = "1.8-1125";
-  urlVersion =
-    builtins.replaceStrings
-      [
-        "."
-        "-"
-      ]
-      [
-        "00"
-        "0"
-      ]
-      version;
+  urlVersion = builtins.replaceStrings [ "." "-" ] [ "00" "0" ] version;
   host = stdenv.hostPlatform.system;
   system =
     if host == "x86_64-linux" then
@@ -55,10 +45,7 @@ stdenv.mkDerivation {
     stdenv.cc.cc.lib
   ];
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    makeWrapper
-  ];
+  nativeBuildInputs = [ autoPatchelfHook makeWrapper ];
 
   installPhase =
     let
@@ -68,19 +55,8 @@ stdenv.mkDerivation {
           sed -i 's@^SCRIPT=.*@SCRIPT="$(basename "${binPath}")"@' ${binPath}
           wrapProgram ${binPath} \
             --argv0 "$(basename ${binPath})" \
-            --prefix LD_LIBRARY_PATH : "${
-              lib.makeLibraryPath [
-                alsa-lib
-                ffmpeg
-                openssl
-              ]
-            }" \
-            --prefix PATH : "${
-              lib.makeBinPath [
-                alsa-utils
-                ffmpeg
-              ]
-            }"
+            --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ alsa-lib ffmpeg openssl ]}" \
+            --prefix PATH : "${lib.makeBinPath [ alsa-utils ffmpeg ]}"
         )
       '';
     in
@@ -110,10 +86,7 @@ stdenv.mkDerivation {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
     maintainers = with maintainers; [ lovesegfault ];
-    platforms = [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "aarch64-linux" "x86_64-linux" ];
     mainProgram = "RoonBridge";
   };
 }

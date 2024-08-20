@@ -7,10 +7,7 @@
 stdenv.mkDerivation {
   name = "craftos-pc-test-eval-hello-world";
   meta.timeout = 60;
-  nativeBuildInputs = [
-    craftos-pc
-    gnugrep
-  ];
+  nativeBuildInputs = [ craftos-pc gnugrep ];
   buildCommand = ''
     export HOME=$(pwd)
     mkdir $HOME/.local $HOME/.config

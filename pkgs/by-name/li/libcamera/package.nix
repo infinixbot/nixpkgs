@@ -34,10 +34,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-eCtOtdjpwn0S56ZyRVdG1QCBk1KGPh8YTXD50xev7Bc=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   postPatch = ''
     patchShebangs src/py/ utils/
@@ -82,11 +79,7 @@ stdenv.mkDerivation rec {
       gtest
     ]
     ++ lib.optionals withTracing [ lttng-ust ]
-    ++ lib.optionals withQcam [
-      libtiff
-      qt5.qtbase
-      qt5.qttools
-    ];
+    ++ lib.optionals withQcam [ libtiff qt5.qtbase qt5.qttools ];
 
   nativeBuildInputs = [
     meson

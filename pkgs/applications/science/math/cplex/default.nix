@@ -36,12 +36,7 @@ stdenv.mkDerivation rec {
       releasePath;
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [
-    openjdk
-    gtk2
-    xorg.libXtst
-    glibcLocales
-  ];
+  buildInputs = [ openjdk gtk2 xorg.libXtst glibcLocales ];
 
   unpackPhase = "cp $src $name";
 
@@ -65,11 +60,7 @@ stdenv.mkDerivation rec {
 
   fixupPhase =
     let
-      libraryPath = lib.makeLibraryPath [
-        stdenv.cc.cc
-        gtk2
-        xorg.libXtst
-      ];
+      libraryPath = lib.makeLibraryPath [ stdenv.cc.cc gtk2 xorg.libXtst ];
     in
     ''
       interpreter=${stdenv.cc.libc}/lib/ld-linux-x86-64.so.2

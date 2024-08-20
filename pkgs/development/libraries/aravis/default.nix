@@ -39,12 +39,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-CsXnwrZqBCS7JVAB/7JlAAvks5HnYxgrdc4Bmg68QdE=";
   };
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "lib"
-  ];
+  outputs = [ "bin" "dev" "out" "lib" ];
 
   nativeBuildInputs = [
     meson
@@ -55,19 +50,11 @@ stdenv.mkDerivation rec {
   ] ++ lib.optional enableViewer wrapGAppsHook3;
 
   buildInputs =
-    [
-      glib
-      libxml2
-    ]
+    [ glib libxml2 ]
     ++ lib.optional enableUsb libusb1
     ++ lib.optionals (enableViewer || enableGstPlugin) (
       with gst_all_1;
-      [
-        gstreamer
-        gst-plugins-base
-        (gst-plugins-good.override { gtkSupport = true; })
-        gst-plugins-bad
-      ]
+      [ gstreamer gst-plugins-base (gst-plugins-good.override { gtkSupport = true; }) gst-plugins-bad ]
     )
     ++ lib.optionals (enableViewer) [ gtk3 ];
 

@@ -20,13 +20,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-KZQ7kC0PbBkjLEQZIqYakQ91OvCxruhdfUwiRHtno3w=";
   };
 
-  buildInputs = [
-    bzip2
-    libdivsufsort
-    jsoncpp
-    openssl
-    mpfr
-  ];
+  buildInputs = [ bzip2 libdivsufsort jsoncpp openssl mpfr ];
 
   postPatch = ''
     substituteInPlace Makefile \
@@ -52,9 +46,6 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Implementation of min-entropy assessment methods included in Special Publication 800-90B";
     platforms = lib.platforms.linux;
     license = lib.licenses.nistSoftware;
-    maintainers = with lib.maintainers; [
-      orichter
-      thillux
-    ];
+    maintainers = with lib.maintainers; [ orichter thillux ];
   };
 })

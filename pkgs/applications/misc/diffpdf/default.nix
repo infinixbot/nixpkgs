@@ -26,14 +26,8 @@ mkDerivation rec {
     ./fix_path_poppler_qt5.patch
   ];
 
-  nativeBuildInputs = [
-    qmake
-    qttools
-  ];
-  buildInputs = [
-    qtbase
-    poppler
-  ];
+  nativeBuildInputs = [ qmake qttools ];
+  buildInputs = [ qtbase poppler ];
 
   preConfigure = ''
     substituteInPlace diffpdf.pro --replace @@NIX_POPPLER_QT5@@ ${poppler.dev}

@@ -36,21 +36,13 @@ stdenv.mkDerivation rec {
   prePatch = ''
     sed -i -e '/chown/d' -e '/chmod/d' libfuse/Makefile
   '';
-  buildInputs = [
-    attr
-    libiconv
-  ];
+  buildInputs = [ attr libiconv ];
 
   preConfigure = ''
     echo "${version}" > VERSION
   '';
 
-  makeFlags = [
-    "DESTDIR=${placeholder "out"}"
-    "XATTR_AVAILABLE=1"
-    "PREFIX=/"
-    "SBINDIR=/bin"
-  ];
+  makeFlags = [ "DESTDIR=${placeholder "out"}" "XATTR_AVAILABLE=1" "PREFIX=/" "SBINDIR=/bin" ];
   enableParallelBuilding = true;
 
   postFixup = ''

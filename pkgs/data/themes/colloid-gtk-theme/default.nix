@@ -17,48 +17,19 @@ let
 
 in
 lib.checkListOfEnum "${pname}: theme variants"
-  [
-    "default"
-    "purple"
-    "pink"
-    "red"
-    "orange"
-    "yellow"
-    "green"
-    "teal"
-    "grey"
-    "all"
-  ]
+  [ "default" "purple" "pink" "red" "orange" "yellow" "green" "teal" "grey" "all" ]
   themeVariants
   lib.checkListOfEnum
   "${pname}: color variants"
-  [
-    "standard"
-    "light"
-    "dark"
-  ]
+  [ "standard" "light" "dark" ]
   colorVariants
   lib.checkListOfEnum
   "${pname}: size variants"
-  [
-    "standard"
-    "compact"
-  ]
+  [ "standard" "compact" ]
   sizeVariants
   lib.checkListOfEnum
   "${pname}: tweaks"
-  [
-    "nord"
-    "dracula"
-    "gruvbox"
-    "everforest"
-    "catppuccin"
-    "all"
-    "black"
-    "rimless"
-    "normal"
-    "float"
-  ]
+  [ "nord" "dracula" "gruvbox" "everforest" "catppuccin" "all" "black" "rimless" "normal" "float" ]
   tweaks
 
   stdenvNoCC.mkDerivation

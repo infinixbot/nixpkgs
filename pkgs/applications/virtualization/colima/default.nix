@@ -53,12 +53,7 @@ buildGoModule rec {
 
   postInstall = ''
     wrapProgram $out/bin/colima \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          lima-drv
-          qemu
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ lima-drv qemu ]}
 
     installShellCompletion --cmd colima \
       --bash <($out/bin/colima completion bash) \
@@ -75,10 +70,7 @@ buildGoModule rec {
     description = "Container runtimes with minimal setup";
     homepage = "https://github.com/abiosoft/colima";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      aaschmid
-      tricktron
-    ];
+    maintainers = with maintainers; [ aaschmid tricktron ];
     mainProgram = "colima";
   };
 }

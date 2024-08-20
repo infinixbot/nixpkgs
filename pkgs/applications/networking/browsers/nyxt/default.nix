@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
 
   src = sbclPackages.nyxt;
 
-  nativeBuildInputs = [
-    makeWrapper
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ makeWrapper wrapGAppsHook3 ];
   gstBuildInputs = with gst_all_1; [
     gstreamer
     gst-libav
@@ -65,12 +62,7 @@ stdenv.mkDerivation rec {
     done
 
     mkdir -p $out/bin && makeWrapper $src/bin/nyxt $out/bin/nyxt \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          xclip
-          wl-clipboard
-        ]
-      } \
+      --prefix PATH : ${lib.makeBinPath [ xclip wl-clipboard ]} \
       --prefix GST_PLUGIN_SYSTEM_PATH_1_0 : "${GST_PLUGIN_SYSTEM_PATH_1_0}" \
       --argv0 nyxt "''${gappsWrapperArgs[@]}"
   '';
@@ -84,10 +76,7 @@ stdenv.mkDerivation rec {
     mainProgram = "nyxt";
     homepage = "https://nyxt.atlas.engineer";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      lewo
-      dariof4
-    ];
+    maintainers = with maintainers; [ lewo dariof4 ];
     platforms = platforms.all;
   };
 }

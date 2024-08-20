@@ -71,18 +71,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Nqjr7RAlUHm6vs87a1P84Y7BIZEL0Vs/A1Z6dykfv+o=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    gfortran
-    swig
-  ];
+  nativeBuildInputs = [ cmake gfortran swig ];
 
-  buildInputs = [
-    blas
-    boost
-    lapack
-    suitesparse
-  ] ++ lib.optionals withMPI [ mpi ];
+  buildInputs = [ blas boost lapack suitesparse ] ++ lib.optionals withMPI [ mpi ];
 
   preConfigure =
     if withMPI then

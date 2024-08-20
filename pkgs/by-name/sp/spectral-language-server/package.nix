@@ -28,11 +28,7 @@ let
       hash = "sha256-am27A9VyFoXuOlgG9mnvNqV3Q7Bi7GJzDqqVFGDVWIA=";
     };
 
-    nativeBuildInputs = [
-      typescript
-      jq
-      yarnConfigHook
-    ];
+    nativeBuildInputs = [ typescript jq yarnConfigHook ];
 
     postPatch = ''
       cp server/tsconfig.json server/tsconfig.json.bak

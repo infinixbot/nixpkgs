@@ -87,10 +87,7 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  outputs = [
-    "out"
-    "apparmor"
-  ];
+  outputs = [ "out" "apparmor" ];
 
   cmakeFlags =
     [
@@ -150,31 +147,12 @@ stdenv.mkDerivation (finalAttrs: {
       utf8cpp
       zlib
     ]
-    ++ optionals enableQt5 (
-      with qt5;
-      [
-        qttools
-        qtbase
-      ]
-    )
-    ++ optionals enableQt6 (
-      with qt6Packages;
-      [
-        qttools
-        qtbase
-        qtsvg
-      ]
-    )
-    ++ optionals enableGTK3 [
-      gtkmm3
-      xorg.libpthreadstubs
-    ]
+    ++ optionals enableQt5 (with qt5; [ qttools qtbase ])
+    ++ optionals enableQt6 (with qt6Packages; [ qttools qtbase qtsvg ])
+    ++ optionals enableGTK3 [ gtkmm3 xorg.libpthreadstubs ]
     ++ optionals enableSystemd [ systemd ]
     ++ optionals stdenv.isLinux [ inotify-tools ]
-    ++ optionals stdenv.isDarwin [
-      libiconv
-      Foundation
-    ];
+    ++ optionals stdenv.isDarwin [ libiconv Foundation ];
 
   postInstall = ''
     mkdir $apparmor
@@ -225,10 +203,7 @@ stdenv.mkDerivation (finalAttrs: {
         * Full encryption, DHT, and PEX support
     '';
     homepage = "https://www.transmissionbt.com/";
-    license = with licenses; [
-      gpl2Plus
-      mit
-    ];
+    license = with licenses; [ gpl2Plus mit ];
     maintainers = with maintainers; [ astsmtl ];
     platforms = platforms.unix;
   };

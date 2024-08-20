@@ -23,10 +23,7 @@ stdenv.mkDerivation (finalAttrs: {
     pcre2
   ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   configureFlags = [
     # Look for 'sysless' in /etc.
@@ -40,10 +37,7 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://www.greenwoodsoftware.com/less/news.${finalAttrs.version}.html";
     license = lib.licenses.gpl3Plus;
     mainProgram = "less";
-    maintainers = with lib.maintainers; [
-      eelco
-      dtzWill
-    ];
+    maintainers = with lib.maintainers; [ eelco dtzWill ];
     platforms = lib.platforms.unix;
   };
 })

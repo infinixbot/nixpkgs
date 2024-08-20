@@ -10,11 +10,7 @@ import ./make-test-python.nix (
   {
     name = "containers-bridge";
     meta = {
-      maintainers = with lib.maintainers; [
-        aristid
-        aszlig
-        kampfschlaefer
-      ];
+      maintainers = with lib.maintainers; [ aristid aszlig kampfschlaefer ];
     };
 
     nodes.machine =

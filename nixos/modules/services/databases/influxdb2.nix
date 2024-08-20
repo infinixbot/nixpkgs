@@ -545,8 +545,5 @@ in
     users.extraGroups.influxdb2 = { };
   };
 
-  meta.maintainers = with lib.maintainers; [
-    nickcao
-    oddlama
-  ];
+  meta.maintainers = with lib.maintainers; [ nickcao oddlama ];
 }

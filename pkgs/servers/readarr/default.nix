@@ -48,16 +48,7 @@ stdenv.mkDerivation rec {
     cp -r * $out/share/${pname}-${version}/.
     makeWrapper "${dotnet-runtime}/bin/dotnet" $out/bin/Readarr \
       --add-flags "$out/share/${pname}-${version}/Readarr.dll" \
-      --prefix LD_LIBRARY_PATH : ${
-        lib.makeLibraryPath [
-          curl
-          sqlite
-          libmediainfo
-          icu
-          openssl
-          zlib
-        ]
-      }
+      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ curl sqlite libmediainfo icu openssl zlib ]}
 
     runHook postInstall
   '';
@@ -74,10 +65,6 @@ stdenv.mkDerivation rec {
     maintainers = [ maintainers.jocelynthode ];
     mainProgram = "Readarr";
     sourceProvenance = with lib.sourceTypes; [ binaryBytecode ];
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-      "x86_64-darwin"
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" ];
   };
 }

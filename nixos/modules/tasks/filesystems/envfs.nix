@@ -32,10 +32,7 @@ let
     "/bin" = {
       device = "/usr/bin";
       fsType = "none";
-      options = [
-        "bind"
-        "nofail"
-      ];
+      options = [ "bind" "nofail" ];
     };
   };
 in

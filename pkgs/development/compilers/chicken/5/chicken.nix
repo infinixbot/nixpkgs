@@ -88,11 +88,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = {
     homepage = "https://call-cc.org/";
     license = lib.licenses.bsd3;
-    maintainers = with lib.maintainers; [
-      corngood
-      nagy
-      konst-aa
-    ];
+    maintainers = with lib.maintainers; [ corngood nagy konst-aa ];
     platforms = lib.platforms.unix;
     description = "Portable compiler for the Scheme programming language";
     longDescription = ''

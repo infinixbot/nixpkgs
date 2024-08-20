@@ -35,9 +35,6 @@ stdenv.mkDerivation rec {
     mainProgram = "cephcsi";
     license = [ licenses.asl20 ];
     maintainers = with maintainers; [ johanot ];
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
   };
 }

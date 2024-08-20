@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
   pname = "libvirt-glib";
   version = "5.0.0";
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optional withDocs "devdoc";
+  outputs = [ "out" "dev" ] ++ lib.optional withDocs "devdoc";
 
   src = fetchurl {
     url = "https://libvirt.org/sources/glib/${pname}-${version}.tar.xz";

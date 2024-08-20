@@ -56,9 +56,6 @@ stdenv.mkDerivation rec {
     homepage = "http://sphinxsearch.com";
     license = lib.licenses.gpl2Plus;
     platforms = lib.platforms.all;
-    maintainers = with lib.maintainers; [
-      ederoyd46
-      valodim
-    ];
+    maintainers = with lib.maintainers; [ ederoyd46 valodim ];
   };
 }

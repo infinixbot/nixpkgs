@@ -64,10 +64,7 @@ stdenv.mkDerivation (finalAttrs: {
       exec = "armitage";
       icon = "armitage";
       comment = finalAttrs.meta.description;
-      categories = [
-        "Network"
-        "Security"
-      ];
+      categories = [ "Network" "Security" ];
       startupNotify = false;
     })
   ];
@@ -100,23 +97,13 @@ stdenv.mkDerivation (finalAttrs: {
     substituteInPlace $out/bin/armitage \
       --replace "armitage.jar" "$JAR"
     wrapProgram $out/bin/armitage \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          jdk11
-          metasploit
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ jdk11 metasploit ]}"
 
     install -Dm755 dist/unix/teamserver $out/bin/teamserver
     substituteInPlace $out/bin/teamserver \
       --replace "armitage.jar" "$JAR"
     wrapProgram $out/bin/teamserver \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          jdk11
-          metasploit
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ jdk11 metasploit ]}"
 
     install -Dm444 dist/unix/armitage-logo.png $out/share/pixmaps/armitage.png
     ${lib.optionalString stdenv.isDarwin ''

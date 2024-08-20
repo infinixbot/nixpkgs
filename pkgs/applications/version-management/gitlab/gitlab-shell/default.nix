@@ -18,10 +18,7 @@ buildGoModule rec {
     hash = "sha256-to4ZIFKEiM4FCznoLrvHua9/hIqiHcviALzfay+1rb8=";
   };
 
-  buildInputs = [
-    ruby
-    libkrb5
-  ];
+  buildInputs = [ ruby libkrb5 ];
 
   patches = [
     ./remove-hardcoded-locations.patch

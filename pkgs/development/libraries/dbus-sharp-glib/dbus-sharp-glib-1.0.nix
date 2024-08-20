@@ -20,14 +20,8 @@ stdenv.mkDerivation rec {
     sha256 = "0z8ylzby8n5sar7aywc8rngd9ap5qqznadsscp5v34cacdfz1gxm";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
-  buildInputs = [
-    mono
-    dbus-sharp-1_0
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
+  buildInputs = [ mono dbus-sharp-1_0 ];
 
   dontStrip = true;
 

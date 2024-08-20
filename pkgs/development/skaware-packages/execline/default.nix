@@ -29,13 +29,7 @@ skawarePackages.buildPackage {
 
   description = "Small scripting language, to be used in place of a shell in non-interactive scripts";
 
-  outputs = [
-    "bin"
-    "lib"
-    "dev"
-    "doc"
-    "out"
-  ];
+  outputs = [ "bin" "lib" "dev" "doc" "out" ];
 
   # TODO: nsss support
   configureFlags = [

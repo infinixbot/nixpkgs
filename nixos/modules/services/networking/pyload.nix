@@ -140,11 +140,7 @@ in
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
         SystemCallArchitectures = "native";
-        SystemCallFilter = [
-          "@system-service"
-          "~@resources"
-          "~@privileged"
-        ];
+        SystemCallFilter = [ "@system-service" "~@resources" "~@privileged" ];
         UMask = "0002";
         CapabilityBoundingSet = [
           "~CAP_BLOCK_SUSPEND"

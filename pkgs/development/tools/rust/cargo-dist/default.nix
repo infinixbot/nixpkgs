@@ -61,14 +61,7 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "cargo-dist";
     homepage = "https://github.com/axodotdev/cargo-dist";
     changelog = "https://github.com/axodotdev/cargo-dist/blob/${src.rev}/CHANGELOG.md";
-    license = with licenses; [
-      asl20
-      mit
-    ];
-    maintainers = with maintainers; [
-      figsoda
-      matthiasbeyer
-      mistydemeo
-    ];
+    license = with licenses; [ asl20 mit ];
+    maintainers = with maintainers; [ figsoda matthiasbeyer mistydemeo ];
   };
 }

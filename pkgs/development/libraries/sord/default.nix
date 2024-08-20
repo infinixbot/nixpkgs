@@ -23,12 +23,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-GDs1m8KoEhJDdCf7kacQMZzCNPoZhESJds6KupQvOkU=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "dev" "doc" "man" ];
 
   nativeBuildInputs = [
     doxygen
@@ -38,20 +33,14 @@ stdenv.mkDerivation rec {
     python3
   ];
   buildInputs = [ pcre2 ];
-  propagatedBuildInputs = [
-    serd
-    zix
-  ];
+  propagatedBuildInputs = [ serd zix ];
 
   doCheck = true;
 
   meta = with lib; {
     homepage = "http://drobilla.net/software/sord";
     description = "Lightweight C library for storing RDF data in memory";
-    license = with licenses; [
-      bsd0
-      isc
-    ];
+    license = with licenses; [ bsd0 isc ];
     maintainers = [ ];
     platforms = platforms.unix;
   };

@@ -13,11 +13,7 @@ in
 runCommandCC "sdnotify-wrapper"
   {
 
-    outputs = [
-      "bin"
-      "doc"
-      "out"
-    ];
+    outputs = [ "bin" "doc" "out" ];
 
     meta = {
       homepage = "https://skarnet.org/software/misc/sdnotify-wrapper.c";

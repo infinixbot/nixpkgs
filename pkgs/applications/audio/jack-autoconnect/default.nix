@@ -20,14 +20,8 @@ mkDerivation rec {
     sha256 = "sha256-imvNc498Q2W9RKmiOoNepSoJzIv2tGvFG6hx+seiifw=";
   };
 
-  buildInputs = [
-    qtbase
-    libjack2
-  ];
-  nativeBuildInputs = [
-    pkg-config
-    qmake
-  ];
+  buildInputs = [ qtbase libjack2 ];
+  nativeBuildInputs = [ pkg-config qmake ];
 
   installPhase = ''
     mkdir -p -- "$out/bin"

@@ -24,22 +24,14 @@ stdenv.mkDerivation rec {
 
   postPatch = "patchShebangs *.sh";
 
-  buildInputs =
-    [
-      libev
-      libconfig
-      perl
-      pcre2
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      libcap
-      tcp_wrappers
-    ];
+  buildInputs = [
+    libev
+    libconfig
+    perl
+    pcre2
+  ] ++ lib.optionals stdenv.isLinux [ libcap tcp_wrappers ];
 
-  makeFlags = lib.optionals stdenv.isLinux [
-    "USELIBCAP=1"
-    "USELIBWRAP=1"
-  ];
+  makeFlags = lib.optionals stdenv.isLinux [ "USELIBCAP=1" "USELIBWRAP=1" ];
 
   postInstall = ''
     # install all flavours
@@ -61,10 +53,7 @@ stdenv.mkDerivation rec {
     description = "Applicative Protocol Multiplexer (e.g. share SSH and HTTPS on the same port)";
     license = licenses.gpl2Plus;
     homepage = "https://www.rutschle.net/tech/sslh/README.html";
-    maintainers = with maintainers; [
-      koral
-      fpletz
-    ];
+    maintainers = with maintainers; [ koral fpletz ];
     platforms = platforms.all;
   };
 }

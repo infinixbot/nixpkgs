@@ -56,10 +56,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/Findomain/Findomain";
     changelog = "https://github.com/Findomain/Findomain/releases/tag/${version}";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      Br1ght0ne
-      figsoda
-    ];
+    maintainers = with maintainers; [ Br1ght0ne figsoda ];
     mainProgram = "findomain";
   };
 }

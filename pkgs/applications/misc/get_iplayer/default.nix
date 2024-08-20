@@ -32,20 +32,14 @@ perlPackages.buildPerlPackage rec {
 
   preConfigure = "touch Makefile.PL";
   doCheck = false;
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   installPhase = ''
     runHook preInstall
 
     install -D get_iplayer -t $out/bin
     wrapProgram $out/bin/get_iplayer --suffix PATH : ${
-      lib.makeBinPath [
-        atomicparsley
-        ffmpeg
-      ]
+      lib.makeBinPath [ atomicparsley ffmpeg ]
     } --prefix PERL5LIB : $PERL5LIB
     install -Dm444 get_iplayer.1 -t $out/share/man/man1
 
@@ -62,10 +56,7 @@ perlPackages.buildPerlPackage rec {
     license = licenses.gpl3Plus;
     homepage = "https://github.com/get-iplayer/get_iplayer";
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      rika
-      chewblacka
-    ];
+    maintainers = with maintainers; [ rika chewblacka ];
   };
 
 }

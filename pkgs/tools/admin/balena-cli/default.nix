@@ -75,10 +75,7 @@ buildNpmPackage' rec {
     homepage = "https://github.com/balena-io/balena-cli";
     changelog = "https://github.com/balena-io/balena-cli/blob/v${version}/CHANGELOG.md";
     license = licenses.asl20;
-    maintainers = [
-      maintainers.kalebpace
-      maintainers.doronbehar
-    ];
+    maintainers = [ maintainers.kalebpace maintainers.doronbehar ];
     mainProgram = "balena";
   };
 }

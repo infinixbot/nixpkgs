@@ -77,10 +77,7 @@ in
 
     systemd.services.restic-rest-server = {
       description = "Restic REST Server";
-      after = [
-        "network.target"
-        "restic-rest-server.socket"
-      ];
+      after = [ "network.target" "restic-rest-server.socket" ];
       requires = [ "restic-rest-server.socket" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {

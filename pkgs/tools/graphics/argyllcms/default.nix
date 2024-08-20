@@ -34,10 +34,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-t2dvbYFHEz9IUYpcM5HqDju4ugHrD7seG3QxumspxDg=";
   };
 
-  nativeBuildInputs = [
-    jam
-    unzip
-  ];
+  nativeBuildInputs = [ jam unzip ];
 
   patches = lib.optional (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) (
     # Build process generates files by compiling and then invoking an executable.

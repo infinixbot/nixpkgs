@@ -92,15 +92,8 @@ stdenv.mkDerivation rec {
     comment = "The bridge between designers and developers";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    wrapGAppsHook3
-    unzip
-  ];
-  buildInputs = [
-    gtk3
-    adwaita-icon-theme
-  ];
+  nativeBuildInputs = [ makeWrapper wrapGAppsHook3 unzip ];
+  buildInputs = [ gtk3 adwaita-icon-theme ];
 
   # src is producing multiple folder on unzip so we must
   # override unpackCmd to extract it into newly created folder

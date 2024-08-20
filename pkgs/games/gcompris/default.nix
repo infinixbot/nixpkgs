@@ -34,14 +34,7 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.cmakeBool "BUILD_TESTING" finalAttrs.finalPackage.doCheck)
   ];
 
-  nativeBuildInputs = [
-    cmake
-    extra-cmake-modules
-    gettext
-    ninja
-    qttools
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake extra-cmake-modules gettext ninja qttools wrapQtAppsHook ];
 
   buildInputs =
     [

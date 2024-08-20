@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    cairo
-    libX11
-    lv2
-  ];
+  buildInputs = [ cairo libX11 lv2 ];
 
   installFlags = [ "PREFIX=$(out)" ];
 

@@ -40,18 +40,8 @@ mkDerivation rec {
     "-include cstdint"
   ];
 
-  buildInputs = [
-    curl
-    xorg.libX11
-    xorg.libXext
-    xorg.libXtst
-    avahiWithLibdnssdCompat
-    qtbase
-  ];
-  nativeBuildInputs = [
-    cmake
-    wrapGAppsHook3
-  ];
+  buildInputs = [ curl xorg.libX11 xorg.libXext xorg.libXtst avahiWithLibdnssdCompat qtbase ];
+  nativeBuildInputs = [ cmake wrapGAppsHook3 ];
 
   postFixup = ''
     substituteInPlace "$out/share/applications/barrier.desktop" --replace "Exec=barrier" "Exec=$out/bin/barrier"

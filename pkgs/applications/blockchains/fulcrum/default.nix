@@ -21,19 +21,11 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-VY6yUdmU8MLwSH3VeAWCGbdouOxGrhDc1usYj70jrd8=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    qmake
-  ];
+  nativeBuildInputs = [ pkg-config qmake ];
 
   dontWrapQtApps = true; # no GUI
 
-  buildInputs = [
-    python3
-    qtbase
-    rocksdb_7_10
-    zeromq
-  ];
+  buildInputs = [ python3 qtbase rocksdb_7_10 zeromq ];
 
   meta = with lib; {
     description = "Fast & nimble SPV server for Bitcoin Cash & Bitcoin BTC";

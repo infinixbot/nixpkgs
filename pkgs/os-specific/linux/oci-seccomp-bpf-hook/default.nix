@@ -20,10 +20,7 @@ buildGoModule rec {
   };
   vendorHash = null;
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
   nativeBuildInputs = [
     go-md2man
     installShellFiles

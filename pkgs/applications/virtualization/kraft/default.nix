@@ -28,10 +28,7 @@ buildGoModule rec {
 
   passthru = {
     updateScript = nix-update-script {
-      extraArgs = [
-        "--version-regex"
-        "^v([0-9.]+)"
-      ];
+      extraArgs = [ "--version-regex" "^v([0-9.]+)" ];
     };
   };
 

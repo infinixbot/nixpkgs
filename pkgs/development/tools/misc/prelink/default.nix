@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  configurePlatforms = [
-    "build"
-    "host"
-  ];
+  configurePlatforms = [ "build" "host" ];
 
   nativeBuildInputs = [
     autoreconfHook

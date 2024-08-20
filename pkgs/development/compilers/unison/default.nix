@@ -34,11 +34,7 @@ stdenv.mkDerivation (finalAttrs: {
   dontConfigure = true;
 
   nativeBuildInputs = [ makeWrapper ] ++ lib.optional (!stdenv.isDarwin) autoPatchelfHook;
-  buildInputs = lib.optionals (!stdenv.isDarwin) [
-    gmp
-    ncurses6
-    zlib
-  ];
+  buildInputs = lib.optionals (!stdenv.isDarwin) [ gmp ncurses6 zlib ];
 
   installPhase = ''
     mkdir -p $out/{bin,lib}
@@ -46,12 +42,7 @@ stdenv.mkDerivation (finalAttrs: {
     mv ui $out/ui
     mv unison $out/unison
     makeWrapper $out/unison/unison $out/bin/ucm \
-      --prefix LD_LIBRARY_PATH : ${
-        lib.makeLibraryPath [
-          libb2
-          openssl
-        ]
-      } \
+      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ libb2 openssl ]} \
       --prefix PATH ":" "${lib.makeBinPath [ less ]}" \
       --add-flags "--runtime-path $out/lib/runtime/bin/unison-runtime" \
       --set UCM_WEB_UI "$out/ui"
@@ -60,21 +51,10 @@ stdenv.mkDerivation (finalAttrs: {
   meta = with lib; {
     description = "Modern, statically-typed purely functional language";
     homepage = "https://unisonweb.org/";
-    license = with licenses; [
-      mit
-      bsd3
-    ];
+    license = with licenses; [ mit bsd3 ];
     mainProgram = "ucm";
-    maintainers = with maintainers; [
-      ceedubs
-      sellout
-      virusdave
-    ];
-    platforms = [
-      "x86_64-darwin"
-      "x86_64-linux"
-      "aarch64-darwin"
-    ];
+    maintainers = with maintainers; [ ceedubs sellout virusdave ];
+    platforms = [ "x86_64-darwin" "x86_64-linux" "aarch64-darwin" ];
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
   };
 })

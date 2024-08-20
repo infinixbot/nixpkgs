@@ -36,10 +36,7 @@ stdenv.mkDerivation rec {
     cp -r ${avogadroI18N} avogadro-i18n
   '';
 
-  nativeBuildInputs = [
-    cmake
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake wrapQtAppsHook ];
 
   buildInputs = [
     avogadrolibs

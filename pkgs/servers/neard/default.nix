@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
   pname = "neard";
   version = "0.18";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "https://git.kernel.org/pub/scm/network/nfc/neard.git/snapshot/neard-${version}.tar.gz";

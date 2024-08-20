@@ -8,9 +8,6 @@ mkKdeDerivation {
   pname = "kjournald";
 
   extraNativeBuildInputs = [ pkg-config ];
-  extraBuildInputs = [
-    qtdeclarative
-    systemd
-  ];
+  extraBuildInputs = [ qtdeclarative systemd ];
   meta.mainProgram = "kjournaldbrowser";
 }

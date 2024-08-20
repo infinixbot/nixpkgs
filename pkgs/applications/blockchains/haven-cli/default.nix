@@ -48,11 +48,7 @@ stdenv.mkDerivation rec {
     cp -r . $source
   '';
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake ninja pkg-config ];
 
   buildInputs =
     [
@@ -71,16 +67,8 @@ stdenv.mkDerivation rec {
       readline
       easyloggingpp
     ]
-    ++ lib.optionals stdenv.isDarwin [
-      IOKit
-      CoreData
-      PCSC
-    ]
-    ++ lib.optionals trezorSupport [
-      libusb1
-      protobuf
-      python3
-    ];
+    ++ lib.optionals stdenv.isDarwin [ IOKit CoreData PCSC ]
+    ++ lib.optionals trezorSupport [ libusb1 protobuf python3 ];
 
   cmakeFlags =
     [
@@ -92,10 +80,7 @@ stdenv.mkDerivation rec {
     ++ lib.optional stdenv.isDarwin "-DBoost_USE_MULTITHREADED=OFF"
     ++ lib.optional (!trezorSupport) "-DUSE_DEVICE_TREZOR=OFF";
 
-  outputs = [
-    "out"
-    "source"
-  ];
+  outputs = [ "out" "source" ];
 
   meta = with lib; {
     description = "Haven Protocol is the world's only network of private stable asset";

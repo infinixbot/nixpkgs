@@ -283,11 +283,7 @@ let
               pkgs.pkg-config
               pkgs.removeReferencesTo
             ];
-            buildInputs = old.buildInputs ++ [
-              pkgs.libpng
-              pkgs.zlib
-              pkgs.poppler
-            ];
+            buildInputs = old.buildInputs ++ [ pkgs.libpng pkgs.zlib pkgs.poppler ];
             preBuild = ''
               make server/epdfinfo
               remove-references-to ${
@@ -356,10 +352,7 @@ let
             dontUseCmakeBuildDir = true;
             doCheck = pkgs.stdenv.isLinux;
             buildInputs = old.buildInputs ++ [ pkgs.llvmPackages.libclang ];
-            nativeBuildInputs = old.nativeBuildInputs ++ [
-              pkgs.cmake
-              pkgs.llvmPackages.llvm
-            ];
+            nativeBuildInputs = old.nativeBuildInputs ++ [ pkgs.cmake pkgs.llvmPackages.llvm ];
           });
 
           # tries to write a log file to $HOME
@@ -722,10 +715,7 @@ let
 
           # missing dependencies
           evil-search-highlight-persist = super.evil-search-highlight-persist.overrideAttrs (attrs: {
-            packageRequires = with self; [
-              evil
-              highlight
-            ];
+            packageRequires = with self; [ evil highlight ];
           });
 
           hamlet-mode = super.hamlet-mode.overrideAttrs (attrs: {
@@ -760,10 +750,7 @@ let
 
           vterm = super.vterm.overrideAttrs (old: {
             nativeBuildInputs = old.nativeBuildInputs ++ [ pkgs.cmake ];
-            buildInputs = old.buildInputs ++ [
-              self.emacs
-              pkgs.libvterm-neovim
-            ];
+            buildInputs = old.buildInputs ++ [ self.emacs pkgs.libvterm-neovim ];
             cmakeFlags = [
               "-DEMACS_SOURCE=${self.emacs.src}"
               "-DUSE_SYSTEM_LIBVTERM=ON"
@@ -824,11 +811,7 @@ let
             if pkgs.stdenv.isDarwin then
               super.osx-dictionary.overrideAttrs (old: {
                 buildInputs =
-                  old.buildInputs
-                  ++ (with pkgs.darwin.apple_sdk.frameworks; [
-                    CoreServices
-                    Foundation
-                  ]);
+                  old.buildInputs ++ (with pkgs.darwin.apple_sdk.frameworks; [ CoreServices Foundation ]);
                 dontUnpack = false;
                 buildPhase =
                   (old.buildPhase or "")

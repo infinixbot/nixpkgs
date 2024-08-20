@@ -61,16 +61,7 @@ python3Packages.buildPythonApplication rec {
   dontWrapGApps = true;
 
   makeWrapperArgs = [
-    "--prefix PATH : ${
-      lib.makeBinPath [
-        xdg-user-dirs
-        wine
-        winetricks
-        pciutils
-        glxinfo
-        xrandr
-      ]
-    }"
+    "--prefix PATH : ${lib.makeBinPath [ xdg-user-dirs wine winetricks pciutils glxinfo xrandr ]}"
     # make xdg-open overrideable at runtime
     "--suffix PATH : ${lib.makeBinPath [ xdg-utils ]}"
   ];
@@ -143,9 +134,6 @@ python3Packages.buildPythonApplication rec {
     description = "Simple Wine+Roblox management tool";
     license = licenses.gpl3Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      artturin
-      helium
-    ];
+    maintainers = with maintainers; [ artturin helium ];
   };
 }

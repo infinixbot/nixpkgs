@@ -23,10 +23,7 @@ buildGoModule {
     makeBinaryWrapper
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   postInstall = ''
     mkdir -p $out/share

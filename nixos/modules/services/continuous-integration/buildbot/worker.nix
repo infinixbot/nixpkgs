@@ -169,10 +169,7 @@ in
 
     systemd.services.buildbot-worker = {
       description = "Buildbot Worker.";
-      after = [
-        "network.target"
-        "buildbot-master.service"
-      ];
+      after = [ "network.target" "buildbot-master.service" ];
       wantedBy = [ "multi-user.target" ];
       path = cfg.packages;
       environment.PYTHONPATH = "${python.withPackages (p: [ package ])}/${python.sitePackages}";

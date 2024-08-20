@@ -42,11 +42,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    libGL
-    SDL2
-    libGLU
-  ];
+  buildInputs = [ libGL SDL2 libGLU ];
 
   meta = with lib; {
     homepage = "https://github.com/recastnavigation/recastnavigation";

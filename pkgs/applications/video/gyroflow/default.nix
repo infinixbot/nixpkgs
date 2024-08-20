@@ -61,17 +61,7 @@ rustPlatform.buildRustPackage rec {
     wrapQtAppsHook
   ];
 
-  buildInputs = [
-    alsa-lib
-    bash
-    ffmpeg
-    mdk-sdk
-    ocl-icd
-    opencv
-    qtbase
-    qtdeclarative
-    qtsvg
-  ];
+  buildInputs = [ alsa-lib bash ffmpeg mdk-sdk ocl-icd opencv qtbase qtdeclarative qtsvg ];
 
   patches = [ ./no-static-zlib.patch ];
 
@@ -141,12 +131,7 @@ rustPlatform.buildRustPackage rec {
       exec = "gyroflow-open %u";
       terminal = false;
       mimeTypes = [ "application/x-gyroflow" ];
-      categories = [
-        "AudioVideo"
-        "Video"
-        "AudioVideoEditing"
-        "Qt"
-      ];
+      categories = [ "AudioVideo" "Video" "AudioVideoEditing" "Qt" ];
       startupNotify = true;
       startupWMClass = "gyroflow";
       prefersNonDefaultGPU = true;

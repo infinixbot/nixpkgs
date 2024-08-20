@@ -19,11 +19,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-jY0P2GErmo//YBaz6u4/jj/voOE3C2JaIDRmo0orXN8=";
   };
 
-  outputs = [
-    "out"
-    "info"
-    "man"
-  ];
+  outputs = [ "out" "info" "man" ];
 
   nativeBuildInputs = [
     copyPkgconfigItems
@@ -132,10 +128,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     license = with lib.licenses; [ lgpl21Only ];
     mainProgram = "tcc";
-    maintainers = with lib.maintainers; [
-      joachifm
-      AndersonTorres
-    ];
+    maintainers = with lib.maintainers; [ joachifm AndersonTorres ];
     platforms = lib.platforms.unix;
     # https://www.mail-archive.com/tinycc-devel@nongnu.org/msg10199.html
     broken = stdenv.isDarwin && stdenv.isAarch64;

@@ -53,17 +53,11 @@ let
           --replace "\"libopenal.so.1\"" "\"${openal}/lib/libopenal.so.1\""
       '';
 
-    buildInputs =
-      [
-        SDL2
-        libGL
-        curl
-      ]
-      ++ lib.optionals stdenv.isDarwin [
-        Cocoa
-        OpenAL
-      ]
-      ++ lib.optional openalSupport openal;
+    buildInputs = [
+      SDL2
+      libGL
+      curl
+    ] ++ lib.optionals stdenv.isDarwin [ Cocoa OpenAL ] ++ lib.optional openalSupport openal;
 
     makeFlags = [
       "WITH_OPENAL=${mkFlag openalSupport}"
@@ -95,10 +89,7 @@ let
         icon = "yamagi-quake2";
         desktopName = "yquake2";
         comment = "Yamagi Quake II client";
-        categories = [
-          "Game"
-          "Shooter"
-        ];
+        categories = [ "Game" "Shooter" ];
       })
     ];
 

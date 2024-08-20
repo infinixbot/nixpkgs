@@ -20,11 +20,7 @@ in
   ###### interface
 
   imports = [
-    (lib.mkRemovedOptionModule [
-      "services"
-      "gpsd"
-      "device"
-    ] "Use `services.gpsd.devices` instead.")
+    (lib.mkRemovedOptionModule [ "services" "gpsd" "device" ] "Use `services.gpsd.devices` instead.")
   ];
 
   options = {
@@ -105,11 +101,7 @@ in
       extraArgs = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "-r"
-          "-s"
-          "19200"
-        ];
+        example = [ "-r" "-s" "19200" ];
         description = ''
           A list of extra command line arguments to pass to gpsd.
           Check gpsd(8) mangpage for possible arguments.

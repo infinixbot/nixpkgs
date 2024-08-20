@@ -76,10 +76,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://www.parlatype.xyz/";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      alexshpilkin
-      melchips
-    ];
+    maintainers = with maintainers; [ alexshpilkin melchips ];
     platforms = platforms.linux;
   };
 }

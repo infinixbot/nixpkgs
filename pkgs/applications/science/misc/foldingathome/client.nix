@@ -34,12 +34,7 @@ let
       sha256 = "sha256-d+LY/R4TAko+2e2W76KEBQ8fXj0hzzmBOm+c4tksXMA=";
     };
 
-    nativeBuildInputs = [
-      scons
-      re2
-      libevent
-      git
-    ];
+    nativeBuildInputs = [ scons re2 libevent git ];
 
     buildInputs = [ openssl ];
 
@@ -74,15 +69,7 @@ in
 buildFHSEnv {
   name = fah-client.name;
 
-  targetPkgs =
-    _:
-    [
-      fah-client
-      ocl-icd
-      zlib
-      expat
-    ]
-    ++ extraPkgs;
+  targetPkgs = _: [ fah-client ocl-icd zlib expat ] ++ extraPkgs;
 
   runScript = "/bin/fah-client";
 

@@ -31,14 +31,7 @@ let
       args = cfg.settings.database.args;
     in
     usePostgresql
-    && (
-      !(args ? host)
-      || (elem args.host [
-        "localhost"
-        "127.0.0.1"
-        "::1"
-      ])
-    )
+    && (!(args ? host) || (elem args.host [ "localhost" "127.0.0.1" "::1" ]))
     && config.services.postgresql.enable;
   hasWorkers = cfg.workers != { };
 
@@ -146,63 +139,26 @@ in
 
   imports = [
 
-    (mkRemovedOptionModule
-      [
-        "services"
-        "matrix-synapse"
-        "trusted_third_party_id_servers"
-      ]
-      ''
-        The `trusted_third_party_id_servers` option as been removed in `matrix-synapse` v1.4.0
-        as the behavior is now obsolete.
-      ''
-    )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "matrix-synapse"
-        "create_local_database"
-      ]
-      ''
-        Database configuration must be done manually. An exemplary setup is demonstrated in
-        <nixpkgs/nixos/tests/matrix/synapse.nix>
-      ''
-    )
-    (mkRemovedOptionModule [
-      "services"
-      "matrix-synapse"
-      "web_client"
-    ] "")
-    (mkRemovedOptionModule
-      [
-        "services"
-        "matrix-synapse"
-        "room_invite_state_types"
-      ]
-      ''
-        You may add additional event types via
-        `services.matrix-synapse.room_prejoin_state.additional_event_types` and
-        disable the default events via
-        `services.matrix-synapse.room_prejoin_state.disable_default_event_types`.
-      ''
-    )
+    (mkRemovedOptionModule [ "services" "matrix-synapse" "trusted_third_party_id_servers" ] ''
+      The `trusted_third_party_id_servers` option as been removed in `matrix-synapse` v1.4.0
+      as the behavior is now obsolete.
+    '')
+    (mkRemovedOptionModule [ "services" "matrix-synapse" "create_local_database" ] ''
+      Database configuration must be done manually. An exemplary setup is demonstrated in
+      <nixpkgs/nixos/tests/matrix/synapse.nix>
+    '')
+    (mkRemovedOptionModule [ "services" "matrix-synapse" "web_client" ] "")
+    (mkRemovedOptionModule [ "services" "matrix-synapse" "room_invite_state_types" ] ''
+      You may add additional event types via
+      `services.matrix-synapse.room_prejoin_state.additional_event_types` and
+      disable the default events via
+      `services.matrix-synapse.room_prejoin_state.disable_default_event_types`.
+    '')
 
     # options that don't exist in synapse anymore
-    (mkRemovedOptionModule [
-      "services"
-      "matrix-synapse"
-      "bind_host"
-    ] "Use listener settings instead.")
-    (mkRemovedOptionModule [
-      "services"
-      "matrix-synapse"
-      "bind_port"
-    ] "Use listener settings instead.")
-    (mkRemovedOptionModule [
-      "services"
-      "matrix-synapse"
-      "expire_access_tokens"
-    ] "")
+    (mkRemovedOptionModule [ "services" "matrix-synapse" "bind_host" ] "Use listener settings instead.")
+    (mkRemovedOptionModule [ "services" "matrix-synapse" "bind_port" ] "Use listener settings instead.")
+    (mkRemovedOptionModule [ "services" "matrix-synapse" "expire_access_tokens" ] "")
     (mkRemovedOptionModule [
       "services"
       "matrix-synapse"
@@ -223,11 +179,7 @@ in
       "matrix-synapse"
       "user_creation_max_duration"
     ] "It is no longer supported by synapse.")
-    (mkRemovedOptionModule [
-      "services"
-      "matrix-synapse"
-      "verbose"
-    ] "Use a log config instead.")
+    (mkRemovedOptionModule [ "services" "matrix-synapse" "verbose" ] "Use a log config instead.")
 
     # options that were moved into rfc42 style settings
     (mkRemovedOptionModule [
@@ -270,16 +222,8 @@ in
       "matrix-synapse"
       "enable_registration"
     ] "Use settings.enable_registration instead")
-    (mkRemovedOptionModule [
-      "services"
-      "matrix-synapse"
-      "extraConfig"
-    ] "Use settings instead.")
-    (mkRemovedOptionModule [
-      "services"
-      "matrix-synapse"
-      "listeners"
-    ] "Use settings.listeners instead")
+    (mkRemovedOptionModule [ "services" "matrix-synapse" "extraConfig" ] "Use settings instead.")
+    (mkRemovedOptionModule [ "services" "matrix-synapse" "listeners" ] "Use settings.listeners instead")
     (mkRemovedOptionModule [
       "services"
       "matrix-synapse"
@@ -336,11 +280,7 @@ in
       "matrix-synapse"
       "turn_shared_secret"
     ] "Use settings.turn_shared_secret instead")
-    (mkRemovedOptionModule [
-      "services"
-      "matrix-synapse"
-      "turn_uris"
-    ] "Use settings.turn_uris instead")
+    (mkRemovedOptionModule [ "services" "matrix-synapse" "turn_uris" ] "Use settings.turn_uris instead")
     (mkRemovedOptionModule [
       "services"
       "matrix-synapse"
@@ -1546,28 +1486,17 @@ in
             ProtectProc = "invisible";
             ProtectSystem = "strict";
             ReadWritePaths =
-              [
-                cfg.dataDir
-                cfg.settings.media_store_path
-              ]
+              [ cfg.dataDir cfg.settings.media_store_path ]
               ++ (map (listener: dirOf listener.path) (
                 filter (listener: listener.path != null) cfg.settings.listeners
               ));
             RemoveIPC = true;
-            RestrictAddressFamilies = [
-              "AF_INET"
-              "AF_INET6"
-              "AF_UNIX"
-            ];
+            RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_UNIX" ];
             RestrictNamespaces = true;
             RestrictRealtime = true;
             RestrictSUIDSGID = true;
             SystemCallArchitectures = "native";
-            SystemCallFilter = [
-              "@system-service"
-              "~@resources"
-              "~@privileged"
-            ];
+            SystemCallFilter = [ "@system-service" "~@resources" "~@privileged" ];
           };
         } // targetConfig;
         genWorkerService =
@@ -1592,11 +1521,7 @@ in
                     ${cfg.package}/bin/synapse_worker \
                       ${
                         concatMapStringsSep "\n  " (x: "--config-path ${x} \\") (
-                          [
-                            configFile
-                            workerConfigFile
-                          ]
-                          ++ cfg.extraConfigFiles
+                          [ configFile workerConfigFile ] ++ cfg.extraConfigFiles
                         )
                       }
                       --keys-directory ${cfg.dataDir}

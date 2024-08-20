@@ -46,10 +46,7 @@ lib.checkListOfEnum "${pname}: accent colors" validAccents [ accent ]
       sha256 = "sha256-KwwTDGJQ4zN9XH/pKFQDQ+EgyuSCFhN2PQAI35G+3YM=";
     };
 
-    nativeBuildInputs = [
-      gtk3
-      getent
-    ];
+    nativeBuildInputs = [ gtk3 getent ];
 
     postPatch = ''
       patchShebangs ./papirus-folders

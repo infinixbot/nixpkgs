@@ -40,13 +40,7 @@ stdenv.mkDerivation (finalAttrs: {
     wrapGAppsHook3
     wayland-scanner
   ];
-  buildInputs = [
-    systemd
-    pango
-    cairo
-    gdk-pixbuf
-    wayland
-  ];
+  buildInputs = [ systemd pango cairo gdk-pixbuf wayland ];
 
   mesonFlags = [
     "-Dzsh-completions=true"
@@ -69,10 +63,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Lightweight Wayland notification daemon";
     homepage = "https://wayland.emersion.fr/mako/";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [
-      dywedir
-      synthetica
-    ];
+    maintainers = with lib.maintainers; [ dywedir synthetica ];
     platforms = lib.platforms.linux;
     mainProgram = "mako";
   };

@@ -55,11 +55,7 @@ let
   extraSettingsFormat = {
     type =
       let
-        singleAtom = types.oneOf [
-          types.bool
-          types.int
-          types.str
-        ];
+        singleAtom = types.oneOf [ types.bool types.int types.str ];
         atom = types.either singleAtom (types.listOf singleAtom) // {
           description = "atom (bool, int or string) or a list of them for duplicate keys";
         };
@@ -262,12 +258,7 @@ in
 
               band = mkOption {
                 default = "2g";
-                type = types.enum [
-                  "2g"
-                  "5g"
-                  "6g"
-                  "60g"
-                ];
+                type = types.enum [ "2g" "5g" "6g" "60g" ];
                 description = ''
                   Specifies the frequency band to use, possible values are 2g for 2.4 GHz,
                   5g for 5 GHz, 6g for 6 GHz and 60g for 60 GHz.
@@ -342,22 +333,8 @@ in
 
                 capabilities = mkOption {
                   type = types.listOf types.str;
-                  default = [
-                    "HT40"
-                    "HT40-"
-                    "SHORT-GI-20"
-                    "SHORT-GI-40"
-                  ];
-                  example = [
-                    "LDPC"
-                    "HT40+"
-                    "HT40-"
-                    "GF"
-                    "SHORT-GI-20"
-                    "SHORT-GI-40"
-                    "TX-STBC"
-                    "RX-STBC1"
-                  ];
+                  default = [ "HT40" "HT40-" "SHORT-GI-20" "SHORT-GI-40" ];
+                  example = [ "LDPC" "HT40+" "HT40-" "GF" "SHORT-GI-20" "SHORT-GI-40" "TX-STBC" "RX-STBC1" ];
                   description = ''
                     HT (High Throughput) capabilities given as a list of flags.
                     Please refer to the hostapd documentation for allowed values and
@@ -386,13 +363,7 @@ in
                 capabilities = mkOption {
                   type = types.listOf types.str;
                   default = [ ];
-                  example = [
-                    "SHORT-GI-80"
-                    "TX-STBC-2BY1"
-                    "RX-STBC-1"
-                    "RX-ANTENNA-PATTERN"
-                    "TX-ANTENNA-PATTERN"
-                  ];
+                  example = [ "SHORT-GI-80" "TX-STBC-2BY1" "RX-STBC-1" "RX-ANTENNA-PATTERN" "TX-ANTENNA-PATTERN" ];
                   description = ''
                     VHT (Very High Throughput) capabilities given as a list of flags.
                     Please refer to the hostapd documentation for allowed values and
@@ -408,12 +379,7 @@ in
 
                 operatingChannelWidth = mkOption {
                   default = "20or40";
-                  type = types.enum [
-                    "20or40"
-                    "80"
-                    "160"
-                    "80+80"
-                  ];
+                  type = types.enum [ "20or40" "80" "160" "80+80" ];
                   apply =
                     x:
                     getAttr x {
@@ -468,12 +434,7 @@ in
 
                 operatingChannelWidth = mkOption {
                   default = "20or40";
-                  type = types.enum [
-                    "20or40"
-                    "80"
-                    "160"
-                    "80+80"
-                  ];
+                  type = types.enum [ "20or40" "80" "160" "80+80" ];
                   apply =
                     x:
                     getAttr x {
@@ -525,12 +486,7 @@ in
 
                 operatingChannelWidth = mkOption {
                   default = "20or40";
-                  type = types.enum [
-                    "20or40"
-                    "80"
-                    "160"
-                    "80+80"
-                  ];
+                  type = types.enum [ "20or40" "80" "160" "80+80" ];
                   apply =
                     x:
                     getAttr x {
@@ -623,11 +579,7 @@ in
 
                       macAcl = mkOption {
                         default = "deny";
-                        type = types.enum [
-                          "deny"
-                          "allow"
-                          "radius"
-                        ];
+                        type = types.enum [ "deny" "allow" "radius" ];
                         apply =
                           x:
                           getAttr x {
@@ -694,11 +646,7 @@ in
 
                       ignoreBroadcastSsid = mkOption {
                         default = "disabled";
-                        type = types.enum [
-                          "disabled"
-                          "empty"
-                          "clear"
-                        ];
+                        type = types.enum [ "disabled" "empty" "clear" ];
                         apply =
                           x:
                           getAttr x {
@@ -780,13 +728,7 @@ in
                       authentication = {
                         mode = mkOption {
                           default = "wpa3-sae";
-                          type = types.enum [
-                            "none"
-                            "wpa2-sha1"
-                            "wpa2-sha256"
-                            "wpa3-sae-transition"
-                            "wpa3-sae"
-                          ];
+                          type = types.enum [ "none" "wpa2-sha1" "wpa2-sha256" "wpa3-sae-transition" "wpa3-sae" ];
                           description = ''
                             Selects the authentication mode for this AP.
 
@@ -809,10 +751,7 @@ in
 
                         pairwiseCiphers = mkOption {
                           default = [ "CCMP" ];
-                          example = [
-                            "CCMP-256"
-                            "GCMP-256"
-                          ];
+                          example = [ "CCMP-256" "GCMP-256" ];
                           type = types.listOf types.str;
                           description = ''
                             Set of accepted cipher suites (encryption algorithms) for pairwise keys (unicast packets).
@@ -1254,105 +1193,45 @@ in
       '';
     in
     [
-      (mkRemovedOptionModule
-        [
-          "services"
-          "hostapd"
-          "interface"
-        ]
-        (
-          renamedOptionMessage "All other options for this interface are now set via `services.hostapd.radios.«interface».*`."
-        )
-      )
+      (mkRemovedOptionModule [ "services" "hostapd" "interface" ] (
+        renamedOptionMessage "All other options for this interface are now set via `services.hostapd.radios.«interface».*`."
+      ))
 
-      (mkRemovedOptionModule [
-        "services"
-        "hostapd"
-        "driver"
-      ] (renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».driver`."))
-      (mkRemovedOptionModule [
-        "services"
-        "hostapd"
-        "noScan"
-      ] (renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».noScan`."))
-      (mkRemovedOptionModule
-        [
-          "services"
-          "hostapd"
-          "countryCode"
-        ]
-        (renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».countryCode`.")
-      )
-      (mkRemovedOptionModule [
-        "services"
-        "hostapd"
-        "hwMode"
-      ] (renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».band`."))
-      (mkRemovedOptionModule [
-        "services"
-        "hostapd"
-        "channel"
-      ] (renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».channel`."))
-      (mkRemovedOptionModule
-        [
-          "services"
-          "hostapd"
-          "extraConfig"
-        ]
-        (renamedOptionMessage ''
-          It has been replaced by `services.hostapd.radios.«interface».settings` and
-          `services.hostapd.radios.«interface».networks.«network».settings` respectively
-          for per-radio and per-network extra configuration. The module now supports a lot more
-          options inherently, so please re-check whether using settings is still necessary.'')
-      )
+      (mkRemovedOptionModule [ "services" "hostapd" "driver" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».driver`."
+      ))
+      (mkRemovedOptionModule [ "services" "hostapd" "noScan" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».noScan`."
+      ))
+      (mkRemovedOptionModule [ "services" "hostapd" "countryCode" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».countryCode`."
+      ))
+      (mkRemovedOptionModule [ "services" "hostapd" "hwMode" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».band`."
+      ))
+      (mkRemovedOptionModule [ "services" "hostapd" "channel" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».channel`."
+      ))
+      (mkRemovedOptionModule [ "services" "hostapd" "extraConfig" ] (renamedOptionMessage ''
+        It has been replaced by `services.hostapd.radios.«interface».settings` and
+        `services.hostapd.radios.«interface».networks.«network».settings` respectively
+        for per-radio and per-network extra configuration. The module now supports a lot more
+        options inherently, so please re-check whether using settings is still necessary.''))
 
-      (mkRemovedOptionModule
-        [
-          "services"
-          "hostapd"
-          "logLevel"
-        ]
-        (
-          renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».networks.«network».logLevel`."
-        )
-      )
-      (mkRemovedOptionModule
-        [
-          "services"
-          "hostapd"
-          "group"
-        ]
-        (
-          renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».networks.«network».group`."
-        )
-      )
-      (mkRemovedOptionModule
-        [
-          "services"
-          "hostapd"
-          "ssid"
-        ]
-        (
-          renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».networks.«network».ssid`."
-        )
-      )
+      (mkRemovedOptionModule [ "services" "hostapd" "logLevel" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».networks.«network».logLevel`."
+      ))
+      (mkRemovedOptionModule [ "services" "hostapd" "group" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».networks.«network».group`."
+      ))
+      (mkRemovedOptionModule [ "services" "hostapd" "ssid" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».networks.«network».ssid`."
+      ))
 
-      (mkRemovedOptionModule
-        [
-          "services"
-          "hostapd"
-          "wpa"
-        ]
-        (
-          renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».networks.«network».authentication.mode`."
-        )
-      )
-      (mkRemovedOptionModule
-        [
-          "services"
-          "hostapd"
-          "wpaPassphrase"
-        ]
+      (mkRemovedOptionModule [ "services" "hostapd" "wpa" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».networks.«network».authentication.mode`."
+      ))
+      (mkRemovedOptionModule [ "services" "hostapd" "wpaPassphrase" ]
         (renamedOptionMessage ''
           It has been replaced by `services.hostapd.radios.«interface».networks.«network».authentication.wpaPassword`.
           While upgrading your config, please consider using the newer SAE authentication scheme

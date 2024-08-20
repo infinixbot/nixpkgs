@@ -12,10 +12,7 @@
 mkDerivation {
   pname = "kirigami-gallery";
 
-  nativeBuildInputs = [
-    extra-cmake-modules
-    qttools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules qttools ];
 
   buildInputs = [
     qtgraphicaleffects

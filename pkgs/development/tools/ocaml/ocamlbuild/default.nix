@@ -25,10 +25,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   createFindlibDestdir = true;
 
-  nativeBuildInputs = [
-    ocaml
-    findlib
-  ];
+  nativeBuildInputs = [ ocaml findlib ];
   strictDeps = true;
 
   # x86_64-unknown-linux-musl-ld: -r and -pie may not be used together

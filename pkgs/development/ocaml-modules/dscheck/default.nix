@@ -18,10 +18,7 @@ buildDunePackage rec {
     hash = "sha256-9Rm2DmdvVeCkgAWCvkYdQTj94wmU7JkY8UI3fReIaG0=";
   };
 
-  propagatedBuildInputs = [
-    containers
-    oseq
-  ];
+  propagatedBuildInputs = [ containers oseq ];
 
   doCheck = true;
   checkInputs = [ alcotest ];

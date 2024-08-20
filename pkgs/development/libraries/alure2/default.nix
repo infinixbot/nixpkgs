@@ -21,12 +21,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    openal
-    libvorbis
-    opusfile
-    libsndfile
-  ];
+  buildInputs = [ openal libvorbis opusfile libsndfile ];
 
   meta = with lib; {
     description = "Utility library for OpenAL, providing a C++ API and managing common tasks that include file loading, caching, and streaming";

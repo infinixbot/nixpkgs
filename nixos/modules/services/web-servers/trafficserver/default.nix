@@ -155,16 +155,9 @@ in
       type =
         with types;
         let
-          valueType =
-            (attrsOf (oneOf [
-              int
-              float
-              str
-              valueType
-            ]))
-            // {
-              description = "Traffic Server records value";
-            };
+          valueType = (attrsOf (oneOf [ int float str valueType ])) // {
+            description = "Traffic Server records value";
+          };
         in
         valueType;
       default = { };

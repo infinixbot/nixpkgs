@@ -20,11 +20,7 @@ buildDotnetModule rec {
     sha256 = "1n2312acq5rq0jizlcfk0crslx3wgcsd836p47nk3pnapzw0cqvv";
   };
 
-  nativeBuildInputs = [
-    unzip
-    dos2unix
-    msbuild
-  ];
+  nativeBuildInputs = [ unzip dos2unix msbuild ];
 
   patches = [
     # Store application data in XDG_DATA_DIRS instead of trying to write to nix store

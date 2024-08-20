@@ -15,10 +15,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   };
   dontUnpack = true;
 
-  nativeBuildInputs = [
-    unzip
-    makeWrapper
-  ];
+  nativeBuildInputs = [ unzip makeWrapper ];
 
   installPhase = ''
     runHook preInstall

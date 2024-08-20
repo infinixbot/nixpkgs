@@ -40,9 +40,6 @@ buildGoModule rec {
     mainProgram = "docker-buildx";
     homepage = "https://github.com/docker/buildx";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      ivan-babrou
-      developer-guy
-    ];
+    maintainers = with maintainers; [ ivan-babrou developer-guy ];
   };
 }

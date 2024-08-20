@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
     substituteInPlace configure --replace PATH= NIRVANA=
   '';
 
-  buildInputs = [
-    perlPackages.TextMarkdown
-    python3.pkgs.pygments
-  ];
+  buildInputs = [ perlPackages.TextMarkdown python3.pkgs.pygments ];
 
   meta = with lib; {
     description = "Quick-and-dirty, literate-programming-style documentation generator for / in POSIX shell";

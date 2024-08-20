@@ -37,20 +37,8 @@ stdenv.mkDerivation {
     meta
     ;
 
-  nativeBuildInputs = [
-    gettext
-    pkg-config
-  ];
-  buildInputs =
-    [
-      ncurses
-      bash
-      gawk
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Carbon
-      Cocoa
-    ];
+  nativeBuildInputs = [ gettext pkg-config ];
+  buildInputs = [ ncurses bash gawk ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Carbon Cocoa ];
 
   strictDeps = true;
 

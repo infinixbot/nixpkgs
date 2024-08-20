@@ -29,10 +29,7 @@ let
 in
 {
   name = "gitlab";
-  meta.maintainers = with lib.maintainers; [
-    globin
-    yayayayaka
-  ];
+  meta.maintainers = with lib.maintainers; [ globin yayayayaka ];
 
   nodes = {
     gitlab =

@@ -33,10 +33,7 @@ stdenv.mkDerivation rec {
 
   dontConfigure = true;
 
-  buildInputs = [
-    pam
-    e2fsprogs
-  ];
+  buildInputs = [ pam e2fsprogs ];
 
   makeFlags = [ "DESTDIR=$(out)" ];
 

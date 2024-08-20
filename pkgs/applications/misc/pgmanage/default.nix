@@ -28,10 +28,7 @@ stdenv.mkDerivation rec {
     ./configure --prefix $out
   '';
 
-  buildInputs = [
-    postgresql
-    openssl
-  ];
+  buildInputs = [ postgresql openssl ];
 
   passthru.tests.sign-in = nixosTests.pgmanage;
 

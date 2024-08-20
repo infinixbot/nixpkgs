@@ -31,12 +31,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ makeWrapper ];
   buildInputs = [ llvm ];
-  propagatedBuildInputs = [
-    libbfd
-    libopcodes
-    libunwind
-    libblocksruntime
-  ];
+  propagatedBuildInputs = [ libbfd libopcodes libunwind libblocksruntime ];
 
   # Fortify causes build failures: 'str*' defined both normally and as 'alias' attribute
   hardeningDisable = [ "fortify" ];
@@ -69,9 +64,6 @@ stdenv.mkDerivation rec {
     homepage = "https://honggfuzz.dev/";
     license = lib.licenses.asl20;
     platforms = lib.platforms.linux;
-    maintainers = with lib.maintainers; [
-      cpu
-      chivay
-    ];
+    maintainers = with lib.maintainers; [ cpu chivay ];
   };
 }

@@ -73,10 +73,7 @@ let
   featureDependencies = {
     # Storage plugins
     udisks = [ dbus ];
-    webdav = [
-      curl
-      expat
-    ];
+    webdav = [ curl expat ];
     # Input plugins
     curl = [ curl ];
     io_uring = [ liburing ];
@@ -111,15 +108,8 @@ let
     pulse = [ libpulseaudio ];
     shout = [ libshout ];
     # Commercial services
-    qobuz = [
-      curl
-      libgcrypt
-      yajl
-    ];
-    soundcloud = [
-      curl
-      yajl
-    ];
+    qobuz = [ curl libgcrypt yajl ];
+    soundcloud = [ curl yajl ];
     # Client support
     libmpdclient = [ libmpdclient ];
     # Tag support
@@ -133,17 +123,11 @@ let
     syslog = [ ];
     systemd = [ systemd ];
     yajl = [ yajl ];
-    zeroconf = [
-      avahi
-      dbus
-    ];
+    zeroconf = [ avahi dbus ];
   };
 
   nativeFeatureDependencies = {
-    documentation = [
-      doxygen
-      python3Packages.sphinx
-    ];
+    documentation = [ doxygen python3Packages.sphinx ];
   };
 
   run =
@@ -155,19 +139,8 @@ let
       # using libmad to decode mp3 files on darwin is causing a segfault -- there
       # is probably a solution, but I'm disabling it for now
       platformMask =
-        lib.optionals stdenv.isDarwin [
-          "mad"
-          "pulse"
-          "jack"
-          "smbclient"
-        ]
-        ++ lib.optionals (!stdenv.isLinux) [
-          "alsa"
-          "pipewire"
-          "io_uring"
-          "systemd"
-          "syslog"
-        ];
+        lib.optionals stdenv.isDarwin [ "mad" "pulse" "jack" "smbclient" ]
+        ++ lib.optionals (!stdenv.isLinux) [ "alsa" "pipewire" "io_uring" "systemd" "syslog" ];
 
       knownFeatures =
         builtins.attrNames featureDependencies
@@ -216,10 +189,7 @@ let
           gtest
         ]
         ++ concatAttrVals features_ featureDependencies
-        ++ lib.optionals stdenv.isDarwin [
-          AudioToolbox
-          AudioUnit
-        ];
+        ++ lib.optionals stdenv.isDarwin [ AudioToolbox AudioUnit ];
 
       nativeBuildInputs = [
         meson
@@ -246,10 +216,7 @@ let
 
       mesonAutoFeatures = "disabled";
 
-      outputs = [
-        "out"
-        "doc"
-      ] ++ lib.optional (builtins.elem "documentation" features_) "man";
+      outputs = [ "out" "doc" ] ++ lib.optional (builtins.elem "documentation" features_) "man";
 
       CXXFLAGS = lib.optionals stdenv.isDarwin [
         "-D__ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORES=0"
@@ -272,10 +239,7 @@ let
         description = "Flexible, powerful daemon for playing music";
         homepage = "https://www.musicpd.org/";
         license = licenses.gpl2Only;
-        maintainers = with maintainers; [
-          astsmtl
-          tobim
-        ];
+        maintainers = with maintainers; [ astsmtl tobim ];
         platforms = platforms.unix;
         mainProgram = "mpd";
 

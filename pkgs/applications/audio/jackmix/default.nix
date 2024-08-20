@@ -32,10 +32,7 @@ mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    scons
-    pkg-config
-  ];
+  nativeBuildInputs = [ scons pkg-config ];
   buildInputs = [
     qtbase
     lash

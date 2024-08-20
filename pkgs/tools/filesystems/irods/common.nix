@@ -32,15 +32,7 @@
 # Common attributes of irods packages
 
 {
-  nativeBuildInputs = [
-    autoconf
-    automake
-    cmake
-    help2man
-    texinfo
-    which
-    gcc
-  ];
+  nativeBuildInputs = [ autoconf automake cmake help2man texinfo which gcc ];
   buildInputs = [
     bzip2
     zlib

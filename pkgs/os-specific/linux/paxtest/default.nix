@@ -17,11 +17,7 @@ stdenv.mkDerivation rec {
   enableParallelBuilding = true;
 
   makefile = "Makefile.psm";
-  makeFlags = [
-    "PAXBIN=${paxctl}/bin/paxctl"
-    "BINDIR=$(out)/bin"
-    "RUNDIR=$(out)/lib/paxtest"
-  ];
+  makeFlags = [ "PAXBIN=${paxctl}/bin/paxctl" "BINDIR=$(out)/bin" "RUNDIR=$(out)/lib/paxtest" ];
   installFlags = [ "DESTDIR=\"\"" ];
 
   meta = with lib; {
@@ -29,9 +25,6 @@ stdenv.mkDerivation rec {
     mainProgram = "paxtest";
     license = licenses.gpl2Only;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      copumpkin
-      joachifm
-    ];
+    maintainers = with maintainers; [ copumpkin joachifm ];
   };
 }

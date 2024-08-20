@@ -30,10 +30,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ perl ];
   strictDeps = true;
 
-  hardeningDisable = [
-    "format"
-    "stackprotector"
-  ];
+  hardeningDisable = [ "format" "stackprotector" ];
 
   makeFlags =
     commonMakeFlags

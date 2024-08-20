@@ -11,10 +11,7 @@ stdenv.mkDerivation rec {
   pname = "libdiscid";
   version = "0.6.4";
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.IOKit ];
 

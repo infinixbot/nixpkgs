@@ -23,11 +23,7 @@ stdenv.mkDerivation {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    gtk2
-    glib
-    pidgin
-  ];
+  buildInputs = [ gtk2 glib pidgin ];
   makeFlags = [ "PREFIX=$(out)" ];
 
   postPatch = ''
@@ -35,12 +31,7 @@ stdenv.mkDerivation {
   '';
 
   passthru = {
-    wrapArgs = "--prefix PATH ':' ${
-      lib.makeBinPath [
-        texLive
-        imagemagick
-      ]
-    }";
+    wrapArgs = "--prefix PATH ':' ${lib.makeBinPath [ texLive imagemagick ]}";
   };
 
   meta = with lib; {

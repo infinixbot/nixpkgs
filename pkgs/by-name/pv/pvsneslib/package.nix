@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    gcc
-    cmake
-  ];
+  nativeBuildInputs = [ gcc cmake ];
 
   dontConfigure = true;
 

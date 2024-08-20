@@ -81,11 +81,7 @@ maven.buildMavenPackage rec {
       icon = "scenebuilder";
       comment = "A visual, drag'n'drop, layout tool for designing JavaFX application user interfaces.";
       desktopName = "Scene Builder";
-      mimeTypes = [
-        "application/java"
-        "application/java-vm"
-        "application/java-archive"
-      ];
+      mimeTypes = [ "application/java" "application/java-vm" "application/java-archive" ];
       categories = [ "Development" ];
     })
   ];

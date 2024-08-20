@@ -84,8 +84,5 @@ in
       };
   };
 
-  meta.maintainers = with maintainers; [
-    hexa
-    maralorn
-  ];
+  meta.maintainers = with maintainers; [ hexa maralorn ];
 }

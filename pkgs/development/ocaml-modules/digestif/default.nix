@@ -25,13 +25,7 @@ buildDunePackage rec {
 
   propagatedBuildInputs = [ eqaf ];
 
-  checkInputs = [
-    alcotest
-    astring
-    bos
-    crowbar
-    fpath
-  ];
+  checkInputs = [ alcotest astring bos crowbar fpath ];
   doCheck = true;
 
   postCheck = ''

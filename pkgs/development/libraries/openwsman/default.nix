@@ -21,17 +21,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-CH2pqWs64Dznim3IljmsthKEQfACVlaAKQ/07MgryHo=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
-  buildInputs = [
-    curl
-    libxml2
-    pam
-    sblim-sfcc
-  ];
+  buildInputs = [ curl libxml2 pam sblim-sfcc ];
 
   cmakeFlags = [
     "-DCMAKE_BUILD_RUBY_GEM=no"

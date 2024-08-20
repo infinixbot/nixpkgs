@@ -26,10 +26,7 @@
       sed -i "s/'buildbot'//" setup.py
     '';
 
-    buildInputs = [
-      buildbot-pkg
-      mock
-    ];
+    buildInputs = [ buildbot-pkg mock ];
 
     # No tests
     doCheck = false;
@@ -255,11 +252,7 @@
     };
 
     buildInputs = [ buildbot-pkg ];
-    propagatedBuildInputs = [
-      cairosvg
-      klein
-      jinja2
-    ];
+    propagatedBuildInputs = [ cairosvg klein jinja2 ];
 
     # No tests
     doCheck = false;

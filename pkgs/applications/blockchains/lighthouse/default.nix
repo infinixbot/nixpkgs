@@ -53,10 +53,7 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  buildFeatures = [
-    "modern"
-    "gnosis"
-  ];
+  buildFeatures = [ "modern" "gnosis" ];
 
   nativeBuildInputs = [
     rustPlatform.bindgenHook
@@ -158,10 +155,7 @@ rustPlatform.buildRustPackage rec {
     description = "Ethereum consensus client in Rust";
     homepage = "https://lighthouse.sigmaprime.io/";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      centromere
-      pmw
-    ];
+    maintainers = with maintainers; [ centromere pmw ];
     mainProgram = "lighthouse";
     broken = stdenv.hostPlatform.isDarwin;
   };

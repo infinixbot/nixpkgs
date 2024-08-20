@@ -35,10 +35,7 @@ stdenv.mkDerivation rec {
   # };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    gdbm
-    glib
-  ];
+  buildInputs = [ gdbm glib ];
 
   meta = {
     description = "Collection of tools to edit SKK dictionaries";

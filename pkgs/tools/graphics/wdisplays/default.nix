@@ -15,18 +15,9 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "wdisplays";
   version = "1.1.1";
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config wrapGAppsHook3 ];
 
-  buildInputs = [
-    gtk3
-    libepoxy
-    wayland
-  ];
+  buildInputs = [ gtk3 libepoxy wayland ];
 
   src = fetchFromGitHub {
     owner = "artizirk";

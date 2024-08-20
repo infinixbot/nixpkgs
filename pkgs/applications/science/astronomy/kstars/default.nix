@@ -98,9 +98,6 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     license = licenses.gpl2Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      timput
-      hjones2199
-    ];
+    maintainers = with maintainers; [ timput hjones2199 ];
   };
 })

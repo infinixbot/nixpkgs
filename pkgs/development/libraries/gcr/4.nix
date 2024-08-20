@@ -29,12 +29,7 @@ stdenv.mkDerivation rec {
   pname = "gcr";
   version = "4.3.0";
 
-  outputs = [
-    "out"
-    "bin"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "bin" "dev" "devdoc" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";

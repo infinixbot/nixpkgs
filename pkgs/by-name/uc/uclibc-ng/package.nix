@@ -145,10 +145,7 @@ stdenv.mkDerivation (finalAttrs: {
       experimental and need more testing.
     '';
     license = lib.licenses.lgpl2Plus;
-    maintainers = with lib.maintainers; [
-      rasendubi
-      AndersonTorres
-    ];
+    maintainers = with lib.maintainers; [ rasendubi AndersonTorres ];
     platforms = lib.platforms.linux;
     badPlatforms = lib.platforms.aarch64;
   };

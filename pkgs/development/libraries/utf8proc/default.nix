@@ -38,9 +38,6 @@ stdenv.mkDerivation rec {
     homepage = "https://juliastrings.github.io/utf8proc/";
     license = licenses.mit;
     platforms = platforms.all;
-    maintainers = [
-      maintainers.ftrvxmtrx
-      maintainers.sternenseemann
-    ];
+    maintainers = [ maintainers.ftrvxmtrx maintainers.sternenseemann ];
   };
 }

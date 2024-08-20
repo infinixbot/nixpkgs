@@ -40,11 +40,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "appstream";
   version = "1.0.3";
 
-  outputs = [
-    "out"
-    "dev"
-    "installedTests"
-  ];
+  outputs = [ "out" "dev" "installedTests" ];
 
   src = fetchFromGitHub {
     owner = "ximion";

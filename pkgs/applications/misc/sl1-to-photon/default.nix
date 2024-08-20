@@ -22,13 +22,7 @@ buildPythonApplication rec {
     sha256 = "ssFfjlBMi3FHosDBUA2gs71VUIBkEdPVcV3STNxmOIM=";
   };
 
-  pythonPath = [
-    pyphotonfile
-    pillow
-    numpy
-    pyside2
-    shiboken2
-  ];
+  pythonPath = [ pyphotonfile pillow numpy pyside2 shiboken2 ];
 
   format = "setuptools";
   dontUseSetuptoolsCheck = true;

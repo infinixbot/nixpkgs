@@ -207,10 +207,7 @@ let
           ++ lib.optional langGo "go"
           ++ lib.optional langObjC "objc"
           ++ lib.optional langObjCpp "obj-c++"
-          ++ lib.optionals crossDarwin [
-            "objc"
-            "obj-c++"
-          ]
+          ++ lib.optionals crossDarwin [ "objc" "obj-c++" ]
           ++ lib.optional langJit "jit"
           ++ lib.optional langRust "rust"
         )
@@ -219,10 +216,7 @@ let
 
     ++ (
       if (enableMultilib || targetPlatform.isAvr) then
-        [
-          "--enable-multilib"
-          "--disable-libquadmath"
-        ]
+        [ "--enable-multilib" "--disable-libquadmath" ]
       else
         [ "--disable-multilib" ]
     )

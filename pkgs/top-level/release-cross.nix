@@ -15,11 +15,7 @@
 
 {
   # The platforms *from* which we cross compile.
-  supportedSystems ? [
-    "x86_64-linux"
-    "x86_64-darwin"
-    "aarch64-linux"
-  ],
+  supportedSystems ? [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" ],
   # Strip most of attributes when evaluating to spare memory usage
   scrubJobs ? true,
   # Attributes passed to nixpkgs. Don't build packages marked as unfree.
@@ -305,15 +301,7 @@ in
           # attribute, so there is no way to detect this -- we must add it
           # as a special case.  We filter the "test" attribute (only from
           # *cross*-built bootstrapTools) for the same reason.
-          (
-            mapAttrs (
-              _: v:
-              removeAttrs v [
-                "bootstrapTools"
-                "test"
-              ]
-            ) linuxTools
-          );
+          (mapAttrs (_: v: removeAttrs v [ "bootstrapTools" "test" ]) linuxTools);
       freebsd = mapAttrsRecursiveCond (as: !isDerivation as) (
         name: mkBootstrapToolsJob freebsdMeta
       ) freebsdTools;

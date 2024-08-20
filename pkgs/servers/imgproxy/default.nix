@@ -22,10 +22,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-LlVZRHotJcHtgeGXIDnbIwpO8iCrBB8nXBnqzHcrJWk=";
 
-  nativeBuildInputs = [
-    pkg-config
-    gobject-introspection
-  ];
+  nativeBuildInputs = [ pkg-config gobject-introspection ];
 
   buildInputs = [ vips ] ++ lib.optionals stdenv.isDarwin [ libunwind ];
 

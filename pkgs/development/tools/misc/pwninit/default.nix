@@ -22,14 +22,8 @@ rustPlatform.buildRustPackage rec {
     sha256 = "sha256-tbZS7PdRFvO2ifoHA/w3cSPfqqHrLeLHAg6V8oG9gVE=";
   };
 
-  buildInputs = [
-    openssl
-    xz
-  ] ++ lib.optionals stdenv.isDarwin [ Security ];
-  nativeBuildInputs = [
-    pkg-config
-    makeBinaryWrapper
-  ];
+  buildInputs = [ openssl xz ] ++ lib.optionals stdenv.isDarwin [ Security ];
+  nativeBuildInputs = [ pkg-config makeBinaryWrapper ];
   postInstall = ''
     wrapProgram $out/bin/pwninit \
       --prefix PATH : "${lib.getBin elfutils}/bin"

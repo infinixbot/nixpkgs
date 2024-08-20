@@ -34,10 +34,7 @@ stdenv'.mkDerivation (finalAttrs: {
     hash = "sha256-qstQ6mZLCdYL5uQauMt7nGlEdPkPneGfu36RbaboN3c=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    bison
-  ] ++ lib.optionals stdenv.isLinux [ autoPatchelfHook ];
+  nativeBuildInputs = [ pkg-config bison ] ++ lib.optionals stdenv.isLinux [ autoPatchelfHook ];
 
   buildInputs = [
     libressl
@@ -97,10 +94,7 @@ stdenv'.mkDerivation (finalAttrs: {
     '';
     homepage = "https://gameoftrees.org";
     license = lib.licenses.isc;
-    maintainers = with lib.maintainers; [
-      abbe
-      afh
-    ];
+    maintainers = with lib.maintainers; [ abbe afh ];
     mainProgram = "got";
     platforms = with lib.platforms; darwin ++ linux;
   };

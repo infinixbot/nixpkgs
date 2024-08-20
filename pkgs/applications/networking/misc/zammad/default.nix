@@ -78,10 +78,7 @@ let
         buildFlags = [ "--with-pg-config=${postgresql}/bin/pg_config" ];
       };
       rszr = attrs: {
-        buildInputs = [
-          imlib2
-          imlib2.dev
-        ];
+        buildInputs = [ imlib2 imlib2.dev ];
         buildFlags = [ "--without-imlib2-config" ];
       };
       mini_racer = attrs: {
@@ -159,11 +156,7 @@ stdenv.mkDerivation {
 
   passthru = {
     inherit rubyEnv yarnEnv;
-    updateScript = [
-      "${callPackage ./update.nix { }}/bin/update.sh"
-      pname
-      (toString ./.)
-    ];
+    updateScript = [ "${callPackage ./update.nix { }}/bin/update.sh" pname (toString ./.) ];
     tests = {
       inherit (nixosTests) zammad;
     };
@@ -173,14 +166,7 @@ stdenv.mkDerivation {
     description = "Zammad, a web-based, open source user support/ticketing solution";
     homepage = "https://zammad.org";
     license = licenses.agpl3Plus;
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
-    maintainers = with maintainers; [
-      n0emis
-      taeer
-      netali
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
+    maintainers = with maintainers; [ n0emis taeer netali ];
   };
 }

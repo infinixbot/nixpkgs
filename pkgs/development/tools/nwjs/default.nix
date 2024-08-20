@@ -85,10 +85,7 @@ let
       udev
     ];
 
-    extraOutputsToInstall = [
-      "lib"
-      "out"
-    ];
+    extraOutputsToInstall = [ "lib" "out" ];
   };
 
   version = "0.90.0";
@@ -119,11 +116,7 @@ stdenv.mkDerivation {
   ];
 
   buildInputs = [ nwEnv ];
-  appendRunpaths = map (pkg: (lib.getLib pkg) + "/lib") [
-    nwEnv
-    stdenv.cc.libc
-    stdenv.cc.cc
-  ];
+  appendRunpaths = map (pkg: (lib.getLib pkg) + "/lib") [ nwEnv stdenv.cc.libc stdenv.cc.cc ];
 
   preFixup = ''
     gappsWrapperArgs+=(
@@ -152,10 +145,7 @@ stdenv.mkDerivation {
   meta = with lib; {
     description = "App runtime based on Chromium and node.js";
     homepage = "https://nwjs.io/";
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     maintainers = [ maintainers.mikaelfangel ];
     mainProgram = "nw";

@@ -39,28 +39,10 @@ python3Packages.buildPythonApplication rec {
   strictDeps = false;
   dontWrapGApps = true;
 
-  buildInputs = [
-    atk
-    gdk-pixbuf
-    gtk-layer-shell
-    pango
-    playerctl
-  ];
-  nativeBuildInputs = [
-    wrapGAppsHook3
-    gobject-introspection
-  ];
+  buildInputs = [ atk gdk-pixbuf gtk-layer-shell pango playerctl ];
+  nativeBuildInputs = [ wrapGAppsHook3 gobject-introspection ];
   propagatedBuildInputs =
-    (with python3Packages; [
-      i3ipc
-      netifaces
-      psutil
-      pybluez
-      pygobject3
-      requests
-      dasbus
-      setuptools
-    ])
+    (with python3Packages; [ i3ipc netifaces psutil pybluez pygobject3 requests dasbus setuptools ])
     # Run-time GTK dependency required by the Tray module
     ++ [ libdbusmenu-gtk3 ];
 
@@ -75,16 +57,7 @@ python3Packages.buildPythonApplication rec {
       "''${gappsWrapperArgs[@]}"
       --prefix XDG_DATA_DIRS : "$out/share"
       --prefix PATH : "${
-        lib.makeBinPath [
-          brightnessctl
-          hyprland
-          nwg-menu
-          pamixer
-          pulseaudio
-          sway
-          systemd
-          wlr-randr
-        ]
+        lib.makeBinPath [ brightnessctl hyprland nwg-menu pamixer pulseaudio sway systemd wlr-randr ]
       }"
     )
   '';

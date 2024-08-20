@@ -50,10 +50,7 @@ in
 
       localAddress = mkOption {
         type = types.coercedTo types.str singleton (types.listOf types.str);
-        default = [
-          "[::0]"
-          "0.0.0.0"
-        ];
+        default = [ "[::0]" "0.0.0.0" ];
         description = ''
           Local addresses to which the server binds.
         '';
@@ -84,11 +81,7 @@ in
       };
 
       mode = mkOption {
-        type = types.enum [
-          "tcp_only"
-          "tcp_and_udp"
-          "udp_only"
-        ];
+        type = types.enum [ "tcp_only" "tcp_and_udp" "udp_only" ];
         default = "tcp_and_udp";
         description = ''
           Relay protocols.

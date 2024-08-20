@@ -34,16 +34,8 @@ stdenv.mkDerivation (finalAttrs: {
     url = "ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-base-${finalAttrs.version}.tar.gz";
     hash = "sha256-4fjdsLBsYEDxLOFrq17dKii2sLKvOaFCu0cw3qQtM5U=";
   };
-  outputs = [
-    "out"
-    "dev"
-    "lib"
-  ];
-  nativeBuildInputs = [
-    pkg-config
-    make
-    wrapGNUstepAppsHook
-  ];
+  outputs = [ "out" "dev" "lib" ];
+  nativeBuildInputs = [ pkg-config make wrapGNUstepAppsHook ];
   propagatedBuildInputs = [
     aspell
     audiofile
@@ -93,11 +85,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Implementation of AppKit and Foundation libraries of OPENSTEP and Cocoa";
     homepage = "https://gnustep.github.io/";
     license = lib.licenses.lgpl2Plus;
-    maintainers = with lib.maintainers; [
-      ashalkhakov
-      matthewbauer
-      dblsaiko
-    ];
+    maintainers = with lib.maintainers; [ ashalkhakov matthewbauer dblsaiko ];
     platforms = lib.platforms.linux;
   };
 })

@@ -19,12 +19,7 @@ stdenv.mkDerivation {
 
   inherit (libllvm) src;
 
-  nativeBuildInputs = [
-    cmake
-    python3
-    ocaml
-    findlib
-  ];
+  nativeBuildInputs = [ cmake python3 ocaml findlib ];
   buildInputs = [ ctypes ];
   propagatedBuildInputs = [ libllvm ];
 
@@ -43,10 +38,7 @@ stdenv.mkDerivation {
 
   buildFlags = [ "ocaml_all" ];
 
-  installFlags = [
-    "-C"
-    "bindings/ocaml"
-  ];
+  installFlags = [ "-C" "bindings/ocaml" ];
 
   postInstall = ''
     mkdir -p $OCAMLFIND_DESTDIR/

@@ -235,10 +235,7 @@ mkDerivation rec {
     homepage = "https://clickhouse.com";
     description = "Column-oriented database management system";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      orivej
-      mbalatsko
-    ];
+    maintainers = with maintainers; [ orivej mbalatsko ];
 
     # not supposed to work on 32-bit https://github.com/ClickHouse/ClickHouse/pull/23959#issuecomment-835343685
     platforms = lib.filter (x: (lib.systems.elaborate x).is64bit) (platforms.linux ++ platforms.darwin);

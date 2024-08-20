@@ -22,20 +22,10 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-nD1NZRb7+gKA7ck8d2mPtzA+RDwaqvN9Jp4yiKbD6lI=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    libICE
-    libXext
-    libXi
-    libXrandr
-    libXxf86vm
-    libGLU
-  ];
+  buildInputs = [ libICE libXext libXi libXrandr libXxf86vm libGLU ];
 
   cmakeFlags = lib.optionals stdenv.isDarwin [
     "-DOPENGL_INCLUDE_DIR=${libGLX.dev}/include"

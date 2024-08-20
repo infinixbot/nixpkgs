@@ -16,10 +16,7 @@ let
         {
           name = "redis";
           image = "redis";
-          args = [
-            "--bind"
-            "0.0.0.0"
-          ];
+          args = [ "--bind" "0.0.0.0" ];
           imagePullPolicy = "Never";
           ports = [
             {
@@ -57,10 +54,7 @@ let
     copyToRoot = pkgs.buildEnv {
       name = "image-root";
       pathsToLink = [ "/bin" ];
-      paths = [
-        pkgs.redis
-        pkgs.bind.host
-      ];
+      paths = [ pkgs.redis pkgs.bind.host ];
     };
     config.Entrypoint = [ "/bin/redis-server" ];
   };
@@ -89,10 +83,7 @@ let
     copyToRoot = pkgs.buildEnv {
       name = "image-root";
       pathsToLink = [ "/bin" ];
-      paths = [
-        pkgs.bind.host
-        pkgs.busybox
-      ];
+      paths = [ pkgs.bind.host pkgs.busybox ];
     };
     config.Entrypoint = [ "/bin/tail" ];
   };

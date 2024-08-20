@@ -56,10 +56,7 @@ stdenv.mkDerivation rec {
     simple-dftd3
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   doCheck = true;
   preCheck = ''
@@ -69,10 +66,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Light-weight tight-binding framework";
     mainProgram = "tblite";
-    license = with licenses; [
-      gpl3Plus
-      lgpl3Plus
-    ];
+    license = with licenses; [ gpl3Plus lgpl3Plus ];
     homepage = "https://github.com/tblite/tblite";
     platforms = platforms.linux;
     maintainers = [ maintainers.sheepforce ];

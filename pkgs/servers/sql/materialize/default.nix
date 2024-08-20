@@ -148,17 +148,11 @@ rustPlatform.buildRustPackage rec {
   # Needed to get openssl-sys to use pkg-config.
   OPENSSL_NO_VENDOR = 1;
 
-  buildInputs =
-    [
-      openssl
-      rdkafka
-      libclang
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      libiconv
-      DiskArbitration
-      Foundation
-    ];
+  buildInputs = [
+    openssl
+    rdkafka
+    libclang
+  ] ++ lib.optionals stdenv.isDarwin [ libiconv DiskArbitration Foundation ];
 
   # the check phase requires linking with rocksdb which can be a problem since
   # the rust rocksdb crate is not updated very often.
@@ -186,11 +180,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://materialize.com";
     description = "Streaming SQL materialized view engine for real-time applications";
     license = licenses.bsl11;
-    platforms = [
-      "x86_64-linux"
-      "x86_64-darwin"
-      "aarch64-linux"
-    ];
+    platforms = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" ];
     maintainers = [ maintainers.petrosagg ];
   };
 }

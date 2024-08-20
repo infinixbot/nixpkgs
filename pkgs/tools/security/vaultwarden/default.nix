@@ -39,12 +39,7 @@ rustPlatform.buildRustPackage rec {
   nativeBuildInputs = [ pkg-config ];
   buildInputs =
     [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [
-      libiconv
-      Security
-      CoreServices
-      SystemConfiguration
-    ]
+    ++ lib.optionals stdenv.isDarwin [ libiconv Security CoreServices SystemConfiguration ]
     ++ lib.optional (dbBackend == "mysql") libmysqlclient
     ++ lib.optional (dbBackend == "postgresql") postgresql;
 
@@ -61,10 +56,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/dani-garcia/vaultwarden";
     changelog = "https://github.com/dani-garcia/vaultwarden/releases/tag/${version}";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [
-      dotlambda
-      SuperSandro2000
-    ];
+    maintainers = with maintainers; [ dotlambda SuperSandro2000 ];
     mainProgram = "vaultwarden";
   };
 }

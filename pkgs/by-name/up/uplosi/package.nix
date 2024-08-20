@@ -18,11 +18,7 @@ buildGoModule rec {
   vendorHash = "sha256-f8Yz99qlN0S0Ybewifc0VQanYXKinb1togBkUwDPSvw=";
 
   CGO_ENABLED = "0";
-  ldflags = [
-    "-s"
-    "-w"
-    "-X main.version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X main.version=${version}" ];
 
   nativeBuildInputs = [ installShellFiles ];
 
@@ -39,10 +35,7 @@ buildGoModule rec {
     changelog = "https://github.com/edgelesssys/uplosi/releases/tag/v${version}";
     license = licenses.asl20;
     mainProgram = "uplosi";
-    maintainers = with maintainers; [
-      katexochen
-      malt3
-    ];
+    maintainers = with maintainers; [ katexochen malt3 ];
     platforms = platforms.unix;
   };
 }

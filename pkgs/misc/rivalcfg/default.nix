@@ -15,10 +15,7 @@ python3Packages.buildPythonPackage rec {
     sha256 = "sha256-zZQkfi84NE3mpGv7+Z6AnUXEj0y9SoBmbbtRiTDPS/8=";
   };
 
-  propagatedBuildInputs = with python3Packages; [
-    hidapi
-    setuptools
-  ];
+  propagatedBuildInputs = with python3Packages; [ hidapi setuptools ];
 
   checkInputs = [ python3Packages.pytest ];
   checkPhase = "pytest";

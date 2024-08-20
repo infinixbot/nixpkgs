@@ -19,10 +19,7 @@ let
     makeTest {
       name = "powerdns-admin-${name}";
       meta = with pkgs.lib.maintainers; {
-        maintainers = [
-          Flakebi
-          zhaofengli
-        ];
+        maintainers = [ Flakebi zhaofengli ];
       };
 
       nodes.server =
@@ -106,10 +103,7 @@ let
     };
     listen = {
       tcp = {
-        services.powerdns-admin.extraArgs = [
-          "-b"
-          "127.0.0.1:8000"
-        ];
+        services.powerdns-admin.extraArgs = [ "-b" "127.0.0.1:8000" ];
         system.build.testScript = ''
           set -euxo pipefail
           curl -sSf http://127.0.0.1:8000/
@@ -138,10 +132,7 @@ let
         '';
       };
       unix = {
-        services.powerdns-admin.extraArgs = [
-          "-b"
-          "unix:/run/powerdns-admin/http.sock"
-        ];
+        services.powerdns-admin.extraArgs = [ "-b" "unix:/run/powerdns-admin/http.sock" ];
         system.build.testScript = ''
           curl -sSf --unix-socket /run/powerdns-admin/http.sock http://somehost/
         '';
@@ -151,16 +142,7 @@ let
 in
 with matrix;
 {
-  postgresql = makeAppTest "postgresql" [
-    backend.postgresql
-    listen.tcp
-  ];
-  mysql = makeAppTest "mysql" [
-    backend.mysql
-    listen.tcp
-  ];
-  unix-listener = makeAppTest "unix-listener" [
-    backend.postgresql
-    listen.unix
-  ];
+  postgresql = makeAppTest "postgresql" [ backend.postgresql listen.tcp ];
+  mysql = makeAppTest "mysql" [ backend.mysql listen.tcp ];
+  unix-listener = makeAppTest "unix-listener" [ backend.postgresql listen.unix ];
 }

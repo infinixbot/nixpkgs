@@ -33,19 +33,11 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
   depsBuildBuild = [ pkg-config ];
   nativeBuildInputs = [ pkg-config ];
-  propagatedBuildInputs = [
-    libvorbis
-    libtheora
-    speex
-  ];
+  propagatedBuildInputs = [ libvorbis libtheora speex ];
 
   meta = {
     description = "icecast 'c' language bindings";

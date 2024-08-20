@@ -40,10 +40,7 @@ stdenv.mkDerivation rec {
   };
 
   sourceRoot = ".";
-  nativeBuildInputs = [
-    makeWrapper
-    dpkg
-  ];
+  nativeBuildInputs = [ makeWrapper dpkg ];
   buildInputs = [
     glib
     gnutar
@@ -66,12 +63,7 @@ stdenv.mkDerivation rec {
     find ${src_repo}/resources/fonts -type d -execdir cp -r '{}' $out/lib/koreader/fonts \;
     find $out -xtype l -print -delete
     wrapProgram $out/bin/koreader --prefix LD_LIBRARY_PATH : ${
-      lib.makeLibraryPath [
-        gtk3-x11
-        SDL2
-        glib
-        stdenv.cc.cc.lib
-      ]
+      lib.makeLibraryPath [ gtk3-x11 SDL2 glib stdenv.cc.cc.lib ]
     }
   '';
 
@@ -81,14 +73,8 @@ stdenv.mkDerivation rec {
     description = "An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats, running on Cervantes, Kindle, Kobo, PocketBook and Android devices";
     mainProgram = "koreader";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
-    platforms = [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "aarch64-linux" "x86_64-linux" ];
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [
-      contrun
-      neonfuz
-    ];
+    maintainers = with maintainers; [ contrun neonfuz ];
   };
 }

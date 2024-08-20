@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [
-    python3
-    alsa-utils
-    timidity
-  ];
+  buildInputs = [ python3 alsa-utils timidity ];
 
   patchPhase = ''
     sed -i 's@/usr/bin/aplaymidi@/${alsa-utils}/bin/aplaymidi@g' mma-splitrec

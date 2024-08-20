@@ -37,10 +37,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     homepage = "https://github.com/hackerb9/lsix";
     license = licenses.gpl3Only;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      justinlime
-      kidonng
-    ];
+    maintainers = with maintainers; [ justinlime kidonng ];
     mainProgram = "lsix";
   };
 })

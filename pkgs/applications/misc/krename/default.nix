@@ -36,24 +36,11 @@ mkDerivation rec {
     })
   ];
 
-  buildInputs = [
-    taglib
-    exiv2
-    podofo
-  ];
+  buildInputs = [ taglib exiv2 podofo ];
 
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools wrapGAppsHook3 ];
 
-  propagatedBuildInputs = [
-    kconfig
-    kcrash
-    kinit
-    kjsembed
-  ];
+  propagatedBuildInputs = [ kconfig kcrash kinit kjsembed ];
 
   NIX_LDFLAGS = "-ltag";
 

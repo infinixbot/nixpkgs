@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-G3z9DYYWCNeA/rufNHQP3SwT5WS2AvUWm1rd8lx6XxA=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
   buildInputs = [
     libuuid
     openssl

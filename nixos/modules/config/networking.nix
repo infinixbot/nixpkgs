@@ -16,22 +16,14 @@ let
   opt = options.networking;
 
   localhostMultiple = any (elem "localhost") (
-    attrValues (
-      removeAttrs cfg.hosts [
-        "127.0.0.1"
-        "::1"
-      ]
-    )
+    attrValues (removeAttrs cfg.hosts [ "127.0.0.1" "::1" ])
   );
 
 in
 
 {
   imports = [
-    (mkRemovedOptionModule [
-      "networking"
-      "hostConf"
-    ] "Use environment.etc.\"host.conf\" instead.")
+    (mkRemovedOptionModule [ "networking" "hostConf" ] "Use environment.etc.\"host.conf\" instead.")
   ];
 
   options = {
@@ -210,11 +202,7 @@ in
           pkgs.writeText "string-hosts" (allToString (filterAttrs (_: v: v != [ ]) cfg.hosts));
         extraHosts = pkgs.writeText "extra-hosts" cfg.extraHosts;
       in
-      mkBefore [
-        localhostHosts
-        stringHosts
-        extraHosts
-      ];
+      mkBefore [ localhostHosts stringHosts extraHosts ];
 
     environment.etc =
       {

@@ -2,10 +2,7 @@ import ./make-test-python.nix (
   { lib, pkgs, ... }:
   {
     name = "freshrss";
-    meta.maintainers = with lib.maintainers; [
-      etu
-      stunkymonkey
-    ];
+    meta.maintainers = with lib.maintainers; [ etu stunkymonkey ];
 
     nodes.machine =
       { pkgs, ... }:

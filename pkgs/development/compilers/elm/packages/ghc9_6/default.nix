@@ -30,10 +30,7 @@ pkgs.haskell.packages.ghc96.override {
           description = "Delightful language for reliable webapps";
           homepage = "https://elm-lang.org/";
           license = lib.licenses.bsd3;
-          maintainers = with lib.maintainers; [
-            domenkozar
-            turbomack
-          ];
+          maintainers = with lib.maintainers; [ domenkozar turbomack ];
         }) (self.callPackage ./elm { });
 
         inherit fetchElmDeps;

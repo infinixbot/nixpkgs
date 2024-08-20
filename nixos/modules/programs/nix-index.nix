@@ -37,10 +37,7 @@ in
           '';
         };
       in
-      [
-        (checkOpt "enableBashIntegration")
-        (checkOpt "enableZshIntegration")
-      ];
+      [ (checkOpt "enableBashIntegration") (checkOpt "enableZshIntegration") ];
 
     environment.systemPackages = [ cfg.package ];
 

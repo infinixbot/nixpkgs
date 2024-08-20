@@ -48,34 +48,15 @@ in
     sha256 = "sha256-6FpmDBoqGAj/JPfmmYH/y6xmpFydz3EbZWELJupxN5o=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    pkg-config
-    texinfo
-  ] ++ lib.optional withQt qttools;
+  nativeBuildInputs = [ makeWrapper pkg-config texinfo ] ++ lib.optional withQt qttools;
 
   buildInputs =
-    [
-      cairo
-      gd
-      libcerf
-      pango
-      readline
-      zlib
-    ]
+    [ cairo gd libcerf pango readline zlib ]
     ++ lib.optional withTeXLive texliveSmall
     ++ lib.optional withLua lua
     ++ lib.optional withCaca libcaca
-    ++ lib.optionals withX [
-      libX11
-      libXpm
-      libXt
-      libXaw
-    ]
-    ++ lib.optionals withQt [
-      qtbase
-      qtsvg
-    ]
+    ++ lib.optionals withX [ libX11 libXpm libXt libXaw ]
+    ++ lib.optionals withQt [ qtbase qtsvg ]
     ++ lib.optional withWxGTK wxGTK32
     ++ lib.optional (withWxGTK && stdenv.isDarwin) Cocoa;
 
@@ -99,13 +80,7 @@ in
   # binary wrappers don't support --run
   postInstall = lib.optionalString withX ''
     wrapProgramShell $out/bin/gnuplot \
-       --prefix PATH : '${
-         lib.makeBinPath [
-           gnused
-           coreutils
-           fontconfig.bin
-         ]
-       }' \
+       --prefix PATH : '${lib.makeBinPath [ gnused coreutils fontconfig.bin ]}' \
        "''${gappsWrapperArgs[@]}" \
        "''${qtWrapperArgs[@]}" \
        --run '. ${./set-gdfontpath-from-fontconfig.sh}'

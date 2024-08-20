@@ -21,10 +21,7 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-hyLCygaSWMQd+UJ/Ijgk9C+3O/r5x0aaW/x9PoojDIg=";
   };
 
-  pythonRelaxDeps = [
-    "attrs"
-    "ruamel.yaml"
-  ];
+  pythonRelaxDeps = [ "attrs" "ruamel.yaml" ];
 
   nativeBuildInputs =
     (with libsForQt5; [

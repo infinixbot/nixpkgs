@@ -118,10 +118,7 @@ stdenv.mkDerivation rec {
       icon = "drawio";
       desktopName = "drawio";
       comment = "draw.io desktop";
-      mimeTypes = [
-        "application/vnd.jgraph.mxfile"
-        "application/vnd.visio"
-      ];
+      mimeTypes = [ "application/vnd.jgraph.mxfile" "application/vnd.visio" ];
       categories = [ "Graphics" ];
       startupWMClass = "draw.io";
     })
@@ -132,10 +129,7 @@ stdenv.mkDerivation rec {
     homepage = "https://about.draw.io/";
     license = licenses.asl20;
     changelog = "https://github.com/jgraph/drawio-desktop/releases/tag/v${version}";
-    maintainers = with maintainers; [
-      qyliss
-      darkonion0
-    ];
+    maintainers = with maintainers; [ qyliss darkonion0 ];
     platforms = platforms.darwin ++ platforms.linux;
     mainProgram = "drawio";
   };

@@ -17,11 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-WQSdRPU8T02HdKTivLrvdd81XMhqFms0SA0zohicsjA=";
 
-  subPackages = [
-    "cmd/rqlite"
-    "cmd/rqlited"
-    "cmd/rqbench"
-  ];
+  subPackages = [ "cmd/rqlite" "cmd/rqlited" "cmd/rqbench" ];
 
   # Leaving other flags from https://github.com/rqlite/rqlite/blob/master/package.sh
   # since automatically retriving those is nontrivial and inessential

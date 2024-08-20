@@ -43,11 +43,7 @@ stdenv.mkDerivation rec {
   pname = "muffin";
   version = "6.2.0";
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
   src = fetchFromGitHub {
     owner = "linuxmint";

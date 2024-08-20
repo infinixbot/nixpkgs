@@ -27,20 +27,14 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    json_c
-    hidapi
-  ];
+  buildInputs = [ json_c hidapi ];
 
   doCheck = true;
 
   meta = with lib; {
     description = "C library and command-line tool that implements the host-side of the U2F protocol";
     homepage = "https://developers.yubico.com/libu2f-host";
-    license = with licenses; [
-      gpl3Plus
-      lgpl21Plus
-    ];
+    license = with licenses; [ gpl3Plus lgpl21Plus ];
     mainProgram = "u2f-host";
     platforms = platforms.unix;
   };

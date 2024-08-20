@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-zpc9Z4XXvma/tXRYOvAAQIpjyYS+1XPiaLZF4xYPTbw=";
   };
 
-  nativeBuildInputs = [
-    libfaketime
-    xorg.fonttosfnt
-    xorg.mkfontscale
-  ];
+  nativeBuildInputs = [ libfaketime xorg.fonttosfnt xorg.mkfontscale ];
 
   dontUnpack = true;
 

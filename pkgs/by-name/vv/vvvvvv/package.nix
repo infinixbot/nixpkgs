@@ -41,17 +41,12 @@ stdenv.mkDerivation rec {
     copyDesktopItems
   ];
 
-  buildInputs =
-    [
-      faudio
-      physfs
-      SDL2
-      tinyxml-2
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      Foundation
-      IOKit
-    ];
+  buildInputs = [
+    faudio
+    physfs
+    SDL2
+    tinyxml-2
+  ] ++ lib.optionals stdenv.isDarwin [ Foundation IOKit ];
 
   cmakeDir = "../desktop_version";
 

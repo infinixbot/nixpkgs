@@ -19,10 +19,7 @@ buildGoModule {
 
   subPackages = [ "cmd/spirit" ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     homepage = "https://github.com/cashapp/spirit";

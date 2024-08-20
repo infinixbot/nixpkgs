@@ -17,14 +17,8 @@ stdenv.mkDerivation rec {
     sha256 = "0d0i7av8v369hzvlynwlrbickv1brlzsmiky80lrjgjh1gdldkz6";
   };
 
-  buildInputs = [
-    udev
-    systemd
-  ];
-  nativeBuildInputs = [
-    pkg-config
-    python3
-  ];
+  buildInputs = [ udev systemd ];
+  nativeBuildInputs = [ pkg-config python3 ];
 
   postPatch = ''
     patchShebangs ./tools

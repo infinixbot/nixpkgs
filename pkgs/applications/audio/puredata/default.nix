@@ -21,11 +21,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-hcPUvTYgtAHntdWEeHoFIIKylMTE7us1g9dwnZP9BMI=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    gettext
-    makeWrapper
-  ];
+  nativeBuildInputs = [ autoreconfHook gettext makeWrapper ];
 
   buildInputs =
     [

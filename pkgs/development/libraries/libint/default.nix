@@ -104,27 +104,9 @@ assert (
 assert (oneBodyDerivOrd >= 0 && oneBodyDerivOrd <= 4);
 
 # Check that valid basis shell orders are used, see https://github.com/evaleev/libint/wiki
-assert (
-  builtins.elem cartGaussOrd [
-    "standard"
-    "intv3"
-    "gamess"
-    "orca"
-    "bagel"
-  ]
-);
-assert (
-  builtins.elem shGaussOrd [
-    "standard"
-    "gaussian"
-  ]
-);
-assert (
-  builtins.elem shellSet [
-    "standard"
-    "orca"
-  ]
-);
+assert (builtins.elem cartGaussOrd [ "standard" "intv3" "gamess" "orca" "bagel" ]);
+assert (builtins.elem shGaussOrd [ "standard" "gaussian" ]);
+assert (builtins.elem shellSet [ "standard" "orca" ]);
 
 let
   pname = "libint";
@@ -133,14 +115,8 @@ let
   meta = {
     description = "Library for the evaluation of molecular integrals of many-body operators over Gaussian functions";
     homepage = "https://github.com/evaleev/libint";
-    license = with lib.licenses; [
-      lgpl3Only
-      gpl3Only
-    ];
-    maintainers = with lib.maintainers; [
-      markuskowa
-      sheepforce
-    ];
+    license = with lib.licenses; [ lgpl3Only gpl3Only ];
+    maintainers = with lib.maintainers; [ markuskowa sheepforce ];
     platforms = [ "x86_64-linux" ];
   };
 
@@ -178,10 +154,7 @@ let
       gmpxx
     ] ++ lib.optional enableFortran gfortran;
 
-    buildInputs = [
-      boost
-      eigen
-    ];
+    buildInputs = [ boost eigen ];
 
     configureFlags =
       [
@@ -236,10 +209,7 @@ let
       cmake
     ] ++ lib.optional enableFortran gfortran;
 
-    buildInputs = [
-      boost
-      eigen
-    ];
+    buildInputs = [ boost eigen ];
 
     # Default is just "double", but SSE2 is available on all x86_64 CPUs.
     # AVX support is advertised, but does not work.

@@ -92,10 +92,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optionals stdenv.isDarwin [ "MACOSX_DEPLOYMENT_TARGET=10.16" ]
     # it's the compression code with the restriction, see DOC/License.txt
     ++ lib.optionals (!enableUnfree) [ "DISABLE_RAR_COMPRESS=true" ]
-    ++ lib.optionals (stdenv.hostPlatform.isMinGW) [
-      "IS_MINGW=1"
-      "MSYSTEM=1"
-    ];
+    ++ lib.optionals (stdenv.hostPlatform.isMinGW) [ "IS_MINGW=1" "MSYSTEM=1" ];
 
   nativeBuildInputs = lib.optionals useUasm [ uasm ];
 
@@ -137,12 +134,7 @@ stdenv.mkDerivation (finalAttrs: {
         # and CPP/7zip/Compress/Rar* are unfree with the unRAR license restriction
         # the unRAR compression code is disabled by default
         lib.optionals enableUnfree [ unfree ];
-    maintainers = with lib.maintainers; [
-      anna328p
-      eclairevoyant
-      jk
-      peterhoeg
-    ];
+    maintainers = with lib.maintainers; [ anna328p eclairevoyant jk peterhoeg ];
     platforms = with lib.platforms; unix ++ windows;
     mainProgram = "7zz";
   };

@@ -9,12 +9,7 @@
 }:
 
 let
-  validFlavours = [
-    "mocha"
-    "macchiato"
-    "frappe"
-    "latte"
-  ];
+  validFlavours = [ "mocha" "macchiato" "frappe" "latte" ];
   validAccents = [
     "rosewater"
     "flamingo"
@@ -31,10 +26,7 @@ let
     "blue"
     "lavender"
   ];
-  validWinDecStyles = [
-    "modern"
-    "classic"
-  ];
+  validWinDecStyles = [ "modern" "classic" ];
 
   colorScript = ./color.sh;
 in
@@ -89,9 +81,6 @@ lib.checkListOfEnum "Invalid accent, valid accents are ${toString validAccents}"
       description = "Soothing pastel theme for KDE";
       homepage = "https://github.com/catppuccin/kde";
       license = licenses.mit;
-      maintainers = with maintainers; [
-        michaelBelsanti
-        gigglesquid
-      ];
+      maintainers = with maintainers; [ michaelBelsanti gigglesquid ];
     };
   }

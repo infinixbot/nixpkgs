@@ -13,11 +13,7 @@ let
     icon = "audio-volume-high";
     desktopName = "qpaeq";
     genericName = "Audio equalizer";
-    categories = [
-      "AudioVideo"
-      "Audio"
-      "Mixer"
-    ];
+    categories = [ "AudioVideo" "Audio" "Mixer" ];
     startupNotify = false;
   };
 in

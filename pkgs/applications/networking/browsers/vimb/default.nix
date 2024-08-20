@@ -22,17 +22,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Eq4riJSznKpkW9JJDnTCLxZ9oMJTmWkIoGphOiCcSAg=";
   };
 
-  nativeBuildInputs = [
-    wrapGAppsHook3
-    pkg-config
-  ];
-  buildInputs = [
-    gtk3
-    libsoup
-    webkitgtk
-    glib-networking
-    gsettings-desktop-schemas
-  ];
+  nativeBuildInputs = [ wrapGAppsHook3 pkg-config ];
+  buildInputs = [ gtk3 libsoup webkitgtk glib-networking gsettings-desktop-schemas ];
 
   passthru = {
     inherit gtk3;

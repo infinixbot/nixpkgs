@@ -30,18 +30,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-DZKTdJp5QHat6Wfs3EfRQdheRQNwWUdlORvfGpvUUHU=";
   };
 
-  nativeBuildInputs = [
-    perl
-    pkg-config
-    makeWrapper
-  ];
-  buildInputs = [
-    ncurses
-    libX11
-    file
-    which
-    groff
-  ];
+  nativeBuildInputs = [ perl pkg-config makeWrapper ];
+  buildInputs = [ ncurses libX11 file which groff ];
 
   postPatch = ''
     # Avoid '#!/usr/bin/env perl' references to build help.

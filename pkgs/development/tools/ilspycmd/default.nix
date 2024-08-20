@@ -51,10 +51,7 @@ buildDotnetModule rec {
       mspl
       asl20
     ];
-    sourceProvenance = with sourceTypes; [
-      fromSource
-      binaryBytecode
-    ];
+    sourceProvenance = with sourceTypes; [ fromSource binaryBytecode ];
     maintainers = with maintainers; [ emilytrau ];
   };
 }

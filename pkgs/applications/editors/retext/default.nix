@@ -11,10 +11,7 @@
   aspellDicts,
   # Use `lib.collect lib.isDerivation aspellDicts;` to make all dictionaries
   # available.
-  enchantAspellDicts ? with aspellDicts; [
-    en
-    en-computers
-  ],
+  enchantAspellDicts ? with aspellDicts; [ en en-computers ],
 }:
 
 python3.pkgs.buildPythonApplication rec {

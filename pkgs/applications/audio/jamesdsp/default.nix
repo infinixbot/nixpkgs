@@ -74,16 +74,9 @@ stdenv.mkDerivation (finalAttrs: {
       exec = "jamesdsp";
       icon = "jamesdsp";
       comment = "JamesDSP for Linux";
-      categories = [
-        "AudioVideo"
-        "Audio"
-      ];
+      categories = [ "AudioVideo" "Audio" ];
       startupNotify = false;
-      keywords = [
-        "equalizer"
-        "audio"
-        "effect"
-      ];
+      keywords = [ "equalizer" "audio" "effect" ];
     })
   ];
 
@@ -98,10 +91,7 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "jamesdsp";
     homepage = "https://github.com/Audio4Linux/JDSP4Linux";
     license = lib.licenses.gpl3Only;
-    maintainers = with lib.maintainers; [
-      pasqui23
-      rewine
-    ];
+    maintainers = with lib.maintainers; [ pasqui23 rewine ];
     platforms = lib.platforms.linux;
   };
 })

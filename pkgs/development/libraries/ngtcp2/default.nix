@@ -25,11 +25,7 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
   nativeBuildInputs = [ cmake ];
   buildInputs =

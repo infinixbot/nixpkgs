@@ -29,10 +29,7 @@ stdenv.mkDerivation {
   doCheck = true;
   checkTarget = "check";
 
-  installFlags = [
-    "DESTDIR=$(out)"
-    "PREFIX="
-  ];
+  installFlags = [ "DESTDIR=$(out)" "PREFIX=" ];
 
   meta = with lib; {
     description = "Wayland roots protocol extensions";

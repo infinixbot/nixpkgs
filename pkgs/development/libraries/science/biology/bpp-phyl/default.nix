@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    bpp-core
-    bpp-seq
-  ];
+  buildInputs = [ bpp-core bpp-seq ];
 
   postFixup = ''
     substituteInPlace $out/lib/cmake/${pname}/${pname}-targets.cmake  \

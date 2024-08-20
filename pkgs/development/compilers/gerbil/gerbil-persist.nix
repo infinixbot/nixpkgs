@@ -12,12 +12,7 @@
   gerbil-package = "clan/persist";
   version-path = "version";
 
-  gerbilInputs = with gerbilPackages; [
-    gerbil-utils
-    gerbil-crypto
-    gerbil-poo
-    gerbil-leveldb
-  ];
+  gerbilInputs = with gerbilPackages; [ gerbil-utils gerbil-crypto gerbil-poo gerbil-leveldb ];
 
   pre-src = {
     fun = fetchFromGitHub;

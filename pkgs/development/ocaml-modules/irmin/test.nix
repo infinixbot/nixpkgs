@@ -43,11 +43,7 @@ buildDunePackage {
   ];
 
   doCheck = true;
-  checkInputs = [
-    hex
-    qcheck-alcotest
-    vector
-  ];
+  checkInputs = [ hex qcheck-alcotest vector ];
 
   meta = irmin.meta // {
     description = "Irmin test suite";

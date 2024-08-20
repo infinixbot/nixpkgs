@@ -653,14 +653,7 @@ let
         # put global maintainers here, individuals go into makeInstallerTest fkt call
         maintainers = (meta.maintainers or [ ]);
         # non-EFI tests can only run on x86
-        platforms =
-          if isEfi then
-            platforms.linux
-          else
-            [
-              "x86_64-linux"
-              "i686-linux"
-            ];
+        platforms = if isEfi then platforms.linux else [ "x86_64-linux" "i686-linux" ];
       };
       nodes =
         let
@@ -929,10 +922,7 @@ let
       extraInstallerConfig = {
         imports = [ no-zfs-module ];
         boot.supportedFilesystems = [ "bcachefs" ];
-        environment.systemPackages = with pkgs; [
-          keyutils
-          clevis
-        ];
+        environment.systemPackages = with pkgs; [ keyutils clevis ];
       };
       createPartitions = ''
         installer.succeed(

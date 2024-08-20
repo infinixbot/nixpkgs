@@ -128,11 +128,7 @@ stdenv.mkDerivation (
       desktopName = "Element";
       genericName = "Matrix Client";
       comment = finalAttrs.meta.description;
-      categories = [
-        "Network"
-        "InstantMessaging"
-        "Chat"
-      ];
+      categories = [ "Network" "InstantMessaging" "Chat" ];
       startupWMClass = "Element";
       mimeTypes = [ "x-scheme-handler/element" ];
     };

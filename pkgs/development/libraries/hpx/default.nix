@@ -23,16 +23,8 @@ stdenv.mkDerivation rec {
   };
 
   propagatedBuildInputs = [ hwloc ];
-  buildInputs = [
-    asio
-    boost
-    gperftools
-  ];
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    python3
-  ];
+  buildInputs = [ asio boost gperftools ];
+  nativeBuildInputs = [ cmake pkg-config python3 ];
 
   strictDeps = true;
 

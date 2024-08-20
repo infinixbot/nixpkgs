@@ -23,10 +23,7 @@ mkDerivation {
     mainProgram = "kcalc";
     license = with lib.licenses; [ gpl2 ];
   };
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     gmp
     kconfig

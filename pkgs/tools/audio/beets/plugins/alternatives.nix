@@ -35,10 +35,7 @@ python3Packages.buildPythonApplication rec {
   meta = with lib; {
     description = "Beets plugin to manage external files";
     homepage = "https://github.com/geigerzaehler/beets-alternatives";
-    maintainers = with maintainers; [
-      aszlig
-      lovesegfault
-    ];
+    maintainers = with maintainers; [ aszlig lovesegfault ];
     license = licenses.mit;
   };
 }

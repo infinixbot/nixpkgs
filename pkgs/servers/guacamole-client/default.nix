@@ -30,10 +30,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     homepage = "https://guacamole.apache.org/";
     license = lib.licenses.asl20;
     maintainers = [ lib.maintainers.drupol ];
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
     sourceProvenance = [
       lib.sourceTypes.binaryBytecode
     ];

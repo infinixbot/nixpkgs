@@ -113,10 +113,7 @@ in
 
     tags = mkOption {
       description = "The tags to mark this Datadog agent";
-      example = [
-        "test"
-        "service"
-      ];
+      example = [ "test" "service" ];
       default = null;
       type = types.nullOr (types.listOf types.str);
     };
@@ -131,14 +128,7 @@ in
     logLevel = mkOption {
       description = "Logging verbosity.";
       default = null;
-      type = types.nullOr (
-        types.enum [
-          "DEBUG"
-          "INFO"
-          "WARN"
-          "ERROR"
-        ]
-      );
+      type = types.nullOr (types.enum [ "DEBUG" "INFO" "WARN" "ERROR" ]);
     };
 
     extraIntegrations = mkOption {
@@ -258,22 +248,14 @@ in
         instances = [
           {
             collect_connection_state = false;
-            excluded_interfaces = [
-              "lo"
-              "lo0"
-            ];
+            excluded_interfaces = [ "lo" "lo0" ];
           }
         ];
       };
     };
   };
   config = mkIf cfg.enable {
-    environment.systemPackages = [
-      datadogPkg
-      pkgs.sysstat
-      pkgs.procps
-      pkgs.iproute2
-    ];
+    environment.systemPackages = [ datadogPkg pkgs.sysstat pkgs.procps pkgs.iproute2 ];
 
     users.users.datadog = {
       description = "Datadog Agent User";
@@ -290,12 +272,7 @@ in
         makeService =
           attrs:
           recursiveUpdate {
-            path = [
-              datadogPkg
-              pkgs.sysstat
-              pkgs.procps
-              pkgs.iproute2
-            ];
+            path = [ datadogPkg pkgs.sysstat pkgs.procps pkgs.iproute2 ];
             wantedBy = [ "multi-user.target" ];
             serviceConfig = {
               User = "datadog";
@@ -322,13 +299,7 @@ in
 
         dd-jmxfetch = lib.mkIf (lib.hasAttr "jmx" cfg.checks) (makeService {
           description = "Datadog JMX Fetcher";
-          path = [
-            datadogPkg
-            pkgs.python
-            pkgs.sysstat
-            pkgs.procps
-            pkgs.jdk
-          ];
+          path = [ datadogPkg pkgs.python pkgs.sysstat pkgs.procps pkgs.jdk ];
           serviceConfig.ExecStart = "${datadogPkg}/bin/dd-jmxfetch";
         });
 

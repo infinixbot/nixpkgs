@@ -19,10 +19,7 @@ import ./make-test-python.nix (
           ...
         }:
         {
-          virtualisation.vlans = [
-            1
-            2
-          ];
+          virtualisation.vlans = [ 1 2 ];
           services.target = {
             enable = true;
             config = {
@@ -99,10 +96,7 @@ import ./make-test-python.nix (
           ...
         }:
         {
-          virtualisation.vlans = [
-            1
-            2
-          ];
+          virtualisation.vlans = [ 1 2 ];
 
           services.multipath = {
             enable = true;
@@ -160,10 +154,7 @@ import ./make-test-python.nix (
 
           # defaults to true, puts some code in the initrd that tries to mount an overlayfs on /nix/store
           virtualisation.writableStore = false;
-          virtualisation.vlans = [
-            1
-            2
-          ];
+          virtualisation.vlans = [ 1 2 ];
 
           services.multipath = {
             enable = true;

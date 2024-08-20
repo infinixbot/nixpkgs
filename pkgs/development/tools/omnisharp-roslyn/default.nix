@@ -25,19 +25,11 @@ let
     projectFile = "src/OmniSharp.Stdio.Driver/OmniSharp.Stdio.Driver.csproj";
     nugetDeps = ./deps.nix;
 
-    dotnet-sdk =
-      with dotnetCorePackages;
-      combinePackages [
-        sdk_6_0
-        sdk_8_0
-      ];
+    dotnet-sdk = with dotnetCorePackages; combinePackages [ sdk_6_0 sdk_8_0 ];
     dotnet-runtime = sdk_8_0;
 
     dotnetInstallFlags = [ "--framework net6.0" ];
-    dotnetBuildFlags = [
-      "--framework net6.0"
-      "--no-self-contained"
-    ];
+    dotnetBuildFlags = [ "--framework net6.0" "--no-self-contained" ];
     dotnetFlags = [
       # These flags are set by the cake build.
       "-property:PackageVersion=${version}"
@@ -68,11 +60,7 @@ let
           sdk:
           runCommand "with-${if sdk ? version then sdk.version else "no"}-sdk"
             {
-              nativeBuildInputs = [
-                finalPackage
-                sdk
-                expect
-              ];
+              nativeBuildInputs = [ finalPackage sdk expect ];
               meta.timeout = 60;
             }
             ''
@@ -109,12 +97,7 @@ let
         binaryNativeCode # dependencies
       ];
       license = lib.licenses.mit;
-      maintainers = with lib.maintainers; [
-        tesq0
-        ericdallo
-        corngood
-        mdarocha
-      ];
+      maintainers = with lib.maintainers; [ tesq0 ericdallo corngood mdarocha ];
       mainProgram = "OmniSharp";
     };
   };

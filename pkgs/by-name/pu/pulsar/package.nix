@@ -225,11 +225,7 @@ stdenv.mkDerivation {
       icon = "pulsar";
       comment = "A Community-led Hyper-Hackable Text Editor";
       genericName = "Text Editor";
-      categories = [
-        "Development"
-        "TextEditor"
-        "Utility"
-      ];
+      categories = [ "Development" "TextEditor" "Utility" ];
       mimeTypes = [ "text/plain" ];
     })
   ];

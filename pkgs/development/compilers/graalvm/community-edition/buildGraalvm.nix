@@ -53,10 +53,7 @@ let
   ];
 
   cLibs = lib.optionals stdenv.isLinux (
-    [
-      glibc
-      zlib.static
-    ]
+    [ glibc zlib.static ]
     ++ lib.optionals (!useMusl) [ glibc.static ]
     ++ lib.optionals useMusl [ musl ]
     ++ extraCLibs
@@ -71,14 +68,7 @@ let
   );
   binPath = lib.makeBinPath (lib.optionals useMusl [ musl-gcc ] ++ [ stdenv.cc ]);
 
-  runtimeLibraryPath = lib.makeLibraryPath (
-    [ cups ]
-    ++ lib.optionals gtkSupport [
-      cairo
-      glib
-      gtk3
-    ]
-  );
+  runtimeLibraryPath = lib.makeLibraryPath ([ cups ] ++ lib.optionals gtkSupport [ cairo glib gtk3 ]);
 
   graalvm-ce = stdenv.mkDerivation (
     {
@@ -114,10 +104,7 @@ let
 
       dontStrip = true;
 
-      nativeBuildInputs = [
-        unzip
-        makeWrapper
-      ] ++ lib.optional stdenv.isLinux autoPatchelfHook;
+      nativeBuildInputs = [ unzip makeWrapper ] ++ lib.optional stdenv.isLinux autoPatchelfHook;
 
       propagatedBuildInputs = [
         setJavaClassPath
@@ -211,10 +198,7 @@ let
 
       passthru = {
         home = graalvm-ce;
-        updateScript = [
-          ./update.sh
-          "graalvm-ce"
-        ];
+        updateScript = [ ./update.sh "graalvm-ce" ];
       } // (args.passhtru or { });
 
       meta =
@@ -223,11 +207,7 @@ let
           {
             homepage = "https://www.graalvm.org/";
             description = "High-Performance Polyglot VM";
-            license = with licenses; [
-              upl
-              gpl2Classpath
-              bsd3
-            ];
+            license = with licenses; [ upl gpl2Classpath bsd3 ];
             sourceProvenance = with sourceTypes; [ binaryNativeCode ];
             mainProgram = "java";
             maintainers = with maintainers; teams.graalvm-ce.members ++ [ ];

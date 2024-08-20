@@ -46,10 +46,7 @@ import ./versions.nix (
       description = "Enterprise-class open source distributed monitoring solution (client-side agent)";
       homepage = "https://www.zabbix.com/";
       license = lib.licenses.gpl2Plus;
-      maintainers = with lib.maintainers; [
-        mmahut
-        psyanticy
-      ];
+      maintainers = with lib.maintainers; [ mmahut psyanticy ];
       platforms = lib.platforms.unix;
     };
   }

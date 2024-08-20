@@ -88,11 +88,7 @@ stdenv.mkDerivation rec {
         --replace \
         'exec $PYTHON_EXEC $SCRIPT_PATH "$@"' \
         'export PATH=$PATH:${
-          lib.makeBinPath [
-            (placeholder "out")
-            pciutils
-            busybox
-          ]
+          lib.makeBinPath [ (placeholder "out") pciutils busybox ]
         }; exec ${python3}/bin/python3 $SCRIPT_PATH "$@"'
     '')
   ];
@@ -123,10 +119,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Open source version of Mellanox Firmware Tools (MFT)";
     homepage = "https://github.com/Mellanox/mstflint";
-    license = with licenses; [
-      gpl2Only
-      bsd2
-    ];
+    license = with licenses; [ gpl2Only bsd2 ];
     maintainers = with maintainers; [ thillux ];
     platforms = platforms.linux;
   };

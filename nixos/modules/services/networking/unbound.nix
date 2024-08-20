@@ -153,25 +153,11 @@ in
 
             freeformType =
               let
-                validSettingsPrimitiveTypes = oneOf [
-                  int
-                  str
-                  bool
-                  float
-                ];
-                validSettingsTypes = oneOf [
-                  validSettingsPrimitiveTypes
-                  (listOf validSettingsPrimitiveTypes)
-                ];
-                settingsType = oneOf [
-                  str
-                  (attrsOf validSettingsTypes)
-                ];
+                validSettingsPrimitiveTypes = oneOf [ int str bool float ];
+                validSettingsTypes = oneOf [ validSettingsPrimitiveTypes (listOf validSettingsPrimitiveTypes) ];
+                settingsType = oneOf [ str (attrsOf validSettingsTypes) ];
               in
-              attrsOf (oneOf [
-                settingsType
-                (listOf settingsType)
-              ])
+              attrsOf (oneOf [ settingsType (listOf settingsType) ])
               // {
                 description = ''
                   unbound.conf configuration type. The format consist of an attribute
@@ -283,10 +269,7 @@ in
       description = "Unbound recursive Domain Name Server";
       after = [ "network.target" ];
       before = [ "nss-lookup.target" ];
-      wantedBy = [
-        "multi-user.target"
-        "nss-lookup.target"
-      ];
+      wantedBy = [ "multi-user.target" "nss-lookup.target" ];
 
       path = mkIf cfg.settings.remote-control.control-enable [ pkgs.openssl ];
 
@@ -339,12 +322,7 @@ in
         RuntimeDirectory = "unbound";
         ConfigurationDirectory = "unbound";
         StateDirectory = "unbound";
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-          "AF_NETLINK"
-          "AF_UNIX"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_NETLINK" "AF_UNIX" ];
         RestrictRealtime = true;
         SystemCallArchitectures = "native";
         SystemCallFilter = [ "@system-service" ];
@@ -361,69 +339,31 @@ in
   };
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "unbound"
-        "interfaces"
-      ]
-      [
-        "services"
-        "unbound"
-        "settings"
-        "server"
-        "interface"
-      ]
-    )
-    (mkChangedOptionModule
-      [
-        "services"
-        "unbound"
-        "allowedAccess"
-      ]
-      [
-        "services"
-        "unbound"
-        "settings"
-        "server"
-        "access-control"
-      ]
+    (mkRenamedOptionModule [ "services" "unbound" "interfaces" ] [
+      "services"
+      "unbound"
+      "settings"
+      "server"
+      "interface"
+    ])
+    (mkChangedOptionModule [ "services" "unbound" "allowedAccess" ]
+      [ "services" "unbound" "settings" "server" "access-control" ]
       (
         config:
-        map (value: "${value} allow") (
-          getAttrFromPath [
-            "services"
-            "unbound"
-            "allowedAccess"
-          ] config
-        )
+        map (value: "${value} allow") (getAttrFromPath [ "services" "unbound" "allowedAccess" ] config)
       )
     )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "unbound"
-        "forwardAddresses"
-      ]
-      ''
-        Add a new setting:
-        services.unbound.settings.forward-zone = [{
-          name = ".";
-          forward-addr = [ # Your current services.unbound.forwardAddresses ];
-        }];
-        If any of those addresses are local addresses (127.0.0.1 or ::1), you must
-        also set services.unbound.settings.server.do-not-query-localhost to false.
-      ''
-    )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "unbound"
-        "extraConfig"
-      ]
-      ''
-        You can use services.unbound.settings to add any configuration you want.
-      ''
-    )
+    (mkRemovedOptionModule [ "services" "unbound" "forwardAddresses" ] ''
+      Add a new setting:
+      services.unbound.settings.forward-zone = [{
+        name = ".";
+        forward-addr = [ # Your current services.unbound.forwardAddresses ];
+      }];
+      If any of those addresses are local addresses (127.0.0.1 or ::1), you must
+      also set services.unbound.settings.server.do-not-query-localhost to false.
+    '')
+    (mkRemovedOptionModule [ "services" "unbound" "extraConfig" ] ''
+      You can use services.unbound.settings to add any configuration you want.
+    '')
   ];
 }

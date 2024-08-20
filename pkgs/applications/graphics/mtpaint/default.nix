@@ -38,11 +38,7 @@ stdenv.mkDerivation rec {
     gifsicle
   ];
 
-  configureFlags = [
-    "gtk3"
-    "intl"
-    "man"
-  ];
+  configureFlags = [ "gtk3" "intl" "man" ];
 
   meta = {
     description = "Simple GTK painting program";

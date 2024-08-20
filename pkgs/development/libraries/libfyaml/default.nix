@@ -18,17 +18,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-Id5pdFzjA9q67okfESO3LZH8jIz93mVgIEEuBbPjuGI=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "man"
-  ];
+  outputs = [ "bin" "dev" "out" "man" ];
 
   configureFlags = [ "--disable-network" ];
 

@@ -38,10 +38,7 @@ stdenv.mkDerivation rec {
 
   buildInputs =
     lib.optionals (!stdenv.isDarwin) [ libsecret ]
-    ++ lib.optionals stdenv.isDarwin [
-      Security
-      AppKit
-    ];
+    ++ lib.optionals stdenv.isDarwin [ Security AppKit ];
 
   npmDeps = fetchNpmDeps {
     inherit src;

@@ -21,15 +21,8 @@ stdenv.mkDerivation {
     hash = "sha256-9IsNaLW5dYAqiwe+vX0+D3oIKFP2TIfy1q1YaqmS6wE=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    meson
-    ninja
-  ];
-  buildInputs = [
-    fmt_9
-    libjack2
-  ];
+  nativeBuildInputs = [ pkg-config meson ninja ];
+  buildInputs = [ fmt_9 libjack2 ];
 
   meta = with lib; {
     description = "Simple app to help with JACK apps that behave strangely";

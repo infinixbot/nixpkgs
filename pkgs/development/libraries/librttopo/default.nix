@@ -11,10 +11,7 @@ stdenv.mkDerivation rec {
   pname = "librttopo";
   version = "1.1.0";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitea {
     domain = "git.osgeo.org/gitea";

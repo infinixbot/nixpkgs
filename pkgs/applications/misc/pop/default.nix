@@ -24,11 +24,7 @@ buildGoModule rec {
     installShellFiles
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X=main.Version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X=main.Version=${version}" ];
 
   postInstall = ''
     $out/bin/pop man > pop.1
@@ -44,10 +40,7 @@ buildGoModule rec {
     homepage = "https://github.com/charmbracelet/pop";
     changelog = "https://github.com/charmbracelet/pop/releases/tag/v${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      caarlos0
-      maaslalani
-    ];
+    maintainers = with maintainers; [ caarlos0 maaslalani ];
     mainProgram = "pop";
   };
 }

@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [
-    asciidoc
-    gettext
-  ];
+  nativeBuildInputs = [ asciidoc gettext ];
   buildInputs = [ ncurses ] ++ lib.optionals stdenv.isDarwin [ gettext ];
 
   meta = with lib; {

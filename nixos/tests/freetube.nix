@@ -12,10 +12,7 @@ let
     xorg =
       { pkgs, ... }:
       {
-        imports = [
-          ./common/user-account.nix
-          ./common/x11.nix
-        ];
+        imports = [ ./common/user-account.nix ./common/x11.nix ];
         virtualisation.memorySize = 2047;
         services.xserver.enable = true;
         services.xserver.displayManager.sessionCommands = ''

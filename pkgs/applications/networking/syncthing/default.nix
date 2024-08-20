@@ -72,10 +72,7 @@ let
         description = "Open Source Continuous File Synchronization";
         changelog = "https://github.com/syncthing/syncthing/releases/tag/v${version}";
         license = licenses.mpl20;
-        maintainers = with maintainers; [
-          joko
-          peterhoeg
-        ];
+        maintainers = with maintainers; [ joko peterhoeg ];
         mainProgram = target;
         platforms = platforms.unix;
       };

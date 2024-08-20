@@ -24,10 +24,7 @@ let
     };
 
     accelProfile = mkOption {
-      type = types.enum [
-        "flat"
-        "adaptive"
-      ];
+      type = types.enum [ "flat" "adaptive" ];
       default = "adaptive";
       example = "flat";
       description = ''
@@ -74,13 +71,7 @@ let
     };
 
     clickMethod = mkOption {
-      type = types.nullOr (
-        types.enum [
-          "none"
-          "buttonareas"
-          "clickfinger"
-        ]
-      );
+      type = types.nullOr (types.enum [ "none" "buttonareas" "clickfinger" ]);
       default = null;
       example = "buttonareas";
       description = ''
@@ -123,12 +114,7 @@ let
     };
 
     scrollMethod = mkOption {
-      type = types.enum [
-        "twofinger"
-        "edge"
-        "button"
-        "none"
-      ];
+      type = types.enum [ "twofinger" "edge" "button" "none" ];
       default = "twofinger";
       example = "edge";
       description = ''
@@ -148,11 +134,7 @@ let
     };
 
     sendEventsMode = mkOption {
-      type = types.enum [
-        "disabled"
-        "enabled"
-        "disabled-on-external-mouse"
-      ];
+      type = types.enum [ "disabled" "enabled" "disabled-on-external-mouse" ];
       default = "enabled";
       example = "disabled";
       description = ''
@@ -170,12 +152,7 @@ let
     };
 
     tappingButtonMap = mkOption {
-      type = types.nullOr (
-        types.enum [
-          "lrm"
-          "lmr"
-        ]
-      );
+      type = types.nullOr (types.enum [ "lrm" "lmr" ]);
       default = null;
       description = ''
         Set the button mapping for 1/2/3-finger taps to left/right/middle or left/middle/right, respectively.
@@ -269,19 +246,12 @@ in
     (map
       (
         option:
-        mkRenamedOptionModule
-          ([
-            "services"
-            "xserver"
-            "libinput"
-            option
-          ])
-          [
-            "services"
-            "libinput"
-            "touchpad"
-            option
-          ]
+        mkRenamedOptionModule ([ "services" "xserver" "libinput" option ]) [
+          "services"
+          "libinput"
+          "touchpad"
+          option
+        ]
       )
       [
         "accelProfile"
@@ -305,45 +275,21 @@ in
       ]
     )
     ++ [
-      (mkRenamedOptionModule
-        [
-          "services"
-          "xserver"
-          "libinput"
-          "enable"
-        ]
-        [
-          "services"
-          "libinput"
-          "enable"
-        ]
-      )
-      (mkRenamedOptionModule
-        [
-          "services"
-          "xserver"
-          "libinput"
-          "mouse"
-        ]
-        [
-          "services"
-          "libinput"
-          "mouse"
-        ]
-      )
-      (mkRenamedOptionModule
-        [
-          "services"
-          "xserver"
-          "libinput"
-          "touchpad"
-        ]
-        [
-          "services"
-          "libinput"
-          "touchpad"
-        ]
-      )
+      (mkRenamedOptionModule [ "services" "xserver" "libinput" "enable" ] [
+        "services"
+        "libinput"
+        "enable"
+      ])
+      (mkRenamedOptionModule [ "services" "xserver" "libinput" "mouse" ] [
+        "services"
+        "libinput"
+        "mouse"
+      ])
+      (mkRenamedOptionModule [ "services" "xserver" "libinput" "touchpad" ] [
+        "services"
+        "libinput"
+        "touchpad"
+      ])
     ];
 
   options = {

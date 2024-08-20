@@ -40,12 +40,7 @@ bundlerApp {
     description = "Puppet environment and module deployment";
     homepage = "https://github.com/puppetlabs/r10k";
     license = lib.licenses.asl20;
-    maintainers = with lib.maintainers; [
-      zimbatm
-      manveru
-      nicknovitski
-      anthonyroussel
-    ];
+    maintainers = with lib.maintainers; [ zimbatm manveru nicknovitski anthonyroussel ];
     platforms = lib.platforms.unix;
     mainProgram = "r10k";
   };

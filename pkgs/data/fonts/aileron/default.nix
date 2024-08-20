@@ -30,10 +30,7 @@ stdenvNoCC.mkDerivation {
     homepage = "http://dotcolon.net/font/aileron/";
     description = "Helvetica font in nine weights";
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      leenaars
-      minijackson
-    ];
+    maintainers = with maintainers; [ leenaars minijackson ];
     license = licenses.cc0;
   };
 }

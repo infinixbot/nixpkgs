@@ -20,15 +20,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-uXzPAv6DappyHBNmsTg6qRUvtUUdP1IPOdDvIcevfco=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
-  buildInputs = [
-    libdmtx
-    imagemagick
-  ] ++ lib.optional stdenv.isDarwin Foundation;
+  buildInputs = [ libdmtx imagemagick ] ++ lib.optional stdenv.isDarwin Foundation;
 
   meta = {
     description = "Data matrix command-line utilities";

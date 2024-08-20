@@ -37,11 +37,7 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    boost
-    zlib
-    python2
-  ];
+  buildInputs = [ boost zlib python2 ];
 
   cmakeFlags = [
     "-DCMAKE_CXX_STANDARD=14"

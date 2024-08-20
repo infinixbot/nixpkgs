@@ -35,10 +35,7 @@ appimageTools.wrapType2 rec {
     homepage = "https://www.lunarclient.com/";
     license = with licenses; [ unfree ];
     mainProgram = "lunarclient";
-    maintainers = with maintainers; [
-      Technical27
-      surfaceflinger
-    ];
+    maintainers = with maintainers; [ Technical27 surfaceflinger ];
     platforms = [ "x86_64-linux" ];
   };
 }

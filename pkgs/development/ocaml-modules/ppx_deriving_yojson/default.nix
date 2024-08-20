@@ -36,11 +36,7 @@ buildDunePackage rec {
     inherit (param) sha256;
   };
 
-  propagatedBuildInputs = [
-    ppxlib
-    ppx_deriving
-    yojson
-  ];
+  propagatedBuildInputs = [ ppxlib ppx_deriving yojson ];
 
   doCheck = lib.versionAtLeast ocaml.version "4.08";
   checkInputs = [ ounit ];

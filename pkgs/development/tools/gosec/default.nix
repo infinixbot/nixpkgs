@@ -34,9 +34,6 @@ buildGoModule rec {
     description = "Golang security checker";
     mainProgram = "gosec";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      kalbasit
-      nilp0inter
-    ];
+    maintainers = with maintainers; [ kalbasit nilp0inter ];
   };
 }

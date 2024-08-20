@@ -37,10 +37,7 @@
   type ? "ADL",
 }:
 
-assert lib.assertOneOf "type" type [
-  "ADL"
-  "OPN"
-];
+assert lib.assertOneOf "type" type [ "ADL" "OPN" ];
 let
   chip =
     {

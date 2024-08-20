@@ -55,10 +55,7 @@ perlPackages.buildPerlPackage rec {
     description = "Handy shell-like interface for browsing LDAP servers and editing their content";
     changelog = "https://github.com/mahlonsmith/shelldap/blob/v${version}/CHANGELOG";
     license = with licenses; [ bsd3 ];
-    maintainers = with maintainers; [
-      clerie
-      tobiasBora
-    ];
+    maintainers = with maintainers; [ clerie tobiasBora ];
     platforms = platforms.unix;
     mainProgram = "shelldap";
   };

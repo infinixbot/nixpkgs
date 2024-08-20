@@ -64,10 +64,7 @@ stdenv.mkDerivation rec {
     description = "Free/libre soft-body physics simulator mainly targeted at simulating vehicle physics";
     homepage = "https://www.rigsofrods.org";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      raskin
-      wegank
-    ];
+    maintainers = with maintainers; [ raskin wegank ];
     platforms = [ "x86_64-linux" ];
   };
 }

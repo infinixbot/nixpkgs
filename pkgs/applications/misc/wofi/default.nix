@@ -22,17 +22,8 @@ stdenv.mkDerivation rec {
     vc = "hg";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    meson
-    ninja
-    wrapGAppsHook3
-    installShellFiles
-  ];
-  buildInputs = [
-    wayland
-    gtk3
-  ];
+  nativeBuildInputs = [ pkg-config meson ninja wrapGAppsHook3 installShellFiles ];
+  buildInputs = [ wayland gtk3 ];
 
   patches = [
     # https://todo.sr.ht/~scoopta/wofi/121

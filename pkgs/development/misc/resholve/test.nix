@@ -61,23 +61,8 @@
 }:
 
 let
-  default_packages = [
-    bash
-    file
-    findutils
-    gettext
-  ];
-  parsed_packages = [
-    coreutils
-    sqlite
-    unixtools.script
-    gnused
-    gawk
-    findutils
-    rlwrap
-    gnutar
-    bc
-  ];
+  default_packages = [ bash file findutils gettext ];
+  parsed_packages = [ coreutils sqlite unixtools.script gnused gawk findutils rlwrap gnutar bc ];
 in
 rec {
   module1 = resholve.mkDerivation {
@@ -96,16 +81,9 @@ rec {
     solutions = {
       libressl = {
         # submodule to demonstrate
-        scripts = [
-          "bin/libressl.sh"
-          "submodule/helper.sh"
-        ];
+        scripts = [ "bin/libressl.sh" "submodule/helper.sh" ];
         interpreter = "none";
-        inputs = [
-          jq
-          module2
-          libressl.bin
-        ];
+        inputs = [ jq module2 libressl.bin ];
       };
     };
 
@@ -130,17 +108,9 @@ rec {
         fix = {
           aliases = true;
         };
-        scripts = [
-          "bin/openssl.sh"
-          "libexec/invokeme"
-        ];
+        scripts = [ "bin/openssl.sh" "libexec/invokeme" ];
         interpreter = "none";
-        inputs = [
-          shunit2
-          openssl.bin
-          "libexec"
-          "libexec/invokeme"
-        ];
+        inputs = [ shunit2 openssl.bin "libexec" "libexec/invokeme" ];
         execer = [
           /*
             This is the same verdict binlore will
@@ -175,10 +145,7 @@ rec {
         interpreter = "${bash}/bin/bash";
         inputs = [ module1 ];
         fake = {
-          external = [
-            "jq"
-            "openssl"
-          ];
+          external = [ "jq" "openssl" ];
         };
       }}
     '';
@@ -197,10 +164,7 @@ rec {
 
     doCheck = true;
     buildInputs = [ resholve ];
-    nativeCheckInputs = [
-      coreutils
-      bats
-    ];
+    nativeCheckInputs = [ coreutils bats ];
     # LOGLEVEL="DEBUG";
 
     # default path

@@ -20,11 +20,7 @@ buildGoModule rec {
 
   subPackages = [ "cmd/sops" ];
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X github.com/getsops/sops/v3/version.Version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X github.com/getsops/sops/v3/version.Version=${version}" ];
 
   passthru.updateScript = nix-update-script { };
 
@@ -33,10 +29,7 @@ buildGoModule rec {
     description = "Simple and flexible tool for managing secrets";
     changelog = "https://github.com/getsops/sops/blob/v${version}/CHANGELOG.rst";
     mainProgram = "sops";
-    maintainers = with maintainers; [
-      Scrumplex
-      mic92
-    ];
+    maintainers = with maintainers; [ Scrumplex mic92 ];
     license = licenses.mpl20;
   };
 }

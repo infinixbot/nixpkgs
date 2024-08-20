@@ -21,16 +21,8 @@ else
       sha256 = "sha256-4DWXGMh02s1VwLWW5d7h0jtMOUubWmBPGm1hghfWd2M=";
     };
 
-    nativeBuildInputs = [
-      pkg-config
-      ocaml
-      findlib
-    ];
-    propagatedBuildInputs = [
-      curl
-      lwt
-      lwt_ppx
-    ];
+    nativeBuildInputs = [ pkg-config ocaml findlib ];
+    propagatedBuildInputs = [ curl lwt lwt_ppx ];
 
     strictDeps = true;
 
@@ -39,10 +31,7 @@ else
       description = "OCaml bindings to libcurl";
       license = lib.licenses.mit;
       homepage = "http://ygrek.org.ua/p/ocurl/";
-      maintainers = with lib.maintainers; [
-        dandellion
-        bennofs
-      ];
+      maintainers = with lib.maintainers; [ dandellion bennofs ];
       platforms = ocaml.meta.platforms or [ ];
     };
   }

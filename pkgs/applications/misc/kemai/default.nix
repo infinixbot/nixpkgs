@@ -53,10 +53,7 @@ stdenv.mkDerivation rec {
     "-DFETCHCONTENT_TRY_FIND_PACKAGE_MODE=ALWAYS"
   ];
 
-  nativeBuildInputs = [
-    cmake
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake wrapQtAppsHook ];
 
   passthru = {
     updateScript = nix-update-script { };

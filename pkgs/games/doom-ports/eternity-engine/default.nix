@@ -21,16 +21,8 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    cmake
-    makeWrapper
-  ];
-  buildInputs = [
-    libGL
-    SDL2
-    SDL2_mixer
-    SDL2_net
-  ];
+  nativeBuildInputs = [ cmake makeWrapper ];
+  buildInputs = [ libGL SDL2 SDL2_mixer SDL2_net ];
 
   installPhase = ''
     install -Dm755 eternity/eternity $out/lib/eternity/eternity

@@ -24,10 +24,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-Jpvf6cST3kBvYzCQLoJ1fijUC/hP1ouptd2bQZ1J/Lo=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   checkFlags =
     let
@@ -36,10 +33,7 @@ buildGoModule rec {
         "TestParseOptions"
       ];
     in
-    [
-      "-skip"
-      "${builtins.concatStringsSep "|" skippedTests}"
-    ];
+    [ "-skip" "${builtins.concatStringsSep "|" skippedTests}" ];
 
   passthru.tests.version = testers.testVersion {
     version = "v${version}";
@@ -57,9 +51,6 @@ buildGoModule rec {
     homepage = "https://sosedoff.github.io/pgweb/";
     license = licenses.mit;
     mainProgram = "pgweb";
-    maintainers = with maintainers; [
-      zupo
-      luisnquin
-    ];
+    maintainers = with maintainers; [ zupo luisnquin ];
   };
 }

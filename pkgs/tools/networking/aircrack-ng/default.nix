@@ -74,30 +74,16 @@ stdenv.mkDerivation rec {
     (lib.withFeatureAs useAirpcap "airpcap" airpcap-sdk)
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    makeWrapper
-    autoreconfHook
-  ];
+  nativeBuildInputs = [ pkg-config makeWrapper autoreconfHook ];
   buildInputs =
     lib.singleton (if useGcrypt then libgcrypt else openssl)
-    ++ lib.optionals stdenv.isLinux [
-      libpcap
-      zlib
-      libnl
-      iw
-      ethtool
-      pciutils
-    ]
+    ++ lib.optionals stdenv.isLinux [ libpcap zlib libnl iw ethtool pciutils ]
     ++ lib.optional (stdenv.isCygwin && stdenv.isClang) libiconv
     ++ lib.optional enableAirolib sqlite
     ++ lib.optional enableRegex pcre2
     ++ lib.optional useAirpcap airpcap-sdk;
 
-  nativeCheckInputs = [
-    cmocka
-    expect
-  ];
+  nativeCheckInputs = [ cmocka expect ];
 
   postFixup = lib.optionalString stdenv.isLinux ''
     wrapProgram "$out/bin/airmon-ng" --prefix PATH : ${
@@ -113,17 +99,10 @@ stdenv.mkDerivation rec {
   '';
 
   installCheckTarget = "integration";
-  nativeInstallCheckInputs =
-    [
-      cmocka
-      expect
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      tcpdump
-      hostapd
-      wpa_supplicant
-      screen
-    ];
+  nativeInstallCheckInputs = [
+    cmocka
+    expect
+  ] ++ lib.optionals stdenv.isLinux [ tcpdump hostapd wpa_supplicant screen ];
 
   meta = {
     description = "WiFi security auditing tools suite";
@@ -132,15 +111,7 @@ stdenv.mkDerivation rec {
     maintainers = with lib.maintainers; [ caralice ];
     platforms =
       with lib.platforms;
-      builtins.concatLists [
-        linux
-        darwin
-        cygwin
-        netbsd
-        openbsd
-        freebsd
-        illumos
-      ];
+      builtins.concatLists [ linux darwin cygwin netbsd openbsd freebsd illumos ];
     changelog = "https://github.com/aircrack-ng/aircrack-ng/blob/${src.rev}/ChangeLog";
   };
 }

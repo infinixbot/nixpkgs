@@ -63,12 +63,7 @@ let
     else
       throw "Unsupported platform for PlayOnLinux: ${stdenv.hostPlatform.system}";
   ld64 = "${stdenv.cc}/nix-support/dynamic-linker";
-  libs =
-    pkgs:
-    lib.makeLibraryPath [
-      xorg.libX11
-      libGL
-    ];
+  libs = pkgs: lib.makeLibraryPath [ xorg.libX11 libGL ];
 
   python = python3.withPackages (
     ps: with ps; [
@@ -92,10 +87,7 @@ stdenv.mkDerivation {
     ./0001-fix-locale.patch
   ];
 
-  nativeBuildInputs = [
-    makeWrapper
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ makeWrapper wrapGAppsHook3 ];
 
   preBuild = ''
     makeFlagsArray+=(PYTHON="python -m py_compile")
@@ -166,10 +158,7 @@ stdenv.mkDerivation {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.gpl3;
     maintainers = [ maintainers.pasqui23 ];
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
     mainProgram = "playonlinux";
   };
 }

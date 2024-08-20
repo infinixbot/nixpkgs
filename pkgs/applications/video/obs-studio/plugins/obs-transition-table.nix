@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    obs-studio
-    qtbase
-  ];
+  buildInputs = [ obs-studio qtbase ];
 
   cmakeFlags = [
     "-DBUILD_OUT_OF_TREE=On"
@@ -39,9 +36,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/exeldro/obs-transition-table";
     maintainers = with maintainers; [ flexiondotorg ];
     license = licenses.gpl2Plus;
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
   };
 }

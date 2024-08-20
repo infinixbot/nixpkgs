@@ -34,34 +34,11 @@ stdenv.mkDerivation rec {
     sha256 = "1ln448lszw4d6jmbdphkr2plwxxlhmjkla48vmmq750xc1lxlfrc";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
   buildInputs =
-    [
-      pcre
-      python3
-      zlib
-      libxml2
-      lz4
-      xz
-      gsl
-      xxHash
-      libxcrypt
-    ]
-    ++ lib.optionals (!stdenv.isDarwin) [
-      libX11
-      libXpm
-      libXft
-      libXext
-      libGLU
-      libGL
-    ]
-    ++ lib.optionals (stdenv.isDarwin) [
-      Cocoa
-      OpenGL
-    ];
+    [ pcre python3 zlib libxml2 lz4 xz gsl xxHash libxcrypt ]
+    ++ lib.optionals (!stdenv.isDarwin) [ libX11 libXpm libXft libXext libGLU libGL ]
+    ++ lib.optionals (stdenv.isDarwin) [ Cocoa OpenGL ];
 
   patches = [
     ./sw_vers_root5.patch

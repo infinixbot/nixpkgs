@@ -22,23 +22,10 @@ stdenv.mkDerivation rec {
     hash = "sha256-rMNPJaCtVpbwIkMQzBNpmRct6S/NelTwjmsuB0RP6R8=";
   };
 
-  nativeBuildInputs = [
-    meson
-    pkg-config
-    ninja
-    asciidoc
-  ];
-  buildInputs = [
-    zlib
-    jansson
-    openssl
-  ];
+  nativeBuildInputs = [ meson pkg-config ninja asciidoc ];
+  buildInputs = [ zlib jansson openssl ];
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
   enableParallelBuilding = true;
 
   meta = {

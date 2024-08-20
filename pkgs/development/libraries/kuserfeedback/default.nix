@@ -14,10 +14,7 @@ mkDerivation rec {
     hash = "sha256-JSMIuCLdRpDqhasWiMmw2lUSl4rGtDX3ell5/B0v/RM=";
   };
 
-  nativeBuildInputs = [
-    extra-cmake-modules
-    qttools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules qttools ];
 
   meta = with lib; {
     license = [ licenses.mit ];

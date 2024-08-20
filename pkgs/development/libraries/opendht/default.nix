@@ -72,22 +72,13 @@ stdenv.mkDerivation rec {
       --replace '\$'{prefix}/'$'{CMAKE_INSTALL_INCLUDEDIR} '$'{CMAKE_INSTALL_FULL_INCLUDEDIR}
   '';
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "lib" "dev" "man" ];
 
   meta = with lib; {
     description = "C++11 Kademlia distributed hash table implementation";
     homepage = "https://github.com/savoirfairelinux/opendht";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      taeer
-      olynch
-      thoughtpolice
-    ];
+    maintainers = with maintainers; [ taeer olynch thoughtpolice ];
     platforms = platforms.unix;
   };
 }

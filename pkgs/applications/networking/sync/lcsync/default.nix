@@ -17,11 +17,7 @@ stdenv.mkDerivation (finalAttrs: {
     rev = "v${finalAttrs.version}";
     hash = "sha256-x8KjvUtn00g+zxDfSWZq4WgALDKRgbCF9rtipdOMbpc=";
   };
-  buildInputs = [
-    lcrq
-    librecast
-    libsodium
-  ];
+  buildInputs = [ lcrq librecast libsodium ];
   configureFlags = [ "SETCAP_PROGRAM=true" ];
   installFlags = [ "PREFIX=$(out)" ];
   doCheck = true;
@@ -31,17 +27,8 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Librecast File and Syncing Tool";
     mainProgram = "lcsync";
     homepage = "https://librecast.net/lcsync.html";
-    license = [
-      lib.licenses.gpl2
-      lib.licenses.gpl3
-    ];
-    maintainers = with lib.maintainers; [
-      albertchae
-      aynish
-      DMills27
-      jasonodoom
-      jleightcap
-    ];
+    license = [ lib.licenses.gpl2 lib.licenses.gpl3 ];
+    maintainers = with lib.maintainers; [ albertchae aynish DMills27 jasonodoom jleightcap ];
     platforms = lib.platforms.gnu;
   };
 })

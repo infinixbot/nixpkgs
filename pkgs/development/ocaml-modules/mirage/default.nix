@@ -17,10 +17,7 @@ buildDunePackage rec {
 
   minimalOCamlVersion = "4.08";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   propagatedBuildInputs = [
     ipaddr

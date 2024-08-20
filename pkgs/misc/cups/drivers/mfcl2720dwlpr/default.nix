@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
     sha256 = "088217e9ad118ec1e7f3d3f8f60f3bd839fe2c7d7c1136b249e9ac648dc742af";
   };
 
-  nativeBuildInputs = [
-    dpkg
-    makeWrapper
-  ];
+  nativeBuildInputs = [ dpkg makeWrapper ];
 
   dontUnpack = true;
 
@@ -62,10 +59,7 @@ stdenv.mkDerivation rec {
     homepage = "http://www.brother.com/";
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
     license = lib.licenses.unfree;
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
     maintainers = [ lib.maintainers.xeji ];
   };
 }

@@ -19,10 +19,7 @@ buildGoModule rec {
     sha256 = "sha256-ngC1yT0pV/ygGzNTYz71qf8V19hqvz3XP7CP8saGwCI=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    installShellFiles
-  ];
+  nativeBuildInputs = [ makeWrapper installShellFiles ];
 
   vendorHash = null;
 
@@ -55,9 +52,6 @@ buildGoModule rec {
     description = "Bootstrap Kubernetes with k3s over SSH";
     mainProgram = "k3sup";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      welteki
-      qjoly
-    ];
+    maintainers = with maintainers; [ welteki qjoly ];
   };
 }

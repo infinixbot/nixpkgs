@@ -15,13 +15,7 @@ mkXfceDerivation {
 
   sha256 = "sha256-NDIJRjKV5aoM2sLhZ6WmoynOc4yz55KpuiTJDMLMA5Y=";
 
-  buildInputs = [
-    gtk3
-    libnotify
-    libpulseaudio
-    keybinder3
-    xfconf
-  ];
+  buildInputs = [ gtk3 libnotify libpulseaudio keybinder3 xfconf ];
 
   meta = with lib; {
     description = "Volume keys control daemon for Xfce using pulseaudio";

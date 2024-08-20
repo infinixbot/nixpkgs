@@ -52,10 +52,7 @@ stdenv.mkDerivation rec {
     rm gradle/verification-{keyring.keys,metadata.xml}
   '';
 
-  nativeBuildInputs = [
-    gradle
-    jdk
-  ];
+  nativeBuildInputs = [ gradle jdk ];
 
   wrapper = substituteAll {
     src = ./freenetWrapper;

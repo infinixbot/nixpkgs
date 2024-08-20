@@ -9,10 +9,7 @@
 }:
 
 let
-  buildPlatformTools = [
-    "pse2unic"
-    "adobe2h"
-  ];
+  buildPlatformTools = [ "pse2unic" "adobe2h" ];
   tex = texliveInfraOnly.withPackages (ps: [ ps.collection-fontsrecommended ]);
 in
 

@@ -35,10 +35,7 @@ let
         inherit sha256;
       };
 
-      nativeBuildInputs = [
-        cmake
-        pkg-config
-      ];
+      nativeBuildInputs = [ cmake pkg-config ];
       buildInputs = [
         boost
         doxygen

@@ -105,10 +105,7 @@ stdenv.mkDerivation {
 
   # Magma doesn't have anything which could be run under doCheck, but it does build test suite executables.
   # These are moved to $test/bin/ and $test/lib/ in postInstall.
-  outputs = [
-    "out"
-    "test"
-  ];
+  outputs = [ "out" "test" ];
 
   # Fixup for the python test runners
   postPatch = ''

@@ -23,17 +23,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-FmYtxjLRfixWMLgBdS+XkSqOIml8Bl694XXxzDe4OmA=";
   };
 
-  buildInputs = [
-    flex
-    bison
-    libmhash
-    zlib
-    acl
-    attr
-    libselinux
-    pcre2
-    libgcrypt
-  ];
+  buildInputs = [ flex bison libmhash zlib acl attr libselinux pcre2 libgcrypt ];
 
   nativeBuildInputs = [ pkg-config ];
 

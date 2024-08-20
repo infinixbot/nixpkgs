@@ -78,10 +78,7 @@ in
 
       authBackend = mkOption {
         default = "storage";
-        type = types.enum [
-          "storage"
-          "pam"
-        ];
+        type = types.enum [ "storage" "pam" ];
         description = ''
           How users are authenticated
             storage -- save passwords internally
@@ -91,11 +88,7 @@ in
 
       authMode = mkOption {
         default = "Open";
-        type = types.enum [
-          "Open"
-          "Closed"
-          "Registered"
-        ];
+        type = types.enum [ "Open" "Closed" "Registered" ];
         description = ''
           The following authentication modes are available:
             Open -- Accept connections from anyone, use NickServ for user authentication.

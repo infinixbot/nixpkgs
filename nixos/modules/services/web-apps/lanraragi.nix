@@ -58,10 +58,7 @@ in
 
     systemd.services.lanraragi = {
       description = "LANraragi main service";
-      after = [
-        "network.target"
-        "redis-lanraragi.service"
-      ];
+      after = [ "network.target" "redis-lanraragi.service" ];
       requires = [ "redis-lanraragi.service" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {

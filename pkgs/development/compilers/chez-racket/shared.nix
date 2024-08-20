@@ -35,17 +35,8 @@ stdenv.mkDerivation (
       export LZ4="$(find ${lz4.out}/lib -type f | sort | head -n1)"
     '';
 
-    nativeBuildInputs = lib.optionals stdenv.isDarwin ([
-      cctools
-      darwin.autoSignDarwinBinariesHook
-    ]);
-    buildInputs = [
-      libiconv
-      libX11
-      lz4
-      ncurses
-      zlib
-    ];
+    nativeBuildInputs = lib.optionals stdenv.isDarwin ([ cctools darwin.autoSignDarwinBinariesHook ]);
+    buildInputs = [ libiconv libX11 lz4 ncurses zlib ];
 
     enableParallelBuilding = true;
 

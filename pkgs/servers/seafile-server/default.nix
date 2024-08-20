@@ -46,10 +46,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-a5vtJcbnaYzq6/3xmhbWk23BZ+Wil/Tb/q22ML4bDqs=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
   buildInputs = [
     libuuid
@@ -83,9 +80,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/haiwen/seafile-server";
     license = licenses.agpl3Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      greizgh
-      schmittlauch
-    ];
+    maintainers = with maintainers; [ greizgh schmittlauch ];
   };
 }

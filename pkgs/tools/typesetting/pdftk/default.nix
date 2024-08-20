@@ -52,10 +52,7 @@ stdenv.mkDerivation rec {
       binaryBytecode # deps
     ];
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      raskin
-      averelld
-    ];
+    maintainers = with maintainers; [ raskin averelld ];
     platforms = platforms.unix;
     mainProgram = "pdftk";
   };

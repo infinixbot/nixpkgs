@@ -33,12 +33,7 @@ stdenv.mkDerivation rec {
     rustc
     wrapGAppsHook4
   ];
-  buildInputs = [
-    glib
-    gtk4
-    libadwaita
-    libxml2
-  ];
+  buildInputs = [ glib gtk4 libadwaita libxml2 ];
 
   meta = with lib; {
     homepage = "https://gitlab.gnome.org/World/design/symbolic-preview";

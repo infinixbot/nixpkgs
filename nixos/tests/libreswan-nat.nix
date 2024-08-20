@@ -71,10 +71,7 @@ in
       (setAddress4 "eth1" "203.0.113.1")
       (setAddress4 "eth2" "192.168.1.1")
       {
-        virtualisation.vlans = [
-          1
-          2
-        ];
+        virtualisation.vlans = [ 1 2 ];
         environment.systemPackages = [ pkgs.tcpdump ];
         networking.nat = {
           enable = true;
@@ -97,14 +94,8 @@ in
     (setAddress4 "eth1" "203.0.113.2")
     (setAddress6 "eth2" "2001:db8::1")
     {
-      virtualisation.vlans = [
-        1
-        3
-      ];
-      networking.firewall.allowedUDPPorts = [
-        500
-        4500
-      ];
+      virtualisation.vlans = [ 1 3 ];
+      networking.firewall.allowedUDPPorts = [ 500 4500 ];
       networking.firewall.allowedTCPPorts = [ 993 ];
 
       # see https://github.com/NixOS/nixpkgs/pull/310857

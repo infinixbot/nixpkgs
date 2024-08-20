@@ -39,22 +39,13 @@ stdenv.mkDerivation rec {
 
   NIX_CFLAGS_LINK = [ "-lcrypt" ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
   outputBin = "dev";
 
-  nativeBuildInputs = [
-    makeWrapper
-    autoreconfHook
-  ];
+  nativeBuildInputs = [ makeWrapper autoreconfHook ];
 
   configureFlags =
-    [
-      "--with-apr=${apr.dev}"
-      "--with-expat=${expat.dev}"
-    ]
+    [ "--with-apr=${apr.dev}" "--with-expat=${expat.dev}" ]
     ++ lib.optional (!stdenv.isCygwin) "--with-crypto"
     ++ lib.optional sslSupport "--with-openssl=${openssl.dev}"
     ++ lib.optional bdbSupport "--with-berkeley-db=${db.dev}"
@@ -84,12 +75,7 @@ stdenv.mkDerivation rec {
       '';
 
   propagatedBuildInputs =
-    [
-      apr
-      expat
-      libiconv
-      libxcrypt
-    ]
+    [ apr expat libiconv libxcrypt ]
     ++ lib.optional sslSupport openssl
     ++ lib.optional bdbSupport db
     ++ lib.optional ldapSupport openldap

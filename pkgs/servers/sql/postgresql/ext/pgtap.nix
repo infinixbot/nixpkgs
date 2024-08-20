@@ -20,12 +20,7 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-YgvfLGF7pLVcCKD66NnWAydDxtoYHH1DpLiYTEKHJ0E=";
   };
 
-  nativeBuildInputs = [
-    postgresql
-    perl
-    perlPackages.TAPParserSourceHandlerpgTAP
-    which
-  ];
+  nativeBuildInputs = [ postgresql perl perlPackages.TAPParserSourceHandlerpgTAP which ];
 
   installPhase = ''
     install -D {sql/pgtap--${finalAttrs.version}.sql,pgtap.control} -t $out/share/postgresql/extension

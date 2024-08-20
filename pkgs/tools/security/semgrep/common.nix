@@ -54,9 +54,6 @@ rec {
       syntax trees, regex wrestling, or painful DSLs.
     '';
     license = licenses.lgpl21Plus;
-    maintainers = with maintainers; [
-      jk
-      ambroisie
-    ];
+    maintainers = with maintainers; [ jk ambroisie ];
   };
 }

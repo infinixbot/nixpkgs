@@ -39,12 +39,7 @@ stdenv.mkDerivation {
     ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs =
-    [ gtk2 ]
-    ++ (with perlPackages; [
-      perl
-      XMLParser
-    ]);
+  buildInputs = [ gtk2 ] ++ (with perlPackages; [ perl XMLParser ]);
 
   meta = {
     description = "Simple GTK 2 color selector";

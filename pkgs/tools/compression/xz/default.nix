@@ -24,13 +24,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   strictDeps = true;
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "man"
-    "doc"
-  ];
+  outputs = [ "bin" "dev" "out" "man" "doc" ];
 
   configureFlags = lib.optional enableStatic "--disable-shared";
 
@@ -89,10 +83,7 @@ stdenv.mkDerivation (finalAttrs: {
               create 30 % smaller output than gzip and 15 % smaller output than
               bzip2.
     '';
-    license = with licenses; [
-      gpl2Plus
-      lgpl21Plus
-    ];
+    license = with licenses; [ gpl2Plus lgpl21Plus ];
     maintainers = with maintainers; [ sander ];
     platforms = platforms.all;
     pkgConfigModules = [ "liblzma" ];

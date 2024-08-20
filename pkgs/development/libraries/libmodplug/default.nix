@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   # not allowed in C++17 and is an error in clang 16.
   prePatch = "substituteInPlace src/fastmix.cpp --replace 'register ' ''";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   preConfigure = ''
     substituteInPlace configure \

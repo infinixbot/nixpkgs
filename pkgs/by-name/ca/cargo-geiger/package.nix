@@ -36,13 +36,7 @@ rustPlatform.buildRustPackage rec {
   buildInputs =
     [ openssl ]
     ++ lib.optionals stdenv.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        CoreFoundation
-        Security
-        libiconv
-        curl
-      ]
+      with darwin.apple_sdk.frameworks; [ CoreFoundation Security libiconv curl ]
     );
   nativeBuildInputs =
     [ pkg-config ]
@@ -85,11 +79,6 @@ rustPlatform.buildRustPackage rec {
       asl20 # or
       mit
     ];
-    maintainers = with maintainers; [
-      evanjs
-      gepbird
-      jk
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ evanjs gepbird jk matthiasbeyer ];
   };
 }

@@ -23,14 +23,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    libxml2
-    freetype
-    librevenge
-    libvisio
-    libwmf
-    libemf2svg
-  ];
+  buildInputs = [ libxml2 freetype librevenge libvisio libwmf libemf2svg ];
 
   cmakeFlags = [
     # file RPATH_CHANGE could not write new RPATH

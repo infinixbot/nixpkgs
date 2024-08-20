@@ -45,16 +45,7 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [
-    lucenepp
-    nlohmann_json
-    wxGTK32
-    icu
-    pugixml
-    gtk3
-    gtkspell3
-    hicolor-icon-theme
-  ];
+  buildInputs = [ lucenepp nlohmann_json wxGTK32 icu pugixml gtk3 gtkspell3 hicolor-icon-theme ];
 
   propagatedBuildInputs = [ gettext ];
 

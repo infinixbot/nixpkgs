@@ -30,13 +30,7 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    gtk3
-    libxml2
-    llvm
-    perl
-    sqlite
-  ];
+  buildInputs = [ gtk3 libxml2 llvm perl sqlite ];
   doCheck = true;
   buildFlags = [ "GCC_BASE:=${GCC_BASE}" ];
 
@@ -57,9 +51,6 @@ stdenv.mkDerivation rec {
     homepage = "https://git.kernel.org/pub/scm/devel/sparse/sparse.git/";
     license = licenses.mit;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      thoughtpolice
-      jkarlson
-    ];
+    maintainers = with maintainers; [ thoughtpolice jkarlson ];
   };
 }

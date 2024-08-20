@@ -45,12 +45,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   # outputs TODO: share/gobject-introspection-1.0/tests is needed during build
   # by pygobject3 (and maybe others), but it's only searched in $out
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-    "man"
-  ];
+  outputs = [ "out" "dev" "devdoc" "man" ];
   outputBin = "dev";
 
   src = fetchurl {
@@ -174,19 +169,11 @@ stdenv.mkDerivation (finalAttrs: {
   meta = with lib; {
     description = "Middleware layer between C libraries and language bindings";
     homepage = "https://gi.readthedocs.io/";
-    maintainers =
-      teams.gnome.members
-      ++ (with maintainers; [
-        lovek323
-        artturin
-      ]);
+    maintainers = teams.gnome.members ++ (with maintainers; [ lovek323 artturin ]);
     pkgConfigModules = [ "gobject-introspection-1.0" ];
     platforms = platforms.unix;
     badPlatforms = [ lib.systems.inspect.platformPatterns.isStatic ];
-    license = with licenses; [
-      gpl2
-      lgpl2
-    ];
+    license = with licenses; [ gpl2 lgpl2 ];
 
     longDescription = ''
       GObject introspection is a middleware layer between C libraries (using

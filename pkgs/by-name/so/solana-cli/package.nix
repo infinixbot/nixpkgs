@@ -76,16 +76,9 @@ rustPlatform.buildRustPackage rec {
   # I'm not in the mood ((ΦωΦ))
   doCheck = false;
 
-  nativeBuildInputs = [
-    installShellFiles
-    protobuf
-    pkg-config
-  ];
+  nativeBuildInputs = [ installShellFiles protobuf pkg-config ];
   buildInputs =
-    [
-      openssl
-      rustPlatform.bindgenHook
-    ]
+    [ openssl rustPlatform.bindgenHook ]
     ++ lib.optionals stdenv.isLinux [ udev ]
     ++ lib.optionals stdenv.isDarwin [
       libcxx
@@ -122,11 +115,7 @@ rustPlatform.buildRustPackage rec {
     description = "Web-Scale Blockchain for fast, secure, scalable, decentralized apps and marketplaces";
     homepage = "https://solana.com";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      netfox
-      happysalada
-      aikooo7
-    ];
+    maintainers = with maintainers; [ netfox happysalada aikooo7 ];
     platforms = platforms.unix;
   };
 

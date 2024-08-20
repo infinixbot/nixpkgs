@@ -46,13 +46,7 @@ stdenv.mkDerivation rec {
       patchelf "$f" > /dev/null 2>&1 || continue
       patchelf --set-interpreter $(cat ${stdenv.cc}/nix-support/dynamic-linker) "$f" || true
       patchelf --set-rpath ${
-        lib.makeLibraryPath [
-          "$out"
-          stdenv.cc.cc
-          ncurses5
-          python39
-          libxcrypt-legacy
-        ]
+        lib.makeLibraryPath [ "$out" stdenv.cc.cc ncurses5 python39 libxcrypt-legacy ]
       } "$f" || true
     done
   '';
@@ -71,20 +65,9 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Pre-built GNU toolchain from ARM Cortex-M & Cortex-R processors";
     homepage = "https://developer.arm.com/open-source/gnu-toolchain/gnu-rm";
-    license = with licenses; [
-      bsd2
-      gpl2
-      gpl3
-      lgpl21
-      lgpl3
-      mit
-    ];
+    license = with licenses; [ bsd2 gpl2 gpl3 lgpl21 lgpl3 mit ];
     maintainers = with maintainers; [ prusnak ];
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-      "x86_64-darwin"
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" ];
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
   };
 }

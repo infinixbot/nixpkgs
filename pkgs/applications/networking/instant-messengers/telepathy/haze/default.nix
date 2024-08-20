@@ -20,18 +20,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-cEvvpC7sIXPspLrAH/0AQBRmXyutRtyJSOVCM2TN4wo=";
   };
 
-  buildInputs = [
-    glib
-    telepathy-glib
-    dbus-glib
-    pidgin
-  ];
+  buildInputs = [ glib telepathy-glib dbus-glib pidgin ];
 
-  nativeBuildInputs = [
-    pkg-config
-    libxslt
-    python3
-  ];
+  nativeBuildInputs = [ pkg-config libxslt python3 ];
 
   meta = {
     description = "Telepathy connection manager based on libpurple";

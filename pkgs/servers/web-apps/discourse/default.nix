@@ -253,10 +253,7 @@ let
       fixup-yarn-lock
     ];
 
-    outputs = [
-      "out"
-      "javascripts"
-    ];
+    outputs = [ "out" "javascripts" ];
 
     patches = [
       # Use the Ruby API version in the plugin gem path, to match the

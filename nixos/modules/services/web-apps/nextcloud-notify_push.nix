@@ -29,13 +29,7 @@ in
       };
 
       logLevel = lib.mkOption {
-        type = lib.types.enum [
-          "error"
-          "warn"
-          "info"
-          "debug"
-          "trace"
-        ];
+        type = lib.types.enum [ "error" "warn" "info" "debug" "trace" ];
         default = "error";
         description = "Log level";
       };
@@ -146,10 +140,7 @@ in
       }
 
       (lib.mkIf cfg.bendDomainToLocalhost {
-        nextcloud.settings.trusted_proxies = [
-          "127.0.0.1"
-          "::1"
-        ];
+        nextcloud.settings.trusted_proxies = [ "127.0.0.1" "::1" ];
       })
     ];
   };

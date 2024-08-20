@@ -26,11 +26,7 @@
 
 mkDerivation {
   pname = "xdg-desktop-portal-kde";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    gettext
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules gettext kdoctools ];
   buildInputs = [
     cups
     libepoxy

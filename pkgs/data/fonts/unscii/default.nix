@@ -71,10 +71,7 @@ stdenv.mkDerivation rec {
     mkfontscale "$extra"/share/fonts/*
   '';
 
-  outputs = [
-    "out"
-    "extra"
-  ];
+  outputs = [ "out" "extra" ];
 
   meta = {
     description = "Bitmapped character-art-friendly Unicode fonts";

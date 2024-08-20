@@ -44,11 +44,7 @@ stdenvNoCC.mkDerivation {
       --set GAUGE_HOME "$GAUGE_HOME"
   '';
 
-  nativeBuildInputs = [
-    gauge-unwrapped
-    makeWrapper
-    xorg.lndir
-  ];
+  nativeBuildInputs = [ gauge-unwrapped makeWrapper xorg.lndir ];
 
   passthru = {
     withPlugins = f: gauge.override { plugins = f gaugePlugins; };

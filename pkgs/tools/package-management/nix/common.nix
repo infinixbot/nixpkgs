@@ -11,11 +11,7 @@
     inherit hash;
   },
   patches ? [ ],
-  maintainers ? with lib.maintainers; [
-    eelco
-    lovesegfault
-    artturin
-  ],
+  maintainers ? with lib.maintainers; [ eelco lovesegfault artturin ],
   self_attribute_name,
 }@args:
 assert (hash == null) -> (src != null);
@@ -109,15 +105,7 @@ let
 
     inherit src patches;
 
-    outputs =
-      [
-        "out"
-        "dev"
-      ]
-      ++ lib.optionals enableDocumentation [
-        "man"
-        "doc"
-      ];
+    outputs = [ "out" "dev" ] ++ lib.optionals enableDocumentation [ "man" "doc" ];
 
     hardeningEnable = lib.optionals (!stdenv.isDarwin) [ "pie" ];
 

@@ -50,23 +50,9 @@ stdenv.mkDerivation rec {
     patchShebangs scripts
   '';
 
-  nativeBuildInputs = [
-    makeWrapper
-    pkg-config
-  ];
+  nativeBuildInputs = [ makeWrapper pkg-config ];
   buildInputs =
-    [
-      xz
-      dpkg
-      libxslt
-      python
-      setuptools
-      curl
-      gnupg
-      diffutils
-      bash-completion
-      help2man
-    ]
+    [ xz dpkg libxslt python setuptools curl gnupg diffutils bash-completion help2man ]
     ++ (with perlPackages; [
       perl
       CryptSSLeay

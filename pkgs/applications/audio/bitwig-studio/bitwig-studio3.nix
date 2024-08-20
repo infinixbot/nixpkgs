@@ -30,11 +30,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-cF8gVPjM0KUcKOW09uFccp4/lzbUmZcBkVOwr/A/8Yw=";
   };
 
-  nativeBuildInputs = [
-    dpkg
-    makeWrapper
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ dpkg makeWrapper wrapGAppsHook3 ];
 
   unpackCmd = ''
     mkdir -p root
@@ -107,10 +103,6 @@ stdenv.mkDerivation rec {
     homepage = "https://www.bitwig.com/";
     license = licenses.unfree;
     platforms = [ "x86_64-linux" ];
-    maintainers = with maintainers; [
-      bfortz
-      michalrus
-      mrVanDalo
-    ];
+    maintainers = with maintainers; [ bfortz michalrus mrVanDalo ];
   };
 }

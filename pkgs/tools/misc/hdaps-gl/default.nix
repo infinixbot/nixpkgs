@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ autoreconfHook ];
-  buildInputs = [
-    libglut
-    libGL
-    libGLU
-  ];
+  buildInputs = [ libglut libGL libGLU ];
 
   meta = with lib; {
     description = "GL-based laptop model that rotates in real-time via hdaps";

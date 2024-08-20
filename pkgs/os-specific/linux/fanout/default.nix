@@ -26,10 +26,7 @@ stdenv.mkDerivation rec {
     ./remove_auto_mknod.patch
   ];
 
-  hardeningDisable = [
-    "format"
-    "pic"
-  ];
+  hardeningDisable = [ "format" "pic" ];
 
   nativeBuildInputs = [ kmod ] ++ kernel.moduleBuildDependencies;
 

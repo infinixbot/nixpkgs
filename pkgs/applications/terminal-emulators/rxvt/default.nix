@@ -19,12 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libtool
-    libX11
-    libXt
-    libXpm
-  ];
+  buildInputs = [ libtool libX11 libXt libXpm ];
 
   configurePhase = ''
     LIBTOOL=${libtool}/bin/libtool ./configure --prefix=$out --enable-everything --enable-smart-resize --enable-256-color

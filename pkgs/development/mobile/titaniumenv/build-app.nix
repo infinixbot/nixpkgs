@@ -66,26 +66,13 @@ let
     fi
   '';
 
-  extraArgs = removeAttrs args [
-    "name"
-    "preRebuild"
-    "androidsdkArgs"
-    "xcodewrapperArgs"
-  ];
+  extraArgs = removeAttrs args [ "name" "preRebuild" "androidsdkArgs" "xcodewrapperArgs" ];
 in
 stdenv.mkDerivation (
   {
     name = lib.replaceStrings [ " " ] [ "" ] name;
 
-    buildInputs = [
-      nodejs
-      titanium
-      alloy
-      python
-      which
-      file
-      jdk
-    ];
+    buildInputs = [ nodejs titanium alloy python which file jdk ];
 
     buildPhase = ''
       ${preBuild}

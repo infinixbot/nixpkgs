@@ -48,10 +48,7 @@ stdenv.mkDerivation rec {
     ./firehol-uname-command.patch
   ];
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-  ];
+  nativeBuildInputs = [ autoconf automake ];
   buildInputs = [
     curl
     iprange

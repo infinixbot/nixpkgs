@@ -104,10 +104,7 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "1wzkvc6ija0cjj5mcyjng5b7hnnc5axidz030c0jh05pgvi4nj7p";
   };
 
-  nativeBuildInputs = [
-    wrapInPlace
-    performInstall
-  ];
+  nativeBuildInputs = [ wrapInPlace performInstall ];
 
   dontUnpack = true;
   dontConfigure = true;
@@ -133,10 +130,7 @@ stdenvNoCC.mkDerivation rec {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     homepage = "http://www.openwatcom.org/";
     license = licenses.watcom;
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
     maintainers = [ maintainers.blitz ];
   };
 }

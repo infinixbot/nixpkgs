@@ -28,12 +28,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-J0fYfSbxL4R1ac6ezM03e1+J8n7+CRSujVU6XDCyPU4=";
 
-  excludedPackages = [
-    "issue-template-gen"
-    "release-tools"
-    "v1"
-    "velero-restic-restore-helper"
-  ];
+  excludedPackages = [ "issue-template-gen" "release-tools" "v1" "velero-restic-restore-helper" ];
 
   doCheck = false; # Tests expect a running cluster see https://github.com/vmware-tanzu/velero/tree/main/test/e2e
   doInstallCheck = true;
@@ -53,9 +48,6 @@ buildGoModule rec {
     homepage = "https://velero.io/";
     changelog = "https://github.com/vmware-tanzu/velero/releases/tag/v${version}";
     license = licenses.asl20;
-    maintainers = [
-      maintainers.mbode
-      maintainers.bryanasdev000
-    ];
+    maintainers = [ maintainers.mbode maintainers.bryanasdev000 ];
   };
 }

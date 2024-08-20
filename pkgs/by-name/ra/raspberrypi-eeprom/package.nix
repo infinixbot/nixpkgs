@@ -71,14 +71,8 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   meta = with lib; {
     description = "Installation scripts and binaries for the closed sourced Raspberry Pi 4 and 5 bootloader EEPROMs";
     homepage = "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#raspberry-pi-4-boot-eeprom";
-    license = with licenses; [
-      bsd3
-      unfreeRedistributableFirmware
-    ];
-    maintainers = with maintainers; [
-      das_j
-      Luflosi
-    ];
+    license = with licenses; [ bsd3 unfreeRedistributableFirmware ];
+    maintainers = with maintainers; [ das_j Luflosi ];
     platforms = platforms.linux;
   };
 })

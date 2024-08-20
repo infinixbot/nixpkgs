@@ -18,10 +18,7 @@ buildDunePackage rec {
     hash = "sha256-SaFFzp4FCjVLdMLH6mNIv3HzJbkXJ5Ojbku258LCfLI=";
   };
 
-  propagatedBuildInputs = [
-    sedlex
-    xtmpl
-  ];
+  propagatedBuildInputs = [ sedlex xtmpl ];
 
   meta = with lib; {
     description = "OCaml library for syntax highlighting";

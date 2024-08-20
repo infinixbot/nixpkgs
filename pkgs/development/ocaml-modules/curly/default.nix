@@ -26,10 +26,7 @@ buildDunePackage rec {
 
   propagatedBuildInputs = [ result ];
   nativeCheckInputs = [ cacert ];
-  checkInputs = [
-    alcotest
-    cohttp-lwt-unix
-  ];
+  checkInputs = [ alcotest cohttp-lwt-unix ];
   # test dependencies are only available for >= 4.08
   # https://github.com/mirage/ca-certs/issues/16
   doCheck =

@@ -13,12 +13,7 @@ stdenv.mkDerivation rec {
   pname = "libdatrie";
   version = "2019-12-20";
 
-  outputs = [
-    "bin"
-    "out"
-    "lib"
-    "dev"
-  ];
+  outputs = [ "bin" "out" "lib" "dev" ];
 
   src = fetchFromGitHub {
     owner = "tlwg";

@@ -97,11 +97,7 @@ lib.warnIf (useHardenedMalloc != null)
           zlib
         ]
         ++ lib.optionals libnotifySupport [ libnotify ]
-        ++ lib.optionals waylandSupport [
-          libxkbcommon
-          libdrm
-          libGL
-        ]
+        ++ lib.optionals waylandSupport [ libxkbcommon libdrm libGL ]
         ++ lib.optionals pipewireSupport [ pipewire ]
         ++ lib.optionals pulseaudioSupport [ libpulseaudio ]
         ++ lib.optionals libvaSupport [ libva ]
@@ -157,12 +153,7 @@ lib.warnIf (useHardenedMalloc != null)
         sources.${stdenv.hostPlatform.system}
           or (throw "unsupported system: ${stdenv.hostPlatform.system}");
 
-      nativeBuildInputs = [
-        autoPatchelfHook
-        copyDesktopItems
-        makeWrapper
-        wrapGAppsHook3
-      ];
+      nativeBuildInputs = [ autoPatchelfHook copyDesktopItems makeWrapper wrapGAppsHook3 ];
       buildInputs = [
         gtk3
         alsa-lib
@@ -181,11 +172,7 @@ lib.warnIf (useHardenedMalloc != null)
           desktopName = "Tor Browser";
           genericName = "Web Browser";
           comment = meta.description;
-          categories = [
-            "Network"
-            "WebBrowser"
-            "Security"
-          ];
+          categories = [ "Network" "WebBrowser" "Security" ];
           mimeTypes = [
             "text/html"
             "text/xml"
@@ -367,21 +354,11 @@ lib.warnIf (useHardenedMalloc != null)
         homepage = "https://www.torproject.org/";
         changelog = "https://gitweb.torproject.org/builders/tor-browser-build.git/plain/projects/tor-browser/Bundle-Data/Docs/ChangeLog.txt?h=maint-${version}";
         platforms = attrNames sources;
-        maintainers = with maintainers; [
-          felschr
-          panicgh
-          joachifm
-          hax404
-        ];
+        maintainers = with maintainers; [ felschr panicgh joachifm hax404 ];
         # MPL2.0+, GPL+, &c.  While it's not entirely clear whether
         # the compound is "libre" in a strict sense (some components place certain
         # restrictions on redistribution), it's free enough for our purposes.
-        license = with licenses; [
-          mpl20
-          lgpl21Plus
-          lgpl3Plus
-          free
-        ];
+        license = with licenses; [ mpl20 lgpl21Plus lgpl3Plus free ];
         sourceProvenance = with sourceTypes; [ binaryNativeCode ];
       };
     }

@@ -233,10 +233,7 @@ in
           freeformType = format.type;
           options = {
             storage-type = mkOption {
-              type = lib.types.enum [
-                "FILE"
-                "SQL"
-              ];
+              type = lib.types.enum [ "FILE" "SQL" ];
               description = "Type of storage config";
               default = "FILE";
             };
@@ -317,9 +314,6 @@ in
   };
 
   meta = {
-    maintainers = with lib.maintainers; [
-      dandellion
-      h7x4
-    ];
+    maintainers = with lib.maintainers; [ dandellion h7x4 ];
   };
 }

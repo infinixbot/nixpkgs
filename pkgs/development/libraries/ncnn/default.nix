@@ -40,13 +40,7 @@ stdenv.mkDerivation rec {
     ++ lib.optionals stdenv.isDarwin [ "-DVulkan_LIBRARY=-lvulkan" ];
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    vulkan-headers
-    vulkan-loader
-    glslang
-    opencv
-    protobuf
-  ];
+  buildInputs = [ vulkan-headers vulkan-loader glslang opencv protobuf ];
 
   meta = with lib; {
     description = "ncnn is a high-performance neural network inference framework optimized for the mobile platform";

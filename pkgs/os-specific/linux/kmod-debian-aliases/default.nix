@@ -22,9 +22,6 @@ stdenv.mkDerivation rec {
     description = "Linux configuration file for modprobe";
     maintainers = with maintainers; [ mathnerd314 ];
     platforms = with platforms; linux;
-    license = with licenses; [
-      gpl2Plus
-      lgpl21Plus
-    ];
+    license = with licenses; [ gpl2Plus lgpl21Plus ];
   };
 }

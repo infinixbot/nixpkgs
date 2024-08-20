@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ readline ] ++ lib.optional stdenv.isDarwin gmp;
 
-  nativeBuildInputs = [
-    pkg-config
-    python3
-  ];
+  nativeBuildInputs = [ pkg-config python3 ];
 
   strictDeps = true;
 

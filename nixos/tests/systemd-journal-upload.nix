@@ -3,10 +3,7 @@ import ./make-test-python.nix (
   {
     name = "systemd-journal-upload";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        minijackson
-        raitobezarius
-      ];
+      maintainers = [ minijackson raitobezarius ];
     };
 
     nodes.server =

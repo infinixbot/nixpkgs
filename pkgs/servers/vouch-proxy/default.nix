@@ -32,10 +32,7 @@ buildGoModule rec {
     description = "SSO and OAuth / OIDC login solution for NGINX using the auth_request module";
     changelog = "https://github.com/vouch/vouch-proxy/blob/v${version}/CHANGELOG.md";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      leona
-      erictapen
-    ];
+    maintainers = with maintainers; [ leona erictapen ];
     platforms = platforms.linux;
     mainProgram = "vouch-proxy";
   };

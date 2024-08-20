@@ -31,12 +31,7 @@
     version = "1.1.0";
   };
   async = {
-    dependencies = [
-      "console"
-      "fiber-annotation"
-      "io-event"
-      "timers"
-    ];
+    dependencies = [ "console" "fiber-annotation" "io-event" "timers" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -47,10 +42,7 @@
     version = "2.6.3";
   };
   console = {
-    dependencies = [
-      "fiber-annotation"
-      "fiber-local"
-    ];
+    dependencies = [ "fiber-annotation" "fiber-local" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -152,10 +144,7 @@
     version = "2.8.4";
   };
   nokogiri = {
-    dependencies = [
-      "mini_portile2"
-      "racc"
-    ];
+    dependencies = [ "mini_portile2" "racc" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -166,13 +155,7 @@
     version = "1.16.0";
   };
   pdf-reader = {
-    dependencies = [
-      "Ascii85"
-      "afm"
-      "hashery"
-      "ruby-rc4"
-      "ttfunk"
-    ];
+    dependencies = [ "Ascii85" "afm" "hashery" "ruby-rc4" "ttfunk" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

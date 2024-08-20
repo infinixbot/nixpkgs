@@ -76,13 +76,7 @@ stdenv.mkDerivation rec {
   '';
 
   preFixup = ''
-    gappsWrapperArgs+=(--prefix PATH : ${
-      lib.makeBinPath [
-        which
-        ffmpeg-full
-        gifski
-      ]
-    })
+    gappsWrapperArgs+=(--prefix PATH : ${lib.makeBinPath [ which ffmpeg-full gifski ]})
   '';
 
   passthru = {

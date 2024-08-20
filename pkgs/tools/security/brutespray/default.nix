@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
   '';
 
   dontBuild = true;
-  nativeBuildInputs = [
-    python3.pkgs.wrapPython
-    makeWrapper
-  ];
+  nativeBuildInputs = [ python3.pkgs.wrapPython makeWrapper ];
   buildInputs = [ python3 ];
 
   installPhase = ''

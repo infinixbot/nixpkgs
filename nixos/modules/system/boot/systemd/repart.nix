@@ -70,15 +70,7 @@ in
       };
 
       partitions = lib.mkOption {
-        type =
-          with lib.types;
-          attrsOf (
-            attrsOf (oneOf [
-              str
-              int
-              bool
-            ])
-          );
+        type = with lib.types; attrsOf (attrsOf (oneOf [ str int bool ]));
         default = { };
         example = {
           "10-root" = {

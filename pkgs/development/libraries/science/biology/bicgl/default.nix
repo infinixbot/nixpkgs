@@ -23,12 +23,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    libminc
-    bicpl
-    libGLU
-    libglut
-  ];
+  buildInputs = [ libminc bicpl libGLU libglut ];
 
   cmakeFlags = [
     "-DLIBMINC_DIR=${libminc}/lib/cmake"

@@ -20,10 +20,7 @@ let
   };
   releaseRev = v: "v${v}";
 
-  packages = [
-    "stalmarck"
-    "stalmarck-tactic"
-  ];
+  packages = [ "stalmarck" "stalmarck-tactic" ];
 
   stalmarck_ =
     package:

@@ -36,11 +36,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-wqJvLvxmNG2nb5P525w25Y8byUUJi24QIHNJomCKeG8=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    libtool
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook libtool pkg-config ];
 
   configureFlags = [
     (lib.enableFeature (withJitterEntropy) "jitterentropy")
@@ -51,26 +47,13 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    [
-      openssl
-      libcap
-    ]
+    [ openssl libcap ]
     ++ lib.optionals stdenv.hostPlatform.isMusl [ argp-standalone ]
     ++ lib.optionals withJitterEntropy [ jitterentropy ]
-    ++ lib.optionals withNistBeacon [
-      curl
-      jansson
-      libxml2
-    ]
-    ++ lib.optionals withPkcs11 [
-      libp11
-      libp11.passthru.openssl
-    ]
+    ++ lib.optionals withNistBeacon [ curl jansson libxml2 ]
+    ++ lib.optionals withPkcs11 [ libp11 libp11.passthru.openssl ]
     ++ lib.optionals withRtlsdr [ rtl-sdr ]
-    ++ lib.optionals withQrypt [
-      curl
-      jansson
-    ];
+    ++ lib.optionals withQrypt [ curl jansson ];
 
   enableParallelBuilding = true;
 
@@ -110,9 +93,6 @@ stdenv.mkDerivation rec {
     changelog = "https://github.com/nhorman/rng-tools/releases/tag/v${version}";
     license = licenses.gpl2Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      johnazoidberg
-      c0bw3b
-    ];
+    maintainers = with maintainers; [ johnazoidberg c0bw3b ];
   };
 }

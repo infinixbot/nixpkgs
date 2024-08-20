@@ -12,10 +12,7 @@ with lib;
     };
 
     state = mkOption {
-      type = types.enum [
-        "MASTER"
-        "BACKUP"
-      ];
+      type = types.enum [ "MASTER" "BACKUP" ];
       default = "BACKUP";
       description = ''
         Initial state. As soon as the other machine(s) come up, an election will
@@ -116,20 +113,14 @@ with lib;
     trackScripts = mkOption {
       type = types.listOf types.str;
       default = [ ];
-      example = [
-        "chk_cmd1"
-        "chk_cmd2"
-      ];
+      example = [ "chk_cmd1" "chk_cmd2" ];
       description = "List of script names to invoke for health tracking.";
     };
 
     trackInterfaces = mkOption {
       type = types.listOf types.str;
       default = [ ];
-      example = [
-        "eth0"
-        "eth1"
-      ];
+      example = [ "eth0" "eth1" ];
       description = "List of network interfaces to monitor for health tracking.";
     };
 

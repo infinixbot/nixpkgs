@@ -31,14 +31,7 @@
 }:
 
 let
-  binPath = lib.makeBinPath [
-    bc
-    coreutils
-    gawk
-    gnused
-    gnugrep
-    which
-  ];
+  binPath = lib.makeBinPath [ bc coreutils gawk gnused gnugrep which ];
 
 in
 stdenv.mkDerivation rec {
@@ -58,10 +51,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    makeWrapper
-  ];
+  nativeBuildInputs = [ pkg-config makeWrapper ];
 
   buildInputs = [
     cups

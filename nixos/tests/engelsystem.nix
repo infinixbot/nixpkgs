@@ -14,10 +14,7 @@ import ./make-test-python.nix (
           domain = "engelsystem";
           createDatabase = true;
         };
-        networking.firewall.allowedTCPPorts = [
-          80
-          443
-        ];
+        networking.firewall.allowedTCPPorts = [ 80 443 ];
         environment.systemPackages = with pkgs; [
           xmlstarlet
           libxml2

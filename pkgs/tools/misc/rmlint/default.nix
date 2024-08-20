@@ -93,10 +93,7 @@ stdenv.mkDerivation rec {
     homepage = "https://rmlint.readthedocs.org";
     platforms = platforms.unix;
     license = licenses.gpl3;
-    maintainers = with maintainers; [
-      aaschmid
-      koral
-    ];
+    maintainers = with maintainers; [ aaschmid koral ];
     mainProgram = "rmlint";
   };
 }

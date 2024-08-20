@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    libmysofa
-    zlib
-  ];
+  buildInputs = [ libmysofa zlib ];
 
   postFixup = ''
     substituteInPlace "''${!outputDev}/lib/pkgconfig/spatialaudio.pc" \

@@ -8,10 +8,7 @@ buildGoModule rec {
   pname = "aws-assume-role";
   version = "0.3.2";
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   src = fetchFromGitHub {
     owner = "remind101";

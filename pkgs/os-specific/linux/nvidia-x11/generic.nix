@@ -188,10 +188,7 @@ let
       ]
     );
 
-    hardeningDisable = [
-      "pic"
-      "format"
-    ];
+    hardeningDisable = [ "pic" "format" ];
 
     dontStrip = true;
     dontPatchELF = true;
@@ -219,11 +216,7 @@ let
             ...
           }@args:
           let
-            args' = builtins.removeAttrs args [
-              "owner"
-              "repo"
-              "rev"
-            ];
+            args' = builtins.removeAttrs args [ "owner" "repo" "rev" ];
             baseUrl = "https://github.com/${owner}/${repo}";
           in
           fetchzip (
@@ -292,10 +285,7 @@ let
         [ "x86_64-linux" ]
         ++ lib.optionals (sha256_32bit != null) [ "i686-linux" ]
         ++ lib.optionals (sha256_aarch64 != null) [ "aarch64-linux" ];
-      maintainers = with maintainers; [
-        kiskae
-        edwtjo
-      ];
+      maintainers = with maintainers; [ kiskae edwtjo ];
       priority = 4; # resolves collision with xorg-server's "lib/xorg/modules/extensions/libglx.so"
       inherit broken;
     };

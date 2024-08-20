@@ -10,19 +10,12 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "programs"
-        "zsh"
-        "enableAutosuggestions"
-      ]
-      [
-        "programs"
-        "zsh"
-        "autosuggestions"
-        "enable"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "programs" "zsh" "enableAutosuggestions" ] [
+      "programs"
+      "zsh"
+      "autosuggestions"
+      "enable"
+    ])
   ];
 
   options.programs.zsh.autosuggestions = {
@@ -37,13 +30,7 @@ in
     };
 
     strategy = lib.mkOption {
-      type = lib.types.listOf (
-        lib.types.enum [
-          "history"
-          "completion"
-          "match_prev_cmd"
-        ]
-      );
+      type = lib.types.listOf (lib.types.enum [ "history" "completion" "match_prev_cmd" ]);
       default = [ "history" ];
       description = ''
         `ZSH_AUTOSUGGEST_STRATEGY` is an array that specifies how suggestions should be generated.

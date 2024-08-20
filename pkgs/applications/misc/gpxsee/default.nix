@@ -78,10 +78,7 @@ stdenv.mkDerivation (finalAttrs: {
       GPXSee is a Qt-based GPS log file viewer and analyzer that supports
       all common GPS log file formats.
     '';
-    maintainers = with lib.maintainers; [
-      womfoo
-      sikmir
-    ];
+    maintainers = with lib.maintainers; [ womfoo sikmir ];
     platforms = lib.platforms.unix;
   };
 })

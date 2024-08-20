@@ -20,10 +20,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-w/TLGJvHVbuv+wrOI+RQnZl3I62QYbqd9W1hcUbz2b0=";
 
-  ldflags = [
-    "-w"
-    "-s"
-  ];
+  ldflags = [ "-w" "-s" ];
 
   postInstall = ''
     installShellCompletion --cmd crawley \

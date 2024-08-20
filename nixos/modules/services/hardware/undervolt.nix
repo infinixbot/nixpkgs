@@ -133,12 +133,7 @@ in
       '';
     };
     p1.window = mkOption {
-      type =
-        with types;
-        nullOr (oneOf [
-          float
-          int
-        ]);
+      type = with types; nullOr (oneOf [ float int ]);
       default = null;
       description = ''
         The P1 Time Window in seconds.
@@ -155,12 +150,7 @@ in
       '';
     };
     p2.window = mkOption {
-      type =
-        with types;
-        nullOr (oneOf [
-          float
-          int
-        ]);
+      type = with types; nullOr (oneOf [ float int ]);
       default = null;
       description = ''
         The P2 Time Window in seconds.
@@ -189,10 +179,7 @@ in
       description = "Intel Undervolting Service";
 
       # Apply undervolt on boot, nixos generation switch and resume
-      wantedBy = [
-        "multi-user.target"
-        "post-resume.target"
-      ];
+      wantedBy = [ "multi-user.target" "post-resume.target" ];
       after = [ "post-resume.target" ]; # Not sure why but it won't work without this
 
       serviceConfig = {

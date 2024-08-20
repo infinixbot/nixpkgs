@@ -31,11 +31,6 @@ else
       mkdir -p $out/bin
       makeWrapper ${cargo}/bin/cargo $out/bin/cargo \
         --set CARGO_AUDITABLE_IGNORE_UNSUPPORTED 1 \
-        --prefix PATH : ${
-          lib.makeBinPath [
-            cargo
-            cargo-auditable
-          ]
-        } \
+        --prefix PATH : ${lib.makeBinPath [ cargo cargo-auditable ]} \
         --add-flags auditable
     ''

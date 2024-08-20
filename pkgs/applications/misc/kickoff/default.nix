@@ -27,14 +27,8 @@ rustPlatform.buildRustPackage rec {
     libxkbcommon
   ];
 
-  buildInputs = [
-    fontconfig
-    libxkbcommon
-  ];
-  nativeBuildInputs = [
-    makeWrapper
-    pkg-config
-  ];
+  buildInputs = [ fontconfig libxkbcommon ];
+  nativeBuildInputs = [ makeWrapper pkg-config ];
 
   postInstall = ''
     wrapProgram "$out/bin/kickoff" --prefix LD_LIBRARY_PATH : "${libPath}"

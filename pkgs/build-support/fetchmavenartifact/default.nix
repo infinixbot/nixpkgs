@@ -64,14 +64,7 @@ let
     else
       map mkJarUrl repos;
   jar = fetchurl (
-    builtins.removeAttrs args [
-      "groupId"
-      "artifactId"
-      "version"
-      "classifier"
-      "repos"
-      "url"
-    ]
+    builtins.removeAttrs args [ "groupId" "artifactId" "version" "classifier" "repos" "url" ]
     // {
       urls = urls_;
       name = "${pname}-${version}.jar";

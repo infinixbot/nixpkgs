@@ -41,10 +41,7 @@ stdenv.mkDerivation rec {
 
   passthru.tests.keepalived = nixosTests.keepalived;
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
 
   configureFlags =
     [

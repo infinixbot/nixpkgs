@@ -35,13 +35,7 @@ stdenv.mkDerivation {
     python3Packages.jinja2
     wayland-scanner
   ];
-  buildInputs = [
-    libxkbcommon
-    mesa
-    pixman
-    wayland
-    xorg.libxcb
-  ];
+  buildInputs = [ libxkbcommon mesa pixman wayland xorg.libxcb ];
 
   preConfigure = ''
     patchShebangs gen-shim.py

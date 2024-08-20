@@ -32,12 +32,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-jtuw8J6M+AEMrZ4FWeAjDX/FquRyHHVsNQVU3zMCTAA=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    texinfo
-    python3
-    makeWrapper
-  ];
+  nativeBuildInputs = [ pkg-config texinfo python3 makeWrapper ];
   buildInputs = [
     libxml2
     readline

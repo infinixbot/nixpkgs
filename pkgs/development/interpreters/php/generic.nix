@@ -92,10 +92,7 @@ let
           }@innerArgs:
           let
             allArgs = args // prevArgs // innerArgs;
-            filteredArgs = builtins.removeAttrs allArgs [
-              "extensions"
-              "extraConfig"
-            ];
+            filteredArgs = builtins.removeAttrs allArgs [ "extensions" "extraConfig" ];
             php = generic filteredArgs;
 
             php-packages =
@@ -271,11 +268,7 @@ let
             ++ lib.optional (!cgiSupport) "--disable-cgi"
             ++ lib.optional (!cliSupport) "--disable-cli"
             ++ lib.optional fpmSupport "--enable-fpm"
-            ++ lib.optionals pearSupport [
-              "--with-pear"
-              "--enable-xml"
-              "--with-libxml"
-            ]
+            ++ lib.optionals pearSupport [ "--with-pear" "--enable-xml" "--with-libxml" ]
             ++ lib.optional pharSupport "--enable-phar"
             ++ lib.optional (!phpdbgSupport) "--disable-phpdbg"
 
@@ -354,23 +347,14 @@ let
 
           separateDebugInfo = true;
 
-          outputs = [
-            "out"
-            "dev"
-          ];
+          outputs = [ "out" "dev" ];
 
           passthru = {
             updateScript =
               let
                 script = writeShellScript "php${lib.versions.major version}${lib.versions.minor version}-update-script" ''
                   set -o errexit
-                  PATH=${
-                    lib.makeBinPath [
-                      common-updater-scripts
-                      curl
-                      jq
-                    ]
-                  }
+                  PATH=${lib.makeBinPath [ common-updater-scripts curl jq ]}
                   new_version=$(curl --silent "https://www.php.net/releases/active" | jq --raw-output '."${lib.versions.major version}"."${lib.versions.majorMinor version}".version')
                   update-source-version "$UPDATE_NIX_ATTR_PATH.unwrapped" "$new_version" "--file=$1"
                 '';
@@ -399,10 +383,7 @@ let
             mainProgram = "php";
             maintainers = teams.php.members;
             platforms = platforms.all;
-            outputsToInstall = [
-              "out"
-              "dev"
-            ];
+            outputsToInstall = [ "out" "dev" ];
           };
         };
       in

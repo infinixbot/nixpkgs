@@ -29,10 +29,7 @@ stdenv.mkDerivation rec {
 
   passthru.updateScript = nix-update-script {
     attrPath = "vgmstream";
-    extraArgs = [
-      "--version-regex"
-      "r(.*)"
-    ];
+    extraArgs = [ "--version-regex" "r(.*)" ];
   };
 
   nativeBuildInputs = [

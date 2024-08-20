@@ -25,11 +25,7 @@ rec {
     pname = "replay-recordreplay";
     version = builtins.head (builtins.match ".*/linux-recordreplay-(.*).tgz" metadata.recordreplay.url);
     nativeBuildInputs = [ autoPatchelfHook ];
-    buildInputs = [
-      stdenv.cc.cc.lib
-      openssl
-      zlib
-    ];
+    buildInputs = [ stdenv.cc.cc.lib openssl zlib ];
 
     src = (fetchzip metadata.recordreplay);
     dontBuild = true;
@@ -54,18 +50,8 @@ rec {
     pname = "replay-io";
     version = builtins.head (builtins.match ".*/linux-gecko-(.*).tar.bz2" metadata.replay.url);
     srcs = fetchurl metadata.replay;
-    nativeBuildInputs = [
-      autoPatchelfHook
-      makeWrapper
-    ];
-    buildInputs = [
-      dbus-glib
-      glib
-      gtk3
-      libX11
-      libXdamage
-      libXt
-    ];
+    nativeBuildInputs = [ autoPatchelfHook makeWrapper ];
+    buildInputs = [ dbus-glib glib gtk3 libX11 libXdamage libXt ];
     installPhase = ''
       runHook preInstall
       mkdir -p $out/opt/replay-io
@@ -99,10 +85,7 @@ rec {
   replay-node = stdenv.mkDerivation rec {
     pname = "replay-node";
     version = builtins.head (builtins.match ".*/linux-node-(.*)" metadata.replay-node.url);
-    nativeBuildInputs = [
-      autoPatchelfHook
-      makeWrapper
-    ];
+    nativeBuildInputs = [ autoPatchelfHook makeWrapper ];
     buildInputs = [ stdenv.cc.cc.lib ];
 
     src = (fetchurl metadata.replay-node);
@@ -143,10 +126,7 @@ rec {
     };
 
     nativeBuildInputs = [ makeWrapper ];
-    buildInputs = [
-      stdenv.cc.cc.lib
-      nodejs
-    ];
+    buildInputs = [ stdenv.cc.cc.lib nodejs ];
     dontBuild = true;
     installPhase = ''
       runHook preInstall

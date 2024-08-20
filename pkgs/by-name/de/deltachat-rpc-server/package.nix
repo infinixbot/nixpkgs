@@ -20,10 +20,7 @@ rustPlatform.buildRustPackage {
     pkg-config
   ];
 
-  cargoBuildFlags = [
-    "--package"
-    "deltachat-rpc-server"
-  ];
+  cargoBuildFlags = [ "--package" "deltachat-rpc-server" ];
 
   doCheck = false;
 

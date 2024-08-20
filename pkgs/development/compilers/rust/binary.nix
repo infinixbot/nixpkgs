@@ -36,10 +36,7 @@ rec {
       sourceProvenance = with sourceTypes; [ binaryNativeCode ];
       description = "Safe, concurrent, practical language";
       maintainers = with maintainers; [ qknight ];
-      license = [
-        licenses.mit
-        licenses.asl20
-      ];
+      license = [ licenses.mit licenses.asl20 ];
     };
 
     nativeBuildInputs = lib.optional (!stdenv.isDarwin) autoPatchelfHook;
@@ -86,10 +83,7 @@ rec {
       sourceProvenance = with sourceTypes; [ binaryNativeCode ];
       description = "Rust package manager";
       maintainers = with maintainers; [ qknight ];
-      license = [
-        licenses.mit
-        licenses.asl20
-      ];
+      license = [ licenses.mit licenses.asl20 ];
     };
 
     nativeBuildInputs = [ makeWrapper ] ++ lib.optional (!stdenv.isDarwin) autoPatchelfHook;

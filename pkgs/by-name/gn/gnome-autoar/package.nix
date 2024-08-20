@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
   pname = "gnome-autoar";
   version = "0.4.4";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/gnome-autoar/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";

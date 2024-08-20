@@ -34,10 +34,7 @@ stdenv.mkDerivation rec {
     sha256 = "11cc8z3pz4gl0mwl2fc701mn4cgx50fybygx0rvs9bhvb0jnphay";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    installShellFiles
-  ];
+  nativeBuildInputs = [ makeWrapper installShellFiles ];
 
   installPhase = ''
     mkdir -p $out/bin
@@ -51,10 +48,7 @@ stdenv.mkDerivation rec {
     mainProgram = "xsos";
     homepage = "https://github.com/ryran/xsos";
     license = licenses.gpl3;
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
     maintainers = [ maintainers.nixinator ];
   };
 }

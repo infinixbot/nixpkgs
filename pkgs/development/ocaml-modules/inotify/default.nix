@@ -20,10 +20,7 @@ buildDunePackage rec {
 
   buildInputs = [ lwt ];
 
-  checkInputs = [
-    ounit2
-    fileutils
-  ];
+  checkInputs = [ ounit2 fileutils ];
 
   doCheck = true;
 

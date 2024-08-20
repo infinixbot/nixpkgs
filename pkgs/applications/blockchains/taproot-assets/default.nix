@@ -17,15 +17,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-IFzYW5vAtBoUC2ebFYnxS/TojQR4kXxQACNbyn2ZkCs=";
 
-  subPackages = [
-    "cmd/tapcli"
-    "cmd/tapd"
-  ];
+  subPackages = [ "cmd/tapcli" "cmd/tapd" ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     description = "Daemon for the Taro protocol specification";

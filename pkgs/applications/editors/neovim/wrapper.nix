@@ -98,25 +98,12 @@ let
         # wrapper with most arguments we need, excluding those that cause problems to
         # generate rplugin.vim, but still required for the final wrapper.
         finalMakeWrapperArgs =
-          [
-            "${neovim-unwrapped}/bin/nvim"
-            "${placeholder "out"}/bin/nvim"
-          ]
-          ++ [
-            "--set"
-            "NVIM_SYSTEM_RPLUGIN_MANIFEST"
-            "${placeholder "out"}/rplugin.vim"
-          ]
-          ++ lib.optionals finalAttrs.wrapRc [
-            "--add-flags"
-            "-u ${writeText "init.lua" rcContent}"
-          ]
+          [ "${neovim-unwrapped}/bin/nvim" "${placeholder "out"}/bin/nvim" ]
+          ++ [ "--set" "NVIM_SYSTEM_RPLUGIN_MANIFEST" "${placeholder "out"}/rplugin.vim" ]
+          ++ lib.optionals finalAttrs.wrapRc [ "--add-flags" "-u ${writeText "init.lua" rcContent}" ]
           ++ finalAttrs.generatedWrapperArgs;
 
-        perlEnv = perl.withPackages (p: [
-          p.NeovimExt
-          p.Appcpanminus
-        ]);
+        perlEnv = perl.withPackages (p: [ p.NeovimExt p.Appcpanminus ]);
 
         pname = "neovim";
         version = lib.getVersion neovim-unwrapped;
@@ -231,10 +218,7 @@ let
 
         preferLocalBuild = true;
 
-        nativeBuildInputs = [
-          makeWrapper
-          lndir
-        ];
+        nativeBuildInputs = [ makeWrapper lndir ];
         passthru = {
           inherit providerLuaRc packpathDirs;
           unwrapped = neovim-unwrapped;

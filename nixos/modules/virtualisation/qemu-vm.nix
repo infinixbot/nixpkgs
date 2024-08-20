@@ -167,12 +167,7 @@ let
         --verbatim-files-from \
         --transform 'flags=rSh;s|/nix/store/||' \
         --files-from ${
-          hostPkgs.closureInfo {
-            rootPaths = [
-              config.system.build.toplevel
-              regInfo
-            ];
-          }
+          hostPkgs.closureInfo { rootPaths = [ config.system.build.toplevel regInfo ]; }
         }/store-paths \
         | ${hostPkgs.erofs-utils}/bin/mkfs.erofs \
           --force-uid=0 \
@@ -329,35 +324,14 @@ in
 {
   imports = [
     ../profiles/qemu-guest.nix
-    (mkRenamedOptionModule
-      [
-        "virtualisation"
-        "pathsInNixDB"
-      ]
-      [
-        "virtualisation"
-        "additionalPaths"
-      ]
-    )
-    (mkRemovedOptionModule
-      [
-        "virtualisation"
-        "bootDevice"
-      ]
+    (mkRenamedOptionModule [ "virtualisation" "pathsInNixDB" ] [ "virtualisation" "additionalPaths" ])
+    (mkRemovedOptionModule [ "virtualisation" "bootDevice" ]
       "This option was renamed to `virtualisation.rootDevice`, as it was incorrectly named and misleading. Take the time to review what you want to do and look at the new options like `virtualisation.{bootLoaderDevice, bootPartition}`, open an issue in case of issues."
     )
-    (mkRemovedOptionModule
-      [
-        "virtualisation"
-        "efiVars"
-      ]
+    (mkRemovedOptionModule [ "virtualisation" "efiVars" ]
       "This option was removed, it is possible to provide a template UEFI variable with `virtualisation.efi.variables` ; if this option is important to you, open an issue"
     )
-    (mkRemovedOptionModule
-      [
-        "virtualisation"
-        "persistBootDevice"
-      ]
+    (mkRemovedOptionModule [ "virtualisation" "persistBootDevice" ]
       "Boot device is always persisted if you use a bootloader through the root disk image ; if this does not work for your usecase, please examine carefully what `virtualisation.{bootDevice, rootDevice, bootPartition}` options offer you and open an issue explaining your need.`"
     )
   ];
@@ -492,12 +466,7 @@ in
             description = "The mount point of the directory inside the virtual machine";
           };
           options.securityModel = mkOption {
-            type = types.enum [
-              "passthrough"
-              "mapped-xattr"
-              "mapped-file"
-              "none"
-            ];
+            type = types.enum [ "passthrough" "mapped-xattr" "mapped-file" "none" ];
             default = "mapped-xattr";
             description = ''
               The security model to use for this share:
@@ -546,10 +515,7 @@ in
       type = types.listOf (
         types.submodule {
           options.from = mkOption {
-            type = types.enum [
-              "host"
-              "guest"
-            ];
+            type = types.enum [ "host" "guest" ];
             default = "host";
             description = ''
               Controls the direction in which the ports are mapped:
@@ -561,10 +527,7 @@ in
             '';
           };
           options.proto = mkOption {
-            type = types.enum [
-              "tcp"
-              "udp"
-            ];
+            type = types.enum [ "tcp" "udp" ];
             default = "tcp";
             description = "The protocol to forward.";
           };
@@ -632,10 +595,7 @@ in
       type = types.listOf types.ints.unsigned;
       default = if config.virtualisation.interfaces == { } then [ 1 ] else [ ];
       defaultText = lib.literalExpression ''if config.virtualisation.interfaces == {} then [ 1 ] else [ ]'';
-      example = [
-        1
-        2
-      ];
+      example = [ 1 2 ];
       description = ''
         Virtual networks to which the VM is connected.  Each
         number «N» in this list causes
@@ -755,10 +715,7 @@ in
         type = types.listOf types.str;
         default =
           let
-            consoles = [
-              "${qemu-common.qemuSerialDevice},115200n8"
-              "tty0"
-            ];
+            consoles = [ "${qemu-common.qemuSerialDevice},115200n8" "tty0" ];
           in
           if cfg.graphics then consoles else reverseList consoles;
         example = [ "console=tty1" ];
@@ -797,11 +754,7 @@ in
       };
 
       diskInterface = mkOption {
-        type = types.enum [
-          "virtio"
-          "scsi"
-          "ide"
-        ];
+        type = types.enum [ "virtio" "scsi" "ide" ];
         default = "virtio";
         example = "scsi";
         description = "The interface used for the virtual hard disks.";

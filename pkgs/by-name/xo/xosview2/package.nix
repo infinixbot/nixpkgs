@@ -14,10 +14,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-kEp6n9KmZ+6sTFyJr1V8Ssq9aZuh69c4U1YIiqvxIxw=";
   };
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   buildInputs = [ libX11 ];
 
@@ -41,10 +38,7 @@ stdenv.mkDerivation (finalAttrs: {
       connect to it on a network, then you can popup an xosview instance and
       monitor what is going on.
     '';
-    license = with lib.licenses; [
-      gpl2
-      bsdOriginal
-    ];
+    license = with lib.licenses; [ gpl2 bsdOriginal ];
     mainProgram = "xosview2";
     maintainers = with lib.maintainers; [ AndersonTorres ];
     inherit (libX11.meta) platforms;

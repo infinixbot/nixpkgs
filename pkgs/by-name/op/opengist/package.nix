@@ -22,10 +22,7 @@ let
     pname = "opengist-frontend";
     inherit version src;
 
-    nativeBuildInputs = [
-      moreutils
-      jq
-    ];
+    nativeBuildInputs = [ moreutils jq ];
 
     # npm complains of "invalid package". shrug. we can give it a version.
     preBuild = ''

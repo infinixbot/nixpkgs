@@ -7,11 +7,7 @@ import ./make-test-python.nix (
     nodes.client =
       { pkgs, ... }:
       {
-        boot.kernelParams = [
-          "audit=0"
-          "apparmor=0"
-          "quiet"
-        ];
+        boot.kernelParams = [ "audit=0" "apparmor=0" "quiet" ];
         networking.firewall.enable = false;
         networking.useDHCP = false;
 

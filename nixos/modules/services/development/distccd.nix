@@ -18,11 +18,7 @@ in
       allowedClients = mkOption {
         type = types.listOf types.str;
         default = [ "127.0.0.1" ];
-        example = [
-          "127.0.0.1"
-          "192.168.0.0/24"
-          "10.0.0.0/24"
-        ];
+        example = [ "127.0.0.1" "192.168.0.0/24" "10.0.0.0/24" ];
         description = ''
           Client IPs which are allowed to connect to distccd in CIDR notation.
 
@@ -41,16 +37,7 @@ in
       };
 
       logLevel = mkOption {
-        type = types.nullOr (
-          types.enum [
-            "critical"
-            "error"
-            "warning"
-            "notice"
-            "info"
-            "debug"
-          ]
-        );
+        type = types.nullOr (types.enum [ "critical" "error" "warning" "notice" "info" "debug" ]);
         default = "warning";
         description = ''
           Set the minimum severity of error that will be included in the log

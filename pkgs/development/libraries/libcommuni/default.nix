@@ -19,28 +19,16 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-9eYJpmjW1J48RD6wVJOHmsAgTbauNeeCrXe076ufq1I=";
   };
 
-  buildInputs = [
-    qtbase
-    qtdeclarative
-  ];
-  nativeBuildInputs = [
-    qmake
-    which
-  ];
+  buildInputs = [ qtbase qtdeclarative ];
+  nativeBuildInputs = [ qmake which ];
 
   enableParallelBuilding = true;
 
   dontUseQmakeConfigure = true;
   configureFlags =
-    [
-      "-config"
-      "release"
-    ]
+    [ "-config" "release" ]
     # Build mixes up dylibs/frameworks if one is not explicitly specified.
-    ++ lib.optionals stdenv.isDarwin [
-      "-config"
-      "qt_framework"
-    ];
+    ++ lib.optionals stdenv.isDarwin [ "-config" "qt_framework" ];
 
   dontWrapQtApps = true;
 

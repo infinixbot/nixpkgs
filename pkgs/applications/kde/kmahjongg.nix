@@ -11,16 +11,8 @@
 
 mkDerivation {
   pname = "kmahjongg";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
-  buildInputs = [
-    kdeclarative
-    libkmahjongg
-    knewstuff
-    libkdegames
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
+  buildInputs = [ kdeclarative libkmahjongg knewstuff libkdegames ];
   meta = {
     description = "Mahjongg solitaire";
     mainProgram = "kmahjongg";

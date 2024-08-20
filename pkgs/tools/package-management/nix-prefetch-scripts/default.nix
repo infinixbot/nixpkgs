@@ -29,15 +29,7 @@ let
       installPhase = ''
         install -vD ${src} $out/bin/$name;
         wrapProgram $out/bin/$name \
-          --prefix PATH : ${
-            lib.makeBinPath (
-              deps
-              ++ [
-                gnused
-                nix
-              ]
-            )
-          } \
+          --prefix PATH : ${lib.makeBinPath (deps ++ [ gnused nix ])} \
           --set HOME /homeless-shelter
       '';
 
@@ -72,13 +64,7 @@ rec {
   nix-prefetch-scripts = buildEnv {
     name = "nix-prefetch-scripts";
 
-    paths = [
-      nix-prefetch-bzr
-      nix-prefetch-cvs
-      nix-prefetch-git
-      nix-prefetch-hg
-      nix-prefetch-svn
-    ];
+    paths = [ nix-prefetch-bzr nix-prefetch-cvs nix-prefetch-git nix-prefetch-hg nix-prefetch-svn ];
 
     meta = with lib; {
       description = "Collection of all the nix-prefetch-* scripts which may be used to obtain source hashes";

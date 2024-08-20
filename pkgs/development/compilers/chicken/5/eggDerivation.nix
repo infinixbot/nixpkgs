@@ -24,10 +24,7 @@ in
   {
     name = "chicken-${name}";
     propagatedBuildInputs = buildInputs;
-    nativeBuildInputs = [
-      chicken
-      makeWrapper
-    ];
+    nativeBuildInputs = [ chicken makeWrapper ];
     buildInputs = [ chicken ];
 
     strictDeps = true;
@@ -64,10 +61,6 @@ in
       inherit (chicken.meta) platforms;
     } // args.meta or { };
   }
-  // builtins.removeAttrs args [
-    "name"
-    "buildInputs"
-    "meta"
-  ]
+  // builtins.removeAttrs args [ "name" "buildInputs" "meta" ]
 )).overrideAttrs
   override

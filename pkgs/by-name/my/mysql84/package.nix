@@ -34,11 +34,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-Vlenjchr8L8iJ+CwX43losRHqBahEv+ib6cAg7y+mBQ=";
   };
 
-  nativeBuildInputs = [
-    bison
-    cmake
-    pkg-config
-  ] ++ lib.optionals (!stdenv.isDarwin) [ rpcsvc-proto ];
+  nativeBuildInputs = [ bison cmake pkg-config ] ++ lib.optionals (!stdenv.isDarwin) [ rpcsvc-proto ];
 
   patches = [
     ./no-force-outline-atomics.patch # Do not force compilers to turn on -moutline-atomics switch
@@ -77,10 +73,7 @@ stdenv.mkDerivation (finalAttrs: {
       darwin.DarwinTools
     ];
 
-  outputs = [
-    "out"
-    "static"
-  ];
+  outputs = [ "out" "static" ];
 
   cmakeFlags = [
     "-DFORCE_UNSUPPORTED_COMPILER=1" # To configure on Darwin.
@@ -118,10 +111,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://www.mysql.com/";
     description = "World's most popular open source database";
     license = licenses.gpl2;
-    maintainers = with maintainers; [
-      orivej
-      shyim
-    ];
+    maintainers = with maintainers; [ orivej shyim ];
     platforms = platforms.unix;
   };
 })

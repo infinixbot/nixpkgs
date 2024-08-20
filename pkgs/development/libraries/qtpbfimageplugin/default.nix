@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ qmake ];
-  buildInputs = [
-    qtbase
-    protobuf
-  ];
+  buildInputs = [ qtbase protobuf ];
 
   dontWrapQtApps = true;
 

@@ -23,10 +23,7 @@ import ../make-test-python.nix (
             sinks = {
               file = {
                 type = "file";
-                inputs = [
-                  "journald"
-                  "vector_logs"
-                ];
+                inputs = [ "journald" "vector_logs" ];
                 path = "/var/lib/vector/logs.log";
                 encoding = {
                   codec = "json";

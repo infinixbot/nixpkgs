@@ -21,12 +21,7 @@ stdenv.mkDerivation (
     version = "3.6";
     inherit (libsepol) se_url;
 
-    outputs = [
-      "bin"
-      "out"
-      "dev"
-      "man"
-    ] ++ lib.optional enablePython "py";
+    outputs = [ "bin" "out" "dev" "man" ] ++ lib.optional enablePython "py";
 
     src = fetchurl {
       url = "${se_url}/${version}/libselinux-${version}.tar.gz";
@@ -60,21 +55,14 @@ stdenv.mkDerivation (
     ];
 
     nativeBuildInputs =
-      [
-        pkg-config
-        python3
-      ]
+      [ pkg-config python3 ]
       ++ lib.optionals enablePython [
         python3Packages.pip
         python3Packages.setuptools
         python3Packages.wheel
         swig
       ];
-    buildInputs = [
-      libsepol
-      pcre2
-      fts
-    ] ++ lib.optionals enablePython [ python3 ];
+    buildInputs = [ libsepol pcre2 fts ] ++ lib.optionals enablePython [ python3 ];
 
     # drop fortify here since package uses it by default, leading to compile error:
     # command-line>:0:0: error: "_FORTIFY_SOURCE" redefined [-Werror]

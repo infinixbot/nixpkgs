@@ -76,10 +76,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/typst/typst";
     license = lib.licenses.asl20;
     mainProgram = "typst";
-    maintainers = with lib.maintainers; [
-      drupol
-      figsoda
-      kanashimia
-    ];
+    maintainers = with lib.maintainers; [ drupol figsoda kanashimia ];
   };
 }

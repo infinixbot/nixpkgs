@@ -7,12 +7,7 @@
 }:
 runCommand "test-neovim-rust-analyzer"
   {
-    nativeBuildInputs = [
-      cargo
-      neovim
-      rust-analyzer
-      rustc
-    ];
+    nativeBuildInputs = [ cargo neovim rust-analyzer rustc ];
 
     testRustSrc = # rust
       ''

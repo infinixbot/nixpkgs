@@ -129,10 +129,7 @@ stdenv.mkDerivation {
   outputHashMode = "flat";
   outputHashAlgo = "sha256";
 
-  nativeBuildInputs = [
-    curl
-    stack
-  ];
+  nativeBuildInputs = [ curl stack ];
 
   impureEnvVars = lib.fetchers.proxyImpureEnvVars;
 

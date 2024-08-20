@@ -53,12 +53,7 @@ stdenv.mkDerivation rec {
       liberate users.
     '';
     homepage = "https://gitlab.com/arpa2/arpa2common";
-    license = with lib.licenses; [
-      bsd2
-      cc-by-sa-40
-      cc0
-      isc
-    ];
+    license = with lib.licenses; [ bsd2 cc-by-sa-40 cc0 isc ];
     maintainers = with lib.maintainers; [ fufexan ];
     platforms = lib.platforms.linux;
   };

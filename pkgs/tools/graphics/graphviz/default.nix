@@ -61,18 +61,8 @@ stdenv.mkDerivation rec {
       pango
       bash
     ]
-    ++ optionals withXorg (
-      with xorg;
-      [
-        libXrender
-        libXaw
-        libXpm
-      ]
-    )
-    ++ optionals stdenv.isDarwin [
-      ApplicationServices
-      Foundation
-    ];
+    ++ optionals withXorg (with xorg; [ libXrender libXaw libXpm ])
+    ++ optionals stdenv.isDarwin [ ApplicationServices Foundation ];
 
   hardeningDisable = [ "fortify" ];
 
@@ -121,9 +111,6 @@ stdenv.mkDerivation rec {
     description = "Graph visualization tools";
     license = licenses.epl10;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      bjornfor
-      raskin
-    ];
+    maintainers = with maintainers; [ bjornfor raskin ];
   };
 }

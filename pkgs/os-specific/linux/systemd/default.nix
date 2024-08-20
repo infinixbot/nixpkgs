@@ -307,10 +307,7 @@ stdenv.mkDerivation (finalAttrs: {
       patchShebangs tools test src/!(rpm|kernel-install|ukify) src/kernel-install/test-kernel-install.sh
     '';
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ (lib.optional (!buildLibsOnly) "man");
+  outputs = [ "out" "dev" ] ++ (lib.optional (!buildLibsOnly) "man");
   separateDebugInfo = true;
 
   hardeningDisable = [
@@ -340,13 +337,7 @@ stdenv.mkDerivation (finalAttrs: {
       docbook_xml_dtd_45
       bash
       (buildPackages.python3Packages.python.withPackages (
-        ps:
-        with ps;
-        [
-          lxml
-          jinja2
-        ]
-        ++ lib.optional withEfi ps.pyelftools
+        ps: with ps; [ lxml jinja2 ] ++ lib.optional withEfi ps.pyelftools
       ))
     ]
     ++ lib.optionals withLibBPF [
@@ -364,22 +355,13 @@ stdenv.mkDerivation (finalAttrs: {
       bashInteractive # for patch shebangs
     ]
 
-    ++ lib.optionals wantGcrypt [
-      libgcrypt
-      libgpg-error
-    ]
+    ++ lib.optionals wantGcrypt [ libgcrypt libgpg-error ]
     ++ lib.optional withTests glib
     ++ lib.optional withAcl acl
     ++ lib.optional withApparmor libapparmor
     ++ lib.optional withAudit audit
     ++ lib.optional wantCurl (lib.getDev curl)
-    ++ lib.optionals withCompression [
-      zlib
-      bzip2
-      lz4
-      xz
-      zstd
-    ]
+    ++ lib.optionals withCompression [ zlib bzip2 lz4 xz zstd ]
     ++ lib.optional withCoredump elfutils
     ++ lib.optional withCryptsetup (lib.getDev cryptsetup.dev)
     ++ lib.optional withKexectools kexec-tools
@@ -390,10 +372,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional withPam pam
     ++ lib.optional withPCRE2 pcre2
     ++ lib.optional withSelinux libselinux
-    ++ lib.optionals withRemote [
-      libmicrohttpd
-      gnutls
-    ]
+    ++ lib.optionals withRemote [ libmicrohttpd gnutls ]
     ++ lib.optionals (withHomed || withCryptsetup) [ p11-kit ]
     ++ lib.optionals (withHomed || withCryptsetup) [ libfido2 ]
     ++ lib.optionals withLibBPF [ libbpf ]
@@ -696,13 +675,7 @@ stdenv.mkDerivation (finalAttrs: {
           ignore ? [ ],
         }:
         let
-          ignore' = lib.concatStringsSep "|" (
-            ignore
-            ++ [
-              "^test"
-              "NEWS"
-            ]
-          );
+          ignore' = lib.concatStringsSep "|" (ignore ++ [ "^test" "NEWS" ]);
         in
         ''
           set +e
@@ -767,11 +740,7 @@ stdenv.mkDerivation (finalAttrs: {
     export DESTDIR=/
   '';
 
-  mesonInstallTags = lib.optionals buildLibsOnly [
-    "devel"
-    "libudev"
-    "libsystemd"
-  ];
+  mesonInstallTags = lib.optionals buildLibsOnly [ "devel" "libudev" "libsystemd" ];
 
   postInstall =
     lib.optionalString (!buildLibsOnly) ''
@@ -911,10 +880,7 @@ stdenv.mkDerivation (finalAttrs: {
       ofl
       publicDomain
     ];
-    maintainers = with lib.maintainers; [
-      flokli
-      kloenk
-    ];
+    maintainers = with lib.maintainers; [ flokli kloenk ];
     platforms = lib.platforms.linux;
     priority = 10;
     badPlatforms = [

@@ -24,17 +24,8 @@ stdenv.mkDerivation {
     sha256 = "sha256-8cqKCNYLLkZXlwrybKUPG6fLd7gmf8zV9tjWoTxAwIY=";
   };
 
-  buildInputs = [
-    libcap
-    zlib
-    libnetfilter_queue
-    libnfnetlink
-  ];
-  nativeBuildInputs = [
-    iptables
-    nftables
-    gawk
-  ];
+  buildInputs = [ libcap zlib libnetfilter_queue libnfnetlink ];
+  nativeBuildInputs = [ iptables nftables gawk ];
 
   buildPhase = ''
     mkdir -p $out/bin

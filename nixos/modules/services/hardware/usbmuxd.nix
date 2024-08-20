@@ -51,10 +51,7 @@ in
       default = pkgs.usbmuxd;
       defaultText = literalExpression "pkgs.usbmuxd";
       description = "Which package to use for the usbmuxd daemon.";
-      relatedPackages = [
-        "usbmuxd"
-        "usbmuxd2"
-      ];
+      relatedPackages = [ "usbmuxd" "usbmuxd2" ];
     };
 
   };

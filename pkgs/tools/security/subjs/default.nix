@@ -17,11 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-Ibsgi2MYvs12E1NJgshAD/S5GTJgLl7C+smfvS+aAfg=";
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X main.AppVersion=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X main.AppVersion=${version}" ];
 
   meta = with lib; {
     description = "Fetcher for Javascript files";

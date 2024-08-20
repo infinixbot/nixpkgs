@@ -40,9 +40,6 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "mdbook-plantuml";
     homepage = "https://github.com/sytsereitsma/mdbook-plantuml";
     license = [ licenses.mit ];
-    maintainers = with maintainers; [
-      jcouyang
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ jcouyang matthiasbeyer ];
   };
 }

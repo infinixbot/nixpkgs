@@ -71,13 +71,7 @@ stdenv.mkDerivation (
       make -C ${engineSourceName} install-engine install-common-mod-files DATA_INSTALL_DIR=$out/lib/${pname}
 
       cp -r ${engineSourceName}/mods/{${
-        lib.concatStringsSep "," (
-          [
-            "common"
-            "modcontent"
-          ]
-          ++ engine.mods
-        )
+        lib.concatStringsSep "," ([ "common" "modcontent" ] ++ engine.mods)
       }} mods/* \
         $out/lib/${pname}/mods/
 

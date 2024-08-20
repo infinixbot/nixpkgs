@@ -28,29 +28,18 @@ stdenv.mkDerivation {
     sha256 = "sha256-uBfECbU2Df/pPpEXXq62S7Ec0YU4lPIsZ8k5UmKD7xQ=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    makeWrapper
-    pkg-config
-    python3
-  ];
+  nativeBuildInputs = [ cmake makeWrapper pkg-config python3 ];
 
-  buildInputs =
-    [
-      glib
-      gst_all_1.gstreamer
-      SDL2
-      SDL2_image
-      SDL2_mixer
-      SDL2_ttf
-      sqlite
-      zlib
-    ]
-    ++ (with gst_all_1; [
-      gst-libav
-      gst-plugins-base
-      gst-plugins-good
-    ]);
+  buildInputs = [
+    glib
+    gst_all_1.gstreamer
+    SDL2
+    SDL2_image
+    SDL2_mixer
+    SDL2_ttf
+    sqlite
+    zlib
+  ] ++ (with gst_all_1; [ gst-libav gst-plugins-base gst-plugins-good ]);
 
   configurePhase = ''
     cmake RetroFE/Source -BRetroFE/Build -DCMAKE_BUILD_TYPE=Release \

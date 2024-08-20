@@ -91,17 +91,11 @@ import ./make-test-python.nix (
               commands = [ "ALL" ];
             }
             {
-              groups = [
-                "barfoo"
-                1337
-              ];
+              groups = [ "barfoo" 1337 ];
               commands = [
                 {
                   command = "ALL";
-                  options = [
-                    "NOPASSWD"
-                    "NOSETENV"
-                  ];
+                  options = [ "NOPASSWD" "NOSETENV" ];
                 }
               ];
             }
@@ -110,10 +104,7 @@ import ./make-test-python.nix (
               commands = [
                 {
                   command = "ALL";
-                  options = [
-                    "NOPASSWD"
-                    "SETENV"
-                  ];
+                  options = [ "NOPASSWD" "SETENV" ];
                 }
               ];
               runAs = "test1:barfoo";

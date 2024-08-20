@@ -45,32 +45,19 @@ stdenv.mkDerivation rec {
     # -pthread gets passed to clang, causing warnings
     ++ lib.optional stdenv.isDarwin "--enable-werror=no";
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoconf automake pkg-config ];
 
-  buildInputs =
-    [
-      zlib
-      freetype
-      libpng
-      libjpeg
-      libwebp
-      libtiff
-      libavif
-    ]
-    ++ lib.optionals withXorg [
-      fontconfig
-      libXpm
-    ];
+  buildInputs = [
+    zlib
+    freetype
+    libpng
+    libjpeg
+    libwebp
+    libtiff
+    libavif
+  ] ++ lib.optionals withXorg [ fontconfig libXpm ];
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-  ];
+  outputs = [ "bin" "dev" "out" ];
 
   postFixup = ''
     moveToOutput "bin/gdlib-config" $dev

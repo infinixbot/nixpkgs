@@ -38,10 +38,7 @@ stdenv.mkDerivation (
     };
 
     strictDeps = true;
-    nativeBuildInputs = [
-      nativeRubyEnv
-      makeBinaryWrapper
-    ];
+    nativeBuildInputs = [ nativeRubyEnv makeBinaryWrapper ];
 
     inherit rubyEnv;
 

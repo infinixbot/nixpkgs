@@ -71,10 +71,7 @@ let
     '';
 
     nativeBuildInputs = [ pythonEnv ];
-    depsBuildBuild = [
-      buildPackages.stdenv.cc
-      buildPackages.bash
-    ];
+    depsBuildBuild = [ buildPackages.stdenv.cc buildPackages.bash ];
     depsHostHost = [ libuuid ];
     strictDeps = true;
 
@@ -88,10 +85,7 @@ let
       + lib.optionalString (stdenv.cc.isGNU) " -Wno-error=stringop-truncation"
       + lib.optionalString (stdenv.isDarwin) " -Wno-error=macro-redefined";
 
-    hardeningDisable = [
-      "format"
-      "fortify"
-    ];
+    hardeningDisable = [ "format" "fortify" ];
 
     installPhase = ''
       mkdir -vp $out
@@ -143,10 +137,7 @@ let
             inherit (edk2) src;
 
             depsBuildBuild = [ buildPackages.stdenv.cc ] ++ attrs.depsBuildBuild or [ ];
-            nativeBuildInputs = [
-              bc
-              pythonEnv
-            ] ++ attrs.nativeBuildInputs or [ ];
+            nativeBuildInputs = [ bc pythonEnv ] ++ attrs.nativeBuildInputs or [ ];
             strictDeps = true;
 
             ${"GCC5_${targetArch}_PREFIX"} = stdenv.cc.targetPrefix;
@@ -175,10 +166,7 @@ let
               runHook postInstall
             '';
           }
-          // removeAttrs attrs [
-            "nativeBuildInputs"
-            "depsBuildBuild"
-          ]
+          // removeAttrs attrs [ "nativeBuildInputs" "depsBuildBuild" ]
         );
     };
   };

@@ -26,24 +26,9 @@ python3Packages.buildPythonApplication {
     meta
     ;
 
-  buildInputs = [
-    libxml2
-    gnuplot
-    libmirage
-    adwaita-icon-theme
-    gdk-pixbuf
-  ];
-  propagatedBuildInputs = with python3Packages; [
-    pygobject3
-    matplotlib
-  ];
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    wrapGAppsHook3
-    intltool
-    gobject-introspection
-  ];
+  buildInputs = [ libxml2 gnuplot libmirage adwaita-icon-theme gdk-pixbuf ];
+  propagatedBuildInputs = with python3Packages; [ pygobject3 matplotlib ];
+  nativeBuildInputs = [ cmake pkg-config wrapGAppsHook3 intltool gobject-introspection ];
 
   pyproject = false;
   dontWrapGApps = true;

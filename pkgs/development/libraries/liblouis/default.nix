@@ -17,12 +17,7 @@ stdenv.mkDerivation (finalAttrs: {
   version = "3.30.0";
 
   outputs =
-    [
-      "out"
-      "dev"
-      "info"
-      "doc"
-    ]
+    [ "out" "dev" "info" "doc" ]
     # configure: WARNING: cannot generate manual pages while cross compiling
     ++ lib.optionals (stdenv.hostPlatform == stdenv.buildPlatform) [ "man" ];
 

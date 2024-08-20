@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-E+2dBNG7wt7AnafvSc7sJ4OC0pD2zZJkdMLy0Bb+wvc=";
   };
 
-  nativeBuildInputs = [
-    imagemagick
-    makeWrapper
-  ];
+  nativeBuildInputs = [ imagemagick makeWrapper ];
 
   buildInputs = [
     libXpm

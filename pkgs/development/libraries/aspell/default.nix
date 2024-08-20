@@ -42,10 +42,7 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [ perl ];
-  buildInputs = [
-    ncurses
-    perl
-  ];
+  buildInputs = [ ncurses perl ];
 
   doCheck = true;
 

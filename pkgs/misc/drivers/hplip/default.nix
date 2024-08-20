@@ -64,12 +64,7 @@ let
     hplipPlatforms.${stdenv.hostPlatform.system}
       or (throw "HPLIP not supported on ${stdenv.hostPlatform.system}");
 
-  pluginArches = [
-    "x86_32"
-    "x86_64"
-    "arm32"
-    "arm64"
-  ];
+  pluginArches = [ "x86_32" "x86_64" "arm32" "arm64" ];
 
 in
 
@@ -127,12 +122,7 @@ python311Packages.buildPythonApplication {
       enum-compat
     ];
 
-  makeWrapperArgs = [
-    "--prefix"
-    "PATH"
-    ":"
-    "${nettools}/bin"
-  ];
+  makeWrapperArgs = [ "--prefix" "PATH" ":" "${nettools}/bin" ];
 
   patches = [
     # HPLIP's getSystemPPDs() function relies on searching for PPDs below common FHS
@@ -330,23 +320,8 @@ python311Packages.buildPythonApplication {
     description = "Print, scan and fax HP drivers for Linux";
     homepage = "https://developers.hp.com/hp-linux-imaging-and-printing";
     downloadPage = "https://sourceforge.net/projects/hplip/files/hplip/";
-    license =
-      if withPlugin then
-        licenses.unfree
-      else
-        with licenses;
-        [
-          mit
-          bsd2
-          gpl2Plus
-        ];
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-      "armv6l-linux"
-      "armv7l-linux"
-      "aarch64-linux"
-    ];
+    license = if withPlugin then licenses.unfree else with licenses; [ mit bsd2 gpl2Plus ];
+    platforms = [ "i686-linux" "x86_64-linux" "armv6l-linux" "armv7l-linux" "aarch64-linux" ];
     maintainers = with maintainers; [ ttuegel ];
   };
 }

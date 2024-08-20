@@ -44,11 +44,7 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://github.com/natecraddock/zf/releases/tag/${finalAttrs.version}";
     license = lib.licenses.mit;
     platforms = lib.platforms.unix;
-    maintainers = with lib.maintainers; [
-      dit7ya
-      figsoda
-      mmlb
-    ];
+    maintainers = with lib.maintainers; [ dit7ya figsoda mmlb ];
     mainProgram = "zf";
   };
 })

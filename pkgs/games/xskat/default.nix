@@ -12,10 +12,7 @@ stdenv.mkDerivation rec {
   version = "4.0";
 
   nativeBuildInputs = [ gccmakedep ];
-  buildInputs = [
-    libX11
-    imake
-  ];
+  buildInputs = [ libX11 imake ];
 
   src = fetchurl {
     url = "https://web.archive.org/web/20220331112433if_/https://www.xskat.de/xskat-${version}.tar.gz";
@@ -30,10 +27,7 @@ stdenv.mkDerivation rec {
       -e "s|.* MANPATH .*|  MANPATH = $out/man|"
   '';
 
-  installTargets = [
-    "install"
-    "install.man"
-  ];
+  installTargets = [ "install" "install.man" ];
 
   meta = with lib; {
     description = "Famous german card game";

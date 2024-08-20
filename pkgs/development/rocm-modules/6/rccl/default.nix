@@ -93,10 +93,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = with lib; {
     description = "ROCm communication collectives library";
     homepage = "https://github.com/ROCm/rccl";
-    license = with licenses; [
-      bsd2
-      bsd3
-    ];
+    license = with licenses; [ bsd2 bsd3 ];
     maintainers = teams.rocm.members;
     platforms = platforms.linux;
     broken =

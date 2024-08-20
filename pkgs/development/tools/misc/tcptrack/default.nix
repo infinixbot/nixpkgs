@@ -28,10 +28,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [
-    ncurses
-    libpcap
-  ];
+  buildInputs = [ ncurses libpcap ];
 
   env.NIX_CFLAGS_COMPILE = "-Wno-error=cpp";
 

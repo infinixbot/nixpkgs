@@ -33,20 +33,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-nEPMJiTeePAmourAksUNqyy5whs+8+qy/qrycfNw2lo=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    scons
-  ];
+  nativeBuildInputs = [ pkg-config scons ];
 
-  buildInputs = [
-    libGLU
-    libGL
-    libpng
-    physfs
-    SDL2
-    SDL2_image
-    SDL2_mixer
-  ];
+  buildInputs = [ libGLU libGL libpng physfs SDL2 SDL2_image SDL2_mixer ];
 
   enableParallelBuilding = true;
 

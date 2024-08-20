@@ -38,9 +38,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/TBS1996/TaleCast";
     license = lib.licenses.mit;
     mainProgram = "talecast";
-    maintainers = with lib.maintainers; [
-      confusedalex
-      getchoo
-    ];
+    maintainers = with lib.maintainers; [ confusedalex getchoo ];
   };
 }

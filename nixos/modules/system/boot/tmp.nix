@@ -7,39 +7,9 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "cleanTmpDir"
-      ]
-      [
-        "boot"
-        "tmp"
-        "cleanOnBoot"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "tmpOnTmpfs"
-      ]
-      [
-        "boot"
-        "tmp"
-        "useTmpfs"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "tmpOnTmpfsSize"
-      ]
-      [
-        "boot"
-        "tmp"
-        "tmpfsSize"
-      ]
-    )
+    (mkRenamedOptionModule [ "boot" "cleanTmpDir" ] [ "boot" "tmp" "cleanOnBoot" ])
+    (mkRenamedOptionModule [ "boot" "tmpOnTmpfs" ] [ "boot" "tmp" "useTmpfs" ])
+    (mkRenamedOptionModule [ "boot" "tmpOnTmpfsSize" ] [ "boot" "tmp" "tmpfsSize" ])
   ];
 
   options = {
@@ -53,10 +23,7 @@ in
       };
 
       tmpfsSize = mkOption {
-        type = types.oneOf [
-          types.str
-          types.types.ints.positive
-        ];
+        type = types.oneOf [ types.str types.types.ints.positive ];
         default = "50%";
         description = ''
           Size of tmpfs in percentage.

@@ -81,11 +81,7 @@ let
       {
         # TODO: ruff does not splice properly in nativeBuildInputs
         depsBuildBuild = [ ruff ];
-        nativeBuildInputs = [
-          python3
-          black
-          mypy
-        ];
+        nativeBuildInputs = [ python3 black mypy ];
       }
       ''
         install ${./amend-repart-definitions.py} $out
@@ -97,10 +93,7 @@ let
       '';
 
   fileSystemToolMapping = {
-    "vfat" = [
-      dosfstools
-      mtools
-    ];
+    "vfat" = [ dosfstools mtools ];
     "ext4" = [ e2fsprogs.bin ];
     "squashfs" = [ squashfsTools ];
     "erofs" = [ erofs-utils ];

@@ -36,9 +36,6 @@ python3.pkgs.buildPythonApplication rec {
     description = "Export your Signal chats to markdown files with attachments";
     platforms = platforms.unix;
     license = licenses.mit;
-    maintainers = with maintainers; [
-      phaer
-      picnoir
-    ];
+    maintainers = with maintainers; [ phaer picnoir ];
   };
 }

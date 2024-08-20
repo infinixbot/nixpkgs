@@ -19,14 +19,8 @@ stdenv.mkDerivation {
     hash = "sha256-uuHgpt7aWqiMTUILm5tAEGGeZrls3g/DdylYQgsfpTw=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    wrapGAppsHook3
-  ];
-  buildInputs = [
-    gtk3
-    libdivsufsort
-  ];
+  nativeBuildInputs = [ pkg-config wrapGAppsHook3 ];
+  buildInputs = [ gtk3 libdivsufsort ];
   patches = [ ./use-system-libdivsufsort.patch ];
   makeFlags = [ "PREFIX=${placeholder "out"}" ];
   buildPhase = ''

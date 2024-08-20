@@ -75,10 +75,7 @@ buildPythonApplication rec {
     description = "Rofi frontend for Bitwarden";
     homepage = "https://github.com/fdw/rofi-rbw";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      equirosa
-      dit7ya
-    ];
+    maintainers = with maintainers; [ equirosa dit7ya ];
     platforms = platforms.linux;
     mainProgram = "rofi-rbw";
   };

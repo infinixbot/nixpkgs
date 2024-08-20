@@ -34,18 +34,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-of8FcuYeLIEQgPmEQt1UqcMT6Bd2l5sCDj0Cia0JbmM=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    wrapGAppsHook3
-    gobject-introspection
-  ];
-  buildInputs = [
-    python
-    ibus
-    gtk3
-    m17n_lib
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config wrapGAppsHook3 gobject-introspection ];
+  buildInputs = [ python ibus gtk3 m17n_lib ];
 
   preFixup = ''
     gappsWrapperArgs+=(--prefix LD_LIBRARY_PATH : "${m17n_lib}/lib")

@@ -29,10 +29,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-9uewZh0GHQAenTcZpLchgFXSt3vOhxLbaepsJIkjTdI=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   propagatedBuildInputs = [
     glib
@@ -77,10 +74,7 @@ stdenv.mkDerivation rec {
       gtk-doc.
     '';
 
-    license = [
-      licenses.gpl2
-      licenses.lgpl2
-    ];
+    license = [ licenses.gpl2 licenses.lgpl2 ];
     platforms = platforms.linux;
     maintainers = teams.cinnamon.members;
   };

@@ -11,18 +11,7 @@ let
   cfg = config.services.localtimed;
 in
 {
-  imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "localtime"
-      ]
-      [
-        "services"
-        "localtimed"
-      ]
-    )
-  ];
+  imports = [ (lib.mkRenamedOptionModule [ "services" "localtime" ] [ "services" "localtimed" ]) ];
 
   options = {
     services.localtimed = {

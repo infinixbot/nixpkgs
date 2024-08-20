@@ -26,13 +26,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-jUh7BxRnB6KePCk1jIvKzXgxSmWdKlQYmxshZZY4SBQ";
   };
 
-  buildInputs = [
-    zlib
-    bzip2
-    json_c
-    botan3
-    sexpp
-  ];
+  buildInputs = [ zlib bzip2 json_c botan3 sexpp ];
 
   patches =
     [
@@ -47,24 +41,13 @@ stdenv.mkDerivation (finalAttrs: {
     "-DSYSTEM_LIBSEXPP=on"
   ];
 
-  nativeBuildInputs = [
-    asciidoctor
-    cmake
-    gnupg
-    gtest
-    pkg-config
-    python3
-  ];
+  nativeBuildInputs = [ asciidoctor cmake gnupg gtest pkg-config python3 ];
 
   # NOTE: check-only inputs should ideally be moved to nativeCheckInputs, but it
   # would fail during buildPhase.
   # nativeCheckInputs = [ gtest python3 ];
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-  ];
+  outputs = [ "out" "lib" "dev" ];
 
   preConfigure = ''
     echo "v${finalAttrs.version}" > version.txt

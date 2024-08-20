@@ -30,11 +30,7 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ tetex ];
   enableParallelBuilding = true;
 
-  makeFlags = [
-    "all"
-    "doc"
-    "CFLAGS=-O2"
-  ];
+  makeFlags = [ "all" "doc" "CFLAGS=-O2" ];
 
   installPhase = ''
     runHook preInstall

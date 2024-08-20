@@ -48,10 +48,7 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  nativeBuildInputs = [
-    gradle
-    makeWrapper
-  ];
+  nativeBuildInputs = [ gradle makeWrapper ];
 
   installPhase = ''
     install -Dm444 build/libs/apksigner.jar -t $out/lib

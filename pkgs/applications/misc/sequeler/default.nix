@@ -51,17 +51,7 @@ stdenv.mkDerivation rec {
     desktop-file-utils
   ];
 
-  buildInputs = [
-    gtk3
-    glib
-    pantheon.granite
-    libgee
-    sqlGda
-    gtksourceview
-    libxml2
-    libsecret
-    libssh2
-  ];
+  buildInputs = [ gtk3 glib pantheon.granite libgee sqlGda gtksourceview libxml2 libsecret libssh2 ];
 
   postPatch = ''
     chmod +x build-aux/meson_post_install.py

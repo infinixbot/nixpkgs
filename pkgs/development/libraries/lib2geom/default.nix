@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
   pname = "lib2geom";
   version = "1.3";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitLab {
     owner = "inkscape";
@@ -102,10 +99,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Easy to use 2D geometry library in C++";
     homepage = "https://gitlab.com/inkscape/lib2geom";
-    license = [
-      licenses.lgpl21Only
-      licenses.mpl11
-    ];
+    license = [ licenses.lgpl21Only licenses.mpl11 ];
     maintainers = with maintainers; [ jtojnar ];
     platforms = platforms.unix;
   };

@@ -29,11 +29,7 @@ mkDerivation {
   meta = with lib; {
     description = "Front end to powerful mathematics and statistics packages";
     homepage = "https://cantor.kde.org/";
-    license = with licenses; [
-      gpl2Only
-      lgpl2Only
-      fdl12Only
-    ];
+    license = with licenses; [ gpl2Only lgpl2Only fdl12Only ];
     maintainers = with maintainers; [ hqurve ];
   };
 }

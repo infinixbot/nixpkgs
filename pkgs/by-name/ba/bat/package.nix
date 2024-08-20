@@ -23,16 +23,9 @@ rustPlatform.buildRustPackage rec {
   };
   cargoHash = "sha256-b7wNWdKQ4QLeCf7bNZRfzT9hD/D/oDglU7Xyb65IrGY=";
 
-  nativeBuildInputs = [
-    pkg-config
-    installShellFiles
-    makeWrapper
-  ];
+  nativeBuildInputs = [ pkg-config installShellFiles makeWrapper ];
 
-  buildInputs = lib.optionals stdenv.isDarwin [
-    libiconv
-    darwin.apple_sdk.frameworks.Security
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ libiconv darwin.apple_sdk.frameworks.Security ];
 
   postInstall = ''
     installManPage $releaseDir/build/bat-*/out/assets/manual/bat.1
@@ -86,10 +79,6 @@ rustPlatform.buildRustPackage rec {
       mit
     ];
     mainProgram = "bat";
-    maintainers = with maintainers; [
-      dywedir
-      zowoq
-      SuperSandro2000
-    ];
+    maintainers = with maintainers; [ dywedir zowoq SuperSandro2000 ];
   };
 }

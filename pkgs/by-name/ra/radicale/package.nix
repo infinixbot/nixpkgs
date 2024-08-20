@@ -53,9 +53,6 @@ python3.pkgs.buildPythonApplication rec {
     changelog = "https://github.com/Kozea/Radicale/blob/${src.rev}/CHANGELOG.md";
     description = "CalDAV and CardDAV server";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      dotlambda
-      erictapen
-    ];
+    maintainers = with maintainers; [ dotlambda erictapen ];
   };
 }

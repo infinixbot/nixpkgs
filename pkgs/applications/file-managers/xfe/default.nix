@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-6hNNda4BKCY9E02uFYJnt0JySNp/is1ZqjFlOwQcRWs=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    intltool
-  ];
+  nativeBuildInputs = [ pkg-config intltool ];
   buildInputs = [
     fox
     gettext

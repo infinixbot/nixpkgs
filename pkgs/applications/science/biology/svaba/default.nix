@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  buildInputs = [
-    zlib
-    bzip2
-    xz
-  ];
+  buildInputs = [ zlib bzip2 xz ];
 
   postPatch = ''
     # Fix gcc-13 build failure due to missing includes

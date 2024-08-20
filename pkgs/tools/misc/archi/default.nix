@@ -87,10 +87,7 @@ stdenv.mkDerivation rec {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.mit;
     platforms = platforms.linux ++ platforms.darwin;
-    maintainers = with maintainers; [
-      earldouglas
-      paumr
-    ];
+    maintainers = with maintainers; [ earldouglas paumr ];
     mainProgram = "Archi";
   };
 }

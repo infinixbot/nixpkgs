@@ -24,10 +24,7 @@ let
   */
   staticdb = symlinkJoin {
     inherit (db) name;
-    paths = with db.overrideAttrs { dontDisableStatic = true; }; [
-      out
-      dev
-    ];
+    paths = with db.overrideAttrs { dontDisableStatic = true; }; [ out dev ];
     postBuild = ''
       rm $out/lib/*.so*
     '';
@@ -54,10 +51,7 @@ let
   };
   ssl = symlinkJoin {
     inherit (openssl) name;
-    paths = with openssl.override { static = true; }; [
-      out
-      dev
-    ];
+    paths = with openssl.override { static = true; }; [ out dev ];
   };
 in
 stdenv.mkDerivation rec {
@@ -76,17 +70,8 @@ stdenv.mkDerivation rec {
     name = "dsniff.tar.gz";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    rpcsvc-proto
-  ];
-  buildInputs = [
-    glib
-    pcap
-    libtirpc
-    libnsl
-    libnl
-  ];
+  nativeBuildInputs = [ autoreconfHook rpcsvc-proto ];
+  buildInputs = [ glib pcap libtirpc libnsl libnl ];
   NIX_CFLAGS_LINK = "-lglib-2.0 -lpthread -ltirpc -lnl-3 -lnl-genl-3";
   env.NIX_CFLAGS_COMPILE = toString [ "-I${libtirpc.dev}/include/tirpc" ];
   postPatch = ''

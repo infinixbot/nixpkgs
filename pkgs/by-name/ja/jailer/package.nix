@@ -29,14 +29,7 @@ stdenv.mkDerivation (finalAttrs: {
     runHook postBuild
   '';
 
-  nativeBuildInputs = [
-    ant
-    jdk
-    stripJavaArchivesHook
-    makeWrapper
-    wrapGAppsHook4
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ ant jdk stripJavaArchivesHook makeWrapper wrapGAppsHook4 copyDesktopItems ];
 
   installPhase = ''
     runHook preInstall

@@ -43,10 +43,7 @@ in
   config = mkIf cfg.enable {
     systemd.services.squeezelite = {
       wantedBy = [ "multi-user.target" ];
-      after = [
-        "network.target"
-        "sound.target"
-      ];
+      after = [ "network.target" "sound.target" ];
       description = "Software Squeezebox emulator";
       serviceConfig = {
         DynamicUser = true;

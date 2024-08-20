@@ -66,9 +66,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/jnsh/arc-theme";
     license = licenses.gpl3Only;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      simonvandel
-      romildo
-    ];
+    maintainers = with maintainers; [ simonvandel romildo ];
   };
 }

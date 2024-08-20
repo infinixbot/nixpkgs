@@ -14,11 +14,7 @@ stdenv.mkDerivation rec {
   pname = "phodav";
   version = "3.0";
 
-  outputs = [
-    "out"
-    "dev"
-    "lib"
-  ];
+  outputs = [ "out" "dev" "lib" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/phodav/${version}/phodav-${version}.tar.xz";

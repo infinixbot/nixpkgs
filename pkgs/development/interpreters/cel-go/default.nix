@@ -23,10 +23,7 @@ buildGoModule rec {
     "main"
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   postInstall = ''
     mv $out/bin/{main,cel-go}

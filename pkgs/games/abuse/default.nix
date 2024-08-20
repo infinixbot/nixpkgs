@@ -38,10 +38,7 @@ stdenv.mkDerivation (finalAttrs: {
       icon = "abuse";
       desktopName = "Abuse";
       comment = "Side-scroller action game that pits you against ruthless alien killers";
-      categories = [
-        "Game"
-        "ActionGame"
-      ];
+      categories = [ "Game" "ActionGame" ];
     })
   ];
 
@@ -58,15 +55,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   env.NIX_CFLAGS_COMPILE = "-I${lib.getDev SDL2}/include/SDL2";
 
-  nativeBuildInputs = [
-    copyDesktopItems
-    cmake
-  ];
-  buildInputs = [
-    SDL2
-    SDL2_mixer
-    freepats
-  ];
+  nativeBuildInputs = [ copyDesktopItems cmake ];
+  buildInputs = [ SDL2 SDL2_mixer freepats ];
 
   meta = {
     description = "Side-scroller action game that pits you against ruthless alien killers";

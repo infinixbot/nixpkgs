@@ -21,20 +21,11 @@ stdenv.mkDerivation rec {
     hash = "sha256-zfrxdrZ1Um52qTRNGJoqZNQuHhK3xM/mKfk0aBLrcjw=";
   };
 
-  nativeBuildInputs = [
-    gfortran
-    meson
-    ninja
-    pkg-config
-    python3
-  ];
+  nativeBuildInputs = [ gfortran meson ninja pkg-config python3 ];
 
   buildInputs = [ mctc-lib ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   postPatch = ''
     patchShebangs --build config/install-mod.py

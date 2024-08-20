@@ -329,13 +329,7 @@ let
         };
 
         poolConfig = mkOption {
-          type =
-            with types;
-            attrsOf (oneOf [
-              str
-              int
-              bool
-            ]);
+          type = with types; attrsOf (oneOf [ str int bool ]);
           default = {
             "pm" = "dynamic";
             "pm.max_children" = 32;
@@ -420,11 +414,7 @@ in
       };
 
       webserver = mkOption {
-        type = types.enum [
-          "httpd"
-          "nginx"
-          "caddy"
-        ];
+        type = types.enum [ "httpd" "nginx" "caddy" ];
         default = "httpd";
         description = ''
           Whether to use apache2 or nginx for virtual host management.

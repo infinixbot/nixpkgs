@@ -9,13 +9,6 @@
 
 qtModule {
   pname = "qt5compat";
-  propagatedBuildInputs = [
-    qtbase
-    qtdeclarative
-  ];
-  buildInputs = [
-    libiconv
-    icu
-    openssl
-  ];
+  propagatedBuildInputs = [ qtbase qtdeclarative ];
+  buildInputs = [ libiconv icu openssl ];
 }

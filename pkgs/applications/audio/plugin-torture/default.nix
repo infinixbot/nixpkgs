@@ -24,15 +24,7 @@ stdenv.mkDerivation {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    boost
-    ladspaH
-    lilv
-    lv2
-    serd
-    sord
-    sratom
-  ];
+  buildInputs = [ boost ladspaH lilv lv2 serd sord sratom ];
 
   installPhase = ''
     mkdir -p $out/bin

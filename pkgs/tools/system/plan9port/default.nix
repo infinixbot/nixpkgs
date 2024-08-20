@@ -50,10 +50,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ ed ];
   buildInputs =
-    [
-      perl
-      which
-    ]
+    [ perl which ]
     ++ (
       if !stdenv.isDarwin then
         [

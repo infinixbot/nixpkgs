@@ -25,19 +25,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-A1A0Ri2OwPyqpx0f5CPJL3zAwo2I/AiRKpmk3r4DeTc=";
   };
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-  ];
-  buildInputs = [
-    docopt_cpp
-    file
-    gumbo
-    mustache-hpp
-    zimlib
-    zlib
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config ];
+  buildInputs = [ docopt_cpp file gumbo mustache-hpp zimlib zlib ];
 
   nativeCheckInputs = [ gtest ];
   doCheck = true;

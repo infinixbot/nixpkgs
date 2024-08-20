@@ -32,20 +32,12 @@ rustPlatform.buildRustPackage {
     };
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    rustPlatform.bindgenHook
-  ];
+  nativeBuildInputs = [ pkg-config rustPlatform.bindgenHook ];
 
   buildInputs =
     lib.optionals stdenv.isLinux [ openssl ]
     ++ lib.optionals stdenv.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        Security
-        CoreFoundation
-        SystemConfiguration
-      ]
+      with darwin.apple_sdk.frameworks; [ Security CoreFoundation SystemConfiguration ]
     );
 
   # The v8 package will try to download a `librusty_v8.a` release at build time to our read-only filesystem

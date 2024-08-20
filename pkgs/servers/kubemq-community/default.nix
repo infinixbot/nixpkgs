@@ -16,11 +16,7 @@ buildGoModule rec {
 
   CGO_ENABLED = 0;
 
-  ldflags = [
-    "-w"
-    "-s"
-    "-X main.version=${version}"
-  ];
+  ldflags = [ "-w" "-s" "-X main.version=${version}" ];
 
   doCheck = false; # grpc tests are flaky
 

@@ -149,10 +149,7 @@ in
       {
         inherit pname version;
 
-        passAsFile = [
-          "package"
-          "packageLock"
-        ];
+        passAsFile = [ "package" "packageLock" ];
 
         package = toJSON packageJSON';
         packageLock = toJSON packageLock';

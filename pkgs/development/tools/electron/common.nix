@@ -136,15 +136,7 @@ in
 
       (
         cd ..
-        PATH=$PATH:${
-          lib.makeBinPath (
-            with pkgsBuildHost;
-            [
-              jq
-              git
-            ]
-          )
-        }
+        PATH=$PATH:${lib.makeBinPath (with pkgsBuildHost; [ jq git ])}
         config=src/electron/patches/config.json
         for entry in $(cat $config | jq -c ".[]")
         do
@@ -270,17 +262,11 @@ in
     homepage = "https://github.com/electron/electron";
     platforms = lib.platforms.linux;
     license = licenses.mit;
-    maintainers = with maintainers; [
-      yayayayaka
-      teutat3s
-    ];
+    maintainers = with maintainers; [ yayayayaka teutat3s ];
     mainProgram = "electron";
-    hydraPlatforms =
-      lib.optionals (!(hasInfix "alpha" info.version) && !(hasInfix "beta" info.version))
-        [
-          "aarch64-linux"
-          "x86_64-linux"
-        ];
+    hydraPlatforms = lib.optionals (
+      !(hasInfix "alpha" info.version) && !(hasInfix "beta" info.version)
+    ) [ "aarch64-linux" "x86_64-linux" ];
     timeout = 172800; # 48 hours (increased from the Hydra default of 10h)
   };
 })

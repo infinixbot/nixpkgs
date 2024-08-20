@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-9UsQtWOXB1yYofGS4rMIF+ISWBsJKd0DBOFfqOr1n5Y=";
   };
 
-  nativeBuildInputs = [
-    itstool
-    pkg-config
-    (lib.getBin libxml2)
-  ];
+  nativeBuildInputs = [ itstool pkg-config (lib.getBin libxml2) ];
   buildInputs = [
     libtool
     gtk3

@@ -20,10 +20,7 @@ buildPythonPackage rec {
   };
 
   build-system = [ poetry-core ];
-  dependencies = [
-    dahlia
-    ixia
-  ];
+  dependencies = [ dahlia ixia ];
 
   pythonImportsCheck = [ "oddsprout" ];
 

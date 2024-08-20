@@ -71,10 +71,7 @@ stdenv.mkDerivation (finalAttrs: {
 
     ESBUILD_BINARY_PATH = "${lib.getExe esbuild-20-2}";
 
-    nativeBuildInputs = [
-      nodejs
-      pnpm.configHook
-    ];
+    nativeBuildInputs = [ nodejs pnpm.configHook ];
 
     buildPhase = ''
       runHook preBuild
@@ -108,15 +105,7 @@ stdenv.mkDerivation (finalAttrs: {
     rustPlatform.cargoSetupHook
   ];
 
-  buildInputs = [
-    cairo
-    gdk-pixbuf
-    gobject-introspection
-    libsoup
-    openssl
-    pango
-    webkitgtk
-  ];
+  buildInputs = [ cairo gdk-pixbuf gobject-introspection libsoup openssl pango webkitgtk ];
 
   env = {
     OPENSSL_NO_VENDOR = 1;

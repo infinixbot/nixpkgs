@@ -135,9 +135,6 @@ stdenv.mkDerivation rec {
     license = licenses.mit;
     platforms = platforms.unix;
     mainProgram = "mold";
-    maintainers = with maintainers; [
-      azahi
-      paveloom
-    ];
+    maintainers = with maintainers; [ azahi paveloom ];
   };
 }

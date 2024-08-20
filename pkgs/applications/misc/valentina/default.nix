@@ -27,18 +27,9 @@ stdenv.mkDerivation rec {
       --replace '$$[QT_INSTALL_BINS]/$$LRELEASE' '${lib.getDev qttools}/bin/lrelease'
   '';
 
-  nativeBuildInputs = [
-    qmake
-    qttools
-    wrapQtAppsHook
-    installShellFiles
-    autoPatchelfHook
-  ];
+  nativeBuildInputs = [ qmake qttools wrapQtAppsHook installShellFiles autoPatchelfHook ];
 
-  buildInputs = [
-    qtsvg
-    qtxmlpatterns
-  ];
+  buildInputs = [ qtsvg qtxmlpatterns ];
 
   qmakeFlags = [
     "-r"

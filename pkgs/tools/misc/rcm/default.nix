@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/thoughtbot/rcm";
     description = "Management Suite for Dotfiles";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      malyn
-      AndersonTorres
-    ];
+    maintainers = with maintainers; [ malyn AndersonTorres ];
     platforms = with platforms; unix;
   };
 }

@@ -27,10 +27,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   buildInputs = lib.optionals withNode [ nodejs ];
 
-  nativeBuildInputs = [
-    installShellFiles
-    nodejs
-  ];
+  nativeBuildInputs = [ installShellFiles nodejs ];
 
   installPhase = ''
     runHook preInstall

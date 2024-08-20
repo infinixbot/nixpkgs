@@ -82,10 +82,7 @@ buildGoModule {
         fi
       '';
     in
-    [
-      fakeGit
-      mage
-    ];
+    [ fakeGit mage ];
 
   vendorHash = "sha256-oOa9qTy5jNYq05Tbp9hI4L0OBtKtglhk6Uz380nZH1Y=";
 

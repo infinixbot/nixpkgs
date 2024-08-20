@@ -7,9 +7,5 @@
 
 qtModule {
   pname = "qtlocation";
-  propagatedBuildInputs = [
-    qtbase
-    qtdeclarative
-    qtpositioning
-  ];
+  propagatedBuildInputs = [ qtbase qtdeclarative qtpositioning ];
 }

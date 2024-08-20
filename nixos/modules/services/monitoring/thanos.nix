@@ -161,19 +161,9 @@ let
 
     log = {
 
-      log.level =
-        mkParamDef
-          (types.enum [
-            "debug"
-            "info"
-            "warn"
-            "error"
-            "fatal"
-          ])
-          "info"
-          ''
-            Log filtering level.
-          '';
+      log.level = mkParamDef (types.enum [ "debug" "info" "warn" "error" "fatal" ]) "info" ''
+        Log filtering level.
+      '';
 
       log.format = mkParam types.str ''
         Log format to use.
@@ -829,10 +819,7 @@ in
       ];
       systemd.services.thanos-sidecar = {
         wantedBy = [ "multi-user.target" ];
-        after = [
-          "network.target"
-          "prometheus.service"
-        ];
+        after = [ "network.target" "prometheus.service" ];
         serviceConfig = {
           User = "prometheus";
           Restart = "always";

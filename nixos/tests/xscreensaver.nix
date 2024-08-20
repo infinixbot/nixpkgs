@@ -2,19 +2,13 @@ import ./make-test-python.nix (
   { pkgs, lib, ... }:
   {
     name = "pass-secret-service";
-    meta.maintainers = with lib.maintainers; [
-      vancluever
-      AndersonTorres
-    ];
+    meta.maintainers = with lib.maintainers; [ vancluever AndersonTorres ];
 
     nodes = {
       ok =
         { nodes, pkgs, ... }:
         {
-          imports = [
-            ./common/x11.nix
-            ./common/user-account.nix
-          ];
+          imports = [ ./common/x11.nix ./common/user-account.nix ];
           test-support.displayManager.auto.user = "alice";
           services.xscreensaver.enable = true;
         };
@@ -22,10 +16,7 @@ import ./make-test-python.nix (
       empty_wrapperPrefix =
         { nodes, pkgs, ... }:
         {
-          imports = [
-            ./common/x11.nix
-            ./common/user-account.nix
-          ];
+          imports = [ ./common/x11.nix ./common/user-account.nix ];
           test-support.displayManager.auto.user = "alice";
           services.xscreensaver.enable = true;
           nixpkgs.overlays = [
@@ -40,10 +31,7 @@ import ./make-test-python.nix (
       bad_wrapperPrefix =
         { nodes, pkgs, ... }:
         {
-          imports = [
-            ./common/x11.nix
-            ./common/user-account.nix
-          ];
+          imports = [ ./common/x11.nix ./common/user-account.nix ];
           test-support.displayManager.auto.user = "alice";
           services.xscreensaver.enable = true;
           nixpkgs.overlays = [

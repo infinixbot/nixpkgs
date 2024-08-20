@@ -42,14 +42,7 @@ in
             description = "Profile Sync daemon";
             wants = [ "psd-resync.service" ];
             wantedBy = [ "default.target" ];
-            path = with pkgs; [
-              rsync
-              kmod
-              gawk
-              nettools
-              util-linux
-              profile-sync-daemon
-            ];
+            path = with pkgs; [ rsync kmod gawk nettools util-linux profile-sync-daemon ];
             unitConfig = {
               RequiresMountsFor = [ "/home/" ];
             };
@@ -68,14 +61,7 @@ in
             wants = [ "psd-resync.timer" ];
             partOf = [ "psd.service" ];
             wantedBy = [ "default.target" ];
-            path = with pkgs; [
-              rsync
-              kmod
-              gawk
-              nettools
-              util-linux
-              profile-sync-daemon
-            ];
+            path = with pkgs; [ rsync kmod gawk nettools util-linux profile-sync-daemon ];
             serviceConfig = {
               Type = "oneshot";
               ExecStart = "${pkgs.profile-sync-daemon}/bin/profile-sync-daemon resync";
@@ -85,10 +71,7 @@ in
 
         timers.psd-resync = {
           description = "Timer for profile sync daemon - ${cfg.resyncTimer}";
-          partOf = [
-            "psd-resync.service"
-            "psd.service"
-          ];
+          partOf = [ "psd-resync.service" "psd.service" ];
 
           timerConfig = {
             OnUnitActiveSec = "${cfg.resyncTimer}";

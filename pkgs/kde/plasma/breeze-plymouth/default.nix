@@ -38,13 +38,9 @@ mkKdeDerivation {
   # FIXME(later): discuss with upstream
   patches = [ ./install-paths.patch ];
 
-  extraNativeBuildInputs =
-    [ pkg-config ]
-    ++ lib.optionals (logoFile != null) [
-      imagemagick
-      netpbm
-      perl
-    ];
+  extraNativeBuildInputs = [
+    pkg-config
+  ] ++ lib.optionals (logoFile != null) [ imagemagick netpbm perl ];
   extraBuildInputs = [ plymouth ];
 
   extraCmakeFlags =

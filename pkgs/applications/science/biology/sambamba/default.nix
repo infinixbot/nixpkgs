@@ -21,15 +21,8 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    which
-    python3
-    ldc
-  ];
-  buildInputs = [
-    zlib
-    lz4
-  ];
+  nativeBuildInputs = [ which python3 ldc ];
+  buildInputs = [ zlib lz4 ];
 
   buildFlags = [
     "CC=${stdenv.cc.targetPrefix}cc"

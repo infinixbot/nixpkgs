@@ -20,16 +20,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-0+NYbVMIUarLppBZu6mtyGd+2fvkjEUq0TX7urBq3XI=";
 
-  buildInputs = [
-    gmp
-    mpfr
-    libmpc
-  ];
+  buildInputs = [ gmp mpfr libmpc ];
 
-  outputs = [
-    "out"
-    "lib"
-  ];
+  outputs = [ "out" "lib" ];
 
   postInstall = ''
     moveToOutput "lib" "$lib"
@@ -46,10 +39,7 @@ rustPlatform.buildRustPackage rec {
       variables, functions, derivation, integration, and complex numbers
     '';
     license = licenses.mit;
-    maintainers = with maintainers; [
-      figsoda
-      lovesegfault
-    ];
+    maintainers = with maintainers; [ figsoda lovesegfault ];
     mainProgram = "kalker";
   };
 }

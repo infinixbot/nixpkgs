@@ -42,10 +42,7 @@ symlinkJoin {
 
     homepage = "https://dotcolon.net/";
 
-    license = with lib.licenses; [
-      cc0
-      ofl
-    ];
+    license = with lib.licenses; [ cc0 ofl ];
 
     platforms = lib.platforms.all;
     maintainers = with lib.maintainers; [ minijackson ];

@@ -7,11 +7,7 @@
 }:
 
 let
-  perlLibs = with perlPackages; [
-    NetDBus
-    XMLTwig
-    XMLParser
-  ];
+  perlLibs = with perlPackages; [ NetDBus XMLTwig XMLParser ];
 in
 stdenv.mkDerivation {
   pname = "hsphfpd";

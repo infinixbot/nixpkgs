@@ -45,9 +45,6 @@ buildPythonPackage rec {
     homepage = "https://git.sr.ht/~sircmpwn/scm.sr.ht";
     description = "Shared support code for sr.ht source control services";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [
-      eadwu
-      christoph-heiss
-    ];
+    maintainers = with maintainers; [ eadwu christoph-heiss ];
   };
 }

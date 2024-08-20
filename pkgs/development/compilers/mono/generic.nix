@@ -56,20 +56,15 @@ stdenv.mkDerivation rec {
     which
     gnumake42
   ];
-  buildInputs =
-    [
-      glib
-      gettext
-      libgdiplus
-      libX11
-      ncurses
-      zlib
-      bash
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      Foundation
-      libobjc
-    ];
+  buildInputs = [
+    glib
+    gettext
+    libgdiplus
+    libX11
+    ncurses
+    zlib
+    bash
+  ] ++ lib.optionals stdenv.isDarwin [ Foundation libobjc ];
 
   configureFlags =
     [
@@ -133,10 +128,7 @@ stdenv.mkDerivation rec {
     homepage = "https://mono-project.com/";
     description = "Cross platform, open source .NET development framework";
     platforms = with platforms; darwin ++ linux;
-    maintainers = with maintainers; [
-      thoughtpolice
-      obadz
-    ];
+    maintainers = with maintainers; [ thoughtpolice obadz ];
     license = with licenses; [
       # runtime, compilers, tools and most class libraries licensed
       mit

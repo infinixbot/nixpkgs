@@ -7,10 +7,7 @@
 
 let
   compileFlags = lib.concatStringsSep " " (
-    [
-      "-O3"
-      "-DNDEBUG"
-    ]
+    [ "-O3" "-DNDEBUG" ]
     ++ lib.optional (stdenv.hostPlatform.isUnix) "-Dunix -pthread"
     ++ lib.optional (!stdenv.hostPlatform.isx86) "-DNOJIT"
   );

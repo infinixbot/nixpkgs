@@ -18,10 +18,7 @@ import ./make-test-python.nix (
   {
     name = "btrbk-doas";
     meta = with pkgs.lib; {
-      maintainers = with maintainers; [
-        symphorien
-        tu-maurice
-      ];
+      maintainers = with maintainers; [ symphorien tu-maurice ];
     };
 
     nodes = {
@@ -72,12 +69,7 @@ import ./make-test-python.nix (
             sshAccess = [
               {
                 key = publicKey;
-                roles = [
-                  "source"
-                  "send"
-                  "info"
-                  "delete"
-                ];
+                roles = [ "source" "send" "info" "delete" ];
               }
             ];
             instances = {

@@ -51,13 +51,7 @@ appimageTools.wrapType2 {
     license = lib.licenses.gpl3Only;
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
     mainProgram = "beekeeper-studio";
-    maintainers = with lib.maintainers; [
-      milogert
-      alexnortung
-    ];
-    platforms = [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
+    maintainers = with lib.maintainers; [ milogert alexnortung ];
+    platforms = [ "aarch64-linux" "x86_64-linux" ];
   };
 }

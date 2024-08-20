@@ -15,10 +15,7 @@
 
 mkDerivation {
   pname = "kmousetool";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     ki18n
     kiconthemes
@@ -33,10 +30,7 @@ mkDerivation {
     homepage = "https://github.com/KDE/kmousetool";
     description = "Program that clicks the mouse for you";
     mainProgram = "kmousetool";
-    license = with lib.licenses; [
-      gpl2Plus
-      fdl12Plus
-    ];
+    license = with lib.licenses; [ gpl2Plus fdl12Plus ];
     maintainers = [ lib.maintainers.jayesh-bhoot ];
   };
 }

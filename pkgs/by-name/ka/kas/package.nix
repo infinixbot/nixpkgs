@@ -17,13 +17,7 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-NjNPcCqmjFeydTgNdN8QRrFG5Mys2jL4I8TiznO2rSA=";
   };
 
-  propagatedBuildInputs = with python3.pkgs; [
-    setuptools
-    kconfiglib
-    jsonschema
-    distro
-    pyyaml
-  ];
+  propagatedBuildInputs = with python3.pkgs; [ setuptools kconfiglib jsonschema distro pyyaml ];
 
   # Tests require network as they try to clone repos
   doCheck = false;

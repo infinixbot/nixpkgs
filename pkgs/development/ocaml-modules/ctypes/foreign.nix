@@ -14,15 +14,9 @@ buildDunePackage rec {
 
   buildInputs = [ dune-configurator ];
 
-  propagatedBuildInputs = [
-    ctypes
-    libffi
-  ];
+  propagatedBuildInputs = [ ctypes libffi ];
 
-  checkInputs = [
-    ounit2
-    lwt
-  ];
+  checkInputs = [ ounit2 lwt ];
 
   meta = ctypes.meta // {
     description = "Dynamic access to foreign C libraries using Ctypes";

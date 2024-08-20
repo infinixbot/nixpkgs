@@ -16,15 +16,7 @@ let
 
   valueType =
     with types;
-    oneOf [
-      int
-      str
-      bool
-      path
-    ]
-    // {
-      description = "setting type (integer, string, bool or path)";
-    };
+    oneOf [ int str bool path ] // { description = "setting type (integer, string, bool or path)"; };
 
   configType =
     with types;

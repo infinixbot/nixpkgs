@@ -61,11 +61,7 @@ let
           desktopName = mainProgram;
           icon = "pianoteq";
           comment = meta.description;
-          categories = [
-            "AudioVideo"
-            "Audio"
-            "Recorder"
-          ];
+          categories = [ "AudioVideo" "Audio" "Recorder" ];
           startupNotify = false;
           inherit startupWMClass;
         })
@@ -110,14 +106,8 @@ let
         description = "Software synthesizer that features real-time MIDI-control of digital physically modeled pianos and related instruments";
         license = licenses.unfree;
         inherit mainProgram;
-        platforms = [
-          "x86_64-linux"
-          "aarch64-linux"
-        ];
-        maintainers = with maintainers; [
-          mausch
-          ners
-        ];
+        platforms = [ "x86_64-linux" "aarch64-linux" ];
+        maintainers = with maintainers; [ mausch ners ];
       };
     };
 
@@ -206,10 +196,7 @@ let
     fetchWithCurlScript {
       inherit name hash;
 
-      impureEnvVars = [
-        "NIX_MODARTT_USERNAME"
-        "NIX_MODARTT_PASSWORD"
-      ];
+      impureEnvVars = [ "NIX_MODARTT_USERNAME" "NIX_MODARTT_PASSWORD" ];
 
       script = ''
         if [ -z "''${NIX_MODARTT_USERNAME}" -o -z "''${NIX_MODARTT_PASSWORD}" ]; then

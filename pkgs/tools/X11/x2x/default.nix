@@ -21,16 +21,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-FUl2z/Yz9uZlUu79LHdsXZ6hAwSlqwFV35N+GYDNvlQ=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
-  buildInputs = [
-    libX11
-    libXtst
-    libXext
-    libXi
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
+  buildInputs = [ libX11 libXtst libXext libXi ];
 
   meta = with lib; {
     description = "Allows the keyboard, mouse on one X display to be used to control another X display";

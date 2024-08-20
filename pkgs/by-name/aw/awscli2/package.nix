@@ -171,10 +171,7 @@ py.pkgs.buildPythonApplication rec {
     python = py; # for aws_shell
     updateScript = nix-update-script {
       # Excludes 1.x versions from the Github tags list
-      extraArgs = [
-        "--version-regex"
-        "^(2\.(.*))"
-      ];
+      extraArgs = [ "--version-regex" "^(2\.(.*))" ];
     };
     tests.version = testers.testVersion {
       package = awscli2;
@@ -188,13 +185,7 @@ py.pkgs.buildPythonApplication rec {
     homepage = "https://aws.amazon.com/cli/";
     changelog = "https://github.com/aws/aws-cli/blob/${version}/CHANGELOG.rst";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      bhipple
-      davegallant
-      bryanasdev000
-      devusb
-      anthonyroussel
-    ];
+    maintainers = with maintainers; [ bhipple davegallant bryanasdev000 devusb anthonyroussel ];
     mainProgram = "aws";
   };
 }

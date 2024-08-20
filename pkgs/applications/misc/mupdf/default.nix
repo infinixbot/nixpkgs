@@ -109,58 +109,21 @@ stdenv.mkDerivation rec {
       python3.pkgs.setuptools
       python3.pkgs.libclang
     ]
-    ++ lib.optionals (enablePython) [
-      which
-      swig
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      fixDarwinDylibNames
-      xcbuild
-    ];
+    ++ lib.optionals (enablePython) [ which swig ]
+    ++ lib.optionals stdenv.isDarwin [ fixDarwinDylibNames xcbuild ];
 
   buildInputs =
-    [
-      freetype
-      harfbuzz
-      openjpeg
-      jbig2dec
-      libjpeg
-      gumbo
-    ]
-    ++ lib.optionals enableX11 [
-      libX11
-      libXext
-      libXi
-      libXrandr
-    ]
-    ++ lib.optionals enableCurl [
-      curl
-      openssl
-    ]
+    [ freetype harfbuzz openjpeg jbig2dec libjpeg gumbo ]
+    ++ lib.optionals enableX11 [ libX11 libXext libXi libXrandr ]
+    ++ lib.optionals enableCurl [ curl openssl ]
     ++ lib.optionals enableGL (
       if stdenv.isDarwin then
-        with darwin.apple_sdk.frameworks;
-        [
-          GLUT
-          OpenGL
-        ]
+        with darwin.apple_sdk.frameworks; [ GLUT OpenGL ]
       else
-        [
-          freeglut-mupdf
-          libGLU
-        ]
+        [ freeglut-mupdf libGLU ]
     )
-    ++ lib.optionals enableOcr [
-      leptonica
-      tesseract
-    ];
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "man"
-    "doc"
-  ];
+    ++ lib.optionals enableOcr [ leptonica tesseract ];
+  outputs = [ "bin" "dev" "out" "man" "doc" ];
 
   preConfigure = ''
     # Don't remove mujs because upstream version is incompatible
@@ -189,10 +152,7 @@ stdenv.mkDerivation rec {
         "application/x-cbz"
         "application/x-pdf"
       ];
-      categories = [
-        "Graphics"
-        "Viewer"
-      ];
+      categories = [ "Graphics" "Viewer" ];
       keywords = [
         "mupdf"
         "comic"

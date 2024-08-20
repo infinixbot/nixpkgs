@@ -287,19 +287,7 @@ assert threadsCross != { } -> stdenv.targetPlatform.isWindows;
 assert reproducibleBuild -> profiledCompiler == false;
 
 # We need all these X libraries when building AWT with GTK.
-assert
-  !atLeast7
-  -> (
-    x11Support
-    ->
-      (filter (x: x == null) (
-        [
-          gtk2
-          libart_lgpl
-        ]
-        ++ xlibs
-      )) == [ ]
-  );
+assert !atLeast7 -> (x11Support -> (filter (x: x == null) ([ gtk2 libart_lgpl ] ++ xlibs)) == [ ]);
 
 pipe
   ((callFile ./common/builder.nix { }) (
@@ -338,27 +326,13 @@ pipe
 
       outputs =
         if atLeast7 then
-          [
-            "out"
-            "man"
-            "info"
-          ]
-          ++ optional (!langJit) "lib"
+          [ "out" "man" "info" ] ++ optional (!langJit) "lib"
         else if
           atLeast49 && (langJava || langGo || (if atLeast6 then langJit else targetPlatform.isDarwin))
         then
-          [
-            "out"
-            "man"
-            "info"
-          ]
+          [ "out" "man" "info" ]
         else
-          [
-            "out"
-            "lib"
-            "man"
-            "info"
-          ];
+          [ "out" "lib" "man" "info" ];
 
       setOutputFlags = false;
 
@@ -445,11 +419,7 @@ pipe
 
       dontDisableStatic = true;
 
-      configurePlatforms = [
-        "build"
-        "host"
-        "target"
-      ];
+      configurePlatforms = [ "build" "host" "target" ];
 
       configureFlags =
         (callFile ./common/configure-flags.nix { })
@@ -512,10 +482,7 @@ pipe
               ++ optional (zlib != null) zlib
               ++ optional langJava boehmgc
               ++ optionals javaAwtGtk xlibs
-              ++ optionals javaAwtGtk [
-                gmp
-                mpfr
-              ]
+              ++ optionals javaAwtGtk [ gmp mpfr ]
             )
           );
 
@@ -524,10 +491,7 @@ pipe
               optional (zlib != null) zlib
               ++ optional langJava boehmgc
               ++ optionals javaAwtGtk xlibs
-              ++ optionals javaAwtGtk [
-                gmp
-                mpfr
-              ]
+              ++ optionals javaAwtGtk [ gmp mpfr ]
             )
           );
 
@@ -571,18 +535,12 @@ pipe
           optional is48 "stackprotector"
           ++ optional ((targetPlatform.isAarch64 && !atLeast9) || !atLeast8) "stackclashprotection"
           ++ optional (!atLeast11) "zerocallusedregs"
-          ++ optionals (!atLeast12) [
-            "fortify3"
-            "trivialautovarinit"
-          ]
+          ++ optionals (!atLeast12) [ "fortify3" "trivialautovarinit" ]
           ++ optional (
             !(atLeast8 && targetPlatform.isLinux && targetPlatform.isx86_64 && targetPlatform.libc == "glibc")
           ) "shadowstack"
           ++ optional (!(atLeast9 && targetPlatform.isLinux && targetPlatform.isAarch64)) "pacret"
-          ++ optionals (langFortran) [
-            "fortify"
-            "format"
-          ];
+          ++ optionals (langFortran) [ "fortify" "format" ];
       };
 
       enableParallelBuilding = true;

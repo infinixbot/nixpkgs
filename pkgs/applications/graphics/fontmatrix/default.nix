@@ -18,10 +18,7 @@ mkDerivation rec {
     sha256 = "sha256-DtajGhx79DiecglXHja9q/TKVq8Jl2faQdA5Ib/yT88=";
   };
 
-  buildInputs = [
-    qttools
-    qtwebkit
-  ];
+  buildInputs = [ qttools qtwebkit ];
 
   nativeBuildInputs = [ cmake ];
 

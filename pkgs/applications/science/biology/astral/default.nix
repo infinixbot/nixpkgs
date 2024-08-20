@@ -75,9 +75,6 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       binaryBytecode # source bundles dependencies as jars
     ];
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      bzizou
-      tomasajt
-    ];
+    maintainers = with maintainers; [ bzizou tomasajt ];
   };
 })

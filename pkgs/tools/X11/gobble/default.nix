@@ -21,10 +21,7 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "sha256-5xsMLOYTKQc1bHHQsk9L4rHMVNBFOzIMxD+1qaMaNbQ=";
 
   buildInputs = [ xorg.libxcb ];
-  nativeBuildInputs = [
-    pandoc
-    installShellFiles
-  ];
+  nativeBuildInputs = [ pandoc installShellFiles ];
 
   postInstall = ''
     pandoc gobble.1.md -s -t man -o gobble.1

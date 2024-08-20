@@ -23,18 +23,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-+fKvHrApDXm94LItXv+xSDIE5zD7rTY5IeNSuzQglpg=";
   };
 
-  buildInputs =
-    [ ncurses ]
-    ++ lib.optionals stdenv.isDarwin [
-      libiconv
-      IOKit
-    ];
+  buildInputs = [ ncurses ] ++ lib.optionals stdenv.isDarwin [ libiconv IOKit ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    makeWrapper
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook makeWrapper pkg-config ];
 
   enableParallelBuilding = true;
 

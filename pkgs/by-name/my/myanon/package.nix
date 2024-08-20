@@ -18,11 +18,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-sB6ykRywaoG2gfHOEQ9UoVn62nMciBWgCM9DhovBoe0=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    flex
-    bison
-  ];
+  nativeBuildInputs = [ autoreconfHook flex bison ];
 
   meta = {
     description = "Myanon is a mysqldump anonymizer, reading a dump from stdin, and producing on the fly an anonymized version to stdout";

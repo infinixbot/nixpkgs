@@ -26,15 +26,9 @@ stdenv.mkDerivation rec {
     "--localstatedir=$out/var"
   ];
 
-  propagatedBuildInputs = lib.optionals stdenv.isDarwin [
-    libobjc
-    Security
-  ];
+  propagatedBuildInputs = lib.optionals stdenv.isDarwin [ libobjc Security ];
 
-  buildInputs = [
-    botan2
-    sqlite
-  ];
+  buildInputs = [ botan2 sqlite ];
 
   postInstall = "rm -rf $out/var";
 

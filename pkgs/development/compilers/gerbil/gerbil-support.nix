@@ -116,16 +116,7 @@ in
           if pathExists gitpath then commitIdFromGitRepo gitpath else "0";
       };
 
-  gerbilSkippableFiles = [
-    ".git"
-    ".build"
-    ".build_outputs"
-    "run"
-    "result"
-    "dep"
-    "BLAH"
-    "tmp.nix"
-  ];
+  gerbilSkippableFiles = [ ".git" ".build" ".build_outputs" "run" "result" "dep" "BLAH" "tmp.nix" ];
 
   gerbilSourceFilter =
     path: type:

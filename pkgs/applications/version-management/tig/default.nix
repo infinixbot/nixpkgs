@@ -38,17 +38,9 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  autoreconfFlags = [
-    "-I"
-    "tools"
-    "-v"
-  ];
+  autoreconfFlags = [ "-I" "tools" "-v" ];
 
-  buildInputs = [
-    ncurses
-    readline
-    git
-  ] ++ lib.optionals stdenv.isDarwin [ libiconv ];
+  buildInputs = [ ncurses readline git ] ++ lib.optionals stdenv.isDarwin [ libiconv ];
 
   # those files are inherently impure, we'll handle the corresponding dependencies.
   postPatch = ''
@@ -79,13 +71,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "https://jonas.github.io/tig/";
     description = "Text-mode interface for git";
-    maintainers = with maintainers; [
-      bjornfor
-      domenkozar
-      qknight
-      globin
-      ma27
-    ];
+    maintainers = with maintainers; [ bjornfor domenkozar qknight globin ma27 ];
     license = licenses.gpl2Plus;
     platforms = platforms.unix;
     mainProgram = "tig";

@@ -22,16 +22,8 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-+iBHfbUJtAtI/vcHj0Y8f9OxAp1SnhQyMqedVzSYPZQ=";
   };
 
-  nativeBuildInputs = [
-    wrapGAppsHook3
-    gobject-introspection
-  ];
-  buildInputs = [
-    glibcLocales
-    gtk3
-    libsoup_3
-    libsecret
-  ];
+  nativeBuildInputs = [ wrapGAppsHook3 gobject-introspection ];
+  buildInputs = [ glibcLocales gtk3 libsoup_3 libsecret ];
   propagatedBuildInputs = with python3Packages; [
     pygobject3
   ];

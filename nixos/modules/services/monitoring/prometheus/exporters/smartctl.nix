@@ -68,10 +68,7 @@ in
       ProtectProc = "invisible";
       ProcSubset = "pid";
       SupplementaryGroups = [ "disk" ];
-      SystemCallFilter = [
-        "@system-service"
-        "~@privileged"
-      ];
+      SystemCallFilter = [ "@system-service" "~@privileged" ];
     };
   };
 }

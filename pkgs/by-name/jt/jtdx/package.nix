@@ -15,11 +15,7 @@ wsjtx.overrideAttrs (old: {
   buildInputs = old.buildInputs ++ [ qt5.qtwebsockets ];
   meta = {
     description = "wsjtx fork with some extra features";
-    maintainers = with lib.maintainers; [
-      matthewcroughan
-      sarcasticadmin
-      pkharvey
-    ];
+    maintainers = with lib.maintainers; [ matthewcroughan sarcasticadmin pkharvey ];
     homepage = "https://github.com/jtdx-project/jtdx";
   };
 })

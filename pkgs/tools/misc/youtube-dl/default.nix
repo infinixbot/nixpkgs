@@ -64,10 +64,7 @@ buildPythonPackage rec {
     })
   ];
 
-  nativeBuildInputs = [
-    installShellFiles
-    makeWrapper
-  ];
+  nativeBuildInputs = [ installShellFiles makeWrapper ];
   buildInputs = [ zip ] ++ lib.optional generateManPage pandoc;
   propagatedBuildInputs = lib.optional hlsEncryptedSupport pycryptodome;
 
@@ -104,10 +101,7 @@ buildPythonPackage rec {
       it however you like.
     '';
     license = licenses.publicDomain;
-    maintainers = with maintainers; [
-      bluescreen303
-      fpletz
-    ];
+    maintainers = with maintainers; [ bluescreen303 fpletz ];
     platforms = with platforms; linux ++ darwin;
     mainProgram = "youtube-dl";
     knownVulnerabilities = [

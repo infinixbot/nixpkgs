@@ -50,11 +50,7 @@ import ./make-test-python.nix (
       rec {
         environment.systemPackages = [ testPackage ];
         networking = {
-          firewall.allowedTCPPorts = [
-            7000
-            9042
-            services.cassandra.jmxPort
-          ];
+          firewall.allowedTCPPorts = [ 7000 9042 services.cassandra.jmxPort ];
           useDHCP = false;
           interfaces.eth1.ipv4.addresses = pkgs.lib.mkOverride 0 [
             {

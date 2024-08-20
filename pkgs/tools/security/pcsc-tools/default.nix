@@ -71,13 +71,7 @@ stdenv.mkDerivation (finalAttrs: {
   postInstall =
     ''
       wrapProgram $out/bin/scriptor \
-        --set PERL5LIB "${
-          with perlPackages;
-          makePerlPath [
-            ChipcardPCSC
-            libintl-perl
-          ]
-        }"
+        --set PERL5LIB "${with perlPackages; makePerlPath [ ChipcardPCSC libintl-perl ]}"
 
     ''
     + lib.optionalString withGui ''
@@ -100,21 +94,10 @@ stdenv.mkDerivation (finalAttrs: {
     + ''
 
       wrapProgram $out/bin/ATR_analysis \
-        --set PERL5LIB "${
-          with perlPackages;
-          makePerlPath [
-            ChipcardPCSC
-            libintl-perl
-          ]
-        }"
+        --set PERL5LIB "${with perlPackages; makePerlPath [ ChipcardPCSC libintl-perl ]}"
 
       wrapProgram $out/bin/pcsc_scan \
-        --prefix PATH : "$out/bin:${
-          lib.makeBinPath [
-            coreutils
-            wget
-          ]
-        }"
+        --prefix PATH : "$out/bin:${lib.makeBinPath [ coreutils wget ]}"
 
       install -Dm444 -t $out/share/pcsc smartcard_list.txt
     '';
@@ -133,10 +116,7 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://github.com/LudovicRousseau/pcsc-tools/releases/tag/${finalAttrs.version}";
     license = licenses.gpl2Plus;
     mainProgram = "pcsc_scan";
-    maintainers = with maintainers; [
-      peterhoeg
-      anthonyroussel
-    ];
+    maintainers = with maintainers; [ peterhoeg anthonyroussel ];
     platforms = platforms.unix;
   };
 })

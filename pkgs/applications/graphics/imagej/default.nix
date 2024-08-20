@@ -25,12 +25,7 @@ stdenv.mkDerivation rec {
     url = "https://wsr.imagej.net/distros/cross-platform/ij${version}.zip";
     sha256 = "sha256-MGuUdUDuW3s/yGC68rHr6xxzmYScUjdXRawDpc1UQqw=";
   };
-  nativeBuildInputs = [
-    copyDesktopItems
-    makeWrapper
-    unzip
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ copyDesktopItems makeWrapper unzip wrapGAppsHook3 ];
   buildInputs = [ glib ];
   dontWrapGApps = true;
 
@@ -39,11 +34,7 @@ stdenv.mkDerivation rec {
       name = "ImageJ";
       desktopName = "ImageJ";
       icon = "imagej";
-      categories = [
-        "Science"
-        "Utility"
-        "Graphics"
-      ];
+      categories = [ "Science" "Utility" "Graphics" ];
       exec = "imagej";
     })
   ];

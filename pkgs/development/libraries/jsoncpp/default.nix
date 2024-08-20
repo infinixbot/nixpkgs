@@ -13,10 +13,7 @@ stdenv.mkDerivation rec {
   pname = "jsoncpp";
   version = "1.9.5";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "open-source-parsers";
@@ -39,11 +36,7 @@ stdenv.mkDerivation rec {
     sed -i 's/#define JSONCPP_USING_SECURE_MEMORY 0/#define JSONCPP_USING_SECURE_MEMORY 1/' include/json/version.h
   '';
 
-  nativeBuildInputs = [
-    cmake
-    python3
-    validatePkgConfig
-  ];
+  nativeBuildInputs = [ cmake python3 validatePkgConfig ];
 
   cmakeFlags =
     [

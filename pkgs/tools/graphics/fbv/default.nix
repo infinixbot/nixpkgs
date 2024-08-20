@@ -27,12 +27,7 @@ stdenv.mkDerivation rec {
 
   patchFlags = [ "-p0" ];
 
-  buildInputs = [
-    getopt
-    libjpeg
-    libpng12
-    giflib
-  ];
+  buildInputs = [ getopt libjpeg libpng12 giflib ];
   makeFlags = [ "LDFLAGS=-lgif" ];
 
   enableParallelBuilding = true;

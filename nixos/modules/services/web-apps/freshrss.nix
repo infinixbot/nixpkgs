@@ -21,11 +21,7 @@ let
   };
 in
 {
-  meta.maintainers = with maintainers; [
-    etu
-    stunkymonkey
-    mattchrist
-  ];
+  meta.maintainers = with maintainers; [ etu stunkymonkey mattchrist ];
 
   options.services.freshrss = {
     enable = mkEnableOption "FreshRSS RSS aggregator and reader with php-fpm backend";
@@ -86,11 +82,7 @@ in
 
     database = {
       type = mkOption {
-        type = types.enum [
-          "sqlite"
-          "pgsql"
-          "mysql"
-        ];
+        type = types.enum [ "sqlite" "pgsql" "mysql" ];
         default = "sqlite";
         description = "Database type.";
         example = "pgsql";
@@ -167,11 +159,7 @@ in
     };
 
     authType = mkOption {
-      type = types.enum [
-        "form"
-        "http_auth"
-        "none"
-      ];
+      type = types.enum [ "form" "http_auth" "none" ];
       default = "form";
       description = "Authentication type for FreshRSS.";
     };
@@ -203,11 +191,7 @@ in
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
         SystemCallArchitectures = "native";
-        SystemCallFilter = [
-          "@system-service"
-          "~@resources"
-          "~@privileged"
-        ];
+        SystemCallFilter = [ "@system-service" "~@resources" "~@privileged" ];
         UMask = "0007";
         Type = "oneshot";
         User = cfg.user;

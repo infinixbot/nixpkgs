@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-c3Vhzes54xLjKV0Of7D1eFpQvIWJwcUBXvLT2p6VwBE=";
     fetchSubmodules = true;
   };
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    qt6.wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake pkg-config qt6.wrapQtAppsHook ];
   buildInputs =
     [
       qt6.qtbase
@@ -62,9 +58,6 @@ stdenv.mkDerivation rec {
     changelog = "https://github.com/Chatterino/chatterino2/blob/master/CHANGELOG.md";
     license = licenses.mit;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      rexim
-      supa
-    ];
+    maintainers = with maintainers; [ rexim supa ];
   };
 }

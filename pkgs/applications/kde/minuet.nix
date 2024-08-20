@@ -21,23 +21,11 @@ mkDerivation {
     homepage = "https://apps.kde.org/minuet/";
     description = "Music Education Software";
     mainProgram = "minuet";
-    license = with licenses; [
-      lgpl21
-      gpl3
-    ];
-    maintainers = with maintainers; [
-      peterhoeg
-      HaoZeke
-    ];
+    license = with licenses; [ lgpl21 gpl3 ];
+    maintainers = with maintainers; [ peterhoeg HaoZeke ];
   };
 
-  nativeBuildInputs = [
-    extra-cmake-modules
-    gettext
-    kdoctools
-    python3
-    qtdeclarative
-  ];
+  nativeBuildInputs = [ extra-cmake-modules gettext kdoctools python3 qtdeclarative ];
 
   propagatedBuildInputs = [
     drumstick

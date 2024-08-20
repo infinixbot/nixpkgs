@@ -22,21 +22,11 @@ stdenv.mkDerivation rec {
     hash = "sha256-/ILq/7A8Lffe2NuiABiV3KeYXapuL1SO55Qk3wXfC/8=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
-  nativeBuildInputs = [
-    cmake
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake wrapQtAppsHook ];
 
-  buildInputs = [
-    qtbase
-    qtsvg
-    qttools
-  ];
+  buildInputs = [ qtbase qtsvg qttools ];
 
   cmakeFlags = [ "-DZINT_QT6:BOOL=ON" ];
 

@@ -38,23 +38,8 @@ else
 
     strictDeps = true;
 
-    nativeBuildInputs = [
-      pkg-config
-      unzip
-      ocaml
-      automake
-      gnum4
-      autoconf
-      findlib
-    ];
-    buildInputs = [
-      freetype
-      lablgtk
-      cairo
-      gdk-pixbuf
-      gtk2
-      pango
-    ];
+    nativeBuildInputs = [ pkg-config unzip ocaml automake gnum4 autoconf findlib ];
+    buildInputs = [ freetype lablgtk cairo gdk-pixbuf gtk2 pango ];
 
     createFindlibDestdir = true;
 

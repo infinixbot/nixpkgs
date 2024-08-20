@@ -31,10 +31,7 @@ stdenv.mkDerivation rec {
   preBuild = ''
     makeFlagsArray+=(CFLAGS="-O2 -std=c89")
   '';
-  makeFlags = [
-    "CC=${stdenv.cc.targetPrefix}cc"
-    "PREFIX=$(out)"
-  ];
+  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" "PREFIX=$(out)" ];
 
   enableParallelBuilding = true;
   # ...-bash-5.2-p15/bin/bash: line 1: ...-s9fes-20181205/bin/s9help: No such file or directory

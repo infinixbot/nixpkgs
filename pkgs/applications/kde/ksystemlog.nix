@@ -12,16 +12,8 @@
 mkDerivation {
   pname = "ksystemlog";
 
-  nativeBuildInputs = [
-    extra-cmake-modules
-    gettext
-    kdoctools
-  ];
-  propagatedBuildInputs = [
-    karchive
-    kconfig
-    kio
-  ];
+  nativeBuildInputs = [ extra-cmake-modules gettext kdoctools ];
+  propagatedBuildInputs = [ karchive kconfig kio ];
 
   meta = with lib; {
     homepage = "https://apps.kde.org/ksystemlog/";

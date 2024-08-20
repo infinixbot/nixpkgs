@@ -19,12 +19,7 @@ let
 in
 runCommand "appimage-run-tests"
   {
-    buildInputs = [
-      appimage-run
-      glibcLocales
-      file
-      xdg-utils
-    ];
+    buildInputs = [ appimage-run glibcLocales file xdg-utils ];
     meta.platforms = [ "x86_64-linux" ];
   }
   ''

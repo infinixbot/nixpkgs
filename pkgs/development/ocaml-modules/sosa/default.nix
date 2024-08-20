@@ -29,11 +29,7 @@ lib.throwIf (lib.versionOlder ocaml.version "4.02")
       done
     '';
 
-    nativeBuildInputs = [
-      ocaml
-      ocamlbuild
-      findlib
-    ];
+    nativeBuildInputs = [ ocaml ocamlbuild findlib ];
 
     strictDeps = true;
 

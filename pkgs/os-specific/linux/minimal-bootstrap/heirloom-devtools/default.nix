@@ -47,11 +47,7 @@ kaem.runCommand "${pname}-${version}"
     meta = with lib; {
       description = "Portable yacc and lex derived from OpenSolaris";
       homepage = "https://heirloom.sourceforge.net/devtools.html";
-      license = with licenses; [
-        cddl
-        bsdOriginalUC
-        caldera
-      ];
+      license = with licenses; [ cddl bsdOriginalUC caldera ];
       maintainers = teams.minimal-bootstrap.members;
       platforms = platforms.unix;
     };

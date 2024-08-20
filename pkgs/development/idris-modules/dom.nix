@@ -10,11 +10,7 @@ build-idris-package {
   pname = "dom";
   version = "2017-04-22";
 
-  idrisDeps = [
-    idrisscript
-    html
-    xhr
-  ];
+  idrisDeps = [ idrisscript html xhr ];
 
   src = fetchFromGitHub {
     owner = "pierrebeaucamp";

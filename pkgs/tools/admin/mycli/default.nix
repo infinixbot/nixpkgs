@@ -32,10 +32,7 @@ buildPythonApplication rec {
     sqlparse
   ];
 
-  nativeCheckInputs = [
-    pytestCheckHook
-    glibcLocales
-  ];
+  nativeCheckInputs = [ pytestCheckHook glibcLocales ];
 
   preCheck = ''
     export HOME=.

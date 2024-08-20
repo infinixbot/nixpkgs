@@ -26,11 +26,7 @@ stdenv.mkDerivation rec {
 
   sourceRoot = "${src.name}/src";
   buildInputs =
-    [
-      libedit
-      zlib
-      ncurses
-    ]
+    [ libedit zlib ncurses ]
     ++ lib.optionals stdenv.isDarwin (
       [
         Accelerate
@@ -46,10 +42,7 @@ stdenv.mkDerivation rec {
   nativeCheckInputs = [ expect ];
   doCheck = true;
 
-  makeFlags = [
-    "kerf"
-    "kerf_test"
-  ];
+  makeFlags = [ "kerf" "kerf_test" ];
 
   # avoid a huge amount of warnings to make failures clearer
   env.NIX_CFLAGS_COMPILE = toString (

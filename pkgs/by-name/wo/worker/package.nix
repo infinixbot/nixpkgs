@@ -16,10 +16,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   buildInputs = [ libX11 ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   strictDeps = true;
 

@@ -95,11 +95,7 @@ rustPlatform.buildRustPackage {
       asl20 # or
       mit
     ];
-    maintainers = with lib.maintainers; [
-      wucke13
-      matthiasbeyer
-      CobaltCause
-    ];
+    maintainers = with lib.maintainers; [ wucke13 matthiasbeyer CobaltCause ];
 
     # The profiler runtime is (currently) disabled on non-Linux platforms
     broken = !(stdenv.isLinux && !stdenv.targetPlatform.isRedox);

@@ -67,10 +67,7 @@ stdenv.mkDerivation rec {
   # do not use x87's 80-bit arithmetic, rouding errors result in very different font binaries
   env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.isi686 "-msse2 -mfpmath=sse";
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-  ];
+  nativeBuildInputs = [ pkg-config cmake ];
   buildInputs =
     [
       readline
@@ -88,15 +85,8 @@ stdenv.mkDerivation rec {
       libxml2
     ]
     ++ lib.optionals withSpiro [ libspiro ]
-    ++ lib.optionals withGUI [
-      gtk3
-      cairo
-      pango
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      Carbon
-      Cocoa
-    ];
+    ++ lib.optionals withGUI [ gtk3 cairo pango ]
+    ++ lib.optionals stdenv.isDarwin [ Carbon Cocoa ];
 
   cmakeFlags =
     [ "-DCMAKE_BUILD_WITH_INSTALL_RPATH=ON" ]

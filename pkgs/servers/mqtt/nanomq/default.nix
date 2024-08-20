@@ -35,12 +35,7 @@ let
       hash = "sha256-3DS9DuzHN7BevfgiekUmKKH9ej9wKTrt6Fuh427NC4I=";
     };
 
-    nativeBuildInputs = [
-      cmake
-      ninja
-      flex
-      bison
-    ];
+    nativeBuildInputs = [ cmake ninja flex bison ];
 
     # https://github.com/nanomq/idl-serial/issues/36
     hardeningDisable = [ "fortify3" ];
@@ -64,21 +59,9 @@ stdenv.mkDerivation (finalAttrs: {
       --replace "DESTINATION /etc" "DESTINATION $out/etc"
   '';
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-    pkg-config
-    idl-serial
-  ];
+  nativeBuildInputs = [ cmake ninja pkg-config idl-serial ];
 
-  buildInputs = [
-    cyclonedds
-    libmysqlclient
-    mariadb
-    mbedtls
-    sqlite
-    zeromq
-  ];
+  buildInputs = [ cyclonedds libmysqlclient mariadb mbedtls sqlite zeromq ];
 
   cmakeFlags = [
     "-DBUILD_BENCH=ON"
@@ -98,13 +81,7 @@ stdenv.mkDerivation (finalAttrs: {
   nativeInstallCheckInputs = [
     mosquitto
     netcat-gnu
-    (python3.withPackages (
-      ps: with ps; [
-        jinja2
-        requests
-        paho-mqtt
-      ]
-    ))
+    (python3.withPackages (ps: with ps; [ jinja2 requests paho-mqtt ]))
   ];
   installCheckPhase = ''
     runHook preInstallCheck

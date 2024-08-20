@@ -26,11 +26,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-/Jf1ECm7DiyfTjv/79r2ePDgOe6HK53lwAKm0Jx4TYI=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
   patches = [
     # Upstream patch to fix 32-bit tests.

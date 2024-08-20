@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    jansson
-    libsailing
-  ];
+  buildInputs = [ jansson libsailing ];
 
   INSTALL_PATH = "$(out)";
 

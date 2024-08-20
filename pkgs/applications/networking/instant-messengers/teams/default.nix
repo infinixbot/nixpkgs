@@ -22,10 +22,7 @@ let
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
     maintainers = with maintainers; [ tricktron ];
-    platforms = [
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
+    platforms = [ "x86_64-darwin" "aarch64-darwin" ];
     mainProgram = "teams";
   };
 
@@ -40,11 +37,7 @@ stdenv.mkDerivation {
     hash = hashes.darwin;
   };
 
-  nativeBuildInputs = [
-    xar
-    cpio
-    makeWrapper
-  ];
+  nativeBuildInputs = [ xar cpio makeWrapper ];
 
   unpackPhase = ''
     xar -xf $src

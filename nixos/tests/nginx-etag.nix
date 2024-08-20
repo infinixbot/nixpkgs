@@ -74,11 +74,7 @@ import ./make-test-python.nix {
                   open('/tmp/passed', 'w')
                 '';
           in
-          [
-            pkgs.firefox-unwrapped
-            pkgs.geckodriver
-            testRunner
-          ];
+          [ pkgs.firefox-unwrapped pkgs.geckodriver testRunner ];
       };
   };
 

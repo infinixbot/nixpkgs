@@ -117,10 +117,7 @@ let
       meta = {
         description = "3D Object-Oriented Graphics Rendering Engine";
         homepage = "https://www.ogre3d.org/";
-        maintainers = with lib.maintainers; [
-          raskin
-          wegank
-        ];
+        maintainers = with lib.maintainers; [ raskin wegank ];
         platforms = lib.platforms.unix;
         license = lib.licenses.mit;
       };

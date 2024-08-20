@@ -20,16 +20,9 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  buildInputs = [
-    glib
-    gettext
-  ];
+  buildInputs = [ glib gettext ];
 
-  nativeBuildInputs = [
-    flex
-    bison
-    pkg-config
-  ];
+  nativeBuildInputs = [ flex bison pkg-config ];
 
   configureFlags = lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
     # before openembedded removed libIDL

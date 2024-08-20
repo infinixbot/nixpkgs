@@ -40,10 +40,6 @@ buildNpmPackage rec {
     changelog = "https://github.com/mainsail-crew/mainsail/releases/tag/v${version}";
     license = licenses.gpl3Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      shhht
-      lovesegfault
-      wulfsta
-    ];
+    maintainers = with maintainers; [ shhht lovesegfault wulfsta ];
   };
 }

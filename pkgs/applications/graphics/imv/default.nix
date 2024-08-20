@@ -18,14 +18,7 @@
   libGLU,
   wayland,
   # "libnsgif" is disabled until https://todo.sr.ht/~exec64/imv/55 is solved
-  withBackends ? [
-    "libjxl"
-    "libtiff"
-    "libjpeg"
-    "libpng"
-    "librsvg"
-    "libheif"
-  ],
+  withBackends ? [ "libjxl" "libtiff" "libjpeg" "libpng" "librsvg" "libheif" ],
   freeimage,
   libtiff,
   libjpeg_turbo,
@@ -48,11 +41,7 @@ let
 
   windowSystems = {
     all = windowSystems.x11 ++ windowSystems.wayland;
-    x11 = [
-      libGLU
-      xorg.libxcb
-      xorg.libX11
-    ];
+    x11 = [ libGLU xorg.libxcb xorg.libX11 ];
     wayland = [ wayland ];
   };
 
@@ -84,10 +73,7 @@ assert builtins.all (
 stdenv.mkDerivation rec {
   pname = "imv";
   version = "4.5.0";
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   src = fetchFromSourcehut {
     owner = "~exec64";
@@ -142,10 +128,7 @@ stdenv.mkDerivation rec {
     description = "Command line image viewer for tiling window managers";
     homepage = "https://sr.ht/~exec64/imv/";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      rnhmjoj
-      markus1189
-    ];
+    maintainers = with maintainers; [ rnhmjoj markus1189 ];
     platforms = platforms.all;
     badPlatforms = platforms.darwin;
   };

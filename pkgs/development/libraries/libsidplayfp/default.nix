@@ -113,10 +113,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     homepage = "https://github.com/libsidplayfp/libsidplayfp";
     license = with licenses; [ gpl2Plus ];
-    maintainers = with maintainers; [
-      ramkromberg
-      OPNA2608
-    ];
+    maintainers = with maintainers; [ ramkromberg OPNA2608 ];
     platforms = platforms.all;
     pkgConfigModules = [
       "libsidplayfp"

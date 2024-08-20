@@ -37,11 +37,7 @@ stdenv.mkDerivation rec {
     sha256 = "498de8338489a625673797f7ecc921fa4490c826afbfa42fa66922b525089e6a";
   };
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-  ];
+  outputs = [ "bin" "out" "dev" ];
 
   configureFlags = [
     "--with-configdir=/etc/knot"
@@ -56,10 +52,7 @@ stdenv.mkDerivation rec {
     ./runtime-deps.patch
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
   buildInputs =
     [
       gnutls
@@ -88,10 +81,7 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  CFLAGS = [
-    "-O2"
-    "-DNDEBUG"
-  ];
+  CFLAGS = [ "-O2" "-DNDEBUG" ];
 
   doCheck = true;
   checkFlags = [ "V=1" ]; # verbose output in case some test fails

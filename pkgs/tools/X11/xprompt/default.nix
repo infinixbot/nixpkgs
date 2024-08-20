@@ -36,10 +36,7 @@ stdenv.mkDerivation rec {
     in
     lib.optionalString (conf != null) "cp ${configFile} config.h";
 
-  makeFlags = [
-    "CC:=$(CC)"
-    "PREFIX=$(out)"
-  ];
+  makeFlags = [ "CC:=$(CC)" "PREFIX=$(out)" ];
 
   passthru.updateScript = nix-update-script { };
 

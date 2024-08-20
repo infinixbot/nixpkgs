@@ -48,9 +48,6 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "https://github.com/linien-org/linien/tree/develop/linien-gui";
     changelog = "https://github.com/linien-org/linien/blob/v${version}/CHANGELOG.md";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      fsagbuya
-      doronbehar
-    ];
+    maintainers = with maintainers; [ fsagbuya doronbehar ];
   };
 }

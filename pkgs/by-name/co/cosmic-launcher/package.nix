@@ -39,18 +39,8 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  nativeBuildInputs = [
-    just
-    pkg-config
-    makeBinaryWrapper
-  ];
-  buildInputs = [
-    libxkbcommon
-    wayland
-    appstream-glib
-    desktop-file-utils
-    intltool
-  ];
+  nativeBuildInputs = [ just pkg-config makeBinaryWrapper ];
+  buildInputs = [ libxkbcommon wayland appstream-glib desktop-file-utils intltool ];
 
   dontUseJustBuild = true;
 

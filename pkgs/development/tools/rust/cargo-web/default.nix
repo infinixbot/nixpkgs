@@ -23,15 +23,8 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-apPXSG8RV9hZ+jttn4XHhgmuLQ7344SQJna7Z/fu/mA=";
 
-  nativeBuildInputs = [
-    openssl
-    perl
-    pkg-config
-  ];
-  buildInputs = lib.optionals stdenv.isDarwin [
-    CoreServices
-    Security
-  ];
+  nativeBuildInputs = [ openssl perl pkg-config ];
+  buildInputs = lib.optionals stdenv.isDarwin [ CoreServices Security ];
 
   meta = with lib; {
     description = "Cargo subcommand for the client-side Web";

@@ -10,10 +10,7 @@ buildDunePackage rec {
 
   inherit (angstrom) version src;
 
-  propagatedBuildInputs = [
-    angstrom
-    lwt
-  ];
+  propagatedBuildInputs = [ angstrom lwt ];
 
   doCheck = true;
 

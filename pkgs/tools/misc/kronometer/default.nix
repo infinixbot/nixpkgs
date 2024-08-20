@@ -25,13 +25,6 @@ mkDerivation rec {
     maintainers = with maintainers; [ peterhoeg ];
     mainProgram = "kronometer";
   };
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
-  propagatedBuildInputs = [
-    kconfig
-    kcrash
-    kinit
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
+  propagatedBuildInputs = [ kconfig kcrash kinit ];
 }

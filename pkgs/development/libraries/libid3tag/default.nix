@@ -15,10 +15,7 @@ stdenv.mkDerivation rec {
     sha256 = "63da4f6e7997278f8a3fef4c6a372d342f705051d1eeb6a46a86b03610e26151";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
   setOutputFlags = false;
 
   strictDeps = true;

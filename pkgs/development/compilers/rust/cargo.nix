@@ -51,18 +51,13 @@ rustPlatform.buildRustPackage.override
         (lib.getDev pkgsHostHost.curl)
         zlib
       ];
-      buildInputs =
-        [
-          file
-          curl
-          python3
-          openssl
-          zlib
-        ]
-        ++ lib.optionals stdenv.isDarwin [
-          CoreFoundation
-          Security
-        ];
+      buildInputs = [
+        file
+        curl
+        python3
+        openssl
+        zlib
+      ] ++ lib.optionals stdenv.isDarwin [ CoreFoundation Security ];
 
       # cargo uses git-rs which is made for a version of libgit2 from recent master that
       # is not compatible with the current version in nixpkgs.
@@ -103,10 +98,7 @@ rustPlatform.buildRustPackage.override
         description = "Downloads your Rust project's dependencies and builds your project";
         mainProgram = "cargo";
         maintainers = teams.rust.members;
-        license = [
-          licenses.mit
-          licenses.asl20
-        ];
+        license = [ licenses.mit licenses.asl20 ];
         platforms = platforms.unix;
         # https://github.com/alexcrichton/nghttp2-rs/issues/2
         broken = stdenv.hostPlatform.isx86 && stdenv.buildPlatform != stdenv.hostPlatform;

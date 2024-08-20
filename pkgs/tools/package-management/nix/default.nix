@@ -29,10 +29,7 @@ let
   # old nix fails to build with newer aws-sdk-cpp and the patch doesn't apply
   aws-sdk-cpp-old-nix =
     (aws-sdk-cpp.override {
-      apis = [
-        "s3"
-        "transfer"
-      ];
+      apis = [ "s3" "transfer" ];
       customMemoryManagement = false;
     }).overrideAttrs
       (args: rec {
@@ -87,10 +84,7 @@ let
 
   aws-sdk-cpp-nix =
     (aws-sdk-cpp.override {
-      apis = [
-        "s3"
-        "transfer"
-      ];
+      apis = [ "s3" "transfer" ];
       customMemoryManagement = false;
     }).overrideAttrs
       {

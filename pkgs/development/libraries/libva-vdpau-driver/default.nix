@@ -47,12 +47,7 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libvdpau
-    libGLU
-    libGL
-    libva
-  ];
+  buildInputs = [ libvdpau libGLU libGL libva ];
 
   postPatch = ''
     sed -i -e "s,LIBVA_DRIVERS_PATH=.*,LIBVA_DRIVERS_PATH=$out/lib/dri," configure

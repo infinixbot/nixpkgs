@@ -25,13 +25,7 @@ stdenvNoCC.mkDerivation {
     runHook preInstall
     install -Dm755 maxfetch $out/bin/maxfetch
     wrapProgram $out/bin/maxfetch \
-     --prefix PATH : ${
-       lib.makeBinPath [
-         gnused
-         ncurses
-         procps
-       ]
-     }
+     --prefix PATH : ${lib.makeBinPath [ gnused ncurses procps ]}
     runHook postInstall
   '';
 

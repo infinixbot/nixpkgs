@@ -96,11 +96,7 @@ stdenv.mkDerivation {
           if stdenv.targetPlatform.isMusl then
             substitute {
               src = ./mips64-default-n64.patch;
-              substitutions = [
-                "--replace"
-                "gnuabi64"
-                "muslabi64"
-              ];
+              substitutions = [ "--replace" "gnuabi64" "muslabi64" ];
             }
           else
             ./mips64-default-n64.patch
@@ -117,11 +113,7 @@ stdenv.mkDerivation {
     # https://sourceware.org/git/?p=binutils-gdb.git;a=commit;h=cebc89b9328eab994f6b0314c263f94e7949a553
     ++ lib.optional stdenv.targetPlatform.isPower ./ppc-make-machine-less-strict.patch;
 
-  outputs = [
-    "out"
-    "info"
-    "man"
-  ];
+  outputs = [ "out" "info" "man" ];
 
   strictDeps = true;
   depsBuildBuild = [ buildPackages.stdenv.cc ];
@@ -132,18 +124,10 @@ stdenv.mkDerivation {
       texinfo
     ]
     ++ lib.optionals targetPlatform.isiOS [ autoreconfHook ]
-    ++ lib.optionals buildPlatform.isDarwin [
-      autoconf269
-      automake
-      gettext
-      libtool
-    ]
+    ++ lib.optionals buildPlatform.isDarwin [ autoconf269 automake gettext libtool ]
     ++ lib.optionals targetPlatform.isVc4 [ flex ];
 
-  buildInputs = [
-    zlib
-    gettext
-  ];
+  buildInputs = [ zlib gettext ];
 
   inherit noSysDirs;
 
@@ -179,16 +163,9 @@ stdenv.mkDerivation {
     else
       "-static-libgcc";
 
-  hardeningDisable = [
-    "format"
-    "pie"
-  ];
+  hardeningDisable = [ "format" "pie" ];
 
-  configurePlatforms = [
-    "build"
-    "host"
-    "target"
-  ];
+  configurePlatforms = [ "build" "host" "target" ];
 
   configureFlags =
     [
@@ -214,21 +191,12 @@ stdenv.mkDerivation {
       "--program-prefix=${targetPrefix}"
     ]
     ++ lib.optionals withAllTargets [ "--enable-targets=all" ]
-    ++ lib.optionals enableGold [
-      "--enable-gold"
-      "--enable-plugins"
-    ]
+    ++ lib.optionals enableGold [ "--enable-gold" "--enable-plugins" ]
     ++ (
       if enableShared then
-        [
-          "--enable-shared"
-          "--disable-static"
-        ]
+        [ "--enable-shared" "--disable-static" ]
       else
-        [
-          "--disable-shared"
-          "--enable-static"
-        ]
+        [ "--disable-shared" "--enable-static" ]
     );
 
   # Fails
@@ -267,10 +235,7 @@ stdenv.mkDerivation {
     '';
     homepage = "https://www.gnu.org/software/binutils/";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      ericson2314
-      lovesegfault
-    ];
+    maintainers = with maintainers; [ ericson2314 lovesegfault ];
     platforms = platforms.unix;
 
     # INFO: Give binutils a lower priority than gcc-wrapper to prevent a

@@ -68,16 +68,8 @@ stdenv.mkDerivation rec {
       qemu
       zstd
     ]
-    ++ (with perlPackages; [
-      perl
-      libintl-perl
-      GetoptLong
-      ModuleBuild
-    ])
-    ++ (with ocamlPackages; [
-      ocaml
-      findlib
-    ]);
+    ++ (with perlPackages; [ perl libintl-perl GetoptLong ModuleBuild ])
+    ++ (with ocamlPackages; [ ocaml findlib ]);
   buildInputs =
     [
       libxcrypt
@@ -104,12 +96,7 @@ stdenv.mkDerivation rec {
       perlPackages.ModuleBuild
       libtirpc
     ]
-    ++ (with ocamlPackages; [
-      ocamlbuild
-      ocaml_libvirt
-      gettext-stub
-      ounit
-    ])
+    ++ (with ocamlPackages; [ ocamlbuild ocaml_libvirt gettext-stub ounit ])
     ++ lib.optional javaSupport jdk;
 
   prePatch = ''
@@ -176,10 +163,7 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "Tools for accessing and modifying virtual machine disk images";
-    license = with licenses; [
-      gpl2Plus
-      lgpl21Plus
-    ];
+    license = with licenses; [ gpl2Plus lgpl21Plus ];
     homepage = "https://libguestfs.org/";
     maintainers = with maintainers; [ offline ];
     platforms = platforms.linux;

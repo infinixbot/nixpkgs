@@ -90,10 +90,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = [ osqueryi ];
     systemd.services.osqueryd = {
-      after = [
-        "network.target"
-        "syslog.service"
-      ];
+      after = [ "network.target" "syslog.service" ];
       description = "The osquery daemon";
       serviceConfig = {
         ExecStart = "${pkgs.osquery}/bin/osqueryd --flagfile ${flagfile}";

@@ -10,10 +10,7 @@
 mkKdeDerivation {
   pname = "kpat";
 
-  extraNativeBuildInputs = [
-    _7zz
-    shared-mime-info
-  ];
+  extraNativeBuildInputs = [ _7zz shared-mime-info ];
   extraBuildInputs = [
     qtsvg
     black-hole-solver

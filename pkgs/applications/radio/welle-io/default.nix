@@ -30,10 +30,7 @@ mkDerivation rec {
     sha256 = "sha256-xXiCL/A2SwCSr5SA4AQQEdieRzBksXx9Z78bHtlFiW4=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   buildInputs = [
     faad2
@@ -59,14 +56,8 @@ mkDerivation rec {
   meta = with lib; {
     description = "DAB/DAB+ Software Radio";
     homepage = "https://www.welle.io/";
-    maintainers = with maintainers; [
-      ck3d
-      markuskowa
-    ];
+    maintainers = with maintainers; [ ck3d markuskowa ];
     license = licenses.gpl2Only;
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ] ++ platforms.darwin;
+    platforms = [ "x86_64-linux" "i686-linux" ] ++ platforms.darwin;
   };
 }

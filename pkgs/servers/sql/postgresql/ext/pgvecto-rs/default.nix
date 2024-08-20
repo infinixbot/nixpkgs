@@ -105,9 +105,6 @@ in
       description = "Scalable, Low-latency and Hybrid-enabled Vector Search in Postgres";
       homepage = "https://github.com/tensorchord/pgvecto.rs";
       license = licenses.asl20;
-      maintainers = with maintainers; [
-        diogotcorreia
-        esclear
-      ];
+      maintainers = with maintainers; [ diogotcorreia esclear ];
     };
   }

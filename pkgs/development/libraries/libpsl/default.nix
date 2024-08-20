@@ -26,10 +26,7 @@ stdenv.mkDerivation rec {
   };
 
   # bin/psl-make-dafsa brings a large runtime closure through python3
-  outputs = lib.optional (!stdenv.hostPlatform.isStatic) "bin" ++ [
-    "out"
-    "dev"
-  ];
+  outputs = lib.optional (!stdenv.hostPlatform.isStatic) "bin" ++ [ "out" "dev" ];
 
   nativeBuildInputs = [
     autoreconfHook

@@ -20,24 +20,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-cjmXKUGcrZ8RLDBmoS0AANpFCkVq3XsJTYkVUGnWgh4=";
   };
 
-  nativeBuildInputs = [
-    copyDesktopItems
-    pkg-config
-    python3
-    glib
-  ];
+  nativeBuildInputs = [ copyDesktopItems pkg-config python3 glib ];
 
-  buildInputs = [
-    gtk2
-    readline
-  ];
+  buildInputs = [ gtk2 readline ];
 
   strictDeps = true;
 
-  configureFlags = [
-    "--with-gtk"
-    "--with--board3d"
-  ];
+  configureFlags = [ "--with-gtk" "--with--board3d" ];
 
   desktopItems = makeDesktopItem {
     desktopName = "GNU Backgammon";
@@ -46,11 +35,7 @@ stdenv.mkDerivation rec {
     comment = meta.description;
     exec = pname;
     icon = pname;
-    categories = [
-      "Game"
-      "GTK"
-      "StrategyGame"
-    ];
+    categories = [ "Game" "GTK" "StrategyGame" ];
   };
 
   meta = with lib; {

@@ -82,11 +82,7 @@ in
           Source = {
             Type = "url-file";
             Path = "https://download.example.com/";
-            MatchPattern = [
-              "nixos_@v+@l-@d.efi"
-              "nixos_@v+@l.efi"
-              "nixos_@v.efi"
-            ];
+            MatchPattern = [ "nixos_@v+@l-@d.efi" "nixos_@v+@l.efi" "nixos_@v.efi" ];
           };
 
           Target = {

@@ -29,11 +29,7 @@ let
   system = stdenv.hostPlatform.system;
 
   yarn' = yarn.override { inherit nodejs; };
-  defaultYarnOpts = [
-    "frozen-lockfile"
-    "non-interactive"
-    "no-progress"
-  ];
+  defaultYarnOpts = [ "frozen-lockfile" "non-interactive" "no-progress" ];
 
   vsBuildTarget =
     {
@@ -84,11 +80,7 @@ stdenv.mkDerivation (finalAttrs: {
   yarnCache = stdenv.mkDerivation {
     name = "${finalAttrs.pname}-${finalAttrs.version}-${system}-yarn-cache";
     inherit (finalAttrs) src;
-    nativeBuildInputs = [
-      cacert
-      yarn'
-      git
-    ];
+    nativeBuildInputs = [ cacert yarn' git ];
     buildPhase = ''
       export HOME=$PWD
 
@@ -121,11 +113,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   buildInputs =
     lib.optionals (!stdenv.isDarwin) [ libsecret ]
-    ++ (with xorg; [
-      libX11
-      libxkbfile
-      libkrb5
-    ])
+    ++ (with xorg; [ libX11 libxkbfile libkrb5 ])
     ++ lib.optionals stdenv.isDarwin [
       AppKit
       Cocoa
@@ -254,17 +242,8 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     homepage = "https://github.com/gitpod-io/openvscode-server";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [
-      dguenther
-      ghuntley
-      emilytrau
-    ];
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
+    maintainers = with lib.maintainers; [ dguenther ghuntley emilytrau ];
+    platforms = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
     mainProgram = "openvscode-server";
   };
 })

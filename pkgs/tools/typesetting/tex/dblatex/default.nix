@@ -62,16 +62,7 @@ stdenv.mkDerivation rec {
     sha256 = "0yd09nypswy3q4scri1dg7dr99d7gd6r2dwx0xm81l9f4y32gs0n";
   };
 
-  buildInputs =
-    [
-      python311
-      libxslt
-      tex
-    ]
-    ++ lib.optionals enableAllFeatures [
-      imagemagick
-      fig2dev
-    ];
+  buildInputs = [ python311 libxslt tex ] ++ lib.optionals enableAllFeatures [ imagemagick fig2dev ];
 
   # TODO: dblatex tries to execute texindy command, but nixpkgs doesn't have
   # that yet. In Ubuntu, texindy is a part of the xindy package.

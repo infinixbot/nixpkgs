@@ -13,10 +13,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-8nV8xVBAhZ/Pj1mgt7JuAYSiK+zkTtlWikU0pHjB7ho=";
   };
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   postPatch = ''
     substituteInPlace install-sh \

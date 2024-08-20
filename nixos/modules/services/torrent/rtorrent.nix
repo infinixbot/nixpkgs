@@ -202,10 +202,7 @@ in
           {
             description = "rTorrent system service";
             after = [ "network.target" ];
-            path = [
-              cfg.package
-              pkgs.bash
-            ];
+            path = [ cfg.package pkgs.bash ];
             wantedBy = [ "multi-user.target" ];
             serviceConfig = {
               User = cfg.user;
@@ -235,19 +232,12 @@ in
               ProtectKernelTunables = true;
               ProtectProc = "invisible";
               ProtectSystem = "full";
-              RestrictAddressFamilies = [
-                "AF_UNIX"
-                "AF_INET"
-                "AF_INET6"
-              ];
+              RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
               RestrictNamespaces = true;
               RestrictRealtime = true;
               RestrictSUIDSGID = true;
               SystemCallArchitectures = "native";
-              SystemCallFilter = [
-                "@system-service"
-                "~@privileged"
-              ];
+              SystemCallFilter = [ "@system-service" "~@privileged" ];
             };
           };
       };

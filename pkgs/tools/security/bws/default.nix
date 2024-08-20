@@ -55,15 +55,9 @@ rustPlatform.buildRustPackage rec {
     RUSTONIG_SYSTEM_LIBONIG = true;
   };
 
-  cargoBuildFlags = [
-    "--package"
-    "bws"
-  ];
+  cargoBuildFlags = [ "--package" "bws" ];
 
-  cargoTestFlags = [
-    "--package"
-    "bws"
-  ];
+  cargoTestFlags = [ "--package" "bws" ];
 
   postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
     installShellCompletion --cmd bws \

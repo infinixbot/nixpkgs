@@ -52,10 +52,7 @@ in
       importMode = mkOption {
         description = "Ripple data api import mode.";
         default = "liveOnly";
-        type = types.enum [
-          "live"
-          "liveOnly"
-        ];
+        type = types.enum [ "live" "liveOnly" ];
       };
 
       minLedger = mkOption {
@@ -145,11 +142,7 @@ in
     services.redis.enable = mkDefault true;
 
     systemd.services.ripple-data-api = {
-      after = [
-        "couchdb.service"
-        "redis.service"
-        "ripple-data-api-importer.service"
-      ];
+      after = [ "couchdb.service" "redis.service" "ripple-data-api-importer.service" ];
       wantedBy = [ "multi-user.target" ];
 
       environment = {

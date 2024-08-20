@@ -41,12 +41,7 @@ let
         changelog = "https://nextcloud.com/changelog/#${lib.replaceStrings [ "." ] [ "-" ] version}";
         description = "Sharing solution for files, calendars, contacts and more";
         homepage = "https://nextcloud.com";
-        maintainers = with maintainers; [
-          schneefux
-          bachp
-          globin
-          ma27
-        ];
+        maintainers = with maintainers; [ schneefux bachp globin ma27 ];
         license = licenses.agpl3Plus;
         platforms = platforms.linux;
         knownVulnerabilities = extraVulnerabilities ++ (optional eol "Nextcloud version ${version} is EOL");

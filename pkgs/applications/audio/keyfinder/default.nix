@@ -22,13 +22,7 @@ mkDerivation rec {
   };
 
   nativeBuildInputs = [ qmake ];
-  buildInputs = [
-    libav_0_8
-    libkeyfinder
-    qtbase
-    qtxmlpatterns
-    taglib
-  ];
+  buildInputs = [ libav_0_8 libkeyfinder qtbase qtxmlpatterns taglib ];
 
   postPatch = ''
     substituteInPlace is_KeyFinder.pro \

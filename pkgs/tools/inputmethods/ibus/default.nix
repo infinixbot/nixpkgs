@@ -79,11 +79,7 @@ stdenv.mkDerivation rec {
     ./build-without-dbus-launch.patch
   ];
 
-  outputs = [
-    "out"
-    "dev"
-    "installedTests"
-  ];
+  outputs = [ "out" "dev" "installedTests" ];
 
   postPatch = ''
     # Maintainer does not want to create separate tarballs for final release candidate and release versions,

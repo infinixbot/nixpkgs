@@ -90,11 +90,7 @@ in
 
       extraPackages = mkOption {
         type = types.listOf types.package;
-        default = with pkgs; [
-          nettools
-          nmap
-          traceroute
-        ];
+        default = with pkgs; [ nettools nmap traceroute ];
         defaultText = literalExpression "[ nettools nmap traceroute ]";
         description = ''
           Packages to be added to the Zabbix {env}`PATH`.
@@ -124,11 +120,7 @@ in
 
       database = {
         type = mkOption {
-          type = types.enum [
-            "mysql"
-            "pgsql"
-            "sqlite"
-          ];
+          type = types.enum [ "mysql" "pgsql" "sqlite" ];
           example = "mysql";
           default = "pgsql";
           description = "Database engine to use.";
@@ -216,13 +208,7 @@ in
       };
 
       settings = mkOption {
-        type =
-          with types;
-          attrsOf (oneOf [
-            int
-            str
-            (listOf str)
-          ]);
+        type = with types; attrsOf (oneOf [ int str (listOf str) ]);
         default = { };
         description = ''
           Zabbix Proxy configuration. Refer to

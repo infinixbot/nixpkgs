@@ -27,10 +27,7 @@
     };
   make-symlinks-relative = stdenv.mkDerivation {
     name = "test-make-symlinks-relative";
-    outputs = [
-      "out"
-      "man"
-    ];
+    outputs = [ "out" "man" ];
     buildCommand = ''
       mkdir -p $out/{bar,baz}
       mkdir -p $man/share/{x,y}

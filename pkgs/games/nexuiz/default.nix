@@ -42,10 +42,7 @@ stdenv.mkDerivation {
     sha256 = "0010jrxc68qqinkvdh1qn2b8z3sa5v1kcd8d1m4llp3pr6y7xqm5";
   };
 
-  nativeBuildInputs = [
-    unzip
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ unzip copyDesktopItems ];
   buildInputs = [
     # glx
     libX11
@@ -109,10 +106,7 @@ stdenv.mkDerivation {
       icon = "nexuiz";
       desktopName = "Nexuiz";
       comment = "A free first-person shooter video game developed and published by Alientrap";
-      categories = [
-        "Game"
-        "ActionGame"
-      ];
+      categories = [ "Game" "ActionGame" ];
     })
   ];
 

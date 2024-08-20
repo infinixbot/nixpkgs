@@ -57,9 +57,6 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "https://github.com/terraform-compliance/cli";
     changelog = "https://github.com/terraform-compliance/cli/releases/tag/${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      kalbasit
-      kashw2
-    ];
+    maintainers = with maintainers; [ kalbasit kashw2 ];
   };
 }

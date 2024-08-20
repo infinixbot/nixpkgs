@@ -56,15 +56,8 @@ import ./make-test-python.nix (
               ];
             };
           };
-          networking.firewall.allowedTCPPorts = [
-            80
-            443
-            8443
-          ];
-          networking.firewall.allowedUDPPorts = [
-            443
-            8443
-          ];
+          networking.firewall.allowedTCPPorts = [ 80 443 8443 ];
+          networking.firewall.allowedUDPPorts = [ 443 8443 ];
         };
       client =
         { ... }:

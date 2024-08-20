@@ -1,11 +1,6 @@
 {
   actioncable = {
-    dependencies = [
-      "actionpack"
-      "activesupport"
-      "nio4r"
-      "websocket-driver"
-    ];
+    dependencies = [ "actionpack" "activesupport" "nio4r" "websocket-driver" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -94,13 +89,7 @@
     version = "7.0.8.3";
   };
   actionview = {
-    dependencies = [
-      "activesupport"
-      "builder"
-      "erubi"
-      "rails-dom-testing"
-      "rails-html-sanitizer"
-    ];
+    dependencies = [ "activesupport" "builder" "erubi" "rails-dom-testing" "rails-html-sanitizer" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -111,10 +100,7 @@
     version = "7.0.8.3";
   };
   activejob = {
-    dependencies = [
-      "activesupport"
-      "globalid"
-    ];
+    dependencies = [ "activesupport" "globalid" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -136,10 +122,7 @@
     version = "7.0.8.3";
   };
   activerecord = {
-    dependencies = [
-      "activemodel"
-      "activesupport"
-    ];
+    dependencies = [ "activemodel" "activesupport" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -161,14 +144,7 @@
     version = "1.0.1";
   };
   activestorage = {
-    dependencies = [
-      "actionpack"
-      "activejob"
-      "activerecord"
-      "activesupport"
-      "marcel"
-      "mini_mime"
-    ];
+    dependencies = [ "actionpack" "activejob" "activerecord" "activesupport" "marcel" "mini_mime" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -179,12 +155,7 @@
     version = "7.0.8.3";
   };
   activesupport = {
-    dependencies = [
-      "concurrent-ruby"
-      "i18n"
-      "minitest"
-      "tzinfo"
-    ];
+    dependencies = [ "concurrent-ruby" "i18n" "minitest" "tzinfo" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -226,10 +197,7 @@
     version = "1.935.0";
   };
   aws-sdk-cloudwatch = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -240,12 +208,7 @@
     version = "1.91.0";
   };
   aws-sdk-core = {
-    dependencies = [
-      "aws-eventstream"
-      "aws-partitions"
-      "aws-sigv4"
-      "jmespath"
-    ];
+    dependencies = [ "aws-eventstream" "aws-partitions" "aws-sigv4" "jmespath" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -391,10 +354,7 @@
     version = "1.10.3";
   };
   faraday-cookie_jar = {
-    dependencies = [
-      "faraday"
-      "http-cookie"
-    ];
+    dependencies = [ "faraday" "http-cookie" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -558,10 +518,7 @@
     version = "2.1.1";
   };
   google-protobuf = {
-    dependencies = [
-      "bigdecimal"
-      "rake"
-    ];
+    dependencies = [ "bigdecimal" "rake" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -572,14 +529,7 @@
     version = "4.27.0";
   };
   googleauth = {
-    dependencies = [
-      "faraday"
-      "google-cloud-env"
-      "jwt"
-      "multi_json"
-      "os"
-      "signet"
-    ];
+    dependencies = [ "faraday" "google-cloud-env" "jwt" "multi_json" "os" "signet" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -643,10 +593,7 @@
     version = "2.8.1";
   };
   loofah = {
-    dependencies = [
-      "crass"
-      "nokogiri"
-    ];
+    dependencies = [ "crass" "nokogiri" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -657,12 +604,7 @@
     version = "2.22.0";
   };
   mail = {
-    dependencies = [
-      "mini_mime"
-      "net-imap"
-      "net-pop"
-      "net-smtp"
-    ];
+    dependencies = [ "mini_mime" "net-imap" "net-pop" "net-smtp" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -723,11 +665,7 @@
     version = "5.23.1";
   };
   ms_rest = {
-    dependencies = [
-      "concurrent-ruby"
-      "faraday"
-      "timeliness"
-    ];
+    dependencies = [ "concurrent-ruby" "faraday" "timeliness" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -738,12 +676,7 @@
     version = "0.7.6";
   };
   ms_rest_azure = {
-    dependencies = [
-      "concurrent-ruby"
-      "faraday"
-      "faraday-cookie_jar"
-      "ms_rest"
-    ];
+    dependencies = [ "concurrent-ruby" "faraday" "faraday-cookie_jar" "ms_rest" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -774,10 +707,7 @@
     version = "2.4.1";
   };
   net-imap = {
-    dependencies = [
-      "date"
-      "net-protocol"
-    ];
+    dependencies = [ "date" "net-protocol" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -831,10 +761,7 @@
     version = "2.7.3";
   };
   nokogiri = {
-    dependencies = [
-      "mini_portile2"
-      "racc"
-    ];
+    dependencies = [ "mini_portile2" "racc" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -887,12 +814,7 @@
     version = "3.5.0";
   };
   propshaft = {
-    dependencies = [
-      "actionpack"
-      "activesupport"
-      "rack"
-      "railties"
-    ];
+    dependencies = [ "actionpack" "activesupport" "rack" "railties" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -979,11 +901,7 @@
     version = "7.0.8.3";
   };
   rails-dom-testing = {
-    dependencies = [
-      "activesupport"
-      "minitest"
-      "nokogiri"
-    ];
+    dependencies = [ "activesupport" "minitest" "nokogiri" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -994,10 +912,7 @@
     version = "2.2.0";
   };
   rails-html-sanitizer = {
-    dependencies = [
-      "loofah"
-      "nokogiri"
-    ];
+    dependencies = [ "loofah" "nokogiri" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1008,14 +923,7 @@
     version = "1.6.0";
   };
   railties = {
-    dependencies = [
-      "actionpack"
-      "activesupport"
-      "method_source"
-      "rake"
-      "thor"
-      "zeitwerk"
-    ];
+    dependencies = [ "actionpack" "activesupport" "method_source" "rake" "thor" "zeitwerk" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1036,11 +944,7 @@
     version = "13.2.1";
   };
   representable = {
-    dependencies = [
-      "declarative"
-      "trailblazer-option"
-      "uber"
-    ];
+    dependencies = [ "declarative" "trailblazer-option" "uber" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1082,12 +986,7 @@
     version = "0.0.5";
   };
   signet = {
-    dependencies = [
-      "addressable"
-      "faraday"
-      "jwt"
-      "multi_json"
-    ];
+    dependencies = [ "addressable" "faraday" "jwt" "multi_json" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

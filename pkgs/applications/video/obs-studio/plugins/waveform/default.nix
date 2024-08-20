@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-Bg1n1yV4JzNFEXFNayNa1exsSZhmRJ0RLHDjLWmqGZE=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   postFixup = ''
     mkdir -p $out/lib $out/share/obs/obs-plugins

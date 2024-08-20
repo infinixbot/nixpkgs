@@ -33,10 +33,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "tmux";
   version = "3.4";
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   src = fetchFromGitHub {
     owner = "tmux";
@@ -144,9 +141,6 @@ stdenv.mkDerivation (finalAttrs: {
     license = lib.licenses.bsd3;
     platforms = lib.platforms.unix;
     mainProgram = "tmux";
-    maintainers = with lib.maintainers; [
-      thammers
-      fpletz
-    ];
+    maintainers = with lib.maintainers; [ thammers fpletz ];
   };
 })

@@ -76,10 +76,7 @@ stdenv.mkDerivation rec {
     homepage = "https://weasis.org";
     # Using changelog from releases as it is more accurate
     changelog = "https://github.com/nroduit/Weasis/releases/tag/v${version}";
-    license = with lib.licenses; [
-      asl20
-      epl20
-    ];
+    license = with lib.licenses; [ asl20 epl20 ];
     maintainers = [ ];
     platforms = [ "x86_64-linux" ];
     mainProgram = "Weasis";

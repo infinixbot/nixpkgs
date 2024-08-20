@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    gtk2
-    libhdhomerun
-  ];
+  buildInputs = [ gtk2 libhdhomerun ];
 
   configureFlags = [ "CPPFLAGS=-I${libhdhomerun}/include/hdhomerun" ];
   makeFlags = [ "SUBDIRS=src" ];

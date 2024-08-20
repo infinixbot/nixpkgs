@@ -30,11 +30,7 @@ stdenv.mkDerivation (finalAttrs: {
   # required for build time tool `./tools/translate.c`
   depsBuildBuild = [ buildPackages.stdenv.cc ];
 
-  nativeBuildInputs = [
-    installShellFiles
-    tcl
-    tcllib
-  ];
+  nativeBuildInputs = [ installShellFiles tcl tcllib ];
 
   buildInputs = [
     zlib

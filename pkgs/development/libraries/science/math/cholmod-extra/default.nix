@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ gfortran ];
-  buildInputs = [
-    suitesparse
-    blas
-    lapack
-  ];
+  buildInputs = [ suitesparse blas lapack ];
 
   makeFlags = [
     "BLAS=-lcblas"

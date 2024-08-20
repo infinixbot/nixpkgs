@@ -67,10 +67,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-uMwkyVdNgJ5yecO+NJeVxdXOtv3xnKcJ+AzeUOR94xQ=";
   };
 
-  hardeningDisable = [
-    "format"
-    "pie"
-  ] ++ lib.optionals enableStatic [ "fortify" ];
+  hardeningDisable = [ "format" "pie" ] ++ lib.optionals enableStatic [ "fortify" ];
 
   patches = [
     ./busybox-in-store.patch
@@ -202,10 +199,7 @@ stdenv.mkDerivation rec {
     description = "Tiny versions of common UNIX utilities in a single small executable";
     homepage = "https://busybox.net/";
     license = licenses.gpl2Only;
-    maintainers = with maintainers; [
-      TethysSvensson
-      qyliss
-    ];
+    maintainers = with maintainers; [ TethysSvensson qyliss ];
     platforms = platforms.linux;
     priority = 15; # below systemd (halt, init, poweroff, reboot) and coreutils
   };

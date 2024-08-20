@@ -276,14 +276,8 @@ let
       in
       {
         description = "wstunnel server - ${name}";
-        requires = [
-          "network.target"
-          "network-online.target"
-        ];
-        after = [
-          "network.target"
-          "network-online.target"
-        ];
+        requires = [ "network.target" "network-online.target" ];
+        after = [ "network.target" "network-online.target" ];
         wantedBy = lib.optional serverCfg.autoStart "multi-user.target";
 
         environment.RUST_LOG = serverCfg.loggingLevel;
@@ -333,14 +327,8 @@ let
     name = "wstunnel-client-${name}";
     value = {
       description = "wstunnel client - ${name}";
-      requires = [
-        "network.target"
-        "network-online.target"
-      ];
-      after = [
-        "network.target"
-        "network-online.target"
-      ];
+      requires = [ "network.target" "network-online.target" ];
+      after = [ "network.target" "network-online.target" ];
       wantedBy = lib.optional clientCfg.autoStart "multi-user.target";
 
       environment.RUST_LOG = clientCfg.loggingLevel;
@@ -472,9 +460,5 @@ in
         }) cfg.clients);
   };
 
-  meta.maintainers = with lib.maintainers; [
-    alyaeanyx
-    rvdp
-    neverbehave
-  ];
+  meta.maintainers = with lib.maintainers; [ alyaeanyx rvdp neverbehave ];
 }

@@ -52,29 +52,16 @@ stdenv.mkDerivation rec {
         lscpu ${util-linux}/bin/lscpu
     '';
 
-  nativeBuildInputs = [
-    cmake
-    makeWrapper
-    llvm.dev
-  ];
-  buildInputs =
-    [
-      # Ensure stdenv's CC is on PATH before clang-unwrapped
-      stdenv.cc
-      # Actual deps:
-      llvm
-      libclang
-      flex
-      zlib
-    ]
-    ++ (with perlPackages; [
-      perl
-      ExporterLite
-      FileWhich
-      GetoptTabular
-      RegexpCommon
-      TermReadKey
-    ]);
+  nativeBuildInputs = [ cmake makeWrapper llvm.dev ];
+  buildInputs = [
+    # Ensure stdenv's CC is on PATH before clang-unwrapped
+    stdenv.cc
+    # Actual deps:
+    llvm
+    libclang
+    flex
+    zlib
+  ] ++ (with perlPackages; [ perl ExporterLite FileWhich GetoptTabular RegexpCommon TermReadKey ]);
 
   postInstall = ''
     wrapProgram $out/bin/creduce --prefix PERL5LIB : "$PERL5LIB"

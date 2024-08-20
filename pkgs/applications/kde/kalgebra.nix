@@ -18,10 +18,7 @@
 mkDerivation {
   pname = "kalgebra";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs = [
     extra-cmake-modules

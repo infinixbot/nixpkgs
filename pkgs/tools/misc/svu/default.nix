@@ -19,12 +19,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-/FSvNoVDWAkQs09gMrqyoA0su52nlk/nSCYRAhQhbwQ=";
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X=main.version=${version}"
-    "-X=main.builtBy=nixpkgs"
-  ];
+  ldflags = [ "-s" "-w" "-X=main.version=${version}" "-X=main.builtBy=nixpkgs" ];
 
   # test assumes source directory to be a git repository
   postPatch = ''

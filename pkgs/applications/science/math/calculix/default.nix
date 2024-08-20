@@ -22,12 +22,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ gfortran ];
 
-  buildInputs = [
-    arpack
-    spooles
-    blas
-    lapack
-  ];
+  buildInputs = [ arpack spooles blas lapack ];
 
   env.NIX_CFLAGS_COMPILE = toString [
     "-I${spooles}/include/spooles"

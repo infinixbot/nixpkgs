@@ -33,28 +33,14 @@ stdenv.mkDerivation rec {
     hash = "sha256-gcs3TsUzZAW8PhNPMzyOfwu+2SNynjRgfxdGIfAHrpA=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    gettext
-    intltool
-    itstool
-    libxml2
-    makeWrapper
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config gettext intltool itstool libxml2 makeWrapper ];
 
-  buildInputs =
-    [
-      gtk3
-      gmime3
-      libnotify
-      gnutls
-    ]
-    ++ lib.optional spellChecking gtkspell3
-    ++ lib.optionals gnomeSupport [
-      libsecret
-      gcr
-    ];
+  buildInputs = [
+    gtk3
+    gmime3
+    libnotify
+    gnutls
+  ] ++ lib.optional spellChecking gtkspell3 ++ lib.optionals gnomeSupport [ libsecret gcr ];
 
   configureFlags = [
     "--with-dbus"
@@ -75,9 +61,6 @@ stdenv.mkDerivation rec {
     homepage = "http://pan.rebelbase.com/";
     maintainers = [ maintainers.eelco ];
     platforms = platforms.linux;
-    license = with licenses; [
-      gpl2Only
-      fdl11Only
-    ];
+    license = with licenses; [ gpl2Only fdl11Only ];
   };
 }

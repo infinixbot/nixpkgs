@@ -20,10 +20,7 @@ buildPythonApplication rec {
 
   nativeBuildInputs = [ setuptools-scm ];
 
-  propagatedBuildInputs = [
-    json5
-    packaging
-  ];
+  propagatedBuildInputs = [ json5 packaging ];
 
   doCheck = true;
   checkPhase = "$out/bin/fortls --help 1>/dev/null";

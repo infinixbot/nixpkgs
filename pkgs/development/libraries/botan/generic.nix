@@ -26,10 +26,7 @@ stdenv.mkDerivation rec {
   pname = "botan";
   version = "${baseVersion}.${revision}";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     name = "Botan-${version}.${sourceExtension}";
@@ -43,17 +40,7 @@ stdenv.mkDerivation rec {
   inherit postPatch;
 
   nativeBuildInputs = [ python3 ];
-  buildInputs =
-    [
-      bzip2
-      zlib
-      gmp
-      boost
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      CoreServices
-      Security
-    ];
+  buildInputs = [ bzip2 zlib gmp boost ] ++ lib.optionals stdenv.isDarwin [ CoreServices Security ];
 
   configurePhase = ''
     runHook preConfigure
@@ -79,10 +66,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Cryptographic algorithms library";
     mainProgram = "botan";
-    maintainers = with maintainers; [
-      raskin
-      thillux
-    ];
+    maintainers = with maintainers; [ raskin thillux ];
     platforms = platforms.unix;
     license = licenses.bsd2;
     inherit badPlatforms;

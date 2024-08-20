@@ -8,10 +8,7 @@ mkKdeDerivation {
   pname = "qqc2-desktop-style";
 
   extraNativeBuildInputs = [ qttools ];
-  extraBuildInputs = [
-    qtdeclarative
-    kirigami.unwrapped
-  ];
+  extraBuildInputs = [ qtdeclarative kirigami.unwrapped ];
 
   excludeDependencies = [ "kirigami" ];
 }

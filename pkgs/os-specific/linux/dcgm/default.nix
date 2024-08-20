@@ -24,10 +24,7 @@ let
   libevent-nossl-static = libevent-nossl.overrideAttrs (super: {
     CFLAGS = "-Wno-cast-function-type -Wno-implicit-fallthrough -fPIC";
     CXXFLAGS = "-Wno-cast-function-type -Wno-implicit-fallthrough -fPIC";
-    configureFlags = super.configureFlags ++ [
-      "--disable-shared"
-      "--with-pic"
-    ];
+    configureFlags = super.configureFlags ++ [ "--disable-shared" "--with-pic" ];
   });
 
   jsoncpp-static = jsoncpp.override { enableStatic = true; };

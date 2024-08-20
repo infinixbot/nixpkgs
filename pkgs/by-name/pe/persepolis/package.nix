@@ -44,22 +44,11 @@ python3.pkgs.buildPythonApplication rec {
 
   # prevent double wrapping
   dontWrapQtApps = true;
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    qt5.wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config qt5.wrapQtAppsHook ];
 
   # feed args to wrapPythonApp
   makeWrapperArgs = [
-    "--prefix PATH : ${
-      lib.makeBinPath [
-        aria2
-        ffmpeg
-        libnotify
-      ]
-    }"
+    "--prefix PATH : ${lib.makeBinPath [ aria2 ffmpeg libnotify ]}"
     "\${qtWrapperArgs[@]}"
   ];
 

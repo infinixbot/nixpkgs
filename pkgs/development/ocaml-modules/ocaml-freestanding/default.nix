@@ -72,10 +72,7 @@ else
       homepage = "https://github.com/mirage/ocaml-freestanding";
       platforms = builtins.map ({ arch, os }: "${arch}-${os}") (
         cartesianProduct {
-          arch = [
-            "aarch64"
-            "x86_64"
-          ];
+          arch = [ "aarch64" "x86_64" ];
           os = [ "linux" ];
         }
         ++ [

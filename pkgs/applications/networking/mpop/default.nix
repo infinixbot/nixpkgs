@@ -13,11 +13,7 @@
   gsaslSupport ? true,
   sslLibrary ? "gnutls",
 }:
-assert lib.assertOneOf "sslLibrary" sslLibrary [
-  "gnutls"
-  "openssl"
-  "no"
-];
+assert lib.assertOneOf "sslLibrary" sslLibrary [ "gnutls" "openssl" "no" ];
 
 stdenv.mkDerivation rec {
   pname = "mpop";

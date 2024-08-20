@@ -68,10 +68,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "gtk+3";
   version = "3.24.43";
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optional withIntrospection "devdoc";
+  outputs = [ "out" "dev" ] ++ lib.optional withIntrospection "devdoc";
   outputBin = "dev";
 
   setupHooks = [

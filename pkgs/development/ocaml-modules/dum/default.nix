@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
     --replace "Obj.final_tag" "Obj.custom_tag"
   '';
 
-  nativeBuildInputs = [
-    ocaml
-    findlib
-  ];
+  nativeBuildInputs = [ ocaml findlib ];
   propagatedBuildInputs = [ easy-format ];
 
   strictDeps = true;

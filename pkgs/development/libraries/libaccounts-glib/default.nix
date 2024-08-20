@@ -25,12 +25,7 @@ stdenv.mkDerivation rec {
   pname = "libaccounts-glib";
   version = "1.27";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-    "py"
-  ];
+  outputs = [ "out" "dev" "devdoc" "py" ];
 
   src = fetchFromGitLab {
     owner = "accounts-sso";

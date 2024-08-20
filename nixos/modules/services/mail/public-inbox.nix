@@ -109,12 +109,7 @@ let
         ProtectProc = "invisible";
         #ProtectSystem = "strict";
         RemoveIPC = true;
-        RestrictAddressFamilies =
-          [ "AF_UNIX" ]
-          ++ optionals needNetwork [
-            "AF_INET"
-            "AF_INET6"
-          ];
+        RestrictAddressFamilies = [ "AF_UNIX" ] ++ optionals needNetwork [ "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
@@ -298,12 +293,7 @@ in
           type = types.submodule {
             # Support both global options like `services.public-inbox.settings.publicinbox.imapserver`
             # and inbox specific options like `services.public-inbox.settings.publicinbox.foo.address`.
-            freeformType =
-              with types;
-              attrsOf (oneOf [
-                iniAtom
-                (attrsOf iniAtom)
-              ]);
+            freeformType = with types; attrsOf (oneOf [ iniAtom (attrsOf iniAtom) ]);
 
             options.css = mkOption {
               type = with types; listOf str;
@@ -319,10 +309,7 @@ in
             options.nntpserver = mkOption {
               type = with types; listOf str;
               default = [ ];
-              example = [
-                "nntp://news.public-inbox.org"
-                "nntps://news.public-inbox.org"
-              ];
+              example = [ "nntp://news.public-inbox.org" "nntps://news.public-inbox.org" ];
               description = "NNTP URLs to this public-inbox instance";
             };
             options.pop3server = mkOption {
@@ -332,13 +319,7 @@ in
               description = "POP3 URLs to this public-inbox instance";
             };
             options.wwwlisting = mkOption {
-              type =
-                with types;
-                enum [
-                  "all"
-                  "404"
-                  "match=domain"
-                ];
+              type = with types; enum [ "all" "404" "match=domain" ];
               default = "404";
               description = ''
                 Controls which lists (if any) are listed for when the root
@@ -348,12 +329,7 @@ in
           };
         };
         options.publicinboxmda.spamcheck = mkOption {
-          type =
-            with types;
-            enum [
-              "spamc"
-              "none"
-            ];
+          type = with types; enum [ "spamc" "none" ];
           default = "none";
           description = ''
             If set to spamc, {manpage}`public-inbox-watch(1)` will filter spam
@@ -361,12 +337,7 @@ in
           '';
         };
         options.publicinboxwatch.spamcheck = mkOption {
-          type =
-            with types;
-            enum [
-              "spamc"
-              "none"
-            ];
+          type = with types; enum [ "spamc" "none" ];
           default = "none";
           description = ''
             If set to spamc, {manpage}`public-inbox-watch(1)` will filter spam
@@ -438,13 +409,9 @@ in
     };
     networking.firewall = mkIf cfg.openFirewall {
       allowedTCPPorts = mkMerge (
-        map
-          (proto: (mkIf (cfg.${proto}.enable && types.port.check cfg.${proto}.port) [ cfg.${proto}.port ]))
-          [
-            "imap"
-            "http"
-            "nntp"
-          ]
+        map (
+          proto: (mkIf (cfg.${proto}.enable && types.port.check cfg.${proto}.port) [ cfg.${proto}.port ])
+        ) [ "imap" "http" "nntp" ]
       );
     };
     services.postfix = mkIf (cfg.postfix.enable && cfg.mda.enable) {
@@ -486,44 +453,29 @@ in
       };
     };
     systemd.sockets = mkMerge (
-      map
-        (
-          proto:
-          mkIf (cfg.${proto}.enable && cfg.${proto}.port != null) {
-            "public-inbox-${proto}d" = {
-              listenStreams = [ (toString cfg.${proto}.port) ];
-              wantedBy = [ "sockets.target" ];
-            };
-          }
-        )
-        [
-          "imap"
-          "http"
-          "nntp"
-        ]
+      map (
+        proto:
+        mkIf (cfg.${proto}.enable && cfg.${proto}.port != null) {
+          "public-inbox-${proto}d" = {
+            listenStreams = [ (toString cfg.${proto}.port) ];
+            wantedBy = [ "sockets.target" ];
+          };
+        }
+      ) [ "imap" "http" "nntp" ]
     );
     systemd.services = mkMerge [
       (mkIf cfg.imap.enable {
         public-inbox-imapd = mkMerge [
           (serviceConfig "imapd")
           {
-            after = [
-              "public-inbox-init.service"
-              "public-inbox-watch.service"
-            ];
+            after = [ "public-inbox-init.service" "public-inbox-watch.service" ];
             requires = [ "public-inbox-init.service" ];
             serviceConfig = {
               ExecStart = escapeShellArgs (
                 [ "${cfg.package}/bin/public-inbox-imapd" ]
                 ++ cfg.imap.args
-                ++ optionals (cfg.imap.cert != null) [
-                  "--cert"
-                  cfg.imap.cert
-                ]
-                ++ optionals (cfg.imap.key != null) [
-                  "--key"
-                  cfg.imap.key
-                ]
+                ++ optionals (cfg.imap.cert != null) [ "--cert" cfg.imap.cert ]
+                ++ optionals (cfg.imap.key != null) [ "--key" cfg.imap.key ]
               );
             };
           }
@@ -533,10 +485,7 @@ in
         public-inbox-httpd = mkMerge [
           (serviceConfig "httpd")
           {
-            after = [
-              "public-inbox-init.service"
-              "public-inbox-watch.service"
-            ];
+            after = [ "public-inbox-init.service" "public-inbox-watch.service" ];
             requires = [ "public-inbox-init.service" ];
             serviceConfig = {
               BindReadOnlyPaths = map (c: c.dir) (lib.attrValues cfg.settings.coderepo);
@@ -584,23 +533,14 @@ in
         public-inbox-nntpd = mkMerge [
           (serviceConfig "nntpd")
           {
-            after = [
-              "public-inbox-init.service"
-              "public-inbox-watch.service"
-            ];
+            after = [ "public-inbox-init.service" "public-inbox-watch.service" ];
             requires = [ "public-inbox-init.service" ];
             serviceConfig = {
               ExecStart = escapeShellArgs (
                 [ "${cfg.package}/bin/public-inbox-nntpd" ]
                 ++ cfg.nntp.args
-                ++ optionals (cfg.nntp.cert != null) [
-                  "--cert"
-                  cfg.nntp.cert
-                ]
-                ++ optionals (cfg.nntp.key != null) [
-                  "--key"
-                  cfg.nntp.key
-                ]
+                ++ optionals (cfg.nntp.cert != null) [ "--cert" cfg.nntp.cert ]
+                ++ optionals (cfg.nntp.key != null) [ "--key" cfg.nntp.key ]
               );
             };
           }
@@ -665,16 +605,7 @@ in
 
                       PI_CONFIG=$conf_dir/conf \
                       ${cfg.package}/bin/public-inbox-init -V2 \
-                        ${
-                          escapeShellArgs (
-                            [
-                              name
-                              "${stateDir}/inboxes/${name}"
-                              inbox.url
-                            ]
-                            ++ inbox.address
-                          )
-                        }
+                        ${escapeShellArgs ([ name "${stateDir}/inboxes/${name}" inbox.url ] ++ inbox.address)}
 
                       rm -rf $conf_dir
                     fi
@@ -705,8 +636,5 @@ in
     ];
     environment.systemPackages = with pkgs; [ cfg.package ];
   };
-  meta.maintainers = with lib.maintainers; [
-    julm
-    qyliss
-  ];
+  meta.maintainers = with lib.maintainers; [ julm qyliss ];
 }

@@ -20,10 +20,7 @@ with lib;
     serverAliases = mkOption {
       type = types.listOf types.str;
       default = [ ];
-      example = [
-        "www.example.org"
-        "example.org"
-      ];
+      example = [ "www.example.org" "example.org" ];
       description = ''
         Additional names of virtual hosts served by this virtual host configuration.
       '';
@@ -60,10 +57,7 @@ with lib;
               type = listOf str;
               description = "Extra parameters of this listen directive.";
               default = [ ];
-              example = [
-                "backlog=1024"
-                "deferred"
-              ];
+              example = [ "backlog=1024" "deferred" ];
             };
           };
         });
@@ -102,10 +96,7 @@ with lib;
         Note: This option overrides `enableIPv6`
       '';
       default = [ ];
-      example = [
-        "127.0.0.1"
-        "[::1]"
-      ];
+      example = [ "127.0.0.1" "[::1]" ];
     };
 
     enableACME = mkOption {

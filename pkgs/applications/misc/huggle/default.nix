@@ -30,17 +30,9 @@ stdenv.mkDerivation rec {
     which
     cmake
   ];
-  buildInputs = [
-    ncurses
-    yaml-cpp
-    qtwebengine
-    libirc
-  ];
+  buildInputs = [ ncurses yaml-cpp qtwebengine libirc ];
 
-  patches = [
-    ./00-remove-third-party.patch
-    ./01-extensions.patch
-  ];
+  patches = [ ./00-remove-third-party.patch ./01-extensions.patch ];
   postPatch = ''
     rm -r src/3rd
     echo ${version} > src/huggle_core/version.txt

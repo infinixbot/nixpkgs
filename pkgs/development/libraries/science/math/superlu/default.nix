@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
     sha256 = "0qzlb7cd608q62kyppd0a8c65l03vrwqql6gsm465rky23b6dyr8";
   };
 
-  nativeBuildInputs = [
-    cmake
-    gfortran
-  ];
+  nativeBuildInputs = [ cmake gfortran ];
 
   propagatedBuildInputs = [ blas ];
 

@@ -56,9 +56,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/wting/autojump";
     license = licenses.gpl3;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      domenkozar
-      yurrriq
-    ];
+    maintainers = with maintainers; [ domenkozar yurrriq ];
   };
 }

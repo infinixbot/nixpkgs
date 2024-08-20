@@ -78,10 +78,7 @@ stdenv.mkDerivation (
             self = deterministicLuajit;
           };
         in
-        deterministicLuajit.withPackages (ps: [
-          ps.mpack
-          (nvim-lpeg-dylib ps)
-        ])
+        deterministicLuajit.withPackages (ps: [ ps.mpack (nvim-lpeg-dylib ps) ])
       else
         lua.luaOnBuild;
 
@@ -137,14 +134,8 @@ stdenv.mkDerivation (
         tree-sitter
         unibilium
       ]
-      ++ lib.optionals stdenv.isDarwin [
-        libiconv
-        CoreServices
-      ]
-      ++ lib.optionals finalAttrs.finalPackage.doCheck [
-        glibcLocales
-        procps
-      ];
+      ++ lib.optionals stdenv.isDarwin [ libiconv CoreServices ]
+      ++ lib.optionals finalAttrs.finalPackage.doCheck [ glibcLocales procps ];
 
     doCheck = false;
 
@@ -166,12 +157,7 @@ stdenv.mkDerivation (
     # extra programs test via `make functionaltest`
     nativeCheckInputs =
       let
-        pyEnv = python3.withPackages (
-          ps: with ps; [
-            pynvim
-            msgpack
-          ]
-        );
+        pyEnv = python3.withPackages (ps: with ps; [ pynvim msgpack ]);
       in
       [
         fish
@@ -256,14 +242,8 @@ stdenv.mkDerivation (
       # Contributions committed after b17d96 are licensed under Apache 2.0 unless
       # those contributions were copied from Vim (identified in the commit logs
       # by the vim-patch token). See LICENSE for details."
-      license = with lib.licenses; [
-        asl20
-        vim
-      ];
-      maintainers = with lib.maintainers; [
-        manveru
-        rvolosatovs
-      ];
+      license = with lib.licenses; [ asl20 vim ];
+      maintainers = with lib.maintainers; [ manveru rvolosatovs ];
       platforms = lib.platforms.unix;
     };
   }

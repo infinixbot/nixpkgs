@@ -47,9 +47,6 @@ buildGoModule rec {
     changelog = "https://github.com/planetscale/cli/releases/tag/v${version}";
     homepage = "https://www.planetscale.com/";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      pimeys
-      kashw2
-    ];
+    maintainers = with maintainers; [ pimeys kashw2 ];
   };
 }

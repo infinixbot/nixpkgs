@@ -21,11 +21,7 @@ stdenv.mkDerivation {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    systemd
-    libxml2
-    libusb1
-  ];
+  buildInputs = [ systemd libxml2 libusb1 ];
 
   installPhase = ''
     runHook preInstall
@@ -37,10 +33,7 @@ stdenv.mkDerivation {
     homepage = "https://github.com/linux-msm/qdl";
     description = "Tool for flashing images to Qualcomm devices";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      muscaln
-      anas
-    ];
+    maintainers = with maintainers; [ muscaln anas ];
     platforms = platforms.linux;
     mainProgram = "qdl";
   };

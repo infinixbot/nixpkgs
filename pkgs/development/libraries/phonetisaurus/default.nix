@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    python3
-    openfst
-  ];
+  buildInputs = [ python3 openfst ];
 
   meta = with lib; {
     description = "Framework for Grapheme-to-phoneme models for speech recognition using the OpenFst framework";

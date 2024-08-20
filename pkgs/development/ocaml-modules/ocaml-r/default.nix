@@ -33,15 +33,8 @@ buildDunePackage rec {
     })
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    R
-  ];
-  buildInputs = [
-    dune-configurator
-    stdio
-    R
-  ];
+  nativeBuildInputs = [ pkg-config R ];
+  buildInputs = [ dune-configurator stdio R ];
 
   doCheck = true;
   checkInputs = [ alcotest ];

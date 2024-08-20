@@ -23,10 +23,7 @@ buildDunePackage rec {
   useDune2 = true;
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    cairo
-    dune-configurator
-  ] ++ lib.optionals stdenv.isDarwin [ ApplicationServices ];
+  buildInputs = [ cairo dune-configurator ] ++ lib.optionals stdenv.isDarwin [ ApplicationServices ];
 
   doCheck =
     !(
@@ -45,9 +42,6 @@ buildDunePackage rec {
       and SVG file output.
     '';
     license = licenses.lgpl3;
-    maintainers = with maintainers; [
-      jirkamarsik
-      vbgl
-    ];
+    maintainers = with maintainers; [ jirkamarsik vbgl ];
   };
 }

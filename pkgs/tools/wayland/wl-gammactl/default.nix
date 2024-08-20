@@ -24,17 +24,8 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [
-    meson
-    pkg-config
-    ninja
-    glib
-    wayland-scanner
-  ];
-  buildInputs = [
-    wayland
-    gtk3
-  ];
+  nativeBuildInputs = [ meson pkg-config ninja glib wayland-scanner ];
+  buildInputs = [ wayland gtk3 ];
 
   postUnpack = ''
     rmdir source/wlr-protocols

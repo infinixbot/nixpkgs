@@ -19,10 +19,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    SDL
-    buildsystem
-  ];
+  buildInputs = [ SDL buildsystem ];
 
   makeFlags = [
     "PREFIX=$(out)"

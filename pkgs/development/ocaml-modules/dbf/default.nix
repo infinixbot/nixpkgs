@@ -24,11 +24,7 @@ buildDunePackage rec {
   };
 
   buildInputs = [ ppx_cstruct ];
-  propagatedBuildInputs = [
-    rresult
-    cstruct-unix
-    core_kernel
-  ];
+  propagatedBuildInputs = [ rresult cstruct-unix core_kernel ];
 
   meta = with lib; {
     description = "DBF format parsing";

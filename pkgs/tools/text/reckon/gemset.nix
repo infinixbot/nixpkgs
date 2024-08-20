@@ -40,12 +40,7 @@
     version = "1.8.0";
   };
   reckon = {
-    dependencies = [
-      "chronic"
-      "highline"
-      "matrix"
-      "rchardet"
-    ];
+    dependencies = [ "chronic" "highline" "matrix" "rchardet" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

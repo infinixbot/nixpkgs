@@ -19,10 +19,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-PUcfE7LQQh2ftiOiOoucSfxYnTI4zRNmmSqqmvvvs7g=";
 
-  subPackages = [
-    "cmd/upterm"
-    "cmd/uptermd"
-  ];
+  subPackages = [ "cmd/upterm" "cmd/uptermd" ];
 
   nativeBuildInputs = [ installShellFiles ];
 

@@ -15,20 +15,12 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "kubernetes"
-        "proxy"
-        "address"
-      ]
-      [
-        "services"
-        "kubernetes"
-        "proxy"
-        "bindAddress"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "kubernetes" "proxy" "address" ] [
+      "services"
+      "kubernetes"
+      "proxy"
+      "bindAddress"
+    ])
   ];
 
   ###### interface
@@ -81,10 +73,7 @@ in
       description = "Kubernetes Proxy Service";
       wantedBy = [ "kubernetes.target" ];
       after = [ "kube-apiserver.service" ];
-      path = with pkgs; [
-        iptables
-        conntrack-tools
-      ];
+      path = with pkgs; [ iptables conntrack-tools ];
       serviceConfig = {
         Slice = "kubernetes.slice";
         ExecStart = ''

@@ -27,20 +27,13 @@ buildGoModule rec {
     hash = "sha256-43p2sD6mpcoMukr7mY2GTsti4FVC7Blq0ZozuIJlC30=";
   };
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   vendorHash = null;
 
   doCheck = false;
 
-  nativeBuildInputs = [
-    go-md2man
-    installShellFiles
-    pkg-config
-  ];
+  nativeBuildInputs = [ go-md2man installShellFiles pkg-config ];
 
   buildInputs =
     [

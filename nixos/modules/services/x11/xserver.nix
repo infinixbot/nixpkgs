@@ -206,83 +206,33 @@ in
       "xserver"
       "useXFS"
     ] "Use services.xserver.fontPath instead of useXFS")
-    (mkRemovedOptionModule
-      [
-        "services"
-        "xserver"
-        "useGlamor"
-      ]
+    (mkRemovedOptionModule [ "services" "xserver" "useGlamor" ]
       "Option services.xserver.useGlamor was removed because it is unnecessary. Drivers that uses Glamor will use it automatically."
     )
     (lib.mkRenamedOptionModuleWith {
       sinceRelease = 2311;
-      from = [
-        "services"
-        "xserver"
-        "layout"
-      ];
-      to = [
-        "services"
-        "xserver"
-        "xkb"
-        "layout"
-      ];
+      from = [ "services" "xserver" "layout" ];
+      to = [ "services" "xserver" "xkb" "layout" ];
     })
     (lib.mkRenamedOptionModuleWith {
       sinceRelease = 2311;
-      from = [
-        "services"
-        "xserver"
-        "xkbModel"
-      ];
-      to = [
-        "services"
-        "xserver"
-        "xkb"
-        "model"
-      ];
+      from = [ "services" "xserver" "xkbModel" ];
+      to = [ "services" "xserver" "xkb" "model" ];
     })
     (lib.mkRenamedOptionModuleWith {
       sinceRelease = 2311;
-      from = [
-        "services"
-        "xserver"
-        "xkbOptions"
-      ];
-      to = [
-        "services"
-        "xserver"
-        "xkb"
-        "options"
-      ];
+      from = [ "services" "xserver" "xkbOptions" ];
+      to = [ "services" "xserver" "xkb" "options" ];
     })
     (lib.mkRenamedOptionModuleWith {
       sinceRelease = 2311;
-      from = [
-        "services"
-        "xserver"
-        "xkbVariant"
-      ];
-      to = [
-        "services"
-        "xserver"
-        "xkb"
-        "variant"
-      ];
+      from = [ "services" "xserver" "xkbVariant" ];
+      to = [ "services" "xserver" "xkb" "variant" ];
     })
     (lib.mkRenamedOptionModuleWith {
       sinceRelease = 2311;
-      from = [
-        "services"
-        "xserver"
-        "xkbDir"
-      ];
-      to = [
-        "services"
-        "xserver"
-        "xkb"
-        "dir"
-      ];
+      from = [ "services" "xserver" "xkbDir" ];
+      to = [ "services" "xserver" "xkb" "dir" ];
     })
   ];
 
@@ -393,10 +343,7 @@ in
 
       videoDrivers = mkOption {
         type = types.listOf types.str;
-        default = [
-          "modesetting"
-          "fbdev"
-        ];
+        default = [ "modesetting" "fbdev" ];
         example = [
           "nvidia"
           "amdgpu"
@@ -406,10 +353,7 @@ in
           mapAttrsToList (
             n: v:
             optional (hasPrefix "xf86video" n) {
-              path = [
-                "xorg"
-                n
-              ];
+              path = [ "xorg" n ];
               title = removePrefix "xf86video" n;
             }
           ) pkgs.xorg
@@ -857,11 +801,7 @@ in
     systemd.services.display-manager = {
       description = "Display Manager";
 
-      after = [
-        "acpid.service"
-        "systemd-logind.service"
-        "systemd-user-sessions.service"
-      ];
+      after = [ "acpid.service" "systemd-logind.service" "systemd-user-sessions.service" ];
 
       restartIfChanged = false;
 
@@ -1018,11 +958,7 @@ in
                       EndSubSection
                     '';
                   in
-                  concatMapStrings f [
-                    8
-                    16
-                    24
-                  ]
+                  concatMapStrings f [ 8 16 24 ]
                 )
             }
 

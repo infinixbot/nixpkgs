@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-W6IUn7R9tlnWrKe/qOHJL+43AL4EZB7zj7M5u9l83WE=";
   };
 
-  buildInputs = [
-    zlib
-    libdeflate
-    isa-l
-  ];
+  buildInputs = [ zlib libdeflate isa-l ];
 
   makeFlags = [
     "CC:=$(CC)"

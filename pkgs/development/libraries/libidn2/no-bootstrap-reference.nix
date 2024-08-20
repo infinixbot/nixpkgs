@@ -10,11 +10,7 @@
 # get replaced by a new one, so that there's no reference to bootstrap tools.
 runCommandLocal "${libidn2.pname}-${libidn2.version}"
   {
-    outputs = [
-      "bin"
-      "dev"
-      "out"
-    ];
+    outputs = [ "bin" "dev" "out" ];
     passthru = {
       inherit (libidn2) out info devdoc; # no need to touch these store paths
     };
@@ -26,11 +22,7 @@ runCommandLocal "${libidn2.pname}-${libidn2.version}"
     patchelf \
       --set-interpreter '${stdenv.cc.bintools.dynamicLinker}' \
       --set-rpath '${
-        lib.concatMapStringsSep ":" (p: lib.getLib p + "/lib") [
-          stdenv.cc.libc
-          libunistring
-          libidn2
-        ]
+        lib.concatMapStringsSep ":" (p: lib.getLib p + "/lib") [ stdenv.cc.libc libunistring libidn2 ]
       }' \
       "$bin"/bin/*
 

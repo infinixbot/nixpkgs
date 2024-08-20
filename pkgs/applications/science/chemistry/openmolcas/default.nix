@@ -24,20 +24,10 @@
 }:
 
 assert blas-ilp64.isILP64;
-assert lib.elem blas-ilp64.passthru.implementation [
-  "openblas"
-  "mkl"
-];
+assert lib.elem blas-ilp64.passthru.implementation [ "openblas" "mkl" ];
 
 let
-  python = python3.withPackages (
-    ps: with ps; [
-      six
-      pyparsing
-      numpy
-      h5py
-    ]
-  );
+  python = python3.withPackages (ps: with ps; [ six pyparsing numpy h5py ]);
   qcmaquisSrc = fetchFromGitHub {
     owner = "qcscine";
     repo = "qcmaquis";
@@ -167,14 +157,8 @@ stdenv.mkDerivation rec {
     description = "Advanced quantum chemistry software package";
     homepage = "https://gitlab.com/Molcas/OpenMolcas";
     maintainers = [ maintainers.markuskowa ];
-    license = with licenses; [
-      lgpl21Only
-      bsd3
-    ];
-    platforms = [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
+    license = with licenses; [ lgpl21Only bsd3 ];
+    platforms = [ "aarch64-linux" "x86_64-linux" ];
     mainProgram = "pymolcas";
   };
 }

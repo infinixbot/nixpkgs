@@ -31,14 +31,7 @@ let
       # their assertions too
       (attrValues config.fileSystems);
 
-  specialFSTypes = [
-    "proc"
-    "sysfs"
-    "tmpfs"
-    "ramfs"
-    "devtmpfs"
-    "devpts"
-  ];
+  specialFSTypes = [ "proc" "sysfs" "tmpfs" "ramfs" "devtmpfs" "devpts" ];
 
   nonEmptyWithoutTrailingSlash = addCheckDesc "non-empty without trailing slash" types.str (
     s: isNonEmpty s && (builtins.match ".+/" s) == null
@@ -213,18 +206,7 @@ let
       skipCheck =
         fs: fs.noCheck || fs.device == "none" || builtins.elem fs.fsType fsToSkipCheck || isBindMount fs;
       # https://wiki.archlinux.org/index.php/fstab#Filepath_spaces
-      escape =
-        string:
-        builtins.replaceStrings
-          [
-            " "
-            "\t"
-          ]
-          [
-            "\\040"
-            "\\011"
-          ]
-          string;
+      escape = string: builtins.replaceStrings [ " " "\t" ] [ "\\040" "\\011" ] string;
     in
     fstabFileSystems:
     { }:
@@ -281,12 +263,7 @@ in
           "/bigdisk".label = "bigdisk";
         }
       '';
-      type = types.attrsOf (
-        types.submodule [
-          coreFileSystemOpts
-          fileSystemOpts
-        ]
-      );
+      type = types.attrsOf (types.submodule [ coreFileSystemOpts fileSystemOpts ]);
       description = ''
         The file systems to be mounted.  It must include an entry for
         the root directory (`mountPoint = "/"`).  Each
@@ -426,13 +403,7 @@ in
     # Add the mount helpers to the system path so that `mount' can find them.
     system.fsPackages = [ pkgs.dosfstools ];
 
-    environment.systemPackages =
-      with pkgs;
-      [
-        fuse3
-        fuse
-      ]
-      ++ config.system.fsPackages;
+    environment.systemPackages = with pkgs; [ fuse3 fuse ] ++ config.system.fsPackages;
 
     environment.etc.fstab.text =
       let
@@ -468,10 +439,7 @@ in
     # Provide a target that pulls in all filesystems.
     systemd.targets.fs = {
       description = "All File Systems";
-      wants = [
-        "local-fs.target"
-        "remote-fs.target"
-      ];
+      wants = [ "local-fs.target" "remote-fs.target" ];
     };
 
     systemd.services = {
@@ -504,10 +472,7 @@ in
           ConditionVirtualization = "!container";
           DefaultDependencies = false; # needed to prevent a cycle
         };
-        before = [
-          "systemd-pstore.service"
-          "shutdown.target"
-        ];
+        before = [ "systemd-pstore.service" "shutdown.target" ];
         conflicts = [ "shutdown.target" ];
         wantedBy = [ "systemd-pstore.service" ];
       };
@@ -523,60 +488,29 @@ in
       {
         "/proc" = {
           fsType = "proc";
-          options = [
-            "nosuid"
-            "noexec"
-            "nodev"
-          ];
+          options = [ "nosuid" "noexec" "nodev" ];
         };
         "/run" = {
           fsType = "tmpfs";
-          options = [
-            "nosuid"
-            "nodev"
-            "strictatime"
-            "mode=755"
-            "size=${config.boot.runSize}"
-          ];
+          options = [ "nosuid" "nodev" "strictatime" "mode=755" "size=${config.boot.runSize}" ];
         };
         "/dev" = {
           fsType = "devtmpfs";
-          options = [
-            "nosuid"
-            "strictatime"
-            "mode=755"
-            "size=${config.boot.devSize}"
-          ];
+          options = [ "nosuid" "strictatime" "mode=755" "size=${config.boot.devSize}" ];
         };
         "/dev/shm" = {
           fsType = "tmpfs";
-          options = [
-            "nosuid"
-            "nodev"
-            "strictatime"
-            "mode=1777"
-            "size=${config.boot.devShmSize}"
-          ];
+          options = [ "nosuid" "nodev" "strictatime" "mode=1777" "size=${config.boot.devShmSize}" ];
         };
         "/dev/pts" = {
           fsType = "devpts";
-          options = [
-            "nosuid"
-            "noexec"
-            "mode=620"
-            "ptmxmode=0666"
-            "gid=${toString config.ids.gids.tty}"
-          ];
+          options = [ "nosuid" "noexec" "mode=620" "ptmxmode=0666" "gid=${toString config.ids.gids.tty}" ];
         };
 
         # To hold secrets that shouldn't be written to disk
         "/run/keys" = {
           fsType = "ramfs";
-          options = [
-            "nosuid"
-            "nodev"
-            "mode=750"
-          ];
+          options = [ "nosuid" "nodev" "mode=750" ];
         };
       }
       // optionalAttrs (!config.boot.isContainer) {
@@ -585,11 +519,7 @@ in
         # nodes).
         "/sys" = {
           fsType = "sysfs";
-          options = [
-            "nosuid"
-            "noexec"
-            "nodev"
-          ];
+          options = [ "nosuid" "noexec" "nodev" ];
         };
       };
 

@@ -10,10 +10,7 @@ buildDunePackage {
 
   duneVersion = "3";
 
-  buildInputs = [
-    csv
-    uutf
-  ];
+  buildInputs = [ csv uutf ];
 
   doCheck = true;
 

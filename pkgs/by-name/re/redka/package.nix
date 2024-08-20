@@ -17,10 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-aX0X6TWVEouo884LunCt+UzLyvDHgmvuxdV0wh0r7Ro=";
 
-  subPackages = [
-    "cmd/redka"
-    "cmd/cli"
-  ];
+  subPackages = [ "cmd/redka" "cmd/cli" ];
 
   ldflags = [ "-X main.version=v${version}" ];
 

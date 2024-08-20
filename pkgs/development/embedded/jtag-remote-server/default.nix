@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-qtgO0BO2hvWi/E2RzGTTuQynKbh7/OLeoLcm60dqro8=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
   buildInputs = [ libftdi1 ];
 
   meta = with lib; {

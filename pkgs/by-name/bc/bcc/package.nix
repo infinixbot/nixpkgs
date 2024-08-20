@@ -115,10 +115,7 @@ python3.pkgs.buildPythonApplication rec {
     wrapPythonProgramsIn "$out/share/bcc/tools" "$out $pythonPath"
   '';
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   passthru.tests = {
     bpf = nixosTests.bpf;
@@ -128,12 +125,7 @@ python3.pkgs.buildPythonApplication rec {
     description = "Dynamic Tracing Tools for Linux";
     homepage = "https://iovisor.github.io/bcc/";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      ragge
-      mic92
-      thoughtpolice
-      martinetd
-    ];
+    maintainers = with maintainers; [ ragge mic92 thoughtpolice martinetd ];
     platforms = platforms.linux;
   };
 }

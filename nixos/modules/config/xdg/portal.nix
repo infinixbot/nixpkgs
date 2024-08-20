@@ -23,18 +23,7 @@ in
 
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "flatpak"
-        "extraPortals"
-      ]
-      [
-        "xdg"
-        "portal"
-        "extraPortals"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "flatpak" "extraPortals" ] [ "xdg" "portal" "extraPortals" ])
     (mkRemovedOptionModule [
       "xdg"
       "portal"
@@ -82,16 +71,10 @@ in
       default = { };
       example = {
         x-cinnamon = {
-          default = [
-            "xapp"
-            "gtk"
-          ];
+          default = [ "xapp" "gtk" ];
         };
         pantheon = {
-          default = [
-            "pantheon"
-            "gtk"
-          ];
+          default = [ "pantheon" "gtk" ];
           "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
         };
         common = {

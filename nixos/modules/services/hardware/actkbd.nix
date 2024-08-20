@@ -38,13 +38,7 @@ let
         };
 
         events = mkOption {
-          type = types.listOf (
-            types.enum [
-              "key"
-              "rep"
-              "rel"
-            ]
-          );
+          type = types.listOf (types.enum [ "key" "rep" "rel" ]);
           default = [ "key" ];
           description = "List of events to match.";
         };

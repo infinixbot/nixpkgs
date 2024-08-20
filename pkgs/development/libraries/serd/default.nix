@@ -16,12 +16,7 @@ stdenv.mkDerivation rec {
   pname = "serd";
   version = "0.30.16";
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "dev" "doc" "man" ];
 
   src = fetchurl {
     url = "https://download.drobilla.net/${pname}-${version}.tar.xz";

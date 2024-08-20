@@ -41,12 +41,7 @@ final: prev: {
     nativeBuildInputs = [ pkgs.buildPackages.makeWrapper ];
     postInstall = ''
       for prog in bower2nix fetch-bower; do
-        wrapProgram "$out/bin/$prog" --prefix PATH : ${
-          lib.makeBinPath [
-            pkgs.git
-            pkgs.nix
-          ]
-        }
+        wrapProgram "$out/bin/$prog" --prefix PATH : ${lib.makeBinPath [ pkgs.git pkgs.nix ]}
       done
     '';
   };
@@ -88,17 +83,11 @@ final: prev: {
     preRebuild = ''
       export npm_config_zmq_external=true
     '';
-    buildInputs = oldAttrs.buildInputs ++ [
-      final.node-gyp-build
-      pkgs.zeromq
-    ];
+    buildInputs = oldAttrs.buildInputs ++ [ final.node-gyp-build pkgs.zeromq ];
   });
 
   insect = prev.insect.override (oldAttrs: {
-    nativeBuildInputs = oldAttrs.nativeBuildInputs or [ ] ++ [
-      pkgs.psc-package
-      final.pulp
-    ];
+    nativeBuildInputs = oldAttrs.nativeBuildInputs or [ ] ++ [ pkgs.psc-package final.pulp ];
   });
 
   intelephense = prev.intelephense.override (oldAttrs: {
@@ -454,10 +443,7 @@ final: prev: {
   };
 
   wavedrom-cli = prev.wavedrom-cli.override {
-    nativeBuildInputs = [
-      pkgs.pkg-config
-      pkgs.node-pre-gyp
-    ];
+    nativeBuildInputs = [ pkgs.pkg-config pkgs.node-pre-gyp ];
     # These dependencies are required by
     # https://github.com/Automattic/node-canvas.
     buildInputs =

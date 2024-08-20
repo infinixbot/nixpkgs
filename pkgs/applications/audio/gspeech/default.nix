@@ -62,18 +62,8 @@ python3.pkgs.buildPythonApplication rec {
   '';
 
   postFixup = ''
-    wrapProgram $out/bin/gspeech --prefix PATH : ${
-      lib.makeBinPath [
-        picotts
-        sox
-      ]
-    }
-    wrapProgram $out/bin/gspeech-cli --prefix PATH : ${
-      lib.makeBinPath [
-        picotts
-        sox
-      ]
-    }
+    wrapProgram $out/bin/gspeech --prefix PATH : ${lib.makeBinPath [ picotts sox ]}
+    wrapProgram $out/bin/gspeech-cli --prefix PATH : ${lib.makeBinPath [ picotts sox ]}
   '';
 
   strictDeps = false;

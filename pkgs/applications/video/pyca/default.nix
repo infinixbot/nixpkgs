@@ -29,10 +29,7 @@ let
 
     npmDepsHash = "sha256-0U+semrNWTkNu3uQQkiJKZT1hB0/IfkL84G7/oP8XYY=";
 
-    nativeBuildInputs = [
-      jq
-      python
-    ];
+    nativeBuildInputs = [ jq python ];
 
     postPatch = ''
       ${jq}/bin/jq '. += {"version": "${version}"}' < package.json > package.json.tmp

@@ -17,10 +17,7 @@ import ../make-test-python.nix (
             "FOO.BAR".acl = [
               {
                 principal = "admin";
-                access = [
-                  "add"
-                  "cpw"
-                ];
+                access = [ "add" "cpw" ];
               }
             ];
           };

@@ -42,11 +42,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Build manager for GNUstep";
     homepage = "https://gnustep.github.io/";
     license = lib.licenses.lgpl2Plus;
-    maintainers = with lib.maintainers; [
-      ashalkhakov
-      matthewbauer
-      dblsaiko
-    ];
+    maintainers = with lib.maintainers; [ ashalkhakov matthewbauer dblsaiko ];
     platforms = lib.platforms.unix;
   };
 })

@@ -21,10 +21,7 @@ mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    qmake
-    qttools
-  ];
+  nativeBuildInputs = [ qmake qttools ];
   buildInputs = [ qtx11extras ];
 
   qmakeFlags = [

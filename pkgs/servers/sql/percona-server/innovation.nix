@@ -117,10 +117,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional (stdenv.isLinux && withJemalloc) jemalloc
     ++ lib.optional (stdenv.isLinux && withTcmalloc) gperftools;
 
-  outputs = [
-    "out"
-    "static"
-  ];
+  outputs = [ "out" "static" ];
 
   cmakeFlags =
     [
@@ -163,40 +160,14 @@ stdenv.mkDerivation (finalAttrs: {
       ln -s libmysqlclient$so $out/lib/libmysqlclient_r$so
 
       wrapProgram $out/bin/mysqld_safe --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          procps
-          gnugrep
-          gnused
-          hostname
-        ]
+        lib.makeBinPath [ coreutils procps gnugrep gnused hostname ]
       }
-      wrapProgram $out/bin/mysql_config --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          gnused
-        ]
-      }
-      wrapProgram $out/bin/ps_mysqld_helper --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          gnugrep
-        ]
-      }
-      wrapProgram $out/bin/ps-admin --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          gnugrep
-        ]
-      }
+      wrapProgram $out/bin/mysql_config --prefix PATH : ${lib.makeBinPath [ coreutils gnused ]}
+      wrapProgram $out/bin/ps_mysqld_helper --prefix PATH : ${lib.makeBinPath [ coreutils gnugrep ]}
+      wrapProgram $out/bin/ps-admin --prefix PATH : ${lib.makeBinPath [ coreutils gnugrep ]}
     ''
     + lib.optionalString stdenv.isDarwin ''
-      wrapProgram $out/bin/mysqld_multi --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          gnugrep
-        ]
-      }
+      wrapProgram $out/bin/mysqld_multi --prefix PATH : ${lib.makeBinPath [ coreutils gnugrep ]}
     '';
 
   passthru = {

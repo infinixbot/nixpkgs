@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
 
   patches = [ ];
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-    libtool
-  ];
+  nativeBuildInputs = [ autoconf automake libtool ];
 
   preConfigure = ''
     sh autogen.sh
@@ -37,10 +33,6 @@ stdenv.mkDerivation rec {
     '';
     maintainers = [ ];
     platforms = platforms.linux;
-    license = with licenses; [
-      gpl3
-      lgpl21Plus
-      wtfpl
-    ];
+    license = with licenses; [ gpl3 lgpl21Plus wtfpl ];
   };
 }

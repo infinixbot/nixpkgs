@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
     sha256 = "1h0bhjhx023476gbijq842b6f8z71zcyn4c9mddwyb18w9cdamp5";
   };
 
-  buildInputs = [
-    faust2jaqt
-    faust2lv2
-  ];
+  buildInputs = [ faust2jaqt faust2lv2 ];
 
   dontWrapQtApps = true;
 

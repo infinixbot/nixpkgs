@@ -84,10 +84,7 @@ buildPythonApplication rec {
     description = "Automation for KiCAD boards";
     homepage = "https://github.com/yaqwsx/KiKit/";
     changelog = "https://github.com/yaqwsx/KiKit/releases/tag/v${version}";
-    maintainers = with maintainers; [
-      jfly
-      matusf
-    ];
+    maintainers = with maintainers; [ jfly matusf ];
     license = licenses.mit;
   };
 }

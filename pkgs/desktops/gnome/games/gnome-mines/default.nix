@@ -41,13 +41,7 @@ stdenv.mkDerivation rec {
     wrapGAppsHook3
     desktop-file-utils
   ];
-  buildInputs = [
-    gtk3
-    librsvg
-    adwaita-icon-theme
-    libgnome-games-support
-    libgee
-  ];
+  buildInputs = [ gtk3 librsvg adwaita-icon-theme libgnome-games-support libgee ];
 
   postPatch = ''
     chmod +x build-aux/meson_post_install.py

@@ -18,10 +18,7 @@ stdenv.mkDerivation {
   };
 
   cmakeFlags = [ "-DBUILD_LUA=OFF" ];
-  buildInputs = [
-    libubox
-    libjson
-  ];
+  buildInputs = [ libubox libjson ];
   nativeBuildInputs = [ cmake ];
 
   env.NIX_CFLAGS_COMPILE = toString (

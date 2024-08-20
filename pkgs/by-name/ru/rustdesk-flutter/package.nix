@@ -37,10 +37,7 @@ let
     };
 
     cargoHash = "sha256-dDyiptG9TKes+fXx2atwx697SWH7Rltx6xVubtTn7FM=";
-    cargoBuildFlags = [
-      "--package"
-      "flutter_rust_bridge_codegen"
-    ];
+    cargoBuildFlags = [ "--package" "flutter_rust_bridge_codegen" ];
     doCheck = false;
   };
 
@@ -151,11 +148,7 @@ flutter316.buildFlutterApplication rec {
   prePatch = ''
     chmod -R +w ..
   '';
-  patchFlags = [
-    "-p1"
-    "-d"
-    ".."
-  ];
+  patchFlags = [ "-p1" "-d" ".." ];
 
   postPatch = ''
     substituteInPlace ../Cargo.toml --replace-fail ", \"staticlib\", \"rlib\"" ""
@@ -204,11 +197,7 @@ flutter316.buildFlutterApplication rec {
       terminal = false;
       type = "Application";
       startupNotify = true;
-      categories = [
-        "Network"
-        "RemoteAccess"
-        "GTK"
-      ];
+      categories = [ "Network" "RemoteAccess" "GTK" ];
       keywords = [ "internet" ];
       actions.new-window = {
         name = "Open a New Window";

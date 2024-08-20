@@ -25,11 +25,7 @@ buildGoModule rec {
   '';
   proxyVendor = true;
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X=main.Version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X=main.Version=${version}" ];
 
   meta = {
     changelog = "https://github.com/kha7iq/pingme/releases/tag/${src.rev}";

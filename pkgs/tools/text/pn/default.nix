@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    libphonenumber
-    icu
-    protobuf
-  ];
+  buildInputs = [ libphonenumber icu protobuf ];
 
   meta = with lib; {
     description = "Libphonenumber command-line wrapper";

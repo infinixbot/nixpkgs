@@ -27,20 +27,11 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ wrapGAppsHook3 ];
 
-  buildInputs = [
-    jre
-    adwaita-icon-theme
-    gtk3
-  ];
+  buildInputs = [ jre adwaita-icon-theme gtk3 ];
 
   preFixup = ''
     gappsWrapperArgs+=( \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          jre
-          which
-        ]
-      } \
+      --prefix PATH : ${lib.makeBinPath [ jre which ]} \
       --prefix LD_LIBRARY_PATH : ${
         lib.makeLibraryPath [
           gtk3

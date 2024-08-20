@@ -28,11 +28,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/kamadorueda/alejandra";
     changelog = "https://github.com/kamadorueda/alejandra/blob/${version}/CHANGELOG.md";
     license = licenses.unlicense;
-    maintainers = with maintainers; [
-      _0x4A6F
-      kamadorueda
-      sciencentistguy
-    ];
+    maintainers = with maintainers; [ _0x4A6F kamadorueda sciencentistguy ];
     mainProgram = "alejandra";
   };
 }

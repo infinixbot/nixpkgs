@@ -54,10 +54,7 @@ stdenv.mkDerivation rec {
     "all"
   ];
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   postBuild = ''
     make manual

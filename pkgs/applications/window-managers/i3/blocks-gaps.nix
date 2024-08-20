@@ -22,12 +22,7 @@
 }:
 
 let
-  perlscripts = [
-    "battery"
-    "cpu_usage"
-    "openvpn"
-    "temperature"
-  ];
+  perlscripts = [ "battery" "cpu_usage" "openvpn" "temperature" ];
   contains_any = l1: l2: 0 < lib.length (lib.intersectLists l1 l2);
 
 in
@@ -43,10 +38,7 @@ stdenv.mkDerivation rec {
   };
 
   makeFlags = [ "all" ];
-  installFlags = [
-    "PREFIX=\${out}"
-    "VERSION=${version}"
-  ];
+  installFlags = [ "PREFIX=\${out}" "VERSION=${version}" ];
 
   buildInputs = lib.optional (contains_any scripts perlscripts) perl;
   nativeBuildInputs = [ makeWrapper ];

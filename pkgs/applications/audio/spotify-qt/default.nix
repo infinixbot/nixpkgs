@@ -20,11 +20,7 @@ mkDerivation rec {
     sha256 = "sha256-Dm+ELHtYZGSzJSrERtvpuuV5cVZ9ah9WQ0iTTJqGqVg=";
   };
 
-  buildInputs = [
-    libxcb
-    qtbase
-    qtsvg
-  ];
+  buildInputs = [ libxcb qtbase qtsvg ];
 
   nativeBuildInputs = [ cmake ];
 

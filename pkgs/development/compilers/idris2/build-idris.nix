@@ -59,10 +59,7 @@ let
       pname = ipkgName;
       inherit version;
       src = src;
-      nativeBuildInputs = [
-        idris2
-        makeWrapper
-      ] ++ attrs.nativeBuildInputs or [ ];
+      nativeBuildInputs = [ idris2 makeWrapper ] ++ attrs.nativeBuildInputs or [ ];
       buildInputs = propagatedIdrisLibraries ++ attrs.buildInputs or [ ];
 
       IDRIS2_PACKAGE_PATH = libDirs;

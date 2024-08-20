@@ -29,10 +29,7 @@ let
   android = {
     platforms = [ "34" ];
     systemImageTypes = [ "google_apis" ];
-    abis = [
-      "arm64-v8a"
-      "x86_64"
-    ];
+    abis = [ "arm64-v8a" "x86_64" ];
   };
 
   # If you copy this example out of nixpkgs, something like this will work:
@@ -95,13 +92,7 @@ let
 in
 pkgs.mkShell rec {
   name = "androidenv-demo";
-  packages = [
-    androidSdk
-    platformTools
-    androidEmulator
-    jdk
-    pkgs.android-studio
-  ];
+  packages = [ androidSdk platformTools androidEmulator jdk pkgs.android-studio ];
 
   LANG = "C.UTF-8";
   LC_ALL = "C.UTF-8";
@@ -125,10 +116,7 @@ pkgs.mkShell rec {
     shell-with-emulator-sdkmanager-packages-test =
       pkgs.runCommand "shell-with-emulator-sdkmanager-packages-test"
         {
-          nativeBuildInputs = [
-            androidSdk
-            jdk
-          ];
+          nativeBuildInputs = [ androidSdk jdk ];
         }
         ''
           output="$(sdkmanager --list)"
@@ -155,10 +143,7 @@ pkgs.mkShell rec {
     shell-with-emulator-sdkmanager-excluded-packages-test =
       pkgs.runCommand "shell-with-emulator-sdkmanager-excluded-packages-test"
         {
-          nativeBuildInputs = [
-            androidSdk
-            jdk
-          ];
+          nativeBuildInputs = [ androidSdk jdk ];
         }
         ''
           output="$(sdkmanager --list)"
@@ -193,11 +178,7 @@ pkgs.mkShell rec {
     shell-with-emulator-avdmanager-create-avd-test =
       pkgs.runCommand "shell-with-emulator-avdmanager-create-avd-test"
         {
-          nativeBuildInputs = [
-            androidSdk
-            androidEmulator
-            jdk
-          ];
+          nativeBuildInputs = [ androidSdk androidEmulator jdk ];
         }
         ''
           avdmanager delete avd -n testAVD || true

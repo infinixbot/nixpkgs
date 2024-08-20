@@ -69,10 +69,7 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "blueprint-compiler";
     homepage = "https://gitlab.gnome.org/jwestman/blueprint-compiler";
     license = licenses.lgpl3Plus;
-    maintainers = with maintainers; [
-      benediktbroich
-      ranfdev
-    ];
+    maintainers = with maintainers; [ benediktbroich ranfdev ];
     platforms = platforms.unix;
   };
 })

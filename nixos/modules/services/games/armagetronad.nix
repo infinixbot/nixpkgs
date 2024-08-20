@@ -235,11 +235,7 @@ in
           "armagetronad-${serverName}" = {
             description = "Armagetron Advanced Dedicated Server for ${serverName}";
             wants = [ "basic.target" ];
-            after = [
-              "basic.target"
-              "network.target"
-              "multi-user.target"
-            ];
+            after = [ "basic.target" "network.target" "multi-user.target" ];
             wantedBy = [ "multi-user.target" ];
             serviceConfig =
               let

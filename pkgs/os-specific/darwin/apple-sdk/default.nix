@@ -26,16 +26,9 @@ let
       sha256 = "13xq34sb7383b37hwy076gnhf96prpk1b4087p87xnwswxbrisih";
     };
 
-    nativeBuildInputs = [
-      cpio
-      pbzx
-    ];
+    nativeBuildInputs = [ cpio pbzx ];
 
-    outputs = [
-      "out"
-      "dev"
-      "man"
-    ];
+    outputs = [ "out" "dev" "man" ];
 
     unpackPhase = ''
       pbzx $src | cpio -idm
@@ -72,11 +65,7 @@ let
       deps' = deps // {
         "${name}" = placeholder "out";
       };
-      substArgs = lib.concatMap (x: [
-        "--subst-var-by"
-        x
-        deps'."${x}"
-      ]) (lib.attrNames deps');
+      substArgs = lib.concatMap (x: [ "--subst-var-by" x deps'."${x}" ]) (lib.attrNames deps');
     in
     lib.escapeShellArgs substArgs;
 

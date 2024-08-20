@@ -29,11 +29,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    gtest
-    openssl
-    nlohmann_json
-  ];
+  buildInputs = [ gtest openssl nlohmann_json ];
 
   doCheck = true;
 

@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Ca9PsytjPvrU4u+b/x6pIbQc8CDNWI6hNM6jF60Bds8=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ cmake wrapGAppsHook3 ];
   buildInputs = [
     expat
     openssl

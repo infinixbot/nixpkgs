@@ -33,10 +33,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-K4hYBzLNfkCdniLGEWI4vvSuBvzaEUUb8z0ln5y/OZ8=";
   };
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   buildInputs = [
     bzip2

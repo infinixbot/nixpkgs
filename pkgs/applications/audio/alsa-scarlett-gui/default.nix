@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
 
   NIX_CFLAGS_COMPILE = [ "-Wno-error=deprecated-declarations" ];
 
-  makeFlags = [
-    "DESTDIR=\${out}"
-    "PREFIX=''"
-  ];
+  makeFlags = [ "DESTDIR=\${out}" "PREFIX=''" ];
   sourceRoot = "${src.name}/src";
 
   postPatch = ''
@@ -35,16 +32,8 @@ stdenv.mkDerivation rec {
       --replace-fail "/usr/sbin/alsactl" "${alsa-utils}/bin/alsactl"
   '';
 
-  nativeBuildInputs = [
-    pkg-config
-    wrapGAppsHook4
-    makeWrapper
-  ];
-  buildInputs = [
-    gtk4
-    alsa-lib
-    openssl
-  ];
+  nativeBuildInputs = [ pkg-config wrapGAppsHook4 makeWrapper ];
+  buildInputs = [ gtk4 alsa-lib openssl ];
   postInstall = ''
     wrapProgram $out/bin/alsa-scarlett-gui --prefix PATH : ${lib.makeBinPath [ alsa-utils ]}
 

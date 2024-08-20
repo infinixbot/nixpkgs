@@ -22,14 +22,8 @@ stdenv.mkDerivation rec {
     inherit hash;
   };
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-  ];
-  buildInputs = [
-    qtbase
-    qtdeclarative
-  ];
+  nativeBuildInputs = [ cmake ninja ];
+  buildInputs = [ qtbase qtdeclarative ];
 
   enableParallelBuilding = true;
 
@@ -49,11 +43,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     mainProgram = "dwarftherapist";
     description = "Tool to manage dwarves in a running game of Dwarf Fortress";
-    maintainers = with maintainers; [
-      abbradar
-      bendlas
-      numinit
-    ];
+    maintainers = with maintainers; [ abbradar bendlas numinit ];
     license = licenses.mit;
     platforms = platforms.x86;
     homepage = "https://github.com/Dwarf-Therapist/Dwarf-Therapist";

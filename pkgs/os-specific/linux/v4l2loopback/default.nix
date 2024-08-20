@@ -21,10 +21,7 @@ stdenv.mkDerivation {
     hash = "sha256-rcwgOXnhRPTmNKUppupfe/2qNUBDUqVb3TeDbrP5pnU=";
   };
 
-  hardeningDisable = [
-    "format"
-    "pic"
-  ];
+  hardeningDisable = [ "format" "pic" ];
 
   preBuild = ''
     substituteInPlace Makefile --replace "modules_install" "INSTALL_MOD_PATH=$out modules_install"
@@ -37,10 +34,7 @@ stdenv.mkDerivation {
     make install-utils PREFIX=$bin
   '';
 
-  outputs = [
-    "out"
-    "bin"
-  ];
+  outputs = [ "out" "bin" ];
 
   makeFlags = kernel.makeFlags ++ [
     "KERNELRELEASE=${kernel.modDirVersion}"

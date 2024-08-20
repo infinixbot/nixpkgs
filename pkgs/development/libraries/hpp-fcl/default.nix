@@ -65,11 +65,7 @@ stdenv.mkDerivation (finalAttrs: {
     "hppfcl"
   ];
 
-  outputs = [
-    "dev"
-    "out"
-    "doc"
-  ];
+  outputs = [ "dev" "out" "doc" ];
   postFixup = ''
     moveToOutput share/ament_index "$dev"
     moveToOutput share/${finalAttrs.pname} "$dev"

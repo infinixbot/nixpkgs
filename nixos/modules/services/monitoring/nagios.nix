@@ -110,11 +110,7 @@ in
 
       plugins = mkOption {
         type = types.listOf types.package;
-        default = with pkgs; [
-          monitoring-plugins
-          msmtp
-          mailutils
-        ];
+        default = with pkgs; [ monitoring-plugins msmtp mailutils ];
         defaultText = literalExpression "[pkgs.monitoring-plugins pkgs.msmtp pkgs.mailutils]";
         description = ''
           Packages to be added to the Nagios {env}`PATH`.
@@ -218,10 +214,7 @@ in
     };
 
     services.httpd.virtualHosts = optionalAttrs cfg.enableWebInterface {
-      ${cfg.virtualHost.hostName} = mkMerge [
-        cfg.virtualHost
-        { extraConfig = extraHttpdConfig; }
-      ];
+      ${cfg.virtualHost.hostName} = mkMerge [ cfg.virtualHost { extraConfig = extraHttpdConfig; } ];
     };
   };
 }

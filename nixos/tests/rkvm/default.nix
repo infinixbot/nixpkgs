@@ -38,10 +38,7 @@ import ../make-test-python.nix (
               certificate = snakeoil-cert;
               key = snakeoil-key;
               password = "snakeoil";
-              switch-keys = [
-                "left-alt"
-                "right-alt"
-              ];
+              switch-keys = [ "left-alt" "right-alt" ];
             };
           };
         };

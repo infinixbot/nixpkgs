@@ -78,9 +78,6 @@ bepastyPython.pkgs.buildPythonPackage rec {
     homepage = "https://github.com/bepasty/bepasty-server";
     description = "Binary pastebin server";
     license = licenses.bsd2;
-    maintainers = with maintainers; [
-      aither64
-      makefu
-    ];
+    maintainers = with maintainers; [ aither64 makefu ];
   };
 }

@@ -160,10 +160,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ wrapGAppsHook3 ];
 
-  buildInputs = [
-    gtk3
-    adwaita-icon-theme
-  ];
+  buildInputs = [ gtk3 adwaita-icon-theme ];
 
   # "strip" after "patchelf" may break binaries.
   # See: https://github.com/NixOS/patchelf/issues/10

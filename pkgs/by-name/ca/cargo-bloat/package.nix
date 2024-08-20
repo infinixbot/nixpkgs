@@ -22,10 +22,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/RazrFalcon/cargo-bloat";
     license = licenses.mit;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      xrelkd
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ xrelkd matthiasbeyer ];
     mainProgram = "cargo-bloat";
   };
 }

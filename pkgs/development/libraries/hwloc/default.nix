@@ -33,14 +33,8 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ pkg-config ] ++ lib.optionals enableCuda [ cudaPackages.cuda_nvcc ];
 
   buildInputs =
-    [
-      expat
-      ncurses
-    ]
-    ++ lib.optionals x11Support [
-      cairo
-      libX11
-    ]
+    [ expat ncurses ]
+    ++ lib.optionals x11Support [ cairo libX11 ]
     ++ lib.optionals stdenv.isLinux [ numactl ]
     ++ lib.optionals enableCuda [ cudaPackages.cuda_cudart ];
 
@@ -65,13 +59,7 @@ stdenv.mkDerivation rec {
   # fail on some build machines.
   doCheck = false;
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "lib" "dev" "doc" "man" ];
 
   meta = with lib; {
     description = "Portable abstraction of hierarchical architectures for high-performance computing";
@@ -93,10 +81,7 @@ stdenv.mkDerivation rec {
     # https://www.open-mpi.org/projects/hwloc/license.php
     license = licenses.bsd3;
     homepage = "https://www.open-mpi.org/projects/hwloc/";
-    maintainers = with maintainers; [
-      fpletz
-      markuskowa
-    ];
+    maintainers = with maintainers; [ fpletz markuskowa ];
     platforms = platforms.all;
   };
 }

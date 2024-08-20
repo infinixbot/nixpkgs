@@ -15,10 +15,7 @@ stdenv.mkDerivation {
     sha256 = "sha256-bbIH0kyHRTcMGXV3WdBQIH1br0FyIzKKL88wqpGZ0NY=";
   };
 
-  buildInputs = [
-    ncurses
-    portmidi
-  ];
+  buildInputs = [ ncurses portmidi ];
 
   postPatch = ''
     patchShebangs tool

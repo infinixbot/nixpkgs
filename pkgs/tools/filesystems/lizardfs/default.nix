@@ -32,11 +32,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-rgaFhJvmA1RVDL4+vQLMC0GrdlgUlvJeZ5/JJ67C20Q=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    makeWrapper
-  ];
+  nativeBuildInputs = [ cmake pkg-config makeWrapper ];
 
   buildInputs = [
     db
@@ -60,10 +56,7 @@ stdenv.mkDerivation rec {
     description = "Highly reliable, scalable and efficient distributed file system";
     platforms = platforms.linux;
     license = licenses.gpl3;
-    maintainers = with maintainers; [
-      rushmorem
-      shamilton
-    ];
+    maintainers = with maintainers; [ rushmorem shamilton ];
     # 'fprintf' was not declared in this scope
     broken = true;
   };

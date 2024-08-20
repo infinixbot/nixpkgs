@@ -98,10 +98,7 @@ python311Packages.buildPythonApplication rec {
     description = "Drop-down terminal for GNOME";
     homepage = "http://guake-project.org";
     license = licenses.gpl2Plus;
-    maintainers = [
-      maintainers.msteen
-      maintainers.heywoodlh
-    ];
+    maintainers = [ maintainers.msteen maintainers.heywoodlh ];
     platforms = platforms.linux;
   };
 }

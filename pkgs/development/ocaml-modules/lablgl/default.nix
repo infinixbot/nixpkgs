@@ -26,14 +26,8 @@ else
 
     strictDeps = true;
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-    ];
-    buildInputs = [
-      libglut
-      camlp-streams
-    ];
+    nativeBuildInputs = [ ocaml findlib ];
+    buildInputs = [ libglut camlp-streams ];
     propagatedBuildInputs = [
       libGLU
     ];
@@ -57,12 +51,7 @@ else
       "TKLIBS="
     ];
 
-    buildFlags = [
-      "lib"
-      "libopt"
-      "glut"
-      "glutopt"
-    ];
+    buildFlags = [ "lib" "libopt" "glut" "glutopt" ];
 
     postInstall = ''
       cp ./META $out/lib/ocaml/${ocaml.version}/site-lib/lablgl
@@ -72,10 +61,7 @@ else
       description = "OpenGL bindings for ocaml";
       homepage = "http://wwwfun.kurims.kyoto-u.ac.jp/soft/lsl/lablgl.html";
       license = licenses.gpl2;
-      maintainers = with maintainers; [
-        pSub
-        vbgl
-      ];
+      maintainers = with maintainers; [ pSub vbgl ];
       mainProgram = "lablglut";
     };
   }

@@ -89,21 +89,16 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-BXnpNfi9tUd6nnwYdstuOfGsFVif8kkmkW97X1UAgt8=";
   };
 
-  nativeBuildInputs =
-    [
-      bison
-      cmake
-      doxygen
-      graphviz
-      pkg-config
-      python3.pkgs.setuptools
-      python3.pkgs.wrapPython
-      swig
-    ]
-    ++ lib.optionals useJava [
-      ant
-      jdk
-    ];
+  nativeBuildInputs = [
+    bison
+    cmake
+    doxygen
+    graphviz
+    pkg-config
+    python3.pkgs.setuptools
+    python3.pkgs.wrapPython
+    swig
+  ] ++ lib.optionals useJava [ ant jdk ];
 
   cmakeFlags =
     [
@@ -305,13 +300,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Translator library for raster geospatial data formats";
     homepage = "https://www.gdal.org/";
     license = licenses.mit;
-    maintainers =
-      with maintainers;
-      teams.geospatial.members
-      ++ [
-        marcweber
-        dotlambda
-      ];
+    maintainers = with maintainers; teams.geospatial.members ++ [ marcweber dotlambda ];
     platforms = platforms.unix;
   };
 })

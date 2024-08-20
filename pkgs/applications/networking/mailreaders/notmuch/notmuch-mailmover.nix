@@ -35,10 +35,7 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "notmuch-mailmover";
     homepage = "https://github.com/michaeladler/notmuch-mailmover/";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      michaeladler
-      archer-65
-    ];
+    maintainers = with maintainers; [ michaeladler archer-65 ];
     platforms = platforms.all;
   };
 }

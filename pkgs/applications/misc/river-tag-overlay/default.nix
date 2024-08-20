@@ -28,14 +28,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [
-    pixman
-    wayland
-  ];
-  nativeBuildInputs = [
-    pkg-config
-    wayland-scanner
-  ];
+  buildInputs = [ pixman wayland ];
+  nativeBuildInputs = [ pkg-config wayland-scanner ];
 
   makeFlags = [
     "DESTDIR=${placeholder "out"}"

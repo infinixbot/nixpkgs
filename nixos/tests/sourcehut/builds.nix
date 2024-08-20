@@ -6,10 +6,7 @@ import ../make-test-python.nix (
   {
     name = "sourcehut";
 
-    meta.maintainers = with pkgs.lib.maintainers; [
-      tomberek
-      nessdoor
-    ];
+    meta.maintainers = with pkgs.lib.maintainers; [ tomberek nessdoor ];
 
     nodes.machine =
       {

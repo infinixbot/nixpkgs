@@ -22,20 +22,9 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
   buildInputs =
-    [
-      zlib
-      bzip2
-      perl
-    ]
+    [ zlib bzip2 perl ]
     ++ lib.optionals stdenv.isLinux [ libcap ]
-    ++ lib.optionals stdenv.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        Carbon
-        IOKit
-        iconv
-      ]
-    );
+    ++ lib.optionals stdenv.isDarwin (with darwin.apple_sdk.frameworks; [ Carbon IOKit iconv ]);
 
   hardeningDisable = [ "format" ];
   env.NIX_CFLAGS_COMPILE = toString (
@@ -49,11 +38,7 @@ stdenv.mkDerivation rec {
   );
 
   # efi-boot-patch extracted from http://arm.koji.fedoraproject.org/koji/rpminfo?rpmID=174244
-  patches = [
-    ./include-path.patch
-    ./cdrkit-1.1.9-efi-boot.patch
-    ./cdrkit-1.1.11-fno-common.patch
-  ];
+  patches = [ ./include-path.patch ./cdrkit-1.1.9-efi-boot.patch ./cdrkit-1.1.11-fno-common.patch ];
 
   postPatch = lib.optionalString stdenv.isDarwin ''
     substituteInPlace libusal/scsi-mac-iokit.c \

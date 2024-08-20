@@ -31,9 +31,6 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "rnix-hashes";
     homepage = "https://github.com/numtide/rnix-hashes";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      rizary
-      SuperSandro2000
-    ];
+    maintainers = with maintainers; [ rizary SuperSandro2000 ];
   };
 }

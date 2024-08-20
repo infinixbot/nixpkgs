@@ -32,17 +32,9 @@ buildPythonPackage rec {
 
   nativeBuildInputs = [ setuptools ];
 
-  propagatedBuildInputs = [
-    service-identity
-    ldap3
-    twisted
-  ];
+  propagatedBuildInputs = [ service-identity ldap3 twisted ];
 
-  nativeCheckInputs = [
-    ldaptor
-    matrix-synapse-unwrapped
-    pytestCheckHook
-  ];
+  nativeCheckInputs = [ ldaptor matrix-synapse-unwrapped pytestCheckHook ];
 
   pythonImportsCheck = [ "ldap_auth_provider" ];
 

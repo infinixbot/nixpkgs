@@ -154,10 +154,7 @@ stdenv.mkDerivation rec {
   pname = "openblas";
   version = "0.3.27";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "OpenMathLib";

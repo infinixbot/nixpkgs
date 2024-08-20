@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-/PG+ewlxIyf5Au2kVvsAYCfGZgUOOEpA1uATu15ut+M=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    gfortran
-    gtest
-  ];
+  nativeBuildInputs = [ cmake gfortran gtest ];
 
   buildInputs = lib.optionals stdenv.isDarwin [ openmp ];
 

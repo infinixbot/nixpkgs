@@ -29,20 +29,11 @@ let
 
         base = [ self.prelude ];
 
-        contrib = [
-          self.prelude
-          self.base
-        ];
+        contrib = [ self.prelude self.base ];
 
-        effects = [
-          self.prelude
-          self.base
-        ];
+        effects = [ self.prelude self.base ];
 
-        pruviloj = [
-          self.prelude
-          self.base
-        ];
+        pruviloj = [ self.prelude self.base ];
       };
 
     in

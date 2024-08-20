@@ -28,10 +28,7 @@ stdenv.mkDerivation {
   ];
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    ncurses
-    SDL2
-  ];
+  buildInputs = [ ncurses SDL2 ];
 
   meta = with lib; {
     description = "System for creating 3D models procedurally from a set of Signed Distance Function (SDF) primitive shapes and combining operators";

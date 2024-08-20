@@ -32,9 +32,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://jless.io";
     changelog = "https://github.com/PaulJuliusMartinez/jless/blob/${src.rev}/CHANGELOG.md";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      figsoda
-      jfchevrette
-    ];
+    maintainers = with maintainers; [ figsoda jfchevrette ];
   };
 }

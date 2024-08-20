@@ -551,10 +551,7 @@ in
                             };
                         in
                         [ extraConfig ] ++ (map (x: x.value) defs);
-                      prefix = [
-                        "containers"
-                        name
-                      ];
+                      prefix = [ "containers" name ];
                       inherit (config) specialArgs;
 
                       # The system is inherited from the host above.
@@ -578,10 +575,7 @@ in
               additionalCapabilities = mkOption {
                 type = types.listOf types.str;
                 default = [ ];
-                example = [
-                  "CAP_NET_ADMIN"
-                  "CAP_MKNOD"
-                ];
+                example = [ "CAP_NET_ADMIN" "CAP_MKNOD" ];
                 description = ''
                   Grant additional capabilities to the container.  See the
                   capabilities(7) and systemd-nspawn(1) man pages for more
@@ -660,10 +654,7 @@ in
               interfaces = mkOption {
                 type = types.listOf types.str;
                 default = [ ];
-                example = [
-                  "eth1"
-                  "eth2"
-                ];
+                example = [ "eth1" "eth2" ];
                 description = ''
                   The list of interfaces to be moved into the container.
                 '';
@@ -672,10 +663,7 @@ in
               macvlans = mkOption {
                 type = types.listOf types.str;
                 default = [ ];
-                example = [
-                  "eth1"
-                  "eth2"
-                ];
+                example = [ "eth1" "eth2" ];
                 description = ''
                   The list of host interfaces from which macvlans will be
                   created. For each interface specified, a macvlan interface
@@ -994,10 +982,7 @@ in
           ) config.containers
         );
 
-        networking.dhcpcd.denyInterfaces = [
-          "ve-*"
-          "vb-*"
-        ];
+        networking.dhcpcd.denyInterfaces = [ "ve-*" "vb-*" ];
 
         services.udev.extraRules = optionalString config.networking.networkmanager.enable ''
           # Don't manage interfaces created by nixos-container.

@@ -53,31 +53,17 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-OWbsgv2n/DgFBtNyomDY2bbpRr5N6u8f7MGnS0gJrj0=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "lib"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "dev" "lib" "doc" "man" ];
 
   nativeBuildInputs = [ pkg-config ] ++ lib.optionals (enableApp) [ installShellFiles ];
 
   buildInputs =
-    lib.optionals enableApp [
-      c-aresMinimal
-      libev
-      zlib
-    ]
+    lib.optionals enableApp [ c-aresMinimal libev zlib ]
     ++ lib.optionals (enableApp && !enableHttp3) [ openssl ]
     ++ lib.optionals (enableGetAssets) [ libxml2 ]
     ++ lib.optionals (enableHpack) [ jansson ]
     ++ lib.optionals (enableJemalloc) [ jemalloc ]
-    ++ lib.optionals (enableHttp3) [
-      ngtcp2
-      nghttp3
-      quictls
-    ]
+    ++ lib.optionals (enableHttp3) [ ngtcp2 nghttp3 quictls ]
     ++ lib.optionals (enablePython) [ python3 ];
 
   enableParallelBuilding = true;
@@ -96,10 +82,7 @@ stdenv.mkDerivation rec {
 
   # Unit tests require CUnit and setting TZDIR environment variable
   doCheck = enableTests;
-  nativeCheckInputs = lib.optionals (enableTests) [
-    cunit
-    tzdata
-  ];
+  nativeCheckInputs = lib.optionals (enableTests) [ cunit tzdata ];
   preCheck = lib.optionalString (enableTests) ''
     export TZDIR=${tzdata}/share/zoneinfo
   '';

@@ -49,12 +49,7 @@ else
         isELF "$file" || continue
         patchelf \
           --interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-          --set-rpath ${
-            lib.makeLibraryPath [
-              stdenv.cc.cc
-              stdenv.cc.libc
-            ]
-          } \
+          --set-rpath ${lib.makeLibraryPath [ stdenv.cc.cc stdenv.cc.libc ]} \
           "$file"
       done
     '';

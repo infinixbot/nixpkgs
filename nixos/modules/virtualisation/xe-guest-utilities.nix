@@ -23,10 +23,7 @@ in
       wantedBy = [ "multi-user.target" ];
       after = [ "xe-linux-distribution.service" ];
       requires = [ "proc-xen.mount" ];
-      path = [
-        pkgs.coreutils
-        pkgs.iproute2
-      ];
+      path = [ pkgs.coreutils pkgs.iproute2 ];
       serviceConfig = {
         PIDFile = "/run/xe-daemon.pid";
         ExecStart = "${pkgs.xe-guest-utilities}/bin/xe-daemon -p /run/xe-daemon.pid";
@@ -38,12 +35,7 @@ in
       description = "xen linux distribution service";
       wantedBy = [ "multi-user.target" ];
       before = [ "xend.service" ];
-      path = [
-        pkgs.xe-guest-utilities
-        pkgs.coreutils
-        pkgs.gawk
-        pkgs.gnused
-      ];
+      path = [ pkgs.xe-guest-utilities pkgs.coreutils pkgs.gawk pkgs.gnused ];
       serviceConfig = {
         Type = "simple";
         RemainAfterExit = "yes";

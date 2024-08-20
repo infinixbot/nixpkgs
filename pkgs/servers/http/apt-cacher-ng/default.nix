@@ -35,22 +35,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    cmake
-    doxygen
-    pkg-config
-  ];
-  buildInputs = [
-    bzip2
-    fuse
-    libevent
-    xz
-    openssl
-    systemd
-    tcp_wrappers
-    zlib
-    c-ares
-  ];
+  nativeBuildInputs = [ cmake doxygen pkg-config ];
+  buildInputs = [ bzip2 fuse libevent xz openssl systemd tcp_wrappers zlib c-ares ];
 
   meta = with lib; {
     description = "Caching proxy specialized for Linux distribution files";

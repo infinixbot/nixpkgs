@@ -98,17 +98,7 @@ stdenv.mkDerivation rec {
     description = "Intel 'Single Program, Multiple Data' Compiler, a vectorised language";
     mainProgram = "ispc";
     license = licenses.bsd3;
-    platforms = [
-      "x86_64-linux"
-      "x86_64-darwin"
-      "aarch64-linux"
-      "aarch64-darwin"
-    ]; # TODO: buildable on more platforms?
-    maintainers = with maintainers; [
-      aristid
-      thoughtpolice
-      athas
-      alexfmpe
-    ];
+    platforms = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ]; # TODO: buildable on more platforms?
+    maintainers = with maintainers; [ aristid thoughtpolice athas alexfmpe ];
   };
 }

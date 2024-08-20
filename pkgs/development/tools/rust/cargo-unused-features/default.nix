@@ -45,10 +45,7 @@ rustPlatform.buildRustPackage rec {
     description = "Tool to find potential unused enabled feature flags and prune them";
     homepage = "https://github.com/timonpost/cargo-unused-features";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      figsoda
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ figsoda matthiasbeyer ];
     mainProgram = "unused-features";
   };
 }

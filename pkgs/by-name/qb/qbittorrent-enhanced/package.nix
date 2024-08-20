@@ -41,10 +41,7 @@ stdenv.mkDerivation rec {
     description = "Unofficial enhanced version of qBittorrent, a BitTorrent client";
     homepage = "https://github.com/c0re100/qBittorrent-Enhanced-Edition";
     changelog = "https://github.com/c0re100/qBittorrent-Enhanced-Edition/blob/${src.rev}/Changelog";
-    license = with lib.licenses; [
-      gpl2Only
-      gpl3Only
-    ];
+    license = with lib.licenses; [ gpl2Only gpl3Only ];
     maintainers = with lib.maintainers; [ ByteSudoer ];
     mainProgram = "qBittorrent-enhanced";
     platforms = lib.platforms.linux;

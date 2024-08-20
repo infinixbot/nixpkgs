@@ -18,10 +18,7 @@ let
     pname = "tcl";
     inherit version src;
 
-    outputs = [
-      "out"
-      "man"
-    ];
+    outputs = [ "out" "man" ];
 
     setOutputFlags = false;
 

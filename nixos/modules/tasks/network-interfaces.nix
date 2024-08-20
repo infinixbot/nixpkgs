@@ -350,12 +350,7 @@ let
         virtualType = mkOption {
           default = if hasPrefix "tun" name then "tun" else "tap";
           defaultText = literalExpression ''if hasPrefix "tun" name then "tun" else "tap"'';
-          type =
-            with types;
-            enum [
-              "tun"
-              "tap"
-            ];
+          type = with types; enum [ "tun" "tap" ];
           description = ''
             The type of interface to create.
             The default is TUN for an interface name starting
@@ -390,15 +385,7 @@ let
           policy = mkOption {
             type =
               with types;
-              listOf (enum [
-                "phy"
-                "unicast"
-                "multicast"
-                "broadcast"
-                "arp"
-                "magic"
-                "secureon"
-              ]);
+              listOf (enum [ "phy" "unicast" "multicast" "broadcast" "arp" "magic" "secureon" ]);
             default = [ "magic" ];
             description = ''
               The [Wake-on-LAN policy](https://www.freedesktop.org/software/systemd/man/systemd.link.html#WakeOnLan=)
@@ -433,53 +420,27 @@ let
             in
             if bool then "default" else "enabled"
           ))
-          (mkRenamedOptionModule [ "ip4" ] [
-            "ipv4"
-            "addresses"
-          ])
-          (mkRenamedOptionModule [ "ip6" ] [
-            "ipv6"
-            "addresses"
-          ])
+          (mkRenamedOptionModule [ "ip4" ] [ "ipv4" "addresses" ])
+          (mkRenamedOptionModule [ "ip6" ] [ "ipv6" "addresses" ])
           (mkRemovedOptionModule [ "subnetMask" ] ''
             Supply a prefix length instead; use option
             networking.interfaces.<name>.ipv{4,6}.addresses'')
-          (mkMergedOptionModule
-            [
-              [ "ipAddress" ]
-              [ "prefixLength" ]
-            ]
-            [
-              "ipv4"
-              "addresses"
-            ]
-            (
-              cfg:
-              with cfg;
-              optional (defined ipAddress && defined prefixLength) {
-                address = ipAddress;
-                prefixLength = prefixLength;
-              }
-            )
-          )
-          (mkMergedOptionModule
-            [
-              [ "ipv6Address" ]
-              [ "ipv6PrefixLength" ]
-            ]
-            [
-              "ipv6"
-              "addresses"
-            ]
-            (
-              cfg:
-              with cfg;
-              optional (defined ipv6Address && defined ipv6PrefixLength) {
-                address = ipv6Address;
-                prefixLength = ipv6PrefixLength;
-              }
-            )
-          )
+          (mkMergedOptionModule [ [ "ipAddress" ] [ "prefixLength" ] ] [ "ipv4" "addresses" ] (
+            cfg:
+            with cfg;
+            optional (defined ipAddress && defined prefixLength) {
+              address = ipAddress;
+              prefixLength = prefixLength;
+            }
+          ))
+          (mkMergedOptionModule [ [ "ipv6Address" ] [ "ipv6PrefixLength" ] ] [ "ipv6" "addresses" ] (
+            cfg:
+            with cfg;
+            optional (defined ipv6Address && defined ipv6PrefixLength) {
+              address = ipv6Address;
+              prefixLength = ipv6PrefixLength;
+            }
+          ))
 
           ({
             options.warnings = options.warnings;
@@ -697,10 +658,7 @@ in
     networking.nameservers = mkOption {
       type = types.listOf types.str;
       default = [ ];
-      example = [
-        "130.161.158.4"
-        "130.161.33.17"
-      ];
+      example = [ "130.161.158.4" "130.161.33.17" ];
       description = ''
         The list of nameservers.  It can be left empty if it is auto-detected through DHCP.
       '';
@@ -708,10 +666,7 @@ in
 
     networking.search = mkOption {
       default = [ ];
-      example = [
-        "example.com"
-        "home.arpa"
-      ];
+      example = [ "example.com" "home.arpa" ];
       type = types.listOf types.str;
       description = ''
         The list of search paths used when resolving domain names.
@@ -828,11 +783,7 @@ in
             # TODO: custom "openflow version" type, with list from existing openflow protocols
             supportedOpenFlowVersions = mkOption {
               type = types.listOf types.str;
-              example = [
-                "OpenFlow10"
-                "OpenFlow13"
-                "OpenFlow14"
-              ];
+              example = [ "OpenFlow10" "OpenFlow13" "OpenFlow14" ];
               default = [ "OpenFlow13" ];
               description = ''
                 Supported versions to enable on this switch.
@@ -871,14 +822,8 @@ in
     networking.bridges = mkOption {
       default = { };
       example = {
-        br0.interfaces = [
-          "eth0"
-          "eth1"
-        ];
-        br1.interfaces = [
-          "eth2"
-          "wlan0"
-        ];
+        br0.interfaces = [ "eth0" "eth1" ];
+        br1.interfaces = [ "eth2" "wlan0" ];
       };
       description = ''
         This option allows you to define Ethernet bridge devices
@@ -895,10 +840,7 @@ in
           options = {
 
             interfaces = mkOption {
-              example = [
-                "eth0"
-                "eth1"
-              ];
+              example = [ "eth0" "eth1" ];
               type = types.listOf types.str;
               description = "The physical network interfaces connected by the bridge.";
             };
@@ -949,11 +891,7 @@ in
             options = {
 
               interfaces = mkOption {
-                example = [
-                  "enp4s0f0"
-                  "enp4s0f1"
-                  "wlan0"
-                ];
+                example = [ "enp4s0f0" "enp4s0f1" "wlan0" ];
                 type = types.listOf types.str;
                 description = "The interfaces to bond together";
               };
@@ -1202,10 +1140,7 @@ in
                 type = nullOr (submodule {
                   options = {
                     type = mkOption {
-                      type = enum [
-                        "fou"
-                        "gue"
-                      ];
+                      type = enum [ "fou" "gue" ];
                       description = ''
                         Selects encapsulation type. See
                         {manpage}`ip-link(8)` for details.
@@ -1312,14 +1247,7 @@ in
             };
 
             type = mkOption {
-              type =
-                with types;
-                enum [
-                  "tun"
-                  "tap"
-                  "tun6"
-                  "tap6"
-                ];
+              type = with types; enum [ "tun" "tap" "tun6" "tap6" ];
               default = "tap";
               example = "tap";
               apply =
@@ -1433,13 +1361,7 @@ in
             };
 
             type = mkOption {
-              type = types.enum [
-                "managed"
-                "ibss"
-                "monitor"
-                "mesh"
-                "wds"
-              ];
+              type = types.enum [ "managed" "ibss" "monitor" "mesh" "wds" ];
               default = "managed";
               example = "ibss";
               description = ''
@@ -1455,16 +1377,7 @@ in
             };
 
             flags = mkOption {
-              type =
-                with types;
-                nullOr (enum [
-                  "none"
-                  "fcsfail"
-                  "control"
-                  "otherbss"
-                  "cook"
-                  "active"
-                ]);
+              type = with types; nullOr (enum [ "none" "fcsfail" "control" "otherbss" "cook" "active" ]);
               default = null;
               example = "control";
               description = ''
@@ -1626,10 +1539,7 @@ in
 
     systemd.services.domainname = lib.mkIf (cfg.domain != null) {
       wantedBy = [ "sysinit.target" ];
-      before = [
-        "sysinit.target"
-        "shutdown.target"
-      ];
+      before = [ "sysinit.target" "shutdown.target" ];
       conflicts = [ "shutdown.target" ];
       unitConfig.DefaultDependencies = false;
       serviceConfig.ExecStart = ''${pkgs.nettools}/bin/domainname "${cfg.domain}"'';

@@ -21,18 +21,8 @@ stdenv.mkDerivation rec {
     sha256 = "1yvg1rp1yijv0b45cz085b29x5x0g5fkm654xdv5qwh2l6803gb4";
   };
 
-  nativeBuildInputs = [
-    automake
-    autoconf
-  ];
-  buildInputs = [
-    libGLU
-    libGL
-    SDL
-    libglut
-    SDL_mixer
-    libtool
-  ];
+  nativeBuildInputs = [ automake autoconf ];
+  buildInputs = [ libGLU libGL SDL libglut SDL_mixer libtool ];
 
   meta = with lib; {
     description = "Air combat simulator";

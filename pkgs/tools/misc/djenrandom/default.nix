@@ -40,10 +40,7 @@ stdenv.mkDerivation rec {
     license = lib.licenses.gpl2Only;
     # djenrandom uses x86 specific instructions, therefore we can only compile for the x86 architechture
     platforms = lib.platforms.x86;
-    maintainers = with lib.maintainers; [
-      orichter
-      thillux
-    ];
+    maintainers = with lib.maintainers; [ orichter thillux ];
     mainProgram = "djenrandom";
   };
 }

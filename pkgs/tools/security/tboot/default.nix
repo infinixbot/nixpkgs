@@ -17,11 +17,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-faTdvjjTFXZEoHeVQ1HMTfU+215yruiliFQcQbc/1VA=";
   };
 
-  buildInputs = [
-    openssl
-    trousers
-    zlib
-  ];
+  buildInputs = [ openssl trousers zlib ];
 
   enableParallelBuilding = true;
 
@@ -42,9 +38,6 @@ stdenv.mkDerivation rec {
     changelog = "https://sourceforge.net/p/tboot/code/ci/v${version}/tree/CHANGELOG";
     license = licenses.bsd3;
     maintainers = with maintainers; [ ak ];
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
   };
 }

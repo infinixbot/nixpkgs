@@ -75,10 +75,7 @@ stdenv.mkDerivation rec {
     homepage = "https://elmerfem.org";
     description = "Finite element software for multiphysical problems";
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      wulfsta
-      broke
-    ];
+    maintainers = with maintainers; [ wulfsta broke ];
     license = licenses.lgpl21;
   };
 

@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
     libinklevel
   ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   meta = with lib; {
     description = "Command line tool for checking the ink level of your locally connected printer";

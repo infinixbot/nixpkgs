@@ -27,18 +27,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-rqIlQQ9RhFrhPwUd9dZmMZiqwFinNoV46VaJ3pbyUI8=";
   };
 
-  buildInputs = [
-    glib
-    ncurses
-    libmpdclient
-    boost
-  ] ++ lib.optional pcreSupport pcre;
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    gettext
-  ];
+  buildInputs = [ glib ncurses libmpdclient boost ] ++ lib.optional pcreSupport pcre;
+  nativeBuildInputs = [ meson ninja pkg-config gettext ];
 
   mesonFlags = [
     "-Dlirc=disabled"

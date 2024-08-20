@@ -72,10 +72,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "gtk4";
   version = "4.14.4";
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optionals x11Support [ "devdoc" ];
+  outputs = [ "out" "dev" ] ++ lib.optionals x11Support [ "devdoc" ];
   outputBin = "dev";
 
   setupHooks = [

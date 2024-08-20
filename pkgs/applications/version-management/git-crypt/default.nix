@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    libxslt
-    makeWrapper
-  ];
+  nativeBuildInputs = [ libxslt makeWrapper ];
 
   buildInputs = [ openssl ];
 
@@ -48,12 +45,7 @@ stdenv.mkDerivation rec {
 
   postFixup = ''
     wrapProgram $out/bin/git-crypt \
-      --suffix PATH : ${
-        lib.makeBinPath [
-          git
-          gnupg
-        ]
-      }
+      --suffix PATH : ${lib.makeBinPath [ git gnupg ]}
   '';
 
   meta = with lib; {

@@ -29,11 +29,7 @@ jdk.overrideAttrs (
     inherit pname version src;
     name = "${pname}-${version}";
 
-    nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [
-      jdk
-      gradle
-      rsync
-    ];
+    nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ jdk gradle rsync ];
 
     dontConfigure = true;
 

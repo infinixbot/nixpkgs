@@ -26,12 +26,7 @@ stdenv.mkDerivation rec {
   pname = "libheif";
   version = "1.18.0";
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "bin" "out" "dev" "man" ];
 
   src = fetchFromGitHub {
     owner = "strukturag";

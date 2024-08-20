@@ -15,19 +15,9 @@ in
       "hound"
       "extraGroups"
     ] "Use users.users.hound.extraGroups instead")
-    (lib.mkChangedOptionModule
-      [
-        "services"
-        "hound"
-        "config"
-      ]
-      [
-        "services"
-        "hound"
-        "settings"
-      ]
-      (config: builtins.fromJSON config.services.hound.config)
-    )
+    (lib.mkChangedOptionModule [ "services" "hound" "config" ] [ "services" "hound" "settings" ] (
+      config: builtins.fromJSON config.services.hound.config
+    ))
   ];
 
   meta.maintainers = with lib.maintainers; [ SuperSandro2000 ];

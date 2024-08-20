@@ -18,10 +18,7 @@ stdenvNoCC.mkDerivation {
 
   strictDeps = true;
 
-  buildInputs = [
-    fzf
-    kubectl
-  ];
+  buildInputs = [ fzf kubectl ];
 
   installPhase = ''
     runHook preInstall

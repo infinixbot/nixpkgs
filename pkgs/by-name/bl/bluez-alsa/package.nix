@@ -82,10 +82,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     license = with lib.licenses; [ mit ];
     mainProgram = "bluealsa";
-    maintainers = with lib.maintainers; [
-      AndersonTorres
-      oxij
-    ];
+    maintainers = with lib.maintainers; [ AndersonTorres oxij ];
     platforms = lib.platforms.linux;
   };
 })

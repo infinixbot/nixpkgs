@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-gFGstyq9bMmBaIS4QE6N3EIC9GxRvyJYUr8DUvwRQBc=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
   buildInputs = [
     wxGTK32
     libGL
@@ -43,9 +40,6 @@ stdenv.mkDerivation rec {
     homepage = "https://brettbode.github.io/wxmacmolplt/";
     license = licenses.gpl2Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      sheepforce
-      markuskowa
-    ];
+    maintainers = with maintainers; [ sheepforce markuskowa ];
   };
 }

@@ -48,10 +48,7 @@ python.pkgs.buildPythonApplication rec {
     mdit-py-plugins
   ];
 
-  pytestFlagsArray = [
-    "-vvrP"
-    "tests/"
-  ];
+  pytestFlagsArray = [ "-vvrP" "tests/" ];
 
   # NOTE this is a CI test rather than a build-time test because we want to keep the
   # build closures small. mypy has an unreasonably large build closure for docs builds.
@@ -59,14 +56,7 @@ python.pkgs.buildPythonApplication rec {
     runCommand "${pname}-mypy"
       {
         nativeBuildInputs = [
-          (python3.withPackages (
-            ps: with ps; [
-              mypy
-              pytest
-              markdown-it-py
-              mdit-py-plugins
-            ]
-          ))
+          (python3.withPackages (ps: with ps; [ mypy pytest markdown-it-py mdit-py-plugins ]))
         ];
       }
       ''

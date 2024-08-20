@@ -59,10 +59,7 @@ rustPlatform.buildRustPackage rec {
     description = "Screenshot annotation tool inspired by Swappy and Flameshot";
     homepage = "https://github.com/gabm/Satty";
     license = licenses.mpl20;
-    maintainers = with maintainers; [
-      pinpox
-      donovanglover
-    ];
+    maintainers = with maintainers; [ pinpox donovanglover ];
     mainProgram = "satty";
     platforms = lib.platforms.linux;
   };

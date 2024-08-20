@@ -69,10 +69,6 @@ stdenv.mkDerivation rec {
     homepage = "https://www.abisource.com/";
     license = licenses.gpl3;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      pSub
-      ylwghst
-      sna
-    ];
+    maintainers = with maintainers; [ pSub ylwghst sna ];
   };
 }

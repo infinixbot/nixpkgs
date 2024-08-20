@@ -43,11 +43,7 @@ stdenv.mkDerivation rec {
   pname = "polkit";
   version = "124";
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-  ]; # small man pages in $bin
+  outputs = [ "bin" "dev" "out" ]; # small man pages in $bin
 
   # Tarballs do not contain subprojects.
   src = fetchFromGitHub {

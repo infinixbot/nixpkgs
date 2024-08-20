@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ python3Packages.wrapPython ];
 
-  buildInputs = [
-    uget
-    python3Packages.python
-  ];
+  buildInputs = [ uget python3Packages.python ];
 
   installPhase = ''
     for f in conf/com.ugetdm.{chrome,firefox}.json; do

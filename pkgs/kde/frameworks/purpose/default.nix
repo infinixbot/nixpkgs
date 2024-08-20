@@ -9,9 +9,5 @@ mkKdeDerivation {
   pname = "purpose";
 
   extraBuildInputs = [ qtdeclarative ];
-  extraPropagatedBuildInputs = [
-    kaccounts-integration
-    kdeclarative
-    prison
-  ];
+  extraPropagatedBuildInputs = [ kaccounts-integration kdeclarative prison ];
 }

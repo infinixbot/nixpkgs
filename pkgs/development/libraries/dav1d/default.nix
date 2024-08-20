@@ -36,26 +36,14 @@ stdenv.mkDerivation rec {
     hash = "sha256-uudtA9ZpGIpw1yfCzbywFyH7EWYHuXfE6pBb2eksx1g=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    nasm
-    pkg-config
-  ];
+  nativeBuildInputs = [ meson ninja nasm pkg-config ];
   # TODO: doxygen (currently only HTML and not build by default).
   buildInputs =
     [ xxHash ]
     ++ lib.optional withExamples SDL2
-    ++ lib.optionals useVulkan [
-      libplacebo
-      vulkan-loader
-      vulkan-headers
-    ];
+    ++ lib.optionals useVulkan [ libplacebo vulkan-loader vulkan-headers ];
 
   mesonFlags = [
     "-Denable_tools=${lib.boolToString withTools}"

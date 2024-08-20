@@ -48,10 +48,7 @@ flutter.buildFlutterApplication rec {
     homepage = "https://expidusos.com";
     license = licenses.gpl3;
     maintainers = with maintainers; [ RossComputerGuy ];
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
     mainProgram = "expidus-file-manager";
   };
 }

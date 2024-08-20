@@ -37,21 +37,11 @@ stdenv.mkDerivation rec {
       --replace "MAJOR 7 MINOR 2 PATCH 0" "MAJOR 7 MINOR 2 PATCH 1"
   '';
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
-  buildInputs = [
-    sqlite
-    libtiff
-    curl
-  ];
+  buildInputs = [ sqlite libtiff curl ];
 
   nativeCheckInputs = [ gtest ];
 

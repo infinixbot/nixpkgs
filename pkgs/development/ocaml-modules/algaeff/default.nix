@@ -20,10 +20,7 @@ buildDunePackage rec {
   };
 
   doCheck = true;
-  checkInputs = [
-    alcotest
-    qcheck-core
-  ];
+  checkInputs = [ alcotest qcheck-core ];
 
   meta = {
     description = "Reusable Effects-Based Components";

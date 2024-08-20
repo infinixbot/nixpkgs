@@ -20,15 +20,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-cZ5w7B8bi0faOVWoQ6eeW5ejCZJgnNB91DQalC75mPo=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
-  nativeBuildInputs = [
-    pkg-config
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ pkg-config wrapGAppsHook3 ];
   buildInputs = [ gtk-layer-shell ];
 
   postInstall = ''

@@ -52,17 +52,10 @@ in
 
 {
   imports = [
-    (mkRemovedOptionModule
-      [
-        "services"
-        "smokeping"
-        "port"
-      ]
-      ''
-        The smokeping web service is now served by nginx.
-        In order to change the port, you need to change the nginx configuration under `services.nginx.virtualHosts.smokeping.listen.*.port`.
-      ''
-    )
+    (mkRemovedOptionModule [ "services" "smokeping" "port" ] ''
+      The smokeping web service is now served by nginx.
+      In order to change the port, you need to change the nginx configuration under `services.nginx.virtualHosts.smokeping.listen.*.port`.
+    '')
   ];
 
   options = {
@@ -160,11 +153,7 @@ in
         '';
       };
       linkStyle = mkOption {
-        type = types.enum [
-          "original"
-          "absolute"
-          "relative"
-        ];
+        type = types.enum [ "original" "absolute" "relative" ];
         default = "relative";
         example = "absolute";
         description = "DNS name for the urls generated in the cgi.";

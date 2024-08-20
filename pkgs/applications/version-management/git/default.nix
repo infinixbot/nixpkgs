@@ -64,14 +64,7 @@ assert svnSupport -> perlSupport;
 let
   version = "2.45.2";
   svn = subversionClient.override { perlBindings = perlSupport; };
-  gitwebPerlLibs = with perlPackages; [
-    CGI
-    HTMLParser
-    CGIFast
-    FCGI
-    FCGIProcManager
-    HTMLTagCloud
-  ];
+  gitwebPerlLibs = with perlPackages; [ CGI HTMLParser CGIFast FCGI FCGIProcManager HTMLTagCloud ];
 in
 
 stdenv.mkDerivation (finalAttrs: {
@@ -133,12 +126,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
 
   nativeBuildInputs =
-    [
-      gettext
-      perlPackages.perl
-      makeWrapper
-      pkg-config
-    ]
+    [ gettext perlPackages.perl makeWrapper pkg-config ]
     ++ lib.optionals withManual [
       asciidoc
       texinfo
@@ -149,29 +137,12 @@ stdenv.mkDerivation (finalAttrs: {
       libxslt
     ];
   buildInputs =
-    [
-      curl
-      openssl
-      zlib
-      expat
-      cpio
-      (if stdenv.isFreeBSD then libiconvReal else libiconv)
-      bash
-    ]
+    [ curl openssl zlib expat cpio (if stdenv.isFreeBSD then libiconvReal else libiconv) bash ]
     ++ lib.optionals perlSupport [ perlPackages.perl ]
-    ++ lib.optionals guiSupport [
-      tcl
-      tk
-    ]
+    ++ lib.optionals guiSupport [ tcl tk ]
     ++ lib.optionals withpcre2 [ pcre2 ]
-    ++ lib.optionals stdenv.isDarwin [
-      Security
-      CoreServices
-    ]
-    ++ lib.optionals withLibsecret [
-      glib
-      libsecret
-    ];
+    ++ lib.optionals stdenv.isDarwin [ Security CoreServices ]
+    ++ lib.optionals withLibsecret [ glib libsecret ];
 
   # required to support pthread_cancel()
   NIX_LDFLAGS =
@@ -201,16 +172,9 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional (stdenv.buildPlatform == stdenv.hostPlatform) "SHELL_PATH=${stdenv.shell}"
     ++ (if perlSupport then [ "PERL_PATH=${perlPackages.perl}/bin/perl" ] else [ "NO_PERL=1" ])
     ++ (if pythonSupport then [ "PYTHON_PATH=${python3}/bin/python" ] else [ "NO_PYTHON=1" ])
-    ++ lib.optionals stdenv.isSunOS [
-      "INSTALL=install"
-      "NO_INET_NTOP="
-      "NO_INET_PTON="
-    ]
+    ++ lib.optionals stdenv.isSunOS [ "INSTALL=install" "NO_INET_NTOP=" "NO_INET_PTON=" ]
     ++ (if stdenv.isDarwin then [ "NO_APPLE_COMMON_CRYPTO=1" ] else [ "sysconfdir=/etc" ])
-    ++ lib.optionals stdenv.hostPlatform.isMusl [
-      "NO_SYS_POLL_H=1"
-      "NO_GETTEXT=YesPlease"
-    ]
+    ++ lib.optionals stdenv.hostPlatform.isMusl [ "NO_SYS_POLL_H=1" "NO_GETTEXT=YesPlease" ]
     ++ lib.optional withpcre2 "USE_LIBPCRE2=1"
     ++ lib.optional (!nlsSupport) "NO_GETTEXT=1"
     # git-gui refuses to start with the version of tk distributed with
@@ -495,12 +459,7 @@ stdenv.mkDerivation (finalAttrs: {
       disable_test t0028-working-tree-encoding
     '';
 
-  stripDebugList = [
-    "lib"
-    "libexec"
-    "bin"
-    "share/git/contrib/credential/libsecret"
-  ];
+  stripDebugList = [ "lib" "libexec" "bin" "share/git/contrib/credential/libsecret" ];
 
   passthru = {
     shellPath = "/bin/git-shell";
@@ -525,12 +484,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
 
     platforms = lib.platforms.all;
-    maintainers = with lib.maintainers; [
-      primeos
-      wmertens
-      globin
-      kashw2
-    ];
+    maintainers = with lib.maintainers; [ primeos wmertens globin kashw2 ];
     mainProgram = "git";
   };
 })

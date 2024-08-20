@@ -25,23 +25,10 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-7e08oBKU7BMZ8328qCfNynCSe7LVZ88+iQZRRKl2YkY=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-    xxd
-  ];
-  buildInputs = [
-    openssl
-    libwebsockets
-    json_c
-    libuv
-    zlib
-  ];
+  nativeBuildInputs = [ pkg-config cmake xxd ];
+  buildInputs = [ openssl libwebsockets json_c libuv zlib ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   passthru.tests = {
     inherit (nixosTests) ttyd;

@@ -50,12 +50,7 @@ stdenv.mkDerivation rec {
   pname = "ostree";
   version = "2024.4";
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-    "installedTests"
-  ];
+  outputs = [ "out" "dev" "man" "installedTests" ];
 
   src = fetchurl {
     url = "https://github.com/ostreedev/ostree/releases/download/v${version}/libostree-${version}.tar.xz";

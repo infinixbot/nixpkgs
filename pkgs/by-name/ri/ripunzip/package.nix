@@ -27,11 +27,7 @@ rustPlatform.buildRustPackage rec {
   buildInputs =
     [ openssl ]
     ++ lib.optionals stdenv.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        Security
-        SystemConfiguration
-      ]
+      with darwin.apple_sdk.frameworks; [ Security SystemConfiguration ]
     );
   nativeBuildInputs = [ pkg-config ];
 
@@ -53,10 +49,7 @@ rustPlatform.buildRustPackage rec {
     description = "Tool to unzip files in parallel";
     mainProgram = "ripunzip";
     homepage = "https://github.com/google/ripunzip";
-    license = with lib.licenses; [
-      mit
-      asl20
-    ];
+    license = with lib.licenses; [ mit asl20 ];
     maintainers = [ maintainers.lesuisse ];
   };
 }

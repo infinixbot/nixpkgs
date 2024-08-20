@@ -82,10 +82,7 @@ stdenv.mkDerivation {
     changelog = "https://www.qownnotes.org/changelog.html";
     downloadPage = "https://github.com/pbek/QOwnNotes/releases/tag/v${version}";
     license = licenses.gpl2Only;
-    maintainers = with maintainers; [
-      pbek
-      totoroot
-    ];
+    maintainers = with maintainers; [ pbek totoroot ];
     platforms = platforms.unix;
   };
 }

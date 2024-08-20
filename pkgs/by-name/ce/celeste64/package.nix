@@ -73,15 +73,8 @@ buildDotnetModule rec {
   ];
 
   meta = {
-    license = with lib.licenses; [
-      unfree
-      mit
-    ];
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-      "armv7l-linux"
-    ];
+    license = with lib.licenses; [ unfree mit ];
+    platforms = [ "x86_64-linux" "aarch64-linux" "armv7l-linux" ];
     maintainers = with lib.maintainers; [ lychee ];
     mainProgram = "Celeste64";
     homepage = "https://github.com/ExOK/Celeste64";

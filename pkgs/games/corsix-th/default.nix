@@ -34,22 +34,11 @@ stdenv.mkDerivation (finalAttrs: {
     ./darwin-cmake-no-fixup-bundle.patch
   ];
 
-  nativeBuildInputs = [
-    cmake
-    doxygen
-    makeWrapper
-  ];
+  nativeBuildInputs = [ cmake doxygen makeWrapper ];
 
   buildInputs =
     let
-      luaEnv = lua.withPackages (
-        p: with p; [
-          luafilesystem
-          lpeg
-          luasec
-          luasocket
-        ]
-      );
+      luaEnv = lua.withPackages (p: with p; [ luafilesystem lpeg luasec luasocket ]);
     in
     [
       ffmpeg
@@ -89,10 +78,7 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "corsix-th";
     homepage = "https://corsixth.com/";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      hughobrien
-      matteopacini
-    ];
+    maintainers = with maintainers; [ hughobrien matteopacini ];
     platforms = platforms.linux ++ platforms.darwin;
   };
 })

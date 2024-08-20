@@ -69,10 +69,7 @@ makeSetupHook {
           strictDeps = true;
           nativeBuildInputs = [ wrapGAppsHook3 ];
 
-          installFlags = [
-            "bin-foo"
-            "libexec-bar"
-          ];
+          installFlags = [ "bin-foo" "libexec-bar" ];
         };
 
         # The wrapper for executable files should add path to dconf GIO module.
@@ -133,10 +130,7 @@ makeSetupHook {
             typelib-Mahjong
           ];
 
-          installFlags = [
-            "bin-foo"
-            "libexec-bar"
-          ];
+          installFlags = [ "bin-foo" "libexec-bar" ];
         };
 
         # Testing cooperation with gobject-introspection setup hook,
@@ -160,10 +154,7 @@ makeSetupHook {
         typelib-Bechamel = stdenv.mkDerivation {
           name = "typelib-Bechamel";
 
-          outputs = [
-            "out"
-            "lib"
-          ];
+          outputs = [ "out" "lib" ];
 
           src = sample-project;
 
@@ -192,10 +183,7 @@ makeSetupHook {
             typelib-Bechamel
           ];
 
-          installFlags = [
-            "bin-foo"
-            "libexec-bar"
-          ];
+          installFlags = [ "bin-foo" "libexec-bar" ];
         };
 
         # Testing cooperation with gobject-introspection setup hook,
@@ -228,11 +216,7 @@ makeSetupHook {
             wrapGAppsHook3
           ];
 
-          installFlags = [
-            "typelib-Cow"
-            "bin-foo"
-            "libexec-bar"
-          ];
+          installFlags = [ "typelib-Cow" "bin-foo" "libexec-bar" ];
         };
 
         # Testing cooperation with gobject-introspection setup hook,

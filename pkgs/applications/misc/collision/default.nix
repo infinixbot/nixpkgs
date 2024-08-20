@@ -62,18 +62,12 @@ crystal.buildCrystalPackage rec {
     python3.pkgs.pygobject3
   ];
 
-  buildTargets = [
-    "bindings"
-    "build"
-  ];
+  buildTargets = [ "bindings" "build" ];
 
   doCheck = false;
   doInstallCheck = false;
 
-  installTargets = [
-    "desktop"
-    "install"
-  ];
+  installTargets = [ "desktop" "install" ];
 
   postInstall = ''
     install -Dm555 ./nautilus-extension/collision-extension.py -t $out/share/nautilus-python/extensions
@@ -84,17 +78,11 @@ crystal.buildCrystalPackage rec {
       (gitUpdater { rev-prefix = "v"; })
       (_experimental-update-script-combinators.copyAttrOutputToFile "collision.shardLock" ./shard.lock)
       {
-        command = [
-          (writeShellScript "update-lock" "cd $1; ${lib.getExe crystal2nix}")
-          ./.
-        ];
+        command = [ (writeShellScript "update-lock" "cd $1; ${lib.getExe crystal2nix}") ./. ];
         supportedFeatures = [ "silent" ];
       }
       {
-        command = [
-          "rm"
-          ./shard.lock
-        ];
+        command = [ "rm" ./shard.lock ];
         supportedFeatures = [ "silent" ];
       }
     ];

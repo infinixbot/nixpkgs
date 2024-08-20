@@ -32,9 +32,6 @@ stdenv.mkDerivation {
     homepage = "https://snwh.org/paper";
     license = licenses.gpl3;
     platforms = platforms.linux;
-    maintainers = [
-      maintainers.simonvandel
-      maintainers.romildo
-    ];
+    maintainers = [ maintainers.simonvandel maintainers.romildo ];
   };
 }

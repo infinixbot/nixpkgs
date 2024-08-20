@@ -22,11 +22,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ perl ];
 
-  buildInputs = [
-    zlib
-    ncurses
-    htslib
-  ];
+  buildInputs = [ zlib ncurses htslib ];
 
   preConfigure = lib.optional stdenv.hostPlatform.isStatic ''
     export LIBS="-lz -lbz2 -llzma"
@@ -51,9 +47,6 @@ stdenv.mkDerivation rec {
     license = licenses.mit;
     homepage = "http://www.htslib.org/";
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      mimame
-      unode
-    ];
+    maintainers = with maintainers; [ mimame unode ];
   };
 }

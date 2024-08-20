@@ -109,17 +109,9 @@ let
   defaultArgs = {
     inherit version src;
 
-    outputs = [
-      "out"
-      "dev"
-      "devtools"
-    ];
+    outputs = [ "out" "dev" "devtools" ];
 
-    nativeBuildInputs = [
-      cmake
-      qt6.wrapQtAppsHook
-      moveDevHook
-    ] ++ extraNativeBuildInputs;
+    nativeBuildInputs = [ cmake qt6.wrapQtAppsHook moveDevHook ] ++ extraNativeBuildInputs;
     buildInputs = [ qt6.qtbase ] ++ extraBuildInputs;
 
     # FIXME: figure out what to propagate here

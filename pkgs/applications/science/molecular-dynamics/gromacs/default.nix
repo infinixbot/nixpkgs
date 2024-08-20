@@ -73,11 +73,7 @@ stdenv.mkDerivation rec {
     plumed patch -p -e gromacs-2023
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
   nativeBuildInputs = [
     cmake
@@ -168,9 +164,6 @@ stdenv.mkDerivation rec {
       See: https://www.gromacs.org/about.html for details.
     '';
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      sheepforce
-      markuskowa
-    ];
+    maintainers = with maintainers; [ sheepforce markuskowa ];
   };
 }

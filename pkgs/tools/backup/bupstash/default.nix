@@ -20,11 +20,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-hkGmE7WseEjMxmmPyR8C4osbdbpIt8qG9sfVGuC4d84=";
 
-  nativeBuildInputs = [
-    ronn
-    pkg-config
-    installShellFiles
-  ];
+  nativeBuildInputs = [ ronn pkg-config installShellFiles ];
   buildInputs = [ libsodium ];
 
   postBuild = ''

@@ -24,11 +24,7 @@ stdenv.mkDerivation {
     })
   ];
 
-  nativeBuildInputs = [
-    ocaml
-    findlib
-    camlp4
-  ];
+  nativeBuildInputs = [ ocaml findlib camlp4 ];
 
   strictDeps = true;
 

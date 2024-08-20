@@ -77,19 +77,9 @@ stdenv.mkDerivation rec {
       readline
       sqlite
     ]
-    ++ lib.optionals autoAwaySupport [
-      libXScrnSaver
-      libX11
-    ]
-    ++ lib.optionals notifySupport [
-      libnotify
-      gdk-pixbuf
-    ]
-    ++ lib.optionals omemoSupport [
-      libsignal-protocol-c
-      libgcrypt
-      qrencode
-    ]
+    ++ lib.optionals autoAwaySupport [ libXScrnSaver libX11 ]
+    ++ lib.optionals notifySupport [ libnotify gdk-pixbuf ]
+    ++ lib.optionals omemoSupport [ libsignal-protocol-c libgcrypt qrencode ]
     ++ lib.optionals pgpSupport [ gpgme ]
     ++ lib.optionals pythonPluginSupport [ python3 ]
     ++ lib.optionals traySupport [ gtk3 ];

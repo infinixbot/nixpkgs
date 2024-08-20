@@ -39,11 +39,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "tracker";
   version = "3.7.3";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchurl {
     url =
@@ -196,9 +192,6 @@ stdenv.mkDerivation (finalAttrs: {
     maintainers = teams.gnome.members;
     license = licenses.gpl2Plus;
     platforms = platforms.unix;
-    pkgConfigModules = [
-      "tracker-sparql-3.0"
-      "tracker-testutils-3.0"
-    ];
+    pkgConfigModules = [ "tracker-sparql-3.0" "tracker-testutils-3.0" ];
   };
 })

@@ -25,16 +25,9 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "sha256-iXGvb4qmZK7Sjbf/Jkyzj+nhpZFV3ngjtJfz6x/8z2s=";
 
   doCheck = false;
-  nativeBuildInputs = [
-    installShellFiles
-    pkg-config
-  ];
+  nativeBuildInputs = [ installShellFiles pkg-config ];
   buildInputs =
-    [
-      openssl
-      libsodium
-      xxHash
-    ]
+    [ openssl libsodium xxHash ]
     ++ (lib.optionals gitImportSupport [ libgit2 ])
     ++ (lib.optionals stdenv.isDarwin (
       with darwin.apple_sdk.frameworks;
@@ -58,11 +51,7 @@ rustPlatform.buildRustPackage rec {
     description = "Distributed version control system";
     homepage = "https://pijul.org";
     license = with licenses; [ gpl2Plus ];
-    maintainers = with maintainers; [
-      gal_bolle
-      dywedir
-      fabianhjr
-    ];
+    maintainers = with maintainers; [ gal_bolle dywedir fabianhjr ];
     mainProgram = "pijul";
   };
 }

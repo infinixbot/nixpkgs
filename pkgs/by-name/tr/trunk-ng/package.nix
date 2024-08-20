@@ -24,15 +24,7 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ pkg-config ];
   buildInputs =
-    if stdenv.isDarwin then
-      [
-        libiconv
-        CoreServices
-        Security
-        SystemConfiguration
-      ]
-    else
-      [ openssl ];
+    if stdenv.isDarwin then [ libiconv CoreServices Security SystemConfiguration ] else [ openssl ];
 
   # requires network
   checkFlags = [ "--skip=tools::tests::download_and_install_binaries" ];

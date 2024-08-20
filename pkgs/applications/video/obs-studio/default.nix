@@ -128,16 +128,10 @@ stdenv.mkDerivation (finalAttrs: {
       uthash
       nv-codec-headers-12
     ]
-    ++ optionals scriptingSupport [
-      luajit
-      python3
-    ]
+    ++ optionals scriptingSupport [ luajit python3 ]
     ++ optional alsaSupport alsa-lib
     ++ optional pulseaudioSupport libpulseaudio
-    ++ optionals pipewireSupport [
-      pipewire
-      libdrm
-    ]
+    ++ optionals pipewireSupport [ pipewire libdrm ]
     ++ optional withFdk fdk_aac;
 
   # Copied from the obs-linuxbrowser
@@ -212,18 +206,9 @@ stdenv.mkDerivation (finalAttrs: {
       video content, efficiently
     '';
     homepage = "https://obsproject.com";
-    maintainers = with maintainers; [
-      eclairevoyant
-      jb55
-      materus
-      fpletz
-    ];
+    maintainers = with maintainers; [ eclairevoyant jb55 materus fpletz ];
     license = with licenses; [ gpl2Plus ] ++ optional withFdk fraunhofer-fdk;
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-      "aarch64-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" "aarch64-linux" ];
     mainProgram = "obs";
   };
 })

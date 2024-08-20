@@ -39,22 +39,10 @@ stdenv.mkDerivation rec {
     (allow process-exec (literal "/usr/libexec/PlistBuddy"))
   '';
 
-  nativeBuildInputs = [
-    autoreconfHook
-    makeBinaryWrapper
-    texinfo
-  ];
-  buildInputs = [
-    libassuan
-    libgpg-error
-    libiconv
-    Cocoa
-  ];
+  nativeBuildInputs = [ autoreconfHook makeBinaryWrapper texinfo ];
+  buildInputs = [ libassuan libgpg-error libiconv Cocoa ];
 
-  configureFlags = [
-    "--enable-maintainer-mode"
-    "--disable-ncurses"
-  ];
+  configureFlags = [ "--enable-maintainer-mode" "--disable-ncurses" ];
 
   installPhase = ''
     mkdir -p $out/Applications $out/bin

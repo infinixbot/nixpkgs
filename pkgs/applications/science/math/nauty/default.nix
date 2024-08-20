@@ -14,10 +14,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-FZ0hVoEKa7JAQQzWHrZBrdhQiNnxXIiM2qN7hoH5Kc4=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   configureFlags = [
     # Prevent nauty from sniffing some cpu features. While those are very

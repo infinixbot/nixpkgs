@@ -21,16 +21,8 @@ stdenv.mkDerivation rec {
 
   dontStrip = true;
 
-  buildInputs = [
-    stdenv.cc.cc.lib
-    ocl-icd
-    zlib
-  ];
-  nativeBuildInputs = [
-    autoPatchelfHook
-    pkg-config
-    installShellFiles
-  ];
+  buildInputs = [ stdenv.cc.cc.lib ocl-icd zlib ];
+  nativeBuildInputs = [ autoPatchelfHook pkg-config installShellFiles ];
 
   installPhase = ''
     runHook preInstall

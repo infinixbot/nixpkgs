@@ -73,12 +73,7 @@
     version = "4.3.4";
   };
   http = {
-    dependencies = [
-      "addressable"
-      "http-cookie"
-      "http-form_data"
-      "http_parser.rb"
-    ];
+    dependencies = [ "addressable" "http-cookie" "http-form_data" "http_parser.rb" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -202,15 +197,7 @@
     version = "0.3.1";
   };
   t = {
-    dependencies = [
-      "geokit"
-      "htmlentities"
-      "launchy"
-      "oauth"
-      "retryable"
-      "thor"
-      "twitter"
-    ];
+    dependencies = [ "geokit" "htmlentities" "launchy" "oauth" "retryable" "thor" "twitter" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

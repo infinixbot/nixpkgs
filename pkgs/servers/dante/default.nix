@@ -25,13 +25,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ autoreconfHook ];
-  buildInputs = [
-    pam
-    libkrb5
-    cyrus_sasl
-    miniupnpc
-    libxcrypt
-  ];
+  buildInputs = [ pam libkrb5 cyrus_sasl miniupnpc libxcrypt ];
 
   configureFlags =
     if !stdenv.isDarwin then

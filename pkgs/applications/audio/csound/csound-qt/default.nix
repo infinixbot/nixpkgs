@@ -28,18 +28,9 @@ stdenv.mkDerivation rec {
     ./rtmidipath.patch
   ];
 
-  nativeBuildInputs = [
-    qmake
-    qtwebengine
-    qtxmlpatterns
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ qmake qtwebengine qtxmlpatterns wrapQtAppsHook ];
 
-  buildInputs = [
-    csound
-    desktop-file-utils
-    rtmidi
-  ];
+  buildInputs = [ csound desktop-file-utils rtmidi ];
 
   qmakeFlags = [
     "qcs.pro"

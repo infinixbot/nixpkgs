@@ -46,10 +46,7 @@ let
     scripts:
     mapAttrsToList (
       relativePath: value:
-      pkgs.writeTextDir (subpath.join [
-        "share/wireplumber/scripts"
-        relativePath
-      ]) value
+      pkgs.writeTextDir (subpath.join [ "share/wireplumber/scripts" relativePath ]) value
     ) scripts;
 in
 {
@@ -258,10 +255,7 @@ in
 
       configPackages =
         cfg.configPackages
-        ++ [
-          extraConfigPkg
-          extraScriptsPkg
-        ]
+        ++ [ extraConfigPkg extraScriptsPkg ]
         ++ optional (!pwUsedForAudio) pwNotForAudioConfigPkg
         ++ optional pwCfg.systemWide systemwideConfigPkg;
 
@@ -272,13 +266,7 @@ in
       };
 
       requiredLv2Packages = flatten (
-        concatMap (
-          p:
-          attrByPath [
-            "passthru"
-            "requiredLv2Packages"
-          ] [ ] p
-        ) configPackages
+        concatMap (p: attrByPath [ "passthru" "requiredLv2Packages" ] [ ] p) configPackages
       );
 
       lv2Plugins = pkgs.buildEnv {
@@ -311,18 +299,12 @@ in
 
         # Make WirePlumber find our config/script files and lv2 plugins required by those
         # (but also the configs/scripts shipped with WirePlumber)
-        XDG_DATA_DIRS = makeSearchPath "share" [
-          configs
-          cfg.package
-        ];
+        XDG_DATA_DIRS = makeSearchPath "share" [ configs cfg.package ];
         LV2_PATH = "${lv2Plugins}/lib/lv2";
       };
 
       systemd.user.services.wireplumber.environment = mkIf (!pwCfg.systemWide) {
-        XDG_DATA_DIRS = makeSearchPath "share" [
-          configs
-          cfg.package
-        ];
+        XDG_DATA_DIRS = makeSearchPath "share" [ configs cfg.package ];
         LV2_PATH = "${lv2Plugins}/lib/lv2";
       };
     };

@@ -26,17 +26,7 @@ buildNimPackage (
         src = ./nitter-version.patch;
         inherit (finalAttrs) version;
         inherit (finalAttrs.src) rev;
-        url =
-          builtins.replaceStrings
-            [
-              "archive"
-              ".tar.gz"
-            ]
-            [
-              "commit"
-              ""
-            ]
-            finalAttrs.src.url;
+        url = builtins.replaceStrings [ "archive" ".tar.gz" ] [ "commit" "" ] finalAttrs.src.url;
       })
     ];
 
@@ -61,10 +51,7 @@ buildNimPackage (
       homepage = "https://github.com/zedeus/nitter";
       description = "Alternative Twitter front-end";
       license = licenses.agpl3Only;
-      maintainers = with maintainers; [
-        erdnaxe
-        infinidoge
-      ];
+      maintainers = with maintainers; [ erdnaxe infinidoge ];
       mainProgram = "nitter";
     };
   }

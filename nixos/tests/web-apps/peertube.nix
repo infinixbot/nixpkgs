@@ -15,10 +15,7 @@ import ../make-test-python.nix (
               }
             ];
           };
-          firewall.allowedTCPPorts = [
-            5432
-            31638
-          ];
+          firewall.allowedTCPPorts = [ 5432 31638 ];
         };
 
         services.postgresql = {
@@ -118,10 +115,7 @@ import ../make-test-python.nix (
         };
 
       client = {
-        environment.systemPackages = [
-          pkgs.jq
-          pkgs.peertube.cli
-        ];
+        environment.systemPackages = [ pkgs.jq pkgs.peertube.cli ];
         networking = {
           interfaces.eth1 = {
             ipv4.addresses = [

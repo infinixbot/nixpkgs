@@ -26,25 +26,15 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    imake
-    gccmakedep
-  ];
-  buildInputs = [
-    libX11
-    libXext
-    libXt
-  ];
+  nativeBuildInputs = [ imake gccmakedep ];
+  buildInputs = [ libX11 libXext libXt ];
 
   makeFlags = [
     "PREFIX=$(out)"
     "BINDIR=$(out)/bin"
     "MANPATH=$(out)/share/man"
   ];
-  installTargets = [
-    "install"
-    "install.man"
-  ];
+  installTargets = [ "install" "install.man" ];
 
   meta = {
     description = "X11 screen zoom tool";

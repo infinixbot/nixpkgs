@@ -36,16 +36,9 @@ stdenv.mkDerivation {
 
   propagatedBuildInputs = [ libGL ];
 
-  nativeBuildInputs = [
-    cmake
-    extra-cmake-modules
-  ];
+  nativeBuildInputs = [ cmake extra-cmake-modules ];
 
-  buildInputs = [
-    wayland
-    wayland-protocols
-    libxkbcommon
-  ];
+  buildInputs = [ wayland wayland-protocols libxkbcommon ];
 
   cmakeFlags = [
     "-DBUILD_SHARED_LIBS=ON"

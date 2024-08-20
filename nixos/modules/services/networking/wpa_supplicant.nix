@@ -13,10 +13,7 @@ let
   cfg = config.networking.wireless;
   opt = options.networking.wireless;
 
-  wpa3Protocols = [
-    "SAE"
-    "FT-SAE"
-  ];
+  wpa3Protocols = [ "SAE" "FT-SAE" ];
   hasMixedWPA =
     opts:
     let
@@ -212,10 +209,7 @@ in
       interfaces = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "wlan0"
-          "wlan1"
-        ];
+        example = [ "wlan0" "wlan1" ];
         description = ''
           The interfaces {command}`wpa_supplicant` will use. If empty, it will
           automatically use all wireless interfaces.
@@ -540,13 +534,7 @@ in
     assertions =
       flip mapAttrsToList cfg.networks (
         name: cfg: {
-          assertion =
-            with cfg;
-            count (x: x != null) [
-              psk
-              pskRaw
-              auth
-            ] <= 1;
+          assertion = with cfg; count (x: x != null) [ psk pskRaw auth ] <= 1;
           message = ''options networking.wireless."${name}".{psk,pskRaw,auth} are mutually exclusive'';
         }
       )

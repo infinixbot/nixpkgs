@@ -27,11 +27,7 @@ python3Packages.buildPythonApplication rec {
 
   LC_ALL = "en_US.UTF-8";
 
-  nativeCheckInputs = with python3Packages; [
-    pytestCheckHook
-    astroid
-    pylint
-  ];
+  nativeCheckInputs = with python3Packages; [ pytestCheckHook astroid pylint ];
   propagatedBuildInputs =
     [
       less
@@ -72,10 +68,7 @@ python3Packages.buildPythonApplication rec {
     homepage = "https://ranger.github.io/";
     license = licenses.gpl3Only;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      toonn
-      magnetophon
-    ];
+    maintainers = with maintainers; [ toonn magnetophon ];
     mainProgram = "ranger";
   };
 }

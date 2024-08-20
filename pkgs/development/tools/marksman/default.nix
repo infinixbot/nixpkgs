@@ -55,10 +55,7 @@ buildDotnetModule rec {
     '';
     homepage = "https://github.com/artempyanykh/marksman";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      stasjok
-      plusgut
-    ];
+    maintainers = with maintainers; [ stasjok plusgut ];
     platforms = dotnet-sdk.meta.platforms;
     mainProgram = "marksman";
   };

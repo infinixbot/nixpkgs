@@ -31,11 +31,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "pango";
   version = "1.52.2";
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-  ] ++ lib.optional withIntrospection "devdoc";
+  outputs = [ "bin" "out" "dev" ] ++ lib.optional withIntrospection "devdoc";
 
   src = fetchurl {
     url =

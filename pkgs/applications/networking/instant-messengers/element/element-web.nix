@@ -35,12 +35,7 @@ stdenv.mkDerivation (
       sha256 = webYarnHash;
     };
 
-    nativeBuildInputs = [
-      yarn
-      fixup-yarn-lock
-      jq
-      nodejs
-    ];
+    nativeBuildInputs = [ yarn fixup-yarn-lock jq nodejs ];
 
     buildPhase = ''
       runHook preBuild

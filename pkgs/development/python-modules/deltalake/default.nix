@@ -84,11 +84,6 @@ buildPythonPackage rec {
     homepage = "https://github.com/delta-io/delta-rs";
     changelog = "https://github.com/delta-io/delta-rs/blob/python-v${version}/CHANGELOG.md";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      kfollesdal
-      mslingsby
-      harvidsen
-      andershus
-    ];
+    maintainers = with maintainers; [ kfollesdal mslingsby harvidsen andershus ];
   };
 }

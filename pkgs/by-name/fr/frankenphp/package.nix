@@ -46,26 +46,14 @@ buildGoModule rec {
   proxyVendor = true;
   vendorHash = "sha256-3Y5STb521iRois/KLQqdTxxTYdp39PTaiJEBjWrZsyw=";
 
-  buildInputs = [
-    phpUnwrapped
-    brotli
-  ] ++ phpUnwrapped.buildInputs;
-  nativeBuildInputs =
-    [ makeBinaryWrapper ]
-    ++ lib.optionals stdenv.isDarwin [
-      pkg-config
-      cctools
-      darwin.autoSignDarwinBinariesHook
-    ];
+  buildInputs = [ phpUnwrapped brotli ] ++ phpUnwrapped.buildInputs;
+  nativeBuildInputs = [
+    makeBinaryWrapper
+  ] ++ lib.optionals stdenv.isDarwin [ pkg-config cctools darwin.autoSignDarwinBinariesHook ];
 
   subPackages = [ "frankenphp" ];
 
-  tags = [
-    "cgo"
-    "netgo"
-    "ousergo"
-    "static_build"
-  ];
+  tags = [ "cgo" "netgo" "ousergo" "static_build" ];
 
   ldflags = [
     "-s"
@@ -124,10 +112,7 @@ buildGoModule rec {
     homepage = "https://github.com/dunglas/frankenphp";
     license = lib.licenses.mit;
     mainProgram = "frankenphp";
-    maintainers = with lib.maintainers; [
-      gaelreyrol
-      shyim
-    ];
+    maintainers = with lib.maintainers; [ gaelreyrol shyim ];
     platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
 }

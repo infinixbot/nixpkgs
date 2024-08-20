@@ -37,12 +37,7 @@ stdenv.mkDerivation rec {
     ./0001-Avoid-using-vendored-dependencies-we-have-in-nixpkgs.patch
   ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    wrapQtAppsHook
-    autoPatchelfHook
-  ];
+  nativeBuildInputs = [ cmake pkg-config wrapQtAppsHook autoPatchelfHook ];
 
   buildInputs = [
     qtbase

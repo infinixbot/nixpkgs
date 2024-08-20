@@ -145,10 +145,7 @@ stdenv.mkDerivation rec {
     downloadPage = "https://unity.com/unity-hub";
     changelog = "https://unity.com/unity-hub/release-notes";
     license = licenses.unfree;
-    maintainers = with maintainers; [
-      tesq0
-      huantian
-    ];
+    maintainers = with maintainers; [ tesq0 huantian ];
     platforms = [ "x86_64-linux" ];
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
   };

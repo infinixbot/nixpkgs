@@ -54,12 +54,7 @@ stdenv.mkDerivation rec {
       --replace "opencc.2" "opencc"
   '';
 
-  nativeBuildInputs = [
-    pkg-config
-    qmake
-    wrapQtAppsHook
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ pkg-config qmake wrapQtAppsHook wrapGAppsHook3 ];
   buildInputs =
     [
       qtbase
@@ -71,21 +66,12 @@ stdenv.mkDerivation rec {
       xz
       lzo
     ]
-    ++ lib.optionals stdenv.isLinux [
-      qtx11extras
-      libXtst
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      bzip2
-      libiconv
-    ]
+    ++ lib.optionals stdenv.isLinux [ qtx11extras libXtst ]
+    ++ lib.optionals stdenv.isDarwin [ bzip2 libiconv ]
     ++ lib.optional withCC opencc
     ++ lib.optional withEpwing libeb
     ++ lib.optional withExtraTiff libtiff
-    ++ lib.optionals withFFmpeg [
-      libao
-      ffmpeg
-    ]
+    ++ lib.optionals withFFmpeg [ libao ffmpeg ]
     ++ lib.optional withZim zstd;
 
   qmakeFlags = [
@@ -109,11 +95,7 @@ stdenv.mkDerivation rec {
     description = "Feature-rich dictionary lookup program";
     platforms = with platforms; linux ++ darwin;
     mainProgram = "goldendict";
-    maintainers = with maintainers; [
-      gebner
-      astsmtl
-      sikmir
-    ];
+    maintainers = with maintainers; [ gebner astsmtl sikmir ];
     license = licenses.gpl3Plus;
   };
 }

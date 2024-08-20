@@ -28,10 +28,7 @@ in
   meta = {
     description = "Fork of Firefox, focused on privacy, security and freedom";
     homepage = "https://librewolf.net/";
-    maintainers = with lib.maintainers; [
-      dotlambda
-      squalus
-    ];
+    maintainers = with lib.maintainers; [ dotlambda squalus ];
     platforms = lib.platforms.unix;
     badPlatforms = lib.platforms.darwin;
     broken = stdenv.buildPlatform.is32bit;

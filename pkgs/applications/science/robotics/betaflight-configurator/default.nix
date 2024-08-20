@@ -34,15 +34,9 @@ stdenv.mkDerivation rec {
     find -name "lib*.so" -delete
   '';
 
-  nativeBuildInputs = [
-    wrapGAppsHook3
-    unzip
-  ];
+  nativeBuildInputs = [ wrapGAppsHook3 unzip ];
 
-  buildInputs = [
-    gsettings-desktop-schemas
-    gtk3
-  ];
+  buildInputs = [ gsettings-desktop-schemas gtk3 ];
 
   installPhase = ''
     runHook preInstall

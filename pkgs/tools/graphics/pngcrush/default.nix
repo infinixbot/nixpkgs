@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  makeFlags = [
-    "CC=${stdenv.cc.targetPrefix}cc"
-    "LD=${stdenv.cc.targetPrefix}cc"
-  ]; # gcc and/or clang compat
+  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" "LD=${stdenv.cc.targetPrefix}cc" ]; # gcc and/or clang compat
 
   configurePhase = ''
     sed -i s,/usr,$out, Makefile

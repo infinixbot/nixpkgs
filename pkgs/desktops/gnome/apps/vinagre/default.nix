@@ -36,12 +36,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    intltool
-    itstool
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ pkg-config intltool itstool wrapGAppsHook3 ];
   buildInputs = [
     gtk3
     vte

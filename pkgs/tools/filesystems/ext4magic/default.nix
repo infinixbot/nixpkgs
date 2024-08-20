@@ -27,13 +27,7 @@ stdenv.mkDerivation rec {
     ./glibc-fix.patch
   ];
 
-  buildInputs = [
-    file
-    libuuid
-    e2fsprogs
-    zlib
-    bzip2
-  ];
+  buildInputs = [ file libuuid e2fsprogs zlib bzip2 ];
   installFlags = [ "PREFIX=$(out)" ];
 
   meta = with lib; {

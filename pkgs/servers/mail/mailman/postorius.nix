@@ -20,11 +20,7 @@ buildPythonPackage rec {
     django-mailman3
     readme-renderer
   ] ++ readme-renderer.optional-dependencies.md;
-  nativeCheckInputs = [
-    beautifulsoup4
-    vcrpy
-    mock
-  ];
+  nativeCheckInputs = [ beautifulsoup4 vcrpy mock ];
 
   # Tries to connect to database.
   doCheck = false;

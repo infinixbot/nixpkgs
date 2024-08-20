@@ -40,10 +40,7 @@ makeSetupHook {
           else
             "-Drelease-safe=true";
       in
-      [
-        "-Dcpu=baseline"
-        releaseType
-      ];
+      [ "-Dcpu=baseline" releaseType ];
   };
 
   passthru = {

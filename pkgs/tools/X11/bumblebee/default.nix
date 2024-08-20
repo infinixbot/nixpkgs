@@ -56,10 +56,7 @@ let
 
   nvidiaLibs = lib.makeLibraryPath nvidia_x11s;
 
-  bbdPath = lib.makeBinPath [
-    kmod
-    xorgserver
-  ];
+  bbdPath = lib.makeBinPath [ kmod xorgserver ];
 
   xmodules = lib.concatStringsSep "," (
     map (x: "${x.out or x}/lib/xorg/modules") (
@@ -131,19 +128,8 @@ stdenv.mkDerivation rec {
 
   # Build-time dependencies of bumblebeed and optirun.
   # Note that it has several runtime dependencies.
-  buildInputs = [
-    libX11
-    glib
-    libbsd
-    kmod
-  ];
-  nativeBuildInputs = [
-    makeWrapper
-    pkg-config
-    help2man
-    automake111x
-    autoconf
-  ];
+  buildInputs = [ libX11 glib libbsd kmod ];
+  nativeBuildInputs = [ makeWrapper pkg-config help2man automake111x autoconf ];
 
   # The order of LDPATH is very specific: First X11 then the host
   # environment then the optional sub architecture paths.

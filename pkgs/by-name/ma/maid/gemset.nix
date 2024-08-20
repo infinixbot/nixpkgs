@@ -71,10 +71,7 @@
     version = "1.15.5";
   };
   fugit = {
-    dependencies = [
-      "et-orbi"
-      "raabro"
-    ];
+    dependencies = [ "et-orbi" "raabro" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -95,10 +92,7 @@
     version = "1.8.2";
   };
   listen = {
-    dependencies = [
-      "rb-fsevent"
-      "rb-inotify"
-    ];
+    dependencies = [ "rb-fsevent" "rb-inotify" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

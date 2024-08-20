@@ -63,9 +63,6 @@ stdenv.mkDerivation rec {
     changelog = "https://github.com/leanprover-community/lean/blob/v${version}/doc/changes.md";
     license = licenses.asl20;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      thoughtpolice
-      gebner
-    ];
+    maintainers = with maintainers; [ thoughtpolice gebner ];
   };
 }

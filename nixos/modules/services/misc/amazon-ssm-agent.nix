@@ -33,30 +33,16 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "ssm-agent"
-        "enable"
-      ]
-      [
-        "services"
-        "amazon-ssm-agent"
-        "enable"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "ssm-agent"
-        "package"
-      ]
-      [
-        "services"
-        "amazon-ssm-agent"
-        "package"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "ssm-agent" "enable" ] [
+      "services"
+      "amazon-ssm-agent"
+      "enable"
+    ])
+    (mkRenamedOptionModule [ "services" "ssm-agent" "package" ] [
+      "services"
+      "amazon-ssm-agent"
+      "package"
+    ])
   ];
 
   options.services.amazon-ssm-agent = {
@@ -72,10 +58,7 @@ in
       after = [ "network-online.target" ];
       wantedBy = [ "multi-user.target" ];
 
-      path = [
-        fake-lsb-release
-        pkgs.coreutils
-      ];
+      path = [ fake-lsb-release pkgs.coreutils ];
 
       serviceConfig = {
         ExecStart = "${cfg.package}/bin/amazon-ssm-agent";

@@ -29,10 +29,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-00ZSAVEmk2pNjv6fo++gnpIheK8lo4AVWf+ghXappnI=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     description = "Go-based tools for modifying UEFI firmware";

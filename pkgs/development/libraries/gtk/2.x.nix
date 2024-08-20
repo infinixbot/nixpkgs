@@ -47,11 +47,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-rCrHV/WULTGKMRpUsMgLXvKV8pnCpzxjL2v7H/Scxto=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
   outputBin = "dev";
 
   setupHooks = [
@@ -163,10 +159,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     changelog = "https://gitlab.gnome.org/GNOME/gtk/-/raw/${finalAttrs.version}/NEWS";
     license = lib.licenses.lgpl2Plus;
-    maintainers = with lib.maintainers; [
-      lovek323
-      raskin
-    ];
+    maintainers = with lib.maintainers; [ lovek323 raskin ];
     platforms = lib.platforms.all;
     pkgConfigModules =
       [

@@ -12,15 +12,8 @@ let
     homepage = "https://lmstudio.ai/";
     license = lib.licenses.unfree;
     mainProgram = "lmstudio";
-    maintainers = with lib.maintainers; [
-      cig0
-      eeedean
-      crertel
-    ];
-    platforms = [
-      "x86_64-linux"
-      "aarch64-darwin"
-    ];
+    maintainers = with lib.maintainers; [ cig0 eeedean crertel ];
+    platforms = [ "x86_64-linux" "aarch64-darwin" ];
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
   };
 in

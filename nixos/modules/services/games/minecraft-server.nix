@@ -147,13 +147,7 @@ in
       };
 
       serverProperties = mkOption {
-        type =
-          with types;
-          attrsOf (oneOf [
-            bool
-            int
-            str
-          ]);
+        type = with types; attrsOf (oneOf [ bool int str ]);
         default = { };
         example = literalExpression ''
           {
@@ -220,10 +214,7 @@ in
       description = "Minecraft Server Service";
       wantedBy = [ "multi-user.target" ];
       requires = [ "minecraft-server.socket" ];
-      after = [
-        "network.target"
-        "minecraft-server.socket"
-      ];
+      after = [ "network.target" "minecraft-server.socket" ];
 
       serviceConfig = {
         ExecStart = "${cfg.package}/bin/minecraft-server ${cfg.jvmOpts}";
@@ -251,10 +242,7 @@ in
         ProtectKernelModules = true;
         ProtectKernelTunables = true;
         ProtectProc = "invisible";
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;

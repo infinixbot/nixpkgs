@@ -206,18 +206,11 @@ let
 
     # Test examples from the lib.path.subpath.join documentation
     testSubpathJoinExample1 = {
-      expr = subpath.join [
-        "foo"
-        "bar/baz"
-      ];
+      expr = subpath.join [ "foo" "bar/baz" ];
       expected = "./foo/bar/baz";
     };
     testSubpathJoinExample2 = {
-      expr = subpath.join [
-        "./foo"
-        "."
-        "bar//./baz/"
-      ];
+      expr = subpath.join [ "./foo" "." "bar//./baz/" ];
       expected = "./foo/bar/baz";
     };
     testSubpathJoinExample3 = {
@@ -298,11 +291,7 @@ let
     };
     testSubpathComponentsExample2 = {
       expr = subpath.components "./foo//bar/./baz/";
-      expected = [
-        "foo"
-        "bar"
-        "baz"
-      ];
+      expected = [ "foo" "bar" "baz" ];
     };
     testSubpathComponentsExample3 = {
       expr = (builtins.tryEval (subpath.components "/foo")).success;

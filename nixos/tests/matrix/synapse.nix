@@ -162,11 +162,7 @@ import ../make-test-python.nix (
                   curl --fail -XPOST 'https://localhost:8448/_matrix/client/r0/account/password/email/requestToken' -d '{"email":"${testEmail}","client_secret":"foobar","send_attempt":1}' -v
                 '';
             in
-            [
-              sendTestMailStarttls
-              pkgs.matrix-synapse
-              obtainTokenAndRegisterEmail
-            ];
+            [ sendTestMailStarttls pkgs.matrix-synapse obtainTokenAndRegisterEmail ];
         };
 
       # test mail delivery

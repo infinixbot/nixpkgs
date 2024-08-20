@@ -72,10 +72,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "gnome-shell";
   version = "46.4";
 
-  outputs = [
-    "out"
-    "devdoc"
-  ];
+  outputs = [ "out" "devdoc" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/gnome-shell/${lib.versions.major finalAttrs.version}/gnome-shell-${finalAttrs.version}.tar.xz";

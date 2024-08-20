@@ -19,10 +19,7 @@ buildGraalvmNativeImage rec {
 
   nativeBuildInputs = [ removeReferencesTo ];
 
-  extraNativeImageBuildArgs = [
-    "-H:+ReportExceptionStackTraces"
-    "--no-fallback"
-  ];
+  extraNativeImageBuildArgs = [ "-H:+ReportExceptionStackTraces" "--no-fallback" ];
 
   postInstall = ''
     remove-references-to -t ${graalvmDrv} $out/bin/${pname}
@@ -34,9 +31,6 @@ buildGraalvmNativeImage rec {
     sourceProvenance = with sourceTypes; [ binaryBytecode ];
     license = licenses.epl10;
     changelog = "https://github.com/clj-kondo/clj-kondo/blob/v${version}/CHANGELOG.md";
-    maintainers = with maintainers; [
-      jlesquembre
-      bandresen
-    ];
+    maintainers = with maintainers; [ jlesquembre bandresen ];
   };
 }

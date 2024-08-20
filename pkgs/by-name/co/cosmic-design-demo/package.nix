@@ -45,19 +45,8 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  nativeBuildInputs = [
-    cmake
-    just
-    pkg-config
-    makeBinaryWrapper
-  ];
-  buildInputs = [
-    libxkbcommon
-    expat
-    fontconfig
-    freetype
-    wayland
-  ];
+  nativeBuildInputs = [ cmake just pkg-config makeBinaryWrapper ];
+  buildInputs = [ libxkbcommon expat fontconfig freetype wayland ];
 
   dontUseJustBuild = true;
 

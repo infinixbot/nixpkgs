@@ -20,10 +20,7 @@ stdenv.mkDerivation (finalAttrs: {
     SDL
   ];
 
-  makeFlags = [
-    "CC:=$(CC)"
-    "PREFIX=$(out)"
-  ];
+  makeFlags = [ "CC:=$(CC)" "PREFIX=$(out)" ];
 
   meta = with lib; {
     description = "C/G telnet client for C64 BBS's";

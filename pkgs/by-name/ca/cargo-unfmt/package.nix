@@ -20,10 +20,7 @@ rustPlatform.buildRustPackage {
 
   cargoHash = "sha256-mMeHTYCUIZR3jVvTxfyH4I9wGfUdCWcyn9djnksAY8k=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [
-    libiconv
-    darwin.apple_sdk.frameworks.Security
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ libiconv darwin.apple_sdk.frameworks.Security ];
 
   # Doc tests are broken on 0.3.3
   doCheck = false;

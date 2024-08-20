@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
   pname = "accountsservice";
   version = "23.13.9";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "https://www.freedesktop.org/software/accountsservice/accountsservice-${version}.tar.xz";

@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
     sha256 = "02xxasgbjbivsbhyfpn3cpv52lscdx5kc95s6ns1dvnmdg0fpng0";
   };
 
-  nativeBuildInputs = [
-    python3
-    wrapPython
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ python3 wrapPython wrapQtAppsHook ];
 
   propagatedBuildInputs = [ pyqt5 ];
 

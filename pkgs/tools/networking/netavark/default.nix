@@ -21,11 +21,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-v8djyU+MvBmg929oFVPZlRPtj7zK8eZg3/KmCsFNWpw=";
 
-  nativeBuildInputs = [
-    installShellFiles
-    mandown
-    protobuf
-  ];
+  nativeBuildInputs = [ installShellFiles mandown protobuf ];
 
   postBuild = ''
     make -C docs netavark.1

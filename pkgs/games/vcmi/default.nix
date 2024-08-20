@@ -80,13 +80,7 @@ stdenv.mkDerivation rec {
 
   postFixup = ''
     wrapProgram $out/bin/vcmibuilder \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          innoextract
-          ffmpeg
-          unshield
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ innoextract ffmpeg unshield ]}"
   '';
 
   passthru.tests.version = testers.testVersion {
@@ -101,10 +95,7 @@ stdenv.mkDerivation rec {
     description = "Open-source engine for Heroes of Might and Magic III";
     homepage = "https://vcmi.eu";
     changelog = "https://github.com/vcmi/vcmi/blob/${src.rev}/ChangeLog.md";
-    license = with licenses; [
-      gpl2Plus
-      cc-by-sa-40
-    ];
+    license = with licenses; [ gpl2Plus cc-by-sa-40 ];
     maintainers = with maintainers; [ azahi ];
     platforms = platforms.linux;
     mainProgram = "vcmilauncher";

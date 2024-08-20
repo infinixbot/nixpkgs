@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [
-    ant
-    jdk
-    python2
-  ];
+  buildInputs = [ ant jdk python2 ];
 
   buildPhase = "ant dist";
 
@@ -43,10 +39,7 @@ stdenv.mkDerivation rec {
       fromSource
       binaryBytecode # source bundles dependencies as jars
     ];
-    license = with licenses; [
-      mpl11
-      gpl2
-    ];
+    license = with licenses; [ mpl11 gpl2 ];
     platforms = platforms.linux;
   };
 }

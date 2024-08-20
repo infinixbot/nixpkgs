@@ -17,12 +17,7 @@ in
     package = mkPackageOption pkgs "openrgb" { };
 
     motherboard = mkOption {
-      type = types.nullOr (
-        types.enum [
-          "amd"
-          "intel"
-        ]
-      );
+      type = types.nullOr (types.enum [ "amd" "intel" ]);
       default =
         if config.hardware.cpu.intel.updateMicrocode then
           "intel"

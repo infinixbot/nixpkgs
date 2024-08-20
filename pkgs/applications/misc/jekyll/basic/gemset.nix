@@ -92,10 +92,7 @@
     version = "2.2.1";
   };
   em-websocket = {
-    dependencies = [
-      "eventmachine"
-      "http_parser.rb"
-    ];
+    dependencies = [ "eventmachine" "http_parser.rb" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -157,10 +154,7 @@
     version = "4.26.1";
   };
   html-pipeline = {
-    dependencies = [
-      "activesupport"
-      "nokogiri"
-    ];
+    dependencies = [ "activesupport" "nokogiri" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -230,10 +224,7 @@
     version = "0.8.0";
   };
   jekyll-mentions = {
-    dependencies = [
-      "html-pipeline"
-      "jekyll"
-    ];
+    dependencies = [ "html-pipeline" "jekyll" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -288,11 +279,7 @@
     version = "2.2.1";
   };
   jemoji = {
-    dependencies = [
-      "gemoji"
-      "html-pipeline"
-      "jekyll"
-    ];
+    dependencies = [ "gemoji" "html-pipeline" "jekyll" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -335,10 +322,7 @@
     version = "4.0.4";
   };
   listen = {
-    dependencies = [
-      "rb-fsevent"
-      "rb-inotify"
-    ];
+    dependencies = [ "rb-fsevent" "rb-inotify" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -389,10 +373,7 @@
     version = "0.2.0";
   };
   nokogiri = {
-    dependencies = [
-      "mini_portile2"
-      "racc"
-    ];
+    dependencies = [ "mini_portile2" "racc" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -495,10 +476,7 @@
     version = "1.0.5";
   };
   sass-embedded = {
-    dependencies = [
-      "google-protobuf"
-      "rake"
-    ];
+    dependencies = [ "google-protobuf" "rake" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

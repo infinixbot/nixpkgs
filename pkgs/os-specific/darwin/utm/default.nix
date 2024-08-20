@@ -15,10 +15,7 @@ stdenvNoCC.mkDerivation rec {
     hash = "sha256-7hpWTe6TvnNodFt1rSRGougeZuEjvSeuVzBWFfYo53Y=";
   };
 
-  nativeBuildInputs = [
-    undmg
-    makeWrapper
-  ];
+  nativeBuildInputs = [ undmg makeWrapper ];
 
   sourceRoot = ".";
   installPhase = ''
@@ -66,9 +63,6 @@ stdenvNoCC.mkDerivation rec {
     license = licenses.asl20;
     platforms = platforms.darwin; # 11.3 is the minimum supported version as of UTM 4.
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
-    maintainers = with maintainers; [
-      rrbutani
-      wegank
-    ];
+    maintainers = with maintainers; [ rrbutani wegank ];
   };
 }

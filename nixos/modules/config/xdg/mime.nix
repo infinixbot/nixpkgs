@@ -35,10 +35,7 @@ in
       default = { };
       example = {
         "application/pdf" = "firefox.desktop";
-        "text/xml" = [
-          "nvim.desktop"
-          "codium.desktop"
-        ];
+        "text/xml" = [ "nvim.desktop" "codium.desktop" ];
       };
       description = ''
         Adds associations between mimetypes and applications. See the
@@ -52,10 +49,7 @@ in
       default = { };
       example = {
         "application/pdf" = "firefox.desktop";
-        "image/png" = [
-          "sxiv.desktop"
-          "gimp.desktop"
-        ];
+        "image/png" = [ "sxiv.desktop" "gimp.desktop" ];
       };
       description = ''
         Sets the default applications for given mimetypes. See the
@@ -68,10 +62,7 @@ in
       type = associationOptions;
       default = { };
       example = {
-        "audio/mp3" = [
-          "mpv.desktop"
-          "umpv.desktop"
-        ];
+        "audio/mp3" = [ "mpv.desktop" "umpv.desktop" ];
         "inode/directory" = "codium.desktop";
       };
       description = ''

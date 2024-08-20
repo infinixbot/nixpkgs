@@ -41,10 +41,9 @@ let
       map (changePackageRid package) otherRids
     );
 
-  allPackages = sortOn (package: [
-    package.pname
-    package.version
-  ]) (concatMap expandPackage packages);
+  allPackages = sortOn (package: [ package.pname package.version ]) (
+    concatMap expandPackage packages
+  );
 
   fetchExpr = package: "  (fetchNuGet ${generators.toPretty { multiline = false; } package})";
 

@@ -34,10 +34,7 @@ let
       };
 
     in
-    [
-      promise
-      semaphore
-    ]
+    [ promise semaphore ]
   );
 
 in

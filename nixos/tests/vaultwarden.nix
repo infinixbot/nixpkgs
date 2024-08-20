@@ -92,10 +92,7 @@ let
         inherit name;
 
         meta = {
-          maintainers = with pkgs.lib.maintainers; [
-            dotlambda
-            SuperSandro2000
-          ];
+          maintainers = with pkgs.lib.maintainers; [ dotlambda SuperSandro2000 ];
         };
 
         nodes =
@@ -158,11 +155,7 @@ let
 
                   networking.firewall.allowedTCPPorts = [ 8080 ];
 
-                  environment.systemPackages = [
-                    pkgs.firefox-unwrapped
-                    pkgs.geckodriver
-                    testRunner
-                  ];
+                  environment.systemPackages = [ pkgs.firefox-unwrapped pkgs.geckodriver testRunner ];
                 }
               ];
           }

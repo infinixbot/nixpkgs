@@ -15,10 +15,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-7QHZRudxq3hdsfEAYKKJydc4rv6lyN6UIt/2Zmaejx8=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    lua
-  ];
+  nativeBuildInputs = [ cmake lua ];
 
   cmakeFlags = [
     "-DSOL2_LUA_VERSION=${lua.version}"

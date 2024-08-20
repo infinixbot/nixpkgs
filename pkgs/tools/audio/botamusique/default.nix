@@ -122,15 +122,7 @@ stdenv.mkDerivation rec {
   '';
 
   passthru.updateScript = writeShellScript "botamusique-updater" ''
-    export PATH=${
-      lib.makeBinPath [
-        coreutils
-        curl
-        nix-prefetch-git
-        jq
-        prefetch-npm-deps
-      ]
-    }
+    export PATH=${lib.makeBinPath [ coreutils curl nix-prefetch-git jq prefetch-npm-deps ]}
     set -ex
 
     OWNER=azlux

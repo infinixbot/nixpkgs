@@ -23,15 +23,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ autoreconfHook ];
 
-  buildInputs = [
-    boost
-    fastjet
-    gsl
-    hepmc2
-    lhapdf
-    rivet
-    zlib
-  ];
+  buildInputs = [ boost fastjet gsl hepmc2 lhapdf rivet zlib ];
 
   configureFlags = [
     "--with-hepmc=${hepmc2}"

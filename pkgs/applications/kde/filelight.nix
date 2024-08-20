@@ -23,10 +23,7 @@ mkDerivation {
     license = with lib.licenses; [ gpl2 ];
     maintainers = with lib.maintainers; [ vcunat ];
   };
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   propagatedBuildInputs = [
     kio
     kparts
@@ -38,8 +35,5 @@ mkDerivation {
     kirigami2
     kquickcharts
   ];
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 }

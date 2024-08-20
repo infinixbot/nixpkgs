@@ -25,10 +25,7 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "i3-auto-layout";
     homepage = "https://github.com/chmln/i3-auto-layout";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      mephistophiles
-      perstark
-    ];
+    maintainers = with maintainers; [ mephistophiles perstark ];
     platforms = platforms.linux;
   };
 }

@@ -28,8 +28,5 @@ mkDerivation {
     kwindowsystem
     polkit-qt
   ];
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 }

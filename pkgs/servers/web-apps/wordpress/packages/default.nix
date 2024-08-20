@@ -43,11 +43,7 @@ let
           license,
           ...
         }@args:
-        assert lib.any (x: x == type) [
-          "plugin"
-          "theme"
-          "language"
-        ];
+        assert lib.any (x: x == type) [ "plugin" "theme" "language" ];
         stdenvNoCC.mkDerivation (
           {
             pname = "wordpress-${type}-${pname}";
@@ -71,10 +67,7 @@ let
             } // (args.passthru or { });
           }
           // lib.optionalAttrs (type == "language") {
-            nativeBuildInputs = [
-              gettext
-              wp-cli
-            ];
+            nativeBuildInputs = [ gettext wp-cli ];
             dontBuild = false;
             buildPhase = ''
               runHook preBuild
@@ -88,12 +81,7 @@ let
               runHook postBuild
             '';
           }
-          // removeAttrs args [
-            "type"
-            "pname"
-            "version"
-            "passthru"
-          ]
+          // removeAttrs args [ "type" "pname" "version" "passthru" ]
         )
       ) { };
 
@@ -117,48 +105,26 @@ let
 
       # Filter out all characters that might occur in a version string but that that are not allowed
       # in store paths.
-      filterWPString =
-        builtins.replaceStrings
-          [
-            " "
-            ","
-            "/"
-            "&"
-            ";"
-            ''"''
-            "'"
-            "$"
-            ":"
-            "("
-            ")"
-            "["
-            "]"
-            "{"
-            "}"
-            "|"
-            "*"
-            "\t"
-          ]
-          [
-            "_"
-            "."
-            "."
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            "-"
-            ""
-            ""
-          ];
+      filterWPString = builtins.replaceStrings [
+        " "
+        ","
+        "/"
+        "&"
+        ";"
+        ''"''
+        "'"
+        "$"
+        ":"
+        "("
+        ")"
+        "["
+        "]"
+        "{"
+        "}"
+        "|"
+        "*"
+        "\t"
+      ] [ "_" "." "." "" "" "" "" "" "" "" "" "" "" "" "" "-" "" "" ];
 
       # Fetch a package from the official wordpress.org SVN.
       # The data supplied is the data straight from the go tool.

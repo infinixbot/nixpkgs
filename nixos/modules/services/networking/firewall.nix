@@ -18,10 +18,7 @@ let
       type = types.listOf types.port;
       default = [ ];
       apply = canonicalizePortList;
-      example = [
-        22
-        80
-      ];
+      example = [ 22 80 ];
       description = ''
         List of TCP ports on which incoming connections are
         accepted.
@@ -178,12 +175,7 @@ in
       };
 
       checkReversePath = mkOption {
-        type = types.either types.bool (
-          types.enum [
-            "strict"
-            "loose"
-          ]
-        );
+        type = types.either types.bool (types.enum [ "strict" "loose" ]);
         default = true;
         defaultText = literalMD "`true` except if the iptables based firewall is in use and the kernel lacks rpfilter support";
         example = "loose";
@@ -224,18 +216,7 @@ in
       connectionTrackingModules = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "ftp"
-          "irc"
-          "sane"
-          "sip"
-          "tftp"
-          "amanda"
-          "h323"
-          "netbios_sn"
-          "pptp"
-          "snmp"
-        ];
+        example = [ "ftp" "irc" "sane" "sip" "tftp" "amanda" "h323" "netbios_sn" "pptp" "snmp" ];
         description = ''
           List of connection-tracking helpers that are auto-loaded.
           The complete list of possible values is given in the example.

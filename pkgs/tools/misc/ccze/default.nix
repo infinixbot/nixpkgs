@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ autoconf ];
 
-  buildInputs = [
-    ncurses
-    pcre
-  ];
+  buildInputs = [ ncurses pcre ];
 
   preConfigure = ''
     autoheader

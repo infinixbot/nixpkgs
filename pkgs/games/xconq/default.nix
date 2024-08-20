@@ -25,18 +25,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [
-    cpio
-    xorgproto
-    libX11
-    libXmu
-    libXaw
-    libXt
-    tcl
-    tk
-    libXext
-    fontconfig
-  ];
+  buildInputs = [ cpio xorgproto libX11 libXmu libXaw libXt tcl tk libXext fontconfig ];
 
   configureFlags = [
     "--enable-alternate-scoresdir=scores"

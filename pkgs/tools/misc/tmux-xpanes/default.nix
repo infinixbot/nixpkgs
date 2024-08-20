@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-PF2K2A49c5djQqSO7ZLFyBwPZaJRK58qZTFpY7n+Z0w=";
   };
 
-  buildInputs = [
-    openssl
-    perl
-  ];
+  buildInputs = [ openssl perl ];
 
   installPhase = ''
     # Create directories.

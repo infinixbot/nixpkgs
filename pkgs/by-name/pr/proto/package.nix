@@ -26,17 +26,11 @@ rustPlatform.buildRustPackage rec {
     darwin.apple_sdk.frameworks.SystemConfiguration
     libiconv
   ];
-  nativeBuildInputs = [
-    makeBinaryWrapper
-    pkg-config
-  ];
+  nativeBuildInputs = [ makeBinaryWrapper pkg-config ];
 
   # Tests requires network access
   doCheck = false;
-  cargoBuildFlags = [
-    "--bin proto"
-    "--bin proto-shim"
-  ];
+  cargoBuildFlags = [ "--bin proto" "--bin proto-shim" ];
 
   postInstall = ''
     # proto looks up a proto-shim executable file in $PROTO_LOOKUP_DIR

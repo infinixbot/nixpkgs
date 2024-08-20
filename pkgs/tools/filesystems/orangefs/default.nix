@@ -32,18 +32,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    bison
-    flex
-    perl
-    autoreconfHook
-  ];
-  buildInputs = [
-    openssl
-    db
-    attr
-    tcsh
-  ];
+  nativeBuildInputs = [ bison flex perl autoreconfHook ];
+  buildInputs = [ openssl db attr tcsh ];
 
   postPatch = ''
     # Issue introduced by attr-2.4.48
@@ -88,14 +78,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Scale-out network file system for use on high-end computing systems";
     homepage = "http://www.orangefs.org/";
-    license = with licenses; [
-      asl20
-      bsd3
-      gpl2Only
-      lgpl21
-      lgpl21Plus
-      openldap
-    ];
+    license = with licenses; [ asl20 bsd3 gpl2Only lgpl21 lgpl21Plus openldap ];
     platforms = [ "x86_64-linux" ];
     maintainers = with maintainers; [ markuskowa ];
   };

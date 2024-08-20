@@ -33,16 +33,8 @@ stdenv.mkDerivation rec {
       ."${version}";
   };
 
-  nativeBuildInputs = [
-    ocaml
-    findlib
-    ocamlbuild
-    topkg
-  ];
-  buildInputs = [
-    topkg
-    uutf
-  ] ++ lib.optional cmdlinerSupport cmdliner;
+  nativeBuildInputs = [ ocaml findlib ocamlbuild topkg ];
+  buildInputs = [ topkg uutf ] ++ lib.optional cmdlinerSupport cmdliner;
   propagatedBuildInputs = [ uucp ];
 
   strictDeps = true;

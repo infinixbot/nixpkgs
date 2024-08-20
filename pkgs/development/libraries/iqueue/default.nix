@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libbsd
-    microsoft-gsl
-  ];
+  buildInputs = [ libbsd microsoft-gsl ];
 
   env.NIX_CFLAGS_COMPILE = toString [
     # Needed with GCC 12

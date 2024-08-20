@@ -57,10 +57,7 @@ mkDerivation rec {
     done
   '';
 
-  nativeBuildInputs = [
-    qmake
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ qmake wrapQtAppsHook ];
 
   buildInputs = [
     SDL

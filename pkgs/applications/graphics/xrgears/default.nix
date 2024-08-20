@@ -48,12 +48,7 @@ stdenv.mkDerivation rec {
 
   fixupPhase = ''
     wrapProgram $out/bin/xrgears \
-      --prefix LD_LIBRARY_PATH : ${
-        lib.makeLibraryPath [
-          SDL2
-          libGL
-        ]
-      }
+      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ SDL2 libGL ]}
   '';
 
   meta = with lib; {

@@ -16,11 +16,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-lRrgMqsEqHtH5gIzngfg0Gtuh71aTrM087OVvhT3XkQ=";
   };
 
-  buildInputs = [
-    openssl
-    zlib
-    libxcrypt
-  ];
+  buildInputs = [ openssl zlib libxcrypt ];
 
   configureFlags = [
     "--with-nicklen=100"

@@ -40,13 +40,7 @@ buildPythonPackage rec {
     sortedcontainers
   ] ++ lib.optional (!isPy3k) enum34;
 
-  nativeCheckInputs = [
-    pytest
-    pytest-xdist
-    flaky
-    mock
-    pexpect
-  ];
+  nativeCheckInputs = [ pytest pytest-xdist flaky mock pexpect ];
   inherit doCheck;
 
   checkPhase = ''

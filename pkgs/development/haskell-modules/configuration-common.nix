@@ -1045,11 +1045,7 @@ self: super:
               + "/${name}";
           }) super.${name};
       in
-      lib.genAttrs [
-        "selda"
-        "selda-sqlite"
-        "selda-json"
-      ] mkSeldaPackage
+      lib.genAttrs [ "selda" "selda-sqlite" "selda-json" ] mkSeldaPackage
     )
     selda
     selda-sqlite
@@ -1903,11 +1899,7 @@ self: super:
       })
       [
         (overrideCabal (drv: {
-          librarySystemDepends = with pkgs; [
-            postgresql
-            krb5.dev
-            openssl.dev
-          ];
+          librarySystemDepends = with pkgs; [ postgresql krb5.dev openssl.dev ];
           testToolDepends = drv.testToolDepends or [ ] ++ [
             pkgs.postgresql
             pkgs.postgresqlTestHook
@@ -1967,11 +1959,7 @@ self: super:
   # 2023-06-26: Test failure: https://hydra.nixos.org/build/225081865
   update-nix-fetchgit =
     let
-      deps = [
-        pkgs.git
-        pkgs.nix
-        pkgs.nix-prefetch-git
-      ];
+      deps = [ pkgs.git pkgs.nix pkgs.nix-prefetch-git ];
     in
     lib.pipe super.update-nix-fetchgit [
       dontCheck
@@ -2277,10 +2265,7 @@ self: super:
     # Apply patch which fixes a compilation failure we encountered.
     # Will need to be kept until we can drop ghc-bignum entirely,
     # i. e. if GHC 8.10.* and 8.8.* have been removed.
-    configureFlags = [
-      "-f"
-      "Native"
-    ];
+    configureFlags = [ "-f" "Native" ];
     patches = [
       (fetchpatch {
         url = "https://gitlab.haskell.org/ghc/ghc/-/commit/08d1588bf38d83140a86817a7a615db486357d4f.patch";
@@ -2503,10 +2488,7 @@ self: super:
   # Disable flaky tests
   # https://github.com/DavidEichmann/alpaca-netcode/issues/2
   alpaca-netcode = overrideCabal {
-    testFlags = [
-      "--pattern"
-      "!/[NOCI]/"
-    ];
+    testFlags = [ "--pattern" "!/[NOCI]/" ];
   } super.alpaca-netcode;
 
   # 2021-05-22: Tests fail sometimes (even consistently on hydra)
@@ -3061,12 +3043,7 @@ self: super:
 
   postgrest = lib.pipe super.postgrest [
     # 2023-12-20: New version needs extra dependencies
-    (addBuildDepends [
-      self.extra
-      self.fuzzyset_0_2_4
-      self.cache
-      self.timeit
-    ])
+    (addBuildDepends [ self.extra self.fuzzyset_0_2_4 self.cache self.timeit ])
     # 2022-12-02: Too strict bounds: https://github.com/PostgREST/postgrest/issues/2580
     doJailbreak
     # 2022-12-02: Hackage release lags behind actual releases: https://github.com/PostgREST/postgrest/issues/2275

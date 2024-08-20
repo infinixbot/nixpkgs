@@ -15,10 +15,7 @@ stdenv.mkDerivation {
 
   inherit version src;
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
   outputBin = "dev";
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];

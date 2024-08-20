@@ -27,20 +27,9 @@ stdenv.mkDerivation rec {
 
   separateDebugInfo = true;
 
-  buildInputs = [
-    libGLU
-    libepoxy
-    libX11
-    libdrm
-    mesa
-  ] ++ lib.optionals vaapiSupport [ libva ];
+  buildInputs = [ libGLU libepoxy libX11 libdrm mesa ] ++ lib.optionals vaapiSupport [ libva ];
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    python3
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config python3 ];
 
   mesonFlags = [
     (lib.mesonBool "video" vaapiSupport)

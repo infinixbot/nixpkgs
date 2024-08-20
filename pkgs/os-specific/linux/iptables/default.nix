@@ -25,11 +25,7 @@ stdenv.mkDerivation rec {
     sha256 = "XMJVwYk1bjF9BwdVzpNx62Oht4PDRJj7jDAmTzzFnJw=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
   nativeBuildInputs = [
     autoreconfHook
@@ -39,13 +35,7 @@ stdenv.mkDerivation rec {
     bison
   ];
 
-  buildInputs = [
-    libmnl
-    libnetfilter_conntrack
-    libnfnetlink
-    libnftnl
-    libpcap
-  ];
+  buildInputs = [ libmnl libnetfilter_conntrack libnfnetlink libnftnl libpcap ];
 
   configureFlags = [
     "--enable-bpf-compiler"

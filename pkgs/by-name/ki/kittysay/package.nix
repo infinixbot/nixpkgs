@@ -23,10 +23,7 @@ rustPlatform.buildRustPackage {
     description = "Cowsay, but with a cute kitty :3";
     homepage = "https://github.com/uncenter/kittysay";
     license = lib.licenses.gpl3Only;
-    maintainers = with lib.maintainers; [
-      isabelroses
-      uncenter
-    ];
+    maintainers = with lib.maintainers; [ isabelroses uncenter ];
     mainProgram = "kittysay";
   };
 }

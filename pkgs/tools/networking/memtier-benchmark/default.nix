@@ -26,16 +26,8 @@ stdenv.mkDerivation rec {
       --replace '1.2.8' '${version}'
   '';
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
-  buildInputs = [
-    libevent
-    pcre
-    zlib
-    openssl
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
+  buildInputs = [ libevent pcre zlib openssl ];
 
   meta = {
     description = "Redis and Memcached traffic generation and benchmarking tool";

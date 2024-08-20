@@ -41,10 +41,7 @@ lib.checkListOfEnum "${pname}: theme variants"
       hash = "sha256-60pz/ET3jorEui31Aq6I3LMTz0djwWUv7poEI0USzJw=";
     };
 
-    nativeBuildInputs = [
-      gtk3
-      jdupes
-    ];
+    nativeBuildInputs = [ gtk3 jdupes ];
 
     buildInputs = [ hicolor-icon-theme ];
 

@@ -27,10 +27,7 @@ buildGoModule rec {
     })
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     description = "Dedicated Chrome instance to log into captive portals without messing with DNS settings";

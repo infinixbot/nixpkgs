@@ -84,10 +84,7 @@ stdenv.mkDerivation (finalAttrs: {
     tests.test = lib.optionalAttrs (!(stdenv.isDarwin && stdenv.isAarch64)) (
       runCommand "sile-test"
         {
-          nativeBuildInputs = [
-            poppler_utils
-            sile
-          ];
+          nativeBuildInputs = [ poppler_utils sile ];
           inherit (finalAttrs) FONTCONFIG_FILE;
         }
         ''
@@ -130,12 +127,7 @@ stdenv.mkDerivation (finalAttrs: {
     done
   '';
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-    "dev"
-  ];
+  outputs = [ "out" "doc" "man" "dev" ];
 
   meta = with lib; {
     description = "Typesetting system";
@@ -152,10 +144,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://sile-typesetter.org";
     changelog = "https://github.com/sile-typesetter/sile/raw/v${finalAttrs.version}/CHANGELOG.md";
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      doronbehar
-      alerque
-    ];
+    maintainers = with maintainers; [ doronbehar alerque ];
     license = licenses.mit;
     mainProgram = "sile";
   };

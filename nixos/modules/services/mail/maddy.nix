@@ -222,13 +222,7 @@ in
 
       tls = {
         loader = mkOption {
-          type =
-            with types;
-            nullOr (enum [
-              "off"
-              "file"
-              "acme"
-            ]);
+          type = with types; nullOr (enum [ "off" "file" "acme" ]);
           default = "off";
           description = ''
             TLS certificates are obtained by modules called "certificate
@@ -481,11 +475,7 @@ in
     };
 
     networking.firewall = mkIf cfg.openFirewall {
-      allowedTCPPorts = [
-        25
-        143
-        587
-      ];
+      allowedTCPPorts = [ 25 143 587 ];
     };
 
     environment.systemPackages = [

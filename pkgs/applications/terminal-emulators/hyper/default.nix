@@ -116,10 +116,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Terminal built on web technologies";
     homepage = "https://hyper.is/";
-    maintainers = with maintainers; [
-      puffnfresh
-      fabiangd
-    ];
+    maintainers = with maintainers; [ puffnfresh fabiangd ];
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.mit;
     platforms = [ "x86_64-linux" ];

@@ -27,9 +27,6 @@ buildNpmPackage rec {
     homepage = "https://github.com/rcjsuen/dockerfile-language-server-nodejs";
     license = lib.licenses.mit;
     mainProgram = "docker-langserver";
-    maintainers = with lib.maintainers; [
-      rvolosatovs
-      net-mist
-    ];
+    maintainers = with lib.maintainers; [ rvolosatovs net-mist ];
   };
 }

@@ -74,10 +74,6 @@ buildPythonPackage rec {
     homepage = "https://git.sr.ht/~sircmpwn/paste.sr.ht";
     description = "Ad-hoc text file hosting service for the sr.ht network";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [
-      eadwu
-      nessdoor
-      christoph-heiss
-    ];
+    maintainers = with maintainers; [ eadwu nessdoor christoph-heiss ];
   };
 }

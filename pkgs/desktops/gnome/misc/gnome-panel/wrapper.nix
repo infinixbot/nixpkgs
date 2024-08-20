@@ -12,10 +12,7 @@
 
 let
   # We always want to find the built-in panel applets.
-  selectedPanelModulePackages = [
-    gnome-panel
-    gnome-flashback
-  ] ++ panelModulePackages;
+  selectedPanelModulePackages = [ gnome-panel gnome-flashback ] ++ panelModulePackages;
 
   panelModulesEnv = buildEnv {
     name = "gnome-panel-modules-env";

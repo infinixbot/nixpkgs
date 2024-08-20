@@ -14,10 +14,7 @@ buildDunePackage {
   minimalOCamlVersion = "4.08";
   duneVersion = "3";
 
-  propagatedBuildInputs = [
-    lwt
-    nottui
-  ];
+  propagatedBuildInputs = [ lwt nottui ];
 
   meta = with lib; {
     description = "Run Nottui UIs in Lwt";

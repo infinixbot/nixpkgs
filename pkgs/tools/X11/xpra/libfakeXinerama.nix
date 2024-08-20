@@ -15,10 +15,7 @@ stdenv.mkDerivation rec {
     sha256 = "0gxb8jska2anbb3c1m8asbglgnwylgdr44x9lr8yh91hjxsqadkx";
   };
 
-  buildInputs = [
-    libX11
-    libXinerama
-  ];
+  buildInputs = [ libX11 libXinerama ];
 
   buildPhase = ''
     runHook preBuild

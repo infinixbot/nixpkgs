@@ -21,16 +21,8 @@ stdenv.mkDerivation rec {
     sha256 = "1wafyfhwd7nf7xdici0djpwgykizaz7jlarn0r1b4spnpjx1zbx4";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
-  buildInputs = [
-    zlib
-    libffi
-    elfutils
-    libdwarf
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
+  buildInputs = [ zlib libffi elfutils libdwarf ];
 
   meta = with lib; {
     description = "Foreign function interface for bash";

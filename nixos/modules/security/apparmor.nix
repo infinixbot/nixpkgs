@@ -191,20 +191,14 @@ in
           sed '1,/\[qualifiers\]/d' $footer >> $out
         '';
 
-    boot.kernelParams = [
-      "apparmor=1"
-      "security=apparmor"
-    ];
+    boot.kernelParams = [ "apparmor=1" "security=apparmor" ];
 
     systemd.services.apparmor = {
       after = [
         "local-fs.target"
         "systemd-journald-audit.socket"
       ];
-      before = [
-        "sysinit.target"
-        "shutdown.target"
-      ];
+      before = [ "sysinit.target" "shutdown.target" ];
       conflicts = [ "shutdown.target" ];
       wantedBy = [ "multi-user.target" ];
       unitConfig = {
@@ -255,10 +249,7 @@ in
               # (because AppArmor can only start to confine new processes).
               optional cfg.killUnconfinedConfinables killUnconfinedConfinables;
           ExecStop = "${pkgs.apparmor-utils}/bin/aa-teardown";
-          CacheDirectory = [
-            "apparmor"
-            "apparmor/logprof"
-          ];
+          CacheDirectory = [ "apparmor" "apparmor/logprof" ];
           CacheDirectoryMode = "0700";
         };
     };

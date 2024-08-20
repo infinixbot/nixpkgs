@@ -21,10 +21,7 @@ buildGoModule rec {
     "-X github.com/containerd/containerd/version.Version=${version}"
   ];
 
-  subPackages = [
-    "cmd/ctd-decoder"
-    "cmd/ctr"
-  ];
+  subPackages = [ "cmd/ctd-decoder" "cmd/ctr" ];
 
   postFixup = ''
     mv $out/bin/ctr $out/bin/ctr-enc

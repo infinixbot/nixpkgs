@@ -30,10 +30,7 @@ stdenvNoCC.mkDerivation {
     homepage = "http://dotcolon.net/font/tenderness/";
     description = "Serif font designed by Sora Sagano with old-style figures";
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      leenaars
-      minijackson
-    ];
+    maintainers = with maintainers; [ leenaars minijackson ];
     license = licenses.ofl;
   };
 }

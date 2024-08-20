@@ -39,10 +39,7 @@ stdenv.mkDerivation rec {
   buildPhase = "make all";
 
   # no binaries, so out = library, dev = headers
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   meta = with lib; {
     description = "SQL / SQLI tokenizer parser analyzer";

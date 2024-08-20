@@ -13,11 +13,7 @@ stdenv.mkDerivation rec {
   pname = "libplist";
   version = "2.6.0";
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-  ] ++ lib.optional enablePython "py";
+  outputs = [ "bin" "dev" "out" ] ++ lib.optional enablePython "py";
 
   src = fetchFromGitHub {
     owner = "libimobiledevice";

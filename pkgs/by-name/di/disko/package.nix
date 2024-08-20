@@ -27,12 +27,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     for i in disko disko-install; do
       sed -e "s|libexec_dir=\".*\"|libexec_dir=\"$out/share/disko\"|" "$i" > "$out/bin/$i"
       chmod 755 "$out/bin/$i"
-      wrapProgram "$out/bin/$i" --prefix PATH : ${
-        lib.makeBinPath [
-          nix
-          coreutils
-        ]
-      }
+      wrapProgram "$out/bin/$i" --prefix PATH : ${lib.makeBinPath [ nix coreutils ]}
     done
     runHook postInstall
   '';
@@ -48,10 +43,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     description = "Declarative disk partitioning and formatting using nix";
     license = lib.licenses.mit;
     mainProgram = "disko";
-    maintainers = with lib.maintainers; [
-      mic92
-      lassulus
-    ];
+    maintainers = with lib.maintainers; [ mic92 lassulus ];
     platforms = lib.platforms.linux;
   };
 })

@@ -14,12 +14,7 @@ let
   kernelItem = types.submodule {
     options = {
       tristate = mkOption {
-        type = types.enum [
-          "y"
-          "m"
-          "n"
-          null
-        ];
+        type = types.enum [ "y" "m" "n" null ];
         default = null;
         internal = true;
         visible = true;
@@ -56,20 +51,7 @@ let
     with lib;
     val:
     let
-      isNumber =
-        c:
-        elem c [
-          "0"
-          "1"
-          "2"
-          "3"
-          "4"
-          "5"
-          "6"
-          "7"
-          "8"
-          "9"
-        ];
+      isNumber = c: elem c [ "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" ];
 
     in
     if (val == "") then

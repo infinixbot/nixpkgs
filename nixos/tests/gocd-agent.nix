@@ -14,10 +14,7 @@ import ./make-test-python.nix (
   {
     name = "gocd-agent";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        grahamc
-        swarren83
-      ];
+      maintainers = [ grahamc swarren83 ];
 
       # gocd agent needs to register with the autoregister key created on first server startup,
       # but NixOS module doesn't seem to allow to pass during runtime currently

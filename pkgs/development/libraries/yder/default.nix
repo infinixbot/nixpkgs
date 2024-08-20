@@ -31,10 +31,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ orcania ] ++ lib.optional withSystemd systemd;
 
-  nativeCheckInputs = [
-    check
-    subunit
-  ];
+  nativeCheckInputs = [ check subunit ];
 
   cmakeFlags = [
     "-DBUILD_YDER_TESTING=on"

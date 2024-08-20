@@ -173,10 +173,7 @@ stdenv.mkDerivation rec {
     homepage = "https://browser.yandex.ru/";
     license = licenses.unfree;
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
-    maintainers = with maintainers; [
-      dan4ik605743
-      ionutnechita
-    ];
+    maintainers = with maintainers; [ dan4ik605743 ionutnechita ];
     platforms = [ "x86_64-linux" ];
 
     knownVulnerabilities = [

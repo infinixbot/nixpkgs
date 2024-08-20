@@ -71,12 +71,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = info.hash;
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    autoconf
-    unzip
-    ensureNewerSourcesForZipFilesHook
-  ];
+  nativeBuildInputs = [ pkg-config autoconf unzip ensureNewerSourcesForZipFilesHook ];
   buildInputs =
     [
       cpio
@@ -149,10 +144,7 @@ stdenv.mkDerivation (finalAttrs: {
   # JDK's build system attempts to specifically detect
   # and special-case WSL, and we don't want it to do that,
   # so pass the correct platform names explicitly
-  configurePlatforms = [
-    "build"
-    "host"
-  ];
+  configurePlatforms = [ "build" "host" ];
 
   # https://openjdk.org/groups/build/doc/building.html
   configureFlags =

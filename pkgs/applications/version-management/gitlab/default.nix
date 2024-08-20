@@ -132,10 +132,7 @@ let
     # `console` executable.
     ignoreCollisions = true;
 
-    extraConfigPaths = [
-      "${src}/vendor"
-      "${src}/gems"
-    ];
+    extraConfigPaths = [ "${src}/vendor" "${src}/gems" ];
   };
 
   assets = stdenv.mkDerivation {
@@ -147,15 +144,7 @@ let
       sha256 = data.yarn_hash;
     };
 
-    nativeBuildInputs = [
-      rubyEnv.wrappedRuby
-      rubyEnv.bundler
-      nodejs
-      yarn
-      git
-      cacert
-      fixup-yarn-lock
-    ];
+    nativeBuildInputs = [ rubyEnv.wrappedRuby rubyEnv.bundler nodejs yarn git cacert fixup-yarn-lock ];
 
     patches = [
       # Since version 12.6.0, the rake tasks need the location of git,

@@ -37,11 +37,7 @@ rustPlatform.buildRustPackage {
   '';
 
   buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ CoreServices ];
-  nativeBuildInputs = [
-    pkg-config
-    git
-    makeWrapper
-  ];
+  nativeBuildInputs = [ pkg-config git makeWrapper ];
 
   preFixup = ''
     for bin in $out/bin/cargo-*; do

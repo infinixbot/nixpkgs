@@ -41,10 +41,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-bw8zvDGFBci9bELsxAD0otpNocBnO8aAcgyohLZ3Mv0=";
 
-  nativeBuildInputs = [
-    installShellFiles
-    makeWrapper
-  ];
+  nativeBuildInputs = [ installShellFiles makeWrapper ];
 
   # integration tests require network access
   doCheck = false;

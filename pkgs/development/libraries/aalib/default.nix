@@ -15,13 +15,7 @@ stdenv.mkDerivation rec {
     sha256 = "1vkh19gb76agvh4h87ysbrgy82hrw88lnsvhynjf4vng629dmpgv";
   };
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "man"
-    "info"
-  ];
+  outputs = [ "bin" "dev" "out" "man" "info" ];
   setOutputFlags = false; # Doesn't support all the flags
 
   patches =
@@ -40,10 +34,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ ncurses ];
 
-  configureFlags = [
-    "--without-x"
-    "--with-ncurses=${ncurses.dev}"
-  ];
+  configureFlags = [ "--without-x" "--with-ncurses=${ncurses.dev}" ];
 
   postInstall = ''
     mkdir -p $dev/bin

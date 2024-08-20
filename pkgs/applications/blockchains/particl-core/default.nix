@@ -35,21 +35,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
-  buildInputs = [
-    openssl
-    db48
-    boost
-    zlib
-    miniupnpc
-    libevent
-    zeromq
-    unixtools.hexdump
-    python3
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
+  buildInputs = [ openssl db48 boost zlib miniupnpc libevent zeromq unixtools.hexdump python3 ];
 
   configureFlags =
     [

@@ -24,12 +24,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ removeReferencesTo ];
 
-  buildInputs = [
-    icu
-    zlib
-    gmp
-    perl
-  ];
+  buildInputs = [ icu zlib gmp perl ];
   configureScript = "perl ./Configure.pl";
   configureFlags = [
     "--backends=moar"
@@ -46,9 +41,6 @@ stdenv.mkDerivation rec {
     homepage = "https://rakudo.org";
     license = licenses.artistic2;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      thoughtpolice
-      sgo
-    ];
+    maintainers = with maintainers; [ thoughtpolice sgo ];
   };
 }

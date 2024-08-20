@@ -35,11 +35,7 @@ stdenv.mkDerivation (final: {
     patchShebangs scripts
   '';
 
-  nativeBuildInputs = [
-    pkg-config
-    meson
-    ninja
-  ];
+  nativeBuildInputs = [ pkg-config meson ninja ];
   buildInputs =
     [
       jack

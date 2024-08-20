@@ -8,30 +8,21 @@ in
   rke2_stable = common (
     (import ./stable/versions.nix)
     // {
-      updateScript = [
-        ./update-script.sh
-        "stable"
-      ];
+      updateScript = [ ./update-script.sh "stable" ];
     }
   ) extraArgs;
 
   rke2_latest = common (
     (import ./latest/versions.nix)
     // {
-      updateScript = [
-        ./update-script.sh
-        "latest"
-      ];
+      updateScript = [ ./update-script.sh "latest" ];
     }
   ) extraArgs;
 
   rke2_testing = common (
     (import ./testing/versions.nix)
     // {
-      updateScript = [
-        ./update-script.sh
-        "testing"
-      ];
+      updateScript = [ ./update-script.sh "testing" ];
     }
   ) extraArgs;
 }

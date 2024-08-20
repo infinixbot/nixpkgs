@@ -20,15 +20,7 @@ buildPythonApplication rec {
     hash = "sha256-13FKRvEE4vHq5G51G1UyBnfNiWeS9Q/SYCG16E1Sn4c=";
   };
 
-  propagatedBuildInputs = [
-    click
-    psutil
-    xprop
-    natsort
-    i3ipc
-    xdotool
-    importlib-metadata
-  ];
+  propagatedBuildInputs = [ click psutil xprop natsort i3ipc xdotool importlib-metadata ];
   doCheck = false; # no tests
 
   meta = with lib; {

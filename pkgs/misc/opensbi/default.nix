@@ -49,14 +49,7 @@ stdenv.mkDerivation rec {
     description = "RISC-V Open Source Supervisor Binary Interface";
     homepage = "https://github.com/riscv-software-src/opensbi";
     license = licenses.bsd2;
-    maintainers = with maintainers; [
-      ius
-      nickcao
-      zhaofengli
-    ];
-    platforms = [
-      "riscv64-linux"
-      "riscv32-linux"
-    ];
+    maintainers = with maintainers; [ ius nickcao zhaofengli ];
+    platforms = [ "riscv64-linux" "riscv32-linux" ];
   };
 }

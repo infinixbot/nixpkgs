@@ -70,10 +70,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-O2AQFcJmYY3FtLXB3BPdzsplFbthYEyasfctpPOQVhs=";
 
-  nativeBuildInputs = [
-    pkg-config
-    makeBinaryWrapper
-  ];
+  nativeBuildInputs = [ pkg-config makeBinaryWrapper ];
   buildInputs = [
     libGL
     libxkbcommon

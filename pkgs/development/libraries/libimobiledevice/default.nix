@@ -62,10 +62,7 @@ stdenv.mkDerivation rec {
       CoreFoundation
     ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   enableParallelBuilding = true;
 

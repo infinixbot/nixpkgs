@@ -11,10 +11,7 @@
 
 mkDerivation {
   pname = "kosmindoormap";
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs = [
     bison
@@ -29,14 +26,6 @@ mkDerivation {
   ];
 
   meta = {
-    license = with lib.licenses; [
-      bsd2
-      bsd3
-      cc0
-      lgpl2Plus
-      lgpl3Plus
-      mit
-      odbl
-    ];
+    license = with lib.licenses; [ bsd2 bsd3 cc0 lgpl2Plus lgpl3Plus mit odbl ];
   };
 }

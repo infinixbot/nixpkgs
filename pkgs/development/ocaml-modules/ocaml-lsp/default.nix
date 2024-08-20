@@ -36,21 +36,11 @@ buildDunePackage rec {
 
   buildInputs =
     lsp.buildInputs
-    ++ [
-      lsp
-      re
-    ]
+    ++ [ lsp re ]
     ++ lib.optional (lib.versionAtLeast version "1.9") spawn
-    ++ lib.optionals (lib.versionAtLeast version "1.10") [
-      fiber
-      xdg
-    ]
+    ++ lib.optionals (lib.versionAtLeast version "1.10") [ fiber xdg ]
     ++ lib.optional (lib.versionAtLeast version "1.14.2") ocamlc-loc
-    ++ lib.optionals (lib.versionAtLeast version "1.17.0") [
-      astring
-      camlp-streams
-      merlin-lib
-    ]
+    ++ lib.optionals (lib.versionAtLeast version "1.17.0") [ astring camlp-streams merlin-lib ]
     ++ lib.optional (lib.versionAtLeast version "1.18.0") base;
 
   nativeBuildInputs = [ makeWrapper ];

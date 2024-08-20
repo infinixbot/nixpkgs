@@ -128,10 +128,7 @@ in
           "SHARE_HISTORY"
           "HIST_FCNTL_LOCK"
         ];
-        example = [
-          "EXTENDED_HISTORY"
-          "RM_STAR_WAIT"
-        ];
+        example = [ "EXTENDED_HISTORY" "RM_STAR_WAIT" ];
         description = ''
           Configure zsh options. See
           {manpage}`zshoptions(1)`.

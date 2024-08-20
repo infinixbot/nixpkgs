@@ -15,10 +15,7 @@ let
     version = "13.2";
     tlType = "run";
 
-    outputs = [
-      "out"
-      "tex"
-    ];
+    outputs = [ "out" "tex" ];
 
     src = fetchurl {
       url = "mirror://gnu/${pname}/${pname}-${version}.tar.gz";
@@ -28,10 +25,7 @@ let
     buildInputs = [
       emacs
       ghostscript
-      (texliveBasic.withPackages (ps: [
-        ps.etoolbox
-        ps.hypdoc
-      ]))
+      (texliveBasic.withPackages (ps: [ ps.etoolbox ps.hypdoc ]))
     ];
 
     preConfigure = ''

@@ -65,10 +65,7 @@ stdenv.mkDerivation {
       --replace "a2x" "a2x --no-xmllint"
   '';
 
-  makeFlags = [
-    "DESTDIR=$(out)"
-    "PREFIX=/"
-  ];
+  makeFlags = [ "DESTDIR=$(out)" "PREFIX=/" ];
 
   postInstall = ''
     mkdir -p $out/share/yabar/examples

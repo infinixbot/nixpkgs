@@ -61,10 +61,7 @@ stdenv.mkDerivation rec {
     description = "Lossy speech compression codec";
     homepage = "https://www.quut.com/gsm/";
     license = licenses.bsd2;
-    maintainers = with maintainers; [
-      codyopel
-      raskin
-    ];
+    maintainers = with maintainers; [ codyopel raskin ];
     platforms = platforms.unix;
   };
 }

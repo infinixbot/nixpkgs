@@ -21,15 +21,9 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  buildInputs = [
-    coin3d
-    qtbase
-  ];
+  buildInputs = [ coin3d qtbase ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   dontWrapQtApps = true;
 

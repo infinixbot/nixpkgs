@@ -20,16 +20,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-aQHJtnMDaHF1XY9lwQVR6f78Zk2UI7OC3Oxt1r1KMak=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
-  buildInputs = [
-    gnutls
-    libite
-    libconfuse
-  ];
+  buildInputs = [ gnutls libite libconfuse ];
 
   configureFlags = [
     "--sysconfdir=/etc"

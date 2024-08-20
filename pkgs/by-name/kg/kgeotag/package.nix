@@ -18,15 +18,9 @@ libsForQt5.mkDerivation rec {
     hash = "sha256-G9SyGvoSOL6nsWnMuSIUSFHFUwZUzExBJBkKN46o8GI=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    extra-cmake-modules
-  ];
+  nativeBuildInputs = [ cmake extra-cmake-modules ];
 
-  buildInputs = [
-    libsForQt5.libkexiv2
-    libsForQt5.marble
-  ];
+  buildInputs = [ libsForQt5.libkexiv2 libsForQt5.marble ];
 
   meta = with lib; {
     homepage = "https://kgeotag.kde.org/";

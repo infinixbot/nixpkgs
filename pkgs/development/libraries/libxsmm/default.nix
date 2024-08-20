@@ -21,11 +21,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-PpMiD/PeQ0pe5hqFG6VFHWpR8y3wnO2z1dJfHHeItlQ=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
   nativeBuildInputs = [
     gfortran
     python3

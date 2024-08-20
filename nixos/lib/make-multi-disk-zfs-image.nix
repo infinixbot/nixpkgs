@@ -122,13 +122,7 @@ let
     rootPaths = [ config.system.build.toplevel ] ++ (lib.optional includeChannel channelSources);
   };
 
-  modulesTree = pkgs.aggregateModules (
-    with config.boot.kernelPackages;
-    [
-      kernel
-      zfs
-    ]
-  );
+  modulesTree = pkgs.aggregateModules (with config.boot.kernelPackages; [ kernel zfs ]);
 
   tools = lib.makeBinPath (
     with pkgs;
@@ -207,10 +201,7 @@ let
     in
     pkgs.runCommand "filesystem-config.nix"
       {
-        buildInputs = with pkgs; [
-          jq
-          nixpkgs-fmt
-        ];
+        buildInputs = with pkgs; [ jq nixpkgs-fmt ];
         filesystems = builtins.toJSON {
           fileSystems = lib.mapAttrs' (dataset: attrs: {
             name = attrs.mount;

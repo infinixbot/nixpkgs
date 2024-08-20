@@ -18,14 +18,8 @@ stdenv.mkDerivation rec {
     sha256 = "NkHU/WadHhgYrv88+f+3iH/Fw2eFC3jCjHdeukq2pVU=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    intltool
-  ];
-  buildInputs = [
-    libxml2
-    gtk3
-  ];
+  nativeBuildInputs = [ pkg-config intltool ];
+  buildInputs = [ libxml2 gtk3 ];
 
   passthru = {
     updateScript = gnome.updateScript {

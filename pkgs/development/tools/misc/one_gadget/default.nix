@@ -23,10 +23,7 @@ bundlerApp {
     description = "Best tool for finding one gadget RCE in libc.so.6";
     homepage = "https://github.com/david942j/one_gadget";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      artemist
-      nicknovitski
-    ];
+    maintainers = with maintainers; [ artemist nicknovitski ];
     mainProgram = "one_gadget";
     platforms = platforms.unix;
   };

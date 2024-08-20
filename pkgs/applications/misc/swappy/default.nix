@@ -27,14 +27,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-/XPvy98Il4i8cDl9vH6f0/AZmiSqseSXnen7HfMqCDo=";
   };
 
-  nativeBuildInputs = [
-    glib
-    meson
-    ninja
-    pkg-config
-    scdoc
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ glib meson ninja pkg-config scdoc wrapGAppsHook3 ];
 
   buildInputs = [
     cairo

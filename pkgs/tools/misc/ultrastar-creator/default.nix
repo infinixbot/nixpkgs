@@ -42,16 +42,8 @@ mkDerivation {
     cd src
   '';
 
-  nativeBuildInputs = [
-    qmake
-    pkg-config
-  ];
-  buildInputs = [
-    qtbase
-    taglib
-    libbass
-    libbass_fx
-  ];
+  nativeBuildInputs = [ qmake pkg-config ];
+  buildInputs = [ qtbase taglib libbass libbass_fx ];
 
   meta = with lib; {
     description = "Ultrastar karaoke song creation tool";

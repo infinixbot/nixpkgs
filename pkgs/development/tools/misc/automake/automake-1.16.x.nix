@@ -17,11 +17,7 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [
-    updateAutotoolsGnuConfigScriptsHook
-    autoconf
-    perl
-  ];
+  nativeBuildInputs = [ updateAutotoolsGnuConfigScriptsHook autoconf perl ];
   buildInputs = [ autoconf ];
 
   setupHook = ./setup-hook.sh;

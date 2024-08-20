@@ -29,10 +29,7 @@ let
     homepage = "https://curl.haxx.se/docs/caextract.html";
     description = "Bundle of X.509 certificates of public Certificate Authorities (CA)";
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      fpletz
-      lukegb
-    ];
+    maintainers = with maintainers; [ fpletz lukegb ];
     license = licenses.mpl20;
   };
   certdata = stdenv.mkDerivation {
@@ -70,11 +67,7 @@ stdenv.mkDerivation rec {
 
   src = certdata;
 
-  outputs = [
-    "out"
-    "unbundled"
-    "p11kit"
-  ];
+  outputs = [ "out" "unbundled" "p11kit" ];
 
   nativeBuildInputs = [ buildcatrust ];
 

@@ -25,10 +25,7 @@ stdenvNoCC.mkDerivation rec {
   meta = with lib; {
     homepage = "https://cm-unicode.sourceforge.io/";
     description = "Computer Modern Unicode fonts";
-    maintainers = with maintainers; [
-      raskin
-      rycee
-    ];
+    maintainers = with maintainers; [ raskin rycee ];
     license = licenses.ofl;
     platforms = platforms.all;
   };

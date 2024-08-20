@@ -121,13 +121,7 @@ let
     (mkJetBrainsProduct args).overrideAttrs (
       finalAttrs: previousAttrs:
       lib.optionalAttrs stdenv.isLinux {
-        buildInputs =
-          with python3.pkgs;
-          (previousAttrs.buildInputs or [ ])
-          ++ [
-            python3
-            setuptools
-          ];
+        buildInputs = with python3.pkgs; (previousAttrs.buildInputs or [ ]) ++ [ python3 setuptools ];
         preInstall = ''
           echo "compiling cython debug speedups"
           if [[ -d plugins/python-ce ]]; then
@@ -146,10 +140,7 @@ rec {
 
   aqua = mkJetBrainsProduct {
     pname = "aqua";
-    extraBuildInputs = [
-      stdenv.cc.cc
-      lldb
-    ];
+    extraBuildInputs = [ stdenv.cc.cc lldb ];
   };
 
   clion =
@@ -219,11 +210,7 @@ rec {
     in
     mkJetBrainsProduct {
       pname = "dataspell";
-      extraBuildInputs = [
-        libgcc
-        libr
-        stdenv.cc.cc
-      ];
+      extraBuildInputs = [ libgcc libr stdenv.cc.cc ];
     };
 
   gateway = mkJetBrainsProduct {
@@ -238,10 +225,7 @@ rec {
         # fortify source breaks build since delve compiles with -O0
         ''--prefix CGO_CPPFLAGS " " "-U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0"''
       ];
-      extraBuildInputs = [
-        libgcc
-        stdenv.cc.cc
-      ];
+      extraBuildInputs = [ libgcc stdenv.cc.cc ];
     }).overrideAttrs
       (attrs: {
         postFixup =
@@ -269,21 +253,14 @@ rec {
 
   idea-ultimate = buildIdea {
     pname = "idea-ultimate";
-    extraBuildInputs = [
-      stdenv.cc.cc
-      lldb
-      musl
-    ];
+    extraBuildInputs = [ stdenv.cc.cc lldb musl ];
   };
 
   mps = mkJetBrainsProduct { pname = "mps"; };
 
   phpstorm = mkJetBrainsProduct {
     pname = "phpstorm";
-    extraBuildInputs = [
-      stdenv.cc.cc
-      musl
-    ];
+    extraBuildInputs = [ stdenv.cc.cc musl ];
   };
 
   pycharm-community-bin = buildPycharm { pname = "pycharm-community"; };
@@ -342,10 +319,7 @@ rec {
 
   ruby-mine = mkJetBrainsProduct {
     pname = "ruby-mine";
-    extraBuildInputs = [
-      stdenv.cc.cc
-      musl
-    ];
+    extraBuildInputs = [ stdenv.cc.cc musl ];
   };
 
   rust-rover =
@@ -391,18 +365,12 @@ rec {
 
   webstorm = mkJetBrainsProduct {
     pname = "webstorm";
-    extraBuildInputs = [
-      stdenv.cc.cc
-      musl
-    ];
+    extraBuildInputs = [ stdenv.cc.cc musl ];
   };
 
   writerside = mkJetBrainsProduct {
     pname = "writerside";
-    extraBuildInputs = [
-      stdenv.cc.cc
-      musl
-    ];
+    extraBuildInputs = [ stdenv.cc.cc musl ];
   };
 
   plugins = callPackage ./plugins { } // {

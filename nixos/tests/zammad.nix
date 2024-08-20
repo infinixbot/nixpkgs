@@ -4,11 +4,7 @@ import ./make-test-python.nix (
   {
     name = "zammad";
 
-    meta.maintainers = with lib.maintainers; [
-      taeer
-      n0emis
-      netali
-    ];
+    meta.maintainers = with lib.maintainers; [ taeer n0emis netali ];
 
     nodes.machine =
       { config, ... }:

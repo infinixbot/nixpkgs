@@ -205,13 +205,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = with lib; {
     homepage = "https://www.zrythm.org";
     description = "Automated and intuitive digital audio workstation";
-    maintainers = with maintainers; [
-      tshaynik
-      magnetophon
-      yuu
-      astavie
-      PowerUser64
-    ];
+    maintainers = with maintainers; [ tshaynik magnetophon yuu astavie PowerUser64 ];
     platforms = platforms.unix;
     broken = stdenv.isDarwin;
     license = licenses.agpl3Plus;

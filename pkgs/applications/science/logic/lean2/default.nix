@@ -31,17 +31,8 @@ stdenv.mkDerivation {
       sha256 = "060mvqn9y8lsn4l20q9rhamkymzsgh0r1vzkjw78gnj8kjw67jl5";
     })
   ];
-  nativeBuildInputs = [
-    cmake
-    makeWrapper
-    ninja
-  ];
-  buildInputs = [
-    gmp
-    mpfr
-    python3
-    jemalloc
-  ];
+  nativeBuildInputs = [ cmake makeWrapper ninja ];
+  buildInputs = [ gmp mpfr python3 jemalloc ];
 
   preConfigure = ''
     patchShebangs bin/leantags
@@ -59,10 +50,7 @@ stdenv.mkDerivation {
     homepage = "http://leanprover.github.io";
     license = licenses.asl20;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      thoughtpolice
-      gebner
-    ];
+    maintainers = with maintainers; [ thoughtpolice gebner ];
     broken = stdenv.isAarch64;
     mainProgram = "lean";
   };

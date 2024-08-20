@@ -76,32 +76,12 @@ let
   # Deprecate top level options that are redundant.
   deprecateTopLevelOption =
     config:
-    lib.mkRenamedOptionModule
-      (
-        [
-          "services"
-          "epgstation"
-        ]
-        ++ config
-      )
-      (
-        [
-          "services"
-          "epgstation"
-          "settings"
-        ]
-        ++ config
-      );
+    lib.mkRenamedOptionModule ([ "services" "epgstation" ] ++ config) (
+      [ "services" "epgstation" "settings" ] ++ config
+    );
 
   removeOption =
-    config: instruction:
-    lib.mkRemovedOptionModule (
-      [
-        "services"
-        "epgstation"
-      ]
-      ++ config
-    ) instruction;
+    config: instruction: lib.mkRemovedOptionModule ([ "services" "epgstation" ] ++ config) instruction;
 in
 {
   meta.maintainers = with lib.maintainers; [ midchildan ];
@@ -295,10 +275,7 @@ in
     };
 
     networking.firewall = lib.mkIf cfg.openFirewall {
-      allowedTCPPorts = with cfg.settings; [
-        port
-        socketioPort
-      ];
+      allowedTCPPorts = with cfg.settings; [ port socketioPort ];
     };
 
     users.users.epgstation = {

@@ -80,10 +80,7 @@ in
     ++ lib.optionals (!hasFeature "python-support") [ python ];
   # Gcc references from examples
   stripDebugList =
-    [
-      "lib"
-      "bin"
-    ]
+    [ "lib" "bin" ]
     ++ lib.optionals (hasFeature "gr-audio") [ "share/gnuradio/examples/audio" ]
     ++ lib.optionals (hasFeature "gr-uhd") [ "share/gnuradio/examples/uhd" ]
     ++ lib.optionals (hasFeature "gr-qtgui") [ "share/gnuradio/examples/qt-gui" ];
@@ -146,11 +143,6 @@ in
     homepage = "https://www.gnuradio.org";
     license = lib.licenses.gpl3;
     platforms = lib.platforms.unix;
-    maintainers = with lib.maintainers; [
-      doronbehar
-      bjornfor
-      fpletz
-      jiegec
-    ];
+    maintainers = with lib.maintainers; [ doronbehar bjornfor fpletz jiegec ];
   };
 }

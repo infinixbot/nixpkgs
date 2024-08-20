@@ -78,10 +78,7 @@ stdenv.mkDerivation (
       else
         "${src.name}/${pname}";
 
-    outputs = [
-      "out"
-      "dev"
-    ];
+    outputs = [ "out" "dev" ];
 
     nativeBuildInputs =
       [ cmake ]

@@ -27,11 +27,7 @@ stdenv.mkDerivation (finalAttrs: {
     nauty
   ];
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-  ];
+  outputs = [ "out" "lib" "dev" ];
 
   nativeBuildInputs = [
     autoreconfHook

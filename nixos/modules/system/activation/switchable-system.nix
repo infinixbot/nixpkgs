@@ -7,12 +7,7 @@
 
 let
 
-  perlWrapped = pkgs.perl.withPackages (
-    p: with p; [
-      ConfigIniFiles
-      FileSlurp
-    ]
-  );
+  perlWrapped = pkgs.perl.withPackages (p: with p; [ ConfigIniFiles FileSlurp ]);
 
   description = extra: ''
     Whether to include the capability to switch configurations.

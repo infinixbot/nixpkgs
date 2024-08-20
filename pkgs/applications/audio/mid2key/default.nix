@@ -20,13 +20,7 @@ stdenv.mkDerivation rec {
     sha256 = "Zo0mqdBJ1JKD9ZCA8te3f5opyYslFncYcx9iuXq2B9g=";
   };
 
-  buildInputs = [
-    alsa-lib
-    libX11
-    libXi
-    libXtst
-    xorgproto
-  ];
+  buildInputs = [ alsa-lib libX11 libXi libXtst xorgproto ];
 
   buildPhase = "make";
 

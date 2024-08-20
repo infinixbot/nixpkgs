@@ -32,15 +32,7 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    pidgin
-    json-glib
-    glib
-    http-parser
-    sqlite
-    olm
-    libgcrypt
-  ];
+  buildInputs = [ pidgin json-glib glib http-parser sqlite olm libgcrypt ];
 
   makeFlags = [
     "PLUGIN_DIR_PURPLE=${placeholder "out"}/lib/purple-2"

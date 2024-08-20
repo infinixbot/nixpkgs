@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  buildInputs = [
-    bash
-    wget
-  ];
+  buildInputs = [ bash wget ];
   nativeBuildInputs = [ makeWrapper ];
   postPatch = ''
     patchShebangs --host ipfetch
@@ -34,12 +31,7 @@ stdenv.mkDerivation rec {
     mkdir -p $out/usr/share/ipfetch/
     cp -r flags $out/usr/share/ipfetch/
     cp ipfetch $out/bin/ipfetch
-    wrapProgram $out/bin/ipfetch --prefix PATH : ${
-      lib.makeBinPath [
-        bash
-        wget
-      ]
-    }
+    wrapProgram $out/bin/ipfetch --prefix PATH : ${lib.makeBinPath [ bash wget ]}
   '';
 
   meta = with lib; {

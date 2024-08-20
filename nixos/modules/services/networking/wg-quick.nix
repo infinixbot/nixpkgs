@@ -199,10 +199,7 @@ let
       };
 
       allowedIPs = mkOption {
-        example = [
-          "10.192.122.3/32"
-          "10.192.124.1/24"
-        ];
+        example = [ "10.192.122.3/32" "10.192.124.1/24" ];
         type = with types; listOf str;
         description = ''
           List of IP (v4 or v6) addresses with CIDR masks from
@@ -331,10 +328,7 @@ let
     nameValuePair "wg-quick-${name}" {
       description = "wg-quick WireGuard Tunnel - ${name}";
       requires = [ "network-online.target" ];
-      after = [
-        "network.target"
-        "network-online.target"
-      ];
+      after = [ "network.target" "network-online.target" ];
       wantedBy = optional values.autostart "multi-user.target";
       environment.DEVICE = name;
       path = [

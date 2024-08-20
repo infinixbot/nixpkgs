@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
   buildInputs = [ boost ];
-  nativeBuildInputs = [
-    python3
-    cmake
-  ];
+  nativeBuildInputs = [ python3 cmake ];
 
   # musl does not have sys/unistd.h
   postPatch = ''

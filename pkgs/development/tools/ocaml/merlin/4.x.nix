@@ -106,9 +106,6 @@ else
       description = "Editor-independent tool to ease the development of programs in OCaml";
       homepage = "https://github.com/ocaml/merlin";
       license = licenses.mit;
-      maintainers = [
-        maintainers.vbgl
-        maintainers.sternenseemann
-      ];
+      maintainers = [ maintainers.vbgl maintainers.sternenseemann ];
     };
   }

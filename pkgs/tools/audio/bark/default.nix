@@ -16,10 +16,7 @@ rustPlatform.buildRustPackage {
     hash = "sha256-sGroae6uJhB9UIpFmvt520Zs9k0ir7H8pGkhKJmVWek=";
   };
   cargoHash = "sha256-OjlVn4fvKPm3UfqhKkv7cDuvK4mcLcQXPNPK+WScrMc=";
-  buildInputs = [
-    alsa-lib
-    speexdsp
-  ];
+  buildInputs = [ alsa-lib speexdsp ];
   nativeBuildInputs = [ pkg-config ];
 
   meta = {

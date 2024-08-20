@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
   pname = "uhttpmock";
   version = "0.5.5";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.freedesktop.org";

@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    xercesc
-    getopt
-  ];
+  buildInputs = [ xercesc getopt ];
 
   meta = {
     homepage = "https://xalan.apache.org/";

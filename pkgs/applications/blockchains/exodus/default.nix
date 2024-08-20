@@ -33,10 +33,7 @@ stdenv.mkDerivation (finalAttrs: {
   src = fetchurl {
     name = "exodus-linux-x64-${finalAttrs.version}.zip";
     url = "https://downloads.exodus.com/releases/exodus-linux-x64-${finalAttrs.version}.zip";
-    curlOptsList = [
-      "--user-agent"
-      "Mozilla/5.0"
-    ];
+    curlOptsList = [ "--user-agent" "Mozilla/5.0" ];
     hash = "sha256-+g7DdDrSVmBl1wCSCoJcO2gmbWQBnJUYqjT+GuDlCYw=";
   };
 
@@ -106,10 +103,6 @@ stdenv.mkDerivation (finalAttrs: {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      mmahut
-      rople380
-      Crafter
-    ];
+    maintainers = with maintainers; [ mmahut rople380 Crafter ];
   };
 })

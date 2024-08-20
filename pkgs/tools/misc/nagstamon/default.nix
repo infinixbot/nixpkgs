@@ -35,9 +35,6 @@ pythonPackages.buildPythonApplication rec {
     description = "Status monitor for the desktop";
     homepage = "https://nagstamon.de/";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      pSub
-      liberodark
-    ];
+    maintainers = with maintainers; [ pSub liberodark ];
   };
 }

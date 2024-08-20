@@ -44,38 +44,21 @@ stdenv.mkDerivation rec {
   # it also needs the current mercurial revision info embedded in gitinfo.h
   # otherwise, the client will fail to connect to servers because the
   # protocol version doesn't match.
-  patches = [
-    ./zan_configure_impurity.patch
-    ./dont_update_gitinfo.patch
-    ./add_gitinfo.patch
-  ];
+  patches = [ ./zan_configure_impurity.patch ./dont_update_gitinfo.patch ./add_gitinfo.patch ];
 
   # I have no idea why would SDL and libjpeg be needed for the server part!
   # But they are.
-  buildInputs =
-    [
-      openssl
-      bzip2
-      zlib
-      SDL_compat
-      libjpeg
-      sqlite
-      game-music-emu
-    ]
-    ++ lib.optionals (!serverOnly) [
-      libGL
-      glew
-      fmod
-      fluidsynth
-      gtk2
-    ];
+  buildInputs = [
+    openssl
+    bzip2
+    zlib
+    SDL_compat
+    libjpeg
+    sqlite
+    game-music-emu
+  ] ++ lib.optionals (!serverOnly) [ libGL glew fmod fluidsynth gtk2 ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    makeWrapper
-    python3
-  ];
+  nativeBuildInputs = [ cmake pkg-config makeWrapper python3 ];
 
   preConfigure =
     ''

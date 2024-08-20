@@ -15,10 +15,7 @@ let
         ids = mkOption {
           type = types.listOf types.str;
           default = [ "*" ];
-          example = [
-            "*"
-            "-0123:0456"
-          ];
+          example = [ "*" "-0123:0456" ];
           description = ''
             Device identifiers, as shown by {manpage}`keyd(1)`.
           '';
@@ -65,20 +62,10 @@ let
 in
 {
   imports = [
-    (mkRemovedOptionModule
-      [
-        "services"
-        "keyd"
-        "ids"
-      ]
+    (mkRemovedOptionModule [ "services" "keyd" "ids" ]
       ''Use keyboards.<filename>.ids instead. If you don't need a multi-file configuration, just add keyboards.default before the ids. See https://github.com/NixOS/nixpkgs/pull/243271.''
     )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "keyd"
-        "settings"
-      ]
+    (mkRemovedOptionModule [ "services" "keyd" "settings" ]
       ''Use keyboards.<filename>.settings instead. If you don't need a multi-file configuration, just add keyboards.default before the settings. See https://github.com/NixOS/nixpkgs/pull/243271.''
     )
   ];

@@ -53,20 +53,8 @@ rustPlatform.buildRustPackage rec {
     substituteInPlace justfile --replace '#!/usr/bin/env' "#!$(command -v env)"
   '';
 
-  nativeBuildInputs = [
-    just
-    pkg-config
-    util-linuxMinimal
-  ];
-  buildInputs = [
-    dbus
-    glib
-    libinput
-    libxkbcommon
-    pulseaudio
-    wayland
-    udev
-  ];
+  nativeBuildInputs = [ just pkg-config util-linuxMinimal ];
+  buildInputs = [ dbus glib libinput libxkbcommon pulseaudio wayland udev ];
 
   dontUseJustBuild = true;
 
@@ -92,10 +80,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/pop-os/cosmic-applets";
     description = "Applets for the COSMIC Desktop Environment";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      qyliss
-      nyanbinary
-    ];
+    maintainers = with maintainers; [ qyliss nyanbinary ];
     platforms = platforms.linux;
   };
 }

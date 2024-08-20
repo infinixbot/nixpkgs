@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-G3dg0SWfBjCA66TTxkVAcVrFNJOWE9+GJXYKzCUX34w=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    installShellFiles
-  ];
+  nativeBuildInputs = [ cmake installShellFiles ];
   buildInputs = [ ncurses ];
 
   postInstall = ''

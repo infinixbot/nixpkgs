@@ -155,12 +155,7 @@ stdenv.mkDerivation (
         icon = "vs${executableName}";
         startupNotify = true;
         startupWMClass = shortName;
-        categories = [
-          "Utility"
-          "TextEditor"
-          "Development"
-          "IDE"
-        ];
+        categories = [ "Utility" "TextEditor" "Development" "IDE" ];
         keywords = [ "vscode" ];
         actions.new-empty-window = {
           name = "New Empty Window";
@@ -176,12 +171,7 @@ stdenv.mkDerivation (
         exec = executableName + " --open-url %U";
         icon = "vs${executableName}";
         startupNotify = true;
-        categories = [
-          "Utility"
-          "TextEditor"
-          "Development"
-          "IDE"
-        ];
+        categories = [ "Utility" "TextEditor" "Development" "IDE" ];
         mimeTypes = [ "x-scheme-handler/vs${executableName}" ];
         keywords = [ "vscode" ];
         noDisplay = true;
@@ -189,11 +179,7 @@ stdenv.mkDerivation (
     ];
 
     buildInputs =
-      [
-        libsecret
-        libXScrnSaver
-        libxshmfence
-      ]
+      [ libsecret libXScrnSaver libxshmfence ]
       ++ lib.optionals (!stdenv.isDarwin) [
         alsa-lib
         at-spi2-atk

@@ -72,10 +72,7 @@ stdenv.mkDerivation rec {
       icon = "trigger";
       desktopName = "Trigger";
       comment = "Fast-paced 3D single-player rally racing game";
-      categories = [
-        "Game"
-        "ActionGame"
-      ];
+      categories = [ "Game" "ActionGame" ];
     })
   ];
 

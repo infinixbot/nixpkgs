@@ -123,10 +123,7 @@ stdenv.mkDerivation (finalAttrs: {
   passthru.tests.lavapipe =
     runCommand "vulkan-cts-tests-lavapipe"
       {
-        nativeBuildInputs = [
-          finalAttrs.finalPackage
-          mesa.llvmpipeHook
-        ];
+        nativeBuildInputs = [ finalAttrs.finalPackage mesa.llvmpipeHook ];
       }
       ''
         deqp-vk -n dEQP-VK.api.smoke.triangle

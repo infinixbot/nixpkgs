@@ -29,11 +29,6 @@ buildGoModule rec {
     description = "Exports the expiration time of your domains as prometheus metrics";
     mainProgram = "domain_exporter";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      mmilata
-      prusnak
-      peterhoeg
-      caarlos0
-    ];
+    maintainers = with maintainers; [ mmilata prusnak peterhoeg caarlos0 ];
   };
 }

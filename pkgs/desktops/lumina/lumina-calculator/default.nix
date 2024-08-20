@@ -20,10 +20,7 @@ mkDerivation rec {
 
   sourceRoot = "${src.name}/src-qt5";
 
-  nativeBuildInputs = [
-    qmake
-    qttools
-  ];
+  nativeBuildInputs = [ qmake qttools ];
 
   buildInputs = [ qtbase ];
 

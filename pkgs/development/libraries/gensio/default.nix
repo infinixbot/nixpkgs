@@ -27,10 +27,7 @@ stdenv.mkDerivation rec {
     "--with-python=no"
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
   buildInputs = lib.optionals stdenv.isDarwin [ openssl ];
 

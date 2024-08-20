@@ -21,14 +21,7 @@ assert lib.assertMsg ((builtins.length dotnetPackages) > 0) ''
 buildEnv {
   name = "dotnet-core-combined";
   paths = dotnetPackages;
-  pathsToLink = [
-    "/host"
-    "/packs"
-    "/sdk"
-    "/sdk-manifests"
-    "/shared"
-    "/templates"
-  ];
+  pathsToLink = [ "/host" "/packs" "/sdk" "/sdk-manifests" "/shared" "/templates" ];
   ignoreCollisions = true;
   postBuild = ''
     cp -R ${cli}/{dotnet,share,nix-support} $out/

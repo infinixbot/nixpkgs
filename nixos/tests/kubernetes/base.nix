@@ -151,10 +151,7 @@ let
       {
         machines = {
           machine1 = {
-            roles = [
-              "master"
-              "node"
-            ];
+            roles = [ "master" "node" ];
             ip = "192.168.1.1";
           };
         };

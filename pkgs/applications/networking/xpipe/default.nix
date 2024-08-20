@@ -116,21 +116,9 @@ stdenvNoCC.mkDerivation rec {
     mv "$out/opt/$pkg/app/scripts/xpiped_debug.sh" "$out/opt/$pkg/app/scripts/xpiped_debug_raw.sh"
 
     makeShellWrapper "$out/opt/$pkg/app/bin/xpiped_raw" "$out/opt/$pkg/app/bin/xpiped" \
-      --prefix LD_LIBRARY_PATH : "${
-        lib.makeLibraryPath [
-          fontconfig
-          gtk3
-          udev
-        ]
-      }"
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ fontconfig gtk3 udev ]}"
     makeShellWrapper "$out/opt/$pkg/app/scripts/xpiped_debug_raw.sh" "$out/opt/$pkg/app/scripts/xpiped_debug.sh" \
-      --prefix LD_LIBRARY_PATH : "${
-        lib.makeLibraryPath [
-          fontconfig
-          gtk3
-          udev
-        ]
-      }"
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ fontconfig gtk3 udev ]}"
 
     runHook postInstall
   '';
@@ -141,10 +129,7 @@ stdenvNoCC.mkDerivation rec {
     downloadPage = "https://github.com/xpipe-io/${pname}/releases/latest";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     changelog = "https://github.com/xpipe-io/${pname}/releases/tag/${version}";
-    license = [
-      licenses.asl20
-      licenses.unfree
-    ];
+    license = [ licenses.asl20 licenses.unfree ];
     maintainers = with maintainers; [ crschnick ];
     platforms = [ "x86_64-linux" ];
     mainProgram = pname;

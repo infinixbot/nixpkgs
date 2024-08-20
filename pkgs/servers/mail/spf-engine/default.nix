@@ -21,12 +21,7 @@ buildPythonApplication rec {
 
   nativeBuildInputs = [ flit-core ];
 
-  propagatedBuildInputs = [
-    pyspf
-    dnspython
-    authres
-    pymilter
-  ];
+  propagatedBuildInputs = [ pyspf dnspython authres pymilter ];
 
   pythonImportsCheck = [
     "spf_engine"

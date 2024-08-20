@@ -48,12 +48,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ autoreconfHook ];
 
   buildInputs =
-    [
-      openssl
-      talloc
-      bsd-finger
-      perl
-    ]
+    [ openssl talloc bsd-finger perl ]
     ++ lib.optional withCap libcap
     ++ lib.optional withCollectd collectd
     ++ lib.optional withJson json_c
@@ -91,21 +86,13 @@ stdenv.mkDerivation rec {
     "INSTALL_CERT_FILES=" # see comment at makeFlags
   ];
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "man" "doc" ];
 
   meta = with lib; {
     homepage = "https://freeradius.org/";
     description = "Modular, high performance free RADIUS suite";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      sheenobu
-      willibutz
-    ];
+    maintainers = with maintainers; [ sheenobu willibutz ];
     platforms = with platforms; linux;
   };
 }

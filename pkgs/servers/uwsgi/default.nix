@@ -36,10 +36,7 @@ let
     lib.nameValuePair "python${if pkg.isPy2 then "2" else "3"}" {
       interpreter = pkg.pythonOnBuildForHost.interpreter;
       path = "plugins/python";
-      inputs = [
-        pkg
-        ncurses
-      ];
+      inputs = [ pkg ncurses ];
       install = ''
         install -Dm644 uwsgidecorators.py $out/${pkg.sitePackages}/uwsgidecorators.py
         ${pkg.pythonOnBuildForHost.executable} -m compileall $out/${pkg.sitePackages}/
@@ -107,15 +104,8 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   buildInputs =
-    [
-      jansson
-      pcre
-      libxcrypt
-    ]
-    ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [
-      expat
-      zlib
-    ]
+    [ jansson pcre libxcrypt ]
+    ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [ expat zlib ]
     ++ lib.optional withPAM pam
     ++ lib.optional withSystemd systemd
     ++ lib.optional withCap libcap
@@ -190,11 +180,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Fast, self-healing and developer/sysadmin-friendly application container server coded in pure C";
     homepage = "https://uwsgi-docs.readthedocs.org/en/latest/";
     license = lib.licenses.gpl2Plus;
-    maintainers = with lib.maintainers; [
-      abbradar
-      schneefux
-      globin
-    ];
+    maintainers = with lib.maintainers; [ abbradar schneefux globin ];
     platforms = lib.platforms.unix;
     mainProgram = "uwsgi";
   };

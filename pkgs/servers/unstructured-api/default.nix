@@ -30,10 +30,7 @@ let
   unstructured_api_nltk_data = symlinkJoin {
     name = "unstructured_api_nltk_data";
 
-    paths = [
-      nltk-data.punkt
-      nltk-data.averaged_perceptron_tagger
-    ];
+    paths = [ nltk-data.punkt nltk-data.averaged_perceptron_tagger ];
   };
 in
 stdenvNoCC.mkDerivation {

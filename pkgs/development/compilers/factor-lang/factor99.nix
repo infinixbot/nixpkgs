@@ -113,13 +113,7 @@ stdenv.mkDerivation {
     ./adjust-paths-in-unit-tests.patch
   ];
 
-  nativeBuildInputs = [
-    git
-    makeWrapper
-    curl
-    unzip
-    wrapLocalFactor
-  ];
+  nativeBuildInputs = [ git makeWrapper curl unzip wrapLocalFactor ];
   buildInputs = runtimeLibs;
 
   postPatch = ''

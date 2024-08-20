@@ -32,13 +32,7 @@ stdenv.mkDerivation (finalAttrs: {
   inherit pname;
   version = "2.2.3";
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "lib" "dev" "doc" "man" ];
 
   src = fetchFromGitLab {
     domain = "salsa.debian.org";
@@ -110,10 +104,7 @@ stdenv.mkDerivation (finalAttrs: {
     [ python3 ]
     ++ lib.optionals systemdSupport [ systemdLibs ]
     ++ lib.optionals (!systemdSupport && udevSupport) [ udev ]
-    ++ lib.optionals stdenv.isDarwin [
-      Foundation
-      IOKit
-    ]
+    ++ lib.optionals stdenv.isDarwin [ Foundation IOKit ]
     ++ lib.optionals dbusSupport [ dbus ]
     ++ lib.optionals polkitSupport [ polkit ]
     ++ lib.optionals (!udevSupport) [ libusb1 ];

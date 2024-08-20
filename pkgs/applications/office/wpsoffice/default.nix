@@ -55,10 +55,7 @@ stdenv.mkDerivation rec {
         outputHashAlgo = "sha256";
         outputHash = hash;
 
-        nativeBuildInputs = [
-          curl
-          coreutils
-        ];
+        nativeBuildInputs = [ curl coreutils ];
 
         impureEnvVars = lib.fetchers.proxyImpureEnvVars;
         SSL_CERT_FILE = "${cacert}/etc/ssl/certs/ca-bundle.crt";
@@ -148,11 +145,6 @@ stdenv.mkDerivation rec {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     hydraPlatforms = [ ];
     license = licenses.unfreeRedistributable;
-    maintainers = with maintainers; [
-      mlatus
-      th0rgal
-      rewine
-      pokon548
-    ];
+    maintainers = with maintainers; [ mlatus th0rgal rewine pokon548 ];
   };
 }

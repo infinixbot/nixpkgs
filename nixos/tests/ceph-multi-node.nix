@@ -76,10 +76,7 @@ import ./make-test-python.nix (
         }
       ];
       firewall = {
-        allowedTCPPorts = [
-          6789
-          3300
-        ];
+        allowedTCPPorts = [ 6789 3300 ];
         allowedTCPPortRanges = [
           {
             from = 6800;

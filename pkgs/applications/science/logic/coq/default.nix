@@ -205,11 +205,7 @@ let
       [ ncurses ]
       ++ lib.optionals buildIde (
         if coqAtLeast "8.10" then
-          [
-            ocamlPackages.lablgtk3-sourceview3
-            glib
-            adwaita-icon-theme
-          ]
+          [ ocamlPackages.lablgtk3-sourceview3 glib adwaita-icon-theme ]
         else
           [ ocamlPackages.lablgtk ]
       );
@@ -264,13 +260,7 @@ let
       icon = "coq";
       desktopName = "CoqIDE";
       comment = "Graphical interface for the Coq proof assistant";
-      categories = [
-        "Development"
-        "Science"
-        "Math"
-        "IDE"
-        "GTK"
-      ];
+      categories = [ "Development" "Science" "Math" "IDE" "GTK" ];
     });
 
     postInstall =
@@ -302,12 +292,7 @@ let
       homepage = "https://coq.inria.fr";
       license = licenses.lgpl21;
       branch = coq-version;
-      maintainers = with maintainers; [
-        roconnor
-        thoughtpolice
-        vbgl
-        Zimmi48
-      ];
+      maintainers = with maintainers; [ roconnor thoughtpolice vbgl Zimmi48 ];
       platforms = platforms.unix;
       mainProgram = "coqide";
     };

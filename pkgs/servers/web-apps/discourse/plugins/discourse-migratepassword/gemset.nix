@@ -1,9 +1,6 @@
 {
   argon2 = {
-    dependencies = [
-      "ffi"
-      "ffi-compiler"
-    ];
+    dependencies = [ "ffi" "ffi-compiler" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -34,10 +31,7 @@
     version = "1.17.0";
   };
   ffi-compiler = {
-    dependencies = [
-      "ffi"
-      "rake"
-    ];
+    dependencies = [ "ffi" "rake" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

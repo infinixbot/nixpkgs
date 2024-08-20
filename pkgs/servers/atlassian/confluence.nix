@@ -54,11 +54,7 @@ lib.warnIf (crowdProperties != null) "Using `crowdProperties` is deprecated!" (
       homepage = "https://www.atlassian.com/software/confluence";
       sourceProvenance = with sourceTypes; [ binaryBytecode ];
       license = licenses.unfree;
-      maintainers = with maintainers; [
-        willibutz
-        ciil
-        techknowlogick
-      ];
+      maintainers = with maintainers; [ willibutz ciil techknowlogick ];
     };
   }
 )

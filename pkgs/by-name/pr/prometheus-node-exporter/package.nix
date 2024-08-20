@@ -25,11 +25,7 @@ buildGoModule rec {
   doCheck = false;
 
   buildInputs = lib.optionals stdenv.isDarwin (
-    with darwin.apple_sdk.frameworks;
-    [
-      CoreFoundation
-      IOKit
-    ]
+    with darwin.apple_sdk.frameworks; [ CoreFoundation IOKit ]
   );
 
   excludedPackages = [ "docs/node-mixin" ];
@@ -54,11 +50,6 @@ buildGoModule rec {
     homepage = "https://github.com/prometheus/node_exporter";
     changelog = "https://github.com/prometheus/node_exporter/blob/v${version}/CHANGELOG.md";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      benley
-      fpletz
-      globin
-      Frostman
-    ];
+    maintainers = with maintainers; [ benley fpletz globin Frostman ];
   };
 }

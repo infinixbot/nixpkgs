@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-JuBwyE6JH3CpJH863LbnWELUIIEKVaAcz8h8beeABGQ=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    pandoc
-  ];
+  nativeBuildInputs = [ pkg-config pandoc ];
   buildInputs = [
     capstone
     elfutils

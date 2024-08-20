@@ -27,22 +27,9 @@ buildPythonPackage rec {
     sha256 = "sha256-V+9cVBMN8H4oFU51T9BDrLF46xgQHqIsMj8nuPedUGA=";
   };
 
-  propagatedBuildInputs = [
-    certifi
-    jsons
-    requests
-    aiohttp
-    semantic-version
-    scapy
-    urllib3
-    pyyaml
-  ];
+  propagatedBuildInputs = [ certifi jsons requests aiohttp semantic-version scapy urllib3 pyyaml ];
 
-  nativeCheckInputs = [
-    pytestCheckHook
-    pytest-asyncio
-    async-timeout
-  ];
+  nativeCheckInputs = [ pytestCheckHook pytest-asyncio async-timeout ];
 
   disabledTestPaths = [
     "tests/integration/"

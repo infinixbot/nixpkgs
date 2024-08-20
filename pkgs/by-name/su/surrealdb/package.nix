@@ -71,9 +71,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://surrealdb.com/";
     mainProgram = "surreal";
     license = licenses.bsl11;
-    maintainers = with maintainers; [
-      sikmir
-      happysalada
-    ];
+    maintainers = with maintainers; [ sikmir happysalada ];
   };
 }

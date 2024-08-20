@@ -60,11 +60,7 @@ in
 
       protectedVars = mkOption {
         type = listOf str;
-        default = [
-          "*pw*"
-          "*pass*"
-          "community"
-        ];
+        default = [ "*pw*" "*pass*" "community" ];
         description = "List of string patterns for custom variables which should be excluded from user’s view.";
       };
     };
@@ -132,11 +128,7 @@ in
               };
 
               type = mkOption {
-                type = enum [
-                  "api"
-                  "local"
-                  "remote"
-                ];
+                type = enum [ "api" "local" "remote" ];
                 default = "api";
                 description = "Type of  this transport";
               };

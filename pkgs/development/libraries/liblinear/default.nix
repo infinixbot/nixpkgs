@@ -18,22 +18,11 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-so7uCc/52NdN0V2Ska8EUdw/wSegaudX5AF+c0xe5jk=";
   };
 
-  makeFlags = [
-    "AR=${stdenv.cc.targetPrefix}ar"
-    "RANLIB=${stdenv.cc.targetPrefix}ranlib"
-  ];
+  makeFlags = [ "AR=${stdenv.cc.targetPrefix}ar" "RANLIB=${stdenv.cc.targetPrefix}ranlib" ];
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-  ];
+  outputs = [ "bin" "dev" "out" ];
 
-  buildFlags = [
-    "lib"
-    "predict"
-    "train"
-  ];
+  buildFlags = [ "lib" "predict" "train" ];
 
   installPhase = ''
     ${

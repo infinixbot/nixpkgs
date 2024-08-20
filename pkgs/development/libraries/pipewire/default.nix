@@ -134,16 +134,8 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional zeroconfSupport avahi
     ++ lib.optional raopSupport openssl
     ++ lib.optional rocSupport roc-toolkit
-    ++ lib.optionals vulkanSupport [
-      libdrm
-      vulkan-headers
-      vulkan-loader
-    ]
-    ++ lib.optionals x11Support [
-      libcanberra
-      xorg.libX11
-      xorg.libXfixes
-    ]
+    ++ lib.optionals vulkanSupport [ libdrm vulkan-headers vulkan-loader ]
+    ++ lib.optionals x11Support [ libcanberra xorg.libX11 xorg.libXfixes ]
     ++ lib.optional ffadoSupport ffado;
 
   # Valgrind binary is required for running one optional test.
@@ -215,9 +207,6 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://pipewire.org/";
     license = licenses.mit;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      kranzes
-      k900
-    ];
+    maintainers = with maintainers; [ kranzes k900 ];
   };
 })

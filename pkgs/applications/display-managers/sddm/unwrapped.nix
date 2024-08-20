@@ -40,11 +40,7 @@ stdenv.mkDerivation (finalAttrs: {
       --replace "/usr/share/X11/xkb/rules/evdev.xml" "${xkeyboardconfig}/share/X11/xkb/rules/evdev.xml"
   '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    qttools
-  ];
+  nativeBuildInputs = [ cmake pkg-config qttools ];
 
   buildInputs = [
     libxcb
@@ -100,11 +96,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = with lib; {
     description = "QML based X11 display manager";
     homepage = "https://github.com/sddm/sddm";
-    maintainers = with maintainers; [
-      abbradar
-      ttuegel
-      k900
-    ];
+    maintainers = with maintainers; [ abbradar ttuegel k900 ];
     platforms = platforms.linux;
     license = licenses.gpl2Plus;
   };

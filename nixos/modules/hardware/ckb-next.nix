@@ -13,30 +13,8 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "hardware"
-        "ckb"
-        "enable"
-      ]
-      [
-        "hardware"
-        "ckb-next"
-        "enable"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "hardware"
-        "ckb"
-        "package"
-      ]
-      [
-        "hardware"
-        "ckb-next"
-        "package"
-      ]
-    )
+    (mkRenamedOptionModule [ "hardware" "ckb" "enable" ] [ "hardware" "ckb-next" "enable" ])
+    (mkRenamedOptionModule [ "hardware" "ckb" "package" ] [ "hardware" "ckb-next" "package" ])
   ];
 
   options.hardware.ckb-next = {

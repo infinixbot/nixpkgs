@@ -267,16 +267,10 @@ rec {
           src = mkBin "src/my_binary2.rs";
         };
         crateBinNoPath2 = {
-          crateBin = [
-            { name = "my-binary3"; }
-            { name = "my-binary4"; }
-          ];
+          crateBin = [ { name = "my-binary3"; } { name = "my-binary4"; } ];
           src = symlinkJoin {
             name = "buildRustCrateMultipleBinariesCase";
-            paths = [
-              (mkBin "src/bin/my_binary3.rs")
-              (mkBin "src/bin/my_binary4.rs")
-            ];
+            paths = [ (mkBin "src/bin/my_binary3.rs") (mkBin "src/bin/my_binary4.rs") ];
           };
         };
         crateBinNoPath3 = {
@@ -344,10 +338,7 @@ rec {
                 '')
               ];
             };
-            dependencies = [
-              depCrate01
-              depCrate02
-            ];
+            dependencies = [ depCrate01 depCrate02 ];
             crateRenames = {
               "my_lib" = [
                 {
@@ -474,10 +465,7 @@ rec {
           };
         buildScriptFeatureEnv = {
           crateName = "build-script-feature-env";
-          features = [
-            "some-feature"
-            "crate/another_feature"
-          ];
+          features = [ "some-feature" "crate/another_feature" ];
           src = symlinkJoin {
             name = "build-script-feature-env";
             paths = [
@@ -670,10 +658,7 @@ rec {
                 }
               '';
             in
-            [
-              a
-              b
-            ];
+            [ a b ];
         };
         rustCargoTomlInSubDir = {
           # The "workspace_member" can be set to the sub directory with the crate to build.

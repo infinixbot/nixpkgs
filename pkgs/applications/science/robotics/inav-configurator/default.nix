@@ -24,15 +24,9 @@ stdenv.mkDerivation rec {
     sha256 = "1i844dzzc5s5cr4vfpi6k2kdn8jiqq2n6c0fjqvsp4wdidwjahzw";
   };
 
-  nativeBuildInputs = [
-    copyDesktopItems
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ copyDesktopItems wrapGAppsHook3 ];
 
-  buildInputs = [
-    gsettings-desktop-schemas
-    gtk3
-  ];
+  buildInputs = [ gsettings-desktop-schemas gtk3 ];
 
   installPhase = ''
     runHook preInstall
@@ -69,10 +63,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/iNavFlight/inav/wiki";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      tilcreator
-      wucke13
-    ];
+    maintainers = with maintainers; [ tilcreator wucke13 ];
     platforms = platforms.linux;
   };
 }

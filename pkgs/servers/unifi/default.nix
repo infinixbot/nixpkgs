@@ -53,10 +53,7 @@ let
           sourceProvenance = with sourceTypes; [ binaryBytecode ];
           license = licenses.unfree;
           platforms = platforms.unix;
-          maintainers = with maintainers; [
-            globin
-            patryk27
-          ];
+          maintainers = with maintainers; [ globin patryk27 ];
         };
       }
     );

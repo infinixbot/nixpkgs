@@ -36,10 +36,7 @@ stdenv.mkDerivation {
       --replace "std::mem_fun_ref" "std::mem_fn"
   '';
 
-  nativeBuildInputs = [
-    perl
-    gnum4
-  ];
+  nativeBuildInputs = [ perl gnum4 ];
   propagatedBuildInputs = [ gmpxx ];
 
   configureFlags =

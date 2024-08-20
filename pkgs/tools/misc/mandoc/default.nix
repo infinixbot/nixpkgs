@@ -80,10 +80,7 @@ stdenv.mkDerivation rec {
     downloadPage = "http://mandoc.bsd.lv/snapshots/";
     license = licenses.bsd3;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      ramkromberg
-      sternenseemann
-    ];
+    maintainers = with maintainers; [ ramkromberg sternenseemann ];
     mainProgram = "man";
   };
 }

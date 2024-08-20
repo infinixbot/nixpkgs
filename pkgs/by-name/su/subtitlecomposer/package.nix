@@ -21,16 +21,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-5RBrxOy1EIgDLb21r1y+Pou8d/j05a1YYMRJh1n8vSA=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    extra-cmake-modules
-    libsForQt5.wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake extra-cmake-modules libsForQt5.wrapQtAppsHook ];
   buildInputs =
-    [
-      ffmpeg
-      openal
-    ]
+    [ ffmpeg openal ]
     ++ (with libsForQt5; [
       kcodecs
       kconfig

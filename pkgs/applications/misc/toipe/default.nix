@@ -19,9 +19,6 @@ rustPlatform.buildRustPackage rec {
     description = "Trusty terminal typing tester";
     homepage = "https://github.com/Samyak2/toipe";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      loicreynier
-      samyak
-    ];
+    maintainers = with maintainers; [ loicreynier samyak ];
   };
 }

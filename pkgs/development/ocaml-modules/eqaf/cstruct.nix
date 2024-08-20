@@ -9,8 +9,5 @@ buildDunePackage {
 
   inherit (eqaf) src version meta;
 
-  propagatedBuildInputs = [
-    cstruct
-    eqaf
-  ];
+  propagatedBuildInputs = [ cstruct eqaf ];
 }

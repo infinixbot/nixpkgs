@@ -37,18 +37,10 @@
 mkDerivation {
   pname = "kdepim-runtime";
   meta = {
-    license = with lib.licenses; [
-      gpl2Plus
-      lgpl21Plus
-      fdl12Plus
-    ];
+    license = with lib.licenses; [ gpl2Plus lgpl21Plus fdl12Plus ];
     maintainers = kdepimTeam;
   };
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-    shared-mime-info
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools shared-mime-info ];
   buildInputs = [
     akonadi
     akonadi-calendar
@@ -78,11 +70,6 @@ mkDerivation {
     qtxmlpatterns
   ];
   qtWrapperArgs = [
-    "--prefix SASL_PATH : ${
-      lib.makeSearchPath "lib/sasl2" [
-        cyrus_sasl.out
-        libkgapi
-      ]
-    }"
+    "--prefix SASL_PATH : ${lib.makeSearchPath "lib/sasl2" [ cyrus_sasl.out libkgapi ]}"
   ];
 }

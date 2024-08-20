@@ -30,22 +30,13 @@ stdenv.mkDerivation {
   inherit (sources) version;
   src = sources.sourcekit-lsp;
 
-  nativeBuildInputs = [
-    pkg-config
-    swift
-    swiftpm
-  ];
-  buildInputs =
-    [
-      Foundation
-      XCTest
-      sqlite
-      ncursesInput
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      CryptoKit
-      LocalAuthentication
-    ];
+  nativeBuildInputs = [ pkg-config swift swiftpm ];
+  buildInputs = [
+    Foundation
+    XCTest
+    sqlite
+    ncursesInput
+  ] ++ lib.optionals stdenv.isDarwin [ CryptoKit LocalAuthentication ];
 
   configurePhase =
     generated.configure

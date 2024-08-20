@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
     sha256 = "1ws46h1ngzk14dspmsggj9535yl04v9wh8v4gb234n34rdkdsyyw";
   };
 
-  buildInputs = [
-    readline
-    gmp
-  ];
+  buildInputs = [ readline gmp ];
   nativeBuildInputs = [
     autoreconfHook
     autoconf-archive

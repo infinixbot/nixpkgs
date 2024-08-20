@@ -47,25 +47,10 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  configureFlags = [
-    "--disable-doc"
-    "--enable-xhost-root"
-  ];
+  configureFlags = [ "--disable-doc" "--enable-xhost-root" ];
 
-  buildInputs = [
-    parted
-    glib
-    libuuid
-    gtkmm3
-    libxml2
-    polkit.bin
-    adwaita-icon-theme
-  ];
-  nativeBuildInputs = [
-    gettext
-    pkg-config
-    wrapGAppsHook3
-  ];
+  buildInputs = [ parted glib libuuid gtkmm3 libxml2 polkit.bin adwaita-icon-theme ];
+  nativeBuildInputs = [ gettext pkg-config wrapGAppsHook3 ];
 
   preConfigure = ''
     # For ITS rules
@@ -75,18 +60,7 @@ stdenv.mkDerivation rec {
   preFixup = ''
     gappsWrapperArgs+=(
        --prefix PATH : "${
-         lib.makeBinPath [
-           gpart
-           hdparm
-           util-linux
-           procps
-           coreutils
-           gnused
-           gnugrep
-           mtools
-           dosfstools
-           xhost
-         ]
+         lib.makeBinPath [ gpart hdparm util-linux procps coreutils gnused gnugrep mtools dosfstools xhost ]
        }"
     )
   '';

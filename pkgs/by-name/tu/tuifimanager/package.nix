@@ -78,10 +78,7 @@ lib.throwIf (enableDragAndDrop && !hasDndSupport)
       '';
       homepage = "https://github.com/GiorgosXou/TUIFIManager";
       license = lib.licenses.gpl3Only;
-      maintainers = with lib.maintainers; [
-        michaelBelsanti
-        sigmanificient
-      ];
+      maintainers = with lib.maintainers; [ michaelBelsanti sigmanificient ];
       mainProgram = "tuifi";
     };
   }

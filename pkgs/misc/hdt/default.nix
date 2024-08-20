@@ -31,16 +31,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [
-    zlib
-    serd
-  ];
+  buildInputs = [ zlib serd ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    libtool
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook libtool pkg-config ];
 
   enableParallelBuilding = true;
 

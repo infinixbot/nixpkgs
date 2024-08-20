@@ -411,10 +411,7 @@ in
     systemd.services.jitsi-meet-init-secrets = {
       wantedBy = [ "multi-user.target" ];
       before =
-        [
-          "jicofo.service"
-          "jitsi-videobridge2.service"
-        ]
+        [ "jicofo.service" "jitsi-videobridge2.service" ]
         ++ (optional cfg.prosody.enable "prosody.service") ++ (optional cfg.jigasi.enable "jigasi.service");
       serviceConfig = {
         Type = "oneshot";
@@ -427,16 +424,8 @@ in
       script =
         let
           secrets =
-            [
-              "jicofo-component-secret"
-              "jicofo-user-secret"
-              "jibri-auth-secret"
-              "jibri-recorder-secret"
-            ]
-            ++ (optionals cfg.jigasi.enable [
-              "jigasi-user-secret"
-              "jigasi-component-secret"
-            ])
+            [ "jicofo-component-secret" "jicofo-user-secret" "jibri-auth-secret" "jibri-recorder-secret" ]
+            ++ (optionals cfg.jigasi.enable [ "jigasi-user-secret" "jigasi-component-secret" ])
             ++ (optional (cfg.videobridge.passwordFile == null) "videobridge-secret");
         in
         ''

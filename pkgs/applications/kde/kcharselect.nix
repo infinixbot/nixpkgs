@@ -22,10 +22,7 @@ mkDerivation {
     description = "Tool to select special characters from all installed fonts and copy them into the clipboard";
     mainProgram = "kcharselect";
   };
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     kbookmarks
     kconfig

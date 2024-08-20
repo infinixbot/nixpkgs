@@ -1,12 +1,6 @@
 {
   activesupport = {
-    dependencies = [
-      "concurrent-ruby"
-      "i18n"
-      "minitest"
-      "tzinfo"
-      "zeitwerk"
-    ];
+    dependencies = [ "concurrent-ruby" "i18n" "minitest" "tzinfo" "zeitwerk" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -123,10 +117,7 @@
     version = "5.20.0";
   };
   nokogiri = {
-    dependencies = [
-      "mini_portile2"
-      "racc"
-    ];
+    dependencies = [ "mini_portile2" "racc" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -137,10 +128,7 @@
     version = "1.15.5";
   };
   opt_parse_validator = {
-    dependencies = [
-      "activesupport"
-      "addressable"
-    ];
+    dependencies = [ "activesupport" "addressable" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

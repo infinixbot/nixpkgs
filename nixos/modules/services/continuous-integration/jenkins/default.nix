@@ -40,10 +40,7 @@ in
       extraGroups = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "wheel"
-          "dialout"
-        ];
+        example = [ "wheel" "dialout" ];
         description = ''
           List of extra groups that the "jenkins" user should be a part of.
         '';
@@ -91,13 +88,7 @@ in
       package = mkPackageOption pkgs "jenkins" { };
 
       packages = mkOption {
-        default = [
-          pkgs.stdenv
-          pkgs.git
-          pkgs.jdk17
-          config.programs.ssh.package
-          pkgs.nix
-        ];
+        default = [ pkgs.stdenv pkgs.git pkgs.jdk17 config.programs.ssh.package pkgs.nix ];
         defaultText = literalExpression "[ pkgs.stdenv pkgs.git pkgs.jdk17 config.programs.ssh.package pkgs.nix ]";
         type = types.listOf types.package;
         description = ''

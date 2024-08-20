@@ -25,11 +25,7 @@ in
       description = "Wireguard network manager";
       wantedBy = [ "multi-user.target" ];
       after = [ "network.target" ];
-      path = with pkgs; [
-        wireguard-tools
-        iproute2
-        wireguard-go
-      ];
+      path = with pkgs; [ wireguard-tools iproute2 wireguard-go ];
       serviceConfig = {
         Type = "simple";
         Restart = "on-failure";
@@ -42,10 +38,7 @@ in
         ];
       };
       unitConfig = {
-        ConditionPathExists = [
-          "/etc/wg_netmanager/network.yaml"
-          "/etc/wg_netmanager/peer.yaml"
-        ];
+        ConditionPathExists = [ "/etc/wg_netmanager/network.yaml" "/etc/wg_netmanager/peer.yaml" ];
       };
     };
   };

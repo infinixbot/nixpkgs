@@ -47,10 +47,7 @@ python.pkgs.buildPythonApplication rec {
     "--prefix"
     "PATH"
     ":"
-    "${lib.makeBinPath [
-      wkhtmltopdf
-      rtlcss
-    ]}"
+    "${lib.makeBinPath [ wkhtmltopdf rtlcss ]}"
   ];
 
   propagatedBuildInputs = with python.pkgs; [
@@ -116,9 +113,6 @@ python.pkgs.buildPythonApplication rec {
     description = "Open Source ERP and CRM";
     homepage = "https://www.odoo.com/";
     license = licenses.lgpl3Only;
-    maintainers = with maintainers; [
-      mkg20001
-      siriobalmelli
-    ];
+    maintainers = with maintainers; [ mkg20001 siriobalmelli ];
   };
 }

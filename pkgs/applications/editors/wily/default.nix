@@ -15,10 +15,7 @@ stdenv.mkDerivation rec {
     sha256 = "1jy4czk39sh365b0mjpj4d5wmymj98x163vmwzyx3j183jqrhm2z";
   };
 
-  buildInputs = [
-    libX11
-    libXt
-  ];
+  buildInputs = [ libX11 libXt ];
 
   env.NIX_CFLAGS_COMPILE = toString (
     lib.optionals stdenv.cc.isClang [

@@ -21,12 +21,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-7KX5xC6Gr6azqL2qyc8rYb3q9UhcGco2uEfltsQ+mgo=";
   };
 
-  nativeBuildInputs = [
-    sassc
-    glib
-    libxml2
-    gdk-pixbuf
-  ];
+  nativeBuildInputs = [ sassc glib libxml2 gdk-pixbuf ];
 
   propagatedUserEnvPkgs = [ gtk-engine-murrine ];
 

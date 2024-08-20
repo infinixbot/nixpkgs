@@ -39,10 +39,7 @@ rustPlatform.buildRustPackage {
     homepage = "https://github.com/erebe/wstunnel";
     changelog = "https://github.com/erebe/wstunnel/releases/tag/v${version}";
     license = lib.licenses.bsd3;
-    maintainers = with lib.maintainers; [
-      rvdp
-      neverbehave
-    ];
+    maintainers = with lib.maintainers; [ rvdp neverbehave ];
     mainProgram = "wstunnel";
   };
 }

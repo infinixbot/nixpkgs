@@ -33,21 +33,14 @@ let
     desktopName = pname;
     exec = pname;
     comment = "JavaFx application to visualize and modify the scenegraph of running JavaFx applications.";
-    mimeTypes = [
-      "application/java"
-      "application/java-vm"
-      "application/java-archive"
-    ];
+    mimeTypes = [ "application/java" "application/java-vm" "application/java-archive" ];
     categories = [ "Development" ];
   };
 
 in
 stdenv.mkDerivation rec {
   inherit pname version src;
-  nativeBuildInputs = [
-    gradle
-    makeWrapper
-  ];
+  nativeBuildInputs = [ gradle makeWrapper ];
 
   mitmCache = gradle.fetchDeps {
     inherit pname;

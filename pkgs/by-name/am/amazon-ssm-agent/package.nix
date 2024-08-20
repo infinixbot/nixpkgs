@@ -81,10 +81,7 @@ buildGoModule rec {
     "agent/session/logging"
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   postPatch =
     ''
@@ -174,11 +171,6 @@ buildGoModule rec {
     homepage = "https://github.com/aws/amazon-ssm-agent";
     license = licenses.asl20;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      copumpkin
-      manveru
-      anthonyroussel
-      arianvp
-    ];
+    maintainers = with maintainers; [ copumpkin manveru anthonyroussel arianvp ];
   };
 }

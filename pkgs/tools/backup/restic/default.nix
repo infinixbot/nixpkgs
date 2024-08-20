@@ -30,10 +30,7 @@ buildGoModule rec {
 
   subPackages = [ "cmd/restic" ];
 
-  nativeBuildInputs = [
-    installShellFiles
-    makeWrapper
-  ];
+  nativeBuildInputs = [ installShellFiles makeWrapper ];
 
   nativeCheckInputs = [ python3 ];
 
@@ -63,10 +60,7 @@ buildGoModule rec {
     description = "Backup program that is fast, efficient and secure";
     platforms = platforms.linux ++ platforms.darwin;
     license = licenses.bsd2;
-    maintainers = [
-      maintainers.mbrgm
-      maintainers.dotlambda
-    ];
+    maintainers = [ maintainers.mbrgm maintainers.dotlambda ];
     mainProgram = "restic";
   };
 }

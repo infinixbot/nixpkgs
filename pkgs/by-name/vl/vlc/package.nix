@@ -195,20 +195,14 @@ stdenv.mkDerivation (finalAttrs: {
     ]
     ++ optionals (!stdenv.hostPlatform.isAarch && !onlyLibVLC) [ live555 ]
     ++ optionals jackSupport [ libjack2 ]
-    ++ optionals chromecastSupport [
-      libmicrodns
-      protobuf
-    ]
+    ++ optionals chromecastSupport [ libmicrodns protobuf ]
     ++ optionals skins2Support [
       freetype
       libXext
       libXinerama
       libXpm
     ]
-    ++ optionals waylandSupport [
-      wayland
-      wayland-protocols
-    ]
+    ++ optionals waylandSupport [ wayland wayland-protocols ]
     ++ optionals withQt5 (
       with libsForQt5;
       [
@@ -322,10 +316,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Cross-platform media player and streaming server";
     homepage = "https://www.videolan.org/vlc/";
     license = lib.licenses.lgpl21Plus;
-    maintainers = with lib.maintainers; [
-      AndersonTorres
-      alois31
-    ];
+    maintainers = with lib.maintainers; [ AndersonTorres alois31 ];
     platforms = lib.platforms.linux;
   };
 })

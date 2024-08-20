@@ -11,11 +11,7 @@
     version = "7.1.0";
   };
   activerecord = {
-    dependencies = [
-      "activemodel"
-      "activesupport"
-      "timeout"
-    ];
+    dependencies = [ "activemodel" "activesupport" "timeout" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -58,12 +54,7 @@
     version = "2.8.5";
   };
   async = {
-    dependencies = [
-      "console"
-      "fiber-annotation"
-      "io-event"
-      "timers"
-    ];
+    dependencies = [ "console" "fiber-annotation" "io-event" "timers" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -165,10 +156,7 @@
     version = "2.4.1";
   };
   console = {
-    dependencies = [
-      "fiber-annotation"
-      "fiber-local"
-    ];
+    dependencies = [ "fiber-annotation" "fiber-local" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -293,10 +281,7 @@
     version = "1.3.2";
   };
   irb = {
-    dependencies = [
-      "rdoc"
-      "reline"
-    ];
+    dependencies = [ "rdoc" "reline" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -391,10 +376,7 @@
     version = "0.1.2";
   };
   net-ftp = {
-    dependencies = [
-      "net-protocol"
-      "time"
-    ];
+    dependencies = [ "net-protocol" "time" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -426,10 +408,7 @@
     version = "4.0.2";
   };
   net-imap = {
-    dependencies = [
-      "date"
-      "net-protocol"
-    ];
+    dependencies = [ "date" "net-protocol" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -473,10 +452,7 @@
     version = "0.4.0";
   };
   nokogiri = {
-    dependencies = [
-      "mini_portile2"
-      "racc"
-    ];
+    dependencies = [ "mini_portile2" "racc" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -487,10 +463,7 @@
     version = "1.15.4";
   };
   nokogiri-diff = {
-    dependencies = [
-      "nokogiri"
-      "tdiff"
-    ];
+    dependencies = [ "nokogiri" "tdiff" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -574,10 +547,7 @@
     version = "3.1.0";
   };
   rack-user_agent = {
-    dependencies = [
-      "rack"
-      "woothee"
-    ];
+    dependencies = [ "rack" "woothee" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -659,11 +629,7 @@
     version = "2.1.0";
   };
   ronin-core = {
-    dependencies = [
-      "command_kit"
-      "irb"
-      "reline"
-    ];
+    dependencies = [ "command_kit" "irb" "reline" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -674,12 +640,7 @@
     version = "0.1.2";
   };
   ronin-db = {
-    dependencies = [
-      "ronin-core"
-      "ronin-db-activerecord"
-      "ronin-support"
-      "sqlite3"
-    ];
+    dependencies = [ "ronin-core" "ronin-db-activerecord" "ronin-support" "sqlite3" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -690,10 +651,7 @@
     version = "0.1.2";
   };
   ronin-db-activerecord = {
-    dependencies = [
-      "activerecord"
-      "uri-query_params"
-    ];
+    dependencies = [ "activerecord" "uri-query_params" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -724,11 +682,7 @@
     version = "1.0.3";
   };
   ronin-fuzzer = {
-    dependencies = [
-      "combinatorics"
-      "ronin-core"
-      "ronin-support"
-    ];
+    dependencies = [ "combinatorics" "ronin-core" "ronin-support" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -739,13 +693,7 @@
     version = "0.1.0";
   };
   ronin-payloads = {
-    dependencies = [
-      "ronin-code-asm"
-      "ronin-core"
-      "ronin-post_ex"
-      "ronin-repos"
-      "ronin-support"
-    ];
+    dependencies = [ "ronin-code-asm" "ronin-core" "ronin-post_ex" "ronin-repos" "ronin-support" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -756,11 +704,7 @@
     version = "0.1.4";
   };
   ronin-post_ex = {
-    dependencies = [
-      "fake_io"
-      "hexdump"
-      "ronin-core"
-    ];
+    dependencies = [ "fake_io" "hexdump" "ronin-core" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -782,13 +726,7 @@
     version = "0.1.1";
   };
   ronin-support = {
-    dependencies = [
-      "addressable"
-      "chars"
-      "combinatorics"
-      "hexdump"
-      "uri-query_params"
-    ];
+    dependencies = [ "addressable" "chars" "combinatorics" "hexdump" "uri-query_params" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -799,10 +737,7 @@
     version = "1.0.3";
   };
   ronin-vulns = {
-    dependencies = [
-      "ronin-core"
-      "ronin-support"
-    ];
+    dependencies = [ "ronin-core" "ronin-support" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -835,13 +770,7 @@
     version = "1.0.2";
   };
   ronin-web-server = {
-    dependencies = [
-      "rack"
-      "rack-user_agent"
-      "ronin-support"
-      "sinatra"
-      "webrick"
-    ];
+    dependencies = [ "rack" "rack-user_agent" "ronin-support" "sinatra" "webrick" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -852,10 +781,7 @@
     version = "0.1.1";
   };
   ronin-web-spider = {
-    dependencies = [
-      "ronin-support"
-      "spidr"
-    ];
+    dependencies = [ "ronin-support" "spidr" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -917,12 +843,7 @@
     version = "0.6.3";
   };
   sinatra = {
-    dependencies = [
-      "mustermann"
-      "rack"
-      "rack-protection"
-      "tilt"
-    ];
+    dependencies = [ "mustermann" "rack" "rack-protection" "tilt" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

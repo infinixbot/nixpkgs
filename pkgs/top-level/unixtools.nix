@@ -258,12 +258,7 @@ let
   compat =
     with bins;
     mapAttrs makeCompat {
-      procps = [
-        ps
-        sysctl
-        top
-        watch
-      ];
+      procps = [ ps sysctl top watch ];
       util-linux = [
         fsck
         fdisk
@@ -277,13 +272,7 @@ let
         col
         column
       ];
-      nettools = [
-        arp
-        hostname
-        ifconfig
-        netstat
-        route
-      ];
+      nettools = [ arp hostname ifconfig netstat route ];
     };
 in
 bins // compat

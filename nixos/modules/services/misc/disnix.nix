@@ -88,12 +88,7 @@ in
 
         restartIfChanged = false;
 
-        path = [
-          config.nix.package
-          cfg.package
-          config.dysnomia.package
-          "/run/current-system/sw"
-        ];
+        path = [ config.nix.package cfg.package config.dysnomia.package "/run/current-system/sw" ];
 
         environment =
           {

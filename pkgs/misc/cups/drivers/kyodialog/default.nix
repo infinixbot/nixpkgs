@@ -76,11 +76,7 @@ stdenv.mkDerivation rec {
 
   # For lib/cups/filter/kyofilter_pre_H.
   # The source already contains a copy of pypdf3, but we use the Nix package
-  propagatedBuildInputs = with python3Packages; [
-    reportlab
-    pypdf3
-    setuptools
-  ];
+  propagatedBuildInputs = with python3Packages; [ reportlab pypdf3 setuptools ];
 
   installPhase =
     ''
@@ -118,9 +114,6 @@ stdenv.mkDerivation rec {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
     maintainers = [ maintainers.steveej ];
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
   };
 }

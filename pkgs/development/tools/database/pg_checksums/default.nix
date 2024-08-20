@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ postgresql ];
 
-  buildFlags = [
-    "all"
-    "man"
-  ];
+  buildFlags = [ "all" "man" ];
 
   preConfigure = ''
     substituteInPlace doc/stylesheet-man.xsl \

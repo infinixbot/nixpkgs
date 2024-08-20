@@ -62,11 +62,7 @@ let
       sha256 = "sha256-6y6wge8ZuSKBpb5QNihvAlD4Pv/0d3AQCPOkxUm/sJk=";
     };
 
-    nativeBuildInputs = [
-      pkg-config
-      autoconf
-      unzip
-    ];
+    nativeBuildInputs = [ pkg-config autoconf unzip ];
     buildInputs =
       [
         cpio

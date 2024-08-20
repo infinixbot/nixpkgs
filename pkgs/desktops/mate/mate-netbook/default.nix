@@ -51,10 +51,7 @@ stdenv.mkDerivation rec {
       devices with low resolution displays.
     '';
     homepage = "https://mate-desktop.org";
-    license = with licenses; [
-      gpl3Only
-      lgpl2Plus
-    ];
+    license = with licenses; [ gpl3Only lgpl2Plus ];
     platforms = platforms.unix;
     maintainers = teams.mate.members;
   };

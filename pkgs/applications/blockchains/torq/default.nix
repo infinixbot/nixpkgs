@@ -56,10 +56,7 @@ buildGoModule rec {
     description = "Capital management tool for lightning network nodes";
     license = licenses.mit;
     homepage = "https://github.com/lncapital/torq";
-    maintainers = with maintainers; [
-      mmilata
-      prusnak
-    ];
+    maintainers = with maintainers; [ mmilata prusnak ];
     mainProgram = "torq";
   };
 }

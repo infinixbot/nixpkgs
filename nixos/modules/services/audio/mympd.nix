@@ -36,15 +36,7 @@ in
 
       settings = lib.mkOption {
         type = lib.types.submodule {
-          freeformType =
-            with lib.types;
-            attrsOf (
-              nullOr (oneOf [
-                str
-                bool
-                int
-              ])
-            );
+          freeformType = with lib.types; attrsOf (nullOr (oneOf [ str bool int ]));
           options = {
             http_port = lib.mkOption {
               type = lib.types.port;

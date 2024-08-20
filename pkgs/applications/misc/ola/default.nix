@@ -28,13 +28,7 @@ stdenv.mkDerivation rec {
     sha256 = "17a3z3zhx00rjk58icd3zlqfw3753f3y8bwy2sza0frdim09lqr4";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    bison
-    flex
-    pkg-config
-    perl
-  ];
+  nativeBuildInputs = [ autoreconfHook bison flex pkg-config perl ];
   buildInputs = [
     # required for ola-ftdidmx plugin (support for 'dumb' FTDI devices)
     libftdi1
@@ -60,10 +54,7 @@ stdenv.mkDerivation rec {
     description = "Framework for controlling entertainment lighting equipment";
     homepage = "https://www.openlighting.org/ola/";
     maintainers = [ ];
-    license = with licenses; [
-      lgpl21
-      gpl2Plus
-    ];
+    license = with licenses; [ lgpl21 gpl2Plus ];
     platforms = platforms.all;
   };
 }

@@ -9,11 +9,7 @@
 let
   bits = if stdenv.is64bit then "64" else "32";
 
-  libpath = lib.makeLibraryPath [
-    stdenv.cc.cc
-    stdenv.cc.libc
-    alsa-lib
-  ];
+  libpath = lib.makeLibraryPath [ stdenv.cc.cc stdenv.cc.libc alsa-lib ];
 
 in
 stdenv.mkDerivation rec {
@@ -33,10 +29,7 @@ stdenv.mkDerivation rec {
     export INSTALL_MOD_PATH="$out"
   '';
 
-  hardeningDisable = [
-    "pic"
-    "format"
-  ];
+  hardeningDisable = [ "pic" "format" ];
 
   makeFlags = [
     "KERNELDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"

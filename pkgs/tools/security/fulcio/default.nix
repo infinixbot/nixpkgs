@@ -84,9 +84,6 @@ buildGoModule rec {
       disconnected instance.
     '';
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      lesuisse
-      jk
-    ];
+    maintainers = with maintainers; [ lesuisse jk ];
   };
 }

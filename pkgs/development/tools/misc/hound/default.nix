@@ -42,13 +42,7 @@ buildGoModule rec {
   doCheck = false;
 
   postInstall = ''
-    wrapProgram $out/bin/houndd --prefix PATH : ${
-      lib.makeBinPath [
-        mercurial
-        git
-        openssh
-      ]
-    }
+    wrapProgram $out/bin/houndd --prefix PATH : ${lib.makeBinPath [ mercurial git openssh ]}
   '';
 
   passthru.tests = {
@@ -59,9 +53,6 @@ buildGoModule rec {
     description = "Lightning fast code searching made easy";
     homepage = "https://github.com/hound-search/hound";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      grahamc
-      SuperSandro2000
-    ];
+    maintainers = with maintainers; [ grahamc SuperSandro2000 ];
   };
 }

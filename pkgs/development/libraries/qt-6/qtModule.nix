@@ -25,11 +25,7 @@ stdenv.mkDerivation (
     buildInputs = args.buildInputs or [ ];
     nativeBuildInputs =
       (args.nativeBuildInputs or [ ])
-      ++ [
-        cmake
-        ninja
-        perl
-      ]
+      ++ [ cmake ninja perl ]
       ++ lib.optionals stdenv.hostPlatform.isDarwin [ moveBuildTree ];
     propagatedBuildInputs =
       (lib.warnIf (args ? qtInputs) "qt6.qtModule's qtInputs argument is deprecated" args.qtInputs or [ ])
@@ -37,11 +33,7 @@ stdenv.mkDerivation (
 
     moveToDev = false;
 
-    outputs =
-      args.outputs or [
-        "out"
-        "dev"
-      ];
+    outputs = args.outputs or [ "out" "dev" ];
 
     dontWrapQtApps = args.dontWrapQtApps or true;
   }
@@ -55,16 +47,8 @@ stdenv.mkDerivation (
     {
       homepage = "https://www.qt.io/";
       description = "Cross-platform application framework for C++";
-      license = with licenses; [
-        fdl13Plus
-        gpl2Plus
-        lgpl21Plus
-        lgpl3Plus
-      ];
-      maintainers = with maintainers; [
-        milahu
-        nickcao
-      ];
+      license = with licenses; [ fdl13Plus gpl2Plus lgpl21Plus lgpl3Plus ];
+      maintainers = with maintainers; [ milahu nickcao ];
       platforms = platforms.unix;
       position = "${pos.file}:${toString pos.line}";
     }

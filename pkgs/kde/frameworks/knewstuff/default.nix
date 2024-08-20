@@ -11,10 +11,7 @@ mkKdeDerivation {
   # FIXME(later): upstream
   patches = [ ./delay-resolving-knsrcdir.patch ];
 
-  extraBuildInputs = [
-    qtdeclarative
-    qttools
-  ];
+  extraBuildInputs = [ qtdeclarative qttools ];
   extraPropagatedBuildInputs = [ kcmutils ];
   meta.mainProgram = "knewstuff-dialog6";
 }

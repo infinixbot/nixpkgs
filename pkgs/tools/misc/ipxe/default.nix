@@ -74,10 +74,7 @@ stdenv.mkDerivation rec {
   ''; # calling syslinux on a FAT image isn't going to work
 
   # not possible due to assembler code
-  hardeningDisable = [
-    "pic"
-    "stackprotector"
-  ];
+  hardeningDisable = [ "pic" "stackprotector" ];
 
   env.NIX_CFLAGS_COMPILE = "-Wno-error";
 

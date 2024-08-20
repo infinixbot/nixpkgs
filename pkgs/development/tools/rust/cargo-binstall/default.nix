@@ -47,14 +47,8 @@ rustPlatform.buildRustPackage rec {
     "zstd-thin"
   ];
 
-  cargoBuildFlags = [
-    "-p"
-    "cargo-binstall"
-  ];
-  cargoTestFlags = [
-    "-p"
-    "cargo-binstall"
-  ];
+  cargoBuildFlags = [ "-p" "cargo-binstall" ];
+  cargoTestFlags = [ "-p" "cargo-binstall" ];
 
   checkFlags = [
     # requires internet access

@@ -23,11 +23,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-UWaet7hVtgfuWTiNY4VcsMWTfS6L9r5w1fb/0dWz8SI=";
   };
 
-  outputs = [
-    "out"
-    "man"
-    "doc"
-  ];
+  outputs = [ "out" "man" "doc" ];
 
   buildInputs = [
     giflib
@@ -69,10 +65,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     changelog = "https://codeberg.org/nsxiv/nsxiv/src/tag/${finalAttrs.src.rev}/etc/CHANGELOG.md";
     license = lib.licenses.gpl2Plus;
-    maintainers = with lib.maintainers; [
-      AndersonTorres
-      sikmir
-    ];
+    maintainers = with lib.maintainers; [ AndersonTorres sikmir ];
     platforms = lib.platforms.unix;
   };
 })

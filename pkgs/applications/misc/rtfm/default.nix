@@ -63,11 +63,7 @@ crystal.buildCrystalPackage rec {
     pango'
   ];
 
-  buildTargets = [
-    "configure"
-    "rtfm"
-    "docsets"
-  ];
+  buildTargets = [ "configure" "rtfm" "docsets" ];
 
   preBuild = ''
     mkdir gtk-doc/

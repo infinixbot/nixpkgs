@@ -41,10 +41,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/tiddly-gittly/TidGi-Desktop";
     license = lib.licenses.mpl20;
     maintainers = with lib.maintainers; [ klchen0112 ];
-    platforms = [
-      "aarch64-darwin"
-      "x86_64-darwin"
-    ];
+    platforms = [ "aarch64-darwin" "x86_64-darwin" ];
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
   };
 }

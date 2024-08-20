@@ -109,13 +109,7 @@ buildGoModule rec {
 
     install -D ./bundle/bin/rke2-killall.sh $out/bin/rke2-killall.sh
     wrapProgram $out/bin/rke2-killall.sh \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          systemd
-          gnugrep
-          gnused
-        ]
-      } \
+      --prefix PATH : ${lib.makeBinPath [ systemd gnugrep gnused ]} \
       --prefix PATH : ${lib.makeBinPath buildInputs}
   '';
 
@@ -139,10 +133,7 @@ buildGoModule rec {
     description = "RKE2, also known as RKE Government, is Rancher's next-generation Kubernetes distribution";
     changelog = "https://github.com/rancher/rke2/releases/tag/v${version}";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      zimbatm
-      zygot
-    ];
+    maintainers = with maintainers; [ zimbatm zygot ];
     mainProgram = "rke2";
     platforms = platforms.linux;
   };

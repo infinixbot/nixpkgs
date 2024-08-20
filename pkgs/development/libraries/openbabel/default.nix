@@ -48,10 +48,7 @@ stdenv.mkDerivation rec {
     coordgenlibs
   ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   preConfigure = ''
     cmakeFlagsArray+=(

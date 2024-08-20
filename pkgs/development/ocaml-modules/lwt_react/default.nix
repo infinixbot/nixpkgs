@@ -21,10 +21,7 @@ buildDunePackage {
 
   nativeBuildInputs = [ cppo ];
 
-  propagatedBuildInputs = [
-    lwt
-    react
-  ];
+  propagatedBuildInputs = [ lwt react ];
 
   meta = {
     description = "Helpers for using React with Lwt";

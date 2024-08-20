@@ -17,10 +17,7 @@ buildPythonApplication rec {
     sha256 = "sha256-cxwf6+9WFt3U7+JdKRgZxFElD+Dgf2P2VyejHVoiDJk=";
   };
 
-  propagatedBuildInputs = [
-    python-magic
-    python-dateutil
-  ];
+  propagatedBuildInputs = [ python-magic python-dateutil ];
 
   dontUseSetuptoolsCheck = true;
 

@@ -101,10 +101,6 @@ buildRustPackage' {
     homepage = "https://github.com/qarmin/czkawka";
     license = with lib.licenses; [ mit ];
     mainProgram = "czkawka_gui";
-    maintainers = with lib.maintainers; [
-      AndersonTorres
-      yanganto
-      _0x4A6F
-    ];
+    maintainers = with lib.maintainers; [ AndersonTorres yanganto _0x4A6F ];
   };
 }

@@ -32,12 +32,7 @@ stdenv.mkDerivation rec {
 
   dontBuild = true;
 
-  nativeBuildInputs = [
-    makeWrapper
-    dpkg
-    desktop-file-utils
-    asar
-  ];
+  nativeBuildInputs = [ makeWrapper dpkg desktop-file-utils asar ];
 
   unpackPhase = "dpkg-deb --fsys-tarfile $src | tar -x --no-same-permissions --no-same-owner";
 
@@ -80,11 +75,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://standardnotes.org";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [
-      mgregoire
-      chuangzhu
-      squalus
-    ];
+    maintainers = with maintainers; [ mgregoire chuangzhu squalus ];
     sourceProvenance = [ sourceTypes.binaryNativeCode ];
     platforms = builtins.attrNames srcjson.deb;
     mainProgram = "standardnotes";

@@ -60,11 +60,7 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    dbus
-    glib
-    expat
-  ];
+  buildInputs = [ dbus glib expat ];
 
   configureFlags =
     [

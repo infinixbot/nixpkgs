@@ -112,10 +112,7 @@
     version = "1.4.1";
   };
   faraday = {
-    dependencies = [
-      "faraday-net_http"
-      "logger"
-    ];
+    dependencies = [ "faraday-net_http" "logger" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -147,10 +144,7 @@
     version = "1.17.0";
   };
   ffi-compiler = {
-    dependencies = [
-      "ffi"
-      "rake"
-    ];
+    dependencies = [ "ffi" "rake" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -172,14 +166,7 @@
     version = "2.1.1";
   };
   googleauth = {
-    dependencies = [
-      "faraday"
-      "google-cloud-env"
-      "jwt"
-      "multi_json"
-      "os"
-      "signet"
-    ];
+    dependencies = [ "faraday" "google-cloud-env" "jwt" "multi_json" "os" "signet" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -190,13 +177,7 @@
     version = "1.11.0";
   };
   http = {
-    dependencies = [
-      "addressable"
-      "base64"
-      "http-cookie"
-      "http-form_data"
-      "llhttp-ffi"
-    ];
+    dependencies = [ "addressable" "base64" "http-cookie" "http-form_data" "llhttp-ffi" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -293,12 +274,7 @@
     version = "3.6.1";
   };
   kubeclient = {
-    dependencies = [
-      "http"
-      "jsonpath"
-      "recursive-open-struct"
-      "rest-client"
-    ];
+    dependencies = [ "http" "jsonpath" "recursive-open-struct" "rest-client" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -309,10 +285,7 @@
     version = "4.12.0";
   };
   llhttp-ffi = {
-    dependencies = [
-      "ffi-compiler"
-      "rake"
-    ];
+    dependencies = [ "ffi-compiler" "rake" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -445,12 +418,7 @@
     version = "1.2.2";
   };
   rest-client = {
-    dependencies = [
-      "http-accept"
-      "http-cookie"
-      "mime-types"
-      "netrc"
-    ];
+    dependencies = [ "http-accept" "http-cookie" "mime-types" "netrc" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -461,12 +429,7 @@
     version = "2.1.0";
   };
   signet = {
-    dependencies = [
-      "addressable"
-      "faraday"
-      "jwt"
-      "multi_json"
-    ];
+    dependencies = [ "addressable" "faraday" "jwt" "multi_json" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

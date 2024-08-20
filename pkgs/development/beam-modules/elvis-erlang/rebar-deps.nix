@@ -130,15 +130,7 @@ let
         version = "1.17.1";
         sha256 = "sha256-0sup48gQOtAyBiPp8cM+jTeKFeqr4u6K5EGJjz01oYw=";
       };
-      beamDeps = [
-        certifi
-        idna
-        metrics
-        mimerl
-        parse_trans
-        ssl_verify_fun
-        unicode_util_compat
-      ];
+      beamDeps = [ certifi idna metrics mimerl parse_trans ssl_verify_fun unicode_util_compat ];
     };
     goldrush = builder {
       name = "goldrush";
@@ -168,10 +160,7 @@ let
         version = "3.2.3";
         sha256 = "sha256-oPDWgczZNVoWXDWXNnVVHxAhaHz5kvFcW/9mtmZO3gQ=";
       };
-      beamDeps = [
-        katana_code
-        zipper
-      ];
+      beamDeps = [ katana_code zipper ];
     };
     egithub = builder {
       name = "egithub";
@@ -181,12 +170,7 @@ let
         version = "0.7.0";
         sha256 = "sha256-4AnOEe/YAI0PntWdnEiOPpq+MCoPLNbWY+TMJnVvzEw=";
       };
-      beamDeps = [
-        goldrush
-        hackney
-        jsx
-        lager
-      ];
+      beamDeps = [ goldrush hackney jsx lager ];
     };
   };
 in

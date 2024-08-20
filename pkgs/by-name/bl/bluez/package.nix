@@ -60,11 +60,7 @@ stdenv.mkDerivation (finalAttrs: {
     python3.pkgs.wrapPython
   ];
 
-  outputs = [
-    "out"
-    "dev"
-    "test"
-  ];
+  outputs = [ "out" "dev" "test" ];
 
   postPatch =
     ''
@@ -172,12 +168,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://www.bluez.org/";
     description = "Official Linux Bluetooth protocol stack";
     changelog = "https://git.kernel.org/pub/scm/bluetooth/bluez.git/tree/ChangeLog?h=${finalAttrs.version}";
-    license = with lib.licenses; [
-      bsd2
-      gpl2Plus
-      lgpl21Plus
-      mit
-    ];
+    license = with lib.licenses; [ bsd2 gpl2Plus lgpl21Plus mit ];
     mainProgram = "btinfo";
     maintainers = with lib.maintainers; [ AndersonTorres ];
     platforms = lib.platforms.linux;

@@ -44,16 +44,8 @@ in
 
       allowedClients = mkOption {
         type = types.listOf types.str;
-        default = [
-          "127.0.0.1"
-          "::1"
-        ];
-        example = [
-          "127.0.0.1"
-          "::1"
-          "134.157.168.0/24"
-          "2001:660:116::/48"
-        ];
+        default = [ "127.0.0.1" "::1" ];
+        example = [ "127.0.0.1" "::1" "134.157.168.0/24" "2001:660:116::/48" ];
         description = ''
           List of IP addresses or network addresses that may connect to Polipo.
         '';
@@ -108,10 +100,7 @@ in
 
     systemd.services.polipo = {
       description = "caching web proxy";
-      after = [
-        "network.target"
-        "nss-lookup.target"
-      ];
+      after = [ "network.target" "nss-lookup.target" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         ExecStart = "${pkgs.polipo}/bin/polipo -c ${polipoConfig}";

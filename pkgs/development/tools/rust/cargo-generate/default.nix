@@ -26,10 +26,7 @@ rustPlatform.buildRustPackage rec {
   nativeBuildInputs = [ pkg-config ];
 
   buildInputs =
-    [
-      libgit2
-      openssl
-    ]
+    [ libgit2 openssl ]
     ++ lib.optionals stdenv.isDarwin [
       darwin.apple_sdk.frameworks.Security
     ];
@@ -69,10 +66,6 @@ rustPlatform.buildRustPackage rec {
       asl20 # or
       mit
     ];
-    maintainers = with maintainers; [
-      figsoda
-      turbomack
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ figsoda turbomack matthiasbeyer ];
   };
 }

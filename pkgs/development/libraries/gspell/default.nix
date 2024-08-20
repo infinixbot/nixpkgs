@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
   pname = "gspell";
   version = "1.12.2";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
   outputBin = "dev";
 
   src = fetchurl {

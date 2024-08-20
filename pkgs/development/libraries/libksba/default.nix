@@ -16,11 +16,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-z3JRC467TrZpPu92V0nYNnegPHkpGjEQQKW/15uqt2M=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "info"
-  ];
+  outputs = [ "out" "dev" "info" ];
 
   buildInputs = [ gettext ];
   propagatedBuildInputs = [ libgpg-error ];

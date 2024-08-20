@@ -49,10 +49,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "https://fabiocolacio.github.io/Marker/";
     description = "Markdown editor for the Linux desktop made with GTK3";
-    maintainers = with maintainers; [
-      trepetti
-      aleksana
-    ];
+    maintainers = with maintainers; [ trepetti aleksana ];
     license = licenses.gpl3Plus;
     platforms = platforms.linux;
     changelog = "https://github.com/fabiocolacio/Marker/releases/tag/${version}";

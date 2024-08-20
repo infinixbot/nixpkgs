@@ -40,10 +40,7 @@ stdenv.mkDerivation rec {
 
   dontUseCmakeBuildDir = true;
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
   buildInputs = [
     rsync
     lua

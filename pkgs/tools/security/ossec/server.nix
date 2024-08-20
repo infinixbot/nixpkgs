@@ -25,12 +25,7 @@ stdenv.mkDerivation {
   # clear is used during the build process
   nativeBuildInputs = [ ncurses ];
 
-  buildInputs = [
-    which
-    pcre2
-    zlib
-    openssl
-  ];
+  buildInputs = [ which pcre2 zlib openssl ];
 
   # patch to remove root manipulation, install phase which tries to add users to the system, and init phase which tries to modify the system to launch files
   patches = [ ./no-root.patch ];

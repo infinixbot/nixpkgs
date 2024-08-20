@@ -75,9 +75,6 @@ buildPythonPackage rec {
     changelog = "https://github.com/pyqtgraph/pyqtgraph/blob/master/CHANGELOG";
     license = lib.licenses.mit;
     platforms = lib.platforms.unix;
-    maintainers = with lib.maintainers; [
-      koral
-      doronbehar
-    ];
+    maintainers = with lib.maintainers; [ koral doronbehar ];
   };
 }

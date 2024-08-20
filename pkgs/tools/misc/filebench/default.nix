@@ -16,11 +16,7 @@ stdenv.mkDerivation rec {
     sha256 = "13hmx67lsz367sn8lrvz1780mfczlbiz8v80gig9kpkpf009yksc";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    bison
-    flex
-  ];
+  nativeBuildInputs = [ autoreconfHook bison flex ];
 
   meta = with lib; {
     description = "File system and storage benchmark that can generate both micro and macro workloads";

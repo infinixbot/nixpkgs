@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
     "--with-moduledir=${placeholder "out"}/lib/security"
   ];
 
-  buildInputs = [
-    pam
-    gnupg
-  ];
+  buildInputs = [ pam gnupg ];
 
   nativeBuildInputs = [ autoreconfHook ];
 

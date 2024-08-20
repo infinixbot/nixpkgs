@@ -36,14 +36,7 @@ buildPythonApplication rec {
     hash = "sha256-+EUj6iBnHF4zlOAAfaHy5V/z6CCD/LFksBClE4FaHHc=";
   };
 
-  propagatedBuildInputs = [
-    setuptools
-    breezy
-    dulwich
-    jinja2
-    pyyaml
-    ruamel-yaml
-  ];
+  propagatedBuildInputs = [ setuptools breezy dulwich jinja2 pyyaml ruamel-yaml ];
   nativeBuildInputs = [
     setuptools-rust
     rustPlatform.cargoSetupHook

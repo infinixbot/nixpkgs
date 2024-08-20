@@ -36,10 +36,7 @@ buildPythonApplication rec {
     substituteInPlace setup.py --replace /usr/share share
   '';
 
-  nativeBuildInputs = [
-    wrapGAppsHook3
-    gobject-introspection
-  ];
+  nativeBuildInputs = [ wrapGAppsHook3 gobject-introspection ];
 
   buildInputs = [
     gtk3

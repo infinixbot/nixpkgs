@@ -51,10 +51,7 @@ stdenv.mkDerivation (finalAttrs: {
     ./transmission-3.00-miniupnpc-2.2.8.patch
   ];
 
-  outputs = [
-    "out"
-    "apparmor"
-  ];
+  outputs = [ "out" "apparmor" ];
 
   cmakeFlags =
     let
@@ -87,14 +84,8 @@ stdenv.mkDerivation (finalAttrs: {
       dht
       libnatpmp
     ]
-    ++ lib.optionals enableQt [
-      qt5.qttools
-      qt5.qtbase
-    ]
-    ++ lib.optionals enableGTK3 [
-      gtk3
-      xorg.libpthreadstubs
-    ]
+    ++ lib.optionals enableQt [ qt5.qttools qt5.qtbase ]
+    ++ lib.optionals enableGTK3 [ gtk3 xorg.libpthreadstubs ]
     ++ lib.optionals enableSystemd [ systemd ]
     ++ lib.optionals stdenv.isLinux [ inotify-tools ]
     ++ lib.optionals stdenv.isDarwin [ libiconv ];

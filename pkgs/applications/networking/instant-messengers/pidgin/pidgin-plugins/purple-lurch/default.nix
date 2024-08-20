@@ -23,13 +23,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    pidgin
-    minixml
-    libxml2
-    sqlite
-    libgcrypt
-  ];
+  buildInputs = [ pidgin minixml libxml2 sqlite libgcrypt ];
 
   dontUseCmakeConfigure = true;
 

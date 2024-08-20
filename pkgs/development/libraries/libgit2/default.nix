@@ -26,11 +26,7 @@ stdenv.mkDerivation (finalAttrs: {
   version = "1.8.1";
   # also check the following packages for updates: python3Packages.pygit2 and libgit2-glib
 
-  outputs = [
-    "lib"
-    "dev"
-    "out"
-  ];
+  outputs = [ "lib" "dev" "out" ];
 
   src = fetchFromGitHub {
     owner = "libgit2";
@@ -52,11 +48,7 @@ stdenv.mkDerivation (finalAttrs: {
       "-DCMAKE_LIBRARY_PATH=${stdenv.cc.libc}/lib"
     ];
 
-  nativeBuildInputs = [
-    cmake
-    python3
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake python3 pkg-config ];
 
   buildInputs = [
     zlib

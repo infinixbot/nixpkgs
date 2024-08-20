@@ -28,11 +28,7 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-    sphinx
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook sphinx ];
 
   buildInputs = [
     gnutls
@@ -43,13 +39,7 @@ stdenv.mkDerivation rec {
     libssh2
   ] ++ lib.optional stdenv.isDarwin Security;
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "bin" "dev" "out" "doc" "man" ];
 
   configureFlags = [
     "--with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
@@ -76,10 +66,6 @@ stdenv.mkDerivation rec {
     mainProgram = "aria2c";
     license = licenses.gpl2Plus;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      Br1ght0ne
-      koral
-      timhae
-    ];
+    maintainers = with maintainers; [ Br1ght0ne koral timhae ];
   };
 }

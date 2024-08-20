@@ -60,10 +60,7 @@ stdenv.mkDerivation rec {
   };
 
   passthru.updateScript = nix-update-script {
-    extraArgs = [
-      "--version-regex"
-      "r([0-9]+)"
-    ];
+    extraArgs = [ "--version-regex" "r([0-9]+)" ];
   };
 
   strictDeps = true;

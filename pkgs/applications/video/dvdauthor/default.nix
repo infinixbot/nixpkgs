@@ -23,16 +23,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-MCCpLen3jrNvSLbyLVoAHEcQeCZjSnhaYt/NCA9hLrc=";
   };
 
-  buildInputs = [
-    libpng
-    freetype
-    libdvdread
-    libxml2
-    zlib
-    fribidi
-    flex
-    bison
-  ];
+  buildInputs = [ libpng freetype libdvdread libxml2 zlib fribidi flex bison ];
 
   nativeBuildInputs = [
     pkg-config

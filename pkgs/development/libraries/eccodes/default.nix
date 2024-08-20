@@ -39,11 +39,7 @@ stdenv.mkDerivation rec {
       --replace '$'{CMAKE_INSTALL_PREFIX}/'$'{INSTALL_INCLUDE_DIR} '$'{'$'{PROJECT_NAME}_FULL_INSTALL_INCLUDE_DIR}
   '';
 
-  nativeBuildInputs = [
-    cmake
-    gfortran
-    perl
-  ];
+  nativeBuildInputs = [ cmake gfortran perl ];
 
   buildInputs = [
     netcdf

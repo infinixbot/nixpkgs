@@ -22,10 +22,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "libgudev";
   version = "238";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/libgudev/${lib.versions.majorMinor finalAttrs.version}/libgudev-${finalAttrs.version}.tar.xz";

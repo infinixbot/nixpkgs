@@ -41,10 +41,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-TSmYqLMeS/G1rYNxVfh3uIK9bQJhsd7mos50yIXQoT4=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   nativeBuildInputs = [
     blueprint-compiler

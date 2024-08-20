@@ -18,10 +18,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-oQC//4RHJjSncQtHPVsYnpLYtXfxSSJdbUBf8clevDI=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    python3
-  ];
+  nativeBuildInputs = [ cmake python3 ];
   buildInputs = [ vulkan-headers ];
 
   meta = with lib; {

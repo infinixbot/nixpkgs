@@ -20,11 +20,7 @@ gccStdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ autoreconfHook269 ];
-  buildInputs = [
-    libX11
-    xorgproto
-    libXpm
-  ];
+  buildInputs = [ libX11 xorgproto libXpm ];
 
   configureFlags = [ "--with-x" ];
 

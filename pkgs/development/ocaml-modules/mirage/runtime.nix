@@ -14,12 +14,7 @@ buildDunePackage rec {
 
   minimalOCamlVersion = "4.08";
 
-  propagatedBuildInputs = [
-    ipaddr
-    functoria-runtime
-    logs
-    lwt
-  ];
+  propagatedBuildInputs = [ ipaddr functoria-runtime logs lwt ];
   checkInputs = [ alcotest ];
   doCheck = true;
 

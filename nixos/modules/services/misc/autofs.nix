@@ -82,12 +82,7 @@ in
 
     systemd.services.autofs = {
       description = "Automounts filesystems on demand";
-      after = [
-        "network.target"
-        "ypbind.service"
-        "sssd.service"
-        "network-online.target"
-      ];
+      after = [ "network.target" "ypbind.service" "sssd.service" "network-online.target" ];
       wants = [ "network-online.target" ];
       wantedBy = [ "multi-user.target" ];
 

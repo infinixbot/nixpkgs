@@ -47,12 +47,7 @@
   ruby,
 }:
 
-assert builtins.any (g: guiModule == g) [
-  "fltk"
-  "ntk"
-  "zest"
-  "off"
-];
+assert builtins.any (g: guiModule == g) [ "fltk" "ntk" "zest" "off" ];
 
 let
   guiName =
@@ -77,10 +72,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-0siAx141DZx39facXWmKbsi0rHBNpobApTdey07EcXg=";
   };
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   patches = [
     # Lazily expand ZYN_DATADIR to fix builtin banks across updates
@@ -94,42 +86,19 @@ stdenv.mkDerivation rec {
     patchShebangs rtosc/test/test-port-checker.rb src/Tests/check-ports.rb
   '';
 
-  nativeBuildInputs = [
-    cmake
-    makeWrapper
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake makeWrapper pkg-config ];
 
   buildInputs =
-    [
-      fftw
-      liblo
-      minixml
-      zlib
-    ]
+    [ fftw liblo minixml zlib ]
     ++ lib.optionals alsaSupport [ alsa-lib ]
-    ++ lib.optionals dssiSupport [
-      dssi
-      ladspaH
-    ]
+    ++ lib.optionals dssiSupport [ dssi ladspaH ]
     ++ lib.optionals jackSupport [ libjack2 ]
     ++ lib.optionals lashSupport [ lash ]
     ++ lib.optionals portaudioSupport [ portaudio ]
     ++ lib.optionals sndioSupport [ sndio ]
-    ++ lib.optionals (guiModule == "fltk") [
-      fltk
-      libjpeg
-      libXpm
-    ]
-    ++ lib.optionals (guiModule == "ntk") [
-      ntk
-      cairo
-      libXpm
-    ]
-    ++ lib.optionals (guiModule == "zest") [
-      libGL
-      libX11
-    ];
+    ++ lib.optionals (guiModule == "fltk") [ fltk libjpeg libXpm ]
+    ++ lib.optionals (guiModule == "ntk") [ ntk cairo libXpm ]
+    ++ lib.optionals (guiModule == "zest") [ libGL libX11 ];
 
   cmakeFlags =
     [
@@ -148,10 +117,7 @@ stdenv.mkDerivation rec {
   ];
 
   doCheck = true;
-  nativeCheckInputs = [
-    cxxtest
-    ruby
-  ];
+  nativeCheckInputs = [ cxxtest ruby ];
 
   # TODO: Update cmake hook to make it simpler to selectively disable cmake tests: #113829
   checkPhase =
@@ -162,10 +128,7 @@ stdenv.mkDerivation rec {
         lib.optionals lashSupport [ "PortChecker" ]
 
         # Tests fail on aarch64
-        ++ lib.optionals stdenv.isAarch64 [
-          "MessageTest"
-          "UnisonTest"
-        ];
+        ++ lib.optionals stdenv.isAarch64 [ "MessageTest" "UnisonTest" ];
     in
     ''
       runHook preCheck

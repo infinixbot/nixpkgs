@@ -134,10 +134,7 @@ let
       homepage = "https://tes3mp.com/";
       license = licenses.gpl3Only;
       maintainers = with maintainers; [ peterhoeg ];
-      platforms = [
-        "x86_64-linux"
-        "i686-linux"
-      ];
+      platforms = [ "x86_64-linux" "i686-linux" ];
     };
   });
 

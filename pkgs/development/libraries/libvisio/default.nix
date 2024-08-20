@@ -20,12 +20,7 @@ stdenv.mkDerivation rec {
   pname = "libvisio";
   version = "0.1.7";
 
-  outputs = [
-    "out"
-    "bin"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "bin" "dev" "doc" ];
 
   src = fetchurl {
     url = "https://dev-www.libreoffice.org/src/libvisio/${pname}-${version}.tar.xz";
@@ -33,22 +28,8 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [
-    pkg-config
-    doxygen
-    perl
-    gperf
-  ];
-  buildInputs = [
-    boost
-    libwpd
-    libwpg
-    zlib
-    librevenge
-    libxml2
-    icu
-    cppunit
-  ];
+  nativeBuildInputs = [ pkg-config doxygen perl gperf ];
+  buildInputs = [ boost libwpd libwpg zlib librevenge libxml2 icu cppunit ];
 
   doCheck = true;
 

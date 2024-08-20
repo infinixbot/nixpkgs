@@ -22,12 +22,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Go9T5v0tdJg57IcMXiez4U2lw+6sv8uUXRWeHVQzeV8=";
   };
 
-  buildInputs = [
-    libX11
-    libXinerama
-    zlib
-    libXft
-  ];
+  buildInputs = [ libX11 libXinerama zlib libXft ];
 
   inherit patches;
 
@@ -54,12 +49,7 @@ stdenv.mkDerivation rec {
     description = "Generic, highly customizable, and efficient menu for the X Window System";
     homepage = "https://tools.suckless.org/dmenu";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      pSub
-      globin
-      qusic
-      _0david0mp
-    ];
+    maintainers = with maintainers; [ pSub globin qusic _0david0mp ];
     platforms = platforms.all;
     mainProgram = "dmenu";
   };

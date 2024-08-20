@@ -43,10 +43,7 @@ rustPlatform.buildRustPackage {
     description = "Fastest way to manage projects as tmux sessions";
     homepage = "https://github.com/jrmoulton/tmux-sessionizer";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      vinnymeller
-      mrcjkb
-    ];
+    maintainers = with maintainers; [ vinnymeller mrcjkb ];
     mainProgram = "tms";
   };
 }

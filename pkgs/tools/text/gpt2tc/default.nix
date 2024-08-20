@@ -24,12 +24,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ autoPatchelfHook ];
 
   buildInputs = [
-    (python3.withPackages (
-      p: with p; [
-        numpy
-        tensorflow
-      ]
-    ))
+    (python3.withPackages (p: with p; [ numpy tensorflow ]))
   ];
 
   installPhase = ''

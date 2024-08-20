@@ -43,11 +43,7 @@ in
     # NOTE: We don't use top-level jupyter because we don't
     # want to pass in JUPYTER_PATH but use .environment instead,
     # saving a rebuild.
-    package = mkPackageOption pkgs [
-      "python3"
-      "pkgs"
-      "notebook"
-    ] { };
+    package = mkPackageOption pkgs [ "python3" "pkgs" "notebook" ] { };
 
     command = mkOption {
       type = types.str;

@@ -26,10 +26,7 @@ stdenvNoCC.mkDerivation rec {
       comment = meta.description;
       exec = pname;
       icon = pname;
-      categories = [
-        "Game"
-        "Audio"
-      ];
+      categories = [ "Game" "Audio" ];
       startupWMClass = "synthesia.exe";
     })
   ];

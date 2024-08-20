@@ -63,9 +63,6 @@ buildPythonPackage rec {
     homepage = "https://www.frida.re";
     license = lib.licenses.wxWindows;
     maintainers = with lib.maintainers; [ s1341 ];
-    platforms = [
-      "aarch64-darwin"
-      "x86_64-linux"
-    ];
+    platforms = [ "aarch64-darwin" "x86_64-linux" ];
   };
 }

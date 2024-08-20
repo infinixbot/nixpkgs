@@ -22,11 +22,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ bobcat ];
 
-  nativeBuildInputs = [
-    yodl
-    icmake
-    flexcpp
-  ];
+  nativeBuildInputs = [ yodl icmake flexcpp ];
 
   setSourceRoot = ''
     sourceRoot="$(echo */bisonc++)"

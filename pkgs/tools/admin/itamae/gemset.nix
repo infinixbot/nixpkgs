@@ -20,10 +20,7 @@
     version = "1.1.0";
   };
   docker-api = {
-    dependencies = [
-      "excon"
-      "multi_json"
-    ];
+    dependencies = [ "excon" "multi_json" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -64,13 +61,7 @@
     version = "5.0.0";
   };
   itamae = {
-    dependencies = [
-      "ansi"
-      "hashie"
-      "schash"
-      "specinfra"
-      "thor"
-    ];
+    dependencies = [ "ansi" "hashie" "schash" "specinfra" "thor" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -142,12 +133,7 @@
     version = "2.3";
   };
   specinfra = {
-    dependencies = [
-      "net-scp"
-      "net-ssh"
-      "net-telnet"
-      "sfl"
-    ];
+    dependencies = [ "net-scp" "net-ssh" "net-telnet" "sfl" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

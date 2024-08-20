@@ -51,10 +51,7 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "cargo-local-registry";
     homepage = "https://github.com/dhovart/cargo-local-registry";
     changelog = "https://github.com/dhovart/cargo-local-registry/releases/tag/${src.rev}";
-    license = with licenses; [
-      asl20
-      mit
-    ];
+    license = with licenses; [ asl20 mit ];
     maintainers = with maintainers; [ figsoda ];
   };
 }

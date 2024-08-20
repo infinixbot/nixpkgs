@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "https://github.com/pop-os/cosmic-protocols";
     description = "Addtional wayland-protocols used by the COSMIC desktop environment";
-    license = [
-      licenses.mit
-      licenses.gpl3Only
-    ];
+    license = [ licenses.mit licenses.gpl3Only ];
     maintainers = with maintainers; [ nyanbinary ];
     platforms = platforms.linux;
   };

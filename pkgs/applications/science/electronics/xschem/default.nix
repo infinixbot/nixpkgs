@@ -23,19 +23,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-1jP1SJeq23XNkOQgcl2X+rBrlka4a04irmfhoKRM1j4=";
   };
 
-  nativeBuildInputs = [
-    bison
-    flex
-    pkg-config
-  ];
+  nativeBuildInputs = [ bison flex pkg-config ];
 
-  buildInputs = [
-    cairo
-    libX11
-    libXpm
-    tcl
-    tk
-  ];
+  buildInputs = [ cairo libX11 libXpm tcl tk ];
 
   hardeningDisable = [ "format" ];
 

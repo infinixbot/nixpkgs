@@ -41,21 +41,14 @@ stdenv.mkDerivation rec {
     };
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    intltool
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config intltool ];
   buildInputs = [
     gtk3
     adwaita-icon-theme
     gsettings-desktop-schemas
   ];
 
-  propagatedBuildInputs = [
-    enchant
-    isocodes
-  ];
+  propagatedBuildInputs = [ enchant isocodes ];
 
   meta = with lib; {
     platforms = platforms.linux;

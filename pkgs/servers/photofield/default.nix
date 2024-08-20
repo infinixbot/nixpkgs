@@ -70,12 +70,7 @@ buildGoModule {
 
   postInstall = ''
     wrapProgram $out/bin/photofield \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          exiftool
-          ffmpeg
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ exiftool ffmpeg ]}"
   '';
 
   passthru.tests.version = testers.testVersion {

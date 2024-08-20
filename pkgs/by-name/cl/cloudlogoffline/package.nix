@@ -67,11 +67,7 @@ stdenv.mkDerivation (self: {
       icon = "cloudlogoffline";
       comment = self.meta.description;
       genericName = "Ham radio contact logbook";
-      categories = [
-        "Network"
-        "Utility"
-        "HamRadio"
-      ];
+      categories = [ "Network" "Utility" "HamRadio" ];
     })
   ];
 

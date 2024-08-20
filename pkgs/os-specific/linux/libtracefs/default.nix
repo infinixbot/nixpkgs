@@ -32,12 +32,7 @@ stdenv.mkDerivation rec {
     patchShebangs --build check-manpages.sh samples/extract-example.sh Documentation/install-docs.sh.in
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "devman"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "devman" "doc" ];
   nativeBuildInputs = [
     meson
     ninja
@@ -53,10 +48,7 @@ stdenv.mkDerivation rec {
   ];
   buildInputs = [ libtraceevent ];
 
-  ninjaFlags = [
-    "all"
-    "docs"
-  ];
+  ninjaFlags = [ "all" "docs" ];
 
   doCheck = true;
   checkInputs = [ cunit ];

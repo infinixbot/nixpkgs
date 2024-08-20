@@ -21,23 +21,10 @@ stdenv.mkDerivation {
     postPatch
     ;
 
-  nativeBuildInputs = [
-    pkg-config
-    wayland-scanner
-  ];
-  buildInputs = [
-    libxkbcommon
-    pixman
-    udev
-    wayland
-    wayland-protocols
-    wlroots
-  ];
+  nativeBuildInputs = [ pkg-config wayland-scanner ];
+  buildInputs = [ libxkbcommon pixman udev wayland wayland-protocols wlroots ];
 
-  makeFlags = [
-    "-C"
-    "tinywl"
-  ];
+  makeFlags = [ "-C" "tinywl" ];
 
   installPhase = ''
     runHook preInstall

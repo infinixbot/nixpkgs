@@ -100,30 +100,19 @@ let
         NIX_CFLAGS_COMPILE = "-D__ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__=101300";
       };
 
-      depsBuildBuild = [
-        buildPackages.stdenv.cc
-        openssl
-        libuv
-        zlib
-        icu
-      ];
+      depsBuildBuild = [ buildPackages.stdenv.cc openssl libuv zlib icu ];
 
       # NB: technically, we do not need bash in build inputs since all scripts are
       # wrappers over the corresponding JS scripts. There are some packages though
       # that use bash wrappers, e.g. polaris-web.
-      buildInputs =
-        lib.optionals stdenv.isDarwin [
-          CoreServices
-          ApplicationServices
-        ]
-        ++ [
-          zlib
-          libuv
-          openssl
-          http-parser
-          icu
-          bash
-        ];
+      buildInputs = lib.optionals stdenv.isDarwin [ CoreServices ApplicationServices ] ++ [
+        zlib
+        libuv
+        openssl
+        http-parser
+        icu
+        bash
+      ];
 
       nativeBuildInputs = [
         installShellFiles
@@ -132,10 +121,7 @@ let
         which
       ] ++ lib.optionals stdenv.isDarwin [ xcbuild ];
 
-      outputs = [
-        "out"
-        "libv8"
-      ];
+      outputs = [ "out" "libv8" ];
       setOutputFlags = false;
       moveToDev = false;
 

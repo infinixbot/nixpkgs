@@ -76,12 +76,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-Fv3i84lgoifxtyWKhQjj1c4bR9wSl5SPzUh0ZhZBxFI=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    cmake
-    pkg-config
-    git
-  ];
+  nativeBuildInputs = [ makeWrapper cmake pkg-config git ];
   propagatedBuildInputs = [
     nlohmann_json
   ];
@@ -116,19 +111,8 @@ stdenv.mkDerivation rec {
       tbb
       xrootd
     ]
-    ++ lib.optionals (!stdenv.isDarwin) [
-      libX11
-      libXpm
-      libXft
-      libXext
-      libGLU
-      libGL
-    ]
-    ++ lib.optionals (stdenv.isDarwin) [
-      Cocoa
-      CoreSymbolication
-      OpenGL
-    ];
+    ++ lib.optionals (!stdenv.isDarwin) [ libX11 libXpm libXft libXext libGLU libGL ]
+    ++ lib.optionals (stdenv.isDarwin) [ Cocoa CoreSymbolication OpenGL ];
 
   patches = [
     ./sw_vers.patch
@@ -273,10 +257,7 @@ stdenv.mkDerivation rec {
     homepage = "https://root.cern/";
     description = "Data analysis framework";
     platforms = platforms.unix;
-    maintainers = [
-      maintainers.guitargeek
-      maintainers.veprbl
-    ];
+    maintainers = [ maintainers.guitargeek maintainers.veprbl ];
     license = licenses.lgpl21;
   };
 }

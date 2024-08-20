@@ -22,15 +22,7 @@ appleDerivation' (if headersOnly then stdenvNoCC else stdenv) (
   {
     depsBuildBuild = [ buildPackages.stdenv.cc ];
 
-    nativeBuildInputs = [
-      bootstrap_cmds
-      bison
-      flex
-      gnum4
-      unifdef
-      perl
-      python3
-    ];
+    nativeBuildInputs = [ bootstrap_cmds bison flex gnum4 unifdef perl python3 ];
 
     patches = lib.optionals (lib.versionOlder stdenv.hostPlatform.darwinSdkVersion "11") [
       ./python3.patch

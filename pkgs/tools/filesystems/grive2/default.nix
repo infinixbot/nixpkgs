@@ -34,19 +34,9 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
-  buildInputs = [
-    libgcrypt
-    yajl
-    curl
-    expat
-    boost
-    libiberty
-  ];
+  buildInputs = [ libgcrypt yajl curl expat boost libiberty ];
 
   meta = with lib; {
     description = "Console Google Drive client";

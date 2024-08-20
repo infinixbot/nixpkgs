@@ -110,10 +110,7 @@ stdenv.mkDerivation {
     "-DGTK2_GDKCONFIG_INCLUDE_DIR=${gtk2.out}/lib/gtk-2.0/include"
   ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
   buildInputs =
     [
       libSM
@@ -158,9 +155,6 @@ stdenv.mkDerivation {
     homepage = "https://github.com/svenstaro/dwarf_fortress_unfuck";
     license = licenses.free;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      abbradar
-      numinit
-    ];
+    maintainers = with maintainers; [ abbradar numinit ];
   };
 }

@@ -32,10 +32,7 @@ stdenv.mkDerivation rec {
   pname = "libjxl";
   version = "0.10.3";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "libjxl";

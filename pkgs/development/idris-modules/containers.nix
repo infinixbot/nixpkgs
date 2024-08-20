@@ -9,10 +9,7 @@ build-idris-package {
   pname = "containers";
   version = "2017-09-10";
 
-  idrisDeps = [
-    effects
-    test
-  ];
+  idrisDeps = [ effects test ];
 
   src = fetchFromGitHub {
     owner = "jfdm";

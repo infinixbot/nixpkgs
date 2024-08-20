@@ -43,10 +43,7 @@ stdenv.mkDerivation (finalAttrs: {
       comment = "Brave the Dungeons of Doom!";
       icon = "brogue-ce";
       exec = "brogue-ce";
-      categories = [
-        "Game"
-        "AdventureGame"
-      ];
+      categories = [ "Game" "AdventureGame" ];
     })
   ];
 
@@ -64,10 +61,7 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "brogue-ce";
     homepage = "https://github.com/tmewett/BrogueCE";
     license = licenses.agpl3Plus;
-    maintainers = with maintainers; [
-      AndersonTorres
-      fgaz
-    ];
+    maintainers = with maintainers; [ AndersonTorres fgaz ];
     platforms = platforms.all;
   };
 })

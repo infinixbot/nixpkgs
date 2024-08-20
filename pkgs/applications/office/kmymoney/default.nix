@@ -119,9 +119,6 @@ stdenv.mkDerivation rec {
     homepage = "https://kmymoney.org/";
     platforms = lib.platforms.linux;
     license = lib.licenses.gpl2Plus;
-    maintainers = with lib.maintainers; [
-      aidalgol
-      das-g
-    ];
+    maintainers = with lib.maintainers; [ aidalgol das-g ];
   };
 }

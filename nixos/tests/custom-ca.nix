@@ -77,10 +77,7 @@ let
   };
 
   webserverConfig = {
-    networking.hosts."127.0.0.1" = [
-      "good.example.com"
-      "bad.example.com"
-    ];
+    networking.hosts."127.0.0.1" = [ "good.example.com" "bad.example.com" ];
     security.pki.certificateFiles = [ "${example-good-cert}/ca.crt" ];
 
     services.nginx.enable = true;
@@ -142,10 +139,7 @@ let
           # machine often runs out of memory with less
           virtualisation.memorySize = 1024;
 
-          environment.systemPackages = [
-            pkgs.xdotool
-            pkgs.${browser}
-          ];
+          environment.systemPackages = [ pkgs.xdotool pkgs.${browser} ];
         };
 
       testScript = ''

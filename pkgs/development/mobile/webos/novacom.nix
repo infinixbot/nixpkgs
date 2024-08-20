@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
     sha256 = "12s6g7l20kakyjlhqpli496miv2kfsdp17lcwhdrzdxvxl6hnf4n";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    webos.cmake-modules
-  ];
+  nativeBuildInputs = [ cmake pkg-config webos.cmake-modules ];
 
   postInstall = ''
     install -Dm755 -t $out/bin ../scripts/novaterm

@@ -34,11 +34,7 @@ stdenv.mkDerivation {
   name = "kicadaddon-${addonName}";
   inherit (kikit-module) src version;
 
-  nativeBuildInputs = [
-    python
-    bc
-    zip
-  ];
+  nativeBuildInputs = [ python bc zip ];
   propagatedBuildInputs = [ kikit-module ];
 
   buildPhase = ''

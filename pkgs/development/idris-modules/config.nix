@@ -11,12 +11,7 @@ build-idris-package {
   pname = "config";
   version = "2017-11-06";
 
-  idrisDeps = [
-    effects
-    containers
-    lightyear
-    test
-  ];
+  idrisDeps = [ effects containers lightyear test ];
 
   src = fetchFromGitHub {
     owner = "benclifford";

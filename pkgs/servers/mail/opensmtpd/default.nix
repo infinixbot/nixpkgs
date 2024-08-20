@@ -21,21 +21,8 @@ stdenv.mkDerivation rec {
   pname = "opensmtpd";
   version = "7.5.0p0";
 
-  nativeBuildInputs = [
-    autoreconfHook
-    autoconf-archive
-    pkgconf
-    libtool
-    bison
-  ];
-  buildInputs = [
-    libevent
-    zlib
-    libressl
-    db
-    pam
-    libxcrypt
-  ];
+  nativeBuildInputs = [ autoreconfHook autoconf-archive pkgconf libtool bison ];
+  buildInputs = [ libevent zlib libressl db pam libxcrypt ];
 
   src = fetchurl {
     url = "https://www.opensmtpd.org/archives/${pname}-${version}.tar.gz";
@@ -80,11 +67,7 @@ stdenv.mkDerivation rec {
     '';
     license = licenses.isc;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      obadz
-      ekleog
-      vifino
-    ];
+    maintainers = with maintainers; [ obadz ekleog vifino ];
   };
   passthru.tests = {
     basic-functionality-and-dovecot-interaction = nixosTests.opensmtpd;

@@ -18,12 +18,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-ucTzO2qdN4QkowMVvC3+4pjEVjbwMsB0xFk+bvQxwtQ=";
   };
 
-  nativeBuildInputs = [
-    cpio
-    xar
-    undmg
-    libtapi
-  ];
+  nativeBuildInputs = [ cpio xar undmg libtapi ];
   propagatedBuildInputs = [ DiskArbitration ];
 
   postUnpack = ''

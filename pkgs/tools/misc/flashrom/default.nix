@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-oFMjRFPM0BLnnzRDvcxhYlz5e3/Xy0zdi/v/vosUliM=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    installShellFiles
-  ];
+  nativeBuildInputs = [ pkg-config installShellFiles ];
   buildInputs = [
     libftdi1
     libusb1
@@ -35,10 +32,7 @@ stdenv.mkDerivation rec {
   '';
 
   makeFlags =
-    [
-      "PREFIX=$(out)"
-      "libinstall"
-    ]
+    [ "PREFIX=$(out)" "libinstall" ]
     ++ lib.optional jlinkSupport "CONFIG_JLINK_SPI=yes"
     ++ lib.optionals (stdenv.isDarwin && stdenv.isx86_64) [
       "CONFIG_INTERNAL_X86=no"
@@ -54,10 +48,7 @@ stdenv.mkDerivation rec {
     homepage = "https://www.flashrom.org";
     description = "Utility for reading, writing, erasing and verifying flash ROM chips";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      fpletz
-      felixsinger
-    ];
+    maintainers = with maintainers; [ fpletz felixsinger ];
     platforms = platforms.all;
     mainProgram = "flashrom";
   };

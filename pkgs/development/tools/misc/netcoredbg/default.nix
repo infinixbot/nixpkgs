@@ -37,10 +37,7 @@ let
   unmanaged = clangStdenv.mkDerivation {
     inherit src pname version;
 
-    nativeBuildInputs = [
-      cmake
-      dotnet-sdk
-    ];
+    nativeBuildInputs = [ cmake dotnet-sdk ];
 
     hardeningDisable = [ "strictoverflow" ];
 
@@ -106,9 +103,6 @@ stdenv.mkDerivation {
     license = licenses.mit;
     platforms = platforms.unix;
     mainProgram = "netcoredbg";
-    maintainers = with maintainers; [
-      leo60228
-      konradmalik
-    ];
+    maintainers = with maintainers; [ leo60228 konradmalik ];
   };
 }

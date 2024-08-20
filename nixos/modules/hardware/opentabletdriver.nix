@@ -25,10 +25,7 @@ in
 
       blacklistedKernelModules = mkOption {
         type = types.listOf types.str;
-        default = [
-          "hid-uclogic"
-          "wacom"
-        ];
+        default = [ "hid-uclogic" "wacom" ];
         description = ''
           Blacklist of kernel modules known to conflict with OpenTabletDriver.
         '';

@@ -31,20 +31,14 @@ let
       Identifier = "Standard";
       Type = "Architecture";
       Name = "Standard Architectures (Apple Silicon, 64-bit Intel)";
-      RealArchitectures = [
-        "arm64"
-        "x86_64"
-      ];
+      RealArchitectures = [ "arm64" "x86_64" ];
       ArchitectureSetting = "ARCHS_STANDARD";
     }
     {
       Identifier = "Universal";
       Type = "Architecture";
       Name = "Universal (Apple Silicon, 64-bit Intel)";
-      RealArchitectures = [
-        "arm64"
-        "x86_64"
-      ];
+      RealArchitectures = [ "arm64" "x86_64" ];
       ArchitectureSetting = "ARCHS_STANDARD_32_64_BIT";
     }
     {
@@ -57,10 +51,7 @@ let
       Identifier = "Standard64bit";
       Type = "Architecture";
       Name = "Apple Silicon, 64-bit Intel";
-      RealArchitectures = [
-        "arm64"
-        "x86_64"
-      ];
+      RealArchitectures = [ "arm64" "x86_64" ];
       ArchitectureSetting = "ARCHS_STANDARD_64_BIT";
     }
     {
@@ -72,10 +63,7 @@ let
       Identifier = "Standard_Including_64_bit";
       Type = "Architecture";
       Name = "Standard Architectures (including 64-bit)";
-      RealArchitectures = [
-        "arm64"
-        "x86_64"
-      ];
+      RealArchitectures = [ "arm64" "x86_64" ];
       ArchitectureSetting = "ARCHS_STANDARD_INCLUDING_64_BIT";
     }
   ];

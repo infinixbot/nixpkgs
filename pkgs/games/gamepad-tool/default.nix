@@ -17,11 +17,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     hash = "sha256-ZuB0TOyT2B5QkU1o5h3/8PL85tBq06hlz5YclRanD88=";
   };
 
-  nativeBuildInputs = [
-    dpkg
-    qt5.wrapQtAppsHook
-    autoPatchelfHook
-  ];
+  nativeBuildInputs = [ dpkg qt5.wrapQtAppsHook autoPatchelfHook ];
 
   unpackCmd = ''
     mkdir -p root

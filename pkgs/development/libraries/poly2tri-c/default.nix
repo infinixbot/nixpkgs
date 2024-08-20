@@ -11,11 +11,7 @@ stdenv.mkDerivation rec {
   pname = "poly2tri-c";
   version = "0.1.0";
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-  ];
+  outputs = [ "bin" "out" "dev" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.gnome.org";

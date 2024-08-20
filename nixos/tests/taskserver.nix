@@ -4,13 +4,7 @@ import ./make-test-python.nix (
     snakeOil =
       pkgs.runCommand "snakeoil-certs"
         {
-          outputs = [
-            "out"
-            "cacert"
-            "cert"
-            "key"
-            "crl"
-          ];
+          outputs = [ "out" "cacert" "cert" "key" "crl" ];
           buildInputs = [ pkgs.gnutls.bin ];
           caTemplate = pkgs.writeText "snakeoil-ca.template" ''
             cn = server
@@ -78,10 +72,7 @@ import ./make-test-python.nix (
         services.taskserver.openFirewall = true;
         services.taskserver.fqdn = "server";
         services.taskserver.organisations = {
-          testOrganisation.users = [
-            "alice"
-            "foo"
-          ];
+          testOrganisation.users = [ "alice" "foo" ];
           anotherOrganisation.users = [ "bob" ];
         };
 
@@ -98,10 +89,7 @@ import ./make-test-python.nix (
       client1 =
         { pkgs, ... }:
         {
-          environment.systemPackages = [
-            pkgs.taskwarrior2
-            pkgs.gnutls
-          ];
+          environment.systemPackages = [ pkgs.taskwarrior2 pkgs.gnutls ];
           users.users.alice.isNormalUser = true;
           users.users.bob.isNormalUser = true;
           users.users.foo.isNormalUser = true;

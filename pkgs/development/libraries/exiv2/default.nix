@@ -22,13 +22,7 @@ stdenv.mkDerivation rec {
   pname = "exiv2";
   version = "0.28.3";
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "lib" "dev" "doc" "man" ];
 
   src = fetchFromGitHub {
     owner = "exiv2";

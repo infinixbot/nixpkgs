@@ -32,14 +32,7 @@ buildGoModule rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    bzip2
-    lz4
-    rocksdb
-    snappy
-    zeromq
-    zlib
-  ];
+  buildInputs = [ bzip2 lz4 rocksdb snappy zeromq zlib ];
 
   ldflags = [
     "-X github.com/trezor/blockbook/common.version=${version}"
@@ -80,10 +73,7 @@ buildGoModule rec {
     description = "Trezor address/account balance backend";
     homepage = "https://github.com/trezor/blockbook";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [
-      mmahut
-      _1000101
-    ];
+    maintainers = with maintainers; [ mmahut _1000101 ];
     platforms = platforms.unix;
     mainProgram = "blockbook";
   };

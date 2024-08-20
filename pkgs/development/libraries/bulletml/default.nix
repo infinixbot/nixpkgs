@@ -33,10 +33,7 @@ stdenv.mkDerivation {
   pname = "bulletml";
   inherit version;
 
-  srcs = [
-    lib_src
-    cpp_src
-  ];
+  srcs = [ lib_src cpp_src ];
 
   postUnpack = "mv d_cpp bulletml/";
   sourceRoot = "bulletml";
@@ -53,10 +50,7 @@ stdenv.mkDerivation {
   makeFlags = [
     "-C src"
   ];
-  nativeBuildInputs = [
-    bison
-    perl
-  ];
+  nativeBuildInputs = [ bison perl ];
   hardeningDisable = [ "format" ];
 
   installPhase = ''

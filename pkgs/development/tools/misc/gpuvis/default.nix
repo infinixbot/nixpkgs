@@ -28,18 +28,9 @@ stdenv.mkDerivation rec {
       --replace "libgtk-3.so" "${lib.getLib gtk3}/lib/libgtk-3.so"
   '';
 
-  nativeBuildInputs = [
-    pkg-config
-    meson
-    ninja
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ pkg-config meson ninja wrapGAppsHook3 ];
 
-  buildInputs = [
-    SDL2
-    gtk3
-    freetype
-  ];
+  buildInputs = [ SDL2 gtk3 freetype ];
 
   CXXFLAGS = [
     # GCC 13: error: 'uint32_t' has not been declared

@@ -9,15 +9,9 @@
 stdenv.mkDerivation (finalAttrs: {
   pname = "lzlib";
   version = "1.14";
-  outputs = [
-    "out"
-    "info"
-  ];
+  outputs = [ "out" "info" ];
 
-  nativeBuildInputs = [
-    texinfo
-    lzip
-  ];
+  nativeBuildInputs = [ texinfo lzip ];
 
   src = fetchurl {
     url = "mirror://savannah/lzip/lzlib/lzlib-${finalAttrs.version}.tar.lz";
@@ -29,10 +23,7 @@ stdenv.mkDerivation (finalAttrs: {
     substituteInPlace Makefile.in --replace '-Wl,--soname=' '-Wl,-install_name,$(out)/lib/'
   '';
 
-  makeFlags = [
-    "CC:=$(CC)"
-    "AR:=$(AR)"
-  ];
+  makeFlags = [ "CC:=$(CC)" "AR:=$(AR)" ];
   doCheck = true;
 
   configureFlags = [ "--enable-shared" ];

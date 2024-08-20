@@ -37,11 +37,7 @@ stdenv.mkDerivation {
     sha256 = "0kzahxrgpb4vsk9yavy7f8nc34d62d1jqjrpsxslmy9ywax4yfpi";
   };
 
-  nativeBuildInputs = [
-    lua
-    love
-    makeWrapper
-  ];
+  nativeBuildInputs = [ lua love makeWrapper ];
 
   dontUnpack = true;
 

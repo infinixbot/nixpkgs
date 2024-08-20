@@ -20,10 +20,7 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-8FMfy3GCN4z/TnfefU2DbKqV3W35I29/SuGGqeOrjNg";
   };
 
-  nativeBuildInputs = [
-    installShellFiles
-    desktop-file-utils
-  ];
+  nativeBuildInputs = [ installShellFiles desktop-file-utils ];
   propagatedBuildInputs = with python3.pkgs; [ packaging ];
 
   buildPhase = ''
@@ -34,10 +31,7 @@ python3.pkgs.buildPythonApplication rec {
 
   patches = [ ./0001-don-t-use-sys.executable.patch ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   installPhase = ''
     runHook preInstall

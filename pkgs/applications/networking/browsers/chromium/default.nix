@@ -158,22 +158,12 @@ stdenv.mkDerivation {
     libkrb5
   ];
 
-  outputs = [
-    "out"
-    "sandbox"
-  ];
+  outputs = [ "out" "sandbox" ];
 
   buildCommand =
     let
       browserBinary = "${chromiumWV}/libexec/chromium/chromium";
-      libPath = lib.makeLibraryPath [
-        libva
-        pipewire
-        wayland
-        gtk3
-        gtk4
-        libkrb5
-      ];
+      libPath = lib.makeLibraryPath [ libva pipewire wayland gtk3 gtk4 libkrb5 ];
 
     in
     ''

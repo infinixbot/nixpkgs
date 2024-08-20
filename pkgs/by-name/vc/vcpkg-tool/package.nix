@@ -195,11 +195,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/microsoft/vcpkg-tool";
     changelog = "https://github.com/microsoft/vcpkg-tool/releases/tag/${finalAttrs.src.rev}";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [
-      guekka
-      gracicot
-      h7x4
-    ];
+    maintainers = with lib.maintainers; [ guekka gracicot h7x4 ];
     platforms = lib.platforms.all;
   };
 })

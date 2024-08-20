@@ -44,14 +44,7 @@ rustPlatform.buildRustPackage rec {
 
   buildInputs =
     [ ]
-    ++ lib.optionals stdenv.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        AppKit
-        Cocoa
-        Security
-      ]
-    )
+    ++ lib.optionals stdenv.isDarwin (with darwin.apple_sdk.frameworks; [ AppKit Cocoa Security ])
     ++ lib.optional (builtins.elem "notmuch" buildFeatures) notmuch
     ++ lib.optional (builtins.elem "pgp-gpg" buildFeatures) gpgme;
 
@@ -74,10 +67,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://pimalaya.org/himalaya/cli/latest/";
     changelog = "https://github.com/soywod/himalaya/blob/v${version}/CHANGELOG.md";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      soywod
-      toastal
-      yanganto
-    ];
+    maintainers = with maintainers; [ soywod toastal yanganto ];
   };
 }

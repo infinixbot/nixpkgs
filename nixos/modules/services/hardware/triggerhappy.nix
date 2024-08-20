@@ -45,11 +45,7 @@ let
         };
 
         event = mkOption {
-          type = types.enum [
-            "press"
-            "hold"
-            "release"
-          ];
+          type = types.enum [ "press" "hold" "release" ];
           default = "press";
           description = "Event to match.";
         };

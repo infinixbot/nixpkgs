@@ -25,10 +25,7 @@ buildGoModule rec {
     obs-studio
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   CGO_CFLAGS = "-I${obs-studio}/include/obs";
   CGO_LDFLAGS = "-L${obs-studio}/lib -lobs -lobs-frontend-api";

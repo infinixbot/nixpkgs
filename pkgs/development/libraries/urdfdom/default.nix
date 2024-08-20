@@ -30,15 +30,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    validatePkgConfig
-  ];
-  buildInputs = [
-    tinyxml-2
-    console-bridge
-  ];
+  nativeBuildInputs = [ cmake pkg-config validatePkgConfig ];
+  buildInputs = [ tinyxml-2 console-bridge ];
   propagatedBuildInputs = [ urdfdom-headers ];
 
   meta = with lib; {

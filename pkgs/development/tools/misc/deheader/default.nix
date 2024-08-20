@@ -11,10 +11,7 @@
 stdenv.mkDerivation rec {
   pname = "deheader";
   version = "1.10";
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   src = fetchFromGitLab {
     owner = "esr";
@@ -25,11 +22,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ python3 ];
 
-  nativeBuildInputs = [
-    xmlto
-    docbook-xsl-nons
-    installShellFiles
-  ];
+  nativeBuildInputs = [ xmlto docbook-xsl-nons installShellFiles ];
 
   # With upstream Makefile, xmlto is called without "--skip-validation". It
   # makes it require a lot of dependencies, yet ultimately it fails

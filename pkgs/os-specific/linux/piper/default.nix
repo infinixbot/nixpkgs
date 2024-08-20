@@ -46,11 +46,7 @@ python3.pkgs.buildPythonApplication rec {
     python3
     librsvg
   ];
-  propagatedBuildInputs = with python3.pkgs; [
-    lxml
-    evdev
-    pygobject3
-  ];
+  propagatedBuildInputs = with python3.pkgs; [ lxml evdev pygobject3 ];
 
   mesonFlags = [
     "-Druntime-dependency-checks=false"

@@ -21,11 +21,7 @@ stdenv.mkDerivation rec {
   pname = "libgedit-tepl";
   version = "6.10.0";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchFromGitHub {
     owner = "gedit-technology";
@@ -63,10 +59,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "https://github.com/gedit-technology/libgedit-tepl";
     description = "Text editor product line";
-    maintainers = with maintainers; [
-      manveru
-      bobby285271
-    ];
+    maintainers = with maintainers; [ manveru bobby285271 ];
     license = licenses.lgpl3Plus;
     platforms = platforms.linux;
   };

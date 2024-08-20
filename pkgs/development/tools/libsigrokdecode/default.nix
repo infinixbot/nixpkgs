@@ -20,15 +20,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-1kQB7uk2c+6Uriw+1o6brThDcBLoCdPV0MVWAha7ohk=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
-  buildInputs = [
-    glib
-    python3
-    libxcrypt
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
+  buildInputs = [ glib python3 libxcrypt ];
   nativeCheckInputs = [ check ];
   doCheck = true;
 
@@ -37,9 +30,6 @@ stdenv.mkDerivation rec {
     homepage = "https://sigrok.org/";
     license = licenses.gpl3Plus;
     platforms = platforms.linux ++ platforms.darwin;
-    maintainers = with maintainers; [
-      bjornfor
-      vifino
-    ];
+    maintainers = with maintainers; [ bjornfor vifino ];
   };
 }

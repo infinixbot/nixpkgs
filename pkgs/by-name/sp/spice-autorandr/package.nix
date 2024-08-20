@@ -19,14 +19,8 @@ stdenv.mkDerivation {
     hash = "sha256-eBvzalWT3xI8+uNns0/ZyRes91ePpj0beKb8UBVqo0E=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
-  buildInputs = [
-    libX11
-    libXrandr
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
+  buildInputs = [ libX11 libXrandr ];
 
   installPhase = ''
     runHook preInstall

@@ -103,10 +103,7 @@ import ../make-test-python.nix (
             };
           };
 
-          networking.firewall.allowedTCPPorts = [
-            8008
-            8009
-          ];
+          networking.firewall.allowedTCPPorts = [ 8008 8009 ];
         };
 
       client =

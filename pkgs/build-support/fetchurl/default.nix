@@ -131,18 +131,7 @@ let
       throw "fetchurl requires either `url` or `urls` to be set";
 
   hash_ =
-    if
-      with lib.lists;
-      length (
-        filter (s: s != "") [
-          hash
-          outputHash
-          sha1
-          sha256
-          sha512
-        ]
-      ) > 1
-    then
+    if with lib.lists; length (filter (s: s != "") [ hash outputHash sha1 sha256 sha512 ]) > 1 then
       throw "multiple hashes passed to fetchurl"
     else
 

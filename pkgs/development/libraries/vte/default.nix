@@ -35,10 +35,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "vte";
   version = "0.76.3";
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optional (gtkVersion != null) "devdoc";
+  outputs = [ "out" "dev" ] ++ lib.optional (gtkVersion != null) "devdoc";
 
   src = fetchurl {
     url = "mirror://gnome/sources/vte/${lib.versions.majorMinor finalAttrs.version}/vte-${finalAttrs.version}.tar.xz";
@@ -157,13 +154,7 @@ stdenv.mkDerivation (finalAttrs: {
       the system's terminfo database.
     '';
     license = licenses.lgpl3Plus;
-    maintainers =
-      with maintainers;
-      [
-        astsmtl
-        antono
-      ]
-      ++ teams.gnome.members;
+    maintainers = with maintainers; [ astsmtl antono ] ++ teams.gnome.members;
     platforms = platforms.unix;
   };
 })

@@ -26,11 +26,7 @@ stdenv.mkDerivation rec {
     sha256 = if useQt5 then qt5Sha256 else latestSha256;
   };
 
-  nativeBuildInputs = [
-    cmake
-    extra-cmake-modules
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake extra-cmake-modules wrapQtAppsHook ];
   buildInputs = [ kwin ];
 
   cmakeFlags = [

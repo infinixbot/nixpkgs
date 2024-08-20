@@ -9,10 +9,7 @@
 bundlerApp {
   pname = "mailcatcher";
   gemdir = ./.;
-  exes = [
-    "mailcatcher"
-    "catchmail"
-  ];
+  exes = [ "mailcatcher" "catchmail" ];
   ruby = ruby_3_2;
 
   passthru.updateScript = bundlerUpdateScript "mailcatcher";
@@ -24,10 +21,7 @@ bundlerApp {
     description = "SMTP server and web interface to locally test outbound emails";
     homepage = "https://mailcatcher.me/";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      zarelit
-      nicknovitski
-    ];
+    maintainers = with maintainers; [ zarelit nicknovitski ];
     platforms = platforms.unix;
   };
 }

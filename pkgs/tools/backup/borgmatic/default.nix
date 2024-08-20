@@ -24,12 +24,7 @@ python3Packages.buildPythonApplication rec {
 
   nativeCheckInputs =
     with python3Packages;
-    [
-      flexmock
-      pytestCheckHook
-      pytest-cov
-    ]
-    ++ passthru.optional-dependencies.apprise;
+    [ flexmock pytestCheckHook pytest-cov ] ++ passthru.optional-dependencies.apprise;
 
   # - test_borgmatic_version_matches_news_version
   # The file NEWS not available on the pypi source, and this test is useless
@@ -82,9 +77,6 @@ python3Packages.buildPythonApplication rec {
     homepage = "https://torsion.org/borgmatic/";
     license = lib.licenses.gpl3Plus;
     platforms = lib.platforms.all;
-    maintainers = with lib.maintainers; [
-      imlonghao
-      x123
-    ];
+    maintainers = with lib.maintainers; [ imlonghao x123 ];
   };
 }

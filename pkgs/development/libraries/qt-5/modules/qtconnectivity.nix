@@ -19,9 +19,5 @@ qtModule {
     ++ lib.optionals stdenv.isDarwin [
       IOBluetooth
     ];
-  outputs = [
-    "out"
-    "dev"
-    "bin"
-  ];
+  outputs = [ "out" "dev" "bin" ];
 }

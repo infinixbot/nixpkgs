@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-MsXSUxFH89EqxMe4285xFV1Tsqmv2l5RnEeli48O3XQ=";
   };
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    zlib
-    openssl
-    libre
-  ];
+  buildInputs = [ zlib openssl libre ];
   cmakeFlags = [
     "-DRE_INCLUDE_DIR=${libre}/include/re"
   ];

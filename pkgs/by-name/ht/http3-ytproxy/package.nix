@@ -25,10 +25,7 @@ buildGoModule rec {
 
   buildInputs = [ libwebp ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     description = "YouTube traffic proxy for video playback and images";

@@ -57,27 +57,15 @@ let
       yajl
     ] ++ lib.optionals stdenv.isLinux [ rabbitmq-c ];
     apache.buildInputs = [ curl ];
-    ascent.buildInputs = [
-      curl
-      libxml2
-    ];
+    ascent.buildInputs = [ curl libxml2 ];
     battery.buildInputs = lib.optionals stdenv.isDarwin [
       IOKit
     ];
-    bind.buildInputs = [
-      curl
-      libxml2
-    ];
+    bind.buildInputs = [ curl libxml2 ];
     ceph.buildInputs = [ yajl ];
     curl.buildInputs = [ curl ];
-    curl_json.buildInputs = [
-      curl
-      yajl
-    ];
-    curl_xml.buildInputs = [
-      curl
-      libxml2
-    ];
+    curl_json.buildInputs = [ curl yajl ];
+    curl_xml.buildInputs = [ curl libxml2 ];
     dbi.buildInputs = [ libdbi ];
     disk.buildInputs =
       lib.optionals stdenv.isLinux [
@@ -96,17 +84,10 @@ let
         iptables
         libmnl
       ];
-    java.buildInputs = [
-      jdk
-      libgcrypt
-      libxml2
-    ];
+    java.buildInputs = [ jdk libgcrypt libxml2 ];
     log_logstash.buildInputs = [ yajl ];
     lua.buildInputs = [ lua ];
-    memcachec.buildInputs = [
-      libmemcached
-      cyrus_sasl
-    ];
+    memcachec.buildInputs = [ libmemcached cyrus_sasl ];
     modbus.buildInputs = lib.optionals stdenv.isLinux [ libmodbus ];
     mqtt.buildInputs = [ mosquitto ];
     mysql.buildInputs = lib.optionals (libmysqlclient != null) [
@@ -121,10 +102,7 @@ let
       ];
     network.buildInputs = [ libgcrypt ];
     nginx.buildInputs = [ curl ];
-    notify_desktop.buildInputs = [
-      libnotify
-      gdk-pixbuf
-    ];
+    notify_desktop.buildInputs = [ libnotify gdk-pixbuf ];
     notify_email.buildInputs = [ libesmtp ];
     openldap.buildInputs = [ openldap ];
     ovs_events.buildInputs = [ yajl ];
@@ -135,58 +113,26 @@ let
     postgresql.buildInputs = [ postgresql ];
     python.buildInputs = [ python3 ];
     redis.buildInputs = [ hiredis ];
-    rrdcached.buildInputs = [
-      rrdtool
-      libxml2
-    ];
-    rrdtool.buildInputs = [
-      rrdtool
-      libxml2
-    ];
+    rrdcached.buildInputs = [ rrdtool libxml2 ];
+    rrdtool.buildInputs = [ rrdtool libxml2 ];
     sensors.buildInputs = lib.optionals stdenv.isLinux [ lm_sensors ];
-    sigrok.buildInputs = lib.optionals stdenv.isLinux [
-      libsigrok
-      udev
-    ];
-    smart.buildInputs = lib.optionals stdenv.isLinux [
-      libatasmart
-      udev
-    ];
+    sigrok.buildInputs = lib.optionals stdenv.isLinux [ libsigrok udev ];
+    smart.buildInputs = lib.optionals stdenv.isLinux [ libatasmart udev ];
     snmp.buildInputs = lib.optionals stdenv.isLinux [ net-snmp ];
     snmp_agent.buildInputs = lib.optionals stdenv.isLinux [ net-snmp ];
-    varnish.buildInputs = [
-      curl
-      varnish
-    ];
-    virt.buildInputs =
-      [
-        libvirt
-        libxml2
-        yajl
-      ]
-      ++ lib.optionals stdenv.isLinux [
-        lvm2
-        udev
-      ];
-    write_http.buildInputs = [
-      curl
+    varnish.buildInputs = [ curl varnish ];
+    virt.buildInputs = [
+      libvirt
+      libxml2
       yajl
-    ];
-    write_kafka.buildInputs = [
-      yajl
-      rdkafka
-    ];
+    ] ++ lib.optionals stdenv.isLinux [ lvm2 udev ];
+    write_http.buildInputs = [ curl yajl ];
+    write_kafka.buildInputs = [ yajl rdkafka ];
     write_log.buildInputs = [ yajl ];
     write_mongodb.buildInputs = [ mongoc ];
-    write_prometheus.buildInputs = [
-      protobufc
-      libmicrohttpd
-    ];
+    write_prometheus.buildInputs = [ protobufc libmicrohttpd ];
     write_redis.buildInputs = [ hiredis ];
-    write_riemann.buildInputs = [
-      protobufc
-      riemann_c_client
-    ];
+    write_riemann.buildInputs = [ protobufc riemann_c_client ];
     xencpu.buildInputs = [ xen ];
   };
 

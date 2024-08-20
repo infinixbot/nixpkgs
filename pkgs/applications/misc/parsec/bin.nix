@@ -42,11 +42,7 @@ stdenvNoCC.mkDerivation {
     runHook postUnpack
   '';
 
-  nativeBuildInputs = [
-    dpkg
-    autoPatchelfHook
-    makeWrapper
-  ];
+  nativeBuildInputs = [ dpkg autoPatchelfHook makeWrapper ];
 
   buildInputs = [
     stdenv.cc.cc # libstdc++
@@ -121,10 +117,7 @@ stdenvNoCC.mkDerivation {
     changelog = "https://parsec.app/changelog";
     description = "Remote streaming service client";
     license = licenses.unfree;
-    maintainers = with maintainers; [
-      arcnmx
-      pabloaul
-    ];
+    maintainers = with maintainers; [ arcnmx pabloaul ];
     platforms = platforms.linux;
     mainProgram = "parsecd";
   };

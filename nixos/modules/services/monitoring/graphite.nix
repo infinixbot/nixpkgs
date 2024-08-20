@@ -75,21 +75,9 @@ in
 {
 
   imports = [
-    (mkRemovedOptionModule [
-      "services"
-      "graphite"
-      "api"
-    ] "")
-    (mkRemovedOptionModule [
-      "services"
-      "graphite"
-      "beacon"
-    ] "")
-    (mkRemovedOptionModule [
-      "services"
-      "graphite"
-      "pager"
-    ] "")
+    (mkRemovedOptionModule [ "services" "graphite" "api" ] "")
+    (mkRemovedOptionModule [ "services" "graphite" "beacon" ] "")
+    (mkRemovedOptionModule [ "services" "graphite" "pager" ] "")
   ];
 
   ###### interface
@@ -432,10 +420,7 @@ in
       systemd.services.seyren = {
         description = "Graphite Alerting Dashboard";
         wantedBy = [ "multi-user.target" ];
-        after = [
-          "network.target"
-          "mongodb.service"
-        ];
+        after = [ "network.target" "mongodb.service" ];
         environment = seyrenConfig;
         serviceConfig = {
           ExecStart = "${pkgs.seyren}/bin/seyren -httpPort ${toString cfg.seyren.port}";

@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
 
   patches = [ ./fix-regtest-client.patch ];
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-  ];
+  outputs = [ "bin" "out" "dev" ];
 
   nativeBuildInputs = [
     autoreconfHook

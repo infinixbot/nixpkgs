@@ -44,12 +44,7 @@ in
       };
 
       config = mkOption {
-        type =
-          with types;
-          attrsOf (oneOf [
-            str
-            int
-          ]);
+        type = with types; attrsOf (oneOf [ str int ]);
         example = literalExpression ''
           {
             CLEANUP_FREQUENCY = 48;
@@ -108,10 +103,7 @@ in
     systemd.services.miniflux-dbsetup = lib.mkIf cfg.createDatabaseLocally {
       description = "Miniflux database setup";
       requires = [ "postgresql.service" ];
-      after = [
-        "network.target"
-        "postgresql.service"
-      ];
+      after = [ "network.target" "postgresql.service" ];
       serviceConfig = {
         Type = "oneshot";
         User = config.services.postgresql.superUser;
@@ -123,12 +115,9 @@ in
       description = "Miniflux service";
       wantedBy = [ "multi-user.target" ];
       requires = lib.optional cfg.createDatabaseLocally "miniflux-dbsetup.service";
-      after =
-        [ "network.target" ]
-        ++ lib.optionals cfg.createDatabaseLocally [
-          "postgresql.service"
-          "miniflux-dbsetup.service"
-        ];
+      after = [
+        "network.target"
+      ] ++ lib.optionals cfg.createDatabaseLocally [ "postgresql.service" "miniflux-dbsetup.service" ];
 
       serviceConfig = {
         Type = "notify";
@@ -159,19 +148,12 @@ in
         ProtectKernelModules = true;
         ProtectKernelTunables = true;
         ProtectProc = "invisible";
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-          "AF_UNIX"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_UNIX" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
         SystemCallArchitectures = "native";
-        SystemCallFilter = [
-          "@system-service"
-          "~@privileged"
-        ];
+        SystemCallFilter = [ "@system-service" "~@privileged" ];
         UMask = "0077";
       };
 

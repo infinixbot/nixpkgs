@@ -109,16 +109,7 @@ in
                     };
                     ip = mkOption {
                       type = elixirTypes.tuple;
-                      default = settingsFormat.lib.mkTuple [
-                        0
-                        0
-                        0
-                        0
-                        0
-                        0
-                        0
-                        1
-                      ];
+                      default = settingsFormat.lib.mkTuple [ 0 0 0 0 0 0 0 1 ];
                       description = ''
                         The IP address to listen on. Defaults to [::1] notated as a byte tuple.
                       '';
@@ -225,16 +216,8 @@ in
         assertion =
           cfg.nginx.enable
           -> (
-            cfg.settings.":mobilizon"."Mobilizon.Web.Endpoint".http.ip == settingsFormat.lib.mkTuple [
-              0
-              0
-              0
-              0
-              0
-              0
-              0
-              1
-            ]
+            cfg.settings.":mobilizon"."Mobilizon.Web.Endpoint".http.ip
+            == settingsFormat.lib.mkTuple [ 0 0 0 0 0 0 0 1 ]
           );
         message = "Setting the IP mobilizon listens on is only possible when the nginx config is not used, as it is hardcoded there.";
       }
@@ -364,10 +347,7 @@ in
       description = "Mobilizon PostgreSQL setup";
 
       after = [ "postgresql.service" ];
-      before = [
-        "mobilizon.service"
-        "mobilizon-setup-secrets.service"
-      ];
+      before = [ "mobilizon.service" "mobilizon-setup-secrets.service" ];
       wantedBy = [ "mobilizon.service" ];
 
       path = [ postgresql ];
@@ -470,8 +450,5 @@ in
     environment.systemPackages = [ launchers ];
   };
 
-  meta.maintainers = with lib.maintainers; [
-    minijackson
-    erictapen
-  ];
+  meta.maintainers = with lib.maintainers; [ minijackson erictapen ];
 }

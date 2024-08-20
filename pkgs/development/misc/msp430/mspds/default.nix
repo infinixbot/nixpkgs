@@ -27,14 +27,8 @@ stdenv.mkDerivation {
 
   enableParallelBuilding = true;
   libName = "libmsp430${stdenv.hostPlatform.extensions.sharedLibrary}";
-  makeFlags = [
-    "OUTPUT=$(libName)"
-    "HIDOBJ="
-  ];
-  NIX_LDFLAGS = [
-    "-lpugixml"
-    "-lhidapi${hidapiDriver}"
-  ];
+  makeFlags = [ "OUTPUT=$(libName)" "HIDOBJ=" ];
+  NIX_LDFLAGS = [ "-lpugixml" "-lhidapi${hidapiDriver}" ];
   env.NIX_CFLAGS_COMPILE = toString [ "-I${hidapi}/include/hidapi" ];
 
   patches = [ ./bsl430.patch ];
@@ -54,11 +48,7 @@ stdenv.mkDerivation {
   '';
 
   nativeBuildInputs = [ unzip ];
-  buildInputs = [
-    boost
-    hidapi
-    pugixml
-  ] ++ lib.optional stdenv.isLinux libusb1;
+  buildInputs = [ boost hidapi pugixml ] ++ lib.optional stdenv.isLinux libusb1;
 
   meta = with lib; {
     description = "TI MSP430 FET debug driver";

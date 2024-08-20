@@ -18,10 +18,7 @@ let
       { lib, ... }:
       {
         name = "kernel-rust";
-        meta.maintainers = with lib.maintainers; [
-          blitz
-          ma27
-        ];
+        meta.maintainers = with lib.maintainers; [ blitz ma27 ];
         nodes.machine =
           { config, ... }:
           {

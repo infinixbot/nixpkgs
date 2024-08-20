@@ -18,10 +18,7 @@ let
     {
       inherit name;
       value = {
-        after = [
-          "network-online.target"
-          "sound.target"
-        ];
+        after = [ "network-online.target" "sound.target" ];
         description = "${name} liquidsoap stream";
         wantedBy = [ "multi-user.target" ];
         path = [ pkgs.wget ];

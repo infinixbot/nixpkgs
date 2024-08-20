@@ -47,9 +47,6 @@ stdenv.mkDerivation rec {
     homepage = "https://www.unicorn-engine.org";
     license = licenses.gpl2Only;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      thoughtpolice
-      luc65r
-    ];
+    maintainers = with maintainers; [ thoughtpolice luc65r ];
   };
 }

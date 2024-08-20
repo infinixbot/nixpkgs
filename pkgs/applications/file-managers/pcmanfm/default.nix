@@ -29,19 +29,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-FMt7JHSTxMzmX7tZAmEeOtAKeocPvB5QrcUEKMUUDPc=";
   };
 
-  buildInputs = [
-    glib
-    gtk
-    libfm'
-    libX11
-    pango
-    adwaita-icon-theme
-  ];
-  nativeBuildInputs = [
-    pkg-config
-    wrapGAppsHook3
-    intltool
-  ];
+  buildInputs = [ glib gtk libfm' libX11 pango adwaita-icon-theme ];
+  nativeBuildInputs = [ pkg-config wrapGAppsHook3 intltool ];
 
   configureFlags = optional withGtk3 "--with-gtk=3";
 

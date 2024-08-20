@@ -82,13 +82,7 @@ let
 in
 buildFHSEnv {
   name = "conda-shell";
-  targetPkgs =
-    pkgs:
-    (builtins.concatLists [
-      [ conda ]
-      condaDeps
-      extraPkgs
-    ]);
+  targetPkgs = pkgs: (builtins.concatLists [ [ conda ] condaDeps extraPkgs ]);
   profile = ''
     # Add conda to PATH
     export PATH=${installationPath}/bin:$PATH
@@ -115,9 +109,6 @@ buildFHSEnv {
     homepage = "https://conda.io/";
     platforms = lib.platforms.linux;
     license = lib.licenses.bsd3;
-    maintainers = with lib.maintainers; [
-      jluttine
-      bhipple
-    ];
+    maintainers = with lib.maintainers; [ jluttine bhipple ];
   };
 }

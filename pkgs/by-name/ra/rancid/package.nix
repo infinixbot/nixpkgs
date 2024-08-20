@@ -109,19 +109,9 @@ stdenv.mkDerivation (finalAttrs: {
 
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [
-    autoreconfHook
-    libtool
-    makeBinaryWrapper
-    wrappedPing
-  ];
+  nativeBuildInputs = [ autoreconfHook libtool makeBinaryWrapper wrappedPing ];
 
-  buildInputs = [
-    expect
-    openssh
-    perl
-    telnet'
-  ];
+  buildInputs = [ expect openssh perl telnet' ];
 
   postInstall = concatStringsSep "\n" (
     mapAttrsToList (n: v: ''

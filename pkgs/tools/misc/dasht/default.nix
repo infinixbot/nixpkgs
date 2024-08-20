@@ -37,10 +37,7 @@ stdenv.mkDerivation rec {
     (placeholder "out")
   ];
 
-  nativeBuildInputs = [
-    makeWrapper
-    installShellFiles
-  ];
+  nativeBuildInputs = [ makeWrapper installShellFiles ];
 
   installPhase = ''
     runHook preInstall

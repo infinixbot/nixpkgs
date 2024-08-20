@@ -30,15 +30,8 @@ rustPlatform.buildRustPackage {
       "ffmpeg-sys-next-4.4.0" = "sha256-TBgf+J+ud7nnVjf0r98/rujFPEayjEaVi+vnSE6/5Ak=";
     };
   };
-  nativeBuildInputs = [
-    pkg-config
-    rustPlatform.bindgenHook
-  ];
-  buildInputs = [
-    alsa-lib
-    openssl
-    ffmpeg_4
-  ];
+  nativeBuildInputs = [ pkg-config rustPlatform.bindgenHook ];
+  buildInputs = [ alsa-lib openssl ffmpeg_4 ];
 
   checkFlags = [
     # network required

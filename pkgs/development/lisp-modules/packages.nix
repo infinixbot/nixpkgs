@@ -149,11 +149,7 @@ let
           url = "https://beta.quicklisp.org/archive/cl-facts/2022-11-06/cl-facts-20221106-git.tgz";
           sha256 = "sha256-PBpyyJYkq1NjKK9VikSAL4TmrGRwUJlEWRSeKj/f4Sc=";
         };
-        lispLibs = [
-          self.lessp
-          self.rollback
-          self.local-time
-        ];
+        lispLibs = [ self.lessp self.rollback self.local-time ];
       };
 
       cl-fuse = build-with-compile-into-pwd {
@@ -170,10 +166,7 @@ let
       cl-containers = build-asdf-system {
         inherit (super.cl-containers) pname version src;
         lispLibs = super.cl-containers.lispLibs ++ [ self.moptilities ];
-        systems = [
-          "cl-containers"
-          "cl-containers/with-moptilities"
-        ];
+        systems = [ "cl-containers" "cl-containers/with-moptilities" ];
       };
 
       swank = build-with-compile-into-pwd rec {
@@ -185,10 +178,7 @@ let
           rev = "v${version}";
           hash = "sha256-5hNB5XxbTER4HX3dn4umUGnw6UeiTQkczmggFz4uWoE=";
         };
-        systems = [
-          "swank"
-          "swank/exts"
-        ];
+        systems = [ "swank" "swank/exts" ];
         patches = [ ./patches/swank-pure-paths.patch ];
         postConfigure = ''
           substituteAllInPlace swank-loader.lisp
@@ -309,15 +299,8 @@ let
           rev = version;
           sha256 = "sha256-kw5DD0GJp/TeCiYATBY8GL8UKqYS6Q4j0a0eQsdcZRc=";
         };
-        lispLibs = [
-          self.cl-json
-          self.com_dot_inuoe_dot_jzon
-        ];
-        systems = [
-          "njson"
-          "njson/cl-json"
-          "njson/jzon"
-        ];
+        lispLibs = [ self.cl-json self.com_dot_inuoe_dot_jzon ];
+        systems = [ "njson" "njson/cl-json" "njson/jzon" ];
       };
 
       nsymbols = build-asdf-system rec {
@@ -330,10 +313,7 @@ let
           sha256 = "sha256-psk29WEA7Hxgp29oUniBNvI+lyZfMkdpa5A7okc6kKs=";
         };
         lispLibs = [ self.closer-mop ];
-        systems = [
-          "nsymbols"
-          "nsymbols/star"
-        ];
+        systems = [ "nsymbols" "nsymbols/star" ];
 
       };
 
@@ -379,11 +359,7 @@ let
           rev = version;
           hash = "sha256-6A3fsemsv2KbTmdGMQeL9iHFUBHc4kK6CRNVyc91LdU=";
         };
-        lispLibs = with self; [
-          bordeaux-threads
-          closer-mop
-          serapeum
-        ];
+        lispLibs = with self; [ bordeaux-threads closer-mop serapeum ];
       };
 
       nkeymaps = build-asdf-system rec {
@@ -752,14 +728,8 @@ let
           rev = "641e12ab1763914996beb1ceee67aabc9f1a3b1e";
           hash = "sha256-mltQEJ2asxyQ/aS/9BuWmN3XZ9bGmmkopcF5YJU1cPk=";
         };
-        systems = [
-          "trivial-clock"
-          "trivial-clock/test"
-        ];
-        lispLibs = [
-          self.cffi
-          self.fiveam
-        ];
+        systems = [ "trivial-clock" "trivial-clock/test" ];
+        lispLibs = [ self.cffi self.fiveam ];
       };
 
       frugal-uuid = build-asdf-system {
@@ -796,11 +766,7 @@ let
           rev = "3ed1df5ba5c738a0b7fed7aa73632ec86f558d09";
           hash = "sha256-AJMxhtDACe6WTwEOxLsC8y6uBaPqjt8HLRw/eIZI02E=";
         };
-        systems = [
-          "duckdb"
-          "duckdb/test"
-          "duckdb/benchmark"
-        ];
+        systems = [ "duckdb" "duckdb/test" "duckdb/benchmark" ];
         lispLibs = with self; [
           bordeaux-threads
           cffi-libffi
@@ -828,15 +794,8 @@ let
           rev = "e678b3c3e002f53b446780406c9ed13f8451309d22a1dc50ced4dbeedf08a1ec";
           sha256 = "sha256-J08bU9HSVbzEivYtQsyIYPZJTrugj+jJSa4LglS0Olg=";
         };
-        systems = [
-          "eu.turtleware.polyclot"
-          "eu.turtleware.polyclot/demo"
-        ];
-        lispLibs = with self; [
-          clim
-          mcclim
-          mcclim-layouts
-        ];
+        systems = [ "eu.turtleware.polyclot" "eu.turtleware.polyclot/demo" ];
+        lispLibs = with self; [ clim mcclim mcclim-layouts ];
       };
 
       kons-9 = build-asdf-system rec {
@@ -848,10 +807,7 @@ let
           rev = "95ad44fac0566f445c4b7bd040339dcff75ee992";
           sha256 = "19rl7372j9f1cv2kl55r8vyf4dhcz4way4hkjgysbxzrb1psp17n";
         };
-        systems = [
-          "kons-9"
-          "kons-9/testsuite"
-        ];
+        systems = [ "kons-9" "kons-9/testsuite" ];
         lispLibs = with self; [
           closer-mop
           trivial-main-thread
@@ -995,10 +951,7 @@ let
           trivial-garbage
         ];
         nativeLibs = [ pkgs.mpfr ];
-        systems = [
-          "coalton"
-          "coalton/tests"
-        ];
+        systems = [ "coalton" "coalton/tests" ];
         meta = {
           description = "statically typed functional programming language that supercharges Common Lisp";
           homepage = "https://coalton-lang.github.io";

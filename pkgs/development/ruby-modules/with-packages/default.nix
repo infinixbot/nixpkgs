@@ -54,11 +54,7 @@ let
       gemEnv = buildEnv {
         name = "ruby-gems";
         paths = selected;
-        pathsToLink = [
-          "/lib"
-          "/bin"
-          "/nix-support"
-        ];
+        pathsToLink = [ "/lib" "/bin" "/nix-support" ];
       };
 
       wrappedRuby = stdenv.mkDerivation {
@@ -76,10 +72,7 @@ let
     stdenv.mkDerivation {
       name = "${ruby.name}-with-packages";
       nativeBuildInputs = [ makeBinaryWrapper ];
-      buildInputs = [
-        selected
-        ruby
-      ];
+      buildInputs = [ selected ruby ];
 
       dontUnpack = true;
 

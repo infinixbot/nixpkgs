@@ -23,13 +23,7 @@ args@{
 
 let
   env = buildFHSEnv (
-    removeAttrs args [
-      "version"
-      "runScript"
-      "extraInstallCommands"
-      "meta"
-      "passthru"
-    ]
+    removeAttrs args [ "version" "runScript" "extraInstallCommands" "meta" "passthru" ]
   );
 
   chrootenv = callPackage ./chrootenv { };

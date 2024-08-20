@@ -30,11 +30,7 @@ stdenv.mkDerivation rec {
   pname = "gnome-desktop";
   version = "44.0";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/gnome-desktop/${lib.versions.major version}/${pname}-${version}.tar.xz";
@@ -103,10 +99,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Library with common API for various GNOME modules";
     homepage = "https://gitlab.gnome.org/GNOME/gnome-desktop";
-    license = with licenses; [
-      gpl2Plus
-      lgpl2Plus
-    ];
+    license = with licenses; [ gpl2Plus lgpl2Plus ];
     platforms = platforms.unix;
     maintainers = teams.gnome.members;
   };

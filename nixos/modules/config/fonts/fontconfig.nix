@@ -267,120 +267,47 @@ in
 {
   imports =
     [
-      (mkRenamedOptionModule
-        [
-          "fonts"
-          "fontconfig"
-          "ultimate"
-          "allowBitmaps"
-        ]
-        [
-          "fonts"
-          "fontconfig"
-          "allowBitmaps"
-        ]
-      )
-      (mkRenamedOptionModule
-        [
-          "fonts"
-          "fontconfig"
-          "ultimate"
-          "allowType1"
-        ]
-        [
-          "fonts"
-          "fontconfig"
-          "allowType1"
-        ]
-      )
-      (mkRenamedOptionModule
-        [
-          "fonts"
-          "fontconfig"
-          "ultimate"
-          "useEmbeddedBitmaps"
-        ]
-        [
-          "fonts"
-          "fontconfig"
-          "useEmbeddedBitmaps"
-        ]
-      )
-      (mkRenamedOptionModule
-        [
-          "fonts"
-          "fontconfig"
-          "ultimate"
-          "forceAutohint"
-        ]
-        [
-          "fonts"
-          "fontconfig"
-          "forceAutohint"
-        ]
-      )
-      (mkRenamedOptionModule
-        [
-          "fonts"
-          "fontconfig"
-          "ultimate"
-          "renderMonoTTFAsBitmap"
-        ]
-        [
-          "fonts"
-          "fontconfig"
-          "renderMonoTTFAsBitmap"
-        ]
-      )
-      (mkRemovedOptionModule [
+      (mkRenamedOptionModule [ "fonts" "fontconfig" "ultimate" "allowBitmaps" ] [
+        "fonts"
+        "fontconfig"
+        "allowBitmaps"
+      ])
+      (mkRenamedOptionModule [ "fonts" "fontconfig" "ultimate" "allowType1" ] [
+        "fonts"
+        "fontconfig"
+        "allowType1"
+      ])
+      (mkRenamedOptionModule [ "fonts" "fontconfig" "ultimate" "useEmbeddedBitmaps" ] [
+        "fonts"
+        "fontconfig"
+        "useEmbeddedBitmaps"
+      ])
+      (mkRenamedOptionModule [ "fonts" "fontconfig" "ultimate" "forceAutohint" ] [
         "fonts"
         "fontconfig"
         "forceAutohint"
-      ] "")
-      (mkRemovedOptionModule [
+      ])
+      (mkRenamedOptionModule [ "fonts" "fontconfig" "ultimate" "renderMonoTTFAsBitmap" ] [
         "fonts"
         "fontconfig"
         "renderMonoTTFAsBitmap"
-      ] "")
-      (mkRemovedOptionModule [
-        "fonts"
-        "fontconfig"
-        "dpi"
-      ] "Use display server-specific options")
-      (mkRemovedOptionModule [
-        "hardware"
-        "video"
-        "hidpi"
-        "enable"
-      ] fontconfigNote)
-      (mkRemovedOptionModule [
-        "fonts"
-        "optimizeForVeryHighDPI"
-      ] fontconfigNote)
+      ])
+      (mkRemovedOptionModule [ "fonts" "fontconfig" "forceAutohint" ] "")
+      (mkRemovedOptionModule [ "fonts" "fontconfig" "renderMonoTTFAsBitmap" ] "")
+      (mkRemovedOptionModule [ "fonts" "fontconfig" "dpi" ] "Use display server-specific options")
+      (mkRemovedOptionModule [ "hardware" "video" "hidpi" "enable" ] fontconfigNote)
+      (mkRemovedOptionModule [ "fonts" "optimizeForVeryHighDPI" ] fontconfigNote)
     ]
-    ++ lib.forEach
-      [
-        "enable"
-        "substitutions"
-        "preset"
-      ]
-      (
-        opt:
-        lib.mkRemovedOptionModule
-          [
-            "fonts"
-            "fontconfig"
-            "ultimate"
-            "${opt}"
-          ]
-          ''
-            The fonts.fontconfig.ultimate module and configuration is obsolete.
-            The repository has since been archived and activity has ceased.
-            https://github.com/bohoomil/fontconfig-ultimate/issues/171.
-            No action should be needed for font configuration, as the fonts.fontconfig
-            module is already used by default.
-          ''
-      );
+    ++ lib.forEach [ "enable" "substitutions" "preset" ] (
+      opt:
+      lib.mkRemovedOptionModule [ "fonts" "fontconfig" "ultimate" "${opt}" ] ''
+        The fonts.fontconfig.ultimate module and configuration is obsolete.
+        The repository has since been archived and activity has ceased.
+        https://github.com/bohoomil/fontconfig-ultimate/issues/171.
+        No action should be needed for font configuration, as the fonts.fontconfig
+        module is already used by default.
+      ''
+    );
 
   options = {
 
@@ -494,12 +421,7 @@ in
           };
 
           style = mkOption {
-            type = types.enum [
-              "none"
-              "slight"
-              "medium"
-              "full"
-            ];
+            type = types.enum [ "none" "slight" "medium" "full" ];
             default = "slight";
             description = ''
               Hintstyle is the amount of font reshaping done to line up
@@ -535,13 +457,7 @@ in
 
           rgba = mkOption {
             default = "none";
-            type = types.enum [
-              "rgb"
-              "bgr"
-              "vrgb"
-              "vbgr"
-              "none"
-            ];
+            type = types.enum [ "rgb" "bgr" "vrgb" "vbgr" "none" ];
             description = ''
               Subpixel order. The overwhelming majority of displays are
               `rgb` in their normal orientation. Select
@@ -557,12 +473,7 @@ in
 
           lcdfilter = mkOption {
             default = "default";
-            type = types.enum [
-              "none"
-              "default"
-              "light"
-              "legacy"
-            ];
+            type = types.enum [ "none" "default" "light" "legacy" ];
             description = ''
               FreeType LCD filter. At high resolution (> 200 DPI), LCD filtering
               has no visible effect; users of such displays may want to select

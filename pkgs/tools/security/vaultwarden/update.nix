@@ -14,17 +14,7 @@
 
 lib.getExe (writeShellApplication {
   name = "update-vaultwarden";
-  runtimeInputs = [
-    curl
-    git
-    gnugrep
-    gnused
-    jq
-    yq
-    nix
-    nix-prefetch-git
-    nix-update
-  ];
+  runtimeInputs = [ curl git gnugrep gnused jq yq nix nix-prefetch-git nix-update ];
 
   text = ''
     VAULTWARDEN_VERSION=$(curl --silent https://api.github.com/repos/dani-garcia/vaultwarden/releases/latest | jq -r '.tag_name')

@@ -12,12 +12,7 @@
 qtModule {
   pname = "qtdeclarative";
 
-  propagatedBuildInputs = [
-    qtbase
-    qtlanguageserver
-    qtshadertools
-    openssl
-  ];
+  propagatedBuildInputs = [ qtbase qtlanguageserver qtshadertools openssl ];
   strictDeps = true;
 
   patches = [

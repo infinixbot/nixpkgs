@@ -24,13 +24,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-ruHj+/aid/tiWjg4BzuXm2SD57rKTOgvVt4f8ZLbDk0=";
   };
 
-  buildInputs = [
-    xorgproto
-    libX11
-    libXext
-    libXrandr
-    libxcrypt
-  ];
+  buildInputs = [ xorgproto libX11 libXext libXrandr libxcrypt ];
 
   installFlags = [ "PREFIX=$(out)" ];
 
@@ -54,10 +48,7 @@ stdenv.mkDerivation (finalAttrs: {
       Simple X display locker. This is the simplest X screen locker.
     '';
     license = licenses.mit;
-    maintainers = with maintainers; [
-      astsmtl
-      qusic
-    ];
+    maintainers = with maintainers; [ astsmtl qusic ];
     platforms = platforms.linux;
   };
 })

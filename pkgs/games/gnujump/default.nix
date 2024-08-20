@@ -18,11 +18,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   nativeBuildInputs = [ copyDesktopItems ];
-  buildInputs = [
-    SDL
-    SDL_image
-    SDL_mixer
-  ];
+  buildInputs = [ SDL SDL_image SDL_mixer ];
 
   NIX_LDFLAGS = "-lm";
 
@@ -33,10 +29,7 @@ stdenv.mkDerivation (finalAttrs: {
       icon = "gnujump";
       desktopName = "GNUjump";
       comment = "Jump up the tower to survive";
-      categories = [
-        "Game"
-        "ArcadeGame"
-      ];
+      categories = [ "Game" "ArcadeGame" ];
     })
   ];
 

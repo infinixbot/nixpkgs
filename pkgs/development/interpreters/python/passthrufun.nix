@@ -34,10 +34,7 @@ let
           exceptions = [
             stdenv
           ];
-          providesSetupHook = lib.attrByPath [
-            "provides"
-            "setupHook"
-          ] false;
+          providesSetupHook = lib.attrByPath [ "provides" "setupHook" ] false;
           valid =
             value: pythonPackages.hasPythonModule value || providesSetupHook value || lib.elem value exceptions;
           func =

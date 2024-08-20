@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    zlib
-    openssl
-    libuuid
-  ] ++ lib.optionals stdenv.isDarwin [ bzip2 ];
+  buildInputs = [ zlib openssl libuuid ] ++ lib.optionals stdenv.isDarwin [ bzip2 ];
 
   # cannot run test program while cross compiling
   configureFlags = lib.optionals (!stdenv.buildPlatform.canExecute stdenv.hostPlatform) [

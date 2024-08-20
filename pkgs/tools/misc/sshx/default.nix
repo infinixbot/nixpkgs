@@ -32,20 +32,14 @@ let
         nativeBuildInputs = [ protobuf ];
         buildInputs = lib.optional stdenv.isDarwin darwin.apple_sdk.frameworks.Security;
 
-        cargoBuildFlags = [
-          "--package"
-          pname
-        ];
+        cargoBuildFlags = [ "--package" pname ];
         cargoTestFlags = cargoBuildFlags;
 
         meta = {
           description = "Fast, collaborative live terminal sharing over the web";
           homepage = "https://github.com/ekzhang/sshx";
           license = lib.licenses.mit;
-          maintainers = with lib.maintainers; [
-            pinpox
-            kranzes
-          ];
+          maintainers = with lib.maintainers; [ pinpox kranzes ];
           mainProgram = pname;
         };
       }

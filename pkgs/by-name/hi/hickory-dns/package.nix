@@ -29,10 +29,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://hickory-dns.org/";
     maintainers = with maintainers; [ colinsane ];
     platforms = platforms.linux;
-    license = with licenses; [
-      asl20
-      mit
-    ];
+    license = with licenses; [ asl20 mit ];
     mainProgram = "hickory-dns";
   };
 }

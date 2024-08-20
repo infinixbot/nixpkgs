@@ -43,9 +43,6 @@ rustPlatform.buildRustPackage rec {
       asl20 # or
       mit
     ];
-    maintainers = with maintainers; [
-      killercup
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ killercup matthiasbeyer ];
   };
 }

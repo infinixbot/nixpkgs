@@ -28,10 +28,7 @@ stdenv.mkDerivation (finalAttrs: {
     pixman
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   cmakeBuildType = "RelWithDebInfo";
 

@@ -85,16 +85,7 @@ in
     };
 
     storageDriver = mkOption {
-      type = types.nullOr (
-        types.enum [
-          "aufs"
-          "btrfs"
-          "devicemapper"
-          "overlay"
-          "overlay2"
-          "zfs"
-        ]
-      );
+      type = types.nullOr (types.enum [ "aufs" "btrfs" "devicemapper" "overlay" "overlay2" "zfs" ]);
       default = null;
       description = ''
         This option determines which Docker
@@ -188,12 +179,7 @@ in
 
   config = mkIf cfg.enable (mkMerge [
     {
-      boot.kernelModules = [
-        "bridge"
-        "veth"
-        "br_netfilter"
-        "xt_nat"
-      ];
+      boot.kernelModules = [ "bridge" "veth" "br_netfilter" "xt_nat" ];
       boot.kernel.sysctl = {
         "net.ipv4.conf.all.forwarding" = mkOverride 98 true;
         "net.ipv4.conf.default.forwarding" = mkOverride 98 true;
@@ -216,10 +202,7 @@ in
 
       systemd.services.docker = {
         wantedBy = optional cfg.enableOnBoot "multi-user.target";
-        after = [
-          "network.target"
-          "docker.socket"
-        ];
+        after = [ "network.target" "docker.socket" ];
         requires = [ "docker.socket" ];
         environment = proxy_env;
         serviceConfig = {

@@ -59,16 +59,7 @@ mkDerivation rec {
     ])
     ++ lib.optional waylandSupport wayland;
 
-  nativeBuildInputs = [
-    cmake
-    makeWrapper
-    pkg-config
-    bison
-    pcre
-    automake
-    autoconf
-    addDriverRunpath
-  ];
+  nativeBuildInputs = [ cmake makeWrapper pkg-config bison pcre automake autoconf addDriverRunpath ];
 
   postUnpack = ''
     cp -r ${custom_swig} swig
@@ -115,9 +106,6 @@ mkDerivation rec {
       Windows 7 - 10, Linux or Android.
     '';
     maintainers = [ ];
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
   };
 }

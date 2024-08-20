@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    gtk2
-    libhangul
-  ];
+  buildInputs = [ gtk2 libhangul ];
 
   meta = with lib; {
     description = "Easy Hangul XIM";

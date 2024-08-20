@@ -30,10 +30,7 @@ buildGoModule rec {
     description = "Implementation of Jsonnet in pure Go";
     homepage = "https://github.com/google/go-jsonnet";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      nshalman
-      aaronjheng
-    ];
+    maintainers = with maintainers; [ nshalman aaronjheng ];
     mainProgram = "jsonnet";
   };
 }

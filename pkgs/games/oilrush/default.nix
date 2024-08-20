@@ -45,14 +45,7 @@ stdenv.mkDerivation {
       patchelf --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" $f
     done
     patchelf --set-rpath ${stdenv.cc.cc.lib}/lib64:${
-      makeLibraryPath [
-        stdenv.cc.cc
-        libX11
-        libXext
-        libXrender
-        fontconfig
-        freetype
-      ]
+      makeLibraryPath [ stdenv.cc.cc libX11 libXext libXrender fontconfig freetype ]
     }\
              launcher_$arch
     patchelf --set-rpath ${stdenv.cc.cc.lib}/lib64:${stdenv.cc.cc.lib}/lib\
@@ -60,27 +53,13 @@ stdenv.mkDerivation {
     patchelf --set-rpath ${stdenv.cc.cc.lib}/lib64:${stdenv.cc.cc.lib}/lib\
              libQtCoreUnigine_$arch.so.4
     patchelf --set-rpath ${stdenv.cc.cc.lib}/lib64:${
-      makeLibraryPath [
-        stdenv.cc.cc
-        libX11
-        libXext
-        libXrender
-        fontconfig
-        freetype
-      ]
+      makeLibraryPath [ stdenv.cc.cc libX11 libXext libXrender fontconfig freetype ]
     }\
              libQtGuiUnigine_$arch.so.4
     patchelf --set-rpath ${stdenv.cc.cc.lib}/lib64:${stdenv.cc.cc.lib}/lib\
              libQtNetworkUnigine_$arch.so.4
     patchelf --set-rpath ${stdenv.cc.cc.lib}/lib64:${
-      makeLibraryPath [
-        stdenv.cc.cc
-        libX11
-        libXext
-        libXrender
-        fontconfig
-        freetype
-      ]
+      makeLibraryPath [ stdenv.cc.cc libX11 libXext libXrender fontconfig freetype ]
     }\
              libQtWebKitUnigine_$arch.so.4
     patchelf --set-rpath ${stdenv.cc.cc.lib}/lib64:${stdenv.cc.cc.lib}/lib\
@@ -88,23 +67,11 @@ stdenv.mkDerivation {
     patchelf --set-rpath ${stdenv.cc.cc.lib}/lib64:${stdenv.cc.cc.lib}/lib\
              libRakNet_$arch.so
     patchelf --set-rpath ${stdenv.cc.cc.lib}/lib64:${
-      makeLibraryPath [
-        stdenv.cc.cc
-        libX11
-        libXext
-        libXinerama
-        libXrandr
-      ]
+      makeLibraryPath [ stdenv.cc.cc libX11 libXext libXinerama libXrandr ]
     }\
              libUnigine_$arch.so
     patchelf --set-rpath ${stdenv.cc.cc.lib}/lib64:${
-      makeLibraryPath [
-        stdenv.cc.cc
-        libX11
-        libXext
-        libXinerama
-        libXrandr
-      ]
+      makeLibraryPath [ stdenv.cc.cc libX11 libXext libXinerama libXrandr ]
     }\
              OilRush_$arch
   '';

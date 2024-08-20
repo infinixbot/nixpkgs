@@ -39,10 +39,7 @@ stdenv.mkDerivation rec {
   pname = "mininet";
   version = "2.3.1b4";
 
-  outputs = [
-    "out"
-    "py"
-  ];
+  outputs = [ "out" "py" ];
 
   src = fetchFromGitHub {
     owner = "mininet";
@@ -55,21 +52,11 @@ stdenv.mkDerivation rec {
   makeFlags = [ "PREFIX=$(out)" ];
 
   pythonPath = [ python3.pkgs.setuptools ];
-  nativeBuildInputs = [
-    help2man
-    makeWrapper
-    python3.pkgs.wrapPython
-  ];
+  nativeBuildInputs = [ help2man makeWrapper python3.pkgs.wrapPython ];
 
-  propagatedBuildInputs = [
-    python3
-    which
-  ];
+  propagatedBuildInputs = [ python3 which ];
 
-  installTargets = [
-    "install-mnexec"
-    "install-manpages"
-  ];
+  installTargets = [ "install-mnexec" "install-manpages" ];
 
   preInstall = ''
     mkdir -p $out $py

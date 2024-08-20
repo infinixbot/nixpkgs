@@ -35,12 +35,7 @@ buildDotnetModule {
   ];
 
   strictDeps = true;
-  nativeBuildInputs = [
-    nodejs
-    yarn
-    prefetch-yarn-deps
-    fixup-yarn-lock
-  ];
+  nativeBuildInputs = [ nodejs yarn prefetch-yarn-deps fixup-yarn-lock ];
 
   yarnOfflineCache = fetchYarnDeps {
     yarnLock = "${src}/yarn.lock";
@@ -153,10 +148,7 @@ buildDotnetModule {
         "--prefix"
         "PATH"
         ":"
-        (lib.makeBinPath [
-          nix
-          prefetch-yarn-deps
-        ])
+        (lib.makeBinPath [ nix prefetch-yarn-deps ])
       ];
     } ./update.py;
   };
@@ -165,11 +157,7 @@ buildDotnetModule {
     description = "Smart PVR for newsgroup and bittorrent users";
     homepage = "https://sonarr.tv";
     license = lib.licenses.gpl3Only;
-    maintainers = with lib.maintainers; [
-      fadenb
-      purcell
-      tie
-    ];
+    maintainers = with lib.maintainers; [ fadenb purcell tie ];
     mainProgram = "Sonarr";
     # platforms inherited from dotnet-sdk.
   };

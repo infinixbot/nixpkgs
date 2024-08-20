@@ -35,10 +35,7 @@
       "pcre"
       "rawsock"
     ]
-    ++ lib.optionals stdenv.isLinux [
-      "bindings/glibc"
-      "zlib"
-    ]
+    ++ lib.optionals stdenv.isLinux [ "bindings/glibc" "zlib" ]
     ++ lib.optional x11Support "clx/new-clx",
 }:
 
@@ -71,11 +68,7 @@ stdenv.mkDerivation {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [
-    autoconf269
-    automake
-    libtool
-  ];
+  nativeBuildInputs = [ autoconf269 automake libtool ];
   buildInputs =
     [ libsigsegv ]
     ++ lib.optional (gettext != null) gettext

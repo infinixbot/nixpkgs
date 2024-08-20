@@ -32,10 +32,7 @@ import ./make-test-python.nix (
 
             (pkgs.writers.writePython3Bin "setup-steck.py"
               {
-                libraries = with pkgs.python3.pkgs; [
-                  appdirs
-                  toml
-                ];
+                libraries = with pkgs.python3.pkgs; [ appdirs toml ];
                 flakeIgnore = [
                   "E501"
                 ];

@@ -154,10 +154,7 @@ in
 
   mlPlugin = true;
   useDuneifVersion = v: lib.versions.isGe "2.2.0" v || v == "dev";
-  propagatedBuildInputs = [
-    coq.ocamlPackages.findlib
-    elpi
-  ];
+  propagatedBuildInputs = [ coq.ocamlPackages.findlib elpi ];
 
   meta = {
     description = "Coq plugin embedding ELPI";

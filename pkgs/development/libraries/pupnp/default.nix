@@ -9,10 +9,7 @@ stdenv.mkDerivation rec {
   pname = "libupnp";
   version = "1.14.18";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "pupnp";

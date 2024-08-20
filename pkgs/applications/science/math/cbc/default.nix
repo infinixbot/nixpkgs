@@ -28,10 +28,7 @@ stdenv.mkDerivation rec {
 
   hardeningDisable = [ "format" ];
 
-  buildInputs = [
-    zlib
-    bzip2
-  ];
+  buildInputs = [ zlib bzip2 ];
 
   # FIXME: move share/coin/Data to a separate output?
 

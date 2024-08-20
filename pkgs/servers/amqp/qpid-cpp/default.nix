@@ -19,15 +19,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-eYDQ6iHVV1WUFFdyHGnbqGIjE9CrhHzh0jP7amjoDSE=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    python3
-  ];
-  buildInputs = [
-    boost
-    libuuid
-    ruby
-  ];
+  nativeBuildInputs = [ cmake python3 ];
+  buildInputs = [ boost libuuid ruby ];
 
   patches = [
     (fetchpatch {

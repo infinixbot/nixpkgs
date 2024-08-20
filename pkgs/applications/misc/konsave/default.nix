@@ -15,10 +15,7 @@ python3Packages.buildPythonApplication rec {
   };
 
   nativeBuildInputs = with python3Packages; [ setuptools-scm ];
-  propagatedBuildInputs = with python3Packages; [
-    pyyaml
-    setuptools
-  ];
+  propagatedBuildInputs = with python3Packages; [ pyyaml setuptools ];
 
   preCheck = ''
     export HOME=$(mktemp -d)

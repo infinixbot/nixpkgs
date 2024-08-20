@@ -23,12 +23,7 @@ let
   configType =
     with types;
     let
-      atom = oneOf [
-        int
-        bool
-        str
-        path
-      ];
+      atom = oneOf [ int bool str path ];
     in
     attrsOf (either atom (listOf atom))
     // {
@@ -162,10 +157,7 @@ in
           # other actions/filters installed by Privoxy or the user.
           apply =
             x: x ++ optional (cfg.userActions != "") (toString (pkgs.writeText "user.actions" cfg.userActions));
-          default = [
-            "match-all.action"
-            "default.action"
-          ];
+          default = [ "match-all.action" "default.action" ];
           description = ''
             List of paths to Privoxy action files. These paths may either be
             absolute or relative to the privoxy configuration directory.
@@ -229,10 +221,7 @@ in
 
     systemd.services.privoxy = {
       description = "Filtering web proxy";
-      after = [
-        "network.target"
-        "nss-lookup.target"
-      ];
+      after = [ "network.target" "nss-lookup.target" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         User = "privoxy";
@@ -244,10 +233,7 @@ in
         ProtectSystem = "full";
       };
       unitConfig = mkIf cfg.inspectHttps {
-        ConditionPathExists = with cfg.settings; [
-          ca-cert-file
-          ca-key-file
-        ];
+        ConditionPathExists = with cfg.settings; [ ca-cert-file ca-key-file ];
       };
     };
 
@@ -289,17 +275,8 @@ in
 
   imports =
     let
-      top = x: [
-        "services"
-        "privoxy"
-        x
-      ];
-      setting = x: [
-        "services"
-        "privoxy"
-        "settings"
-        x
-      ];
+      top = x: [ "services" "privoxy" x ];
+      setting = x: [ "services" "privoxy" "settings" x ];
     in
     [
       (mkRenamedOptionModule (top "enableEditActions") (setting "enable-edit-actions"))

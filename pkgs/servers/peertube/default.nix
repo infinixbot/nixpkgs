@@ -77,20 +77,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-9w3aLuiLs7SU00YwuE0ixfiD77gCakXT4YeRpfsgGz0=";
   };
 
-  outputs = [
-    "out"
-    "cli"
-    "runner"
-  ];
+  outputs = [ "out" "cli" "runner" ];
 
-  nativeBuildInputs = [
-    brotli
-    fixup-yarn-lock
-    jq
-    which
-    yarn
-    fd
-  ];
+  nativeBuildInputs = [ brotli fixup-yarn-lock jq which yarn fd ];
 
   buildInputs = [ nodejs ];
 
@@ -201,16 +190,7 @@ stdenv.mkDerivation rec {
     '';
     license = licenses.agpl3Plus;
     homepage = "https://joinpeertube.org/";
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
-    maintainers = with maintainers; [
-      immae
-      izorkin
-      stevenroose
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+    maintainers = with maintainers; [ immae izorkin stevenroose ];
   };
 }

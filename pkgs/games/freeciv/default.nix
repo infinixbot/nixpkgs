@@ -59,25 +59,8 @@ stdenv.mkDerivation rec {
   ] ++ lib.optionals qtClient [ qt5.wrapQtAppsHook ] ++ lib.optionals gtkClient [ wrapGAppsHook3 ];
 
   buildInputs =
-    [
-      lua5_3
-      zlib
-      bzip2
-      curl
-      xz
-      gettext
-      libiconv
-      icu
-    ]
-    ++ [
-      SDL2
-      SDL2_mixer
-      SDL2_image
-      SDL2_ttf
-      SDL2_gfx
-      freetype
-      fluidsynth
-    ]
+    [ lua5_3 zlib bzip2 curl xz gettext libiconv icu ]
+    ++ [ SDL2 SDL2_mixer SDL2_image SDL2_ttf SDL2_gfx freetype fluidsynth ]
     ++ lib.optionals gtkClient [ gtk3 ]
     ++ lib.optionals qtClient [ qt5.qtbase ]
     ++ lib.optional server readline

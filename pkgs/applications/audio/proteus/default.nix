@@ -28,11 +28,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-WhJh+Sx64JYxQQ1LXpDUwXeodFU1EZ0TmMhn+6w0hQg=";
   };
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoPatchelfHook cmake pkg-config ];
   buildInputs = [
     alsa-lib
     freetype

@@ -95,9 +95,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://gitlab.com/asus-linux/asusctl";
     license = licenses.mpl20;
     platforms = [ "x86_64-linux" ];
-    maintainers = with maintainers; [
-      k900
-      aacebedo
-    ];
+    maintainers = with maintainers; [ k900 aacebedo ];
   };
 }

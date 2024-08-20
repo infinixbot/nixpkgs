@@ -105,10 +105,7 @@ stdenv.mkDerivation rec {
     description = "Drop in replacement for ueberzug written in C++";
     homepage = "https://github.com/jstkdng/ueberzugpp";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      aleksana
-      wegank
-    ];
+    maintainers = with maintainers; [ aleksana wegank ];
     platforms = platforms.unix;
   };
 }

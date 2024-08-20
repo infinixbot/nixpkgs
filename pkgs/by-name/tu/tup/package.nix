@@ -15,11 +15,7 @@ in
 stdenv.mkDerivation rec {
   pname = "tup";
   version = "0.8";
-  outputs = [
-    "bin"
-    "man"
-    "out"
-  ];
+  outputs = [ "bin" "man" "out" ];
 
   src = fetchFromGitHub {
     owner = "gittup";
@@ -29,11 +25,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    fuse
-    pcre2
-    sqlite
-  ];
+  buildInputs = [ fuse pcre2 sqlite ];
 
   patches = [ ./fusermount-setuid.patch ];
 

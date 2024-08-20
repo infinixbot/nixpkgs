@@ -22,10 +22,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   buildInputs = [ socat ];
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   makeFlags = [ "PREFIX=$(out)" ];
 

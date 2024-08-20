@@ -52,17 +52,7 @@ stdenv.mkDerivation rec {
     sha256 = cfg.sha256;
   };
 
-  buildInputs =
-    if stdenv.isDarwin then
-      [
-        bootstrap_cmds
-        m4
-      ]
-    else
-      [
-        glibc
-        m4
-      ];
+  buildInputs = if stdenv.isDarwin then [ bootstrap_cmds m4 ] else [ glibc m4 ];
 
   CCL_RUNTIME = cfg.runtime;
   CCL_KERNEL = cfg.kernel;

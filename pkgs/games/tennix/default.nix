@@ -23,14 +23,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ which ];
 
-  buildInputs = [
-    python3
-    SDL
-    SDL_mixer
-    SDL_image
-    SDL_ttf
-    SDL_net
-  ];
+  buildInputs = [ python3 SDL SDL_mixer SDL_image SDL_ttf SDL_net ];
 
   configurePhase = ''
     ./configure --prefix $out

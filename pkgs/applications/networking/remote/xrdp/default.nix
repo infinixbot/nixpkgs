@@ -37,14 +37,7 @@ let
       hash = "sha256-cAAWk/GqR5zJmh7EAzX3qJiYNl/RrDWdncdFeqsFIaU=";
     };
 
-    nativeBuildInputs = [
-      pkg-config
-      autoconf
-      automake
-      which
-      libtool
-      nasm
-    ];
+    nativeBuildInputs = [ pkg-config autoconf automake which libtool nasm ];
 
     buildInputs = [ xorg.xorgserver ];
 
@@ -84,15 +77,7 @@ let
       };
     };
 
-    nativeBuildInputs = [
-      pkg-config
-      autoconf
-      automake
-      which
-      libtool
-      nasm
-      perl
-    ];
+    nativeBuildInputs = [ pkg-config autoconf automake which libtool nasm perl ];
 
     buildInputs = [
       fuse
@@ -135,10 +120,7 @@ let
       "--enable-vsock"
     ];
 
-    installFlags = [
-      "DESTDIR=$(out)"
-      "prefix="
-    ];
+    installFlags = [ "DESTDIR=$(out)" "prefix=" ];
 
     postInstall = ''
       # remove generated keys (as non-deterministic)
@@ -181,12 +163,7 @@ let
             attrPath = "xrdp.src";
             ignoredVersions = [ "beta" ];
           })
-          {
-            command = [
-              "rm"
-              "update-git-commits.txt"
-            ];
-          }
+          { command = [ "rm" "update-git-commits.txt" ]; }
           (gitUpdater {
             rev-prefix = "v";
             attrPath = "xrdp.xorgxrdp";
@@ -202,10 +179,7 @@ let
       description = "Open source RDP server";
       homepage = "https://github.com/neutrinolabs/xrdp";
       license = licenses.asl20;
-      maintainers = with maintainers; [
-        chvp
-        lucasew
-      ];
+      maintainers = with maintainers; [ chvp lucasew ];
       platforms = platforms.linux;
     };
   };

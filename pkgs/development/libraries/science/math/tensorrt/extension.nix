@@ -83,10 +83,7 @@ let
         fullVersion = "8.6.1.6";
         sha256 = "sha256-D4FXpfxTKZQ7M4uJNZE3M1CvqQyoEjnNrddYDNHrolQ=";
         tarball = tarballURL { inherit fileVersionCuda fullVersion; };
-        supportedCudaVersions = [
-          "12.0"
-          "12.1"
-        ];
+        supportedCudaVersions = [ "12.0" "12.1" ];
       }
     ];
     "8.5.3" = [
@@ -96,17 +93,7 @@ let
         fullVersion = "8.5.3.1";
         sha256 = "sha256-BNeuOYvPTUAfGxI0DVsNrX6Z/FAB28+SE0ptuGu7YDY=";
         tarball = tarballURL { inherit fileVersionCuda fileVersionCudnn fullVersion; };
-        supportedCudaVersions = [
-          "11.0"
-          "11.1"
-          "11.2"
-          "11.3"
-          "11.4"
-          "11.5"
-          "11.6"
-          "11.7"
-          "11.8"
-        ];
+        supportedCudaVersions = [ "11.0" "11.1" "11.2" "11.3" "11.4" "11.5" "11.6" "11.7" "11.8" ];
       }
       rec {
         fileVersionCuda = "10.2";
@@ -124,17 +111,7 @@ let
         fullVersion = "8.5.2.2";
         sha256 = "sha256-Ov5irNS/JETpEz01FIFNMs9YVmjGHL7lSXmDpgCdgao=";
         tarball = tarballURL { inherit fileVersionCuda fileVersionCudnn fullVersion; };
-        supportedCudaVersions = [
-          "11.0"
-          "11.1"
-          "11.2"
-          "11.3"
-          "11.4"
-          "11.5"
-          "11.6"
-          "11.7"
-          "11.8"
-        ];
+        supportedCudaVersions = [ "11.0" "11.1" "11.2" "11.3" "11.4" "11.5" "11.6" "11.7" "11.8" ];
       }
       rec {
         fileVersionCuda = "10.2";
@@ -152,17 +129,7 @@ let
         fullVersion = "8.5.1.7";
         sha256 = "sha256-Ocx/B3BX0TY3lOj/UcTPIaXb7M8RFrACC6Da4PMGMHY=";
         tarball = tarballURL { inherit fileVersionCuda fileVersionCudnn fullVersion; };
-        supportedCudaVersions = [
-          "11.0"
-          "11.1"
-          "11.2"
-          "11.3"
-          "11.4"
-          "11.5"
-          "11.6"
-          "11.7"
-          "11.8"
-        ];
+        supportedCudaVersions = [ "11.0" "11.1" "11.2" "11.3" "11.4" "11.5" "11.6" "11.7" "11.8" ];
       }
       rec {
         fileVersionCuda = "10.2";
@@ -180,15 +147,7 @@ let
         fullVersion = "8.4.0.6";
         sha256 = "sha256-DNgHHXF/G4cK2nnOWImrPXAkOcNW6Wy+8j0LRpAH/LQ=";
         tarball = tarballURL { inherit fileVersionCuda fileVersionCudnn fullVersion; };
-        supportedCudaVersions = [
-          "11.0"
-          "11.1"
-          "11.2"
-          "11.3"
-          "11.4"
-          "11.5"
-          "11.6"
-        ];
+        supportedCudaVersions = [ "11.0" "11.1" "11.2" "11.3" "11.4" "11.5" "11.6" ];
       }
       rec {
         fileVersionCuda = "10.2";

@@ -9,12 +9,7 @@
   makeDesktopItem,
 }:
 let
-  libPath = lib.makeLibraryPath [
-    glib
-    xorg.libX11
-    gtk2
-    cairo
-  ];
+  libPath = lib.makeLibraryPath [ glib xorg.libX11 gtk2 cairo ];
 in
 
 stdenv.mkDerivation rec {
@@ -69,10 +64,7 @@ stdenv.mkDerivation rec {
     comment = meta.description;
     desktopName = "Sublime Text";
     genericName = "Text Editor";
-    categories = [
-      "TextEditor"
-      "Development"
-    ];
+    categories = [ "TextEditor" "Development" ];
     icon = "sublime_text";
   };
 
@@ -80,9 +72,6 @@ stdenv.mkDerivation rec {
     description = "Sophisticated text editor for code, markup and prose";
     license = lib.licenses.unfree;
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
   };
 }

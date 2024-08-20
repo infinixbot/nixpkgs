@@ -21,17 +21,8 @@ python3Packages.buildPythonApplication {
     meta
     ;
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    intltool
-    wrapGAppsNoGuiHook
-    gobject-introspection
-  ];
-  propagatedBuildInputs = with python3Packages; [
-    dbus-python
-    pygobject3
-  ];
+  nativeBuildInputs = [ cmake pkg-config intltool wrapGAppsNoGuiHook gobject-introspection ];
+  propagatedBuildInputs = with python3Packages; [ dbus-python pygobject3 ];
 
   pyproject = false;
   dontWrapGApps = true;

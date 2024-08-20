@@ -8,10 +8,7 @@ stdenvNoCC.mkDerivation {
   pname = "graphicsmagick-imagemagick-compat";
   inherit (graphicsmagick) version;
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   dontUnpack = true;
   dontBuild = true;

@@ -73,62 +73,56 @@ buildPythonApplication rec {
     })
   ];
 
-  propagatedBuildInputs =
-    [
-      # from visidata/requirements.txt
-      # packages not (yet) present in nixpkgs are commented
-      python-dateutil
-      pandas
-      requests
-      lxml
-      openpyxl
-      xlrd
-      xlwt
-      h5py
-      psycopg2
-      boto3
-      pyshp
-      #mapbox-vector-tile
-      pypng
-      #pyconll
-      fonttools
-      #sas7bdat
-      #xport
-      #savReaderWriter
-      pyyaml
-      #namestand
-      #datapackage
-      pdfminer-six
-      #tabula
-      vobject
-      tabulate
-      wcwidth
-      zstandard
-      odfpy
-      urllib3
-      pyarrow
-      seaborn
-      matplotlib
-      sh
-      psutil
-      numpy
+  propagatedBuildInputs = [
+    # from visidata/requirements.txt
+    # packages not (yet) present in nixpkgs are commented
+    python-dateutil
+    pandas
+    requests
+    lxml
+    openpyxl
+    xlrd
+    xlwt
+    h5py
+    psycopg2
+    boto3
+    pyshp
+    #mapbox-vector-tile
+    pypng
+    #pyconll
+    fonttools
+    #sas7bdat
+    #xport
+    #savReaderWriter
+    pyyaml
+    #namestand
+    #datapackage
+    pdfminer-six
+    #tabula
+    vobject
+    tabulate
+    wcwidth
+    zstandard
+    odfpy
+    urllib3
+    pyarrow
+    seaborn
+    matplotlib
+    sh
+    psutil
+    numpy
 
-      #requests_cache
-      beautifulsoup4
+    #requests_cache
+    beautifulsoup4
 
-      faker
-      praw
-      zulip
-      #pyairtable
+    faker
+    praw
+    zulip
+    #pyairtable
 
-      setuptools
-      importlib-metadata
-    ]
-    ++ lib.optionals withPcap [
-      dpkt
-      dnslib
-    ]
-    ++ lib.optional withXclip xclip;
+    setuptools
+    importlib-metadata
+  ] ++ lib.optionals withPcap [ dpkt dnslib ] ++ lib.optional withXclip xclip;
 
   nativeCheckInputs = [
     git
@@ -175,10 +169,7 @@ buildPythonApplication rec {
   meta = {
     description = "Interactive terminal multitool for tabular data";
     license = lib.licenses.gpl3;
-    maintainers = with lib.maintainers; [
-      raskin
-      markus1189
-    ];
+    maintainers = with lib.maintainers; [ raskin markus1189 ];
     homepage = "https://visidata.org/";
     changelog = "https://github.com/saulpw/visidata/blob/v${version}/CHANGELOG.md";
   };

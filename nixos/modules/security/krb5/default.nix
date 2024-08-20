@@ -13,12 +13,7 @@ let
     ;
   inherit (lib.types) bool;
 
-  mkRemovedOptionModule' =
-    name: reason:
-    mkRemovedOptionModule [
-      "krb5"
-      name
-    ] reason;
+  mkRemovedOptionModule' = name: reason: mkRemovedOptionModule [ "krb5" name ] reason;
   mkRemovedOptionModuleCfg =
     name:
     mkRemovedOptionModule' name ''
@@ -102,10 +97,7 @@ in
           implementation = cfg.package.passthru.implementation or "<NOT SET>";
         in
         {
-          assertion = lib.elem implementation [
-            "krb5"
-            "heimdal"
-          ];
+          assertion = lib.elem implementation [ "krb5" "heimdal" ];
           message = ''
             `security.krb5.package` must be one of:
 

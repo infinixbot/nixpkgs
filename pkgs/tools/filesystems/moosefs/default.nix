@@ -25,12 +25,7 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [
-    fuse
-    libpcap
-    zlib
-    python3
-  ];
+  buildInputs = [ fuse libpcap zlib python3 ];
 
   strictDeps = true;
 

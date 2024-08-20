@@ -10,9 +10,5 @@ mkKdeDerivation {
   # FIXME(later): upstream
   patches = [ ./0001-fix-add-executable-bit.patch ];
 
-  extraNativeBuildInputs = [
-    sass
-    python3
-    python3Packages.pycairo
-  ];
+  extraNativeBuildInputs = [ sass python3 python3Packages.pycairo ];
 }

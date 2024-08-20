@@ -24,25 +24,10 @@ stdenv.mkDerivation {
     hash = "sha256-J7gesOo8NUPuVaU0o4rCGzLrqr3IIMAchulWZG3HTqg=";
   };
 
-  patches = [
-    ./dont_update_gitinfo.patch
-    ./add_gitinfo.patch
-    ./fix_paths.patch
-  ];
+  patches = [ ./dont_update_gitinfo.patch ./add_gitinfo.patch ./fix_paths.patch ];
 
-  nativeBuildInputs = [
-    wrapQtAppsHook
-    cmake
-    qttools
-    pkg-config
-    xxd
-  ];
-  buildInputs = [
-    qtbase
-    qtmultimedia
-    zlib
-    bzip2
-  ];
+  nativeBuildInputs = [ wrapQtAppsHook cmake qttools pkg-config xxd ];
+  buildInputs = [ qtbase qtmultimedia zlib bzip2 ];
 
   hardeningDisable = lib.optional stdenv.isDarwin "format";
 

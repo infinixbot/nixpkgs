@@ -36,11 +36,7 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libusb1
-    libyubikey
-    json_c
-  ];
+  buildInputs = [ libusb1 libyubikey json_c ];
 
   configureFlags = [
     "--with-backend=libusb-1.0"

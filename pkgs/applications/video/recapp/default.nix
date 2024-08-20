@@ -69,12 +69,7 @@ python3.pkgs.buildPythonApplication rec {
   preFixup = ''
     makeWrapperArgs+=(
       "''${gappsWrapperArgs[@]}"
-      "--prefix" "PATH" ":" "${
-        lib.makeBinPath [
-          gst_all_1.gstreamer.dev
-          slop
-        ]
-      }"
+      "--prefix" "PATH" ":" "${lib.makeBinPath [ gst_all_1.gstreamer.dev slop ]}"
     )
   '';
 

@@ -40,22 +40,13 @@ stdenv.mkDerivation rec {
   };
 
   # FIXME: -dev depends on -doc
-  outputs = [
-    "out"
-    "dev"
-    "man"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "man" "doc" ];
   setOutputFlags = false; # it would move $out/modules, etc.
 
   nativeBuildInputs = [ which ];
 
   buildInputs =
-    [
-      perl
-      libxcrypt
-      zlib
-    ]
+    [ perl libxcrypt zlib ]
     ++ lib.optional brotliSupport brotli
     ++ lib.optional sslSupport openssl
     ++ lib.optional modTlsSupport rustls-ffi
@@ -105,11 +96,7 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  stripDebugList = [
-    "lib"
-    "modules"
-    "bin"
-  ];
+  stripDebugList = [ "lib" "modules" "bin" ];
 
   postInstall = ''
     mkdir -p $doc/share/doc/httpd

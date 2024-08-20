@@ -28,10 +28,7 @@ let
   mktable = buildPackages.stdenv.mkDerivation {
     name = "w3m-mktable";
     inherit (w3m) src;
-    nativeBuildInputs = [
-      pkg-config
-      boehmgc
-    ];
+    nativeBuildInputs = [ pkg-config boehmgc ];
     makeFlags = [ "mktable" ];
     installPhase = ''
       install -D mktable $out/bin/mktable
@@ -75,17 +72,9 @@ stdenv.mkDerivation rec {
 
   # updateAutotoolsGnuConfigScriptsHook necessary to build on FreeBSD native pending inclusion of
   # https://git.savannah.gnu.org/cgit/config.git/commit/?id=e4786449e1c26716e3f9ea182caf472e4dbc96e0
-  nativeBuildInputs = [
-    pkg-config
-    gettext
-    updateAutotoolsGnuConfigScriptsHook
-  ];
+  nativeBuildInputs = [ pkg-config gettext updateAutotoolsGnuConfigScriptsHook ];
   buildInputs =
-    [
-      ncurses
-      boehmgc
-      zlib
-    ]
+    [ ncurses boehmgc zlib ]
     ++ lib.optional sslSupport openssl
     ++ lib.optional mouseSupport gpm-ncurses
     ++ lib.optional graphicsSupport imlib2
@@ -98,10 +87,7 @@ stdenv.mkDerivation rec {
   hardeningDisable = [ "format" ];
 
   configureFlags =
-    [
-      "--with-ssl=${openssl.dev}"
-      "--with-gc=${boehmgc.dev}"
-    ]
+    [ "--with-ssl=${openssl.dev}" "--with-gc=${boehmgc.dev}" ]
     ++ lib.optionals (stdenv.buildPlatform != stdenv.hostPlatform) [
       "ac_cv_func_setpgrp_void=yes"
     ]

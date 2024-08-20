@@ -139,10 +139,7 @@ let
   binpath = makeBinPath deps;
 
   enableFeatures =
-    optionals enableVideoAcceleration [
-      "VaapiVideoDecoder"
-      "VaapiVideoEncoder"
-    ]
+    optionals enableVideoAcceleration [ "VaapiVideoDecoder" "VaapiVideoEncoder" ]
     ++ optional enableVulkan "Vulkan";
 
   disableFeatures =
@@ -233,12 +230,7 @@ stdenv.mkDerivation {
     gappsWrapperArgs+=(
       --prefix LD_LIBRARY_PATH : ${rpath}
       --prefix PATH : ${binpath}
-      --suffix PATH : ${
-        lib.makeBinPath [
-          xdg-utils
-          coreutils
-        ]
-      }
+      --suffix PATH : ${lib.makeBinPath [ xdg-utils coreutils ]}
       ${
         optionalString (enableFeatures != [ ]) ''
           --add-flags "--enable-features=${strings.concatStringsSep "," enableFeatures}\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+,WaylandWindowDecorations}}"
@@ -277,17 +269,8 @@ stdenv.mkDerivation {
     '';
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
     license = lib.licenses.mpl20;
-    maintainers = with lib.maintainers; [
-      uskudnik
-      rht
-      jefflabonte
-      nasirhm
-      buckley310
-    ];
-    platforms = [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
+    maintainers = with lib.maintainers; [ uskudnik rht jefflabonte nasirhm buckley310 ];
+    platforms = [ "aarch64-linux" "x86_64-linux" ];
     mainProgram = "brave";
   };
 }

@@ -33,14 +33,8 @@ stdenv.mkDerivation rec {
     hash = "sha512-fr1PnyYAS3wkpmj/npRC3A87UL9LIXw4thlM4GfrtlJbuX5EkWGVJnHJW/EmYp7z+N91dcdRJgdO79l6WJsKpg==";
   };
 
-  buildInputs = [
-    openssl
-    libxcrypt
-  ] ++ optional (luaSupport) lua;
-  nativeBuildInputs = [
-    bmake
-    groff
-  ];
+  buildInputs = [ openssl libxcrypt ] ++ optional (luaSupport) lua;
+  nativeBuildInputs = [ bmake groff ];
 
   COPTS =
     [
@@ -66,17 +60,11 @@ stdenv.mkDerivation rec {
     [ "-lm" ]
     ++ optional (stdenv.hostPlatform.libc != "libSystem") "-lcrypt"
     ++ optional (luaSupport) "-llua"
-    ++ optionals (sslSupport) [
-      "-lssl"
-      "-lcrypto"
-    ];
+    ++ optionals (sslSupport) [ "-lssl" "-lcrypto" ];
   makeFlags = [ "LDADD=$(_LDADD)" ];
 
   doCheck = true;
-  nativeCheckInputs = [
-    inetutils
-    wget
-  ];
+  nativeCheckInputs = [ inetutils wget ];
   checkFlags = optional (!cgiSupport) "CGITESTS=";
 
   meta = with lib; {

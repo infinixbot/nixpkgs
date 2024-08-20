@@ -178,10 +178,7 @@ in
 
       wantedBy = [ "multi-user.target" ];
       requires = [ "gerrit.socket" ];
-      after = [
-        "gerrit.socket"
-        "network.target"
-      ];
+      after = [ "gerrit.socket" "network.target" ];
 
       path = [
         gerrit-cli
@@ -233,10 +230,7 @@ in
     };
   };
 
-  meta.maintainers = with lib.maintainers; [
-    edef
-    zimbatm
-  ];
+  meta.maintainers = with lib.maintainers; [ edef zimbatm ];
   # uses attributes of the linked package
   meta.buildDocsInSandbox = false;
 }

@@ -28,11 +28,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  outputs = [
-    "out"
-    "man"
-    "dev"
-  ];
+  outputs = [ "out" "man" "dev" ];
 
   nativeBuildInputs = [ autoreconfHook ];
 

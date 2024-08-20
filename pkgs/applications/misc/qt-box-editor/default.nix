@@ -20,12 +20,7 @@ mkDerivation {
     hash = "sha256-3dWnAu0CLO3atjbC1zJEnL3vzsIEecDDDhW3INMfCv4=";
   };
 
-  buildInputs = [
-    qtbase
-    qtsvg
-    leptonica
-    tesseract4
-  ];
+  buildInputs = [ qtbase qtsvg leptonica tesseract4 ];
 
   nativeBuildInputs = [ qmake ];
 

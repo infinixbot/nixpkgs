@@ -38,13 +38,7 @@ let
   '';
 
   databaseSettingsOpts = with types; {
-    freeformType = oneOf [
-      (listOf str)
-      (listOf (attrsOf anything))
-      str
-      int
-      bool
-    ];
+    freeformType = oneOf [ (listOf str) (listOf (attrsOf anything)) str int bool ];
 
     options = {
       "app.notify_emails" = mkOption {
@@ -55,12 +49,7 @@ let
 
       "privacy.exportable" = mkOption {
         type = listOf str;
-        default = [
-          "profile"
-          "subscriptions"
-          "campaign_views"
-          "link_clicks"
-        ];
+        default = [ "profile" "subscriptions" "campaign_views" "link_clicks" ];
         description = "List of fields which can be exported through an automatic export request";
       };
 
@@ -90,11 +79,7 @@ let
               default = 1;
             };
             tls_type = mkOption {
-              type = types.enum [
-                "none"
-                "STARTTLS"
-                "TLS"
-              ];
+              type = types.enum [ "none" "STARTTLS" "TLS" ];
               description = "Type of TLS authentication with the SMTP server";
             };
           };
@@ -224,10 +209,7 @@ in
         NoNewPrivileges = true;
         CapabilityBoundingSet = "";
         SystemCallArchitectures = "native";
-        SystemCallFilter = [
-          "@system-service"
-          "~@privileged"
-        ];
+        SystemCallFilter = [ "@system-service" "~@privileged" ];
         PrivateDevices = true;
         ProtectControlGroups = true;
         ProtectKernelTunables = true;
@@ -237,11 +219,7 @@ in
         UMask = "0027";
         MemoryDenyWriteExecute = true;
         LockPersonality = true;
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-          "AF_UNIX"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_UNIX" ];
         ProtectKernelModules = true;
         PrivateUsers = true;
       };

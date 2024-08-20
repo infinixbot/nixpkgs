@@ -22,12 +22,7 @@ stdenv.mkDerivation {
     inherit sha256;
   };
 
-  outputs = [
-    "bin"
-    "man"
-    "doc"
-    "out"
-  ];
+  outputs = [ "bin" "man" "doc" "out" ];
 
   PREFIX = (placeholder "out");
   BINPREFIX = "${placeholder "bin"}/bin";

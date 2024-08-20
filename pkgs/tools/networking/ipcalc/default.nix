@@ -38,12 +38,7 @@ stdenv.mkDerivation rec {
       --replace /usr/share/GeoIP /var/lib/GeoIP
   '';
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    ronn
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config ronn ];
 
   buildInputs = [ geoip ];
 

@@ -34,9 +34,6 @@ buildNpmPackage rec {
     description = "Simple IRC web client";
     homepage = "https://git.sr.ht/~emersion/gamja";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [
-      motiejus
-      apfelkuchen6
-    ];
+    maintainers = with maintainers; [ motiejus apfelkuchen6 ];
   };
 }

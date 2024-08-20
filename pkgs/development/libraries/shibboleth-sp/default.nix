@@ -25,21 +25,9 @@ stdenv.mkDerivation rec {
     sha256 = "1qb4dbz5gk10b9w1rf6f4vv7c2wb3a8bfzif6yiaq96ilqad7gdr";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
   buildInputs =
-    [
-      boost
-      fcgi
-      openssl
-      opensaml-cpp
-      log4shib
-      xercesc
-      xml-security-c
-      xml-tooling-c
-    ]
+    [ boost fcgi openssl opensaml-cpp log4shib xercesc xml-security-c xml-tooling-c ]
     ++ lib.optionals stdenv.isDarwin (
       with darwin.apple_sdk.frameworks;
       [

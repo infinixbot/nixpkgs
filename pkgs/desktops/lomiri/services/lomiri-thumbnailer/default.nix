@@ -218,10 +218,7 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "lomiri-thumbnailer-admin";
     homepage = "https://gitlab.com/ubports/development/core/lomiri-thumbnailer";
     changelog = "https://gitlab.com/ubports/development/core/lomiri-thumbnailer/-/blob/${finalAttrs.version}/ChangeLog";
-    license = with licenses; [
-      gpl3Only
-      lgpl3Only
-    ];
+    license = with licenses; [ gpl3Only lgpl3Only ];
     maintainers = teams.lomiri.members;
     platforms = platforms.linux;
     pkgConfigModules = [

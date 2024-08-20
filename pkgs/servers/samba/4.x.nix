@@ -85,11 +85,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-+Tw69SlTQNCBBsfA3PuF5PhQV9/RRYeqiBe+sxr/iPc=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
   patches = [
     ./4.x-no-persistent-install.patch
@@ -148,33 +144,16 @@ stdenv.mkDerivation (finalAttrs: {
       tdb
       libxcrypt
     ]
-    ++ optionals stdenv.isLinux [
-      liburing
-      systemd
-    ]
+    ++ optionals stdenv.isLinux [ liburing systemd ]
     ++ optionals stdenv.isDarwin [ libiconv ]
-    ++ optionals enableLDAP [
-      openldap.dev
-      python3Packages.markdown
-    ]
-    ++ optionals (!enableLDAP && stdenv.isLinux) [
-      ldb
-      talloc
-      tevent
-    ]
+    ++ optionals enableLDAP [ openldap.dev python3Packages.markdown ]
+    ++ optionals (!enableLDAP && stdenv.isLinux) [ ldb talloc tevent ]
     ++ optional (enablePrinting && stdenv.isLinux) cups
     ++ optional enableMDNS avahi
-    ++ optionals enableDomainController [
-      gpgme
-      lmdb
-      python3Packages.dnspython
-    ]
+    ++ optionals enableDomainController [ gpgme lmdb python3Packages.dnspython ]
     ++ optional enableRegedit ncurses
     ++ optional (enableCephFS && stdenv.isLinux) (lib.getDev ceph)
-    ++ optionals (enableGlusterFS && stdenv.isLinux) [
-      glusterfs
-      libuuid
-    ]
+    ++ optionals (enableGlusterFS && stdenv.isLinux) [ glusterfs libuuid ]
     ++ optional enableAcl acl
     ++ optional enableLibunwind libunwind
     ++ optional enablePam pam;
@@ -236,11 +215,7 @@ stdenv.mkDerivation (finalAttrs: {
   # module, which works correctly in all cases.
   PYTHON_CONFIG = "/invalid";
 
-  pythonPath = [
-    python3Packages.dnspython
-    python3Packages.markdown
-    tdb
-  ];
+  pythonPath = [ python3Packages.dnspython python3Packages.markdown tdb ];
 
   preBuild = ''
     export MAKEFLAGS="-j $NIX_BUILD_CORES"

@@ -49,14 +49,7 @@ lib.fix (
         buildEnv ({ inherit (args) name paths; })
         // lib.optionalAttrs (args ? extraOutputsToInstall) { inherit (args) extraOutputsToInstall; }
       ).overrideAttrs
-        (
-          removeAttrs args [
-            "extraOutputsToInstall"
-            "name"
-            "paths"
-            "pkgs"
-          ]
-        );
+        (removeAttrs args [ "extraOutputsToInstall" "name" "paths" "pkgs" ]);
 
     ### texlive.combine backward compatibility
     # if necessary, convert old style { pkgs = [ ... ]; } packages to attribute sets
@@ -78,12 +71,7 @@ lib.fix (
           packages = ensurePkgSets (requiredTeXPackages tl);
           runtime = builtins.partition (
             p:
-            p.outputSpecified or false
-            -> builtins.elem (p.tlOutputName or p.outputName) [
-              "out"
-              "tex"
-              "tlpkg"
-            ]
+            p.outputSpecified or false -> builtins.elem (p.tlOutputName or p.outputName) [ "out" "tex" "tlpkg" ]
           ) packages;
           keySet = p: {
             key =
@@ -162,13 +150,7 @@ lib.fix (
           ++ specifiedOutputs.texsource or [ ];
 
       # outputs that do not become part of the environment
-      nonEnvOutputs = lib.subtractLists [
-        "out"
-        "tex"
-        "texdoc"
-        "texsource"
-        "tlpkg"
-      ] otherOutputNames;
+      nonEnvOutputs = lib.subtractLists [ "out" "tex" "texdoc" "texsource" "tlpkg" ] otherOutputNames;
 
       # packages that contribute to config files and formats
       fontMaps = lib.filter (p: p ? fontMaps && (p.tlOutputName or p.outputName == "tex")) nonbin;
@@ -188,13 +170,7 @@ lib.fix (
       formats = map (
         p:
         self {
-          requiredTeXPackages =
-            ps:
-            [
-              ps.scheme-infraonly
-              p
-            ]
-            ++ hyphenPatterns;
+          requiredTeXPackages = ps: [ ps.scheme-infraonly p ] ++ hyphenPatterns;
           __formatsOf = p;
         }
       ) sortedFormatPkgs;
@@ -204,13 +180,7 @@ lib.fix (
     # and `grep -IR rungs "$TEXMFDIST"`
     # and ignoring luatex, perl, and shell scripts (those must be patched using postFixup)
     needsGhostscript = lib.any (
-      p:
-      lib.elem p.pname [
-        "context"
-        "dvipdfmx"
-        "latex-papersize"
-        "lyluatex"
-      ]
+      p: lib.elem p.pname [ "context" "dvipdfmx" "latex-papersize" "lyluatex" ]
     ) pkgList.bin;
 
     name =
@@ -342,13 +312,7 @@ lib.fix (
       }:
       lib.optionalString (!enabled) "#! "
       + "${name} ${engine} ${lib.concatStringsSep "," patterns} ${options}";
-    fmtutilLines =
-      { pname, formats, ... }:
-      [
-        "#"
-        "# from ${pname}:"
-      ]
-      ++ map fmtutilLine formats;
+    fmtutilLines = { pname, formats, ... }: [ "#" "# from ${pname}:" ] ++ map fmtutilLine formats;
 
     # TeXLive::TLOBJ::language_dat_lines
     langDatLine =
@@ -450,12 +414,7 @@ lib.fix (
           perl
         ];
 
-        buildInputs = [
-          coreutils
-          gawk
-          gnugrep
-          gnused
-        ] ++ lib.optional needsGhostscript ghostscript;
+        buildInputs = [ coreutils gawk gnugrep gnused ] ++ lib.optional needsGhostscript ghostscript;
 
         inherit meta passthru __combine;
         __formatsOf = __formatsOf.pname or null;

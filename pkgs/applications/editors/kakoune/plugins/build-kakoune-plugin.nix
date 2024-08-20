@@ -18,10 +18,7 @@ rec {
       ...
     }:
     stdenv.mkDerivation (
-      (builtins.removeAttrs attrs [
-        "namePrefix"
-        "path"
-      ])
+      (builtins.removeAttrs attrs [ "namePrefix" "path" ])
       // {
         name = namePrefix + name;
 

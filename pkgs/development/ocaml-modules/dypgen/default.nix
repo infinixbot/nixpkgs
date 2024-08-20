@@ -35,10 +35,7 @@ stdenv.mkDerivation rec {
   pname = "ocaml${ocaml.version}-dypgen";
   inherit (params) src version;
 
-  nativeBuildInputs = [
-    ocaml
-    findlib
-  ];
+  nativeBuildInputs = [ ocaml findlib ];
 
   strictDeps = true;
 

@@ -3,10 +3,7 @@ import ./make-test-python.nix (
   {
     name = "systemd-journal-gateway";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        minijackson
-        raitobezarius
-      ];
+      maintainers = [ minijackson raitobezarius ];
     };
 
     # Named client for coherence with the systemd-journal-upload test, and for

@@ -20,20 +20,9 @@ assert lib.versions.majorMinor wineUnstable.version == lib.versions.majorMinor p
 
 (wineUnstable.override { wineRelease = "staging"; }).overrideAttrs (self: {
   buildInputs = build-inputs (
-    [
-      "perl"
-      "autoconf"
-      "gitMinimal"
-    ]
-    ++ lib.optional stdenv.isLinux "util-linux"
+    [ "perl" "autoconf" "gitMinimal" ] ++ lib.optional stdenv.isLinux "util-linux"
   ) self.buildInputs;
-  nativeBuildInputs = [
-    autoconf
-    hexdump
-    perl
-    python3
-    gitMinimal
-  ] ++ self.nativeBuildInputs;
+  nativeBuildInputs = [ autoconf hexdump perl python3 gitMinimal ] ++ self.nativeBuildInputs;
 
   prePatch =
     self.prePatch or ""

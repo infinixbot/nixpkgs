@@ -33,12 +33,7 @@ beamPackages.mixRelease rec {
 
   postInstall = ''
     wrapProgram $out/bin/livebook \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          elixir
-          erlang
-        ]
-      } \
+      --prefix PATH : ${lib.makeBinPath [ elixir erlang ]} \
       --set MIX_REBAR3 ${rebar3}/bin/rebar3
   '';
 
@@ -50,10 +45,7 @@ beamPackages.mixRelease rec {
     license = licenses.asl20;
     homepage = "https://livebook.dev/";
     description = "Automate code & data workflows with interactive Elixir notebooks";
-    maintainers = with maintainers; [
-      munksgaard
-      scvalex
-    ];
+    maintainers = with maintainers; [ munksgaard scvalex ];
     platforms = platforms.unix;
   };
 }

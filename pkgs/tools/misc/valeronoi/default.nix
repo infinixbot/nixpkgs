@@ -46,10 +46,7 @@ stdenv.mkDerivation rec {
     description = "WiFi mapping companion app for Valetudo";
     license = licenses.gpl3Only;
     platforms = [ "x86_64-linux" ];
-    maintainers = with maintainers; [
-      nova-madeline
-      maeve
-    ];
+    maintainers = with maintainers; [ nova-madeline maeve ];
     mainProgram = "valeronoi";
   };
 }

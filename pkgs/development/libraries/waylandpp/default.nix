@@ -52,33 +52,10 @@ stdenv.mkDerivation rec {
     fontDirectories = [ ];
   });
 
-  nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-    ]
-    ++ lib.optionals docSupport [
-      doxygen
-      graphviz
-    ];
-  buildInputs = [
-    pugixml
-    wayland
-    libGL
-    libffi
-  ];
+  nativeBuildInputs = [ cmake pkg-config ] ++ lib.optionals docSupport [ doxygen graphviz ];
+  buildInputs = [ pugixml wayland libGL libffi ];
 
-  outputs =
-    [
-      "bin"
-      "dev"
-      "lib"
-      "out"
-    ]
-    ++ lib.optionals docSupport [
-      "doc"
-      "devman"
-    ];
+  outputs = [ "bin" "dev" "lib" "out" ] ++ lib.optionals docSupport [ "doc" "devman" ];
 
   # Resolves the warning "Fontconfig error: No writable cache directories"
   preBuild = ''
@@ -89,10 +66,7 @@ stdenv.mkDerivation rec {
     description = "Wayland C++ binding";
     mainProgram = "wayland-scanner++";
     homepage = "https://github.com/NilsBrause/waylandpp/";
-    license = with lib.licenses; [
-      bsd2
-      hpnd
-    ];
+    license = with lib.licenses; [ bsd2 hpnd ];
     maintainers = with lib.maintainers; [ minijackson ];
   };
 }

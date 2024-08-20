@@ -20,10 +20,7 @@
     version = "1.2.2";
   };
   facter = {
-    dependencies = [
-      "hocon"
-      "thor"
-    ];
+    dependencies = [ "hocon" "thor" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

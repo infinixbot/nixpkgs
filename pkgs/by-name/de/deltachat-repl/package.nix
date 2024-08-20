@@ -20,10 +20,7 @@ rustPlatform.buildRustPackage {
     pkg-config
   ];
 
-  cargoBuildFlags = [
-    "--package"
-    "deltachat-repl"
-  ];
+  cargoBuildFlags = [ "--package" "deltachat-repl" ];
 
   doCheck = false;
 

@@ -30,12 +30,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = with ocamlPackages; [
-    ocaml
-    dune_3
-    findlib
-    ocamlbuild
-  ];
+  nativeBuildInputs = with ocamlPackages; [ ocaml dune_3 findlib ocamlbuild ];
 
   buildInputs =
     lib.optionals stdenv.isDarwin [ CoreServices ]

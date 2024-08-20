@@ -36,24 +36,8 @@ let
       emulator = "35.1.4";
     };
 
-    platforms = [
-      "23"
-      "24"
-      "25"
-      "26"
-      "27"
-      "28"
-      "29"
-      "30"
-      "31"
-      "32"
-      "33"
-      "34"
-    ];
-    abis = [
-      "armeabi-v7a"
-      "arm64-v8a"
-    ];
+    platforms = [ "23" "24" "25" "26" "27" "28" "29" "30" "31" "32" "33" "34" ];
+    abis = [ "armeabi-v7a" "arm64-v8a" ];
     extras = [ "extras;google;gcm" ];
   };
 
@@ -139,12 +123,7 @@ let
 in
 pkgs.mkShell rec {
   name = "androidenv-demo";
-  packages = [
-    androidSdk
-    platformTools
-    jdk
-    pkgs.android-studio
-  ];
+  packages = [ androidSdk platformTools jdk pkgs.android-studio ];
 
   LANG = "C.UTF-8";
   LC_ALL = "C.UTF-8";
@@ -176,10 +155,7 @@ pkgs.mkShell rec {
     shell-sdkmanager-licenses-test =
       pkgs.runCommand "shell-sdkmanager-licenses-test"
         {
-          nativeBuildInputs = [
-            androidSdk
-            jdk
-          ];
+          nativeBuildInputs = [ androidSdk jdk ];
         }
         ''
           if [[ ! "$(sdkmanager --licenses)" =~ "All SDK package licenses accepted." ]]; then
@@ -192,10 +168,7 @@ pkgs.mkShell rec {
     shell-sdkmanager-packages-test =
       pkgs.runCommand "shell-sdkmanager-packages-test"
         {
-          nativeBuildInputs = [
-            androidSdk
-            jdk
-          ];
+          nativeBuildInputs = [ androidSdk jdk ];
         }
         ''
           output="$(sdkmanager --list)"

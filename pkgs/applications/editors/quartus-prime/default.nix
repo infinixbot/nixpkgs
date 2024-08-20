@@ -8,14 +8,7 @@
   unstick,
   quartus-prime-lite,
   withQuesta ? true,
-  supportedDevices ? [
-    "Arria II"
-    "Cyclone V"
-    "Cyclone IV"
-    "Cyclone 10 LP"
-    "MAX II/V"
-    "MAX 10 FPGA"
-  ],
+  supportedDevices ? [ "Arria II" "Cyclone V" "Cyclone IV" "Cyclone 10 LP" "MAX II/V" "MAX 10 FPGA" ],
   unwrapped ? callPackage ./quartus.nix { inherit unstick supportedDevices withQuesta; },
   extraProfile ? "",
 }:

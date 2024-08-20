@@ -8,11 +8,7 @@ buildGoModule rec {
   pname = "spire";
   version = "1.10.1";
 
-  outputs = [
-    "out"
-    "agent"
-    "server"
-  ];
+  outputs = [ "out" "agent" "server" ];
 
   src = fetchFromGitHub {
     owner = "spiffe";
@@ -23,10 +19,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-x+3UkUs/WJf8CW+FljeHOkYC2oMniknTbJd0DVwnrU8=";
 
-  subPackages = [
-    "cmd/spire-agent"
-    "cmd/spire-server"
-  ];
+  subPackages = [ "cmd/spire-agent" "cmd/spire-server" ];
 
   # Usually either the agent or server is needed for a given use case, but not both
   postInstall = ''

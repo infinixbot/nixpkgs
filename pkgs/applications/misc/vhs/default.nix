@@ -23,26 +23,13 @@ buildGoModule rec {
 
   vendorHash = "sha256-Kh5Sy7URmhsyBF35I0TaDdpSLD96MnkwIS+96+tSyO0=";
 
-  nativeBuildInputs = [
-    installShellFiles
-    makeWrapper
-  ];
+  nativeBuildInputs = [ installShellFiles makeWrapper ];
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X=main.Version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X=main.Version=${version}" ];
 
   postInstall = ''
     wrapProgram $out/bin/vhs --prefix PATH : ${
-      lib.makeBinPath (
-        lib.optionals stdenv.isLinux [ chromium ]
-        ++ [
-          ffmpeg
-          ttyd
-        ]
-      )
+      lib.makeBinPath (lib.optionals stdenv.isLinux [ chromium ] ++ [ ffmpeg ttyd ])
     }
     $out/bin/vhs man > vhs.1
     installManPage vhs.1
@@ -58,9 +45,6 @@ buildGoModule rec {
     homepage = "https://github.com/charmbracelet/vhs";
     changelog = "https://github.com/charmbracelet/vhs/releases/tag/v${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      maaslalani
-      penguwin
-    ];
+    maintainers = with maintainers; [ maaslalani penguwin ];
   };
 }

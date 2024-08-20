@@ -25,12 +25,7 @@ stdenv.mkDerivation {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    makeWrapper
-    unzip
-    ocaml
-    curl
-  ];
+  nativeBuildInputs = [ makeWrapper unzip ocaml curl ];
   buildInputs = [
     ncurses
     getconf
@@ -42,18 +37,12 @@ stdenv.mkDerivation {
     patchShebangs src/state/shellscripts
   '';
 
-  configureFlags = [
-    "--with-vendored-deps"
-    "--with-mccs"
-  ];
+  configureFlags = [ "--with-vendored-deps" "--with-mccs" ];
 
   # Dirty, but apparently ocp-build requires a TERM
   makeFlags = [ "TERM=screen" ];
 
-  outputs = [
-    "out"
-    "installer"
-  ];
+  outputs = [ "out" "installer" ];
   setOutputFlags = false;
 
   # change argv0 to "opam" as a workaround for

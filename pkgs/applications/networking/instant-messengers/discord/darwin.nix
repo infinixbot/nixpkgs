@@ -42,10 +42,7 @@ stdenv.mkDerivation {
     meta
     ;
 
-  nativeBuildInputs = [
-    undmg
-    makeWrapper
-  ];
+  nativeBuildInputs = [ undmg makeWrapper ];
 
   sourceRoot = ".";
 
@@ -83,16 +80,7 @@ stdenv.mkDerivation {
       set -x
       set -eou pipefail;
       url=$(curl -sI "https://discordapp.com/api/download/${
-        builtins.replaceStrings
-          [
-            "discord-"
-            "discord"
-          ]
-          [
-            ""
-            "stable"
-          ]
-          pname
+        builtins.replaceStrings [ "discord-" "discord" ] [ "" "stable" ] pname
       }?platform=osx&format=dmg" | grep -oP 'location: \K\S+')
       version=''${url##https://dl*.discordapp.net/apps/osx/}
       version=''${version%%/*.dmg}

@@ -49,12 +49,7 @@ rustPlatform.buildRustPackage rec {
 
   postFixup = lib.optionalString stdenv.isLinux ''
     patchelf $out/bin/cargo-ui \
-      --add-rpath ${
-        lib.makeLibraryPath [
-          fontconfig
-          libGL
-        ]
-      }
+      --add-rpath ${lib.makeLibraryPath [ fontconfig libGL ]}
   '';
 
   env = {
@@ -66,14 +61,7 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "cargo-ui";
     homepage = "https://github.com/slint-ui/cargo-ui";
     changelog = "https://github.com/slint-ui/cargo-ui/blob/v${version}/CHANGELOG.md";
-    license = with licenses; [
-      mit
-      asl20
-      gpl3Only
-    ];
-    maintainers = with maintainers; [
-      figsoda
-      matthiasbeyer
-    ];
+    license = with licenses; [ mit asl20 gpl3Only ];
+    maintainers = with maintainers; [ figsoda matthiasbeyer ];
   };
 }

@@ -54,10 +54,6 @@ buildGoModule rec {
     description = "Open Source Kubernetes Marketplace";
     mainProgram = "arkade";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      welteki
-      techknowlogick
-      qjoly
-    ];
+    maintainers = with maintainers; [ welteki techknowlogick qjoly ];
   };
 }

@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
   pname = "farstream";
   version = "0.2.9";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "https://www.freedesktop.org/software/farstream/releases/farstream/${pname}-${version}.tar.gz";

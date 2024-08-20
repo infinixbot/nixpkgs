@@ -22,10 +22,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-eeb/rejPoRhb0Ag24/MAz/iNgw6wcOouwhdELRFD0xY=";
   };
 
-  nativeBuildInputs = [
-    zip
-    unzip
-  ];
+  nativeBuildInputs = [ zip unzip ];
 
   installPhase = ''
     mkdir -p $out/share/${finalAttrs.name}
@@ -79,10 +76,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Distributed realtime computation system";
     sourceProvenance = with sourceTypes; [ binaryBytecode ];
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      edwtjo
-      vizanto
-    ];
+    maintainers = with maintainers; [ edwtjo vizanto ];
     platforms = with platforms; unix;
   };
 })

@@ -24,11 +24,7 @@ stdenv.mkDerivation rec {
   pname = "libdmapsharing";
   version = "3.9.13";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
   outputBin = "dev";
 
   src = fetchFromGitLab {

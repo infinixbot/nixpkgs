@@ -82,15 +82,7 @@ in
       };
 
       log.level = mkOption {
-        type = types.nullOr (
-          types.enum [
-            "debug"
-            "info"
-            "warn"
-            "error"
-            "fatal"
-          ]
-        );
+        type = types.nullOr (types.enum [ "debug" "info" "warn" "error" "fatal" ]);
         default = null;
         description = ''
           Only log messages with the given severity or above.
@@ -193,10 +185,7 @@ in
 
         Restart = "always";
 
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;

@@ -37,13 +37,7 @@ stdenv.mkDerivation rec {
 
   postFixup = ''
     wrapProgram ${placeholder "out"}/bin/wifish \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          dialog
-          gawk
-          wpa_supplicant
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ dialog gawk wpa_supplicant ]}
   '';
 
   meta = with lib; {

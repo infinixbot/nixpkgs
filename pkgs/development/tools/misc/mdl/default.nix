@@ -15,12 +15,7 @@ bundlerApp {
     description = "Tool to check markdown files and flag style issues";
     homepage = "https://github.com/markdownlint/markdownlint";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      gerschtli
-      manveru
-      nicknovitski
-      totoroot
-    ];
+    maintainers = with maintainers; [ gerschtli manveru nicknovitski totoroot ];
     platforms = platforms.all;
   };
 }

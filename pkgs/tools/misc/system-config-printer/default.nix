@@ -97,14 +97,7 @@ stdenv.mkDerivation rec {
 
   pythonPath =
     with python3Packages;
-    requiredPythonModules [
-      pycups
-      pycurl
-      dbus-python
-      pygobject3
-      pycairo
-      pysmbc
-    ];
+    requiredPythonModules [ pycups pycurl dbus-python pygobject3 pycairo pysmbc ];
 
   configureFlags = [
     "--with-udev-rules"
@@ -112,11 +105,7 @@ stdenv.mkDerivation rec {
     "--with-systemdsystemunitdir=${placeholder "out"}/etc/systemd/system"
   ];
 
-  stripDebugList = [
-    "bin"
-    "lib"
-    "etc/udev"
-  ];
+  stripDebugList = [ "bin" "lib" "etc/udev" ];
 
   doCheck = true;
 

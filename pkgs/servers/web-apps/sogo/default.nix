@@ -32,12 +32,7 @@ gnustep.stdenv.mkDerivation rec {
     hash = "sha256-ZmpOI1zk/TkRNFmwTXugVb9IvxYSP4LgNrApSytdI7s=";
   };
 
-  nativeBuildInputs = [
-    gnustep.make
-    makeWrapper
-    python3
-    pkg-config
-  ];
+  nativeBuildInputs = [ gnustep.make makeWrapper python3 pkg-config ];
   buildInputs = [
     gnustep.base
     sope
@@ -107,10 +102,7 @@ gnustep.stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "Very fast and scalable modern collaboration suite (groupware)";
-    license = with licenses; [
-      gpl2Only
-      lgpl21Only
-    ];
+    license = with licenses; [ gpl2Only lgpl21Only ];
     homepage = "https://sogo.nu/";
     platforms = platforms.linux;
     maintainers = [ ];

@@ -64,14 +64,8 @@ let
 
       smartmon = smartmontools.override { inherit enableMail; };
 
-      buildKernel = any (n: n == configFile) [
-        "kernel"
-        "all"
-      ];
-      buildUser = any (n: n == configFile) [
-        "user"
-        "all"
-      ];
+      buildKernel = any (n: n == configFile) [ "kernel" "all" ];
+      buildUser = any (n: n == configFile) [ "user" "all" ];
       isAtLeast22Series = versionAtLeast version "2.2.0";
 
       # XXX: You always want to build kernel modules with the same stdenv as the
@@ -126,15 +120,7 @@ let
         + optionalString isAtLeast22Series ''
           substituteInPlace ./udev/vdev_id \
             --replace "PATH=/bin:/sbin:/usr/bin:/usr/sbin" \
-             "PATH=${
-               makeBinPath [
-                 coreutils
-                 gawk
-                 gnused
-                 gnugrep
-                 systemd
-               ]
-             }"
+             "PATH=${makeBinPath [ coreutils gawk gnused gnugrep systemd ]}"
         ''
         + optionalString (!isAtLeast22Series) ''
           substituteInPlace ./etc/zfs/Makefile.am --replace "\$(sysconfdir)/zfs" "$out/etc/zfs"
@@ -143,15 +129,7 @@ let
 
           substituteInPlace ./cmd/vdev_id/vdev_id \
             --replace "PATH=/bin:/sbin:/usr/bin:/usr/sbin" \
-            "PATH=${
-              makeBinPath [
-                coreutils
-                gawk
-                gnused
-                gnugrep
-                systemd
-              ]
-            }"
+            "PATH=${makeBinPath [ coreutils gawk gnused gnugrep systemd ]}"
         ''
         + ''
           substituteInPlace ./config/zfs-build.m4 \
@@ -160,20 +138,11 @@ let
         '';
 
       nativeBuildInputs =
-        [
-          autoreconfHook269
-          nukeReferences
-        ]
+        [ autoreconfHook269 nukeReferences ]
         ++ optionals buildKernel (kernel.moduleBuildDependencies ++ [ perl ])
         ++ optional buildUser pkg-config;
       buildInputs =
-        optionals buildUser [
-          zlib
-          libuuid
-          attr
-          libtirpc
-          pam
-        ]
+        optionals buildUser [ zlib libuuid attr libtirpc pam ]
         ++ optional buildUser openssl
         ++ optional buildUser curl
         ++ optional (buildUser && enablePython) python3;
@@ -181,11 +150,7 @@ let
       # for zdb to get the rpath to libgcc_s, needed for pthread_cancel to work
       NIX_CFLAGS_LINK = "-lgcc_s";
 
-      hardeningDisable = [
-        "fortify"
-        "stackprotector"
-        "pic"
-      ];
+      hardeningDisable = [ "fortify" "stackprotector" "pic" ];
 
       configureFlags =
         [
@@ -267,17 +232,7 @@ let
 
       postFixup =
         let
-          path = "PATH=${
-            makeBinPath [
-              coreutils
-              gawk
-              gnused
-              gnugrep
-              util-linux
-              smartmon
-              sysstat
-            ]
-          }:$PATH";
+          path = "PATH=${makeBinPath [ coreutils gawk gnused gnugrep util-linux smartmon sysstat ]}:$PATH";
         in
         ''
           for i in $out/libexec/zfs/zpool.d/*; do
@@ -324,16 +279,7 @@ let
         # https://github.com/openzfs/zfs/blob/6723d1110f6daf93be93db74d5ea9f6b64c9bce5/config/always-arch.m4#L12
         platforms =
           with lib.systems.inspect.patterns;
-          map (p: p // isLinux) (
-            [
-              isx86_32
-              isx86_64
-              isPower
-              isAarch64
-              isSparc
-            ]
-            ++ isArmv7
-          );
+          map (p: p // isLinux) ([ isx86_32 isx86_64 isPower isAarch64 isSparc ] ++ isArmv7);
 
         inherit maintainers;
         mainProgram = "zfs";

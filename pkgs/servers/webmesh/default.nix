@@ -19,10 +19,7 @@ buildGoModule rec {
 
   CGO_ENABLED = 0;
 
-  subPackages = [
-    "cmd/node"
-    "cmd/wmctl"
-  ];
+  subPackages = [ "cmd/node" "cmd/wmctl" ];
 
   ldflags = [
     "-w"

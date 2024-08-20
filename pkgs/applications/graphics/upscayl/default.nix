@@ -19,10 +19,7 @@ in
 appimageTools.wrapType2 {
   inherit pname version src;
 
-  extraPkgs = pkgs: [
-    pkgs.vulkan-headers
-    pkgs.vulkan-loader
-  ];
+  extraPkgs = pkgs: [ pkgs.vulkan-headers pkgs.vulkan-loader ];
 
   extraInstallCommands = ''
     mkdir -p $out/share/{applications,pixmaps}

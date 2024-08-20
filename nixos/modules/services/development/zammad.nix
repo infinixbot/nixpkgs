@@ -103,10 +103,7 @@ in
 
       database = {
         type = mkOption {
-          type = types.enum [
-            "PostgreSQL"
-            "MySQL"
-          ];
+          type = types.enum [ "PostgreSQL" "MySQL" ];
           default = "PostgreSQL";
           example = "MySQL";
           description = "Database engine to use.";
@@ -374,8 +371,5 @@ in
     };
   };
 
-  meta.maintainers = with lib.maintainers; [
-    taeer
-    netali
-  ];
+  meta.maintainers = with lib.maintainers; [ taeer netali ];
 }

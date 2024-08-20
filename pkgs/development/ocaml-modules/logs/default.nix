@@ -42,10 +42,7 @@ let
       enabled = cmdlinerSupport;
     }
   ];
-  enable_flags = lib.concatMap (d: [
-    d.enable_flag
-    (lib.boolToString d.enabled)
-  ]) optional_deps;
+  enable_flags = lib.concatMap (d: [ d.enable_flag (lib.boolToString d.enabled) ]) optional_deps;
   optional_buildInputs = map (d: d.pkg) (lib.filter (d: d.enabled) optional_deps);
 in
 
@@ -62,12 +59,7 @@ else
       sha256 = "1jnmd675wmsmdwyb5mx5b0ac66g4c6gpv5s4mrx2j6pb0wla1x46";
     };
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-      ocamlbuild
-      topkg
-    ];
+    nativeBuildInputs = [ ocaml findlib ocamlbuild topkg ];
     buildInputs = [ topkg ] ++ optional_buildInputs;
     propagatedBuildInputs = [ result ];
 

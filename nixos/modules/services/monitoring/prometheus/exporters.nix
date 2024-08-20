@@ -351,10 +351,7 @@ let
           serviceConfig.ProtectKernelTunables = true;
           serviceConfig.ProtectSystem = mkDefault "strict";
           serviceConfig.RemoveIPC = true;
-          serviceConfig.RestrictAddressFamilies = [
-            "AF_INET"
-            "AF_INET6"
-          ];
+          serviceConfig.RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
           serviceConfig.RestrictNamespaces = true;
           serviceConfig.RestrictRealtime = true;
           serviceConfig.RestrictSUIDSGID = true;

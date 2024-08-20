@@ -106,10 +106,7 @@ stdenv.mkDerivation rec {
   '';
 
   preBuild = "mkdir -p $HOME";
-  makeFlags = [
-    "LISP=${sbcl}/bin/sbcl"
-    "ACL2_MAKE_LOG=NONE"
-  ];
+  makeFlags = [ "LISP=${sbcl}/bin/sbcl" "ACL2_MAKE_LOG=NONE" ];
 
   doCheck = true;
   checkTarget = "mini-proveall";
@@ -192,10 +189,7 @@ stdenv.mkDerivation rec {
         publicDomain
         unfreeRedistributable
       ];
-    maintainers = with maintainers; [
-      kini
-      raskin
-    ];
+    maintainers = with maintainers; [ kini raskin ];
     platforms = platforms.all;
   };
 }

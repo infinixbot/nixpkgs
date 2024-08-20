@@ -15,13 +15,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-OpCArFHQNhXnwZEKCiqN8IQkiStfE7BiiiBNP8zg6os=";
   };
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-    "man"
-    "doc"
-  ];
+  outputs = [ "out" "lib" "dev" "man" "doc" ];
 
   nativeBuildInputs = [ removeReferencesTo ];
 
@@ -69,10 +63,7 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://github.com/pkgconf/pkgconf/blob/pkgconf-${finalAttrs.version}/NEWS";
     license = lib.licenses.isc;
     mainProgram = "pkgconf";
-    maintainers = with lib.maintainers; [
-      zaninime
-      AndersonTorres
-    ];
+    maintainers = with lib.maintainers; [ zaninime AndersonTorres ];
     platforms = lib.platforms.all;
   };
 })

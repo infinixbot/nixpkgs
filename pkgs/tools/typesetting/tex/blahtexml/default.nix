@@ -30,10 +30,7 @@ stdenv.mkDerivation rec {
           --replace '\usepackage[utf8x]{inputenc}' '\usepackage[utf8]{inputenc}'
       '';
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   nativeBuildInputs = [ texliveFull ]; # scheme-full needed for ucs package
   buildInputs = [ xercesc ] ++ lib.optionals stdenv.isDarwin [ libiconv ];
@@ -41,16 +38,7 @@ stdenv.mkDerivation rec {
   buildFlags =
     [ "doc" ]
     ++ (
-      if stdenv.isDarwin then
-        [
-          "blahtex-mac"
-          "blahtexml-mac"
-        ]
-      else
-        [
-          "blahtex-linux"
-          "blahtexml-linux"
-        ]
+      if stdenv.isDarwin then [ "blahtex-mac" "blahtexml-mac" ] else [ "blahtex-linux" "blahtexml-linux" ]
     );
 
   installPhase = ''

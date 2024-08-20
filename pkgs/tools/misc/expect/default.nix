@@ -45,10 +45,7 @@ tcl.mkTclDerivation rec {
     sed -i "s,/bin/stty,$(type -p stty),g" configure.in
   '';
 
-  nativeBuildInputs = [
-    autoreconfHook
-    makeWrapper
-  ];
+  nativeBuildInputs = [ autoreconfHook makeWrapper ];
 
   strictDeps = true;
   hardeningDisable = [ "format" ];
@@ -58,10 +55,7 @@ tcl.mkTclDerivation rec {
     ${lib.optionalString stdenv.isDarwin "tclWrapperArgs+=(--prefix DYLD_LIBRARY_PATH : $out/lib/expect${version})"}
   '';
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   meta = with lib; {
     description = "Tool for automating interactive applications";

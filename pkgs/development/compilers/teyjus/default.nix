@@ -19,10 +19,7 @@ buildDunePackage rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    flex
-    bison
-  ];
+  nativeBuildInputs = [ flex bison ];
 
   hardeningDisable = [ "format" ];
 

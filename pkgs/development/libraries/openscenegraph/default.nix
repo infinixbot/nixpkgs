@@ -76,11 +76,7 @@ stdenv.mkDerivation rec {
     sha256 = "00i14h82qg3xzcyd8p02wrarnmby3aiwmz0z43l50byc9f8i05n1";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-    doxygen
-  ];
+  nativeBuildInputs = [ pkg-config cmake doxygen ];
 
   buildInputs =
     lib.optionals (!stdenv.isDarwin) [
@@ -117,13 +113,7 @@ stdenv.mkDerivation rec {
     ++ lib.optional restSupport asio
     ++ lib.optionals withExamples [ fltk ]
     ++ lib.optionals (!stdenv.isDarwin) [ ]
-    ++ lib.optionals stdenv.isDarwin [
-      AGL
-      Accelerate
-      Carbon
-      Cocoa
-      Foundation
-    ]
+    ++ lib.optionals stdenv.isDarwin [ AGL Accelerate Carbon Cocoa Foundation ]
     ++ lib.optional (restSupport || colladaSupport) boost;
 
   patches = [
@@ -146,10 +136,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "3D graphics toolkit";
     homepage = "http://www.openscenegraph.org/";
-    maintainers = with maintainers; [
-      aanderse
-      raskin
-    ];
+    maintainers = with maintainers; [ aanderse raskin ];
     platforms = with platforms; linux ++ darwin;
     license = "OpenSceneGraph Public License - free LGPL-based license";
   };

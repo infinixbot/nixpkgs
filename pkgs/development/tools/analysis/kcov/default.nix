@@ -27,19 +27,9 @@ let
     };
 
     preConfigure = "patchShebangs src/bin-to-c-source.py";
-    nativeBuildInputs = [
-      cmake
-      pkg-config
-      python3
-    ];
+    nativeBuildInputs = [ cmake pkg-config python3 ];
 
-    buildInputs = [
-      curl
-      zlib
-      elfutils
-      libiberty
-      libopcodes
-    ];
+    buildInputs = [ curl zlib elfutils libiberty libopcodes ];
 
     strictDeps = true;
 
@@ -85,10 +75,7 @@ let
       license = licenses.gpl2;
       changelog = "https://github.com/SimonKagstrom/kcov/blob/master/ChangeLog";
 
-      maintainers = with maintainers; [
-        gal_bolle
-        ekleog
-      ];
+      maintainers = with maintainers; [ gal_bolle ekleog ];
       platforms = platforms.linux;
     };
   };

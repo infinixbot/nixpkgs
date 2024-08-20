@@ -17,16 +17,8 @@ stdenv.mkDerivation rec {
     sha256 = "1mb5zgixsyf86slggs756k8a5ddmj980md3ic9sa1y75xl5cqizj";
   };
 
-  nativeBuildInputs = [
-    m4
-    makeWrapper
-  ];
-  buildInputs =
-    [ libbsd ]
-    ++ (with perlPackages; [
-      perl
-      SysCPU
-    ]);
+  nativeBuildInputs = [ m4 makeWrapper ];
+  buildInputs = [ libbsd ] ++ (with perlPackages; [ perl SysCPU ]);
 
   CXXFLAGS = "-std=c++98";
 

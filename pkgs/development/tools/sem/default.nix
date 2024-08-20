@@ -18,10 +18,7 @@ buildGoModule rec {
   vendorHash = "sha256-p8+M+pRp12P7tYlFpXjU94JcJOugQpD8rFdowhonh74=";
   subPackages = [ "." ];
 
-  ldflags = [
-    "-X main.version=${version}"
-    "-X main.buildSource=nix"
-  ];
+  ldflags = [ "-X main.version=${version}" "-X main.buildSource=nix" ];
 
   postInstall = ''
     install -m755 $out/bin/cli $out/bin/sem

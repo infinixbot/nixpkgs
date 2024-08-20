@@ -8,10 +8,7 @@ buildNimPackage (
   final: prev: {
     pname = "eris";
     version = "20230722";
-    outputs = [
-      "bin"
-      "out"
-    ];
+    outputs = [ "bin" "out" ];
     requiredNimVersion = 1;
     src = fetchFromGitea {
       domain = "codeberg.org";

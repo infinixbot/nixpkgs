@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-igjDHCpKXy6EbA9Mf6peL4OTVRPYTV0Y2jbgYQuWMT4=";
   };
 
-  nativeBuildInputs = [
-    meson
-    ninja
-  ];
+  nativeBuildInputs = [ meson ninja ];
 
   meta = with lib; {
     homepage = "https://simd-everywhere.github.io";

@@ -68,15 +68,9 @@ stdenv.mkDerivation rec {
     comment = meta.description;
     desktopName = "Zotero";
     genericName = "Reference Management";
-    categories = [
-      "Office"
-      "Database"
-    ];
+    categories = [ "Office" "Database" ];
     startupNotify = true;
-    mimeTypes = [
-      "x-scheme-handler/zotero"
-      "text/plain"
-    ];
+    mimeTypes = [ "x-scheme-handler/zotero" "text/plain" ];
   };
 
   installPhase = ''
@@ -123,9 +117,6 @@ stdenv.mkDerivation rec {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.agpl3Only;
     platforms = [ "x86_64-linux" ];
-    maintainers = with maintainers; [
-      atila
-      justanotherariel
-    ];
+    maintainers = with maintainers; [ atila justanotherariel ];
   };
 }

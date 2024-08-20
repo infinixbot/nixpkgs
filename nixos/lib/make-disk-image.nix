@@ -615,11 +615,7 @@ let
     pkgs.runCommand name
       {
         preVM = prepareImage + lib.optionalString touchEFIVars createEFIVars;
-        buildInputs = with pkgs; [
-          util-linux
-          e2fsprogs
-          dosfstools
-        ];
+        buildInputs = with pkgs; [ util-linux e2fsprogs dosfstools ];
         postVM = moveOrConvertImage + createHydraBuildProducts + postVM;
         QEMU_OPTS = lib.concatStringsSep " " (
           lib.optional useEFIBoot "-drive if=pflash,format=raw,unit=0,readonly=on,file=${efiFirmware}"

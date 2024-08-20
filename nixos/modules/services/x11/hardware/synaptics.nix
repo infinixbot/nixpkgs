@@ -118,32 +118,16 @@ in
 
       buttonsMap = mkOption {
         type = types.listOf types.int;
-        default = [
-          1
-          2
-          3
-        ];
-        example = [
-          1
-          3
-          2
-        ];
+        default = [ 1 2 3 ];
+        example = [ 1 3 2 ];
         description = "Remap touchpad buttons.";
         apply = map toString;
       };
 
       fingersMap = mkOption {
         type = types.listOf types.int;
-        default = [
-          1
-          2
-          3
-        ];
-        example = [
-          1
-          3
-          2
-        ];
+        default = [ 1 2 3 ];
+        example = [ 1 3 2 ];
         description = "Remap several-fingers taps.";
         apply = map toString;
       };

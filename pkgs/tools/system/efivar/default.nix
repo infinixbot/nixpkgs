@@ -13,12 +13,7 @@ stdenv.mkDerivation rec {
   pname = "efivar";
   version = "39";
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "bin" "out" "dev" "man" ];
 
   src = fetchFromGitHub {
     owner = "rhboot";
@@ -27,10 +22,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-s/1k5a3n33iLmSpKQT5u08xoj8ypjf2Vzln88OBrqf0=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    mandoc
-  ];
+  nativeBuildInputs = [ pkg-config mandoc ];
   buildInputs = [ popt ];
   depsBuildBuild = [ buildPackages.stdenv.cc ];
 

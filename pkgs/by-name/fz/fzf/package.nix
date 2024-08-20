@@ -25,10 +25,7 @@ buildGoModule rec {
 
   CGO_ENABLED = 0;
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   nativeBuildInputs = [ installShellFiles ];
 
@@ -90,11 +87,7 @@ buildGoModule rec {
     description = "Command-line fuzzy finder written in Go";
     homepage = "https://github.com/junegunn/fzf";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [
-      Br1ght0ne
-      ma27
-      zowoq
-    ];
+    maintainers = with lib.maintainers; [ Br1ght0ne ma27 zowoq ];
     mainProgram = "fzf";
     platforms = lib.platforms.unix;
   };

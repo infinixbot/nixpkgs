@@ -21,12 +21,7 @@ lib.throwIfNot (lib.versionAtLeast ocaml.version "4.08")
       sha256 = "Pz2g6gBts0RlsDCE3npYqxWg8W9HgoxQC+U63fHgROs=";
     };
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-      ocamlbuild
-      topkg
-    ];
+    nativeBuildInputs = [ ocaml findlib ocamlbuild topkg ];
     buildInputs = [ topkg ];
 
     strictDeps = true;

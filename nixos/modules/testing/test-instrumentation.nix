@@ -17,14 +17,8 @@ let
   qemu-common = import ../../lib/qemu-common.nix { inherit lib pkgs; };
 
   backdoorService = {
-    requires = [
-      "dev-hvc0.device"
-      "dev-${qemu-common.qemuSerialDevice}.device"
-    ];
-    after = [
-      "dev-hvc0.device"
-      "dev-${qemu-common.qemuSerialDevice}.device"
-    ];
+    requires = [ "dev-hvc0.device" "dev-${qemu-common.qemuSerialDevice}.device" ];
+    after = [ "dev-hvc0.device" "dev-${qemu-common.qemuSerialDevice}.device" ];
     script = ''
       export USER=root
       export HOME=/root
@@ -129,14 +123,8 @@ in
             # backdoor to start even earlier.
             wantedBy = [ "sysinit.target" ];
             unitConfig.DefaultDependencies = false;
-            conflicts = [
-              "shutdown.target"
-              "initrd-switch-root.target"
-            ];
-            before = [
-              "shutdown.target"
-              "initrd-switch-root.target"
-            ];
+            conflicts = [ "shutdown.target" "initrd-switch-root.target" ];
+            before = [ "shutdown.target" "initrd-switch-root.target" ];
           }
         ];
 

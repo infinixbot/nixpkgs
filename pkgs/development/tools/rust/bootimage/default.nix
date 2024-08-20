@@ -20,10 +20,7 @@ rustPlatform.buildRustPackage rec {
   meta = with lib; {
     description = "Creates a bootable disk image from a Rust OS kernel";
     homepage = "https://github.com/rust-osdev/bootimage";
-    license = with licenses; [
-      asl20
-      mit
-    ];
+    license = with licenses; [ asl20 mit ];
     maintainers = with maintainers; [ dbeckwith ];
   };
 }

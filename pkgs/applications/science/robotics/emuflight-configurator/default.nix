@@ -20,16 +20,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-7NcN1wF3BUClJBVm13VnV80N/+a2jAEIRqB/x9+GDEg=";
   };
 
-  nativeBuildInputs = [
-    wrapGAppsHook3
-    unzip
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ wrapGAppsHook3 unzip copyDesktopItems ];
 
-  buildInputs = [
-    gsettings-desktop-schemas
-    gtk3
-  ];
+  buildInputs = [ gsettings-desktop-schemas gtk3 ];
 
   installPhase = ''
     mkdir -p $out/bin $out/share/${pname}

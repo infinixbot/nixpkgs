@@ -61,9 +61,6 @@ stdenv.mkDerivation rec {
     homepage = "https://www.midori-browser.org/";
     license = with licenses; [ lgpl21Plus ];
     platforms = with platforms; linux;
-    maintainers = with maintainers; [
-      raskin
-      ramkromberg
-    ];
+    maintainers = with maintainers; [ raskin ramkromberg ];
   };
 }

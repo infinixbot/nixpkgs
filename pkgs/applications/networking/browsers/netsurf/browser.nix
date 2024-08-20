@@ -92,10 +92,7 @@ stdenv.mkDerivation (finalAttrs: {
       libwapcaplet
       nsgenbind
     ]
-    ++ lib.optionals (uilib == "framebuffer") [
-      expat
-      SDL
-    ]
+    ++ lib.optionals (uilib == "framebuffer") [ expat SDL ]
     ++ lib.optional (uilib == "gtk2") gtk2
     ++ lib.optional (uilib == "gtk3") gtk3;
 

@@ -19,10 +19,7 @@ stdenvNoCC.mkDerivation rec {
     hash = "sha256-VvotRUQks8vUqJOcYHqy6cuwaAKYg4OqtiAjaBIdBRk=";
   };
 
-  nativeBuildInputs = [
-    gnumake
-    python3Packages.fontmake
-  ];
+  nativeBuildInputs = [ gnumake python3Packages.fontmake ];
 
   buildFlags = [ "otf" ] ++ lib.optional truetype "ttf";
 

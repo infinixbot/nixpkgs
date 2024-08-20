@@ -24,9 +24,6 @@ rustPlatform.buildRustPackage rec {
       asl20 # or
       mit
     ];
-    maintainers = with maintainers; [
-      mitchmindtree
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ mitchmindtree matthiasbeyer ];
   };
 }

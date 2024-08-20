@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
   '';
 
   buildInputs = [ libgcrypt ];
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   meta = with lib; {
     description = "C library that generates TOTP and HOTP";

@@ -25,11 +25,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-LXU5VEkLF1aKYz9ynI1qQjJUwt/zKFMPYj153OgJOOI=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    automake
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook automake pkg-config ];
   hardeningDisable = [ "format" ];
 
   configureFlags = [
@@ -38,18 +34,7 @@ stdenv.mkDerivation rec {
     "--with-ngspice=${lib.getBin ngspice}/bin/ngspice"
   ];
 
-  buildInputs = with xorg; [
-    cairo
-    ghostscript
-    libSM
-    libXt
-    libICE
-    libX11
-    libXpm
-    tcl
-    tk
-    zlib
-  ];
+  buildInputs = with xorg; [ cairo ghostscript libSM libXt libICE libX11 libXpm tcl tk zlib ];
 
   meta = with lib; {
     description = "Generic drawing program tailored to circuit diagrams";
@@ -57,10 +42,6 @@ stdenv.mkDerivation rec {
     homepage = "http://opencircuitdesign.com/xcircuit";
     license = licenses.gpl2;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      john-shaffer
-      spacefrogg
-      thoughtpolice
-    ];
+    maintainers = with maintainers; [ john-shaffer spacefrogg thoughtpolice ];
   };
 }

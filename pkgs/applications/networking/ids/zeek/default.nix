@@ -23,10 +23,7 @@
 
 let
   broker = callPackage ./broker { };
-  python = python3.withPackages (p: [
-    p.gitpython
-    p.semantic-version
-  ]);
+  python = python3.withPackages (p: [ p.gitpython p.semantic-version ]);
 in
 stdenv.mkDerivation rec {
   pname = "zeek";
@@ -114,10 +111,7 @@ stdenv.mkDerivation rec {
     homepage = "https://www.zeek.org";
     changelog = "https://github.com/zeek/zeek/blob/v${version}/CHANGES";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      pSub
-      tobim
-    ];
+    maintainers = with maintainers; [ pSub tobim ];
     platforms = platforms.unix;
   };
 }

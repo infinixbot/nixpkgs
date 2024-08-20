@@ -23,21 +23,11 @@
 mkDerivation {
   pname = "libksieve";
   meta = {
-    license = with lib.licenses; [
-      gpl2Plus
-      lgpl21Plus
-      fdl12Plus
-    ];
+    license = with lib.licenses; [ gpl2Plus lgpl21Plus fdl12Plus ];
     maintainers = kdepimTeam;
   };
-  outputs = [
-    "out"
-    "dev"
-  ];
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  outputs = [ "out" "dev" ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     akonadi
     karchive

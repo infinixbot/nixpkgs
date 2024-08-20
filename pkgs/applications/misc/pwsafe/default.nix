@@ -120,10 +120,7 @@ stdenv.mkDerivation rec {
       username/password combinations that you use.
     '';
     homepage = "https://pwsafe.org/";
-    maintainers = with maintainers; [
-      c0bw3b
-      pjones
-    ];
+    maintainers = with maintainers; [ c0bw3b pjones ];
     platforms = platforms.unix;
     license = licenses.artistic2;
   };

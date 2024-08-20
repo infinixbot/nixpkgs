@@ -99,10 +99,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://clients.amazonworkspaces.com";
     license = licenses.unfree;
     mainProgram = "workspacesclient";
-    maintainers = with maintainers; [
-      mausch
-      dylanmtaylor
-    ];
+    maintainers = with maintainers; [ mausch dylanmtaylor ];
     platforms = [ "x86_64-linux" ]; # TODO Mac support
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
   };

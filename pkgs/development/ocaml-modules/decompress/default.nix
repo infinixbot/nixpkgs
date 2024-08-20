@@ -29,22 +29,8 @@ buildDunePackage rec {
   };
 
   buildInputs = [ cmdliner ];
-  propagatedBuildInputs = [
-    optint
-    checkseum
-  ];
-  checkInputs = [
-    alcotest
-    astring
-    bigstringaf
-    bos
-    ctypes
-    fmt
-    camlzip
-    base64
-    crowbar
-    rresult
-  ];
+  propagatedBuildInputs = [ optint checkseum ];
+  checkInputs = [ alcotest astring bigstringaf bos ctypes fmt camlzip base64 crowbar rresult ];
   doCheck = true;
 
   meta = {

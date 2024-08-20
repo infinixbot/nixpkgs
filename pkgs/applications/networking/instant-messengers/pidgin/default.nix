@@ -54,10 +54,7 @@ let
       sha256 = "sha256-EgBJ3I4X4JoqfSVq/yGR/4SRq7hAyMfrMZoWHi3xa6g=";
     };
 
-    nativeBuildInputs = [
-      makeWrapper
-      intltool
-    ];
+    nativeBuildInputs = [ makeWrapper intltool ];
 
     env.NIX_CFLAGS_COMPILE = "-I${gst_all_1.gst-plugins-base.dev}/include/gstreamer-1.0";
 
@@ -88,26 +85,13 @@ let
         python-with-dbus
       ]
       ++ lib.optional withOpenssl openssl
-      ++ lib.optionals withGnutls [
-        gnutls
-        libgcrypt
-      ]
-      ++ lib.optionals stdenv.isLinux [
-        gtk2
-        gtkspell2
-        farstream
-      ]
+      ++ lib.optionals withGnutls [ gnutls libgcrypt ]
+      ++ lib.optionals stdenv.isLinux [ gtk2 gtkspell2 farstream ]
       ++ lib.optional stdenv.isDarwin gtk2-x11;
 
     propagatedBuildInputs =
-      [
-        pkg-config
-        gettext
-      ]
-      ++ (with perlPackages; [
-        perl
-        XMLParser
-      ])
+      [ pkg-config gettext ]
+      ++ (with perlPackages; [ perl XMLParser ])
       ++ lib.optional stdenv.isLinux gtk2
       ++ lib.optional stdenv.isDarwin gtk2-x11;
 
@@ -130,14 +114,8 @@ let
         "--disable-gevolution"
       ]
       ++ lib.optionals withCyrus_sasl [ "--enable-cyrus-sasl=yes" ]
-      ++ lib.optionals withGnutls [
-        "--enable-gnutls=yes"
-        "--enable-nss=no"
-      ]
-      ++ lib.optionals stdenv.isDarwin [
-        "--disable-gtkspell"
-        "--disable-vv"
-      ]
+      ++ lib.optionals withGnutls [ "--enable-gnutls=yes" "--enable-nss=no" ]
+      ++ lib.optionals stdenv.isDarwin [ "--disable-gtkspell" "--disable-vv" ]
       ++ lib.optionals stdenv.cc.isClang [ "CFLAGS=-Wno-error=int-conversion" ];
 
     enableParallelBuilding = true;

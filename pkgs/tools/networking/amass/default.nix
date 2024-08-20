@@ -47,10 +47,7 @@ buildGoModule rec {
     homepage = "https://owasp.org/www-project-amass/";
     changelog = "https://github.com/OWASP/Amass/releases/tag/v${version}";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      kalbasit
-      fab
-    ];
+    maintainers = with maintainers; [ kalbasit fab ];
     mainProgram = "amass";
   };
 }

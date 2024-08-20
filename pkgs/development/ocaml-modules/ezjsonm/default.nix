@@ -18,11 +18,7 @@ buildDunePackage rec {
     hash = "sha256-CGM+Dw52eoroGTXKfnTxaTuFp5xFAtVo7t/1Fw8M13s=";
   };
 
-  propagatedBuildInputs = [
-    jsonm
-    hex
-    sexplib0
-  ];
+  propagatedBuildInputs = [ jsonm hex sexplib0 ];
 
   meta = {
     description = "Easy interface on top of the Jsonm library";

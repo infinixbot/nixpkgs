@@ -10,32 +10,18 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "youtrack"
-        "baseUrl"
-      ]
-      [
-        "services"
-        "youtrack"
-        "environmentalParameters"
-        "base-url"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "youtrack"
-        "port"
-      ]
-      [
-        "services"
-        "youtrack"
-        "environmentalParameters"
-        "listen-port"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "youtrack" "baseUrl" ] [
+      "services"
+      "youtrack"
+      "environmentalParameters"
+      "base-url"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "youtrack" "port" ] [
+      "services"
+      "youtrack"
+      "environmentalParameters"
+      "listen-port"
+    ])
     (lib.mkRemovedOptionModule [
       "services"
       "youtrack"
@@ -82,10 +68,7 @@ in
       '';
       type = lib.types.package;
       default = null;
-      relatedPackages = [
-        "youtrack_2022_3"
-        "youtrack"
-      ];
+      relatedPackages = [ "youtrack_2022_3" "youtrack" ];
     };
 
     statePath = lib.mkOption {
@@ -144,13 +127,7 @@ in
 
     environmentalParameters = lib.mkOption {
       type = lib.types.submodule {
-        freeformType =
-          with lib.types;
-          attrsOf (oneOf [
-            int
-            str
-            port
-          ]);
+        freeformType = with lib.types; attrsOf (oneOf [ int str port ]);
         options = {
           listen-address = lib.mkOption {
             type = lib.types.str;

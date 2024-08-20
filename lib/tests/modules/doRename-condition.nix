@@ -37,17 +37,8 @@ in
   };
   imports = [
     (doRename {
-      from = [
-        "services"
-        "foo"
-        "bar"
-      ];
-      to = [
-        "services"
-        "foos"
-        ""
-        "bar"
-      ];
+      from = [ "services" "foo" "bar" ];
+      to = [ "services" "foos" "" "bar" ];
       visible = true;
       warn = false;
       use = x: x;

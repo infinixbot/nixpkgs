@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Q9R5Qhk8Qodw2d99nL2aG5WGpIyvKmjzfkRK7xJzoc0=";
   };
 
-  nativeBuildInputs = [
-    unzip
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ unzip copyDesktopItems ];
 
   sourceRoot = ".";
 

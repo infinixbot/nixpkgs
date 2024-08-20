@@ -33,10 +33,7 @@ buildGoModule {
     libadwaita
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   enableParallelBuilding = true;
 

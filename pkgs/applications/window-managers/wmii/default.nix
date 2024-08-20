@@ -50,10 +50,7 @@ stdenv.mkDerivation rec {
     rm -rf $out/lib/python* $out/etc/wmii-hg/python
   '';
 
-  nativeBuildInputs = [
-    pkg-config
-    unzip
-  ];
+  nativeBuildInputs = [ pkg-config unzip ];
   buildInputs = [
     dash
     libX11

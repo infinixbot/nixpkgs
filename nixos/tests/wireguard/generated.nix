@@ -8,10 +8,7 @@ import ../make-test-python.nix (
   {
     name = "wireguard-generated";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        ma27
-        grahamc
-      ];
+      maintainers = [ ma27 grahamc ];
     };
 
     nodes = {

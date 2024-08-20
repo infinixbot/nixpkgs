@@ -7,10 +7,7 @@ buildGoModule rec {
   pname = "buildkite-agent-metrics";
   version = "5.9.7";
 
-  outputs = [
-    "out"
-    "lambda"
-  ];
+  outputs = [ "out" "lambda" ];
 
   src = fetchFromGitHub {
     owner = "buildkite";

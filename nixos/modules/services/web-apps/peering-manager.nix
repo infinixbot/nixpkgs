@@ -15,10 +15,7 @@ let
     name = "peering-manager-extraConfig.py";
     text = cfg.extraConfig;
   };
-  configFile = pkgs.concatText "configuration.py" [
-    settingsFile
-    extraConfigFile
-  ];
+  configFile = pkgs.concatText "configuration.py" [ settingsFile extraConfigFile ];
 
   pkg =
     (pkgs.peering-manager.overrideAttrs (old: {
@@ -213,14 +210,7 @@ in
       plugins = (
         ps:
         (lib.optionals cfg.enableLdap [ ps.django-auth-ldap ])
-        ++ (lib.optionals cfg.enableOidc (
-          with ps;
-          [
-            mozilla-django-oidc
-            pyopenssl
-            josepy
-          ]
-        ))
+        ++ (lib.optionals cfg.enableOidc (with ps; [ mozilla-django-oidc pyopenssl josepy ]))
       );
     };
 
@@ -245,10 +235,7 @@ in
       description = "Target for all Peering Manager services";
       wantedBy = [ "multi-user.target" ];
       wants = [ "network-online.target" ];
-      after = [
-        "network-online.target"
-        "redis-peering-manager.service"
-      ];
+      after = [ "network-online.target" "redis-peering-manager.service" ];
     };
 
     systemd.services =

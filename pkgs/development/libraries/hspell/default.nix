@@ -34,10 +34,7 @@ stdenv.mkDerivation rec {
     substituteInPlace Makefile --replace "ranlib" "${lib.getBin stdenv.cc.bintools.bintools}/bin/${stdenv.cc.targetPrefix}ranlib"
     substituteInPlace Makefile --replace "STRIP=strip" "STRIP=${lib.getBin stdenv.cc.bintools.bintools}/bin/${stdenv.cc.targetPrefix}strip"
   '';
-  nativeBuildInputs = [
-    perl
-    zlib
-  ];
+  nativeBuildInputs = [ perl zlib ];
   #  buildInputs = [ zlib ];
 
   meta = with lib; {

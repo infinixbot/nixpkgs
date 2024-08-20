@@ -90,13 +90,7 @@ stdenv.mkDerivation {
 
   dontWrapGApps = true;
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    git
-    wrapQtAppsHook
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ cmake pkg-config git wrapQtAppsHook wrapGAppsHook3 ];
 
   buildInputs =
     [
@@ -122,10 +116,7 @@ stdenv.mkDerivation {
     ]
     ++ cubeb.passthru.backendLibs
     ++ lib.optional faudioSupport faudio
-    ++ lib.optionals waylandSupport [
-      wayland
-      qtwayland
-    ];
+    ++ lib.optionals waylandSupport [ wayland qtwayland ];
 
   preFixup = ''
     qtWrapperArgs+=("''${gappsWrapperArgs[@]}")
@@ -141,17 +132,9 @@ stdenv.mkDerivation {
   meta = with lib; {
     description = "PS3 emulator/debugger";
     homepage = "https://rpcs3.net/";
-    maintainers = with maintainers; [
-      abbradar
-      neonfuz
-      ilian
-      zane
-    ];
+    maintainers = with maintainers; [ abbradar neonfuz ilian zane ];
     license = licenses.gpl2Only;
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
     mainProgram = "rpcs3";
   };
 }

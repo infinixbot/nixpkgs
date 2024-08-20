@@ -55,17 +55,9 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-Cslfys5fcZDy0oee9/nM5Bd1+Cg4s/ayXjJJOSQCL4E=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
-  nativeBuildInputs = [
-    pkg-config
-    python
-    makeWrapper
-    wafHook
-  ];
+  nativeBuildInputs = [ pkg-config python makeWrapper wafHook ];
   buildInputs =
     [
       libsamplerate

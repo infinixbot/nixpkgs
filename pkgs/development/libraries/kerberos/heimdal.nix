@@ -58,12 +58,7 @@ stdenv.mkDerivation {
     hash = "sha256-uljzQBzXrZCZjcIWfioqHN8YsbUUNy14Vo+A3vZIXzM=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-    "info"
-  ];
+  outputs = [ "out" "dev" "man" "info" ];
 
   nativeBuildInputs = [
     autoreconfHook
@@ -76,16 +71,8 @@ stdenv.mkDerivation {
   ] ++ (with perlPackages; [ JSON ]);
 
   buildInputs =
-    [
-      db
-      libedit
-      pam
-    ]
-    ++ lib.optionals (stdenv.isDarwin) [
-      CoreFoundation
-      Security
-      SystemConfiguration
-    ]
+    [ db libedit pam ]
+    ++ lib.optionals (stdenv.isDarwin) [ CoreFoundation Security SystemConfiguration ]
     ++ lib.optionals (withCJSON) [ cjson ]
     ++ lib.optionals (withCapNG) [ libcap_ng ]
     ++ lib.optionals (withMicroHTTPD) [ libmicrohttpd ]

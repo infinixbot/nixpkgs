@@ -10,10 +10,7 @@ let
   diskSize = "20G";
 in
 {
-  imports = [
-    ../profiles/headless.nix
-    ../profiles/qemu-guest.nix
-  ];
+  imports = [ ../profiles/headless.nix ../profiles/qemu-guest.nix ];
 
   system.build.brightboxImage = pkgs.vmTools.runInLinuxVM (
     pkgs.runCommand "brightbox-image"
@@ -26,26 +23,15 @@ in
         '';
 
         postVM = ''
-          PATH=$PATH:${
-            lib.makeBinPath [
-              pkgs.gnutar
-              pkgs.gzip
-            ]
-          }
+          PATH=$PATH:${lib.makeBinPath [ pkgs.gnutar pkgs.gzip ]}
           pushd $out
           ${pkgs.qemu_kvm}/bin/qemu-img convert -c -O qcow2 $diskImageBase nixos.qcow2
           rm $diskImageBase
           popd
         '';
         diskImageBase = "nixos-image-${config.system.nixos.label}-${pkgs.stdenv.hostPlatform.system}.raw";
-        buildInputs = [
-          pkgs.util-linux
-          pkgs.perl
-        ];
-        exportReferencesGraph = [
-          "closure"
-          config.system.build.toplevel
-        ];
+        buildInputs = [ pkgs.util-linux pkgs.perl ];
+        exportReferencesGraph = [ "closure" config.system.build.toplevel ];
       }
       ''
         # Create partition table
@@ -130,18 +116,12 @@ in
   systemd.services.fetch-ec2-data = {
     description = "Fetch EC2 Data";
 
-    wantedBy = [
-      "multi-user.target"
-      "sshd.service"
-    ];
+    wantedBy = [ "multi-user.target" "sshd.service" ];
     before = [ "sshd.service" ];
     wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
 
-    path = [
-      pkgs.wget
-      pkgs.iproute2
-    ];
+    path = [ pkgs.wget pkgs.iproute2 ];
 
     script = ''
       wget="wget -q --retry-connrefused -O -"

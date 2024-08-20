@@ -147,11 +147,7 @@ python3.pkgs.buildPythonApplication {
     wrapQtApp $out/bin/electrum-ltc
   '';
 
-  nativeCheckInputs = with python3.pkgs; [
-    pytestCheckHook
-    pyaes
-    pycryptodomex
-  ];
+  nativeCheckInputs = with python3.pkgs; [ pytestCheckHook pyaes pycryptodomex ];
   buildInputs = lib.optional stdenv.isLinux qtwayland;
 
   pytestFlagsArray = [ "electrum_ltc/tests" ];

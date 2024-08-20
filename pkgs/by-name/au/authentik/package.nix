@@ -31,10 +31,7 @@ let
     homepage = "https://goauthentik.io/";
     license = licenses.mit;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      jvanbruegge
-      risson
-    ];
+    maintainers = with maintainers; [ jvanbruegge risson ];
   };
 
   website = buildNpmPackage {
@@ -420,12 +417,7 @@ stdenvNoCC.mkDerivation {
     cp -r lifecycle/ak $out/bin/
 
     wrapProgram $out/bin/ak \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          (python.withPackages (ps: [ ps.authentik-django ]))
-          proxy
-        ]
-      } \
+      --prefix PATH : ${lib.makeBinPath [ (python.withPackages (ps: [ ps.authentik-django ])) proxy ]} \
       --set TMPDIR /dev/shm \
       --set PYTHONDONTWRITEBYTECODE 1 \
       --set PYTHONUNBUFFERED 1

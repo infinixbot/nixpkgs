@@ -3,10 +3,7 @@ import ./make-test-python.nix (
   {
     name = "earlyoom";
     meta = {
-      maintainers = with lib.maintainers; [
-        ncfavier
-        AndersonTorres
-      ];
+      maintainers = with lib.maintainers; [ ncfavier AndersonTorres ];
     };
 
     machine = {

@@ -16,10 +16,7 @@
 }:
 let
   metaCommon = {
-    maintainers = with lib.maintainers; [
-      leenaars
-      ehmry
-    ];
+    maintainers = with lib.maintainers; [ leenaars ehmry ];
     license = lib.licenses.bsd3;
     platforms = lib.platforms.all;
   };
@@ -29,12 +26,7 @@ rec {
   getdns = stdenv.mkDerivation rec {
     pname = "getdns";
     version = "1.7.3";
-    outputs = [
-      "out"
-      "dev"
-      "lib"
-      "man"
-    ];
+    outputs = [ "out" "dev" "lib" "man" ];
 
     src = fetchurl {
       url = "https://getdnsapi.net/releases/${pname}-${lib.concatStringsSep "-" (lib.splitVersion version)}/${pname}-${version}.tar.gz";
@@ -42,16 +34,9 @@ rec {
       sha256 = "f1404ca250f02e37a118aa00cf0ec2cbe11896e060c6d369c6761baea7d55a2c";
     };
 
-    nativeBuildInputs = [
-      cmake
-      doxygen
-    ];
+    nativeBuildInputs = [ cmake doxygen ];
 
-    buildInputs = [
-      libidn2
-      openssl
-      unbound
-    ];
+    buildInputs = [ libidn2 openssl unbound ];
 
     # https://github.com/getdnsapi/getdns/issues/517
     postPatch = ''
@@ -82,20 +67,12 @@ rec {
   stubby = stdenv.mkDerivation rec {
     pname = "stubby";
     version = "0.4.3";
-    outputs = [
-      "out"
-      "man"
-      "stubbyExampleJson"
-    ];
+    outputs = [ "out" "man" "stubbyExampleJson" ];
 
     inherit (getdns) src;
     sourceRoot = "${getdns.pname}-${getdns.version}/stubby";
 
-    nativeBuildInputs = [
-      cmake
-      doxygen
-      yq
-    ];
+    nativeBuildInputs = [ cmake doxygen yq ];
 
     buildInputs = [
       getdns

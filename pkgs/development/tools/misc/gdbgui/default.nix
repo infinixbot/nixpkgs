@@ -49,9 +49,6 @@ buildPythonApplication rec {
     homepage = "https://www.gdbgui.com/";
     license = licenses.gpl3;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      yrashk
-      dump_stack
-    ];
+    maintainers = with maintainers; [ yrashk dump_stack ];
   };
 }

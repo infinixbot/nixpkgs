@@ -24,10 +24,7 @@ stdenv.mkDerivation {
       --replace String.capitalize String.capitalize_ascii
   '';
 
-  nativeBuildInputs = [
-    pkg-config
-    ocaml
-  ];
+  nativeBuildInputs = [ pkg-config ocaml ];
   buildInputs = [ fontconfig ];
 
   strictDeps = true;

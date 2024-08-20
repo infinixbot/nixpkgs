@@ -31,9 +31,6 @@ symlinkJoin rec {
     homepage = "https://github.com/bpeel/prevodb";
     license = lib.licenses.gpl2Only;
     mainProgram = "prevo";
-    maintainers = with lib.maintainers; [
-      das-g
-      ehmry
-    ];
+    maintainers = with lib.maintainers; [ das-g ehmry ];
   };
 }

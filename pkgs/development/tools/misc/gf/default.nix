@@ -22,14 +22,8 @@ stdenv.mkDerivation {
     hash = "sha256-28Xgw/KxwZ94r/TXsdISeUtXHSips4irB0D+tEefMYE=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    pkg-config
-  ];
-  buildInputs = [
-    libX11
-    gdb
-  ] ++ lib.optional freetypeSupport freetype;
+  nativeBuildInputs = [ makeWrapper pkg-config ];
+  buildInputs = [ libX11 gdb ] ++ lib.optional freetypeSupport freetype;
 
   patches = [
     ./build-use-optional-freetype-with-pkg-config.patch

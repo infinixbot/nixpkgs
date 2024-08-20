@@ -17,10 +17,7 @@ let
     pname = "helix-gpt-node_modules";
     inherit src;
     version = pin.version;
-    impureEnvVars = lib.fetchers.proxyImpureEnvVars ++ [
-      "GIT_PROXY_COMMAND"
-      "SOCKS_SERVER"
-    ];
+    impureEnvVars = lib.fetchers.proxyImpureEnvVars ++ [ "GIT_PROXY_COMMAND" "SOCKS_SERVER" ];
     nativeBuildInputs = [ bun ];
     dontConfigure = true;
     buildPhase = ''
@@ -68,11 +65,6 @@ stdenv.mkDerivation {
     mainProgram = "helix-gpt";
     maintainers = with maintainers; [ happysalada ];
     license = with licenses; [ mit ];
-    platforms = [
-      "x86_64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-      "aarch64-linux"
-    ];
+    platforms = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" "aarch64-linux" ];
   };
 }

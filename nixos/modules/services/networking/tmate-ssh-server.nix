@@ -73,10 +73,7 @@ in
       [
         (pkgs.writeShellApplication {
           name = "tmate-client-config";
-          runtimeInputs = with pkgs; [
-            openssh
-            coreutils
-          ];
+          runtimeInputs = with pkgs; [ openssh coreutils ];
           text = ''
             RSA_SIG="$(ssh-keygen -l -E SHA256 -f "${keysDir}/ssh_host_rsa_key.pub" | cut -d ' ' -f 2)"
             ED25519_SIG="$(ssh-keygen -l -E SHA256 -f "${keysDir}/ssh_host_ed25519_key.pub" | cut -d ' ' -f 2)"

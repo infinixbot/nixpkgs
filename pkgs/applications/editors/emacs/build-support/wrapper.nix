@@ -49,11 +49,7 @@ in
 runCommand (lib.appendToName "with-packages" emacs).name
   {
     inherit emacs explicitRequires;
-    nativeBuildInputs = [
-      emacs
-      lndir
-      makeBinaryWrapper
-    ];
+    nativeBuildInputs = [ emacs lndir makeBinaryWrapper ];
 
     preferLocalBuild = true;
     allowSubstitutes = false;

@@ -33,11 +33,7 @@
 }:
 
 let
-  pythonDeps = with python3.pkgs; [
-    certifi
-    paramiko
-    pyyaml
-  ];
+  pythonDeps = with python3.pkgs; [ certifi paramiko pyyaml ];
 
   mysqlShellVersion = "9.0.1";
   mysqlServerVersion = "9.0.1";
@@ -77,18 +73,9 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   nativeBuildInputs =
-    [
-      pkg-config
-      cmake
-      git
-      bison
-      makeWrapper
-    ]
+    [ pkg-config cmake git bison makeWrapper ]
     ++ lib.optionals (!stdenv.isDarwin) [ rpcsvc-proto ]
-    ++ lib.optionals stdenv.isDarwin [
-      cctools
-      DarwinTools
-    ];
+    ++ lib.optionals stdenv.isDarwin [ cctools DarwinTools ];
 
   buildInputs =
     [

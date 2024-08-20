@@ -29,11 +29,7 @@ python3Packages.buildPythonApplication rec {
     lxml
     requests
   ];
-  pythonPath = [
-    rtmpdump
-    php
-    wget
-  ];
+  pythonPath = [ rtmpdump php wget ];
 
   doCheck = false; # tests require network access
   nativeCheckInputs = with python3Packages; [ pytestCheckHook ];

@@ -110,12 +110,7 @@ mkDerivation rec {
   postInstall = ''
     # The kdevelop! script (shell environment) needs qdbus and kioclient5 in PATH.
     wrapProgram "$out/bin/kdevelop!" \
-      --prefix PATH ":" "${
-        lib.makeBinPath [
-          qttools
-          kde-cli-tools
-        ]
-      }"
+      --prefix PATH ":" "${lib.makeBinPath [ qttools kde-cli-tools ]}"
 
     wrapQtApp "$out/bin/kdevelop"
 
@@ -137,9 +132,6 @@ mkDerivation rec {
       libraries and is under development since 1998.
     '';
     homepage = "https://www.kdevelop.org";
-    license = with licenses; [
-      gpl2Plus
-      lgpl2Plus
-    ];
+    license = with licenses; [ gpl2Plus lgpl2Plus ];
   };
 }

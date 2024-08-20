@@ -28,10 +28,7 @@ buildGoModule rec {
 
   modRoot = "src";
 
-  nativeBuildInputs = [
-    go-md2man
-    installShellFiles
-  ];
+  nativeBuildInputs = [ go-md2man installShellFiles ];
 
   ldflags = [
     "-s"

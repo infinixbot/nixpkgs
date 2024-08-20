@@ -88,9 +88,6 @@ buildPythonPackage rec {
     description = "Backend part of Paperwork (Python API, no UI)";
     homepage = "https://openpaper.work";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      aszlig
-      symphorien
-    ];
+    maintainers = with maintainers; [ aszlig symphorien ];
   };
 }

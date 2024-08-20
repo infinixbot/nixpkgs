@@ -80,10 +80,7 @@ in
     extraArgs = mkOption {
       type = with types; listOf str;
       default = [ ];
-      example = [
-        "--max-jobs=4"
-        "--debug"
-      ];
+      example = [ "--max-jobs=4" "--debug" ];
       description = ''
         Extra flags to pass to the Guix daemon service.
       '';
@@ -246,10 +243,7 @@ in
           description = "Guix daemon socket";
           before = [ "multi-user.target" ];
           listenStreams = [ "${cfg.stateDir}/guix/daemon-socket/socket" ];
-          unitConfig.RequiresMountsFor = [
-            cfg.storeDir
-            cfg.stateDir
-          ];
+          unitConfig.RequiresMountsFor = [ cfg.storeDir cfg.stateDir ];
           wantedBy = [ "sockets.target" ];
         };
 

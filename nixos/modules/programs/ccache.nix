@@ -22,11 +22,7 @@ in
       type = lib.types.listOf lib.types.str;
       description = "Nix top-level packages to be compiled using CCache";
       default = [ ];
-      example = [
-        "wxGTK32"
-        "ffmpeg"
-        "libav_all"
-      ];
+      example = [ "wxGTK32" "ffmpeg" "libav_all" ];
     };
     owner = lib.mkOption {
       type = lib.types.str;

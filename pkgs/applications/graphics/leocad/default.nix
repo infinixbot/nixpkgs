@@ -33,10 +33,7 @@ mkDerivation rec {
     sha256 = "1ifbxngkbmg6d8vv08amxbnfvlyjdwzykrjp98lbwvgb0b843ygq";
   };
 
-  nativeBuildInputs = [
-    qmake
-    qttools
-  ];
+  nativeBuildInputs = [ qmake qttools ];
 
   buildInputs = [ zlib ];
 

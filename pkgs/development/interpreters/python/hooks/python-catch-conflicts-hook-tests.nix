@@ -140,10 +140,7 @@ in
       # package depending on both dependency1 and dependency2
       toplevel = generatePythonPackage {
         pname = "catches-transitive-conflict";
-        propagatedBuildInputs = [
-          dep1
-          dep2
-        ];
+        propagatedBuildInputs = [ dep1 dep2 ];
       };
       # dep1 package depending on leaf
       dep1 = generatePythonPackage {
@@ -181,11 +178,7 @@ in
       # package depending on dependency1, dependency2 and dependency3
       toplevel = generatePythonPackage {
         pname = "catches-conflict-multiple-chains";
-        propagatedBuildInputs = [
-          dep1
-          dep2
-          dep3
-        ];
+        propagatedBuildInputs = [ dep1 dep2 dep3 ];
       };
       # dep1 package depending on leaf
       dep1 = generatePythonPackage {

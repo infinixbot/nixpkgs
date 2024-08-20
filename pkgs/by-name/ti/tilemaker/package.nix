@@ -34,20 +34,9 @@ stdenv.mkDerivation (finalAttrs: {
       --replace-fail "default_value(\"static\")" "default_value(\"$out/share/tilemaker/static\")"
   '';
 
-  nativeBuildInputs = [
-    cmake
-    installShellFiles
-  ];
+  nativeBuildInputs = [ cmake installShellFiles ];
 
-  buildInputs = [
-    boost
-    lua
-    protobuf_21
-    rapidjson
-    shapelib
-    sqlite
-    zlib
-  ];
+  buildInputs = [ boost lua protobuf_21 rapidjson shapelib sqlite zlib ];
 
   cmakeFlags = lib.optional (stdenv.hostPlatform != stdenv.buildPlatform) (
     lib.cmakeFeature "PROTOBUF_PROTOC_EXECUTABLE" "${buildPackages.protobuf}/bin/protoc"

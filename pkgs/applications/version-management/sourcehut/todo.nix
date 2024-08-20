@@ -80,9 +80,6 @@ buildPythonPackage rec {
     homepage = "https://todo.sr.ht/~sircmpwn/todo.sr.ht";
     description = "Ticket tracking service for the sr.ht network";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [
-      eadwu
-      christoph-heiss
-    ];
+    maintainers = with maintainers; [ eadwu christoph-heiss ];
   };
 }

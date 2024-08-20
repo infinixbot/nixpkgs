@@ -210,16 +210,8 @@ in
     systemd.services = {
       onlyoffice-converter = {
         description = "onlyoffice converter";
-        after = [
-          "network.target"
-          "onlyoffice-docservice.service"
-          "postgresql.service"
-        ];
-        requires = [
-          "network.target"
-          "onlyoffice-docservice.service"
-          "postgresql.service"
-        ];
+        after = [ "network.target" "onlyoffice-docservice.service" "postgresql.service" ];
+        requires = [ "network.target" "onlyoffice-docservice.service" "postgresql.service" ];
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
           ExecStart = "${cfg.package.fhs}/bin/onlyoffice-wrapper FileConverter/converter /run/onlyoffice/config";
@@ -235,16 +227,7 @@ in
       onlyoffice-docservice =
         let
           onlyoffice-prestart = pkgs.writeShellScript "onlyoffice-prestart" ''
-            PATH=$PATH:${
-              lib.makeBinPath (
-                with pkgs;
-                [
-                  jq
-                  moreutils
-                  config.services.postgresql.package
-                ]
-              )
-            }
+            PATH=$PATH:${lib.makeBinPath (with pkgs; [ jq moreutils config.services.postgresql.package ])}
             umask 077
             mkdir -p /run/onlyoffice/config/ /var/lib/onlyoffice/documentserver/sdkjs/{slide/themes,common}/ /var/lib/onlyoffice/documentserver/{fonts,server/FileConverter/bin}/
             cp -r ${cfg.package}/etc/onlyoffice/documentserver/* /run/onlyoffice/config/
@@ -286,10 +269,7 @@ in
         in
         {
           description = "onlyoffice documentserver";
-          after = [
-            "network.target"
-            "postgresql.service"
-          ];
+          after = [ "network.target" "postgresql.service" ];
           requires = [ "postgresql.service" ];
           wantedBy = [ "multi-user.target" ];
           serviceConfig = {

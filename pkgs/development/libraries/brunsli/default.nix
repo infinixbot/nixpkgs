@@ -11,10 +11,7 @@ stdenv.mkDerivation rec {
   pname = "brunsli";
   version = "0.1";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "google";

@@ -294,11 +294,7 @@ stdenv.mkDerivation {
     homepage = "https://www.openafs.org";
     license = licenses.ipl10;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      andersk
-      maggesi
-      spacefrogg
-    ];
+    maintainers = with maintainers; [ andersk maggesi spacefrogg ];
     broken = kernel.isHardened;
   };
 }

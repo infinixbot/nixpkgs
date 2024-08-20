@@ -18,15 +18,8 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-OMJ9wKNuvD1Z9KV7Bp7aIA5gWbBl9PmTdGcGegE0vqM=";
   };
 
-  buildInputs = [
-    qt6.qtwayland
-    nlohmann_json
-    qt6.qtbase
-  ];
-  nativeBuildInputs = [
-    cmake
-    qt6.wrapQtAppsHook
-  ];
+  buildInputs = [ qt6.qtwayland nlohmann_json qt6.qtbase ];
+  nativeBuildInputs = [ cmake qt6.wrapQtAppsHook ];
 
   doCheck = true;
 

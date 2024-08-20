@@ -104,10 +104,7 @@ rec {
         # Do not remove static from make files as we want a static binary
         postPatch = "";
 
-        buildInputs = [
-          glibc
-          glibc.static
-        ];
+        buildInputs = [ glibc glibc.static ];
 
         env.NIX_CFLAGS_COMPILE = "-DMINIMAL=ON";
       };
@@ -128,14 +125,7 @@ rec {
 
           vendorHash = null;
 
-          nativeBuildInputs = [
-            makeWrapper
-            pkg-config
-            go-md2man
-            go
-            libtool
-            installShellFiles
-          ];
+          nativeBuildInputs = [ makeWrapper pkg-config go-md2man go libtool installShellFiles ];
           buildInputs =
             [ sqlite ]
             ++ lib.optional withLvm lvm2
@@ -144,24 +134,11 @@ rec {
             ++ lib.optional withSeccomp libseccomp;
 
           extraPath = lib.optionals stdenv.isLinux (
-            lib.makeBinPath [
-              iproute2
-              iptables
-              e2fsprogs
-              xz
-              xfsprogs
-              procps
-              util-linux
-              git
-            ]
+            lib.makeBinPath [ iproute2 iptables e2fsprogs xz xfsprogs procps util-linux git ]
           );
 
           extraUserPath = lib.optionals (stdenv.isLinux && !clientOnly) (
-            lib.makeBinPath [
-              rootlesskit
-              slirp4netns
-              fuse-overlayfs
-            ]
+            lib.makeBinPath [ rootlesskit slirp4netns fuse-overlayfs ]
           );
 
           patches =
@@ -362,12 +339,7 @@ rec {
             To enable the docker daemon on NixOS, set the `virtualisation.docker.enable` option to `true`.
           '';
           license = licenses.asl20;
-          maintainers = with maintainers; [
-            offline
-            vdemeester
-            periklis
-            teutat3s
-          ];
+          maintainers = with maintainers; [ offline vdemeester periklis teutat3s ];
           mainProgram = "docker";
           inherit knownVulnerabilities;
         };

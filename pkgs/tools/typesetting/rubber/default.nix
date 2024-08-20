@@ -29,10 +29,7 @@ pypkgs.buildPythonApplication rec {
       --replace-fail /var/tmp /tmp
   '';
 
-  nativeBuildInputs = [
-    pypkgs.hatchling
-    texinfo
-  ];
+  nativeBuildInputs = [ pypkgs.hatchling texinfo ];
 
   checkPhase = ''
     runHook preCheck
@@ -57,10 +54,7 @@ pypkgs.buildPythonApplication rec {
     '';
     license = licenses.gpl2Plus;
     homepage = "https://gitlab.com/latex-rubber/rubber";
-    maintainers = with maintainers; [
-      ttuegel
-      peterhoeg
-    ];
+    maintainers = with maintainers; [ ttuegel peterhoeg ];
     platforms = platforms.unix;
     mainProgram = "rubber";
   };

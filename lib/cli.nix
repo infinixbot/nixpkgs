@@ -123,10 +123,7 @@ rec {
         if v == null then
           [ ]
         else if optionValueSeparator == null then
-          [
-            (mkOptionName k)
-            (lib.generators.mkValueStringDefault { } v)
-          ]
+          [ (mkOptionName k) (lib.generators.mkValueStringDefault { } v) ]
         else
           [ "${mkOptionName k}${optionValueSeparator}${lib.generators.mkValueStringDefault { } v}" ],
 

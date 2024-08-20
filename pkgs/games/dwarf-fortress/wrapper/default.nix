@@ -56,10 +56,7 @@ let
       ++ lib.optional (theme != null) ptheme
       ++ lib.optional enableDFHack dfhack'
       ++ lib.optional enableSoundSense soundSense
-      ++ lib.optionals enableTWBT' [
-        twbt.lib
-        twbt.art
-      ]
+      ++ lib.optionals enableTWBT' [ twbt.lib twbt.art ]
       ++ [ dwarf-fortress ];
 
     ignoreCollisions = true;
@@ -99,10 +96,7 @@ let
   config =
     runCommand "dwarf-fortress-config"
       {
-        nativeBuildInputs = [
-          gawk
-          makeWrapper
-        ];
+        nativeBuildInputs = [ gawk makeWrapper ];
       }
       (
         ''
@@ -164,10 +158,7 @@ let
   # from any of the paths in baseEnv.
   env = buildEnv {
     name = "dwarf-fortress-env-${dwarf-fortress.dfVersion}";
-    paths = [
-      config
-      baseEnv
-    ];
+    paths = [ config baseEnv ];
     ignoreCollisions = true;
   };
 in
@@ -242,10 +233,7 @@ lib.throwIf (enableTWBT' && !enableDFHack) "dwarf-fortress: TWBT requires DFHack
       '';
 
     doInstallCheck = stdenv.isLinux;
-    nativeInstallCheckInputs = lib.optionals stdenv.isLinux [
-      expect
-      xvfb-run
-    ];
+    nativeInstallCheckInputs = lib.optionals stdenv.isLinux [ expect xvfb-run ];
 
     installCheckPhase =
       let

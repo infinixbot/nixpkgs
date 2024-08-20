@@ -29,18 +29,12 @@ stdenv.mkDerivation (finalAttrs: {
   # format is for pythonModule conversion
   format = "other";
 
-  nativeBuildInputs =
-    [
-      cmake
-      bison
-      flex
-      git
-    ]
-    ++ optionals useCore [
-      perl
-      gsl
-    ]
-    ++ optionals stdenv.isDarwin [ xcbuild ];
+  nativeBuildInputs = [
+    cmake
+    bison
+    flex
+    git
+  ] ++ optionals useCore [ perl gsl ] ++ optionals stdenv.isDarwin [ xcbuild ];
 
   buildInputs = optionals useIv [
     xorg.libX11.dev
@@ -114,10 +108,7 @@ stdenv.mkDerivation (finalAttrs: {
     sourceProvenance = with sourceTypes; [ fromSource ];
     license = licenses.bsd3;
     homepage = "http://www.neuron.yale.edu/neuron";
-    maintainers = with maintainers; [
-      adev
-      davidcromp
-    ];
+    maintainers = with maintainers; [ adev davidcromp ];
     platforms = platforms.all;
   };
 })

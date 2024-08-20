@@ -106,10 +106,7 @@ python.pkgs.buildPythonApplication rec {
     description = "Open source self-hosted web archiving";
     homepage = "https://archivebox.io";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      siraben
-      viraptor
-    ];
+    maintainers = with maintainers; [ siraben viraptor ];
     platforms = platforms.unix;
   };
 }

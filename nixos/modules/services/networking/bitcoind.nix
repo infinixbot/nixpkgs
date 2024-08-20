@@ -134,10 +134,9 @@ let
 
         prune = mkOption {
           type = types.nullOr (
-            types.coercedTo (types.enum [
-              "disable"
-              "manual"
-            ]) (x: if x == "disable" then 0 else 1) types.ints.unsigned
+            types.coercedTo (types.enum [ "disable" "manual" ]) (
+              x: if x == "disable" then 0 else 1
+            ) types.ints.unsigned
           );
           default = null;
           example = 10000;
@@ -182,13 +181,7 @@ in
           assertion =
             (cfg.prune != null)
             -> (
-              builtins.elem cfg.prune [
-                "disable"
-                "manual"
-                0
-                1
-              ]
-              || (builtins.isInt cfg.prune && cfg.prune >= 550)
+              builtins.elem cfg.prune [ "disable" "manual" 0 1 ] || (builtins.isInt cfg.prune && cfg.prune >= 550)
             );
           message = ''
             If set, services.bitcoind.${bitcoindName}.prune has to be "disable", "manual", 0 , 1 or >= 550.

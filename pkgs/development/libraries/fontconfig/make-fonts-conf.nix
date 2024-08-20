@@ -27,15 +27,9 @@ in
       "/usr/local/share/fonts"
     ]
     # darwin paths
-    ++ lib.optionals stdenv.isDarwin [
-      "/Library/Fonts"
-      "/System/Library/Fonts"
-    ]
+    ++ lib.optionals stdenv.isDarwin [ "/Library/Fonts" "/System/Library/Fonts" ]
     # nix default profile
-    ++ [
-      "/nix/var/nix/profiles/default/lib/X11/fonts"
-      "/nix/var/nix/profiles/default/share/fonts"
-    ],
+    ++ [ "/nix/var/nix/profiles/default/lib/X11/fonts" "/nix/var/nix/profiles/default/share/fonts" ],
 }:
 
 runCommand "fonts.conf"

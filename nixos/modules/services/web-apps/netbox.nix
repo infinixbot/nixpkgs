@@ -15,10 +15,7 @@ let
     name = "netbox-extraConfig.py";
     text = cfg.extraConfig;
   };
-  configFile = pkgs.concatText "configuration.py" [
-    settingsFile
-    extraConfigFile
-  ];
+  configFile = pkgs.concatText "configuration.py" [ settingsFile extraConfigFile ];
 
   pkg =
     (cfg.package.overrideAttrs (old: {
@@ -291,10 +288,7 @@ in
       description = "Target for all NetBox services";
       wantedBy = [ "multi-user.target" ];
       wants = [ "network-online.target" ];
-      after = [
-        "network-online.target"
-        "redis-netbox.service"
-      ];
+      after = [ "network-online.target" "redis-netbox.service" ];
     };
 
     systemd.services =
@@ -379,10 +373,7 @@ in
 
           wantedBy = [ "multi-user.target" ];
 
-          after = [
-            "network-online.target"
-            "netbox.service"
-          ];
+          after = [ "network-online.target" "netbox.service" ];
           wants = [ "network-online.target" ];
 
           environment.PYTHONPATH = pkg.pythonPath;
@@ -402,10 +393,7 @@ in
 
       wantedBy = [ "multi-user.target" ];
 
-      after = [
-        "network-online.target"
-        "netbox.service"
-      ];
+      after = [ "network-online.target" "netbox.service" ];
       wants = [ "network-online.target" ];
 
       timerConfig = {

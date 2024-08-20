@@ -191,14 +191,7 @@ in
           }
         ];
 
-        path = [
-          pkgs.gitolite
-          pkgs.git
-          pkgs.perl
-          pkgs.bash
-          pkgs.diffutils
-          config.programs.ssh.package
-        ];
+        path = [ pkgs.gitolite pkgs.git pkgs.perl pkgs.bash pkgs.diffutils config.programs.ssh.package ];
         script =
           let
             rcSetupScriptIfCustomFile =

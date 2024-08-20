@@ -22,11 +22,7 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "1qak8f7g1iswgswrgkzc7idk7jmqgwrs58fhg2ai007v7j4q5z6l";
   };
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-  ];
+  outputs = [ "bin" "out" "dev" ];
 
   patches = [
     # https://github.com/nigels-com/glew/pull/342
@@ -44,11 +40,7 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = lib.optionals (!stdenv.isDarwin) [
-    libXmu
-    libXi
-    libXext
-  ];
+  buildInputs = lib.optionals (!stdenv.isDarwin) [ libXmu libXi libXext ];
   propagatedBuildInputs = if stdenv.isDarwin then [ OpenGL ] else [ libGLU ]; # GL/glew.h includes GL/glu.h
 
   cmakeDir = "cmake";

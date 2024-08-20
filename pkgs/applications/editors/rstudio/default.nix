@@ -236,10 +236,7 @@ in
       inherit description;
       homepage = "https://www.rstudio.com/";
       license = lib.licenses.agpl3Only;
-      maintainers = with lib.maintainers; [
-        ciil
-        cfhammill
-      ];
+      maintainers = with lib.maintainers; [ ciil cfhammill ];
       mainProgram = "rstudio" + lib.optionalString server "-server";
       platforms = lib.platforms.linux;
     };

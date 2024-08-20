@@ -18,13 +18,7 @@ mkDerivation {
     maintainers = [ lib.maintainers.ttuegel ];
   };
   nativeBuildInputs = [ extra-cmake-modules ];
-  buildInputs = [
-    karchive
-    kio
-    libkexiv2
-    libkdcraw
-    kdegraphics-mobipocket
-  ];
+  buildInputs = [ karchive kio libkexiv2 libkdcraw kdegraphics-mobipocket ];
 
   patches = [
     # Hardcode patches to Ghostscript so PDF thumbnails work OOTB.

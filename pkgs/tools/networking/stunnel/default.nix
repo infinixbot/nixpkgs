@@ -12,11 +12,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "stunnel";
   version = "5.72";
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
 
   src = fetchurl {
     url = "https://www.stunnel.org/archive/${lib.versions.major finalAttrs.version}.x/stunnel-${finalAttrs.version}.tar.gz";

@@ -16,11 +16,7 @@ buildPythonApplication rec {
   };
 
   nativeBuildInputs = [ setuptools-scm ];
-  propagatedBuildInputs = [
-    click
-    python-dotenv
-    pyserial
-  ];
+  propagatedBuildInputs = [ click python-dotenv pyserial ];
 
   # No tests
   doCheck = false;

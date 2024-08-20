@@ -77,12 +77,7 @@ stdenv.mkDerivation rec {
     homepage = "https://protege.stanford.edu/";
     downloadPage = "https://protege.stanford.edu/products.php#desktop-protege";
     maintainers = with maintainers; [ nessdoor ];
-    license = with licenses; [
-      asl20
-      bsd2
-      epl10
-      lgpl3
-    ];
+    license = with licenses; [ asl20 bsd2 epl10 lgpl3 ];
     platforms = platforms.linux;
     mainProgram = "run-protege";
   };

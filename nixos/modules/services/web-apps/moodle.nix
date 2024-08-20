@@ -144,10 +144,7 @@ in
 
     database = {
       type = mkOption {
-        type = types.enum [
-          "mysql"
-          "pgsql"
-        ];
+        type = types.enum [ "mysql" "pgsql" ];
         default = "mysql";
         description = "Database engine to use.";
       };
@@ -229,13 +226,7 @@ in
     };
 
     poolConfig = mkOption {
-      type =
-        with types;
-        attrsOf (oneOf [
-          str
-          int
-          bool
-        ]);
+      type = with types; attrsOf (oneOf [ str int bool ]);
       default = {
         "pm" = "dynamic";
         "pm.max_children" = 32;

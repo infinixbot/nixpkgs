@@ -151,12 +151,7 @@ jdk.overrideAttrs (oldAttrs: rec {
     done
   '';
 
-  nativeBuildInputs = [
-    git
-    autoconf
-    unzip
-    rsync
-  ] ++ oldAttrs.nativeBuildInputs;
+  nativeBuildInputs = [ git autoconf unzip rsync ] ++ oldAttrs.nativeBuildInputs;
 
   meta = with lib; {
     description = "OpenJDK fork to better support Jetbrains's products";

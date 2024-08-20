@@ -40,20 +40,10 @@ gcc9Stdenv.mkDerivation rec {
       --replace /usr/bin/perl ${perl}/bin/perl
   '';
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoconf automake pkg-config ];
 
   buildInputs =
-    [
-      perl
-      flex
-      bison
-      readline
-      libexif
-    ]
+    [ perl flex bison readline libexif ]
     ++ lib.optional x11Support SDL
     ++ lib.optional svgSupport inkscape
     ++ lib.optional asciiArtSupport aalib

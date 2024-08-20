@@ -39,17 +39,9 @@ buildKodiBinaryAddon rec {
 
   extraNativeBuildInputs = [ gtest ];
 
-  extraBuildInputs = [
-    pugixml
-    rapidjson
-  ];
+  extraBuildInputs = [ pugixml rapidjson ];
 
-  extraRuntimeDependencies = [
-    glib
-    nspr
-    nss
-    stdenv.cc.cc.lib
-  ];
+  extraRuntimeDependencies = [ glib nspr nss stdenv.cc.cc.lib ];
 
   extraInstallPhase =
     let

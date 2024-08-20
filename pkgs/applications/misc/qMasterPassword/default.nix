@@ -28,22 +28,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-4qxPjrf6r2S0l/hcs6bqfJm56jdDz+0a0xEkqGBYGBs=";
   };
 
-  buildInputs =
-    [
-      qtbase
-      qtwayland
-      openssl
-      libscrypt
-    ]
-    ++ lib.optionals x11Support [
-      libX11
-      libXtst
-    ];
-  nativeBuildInputs = [
-    cmake
-    qttools
-    wrapQtAppsHook
-  ];
+  buildInputs = [ qtbase qtwayland openssl libscrypt ] ++ lib.optionals x11Support [ libX11 libXtst ];
+  nativeBuildInputs = [ cmake qttools wrapQtAppsHook ];
   cmakeFlags = lib.optionals waylandSupport [
     "-DDISABLE_FILL_FORM_SHORTCUTS=1"
   ];

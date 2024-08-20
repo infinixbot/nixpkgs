@@ -15,9 +15,5 @@ mkKdeDerivation rec {
 
   extraBuildInputs = [ qtpositioning ];
 
-  meta.license = with lib.licenses; [
-    cc-by-40
-    cc0
-    lgpl2Plus
-  ];
+  meta.license = with lib.licenses; [ cc-by-40 cc0 lgpl2Plus ];
 }

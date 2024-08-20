@@ -29,12 +29,7 @@ stdenv.mkDerivation (finalAttrs: {
     ninja
   ];
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "man"
-  ];
+  outputs = [ "bin" "dev" "out" "man" ];
 
   mesonFlags = [
     "-Ddocs=disabled"

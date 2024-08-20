@@ -37,23 +37,14 @@ in
       extraGroups = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "wheel"
-          "docker"
-        ];
+        example = [ "wheel" "docker" ];
         description = ''
           List of extra groups that the "gocd-agent" user should be a part of.
         '';
       };
 
       packages = mkOption {
-        default = [
-          pkgs.stdenv
-          pkgs.jre
-          pkgs.git
-          config.programs.ssh.package
-          pkgs.nix
-        ];
+        default = [ pkgs.stdenv pkgs.jre pkgs.git config.programs.ssh.package pkgs.nix ];
         defaultText = literalExpression "[ pkgs.stdenv pkgs.jre pkgs.git config.programs.ssh.package pkgs.nix ]";
         type = types.listOf types.package;
         description = ''

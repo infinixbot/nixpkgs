@@ -33,23 +33,11 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    installShellFiles
-  ];
+  nativeBuildInputs = [ pkg-config installShellFiles ];
 
   # ciel has plugins which is actually bash scripts.
   # Therefore, bash is required for plugins to work.
-  buildInputs = [
-    bash
-    systemd
-    dbus
-    openssl
-    libssh2
-    libgit2
-    xz
-    zlib
-  ];
+  buildInputs = [ bash systemd dbus openssl libssh2 libgit2 xz zlib ];
 
   postInstall = ''
     mv -v "$out/bin/ciel-rs" "$out/bin/ciel"
@@ -69,10 +57,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/AOSC-Dev/ciel-rs";
     license = licenses.mit;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      A1ca7raz
-      yisuidenghua
-    ];
+    maintainers = with maintainers; [ A1ca7raz yisuidenghua ];
     mainProgram = "ciel";
   };
 }

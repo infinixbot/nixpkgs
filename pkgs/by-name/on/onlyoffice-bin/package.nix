@@ -194,9 +194,6 @@ buildFHSEnv {
     platforms = [ "x86_64-linux" ];
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.agpl3Plus;
-    maintainers = with maintainers; [
-      nh2
-      gtrunsec
-    ];
+    maintainers = with maintainers; [ nh2 gtrunsec ];
   };
 }

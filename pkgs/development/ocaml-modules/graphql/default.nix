@@ -13,11 +13,7 @@ buildDunePackage rec {
 
   duneVersion = "3";
 
-  propagatedBuildInputs = [
-    graphql_parser
-    rresult
-    yojson
-  ];
+  propagatedBuildInputs = [ graphql_parser rresult yojson ];
 
   checkInputs = [ alcotest ];
 

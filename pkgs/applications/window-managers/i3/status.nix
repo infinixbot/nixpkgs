@@ -26,23 +26,8 @@ stdenv.mkDerivation rec {
     sha256 = "0929chhvyq9hg4scpcz8r9zn3s9jvbg6a86k3wqa77qg85rh4kaw";
   };
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    perl
-    pkg-config
-    asciidoc
-    xmlto
-    docbook_xml_dtd_45
-    docbook_xsl
-  ];
-  buildInputs = [
-    libconfuse
-    yajl
-    alsa-lib
-    libpulseaudio
-    libnl
-  ];
+  nativeBuildInputs = [ meson ninja perl pkg-config asciidoc xmlto docbook_xml_dtd_45 docbook_xsl ];
+  buildInputs = [ libconfuse yajl alsa-lib libpulseaudio libnl ];
 
   meta = {
     description = "Generates a status line for i3bar, dzen2, xmobar or lemonbar";

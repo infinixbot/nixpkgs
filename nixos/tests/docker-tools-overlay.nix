@@ -5,10 +5,7 @@ import ./make-test-python.nix (
   {
     name = "docker-tools-overlay";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        lnl7
-        roberth
-      ];
+      maintainers = [ lnl7 roberth ];
     };
 
     nodes = {

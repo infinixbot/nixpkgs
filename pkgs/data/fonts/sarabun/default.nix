@@ -15,10 +15,7 @@ stdenv.mkDerivation rec {
     sha256 = "jcSQ72WK0GucZPgG7IQKrKzCOEbGgbQVl21RIKSF6A0=";
   };
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   buildPhase = ''
     mkdir -p $doc/${pname} $out/share/fonts/truetype

@@ -46,14 +46,8 @@ stdenv.mkDerivation rec {
   meta = {
     homepage = "http://www.chronox.de/libkcapi.html";
     description = "Linux Kernel Crypto API User Space Interface Library";
-    license = with lib.licenses; [
-      bsd3
-      gpl2Only
-    ];
+    license = with lib.licenses; [ bsd3 gpl2Only ];
     platforms = lib.platforms.linux;
-    maintainers = with lib.maintainers; [
-      orichter
-      thillux
-    ];
+    maintainers = with lib.maintainers; [ orichter thillux ];
   };
 }

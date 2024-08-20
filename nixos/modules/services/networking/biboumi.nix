@@ -32,13 +32,7 @@ in
         type = types.submodule {
           freeformType =
             with types;
-            (attrsOf (
-              nullOr (oneOf [
-                str
-                int
-                bool
-              ])
-            ))
+            (attrsOf (nullOr (oneOf [ str int bool ])))
             // {
               description = "settings option";
             };
@@ -222,10 +216,7 @@ in
         RootDirectory = rootDir;
         RootDirectoryStartOnly = true;
         InaccessiblePaths = [ "-+${rootDir}" ];
-        RuntimeDirectory = [
-          "biboumi"
-          (removePrefix "/run/" rootDir)
-        ];
+        RuntimeDirectory = [ "biboumi" (removePrefix "/run/" rootDir) ];
         RuntimeDirectoryMode = "700";
         StateDirectory = "biboumi";
         StateDirectoryMode = "700";
@@ -268,11 +259,7 @@ in
         ProtectSystem = "strict";
         RemoveIPC = true;
         # AF_UNIX is for /run/systemd/notify
-        RestrictAddressFamilies = [
-          "AF_UNIX"
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;

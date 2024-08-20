@@ -17,11 +17,7 @@ buildGoModule rec {
     fetchSubmodules = true;
   };
 
-  subPackages = [
-    "op-node/cmd"
-    "op-proposer/cmd"
-    "op-batcher/cmd"
-  ];
+  subPackages = [ "op-node/cmd" "op-proposer/cmd" "op-batcher/cmd" ];
 
   vendorHash = "sha256-xoflPeUeFlbMBUSas+dmBOCFOOvrBHEvYWEk7QkNW14=";
 
@@ -29,10 +25,7 @@ buildGoModule rec {
     libpcap
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     description = "Optimism is Ethereum, scaled";

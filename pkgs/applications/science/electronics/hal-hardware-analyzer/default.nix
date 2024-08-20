@@ -120,10 +120,7 @@ stdenv.mkDerivation rec {
       z3
       quazip
     ]
-    ++ (with python3Packages; [
-      python
-      pybind11
-    ])
+    ++ (with python3Packages; [ python pybind11 ])
     ++ lib.optional stdenv.cc.isClang llvmPackages.openmp;
 
   cmakeFlags = with lib.versions; [
@@ -159,9 +156,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/emsec/hal";
     license = licenses.mit;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      ris
-      shamilton
-    ];
+    maintainers = with maintainers; [ ris shamilton ];
   };
 }

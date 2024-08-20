@@ -59,10 +59,7 @@ stdenv.mkDerivation rec {
     mainProgram = "pulseview";
     homepage = "https://sigrok.org/";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      bjornfor
-      vifino
-    ];
+    maintainers = with maintainers; [ bjornfor vifino ];
     platforms = platforms.unix;
   };
 }

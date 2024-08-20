@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    cmake
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake wrapQtAppsHook ];
 
   buildInputs = [
     qtbase
@@ -39,12 +36,7 @@ stdenv.mkDerivation rec {
       --replace \$\{POLKITQT-1_POLICY_FILES_INSTALL_DIR\} $out/share/polkit-1/actions
   '';
 
-  qtWrapperArgs = [
-    "--prefix"
-    "PATH"
-    ":"
-    (lib.makeBinPath [ fio ])
-  ];
+  qtWrapperArgs = [ "--prefix" "PATH" ":" (lib.makeBinPath [ fio ]) ];
 
   meta = with lib; {
     description = "HDD and SSD benchmark tool with a friendly graphical user interface";

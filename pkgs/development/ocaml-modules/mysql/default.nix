@@ -30,10 +30,7 @@ stdenv.mkDerivation rec {
     "--libdir=$out/lib/ocaml/${ocaml.version}/site-lib/mysql"
   ];
 
-  nativeBuildInputs = [
-    ocaml
-    findlib
-  ];
+  nativeBuildInputs = [ ocaml findlib ];
 
   createFindlibDestdir = true;
 

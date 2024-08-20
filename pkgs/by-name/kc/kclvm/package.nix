@@ -40,10 +40,7 @@ rustPlatform.buildRustPackage rec {
     install_name_tool -id $out/lib/libkclvm_cli_cdylib.dylib $out/lib/libkclvm_cli_cdylib.dylib
   '';
 
-  nativeBuildInputs = [
-    pkg-config
-    protobuf
-  ];
+  nativeBuildInputs = [ pkg-config protobuf ];
 
   patches = [ ./enable_protoc_env.patch ];
 
@@ -55,9 +52,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/kcl-lang/kcl";
     license = licenses.asl20;
     platforms = platforms.linux ++ platforms.darwin;
-    maintainers = with maintainers; [
-      selfuryon
-      peefy
-    ];
+    maintainers = with maintainers; [ selfuryon peefy ];
   };
 }

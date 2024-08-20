@@ -39,17 +39,7 @@ stdenv.mkDerivation rec {
       darwin.apple_sdk.frameworks.CoreServices
     ];
 
-  nativeBuildInputs = [
-    gnulib
-    autoconf
-    bison
-    automake
-    gettext
-    gperf
-    texinfo
-    perl
-    rsync
-  ];
+  nativeBuildInputs = [ gnulib autoconf bison automake gettext gperf texinfo perl rsync ];
 
   doCheck = !stdenv.isDarwin;
 

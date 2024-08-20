@@ -5,10 +5,7 @@
   ...
 }:
 let
-  path = [
-    "deployment"
-    "autoLuks"
-  ];
+  path = [ "deployment" "autoLuks" ];
   hasAutoLuksConfig = lib.hasAttrByPath path config && (lib.attrByPath path { } config) != { };
 
   inherit (config.nixops) enableDeprecatedAutoLuks;

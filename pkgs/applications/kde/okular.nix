@@ -44,10 +44,7 @@
 mkDerivation {
   pname = "okular";
 
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
 
   buildInputs = [
     breeze-icons
@@ -100,12 +97,7 @@ mkDerivation {
     homepage = "http://www.kde.org";
     description = "KDE document viewer";
     mainProgram = "okular";
-    license = with licenses; [
-      gpl2Plus
-      lgpl21Plus
-      fdl12Plus
-      bsd3
-    ];
+    license = with licenses; [ gpl2Plus lgpl21Plus fdl12Plus bsd3 ];
     maintainers = with maintainers; [ ttuegel ];
     platforms = lib.platforms.linux;
   };

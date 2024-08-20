@@ -13,10 +13,7 @@ in
 
 {
   meta = {
-    maintainers = with lib.maintainers; [
-      danbst
-      anthonyroussel
-    ];
+    maintainers = with lib.maintainers; [ danbst anthonyroussel ];
   };
 
   ###### interface

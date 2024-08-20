@@ -30,10 +30,7 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "viceroy";
     homepage = "https://github.com/fastly/Viceroy";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      ereslibre
-      shyim
-    ];
+    maintainers = with maintainers; [ ereslibre shyim ];
     platforms = platforms.unix;
   };
 }

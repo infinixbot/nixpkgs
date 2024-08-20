@@ -54,14 +54,7 @@ buildRustPackage rec {
       SystemConfiguration
     ];
 
-  outputs = [
-    "out"
-    "fedimintCli"
-    "fedimint"
-    "gateway"
-    "gatewayCli"
-    "devimint"
-  ];
+  outputs = [ "out" "fedimintCli" "fedimint" "gateway" "gatewayCli" "devimint" ];
 
   postInstall = ''
     mkdir -p $fedimint/bin $fedimintCli/bin $gateway/bin $gatewayCli/bin $devimint/bin

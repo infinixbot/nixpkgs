@@ -91,10 +91,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://openturns.github.io/www/";
     description = "Multivariate probabilistic modeling and uncertainty treatment library";
     changelog = "https://github.com/openturns/openturns/raw/v${finalAttrs.version}/ChangeLog";
-    license = with lib.licenses; [
-      lgpl3Plus
-      gpl3Plus
-    ];
+    license = with lib.licenses; [ lgpl3Plus gpl3Plus ];
     maintainers = with lib.maintainers; [ gdinh ];
     platforms = lib.platforms.unix;
   };

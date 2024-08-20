@@ -28,10 +28,7 @@ stdenv.mkDerivation {
     pkg-config
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   buildInputs = [
     boost

@@ -20,19 +20,10 @@ stdenv.mkDerivation rec {
   };
 
   env.NIX_CFLAGS_COMPILE = "-Wno-error=implicit-fallthrough";
-  configureFlags = [
-    "--with-systemd"
-    "--with-systemdsystemunitdir=$(out)/etc/systemd/system"
-  ];
+  configureFlags = [ "--with-systemd" "--with-systemdsystemunitdir=$(out)/etc/systemd/system" ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
-  buildInputs = [
-    systemd
-    fcgi
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
+  buildInputs = [ systemd fcgi ];
 
   # systemd 230 no longer has libsystemd-daemon as a separate entity from libsystemd
   postPatch = ''

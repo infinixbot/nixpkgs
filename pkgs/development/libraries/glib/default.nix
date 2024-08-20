@@ -153,12 +153,7 @@ stdenv.mkDerivation (finalAttrs: {
       ./gmodule-rtld_local.patch
     ];
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "bin" "out" "dev" "devdoc" ];
 
   setupHook = ./setup-hook.sh;
 
@@ -217,12 +212,7 @@ stdenv.mkDerivation (finalAttrs: {
       mesonEmulatorHook
     ];
 
-  propagatedBuildInputs = [
-    zlib
-    libffi
-    gettext
-    libiconv
-  ];
+  propagatedBuildInputs = [ zlib libffi gettext libiconv ];
 
   mesonFlags =
     [
@@ -312,11 +302,7 @@ stdenv.mkDerivation (finalAttrs: {
     moveToOutput "share/doc" "$devdoc"
   '';
 
-  nativeCheckInputs = [
-    tzdata
-    desktop-file-utils
-    shared-mime-info
-  ];
+  nativeCheckInputs = [ tzdata desktop-file-utils shared-mime-info ];
 
   # Conditional necessary to break infinite recursion with passthru.tests
   preCheck = lib.optionalString finalAttrs.finalPackage.doCheck or config.doCheckByDefault or false ''
@@ -389,12 +375,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "C library of programming buildings blocks";
     homepage = "https://gitlab.gnome.org/GNOME/glib";
     license = licenses.lgpl21Plus;
-    maintainers =
-      teams.gnome.members
-      ++ (with maintainers; [
-        lovek323
-        raskin
-      ]);
+    maintainers = teams.gnome.members ++ (with maintainers; [ lovek323 raskin ]);
     pkgConfigModules = [
       "gio-2.0"
       "gobject-2.0"

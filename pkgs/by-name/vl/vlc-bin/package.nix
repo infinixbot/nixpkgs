@@ -13,11 +13,7 @@
       "universal", # not reachable by normal means
 }:
 
-assert builtins.elem variant [
-  "arm64"
-  "intel64"
-  "universal"
-];
+assert builtins.elem variant [ "arm64" "intel64" "universal" ];
 stdenv.mkDerivation (finalAttrs: {
   pname = "vlc-bin-${variant}";
   version = "3.0.21";

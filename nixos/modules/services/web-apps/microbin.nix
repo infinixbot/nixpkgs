@@ -15,15 +15,7 @@ in
     package = lib.mkPackageOption pkgs "microbin" { };
 
     settings = lib.mkOption {
-      type = lib.types.submodule {
-        freeformType =
-          with lib.types;
-          attrsOf (oneOf [
-            bool
-            int
-            str
-          ]);
-      };
+      type = lib.types.submodule { freeformType = with lib.types; attrsOf (oneOf [ bool int str ]); };
       default = { };
       example = {
         MICROBIN_PORT = 8080;
@@ -93,10 +85,7 @@ in
         ProtectKernelTunables = true;
         ProtectProc = "invisible";
         ReadWritePaths = cfg.dataDir;
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         StateDirectory = "microbin";

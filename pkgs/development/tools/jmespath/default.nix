@@ -21,10 +21,7 @@ buildGoModule rec {
     "./internal/testify"
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     description = "JMESPath implementation in Go";

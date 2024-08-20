@@ -35,20 +35,10 @@ stdenv.mkDerivation rec {
   separateDebugInfo = true;
 
   # Fixes support for gcrypt 1.6+
-  patches = [
-    ./gcrypt-fix.patch
-    ./freebsd-unistd.patch
-  ];
+  patches = [ ./gcrypt-fix.patch ./freebsd-unistd.patch ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libgcrypt
-    libgpg-error
-    libtasn1
-    optPam
-    optLibidn
-    optGnutls
-  ];
+  buildInputs = [ libgcrypt libgpg-error libtasn1 optPam optLibidn optGnutls ];
 
   configureFlags = [
     "--sysconfdir=/etc"

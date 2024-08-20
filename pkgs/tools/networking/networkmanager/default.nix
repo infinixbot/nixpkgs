@@ -68,13 +68,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-YgDqyPHT/mo+ofLEFYs8lbO5+R50zXBOl7CwUbWlSHg=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-    "man"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "devdoc" "man" "doc" ];
 
   # Right now we hardcode quite a few paths at build time. Probably we should
   # patch networkmanager to allow passing these path in config file. This will
@@ -171,10 +165,7 @@ stdenv.mkDerivation rec {
     dbus # used to get directory paths with pkg-config during configuration
   ];
 
-  propagatedBuildInputs = [
-    gnutls
-    libgcrypt
-  ];
+  propagatedBuildInputs = [ gnutls libgcrypt ];
 
   nativeBuildInputs =
     [
@@ -245,12 +236,7 @@ stdenv.mkDerivation rec {
     description = "Network configuration and management tool";
     license = licenses.gpl2Plus;
     changelog = "https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/raw/${version}/NEWS";
-    maintainers =
-      teams.freedesktop.members
-      ++ (with maintainers; [
-        domenkozar
-        obadz
-      ]);
+    maintainers = teams.freedesktop.members ++ (with maintainers; [ domenkozar obadz ]);
     platforms = platforms.linux;
     badPlatforms = [
       # Mandatory shared libraries.

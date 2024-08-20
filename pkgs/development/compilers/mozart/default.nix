@@ -48,11 +48,7 @@ stdenv.mkDerivation rec {
     cp ${bootcompiler} bootcompiler/bootcompiler.jar
   '';
 
-  nativeBuildInputs = [
-    cmake
-    makeWrapper
-    unzip
-  ];
+  nativeBuildInputs = [ cmake makeWrapper unzip ];
 
   cmakeFlags = [
     "-DBoost_USE_STATIC_LIBS=OFF"
@@ -78,10 +74,7 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     description = "Open source implementation of Oz 3";
-    maintainers = with maintainers; [
-      layus
-      h7x4
-    ];
+    maintainers = with maintainers; [ layus h7x4 ];
     license = licenses.bsd2;
     homepage = "https://mozart.github.io";
     platforms = platforms.all;

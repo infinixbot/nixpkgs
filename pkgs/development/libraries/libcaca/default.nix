@@ -38,12 +38,7 @@ stdenv.mkDerivation rec {
       xorg.libXext
     ];
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "man"
-  ];
+  outputs = [ "bin" "dev" "out" "man" ];
 
   configureFlags = [
     (if x11Support then "--enable-x11" else "--disable-x11")

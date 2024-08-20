@@ -62,10 +62,7 @@ stdenv.mkDerivation rec {
   # Patch library to use our libc, libstdc++ and others
   patchPhase =
     let
-      rpath = lib.makeLibraryPath [
-        stdenv.cc.libc
-        stdenv.cc.cc.lib
-      ];
+      rpath = lib.makeLibraryPath [ stdenv.cc.libc stdenv.cc.cc.lib ];
     in
     ''
       chmod -R +w lib
@@ -94,10 +91,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "https://dl.photoprism.app/tensorflow/";
     description = "Libtensorflow version for usage with photoprism backend";
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
     license = licenses.asl20;
     maintainers = with maintainers; [ benesim ];
   };

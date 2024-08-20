@@ -22,16 +22,9 @@ stdenv.mkDerivation rec {
     sed -i '/AC_CONFIG_MACRO_DIR/i PKG_PROG_PKG_CONFIG' configure.ac
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
   buildInputs = lib.optionals withFft [ fftw ] ++ [ speexdsp ];
 
   # TODO: Remove this will help with immediate backward compatibility

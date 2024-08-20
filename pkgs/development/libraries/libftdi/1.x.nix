@@ -32,16 +32,10 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-    ]
-    ++ optionals docSupport [
-      doxygen
-      graphviz
-    ]
-    ++ optionals pythonSupport [ swig ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+  ] ++ optionals docSupport [ doxygen graphviz ] ++ optionals pythonSupport [ swig ];
 
   buildInputs = [ libconfuse ] ++ optionals cppSupport [ boost ];
 
@@ -81,10 +75,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Library to talk to FTDI chips using libusb";
     homepage = "https://www.intra2net.com/en/developer/libftdi/";
-    license = with licenses; [
-      lgpl2Only
-      gpl2Only
-    ];
+    license = with licenses; [ lgpl2Only gpl2Only ];
     platforms = platforms.all;
     maintainers = with maintainers; [ bjornfor ];
   };

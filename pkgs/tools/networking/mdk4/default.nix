@@ -27,15 +27,9 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    libnl
-    libpcap
-  ];
+  buildInputs = [ libnl libpcap ];
 
-  makeFlags = [
-    "PREFIX=$(out)"
-    "SBINDIR=$(PREFIX)/bin"
-  ];
+  makeFlags = [ "PREFIX=$(out)" "SBINDIR=$(PREFIX)/bin" ];
 
   meta = with lib; {
     description = "Tool that injects data into wireless networks";

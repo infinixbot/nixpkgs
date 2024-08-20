@@ -50,11 +50,7 @@ stdenv.mkDerivation (
 
     strictDeps = true;
     # TODO: Add a "dev" output containing the header files.
-    outputs = [
-      "out"
-      "man"
-      "devdoc"
-    ] ++ lib.optional crossCompiling "mini";
+    outputs = [ "out" "man" "devdoc" ] ++ lib.optional crossCompiling "mini";
     setOutputFlags = false;
 
     # On FreeBSD, if Perl is built with threads support, having
@@ -79,10 +75,7 @@ stdenv.mkDerivation (
       ++ lib.optional (lib.versionAtLeast version "5.38.0") ./no-sys-dirs-5.38.0.patch
 
       ++ lib.optional stdenv.isSunOS ./ld-shared.patch
-      ++ lib.optionals stdenv.isDarwin [
-        ./cpp-precomp.patch
-        ./sw_vers.patch
-      ]
+      ++ lib.optionals stdenv.isDarwin [ ./cpp-precomp.patch ./sw_vers.patch ]
       ++ lib.optional crossCompiling ./cross.patch;
 
     # This is not done for native builds because pwd may need to come from
@@ -116,16 +109,9 @@ stdenv.mkDerivation (
     configureFlags =
       (
         if crossCompiling then
-          [
-            "-Dlibpth=\"\""
-            "-Dglibpth=\"\""
-            "-Ddefault_inc_excludes_dot"
-          ]
+          [ "-Dlibpth=\"\"" "-Dglibpth=\"\"" "-Ddefault_inc_excludes_dot" ]
         else
-          [
-            "-de"
-            "-Dcc=cc"
-          ]
+          [ "-de" "-Dcc=cc" ]
       )
       ++ [
         "-Uinstallusrbinperl"
@@ -294,10 +280,7 @@ stdenv.mkDerivation (
       sha256 = "sha256-1Zqw4sy/lD2nah0Z8rAE11tSpq1Ym9nBbatDczR+mxs=";
     };
 
-    depsBuildBuild = [
-      buildPackages.stdenv.cc
-      makeWrapper
-    ];
+    depsBuildBuild = [ buildPackages.stdenv.cc makeWrapper ];
 
     postUnpack = ''
       unpackFile ${perl-cross-src}
@@ -305,11 +288,7 @@ stdenv.mkDerivation (
       cp -R ${perl-cross-src.name}/* perl-${version}/
     '';
 
-    configurePlatforms = [
-      "build"
-      "host"
-      "target"
-    ];
+    configurePlatforms = [ "build" "host" "target" ];
 
     # TODO merge setup hooks
     setupHook = ./setup-hook-cross.sh;

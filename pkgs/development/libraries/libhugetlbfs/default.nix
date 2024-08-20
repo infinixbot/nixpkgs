@@ -14,14 +14,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-1QHfqRyOrREGlno9OCnyunOMP6wKZcs1jtKrOHDdxe8=";
   };
 
-  outputs = [
-    "bin"
-    "dev"
-    "man"
-    "doc"
-    "lib"
-    "out"
-  ];
+  outputs = [ "bin" "dev" "man" "doc" "lib" "out" ];
 
   nativeBuildInputs = [ autoreconfHook ];
 
@@ -48,14 +41,8 @@ stdenv.mkDerivation rec {
 
   # Default target builds tests as well, and the tests want a static
   # libc.
-  buildFlags = [
-    "libs"
-    "tools"
-  ];
-  installTargets = [
-    "install"
-    "install-docs"
-  ];
+  buildFlags = [ "libs" "tools" ];
+  installTargets = [ "install" "install-docs" ];
 
   meta = with lib; {
     homepage = "https://github.com/libhugetlbfs/libhugetlbfs";

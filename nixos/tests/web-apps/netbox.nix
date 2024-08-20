@@ -20,10 +20,7 @@ import ../make-test-python.nix (
     name = "netbox";
 
     meta = with lib.maintainers; {
-      maintainers = [
-        minijackson
-        n0emis
-      ];
+      maintainers = [ minijackson n0emis ];
     };
 
     nodes.machine =
@@ -90,10 +87,7 @@ import ../make-test-python.nix (
               ];
               "olcDatabase={1}mdb" = {
                 attrs = {
-                  objectClass = [
-                    "olcDatabaseConfig"
-                    "olcMdbConfig"
-                  ];
+                  objectClass = [ "olcDatabaseConfig" "olcMdbConfig" ];
                   olcDatabase = "{1}mdb";
                   olcDbDirectory = "/var/lib/openldap/db";
                   olcSuffix = ldapSuffix;

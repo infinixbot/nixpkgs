@@ -45,12 +45,7 @@ let
     "blue"
     "lavender"
   ];
-  validVariants = [
-    "latte"
-    "frappe"
-    "macchiato"
-    "mocha"
-  ];
+  validVariants = [ "latte" "frappe" "macchiato" "mocha" ];
 
   selectedSources = map (themeName: builtins.getAttr themeName sources) themeList;
   sources = {

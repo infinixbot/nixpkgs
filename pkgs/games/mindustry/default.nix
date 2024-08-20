@@ -166,10 +166,7 @@ stdenv.mkDerivation {
 
   desktopItems = lib.optional enableClient desktopItem;
 
-  gradleFlags = [
-    "-Pbuildversion=${buildVersion}"
-    "-Dorg.gradle.java.home=${jdk}"
-  ];
+  gradleFlags = [ "-Pbuildversion=${buildVersion}" "-Dorg.gradle.java.home=${jdk}" ];
 
   buildPhase =
     lib.optionalString enableServer ''
@@ -201,13 +198,7 @@ stdenv.mkDerivation {
           makeWrapper ${jdk}/bin/java $out/bin/mindustry \
             --add-flags "-jar $out/share/mindustry.jar" \
             ${lib.optionalString stdenv.isLinux "--suffix PATH : ${lib.makeBinPath [ zenity ]}"} \
-            --suffix LD_LIBRARY_PATH : ${
-              lib.makeLibraryPath [
-                libpulseaudio
-                alsa-lib
-                libjack2
-              ]
-            } \
+            --suffix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ libpulseaudio alsa-lib libjack2 ]} \
             --set ALSA_PLUGIN_DIR ${alsa-plugins}/lib/alsa-lib/''
         + lib.optionalString enableWayland ''
           \
@@ -261,11 +252,7 @@ stdenv.mkDerivation {
       binaryBytecode # deps
     ];
     license = lib.licenses.gpl3Plus;
-    maintainers = with lib.maintainers; [
-      chkno
-      fgaz
-      thekostins
-    ];
+    maintainers = with lib.maintainers; [ chkno fgaz thekostins ];
     platforms = lib.platforms.all;
     # TODO alsa-lib is linux-only, figure out what dependencies are required on Darwin
     broken = enableClient && stdenv.isDarwin;

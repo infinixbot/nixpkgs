@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
   pname = "light-locker";
   version = "1.9.0";
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   src = fetchFromGitHub {
     owner = "the-cavalry";

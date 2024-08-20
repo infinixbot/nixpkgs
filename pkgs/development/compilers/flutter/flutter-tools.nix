@@ -38,10 +38,7 @@ buildDartApplication.override { inherit dart; } rec {
   # When the JIT snapshot is being built, the application needs to run.
   # It attempts to generate configuration files, and relies on a few external
   # tools.
-  nativeBuildInputs = [
-    git
-    which
-  ];
+  nativeBuildInputs = [ git which ];
   preConfigure = ''
     export HOME=.
     export FLUTTER_ROOT="$NIX_BUILD_TOP/source"

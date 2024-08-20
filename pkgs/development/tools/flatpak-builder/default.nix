@@ -47,12 +47,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "flatpak-builder";
   version = "1.4.4";
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-    "installedTests"
-  ];
+  outputs = [ "out" "doc" "man" "installedTests" ];
 
   # fetchFromGitHub fetches an archive which does not contain the full source (https://github.com/flatpak/flatpak-builder/issues/558)
   src = fetchurl {

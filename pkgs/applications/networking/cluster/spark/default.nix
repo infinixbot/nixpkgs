@@ -38,13 +38,7 @@ let
         inherit (finalAttrs) hash;
       };
       nativeBuildInputs = [ makeWrapper ];
-      buildInputs =
-        with finalAttrs;
-        [
-          jdk
-          pysparkPython
-        ]
-        ++ lib.optional RSupport finalAttrs.R;
+      buildInputs = with finalAttrs; [ jdk pysparkPython ] ++ lib.optional RSupport finalAttrs.R;
 
       installPhase = ''
         mkdir -p "$out/opt"
@@ -79,12 +73,7 @@ let
         sourceProvenance = with lib.sourceTypes; [ binaryBytecode ];
         license = lib.licenses.asl20;
         platforms = lib.platforms.all;
-        maintainers = with lib.maintainers; [
-          thoughtpolice
-          offline
-          kamilchm
-          illustris
-        ];
+        maintainers = with lib.maintainers; [ thoughtpolice offline kamilchm illustris ];
       } // extraMeta;
     });
 in

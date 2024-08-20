@@ -35,16 +35,9 @@ stdenv.mkDerivation rec {
     inherit blas64;
   };
 
-  nativeBuildInputs = [
-    cmake
-    gfortran
-    python3
-  ];
+  nativeBuildInputs = [ cmake gfortran python3 ];
 
-  buildInputs = [
-    amd-blis
-    aocl-utils
-  ];
+  buildInputs = [ amd-blis aocl-utils ];
 
   cmakeFlags =
     [

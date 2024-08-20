@@ -54,10 +54,7 @@ perlPackages.buildPerlPackage rec {
     homepage = "https://github.com/darold/pgFormatter";
     changelog = "https://github.com/darold/pgFormatter/releases/tag/v${version}";
     maintainers = [ ];
-    license = [
-      licenses.postgresql
-      licenses.artistic2
-    ];
+    license = [ licenses.postgresql licenses.artistic2 ];
     mainProgram = "pg_format";
   };
 }

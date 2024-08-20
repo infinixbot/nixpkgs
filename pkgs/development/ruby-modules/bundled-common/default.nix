@@ -213,10 +213,7 @@ let
           in
           stdenv.mkDerivation {
             name = "${pname'}-interactive-environment";
-            nativeBuildInputs = [
-              wrappedRuby
-              basicEnv
-            ];
+            nativeBuildInputs = [ wrappedRuby basicEnv ];
             shellHook = ''
               export OLD_IRBRC=$IRBRC
               export IRBRC=${irbrc}

@@ -42,12 +42,7 @@ in
       };
 
       logLevel = mkOption {
-        type = types.enum [
-          "info"
-          "debug"
-          "warn"
-          "error"
-        ];
+        type = types.enum [ "info" "debug" "warn" "error" ];
         default = "info";
         description = ''
           Logging level.
@@ -139,10 +134,7 @@ in
         ProtectProc = "invisible";
         ProcSubset = "pid";
         RemoveIPC = true;
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;

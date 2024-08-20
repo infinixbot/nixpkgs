@@ -69,10 +69,7 @@ stdenv.mkDerivation {
     description = "Powerful yet simple to use screenshot software";
     homepage = "https://github.com/flameshot-org/flameshot";
     mainProgram = "flameshot";
-    maintainers = with maintainers; [
-      scode
-      oxalica
-    ];
+    maintainers = with maintainers; [ scode oxalica ];
     license = licenses.gpl3Plus;
     platforms = platforms.linux ++ platforms.darwin;
   };

@@ -60,10 +60,7 @@ builtins.concatLists [
     let
       gemSet = {
         test = {
-          groups = [
-            "x"
-            "y"
-          ];
+          groups = [ "x" "y" ];
         };
       };
     in
@@ -71,10 +68,7 @@ builtins.concatLists [
       set:
       functions.filterGemset {
         inherit ruby;
-        groups = [
-          "y"
-          "z"
-        ];
+        groups = [ "y" "z" ];
       } set == gemSet
     )
   )
@@ -119,10 +113,7 @@ builtins.concatLists [
     let
       gemSet = {
         test = {
-          groups = [
-            "x"
-            "y"
-          ];
+          groups = [ "x" "y" ];
         };
       };
     in
@@ -130,10 +121,7 @@ builtins.concatLists [
       set:
       functions.filterGemset {
         inherit ruby;
-        groups = [
-          "a"
-          "b"
-        ];
+        groups = [ "a" "b" ];
       } set == { }
     )
   )

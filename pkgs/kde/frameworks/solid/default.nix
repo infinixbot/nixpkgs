@@ -13,11 +13,7 @@ mkKdeDerivation {
     ./fix-search-path.patch
   ];
 
-  extraNativeBuildInputs = [
-    qttools
-    bison
-    flex
-  ];
+  extraNativeBuildInputs = [ qttools bison flex ];
   extraBuildInputs = [ libimobiledevice ];
   meta.mainProgram = "solid-hardware6";
 }

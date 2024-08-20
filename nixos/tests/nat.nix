@@ -16,10 +16,7 @@ import ./make-test-python.nix (
 
     routerBase = lib.mkMerge [
       {
-        virtualisation.vlans = [
-          2
-          1
-        ];
+        virtualisation.vlans = [ 2 1 ];
         networking.firewall.enable = withFirewall;
         networking.firewall.filterForward = nftables;
         networking.nftables.enable = nftables;

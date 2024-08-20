@@ -46,10 +46,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "gdm";
   version = "46.2";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/gdm/${lib.versions.major finalAttrs.version}/gdm-${finalAttrs.version}.tar.xz";

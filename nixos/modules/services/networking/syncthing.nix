@@ -158,10 +158,7 @@ let
       */
       (lib.pipe cleanedConfig [
         builtins.attrNames
-        (lib.subtractLists [
-          "folders"
-          "devices"
-        ])
+        (lib.subtractLists [ "folders" "devices" ])
         (map (subOption: ''
           curl -X PUT -d ${
             lib.escapeShellArg (builtins.toJSON cleanedConfig.${subOption})
@@ -416,12 +413,7 @@ in
                       };
 
                       type = mkOption {
-                        type = types.enum [
-                          "sendreceive"
-                          "sendonly"
-                          "receiveonly"
-                          "receiveencrypted"
-                        ];
+                        type = types.enum [ "sendreceive" "sendonly" "receiveonly" "receiveencrypted" ];
                         default = "sendreceive";
                         description = ''
                           Controls how the folder is handled by Syncthing.
@@ -487,12 +479,7 @@ in
                             freeformType = settingsFormat.type;
                             options = {
                               type = mkOption {
-                                type = enum [
-                                  "external"
-                                  "simple"
-                                  "staggered"
-                                  "trashcan"
-                                ];
+                                type = enum [ "external" "simple" "staggered" "trashcan" ];
                                 description = ''
                                   The type of versioning.
                                   See <https://docs.syncthing.net/users/versioning.html>.
@@ -669,94 +656,37 @@ in
 
   imports =
     [
-      (mkRemovedOptionModule
-        [
-          "services"
-          "syncthing"
-          "useInotify"
-        ]
-        ''
-          This option was removed because Syncthing now has the inotify functionality included under the name "fswatcher".
-          It can be enabled on a per-folder basis through the web interface.
-        ''
-      )
-      (mkRenamedOptionModule
-        [
-          "services"
-          "syncthing"
-          "extraOptions"
-        ]
-        [
-          "services"
-          "syncthing"
-          "settings"
-        ]
-      )
-      (mkRenamedOptionModule
-        [
-          "services"
-          "syncthing"
-          "folders"
-        ]
-        [
-          "services"
-          "syncthing"
-          "settings"
-          "folders"
-        ]
-      )
-      (mkRenamedOptionModule
-        [
-          "services"
-          "syncthing"
-          "devices"
-        ]
-        [
-          "services"
-          "syncthing"
-          "settings"
-          "devices"
-        ]
-      )
-      (mkRenamedOptionModule
-        [
-          "services"
-          "syncthing"
-          "options"
-        ]
-        [
-          "services"
-          "syncthing"
-          "settings"
-          "options"
-        ]
-      )
-    ]
-    ++ map
-      (
-        o:
-        mkRenamedOptionModule
-          [
-            "services"
-            "syncthing"
-            "declarative"
-            o
-          ]
-          [
-            "services"
-            "syncthing"
-            o
-          ]
-      )
-      [
-        "cert"
-        "key"
-        "devices"
+      (mkRemovedOptionModule [ "services" "syncthing" "useInotify" ] ''
+        This option was removed because Syncthing now has the inotify functionality included under the name "fswatcher".
+        It can be enabled on a per-folder basis through the web interface.
+      '')
+      (mkRenamedOptionModule [ "services" "syncthing" "extraOptions" ] [
+        "services"
+        "syncthing"
+        "settings"
+      ])
+      (mkRenamedOptionModule [ "services" "syncthing" "folders" ] [
+        "services"
+        "syncthing"
+        "settings"
         "folders"
-        "overrideDevices"
-        "overrideFolders"
-        "extraOptions"
-      ];
+      ])
+      (mkRenamedOptionModule [ "services" "syncthing" "devices" ] [
+        "services"
+        "syncthing"
+        "settings"
+        "devices"
+      ])
+      (mkRenamedOptionModule [ "services" "syncthing" "options" ] [
+        "services"
+        "syncthing"
+        "settings"
+        "options"
+      ])
+    ]
+    ++ map (
+      o: mkRenamedOptionModule [ "services" "syncthing" "declarative" o ] [ "services" "syncthing" o ]
+    ) [ "cert" "key" "devices" "folders" "overrideDevices" "overrideFolders" "extraOptions" ];
 
   ###### implementation
 
@@ -764,10 +694,7 @@ in
 
     networking.firewall = mkIf cfg.openDefaultPorts {
       allowedTCPPorts = [ 22000 ];
-      allowedUDPPorts = [
-        21027
-        22000
-      ];
+      allowedUDPPorts = [ 21027 22000 ];
     };
 
     systemd.packages = [ pkgs.syncthing ];

@@ -12,19 +12,12 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "journald"
-        "enableHttpGateway"
-      ]
-      [
-        "services"
-        "journald"
-        "gateway"
-        "enable"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "journald" "enableHttpGateway" ] [
+      "services"
+      "journald"
+      "gateway"
+      "enable"
+    ])
   ];
 
   options = {
@@ -52,12 +45,7 @@ in
 
     services.journald.storage = mkOption {
       default = "persistent";
-      type = types.enum [
-        "persistent"
-        "volatile"
-        "auto"
-        "none"
-      ];
+      type = types.enum [ "persistent" "volatile" "auto" "none" ];
       description = ''
         Controls where to store journal data. See
         {manpage}`journald.conf(5)` for further information.

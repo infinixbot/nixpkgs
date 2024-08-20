@@ -32,10 +32,7 @@ else
       cp ${./test.c} test.c
     '';
 
-    outputs = [
-      "out"
-      "hook"
-    ];
+    outputs = [ "out" "hook" ];
 
     libName = "libredirect" + stdenv.hostPlatform.extensions.sharedLibrary;
 

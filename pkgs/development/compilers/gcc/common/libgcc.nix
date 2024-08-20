@@ -27,10 +27,7 @@ lib.pipe drv
           lib.optionalAttrs
             (targetPlatform != hostPlatform && (enableShared || targetPlatform.isMinGW) && withoutTargetLibc)
             {
-              makeFlags = [
-                "all-gcc"
-                "all-target-libgcc"
-              ];
+              makeFlags = [ "all-gcc" "all-target-libgcc" ];
               installTargets = "install-gcc install-target-libgcc";
             }
         )

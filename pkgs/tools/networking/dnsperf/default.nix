@@ -42,9 +42,6 @@ stdenv.mkDerivation rec {
     license = licenses.isc;
     platforms = platforms.unix;
     mainProgram = "dnsperf";
-    maintainers = with maintainers; [
-      vcunat
-      mfrw
-    ];
+    maintainers = with maintainers; [ vcunat mfrw ];
   };
 }

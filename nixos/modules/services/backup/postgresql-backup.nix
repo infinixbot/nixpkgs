@@ -40,10 +40,7 @@ let
 
       requires = [ "postgresql.service" ];
 
-      path = [
-        pkgs.coreutils
-        config.services.postgresql.package
-      ];
+      path = [ pkgs.coreutils config.services.postgresql.package ];
 
       script = ''
         set -e -o pipefail
@@ -74,17 +71,10 @@ in
 {
 
   imports = [
-    (mkRemovedOptionModule
-      [
-        "services"
-        "postgresqlBackup"
-        "period"
-      ]
-      ''
-        A systemd timer is now used instead of cron.
-        The starting time can be configured via <literal>services.postgresqlBackup.startAt</literal>.
-      ''
-    )
+    (mkRemovedOptionModule [ "services" "postgresqlBackup" "period" ] ''
+      A systemd timer is now used instead of cron.
+      The starting time can be configured via <literal>services.postgresqlBackup.startAt</literal>.
+    '')
   ];
 
   options = {
@@ -142,11 +132,7 @@ in
       };
 
       compression = mkOption {
-        type = types.enum [
-          "none"
-          "gzip"
-          "zstd"
-        ];
+        type = types.enum [ "none" "gzip" "zstd" ];
         default = "gzip";
         description = ''
           The type of compression to use on the generated database dump.

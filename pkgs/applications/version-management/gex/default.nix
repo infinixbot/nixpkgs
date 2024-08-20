@@ -42,11 +42,7 @@ rustPlatform.buildRustPackage rec {
       asl20 # or
       mit
     ];
-    maintainers = with maintainers; [
-      azd325
-      evanrichter
-      piturnah
-    ];
+    maintainers = with maintainers; [ azd325 evanrichter piturnah ];
     mainProgram = "gex";
   };
 }

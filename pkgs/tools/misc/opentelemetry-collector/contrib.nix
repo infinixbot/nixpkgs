@@ -63,10 +63,7 @@ buildGoModule rec {
     homepage = "https://github.com/open-telemetry/opentelemetry-collector-contrib";
     changelog = "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v${version}/CHANGELOG.md";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      uri-canva
-      jk
-    ];
+    maintainers = with maintainers; [ uri-canva jk ];
     mainProgram = "otelcontribcol";
   };
 }

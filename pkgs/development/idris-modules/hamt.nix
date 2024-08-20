@@ -9,10 +9,7 @@ build-idris-package {
   pname = "hamt";
   version = "2016-11-15";
 
-  idrisDeps = [
-    contrib
-    effects
-  ];
+  idrisDeps = [ contrib effects ];
 
   src = fetchFromGitHub {
     owner = "bamboo";

@@ -14,11 +14,7 @@
   enableX11 ? guiBackend == "x11",
 }:
 
-assert lib.assertMsg (builtins.elem guiBackend [
-  "sdl"
-  "x11"
-  "none"
-]) "Unsupported GUI backend";
+assert lib.assertMsg (builtins.elem guiBackend [ "sdl" "x11" "none" ]) "Unsupported GUI backend";
 assert lib.assertMsg (!(enableSDL && enableX11)) "RVVM can have only one GUI backend at a time";
 assert lib.assertMsg (stdenv.isDarwin -> !enableX11) "macOS supports only SDL GUI backend";
 
@@ -33,20 +29,11 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-5nSlKyWDAx0EeKFzzwP5+99XuJz9BHXEF1WNkRMLa9U=";
   };
 
-  buildInputs =
-    [ ]
-    ++ lib.optionals enableSDL [ SDL2 ]
-    ++ lib.optionals enableX11 [
-      libX11
-      libXext
-    ];
+  buildInputs = [ ] ++ lib.optionals enableSDL [ SDL2 ] ++ lib.optionals enableX11 [ libX11 libXext ];
 
   enableParallelBuilding = true;
 
-  buildFlags = [
-    "all"
-    "lib"
-  ];
+  buildFlags = [ "all" "lib" ];
 
   makeFlags =
     [ "PREFIX=$(out)" ]

@@ -26,13 +26,7 @@ stdenv.mkDerivation (finalAttrs: {
   patches = [ ./nocontent.patch ];
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    libopenmpt
-    libvorbis
-    openal
-    SDL2
-    zlib
-  ];
+  buildInputs = [ libopenmpt libvorbis openal SDL2 zlib ];
 
   cmakeFlags = [
     "-DLIBOPENMPT_INCLUDE_DIR=${lib.getDev libopenmpt}/include/libopenmpt"

@@ -26,9 +26,6 @@ python3.pkgs.buildPythonApplication rec {
     description = "Dump unix domain socket traffic with bpf";
     mainProgram = "sockdump";
     license = lib.licenses.unlicense;
-    maintainers = with lib.maintainers; [
-      ehmry
-      picnoir
-    ];
+    maintainers = with lib.maintainers; [ ehmry picnoir ];
   };
 }

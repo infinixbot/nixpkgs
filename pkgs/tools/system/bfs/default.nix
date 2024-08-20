@@ -19,13 +19,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-/thPPueNrYzbxxZYAqlxZ2GEsceCzd+LkI84S8AS1mo=";
   };
 
-  buildInputs =
-    [ oniguruma ]
-    ++ lib.optionals stdenv.isLinux [
-      libcap
-      acl
-      liburing
-    ];
+  buildInputs = [ oniguruma ] ++ lib.optionals stdenv.isLinux [ libcap acl liburing ];
 
   makeFlags = [ "PREFIX=$(out)" ];
   buildFlags = [ "release" ]; # "release" enables compiler optimizations
@@ -39,10 +33,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/tavianator/bfs";
     license = licenses.bsd0;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      yesbox
-      cafkafk
-    ];
+    maintainers = with maintainers; [ yesbox cafkafk ];
     mainProgram = "bfs";
   };
 }

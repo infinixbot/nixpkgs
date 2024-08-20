@@ -32,9 +32,6 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "cargo-kcov";
     homepage = "https://github.com/kennytm/cargo-kcov";
     license = with licenses; [ mit ];
-    maintainers = with maintainers; [
-      saschagrunert
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ saschagrunert matthiasbeyer ];
   };
 }

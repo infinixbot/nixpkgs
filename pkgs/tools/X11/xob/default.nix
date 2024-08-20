@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    xorg.libX11
-    xorg.libXrender
-    libconfig
-  ];
+  buildInputs = [ xorg.libX11 xorg.libXrender libconfig ];
 
   makeFlags = [ "prefix=$(out)" ];
 

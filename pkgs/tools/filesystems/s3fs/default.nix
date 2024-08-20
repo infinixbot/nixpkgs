@@ -21,16 +21,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-90udqj+/U0SL8baEE06UawZGoIqcUEdiAGiPYpbRmHs=";
   };
 
-  buildInputs = [
-    curl
-    openssl
-    libxml2
-    fuse
-  ];
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  buildInputs = [ curl openssl libxml2 fuse ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
   configureFlags = [
     "--with-openssl"

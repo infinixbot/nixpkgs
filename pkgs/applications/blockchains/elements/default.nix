@@ -44,32 +44,19 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs =
-    [
-      autoreconfHook
-      pkg-config
-    ]
+    [ autoreconfHook pkg-config ]
     ++ lib.optionals stdenv.isLinux [ util-linux ]
     ++ lib.optionals stdenv.isDarwin [ hexdump ]
     ++ lib.optionals (stdenv.isDarwin && stdenv.isAarch64) [ autoSignDarwinBinariesHook ]
     ++ lib.optionals withGui [ wrapQtAppsHook ];
 
-  buildInputs =
-    [
-      boost
-      libevent
-      miniupnpc
-      zeromq
-      zlib
-    ]
-    ++ lib.optionals withWallet [
-      db48
-      sqlite
-    ]
-    ++ lib.optionals withGui [
-      qrencode
-      qtbase
-      qttools
-    ];
+  buildInputs = [
+    boost
+    libevent
+    miniupnpc
+    zeromq
+    zlib
+  ] ++ lib.optionals withWallet [ db48 sqlite ] ++ lib.optionals withGui [ qrencode qtbase qttools ];
 
   configureFlags =
     [

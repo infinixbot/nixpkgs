@@ -10,12 +10,7 @@
 
 let
   dimensions = {
-    palette = [
-      "frappe"
-      "latte"
-      "macchiato"
-      "mocha"
-    ];
+    palette = [ "frappe" "latte" "macchiato" "mocha" ];
     color = [
       "Blue"
       "Dark"
@@ -50,12 +45,7 @@ stdenvNoCC.mkDerivation {
     hash = "sha256-LJyBnXDUGBLOD4qPI7l0YC0CcqYTtgoMJc1H2yLqk9g=";
   };
 
-  nativeBuildInputs = [
-    just
-    inkscape
-    xcursorgen
-    hyprcursor
-  ];
+  nativeBuildInputs = [ just inkscape xcursorgen hyprcursor ];
 
   outputs = variants ++ [ "out" ]; # dummy "out" output to prevent breakage
 

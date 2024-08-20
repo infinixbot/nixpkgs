@@ -447,14 +447,7 @@ let
         sha256 = "sha256-xp0/eqi5PJlzb9NaUbNnzEqNcxDPyjyNwZOwmlv1+ag=";
       };
 
-      inputs = [
-        curl
-        geoip
-        libmodsecurity
-        libxml2
-        lmdb
-        yajl
-      ];
+      inputs = [ curl geoip libmodsecurity libxml2 lmdb yajl ];
       disableIPC = true;
 
       meta = with lib; {
@@ -601,10 +594,7 @@ let
             ln -s "${psol}" "$out/psol"
           '';
 
-      inputs = [
-        zlib
-        libuuid
-      ]; # psol deps
+      inputs = [ zlib libuuid ]; # psol deps
       allowMemoryWriteExecute = true;
 
       meta = with lib; {
@@ -956,10 +946,7 @@ let
         sha256 = "0ya4330in7zjzqw57djv4icpk0n1j98nvf0f8v296yi9rjy054br";
       };
 
-      inputs = [
-        msgpuck.dev
-        yajl
-      ];
+      inputs = [ msgpuck.dev yajl ];
 
       meta = with lib; {
         description = "Tarantool NginX upstream module (REST, JSON API, websockets, load balancing)";
@@ -998,10 +985,7 @@ let
         hash = "sha256-F2cuzCbJdGYX0Zmz9MSXTB7x8+FBR6pPpXtLlDRCcj8=";
       };
 
-      inputs = [
-        ffmpeg-headless
-        libjpeg
-      ];
+      inputs = [ ffmpeg-headless libjpeg ];
 
       meta = with lib; {
         description = "Extract thumbs from a video file";
@@ -1025,13 +1009,7 @@ let
         '';
       };
 
-      inputs = [
-        ffmpeg-headless
-        fdk_aac
-        openssl
-        libxml2
-        libiconv
-      ];
+      inputs = [ ffmpeg-headless fdk_aac openssl libxml2 libiconv ];
 
       meta = with lib; {
         description = "VOD packager";

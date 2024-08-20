@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    gtk3
-    ibus
-    libthai
-  ];
+  buildInputs = [ gtk3 ibus libthai ];
 
   meta = with lib; {
     isIbusEngine = true;

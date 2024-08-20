@@ -204,10 +204,7 @@ let
         rm tests/pexpects/exit_handlers.py
       '';
 
-    outputs = [
-      "out"
-      "doc"
-    ];
+    outputs = [ "out" "doc" ];
     strictDeps = true;
     nativeBuildInputs = [
       cmake
@@ -325,11 +322,7 @@ let
       changelog = "https://github.com/fish-shell/fish-shell/releases/tag/${version}";
       license = licenses.gpl2Only;
       platforms = platforms.unix;
-      maintainers = with maintainers; [
-        adamcstephens
-        cole-h
-        winter
-      ];
+      maintainers = with maintainers; [ adamcstephens cole-h winter ];
       mainProgram = "fish";
     };
 

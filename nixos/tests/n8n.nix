@@ -6,10 +6,7 @@ import ./make-test-python.nix (
   in
   {
     name = "n8n";
-    meta.maintainers = with lib.maintainers; [
-      freezeboy
-      k900
-    ];
+    meta.maintainers = with lib.maintainers; [ freezeboy k900 ];
 
     nodes.machine =
       { pkgs, ... }:

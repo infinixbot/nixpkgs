@@ -21,11 +21,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
   nativeBuildInputs = [ txt2tags ];
-  buildInputs = [
-    zsh
-    coreutils
-    procps
-  ] ++ lib.optional stdenv.isLinux inetutils;
+  buildInputs = [ zsh coreutils procps ] ++ lib.optional stdenv.isLinux inetutils;
 
   buildPhase = ''
     cd doc
@@ -44,14 +40,8 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "grml's zsh setup";
     homepage = "https://grml.org/zsh/";
-    license = with licenses; [
-      gpl2Plus
-      gpl2Only
-    ];
+    license = with licenses; [ gpl2Plus gpl2Only ];
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      msteen
-      rvolosatovs
-    ];
+    maintainers = with maintainers; [ msteen rvolosatovs ];
   };
 }

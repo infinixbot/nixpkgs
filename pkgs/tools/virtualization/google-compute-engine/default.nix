@@ -22,11 +22,7 @@ buildPythonPackage rec {
   };
 
   buildInputs = [ bash ];
-  propagatedBuildInputs = [
-    boto
-    setuptools
-    distro
-  ];
+  propagatedBuildInputs = [ boto setuptools distro ];
 
   postPatch = ''
     for file in $(find google_compute_engine -type f); do

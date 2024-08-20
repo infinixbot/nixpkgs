@@ -139,14 +139,7 @@ in
         description = ''
           Sets the initial telemetry level. Valid levels are: 'off', 'crash', 'error' and 'all'.
         '';
-        type = lib.types.nullOr (
-          lib.types.enum [
-            "off"
-            "crash"
-            "error"
-            "all"
-          ]
-        );
+        type = lib.types.nullOr (lib.types.enum [ "off" "crash" "error" "all" ]);
       };
 
       connectionToken = lib.mkOption {

@@ -50,11 +50,7 @@ stdenv.mkDerivation rec {
   pname = "libinput";
   version = "1.26.1";
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-  ];
+  outputs = [ "bin" "out" "dev" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.freedesktop.org";

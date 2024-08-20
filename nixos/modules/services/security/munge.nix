@@ -59,10 +59,7 @@ in
         "time-sync.target"
       ];
 
-      path = [
-        pkgs.munge
-        pkgs.coreutils
-      ];
+      path = [ pkgs.munge pkgs.coreutils ];
 
       serviceConfig = {
         ExecStartPre = "+${pkgs.coreutils}/bin/chmod 0400 ${cfg.password}";

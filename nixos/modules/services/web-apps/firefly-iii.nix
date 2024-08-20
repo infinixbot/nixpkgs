@@ -192,11 +192,7 @@ in
     };
 
     poolConfig = mkOption {
-      type = attrsOf (oneOf [
-        str
-        int
-        bool
-      ]);
+      type = attrsOf (oneOf [ str int bool ]);
       default = {
         "pm" = "dynamic";
         "pm.max_children" = 32;
@@ -236,18 +232,10 @@ in
         }
       '';
       type = submodule {
-        freeformType = attrsOf (oneOf [
-          str
-          int
-          bool
-        ]);
+        freeformType = attrsOf (oneOf [ str int bool ]);
         options = {
           DB_CONNECTION = mkOption {
-            type = enum [
-              "sqlite"
-              "pgsql"
-              "mysql"
-            ];
+            type = enum [ "sqlite" "pgsql" "mysql" ];
             default = "sqlite";
             example = "pgsql";
             description = ''
@@ -256,11 +244,7 @@ in
             '';
           };
           APP_ENV = mkOption {
-            type = enum [
-              "local"
-              "production"
-              "testing"
-            ];
+            type = enum [ "local" "production" "testing" ];
             default = "local";
             example = "production";
             description = ''
@@ -346,10 +330,7 @@ in
     };
 
     systemd.services.firefly-iii-setup = {
-      after = [
-        "postgresql.service"
-        "mysql.service"
-      ];
+      after = [ "postgresql.service" "mysql.service" ];
       requiredBy = [ "phpfpm-firefly-iii.service" ];
       before = [ "phpfpm-firefly-iii.service" ];
       serviceConfig = {
@@ -361,11 +342,7 @@ in
     };
 
     systemd.services.firefly-iii-cron = {
-      after = [
-        "firefly-iii-setup.service"
-        "postgresql.service"
-        "mysql.service"
-      ];
+      after = [ "firefly-iii-setup.service" "postgresql.service" "mysql.service" ];
       wants = [ "firefly-iii-setup.service" ];
       description = "Daily Firefly III cron job";
       serviceConfig = {

@@ -55,14 +55,8 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/YaLTeR/wl-clipboard-rs";
     changelog = "https://github.com/YaLTeR/wl-clipboard-rs/blob/v${version}/CHANGELOG.md";
     platforms = platforms.linux;
-    license = with licenses; [
-      asl20
-      mit
-    ];
+    license = with licenses; [ asl20 mit ];
     mainProgram = "wl-clip";
-    maintainers = with maintainers; [
-      thiagokokada
-      donovanglover
-    ];
+    maintainers = with maintainers; [ thiagokokada donovanglover ];
   };
 }

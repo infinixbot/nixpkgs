@@ -129,10 +129,7 @@ in
     systemd.services.cgminer = {
       path = [ pkgs.cgminer ];
 
-      after = [
-        "network.target"
-        "display-manager.service"
-      ];
+      after = [ "network.target" "display-manager.service" ];
       wantedBy = [ "multi-user.target" ];
 
       environment = {

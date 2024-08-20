@@ -120,15 +120,8 @@ python3Packages.buildPythonApplication {
       gst-plugins-ugly
     ]);
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
-  sphinxBuilders = [
-    "html"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
+  sphinxBuilders = [ "html" "man" ];
 
   postInstall = ''
     mkdir -p $out/share/zsh/site-functions
@@ -201,12 +194,7 @@ python3Packages.buildPythonApplication {
     description = "Music tagger and library organizer";
     homepage = "https://beets.io";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      aszlig
-      doronbehar
-      lovesegfault
-      pjones
-    ];
+    maintainers = with maintainers; [ aszlig doronbehar lovesegfault pjones ];
     platforms = platforms.linux;
     mainProgram = "beet";
   };

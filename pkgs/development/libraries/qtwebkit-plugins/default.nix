@@ -20,10 +20,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ qmake ];
 
-  buildInputs = [
-    qtwebkit
-    hunspell
-  ];
+  buildInputs = [ qtwebkit hunspell ];
 
   dontWrapQtApps = true;
 

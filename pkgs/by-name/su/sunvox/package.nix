@@ -99,10 +99,7 @@ stdenv.mkDerivation (finalAttrs: {
     license = licenses.unfreeRedistributable;
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     homepage = "https://www.warmplace.ru/soft/sunvox/";
-    maintainers = with maintainers; [
-      puffnfresh
-      OPNA2608
-    ];
+    maintainers = with maintainers; [ puffnfresh OPNA2608 ];
     platforms = lib.attrNames platforms;
   };
 })

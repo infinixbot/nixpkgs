@@ -12,11 +12,7 @@ buildDunePackage rec {
   minimalOCamlVersion = "4.08";
   duneVersion = "3";
 
-  propagatedBuildInputs = [
-    faraday
-    core_unix
-    async
-  ];
+  propagatedBuildInputs = [ faraday core_unix async ];
 
   meta = faraday.meta // {
     description = "Async support for Faraday";

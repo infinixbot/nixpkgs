@@ -24,12 +24,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    eigen
-    nlopt
-    boost
-    tbb
-  ] ++ lib.optional (!stdenv.isDarwin) ipopt;
+  buildInputs = [ eigen nlopt boost tbb ] ++ lib.optional (!stdenv.isDarwin) ipopt;
 
   cmakeFlags =
     [

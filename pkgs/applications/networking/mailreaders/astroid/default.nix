@@ -90,10 +90,7 @@ stdenv.mkDerivation rec {
     homepage = "https://astroidmail.github.io/";
     description = "GTK frontend to the notmuch mail system";
     mainProgram = "astroid";
-    maintainers = with maintainers; [
-      bdimcheff
-      SuprDewd
-    ];
+    maintainers = with maintainers; [ bdimcheff SuprDewd ];
     license = licenses.gpl3Plus;
     platforms = platforms.linux;
   };

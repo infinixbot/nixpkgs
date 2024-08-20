@@ -16,12 +16,7 @@ stdenv.mkDerivation rec {
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
 
-  nativeBuildInputs = [
-    m4
-    which
-    yasm
-    autoreconfHook
-  ];
+  nativeBuildInputs = [ m4 which yasm autoreconfHook ];
 
   src = fetchurl {
     url = "https://mpir.org/mpir-${version}.tar.bz2";

@@ -54,14 +54,7 @@ stdenv.mkDerivation rec {
     mainProgram = "hl";
     homepage = "https://hashlink.haxe.org/";
     license = licenses.mit;
-    platforms = [
-      "x86_64-linux"
-      "x86_64-darwin"
-    ];
-    maintainers = with maintainers; [
-      iblech
-      locallycompact
-      logo
-    ];
+    platforms = [ "x86_64-linux" "x86_64-darwin" ];
+    maintainers = with maintainers; [ iblech locallycompact logo ];
   };
 }

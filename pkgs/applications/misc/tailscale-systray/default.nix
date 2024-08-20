@@ -20,10 +20,7 @@ buildGoModule rec {
   vendorHash = "sha256-YJ74SeZAMS+dXyoPhPTJ3L+5uL5bF8gumhMOqfvmlms=";
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    gtk3
-    libayatana-appindicator
-  ];
+  buildInputs = [ gtk3 libayatana-appindicator ];
 
   proxyVendor = true;
 

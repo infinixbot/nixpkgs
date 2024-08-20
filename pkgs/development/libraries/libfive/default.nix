@@ -28,13 +28,7 @@ stdenv.mkDerivation {
     hash = "sha256-8J0Pe3lmZCg2YFffmIynxW35w4mHl5cSlLSenm50CWg=";
   };
 
-  nativeBuildInputs = [
-    wrapQtAppsHook
-    cmake
-    ninja
-    pkg-config
-    python.pkgs.pythonImportsCheckHook
-  ];
+  nativeBuildInputs = [ wrapQtAppsHook cmake ninja pkg-config python.pkgs.pythonImportsCheckHook ];
   buildInputs = [
     eigen
     zlib
@@ -121,15 +115,8 @@ stdenv.mkDerivation {
   meta = with lib; {
     description = "Infrastructure for solid modeling with F-Reps in C, C++, and Guile";
     homepage = "https://libfive.com/";
-    maintainers = with maintainers; [
-      hodapp
-      kovirobi
-      wulfsta
-    ];
-    license = with licenses; [
-      mpl20
-      gpl2Plus
-    ];
+    maintainers = with maintainers; [ hodapp kovirobi wulfsta ];
+    license = with licenses; [ mpl20 gpl2Plus ];
     platforms = with platforms; all;
   };
 }

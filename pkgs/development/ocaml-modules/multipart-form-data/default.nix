@@ -20,10 +20,7 @@ buildDunePackage rec {
   };
 
   buildInputs = [ lwt_ppx ];
-  propagatedBuildInputs = [
-    lwt
-    stringext
-  ];
+  propagatedBuildInputs = [ lwt stringext ];
 
   duneVersion = "3";
 

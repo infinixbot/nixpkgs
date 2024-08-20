@@ -27,10 +27,7 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ autoreconfHook ];
-  buildInputs = [
-    libpcap
-    pcre
-  ];
+  buildInputs = [ libpcap pcre ];
 
   configureFlags = [
     "--enable-ipv6"

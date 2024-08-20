@@ -11,17 +11,8 @@ mkKdeDerivation {
   pname = "plasmatube";
 
   extraNativeBuildInputs = [ pkg-config ];
-  extraBuildInputs = [
-    qtquick3d
-    qtsvg
-    mpv-unwrapped
-  ];
+  extraBuildInputs = [ qtquick3d qtsvg mpv-unwrapped ];
 
-  qtWrapperArgs = [
-    "--prefix"
-    "PATH"
-    ":"
-    (lib.makeBinPath [ yt-dlp ])
-  ];
+  qtWrapperArgs = [ "--prefix" "PATH" ":" (lib.makeBinPath [ yt-dlp ]) ];
   meta.mainProgram = "plasmatube";
 }

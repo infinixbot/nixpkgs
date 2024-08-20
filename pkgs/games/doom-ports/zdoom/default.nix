@@ -26,10 +26,7 @@ stdenv.mkDerivation rec {
     sha256 = "0453fqrh9l00xwphfxni5qkf9y134n3s1mr1dvi5cbkxcva7j8bq";
   };
 
-  nativeBuildInputs = [
-    p7zip
-    cmake
-  ];
+  nativeBuildInputs = [ p7zip cmake ];
   buildInputs = [
     SDL2
     openal
@@ -50,10 +47,7 @@ stdenv.mkDerivation rec {
 
   sourceRoot = ".";
 
-  NIX_CFLAGS_LINK = [
-    "-lopenal"
-    "-lfluidsynth"
-  ];
+  NIX_CFLAGS_LINK = [ "-lopenal" "-lfluidsynth" ];
 
   preConfigure = ''
     sed -i \

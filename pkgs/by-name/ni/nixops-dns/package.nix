@@ -17,19 +17,13 @@ buildGoModule rec {
 
   vendorHash = "sha256-3DVNjvW0AAdogpTi3GMnn92FqqOUWNdQvRBityyKwcI=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     homepage = "https://github.com/museoa/nixops-dns";
     description = "DNS server for resolving NixOps machines";
     mainProgram = "nixops-dns";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      kamilchm
-      sorki
-    ];
+    maintainers = with maintainers; [ kamilchm sorki ];
   };
 }

@@ -20,11 +20,7 @@ buildDunePackage rec {
   duneVersion = "3";
 
   doCheck = true;
-  checkInputs = [
-    mirage-unix
-    mirage-clock-unix
-    mirage-time-unix
-  ];
+  checkInputs = [ mirage-unix mirage-clock-unix mirage-time-unix ];
 
   propagatedBuildInputs = [
     duration

@@ -17,11 +17,7 @@ let
       network.wait-online.anyInterface = true;
       targets.network-online.requiredBy = [ "initrd.target" ];
       services.systemd-networkd-wait-online.requiredBy = [ "network-online.target" ];
-      initrdBin = [
-        pkgs.iproute2
-        pkgs.iputils
-        pkgs.gnugrep
-      ];
+      initrdBin = [ pkgs.iproute2 pkgs.iputils pkgs.gnugrep ];
     };
     testing.initrdBackdoor = true;
     boot.initrd.network.enable = true;
@@ -39,20 +35,12 @@ let
         boot.initrd.network.flushBeforeStage2 = flush;
         systemd.services.check-flush = {
           requiredBy = [ "multi-user.target" ];
-          before = [
-            "network-pre.target"
-            "multi-user.target"
-            "shutdown.target"
-          ];
+          before = [ "network-pre.target" "multi-user.target" "shutdown.target" ];
           conflicts = [ "shutdown.target" ];
           wants = [ "network-pre.target" ];
           unitConfig.DefaultDependencies = false;
           serviceConfig.Type = "oneshot";
-          path = [
-            pkgs.iproute2
-            pkgs.iputils
-            pkgs.gnugrep
-          ];
+          path = [ pkgs.iproute2 pkgs.iputils pkgs.gnugrep ];
           inherit script;
         };
       };

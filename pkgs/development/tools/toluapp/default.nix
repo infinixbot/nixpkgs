@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ cmake ];
   buildInputs = [ lua ];
 
-  patches = [
-    ./environ-and-linux-is-kinda-posix.patch
-    ./headers.patch
-  ];
+  patches = [ ./environ-and-linux-is-kinda-posix.patch ./headers.patch ];
 
   meta = with lib; {
     description = "Tool to integrate C/Cpp code with Lua";

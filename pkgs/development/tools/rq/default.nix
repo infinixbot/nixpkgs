@@ -35,10 +35,6 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "rq";
     homepage = "https://github.com/dflemstr/rq";
     license = with licenses; [ asl20 ];
-    maintainers = with maintainers; [
-      aristid
-      Br1ght0ne
-      figsoda
-    ];
+    maintainers = with maintainers; [ aristid Br1ght0ne figsoda ];
   };
 }

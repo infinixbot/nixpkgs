@@ -20,12 +20,7 @@
     version = "1.568.0";
   };
   aws-sdk-core = {
-    dependencies = [
-      "aws-eventstream"
-      "aws-partitions"
-      "aws-sigv4"
-      "jmespath"
-    ];
+    dependencies = [ "aws-eventstream" "aws-partitions" "aws-sigv4" "jmespath" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -36,10 +31,7 @@
     version = "3.130.0";
   };
   aws-sdk-kms = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -50,11 +42,7 @@
     version = "1.55.0";
   };
   aws-sdk-s3 = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sdk-kms"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sdk-kms" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -76,10 +64,7 @@
     version = "1.4.0";
   };
   cfn-model = {
-    dependencies = [
-      "kwalify"
-      "psych"
-    ];
+    dependencies = [ "kwalify" "psych" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -90,15 +75,7 @@
     version = "0.6.6";
   };
   cfn-nag = {
-    dependencies = [
-      "aws-sdk-s3"
-      "cfn-model"
-      "lightly"
-      "logging"
-      "netaddr"
-      "optimist"
-      "rexml"
-    ];
+    dependencies = [ "aws-sdk-s3" "cfn-model" "lightly" "logging" "netaddr" "optimist" "rexml" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -149,10 +126,7 @@
     version = "1.1.4";
   };
   logging = {
-    dependencies = [
-      "little-plugger"
-      "multi_json"
-    ];
+    dependencies = [ "little-plugger" "multi_json" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -203,10 +177,7 @@
     version = "3.3.2";
   };
   rexml = {
-    groups = [
-      "default"
-      "development"
-    ];
+    groups = [ "default" "development" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];

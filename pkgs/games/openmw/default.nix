@@ -44,16 +44,7 @@ let
         "-DBUILD_OSG_PLUGINS_BY_DEFAULT=0"
         "-DBUILD_OSG_DEPRECATED_SERIALIZERS=0"
       ]
-      ++ (map (e: "-DBUILD_OSG_PLUGIN_${e}=1") [
-        "BMP"
-        "DAE"
-        "DDS"
-        "FREETYPE"
-        "JPEG"
-        "OSG"
-        "PNG"
-        "TGA"
-      ]);
+      ++ (map (e: "-DBUILD_OSG_PLUGIN_${e}=1") [ "BMP" "DAE" "DDS" "FREETYPE" "JPEG" "OSG" "PNG" "TGA" ]);
   });
 
   bullet' = bullet.overrideDerivation (old: {
@@ -86,11 +77,7 @@ stdenv.mkDerivation rec {
       sed -i '/fixup_bundle/d' CMakeLists.txt
     '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake pkg-config wrapQtAppsHook ];
 
   # If not set, OSG plugin .so files become shell scripts on Darwin.
   dontWrapQtApps = stdenv.isDarwin;
@@ -130,10 +117,7 @@ stdenv.mkDerivation rec {
     description = "Unofficial open source engine reimplementation of the game Morrowind";
     homepage = "https://openmw.org";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      abbradar
-      marius851000
-    ];
+    maintainers = with maintainers; [ abbradar marius851000 ];
     platforms = platforms.linux ++ platforms.darwin;
   };
 }

@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
     pythonPackages.wrapPython
   ];
 
-  propagatedBuildInputs = with pythonPackages; [
-    pyenchant
-    regex
-  ];
+  propagatedBuildInputs = with pythonPackages; [ pyenchant regex ];
 
   postFixup = ''
     wrapPythonPrograms

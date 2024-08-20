@@ -68,11 +68,7 @@ let
       wantedBy = optional cfg.autoStart "multi-user.target";
       after = [ "network.target" ];
 
-      path = [
-        pkgs.iptables
-        pkgs.iproute2
-        pkgs.nettools
-      ];
+      path = [ pkgs.iptables pkgs.iproute2 pkgs.nettools ];
 
       serviceConfig.ExecStart = "@${openvpn}/sbin/openvpn openvpn --suppress-timestamps --config ${configFile}";
       serviceConfig.Restart = "always";
@@ -93,11 +89,7 @@ in
 
 {
   imports = [
-    (mkRemovedOptionModule [
-      "services"
-      "openvpn"
-      "enable"
-    ] "")
+    (mkRemovedOptionModule [ "services" "openvpn" "enable" ] "")
   ];
 
   ###### interface

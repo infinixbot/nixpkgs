@@ -76,21 +76,13 @@ in
         ProtectKernelTunables = true;
         ProtectProc = "invisible";
         ProtectSystem = "strict";
-        RestrictAddressFamilies = [
-          "AF_UNIX"
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
         StateDirectory = "flood";
         SystemCallArchitectures = "native";
-        SystemCallFilter = [
-          "@system-service"
-          "@pkey"
-          "~@privileged"
-        ];
+        SystemCallFilter = [ "@system-service" "@pkey" "~@privileged" ];
       };
     };
 

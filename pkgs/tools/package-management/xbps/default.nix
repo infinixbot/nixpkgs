@@ -20,16 +20,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-3+LzFLDZ1zfRPBETMlpEn66zsfHRHQLlgeZPdMtmA14=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    which
-  ];
+  nativeBuildInputs = [ pkg-config which ];
 
-  buildInputs = [
-    zlib
-    openssl
-    libarchive
-  ];
+  buildInputs = [ zlib openssl libarchive ];
 
   patches = [
     ./cert-paths.patch

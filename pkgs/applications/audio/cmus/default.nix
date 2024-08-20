@@ -112,10 +112,7 @@ let
 
     # Input file formats
     (mkFlag cddbSupport "CONFIG_CDDB=y" libcddb)
-    (mkFlag cdioSupport "CONFIG_CDIO=y" [
-      libcdio
-      libcdio-paranoia
-    ])
+    (mkFlag cdioSupport "CONFIG_CDIO=y" [ libcdio libcdio-paranoia ])
     (mkFlag cueSupport "CONFIG_CUE=y" libcue)
     (mkFlag discidSupport "CONFIG_DISCID=y" libdiscid)
     (mkFlag ffmpegSupport "CONFIG_FFMPEG=y" ffmpeg)
@@ -150,12 +147,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ pkg-config ];
   buildInputs =
     [ ncurses ]
-    ++ lib.optionals stdenv.isDarwin [
-      libiconv
-      CoreAudio
-      AudioUnit
-      VideoToolbox
-    ]
+    ++ lib.optionals stdenv.isDarwin [ libiconv CoreAudio AudioUnit VideoToolbox ]
     ++ lib.flatten (lib.concatMap (a: a.deps) opts);
 
   prefixKey = "prefix=";

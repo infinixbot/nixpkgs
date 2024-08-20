@@ -10,11 +10,7 @@ stdenv.mkDerivation rec {
   pname = "libodb";
   version = "2.5.0-b.25";
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
   src = fetchurl {
     url = "https://pkg.cppget.org/1/beta/odb/libodb-${version}.tar.gz";

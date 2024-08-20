@@ -35,10 +35,6 @@ mkDerivation {
     qtx11extras
     fftw
   ];
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-  ];
+  outputs = [ "bin" "dev" "out" ];
   cmakeFlags = [ "-DUSE_Qt4=OFF" ];
 }

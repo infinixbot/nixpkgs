@@ -64,12 +64,7 @@ python.pkgs.buildPythonApplication rec {
     "tests/gdradon/test_executable.py"
   ];
 
-  pythonImportsCheck = [
-    "gdtoolkit"
-    "gdtoolkit.formatter"
-    "gdtoolkit.linter"
-    "gdtoolkit.parser"
-  ];
+  pythonImportsCheck = [ "gdtoolkit" "gdtoolkit.formatter" "gdtoolkit.linter" "gdtoolkit.parser" ];
 
   meta = with lib; {
     description = "Independent set of tools for working with Godot's GDScript - parser, linter and formatter";

@@ -23,16 +23,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-LDgRv7Todyy2pnE21Z0O5JQ6mE4ZO3THv6rfEWU66Cc=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    qmake
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ pkg-config qmake wrapQtAppsHook ];
   qmakeFlags =
-    [
-      "pgmodeler.pro"
-      "CONFIG+=release"
-    ]
+    [ "pgmodeler.pro" "CONFIG+=release" ]
     ++ lib.optionals stdenv.isDarwin [
       "PGSQL_INC=${postgresql}/include"
       "PGSQL_LIB=${postgresql.lib}/lib/libpq.dylib"
@@ -42,16 +35,10 @@ stdenv.mkDerivation rec {
     ];
 
   # todo: libpq would suffice here. Unfortunately this won't work, if one uses only postgresql.lib here.
-  buildInputs =
-    [
-      postgresql
-      qtsvg
-    ]
-    ++ lib.optionals stdenv.isLinux [ qtwayland ]
-    ++ lib.optionals stdenv.isDarwin [
-      cups
-      libxml2
-    ];
+  buildInputs = [
+    postgresql
+    qtsvg
+  ] ++ lib.optionals stdenv.isLinux [ qtwayland ] ++ lib.optionals stdenv.isDarwin [ cups libxml2 ];
 
   postInstall = lib.optionalString stdenv.isDarwin ''
     mkdir -p $out/bin

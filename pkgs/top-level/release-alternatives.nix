@@ -55,42 +55,18 @@ let
     # "gnss-sdr" "octave-jit" "openmodelica" "torch"
 
     # subpackages
-    [
-      "pythonPackages"
-      "numpy"
-    ]
-    [
-      "pythonPackages"
-      "prox-tv"
-    ]
-    [
-      "pythonPackages"
-      "scs"
-    ]
-    [
-      "pythonPackages"
-      "pysparse"
-    ]
-    [
-      "pythonPackages"
-      "cvxopt"
-    ]
+    [ "pythonPackages" "numpy" ]
+    [ "pythonPackages" "prox-tv" ]
+    [ "pythonPackages" "scs" ]
+    [ "pythonPackages" "pysparse" ]
+    [ "pythonPackages" "cvxopt" ]
     # ["pythonPackages" "fenics"]
-    [
-      "rPackages"
-      "slfm"
-    ]
-    [
-      "rPackages"
-      "SamplerCompare"
-    ]
+    [ "rPackages" "slfm" ]
+    [ "rPackages" "SamplerCompare" ]
     # ["rPackages" "EMCluster"]
     # ["ocamlPackages" "lacaml"]
     # ["ocamlPackages" "owl"]
-    [
-      "haskellPackages"
-      "bindings-levmar"
-    ]
+    [ "haskellPackages" "bindings-levmar" ]
   ] ++ lib.optionals allowUnfree [ "magma" ];
   blas64Users = [
     "rspamd"
@@ -115,27 +91,14 @@ let
     "lammps"
     "lammps-mpi"
     # ["ocamlPackages" "lacaml"]
-    [
-      "haskellPackages"
-      "bindings-levmar"
-    ]
+    [ "haskellPackages" "bindings-levmar" ]
   ] ++ lib.optionals allowUnfree [ "magma" ];
   blasProviders =
     system:
-    [
-      "openblasCompat"
-      "lapack-reference"
-      "openblas"
-    ]
-    ++ lib.optionals (allowUnfree && system.isx86) [
-      "mkl"
-      "mkl64"
-    ];
+    [ "openblasCompat" "lapack-reference" "openblas" ]
+    ++ lib.optionals (allowUnfree && system.isx86) [ "mkl" "mkl64" ];
 
-  blas64Providers = [
-    "mkl64"
-    "openblas"
-  ];
+  blas64Providers = [ "mkl64" "openblas" ];
 
   mapListToAttrs =
     xs: f:

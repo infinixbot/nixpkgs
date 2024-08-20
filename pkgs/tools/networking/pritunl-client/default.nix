@@ -155,9 +155,6 @@ stdenv.mkDerivation {
     description = "Pritunl OpenVPN client";
     homepage = "https://client.pritunl.com/";
     license = licenses.unfree;
-    maintainers = with maintainers; [
-      minizilla
-      andrevmatos
-    ];
+    maintainers = with maintainers; [ minizilla andrevmatos ];
   };
 }

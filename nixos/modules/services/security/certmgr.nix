@@ -130,15 +130,7 @@ in
               };
 
               action = mkOption {
-                type = addCheck str (
-                  x:
-                  cfg.svcManager == "command"
-                  || elem x [
-                    "restart"
-                    "reload"
-                    "nop"
-                  ]
-                );
+                type = addCheck str (x: cfg.svcManager == "command" || elem x [ "restart" "reload" "nop" ]);
                 default = "nop";
                 description = "The action to take after fetching.";
               };
@@ -175,14 +167,7 @@ in
 
     svcManager = mkOption {
       default = "systemd";
-      type = types.enum [
-        "circus"
-        "command"
-        "dummy"
-        "openrc"
-        "systemd"
-        "sysv"
-      ];
+      type = types.enum [ "circus" "command" "dummy" "openrc" "systemd" "sysv" ];
       description = ''
         This specifies the service manager to use for restarting or reloading services.
         See: <https://github.com/cloudflare/certmgr#certmgryaml>.
@@ -200,11 +185,7 @@ in
         message = "Certmgr specs cannot be empty.";
       }
       {
-        assertion =
-          !any (hasAttrByPath [
-            "authority"
-            "auth_key"
-          ]) (attrValues cfg.specs);
+        assertion = !any (hasAttrByPath [ "authority" "auth_key" ]) (attrValues cfg.specs);
         message = ''
           Inline services.certmgr.specs are added to the Nix store rendering them world readable.
           Specify paths as specs, if you want to use include auth_key - or use the auth_key_file option."

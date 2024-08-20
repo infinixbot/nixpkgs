@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    blas
-    lapack
-  ];
+  buildInputs = [ blas lapack ];
 
   enableParallelBuilding = true;
 

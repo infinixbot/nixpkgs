@@ -49,45 +49,13 @@ stdenv.mkDerivation rec {
   makeFlags = [ "prefix=$(out) USE_SYSTEM_LIBS=yes" ];
   nativeBuildInputs = [ pkg-config ];
   buildInputs =
-    [
-      freetype
-      harfbuzz
-      openjpeg
-      jbig2dec
-      libjpeg
-      libglut
-      libGLU
-    ]
-    ++ lib.optionals enableX11 [
-      libX11
-      libXext
-      libXi
-      libXrandr
-    ]
-    ++ lib.optionals enableCurl [
-      curl
-      openssl
-    ]
+    [ freetype harfbuzz openjpeg jbig2dec libjpeg libglut libGLU ]
+    ++ lib.optionals enableX11 [ libX11 libXext libXi libXrandr ]
+    ++ lib.optionals enableCurl [ curl openssl ]
     ++ lib.optionals enableGL (
-      if stdenv.isDarwin then
-        with darwin.apple_sdk.frameworks;
-        [
-          GLUT
-          OpenGL
-        ]
-      else
-        [
-          libglut
-          libGLU
-        ]
+      if stdenv.isDarwin then with darwin.apple_sdk.frameworks; [ GLUT OpenGL ] else [ libglut libGLU ]
     );
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "man"
-    "doc"
-  ];
+  outputs = [ "bin" "dev" "out" "man" "doc" ];
 
   preConfigure = ''
     # Don't remove mujs because upstream version is incompatible

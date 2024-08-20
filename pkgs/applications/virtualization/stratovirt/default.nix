@@ -50,10 +50,7 @@ rustPlatform.buildRustPackage rec {
     description = "Virtual Machine Manager from Huawei";
     license = licenses.mulan-psl2;
     maintainers = with maintainers; [ astro ];
-    platforms = [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "aarch64-linux" "x86_64-linux" ];
     mainProgram = "stratovirt";
   };
 }

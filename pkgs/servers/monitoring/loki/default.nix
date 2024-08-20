@@ -67,20 +67,11 @@ buildGoModule rec {
   meta = with lib; {
     description = "Like Prometheus, but for logs";
     mainProgram = "promtail";
-    license = with licenses; [
-      agpl3Only
-      asl20
-    ];
+    license = with licenses; [ agpl3Only asl20 ];
     homepage = "https://grafana.com/oss/loki/";
     changelog = "https://github.com/grafana/loki/releases/tag/v${version}";
     maintainers =
       with maintainers;
-      [
-        willibutz
-        globin
-        mmahut
-        emilylange
-      ]
-      ++ teams.helsinki-systems.members;
+      [ willibutz globin mmahut emilylange ] ++ teams.helsinki-systems.members;
   };
 }

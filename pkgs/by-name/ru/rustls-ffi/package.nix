@@ -36,12 +36,7 @@ stdenv.mkDerivation (finalAttrs: {
     darwin.apple_sdk.frameworks.Security
   ];
 
-  nativeBuildInputs = [
-    cargo
-    rustPlatform.cargoSetupHook
-    cargo-c
-    validatePkgConfig
-  ];
+  nativeBuildInputs = [ cargo rustPlatform.cargoSetupHook cargo-c validatePkgConfig ];
 
   buildPhase = ''
     runHook preBuild
@@ -78,11 +73,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "C-to-rustls bindings";
     homepage = "https://github.com/rustls/rustls-ffi/";
     pkgConfigModules = [ "rustls" ];
-    license = with lib.licenses; [
-      mit
-      asl20
-      isc
-    ];
+    license = with lib.licenses; [ mit asl20 isc ];
     maintainers = [ maintainers.lesuisse ];
   };
 })

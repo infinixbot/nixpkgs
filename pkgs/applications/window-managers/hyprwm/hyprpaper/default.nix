@@ -76,10 +76,7 @@ stdenv.mkDerivation (finalAttrs: {
     inherit (finalAttrs.src.meta) homepage;
     description = "Blazing fast wayland wallpaper utility";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      wozeparrot
-      fufexan
-    ];
+    maintainers = with maintainers; [ wozeparrot fufexan ];
     inherit (wayland.meta) platforms;
     broken = stdenv.isDarwin;
     mainProgram = "hyprpaper";

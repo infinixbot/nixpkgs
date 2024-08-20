@@ -8,10 +8,7 @@ import ./make-test-python.nix (
   let
     routerBase = lib.mkMerge [
       {
-        virtualisation.vlans = [
-          2
-          1
-        ];
+        virtualisation.vlans = [ 2 1 ];
         networking.nftables.enable = true;
         networking.nat.internalIPs = [ "192.168.1.0/24" ];
         networking.nat.externalInterface = "eth1";
@@ -40,10 +37,7 @@ import ./make-test-python.nix (
     nodes.router =
       { ... }:
       {
-        virtualisation.vlans = [
-          2
-          1
-        ];
+        virtualisation.vlans = [ 2 1 ];
         networking.nftables.enable = true;
         networking.nat.internalIPs = [ "192.168.1.0/24" ];
         networking.nat.externalInterface = "eth1";

@@ -19,12 +19,7 @@
   system ? builtins.currentSystem,
   officialRelease ? false,
   # The platform doubles for which we build Nixpkgs.
-  supportedSystems ? [
-    "x86_64-linux"
-    "x86_64-darwin"
-    "aarch64-linux"
-    "aarch64-darwin"
-  ],
+  supportedSystems ? [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ],
   # The platform triples for which we build bootstrap tools.
   bootstrapConfigs ? [
     "aarch64-apple-darwin"
@@ -331,26 +326,11 @@ let
         idrisPackages = packagePlatforms pkgs.idrisPackages;
         agdaPackages = packagePlatforms pkgs.agdaPackages;
 
-        pkgsLLVM.stdenv = [
-          "x86_64-linux"
-          "aarch64-linux"
-        ];
-        pkgsArocc.stdenv = [
-          "x86_64-linux"
-          "aarch64-linux"
-        ];
-        pkgsZig.stdenv = [
-          "x86_64-linux"
-          "aarch64-linux"
-        ];
-        pkgsMusl.stdenv = [
-          "x86_64-linux"
-          "aarch64-linux"
-        ];
-        pkgsStatic.stdenv = [
-          "x86_64-linux"
-          "aarch64-linux"
-        ];
+        pkgsLLVM.stdenv = [ "x86_64-linux" "aarch64-linux" ];
+        pkgsArocc.stdenv = [ "x86_64-linux" "aarch64-linux" ];
+        pkgsZig.stdenv = [ "x86_64-linux" "aarch64-linux" ];
+        pkgsMusl.stdenv = [ "x86_64-linux" "aarch64-linux" ];
+        pkgsStatic.stdenv = [ "x86_64-linux" "aarch64-linux" ];
 
         tests = packagePlatforms pkgs.tests;
 

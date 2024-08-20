@@ -26,10 +26,7 @@ stdenv.mkDerivation {
     (if with_lua then "-DLUAPATH=${placeholder "out"}/lib/lua" else "-DBUILD_LUA=OFF")
   ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
   buildInputs = [
     json_c
   ] ++ lib.optional with_lua lua5_1 ++ lib.optional with_ustream_ssl ustream-ssl;
@@ -51,10 +48,7 @@ stdenv.mkDerivation {
     description = "C utility functions for OpenWrt";
     homepage = "https://git.openwrt.org/?p=project/libubox.git;a=summary";
     license = licenses.isc;
-    maintainers = with maintainers; [
-      fpletz
-      mkg20001
-    ];
+    maintainers = with maintainers; [ fpletz mkg20001 ];
     mainProgram = "jshn";
     platforms = platforms.all;
   };

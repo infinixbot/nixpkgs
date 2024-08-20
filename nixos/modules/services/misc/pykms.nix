@@ -15,11 +15,7 @@ in
   meta.maintainers = with lib.maintainers; [ peterhoeg ];
 
   imports = [
-    (mkRemovedOptionModule [
-      "services"
-      "pykms"
-      "verbose"
-    ] "Use services.pykms.logLevel instead")
+    (mkRemovedOptionModule [ "services" "pykms" "verbose" ] "Use services.pykms.logLevel instead")
   ];
 
   options = {
@@ -55,14 +51,7 @@ in
       };
 
       logLevel = mkOption {
-        type = types.enum [
-          "CRITICAL"
-          "ERROR"
-          "WARNING"
-          "INFO"
-          "DEBUG"
-          "MININFO"
-        ];
+        type = types.enum [ "CRITICAL" "ERROR" "WARNING" "INFO" "DEBUG" "MININFO" ];
         default = "INFO";
         description = "How much to log";
       };

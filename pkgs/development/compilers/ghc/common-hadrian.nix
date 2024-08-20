@@ -207,15 +207,9 @@
       ]
       # Incorrect bounds on Cabal in hadrian
       # https://gitlab.haskell.org/ghc/ghc/-/issues/24100
-      ++
-        lib.optionals
-          (lib.elem version [
-            "9.8.1"
-            "9.8.2"
-          ])
-          [
-            ../../tools/haskell/hadrian/hadrian-9.8.1-allow-Cabal-3.10.patch
-          ];
+      ++ lib.optionals (lib.elem version [ "9.8.1" "9.8.2" ]) [
+        ../../tools/haskell/hadrian/hadrian-9.8.1-allow-Cabal-3.10.patch
+      ];
   },
 
   # GHC's build system hadrian built from the GHC-to-build's source tree
@@ -463,10 +457,7 @@ stdenv.mkDerivation (
     ${if targetPlatform.isGhcjs then "dontUpdateAutotoolsGnuConfigScripts" else null} = true;
 
     # TODO(@Ericson2314): Always pass "--target" and always prefix.
-    configurePlatforms = [
-      "build"
-      "host"
-    ] ++ lib.optional (targetPlatform != hostPlatform) "target";
+    configurePlatforms = [ "build" "host" ] ++ lib.optional (targetPlatform != hostPlatform) "target";
 
     # `--with` flags for libraries needed for RTS linker
     configureFlags =
@@ -546,10 +537,7 @@ stdenv.mkDerivation (
     # For building runtime libs
     depsBuildTarget = toolsForTarget;
 
-    buildInputs = [
-      perl
-      bash
-    ] ++ (libDeps hostPlatform);
+    buildInputs = [ perl bash ] ++ (libDeps hostPlatform);
 
     depsTargetTarget = map lib.getDev (libDeps targetPlatform);
     depsTargetTargetPropagated = map (lib.getOutput "out") (libDeps targetPlatform);
@@ -593,10 +581,7 @@ stdenv.mkDerivation (
     # Hydra which already warrants a significant speedup
     requiredSystemFeatures = [ "big-parallel" ];
 
-    outputs = [
-      "out"
-      "doc"
-    ];
+    outputs = [ "out" "doc" ];
 
     # We need to configure the bindist *again* before installing
     # https://gitlab.haskell.org/ghc/ghc/-/issues/22058

@@ -46,10 +46,7 @@ in
   config = lib.mkIf cfg.enable {
     systemd.services.shibboleth-sp = {
       description = "Provides SSO and federation for web applications";
-      after = lib.optionals cfg.fastcgi.enable [
-        "shibresponder.service"
-        "shibauthorizer.service"
-      ];
+      after = lib.optionals cfg.fastcgi.enable [ "shibresponder.service" "shibauthorizer.service" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         ExecStart = "${pkgs.shibboleth-sp}/bin/shibd -F -d ${pkgs.shibboleth-sp} -c ${cfg.configFile}";

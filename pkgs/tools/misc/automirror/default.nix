@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
 
   patchPhase = "sed -i s#/usr##g Makefile";
 
-  buildInputs = [
-    git
-    ronn
-  ];
+  buildInputs = [ git ronn ];
 
   installFlags = [ "DESTDIR=$(out)" ];
 

@@ -35,10 +35,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  outputs = [
-    "out"
-    "dist"
-  ];
+  outputs = [ "out" "dist" ];
 
   # slashes are significant because upstream uses o/$(MODE)/foo.o
   buildFlags = [

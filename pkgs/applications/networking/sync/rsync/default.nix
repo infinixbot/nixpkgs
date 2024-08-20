@@ -30,10 +30,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-c5nppnCMMtZ4pypjIZ6W8jvgviM25Q/RNISY0HBB35A=";
   };
 
-  nativeBuildInputs = [
-    updateAutotoolsGnuConfigScriptsHook
-    perl
-  ];
+  nativeBuildInputs = [ updateAutotoolsGnuConfigScriptsHook perl ];
 
   patches = [
     # https://github.com/WayneD/rsync/pull/558
@@ -41,11 +38,7 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    [
-      libiconv
-      zlib
-      popt
-    ]
+    [ libiconv zlib popt ]
     ++ lib.optional enableACLs acl
     ++ lib.optional enableZstd zstd
     ++ lib.optional enableLZ4 lz4
@@ -80,11 +73,7 @@ stdenv.mkDerivation rec {
     homepage = "https://rsync.samba.org/";
     license = licenses.gpl3Plus;
     mainProgram = "rsync";
-    maintainers = with lib.maintainers; [
-      ehmry
-      kampfschlaefer
-      ivan
-    ];
+    maintainers = with lib.maintainers; [ ehmry kampfschlaefer ivan ];
     platforms = platforms.unix;
   };
 }

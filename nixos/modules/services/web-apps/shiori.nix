@@ -61,10 +61,7 @@ in
     systemd.services.shiori = {
       description = "Shiori simple bookmarks manager";
       wantedBy = [ "multi-user.target" ];
-      after = [
-        "postgresql.service"
-        "mysql.service"
-      ];
+      after = [ "postgresql.service" "mysql.service" ];
       environment =
         {
           SHIORI_DIR = "/var/lib/shiori";
@@ -122,11 +119,7 @@ in
         ProtectKernelTunables = true;
 
         RestrictNamespaces = true;
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-          "AF_UNIX"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_UNIX" ];
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
 
@@ -148,8 +141,5 @@ in
     };
   };
 
-  meta.maintainers = with lib.maintainers; [
-    minijackson
-    CaptainJawZ
-  ];
+  meta.maintainers = with lib.maintainers; [ minijackson CaptainJawZ ];
 }

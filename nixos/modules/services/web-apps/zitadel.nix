@@ -54,11 +54,7 @@ in
       };
 
       tlsMode = mkOption {
-        type = types.enum [
-          "external"
-          "enabled"
-          "disabled"
-        ];
+        type = types.enum [ "external" "enabled" "disabled" ];
         default = "external";
         example = "enabled";
         description = ''

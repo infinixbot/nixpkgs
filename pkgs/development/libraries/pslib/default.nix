@@ -21,17 +21,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-gaWNvBLuUUy0o+HWCOyG6KmzxDrYCY6PV3WbA/jjH64=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  buildInputs = [
-    zlib
-    libpng
-    libjpeg
-    giflib
-    libtiff
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
+  buildInputs = [ zlib libpng libjpeg giflib libtiff ];
 
   env = lib.optionalAttrs stdenv.isDarwin {
     NIX_CFLAGS_COMPILE = "-Wno-error=implicit-function-declaration";
@@ -39,11 +30,7 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
   installPhase = ''
     mkdir -p $out/lib

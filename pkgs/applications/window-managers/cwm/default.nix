@@ -24,26 +24,15 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    pkg-config
-    bison
-  ];
-  buildInputs = [
-    libX11
-    libXinerama
-    libXrandr
-    libXft
-  ];
+  nativeBuildInputs = [ pkg-config bison ];
+  buildInputs = [ libX11 libXinerama libXrandr libXft ];
 
   prePatch = ''sed -i "s@/usr/local@$out@" Makefile'';
 
   meta = with lib; {
     description = "Lightweight and efficient window manager for X11";
     homepage = "https://github.com/leahneukirchen/cwm";
-    maintainers = with maintainers; [
-      _0x4A6F
-      mkf
-    ];
+    maintainers = with maintainers; [ _0x4A6F mkf ];
     license = licenses.isc;
     platforms = platforms.linux;
     mainProgram = "cwm";

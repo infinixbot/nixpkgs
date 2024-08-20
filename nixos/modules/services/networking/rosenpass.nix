@@ -72,10 +72,7 @@ in
             };
 
             verbosity = mkOption {
-              type = enum [
-                "Verbose"
-                "Quiet"
-              ];
+              type = enum [ "Verbose" "Quiet" ];
               default = "Quiet";
               description = "Verbosity of output produced by the service.";
             };
@@ -183,10 +180,7 @@ in
         ${unusual}
       '';
 
-    environment.systemPackages = [
-      cfg.package
-      pkgs.wireguard-tools
-    ];
+    environment.systemPackages = [ cfg.package pkgs.wireguard-tools ];
 
     systemd.services.rosenpass =
       let
@@ -220,10 +214,7 @@ in
         wantedBy = [ "multi-user.target" ];
         wants = [ "network-online.target" ];
         after = [ "network-online.target" ];
-        path = [
-          cfg.package
-          pkgs.wireguard-tools
-        ];
+        path = [ cfg.package pkgs.wireguard-tools ];
 
         serviceConfig = {
           User = "rosenpass";

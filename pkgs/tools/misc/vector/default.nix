@@ -73,21 +73,9 @@ rustPlatform.buildRustPackage {
     };
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-    perl
-    git
-    rustPlatform.bindgenHook
-  ];
+  nativeBuildInputs = [ pkg-config cmake perl git rustPlatform.bindgenHook ];
   buildInputs =
-    [
-      oniguruma
-      openssl
-      protobuf
-      rdkafka
-      zstd
-    ]
+    [ oniguruma openssl protobuf rdkafka zstd ]
     ++ lib.optionals stdenv.isLinux [ rust-jemalloc-sys-unprefixed ]
     ++ lib.optionals stdenv.isDarwin [
       rust-jemalloc-sys
@@ -161,10 +149,7 @@ rustPlatform.buildRustPackage {
     description = "High-performance observability data pipeline";
     homepage = "https://github.com/vectordotdev/vector";
     license = licenses.mpl20;
-    maintainers = with maintainers; [
-      thoughtpolice
-      happysalada
-    ];
+    maintainers = with maintainers; [ thoughtpolice happysalada ];
     platforms = with platforms; all;
     mainProgram = "vector";
   };

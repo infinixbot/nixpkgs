@@ -15,10 +15,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-U0NVREEZ8HI0Q0ZcbwvZsYA76PWMh7bqgDG1uaUc01c=";
   };
 
-  buildInputs = [
-    blas
-    lapack
-  ];
+  buildInputs = [ blas lapack ];
 
   patches = [ ./math-constants.patch ];
 

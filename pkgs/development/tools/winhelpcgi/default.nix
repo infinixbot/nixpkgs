@@ -18,10 +18,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    libwmf
-    libpng12
-  ];
+  buildInputs = [ libwmf libpng12 ];
 
   meta = {
     description = "CGI module for Linux, Solaris, MacOS X and AIX to read Windows Help Files";

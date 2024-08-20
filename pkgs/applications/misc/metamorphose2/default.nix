@@ -34,12 +34,7 @@ stdenv.mkDerivation {
   '';
 
   nativeBuildInputs = [ makeWrapper ];
-  propagatedBuildInputs = with python3.pkgs; [
-    mutagen
-    wxpython
-    pillow
-    six
-  ];
+  propagatedBuildInputs = with python3.pkgs; [ mutagen wxpython pillow six ];
 
   makeFlags = [ "PREFIX=$(out)" ];
 

@@ -44,10 +44,7 @@ python3Packages.buildPythonApplication rec {
 
   # Has no standard tests, so we verify a few imports instead.
   doCheck = false;
-  pythonImportsCheck = [
-    "flac2all_pkg.vorbis"
-    "flac2all_pkg.mp3"
-  ];
+  pythonImportsCheck = [ "flac2all_pkg.vorbis" "flac2all_pkg.mp3" ];
 
   meta = with lib; {
     description = "Multi process, clustered, FLAC to multi codec audio converter with tagging support";

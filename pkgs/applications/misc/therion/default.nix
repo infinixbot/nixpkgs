@@ -82,12 +82,7 @@ stdenv.mkDerivation rec {
   fixupPhase = ''
     runHook preFixup
     wrapProgram $out/bin/therion \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          survex
-          texliveTeTeX
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ survex texliveTeTeX ]}
     wrapProgram $out/bin/xtherion \
       --prefix PATH : ${lib.makeBinPath [ tk ]}
     runHook postFixup

@@ -18,15 +18,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-CTDMoYGbVE4W0SDerW//aAdUVsySWFQycSy0I3a9+94=";
   };
 
-  nativeBuildInputs = [
-    qttools
-    cmake
-    wrapQtAppsHook
-  ];
-  buildInputs = [
-    qtbase
-    sqlite
-  ];
+  nativeBuildInputs = [ qttools cmake wrapQtAppsHook ];
+  buildInputs = [ qtbase sqlite ];
 
   cmakeFlags = [
     "-DEMBED_SQLITE=OFF"

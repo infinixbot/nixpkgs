@@ -23,23 +23,13 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    cmake
-    qttools
-    wrapQtAppsHook
-    qtquickcontrols2
-    opencascade-occt
-    libGLU
-  ];
+  nativeBuildInputs = [ cmake qttools wrapQtAppsHook qtquickcontrols2 opencascade-occt libGLU ];
   buildInputs = [ qtbase ];
 
   meta = with lib; {
     description = "Free EDA software to develop printed circuit boards";
     homepage = "https://librepcb.org/";
-    maintainers = with maintainers; [
-      luz
-      thoughtpolice
-    ];
+    maintainers = with maintainers; [ luz thoughtpolice ];
     license = licenses.gpl3Plus;
     platforms = platforms.linux;
   };

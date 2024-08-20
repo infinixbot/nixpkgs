@@ -37,11 +37,7 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "schemacrawler";
     homepage = "https://www.schemacrawler.com/";
     sourceProvenance = with sourceTypes; [ binaryBytecode ];
-    license = with licenses; [
-      epl10
-      gpl3Only
-      lgpl3Only
-    ];
+    license = with licenses; [ epl10 gpl3Only lgpl3Only ];
     platforms = platforms.unix;
     maintainers = with maintainers; [ elohmeier ];
   };

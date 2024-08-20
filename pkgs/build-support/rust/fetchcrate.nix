@@ -25,11 +25,5 @@ assert pname == null || pname == crateName;
   // lib.optionalAttrs unpack {
     extension = "tar.gz";
   }
-  // removeAttrs args [
-    "crateName"
-    "pname"
-    "registryDl"
-    "version"
-    "unpack"
-  ]
+  // removeAttrs args [ "crateName" "pname" "registryDl" "version" "unpack" ]
 )

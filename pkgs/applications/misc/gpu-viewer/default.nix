@@ -56,15 +56,7 @@ python3.pkgs.buildPythonApplication rec {
 
   postFixup = ''
     makeWrapper ${python3.interpreter} $out/bin/gpu-viewer \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          clinfo
-          glxinfo
-          lsb-release
-          vdpauinfo
-          vulkan-tools
-        ]
-      }" \
+      --prefix PATH : "${lib.makeBinPath [ clinfo glxinfo lsb-release vdpauinfo vulkan-tools ]}" \
       --add-flags "$out/share/gpu-viewer/Files/GPUViewer.py" \
       --prefix PYTHONPATH : "$PYTHONPATH" \
       --chdir "$out/share/gpu-viewer/Files" \

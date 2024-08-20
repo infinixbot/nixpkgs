@@ -19,10 +19,7 @@ let
     };
   } // cfg.extraConfig;
 
-  configFiles = [
-    "/etc/consul.json"
-    "/etc/consul-addrs.json"
-  ] ++ cfg.extraConfigFiles;
+  configFiles = [ "/etc/consul.json" "/etc/consul-addrs.json" ] ++ cfg.extraConfigFiles;
 
   devices = attrValues (filterAttrs (_: i: i != null) cfg.interface);
   systemdDevices = forEach devices (
@@ -84,11 +81,7 @@ in
       };
 
       forceAddrFamily = mkOption {
-        type = types.enum [
-          "any"
-          "ipv4"
-          "ipv6"
-        ];
+        type = types.enum [ "any" "ipv4" "ipv6" ];
         default = "any";
         description = ''
           Whether to bind ipv4/ipv6 or both kind of addresses.
@@ -215,11 +208,7 @@ in
             ExecStop = "${lib.getExe cfg.package} leave";
           });
 
-        path = with pkgs; [
-          iproute2
-          gawk
-          cfg.package
-        ];
+        path = with pkgs; [ iproute2 gawk cfg.package ];
         preStart =
           let
             family =

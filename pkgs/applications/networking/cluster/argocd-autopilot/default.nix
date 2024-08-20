@@ -56,9 +56,6 @@ buildGoModule rec {
     downloadPage = "https://github.com/argoproj-labs/argocd-autopilot";
     homepage = "https://argocd-autopilot.readthedocs.io/en/stable/";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      sagikazarmark
-      bryanasdev000
-    ];
+    maintainers = with maintainers; [ sagikazarmark bryanasdev000 ];
   };
 }

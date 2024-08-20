@@ -25,10 +25,7 @@ buildGoModule rec {
 
   subPackages = [ "cmd/wire" ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     homepage = "https://github.com/google/wire";

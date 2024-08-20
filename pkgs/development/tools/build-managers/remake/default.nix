@@ -36,9 +36,6 @@ stdenv.mkDerivation rec {
     description = "GNU Make with comprehensible tracing and a debugger";
     mainProgram = "remake";
     platforms = with lib.platforms; linux ++ darwin;
-    maintainers = with lib.maintainers; [
-      bjornfor
-      shamilton
-    ];
+    maintainers = with lib.maintainers; [ bjornfor shamilton ];
   };
 }

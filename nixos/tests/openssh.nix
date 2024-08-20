@@ -41,10 +41,7 @@ import ./make-test-python.nix (
         {
           services.openssh = {
             enable = true;
-            settings.AllowUsers = [
-              "alice"
-              "bob"
-            ];
+            settings.AllowUsers = [ "alice" "bob" ];
           };
           users.groups = {
             alice = { };
@@ -92,10 +89,7 @@ import ./make-test-python.nix (
         };
 
       server-lazy-socket = {
-        virtualisation.vlans = [
-          1
-          2
-        ];
+        virtualisation.vlans = [ 1 2 ];
         services.openssh = {
           enable = true;
           startWhenNeeded = true;
@@ -228,10 +222,7 @@ import ./make-test-python.nix (
       client =
         { ... }:
         {
-          virtualisation.vlans = [
-            1
-            2
-          ];
+          virtualisation.vlans = [ 1 2 ];
         };
 
     };

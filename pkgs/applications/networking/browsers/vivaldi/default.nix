@@ -94,10 +94,7 @@ stdenv.mkDerivation rec {
     tar -xvf data.tar.xz
   '';
 
-  nativeBuildInputs = [
-    patchelf
-    makeWrapper
-  ];
+  nativeBuildInputs = [ patchelf makeWrapper ];
 
   dontWrapQtApps = true;
 
@@ -232,13 +229,7 @@ stdenv.mkDerivation rec {
     license = licenses.unfree;
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     mainProgram = "vivaldi";
-    maintainers = with maintainers; [
-      otwieracz
-      badmutex
-    ];
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+    maintainers = with maintainers; [ otwieracz badmutex ];
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
   };
 }

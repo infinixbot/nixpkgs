@@ -102,13 +102,7 @@ in
 
     extraPackages = lib.mkOption {
       type = with lib.types; listOf package;
-      default = with pkgs; [
-        swaylock
-        swayidle
-        foot
-        dmenu
-        wmenu
-      ];
+      default = with pkgs; [ swaylock swayidle foot dmenu wmenu ];
       defaultText = lib.literalExpression ''
         with pkgs; [ swaylock swayidle foot dmenu wmenu ];
       '';
@@ -159,10 +153,7 @@ in
         services.displayManager.sessionPackages = lib.optional (cfg.package != null) cfg.package;
 
         # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1050913
-        xdg.portal.config.sway.default = lib.mkDefault [
-          "wlr"
-          "gtk"
-        ];
+        xdg.portal.config.sway.default = lib.mkDefault [ "wlr" "gtk" ];
       }
 
       (import ./wayland-session.nix {
@@ -172,8 +163,5 @@ in
     ]
   );
 
-  meta.maintainers = with lib.maintainers; [
-    primeos
-    colemickens
-  ];
+  meta.maintainers = with lib.maintainers; [ primeos colemickens ];
 }

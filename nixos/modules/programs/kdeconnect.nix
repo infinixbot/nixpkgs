@@ -15,15 +15,9 @@
       `gnomeExtensions.gsconnect` as an alternative
       implementation if you use Gnome
     '';
-    package =
-      lib.mkPackageOption pkgs
-        [
-          "plasma5Packages"
-          "kdeconnect-kde"
-        ]
-        {
-          example = "gnomeExtensions.gsconnect";
-        };
+    package = lib.mkPackageOption pkgs [ "plasma5Packages" "kdeconnect-kde" ] {
+      example = "gnomeExtensions.gsconnect";
+    };
   };
   config =
     let

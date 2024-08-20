@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    libssh
-    openssl
-  ];
+  buildInputs = [ libssh openssl ];
 
   postFixup = ''
     substituteInPlace "$out"/lib/pkgconfig/rtrlib.pc \

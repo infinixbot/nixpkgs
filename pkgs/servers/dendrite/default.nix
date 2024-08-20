@@ -59,10 +59,7 @@ buildGoModule rec {
     inherit (nixosTests) dendrite;
   };
   passthru.updateScript = nix-update-script {
-    extraArgs = [
-      "--version-regex"
-      "v(.+)"
-    ];
+    extraArgs = [ "--version-regex" "v(.+)" ];
   };
 
   meta = with lib; {

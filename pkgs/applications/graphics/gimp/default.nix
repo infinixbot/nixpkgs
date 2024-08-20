@@ -60,10 +60,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "gimp";
   version = "2.10.38";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "http://download.gimp.org/pub/gimp/v${lib.versions.majorMinor finalAttrs.version}/gimp-${finalAttrs.version}.tar.bz2";

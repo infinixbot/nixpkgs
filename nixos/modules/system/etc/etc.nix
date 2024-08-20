@@ -354,10 +354,7 @@ in
       in
       pkgs.runCommand "etc-metadata.erofs"
         {
-          nativeBuildInputs = with pkgs.buildPackages; [
-            composefs
-            erofs-utils
-          ];
+          nativeBuildInputs = with pkgs.buildPackages; [ composefs erofs-utils ];
         }
         ''
           mkcomposefs --from-file ${etcDump} $out

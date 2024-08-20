@@ -94,11 +94,7 @@ let
         default = null;
       };
       method = mkOption {
-        type = types.enum [
-          "static"
-          "iface"
-          "auto"
-        ];
+        type = types.enum [ "static" "iface" "auto" ];
         description = ''
           static: Immediately answer any Neighbor Solicitation Messages
             (if they match the IP rule).
@@ -182,10 +178,7 @@ in
 
     systemd.services.ndppd = {
       description = "NDP Proxy Daemon";
-      documentation = [
-        "man:ndppd(1)"
-        "man:ndppd.conf(5)"
-      ];
+      documentation = [ "man:ndppd(1)" "man:ndppd.conf(5)" ];
       after = [ "network-pre.target" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {

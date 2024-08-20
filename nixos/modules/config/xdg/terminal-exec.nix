@@ -36,10 +36,7 @@ in
         '';
         example = {
           default = [ "kitty.desktop" ];
-          GNOME = [
-            "com.raggesilver.BlackBox.desktop"
-            "org.gnome.Terminal.desktop"
-          ];
+          GNOME = [ "com.raggesilver.BlackBox.desktop" "org.gnome.Terminal.desktop" ];
         };
       };
     };

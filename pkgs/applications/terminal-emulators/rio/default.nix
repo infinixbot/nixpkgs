@@ -87,10 +87,7 @@ rustPlatform.buildRustPackage rec {
 
   buildInputs = rlinkLibs;
 
-  outputs = [
-    "out"
-    "terminfo"
-  ];
+  outputs = [ "out" "terminfo" ];
 
   buildNoDefaultFeatures = true;
   buildFeatures = [ ] ++ lib.optional withX11 "x11" ++ lib.optional withWayland "wayland";
@@ -120,10 +117,7 @@ rustPlatform.buildRustPackage rec {
 
   passthru = {
     updateScript = nix-update-script {
-      extraArgs = [
-        "--version-regex"
-        "v([0-9.]+)"
-      ];
+      extraArgs = [ "--version-regex" "v([0-9.]+)" ];
     };
 
     tests = {
@@ -136,11 +130,7 @@ rustPlatform.buildRustPackage rec {
     description = "Hardware-accelerated GPU terminal emulator powered by WebGPU";
     homepage = "https://raphamorim.io/rio";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [
-      tornax
-      otavio
-      oluceps
-    ];
+    maintainers = with lib.maintainers; [ tornax otavio oluceps ];
     platforms = lib.platforms.unix;
     changelog = "https://github.com/raphamorim/rio/blob/v${version}/CHANGELOG.md";
     mainProgram = "rio";

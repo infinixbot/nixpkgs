@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
   hardeningDisable = [ "format" ];
 
   # GNU Gettext is needed on non-GNU platforms.
-  buildInputs = [
-    coreutils
-    gettext
-  ];
+  buildInputs = [ coreutils gettext ];
   nativeBuildInputs = [ updateAutotoolsGnuConfigScriptsHook ];
 
   # These tests try to hit /etc/passwd to find out your username if pass in a submitter

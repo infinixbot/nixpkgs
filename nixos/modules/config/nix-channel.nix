@@ -100,10 +100,7 @@ in
     ];
 
     system.activationScripts.no-nix-channel = mkIf (!cfg.channel.enable) (
-      stringAfter [
-        "etc"
-        "users"
-      ] (builtins.readFile ./nix-channel/activation-check.sh)
+      stringAfter [ "etc" "users" ] (builtins.readFile ./nix-channel/activation-check.sh)
     );
   };
 }

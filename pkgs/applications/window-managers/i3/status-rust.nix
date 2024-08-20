@@ -28,18 +28,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-yeijJl94v+yKMVnU/Fjzapab/nExlvoznrx8Ydz/RvM=";
 
-  nativeBuildInputs = [
-    pkg-config
-    makeWrapper
-  ];
+  nativeBuildInputs = [ pkg-config makeWrapper ];
 
-  buildInputs = [
-    dbus
-    libpulseaudio
-    notmuch
-    openssl
-    lm_sensors
-  ];
+  buildInputs = [ dbus libpulseaudio notmuch openssl lm_sensors ];
 
   buildFeatures = [
     "notmuch"
@@ -58,13 +49,7 @@ rustPlatform.buildRustPackage rec {
   '';
 
   postFixup = ''
-    wrapProgram $out/bin/i3status-rs --prefix PATH : ${
-      lib.makeBinPath [
-        iproute2
-        ethtool
-        iw
-      ]
-    }
+    wrapProgram $out/bin/i3status-rs --prefix PATH : ${lib.makeBinPath [ iproute2 ethtool iw ]}
   '';
 
   # Currently no tests are implemented, so we avoid building the package twice
@@ -75,10 +60,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/greshake/i3status-rust";
     license = licenses.gpl3Only;
     mainProgram = "i3status-rs";
-    maintainers = with maintainers; [
-      backuitist
-      globin
-    ];
+    maintainers = with maintainers; [ backuitist globin ];
     platforms = platforms.linux;
   };
 }

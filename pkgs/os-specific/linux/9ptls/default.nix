@@ -11,10 +11,7 @@ stdenv.mkDerivation (finalAttrs: {
   strictDeps = true;
 
   buildFlags = [ "mount.9ptls" ];
-  installFlags = [
-    "PREFIX=$(out)"
-    "SBIN=$(out)/bin"
-  ];
+  installFlags = [ "PREFIX=$(out)" "SBIN=$(out)/bin" ];
   installTargets = "mount.9ptls.install";
 
   meta = with lib; {

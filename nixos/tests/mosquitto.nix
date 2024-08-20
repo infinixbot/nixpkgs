@@ -75,11 +75,7 @@ import ./make-test-python.nix (
         server =
           { pkgs, ... }:
           {
-            networking.firewall.allowedTCPPorts = [
-              port
-              tlsPort
-              anonPort
-            ];
+            networking.firewall.allowedTCPPorts = [ port tlsPort anonPort ];
             networking.useNetworkd = true;
             services.mosquitto = {
               enable = true;

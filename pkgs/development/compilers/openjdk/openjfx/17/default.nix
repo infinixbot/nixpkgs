@@ -48,24 +48,8 @@ stdenv.mkDerivation {
     ../backport-ffmpeg-6-support-jfx11.patch
   ];
 
-  buildInputs = [
-    gtk2
-    gtk3
-    libXtst
-    libXxf86vm
-    glib
-    alsa-lib
-    ffmpeg_6-headless
-  ];
-  nativeBuildInputs = [
-    gradle
-    perl
-    pkg-config
-    cmake
-    gperf
-    python3
-    ruby
-  ];
+  buildInputs = [ gtk2 gtk3 libXtst libXxf86vm glib alsa-lib ffmpeg_6-headless ];
+  nativeBuildInputs = [ gradle perl pkg-config cmake gperf python3 ruby ];
 
   dontUseCmakeConfigure = true;
 
@@ -117,10 +101,7 @@ stdenv.mkDerivation {
     done
   '';
 
-  disallowedReferences = [
-    jdk
-    gradle.jdk
-  ];
+  disallowedReferences = [ jdk gradle.jdk ];
 
   meta = with lib; {
     homepage = "http://openjdk.java.net/projects/openjfx/";

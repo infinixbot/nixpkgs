@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    zlib
-    boost.out
-    boost.dev
-  ];
+  buildInputs = [ zlib boost.out boost.dev ];
   env.NIX_CFLAGS_COMPILE = toString (
     [ "-Wno-narrowing" ]
     # Squelch endless stream of warnings on same few things

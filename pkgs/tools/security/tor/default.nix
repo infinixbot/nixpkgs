@@ -29,13 +29,7 @@
 }:
 let
   tor-client-auth-gen = writeShellScript "tor-client-auth-gen" ''
-    PATH="${
-      lib.makeBinPath [
-        coreutils
-        gnugrep
-        openssl
-      ]
-    }"
+    PATH="${lib.makeBinPath [ coreutils gnugrep openssl ]}"
     pem="$(openssl genpkey -algorithm x25519)"
 
     printf private_key=descriptor:x25519:
@@ -57,26 +51,17 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-ynzHNdmON0e1jy88wU+ATdeJ+g+zM6hNy2vXCtu4yHQ=";
   };
 
-  outputs = [
-    "out"
-    "geoip"
-  ];
+  outputs = [ "out" "geoip" ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs =
-    [
-      libevent
-      openssl
-      zlib
-      xz
-      zstd
-      scrypt
-    ]
-    ++ lib.optionals stdenv.isLinux [
-      libseccomp
-      systemd
-      libcap
-    ];
+  buildInputs = [
+    libevent
+    openssl
+    zlib
+    xz
+    zstd
+    scrypt
+  ] ++ lib.optionals stdenv.isLinux [ libseccomp systemd libcap ];
 
   patches = [ ./disable-monotonic-timer-tests.patch ];
 
@@ -147,16 +132,9 @@ stdenv.mkDerivation rec {
       the TCP protocol.
     '';
 
-    license = with licenses; [
-      bsd3
-      gpl3Only
-    ];
+    license = with licenses; [ bsd3 gpl3Only ];
 
-    maintainers = with maintainers; [
-      thoughtpolice
-      joachifm
-      prusnak
-    ];
+    maintainers = with maintainers; [ thoughtpolice joachifm prusnak ];
     platforms = platforms.unix;
   };
 }

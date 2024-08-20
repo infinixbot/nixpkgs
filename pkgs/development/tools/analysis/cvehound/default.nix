@@ -18,12 +18,7 @@ python3.pkgs.buildPythonApplication rec {
   };
 
   makeWrapperArgs = [
-    "--prefix PATH : ${
-      lib.makeBinPath [
-        coccinelle
-        gnugrep
-      ]
-    }"
+    "--prefix PATH : ${lib.makeBinPath [ coccinelle gnugrep ]}"
   ];
 
   propagatedBuildInputs = with python3.pkgs; [
@@ -46,10 +41,7 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "https://github.com/evdenis/cvehound";
     changelog = "https://github.com/evdenis/cvehound/blob/${src.rev}/ChangeLog";
     # See https://github.com/evdenis/cvehound/issues/22
-    license = with licenses; [
-      gpl2Only
-      gpl3Plus
-    ];
+    license = with licenses; [ gpl2Only gpl3Plus ];
     maintainers = with maintainers; [ ambroisie ];
   };
 }

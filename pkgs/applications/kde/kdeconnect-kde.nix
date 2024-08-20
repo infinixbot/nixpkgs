@@ -68,11 +68,7 @@ mkDerivation {
     breeze-icons
   ];
 
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-    makeWrapper
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools makeWrapper ];
 
   qtWrapperArgs = [
     "--prefix PATH : ${lib.makeBinPath [ sshfs ]}"

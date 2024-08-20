@@ -141,10 +141,7 @@ mapAttrs (
       { pkgsInner, ... }:
 
       {
-        imports = [
-          ./common/x11.nix
-          ./common/user-account.nix
-        ];
+        imports = [ ./common/x11.nix ./common/user-account.nix ];
 
         # Hyper (and any other electron-based terminals) won't run as root
         test-support.displayManager.auto.user = "alice";

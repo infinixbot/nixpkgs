@@ -22,10 +22,7 @@ stdenv.mkDerivation {
     sha256 = "3RoG83jLOsdTEmvUkkxb7wa8oBrJA4v1mGtxTGwSowU=";
   };
 
-  nativeBuildInputs = [
-    automake
-    autoconf
-  ];
+  nativeBuildInputs = [ automake autoconf ];
   buildInputs = [
     cups
     glib
@@ -165,10 +162,7 @@ stdenv.mkDerivation {
     '';
     homepage = "https://hk.canon/en/support/0101048401/1";
     license = licenses.unfree;
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
     maintainers = [ ];
   };
 }

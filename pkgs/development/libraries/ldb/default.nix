@@ -28,10 +28,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-yV5Nwy3qiGS3mJnuNAyf3yi0hvRku8OLqZFRoItJP5s=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs = [
     pkg-config
@@ -80,11 +77,7 @@ stdenv.mkDerivation (finalAttrs: {
   # module, which works correctly in all cases.
   PYTHON_CONFIG = "/invalid";
 
-  stripDebugList = [
-    "bin"
-    "lib"
-    "modules"
-  ];
+  stripDebugList = [ "bin" "lib" "modules" ];
 
   passthru.tests.pkg-config = testers.hasPkgConfigModules {
     package = finalAttrs.finalPackage;

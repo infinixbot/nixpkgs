@@ -24,10 +24,7 @@ buildGoModule rec {
 
   buildInputs = [ gpgme ];
 
-  nativeBuildInputs = [
-    installShellFiles
-    pkg-config
-  ];
+  nativeBuildInputs = [ installShellFiles pkg-config ];
 
   ldflags = [
     "-s"
@@ -64,12 +61,7 @@ buildGoModule rec {
     description = "Build, deploy, and manage your applications with Docker and Kubernetes";
     homepage = "http://www.openshift.org";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      offline
-      bachp
-      moretea
-      stehessel
-    ];
+    maintainers = with maintainers; [ offline bachp moretea stehessel ];
     mainProgram = "oc";
   };
 }

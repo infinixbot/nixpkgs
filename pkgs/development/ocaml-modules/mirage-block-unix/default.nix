@@ -23,19 +23,10 @@ buildDunePackage rec {
   minimalOCamlVersion = "4.08";
   duneVersion = "3";
 
-  propagatedBuildInputs = [
-    cstruct-lwt
-    logs
-    mirage-block
-    rresult
-    uri
-  ];
+  propagatedBuildInputs = [ cstruct-lwt logs mirage-block rresult uri ];
 
   doCheck = true;
-  checkInputs = [
-    diet
-    ounit2
-  ];
+  checkInputs = [ diet ounit2 ];
 
   meta = with lib; {
     description = "MirageOS disk block driver for Unix";

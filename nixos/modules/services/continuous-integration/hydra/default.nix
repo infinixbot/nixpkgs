@@ -232,10 +232,7 @@ in
         type = types.listOf types.path;
         default = optional (config.nix.buildMachines != [ ]) "/etc/nix/machines";
         defaultText = literalExpression ''optional (config.nix.buildMachines != []) "/etc/nix/machines"'';
-        example = [
-          "/etc/nix/machines"
-          "/var/lib/hydra/provisioner/machines"
-        ];
+        example = [ "/etc/nix/machines" "/var/lib/hydra/provisioner/machines" ];
         description = "List of files containing build machines.";
       };
 
@@ -412,17 +409,8 @@ in
     systemd.services.hydra-queue-runner = {
       wantedBy = [ "multi-user.target" ];
       requires = [ "hydra-init.service" ];
-      after = [
-        "hydra-init.service"
-        "network.target"
-      ];
-      path = [
-        hydra-package
-        pkgs.nettools
-        pkgs.openssh
-        pkgs.bzip2
-        config.nix.package
-      ];
+      after = [ "hydra-init.service" "network.target" ];
+      path = [ hydra-package pkgs.nettools pkgs.openssh pkgs.bzip2 config.nix.package ];
       restartTriggers = [ hydraConf ];
       environment = env // {
         PGPASSFILE = "${baseDir}/pgpass-queue-runner"; # grrr
@@ -445,16 +433,8 @@ in
       wantedBy = [ "multi-user.target" ];
       requires = [ "hydra-init.service" ];
       wants = [ "network-online.target" ];
-      after = [
-        "hydra-init.service"
-        "network.target"
-        "network-online.target"
-      ];
-      path = with pkgs; [
-        hydra-package
-        nettools
-        jq
-      ];
+      after = [ "hydra-init.service" "network.target" "network-online.target" ];
+      path = with pkgs; [ hydra-package nettools jq ];
       restartTriggers = [ hydraConf ];
       environment = env // {
         HYDRA_DBI = "${env.HYDRA_DBI};application_name=hydra-evaluator";

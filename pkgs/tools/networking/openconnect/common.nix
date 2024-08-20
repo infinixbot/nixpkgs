@@ -27,10 +27,7 @@ stdenv.mkDerivation {
   pname = "openconnect";
   inherit version src;
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   configureFlags = [
     "--with-vpnc-script=${vpnc-scripts}/bin/vpnc-script"
@@ -39,33 +36,17 @@ stdenv.mkDerivation {
   ];
 
   buildInputs =
-    [
-      gmp
-      libxml2
-      stoken
-      zlib
-      (if useOpenSSL then openssl else gnutls)
-    ]
+    [ gmp libxml2 stoken zlib (if useOpenSSL then openssl else gnutls) ]
     ++ lib.optional stdenv.isDarwin PCSC
-    ++ lib.optionals stdenv.isLinux [
-      p11-kit
-      pcsclite
-    ]
+    ++ lib.optionals stdenv.isLinux [ p11-kit pcsclite ]
     ++ lib.optional useDefaultExternalBrowser xdg-utils;
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
 
   meta = with lib; {
     description = "VPN Client for Cisco's AnyConnect SSL VPN";
     homepage = "https://www.infradead.org/openconnect/";
     license = licenses.lgpl21Only;
-    maintainers = with maintainers; [
-      pradeepchhetri
-      tricktron
-      alyaeanyx
-    ];
+    maintainers = with maintainers; [ pradeepchhetri tricktron alyaeanyx ];
     platforms = lib.platforms.unix;
     mainProgram = "openconnect";
   };

@@ -28,10 +28,7 @@ rustPlatform.buildRustPackage rec {
   buildInputs =
     [ ]
     ++ lib.optionals stdenv.isLinux [ libxcb ]
-    ++ lib.optionals stdenv.isDarwin [
-      SystemConfiguration
-      AppKit
-    ];
+    ++ lib.optionals stdenv.isDarwin [ SystemConfiguration AppKit ];
 
   preCheck = ''
     export HOME=$TMPDIR

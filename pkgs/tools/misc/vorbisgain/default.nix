@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
 
   hardeningDisable = [ "format" ];
 
-  buildInputs = [
-    libogg
-    libvorbis
-  ];
+  buildInputs = [ libogg libvorbis ];
 
   patchPhase = ''
     chmod -v +x configure

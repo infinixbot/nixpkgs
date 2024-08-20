@@ -70,10 +70,7 @@
     version = "1.24.0";
   };
   parser = {
-    dependencies = [
-      "ast"
-      "racc"
-    ];
+    dependencies = [ "ast" "racc" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -167,10 +164,7 @@
     version = "1.31.2";
   };
   rubocop-minitest = {
-    dependencies = [
-      "rubocop"
-      "rubocop-ast"
-    ];
+    dependencies = [ "rubocop" "rubocop-ast" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -181,10 +175,7 @@
     version = "0.35.0";
   };
   rubocop-performance = {
-    dependencies = [
-      "rubocop"
-      "rubocop-ast"
-    ];
+    dependencies = [ "rubocop" "rubocop-ast" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

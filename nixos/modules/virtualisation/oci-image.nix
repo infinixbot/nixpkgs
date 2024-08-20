@@ -30,10 +30,7 @@ in
       after = [ "network-online.target" ];
       wants = [ "network-online.target" ];
 
-      path = [
-        pkgs.coreutils
-        pkgs.curl
-      ];
+      path = [ pkgs.coreutils pkgs.curl ];
       script = ''
         mkdir -m 0700 -p /root/.ssh
         if [ -f /root/.ssh/authorized_keys ]; then

@@ -42,10 +42,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-9GZ3Ba24zEP9LzlzqIobVLFvIBkK/pOyHiIfL1cyCwU=";
   };
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   nativeBuildInputs = [
     intltool
@@ -107,13 +104,7 @@ stdenv.mkDerivation (finalAttrs: {
       for bin in $out/bin/*; do
         wrapProgram "$bin" \
           --prefix PATH : "$out/libexec/xscreensaver" \
-          --prefix PATH : "${
-            lib.makeBinPath [
-              coreutils
-              perlPackages.perl
-              xorg.appres
-            ]
-          }" \
+          --prefix PATH : "${lib.makeBinPath [ coreutils perlPackages.perl xorg.appres ]}" \
           --prefix PERL5LIB ':' $PERL5LIB
       done
     ''
@@ -135,10 +126,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Set of screensavers";
     downloadPage = "https://www.jwz.org/xscreensaver/download.html";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [
-      raskin
-      AndersonTorres
-    ];
+    maintainers = with lib.maintainers; [ raskin AndersonTorres ];
     platforms = lib.platforms.unix;
   };
 })

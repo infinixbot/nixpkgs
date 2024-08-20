@@ -29,18 +29,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-FvF0wkRe3wTPUG9/GEBxkaxvZ1B4wEd9kI9rURHKxn0=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    unzip
-  ];
-  buildInputs = (
-    with perlPackages;
-    [
-      perl
-      ImageExifTool
-      CpanelJSONXS
-    ]
-  );
+  nativeBuildInputs = [ makeWrapper unzip ];
+  buildInputs = (with perlPackages; [ perl ImageExifTool CpanelJSONXS ]);
 
   postPatch = ''
     substituteInPlace Makefile \
@@ -61,17 +51,7 @@ stdenv.mkDerivation rec {
 
     wrapProgram "$out/share/fgallery/fgallery" \
         --set PERL5LIB "$PERL5LIB" \
-        --set PATH "${
-          lib.makeBinPath [
-            coreutils
-            zip
-            imagemagick
-            pngcrush
-            lcms2
-            facedetect
-            fbida
-          ]
-        }"
+        --set PATH "${lib.makeBinPath [ coreutils zip imagemagick pngcrush lcms2 facedetect fbida ]}"
   '';
 
   meta = with lib; {

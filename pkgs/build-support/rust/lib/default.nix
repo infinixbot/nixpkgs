@@ -112,22 +112,10 @@ rec {
       lib.getAttrFromPath new platform.rust
     )
     {
-      toTargetArch = [
-        "platform"
-        "arch"
-      ];
-      toTargetOs = [
-        "platform"
-        "os"
-      ];
-      toTargetFamily = [
-        "platform"
-        "target-family"
-      ];
-      toTargetVendor = [
-        "platform"
-        "vendor"
-      ];
+      toTargetArch = [ "platform" "arch" ];
+      toTargetOs = [ "platform" "os" ];
+      toTargetFamily = [ "platform" "target-family" ];
+      toTargetVendor = [ "platform" "vendor" ];
       toRustTarget = [ "rustcTarget" ];
       toRustTargetSpec = [ "rustcTargetSpec" ];
       toRustTargetSpecShort = [ "cargoShortTarget" ];

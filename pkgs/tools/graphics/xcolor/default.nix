@@ -25,18 +25,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-Zh73+FJ63SkusSavCqSCLbHVnU++4ZFSMFUIM7TnOj0=";
 
-  nativeBuildInputs = [
-    pkg-config
-    python3
-    installShellFiles
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ pkg-config python3 installShellFiles copyDesktopItems ];
 
-  buildInputs = [
-    libX11
-    libXcursor
-    libxcb
-  ];
+  buildInputs = [ libX11 libXcursor libxcb ];
 
   desktopItems = [
     (makeDesktopItem {

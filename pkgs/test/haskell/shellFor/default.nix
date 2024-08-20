@@ -6,21 +6,14 @@
 }:
 
 (haskellPackages.shellFor {
-  packages = p: [
-    p.constraints
-    p.cereal
-  ];
+  packages = p: [ p.constraints p.cereal ];
   # WARNING: When updating this, make sure that the libraries passed to
   # `extraDependencies` are not actually transitive dependencies of libraries in
   # `packages` above.  We explicitly want to test that it is possible to specify
   # `extraDependencies` that are not in the closure of `packages`.
   extraDependencies = p: { libraryHaskellDepends = [ p.conduit ]; };
   nativeBuildInputs = [ cabal-install ];
-  phases = [
-    "unpackPhase"
-    "buildPhase"
-    "installPhase"
-  ];
+  phases = [ "unpackPhase" "buildPhase" "installPhase" ];
   unpackPhase = ''
     sourceRoot=$(pwd)/scratch
     mkdir -p "$sourceRoot"

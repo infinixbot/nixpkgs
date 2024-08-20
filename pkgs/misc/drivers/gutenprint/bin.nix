@@ -44,19 +44,13 @@ stdenv.mkDerivation {
     else
       throw "TODO"; # get from openprint.com -> drivers -> gutenprint
 
-  buildInputs = [
-    rpm
-    cpio
-  ];
+  buildInputs = [ rpm cpio ];
 
   dontUnpack = true;
   dontInstall = true;
   dontFixup = true;
 
-  libPath = lib.makeLibraryPath [
-    stdenv.cc.cc
-    zlib
-  ];
+  libPath = lib.makeLibraryPath [ stdenv.cc.cc zlib ];
 
   buildPhase = ''
     ar -x $src data.tar.gz

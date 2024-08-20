@@ -20,13 +20,7 @@ stdenv.mkDerivation (rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    gtk2
-    imlib2
-    file
-    lcms2
-    libexif
-  ];
+  buildInputs = [ gtk2 imlib2 file lcms2 libexif ];
 
   preBuild = ''
     substituteInPlace Makefile --replace /usr/local "$out"

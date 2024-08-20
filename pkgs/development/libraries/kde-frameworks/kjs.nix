@@ -8,12 +8,6 @@
 
 mkDerivation {
   pname = "kjs";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
-  buildInputs = [
-    pcre
-    qtbase
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
+  buildInputs = [ pcre qtbase ];
 }

@@ -218,10 +218,7 @@ in
         systemd.services.reload-systemd-vconsole-setup = {
           description = "Reset console on configuration changes";
           wantedBy = [ "multi-user.target" ];
-          restartTriggers = [
-            vconsoleConf
-            (consoleEnv pkgs.kbd)
-          ];
+          restartTriggers = [ vconsoleConf (consoleEnv pkgs.kbd) ];
           reloadIfChanged = true;
           serviceConfig = {
             RemainAfterExit = true;
@@ -263,85 +260,16 @@ in
   ];
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "i18n"
-        "consoleFont"
-      ]
-      [
-        "console"
-        "font"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "i18n"
-        "consoleKeyMap"
-      ]
-      [
-        "console"
-        "keyMap"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "i18n"
-        "consoleColors"
-      ]
-      [
-        "console"
-        "colors"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "i18n"
-        "consolePackages"
-      ]
-      [
-        "console"
-        "packages"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "i18n"
-        "consoleUseXkbConfig"
-      ]
-      [
-        "console"
-        "useXkbConfig"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "earlyVconsoleSetup"
-      ]
-      [
-        "console"
-        "earlySetup"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "extraTTYs"
-      ]
-      [
-        "console"
-        "extraTTYs"
-      ]
-    )
-    (mkRemovedOptionModule
-      [
-        "console"
-        "extraTTYs"
-      ]
-      ''
-        Since NixOS switched to systemd (circa 2012), TTYs have been spawned on
-        demand, so there is no need to configure them manually.
-      ''
-    )
+    (mkRenamedOptionModule [ "i18n" "consoleFont" ] [ "console" "font" ])
+    (mkRenamedOptionModule [ "i18n" "consoleKeyMap" ] [ "console" "keyMap" ])
+    (mkRenamedOptionModule [ "i18n" "consoleColors" ] [ "console" "colors" ])
+    (mkRenamedOptionModule [ "i18n" "consolePackages" ] [ "console" "packages" ])
+    (mkRenamedOptionModule [ "i18n" "consoleUseXkbConfig" ] [ "console" "useXkbConfig" ])
+    (mkRenamedOptionModule [ "boot" "earlyVconsoleSetup" ] [ "console" "earlySetup" ])
+    (mkRenamedOptionModule [ "boot" "extraTTYs" ] [ "console" "extraTTYs" ])
+    (mkRemovedOptionModule [ "console" "extraTTYs" ] ''
+      Since NixOS switched to systemd (circa 2012), TTYs have been spawned on
+      demand, so there is no need to configure them manually.
+    '')
   ];
 }

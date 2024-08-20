@@ -28,13 +28,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-ab6OGt1XVgynKNdszzdXwJ/jVKJSzgSmAv6j1U3/va0=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    meson
-    ninja
-    fontconfig
-    cmake
-  ];
+  nativeBuildInputs = [ pkg-config meson ninja fontconfig cmake ];
 
   buildInputs = [
     faust

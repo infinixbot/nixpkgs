@@ -32,8 +32,5 @@ mkDerivation {
     libXcursor
     qtx11extras
   ];
-  propagatedBuildInputs = [
-    kconfigwidgets
-    kiconthemes
-  ];
+  propagatedBuildInputs = [ kconfigwidgets kiconthemes ];
 }

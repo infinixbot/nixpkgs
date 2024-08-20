@@ -60,12 +60,7 @@
     ];
 
     nativeBuildInputs = [ cmake ];
-    buildInputs = [
-      unixODBC
-      openssl
-      libiconv
-      zlib
-    ] ++ lib.optionals stdenv.isDarwin [ libkrb5 ];
+    buildInputs = [ unixODBC openssl libiconv zlib ] ++ lib.optionals stdenv.isDarwin [ libkrb5 ];
 
     cmakeFlags = [
       "-DWITH_EXTERNAL_ZLIB=ON"
@@ -105,10 +100,7 @@
     };
 
     nativeBuildInputs = [ cmake ];
-    buildInputs = [
-      unixODBC
-      mariadb
-    ];
+    buildInputs = [ unixODBC mariadb ];
 
     cmakeFlags = [ "-DWITH_UNIXODBC=1" ];
 
@@ -136,17 +128,9 @@
       sha256 = "0dgsj28sc7f7aprmdd0n5a1rmcx6pv7170c8dfjl0x1qsjxim6hs";
     };
 
-    buildInputs = [
-      unixODBC
-      sqlite
-      zlib
-      libxml2
-    ];
+    buildInputs = [ unixODBC sqlite zlib libxml2 ];
 
-    configureFlags = [
-      "--with-odbc=${unixODBC}"
-      "--with-sqlite3=${sqlite.dev}"
-    ];
+    configureFlags = [ "--with-odbc=${unixODBC}" "--with-sqlite3=${sqlite.dev}" ];
 
     installTargets = [ "install-3" ];
 
@@ -184,10 +168,7 @@
       sha256 = "0vwirnp56jibm3qf0kmi4jnz1w7xfhnsfr8imr0c9hg6av4sk3a6";
     };
 
-    nativeBuildInputs = [
-      dpkg
-      patchelf
-    ];
+    nativeBuildInputs = [ dpkg patchelf ];
 
     unpackPhase = "dpkg -x $src ./";
     buildPhase = "";
@@ -199,15 +180,7 @@
     '';
 
     postFixup = ''
-      patchelf --set-rpath ${
-        lib.makeLibraryPath [
-          unixODBC
-          openssl
-          libkrb5
-          libuuid
-          stdenv.cc.cc
-        ]
-      } \
+      patchelf --set-rpath ${lib.makeLibraryPath [ unixODBC openssl libkrb5 libuuid stdenv.cc.cc ]} \
         $out/lib/libmsodbcsql-${versionMajor}.${versionMinor}.so.${versionAdditional}
     '';
 
@@ -294,15 +267,7 @@
     '';
 
     postFixup = lib.optionalString stdenv.isLinux ''
-      patchelf --set-rpath ${
-        lib.makeLibraryPath [
-          unixODBC
-          openssl
-          libkrb5
-          libuuid
-          stdenv.cc.cc
-        ]
-      } \
+      patchelf --set-rpath ${lib.makeLibraryPath [ unixODBC openssl libkrb5 libuuid stdenv.cc.cc ]} \
         $out/${finalAttrs.passthru.driver}
     '';
 

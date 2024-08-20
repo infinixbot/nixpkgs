@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
       --replace /usr/include /include
   '';
 
-  makeFlags = [
-    "DESTDIR=$(out)"
-    "LIBDIR=/lib"
-  ];
+  makeFlags = [ "DESTDIR=$(out)" "LIBDIR=/lib" ];
 
   # causes redefinition of _FORTIFY_SOURCE
   hardeningDisable = [ "fortify3" ];

@@ -28,11 +28,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-17Hw3jtisOXwARpp0jB0hrNax7nzMWS0kCE3ZAruBj8=";
 
-  nativeBuildInputs = [
-    makeWrapper
-    cmake
-    pkgconf
-  ];
+  nativeBuildInputs = [ makeWrapper cmake pkgconf ];
   buildInputs = [
     expat
     freetype
@@ -44,12 +40,7 @@ rustPlatform.buildRustPackage rec {
 
   postFixup =
     let
-      rpath = lib.makeLibraryPath [
-        libGL
-        vulkan-loader
-        wayland
-        libxkbcommon
-      ];
+      rpath = lib.makeLibraryPath [ libGL vulkan-loader wayland libxkbcommon ];
     in
     ''
       patchelf --set-rpath ${rpath} $out/bin/onagre
@@ -65,10 +56,7 @@ rustPlatform.buildRustPackage rec {
     description = "General purpose application launcher for X and wayland inspired by rofi/wofi and alfred";
     homepage = "https://github.com/onagre-launcher/onagre";
     license = licenses.mit;
-    maintainers = [
-      maintainers.jfvillablanca
-      maintainers.ilya-epifanov
-    ];
+    maintainers = [ maintainers.jfvillablanca maintainers.ilya-epifanov ];
     platforms = platforms.linux;
     mainProgram = "onagre";
   };

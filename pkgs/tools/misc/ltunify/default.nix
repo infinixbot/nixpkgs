@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-9avri/2H0zv65tkBsIi9yVxx3eVS9oCkVCCFdjXqSgI=";
   };
 
-  makeFlags = [
-    "DESTDIR=$(out)"
-    "bindir=/bin"
-  ];
+  makeFlags = [ "DESTDIR=$(out)" "bindir=/bin" ];
 
   meta = with lib; {
     description = "Tool for working with Logitech Unifying receivers and devices";

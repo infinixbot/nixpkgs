@@ -34,16 +34,7 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    gtk2
-    libglut
-    SDL
-    SDL_mixer
-    libGLU
-    libGL
-    libXi
-    libXmu
-  ];
+  buildInputs = [ gtk2 libglut SDL SDL_mixer libGLU libGL libXi libXmu ];
 
   hardeningDisable = [ "format" ];
   enableParallelBuilding = true;

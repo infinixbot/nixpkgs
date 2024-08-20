@@ -93,10 +93,7 @@ in
         meta = with lib; {
           description = "Just Another Make";
           homepage = "https://www.perforce.com/resources/documentation/jam";
-          maintainers = with maintainers; [
-            impl
-            orivej
-          ];
+          maintainers = with maintainers; [ impl orivej ];
         };
       };
     in
@@ -122,10 +119,7 @@ in
         meta = with lib; {
           description = "FreeType's enhanced, backwards-compatible Jam clone";
           homepage = "https://freetype.org/jam/";
-          maintainers = with maintainers; [
-            AndersonTorres
-            impl
-          ];
+          maintainers = with maintainers; [ AndersonTorres impl ];
         };
       };
     in
@@ -138,10 +132,7 @@ in
 
       # Doesn't understand how to cross compile once bootstrapped, so we'll just
       # use the Makefile for the bootstrapping portion.
-      configurePlatforms = [
-        "build"
-        "target"
-      ];
+      configurePlatforms = [ "build" "target" ];
       configureFlags = (oldAttrs.configureFlags or [ ]) ++ [
         "CC=${buildPackages.stdenv.cc.targetPrefix}cc"
         "--host=${stdenv.buildPlatform.config}"

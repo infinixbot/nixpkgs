@@ -188,10 +188,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://gitlab.com/utsushi/imagescan";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      wucke13
-      maxwilson
-    ];
+    maintainers = with maintainers; [ wucke13 maxwilson ];
     platforms = platforms.linux;
   };
 }

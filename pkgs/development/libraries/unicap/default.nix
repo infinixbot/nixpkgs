@@ -20,13 +20,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ intltool ];
-  buildInputs = [
-    libusb-compat-0_1
-    libraw1394
-    dcraw
-    perl
-    v4l-utils
-  ];
+  buildInputs = [ libusb-compat-0_1 libraw1394 dcraw perl v4l-utils ];
 
   patches = [
     # Debian has a patch that fixes the build.

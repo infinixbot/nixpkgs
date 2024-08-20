@@ -30,10 +30,7 @@ rustPlatform.buildRustPackage rec {
   nativeBuildInputs = [ pkg-config ];
 
   buildInputs =
-    [
-      openssl
-      zlib
-    ]
+    [ openssl zlib ]
     ++ lib.optionals stdenv.isDarwin [
       Security
     ];
@@ -48,12 +45,6 @@ rustPlatform.buildRustPackage rec {
       asl20 # or
       mit
     ];
-    maintainers = with maintainers; [
-      Br1ght0ne
-      figsoda
-      gerschtli
-      jb55
-      killercup
-    ];
+    maintainers = with maintainers; [ Br1ght0ne figsoda gerschtli jb55 killercup ];
   };
 }

@@ -32,11 +32,7 @@ stdenv.mkDerivation rec {
     stripRoot = false;
   };
 
-  nativeBuildInputs = [
-    dcompiler
-    pkg-config
-    which
-  ];
+  nativeBuildInputs = [ dcompiler pkg-config which ];
   propagatedBuildInputs = [
     atk
     cairo

@@ -19,10 +19,7 @@
 
       godotBuildDescription = "mono build";
 
-      nativeBuildInputs = base.nativeBuildInputs ++ [
-        mono
-        dotnet-sdk
-      ];
+      nativeBuildInputs = base.nativeBuildInputs ++ [ mono dotnet-sdk ];
 
       glue = callPackage ./glue.nix { };
 

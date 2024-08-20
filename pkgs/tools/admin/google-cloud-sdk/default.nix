@@ -52,11 +52,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ python ];
 
-  nativeBuildInputs = [
-    jq
-    makeWrapper
-    installShellFiles
-  ];
+  nativeBuildInputs = [ jq makeWrapper installShellFiles ];
 
   patches = [
     # For kubectl configs, don't store the absolute path of the `gcloud` binary as it can be garbage-collected
@@ -157,13 +153,7 @@ stdenv.mkDerivation rec {
     license = licenses.free;
     homepage = "https://cloud.google.com/sdk/";
     changelog = "https://cloud.google.com/sdk/docs/release-notes";
-    maintainers = with maintainers; [
-      iammrinal0
-      marcusramberg
-      pradyuman
-      stephenmw
-      zimbatm
-    ];
+    maintainers = with maintainers; [ iammrinal0 marcusramberg pradyuman stephenmw zimbatm ];
     platforms = builtins.attrNames data.googleCloudSdkPkgs;
     mainProgram = "gcloud";
   };

@@ -92,11 +92,7 @@ mkDerivation rec {
       icon = "anilibria";
       comment = meta.description;
       genericName = "AniLibria desktop client";
-      categories = [
-        "Qt"
-        "AudioVideo"
-        "Player"
-      ];
+      categories = [ "Qt" "AudioVideo" "Player" ];
       keywords = [ "anime" ];
       exec = name;
       terminal = false;

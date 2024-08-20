@@ -39,24 +39,13 @@
 }:
 
 let
-  ctlpath = lib.makeBinPath [
-    bash
-    gnused
-    gnugrep
-    gawk
-    coreutils
-    util-linux
-    procps
-  ];
+  ctlpath = lib.makeBinPath [ bash gnused gnugrep gawk coreutils util-linux procps ];
 in
 stdenv.mkDerivation rec {
   pname = "ejabberd";
   version = "23.10";
 
-  nativeBuildInputs = [
-    makeWrapper
-    autoreconfHook
-  ];
+  nativeBuildInputs = [ makeWrapper autoreconfHook ];
 
   buildInputs = [
     erlang
@@ -90,10 +79,7 @@ stdenv.mkDerivation rec {
           '{git, "https://github.com/processone/ejabberd-po", {tag, "26d6463386588d39f07027dabff3cb8dd938bf6b"}}'
     '';
 
-    configureFlags = [
-      "--enable-all"
-      "--with-sqlite3=${sqlite.dev}"
-    ];
+    configureFlags = [ "--enable-all" "--with-sqlite3=${sqlite.dev}" ];
 
     nativeBuildInputs = [
       git
@@ -162,11 +148,7 @@ stdenv.mkDerivation rec {
       -e 's,\(^ *CONNLOCKDIR=\).*,\1/var/lock/ejabberdctl,' \
       $out/sbin/ejabberdctl
     wrapProgram $out/lib/eimp-*/priv/bin/eimp --prefix LD_LIBRARY_PATH : "${
-      lib.makeLibraryPath [
-        libpng
-        libjpeg
-        libwebp
-      ]
+      lib.makeLibraryPath [ libpng libjpeg libwebp ]
     }"
     ${lib.optionalString withImagemagick ''wrapProgram $out/lib/ejabberd-*/priv/bin/captcha.sh --prefix PATH : "${
       lib.makeBinPath [ imagemagick ]
@@ -180,9 +162,6 @@ stdenv.mkDerivation rec {
     license = licenses.gpl2Plus;
     homepage = "https://www.ejabberd.im";
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      sander
-      abbradar
-    ];
+    maintainers = with maintainers; [ sander abbradar ];
   };
 }

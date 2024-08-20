@@ -8,10 +8,7 @@
 }:
 
 let
-  namePrefix = [
-    "coq"
-    "mathcomp"
-  ];
+  namePrefix = [ "coq" "mathcomp" ];
   pname = "word";
   fetcher =
     {
@@ -56,34 +53,18 @@ mkCoqDerivation {
   inherit version;
   defaultVersion =
     with lib.versions;
-    lib.switch
-      [
-        coq.version
-        mathcomp.version
-      ]
-      [
-        {
-          cases = [
-            (range "8.16" "8.20")
-            (isGe "2.0")
-          ];
-          out = "3.2";
-        }
-        {
-          cases = [
-            (range "8.12" "8.20")
-            (range "1.12" "1.19")
-          ];
-          out = "2.4";
-        }
-      ]
-      null;
+    lib.switch [ coq.version mathcomp.version ] [
+      {
+        cases = [ (range "8.16" "8.20") (isGe "2.0") ];
+        out = "3.2";
+      }
+      {
+        cases = [ (range "8.12" "8.20") (range "1.12" "1.19") ];
+        out = "2.4";
+      }
+    ] null;
 
-  propagatedBuildInputs = [
-    mathcomp.algebra
-    mathcomp.ssreflect
-    mathcomp.fingroup
-  ];
+  propagatedBuildInputs = [ mathcomp.algebra mathcomp.ssreflect mathcomp.fingroup ];
 
   meta = with lib; {
     description = "Yet Another Coq Library on Machine Words";

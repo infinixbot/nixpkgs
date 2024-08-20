@@ -35,18 +35,8 @@ stdenv.mkDerivation {
     sha256 = "17kpql0f27xxz4jjw84vpas5f5sn4vdqwv10g151rc3rswbwln1z";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    python3Minimal
-  ];
-  buildInputs = [
-    (lib.getDev launchd)
-    libdispatch
-    libxml2
-    objc4
-    icu
-  ];
+  nativeBuildInputs = [ cmake pkg-config python3Minimal ];
+  buildInputs = [ (lib.getDev launchd) libdispatch libxml2 objc4 icu ];
 
   patches = [
     ./0001-Add-missing-TARGET_OS_-defines.patch

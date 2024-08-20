@@ -22,11 +22,7 @@ stdenv.mkDerivation rec {
   pname = "goffice";
   version = "0.10.57";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";
@@ -51,10 +47,7 @@ stdenv.mkDerivation rec {
     lasem
   ];
 
-  buildInputs = [
-    libxslt
-    librsvg
-  ];
+  buildInputs = [ libxslt librsvg ];
 
   enableParallelBuilding = true;
 

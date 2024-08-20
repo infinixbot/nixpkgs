@@ -239,10 +239,7 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optionals enableCeph [ ceph ]
     ++ lib.optionals enableGlusterfs [ glusterfs ]
-    ++ lib.optionals enableIscsi [
-      libiscsi
-      openiscsi
-    ]
+    ++ lib.optionals enableIscsi [ libiscsi openiscsi ]
     ++ lib.optionals enableXen [ xen ]
     ++ lib.optionals enableZfs [ zfs ];
 
@@ -408,10 +405,6 @@ stdenv.mkDerivation rec {
     changelog = "https://gitlab.com/libvirt/libvirt/-/raw/v${version}/NEWS.rst";
     license = licenses.lgpl2Plus;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      fpletz
-      globin
-      lovesegfault
-    ];
+    maintainers = with maintainers; [ fpletz globin lovesegfault ];
   };
 }

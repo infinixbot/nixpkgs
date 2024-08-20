@@ -75,10 +75,7 @@ let
     };
   };
 
-  supportedPlatforms = [
-    "x86_64-linux"
-    "aarch64-linux"
-  ];
+  supportedPlatforms = [ "x86_64-linux" "aarch64-linux" ];
 
   rpath = lib.makeLibraryPath [
     alsa-lib

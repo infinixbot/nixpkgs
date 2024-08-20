@@ -42,15 +42,7 @@ in
       enable = mkEnableOption "GlusterFS Daemon";
 
       logLevel = mkOption {
-        type = types.enum [
-          "DEBUG"
-          "INFO"
-          "WARNING"
-          "ERROR"
-          "CRITICAL"
-          "TRACE"
-          "NONE"
-        ];
+        type = types.enum [ "DEBUG" "INFO" "WARNING" "ERROR" "CRITICAL" "TRACE" "NONE" ];
         description = "Log level used by the GlusterFS daemon";
         default = "INFO";
       };
@@ -75,12 +67,7 @@ in
       };
 
       killMode = mkOption {
-        type = types.enum [
-          "control-group"
-          "process"
-          "mixed"
-          "none"
-        ];
+        type = types.enum [ "control-group" "process" "mixed" "none" ];
         description = ''
           The systemd KillMode to use for glusterd.
 

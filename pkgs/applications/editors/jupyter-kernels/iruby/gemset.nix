@@ -63,14 +63,7 @@
     version = "1.7.4";
   };
   iruby = {
-    dependencies = [
-      "data_uri"
-      "ffi-rzmq"
-      "irb"
-      "mime-types"
-      "multi_json"
-      "native-package-installer"
-    ];
+    dependencies = [ "data_uri" "ffi-rzmq" "irb" "mime-types" "multi_json" "native-package-installer" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

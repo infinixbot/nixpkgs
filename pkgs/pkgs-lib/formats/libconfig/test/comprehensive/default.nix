@@ -22,41 +22,14 @@ let
     some_floaty = 29.95;
     ## Same syntax here on these two, but they should get serialized differently:
     # > A list may have zero or more elements, each of which can be a scalar value, an array, a group, or another list.
-    list1d = libconfig.lib.mkList [
-      1
-      "mixed!"
-      5
-      2
-    ];
+    list1d = libconfig.lib.mkList [ 1 "mixed!" 5 2 ];
     # You might also omit the mkList, as a list will be a list (in contrast to an array) by default.
-    list2d = [
-      1
-      [
-        1
-        1.2
-        "foo"
-      ]
-      [
-        "bar"
-        1.2
-        1
-      ]
-    ];
+    list2d = [ 1 [ 1 1.2 "foo" ] [ "bar" 1.2 1 ] ];
     # > An array may have zero or more elements, but the elements must all be scalar values of the same type.
-    array1d = libconfig.lib.mkArray [
-      1
-      5
-      2
-    ];
+    array1d = libconfig.lib.mkArray [ 1 5 2 ];
     array2d = [
-      (libconfig.lib.mkArray [
-        1
-        2
-      ])
-      (libconfig.lib.mkArray [
-        2
-        1
-      ])
+      (libconfig.lib.mkArray [ 1 2 ])
+      (libconfig.lib.mkArray [ 2 1 ])
     ];
     nasty_string = "\"@\n\\\t^*\b\f\n\0\";'''$";
 

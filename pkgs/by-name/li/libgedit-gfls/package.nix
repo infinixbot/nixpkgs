@@ -17,11 +17,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "libgedit-gfls";
   version = "0.1.0";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchFromGitHub {
     owner = "gedit-technology";

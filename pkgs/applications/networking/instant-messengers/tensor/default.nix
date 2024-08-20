@@ -24,10 +24,7 @@ mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  buildInputs = [
-    qtbase
-    qtquickcontrols
-  ];
+  buildInputs = [ qtbase qtquickcontrols ];
   nativeBuildInputs = [ qmake ];
 
   desktopItem = makeDesktopItem {
@@ -37,10 +34,7 @@ mkDerivation rec {
     comment = meta.description;
     desktopName = "Tensor Matrix Client";
     genericName = meta.description;
-    categories = [
-      "Chat"
-      "Utility"
-    ];
+    categories = [ "Chat" "Utility" ];
     mimeTypes = [ "application/x-chat" ];
   };
 

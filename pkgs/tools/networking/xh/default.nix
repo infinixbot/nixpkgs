@@ -25,10 +25,7 @@ rustPlatform.buildRustPackage rec {
 
   buildFeatures = lib.optional withNativeTls "native-tls";
 
-  nativeBuildInputs = [
-    installShellFiles
-    pkg-config
-  ];
+  nativeBuildInputs = [ installShellFiles pkg-config ];
 
   buildInputs = lib.optionals withNativeTls (
     if stdenv.isDarwin then [ darwin.apple_sdk.frameworks.SystemConfiguration ] else [ openssl ]
@@ -64,9 +61,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/ducaale/xh";
     changelog = "https://github.com/ducaale/xh/blob/v${version}/CHANGELOG.md";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      figsoda
-      bhankas
-    ];
+    maintainers = with maintainers; [ figsoda bhankas ];
   };
 }

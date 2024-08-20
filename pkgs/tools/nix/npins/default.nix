@@ -13,11 +13,7 @@
 }:
 
 let
-  runtimePath = lib.makeBinPath [
-    nix
-    nix-prefetch-git
-    git
-  ];
+  runtimePath = lib.makeBinPath [ nix nix-prefetch-git git ];
   sources = (lib.importJSON ./sources.json).pins;
 in
 rustPlatform.buildRustPackage rec {
@@ -28,11 +24,7 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "sha256-YwMypBl+P1ygf4zUbkZlq4zPrOzf+lPOz2FLg2/xI3k=";
 
   buildInputs = lib.optional stdenv.isDarwin (
-    with darwin.apple_sdk.frameworks;
-    [
-      Security
-      SystemConfiguration
-    ]
+    with darwin.apple_sdk.frameworks; [ Security SystemConfiguration ]
   );
   nativeBuildInputs = [ makeWrapper ];
 

@@ -19,12 +19,7 @@
 }:
 
 let
-  pythonWP = python3.withPackages (
-    p: with p; [
-      openbabel-bindings
-      numpy
-    ]
-  );
+  pythonWP = python3.withPackages (p: with p; [ openbabel-bindings numpy ]);
 
   # Pure data repositories
   moleculesRepo = fetchFromGitHub {

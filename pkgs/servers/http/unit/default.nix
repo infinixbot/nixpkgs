@@ -56,10 +56,7 @@ stdenv.mkDerivation rec {
 
   buildInputs =
     [ pcre2.dev ]
-    ++ optionals withPython3 [
-      python3
-      ncurses
-    ]
+    ++ optionals withPython3 [ python3 ncurses ]
     ++ optional withPHP81 php81-unit
     ++ optional withPHP82 php82-unit
     ++ optional withPerl536 perl536

@@ -32,19 +32,11 @@ stdenv.mkDerivation rec {
     })
   ] ++ lib.optional (stdenv.hostPlatform.useLLVM or false) ./fix-purgatory-llvm-libunwind.patch;
 
-  hardeningDisable = [
-    "format"
-    "pic"
-    "relro"
-    "pie"
-  ];
+  hardeningDisable = [ "format" "pic" "relro" "pie" ];
 
   # Prevent kexec-tools from using uname to detect target, which is wrong in
   # cases like compiling for aarch32 on aarch64
-  configurePlatforms = [
-    "build"
-    "host"
-  ];
+  configurePlatforms = [ "build" "host" ];
   configureFlags = [ "BUILD_CC=${buildPackages.stdenv.cc.targetPrefix}cc" ];
   depsBuildBuild = [ buildPackages.stdenv.cc ];
   buildInputs = [ zlib ];

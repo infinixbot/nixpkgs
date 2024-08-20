@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    cmake
-    asciidoctor
-    installShellFiles
-  ];
+  nativeBuildInputs = [ cmake asciidoctor installShellFiles ];
 
   dontUseCmakeBuildDir = true;
 
@@ -36,10 +32,7 @@ stdenv.mkDerivation rec {
     description = "Command-line time tracker";
     homepage = "https://timewarrior.net";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      matthiasbeyer
-      mrVanDalo
-    ];
+    maintainers = with maintainers; [ matthiasbeyer mrVanDalo ];
     mainProgram = "timew";
     platforms = platforms.linux ++ platforms.darwin;
   };

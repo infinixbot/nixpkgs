@@ -57,10 +57,7 @@ buildPythonPackage rec {
   meta = with lib; {
     description = "Python 2 bindings for cairo";
     homepage = "https://pycairo.readthedocs.io/";
-    license = with licenses; [
-      lgpl21Only
-      mpl11
-    ];
+    license = with licenses; [ lgpl21Only mpl11 ];
     platforms = lib.platforms.linux ++ lib.platforms.darwin;
   };
 }

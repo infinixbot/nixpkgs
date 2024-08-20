@@ -83,11 +83,7 @@ in
                 '';
               };
               protocol = mkOption {
-                type = types.enum [
-                  null
-                  "ssh"
-                  "ssh-ng"
-                ];
+                type = types.enum [ null "ssh" "ssh-ng" ];
                 default = "ssh";
                 example = "ssh-ng";
                 description = ''
@@ -113,10 +109,7 @@ in
               systems = mkOption {
                 type = types.listOf types.str;
                 default = [ ];
-                example = [
-                  "x86_64-linux"
-                  "aarch64-linux"
-                ];
+                example = [ "x86_64-linux" "aarch64-linux" ];
                 description = ''
                   The system types the build machine can execute derivations on.
                   Either this attribute or {var}`system` must be
@@ -182,10 +175,7 @@ in
               supportedFeatures = mkOption {
                 type = types.listOf types.str;
                 default = [ ];
-                example = [
-                  "kvm"
-                  "big-parallel"
-                ];
+                example = [ "kvm" "big-parallel" ];
                 description = ''
                   A list of features supported by this builder. The builder will
                   be ignored for derivations that require features not in this

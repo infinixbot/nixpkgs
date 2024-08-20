@@ -71,14 +71,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   preFixup = ''
     gappsWrapperArgs+=(--prefix PYTHONPATH : ${
-      python3.pkgs.makePythonPath (
-        with python3Packages;
-        [
-          tqdm
-          mutagen
-          loguru
-        ]
-      )
+      python3.pkgs.makePythonPath (with python3Packages; [ tqdm mutagen loguru ])
     })
   '';
 

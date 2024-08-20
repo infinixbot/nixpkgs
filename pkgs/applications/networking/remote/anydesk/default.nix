@@ -78,10 +78,7 @@ stdenv.mkDerivation (finalAttrs: {
       libXrender
     ]);
 
-  nativeBuildInputs = [
-    copyDesktopItems
-    makeWrapper
-  ];
+  nativeBuildInputs = [ copyDesktopItems makeWrapper ];
 
   desktopItems = [
     (makeDesktopItem {
@@ -118,12 +115,7 @@ stdenv.mkDerivation (finalAttrs: {
       $out/bin/anydesk
 
     wrapProgram $out/bin/anydesk \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          lsb-release
-          pciutils
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ lsb-release pciutils ]}
   '';
 
   passthru = {
@@ -143,9 +135,6 @@ stdenv.mkDerivation (finalAttrs: {
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
     license = lib.licenses.unfree;
     platforms = [ "x86_64-linux" ];
-    maintainers = with lib.maintainers; [
-      shyim
-      cheriimoya
-    ];
+    maintainers = with lib.maintainers; [ shyim cheriimoya ];
   };
 })

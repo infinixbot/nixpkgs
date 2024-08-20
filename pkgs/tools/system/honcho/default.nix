@@ -21,12 +21,7 @@ python3Packages.buildPythonApplication rec {
 
   propagatedBuildInputs = [ python3Packages.setuptools ];
 
-  nativeCheckInputs = with python3Packages; [
-    jinja2
-    pytest
-    mock
-    coverage
-  ];
+  nativeCheckInputs = with python3Packages; [ jinja2 pytest mock coverage ];
 
   # missing plugins
   doCheck = false;

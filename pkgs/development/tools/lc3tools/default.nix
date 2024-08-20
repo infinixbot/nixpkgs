@@ -34,12 +34,7 @@ stdenv.mkDerivation {
   ];
 
   nativeBuildInputs = [ unzip ];
-  buildInputs = [
-    flex
-    tk
-    ncurses
-    readline
-  ];
+  buildInputs = [ flex tk ncurses readline ];
 
   # lumetta published this a while ago but handrolled his configure
   # jank in the original packaging makes this necessary:

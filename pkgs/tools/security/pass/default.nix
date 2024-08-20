@@ -93,10 +93,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ makeWrapper ];
 
-  installFlags = [
-    "PREFIX=$(out)"
-    "WITH_ALLCOMP=yes"
-  ];
+  installFlags = [ "PREFIX=$(out)" "WITH_ALLCOMP=yes" ];
 
   postInstall = lib.optionalString dmenuSupport ''
     cp "contrib/dmenu/passmenu" "$out/bin/"
@@ -120,14 +117,8 @@ stdenv.mkDerivation rec {
     ++ lib.optional stdenv.isDarwin openssl
     ++ lib.optional x11Support xclip
     ++ lib.optional waylandSupport wl-clipboard
-    ++ lib.optionals (waylandSupport && dmenuSupport) [
-      ydotool
-      dmenu-wayland
-    ]
-    ++ lib.optionals (x11Support && dmenuSupport) [
-      xdotool
-      dmenu
-    ]
+    ++ lib.optionals (waylandSupport && dmenuSupport) [ ydotool dmenu-wayland ]
+    ++ lib.optionals (x11Support && dmenuSupport) [ xdotool dmenu ]
   );
 
   postFixup =
@@ -189,13 +180,7 @@ stdenv.mkDerivation rec {
     homepage = "https://www.passwordstore.org/";
     license = licenses.gpl2Plus;
     mainProgram = "pass";
-    maintainers = with maintainers; [
-      lovek323
-      fpletz
-      tadfisher
-      globin
-      ma27
-    ];
+    maintainers = with maintainers; [ lovek323 fpletz tadfisher globin ma27 ];
     platforms = platforms.unix;
 
     longDescription = ''

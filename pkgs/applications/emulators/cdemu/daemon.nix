@@ -23,16 +23,8 @@ stdenv.mkDerivation {
     meta
     ;
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    intltool
-  ];
-  buildInputs = [
-    glib
-    libao
-    libmirage
-  ];
+  nativeBuildInputs = [ cmake pkg-config intltool ];
+  buildInputs = [ glib libao libmirage ];
   postInstall = ''
     mkdir -p $out/share/dbus-1/services
     cp -R ../service-example $out/share/cdemu

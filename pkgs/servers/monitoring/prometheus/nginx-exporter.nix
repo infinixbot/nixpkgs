@@ -18,11 +18,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-qmyqAbwQYgUFFQwCLakQGta2XMGCbCOvCB93S8/TWIs=";
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X main.version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X main.version=${version}" ];
 
   passthru.tests = {
     inherit (nixosTests.prometheus-exporters) nginx;
@@ -33,11 +29,6 @@ buildGoModule rec {
     mainProgram = "nginx-prometheus-exporter";
     homepage = "https://github.com/nginxinc/nginx-prometheus-exporter";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      benley
-      fpletz
-      willibutz
-      globin
-    ];
+    maintainers = with maintainers; [ benley fpletz willibutz globin ];
   };
 }

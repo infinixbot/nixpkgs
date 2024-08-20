@@ -24,15 +24,9 @@ stdenv.mkDerivation (finalAttrs: {
     "--INSTALL=install"
   ];
 
-  nativeBuildInputs = [
-    docutils
-    pkg-config
-  ];
+  nativeBuildInputs = [ docutils pkg-config ];
 
-  buildInputs = [
-    freetype
-    pango
-  ];
+  buildInputs = [ freetype pango ];
 
   passthru.tests = {
     version = testers.testVersion {

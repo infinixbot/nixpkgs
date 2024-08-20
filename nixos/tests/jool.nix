@@ -44,10 +44,7 @@ in
 
     # Border relay
     nodes.relay = {
-      virtualisation.vlans = [
-        1
-        2
-      ];
+      virtualisation.vlans = [ 1 2 ];
 
       # Enable packet routing
       boot.kernel.sysctl = {
@@ -77,10 +74,7 @@ in
 
     # IPv6 only node
     nodes.alice = {
-      imports = [
-        ipv6Only
-        (webserver 6 "Hello, Bob!")
-      ];
+      imports = [ ipv6Only (webserver 6 "Hello, Bob!") ];
 
       virtualisation.vlans = [ 1 ];
       networking.interfaces.eth1.ipv6 = {
@@ -102,10 +96,7 @@ in
 
     # IPv4 only node
     nodes.bob = {
-      imports = [
-        ipv4Only
-        (webserver 4 "Hello, Alice!")
-      ];
+      imports = [ ipv4Only (webserver 4 "Hello, Alice!") ];
 
       virtualisation.vlans = [ 2 ];
       networking.interfaces.eth1.ipv4 = {
@@ -164,10 +155,7 @@ in
 
     # Router
     nodes.router = {
-      virtualisation.vlans = [
-        1
-        2
-      ];
+      virtualisation.vlans = [ 1 2 ];
 
       # Enable packet routing
       boot.kernel.sysctl = {
@@ -252,10 +240,7 @@ in
 
     # LAN server (IPv6 only)
     nodes.homeserver = {
-      imports = [
-        ipv6Only
-        (webserver 6 "Hello from IPv6!")
-      ];
+      imports = [ ipv6Only (webserver 6 "Hello from IPv6!") ];
 
       virtualisation.vlans = [ 1 ];
       networking.interfaces.eth1.ipv6 = {
@@ -277,10 +262,7 @@ in
 
     # WAN server (IPv4 only)
     nodes.server = {
-      imports = [
-        ipv4Only
-        (webserver 4 "Hello from IPv4!")
-      ];
+      imports = [ ipv4Only (webserver 4 "Hello from IPv4!") ];
 
       virtualisation.vlans = [ 2 ];
       networking.interfaces.eth1.ipv4.addresses = [

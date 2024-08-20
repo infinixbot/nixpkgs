@@ -33,10 +33,7 @@ stdenv.mkDerivation rec {
     description = "Encrypt files with Advanced Encryption Standard (AES)";
     homepage = "https://www.aescrypt.com/";
     license = licenses.gpl2Only;
-    maintainers = with maintainers; [
-      lovek323
-      qknight
-    ];
+    maintainers = with maintainers; [ lovek323 qknight ];
     platforms = lib.platforms.all;
     hydraPlatforms = with platforms; unix;
   };

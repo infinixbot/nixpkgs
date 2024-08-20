@@ -58,10 +58,7 @@ let
         description = "LDAP connector for Bitwarden";
         homepage = "https://github.com/bitwarden/directory-connector";
         license = licenses.gpl3Only;
-        maintainers = with maintainers; [
-          Silver-Golden
-          SuperSandro2000
-        ];
+        maintainers = with maintainers; [ Silver-Golden SuperSandro2000 ];
         platforms = platforms.linux;
         mainProgram = name;
       };

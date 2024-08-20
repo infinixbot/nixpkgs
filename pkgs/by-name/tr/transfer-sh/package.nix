@@ -32,9 +32,6 @@ buildGoModule rec {
     changelog = "https://github.com/dutchcoders/transfer.sh/releases";
     mainProgram = "transfer.sh";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      ocfox
-      pinpox
-    ];
+    maintainers = with maintainers; [ ocfox pinpox ];
   };
 }

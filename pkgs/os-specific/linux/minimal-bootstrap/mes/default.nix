@@ -49,10 +49,7 @@ let
   srcPost =
     kaem.runCommand "${pname}-src-${version}"
       {
-        outputs = [
-          "out"
-          "bin"
-        ];
+        outputs = [ "out" "bin" ];
         inherit meta;
       }
       ''

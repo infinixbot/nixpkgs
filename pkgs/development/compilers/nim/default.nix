@@ -102,13 +102,7 @@ in
       hash = "sha256-VwLahEcA0xKdtzFwtcYGrb37h+grgWwNkRB+ogpl3xY=";
     };
 
-    buildInputs = [
-      boehmgc
-      openssl
-      pcre
-      readline
-      sqlite
-    ] ++ lib.optional stdenv.isDarwin Security;
+    buildInputs = [ boehmgc openssl pcre readline sqlite ] ++ lib.optional stdenv.isDarwin Security;
 
     patches = [
       ./NIM_CONFIG_DIR.patch
@@ -288,12 +282,7 @@ in
           "--prefix PATH : ${lib.makeBinPath [ buildPackages.gdb ]}:${placeholder "out"}/bin"
           # Used by nim-gdb
 
-          "--prefix LD_LIBRARY_PATH : ${
-            lib.makeLibraryPath [
-              openssl
-              pcre
-            ]
-          }"
+          "--prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ openssl pcre ]}"
           # These libraries may be referred to by the standard library.
           # This is broken for cross-compilation because the package
           # set will be shifted back by nativeBuildInputs.

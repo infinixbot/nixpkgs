@@ -7,18 +7,9 @@
 let
   inherit (import ../lib/testing-python.nix { inherit system pkgs; }) makeTest;
   testCombinations = pkgs.lib.cartesianProduct {
-    predictable = [
-      true
-      false
-    ];
-    withNetworkd = [
-      true
-      false
-    ];
-    systemdStage1 = [
-      true
-      false
-    ];
+    predictable = [ true false ];
+    withNetworkd = [ true false ];
+    systemdStage1 = [ true false ];
   };
 in
 pkgs.lib.listToAttrs (

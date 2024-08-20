@@ -32,14 +32,7 @@ mkKdeDerivation {
   '';
 
   extraNativeBuildInputs = [ pkg-config ];
-  extraBuildInputs = [
-    qtconnectivity
-    qtmultimedia
-    qtwayland
-    wayland
-    wayland-protocols
-    libfakekey
-  ];
+  extraBuildInputs = [ qtconnectivity qtmultimedia qtwayland wayland wayland-protocols libfakekey ];
 
   extraCmakeFlags = [
     "-DQtWaylandScanner_EXECUTABLE=${qtwayland}/libexec/qtwaylandscanner"

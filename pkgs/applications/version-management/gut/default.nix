@@ -18,11 +18,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-G9oDMHLmdv/vQfofTqKAf21xaGp+lvW+sedLmaj+A5A=";
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X github.com/julien040/gut/src/telemetry.gutVersion=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X github.com/julien040/gut/src/telemetry.gutVersion=${version}" ];
 
   # Depends on `/home` existing
   doCheck = false;

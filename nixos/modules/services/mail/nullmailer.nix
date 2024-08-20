@@ -125,12 +125,7 @@ with lib;
         };
 
         maxpause = mkOption {
-          type =
-            with types;
-            nullOr (oneOf [
-              str
-              int
-            ]);
+          type = with types; nullOr (oneOf [ str int ]);
           default = null;
           description = ''
             The maximum time to pause between successive queue runs, in seconds.
@@ -148,12 +143,7 @@ with lib;
         };
 
         pausetime = mkOption {
-          type =
-            with types;
-            nullOr (oneOf [
-              str
-              int
-            ]);
+          type = with types; nullOr (oneOf [ str int ]);
           default = null;
           description = ''
             The minimum time to pause between successive queue runs when there
@@ -183,12 +173,7 @@ with lib;
         };
 
         sendtimeout = mkOption {
-          type =
-            with types;
-            nullOr (oneOf [
-              str
-              int
-            ]);
+          type = with types; nullOr (oneOf [ str int ]);
           default = null;
           description = ''
             The  time to wait for a remote module listed above to complete sending

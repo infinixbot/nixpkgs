@@ -33,21 +33,9 @@ let
       sha256 = "17i3g61hxz9pzl3ryd1yr15142r25m06jfzjrpdy7ic1b8vjjw3f";
     };
 
-    outputs = [
-      "bin"
-      "out"
-      "dev"
-      "man"
-      "devdoc"
-    ];
+    outputs = [ "bin" "out" "dev" "man" "devdoc" ];
 
-    nativeBuildInputs = [
-      pkg-config
-      gtk-doc
-      docbook_xsl
-      docbook_xml_dtd_412
-      gobject-introspection
-    ];
+    nativeBuildInputs = [ pkg-config gtk-doc docbook_xsl docbook_xml_dtd_412 gobject-introspection ];
     buildInputs = [
       glib
       libxml2

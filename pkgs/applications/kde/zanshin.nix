@@ -18,10 +18,5 @@ mkDerivation {
   };
 
   nativeBuildInputs = [ extra-cmake-modules ];
-  buildInputs = [
-    akonadi-calendar
-    boost
-    kontactinterface
-    krunner
-  ];
+  buildInputs = [ akonadi-calendar boost kontactinterface krunner ];
 }

@@ -26,13 +26,7 @@ stdenv.mkDerivation rec {
     python3
   ];
 
-  buildInputs = [
-    htslib
-    zlib
-    bzip2
-    xz
-    curl
-  ];
+  buildInputs = [ htslib zlib bzip2 xz curl ];
 
   strictDeps = true;
 

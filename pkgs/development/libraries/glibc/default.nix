@@ -60,11 +60,7 @@ in
     # The pie, stackprotector and fortify hardening flags are autodetected by
     # glibc and enabled by default if supported. Setting it for every gcc
     # invocation does not work.
-    hardeningDisable = [
-      "fortify"
-      "pie"
-      "stackprotector"
-    ];
+    hardeningDisable = [ "fortify" "pie" "stackprotector" ];
 
     env = (previousAttrs.env or { }) // {
       NIX_CFLAGS_COMPILE =

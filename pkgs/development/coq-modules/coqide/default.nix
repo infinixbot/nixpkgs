@@ -51,13 +51,7 @@ mkCoqDerivation rec {
     icon = "coq";
     desktopName = "CoqIDE";
     comment = "Graphical interface for the Coq proof assistant";
-    categories = [
-      "Development"
-      "Science"
-      "Math"
-      "IDE"
-      "GTK"
-    ];
+    categories = [ "Development" "Science" "Math" "IDE" "GTK" ];
   };
 
   meta = with lib; {

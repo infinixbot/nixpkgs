@@ -36,19 +36,13 @@ stdenv.mkDerivation rec {
     which
   ];
 
-  buildInputs = [
-    glib
-    readline
-  ];
+  buildInputs = [ glib readline ];
 
   enableParallelBuilding = true;
 
   meta = with lib; {
     description = ".mdb (MS Access) format tools";
-    license = with licenses; [
-      gpl2Plus
-      lgpl2
-    ];
+    license = with licenses; [ gpl2Plus lgpl2 ];
     maintainers = [ ];
     platforms = platforms.unix;
     inherit (src.meta) homepage;

@@ -51,10 +51,7 @@ in
       description = "More arguments to pass to the unclutter command";
       type = types.listOf types.str;
       default = [ ];
-      example = [
-        "noevent"
-        "grab"
-      ];
+      example = [ "noevent" "grab" ];
     };
   };
 
@@ -78,18 +75,11 @@ in
   };
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "unclutter"
-        "threeshold"
-      ]
-      [
-        "services"
-        "unclutter"
-        "threshold"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "unclutter" "threeshold" ] [
+      "services"
+      "unclutter"
+      "threshold"
+    ])
   ];
 
   meta.maintainers = with lib.maintainers; [ rnhmjoj ];

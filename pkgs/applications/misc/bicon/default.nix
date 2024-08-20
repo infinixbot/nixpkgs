@@ -32,16 +32,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [
-    fribidi
-    kbd
-    xkbutils
-    perl
-  ];
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  buildInputs = [ fribidi kbd xkbutils perl ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
   preConfigure = ''
     patchShebangs .
@@ -50,11 +42,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Bidirectional console";
     homepage = "https://github.com/behdad/bicon";
-    license = [
-      licenses.lgpl21
-      licenses.psfl
-      licenses.bsd0
-    ];
+    license = [ licenses.lgpl21 licenses.psfl licenses.bsd0 ];
     maintainers = [ ];
     platforms = platforms.linux;
   };

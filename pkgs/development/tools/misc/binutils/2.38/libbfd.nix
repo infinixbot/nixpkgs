@@ -15,10 +15,7 @@ stdenv.mkDerivation {
   pname = "libbfd";
   inherit (binutils-unwrapped_2_38) version src;
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   patches = binutils-unwrapped_2_38.patches ++ [
     ./build-components-separately.patch
@@ -42,19 +39,10 @@ stdenv.mkDerivation {
   dontUpdateAutotoolsGnuConfigScripts = true;
 
   strictDeps = true;
-  nativeBuildInputs = [
-    autoreconfHook
-    bison
-  ];
-  buildInputs = [
-    libiberty
-    zlib
-  ] ++ lib.optionals stdenv.isDarwin [ libintl ];
+  nativeBuildInputs = [ autoreconfHook bison ];
+  buildInputs = [ libiberty zlib ] ++ lib.optionals stdenv.isDarwin [ libintl ];
 
-  configurePlatforms = [
-    "build"
-    "host"
-  ];
+  configurePlatforms = [ "build" "host" ];
   configureFlags = [
     "--enable-targets=all"
     "--enable-64-bit-bfd"

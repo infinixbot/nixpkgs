@@ -31,10 +31,7 @@ stdenv.mkDerivation (finalAttrs: {
     else
       "makefile.linux"; # I think Linux is a safe default...
 
-  makeFlags = [
-    "CC=${stdenv.cc.targetPrefix}cc"
-    "-C src/"
-  ];
+  makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" "-C src/" ];
 
   installPhase = ''
     runHook preInstall

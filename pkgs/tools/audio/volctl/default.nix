@@ -38,10 +38,7 @@ python3Packages.buildPythonApplication rec {
   ];
 
   propagatedBuildInputs =
-    [
-      pango
-      gtk3
-    ]
+    [ pango gtk3 ]
     ++ (with python3Packages; [
       pulsectl
       click

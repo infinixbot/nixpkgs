@@ -30,11 +30,7 @@ builder rec {
     sha256 = "013mydzhfswqci6xmyc1ajzd59pfbdak15i0b090nhr9bzm7dxyd";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "info"
-  ];
+  outputs = [ "out" "dev" "info" ];
   setOutputFlags = false; # $dev gets into the library otherwise
 
   depsBuildBuild = [

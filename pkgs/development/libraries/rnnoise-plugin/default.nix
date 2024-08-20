@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-sfwHd5Fl2DIoGuPDjELrPp5KpApZJKzQikCJmCzhtY8=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   patches = lib.optionals stdenv.isDarwin [
     # Ubsan seems to be broken on aarch64-darwin, it produces linker errors similar to https://github.com/NixOS/nixpkgs/issues/140751
@@ -58,10 +55,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/werman/noise-suppression-for-voice";
     license = licenses.gpl3;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      panaeon
-      henrikolsson
-      sciencentistguy
-    ];
+    maintainers = with maintainers; [ panaeon henrikolsson sciencentistguy ];
   };
 }

@@ -19,16 +19,10 @@ in
   config = lib.mkIf cfg.enable {
     systemd.services.oddjobd = {
       wantedBy = [ "multi-user.target" ];
-      after = [
-        "network.target"
-        "dbus.service"
-      ];
+      after = [ "network.target" "dbus.service" ];
       description = "DBUS Odd-job Daemon";
       enable = true;
-      documentation = [
-        "man:oddjobd(8)"
-        "man:oddjobd.conf(5)"
-      ];
+      documentation = [ "man:oddjobd(8)" "man:oddjobd.conf(5)" ];
       serviceConfig = {
         Type = "simple";
         PIDFile = "/run/oddjobd.pid";

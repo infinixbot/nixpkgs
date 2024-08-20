@@ -47,11 +47,6 @@ buildGoModule rec {
     homepage = "https://www.influxdata.com/time-series-platform/telegraf/";
     changelog = "https://github.com/influxdata/telegraf/blob/${src.rev}/CHANGELOG.md";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      mic92
-      roblabla
-      timstott
-      zowoq
-    ];
+    maintainers = with maintainers; [ mic92 roblabla timstott zowoq ];
   };
 }

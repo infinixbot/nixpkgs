@@ -73,14 +73,7 @@ in
 rustPlatform.buildRustPackage (
   commonDerivationAttrs
   // {
-    cargoBuildFlags = [
-      "-p"
-      "lldap"
-      "-p"
-      "lldap_migration_tool"
-      "-p"
-      "lldap_set_password"
-    ];
+    cargoBuildFlags = [ "-p" "lldap" "-p" "lldap_migration_tool" "-p" "lldap_set_password" ];
 
     patches = [
       ./0001-parameterize-frontend-location.patch

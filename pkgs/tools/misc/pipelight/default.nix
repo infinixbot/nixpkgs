@@ -29,13 +29,7 @@ stdenv.mkDerivation rec {
     sha256 = "1kyy6knkr42k34rs661r0f5sf6l1s2jdbphdg89n73ynijqmzjhk";
   };
 
-  buildInputs = [
-    wine_custom
-    libX11
-    libGLU
-    libGL
-    curl
-  ];
+  buildInputs = [ wine_custom libX11 libGLU libGL curl ];
 
   env.NIX_CFLAGS_COMPILE = toString [ "-fpermissive" ];
 
@@ -77,17 +71,10 @@ stdenv.mkDerivation rec {
 
   meta = {
     homepage = "http://pipelight.net/";
-    license = with lib.licenses; [
-      mpl11
-      gpl2Only
-      lgpl21
-    ];
+    license = with lib.licenses; [ mpl11 gpl2Only lgpl21 ];
     description = "Wrapper for using Windows plugins in Linux browsers";
     maintainers = [ ];
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
     mainProgram = "pipelight-plugin";
   };
 }

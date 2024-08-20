@@ -24,14 +24,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ gobject-introspection ];
-  buildInputs = [
-    glib
-    python
-    pygobject3
-    networkmanager
-    python3Packages.wrapPython
-    procps
-  ];
+  buildInputs = [ glib python pygobject3 networkmanager python3Packages.wrapPython procps ];
 
   dontBuild = true;
 

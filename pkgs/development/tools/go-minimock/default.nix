@@ -25,10 +25,7 @@ buildGoModule rec {
 
   doCheck = true;
 
-  subPackages = [
-    "cmd/minimock"
-    "."
-  ];
+  subPackages = [ "cmd/minimock" "." ];
 
   meta = with lib; {
     homepage = "https://github.com/gojuno/minimock";

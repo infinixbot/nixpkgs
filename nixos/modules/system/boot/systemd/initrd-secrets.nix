@@ -22,10 +22,7 @@
           description = "Copy secrets into place";
           # Run as early as possible
           wantedBy = [ "sysinit.target" ];
-          before = [
-            "cryptsetup-pre.target"
-            "shutdown.target"
-          ];
+          before = [ "cryptsetup-pre.target" "shutdown.target" ];
           conflicts = [ "shutdown.target" ];
           unitConfig.DefaultDependencies = false;
 

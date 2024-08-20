@@ -32,11 +32,7 @@ rustPlatform.buildRustPackage rec {
     xorg.libXScrnSaver
     libpulseaudio
   ] ++ lib.optional stdenv.isDarwin Security;
-  nativeBuildInputs = [
-    pkg-config
-    patchelf
-    python3
-  ];
+  nativeBuildInputs = [ pkg-config patchelf python3 ];
 
   buildNoDefaultFeatures = !stdenv.isLinux;
   buildFeatures = lib.optional (!stdenv.isLinux) "pulse";

@@ -437,11 +437,7 @@ effectiveStdenv.mkDerivation {
   propagatedBuildInputs = lib.optionals enablePython [ pythonPackages.numpy ];
 
   nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-      unzip
-    ]
+    [ cmake pkg-config unzip ]
     ++ lib.optionals enablePython [
       pythonPackages.pip
       pythonPackages.wheel

@@ -30,15 +30,8 @@ stdenv.mkDerivation {
   pname = "cups-brother-hl2260d";
   inherit version;
 
-  nativeBuildInputs = [
-    makeWrapper
-    dpkg
-  ];
-  buildInputs = [
-    cups
-    ghostscript
-    perl
-  ];
+  nativeBuildInputs = [ makeWrapper dpkg ];
+  buildInputs = [ cups ghostscript perl ];
 
   dontPatchELF = true;
   dontBuild = true;
@@ -90,21 +83,10 @@ stdenv.mkDerivation {
     makeWrapper \
       $out/opt/brother/Printers/HL2260D/cupswrapper/brother_lpdwrapper_HL2260D \
       $out/lib/cups/filter/brother_lpdwrapper_HL2260D \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          gnugrep
-          gnused
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ coreutils gnugrep gnused ]}
 
     wrapProgram $out/opt/brother/Printers/HL2260D/lpd/filter_HL2260D \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          ghostscript
-          which
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ ghostscript which ]}
   '';
 
   meta = with lib; {
@@ -112,10 +94,7 @@ stdenv.mkDerivation {
     description = "Brother HL-2260D printer driver";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
     downloadPage = "https://support.brother.com/g/b/downloadtop.aspx?c=cn_ot&lang=en&prod=hl2260d_cn";
     maintainers = with maintainers; [ u2x1 ];
   };

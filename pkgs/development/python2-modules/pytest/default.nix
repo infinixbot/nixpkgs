@@ -35,10 +35,7 @@ buildPythonPackage rec {
       --replace "pluggy>=0.12,<1.0" "pluggy>=0.12,<2.0"
   '';
 
-  nativeCheckInputs = [
-    hypothesis
-    mock
-  ];
+  nativeCheckInputs = [ hypothesis mock ];
   buildInputs = [ setuptools-scm ];
   propagatedBuildInputs = [
     attrs
@@ -91,12 +88,7 @@ buildPythonPackage rec {
   meta = with lib; {
     homepage = "https://docs.pytest.org";
     description = "Framework for writing tests";
-    maintainers = with maintainers; [
-      domenkozar
-      lovek323
-      madjar
-      lsix
-    ];
+    maintainers = with maintainers; [ domenkozar lovek323 madjar lsix ];
     license = licenses.mit;
     platforms = platforms.unix;
   };

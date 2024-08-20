@@ -238,10 +238,6 @@ stdenv.mkDerivation rec {
     license = licenses.unfree;
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     platforms = [ "x86_64-linux" ];
-    maintainers = with maintainers; [
-      zanculmarktum
-      kuwii
-      rhysmdnz
-    ];
+    maintainers = with maintainers; [ zanculmarktum kuwii rhysmdnz ];
   };
 }

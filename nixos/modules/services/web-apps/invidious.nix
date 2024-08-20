@@ -36,18 +36,10 @@ let
       ProtectHome = true;
       ProtectKernelLogs = true;
       ProtectProc = "invisible";
-      RestrictAddressFamilies = [
-        "AF_UNIX"
-        "AF_INET"
-        "AF_INET6"
-      ];
+      RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
       RestrictNamespaces = true;
       SystemCallArchitectures = "native";
-      SystemCallFilter = [
-        "@system-service"
-        "~@privileged"
-        "~@resources"
-      ];
+      SystemCallFilter = [ "@system-service" "~@privileged" "~@resources" ];
 
       # Because of various issues Invidious must be restarted often, at least once a day, ideally
       # every hour.

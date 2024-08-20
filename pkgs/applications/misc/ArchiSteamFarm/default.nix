@@ -35,11 +35,7 @@ buildDotnetModule rec {
     "--framework=net8.0"
   ];
 
-  runtimeDeps = [
-    libkrb5
-    zlib
-    openssl
-  ];
+  runtimeDeps = [ libkrb5 zlib openssl ];
 
   doCheck = true;
 

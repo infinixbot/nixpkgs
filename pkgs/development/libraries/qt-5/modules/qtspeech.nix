@@ -11,8 +11,5 @@ qtModule {
   propagatedBuildInputs = [ ];
   buildInputs = lib.optionals stdenv.isLinux [ speechd-minimal ];
   nativeBuildInputs = [ pkg-config ];
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 }

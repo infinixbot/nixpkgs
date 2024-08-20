@@ -17,10 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-4ZCma8Q7FXAWdA1m2M1ltm360Fu65JhELyfIbJBP14M=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     description = "Command-line tool for identifying similar or duplicated CSS code";

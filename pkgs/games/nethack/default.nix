@@ -41,10 +41,7 @@ let
     else
       "unix";
   userDir = "~/.config/nethack";
-  binPath = lib.makeBinPath [
-    coreutils
-    less
-  ];
+  binPath = lib.makeBinPath [ coreutils less ];
 
 in
 stdenv.mkDerivation rec {
@@ -66,27 +63,12 @@ stdenv.mkDerivation rec {
 
   buildInputs =
     [ ncurses ]
-    ++ lib.optionals x11Mode [
-      libXaw
-      libXext
-      libXpm
-    ]
-    ++ lib.optionals qtMode [
-      gzip
-      qt5.qtbase.bin
-      qt5.qtmultimedia.bin
-    ];
+    ++ lib.optionals x11Mode [ libXaw libXext libXpm ]
+    ++ lib.optionals qtMode [ gzip qt5.qtbase.bin qt5.qtmultimedia.bin ];
 
   nativeBuildInputs =
-    [
-      flex
-      bison
-      copyDesktopItems
-    ]
-    ++ lib.optionals x11Mode [
-      mkfontdir
-      bdftopcf
-    ]
+    [ flex bison copyDesktopItems ]
+    ++ lib.optionals x11Mode [ mkfontdir bdftopcf ]
     ++ lib.optionals qtMode [
       pkg-config
       mkfontdir
@@ -215,10 +197,7 @@ stdenv.mkDerivation rec {
       icon = "nethack";
       desktopName = "NetHack";
       comment = "NetHack is a single player dungeon exploration game";
-      categories = [
-        "Game"
-        "ActionGame"
-      ];
+      categories = [ "Game" "ActionGame" ];
     })
   ];
 

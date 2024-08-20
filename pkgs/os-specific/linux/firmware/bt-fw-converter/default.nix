@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ makeWrapper ];
 
-  buildInputs = [
-    perl
-    perlPackages.RegexpGrammars
-    bluez
-  ];
+  buildInputs = [ perl perlPackages.RegexpGrammars bluez ];
 
   unpackCmd = ''
     mkdir -p ${pname}-${version}

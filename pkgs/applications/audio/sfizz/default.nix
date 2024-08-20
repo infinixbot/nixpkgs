@@ -55,10 +55,7 @@ stdenv.mkDerivation rec {
     freetype
     pango
   ];
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   # Fix missing include
   patches = [ ./gcc13.patch ];

@@ -26,16 +26,8 @@ python3Packages.buildPythonApplication rec {
     })
   ];
 
-  propagatedBuildInputs = with python3Packages; [
-    crcmod
-    ffmpeg-python
-    mutagen
-    tqdm
-  ];
-  nativeCheckInputs = with python3Packages; [
-    requests
-    sox
-  ];
+  propagatedBuildInputs = with python3Packages; [ crcmod ffmpeg-python mutagen tqdm ];
+  nativeCheckInputs = with python3Packages; [ requests sox ];
 
   # Testing downloads media files for testing, which requires the
   # sandbox to be disabled.

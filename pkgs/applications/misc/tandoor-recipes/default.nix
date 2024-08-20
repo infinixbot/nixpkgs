@@ -17,10 +17,7 @@ let
           rev = version;
           hash = "sha256-ZnLyTHlsrXthGnaPzlV2ga/UTm5SSEHLTwC/tobiPak=";
         };
-        propagatedBuildInputs = [
-          super.decorator
-          super.six
-        ];
+        propagatedBuildInputs = [ super.decorator super.six ];
       });
 
       djangorestframework = super.djangorestframework.overridePythonAttrs (oldAttrs: rec {

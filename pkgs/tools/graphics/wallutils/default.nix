@@ -47,10 +47,7 @@ buildGoModule rec {
     xbitmaps
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   preCheck = ''
     export XDG_RUNTIME_DIR=$(mktemp -d)

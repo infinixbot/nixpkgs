@@ -30,10 +30,7 @@ stdenv.mkDerivation rec {
     qttools
   ];
 
-  nativeBuildInputs = [
-    cmake
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake wrapQtAppsHook ];
 
   preConfigure = ''
     lrelease stacer/stacer.pro

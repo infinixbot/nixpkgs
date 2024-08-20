@@ -87,10 +87,7 @@ stdenv.mkDerivation rec {
     homepage = "https://f3d-app.github.io/f3d";
     changelog = "https://github.com/f3d-app/f3d/releases/tag/v${version}";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      bcdarwin
-      pbsds
-    ];
+    maintainers = with maintainers; [ bcdarwin pbsds ];
     platforms = with platforms; unix;
     mainProgram = "f3d";
   };

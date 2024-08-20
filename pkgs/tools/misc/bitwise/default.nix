@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-x+ky1X0c0bQZnkNvNNuXN2BoMDtDSCt/8dBAG92jCCQ=";
   };
 
-  buildInputs = [
-    ncurses
-    readline
-  ];
+  buildInputs = [ ncurses readline ];
   nativeBuildInputs = [ autoreconfHook ];
 
   meta = with lib; {

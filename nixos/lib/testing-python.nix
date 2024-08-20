@@ -26,22 +26,8 @@ pkgs.lib.throwIf (args ? specialArgs)
 
     inherit pkgs;
 
-    evalTest =
-      module:
-      nixos-lib.evalTest {
-        imports = [
-          extraTestModule
-          module
-        ];
-      };
-    runTest =
-      module:
-      nixos-lib.runTest {
-        imports = [
-          extraTestModule
-          module
-        ];
-      };
+    evalTest = module: nixos-lib.evalTest { imports = [ extraTestModule module ]; };
+    runTest = module: nixos-lib.runTest { imports = [ extraTestModule module ]; };
 
     extraTestModule = {
       config = {

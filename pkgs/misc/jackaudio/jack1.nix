@@ -38,12 +38,7 @@ stdenv.mkDerivation (finalAttrs: {
   ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    optAlsaLib
-    optDb
-    optLibffado
-    optCelt
-  ];
+  buildInputs = [ optAlsaLib optDb optLibffado optCelt ];
   propagatedBuildInputs = [ optLibuuid ];
 
   passthru.tests.pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
@@ -52,10 +47,7 @@ stdenv.mkDerivation (finalAttrs: {
     broken = stdenv.isDarwin;
     description = "JACK audio connection kit";
     homepage = "https://jackaudio.org";
-    license = with licenses; [
-      gpl2Plus
-      lgpl21
-    ];
+    license = with licenses; [ gpl2Plus lgpl21 ];
     pkgConfigModules = [ "jack" ];
     platforms = platforms.unix;
   };

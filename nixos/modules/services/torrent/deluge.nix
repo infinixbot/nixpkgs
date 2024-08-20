@@ -13,10 +13,7 @@ let
   isDeluge1 = versionOlder cfg.package.version "2.0.0";
 
   openFilesLimit = 4096;
-  listenPortsDefault = [
-    6881
-    6889
-  ];
+  listenPortsDefault = [ 6881 6889 ];
 
   listToRange = x: {
     from = elemAt x 0;
@@ -205,12 +202,7 @@ in
     );
 
     # Provide a default set of `extraPackages`.
-    services.deluge.extraPackages = with pkgs; [
-      unzip
-      gnutar
-      xz
-      bzip2
-    ];
+    services.deluge.extraPackages = with pkgs; [ unzip gnutar xz bzip2 ];
 
     systemd.tmpfiles.settings."10-deluged" =
       let
@@ -257,10 +249,7 @@ in
     };
 
     systemd.services.delugeweb = mkIf cfg_web.enable {
-      after = [
-        "network.target"
-        "deluged.service"
-      ];
+      after = [ "network.target" "deluged.service" ];
       requires = [ "deluged.service" ];
       description = "Deluge BitTorrent WebUI";
       wantedBy = [ "multi-user.target" ];

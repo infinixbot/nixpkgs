@@ -34,10 +34,7 @@ import ./make-test-python.nix (
             allowCN = [ "client" ];
             unsafeTarget = true;
           };
-          networking.firewall.allowedTCPPorts = [
-            443
-            1443
-          ];
+          networking.firewall.allowedTCPPorts = [ 443 1443 ];
         };
       client =
         { pkgs, ... }:

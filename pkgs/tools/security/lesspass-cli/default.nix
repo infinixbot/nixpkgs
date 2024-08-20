@@ -33,11 +33,7 @@ buildPythonApplication rec {
     done
   '';
 
-  nativeCheckInputs = [
-    pytest
-    mock
-    pexpect
-  ];
+  nativeCheckInputs = [ pytest mock pexpect ];
   checkPhase = ''
     mv lesspass lesspass.hidden  # ensure we're testing against *installed* package
     pytest tests

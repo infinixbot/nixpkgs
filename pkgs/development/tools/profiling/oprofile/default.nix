@@ -27,13 +27,7 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libbfd
-    zlib
-    popt
-    linuxHeaders
-    libiberty_static
-  ];
+  buildInputs = [ libbfd zlib popt linuxHeaders libiberty_static ];
 
   configureFlags = [
     "--with-kernel=${linuxHeaders}"

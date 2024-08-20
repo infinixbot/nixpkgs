@@ -48,11 +48,7 @@ stdenv.mkDerivation rec {
     ];
 
   targets = (lib.optionalString server "server") + (lib.optionalString client " client");
-  makeFlags = [
-    "-C source/src"
-    "CXX=${stdenv.cc.targetPrefix}c++"
-    targets
-  ];
+  makeFlags = [ "-C source/src" "CXX=${stdenv.cc.targetPrefix}c++" targets ];
 
   desktopItems = [
     (makeDesktopItem {
@@ -60,11 +56,7 @@ stdenv.mkDerivation rec {
       desktopName = "AssaultCube";
       comment = "A multiplayer, first-person shooter game, based on the CUBE engine. Fast, arcade gameplay.";
       genericName = "First-person shooter";
-      categories = [
-        "Game"
-        "ActionGame"
-        "Shooter"
-      ];
+      categories = [ "Game" "ActionGame" "Shooter" ];
       icon = "assaultcube";
       exec = pname;
     })

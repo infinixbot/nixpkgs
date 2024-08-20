@@ -30,15 +30,7 @@ let
       protocol = mkOption {
         description = "Protocol to use.";
         example = "anyconnect";
-        type = types.enum [
-          "anyconnect"
-          "array"
-          "nc"
-          "pulse"
-          "gp"
-          "f5"
-          "fortinet"
-        ];
+        type = types.enum [ "anyconnect" "array" "nc" "pulse" "gp" "f5" "fortinet" ];
       };
 
       user = mkOption {
@@ -118,10 +110,7 @@ let
   generateUnit = name: icfg: {
     description = "OpenConnect Interface - ${name}";
     requires = [ "network-online.target" ];
-    after = [
-      "network.target"
-      "network-online.target"
-    ];
+    after = [ "network.target" "network-online.target" ];
     wantedBy = optional icfg.autoStart "multi-user.target";
 
     serviceConfig = {

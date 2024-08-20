@@ -67,13 +67,7 @@ llvmPackages.stdenv.mkDerivation {
     '';
     homepage = "https://github.com/morganstanley/hobbes";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      kthielen
-      thmzlt
-    ];
-    platforms = [
-      "x86_64-linux"
-      "x86_64-darwin"
-    ];
+    maintainers = with maintainers; [ kthielen thmzlt ];
+    platforms = [ "x86_64-linux" "x86_64-darwin" ];
   };
 }

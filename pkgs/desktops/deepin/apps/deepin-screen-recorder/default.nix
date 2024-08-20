@@ -88,13 +88,7 @@ stdenv.mkDerivation rec {
   qtWrapperArgs = [
     "--prefix QT_PLUGIN_PATH : ${qt5integration}/${qtbase.qtPluginPrefix}"
     "--prefix LD_LIBRARY_PATH : ${
-      lib.makeLibraryPath [
-        udev
-        gst_all_1.gstreamer
-        libv4l
-        ffmpeg
-        ffmpegthumbnailer
-      ]
+      lib.makeLibraryPath [ udev gst_all_1.gstreamer libv4l ffmpeg ffmpegthumbnailer ]
     }"
   ];
 

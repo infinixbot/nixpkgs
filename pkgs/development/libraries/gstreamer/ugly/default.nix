@@ -29,10 +29,7 @@ stdenv.mkDerivation rec {
   pname = "gst-plugins-ugly";
   version = "1.24.3";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "https://gstreamer.freedesktop.org/src/${pname}/${pname}-${version}.tar.xz";

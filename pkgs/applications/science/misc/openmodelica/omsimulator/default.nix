@@ -25,11 +25,7 @@ mkOpenModelicaDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    readline
-    libxml2
-    boost
-  ];
+  buildInputs = [ readline libxml2 boost ];
 
   env.CFLAGS = toString [
     "-Wno-error=implicit-function-declaration"
@@ -39,10 +35,7 @@ mkOpenModelicaDerivation rec {
     description = "OpenModelica FMI & SSP-based co-simulation environment";
     homepage = "https://openmodelica.org";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      balodja
-      smironov
-    ];
+    maintainers = with maintainers; [ balodja smironov ];
     platforms = platforms.linux;
   };
 }

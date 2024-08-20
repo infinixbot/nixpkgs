@@ -118,10 +118,7 @@ qtModule {
       xcbuild
     ];
   doCheck = true;
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   dontUseGnConfigure = true;
 

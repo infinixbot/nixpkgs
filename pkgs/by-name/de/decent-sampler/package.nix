@@ -40,10 +40,7 @@ let
         comment = "DecentSampler player";
         icon = "decent-sampler";
         exec = "decent-sampler";
-        categories = [
-          "Audio"
-          "AudioVideo"
-        ];
+        categories = [ "Audio" "AudioVideo" ];
       })
     ];
 

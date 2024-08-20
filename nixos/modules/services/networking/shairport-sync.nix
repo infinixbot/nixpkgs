@@ -103,10 +103,7 @@ in
 
     systemd.services.shairport-sync = {
       description = "shairport-sync";
-      after = [
-        "network.target"
-        "avahi-daemon.service"
-      ];
+      after = [ "network.target" "avahi-daemon.service" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         User = cfg.user;

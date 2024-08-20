@@ -48,10 +48,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ installShellFiles ] ++ lib.optional stdenv.isLinux autoPatchelfHook;
 
-  buildInputs = lib.optionals stdenv.isDarwin [
-    xar
-    cpio
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ xar cpio ];
 
   unpackPhase = lib.optionalString stdenv.isDarwin ''
     xar -xf $src

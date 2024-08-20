@@ -19,10 +19,7 @@ buildNimPackage (finalAttrs: {
 
   lockFile = ./lock.json;
 
-  buildInputs = [
-    termbox
-    pcre
-  ];
+  buildInputs = [ termbox pcre ];
 
   meta = {
     description = "Terminal file manager for Linux";

@@ -22,10 +22,7 @@ python3Packages.buildPythonApplication rec {
     homepage = "https://github.com/Olivia5k/doge";
     description = "Wow very terminal doge";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [
-      Gonzih
-      quantenzitrone
-    ];
+    maintainers = with lib.maintainers; [ Gonzih quantenzitrone ];
     mainProgram = "doge";
   };
 }

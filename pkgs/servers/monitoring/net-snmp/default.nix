@@ -43,12 +43,7 @@ stdenv.mkDerivation rec {
       (fetchAlpinePatch "fix-fd_mask.patch" "/i9ve61HjDzqZt+u1wajNtSQoizl+KePvhcAt24HKd0=")
     ];
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-    "lib"
-  ];
+  outputs = [ "bin" "out" "dev" "lib" ];
 
   configureFlags = [
     "--with-default-snmp-version=3"
@@ -72,10 +67,7 @@ stdenv.mkDerivation rec {
       -e "/NETSNMP_CONFIGURE_OPTIONS/ s|$NIX_STORE/[a-z0-9]\{32\}-|$NIX_STORE/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-|g"
   '';
 
-  nativeBuildInputs = [
-    nettools
-    file
-  ];
+  nativeBuildInputs = [ nettools file ];
   buildInputs = [ openssl ] ++ lib.optional withPerlTools perlWithPkgs;
 
   enableParallelBuilding = true;

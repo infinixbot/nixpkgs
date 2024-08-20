@@ -25,11 +25,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ flex ];
 
-  buildInputs = postgresql.buildInputs ++ [
-    postgresql
-    curl
-    json_c
-  ];
+  buildInputs = postgresql.buildInputs ++ [ postgresql curl json_c ];
 
   installPhase = ''
     mkdir -p $out/{bin,lib,share/postgresql/extension}

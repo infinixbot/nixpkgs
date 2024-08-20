@@ -27,10 +27,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-tmTdmUfRBRlB14juNxUo65Re+9agUBX0BBSuNu3pSC0=";
   };
 
-  nativeBuildInputs = [
-    unzip
-    makeWrapper
-  ];
+  nativeBuildInputs = [ unzip makeWrapper ];
 
   buildInputs = [
     (python3.withPackages (ps: [

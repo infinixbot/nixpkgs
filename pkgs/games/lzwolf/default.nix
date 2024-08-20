@@ -44,11 +44,7 @@ stdenv.mkDerivation rec {
       --replace 'SDL2::SDL2_net' 'SDL2_net::SDL2_net'
   '';
 
-  nativeBuildInputs = [
-    p7zip
-    pkg-config
-    cmake
-  ];
+  nativeBuildInputs = [ p7zip pkg-config cmake ];
   buildInputs = [
     SDL2
     bzip2

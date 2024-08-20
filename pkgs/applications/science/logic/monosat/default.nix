@@ -49,11 +49,7 @@ let
     inherit src patches;
     postPatch = commonPostPatch;
     nativeBuildInputs = [ cmake ];
-    buildInputs = [
-      zlib
-      gmp
-      jdk8
-    ];
+    buildInputs = [ zlib gmp jdk8 ];
 
     cmakeFlags = [
       "-DBUILD_STATIC=OFF"
@@ -97,10 +93,7 @@ let
         patches
         ;
 
-      propagatedBuildInputs = [
-        core
-        cython
-      ];
+      propagatedBuildInputs = [ core cython ];
 
       # This tells setup.py to use cython, which should produce faster bindings
       MONOSAT_CYTHON = true;

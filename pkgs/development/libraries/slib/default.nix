@@ -26,11 +26,7 @@ stdenv.mkDerivation rec {
       --replace " clrnamdb.scm" ""
   '';
 
-  nativeBuildInputs = [
-    scheme
-    texinfo
-    unzip
-  ];
+  nativeBuildInputs = [ scheme texinfo unzip ];
   buildInputs = [ scheme ];
 
   postInstall = ''

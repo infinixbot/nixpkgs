@@ -42,12 +42,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   # cycle detection; lib can't be split
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "dev" "doc" "man" ];
 
   nativeBuildInputs = [
     cmake

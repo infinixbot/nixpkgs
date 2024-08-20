@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [
-    autoreconfHook
-    sdcc
-  ];
+  nativeBuildInputs = [ autoreconfHook sdcc ];
 
   meta = with lib; {
     description = "Firmware for FX2 logic analyzers";
@@ -36,9 +33,6 @@ stdenv.mkDerivation rec {
 
     sourceProvenance = with sourceTypes; [ fromSource ];
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      panicgh
-      vifino
-    ];
+    maintainers = with maintainers; [ panicgh vifino ];
   };
 }

@@ -6,10 +6,7 @@ import ../make-test-python.nix (
   {
     name = "krb5-with-example-config";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        eqyiel
-        dblsaiko
-      ];
+      maintainers = [ eqyiel dblsaiko ];
     };
 
     nodes.machine =

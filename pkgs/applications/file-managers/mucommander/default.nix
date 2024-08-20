@@ -29,10 +29,7 @@ stdenv.mkDerivation (finalAttrs: {
       --replace "revision = git.head().id" "revision = '${finalAttrs.version}'"
   '';
 
-  nativeBuildInputs = [
-    gradle
-    makeWrapper
-  ];
+  nativeBuildInputs = [ gradle makeWrapper ];
 
   mitmCache = gradle.fetchDeps {
     inherit (finalAttrs) pname;

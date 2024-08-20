@@ -21,11 +21,7 @@ stdenv.mkDerivation rec {
   CFLAGS = "-std=gnu89";
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [
-    ncurses
-    perl
-    fortune
-  ] ++ lib.optional stdenv.isDarwin libiconv;
+  buildInputs = [ ncurses perl fortune ] ++ lib.optional stdenv.isDarwin libiconv;
 
   preFixup = ''
     wrapProgram "$out/bin/typefortune" \

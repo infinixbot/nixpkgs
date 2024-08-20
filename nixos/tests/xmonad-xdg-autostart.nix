@@ -7,10 +7,7 @@ import ./make-test-python.nix (
     nodes.machine =
       { pkgs, config, ... }:
       {
-        imports = [
-          ./common/x11.nix
-          ./common/user-account.nix
-        ];
+        imports = [ ./common/x11.nix ./common/user-account.nix ];
         test-support.displayManager.auto.user = "alice";
         services.displayManager.defaultSession = "none+xmonad";
         services.xserver.windowManager.xmonad.enable = true;

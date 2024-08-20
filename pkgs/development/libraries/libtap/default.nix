@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  propagatedBuildInputs = [
-    cmake
-    perl
-  ];
+  propagatedBuildInputs = [ cmake perl ];
 
   meta = with lib; {
     description = "Library to implement a test protocol";

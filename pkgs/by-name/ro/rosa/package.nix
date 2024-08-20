@@ -30,10 +30,7 @@ buildGoModule rec {
     })
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   __darwinAllowLocalNetworking = true;
 

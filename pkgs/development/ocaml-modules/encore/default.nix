@@ -21,11 +21,7 @@ buildDunePackage rec {
 
   duneVersion = "3";
 
-  propagatedBuildInputs = [
-    angstrom
-    fmt
-    bigstringaf
-  ];
+  propagatedBuildInputs = [ angstrom fmt bigstringaf ];
   checkInputs = [ alcotest ];
   doCheck = true;
 

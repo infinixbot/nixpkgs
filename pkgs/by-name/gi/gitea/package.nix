@@ -49,10 +49,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-nzhjIfQMzSf1nuBMTIe0xn+NMDFbDZ9jRHu8Nwzmp4w=";
 
-  outputs = [
-    "out"
-    "data"
-  ];
+  outputs = [ "out" "data" ];
 
   patches = [ ./static-root-path.patch ];
 
@@ -73,10 +70,7 @@ buildGoModule rec {
 
   tags =
     lib.optional pamSupport "pam"
-    ++ lib.optionals sqliteSupport [
-      "sqlite"
-      "sqlite_unlock_notify"
-    ];
+    ++ lib.optionals sqliteSupport [ "sqlite" "sqlite_unlock_notify" ];
 
   ldflags = [
     "-s"
@@ -93,15 +87,7 @@ buildGoModule rec {
     cp -R ./options/locale $out/locale
 
     wrapProgram $out/bin/gitea \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          bash
-          coreutils
-          git
-          gzip
-          openssh
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ bash coreutils git gzip openssh ]}
   '';
 
   passthru = {
@@ -116,11 +102,7 @@ buildGoModule rec {
     description = "Git with a cup of tea";
     homepage = "https://about.gitea.com";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      ma27
-      techknowlogick
-      SuperSandro2000
-    ];
+    maintainers = with maintainers; [ ma27 techknowlogick SuperSandro2000 ];
     mainProgram = "gitea";
   };
 }

@@ -17,11 +17,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-wEXHozoAr/v+sRBm+lAsA5kuR0piupWXeq0G28FMaCk=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "info"
-  ];
+  outputs = [ "out" "dev" "info" ];
 
   buildInputs = [
     libopcodes

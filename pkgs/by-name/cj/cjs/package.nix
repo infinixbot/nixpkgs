@@ -28,10 +28,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-/74E10txRjwN9RkjVB8M0MPYakJ659yJWanc4DC09wg=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   strictDeps = true;
 

@@ -25,11 +25,7 @@ stdenv.mkDerivation {
     ./openssl-header-c99-implicit-function-declaration.patch
   ];
 
-  nativeBuildInputs = with pkgs; [
-    openssl
-    autoconf
-    automake
-  ];
+  nativeBuildInputs = with pkgs; [ openssl autoconf automake ];
   buildInputs = with pkgs; [ libuecc ];
 
   meta = with lib; {

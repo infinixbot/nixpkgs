@@ -27,11 +27,7 @@ stdenv.mkDerivation rec {
   pname = "gnome-panel";
   version = "3.52.0";
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";

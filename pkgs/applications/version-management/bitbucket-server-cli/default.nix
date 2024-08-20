@@ -20,10 +20,7 @@ bundlerEnv rec {
     description = "Command line interface to interact with BitBucket Server (formerly Atlassian Stash)";
     homepage = "https://bitbucket.org/atlassian/bitbucket-server-cli";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      jgertm
-      nicknovitski
-    ];
+    maintainers = with maintainers; [ jgertm nicknovitski ];
     mainProgram = "stash";
     platforms = platforms.unix;
   };

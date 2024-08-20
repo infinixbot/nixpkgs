@@ -16,11 +16,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-1jLBGTQgrG+uv5SC5l4z06VmTszWQ7CaUJ0h0cHym+I=";
   };
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-  ];
+  outputs = [ "out" "lib" "dev" ];
 
   configureFlags = [ "--enable-libscrypt-kdf" ];
 

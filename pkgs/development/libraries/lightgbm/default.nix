@@ -59,19 +59,12 @@ stdenv.mkDerivation rec {
   nativeBuildInputs =
     [ cmake ]
     ++ lib.optionals stdenv.isDarwin [ llvmPackages.openmp ]
-    ++ lib.optionals openclSupport [
-      opencl-headers
-      ocl-icd
-      boost
-    ]
+    ++ lib.optionals openclSupport [ opencl-headers ocl-icd boost ]
     ++ lib.optionals mpiSupport [ openmpi ]
     ++ lib.optionals hdfsSupport [ hadoop ]
     ++ lib.optionals (hdfsSupport || javaWrapper) [ openjdk ]
     ++ lib.optionals javaWrapper [ swig ]
-    ++ lib.optionals rLibrary [
-      R
-      pandoc
-    ];
+    ++ lib.optionals rLibrary [ R pandoc ];
 
   buildInputs = [ gtest ] ++ lib.optional cudaSupport cudaPackages.cudatoolkit;
 

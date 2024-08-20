@@ -107,9 +107,6 @@ buildGoModule rec {
     downloadPage = "https://github.com/influxdata/kapacitor/releases";
     license = licenses.mit;
     changelog = "https://github.com/influxdata/kapacitor/blob/master/CHANGELOG.md";
-    maintainers = with maintainers; [
-      offline
-      totoroot
-    ];
+    maintainers = with maintainers; [ offline totoroot ];
   };
 }

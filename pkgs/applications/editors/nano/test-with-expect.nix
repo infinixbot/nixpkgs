@@ -33,10 +33,7 @@ let
 in
 runCommand "nano-test-expect"
   {
-    nativeBuildInputs = [
-      nano
-      expect
-    ];
+    nativeBuildInputs = [ nano expect ];
     passthru = {
       inherit expect-script;
     };

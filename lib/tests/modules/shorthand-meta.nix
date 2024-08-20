@@ -16,10 +16,7 @@ in
       }
     )
     {
-      meta.foo = [
-        "one"
-        "two"
-      ];
+      meta.foo = [ "one" "two" ];
     }
   ];
 }

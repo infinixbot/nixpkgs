@@ -55,10 +55,7 @@
     { }:
     makeSetupHook {
       name = "cargo-nextest-hook.sh";
-      propagatedBuildInputs = [
-        cargo
-        cargo-nextest
-      ];
+      propagatedBuildInputs = [ cargo cargo-nextest ];
       substitutions = {
         inherit (rust.envVars) rustHostPlatformSpec;
       };

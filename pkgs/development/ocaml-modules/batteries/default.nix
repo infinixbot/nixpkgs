@@ -25,10 +25,7 @@ buildDunePackage rec {
 
   nativeCheckInputs = [ qtest ];
   checkInputs = [ qcheck ];
-  propagatedBuildInputs = [
-    camlp-streams
-    num
-  ];
+  propagatedBuildInputs = [ camlp-streams num ];
 
   inherit doCheck;
   checkTarget = "test";

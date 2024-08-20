@@ -18,17 +18,7 @@
 
 writeScript "update-${attrPath}" ''
   #!${runtimeShell}
-  PATH=${
-    lib.makeBinPath [
-      common-updater-scripts
-      coreutils
-      curl
-      gnugrep
-      gnupg
-      gnused
-      xidel
-    ]
-  }
+  PATH=${lib.makeBinPath [ common-updater-scripts coreutils curl gnugrep gnupg gnused xidel ]}
 
   set -eux
   HOME=`mktemp -d`

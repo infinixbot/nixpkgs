@@ -22,10 +22,7 @@ lib.throwIfNot (lib.versionAtLeast ocaml.version "4.07")
       hash = "sha256-7/YfDK3TruKCckMzAPLRrwBkHRJcX1S+AzXHWRxkZPA=";
     };
 
-    nativeBuildInputs = [
-      findlib
-      ocaml
-    ];
+    nativeBuildInputs = [ findlib ocaml ];
 
     propagatedBuildInputs = [ lem ];
 

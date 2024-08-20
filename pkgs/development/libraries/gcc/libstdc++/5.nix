@@ -99,11 +99,7 @@ stdenv.mkDerivation rec {
 
   hardeningDisable = [ "format" ];
 
-  nativeBuildInputs = [
-    flex
-    bison
-    file
-  ];
+  nativeBuildInputs = [ flex bison file ];
 
   configureFlags = [
     "--disable-multilib"

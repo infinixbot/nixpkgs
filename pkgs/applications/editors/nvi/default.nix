@@ -30,10 +30,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [
-    ncurses
-    db
-  ];
+  buildInputs = [ ncurses db ];
 
   preConfigure = ''
     cd build.unix

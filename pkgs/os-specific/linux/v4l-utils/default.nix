@@ -51,20 +51,12 @@ stdenv.mkDerivation rec {
     ln -s "$dev/include/libv4l1-videodev.h" "$dev/include/videodev.h"
   '';
 
-  nativeBuildInputs = [
-    pkg-config
-    perl
-  ] ++ lib.optional withQt wrapQtAppsHook;
+  nativeBuildInputs = [ pkg-config perl ] ++ lib.optional withQt wrapQtAppsHook;
 
   buildInputs =
     [ udev ]
     ++ lib.optional (!stdenv.hostPlatform.isGnu) argp-standalone
-    ++ lib.optionals withQt [
-      alsa-lib
-      libX11
-      qtbase
-      libGLU
-    ];
+    ++ lib.optionals withQt [ alsa-lib libX11 qtbase libGLU ];
 
   propagatedBuildInputs = [ libjpeg ];
 
@@ -78,10 +70,7 @@ stdenv.mkDerivation rec {
     description = "V4L utils and libv4l, provide common image formats regardless of the v4l device";
     homepage = "https://linuxtv.org/projects.php";
     changelog = "https://git.linuxtv.org/v4l-utils.git/plain/ChangeLog?h=v4l-utils-${version}";
-    license = with licenses; [
-      lgpl21Plus
-      gpl2Plus
-    ];
+    license = with licenses; [ lgpl21Plus gpl2Plus ];
     maintainers = with maintainers; [ codyopel ];
     platforms = platforms.linux;
   };

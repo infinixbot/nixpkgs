@@ -42,16 +42,7 @@ stdenv.mkDerivation rec {
     texinfo
     wrapQtAppsHook
   ];
-  buildInputs = [
-    fftw
-    fftwFloat
-    hamlib_4
-    libusb1
-    qtbase
-    qtmultimedia
-    qtserialport
-    boost
-  ];
+  buildInputs = [ fftw fftwFloat hamlib_4 libusb1 qtbase qtmultimedia qtserialport boost ];
 
   meta = with lib; {
     description = "Weak-signal digital communication modes for amateur radio";
@@ -65,10 +56,6 @@ stdenv.mkDerivation rec {
     homepage = "https://wsjt.sourceforge.io";
     license = with licenses; [ gpl3Plus ];
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      lasandell
-      numinit
-      melling
-    ];
+    maintainers = with maintainers; [ lasandell numinit melling ];
   };
 }

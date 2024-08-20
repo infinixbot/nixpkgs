@@ -64,10 +64,7 @@ stdenv.mkDerivation rec {
       XMLSAX
     ]);
 
-  ninjaFlags = [
-    "-C"
-    "build/Opt"
-  ];
+  ninjaFlags = [ "-C" "build/Opt" ];
 
   postInstall = ''
     for i in "$out"/bin/*; do

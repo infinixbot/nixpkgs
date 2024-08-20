@@ -60,10 +60,7 @@ python3.pkgs.buildPythonApplication rec {
       publication-ready visualizations to identify enrichments and for functional
       annotations of the genome.
     '';
-    license = with licenses; [
-      mit
-      bsd3
-    ];
+    license = with licenses; [ mit bsd3 ];
     maintainers = with maintainers; [ scalavision ];
   };
 }

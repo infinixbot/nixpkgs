@@ -37,16 +37,9 @@ stdenv.mkDerivation rec {
         --replace "include(PandocMan)" "include(${PandocMan})"
     '';
 
-  nativeBuildInputs = [
-    cmake
-    pandoc
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pandoc pkg-config ];
 
-  buildInputs = [
-    ncurses
-    libpulseaudio
-  ];
+  buildInputs = [ ncurses libpulseaudio ];
 
   configurePhase = ''
     make PREFIX=$out USE_WIDE=1 RELEASE=1 build/Makefile

@@ -83,10 +83,7 @@ in
     systemd.sockets."cockpit-wsinstance-https@" = {
       unitConfig = {
         Description = "Socket for Cockpit Web Service https instance %I";
-        BindsTo = [
-          "cockpit.service"
-          "cockpit-wsinstance-https@%i.service"
-        ];
+        BindsTo = [ "cockpit.service" "cockpit-wsinstance-https@%i.service" ];
         # clean up the socket after the service exits, to prevent fd leak
         # this also effectively prevents a DoS by starting arbitrarily many sockets, as
         # the services are resource-limited by system-cockpithttps.slice
@@ -189,19 +186,13 @@ in
       description = "Cockpit Web Service";
       documentation = [ "man:cockpit-ws(8)" ];
       restartIfChanged = true;
-      path = with pkgs; [
-        coreutils
-        cfg.package
-      ];
+      path = with pkgs; [ coreutils cfg.package ];
       requires = [
         "cockpit.socket"
         "cockpit-wsinstance-http.socket"
         "cockpit-wsinstance-https-factory.socket"
       ];
-      after = [
-        "cockpit-wsinstance-http.socket"
-        "cockpit-wsinstance-https-factory.socket"
-      ];
+      after = [ "cockpit-wsinstance-http.socket" "cockpit-wsinstance-https-factory.socket" ];
       environment = {
         G_MESSAGES_DEBUG = "cockpit-ws,cockpit-bridge";
       };
@@ -222,11 +213,7 @@ in
         PrivateTmp = true;
         PrivateDevices = true;
         ProtectKernelTunables = true;
-        RestrictAddressFamilies = [
-          "AF_UNIX"
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
         MemoryDenyWriteExecute = true;
       };
     };
@@ -246,10 +233,7 @@ in
       description = "Cockpit motd updater service";
       documentation = [ "man:cockpit-ws(8)" ];
       wants = [ "network.target" ];
-      after = [
-        "network.target"
-        "cockpit.socket"
-      ];
+      after = [ "network.target" "cockpit.socket" ];
     };
 
     systemd.tmpfiles.rules = [

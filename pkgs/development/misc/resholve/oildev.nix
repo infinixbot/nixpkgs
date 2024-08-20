@@ -68,16 +68,9 @@ rec {
       "--without-readline"
     ];
 
-    nativeBuildInputs = [
-      re2c
-      file
-      makeWrapper
-    ];
+    nativeBuildInputs = [ re2c file makeWrapper ];
 
-    propagatedBuildInputs = [
-      six
-      typing
-    ];
+    propagatedBuildInputs = [ six typing ];
 
     doCheck = true;
 

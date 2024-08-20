@@ -81,10 +81,7 @@ stdenv.mkDerivation rec {
       --prefix LD_LIBRARY_PATH : "/run/opengl-driver/lib" \
       --prefix PATH : "${
         builtins.concatStringsSep ":" [
-          (lib.makeBinPath [
-            nvidia_x11
-            nvidia_x11.settings
-          ])
+          (lib.makeBinPath [ nvidia_x11 nvidia_x11.settings ])
           "/run/wrappers/bin"
         ]
       }" \

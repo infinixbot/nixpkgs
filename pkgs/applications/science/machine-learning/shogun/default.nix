@@ -73,11 +73,7 @@ in
 stdenv.mkDerivation rec {
   inherit pname version;
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
   src = srcs.toolbox;
 
@@ -112,17 +108,7 @@ stdenv.mkDerivation rec {
 
   ] ++ lib.optional (!withSvmLight) ./svmlight-scrubber.patch;
 
-  nativeBuildInputs =
-    [
-      cmake
-      swig
-      ctags
-    ]
-    ++ (with python3Packages; [
-      python
-      jinja2
-      ply
-    ]);
+  nativeBuildInputs = [ cmake swig ctags ] ++ (with python3Packages; [ python jinja2 ply ]);
 
   buildInputs =
     [
@@ -144,13 +130,7 @@ stdenv.mkDerivation rec {
       lp_solve
       colpack
     ]
-    ++ lib.optionals pythonSupport (
-      with python3Packages;
-      [
-        python
-        numpy
-      ]
-    )
+    ++ lib.optionals pythonSupport (with python3Packages; [ python numpy ])
     ++ lib.optional opencvSupport opencv;
 
   cmakeFlags =
@@ -229,9 +209,6 @@ stdenv.mkDerivation rec {
     description = "Toolbox which offers a wide range of efficient and unified machine learning methods";
     homepage = "http://shogun-toolbox.org/";
     license = if withSvmLight then licenses.unfree else licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      edwtjo
-      smancill
-    ];
+    maintainers = with maintainers; [ edwtjo smancill ];
   };
 }

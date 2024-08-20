@@ -24,10 +24,7 @@ in
     enabledNVIDIADevices = mkOption {
       type = types.listOf types.int;
       default = [ ];
-      example = [
-        0
-        1
-      ];
+      example = [ 0 1 ];
       description = ''
         Enable NVIDIA GPU controls for a device by index.
         Sets the `Coolbits` Xorg option to enable all TuxClocker controls.

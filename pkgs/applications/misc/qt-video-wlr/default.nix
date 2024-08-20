@@ -58,10 +58,7 @@ stdenv.mkDerivation rec {
     mainProgram = "qt-video-wlr";
     homepage = "https://github.com/xdavidwu/qt-video-wlr";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      fionera
-      rewine
-    ];
+    maintainers = with maintainers; [ fionera rewine ];
     platforms = with platforms; linux;
   };
 }

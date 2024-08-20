@@ -45,10 +45,7 @@ let
     gst-libav
   ];
   # For the rt2rtng utility for converting bookmark file to -ng format
-  pythonInputs = with python3.pkgs; [
-    python
-    lxml
-  ];
+  pythonInputs = with python3.pkgs; [ python lxml ];
 in
 stdenv.mkDerivation rec {
   pname = "radiotray-ng";
@@ -61,12 +58,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-/0GlQdSsIPKGrDT9CgxvaH8TpAbqxFduwL2A2+BSrEI=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    wrapGAppsHook3
-    makeWrapper
-  ];
+  nativeBuildInputs = [ cmake pkg-config wrapGAppsHook3 makeWrapper ];
 
   buildInputs = [
     curl

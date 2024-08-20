@@ -44,11 +44,7 @@ rec {
         value
       ];
       value = either (listOf atom) atom;
-      atom = oneOf [
-        int
-        str
-        bool
-      ];
+      atom = oneOf [ int str bool ];
     in
     attrsOf relation;
 
@@ -61,14 +57,7 @@ rec {
             description = "Which principal the rule applies to";
           };
           access = mkOption {
-            type = either (listOf (enum [
-              "add"
-              "cpw"
-              "delete"
-              "get"
-              "list"
-              "modify"
-            ])) (enum [ "all" ]);
+            type = either (listOf (enum [ "add" "cpw" "delete" "get" "list" "modify" ])) (enum [ "all" ]);
             default = "all";
             description = "The changes the principal is allowed to make.";
           };
@@ -154,11 +143,7 @@ rec {
           ...
         }:
         let
-          sections = removeAttrs args [
-            "include"
-            "includedir"
-            "module"
-          ];
+          sections = removeAttrs args [ "include" "includedir" "module" ];
         in
         concatStringsSep "\n" (
           filter (x: x != "") [

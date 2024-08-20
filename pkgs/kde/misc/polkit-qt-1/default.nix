@@ -18,14 +18,7 @@ mkKdeDerivation rec {
   patches = [ ./full-paths.patch ];
 
   extraNativeBuildInputs = [ pkg-config ];
-  extraBuildInputs = [
-    glib
-    polkit
-  ];
+  extraBuildInputs = [ glib polkit ];
 
-  meta.license = with lib.licenses; [
-    bsd3
-    gpl2Plus
-    lgpl2Plus
-  ];
+  meta.license = with lib.licenses; [ bsd3 gpl2Plus lgpl2Plus ];
 }

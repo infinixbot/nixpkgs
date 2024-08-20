@@ -25,15 +25,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-VShg9Nzd8dzUNiqYnKcDzRgqjwar/8XRGEJCJL25aR0=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
-  buildInputs = [
-    libpcap
-    libnet
-    ncurses
-  ] ++ lib.optional withGtk gtk2;
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
+  buildInputs = [ libpcap libnet ncurses ] ++ lib.optional withGtk gtk2;
 
   autoreconfPhase = "./autogen.sh";
 

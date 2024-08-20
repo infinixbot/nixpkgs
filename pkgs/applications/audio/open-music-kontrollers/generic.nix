@@ -32,11 +32,7 @@ stdenv.mkDerivation {
     url = url;
     sha256 = sha256;
   };
-  nativeBuildInputs = [
-    pkg-config
-    meson
-    ninja
-  ];
+  nativeBuildInputs = [ pkg-config meson ninja ];
   buildInputs = [
     lv2
     sord

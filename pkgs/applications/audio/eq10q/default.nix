@@ -19,19 +19,8 @@ stdenv.mkDerivation rec {
     sha256 = "16mhcav8gwkp29k9ki4dlkajlcgh1i2wvldabxb046d37dq4qzrk";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  buildInputs = [
-    fftw
-    gtkmm2
-    libxcb
-    lv2
-    xorg.libpthreadstubs
-    xorg.libXdmcp
-    xorg.libxshmfence
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
+  buildInputs = [ fftw gtkmm2 libxcb lv2 xorg.libpthreadstubs xorg.libXdmcp xorg.libxshmfence ];
 
   patches = [
     (fetchpatch {

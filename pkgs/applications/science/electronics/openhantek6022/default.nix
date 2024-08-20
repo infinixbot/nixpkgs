@@ -22,17 +22,8 @@ mkDerivation rec {
     sha256 = "sha256-y2pNLAa0P/r0YEdKjQ3iP66cqtTWERG8lTOZDR64WTk=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    makeWrapper
-  ];
-  buildInputs = [
-    fftw
-    libusb1
-    libglvnd
-    qtbase
-    qttools
-  ];
+  nativeBuildInputs = [ cmake makeWrapper ];
+  buildInputs = [ fftw libusb1 libglvnd qtbase qttools ];
 
   postPatch = ''
     # Fix up install paths & checks

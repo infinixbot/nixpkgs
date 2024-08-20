@@ -21,14 +21,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Ony2FGMnWyNqD7adGeiDtysHNZ4ClMvQ1ijVPSHJmyc=";
   };
 
-  buildInputs = [
-    mpir
-    gmp
-    mpfr
-    flint
-    arb
-    antic
-  ];
+  buildInputs = [ mpir gmp mpfr flint arb antic ];
 
   configureFlags = [
     "--with-gmp=${gmp}"

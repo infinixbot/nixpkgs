@@ -43,16 +43,9 @@ stdenv.mkDerivation {
 
   dontWrapQtApps = true;
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
-  buildInputs = [
-    box2d'
-    qtbase
-    qtdeclarative
-  ];
+  buildInputs = [ box2d' qtbase qtdeclarative ];
 
   cmakeFlags = [
     (cmakeBool "USE_SYSTEM_BOX2D" true)

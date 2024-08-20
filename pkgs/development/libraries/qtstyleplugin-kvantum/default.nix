@@ -83,9 +83,6 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/tsujan/Kvantum";
     license = licenses.gpl3Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      romildo
-      Scrumplex
-    ];
+    maintainers = with maintainers; [ romildo Scrumplex ];
   };
 })

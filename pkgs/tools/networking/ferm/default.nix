@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
   ];
 
   # perl is used at build time to gather the ferm version.
-  nativeBuildInputs = [
-    makeWrapper
-    perl
-  ];
+  nativeBuildInputs = [ makeWrapper perl ];
   buildInputs = [ perl ];
 
   makeFlags = [

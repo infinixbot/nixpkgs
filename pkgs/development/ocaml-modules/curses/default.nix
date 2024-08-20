@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
 
   propagatedBuildInputs = [ ncurses ];
 
-  nativeBuildInputs = [
-    ocaml
-    findlib
-  ];
+  nativeBuildInputs = [ ocaml findlib ];
 
   # Fix build for recent ncurses versions
   env.NIX_CFLAGS_COMPILE = "-DNCURSES_INTERNALS=1";

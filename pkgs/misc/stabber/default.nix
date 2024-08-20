@@ -29,10 +29,7 @@ stdenv.mkDerivation {
     mkdir m4
   '';
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
   buildInputs = [
     glib
     expat

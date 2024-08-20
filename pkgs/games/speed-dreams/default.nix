@@ -100,21 +100,14 @@ stdenv.mkDerivation rec {
       icon = "speed-dreams-2.png";
       desktopName = "speed-dreams-2";
       comment = "The Open Racing Car Simulator Fork";
-      categories = [
-        "Application"
-        "Game"
-      ];
+      categories = [ "Application" "Game" ];
     })
   ];
 
   # RPATH of binary /nix/store/.../lib64/games/speed-dreams-2/drivers/shadow_sc/shadow_sc.so contains a forbidden reference to /build/
   cmakeFlags = [ "-DCMAKE_SKIP_BUILD_RPATH=ON" ];
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ pkg-config cmake copyDesktopItems ];
 
   buildInputs = [
     libpng

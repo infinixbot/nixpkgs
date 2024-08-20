@@ -32,10 +32,7 @@ import ./make-test-python.nix (
   {
     name = "clatd";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        hax404
-        jmbaur
-      ];
+      maintainers = [ hax404 jmbaur ];
     };
 
     nodes = {

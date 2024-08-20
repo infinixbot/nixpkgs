@@ -138,10 +138,7 @@ let
     "src/version.c"
     "src/vpath.c"
   ];
-  glob_SOURCES = [
-    "lib/fnmatch.c"
-    "lib/glob.c"
-  ];
+  glob_SOURCES = [ "lib/fnmatch.c" "lib/glob.c" ];
   remote_SOURCES = [ "src/remote-stub.c" ];
   sources =
     make_SOURCES
@@ -157,10 +154,7 @@ kaem.runCommand "${pname}-${version}"
   {
     inherit pname version;
 
-    nativeBuildInputs = [
-      tinycc.compiler
-      gnupatch
-    ];
+    nativeBuildInputs = [ tinycc.compiler gnupatch ];
 
     meta = with lib; {
       description = "Tool to control the generation of non-source files from sources";

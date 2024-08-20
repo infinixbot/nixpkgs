@@ -23,31 +23,16 @@ stdenv.mkDerivation rec {
     hash = "sha256-wqztKmaUxY3qd7IgPM7kV7x0BsrTMTX3DbcdM+lsarI=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake wrapQtAppsHook ];
 
-  buildInputs = [
-    qtscript
-    qtwebengine
-    gdal
-    proj
-    routino
-    quazip
-  ];
+  buildInputs = [ qtscript qtwebengine gdal proj routino quazip ];
 
   cmakeFlags = [
     "-DROUTINO_XML_PATH=${routino}/share/routino"
   ];
 
   qtWrapperArgs = [
-    "--suffix PATH : ${
-      lib.makeBinPath [
-        gdal
-        routino
-      ]
-    }"
+    "--suffix PATH : ${lib.makeBinPath [ gdal routino ]}"
   ];
 
   meta = with lib; {
@@ -55,10 +40,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/Maproom/qmapshack";
     changelog = "https://github.com/Maproom/qmapshack/blob/V_${version}/changelog.txt";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      dotlambda
-      sikmir
-    ];
+    maintainers = with maintainers; [ dotlambda sikmir ];
     platforms = with platforms; linux;
   };
 }

@@ -44,15 +44,7 @@ buildGoModule rec {
 
   postInstall =
     let
-      runtimeInputs = [
-        bash
-        binutils
-        kbd
-        libfido2
-        lvm2
-        mdadm
-        zfs
-      ];
+      runtimeInputs = [ bash binutils kbd libfido2 lvm2 mdadm zfs ];
     in
     ''
       wrapProgram $out/bin/generator --prefix PATH : ${lib.makeBinPath runtimeInputs}

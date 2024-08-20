@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs = [ php ];
-  nativeBuildInputs = [
-    which
-    makeWrapper
-  ];
+  nativeBuildInputs = [ which makeWrapper ];
 
   installPhase = ''
     runHook preInstall
@@ -31,12 +28,7 @@ stdenv.mkDerivation rec {
     ./install-sh $out
     wrapProgram $out/bin/phoronix-test-suite \
     --set PHP_BIN ${php}/bin/php \
-    --prefix PATH : ${
-      lib.makeBinPath [
-        gnumake
-        gcc
-      ]
-    }
+    --prefix PATH : ${lib.makeBinPath [ gnumake gcc ]}
 
     runHook postInstall
   '';

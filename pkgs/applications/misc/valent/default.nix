@@ -85,11 +85,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     homepage = "https://valent.andyholmes.ca";
     changelog = "https://github.com/andyholmes/valent/blob/${finalAttrs.src.rev}/CHANGELOG.md";
-    license = with lib.licenses; [
-      gpl3Plus
-      cc0
-      cc-by-sa-30
-    ];
+    license = with lib.licenses; [ gpl3Plus cc0 cc-by-sa-30 ];
     maintainers = with lib.maintainers; [ aleksana ];
     platforms = lib.platforms.linux;
   };

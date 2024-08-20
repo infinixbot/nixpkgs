@@ -100,10 +100,7 @@ rustPlatform.buildRustPackage rec {
       icon = "cinny";
       desktopName = "Cinny";
       comment = meta.description;
-      categories = [
-        "Network"
-        "InstantMessaging"
-      ];
+      categories = [ "Network" "InstantMessaging" ];
     })
   ];
 

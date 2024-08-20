@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
     rev = "V${version}";
   };
 
-  buildInputs = [
-    vdr
-    ffmpeg
-  ];
+  buildInputs = [ vdr ffmpeg ];
 
   postPatch = ''
     substituteInPlace command/Makefile --replace '/usr' ""

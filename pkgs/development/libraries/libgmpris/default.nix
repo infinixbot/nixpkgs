@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-iyKNmg6sf+mxlY/4vt5lKdrKfJzkoCYU2j1O8uwk8K4=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    gobject-introspection
-  ];
+  nativeBuildInputs = [ pkg-config gobject-introspection ];
 
   buildInputs = [ glib ];
 

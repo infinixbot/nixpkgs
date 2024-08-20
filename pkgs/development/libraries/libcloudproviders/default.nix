@@ -25,11 +25,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-O3URCzpP3vTFxaRA5IcB/gVNKuBh0VbIkTa7W6BedLc=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   mesonFlags = [
     "-Denable-gtk-doc=true"

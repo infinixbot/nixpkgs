@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ libnfnetlink ];
 
-  installFlags = [
-    "PREFIX=$(out)"
-    "INSTALLPREFIX=$(out)"
-  ];
+  installFlags = [ "PREFIX=$(out)" "INSTALLPREFIX=$(out)" ];
 
   enableParallelBuilding = true;
 

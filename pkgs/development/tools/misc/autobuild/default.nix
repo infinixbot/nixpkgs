@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [
-    perl
-    openssh
-    rsync
-  ];
+  buildInputs = [ perl openssh rsync ];
 
   doCheck = true;
 

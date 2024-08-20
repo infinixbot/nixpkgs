@@ -20,15 +20,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-nVODwP/PQgYBTHnSplgrkdNOLsF7N+vZ8iPL7gArVNY=";
   };
 
-  buildInputs = [
-    libX11
-    libXrandr
-    linuxPackages.nvidia_x11.settings.libXNVCtrl
-  ];
-  nativeBuildInputs = [
-    cmake
-    makeWrapper
-  ];
+  buildInputs = [ libX11 libXrandr linuxPackages.nvidia_x11.settings.libXNVCtrl ];
+  nativeBuildInputs = [ cmake makeWrapper ];
 
   meta = with lib; {
     description = "Simple library to adjust color saturation of X11 outputs";

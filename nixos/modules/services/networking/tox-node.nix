@@ -40,12 +40,7 @@ in
     enable = mkEnableOption "Tox Node service";
 
     logType = mkOption {
-      type = types.enum [
-        "Stderr"
-        "Stdout"
-        "Syslog"
-        "None"
-      ];
+      type = types.enum [ "Stderr" "Stdout" "Syslog" "None" ];
       default = "Stderr";
       description = "Logging implementation.";
     };

@@ -34,11 +34,7 @@ rec {
           nativeBuildInputs = [ texLive ] ++ attrs.nativeBuildInputs or [ ];
           text = builtins.toFile "${name}.tex" text;
         }
-        // builtins.removeAttrs attrs [
-          "nativeBuildInputs"
-          "text"
-          "texLive"
-        ]
+        // builtins.removeAttrs attrs [ "nativeBuildInputs" "text" "texLive" ]
       )
       ''
         export HOME="$(mktemp -d)"
@@ -132,10 +128,7 @@ rec {
     basic =
       runCommand "texlive-test-dvipng-basic"
         {
-          nativeBuildInputs = [
-            file
-            texliveMedium
-          ];
+          nativeBuildInputs = [ file texliveMedium ];
           input = fetchurl {
             name = "test_dvipng.tex";
             url = "http://git.savannah.nongnu.org/cgit/dvipng.git/plain/test_dvipng.tex?id=b872753590a18605260078f56cbd6f28d39dc035";
@@ -160,10 +153,7 @@ rec {
     ghostscript =
       runCommand "texlive-test-ghostscript"
         {
-          nativeBuildInputs = [
-            file
-            (texliveSmall.withPackages (ps: [ ps.dvipng ]))
-          ];
+          nativeBuildInputs = [ file (texliveSmall.withPackages (ps: [ ps.dvipng ])) ];
           input = builtins.toFile "postscript-sample.tex" ''
             \documentclass{minimal}
             \begin{document}
@@ -207,10 +197,7 @@ rec {
   dvisvgm =
     runCommand "texlive-test-dvisvgm"
       {
-        nativeBuildInputs = [
-          file
-          texliveMedium
-        ];
+        nativeBuildInputs = [ file texliveMedium ];
         input = builtins.toFile "dvisvgm-sample.tex" ''
           \documentclass{article}
           \begin{document}
@@ -239,11 +226,7 @@ rec {
     runCommand "texlive-test-texdoc"
       {
         nativeBuildInputs = [
-          (texlive.withPackages (ps: [
-            ps.luatex
-            ps.texdoc
-            ps.texdoc.texdoc
-          ]))
+          (texlive.withPackages (ps: [ ps.luatex ps.texdoc ps.texdoc.texdoc ]))
         ];
       }
       ''
@@ -446,14 +429,7 @@ rec {
       ] ++ lib.optional stdenv.isDarwin "epspdftk"; # wish shebang is a script, not a binary!
 
       # (1) binaries requiring -v
-      shortVersion = [
-        "devnag"
-        "diadia"
-        "pmxchords"
-        "ptex2pdf"
-        "simpdftex"
-        "ttf2afm"
-      ];
+      shortVersion = [ "devnag" "diadia" "pmxchords" "ptex2pdf" "simpdftex" "ttf2afm" ];
       # (1) binaries requiring --help or -h
       help = [
         "arlatex"
@@ -596,13 +572,7 @@ rec {
         "wordcount"
         "xhlatex"
       ];
-      texTest = [
-        "fontinst"
-        "htmex"
-        "httex"
-        "httexi"
-        "htxetex"
-      ];
+      texTest = [ "fontinst" "htmex" "httex" "httexi" "htxetex" ];
       # tricky binaries or scripts that are obviously working but are hard to test
       # (e.g. because they expect user input no matter the arguments)
       # (printafm comes from ghostscript, not texlive)

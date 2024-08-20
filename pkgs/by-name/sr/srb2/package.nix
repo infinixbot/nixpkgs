@@ -121,10 +121,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://www.srb2.org/";
     platforms = platforms.linux;
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      zeratax
-      donovanglover
-    ];
+    maintainers = with maintainers; [ zeratax donovanglover ];
     mainProgram = "srb2";
   };
 })

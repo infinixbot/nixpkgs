@@ -21,10 +21,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-6lnURuE1cgNAniHl5ozXo1W3cLYYje7er+ZhvZDKdVg=";
 
-  nativeBuildInputs = [
-    pkg-config
-    openssl
-  ];
+  nativeBuildInputs = [ pkg-config openssl ];
 
   buildInputs = [
     openssl

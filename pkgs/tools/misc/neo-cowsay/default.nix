@@ -21,10 +21,7 @@ buildGoModule rec {
 
   doCheck = false;
 
-  subPackages = [
-    "cowsay"
-    "cowthink"
-  ];
+  subPackages = [ "cowsay" "cowthink" ];
 
   meta = with lib; {
     description = "Cowsay reborn, written in Go";

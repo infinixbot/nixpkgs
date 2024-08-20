@@ -3,10 +3,7 @@ import ./make-test-python.nix (
   {
     name = "pomerium";
     meta = with lib.maintainers; {
-      maintainers = [
-        lukegb
-        devusb
-      ];
+      maintainers = [ lukegb devusb ];
     };
 
     nodes =
@@ -18,19 +15,10 @@ import ./make-test-python.nix (
             virtualisation.vlans = [ 1 ];
             networking = {
               dhcpcd.enable = false;
-              firewall.allowedTCPPorts = [
-                80
-                443
-              ];
+              firewall.allowedTCPPorts = [ 80 443 ];
               hosts = {
-                "192.168.1.1" = [
-                  "pomerium"
-                  "pom-auth"
-                ];
-                "192.168.1.2" = [
-                  "backend"
-                  "dummy-oidc"
-                ];
+                "192.168.1.1" = [ "pomerium" "pom-auth" ];
+                "192.168.1.2" = [ "backend" "dummy-oidc" ];
               };
               interfaces.eth1.ipv4.addresses = pkgs.lib.mkOverride 0 [
                 {

@@ -53,10 +53,7 @@ let
       );
 
     in
-    pkgs.concatText "jail.local" [
-      configFile
-      (pkgs.writeText "extra-jail.local" extraConfig)
-    ];
+    pkgs.concatText "jail.local" [ configFile (pkgs.writeText "extra-jail.local" extraConfig) ];
 
   pathsConf = pkgs.writeText "paths-nixos.conf" ''
     # NixOS
@@ -79,12 +76,7 @@ in
       "fail2ban"
       "daemonConfig"
     ] "The daemon is now configured through the attribute set `services.fail2ban.daemonSettings`.")
-    (mkRemovedOptionModule
-      [
-        "services"
-        "fail2ban"
-        "extraSettings"
-      ]
+    (mkRemovedOptionModule [ "services" "fail2ban" "extraSettings" ]
       "The extra default configuration can now be set using `services.fail2ban.jails.DEFAULT.settings`."
     )
   ];
@@ -234,10 +226,7 @@ in
       ignoreIP = mkOption {
         default = [ ];
         type = types.listOf types.str;
-        example = [
-          "192.168.0.0/16"
-          "2001:DB8::42"
-        ];
+        example = [ "192.168.0.0/16" "2001:DB8::42" ];
         description = ''
           "ignoreIP" can be a list of IP addresses, CIDR masks or DNS hosts. Fail2ban will not ban a host which
           matches an address in this list. Several addresses can be defined using space (and/or comma) separator.
@@ -385,26 +374,13 @@ in
       wantedBy = [ "multi-user.target" ];
       partOf = optional config.networking.firewall.enable "firewall.service";
 
-      restartTriggers = [
-        fail2banConf
-        jailConf
-        pathsConf
-      ];
+      restartTriggers = [ fail2banConf jailConf pathsConf ];
 
-      path = [
-        cfg.package
-        cfg.packageFirewall
-        pkgs.iproute2
-      ] ++ cfg.extraPackages;
+      path = [ cfg.package cfg.packageFirewall pkgs.iproute2 ] ++ cfg.extraPackages;
 
       serviceConfig = {
         # Capabilities
-        CapabilityBoundingSet = [
-          "CAP_AUDIT_READ"
-          "CAP_DAC_READ_SEARCH"
-          "CAP_NET_ADMIN"
-          "CAP_NET_RAW"
-        ];
+        CapabilityBoundingSet = [ "CAP_AUDIT_READ" "CAP_DAC_READ_SEARCH" "CAP_NET_ADMIN" "CAP_NET_RAW" ];
         # Security
         NoNewPrivileges = true;
         # Directory

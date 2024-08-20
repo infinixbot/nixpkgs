@@ -29,10 +29,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-BxNtZzwmKJ/kZk7ndtEUC4bMGpd8LEhFFu4Z49bKydE=";
 
-  subPackages = [
-    "cmd/lncli"
-    "cmd/lnd"
-  ];
+  subPackages = [ "cmd/lncli" "cmd/lnd" ];
 
   inherit tags;
 
@@ -40,9 +37,6 @@ buildGoModule rec {
     description = "Lightning Network Daemon";
     homepage = "https://github.com/lightningnetwork/lnd";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      cypherpunk2140
-      prusnak
-    ];
+    maintainers = with maintainers; [ cypherpunk2140 prusnak ];
   };
 }

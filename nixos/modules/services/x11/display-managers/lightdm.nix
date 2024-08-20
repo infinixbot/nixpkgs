@@ -87,38 +87,18 @@ in
     ./lightdm-greeters/tiny.nix
     ./lightdm-greeters/slick.nix
     ./lightdm-greeters/mobile.nix
-    (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "lightdm"
-        "autoLogin"
-        "enable"
-      ]
-      [
-        "services"
-        "displayManager"
-        "autoLogin"
-        "enable"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "lightdm"
-        "autoLogin"
-        "user"
-      ]
-      [
-        "services"
-        "displayManager"
-        "autoLogin"
-        "user"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "xserver" "displayManager" "lightdm" "autoLogin" "enable" ] [
+      "services"
+      "displayManager"
+      "autoLogin"
+      "enable"
+    ])
+    (mkRenamedOptionModule [ "services" "xserver" "displayManager" "lightdm" "autoLogin" "user" ] [
+      "services"
+      "displayManager"
+      "autoLogin"
+      "user"
+    ])
   ];
 
   options = {

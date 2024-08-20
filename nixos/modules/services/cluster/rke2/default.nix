@@ -18,10 +18,7 @@ in
     package = mkPackageOption pkgs "rke2" { };
 
     role = mkOption {
-      type = types.enum [
-        "server"
-        "agent"
-      ];
+      type = types.enum [ "server" "agent" ];
       description = ''
         Whether rke2 should run as a server or agent.
 
@@ -135,13 +132,7 @@ in
     };
 
     cni = mkOption {
-      type = types.enum [
-        "none"
-        "canal"
-        "cilium"
-        "calico"
-        "flannel"
-      ];
+      type = types.enum [ "none" "canal" "cilium" "calico" "flannel" ];
       description = ''
         CNI Plugins to deploy, one of `none`, `calico`, `canal`, `cilium` or `flannel`.
 
@@ -186,10 +177,7 @@ in
         - [Server Configuration Reference](https://docs.rke2.io/reference/server_config)
         - [Agent Configuration Reference](https://docs.rke2.io/reference/linux_agent_config)
       '';
-      example = [
-        "--disable-kube-proxy"
-        "--cluster-cidr=10.24.0.0/16"
-      ];
+      example = [ "--disable-kube-proxy" "--cluster-cidr=10.24.0.0/16" ];
       default = [ ];
     };
 

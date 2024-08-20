@@ -47,10 +47,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = with lib; {
     description = "Radeon open compute thunk interface";
     homepage = "https://github.com/ROCm/ROCT-Thunk-Interface";
-    license = with licenses; [
-      bsd2
-      mit
-    ];
+    license = with licenses; [ bsd2 mit ];
     maintainers = with maintainers; [ lovesegfault ] ++ teams.rocm.members;
     platforms = platforms.linux;
     broken =

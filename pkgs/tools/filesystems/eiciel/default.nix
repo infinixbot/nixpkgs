@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
   pname = "eiciel";
   version = "0.10.1";
 
-  outputs = [
-    "out"
-    "nautilusExtension"
-  ];
+  outputs = [ "out" "nautilusExtension" ];
 
   src = fetchFromGitHub {
     owner = "rofirrim";

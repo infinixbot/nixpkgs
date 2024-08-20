@@ -19,18 +19,11 @@ stdenv.mkDerivation rec {
     hash = "sha256-XTu4Wo9wQOvXrjDxo3KTpCiy0NsqVnYtCuYsCHP5LFc=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "bin"
-  ];
+  outputs = [ "out" "dev" "bin" ];
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   buildInputs = [ gtest ];
 

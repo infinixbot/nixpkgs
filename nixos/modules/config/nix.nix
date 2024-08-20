@@ -160,40 +160,21 @@ in
     [
       (mkRenamedOptionModuleWith {
         sinceRelease = 2003;
-        from = [
-          "nix"
-          "useChroot"
-        ];
-        to = [
-          "nix"
-          "useSandbox"
-        ];
+        from = [ "nix" "useChroot" ];
+        to = [ "nix" "useSandbox" ];
       })
       (mkRenamedOptionModuleWith {
         sinceRelease = 2003;
-        from = [
-          "nix"
-          "chrootDirs"
-        ];
-        to = [
-          "nix"
-          "sandboxPaths"
-        ];
+        from = [ "nix" "chrootDirs" ];
+        to = [ "nix" "sandboxPaths" ];
       })
     ]
     ++ mapAttrsToList (
       oldConf: newConf:
       mkRenamedOptionModuleWith {
         sinceRelease = 2205;
-        from = [
-          "nix"
-          oldConf
-        ];
-        to = [
-          "nix"
-          "settings"
-          newConf
-        ];
+        from = [ "nix" oldConf ];
+        to = [ "nix" "settings" newConf ];
       }
     ) legacyConfMappings;
 
@@ -294,10 +275,7 @@ in
             extra-sandbox-paths = mkOption {
               type = types.listOf types.str;
               default = [ ];
-              example = [
-                "/dev"
-                "/proc"
-              ];
+              example = [ "/dev" "/proc" ];
               description = ''
                 Directories from the host filesystem to be included
                 in the sandbox.
@@ -353,11 +331,7 @@ in
 
             trusted-users = mkOption {
               type = types.listOf types.str;
-              example = [
-                "root"
-                "alice"
-                "@wheel"
-              ];
+              example = [ "root" "alice" "@wheel" ];
               description = ''
                 A list of names of users that have additional rights when
                 connecting to the Nix daemon, such as the ability to specify
@@ -371,11 +345,7 @@ in
 
             system-features = mkOption {
               type = types.listOf types.str;
-              example = [
-                "kvm"
-                "big-parallel"
-                "gccarch-skylake"
-              ];
+              example = [ "kvm" "big-parallel" "gccarch-skylake" ];
               description = ''
                 The set of features supported by the machine. Derivations
                 can express dependencies on system features through the
@@ -390,12 +360,7 @@ in
             allowed-users = mkOption {
               type = types.listOf types.str;
               default = [ "*" ];
-              example = [
-                "@wheel"
-                "@builders"
-                "alice"
-                "bob"
-              ];
+              example = [ "@wheel" "@builders" "alice" "bob" ];
               description = ''
                 A list of names of users (separated by whitespace) that are
                 allowed to connect to the Nix daemon. As with
@@ -442,12 +407,7 @@ in
       trusted-users = [ "root" ];
       substituters = mkAfter [ "https://cache.nixos.org/" ];
       system-features = mkDefault (
-        [
-          "nixos-test"
-          "benchmark"
-          "big-parallel"
-          "kvm"
-        ]
+        [ "nixos-test" "benchmark" "big-parallel" "kvm" ]
         ++ optionals (pkgs.stdenv.hostPlatform ? gcc.arch) (
           # a builder can run code for `gcc.arch` and inferior architectures
           [ "gccarch-${pkgs.stdenv.hostPlatform.gcc.arch}" ]

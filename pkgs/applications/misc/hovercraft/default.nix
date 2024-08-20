@@ -26,14 +26,7 @@ buildPythonApplication rec {
   };
 
   nativeCheckInputs = [ manuel ];
-  propagatedBuildInputs = [
-    setuptools
-    docutils
-    lxml
-    svg-path
-    pygments
-    watchdog
-  ];
+  propagatedBuildInputs = [ setuptools docutils lxml svg-path pygments watchdog ];
   patches = [
     (fetchpatch {
       name = "fix tests with pygments 2.14";

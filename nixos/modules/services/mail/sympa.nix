@@ -147,11 +147,7 @@ in
                 description = "URL path part of the web interface.";
               };
               settings = mkOption {
-                type = attrsOf (oneOf [
-                  str
-                  int
-                  bool
-                ]);
+                type = attrsOf (oneOf [ str int bool ]);
                 default = { };
                 example = {
                   default_max_list_members = 3;
@@ -191,11 +187,7 @@ in
 
     database = {
       type = mkOption {
-        type = enum [
-          "SQLite"
-          "PostgreSQL"
-          "MySQL"
-        ];
+        type = enum [ "SQLite" "PostgreSQL" "MySQL" ];
         default = "SQLite";
         example = "MySQL";
         description = "Database engine to use.";
@@ -263,10 +255,7 @@ in
       };
 
       server = mkOption {
-        type = enum [
-          "nginx"
-          "none"
-        ];
+        type = enum [ "nginx" "none" ];
         default = "nginx";
         description = ''
           The webserver used for the Sympa web interface. Set it to `none` if you want to configure it yourself.
@@ -293,10 +282,7 @@ in
 
     mta = {
       type = mkOption {
-        type = enum [
-          "postfix"
-          "none"
-        ];
+        type = enum [ "postfix" "none" ];
         default = "postfix";
         description = ''
           Mail transfer agent (MTA) integration. Use `none` if you want to configure it yourself.
@@ -309,11 +295,7 @@ in
     };
 
     settings = mkOption {
-      type = attrsOf (oneOf [
-        str
-        int
-        bool
-      ]);
+      type = attrsOf (oneOf [ str int bool ]);
       default = { };
       example = literalExpression ''
         {
@@ -659,8 +641,5 @@ in
 
   };
 
-  meta.maintainers = with maintainers; [
-    mmilata
-    sorki
-  ];
+  meta.maintainers = with maintainers; [ mmilata sorki ];
 }

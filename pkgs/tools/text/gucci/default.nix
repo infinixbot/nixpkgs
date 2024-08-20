@@ -19,11 +19,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-/4OnbtxxhXQnmSV6UbjgzXdL7szhL9rKiG5BR8FsyqI=";
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X main.AppVersion=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X main.AppVersion=${version}" ];
 
   passthru.tests.version = testers.testVersion {
     package = gucci;

@@ -80,10 +80,7 @@ in
             enabled = true;
             period = "10s";
             processes = [ ".*" ];
-            cpu.metrics = [
-              "percentages"
-              "normalized_percentages"
-            ];
+            cpu.metrics = [ "percentages" "normalized_percentages" ];
             core.metrics = [ "percentages" ];
           };
         };

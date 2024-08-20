@@ -57,11 +57,7 @@ stdenv.mkDerivation rec {
       --replace 'TARGET_COMPILE_OPTIONS(assimp PRIVATE -Werror)' ""
   '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    makeWrapper
-  ];
+  nativeBuildInputs = [ cmake pkg-config makeWrapper ];
 
   buildInputs =
     [ zlib ]
@@ -76,14 +72,7 @@ stdenv.mkDerivation rec {
       fontconfig
       libGLU
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      AVFoundation
-      Carbon
-      Cocoa
-      CoreAudio
-      Kernel
-      OpenGL
-    ];
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ AVFoundation Carbon Cocoa CoreAudio Kernel OpenGL ];
 
   env.NIX_CFLAGS_COMPILE = toString [
     # Needed with GCC 12

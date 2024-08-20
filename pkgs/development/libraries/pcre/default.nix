@@ -11,12 +11,7 @@
   variant ? null,
 }:
 
-assert lib.elem variant [
-  null
-  "cpp"
-  "pcre16"
-  "pcre32"
-];
+assert lib.elem variant [ null "cpp" "pcre16" "pcre32" ];
 
 stdenv.mkDerivation rec {
   pname =
@@ -30,13 +25,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Ta5v3NK7C7bDe1+Xwzwr6VTadDmFNpzdrDVG4yGL/7g=";
   };
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "bin" "dev" "out" "doc" "man" ];
 
   hardeningDisable = lib.optional enableJit "shadowstack";
 

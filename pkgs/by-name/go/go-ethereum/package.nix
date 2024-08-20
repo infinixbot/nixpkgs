@@ -61,10 +61,7 @@ buildGoModule rec {
   tags = [ "urfave_cli_no_docs" ];
 
   # Fix for usb-related segmentation faults on darwin
-  propagatedBuildInputs = lib.optionals stdenv.isDarwin [
-    libobjc
-    IOKit
-  ];
+  propagatedBuildInputs = lib.optionals stdenv.isDarwin [ libobjc IOKit ];
 
   passthru.tests = {
     inherit (nixosTests) geth;
@@ -73,10 +70,7 @@ buildGoModule rec {
   meta = with lib; {
     homepage = "https://geth.ethereum.org/";
     description = "Official golang implementation of the Ethereum protocol";
-    license = with licenses; [
-      lgpl3Plus
-      gpl3Plus
-    ];
+    license = with licenses; [ lgpl3Plus gpl3Plus ];
     maintainers = with maintainers; [ RaghavSood ];
     mainProgram = "geth";
   };

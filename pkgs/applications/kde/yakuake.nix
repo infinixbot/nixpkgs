@@ -56,10 +56,7 @@ mkDerivation {
     kdoctools
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   meta = {
     homepage = "https://yakuake.kde.org";

@@ -18,10 +18,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "grafx2";
   version = "2.8.3091";
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   src = fetchurl {
     name = "grafx2-${finalAttrs.version}.tar.gz";
@@ -53,10 +50,7 @@ stdenv.mkDerivation (finalAttrs: {
   strictDeps = false; # Why??
 
   makeFlags = [ "-C src" ];
-  installFlags = [
-    "-C src"
-    "PREFIX=$(out)"
-  ];
+  installFlags = [ "-C src" "PREFIX=$(out)" ];
 
   postInstall = ''
     installManPage misc/unix/grafx2.1

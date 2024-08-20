@@ -61,13 +61,7 @@ stdenv.mkDerivation rec {
 
   preFixup = ''
     gappsWrapperArgs+=(
-      --prefix PATH : "${
-        lib.makeBinPath [
-          xdg-utils
-          youtube-dl
-          ffmpeg
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ xdg-utils youtube-dl ffmpeg ]}"
     )
   '';
 

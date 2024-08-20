@@ -60,9 +60,6 @@ buildGoModule rec {
     changelog = "https://github.com/jfrog/jfrog-cli/releases/tag/v${version}";
     license = licenses.asl20;
     mainProgram = "jf";
-    maintainers = with maintainers; [
-      detegr
-      aidalgol
-    ];
+    maintainers = with maintainers; [ detegr aidalgol ];
   };
 }

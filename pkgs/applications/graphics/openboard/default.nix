@@ -88,11 +88,7 @@ stdenv.mkDerivation (finalAttrs: {
       --replace '/usr/include/poppler' '${lib.getDev poppler}/include/poppler'
   '';
 
-  nativeBuildInputs = [
-    qmake
-    copyDesktopItems
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ qmake copyDesktopItems wrapQtAppsHook ];
 
   buildInputs = [
     qtbase

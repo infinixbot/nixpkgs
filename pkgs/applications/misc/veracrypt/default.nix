@@ -40,18 +40,8 @@ stdenv.mkDerivation rec {
 
   sourceRoot = "src";
 
-  nativeBuildInputs = [
-    makeself
-    pkg-config
-    yasm
-    wrapGAppsHook3
-  ];
-  buildInputs = [
-    fuse
-    lvm2
-    wxGTK
-    pcsclite
-  ];
+  nativeBuildInputs = [ makeself pkg-config yasm wrapGAppsHook3 ];
+  buildInputs = [ fuse lvm2 wxGTK pcsclite ];
 
   enableParallelBuilding = true;
 

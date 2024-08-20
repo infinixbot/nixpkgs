@@ -22,10 +22,7 @@ stdenv.mkDerivation (finalAttrs: {
     rm emacs-module.h
   '';
 
-  buildInputs = [
-    xapian
-    emacs
-  ];
+  buildInputs = [ xapian emacs ];
 
   installPhase = ''
     runHook preInstall

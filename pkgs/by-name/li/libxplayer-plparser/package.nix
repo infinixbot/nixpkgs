@@ -38,10 +38,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Playlist parsing library for xplayer";
     homepage = "https://github.com/linuxmint/xplayer-plparser";
-    maintainers = with maintainers; [
-      tu-maurice
-      bobby285271
-    ];
+    maintainers = with maintainers; [ tu-maurice bobby285271 ];
     license = licenses.lgpl2Plus;
     platforms = platforms.linux;
   };

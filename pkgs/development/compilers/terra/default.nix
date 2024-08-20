@@ -58,19 +58,10 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
   buildInputs =
-    [
-      llvmMerged
-      ncurses
-      libffi
-      libxml2
-    ]
+    [ llvmMerged ncurses libffi libxml2 ]
     ++ lib.optionals enableCUDA [ cuda ]
     ++ lib.optional (!stdenv.isDarwin) libpfm
-    ++ lib.optionals stdenv.isDarwin [
-      libobjc
-      Cocoa
-      Foundation
-    ];
+    ++ lib.optionals stdenv.isDarwin [ libobjc Cocoa Foundation ];
 
   cmakeFlags =
     let
@@ -89,12 +80,7 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
   hardeningDisable = [ "fortify" ];
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "static"
-  ];
+  outputs = [ "bin" "dev" "out" "static" ];
 
   patches = [ ./nix-cflags.patch ];
 
@@ -123,12 +109,7 @@ stdenv.mkDerivation rec {
     description = "Low-level counterpart to Lua";
     homepage = "https://terralang.org/";
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      jb55
-      seylerius
-      thoughtpolice
-      elliottslaughter
-    ];
+    maintainers = with maintainers; [ jb55 seylerius thoughtpolice elliottslaughter ];
     license = licenses.mit;
     # never built on aarch64-darwin since first introduction in nixpkgs
     # Linux Aarch64 broken above LLVM11

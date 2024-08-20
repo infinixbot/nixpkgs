@@ -53,10 +53,7 @@ buildGoModule rec {
     "-X github.com/glasskube/glasskube/internal/config.Commit=${src.rev}"
   ];
 
-  subPackages = [
-    "cmd/${pname}"
-    "cmd/package-operator"
-  ];
+  subPackages = [ "cmd/${pname}" "cmd/package-operator" ];
 
   nativeBuildInputs = [ installShellFiles ];
 

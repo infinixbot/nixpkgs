@@ -26,11 +26,7 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  outputs = [
-    "out"
-    "bin"
-    "dev"
-  ];
+  outputs = [ "out" "bin" "dev" ];
 
   strictDeps = true;
 

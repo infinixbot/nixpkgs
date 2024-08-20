@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
   sourceRoot = "${src.name}/fuzzylite";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   postPatch = ''
     substituteInPlace CMakeLists.txt \

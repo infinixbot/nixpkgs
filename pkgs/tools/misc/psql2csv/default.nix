@@ -29,13 +29,7 @@ stdenvNoCC.mkDerivation rec {
 
     install -Dm755 -t $out/bin psql2csv
     wrapProgram $out/bin/psql2csv \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          gnused
-          postgresql
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ coreutils gnused postgresql ]}
 
     runHook postInstall
   '';

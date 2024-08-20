@@ -73,10 +73,7 @@ let
                   ''
               );
 
-              ensureDatabases = [
-                "testdb"
-                "testdb2"
-              ];
+              ensureDatabases = [ "testdb" "testdb2" ];
               ensureUsers = [
                 {
                   name = "testuser";

@@ -44,19 +44,9 @@ stdenv.mkDerivation rec {
       --replace "SDL_RENDERER_ACCELERATED" "SDL_RENDERER_ACCELERATED || SDL_RENDERER_SOFTWARE"
   '';
 
-  nativeBuildInputs = [
-    makeWrapper
-    meson
-    ninja
-    pkg-config
-    installShellFiles
-  ];
+  nativeBuildInputs = [ makeWrapper meson ninja pkg-config installShellFiles ];
 
-  buildInputs = [
-    ffmpeg
-    SDL2
-    libusb1
-  ];
+  buildInputs = [ ffmpeg SDL2 libusb1 ];
 
   # Manually install the server jar to prevent Meson from "fixing" it
   preConfigure = ''
@@ -86,10 +76,7 @@ stdenv.mkDerivation rec {
     ];
     license = lib.licenses.asl20;
     platforms = lib.platforms.unix;
-    maintainers = with lib.maintainers; [
-      deltaevo
-      ryand56
-    ];
+    maintainers = with lib.maintainers; [ deltaevo ryand56 ];
     mainProgram = "scrcpy";
   };
 }

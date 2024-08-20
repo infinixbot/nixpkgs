@@ -43,10 +43,7 @@ in
       wantedBy = [ "network-online.target" ];
       unitConfig = {
         ConditionPathExists = "!/etc/nixos/do-userdata.nix";
-        After = [
-          "digitalocean-metadata.service"
-          "network-online.target"
-        ];
+        After = [ "digitalocean-metadata.service" "network-online.target" ];
         Requires = [ "digitalocean-metadata.service" ];
         X-StopOnRemoval = false;
       };
@@ -107,8 +104,5 @@ in
       '';
     };
   };
-  meta.maintainers = with maintainers; [
-    arianvp
-    eamsden
-  ];
+  meta.maintainers = with maintainers; [ arianvp eamsden ];
 }

@@ -26,11 +26,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-wV9byR85qwOkoTyLjG0gOLC3Gc19ykwiLpDy4T/MENQ=";
   };
 
-  outputs = [
-    "dev"
-    "out"
-    "lib"
-  ];
+  outputs = [ "dev" "out" "lib" ];
 
   nativeBuildInputs = [
     unzip

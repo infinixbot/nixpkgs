@@ -23,10 +23,7 @@ else
       sha256 = "sha256-jBFEkLN2fbC3LxTu7C0iuhvNg64duuckBHWZoBxrV/U=";
     };
 
-    autoreconfFlags = [
-      "-I"
-      "."
-    ];
+    autoreconfFlags = [ "-I" "." ];
 
     nativeBuildInputs = [
       autoreconfHook

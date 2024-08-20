@@ -40,10 +40,7 @@ rustPlatform.buildRustPackage rec {
     description = "Ledger Nano plugin for age";
     mainProgram = "age-plugin-ledger";
     homepage = "https://github.com/Ledger-Donjon/age-plugin-ledger";
-    license = with licenses; [
-      mit
-      asl20
-    ];
+    license = with licenses; [ mit asl20 ];
     maintainers = with maintainers; [ erdnaxe ];
   };
 }

@@ -11,10 +11,7 @@ stdenv.mkDerivation {
   inherit version src;
   inherit (src) passthru;
 
-  propagatedBuildInputs = [
-    libsecret
-    jsoncpp
-  ];
+  propagatedBuildInputs = [ libsecret jsoncpp ];
 
   installPhase = ''
     runHook preInstall

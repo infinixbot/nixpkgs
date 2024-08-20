@@ -10,12 +10,7 @@
 
 appleDerivation {
   nativeBuildInputs = [ xcbuildHook ];
-  buildInputs = [
-    xnu
-    Librpcsvc
-    libpcap
-    developer_cmds
-  ];
+  buildInputs = [ xnu Librpcsvc libpcap developer_cmds ];
 
   # Work around error from <stdio.h> on aarch64-darwin:
   #     error: 'TARGET_OS_IPHONE' is not defined, evaluates to 0 [-Werror,-Wundef-prefix=TARGET_OS_]

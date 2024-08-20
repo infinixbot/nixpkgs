@@ -24,15 +24,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-lF80lzDaAfd4VNmBHKj4AWaclGE5WimWbY2Iy2cDNHs=";
   };
 
-  nativeBuildInputs = [
-    libtool
-    makeWrapper
-  ];
+  nativeBuildInputs = [ libtool makeWrapper ];
 
-  buildInputs = [
-    ncurses
-    sqlite
-  ];
+  buildInputs = [ ncurses sqlite ];
 
   propagatedBuildInputs = [ pygments ];
 
@@ -72,10 +66,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://www.gnu.org/software/global/";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      pSub
-      peterhoeg
-    ];
+    maintainers = with maintainers; [ pSub peterhoeg ];
     platforms = platforms.unix;
     changelog = "https://cvs.savannah.gnu.org/viewvc/global/global/NEWS?view=markup&pathrev=VERSION-${
       lib.replaceStrings [ "." ] [ "_" ] version

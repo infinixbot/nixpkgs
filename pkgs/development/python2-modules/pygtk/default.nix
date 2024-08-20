@@ -15,10 +15,7 @@
 
 buildPythonPackage rec {
   pname = "pygtk";
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
   version = "2.24.0";
   format = "other";
 
@@ -46,11 +43,7 @@ buildPythonPackage rec {
     pango
   ];
 
-  propagatedBuildInputs = [
-    gtk2
-    pygobject2
-    pycairo
-  ];
+  propagatedBuildInputs = [ gtk2 pygobject2 pycairo ];
 
   configurePhase = "configurePhase";
 

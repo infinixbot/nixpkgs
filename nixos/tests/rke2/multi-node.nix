@@ -11,19 +11,9 @@ import ../make-test-python.nix (
       tag = "local";
       contents = pkgs.buildEnv {
         name = "rke2-pause-image-env";
-        paths = with pkgs; [
-          tini
-          bashInteractive
-          coreutils
-          socat
-        ];
+        paths = with pkgs; [ tini bashInteractive coreutils socat ];
       };
-      config.Entrypoint = [
-        "/bin/tini"
-        "--"
-        "/bin/sleep"
-        "inf"
-      ];
+      config.Entrypoint = [ "/bin/tini" "--" "/bin/sleep" "inf" ];
     };
     # A daemonset that responds 'server' on port 8000
     networkTestDaemonset = pkgs.writeText "test.yml" ''

@@ -62,17 +62,8 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ cmake ];
 
   buildInputs =
-    [
-      libpng
-      libtiff
-    ]
-    ++ optionals enableQt [
-      (qtEnv "qvtk-qt-env" [
-        qtx11extras
-        qttools
-        qtdeclarative
-      ])
-    ]
+    [ libpng libtiff ]
+    ++ optionals enableQt [ (qtEnv "qvtk-qt-env" [ qtx11extras qttools qtdeclarative ]) ]
     ++ optionals stdenv.isLinux [
       libGLU
       xorgproto
@@ -99,10 +90,7 @@ stdenv.mkDerivation {
     ];
   propagatedBuildInputs =
     optionals stdenv.isDarwin [ libobjc ]
-    ++ optionals stdenv.isLinux [
-      libX11
-      libGL
-    ];
+    ++ optionals stdenv.isLinux [ libX11 libGL ];
   # see https://github.com/NixOS/nixpkgs/pull/178367#issuecomment-1238827254
 
   patches = map fetchpatch patchesToFetch;
@@ -169,10 +157,7 @@ stdenv.mkDerivation {
     description = "Open source libraries for 3D computer graphics, image processing and visualization";
     homepage = "https://www.vtk.org/";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      knedlsepp
-      tfmoraes
-    ];
+    maintainers = with maintainers; [ knedlsepp tfmoraes ];
     platforms = platforms.unix;
     badPlatforms = optionals enableEgl platforms.darwin;
   };

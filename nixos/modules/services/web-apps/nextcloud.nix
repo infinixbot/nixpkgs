@@ -75,11 +75,7 @@ let
       (
         with all;
         enabled
-        ++ [
-          bz2
-          intl
-          sodium
-        ] # recommended
+        ++ [ bz2 intl sodium ] # recommended
         ++ optional cfg.enableImagemagick imagick
         # Optionally enabled depending on caching settings
         ++ optional cfg.caching.apcu apcu
@@ -232,162 +228,72 @@ in
 {
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "cron"
-        "memoryLimit"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "cli"
-        "memoryLimit"
-      ]
-    )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "enableBrokenCiphersForSSE"
-      ]
-      ''
-        This option has no effect since there's no supported Nextcloud version packaged here
-        using OpenSSL for RC4 SSE.
-      ''
-    )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "config"
-        "dbport"
-      ]
-      ''
-        Add port to services.nextcloud.config.dbhost instead.
-      ''
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "logLevel"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-        "loglevel"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "logType"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-        "log_type"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "config"
-        "defaultPhoneRegion"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-        "default_phone_region"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "config"
-        "overwriteProtocol"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-        "overwriteprotocol"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "skeletonDirectory"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-        "skeletondirectory"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "globalProfiles"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-        "profile.enabled"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "config"
-        "extraTrustedDomains"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-        "trusted_domains"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "config"
-        "trustedProxies"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-        "trusted_proxies"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "extraOptions"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "nextcloud" "cron" "memoryLimit" ] [
+      "services"
+      "nextcloud"
+      "cli"
+      "memoryLimit"
+    ])
+    (mkRemovedOptionModule [ "services" "nextcloud" "enableBrokenCiphersForSSE" ] ''
+      This option has no effect since there's no supported Nextcloud version packaged here
+      using OpenSSL for RC4 SSE.
+    '')
+    (mkRemovedOptionModule [ "services" "nextcloud" "config" "dbport" ] ''
+      Add port to services.nextcloud.config.dbhost instead.
+    '')
+    (mkRenamedOptionModule [ "services" "nextcloud" "logLevel" ] [
+      "services"
+      "nextcloud"
+      "settings"
+      "loglevel"
+    ])
+    (mkRenamedOptionModule [ "services" "nextcloud" "logType" ] [
+      "services"
+      "nextcloud"
+      "settings"
+      "log_type"
+    ])
+    (mkRenamedOptionModule [ "services" "nextcloud" "config" "defaultPhoneRegion" ] [
+      "services"
+      "nextcloud"
+      "settings"
+      "default_phone_region"
+    ])
+    (mkRenamedOptionModule [ "services" "nextcloud" "config" "overwriteProtocol" ] [
+      "services"
+      "nextcloud"
+      "settings"
+      "overwriteprotocol"
+    ])
+    (mkRenamedOptionModule [ "services" "nextcloud" "skeletonDirectory" ] [
+      "services"
+      "nextcloud"
+      "settings"
+      "skeletondirectory"
+    ])
+    (mkRenamedOptionModule [ "services" "nextcloud" "globalProfiles" ] [
+      "services"
+      "nextcloud"
+      "settings"
+      "profile.enabled"
+    ])
+    (mkRenamedOptionModule [ "services" "nextcloud" "config" "extraTrustedDomains" ] [
+      "services"
+      "nextcloud"
+      "settings"
+      "trusted_domains"
+    ])
+    (mkRenamedOptionModule [ "services" "nextcloud" "config" "trustedProxies" ] [
+      "services"
+      "nextcloud"
+      "settings"
+      "trusted_proxies"
+    ])
+    (mkRenamedOptionModule [ "services" "nextcloud" "extraOptions" ] [
+      "services"
+      "nextcloud"
+      "settings"
+    ])
   ];
 
   options.services.nextcloud = {
@@ -459,10 +365,7 @@ in
     package = mkOption {
       type = types.package;
       description = "Which package to use for the Nextcloud instance.";
-      relatedPackages = [
-        "nextcloud28"
-        "nextcloud29"
-      ];
+      relatedPackages = [ "nextcloud28" "nextcloud29" ];
     };
     phpPackage = mkPackageOption pkgs "php" {
       example = "php82";
@@ -502,12 +405,7 @@ in
     };
 
     phpOptions = mkOption {
-      type =
-        with types;
-        attrsOf (oneOf [
-          str
-          int
-        ]);
+      type = with types; attrsOf (oneOf [ str int ]);
       defaultText = literalExpression (generators.toPretty { } defaultPHPSettings);
       description = ''
         Options for PHP's php.ini file for nextcloud.
@@ -539,13 +437,7 @@ in
     };
 
     poolSettings = mkOption {
-      type =
-        with types;
-        attrsOf (oneOf [
-          str
-          int
-          bool
-        ]);
+      type = with types; attrsOf (oneOf [ str int bool ]);
       default = {
         "pm" = "dynamic";
         "pm.max_children" = "32";
@@ -589,11 +481,7 @@ in
 
     config = {
       dbtype = mkOption {
-        type = types.enum [
-          "sqlite"
-          "pgsql"
-          "mysql"
-        ];
+        type = types.enum [ "sqlite" "pgsql" "mysql" ];
         default = "sqlite";
         description = "Database type.";
       };
@@ -867,12 +755,7 @@ in
             '';
           };
           log_type = mkOption {
-            type = types.enum [
-              "errorlog"
-              "file"
-              "syslog"
-              "systemd"
-            ];
+            type = types.enum [ "errorlog" "file" "syslog" "systemd" ];
             default = "syslog";
             description = ''
               Logging backend to use.
@@ -907,11 +790,7 @@ in
             '';
           };
           overwriteprotocol = mkOption {
-            type = types.enum [
-              ""
-              "http"
-              "https"
-            ];
+            type = types.enum [ "" "http" "https" ];
             default = "";
             example = "https";
             description = ''
@@ -1126,10 +1005,7 @@ in
         # When upgrading the Nextcloud package, Nextcloud can report errors such as
         # "The files of the app [all apps in /var/lib/nextcloud/apps] were not replaced correctly"
         # Restarting phpfpm on Nextcloud package update fixes these issues (but this is a workaround).
-        phpfpm-nextcloud.restartTriggers = [
-          webroot
-          overrideConfig
-        ];
+        phpfpm-nextcloud.restartTriggers = [ webroot overrideConfig ];
 
         nextcloud-setup =
           let
@@ -1203,18 +1079,12 @@ in
                 exit 1
               fi
 
-              ${concatMapStrings
-                (name: ''
-                  if [ -d "${cfg.home}"/${name} ]; then
-                    echo "Cleaning up ${name}; these are now bundled in the webroot store-path!"
-                    rm -r "${cfg.home}"/${name}
-                  fi
-                '')
-                [
-                  "nix-apps"
-                  "apps"
-                ]
-              }
+              ${concatMapStrings (name: ''
+                if [ -d "${cfg.home}"/${name} ]; then
+                  echo "Cleaning up ${name}; these are now bundled in the webroot store-path!"
+                  rm -r "${cfg.home}"/${name}
+                fi
+              '') [ "nix-apps" "apps" ]}
 
               # Do not install if already installed
               if [[ ! -e ${datadir}/config/config.php ]]; then
@@ -1298,10 +1168,7 @@ in
         group = "nextcloud";
         isSystemUser = true;
       };
-      users.groups.nextcloud.members = [
-        "nextcloud"
-        config.services.nginx.user
-      ];
+      users.groups.nextcloud.members = [ "nextcloud" config.services.nginx.user ];
 
       environment.systemPackages = [ occ ];
 

@@ -48,10 +48,7 @@ let
 
       nativeBuildInputs = lib.optional stdenv.isDarwin darwin.sigtool;
 
-      propagatedBuildInputs = [
-        camlp-streams
-        dune-site
-      ];
+      propagatedBuildInputs = [ camlp-streams dune-site ];
     };
   };
 in

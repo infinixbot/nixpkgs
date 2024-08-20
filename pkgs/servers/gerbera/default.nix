@@ -92,10 +92,7 @@ let
     {
       name = "MATROSKA";
       enable = enableLibmatroska;
-      packages = [
-        libmatroska
-        libebml
-      ];
+      packages = [ libmatroska libebml ];
     }
     {
       name = "MYSQL";
@@ -144,10 +141,7 @@ stdenv.mkDerivation rec {
     "-DWITH_SYSTEMD=OFF"
   ] ++ map (e: "-DWITH_${e.name}=${if e.enable then "ON" else "OFF"}") options;
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   buildInputs = [
     libiconv

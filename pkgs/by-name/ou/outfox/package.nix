@@ -76,12 +76,7 @@ stdenv.mkDerivation rec {
     changelog = "https://projectoutfox.com/releases/${version}";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-      "aarch64-linux"
-      "armv7l-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" "aarch64-linux" "armv7l-linux" ];
     maintainers = with maintainers; [ maxwell-lt ];
     mainProgram = "OutFox";
   };

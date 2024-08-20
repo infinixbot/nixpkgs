@@ -40,27 +40,13 @@ in
           value = {
             description = "setup for Stratis root filesystem";
             unitConfig.DefaultDependencies = "no";
-            conflicts = [
-              "shutdown.target"
-              "initrd-switch-root.target"
-            ];
+            conflicts = [ "shutdown.target" "initrd-switch-root.target" ];
             onFailure = [ "emergency.target" ];
             unitConfig.OnFailureJobMode = "isolate";
-            wants = [
-              "stratisd-min.service"
-              "plymouth-start.service"
-            ];
+            wants = [ "stratisd-min.service" "plymouth-start.service" ];
             wantedBy = [ "initrd.target" ];
-            after = [
-              "paths.target"
-              "plymouth-start.service"
-              "stratisd-min.service"
-            ];
-            before = [
-              "initrd.target"
-              "shutdown.target"
-              "initrd-switch-root.target"
-            ];
+            after = [ "paths.target" "plymouth-start.service" "stratisd-min.service" ];
+            before = [ "initrd.target" "shutdown.target" "initrd-switch-root.target" ];
             environment.STRATIS_ROOTFS_UUID = fileSystem.stratis.poolUuid;
             serviceConfig = {
               Type = "oneshot";
@@ -71,10 +57,7 @@ in
         }) requiredStratisFilesystems;
       };
       availableKernelModules =
-        [
-          "dm-thin-pool"
-          "dm-crypt"
-        ]
+        [ "dm-thin-pool" "dm-crypt" ]
         ++ [
           "aes"
           "aes_generic"

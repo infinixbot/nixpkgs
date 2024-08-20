@@ -13,10 +13,7 @@ in
 
 runCommand "${packageName}-tests"
   {
-    nativeBuildInputs = with pkgs; [
-      prisma
-      sqlite-interactive
-    ];
+    nativeBuildInputs = with pkgs; [ prisma sqlite-interactive ];
     meta.timeout = 60;
   }
   ''

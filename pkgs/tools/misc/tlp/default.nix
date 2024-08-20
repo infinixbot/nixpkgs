@@ -69,22 +69,13 @@ stdenv.mkDerivation rec {
     "TLP_TLIB=/share/tlp"
   ];
 
-  installTargets =
-    [
-      "install-tlp"
-      "install-man"
-    ]
-    ++ lib.optionals enableRDW [
-      "install-rdw"
-      "install-man-rdw"
-    ];
+  installTargets = [
+    "install-tlp"
+    "install-man"
+  ] ++ lib.optionals enableRDW [ "install-rdw" "install-man-rdw" ];
 
   doCheck = true;
-  nativeCheckInputs = [
-    checkbashisms
-    perlcritic
-    shellcheck
-  ];
+  nativeCheckInputs = [ checkbashisms perlcritic shellcheck ];
   checkTarget = [ "checkall" ];
 
   # TODO: Consider using resholve here
@@ -144,10 +135,7 @@ stdenv.mkDerivation rec {
     changelog = "https://github.com/linrunner/TLP/releases/tag/${version}";
     platforms = platforms.linux;
     mainProgram = "tlp";
-    maintainers = with maintainers; [
-      abbradar
-      lovesegfault
-    ];
+    maintainers = with maintainers; [ abbradar lovesegfault ];
     license = licenses.gpl2Plus;
   };
 }

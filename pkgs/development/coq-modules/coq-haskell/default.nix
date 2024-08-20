@@ -17,10 +17,7 @@ mkCoqDerivation {
 
   mlPlugin = true;
   extraInstallFlags = [ "-f Makefile.coq" ];
-  propagatedBuildInputs = [
-    coq
-    ssreflect
-  ];
+  propagatedBuildInputs = [ coq ssreflect ];
   enableParallelBuilding = false;
 
   meta = {

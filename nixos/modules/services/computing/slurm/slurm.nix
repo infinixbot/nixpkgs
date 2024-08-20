@@ -50,11 +50,7 @@ let
   # in the same directory as slurm.conf
   etcSlurm = pkgs.symlinkJoin {
     name = "etc-slurm";
-    paths = [
-      configFile
-      cgroupConfig
-      plugStackConfig
-    ] ++ cfg.extraConfigPaths;
+    paths = [ configFile cgroupConfig plugStackConfig ] ++ cfg.extraConfigPaths;
   };
 in
 
@@ -300,30 +296,14 @@ in
   };
 
   imports = [
-    (mkRemovedOptionModule
-      [
-        "services"
-        "slurm"
-        "dbdserver"
-        "storagePass"
-      ]
-      ''
-        This option has been removed so that the database password is not exposed via the nix store.
-        Use services.slurm.dbdserver.storagePassFile to provide the database password.
-      ''
-    )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "slurm"
-        "dbdserver"
-        "configFile"
-      ]
-      ''
-        This option has been removed. Use services.slurm.dbdserver.storagePassFile
-        and services.slurm.dbdserver.extraConfig instead.
-      ''
-    )
+    (mkRemovedOptionModule [ "services" "slurm" "dbdserver" "storagePass" ] ''
+      This option has been removed so that the database password is not exposed via the nix store.
+      Use services.slurm.dbdserver.storagePassFile to provide the database password.
+    '')
+    (mkRemovedOptionModule [ "services" "slurm" "dbdserver" "configFile" ] ''
+      This option has been removed. Use services.slurm.dbdserver.storagePassFile
+      and services.slurm.dbdserver.extraConfig instead.
+    '')
   ];
 
   ###### implementation
@@ -374,13 +354,7 @@ in
       users.groups.slurm.gid = config.ids.uids.slurm;
 
       systemd.services.slurmd = mkIf (cfg.client.enable) {
-        path =
-          with pkgs;
-          [
-            wrappedSlurm
-            coreutils
-          ]
-          ++ lib.optional cfg.enableSrunX11 slurm-spank-x11;
+        path = with pkgs; [ wrappedSlurm coreutils ] ++ lib.optional cfg.enableSrunX11 slurm-spank-x11;
 
         wantedBy = [ "multi-user.target" ];
         after = [
@@ -411,18 +385,10 @@ in
       systemd.services.slurmctld = mkIf (cfg.server.enable) {
         path =
           with pkgs;
-          [
-            wrappedSlurm
-            munge
-            coreutils
-          ]
-          ++ lib.optional cfg.enableSrunX11 slurm-spank-x11;
+          [ wrappedSlurm munge coreutils ] ++ lib.optional cfg.enableSrunX11 slurm-spank-x11;
 
         wantedBy = [ "multi-user.target" ];
-        after = [
-          "network.target"
-          "munged.service"
-        ];
+        after = [ "network.target" "munged.service" ];
         requires = [ "munged.service" ];
 
         serviceConfig = {
@@ -444,22 +410,11 @@ in
           configPath = "$RUNTIME_DIRECTORY/slurmdbd.conf";
         in
         mkIf (cfg.dbdserver.enable) {
-          path = with pkgs; [
-            wrappedSlurm
-            munge
-            coreutils
-          ];
+          path = with pkgs; [ wrappedSlurm munge coreutils ];
 
           wantedBy = [ "multi-user.target" ];
-          after = [
-            "network.target"
-            "munged.service"
-            "mysql.service"
-          ];
-          requires = [
-            "munged.service"
-            "mysql.service"
-          ];
+          after = [ "network.target" "munged.service" "mysql.service" ];
+          requires = [ "munged.service" "mysql.service" ];
 
           preStart = ''
             install -m 600 -o ${cfg.user} -T ${slurmdbdConf} ${configPath}

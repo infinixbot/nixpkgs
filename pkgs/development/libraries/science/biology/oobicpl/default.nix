@@ -22,12 +22,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    libminc
-    bicpl
-    arguments
-    pcre-cpp
-  ];
+  buildInputs = [ libminc bicpl arguments pcre-cpp ];
 
   cmakeFlags = [
     "-DLIBMINC_DIR=${libminc}/lib/cmake"

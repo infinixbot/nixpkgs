@@ -81,17 +81,10 @@ buildGoModule {
   version = version;
   inherit src;
 
-  nativeBuildInputs = [
-    go-bindata
-    pkg-config
-    perl
-  ];
+  nativeBuildInputs = [ go-bindata pkg-config perl ];
 
   vendorHash = "sha256-3Vf8BCrOwliXrH+gmZ4RJ1YBEbqL0Szx2prW3ie9CNg=";
-  subPackages = [
-    "cmd/influxd"
-    "cmd/telemetryd"
-  ];
+  subPackages = [ "cmd/influxd" "cmd/telemetryd" ];
 
   PKG_CONFIG_PATH = "${flux}/pkgconfig";
 
@@ -127,10 +120,7 @@ buildGoModule {
 
   tags = [ "assets" ];
 
-  ldflags = [
-    "-X main.commit=v${version}"
-    "-X main.version=${version}"
-  ];
+  ldflags = [ "-X main.commit=v${version}" "-X main.version=${version}" ];
 
   passthru.tests = {
     inherit (nixosTests) influxdb2;

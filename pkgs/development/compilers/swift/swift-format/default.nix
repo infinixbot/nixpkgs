@@ -18,10 +18,7 @@ stdenv.mkDerivation {
   inherit (sources) version;
   src = sources.swift-format;
 
-  nativeBuildInputs = [
-    swift
-    swiftpm
-  ];
+  nativeBuildInputs = [ swift swiftpm ];
   buildInputs = [ Foundation ];
 
   configurePhase =

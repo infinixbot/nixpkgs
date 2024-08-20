@@ -27,11 +27,7 @@ stdenv.mkDerivation rec {
   pname = "sysprof";
   version = "46.0";
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-  ];
+  outputs = [ "out" "lib" "dev" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.major version}/${pname}-${version}.tar.xz";

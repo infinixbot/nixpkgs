@@ -18,10 +18,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-aYAficUFYYhZygfQZyczP49CeouAKKZJW8IFlkFh9lI=";
 
-  ldflags = [
-    "-w"
-    "-s"
-  ];
+  ldflags = [ "-w" "-s" ];
 
   # Tests require loading the zfs kernel module.
   doCheck = false;

@@ -34,15 +34,8 @@ rustPlatform.buildRustPackage rec {
     substituteInPlace justfile --replace '#!/usr/bin/env' "#!$(command -v env)"
   '';
 
-  nativeBuildInputs = [
-    just
-    pkg-config
-    makeBinaryWrapper
-  ];
-  buildInputs = [
-    libxkbcommon
-    wayland
-  ];
+  nativeBuildInputs = [ just pkg-config makeBinaryWrapper ];
+  buildInputs = [ libxkbcommon wayland ];
 
   dontUseJustBuild = true;
 

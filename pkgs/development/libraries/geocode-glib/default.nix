@@ -21,12 +21,7 @@ stdenv.mkDerivation rec {
   pname = "geocode-glib";
   version = "3.26.4";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-    "installedTests"
-  ];
+  outputs = [ "out" "dev" "devdoc" "installedTests" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/geocode-glib/${lib.versions.majorMinor version}/geocode-glib-${version}.tar.xz";

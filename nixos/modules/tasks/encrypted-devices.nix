@@ -92,10 +92,7 @@ in
           config.boot.initrd.systemd.enable
           -> (
             dev.encrypted.keyFile == null
-            || !lib.any (x: lib.hasPrefix x dev.encrypted.keyFile) [
-              "/mnt-root"
-              "$targetRoot"
-            ]
+            || !lib.any (x: lib.hasPrefix x dev.encrypted.keyFile) [ "/mnt-root" "$targetRoot" ]
           );
         message = ''
           Bad use of '/mnt-root' or '$targetRoot` in 'keyFile'.

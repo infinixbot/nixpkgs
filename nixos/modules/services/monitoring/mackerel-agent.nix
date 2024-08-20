@@ -53,22 +53,12 @@ in
 
         options.host_status = {
           on_start = mkOption {
-            type = types.enum [
-              "working"
-              "standby"
-              "maintenance"
-              "poweroff"
-            ];
+            type = types.enum [ "working" "standby" "maintenance" "poweroff" ];
             description = "Host status after agent startup.";
             default = "working";
           };
           on_stop = mkOption {
-            type = types.enum [
-              "working"
-              "standby"
-              "maintenance"
-              "poweroff"
-            ];
+            type = types.enum [ "working" "standby" "maintenance" "poweroff" ];
             description = "Host status after agent shutdown.";
             default = "poweroff";
           };
@@ -99,10 +89,7 @@ in
     systemd.services.mackerel-agent = {
       description = "mackerel.io agent";
       wants = [ "network-online.target" ];
-      after = [
-        "network-online.target"
-        "nss-lookup.target"
-      ];
+      after = [ "network-online.target" "nss-lookup.target" ];
       wantedBy = [ "multi-user.target" ];
       environment = {
         MACKEREL_PLUGIN_WORKDIR = mkDefault "%C/mackerel-agent";

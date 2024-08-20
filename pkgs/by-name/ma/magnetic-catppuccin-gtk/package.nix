@@ -11,34 +11,10 @@
   tweaks ? [ ],
 }:
 let
-  validAccents = [
-    "default"
-    "purple"
-    "pink"
-    "red"
-    "orange"
-    "yellow"
-    "green"
-    "teal"
-    "grey"
-    "all"
-  ];
-  validShades = [
-    "light"
-    "dark"
-  ];
-  validSizes = [
-    "standard"
-    "compact"
-  ];
-  validTweaks = [
-    "frappe"
-    "macchiato"
-    "black"
-    "float"
-    "outline"
-    "macos"
-  ];
+  validAccents = [ "default" "purple" "pink" "red" "orange" "yellow" "green" "teal" "grey" "all" ];
+  validShades = [ "light" "dark" ];
+  validSizes = [ "standard" "compact" ];
+  validTweaks = [ "frappe" "macchiato" "black" "float" "outline" "macos" ];
 
   single = x: lib.optional (x != null) x;
   pname = "Catppuccin-GTK";
@@ -68,10 +44,7 @@ lib.checkListOfEnum "${pname} Valid theme accent(s)" validAccents accent lib.che
       hash = "sha256-oFVsYrJ27hYGY+x9+Z4SxVCp3w6PiLYTZaxmGhnpVHQ=";
     };
 
-    nativeBuildInputs = [
-      jdupes
-      sassc
-    ];
+    nativeBuildInputs = [ jdupes sassc ];
 
     propagatedUserEnvPkgs = [ gtk-engine-murrine ];
 

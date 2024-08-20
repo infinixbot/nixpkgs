@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    gettext
-    perl
-  ];
+  nativeBuildInputs = [ gettext perl ];
   buildInputs = [ perl ];
 
   postPatch = ''

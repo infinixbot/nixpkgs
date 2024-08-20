@@ -17,10 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-SkBHFvQn3Q6fl/d1npEspTYhq1YrnusXNWr/Ky4bv64=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   postInstall = ''
     mv $out/bin/cmd $out/bin/pingtunnel

@@ -20,17 +20,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-ciw28YXhR+GC6B2VPC+ZxjyhadOk3zYGuOssSgqjwH0=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
-  nativeBuildInputs = [
-    pkg-config
-    gobject-introspection
-    gnome-common
-  ];
+  nativeBuildInputs = [ pkg-config gobject-introspection gnome-common ];
 
   buildInputs = [
     cairo

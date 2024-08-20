@@ -75,10 +75,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Multilingual BLS12-381 signature library";
     homepage = "https://github.com/supranational/blst";
     license = licenses.isc;
-    maintainers = with maintainers; [
-      iquerejeta
-      yvan-sraka
-    ];
+    maintainers = with maintainers; [ iquerejeta yvan-sraka ];
     platforms = platforms.all;
   };
 })

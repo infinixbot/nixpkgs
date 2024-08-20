@@ -26,10 +26,7 @@ stdenv.mkDerivation {
     })
   ];
 
-  buildInputs = [
-    curl
-    libxml2
-  ];
+  buildInputs = [ curl libxml2 ];
 
   makeFlags = [ "DESTDIR=${placeholder "out"}" ];
 

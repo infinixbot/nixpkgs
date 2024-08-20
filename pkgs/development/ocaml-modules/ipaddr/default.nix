@@ -16,23 +16,13 @@ buildDunePackage rec {
   minimalOCamlVersion = "4.08";
   duneVersion = "3";
 
-  propagatedBuildInputs = [
-    macaddr
-    domain-name
-    stdlib-shims
-  ];
+  propagatedBuildInputs = [ macaddr domain-name stdlib-shims ];
 
-  checkInputs = [
-    ppx_sexp_conv
-    ounit2
-  ];
+  checkInputs = [ ppx_sexp_conv ounit2 ];
   doCheck = true;
 
   meta = macaddr.meta // {
     description = "Library for manipulation of IP (and MAC) address representations";
-    maintainers = with lib.maintainers; [
-      alexfmpe
-      ericbmerritt
-    ];
+    maintainers = with lib.maintainers; [ alexfmpe ericbmerritt ];
   };
 }

@@ -26,13 +26,7 @@ buildDunePackage rec {
   };
 
   nativeBuildInputs = [ menhir ];
-  propagatedBuildInputs = [
-    ppxlib
-    ppx_deriving
-    re
-    uutf
-    uucp
-  ];
+  propagatedBuildInputs = [ ppxlib ppx_deriving re uutf uucp ];
   checkInputs = [ ounit2 ];
   doCheck = lib.versionAtLeast ocaml.version "4.08";
 

@@ -11,12 +11,7 @@
 }:
 
 let
-  binPath = lib.makeBinPath [
-    gcc
-    graphviz
-    tk
-    swarm
-  ];
+  binPath = lib.makeBinPath [ gcc graphviz tk swarm ];
 in
 
 stdenv.mkDerivation rec {
@@ -57,9 +52,6 @@ stdenv.mkDerivation rec {
     homepage = "https://spinroot.com/";
     license = licenses.bsd3;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      pSub
-      siraben
-    ];
+    maintainers = with maintainers; [ pSub siraben ];
   };
 }

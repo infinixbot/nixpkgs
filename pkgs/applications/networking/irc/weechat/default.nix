@@ -113,10 +113,7 @@ stdenv.mkDerivation rec {
   # Why is this needed? https://github.com/weechat/weechat/issues/2031
   patches = lib.optional gettext.gettextNeedsLdflags ./gettext-intl.patch;
 
-  outputs = [
-    "out"
-    "man"
-  ] ++ map (p: p.name) enabledPlugins;
+  outputs = [ "out" "man" ] ++ map (p: p.name) enabledPlugins;
 
   cmakeFlags =
     [
@@ -128,27 +125,10 @@ stdenv.mkDerivation rec {
     ++ lib.optionals stdenv.isDarwin [ "-DICONV_LIBRARY=${libiconv}/lib/libiconv.dylib" ]
     ++ map (p: "-D${p.cmakeFlag}=" + (if p.enabled then "ON" else "OFF")) plugins;
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    asciidoctor
-  ] ++ lib.optional enableTests cpputest;
+  nativeBuildInputs = [ cmake pkg-config asciidoctor ] ++ lib.optional enableTests cpputest;
   buildInputs =
-    [
-      ncurses
-      openssl
-      aspell
-      cjson
-      gnutls
-      gettext
-      zlib
-      curl
-      libgcrypt
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      libobjc
-      libresolv
-    ]
+    [ ncurses openssl aspell cjson gnutls gettext zlib curl libgcrypt ]
+    ++ lib.optionals stdenv.isDarwin [ libobjc libresolv ]
     ++ lib.concatMap (p: p.buildInputs) enabledPlugins
     ++ extraBuildInputs;
 

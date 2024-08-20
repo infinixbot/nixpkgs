@@ -32,11 +32,7 @@ stdenv.mkDerivation rec {
     sourceProvenance = with sourceTypes; [ binaryBytecode ];
     license = licenses.agpl3Only;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      schneefux
-      thoughtpolice
-      mmahut
-    ];
+    maintainers = with maintainers; [ schneefux thoughtpolice mmahut ];
     mainProgram = "metabase";
   };
   passthru.tests = {

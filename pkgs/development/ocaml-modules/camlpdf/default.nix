@@ -22,11 +22,7 @@ else
       hash = "sha256-SVmLWffB7GF+Bu0tj5fIvQVMRh6uV3u2G3rC4cVH2Gw=";
     };
 
-    nativeBuildInputs = [
-      which
-      ocaml
-      findlib
-    ];
+    nativeBuildInputs = [ which ocaml findlib ];
 
     strictDeps = true;
 

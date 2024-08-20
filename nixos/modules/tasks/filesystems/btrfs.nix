@@ -167,14 +167,8 @@ in
             nameValuePair "btrfs-scrub-${fs'}" {
               description = "btrfs scrub on ${fs}";
               # scrub prevents suspend2ram or proper shutdown
-              conflicts = [
-                "shutdown.target"
-                "sleep.target"
-              ];
-              before = [
-                "shutdown.target"
-                "sleep.target"
-              ];
+              conflicts = [ "shutdown.target" "sleep.target" ];
+              before = [ "shutdown.target" "sleep.target" ];
 
               serviceConfig = {
                 # simple and not oneshot, otherwise ExecStop is not used

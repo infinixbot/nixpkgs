@@ -47,11 +47,6 @@ stdenv.mkDerivation {
     sourceProvenance = with sourceTypes; [ binaryBytecode ];
     license = licenses.unfreeRedistributable;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      thoughtpolice
-      tomberek
-      costrouc
-      joelkoen
-    ];
+    maintainers = with maintainers; [ thoughtpolice tomberek costrouc joelkoen ];
   };
 }

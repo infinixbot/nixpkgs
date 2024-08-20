@@ -19,40 +19,19 @@ let
 
 in
 lib.checkListOfEnum "${pname}: theme variants"
-  [
-    "doder"
-    "beryl"
-    "ruby"
-    "amethyst"
-    "jade"
-    "grey"
-    "all"
-  ]
+  [ "doder" "beryl" "ruby" "amethyst" "jade" "grey" "all" ]
   themeVariants
   lib.checkListOfEnum
   "${pname}: color variants"
-  [
-    "standard"
-    "light"
-    "dark"
-  ]
+  [ "standard" "light" "dark" ]
   colorVariants
   lib.checkListOfEnum
   "${pname}: size variants"
-  [
-    "standard"
-    "compact"
-    "all"
-  ]
+  [ "standard" "compact" "all" ]
   sizeVariants
   lib.checkListOfEnum
   "${pname}: tweaks"
-  [
-    "flat"
-    "grey"
-    "mix"
-    "translucent"
-  ]
+  [ "flat" "grey" "mix" "translucent" ]
   tweaks
 
   stdenvNoCC.mkDerivation

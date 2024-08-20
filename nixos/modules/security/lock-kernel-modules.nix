@@ -24,14 +24,7 @@ with lib;
     boot.kernelModules = concatMap (
       x:
       optionals (x.device != null) (
-        if x.fsType == "vfat" then
-          [
-            "vfat"
-            "nls-cp437"
-            "nls-iso8859-1"
-          ]
-        else
-          [ x.fsType ]
+        if x.fsType == "vfat" then [ "vfat" "nls-cp437" "nls-iso8859-1" ] else [ x.fsType ]
       )
     ) config.system.build.fileSystems;
 

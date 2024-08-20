@@ -29,15 +29,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    perl
-    gettext
-    pkg-config
-  ];
-  buildInputs = [
-    libidn2
-    libiconv
-  ];
+  nativeBuildInputs = [ perl gettext pkg-config ];
+  buildInputs = [ libidn2 libiconv ];
 
   preConfigure = ''
     for i in Makefile po/Makefile; do

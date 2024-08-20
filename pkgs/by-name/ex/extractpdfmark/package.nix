@@ -20,15 +20,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-pNc/SWAtQWMbB2+lIQkJdBYSZ97iJXK71mS59qQa7Hs=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
-  buildInputs = [
-    ghostscript
-    poppler
-    texlive.combined.scheme-minimal
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
+  buildInputs = [ ghostscript poppler texlive.combined.scheme-minimal ];
 
   postPatch = ''
     touch config.rpath

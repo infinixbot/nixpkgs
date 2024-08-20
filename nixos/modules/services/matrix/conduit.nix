@@ -86,10 +86,7 @@ in
             '';
           };
           global.database_backend = mkOption {
-            type = types.enum [
-              "sqlite"
-              "rocksdb"
-            ];
+            type = types.enum [ "sqlite" "rocksdb" ];
             default = "sqlite";
             example = "rocksdb";
             description = ''
@@ -142,10 +139,7 @@ in
         PrivateDevices = true;
         PrivateMounts = true;
         PrivateUsers = true;
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         SystemCallArchitectures = "native";

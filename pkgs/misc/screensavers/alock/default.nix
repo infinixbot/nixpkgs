@@ -32,10 +32,7 @@ stdenv.mkDerivation rec {
     "--enable-imlib2"
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
   buildInputs = [
     libX11
     pam
@@ -63,10 +60,7 @@ stdenv.mkDerivation rec {
       X session.
     '';
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      ftrvxmtrx
-      chris-martin
-    ];
+    maintainers = with maintainers; [ ftrvxmtrx chris-martin ];
     license = licenses.mit;
   };
 }

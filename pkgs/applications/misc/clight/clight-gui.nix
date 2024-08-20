@@ -19,14 +19,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-U4vaMwnVDZnYLc+K3/yD81Q1vyBL8uSrrhOHbjbox5U=";
   };
 
-  buildInputs = [
-    qtbase
-    qtcharts
-  ];
-  nativeBuildInputs = [
-    cmake
-    wrapQtAppsHook
-  ];
+  buildInputs = [ qtbase qtcharts ];
+  nativeBuildInputs = [ cmake wrapQtAppsHook ];
 
   sourceRoot = "${src.name}/src";
 

@@ -210,10 +210,7 @@ in
     systemd.services.magneticow = {
       description = "Magnetico web interface";
       wantedBy = [ "multi-user.target" ];
-      after = [
-        "network.target"
-        "magneticod.service"
-      ];
+      after = [ "network.target" "magneticod.service" ];
 
       serviceConfig = {
         User = "magnetico";

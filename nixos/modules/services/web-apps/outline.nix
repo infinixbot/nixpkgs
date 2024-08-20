@@ -147,10 +147,7 @@ in
       type = lib.types.submodule {
         options = {
           storageType = lib.mkOption {
-            type = lib.types.enum [
-              "local"
-              "s3"
-            ];
+            type = lib.types.enum [ "local" "s3" ];
             description = "File storage type, it can be local or s3.";
             default = "s3";
           };
@@ -334,11 +331,7 @@ in
             scopes = lib.mkOption {
               type = lib.types.listOf lib.types.str;
               description = "OpenID authentication scopes.";
-              default = [
-                "openid"
-                "profile"
-                "email"
-              ];
+              default = [ "openid" "profile" "email" ];
             };
           };
         }

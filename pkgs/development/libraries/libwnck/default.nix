@@ -26,11 +26,7 @@ stdenv.mkDerivation rec {
   pname = "libwnck";
   version = "43.0";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
   outputBin = "dev";
 
   src = fetchurl {

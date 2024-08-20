@@ -26,10 +26,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    cmake
-    validatePkgConfig
-  ];
+  nativeBuildInputs = [ cmake validatePkgConfig ];
 
   meta = with lib; {
     description = "URDF (U-Robot Description Format) headers provides core data structure headers for URDF";

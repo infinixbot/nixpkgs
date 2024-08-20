@@ -65,23 +65,10 @@ stdenv.mkDerivation (finalAttrs: {
     ./0001-client-cmake-move-X11-config-directives-to-displayse.patch
   ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   buildInputs =
-    [
-      libX11
-      libGL
-      freefont_ttf
-      spice-protocol
-      expat
-      libbfd
-      nettle
-      fontconfig
-      libffi
-    ]
+    [ libX11 libGL freefont_ttf spice-protocol expat libbfd nettle fontconfig libffi ]
     ++ lib.optionals xorgSupport [
       libxkbcommon
       libXi
@@ -93,19 +80,9 @@ stdenv.mkDerivation (finalAttrs: {
       libXrandr
       libXdmcp
     ]
-    ++ lib.optionals waylandSupport [
-      libxkbcommon
-      wayland
-      wayland-protocols
-    ]
-    ++ lib.optionals pipewireSupport [
-      pipewire
-      libsamplerate
-    ]
-    ++ lib.optionals pulseSupport [
-      pulseaudio
-      libsamplerate
-    ];
+    ++ lib.optionals waylandSupport [ libxkbcommon wayland wayland-protocols ]
+    ++ lib.optionals pipewireSupport [ pipewire libsamplerate ]
+    ++ lib.optionals pulseSupport [ pulseaudio libsamplerate ];
 
   cmakeFlags =
     [ "-DOPTIMIZE_FOR_NATIVE=OFF" ]
@@ -138,11 +115,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://looking-glass.io/";
     license = licenses.gpl2Plus;
     mainProgram = "looking-glass-client";
-    maintainers = with maintainers; [
-      alexbakker
-      babbaj
-      j-brn
-    ];
+    maintainers = with maintainers; [ alexbakker babbaj j-brn ];
     platforms = [ "x86_64-linux" ];
   };
 })

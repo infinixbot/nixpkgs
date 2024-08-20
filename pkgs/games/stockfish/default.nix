@@ -54,11 +54,7 @@ stdenv.mkDerivation rec {
     cp "${nnueSmall}" "$sourceRoot/${nnueSmallFile}"
   '';
 
-  makeFlags = [
-    "PREFIX=$(out)"
-    "ARCH=${arch}"
-    "CXX=${stdenv.cc.targetPrefix}c++"
-  ];
+  makeFlags = [ "PREFIX=$(out)" "ARCH=${arch}" "CXX=${stdenv.cc.targetPrefix}c++" ];
   buildFlags = [ "build" ];
 
   enableParallelBuilding = true;
@@ -71,17 +67,8 @@ stdenv.mkDerivation rec {
       Stockfish is one of the strongest chess engines in the world. It is also
       much stronger than the best human chess grandmasters.
     '';
-    maintainers = with maintainers; [
-      luispedro
-      siraben
-    ];
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-      "x86_64-darwin"
-      "aarch64-linux"
-      "aarch64-darwin"
-    ];
+    maintainers = with maintainers; [ luispedro siraben ];
+    platforms = [ "x86_64-linux" "i686-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
     license = licenses.gpl3Only;
   };
 

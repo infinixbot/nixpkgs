@@ -30,10 +30,7 @@ stdenv.mkDerivation {
     hash = "sha256-y7VlpviWT4kq4sfeWq00qM40tBAyGFBAplwrji45dOc=";
   };
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   passthru = {
     inherit libtorrent;
@@ -81,11 +78,7 @@ stdenv.mkDerivation {
     homepage = "https://rakshasa.github.io/rtorrent/";
     description = "Ncurses client for libtorrent, ideal for use with screen, tmux, or dtach";
     license = lib.licenses.gpl2Plus;
-    maintainers = with lib.maintainers; [
-      ebzzry
-      codyopel
-      thiagokokada
-    ];
+    maintainers = with lib.maintainers; [ ebzzry codyopel thiagokokada ];
     platforms = lib.platforms.unix;
     mainProgram = "rtorrent";
   };

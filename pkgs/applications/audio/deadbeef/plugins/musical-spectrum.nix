@@ -21,12 +21,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    deadbeef
-    fftw
-    glib
-    gtk3
-  ];
+  buildInputs = [ deadbeef fftw glib gtk3 ];
   makeFlags = [ "gtk3" ];
 
   installPhase = ''

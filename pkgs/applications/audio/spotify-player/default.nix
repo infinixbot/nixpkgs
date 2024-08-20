@@ -78,10 +78,7 @@ rustPlatform.buildRustPackage rec {
     ++ lib.optionals (withAudioBackend == "rodio" && stdenv.isLinux) [ alsa-lib ]
     ++ lib.optionals (withAudioBackend == "portaudio") [ portaudio ]
     ++ lib.optionals (withAudioBackend == "jackaudio") [ libjack2 ]
-    ++ lib.optionals (withAudioBackend == "rodiojack") [
-      alsa-lib
-      libjack2
-    ]
+    ++ lib.optionals (withAudioBackend == "rodiojack") [ alsa-lib libjack2 ]
     ++ lib.optionals (withAudioBackend == "sdl") [ SDL2 ]
     ++ lib.optionals (withAudioBackend == "gstreamer") [
       gst_all_1.gstreamer
@@ -125,10 +122,6 @@ rustPlatform.buildRustPackage rec {
     changelog = "https://github.com/aome510/spotify-player/releases/tag/v${version}";
     mainProgram = "spotify_player";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [
-      dit7ya
-      xyven1
-      _71zenith
-    ];
+    maintainers = with lib.maintainers; [ dit7ya xyven1 _71zenith ];
   };
 }

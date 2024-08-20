@@ -141,10 +141,7 @@ in
       }
     ];
 
-    environment.systemPackages = with pkgs; [
-      krb5Full
-      freeipa
-    ];
+    environment.systemPackages = with pkgs; [ krb5Full freeipa ];
 
     environment.etc = {
       "ipa/default.conf".text = ''
@@ -201,10 +198,7 @@ in
 
     systemd.services."ipa-activation" = {
       wantedBy = [ "sysinit.target" ];
-      before = [
-        "sysinit.target"
-        "shutdown.target"
-      ];
+      before = [ "sysinit.target" "shutdown.target" ];
       conflicts = [ "shutdown.target" ];
       unitConfig.DefaultDependencies = false;
       serviceConfig.Type = "oneshot";

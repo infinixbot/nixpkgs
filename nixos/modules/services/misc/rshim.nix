@@ -22,13 +22,7 @@ in
     package = lib.mkPackageOption pkgs "rshim-user-space" { };
 
     backend = lib.mkOption {
-      type =
-        with lib.types;
-        nullOr (enum [
-          "usb"
-          "pcie"
-          "pcie_lf"
-        ]);
+      type = with lib.types; nullOr (enum [ "usb" "pcie" "pcie_lf" ]);
       description = ''
         Specify the backend to attach. If not specified, the driver will scan
         all rshim backends unless the `device` option is given with a device
@@ -69,12 +63,7 @@ in
     };
 
     config = lib.mkOption {
-      type =
-        with lib.types;
-        attrsOf (oneOf [
-          int
-          str
-        ]);
+      type = with lib.types; attrsOf (oneOf [ int str ]);
       description = ''
         Structural setting for the rshim configuration file
         (`/etc/rshim.conf`). It can be used to specify the static mapping

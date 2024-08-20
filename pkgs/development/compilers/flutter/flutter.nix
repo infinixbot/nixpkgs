@@ -5,10 +5,7 @@
   engineHashes ? { },
   engineUrl ? "https://github.com/flutter/engine.git@${engineVersion}",
   enginePatches ? [ ],
-  engineRuntimeModes ? [
-    "release"
-    "debug"
-  ],
+  engineRuntimeModes ? [ "release" "debug" ],
   engineSwiftShaderHash,
   engineSwiftShaderRev,
   patches,
@@ -186,12 +183,7 @@ let
       '';
       homepage = "https://flutter.dev";
       license = licenses.bsd3;
-      platforms = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
+      platforms = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       maintainers =
         teams.flutter.members
         ++ (with maintainers; [

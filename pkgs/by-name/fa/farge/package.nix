@@ -59,10 +59,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     homepage = "https://github.com/sdushantha/farge";
     license = licenses.mit;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      jtbx
-      justinlime
-    ];
+    maintainers = with maintainers; [ jtbx justinlime ];
     mainProgram = "farge";
   };
 })

@@ -233,14 +233,8 @@ in
     systemd.services.consume-hypervisor-entropy = {
       description = "Consume entropy in ACPI table provided by Hyper-V";
 
-      wantedBy = [
-        "sshd.service"
-        "waagent.service"
-      ];
-      before = [
-        "sshd.service"
-        "waagent.service"
-      ];
+      wantedBy = [ "sshd.service" "waagent.service" ];
+      before = [ "sshd.service" "waagent.service" ];
 
       path = [ pkgs.coreutils ];
       script = ''
@@ -255,10 +249,7 @@ in
 
     systemd.services.waagent = {
       wantedBy = [ "multi-user.target" ];
-      after = [
-        "network-online.target"
-        "sshd.service"
-      ];
+      after = [ "network-online.target" "sshd.service" ];
       wants = [ "network-online.target" ];
 
       path = [

@@ -28,11 +28,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   sourceRoot = ".";
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
 
   nativeBuildInputs = [
     installShellFiles
@@ -67,9 +63,6 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     license = licenses.publicDomain;
     maintainers = lib.teams.lisp.members;
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
   };
 })

@@ -10,10 +10,7 @@ import ./make-test-python.nix (
   {
     name = "printing";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        domenkozar
-        matthewbauer
-      ];
+      maintainers = [ domenkozar matthewbauer ];
     };
 
     nodes.server =

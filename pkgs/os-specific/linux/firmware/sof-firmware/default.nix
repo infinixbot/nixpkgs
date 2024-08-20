@@ -30,15 +30,8 @@ stdenvNoCC.mkDerivation rec {
     changelog = "https://github.com/thesofproject/sof-bin/releases/tag/v${version}";
     description = "Sound Open Firmware";
     homepage = "https://www.sofproject.org/";
-    license = with licenses; [
-      bsd3
-      isc
-    ];
-    maintainers = with maintainers; [
-      lblasc
-      evenbrenden
-      hmenke
-    ];
+    license = with licenses; [ bsd3 isc ];
+    maintainers = with maintainers; [ lblasc evenbrenden hmenke ];
     platforms = with platforms; linux;
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
   };

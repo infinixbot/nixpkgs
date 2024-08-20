@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
 
   configureFlags = [ "--localstatedir=/" ];
 
-  buildInputs = [
-    guile
-    guile-fibers
-  ];
+  buildInputs = [ guile guile-fibers ];
   nativeBuildInputs = [ pkg-config ];
 
   meta = with lib; {

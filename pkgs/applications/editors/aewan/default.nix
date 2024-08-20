@@ -30,10 +30,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [
-    zlib
-    ncurses
-  ];
+  buildInputs = [ zlib ncurses ];
 
   meta = {
     description = "Ascii-art Editor Without A Name";

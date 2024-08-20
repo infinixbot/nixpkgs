@@ -24,10 +24,7 @@ let
 
   cfg = config.services.davfs2;
 
-  escapeString = escape [
-    "\""
-    "\\"
-  ];
+  escapeString = escape [ "\"" "\\" ];
 
   formatValue =
     value:
@@ -50,17 +47,10 @@ in
 {
 
   imports = [
-    (mkRemovedOptionModule
-      [
-        "services"
-        "davfs2"
-        "extraConfig"
-      ]
-      ''
-        The option extraConfig got removed, please migrate to
-        services.davfs2.settings instead.
-      ''
-    )
+    (mkRemovedOptionModule [ "services" "davfs2" "extraConfig" ] ''
+      The option extraConfig got removed, please migrate to
+      services.davfs2.settings instead.
+    '')
   ];
 
   options.services.davfs2 = {
@@ -89,11 +79,7 @@ in
       type = submodule {
         freeformType =
           let
-            valueTypes = [
-              bool
-              int
-              str
-            ];
+            valueTypes = [ bool int str ];
           in
           attrsOf (attrsOf (oneOf (valueTypes ++ [ (attrsOf (oneOf valueTypes)) ])));
       };

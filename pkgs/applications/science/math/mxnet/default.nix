@@ -54,24 +54,14 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    cmake
-    perl
-  ];
+  nativeBuildInputs = [ cmake perl ];
 
   buildInputs =
-    [
-      opencv4
-      gtest
-      blas.provider
-    ]
+    [ opencv4 gtest blas.provider ]
     ++ lib.optional stdenv.cc.isGNU gomp
     ++ lib.optional stdenv.cc.isClang llvmPackages.openmp
     # FIXME: when cuda build is fixed, remove nvidia_x11, and use /run/opengl-driver/lib
-    ++ lib.optionals cudaSupport [
-      cudatoolkit
-      nvidia_x11
-    ]
+    ++ lib.optionals cudaSupport [ cudatoolkit nvidia_x11 ]
     ++ lib.optional cudnnSupport cudnn;
 
   cmakeFlags =

@@ -74,11 +74,7 @@ let
           if (builtins.length moduleExtensionParts >= 2) then
             builtins.elemAt moduleExtensionParts 1
           else
-            [
-              "unknownPrefix"
-              "unknownScope"
-              "unknownExtension"
-            ];
+            [ "unknownPrefix" "unknownScope" "unknownExtension" ];
         scope = if isMainModule then "_main" else builtins.elemAt match 0;
         extension = builtins.elemAt match 1;
       in

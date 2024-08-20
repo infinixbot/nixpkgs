@@ -32,13 +32,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-jBwyIyiWeqNmOnxmVOr7c4oMWwHElEjM25sShhTMi78=";
   };
 
-  nativeBuildInputs = [
-    yarn
-    fixup-yarn-lock
-    nodejs
-    copyDesktopItems
-    makeWrapper
-  ];
+  nativeBuildInputs = [ yarn fixup-yarn-lock nodejs copyDesktopItems makeWrapper ];
 
   configurePhase = ''
     runHook preConfigure
@@ -83,12 +77,7 @@ stdenv.mkDerivation (finalAttrs: {
     # Linux needs 'aplay' for notification sounds
     makeWrapper '${electron}/bin/electron' "$out/bin/teams-for-linux" \
       ${lib.optionalString stdenv.isLinux ''
-        --prefix PATH : ${
-          lib.makeBinPath [
-            alsa-utils
-            which
-          ]
-        } \
+        --prefix PATH : ${lib.makeBinPath [ alsa-utils which ]} \
       ''} \
       --add-flags "$out/share/teams-for-linux/app.asar" \
       --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
@@ -103,11 +92,7 @@ stdenv.mkDerivation (finalAttrs: {
       icon = finalAttrs.pname;
       desktopName = "Microsoft Teams for Linux";
       comment = finalAttrs.meta.description;
-      categories = [
-        "Network"
-        "InstantMessaging"
-        "Chat"
-      ];
+      categories = [ "Network" "InstantMessaging" "Chat" ];
     })
   ];
 
@@ -122,11 +107,7 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "teams-for-linux";
     homepage = "https://github.com/IsmaelMartinez/teams-for-linux";
     license = lib.licenses.gpl3Only;
-    maintainers = with lib.maintainers; [
-      muscaln
-      qjoly
-      chvp
-    ];
+    maintainers = with lib.maintainers; [ muscaln qjoly chvp ];
     platforms = lib.platforms.unix;
     broken = stdenv.isDarwin;
   };

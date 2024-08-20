@@ -84,12 +84,7 @@ let
     };
 
     desktopItem = makeDesktopItem {
-      categories = [
-        "Network"
-        "InstantMessaging"
-        "Chat"
-        "VideoConference"
-      ];
+      categories = [ "Network" "InstantMessaging" "Chat" "VideoConference" ];
       comment = "Secure messenger for everyone";
       desktopName = "Wire";
       exec = "wire-desktop %U";

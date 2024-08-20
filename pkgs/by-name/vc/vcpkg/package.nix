@@ -72,11 +72,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     mainProgram = "vcpkg";
     homepage = "https://vcpkg.io/";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [
-      guekka
-      gracicot
-      h7x4
-    ];
+    maintainers = with lib.maintainers; [ guekka gracicot h7x4 ];
     platforms = lib.platforms.all;
   };
 })

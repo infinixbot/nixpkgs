@@ -40,11 +40,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   nativeBuildInputs =
-    [
-      cmake
-      bison
-      flex
-    ]
+    [ cmake bison flex ]
     ++ lib.optionals docSupport [
       unixtools.more
       texliveMedium
@@ -71,10 +67,7 @@ stdenv.mkDerivation (finalAttrs: {
   #   -DHAVE_LINUXGPIO=ON    because it's incompatible with libgpiod 2.x
   cmakeFlags =
     lib.optionals docSupport [ "-DBUILD_DOC=ON" ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      "-DHAVE_LINUXSPI=ON"
-      "-DHAVE_PARPORT=ON"
-    ];
+    ++ lib.optionals stdenv.hostPlatform.isLinux [ "-DHAVE_LINUXSPI=ON" "-DHAVE_PARPORT=ON" ];
 
   # dvips output references texlive in comments, resulting in a huge closure
   postInstall = lib.optionalString docSupport ''

@@ -103,10 +103,7 @@ stdenv.mkDerivation rec {
     homepage = "https://gitlab.gnome.org/raggesilver/blackbox";
     changelog = "https://gitlab.gnome.org/raggesilver/blackbox/-/raw/v${version}/CHANGELOG.md";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      chuangzhu
-      linsui
-    ];
+    maintainers = with maintainers; [ chuangzhu linsui ];
     platforms = platforms.linux;
   };
 }

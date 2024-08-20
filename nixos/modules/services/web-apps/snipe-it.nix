@@ -136,10 +136,7 @@ in
 
     mail = {
       driver = mkOption {
-        type = types.enum [
-          "smtp"
-          "sendmail"
-        ];
+        type = types.enum [ "smtp" "sendmail" ];
         default = "smtp";
         description = "Mail driver to use.";
       };
@@ -154,12 +151,7 @@ in
         description = "Mail host port.";
       };
       encryption = mkOption {
-        type =
-          with types;
-          nullOr (enum [
-            "tls"
-            "ssl"
-          ]);
+        type = with types; nullOr (enum [ "tls" "ssl" ]);
         default = null;
         description = "SMTP encryption mechanism to use.";
       };
@@ -217,13 +209,7 @@ in
     };
 
     poolConfig = mkOption {
-      type =
-        with types;
-        attrsOf (oneOf [
-          str
-          int
-          bool
-        ]);
+      type = with types; attrsOf (oneOf [ str int bool ]);
       default = {
         "pm" = "dynamic";
         "pm.max_children" = 32;
@@ -274,10 +260,7 @@ in
               (submodule {
                 options = {
                   _secret = mkOption {
-                    type = nullOr (oneOf [
-                      str
-                      path
-                    ]);
+                    type = nullOr (oneOf [ str path ]);
                     description = ''
                       The path to a file containing the value the
                       option should be set to in the final
@@ -437,10 +420,7 @@ in
         RuntimeDirectory = "snipe-it/cache";
         RuntimeDirectoryMode = "0700";
       };
-      path = [
-        pkgs.replace-secret
-        artisan
-      ];
+      path = [ pkgs.replace-secret artisan ];
       script =
         let
           isSecret = v: isAttrs v && v ? _secret && (isString v._secret || builtins.isPath v._secret);
@@ -482,13 +462,7 @@ in
             }
           '';
           secretReplacements = lib.concatMapStrings mkSecretReplacement secretPaths;
-          filteredConfig = lib.converge (lib.filterAttrsRecursive (
-            _: v:
-            !elem v [
-              { }
-              null
-            ]
-          )) cfg.config;
+          filteredConfig = lib.converge (lib.filterAttrsRecursive (_: v: !elem v [ { } null ])) cfg.config;
           snipeITEnv = pkgs.writeText "snipeIT.env" (snipeITEnvVars filteredConfig);
         in
         ''

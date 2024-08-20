@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
     substituteInPlace configure.ac --replace stdc++ c++
   '';
 
-  buildInputs = [
-    libffi
-    gmp
-  ];
+  buildInputs = [ libffi gmp ];
 
   nativeBuildInputs = lib.optional stdenv.isDarwin autoreconfHook;
 
@@ -51,9 +48,6 @@ stdenv.mkDerivation rec {
     homepage = "https://www.polyml.org/";
     license = licenses.lgpl21;
     platforms = with platforms; (linux ++ darwin);
-    maintainers = with maintainers; [
-      maggesi
-      kovirobi
-    ];
+    maintainers = with maintainers; [ maggesi kovirobi ];
   };
 }

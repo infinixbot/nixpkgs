@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
   buildInputs = [ cups ];
   patches = [ ./fix-includes.patch ];
 
-  makeFlags = [
-    "cupsfilterdir=$(out)/lib/cups/filter"
-    "cupsmodeldir=$(out)/share/cups/model"
-  ];
+  makeFlags = [ "cupsfilterdir=$(out)/lib/cups/filter" "cupsmodeldir=$(out)/share/cups/model" ];
 
   meta = {
     description = "CUPS Linux drivers and SDK for DYMO printers";

@@ -19,12 +19,7 @@ skawarePackages.buildPackage {
 
   description = "Set of tiny general Unix utilities optimized for simplicity and small size";
 
-  outputs = [
-    "bin"
-    "dev"
-    "doc"
-    "out"
-  ];
+  outputs = [ "bin" "dev" "doc" "out" ];
 
   configureFlags = [
     "--bindir=\${bin}/bin"

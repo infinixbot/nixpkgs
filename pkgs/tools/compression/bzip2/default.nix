@@ -52,12 +52,7 @@ stdenv.mkDerivation (
     strictDeps = true;
     nativeBuildInputs = [ autoreconfHook ];
 
-    outputs = [
-      "bin"
-      "dev"
-      "out"
-      "man"
-    ];
+    outputs = [ "bin" "dev" "out" "man" ];
 
     configureFlags = lib.concatLists [
       (lib.optional enableStatic "--enable-static")

@@ -24,10 +24,7 @@ buildPythonApplication rec {
     setuptools
   ];
 
-  dependencies = [
-    python-dotenv
-    pyyaml
-  ];
+  dependencies = [ python-dotenv pyyaml ];
   propagatedBuildInputs = [ pypaBuildHook ];
 
   meta = {

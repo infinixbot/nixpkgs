@@ -141,10 +141,7 @@ in
       after = [ "jenkins.service" ];
       wantedBy = [ "multi-user.target" ];
 
-      path = with pkgs; [
-        jenkins-job-builder
-        curl
-      ];
+      path = with pkgs; [ jenkins-job-builder curl ];
 
       # Q: Why manipulate files directly instead of using "jenkins-jobs upload [...]"?
       # A: Because this module is for administering a local jenkins install,

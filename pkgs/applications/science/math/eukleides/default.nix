@@ -27,17 +27,9 @@ stdenv.mkDerivation (finalAttrs: rec {
     ./gs-allowpstransparency.patch
   ];
 
-  nativeBuildInputs = [
-    bison
-    flex
-    texinfo4
-    makeWrapper
-  ];
+  nativeBuildInputs = [ bison flex texinfo4 makeWrapper ];
 
-  buildInputs = [
-    getopt
-    readline
-  ];
+  buildInputs = [ getopt readline ];
 
   preConfigure = ''
     substituteInPlace Makefile \
@@ -66,21 +58,12 @@ stdenv.mkDerivation (finalAttrs: rec {
       --prefix PATH : ${lib.makeBinPath [ getopt ]}
   '';
 
-  outputs = [
-    "out"
-    "doc"
-    "tex"
-  ];
+  outputs = [ "out" "doc" "tex" ];
 
   passthru = {
     tlType = "run";
     # packages needed by euktoeps, euktopdf and eukleides.sty
-    tlDeps = with texlive; [
-      collection-pstricks
-      epstopdf
-      iftex
-      moreverb
-    ];
+    tlDeps = with texlive; [ collection-pstricks epstopdf iftex moreverb ];
     pkgs = [ finalAttrs.finalPackage.tex ];
   };
 

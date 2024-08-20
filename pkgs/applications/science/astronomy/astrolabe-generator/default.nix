@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs = [ jre ];
-  nativeBuildInputs = [
-    makeWrapper
-    unzip
-  ];
+  nativeBuildInputs = [ makeWrapper unzip ];
   sourceRoot = ".";
 
   installPhase = ''

@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
   '';
 
   buildInputs = [ ncurses ];
-  nativeBuildInputs = [
-    autoreconfHook
-    flex
-  ];
+  nativeBuildInputs = [ autoreconfHook flex ];
 
   meta = with lib; {
     description = "Set of electronic mail handling programs";

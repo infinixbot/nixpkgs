@@ -93,9 +93,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/linuxmint/blueberry";
     license = licenses.gpl3Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      bobby285271
-      romildo
-    ];
+    maintainers = with maintainers; [ bobby285271 romildo ];
   };
 }

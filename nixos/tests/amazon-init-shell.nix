@@ -22,10 +22,7 @@ makeTest {
   nodes.machine =
     { ... }:
     {
-      imports = [
-        ../modules/profiles/headless.nix
-        ../modules/virtualisation/amazon-init.nix
-      ];
+      imports = [ ../modules/profiles/headless.nix ../modules/virtualisation/amazon-init.nix ];
       services.openssh.enable = true;
       networking.hostName = "";
       environment.etc."ec2-metadata/user-data" = {

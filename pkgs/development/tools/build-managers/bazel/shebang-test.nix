@@ -52,10 +52,7 @@ let
         exit 1
       fi
     '';
-    buildInputs = [
-      unzip
-      ripgrep
-    ];
+    buildInputs = [ unzip ripgrep ];
   };
 
 in

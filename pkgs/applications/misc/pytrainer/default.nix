@@ -68,10 +68,7 @@ python.pkgs.buildPythonApplication rec {
     "--prefix"
     "PATH"
     ":"
-    (lib.makeBinPath [
-      perl
-      gpsbabel
-    ])
+    (lib.makeBinPath [ perl gpsbabel ])
   ];
 
   nativeCheckInputs =
@@ -104,10 +101,7 @@ python.pkgs.buildPythonApplication rec {
     homepage = "https://github.com/pytrainer/pytrainer";
     description = "Application for logging and graphing sporting excursions";
     mainProgram = "pytrainer";
-    maintainers = with maintainers; [
-      rycee
-      dotlambda
-    ];
+    maintainers = with maintainers; [ rycee dotlambda ];
     license = licenses.gpl2Plus;
     platforms = platforms.linux;
   };

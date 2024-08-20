@@ -9,10 +9,7 @@ import ./make-test-python.nix (
       { pkgs, ... }:
       {
         imports = [ ./common/x11.nix ];
-        environment.systemPackages = with pkgs; [
-          firefoxpwa
-          jq
-        ];
+        environment.systemPackages = with pkgs; [ firefoxpwa jq ];
 
         programs.firefox = {
           enable = true;

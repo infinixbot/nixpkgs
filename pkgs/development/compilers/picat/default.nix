@@ -55,9 +55,6 @@ stdenv.mkDerivation {
       "x86_64-darwin"
       "aarch64-darwin"
     ];
-    maintainers = with maintainers; [
-      earldouglas
-      thoughtpolice
-    ];
+    maintainers = with maintainers; [ earldouglas thoughtpolice ];
   };
 }

@@ -21,10 +21,7 @@ buildDunePackage rec {
   };
 
   buildInputs = [ dune-configurator ];
-  propagatedBuildInputs = [
-    ogg
-    libtheora
-  ];
+  propagatedBuildInputs = [ ogg libtheora ];
 
   meta = with lib; {
     homepage = "https://github.com/savonet/ocaml-theora";

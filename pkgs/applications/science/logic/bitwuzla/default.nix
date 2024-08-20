@@ -29,12 +29,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    meson
-    pkg-config
-    git
-    ninja
-  ];
+  nativeBuildInputs = [ meson pkg-config git ninja ];
   buildInputs = [
     cadical
     cryptominisat

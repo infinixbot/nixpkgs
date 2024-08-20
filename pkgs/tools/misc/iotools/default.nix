@@ -15,10 +15,7 @@ stdenv.mkDerivation rec {
     sha256 = "0vymnah44d5bzsjhfmxkcrlrikkp0db22k7a1s8bknz7glk9fldn";
   };
 
-  makeFlags = [
-    "DEBUG=0"
-    "STATIC=0"
-  ];
+  makeFlags = [ "DEBUG=0" "STATIC=0" ];
 
   installPhase = ''
     install -Dm755 iotools -t $out/bin
@@ -37,10 +34,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/adurbin/iotools";
     license = licenses.gpl2Only;
     maintainers = with maintainers; [ felixsinger ];
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
     mainProgram = "iotools";
   };
 }

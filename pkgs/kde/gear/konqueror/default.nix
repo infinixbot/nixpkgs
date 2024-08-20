@@ -6,10 +6,7 @@
 mkKdeDerivation {
   pname = "konqueror";
 
-  extraBuildInputs = [
-    qtwebengine
-    hunspell
-  ];
+  extraBuildInputs = [ qtwebengine hunspell ];
 
   extraCmakeFlags = [
     "-DWebEngineDictConverter_EXECUTABLE=${qtwebengine}/libexec/qwebengine_convert_dict"

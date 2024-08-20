@@ -16,10 +16,7 @@
 stdenvNoCC.mkDerivation {
   name = kernel.name + "-shrunk";
   builder = ./modules-closure.sh;
-  nativeBuildInputs = [
-    nukeReferences
-    kmod
-  ];
+  nativeBuildInputs = [ nukeReferences kmod ];
   inherit
     kernel
     firmware

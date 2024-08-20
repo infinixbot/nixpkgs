@@ -69,12 +69,7 @@ let
       ++ lib.optional gitSupport pygit2
       ++ lib.optional highlightSupport pygments;
     nativeBuildInputs =
-      [
-        makeWrapper
-        gettext
-        installShellFiles
-        setuptools
-      ]
+      [ makeWrapper gettext installShellFiles setuptools ]
       ++ lib.optionals rustSupport [
         rustPlatform.cargoSetupHook
         cargo
@@ -123,12 +118,7 @@ let
       downloadPage = "https://www.mercurial-scm.org/release/";
       changelog = "https://wiki.mercurial-scm.org/Release${versions.majorMinor version}";
       license = licenses.gpl2Plus;
-      maintainers = with maintainers; [
-        eelco
-        lukegb
-        pacien
-        techknowlogick
-      ];
+      maintainers = with maintainers; [ eelco lukegb pacien techknowlogick ];
       platforms = platforms.unix;
       mainProgram = "hg";
     };

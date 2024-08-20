@@ -28,11 +28,7 @@ else
         ."${finalAttrs.version}";
     };
 
-    nativeBuildInputs = [
-      pkg-config
-      ocaml
-      findlib
-    ];
+    nativeBuildInputs = [ pkg-config ocaml findlib ];
     propagatedBuildInputs = [ gmp ];
     strictDeps = true;
 
@@ -49,9 +45,6 @@ else
       changelog = "https://github.com/ocaml/Zarith/raw/${finalAttrs.src.rev}/Changes";
       license = licenses.lgpl2;
       inherit (ocaml.meta) platforms;
-      maintainers = with maintainers; [
-        thoughtpolice
-        vbgl
-      ];
+      maintainers = with maintainers; [ thoughtpolice vbgl ];
     };
   })

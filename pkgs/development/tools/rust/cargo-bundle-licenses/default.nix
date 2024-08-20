@@ -22,13 +22,7 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "cargo-bundle-licenses";
     homepage = "https://github.com/sstadick/cargo-bundle-licenses";
     changelog = "https://github.com/sstadick/cargo-bundle-licenses/blob/${src.rev}/CHANGELOG.md";
-    license = with licenses; [
-      mit
-      asl20
-    ];
-    maintainers = with maintainers; [
-      figsoda
-      matthiasbeyer
-    ];
+    license = with licenses; [ mit asl20 ];
+    maintainers = with maintainers; [ figsoda matthiasbeyer ];
   };
 }

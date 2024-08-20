@@ -30,12 +30,7 @@ buildGoModule rec {
 
   subPackages = ".";
 
-  buildInputs = lib.optionals stdenv.isDarwin [
-    Foundation
-    CoreGraphics
-    Metal
-    AppKit
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ Foundation CoreGraphics Metal AppKit ];
 
   meta = with lib; {
     description = "GUI frontend for Delve";

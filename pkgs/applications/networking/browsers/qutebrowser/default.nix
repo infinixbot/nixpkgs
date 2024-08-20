@@ -153,12 +153,6 @@ python3.pkgs.buildPythonApplication {
     license = licenses.gpl3Plus;
     mainProgram = "qutebrowser";
     platforms = if enableWideVine then [ "x86_64-linux" ] else qtwebengine.meta.platforms;
-    maintainers = with maintainers; [
-      jagajaga
-      rnhmjoj
-      ebzzry
-      dotlambda
-      nrdxp
-    ];
+    maintainers = with maintainers; [ jagajaga rnhmjoj ebzzry dotlambda nrdxp ];
   };
 }

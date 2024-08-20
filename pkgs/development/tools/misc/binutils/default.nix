@@ -101,12 +101,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional stdenv.targetPlatform.isWindows ./windres-locate-gcc.patch;
 
   outputs =
-    [
-      "out"
-      "info"
-      "man"
-      "dev"
-    ]
+    [ "out" "info" "man" "dev" ]
     # Ideally we would like to always install 'lib' into a separate
     # target. Unfortunately cross-compiled binutils installs libraries
     # across both `$lib/lib/` and `$out/$target/lib` with a reference
@@ -127,18 +122,10 @@ stdenv.mkDerivation (finalAttrs: {
       perl
     ]
     ++ lib.optionals targetPlatform.isiOS [ autoreconfHook ]
-    ++ lib.optionals buildPlatform.isDarwin [
-      autoconf269
-      automake
-      gettext
-      libtool
-    ]
+    ++ lib.optionals buildPlatform.isDarwin [ autoconf269 automake gettext libtool ]
     ++ lib.optionals targetPlatform.isVc4 [ flex ];
 
-  buildInputs = [
-    zlib
-    gettext
-  ] ++ lib.optionals buildPlatform.isDarwin [ CoreServices ];
+  buildInputs = [ zlib gettext ] ++ lib.optionals buildPlatform.isDarwin [ CoreServices ];
 
   inherit noSysDirs;
 
@@ -193,16 +180,9 @@ stdenv.mkDerivation (finalAttrs: {
     else
       "-static-libgcc";
 
-  hardeningDisable = [
-    "format"
-    "pie"
-  ];
+  hardeningDisable = [ "format" "pie" ];
 
-  configurePlatforms = [
-    "build"
-    "host"
-    "target"
-  ];
+  configurePlatforms = [ "build" "host" "target" ];
 
   configureFlags =
     [
@@ -243,15 +223,9 @@ stdenv.mkDerivation (finalAttrs: {
     ]
     ++ (
       if enableShared then
-        [
-          "--enable-shared"
-          "--disable-static"
-        ]
+        [ "--enable-shared" "--disable-static" ]
       else
-        [
-          "--disable-shared"
-          "--enable-static"
-        ]
+        [ "--disable-shared" "--enable-static" ]
     )
     ++ (lib.optionals (stdenv.cc.bintools.isLLVM && lib.versionAtLeast stdenv.cc.bintools.version "17")
       [
@@ -312,10 +286,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     homepage = "https://www.gnu.org/software/binutils/";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      ericson2314
-      lovesegfault
-    ];
+    maintainers = with maintainers; [ ericson2314 lovesegfault ];
     platforms = platforms.unix;
 
     # INFO: Give binutils a lower priority than gcc-wrapper to prevent a

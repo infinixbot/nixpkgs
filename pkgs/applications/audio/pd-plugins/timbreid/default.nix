@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ unzip ];
-  buildInputs = [
-    puredata
-    fftw
-  ];
+  buildInputs = [ puredata fftw ];
 
   unpackPhase = ''
     mkdir source

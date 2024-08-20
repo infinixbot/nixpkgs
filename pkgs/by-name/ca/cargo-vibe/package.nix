@@ -31,14 +31,7 @@ rustPlatform.buildRustPackage rec {
       openssl
     ]
     ++ lib.optional stdenv.isLinux udev
-    ++ lib.optionals stdenv.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        AppKit
-        IOKit
-        CoreBluetooth
-      ]
-    );
+    ++ lib.optionals stdenv.isDarwin (with darwin.apple_sdk.frameworks; [ AppKit IOKit CoreBluetooth ]);
 
   meta = with lib; {
     description = "Cargo x Buttplug.io";

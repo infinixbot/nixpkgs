@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libnl
-    openssl
-    sqlite
-  ];
+  buildInputs = [ libnl openssl sqlite ];
 
   patches = [
     (fetchurl {
@@ -34,10 +30,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   # Based on hostapd's defconfig. Only differences are tracked.
   extraConfig =

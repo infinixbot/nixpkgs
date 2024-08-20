@@ -22,17 +22,8 @@ stdenv.mkDerivation rec {
     owner = "clbr";
   };
 
-  buildInputs = [
-    ncurses
-    libdrm
-    libpciaccess
-    libxcb
-  ];
-  nativeBuildInputs = [
-    pkg-config
-    gettext
-    makeWrapper
-  ];
+  buildInputs = [ ncurses libdrm libpciaccess libxcb ];
+  nativeBuildInputs = [ pkg-config gettext makeWrapper ];
 
   enableParallelBuilding = true;
 

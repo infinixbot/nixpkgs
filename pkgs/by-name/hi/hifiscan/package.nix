@@ -11,14 +11,7 @@ in
 python3Packages.buildPythonApplication {
   inherit pname version;
 
-  pythonPath = with python3Packages; [
-    eventkit
-    numpy
-    sounddevice
-    pyqt6
-    pyqt6-sip
-    pyqtgraph
-  ];
+  pythonPath = with python3Packages; [ eventkit numpy sounddevice pyqt6 pyqt6-sip pyqtgraph ];
 
   dontUseSetuptoolsCheck = true;
 

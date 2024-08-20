@@ -30,11 +30,7 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
 
   nativeBuildInputs = [
     asciidoc
@@ -56,11 +52,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/baskerville/sxhkd";
     license = lib.licenses.bsd2;
     mainProgram = "sxhkd";
-    maintainers = with lib.maintainers; [
-      vyp
-      AndersonTorres
-      ncfavier
-    ];
+    maintainers = with lib.maintainers; [ vyp AndersonTorres ncfavier ];
     inherit (libxcb.meta) platforms;
   };
 })

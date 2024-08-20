@@ -55,13 +55,7 @@ let
 
   dataPools = unique (filter (pool: !(elem pool rootPools)) allPools);
 
-  snapshotNames = [
-    "frequent"
-    "hourly"
-    "daily"
-    "weekly"
-    "monthly"
-  ];
+  snapshotNames = [ "frequent" "hourly" "daily" "weekly" "monthly" ];
 
   # When importing ZFS pools, there's one difficulty: These scripts may run
   # before the backing devices (physical HDDs, etc.) of the pool have been
@@ -170,10 +164,7 @@ let
         "systemd-ask-password-console.service"
       ] ++ optional (config.boot.initrd.clevis.useTang) "network-online.target";
       requiredBy = getPoolMounts prefix pool ++ [ "zfs-import.target" ];
-      before = getPoolMounts prefix pool ++ [
-        "shutdown.target"
-        "zfs-import.target"
-      ];
+      before = getPoolMounts prefix pool ++ [ "shutdown.target" "zfs-import.target" ];
       conflicts = [ "shutdown.target" ];
       unitConfig = {
         DefaultDependencies = "no";
@@ -317,10 +308,7 @@ in
       extraPools = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "tank"
-          "data"
-        ];
+        example = [ "tank" "data" ];
         description = ''
           Name or GUID of extra ZFS pools that you wish to import during boot.
 
@@ -381,10 +369,7 @@ in
       requestEncryptionCredentials = mkOption {
         type = types.either types.bool (types.listOf types.str);
         default = true;
-        example = [
-          "tank"
-          "data"
-        ];
+        example = [ "tank" "data" ];
         description = ''
           If true on import encryption keys or passwords for all encrypted datasets
           are requested. To only decrypt selected datasets supply a list of dataset
@@ -563,15 +548,9 @@ in
     };
 
     services.zfs.expandOnBoot = mkOption {
-      type = types.either (types.enum [
-        "disabled"
-        "all"
-      ]) (types.listOf types.str);
+      type = types.either (types.enum [ "disabled" "all" ]) (types.listOf types.str);
       default = "disabled";
-      example = [
-        "tank"
-        "dozer"
-      ];
+      example = [ "tank" "dozer" ];
       description = ''
         After importing, expand each device in the specified pools.
 
@@ -598,14 +577,7 @@ in
       };
 
       settings = mkOption {
-        type =
-          with types;
-          attrsOf (oneOf [
-            str
-            int
-            bool
-            (listOf str)
-          ]);
+        type = with types; attrsOf (oneOf [ str int bool (listOf str) ]);
         example = literalExpression ''
           {
             ZED_DEBUG_LOG = "/tmp/zed.debug.log";
@@ -874,11 +846,7 @@ in
         listToAttrs (
           map createImportService' dataPools
           ++ map createSyncService allPools
-          ++ map createZfsService [
-            "zfs-mount"
-            "zfs-share"
-            "zfs-zed"
-          ]
+          ++ map createZfsService [ "zfs-mount" "zfs-share" "zfs-zed" ]
         );
 
       systemd.targets.zfs-import.wantedBy = [ "zfs.target" ];

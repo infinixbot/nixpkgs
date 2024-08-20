@@ -30,11 +30,7 @@ stdenv.mkDerivation rec {
   pname = "wget2";
   version = "2.1.0";
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-  ];
+  outputs = [ "out" "lib" "dev" ];
 
   src = fetchFromGitLab {
     owner = "gnuwget";
@@ -108,10 +104,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://gitlab.com/gnuwget/wget2";
     # wget2 GPLv3+; libwget LGPLv3+
-    license = with licenses; [
-      gpl3Plus
-      lgpl3Plus
-    ];
+    license = with licenses; [ gpl3Plus lgpl3Plus ];
     maintainers = with maintainers; [ SuperSandro2000 ];
     mainProgram = "wget2";
   };

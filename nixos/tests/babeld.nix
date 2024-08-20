@@ -48,10 +48,7 @@ import ./make-test-python.nix (
       local_router =
         { pkgs, lib, ... }:
         {
-          virtualisation.vlans = [
-            10
-            20
-          ];
+          virtualisation.vlans = [ 10 20 ];
 
           networking = {
             useDHCP = false;
@@ -118,10 +115,7 @@ import ./make-test-python.nix (
       remote_router =
         { pkgs, lib, ... }:
         {
-          virtualisation.vlans = [
-            20
-            30
-          ];
+          virtualisation.vlans = [ 20 30 ];
 
           networking = {
             useDHCP = false;

@@ -31,11 +31,7 @@ stdenv.mkDerivation (finalAttrs: {
   version = "2.42.12";
 
   outputs =
-    [
-      "out"
-      "dev"
-      "man"
-    ]
+    [ "out" "dev" "man" ]
     ++ lib.optional withIntrospection "devdoc"
     ++ lib.optional (stdenv.buildPlatform == stdenv.hostPlatform) "installedTests";
 

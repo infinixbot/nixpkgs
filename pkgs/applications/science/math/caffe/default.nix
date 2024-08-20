@@ -62,10 +62,7 @@ stdenv.mkDerivation rec {
     sha256 = "104jp3cm823i3cdph7hgsnj6l77ygbwsy35mdmzhmsi4jxprd9j3";
   };
 
-  nativeBuildInputs = [
-    cmake
-    doxygen
-  ];
+  nativeBuildInputs = [ cmake doxygen ];
 
   cmakeFlags =
     # It's important that caffe is passed the major and minor version only because that's what
@@ -88,33 +85,15 @@ stdenv.mkDerivation rec {
     ++ [ "-DUSE_LMDB=${toggle lmdbSupport}" ];
 
   buildInputs =
-    [
-      boost
-      gflags
-      glog
-      protobuf
-      hdf5-cpp
-      opencv4
-      blas
-    ]
+    [ boost gflags glog protobuf hdf5-cpp opencv4 blas ]
     ++ lib.optional cudaSupport cudatoolkit
     ++ lib.optional (lib.versionOlder cudatoolkit.version "10.1" && hasCudnn) cudaPackages.cudnn
     ++ lib.optional (lib.versionAtLeast cudatoolkit.version "10.1" && hasCudnn) cudaPackages.cudnn_7_6
     ++ lib.optional lmdbSupport lmdb
     ++ lib.optional ncclSupport nccl
-    ++ lib.optionals leveldbSupport [
-      leveldb
-      snappy
-    ]
-    ++ lib.optionals pythonSupport [
-      python
-      numpy
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      Accelerate
-      CoreGraphics
-      CoreVideo
-    ];
+    ++ lib.optionals leveldbSupport [ leveldb snappy ]
+    ++ lib.optionals pythonSupport [ python numpy ]
+    ++ lib.optionals stdenv.isDarwin [ Accelerate CoreGraphics CoreVideo ];
 
   propagatedBuildInputs = lib.optionals pythonSupport (
     # requirements.txt
@@ -143,10 +122,7 @@ stdenv.mkDerivation rec {
     )
   );
 
-  outputs = [
-    "bin"
-    "out"
-  ];
+  outputs = [ "bin" "out" ];
   propagatedBuildOutputs = [ ]; # otherwise propagates out -> bin cycle
 
   patches =

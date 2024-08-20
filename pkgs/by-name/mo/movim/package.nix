@@ -58,30 +58,9 @@ php.buildComposerProject (finalAttrs: {
       extensions = (
         { all, enabled }:
         enabled
-        ++ (with all; [
-          curl
-          dom
-          gd
-          imagick
-          mbstring
-          pdo
-          simplexml
-        ])
-        ++ lib.optionals withPgsql (
-          with all;
-          [
-            pdo_pgsql
-            pgsql
-          ]
-        )
-        ++ lib.optionals withMysql (
-          with all;
-          [
-            mysqli
-            mysqlnd
-            pdo_mysql
-          ]
-        )
+        ++ (with all; [ curl dom gd imagick mbstring pdo simplexml ])
+        ++ lib.optionals withPgsql (with all; [ pdo_pgsql pgsql ])
+        ++ lib.optionals withMysql (with all; [ mysqli mysqlnd pdo_mysql ])
       );
     }
     // lib.optionalAttrs (phpCfg != null) {

@@ -17,10 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-ER0vK0xYUbQT3bqUosQMFT7HBycb3U8oI4Eak72myzs=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   checkFlags = [
     # Disable flaky tests on Darwin

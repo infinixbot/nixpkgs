@@ -25,11 +25,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "libshumate";
   version = "1.2.3";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
   outputBin = "devdoc"; # demo app
 
   src = fetchurl {

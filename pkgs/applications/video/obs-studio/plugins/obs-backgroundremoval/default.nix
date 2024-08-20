@@ -22,17 +22,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-QoC9/HkwOXMoFNvcOxQkGCLLAJmsja801LKCNT9O9T0=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-  ];
-  buildInputs = [
-    obs-studio
-    onnxruntime
-    opencv
-    qt6.qtbase
-    curl
-  ];
+  nativeBuildInputs = [ cmake ninja ];
+  buildInputs = [ obs-studio onnxruntime opencv qt6.qtbase curl ];
 
   dontWrapQtApps = true;
 

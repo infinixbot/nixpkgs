@@ -96,11 +96,7 @@ buildPerlPackage rec {
     sha256 = "sha256-ENnT2YK7rpODII9TqiEYSCp5mpWOnxskeSuAf8Ilqro=";
   };
 
-  outputs = [
-    "out"
-    "devdoc"
-    "sa_config"
-  ];
+  outputs = [ "out" "devdoc" "sa_config" ];
 
   postConfigure = ''
     substituteInPlace Makefile --replace 'TEST_FILES = t/*.t' \
@@ -185,10 +181,7 @@ buildPerlPackage rec {
   meta = with lib; {
     homepage = "https://public-inbox.org/";
     license = licenses.agpl3Plus;
-    maintainers = with maintainers; [
-      julm
-      qyliss
-    ];
+    maintainers = with maintainers; [ julm qyliss ];
     platforms = platforms.all;
   };
 }

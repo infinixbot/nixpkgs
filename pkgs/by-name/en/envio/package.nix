@@ -27,10 +27,7 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    libgpg-error
-    gpgme
-  ] ++ lib.optionals stdenv.isDarwin [ Security ];
+  buildInputs = [ libgpg-error gpgme ] ++ lib.optionals stdenv.isDarwin [ Security ];
 
   # Remove postPatch when updating to the next envio release
   # For details see https://github.com/envio-cli/envio/pull/31
@@ -50,10 +47,7 @@ rustPlatform.buildRustPackage rec {
       switch between different configurations and apply them to their current
       environment.
     '';
-    license = with licenses; [
-      mit
-      asl20
-    ];
+    license = with licenses; [ mit asl20 ];
     platforms = platforms.unix;
     maintainers = with maintainers; [ afh ];
   };

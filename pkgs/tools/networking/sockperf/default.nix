@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-VvxL/bcn69uL7CBpDu4qwbKZwlC4N/kNeRX4k3UzxPI=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    doxygen
-  ];
+  nativeBuildInputs = [ autoreconfHook doxygen ];
 
   configureFlags = [
     "--enable-doc"

@@ -28,11 +28,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-B+YNTo2rZAL4PqDo+lFOQiWM9bl/TIn8xrJyefrIAYE=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "lib"
-  ];
+  outputs = [ "out" "dev" "lib" ];
 
   nativeBuildInputs = [
     cmake
@@ -62,10 +58,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/podofo/podofo";
     description = "Library to work with the PDF file format";
     platforms = lib.platforms.all;
-    license = with lib.licenses; [
-      gpl2Plus
-      lgpl2Plus
-    ];
+    license = with lib.licenses; [ gpl2Plus lgpl2Plus ];
     maintainers = [ ];
   };
 })

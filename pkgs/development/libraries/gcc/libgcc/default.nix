@@ -29,10 +29,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "libgcc";
   inherit (gcc.cc) src version;
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   strictDeps = true;
   depsBuildBuild = [ buildPackages.stdenv.cc ];
@@ -134,10 +131,7 @@ stdenv.mkDerivation (finalAttrs: {
       export LD_FOR_TARGET=${stdenv.cc.bintools}/bin/$LD_FOR_TARGET
     '';
 
-  configurePlatforms = [
-    "build"
-    "host"
-  ];
+  configurePlatforms = [ "build" "host" ];
   configureFlags = [
     "cross_compiling=true"
     "--disable-gcov"

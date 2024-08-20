@@ -27,15 +27,8 @@ mkDerivation rec {
     substituteInPlace i18n/CMakeLists.txt --replace qt5_create_translation qt_add_translation
   '';
 
-  nativeBuildInputs = [
-    cmake
-    qttools
-    wrapQtAppsHook
-  ];
-  buildInputs = [
-    qtbase
-    qtsvg
-  ];
+  nativeBuildInputs = [ cmake qttools wrapQtAppsHook ];
+  buildInputs = [ qtbase qtsvg ];
   strictDeps = true;
 
   installPhase = ''

@@ -55,9 +55,6 @@ stdenv.mkDerivation rec {
     license = licenses.bsd3;
     platforms = platforms.unix;
     badPlatforms = platforms.darwin;
-    maintainers = [
-      maintainers.bjornfor
-      maintainers.rongcuid
-    ];
+    maintainers = [ maintainers.bjornfor maintainers.rongcuid ];
   };
 }

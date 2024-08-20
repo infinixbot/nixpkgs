@@ -94,10 +94,7 @@ let
           sha256.${stdenv.hostPlatform.system} or (throw "unsupported system ${stdenv.hostPlatform.system}");
       };
 
-    nativeBuildInputs = [
-      file
-      makeWrapper
-    ] ++ lib.optional installjce unzip;
+    nativeBuildInputs = [ file makeWrapper ] ++ lib.optional installjce unzip;
 
     # See: https://github.com/NixOS/patchelf/issues/10
     dontStrip = 1;
@@ -222,12 +219,7 @@ let
 
     meta = with lib; {
       license = licenses.unfree;
-      platforms = [
-        "i686-linux"
-        "x86_64-linux"
-        "armv7l-linux"
-        "aarch64-linux"
-      ]; # some inherit jre.meta.platforms
+      platforms = [ "i686-linux" "x86_64-linux" "armv7l-linux" "aarch64-linux" ]; # some inherit jre.meta.platforms
       mainProgram = "java";
     };
 

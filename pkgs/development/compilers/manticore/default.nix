@@ -24,15 +24,9 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ autoreconfHook ];
 
-  buildInputs = [
-    coreutils
-    smlnj
-  ];
+  buildInputs = [ coreutils smlnj ];
 
-  autoreconfFlags = [
-    "-Iconfig"
-    "-vfi"
-  ];
+  autoreconfFlags = [ "-Iconfig" "-vfi" ];
 
   unpackPhase = ''
     mkdir -p $out

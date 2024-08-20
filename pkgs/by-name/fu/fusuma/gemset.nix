@@ -10,11 +10,7 @@
     version = "3.5.0";
   };
   fusuma-plugin-appmatcher = {
-    dependencies = [
-      "fusuma"
-      "rexml"
-      "ruby-dbus"
-    ];
+    dependencies = [ "fusuma" "rexml" "ruby-dbus" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -36,10 +32,7 @@
     version = "0.11.0";
   };
   fusuma-plugin-sendkey = {
-    dependencies = [
-      "fusuma"
-      "revdev"
-    ];
+    dependencies = [ "fusuma" "revdev" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

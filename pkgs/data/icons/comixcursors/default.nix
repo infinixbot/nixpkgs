@@ -9,26 +9,10 @@
 
 let
   dimensions = {
-    color = [
-      "Black"
-      "Blue"
-      "Green"
-      "Orange"
-      "Red"
-      "White"
-    ];
-    opacity = [
-      ""
-      "Opaque_"
-    ]; # Translucent or opaque.
-    thickness = [
-      ""
-      "Slim_"
-    ]; # Thick or slim edges.
-    handedness = [
-      ""
-      "LH_"
-    ]; # Right- or left-handed.
+    color = [ "Black" "Blue" "Green" "Orange" "Red" "White" ];
+    opacity = [ "" "Opaque_" ]; # Translucent or opaque.
+    thickness = [ "" "Slim_" ]; # Thick or slim edges.
+    handedness = [ "" "LH_" ]; # Right- or left-handed.
   };
   variantName =
     {
@@ -55,11 +39,7 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "0bpxqw4izj7m0zb9lnxnmsjicfw60ppkdyv5nwrrz4x865wb296a";
   };
 
-  nativeBuildInputs = [
-    bc
-    librsvg
-    xcursorgen
-  ];
+  nativeBuildInputs = [ bc librsvg xcursorgen ];
 
   patches = [ ./makefile-shell-var.patch ];
 

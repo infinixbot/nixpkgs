@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
 
   patches = [ ./msggen.patch ];
 
-  buildInputs = [
-    opensp
-    perl
-  ];
+  buildInputs = [ opensp perl ];
 
   configureFlags = [
     "--enable-spincludedir=${opensp}/include/OpenSP"

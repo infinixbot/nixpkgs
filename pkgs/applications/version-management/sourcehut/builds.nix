@@ -99,9 +99,6 @@ buildPythonPackage rec {
     homepage = "https://git.sr.ht/~sircmpwn/builds.sr.ht";
     description = "Continuous integration service for the sr.ht network";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [
-      eadwu
-      christoph-heiss
-    ];
+    maintainers = with maintainers; [ eadwu christoph-heiss ];
   };
 }

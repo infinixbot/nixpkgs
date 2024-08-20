@@ -25,24 +25,11 @@ stdenv.mkDerivation rec {
       --replace "register " ""
   '';
 
-  nativeBuildInputs = [
-    cmake
-    makeWrapper
-  ];
-  buildInputs = [
-    libminc
-    ebtks
-  ];
-  propagatedBuildInputs = with perlPackages; [
-    perl
-    MNI-Perllib
-    GetoptTabular
-  ];
+  nativeBuildInputs = [ cmake makeWrapper ];
+  buildInputs = [ libminc ebtks ];
+  propagatedBuildInputs = with perlPackages; [ perl MNI-Perllib GetoptTabular ];
 
-  cmakeFlags = [
-    "-DLIBMINC_DIR=${libminc}/lib/cmake"
-    "-DEBTKS_DIR=${ebtks}/lib/"
-  ];
+  cmakeFlags = [ "-DLIBMINC_DIR=${libminc}/lib/cmake" "-DEBTKS_DIR=${ebtks}/lib/" ];
 
   postFixup = ''
     for p in $out/bin/*; do

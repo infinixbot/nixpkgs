@@ -33,19 +33,9 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    installShellFiles
-    rustPlatform.bindgenHook
-  ];
+  nativeBuildInputs = [ cmake pkg-config installShellFiles rustPlatform.bindgenHook ];
 
-  buildInputs =
-    [ openssl ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Security
-      libiconv
-    ];
+  buildInputs = [ openssl ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Security libiconv ];
 
   # relax lints to fix an error caused by invalid macro_export
   # error: `log_error` isn't a valid `#[macro_export]` argument
@@ -103,9 +93,6 @@ rustPlatform.buildRustPackage rec {
     '';
     homepage = "https://www.tremor.rs/";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      humancalico
-      happysalada
-    ];
+    maintainers = with maintainers; [ humancalico happysalada ];
   };
 }

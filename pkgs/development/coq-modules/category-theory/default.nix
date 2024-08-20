@@ -45,10 +45,7 @@ mkCoqDerivation {
     ] null;
 
   mlPlugin = true;
-  propagatedBuildInputs = [
-    ssreflect
-    equations
-  ];
+  propagatedBuildInputs = [ ssreflect equations ];
 
   meta = {
     description = "Formalization of category theory in Coq for personal study and practical work";

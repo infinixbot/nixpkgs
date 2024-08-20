@@ -21,15 +21,9 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     perl # for pod2man
   ];
-  buildInputs = [
-    udev
-    sg3_utils
-  ];
+  buildInputs = [ udev sg3_utils ];
 
-  installTargets = [
-    "install"
-    "install-systemd"
-  ];
+  installTargets = [ "install" "install-systemd" ];
 
   makeFlags = [
     "MAN_INSTDIR=${placeholder "out"}/share/man"

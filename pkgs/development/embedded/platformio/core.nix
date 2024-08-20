@@ -23,10 +23,7 @@ buildPythonApplication rec {
     hash = "sha256-w5JUAqQRNxq8ZrX8ffny2K7xWBkGr2H3+apYqCPXw9c=";
   };
 
-  outputs = [
-    "out"
-    "udev"
-  ];
+  outputs = [ "out" "udev" ];
 
   patches = [
     (substituteAll {
@@ -214,10 +211,7 @@ buildPythonApplication rec {
     downloadPage = "https://github.com/platformio/platformio-core";
     homepage = "https://platformio.org";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      mog
-      makefu
-    ];
+    maintainers = with maintainers; [ mog makefu ];
     mainProgram = "platformio";
   };
 }

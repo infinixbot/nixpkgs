@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-p1uD0Q2kqB40fbAEk7/fdOVg9T7SW+2aACSn7hDAD+E=";
   };
 
-  buildInputs = [
-    ncurses
-    lua
-  ] ++ lib.optional stdenv.isDarwin libiconv;
+  buildInputs = [ ncurses lua ] ++ lib.optional stdenv.isDarwin libiconv;
 
   # fix paths
   prePatch = ''

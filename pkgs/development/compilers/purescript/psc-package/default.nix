@@ -31,10 +31,7 @@ stdenv.mkDerivation rec {
         sha256 = "1zvay9q3xj6yd76w6qyb9la4jaj9zvpf4dp78xcznfqbnbhm1a54";
       };
 
-  buildInputs = [
-    gmp
-    zlib
-  ];
+  buildInputs = [ gmp zlib ];
   nativeBuildInputs = [ installShellFiles ];
 
   libPath = lib.makeLibraryPath buildInputs;
@@ -73,9 +70,6 @@ stdenv.mkDerivation rec {
     mainProgram = "psc-package";
     license = licenses.bsd3;
     maintainers = [ ];
-    platforms = [
-      "x86_64-darwin"
-      "x86_64-linux"
-    ];
+    platforms = [ "x86_64-darwin" "x86_64-linux" ];
   };
 }

@@ -26,10 +26,7 @@
 stdenv.mkDerivation rec {
   pname = "fprintd";
   version = "1.94.3";
-  outputs = [
-    "out"
-    "devdoc"
-  ];
+  outputs = [ "out" "devdoc" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.freedesktop.org";

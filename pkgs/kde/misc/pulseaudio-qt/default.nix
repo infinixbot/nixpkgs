@@ -17,8 +17,5 @@ mkKdeDerivation rec {
   extraNativeBuildInputs = [ pkg-config ];
   extraBuildInputs = [ pulseaudio ];
 
-  meta.license = with lib.licenses; [
-    lgpl21Only
-    lgpl3Only
-  ];
+  meta.license = with lib.licenses; [ lgpl21Only lgpl3Only ];
 }

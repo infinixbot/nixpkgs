@@ -46,10 +46,7 @@ buildGoModule rec {
 
   nativeBuildInputs = [ installShellFiles ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   # Override the go-modules fetcher derivation to fetch plugins
   modBuildPhase = ''
@@ -108,10 +105,6 @@ buildGoModule rec {
     description = "DNS server that runs middleware";
     mainProgram = "coredns";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      rushmorem
-      rtreffer
-      deltaevo
-    ];
+    maintainers = with maintainers; [ rushmorem rtreffer deltaevo ];
   };
 }

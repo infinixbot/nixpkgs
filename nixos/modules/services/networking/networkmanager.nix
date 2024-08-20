@@ -67,14 +67,7 @@ let
 
   overrideNameserversScript = pkgs.writeScript "02overridedns" ''
     #!/bin/sh
-    PATH=${
-      with pkgs;
-      makeBinPath [
-        gnused
-        gnugrep
-        coreutils
-      ]
-    }
+    PATH=${with pkgs; makeBinPath [ gnused gnugrep coreutils ]}
     tmp=$(mktemp)
     sed '/nameserver /d' /etc/resolv.conf > $tmp
     grep 'nameserver ' /etc/resolv.conf | \
@@ -91,13 +84,7 @@ let
 
   macAddressOptWifi = mkOption {
     type = types.either types.str (
-      types.enum [
-        "permanent"
-        "preserve"
-        "random"
-        "stable"
-        "stable-ssid"
-      ]
+      types.enum [ "permanent" "preserve" "random" "stable" "stable-ssid" ]
     );
     default = "preserve";
     example = "00:11:22:33:44:55";
@@ -114,14 +101,7 @@ let
   };
 
   macAddressOptEth = mkOption {
-    type = types.either types.str (
-      types.enum [
-        "permanent"
-        "preserve"
-        "random"
-        "stable"
-      ]
-    );
+    type = types.either types.str (types.enum [ "permanent" "preserve" "random" "stable" ]);
     default = "preserve";
     example = "00:11:22:33:44:55";
     description = ''
@@ -247,10 +227,7 @@ in
       };
 
       dhcp = mkOption {
-        type = types.enum [
-          "dhcpcd"
-          "internal"
-        ];
+        type = types.enum [ "dhcpcd" "internal" ];
         default = "internal";
         description = ''
           Which program (or internal library) should be used for DHCP.
@@ -258,14 +235,7 @@ in
       };
 
       logLevel = mkOption {
-        type = types.enum [
-          "OFF"
-          "ERR"
-          "WARN"
-          "INFO"
-          "DEBUG"
-          "TRACE"
-        ];
+        type = types.enum [ "OFF" "ERR" "WARN" "INFO" "DEBUG" "TRACE" ];
         default = "WARN";
         description = ''
           Set the default logging verbosity level.
@@ -296,10 +266,7 @@ in
         macAddress = macAddressOptWifi;
 
         backend = mkOption {
-          type = types.enum [
-            "wpa_supplicant"
-            "iwd"
-          ];
+          type = types.enum [ "wpa_supplicant" "iwd" ];
           default = "wpa_supplicant";
           description = ''
             Specify the Wi-Fi backend used for the device.
@@ -326,12 +293,7 @@ in
       };
 
       dns = mkOption {
-        type = types.enum [
-          "default"
-          "dnsmasq"
-          "systemd-resolved"
-          "none"
-        ];
+        type = types.enum [ "default" "dnsmasq" "systemd-resolved" "none" ];
         default = "default";
         description = ''
           Set the DNS (`resolv.conf`) processing mode.
@@ -499,91 +461,49 @@ in
   };
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "networking"
-        "networkmanager"
-        "packages"
-      ]
-      [
-        "networking"
-        "networkmanager"
-        "plugins"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "networking"
-        "networkmanager"
-        "useDnsmasq"
-      ]
-      [
-        "networking"
-        "networkmanager"
-        "dns"
-      ]
-    )
-    (mkRemovedOptionModule
-      [
-        "networking"
-        "networkmanager"
-        "extraConfig"
-      ]
-      ''
-        This option was removed in favour of `networking.networkmanager.settings`,
-        which accepts structured nix-code equivalent to the ini
-        and allows for overriding settings.
-        Example patch:
-        ```patch
-           networking.networkmanager = {
-        -    extraConfig = '''
-        -      [main]
-        -      no-auto-default=*
-        -    '''
-        +    settings.main.no-auto-default = "*";
-           };
-        ```
-      ''
-    )
-    (mkRemovedOptionModule
-      [
-        "networking"
-        "networkmanager"
-        "enableFccUnlock"
-      ]
-      ''
-        This option was removed, because using bundled FCC unlock scripts is risky,
-        might conflict with vendor-provided unlock scripts, and should
-        be a conscious decision on a per-device basis.
-        Instead it's recommended to use the
-        `networking.networkmanager.fccUnlockScripts` option.
-      ''
-    )
-    (mkRemovedOptionModule
-      [
-        "networking"
-        "networkmanager"
-        "dynamicHosts"
-      ]
-      ''
-        This option was removed because allowing (multiple) regular users to
-        override host entries affecting the whole system opens up a huge attack
-        vector. There seem to be very rare cases where this might be useful.
-        Consider setting system-wide host entries using networking.hosts, provide
-        them via the DNS server in your network, or use environment.etc
-        to add a file into /etc/NetworkManager/dnsmasq.d reconfiguring hostsdir.
-      ''
-    )
-    (mkRemovedOptionModule
-      [
-        "networking"
-        "networkmanager"
-        "firewallBackend"
-      ]
-      ''
-        This option was removed as NixOS is now using iptables-nftables-compat even when using iptables, therefore Networkmanager now uses the nftables backend unconditionally.
-      ''
-    )
+    (mkRenamedOptionModule [ "networking" "networkmanager" "packages" ] [
+      "networking"
+      "networkmanager"
+      "plugins"
+    ])
+    (mkRenamedOptionModule [ "networking" "networkmanager" "useDnsmasq" ] [
+      "networking"
+      "networkmanager"
+      "dns"
+    ])
+    (mkRemovedOptionModule [ "networking" "networkmanager" "extraConfig" ] ''
+      This option was removed in favour of `networking.networkmanager.settings`,
+      which accepts structured nix-code equivalent to the ini
+      and allows for overriding settings.
+      Example patch:
+      ```patch
+         networking.networkmanager = {
+      -    extraConfig = '''
+      -      [main]
+      -      no-auto-default=*
+      -    '''
+      +    settings.main.no-auto-default = "*";
+         };
+      ```
+    '')
+    (mkRemovedOptionModule [ "networking" "networkmanager" "enableFccUnlock" ] ''
+      This option was removed, because using bundled FCC unlock scripts is risky,
+      might conflict with vendor-provided unlock scripts, and should
+      be a conscious decision on a per-device basis.
+      Instead it's recommended to use the
+      `networking.networkmanager.fccUnlockScripts` option.
+    '')
+    (mkRemovedOptionModule [ "networking" "networkmanager" "dynamicHosts" ] ''
+      This option was removed because allowing (multiple) regular users to
+      override host entries affecting the whole system opens up a huge attack
+      vector. There seem to be very rare cases where this might be useful.
+      Consider setting system-wide host entries using networking.hosts, provide
+      them via the DNS server in your network, or use environment.etc
+      to add a file into /etc/NetworkManager/dnsmasq.d reconfiguring hostsdir.
+    '')
+    (mkRemovedOptionModule [ "networking" "networkmanager" "firewallBackend" ] ''
+      This option was removed as NixOS is now using iptables-nftables-compat even when using iptables, therefore Networkmanager now uses the nftables backend unconditionally.
+    '')
   ];
 
   ###### implementation
@@ -686,25 +606,15 @@ in
 
     systemd.services.ModemManager = {
       aliases = [ "dbus-org.freedesktop.ModemManager1.service" ];
-      path = lib.optionals (cfg.fccUnlockScripts != [ ]) [
-        pkgs.libqmi
-        pkgs.libmbim
-      ];
+      path = lib.optionals (cfg.fccUnlockScripts != [ ]) [ pkgs.libqmi pkgs.libmbim ];
     };
 
     systemd.services.NetworkManager-dispatcher = {
       wantedBy = [ "network.target" ];
-      restartTriggers = [
-        configFile
-        overrideNameserversScript
-      ];
+      restartTriggers = [ configFile overrideNameserversScript ];
 
       # useful binaries for user-specified hooks
-      path = [
-        pkgs.iproute2
-        pkgs.util-linux
-        pkgs.coreutils
-      ];
+      path = [ pkgs.iproute2 pkgs.util-linux pkgs.coreutils ];
       aliases = [ "dbus-org.freedesktop.nm-dispatcher.service" ];
     };
 

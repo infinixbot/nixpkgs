@@ -6,8 +6,5 @@
 
 qtModule {
   pname = "qtscxml";
-  propagatedBuildInputs = [
-    qtbase
-    qtdeclarative
-  ];
+  propagatedBuildInputs = [ qtbase qtdeclarative ];
 }

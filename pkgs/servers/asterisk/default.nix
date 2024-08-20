@@ -47,38 +47,25 @@ let
       inherit version;
       pname = "asterisk" + lib.optionalString ldapSupport "-ldap";
 
-      buildInputs =
-        [
-          jansson
-          libedit
-          libxml2
-          libxslt
-          ncurses
-          openssl
-          sqlite
-          dmidecode
-          libuuid
-          newt
-          lua
-          speex
-          srtp
-          wget
-          curl
-          iksemel
-        ]
-        ++ lib.optionals withOpus [
-          libopus
-          opusfile
-          libogg
-        ]
-        ++ lib.optionals ldapSupport [ openldap ];
-      nativeBuildInputs = [
-        util-linux
-        pkg-config
-        autoconf
-        libtool
-        automake
-      ];
+      buildInputs = [
+        jansson
+        libedit
+        libxml2
+        libxslt
+        ncurses
+        openssl
+        sqlite
+        dmidecode
+        libuuid
+        newt
+        lua
+        speex
+        srtp
+        wget
+        curl
+        iksemel
+      ] ++ lib.optionals withOpus [ libopus opusfile libogg ] ++ lib.optionals ldapSupport [ openldap ];
+      nativeBuildInputs = [ util-linux pkg-config autoconf libtool automake ];
 
       patches = [
         # We want the Makefile to install the default /var skeleton
@@ -155,11 +142,7 @@ let
         homepage = "https://www.asterisk.org/";
         license = licenses.gpl2Only;
         mainProgram = "asterisk";
-        maintainers = with maintainers; [
-          auntie
-          DerTim1
-          yorickvp
-        ];
+        maintainers = with maintainers; [ auntie DerTim1 yorickvp ];
       };
     };
 
@@ -203,13 +186,7 @@ let
     }
   ) (lib.importJSON ./versions.json);
 
-  updateScript_python = python3.withPackages (
-    p: with p; [
-      packaging
-      beautifulsoup4
-      requests
-    ]
-  );
+  updateScript_python = python3.withPackages (p: with p; [ packaging beautifulsoup4 requests ]);
   updateScript = writeScript "asterisk-update" ''
     #!/usr/bin/env bash
     exec ${updateScript_python}/bin/python ${toString ./update.py}

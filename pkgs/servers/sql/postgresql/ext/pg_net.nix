@@ -10,10 +10,7 @@ stdenv.mkDerivation rec {
   pname = "pg_net";
   version = "0.8.0";
 
-  buildInputs = [
-    curl
-    postgresql
-  ];
+  buildInputs = [ curl postgresql ];
 
   src = fetchFromGitHub {
     owner = "supabase";

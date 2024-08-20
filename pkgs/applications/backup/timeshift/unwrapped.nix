@@ -66,9 +66,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/linuxmint/timeshift";
     license = licenses.gpl2Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      ShamrockLee
-      bobby285271
-    ];
+    maintainers = with maintainers; [ ShamrockLee bobby285271 ];
   };
 }

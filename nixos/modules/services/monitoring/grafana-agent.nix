@@ -13,10 +13,7 @@ let
 in
 {
   meta = {
-    maintainers = with maintainers; [
-      flokli
-      zimbatm
-    ];
+    maintainers = with maintainers; [ flokli zimbatm ];
   };
 
   options.services.grafana-agent = {
@@ -44,10 +41,7 @@ in
     extraFlags = mkOption {
       type = with types; listOf str;
       default = [ ];
-      example = [
-        "-enable-features=integrations-next"
-        "-disable-reporting"
-      ];
+      example = [ "-enable-features=integrations-next" "-disable-reporting" ];
       description = ''
         Extra command-line flags passed to {command}`grafana-agent`.
 

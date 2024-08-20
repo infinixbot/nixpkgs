@@ -18,20 +18,14 @@ stdenv.mkDerivation rec {
     hash = "sha256-FP3y/YHsPPqey4QfxIiC4QjruuK1K2Bg+2QL2gXDT+k=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
   buildInputs = [ openssl ];
 
   enableParallelBuilding = true;
 
   meta = with lib; {
     homepage = "https://github.com/OpenSC/pkcs11-helper";
-    license = with licenses; [
-      bsd3
-      gpl2Only
-    ];
+    license = with licenses; [ bsd3 gpl2Only ];
     description = "Library that simplifies the interaction with PKCS#11 providers";
     platforms = platforms.unix;
   };

@@ -25,12 +25,7 @@ buildGoModule rec {
 
   postFixup = ''
     wrapProgram $out/bin/out-of-tree \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          qemu
-          podman
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ qemu podman ]}"
   '';
 
   meta = with lib; {

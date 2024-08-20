@@ -24,25 +24,11 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-fCqet+foQjI+LpTQ/6Egup1GzXELlL2hgbh0dCKLwPI=";
   };
 
-  nativeBuildInputs = [
-    which
-    pkg-config
-    unixtools.whereis
-  ];
-  buildInputs = [
-    libXtst
-    gtk2
-    gtk3
-    qt5.qtbase
-    libchewing
-    anthy
-  ];
+  nativeBuildInputs = [ which pkg-config unixtools.whereis ];
+  buildInputs = [ libXtst gtk2 gtk3 qt5.qtbase libchewing anthy ];
 
   preConfigure = "patchShebangs configure";
-  configureFlags = [
-    "--disable-lib64"
-    "--disable-qt5-immodule"
-  ];
+  configureFlags = [ "--disable-lib64" "--disable-qt5-immodule" ];
   dontWrapQtApps = true;
   postFixup = ''
     hime_rpath=$(patchelf --print-rpath $out/bin/hime)

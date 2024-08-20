@@ -31,20 +31,13 @@ buildPythonApplication rec {
 
   buildInputs = lib.optionals enableGUI [ (if stdenv.isLinux then qt6.qtwayland else qt6.qtbase) ];
   propagatedBuildInputs =
-    [
-      certifi
-      pem
-      twisted
-    ]
+    [ certifi pem twisted ]
     ++ twisted.optional-dependencies.tls
     ++ lib.optional enableGUI pyside6
     ++ lib.optional (stdenv.isDarwin && enableGUI) appnope;
   nativeBuildInputs = lib.optionals enableGUI [ qt6.wrapQtAppsHook ];
 
-  makeFlags = [
-    "DESTDIR="
-    "PREFIX=$(out)"
-  ];
+  makeFlags = [ "DESTDIR=" "PREFIX=$(out)" ];
 
   postFixup = lib.optionalString enableGUI ''
     wrapQtApp $out/bin/syncplay

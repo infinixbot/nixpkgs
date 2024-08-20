@@ -54,10 +54,7 @@ mkDerivation {
     license = with lib.licenses; [ gpl2 ];
     maintainers = [ ];
   };
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     kauth
     kcodecs

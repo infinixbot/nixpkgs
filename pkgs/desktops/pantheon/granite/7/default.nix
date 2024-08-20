@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
   pname = "granite";
   version = "7.5.0";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "elementary";

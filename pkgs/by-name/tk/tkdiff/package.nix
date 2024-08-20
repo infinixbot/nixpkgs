@@ -25,12 +25,7 @@ stdenv.mkDerivation (finalAttrs: {
 
     install -Dm755 -t $out/bin tkdiff
     wrapProgram $out/bin/tkdiff \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          diffutils
-          tk
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ diffutils tk ]}
 
     runHook postInstall
   '';

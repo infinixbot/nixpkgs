@@ -36,11 +36,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     update-source-version irpf "$version"
   '';
 
-  nativeBuildInputs = [
-    unzip
-    makeWrapper
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ unzip makeWrapper copyDesktopItems ];
 
   desktopItems = [
     (makeDesktopItem {
@@ -89,10 +85,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     license = licenses.unfree;
     platforms = platforms.all;
     sourceProvenance = with sourceTypes; [ binaryBytecode ];
-    maintainers = with maintainers; [
-      atila
-      bryanasdev000
-    ];
+    maintainers = with maintainers; [ atila bryanasdev000 ];
     mainProgram = "irpf";
   };
 })

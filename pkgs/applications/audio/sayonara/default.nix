@@ -34,12 +34,7 @@ mkDerivation rec {
     hash = "sha256-tJ/8tGNkmTwWRCpPy/h85SP/6QDAgcaKWJdM5MSAXJw=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-    pkg-config
-    qttools
-  ];
+  nativeBuildInputs = [ cmake ninja pkg-config qttools ];
 
   buildInputs =
     [

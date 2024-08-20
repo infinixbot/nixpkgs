@@ -82,10 +82,7 @@ stdenv.mkDerivation rec {
     description = "Opensource Bias or Ambient Lighting implementation";
     homepage = "https://github.com/hyperion-project/hyperion.ng";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      algram
-      kazenyuk
-    ];
+    maintainers = with maintainers; [ algram kazenyuk ];
     platforms = platforms.unix;
   };
 }

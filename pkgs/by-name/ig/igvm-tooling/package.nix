@@ -65,10 +65,7 @@ python3.pkgs.buildPythonApplication rec {
     description = "IGVM Image Generator";
     homepage = "https://github.com/microsoft/igvm-tooling";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [
-      malt3
-      katexochen
-    ];
+    maintainers = with lib.maintainers; [ malt3 katexochen ];
     changelog = "https://github.com/microsoft/igvm-tooling/releases/tag/igvm-${version}";
     mainProgram = "igvmgen";
     platforms = lib.platforms.all;

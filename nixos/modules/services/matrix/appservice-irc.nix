@@ -19,10 +19,7 @@ let
     pkgs.runCommand "matrix-appservice-irc.yml"
       {
         # Because this program will be run at build time, we need `nativeBuildInputs`
-        nativeBuildInputs = [
-          (pkgs.python3.withPackages (ps: [ ps.jsonschema ]))
-          pkgs.remarshal
-        ];
+        nativeBuildInputs = [ (pkgs.python3.withPackages (ps: [ ps.jsonschema ])) pkgs.remarshal ];
         preferLocalBuild = true;
 
         config = builtins.toJSON cfg.settings;

@@ -68,10 +68,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     homepage = "https://github.com/falkTX/JackAss";
     maintainers = with maintainers; [ PowerUser64 ];
-    license = with licenses; [
-      mit
-      unfree
-    ];
+    license = with licenses; [ mit unfree ];
     platforms = platforms.linux;
   };
 })

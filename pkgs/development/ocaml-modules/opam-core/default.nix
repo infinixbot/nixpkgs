@@ -15,14 +15,7 @@ buildDunePackage rec {
 
   inherit (opam) src version;
 
-  propagatedBuildInputs = [
-    jsonm
-    ocamlgraph
-    uutf
-    re
-    sha
-    swhid_core
-  ];
+  propagatedBuildInputs = [ jsonm ocamlgraph uutf re sha swhid_core ];
 
   # get rid of check for curl at configure time
   # opam-core does not call curl at run time

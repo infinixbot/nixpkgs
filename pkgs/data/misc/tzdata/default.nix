@@ -26,12 +26,7 @@ stdenv.mkDerivation (finalAttrs: {
     ./0001-Add-exe-extension-for-MS-Windows-binaries.patch
   ];
 
-  outputs = [
-    "out"
-    "bin"
-    "man"
-    "dev"
-  ];
+  outputs = [ "out" "bin" "man" "dev" ];
   propagatedBuildOutputs = [ ];
 
   makeFlags =
@@ -91,9 +86,6 @@ stdenv.mkDerivation (finalAttrs: {
       publicDomain # tzdata
     ];
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      ajs124
-      fpletz
-    ];
+    maintainers = with maintainers; [ ajs124 fpletz ];
   };
 })

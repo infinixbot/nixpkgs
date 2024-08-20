@@ -43,21 +43,9 @@ stdenv.mkDerivation rec {
     ]
   );
 
-  nativeBuildInputs = [
-    rsync
-    makeWrapper
-  ];
-  buildInputs = [
-    hepmc
-    imagemagick
-    python3
-    latex
-    python3.pkgs.yoda
-  ];
-  propagatedBuildInputs = [
-    fastjet
-    fastjet-contrib
-  ];
+  nativeBuildInputs = [ rsync makeWrapper ];
+  buildInputs = [ hepmc imagemagick python3 latex python3.pkgs.yoda ];
+  propagatedBuildInputs = [ fastjet fastjet-contrib ];
 
   preConfigure = ''
     substituteInPlace bin/rivet-build.in \

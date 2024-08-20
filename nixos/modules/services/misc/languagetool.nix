@@ -85,10 +85,7 @@ in
         Group = "languagetool";
         CapabilityBoundingSet = [ "" ];
         RestrictNamespaces = [ "" ];
-        SystemCallFilter = [
-          "@system-service"
-          "~ @privileged"
-        ];
+        SystemCallFilter = [ "@system-service" "~ @privileged" ];
         ProtectHome = "yes";
         Restart = "on-failure";
         ExecStart = ''

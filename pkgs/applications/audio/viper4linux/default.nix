@@ -8,13 +8,7 @@
 }:
 let
   gstPluginPath = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (
-    with gst_all_1;
-    [
-      gstreamer
-      gst-plugins-viperfx
-      gst-plugins-base
-      gst-plugins-good
-    ]
+    with gst_all_1; [ gstreamer gst-plugins-viperfx gst-plugins-base gst-plugins-good ]
   );
 in
 stdenv.mkDerivation rec {

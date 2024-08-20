@@ -206,16 +206,7 @@ buildPythonApplication rec {
         --set XPRA_XKB_CONFIG_ROOT "${xorg.xkeyboardconfig}/share/X11/xkb"
         --set XORG_CONFIG_PREFIX ""
         --prefix LD_LIBRARY_PATH : ${libfakeXinerama}/lib
-        --prefix PATH : ${
-          lib.makeBinPath [
-            getopt
-            xorgserver
-            xauth
-            which
-            util-linux
-            pulseaudio
-          ]
-        }
+        --prefix PATH : ${lib.makeBinPath [ getopt xorgserver xauth which util-linux pulseaudio ]}
     ''
     + lib.optionalString withNvenc ''
       --prefix LD_LIBRARY_PATH : ${nvidia_x11}/lib
@@ -251,10 +242,6 @@ buildPythonApplication rec {
     changelog = "https://github.com/Xpra-org/xpra/releases/tag/v${version}";
     platforms = platforms.linux;
     license = licenses.gpl2Only;
-    maintainers = with maintainers; [
-      offline
-      numinit
-      mvnetbiz
-    ];
+    maintainers = with maintainers; [ offline numinit mvnetbiz ];
   };
 }

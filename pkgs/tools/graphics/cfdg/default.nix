@@ -19,15 +19,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-f2VMb0TM50afKf/lGdZBP2z13UrCVgG4/IYi5gnD+ow=";
   };
 
-  nativeBuildInputs = [
-    bison
-    flex
-  ];
-  buildInputs = [
-    libpng
-    ffmpeg
-    icu
-  ];
+  nativeBuildInputs = [ bison flex ];
+  buildInputs = [ libpng ffmpeg icu ];
 
   postPatch = ''
     sed -e "/YY_NO_UNISTD/a#include <stdio.h>" -i src-common/cfdg.l

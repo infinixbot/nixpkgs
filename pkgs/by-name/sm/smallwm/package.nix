@@ -38,10 +38,7 @@ stdenv.mkDerivation (finalAttrs: {
     "CXX=${stdenv.cc.targetPrefix}c++"
   ];
 
-  buildFlags = [
-    "all"
-    "doc"
-  ];
+  buildFlags = [ "all" "doc" ];
 
   installPhase = ''
     runHook preInstall

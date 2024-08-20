@@ -27,10 +27,7 @@ lib.throwIfNot (lib.versionAtLeast ocaml.version "4.02")
       substituteInPlace Makefile --replace "gcc" "\$(CC)"
     '';
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-    ];
+    nativeBuildInputs = [ ocaml findlib ];
     buildInputs = [ expat ];
 
     strictDeps = true;

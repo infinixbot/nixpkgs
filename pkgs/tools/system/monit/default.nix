@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs =
-    [
-      bison
-      flex
-    ]
+    [ bison flex ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       darwin.apple_sdk.frameworks.DiskArbitration
       darwin.apple_sdk.frameworks.System
@@ -62,11 +59,7 @@ stdenv.mkDerivation rec {
     homepage = "https://mmonit.com/monit/";
     description = "Monitoring system";
     license = lib.licenses.agpl3Plus;
-    maintainers = with lib.maintainers; [
-      raskin
-      wmertens
-      ryantm
-    ];
+    maintainers = with lib.maintainers; [ raskin wmertens ryantm ];
     platforms = lib.platforms.linux ++ lib.platforms.darwin;
     mainProgram = "monit";
   };

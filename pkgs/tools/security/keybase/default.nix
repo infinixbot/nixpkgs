@@ -20,10 +20,7 @@ buildGoModule rec {
   version = "6.3.1";
 
   modRoot = "go";
-  subPackages = [
-    "kbnm"
-    "keybase"
-  ];
+  subPackages = [ "kbnm" "keybase" ];
 
   dontRenameImports = true;
 
@@ -54,22 +51,13 @@ buildGoModule rec {
     MediaToolbox
   ];
   tags = [ "production" ];
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     homepage = "https://www.keybase.io/";
     description = "Keybase official command-line utility and service";
     platforms = platforms.linux ++ platforms.darwin;
-    maintainers = with maintainers; [
-      avaq
-      np
-      rvolosatovs
-      Br1ght0ne
-      shofius
-    ];
+    maintainers = with maintainers; [ avaq np rvolosatovs Br1ght0ne shofius ];
     license = licenses.bsd3;
   };
 }

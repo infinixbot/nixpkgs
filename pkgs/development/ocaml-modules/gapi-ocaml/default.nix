@@ -25,12 +25,7 @@ buildDunePackage rec {
 
   nativeBuildInputs = [ cppo ];
 
-  propagatedBuildInputs = [
-    camlp-streams
-    cryptokit
-    ocurl
-    yojson
-  ];
+  propagatedBuildInputs = [ camlp-streams cryptokit ocurl yojson ];
 
   doCheck = true;
   checkInputs = [ ounit2 ];

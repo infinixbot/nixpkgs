@@ -130,11 +130,7 @@ stdenv.mkDerivation rec {
       exec = "stereo_tool_gui";
       icon = "stereo-tool-icon";
       comment = "Broadcast Audio Processing";
-      categories = [
-        "AudioVideo"
-        "Audio"
-        "AudioVideoEditing"
-      ];
+      categories = [ "AudioVideo" "Audio" "AudioVideoEditing" ];
     })
     (makeDesktopItem {
       name = "stereotool-jack";
@@ -142,11 +138,7 @@ stdenv.mkDerivation rec {
       exec = "stereo_tool_gui_jack";
       icon = "stereo-tool-icon";
       comment = "Broadcast Audio Processing";
-      categories = [
-        "AudioVideo"
-        "Audio"
-        "AudioVideoEditing"
-      ];
+      categories = [ "AudioVideo" "Audio" "AudioVideoEditing" ];
     })
   ];
 
@@ -176,12 +168,7 @@ stdenv.mkDerivation rec {
     description = "Stereo Tool is a software-based audio processor which offers outstanding audio quality and comes with many unique features";
     license = licenses.unfree;
     mainProgram = "stereo_tool_gui";
-    platforms = [
-      "aarch64-linux"
-      "aarch32-linux"
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "aarch64-linux" "aarch32-linux" "x86_64-linux" "i686-linux" ];
     maintainers = with maintainers; [ RudiOnTheAir ];
   };
 

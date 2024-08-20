@@ -24,19 +24,9 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-AD5hbHnu5/gmhvk4Hzeqzvq3E/7w54ijxl9US5eATRY=";
   };
 
-  nativeBuildInputs = [
-    bison
-    cmake
-    flex
-    jq
-  ];
+  nativeBuildInputs = [ bison cmake flex jq ];
 
-  buildInputs = [
-    gecode
-    mpfr
-    cbc
-    zlib
-  ];
+  buildInputs = [ gecode mpfr cbc zlib ];
 
   postInstall = ''
     mkdir -p $out/share/minizinc/solvers/

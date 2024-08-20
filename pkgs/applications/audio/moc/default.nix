@@ -86,19 +86,10 @@ stdenv.mkDerivation {
     rm m4/*
   '';
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-    autoconf-archive
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook autoconf-archive ];
 
   buildInputs =
-    [
-      ncurses
-      db
-      popt
-      libtool
-    ]
+    [ ncurses db popt libtool ]
     # Sound sub-systems
     ++ lib.optional alsaSupport alsa-lib
     ++ lib.optional pulseSupport libpulseaudio
@@ -110,11 +101,7 @@ stdenv.mkDerivation {
     ++ lib.optional midiSupport timidity
     ++ lib.optional modplugSupport libmodplug
     ++ lib.optional mp3Support libmad
-    ++ lib.optionals musepackSupport [
-      libmpc
-      libmpcdec
-      taglib
-    ]
+    ++ lib.optionals musepackSupport [ libmpc libmpcdec taglib ]
     ++ lib.optional vorbisSupport libvorbis
     ++ lib.optional speexSupport speex
     ++ lib.optional ffmpegSupport ffmpeg_7
@@ -123,10 +110,7 @@ stdenv.mkDerivation {
     # Misc
     ++ lib.optional curlSupport curl
     ++ lib.optional samplerateSupport libsamplerate
-    ++ lib.optionals stdenv.isDarwin [
-      libiconv
-      CoreServices
-    ];
+    ++ lib.optionals stdenv.isDarwin [ libiconv CoreServices ];
 
   configureFlags = [
     # Sound sub-systems
@@ -158,11 +142,7 @@ stdenv.mkDerivation {
     description = "Terminal audio player designed to be powerful and easy to use";
     homepage = "http://moc.daper.net/";
     license = licenses.gpl2;
-    maintainers = with maintainers; [
-      aethelz
-      pSub
-      jagajaga
-    ];
+    maintainers = with maintainers; [ aethelz pSub jagajaga ];
     platforms = platforms.unix;
     mainProgram = "mocp";
   };

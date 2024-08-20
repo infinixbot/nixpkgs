@@ -34,14 +34,7 @@ stdenv.mkDerivation rec {
   configureFlags = [ "--with-perl=${perl}/bin/perl" ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libpcap
-    bison
-    cyrus_sasl
-    tcp_wrappers
-    flex
-    libnsl
-  ];
+  buildInputs = [ libpcap bison cyrus_sasl tcp_wrappers flex libnsl ];
 
   meta = with lib; {
     description = "Clients for ARGUS";

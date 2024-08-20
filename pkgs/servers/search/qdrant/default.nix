@@ -42,11 +42,7 @@ rustPlatform.buildRustPackage rec {
       SystemConfiguration
     ];
 
-  nativeBuildInputs = [
-    protobuf
-    rustPlatform.bindgenHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ protobuf rustPlatform.bindgenHook pkg-config ];
 
   env =
     {

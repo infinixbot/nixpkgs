@@ -31,25 +31,12 @@ in
 
 {
   imports = [
-    (mkChangedOptionModule
-      [
-        "services"
-        "calibre-server"
-        "libraryDir"
-      ]
-      [
-        "services"
-        "calibre-server"
-        "libraries"
-      ]
+    (mkChangedOptionModule [ "services" "calibre-server" "libraryDir" ]
+      [ "services" "calibre-server" "libraries" ]
       (
         config:
         let
-          libraryDir = getAttrFromPath [
-            "services"
-            "calibre-server"
-            "libraryDir"
-          ] config;
+          libraryDir = getAttrFromPath [ "services" "calibre-server" "libraryDir" ] config;
         in
         [ libraryDir ]
       )
@@ -114,11 +101,7 @@ in
         };
 
         mode = mkOption {
-          type = types.enum [
-            "auto"
-            "basic"
-            "digest"
-          ];
+          type = types.enum [ "auto" "basic" "digest" ];
           default = "auto";
           description = ''
             Choose the type of authentication used.

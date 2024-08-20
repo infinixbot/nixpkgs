@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-lI8uKtVxrziQ8q/Ss+QTgg1xTObZUTAzjL3MYmtwyd8=";
   };
 
-  nativeBuildInputs = [
-    autoconf
-    libtool
-    automake
-  ];
+  nativeBuildInputs = [ autoconf libtool automake ];
 
   buildInputs = [ cyrus_sasl ];
 

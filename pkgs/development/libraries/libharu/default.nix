@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    zlib
-    libpng
-  ];
+  buildInputs = [ zlib libpng ];
 
   meta = {
     description = "Cross platform, open source library for generating PDF files";

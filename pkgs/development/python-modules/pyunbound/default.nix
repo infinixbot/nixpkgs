@@ -19,12 +19,7 @@ buildPythonPackage rec {
 
   nativeBuildInputs = [ swig ];
 
-  buildInputs = [
-    openssl
-    expat
-    libevent
-    python
-  ];
+  buildInputs = [ openssl expat libevent python ];
 
   postPatch = ''
     substituteInPlace Makefile.in \

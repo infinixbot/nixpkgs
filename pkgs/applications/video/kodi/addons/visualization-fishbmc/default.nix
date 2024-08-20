@@ -20,10 +20,7 @@ buildKodiBinaryAddon rec {
     hash = "sha256-MgeSIKAy0N2NMGsU/15tKtDb34CROjcMaKjGyySl9Z0=";
   };
 
-  extraBuildInputs = [
-    pkg-config
-    libGL
-  ];
+  extraBuildInputs = [ pkg-config libGL ];
 
   propagatedBuildInputs = [ glm ];
   meta = with lib; {

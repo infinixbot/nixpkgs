@@ -17,10 +17,7 @@ stdenvNoCC.mkDerivation {
     hash = "sha256-V3vSxe5eHN0BUplzmmBchzuV+gz36WfgZZezJ6NfaWg=";
   };
 
-  outputs = [
-    "out"
-    "variable"
-  ];
+  outputs = [ "out" "variable" ];
 
   nativeBuildInputs = [ rename ];
 

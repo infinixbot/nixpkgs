@@ -41,18 +41,8 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    [
-      libiconv
-      spdlog
-      sqlite
-    ]
-    ++ lib.optionals (qt5 != null) (
-      with qt5;
-      [
-        qtbase
-        wrapQtAppsHook
-      ]
-    )
+    [ libiconv spdlog sqlite ]
+    ++ lib.optionals (qt5 != null) (with qt5; [ qtbase wrapQtAppsHook ])
     ++ lib.optionals stdenv.isDarwin [ CoreServices ];
 
   cmakeFlags = [
@@ -64,10 +54,7 @@ stdenv.mkDerivation rec {
   env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.isDarwin "-mmacosx-version-min=10.9";
 
   # put examples in an output so people/tools can test against them
-  outputs = [
-    "out"
-    "examples"
-  ];
+  outputs = [ "out" "examples" ];
   postInstall = ''
     cp -r ../examples $examples
   '';

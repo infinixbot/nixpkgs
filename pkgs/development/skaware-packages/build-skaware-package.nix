@@ -18,13 +18,7 @@
   # : list Platform
   platforms ? lib.platforms.all,
   # : list string
-  outputs ? [
-    "bin"
-    "lib"
-    "dev"
-    "doc"
-    "out"
-  ],
+  outputs ? [ "bin" "lib" "dev" "doc" "out" ],
   # TODO(Profpatsch): automatically infer most of these
   # : list string
   configureFlags,
@@ -86,14 +80,7 @@ stdenv.mkDerivation {
           "If you pass `manpages` to `skawarePackages.buildPackage`, you cannot have a `man` output already!"
       );
       # insert as early as posible, but keep the first element
-      if lib.length outputs > 0 then
-        [
-          (lib.head outputs)
-          "man"
-        ]
-        ++ lib.tail outputs
-      else
-        [ "man" ];
+      if lib.length outputs > 0 then [ (lib.head outputs) "man" ] ++ lib.tail outputs else [ "man" ];
 
   dontDisableStatic = true;
   enableParallelBuilding = true;
@@ -154,14 +141,7 @@ stdenv.mkDerivation {
     homepage = "https://skarnet.org/software/${pname}/";
     inherit broken description platforms;
     license = lib.licenses.isc;
-    maintainers =
-      with lib.maintainers;
-      [
-        pmahoney
-        Profpatsch
-        qyliss
-      ]
-      ++ maintainers;
+    maintainers = with lib.maintainers; [ pmahoney Profpatsch qyliss ] ++ maintainers;
   };
 
 }

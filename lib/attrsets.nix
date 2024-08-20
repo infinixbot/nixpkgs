@@ -1545,10 +1545,7 @@ rec {
             f here values
         );
     in
-    f [ ] [
-      rhs
-      lhs
-    ];
+    f [ ] [ rhs lhs ];
 
   /**
     A recursive variant of the update operator ‘//’.  The recursion
@@ -1882,11 +1879,7 @@ rec {
 
     :::
   */
-  getStatic = getFirstOutput [
-    "static"
-    "lib"
-    "out"
-  ];
+  getStatic = getFirstOutput [ "static" "lib" "out" ];
 
   /**
     Get a package's `dev` output.
@@ -1944,11 +1937,7 @@ rec {
 
     :::
   */
-  getInclude = getFirstOutput [
-    "include"
-    "dev"
-    "out"
-  ];
+  getInclude = getFirstOutput [ "include" "dev" "out" ];
 
   /**
     Get a package's `man` output.

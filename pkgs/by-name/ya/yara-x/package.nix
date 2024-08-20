@@ -22,10 +22,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-9W68Lm1Jc1GZ7wcS0FROZYGZkrzKn9wVBKdqlBjVOxk=";
 
-  nativeBuildInputs = [
-    cmake
-    installShellFiles
-  ];
+  nativeBuildInputs = [ cmake installShellFiles ];
 
   postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
     installShellCompletion --cmd yr \
@@ -43,10 +40,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://virustotal.github.io/yara-x/";
     changelog = "https://github.com/VirusTotal/yara-x/releases/tag/v${version}";
     license = lib.licenses.bsd3;
-    maintainers = with lib.maintainers; [
-      fab
-      lesuisse
-    ];
+    maintainers = with lib.maintainers; [ fab lesuisse ];
     mainProgram = "yr";
   };
 }

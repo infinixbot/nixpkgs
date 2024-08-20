@@ -38,9 +38,6 @@ stdenv.mkDerivation rec {
     homepage = "https://gitlab.com/iucode-tool/iucode-tool";
     license = licenses.gpl2Plus;
     maintainers = with maintainers; [ peterhoeg ];
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
   };
 }

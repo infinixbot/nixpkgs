@@ -113,10 +113,7 @@ let
       options.users = mkOption {
         type = types.uniq (types.listOf types.str);
         default = [ ];
-        example = [
-          "alice"
-          "bob"
-        ];
+        example = [ "alice" "bob" ];
         description = ''
           A list of user names that belong to the organization.
         '';
@@ -125,10 +122,7 @@ let
       options.groups = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "workers"
-          "slackers"
-        ];
+        example = [ "workers" "slackers" ];
         description = ''
           A list of group names that belong to the organization.
         '';
@@ -226,18 +220,9 @@ in
       organisations = mkOption {
         type = types.attrsOf (types.submodule orgOptions);
         default = { };
-        example.myShinyOrganisation.users = [
-          "alice"
-          "bob"
-        ];
-        example.myShinyOrganisation.groups = [
-          "staff"
-          "outsiders"
-        ];
-        example.yetAnotherOrganisation.users = [
-          "foo"
-          "bar"
-        ];
+        example.myShinyOrganisation.users = [ "alice" "bob" ];
+        example.myShinyOrganisation.groups = [ "staff" "outsiders" ];
+        example.yetAnotherOrganisation.users = [ "foo" "bar" ];
         description = ''
           An attribute set where the keys name the organisation and the values
           are a set of lists of {option}`users` and
@@ -357,10 +342,7 @@ in
       };
 
       trust = mkOption {
-        type = types.enum [
-          "allow all"
-          "strict"
-        ];
+        type = types.enum [ "allow all" "strict" ];
         default = "strict";
         description = ''
           Determines how client certificates are validated.
@@ -395,17 +377,7 @@ in
         '';
         apply =
           let
-            mkKey =
-              path:
-              if
-                path == [
-                  "server"
-                  "listen"
-                ]
-              then
-                "server"
-              else
-                concatStringsSep "." path;
+            mkKey = path: if path == [ "server" "listen" ] then "server" else concatStringsSep "." path;
             recurse =
               path: attrs:
               let
@@ -431,21 +403,14 @@ in
   };
 
   imports = [
-    (mkRemovedOptionModule
-      [
-        "services"
-        "taskserver"
-        "extraConfig"
-      ]
-      ''
-        This option was removed in favor of `services.taskserver.config` with
-        different semantics (it's now a list of attributes instead of lines).
+    (mkRemovedOptionModule [ "services" "taskserver" "extraConfig" ] ''
+      This option was removed in favor of `services.taskserver.config` with
+      different semantics (it's now a list of attributes instead of lines).
 
-        Please look up the documentation of `services.taskserver.config' to get
-        more information about the new way to pass additional configuration
-        options.
-      ''
-    )
+      Please look up the documentation of `services.taskserver.config' to get
+      more information about the new way to pass additional configuration
+      options.
+    '')
   ];
 
   config = mkMerge [

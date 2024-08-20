@@ -10,10 +10,7 @@ let
   eval =
     mod:
     evalMinimalConfig {
-      imports = [
-        ../nixpkgs.nix
-        mod
-      ];
+      imports = [ ../nixpkgs.nix mod ];
     };
   withHost = eval {
     nixpkgs.hostPlatform = "aarch64-linux";
@@ -43,12 +40,7 @@ let
   getErrors =
     module:
     let
-      uncheckedEval = lib.evalModules {
-        modules = [
-          ../nixpkgs.nix
-          module
-        ];
-      };
+      uncheckedEval = lib.evalModules { modules = [ ../nixpkgs.nix module ]; };
     in
     map (ass: ass.message) (lib.filter (ass: !ass.assertion) uncheckedEval.config.assertions);
 

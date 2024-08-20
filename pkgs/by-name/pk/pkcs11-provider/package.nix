@@ -25,26 +25,11 @@ stdenv.mkDerivation rec {
     hash = "sha256-ii2xQPBgqIjrAP27qTQR9IXbEGZcc79M/cYzFwcAajQ=";
   };
 
-  buildInputs = [
-    openssl
-    nss
-    p11-kit
-  ];
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-  ];
+  buildInputs = [ openssl nss p11-kit ];
+  nativeBuildInputs = [ meson ninja pkg-config ];
 
   # don't add SoftHSM to here: https://github.com/openssl/openssl/issues/22508
-  nativeCheckInputs = [
-    p11-kit.bin
-    opensc
-    nss.tools
-    gnutls
-    openssl.bin
-    expect
-  ];
+  nativeCheckInputs = [ p11-kit.bin opensc nss.tools gnutls openssl.bin expect ];
 
   postPatch = ''
     patchShebangs --build .
@@ -68,10 +53,7 @@ stdenv.mkDerivation rec {
   doCheck = true;
 
   passthru.updateScript = nix-update-script {
-    extraArgs = [
-      "--version-regex"
-      "v(\d\.\d)"
-    ];
+    extraArgs = [ "--version-regex" "v(\d\.\d)" ];
   };
 
   meta = with lib; {

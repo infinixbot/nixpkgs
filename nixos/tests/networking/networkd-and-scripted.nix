@@ -216,10 +216,7 @@ let
             virtualisation.interfaces.enp2s0.vlan = 2;
             networking = {
               bonds.bond0 = {
-                interfaces = [
-                  "enp1s0"
-                  "enp2s0"
-                ];
+                interfaces = [ "enp1s0" "enp2s0" ];
                 driverOptions.mode = "802.3ad";
               };
               interfaces.bond0.ipv4.addresses = lib.mkOverride 0 [
@@ -289,10 +286,7 @@ let
           networking = {
             useNetworkd = networkd;
             useDHCP = false;
-            bridges.bridge.interfaces = [
-              "enp1s0"
-              "enp2s0"
-            ];
+            bridges.bridge.interfaces = [ "enp1s0" "enp2s0" ];
             interfaces.eth1.ipv4.addresses = lib.mkOverride 0 [ ];
             interfaces.eth2.ipv4.addresses = lib.mkOverride 0 [ ];
             interfaces.bridge.ipv4.addresses = lib.mkOverride 0 [
@@ -551,11 +545,7 @@ let
           lib.mkMerge [
             (node args)
             {
-              virtualisation.vlans = [
-                1
-                2
-                4
-              ];
+              virtualisation.vlans = [ 1 2 4 ];
               networking = {
                 greTunnels = {
                   greTunnel = {
@@ -573,10 +563,7 @@ let
                     type = "tun6";
                   };
                 };
-                bridges.bridge.interfaces = [
-                  "greTunnel"
-                  "eth1"
-                ];
+                bridges.bridge.interfaces = [ "greTunnel" "eth1" ];
                 interfaces.eth1.ipv4.addresses = lib.mkOverride 0 [ ];
                 interfaces.bridge.ipv4.addresses = lib.mkOverride 0 [
                   {
@@ -604,11 +591,7 @@ let
           lib.mkMerge [
             (node args)
             {
-              virtualisation.vlans = [
-                2
-                3
-                4
-              ];
+              virtualisation.vlans = [ 2 3 4 ];
               networking = {
                 greTunnels = {
                   greTunnel = {
@@ -626,10 +609,7 @@ let
                     type = "tun6";
                   };
                 };
-                bridges.bridge.interfaces = [
-                  "greTunnel"
-                  "eth2"
-                ];
+                bridges.bridge.interfaces = [ "greTunnel" "eth2" ];
                 interfaces.eth2.ipv4.addresses = lib.mkOverride 0 [ ];
                 interfaces.bridge.ipv4.addresses = lib.mkOverride 0 [
                   {

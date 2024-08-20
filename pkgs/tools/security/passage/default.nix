@@ -58,19 +58,13 @@ stdenv.mkDerivation {
     wrapProgram $out/bin/passage --prefix PATH : $extraPath --argv0 $pname
   '';
 
-  installFlags = [
-    "PREFIX=$(out)"
-    "WITH_ALLCOMP=yes"
-  ];
+  installFlags = [ "PREFIX=$(out)" "WITH_ALLCOMP=yes" ];
 
   meta = with lib; {
     description = "Stores, retrieves, generates, and synchronizes passwords securely";
     homepage = "https://github.com/FiloSottile/passage";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      kaction
-      ma27
-    ];
+    maintainers = with maintainers; [ kaction ma27 ];
     platforms = platforms.unix;
     mainProgram = "passage";
 

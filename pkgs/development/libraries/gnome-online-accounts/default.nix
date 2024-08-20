@@ -34,15 +34,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "gnome-online-accounts";
   version = "3.50.4";
 
-  outputs =
-    [
-      "out"
-      "dev"
-    ]
-    ++ lib.optionals enableBackend [
-      "man"
-      "devdoc"
-    ];
+  outputs = [ "out" "dev" ] ++ lib.optionals enableBackend [ "man" "devdoc" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/gnome-online-accounts/${lib.versions.majorMinor finalAttrs.version}/gnome-online-accounts-${finalAttrs.version}.tar.xz";

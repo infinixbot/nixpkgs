@@ -15,10 +15,7 @@ import ./make-test-python.nix (
   {
     name = "signal-desktop";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        flokli
-        primeos
-      ];
+      maintainers = [ flokli primeos ];
     };
 
     nodes.machine =

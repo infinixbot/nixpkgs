@@ -21,13 +21,7 @@ stdenv.mkDerivation {
     sha256 = "1hslwqa0gqsnl3l6hd5hxpn0wlachxd51infifhlwhyhd6iwgx8p";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    xmlto
-    docbook2x
-    docbook_xsl
-    docbook_xml_dtd_412
-  ];
+  nativeBuildInputs = [ pkg-config xmlto docbook2x docbook_xsl docbook_xml_dtd_412 ];
 
   buildInputs = [
     python3

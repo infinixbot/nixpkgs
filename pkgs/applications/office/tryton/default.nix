@@ -73,9 +73,6 @@ python3Packages.buildPythonApplication rec {
     '';
     homepage = "http://www.tryton.org/";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      johbo
-      udono
-    ];
+    maintainers = with maintainers; [ johbo udono ];
   };
 }

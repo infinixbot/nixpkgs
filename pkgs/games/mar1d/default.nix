@@ -23,11 +23,7 @@ stdenv.mkDerivation rec {
     owner = "Radvendii";
   };
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config ];
 
   buildInputs = [
     SDL2

@@ -37,10 +37,6 @@ rec {
     # NB regarding platforms: continuously tested on Linux x86_64 and regularly tested on macOS x86_64.
     # *should* work everywhere.
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      thoughtpolice
-      raskin
-      fare
-    ];
+    maintainers = with maintainers; [ thoughtpolice raskin fare ];
   };
 }

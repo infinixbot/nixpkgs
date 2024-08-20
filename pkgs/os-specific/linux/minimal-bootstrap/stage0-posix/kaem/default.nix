@@ -42,14 +42,7 @@ derivationWithMeta {
           (writeText "${name}-builder" buildCommand)
         ];
 
-        PATH = lib.makeBinPath (
-          (env.nativeBuildInputs or [ ])
-          ++ [
-            kaem
-            mescc-tools
-            mescc-tools-extra
-          ]
-        );
+        PATH = lib.makeBinPath ((env.nativeBuildInputs or [ ]) ++ [ kaem mescc-tools mescc-tools-extra ]);
       }
       // (builtins.removeAttrs env [ "nativeBuildInputs" ])
     );

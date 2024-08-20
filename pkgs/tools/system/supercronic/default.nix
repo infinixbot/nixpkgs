@@ -22,11 +22,7 @@ buildGoModule rec {
 
   excludedPackages = [ "cronexpr/cronexpr" ];
 
-  nativeCheckInputs = [
-    python3
-    bash
-    coreutils
-  ];
+  nativeCheckInputs = [ python3 bash coreutils ];
 
   postConfigure = ''
     # There are tests that set the shell to various paths

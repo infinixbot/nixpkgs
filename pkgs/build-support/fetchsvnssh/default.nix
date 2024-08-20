@@ -16,10 +16,7 @@
 stdenvNoCC.mkDerivation {
   name = "svn-export-ssh";
   builder = ./builder.sh;
-  nativeBuildInputs = [
-    subversion
-    expect
-  ];
+  nativeBuildInputs = [ subversion expect ];
 
   outputHashAlgo = "sha256";
   outputHashMode = "recursive";

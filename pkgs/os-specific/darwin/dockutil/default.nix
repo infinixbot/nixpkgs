@@ -51,10 +51,7 @@ let
                        "path"
     '';
 
-    nativeBuildInputs = [
-      swift
-      swiftpm
-    ];
+    nativeBuildInputs = [ swift swiftpm ];
 
     buildInputs = with darwin.apple_sdk.frameworks; [ Cocoa ];
 
@@ -79,10 +76,7 @@ let
     dontConfigure = true;
     dontBuild = true;
 
-    nativeBuildInputs = [
-      libarchive
-      p7zip
-    ];
+    nativeBuildInputs = [ libarchive p7zip ];
 
     unpackPhase = ''
       7z x $src

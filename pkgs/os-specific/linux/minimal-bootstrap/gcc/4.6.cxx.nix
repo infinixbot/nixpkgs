@@ -77,11 +77,7 @@ bash.runCommand "${pname}-${version}"
       result:
       bash.runCommand "${pname}-simple-program-${version}"
         {
-          nativeBuildInputs = [
-            binutils
-            musl
-            result
-          ];
+          nativeBuildInputs = [ binutils musl result ];
         }
         ''
           cat <<EOF >> test.c

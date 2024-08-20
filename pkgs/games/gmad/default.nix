@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
     sha256 = "04an17nvnj38mpi0w005v41ib8ynb5qhgrdkmsda4hq7l1gn276s";
   };
 
-  buildInputs = [
-    premake4
-    bootil
-  ];
+  buildInputs = [ premake4 bootil ];
 
   targetName =
     if stdenv.isLinux then
@@ -38,10 +35,7 @@ stdenv.mkDerivation rec {
     else
       "gmad";
 
-  premakeFlags = [
-    "--bootil_lib=${bootil}/lib"
-    "--bootil_inc=${bootil}/include"
-  ];
+  premakeFlags = [ "--bootil_lib=${bootil}/lib" "--bootil_inc=${bootil}/include" ];
 
   installPhase = ''
     mkdir -p $out/bin

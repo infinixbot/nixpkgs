@@ -25,19 +25,8 @@ stdenv.mkDerivation rec {
     sha256 = "V2pSP8i20zB50WtUMujzij+ISSupdQQ/oCYYrOaTU1g=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ] ++ lib.optionals stdenv.isDarwin [ makeWrapper ];
-  buildInputs = [
-    zlib
-    bzip2
-    libjpeg
-    SDL2
-    SDL2_net
-    SDL2_mixer
-    gtk3
-  ];
+  nativeBuildInputs = [ cmake pkg-config ] ++ lib.optionals stdenv.isDarwin [ makeWrapper ];
+  buildInputs = [ zlib bzip2 libjpeg SDL2 SDL2_net SDL2_mixer gtk3 ];
 
   NIX_LDFLAGS = lib.optionalString stdenv.isDarwin "-framework AppKit";
 
@@ -58,10 +47,7 @@ stdenv.mkDerivation rec {
     mainProgram = "ecwolf";
     homepage = "https://maniacsvault.net/ecwolf/";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      jayman2000
-      sander
-    ];
+    maintainers = with maintainers; [ jayman2000 sander ];
     platforms = platforms.all;
   };
 }

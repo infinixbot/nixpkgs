@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
   '';
 
   buildInputs =
-    [
-      curl
-      libmrss
-    ]
+    [ curl libmrss ]
     ++ lib.optional (stdenv.hostPlatform == stdenv.buildPlatform) podofo
     ++ lib.optional (!stdenv.isLinux) libiconv;
 

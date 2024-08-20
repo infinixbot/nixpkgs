@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-wOoLSNLgh0YXHUFn7WfUkQXpyWsgCrVZlMg55rvi9q4=";
   };
 
-  buildInputs = [
-    apacheHttpd
-    sqlite
-  ];
+  buildInputs = [ apacheHttpd sqlite ];
 
   buildPhase = ''
     apxs -lsqlite3 -ca mod_mbtiles.c

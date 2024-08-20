@@ -10,15 +10,9 @@ mkDerivation {
 
   pname = "kapptemplate";
 
-  nativeBuildInputs = [
-    extra-cmake-modules
-    cmake
-  ];
+  nativeBuildInputs = [ extra-cmake-modules cmake ];
 
-  buildInputs = [
-    kactivities
-    qtbase
-  ];
+  buildInputs = [ kactivities qtbase ];
 
   meta = with lib; {
     description = "KDE App Code Template Generator";

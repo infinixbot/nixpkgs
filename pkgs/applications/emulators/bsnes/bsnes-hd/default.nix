@@ -60,16 +60,10 @@ stdenv.mkDerivation {
   nativeBuildInputs =
     [ pkg-config ]
     ++ lib.optionals stdenv.isLinux [ wrapGAppsHook3 ]
-    ++ lib.optionals stdenv.isDarwin [
-      libicns
-      makeWrapper
-    ];
+    ++ lib.optionals stdenv.isDarwin [ libicns makeWrapper ];
 
   buildInputs =
-    [
-      SDL2
-      libao
-    ]
+    [ SDL2 libao ]
     ++ lib.optionals stdenv.isLinux [
       libX11
       libXv
@@ -80,10 +74,7 @@ stdenv.mkDerivation {
       openal
       libpulseaudio
     ]
-    ++ lib.optionals stdenv.isDarwin [
-      Cocoa
-      OpenAL
-    ];
+    ++ lib.optionals stdenv.isDarwin [ Cocoa OpenAL ];
 
   enableParallelBuilding = true;
 

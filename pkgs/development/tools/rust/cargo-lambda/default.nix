@@ -29,18 +29,9 @@ rustPlatform.buildRustPackage rec {
 
   nativeCheckInputs = [ cacert ];
 
-  nativeBuildInputs = [
-    makeWrapper
-    pkg-config
-  ];
+  nativeBuildInputs = [ makeWrapper pkg-config ];
 
-  buildInputs =
-    [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [
-      curl
-      CoreServices
-      Security
-    ];
+  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ curl CoreServices Security ];
 
   checkFlags = [
     # Disabled because they access the network.
@@ -87,9 +78,6 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "cargo-lambda";
     homepage = "https://cargo-lambda.info";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      taylor1791
-      calavera
-    ];
+    maintainers = with maintainers; [ taylor1791 calavera ];
   };
 }

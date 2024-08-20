@@ -70,10 +70,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/CCEmuX/CCEmuX";
     sourceProvenance = with sourceTypes; [ binaryBytecode ];
     license = licenses.mit;
-    maintainers = with maintainers; [
-      CrazedProgrammer
-      viluon
-    ];
+    maintainers = with maintainers; [ CrazedProgrammer viluon ];
     mainProgram = "ccemux";
   };
 }

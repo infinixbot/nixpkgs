@@ -11,22 +11,10 @@
 mkDerivation {
   pname = "libkipi";
   meta = {
-    license = with lib.licenses; [
-      gpl2
-      lgpl21
-      bsd3
-    ];
+    license = with lib.licenses; [ gpl2 lgpl21 bsd3 ];
     maintainers = [ lib.maintainers.ttuegel ];
   };
   nativeBuildInputs = [ extra-cmake-modules ];
-  buildInputs = [
-    kconfig
-    ki18n
-    kservice
-    kxmlgui
-  ];
-  outputs = [
-    "out"
-    "dev"
-  ];
+  buildInputs = [ kconfig ki18n kservice kxmlgui ];
+  outputs = [ "out" "dev" ];
 }

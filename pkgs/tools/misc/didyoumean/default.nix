@@ -54,10 +54,7 @@ rustPlatform.buildRustPackage rec {
     description = "CLI spelling corrector for when you're unsure";
     homepage = "https://github.com/hisbaan/didyoumean";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      evanjs
-      wegank
-    ];
+    maintainers = with maintainers; [ evanjs wegank ];
     mainProgram = "dym";
   };
 }

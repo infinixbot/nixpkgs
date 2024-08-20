@@ -39,10 +39,7 @@ buildBazelPackage rec {
 
   bazel = buildPackages.bazel_5;
 
-  nativeBuildInputs = [
-    pythonEnv
-    buildPackages.perl
-  ];
+  nativeBuildInputs = [ pythonEnv buildPackages.perl ];
 
   bazelTargets = [
     "//tensorflow/lite:libtensorflowlite.so"
@@ -108,13 +105,7 @@ buildBazelPackage rec {
     description = "Open source deep learning framework for on-device inference";
     homepage = "https://www.tensorflow.org/lite";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      mschwaig
-      cpcloud
-    ];
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+    maintainers = with maintainers; [ mschwaig cpcloud ];
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
   };
 }

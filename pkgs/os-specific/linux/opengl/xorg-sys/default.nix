@@ -18,13 +18,7 @@ stdenv.mkDerivation {
   pname = "xorg-sys-opengl";
   version = "3";
   builder = ./builder.sh;
-  neededLibs = map (p: p.out) [
-    xorg.libXxf86vm
-    xorg.libXext
-    expat
-    libdrm
-    stdenv.cc.cc
-  ];
+  neededLibs = map (p: p.out) [ xorg.libXxf86vm xorg.libXext expat libdrm stdenv.cc.cc ];
 
   meta = {
     platforms = lib.platforms.linux;

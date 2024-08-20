@@ -41,11 +41,7 @@ let
   qt5UI = lib.elem "qt5" uiToolkits;
 in
 # Accepts only "ncurses" and "qt5" as possible uiToolkits
-assert
-  lib.subtractLists [
-    "ncurses"
-    "qt5"
-  ] uiToolkits == [ ];
+assert lib.subtractLists [ "ncurses" "qt5" ] uiToolkits == [ ];
 # Minimal, bootstrap cmake does not have toolkits
 assert isMinimalBuild -> (uiToolkits == [ ]);
 stdenv.mkDerivation (finalAttrs: {
@@ -84,12 +80,7 @@ stdenv.mkDerivation (finalAttrs: {
       ps = lib.getExe ps;
     });
 
-  outputs =
-    [ "out" ]
-    ++ lib.optionals buildDocs [
-      "man"
-      "info"
-    ];
+  outputs = [ "out" ] ++ lib.optionals buildDocs [ "man" "info" ];
   separateDebugInfo = true;
   setOutputFlags = false;
 
@@ -220,11 +211,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     changelog = "https://cmake.org/cmake/help/v${lib.versions.majorMinor finalAttrs.version}/release/${lib.versions.majorMinor finalAttrs.version}.html";
     license = lib.licenses.bsd3;
-    maintainers = with lib.maintainers; [
-      ttuegel
-      lnl7
-      AndersonTorres
-    ];
+    maintainers = with lib.maintainers; [ ttuegel lnl7 AndersonTorres ];
     platforms = lib.platforms.all;
     mainProgram = "cmake";
     broken = (qt5UI && stdenv.isDarwin);

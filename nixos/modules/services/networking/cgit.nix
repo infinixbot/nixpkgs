@@ -10,19 +10,8 @@ with lib;
 let
   cfgs = config.services.cgit;
 
-  settingType =
-    with types;
-    oneOf [
-      bool
-      int
-      str
-    ];
-  repeatedSettingType =
-    with types;
-    oneOf [
-      settingType
-      (listOf settingType)
-    ];
+  settingType = with types; oneOf [ bool int str ];
+  repeatedSettingType = with types; oneOf [ settingType (listOf settingType) ];
 
   genAttrs' = names: f: listToAttrs (map f names);
 
@@ -258,22 +247,14 @@ in
       mapAttrsToList (name: cfg: {
         ${cfg.nginx.virtualHost} = {
           locations =
-            (genAttrs'
-              [
-                "cgit.css"
-                "cgit.png"
-                "favicon.ico"
-                "robots.txt"
-              ]
-              (
-                fileName:
-                nameValuePair "= ${stripLocation cfg}/${fileName}" {
-                  extraConfig = ''
-                    alias ${cfg.package}/cgit/${fileName};
-                  '';
-                }
-              )
-            )
+            (genAttrs' [ "cgit.css" "cgit.png" "favicon.ico" "robots.txt" ] (
+              fileName:
+              nameValuePair "= ${stripLocation cfg}/${fileName}" {
+                extraConfig = ''
+                  alias ${cfg.package}/cgit/${fileName};
+                '';
+              }
+            ))
             // {
               "~ ${regexLocation cfg}/.+/(info/refs|git-upload-pack)" = {
                 fastcgiParams = rec {

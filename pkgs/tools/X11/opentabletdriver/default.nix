@@ -34,18 +34,10 @@ buildDotnetModule rec {
 
   dotnetInstallFlags = [ "--framework=net6.0" ];
 
-  projectFile = [
-    "OpenTabletDriver.Console"
-    "OpenTabletDriver.Daemon"
-    "OpenTabletDriver.UX.Gtk"
-  ];
+  projectFile = [ "OpenTabletDriver.Console" "OpenTabletDriver.Daemon" "OpenTabletDriver.UX.Gtk" ];
   nugetDeps = ./deps.nix;
 
-  executables = [
-    "OpenTabletDriver.Console"
-    "OpenTabletDriver.Daemon"
-    "OpenTabletDriver.UX.Gtk"
-  ];
+  executables = [ "OpenTabletDriver.Console" "OpenTabletDriver.Daemon" "OpenTabletDriver.UX.Gtk" ];
 
   nativeBuildInputs = [
     copyDesktopItems
@@ -129,14 +121,8 @@ buildDotnetModule rec {
     description = "Open source, cross-platform, user-mode tablet driver";
     homepage = "https://github.com/OpenTabletDriver/OpenTabletDriver";
     license = licenses.lgpl3Plus;
-    maintainers = with maintainers; [
-      gepbird
-      thiagokokada
-    ];
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+    maintainers = with maintainers; [ gepbird thiagokokada ];
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
     mainProgram = "otd";
   };
 }

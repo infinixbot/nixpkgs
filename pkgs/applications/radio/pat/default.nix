@@ -20,10 +20,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-m5yb6+TfRApw0ZROx9ZA3RPiKV+1DHo/73CNQpIfMlU=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   nativeBuildInputs = [
     installShellFiles
@@ -43,10 +40,7 @@ buildGoModule rec {
     description = "Pat is a cross platform Winlink client written in Go";
     homepage = "https://getpat.io/";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      dotemup
-      sarcasticadmin
-    ];
+    maintainers = with maintainers; [ dotemup sarcasticadmin ];
     platforms = platforms.unix;
     mainProgram = "pat";
   };

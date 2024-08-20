@@ -62,11 +62,7 @@ linkFarm "writeShellApplication-tests" {
       # Check that we can serialize a bunch of different types:
       BOOL = true;
       INT = 1;
-      LIST = [
-        1
-        2
-        3
-      ];
+      LIST = [ 1 2 3 ];
       MAP = {
         a = "a";
         b = "b";
@@ -124,10 +120,7 @@ linkFarm "writeShellApplication-tests" {
       true
     '';
     # Don't use `pipefail`:
-    bashOptions = [
-      "errexit"
-      "nounset"
-    ];
+    bashOptions = [ "errexit" "nounset" ];
     expected = "";
   };
 

@@ -35,10 +35,7 @@ resholve.mkDerivation rec {
     default = {
       scripts = [ "share/nix-direnv/direnvrc" ];
       interpreter = "none";
-      inputs = [
-        coreutils
-        nix
-      ];
+      inputs = [ coreutils nix ];
       fake = {
         builtin = [
           "PATH_add"
@@ -70,9 +67,6 @@ resholve.mkDerivation rec {
     homepage = "https://github.com/nix-community/nix-direnv";
     license = lib.licenses.mit;
     platforms = lib.platforms.unix;
-    maintainers = with lib.maintainers; [
-      mic92
-      bbenne10
-    ];
+    maintainers = with lib.maintainers; [ mic92 bbenne10 ];
   };
 }

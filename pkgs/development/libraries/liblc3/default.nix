@@ -21,10 +21,7 @@ stdenv.mkDerivation {
     sha256 = "sha256-h9qy04FqlHXp0bOUoP4+WqI0yrM78e56S+DEn3HztYo=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs = [
     meson

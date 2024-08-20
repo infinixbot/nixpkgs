@@ -65,10 +65,7 @@ stdenv.mkDerivation (finalAttrs: {
     "-DOTELCPP_PROTO_PATH=${opentelemetry-proto}"
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   passthru.updateScript = nix-update-script { };
 

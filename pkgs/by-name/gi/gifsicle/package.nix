@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-snEWRwCf0qExMPO+FgUy7UZTjnYr/A8CDepQYYp9yVA=";
   };
 
-  buildInputs = lib.optionals gifview [
-    xorgproto
-    libXt
-    libX11
-  ];
+  buildInputs = lib.optionals gifview [ xorgproto libXt libX11 ];
 
   configureFlags = lib.optional (!gifview) "--disable-gifview";
 

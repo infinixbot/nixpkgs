@@ -32,12 +32,7 @@ mkCoqDerivation {
       }
     ] null;
 
-  propagatedBuildInputs = [
-    mathcomp-ssreflect
-    mathcomp-algebra
-    mathcomp-fingroup
-    paramcoq
-  ];
+  propagatedBuildInputs = [ mathcomp-ssreflect mathcomp-algebra mathcomp-fingroup paramcoq ];
 
   useDune = true;
 

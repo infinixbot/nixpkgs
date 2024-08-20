@@ -160,12 +160,7 @@ in
       xserverArgs = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "-ac"
-          "-logverbose"
-          "-verbose"
-          "-nolisten tcp"
-        ];
+        example = [ "-ac" "-logverbose" "-verbose" "-nolisten tcp" ];
         description = "List of arguments for the X server.";
       };
 
@@ -330,54 +325,24 @@ in
 
   imports = [
     (lib.mkRemovedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "desktopManagerHandlesLidAndPower"
-      ]
+      [ "services" "xserver" "displayManager" "desktopManagerHandlesLidAndPower" ]
       "The option is no longer necessary because all display managers have already delegated lid management to systemd."
     )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "job"
-        "logsXsession"
-      ]
-      [
-        "services"
-        "displayManager"
-        "logToFile"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "logToJournal"
-      ]
-      [
-        "services"
-        "displayManager"
-        "logToJournal"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "extraSessionFilesPackages"
-      ]
-      [
-        "services"
-        "displayManager"
-        "sessionPackages"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "job" "logsXsession" ] [
+      "services"
+      "displayManager"
+      "logToFile"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "logToJournal" ] [
+      "services"
+      "displayManager"
+      "logToJournal"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "extraSessionFilesPackages" ] [
+      "services"
+      "displayManager"
+      "sessionPackages"
+    ])
   ];
 
 }

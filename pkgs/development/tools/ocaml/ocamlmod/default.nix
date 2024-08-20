@@ -27,11 +27,7 @@ lib.throwIf (lib.versionAtLeast ocaml.version "5.0") "ocamlmod is not available 
 
     strictDeps = !doCheck;
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-      ocamlbuild
-    ];
+    nativeBuildInputs = [ ocaml findlib ocamlbuild ];
 
     configurePhase =
       "ocaml setup.ml -configure --prefix $out" + lib.optionalString doCheck " --enable-tests";

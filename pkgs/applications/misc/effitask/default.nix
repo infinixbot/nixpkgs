@@ -23,10 +23,7 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  buildInputs = [
-    openssl
-    gtk3
-  ];
+  buildInputs = [ openssl gtk3 ];
 
   # default installPhase don't install assets
   installPhase = ''

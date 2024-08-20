@@ -9,10 +9,7 @@ stdenv.mkDerivation rec {
   pname = "mtm";
   version = "1.2.1";
 
-  outputs = [
-    "out"
-    "terminfo"
-  ];
+  outputs = [ "out" "terminfo" ];
 
   src = fetchFromGitHub {
     owner = "deadpixi";
@@ -23,10 +20,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ ncurses ];
 
-  makeFlags = [
-    "DESTDIR=${placeholder "out"}"
-    "MANDIR=${placeholder "out"}/share/man/man1"
-  ];
+  makeFlags = [ "DESTDIR=${placeholder "out"}" "MANDIR=${placeholder "out"}/share/man/man1" ];
 
   preInstall = ''
     mkdir -p $out/bin/ $out/share/man/man1

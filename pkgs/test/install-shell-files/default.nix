@@ -35,11 +35,7 @@ recurseIntoAttrs {
   install-manpage-outputs =
     runTest "install-manpage-outputs"
       {
-        outputs = [
-          "out"
-          "man"
-          "devman"
-        ];
+        outputs = [ "out" "man" "devman" ];
       }
       ''
         mkdir -p doc
@@ -82,10 +78,7 @@ recurseIntoAttrs {
   install-completion-output =
     runTest "install-completion-output"
       {
-        outputs = [
-          "out"
-          "bin"
-        ];
+        outputs = [ "out" "bin" ];
       }
       ''
         echo foo > foo

@@ -47,10 +47,7 @@ appimageTools.wrapType2 {
     description = "Customization and management software for Wooting keyboards";
     platforms = lib.platforms.linux;
     license = lib.licenses.unfree;
-    maintainers = with lib.maintainers; [
-      davidtwco
-      sodiboo
-    ];
+    maintainers = with lib.maintainers; [ davidtwco sodiboo ];
     mainProgram = "wootility";
   };
 }

@@ -93,10 +93,7 @@ stdenv.mkDerivation rec {
     homepage = "https://gitlab.gnome.org/GNOME/gitg";
     description = "GNOME GUI client to view git repositories";
     mainProgram = "gitg";
-    maintainers = with maintainers; [
-      domenkozar
-      Luflosi
-    ];
+    maintainers = with maintainers; [ domenkozar Luflosi ];
     license = licenses.gpl2Plus;
     platforms = platforms.linux;
   };

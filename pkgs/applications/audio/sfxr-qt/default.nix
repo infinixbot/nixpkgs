@@ -28,13 +28,7 @@ mkDerivation rec {
   nativeBuildInputs = [
     cmake
     extra-cmake-modules
-    (python3.withPackages (
-      pp: with pp; [
-        pyyaml
-        jinja2
-        setuptools
-      ]
-    ))
+    (python3.withPackages (pp: with pp; [ pyyaml jinja2 setuptools ]))
   ];
 
   buildInputs = [

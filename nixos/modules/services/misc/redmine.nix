@@ -186,11 +186,7 @@ in
 
       database = {
         type = mkOption {
-          type = types.enum [
-            "mysql2"
-            "postgresql"
-            "sqlite3"
-          ];
+          type = types.enum [ "mysql2" "postgresql" "sqlite3" ];
           example = "postgresql";
           default = "mysql2";
           description = "Database engine to use.";

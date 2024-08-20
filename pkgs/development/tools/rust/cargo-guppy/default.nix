@@ -29,14 +29,8 @@ rustPlatform.buildRustPackage rec {
       darwin.apple_sdk.frameworks.Security
     ];
 
-  cargoBuildFlags = [
-    "-p"
-    "cargo-guppy"
-  ];
-  cargoTestFlags = [
-    "-p"
-    "cargo-guppy"
-  ];
+  cargoBuildFlags = [ "-p" "cargo-guppy" ];
+  cargoTestFlags = [ "-p" "cargo-guppy" ];
 
   meta = with lib; {
     description = "Command-line frontend for guppy";

@@ -29,15 +29,7 @@ in
       };
 
       settings = mkOption {
-        type =
-          with types;
-          attrsOf (oneOf [
-            bool
-            int
-            float
-            str
-            (listOf str)
-          ]);
+        type = with types; attrsOf (oneOf [ bool int float str (listOf str) ]);
         default = { };
         example = {
           SATA_LINKPWR_ON_BAT = "med_power_with_dipm";

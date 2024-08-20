@@ -15,17 +15,8 @@ stdenv.mkDerivation rec {
   name = "ocaml${ocaml.version}-${pname}-${version}";
   version = "3.3.4";
 
-  propagatedBuildInputs = [
-    calendar
-    js_of_ocaml-ppx_deriving_json
-    eliom
-  ];
-  nativeBuildInputs = [
-    ocaml
-    findlib
-    opaline
-    eliom
-  ];
+  propagatedBuildInputs = [ calendar js_of_ocaml-ppx_deriving_json eliom ];
+  nativeBuildInputs = [ ocaml findlib opaline eliom ];
 
   strictDeps = true;
 

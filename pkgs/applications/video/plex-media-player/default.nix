@@ -38,11 +38,7 @@ mkDerivation rec {
     sha256 = "1q20fdp5d0blb0q6p2357bwdc2g65cadkgdp4w533ij2nyaxydjd";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-    python3
-  ];
+  nativeBuildInputs = [ pkg-config cmake python3 ];
   buildInputs = [
     libX11
     libXrandr
@@ -70,11 +66,7 @@ mkDerivation rec {
   cmakeFlags = [ "-DQTROOT=${qtbase}" ];
 
   # plexmediaplayer currently segfaults under wayland
-  qtWrapperArgs = [
-    "--set"
-    "QT_QPA_PLATFORM"
-    "xcb"
-  ];
+  qtWrapperArgs = [ "--set" "QT_QPA_PLATFORM" "xcb" ];
 
   passthru.updateScript = ./update.sh;
 

@@ -10,20 +10,8 @@ with lib;
 let
   cfg = config.services.pgadmin;
 
-  _base = with types; [
-    int
-    bool
-    str
-  ];
-  base =
-    with types;
-    oneOf (
-      [
-        (listOf (oneOf _base))
-        (attrsOf (oneOf _base))
-      ]
-      ++ _base
-    );
+  _base = with types; [ int bool str ];
+  base = with types; oneOf ([ (listOf (oneOf _base)) (attrsOf (oneOf _base)) ] ++ _base);
 
   formatAttrset =
     attr:
@@ -53,13 +41,7 @@ let
   formatPy =
     attrs: concatStringsSep "\n" (mapAttrsToList (key: value: "${key} = ${formatPyValue value}") attrs);
 
-  pyType =
-    with types;
-    attrsOf (oneOf [
-      (attrsOf base)
-      (listOf base)
-      base
-    ]);
+  pyType = with types; attrsOf (oneOf [ (attrsOf base) (listOf base) base ]);
 in
 {
   options.services.pgadmin = {
@@ -184,11 +166,7 @@ in
       # in case postgres doesn't start, pgadmin will just start normally
       wants = [ "postgresql.service" ];
 
-      path = [
-        config.services.postgresql.package
-        pkgs.coreutils
-        pkgs.bash
-      ];
+      path = [ config.services.postgresql.package pkgs.coreutils pkgs.bash ];
 
       preStart = ''
         # NOTE: this is idempotent (aka running it twice has no effect)

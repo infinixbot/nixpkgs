@@ -22,11 +22,7 @@ buildGoModule rec {
   pname = "grafana";
   version = "11.1.4";
 
-  subPackages = [
-    "pkg/cmd/grafana"
-    "pkg/cmd/grafana-server"
-    "pkg/cmd/grafana-cli"
-  ];
+  subPackages = [ "pkg/cmd/grafana" "pkg/cmd/grafana-server" "pkg/cmd/grafana-cli" ];
 
   src = fetchFromGitHub {
     owner = "grafana";
@@ -170,20 +166,8 @@ buildGoModule rec {
     description = "Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB";
     license = licenses.agpl3Only;
     homepage = "https://grafana.com";
-    maintainers = with maintainers; [
-      offline
-      fpletz
-      willibutz
-      globin
-      ma27
-      Frostman
-    ];
-    platforms = [
-      "x86_64-linux"
-      "x86_64-darwin"
-      "aarch64-linux"
-      "aarch64-darwin"
-    ];
+    maintainers = with maintainers; [ offline fpletz willibutz globin ma27 Frostman ];
+    platforms = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
     mainProgram = "grafana-server";
   };
 }

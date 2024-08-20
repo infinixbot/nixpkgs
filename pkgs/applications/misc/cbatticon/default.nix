@@ -21,17 +21,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-VQjJujF9lnVvQxV+0YqodLgnI9F90JKDAGBu5nM/Q/c=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    gettext
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ pkg-config gettext wrapGAppsHook3 ];
 
-  buildInputs = [
-    glib
-    gtk3
-    libnotify
-  ];
+  buildInputs = [ glib gtk3 libnotify ];
 
   patchPhase = ''
     sed -i -e 's/ -Wno-format//g' Makefile

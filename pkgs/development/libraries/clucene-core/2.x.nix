@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    boost
-    zlib
-  ];
+  buildInputs = [ boost zlib ];
 
   cmakeFlags =
     [
@@ -91,9 +88,6 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://clucene.sourceforge.net";
     platforms = platforms.unix;
-    license = with licenses; [
-      asl20
-      lgpl2
-    ];
+    license = with licenses; [ asl20 lgpl2 ];
   };
 }

@@ -48,11 +48,7 @@ buildGoModule rec {
       "-X ${prefix}.BuildDate=1980-01-01T00:00:00Z"
     ];
 
-  nativeBuildInputs = [
-    fixup-yarn-lock
-    nodejs
-    yarn
-  ];
+  nativeBuildInputs = [ fixup-yarn-lock nodejs yarn ];
 
   tags = [
     "builtinassets"
@@ -123,10 +119,7 @@ buildGoModule rec {
     license = lib.licenses.asl20;
     homepage = "https://grafana.com/products/cloud";
     changelog = "https://github.com/grafana/agent/blob/${src.rev}/CHANGELOG.md";
-    maintainers = with lib.maintainers; [
-      flokli
-      emilylange
-    ];
+    maintainers = with lib.maintainers; [ flokli emilylange ];
     mainProgram = "grafana-agent";
   };
 }

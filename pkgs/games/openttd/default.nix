@@ -71,11 +71,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-YT4IE/rJ9pnpeMWKbOra6AbSUwW19RwOKlXkxwoMeKY=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    makeWrapper
-  ];
+  nativeBuildInputs = [ cmake pkg-config makeWrapper ];
   buildInputs =
     [
       SDL2
@@ -153,9 +149,6 @@ stdenv.mkDerivation rec {
     changelog = "https://cdn.openttd.org/openttd-releases/${version}/changelog.txt";
     license = licenses.gpl2Only;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      jcumming
-      fpletz
-    ];
+    maintainers = with maintainers; [ jcumming fpletz ];
   };
 }

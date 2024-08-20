@@ -17,15 +17,9 @@ mkDerivation {
     homepage = "https://apps.kde.org/kspaceduel/";
     description = "Space arcade game";
     mainProgram = "kspaceduel";
-    license = with lib.licenses; [
-      lgpl21
-      gpl3
-    ];
+    license = with lib.licenses; [ lgpl21 gpl3 ];
   };
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
   nativeBuildInputs = [
     cmake
     extra-cmake-modules

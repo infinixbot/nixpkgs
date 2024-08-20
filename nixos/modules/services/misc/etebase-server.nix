@@ -28,33 +28,19 @@ in
       "etebase-server"
       "database"
     ] "Set the option `services.etebase-server.settings.database' instead.")
-    (mkRenamedOptionModule
-      [
-        "services"
-        "etebase-server"
-        "secretFile"
-      ]
-      [
-        "services"
-        "etebase-server"
-        "settings"
-        "secret_file"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "etebase-server"
-        "host"
-      ]
-      [
-        "services"
-        "etebase-server"
-        "settings"
-        "allowed_hosts"
-        "allowed_host1"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "etebase-server" "secretFile" ] [
+      "services"
+      "etebase-server"
+      "settings"
+      "secret_file"
+    ])
+    (mkRenamedOptionModule [ "services" "etebase-server" "host" ] [
+      "services"
+      "etebase-server"
+      "settings"
+      "allowed_hosts"
+      "allowed_host1"
+    ])
   ];
 
   options = {
@@ -153,10 +139,7 @@ in
             };
             database = {
               engine = mkOption {
-                type = types.enum [
-                  "django.db.backends.sqlite3"
-                  "django.db.backends.postgresql"
-                ];
+                type = types.enum [ "django.db.backends.sqlite3" "django.db.backends.postgresql" ];
                 default = "django.db.backends.sqlite3";
                 description = "The database engine to use.";
               };
@@ -221,10 +204,7 @@ in
 
     systemd.services.etebase-server = {
       description = "An Etebase (EteSync 2.0) server";
-      after = [
-        "network.target"
-        "systemd-tmpfiles-setup.service"
-      ];
+      after = [ "network.target" "systemd-tmpfiles-setup.service" ];
       path = [ cfg.package ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {

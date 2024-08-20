@@ -59,10 +59,7 @@ mkDerivation rec {
     description = "Scientific visualization and analysis software for atomistic and particle simulation data";
     mainProgram = "ovito";
     homepage = "https://ovito.org";
-    license = with licenses; [
-      gpl3Only
-      mit
-    ];
+    license = with licenses; [ gpl3Only mit ];
     maintainers = with maintainers; [ twhitehead ];
     broken = stdenv.isDarwin; # clang-11: error: no such file or directory: '$-DOVITO_COPYRIGHT_NOTICE=...
   };

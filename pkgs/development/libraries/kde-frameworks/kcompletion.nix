@@ -10,14 +10,7 @@
 mkDerivation {
   pname = "kcompletion";
   nativeBuildInputs = [ extra-cmake-modules ];
-  buildInputs = [
-    kconfig
-    kwidgetsaddons
-    qttools
-  ];
+  buildInputs = [ kconfig kwidgetsaddons qttools ];
   propagatedBuildInputs = [ qtbase ];
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 }

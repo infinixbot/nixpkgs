@@ -30,11 +30,7 @@ stdenv.mkDerivation {
     assert lib.assertMsg (lib.versionAtLeast jre.version "17.0.0") ''
       scala-cli requires Java 17 or newer, but ${jre.name} is ${jre.version}
     '';
-    [
-      coreutils
-      zlib
-      stdenv.cc.cc
-    ];
+    [ coreutils zlib stdenv.cc.cc ];
   src =
     let
       asset =

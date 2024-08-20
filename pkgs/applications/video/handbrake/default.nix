@@ -218,23 +218,14 @@ let
           --replace-fail "gtk-update-icon-cache" "gtk4-update-icon-cache"
       '';
 
-    nativeBuildInputs =
-      [
-        autoconf
-        automake
-        libtool
-        m4
-        pkg-config
-        python3
-      ]
-      ++ optionals useGtk [
-        appstream
-        desktop-file-utils
-        intltool
-        meson
-        ninja
-        wrapGAppsHook4
-      ];
+    nativeBuildInputs = [
+      autoconf
+      automake
+      libtool
+      m4
+      pkg-config
+      python3
+    ] ++ optionals useGtk [ appstream desktop-file-utils intltool meson ninja wrapGAppsHook4 ];
 
     buildInputs =
       [
@@ -285,12 +276,7 @@ let
         udev
       ]
       ++ optional useFdk fdk_aac
-      ++ optionals stdenv.isDarwin [
-        AudioToolbox
-        Foundation
-        libobjc
-        VideoToolbox
-      ]
+      ++ optionals stdenv.isDarwin [ AudioToolbox Foundation libobjc VideoToolbox ]
       # NOTE: 2018-12-27: Handbrake supports nv-codec-headers for Linux only,
       # look at ./make/configure.py search "enable_nvenc"
       ++ optional stdenv.isLinux nv-codec-headers;
@@ -355,10 +341,7 @@ let
         GTK GUI - `ghb`
       '';
       license = licenses.gpl2Only;
-      maintainers = with maintainers; [
-        Anton-Latukha
-        wmertens
-      ];
+      maintainers = with maintainers; [ Anton-Latukha wmertens ];
       platforms = with platforms; unix;
       broken = stdenv.isDarwin; # https://github.com/NixOS/nixpkgs/pull/297984#issuecomment-2016503434
     };

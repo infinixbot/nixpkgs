@@ -29,14 +29,8 @@ buildGoModule rec {
     done
   '';
 
-  nativeBuildInputs = [
-    pkg-config
-    ronn
-  ];
-  buildInputs = [
-    libusb1
-    avahi
-  ];
+  nativeBuildInputs = [ pkg-config ronn ];
+  buildInputs = [ libusb1 avahi ];
 
   vendorHash = null;
 

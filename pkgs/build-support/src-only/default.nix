@@ -20,10 +20,6 @@ stdenv.mkDerivation (
     separateDebugInfo = false;
     dontUnpack = false;
     dontInstall = false;
-    phases = [
-      "unpackPhase"
-      "patchPhase"
-      "installPhase"
-    ];
+    phases = [ "unpackPhase" "patchPhase" "installPhase" ];
   }
 )

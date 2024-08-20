@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
   doCheck = false;
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    alsa-lib
-    minixml
-    jack2
-  ];
+  buildInputs = [ alsa-lib minixml jack2 ];
 
   meta = with lib; {
     description = "Tool for storing/restoring JACK and/or ALSA connections to/from cml files";

@@ -13,10 +13,7 @@ stdenv.mkDerivation {
   pname = "libcpr";
   inherit version;
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "libcpr";

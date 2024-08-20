@@ -30,9 +30,6 @@ rustPlatform.buildRustPackage rec {
     description = "Cap'n Proto codegen plugin for Rust";
     homepage = "https://github.com/capnproto/capnproto-rust";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      mikroskeem
-      solson
-    ];
+    maintainers = with maintainers; [ mikroskeem solson ];
   };
 }

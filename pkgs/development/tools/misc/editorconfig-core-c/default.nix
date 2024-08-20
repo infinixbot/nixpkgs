@@ -11,10 +11,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "editorconfig-core-c";
   version = "0.12.9";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "editorconfig";
@@ -49,10 +46,7 @@ stdenv.mkDerivation (finalAttrs: {
       editors, see the EditorConfig website.
     '';
     downloadPage = "https://github.com/editorconfig/editorconfig-core-c";
-    license = with licenses; [
-      bsd2
-      bsd3
-    ];
+    license = with licenses; [ bsd2 bsd3 ];
     maintainers = with maintainers; [ dochang ];
     platforms = platforms.unix;
     mainProgram = "editorconfig";

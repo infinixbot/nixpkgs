@@ -17,11 +17,7 @@ stdenv.mkDerivation rec {
 
   sourceRoot = "cpp";
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-    unzip
-  ];
+  nativeBuildInputs = [ cmake ninja unzip ];
 
   meta = with lib; {
     description = "Polygon and line clipping and offsetting library (C++, C#, Delphi)";

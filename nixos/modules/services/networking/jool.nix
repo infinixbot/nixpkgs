@@ -25,22 +25,13 @@ let
     ];
 
     # Give capabilities to load the module and configure it
-    AmbientCapabilities = [
-      "CAP_SYS_MODULE"
-      "CAP_NET_ADMIN"
-    ];
+    AmbientCapabilities = [ "CAP_SYS_MODULE" "CAP_NET_ADMIN" ];
     RestrictAddressFamilies = [ "AF_NETLINK" ];
 
     # Other restrictions
     RestrictNamespaces = [ "net" ];
-    SystemCallFilter = [
-      "@system-service"
-      "@module"
-    ];
-    CapabilityBoundingSet = [
-      "CAP_SYS_MODULE"
-      "CAP_NET_ADMIN"
-    ];
+    SystemCallFilter = [ "@system-service" "@module" ];
+    CapabilityBoundingSet = [ "CAP_SYS_MODULE" "CAP_NET_ADMIN" ];
   };
 
   configFormat = pkgs.formats.json { };
@@ -57,10 +48,7 @@ let
     freeformType = configFormat.type;
     # Some options with a default value
     options.framework = lib.mkOption {
-      type = lib.types.enum [
-        "netfilter"
-        "iptables"
-      ];
+      type = lib.types.enum [ "netfilter" "iptables" ];
       default = "netfilter";
       description = ''
         The framework to use for attaching Jool's translation to the exist
@@ -143,10 +131,7 @@ in
     networking.jool.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      relatedPackages = [
-        "linuxPackages.jool"
-        "jool-cli"
-      ];
+      relatedPackages = [ "linuxPackages.jool" "jool-cli" ];
       description = ''
         Whether to enable Jool, an Open Source implementation of IPv4/IPv6
         translation on Linux.

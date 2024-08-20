@@ -192,11 +192,7 @@ stdenv.mkDerivation rec {
   meta = {
     description = "Intel SGX Architectural Enclave Service Manager";
     homepage = "https://github.com/intel/linux-sgx";
-    maintainers = with lib.maintainers; [
-      phlip9
-      veehaitch
-      citadelcore
-    ];
+    maintainers = with lib.maintainers; [ phlip9 veehaitch citadelcore ];
     platforms = [ "x86_64-linux" ];
     license = [ lib.licenses.bsd3 ];
   };

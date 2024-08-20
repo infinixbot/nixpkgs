@@ -55,12 +55,7 @@ let
           z
           // {
             function = foldArgs merger f arg;
-            args =
-              (attrByPath [
-                "passthru"
-                "args"
-              ] { } z)
-              // x;
+            args = (attrByPath [ "passthru" "args" ] { } z) // x;
           }
         )
       );
@@ -322,10 +317,7 @@ let
   # ! deprecated, use mergeAttrByFunc instead
   mergeAttrsNoOverride =
     {
-      mergeLists ? [
-        "buildInputs"
-        "propagatedBuildInputs"
-      ],
+      mergeLists ? [ "buildInputs" "propagatedBuildInputs" ],
       overrideSnd ? [ "buildPhase" ],
     }:
     attrs1: attrs2:
@@ -401,20 +393,8 @@ let
         "patches"
       ]
     )
-    // listToAttrs (
-      map (n: nameValuePair n mergeAttrs) [
-        "passthru"
-        "meta"
-        "cfg"
-        "flags"
-      ]
-    )
-    // listToAttrs (
-      map (n: nameValuePair n (a: b: "${a}\n${b}")) [
-        "preConfigure"
-        "postInstall"
-      ]
-    );
+    // listToAttrs (map (n: nameValuePair n mergeAttrs) [ "passthru" "meta" "cfg" "flags" ])
+    // listToAttrs (map (n: nameValuePair n (a: b: "${a}\n${b}")) [ "preConfigure" "postInstall" ]);
 
   nixType =
     x:

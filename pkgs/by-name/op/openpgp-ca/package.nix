@@ -43,12 +43,7 @@ rustPlatform.buildRustPackage rec {
       nettle
     ]
     ++ lib.optionals stdenv.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        PCSC
-        Security
-        SystemConfiguration
-      ]
+      with darwin.apple_sdk.frameworks; [ PCSC Security SystemConfiguration ]
     );
 
   # Most tests rely on gnupg being able to write to /run/user

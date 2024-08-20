@@ -30,10 +30,7 @@ stdenv.mkDerivation rec {
   pname = "power-profiles-daemon";
   version = "0.21";
 
-  outputs = [
-    "out"
-    "devdoc"
-  ];
+  outputs = [ "out" "devdoc" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.freedesktop.org";
@@ -135,10 +132,6 @@ stdenv.mkDerivation rec {
     mainProgram = "powerprofilesctl";
     platforms = platforms.linux;
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      mvnetbiz
-      picnoir
-      lyndeno
-    ];
+    maintainers = with maintainers; [ mvnetbiz picnoir lyndeno ];
   };
 }

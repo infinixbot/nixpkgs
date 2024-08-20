@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-2mNIuyY/ni+zkUc8V/iXUEa7JeBJyOnNod7friMYAm8=";
   };
 
-  nativeBuildInputs = [
-    qmake
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ qmake wrapQtAppsHook ];
 
   patches = [ ./disable_version_check.patch ];
 

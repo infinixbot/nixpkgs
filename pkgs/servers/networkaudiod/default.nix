@@ -31,10 +31,7 @@ stdenv.mkDerivation rec {
     dpkg -x $src .
   '';
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    dpkg
-  ];
+  nativeBuildInputs = [ autoPatchelfHook dpkg ];
 
   buildInputs = [
     alsa-lib

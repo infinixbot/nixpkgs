@@ -26,11 +26,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-1F3MDYJ9UH7ypgTSfYZV59PfLirlTmw6XBMEnz5Jtyk=";
   };
 
-  outputs = [
-    "out"
-    "man"
-    "doc"
-  ];
+  outputs = [ "out" "man" "doc" ];
 
   configureFlags = [
     ("--enable-docs=txt info lyx html rtf" + lib.optionalString withLatex " pdf")
@@ -40,12 +36,7 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     wrapProgram $out/bin/linuxdoc \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          groff
-          opensp
-        ]
-      }:$out/bin" \
+      --prefix PATH : "${lib.makeBinPath [ groff opensp ]}:$out/bin" \
       --prefix PERL5LIB : "$out/share/linuxdoc-tools/"
   '';
 
@@ -60,11 +51,7 @@ stdenv.mkDerivation rec {
     popd
   '';
 
-  nativeBuildInputs = [
-    flex
-    which
-    makeWrapper
-  ];
+  nativeBuildInputs = [ flex which makeWrapper ];
 
   buildInputs = [
     opensp
@@ -86,11 +73,7 @@ stdenv.mkDerivation rec {
       documents written in LinuxDoc DTD sgml source.
     '';
     homepage = "https://gitlab.com/agmartin/linuxdoc-tools";
-    license = with licenses; [
-      gpl3Plus
-      mit
-      sgmlug
-    ];
+    license = with licenses; [ gpl3Plus mit sgmlug ];
     platforms = platforms.linux;
     maintainers = with maintainers; [ p-h ];
   };

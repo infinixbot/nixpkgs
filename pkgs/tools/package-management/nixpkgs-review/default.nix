@@ -69,9 +69,6 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "https://github.com/Mic92/nixpkgs-review";
     license = licenses.mit;
     mainProgram = "nixpkgs-review";
-    maintainers = with maintainers; [
-      figsoda
-      mic92
-    ];
+    maintainers = with maintainers; [ figsoda mic92 ];
   };
 }

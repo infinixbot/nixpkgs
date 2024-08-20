@@ -43,13 +43,7 @@ stdenv.mkDerivation rec {
     export HOME="$NIX_BUILD_ROOT"
   '';
 
-  nativeBuildInputs = [
-    inkscape
-    imagemagick
-    potrace
-    svgo
-    scfbuild
-  ];
+  nativeBuildInputs = [ inkscape imagemagick potrace svgo scfbuild ];
 
   enableParallelBuilding = true;
 

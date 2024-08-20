@@ -64,11 +64,7 @@ let
       description = "`sched_cfs_bandwidth_slice_us`.";
     };
     preempt = {
-      type = enum [
-        "none"
-        "voluntary"
-        "full"
-      ];
+      type = enum [ "none" "voluntary" "full" ];
       description = "Preemption mode.";
     };
   };
@@ -78,13 +74,7 @@ let
       description = "Niceness.";
     };
     class = {
-      type = nullOr (enum [
-        "idle"
-        "batch"
-        "other"
-        "rr"
-        "fifo"
-      ]);
+      type = nullOr (enum [ "idle" "batch" "other" "rr" "fifo" ]);
       example = literalExpression "\"batch\"";
       description = "CPU scheduler class.";
     };
@@ -94,11 +84,7 @@ let
       description = "CPU scheduler priority.";
     };
     ioClass = {
-      type = nullOr (enum [
-        "idle"
-        "best-effort"
-        "realtime"
-      ]);
+      type = nullOr (enum [ "idle" "best-effort" "realtime" ]);
       example = literalExpression "\"best-effort\"";
       description = "IO scheduler class.";
     };

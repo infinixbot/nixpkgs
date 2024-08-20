@@ -22,10 +22,7 @@ buildGoModule rec {
     mainProgram = "mapserver";
     homepage = "https://github.com/${pname}/mapserver/blob/master/readme.md";
     changelog = "https://github.com/${pname}/mapserver/releases/tag/v${version}";
-    license = with licenses; [
-      mit
-      cc-by-sa-30
-    ];
+    license = with licenses; [ mit cc-by-sa-30 ];
     platforms = platforms.all;
     maintainers = with maintainers; [ gm6k ];
   };

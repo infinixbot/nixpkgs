@@ -46,12 +46,7 @@ stdenv.mkDerivation rec {
   sourceRoot = "Unigine_Valley-${version}";
   instPath = "lib/unigine/valley";
 
-  nativeBuildInputs = [
-    file
-    makeWrapper
-    imagemagick
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ file makeWrapper imagemagick copyDesktopItems ];
 
   libPath = lib.makeLibraryPath [
     stdenv.cc.cc # libstdc++.so.6
@@ -137,10 +132,7 @@ stdenv.mkDerivation rec {
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
     license = lib.licenses.unfree; # see also: $out/$instPath/documentation/License.pdf
     maintainers = [ lib.maintainers.kierdavis ];
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
     mainProgram = "valley";
   };
 }

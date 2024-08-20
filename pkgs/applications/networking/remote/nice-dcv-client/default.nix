@@ -32,11 +32,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-iLz25SB5v7ghkAZOMGPmpNaPihd8ikzCQS//r1xBNRU=";
   };
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    wrapGAppsHook3
-    python3Packages.rpm
-  ];
+  nativeBuildInputs = [ autoPatchelfHook wrapGAppsHook3 python3Packages.rpm ];
   unpackPhase = ''
     rpm2cpio $src | ${cpio}/bin/cpio -idm
   '';

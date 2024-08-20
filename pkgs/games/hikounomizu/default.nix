@@ -76,10 +76,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://hikounomizu.org/";
     downloadPage = "https://hikounomizu.org/download.html";
     maintainers = with maintainers; [ fgaz ];
-    license = [
-      licenses.gpl3Plus
-      licenses.lal13
-    ];
+    license = [ licenses.gpl3Plus licenses.lal13 ];
     platforms = platforms.all;
   };
 })

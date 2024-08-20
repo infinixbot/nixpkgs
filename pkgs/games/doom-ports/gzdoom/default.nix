@@ -38,10 +38,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-taie1Iod3pXvuxxBC7AArmtndkIV0Di9mtJoPvPkioo=";
   };
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   nativeBuildInputs = [
     cmake
@@ -114,9 +111,6 @@ stdenv.mkDerivation rec {
     '';
     license = licenses.gpl3Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      azahi
-      lassulus
-    ];
+    maintainers = with maintainers; [ azahi lassulus ];
   };
 }

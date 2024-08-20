@@ -22,10 +22,7 @@ buildGoModule rec {
 
   subPackages = [ "cmd/eksctl" ];
 
-  tags = [
-    "netgo"
-    "release"
-  ];
+  tags = [ "netgo" "release" ];
 
   ldflags = [
     "-s"
@@ -48,10 +45,7 @@ buildGoModule rec {
     homepage = "https://github.com/weaveworks/eksctl";
     changelog = "https://github.com/eksctl-io/eksctl/releases/tag/v${version}";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      xrelkd
-      Chili-Man
-    ];
+    maintainers = with maintainers; [ xrelkd Chili-Man ];
     mainProgram = "eksctl";
   };
 }

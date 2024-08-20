@@ -36,11 +36,7 @@
   ),
 }:
 
-assert builtins.elem gpuBackend [
-  "none"
-  "cuda"
-  "rocm"
-];
+assert builtins.elem gpuBackend [ "none" "cuda" "rocm" ];
 
 stdenv.mkDerivation rec {
   pname = "SIRIUS";
@@ -53,10 +49,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-DYie6ufgZNqg7ohlIed3Bo+sqLKHOxWXTwAkea2guLk=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs = [
     cmake

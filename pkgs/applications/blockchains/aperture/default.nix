@@ -23,10 +23,7 @@ buildGoModule rec {
     description = "L402 (Lightning HTTP 402) Reverse Proxy";
     homepage = "https://github.com/lightninglabs/aperture";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      sputn1ck
-      HannahMR
-    ];
+    maintainers = with maintainers; [ sputn1ck HannahMR ];
     mainProgram = "aperture";
   };
 }

@@ -37,10 +37,7 @@ rustPlatform.buildRustPackage rec {
     lib.optionals stdenv.isLinux [ openssl ]
     ++ lib.optionals stdenv.isDarwin [ Security ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   cargoLock = {
     lockFile = ./Cargo.lock;

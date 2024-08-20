@@ -35,11 +35,7 @@
 
 mkDerivation {
   pname = "plasma-nm";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-    qttools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools qttools ];
   buildInputs = [
     kdeclarative
     ki18n

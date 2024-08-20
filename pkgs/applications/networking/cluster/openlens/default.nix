@@ -36,10 +36,7 @@ appimageTools.wrapType2 {
     description = "Kubernetes IDE";
     homepage = "https://github.com/MuhammedKalkan/OpenLens";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      benwbooth
-      sebtm
-    ];
+    maintainers = with maintainers; [ benwbooth sebtm ];
     mainProgram = "openlens";
     platforms = [ "x86_64-linux" ];
   };

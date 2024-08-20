@@ -115,10 +115,7 @@ stdenv.mkDerivation rec {
         appendixUrl = appendix.url;
         free = false;
       };
-    maintainers = with maintainers; [
-      toonn
-      jtojnar
-    ];
+    maintainers = with maintainers; [ toonn jtojnar ];
     # Not quite accurate since it's a font, not a program, but clearly
     # indicates we're not actually building it from source.
     sourceProvenance = [ sourceTypes.binaryNativeCode ];

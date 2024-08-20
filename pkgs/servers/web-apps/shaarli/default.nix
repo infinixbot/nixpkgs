@@ -13,10 +13,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-+iFic2WUZ3txiDRNRulznymA3qMqYovePXeP4RMWFUg=";
   };
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   patchPhase = ''
     substituteInPlace index.php \

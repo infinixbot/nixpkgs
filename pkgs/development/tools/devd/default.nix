@@ -28,10 +28,7 @@ buildGoModule rec {
 
   subPackages = [ "cmd/devd" ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     description = "Local webserver for developers";

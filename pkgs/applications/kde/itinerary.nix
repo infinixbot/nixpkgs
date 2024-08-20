@@ -29,10 +29,7 @@
 
 mkDerivation {
   pname = "itinerary";
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs = [
     extra-cmake-modules
@@ -64,10 +61,5 @@ mkDerivation {
     qtquickcontrols2
   ];
 
-  meta.license = with lib.licenses; [
-    asl20
-    bsd3
-    cc0
-    lgpl2Plus
-  ];
+  meta.license = with lib.licenses; [ asl20 bsd3 cc0 lgpl2Plus ];
 }

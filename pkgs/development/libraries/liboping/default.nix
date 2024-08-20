@@ -32,10 +32,7 @@ stdenv.mkDerivation rec {
 
   env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.cc.isGNU "-Wno-error=format-truncation";
 
-  buildInputs = [
-    ncurses
-    perl
-  ];
+  buildInputs = [ ncurses perl ];
 
   configureFlags = lib.optional (perl == null) "--with-perl-bindings=no";
 

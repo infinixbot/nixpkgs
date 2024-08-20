@@ -26,11 +26,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-  ];
+  outputs = [ "bin" "dev" "out" ];
 
   cmakeFlags = [
     "-DMESHOPT_BUILD_GLTFPACK=ON"

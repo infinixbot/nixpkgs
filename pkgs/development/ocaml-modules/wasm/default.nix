@@ -22,20 +22,13 @@ else
       hash = "sha256-5eo8MIui2GxRS5X9az0NlLGZfxi5KGsTI/EaP6m/zts=";
     };
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-      ocamlbuild
-    ];
+    nativeBuildInputs = [ ocaml findlib ocamlbuild ];
     strictDeps = true;
 
     # x86_64-unknown-linux-musl-ld: -r and -pie may not be used together
     hardeningDisable = lib.optional stdenv.hostPlatform.isStatic "pie";
 
-    makeFlags = [
-      "-C"
-      "interpreter"
-    ];
+    makeFlags = [ "-C" "interpreter" ];
 
     createFindlibDestdir = true;
 

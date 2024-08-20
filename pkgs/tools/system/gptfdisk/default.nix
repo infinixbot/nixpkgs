@@ -40,12 +40,7 @@ stdenv.mkDerivation rec {
     '';
 
   buildPhase = lib.optionalString stdenv.isDarwin "make -f Makefile.mac";
-  buildInputs = [
-    libuuid
-    popt
-    icu
-    ncurses
-  ];
+  buildInputs = [ libuuid popt icu ncurses ];
 
   installPhase = ''
     mkdir -p $out/sbin

@@ -22,13 +22,7 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-0wj5AS8RLVr+S/QWWxCsMvmVjmXUWGfR9kPaZimJEss=";
   };
 
-  nativeBuildInputs = [
-    yarn
-    nodejs-slim
-    fixup-yarn-lock
-    python3
-    jq
-  ];
+  nativeBuildInputs = [ yarn nodejs-slim fixup-yarn-lock python3 jq ];
 
   nlnog_communities = fetchFromGitHub {
     owner = "NLNOG";

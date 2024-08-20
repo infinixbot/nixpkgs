@@ -43,13 +43,7 @@
     version = "1.1.0";
   };
   mdl = {
-    dependencies = [
-      "kramdown"
-      "kramdown-parser-gfm"
-      "mixlib-cli"
-      "mixlib-config"
-      "mixlib-shellout"
-    ];
+    dependencies = [ "kramdown" "kramdown-parser-gfm" "mixlib-cli" "mixlib-config" "mixlib-shellout" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

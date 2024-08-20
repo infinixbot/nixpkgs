@@ -49,10 +49,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "https://stgraber.org/category/pastebinit/";
     description = "Software that lets you send anything you want directly to a pastebin from the command line";
-    maintainers = with maintainers; [
-      raboof
-      samuel-martineau
-    ];
+    maintainers = with maintainers; [ raboof samuel-martineau ];
     license = licenses.gpl2Plus;
     platforms = platforms.linux ++ lib.platforms.darwin;
   };

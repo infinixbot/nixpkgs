@@ -42,10 +42,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ texinfo ] ++ lib.optional enableNls gettext;
   buildInputs = [ ncurses ] ++ lib.optional (!enableTiny) file;
 
-  outputs = [
-    "out"
-    "info"
-  ];
+  outputs = [ "out" "info" ];
 
   configureFlags = [
     "--sysconfdir=/etc"
@@ -100,10 +97,7 @@ stdenv.mkDerivation rec {
     homepage = "https://www.nano-editor.org/";
     description = "Small, user-friendly console text editor";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      joachifm
-      nequissimus
-    ];
+    maintainers = with maintainers; [ joachifm nequissimus ];
     platforms = platforms.all;
     mainProgram = "nano";
   };

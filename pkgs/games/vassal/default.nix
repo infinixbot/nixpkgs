@@ -43,10 +43,7 @@ stdenv.mkDerivation rec {
   '';
 
   # Don't move doc to share/, VASSAL expects it to be in the root
-  forceShare = [
-    "man"
-    "info"
-  ];
+  forceShare = [ "man" "info" ];
 
   meta = with lib; {
     description = "Free, open-source boardgame engine";

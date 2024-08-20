@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
 
   patches = [ ./no-chown-while-installing.patch ];
 
-  buildInputs = [
-    libopensmtpd
-    openssl
-  ];
+  buildInputs = [ libopensmtpd openssl ];
 
   nativeBuildInputs = [ mandoc ];
 

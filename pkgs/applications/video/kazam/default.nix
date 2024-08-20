@@ -44,13 +44,7 @@ python3Packages.buildPythonApplication rec {
     libgudev
   ];
 
-  propagatedBuildInputs = with python3Packages; [
-    pygobject3
-    pyxdg
-    pycairo
-    dbus-python
-    xlib
-  ];
+  propagatedBuildInputs = with python3Packages; [ pygobject3 pyxdg pycairo dbus-python xlib ];
 
   patches = [
     # Fix paths

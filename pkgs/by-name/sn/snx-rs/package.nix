@@ -22,14 +22,7 @@ rustPlatform.buildRustPackage {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    openssl
-    glib
-    atk
-    gtk3
-    libsoup
-    webkitgtk_4_1
-  ];
+  buildInputs = [ openssl glib atk gtk3 libsoup webkitgtk_4_1 ];
 
   checkFlags = [
     "--skip=platform::linux::net::tests::test_default_ip"

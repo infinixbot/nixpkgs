@@ -31,10 +31,7 @@ stdenv.mkDerivation rec {
     icon = pname;
     comment = "An open-source, single-player, role-playing roguelike game set in the world of Eyal.";
     type = "Application";
-    categories = [
-      "Game"
-      "RolePlaying"
-    ];
+    categories = [ "Game" "RolePlaying" ];
     genericName = pname;
   };
 
@@ -43,11 +40,7 @@ stdenv.mkDerivation rec {
     sed -i 's|#include <GL/glext.h>||' src/tgl.h
   '';
 
-  nativeBuildInputs = [
-    makeWrapper
-    unzip
-    premake4
-  ];
+  nativeBuildInputs = [ makeWrapper unzip premake4 ];
 
   # tome4 vendors quite a few libraries so someone might want to look
   # into avoiding that...
@@ -99,9 +92,6 @@ stdenv.mkDerivation rec {
     homepage = "https://te4.org/";
     license = licenses.gpl3;
     maintainers = with maintainers; [ peterhoeg ];
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
   };
 }

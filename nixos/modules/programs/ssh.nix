@@ -84,10 +84,7 @@ in
       pubkeyAcceptedKeyTypes = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         default = [ ];
-        example = [
-          "ssh-ed25519"
-          "ssh-rsa"
-        ];
+        example = [ "ssh-ed25519" "ssh-rsa" ];
         description = ''
           Specifies the key lib.types that will be used for public key authentication.
         '';
@@ -96,10 +93,7 @@ in
       hostKeyAlgorithms = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         default = [ ];
-        example = [
-          "ssh-ed25519"
-          "ssh-rsa"
-        ];
+        example = [ "ssh-ed25519" "ssh-rsa" ];
         description = ''
           Specifies the host key algorithms that the client wants to use in order of preference.
         '';
@@ -267,10 +261,7 @@ in
       kexAlgorithms = lib.mkOption {
         type = lib.types.nullOr (lib.types.listOf lib.types.str);
         default = null;
-        example = [
-          "curve25519-sha256@libssh.org"
-          "diffie-hellman-group-exchange-sha256"
-        ];
+        example = [ "curve25519-sha256@libssh.org" "diffie-hellman-group-exchange-sha256" ];
         description = ''
           Specifies the available KEX (Key Exchange) algorithms.
         '';
@@ -279,10 +270,7 @@ in
       ciphers = lib.mkOption {
         type = lib.types.nullOr (lib.types.listOf lib.types.str);
         default = null;
-        example = [
-          "chacha20-poly1305@openssh.com"
-          "aes256-gcm@openssh.com"
-        ];
+        example = [ "chacha20-poly1305@openssh.com" "aes256-gcm@openssh.com" ];
         description = ''
           Specifies the ciphers allowed and their order of preference.
         '';
@@ -291,10 +279,7 @@ in
       macs = lib.mkOption {
         type = lib.types.nullOr (lib.types.listOf lib.types.str);
         default = null;
-        example = [
-          "hmac-sha2-512-etm@openssh.com"
-          "hmac-sha1"
-        ];
+        example = [ "hmac-sha2-512-etm@openssh.com" "hmac-sha1" ];
         description = ''
           Specifies the MAC (message authentication code) algorithms in order of preference. The MAC algorithm is used
           for data integrity protection.

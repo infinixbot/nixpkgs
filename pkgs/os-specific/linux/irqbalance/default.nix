@@ -20,15 +20,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-7es7wwsPnDSF37uL5SCgAQB+u+qGWmWDHOh3JkHuXMs=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
-  buildInputs = [
-    glib
-    ncurses
-    libcap_ng
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
+  buildInputs = [ glib ncurses libcap_ng ];
 
   LDFLAGS = "-lncurses";
 

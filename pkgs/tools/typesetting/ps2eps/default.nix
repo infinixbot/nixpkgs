@@ -44,10 +44,7 @@ perlPackages.buildPerlPackage rec {
   '';
 
   # Override buildPerlPackage's outputs setting
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
   installPhase = ''
     runHook preInstall
 

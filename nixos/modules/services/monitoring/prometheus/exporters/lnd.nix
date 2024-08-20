@@ -46,9 +46,6 @@ in
         ${concatStringsSep " \\\n  " cfg.extraFlags}
     '';
     LogsDirectory = "prometheus-lnd-exporter";
-    ReadOnlyPaths = [
-      cfg.lndTlsPath
-      cfg.lndMacaroonDir
-    ];
+    ReadOnlyPaths = [ cfg.lndTlsPath cfg.lndMacaroonDir ];
   };
 }

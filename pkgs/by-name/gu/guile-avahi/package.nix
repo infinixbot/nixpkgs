@@ -23,17 +23,9 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
   depsBuildBuild = [ buildPackages.stdenv.cc ];
-  nativeBuildInputs = [
-    autoreconfHook
-    guile
-    pkg-config
-    texinfo
-  ];
+  nativeBuildInputs = [ autoreconfHook guile pkg-config texinfo ];
   buildInputs = [ guile ];
-  propagatedBuildInputs = [
-    avahi
-    gmp
-  ];
+  propagatedBuildInputs = [ avahi gmp ];
 
   doCheck = true;
   makeFlags = [ "GUILE_AUTO_COMPILE=0" ];

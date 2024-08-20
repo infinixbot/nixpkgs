@@ -45,9 +45,6 @@ buildGoModule rec {
     homepage = "https://github.com/utkuozdemir/pv-migrate";
     changelog = "https://github.com/utkuozdemir/pv-migrate/releases/tag/${version}";
     license = licenses.afl20;
-    maintainers = with lib.maintainers; [
-      ivankovnatsky
-      qjoly
-    ];
+    maintainers = with lib.maintainers; [ ivankovnatsky qjoly ];
   };
 }

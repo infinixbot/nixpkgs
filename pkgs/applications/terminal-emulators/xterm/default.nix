@@ -29,11 +29,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    makeWrapper
-    pkg-config
-    fontconfig
-  ];
+  nativeBuildInputs = [ makeWrapper pkg-config fontconfig ];
 
   buildInputs = [
     xorg.libXaw

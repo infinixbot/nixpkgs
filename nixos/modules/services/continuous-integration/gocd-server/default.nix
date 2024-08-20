@@ -36,10 +36,7 @@ in
       extraGroups = mkOption {
         default = [ ];
         type = types.listOf types.str;
-        example = [
-          "wheel"
-          "docker"
-        ];
+        example = [ "wheel" "docker" ];
         description = ''
           List of extra groups that the "gocd-server" user should be a part of.
         '';
@@ -79,13 +76,7 @@ in
       };
 
       packages = mkOption {
-        default = [
-          pkgs.stdenv
-          pkgs.jre
-          pkgs.git
-          config.programs.ssh.package
-          pkgs.nix
-        ];
+        default = [ pkgs.stdenv pkgs.jre pkgs.git config.programs.ssh.package pkgs.nix ];
         defaultText = literalExpression "[ pkgs.stdenv pkgs.jre pkgs.git config.programs.ssh.package pkgs.nix ]";
         type = types.listOf types.package;
         description = ''

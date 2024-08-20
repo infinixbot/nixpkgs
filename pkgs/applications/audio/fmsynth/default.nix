@@ -18,11 +18,7 @@ stdenv.mkDerivation {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    gtkmm2
-    lv2
-    lvtk
-  ];
+  buildInputs = [ gtkmm2 lv2 lvtk ];
 
   buildPhase = ''
     cd lv2

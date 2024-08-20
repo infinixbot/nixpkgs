@@ -32,10 +32,7 @@ stdenv.mkDerivation rec {
     mv server/CMakeLists2.txt server/CMakeLists.txt
   '';
 
-  cmakeFlags = [
-    "-DVGL_SYSTEMFLTK=1"
-    "-DTJPEG_LIBRARY=${libjpeg_turbo.out}/lib/libturbojpeg.so"
-  ];
+  cmakeFlags = [ "-DVGL_SYSTEMFLTK=1" "-DTJPEG_LIBRARY=${libjpeg_turbo.out}/lib/libturbojpeg.so" ];
 
   makeFlags = [ "PREFIX=$(out)" ];
 

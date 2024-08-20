@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  buildInputs = [
-    pcsclite
-    pth
-    python2
-  ];
+  buildInputs = [ pcsclite pth python2 ];
 
   patchPhase = ''
     substituteInPlace Makefile \

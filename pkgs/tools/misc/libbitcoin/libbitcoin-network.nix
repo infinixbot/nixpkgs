@@ -20,14 +20,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-zDT92bvA779mzTodpKugCoxapB6vY2jCMSGZEkJLTXQ=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
-  buildInputs = [
-    libbitcoin
-    zeromq
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
+  buildInputs = [ libbitcoin zeromq ];
 
   enableParallelBuilding = true;
 

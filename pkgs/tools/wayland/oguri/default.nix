@@ -24,12 +24,7 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [
-    pkg-config
-    meson
-    ninja
-    wayland-scanner
-  ];
+  nativeBuildInputs = [ pkg-config meson ninja wayland-scanner ];
   buildInputs = [
     cairo
     gdk-pixbuf

@@ -47,13 +47,7 @@ let
 
     enableParallelBuilding = true;
 
-    outputs = [
-      "out"
-      "lib"
-      "dev"
-      "doc"
-      "man"
-    ];
+    outputs = [ "out" "lib" "dev" "doc" "man" ];
   };
 
 in
@@ -79,17 +73,7 @@ stdenv.mkDerivation rec {
       addDriverRunpath
     ];
 
-  buildInputs =
-    [ hwloc ]
-    ++ (
-      if withCuda then
-        [
-          glibc_multi
-          cudatoolkit
-        ]
-      else
-        [ glibc.static ]
-    );
+  buildInputs = [ hwloc ] ++ (if withCuda then [ glibc_multi cudatoolkit ] else [ glibc.static ]);
 
   NIX_LDFLAGS = lib.optionals withCuda [
     "-L${cudatoolkit}/lib/stubs"
@@ -121,10 +105,7 @@ stdenv.mkDerivation rec {
     homepage = "https://tu-dresden.de/zih/forschung/projekte/firestarter";
     description = "Processor Stress Test Utility";
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      astro
-      marenz
-    ];
+    maintainers = with maintainers; [ astro marenz ];
     license = licenses.gpl3;
     mainProgram = "FIRESTARTER";
   };

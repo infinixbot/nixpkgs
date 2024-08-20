@@ -43,14 +43,7 @@ let
       };
 
       nativeBuildInputs = [ makeWrapper ];
-      buildInputs = [
-        versionInfo.jre
-        bash
-        gnugrep
-        gnused
-        coreutils
-        ps
-      ];
+      buildInputs = [ versionInfo.jre bash gnugrep gnused coreutils ps ];
 
       installPhase = ''
         mkdir -p $out

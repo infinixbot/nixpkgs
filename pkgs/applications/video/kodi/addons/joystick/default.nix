@@ -18,10 +18,7 @@ buildKodiBinaryAddon rec {
     sha256 = "sha256-xJh9Rj+PcxrgGomEsKnQcO/yZDQCnG6gNBwfK2JGuNA=";
   };
 
-  extraBuildInputs = [
-    tinyxml
-    udev
-  ];
+  extraBuildInputs = [ tinyxml udev ];
 
   meta = with lib; {
     description = "Binary addon for raw joystick input";

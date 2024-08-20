@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    zlib
-    python3
-  ];
+  buildInputs = [ zlib python3 ];
 
   doCheck = true;
 

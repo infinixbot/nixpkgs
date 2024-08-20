@@ -27,10 +27,7 @@ stdenv.mkDerivation rec {
     sha256 = "0xvahlfj3ysgsjsp53q81hayzw7f99n1g214gh7dwdr52kv2l987";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   buildInputs =
     lib.optional alsaSupport alsa-lib

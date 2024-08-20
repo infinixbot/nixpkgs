@@ -19,13 +19,7 @@ stdenv.mkDerivation rec {
     sha256 = "14x3wizvncdy0xgvmcx541qanwb7bg76abygqy17bxycn1zh5r1x";
   };
 
-  buildInputs = [
-    foomatic-filters
-    bc
-    ghostscript
-    systemd
-    vim
-  ];
+  buildInputs = [ foomatic-filters bc ghostscript systemd vim ];
 
   patches = [
     ./no-hardcode-fw.diff

@@ -166,11 +166,7 @@ in
           };
 
           DB = mkOption {
-            type = types.enum [
-              "sqlite"
-              "postgres"
-              "mysql"
-            ];
+            type = types.enum [ "sqlite" "postgres" "mysql" ];
             default = "sqlite";
             description = "Database engine to use.";
           };
@@ -197,10 +193,7 @@ in
       description = "Target for all Healthchecks services";
       wantedBy = [ "multi-user.target" ];
       wants = [ "network-online.target" ];
-      after = [
-        "network.target"
-        "network-online.target"
-      ];
+      after = [ "network.target" "network-online.target" ];
     };
 
     systemd.services =

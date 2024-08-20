@@ -29,10 +29,7 @@ let
       url = "mirror://cpan/authors/id/J/JB/JBERGER/${pname}-${version}.tar.gz";
       sha256 = "19pih5x0ayxs2m8j29qwdpi6ky3w4ghv6vrmax3ix9r59hj6569b";
     };
-    propagatedBuildInputs = [
-      perlPackages.IOPipely
-      Mojolicious'
-    ];
+    propagatedBuildInputs = [ perlPackages.IOPipely Mojolicious' ];
   };
 
   perl' = perl.withPackages (p: [
@@ -54,16 +51,9 @@ stdenv.mkDerivation {
     inherit sha256;
   };
 
-  buildInputs = [
-    wget
-    perl'
-  ];
+  buildInputs = [ wget perl' ];
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-    autoreconfHook
-  ];
+  nativeBuildInputs = [ autoconf automake autoreconfHook ];
 
   preConfigure = ''
     sed -i 's/^SUBDIRS =.*$/SUBDIRS = lib/' Makefile.am

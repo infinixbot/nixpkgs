@@ -23,18 +23,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-gyDBK/bF+QxXMnthUfMjeUuRBZk0Xcahm7wOtLGs5kY=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
-  buildInputs = [
-    curl
-    libunistring
-    openssl
-    pcre
-    zlib
-  ];
+  buildInputs = [ curl libunistring openssl pcre zlib ];
 
   postFixup = ''
     substituteInPlace "$out"/lib/pkgconfig/the_Foundation.pc \

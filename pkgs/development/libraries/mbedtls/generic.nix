@@ -29,12 +29,7 @@ stdenv.mkDerivation rec {
 
   inherit patches;
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-    perl
-    python3
-  ];
+  nativeBuildInputs = [ cmake ninja perl python3 ];
 
   strictDeps = true;
 

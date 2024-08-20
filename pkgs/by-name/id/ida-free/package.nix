@@ -59,12 +59,7 @@ stdenv.mkDerivation rec {
 
   desktopItems = [ desktopItem ];
 
-  nativeBuildInputs = [
-    makeWrapper
-    copyDesktopItems
-    autoPatchelfHook
-    libsForQt5.wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ makeWrapper copyDesktopItems autoPatchelfHook libsForQt5.wrapQtAppsHook ];
 
   # We just get a runfile in $src, so no need to unpack it.
   dontUnpack = true;

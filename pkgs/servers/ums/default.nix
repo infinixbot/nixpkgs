@@ -43,12 +43,7 @@ stdenv.mkDerivation rec {
     rm -rf $out/jre8
 
     makeWrapper "$out/UMS.sh" "$out/bin/ums" \
-      --prefix LD_LIBRARY_PATH ":" "${
-        lib.makeLibraryPath [
-          libzen
-          libmediainfo
-        ]
-      }" \
+      --prefix LD_LIBRARY_PATH ":" "${lib.makeLibraryPath [ libzen libmediainfo ]}" \
       --set JAVA_HOME "${jre8}"
   '';
 
@@ -56,10 +51,7 @@ stdenv.mkDerivation rec {
     description = "Universal Media Server: a DLNA-compliant UPnP Media Server";
     license = lib.licenses.gpl2Only;
     platforms = lib.platforms.linux;
-    maintainers = with lib.maintainers; [
-      thall
-      snicket2100
-    ];
+    maintainers = with lib.maintainers; [ thall snicket2100 ];
     mainProgram = "ums";
   };
 }

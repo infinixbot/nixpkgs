@@ -51,10 +51,7 @@ stdenv.mkDerivation rec {
     '';
     license = licenses.gpl2Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      mic92
-      vifino
-    ];
+    maintainers = with maintainers; [ mic92 vifino ];
     mainProgram = "nvme";
   };
 }

@@ -192,12 +192,7 @@ with pkgs;
     }:
     makeSetupHook {
       name = "autoreconf-hook";
-      propagatedBuildInputs = [
-        autoconf
-        automake
-        gettext
-        libtool
-      ];
+      propagatedBuildInputs = [ autoconf automake gettext libtool ];
     } ../build-support/setup-hooks/autoreconf.sh
   ) { };
 
@@ -433,10 +428,7 @@ with pkgs;
 
   gogUnpackHook = makeSetupHook {
     name = "gog-unpack-hook";
-    propagatedBuildInputs = [
-      innoextract
-      file-rename
-    ];
+    propagatedBuildInputs = [ innoextract file-rename ];
   } ../build-support/setup-hooks/gog-unpack.sh;
 
   buildEnv = callPackage ../build-support/buildenv { }; # not actually a package
@@ -1453,12 +1445,7 @@ with pkgs;
 
   desktopToDarwinBundle = makeSetupHook {
     name = "desktop-to-darwin-bundle-hook";
-    propagatedBuildInputs = [
-      writeDarwinBundle
-      librsvg
-      imagemagick
-      python3Packages.icnsutil
-    ];
+    propagatedBuildInputs = [ writeDarwinBundle librsvg imagemagick python3Packages.icnsutil ];
   } ../build-support/setup-hooks/desktop-to-darwin-bundle.sh;
 
   keepBuildTree = makeSetupHook {
@@ -1475,10 +1462,7 @@ with pkgs;
 
   makeGCOVReport = makeSetupHook {
     name = "make-gcov-report-hook";
-    propagatedBuildInputs = [
-      lcov
-      enableGCOVInstrumentation
-    ];
+    propagatedBuildInputs = [ lcov enableGCOVInstrumentation ];
   } ../build-support/setup-hooks/make-coverage-analysis-report.sh;
 
   makeHardcodeGsettingsPatch = callPackage ../build-support/make-hardcode-gsettings-patch { };
@@ -1523,10 +1507,7 @@ with pkgs;
 
   validatePkgConfig = makeSetupHook {
     name = "validate-pkg-config";
-    propagatedBuildInputs = [
-      findutils
-      pkg-config
-    ];
+    propagatedBuildInputs = [ findutils pkg-config ];
   } ../build-support/setup-hooks/validate-pkg-config.sh;
 
   patchPpdFilesHook = callPackage ../build-support/setup-hooks/patch-ppd-files { };
@@ -2253,11 +2234,7 @@ with pkgs;
 
   git = callPackage ../applications/version-management/git {
     inherit (darwin.apple_sdk.frameworks) CoreServices Security;
-    perlLibs = [
-      perlPackages.LWP
-      perlPackages.URI
-      perlPackages.TermReadKey
-    ];
+    perlLibs = [ perlPackages.LWP perlPackages.URI perlPackages.TermReadKey ];
     smtpPerlLibs = [
       perlPackages.libnet
       perlPackages.NetSMTPSSL
@@ -3303,11 +3280,7 @@ with pkgs;
     withPerl = false;
     # We don't use `with` statement here on purpose!
     # See https://github.com/NixOS/nixpkgs/pull/10474#discussion_r42369334
-    modules = [
-      nginxModules.rtmp
-      nginxModules.dav
-      nginxModules.moreheaders
-    ];
+    modules = [ nginxModules.rtmp nginxModules.dav nginxModules.moreheaders ];
   };
 
   angieQuic = callPackage ../servers/http/angie {
@@ -3316,11 +3289,7 @@ with pkgs;
     withQuic = true;
     # We don't use `with` statement here on purpose!
     # See https://github.com/NixOS/nixpkgs/pull/10474#discussion_r42369334
-    modules = [
-      nginxModules.rtmp
-      nginxModules.dav
-      nginxModules.moreheaders
-    ];
+    modules = [ nginxModules.rtmp nginxModules.dav nginxModules.moreheaders ];
     # Use latest quictls to allow http3 support
     openssl = quictls;
   };
@@ -4610,12 +4579,7 @@ with pkgs;
     paths = [ cabal2nix-unwrapped ];
     postBuild = ''
       wrapProgram $out/bin/cabal2nix \
-        --prefix PATH ":" "${
-          lib.makeBinPath [
-            nix
-            nix-prefetch-scripts
-          ]
-        }"
+        --prefix PATH ":" "${lib.makeBinPath [ nix nix-prefetch-scripts ]}"
     '';
   };
 
@@ -6826,12 +6790,7 @@ with pkgs;
   cksfv = callPackage ../tools/networking/cksfv { };
 
   clementine = libsForQt5.callPackage ../applications/audio/clementine {
-    gst_plugins = with gst_all_1; [
-      gst-plugins-base
-      gst-plugins-good
-      gst-plugins-ugly
-      gst-libav
-    ];
+    gst_plugins = with gst_all_1; [ gst-plugins-base gst-plugins-good gst-plugins-ugly gst-libav ];
     protobuf = protobuf_21;
   };
 
@@ -9315,10 +9274,7 @@ with pkgs;
   ihaskell = callPackage ../development/tools/haskell/ihaskell/wrapper.nix {
     inherit (haskellPackages) ghcWithPackages;
 
-    jupyter = python3.withPackages (ps: [
-      ps.jupyter
-      ps.notebook
-    ]);
+    jupyter = python3.withPackages (ps: [ ps.jupyter ps.notebook ]);
 
     packages = config.ihaskell.packages or (_: [ ]);
   };
@@ -10391,36 +10347,12 @@ with pkgs;
     eriDeriv = 2;
     eri3Deriv = 2;
     eri2Deriv = 2;
-    eriAm = [
-      6
-      5
-      4
-    ];
-    eri3Am = [
-      6
-      5
-      4
-    ];
-    eri2Am = [
-      6
-      5
-      4
-    ];
-    eriOptAm = [
-      3
-      2
-      2
-    ];
-    eri3OptAm = [
-      3
-      2
-      2
-    ];
-    eri2OptAm = [
-      3
-      2
-      2
-    ];
+    eriAm = [ 6 5 4 ];
+    eri3Am = [ 6 5 4 ];
+    eri2Am = [ 6 5 4 ];
+    eriOptAm = [ 3 2 2 ];
+    eri3OptAm = [ 3 2 2 ];
+    eri2OptAm = [ 3 2 2 ];
     enableOneBody = true;
     oneBodyDerivOrd = 2;
     enableGeneric = false;
@@ -17057,12 +16989,7 @@ with pkgs;
   };
 
   squirrel-sql = callPackage ../development/tools/database/squirrel-sql {
-    drivers = [
-      jtds_jdbc
-      mssql_jdbc
-      mysql_jdbc
-      postgresql_jdbc
-    ];
+    drivers = [ jtds_jdbc mssql_jdbc mysql_jdbc postgresql_jdbc ];
   };
 
   surrealdb-migrations = callPackage ../development/tools/database/surrealdb-migrations {
@@ -18777,10 +18704,7 @@ with pkgs;
   };
 
   cmakeWithGui = cmake.override {
-    uiToolkits = [
-      "ncurses"
-      "qt5"
-    ];
+    uiToolkits = [ "ncurses" "qt5" ];
   };
 
   cmake-format = python3Packages.callPackage ../development/tools/cmake-format { };
@@ -20173,12 +20097,7 @@ with pkgs;
       doCheck = false;
       meta = libgit2.meta // {
         maintainers = [ ];
-        knownVulnerabilities = [
-          "CVE-2024-24575"
-          "CVE-2024-24577"
-          "CVE-2022-29187"
-          "CVE 2022-24765"
-        ];
+        knownVulnerabilities = [ "CVE-2024-24575" "CVE-2024-24577" "CVE-2022-29187" "CVE 2022-24765" ];
       };
     };
   };
@@ -23031,15 +22950,7 @@ with pkgs;
   # We also provide `libiconvReal`, which will always be a standalone libiconv,
   # just in case you want it regardless of platform.
   libiconv =
-    if
-      lib.elem stdenv.hostPlatform.libc [
-        "glibc"
-        "musl"
-        "nblibc"
-        "wasilibc"
-        "fblibc"
-      ]
-    then
+    if lib.elem stdenv.hostPlatform.libc [ "glibc" "musl" "nblibc" "wasilibc" "fblibc" ] then
       libcIconv (if stdenv.hostPlatform != stdenv.buildPlatform then libcCross else stdenv.cc.libc)
     else if stdenv.hostPlatform.isDarwin then
       libiconv-darwin
@@ -23060,12 +22971,7 @@ with pkgs;
   libiconvReal = callPackage ../development/libraries/libiconv { };
 
   iconv =
-    if
-      lib.elem stdenv.hostPlatform.libc [
-        "glibc"
-        "musl"
-      ]
-    then
+    if lib.elem stdenv.hostPlatform.libc [ "glibc" "musl" ] then
       lib.getBin stdenv.cc.libc
     else if stdenv.hostPlatform.isDarwin then
       lib.getBin libiconv
@@ -23660,16 +23566,9 @@ with pkgs;
     pkgs.buildEnv {
       # slightly hacky
       name = "libxml2+py-${res.libxml2.version}";
-      paths = with libxml2; [
-        dev
-        bin
-        py
-      ];
+      paths = with libxml2; [ dev bin py ];
       # Avoid update.nix/tests conflicts with libxml2.
-      passthru = builtins.removeAttrs libxml2.passthru [
-        "updateScript"
-        "tests"
-      ];
+      passthru = builtins.removeAttrs libxml2.passthru [ "updateScript" "tests" ];
       # the hook to find catalogs is hidden by buildEnv
       postBuild = ''
         mkdir "$out/nix-support"
@@ -26018,10 +25917,7 @@ with pkgs;
   clisp = wrapLisp {
     pkg = callPackage ../development/interpreters/clisp { };
     faslExt = "fas";
-    flags = [
-      "-E"
-      "UTF-8"
-    ];
+    flags = [ "-E" "UTF-8" ];
   };
 
   wrapLispi686Linux = pkgsi686Linux.callPackage ../development/lisp-modules/nix-cl.nix { };
@@ -26059,18 +25955,12 @@ with pkgs;
   sbcl_2_4_6 = wrapLisp {
     pkg = callPackage ../development/compilers/sbcl { version = "2.4.6"; };
     faslExt = "fasl";
-    flags = [
-      "--dynamic-space-size"
-      "3000"
-    ];
+    flags = [ "--dynamic-space-size" "3000" ];
   };
   sbcl_2_4_7 = wrapLisp {
     pkg = callPackage ../development/compilers/sbcl { version = "2.4.7"; };
     faslExt = "fasl";
-    flags = [
-      "--dynamic-space-size"
-      "3000"
-    ];
+    flags = [ "--dynamic-space-size" "3000" ];
   };
   sbcl = sbcl_2_4_7;
 
@@ -26794,11 +26684,7 @@ with pkgs;
     withPerl = false;
     # We don't use `with` statement here on purpose!
     # See https://github.com/NixOS/nixpkgs/pull/10474#discussion_r42369334
-    modules = [
-      nginxModules.rtmp
-      nginxModules.dav
-      nginxModules.moreheaders
-    ];
+    modules = [ nginxModules.rtmp nginxModules.dav nginxModules.moreheaders ];
     # Use latest boringssl to allow http3 support
     openssl = quictls;
   };
@@ -26808,11 +26694,7 @@ with pkgs;
     withPerl = false;
     # We don't use `with` statement here on purpose!
     # See https://github.com/NixOS/nixpkgs/pull/10474#discussion_r42369334
-    modules = [
-      nginxModules.rtmp
-      nginxModules.dav
-      nginxModules.moreheaders
-    ];
+    modules = [ nginxModules.rtmp nginxModules.dav nginxModules.moreheaders ];
   };
 
   nginxMainline = callPackage ../servers/http/nginx/mainline.nix {
@@ -26821,22 +26703,14 @@ with pkgs;
     withPerl = false;
     # We don't use `with` statement here on purpose!
     # See https://github.com/NixOS/nixpkgs/pull/10474#discussion_r42369334
-    modules = [
-      nginxModules.dav
-      nginxModules.moreheaders
-    ];
+    modules = [ nginxModules.dav nginxModules.moreheaders ];
   };
 
   nginxModules = recurseIntoAttrs (callPackage ../servers/http/nginx/modules.nix { });
 
   # We should move to dynmaic modules and create a nginxFull package with all modules
   nginxShibboleth = nginxStable.override {
-    modules = [
-      nginxModules.rtmp
-      nginxModules.dav
-      nginxModules.moreheaders
-      nginxModules.shibboleth
-    ];
+    modules = [ nginxModules.rtmp nginxModules.dav nginxModules.moreheaders nginxModules.shibboleth ];
   };
 
   libmodsecurity = callPackage ../tools/security/libmodsecurity {
@@ -31577,12 +31451,7 @@ with pkgs;
   evolution = callPackage ../applications/networking/mailreaders/evolution/evolution { };
   evolutionWithPlugins =
     callPackage ../applications/networking/mailreaders/evolution/evolution/wrapper.nix
-      {
-        plugins = [
-          evolution
-          evolution-ews
-        ];
-      };
+      { plugins = [ evolution evolution-ews ]; };
 
   keepass-charactercopy = callPackage ../applications/misc/keepass-plugins/charactercopy { };
 
@@ -36475,10 +36344,7 @@ with pkgs;
     callPackage ../applications/window-managers/wayfire/plugins.nix { }
   );
   wayfire-with-plugins = callPackage ../applications/window-managers/wayfire/wrapper.nix {
-    plugins = with wayfirePlugins; [
-      wcm
-      wf-shell
-    ];
+    plugins = with wayfirePlugins; [ wcm wf-shell ];
   };
 
   waypipe = callPackage ../applications/networking/remote/waypipe { };
@@ -38222,10 +38088,7 @@ with pkgs;
   quake3demo = quake3wrapper {
     name = "quake3-demo-${lib.getVersion quake3demodata}";
     description = "Demo of Quake 3 Arena, a classic first-person shooter";
-    paks = [
-      quake3pointrelease
-      quake3demodata
-    ];
+    paks = [ quake3pointrelease quake3demodata ];
   };
 
   quake3demodata = callPackage ../games/quake3/content/demo.nix { };
@@ -38460,12 +38323,7 @@ with pkgs;
   teeworlds-server = teeworlds.override { buildClient = false; };
 
   tengine = callPackage ../servers/http/tengine {
-    modules = with nginxModules; [
-      rtmp
-      dav
-      moreheaders
-      modsecurity
-    ];
+    modules = with nginxModules; [ rtmp dav moreheaders modsecurity ];
   };
 
   tennix = callPackage ../games/tennix { };
@@ -38688,11 +38546,7 @@ with pkgs;
   arcan-wrapped = arcan.wrapper.override { };
   arcan-all-wrapped = arcan.wrapper.override {
     name = "arcan-all-wrapped";
-    appls = [
-      cat9
-      durden
-      pipeworld
-    ];
+    appls = [ cat9 durden pipeworld ];
 
   };
   cat9-wrapped = arcan.wrapper.override {
@@ -39164,10 +39018,7 @@ with pkgs;
     jdk = pkgs.jdk11_headless;
     # Reduce closure size
     jre = pkgs.jre_minimal.override {
-      modules = [
-        "java.base"
-        "java.logging"
-      ];
+      modules = [ "java.base" "java.logging" ];
       jdk = pkgs.jdk11_headless;
     };
   };
@@ -39676,11 +39527,7 @@ with pkgs;
     polyml = polyml.overrideAttrs {
       pname = "polyml-for-isabelle";
       version = "2024";
-      configureFlags = [
-        "--enable-intinf-as-int"
-        "--with-gmp"
-        "--disable-shared"
-      ];
+      configureFlags = [ "--enable-intinf-as-int" "--with-gmp" "--disable-shared" ];
       buildFlags = [ "compiler" ];
       src = fetchFromGitHub {
         owner = "polyml";

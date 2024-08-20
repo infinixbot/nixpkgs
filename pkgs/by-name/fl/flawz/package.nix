@@ -22,19 +22,10 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-kMiKlZj+G1vfjaEiB3rtPoJl0K3W9xRVwgVz8q2pn1s=";
 
-  nativeBuildInputs = [
-    pkg-config
-    installShellFiles
-  ];
+  nativeBuildInputs = [ pkg-config installShellFiles ];
 
-  buildInputs = [
-    openssl
-    sqlite
-  ];
-  outputs = [
-    "out"
-    "man"
-  ];
+  buildInputs = [ openssl sqlite ];
+  outputs = [ "out" "man" ];
 
   postInstall = ''
     export OUT_DIR=$(mktemp -d)
@@ -58,10 +49,7 @@ rustPlatform.buildRustPackage rec {
     description = "Terminal UI for browsing CVEs";
     homepage = "https://github.com/orhun/flawz";
     changelog = "https://github.com/orhun/flawz/releases/tag/v${version}";
-    license = with lib.licenses; [
-      mit
-      asl20
-    ];
+    license = with lib.licenses; [ mit asl20 ];
     mainProgram = "flawz";
     maintainers = with lib.maintainers; [ anas ];
     platforms = with lib.platforms; unix ++ windows;

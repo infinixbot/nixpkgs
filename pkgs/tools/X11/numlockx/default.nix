@@ -18,11 +18,7 @@ stdenv.mkDerivation {
     hash = "sha256-wrHBelxEADUKugmtR8loWaJ/6s5U4PBBz8V+Dr1yifA=";
   };
 
-  buildInputs = [
-    libX11
-    libXext
-    autoconf
-  ];
+  buildInputs = [ libX11 libXext autoconf ];
 
   meta = {
     description = "Allows to start X with NumLock turned on";

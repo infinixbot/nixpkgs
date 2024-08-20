@@ -21,10 +21,7 @@ mkDerivation rec {
     hash = "sha256-uqBre1Hcdmmifm/gii3MlP9LiAovQVsAaPZTmVm1nnM=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    qmake
-  ];
+  nativeBuildInputs = [ pkg-config qmake ];
   buildInputs = [
     qtscript
     qtbase

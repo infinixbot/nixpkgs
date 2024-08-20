@@ -140,10 +140,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     homepage = "https://wz2100.net";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      astsmtl
-      fgaz
-    ];
+    maintainers = with maintainers; [ astsmtl fgaz ];
     platforms = platforms.all;
     # configure_mac.cmake tries to download stuff
     # https://github.com/Warzone2100/warzone2100/blob/master/macosx/README.md

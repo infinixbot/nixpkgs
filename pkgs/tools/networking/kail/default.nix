@@ -27,10 +27,7 @@ buildGoModule rec {
     description = "Kubernetes log viewer";
     homepage = "https://github.com/boz/kail";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      offline
-      vdemeester
-    ];
+    maintainers = with maintainers; [ offline vdemeester ];
     mainProgram = "kail";
   };
 }

@@ -19,10 +19,7 @@ buildGoModule {
 
   subPackages = [ "." ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = {
     description = "Manage local application configuration files using templates and data from etcd or consul";

@@ -31,18 +31,12 @@ mkDerivation {
   pname = "dragon";
   meta = {
     homepage = "https://apps.kde.org/dragonplayer/";
-    license = with lib.licenses; [
-      gpl2Plus
-      fdl12Plus
-    ];
+    license = with lib.licenses; [ gpl2Plus fdl12Plus ];
     description = "Simple media player for KDE";
     mainProgram = "dragon";
     maintainers = [ lib.maintainers.jonathanreeve ];
   };
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   propagatedBuildInputs = [
     baloo
     baloo-widgets
@@ -67,8 +61,5 @@ mkDerivation {
     solid
     phonon-backend-gstreamer
   ];
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 }

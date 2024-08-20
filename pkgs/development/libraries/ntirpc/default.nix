@@ -26,11 +26,7 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    krb5
-    liburcu
-    libnsl
-  ];
+  buildInputs = [ krb5 liburcu libnsl ];
 
   postInstall = ''
     mkdir -p $out/etc

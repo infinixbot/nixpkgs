@@ -182,10 +182,7 @@ rec {
         sha256 = "1hvwslc25q7k82rxk461zr1a2041nxg7sn3sw3w0y5jxf0giz2pz";
       };
 
-      nativeBuildInputs = [
-        which
-        pkg-config
-      ];
+      nativeBuildInputs = [ which pkg-config ];
 
       postPatch = ''
         patchShebangs const-proc.lua
@@ -242,11 +239,7 @@ rec {
         homepage = "https://vicious.rtfd.io";
         changelog = "https://vicious.rtfd.io/en/v${version}/changelog.html";
         license = licenses.gpl2Plus;
-        maintainers = with maintainers; [
-          makefu
-          mic92
-          McSinyx
-        ];
+        maintainers = with maintainers; [ makefu mic92 McSinyx ];
         platforms = platforms.linux;
       };
     }

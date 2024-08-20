@@ -66,10 +66,7 @@ stdenv.mkDerivation rec {
     description = "Helper library and tools for Active Directory client operations";
     mainProgram = "adcli";
     license = licenses.lgpl21Only;
-    maintainers = with maintainers; [
-      SohamG
-      anthonyroussel
-    ];
+    maintainers = with maintainers; [ SohamG anthonyroussel ];
     platforms = platforms.linux;
   };
 }

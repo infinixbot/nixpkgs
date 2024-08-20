@@ -15,12 +15,7 @@ let
 
   renderOption =
     k: v:
-    if
-      builtins.elem k [
-        "provider"
-        "custom"
-      ]
-    then
+    if builtins.elem k [ "provider" "custom" ] then
       lib.concatStringsSep "\n" (
         mapAttrsToList (name: config: ''
           ${k} ${name} {
@@ -126,14 +121,7 @@ in
         type = str;
       };
       logLevel = lib.mkOption {
-        type = lib.types.enum [
-          "none"
-          "err"
-          "warning"
-          "info"
-          "notice"
-          "debug"
-        ];
+        type = lib.types.enum [ "none" "err" "warning" "info" "notice" "debug" ];
         default = "notice";
         description = "Set inadyn's log level.";
       };

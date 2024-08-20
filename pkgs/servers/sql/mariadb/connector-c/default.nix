@@ -28,10 +28,7 @@ stdenv.mkDerivation {
     inherit hash;
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   cmakeFlags = [
     "-DMARIADB_UNIX_ADDR=/run/mysqld/mysqld.sock"
@@ -64,11 +61,7 @@ stdenv.mkDerivation {
   '';
 
   nativeBuildInputs = [ cmake ];
-  propagatedBuildInputs = [
-    curl
-    openssl
-    zlib
-  ] ++ lib.optional isVer33 zstd;
+  propagatedBuildInputs = [ curl openssl zlib ] ++ lib.optional isVer33 zstd;
   buildInputs = [ libiconv ];
 
   postInstall = ''

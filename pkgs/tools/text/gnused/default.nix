@@ -15,15 +15,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-biJrcy4c1zlGStaGK9Ghq6QteYKSLaelNRljHSSXUYE=";
   };
 
-  outputs = [
-    "out"
-    "info"
-  ];
+  outputs = [ "out" "info" ];
 
-  nativeBuildInputs = [
-    updateAutotoolsGnuConfigScriptsHook
-    perl
-  ];
+  nativeBuildInputs = [ updateAutotoolsGnuConfigScriptsHook perl ];
   preConfigure = "patchShebangs ./build-aux/help2man";
 
   # Prevents attempts of running 'help2man' on cross-built binaries.

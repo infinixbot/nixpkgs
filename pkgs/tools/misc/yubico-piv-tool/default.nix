@@ -20,11 +20,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "yubico-piv-tool";
   version = "2.5.2";
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
   src = fetchFromGitHub {
     owner = "Yubico";
@@ -64,10 +60,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   passthru = {
     updateScript = nix-update-script {
-      extraArgs = [
-        "--version-regex"
-        "yubico-piv-tool-([0-9.]+)$"
-      ];
+      extraArgs = [ "--version-regex" "yubico-piv-tool-([0-9.]+)$" ];
     };
     tests = {
       pkg-config = testers.testMetaPkgConfig finalAttrs.finalPackage;
@@ -94,14 +87,8 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     license = lib.licenses.bsd2;
     platforms = lib.platforms.all;
-    maintainers = with lib.maintainers; [
-      viraptor
-      anthonyroussel
-    ];
+    maintainers = with lib.maintainers; [ viraptor anthonyroussel ];
     mainProgram = "yubico-piv-tool";
-    pkgConfigModules = [
-      "ykcs11"
-      "ykpiv"
-    ];
+    pkgConfigModules = [ "ykcs11" "ykpiv" ];
   };
 })

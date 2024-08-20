@@ -107,10 +107,7 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  installTargets = [
-    "install-tiledb"
-    "doc"
-  ];
+  installTargets = [ "install-tiledb" "doc" ];
 
   postInstall = lib.optionalString stdenv.isDarwin ''
     install_name_tool -add_rpath ${tbb}/lib $out/lib/libtiledb.dylib

@@ -29,9 +29,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/badboy/mdbook-mermaid";
     changelog = "https://github.com/badboy/mdbook-mermaid/blob/v${version}/CHANGELOG.md";
     license = licenses.mpl20;
-    maintainers = with maintainers; [
-      xrelkd
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ xrelkd matthiasbeyer ];
   };
 }

@@ -74,10 +74,7 @@ stdenvNoCC.mkDerivation {
     "SOCKS_SERVER"
   ];
 
-  nativeBuildInputs = [
-    gitRepo
-    cacert
-  ];
+  nativeBuildInputs = [ gitRepo cacert ];
 
   GIT_SSL_CAINFO = "${cacert}/etc/ssl/certs/ca-bundle.crt";
 

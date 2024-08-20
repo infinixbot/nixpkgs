@@ -24,25 +24,11 @@ stdenv.mkDerivation rec {
     hash = "sha256-gHLCurydxX1pS66DTAWUJGl9Yqu9RWRjkZh6lXzM7YY=";
   };
 
-  nativeBuildInputs = [
-    ocaml
-    findlib
-    perl
-  ];
-  buildInputs = [
-    gmp
-    mpfr
-    ppl
-    camlidl
-    flint
-    pplite
-  ];
+  nativeBuildInputs = [ ocaml findlib perl ];
+  buildInputs = [ gmp mpfr ppl camlidl flint pplite ];
   propagatedBuildInputs = [ mlgmpidl ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   configurePhase = ''
     runHook preConfigure

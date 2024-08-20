@@ -32,10 +32,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-cTvrq0fH057UIx/O9u8zHMsg+psMGg1q9klV5OMxtok=";
 
-  cargoBuildFlags = [
-    "--package"
-    "pop-launcher-bin"
-  ];
+  cargoBuildFlags = [ "--package" "pop-launcher-bin" ];
 
   postInstall = ''
     mv $out/bin/pop-launcher{-bin,}

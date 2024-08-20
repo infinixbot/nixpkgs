@@ -94,10 +94,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "2d-array-test" ];
-      lispLibs = [
-        (getAttr "_2d-array" self)
-        (getAttr "scrutiny" self)
-      ];
+      lispLibs = [ (getAttr "_2d-array" self) (getAttr "scrutiny" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -196,11 +193,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "3b-swf-swc" ];
-      lispLibs = [
-        (getAttr "_3b-swf" self)
-        (getAttr "cxml" self)
-        (getAttr "zip" self)
-      ];
+      lispLibs = [ (getAttr "_3b-swf" self) (getAttr "cxml" self) (getAttr "zip" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -269,11 +262,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "3bmd" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "esrap" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "esrap" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -318,11 +307,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "3bmd-ext-definition-lists" ];
-      lispLibs = [
-        (getAttr "_3bmd" self)
-        (getAttr "alexandria" self)
-        (getAttr "colorize" self)
-      ];
+      lispLibs = [ (getAttr "_3bmd" self) (getAttr "alexandria" self) (getAttr "colorize" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -342,10 +327,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "3bmd-ext-math" ];
-      lispLibs = [
-        (getAttr "_3bmd" self)
-        (getAttr "esrap" self)
-      ];
+      lispLibs = [ (getAttr "_3bmd" self) (getAttr "esrap" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -429,10 +411,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "3bmd-youtube" ];
-      lispLibs = [
-        (getAttr "_3bmd" self)
-        (getAttr "esrap" self)
-      ];
+      lispLibs = [ (getAttr "_3bmd" self) (getAttr "esrap" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -452,10 +431,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "3bmd-youtube-tests" ];
-      lispLibs = [
-        (getAttr "_3bmd-youtube" self)
-        (getAttr "fiasco" self)
-      ];
+      lispLibs = [ (getAttr "_3bmd-youtube" self) (getAttr "fiasco" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -502,10 +478,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "3d-math" ];
-      lispLibs = [
-        (getAttr "documentation-utils" self)
-        (getAttr "type-templates" self)
-      ];
+      lispLibs = [ (getAttr "documentation-utils" self) (getAttr "type-templates" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -525,10 +498,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "3d-math-test" ];
-      lispLibs = [
-        (getAttr "_3d-math" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "_3d-math" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -548,10 +518,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "3d-matrices" ];
-      lispLibs = [
-        (getAttr "_3d-vectors" self)
-        (getAttr "documentation-utils" self)
-      ];
+      lispLibs = [ (getAttr "_3d-vectors" self) (getAttr "documentation-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -571,10 +538,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "3d-matrices-test" ];
-      lispLibs = [
-        (getAttr "_3d-matrices" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "_3d-matrices" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -618,10 +582,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "3d-quaternions-test" ];
-      lispLibs = [
-        (getAttr "_3d-quaternions" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "_3d-quaternions" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -666,10 +627,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "3d-spaces-test" ];
-      lispLibs = [
-        (getAttr "_3d-spaces" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "_3d-spaces" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -714,10 +672,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "3d-transforms-test" ];
-      lispLibs = [
-        (getAttr "_3d-transforms" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "_3d-transforms" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -757,10 +712,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "3d-vectors-test" ];
-      lispLibs = [
-        (getAttr "_3d-vectors" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "_3d-vectors" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -800,10 +752,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "40ants-asdf-system-tests" ];
-      lispLibs = [
-        (getAttr "_40ants-asdf-system" self)
-        (getAttr "rove" self)
-      ];
+      lispLibs = [ (getAttr "_40ants-asdf-system" self) (getAttr "rove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -870,10 +819,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "40ants-doc" ];
-      lispLibs = [
-        (getAttr "named-readtables" self)
-        (getAttr "pythonic-string-reader" self)
-      ];
+      lispLibs = [ (getAttr "named-readtables" self) (getAttr "pythonic-string-reader" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1227,11 +1173,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "a-cl-logger-logstash" ];
-      lispLibs = [
-        (getAttr "a-cl-logger" self)
-        (getAttr "cl-json" self)
-        (getAttr "zmq" self)
-      ];
+      lispLibs = [ (getAttr "a-cl-logger" self) (getAttr "cl-json" self) (getAttr "zmq" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1251,10 +1193,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "a-cl-logger-tests" ];
-      lispLibs = [
-        (getAttr "a-cl-logger" self)
-        (getAttr "lisp-unit2" self)
-      ];
+      lispLibs = [ (getAttr "a-cl-logger" self) (getAttr "lisp-unit2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1274,10 +1213,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "aabbcc" ];
-      lispLibs = [
-        (getAttr "quads" self)
-        (getAttr "utility" self)
-      ];
+      lispLibs = [ (getAttr "quads" self) (getAttr "utility" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1297,11 +1233,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "able" ];
-      lispLibs = [
-        (getAttr "cl-fad" self)
-        (getAttr "ltk" self)
-        (getAttr "trivial-gray-streams" self)
-      ];
+      lispLibs = [ (getAttr "cl-fad" self) (getAttr "ltk" self) (getAttr "trivial-gray-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1321,10 +1253,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "abnf" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "esrap" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "esrap" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1477,10 +1406,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "acm-random" ];
-      lispLibs = [
-        (getAttr "com_dot_google_dot_base" self)
-        (getAttr "random" self)
-      ];
+      lispLibs = [ (getAttr "com_dot_google_dot_base" self) (getAttr "random" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1500,10 +1426,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "acm-random-test" ];
-      lispLibs = [
-        (getAttr "acm-random" self)
-        (getAttr "hu_dot_dwim_dot_stefil" self)
-      ];
+      lispLibs = [ (getAttr "acm-random" self) (getAttr "hu_dot_dwim_dot_stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1523,10 +1446,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "action-list" ];
-      lispLibs = [
-        (getAttr "documentation-utils" self)
-        (getAttr "trivial-extensible-sequences" self)
-      ];
+      lispLibs = [ (getAttr "documentation-utils" self) (getAttr "trivial-extensible-sequences" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1566,10 +1486,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "adhoc-tests" ];
-      lispLibs = [
-        (getAttr "adhoc" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "adhoc" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1609,10 +1526,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "adjuvant-test" ];
-      lispLibs = [
-        (getAttr "adjuvant" self)
-        (getAttr "scrutiny" self)
-      ];
+      lispLibs = [ (getAttr "adjuvant" self) (getAttr "scrutiny" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1632,10 +1546,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "adopt" ];
-      lispLibs = [
-        (getAttr "bobbin" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "bobbin" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1655,11 +1566,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "adopt-subcommands" ];
-      lispLibs = [
-        (getAttr "adopt" self)
-        (getAttr "bobbin" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "adopt" self) (getAttr "bobbin" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1679,10 +1586,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "adopt-subcommands-test" ];
-      lispLibs = [
-        (getAttr "adopt-subcommands" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "adopt-subcommands" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1702,10 +1606,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "adp" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "scribble" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "scribble" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1770,10 +1671,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "aether-tests" ];
-      lispLibs = [
-        (getAttr "aether" self)
-        (getAttr "fiasco" self)
-      ];
+      lispLibs = [ (getAttr "aether" self) (getAttr "fiasco" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1813,10 +1711,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "agnostic-lizard-debugger-prototype" ];
-      lispLibs = [
-        (getAttr "agnostic-lizard" self)
-        (getAttr "bordeaux-threads" self)
-      ];
+      lispLibs = [ (getAttr "agnostic-lizard" self) (getAttr "bordeaux-threads" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1836,10 +1731,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "agutil" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "optima" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "optima" self) ];
       meta = { };
     }
   );
@@ -1884,10 +1776,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "alexa" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -1907,10 +1796,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "alexa-tests" ];
-      lispLibs = [
-        (getAttr "alexa" self)
-        (getAttr "fiasco" self)
-      ];
+      lispLibs = [ (getAttr "alexa" self) (getAttr "fiasco" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -2097,10 +1983,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "anatevka" ];
-      lispLibs = [
-        (getAttr "aether" self)
-        (getAttr "alexandria" self)
-      ];
+      lispLibs = [ (getAttr "aether" self) (getAttr "alexandria" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -2120,11 +2003,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "anatevka-tests" ];
-      lispLibs = [
-        (getAttr "anatevka" self)
-        (getAttr "closer-mop" self)
-        (getAttr "fiasco" self)
-      ];
+      lispLibs = [ (getAttr "anatevka" self) (getAttr "closer-mop" self) (getAttr "fiasco" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -2204,10 +2083,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "antik" ];
-      lispLibs = [
-        (getAttr "gsll" self)
-        (getAttr "physical-dimension" self)
-      ];
+      lispLibs = [ (getAttr "gsll" self) (getAttr "physical-dimension" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -2255,10 +2131,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "anypool" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "cl-speedy-queue" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "cl-speedy-queue" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -2353,10 +2226,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "apply-argv-tests" ];
-      lispLibs = [
-        (getAttr "apply-argv" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "apply-argv" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -2411,10 +2281,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "april-demo.cnn" ];
-      lispLibs = [
-        (getAttr "april" self)
-        (getAttr "lisp-binary" self)
-      ];
+      lispLibs = [ (getAttr "april" self) (getAttr "lisp-binary" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -2458,11 +2325,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "april-demo.ncurses" ];
-      lispLibs = [
-        (getAttr "april" self)
-        (getAttr "croatoan" self)
-        (getAttr "lparallel" self)
-      ];
+      lispLibs = [ (getAttr "april" self) (getAttr "croatoan" self) (getAttr "lparallel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -2502,10 +2365,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "april-lib.dfns.graph" ];
-      lispLibs = [
-        (getAttr "april" self)
-        (getAttr "april-lib_dot_dfns_dot_array" self)
-      ];
+      lispLibs = [ (getAttr "april" self) (getAttr "april-lib_dot_dfns_dot_array" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -2525,10 +2385,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "april-lib.dfns.numeric" ];
-      lispLibs = [
-        (getAttr "april" self)
-        (getAttr "april-lib_dot_dfns_dot_graph" self)
-      ];
+      lispLibs = [ (getAttr "april" self) (getAttr "april-lib_dot_dfns_dot_graph" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -2548,10 +2405,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "april-lib.dfns.power" ];
-      lispLibs = [
-        (getAttr "april" self)
-        (getAttr "april-lib_dot_dfns_dot_array" self)
-      ];
+      lispLibs = [ (getAttr "april" self) (getAttr "april-lib_dot_dfns_dot_array" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -2571,10 +2425,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "april-lib.dfns.string" ];
-      lispLibs = [
-        (getAttr "april" self)
-        (getAttr "april-lib_dot_dfns_dot_array" self)
-      ];
+      lispLibs = [ (getAttr "april" self) (getAttr "april-lib_dot_dfns_dot_array" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -2685,10 +2536,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "architecture.builder-protocol.inspection" ];
-      lispLibs = [
-        (getAttr "architecture_dot_builder-protocol" self)
-        (getAttr "clouseau" self)
-      ];
+      lispLibs = [ (getAttr "architecture_dot_builder-protocol" self) (getAttr "clouseau" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -2829,10 +2677,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "architecture.service-provider-and-hooks" ];
-      lispLibs = [
-        (getAttr "architecture_dot_service-provider" self)
-        (getAttr "cl-hooks" self)
-      ];
+      lispLibs = [ (getAttr "architecture_dot_service-provider" self) (getAttr "cl-hooks" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -2852,10 +2697,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "archive" ];
-      lispLibs = [
-        (getAttr "cl-fad" self)
-        (getAttr "trivial-gray-streams" self)
-      ];
+      lispLibs = [ (getAttr "cl-fad" self) (getAttr "trivial-gray-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -2937,10 +2779,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "array-operations" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "let-plus" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "let-plus" self) ];
       meta = { };
     }
   );
@@ -2976,10 +2815,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "array-utils-test" ];
-      lispLibs = [
-        (getAttr "array-utils" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "array-utils" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -3045,10 +2881,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "arrow-macros-test" ];
-      lispLibs = [
-        (getAttr "arrow-macros" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "arrow-macros" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -3086,10 +2919,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ascii-strings" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "babel" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "babel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -3134,11 +2964,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "asd-generator-test" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-fad" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-fad" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -3258,10 +3084,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "asdf-linguist" ];
-      lispLibs = [
-        (getAttr "inferior-shell" self)
-        (getAttr "parenscript" self)
-      ];
+      lispLibs = [ (getAttr "inferior-shell" self) (getAttr "parenscript" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -3281,10 +3104,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "asdf-manager" ];
-      lispLibs = [
-        (getAttr "trivial-download" self)
-        (getAttr "trivial-extract" self)
-      ];
+      lispLibs = [ (getAttr "trivial-download" self) (getAttr "trivial-extract" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -3304,10 +3124,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "asdf-manager-test" ];
-      lispLibs = [
-        (getAttr "asdf-manager" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "asdf-manager" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -3409,10 +3226,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "aserve" ];
-      lispLibs = [
-        (getAttr "acl-compat" self)
-        (getAttr "htmlgen" self)
-      ];
+      lispLibs = [ (getAttr "acl-compat" self) (getAttr "htmlgen" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -3432,11 +3246,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "asn1" ];
-      lispLibs = [
-        (getAttr "fast-io" self)
-        (getAttr "ironclad" self)
-        (getAttr "trivia" self)
-      ];
+      lispLibs = [ (getAttr "fast-io" self) (getAttr "ironclad" self) (getAttr "trivia" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -3456,10 +3266,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "assert-p" ];
-      lispLibs = [
-        (getAttr "assertion-error" self)
-        (getAttr "simplet-asdf" self)
-      ];
+      lispLibs = [ (getAttr "assertion-error" self) (getAttr "simplet-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -3519,11 +3326,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "assoc-utils-test" ];
-      lispLibs = [
-        (getAttr "assoc-utils" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "assoc-utils" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -3654,10 +3457,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "atomics-test" ];
-      lispLibs = [
-        (getAttr "atomics" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "atomics" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -3677,10 +3477,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "audio-tag" ];
-      lispLibs = [
-        (getAttr "flexi-streams" self)
-        (getAttr "osicat" self)
-      ];
+      lispLibs = [ (getAttr "flexi-streams" self) (getAttr "osicat" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -3720,10 +3517,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "authenticated-encryption-test" ];
-      lispLibs = [
-        (getAttr "_1am" self)
-        (getAttr "authenticated-encryption" self)
-      ];
+      lispLibs = [ (getAttr "_1am" self) (getAttr "authenticated-encryption" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -3763,10 +3557,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "autoexport" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "closer-mop" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "closer-mop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -3806,11 +3597,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "avatar-api" ];
-      lispLibs = [
-        (getAttr "cl-json" self)
-        (getAttr "crypto-shortcuts" self)
-        (getAttr "drakma" self)
-      ];
+      lispLibs = [ (getAttr "cl-json" self) (getAttr "crypto-shortcuts" self) (getAttr "drakma" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -3830,10 +3617,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "avatar-api-test" ];
-      lispLibs = [
-        (getAttr "avatar-api" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "avatar-api" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -3963,10 +3747,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "aws-sign4-example" ];
-      lispLibs = [
-        (getAttr "aws-sign4" self)
-        (getAttr "drakma" self)
-      ];
+      lispLibs = [ (getAttr "aws-sign4" self) (getAttr "drakma" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -4006,10 +3787,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ayah-captcha" ];
-      lispLibs = [
-        (getAttr "cl-json" self)
-        (getAttr "drakma" self)
-      ];
+      lispLibs = [ (getAttr "cl-json" self) (getAttr "drakma" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -4029,11 +3807,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ayah-captcha-demo" ];
-      lispLibs = [
-        (getAttr "ayah-captcha" self)
-        (getAttr "cl-who" self)
-        (getAttr "hunchentoot" self)
-      ];
+      lispLibs = [ (getAttr "ayah-captcha" self) (getAttr "cl-who" self) (getAttr "hunchentoot" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -4053,10 +3827,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "babel" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "trivial-features" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "trivial-features" self) ];
       meta = { };
     }
   );
@@ -4098,10 +3869,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "babel-tests" ];
-      lispLibs = [
-        (getAttr "babel" self)
-        (getAttr "hu_dot_dwim_dot_stefil" self)
-      ];
+      lispLibs = [ (getAttr "babel" self) (getAttr "hu_dot_dwim_dot_stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -4121,10 +3889,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "babylon" ];
-      lispLibs = [
-        (getAttr "fare-quasiquote-extras" self)
-        (getAttr "fmcs" self)
-      ];
+      lispLibs = [ (getAttr "fare-quasiquote-extras" self) (getAttr "fmcs" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -4164,10 +3929,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "base-blobs" ];
-      lispLibs = [
-        (getAttr "bodge-blobs-support" self)
-        (getAttr "trivial-features" self)
-      ];
+      lispLibs = [ (getAttr "bodge-blobs-support" self) (getAttr "trivial-features" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -4387,10 +4149,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "bert" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "erlang-term" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "erlang-term" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -4537,10 +4296,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "bike-tests" ];
-      lispLibs = [
-        (getAttr "bike" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "bike" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -4560,10 +4316,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "binary-io" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "ieee-floats" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "ieee-floats" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -4810,10 +4563,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "binpack-test" ];
-      lispLibs = [
-        (getAttr "binpack" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "binpack" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -4859,11 +4609,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "birch.test" ];
-      lispLibs = [
-        (getAttr "birch" self)
-        (getAttr "flexi-streams" self)
-        (getAttr "prove" self)
-      ];
+      lispLibs = [ (getAttr "birch" self) (getAttr "flexi-streams" self) (getAttr "prove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -4909,10 +4655,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "bit-ops.test" ];
-      lispLibs = [
-        (getAttr "bit-ops" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "bit-ops" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -4932,10 +4675,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "bit-smasher" ];
-      lispLibs = [
-        (getAttr "cl-base58" self)
-        (getAttr "cl-base64" self)
-      ];
+      lispLibs = [ (getAttr "cl-base58" self) (getAttr "cl-base64" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -4955,11 +4695,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "bit-smasher-test" ];
-      lispLibs = [
-        (getAttr "bit-smasher" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "bit-smasher" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -5226,10 +4962,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "bknr.skip-list.test" ];
-      lispLibs = [
-        (getAttr "bknr_dot_skip-list" self)
-        (getAttr "unit-test" self)
-      ];
+      lispLibs = [ (getAttr "bknr_dot_skip-list" self) (getAttr "unit-test" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -5315,10 +5048,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "bknr.xml" ];
-      lispLibs = [
-        (getAttr "cl-interpol" self)
-        (getAttr "cxml" self)
-      ];
+      lispLibs = [ (getAttr "cl-interpol" self) (getAttr "cxml" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -5376,11 +5106,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "blackbird-test" ];
-      lispLibs = [
-        (getAttr "blackbird" self)
-        (getAttr "cl-async" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "blackbird" self) (getAttr "cl-async" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -5424,10 +5150,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "blas-complex" ];
-      lispLibs = [
-        (getAttr "blas-real" self)
-        (getAttr "f2cl" self)
-      ];
+      lispLibs = [ (getAttr "blas-real" self) (getAttr "f2cl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -5447,10 +5170,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "blas-hompack" ];
-      lispLibs = [
-        (getAttr "blas-package" self)
-        (getAttr "f2cl" self)
-      ];
+      lispLibs = [ (getAttr "blas-package" self) (getAttr "f2cl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -5490,10 +5210,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "blas-real" ];
-      lispLibs = [
-        (getAttr "blas-hompack" self)
-        (getAttr "f2cl" self)
-      ];
+      lispLibs = [ (getAttr "blas-hompack" self) (getAttr "f2cl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -5533,10 +5250,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "bmas" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-autowrap" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-autowrap" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -5596,10 +5310,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "bnf.test" ];
-      lispLibs = [
-        (getAttr "bnf" self)
-        (getAttr "jingoh" self)
-      ];
+      lispLibs = [ (getAttr "bnf" self) (getAttr "jingoh" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -5639,11 +5350,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "bodge-blobs-support" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "trivial-features" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "trivial-features" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -5718,10 +5425,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "bodge-glad" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -5836,10 +5540,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "bodge-math" ];
-      lispLibs = [
-        (getAttr "bodge-utilities" self)
-        (getAttr "rtg-math" self)
-      ];
+      lispLibs = [ (getAttr "bodge-utilities" self) (getAttr "rtg-math" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -5859,10 +5560,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "bodge-memory" ];
-      lispLibs = [
-        (getAttr "bodge-utilities" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "bodge-utilities" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -6193,10 +5891,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "bt-semaphore-test" ];
-      lispLibs = [
-        (getAttr "bt-semaphore" self)
-        (getAttr "clunit" self)
-      ];
+      lispLibs = [ (getAttr "bt-semaphore" self) (getAttr "clunit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -6216,11 +5911,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "btrie" ];
-      lispLibs = [
-        (getAttr "arnesi" self)
-        (getAttr "lift" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "arnesi" self) (getAttr "lift" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -6240,11 +5931,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "btrie-tests" ];
-      lispLibs = [
-        (getAttr "btrie" self)
-        (getAttr "lift" self)
-        (getAttr "metabang-bind" self)
-      ];
+      lispLibs = [ (getAttr "btrie" self) (getAttr "lift" self) (getAttr "metabang-bind" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -6284,10 +5971,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "bubble-operator-upwards_tests" ];
-      lispLibs = [
-        (getAttr "bubble-operator-upwards" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "bubble-operator-upwards" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -6554,10 +6238,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "burgled-batteries.syntax-test" ];
-      lispLibs = [
-        (getAttr "burgled-batteries_dot_syntax" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "burgled-batteries_dot_syntax" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -6617,10 +6298,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "bytecurry.mocks" ];
-      lispLibs = [
-        (getAttr "asdf-package-system" self)
-        (getAttr "bytecurry_dot_asdf-ext" self)
-      ];
+      lispLibs = [ (getAttr "asdf-package-system" self) (getAttr "bytecurry_dot_asdf-ext" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -6640,10 +6318,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "c2ffi-blob" ];
-      lispLibs = [
-        (getAttr "claw-support" self)
-        (getAttr "trivial-features" self)
-      ];
+      lispLibs = [ (getAttr "claw-support" self) (getAttr "trivial-features" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -6663,10 +6338,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cacau" ];
-      lispLibs = [
-        (getAttr "assertion-error" self)
-        (getAttr "eventbus" self)
-      ];
+      lispLibs = [ (getAttr "assertion-error" self) (getAttr "eventbus" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -6751,11 +6423,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cacau-test" ];
-      lispLibs = [
-        (getAttr "assert-p" self)
-        (getAttr "cacau" self)
-        (getAttr "cacau-asdf" self)
-      ];
+      lispLibs = [ (getAttr "assert-p" self) (getAttr "cacau" self) (getAttr "cacau-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -6837,10 +6505,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "calispel-test" ];
-      lispLibs = [
-        (getAttr "calispel" self)
-        (getAttr "eager-future2" self)
-      ];
+      lispLibs = [ (getAttr "calispel" self) (getAttr "eager-future2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -6915,10 +6580,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cambl-test" ];
-      lispLibs = [
-        (getAttr "cambl" self)
-        (getAttr "xlunit" self)
-      ];
+      lispLibs = [ (getAttr "cambl" self) (getAttr "xlunit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -6938,10 +6600,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "camera-matrix" ];
-      lispLibs = [
-        (getAttr "nsb-cga" self)
-        (getAttr "uncommon-lisp" self)
-      ];
+      lispLibs = [ (getAttr "nsb-cga" self) (getAttr "uncommon-lisp" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -7133,10 +6792,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cardiogram" ];
-      lispLibs = [
-        (getAttr "cl-annot" self)
-        (getAttr "closer-mop" self)
-      ];
+      lispLibs = [ (getAttr "cl-annot" self) (getAttr "closer-mop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -7359,10 +7015,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "caveman2-widgets-bootstrap" ];
-      lispLibs = [
-        (getAttr "caveman2" self)
-        (getAttr "caveman2-widgets" self)
-      ];
+      lispLibs = [ (getAttr "caveman2" self) (getAttr "caveman2-widgets" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -7406,11 +7059,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "caveman2-widgets-test" ];
-      lispLibs = [
-        (getAttr "caveman2-widgets" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "caveman2-widgets" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -7430,10 +7079,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cblas" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-autowrap" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-autowrap" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -7503,11 +7149,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ccldoc-libraries" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "s-xml" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "s-xml" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -7639,11 +7281,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cepl.camera" ];
-      lispLibs = [
-        (getAttr "cepl" self)
-        (getAttr "cepl_dot_spaces" self)
-        (getAttr "rtg-math" self)
-      ];
+      lispLibs = [ (getAttr "cepl" self) (getAttr "cepl_dot_spaces" self) (getAttr "rtg-math" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -7663,10 +7301,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cepl.devil" ];
-      lispLibs = [
-        (getAttr "cepl" self)
-        (getAttr "cl-devil" self)
-      ];
+      lispLibs = [ (getAttr "cepl" self) (getAttr "cl-devil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -7712,10 +7347,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cepl.glop" ];
-      lispLibs = [
-        (getAttr "cepl" self)
-        (getAttr "glop" self)
-      ];
+      lispLibs = [ (getAttr "cepl" self) (getAttr "glop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -7735,10 +7367,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cepl.sdl2" ];
-      lispLibs = [
-        (getAttr "cepl" self)
-        (getAttr "sdl2" self)
-      ];
+      lispLibs = [ (getAttr "cepl" self) (getAttr "sdl2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -7758,11 +7387,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cepl.sdl2-image" ];
-      lispLibs = [
-        (getAttr "cepl" self)
-        (getAttr "sdl2" self)
-        (getAttr "sdl2-image" self)
-      ];
+      lispLibs = [ (getAttr "cepl" self) (getAttr "sdl2" self) (getAttr "sdl2-image" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -7782,11 +7407,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cepl.sdl2-ttf" ];
-      lispLibs = [
-        (getAttr "cepl_dot_sdl2" self)
-        (getAttr "rtg-math" self)
-        (getAttr "sdl2-ttf" self)
-      ];
+      lispLibs = [ (getAttr "cepl_dot_sdl2" self) (getAttr "rtg-math" self) (getAttr "sdl2-ttf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -7806,10 +7427,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cepl.skitter.glop" ];
-      lispLibs = [
-        (getAttr "cepl_dot_glop" self)
-        (getAttr "skitter_dot_glop" self)
-      ];
+      lispLibs = [ (getAttr "cepl_dot_glop" self) (getAttr "skitter_dot_glop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -7829,10 +7447,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cepl.skitter.sdl2" ];
-      lispLibs = [
-        (getAttr "cepl_dot_sdl2" self)
-        (getAttr "skitter_dot_sdl2" self)
-      ];
+      lispLibs = [ (getAttr "cepl_dot_sdl2" self) (getAttr "skitter_dot_sdl2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -7912,10 +7527,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ceramic-test-app" ];
-      lispLibs = [
-        (getAttr "ceramic" self)
-        (getAttr "drakma" self)
-      ];
+      lispLibs = [ (getAttr "ceramic" self) (getAttr "drakma" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -7963,11 +7575,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cerberus-kdc" ];
-      lispLibs = [
-        (getAttr "cerberus" self)
-        (getAttr "frpc" self)
-        (getAttr "pounds" self)
-      ];
+      lispLibs = [ (getAttr "cerberus" self) (getAttr "frpc" self) (getAttr "pounds" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8007,10 +7615,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cesdi_tests" ];
-      lispLibs = [
-        (getAttr "cesdi" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "cesdi" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8030,11 +7635,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cffi" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "babel" self)
-        (getAttr "trivial-features" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "babel" self) (getAttr "trivial-features" self) ];
       meta = { };
     }
   );
@@ -8052,10 +7653,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cffi-c-ref" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8095,11 +7693,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cffi-grovel" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "cffi-toolchain" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "cffi-toolchain" self) ];
       meta = { };
     }
   );
@@ -8117,11 +7711,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cffi-libffi" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-        (getAttr "trivial-features" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) (getAttr "trivial-features" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8141,11 +7731,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cffi-object" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8165,10 +7751,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cffi-object.ops" ];
-      lispLibs = [
-        (getAttr "cffi-object" self)
-        (getAttr "cffi-ops" self)
-      ];
+      lispLibs = [ (getAttr "cffi-object" self) (getAttr "cffi-ops" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8335,10 +7918,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "chancery.test" ];
-      lispLibs = [
-        (getAttr "_1am" self)
-        (getAttr "chancery" self)
-      ];
+      lispLibs = [ (getAttr "_1am" self) (getAttr "chancery" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8436,10 +8016,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cheat-js" ];
-      lispLibs = [
-        (getAttr "cl-uglify-js" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-uglify-js" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8485,10 +8062,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "check-bnf.test" ];
-      lispLibs = [
-        (getAttr "check-bnf" self)
-        (getAttr "jingoh" self)
-      ];
+      lispLibs = [ (getAttr "check-bnf" self) (getAttr "jingoh" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8508,11 +8082,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "check-it" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "closer-mop" self)
-        (getAttr "optima" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "closer-mop" self) (getAttr "optima" self) ];
       meta = { };
     }
   );
@@ -8530,10 +8100,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "check-it-test" ];
-      lispLibs = [
-        (getAttr "check-it" self)
-        (getAttr "stefil" self)
-      ];
+      lispLibs = [ (getAttr "check-it" self) (getAttr "stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8573,10 +8140,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "checkl-docs" ];
-      lispLibs = [
-        (getAttr "checkl" self)
-        (getAttr "cl-gendoc" self)
-      ];
+      lispLibs = [ (getAttr "checkl" self) (getAttr "cl-gendoc" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8596,10 +8160,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "checkl-test" ];
-      lispLibs = [
-        (getAttr "checkl" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "checkl" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8639,10 +8200,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "chillax" ];
-      lispLibs = [
-        (getAttr "chillax_dot_core" self)
-        (getAttr "chillax_dot_yason" self)
-      ];
+      lispLibs = [ (getAttr "chillax_dot_core" self) (getAttr "chillax_dot_yason" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8662,11 +8220,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "chillax.core" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "drakma" self)
-        (getAttr "flexi-streams" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "drakma" self) (getAttr "flexi-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8686,10 +8240,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "chillax.jsown" ];
-      lispLibs = [
-        (getAttr "chillax_dot_core" self)
-        (getAttr "jsown" self)
-      ];
+      lispLibs = [ (getAttr "chillax_dot_core" self) (getAttr "jsown" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8709,10 +8260,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "chillax.view-server" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "yason" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "yason" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8732,10 +8280,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "chillax.yason" ];
-      lispLibs = [
-        (getAttr "chillax_dot_core" self)
-        (getAttr "yason" self)
-      ];
+      lispLibs = [ (getAttr "chillax_dot_core" self) (getAttr "yason" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8755,10 +8300,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "chipmunk-blob" ];
-      lispLibs = [
-        (getAttr "bodge-blobs-support" self)
-        (getAttr "trivial-features" self)
-      ];
+      lispLibs = [ (getAttr "bodge-blobs-support" self) (getAttr "trivial-features" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8847,10 +8389,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "chirp-dexador" ];
-      lispLibs = [
-        (getAttr "chirp-core" self)
-        (getAttr "dexador" self)
-      ];
+      lispLibs = [ (getAttr "chirp-core" self) (getAttr "dexador" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8870,10 +8409,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "chirp-drakma" ];
-      lispLibs = [
-        (getAttr "chirp-core" self)
-        (getAttr "drakma" self)
-      ];
+      lispLibs = [ (getAttr "chirp-core" self) (getAttr "drakma" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8913,11 +8449,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "chlorophyll-test" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "chlorophyll" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "chlorophyll" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8957,11 +8489,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "chronicity" ];
-      lispLibs = [
-        (getAttr "cl-interpol" self)
-        (getAttr "cl-ppcre" self)
-        (getAttr "local-time" self)
-      ];
+      lispLibs = [ (getAttr "cl-interpol" self) (getAttr "cl-ppcre" self) (getAttr "local-time" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -8981,10 +8509,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "chronicity-test" ];
-      lispLibs = [
-        (getAttr "chronicity" self)
-        (getAttr "lisp-unit" self)
-      ];
+      lispLibs = [ (getAttr "chronicity" self) (getAttr "lisp-unit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -9112,10 +8637,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "circular-streams" ];
-      lispLibs = [
-        (getAttr "fast-io" self)
-        (getAttr "trivial-gray-streams" self)
-      ];
+      lispLibs = [ (getAttr "fast-io" self) (getAttr "trivial-gray-streams" self) ];
       meta = { };
     }
   );
@@ -9181,10 +8703,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "city-hash-test" ];
-      lispLibs = [
-        (getAttr "city-hash" self)
-        (getAttr "hu_dot_dwim_dot_stefil" self)
-      ];
+      lispLibs = [ (getAttr "city-hash" self) (getAttr "hu_dot_dwim_dot_stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -9278,10 +8797,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-6502" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -9339,10 +8855,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-acronyms" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -9402,10 +8915,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-advice-tests" ];
-      lispLibs = [
-        (getAttr "cl-advice" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-advice" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -9425,10 +8935,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-alc" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-openal" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-openal" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -9448,10 +8955,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-algebraic-data-type" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "global-vars" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "global-vars" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -9491,10 +8995,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-alut" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-openal" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-openal" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -9675,10 +9176,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ana.calculus" ];
-      lispLibs = [
-        (getAttr "cl-ana_dot_generic-math" self)
-        (getAttr "cl-ana_dot_linear-algebra" self)
-      ];
+      lispLibs = [ (getAttr "cl-ana_dot_generic-math" self) (getAttr "cl-ana_dot_linear-algebra" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -9723,10 +9221,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ana.columnar-table" ];
-      lispLibs = [
-        (getAttr "cl-ana_dot_reusable-table" self)
-        (getAttr "cl-ana_dot_table" self)
-      ];
+      lispLibs = [ (getAttr "cl-ana_dot_reusable-table" self) (getAttr "cl-ana_dot_table" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -9773,10 +9268,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ana.error-propogation" ];
-      lispLibs = [
-        (getAttr "cl-ana_dot_generic-math" self)
-        (getAttr "cl-ana_dot_math-functions" self)
-      ];
+      lispLibs = [ (getAttr "cl-ana_dot_generic-math" self) (getAttr "cl-ana_dot_math-functions" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -9796,10 +9288,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ana.file-utils" ];
-      lispLibs = [
-        (getAttr "external-program" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "external-program" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -9866,10 +9355,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ana.generic-math" ];
-      lispLibs = [
-        (getAttr "cl-ana_dot_list-utils" self)
-        (getAttr "cl-ana_dot_package-utils" self)
-      ];
+      lispLibs = [ (getAttr "cl-ana_dot_list-utils" self) (getAttr "cl-ana_dot_package-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -9949,10 +9435,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ana.hdf-cffi" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -10310,10 +9793,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ana.makeres-graphviz" ];
-      lispLibs = [
-        (getAttr "cl-ana_dot_makeres" self)
-        (getAttr "external-program" self)
-      ];
+      lispLibs = [ (getAttr "cl-ana_dot_makeres" self) (getAttr "external-program" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -10333,10 +9813,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ana.makeres-macro" ];
-      lispLibs = [
-        (getAttr "cl-ana_dot_list-utils" self)
-        (getAttr "cl-ana_dot_makeres" self)
-      ];
+      lispLibs = [ (getAttr "cl-ana_dot_list-utils" self) (getAttr "cl-ana_dot_makeres" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -10471,10 +9948,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ana.math-functions" ];
-      lispLibs = [
-        (getAttr "cl-ana_dot_generic-math" self)
-        (getAttr "gsll" self)
-      ];
+      lispLibs = [ (getAttr "cl-ana_dot_generic-math" self) (getAttr "gsll" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -10647,10 +10121,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ana.reusable-table" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-ana_dot_table" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-ana_dot_table" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -10988,10 +10459,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-android" ];
-      lispLibs = [
-        (getAttr "cl-json" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "cl-json" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -11056,11 +10524,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-annot-prove-test" ];
-      lispLibs = [
-        (getAttr "cl-annot-prove" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-annot-prove" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -11080,10 +10544,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-annot-revisit" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "named-readtables" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "named-readtables" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -11166,11 +10627,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ansi-term" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "anaphora" self)
-        (getAttr "str" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "anaphora" self) (getAttr "str" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -11190,10 +10647,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ansi-text" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-colors2" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-colors2" self) ];
       meta = { };
     }
   );
@@ -11236,10 +10690,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-apertium-stream" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "esrap" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "esrap" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -11319,10 +10770,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-aristid" ];
-      lispLibs = [
-        (getAttr "cl-colors" self)
-        (getAttr "cl-svg" self)
-      ];
+      lispLibs = [ (getAttr "cl-colors" self) (getAttr "cl-svg" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -11435,10 +10883,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-association-rules-tests" ];
-      lispLibs = [
-        (getAttr "cl-association-rules" self)
-        (getAttr "prove" self)
-      ];
+      lispLibs = [ (getAttr "cl-association-rules" self) (getAttr "prove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -11510,11 +10955,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-async-base" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "cffi" self)
-        (getAttr "cl-libuv" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "cffi" self) (getAttr "cl-libuv" self) ];
       meta = { };
     }
   );
@@ -11552,10 +10993,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-async-repl" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "cl-async" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "cl-async" self) ];
       meta = { };
     }
   );
@@ -11573,11 +11011,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-async-ssl" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-async" self)
-        (getAttr "vom" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-async" self) (getAttr "vom" self) ];
       meta = { };
     }
   );
@@ -11649,11 +11083,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-aubio" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-libffi" self)
-        (getAttr "closer-mop" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-libffi" self) (getAttr "closer-mop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -11865,10 +11295,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-base32-tests" ];
-      lispLibs = [
-        (getAttr "cl-base32" self)
-        (getAttr "lisp-unit" self)
-      ];
+      lispLibs = [ (getAttr "cl-base32" self) (getAttr "lisp-unit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -11908,10 +11335,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-base58-test" ];
-      lispLibs = [
-        (getAttr "cl-base58" self)
-        (getAttr "cl-test-more" self)
-      ];
+      lispLibs = [ (getAttr "cl-base58" self) (getAttr "cl-test-more" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -11949,11 +11373,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-bayesnet" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "s-xml" self)
-        (getAttr "trivial-shell" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "s-xml" self) (getAttr "trivial-shell" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -11973,11 +11393,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-bcrypt" ];
-      lispLibs = [
-        (getAttr "binascii" self)
-        (getAttr "cl-ppcre" self)
-        (getAttr "ironclad" self)
-      ];
+      lispLibs = [ (getAttr "binascii" self) (getAttr "cl-ppcre" self) (getAttr "ironclad" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -11997,10 +11413,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-bcrypt.test" ];
-      lispLibs = [
-        (getAttr "cl-bcrypt" self)
-        (getAttr "rove" self)
-      ];
+      lispLibs = [ (getAttr "cl-bcrypt" self) (getAttr "rove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -12100,10 +11513,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-bloom" ];
-      lispLibs = [
-        (getAttr "cl-murmurhash" self)
-        (getAttr "static-vectors" self)
-      ];
+      lispLibs = [ (getAttr "cl-murmurhash" self) (getAttr "static-vectors" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -12143,10 +11553,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-bmp" ];
-      lispLibs = [
-        (getAttr "binary-structures" self)
-        (getAttr "documentation-utils" self)
-      ];
+      lispLibs = [ (getAttr "binary-structures" self) (getAttr "documentation-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -12206,10 +11613,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-bnf-tests" ];
-      lispLibs = [
-        (getAttr "cl-bnf" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-bnf" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -12229,10 +11633,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-bootstrap" ];
-      lispLibs = [
-        (getAttr "cl-who" self)
-        (getAttr "parenscript" self)
-      ];
+      lispLibs = [ (getAttr "cl-who" self) (getAttr "parenscript" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -12277,10 +11678,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-bootstrap-test" ];
-      lispLibs = [
-        (getAttr "cl-bootstrap" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-bootstrap" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -12480,10 +11878,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-cache-tables-tests" ];
-      lispLibs = [
-        (getAttr "cl-cache-tables" self)
-        (getAttr "prove" self)
-      ];
+      lispLibs = [ (getAttr "cl-cache-tables" self) (getAttr "prove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -12548,10 +11943,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-cairo2-xlib" ];
-      lispLibs = [
-        (getAttr "cl-cairo2" self)
-        (getAttr "cl-freetype2" self)
-      ];
+      lispLibs = [ (getAttr "cl-cairo2" self) (getAttr "cl-freetype2" self) ];
       meta = { };
     }
   );
@@ -12609,10 +12001,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-cerf" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-libffi" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-libffi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -12781,10 +12170,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-cffi-gtk-gdk-pixbuf" ];
-      lispLibs = [
-        (getAttr "cl-cffi-gtk-glib" self)
-        (getAttr "cl-cffi-gtk-gobject" self)
-      ];
+      lispLibs = [ (getAttr "cl-cffi-gtk-glib" self) (getAttr "cl-cffi-gtk-gobject" self) ];
       meta = { };
     }
   );
@@ -12802,10 +12188,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-cffi-gtk-gio" ];
-      lispLibs = [
-        (getAttr "cl-cffi-gtk-glib" self)
-        (getAttr "cl-cffi-gtk-gobject" self)
-      ];
+      lispLibs = [ (getAttr "cl-cffi-gtk-glib" self) (getAttr "cl-cffi-gtk-gobject" self) ];
       meta = { };
     }
   );
@@ -12869,10 +12252,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-cffi-gtk-opengl-demo" ];
-      lispLibs = [
-        (getAttr "cl-cffi-gtk" self)
-        (getAttr "cl-opengl" self)
-      ];
+      lispLibs = [ (getAttr "cl-cffi-gtk" self) (getAttr "cl-opengl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -12914,10 +12294,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-change-case" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "cl-ppcre-unicode" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "cl-ppcre-unicode" self) ];
       meta = { };
     }
   );
@@ -12935,11 +12312,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-charms" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -13111,10 +12484,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-clsparse" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-libffi" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-libffi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -13218,10 +12588,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-colors" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "let-plus" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "let-plus" self) ];
       meta = { };
     }
   );
@@ -13239,10 +12606,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-colors-tests" ];
-      lispLibs = [
-        (getAttr "cl-colors" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "cl-colors" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -13262,10 +12626,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-colors2" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-ppcre" self) ];
       meta = { };
     }
   );
@@ -13342,10 +12703,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-conspack-test" ];
-      lispLibs = [
-        (getAttr "cl-conspack" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-conspack" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -13365,10 +12723,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-cont" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "closer-mop" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "closer-mop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -13388,10 +12743,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-cont-test" ];
-      lispLibs = [
-        (getAttr "cl-cont" self)
-        (getAttr "rt" self)
-      ];
+      lispLibs = [ (getAttr "cl-cont" self) (getAttr "rt" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -13411,10 +12763,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-containers" ];
-      lispLibs = [
-        (getAttr "asdf-system-connections" self)
-        (getAttr "metatilities-base" self)
-      ];
+      lispLibs = [ (getAttr "asdf-system-connections" self) (getAttr "metatilities-base" self) ];
       meta = { };
     }
   );
@@ -13432,10 +12781,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-containers-test" ];
-      lispLibs = [
-        (getAttr "cl-containers" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "cl-containers" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -13479,11 +12825,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-cookie-test" ];
-      lispLibs = [
-        (getAttr "cl-cookie" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-cookie" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -13503,10 +12845,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-coroutine" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-cont" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-cont" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -13526,10 +12865,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-coroutine-test" ];
-      lispLibs = [
-        (getAttr "cl-coroutine" self)
-        (getAttr "cl-test-more" self)
-      ];
+      lispLibs = [ (getAttr "cl-coroutine" self) (getAttr "cl-test-more" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -13578,11 +12914,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-coveralls-test" ];
-      lispLibs = [
-        (getAttr "cl-coveralls" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-coveralls" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -13772,11 +13104,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-csv" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-interpol" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-interpol" self) (getAttr "iterate" self) ];
       meta = { };
     }
   );
@@ -13818,10 +13146,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-csv-data-table" ];
-      lispLibs = [
-        (getAttr "cl-csv" self)
-        (getAttr "data-table" self)
-      ];
+      lispLibs = [ (getAttr "cl-csv" self) (getAttr "data-table" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -13869,10 +13194,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-cuda-examples" ];
-      lispLibs = [
-        (getAttr "cl-cuda" self)
-        (getAttr "imago" self)
-      ];
+      lispLibs = [ (getAttr "cl-cuda" self) (getAttr "imago" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -13937,10 +13259,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-cuda-misc" ];
-      lispLibs = [
-        (getAttr "cl-emb" self)
-        (getAttr "local-time" self)
-      ];
+      lispLibs = [ (getAttr "cl-emb" self) (getAttr "local-time" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -13978,10 +13297,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-custom-hash-table-test" ];
-      lispLibs = [
-        (getAttr "cl-custom-hash-table" self)
-        (getAttr "hu_dot_dwim_dot_stefil" self)
-      ];
+      lispLibs = [ (getAttr "cl-custom-hash-table" self) (getAttr "hu_dot_dwim_dot_stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -14001,11 +13317,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-darksky" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "dexador" self)
-        (getAttr "jonathan" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "dexador" self) (getAttr "jonathan" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -14025,11 +13337,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-darksky-test" ];
-      lispLibs = [
-        (getAttr "cl-darksky" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-darksky" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -14171,11 +13479,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-debug-print-test" ];
-      lispLibs = [
-        (getAttr "cl-debug-print" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-debug-print" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -14215,10 +13519,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-devil" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -14314,10 +13615,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-digraph.dot" ];
-      lispLibs = [
-        (getAttr "cl-digraph" self)
-        (getAttr "cl-dot" self)
-      ];
+      lispLibs = [ (getAttr "cl-digraph" self) (getAttr "cl-dot" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -14337,11 +13635,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-diskspace" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -14387,11 +13681,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-disque-test" ];
-      lispLibs = [
-        (getAttr "cl-disque" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-disque" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -14411,10 +13701,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-djula-svg" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "xmls" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "xmls" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -14477,10 +13764,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-dotenv" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "serapeum" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "serapeum" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -14500,11 +13784,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-dotenv-test" ];
-      lispLibs = [
-        (getAttr "cl-dotenv" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-dotenv" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -14524,11 +13804,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-drawille" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "osicat" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "osicat" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -14613,10 +13889,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-dsl-tests" ];
-      lispLibs = [
-        (getAttr "cl-dsl" self)
-        (getAttr "eos" self)
-      ];
+      lispLibs = [ (getAttr "cl-dsl" self) (getAttr "eos" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -14716,11 +13989,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-elastic" ];
-      lispLibs = [
-        (getAttr "drakma" self)
-        (getAttr "named-readtables" self)
-        (getAttr "yason" self)
-      ];
+      lispLibs = [ (getAttr "drakma" self) (getAttr "named-readtables" self) (getAttr "yason" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -14822,11 +14091,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-emoji-test" ];
-      lispLibs = [
-        (getAttr "cl-emoji" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-emoji" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -14993,10 +14258,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ewkb" ];
-      lispLibs = [
-        (getAttr "flexi-streams" self)
-        (getAttr "ieee-floats" self)
-      ];
+      lispLibs = [ (getAttr "flexi-streams" self) (getAttr "ieee-floats" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -15016,10 +14278,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ewkb-tests" ];
-      lispLibs = [
-        (getAttr "cl-ewkb" self)
-        (getAttr "postmodern" self)
-      ];
+      lispLibs = [ (getAttr "cl-ewkb" self) (getAttr "postmodern" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -15039,10 +14298,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-factoring" ];
-      lispLibs = [
-        (getAttr "cl-primality" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "cl-primality" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -15062,10 +14318,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-fad" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "bordeaux-threads" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "bordeaux-threads" self) ];
       meta = { };
     }
   );
@@ -15083,11 +14336,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-fam" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -15107,10 +14356,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-fast-ecs" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -15336,10 +14582,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-flow" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-muth" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-muth" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -15433,10 +14676,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-fluiddb-test" ];
-      lispLibs = [
-        (getAttr "cl-fluiddb" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "cl-fluiddb" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -15558,11 +14798,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-forms.djula" ];
-      lispLibs = [
-        (getAttr "cl-forms" self)
-        (getAttr "cl-forms_dot_who" self)
-        (getAttr "djula" self)
-      ];
+      lispLibs = [ (getAttr "cl-forms" self) (getAttr "cl-forms_dot_who" self) (getAttr "djula" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -15582,10 +14818,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-forms.peppol" ];
-      lispLibs = [
-        (getAttr "cl-forms" self)
-        (getAttr "peppol" self)
-      ];
+      lispLibs = [ (getAttr "cl-forms" self) (getAttr "peppol" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -15605,10 +14838,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-forms.test" ];
-      lispLibs = [
-        (getAttr "cl-forms" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-forms" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -15628,10 +14858,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-forms.who" ];
-      lispLibs = [
-        (getAttr "cl-forms" self)
-        (getAttr "cl-who" self)
-      ];
+      lispLibs = [ (getAttr "cl-forms" self) (getAttr "cl-who" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -15714,10 +14941,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-freetype2-tests" ];
-      lispLibs = [
-        (getAttr "cl-freetype2" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-freetype2" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -15737,10 +14961,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-fsnotify" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -15760,10 +14981,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ftp" ];
-      lispLibs = [
-        (getAttr "split-sequence" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "split-sequence" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -16086,10 +15304,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-gearman-test" ];
-      lispLibs = [
-        (getAttr "cl-gearman" self)
-        (getAttr "cl-test-more" self)
-      ];
+      lispLibs = [ (getAttr "cl-gearman" self) (getAttr "cl-test-more" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -16193,10 +15408,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-generator-test" ];
-      lispLibs = [
-        (getAttr "cl-generator" self)
-        (getAttr "lisp-unit" self)
-      ];
+      lispLibs = [ (getAttr "cl-generator" self) (getAttr "lisp-unit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -16216,11 +15428,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-geocode" ];
-      lispLibs = [
-        (getAttr "acl-compat" self)
-        (getAttr "aserve" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "acl-compat" self) (getAttr "aserve" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -16260,10 +15468,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-geometry" ];
-      lispLibs = [
-        (getAttr "iterate" self)
-        (getAttr "trees" self)
-      ];
+      lispLibs = [ (getAttr "iterate" self) (getAttr "trees" self) ];
       meta = { };
     }
   );
@@ -16281,11 +15486,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-geometry-tests" ];
-      lispLibs = [
-        (getAttr "cl-geometry" self)
-        (getAttr "iterate" self)
-        (getAttr "vecto" self)
-      ];
+      lispLibs = [ (getAttr "cl-geometry" self) (getAttr "iterate" self) (getAttr "vecto" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -16305,11 +15506,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-geos" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "trivial-garbage" self)
-        (getAttr "xarray" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "trivial-garbage" self) (getAttr "xarray" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -16329,10 +15526,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-getopt" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -16372,10 +15566,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-gimei" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-yaml" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-yaml" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -16498,10 +15689,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-glfw" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-glfw-types" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-glfw-types" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -16541,10 +15729,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-glfw-glu" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-glfw-types" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-glfw-types" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -19044,10 +18229,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-glfw-opengl-core" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-glfw-types" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-glfw-types" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -23487,10 +22669,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-glfw3" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -23534,10 +22713,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-glib" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "cl-gobject-introspection-wrapper" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "cl-gobject-introspection-wrapper" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -23586,10 +22762,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-glu" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-opengl" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-opengl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -23609,11 +22782,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-glut" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "cl-opengl" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "cl-opengl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -23775,10 +22944,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-gpio" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "documentation-utils" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "documentation-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -23823,10 +22989,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-graph+hu.dwim.graphviz" ];
-      lispLibs = [
-        (getAttr "cl-graph" self)
-        (getAttr "hu_dot_dwim_dot_graphviz" self)
-      ];
+      lispLibs = [ (getAttr "cl-graph" self) (getAttr "hu_dot_dwim_dot_graphviz" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -23940,11 +23103,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-gtk2-gdk" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-gtk2-glib" self)
-        (getAttr "cl-gtk2-pango" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-gtk2-glib" self) (getAttr "cl-gtk2-pango" self) ];
       meta = { };
     }
   );
@@ -23986,10 +23145,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-gtk2-pango" ];
-      lispLibs = [
-        (getAttr "cl-gtk2-glib" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "cl-gtk2-glib" self) (getAttr "iterate" self) ];
       meta = { };
     }
   );
@@ -24027,10 +23183,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-haml-test" ];
-      lispLibs = [
-        (getAttr "cl-haml" self)
-        (getAttr "cl-test-more" self)
-      ];
+      lispLibs = [ (getAttr "cl-haml" self) (getAttr "cl-test-more" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24070,11 +23223,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-hamt-examples" ];
-      lispLibs = [
-        (getAttr "cl-hamt" self)
-        (getAttr "cl-ppcre" self)
-        (getAttr "drakma" self)
-      ];
+      lispLibs = [ (getAttr "cl-hamt" self) (getAttr "cl-ppcre" self) (getAttr "drakma" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24094,10 +23243,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-hamt-test" ];
-      lispLibs = [
-        (getAttr "cl-hamt" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-hamt" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24181,10 +23327,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-hash-util-test" ];
-      lispLibs = [
-        (getAttr "cl-hash-util" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-hash-util" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24222,10 +23365,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-heap-tests" ];
-      lispLibs = [
-        (getAttr "cl-heap" self)
-        (getAttr "xlunit" self)
-      ];
+      lispLibs = [ (getAttr "cl-heap" self) (getAttr "xlunit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24265,10 +23405,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-heredoc-test" ];
-      lispLibs = [
-        (getAttr "cl-heredoc" self)
-        (getAttr "stefil" self)
-      ];
+      lispLibs = [ (getAttr "cl-heredoc" self) (getAttr "stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24389,10 +23526,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-html5-parser-cxml" ];
-      lispLibs = [
-        (getAttr "cl-html5-parser" self)
-        (getAttr "cxml" self)
-      ];
+      lispLibs = [ (getAttr "cl-html5-parser" self) (getAttr "cxml" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24437,11 +23571,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-htmlprag" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "optima" self)
-        (getAttr "parse-number" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "optima" self) (getAttr "parse-number" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24481,11 +23611,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-hue" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "drakma" self)
-        (getAttr "yason" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "drakma" self) (getAttr "yason" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24505,11 +23631,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-i18n" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "babel" self)
-        (getAttr "cl-ppcre-unicode" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "babel" self) (getAttr "cl-ppcre-unicode" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24549,11 +23671,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ilu" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "cl-devil" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "cl-devil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24573,11 +23691,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ilut" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "cl-devil" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "cl-devil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24597,10 +23711,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-incognia" ];
-      lispLibs = [
-        (getAttr "dexador" self)
-        (getAttr "jonathan" self)
-      ];
+      lispLibs = [ (getAttr "dexador" self) (getAttr "jonathan" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24620,10 +23731,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-indentify" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "trivial-gray-streams" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "trivial-gray-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24643,10 +23751,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-inflector" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24666,10 +23771,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-inflector-test" ];
-      lispLibs = [
-        (getAttr "cl-inflector" self)
-        (getAttr "lisp-unit2" self)
-      ];
+      lispLibs = [ (getAttr "cl-inflector" self) (getAttr "lisp-unit2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24716,10 +23818,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-info" ];
-      lispLibs = [
-        (getAttr "_40ants-doc" self)
-        (getAttr "docs-config" self)
-      ];
+      lispLibs = [ (getAttr "_40ants-doc" self) (getAttr "docs-config" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24739,11 +23838,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-info-test" ];
-      lispLibs = [
-        (getAttr "cl-info" self)
-        (getAttr "hamcrest" self)
-        (getAttr "rove" self)
-      ];
+      lispLibs = [ (getAttr "cl-info" self) (getAttr "hamcrest" self) (getAttr "rove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24783,10 +23878,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ini-test" ];
-      lispLibs = [
-        (getAttr "cl-ini" self)
-        (getAttr "prove" self)
-      ];
+      lispLibs = [ (getAttr "cl-ini" self) (getAttr "prove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24836,10 +23928,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-inotify-tests" ];
-      lispLibs = [
-        (getAttr "cl-inotify" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-inotify" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24879,11 +23968,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-intbytes-test" ];
-      lispLibs = [
-        (getAttr "cl-intbytes" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-intbytes" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24903,10 +23988,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-interpol" ];
-      lispLibs = [
-        (getAttr "cl-unicode" self)
-        (getAttr "named-readtables" self)
-      ];
+      lispLibs = [ (getAttr "cl-unicode" self) (getAttr "named-readtables" self) ];
       meta = { };
     }
   );
@@ -24944,10 +24026,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-interval-docs" ];
-      lispLibs = [
-        (getAttr "cl-gendoc" self)
-        (getAttr "cl-interval" self)
-      ];
+      lispLibs = [ (getAttr "cl-gendoc" self) (getAttr "cl-interval" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -24967,11 +24046,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ipfs-api2" ];
-      lispLibs = [
-        (getAttr "arnesi" self)
-        (getAttr "drakma" self)
-        (getAttr "yason" self)
-      ];
+      lispLibs = [ (getAttr "arnesi" self) (getAttr "drakma" self) (getAttr "yason" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25015,11 +24090,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-irc-test" ];
-      lispLibs = [
-        (getAttr "cl-irc" self)
-        (getAttr "rt" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "cl-irc" self) (getAttr "rt" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25079,10 +24150,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-iterative" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "optima" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "optima" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25102,10 +24170,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-iterative-tests" ];
-      lispLibs = [
-        (getAttr "cl-iterative" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-iterative" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25125,11 +24190,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-itertools" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-coroutine" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-coroutine" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25149,11 +24210,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-itertools-tests" ];
-      lispLibs = [
-        (getAttr "cl-itertools" self)
-        (getAttr "fiveam" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "cl-itertools" self) (getAttr "fiveam" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25191,11 +24248,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-js" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "local-time" self)
-        (getAttr "parse-js" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "local-time" self) (getAttr "parse-js" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25278,11 +24331,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-json-pointer" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "closer-mop" self)
-        (getAttr "st-json" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "closer-mop" self) (getAttr "st-json" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25327,11 +24376,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-json-schema-tests" ];
-      lispLibs = [
-        (getAttr "cl-json-schema" self)
-        (getAttr "cl-ppcre" self)
-        (getAttr "fiasco" self)
-      ];
+      lispLibs = [ (getAttr "cl-json-schema" self) (getAttr "cl-ppcre" self) (getAttr "fiasco" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25351,10 +24396,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-jsonl" ];
-      lispLibs = [
-        (getAttr "gtwiwtg" self)
-        (getAttr "yason" self)
-      ];
+      lispLibs = [ (getAttr "gtwiwtg" self) (getAttr "yason" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25374,11 +24416,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-jsx" ];
-      lispLibs = [
-        (getAttr "cl-who" self)
-        (getAttr "esrap" self)
-        (getAttr "named-readtables" self)
-      ];
+      lispLibs = [ (getAttr "cl-who" self) (getAttr "esrap" self) (getAttr "named-readtables" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25398,11 +24436,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-jsx-test" ];
-      lispLibs = [
-        (getAttr "cl-jsx" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-jsx" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25422,11 +24456,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-junit-xml" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cxml" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cxml" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25498,10 +24528,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-junit-xml.test" ];
-      lispLibs = [
-        (getAttr "cl-junit-xml" self)
-        (getAttr "lisp-unit2" self)
-      ];
+      lispLibs = [ (getAttr "cl-junit-xml" self) (getAttr "lisp-unit2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25549,10 +24576,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-jwk.test" ];
-      lispLibs = [
-        (getAttr "cl-jwk" self)
-        (getAttr "rove" self)
-      ];
+      lispLibs = [ (getAttr "cl-jwk" self) (getAttr "rove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25617,11 +24641,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-kanren-test" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-kanren" self)
-        (getAttr "clunit" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-kanren" self) (getAttr "clunit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25641,11 +24661,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-keycloak" ];
-      lispLibs = [
-        (getAttr "drakma" self)
-        (getAttr "flexi-streams" self)
-        (getAttr "yason" self)
-      ];
+      lispLibs = [ (getAttr "drakma" self) (getAttr "flexi-streams" self) (getAttr "yason" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25716,11 +24732,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ksuid-test" ];
-      lispLibs = [
-        (getAttr "cl-ksuid" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-ksuid" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25852,10 +24864,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-lambdacalc-test" ];
-      lispLibs = [
-        (getAttr "cl-lambdacalc" self)
-        (getAttr "lisp-unit" self)
-      ];
+      lispLibs = [ (getAttr "cl-lambdacalc" self) (getAttr "lisp-unit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -25920,10 +24929,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-lastfm-test" ];
-      lispLibs = [
-        (getAttr "cl-lastfm" self)
-        (getAttr "lisp-unit" self)
-      ];
+      lispLibs = [ (getAttr "cl-lastfm" self) (getAttr "lisp-unit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26100,10 +25106,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-libevent2-ssl" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-libevent2" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-libevent2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26143,10 +25146,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-libinput" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "osicat" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "osicat" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26166,10 +25166,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-liblinear" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26209,10 +25206,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-libpuzzle-test" ];
-      lispLibs = [
-        (getAttr "cl-libpuzzle" self)
-        (getAttr "cl-test-more" self)
-      ];
+      lispLibs = [ (getAttr "cl-libpuzzle" self) (getAttr "cl-test-more" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26232,10 +25226,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-libsvm" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26275,11 +25266,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-libsvm-format-test" ];
-      lispLibs = [
-        (getAttr "cl-libsvm-format" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-libsvm-format" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26299,10 +25286,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-libusb" ];
-      lispLibs = [
-        (getAttr "libusb-ffi" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "libusb-ffi" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26322,11 +25306,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-libuv" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = { };
     }
   );
@@ -26390,10 +25370,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-libxml2-test" ];
-      lispLibs = [
-        (getAttr "cl-libxml2" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "cl-libxml2" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26431,10 +25408,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-libyaml-test" ];
-      lispLibs = [
-        (getAttr "cl-libyaml" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-libyaml" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26498,10 +25472,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-locale-syntax" ];
-      lispLibs = [
-        (getAttr "cl-locale" self)
-        (getAttr "cl-syntax" self)
-      ];
+      lispLibs = [ (getAttr "cl-locale" self) (getAttr "cl-syntax" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26587,10 +25558,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-log-test" ];
-      lispLibs = [
-        (getAttr "cl-log" self)
-        (getAttr "eos" self)
-      ];
+      lispLibs = [ (getAttr "cl-log" self) (getAttr "eos" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26610,10 +25578,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-logic" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "quine-mccluskey" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "quine-mccluskey" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26653,10 +25618,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ltsv-test" ];
-      lispLibs = [
-        (getAttr "cl-ltsv" self)
-        (getAttr "cl-test-more" self)
-      ];
+      lispLibs = [ (getAttr "cl-ltsv" self) (getAttr "cl-test-more" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26753,11 +25715,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mango" ];
-      lispLibs = [
-        (getAttr "drakma" self)
-        (getAttr "json-mop" self)
-        (getAttr "yason" self)
-      ];
+      lispLibs = [ (getAttr "drakma" self) (getAttr "json-mop" self) (getAttr "yason" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26831,11 +25789,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-markdown-test" ];
-      lispLibs = [
-        (getAttr "cl-markdown" self)
-        (getAttr "lift" self)
-        (getAttr "trivial-shell" self)
-      ];
+      lispLibs = [ (getAttr "cl-markdown" self) (getAttr "lift" self) (getAttr "trivial-shell" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26855,10 +25809,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-markless" ];
-      lispLibs = [
-        (getAttr "documentation-utils" self)
-        (getAttr "trivial-indent" self)
-      ];
+      lispLibs = [ (getAttr "documentation-utils" self) (getAttr "trivial-indent" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26949,10 +25900,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-markless-plump" ];
-      lispLibs = [
-        (getAttr "cl-markless" self)
-        (getAttr "plump-dom" self)
-      ];
+      lispLibs = [ (getAttr "cl-markless" self) (getAttr "plump-dom" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -26999,10 +25947,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-markless-test" ];
-      lispLibs = [
-        (getAttr "cl-markless" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "cl-markless" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27065,10 +26010,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-markup-test" ];
-      lispLibs = [
-        (getAttr "cl-markup" self)
-        (getAttr "cl-test-more" self)
-      ];
+      lispLibs = [ (getAttr "cl-markup" self) (getAttr "cl-test-more" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27108,10 +26050,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-match-test" ];
-      lispLibs = [
-        (getAttr "cl-match" self)
-        (getAttr "pcl-unit-test" self)
-      ];
+      lispLibs = [ (getAttr "cl-match" self) (getAttr "pcl-unit-test" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27131,10 +26070,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mathstats" ];
-      lispLibs = [
-        (getAttr "cl-containers" self)
-        (getAttr "metatilities-base" self)
-      ];
+      lispLibs = [ (getAttr "cl-containers" self) (getAttr "metatilities-base" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27154,10 +26090,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mathstats-test" ];
-      lispLibs = [
-        (getAttr "cl-mathstats" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "cl-mathstats" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27230,10 +26163,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-maxsat.test" ];
-      lispLibs = [
-        (getAttr "cl-maxsat" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-maxsat" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27273,10 +26203,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mecab" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27296,11 +26223,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mecab-test" ];
-      lispLibs = [
-        (getAttr "cl-mecab" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-mecab" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27346,11 +26269,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mediawiki" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cxml" self)
-        (getAttr "drakma" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cxml" self) (getAttr "drakma" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27370,10 +26289,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mediawiki-test" ];
-      lispLibs = [
-        (getAttr "cl-mediawiki" self)
-        (getAttr "lisp-unit2" self)
-      ];
+      lispLibs = [ (getAttr "cl-mediawiki" self) (getAttr "lisp-unit2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27447,11 +26363,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-messagepack" ];
-      lispLibs = [
-        (getAttr "babel" self)
-        (getAttr "closer-mop" self)
-        (getAttr "flexi-streams" self)
-      ];
+      lispLibs = [ (getAttr "babel" self) (getAttr "closer-mop" self) (getAttr "flexi-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27499,10 +26411,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-messagepack-rpc-tests" ];
-      lispLibs = [
-        (getAttr "cl-messagepack-rpc" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-messagepack-rpc" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27522,11 +26431,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-messagepack-tests" ];
-      lispLibs = [
-        (getAttr "cl-json" self)
-        (getAttr "cl-messagepack" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-json" self) (getAttr "cl-messagepack" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27717,11 +26622,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-migratum.provider.local-path" ];
-      lispLibs = [
-        (getAttr "cl-migratum" self)
-        (getAttr "cl-ppcre" self)
-        (getAttr "log4cl" self)
-      ];
+      lispLibs = [ (getAttr "cl-migratum" self) (getAttr "cl-ppcre" self) (getAttr "log4cl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27770,11 +26671,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mime" ];
-      lispLibs = [
-        (getAttr "cl-base64" self)
-        (getAttr "cl-ppcre" self)
-        (getAttr "cl-qprint" self)
-      ];
+      lispLibs = [ (getAttr "cl-base64" self) (getAttr "cl-ppcre" self) (getAttr "cl-qprint" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27814,10 +26711,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mime-test" ];
-      lispLibs = [
-        (getAttr "cl-mime" self)
-        (getAttr "rove" self)
-      ];
+      lispLibs = [ (getAttr "cl-mime" self) (getAttr "rove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27837,10 +26731,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mimeparse" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "parse-number" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "parse-number" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27860,10 +26751,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mimeparse-tests" ];
-      lispLibs = [
-        (getAttr "cl-mimeparse" self)
-        (getAttr "rt" self)
-      ];
+      lispLibs = [ (getAttr "cl-mimeparse" self) (getAttr "rt" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27954,10 +26842,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mixed-aaudio" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-mixed" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-mixed" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -27977,10 +26862,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mixed-alsa" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-mixed" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-mixed" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28051,10 +26933,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mixed-flac" ];
-      lispLibs = [
-        (getAttr "cl-flac" self)
-        (getAttr "cl-mixed" self)
-      ];
+      lispLibs = [ (getAttr "cl-flac" self) (getAttr "cl-mixed" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28074,10 +26953,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mixed-jack" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-mixed" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-mixed" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28097,10 +26973,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mixed-mpg123" ];
-      lispLibs = [
-        (getAttr "cl-mixed" self)
-        (getAttr "cl-mpg123" self)
-      ];
+      lispLibs = [ (getAttr "cl-mixed" self) (getAttr "cl-mpg123" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28120,10 +26993,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mixed-mpt" ];
-      lispLibs = [
-        (getAttr "cl-mixed" self)
-        (getAttr "static-vectors" self)
-      ];
+      lispLibs = [ (getAttr "cl-mixed" self) (getAttr "static-vectors" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28143,10 +27013,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mixed-nxau" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-mixed" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-mixed" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28166,10 +27033,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mixed-opus" ];
-      lispLibs = [
-        (getAttr "cl-mixed" self)
-        (getAttr "cl-opus" self)
-      ];
+      lispLibs = [ (getAttr "cl-mixed" self) (getAttr "cl-opus" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28189,10 +27053,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mixed-oss" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-mixed" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-mixed" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28212,10 +27073,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mixed-out123" ];
-      lispLibs = [
-        (getAttr "cl-mixed" self)
-        (getAttr "cl-out123" self)
-      ];
+      lispLibs = [ (getAttr "cl-mixed" self) (getAttr "cl-out123" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28235,10 +27093,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mixed-pulse" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-mixed" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-mixed" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28258,10 +27113,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mixed-sdl2" ];
-      lispLibs = [
-        (getAttr "cl-mixed" self)
-        (getAttr "sdl2" self)
-      ];
+      lispLibs = [ (getAttr "cl-mixed" self) (getAttr "sdl2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28281,10 +27133,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mixed-vorbis" ];
-      lispLibs = [
-        (getAttr "cl-mixed" self)
-        (getAttr "cl-vorbis" self)
-      ];
+      lispLibs = [ (getAttr "cl-mixed" self) (getAttr "cl-vorbis" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28304,11 +27153,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mixed-wasapi" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-mixed" self)
-        (getAttr "com-on" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-mixed" self) (getAttr "com-on" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28348,10 +27193,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mixed-winmm" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-mixed" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-mixed" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28371,11 +27213,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mixed-xaudio2" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-mixed" self)
-        (getAttr "com-on" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-mixed" self) (getAttr "com-on" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28395,10 +27233,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mock" ];
-      lispLibs = [
-        (getAttr "cl-mock-basic" self)
-        (getAttr "trivia" self)
-      ];
+      lispLibs = [ (getAttr "cl-mock-basic" self) (getAttr "trivia" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28442,10 +27277,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mock-tests" ];
-      lispLibs = [
-        (getAttr "cl-mock" self)
-        (getAttr "cl-mock-tests-basic" self)
-      ];
+      lispLibs = [ (getAttr "cl-mock" self) (getAttr "cl-mock-tests-basic" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28465,10 +27297,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mock-tests-basic" ];
-      lispLibs = [
-        (getAttr "cl-mock-basic" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-mock-basic" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28536,10 +27365,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-moneris" ];
-      lispLibs = [
-        (getAttr "drakma" self)
-        (getAttr "s-xml" self)
-      ];
+      lispLibs = [ (getAttr "drakma" self) (getAttr "s-xml" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28559,10 +27385,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-moneris-test" ];
-      lispLibs = [
-        (getAttr "cl-moneris" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-moneris" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28721,11 +27544,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mount-info" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28770,11 +27589,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mpg123-example" ];
-      lispLibs = [
-        (getAttr "cl-mpg123" self)
-        (getAttr "cl-out123" self)
-        (getAttr "verbose" self)
-      ];
+      lispLibs = [ (getAttr "cl-mpg123" self) (getAttr "cl-out123" self) (getAttr "verbose" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28819,10 +27634,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mpi-asdf-integration" ];
-      lispLibs = [
-        (getAttr "cffi-grovel" self)
-        (getAttr "cffi-toolchain" self)
-      ];
+      lispLibs = [ (getAttr "cffi-grovel" self) (getAttr "cffi-toolchain" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28842,10 +27654,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mpi-examples" ];
-      lispLibs = [
-        (getAttr "cl-mpi" self)
-        (getAttr "cl-mpi-asdf-integration" self)
-      ];
+      lispLibs = [ (getAttr "cl-mpi" self) (getAttr "cl-mpi-asdf-integration" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28865,11 +27674,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mpi-extensions" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-conspack" self)
-        (getAttr "cl-mpi" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-conspack" self) (getAttr "cl-mpi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28889,11 +27694,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mpi-test-suite" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-mpi" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-mpi" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28938,10 +27739,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mtgnet-async" ];
-      lispLibs = [
-        (getAttr "cl-async" self)
-        (getAttr "cl-mtgnet" self)
-      ];
+      lispLibs = [ (getAttr "cl-async" self) (getAttr "cl-mtgnet" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -28961,10 +27759,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mtgnet-sync" ];
-      lispLibs = [
-        (getAttr "cl-mtgnet" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "cl-mtgnet" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -29022,11 +27817,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mustache-test" ];
-      lispLibs = [
-        (getAttr "cl-mustache" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-mustache" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -29268,10 +28059,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-mysql-test" ];
-      lispLibs = [
-        (getAttr "cl-mysql" self)
-        (getAttr "stefil" self)
-      ];
+      lispLibs = [ (getAttr "cl-mysql" self) (getAttr "stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -29456,10 +28244,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-naive-store.test" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-naive-store" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-naive-store" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -29527,10 +28312,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-neo4j.tests" ];
-      lispLibs = [
-        (getAttr "cl-neo4j" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-neo4j" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -29596,10 +28378,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-netstring+" ];
-      lispLibs = [
-        (getAttr "flexi-streams" self)
-        (getAttr "trivial-utf-8" self)
-      ];
+      lispLibs = [ (getAttr "flexi-streams" self) (getAttr "trivial-utf-8" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -29619,10 +28398,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-netstrings" ];
-      lispLibs = [
-        (getAttr "arnesi" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "arnesi" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -29675,10 +28451,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ntp-client" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -29751,10 +28524,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-oauth.tests" ];
-      lispLibs = [
-        (getAttr "cl-oauth" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-oauth" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -29864,11 +28634,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ohm" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-redis" self)
-        (getAttr "closer-mop" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-redis" self) (getAttr "closer-mop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -29948,10 +28714,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-one-time-passwords-test" ];
-      lispLibs = [
-        (getAttr "cl-one-time-passwords" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-one-time-passwords" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -29971,11 +28734,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-oneliner" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "lisp-unit" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "lisp-unit" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -29995,10 +28754,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-online-learning" ];
-      lispLibs = [
-        (getAttr "cl-libsvm-format" self)
-        (getAttr "cl-store" self)
-      ];
+      lispLibs = [ (getAttr "cl-libsvm-format" self) (getAttr "cl-store" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -30042,10 +28798,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-openal" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -30090,10 +28843,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-opencl" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -30133,11 +28883,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-opengl" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "float-features" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "float-features" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -30278,10 +29024,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-org-mode" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "closer-mop" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "closer-mop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -30387,11 +29130,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-pango" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-cairo2" self)
-        (getAttr "xmls" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-cairo2" self) (getAttr "xmls" self) ];
       meta = { };
     }
   );
@@ -30453,10 +29192,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-pass-test" ];
-      lispLibs = [
-        (getAttr "cl-pass" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-pass" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -30494,10 +29230,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-paths-ttf" ];
-      lispLibs = [
-        (getAttr "cl-paths" self)
-        (getAttr "zpb-ttf" self)
-      ];
+      lispLibs = [ (getAttr "cl-paths" self) (getAttr "zpb-ttf" self) ];
       meta = { };
     }
   );
@@ -30586,11 +29319,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-paymill" ];
-      lispLibs = [
-        (getAttr "cl_plus_ssl" self)
-        (getAttr "drakma" self)
-        (getAttr "st-json" self)
-      ];
+      lispLibs = [ (getAttr "cl_plus_ssl" self) (getAttr "drakma" self) (getAttr "st-json" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -30610,11 +29339,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-paypal" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "drakma" self)
-        (getAttr "hunchentoot" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "drakma" self) (getAttr "hunchentoot" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -30654,10 +29379,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-pcg.test" ];
-      lispLibs = [
-        (getAttr "_1am" self)
-        (getAttr "cl-pcg" self)
-      ];
+      lispLibs = [ (getAttr "_1am" self) (getAttr "cl-pcg" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -30677,10 +29399,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-pdf" ];
-      lispLibs = [
-        (getAttr "iterate" self)
-        (getAttr "zpb-ttf" self)
-      ];
+      lispLibs = [ (getAttr "iterate" self) (getAttr "zpb-ttf" self) ];
       meta = { };
     }
   );
@@ -30698,10 +29417,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-pdf-doc" ];
-      lispLibs = [
-        (getAttr "cl-pdf" self)
-        (getAttr "cl-typesetting" self)
-      ];
+      lispLibs = [ (getAttr "cl-pdf" self) (getAttr "cl-typesetting" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -30761,10 +29477,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-performance-tuning-helper-test" ];
-      lispLibs = [
-        (getAttr "cl-performance-tuning-helper" self)
-        (getAttr "rt" self)
-      ];
+      lispLibs = [ (getAttr "cl-performance-tuning-helper" self) (getAttr "rt" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -30812,10 +29525,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-permutation-examples" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-permutation" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-permutation" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -30879,10 +29589,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-photo-tests" ];
-      lispLibs = [
-        (getAttr "cl-photo" self)
-        (getAttr "rt" self)
-      ];
+      lispLibs = [ (getAttr "cl-photo" self) (getAttr "rt" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -30946,11 +29653,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-plumbing-test" ];
-      lispLibs = [
-        (getAttr "cl-plumbing" self)
-        (getAttr "iterate" self)
-        (getAttr "stefil" self)
-      ];
+      lispLibs = [ (getAttr "cl-plumbing" self) (getAttr "iterate" self) (getAttr "stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -30990,10 +29693,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-plus-ssl-osx-fix" ];
-      lispLibs = [
-        (getAttr "_40ants-asdf-system" self)
-        (getAttr "cl_plus_ssl" self)
-      ];
+      lispLibs = [ (getAttr "_40ants-asdf-system" self) (getAttr "cl_plus_ssl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -31079,10 +29779,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ply" ];
-      lispLibs = [
-        (getAttr "cl-pattern" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "cl-pattern" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -31102,11 +29799,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ply-test" ];
-      lispLibs = [
-        (getAttr "cl-ply" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-ply" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -31146,10 +29839,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-pop" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -31169,10 +29859,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-portaudio" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "ffa" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "ffa" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -31216,10 +29903,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-postgres+local-time" ];
-      lispLibs = [
-        (getAttr "cl-postgres" self)
-        (getAttr "local-time" self)
-      ];
+      lispLibs = [ (getAttr "cl-postgres" self) (getAttr "local-time" self) ];
       meta = { };
     }
   );
@@ -31237,10 +29921,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-postgres+local-time-duration" ];
-      lispLibs = [
-        (getAttr "cl-postgres" self)
-        (getAttr "local-time-duration" self)
-      ];
+      lispLibs = [ (getAttr "cl-postgres" self) (getAttr "local-time-duration" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -31284,10 +29965,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-postgres-plus-uuid" ];
-      lispLibs = [
-        (getAttr "cl-postgres" self)
-        (getAttr "uuid" self)
-      ];
+      lispLibs = [ (getAttr "cl-postgres" self) (getAttr "uuid" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -31325,10 +30003,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ppcre-template" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "cl-unification" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "cl-unification" self) ];
       meta = { };
     }
   );
@@ -31346,10 +30021,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ppcre-unicode" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "cl-unicode" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "cl-unicode" self) ];
       meta = { };
     }
   );
@@ -31367,11 +30039,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-prevalence" ];
-      lispLibs = [
-        (getAttr "moptilities" self)
-        (getAttr "s-sysdeps" self)
-        (getAttr "s-xml" self)
-      ];
+      lispLibs = [ (getAttr "moptilities" self) (getAttr "s-sysdeps" self) (getAttr "s-xml" self) ];
       meta = { };
     }
   );
@@ -31389,11 +30057,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-prevalence-test" ];
-      lispLibs = [
-        (getAttr "cl-prevalence" self)
-        (getAttr "find-port" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-prevalence" self) (getAttr "find-port" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -31433,11 +30097,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-primality-test" ];
-      lispLibs = [
-        (getAttr "cl-primality" self)
-        (getAttr "iterate" self)
-        (getAttr "stefil" self)
-      ];
+      lispLibs = [ (getAttr "cl-primality" self) (getAttr "iterate" self) (getAttr "stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -31477,10 +30137,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-progress-bar" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "documentation-utils-extensions" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "documentation-utils-extensions" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -31596,10 +30253,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-prolog2.bprolog.test" ];
-      lispLibs = [
-        (getAttr "cl-prolog2_dot_bprolog" self)
-        (getAttr "cl-prolog2_dot_test" self)
-      ];
+      lispLibs = [ (getAttr "cl-prolog2_dot_bprolog" self) (getAttr "cl-prolog2_dot_test" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -31639,10 +30293,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-prolog2.gprolog.test" ];
-      lispLibs = [
-        (getAttr "cl-prolog2_dot_gprolog" self)
-        (getAttr "cl-prolog2_dot_test" self)
-      ];
+      lispLibs = [ (getAttr "cl-prolog2_dot_gprolog" self) (getAttr "cl-prolog2_dot_test" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -31682,10 +30333,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-prolog2.swi.test" ];
-      lispLibs = [
-        (getAttr "cl-prolog2_dot_swi" self)
-        (getAttr "cl-prolog2_dot_test" self)
-      ];
+      lispLibs = [ (getAttr "cl-prolog2_dot_swi" self) (getAttr "cl-prolog2_dot_test" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -31705,11 +30353,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-prolog2.test" ];
-      lispLibs = [
-        (getAttr "cl-prolog2" self)
-        (getAttr "fiveam" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "cl-prolog2" self) (getAttr "fiveam" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -31749,10 +30393,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-prolog2.xsb.test" ];
-      lispLibs = [
-        (getAttr "cl-prolog2_dot_test" self)
-        (getAttr "cl-prolog2_dot_xsb" self)
-      ];
+      lispLibs = [ (getAttr "cl-prolog2_dot_test" self) (getAttr "cl-prolog2_dot_xsb" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -31792,10 +30433,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-prolog2.yap.test" ];
-      lispLibs = [
-        (getAttr "cl-prolog2_dot_test" self)
-        (getAttr "cl-prolog2_dot_yap" self)
-      ];
+      lispLibs = [ (getAttr "cl-prolog2_dot_test" self) (getAttr "cl-prolog2_dot_yap" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -31906,11 +30544,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-punch-test" ];
-      lispLibs = [
-        (getAttr "cl-punch" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-punch" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -31966,10 +30600,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-qrencode-test" ];
-      lispLibs = [
-        (getAttr "cl-qrencode" self)
-        (getAttr "lisp-unit" self)
-      ];
+      lispLibs = [ (getAttr "cl-qrencode" self) (getAttr "lisp-unit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -32036,10 +30667,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-rabbit-tests" ];
-      lispLibs = [
-        (getAttr "cl-rabbit" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-rabbit" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -32129,10 +30757,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-rdfxml" ];
-      lispLibs = [
-        (getAttr "cxml" self)
-        (getAttr "puri" self)
-      ];
+      lispLibs = [ (getAttr "cxml" self) (getAttr "puri" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -32178,10 +30803,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-readline" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) ];
       meta = { };
     }
   );
@@ -32293,10 +30915,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-reexport-test" ];
-      lispLibs = [
-        (getAttr "cl-reexport" self)
-        (getAttr "prove" self)
-      ];
+      lispLibs = [ (getAttr "cl-reexport" self) (getAttr "prove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -32413,10 +31032,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-rfc2047" ];
-      lispLibs = [
-        (getAttr "babel" self)
-        (getAttr "cl-base64" self)
-      ];
+      lispLibs = [ (getAttr "babel" self) (getAttr "cl-base64" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -32436,11 +31052,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-rfc2047-test" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "cl-rfc2047" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "cl-rfc2047" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -32480,10 +31092,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-rfc4251.test" ];
-      lispLibs = [
-        (getAttr "cl-rfc4251" self)
-        (getAttr "rove" self)
-      ];
+      lispLibs = [ (getAttr "cl-rfc4251" self) (getAttr "rove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -32523,10 +31132,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-rlimit" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -32586,11 +31192,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-robdd-analysis" ];
-      lispLibs = [
-        (getAttr "adjuvant" self)
-        (getAttr "cl-fad" self)
-        (getAttr "cl-robdd" self)
-      ];
+      lispLibs = [ (getAttr "adjuvant" self) (getAttr "cl-fad" self) (getAttr "cl-robdd" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -32807,10 +31409,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-rsvg2-pixbuf" ];
-      lispLibs = [
-        (getAttr "cl-gtk2-gdk" self)
-        (getAttr "cl-rsvg2" self)
-      ];
+      lispLibs = [ (getAttr "cl-gtk2-gdk" self) (getAttr "cl-rsvg2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -32830,11 +31429,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-rsvg2-test" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-rsvg2" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-rsvg2" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -32854,10 +31449,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-rules" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-yaml" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-yaml" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -32877,11 +31469,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-rules-test" ];
-      lispLibs = [
-        (getAttr "cl-rules" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-rules" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -32951,11 +31539,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-sam-test" ];
-      lispLibs = [
-        (getAttr "cl-sam" self)
-        (getAttr "deoxybyte-io" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "cl-sam" self) (getAttr "deoxybyte-io" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33062,10 +31646,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-sat.glucose.test" ];
-      lispLibs = [
-        (getAttr "cl-sat_dot_glucose" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-sat_dot_glucose" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33109,10 +31690,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-sat.minisat.test" ];
-      lispLibs = [
-        (getAttr "cl-sat_dot_minisat" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-sat_dot_minisat" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33132,10 +31710,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-sat.test" ];
-      lispLibs = [
-        (getAttr "cl-sat" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-sat" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33181,11 +31756,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-scribd" ];
-      lispLibs = [
-        (getAttr "cxml" self)
-        (getAttr "drakma" self)
-        (getAttr "ironclad" self)
-      ];
+      lispLibs = [ (getAttr "cxml" self) (getAttr "drakma" self) (getAttr "ironclad" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33205,10 +31776,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-scripting" ];
-      lispLibs = [
-        (getAttr "cl-launch" self)
-        (getAttr "fare-utils" self)
-      ];
+      lispLibs = [ (getAttr "cl-launch" self) (getAttr "fare-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33255,10 +31823,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-scrobbler-tests" ];
-      lispLibs = [
-        (getAttr "cl-scrobbler" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-scrobbler" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33298,11 +31863,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-scsu-test" ];
-      lispLibs = [
-        (getAttr "_1am" self)
-        (getAttr "alexandria" self)
-        (getAttr "cl-scsu" self)
-      ];
+      lispLibs = [ (getAttr "_1am" self) (getAttr "alexandria" self) (getAttr "cl-scsu" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33348,11 +31909,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-selenium-test" ];
-      lispLibs = [
-        (getAttr "cl-selenium" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-selenium" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33372,11 +31929,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-semver" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "esrap" self)
-        (getAttr "named-readtables" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "esrap" self) (getAttr "named-readtables" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33396,10 +31949,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-semver-test" ];
-      lispLibs = [
-        (getAttr "cl-semver" self)
-        (getAttr "stefil" self)
-      ];
+      lispLibs = [ (getAttr "cl-semver" self) (getAttr "stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33419,10 +31969,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-sentiment" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "rt" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "rt" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33496,10 +32043,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-setlocale" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33557,10 +32101,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-shellwords-test" ];
-      lispLibs = [
-        (getAttr "cl-shellwords" self)
-        (getAttr "prove" self)
-      ];
+      lispLibs = [ (getAttr "cl-shellwords" self) (getAttr "prove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33580,10 +32121,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-simple-concurrent-jobs" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "chanl" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "chanl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33623,10 +32161,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-singleton-mixin" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "metap" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "metap" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33646,10 +32181,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-singleton-mixin-test" ];
-      lispLibs = [
-        (getAttr "cl-singleton-mixin" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-singleton-mixin" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33720,11 +32252,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-slice" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "anaphora" self)
-        (getAttr "let-plus" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "anaphora" self) (getAttr "let-plus" self) ];
       meta = { };
     }
   );
@@ -33742,10 +32270,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-slice-tests" ];
-      lispLibs = [
-        (getAttr "cl-slice" self)
-        (getAttr "clunit" self)
-      ];
+      lispLibs = [ (getAttr "cl-slice" self) (getAttr "clunit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33805,11 +32330,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-slug-test" ];
-      lispLibs = [
-        (getAttr "cl-slug" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-slug" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33849,10 +32370,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-slugify.tests" ];
-      lispLibs = [
-        (getAttr "cl-slugify" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-slugify" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -33970,11 +32488,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-sophia" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "cl-fad" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "cl-fad" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -34039,10 +32553,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-spark-test" ];
-      lispLibs = [
-        (getAttr "cl-spark" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-spark" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -34087,10 +32598,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-sparql-tests" ];
-      lispLibs = [
-        (getAttr "cl-sparql" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-sparql" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -34179,11 +32687,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ssdb-test" ];
-      lispLibs = [
-        (getAttr "cl-ssdb" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-ssdb" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -34228,11 +32732,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-ssh-keys.test" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-ssh-keys" self)
-        (getAttr "rove" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-ssh-keys" self) (getAttr "rove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -34362,11 +32862,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-stomp" ];
-      lispLibs = [
-        (getAttr "babel" self)
-        (getAttr "bordeaux-threads" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "babel" self) (getAttr "bordeaux-threads" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -34424,10 +32920,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-store-tests" ];
-      lispLibs = [
-        (getAttr "cl-store" self)
-        (getAttr "rt" self)
-      ];
+      lispLibs = [ (getAttr "cl-store" self) (getAttr "rt" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -34512,10 +33005,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-string-generator" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -34607,10 +33097,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-strings-tests" ];
-      lispLibs = [
-        (getAttr "cl-strings" self)
-        (getAttr "prove" self)
-      ];
+      lispLibs = [ (getAttr "cl-strings" self) (getAttr "prove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -34713,11 +33200,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-sxml-test" ];
-      lispLibs = [
-        (getAttr "cl-sxml" self)
-        (getAttr "fiveam" self)
-        (getAttr "flexi-streams" self)
-      ];
+      lispLibs = [ (getAttr "cl-sxml" self) (getAttr "fiveam" self) (getAttr "flexi-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -34737,10 +33220,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-syntax" ];
-      lispLibs = [
-        (getAttr "named-readtables" self)
-        (getAttr "trivial-types" self)
-      ];
+      lispLibs = [ (getAttr "named-readtables" self) (getAttr "trivial-types" self) ];
       meta = { };
     }
   );
@@ -34758,10 +33238,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-syntax-annot" ];
-      lispLibs = [
-        (getAttr "cl-annot" self)
-        (getAttr "cl-syntax" self)
-      ];
+      lispLibs = [ (getAttr "cl-annot" self) (getAttr "cl-syntax" self) ];
       meta = { };
     }
   );
@@ -34779,10 +33256,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-syntax-anonfun" ];
-      lispLibs = [
-        (getAttr "cl-anonfun" self)
-        (getAttr "cl-syntax" self)
-      ];
+      lispLibs = [ (getAttr "cl-anonfun" self) (getAttr "cl-syntax" self) ];
       meta = { };
     }
   );
@@ -34800,10 +33274,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-syntax-clsql" ];
-      lispLibs = [
-        (getAttr "cl-syntax" self)
-        (getAttr "clsql" self)
-      ];
+      lispLibs = [ (getAttr "cl-syntax" self) (getAttr "clsql" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -34823,10 +33294,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-syntax-debug-print" ];
-      lispLibs = [
-        (getAttr "cl-debug-print" self)
-        (getAttr "cl-syntax" self)
-      ];
+      lispLibs = [ (getAttr "cl-debug-print" self) (getAttr "cl-syntax" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -34846,10 +33314,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-syntax-fare-quasiquote" ];
-      lispLibs = [
-        (getAttr "cl-syntax" self)
-        (getAttr "fare-quasiquote" self)
-      ];
+      lispLibs = [ (getAttr "cl-syntax" self) (getAttr "fare-quasiquote" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -34869,10 +33334,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-syntax-interpol" ];
-      lispLibs = [
-        (getAttr "cl-interpol" self)
-        (getAttr "cl-syntax" self)
-      ];
+      lispLibs = [ (getAttr "cl-interpol" self) (getAttr "cl-syntax" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -34892,10 +33354,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-syntax-lsx" ];
-      lispLibs = [
-        (getAttr "cl-syntax" self)
-        (getAttr "lsx" self)
-      ];
+      lispLibs = [ (getAttr "cl-syntax" self) (getAttr "lsx" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -34915,10 +33374,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-syntax-markup" ];
-      lispLibs = [
-        (getAttr "cl-markup" self)
-        (getAttr "cl-syntax" self)
-      ];
+      lispLibs = [ (getAttr "cl-markup" self) (getAttr "cl-syntax" self) ];
       meta = { };
     }
   );
@@ -35033,11 +33489,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-telebot" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "dexador" self)
-        (getAttr "jonathan" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "dexador" self) (getAttr "jonathan" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -35177,10 +33629,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-template-tests" ];
-      lispLibs = [
-        (getAttr "cl-template" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-template" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -35283,10 +33732,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-textmagic" ];
-      lispLibs = [
-        (getAttr "cl-json" self)
-        (getAttr "dexador" self)
-      ];
+      lispLibs = [ (getAttr "cl-json" self) (getAttr "dexador" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -35306,11 +33752,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-textmagic-test" ];
-      lispLibs = [
-        (getAttr "cl-textmagic" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-textmagic" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -35350,10 +33792,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-threadpool" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "queues_dot_simple-cqueue" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "queues_dot_simple-cqueue" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -35488,10 +33927,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-tokyo-cabinet" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "deoxybyte-systems" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "deoxybyte-systems" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -35561,10 +33997,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-toml-test" ];
-      lispLibs = [
-        (getAttr "cl-toml" self)
-        (getAttr "prove" self)
-      ];
+      lispLibs = [ (getAttr "cl-toml" self) (getAttr "prove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -35687,11 +34120,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-transmission-test" ];
-      lispLibs = [
-        (getAttr "cl-transmission" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-transmission" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -35731,10 +34160,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-trie-examples" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "cl-trie" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "cl-trie" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -35802,10 +34228,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-tuples" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -35918,10 +34341,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-unac" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-unac_dot_config" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-unac_dot_config" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -35961,10 +34381,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-unac.tests" ];
-      lispLibs = [
-        (getAttr "cl-unac" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-unac" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -36020,10 +34437,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-unification-lib" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "cl-unification" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "cl-unification" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -36043,10 +34457,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-unification-test" ];
-      lispLibs = [
-        (getAttr "cl-unification" self)
-        (getAttr "ptester" self)
-      ];
+      lispLibs = [ (getAttr "cl-unification" self) (getAttr "ptester" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -36124,10 +34535,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-vectors" ];
-      lispLibs = [
-        (getAttr "cl-aa" self)
-        (getAttr "cl-paths" self)
-      ];
+      lispLibs = [ (getAttr "cl-aa" self) (getAttr "cl-paths" self) ];
       meta = { };
     }
   );
@@ -36244,11 +34652,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-video-gif" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-video" self)
-        (getAttr "skippy" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-video" self) (getAttr "skippy" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -36320,11 +34724,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-virtualbox" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-ppcre" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-ppcre" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -36390,10 +34790,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-voxelize-examples" ];
-      lispLibs = [
-        (getAttr "cl-ply" self)
-        (getAttr "cl-voxelize" self)
-      ];
+      lispLibs = [ (getAttr "cl-ply" self) (getAttr "cl-voxelize" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -36413,11 +34810,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-voxelize-test" ];
-      lispLibs = [
-        (getAttr "cl-voxelize" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-voxelize" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -36457,10 +34850,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-wav" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-riff" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-riff" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -36524,10 +34914,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-wavelets" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "serapeum" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "serapeum" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -36547,10 +34934,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-wayland" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "closer-mop" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "closer-mop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -36596,11 +34980,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-weather-jp-test" ];
-      lispLibs = [
-        (getAttr "cl-weather-jp" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cl-weather-jp" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -36620,11 +35000,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-webdav" ];
-      lispLibs = [
-        (getAttr "cl-fad" self)
-        (getAttr "cxml" self)
-        (getAttr "hunchentoot" self)
-      ];
+      lispLibs = [ (getAttr "cl-fad" self) (getAttr "cxml" self) (getAttr "hunchentoot" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -36695,11 +35071,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-webkit2" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "cl-cffi-gtk" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "cl-cffi-gtk" self) ];
       meta = { };
     }
   );
@@ -36735,10 +35107,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-who-test" ];
-      lispLibs = [
-        (getAttr "cl-who" self)
-        (getAttr "flexi-streams" self)
-      ];
+      lispLibs = [ (getAttr "cl-who" self) (getAttr "flexi-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -36778,10 +35147,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-why-test" ];
-      lispLibs = [
-        (getAttr "cl-why" self)
-        (getAttr "flexi-streams" self)
-      ];
+      lispLibs = [ (getAttr "cl-why" self) (getAttr "flexi-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -36801,10 +35167,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-with" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "closer-mop" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "closer-mop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -36851,10 +35214,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-wol.core" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -36874,10 +35234,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-wol.test" ];
-      lispLibs = [
-        (getAttr "cl-wol_dot_core" self)
-        (getAttr "rove" self)
-      ];
+      lispLibs = [ (getAttr "cl-wol_dot_core" self) (getAttr "rove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -36943,10 +35300,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-xdg-test" ];
-      lispLibs = [
-        (getAttr "cl-xdg" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-xdg" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -37006,10 +35360,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-xmlspam" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "cxml" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "cxml" self) ];
       meta = { };
     }
   );
@@ -37027,11 +35378,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-xmpp" ];
-      lispLibs = [
-        (getAttr "cxml" self)
-        (getAttr "ironclad" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "cxml" self) (getAttr "ironclad" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -37051,11 +35398,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-xmpp-sasl" ];
-      lispLibs = [
-        (getAttr "cl-base64" self)
-        (getAttr "cl-sasl" self)
-        (getAttr "cl-xmpp" self)
-      ];
+      lispLibs = [ (getAttr "cl-base64" self) (getAttr "cl-sasl" self) (getAttr "cl-xmpp" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -37075,10 +35418,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-xmpp-tls" ];
-      lispLibs = [
-        (getAttr "cl_plus_ssl" self)
-        (getAttr "cl-xmpp-sasl" self)
-      ];
+      lispLibs = [ (getAttr "cl_plus_ssl" self) (getAttr "cl-xmpp-sasl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -37128,10 +35468,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-xul-test" ];
-      lispLibs = [
-        (getAttr "cl-xul" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-xul" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -37180,11 +35517,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-yaclyaml-tests" ];
-      lispLibs = [
-        (getAttr "cl-interpol" self)
-        (getAttr "cl-yaclyaml" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-interpol" self) (getAttr "cl-yaclyaml" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -37330,11 +35663,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cl-zipper-test" ];
-      lispLibs = [
-        (getAttr "cl-zipper" self)
-        (getAttr "prove-asdf" self)
-        (getAttr "test-utils" self)
-      ];
+      lispLibs = [ (getAttr "cl-zipper" self) (getAttr "prove-asdf" self) (getAttr "test-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -37409,10 +35738,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clache-test" ];
-      lispLibs = [
-        (getAttr "cl-test-more" self)
-        (getAttr "clache" self)
-      ];
+      lispLibs = [ (getAttr "cl-test-more" self) (getAttr "clache" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -37485,10 +35811,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clack-errors-demo" ];
-      lispLibs = [
-        (getAttr "cl-markup" self)
-        (getAttr "clack-errors" self)
-      ];
+      lispLibs = [ (getAttr "cl-markup" self) (getAttr "clack-errors" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -37683,10 +36006,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clack-static-asset-djula-helpers" ];
-      lispLibs = [
-        (getAttr "clack-static-asset-middleware" self)
-        (getAttr "djula" self)
-      ];
+      lispLibs = [ (getAttr "clack-static-asset-middleware" self) (getAttr "djula" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -37853,10 +36173,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "classimp" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -37920,10 +36237,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "classowary-test" ];
-      lispLibs = [
-        (getAttr "classowary" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "classowary" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38047,10 +36361,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clavier.test" ];
-      lispLibs = [
-        (getAttr "clavier" self)
-        (getAttr "stefil" self)
-      ];
+      lispLibs = [ (getAttr "clavier" self) (getAttr "stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38118,10 +36429,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "claw-olm-bindings" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "trivial-features" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "trivial-features" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38161,11 +36469,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "claw-utils" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "claw" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "claw" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38205,10 +36509,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "claxy" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "dexador" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "dexador" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38384,10 +36685,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clerk-test" ];
-      lispLibs = [
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38407,10 +36705,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clesh" ];
-      lispLibs = [
-        (getAttr "named-readtables" self)
-        (getAttr "trivial-shell" self)
-      ];
+      lispLibs = [ (getAttr "named-readtables" self) (getAttr "trivial-shell" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38430,10 +36725,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clesh-tests" ];
-      lispLibs = [
-        (getAttr "clesh" self)
-        (getAttr "lisp-unit" self)
-      ];
+      lispLibs = [ (getAttr "clesh" self) (getAttr "lisp-unit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38453,10 +36745,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cletris" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "pal" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "pal" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38501,11 +36790,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cletris-test" ];
-      lispLibs = [
-        (getAttr "cletris" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cletris" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38563,11 +36848,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clgplot-test" ];
-      lispLibs = [
-        (getAttr "clgplot" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "clgplot" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38653,10 +36934,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clim" ];
-      lispLibs = [
-        (getAttr "clim-core" self)
-        (getAttr "drei-mcclim" self)
-      ];
+      lispLibs = [ (getAttr "clim-core" self) (getAttr "drei-mcclim" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38782,11 +37060,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clim-listener" ];
-      lispLibs = [
-        (getAttr "cl-fad" self)
-        (getAttr "clim-debugger" self)
-        (getAttr "mcclim" self)
-      ];
+      lispLibs = [ (getAttr "cl-fad" self) (getAttr "clim-debugger" self) (getAttr "mcclim" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38832,10 +37106,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clim-postscript" ];
-      lispLibs = [
-        (getAttr "clim" self)
-        (getAttr "clim-postscript-font" self)
-      ];
+      lispLibs = [ (getAttr "clim" self) (getAttr "clim-postscript-font" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38855,10 +37126,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clim-postscript-font" ];
-      lispLibs = [
-        (getAttr "clim" self)
-        (getAttr "mcclim-backend-common" self)
-      ];
+      lispLibs = [ (getAttr "clim" self) (getAttr "mcclim-backend-common" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38907,10 +37175,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "climacs" ];
-      lispLibs = [
-        (getAttr "flexichain" self)
-        (getAttr "mcclim" self)
-      ];
+      lispLibs = [ (getAttr "flexichain" self) (getAttr "mcclim" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38930,11 +37195,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "climc" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "cl-xmpp-tls" self)
-        (getAttr "mcclim" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "cl-xmpp-tls" self) (getAttr "mcclim" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38954,10 +37215,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "climc-test" ];
-      lispLibs = [
-        (getAttr "climc" self)
-        (getAttr "lisp-unit" self)
-      ];
+      lispLibs = [ (getAttr "climc" self) (getAttr "lisp-unit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -38997,11 +37255,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "climon-test" ];
-      lispLibs = [
-        (getAttr "climon" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "climon" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -39049,11 +37303,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clinch-cairo" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-cairo2" self)
-        (getAttr "clinch" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-cairo2" self) (getAttr "clinch" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -39073,11 +37323,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clinch-classimp" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "classimp" self)
-        (getAttr "clinch" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "classimp" self) (getAttr "clinch" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -39097,11 +37343,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clinch-freeimage" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-freeimage" self)
-        (getAttr "clinch" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-freeimage" self) (getAttr "clinch" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -39238,10 +37480,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clingon.test" ];
-      lispLibs = [
-        (getAttr "clingon" self)
-        (getAttr "rove" self)
-      ];
+      lispLibs = [ (getAttr "clingon" self) (getAttr "rove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -39261,10 +37500,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clip" ];
-      lispLibs = [
-        (getAttr "array-utils" self)
-        (getAttr "lquery" self)
-      ];
+      lispLibs = [ (getAttr "array-utils" self) (getAttr "lquery" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -39409,10 +37645,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clj-con-test" ];
-      lispLibs = [
-        (getAttr "clj-con" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "clj-con" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -39432,10 +37665,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clj-re" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "named-readtables" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "named-readtables" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -39455,10 +37685,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clj-re-test" ];
-      lispLibs = [
-        (getAttr "clj-re" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "clj-re" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -39717,10 +37944,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clml.decision-tree" ];
-      lispLibs = [
-        (getAttr "clml_dot_hjs" self)
-        (getAttr "lparallel" self)
-      ];
+      lispLibs = [ (getAttr "clml_dot_hjs" self) (getAttr "lparallel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -39844,10 +38068,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clml.lapack-real" ];
-      lispLibs = [
-        (getAttr "clml_dot_blas" self)
-        (getAttr "f2cl-lib" self)
-      ];
+      lispLibs = [ (getAttr "clml_dot_blas" self) (getAttr "f2cl-lib" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -39931,10 +38152,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clml.pca" ];
-      lispLibs = [
-        (getAttr "clml_dot_decision-tree" self)
-        (getAttr "clml_dot_hjs" self)
-      ];
+      lispLibs = [ (getAttr "clml_dot_decision-tree" self) (getAttr "clml_dot_hjs" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -39954,10 +38172,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clml.pca.examples" ];
-      lispLibs = [
-        (getAttr "clml_dot_hjs" self)
-        (getAttr "clml_dot_pca" self)
-      ];
+      lispLibs = [ (getAttr "clml_dot_hjs" self) (getAttr "clml_dot_pca" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -40090,10 +38305,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clml.svm.examples" ];
-      lispLibs = [
-        (getAttr "clml_dot_hjs" self)
-        (getAttr "clml_dot_svm" self)
-      ];
+      lispLibs = [ (getAttr "clml_dot_hjs" self) (getAttr "clml_dot_svm" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -40113,10 +38325,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clml.test" ];
-      lispLibs = [
-        (getAttr "clml" self)
-        (getAttr "lisp-unit" self)
-      ];
+      lispLibs = [ (getAttr "clml" self) (getAttr "lisp-unit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -40258,11 +38467,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clod" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "closer-mop" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "closer-mop" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -40517,10 +38722,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clop-tests" ];
-      lispLibs = [
-        (getAttr "clop" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "clop" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -40580,10 +38782,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clos-fixtures-test" ];
-      lispLibs = [
-        (getAttr "clos-fixtures" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "clos-fixtures" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -40621,10 +38820,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "closure-common" ];
-      lispLibs = [
-        (getAttr "babel" self)
-        (getAttr "trivial-gray-streams" self)
-      ];
+      lispLibs = [ (getAttr "babel" self) (getAttr "trivial-gray-streams" self) ];
       meta = { };
     }
   );
@@ -40642,10 +38838,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "closure-html" ];
-      lispLibs = [
-        (getAttr "closure-common" self)
-        (getAttr "flexi-streams" self)
-      ];
+      lispLibs = [ (getAttr "closure-common" self) (getAttr "flexi-streams" self) ];
       meta = { };
     }
   );
@@ -40691,10 +38884,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "closure-template-test" ];
-      lispLibs = [
-        (getAttr "closure-template" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "closure-template" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -40740,10 +38930,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clouchdb-examples" ];
-      lispLibs = [
-        (getAttr "clouchdb" self)
-        (getAttr "parenscript" self)
-      ];
+      lispLibs = [ (getAttr "clouchdb" self) (getAttr "parenscript" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -40763,10 +38950,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clouseau" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "mcclim" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "mcclim" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -40786,11 +38970,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clpython" ];
-      lispLibs = [
-        (getAttr "cl-fad" self)
-        (getAttr "closer-mop" self)
-        (getAttr "yacc" self)
-      ];
+      lispLibs = [ (getAttr "cl-fad" self) (getAttr "closer-mop" self) (getAttr "yacc" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -40868,11 +39048,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clsql-fluid" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "closer-mop" self)
-        (getAttr "clsql" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "closer-mop" self) (getAttr "clsql" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -40923,10 +39099,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clsql-helper-slot-coercer" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "clsql-helper" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "clsql-helper" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -40946,10 +39119,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clsql-helper-slot-coercer-test" ];
-      lispLibs = [
-        (getAttr "clsql-helper-slot-coercer" self)
-        (getAttr "lisp-unit2" self)
-      ];
+      lispLibs = [ (getAttr "clsql-helper-slot-coercer" self) (getAttr "lisp-unit2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -40993,10 +39163,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clsql-local-time" ];
-      lispLibs = [
-        (getAttr "clsql" self)
-        (getAttr "local-time" self)
-      ];
+      lispLibs = [ (getAttr "clsql" self) (getAttr "local-time" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -41016,11 +39183,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clsql-mysql" ];
-      lispLibs = [
-        (getAttr "clsql" self)
-        (getAttr "clsql-uffi" self)
-        (getAttr "uffi" self)
-      ];
+      lispLibs = [ (getAttr "clsql" self) (getAttr "clsql-uffi" self) (getAttr "uffi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -41040,10 +39203,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clsql-odbc" ];
-      lispLibs = [
-        (getAttr "clsql" self)
-        (getAttr "clsql-uffi" self)
-      ];
+      lispLibs = [ (getAttr "clsql" self) (getAttr "clsql-uffi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -41090,10 +39250,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clsql-postgresql" ];
-      lispLibs = [
-        (getAttr "clsql" self)
-        (getAttr "clsql-uffi" self)
-      ];
+      lispLibs = [ (getAttr "clsql" self) (getAttr "clsql-uffi" self) ];
       meta = { };
     }
   );
@@ -41111,11 +39268,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clsql-postgresql-socket" ];
-      lispLibs = [
-        (getAttr "clsql" self)
-        (getAttr "md5" self)
-        (getAttr "uffi" self)
-      ];
+      lispLibs = [ (getAttr "clsql" self) (getAttr "md5" self) (getAttr "uffi" self) ];
       meta = { };
     }
   );
@@ -41133,11 +39286,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clsql-postgresql-socket3" ];
-      lispLibs = [
-        (getAttr "cl-postgres" self)
-        (getAttr "clsql" self)
-        (getAttr "md5" self)
-      ];
+      lispLibs = [ (getAttr "cl-postgres" self) (getAttr "clsql" self) (getAttr "md5" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -41157,10 +39306,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clsql-sqlite" ];
-      lispLibs = [
-        (getAttr "clsql" self)
-        (getAttr "clsql-uffi" self)
-      ];
+      lispLibs = [ (getAttr "clsql" self) (getAttr "clsql-uffi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -41180,10 +39326,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clsql-sqlite3" ];
-      lispLibs = [
-        (getAttr "clsql" self)
-        (getAttr "clsql-uffi" self)
-      ];
+      lispLibs = [ (getAttr "clsql" self) (getAttr "clsql-uffi" self) ];
       meta = { };
     }
   );
@@ -41201,11 +39344,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clsql-tests" ];
-      lispLibs = [
-        (getAttr "clsql" self)
-        (getAttr "rt" self)
-        (getAttr "uffi" self)
-      ];
+      lispLibs = [ (getAttr "clsql" self) (getAttr "rt" self) (getAttr "uffi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -41225,10 +39364,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clsql-uffi" ];
-      lispLibs = [
-        (getAttr "clsql" self)
-        (getAttr "uffi" self)
-      ];
+      lispLibs = [ (getAttr "clsql" self) (getAttr "uffi" self) ];
       meta = { };
     }
   );
@@ -41246,10 +39382,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clss" ];
-      lispLibs = [
-        (getAttr "array-utils" self)
-        (getAttr "plump" self)
-      ];
+      lispLibs = [ (getAttr "array-utils" self) (getAttr "plump" self) ];
       meta = { };
     }
   );
@@ -41371,10 +39504,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cluffer-standard-buffer" ];
-      lispLibs = [
-        (getAttr "cluffer-base" self)
-        (getAttr "clump" self)
-      ];
+      lispLibs = [ (getAttr "cluffer-base" self) (getAttr "clump" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -41434,10 +39564,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clump" ];
-      lispLibs = [
-        (getAttr "clump-2-3-tree" self)
-        (getAttr "clump-binary-tree" self)
-      ];
+      lispLibs = [ (getAttr "clump-2-3-tree" self) (getAttr "clump-binary-tree" self) ];
       meta = { };
     }
   );
@@ -41620,11 +39747,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clusters-tests" ];
-      lispLibs = [
-        (getAttr "clusters" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "clusters" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -41644,10 +39767,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "clutter" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "doplus" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "doplus" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -41732,10 +39852,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cmake-parser" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "esrap" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "esrap" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -41755,11 +39872,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cmark" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "flexi-streams" self)
-        (getAttr "libcmark" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "flexi-streams" self) (getAttr "libcmark" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -41825,10 +39938,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cmu-infix-tests" ];
-      lispLibs = [
-        (getAttr "cmu-infix" self)
-        (getAttr "fiasco" self)
-      ];
+      lispLibs = [ (getAttr "cmu-infix" self) (getAttr "fiasco" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -41848,10 +39958,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cocoahelper" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "lispbuilder-sdl-binaries" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "lispbuilder-sdl-binaries" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -41976,11 +40083,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "coleslaw-cli" ];
-      lispLibs = [
-        (getAttr "clack" self)
-        (getAttr "coleslaw" self)
-        (getAttr "trivia" self)
-      ];
+      lispLibs = [ (getAttr "clack" self) (getAttr "coleslaw" self) (getAttr "trivia" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -42072,10 +40175,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "colliflower-fset" ];
-      lispLibs = [
-        (getAttr "colliflower" self)
-        (getAttr "fset" self)
-      ];
+      lispLibs = [ (getAttr "colliflower" self) (getAttr "fset" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -42095,11 +40195,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "colliflower-test" ];
-      lispLibs = [
-        (getAttr "colliflower" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "colliflower" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -42159,10 +40255,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "colored-test" ];
-      lispLibs = [
-        (getAttr "colored" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "colored" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -42204,10 +40297,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "com-on" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "documentation-utils" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "documentation-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -42227,10 +40317,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "com-on-test" ];
-      lispLibs = [
-        (getAttr "com-on" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "com-on" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -42382,10 +40469,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "com.elbeno.curve" ];
-      lispLibs = [
-        (getAttr "com_dot_elbeno_dot_vector" self)
-        (getAttr "vecto" self)
-      ];
+      lispLibs = [ (getAttr "com_dot_elbeno_dot_vector" self) (getAttr "vecto" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -42602,10 +40686,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "com.gigamonkeys.utilities" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -42786,10 +40867,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "common-doc-gnuplot" ];
-      lispLibs = [
-        (getAttr "common-doc" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "common-doc" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -42809,10 +40887,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "common-doc-graphviz" ];
-      lispLibs = [
-        (getAttr "common-doc" self)
-        (getAttr "trivial-shell" self)
-      ];
+      lispLibs = [ (getAttr "common-doc" self) (getAttr "trivial-shell" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -42832,10 +40907,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "common-doc-include" ];
-      lispLibs = [
-        (getAttr "common-doc" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "common-doc" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -42855,10 +40927,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "common-doc-plantuml" ];
-      lispLibs = [
-        (getAttr "common-doc" self)
-        (getAttr "trivial-shell" self)
-      ];
+      lispLibs = [ (getAttr "common-doc" self) (getAttr "trivial-shell" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -42904,10 +40973,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "common-doc-plump-test" ];
-      lispLibs = [
-        (getAttr "common-doc-plump" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "common-doc-plump" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -42927,10 +40993,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "common-doc-split-paragraphs" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "common-doc" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "common-doc" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -43019,10 +41082,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "common-html-test" ];
-      lispLibs = [
-        (getAttr "common-html" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "common-html" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -43164,11 +41224,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "commonqt" ];
-      lispLibs = [
-        (getAttr "qt_plus_libs" self)
-        (getAttr "qt-libs" self)
-        (getAttr "smokebase" self)
-      ];
+      lispLibs = [ (getAttr "qt_plus_libs" self) (getAttr "qt-libs" self) (getAttr "smokebase" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -43232,10 +41288,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "compatible-metaclasses_tests" ];
-      lispLibs = [
-        (getAttr "compatible-metaclasses" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "compatible-metaclasses" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -43255,10 +41308,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "compiler-macro-notes" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-environments" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-environments" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -43752,10 +41802,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "constantfold.test" ];
-      lispLibs = [
-        (getAttr "constantfold" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "constantfold" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -43795,10 +41842,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "contextl" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "lw-compat" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "lw-compat" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -43842,10 +41886,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "convolution-kernel" ];
-      lispLibs = [
-        (getAttr "mfiano-utils" self)
-        (getAttr "tile-grid" self)
-      ];
+      lispLibs = [ (getAttr "mfiano-utils" self) (getAttr "tile-grid" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -43865,10 +41906,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "copy-directory" ];
-      lispLibs = [
-        (getAttr "cl-fad" self)
-        (getAttr "which" self)
-      ];
+      lispLibs = [ (getAttr "cl-fad" self) (getAttr "which" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -43888,10 +41926,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "copy-directory-test" ];
-      lispLibs = [
-        (getAttr "copy-directory" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "copy-directory" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -43931,10 +41966,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "core-reader.test" ];
-      lispLibs = [
-        (getAttr "core-reader" self)
-        (getAttr "jingoh" self)
-      ];
+      lispLibs = [ (getAttr "core-reader" self) (getAttr "jingoh" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -44059,10 +42091,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "crane-test" ];
-      lispLibs = [
-        (getAttr "crane" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "crane" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -44341,10 +42370,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "css-selectors-simple-tree" ];
-      lispLibs = [
-        (getAttr "cl-html5-parser" self)
-        (getAttr "css-selectors" self)
-      ];
+      lispLibs = [ (getAttr "cl-html5-parser" self) (getAttr "css-selectors" self) ];
       meta = { };
     }
   );
@@ -44362,10 +42388,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "css-selectors-stp" ];
-      lispLibs = [
-        (getAttr "css-selectors" self)
-        (getAttr "cxml-stp" self)
-      ];
+      lispLibs = [ (getAttr "css-selectors" self) (getAttr "cxml-stp" self) ];
       meta = { };
     }
   );
@@ -44447,11 +42470,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "csv-validator" ];
-      lispLibs = [
-        (getAttr "local-time" self)
-        (getAttr "lparallel" self)
-        (getAttr "parse-float" self)
-      ];
+      lispLibs = [ (getAttr "local-time" self) (getAttr "lparallel" self) (getAttr "parse-float" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -44471,10 +42490,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "csv-validator-tests" ];
-      lispLibs = [
-        (getAttr "csv-validator" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "csv-validator" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -44514,10 +42530,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cubic-bezier" ];
-      lispLibs = [
-        (getAttr "mfiano-utils" self)
-        (getAttr "origin" self)
-      ];
+      lispLibs = [ (getAttr "mfiano-utils" self) (getAttr "origin" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -44537,10 +42550,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cue-parser" ];
-      lispLibs = [
-        (getAttr "esrap" self)
-        (getAttr "flexi-streams" self)
-      ];
+      lispLibs = [ (getAttr "esrap" self) (getAttr "flexi-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -44580,10 +42590,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "curly.test" ];
-      lispLibs = [
-        (getAttr "curly" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "curly" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -44603,10 +42610,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "curry-compose-reader-macros" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "named-readtables" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "named-readtables" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -44748,11 +42752,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cxml-stp" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cxml" self)
-        (getAttr "xpath" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cxml" self) (getAttr "xpath" self) ];
       meta = { };
     }
   );
@@ -44794,10 +42794,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cxx" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -44817,10 +42814,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cxx-jit" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -44840,11 +42834,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cxx-test" ];
-      lispLibs = [
-        (getAttr "cxx" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "cxx" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -44864,10 +42854,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "cytoscape-clj" ];
-      lispLibs = [
-        (getAttr "common-lisp-jupyter" self)
-        (getAttr "jupyter-lab-extension" self)
-      ];
+      lispLibs = [ (getAttr "common-lisp-jupyter" self) (getAttr "jupyter-lab-extension" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -44967,10 +42954,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "darts.lib.email-address-test" ];
-      lispLibs = [
-        (getAttr "darts_dot_lib_dot_email-address" self)
-        (getAttr "stefil" self)
-      ];
+      lispLibs = [ (getAttr "darts_dot_lib_dot_email-address" self) (getAttr "stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -45034,10 +43018,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "darts.lib.message-pack" ];
-      lispLibs = [
-        (getAttr "babel" self)
-        (getAttr "ieee-floats" self)
-      ];
+      lispLibs = [ (getAttr "babel" self) (getAttr "ieee-floats" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -45145,11 +43126,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "darts.lib.uuid" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "ironclad" self)
-        (getAttr "trivial-utf-8" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "ironclad" self) (getAttr "trivial-utf-8" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -45169,10 +43146,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "darts.lib.uuid-test" ];
-      lispLibs = [
-        (getAttr "darts_dot_lib_dot_uuid" self)
-        (getAttr "stefil" self)
-      ];
+      lispLibs = [ (getAttr "darts_dot_lib_dot_uuid" self) (getAttr "stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -45262,10 +43236,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "data-lens" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -45310,10 +43281,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "data-sift-test" ];
-      lispLibs = [
-        (getAttr "data-sift" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "data-sift" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -45382,10 +43350,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "data-table-test" ];
-      lispLibs = [
-        (getAttr "data-table" self)
-        (getAttr "lisp-unit2" self)
-      ];
+      lispLibs = [ (getAttr "data-table" self) (getAttr "lisp-unit2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -45517,10 +43482,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dataloader.test" ];
-      lispLibs = [
-        (getAttr "dataloader" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "dataloader" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -45540,11 +43502,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "datamuse" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "drakma" self)
-        (getAttr "yason" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "drakma" self) (getAttr "yason" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -45624,10 +43582,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dbd-mysql" ];
-      lispLibs = [
-        (getAttr "cl-mysql" self)
-        (getAttr "dbi" self)
-      ];
+      lispLibs = [ (getAttr "cl-mysql" self) (getAttr "dbi" self) ];
       meta = { };
     }
   );
@@ -45645,11 +43600,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dbd-postgres" ];
-      lispLibs = [
-        (getAttr "cl-postgres" self)
-        (getAttr "dbi" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "cl-postgres" self) (getAttr "dbi" self) (getAttr "trivial-garbage" self) ];
       meta = { };
     }
   );
@@ -45667,11 +43618,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dbd-sqlite3" ];
-      lispLibs = [
-        (getAttr "dbi" self)
-        (getAttr "sqlite" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "dbi" self) (getAttr "sqlite" self) (getAttr "trivial-garbage" self) ];
       meta = { };
     }
   );
@@ -45925,11 +43872,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "def-properties" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "closer-mop" self)
-        (getAttr "swank" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "closer-mop" self) (getAttr "swank" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -45949,10 +43892,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "defclass-std" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "anaphora" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "anaphora" self) ];
       meta = { };
     }
   );
@@ -45970,11 +43910,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "defclass-std-test" ];
-      lispLibs = [
-        (getAttr "defclass-std" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "defclass-std" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -45994,10 +43930,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "defconfig" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "trivial-cltl2" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "trivial-cltl2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -46143,10 +44076,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "definitions-systems_tests" ];
-      lispLibs = [
-        (getAttr "definitions-systems" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "definitions-systems" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -46239,11 +44169,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "defmain-test" ];
-      lispLibs = [
-        (getAttr "defmain" self)
-        (getAttr "hamcrest" self)
-        (getAttr "rove" self)
-      ];
+      lispLibs = [ (getAttr "defmain" self) (getAttr "hamcrest" self) (getAttr "rove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -46263,10 +44189,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "defmemo" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -46371,11 +44294,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "defrest.test" ];
-      lispLibs = [
-        (getAttr "defrest" self)
-        (getAttr "drakma" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "defrest" self) (getAttr "drakma" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -46435,10 +44354,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "defsystem-compatibility-test" ];
-      lispLibs = [
-        (getAttr "defsystem-compatibility" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "defsystem-compatibility" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -46498,10 +44414,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "delorean-test" ];
-      lispLibs = [
-        (getAttr "delorean" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "delorean" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -46588,10 +44501,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dendrite.primitives" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "rtg-math" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "rtg-math" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -46644,10 +44554,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dense-arrays+cuda" ];
-      lispLibs = [
-        (getAttr "cl-cuda" self)
-        (getAttr "dense-arrays" self)
-      ];
+      lispLibs = [ (getAttr "cl-cuda" self) (getAttr "dense-arrays" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -46743,10 +44650,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "deoxybyte-gzip-test" ];
-      lispLibs = [
-        (getAttr "deoxybyte-gzip" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "deoxybyte-gzip" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -46791,10 +44695,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "deoxybyte-io-test" ];
-      lispLibs = [
-        (getAttr "deoxybyte-io" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "deoxybyte-io" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -46858,10 +44759,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "deoxybyte-unix-test" ];
-      lispLibs = [
-        (getAttr "deoxybyte-unix" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "deoxybyte-unix" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -46901,10 +44799,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "deoxybyte-utilities-test" ];
-      lispLibs = [
-        (getAttr "deoxybyte-utilities" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "deoxybyte-utilities" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -46948,11 +44843,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "deploy-test" ];
-      lispLibs = [
-        (getAttr "cl-mpg123" self)
-        (getAttr "cl-out123" self)
-        (getAttr "deploy" self)
-      ];
+      lispLibs = [ (getAttr "cl-mpg123" self) (getAttr "cl-out123" self) (getAttr "deploy" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -46996,10 +44887,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "depot-in-memory" ];
-      lispLibs = [
-        (getAttr "atomics" self)
-        (getAttr "depot" self)
-      ];
+      lispLibs = [ (getAttr "atomics" self) (getAttr "depot" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -47064,11 +44952,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "depot-zip" ];
-      lispLibs = [
-        (getAttr "babel" self)
-        (getAttr "depot" self)
-        (getAttr "zippy" self)
-      ];
+      lispLibs = [ (getAttr "babel" self) (getAttr "depot" self) (getAttr "zippy" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -47158,10 +45042,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "descriptions.serialization" ];
-      lispLibs = [
-        (getAttr "cl-json" self)
-        (getAttr "descriptions" self)
-      ];
+      lispLibs = [ (getAttr "cl-json" self) (getAttr "descriptions" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -47181,10 +45062,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "descriptions.validation" ];
-      lispLibs = [
-        (getAttr "clavier" self)
-        (getAttr "descriptions" self)
-      ];
+      lispLibs = [ (getAttr "clavier" self) (getAttr "descriptions" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -47314,10 +45192,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "diff" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "trivial-gray-streams" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "trivial-gray-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -47337,10 +45212,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "diff-match-patch" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -47360,10 +45232,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dirt" ];
-      lispLibs = [
-        (getAttr "cepl" self)
-        (getAttr "cl-soil" self)
-      ];
+      lispLibs = [ (getAttr "cepl" self) (getAttr "cl-soil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -47383,10 +45252,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dispatch" ];
-      lispLibs = [
-        (getAttr "adjuvant" self)
-        (getAttr "closer-mop" self)
-      ];
+      lispLibs = [ (getAttr "adjuvant" self) (getAttr "closer-mop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -47406,10 +45272,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dispatch-test" ];
-      lispLibs = [
-        (getAttr "dispatch" self)
-        (getAttr "scrutiny" self)
-      ];
+      lispLibs = [ (getAttr "dispatch" self) (getAttr "scrutiny" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -47552,10 +45415,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "djula-gettext" ];
-      lispLibs = [
-        (getAttr "djula" self)
-        (getAttr "gettext" self)
-      ];
+      lispLibs = [ (getAttr "djula" self) (getAttr "gettext" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -47575,10 +45435,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "djula-locale" ];
-      lispLibs = [
-        (getAttr "cl-locale" self)
-        (getAttr "djula" self)
-      ];
+      lispLibs = [ (getAttr "cl-locale" self) (getAttr "djula" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -47598,10 +45455,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "djula-test" ];
-      lispLibs = [
-        (getAttr "djula" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "djula" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -47621,10 +45475,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "djula-translate" ];
-      lispLibs = [
-        (getAttr "djula" self)
-        (getAttr "translate" self)
-      ];
+      lispLibs = [ (getAttr "djula" self) (getAttr "translate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -47664,10 +45515,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dlist-test" ];
-      lispLibs = [
-        (getAttr "dlist" self)
-        (getAttr "lisp-unit" self)
-      ];
+      lispLibs = [ (getAttr "dlist" self) (getAttr "lisp-unit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -47736,10 +45584,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "do-urlencode" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "babel" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "babel" self) ];
       meta = { };
     }
   );
@@ -47987,10 +45832,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dom" ];
-      lispLibs = [
-        (getAttr "cl-who" self)
-        (getAttr "yadd" self)
-      ];
+      lispLibs = [ (getAttr "cl-who" self) (getAttr "yadd" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48010,10 +45852,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "donuts" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "trivial-shell" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "trivial-shell" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48053,10 +45892,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "doplus-fset" ];
-      lispLibs = [
-        (getAttr "doplus" self)
-        (getAttr "fset" self)
-      ];
+      lispLibs = [ (getAttr "doplus" self) (getAttr "fset" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48076,10 +45912,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dotenv" ];
-      lispLibs = [
-        (getAttr "prove-asdf" self)
-        (getAttr "str" self)
-      ];
+      lispLibs = [ (getAttr "prove-asdf" self) (getAttr "str" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48099,11 +45932,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dotenv-test" ];
-      lispLibs = [
-        (getAttr "dotenv" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "dotenv" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48322,10 +46151,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dso-lex" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "dso-util" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "dso-util" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48365,10 +46191,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dufy" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48388,11 +46211,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dungen" ];
-      lispLibs = [
-        (getAttr "graph" self)
-        (getAttr "mfiano-utils" self)
-        (getAttr "seedable-rng" self)
-      ];
+      lispLibs = [ (getAttr "graph" self) (getAttr "mfiano-utils" self) (getAttr "seedable-rng" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48468,10 +46287,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "duologue-test" ];
-      lispLibs = [
-        (getAttr "duologue" self)
-        (getAttr "stefil" self)
-      ];
+      lispLibs = [ (getAttr "duologue" self) (getAttr "stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48555,10 +46371,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dynamic-classes-test" ];
-      lispLibs = [
-        (getAttr "dynamic-classes" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "dynamic-classes" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48598,10 +46411,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "dynamic-mixins" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "closer-mop" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "closer-mop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48681,10 +46491,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "eager-future.test" ];
-      lispLibs = [
-        (getAttr "eager-future" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "eager-future" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48704,10 +46511,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "eager-future2" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "trivial-garbage" self) ];
       meta = { };
     }
   );
@@ -48745,10 +46549,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "easing-demo" ];
-      lispLibs = [
-        (getAttr "easing" self)
-        (getAttr "sketch" self)
-      ];
+      lispLibs = [ (getAttr "easing" self) (getAttr "sketch" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48768,10 +46569,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "easing-test" ];
-      lispLibs = [
-        (getAttr "easing" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "easing" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48876,10 +46674,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "easy-routes" ];
-      lispLibs = [
-        (getAttr "hunchentoot" self)
-        (getAttr "routes" self)
-      ];
+      lispLibs = [ (getAttr "hunchentoot" self) (getAttr "routes" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48899,10 +46694,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "easy-routes+djula" ];
-      lispLibs = [
-        (getAttr "djula" self)
-        (getAttr "easy-routes" self)
-      ];
+      lispLibs = [ (getAttr "djula" self) (getAttr "easy-routes" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48922,10 +46714,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "easy-routes+errors" ];
-      lispLibs = [
-        (getAttr "easy-routes" self)
-        (getAttr "hunchentoot-errors" self)
-      ];
+      lispLibs = [ (getAttr "easy-routes" self) (getAttr "hunchentoot-errors" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48975,11 +46764,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "eazy-gnuplot" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "iterate" self)
-        (getAttr "trivia" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "iterate" self) (getAttr "trivia" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -48999,10 +46784,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "eazy-gnuplot.test" ];
-      lispLibs = [
-        (getAttr "eazy-gnuplot" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "eazy-gnuplot" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -49052,10 +46834,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "eazy-process.test" ];
-      lispLibs = [
-        (getAttr "eazy-process" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "eazy-process" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -49126,10 +46905,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "eazy-project.test" ];
-      lispLibs = [
-        (getAttr "eazy-project" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "eazy-project" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -49283,11 +47059,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "eclector" ];
-      lispLibs = [
-        (getAttr "acclimation" self)
-        (getAttr "alexandria" self)
-        (getAttr "closer-mop" self)
-      ];
+      lispLibs = [ (getAttr "acclimation" self) (getAttr "alexandria" self) (getAttr "closer-mop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -49356,10 +47128,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "eco-test" ];
-      lispLibs = [
-        (getAttr "eco" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "eco" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -49453,11 +47222,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "elb-log-test" ];
-      lispLibs = [
-        (getAttr "elb-log" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "elb-log" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -49612,10 +47377,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "enhanced-boolean_tests" ];
-      lispLibs = [
-        (getAttr "enhanced-boolean" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "enhanced-boolean" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -49663,10 +47425,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "enhanced-defclass_tests" ];
-      lispLibs = [
-        (getAttr "enhanced-defclass" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "enhanced-defclass" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -49706,10 +47465,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "enhanced-eval-when_tests" ];
-      lispLibs = [
-        (getAttr "enhanced-eval-when" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "enhanced-eval-when" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -49749,10 +47505,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "enhanced-find-class_tests" ];
-      lispLibs = [
-        (getAttr "enhanced-find-class" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "enhanced-find-class" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -49880,10 +47633,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "enhanced-unwind-protect_tests" ];
-      lispLibs = [
-        (getAttr "enhanced-unwind-protect" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "enhanced-unwind-protect" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -49943,11 +47693,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "envy-test" ];
-      lispLibs = [
-        (getAttr "envy" self)
-        (getAttr "osicat" self)
-        (getAttr "prove" self)
-      ];
+      lispLibs = [ (getAttr "envy" self) (getAttr "osicat" self) (getAttr "prove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -50027,10 +47773,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "epigraph-test" ];
-      lispLibs = [
-        (getAttr "epigraph" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "epigraph" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -50050,10 +47793,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "epmd" ];
-      lispLibs = [
-        (getAttr "com_dot_gigamonkeys_dot_binary-data" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "com_dot_gigamonkeys_dot_binary-data" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -50073,11 +47813,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "epmd-test" ];
-      lispLibs = [
-        (getAttr "epmd" self)
-        (getAttr "fiveam" self)
-        (getAttr "flexi-streams" self)
-      ];
+      lispLibs = [ (getAttr "epmd" self) (getAttr "fiveam" self) (getAttr "flexi-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -50170,11 +47906,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "erlang-term-test" ];
-      lispLibs = [
-        (getAttr "erlang-term" self)
-        (getAttr "fiveam" self)
-        (getAttr "nibbles" self)
-      ];
+      lispLibs = [ (getAttr "erlang-term" self) (getAttr "fiveam" self) (getAttr "nibbles" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -50219,10 +47951,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ernestine-tests" ];
-      lispLibs = [
-        (getAttr "ernestine" self)
-        (getAttr "lisp-unit" self)
-      ];
+      lispLibs = [ (getAttr "ernestine" self) (getAttr "lisp-unit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -50270,10 +47999,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "erudite-test" ];
-      lispLibs = [
-        (getAttr "erudite" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "erudite" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -50293,10 +48019,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "esa-mcclim" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "clim-core" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "clim-core" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -50336,10 +48059,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "escalator-bench" ];
-      lispLibs = [
-        (getAttr "escalator" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "escalator" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -50359,10 +48079,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "esrap" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "trivial-with-current-source-form" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "trivial-with-current-source-form" self) ];
       meta = { };
     }
   );
@@ -50405,11 +48122,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "esrap-liquid-tests" ];
-      lispLibs = [
-        (getAttr "cl-interpol" self)
-        (getAttr "esrap-liquid" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "cl-interpol" self) (getAttr "esrap-liquid" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -50452,10 +48165,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "etcd-test" ];
-      lispLibs = [
-        (getAttr "cl-etcd" self)
-        (getAttr "cl-toml" self)
-      ];
+      lispLibs = [ (getAttr "cl-etcd" self) (getAttr "cl-toml" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -50475,10 +48185,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ev" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -50562,10 +48269,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "event-emitter-test" ];
-      lispLibs = [
-        (getAttr "event-emitter" self)
-        (getAttr "prove" self)
-      ];
+      lispLibs = [ (getAttr "event-emitter" self) (getAttr "prove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -50605,10 +48309,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "event-glue-test" ];
-      lispLibs = [
-        (getAttr "event-glue" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "event-glue" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -50648,11 +48349,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "eventfd" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi-grovel" self)
-        (getAttr "iolib" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi-grovel" self) (getAttr "iolib" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -50720,10 +48417,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "evol-test" ];
-      lispLibs = [
-        (getAttr "evol" self)
-        (getAttr "stefil" self)
-      ];
+      lispLibs = [ (getAttr "evol" self) (getAttr "stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -50938,10 +48632,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "extensible-compound-types-interfaces" ];
-      lispLibs = [
-        (getAttr "extensible-compound-types-cl" self)
-        (getAttr "polymorphic-functions" self)
-      ];
+      lispLibs = [ (getAttr "extensible-compound-types-cl" self) (getAttr "polymorphic-functions" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -51025,10 +48716,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "external-program-test" ];
-      lispLibs = [
-        (getAttr "external-program" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "external-program" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -51173,10 +48861,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "factory-alien" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "closer-mop" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "closer-mop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -51216,10 +48901,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fakenil_tests" ];
-      lispLibs = [
-        (getAttr "fakenil" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "fakenil" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -51277,10 +48959,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fare-mop" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "fare-utils" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "fare-utils" self) ];
       meta = { };
     }
   );
@@ -51316,10 +48995,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fare-quasiquote-extras" ];
-      lispLibs = [
-        (getAttr "fare-quasiquote-optima" self)
-        (getAttr "fare-quasiquote-readtable" self)
-      ];
+      lispLibs = [ (getAttr "fare-quasiquote-optima" self) (getAttr "fare-quasiquote-readtable" self) ];
       meta = { };
     }
   );
@@ -51355,10 +49031,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fare-quasiquote-readtable" ];
-      lispLibs = [
-        (getAttr "fare-quasiquote" self)
-        (getAttr "named-readtables" self)
-      ];
+      lispLibs = [ (getAttr "fare-quasiquote" self) (getAttr "named-readtables" self) ];
       meta = { };
     }
   );
@@ -51428,10 +49101,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fare-utils-test" ];
-      lispLibs = [
-        (getAttr "fare-utils" self)
-        (getAttr "hu_dot_dwim_dot_stefil" self)
-      ];
+      lispLibs = [ (getAttr "fare-utils" self) (getAttr "hu_dot_dwim_dot_stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -51549,11 +49219,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fast-io-test" ];
-      lispLibs = [
-        (getAttr "checkl" self)
-        (getAttr "fast-io" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "checkl" self) (getAttr "fast-io" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -51573,11 +49239,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fast-websocket" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "babel" self)
-        (getAttr "fast-io" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "babel" self) (getAttr "fast-io" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -51675,10 +49337,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "femlisp-basic" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -51772,10 +49431,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "femlisp-picture" ];
-      lispLibs = [
-        (getAttr "cl-gd" self)
-        (getAttr "femlisp" self)
-      ];
+      lispLibs = [ (getAttr "cl-gd" self) (getAttr "femlisp" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -51880,10 +49536,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fiasco" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "trivial-gray-streams" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "trivial-gray-streams" self) ];
       meta = { };
     }
   );
@@ -51943,11 +49596,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "file-local-variable" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "iterate" self)
-        (getAttr "trivia" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "iterate" self) (getAttr "trivia" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -51967,10 +49616,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "file-local-variable.test" ];
-      lispLibs = [
-        (getAttr "file-local-variable" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "file-local-variable" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -51990,11 +49636,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "file-lock" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "easy-macros" self)
-        (getAttr "log4cl" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "easy-macros" self) (getAttr "log4cl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -52107,10 +49749,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "filesystem-utils-test" ];
-      lispLibs = [
-        (getAttr "filesystem-utils" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "filesystem-utils" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -52190,10 +49829,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "find-port-test" ];
-      lispLibs = [
-        (getAttr "find-port" self)
-        (getAttr "fiveam" self)
-      ];
+      lispLibs = [ (getAttr "find-port" self) (getAttr "fiveam" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -52233,10 +49869,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "firephp" ];
-      lispLibs = [
-        (getAttr "cl-json" self)
-        (getAttr "hunchentoot" self)
-      ];
+      lispLibs = [ (getAttr "cl-json" self) (getAttr "hunchentoot" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -52301,10 +49934,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "first-time-value_tests" ];
-      lispLibs = [
-        (getAttr "first-time-value" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "first-time-value" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -52386,11 +50016,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fiveam-matchers" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "fiveam" self)
-        (getAttr "str" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "fiveam" self) (getAttr "str" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -52430,10 +50056,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "flac" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -52453,10 +50076,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "flac-metadata" ];
-      lispLibs = [
-        (getAttr "binary-parser" self)
-        (getAttr "mfiano-utils" self)
-      ];
+      lispLibs = [ (getAttr "binary-parser" self) (getAttr "mfiano-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -52629,10 +50249,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "float-features" ];
-      lispLibs = [
-        (getAttr "documentation-utils" self)
-        (getAttr "trivial-features" self)
-      ];
+      lispLibs = [ (getAttr "documentation-utils" self) (getAttr "trivial-features" self) ];
       meta = { };
     }
   );
@@ -52650,10 +50267,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "float-features-tests" ];
-      lispLibs = [
-        (getAttr "float-features" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "float-features" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -52713,10 +50327,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "floating-point-test" ];
-      lispLibs = [
-        (getAttr "floating-point" self)
-        (getAttr "lisp-unit" self)
-      ];
+      lispLibs = [ (getAttr "floating-point" self) (getAttr "lisp-unit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -52736,10 +50347,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "flow" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "documentation-utils" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "documentation-utils" self) ];
       meta = { };
     }
   );
@@ -52782,10 +50390,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "flute" ];
-      lispLibs = [
-        (getAttr "assoc-utils" self)
-        (getAttr "let-over-lambda" self)
-      ];
+      lispLibs = [ (getAttr "assoc-utils" self) (getAttr "let-over-lambda" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -52805,10 +50410,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "flute-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "flute" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "flute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -52848,10 +50450,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fmarshal-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "fmarshal" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "fmarshal" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -52911,10 +50510,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fmt-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "fmt" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "fmt" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -52934,10 +50530,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fmt-time" ];
-      lispLibs = [
-        (getAttr "fmt" self)
-        (getAttr "local-time" self)
-      ];
+      lispLibs = [ (getAttr "fmt" self) (getAttr "local-time" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -53192,11 +50785,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "folio2-as-tests" ];
-      lispLibs = [
-        (getAttr "folio2-as" self)
-        (getAttr "folio2-as-syntax" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "folio2-as" self) (getAttr "folio2-as-syntax" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -53216,10 +50805,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "folio2-boxes" ];
-      lispLibs = [
-        (getAttr "folio2-as" self)
-        (getAttr "folio2-make" self)
-      ];
+      lispLibs = [ (getAttr "folio2-as" self) (getAttr "folio2-make" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -53239,10 +50825,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "folio2-boxes-tests" ];
-      lispLibs = [
-        (getAttr "folio2-boxes" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "folio2-boxes" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -53262,11 +50845,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "folio2-functions" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "folio2-as" self)
-        (getAttr "folio2-make" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "folio2-as" self) (getAttr "folio2-make" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -53286,10 +50865,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "folio2-functions-syntax" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "folio2-functions" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "folio2-functions" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -53353,10 +50929,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "folio2-make-tests" ];
-      lispLibs = [
-        (getAttr "folio2-make" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "folio2-make" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -53376,11 +50949,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "folio2-maps" ];
-      lispLibs = [
-        (getAttr "folio2-as" self)
-        (getAttr "folio2-make" self)
-        (getAttr "fset" self)
-      ];
+      lispLibs = [ (getAttr "folio2-as" self) (getAttr "folio2-make" self) (getAttr "fset" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -53444,10 +51013,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "folio2-pairs" ];
-      lispLibs = [
-        (getAttr "folio2-as" self)
-        (getAttr "folio2-make" self)
-      ];
+      lispLibs = [ (getAttr "folio2-as" self) (getAttr "folio2-make" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -53467,10 +51033,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "folio2-pairs-tests" ];
-      lispLibs = [
-        (getAttr "folio2-pairs" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "folio2-pairs" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -53587,10 +51150,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "folio2-series-tests" ];
-      lispLibs = [
-        (getAttr "folio2-series" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "folio2-series" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -53639,10 +51199,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "folio2-taps-tests" ];
-      lispLibs = [
-        (getAttr "folio2-taps" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "folio2-taps" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -53777,10 +51334,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fork-future" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-store" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-store" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -53818,10 +51372,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "format-string-builder" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "serapeum" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "serapeum" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -53912,10 +51463,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fps-independent-timestep" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "local-time" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "local-time" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -53935,10 +51483,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fred" ];
-      lispLibs = [
-        (getAttr "drakma" self)
-        (getAttr "s-xml" self)
-      ];
+      lispLibs = [ (getAttr "drakma" self) (getAttr "s-xml" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -53958,10 +51503,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "freebsd-ffi" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "mfiano-utils" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "mfiano-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -53981,10 +51523,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "freebsd-sysctl" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -54054,10 +51593,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "froute" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "closer-mop" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "closer-mop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -54106,10 +51642,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "frpc-des" ];
-      lispLibs = [
-        (getAttr "frpc" self)
-        (getAttr "ironclad" self)
-      ];
+      lispLibs = [ (getAttr "frpc" self) (getAttr "ironclad" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -54129,10 +51662,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "frpc-gss" ];
-      lispLibs = [
-        (getAttr "cerberus" self)
-        (getAttr "frpc" self)
-      ];
+      lispLibs = [ (getAttr "cerberus" self) (getAttr "frpc" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -54152,11 +51682,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "frpcgen" ];
-      lispLibs = [
-        (getAttr "cl-lex" self)
-        (getAttr "frpc" self)
-        (getAttr "yacc" self)
-      ];
+      lispLibs = [ (getAttr "cl-lex" self) (getAttr "frpc" self) (getAttr "yacc" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -54176,10 +51702,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fs-watcher" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "com_dot_gigamonkeys_dot_pathnames" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "com_dot_gigamonkeys_dot_pathnames" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -54221,10 +51744,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fsocket" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "trivial-gray-streams" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "trivial-gray-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -54350,11 +51870,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "function-cache-clsql" ];
-      lispLibs = [
-        (getAttr "clsql" self)
-        (getAttr "clsql-helper" self)
-        (getAttr "function-cache" self)
-      ];
+      lispLibs = [ (getAttr "clsql" self) (getAttr "clsql-helper" self) (getAttr "function-cache" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -54462,10 +51978,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fuzzy-dates" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "documentation-utils" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "documentation-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -54485,10 +51998,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "fuzzy-match" ];
-      lispLibs = [
-        (getAttr "mk-string-metrics" self)
-        (getAttr "str" self)
-      ];
+      lispLibs = [ (getAttr "mk-string-metrics" self) (getAttr "str" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -54582,10 +52092,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "garbage-pools-test" ];
-      lispLibs = [
-        (getAttr "garbage-pools" self)
-        (getAttr "lift" self)
-      ];
+      lispLibs = [ (getAttr "garbage-pools" self) (getAttr "lift" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -54605,11 +52112,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "garten" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "iterate" self)
-        (getAttr "serapeum" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "iterate" self) (getAttr "serapeum" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -54766,11 +52269,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "generators" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-cont" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-cont" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -54897,10 +52396,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "generic-cl.container" ];
-      lispLibs = [
-        (getAttr "generic-cl_dot_object" self)
-        (getAttr "static-dispatch" self)
-      ];
+      lispLibs = [ (getAttr "generic-cl_dot_object" self) (getAttr "static-dispatch" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -55246,10 +52742,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "generic-sequences-cont" ];
-      lispLibs = [
-        (getAttr "cl-cont" self)
-        (getAttr "generic-sequences" self)
-      ];
+      lispLibs = [ (getAttr "cl-cont" self) (getAttr "generic-sequences" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -55269,10 +52762,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "generic-sequences-iterate" ];
-      lispLibs = [
-        (getAttr "generic-sequences" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "generic-sequences" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -55292,10 +52782,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "generic-sequences-stream" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "generic-sequences" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "generic-sequences" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -55340,10 +52827,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "geneva" ];
-      lispLibs = [
-        (getAttr "named-readtables" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "named-readtables" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -55389,11 +52873,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "geneva-html" ];
-      lispLibs = [
-        (getAttr "file-types" self)
-        (getAttr "geneva" self)
-        (getAttr "macro-html" self)
-      ];
+      lispLibs = [ (getAttr "file-types" self) (getAttr "geneva" self) (getAttr "macro-html" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -55438,11 +52918,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "geneva-mk2" ];
-      lispLibs = [
-        (getAttr "geneva" self)
-        (getAttr "maxpc" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "geneva" self) (getAttr "maxpc" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -55462,10 +52938,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "geneva-plain-text" ];
-      lispLibs = [
-        (getAttr "geneva" self)
-        (getAttr "geneva-mk2" self)
-      ];
+      lispLibs = [ (getAttr "geneva" self) (getAttr "geneva-mk2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -55595,11 +53068,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "geowkt-update" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "drakma" self)
-        (getAttr "parse-number" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "drakma" self) (getAttr "parse-number" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -55639,10 +53108,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "getopt-tests" ];
-      lispLibs = [
-        (getAttr "getopt" self)
-        (getAttr "ptester" self)
-      ];
+      lispLibs = [ (getAttr "getopt" self) (getAttr "ptester" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -55662,11 +53128,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "gettext" ];
-      lispLibs = [
-        (getAttr "flexi-streams" self)
-        (getAttr "split-sequence" self)
-        (getAttr "yacc" self)
-      ];
+      lispLibs = [ (getAttr "flexi-streams" self) (getAttr "split-sequence" self) (getAttr "yacc" self) ];
       meta = { };
     }
   );
@@ -55704,10 +53166,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "gettext-tests" ];
-      lispLibs = [
-        (getAttr "gettext" self)
-        (getAttr "stefil" self)
-      ];
+      lispLibs = [ (getAttr "gettext" self) (getAttr "stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -55727,10 +53186,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "geysr" ];
-      lispLibs = [
-        (getAttr "gendl-asdf" self)
-        (getAttr "gwl-graphics" self)
-      ];
+      lispLibs = [ (getAttr "gendl-asdf" self) (getAttr "gwl-graphics" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -55750,11 +53206,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "git-file-history" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "legit" self)
-        (getAttr "local-time" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "legit" self) (getAttr "local-time" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -55774,10 +53226,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "git-file-history-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "git-file-history" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "git-file-history" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -55888,10 +53337,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "glad-blob" ];
-      lispLibs = [
-        (getAttr "bodge-blobs-support" self)
-        (getAttr "trivial-features" self)
-      ];
+      lispLibs = [ (getAttr "bodge-blobs-support" self) (getAttr "trivial-features" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -55931,11 +53377,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "glaw" ];
-      lispLibs = [
-        (getAttr "cl-alc" self)
-        (getAttr "cl-openal" self)
-        (getAttr "cl-opengl" self)
-      ];
+      lispLibs = [ (getAttr "cl-alc" self) (getAttr "cl-openal" self) (getAttr "cl-opengl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -55955,11 +53397,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "glaw-examples" ];
-      lispLibs = [
-        (getAttr "glaw" self)
-        (getAttr "glaw-imago" self)
-        (getAttr "glop" self)
-      ];
+      lispLibs = [ (getAttr "glaw" self) (getAttr "glaw-imago" self) (getAttr "glop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -55979,10 +53417,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "glaw-imago" ];
-      lispLibs = [
-        (getAttr "glaw" self)
-        (getAttr "imago" self)
-      ];
+      lispLibs = [ (getAttr "glaw" self) (getAttr "imago" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -56050,10 +53485,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "glfw-blob" ];
-      lispLibs = [
-        (getAttr "bodge-blobs-support" self)
-        (getAttr "trivial-features" self)
-      ];
+      lispLibs = [ (getAttr "bodge-blobs-support" self) (getAttr "trivial-features" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -56202,10 +53634,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "glkit-examples" ];
-      lispLibs = [
-        (getAttr "glkit" self)
-        (getAttr "sdl2kit-examples" self)
-      ];
+      lispLibs = [ (getAttr "glkit" self) (getAttr "sdl2kit-examples" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -56287,11 +53716,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "glop-test" ];
-      lispLibs = [
-        (getAttr "cl-glu" self)
-        (getAttr "cl-opengl" self)
-        (getAttr "glop" self)
-      ];
+      lispLibs = [ (getAttr "cl-glu" self) (getAttr "cl-opengl" self) (getAttr "glop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -56454,10 +53879,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "glyphs-test" ];
-      lispLibs = [
-        (getAttr "glyphs" self)
-        (getAttr "stefil" self)
-      ];
+      lispLibs = [ (getAttr "glyphs" self) (getAttr "stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -56600,10 +54022,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "graylex-m4-example" ];
-      lispLibs = [
-        (getAttr "cl-heredoc" self)
-        (getAttr "graylex" self)
-      ];
+      lispLibs = [ (getAttr "cl-heredoc" self) (getAttr "graylex" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -56650,10 +54069,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "graylog-log5" ];
-      lispLibs = [
-        (getAttr "graylog" self)
-        (getAttr "log5" self)
-      ];
+      lispLibs = [ (getAttr "graylog" self) (getAttr "log5" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -56673,10 +54089,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "green-threads" ];
-      lispLibs = [
-        (getAttr "cl-async-future" self)
-        (getAttr "cl-cont" self)
-      ];
+      lispLibs = [ (getAttr "cl-async-future" self) (getAttr "cl-cont" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -56696,10 +54109,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "grid-formation" ];
-      lispLibs = [
-        (getAttr "mfiano-utils" self)
-        (getAttr "origin" self)
-      ];
+      lispLibs = [ (getAttr "mfiano-utils" self) (getAttr "origin" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -56719,10 +54129,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "group-by" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -56742,10 +54149,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "group-by-test" ];
-      lispLibs = [
-        (getAttr "group-by" self)
-        (getAttr "lisp-unit2" self)
-      ];
+      lispLibs = [ (getAttr "group-by" self) (getAttr "lisp-unit2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -57032,10 +54436,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "gtype.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "gtype" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "gtype" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -57109,10 +54510,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "gwl-graphics" ];
-      lispLibs = [
-        (getAttr "geom-base" self)
-        (getAttr "gwl" self)
-      ];
+      lispLibs = [ (getAttr "geom-base" self) (getAttr "gwl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -57255,10 +54653,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hash-set-tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "hash-set" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "hash-set" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -57278,10 +54673,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hash-table-ext" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "jingoh_dot_documentizer" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "jingoh_dot_documentizer" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -57301,10 +54693,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hash-table-ext.test" ];
-      lispLibs = [
-        (getAttr "hash-table-ext" self)
-        (getAttr "jingoh" self)
-      ];
+      lispLibs = [ (getAttr "hash-table-ext" self) (getAttr "jingoh" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -57344,10 +54733,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hashtrie-tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "hashtrie" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "hashtrie" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -57367,10 +54753,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hdf5-cffi" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -57550,10 +54933,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hemlock.clx" ];
-      lispLibs = [
-        (getAttr "clx" self)
-        (getAttr "hemlock_dot_base" self)
-      ];
+      lispLibs = [ (getAttr "clx" self) (getAttr "hemlock_dot_base" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -57593,10 +54973,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hermetic" ];
-      lispLibs = [
-        (getAttr "cl-pass" self)
-        (getAttr "clack" self)
-      ];
+      lispLibs = [ (getAttr "cl-pass" self) (getAttr "clack" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -57616,11 +54993,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "herodotus" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-ppcre" self)
-        (getAttr "yason" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-ppcre" self) (getAttr "yason" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -57666,11 +55039,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hh-aws-tests" ];
-      lispLibs = [
-        (getAttr "hh-aws" self)
-        (getAttr "lisp-unit" self)
-        (getAttr "uuid" self)
-      ];
+      lispLibs = [ (getAttr "hh-aws" self) (getAttr "lisp-unit" self) (getAttr "uuid" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -57710,10 +55079,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hh-redblack-tests" ];
-      lispLibs = [
-        (getAttr "hh-redblack" self)
-        (getAttr "lisp-unit" self)
-      ];
+      lispLibs = [ (getAttr "hh-redblack" self) (getAttr "lisp-unit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -57807,10 +55173,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hompack" ];
-      lispLibs = [
-        (getAttr "blas-hompack" self)
-        (getAttr "f2cl" self)
-      ];
+      lispLibs = [ (getAttr "blas-hompack" self) (getAttr "f2cl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -57830,11 +55193,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "horner" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "infix-math" self)
-        (getAttr "serapeum" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "infix-math" self) (getAttr "serapeum" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -57968,10 +55327,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "html-entities-tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "html-entities" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "html-entities" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -57991,10 +55347,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "html-match" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "unit-test" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "unit-test" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -58014,10 +55367,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "html-match.test" ];
-      lispLibs = [
-        (getAttr "html-match" self)
-        (getAttr "unit-test" self)
-      ];
+      lispLibs = [ (getAttr "html-match" self) (getAttr "unit-test" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -58152,10 +55502,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "http-parse" ];
-      lispLibs = [
-        (getAttr "babel" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "babel" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -58175,11 +55522,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "http-parse-test" ];
-      lispLibs = [
-        (getAttr "babel" self)
-        (getAttr "eos" self)
-        (getAttr "http-parse" self)
-      ];
+      lispLibs = [ (getAttr "babel" self) (getAttr "eos" self) (getAttr "http-parse" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -58243,10 +55586,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hu.dwim.asdf.documentation" ];
-      lispLibs = [
-        (getAttr "hu_dot_dwim_dot_asdf" self)
-        (getAttr "hu_dot_dwim_dot_presentation" self)
-      ];
+      lispLibs = [ (getAttr "hu_dot_dwim_dot_asdf" self) (getAttr "hu_dot_dwim_dot_presentation" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -59654,10 +56994,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hu.dwim.quasi-quote.css" ];
-      lispLibs = [
-        (getAttr "hu_dot_dwim_dot_asdf" self)
-        (getAttr "hu_dot_dwim_dot_quasi-quote" self)
-      ];
+      lispLibs = [ (getAttr "hu_dot_dwim_dot_asdf" self) (getAttr "hu_dot_dwim_dot_quasi-quote" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -59727,10 +57064,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hu.dwim.quasi-quote.xml" ];
-      lispLibs = [
-        (getAttr "hu_dot_dwim_dot_asdf" self)
-        (getAttr "hu_dot_dwim_dot_quasi-quote" self)
-      ];
+      lispLibs = [ (getAttr "hu_dot_dwim_dot_asdf" self) (getAttr "hu_dot_dwim_dot_quasi-quote" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -60310,10 +57644,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hu.dwim.syntax-sugar" ];
-      lispLibs = [
-        (getAttr "hu_dot_dwim_dot_asdf" self)
-        (getAttr "hu_dot_dwim_dot_common" self)
-      ];
+      lispLibs = [ (getAttr "hu_dot_dwim_dot_asdf" self) (getAttr "hu_dot_dwim_dot_common" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -60650,10 +57981,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hu.dwim.web-server.application" ];
-      lispLibs = [
-        (getAttr "hu_dot_dwim_dot_asdf" self)
-        (getAttr "hu_dot_dwim_dot_web-server" self)
-      ];
+      lispLibs = [ (getAttr "hu_dot_dwim_dot_asdf" self) (getAttr "hu_dot_dwim_dot_web-server" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -60899,10 +58227,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hunchensocket-tests" ];
-      lispLibs = [
-        (getAttr "fiasco" self)
-        (getAttr "hunchensocket" self)
-      ];
+      lispLibs = [ (getAttr "fiasco" self) (getAttr "hunchensocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -61003,10 +58328,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hunchentoot-cgi" ];
-      lispLibs = [
-        (getAttr "hunchentoot" self)
-        (getAttr "puri" self)
-      ];
+      lispLibs = [ (getAttr "hunchentoot" self) (getAttr "puri" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -61203,11 +58525,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hyperluminal-mem-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "hyperluminal-mem" self)
-        (getAttr "log4cl" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "hyperluminal-mem" self) (getAttr "log4cl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -61227,10 +58545,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "hyperobject" ];
-      lispLibs = [
-        (getAttr "clsql" self)
-        (getAttr "kmrcl" self)
-      ];
+      lispLibs = [ (getAttr "clsql" self) (getAttr "kmrcl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -61270,10 +58585,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ia-hash-table" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -61345,10 +58657,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "iconv" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -61368,10 +58677,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "id3v2" ];
-      lispLibs = [
-        (getAttr "babel" self)
-        (getAttr "trivial-gray-streams" self)
-      ];
+      lispLibs = [ (getAttr "babel" self) (getAttr "trivial-gray-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -61416,10 +58722,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "identifier-pool" ];
-      lispLibs = [
-        (getAttr "dynamic-array" self)
-        (getAttr "mfiano-utils" self)
-      ];
+      lispLibs = [ (getAttr "dynamic-array" self) (getAttr "mfiano-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -61519,11 +58822,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "illusion-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "illusion" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "illusion" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -61636,11 +58935,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "immutable-struct" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "closer-mop" self)
-        (getAttr "trivia" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "closer-mop" self) (getAttr "trivia" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -61700,10 +58995,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "incognito-keywords" ];
-      lispLibs = [
-        (getAttr "enhanced-eval-when" self)
-        (getAttr "map-bind" self)
-      ];
+      lispLibs = [ (getAttr "enhanced-eval-when" self) (getAttr "map-bind" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -61808,10 +59100,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "infix-dollar-reader-test" ];
-      lispLibs = [
-        (getAttr "infix-dollar-reader" self)
-        (getAttr "rt" self)
-      ];
+      lispLibs = [ (getAttr "infix-dollar-reader" self) (getAttr "rt" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -61945,10 +59234,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "injection-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "injection" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "injection" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -62020,10 +59306,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "inlined-generic-function.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "inlined-generic-function" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "inlined-generic-function" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -62068,10 +59351,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "inner-conditional-test" ];
-      lispLibs = [
-        (getAttr "cl-test-more" self)
-        (getAttr "inner-conditional" self)
-      ];
+      lispLibs = [ (getAttr "cl-test-more" self) (getAttr "inner-conditional" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -62091,11 +59371,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "inotify" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-        (getAttr "iolib" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) (getAttr "iolib" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -62135,10 +59411,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "inquisitor" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "anaphora" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "anaphora" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -62158,10 +59431,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "inquisitor-flexi" ];
-      lispLibs = [
-        (getAttr "flexi-streams" self)
-        (getAttr "inquisitor" self)
-      ];
+      lispLibs = [ (getAttr "flexi-streams" self) (getAttr "inquisitor" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -62181,11 +59451,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "inquisitor-flexi-test" ];
-      lispLibs = [
-        (getAttr "inquisitor-flexi" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "inquisitor-flexi" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -62382,11 +59648,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "intel-hex-test" ];
-      lispLibs = [
-        (getAttr "intel-hex" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "intel-hex" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -62432,10 +59694,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "intercom-examples" ];
-      lispLibs = [
-        (getAttr "intercom" self)
-        (getAttr "jsown" self)
-      ];
+      lispLibs = [ (getAttr "intercom" self) (getAttr "jsown" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -62455,10 +59714,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "interface" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "global-vars" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "global-vars" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -62478,10 +59734,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "interfaces-test-implementation" ];
-      lispLibs = [
-        (getAttr "modularize" self)
-        (getAttr "modularize-interfaces" self)
-      ];
+      lispLibs = [ (getAttr "modularize" self) (getAttr "modularize-interfaces" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -62519,10 +59772,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "introspect-environment-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "introspect-environment" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "introspect-environment" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -62699,11 +59949,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ip-interfaces-test" ];
-      lispLibs = [
-        (getAttr "ip-interfaces" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "ip-interfaces" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -62723,10 +59969,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "irc-logger" ];
-      lispLibs = [
-        (getAttr "cl-irc" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "cl-irc" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -62764,10 +60007,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ironclad-text" ];
-      lispLibs = [
-        (getAttr "flexi-streams" self)
-        (getAttr "ironclad" self)
-      ];
+      lispLibs = [ (getAttr "flexi-streams" self) (getAttr "ironclad" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -62883,10 +60123,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "iterate-clsql" ];
-      lispLibs = [
-        (getAttr "clsql" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "clsql" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -63031,10 +60268,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "jingle.demo.test" ];
-      lispLibs = [
-        (getAttr "jingle_dot_demo" self)
-        (getAttr "rove" self)
-      ];
+      lispLibs = [ (getAttr "jingle_dot_demo" self) (getAttr "rove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -63054,10 +60288,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "jingle.test" ];
-      lispLibs = [
-        (getAttr "jingle" self)
-        (getAttr "rove" self)
-      ];
+      lispLibs = [ (getAttr "jingle" self) (getAttr "rove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -63129,10 +60360,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "jingoh.documentizer.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "jingoh_dot_documentizer" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "jingoh_dot_documentizer" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -63231,10 +60459,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "jingoh.generator.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "jingoh_dot_generator" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "jingoh_dot_generator" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -63278,10 +60503,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "jingoh.org.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "jingoh_dot_org" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "jingoh_dot_org" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -63326,10 +60548,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "jingoh.parallel.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "jingoh_dot_parallel" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "jingoh_dot_parallel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -63374,10 +60593,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "jingoh.reader.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "jingoh_dot_reader" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "jingoh_dot_reader" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -63430,10 +60646,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "jingoh.tester.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "jingoh_dot_tester" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "jingoh_dot_tester" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -63560,10 +60773,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "jp-numeral" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "babel" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "babel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -63583,11 +60793,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "jp-numeral-test" ];
-      lispLibs = [
-        (getAttr "_1am" self)
-        (getAttr "alexandria" self)
-        (getAttr "jp-numeral" self)
-      ];
+      lispLibs = [ (getAttr "_1am" self) (getAttr "alexandria" self) (getAttr "jp-numeral" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -63607,10 +60813,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "jpeg-turbo" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -63630,10 +60833,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "jpl-queues" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "jpl-util" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "jpl-util" self) ];
       meta = { };
     }
   );
@@ -63735,11 +60935,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "json-mop" ];
-      lispLibs = [
-        (getAttr "anaphora" self)
-        (getAttr "closer-mop" self)
-        (getAttr "yason" self)
-      ];
+      lispLibs = [ (getAttr "anaphora" self) (getAttr "closer-mop" self) (getAttr "yason" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -63759,10 +60955,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "json-mop-tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "json-mop" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "json-mop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -63782,10 +60975,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "json-responses" ];
-      lispLibs = [
-        (getAttr "cl-json" self)
-        (getAttr "hunchentoot" self)
-      ];
+      lispLibs = [ (getAttr "cl-json" self) (getAttr "hunchentoot" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -63805,10 +60995,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "json-responses-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "json-responses" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "json-responses" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -63972,10 +61159,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "jsown-tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "jsown" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "jsown" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -63995,10 +61179,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "jsown-utils" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "jsown" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "jsown" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -64158,10 +61339,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "kdl" ];
-      lispLibs = [
-        (getAttr "esrap" self)
-        (getAttr "parse-number" self)
-      ];
+      lispLibs = [ (getAttr "esrap" self) (getAttr "parse-number" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -64226,11 +61404,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "kebab-test" ];
-      lispLibs = [
-        (getAttr "kebab" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "kebab" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -64250,10 +61424,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "kekule-clj" ];
-      lispLibs = [
-        (getAttr "common-lisp-jupyter" self)
-        (getAttr "jupyter-lab-extension" self)
-      ];
+      lispLibs = [ (getAttr "common-lisp-jupyter" self) (getAttr "jupyter-lab-extension" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -64293,10 +61464,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "kenzo-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "kenzo" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "kenzo" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -64382,10 +61550,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "khazern-intrinsic" ];
-      lispLibs = [
-        (getAttr "khazern" self)
-        (getAttr "trivial-package-locks" self)
-      ];
+      lispLibs = [ (getAttr "khazern" self) (getAttr "trivial-package-locks" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -64405,10 +61570,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "khazern-sequence" ];
-      lispLibs = [
-        (getAttr "khazern" self)
-        (getAttr "trivial-extensible-sequences" self)
-      ];
+      lispLibs = [ (getAttr "khazern" self) (getAttr "trivial-extensible-sequences" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -64428,10 +61590,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "khazern-sequence-extrinsic" ];
-      lispLibs = [
-        (getAttr "khazern-extrinsic" self)
-        (getAttr "khazern-sequence" self)
-      ];
+      lispLibs = [ (getAttr "khazern-extrinsic" self) (getAttr "khazern-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -64451,10 +61610,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "khazern-sequence-intrinsic" ];
-      lispLibs = [
-        (getAttr "khazern-intrinsic" self)
-        (getAttr "khazern-sequence" self)
-      ];
+      lispLibs = [ (getAttr "khazern-intrinsic" self) (getAttr "khazern-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -64617,10 +61773,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lack" ];
-      lispLibs = [
-        (getAttr "lack-component" self)
-        (getAttr "lack-util" self)
-      ];
+      lispLibs = [ (getAttr "lack-component" self) (getAttr "lack-util" self) ];
       meta = { };
     }
   );
@@ -64707,10 +61860,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lack-middleware-accesslog" ];
-      lispLibs = [
-        (getAttr "lack-util" self)
-        (getAttr "local-time" self)
-      ];
+      lispLibs = [ (getAttr "lack-util" self) (getAttr "local-time" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -64750,10 +61900,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lack-middleware-auth-basic" ];
-      lispLibs = [
-        (getAttr "cl-base64" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "cl-base64" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -64811,10 +61958,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lack-middleware-csrf" ];
-      lispLibs = [
-        (getAttr "lack-request" self)
-        (getAttr "lack-util" self)
-      ];
+      lispLibs = [ (getAttr "lack-request" self) (getAttr "lack-util" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -64834,10 +61978,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lack-middleware-mito" ];
-      lispLibs = [
-        (getAttr "dbi" self)
-        (getAttr "mito-core" self)
-      ];
+      lispLibs = [ (getAttr "dbi" self) (getAttr "mito-core" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -64952,10 +62093,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lack-response" ];
-      lispLibs = [
-        (getAttr "local-time" self)
-        (getAttr "quri" self)
-      ];
+      lispLibs = [ (getAttr "local-time" self) (getAttr "quri" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -65070,10 +62208,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lack-util-writer-stream" ];
-      lispLibs = [
-        (getAttr "babel" self)
-        (getAttr "trivial-gray-streams" self)
-      ];
+      lispLibs = [ (getAttr "babel" self) (getAttr "trivial-gray-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -65119,10 +62254,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lake-cli" ];
-      lispLibs = [
-        (getAttr "deploy" self)
-        (getAttr "lake" self)
-      ];
+      lispLibs = [ (getAttr "deploy" self) (getAttr "lake" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -65142,11 +62274,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lake-test" ];
-      lispLibs = [
-        (getAttr "lake" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "lake" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -65204,10 +62332,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lambda-reader-8bit" ];
-      lispLibs = [
-        (getAttr "asdf-encodings" self)
-        (getAttr "named-readtables" self)
-      ];
+      lispLibs = [ (getAttr "asdf-encodings" self) (getAttr "named-readtables" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -65227,10 +62352,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lambdalite" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "wu-sugar" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "wu-sugar" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -65270,10 +62392,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "langutils" ];
-      lispLibs = [
-        (getAttr "s-xml-rpc" self)
-        (getAttr "stdutils" self)
-      ];
+      lispLibs = [ (getAttr "s-xml-rpc" self) (getAttr "stdutils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -65362,10 +62481,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lass-flexbox-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "lass-flexbox" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "lass-flexbox" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -65532,10 +62648,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "leech" ];
-      lispLibs = [
-        (getAttr "aserve" self)
-        (getAttr "unit-test" self)
-      ];
+      lispLibs = [ (getAttr "aserve" self) (getAttr "unit-test" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -65657,10 +62770,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lemmy-api" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "dexador" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "dexador" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -65754,10 +62864,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "let-plus" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "anaphora" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "anaphora" self) ];
       meta = { };
     }
   );
@@ -65815,10 +62922,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lev" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "lev-config" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "lev-config" self) ];
       meta = { };
     }
   );
@@ -65901,10 +63005,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lfarm-admin" ];
-      lispLibs = [
-        (getAttr "lfarm-common" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "lfarm-common" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -65924,11 +63025,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lfarm-client" ];
-      lispLibs = [
-        (getAttr "lfarm-common" self)
-        (getAttr "lparallel" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "lfarm-common" self) (getAttr "lparallel" self) (getAttr "usocket" self) ];
       meta = { };
     }
   );
@@ -66018,10 +63115,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lfarm-server" ];
-      lispLibs = [
-        (getAttr "lfarm-common" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "lfarm-common" self) (getAttr "usocket" self) ];
       meta = { };
     }
   );
@@ -66039,10 +63133,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lfarm-ssl" ];
-      lispLibs = [
-        (getAttr "cl_plus_ssl" self)
-        (getAttr "lfarm-common" self)
-      ];
+      lispLibs = [ (getAttr "cl_plus_ssl" self) (getAttr "lfarm-common" self) ];
       meta = { };
     }
   );
@@ -66220,10 +63311,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "libssh2.test" ];
-      lispLibs = [
-        (getAttr "hu_dot_dwim_dot_stefil" self)
-        (getAttr "libssh2" self)
-      ];
+      lispLibs = [ (getAttr "hu_dot_dwim_dot_stefil" self) (getAttr "libssh2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -66243,11 +63331,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "libusb-ffi" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-        (getAttr "static-vectors" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) (getAttr "static-vectors" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -66549,10 +63633,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lime-example" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "lime" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "lime" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -66597,10 +63678,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "linear-programming" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -66620,10 +63698,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "linear-programming-glpk" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "linear-programming" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "linear-programming" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -66643,11 +63718,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "linear-programming-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "iterate" self)
-        (getAttr "linear-programming" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "iterate" self) (getAttr "linear-programming" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -66712,10 +63783,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "linewise-template" ];
-      lispLibs = [
-        (getAttr "cl-fad" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "cl-fad" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -66935,10 +64003,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lisp-executable-tests" ];
-      lispLibs = [
-        (getAttr "lisp-executable" self)
-        (getAttr "lisp-unit" self)
-      ];
+      lispLibs = [ (getAttr "lisp-executable" self) (getAttr "lisp-unit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -67016,10 +64081,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lisp-namespace.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "lisp-namespace" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "lisp-namespace" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -67100,10 +64162,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lisp-preprocessor-tests" ];
-      lispLibs = [
-        (getAttr "lisp-preprocessor" self)
-        (getAttr "rove" self)
-      ];
+      lispLibs = [ (getAttr "lisp-preprocessor" self) (getAttr "rove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -67155,11 +64214,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lisp-types" ];
-      lispLibs = [
-        (getAttr "adjuvant" self)
-        (getAttr "cl-robdd" self)
-        (getAttr "dispatch" self)
-      ];
+      lispLibs = [ (getAttr "adjuvant" self) (getAttr "cl-robdd" self) (getAttr "dispatch" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -67294,10 +64349,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lispbuilder-net" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "lispbuilder-net-cffi" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "lispbuilder-net-cffi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -67446,10 +64498,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lispbuilder-sdl-base" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "lispbuilder-sdl-cffi" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "lispbuilder-sdl-cffi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -67489,10 +64538,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lispbuilder-sdl-cffi" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "lispbuilder-sdl-binaries" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "lispbuilder-sdl-binaries" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -67622,10 +64668,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lispbuilder-sdl-gfx-cffi" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "lispbuilder-sdl" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "lispbuilder-sdl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -68074,10 +65117,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "list-named-class" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "closer-mop" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "closer-mop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -68117,10 +65157,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "listoflist" ];
-      lispLibs = [
-        (getAttr "clunit" self)
-        (getAttr "xarray" self)
-      ];
+      lispLibs = [ (getAttr "clunit" self) (getAttr "xarray" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -68185,11 +65222,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "liter" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "iterate" self)
-        (getAttr "serapeum" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "iterate" self) (getAttr "serapeum" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -68209,10 +65242,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "literate-demo" ];
-      lispLibs = [
-        (getAttr "iterate" self)
-        (getAttr "literate-lisp" self)
-      ];
+      lispLibs = [ (getAttr "iterate" self) (getAttr "literate-lisp" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -68232,11 +65262,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "literate-lisp" ];
-      lispLibs = [
-        (getAttr "cl-fad" self)
-        (getAttr "cl-ppcre" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "cl-fad" self) (getAttr "cl-ppcre" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -68397,10 +65423,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lml-tests" ];
-      lispLibs = [
-        (getAttr "lml" self)
-        (getAttr "rt" self)
-      ];
+      lispLibs = [ (getAttr "lml" self) (getAttr "rt" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -68440,10 +65463,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lml2-tests" ];
-      lispLibs = [
-        (getAttr "lml2" self)
-        (getAttr "rt" self)
-      ];
+      lispLibs = [ (getAttr "lml2" self) (getAttr "rt" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -68501,11 +65521,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "local-time-duration" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "esrap" self)
-        (getAttr "local-time" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "esrap" self) (getAttr "local-time" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -68543,10 +65559,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "log4cl-examples" ];
-      lispLibs = [
-        (getAttr "log4cl" self)
-        (getAttr "swank" self)
-      ];
+      lispLibs = [ (getAttr "log4cl" self) (getAttr "swank" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -68624,10 +65637,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "log4cl.log4slime" ];
-      lispLibs = [
-        (getAttr "log4cl" self)
-        (getAttr "swank" self)
-      ];
+      lispLibs = [ (getAttr "log4cl" self) (getAttr "swank" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -68647,10 +65657,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "log4cl.log4sly" ];
-      lispLibs = [
-        (getAttr "log4cl" self)
-        (getAttr "slynk" self)
-      ];
+      lispLibs = [ (getAttr "log4cl" self) (getAttr "slynk" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -68786,10 +65793,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lowlight.tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "lowlight" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "lowlight" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -68809,10 +65813,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lparallel" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "bordeaux-threads" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "bordeaux-threads" self) ];
       meta = { };
     }
   );
@@ -68830,10 +65831,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lparallel-bench" ];
-      lispLibs = [
-        (getAttr "lparallel" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "lparallel" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -68896,10 +65894,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lquery-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "lquery" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "lquery" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -68939,11 +65934,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lredis" ];
-      lispLibs = [
-        (getAttr "babel" self)
-        (getAttr "babel-streams" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "babel" self) (getAttr "babel-streams" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -68983,10 +65974,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lru-cache-test" ];
-      lispLibs = [
-        (getAttr "lru-cache" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "lru-cache" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -69006,10 +65994,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lsx" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "named-readtables" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "named-readtables" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -69087,10 +66072,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lucene-in-action-tests" ];
-      lispLibs = [
-        (getAttr "lift" self)
-        (getAttr "montezuma" self)
-      ];
+      lispLibs = [ (getAttr "lift" self) (getAttr "montezuma" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -69110,10 +66092,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "luckless" ];
-      lispLibs = [
-        (getAttr "atomics" self)
-        (getAttr "documentation-utils" self)
-      ];
+      lispLibs = [ (getAttr "atomics" self) (getAttr "documentation-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -69264,11 +66243,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "lzlib-tests" ];
-      lispLibs = [
-        (getAttr "cl-octet-streams" self)
-        (getAttr "fiveam" self)
-        (getAttr "lzlib" self)
-      ];
+      lispLibs = [ (getAttr "cl-octet-streams" self) (getAttr "fiveam" self) (getAttr "lzlib" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -69328,10 +66303,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "macro-level_tests" ];
-      lispLibs = [
-        (getAttr "macro-level" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "macro-level" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -69411,10 +66383,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "madeira-port-tests" ];
-      lispLibs = [
-        (getAttr "eos" self)
-        (getAttr "madeira-port" self)
-      ];
+      lispLibs = [ (getAttr "eos" self) (getAttr "madeira-port" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -69454,11 +66423,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "magicffi" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -69526,11 +66491,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "magicl-gen" ];
-      lispLibs = [
-        (getAttr "abstract-classes" self)
-        (getAttr "cffi" self)
-        (getAttr "cffi-libffi" self)
-      ];
+      lispLibs = [ (getAttr "abstract-classes" self) (getAttr "cffi" self) (getAttr "cffi-libffi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -69782,10 +66743,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "maiden-client-entities" ];
-      lispLibs = [
-        (getAttr "documentation-utils" self)
-        (getAttr "maiden" self)
-      ];
+      lispLibs = [ (getAttr "documentation-utils" self) (getAttr "maiden" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -70140,11 +67098,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "maiden-networking" ];
-      lispLibs = [
-        (getAttr "cl_plus_ssl" self)
-        (getAttr "maiden" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "cl_plus_ssl" self) (getAttr "maiden" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -70215,10 +67169,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "maiden-relay" ];
-      lispLibs = [
-        (getAttr "maiden-networking" self)
-        (getAttr "maiden-serialize" self)
-      ];
+      lispLibs = [ (getAttr "maiden-networking" self) (getAttr "maiden-serialize" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -70238,11 +67189,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "maiden-serialize" ];
-      lispLibs = [
-        (getAttr "cl-store" self)
-        (getAttr "gzip-stream" self)
-        (getAttr "maiden" self)
-      ];
+      lispLibs = [ (getAttr "cl-store" self) (getAttr "gzip-stream" self) (getAttr "maiden" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -70415,10 +67362,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "maiden-twitter" ];
-      lispLibs = [
-        (getAttr "chirp" self)
-        (getAttr "maiden-client-entities" self)
-      ];
+      lispLibs = [ (getAttr "chirp" self) (getAttr "maiden-client-entities" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -70601,10 +67545,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "make-hash-tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "make-hash" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "make-hash" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -70675,11 +67616,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "manifolds-test" ];
-      lispLibs = [
-        (getAttr "cl-wavefront" self)
-        (getAttr "manifolds" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "cl-wavefront" self) (getAttr "manifolds" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -70779,10 +67716,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "marching-cubes-test" ];
-      lispLibs = [
-        (getAttr "cl-test-more" self)
-        (getAttr "marching-cubes" self)
-      ];
+      lispLibs = [ (getAttr "cl-test-more" self) (getAttr "marching-cubes" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -70802,11 +67736,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "markdown.cl" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "split-sequence" self)
-        (getAttr "xmls" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "split-sequence" self) (getAttr "xmls" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -70826,11 +67756,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "markdown.cl-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "markdown_dot_cl" self)
-        (getAttr "xmls" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "markdown_dot_cl" self) (getAttr "xmls" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -70875,10 +67801,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "markup.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "markup" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "markup" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -70916,10 +67839,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "marshal-tests" ];
-      lispLibs = [
-        (getAttr "marshal" self)
-        (getAttr "xlunit" self)
-      ];
+      lispLibs = [ (getAttr "marshal" self) (getAttr "xlunit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -71004,10 +67924,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "matrix-case.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "matrix-case" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "matrix-case" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -71107,10 +68024,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mcase" ];
-      lispLibs = [
-        (getAttr "jingoh_dot_documentizer" self)
-        (getAttr "millet" self)
-      ];
+      lispLibs = [ (getAttr "jingoh_dot_documentizer" self) (getAttr "millet" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -71130,10 +68044,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mcase.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "mcase" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "mcase" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -71232,10 +68143,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mcclim-bitmaps" ];
-      lispLibs = [
-        (getAttr "clim" self)
-        (getAttr "opticl" self)
-      ];
+      lispLibs = [ (getAttr "clim" self) (getAttr "opticl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -71341,11 +68249,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mcclim-fontconfig" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -71615,11 +68519,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "media-types" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-ppcre" self)
-        (getAttr "serapeum" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-ppcre" self) (getAttr "serapeum" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -71639,11 +68539,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mel-base" ];
-      lispLibs = [
-        (getAttr "cl_plus_ssl" self)
-        (getAttr "flexi-streams" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "cl_plus_ssl" self) (getAttr "flexi-streams" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -71731,10 +68627,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "messagebox" ];
-      lispLibs = [
-        (getAttr "documentation-utils" self)
-        (getAttr "trivial-features" self)
-      ];
+      lispLibs = [ (getAttr "documentation-utils" self) (getAttr "trivial-features" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -71812,10 +68705,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "metabang-bind-test" ];
-      lispLibs = [
-        (getAttr "lift" self)
-        (getAttr "metabang-bind" self)
-      ];
+      lispLibs = [ (getAttr "lift" self) (getAttr "metabang-bind" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -71855,10 +68745,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "metacopy-with-contextl" ];
-      lispLibs = [
-        (getAttr "contextl" self)
-        (getAttr "metacopy" self)
-      ];
+      lispLibs = [ (getAttr "contextl" self) (getAttr "metacopy" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -71878,10 +68765,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "metalock" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "closer-mop" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "closer-mop" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -71921,10 +68805,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "metap-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "metap" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "metap" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -71988,10 +68869,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "metatilities-base-test" ];
-      lispLibs = [
-        (getAttr "lift" self)
-        (getAttr "metatilities-base" self)
-      ];
+      lispLibs = [ (getAttr "lift" self) (getAttr "metatilities-base" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -72011,10 +68889,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "metatilities-test" ];
-      lispLibs = [
-        (getAttr "lift" self)
-        (getAttr "metatilities" self)
-      ];
+      lispLibs = [ (getAttr "lift" self) (getAttr "metatilities" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -72074,10 +68949,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "method-combination-utilities.tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "method-combination-utilities" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "method-combination-utilities" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -72117,10 +68989,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "method-hooks-test" ];
-      lispLibs = [
-        (getAttr "method-hooks" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "method-hooks" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -72160,10 +69029,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mexpr" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-syntax" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-syntax" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -72207,10 +69073,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mfiano-utils" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "serapeum" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "serapeum" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -72281,10 +69144,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mgl-gnuplot" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "external-program" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "external-program" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -72452,10 +69312,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "micmac" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "mgl-pax" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "mgl-pax" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -72515,11 +69372,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "millet.test" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "jingoh" self)
-        (getAttr "millet" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "jingoh" self) (getAttr "millet" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -72557,10 +69410,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "minheap-tests" ];
-      lispLibs = [
-        (getAttr "lisp-unit" self)
-        (getAttr "minheap" self)
-      ];
+      lispLibs = [ (getAttr "lisp-unit" self) (getAttr "minheap" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -72728,11 +69578,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mito-auth" ];
-      lispLibs = [
-        (getAttr "babel" self)
-        (getAttr "ironclad" self)
-        (getAttr "mito" self)
-      ];
+      lispLibs = [ (getAttr "babel" self) (getAttr "ironclad" self) (getAttr "mito" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -72812,11 +69658,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mito-test" ];
-      lispLibs = [
-        (getAttr "mito" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "mito" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -72836,11 +69678,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mixalot" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "bordeaux-threads" self)
-        (getAttr "cffi" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "bordeaux-threads" self) (getAttr "cffi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -72860,11 +69698,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mixalot-flac" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "flac" self)
-        (getAttr "mixalot" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "flac" self) (getAttr "mixalot" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -72884,11 +69718,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mixalot-mp3" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "mixalot" self)
-        (getAttr "mpg123-ffi" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "mixalot" self) (getAttr "mpg123-ffi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -72908,11 +69738,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mixalot-vorbis" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "mixalot" self)
-        (getAttr "vorbisfile-ffi" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "mixalot" self) (getAttr "vorbisfile-ffi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -73035,11 +69861,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ml-test" ];
-      lispLibs = [
-        (getAttr "cl-marklogic" self)
-        (getAttr "fiveam" self)
-        (getAttr "ml-optimizer" self)
-      ];
+      lispLibs = [ (getAttr "cl-marklogic" self) (getAttr "fiveam" self) (getAttr "ml-optimizer" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -73151,10 +69973,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mnas-graph" ];
-      lispLibs = [
-        (getAttr "mnas-hash-table" self)
-        (getAttr "mnas-string" self)
-      ];
+      lispLibs = [ (getAttr "mnas-hash-table" self) (getAttr "mnas-string" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -73221,10 +70040,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mnas-path" ];
-      lispLibs = [
-        (getAttr "cl-fad" self)
-        (getAttr "mnas-string" self)
-      ];
+      lispLibs = [ (getAttr "cl-fad" self) (getAttr "mnas-string" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -73244,10 +70060,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mnas-string" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "mnas-hash-table" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "mnas-hash-table" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -73267,11 +70080,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mnst-relay" ];
-      lispLibs = [
-        (getAttr "asdf-nst" self)
-        (getAttr "nst" self)
-        (getAttr "nst-selftest-utils" self)
-      ];
+      lispLibs = [ (getAttr "asdf-nst" self) (getAttr "nst" self) (getAttr "nst-selftest-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -73316,11 +70125,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mockingbird-test" ];
-      lispLibs = [
-        (getAttr "mockingbird" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "mockingbird" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -73360,11 +70165,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "modest-config-test" ];
-      lispLibs = [
-        (getAttr "modest-config" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "modest-config" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -73384,11 +70185,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "modf" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "closer-mop" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "closer-mop" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -73408,10 +70205,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "modf-fset" ];
-      lispLibs = [
-        (getAttr "fset" self)
-        (getAttr "modf" self)
-      ];
+      lispLibs = [ (getAttr "fset" self) (getAttr "modf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -73431,11 +70225,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "modf-fset-test" ];
-      lispLibs = [
-        (getAttr "modf" self)
-        (getAttr "modf-fset" self)
-        (getAttr "stefil" self)
-      ];
+      lispLibs = [ (getAttr "modf" self) (getAttr "modf-fset" self) (getAttr "stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -73455,11 +70245,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "modf-test" ];
-      lispLibs = [
-        (getAttr "iterate" self)
-        (getAttr "modf" self)
-        (getAttr "stefil" self)
-      ];
+      lispLibs = [ (getAttr "iterate" self) (getAttr "modf" self) (getAttr "stefil" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -73720,11 +70506,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "montezuma" ];
-      lispLibs = [
-        (getAttr "babel" self)
-        (getAttr "cl-fad" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "babel" self) (getAttr "cl-fad" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -73744,10 +70526,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "montezuma-indexfiles" ];
-      lispLibs = [
-        (getAttr "cl-fad" self)
-        (getAttr "montezuma" self)
-      ];
+      lispLibs = [ (getAttr "cl-fad" self) (getAttr "montezuma" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -73767,10 +70546,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "montezuma-tests" ];
-      lispLibs = [
-        (getAttr "montezuma" self)
-        (getAttr "trivial-timeout" self)
-      ];
+      lispLibs = [ (getAttr "montezuma" self) (getAttr "trivial-timeout" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -73808,10 +70584,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "moptilities-test" ];
-      lispLibs = [
-        (getAttr "lift" self)
-        (getAttr "moptilities" self)
-      ];
+      lispLibs = [ (getAttr "lift" self) (getAttr "moptilities" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -73831,10 +70604,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "more-conditions" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "closer-mop" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "closer-mop" self) ];
       meta = { };
     }
   );
@@ -73872,11 +70642,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mp3-duration-test" ];
-      lispLibs = [
-        (getAttr "mp3-duration" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "mp3-duration" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -74083,10 +70849,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "multilang-documentation-utils" ];
-      lispLibs = [
-        (getAttr "documentation-utils" self)
-        (getAttr "multilang-documentation" self)
-      ];
+      lispLibs = [ (getAttr "documentation-utils" self) (getAttr "multilang-documentation" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -74192,10 +70955,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "multival-plist-test" ];
-      lispLibs = [
-        (getAttr "cl-test-more" self)
-        (getAttr "multival-plist" self)
-      ];
+      lispLibs = [ (getAttr "cl-test-more" self) (getAttr "multival-plist" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -74235,11 +70995,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mutility" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "closer-mop" self)
-        (getAttr "local-time" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "closer-mop" self) (getAttr "local-time" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -74259,10 +71015,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mutils" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -74389,10 +71142,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mystic-fiveam-mixin" ];
-      lispLibs = [
-        (getAttr "mystic" self)
-        (getAttr "mystic-file-mixin" self)
-      ];
+      lispLibs = [ (getAttr "mystic" self) (getAttr "mystic-file-mixin" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -74412,10 +71162,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mystic-gitignore-mixin" ];
-      lispLibs = [
-        (getAttr "mystic" self)
-        (getAttr "mystic-file-mixin" self)
-      ];
+      lispLibs = [ (getAttr "mystic" self) (getAttr "mystic-file-mixin" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -74461,10 +71208,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mystic-readme-mixin" ];
-      lispLibs = [
-        (getAttr "mystic" self)
-        (getAttr "mystic-file-mixin" self)
-      ];
+      lispLibs = [ (getAttr "mystic" self) (getAttr "mystic-file-mixin" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -74508,10 +71252,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "mystic-travis-mixin" ];
-      lispLibs = [
-        (getAttr "mystic" self)
-        (getAttr "mystic-file-mixin" self)
-      ];
+      lispLibs = [ (getAttr "mystic" self) (getAttr "mystic-file-mixin" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -74557,11 +71298,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "myway-test" ];
-      lispLibs = [
-        (getAttr "myway" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "myway" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -74581,11 +71318,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "nail" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "cl-reexport" self)
-        (getAttr "eazy-gnuplot" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "cl-reexport" self) (getAttr "eazy-gnuplot" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -74650,10 +71383,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "named-read-macros-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "named-read-macros" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "named-read-macros" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -74691,10 +71421,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "named-readtables-test" ];
-      lispLibs = [
-        (getAttr "named-readtables" self)
-        (getAttr "try" self)
-      ];
+      lispLibs = [ (getAttr "named-readtables" self) (getAttr "try" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -74778,10 +71505,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "narrowed-types-test" ];
-      lispLibs = [
-        (getAttr "narrowed-types" self)
-        (getAttr "rt" self)
-      ];
+      lispLibs = [ (getAttr "narrowed-types" self) (getAttr "rt" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -74922,11 +71646,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ndfa-test" ];
-      lispLibs = [
-        (getAttr "adjuvant" self)
-        (getAttr "ndfa" self)
-        (getAttr "scrutiny" self)
-      ];
+      lispLibs = [ (getAttr "adjuvant" self) (getAttr "ndfa" self) (getAttr "scrutiny" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -75402,10 +72122,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "network-addresses-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "network-addresses" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "network-addresses" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -75425,11 +72142,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "neural-classifier" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "magicl" self)
-        (getAttr "snakes" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "magicl" self) (getAttr "snakes" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -75593,10 +72306,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "nlopt" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -75692,10 +72402,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "north-dexador" ];
-      lispLibs = [
-        (getAttr "dexador" self)
-        (getAttr "north-core" self)
-      ];
+      lispLibs = [ (getAttr "dexador" self) (getAttr "north-core" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -75715,10 +72422,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "north-drakma" ];
-      lispLibs = [
-        (getAttr "drakma" self)
-        (getAttr "north-core" self)
-      ];
+      lispLibs = [ (getAttr "drakma" self) (getAttr "north-core" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -75803,10 +72507,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "nst" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "org-sampler" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "org-sampler" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -75826,11 +72527,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "nst-manual-tests" ];
-      lispLibs = [
-        (getAttr "asdf-nst" self)
-        (getAttr "nst" self)
-        (getAttr "nst-selftest-utils" self)
-      ];
+      lispLibs = [ (getAttr "asdf-nst" self) (getAttr "nst" self) (getAttr "nst-selftest-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -75850,11 +72547,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "nst-meta-tests" ];
-      lispLibs = [
-        (getAttr "asdf-nst" self)
-        (getAttr "nst" self)
-        (getAttr "nst-selftest-utils" self)
-      ];
+      lispLibs = [ (getAttr "asdf-nst" self) (getAttr "nst" self) (getAttr "nst-selftest-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -75874,10 +72567,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "nst-mop-utils" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "nst" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "nst" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -75917,11 +72607,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "nst-simple-tests" ];
-      lispLibs = [
-        (getAttr "asdf-nst" self)
-        (getAttr "nst" self)
-        (getAttr "nst-selftest-utils" self)
-      ];
+      lispLibs = [ (getAttr "asdf-nst" self) (getAttr "nst" self) (getAttr "nst-selftest-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -75966,11 +72652,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "nst-test-jenkins" ];
-      lispLibs = [
-        (getAttr "asdf-nst" self)
-        (getAttr "nst" self)
-        (getAttr "nst-test" self)
-      ];
+      lispLibs = [ (getAttr "asdf-nst" self) (getAttr "nst" self) (getAttr "nst-test" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -76091,11 +72773,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "null-package.test" ];
-      lispLibs = [
-        (getAttr "bnf" self)
-        (getAttr "jingoh" self)
-        (getAttr "null-package" self)
-      ];
+      lispLibs = [ (getAttr "bnf" self) (getAttr "jingoh" self) (getAttr "null-package" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -76174,10 +72852,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "numcl.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "numcl" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "numcl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -76197,10 +72872,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "numpy-file-format" ];
-      lispLibs = [
-        (getAttr "ieee-floats" self)
-        (getAttr "trivial-features" self)
-      ];
+      lispLibs = [ (getAttr "ieee-floats" self) (getAttr "trivial-features" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -76220,11 +72892,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "nxt" ];
-      lispLibs = [
-        (getAttr "babel" self)
-        (getAttr "cffi" self)
-        (getAttr "static-vectors" self)
-      ];
+      lispLibs = [ (getAttr "babel" self) (getAttr "cffi" self) (getAttr "static-vectors" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -76244,10 +72912,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "nxt-proxy" ];
-      lispLibs = [
-        (getAttr "nxt" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "nxt" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -76394,11 +73059,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "oclcl-examples" ];
-      lispLibs = [
-        (getAttr "cl-oclapi" self)
-        (getAttr "imago" self)
-        (getAttr "oclcl" self)
-      ];
+      lispLibs = [ (getAttr "cl-oclapi" self) (getAttr "imago" self) (getAttr "oclcl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -76534,10 +73195,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "oe-encode-test" ];
-      lispLibs = [
-        (getAttr "clunit" self)
-        (getAttr "oe-encode" self)
-      ];
+      lispLibs = [ (getAttr "clunit" self) (getAttr "oe-encode" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -76763,10 +73421,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "open-location-code" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -76927,10 +73582,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "openapi-parser-tests" ];
-      lispLibs = [
-        (getAttr "openapi-parser" self)
-        (getAttr "rove" self)
-      ];
+      lispLibs = [ (getAttr "openapi-parser" self) (getAttr "rove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -76978,10 +73630,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "openid-key-test" ];
-      lispLibs = [
-        (getAttr "_1am" self)
-        (getAttr "openid-key" self)
-      ];
+      lispLibs = [ (getAttr "_1am" self) (getAttr "openid-key" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -77115,10 +73764,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "optima" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "closer-mop" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "closer-mop" self) ];
       meta = { };
     }
   );
@@ -77136,11 +73782,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "optima.ppcre" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-ppcre" self)
-        (getAttr "optima" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-ppcre" self) (getAttr "optima" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -77160,11 +73802,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "optima.test" ];
-      lispLibs = [
-        (getAttr "eos" self)
-        (getAttr "optima" self)
-        (getAttr "optima_dot_ppcre" self)
-      ];
+      lispLibs = [ (getAttr "eos" self) (getAttr "optima" self) (getAttr "optima_dot_ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -77184,11 +73822,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "or-cluster" ];
-      lispLibs = [
-        (getAttr "cl-opsresearch" self)
-        (getAttr "drakma" self)
-        (getAttr "hunchentoot" self)
-      ];
+      lispLibs = [ (getAttr "cl-opsresearch" self) (getAttr "drakma" self) (getAttr "hunchentoot" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -77208,10 +73842,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "or-fann" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-opsresearch" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-opsresearch" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -77231,10 +73862,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "or-glpk" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-opsresearch" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-opsresearch" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -77254,10 +73882,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "or-gsl" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-opsresearch" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-opsresearch" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -77413,11 +74038,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "org.melusina.rashell" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-ppcre" self)
-        (getAttr "parse-float" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-ppcre" self) (getAttr "parse-float" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -78104,10 +74725,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "origin.test" ];
-      lispLibs = [
-        (getAttr "origin" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "origin" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -78315,10 +74933,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "oxenfurt-dexador" ];
-      lispLibs = [
-        (getAttr "dexador" self)
-        (getAttr "oxenfurt-core" self)
-      ];
+      lispLibs = [ (getAttr "dexador" self) (getAttr "oxenfurt-core" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -78338,10 +74953,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "oxenfurt-drakma" ];
-      lispLibs = [
-        (getAttr "drakma" self)
-        (getAttr "oxenfurt-core" self)
-      ];
+      lispLibs = [ (getAttr "drakma" self) (getAttr "oxenfurt-core" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -78361,10 +74973,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "pack" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "ieee-floats" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "ieee-floats" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -78404,10 +75013,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "package-renaming-test" ];
-      lispLibs = [
-        (getAttr "hu_dot_dwim_dot_stefil" self)
-        (getAttr "package-renaming" self)
-      ];
+      lispLibs = [ (getAttr "hu_dot_dwim_dot_stefil" self) (getAttr "package-renaming" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -78637,10 +75243,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "parachute-prove" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "parachute" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "parachute" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -78724,10 +75327,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "paren-util" ];
-      lispLibs = [
-        (getAttr "paren-files" self)
-        (getAttr "parenscript" self)
-      ];
+      lispLibs = [ (getAttr "paren-files" self) (getAttr "parenscript" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -78747,10 +75347,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "paren6" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "parenscript" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "parenscript" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -78770,11 +75367,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "parenml" ];
-      lispLibs = [
-        (getAttr "common-doc-plump" self)
-        (getAttr "esrap" self)
-        (getAttr "plump" self)
-      ];
+      lispLibs = [ (getAttr "common-doc-plump" self) (getAttr "esrap" self) (getAttr "plump" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -78794,10 +75387,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "parenml-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "parenml" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "parenml" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -78859,11 +75449,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "parenscript.tests" ];
-      lispLibs = [
-        (getAttr "cl-js" self)
-        (getAttr "fiveam" self)
-        (getAttr "parenscript" self)
-      ];
+      lispLibs = [ (getAttr "cl-js" self) (getAttr "fiveam" self) (getAttr "parenscript" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -78939,10 +75525,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "parse-float-tests" ];
-      lispLibs = [
-        (getAttr "lisp-unit" self)
-        (getAttr "parse-float" self)
-      ];
+      lispLibs = [ (getAttr "lisp-unit" self) (getAttr "parse-float" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -78982,10 +75565,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "parse-front-matter-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "parse-front-matter" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "parse-front-matter" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -79043,10 +75623,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "parse-rgb" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "tcod" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "tcod" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -79104,10 +75681,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "parser-combinators" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "iterate" self) ];
       meta = { };
     }
   );
@@ -79150,10 +75724,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "parser-combinators-debug" ];
-      lispLibs = [
-        (getAttr "cl-containers" self)
-        (getAttr "parser-combinators" self)
-      ];
+      lispLibs = [ (getAttr "cl-containers" self) (getAttr "parser-combinators" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -79295,11 +75866,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "patchwork" ];
-      lispLibs = [
-        (getAttr "binpack" self)
-        (getAttr "mfiano-utils" self)
-        (getAttr "opticl" self)
-      ];
+      lispLibs = [ (getAttr "binpack" self) (getAttr "mfiano-utils" self) (getAttr "opticl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -79339,10 +75906,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "path-parse-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "path-parse" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "path-parse" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -79362,10 +75926,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "path-string" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -79385,11 +75946,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "path-string-test" ];
-      lispLibs = [
-        (getAttr "path-string" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "path-string" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -79429,10 +75986,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "pathname-utils-test" ];
-      lispLibs = [
-        (getAttr "parachute" self)
-        (getAttr "pathname-utils" self)
-      ];
+      lispLibs = [ (getAttr "parachute" self) (getAttr "pathname-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -79472,10 +76026,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "pcall" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "pcall-queue" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "pcall-queue" self) ];
       meta = { };
     }
   );
@@ -79511,10 +76062,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "pcall-tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "pcall" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "pcall" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -79574,10 +76122,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "pcl-id3v2" ];
-      lispLibs = [
-        (getAttr "pcl-binary-data" self)
-        (getAttr "pcl-pathnames" self)
-      ];
+      lispLibs = [ (getAttr "pcl-binary-data" self) (getAttr "pcl-pathnames" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -79823,10 +76368,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "peppol" ];
-      lispLibs = [
-        (getAttr "cxml" self)
-        (getAttr "xpath" self)
-      ];
+      lispLibs = [ (getAttr "cxml" self) (getAttr "xpath" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -79846,10 +76388,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "percent-encoding" ];
-      lispLibs = [
-        (getAttr "anaphora" self)
-        (getAttr "babel" self)
-      ];
+      lispLibs = [ (getAttr "anaphora" self) (getAttr "babel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -79869,10 +76408,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "percent-encoding-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "percent-encoding" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "percent-encoding" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -79957,10 +76493,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "periods-series" ];
-      lispLibs = [
-        (getAttr "periods" self)
-        (getAttr "series" self)
-      ];
+      lispLibs = [ (getAttr "periods" self) (getAttr "series" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -80007,10 +76540,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "pero" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "local-time" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "local-time" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -80050,10 +76580,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "persistent-tables" ];
-      lispLibs = [
-        (getAttr "lisp-unit" self)
-        (getAttr "random-access-lists" self)
-      ];
+      lispLibs = [ (getAttr "lisp-unit" self) (getAttr "random-access-lists" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -80113,10 +76640,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "petalisp" ];
-      lispLibs = [
-        (getAttr "petalisp_dot_api" self)
-        (getAttr "petalisp_dot_test-suite" self)
-      ];
+      lispLibs = [ (getAttr "petalisp_dot_api" self) (getAttr "petalisp_dot_test-suite" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -80222,10 +76746,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "petalisp.examples" ];
-      lispLibs = [
-        (getAttr "numpy-file-format" self)
-        (getAttr "petalisp_dot_api" self)
-      ];
+      lispLibs = [ (getAttr "numpy-file-format" self) (getAttr "petalisp_dot_api" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -80426,10 +76947,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "petit.string-utils-test" ];
-      lispLibs = [
-        (getAttr "petit_dot_string-utils" self)
-        (getAttr "rt" self)
-      ];
+      lispLibs = [ (getAttr "petit_dot_string-utils" self) (getAttr "rt" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -80495,10 +77013,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "pettomato-deque-tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "pettomato-deque" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "pettomato-deque" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -80538,10 +77053,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "pettomato-indexed-priority-queue-tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "pettomato-indexed-priority-queue" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "pettomato-indexed-priority-queue" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -80561,10 +77073,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "pfft" ];
-      lispLibs = [
-        (getAttr "fft" self)
-        (getAttr "pcall" self)
-      ];
+      lispLibs = [ (getAttr "fft" self) (getAttr "pcall" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -80776,10 +77285,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "picl" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "defclass-std" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "defclass-std" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -80843,10 +77349,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "pileup-tests" ];
-      lispLibs = [
-        (getAttr "hu_dot_dwim_dot_stefil" self)
-        (getAttr "pileup" self)
-      ];
+      lispLibs = [ (getAttr "hu_dot_dwim_dot_stefil" self) (getAttr "pileup" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -80926,11 +77429,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "pixman" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -81025,10 +77524,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "place-modifiers" ];
-      lispLibs = [
-        (getAttr "cartesian-product-switch" self)
-        (getAttr "map-bind" self)
-      ];
+      lispLibs = [ (getAttr "cartesian-product-switch" self) (getAttr "map-bind" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -81140,10 +77636,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "plplot-examples" ];
-      lispLibs = [
-        (getAttr "cl-plplot" self)
-        (getAttr "png" self)
-      ];
+      lispLibs = [ (getAttr "cl-plplot" self) (getAttr "png" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -81183,10 +77676,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "plump" ];
-      lispLibs = [
-        (getAttr "array-utils" self)
-        (getAttr "documentation-utils" self)
-      ];
+      lispLibs = [ (getAttr "array-utils" self) (getAttr "documentation-utils" self) ];
       meta = { };
     }
   );
@@ -81309,10 +77799,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "plump-tex" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "plump" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "plump" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -81332,10 +77819,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "plump-tex-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "plump-tex" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "plump-tex" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -81355,10 +77839,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "png" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -81378,11 +77859,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "png-read" ];
-      lispLibs = [
-        (getAttr "babel" self)
-        (getAttr "chipz" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "babel" self) (getAttr "chipz" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -81497,11 +77974,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "poler-test" ];
-      lispLibs = [
-        (getAttr "poler" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "poler" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -81561,10 +78034,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "polisher.test" ];
-      lispLibs = [
-        (getAttr "_1am" self)
-        (getAttr "polisher" self)
-      ];
+      lispLibs = [ (getAttr "_1am" self) (getAttr "polisher" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -81637,10 +78107,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "portable-condition-system" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -81660,10 +78127,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "portable-condition-system.integration" ];
-      lispLibs = [
-        (getAttr "portable-condition-system" self)
-        (getAttr "trivial-custom-debugger" self)
-      ];
+      lispLibs = [ (getAttr "portable-condition-system" self) (getAttr "trivial-custom-debugger" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -81753,10 +78217,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "portmanteau-tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "portmanteau" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "portmanteau" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -81847,11 +78308,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "postmodern-localtime" ];
-      lispLibs = [
-        (getAttr "cl-postgres" self)
-        (getAttr "local-time" self)
-        (getAttr "postmodern" self)
-      ];
+      lispLibs = [ (getAttr "cl-postgres" self) (getAttr "local-time" self) (getAttr "postmodern" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -81871,10 +78328,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "postmodernity" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "postmodern" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "postmodern" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -82104,10 +78558,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "prbs-docs" ];
-      lispLibs = [
-        (getAttr "cl-gendoc" self)
-        (getAttr "prbs" self)
-      ];
+      lispLibs = [ (getAttr "cl-gendoc" self) (getAttr "prbs" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -82233,10 +78684,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "print-licenses" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -82329,10 +78777,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "proc-parse" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "babel" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "babel" self) ];
       meta = { };
     }
   );
@@ -82350,11 +78795,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "proc-parse-test" ];
-      lispLibs = [
-        (getAttr "proc-parse" self)
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "proc-parse" self) (getAttr "prove" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -82606,10 +79047,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "prometheus-gc" ];
-      lispLibs = [
-        (getAttr "_40ants-asdf-system" self)
-        (getAttr "prometheus" self)
-      ];
+      lispLibs = [ (getAttr "_40ants-asdf-system" self) (getAttr "prometheus" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -82854,10 +79292,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "prometheus.formats.text" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "prometheus" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "prometheus" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -83060,10 +79495,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "promise-test" ];
-      lispLibs = [
-        (getAttr "parachute" self)
-        (getAttr "promise" self)
-      ];
+      lispLibs = [ (getAttr "parachute" self) (getAttr "promise" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -83103,10 +79535,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "prompt-for.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "prompt-for" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "prompt-for" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -83191,10 +79620,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "protobuf" ];
-      lispLibs = [
-        (getAttr "com_dot_google_dot_base" self)
-        (getAttr "varint" self)
-      ];
+      lispLibs = [ (getAttr "com_dot_google_dot_base" self) (getAttr "varint" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -83304,10 +79730,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "pseudonyms" ];
-      lispLibs = [
-        (getAttr "named-readtables" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "named-readtables" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -83376,11 +79799,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "psychiq-test" ];
-      lispLibs = [
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-        (getAttr "psychiq" self)
-      ];
+      lispLibs = [ (getAttr "prove" self) (getAttr "prove-asdf" self) (getAttr "psychiq" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -83458,10 +79877,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "punycode-test" ];
-      lispLibs = [
-        (getAttr "parachute" self)
-        (getAttr "punycode" self)
-      ];
+      lispLibs = [ (getAttr "parachute" self) (getAttr "punycode" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -83552,10 +79968,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "purl" ];
-      lispLibs = [
-        (getAttr "maxpc" self)
-        (getAttr "percent-encoding" self)
-      ];
+      lispLibs = [ (getAttr "maxpc" self) (getAttr "percent-encoding" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -83575,10 +79988,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "pvars" ];
-      lispLibs = [
-        (getAttr "cl-store" self)
-        (getAttr "global-vars" self)
-      ];
+      lispLibs = [ (getAttr "cl-store" self) (getAttr "global-vars" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -83721,10 +80131,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "pzmq" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = { };
     }
   );
@@ -83828,10 +80235,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qbase64" ];
-      lispLibs = [
-        (getAttr "metabang-bind" self)
-        (getAttr "trivial-gray-streams" self)
-      ];
+      lispLibs = [ (getAttr "metabang-bind" self) (getAttr "trivial-gray-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -83971,11 +80375,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qmynd-test" ];
-      lispLibs = [
-        (getAttr "babel" self)
-        (getAttr "flexi-streams" self)
-        (getAttr "qmynd" self)
-      ];
+      lispLibs = [ (getAttr "babel" self) (getAttr "flexi-streams" self) (getAttr "qmynd" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -84094,11 +80494,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qt-libs" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-ppcre" self)
-        (getAttr "qt-lib-generator" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-ppcre" self) (getAttr "qt-lib-generator" self) ];
       meta = { };
     }
   );
@@ -84144,11 +80540,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtcore" ];
-      lispLibs = [
-        (getAttr "commonqt" self)
-        (getAttr "qt_plus_libs" self)
-        (getAttr "qt-libs" self)
-      ];
+      lispLibs = [ (getAttr "commonqt" self) (getAttr "qt_plus_libs" self) (getAttr "qt-libs" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -84222,11 +80614,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtgui" ];
-      lispLibs = [
-        (getAttr "qt_plus_libs" self)
-        (getAttr "qt-libs" self)
-        (getAttr "qtcore" self)
-      ];
+      lispLibs = [ (getAttr "qt_plus_libs" self) (getAttr "qt-libs" self) (getAttr "qtcore" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -84273,11 +80661,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtnetwork" ];
-      lispLibs = [
-        (getAttr "qt_plus_libs" self)
-        (getAttr "qt-libs" self)
-        (getAttr "qtcore" self)
-      ];
+      lispLibs = [ (getAttr "qt_plus_libs" self) (getAttr "qt-libs" self) (getAttr "qtcore" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -84378,11 +80762,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtools-helloworld" ];
-      lispLibs = [
-        (getAttr "qtcore" self)
-        (getAttr "qtgui" self)
-        (getAttr "qtools" self)
-      ];
+      lispLibs = [ (getAttr "qtcore" self) (getAttr "qtgui" self) (getAttr "qtools" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -84528,10 +80908,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtools-ui-auto-resizing-textedit" ];
-      lispLibs = [
-        (getAttr "qtools-ui-base" self)
-        (getAttr "qtools-ui-fixed-qtextedit" self)
-      ];
+      lispLibs = [ (getAttr "qtools-ui-base" self) (getAttr "qtools-ui-fixed-qtextedit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -84672,10 +81049,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtools-ui-color-sliders" ];
-      lispLibs = [
-        (getAttr "qtools-ui-base" self)
-        (getAttr "qtools-ui-helpers" self)
-      ];
+      lispLibs = [ (getAttr "qtools-ui-base" self) (getAttr "qtools-ui-helpers" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -84720,10 +81094,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtools-ui-compass" ];
-      lispLibs = [
-        (getAttr "qtools-ui-base" self)
-        (getAttr "qtools-ui-layout" self)
-      ];
+      lispLibs = [ (getAttr "qtools-ui-base" self) (getAttr "qtools-ui-layout" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -84743,10 +81114,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtools-ui-container" ];
-      lispLibs = [
-        (getAttr "qtools-ui-base" self)
-        (getAttr "qtools-ui-layout" self)
-      ];
+      lispLibs = [ (getAttr "qtools-ui-base" self) (getAttr "qtools-ui-layout" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -84766,10 +81134,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtools-ui-debugger" ];
-      lispLibs = [
-        (getAttr "dissect" self)
-        (getAttr "qtools-ui-base" self)
-      ];
+      lispLibs = [ (getAttr "dissect" self) (getAttr "qtools-ui-base" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -84789,10 +81154,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtools-ui-dialog" ];
-      lispLibs = [
-        (getAttr "qtools-ui-base" self)
-        (getAttr "qtools-ui-helpers" self)
-      ];
+      lispLibs = [ (getAttr "qtools-ui-base" self) (getAttr "qtools-ui-helpers" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -84837,10 +81199,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtools-ui-drag-and-drop" ];
-      lispLibs = [
-        (getAttr "qtools-ui-base" self)
-        (getAttr "qtools-ui-helpers" self)
-      ];
+      lispLibs = [ (getAttr "qtools-ui-base" self) (getAttr "qtools-ui-helpers" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -84860,10 +81219,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtools-ui-executable" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "qtools-ui-base" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "qtools-ui-base" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -84903,10 +81259,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtools-ui-flow-layout" ];
-      lispLibs = [
-        (getAttr "qtools-ui-base" self)
-        (getAttr "qtools-ui-container" self)
-      ];
+      lispLibs = [ (getAttr "qtools-ui-base" self) (getAttr "qtools-ui-container" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -84926,10 +81279,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtools-ui-helpers" ];
-      lispLibs = [
-        (getAttr "qtools-ui-base" self)
-        (getAttr "qtools-ui-layout" self)
-      ];
+      lispLibs = [ (getAttr "qtools-ui-base" self) (getAttr "qtools-ui-layout" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -84949,10 +81299,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtools-ui-imagetools" ];
-      lispLibs = [
-        (getAttr "qimageblitz" self)
-        (getAttr "qtools-ui-base" self)
-      ];
+      lispLibs = [ (getAttr "qimageblitz" self) (getAttr "qtools-ui-base" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -85109,10 +81456,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtools-ui-placeholder-text-edit" ];
-      lispLibs = [
-        (getAttr "qtools-ui-base" self)
-        (getAttr "qtools-ui-fixed-qtextedit" self)
-      ];
+      lispLibs = [ (getAttr "qtools-ui-base" self) (getAttr "qtools-ui-fixed-qtextedit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -85132,10 +81476,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtools-ui-plot" ];
-      lispLibs = [
-        (getAttr "qtools-ui-base" self)
-        (getAttr "qtools-ui-helpers" self)
-      ];
+      lispLibs = [ (getAttr "qtools-ui-base" self) (getAttr "qtools-ui-helpers" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -85199,10 +81540,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtools-ui-slider" ];
-      lispLibs = [
-        (getAttr "qtools-ui-base" self)
-        (getAttr "qtools-ui-helpers" self)
-      ];
+      lispLibs = [ (getAttr "qtools-ui-base" self) (getAttr "qtools-ui-helpers" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -85271,10 +81609,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtools-ui-svgtools" ];
-      lispLibs = [
-        (getAttr "qtools-ui-base" self)
-        (getAttr "qtsvg" self)
-      ];
+      lispLibs = [ (getAttr "qtools-ui-base" self) (getAttr "qtsvg" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -85319,11 +81654,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtscript" ];
-      lispLibs = [
-        (getAttr "qt_plus_libs" self)
-        (getAttr "qt-libs" self)
-        (getAttr "qtcore" self)
-      ];
+      lispLibs = [ (getAttr "qt_plus_libs" self) (getAttr "qt-libs" self) (getAttr "qtcore" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -85469,11 +81800,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "qtxml" ];
-      lispLibs = [
-        (getAttr "qt_plus_libs" self)
-        (getAttr "qt-libs" self)
-        (getAttr "qtcore" self)
-      ];
+      lispLibs = [ (getAttr "qt_plus_libs" self) (getAttr "qt-libs" self) (getAttr "qtcore" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -85518,10 +81845,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "quad-tree" ];
-      lispLibs = [
-        (getAttr "mfiano-utils" self)
-        (getAttr "origin" self)
-      ];
+      lispLibs = [ (getAttr "mfiano-utils" self) (getAttr "origin" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -85601,11 +81925,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "quadtree-test" ];
-      lispLibs = [
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-        (getAttr "quadtree" self)
-      ];
+      lispLibs = [ (getAttr "prove" self) (getAttr "prove-asdf" self) (getAttr "quadtree" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -85689,10 +82009,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "quasiquote-2.0-tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "quasiquote-2_dot_0" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "quasiquote-2_dot_0" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -85763,10 +82080,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "query-repl" ];
-      lispLibs = [
-        (getAttr "check-bnf" self)
-        (getAttr "jingoh_dot_documentizer" self)
-      ];
+      lispLibs = [ (getAttr "check-bnf" self) (getAttr "jingoh_dot_documentizer" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -85786,10 +82100,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "query-repl.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "query-repl" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "query-repl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -85957,10 +82268,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "quickhull" ];
-      lispLibs = [
-        (getAttr "_3d-math" self)
-        (getAttr "documentation-utils" self)
-      ];
+      lispLibs = [ (getAttr "_3d-math" self) (getAttr "documentation-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -85980,10 +82288,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "quicklisp-slime-helper" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "swank" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "swank" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -86023,11 +82328,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "quicklisp-stats" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "drakma" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "drakma" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -86047,10 +82348,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "quickproject" ];
-      lispLibs = [
-        (getAttr "cl-fad" self)
-        (getAttr "html-template" self)
-      ];
+      lispLibs = [ (getAttr "cl-fad" self) (getAttr "html-template" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -86224,10 +82522,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "quickutil-utilities-test" ];
-      lispLibs = [
-        (getAttr "quickutil-client" self)
-        (getAttr "quickutil-server" self)
-      ];
+      lispLibs = [ (getAttr "quickutil-client" self) (getAttr "quickutil-server" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -86290,11 +82585,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "quri-test" ];
-      lispLibs = [
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-        (getAttr "quri" self)
-      ];
+      lispLibs = [ (getAttr "prove" self) (getAttr "prove-asdf" self) (getAttr "quri" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -86386,11 +82677,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "racer" ];
-      lispLibs = [
-        (getAttr "aserve" self)
-        (getAttr "deflate" self)
-        (getAttr "flexi-streams" self)
-      ];
+      lispLibs = [ (getAttr "aserve" self) (getAttr "deflate" self) (getAttr "flexi-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -86430,10 +82717,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "rail-test" ];
-      lispLibs = [
-        (getAttr "fiasco" self)
-        (getAttr "rail" self)
-      ];
+      lispLibs = [ (getAttr "fiasco" self) (getAttr "rail" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -86538,10 +82822,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "random-state-test" ];
-      lispLibs = [
-        (getAttr "parachute" self)
-        (getAttr "random-state" self)
-      ];
+      lispLibs = [ (getAttr "parachute" self) (getAttr "random-state" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -86586,10 +82867,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "random-test" ];
-      lispLibs = [
-        (getAttr "hu_dot_dwim_dot_stefil" self)
-        (getAttr "random" self)
-      ];
+      lispLibs = [ (getAttr "hu_dot_dwim_dot_stefil" self) (getAttr "random" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -86609,10 +82887,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "random-uuid" ];
-      lispLibs = [
-        (getAttr "mfiano-utils" self)
-        (getAttr "seedable-rng" self)
-      ];
+      lispLibs = [ (getAttr "mfiano-utils" self) (getAttr "seedable-rng" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -86632,10 +82907,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "rate-monotonic" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "timer-wheel" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "timer-wheel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -86655,10 +82927,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "rate-monotonic.examples" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "rate-monotonic" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "rate-monotonic" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -86678,11 +82947,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ratify" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "local-time" self)
-        (getAttr "parse-float" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "local-time" self) (getAttr "parse-float" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -86769,10 +83034,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "read-as-string" ];
-      lispLibs = [
-        (getAttr "core-reader" self)
-        (getAttr "named-readtables" self)
-      ];
+      lispLibs = [ (getAttr "core-reader" self) (getAttr "named-readtables" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -86792,10 +83054,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "read-as-string.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "read-as-string" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "read-as-string" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -86855,10 +83114,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "read-number" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "lisp-unit" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "lisp-unit" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -86905,10 +83161,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "reader+swank" ];
-      lispLibs = [
-        (getAttr "reader" self)
-        (getAttr "swank" self)
-      ];
+      lispLibs = [ (getAttr "reader" self) (getAttr "swank" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -87285,11 +83538,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "reblocks-lass" ];
-      lispLibs = [
-        (getAttr "_40ants-asdf-system" self)
-        (getAttr "lass" self)
-        (getAttr "reblocks" self)
-      ];
+      lispLibs = [ (getAttr "_40ants-asdf-system" self) (getAttr "lass" self) (getAttr "reblocks" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -87844,11 +84093,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "reblocks-ui-docs" ];
-      lispLibs = [
-        (getAttr "_40ants-doc" self)
-        (getAttr "docs-config" self)
-        (getAttr "reblocks" self)
-      ];
+      lispLibs = [ (getAttr "_40ants-doc" self) (getAttr "docs-config" self) (getAttr "reblocks" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -88056,10 +84301,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "recursive-regex-test" ];
-      lispLibs = [
-        (getAttr "lisp-unit" self)
-        (getAttr "recursive-regex" self)
-      ];
+      lispLibs = [ (getAttr "lisp-unit" self) (getAttr "recursive-regex" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -88159,11 +84401,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "remote-js" ];
-      lispLibs = [
-        (getAttr "cl-markup" self)
-        (getAttr "find-port" self)
-        (getAttr "trivial-ws" self)
-      ];
+      lispLibs = [ (getAttr "cl-markup" self) (getAttr "find-port" self) (getAttr "trivial-ws" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -88255,11 +84493,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "replic-test" ];
-      lispLibs = [
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-        (getAttr "replic" self)
-      ];
+      lispLibs = [ (getAttr "prove" self) (getAttr "prove-asdf" self) (getAttr "replic" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -88309,10 +84543,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "resignal-bind" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "jingoh_dot_documentizer" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "jingoh_dot_documentizer" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -88332,10 +84563,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "resignal-bind.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "resignal-bind" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "resignal-bind" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -88430,10 +84658,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "restas.file-publisher" ];
-      lispLibs = [
-        (getAttr "cl-fad" self)
-        (getAttr "restas" self)
-      ];
+      lispLibs = [ (getAttr "cl-fad" self) (getAttr "restas" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -88735,10 +84960,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "rock-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "rock" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "rock" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -88805,11 +85027,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "routes" ];
-      lispLibs = [
-        (getAttr "iterate" self)
-        (getAttr "puri" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "iterate" self) (getAttr "puri" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -88829,10 +85047,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "routes-test" ];
-      lispLibs = [
-        (getAttr "lift" self)
-        (getAttr "routes" self)
-      ];
+      lispLibs = [ (getAttr "lift" self) (getAttr "routes" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -88875,11 +85090,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "rovers-problem-translator" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "iterate" self)
-        (getAttr "shop3" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "iterate" self) (getAttr "shop3" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -89168,11 +85379,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "rs-json" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-unicode" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-unicode" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -89192,11 +85399,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "rss" ];
-      lispLibs = [
-        (getAttr "aserve" self)
-        (getAttr "kmrcl" self)
-        (getAttr "xmls" self)
-      ];
+      lispLibs = [ (getAttr "aserve" self) (getAttr "kmrcl" self) (getAttr "xmls" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -89254,10 +85457,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "rt-events.examples" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "rt-events" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "rt-events" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -89277,11 +85477,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "rte" ];
-      lispLibs = [
-        (getAttr "adjuvant" self)
-        (getAttr "lisp-types" self)
-        (getAttr "ndfa" self)
-      ];
+      lispLibs = [ (getAttr "adjuvant" self) (getAttr "lisp-types" self) (getAttr "ndfa" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -89301,11 +85497,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "rte-regexp" ];
-      lispLibs = [
-        (getAttr "adjuvant" self)
-        (getAttr "rte" self)
-        (getAttr "yacc" self)
-      ];
+      lispLibs = [ (getAttr "adjuvant" self) (getAttr "rte" self) (getAttr "yacc" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -89403,11 +85595,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "rtg-math.vari" ];
-      lispLibs = [
-        (getAttr "glsl-symbols" self)
-        (getAttr "rtg-math" self)
-        (getAttr "varjo" self)
-      ];
+      lispLibs = [ (getAttr "glsl-symbols" self) (getAttr "rtg-math" self) (getAttr "varjo" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -89467,10 +85655,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "rutils" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "named-readtables" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "named-readtables" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -89490,10 +85675,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "rutils-test" ];
-      lispLibs = [
-        (getAttr "rutils" self)
-        (getAttr "should-test" self)
-      ];
+      lispLibs = [ (getAttr "rutils" self) (getAttr "should-test" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -89603,10 +85785,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "s-graphviz" ];
-      lispLibs = [
-        (getAttr "iterate" self)
-        (getAttr "literate-lisp" self)
-      ];
+      lispLibs = [ (getAttr "iterate" self) (getAttr "literate-lisp" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -89678,10 +85857,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "s-sql" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-postgres" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-postgres" self) ];
       meta = { };
     }
   );
@@ -89839,10 +86015,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "safe-read" ];
-      lispLibs = [
-        (getAttr "local-time" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "local-time" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -89862,10 +86035,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "safety-params" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "parse-number" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "parse-number" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -89943,10 +86113,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "sanitize-test" ];
-      lispLibs = [
-        (getAttr "eos" self)
-        (getAttr "sanitize" self)
-      ];
+      lispLibs = [ (getAttr "eos" self) (getAttr "sanitize" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -90126,10 +86293,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "schannel" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "trivial-gray-streams" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "trivial-gray-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -90175,10 +86339,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "science-data" ];
-      lispLibs = [
-        (getAttr "drakma" self)
-        (getAttr "physical-dimension" self)
-      ];
+      lispLibs = [ (getAttr "drakma" self) (getAttr "physical-dimension" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -90218,10 +86379,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "scratch-buffer" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "utility" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "utility" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -90285,11 +86443,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "scriba" ];
-      lispLibs = [
-        (getAttr "common-doc-plump" self)
-        (getAttr "esrap" self)
-        (getAttr "plump-sexp" self)
-      ];
+      lispLibs = [ (getAttr "common-doc-plump" self) (getAttr "esrap" self) (getAttr "plump-sexp" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -90309,10 +86463,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "scriba-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "scriba" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "scriba" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -90388,10 +86539,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "scriptl-examples" ];
-      lispLibs = [
-        (getAttr "scriptl" self)
-        (getAttr "unix-options" self)
-      ];
+      lispLibs = [ (getAttr "scriptl" self) (getAttr "unix-options" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -90411,10 +86559,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "scriptl-util" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "scriptl" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "scriptl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -90755,11 +86900,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "seedable-rng" ];
-      lispLibs = [
-        (getAttr "cl-pcg" self)
-        (getAttr "ironclad" self)
-        (getAttr "mfiano-utils" self)
-      ];
+      lispLibs = [ (getAttr "cl-pcg" self) (getAttr "ironclad" self) (getAttr "mfiano-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -90779,11 +86920,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "select" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "anaphora" self)
-        (getAttr "let-plus" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "anaphora" self) (getAttr "let-plus" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -90803,10 +86940,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "select-file" ];
-      lispLibs = [
-        (getAttr "cl-fad" self)
-        (getAttr "mcclim" self)
-      ];
+      lispLibs = [ (getAttr "cl-fad" self) (getAttr "mcclim" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -90852,10 +86986,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "semantic-spinneret" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "spinneret" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "spinneret" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -90875,10 +87006,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "semz.decompress" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "trivial-gray-streams" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "trivial-gray-streams" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -90898,10 +87026,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "sendgrid" ];
-      lispLibs = [
-        (getAttr "dexador" self)
-        (getAttr "jonathan" self)
-      ];
+      lispLibs = [ (getAttr "dexador" self) (getAttr "jonathan" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -90981,10 +87106,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "sentry-client.async" ];
-      lispLibs = [
-        (getAttr "sentry-client" self)
-        (getAttr "simple-tasks" self)
-      ];
+      lispLibs = [ (getAttr "sentry-client" self) (getAttr "simple-tasks" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -91004,10 +87126,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "sentry-client.hunchentoot" ];
-      lispLibs = [
-        (getAttr "hunchentoot" self)
-        (getAttr "sentry-client" self)
-      ];
+      lispLibs = [ (getAttr "hunchentoot" self) (getAttr "sentry-client" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -91119,10 +87238,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "serializable-object.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "serializable-object" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "serializable-object" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -91355,10 +87471,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "shared-preferences" ];
-      lispLibs = [
-        (getAttr "inheriting-readers" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "inheriting-readers" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -91378,10 +87491,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "shared-preferences_tests" ];
-      lispLibs = [
-        (getAttr "parachute" self)
-        (getAttr "shared-preferences" self)
-      ];
+      lispLibs = [ (getAttr "parachute" self) (getAttr "shared-preferences" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -91401,10 +87511,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "shasht" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "trivial-do" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "trivial-do" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -91444,10 +87551,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "sheeple-tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "sheeple" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "sheeple" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -91519,10 +87623,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "shelly-test" ];
-      lispLibs = [
-        (getAttr "cl-test-more" self)
-        (getAttr "shelly" self)
-      ];
+      lispLibs = [ (getAttr "cl-test-more" self) (getAttr "shelly" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -91743,10 +87844,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "simple-config-test" ];
-      lispLibs = [
-        (getAttr "prove" self)
-        (getAttr "simple-config" self)
-      ];
+      lispLibs = [ (getAttr "prove" self) (getAttr "simple-config" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -91828,10 +87926,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "simple-finalizer" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -91851,11 +87946,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "simple-flow-dispatcher" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "bodge-queue" self)
-        (getAttr "cl-muth" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "bodge-queue" self) (getAttr "cl-muth" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -91895,11 +87986,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "simple-guess_tests" ];
-      lispLibs = [
-        (getAttr "fakenil" self)
-        (getAttr "parachute" self)
-        (getAttr "simple-guess" self)
-      ];
+      lispLibs = [ (getAttr "fakenil" self) (getAttr "parachute" self) (getAttr "simple-guess" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -91919,10 +88006,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "simple-inferiors" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "documentation-utils" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "documentation-utils" self) ];
       meta = { };
     }
   );
@@ -91940,10 +88024,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "simple-neural-network" ];
-      lispLibs = [
-        (getAttr "cl-store" self)
-        (getAttr "lparallel" self)
-      ];
+      lispLibs = [ (getAttr "cl-store" self) (getAttr "lparallel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -91983,10 +88064,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "simple-parallel-tasks-tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "simple-parallel-tasks" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "simple-parallel-tasks" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -92026,10 +88104,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "simple-routes" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "hunchentoot" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "hunchentoot" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -92206,10 +88281,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "simplified-types-test-suite" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "simplified-types" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "simplified-types" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -92289,10 +88361,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "sip-hash" ];
-      lispLibs = [
-        (getAttr "com_dot_google_dot_base" self)
-        (getAttr "nibbles" self)
-      ];
+      lispLibs = [ (getAttr "com_dot_google_dot_base" self) (getAttr "nibbles" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -92389,10 +88458,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "sketch-examples" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "sketch" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "sketch" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -92476,10 +88542,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "skitter.glop" ];
-      lispLibs = [
-        (getAttr "glop" self)
-        (getAttr "skitter" self)
-      ];
+      lispLibs = [ (getAttr "glop" self) (getAttr "skitter" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -92499,10 +88562,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "skitter.sdl2" ];
-      lispLibs = [
-        (getAttr "sdl2" self)
-        (getAttr "skitter" self)
-      ];
+      lispLibs = [ (getAttr "sdl2" self) (getAttr "skitter" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -92551,11 +88611,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "slack-client-test" ];
-      lispLibs = [
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-        (getAttr "slack-client" self)
-      ];
+      lispLibs = [ (getAttr "prove" self) (getAttr "prove-asdf" self) (getAttr "slack-client" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -92595,10 +88651,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "slite" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "str" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "str" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -92670,10 +88723,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "slot-map" ];
-      lispLibs = [
-        (getAttr "dynamic-array" self)
-        (getAttr "mfiano-utils" self)
-      ];
+      lispLibs = [ (getAttr "dynamic-array" self) (getAttr "mfiano-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -92802,10 +88852,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "smart-buffer" ];
-      lispLibs = [
-        (getAttr "flexi-streams" self)
-        (getAttr "xsubseq" self)
-      ];
+      lispLibs = [ (getAttr "flexi-streams" self) (getAttr "xsubseq" self) ];
       meta = { };
     }
   );
@@ -92848,10 +88895,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "smokebase" ];
-      lispLibs = [
-        (getAttr "qt_plus_libs" self)
-        (getAttr "qt-libs" self)
-      ];
+      lispLibs = [ (getAttr "qt_plus_libs" self) (getAttr "qt-libs" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -93005,10 +89049,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "snark-deque" ];
-      lispLibs = [
-        (getAttr "snark-auxiliary-packages" self)
-        (getAttr "snark-lisp" self)
-      ];
+      lispLibs = [ (getAttr "snark-auxiliary-packages" self) (getAttr "snark-lisp" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -93028,10 +89069,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "snark-dpll" ];
-      lispLibs = [
-        (getAttr "snark-auxiliary-packages" self)
-        (getAttr "snark-lisp" self)
-      ];
+      lispLibs = [ (getAttr "snark-auxiliary-packages" self) (getAttr "snark-lisp" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -93071,10 +89109,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "snark-feature" ];
-      lispLibs = [
-        (getAttr "snark-auxiliary-packages" self)
-        (getAttr "snark-lisp" self)
-      ];
+      lispLibs = [ (getAttr "snark-auxiliary-packages" self) (getAttr "snark-lisp" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -93125,10 +89160,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "snark-infix-reader" ];
-      lispLibs = [
-        (getAttr "snark-auxiliary-packages" self)
-        (getAttr "snark-lisp" self)
-      ];
+      lispLibs = [ (getAttr "snark-auxiliary-packages" self) (getAttr "snark-lisp" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -93232,10 +89264,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "snark-sparse-array" ];
-      lispLibs = [
-        (getAttr "snark-auxiliary-packages" self)
-        (getAttr "snark-lisp" self)
-      ];
+      lispLibs = [ (getAttr "snark-auxiliary-packages" self) (getAttr "snark-lisp" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -93255,10 +89284,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "sndfile-blob" ];
-      lispLibs = [
-        (getAttr "bodge-blobs-support" self)
-        (getAttr "trivial-features" self)
-      ];
+      lispLibs = [ (getAttr "bodge-blobs-support" self) (getAttr "trivial-features" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -93304,10 +89330,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "snmp-server" ];
-      lispLibs = [
-        (getAttr "snmp" self)
-        (getAttr "usocket-server" self)
-      ];
+      lispLibs = [ (getAttr "snmp" self) (getAttr "usocket-server" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -93327,10 +89350,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "snmp-test" ];
-      lispLibs = [
-        (getAttr "snmp" self)
-        (getAttr "snmp-server" self)
-      ];
+      lispLibs = [ (getAttr "snmp" self) (getAttr "snmp-server" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -93427,10 +89447,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "snooze-tests" ];
-      lispLibs = [
-        (getAttr "fiasco" self)
-        (getAttr "snooze" self)
-      ];
+      lispLibs = [ (getAttr "fiasco" self) (getAttr "snooze" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -93450,10 +89467,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "softdrink" ];
-      lispLibs = [
-        (getAttr "lass" self)
-        (getAttr "lquery" self)
-      ];
+      lispLibs = [ (getAttr "lass" self) (getAttr "lquery" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -93656,10 +89670,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "spatial-trees.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "spatial-trees" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "spatial-trees" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -93728,10 +89739,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "specialization-store-features" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "introspect-environment" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "introspect-environment" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -93751,10 +89759,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "specialization-store-tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "specialization-store" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "specialization-store" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -93801,10 +89806,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "specialized-function.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "specialized-function" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "specialized-function" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -93824,10 +89826,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "speechless" ];
-      lispLibs = [
-        (getAttr "cl-markless" self)
-        (getAttr "documentation-utils" self)
-      ];
+      lispLibs = [ (getAttr "cl-markless" self) (getAttr "documentation-utils" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -93867,10 +89866,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "spellcheck" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -93959,10 +89955,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "sqlite" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "iterate" self) ];
       meta = { };
     }
   );
@@ -94000,10 +89993,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "srfi-1.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "srfi-1" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "srfi-1" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -94083,10 +90073,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "srfi-98.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "srfi-98" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "srfi-98" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -94126,11 +90113,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "sse-client-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "sse-client" self)
-        (getAttr "trivial-escapes" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "sse-client" self) (getAttr "trivial-escapes" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -94175,10 +90158,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "sse-server" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "trivial-escapes" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "trivial-escapes" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -94198,11 +90178,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "sse-server-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "sse-server" self)
-        (getAttr "trivial-escapes" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "sse-server" self) (getAttr "trivial-escapes" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -94345,10 +90321,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "staple-markless" ];
-      lispLibs = [
-        (getAttr "cl-markless-plump" self)
-        (getAttr "staple" self)
-      ];
+      lispLibs = [ (getAttr "cl-markless-plump" self) (getAttr "staple" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -94388,10 +90361,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "staple-restructured-text" ];
-      lispLibs = [
-        (getAttr "docutils" self)
-        (getAttr "staple" self)
-      ];
+      lispLibs = [ (getAttr "docutils" self) (getAttr "staple" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -94437,11 +90407,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "stars" ];
-      lispLibs = [
-        (getAttr "cl-json" self)
-        (getAttr "drakma" self)
-        (getAttr "xmls" self)
-      ];
+      lispLibs = [ (getAttr "cl-json" self) (getAttr "drakma" self) (getAttr "xmls" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -94489,11 +90455,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "static-vectors" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = { };
     }
   );
@@ -94558,10 +90520,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "stdutils" ];
-      lispLibs = [
-        (getAttr "cl-fad" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "cl-fad" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -94830,10 +90789,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "str.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "str" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "str" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -94853,10 +90809,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "strict-function" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "trivia" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "trivia" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -95017,10 +90970,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "structure-ext.as-class.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "structure-ext_dot_as-class" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "structure-ext_dot_as-class" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -95060,10 +91010,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "structure-ext.left-arrow-accessors.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "structure-ext_dot_left-arrow-accessors" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "structure-ext_dot_left-arrow-accessors" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -95083,10 +91030,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "structure-ext.make-instance" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "jingoh_dot_documentizer" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "jingoh_dot_documentizer" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -95106,10 +91050,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "structure-ext.make-instance.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "structure-ext_dot_make-instance" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "structure-ext_dot_make-instance" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -95237,10 +91178,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "stumpwm-tests" ];
-      lispLibs = [
-        (getAttr "fiasco" self)
-        (getAttr "stumpwm" self)
-      ];
+      lispLibs = [ (getAttr "fiasco" self) (getAttr "stumpwm" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -95328,11 +91266,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "sucle-serialize" ];
-      lispLibs = [
-        (getAttr "chipz" self)
-        (getAttr "cl-conspack" self)
-        (getAttr "salza2" self)
-      ];
+      lispLibs = [ (getAttr "chipz" self) (getAttr "cl-conspack" self) (getAttr "salza2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -95500,10 +91434,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "swank-protocol" ];
-      lispLibs = [
-        (getAttr "swank" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "swank" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -95610,11 +91541,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "sxql-test" ];
-      lispLibs = [
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-        (getAttr "sxql" self)
-      ];
+      lispLibs = [ (getAttr "prove" self) (getAttr "prove-asdf" self) (getAttr "sxql" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -95677,10 +91604,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "symbol-munger" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "iterate" self) ];
       meta = { };
     }
   );
@@ -95798,10 +91722,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "t-clack-handler-hunchentoot" ];
-      lispLibs = [
-        (getAttr "clack-handler-hunchentoot" self)
-        (getAttr "clack-test" self)
-      ];
+      lispLibs = [ (getAttr "clack-handler-hunchentoot" self) (getAttr "clack-test" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -95821,10 +91742,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "t-clack-handler-toot" ];
-      lispLibs = [
-        (getAttr "clack-handler-toot" self)
-        (getAttr "clack-test" self)
-      ];
+      lispLibs = [ (getAttr "clack-handler-toot" self) (getAttr "clack-test" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -96275,11 +92193,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "taglib-tests" ];
-      lispLibs = [
-        (getAttr "chanl" self)
-        (getAttr "cl-fad" self)
-        (getAttr "taglib" self)
-      ];
+      lispLibs = [ (getAttr "chanl" self) (getAttr "cl-fad" self) (getAttr "taglib" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -96350,10 +92264,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "talcl-examples" ];
-      lispLibs = [
-        (getAttr "buildnode-xhtml" self)
-        (getAttr "talcl" self)
-      ];
+      lispLibs = [ (getAttr "buildnode-xhtml" self) (getAttr "talcl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -96398,11 +92309,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "talcl-test" ];
-      lispLibs = [
-        (getAttr "buildnode-xhtml" self)
-        (getAttr "lisp-unit2" self)
-        (getAttr "talcl" self)
-      ];
+      lispLibs = [ (getAttr "buildnode-xhtml" self) (getAttr "lisp-unit2" self) (getAttr "talcl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -96517,10 +92424,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "tasty" ];
-      lispLibs = [
-        (getAttr "gwl-graphics" self)
-        (getAttr "tree" self)
-      ];
+      lispLibs = [ (getAttr "gwl-graphics" self) (getAttr "tree" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -96560,11 +92464,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "tcod" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-libffi" self)
-        (getAttr "defstar" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-libffi" self) (getAttr "defstar" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -96644,10 +92544,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "teepeedee2-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "teepeedee2" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "teepeedee2" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -96687,10 +92584,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "template" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "parameterized-function" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "parameterized-function" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -96734,10 +92628,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "template-function-tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "template-function" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "template-function" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -96848,10 +92739,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ten.i18n.cl-locale" ];
-      lispLibs = [
-        (getAttr "cl-locale" self)
-        (getAttr "ten" self)
-      ];
+      lispLibs = [ (getAttr "cl-locale" self) (getAttr "ten" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -96871,10 +92759,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ten.i18n.gettext" ];
-      lispLibs = [
-        (getAttr "gettext" self)
-        (getAttr "ten" self)
-      ];
+      lispLibs = [ (getAttr "gettext" self) (getAttr "ten" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -96894,11 +92779,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ten.tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "ten" self)
-        (getAttr "ten_dot_examples" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "ten" self) (getAttr "ten_dot_examples" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -96964,10 +92845,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "tesseract-capi" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -97007,10 +92885,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "test-gadgets" ];
-      lispLibs = [
-        (getAttr "gadgets" self)
-        (getAttr "prove" self)
-      ];
+      lispLibs = [ (getAttr "gadgets" self) (getAttr "prove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -97099,10 +92974,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "test.eager-future2" ];
-      lispLibs = [
-        (getAttr "eager-future2" self)
-        (getAttr "eos" self)
-      ];
+      lispLibs = [ (getAttr "eager-future2" self) (getAttr "eos" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -97142,10 +93014,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "testbild" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "graylex" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "graylex" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -97278,11 +93147,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "text-subsystem-generate-font" ];
-      lispLibs = [
-        (getAttr "cl-freetype2" self)
-        (getAttr "opticl" self)
-        (getAttr "utility" self)
-      ];
+      lispLibs = [ (getAttr "cl-freetype2" self) (getAttr "opticl" self) (getAttr "utility" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -97302,11 +93167,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "textery" ];
-      lispLibs = [
-        (getAttr "cl-json" self)
-        (getAttr "cl-ppcre" self)
-        (getAttr "str" self)
-      ];
+      lispLibs = [ (getAttr "cl-json" self) (getAttr "cl-ppcre" self) (getAttr "str" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -97411,11 +93272,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "thorn-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "thorn" self)
-        (getAttr "thorn-doc" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "thorn" self) (getAttr "thorn-doc" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -97435,10 +93292,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "thread-pool" ];
-      lispLibs = [
-        (getAttr "arnesi" self)
-        (getAttr "bordeaux-threads" self)
-      ];
+      lispLibs = [ (getAttr "arnesi" self) (getAttr "bordeaux-threads" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -97458,10 +93312,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "thread.comm.rendezvous" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "cl-annot" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "cl-annot" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -97481,10 +93332,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "thread.comm.rendezvous.test" ];
-      lispLibs = [
-        (getAttr "cl-test-more" self)
-        (getAttr "thread_dot_comm_dot_rendezvous" self)
-      ];
+      lispLibs = [ (getAttr "cl-test-more" self) (getAttr "thread_dot_comm_dot_rendezvous" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -97524,10 +93372,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "time-interval" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "local-time" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "local-time" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -97567,10 +93412,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "timer-wheel.examples" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "timer-wheel" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "timer-wheel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -97620,10 +93462,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "tinaa-test" ];
-      lispLibs = [
-        (getAttr "lift" self)
-        (getAttr "tinaa" self)
-      ];
+      lispLibs = [ (getAttr "lift" self) (getAttr "tinaa" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -97663,10 +93502,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "tiny-routes-middleware-cookie" ];
-      lispLibs = [
-        (getAttr "cl-cookie" self)
-        (getAttr "tiny-routes" self)
-      ];
+      lispLibs = [ (getAttr "cl-cookie" self) (getAttr "tiny-routes" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -97686,10 +93522,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "tm" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "local-time" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "local-time" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -97774,10 +93607,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "toadstool-tests" ];
-      lispLibs = [
-        (getAttr "stefil" self)
-        (getAttr "toadstool" self)
-      ];
+      lispLibs = [ (getAttr "stefil" self) (getAttr "toadstool" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -98044,10 +93874,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trainable-object" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "serializable-object" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "serializable-object" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -98067,10 +93894,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trainable-object.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "trainable-object" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "trainable-object" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -98285,11 +94109,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "treedb.doc" ];
-      lispLibs = [
-        (getAttr "cl-gendoc" self)
-        (getAttr "treedb" self)
-        (getAttr "treedb_dot_tests" self)
-      ];
+      lispLibs = [ (getAttr "cl-gendoc" self) (getAttr "treedb" self) (getAttr "treedb_dot_tests" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -98309,10 +94129,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "treedb.tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "treedb" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "treedb" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -98390,10 +94207,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trestrul.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "trestrul" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "trestrul" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -98479,10 +94293,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivia.cffi" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "trivia_dot_trivial" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "trivia_dot_trivial" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -98502,10 +94313,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivia.fset" ];
-      lispLibs = [
-        (getAttr "fset" self)
-        (getAttr "trivia_dot_trivial" self)
-      ];
+      lispLibs = [ (getAttr "fset" self) (getAttr "trivia_dot_trivial" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -98584,10 +94392,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivia.ppcre" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "trivia_dot_trivial" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "trivia_dot_trivial" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -98607,10 +94412,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivia.quasiquote" ];
-      lispLibs = [
-        (getAttr "fare-quasiquote-readtable" self)
-        (getAttr "trivia_dot_trivial" self)
-      ];
+      lispLibs = [ (getAttr "fare-quasiquote-readtable" self) (getAttr "trivia_dot_trivial" self) ];
       meta = { };
     }
   );
@@ -98710,10 +94512,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-backtrace-test" ];
-      lispLibs = [
-        (getAttr "lift" self)
-        (getAttr "trivial-backtrace" self)
-      ];
+      lispLibs = [ (getAttr "lift" self) (getAttr "trivial-backtrace" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -98817,10 +94616,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-build" ];
-      lispLibs = [
-        (getAttr "lisp-invocation" self)
-        (getAttr "trivial-exe" self)
-      ];
+      lispLibs = [ (getAttr "lisp-invocation" self) (getAttr "trivial-exe" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -98840,10 +94636,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-build-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "trivial-build" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "trivial-build" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -98863,10 +94656,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-channels" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "trivial-timeout" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "trivial-timeout" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -98904,10 +94694,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-clipboard-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "trivial-clipboard" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "trivial-clipboard" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -98970,10 +94757,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-compress-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "trivial-compress" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "trivial-compress" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -98993,10 +94777,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-continuation" ];
-      lispLibs = [
-        (getAttr "log4cl" self)
-        (getAttr "trivial-utilities" self)
-      ];
+      lispLibs = [ (getAttr "log4cl" self) (getAttr "trivial-utilities" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -99216,10 +94997,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-escapes-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "trivial-escapes" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "trivial-escapes" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -99259,10 +95037,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-exe-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "trivial-exe" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "trivial-exe" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -99329,10 +95104,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-extract-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "trivial-extract" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "trivial-extract" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -99510,10 +95282,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-http-test" ];
-      lispLibs = [
-        (getAttr "lift" self)
-        (getAttr "trivial-http" self)
-      ];
+      lispLibs = [ (getAttr "lift" self) (getAttr "trivial-http" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -99571,11 +95340,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-irc" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "split-sequence" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "split-sequence" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -99705,11 +95470,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-ldap" ];
-      lispLibs = [
-        (getAttr "cl_plus_ssl" self)
-        (getAttr "usocket" self)
-        (getAttr "yacc" self)
-      ];
+      lispLibs = [ (getAttr "cl_plus_ssl" self) (getAttr "usocket" self) (getAttr "yacc" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -99729,10 +95490,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-left-pad" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "prove-asdf" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "prove-asdf" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -99752,11 +95510,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-left-pad-test" ];
-      lispLibs = [
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-        (getAttr "trivial-left-pad" self)
-      ];
+      lispLibs = [ (getAttr "prove" self) (getAttr "prove-asdf" self) (getAttr "trivial-left-pad" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -99854,10 +95608,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-mmap" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "osicat" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "osicat" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -99877,11 +95628,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-monitored-thread" ];
-      lispLibs = [
-        (getAttr "iterate" self)
-        (getAttr "log4cl" self)
-        (getAttr "trivial-utilities" self)
-      ];
+      lispLibs = [ (getAttr "iterate" self) (getAttr "log4cl" self) (getAttr "trivial-utilities" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -99921,10 +95668,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-msi-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "trivial-msi" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "trivial-msi" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -99944,10 +95688,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-nntp" ];
-      lispLibs = [
-        (getAttr "cl_plus_ssl" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "cl_plus_ssl" self) (getAttr "usocket" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -100144,10 +95885,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-package-manager.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "trivial-package-manager" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "trivial-package-manager" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -100195,10 +95933,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-project" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -100344,10 +96079,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-shell-test" ];
-      lispLibs = [
-        (getAttr "lift" self)
-        (getAttr "trivial-shell" self)
-      ];
+      lispLibs = [ (getAttr "lift" self) (getAttr "trivial-shell" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -100367,11 +96099,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-signal" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -100459,10 +96187,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-ssh-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "trivial-ssh" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "trivial-ssh" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -100502,10 +96227,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-tco-test" ];
-      lispLibs = [
-        (getAttr "clunit" self)
-        (getAttr "trivial-tco" self)
-      ];
+      lispLibs = [ (getAttr "clunit" self) (getAttr "trivial-tco" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -100647,11 +96369,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-utilities" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "closer-mop" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "closer-mop" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -100671,10 +96389,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-variable-bindings" ];
-      lispLibs = [
-        (getAttr "iterate" self)
-        (getAttr "trivial-utilities" self)
-      ];
+      lispLibs = [ (getAttr "iterate" self) (getAttr "trivial-utilities" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -100772,10 +96487,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivial-ws-client" ];
-      lispLibs = [
-        (getAttr "cl-async" self)
-        (getAttr "websocket-driver" self)
-      ];
+      lispLibs = [ (getAttr "cl-async" self) (getAttr "websocket-driver" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -100866,10 +96578,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivialib.bdd.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "trivialib_dot_bdd" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "trivialib_dot_bdd" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -100914,10 +96623,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trivialib.type-unify.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "trivialib_dot_type-unify" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "trivialib_dot_type-unify" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -100937,10 +96643,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trucler" ];
-      lispLibs = [
-        (getAttr "trucler-base" self)
-        (getAttr "trucler-native" self)
-      ];
+      lispLibs = [ (getAttr "trucler-base" self) (getAttr "trucler-native" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -101000,10 +96703,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "trucler-native-test" ];
-      lispLibs = [
-        (getAttr "trucler-base" self)
-        (getAttr "trucler-native" self)
-      ];
+      lispLibs = [ (getAttr "trucler-base" self) (getAttr "trucler-native" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -101156,10 +96856,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "twfy" ];
-      lispLibs = [
-        (getAttr "cl-json" self)
-        (getAttr "drakma" self)
-      ];
+      lispLibs = [ (getAttr "cl-json" self) (getAttr "drakma" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -101179,10 +96876,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "twitter-mongodb-driver" ];
-      lispLibs = [
-        (getAttr "cl-mongo" self)
-        (getAttr "cl-twitter" self)
-      ];
+      lispLibs = [ (getAttr "cl-mongo" self) (getAttr "cl-twitter" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -101225,10 +96919,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "type-i.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "type-i" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "type-i" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -101248,10 +96939,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "type-r" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "trivia" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "trivia" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -101271,10 +96959,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "type-r.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "type-r" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "type-r" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -101345,10 +97030,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "typo.test-suite" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "typo" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "typo" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -101388,11 +97070,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "uax-14-test" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "parachute" self)
-        (getAttr "uax-14" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "parachute" self) (getAttr "uax-14" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -101412,10 +97090,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "uax-15" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "split-sequence" self) ];
       meta = { };
     }
   );
@@ -101453,11 +97128,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "uax-9-test" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "parachute" self)
-        (getAttr "uax-9" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "parachute" self) (getAttr "uax-9" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -101498,10 +97169,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ubiquitous-concurrent" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "ubiquitous" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "ubiquitous" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -101547,11 +97215,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "ucw" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "closer-mop" self)
-        (getAttr "ucw-core" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "closer-mop" self) (getAttr "ucw-core" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -101799,11 +97463,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "umbra" ];
-      lispLibs = [
-        (getAttr "mfiano-utils" self)
-        (getAttr "shadow" self)
-        (getAttr "varjo" self)
-      ];
+      lispLibs = [ (getAttr "mfiano-utils" self) (getAttr "shadow" self) (getAttr "varjo" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -101873,10 +97533,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "umlisp-tests" ];
-      lispLibs = [
-        (getAttr "rt" self)
-        (getAttr "umlisp" self)
-      ];
+      lispLibs = [ (getAttr "rt" self) (getAttr "umlisp" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -101896,11 +97553,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "unboxables" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -101966,10 +97619,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "uncursed-examples" ];
-      lispLibs = [
-        (getAttr "cffi-grovel" self)
-        (getAttr "uncursed" self)
-      ];
+      lispLibs = [ (getAttr "cffi-grovel" self) (getAttr "uncursed" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -101989,10 +97639,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "unicly" ];
-      lispLibs = [
-        (getAttr "ironclad" self)
-        (getAttr "split-sequence" self)
-      ];
+      lispLibs = [ (getAttr "ironclad" self) (getAttr "split-sequence" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -102032,10 +97679,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "unit-formulas" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -102073,10 +97717,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "universal-config" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "parse-float" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "parse-float" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -102209,10 +97850,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "uri-template.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "uri-template" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "uri-template" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -102276,10 +97914,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "userial-tests" ];
-      lispLibs = [
-        (getAttr "nst" self)
-        (getAttr "userial" self)
-      ];
+      lispLibs = [ (getAttr "nst" self) (getAttr "userial" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -102317,10 +97952,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "usocket-server" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "usocket" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "usocket" self) ];
       meta = { };
     }
   );
@@ -102338,10 +97970,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "usocket-test" ];
-      lispLibs = [
-        (getAttr "rt" self)
-        (getAttr "usocket-server" self)
-      ];
+      lispLibs = [ (getAttr "rt" self) (getAttr "usocket-server" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -102361,11 +97990,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "utilities.binary-dump" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "let-plus" self)
-        (getAttr "nibbles" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "let-plus" self) (getAttr "nibbles" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -102521,10 +98146,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "utm.test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "utm" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "utm" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -102544,10 +98166,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "uuid" ];
-      lispLibs = [
-        (getAttr "ironclad" self)
-        (getAttr "trivial-utf-8" self)
-      ];
+      lispLibs = [ (getAttr "ironclad" self) (getAttr "trivial-utf-8" self) ];
       meta = { };
     }
   );
@@ -102589,10 +98208,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "varint" ];
-      lispLibs = [
-        (getAttr "com_dot_google_dot_base" self)
-        (getAttr "nibbles" self)
-      ];
+      lispLibs = [ (getAttr "com_dot_google_dot_base" self) (getAttr "nibbles" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -102667,11 +98283,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "varjo.tests" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "rtg-math_dot_vari" self)
-        (getAttr "varjo" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "rtg-math_dot_vari" self) (getAttr "varjo" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -102734,11 +98346,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "vecto" ];
-      lispLibs = [
-        (getAttr "cl-vectors" self)
-        (getAttr "zpb-ttf" self)
-        (getAttr "zpng" self)
-      ];
+      lispLibs = [ (getAttr "cl-vectors" self) (getAttr "zpb-ttf" self) (getAttr "zpng" self) ];
       meta = { };
     }
   );
@@ -102853,11 +98461,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "vellum-clim" ];
-      lispLibs = [
-        (getAttr "iterate" self)
-        (getAttr "mcclim" self)
-        (getAttr "vellum" self)
-      ];
+      lispLibs = [ (getAttr "iterate" self) (getAttr "mcclim" self) (getAttr "vellum" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -102904,11 +98508,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "vellum-csv-tests" ];
-      lispLibs = [
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-        (getAttr "vellum-csv" self)
-      ];
+      lispLibs = [ (getAttr "prove" self) (getAttr "prove-asdf" self) (getAttr "vellum-csv" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -102957,11 +98557,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "vellum-tests" ];
-      lispLibs = [
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-        (getAttr "vellum" self)
-      ];
+      lispLibs = [ (getAttr "prove" self) (getAttr "prove-asdf" self) (getAttr "vellum" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103156,10 +98752,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "vertex-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "vertex" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "vertex" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103206,11 +98799,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "vgplot" ];
-      lispLibs = [
-        (getAttr "cl-fad" self)
-        (getAttr "cl-ppcre" self)
-        (getAttr "ltk" self)
-      ];
+      lispLibs = [ (getAttr "cl-fad" self) (getAttr "cl-ppcre" self) (getAttr "ltk" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103286,10 +98875,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "vivid-colors.content.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "vivid-colors_dot_content" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "vivid-colors_dot_content" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103333,10 +98919,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "vivid-colors.dispatch.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "vivid-colors_dot_dispatch" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "vivid-colors_dot_dispatch" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103380,10 +98963,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "vivid-colors.queue.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "vivid-colors_dot_queue" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "vivid-colors_dot_queue" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103423,10 +99003,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "vivid-colors.shared.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "vivid-colors_dot_shared" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "vivid-colors_dot_shared" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103474,10 +99051,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "vivid-colors.stream.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "vivid-colors_dot_stream" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "vivid-colors_dot_stream" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103497,10 +99071,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "vivid-colors.test" ];
-      lispLibs = [
-        (getAttr "jingoh" self)
-        (getAttr "vivid-colors" self)
-      ];
+      lispLibs = [ (getAttr "jingoh" self) (getAttr "vivid-colors" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103546,11 +99117,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "vivid-diff.test" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "jingoh" self)
-        (getAttr "vivid-diff" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "jingoh" self) (getAttr "vivid-diff" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103570,11 +99137,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "vk" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "cffi" self)
-        (getAttr "rove" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "cffi" self) (getAttr "rove" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103636,11 +99199,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "vom-json" ];
-      lispLibs = [
-        (getAttr "jonathan" self)
-        (getAttr "local-time" self)
-        (getAttr "vom" self)
-      ];
+      lispLibs = [ (getAttr "jonathan" self) (getAttr "local-time" self) (getAttr "vom" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103660,10 +99219,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "vorbisfile-ffi" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103683,10 +99239,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "vp-trees" ];
-      lispLibs = [
-        (getAttr "float-features" self)
-        (getAttr "serapeum" self)
-      ];
+      lispLibs = [ (getAttr "float-features" self) (getAttr "serapeum" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103706,11 +99259,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "wallstreetflets" ];
-      lispLibs = [
-        (getAttr "dexador" self)
-        (getAttr "lquery" self)
-        (getAttr "parse-number" self)
-      ];
+      lispLibs = [ (getAttr "dexador" self) (getAttr "lquery" self) (getAttr "parse-number" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103778,10 +99327,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "wayflan" ];
-      lispLibs = [
-        (getAttr "cffi-grovel" self)
-        (getAttr "wayflan-client" self)
-      ];
+      lispLibs = [ (getAttr "cffi-grovel" self) (getAttr "wayflan-client" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103828,11 +99374,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "webactions" ];
-      lispLibs = [
-        (getAttr "acl-compat" self)
-        (getAttr "aserve" self)
-        (getAttr "htmlgen" self)
-      ];
+      lispLibs = [ (getAttr "acl-compat" self) (getAttr "aserve" self) (getAttr "htmlgen" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103930,10 +99472,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "weblocks-montezuma" ];
-      lispLibs = [
-        (getAttr "montezuma" self)
-        (getAttr "weblocks-stores" self)
-      ];
+      lispLibs = [ (getAttr "montezuma" self) (getAttr "weblocks-stores" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -103953,10 +99492,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "weblocks-perec" ];
-      lispLibs = [
-        (getAttr "hu_dot_dwim_dot_perec" self)
-        (getAttr "weblocks-stores" self)
-      ];
+      lispLibs = [ (getAttr "hu_dot_dwim_dot_perec" self) (getAttr "weblocks-stores" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -104003,10 +99539,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "weblocks-scripts" ];
-      lispLibs = [
-        (getAttr "cl-fad" self)
-        (getAttr "cl-ppcre" self)
-      ];
+      lispLibs = [ (getAttr "cl-fad" self) (getAttr "cl-ppcre" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -104092,10 +99625,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "websocket-driver" ];
-      lispLibs = [
-        (getAttr "websocket-driver-client" self)
-        (getAttr "websocket-driver-server" self)
-      ];
+      lispLibs = [ (getAttr "websocket-driver-client" self) (getAttr "websocket-driver-server" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -104244,10 +99774,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "westbrook-tests" ];
-      lispLibs = [
-        (getAttr "fiasco" self)
-        (getAttr "westbrook" self)
-      ];
+      lispLibs = [ (getAttr "fiasco" self) (getAttr "westbrook" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -104267,11 +99794,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "what3words" ];
-      lispLibs = [
-        (getAttr "cl-ppcre" self)
-        (getAttr "drakma" self)
-        (getAttr "jsown" self)
-      ];
+      lispLibs = [ (getAttr "cl-ppcre" self) (getAttr "drakma" self) (getAttr "jsown" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -104291,10 +99814,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "which" ];
-      lispLibs = [
-        (getAttr "cl-fad" self)
-        (getAttr "path-parse" self)
-      ];
+      lispLibs = [ (getAttr "cl-fad" self) (getAttr "path-parse" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -104314,10 +99834,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "which-test" ];
-      lispLibs = [
-        (getAttr "fiveam" self)
-        (getAttr "which" self)
-      ];
+      lispLibs = [ (getAttr "fiveam" self) (getAttr "which" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -104357,10 +99874,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "whofields" ];
-      lispLibs = [
-        (getAttr "asdf-package-system" self)
-        (getAttr "cl-who" self)
-      ];
+      lispLibs = [ (getAttr "asdf-package-system" self) (getAttr "cl-who" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -104464,11 +99978,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "winlock" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "named-readtables" self)
-        (getAttr "serapeum" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "named-readtables" self) (getAttr "serapeum" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -104508,10 +100018,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "with-branching" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "trivial-indent" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "trivial-indent" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -104645,10 +100152,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "with-output-to-stream_tests" ];
-      lispLibs = [
-        (getAttr "parachute" self)
-        (getAttr "with-output-to-stream" self)
-      ];
+      lispLibs = [ (getAttr "parachute" self) (getAttr "with-output-to-stream" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -104708,10 +100212,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "with-shadowed-bindings_tests" ];
-      lispLibs = [
-        (getAttr "parachute" self)
-        (getAttr "with-shadowed-bindings" self)
-      ];
+      lispLibs = [ (getAttr "parachute" self) (getAttr "with-shadowed-bindings" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -104785,11 +100286,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "woo-test" ];
-      lispLibs = [
-        (getAttr "clack-test" self)
-        (getAttr "rove" self)
-        (getAttr "woo" self)
-      ];
+      lispLibs = [ (getAttr "clack-test" self) (getAttr "rove" self) (getAttr "woo" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -104954,10 +100451,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "wuwei-examples" ];
-      lispLibs = [
-        (getAttr "drakma" self)
-        (getAttr "wuwei" self)
-      ];
+      lispLibs = [ (getAttr "drakma" self) (getAttr "wuwei" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -105022,10 +100516,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "xarray-test" ];
-      lispLibs = [
-        (getAttr "lift" self)
-        (getAttr "xarray" self)
-      ];
+      lispLibs = [ (getAttr "lift" self) (getAttr "xarray" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -105131,10 +100622,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "xfactory-test" ];
-      lispLibs = [
-        (getAttr "lift" self)
-        (getAttr "xfactory" self)
-      ];
+      lispLibs = [ (getAttr "lift" self) (getAttr "xfactory" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -105194,10 +100682,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "xhtmlgen-test" ];
-      lispLibs = [
-        (getAttr "rt" self)
-        (getAttr "xhtmlgen" self)
-      ];
+      lispLibs = [ (getAttr "rt" self) (getAttr "xhtmlgen" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -105255,11 +100740,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "xlsx" ];
-      lispLibs = [
-        (getAttr "flexi-streams" self)
-        (getAttr "xmls" self)
-        (getAttr "zip" self)
-      ];
+      lispLibs = [ (getAttr "flexi-streams" self) (getAttr "xmls" self) (getAttr "zip" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -105339,10 +100820,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "xml-mop" ];
-      lispLibs = [
-        (getAttr "closer-mop" self)
-        (getAttr "s-xml" self)
-      ];
+      lispLibs = [ (getAttr "closer-mop" self) (getAttr "s-xml" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -105362,10 +100840,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "xml-render" ];
-      lispLibs = [
-        (getAttr "cl-typesetting" self)
-        (getAttr "xmls" self)
-      ];
+      lispLibs = [ (getAttr "cl-typesetting" self) (getAttr "xmls" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -105412,10 +100887,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "xml.location-and-local-time" ];
-      lispLibs = [
-        (getAttr "local-time" self)
-        (getAttr "xml_dot_location" self)
-      ];
+      lispLibs = [ (getAttr "local-time" self) (getAttr "xml_dot_location" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -105534,11 +101006,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "xsubseq-test" ];
-      lispLibs = [
-        (getAttr "prove" self)
-        (getAttr "prove-asdf" self)
-        (getAttr "xsubseq" self)
-      ];
+      lispLibs = [ (getAttr "prove" self) (getAttr "prove-asdf" self) (getAttr "xsubseq" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -105602,10 +101070,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "yaclml" ];
-      lispLibs = [
-        (getAttr "arnesi" self)
-        (getAttr "iterate" self)
-      ];
+      lispLibs = [ (getAttr "arnesi" self) (getAttr "iterate" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -105625,10 +101090,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "yadd" ];
-      lispLibs = [
-        (getAttr "cl-html-parse" self)
-        (getAttr "gwl-graphics" self)
-      ];
+      lispLibs = [ (getAttr "cl-html-parse" self) (getAttr "gwl-graphics" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -105668,10 +101130,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "yason" ];
-      lispLibs = [
-        (getAttr "alexandria" self)
-        (getAttr "trivial-gray-streams" self)
-      ];
+      lispLibs = [ (getAttr "alexandria" self) (getAttr "trivial-gray-streams" self) ];
       meta = { };
     }
   );
@@ -105785,10 +101244,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "zaserve" ];
-      lispLibs = [
-        (getAttr "setup-cl_plus_ssl" self)
-        (getAttr "zacl" self)
-      ];
+      lispLibs = [ (getAttr "setup-cl_plus_ssl" self) (getAttr "zacl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -105936,11 +101392,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "zenekindarl-test" ];
-      lispLibs = [
-        (getAttr "flexi-streams" self)
-        (getAttr "prove" self)
-        (getAttr "zenekindarl" self)
-      ];
+      lispLibs = [ (getAttr "flexi-streams" self) (getAttr "prove" self) (getAttr "zenekindarl" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -105960,11 +101412,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "zeromq" ];
-      lispLibs = [
-        (getAttr "cffi" self)
-        (getAttr "cffi-grovel" self)
-        (getAttr "trivial-garbage" self)
-      ];
+      lispLibs = [ (getAttr "cffi" self) (getAttr "cffi-grovel" self) (getAttr "trivial-garbage" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -105984,11 +101432,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "zeromq.tests" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "fiveam" self)
-        (getAttr "zeromq" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "fiveam" self) (getAttr "zeromq" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -106063,10 +101507,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "zippy-dwim" ];
-      lispLibs = [
-        (getAttr "deploy" self)
-        (getAttr "zippy" self)
-      ];
+      lispLibs = [ (getAttr "deploy" self) (getAttr "zippy" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -106156,10 +101597,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "zmq-examples" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "zmq" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "zmq" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -106179,11 +101617,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "zmq-test" ];
-      lispLibs = [
-        (getAttr "bordeaux-threads" self)
-        (getAttr "fiveam" self)
-        (getAttr "zmq" self)
-      ];
+      lispLibs = [ (getAttr "bordeaux-threads" self) (getAttr "fiveam" self) (getAttr "zmq" self) ];
       meta = {
         hydraPlatforms = [ ];
       };
@@ -106330,11 +101764,7 @@ lib.makeScope pkgs.newScope (self: {
         }
       );
       systems = [ "zstd-tests" ];
-      lispLibs = [
-        (getAttr "cl-octet-streams" self)
-        (getAttr "fiveam" self)
-        (getAttr "zstd" self)
-      ];
+      lispLibs = [ (getAttr "cl-octet-streams" self) (getAttr "fiveam" self) (getAttr "zstd" self) ];
       meta = {
         hydraPlatforms = [ ];
       };

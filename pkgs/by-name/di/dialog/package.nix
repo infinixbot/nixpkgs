@@ -45,10 +45,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Display dialog boxes from shell";
     license = lib.licenses.lgpl21Plus;
     mainProgram = "dialog";
-    maintainers = with lib.maintainers; [
-      AndersonTorres
-      spacefrogg
-    ];
+    maintainers = with lib.maintainers; [ AndersonTorres spacefrogg ];
     inherit (ncurses.meta) platforms;
   };
 })

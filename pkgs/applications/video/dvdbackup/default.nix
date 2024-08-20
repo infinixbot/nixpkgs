@@ -17,11 +17,7 @@ stdenv.mkDerivation rec {
     sha256 = "1rl3h7waqja8blmbpmwy01q9fgr5r0c32b8dy3pbf59bp3xmd37g";
   };
 
-  buildInputs = [
-    libdvdread
-    libdvdcss
-    dvdauthor
-  ];
+  buildInputs = [ libdvdread libdvdcss dvdauthor ];
 
   # see https://bugs.launchpad.net/dvdbackup/+bug/1869226
   patchFlags = [ "-p0" ];

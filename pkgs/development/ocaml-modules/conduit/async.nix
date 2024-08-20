@@ -19,10 +19,7 @@ buildDunePackage {
     src
     ;
 
-  buildInputs = [
-    ppx_sexp_conv
-    ppx_here
-  ];
+  buildInputs = [ ppx_sexp_conv ppx_here ];
 
   propagatedBuildInputs = [
     async

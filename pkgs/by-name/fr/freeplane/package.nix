@@ -38,11 +38,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     data = ./deps.json;
   };
 
-  gradleFlags = [
-    "-Dorg.gradle.java.home=${jdk}"
-    "-x"
-    "test"
-  ];
+  gradleFlags = [ "-Dorg.gradle.java.home=${jdk}" "-x" "test" ];
 
   preBuild = "mkdir -p freeplane/build";
 

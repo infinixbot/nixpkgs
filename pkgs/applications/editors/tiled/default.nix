@@ -16,12 +16,7 @@
 }:
 
 let
-  qtEnv = env "tiled-qt-env" [
-    qtbase
-    qtdeclarative
-    qtsvg
-    qttools
-  ];
+  qtEnv = env "tiled-qt-env" [ qtbase qtdeclarative qtsvg qttools ];
 in
 
 stdenv.mkDerivation rec {
@@ -35,22 +30,10 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-cFS1OSYfGMsnw+VkZD/HO4+D+pxNKuifWjNhy0FoxN0=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    qbs
-    wrapQtAppsHook
-  ];
-  buildInputs = [
-    qtEnv
-    zlib
-    zstd
-    libGL
-  ];
+  nativeBuildInputs = [ pkg-config qbs wrapQtAppsHook ];
+  buildInputs = [ qtEnv zlib zstd libGL ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   strictDeps = true;
 

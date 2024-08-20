@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
   pname = "libopenmpt";
   version = "0.7.9";
 
-  outputs = [
-    "out"
-    "dev"
-    "bin"
-  ];
+  outputs = [ "out" "dev" "bin" ];
 
   src = fetchurl {
     url = "https://lib.openmpt.org/files/libopenmpt/src/libopenmpt-${version}+release.autotools.tar.gz";

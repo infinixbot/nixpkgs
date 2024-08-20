@@ -28,10 +28,7 @@ buildPythonApplication rec {
       icon = "thonny";
       desktopName = "Thonny";
       comment = "Python IDE for beginners";
-      categories = [
-        "Development"
-        "IDE"
-      ];
+      categories = [ "Development" "IDE" ];
     })
   ];
 

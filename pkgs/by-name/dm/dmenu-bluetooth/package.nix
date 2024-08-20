@@ -27,12 +27,7 @@ stdenv.mkDerivation (finalAttrs: {
     install -D --target-directory=$out/bin/ ./dmenu-bluetooth
 
     wrapProgram $out/bin/dmenu-bluetooth \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          dmenu
-          bluez
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ dmenu bluez ]}
 
     runHook postInstall
   '';

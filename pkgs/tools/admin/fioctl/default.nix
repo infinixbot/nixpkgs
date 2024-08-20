@@ -45,10 +45,7 @@ buildGoModule rec {
     description = "Simple CLI to manage your Foundries Factory";
     homepage = "https://github.com/foundriesio/fioctl";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      nixinator
-      matthewcroughan
-    ];
+    maintainers = with maintainers; [ nixinator matthewcroughan ];
     mainProgram = "fioctl";
   };
 }

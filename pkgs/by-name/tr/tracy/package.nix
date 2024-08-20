@@ -125,10 +125,6 @@ stdenv.mkDerivation rec {
     platforms = platforms.linux ++ platforms.darwin;
     license = licenses.bsd3;
     mainProgram = "tracy";
-    maintainers = with maintainers; [
-      mpickering
-      nagisa
-      paveloom
-    ];
+    maintainers = with maintainers; [ mpickering nagisa paveloom ];
   };
 }

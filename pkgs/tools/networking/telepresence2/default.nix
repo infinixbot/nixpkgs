@@ -21,10 +21,7 @@ let
 
     buildInputs = [ fuse ];
 
-    ldflags = [
-      "-s"
-      "-w"
-    ];
+    ldflags = [ "-s" "-w" ];
 
     subPackages = [ "pkg/main" ];
   };
@@ -65,10 +62,7 @@ buildGoModule rec {
     description = "Local development against a remote Kubernetes or OpenShift cluster";
     homepage = "https://telepresence.io";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      mausch
-      vilsol
-    ];
+    maintainers = with maintainers; [ mausch vilsol ];
     mainProgram = "telepresence";
   };
 }

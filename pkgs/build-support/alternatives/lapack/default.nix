@@ -31,10 +31,7 @@ stdenv.mkDerivation {
   pname = "lapack";
   inherit version;
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   meta = (lapackProvider'.meta or { }) // {
     description = "${lib.getName lapackProvider'} with just the LAPACK C and FORTRAN ABI";

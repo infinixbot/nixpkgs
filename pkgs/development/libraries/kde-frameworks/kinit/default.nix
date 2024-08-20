@@ -21,14 +21,8 @@ in
 
 mkDerivation {
   pname = "kinit";
-  outputs = [
-    "out"
-    "dev"
-  ];
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  outputs = [ "out" "dev" ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     kconfig
     kcrash

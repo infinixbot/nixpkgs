@@ -25,10 +25,7 @@
 
 mkDerivation {
   pname = "systemsettings";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     kcmutils
     kconfig
@@ -50,10 +47,6 @@ mkDerivation {
     kcrash
     plasma-workspace
   ];
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-  ];
+  outputs = [ "bin" "dev" "out" ];
   meta.mainProgram = "systemsettings5";
 }

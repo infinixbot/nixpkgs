@@ -15,10 +15,7 @@ buildDunePackage {
 
   propagatedBuildInputs = [ ppx_sexp_conv ];
 
-  checkInputs = [
-    macaddr-cstruct
-    ounit2
-  ];
+  checkInputs = [ macaddr-cstruct ounit2 ];
   doCheck = true;
 
   meta = macaddr.meta // {

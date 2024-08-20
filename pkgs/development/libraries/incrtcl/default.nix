@@ -33,11 +33,7 @@ tcl.mkTclDerivation rec {
     export ITCL_LIBRARY=@out@/lib
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
   meta = with lib; {
     homepage = "https://incrtcl.sourceforge.net/";

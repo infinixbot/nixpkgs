@@ -19,14 +19,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-OcQJeiva6X2rUyh1rJ+w4O2dWxaR7MwMfbHlnWuBVb8=";
   };
 
-  buildInputs = [
-    libusb1
-    pico-sdk
-  ];
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  buildInputs = [ libusb1 pico-sdk ];
+  nativeBuildInputs = [ cmake pkg-config ];
   cmakeFlags = [ "-DPICO_SDK_PATH=${pico-sdk}/lib/pico-sdk" ];
 
   postInstall = ''

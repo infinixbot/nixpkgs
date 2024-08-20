@@ -37,10 +37,7 @@ stdenv.mkDerivation {
   # fixupPhase to update the hash bang line.
   strictDeps = true;
   nativeBuildInputs = [ perl ];
-  buildInputs = [
-    perl
-    sysfsutils
-  ];
+  buildInputs = [ perl sysfsutils ];
 
   installFlags = [
     "sbindir=${placeholder "out"}/bin"

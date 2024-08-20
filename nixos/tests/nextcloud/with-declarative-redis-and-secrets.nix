@@ -18,10 +18,7 @@ args@{
   {
     name = "nextcloud-with-declarative-redis";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        eqyiel
-        ma27
-      ];
+      maintainers = [ eqyiel ma27 ];
     };
 
     nodes = {

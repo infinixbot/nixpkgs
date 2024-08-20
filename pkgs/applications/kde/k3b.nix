@@ -47,11 +47,7 @@ mkDerivation {
     maintainers = with maintainers; [ sander ];
     platforms = platforms.linux;
   };
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-    makeWrapper
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools makeWrapper ];
   buildInputs = [
     # kde
     libkcddb

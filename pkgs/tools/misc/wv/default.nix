@@ -25,19 +25,8 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-xcC+/M1EzFqQFeF5Dw9qd8VIy7r8JdKMp2X/GHkFiPA=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
-  buildInputs = [
-    zlib
-    imagemagick
-    libpng
-    glib
-    libgsf
-    libxml2
-    bzip2
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
+  buildInputs = [ zlib imagemagick libpng glib libgsf libxml2 bzip2 ];
 
   configureFlags = [
     "PKG_CONFIG=${buildPackages.pkg-config}/bin/${buildPackages.pkg-config.targetPrefix}pkg-config"

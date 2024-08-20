@@ -19,11 +19,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-1glSjsuHN7urlktxJ/vR/jfDgbVBWsui0bZWMhmJ50c=";
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X main.Version=v${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X main.Version=v${version}" ];
 
   meta = with lib; {
     description = "A tool for managing secrets by storing them in AWS SSM Parameter Store";

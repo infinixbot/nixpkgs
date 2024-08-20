@@ -178,12 +178,7 @@ stdenv.mkDerivation rec {
     runHook preFixup
 
     wrapProgram $out/libexec/cockpit-certificate-helper \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          openssl
-        ]
-      } \
+      --prefix PATH : ${lib.makeBinPath [ coreutils openssl ]} \
       --run 'cd $(mktemp -d)'
 
     wrapProgram $out/share/cockpit/motd/update-motd \

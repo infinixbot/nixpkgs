@@ -97,17 +97,9 @@ let
 
           patches = extraPatches;
 
-          outputs = [
-            "out"
-            "dev"
-            "doc"
-          ];
+          outputs = [ "out" "dev" "doc" ];
 
-          nativeBuildInputs = [
-            cmake
-            ninja
-            pkg-config
-          ];
+          nativeBuildInputs = [ cmake ninja pkg-config ];
           buildInputs = lib.optional stdenv.isDarwin CoreFoundation ++ extraCppBuildInputs;
 
           cmakeDir = "../runtime/Cpp";

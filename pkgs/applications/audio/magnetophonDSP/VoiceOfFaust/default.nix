@@ -20,17 +20,11 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-vB8+ymvNuuovFXwOJ3BTIj5mGzCGa1+yhYs4nWMYIxU=";
   };
 
-  plugins = [
-    helmholtz
-    mrpeach
-  ];
+  plugins = [ helmholtz mrpeach ];
 
   pitchTracker = puredata-with-plugins plugins;
 
-  buildInputs = [
-    faust2jack
-    faust2lv2
-  ];
+  buildInputs = [ faust2jack faust2lv2 ];
 
   enableParallelBuilding = true;
 

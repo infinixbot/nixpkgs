@@ -150,10 +150,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Daemon, tools and libraries to access and manipulate disks, storage devices and technologies";
     homepage = "https://www.freedesktop.org/wiki/Software/udisks/";
-    license = with licenses; [
-      lgpl2Plus
-      gpl2Plus
-    ]; # lgpl2Plus for the library, gpl2Plus for the tools & daemon
+    license = with licenses; [ lgpl2Plus gpl2Plus ]; # lgpl2Plus for the library, gpl2Plus for the tools & daemon
     maintainers = teams.freedesktop.members ++ (with maintainers; [ johnazoidberg ]);
     platforms = platforms.linux;
   };

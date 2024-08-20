@@ -29,12 +29,7 @@ buildGoModule rec {
   proxyVendor = true;
   vendorHash = "sha256-eMtwmADYbvpIm4FHTHieQ1i4xCty5xCwsZ/JD9r94/8=";
 
-  nativeBuildInputs = [
-    fixup-yarn-lock
-    yarn
-    nodejs
-    installShellFiles
-  ];
+  nativeBuildInputs = [ fixup-yarn-lock yarn nodejs installShellFiles ];
 
   ldflags =
     let
@@ -129,12 +124,7 @@ buildGoModule rec {
     license = licenses.asl20;
     homepage = "https://grafana.com/oss/alloy";
     changelog = "https://github.com/grafana/alloy/blob/${src.rev}/CHANGELOG.md";
-    maintainers = with maintainers; [
-      azahi
-      flokli
-      emilylange
-      hbjydev
-    ];
+    maintainers = with maintainers; [ azahi flokli emilylange hbjydev ];
     platforms = lib.platforms.unix;
   };
 }

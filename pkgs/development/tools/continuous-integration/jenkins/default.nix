@@ -88,12 +88,7 @@ stdenv.mkDerivation rec {
     license = licenses.mit;
     maintainers =
       with maintainers;
-      [
-        coconnor
-        earldouglas
-        nequissimus
-      ]
-      ++ teams.helsinki-systems.members;
+      [ coconnor earldouglas nequissimus ] ++ teams.helsinki-systems.members;
     changelog = "https://www.jenkins.io/changelog-stable/#v${version}";
     mainProgram = "jenkins-cli";
     platforms = platforms.all;

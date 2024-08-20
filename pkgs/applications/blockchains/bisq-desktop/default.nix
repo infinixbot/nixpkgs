@@ -66,10 +66,7 @@ stdenv.mkDerivation rec {
       icon = "bisq";
       desktopName = "Bisq ${version}";
       genericName = "Decentralized bitcoin exchange";
-      categories = [
-        "Network"
-        "P2P"
-      ];
+      categories = [ "Network" "P2P" ];
     })
 
     (makeDesktopItem {
@@ -78,10 +75,7 @@ stdenv.mkDerivation rec {
       icon = "bisq";
       desktopName = "Bisq ${version} (HiDPI)";
       genericName = "Decentralized bitcoin exchange";
-      categories = [
-        "Network"
-        "P2P"
-      ];
+      categories = [ "Network" "P2P" ];
     })
   ];
 
@@ -128,10 +122,7 @@ stdenv.mkDerivation rec {
     homepage = "https://bisq.network";
     sourceProvenance = with sourceTypes; [ binaryBytecode ];
     license = licenses.mit;
-    maintainers = with maintainers; [
-      juaningan
-      emmanuelrosa
-    ];
+    maintainers = with maintainers; [ juaningan emmanuelrosa ];
     platforms = [ "x86_64-linux" ];
   };
 }

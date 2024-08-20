@@ -22,10 +22,7 @@ python3Packages.buildPythonApplication {
     hash = "sha256-pve2f+XMfFokMCtW3KdeOJ9Ey330Gwv/dk1+WBtrBEQ=";
   };
 
-  nativeBuildInputs = [
-    copyDesktopItems
-    qt5.wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ copyDesktopItems qt5.wrapQtAppsHook ];
 
   buildInputs = [
     qt5.qtbase
@@ -51,10 +48,7 @@ python3Packages.buildPythonApplication {
       name = pname;
       desktopName = "Amphetype";
       genericName = "Typing Practice";
-      categories = [
-        "Education"
-        "Qt"
-      ];
+      categories = [ "Education" "Qt" ];
       exec = pname;
       comment = description;
     })

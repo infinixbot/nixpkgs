@@ -57,16 +57,9 @@ stdenv.mkDerivation (finalAttrs: rec {
     hash = "sha256-BSDkF0MAc54N59t7ozMLof0of4sURL3qiksLZhb+6I8=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ] ++ defaultOptionals ++ lib.optional gtestSupport gtest.dev;
+  nativeBuildInputs = [ cmake pkg-config ] ++ defaultOptionals ++ lib.optional gtestSupport gtest.dev;
 
-  buildInputs = [
-    jsoncpp
-    openssl
-    curl
-  ] ++ defaultOptionals;
+  buildInputs = [ jsoncpp openssl curl ] ++ defaultOptionals;
 
   cmakeFlags = [
     "-DBUILD_TESTS=${enableCmakeFeature gtestSupport}"
@@ -92,9 +85,6 @@ stdenv.mkDerivation (finalAttrs: rec {
     changelog = "https://github.com/apache/pulsar-client-cpp/releases/tag/v${version}";
     platforms = platforms.all;
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      corbanr
-      gaelreyrol
-    ];
+    maintainers = with maintainers; [ corbanr gaelreyrol ];
   };
 })

@@ -122,10 +122,7 @@ let
     outputHash = "sha256-xb8gKQHSyscWM29r0BWK0YsALull9uYjX7e+l1DHFPg=";
     outputHashMode = "recursive";
 
-    nativeBuildInputs = [
-      aria2
-      cacert
-    ];
+    nativeBuildInputs = [ aria2 cacert ];
 
     buildCommand = ''
       bash $src/download-paks --cache=$(pwd) --version=${version} $out
@@ -188,11 +185,7 @@ stdenv.mkDerivation rec {
       comment = "FPS/RTS Game - Aliens vs. Humans";
       icon = "unvanquished";
       exec = "unvanquished";
-      categories = [
-        "Game"
-        "ActionGame"
-        "StrategyGame"
-      ];
+      categories = [ "Game" "ActionGame" "StrategyGame" ];
       prefersNonDefaultGPU = true;
     })
     (makeDesktopItem {

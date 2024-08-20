@@ -17,63 +17,25 @@ in
 
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "sslh"
-        "listenAddress"
-      ]
-      [
-        "services"
-        "sslh"
-        "listenAddresses"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "sslh"
-        "timeout"
-      ]
-      [
-        "services"
-        "sslh"
-        "settings"
-        "timeout"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "sslh"
-        "transparent"
-      ]
-      [
-        "services"
-        "sslh"
-        "settings"
-        "transparent"
-      ]
-    )
-    (mkRemovedOptionModule [
+    (mkRenamedOptionModule [ "services" "sslh" "listenAddress" ] [
       "services"
       "sslh"
-      "appendConfig"
-    ] "Use services.sslh.settings instead")
-    (mkChangedOptionModule
-      [
-        "services"
-        "sslh"
-        "verbose"
-      ]
-      [
-        "services"
-        "sslh"
-        "settings"
-        "verbose-connections"
-      ]
-      (config: if config.services.sslh.verbose then 1 else 0)
-    )
+      "listenAddresses"
+    ])
+    (mkRenamedOptionModule [ "services" "sslh" "timeout" ] [ "services" "sslh" "settings" "timeout" ])
+    (mkRenamedOptionModule [ "services" "sslh" "transparent" ] [
+      "services"
+      "sslh"
+      "settings"
+      "transparent"
+    ])
+    (mkRemovedOptionModule [ "services" "sslh" "appendConfig" ] "Use services.sslh.settings instead")
+    (mkChangedOptionModule [ "services" "sslh" "verbose" ] [
+      "services"
+      "sslh"
+      "settings"
+      "verbose-connections"
+    ] (config: if config.services.sslh.verbose then 1 else 0))
   ];
 
   meta.buildDocsInSandbox = false;
@@ -82,11 +44,7 @@ in
     enable = mkEnableOption "sslh, protocol demultiplexer";
 
     method = mkOption {
-      type = types.enum [
-        "fork"
-        "select"
-        "ev"
-      ];
+      type = types.enum [ "fork" "select" "ev" ];
       default = "fork";
       description = ''
         The method to use for handling connections:
@@ -106,10 +64,7 @@ in
 
     listenAddresses = mkOption {
       type = with types; coercedTo str singleton (listOf str);
-      default = [
-        "0.0.0.0"
-        "[::]"
-      ];
+      default = [ "0.0.0.0" "[::]" ];
       description = "Listening addresses or hostnames.";
     };
 
@@ -236,12 +191,7 @@ in
           RestartSec = "1s";
           ExecStart = "${pkgs.sslh}/bin/sslh-${cfg.method} -F${configFile}";
           KillMode = "process";
-          AmbientCapabilities = [
-            "CAP_NET_BIND_SERVICE"
-            "CAP_NET_ADMIN"
-            "CAP_SETGID"
-            "CAP_SETUID"
-          ];
+          AmbientCapabilities = [ "CAP_NET_BIND_SERVICE" "CAP_NET_ADMIN" "CAP_SETGID" "CAP_SETUID" ];
           PrivateTmp = true;
           PrivateDevices = true;
           ProtectSystem = "full";
@@ -313,11 +263,7 @@ in
           ];
         in
         {
-          path = [
-            pkgs.iptables
-            pkgs.iproute2
-            pkgs.procps
-          ];
+          path = [ pkgs.iptables pkgs.iproute2 pkgs.procps ];
 
           preStart =
             ''

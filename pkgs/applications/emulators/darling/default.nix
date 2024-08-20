@@ -122,10 +122,7 @@ stdenv.mkDerivation {
     hash = "sha256-T0g38loUFv3jHvUu3R3QH9hwP8JVe2al4g4VhXnBDMc=";
   };
 
-  outputs = [
-    "out"
-    "sdk"
-  ];
+  outputs = [ "out" "sdk" ];
 
   postPatch = ''
     # We have to be careful - Patching everything indiscriminately

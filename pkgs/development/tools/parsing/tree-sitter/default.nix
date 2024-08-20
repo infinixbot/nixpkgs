@@ -178,20 +178,13 @@ rustPlatform.buildRustPackage {
 
   cargoHash = "sha256-44FIO0kPso6NxjLwmggsheILba3r9GEhDld2ddt601g=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [
-    Security
-    CoreServices
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ Security CoreServices ];
   nativeBuildInputs = [ which ] ++ lib.optionals webUISupport [ emscripten ];
 
   patches = lib.optionals webUISupport [
     (substitute {
       src = ./fix-paths.patch;
-      substitutions = [
-        "--subst-var-by"
-        "emcc"
-        "${emscripten}/bin/emcc"
-      ];
+      substitutions = [ "--subst-var-by" "emcc" "${emscripten}/bin/emcc" ];
     })
   ];
 

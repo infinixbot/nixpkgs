@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ makeWrapper ];
 
-  buildInputs = [
-    flex
-    db
-  ];
+  buildInputs = [ flex db ];
 
   doCheck = false; # needs "y" tool
 

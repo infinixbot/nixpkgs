@@ -11,14 +11,7 @@ let
   cfg = config.services.pdns-recursor;
 
   oneOrMore = type: with types; either type (listOf type);
-  valueType =
-    with types;
-    oneOf [
-      int
-      str
-      bool
-      path
-    ];
+  valueType = with types; oneOf [ int str bool path ];
   configType = with types; attrsOf (nullOr (oneOrMore valueType));
 
   toBool = val: if val then "yes" else "no";
@@ -51,10 +44,7 @@ in
 
     dns.address = mkOption {
       type = oneOrMore types.str;
-      default = [
-        "::"
-        "0.0.0.0"
-      ];
+      default = [ "::" "0.0.0.0" ];
       description = ''
         IP addresses Recursor DNS server will bind to.
       '';
@@ -81,10 +71,7 @@ in
         "fc00::/7"
         "fe80::/10"
       ];
-      example = [
-        "0.0.0.0/0"
-        "::/0"
-      ];
+      example = [ "0.0.0.0/0" "::/0" ];
       description = ''
         IP address ranges of clients allowed to make DNS queries.
       '';
@@ -108,14 +95,8 @@ in
 
     api.allowFrom = mkOption {
       type = types.listOf types.str;
-      default = [
-        "127.0.0.1"
-        "::1"
-      ];
-      example = [
-        "0.0.0.0/0"
-        "::/0"
-      ];
+      default = [ "127.0.0.1" "::1" ];
+      example = [ "0.0.0.0/0" "::/0" ];
       description = ''
         IP address ranges of clients allowed to make API requests.
       '';
@@ -149,13 +130,7 @@ in
     };
 
     dnssecValidation = mkOption {
-      type = types.enum [
-        "off"
-        "process-no-validate"
-        "process"
-        "log-fail"
-        "validate"
-      ];
+      type = types.enum [ "off" "process-no-validate" "process" "log-fail" "validate" ];
       default = "validate";
       description = ''
         Controls the level of DNSSEC processing done by the PowerDNS Recursor.
@@ -235,10 +210,7 @@ in
       wantedBy = [ "multi-user.target" ];
 
       serviceConfig = {
-        ExecStart = [
-          ""
-          "${pkgs.pdns-recursor}/bin/pdns_recursor --config-dir=${configDir}"
-        ];
+        ExecStart = [ "" "${pkgs.pdns-recursor}/bin/pdns_recursor --config-dir=${configDir}" ];
       };
     };
 

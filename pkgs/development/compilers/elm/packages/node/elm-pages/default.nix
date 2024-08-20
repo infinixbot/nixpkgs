@@ -21,12 +21,7 @@ nodePkgs."elm-pages".overrideAttrs (old: {
 
   postFixup = ''
     wrapProgram $out/bin/elm-pages --prefix PATH : ${
-      with pkgs.elmPackages;
-      lib.makeBinPath [
-        elm
-        elm-review
-        elm-optimize-level-2
-      ]
+      with pkgs.elmPackages; lib.makeBinPath [ elm elm-review elm-optimize-level-2 ]
     }
   '';
 
@@ -37,9 +32,6 @@ nodePkgs."elm-pages".overrideAttrs (old: {
       description = "Statically typed site generator for Elm";
       homepage = "https://github.com/dillonkearns/elm-pages";
       license = licenses.bsd3;
-      maintainers = [
-        maintainers.turbomack
-        maintainers.jali-clarke
-      ];
+      maintainers = [ maintainers.turbomack maintainers.jali-clarke ];
     };
 })

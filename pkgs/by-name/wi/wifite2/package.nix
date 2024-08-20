@@ -77,10 +77,6 @@ python3.pkgs.buildPythonApplication rec {
     mainProgram = "wifite";
     license = licenses.gpl2Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      lassulus
-      danielfullmer
-      d3vil0p3r
-    ];
+    maintainers = with maintainers; [ lassulus danielfullmer d3vil0p3r ];
   };
 }

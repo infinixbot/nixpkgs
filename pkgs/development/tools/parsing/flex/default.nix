@@ -43,10 +43,7 @@ stdenv.mkDerivation rec {
     '';
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
-  nativeBuildInputs = [
-    autoreconfHook
-    help2man
-  ];
+  nativeBuildInputs = [ autoreconfHook help2man ];
   buildInputs = [ bison ];
   propagatedBuildInputs = [ m4 ];
 

@@ -18,10 +18,7 @@ import ./make-test-python.nix (
 
             settings = {
               authorization = {
-                trusted_clients = [
-                  "127.0.0.0/8"
-                  "::1/128"
-                ];
+                trusted_clients = [ "127.0.0.0/8" "::1/128" ];
               };
             };
           };

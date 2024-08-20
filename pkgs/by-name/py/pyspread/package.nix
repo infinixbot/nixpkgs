@@ -56,11 +56,7 @@ python3.pkgs.buildPythonApplication {
       desktopName = "Pyspread";
       genericName = "Spreadsheet";
       comment = "A Python-oriented spreadsheet application";
-      categories = [
-        "Office"
-        "Development"
-        "Spreadsheet"
-      ];
+      categories = [ "Office" "Development" "Spreadsheet" ];
     })
   ];
 

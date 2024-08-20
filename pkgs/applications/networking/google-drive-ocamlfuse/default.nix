@@ -25,13 +25,7 @@ buildDunePackage rec {
   doCheck = lib.versionOlder ocaml.version "5.0";
   checkInputs = [ ounit2 ];
 
-  buildInputs = [
-    extlib
-    ocamlfuse
-    gapi-ocaml
-    ocaml_sqlite3
-    tiny_httpd
-  ];
+  buildInputs = [ extlib ocamlfuse gapi-ocaml ocaml_sqlite3 tiny_httpd ];
 
   meta = {
     inherit (src.meta) homepage;

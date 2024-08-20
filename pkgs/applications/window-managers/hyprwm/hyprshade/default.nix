@@ -26,10 +26,7 @@ buildPythonPackage rec {
     makeWrapper
   ];
 
-  propagatedBuildInputs = [
-    more-itertools
-    click
-  ];
+  propagatedBuildInputs = [ more-itertools click ];
 
   postFixup = ''
     wrapProgram $out/bin/hyprshade \

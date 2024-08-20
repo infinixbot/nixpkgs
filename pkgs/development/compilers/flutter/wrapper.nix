@@ -11,10 +11,7 @@
     ]
     ++ lib.optional (stdenv.hostPlatform.isLinux && !(flutter ? engine)) "linux"
     ++ lib.optional (stdenv.hostPlatform.isx86_64 || stdenv.hostPlatform.isDarwin) "android"
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      "macos"
-      "ios"
-    ],
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ "macos" "ios" ],
   artifactHashes ? flutter.artifactHashes,
   extraPkgConfigPackages ? [ ],
   extraLibraries ? [ ],
@@ -81,10 +78,7 @@ let
   '';
 
   # Tools that the Flutter tool depends on.
-  tools = [
-    git
-    which
-  ];
+  tools = [ git which ];
 
   # Libraries that Flutter apps depend on at runtime.
   appRuntimeDeps = lib.optionals supportsLinuxDesktopTarget [
@@ -114,12 +108,7 @@ let
   # Some header files and libraries are not properly located by the Flutter SDK.
   # They must be manually included.
   appStaticBuildDeps =
-    (lib.optionals supportsLinuxDesktopTarget [
-      libX11
-      xorgproto
-      zlib
-    ])
-    ++ extraLibraries;
+    (lib.optionals supportsLinuxDesktopTarget [ libX11 xorgproto zlib ]) ++ extraLibraries;
 
   # Tools used by the Flutter SDK to compile applications.
   buildTools = lib.optionals supportsLinuxDesktopTarget [
@@ -145,10 +134,7 @@ in
     nativeBuildInputs =
       [ makeWrapper ]
       ++ lib.optionals stdenv.hostPlatform.isDarwin [ darwin.DarwinTools ]
-      ++ lib.optionals supportsLinuxDesktopTarget [
-        glib
-        wrapGAppsHook3
-      ];
+      ++ lib.optionals supportsLinuxDesktopTarget [ glib wrapGAppsHook3 ];
 
     passthru = flutter.passthru // {
       inherit (flutter) version;
@@ -167,12 +153,7 @@ in
         for path in ${
           builtins.concatStringsSep " " (
             builtins.foldl' (
-              paths: pkg:
-              paths
-              ++ (map (directory: "'${pkg}/${directory}/pkgconfig'") [
-                "lib"
-                "share"
-              ])
+              paths: pkg: paths ++ (map (directory: "'${pkg}/${directory}/pkgconfig'") [ "lib" "share" ])
             ) [ ] pkgConfigPackages
           )
         }; do

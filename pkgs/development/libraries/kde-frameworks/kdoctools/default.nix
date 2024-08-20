@@ -28,14 +28,8 @@ mkDerivation {
     perlPackages.URI
     qtbase
   ];
-  buildInputs = [
-    karchive
-    ki18n
-  ];
-  outputs = [
-    "out"
-    "dev"
-  ];
+  buildInputs = [ karchive ki18n ];
+  outputs = [ "out" "dev" ];
   patches =
     [ ./kdoctools-no-find-docbook-xml.patch ]
     # kf.doctools.core: Error: Could not find kdoctools catalogs

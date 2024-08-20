@@ -2,10 +2,7 @@ import ./make-test-python.nix (
   { lib, ... }:
   {
     name = "paperless";
-    meta.maintainers = with lib.maintainers; [
-      erikarvstedt
-      Flakebi
-    ];
+    meta.maintainers = with lib.maintainers; [ erikarvstedt Flakebi ];
 
     nodes =
       let
@@ -13,10 +10,7 @@ import ./make-test-python.nix (
           simple =
             { pkgs, ... }:
             {
-              environment.systemPackages = with pkgs; [
-                imagemagick
-                jq
-              ];
+              environment.systemPackages = with pkgs; [ imagemagick jq ];
               services.paperless = {
                 enable = true;
                 passwordFile = builtins.toFile "password" "admin";

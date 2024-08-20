@@ -528,24 +528,10 @@ let
   unifyModuleSyntax =
     file: key: m:
     let
-      addMeta =
-        config:
-        if m ? meta then
-          mkMerge [
-            config
-            { meta = m.meta; }
-          ]
-        else
-          config;
+      addMeta = config: if m ? meta then mkMerge [ config { meta = m.meta; } ] else config;
       addFreeformType =
         config:
-        if m ? freeformType then
-          mkMerge [
-            config
-            { _module.freeformType = m.freeformType; }
-          ]
-        else
-          config;
+        if m ? freeformType then mkMerge [ config { _module.freeformType = m.freeformType; } ] else config;
     in
     if m ? config || m ? options then
       let
@@ -583,15 +569,7 @@ let
         imports = m.require or [ ] ++ m.imports or [ ];
         options = { };
         config = addFreeformType (
-          removeAttrs m [
-            "_class"
-            "_file"
-            "key"
-            "disabledModules"
-            "require"
-            "imports"
-            "freeformType"
-          ]
+          removeAttrs m [ "_class" "_file" "key" "disabledModules" "require" "imports" "freeformType" ]
         );
       };
 

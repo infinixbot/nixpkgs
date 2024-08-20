@@ -57,10 +57,7 @@ stdenv.mkDerivation (finalAttrs: {
     readline
   ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   strictDeps = true;
 
@@ -76,12 +73,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   postInstall = ''
     wrapProgram $out/bin/notion \
-      --prefix PATH ":" "${
-        lib.makeBinPath [
-          xmessage
-          xterm
-        ]
-      }" \
+      --prefix PATH ":" "${lib.makeBinPath [ xmessage xterm ]}" \
   '';
 
   meta = {
@@ -89,11 +81,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://notionwm.net";
     license = lib.licenses.lgpl21;
     mainProgram = "notion";
-    maintainers = with lib.maintainers; [
-      jfb
-      AndersonTorres
-      raboof
-    ];
+    maintainers = with lib.maintainers; [ jfb AndersonTorres raboof ];
     platforms = lib.platforms.linux;
   };
 })

@@ -27,10 +27,7 @@ stdenv.mkDerivation rec {
     substituteInPlace configure.ac --replace "-Werror" "-Wno-error"
   '';
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
   buildInputs = [
     libkate
     pango

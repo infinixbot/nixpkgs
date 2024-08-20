@@ -39,21 +39,11 @@ lib.fix (
       substituteAllInPlace src/dl.c
     '';
 
-    outputs = [
-      "out"
-      "dev"
-    ];
+    outputs = [ "out" "dev" ];
 
     nativeBuildInputs = [ pkg-config ];
 
-    buildInputs = [
-      libxml2
-      gnutls
-      libgcrypt
-      libtool
-      openssl
-      nss
-    ];
+    buildInputs = [ libxml2 gnutls libgcrypt libtool openssl nss ];
 
     propagatedBuildInputs = [
       # required by xmlsec/transforms.h
@@ -85,12 +75,7 @@ lib.fix (
       runCommandCC "libxmlsec1-crypto-test"
         {
           nativeBuildInputs = [ pkg-config ];
-          buildInputs = [
-            self
-            libxml2
-            libxslt
-            libtool
-          ];
+          buildInputs = [ self libxml2 libxslt libtool ];
         }
         ''
           $CC $(pkg-config --cflags --libs xmlsec1) -o crypto-test ${writeText "crypto-test.c" ''

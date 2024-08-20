@@ -41,10 +41,7 @@ in
 
     services.resolved.fallbackDns = mkOption {
       default = null;
-      example = [
-        "8.8.8.8"
-        "2001:4860:4860::8844"
-      ];
+      example = [ "8.8.8.8" "2001:4860:4860::8844" ];
       type = types.nullOr (types.listOf types.str);
       description = ''
         A list of IPv4 and IPv6 addresses to use as the fallback DNS servers.
@@ -74,11 +71,7 @@ in
     services.resolved.llmnr = mkOption {
       default = "true";
       example = "false";
-      type = types.enum [
-        "true"
-        "resolve"
-        "false"
-      ];
+      type = types.enum [ "true" "resolve" "false" ];
       description = ''
         Controls Link-Local Multicast Name Resolution support
         (RFC 4795) on the local host.
@@ -93,11 +86,7 @@ in
     services.resolved.dnssec = mkOption {
       default = "false";
       example = "true";
-      type = types.enum [
-        "true"
-        "allow-downgrade"
-        "false"
-      ];
+      type = types.enum [ "true" "allow-downgrade" "false" ];
       description = ''
         If set to
         - `"true"`:
@@ -126,11 +115,7 @@ in
     services.resolved.dnsovertls = mkOption {
       default = "false";
       example = "true";
-      type = types.enum [
-        "true"
-        "opportunistic"
-        "false"
-      ];
+      type = types.enum [ "true" "opportunistic" "false" ];
       description = ''
         If set to
         - `"true"`:

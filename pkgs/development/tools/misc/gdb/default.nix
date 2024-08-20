@@ -80,27 +80,10 @@ stdenv.mkDerivation rec {
       ./darwin-target-match.patch
     ];
 
-  nativeBuildInputs = [
-    pkg-config
-    texinfo
-    perl
-    setupDebugInfoDirs
-  ];
+  nativeBuildInputs = [ pkg-config texinfo perl setupDebugInfoDirs ];
 
   buildInputs =
-    [
-      ncurses
-      readline
-      gmp
-      mpfr
-      expat
-      libipt
-      zlib
-      zstd
-      xz
-      guile
-      sourceHighlight
-    ]
+    [ ncurses readline gmp mpfr expat libipt zlib zstd xz guile sourceHighlight ]
     ++ lib.optional pythonSupport python3
     ++ lib.optional doCheck dejagnu
     ++ lib.optional enableDebuginfod (elfutils.override { enableDebuginfod = true; })
@@ -117,11 +100,7 @@ stdenv.mkDerivation rec {
 
   env.NIX_CFLAGS_COMPILE = "-Wno-format-nonliteral";
 
-  configurePlatforms = [
-    "build"
-    "host"
-    "target"
-  ];
+  configurePlatforms = [ "build" "host" "target" ];
 
   preConfigure = ''
     # remove precompiled docs, required for man gdbinit to mention /etc/gdb/gdbinit
@@ -211,10 +190,6 @@ stdenv.mkDerivation rec {
 
     # GDB upstream does not support ARM darwin
     platforms = with lib.platforms; linux ++ cygwin ++ freebsd ++ [ "x86_64-darwin" ];
-    maintainers = with lib.maintainers; [
-      pierron
-      globin
-      lsix
-    ];
+    maintainers = with lib.maintainers; [ pierron globin lsix ];
   };
 }

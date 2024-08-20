@@ -20,11 +20,7 @@ buildKodiAddon {
     sha256 = "sha256-arBMMOoHQuHRcJ7eXD1jvA45Svei7c0srcBZkdAzqY0=";
   };
 
-  propagatedBuildInputs = [
-    steam
-    which
-    xdotool
-  ];
+  propagatedBuildInputs = [ steam which xdotool ];
 
   postInstall = ''
     substituteInPlace $out/share/kodi/addons/script.steam.launcher/resources/main.py \

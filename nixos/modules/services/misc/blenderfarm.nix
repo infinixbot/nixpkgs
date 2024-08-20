@@ -114,11 +114,7 @@ in
         ) "BLENDFARM_PASS_FILE:${cfg.basicSecurityPasswordFile}";
         ReadWritePaths = "";
         CapabilityBoundingSet = "";
-        RestrictAddressFamilies = [
-          "AF_UNIX"
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         PrivateDevices = true;
         PrivateUsers = true;

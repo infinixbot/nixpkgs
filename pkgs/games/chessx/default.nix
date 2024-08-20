@@ -67,10 +67,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://chessx.sourceforge.io/";
     description = "Browse and analyse chess games";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      eclairevoyant
-      luispedro
-    ];
+    maintainers = with maintainers; [ eclairevoyant luispedro ];
     platforms = platforms.linux;
     mainProgram = "chessx";
   };

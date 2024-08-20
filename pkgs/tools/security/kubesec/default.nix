@@ -51,9 +51,6 @@ buildGoModule rec {
     homepage = "https://github.com/controlplaneio/kubesec";
     changelog = "https://github.com/controlplaneio/kubesec/blob/v${version}/CHANGELOG.md";
     license = with licenses; [ asl20 ];
-    maintainers = with maintainers; [
-      fab
-      jk
-    ];
+    maintainers = with maintainers; [ fab jk ];
   };
 }

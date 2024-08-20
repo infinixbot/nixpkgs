@@ -19,10 +19,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   separateDebugInfo = true;
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
   configureFlags = [
     "--enable-userlib=yes"

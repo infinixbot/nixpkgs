@@ -87,10 +87,7 @@ in
   nodes.eve =
     { ... }:
     {
-      virtualisation.vlans = [
-        1
-        2
-      ];
+      virtualisation.vlans = [ 1 2 ];
       networking = lib.mkMerge [
         baseNetwork
         {
@@ -100,10 +97,7 @@ in
               prefixLength = 64;
             }
           ];
-          bridges.br0.interfaces = [
-            "eth1"
-            "eth2"
-          ];
+          bridges.br0.interfaces = [ "eth1" "eth2" ];
         }
       ];
       environment.systemPackages = [ pkgs.tcpdump ];

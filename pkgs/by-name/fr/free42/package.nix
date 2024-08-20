@@ -44,10 +44,7 @@ stdenv.mkDerivation (finalAttrs: {
       exec = "free42bin";
       type = "Application";
       comment = "A software clone of HP-42S Calculator";
-      categories = [
-        "Utility"
-        "Calculator"
-      ];
+      categories = [ "Utility" "Calculator" ];
     })
     (makeDesktopItem {
       name = "com.thomasokken.free42dec";
@@ -56,10 +53,7 @@ stdenv.mkDerivation (finalAttrs: {
       exec = "free42dec";
       type = "Application";
       comment = "A software clone of HP-42S Calculator";
-      categories = [
-        "Utility"
-        "Calculator"
-      ];
+      categories = [ "Utility" "Calculator" ];
     })
   ];
 

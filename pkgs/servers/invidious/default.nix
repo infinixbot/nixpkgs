@@ -77,15 +77,8 @@ crystal.buildCrystalPackage rec {
           --replace-fail 'Process.run(%(rsvg-convert' 'Process.run(%(${lib.getBin librsvg}/bin/rsvg-convert'
     '';
 
-  nativeBuildInputs = [
-    pkg-config
-    shards
-  ];
-  buildInputs = [
-    libxml2
-    openssl
-    sqlite
-  ];
+  nativeBuildInputs = [ pkg-config shards ];
+  buildInputs = [ libxml2 openssl sqlite ];
 
   format = "crystal";
   shardsFile = ./shards.nix;

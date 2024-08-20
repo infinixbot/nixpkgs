@@ -18,10 +18,7 @@ let
     description = "CLI utilities for Immich to help upload images and videos";
     homepage = "https://github.com/immich-app/immich";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [
-      felschr
-      pineapplehunter
-    ];
+    maintainers = with lib.maintainers; [ felschr pineapplehunter ];
     mainProgram = "immich";
   };
 

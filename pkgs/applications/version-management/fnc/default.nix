@@ -16,11 +16,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-6I6wtSMHaKdnlUK4pYiaybJeODGu2P+smYW8lQDIWGM=";
   };
 
-  buildInputs = [
-    libiconv
-    ncurses
-    zlib
-  ];
+  buildInputs = [ libiconv ncurses zlib ];
 
   makeFlags = [ "PREFIX=$(out)" ];
 

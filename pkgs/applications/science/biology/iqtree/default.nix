@@ -39,9 +39,6 @@ stdenv.mkDerivation rec {
     mainProgram = "iqtree2";
     license = licenses.lgpl2;
     maintainers = with maintainers; [ bzizou ];
-    platforms = [
-      "x86_64-linux"
-      "x86_64-darwin"
-    ];
+    platforms = [ "x86_64-linux" "x86_64-darwin" ];
   };
 }

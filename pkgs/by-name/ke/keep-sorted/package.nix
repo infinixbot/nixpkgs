@@ -20,10 +20,7 @@ buildGoModule rec {
 
   CGO_ENABLED = "0";
 
-  ldfags = [
-    "-s"
-    "-w"
-  ];
+  ldfags = [ "-s" "-w" ];
 
   checkFlags = [
     # Test tries to find files using git

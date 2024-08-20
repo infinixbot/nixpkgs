@@ -117,18 +117,12 @@ lib.overrideDerivation
       + lib.optionalString (lib.elem stdenv.hostPlatform.system [ "armv7l-linux" ]) ''
         copyDTB bcm2709-rpi-2-b.dtb bcm2836-rpi-2-b.dtb
       ''
-      +
-        lib.optionalString
-          (lib.elem stdenv.hostPlatform.system [
-            "armv7l-linux"
-            "aarch64-linux"
-          ])
-          ''
-            copyDTB bcm2710-rpi-zero-2.dtb bcm2837-rpi-zero-2.dtb
-            copyDTB bcm2710-rpi-3-b.dtb bcm2837-rpi-3-b.dtb
-            copyDTB bcm2710-rpi-3-b-plus.dtb bcm2837-rpi-3-a-plus.dtb
-            copyDTB bcm2710-rpi-3-b-plus.dtb bcm2837-rpi-3-b-plus.dtb
-            copyDTB bcm2710-rpi-cm3.dtb bcm2837-rpi-cm3.dtb
-            copyDTB bcm2711-rpi-4-b.dtb bcm2838-rpi-4-b.dtb
-          '';
+      + lib.optionalString (lib.elem stdenv.hostPlatform.system [ "armv7l-linux" "aarch64-linux" ]) ''
+        copyDTB bcm2710-rpi-zero-2.dtb bcm2837-rpi-zero-2.dtb
+        copyDTB bcm2710-rpi-3-b.dtb bcm2837-rpi-3-b.dtb
+        copyDTB bcm2710-rpi-3-b-plus.dtb bcm2837-rpi-3-a-plus.dtb
+        copyDTB bcm2710-rpi-3-b-plus.dtb bcm2837-rpi-3-b-plus.dtb
+        copyDTB bcm2710-rpi-cm3.dtb bcm2837-rpi-cm3.dtb
+        copyDTB bcm2711-rpi-4-b.dtb bcm2838-rpi-4-b.dtb
+      '';
   })

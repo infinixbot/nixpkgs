@@ -23,19 +23,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-t5usUGbcdLQlqPpZkNDeGncka9VfkpO7U933Kw/Sm7U=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    installShellFiles
-  ];
+  nativeBuildInputs = [ cmake pkg-config installShellFiles ];
 
-  buildInputs = [
-    bzip2
-    libusb1
-    libzip
-    openssl
-    zstd
-  ];
+  buildInputs = [ bzip2 libusb1 libzip openssl zstd ];
 
   preConfigure = "echo ${version} > .tarball-version";
 
@@ -64,10 +54,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://github.com/NXPmicro/mfgtools";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      bmilanov
-      jraygauthier
-    ];
+    maintainers = with maintainers; [ bmilanov jraygauthier ];
     mainProgram = "uuu";
     platforms = platforms.all;
   };

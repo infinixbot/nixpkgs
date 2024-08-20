@@ -21,11 +21,7 @@
 }:
 
 let
-  systems = [
-    "/run/booted-system/kernel-modules"
-    "/run/current-system/kernel-modules"
-    ""
-  ];
+  systems = [ "/run/booted-system/kernel-modules" "/run/current-system/kernel-modules" "" ];
   modulesDirs = lib.concatMapStringsSep ":" (x: "${x}/lib/modules") systems;
 
 in
@@ -43,33 +39,21 @@ stdenv.mkDerivation rec {
     hash = "sha256-FNR015/AoYBbi7Eb1M2TXH3yxUuddKICCu+ot10CdeQ=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "lib"
-  ] ++ lib.optional withDevdoc "devdoc";
+  outputs = [ "out" "dev" "lib" ] ++ lib.optional withDevdoc "devdoc";
 
   strictDeps = true;
-  nativeBuildInputs =
-    [
-      autoconf
-      automake
-      docbook_xsl
-      libtool
-      libxslt
-      pkg-config
+  nativeBuildInputs = [
+    autoconf
+    automake
+    docbook_xsl
+    libtool
+    libxslt
+    pkg-config
 
-      docbook_xml_dtd_42 # for the man pages
-    ]
-    ++ lib.optionals withDevdoc [
-      docbook_xml_dtd_43
-      gtk-doc
-    ];
+    docbook_xml_dtd_42 # for the man pages
+  ] ++ lib.optionals withDevdoc [ docbook_xml_dtd_43 gtk-doc ];
   buildInputs =
-    [
-      xz
-      zstd
-    ]
+    [ xz zstd ]
     # gtk-doc is looked for with pkg-config
     ++ lib.optionals withDevdoc [ gtk-doc ];
 
@@ -120,10 +104,7 @@ stdenv.mkDerivation rec {
     homepage = "https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git/";
     downloadPage = "https://www.kernel.org/pub/linux/utils/kernel/kmod/";
     changelog = "https://git.kernel.org/pub/scm/utils/kernel/kmod/kmod.git/plain/NEWS?h=v${version}";
-    license = with licenses; [
-      lgpl21Plus
-      gpl2Plus
-    ]; # GPLv2+ for tools
+    license = with licenses; [ lgpl21Plus gpl2Plus ]; # GPLv2+ for tools
     platforms = platforms.linux;
     maintainers = with maintainers; [ artturin ];
   };

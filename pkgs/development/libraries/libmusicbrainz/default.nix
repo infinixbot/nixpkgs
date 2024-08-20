@@ -12,10 +12,7 @@ stdenv.mkDerivation rec {
   version = "3.0.3";
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    neon
-    libdiscid
-  ];
+  buildInputs = [ neon libdiscid ];
 
   src = fetchurl {
     url = "ftp://ftp.musicbrainz.org/pub/musicbrainz/${pname}-${version}.tar.gz";

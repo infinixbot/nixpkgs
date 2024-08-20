@@ -335,11 +335,7 @@ buildPythonPackage rec {
     description = "Programmatically author, schedule and monitor data pipelines";
     homepage = "https://airflow.apache.org/";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      bhipple
-      gbpdt
-      ingenieroariel
-    ];
+    maintainers = with maintainers; [ bhipple gbpdt ingenieroariel ];
     knownVulnerabilities = [
       "CVE-2023-50943"
       "CVE-2023-50944"

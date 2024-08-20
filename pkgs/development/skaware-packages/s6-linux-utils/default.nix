@@ -12,12 +12,7 @@ skawarePackages.buildPackage {
   description = "Set of minimalistic Linux-specific system utilities";
   platforms = lib.platforms.linux;
 
-  outputs = [
-    "bin"
-    "dev"
-    "doc"
-    "out"
-  ];
+  outputs = [ "bin" "dev" "doc" "out" ];
 
   # TODO: nsss support
   configureFlags = [

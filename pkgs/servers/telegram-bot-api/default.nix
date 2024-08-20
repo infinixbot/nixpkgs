@@ -20,23 +20,14 @@ stdenv.mkDerivation {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    cmake
-    gperf
-  ];
-  buildInputs = [
-    openssl
-    zlib
-  ];
+  nativeBuildInputs = [ cmake gperf ];
+  buildInputs = [ openssl zlib ];
 
   meta = with lib; {
     description = "Telegram Bot API server";
     homepage = "https://github.com/tdlib/telegram-bot-api";
     license = licenses.boost;
-    maintainers = with maintainers; [
-      Anillc
-      Forden
-    ];
+    maintainers = with maintainers; [ Anillc Forden ];
     platforms = platforms.all;
     mainProgram = "telegram-bot-api";
   };

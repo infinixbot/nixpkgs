@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    postgresql
-    msgpack-c
-    groonga
-  ];
+  buildInputs = [ postgresql msgpack-c groonga ];
 
   makeFlags = [
     "HAVE_MSGPACK=1"

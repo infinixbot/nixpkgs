@@ -17,10 +17,7 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-8Gy0h0QMcittnjuKm+atIJNsY2d6Ua29oab4fkUU+wE=";
   };
 
-  nativeBuildInputs = [
-    installShellFiles
-    pkg-config
-  ];
+  nativeBuildInputs = [ installShellFiles pkg-config ];
 
   buildInputs = [ libbsd ];
 

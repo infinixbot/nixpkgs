@@ -13,10 +13,5 @@
     "9p"
     "9pnet_virtio"
   ];
-  boot.initrd.kernelModules = [
-    "virtio_balloon"
-    "virtio_console"
-    "virtio_rng"
-    "virtio_gpu"
-  ];
+  boot.initrd.kernelModules = [ "virtio_balloon" "virtio_console" "virtio_rng" "virtio_gpu" ];
 }

@@ -33,10 +33,7 @@ let
       sha256 = "1j80zclg1cl5clqd00qqa16prz7cyc32bvxqz2mh540cirygq24w";
     };
 
-    pythonImportsCheck = [
-      "js8py"
-      "test"
-    ];
+    pythonImportsCheck = [ "js8py" "test" ];
 
     meta = with lib; {
       homepage = "https://github.com/jketterl/js8py";
@@ -105,11 +102,7 @@ buildPythonApplication rec {
     codecserver
   ];
 
-  pythonImportsCheck = [
-    "csdr"
-    "owrx"
-    "test"
-  ];
+  pythonImportsCheck = [ "csdr" "owrx" "test" ];
 
   passthru = {
     inherit js8py owrx_connector;

@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
     sha256 = "16fgyw6jnscx9279dczv72092dddghwlp53rkfw469kcgvjhwx0z";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    autoconf
-    automake
-  ];
+  nativeBuildInputs = [ pkg-config autoconf automake ];
   buildInputs = [
     gtk2
     libjack2

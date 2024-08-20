@@ -21,12 +21,7 @@ stdenv.mkDerivation {
   };
 
   nativeBuildInputs = [ protobufc ];
-  buildInputs = [
-    pidgin
-    glib
-    json-glib
-    protobuf
-  ];
+  buildInputs = [ pidgin glib json-glib protobuf ];
 
   PKG_CONFIG_PURPLE_PLUGINDIR = "${placeholder "out"}/lib/purple-2";
   PKG_CONFIG_PURPLE_DATADIR = "${placeholder "out"}/share";

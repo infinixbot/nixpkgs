@@ -19,21 +19,14 @@ buildGoModule rec {
 
   doCheck = false;
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X=main.Version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X=main.Version=${version}" ];
 
   meta = with lib; {
     description = "Single entrypoint for multiple SSH endpoints";
     homepage = "https://github.com/charmbracelet/wishlist";
     changelog = "https://github.com/charmbracelet/wishlist/releases/tag/v${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      caarlos0
-      penguwin
-    ];
+    maintainers = with maintainers; [ caarlos0 penguwin ];
     mainProgram = "wishlist";
   };
 }

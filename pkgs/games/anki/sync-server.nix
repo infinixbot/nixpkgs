@@ -31,10 +31,7 @@ rustPlatform.buildRustPackage {
     "--skip=scheduler::answering::test::state_application"
   ];
 
-  nativeBuildInputs = [
-    protobuf
-    pkg-config
-  ];
+  nativeBuildInputs = [ protobuf pkg-config ];
 
   buildInputs =
     [

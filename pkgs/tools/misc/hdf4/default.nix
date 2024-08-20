@@ -136,11 +136,7 @@ stdenv.mkDerivation rec {
       runHook postCheck
     '';
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-  ];
+  outputs = [ "bin" "dev" "out" ];
 
   postInstall = ''
     moveToOutput bin "$bin"

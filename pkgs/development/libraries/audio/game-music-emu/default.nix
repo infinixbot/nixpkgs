@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
     sha256 = "07857vdkak306d9s5g6fhmjyxk7vijzjhkmqb15s7ihfxx9lx8xb";
   };
   cmakeFlags = [ "-DENABLE_UBSAN=OFF" ];
-  nativeBuildInputs = [
-    cmake
-    removeReferencesTo
-  ];
+  nativeBuildInputs = [ cmake removeReferencesTo ];
   buildInputs = [ zlib ];
 
   # It used to reference it, in the past, but thanks to the postFixup hook, now

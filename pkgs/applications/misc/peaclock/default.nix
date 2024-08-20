@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    libpthreadstubs
-    icu
-  ];
+  buildInputs = [ libpthreadstubs icu ];
 
   meta = with lib; {
     description = "Clock, timer, and stopwatch for the terminal";

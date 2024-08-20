@@ -30,11 +30,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-zN0dCrwx1z2LQ1/GWMeQSdCpBbMGabakKgOtFp3GCeY=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ] ++ lib.optional withConplay "conplay";
+  outputs = [ "out" "dev" "man" ] ++ lib.optional withConplay "conplay";
 
   nativeBuildInputs = lib.optionals (!libOnly) (
     lib.optionals withConplay [ makeWrapper ] ++ lib.optionals (withPulse || withJack) [ pkg-config ]
@@ -44,10 +40,7 @@ stdenv.mkDerivation rec {
     lib.optionals withConplay [ perl ]
     ++ lib.optionals withAlsa [ alsa-lib ]
     ++ lib.optionals withPulse [ libpulseaudio ]
-    ++ lib.optionals withCoreAudio [
-      AudioUnit
-      AudioToolbox
-    ]
+    ++ lib.optionals withCoreAudio [ AudioUnit AudioToolbox ]
     ++ lib.optionals withJack [ jack ]
   );
 

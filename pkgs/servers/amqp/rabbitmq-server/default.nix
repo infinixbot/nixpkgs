@@ -50,45 +50,24 @@ stdenv.mkDerivation rec {
     hash = "sha256-y6rHZpAhXVuO6sn18ZRvbG8qajTCVdE7iWkn+KXUhwI=";
   };
 
-  nativeBuildInputs = [
-    unzip
-    xmlto
-    docbook_xml_dtd_45
-    docbook_xsl
-    zip
-    rsync
-    python3
-  ];
+  nativeBuildInputs = [ unzip xmlto docbook_xml_dtd_45 docbook_xsl zip rsync python3 ];
 
-  buildInputs =
-    [
-      erlang
-      elixir
-      libxml2
-      libxslt
-      glibcLocales
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      AppKit
-      Carbon
-      Cocoa
-    ];
+  buildInputs = [
+    erlang
+    elixir
+    libxml2
+    libxslt
+    glibcLocales
+  ] ++ lib.optionals stdenv.isDarwin [ AppKit Carbon Cocoa ];
 
-  outputs = [
-    "out"
-    "man"
-    "doc"
-  ];
+  outputs = [ "out" "man" "doc" ];
 
   installFlags = [
     "PREFIX=${placeholder "out"}"
     "RMQ_ERLAPP_DIR=${placeholder "out"}"
   ];
 
-  installTargets = [
-    "install"
-    "install-man"
-  ];
+  installTargets = [ "install" "install-man" ];
 
   preBuild = ''
     export LANG=C.UTF-8 # fix elixir locale warning

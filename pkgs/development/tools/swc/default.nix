@@ -26,9 +26,6 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "swc";
     homepage = "https://github.com/swc-project/swc";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      dit7ya
-      kashw2
-    ];
+    maintainers = with maintainers; [ dit7ya kashw2 ];
   };
 }

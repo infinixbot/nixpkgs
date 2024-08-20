@@ -54,11 +54,7 @@ mkDerivation rec {
     util-linux
   ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    qttools
-  ];
+  nativeBuildInputs = [ cmake pkg-config qttools ];
 
   meta = with lib; {
     homepage = "https://f1ash.github.io/qt-virt-manager";

@@ -11,10 +11,7 @@ stdenv.mkDerivation rec {
   pname = "libstrangle";
   version = "unstable-202202022";
 
-  buildInputs = [
-    libGL
-    libX11
-  ];
+  buildInputs = [ libGL libX11 ];
 
   src = fetchFromGitLab {
     owner = "torkel104";
@@ -23,10 +20,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-h10QA7m7hIQHq1g/vCYuZsFR2NVbtWBB46V6OWP5wgM=";
   };
 
-  makeFlags = [
-    "prefix="
-    "DESTDIR=$(out)"
-  ];
+  makeFlags = [ "prefix=" "DESTDIR=$(out)" ];
 
   patches = [
     ./nixos.patch

@@ -25,12 +25,7 @@ stdenvNoCC.mkDerivation rec {
     runHook preInstall
     install -Dm755 sysz $out/libexec/sysz
     makeWrapper $out/libexec/sysz $out/bin/sysz \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          fzf
-          gawk
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ fzf gawk ]}
     runHook postInstall
   '';
 

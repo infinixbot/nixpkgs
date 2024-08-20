@@ -87,10 +87,7 @@ stdenv.mkDerivation rec {
     sed -i -e "1s:#!/usr/bin/env bpftrace:#!$out/bin/bpftrace:" $out/share/bpftrace/tools/*.bt
   '';
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   passthru.tests = {
     bpf = nixosTests.bpf;
@@ -102,12 +99,7 @@ stdenv.mkDerivation rec {
     changelog = "https://github.com/iovisor/bpftrace/releases/tag/v${version}";
     mainProgram = "bpftrace";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      rvl
-      thoughtpolice
-      martinetd
-      mfrw
-    ];
+    maintainers = with maintainers; [ rvl thoughtpolice martinetd mfrw ];
     platforms = platforms.linux;
   };
 }

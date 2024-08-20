@@ -140,11 +140,7 @@ qtModule (
       ]
       ++ lib.optional stdenv.isDarwin xcbuild;
     doCheck = true;
-    outputs = [
-      "bin"
-      "dev"
-      "out"
-    ];
+    outputs = [ "bin" "dev" "out" ];
 
     enableParallelBuilding = true;
 
@@ -302,10 +298,7 @@ qtModule (
       '';
 
     qmakeFlags =
-      [
-        "--"
-        "-system-ffmpeg"
-      ]
+      [ "--" "-system-ffmpeg" ]
       ++ lib.optional (
         pipewireSupport && stdenv.buildPlatform == stdenv.hostPlatform
       ) "-webengine-webrtc-pipewire"

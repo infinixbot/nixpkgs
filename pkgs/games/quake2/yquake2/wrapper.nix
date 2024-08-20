@@ -25,10 +25,7 @@ stdenv.mkDerivation {
   pname = name;
   version = lib.getVersion yquake2;
 
-  nativeBuildInputs = [
-    makeWrapper
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ makeWrapper copyDesktopItems ];
 
   dontUnpack = true;
 
@@ -56,10 +53,7 @@ stdenv.mkDerivation {
       icon = "yamagi-quake2";
       desktopName = game.id;
       comment = game.description;
-      categories = [
-        "Game"
-        "Shooter"
-      ];
+      categories = [ "Game" "Shooter" ];
     })
   ) games;
 

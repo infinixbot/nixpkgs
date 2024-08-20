@@ -29,11 +29,7 @@ buildGraalvmNativeImage {
 
   src = "${deps}/share/java/${baseName}_2.13-${version}.jar";
 
-  extraNativeImageBuildArgs = [
-    "--no-fallback"
-    "--enable-url-protocols=https"
-    "update.Main"
-  ];
+  extraNativeImageBuildArgs = [ "--no-fallback" "--enable-url-protocols=https" "update.Main" ];
 
   buildPhase = ''
     runHook preBuild

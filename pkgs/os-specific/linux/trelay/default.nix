@@ -20,10 +20,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   sourceRoot = "${finalAttrs.src.name}/package/kernel/trelay/src";
-  hardeningDisable = [
-    "pic"
-    "format"
-  ];
+  hardeningDisable = [ "pic" "format" ];
   nativeBuildInputs = [ kmod ] ++ kernel.moduleBuildDependencies;
 
   postPatch = ''

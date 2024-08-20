@@ -36,9 +36,6 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "sd";
     homepage = "https://github.com/chmln/sd";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      amar1729
-      Br1ght0ne
-    ];
+    maintainers = with maintainers; [ amar1729 Br1ght0ne ];
   };
 }

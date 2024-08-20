@@ -43,11 +43,7 @@ stdenv.mkDerivation (
       hash = "sha256-JDoHNrl4oz3uKfnMp1IXM7eKZbVBggb+970cPUzxC2Q=";
     };
 
-    outputs = [
-      "out"
-      "dev"
-      "devdoc"
-    ];
+    outputs = [ "out" "dev" "devdoc" ];
     outputBin = "dev"; # very small
     separateDebugInfo = true;
 
@@ -74,17 +70,8 @@ stdenv.mkDerivation (
       );
 
     propagatedBuildInputs =
-      [
-        fontconfig
-        freetype
-        pixman
-        libpng
-        zlib
-      ]
-      ++ optionals x11Support [
-        libXext
-        libXrender
-      ]
+      [ fontconfig freetype pixman libpng zlib ]
+      ++ optionals x11Support [ libXext libXrender ]
       ++ optionals xcbSupport [ libxcb ]
       ++ optional gobjectSupport glib; # TODO: maybe liblzo but what would it be for here?
 
@@ -150,10 +137,7 @@ stdenv.mkDerivation (
         when available (e.g., through the X Render Extension).
       '';
       homepage = "http://cairographics.org/";
-      license = with licenses; [
-        lgpl2Plus
-        mpl10
-      ];
+      license = with licenses; [ lgpl2Plus mpl10 ];
       pkgConfigModules = [
         "cairo-pdf"
         "cairo-ps"

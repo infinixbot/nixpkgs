@@ -60,9 +60,6 @@ buildGoModule rec {
       To work, use secret-service freedesktop.org API (e.g. Gnome keyring) or pass.
     '';
     mainProgram = "protonmail-bridge";
-    maintainers = with lib.maintainers; [
-      mrfreezeex
-      daniel-fahey
-    ];
+    maintainers = with lib.maintainers; [ mrfreezeex daniel-fahey ];
   };
 }

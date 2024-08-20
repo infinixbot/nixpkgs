@@ -32,10 +32,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/Canop/dysk";
     changelog = "https://github.com/Canop/dysk/blob/${src.rev}/CHANGELOG.md";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      figsoda
-      koral
-    ];
+    maintainers = with maintainers; [ figsoda koral ];
     mainProgram = "dysk";
   };
 }

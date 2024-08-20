@@ -20,14 +20,8 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ pkg-config ];
   buildInputs = [ libusb1 ];
 
-  installFlags = [
-    "DESTDIR=$(out)"
-    "PREFIX="
-  ];
-  installTargets = [
-    "install"
-    "install-rules"
-  ];
+  installFlags = [ "DESTDIR=$(out)" "PREFIX=" ];
+  installTargets = [ "install" "install-rules" ];
 
   meta = {
     description = "Firmware programmer for WCH microcontrollers over USB";

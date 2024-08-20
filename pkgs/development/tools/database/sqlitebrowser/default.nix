@@ -26,16 +26,9 @@ mkDerivation rec {
   # but qscintilla is currently in a bit of a mess as some consumers expect a
   # -qt4 or -qt5 prefix while others do not.
   # We *really* should get that cleaned up.
-  buildInputs = [
-    qtbase
-    sqlcipher
-  ] ++ lib.optionals stdenv.isDarwin [ qtmacextras ];
+  buildInputs = [ qtbase sqlcipher ] ++ lib.optionals stdenv.isDarwin [ qtmacextras ];
 
-  nativeBuildInputs = [
-    cmake
-    qttools
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ cmake qttools wrapGAppsHook3 ];
 
   cmakeFlags = [
     "-Dsqlcipher=1"

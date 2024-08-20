@@ -17,17 +17,11 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-vr0yqKVRodtXalHEIsm5gdEp9wPU9U5nnYhMk7IiPF4=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    zip
-  ];
+  nativeBuildInputs = [ makeWrapper zip ];
 
   installPhase =
     let
-      libraryPath = lib.strings.makeLibraryPath [
-        libglvnd
-        libnotify
-      ];
+      libraryPath = lib.strings.makeLibraryPath [ libglvnd libnotify ];
     in
     ''
       runHook preInstall

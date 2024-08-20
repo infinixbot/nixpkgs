@@ -21,10 +21,7 @@ buildDunePackage rec {
     hash = "sha256-PZkhN5vkkLu8A3gYrh5O+nq9wFtig0Q4qD8zLGUGTRI=";
   };
 
-  propagatedBuildInputs = [
-    camlp-streams
-    markup
-  ];
+  propagatedBuildInputs = [ camlp-streams markup ];
 
   doCheck = lib.versionAtLeast ocaml.version "4.08";
   checkInputs = [ ounit2 ];

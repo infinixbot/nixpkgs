@@ -91,10 +91,7 @@ in
 {
   basic = makeTest {
     name = "systemd-boot";
-    meta.maintainers = with pkgs.lib.maintainers; [
-      danielfullmer
-      julienmalka
-    ];
+    meta.maintainers = with pkgs.lib.maintainers; [ danielfullmer julienmalka ];
 
     nodes.machine = common;
 
@@ -178,10 +175,7 @@ in
   # Check that specialisations create corresponding boot entries.
   specialisation = makeTest {
     name = "systemd-boot-specialisation";
-    meta.maintainers = with pkgs.lib.maintainers; [
-      lukegb
-      julienmalka
-    ];
+    meta.maintainers = with pkgs.lib.maintainers; [ lukegb julienmalka ];
 
     nodes.machine =
       { pkgs, lib, ... }:
@@ -233,10 +227,7 @@ in
   # Boot without having created an EFI entry--instead using default "/EFI/BOOT/BOOTX64.EFI"
   fallback = makeTest {
     name = "systemd-boot-fallback";
-    meta.maintainers = with pkgs.lib.maintainers; [
-      danielfullmer
-      julienmalka
-    ];
+    meta.maintainers = with pkgs.lib.maintainers; [ danielfullmer julienmalka ];
 
     nodes.machine =
       { pkgs, lib, ... }:
@@ -264,10 +255,7 @@ in
 
   update = makeTest {
     name = "systemd-boot-update";
-    meta.maintainers = with pkgs.lib.maintainers; [
-      danielfullmer
-      julienmalka
-    ];
+    meta.maintainers = with pkgs.lib.maintainers; [ danielfullmer julienmalka ];
 
     nodes.machine = common;
 

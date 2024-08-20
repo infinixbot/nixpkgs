@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    pkg-config
-    glib
-  ];
+  nativeBuildInputs = [ pkg-config glib ];
 
   buildInputs = [ (if gtkVersion == "2" then gtk2 else gtk3) ];
 

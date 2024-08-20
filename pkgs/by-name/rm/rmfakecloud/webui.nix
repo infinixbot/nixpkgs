@@ -19,11 +19,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-JLCrpzytMKejmW+WlM6yybsoIZiimiJdPG5dSIn1L14=";
   };
 
-  nativeBuildInputs = [
-    fixup-yarn-lock
-    yarn
-    nodejs
-  ];
+  nativeBuildInputs = [ fixup-yarn-lock yarn nodejs ];
 
   buildPhase = ''
     export HOME=$(mktemp -d)

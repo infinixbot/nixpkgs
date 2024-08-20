@@ -23,10 +23,7 @@ stdenv.mkDerivation {
   # See https://trac.sagemath.org/ticket/19233
   configureFlags = lib.optional stdenv.isDarwin "--disable-asm-redc";
 
-  buildInputs = [
-    m4
-    gmp
-  ];
+  buildInputs = [ m4 gmp ];
 
   doCheck = true;
 

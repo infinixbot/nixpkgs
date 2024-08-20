@@ -15,10 +15,7 @@ let
     name = "sm.puri.OSK0";
     desktopName = "On-screen keyboard";
     exec = "${pkgs.squeekboard}/bin/squeekboard";
-    categories = [
-      "GNOME"
-      "Core"
-    ];
+    categories = [ "GNOME" "Core" ];
     onlyShowIn = [ "GNOME" ];
     noDisplay = true;
     extraConfig = {
@@ -37,11 +34,7 @@ let
 
           To start XWayland immediately, use `immediate`.
         '';
-        type = types.enum [
-          "true"
-          "false"
-          "immediate"
-        ];
+        type = types.enum [ "true" "false" "immediate" ];
         default = "false";
       };
       cursorTheme = mkOption {
@@ -172,11 +165,7 @@ in
         description = ''
           Configurations for the Phoc compositor.
         '';
-        type = types.oneOf [
-          types.lines
-          types.path
-          phocConfigType
-        ];
+        type = types.oneOf [ types.lines types.path phocConfigType ];
         default = { };
       };
     };

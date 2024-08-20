@@ -26,11 +26,7 @@ let
         desktopName = "Alloy ${lib.versions.major version}";
         genericName = "Relational modelling tool";
         comment = meta.description;
-        categories = [
-          "Development"
-          "IDE"
-          "Education"
-        ];
+        categories = [ "Development" "IDE" "Education" ];
       };
 
       nativeBuildInputs = [ makeWrapper ];

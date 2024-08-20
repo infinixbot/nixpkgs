@@ -32,14 +32,7 @@
   rsync,
   coreutils,
   texliveSmall,
-  tex ? texliveSmall.withPackages (
-    ps: with ps; [
-      lh
-      metafont
-      epsf
-      fontinst
-    ]
-  ),
+  tex ? texliveSmall.withPackages (ps: with ps; [ lh metafont epsf fontinst ]),
 }:
 
 stdenv.mkDerivation rec {
@@ -57,13 +50,7 @@ stdenv.mkDerivation rec {
         # its Scheme libraries.
         wrapProgram "$f" \
           --set GUILE_AUTO_COMPILE 0 \
-          --prefix PATH : "${
-            lib.makeBinPath [
-              ghostscript
-              coreutils
-              (placeholder "out")
-            ]
-          }" \
+          --prefix PATH : "${lib.makeBinPath [ ghostscript coreutils (placeholder "out") ]}" \
           --argv0 "$f"
     done
   '';
@@ -80,13 +67,7 @@ stdenv.mkDerivation rec {
     export HOME=$TMPDIR/home
   '';
 
-  nativeBuildInputs = [
-    autoreconfHook
-    bison
-    flex
-    makeWrapper
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook bison flex makeWrapper pkg-config ];
 
   buildInputs = [
     ghostscript
@@ -125,10 +106,7 @@ stdenv.mkDerivation rec {
     description = "Music typesetting system";
     homepage = "http://lilypond.org/";
     license = licenses.gpl3;
-    maintainers = with maintainers; [
-      marcweber
-      yurrriq
-    ];
+    maintainers = with maintainers; [ marcweber yurrriq ];
     platforms = platforms.all;
   };
 

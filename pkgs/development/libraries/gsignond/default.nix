@@ -27,11 +27,7 @@ let
     pname = "gsignond";
     version = "1.2.0";
 
-    outputs = [
-      "out"
-      "dev"
-      "devdoc"
-    ];
+    outputs = [ "out" "dev" "devdoc" ];
 
     src = fetchFromGitLab {
       owner = "accounts-sso";

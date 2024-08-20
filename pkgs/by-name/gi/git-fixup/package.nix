@@ -37,14 +37,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   postInstall = ''
     wrapProgram $out/bin/git-fixup \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          git
-          coreutils
-          gnused
-          gnugrep
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ git coreutils gnused gnugrep ]}"
   '';
 
   meta = {

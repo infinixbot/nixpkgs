@@ -40,12 +40,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    json_c
-    libxml2
-    libsodium
-    ncurses
-  ];
+  buildInputs = [ json_c libxml2 libsodium ncurses ];
 
   installPhase = ''
     runHook preInstall

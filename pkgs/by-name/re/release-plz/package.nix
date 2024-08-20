@@ -21,11 +21,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-UN3SkNNY8ovaT/eNb9JyF9KQWt8KG0TX9ztLjrAnPPo=";
 
-  nativeBuildInputs = [
-    installShellFiles
-    pkg-config
-    perl
-  ];
+  nativeBuildInputs = [ installShellFiles pkg-config perl ];
   buildInputs = [ openssl ];
 
   buildAndTestSubdir = "crates/release_plz";
@@ -43,10 +39,7 @@ rustPlatform.buildRustPackage rec {
   meta = {
     description = "Publish Rust crates from CI with a Release PR";
     homepage = "https://release-plz.ieni.dev";
-    license = with lib.licenses; [
-      asl20
-      mit
-    ];
+    license = with lib.licenses; [ asl20 mit ];
     maintainers = with lib.maintainers; [ dannixon ];
     mainProgram = "release-plz";
     broken = stdenv.isDarwin;

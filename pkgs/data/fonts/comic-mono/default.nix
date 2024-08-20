@@ -37,10 +37,7 @@ stdenvNoCC.mkDerivation {
     homepage = "https://dtinth.github.io/comic-mono-font/";
 
     license = licenses.mit;
-    maintainers = with maintainers; [
-      an-empty-string
-      totoroot
-    ];
+    maintainers = with maintainers; [ an-empty-string totoroot ];
     platforms = platforms.all;
   };
 }

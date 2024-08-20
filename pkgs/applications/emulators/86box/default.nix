@@ -42,17 +42,12 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-ioE0EVIXv/biXXvLqwhmtZ/RJM0nLqcE+i+CU+WXBY4=";
   };
 
-  nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-      makeWrapper
-      qt5.wrapQtAppsHook
-    ]
-    ++ lib.optionals enableWayland [
-      extra-cmake-modules
-      wayland-scanner
-    ];
+  nativeBuildInputs = [
+    cmake
+    pkg-config
+    makeWrapper
+    qt5.wrapQtAppsHook
+  ] ++ lib.optionals enableWayland [ extra-cmake-modules wayland-scanner ];
 
   buildInputs =
     [

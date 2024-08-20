@@ -55,10 +55,7 @@
             }
           ];
         };
-        networking.firewall.allowedTCPPorts = [
-          3128
-          9999
-        ];
+        networking.firewall.allowedTCPPorts = [ 3128 9999 ];
       };
 
     peer2 =
@@ -97,10 +94,7 @@
             }
           ];
         };
-        networking.firewall.allowedTCPPorts = [
-          3128
-          9999
-        ];
+        networking.firewall.allowedTCPPorts = [ 3128 9999 ];
       };
 
     peer3 =
@@ -142,10 +136,7 @@
             }
           ];
         };
-        networking.firewall.allowedTCPPorts = [
-          3128
-          9999
-        ];
+        networking.firewall.allowedTCPPorts = [ 3128 9999 ];
       };
   };
 

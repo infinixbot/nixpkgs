@@ -63,12 +63,7 @@ stdenv.mkDerivation rec {
     ! grep -C src -RC0 "/usr"
   '';
 
-  nativeBuildInputs = [
-    lazarus
-    fpc
-    autoPatchelfHook
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ lazarus fpc autoPatchelfHook wrapGAppsHook3 ];
   buildInputs = [
     atk
     cairo

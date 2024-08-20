@@ -27,9 +27,6 @@ mkDerivation {
     qtx11extras
     libXdmcp
   ];
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
   propagatedBuildInputs = [ qtbase ];
 }

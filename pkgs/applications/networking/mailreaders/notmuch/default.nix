@@ -102,12 +102,7 @@ stdenv.mkDerivation (finalAttrs: {
     cp bindings/python-cffi/_notmuch_config.py ${placeholder "bindingconfig"}/
   '';
 
-  outputs = [
-    "out"
-    "man"
-    "info"
-    "bindingconfig"
-  ] ++ lib.optional withEmacs "emacs";
+  outputs = [ "out" "man" "info" "bindingconfig" ] ++ lib.optional withEmacs "emacs";
 
   # if notmuch is built with s-expression support, the testsuite (T-850.sh) only
   # passes if notmuch-git can be executed, so we need to patch its shebang.
@@ -152,11 +147,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional withEmacs emacs
     ++ lib.optional withSfsexp git;
 
-  installTargets = [
-    "install"
-    "install-man"
-    "install-info"
-  ];
+  installTargets = [ "install" "install-man" "install-info" ];
 
   postInstall =
     lib.optionalString withEmacs ''
@@ -198,10 +189,7 @@ stdenv.mkDerivation (finalAttrs: {
     gemEnv = buildEnv {
       name = "notmuch-vim-gems";
       paths = with ruby.gems; [ mail ];
-      pathsToLink = [
-        "/lib"
-        "/nix-support"
-      ];
+      pathsToLink = [ "/lib" "/nix-support" ];
     };
     tests.version = testers.testVersion { package = notmuch; };
 
@@ -216,10 +204,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://notmuchmail.org/";
     changelog = "https://git.notmuchmail.org/git?p=notmuch;a=blob_plain;f=NEWS;hb=${version}";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      flokli
-      puckipedia
-    ];
+    maintainers = with maintainers; [ flokli puckipedia ];
     platforms = platforms.unix;
     mainProgram = "notmuch";
   };

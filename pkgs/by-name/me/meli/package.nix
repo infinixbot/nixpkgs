@@ -83,10 +83,7 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "meli";
     homepage = "https://meli.delivery";
     license = licenses.gpl3;
-    maintainers = with maintainers; [
-      _0x4A6F
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ _0x4A6F matthiasbeyer ];
     platforms = platforms.linux;
   };
 }

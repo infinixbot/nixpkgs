@@ -11,10 +11,7 @@ rec {
       stdenv = pkgs.emscriptenStdenv;
     }).overrideAttrs
       (old: {
-        nativeBuildInputs = [
-          pkg-config
-          cmake
-        ];
+        nativeBuildInputs = [ pkg-config cmake ];
         propagatedBuildInputs = [ zlib ];
         configurePhase = ''
           HOME=$TMPDIR
@@ -97,20 +94,8 @@ rec {
     pname = "xmlmirror";
     version = "unstable-2016-06-05";
 
-    buildInputs = [
-      libtool
-      gnumake
-      libxml2
-      nodejs
-      openjdk
-      json_c
-    ];
-    nativeBuildInputs = [
-      pkg-config
-      zlib
-      autoconf
-      automake
-    ];
+    buildInputs = [ libtool gnumake libxml2 nodejs openjdk json_c ];
+    nativeBuildInputs = [ pkg-config zlib autoconf automake ];
 
     src = pkgs.fetchgit {
       url = "https://gitlab.com/odfplugfest/xmlmirror.git";
@@ -137,10 +122,7 @@ rec {
       make -f Makefile.emEnv
     '';
 
-    outputs = [
-      "out"
-      "doc"
-    ];
+    outputs = [ "out" "doc" ];
 
     installPhase = ''
       mkdir -p $out/share

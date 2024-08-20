@@ -184,12 +184,7 @@ in
               };
               permissions =
                 let
-                  perms = [
-                    "read"
-                    "add"
-                    "control"
-                    "admin"
-                  ];
+                  perms = [ "read" "add" "control" "admin" ];
                 in
                 mkOption {
                   type = types.listOf (types.enum perms);
@@ -213,12 +208,7 @@ in
           }
           {
             passwordFile = "/var/lib/secrets/mpd_admin_password";
-            permissions = [
-              "read"
-              "add"
-              "control"
-              "admin"
-            ];
+            permissions = [ "read" "add" "control" "admin" ];
           }
         ];
       };
@@ -276,22 +266,13 @@ in
       serviceConfig = {
         User = "${cfg.user}";
         # Note: the first "" overrides the ExecStart from the upstream unit
-        ExecStart = [
-          ""
-          "${pkgs.mpd}/bin/mpd --systemd /run/mpd/mpd.conf"
-        ];
+        ExecStart = [ "" "${pkgs.mpd}/bin/mpd --systemd /run/mpd/mpd.conf" ];
         RuntimeDirectory = "mpd";
         StateDirectory =
           [ ]
           ++ optionals (cfg.dataDir == "/var/lib/${name}") [ name ]
-          ++ optionals (cfg.playlistDirectory == "/var/lib/${name}/playlists") [
-            name
-            "${name}/playlists"
-          ]
-          ++ optionals (cfg.musicDirectory == "/var/lib/${name}/music") [
-            name
-            "${name}/music"
-          ];
+          ++ optionals (cfg.playlistDirectory == "/var/lib/${name}/playlists") [ name "${name}/playlists" ]
+          ++ optionals (cfg.musicDirectory == "/var/lib/${name}/music") [ name "${name}/music" ];
       };
     };
 

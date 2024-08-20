@@ -100,10 +100,6 @@ stdenv.mkDerivation rec {
     homepage = "https://halide-lang.org";
     license = licenses.mit;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      ck3d
-      atila
-      twesterhout
-    ];
+    maintainers = with maintainers; [ ck3d atila twesterhout ];
   };
 }

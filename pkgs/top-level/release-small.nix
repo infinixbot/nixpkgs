@@ -9,10 +9,7 @@
     revCount = 1234;
     shortRev = "abcdef";
   },
-  supportedSystems ? [
-    "x86_64-linux"
-    "x86_64-darwin"
-  ],
+  supportedSystems ? [ "x86_64-linux" "x86_64-darwin" ],
   # Attributes passed to nixpkgs. Don't build packages marked as unfree.
   nixpkgsArgs ? {
     config = {

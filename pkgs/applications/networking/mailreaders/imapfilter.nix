@@ -22,11 +22,7 @@ stdenv.mkDerivation (finalAttrs: {
     "PREFIX=$(out)"
   ];
 
-  buildInputs = [
-    openssl
-    pcre2
-    lua
-  ];
+  buildInputs = [ openssl pcre2 lua ];
 
   meta = {
     homepage = "https://github.com/lefcha/imapfilter";

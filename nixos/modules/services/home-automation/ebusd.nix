@@ -71,21 +71,8 @@ in
     logs =
       let
         # "all" must come first so it can be overridden by more specific areas
-        areas = [
-          "all"
-          "main"
-          "network"
-          "bus"
-          "update"
-          "other"
-        ];
-        levels = [
-          "none"
-          "error"
-          "notice"
-          "info"
-          "debug"
-        ];
+        areas = [ "all" "main" "network" "bus" "update" "other" ];
+        levels = [ "none" "error" "notice" "info" "debug" ];
       in
       listToAttrs (
         map (

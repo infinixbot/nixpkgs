@@ -129,10 +129,7 @@ stdenv.mkDerivation rec {
     xorg.libxshmfence
   ];
 
-  nativeBuildInputs = [
-    wrapGAppsHook3
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ wrapGAppsHook3 copyDesktopItems ];
 
   installPhase = ''
     runHook preInstall

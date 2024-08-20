@@ -24,18 +24,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-5Ijy28LLx1TGnZE6ZNQXPYfvW2KprF+91fKx2MzLEms=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
-  buildInputs = [
-    SDL2
-    SDL2_mixer
-    alsa-lib
-    libpng
-    pcre
-  ];
+  buildInputs = [ SDL2 SDL2_mixer alsa-lib libpng pcre ];
 
   hardeningDisable = [ "all" ];
 
@@ -52,11 +43,7 @@ stdenv.mkDerivation rec {
     icon = "ivan.png";
     desktopName = "IVAN";
     genericName = pname;
-    categories = [
-      "Game"
-      "AdventureGame"
-      "RolePlaying"
-    ];
+    categories = [ "Game" "AdventureGame" "RolePlaying" ];
     comment = meta.description;
   };
 

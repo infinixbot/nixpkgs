@@ -18,17 +18,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-vfy5kCSs7JxsS5mK1juzkh30z+5KdyrWwMoyTbvysHw=";
   };
 
-  outputs = [
-    "dev"
-    "out"
-  ];
+  outputs = [ "dev" "out" ];
 
-  buildInputs = [
-    libgcrypt
-    libgpg-error
-    libksba
-    zlib
-  ] ++ lib.optional stdenv.isDarwin gettext;
+  buildInputs = [ libgcrypt libgpg-error libksba zlib ] ++ lib.optional stdenv.isDarwin gettext;
 
   postInstall = ''
     moveToOutput "bin/ntbtls-config" $dev

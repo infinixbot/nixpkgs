@@ -19,14 +19,8 @@ stdenv.mkDerivation {
     sha256 = "1gzcjnflgdqnjgphiqpzwbcx60hm0h2cprncm7i8xca3ln5q6ba1";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
-  buildInputs = [
-    xorg.libX11
-    dbus-glib
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
+  buildInputs = [ xorg.libX11 dbus-glib ];
 
   meta = {
     description = "Simple daemon and library to make per window layout using XKB";

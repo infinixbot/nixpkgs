@@ -42,11 +42,7 @@ in
     };
 
     securityPolicy = mkOption {
-      type = types.enum [
-        "no-tls"
-        "allow-tls"
-        "require-tls"
-      ];
+      type = types.enum [ "no-tls" "allow-tls" "require-tls" ];
       default = "require-tls";
       description = ''
         How strictly to enforce clients connection with TLS.
@@ -71,12 +67,7 @@ in
 
     plugins = mkOption {
       type = types.listOf types.str;
-      default = [
-        "note-text"
-        "note-chat"
-        "logging"
-        "autosave"
-      ];
+      default = [ "note-text" "note-chat" "logging" "autosave" ];
       description = ''
         Plugins to enable
       '';

@@ -18,14 +18,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Mk+5s9OlkyTLXZYVT0+8Qcjy2Sb5uy2hcC8CML0biNY=";
   };
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    unzip
-  ];
-  buildInputs = [
-    stdenv.cc.cc.libgcc
-    zlib
-  ];
+  nativeBuildInputs = [ autoPatchelfHook unzip ];
+  buildInputs = [ stdenv.cc.cc.libgcc zlib ];
 
   installPhase = ''
     runHook preInstall
@@ -44,9 +38,6 @@ stdenv.mkDerivation rec {
     platforms = [ "x86_64-linux" ];
     license = licenses.unfree;
     mainProgram = "TerrariaServer";
-    maintainers = with maintainers; [
-      ncfavier
-      tomasajt
-    ];
+    maintainers = with maintainers; [ ncfavier tomasajt ];
   };
 }

@@ -31,12 +31,7 @@ stdenv.mkDerivation rec {
   version = "46.1";
 
   # TODO: split out "lib"
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-    "man"
-  ];
+  outputs = [ "out" "dev" "devdoc" "man" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.major version}/${pname}-${version}.tar.xz";

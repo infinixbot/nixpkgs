@@ -31,11 +31,7 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  buildInputs = [
-    freetds
-    readline
-    libiconv
-  ];
+  buildInputs = [ freetds readline libiconv ];
 
   nativeBuildInputs = [ autoreconfHook ];
 

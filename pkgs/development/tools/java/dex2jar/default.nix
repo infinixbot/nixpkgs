@@ -16,10 +16,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     hash = "sha256-7nxF6zwdJHSmFF2NRH5lGnNqItlmS209O+WlqBfdojo=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    unzip
-  ];
+  nativeBuildInputs = [ makeWrapper unzip ];
 
   postPatch = ''
     rm *.bat

@@ -9,9 +9,6 @@
 mkDerivation {
   pname = "kcoreaddons";
   nativeBuildInputs = [ extra-cmake-modules ];
-  buildInputs = [
-    qttools
-    shared-mime-info
-  ];
+  buildInputs = [ qttools shared-mime-info ];
   propagatedBuildInputs = [ qtbase ];
 }

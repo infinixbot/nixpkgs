@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-UQy8iFfl8BNT5cBUMVF1tIScFPfHekSofaebtel9JWk=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
   meta = {
     description = "Open source software for reading and writing Data Matrix barcodes";

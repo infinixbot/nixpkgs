@@ -14,10 +14,7 @@ let
   node = evalMinimalConfig (
     { config, ... }:
     {
-      imports = [
-        pkgsModule
-        ../etc/etc.nix
-      ];
+      imports = [ pkgsModule ../etc/etc.nix ];
       environment.etc."passwd" = {
         text = passwdText;
       };

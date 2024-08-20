@@ -82,10 +82,7 @@ with lib;
 
         systemd.services.trackpoint = {
           wantedBy = [ "sysinit.target" ];
-          before = [
-            "sysinit.target"
-            "shutdown.target"
-          ];
+          before = [ "sysinit.target" "shutdown.target" ];
           conflicts = [ "shutdown.target" ];
           unitConfig.DefaultDependencies = false;
           serviceConfig.Type = "oneshot";

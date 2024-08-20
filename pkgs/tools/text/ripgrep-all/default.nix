@@ -41,10 +41,7 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    poppler_utils
-  ];
+  nativeBuildInputs = [ makeWrapper poppler_utils ];
   buildInputs = lib.optional stdenv.isDarwin Security;
 
   nativeCheckInputs = path;
@@ -68,10 +65,7 @@ rustPlatform.buildRustPackage rec {
     '';
     homepage = "https://github.com/phiresky/ripgrep-all";
     license = with licenses; [ agpl3Plus ];
-    maintainers = with maintainers; [
-      zaninime
-      ma27
-    ];
+    maintainers = with maintainers; [ zaninime ma27 ];
     mainProgram = "rga";
   };
 }

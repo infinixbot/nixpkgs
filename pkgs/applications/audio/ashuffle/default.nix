@@ -24,12 +24,7 @@ stdenv.mkDerivation rec {
   };
 
   dontUseCmakeConfigure = true;
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    meson
-    ninja
-  ];
+  nativeBuildInputs = [ cmake pkg-config meson ninja ];
   buildInputs = [
     libmpdclient
     yaml-cpp

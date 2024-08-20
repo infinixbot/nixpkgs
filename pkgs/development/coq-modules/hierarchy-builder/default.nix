@@ -63,10 +63,7 @@ let
 
     meta = with lib; {
       description = "High level commands to declare a hierarchy based on packed classes";
-      maintainers = with maintainers; [
-        cohencyril
-        siraben
-      ];
+      maintainers = with maintainers; [ cohencyril siraben ];
       license = licenses.mit;
     };
   };

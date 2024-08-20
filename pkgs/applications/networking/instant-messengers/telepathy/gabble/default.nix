@@ -32,20 +32,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    libxslt
-    python3
-  ];
-  buildInputs = [
-    libxml2
-    dbus-glib
-    sqlite
-    libsoup
-    libnice
-    telepathy-glib
-    gnutls
-  ];
+  nativeBuildInputs = [ pkg-config libxslt python3 ];
+  buildInputs = [ libxml2 dbus-glib sqlite libsoup libnice telepathy-glib gnutls ];
 
   nativeCheckInputs = [ dbus ];
 

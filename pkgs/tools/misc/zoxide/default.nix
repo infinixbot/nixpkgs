@@ -44,11 +44,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/ajeetdsouza/zoxide";
     changelog = "https://github.com/ajeetdsouza/zoxide/blob/v${version}/CHANGELOG.md";
     license = with licenses; [ mit ];
-    maintainers = with maintainers; [
-      ysndr
-      cole-h
-      SuperSandro2000
-    ];
+    maintainers = with maintainers; [ ysndr cole-h SuperSandro2000 ];
     mainProgram = "zoxide";
   };
 }

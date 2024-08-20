@@ -62,12 +62,7 @@ python3Packages.buildPythonPackage rec {
 
     license = lib.licenses.bsd2;
     platforms = lib.platforms.unix;
-    maintainers = with lib.maintainers; [
-      benley
-      lassulus
-      pinpox
-      nickcao
-    ];
+    maintainers = with lib.maintainers; [ benley lassulus pinpox nickcao ];
     mainProgram = "ykman";
   };
 }

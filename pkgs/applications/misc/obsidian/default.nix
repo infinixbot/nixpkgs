@@ -21,14 +21,7 @@ let
     downloadPage = "https://github.com/obsidianmd/obsidian-releases/releases";
     mainProgram = "obsidian";
     license = licenses.obsidian;
-    maintainers = with maintainers; [
-      atila
-      conradmearns
-      zaninime
-      qbit
-      kashw2
-      w-lfchen
-    ];
+    maintainers = with maintainers; [ atila conradmearns zaninime qbit kashw2 w-lfchen ];
   };
 
   filename = if stdenv.isDarwin then "Obsidian-${version}.dmg" else "obsidian-${version}.tar.gz";
@@ -65,15 +58,9 @@ let
       icon
       ;
     meta = meta // {
-      platforms = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
+      platforms = [ "x86_64-linux" "aarch64-linux" ];
     };
-    nativeBuildInputs = [
-      makeWrapper
-      imagemagick
-    ];
+    nativeBuildInputs = [ makeWrapper imagemagick ];
     installPhase = ''
       runHook preInstall
       mkdir -p $out/bin
@@ -109,17 +96,10 @@ let
       appname
       ;
     meta = meta // {
-      platforms = [
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
+      platforms = [ "x86_64-darwin" "aarch64-darwin" ];
     };
     sourceRoot = "${appname}.app";
-    nativeBuildInputs = [
-      makeWrapper
-      undmg
-      unzip
-    ];
+    nativeBuildInputs = [ makeWrapper undmg unzip ];
     installPhase = ''
       runHook preInstall
       mkdir -p $out/{Applications/${appname}.app,bin}

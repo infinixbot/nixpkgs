@@ -28,14 +28,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  buildInputs = [
-    openssl
-    gtest
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
+  buildInputs = [ openssl gtest ];
 
   # Default of C++11 is too low for gtest.
   # In newer versions of s2geometry this can be done with cmakeFlags.

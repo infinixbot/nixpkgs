@@ -145,16 +145,9 @@ rec {
   inherit
     (
       let
-        singleIniAtom =
-          nullOr (oneOf [
-            bool
-            int
-            float
-            str
-          ])
-          // {
-            description = "INI atom (null, bool, int, float or string)";
-          };
+        singleIniAtom = nullOr (oneOf [ bool int float str ]) // {
+          description = "INI atom (null, bool, int, float or string)";
+        };
         iniAtom =
           { listsAsDuplicateKeys, listToValue }:
           if listsAsDuplicateKeys then
@@ -450,11 +443,7 @@ rec {
         else
           abort "formats.elixirConf: should never happen (value = ${value})";
 
-      escapeElixir = lib.escape [
-        "\\"
-        "#"
-        "\""
-      ];
+      escapeElixir = lib.escape [ "\\" "#" "\"" ];
       string = value: "\"${escapeElixir value}\"";
 
       attrs =
@@ -661,10 +650,7 @@ rec {
           }:
           runCommand name
             {
-              nativeBuildInputs = [
-                python3
-                black
-              ];
+              nativeBuildInputs = [ python3 black ];
               value = builtins.toJSON value;
               pythonGen = ''
                 import json
@@ -674,10 +660,7 @@ rec {
                     for key, value in json.load(f).items():
                         print(f"{key} = {repr(value)}")
               '';
-              passAsFile = [
-                "value"
-                "pythonGen"
-              ];
+              passAsFile = [ "value" "pythonGen" ];
               preferLocalBuild = true;
             }
             ''

@@ -23,10 +23,7 @@
 mkDerivation (
   {
     pname = "ktexteditor";
-    nativeBuildInputs = [
-      extra-cmake-modules
-      perl
-    ];
+    nativeBuildInputs = [ extra-cmake-modules perl ];
     buildInputs = [
       karchive
       kconfig

@@ -18,10 +18,7 @@ python3Packages.buildPythonApplication rec {
 
   format = "other";
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   installPhase = ''
     install -D decode-spam-headers.py $out/bin/decode-spam-headers

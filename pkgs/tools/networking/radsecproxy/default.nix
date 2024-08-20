@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ autoreconfHook ];
-  buildInputs = [
-    openssl
-    nettle
-  ];
+  buildInputs = [ openssl nettle ];
 
   configureFlags = [
     "--with-ssl=${openssl.dev}"

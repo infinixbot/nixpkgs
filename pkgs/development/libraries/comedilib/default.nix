@@ -45,12 +45,7 @@ stdenv.mkDerivation (finalAttrs: {
     "--sysconfdir=${placeholder "out"}/etc"
   ];
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "man" "doc" ];
 
   meta = with lib; {
     description = "Linux Control and Measurement Device Interface Library";

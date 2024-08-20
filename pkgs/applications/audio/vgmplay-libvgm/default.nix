@@ -21,16 +21,9 @@ stdenv.mkDerivation {
     hash = "sha256-GjBwu8Y/lOI8SLO4SrAWcntQIwKe/hXuh9tKbOPHQiA=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
-  buildInputs = [
-    zlib
-    libvgm
-    inih
-  ];
+  buildInputs = [ zlib libvgm inih ];
 
   postInstall = ''
     install -Dm644 ../VGMPlay.ini $out/share/vgmplay/VGMPlay.ini

@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
     sha256 = "1lj2f13pbaajcy4v3744bz46rghhw5sv4dwwfnzhsllbj5gnjsv2";
   };
 
-  buildInputs = lib.optionals withGraphics [
-    libX11
-    libXt
-  ];
+  buildInputs = lib.optionals withGraphics [ libX11 libXt ];
 
   configurePhase =
     let

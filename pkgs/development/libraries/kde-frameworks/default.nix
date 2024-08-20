@@ -29,10 +29,7 @@
 }:
 
 let
-  maintainers = with lib.maintainers; [
-    ttuegel
-    nyanloutre
-  ];
+  maintainers = with lib.maintainers; [ ttuegel nyanloutre ];
   license = with lib.licenses; [
     lgpl21Plus
     lgpl3Plus
@@ -94,12 +91,7 @@ let
             inherit (args) pname;
             inherit (srcs.${pname}) src version;
 
-            outputs =
-              args.outputs or [
-                "bin"
-                "dev"
-                "out"
-              ];
+            outputs = args.outputs or [ "bin" "dev" "out" ];
             hasSeparateDev = lib.elem "dev" outputs;
 
             defaultSetupHook = if hasSeparateDev then propagateBin else null;

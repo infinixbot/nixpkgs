@@ -55,9 +55,6 @@ python3.pkgs.buildPythonApplication rec {
       generally display and analyze the resulting data.
     '';
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      zaninime
-      tmarkus
-    ];
+    maintainers = with maintainers; [ zaninime tmarkus ];
   };
 }

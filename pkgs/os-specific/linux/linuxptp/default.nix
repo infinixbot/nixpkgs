@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-FFBbbmVPP74p/OkqNXXgynBS/NcuPoYs3OCof11NZOI=";
   };
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   postPatch = ''
     substituteInPlace incdefs.sh --replace-fail \

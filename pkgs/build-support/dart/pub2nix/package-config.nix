@@ -24,10 +24,7 @@ in
 (runCommand "${lib.optionalString (pname != null) "${pname}-"}package-config.json" {
   inherit packages;
 
-  nativeBuildInputs = [
-    jq
-    yq
-  ];
+  nativeBuildInputs = [ jq yq ];
 
   __structuredAttrs = true;
 })

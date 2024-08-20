@@ -33,21 +33,14 @@ rustPlatform.buildRustPackage rec {
     installShellCompletion procs.{bash,fish} --zsh _procs
   '';
 
-  buildInputs = lib.optionals stdenv.isDarwin [
-    Security
-    libiconv
-    Libsystem
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ Security libiconv Libsystem ];
 
   meta = with lib; {
     description = "Modern replacement for ps written in Rust";
     homepage = "https://github.com/dalance/procs";
     changelog = "https://github.com/dalance/procs/raw/v${version}/CHANGELOG.md";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      Br1ght0ne
-      sciencentistguy
-    ];
+    maintainers = with maintainers; [ Br1ght0ne sciencentistguy ];
     mainProgram = "procs";
   };
 }

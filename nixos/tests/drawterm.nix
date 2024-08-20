@@ -5,20 +5,14 @@ let
       node =
         { pkgs, ... }:
         {
-          imports = [
-            ./common/user-account.nix
-            ./common/x11.nix
-          ];
+          imports = [ ./common/user-account.nix ./common/x11.nix ];
           services.xserver.enable = true;
           services.xserver.displayManager.sessionCommands = ''
             ${pkgs.drawterm}/bin/drawterm -g 1024x768 &
           '';
           test-support.displayManager.auto.user = "alice";
         };
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
+      systems = [ "x86_64-linux" "aarch64-linux" ];
     };
     wayland = {
       node =

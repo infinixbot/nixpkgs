@@ -22,16 +22,8 @@ stdenv.mkDerivation rec {
     sha256 = "17p8sh0rj8yqz36ria5bp48c8523zzw3y9g8sbm2jwq7sc27i7s9";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    gobject-introspection
-    intltool
-    wrapGAppsHook3
-  ];
-  buildInputs = [
-    readline
-    python3
-  ];
+  nativeBuildInputs = [ autoreconfHook gobject-introspection intltool wrapGAppsHook3 ];
+  buildInputs = [ readline python3 ];
   configureFlags = [ "--enable-gui" ];
 
   # we don't need to wrap the main executable, just the GUI

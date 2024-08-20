@@ -21,12 +21,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    libGL
-    libiconv
-    openal
-    libX11
-  ];
+  buildInputs = [ libGL libiconv openal libX11 ];
 
   installPhase = ''
     runHook preInstall

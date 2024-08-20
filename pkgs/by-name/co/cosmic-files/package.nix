@@ -53,16 +53,8 @@ rustPlatform.buildRustPackage rec {
     substituteInPlace justfile --replace '#!/usr/bin/env' "#!$(command -v env)"
   '';
 
-  nativeBuildInputs = [
-    just
-    pkg-config
-    makeBinaryWrapper
-  ];
-  buildInputs = [
-    glib
-    libxkbcommon
-    wayland
-  ];
+  nativeBuildInputs = [ just pkg-config makeBinaryWrapper ];
+  buildInputs = [ glib libxkbcommon wayland ];
 
   dontUseJustBuild = true;
 
@@ -80,13 +72,7 @@ rustPlatform.buildRustPackage rec {
     wrapProgram "$out/bin/${pname}" \
       --suffix XDG_DATA_DIRS : "${cosmic-icons}/share" \
       --prefix LD_LIBRARY_PATH : ${
-        lib.makeLibraryPath [
-          xorg.libX11
-          xorg.libXcursor
-          xorg.libXrandr
-          xorg.libXi
-          wayland
-        ]
+        lib.makeLibraryPath [ xorg.libX11 xorg.libXcursor xorg.libXrandr xorg.libXi wayland ]
       }
   '';
 
@@ -94,10 +80,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/pop-os/cosmic-files";
     description = "File Manager for the COSMIC Desktop Environment";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      ahoneybun
-      nyanbinary
-    ];
+    maintainers = with maintainers; [ ahoneybun nyanbinary ];
     platforms = platforms.linux;
   };
 }

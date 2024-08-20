@@ -121,11 +121,7 @@ import ./make-test-python.nix (
       '';
 
     meta = {
-      maintainers = with lib.maintainers; [
-        happysalada
-        pacien
-        onny
-      ];
+      maintainers = with lib.maintainers; [ happysalada pacien onny ];
     };
   }
 )

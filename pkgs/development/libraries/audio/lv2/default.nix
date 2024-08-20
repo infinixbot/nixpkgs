@@ -13,10 +13,7 @@ stdenv.mkDerivation rec {
   pname = "lv2";
   version = "1.18.10";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "https://lv2plug.in/spec/${pname}-${version}.tar.xz";

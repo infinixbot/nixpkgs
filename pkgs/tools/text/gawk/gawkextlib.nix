@@ -153,10 +153,7 @@ let
     mpfr = buildExtension {
       inherit gawkextlib;
       name = "mpfr";
-      extraBuildInputs = [
-        gmp
-        mpfr
-      ];
+      extraBuildInputs = [ gmp mpfr ];
     };
     nl_langinfo = buildExtension {
       inherit gawkextlib;
@@ -183,10 +180,7 @@ let
     xml = buildExtension {
       inherit gawkextlib;
       name = "xml";
-      extraBuildInputs = [
-        expat
-        libiconv
-      ];
+      extraBuildInputs = [ expat libiconv ];
     };
   };
 in

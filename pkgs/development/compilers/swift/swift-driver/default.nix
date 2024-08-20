@@ -28,10 +28,7 @@ stdenv.mkDerivation {
   inherit (sources) version;
   src = sources.swift-driver;
 
-  nativeBuildInputs = [
-    swift
-    swiftpm
-  ];
+  nativeBuildInputs = [ swift swiftpm ];
   buildInputs = [
     Foundation
     XCTest

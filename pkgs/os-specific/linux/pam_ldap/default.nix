@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
   ";
 
   nativeBuildInputs = [ perl ];
-  buildInputs = [
-    pam
-    openldap
-  ];
+  buildInputs = [ pam openldap ];
 
   meta = {
     homepage = "https://www.padl.com/OSS/pam_ldap.html";

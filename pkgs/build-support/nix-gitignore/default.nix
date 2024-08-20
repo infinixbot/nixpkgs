@@ -44,22 +44,9 @@ rec {
       let
         relPath = removePrefix ((toString root) + "/") name;
         matches = pair: (match (head pair) relPath) != null;
-        matched = map (pair: [
-          (matches pair)
-          (last pair)
-        ]) patterns;
+        matched = map (pair: [ (matches pair) (last pair) ]) patterns;
       in
-      last (
-        last (
-          [
-            [
-              true
-              true
-            ]
-          ]
-          ++ (filter head matched)
-        )
-      )
+      last (last ([ [ true true ] ] ++ (filter head matched)))
     );
 
   # string -> [[regex bool]]
@@ -75,22 +62,10 @@ rec {
         let
           split = match "^(!?)(.*)" l;
         in
-        [
-          (elemAt split 1)
-          (head split == "!")
-        ];
+        [ (elemAt split 1) (head split == "!") ];
 
       # regex -> regex
-      handleHashesBangs =
-        replaceStrings
-          [
-            "\\#"
-            "\\!"
-          ]
-          [
-            "#"
-            "!"
-          ];
+      handleHashesBangs = replaceStrings [ "\\#" "\\!" ] [ "#" "!" ];
 
       # ignore -> regex
       substWildcards =
@@ -107,27 +82,9 @@ rec {
           chars = s: filter (c: c != "" && !isList c) (splitString s);
           escape = s: map (c: "\\" + c) (chars s);
         in
-        replaceStrings
-          (
-            (chars special)
-            ++ (escape escs)
-            ++ [
-              "**/"
-              "**"
-              "*"
-              "?"
-            ]
-          )
-          (
-            (escape special)
-            ++ (escape escs)
-            ++ [
-              "(.*/)?"
-              ".*"
-              "[^/]*"
-              "[^/]"
-            ]
-          );
+        replaceStrings ((chars special) ++ (escape escs) ++ [ "**/" "**" "*" "?" ]) (
+          (escape special) ++ (escape escs) ++ [ "(.*/)?" ".*" "[^/]*" "[^/]" ]
+        );
 
       # (regex -> regex) -> regex -> regex
       mapAroundCharclass =
@@ -158,10 +115,7 @@ rec {
         if split != null then (elemAt split 0) + "($|/.*)" else l;
 
       # (regex -> regex) -> [regex, bool] -> [regex, bool]
-      mapPat = f: l: [
-        (f (head l))
-        (last l)
-      ];
+      mapPat = f: l: [ (f (head l)) (last l) ];
     in
     map (
       l: # `l' for "line"

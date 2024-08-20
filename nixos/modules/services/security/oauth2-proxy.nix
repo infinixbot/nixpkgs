@@ -147,10 +147,7 @@ in
     };
 
     approvalPrompt = lib.mkOption {
-      type = lib.types.enum [
-        "force"
-        "auto"
-      ];
+      type = lib.types.enum [ "force" "auto" ];
       default = "force";
       description = ''
         OAuth approval_prompt.
@@ -594,16 +591,7 @@ in
   };
 
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "oauth2_proxy"
-      ]
-      [
-        "services"
-        "oauth2-proxy"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "oauth2_proxy" ] [ "services" "oauth2-proxy" ])
   ];
 
   config = lib.mkIf cfg.enable {
@@ -624,11 +612,7 @@ in
     systemd.services.oauth2-proxy =
       let
         needsKeycloak =
-          lib.elem cfg.provider [
-            "keycloak"
-            "keycloak-oidc"
-          ]
-          && config.services.keycloak.enable;
+          lib.elem cfg.provider [ "keycloak" "keycloak-oidc" ] && config.services.keycloak.enable;
       in
       {
         description = "OAuth2 Proxy";

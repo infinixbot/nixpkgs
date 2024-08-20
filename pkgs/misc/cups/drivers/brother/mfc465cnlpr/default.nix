@@ -69,9 +69,6 @@ stdenv.mkDerivation rec {
     homepage = "http://www.brother.com/";
     license = licenses.unfree;
     maintainers = with maintainers; [ phrogg ];
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
   };
 }

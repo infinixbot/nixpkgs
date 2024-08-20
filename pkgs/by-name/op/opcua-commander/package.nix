@@ -19,11 +19,7 @@ buildNpmPackage rec {
   };
 
   npmDepsHash = "sha256-g4WFLh+UnziQR2NZ4eL84Vrk+Mz99kFQiBkdGmBEMHE=";
-  nativeBuildInputs = [
-    esbuild
-    typescript
-    makeWrapper
-  ];
+  nativeBuildInputs = [ esbuild typescript makeWrapper ];
 
   postPatch = ''
     substituteInPlace package.json \

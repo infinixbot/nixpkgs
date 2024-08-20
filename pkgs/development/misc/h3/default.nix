@@ -20,10 +20,7 @@ let
         inherit hash;
       };
 
-      outputs = [
-        "out"
-        "dev"
-      ];
+      outputs = [ "out" "dev" ];
 
       nativeBuildInputs = [ cmake ];
 

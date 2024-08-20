@@ -32,10 +32,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ autoreconfHook ];
 
-  buildInputs = [
-    libpcap
-    wolfssl
-  ];
+  buildInputs = [ libpcap wolfssl ];
 
   meta = with lib; {
     homepage = "https://github.com/virtualsquare/vde-2";

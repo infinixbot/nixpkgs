@@ -17,10 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-IEU9cfYCkrQagxzJT6jPz2nRCz1BAaiGvkEPhNRQr4E=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     description = "Convert Ingress resources to Gateway API resources";

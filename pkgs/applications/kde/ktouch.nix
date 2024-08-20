@@ -35,11 +35,7 @@ mkDerivation {
     description = "Touch typing tutor from the KDE software collection";
     mainProgram = "ktouch";
   };
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-    qtdeclarative
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools qtdeclarative ];
   buildInputs = [
     kconfig
     kconfigwidgets

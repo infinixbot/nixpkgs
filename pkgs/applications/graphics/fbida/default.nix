@@ -43,10 +43,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    which
-  ];
+  nativeBuildInputs = [ pkg-config which ];
   buildInputs = [
     libGL
     libexif
@@ -69,12 +66,7 @@ stdenv.mkDerivation rec {
     mesa
   ];
 
-  makeFlags = [
-    "prefix=$(out)"
-    "verbose=yes"
-    "STRIP="
-    "JPEG_VER=62"
-  ];
+  makeFlags = [ "prefix=$(out)" "verbose=yes" "STRIP=" "JPEG_VER=62" ];
 
   postPatch = ''
     sed -e 's@ cpp\>@ gcc -E -@' -i GNUmakefile

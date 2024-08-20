@@ -63,11 +63,7 @@ let
     version = "3c8b153";
     src = "${cpuinfo.src}/deps/clog";
 
-    nativeBuildInputs = [
-      cmake
-      gbenchmark
-      gtest
-    ];
+    nativeBuildInputs = [ cmake gbenchmark gtest ];
     cmakeFlags = [
       "-DUSE_SYSTEM_GOOGLEBENCHMARK=ON"
       "-DUSE_SYSTEM_GOOGLETEST=ON"
@@ -200,10 +196,7 @@ effectiveStdenv.mkDerivation rec {
 
   # TODO: build server, and move .so's to lib output
   # Python's wheel is stored in a separate dist output
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optionals pythonSupport [ "dist" ];
+  outputs = [ "out" "dev" ] ++ lib.optionals pythonSupport [ "dist" ];
 
   enableParallelBuilding = true;
 
@@ -300,10 +293,6 @@ effectiveStdenv.mkDerivation rec {
     # https://github.com/microsoft/onnxruntime/blob/master/BUILD.md#architectures
     platforms = platforms.unix;
     license = licenses.mit;
-    maintainers = with maintainers; [
-      puffnfresh
-      ck3d
-      cbourjau
-    ];
+    maintainers = with maintainers; [ puffnfresh ck3d cbourjau ];
   };
 }

@@ -106,10 +106,7 @@ stdenv.mkDerivation rec {
     "-DKWIN_BUILD_RUNNERS=OFF"
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   meta = with lib; {
     description = "Fork of kwin, an easy to use, but flexible, composited Window Manager";

@@ -75,13 +75,7 @@ lib.flip builtins.mapAttrs json (
     // lib.optionalAttrs (entry.isPoetry or false) {
       nativeBuildInputs = [
         poetry
-        (python3.withPackages (
-          p: with p; [
-            toml
-            ruamel-yaml
-            isort
-          ]
-        ))
+        (python3.withPackages (p: with p; [ toml ruamel-yaml isort ]))
       ];
 
       preBuild =

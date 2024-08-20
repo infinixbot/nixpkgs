@@ -17,10 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-EOtpZPIrAVMPIZGnkZoNs7ovaR7Ts3dJsFLXClIoNVI=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     description = "Tool to detect illegitimate stars from bot accounts on GitHub projects";

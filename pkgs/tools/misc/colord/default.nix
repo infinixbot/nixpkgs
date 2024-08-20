@@ -35,13 +35,7 @@ stdenv.mkDerivation rec {
   pname = "colord";
   version = "1.4.6";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-    "man"
-    "installedTests"
-  ];
+  outputs = [ "out" "dev" "devdoc" "man" "installedTests" ];
 
   src = fetchurl {
     url = "https://www.freedesktop.org/software/colord/releases/${pname}-${version}.tar.xz";

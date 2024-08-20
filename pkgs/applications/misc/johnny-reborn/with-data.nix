@@ -27,10 +27,7 @@ stdenvNoCC.mkDerivation {
   pname = "johnny-reborn";
   inherit (johnny-reborn-engine) version;
 
-  srcs = [
-    sounds
-    resources
-  ];
+  srcs = [ sounds resources ];
 
   nativeBuildInputs = [ makeWrapper ];
 

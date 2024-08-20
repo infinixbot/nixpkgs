@@ -27,10 +27,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [
-    libmikmod
-    ncurses
-  ];
+  buildInputs = [ libmikmod ncurses ];
 
   meta = {
     description = "Tracker music player for the terminal";

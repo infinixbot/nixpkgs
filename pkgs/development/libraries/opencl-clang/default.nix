@@ -93,17 +93,9 @@ stdenv.mkDerivation {
   pname = "opencl-clang";
   inherit version src;
 
-  nativeBuildInputs = [
-    cmake
-    git
-    llvm.dev
-  ];
+  nativeBuildInputs = [ cmake git llvm.dev ];
 
-  buildInputs = [
-    libclang
-    llvm
-    spirv-llvm-translator'
-  ];
+  buildInputs = [ libclang llvm spirv-llvm-translator' ];
 
   cmakeFlags = [
     "-DPREFERRED_LLVM_VERSION=${lib.getVersion llvm}"

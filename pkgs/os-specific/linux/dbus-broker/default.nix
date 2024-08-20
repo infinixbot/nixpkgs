@@ -28,11 +28,7 @@ let
         repo = pname;
         inherit hash rev;
       };
-      nativeBuildInputs = [
-        meson
-        ninja
-        pkg-config
-      ];
+      nativeBuildInputs = [ meson ninja pkg-config ];
       inherit buildInputs;
     };
 
@@ -44,21 +40,13 @@ let
     pname = "c-dvar";
     version = "1.1.0";
     hash = "sha256-p/C+BktclVseCtZJ1Q/YK03vP2ClnYRLB1Vmj2OQJD4=";
-    buildInputs = [
-      c-stdaux
-      c-utf8
-    ];
+    buildInputs = [ c-stdaux c-utf8 ];
   };
   c-ini = dep {
     pname = "c-ini";
     version = "1.1.0";
     hash = "sha256-wa7aNl20hkb/83c4AkQ/0YFDdmBs4XGW+WLUtBWIC98=";
-    buildInputs = [
-      c-list
-      c-rbtree
-      c-stdaux
-      c-utf8
-    ];
+    buildInputs = [ c-list c-rbtree c-stdaux c-utf8 ];
   };
   c-list = dep {
     pname = "c-list";
@@ -107,12 +95,7 @@ stdenv.mkDerivation (finalAttrs: {
     ./disable-test.patch
   ];
 
-  nativeBuildInputs = [
-    docutils
-    meson
-    ninja
-    pkg-config
-  ];
+  nativeBuildInputs = [ docutils meson ninja pkg-config ];
 
   buildInputs = [
     c-dvar

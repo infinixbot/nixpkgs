@@ -24,19 +24,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-qMMeRYIQqJpVRE3YjbXIiXHwS/CHs9l2QihszwQIr/A=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    qttools
-    wrapQtAppsHook
-  ];
-  buildInputs = [
-    bzip2
-    qtbase
-    libnova
-    proj_7
-    openjpeg
-    libpng
-  ];
+  nativeBuildInputs = [ cmake qttools wrapQtAppsHook ];
+  buildInputs = [ bzip2 qtbase libnova proj_7 openjpeg libpng ];
   cmakeFlags = [
     "-DOPENJPEG_INCLUDE_DIR=${openjpeg.dev}/include/openjpeg-${lib.versions.majorMinor openjpeg.version}"
   ] ++ lib.optionals stdenv.isDarwin [ "-DLIBNOVA_LIBRARY=${libnova}/lib/libnova.dylib" ];

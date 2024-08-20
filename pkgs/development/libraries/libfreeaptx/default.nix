@@ -15,10 +15,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-eEUhOrKqb2hHWanY+knpY9FBEnjkkFTB+x6BZgMBpbo=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   postPatch = lib.optionalString stdenv.isDarwin ''
     substituteInPlace Makefile \

@@ -21,10 +21,7 @@
 let
   major = "3.12";
   minor = "3";
-  binpath = lib.makeBinPath [
-    dvdauthor
-    vcdimager
-  ];
+  binpath = lib.makeBinPath [ dvdauthor vcdimager ];
 
 in
 stdenv.mkDerivation rec {
@@ -36,12 +33,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-h3SerjOhQSB9GwC+IzttgEWYLtMkntS5ja4fOpdf6hU=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    itstool
-    intltool
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ pkg-config itstool intltool wrapGAppsHook3 ];
 
   buildInputs = [
     gtk3

@@ -126,10 +126,7 @@ in
       extraOptions = mkOption {
         default = [ ];
         type = types.listOf types.str;
-        example = [
-          "-A /var/log/smartd/"
-          "--interval=3600"
-        ];
+        example = [ "-A /var/log/smartd/" "--interval=3600" ];
         description = ''
           Extra command-line options passed to the `smartd`
           daemon on startup.

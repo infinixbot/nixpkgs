@@ -47,11 +47,7 @@ stdenv.mkDerivation rec {
       --replace "(4.5L*1024*1024*1024)" "(0.5L*1024*1024*1024)"
   '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    python3
-  ];
+  nativeBuildInputs = [ cmake pkg-config python3 ];
 
   strictDeps = true;
 
@@ -95,10 +91,7 @@ stdenv.mkDerivation rec {
     homepage = "https://www.cryfs.org/";
     changelog = "https://github.com/cryfs/cryfs/raw/${version}/ChangeLog.txt";
     license = licenses.lgpl3Only;
-    maintainers = with maintainers; [
-      peterhoeg
-      c0bw3b
-    ];
+    maintainers = with maintainers; [ peterhoeg c0bw3b ];
     platforms = platforms.unix;
   };
 }

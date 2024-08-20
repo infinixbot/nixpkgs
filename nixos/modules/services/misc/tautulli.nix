@@ -12,16 +12,7 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "plexpy"
-      ]
-      [
-        "services"
-        "tautulli"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "plexpy" ] [ "services" "tautulli" ])
   ];
 
   options = {

@@ -54,10 +54,7 @@ rec {
   meta = with lib; {
     description = "Free EDA software to develop printed circuit boards";
     homepage = "https://horizon-eda.org";
-    maintainers = with maintainers; [
-      guserav
-      jue89
-    ];
+    maintainers = with maintainers; [ guserav jue89 ];
     license = licenses.gpl3Plus;
     platforms = platforms.linux;
   };

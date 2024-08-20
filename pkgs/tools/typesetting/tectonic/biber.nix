@@ -52,9 +52,6 @@ in
       })
     ];
     meta = prevAttrs.meta // {
-      maintainers = with lib.maintainers; [
-        doronbehar
-        bryango
-      ];
+      maintainers = with lib.maintainers; [ doronbehar bryango ];
     };
   })

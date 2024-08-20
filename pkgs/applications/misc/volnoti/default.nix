@@ -35,11 +35,7 @@ stdenv.mkDerivation {
     })
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook wrapGAppsHook3 ];
 
   buildInputs = [
     dbus

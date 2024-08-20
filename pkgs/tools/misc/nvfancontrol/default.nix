@@ -20,11 +20,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-fEzdghGQSSeyeyiHjw1ggQ38gsETJFl9bq/tizGxIis=";
 
-  nativeBuildInputs = [
-    libXNVCtrl
-    libX11
-    libXext
-  ];
+  nativeBuildInputs = [ libXNVCtrl libX11 libXext ];
 
   # Needed for static linking
   preConfigure = ''

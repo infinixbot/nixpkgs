@@ -71,16 +71,7 @@ in
   };
 
   cargo = attrs: {
-    buildInputs =
-      [
-        openssl
-        zlib
-        curl
-      ]
-      ++ lib.optionals stdenv.isDarwin [
-        CoreFoundation
-        Security
-      ];
+    buildInputs = [ openssl zlib curl ] ++ lib.optionals stdenv.isDarwin [ CoreFoundation Security ];
   };
 
   libz-sys = attrs: {
@@ -91,14 +82,8 @@ in
 
   curl-sys = attrs: {
     nativeBuildInputs = [ pkg-config ];
-    buildInputs = [
-      zlib
-      curl
-    ];
-    propagatedBuildInputs = [
-      curl
-      zlib
-    ];
+    buildInputs = [ zlib curl ];
+    propagatedBuildInputs = [ curl zlib ];
     extraLinkFlags = [ "-L${zlib.out}/lib" ];
   };
 
@@ -166,10 +151,7 @@ in
   };
 
   gdk-pixbuf = attrs: {
-    buildInputs = [
-      dbus-glib
-      gdk-pixbuf
-    ];
+    buildInputs = [ dbus-glib gdk-pixbuf ];
   };
 
   gdk-pixbuf-sys = attrs: {
@@ -210,11 +192,7 @@ in
   libgit2-sys = attrs: {
     LIBGIT2_SYS_USE_PKG_CONFIG = true;
     nativeBuildInputs = [ pkg-config ];
-    buildInputs = [
-      openssl
-      zlib
-      libgit2
-    ];
+    buildInputs = [ openssl zlib libgit2 ];
   };
 
   libseat-sys = attrs: {
@@ -229,11 +207,7 @@ in
 
   libssh2-sys = attrs: {
     nativeBuildInputs = [ pkg-config ];
-    buildInputs = [
-      openssl
-      zlib
-      libssh2
-    ];
+    buildInputs = [ openssl zlib libssh2 ];
   };
 
   libdbus-sys = attrs: {
@@ -247,10 +221,7 @@ in
   };
 
   graphene-sys = attrs: {
-    nativeBuildInputs = [
-      pkg-config
-      gobject-introspection
-    ];
+    nativeBuildInputs = [ pkg-config gobject-introspection ];
     buildInputs = [ graphene ];
   };
 
@@ -261,10 +232,7 @@ in
 
   nettle-sys = attrs: {
     nativeBuildInputs = [ pkg-config ];
-    buildInputs = [
-      nettle
-      clang
-    ];
+    buildInputs = [ nettle clang ];
     LIBCLANG_PATH = "${llvmPackages.libclang.lib}/lib";
   };
 
@@ -345,25 +313,16 @@ in
 
   sequoia-store = attrs: {
     nativeBuildInputs = [ capnproto ];
-    buildInputs = [
-      sqlite
-      gmp
-    ];
+    buildInputs = [ sqlite gmp ];
   };
 
   sequoia-sq = attrs: {
-    buildInputs = [
-      sqlite
-      gmp
-    ];
+    buildInputs = [ sqlite gmp ];
   };
 
   sequoia-tool = attrs: {
     nativeBuildInputs = [ capnproto ];
-    buildInputs = [
-      sqlite
-      gmp
-    ];
+    buildInputs = [ sqlite gmp ];
   };
 
   serde_derive = attrs: {
@@ -372,10 +331,7 @@ in
 
   servo-fontconfig-sys = attrs: {
     nativeBuildInputs = [ pkg-config ];
-    buildInputs = [
-      freetype
-      fontconfig
-    ];
+    buildInputs = [ freetype fontconfig ];
   };
 
   soup3-sys = attrs: {

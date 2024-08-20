@@ -16,11 +16,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ allegro ];
 
-  makeFlags = [
-    "PREFIX=$(out)/"
-    "INSTALL=install"
-    "CXX=g++"
-  ];
+  makeFlags = [ "PREFIX=$(out)/" "INSTALL=install" "CXX=g++" ];
 
   meta = with lib; {
     description = "Atomic Tanks ballistics game";

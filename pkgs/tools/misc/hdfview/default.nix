@@ -59,10 +59,7 @@ stdenv.mkDerivation rec {
     exec = name;
     icon = name;
     comment = meta.description;
-    categories = [
-      "Science"
-      "DataVisualization"
-    ];
+    categories = [ "Science" "DataVisualization" ];
   };
 
   installPhase =

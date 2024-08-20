@@ -48,10 +48,7 @@ stdenv.mkDerivation (finalAttrs: {
   version = "2.58.2";
 
   outputs =
-    [
-      "out"
-      "dev"
-    ]
+    [ "out" "dev" ]
     ++ lib.optionals withIntrospection [
       "devdoc"
     ];

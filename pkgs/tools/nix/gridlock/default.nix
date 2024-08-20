@@ -12,10 +12,7 @@ rustPlatform.buildRustPackage {
   pname = "gridlock";
   version = "unstable-2023-08-29";
 
-  outputs = [
-    "out"
-    "nyarr"
-  ];
+  outputs = [ "out" "nyarr" ];
 
   src = fetchFromGitHub {
     owner = "lf-";

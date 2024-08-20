@@ -55,10 +55,7 @@ in
     services.zabbixAgent = {
       enable = mkEnableOption "the Zabbix Agent";
 
-      package = mkPackageOption pkgs [
-        "zabbix"
-        "agent"
-      ] { };
+      package = mkPackageOption pkgs [ "zabbix" "agent" ] { };
 
       extraPackages = mkOption {
         type = types.listOf types.package;
@@ -125,13 +122,7 @@ in
       };
 
       settings = mkOption {
-        type =
-          with types;
-          attrsOf (oneOf [
-            int
-            str
-            (listOf str)
-          ]);
+        type = with types; attrsOf (oneOf [ int str (listOf str) ]);
         default = { };
         description = ''
           Zabbix Agent configuration. Refer to
@@ -188,13 +179,7 @@ in
       # https://www.zabbix.com/documentation/current/manual/config/items/userparameters
       # > User parameters are commands executed by Zabbix agent.
       # > /bin/sh is used as a command line interpreter under UNIX operating systems.
-      path =
-        with pkgs;
-        [
-          bash
-          "/run/wrappers"
-        ]
-        ++ cfg.extraPackages;
+      path = with pkgs; [ bash "/run/wrappers" ] ++ cfg.extraPackages;
 
       serviceConfig = {
         ExecStart = "@${cfg.package}/sbin/zabbix_agentd zabbix_agentd -f --config ${configFile}";

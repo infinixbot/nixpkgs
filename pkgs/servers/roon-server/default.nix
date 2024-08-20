@@ -17,17 +17,7 @@
 }:
 let
   version = "2.0-1442";
-  urlVersion =
-    builtins.replaceStrings
-      [
-        "."
-        "-"
-      ]
-      [
-        "00"
-        "0"
-      ]
-      version;
+  urlVersion = builtins.replaceStrings [ "." "-" ] [ "00" "0" ] version;
 in
 stdenv.mkDerivation {
   pname = "roon-server";
@@ -50,10 +40,7 @@ stdenv.mkDerivation {
     stdenv.cc.cc.lib
   ];
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    makeWrapper
-  ];
+  nativeBuildInputs = [ autoPatchelfHook makeWrapper ];
 
   installPhase =
     let
@@ -74,22 +61,9 @@ stdenv.mkDerivation {
           makeWrapper "$dotnetDir/$binName" "${binPath}" \
             --add-flags "$binDir/$binName.dll" \
             --argv0 "$binName" \
-            --prefix LD_LIBRARY_PATH : "${
-              lib.makeLibraryPath [
-                alsa-lib
-                icu66
-                ffmpeg
-                openssl
-              ]
-            }" \
+            --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ alsa-lib icu66 ffmpeg openssl ]}" \
             --prefix PATH : "$dotnetDir" \
-            --prefix PATH : "${
-              lib.makeBinPath [
-                alsa-utils
-                cifs-utils
-                ffmpeg
-              ]
-            }" \
+            --prefix PATH : "${lib.makeBinPath [ alsa-utils cifs-utils ffmpeg ]}" \
             --chdir "$binDir" \
             --set DOTNET_ROOT "$dotnetDir"
         )
@@ -120,10 +94,7 @@ stdenv.mkDerivation {
     homepage = "https://roonlabs.com";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
-    maintainers = with maintainers; [
-      lovesegfault
-      steell
-    ];
+    maintainers = with maintainers; [ lovesegfault steell ];
     platforms = [ "x86_64-linux" ];
     mainProgram = "RoonServer";
   };

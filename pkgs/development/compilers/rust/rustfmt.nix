@@ -44,14 +44,8 @@ rustPlatform.buildRustPackage rec {
   meta = with lib; {
     description = "Tool for formatting Rust code according to style guidelines";
     homepage = "https://github.com/rust-lang-nursery/rustfmt";
-    license = with licenses; [
-      mit
-      asl20
-    ];
+    license = with licenses; [ mit asl20 ];
     mainProgram = "rustfmt";
-    maintainers = with maintainers; [
-      globin
-      basvandijk
-    ];
+    maintainers = with maintainers; [ globin basvandijk ];
   };
 }

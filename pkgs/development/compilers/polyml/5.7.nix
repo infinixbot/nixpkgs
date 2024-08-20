@@ -26,10 +26,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [
-    libffi
-    gmp
-  ];
+  buildInputs = [ libffi gmp ];
 
   nativeBuildInputs = lib.optional stdenv.isDarwin autoreconfHook;
 

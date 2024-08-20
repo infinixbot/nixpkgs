@@ -33,11 +33,7 @@ stdenv.mkDerivation (finalAttrs: {
       sed -i 1i'int feenableexcept(int __mask);' contrib/libtests/pngvalid.c
     '';
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
   outputBin = "dev";
 
   propagatedBuildInputs = [ zlib ];
@@ -56,10 +52,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "http://www.libpng.org/pub/png/libpng.html";
     changelog = "https://github.com/pnggroup/libpng/blob/v${finalAttrs.version}/CHANGES";
     license = licenses.libpng2;
-    pkgConfigModules = [
-      "libpng"
-      "libpng16"
-    ];
+    pkgConfigModules = [ "libpng" "libpng16" ];
     platforms = platforms.all;
     maintainers = with maintainers; [ vcunat ];
   };

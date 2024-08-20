@@ -28,14 +28,7 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "cargo-supply-chain";
     homepage = "https://github.com/rust-secure-code/cargo-supply-chain";
     changelog = "https://github.com/rust-secure-code/cargo-supply-chain/blob/${src.rev}/CHANGELOG.md";
-    license = with licenses; [
-      asl20
-      mit
-      zlib
-    ]; # any of three
-    maintainers = with maintainers; [
-      figsoda
-      matthiasbeyer
-    ];
+    license = with licenses; [ asl20 mit zlib ]; # any of three
+    maintainers = with maintainers; [ figsoda matthiasbeyer ];
   };
 }

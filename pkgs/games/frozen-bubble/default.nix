@@ -20,19 +20,9 @@ perlPackages.buildPerlModule {
   };
   patches = [ ./fix-compilation.patch ];
 
-  nativeBuildInputs = [
-    copyDesktopItems
-    pkg-config
-  ];
+  nativeBuildInputs = [ copyDesktopItems pkg-config ];
 
-  buildInputs = [
-    glib
-    SDL
-    SDL_mixer
-    SDL_Pango
-    perlPackages.SDL
-    perlPackages.FileSlurp
-  ];
+  buildInputs = [ glib SDL SDL_mixer SDL_Pango perlPackages.SDL perlPackages.FileSlurp ];
   propagatedBuildInputs = with perlPackages; [
     AlienSDL
     CompressBzip2

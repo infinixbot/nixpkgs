@@ -40,10 +40,7 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [
-    readline
-    libxml2
-  ];
+  buildInputs = [ readline libxml2 ];
 
   enableParallelBuilding = true;
 
@@ -56,10 +53,7 @@ stdenv.mkDerivation rec {
     runHook postCheck
   '';
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   meta = with lib; {
     description = "Configuration editing tool";

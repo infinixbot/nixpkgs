@@ -10,11 +10,7 @@ let
 
   settingsFormat = pkgs.formats.toml { };
 
-  files = [
-    "yazi"
-    "theme"
-    "keymap"
-  ];
+  files = [ "yazi" "theme" "keymap" ];
 in
 {
   options.programs.yazi = {
@@ -61,12 +57,7 @@ in
     };
 
     plugins = lib.mkOption {
-      type =
-        with lib.types;
-        attrsOf (oneOf [
-          path
-          package
-        ]);
+      type = with lib.types; attrsOf (oneOf [ path package ]);
       default = { };
       description = ''
         Lua plugins.
@@ -82,12 +73,7 @@ in
     };
 
     flavors = lib.mkOption {
-      type =
-        with lib.types;
-        attrsOf (oneOf [
-          path
-          package
-        ]);
+      type = with lib.types; attrsOf (oneOf [ path package ]);
       default = { };
       description = ''
         Pre-made themes.

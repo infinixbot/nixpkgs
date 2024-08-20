@@ -94,10 +94,7 @@ buildGoModule rec {
       genericName = "Subsonic Client";
       comment = meta.description;
       type = "Application";
-      categories = [
-        "Audio"
-        "AudioVideo"
-      ];
+      categories = [ "Audio" "AudioVideo" ];
     })
   ];
 
@@ -107,9 +104,6 @@ buildGoModule rec {
     homepage = "https://github.com/dweymouth/supersonic";
     platforms = platforms.linux ++ platforms.darwin;
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      zane
-      sochotnicky
-    ];
+    maintainers = with maintainers; [ zane sochotnicky ];
   };
 }

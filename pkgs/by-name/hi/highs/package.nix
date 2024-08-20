@@ -27,10 +27,7 @@ stdenv.mkDerivation (finalAttrs: {
     "$out/bin/highs" --version
   '';
 
-  nativeBuildInputs = [
-    clang
-    cmake
-  ];
+  nativeBuildInputs = [ clang cmake ];
 
   enableParallelBuilding = true;
 

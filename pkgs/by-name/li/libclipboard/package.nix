@@ -26,16 +26,10 @@ stdenv.mkDerivation (finalAttrs: {
     libXau
     libXdmcp
   ] ++ lib.optional stdenv.isDarwin [ darwin.apple_sdk.frameworks.Cocoa ];
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   cmakeFlags = [ "-DBUILD_SHARED_LIBS=ON" ];
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   meta = {
     description = "Lightweight cross-platform clipboard library";

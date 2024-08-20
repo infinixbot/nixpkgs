@@ -37,10 +37,7 @@ stdenv.mkDerivation rec {
   pname = "gnome-photos";
   version = "44.0";
 
-  outputs = [
-    "out"
-    "installedTests"
-  ];
+  outputs = [ "out" "installedTests" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.major version}/${pname}-${version}.tar.xz";

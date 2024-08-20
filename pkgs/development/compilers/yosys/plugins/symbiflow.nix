@@ -51,10 +51,7 @@ lib.genAttrs plugins (
     inherit src version plugin;
     enableParallelBuilding = true;
 
-    nativeBuildInputs = [
-      python3
-      pkg-config
-    ];
+    nativeBuildInputs = [ python3 pkg-config ];
     buildInputs = [
       yosys
       readline
@@ -104,10 +101,7 @@ lib.genAttrs plugins (
       description = "Symbiflow ${plugin} plugin for Yosys";
       license = licenses.isc;
       platforms = platforms.all;
-      maintainers = with maintainers; [
-        ollieB
-        thoughtpolice
-      ];
+      maintainers = with maintainers; [ ollieB thoughtpolice ];
     };
   })
 )

@@ -111,12 +111,7 @@ let
 
   baseDerivation = stdenv.mkDerivation (
     finalAttrs:
-    (builtins.removeAttrs args [
-      "gitHashes"
-      "sdkSourceBuilders"
-      "pubspecLock"
-      "customSourceBuilders"
-    ])
+    (builtins.removeAttrs args [ "gitHashes" "sdkSourceBuilders" "pubspecLock" "customSourceBuilders" ])
     // {
       inherit
         pubspecLockFile
@@ -129,10 +124,7 @@ let
         dartJitFlags
         ;
 
-      outputs = [
-        "out"
-        "pubcache"
-      ] ++ args.outputs or [ ];
+      outputs = [ "out" "pubcache" ] ++ args.outputs or [ ];
 
       dartEntryPoints =
         if (dartEntryPoints != null) then

@@ -26,12 +26,7 @@ stdenv.mkDerivation rec {
   pname = "grilo";
   version = "0.3.16"; # if you change minor, also change ./setup-hook.sh
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "man" "devdoc" ];
   outputBin = "dev";
 
   setupHook = ./setup-hook.sh;

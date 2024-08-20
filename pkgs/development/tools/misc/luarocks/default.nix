@@ -59,17 +59,9 @@ stdenv.mkDerivation (finalAttrs: {
     fi
   '';
 
-  nativeBuildInputs = [
-    makeWrapper
-    installShellFiles
-    lua
-    unzip
-  ];
+  nativeBuildInputs = [ makeWrapper installShellFiles lua unzip ];
 
-  buildInputs = [
-    curl
-    which
-  ];
+  buildInputs = [ curl which ];
 
   postInstall =
     ''
@@ -101,11 +93,7 @@ stdenv.mkDerivation (finalAttrs: {
       done
     '';
 
-  propagatedBuildInputs = [
-    zip
-    unzip
-    cmake
-  ];
+  propagatedBuildInputs = [ zip unzip cmake ];
 
   # unpack hook for src.rock and rockspec files
   setupHook = ./setup-hook.sh;
@@ -129,10 +117,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = with lib; {
     description = "Package manager for Lua";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      raskin
-      teto
-    ];
+    maintainers = with maintainers; [ raskin teto ];
     mainProgram = "luarocks";
     platforms = platforms.linux ++ platforms.darwin;
     downloadPage = "http://luarocks.org/releases/";

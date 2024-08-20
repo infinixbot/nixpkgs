@@ -49,18 +49,8 @@ stdenv.mkDerivation rec {
 
   NIX_LDFLAGS = "-llua -lgcc_s";
 
-  nativeBuildInputs = [
-    pkg-config
-    unzip
-  ];
-  buildInputs = [
-    SDL2
-    SDL2_ttf
-    SDL2_image
-    SDL2_mixer
-    lua
-    zlib
-  ];
+  nativeBuildInputs = [ pkg-config unzip ];
+  buildInputs = [ SDL2 SDL2_ttf SDL2_image SDL2_mixer lua zlib ];
 
   postPatch = ''
     substituteInPlace configure.sh \

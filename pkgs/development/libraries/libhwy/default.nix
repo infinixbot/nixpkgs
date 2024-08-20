@@ -37,10 +37,7 @@ stdenv.mkDerivation rec {
     "trivialautovarinit"
   ];
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-  ];
+  nativeBuildInputs = [ cmake ninja ];
 
   # Required for case-insensitive filesystems ("BUILD" exists)
   dontUseCmakeBuildDir = true;
@@ -85,10 +82,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Performance-portable, length-agnostic SIMD with runtime dispatch";
     homepage = "https://github.com/google/highway";
-    license = with licenses; [
-      asl20
-      bsd3
-    ];
+    license = with licenses; [ asl20 bsd3 ];
     platforms = platforms.unix;
     maintainers = with maintainers; [ zhaofengli ];
   };

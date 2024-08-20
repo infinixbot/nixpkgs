@@ -40,10 +40,7 @@ rustPlatform.buildRustPackage {
     description = "Wrap rust executables in OS-specific app bundles";
     mainProgram = "cargo-bundle";
     homepage = "https://github.com/burtonageo/cargo-bundle";
-    license = with licenses; [
-      asl20
-      mit
-    ];
+    license = with licenses; [ asl20 mit ];
     maintainers = with maintainers; [ figsoda ];
   };
 }

@@ -132,10 +132,7 @@ let
     icon = pname;
     desktopName = "Android Studio for Platform (${channel} channel)";
     comment = "The official Android IDE for Android platform development";
-    categories = [
-      "Development"
-      "IDE"
-    ];
+    categories = [ "Development" "IDE" ];
     startupNotify = true;
     startupWMClass = "jetbrains-studio";
   };
@@ -174,10 +171,7 @@ runCommand drvName
         for Android Open Source Project (AOSP) platform developers who build with the Soong build system.
       '';
       homepage = "https://developer.android.com/studio/platform.html";
-      license = with licenses; [
-        asl20
-        unfree
-      ]; # The code is under Apache-2.0, but:
+      license = with licenses; [ asl20 unfree ]; # The code is under Apache-2.0, but:
       # If one selects Help -> Licenses in Android Studio, the dialog shows the following:
       # "Android Studio includes proprietary code subject to separate license,
       # including JetBrains CLion(R) (www.jetbrains.com/clion) and IntelliJ(R)

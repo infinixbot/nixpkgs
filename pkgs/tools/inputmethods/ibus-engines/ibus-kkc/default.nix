@@ -26,12 +26,7 @@ stdenv.mkDerivation rec {
     pkg-config
   ];
 
-  buildInputs = [
-    libkkc
-    ibus
-    skk-dicts
-    gtk3
-  ];
+  buildInputs = [ libkkc ibus skk-dicts gtk3 ];
 
   postInstall = ''
     ln -s ${skk-dicts}/share $out/share/skk

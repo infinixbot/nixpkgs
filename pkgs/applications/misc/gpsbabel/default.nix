@@ -56,23 +56,9 @@ stdenv.mkDerivation rec {
   outputs = [ "out" ] ++ lib.optional withDoc "doc";
 
   nativeBuildInputs =
-    [
-      pkg-config
-      qmake
-    ]
-    ++ lib.optionals withGUI [
-      qttools
-      wrapQtAppsHook
-    ]
-    ++ lib.optionals withDoc [
-      docbook_xml_dtd_45
-      docbook_xsl
-      expat
-      fop
-      libxml2
-      libxslt
-      perl
-    ];
+    [ pkg-config qmake ]
+    ++ lib.optionals withGUI [ qttools wrapQtAppsHook ]
+    ++ lib.optionals withDoc [ docbook_xml_dtd_45 docbook_xsl expat fop libxml2 libxslt perl ];
 
   buildInputs = [
     libusb1
@@ -80,10 +66,7 @@ stdenv.mkDerivation rec {
     zlib
   ] ++ lib.optional withGUI qtserialport ++ lib.optional (withGUI && withMapPreview) qtwebengine;
 
-  nativeCheckInputs = [
-    libxml2
-    which
-  ];
+  nativeCheckInputs = [ libxml2 which ];
 
   preConfigure = lib.optionalString withGUI ''
     lrelease gui/*.ts gui/coretool/*.ts
@@ -101,11 +84,7 @@ stdenv.mkDerivation rec {
 
   makeFlags =
     lib.optional withGUI "gui"
-    ++ lib.optionals withDoc [
-      "gpsbabel.pdf"
-      "gpsbabel.html"
-      "gpsbabel.org"
-    ];
+    ++ lib.optionals withDoc [ "gpsbabel.pdf" "gpsbabel.html" "gpsbabel.org" ];
 
   # Floating point behavior on i686 causes nmea.test failures. Preventing
   # extended precision fixes this problem.

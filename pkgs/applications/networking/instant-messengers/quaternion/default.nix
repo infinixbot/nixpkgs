@@ -39,11 +39,7 @@ stdenv.mkDerivation (finalAttrs: {
     qtquickcontrols2
   ];
 
-  nativeBuildInputs = [
-    cmake
-    qttools
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake qttools wrapQtAppsHook ];
 
   # qt6 needs UTF
   env.LANG = "C.UTF-8";

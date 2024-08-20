@@ -31,14 +31,8 @@ stdenv.mkDerivation rec {
     URI
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    makeWrapper
-  ];
-  buildInputs = [
-    perlPackages.perl
-    libpcap
-  ];
+  nativeBuildInputs = [ autoreconfHook makeWrapper ];
+  buildInputs = [ perlPackages.perl libpcap ];
 
   postInstall = ''
     for binary in get-{oui,iab}; do
@@ -55,11 +49,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/royhills/arp-scan/wiki/arp-scan-User-Guide";
     license = licenses.gpl3;
     platforms = platforms.linux ++ platforms.darwin;
-    maintainers = with maintainers; [
-      bjornfor
-      mikoim
-      r-burns
-    ];
+    maintainers = with maintainers; [ bjornfor mikoim r-burns ];
     mainProgram = "arp-scan";
   };
 }

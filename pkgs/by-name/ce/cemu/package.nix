@@ -164,11 +164,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://cemu.info";
     license = lib.licenses.mpl20;
     mainProgram = "cemu";
-    maintainers = with lib.maintainers; [
-      zhaofengli
-      baduhai
-      AndersonTorres
-    ];
+    maintainers = with lib.maintainers; [ zhaofengli baduhai AndersonTorres ];
     platforms = [ "x86_64-linux" ];
   };
 })

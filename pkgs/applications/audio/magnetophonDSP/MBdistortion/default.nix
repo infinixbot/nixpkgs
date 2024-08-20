@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [
-    faust2jaqt
-    faust2lv2
-  ];
+  buildInputs = [ faust2jaqt faust2lv2 ];
 
   dontWrapQtApps = true;
 

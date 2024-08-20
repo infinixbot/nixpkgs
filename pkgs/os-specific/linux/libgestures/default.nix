@@ -25,15 +25,9 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    glib
-    jsoncpp
-  ];
+  buildInputs = [ glib jsoncpp ];
 
-  makeFlags = [
-    "DESTDIR=$(out)"
-    "LIBDIR=/lib"
-  ];
+  makeFlags = [ "DESTDIR=$(out)" "LIBDIR=/lib" ];
 
   meta = with lib; {
     description = "ChromiumOS libgestures modified to compile for Linux";

@@ -19,10 +19,7 @@ bundlerEnv {
     description = "Data collector";
     homepage = "https://www.fluentd.org/";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      offline
-      nicknovitski
-    ];
+    maintainers = with maintainers; [ offline nicknovitski ];
     platforms = platforms.unix;
   };
 }

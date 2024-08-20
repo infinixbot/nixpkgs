@@ -22,11 +22,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-aq8Ky29jXY0cW5s0E4NDs29DY8RIA0Fvy2R72WPAYsk=";
 
-  nativeBuildInputs = [
-    pkg-config
-    rustPlatform.bindgenHook
-    makeWrapper
-  ];
+  nativeBuildInputs = [ pkg-config rustPlatform.bindgenHook makeWrapper ];
   buildInputs = [ libevdev ];
 
   postInstall = ''

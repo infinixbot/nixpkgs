@@ -28,10 +28,7 @@ stdenv.mkDerivation rec {
       --replace "CC := gcc" "CC ?= $CC"
   '';
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   configureFlags = [
     "--color"
@@ -63,18 +60,9 @@ stdenv.mkDerivation rec {
   ];
 
   depsBuildBuild = [ buildPackages.stdenv.cc ]; # netem requires $HOSTCC
-  nativeBuildInputs = [
-    bison
-    flex
-    pkg-config
-  ];
+  nativeBuildInputs = [ bison flex pkg-config ];
   buildInputs =
-    [
-      db
-      iptables
-      libmnl
-      libbpf
-    ]
+    [ db iptables libmnl libbpf ]
     # needed to uploaded bpf programs
     ++ lib.optionals (!stdenv.hostPlatform.isStatic) [ elfutils ];
 
@@ -91,11 +79,6 @@ stdenv.mkDerivation rec {
     description = "Collection of utilities for controlling TCP/IP networking and traffic control in Linux";
     platforms = platforms.linux;
     license = licenses.gpl2Only;
-    maintainers = with maintainers; [
-      primeos
-      eelco
-      fpletz
-      globin
-    ];
+    maintainers = with maintainers; [ primeos eelco fpletz globin ];
   };
 }

@@ -83,12 +83,7 @@ let
       version:
       genericUpdater {
         versionLister = writeShellScript "saxon-he-versionLister" ''
-          export PATH="${
-            lib.makeBinPath [
-              common-updater-scripts
-              gnused
-            ]
-          }:$PATH"
+          export PATH="${lib.makeBinPath [ common-updater-scripts gnused ]}:$PATH"
           major_ver="${major version}"
           list-git-tags --url="https://github.com/Saxonica/Saxon-HE.git" \
             | sed -En \

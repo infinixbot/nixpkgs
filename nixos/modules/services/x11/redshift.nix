@@ -16,67 +16,27 @@ in
 {
 
   imports = [
-    (mkChangedOptionModule
-      [
-        "services"
-        "redshift"
-        "latitude"
-      ]
-      [
-        "location"
-        "latitude"
-      ]
-      (
-        config:
-        let
-          value = getAttrFromPath [
-            "services"
-            "redshift"
-            "latitude"
-          ] config;
-        in
-        if value == null then
-          throw "services.redshift.latitude is set to null, you can remove this"
-        else
-          builtins.fromJSON value
-      )
-    )
-    (mkChangedOptionModule
-      [
-        "services"
-        "redshift"
-        "longitude"
-      ]
-      [
-        "location"
-        "longitude"
-      ]
-      (
-        config:
-        let
-          value = getAttrFromPath [
-            "services"
-            "redshift"
-            "longitude"
-          ] config;
-        in
-        if value == null then
-          throw "services.redshift.longitude is set to null, you can remove this"
-        else
-          builtins.fromJSON value
-      )
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redshift"
-        "provider"
-      ]
-      [
-        "location"
-        "provider"
-      ]
-    )
+    (mkChangedOptionModule [ "services" "redshift" "latitude" ] [ "location" "latitude" ] (
+      config:
+      let
+        value = getAttrFromPath [ "services" "redshift" "latitude" ] config;
+      in
+      if value == null then
+        throw "services.redshift.latitude is set to null, you can remove this"
+      else
+        builtins.fromJSON value
+    ))
+    (mkChangedOptionModule [ "services" "redshift" "longitude" ] [ "location" "longitude" ] (
+      config:
+      let
+        value = getAttrFromPath [ "services" "redshift" "longitude" ] config;
+      in
+      if value == null then
+        throw "services.redshift.longitude is set to null, you can remove this"
+      else
+        builtins.fromJSON value
+    ))
+    (mkRenamedOptionModule [ "services" "redshift" "provider" ] [ "location" "provider" ])
   ];
 
   options.services.redshift = {
@@ -141,10 +101,7 @@ in
     extraOptions = mkOption {
       type = types.listOf types.str;
       default = [ ];
-      example = [
-        "-v"
-        "-m randr"
-      ];
+      example = [ "-v" "-m randr" ];
       description = ''
         Additional command-line arguments to pass to
         {command}`redshift`.

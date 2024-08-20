@@ -16,10 +16,7 @@
 
 mkDerivation {
   pname = "knotifications";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    qttools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules qttools ];
   buildInputs =
     [
       kcodecs

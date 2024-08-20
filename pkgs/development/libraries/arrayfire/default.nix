@@ -133,10 +133,7 @@ stdenv.mkDerivation rec {
 
   # ArrayFire have a repo with assets for the examples. Since we don't build
   # the examples anyway, remove the dependency on assets.
-  patches = [
-    ./no-assets.patch
-    ./no-download.patch
-  ];
+  patches = [ ./no-assets.patch ./no-download.patch ];
 
   postPatch = ''
     mkdir -p ./extern/af_glad-src
@@ -162,20 +159,14 @@ stdenv.mkDerivation rec {
   checkPhase =
     let
       LD_LIBRARY_PATH = builtins.concatStringsSep ":" (
-        [
-          "${forge}/lib"
-          "${freeimage}/lib"
-        ]
+        [ "${forge}/lib" "${freeimage}/lib" ]
         ++ lib.optional cudaSupport "${cudaPackages.cudatoolkit}/lib64"
         # On non-NixOS systems, help the tests find Nvidia drivers
         ++ lib.optional (nvidiaComputeDrivers != null) "${nvidiaComputeDrivers}/lib"
       );
       ctestFlags = builtins.concatStringsSep " " (
         # We have to run with "-j1" otherwise various segfaults occur on non-NixOS systems.
-        [
-          "--output-on-errors"
-          "-j1"
-        ]
+        [ "--output-on-errors" "-j1" ]
         # See https://github.com/arrayfire/arrayfire/issues/3484
         ++ lib.optional openclSupport "-E '(inverse_dense|cholesky_dense)'"
       );
@@ -235,9 +226,6 @@ stdenv.mkDerivation rec {
     license = licenses.bsd3;
     homepage = "https://arrayfire.com/";
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      chessai
-      twesterhout
-    ];
+    maintainers = with maintainers; [ chessai twesterhout ];
   };
 }

@@ -32,10 +32,7 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  cargoBuildFlags = [
-    "-p"
-    "topiary-cli"
-  ];
+  cargoBuildFlags = [ "-p" "topiary-cli" ];
   cargoTestFlags = cargoBuildFlags;
 
   env.TOPIARY_LANGUAGE_DIR = "${placeholder "out"}/share/queries";

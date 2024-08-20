@@ -35,10 +35,7 @@ stdenv.mkDerivation {
   dontConfigure = true;
   dontBuild = true;
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    makeWrapper
-  ];
+  nativeBuildInputs = [ autoPatchelfHook makeWrapper ];
 
   buildInputs = [ stdenv.cc.cc.lib ];
 
@@ -67,10 +64,7 @@ stdenv.mkDerivation {
     homepage = "https://geekbench.com/";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
-    maintainers = with maintainers; [
-      michalrus
-      asininemonkey
-    ];
+    maintainers = with maintainers; [ michalrus asininemonkey ];
     platforms = builtins.attrNames sources;
     mainProgram = "geekbench6";
   };

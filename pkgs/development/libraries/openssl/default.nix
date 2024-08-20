@@ -75,12 +75,7 @@ let
         '';
 
       outputs =
-        [
-          "bin"
-          "dev"
-          "out"
-          "man"
-        ]
+        [ "bin" "dev" "out" "man" ]
         ++ lib.optional withDocs "doc"
         # Separate output for the runtime dependencies of the static build.
         # Specifically, move OPENSSLDIR into this output, as its path will be

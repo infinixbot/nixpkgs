@@ -103,10 +103,7 @@ in
     systemd.packages = [ pkgs.kmscon ];
 
     systemd.services."kmsconvt@" = {
-      after = [
-        "systemd-logind.service"
-        "systemd-vconsole-setup.service"
-      ];
+      after = [ "systemd-logind.service" "systemd-vconsole-setup.service" ];
       requires = [ "systemd-logind.service" ];
 
       serviceConfig.ExecStart = [
@@ -130,21 +127,11 @@ in
         xkb = optionals cfg.useXkbConfig (
           lib.mapAttrsToList (n: v: "xkb-${n}=${v}") (
             lib.filterAttrs (
-              n: v:
-              builtins.elem n [
-                "layout"
-                "model"
-                "options"
-                "variant"
-              ]
-              && v != ""
+              n: v: builtins.elem n [ "layout" "model" "options" "variant" ] && v != ""
             ) config.services.xserver.xkb
           )
         );
-        render = optionals cfg.hwRender [
-          "drm"
-          "hwaccel"
-        ];
+        render = optionals cfg.hwRender [ "drm" "hwaccel" ];
         fonts =
           optional (cfg.fonts != null)
             "font-name=${lib.concatMapStringsSep ", " (f: f.name) cfg.fonts}";

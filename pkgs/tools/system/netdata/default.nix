@@ -85,40 +85,16 @@ stdenv.mkDerivation rec {
   ] ++ lib.optionals withCups [ cups.dev ];
   # bash is only used to rewrite shebangs
   buildInputs =
-    [
-      bash
-      curl
-      jemalloc
-      json_c
-      libuv
-      zlib
-      libyaml
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      CoreFoundation
-      IOKit
-      libossp_uuid
-    ]
-    ++ lib.optionals (!stdenv.isDarwin) [
-      libcap
-      libuuid
-    ]
+    [ bash curl jemalloc json_c libuv zlib libyaml ]
+    ++ lib.optionals stdenv.isDarwin [ CoreFoundation IOKit libossp_uuid ]
+    ++ lib.optionals (!stdenv.isDarwin) [ libcap libuuid ]
     ++ lib.optionals withCups [ cups ]
     ++ lib.optionals withDBengine [ lz4 ]
     ++ lib.optionals withIpmi [ freeipmi ]
-    ++ lib.optionals withNetfilter [
-      libmnl
-      libnetfilter_acct
-    ]
-    ++ lib.optionals withConnPubSub [
-      google-cloud-cpp
-      grpc
-    ]
+    ++ lib.optionals withNetfilter [ libmnl libnetfilter_acct ]
+    ++ lib.optionals withConnPubSub [ google-cloud-cpp grpc ]
     ++ lib.optionals withConnPrometheus [ snappy ]
-    ++ lib.optionals withEbpf [
-      libelf
-      libbpf
-    ]
+    ++ lib.optionals withEbpf [ libelf libbpf ]
     ++ lib.optionals (withCloud || withConnPrometheus) [ protobuf ]
     ++ lib.optionals withSystemdJournal [ systemd ]
     ++ lib.optionals withSsl [ openssl ];
@@ -253,11 +229,7 @@ stdenv.mkDerivation rec {
         doCheck = false;
         proxyVendor = true;
 
-        ldflags = [
-          "-s"
-          "-w"
-          "-X main.version=${version}"
-        ];
+        ldflags = [ "-s" "-w" "-X main.version=${version}" ];
 
         passthru.tests = tests;
         meta = meta // {

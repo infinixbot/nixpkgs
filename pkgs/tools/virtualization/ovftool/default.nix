@@ -76,10 +76,7 @@ stdenv.mkDerivation {
       libxml2
     ];
 
-  nativeBuildInputs = [
-    unzip
-    makeWrapper
-  ] ++ lib.optionals stdenv.isLinux [ autoPatchelfHook ];
+  nativeBuildInputs = [ unzip makeWrapper ] ++ lib.optionals stdenv.isLinux [ autoPatchelfHook ];
 
   postUnpack = ''
     # The linux package wraps ovftool.bin with ovftool. Wrapping
@@ -268,10 +265,7 @@ stdenv.mkDerivation {
     homepage = "https://developer.vmware.com/web/tool/ovf-tool/";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
-    maintainers = with maintainers; [
-      numinit
-      thanegill
-    ];
+    maintainers = with maintainers; [ numinit thanegill ];
     platforms = builtins.attrNames ovftoolSystems;
     mainProgram = "ovftool";
     knownVulnerabilities = [

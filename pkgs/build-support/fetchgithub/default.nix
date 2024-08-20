@@ -75,10 +75,7 @@ lib.makeOverridable (
                 password ''$${varBase}PASSWORD
         EOF
       '';
-      netrcImpureEnvVars = [
-        "${varBase}USERNAME"
-        "${varBase}PASSWORD"
-      ];
+      netrcImpureEnvVars = [ "${varBase}USERNAME" "${varBase}PASSWORD" ];
     };
 
     gitRepoUrl = "${baseUrl}.git";

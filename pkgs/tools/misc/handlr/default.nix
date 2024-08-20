@@ -21,10 +21,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-30fSOzWq1CoIabPWGWndi/SaCN/ckxjlbtzuwV8rk6M=";
 
-  nativeBuildInputs = [
-    installShellFiles
-    shared-mime-info
-  ];
+  nativeBuildInputs = [ installShellFiles shared-mime-info ];
   buildInputs = lib.optionals stdenv.isDarwin [ libiconv ];
 
   preCheck = ''
@@ -42,10 +39,7 @@ rustPlatform.buildRustPackage rec {
     description = "Alternative to xdg-open to manage default applications with ease";
     homepage = "https://github.com/chmln/handlr";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      mredaelli
-      artturin
-    ];
+    maintainers = with maintainers; [ mredaelli artturin ];
     mainProgram = "handlr";
   };
 }

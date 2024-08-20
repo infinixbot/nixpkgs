@@ -30,10 +30,7 @@ stdenv.mkDerivation rec {
     description = "Command line utility to create BitTorrent metainfo files";
     homepage = "https://github.com/pobrn/mktorrent/wiki";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      Profpatsch
-      winter
-    ];
+    maintainers = with maintainers; [ Profpatsch winter ];
     platforms = platforms.all;
     mainProgram = "mktorrent";
   };

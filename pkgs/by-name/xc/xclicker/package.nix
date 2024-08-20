@@ -49,10 +49,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://xclicker.xyz/";
     license = lib.licenses.gpl3Only;
     mainProgram = "xclicker";
-    maintainers = with lib.maintainers; [
-      gepbird
-      tomasajt
-    ];
+    maintainers = with lib.maintainers; [ gepbird tomasajt ];
     platforms = lib.platforms.linux;
   };
 })

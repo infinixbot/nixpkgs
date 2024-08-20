@@ -351,12 +351,7 @@ rec {
       description = "Basic binaries for TeX Live";
       homepage = "http://www.tug.org/texlive";
       license = lib.licenses.gpl2Plus;
-      maintainers = with maintainers; [
-        veprbl
-        lovek323
-        raskin
-        jwiegley
-      ];
+      maintainers = with maintainers; [ veprbl lovek323 raskin jwiegley ];
       platforms = platforms.all;
     };
   };
@@ -414,15 +409,7 @@ rec {
     hardeningDisable = [ "format" ];
 
     inherit (core) nativeBuildInputs depsBuildBuild;
-    buildInputs = core.buildInputs ++ [
-      core
-      cairo
-      harfbuzz
-      icu
-      graphite2
-      libX11
-      potrace
-    ];
+    buildInputs = core.buildInputs ++ [ core cairo harfbuzz icu graphite2 libX11 potrace ];
 
     /*
       deleting the unused packages speeds up configure by a considerable margin
@@ -443,14 +430,7 @@ rec {
 
     configureFlags =
       common.configureFlags
-      ++ withSystemLibs [
-        "kpathsea"
-        "ptexenc"
-        "cairo"
-        "harfbuzz"
-        "icu"
-        "graphite2"
-      ]
+      ++ withSystemLibs [ "kpathsea" "ptexenc" "cairo" "harfbuzz" "icu" "graphite2" ]
       ++
         map (prog: "--disable-${prog}") # don't build things we already have
           # list from texk/web2c/configure
@@ -467,18 +447,10 @@ rec {
               "web-progs"
               "synctex"
             ]
-            ++ lib.optionals (!withLuaJIT) [
-              "luajittex"
-              "luajithbtex"
-              "mfluajit"
-            ]
+            ++ lib.optionals (!withLuaJIT) [ "luajittex" "luajithbtex" "mfluajit" ]
           )
       # disable all packages, re-enable upmendex, web2c packages
-      ++ [
-        "--disable-all-pkgs"
-        "--enable-upmendex"
-        "--enable-web2c"
-      ]
+      ++ [ "--disable-all-pkgs" "--enable-upmendex" "--enable-web2c" ]
       # kpathsea requires specifying the kpathsea location manually
       ++ [ "--with-kpathsea-includes=${core.dev}/include" ];
 
@@ -489,27 +461,12 @@ rec {
     doCheck = false; # fails
 
     outputs =
-      [
-        "out"
-        "dev"
-        "man"
-        "info"
-      ]
+      [ "out" "dev" "man" "info" ]
       ++ (builtins.map (builtins.replaceStrings [ "-" ] [ "_" ]) coreBigPackages)
       # some outputs of metapost, omegaware are for ptex/uptex
-      ++ [
-        "ptex"
-        "uptex"
-      ]
+      ++ [ "ptex" "uptex" ]
       # unavoidable duplicates from core
-      ++ [
-        "ctie"
-        "cweb"
-        "omegaware"
-        "texlive_scripts_extra"
-        "tie"
-        "web"
-      ];
+      ++ [ "ctie" "cweb" "omegaware" "texlive_scripts_extra" "tie" "web" ];
     postInstall = common.moveBins;
   };
 
@@ -550,19 +507,13 @@ rec {
     };
 
     enableParallelBuilding = true;
-    nativeBuildInputs = [
-      cmake
-      ninja
-    ];
+    nativeBuildInputs = [ cmake ninja ];
 
     meta = with lib; {
       description = "LUAMETATEX engine is a follow up on LUATEX and is again part of CONTEXT development";
       homepage = "https://www.pragma-ade.nl/luametatex-1.htm";
       license = licenses.gpl2Plus;
-      maintainers = with lib.maintainers; [
-        apfelkuchen6
-        xworld21
-      ];
+      maintainers = with lib.maintainers; [ apfelkuchen6 xworld21 ];
     };
   };
 
@@ -589,17 +540,7 @@ rec {
     '';
 
     nativeBuildInputs = [ pkg-config ];
-    buildInputs = [
-      core
-      brotli
-      ghostscript
-      zlib
-      freetype
-      woff2
-      potrace
-      xxHash
-      mupdf-headless
-    ];
+    buildInputs = [ core brotli ghostscript zlib freetype woff2 potrace xxHash mupdf-headless ];
 
     enableParallelBuilding = true;
   };
@@ -610,11 +551,7 @@ rec {
 
     inherit (common) src;
 
-    nativeBuildInputs = [
-      perl
-      pkg-config
-      makeWrapper
-    ];
+    nativeBuildInputs = [ perl pkg-config makeWrapper ];
     buildInputs = [
       core # kpathsea
       zlib
@@ -647,10 +584,7 @@ rec {
 
     src = assertFixedHash pname texlive.pkgs.pygmentex.tex;
 
-    propagatedBuildInputs = with python3Packages; [
-      pygments
-      chardet
-    ];
+    propagatedBuildInputs = with python3Packages; [ pygments chardet ];
 
     dontBuild = true;
 
@@ -722,10 +656,7 @@ rec {
 
     preConfigure = "cd texk/bibtex-x";
 
-    configureFlags = common.configureFlags ++ [
-      "--with-system-kpathsea"
-      "--with-system-icu"
-    ];
+    configureFlags = common.configureFlags ++ [ "--with-system-kpathsea" "--with-system-icu" ];
 
     enableParallelBuilding = true;
   };
@@ -737,29 +668,15 @@ rec {
     inherit (common) src;
 
     nativeBuildInputs = [ pkg-config ];
-    buildInputs =
-      [
-        core # kpathsea
-        freetype
-        ghostscript
-      ]
-      ++ (with xorg; [
-        libX11
-        libXaw
-        libXi
-        libXpm
-        libXmu
-        libXaw
-        libXext
-        libXfixes
-      ]);
+    buildInputs = [
+      core # kpathsea
+      freetype
+      ghostscript
+    ] ++ (with xorg; [ libX11 libXaw libXi libXpm libXmu libXaw libXext libXfixes ]);
 
     preConfigure = "cd texk/xdvik";
 
-    configureFlags = common.configureFlags ++ [
-      "--with-system-kpathsea"
-      "--with-system-libgs"
-    ];
+    configureFlags = common.configureFlags ++ [ "--with-system-kpathsea" "--with-system-libgs" ];
 
     enableParallelBuilding = true;
 
@@ -812,17 +729,9 @@ rec {
           pkg-config
           perl
         ];
-        buildInputs = [
-          clisp
-          libiconv
-          perl
-        ];
+        buildInputs = [ clisp libiconv perl ];
 
-        configureFlags = [
-          "--with-clisp-runtime=system"
-          "--disable-xindy-docs"
-          "--disable-xindy-rules"
-        ];
+        configureFlags = [ "--with-clisp-runtime=system" "--disable-xindy-docs" "--disable-xindy-rules" ];
 
         preInstall = ''mkdir -p "$out/bin" '';
         # fixup various file-location errors of: lib/xindy/{xindy.mem,modules/}

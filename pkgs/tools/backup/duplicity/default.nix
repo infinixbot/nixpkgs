@@ -155,10 +155,7 @@ let
 
     passthru = {
       updateScript = nix-update-script {
-        extraArgs = [
-          "--version-regex"
-          "rel\.(.*)"
-        ];
+        extraArgs = [ "--version-regex" "rel\.(.*)" ];
       };
 
       tests.version = testers.testVersion {

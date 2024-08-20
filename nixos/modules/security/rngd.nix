@@ -1,12 +1,6 @@
 { lib, ... }:
 let
-  removed =
-    k:
-    lib.mkRemovedOptionModule [
-      "security"
-      "rngd"
-      k
-    ];
+  removed = k: lib.mkRemovedOptionModule [ "security" "rngd" k ];
 in
 {
   imports = [

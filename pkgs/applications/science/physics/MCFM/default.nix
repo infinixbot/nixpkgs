@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
                 'target_link_libraries(mcfm ''${lhapdf_lib})'
   '';
 
-  nativeBuildInputs = [
-    cmake
-    gfortran
-  ];
+  nativeBuildInputs = [ cmake gfortran ];
   buildInputs = [ lhapdf ];
 
   cmakeFlags = [

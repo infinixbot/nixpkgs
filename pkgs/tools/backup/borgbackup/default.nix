@@ -51,10 +51,7 @@ python.pkgs.buildPythonApplication rec {
     installShellFiles
   ];
 
-  sphinxBuilders = [
-    "singlehtml"
-    "man"
-  ];
+  sphinxBuilders = [ "singlehtml" "man" ];
 
   buildInputs =
     [
@@ -125,11 +122,7 @@ python.pkgs.buildPythonApplication rec {
     inherit (nixosTests) borgbackup;
   };
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
 
   disabled = python.pythonOlder "3.9";
 
@@ -140,9 +133,6 @@ python.pkgs.buildPythonApplication rec {
     license = licenses.bsd3;
     platforms = platforms.unix; # Darwin and FreeBSD mentioned on homepage
     mainProgram = "borg";
-    maintainers = with maintainers; [
-      dotlambda
-      globin
-    ];
+    maintainers = with maintainers; [ dotlambda globin ];
   };
 }

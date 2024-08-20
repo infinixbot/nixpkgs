@@ -468,10 +468,7 @@ in
       description = "Stabilized timelapses for Octoprint";
       homepage = "https://github.com/FormerLurker/OctoLapse";
       license = licenses.agpl3Plus;
-      maintainers = with maintainers; [
-        illustris
-        j0hax
-      ];
+      maintainers = with maintainers; [ illustris j0hax ];
       # requires pillow >=6.2.0,<7.0.0
       broken = true;
     };

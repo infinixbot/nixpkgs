@@ -66,9 +66,6 @@ stdenv.mkDerivation rec {
     license = licenses.gpl2Plus;
     homepage = "https://www.open-iscsi.com";
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      cleverca22
-      zaninime
-    ];
+    maintainers = with maintainers; [ cleverca22 zaninime ];
   };
 }

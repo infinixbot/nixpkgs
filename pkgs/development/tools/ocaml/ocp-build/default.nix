@@ -35,14 +35,8 @@ lib.throwIf (lib.versionAtLeast ocaml.version "5.0")
 
     strictDeps = true;
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-    ];
-    buildInputs = [
-      cmdliner_1_0
-      re
-    ];
+    nativeBuildInputs = [ ocaml findlib ];
+    buildInputs = [ cmdliner_1_0 re ];
     propagatedBuildInputs = [ ncurses ];
     preInstall = "mkdir -p $out/bin";
 

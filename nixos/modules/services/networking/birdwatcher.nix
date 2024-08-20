@@ -18,10 +18,7 @@ in
       flags = mkOption {
         default = [ ];
         type = types.listOf types.str;
-        example = [
-          "-worker-pool-size 16"
-          "-6"
-        ];
+        example = [ "-worker-pool-size 16" "-6" ];
         description = ''
           Flags to append to the program call
         '';

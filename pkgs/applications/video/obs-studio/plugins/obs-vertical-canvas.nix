@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    curl
-    obs-studio
-    qtbase
-  ];
+  buildInputs = [ curl obs-studio qtbase ];
 
   cmakeFlags = [
     "-DBUILD_OUT_OF_TREE=On"
@@ -42,9 +38,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/Aitum/obs-vertical-canvas";
     maintainers = with maintainers; [ flexiondotorg ];
     license = licenses.gpl2Plus;
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
   };
 }

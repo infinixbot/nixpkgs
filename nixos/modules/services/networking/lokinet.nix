@@ -44,10 +44,7 @@ with lib;
               upstream = mkOption {
                 type = listOf str;
                 default = [ "9.9.9.10" ];
-                example = [
-                  "1.1.1.1"
-                  "8.8.8.8"
-                ];
+                example = [ "1.1.1.1" "8.8.8.8" ];
                 description = ''
                   Upstream resolver(s) to use as fallback for non-loki addresses.
                   Multiple values accepted.
@@ -118,14 +115,8 @@ with lib;
 
     systemd.services.lokinet = {
       description = "Lokinet";
-      after = [
-        "network-online.target"
-        "network.target"
-      ];
-      wants = [
-        "network-online.target"
-        "network.target"
-      ];
+      after = [ "network-online.target" "network.target" ];
+      wants = [ "network-online.target" "network.target" ];
       wantedBy = [ "multi-user.target" ];
 
       preStart = ''
@@ -140,10 +131,7 @@ with lib;
       serviceConfig = {
         DynamicUser = true;
         StateDirectory = "lokinet";
-        AmbientCapabilities = [
-          "CAP_NET_ADMIN"
-          "CAP_NET_BIND_SERVICE"
-        ];
+        AmbientCapabilities = [ "CAP_NET_ADMIN" "CAP_NET_BIND_SERVICE" ];
         ExecStart = "${cfg.package}/bin/lokinet ${dataDir}/lokinet.ini";
         Restart = "always";
         RestartSec = "5s";
@@ -162,12 +150,7 @@ with lib;
         ProtectKernelTunables = true;
         ProtectSystem = "strict";
         ReadWritePaths = "/dev/net/tun";
-        RestrictAddressFamilies = [
-          "AF_UNIX"
-          "AF_INET"
-          "AF_INET6"
-          "AF_NETLINK"
-        ];
+        RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" "AF_NETLINK" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;

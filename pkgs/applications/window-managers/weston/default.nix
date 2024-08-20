@@ -64,13 +64,7 @@ stdenv.mkDerivation rec {
   '';
 
   depsBuildBuild = [ pkg-config ];
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    python3
-    wayland-scanner
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config python3 wayland-scanner ];
   buildInputs =
     [
       cairo
@@ -90,22 +84,11 @@ stdenv.mkDerivation rec {
     ++ lib.optional pangoSupport pango
     ++ lib.optional pipewireSupport pipewire
     ++ lib.optional rdpSupport freerdp
-    ++ lib.optionals remotingSupport [
-      gst_all_1.gstreamer
-      gst_all_1.gst-plugins-base
-    ]
+    ++ lib.optionals remotingSupport [ gst_all_1.gstreamer gst_all_1.gst-plugins-base ]
     ++ lib.optional vaapiSupport libva
-    ++ lib.optionals vncSupport [
-      aml
-      neatvnc
-      pam
-    ]
+    ++ lib.optionals vncSupport [ aml neatvnc pam ]
     ++ lib.optional webpSupport libwebp
-    ++ lib.optionals xwaylandSupport [
-      libXcursor
-      xcbutilcursor
-      xwayland
-    ];
+    ++ lib.optionals xwaylandSupport [ libXcursor xcbutilcursor xwayland ];
 
   mesonFlags =
     [
@@ -145,9 +128,6 @@ stdenv.mkDerivation rec {
     license = licenses.mit; # Expat version
     platforms = platforms.linux;
     mainProgram = "weston";
-    maintainers = with maintainers; [
-      primeos
-      qyliss
-    ];
+    maintainers = with maintainers; [ primeos qyliss ];
   };
 }

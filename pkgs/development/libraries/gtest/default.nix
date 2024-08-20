@@ -28,10 +28,7 @@ stdenv.mkDerivation rec {
   pname = "gtest";
   version = "1.14.0";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "google";
@@ -44,10 +41,7 @@ stdenv.mkDerivation rec {
     ./fix-cmake-config-includedir.patch
   ];
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-  ];
+  nativeBuildInputs = [ cmake ninja ];
 
   cmakeFlags =
     [

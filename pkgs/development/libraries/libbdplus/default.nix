@@ -23,11 +23,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-uT7qPq7zPW6RVdLDSwaMUFSTqlpJNuYydPQ0KrD0Clg=";
   };
 
-  buildInputs = [
-    libgcrypt
-    libgpg-error
-    gettext
-  ];
+  buildInputs = [ libgcrypt libgpg-error gettext ];
 
   nativeBuildInputs = [ ];
 

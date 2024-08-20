@@ -21,10 +21,7 @@ stdenv.mkDerivation (finalAttrs: {
   passthru.updateScript = nix-update-script { };
 
   strictDeps = true;
-  nativeBuildInputs = [
-    cmake
-    validatePkgConfig
-  ];
+  nativeBuildInputs = [ cmake validatePkgConfig ];
 
   postFixup = ''
     substituteInPlace "$out"/lib/pkgconfig/miniz.pc \

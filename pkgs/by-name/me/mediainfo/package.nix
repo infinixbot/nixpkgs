@@ -18,15 +18,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-MvSoKjHjhuF3/fbkwjcFPkdbUBCJJpqyxylFKgkxNSA=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
-  buildInputs = [
-    libzen
-    libmediainfo
-    zlib
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
+  buildInputs = [ libzen libmediainfo zlib ];
 
   sourceRoot = "MediaInfo/Project/GNU/CLI";
 

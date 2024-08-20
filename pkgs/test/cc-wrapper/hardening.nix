@@ -383,15 +383,9 @@ nameDrvAfterAttrName (
 
     fortifyStdenvUnsupp =
       checkTestBin
-        (f2exampleWithStdEnv
-          (stdenvUnsupport [
-            "fortify"
-            "fortify3"
-          ])
-          {
-            hardeningEnable = [ "fortify" ];
-          }
-        )
+        (f2exampleWithStdEnv (stdenvUnsupport [ "fortify" "fortify3" ]) {
+          hardeningEnable = [ "fortify" ];
+        })
         {
           ignoreFortify = false;
           expectFailure = true;
@@ -498,10 +492,7 @@ nameDrvAfterAttrName (
     fortify3EnabledEnvEnablesFortify1 = brokenIf stdenv.hostPlatform.isMusl (
       checkTestBin
         (f1exampleWithStdEnv stdenv {
-          hardeningDisable = [
-            "fortify"
-            "fortify3"
-          ];
+          hardeningDisable = [ "fortify" "fortify3" ];
           postConfigure = ''
             export NIX_HARDENING_ENABLE="fortify3"
           '';
@@ -513,10 +504,7 @@ nameDrvAfterAttrName (
 
     fortify3EnabledEnvEnablesFortify1ExecTest = fortifyExecTest (
       f1exampleWithStdEnv stdenv {
-        hardeningDisable = [
-          "fortify"
-          "fortify3"
-        ];
+        hardeningDisable = [ "fortify" "fortify3" ];
         postConfigure = ''
           export NIX_HARDENING_ENABLE="fortify3"
         '';
@@ -526,10 +514,7 @@ nameDrvAfterAttrName (
     fortifyEnabledEnvDoesntEnableFortify3 =
       checkTestBin
         (f3exampleWithStdEnv stdenv {
-          hardeningDisable = [
-            "fortify"
-            "fortify3"
-          ];
+          hardeningDisable = [ "fortify" "fortify3" ];
           postConfigure = ''
             export NIX_HARDENING_ENABLE="fortify"
           '';
@@ -610,10 +595,7 @@ nameDrvAfterAttrName (
     let
       tb = f2exampleWithStdEnv stdenv {
         hardeningDisable = [ "all" ];
-        hardeningEnable = [
-          "fortify"
-          "pie"
-        ];
+        hardeningEnable = [ "fortify" "pie" ];
       };
     in
     {

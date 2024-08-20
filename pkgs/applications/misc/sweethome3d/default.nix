@@ -58,11 +58,7 @@ let
         icon = pname;
         comment = description;
         genericName = "Computer Aided (Interior) Design";
-        categories = [
-          "Graphics"
-          "2DGraphics"
-          "3DGraphics"
-        ];
+        categories = [ "Graphics" "2DGraphics" "3DGraphics" ];
       };
 
       postPatch = ''
@@ -75,19 +71,8 @@ let
         find . -name '*.so' | xargs strings | { grep '/nix/store' || :; } >> ./.jar-paths
       '';
 
-      nativeBuildInputs = [
-        makeWrapper
-        autoPatchelfHook
-        stripJavaArchivesHook
-      ];
-      buildInputs = [
-        ant
-        jdk
-        p7zip
-        gtk3
-        gsettings-desktop-schemas
-        libXxf86vm
-      ];
+      nativeBuildInputs = [ makeWrapper autoPatchelfHook stripJavaArchivesHook ];
+      buildInputs = [ ant jdk p7zip gtk3 gsettings-desktop-schemas libXxf86vm ];
 
       # upstream targets Java 7 by default
       env.ANT_ARGS = "-DappletClassSource=8 -DappletClassTarget=8 -DclassSource=8 -DclassTarget=8";

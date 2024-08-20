@@ -22,10 +22,7 @@ in
     extraArgs = mkOption {
       type = types.listOf types.str;
       default = [ ];
-      example = [
-        "--verbose"
-        "--host"
-      ];
+      example = [ "--verbose" "--host" ];
       description = "Extra arguments to pass to RetroArch.";
     };
   };

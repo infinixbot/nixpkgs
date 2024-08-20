@@ -42,11 +42,7 @@ buildGoModule rec {
   pname = "prometheus";
   inherit version;
 
-  outputs = [
-    "out"
-    "doc"
-    "cli"
-  ];
+  outputs = [ "out" "doc" "cli" ];
 
   src = fetchFromGitHub {
     owner = "prometheus";
@@ -136,10 +132,6 @@ buildGoModule rec {
     description = "Service monitoring system and time series database";
     homepage = "https://prometheus.io";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      fpletz
-      willibutz
-      Frostman
-    ];
+    maintainers = with maintainers; [ fpletz willibutz Frostman ];
   };
 }

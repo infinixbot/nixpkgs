@@ -54,12 +54,7 @@ in
 stdenv.mkDerivation (
   {
     name = "${name}-vendor.tar.gz";
-    nativeBuildInputs = [
-      cacert
-      git
-      cargo-vendor-normalise
-      cargo
-    ] ++ nativeBuildInputs;
+    nativeBuildInputs = [ cacert git cargo-vendor-normalise cargo ] ++ nativeBuildInputs;
 
     buildPhase = ''
       runHook preBuild

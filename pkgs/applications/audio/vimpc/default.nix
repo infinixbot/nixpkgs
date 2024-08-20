@@ -33,17 +33,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
-  buildInputs = [
-    libmpdclient
-    ncurses
-    pcre
-    taglib
-    curl
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
+  buildInputs = [ libmpdclient ncurses pcre taglib curl ];
 
   postInstall = ''
     mkdir -p $out/etc

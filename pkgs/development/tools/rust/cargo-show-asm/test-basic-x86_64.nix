@@ -6,11 +6,7 @@
 }:
 runCommand "test-basic"
   {
-    nativeBuildInputs = [
-      cargo
-      rustc
-      cargo-show-asm
-    ];
+    nativeBuildInputs = [ cargo rustc cargo-show-asm ];
   }
   ''
       mkdir -p src

@@ -31,11 +31,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-UTl0vObSlEvHuLmDt7vS3yEqZWGklJ9tVwlUAtRSTlU=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ];
+  outputs = [ "out" "dev" "doc" ];
 
   patches = [
     (fetchpatch {
@@ -107,10 +103,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = with lib; {
     description = "Lomiri API Library for integrating with the Lomiri shell";
     homepage = "https://gitlab.com/ubports/development/core/lomiri-api";
-    license = with licenses; [
-      lgpl3Only
-      gpl3Only
-    ];
+    license = with licenses; [ lgpl3Only gpl3Only ];
     maintainers = teams.lomiri.members;
     platforms = platforms.linux;
     pkgConfigModules = [

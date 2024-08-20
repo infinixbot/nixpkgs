@@ -17,10 +17,7 @@
 
 mkDerivation {
   pname = "khelpcenter";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     grantlee
     kcmutils

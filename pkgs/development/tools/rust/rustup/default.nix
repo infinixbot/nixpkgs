@@ -35,22 +35,12 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-iQoMPV97V9WJqT+qVtNpQtW5g+Jyl+U2uA+JEoRYTQA=";
 
-  nativeBuildInputs = [
-    makeBinaryWrapper
-    pkg-config
-  ];
+  nativeBuildInputs = [ makeBinaryWrapper pkg-config ];
 
-  buildInputs =
-    [
-      (curl.override { inherit openssl; })
-      zlib
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      CoreServices
-      Security
-      libiconv
-      xz
-    ];
+  buildInputs = [
+    (curl.override { inherit openssl; })
+    zlib
+  ] ++ lib.optionals stdenv.isDarwin [ CoreServices Security libiconv xz ];
 
   buildFeatures = [ "no-self-update" ];
 

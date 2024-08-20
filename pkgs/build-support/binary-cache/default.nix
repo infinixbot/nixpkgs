@@ -28,13 +28,7 @@ stdenv.mkDerivation {
 
   preferLocalBuild = true;
 
-  nativeBuildInputs = [
-    coreutils
-    jq
-    python3
-    nix
-    xz
-  ];
+  nativeBuildInputs = [ coreutils jq python3 nix xz ];
 
   buildCommand = ''
     mkdir -p $out/nar

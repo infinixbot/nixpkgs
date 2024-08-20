@@ -18,14 +18,8 @@ let
     desktopName = name;
     genericName = "AppImage runner";
     noDisplay = true;
-    mimeTypes = [
-      "application/vnd.appimage"
-      "application/x-iso9660-appimage"
-    ];
-    categories = [
-      "PackageManager"
-      "Utility"
-    ];
+    mimeTypes = [ "application/vnd.appimage" "application/x-iso9660-appimage" ];
+    categories = [ "PackageManager" "Utility" ];
   };
 in
 buildFHSEnv (

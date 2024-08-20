@@ -241,10 +241,7 @@ in
           };
           environment = mkOption {
             description = "Values other than \"production\" adds a banner to each page.";
-            type = types.enum [
-              "development"
-              "production"
-            ];
+            type = types.enum [ "development" "production" ];
             default = "development";
           };
           network-key = mkOption {
@@ -386,10 +383,7 @@ in
               If master and worker are on the same system
               set to `/usr/bin/runner-shell`.
             '';
-            type = types.enum [
-              "/usr/bin/master-shell"
-              "/usr/bin/runner-shell"
-            ];
+            type = types.enum [ "/usr/bin/master-shell" "/usr/bin/runner-shell" ];
             default = "/usr/bin/master-shell";
           };
         };
@@ -463,10 +457,7 @@ in
               See [](#opt-services.sourcehut.listenAddress).
             '';
             type = with types; listOf str;
-            default = [
-              "127.0.0.0/8"
-              "::1/128"
-            ];
+            default = [ "127.0.0.0/8" "::1/128" ];
           };
         };
 
@@ -580,10 +571,7 @@ in
           };
 
         options."meta.sr.ht" =
-          removeAttrs (commonServiceSettings "meta") [
-            "oauth-client-id"
-            "oauth-client-secret"
-          ]
+          removeAttrs (commonServiceSettings "meta") [ "oauth-client-id" "oauth-client-secret" ]
           // {
             webhooks = mkOption {
               description = "The Redis connection used for the webhooks worker.";
@@ -601,10 +589,7 @@ in
               See [](#opt-services.sourcehut.listenAddress).
             '';
             type = with types; listOf str;
-            default = [
-              "127.0.0.0/8"
-              "::1/128"
-            ];
+            default = [ "127.0.0.0/8" "::1/128" ];
           };
         };
         options."meta.sr.ht::aliases" = mkOption {
@@ -676,10 +661,7 @@ in
               See [](#opt-services.sourcehut.listenAddress).
             '';
             type = with types; listOf str;
-            default = [
-              "127.0.0.0/8"
-              "::1/128"
-            ];
+            default = [ "127.0.0.0/8" "::1/128" ];
           };
         };
 
@@ -794,11 +776,7 @@ in
       process = {
         extraArgs = mkOption {
           type = with types; listOf str;
-          default = [
-            "--loglevel DEBUG"
-            "--pool eventlet"
-            "--without-heartbeat"
-          ];
+          default = [ "--loglevel DEBUG" "--pool eventlet" "--without-heartbeat" ];
           description = "Extra arguments passed to the Celery responsible for processing mails.";
         };
         celeryConfig = mkOption {
@@ -886,19 +864,13 @@ in
       };
       systemd.tmpfiles.settings."10-sourcehut-gitsrht" = mkIf cfg.git.enable (mkMerge [
         (builtins.listToAttrs (
-          map
-            (name: {
-              name = "/var/log/sourcehut/gitsrht-${name}";
-              value.f = {
-                inherit (cfg.git) user group;
-                mode = "0644";
-              };
-            })
-            [
-              "keys"
-              "shell"
-              "update-hook"
-            ]
+          map (name: {
+            name = "/var/log/sourcehut/gitsrht-${name}";
+            value.f = {
+              inherit (cfg.git) user group;
+              mode = "0644";
+            };
+          }) [ "keys" "shell" "update-hook" ]
         ))
         {
           ${cfg.settings."git.sr.ht".repos}.d = {
@@ -1008,10 +980,7 @@ in
           statePath = "/var/lib/sourcehut/${serviceName}";
         in
         mkIf cfg.builds.enableWorker {
-          path = [
-            pkgs.openssh
-            pkgs.docker
-          ];
+          path = [ pkgs.openssh pkgs.docker ];
           preStart = ''
             set -x
             if test -z "$(docker images -q qemu:latest 2>/dev/null)" \
@@ -1127,10 +1096,7 @@ in
         mainService = mkMerge [
           baseService
           {
-            serviceConfig.StateDirectory = [
-              "sourcehut/gitsrht"
-              "sourcehut/gitsrht/repos"
-            ];
+            serviceConfig.StateDirectory = [ "sourcehut/gitsrht" "sourcehut/gitsrht/repos" ];
             preStart = mkIf (versionOlder config.system.stateVersion "22.05") (mkBefore ''
               # Fix Git hooks of repositories pre-dating https://github.com/NixOS/nixpkgs/pull/133984
               (
@@ -1186,10 +1152,7 @@ in
             };
             systemd.sockets.gitsrht-fcgiwrap = {
               before = [ "nginx.service" ];
-              wantedBy = [
-                "sockets.target"
-                "gitsrht.service"
-              ];
+              wantedBy = [ "sockets.target" "gitsrht.service" ];
               # This path remains accessible to nginx.service, which has no RootDirectory=
               socketConfig.ListenStream = "/run/gitsrht-fcgiwrap.sock";
               socketConfig.SocketUser = nginx.user;
@@ -1213,10 +1176,7 @@ in
             DynamicUser = true;
             BindReadOnlyPaths = [ "${cfg.settings."git.sr.ht".repos}:/var/lib/sourcehut/gitsrht/repos" ];
             IPAddressDeny = "any";
-            InaccessiblePaths = [
-              "-+/run/postgresql"
-              "-+/run/redis-sourcehut"
-            ];
+            InaccessiblePaths = [ "-+/run/postgresql" "-+/run/redis-sourcehut" ];
             PrivateNetwork = true;
             RestrictAddressFamilies = mkForce [ "none" ];
             SystemCallFilter = mkForce [
@@ -1246,10 +1206,7 @@ in
         mainService = mkMerge [
           baseService
           {
-            serviceConfig.StateDirectory = [
-              "sourcehut/hgsrht"
-              "sourcehut/hgsrht/repos"
-            ];
+            serviceConfig.StateDirectory = [ "sourcehut/hgsrht" "sourcehut/hgsrht/repos" ];
           }
         ];
         port = 5010;
@@ -1539,61 +1496,29 @@ in
       };
     })
 
-    (mkRenamedOptionModule
-      [
-        "services"
-        "sourcehut"
-        "originBase"
-      ]
-      [
-        "services"
-        "sourcehut"
-        "settings"
-        "sr.ht"
-        "global-domain"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "sourcehut"
-        "address"
-      ]
-      [
-        "services"
-        "sourcehut"
-        "listenAddress"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "sourcehut" "originBase" ] [
+      "services"
+      "sourcehut"
+      "settings"
+      "sr.ht"
+      "global-domain"
+    ])
+    (mkRenamedOptionModule [ "services" "sourcehut" "address" ] [
+      "services"
+      "sourcehut"
+      "listenAddress"
+    ])
 
-    (mkRemovedOptionModule
-      [
-        "services"
-        "sourcehut"
-        "dispatch"
-      ]
-      ''
-        dispatch is deprecated. See https://sourcehut.org/blog/2022-08-01-dispatch-deprecation-plans/
-        for more information.
-      ''
-    )
+    (mkRemovedOptionModule [ "services" "sourcehut" "dispatch" ] ''
+      dispatch is deprecated. See https://sourcehut.org/blog/2022-08-01-dispatch-deprecation-plans/
+      for more information.
+    '')
 
-    (mkRemovedOptionModule
-      [
-        "services"
-        "sourcehut"
-        "services"
-      ]
-      ''
-        This option was removed in favor of individual <service>.enable flags.
-      ''
-    )
+    (mkRemovedOptionModule [ "services" "sourcehut" "services" ] ''
+      This option was removed in favor of individual <service>.enable flags.
+    '')
   ];
 
   meta.doc = ./default.md;
-  meta.maintainers = with maintainers; [
-    tomberek
-    nessdoor
-    christoph-heiss
-  ];
+  meta.maintainers = with maintainers; [ tomberek nessdoor christoph-heiss ];
 }

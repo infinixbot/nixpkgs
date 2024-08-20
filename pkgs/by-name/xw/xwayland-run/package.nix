@@ -38,10 +38,7 @@ python3.pkgs.buildPythonApplication rec {
 
   pyproject = false;
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   nativeBuildInputs = [
     meson
@@ -52,22 +49,9 @@ python3.pkgs.buildPythonApplication rec {
     wrapProgram $out/bin/wlheadless-run \
       --prefix PATH : ${lib.makeBinPath compositors}
     wrapProgram $out/bin/xwayland-run \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          xwayland
-          xorg.xauth
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ xwayland xorg.xauth ]}
     wrapProgram $out/bin/xwfb-run \
-      --prefix PATH : ${
-        lib.makeBinPath (
-          compositors
-          ++ [
-            xwayland
-            xorg.xauth
-          ]
-        )
-      }
+      --prefix PATH : ${lib.makeBinPath (compositors ++ [ xwayland xorg.xauth ])}
   '';
 
   meta = {

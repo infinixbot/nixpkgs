@@ -50,12 +50,7 @@ stdenv.mkDerivation rec {
     libevdev
     json-glib
     libunistring
-    (python3.withPackages (
-      ps: with ps; [
-        evdev
-        pygobject3
-      ]
-    ))
+    (python3.withPackages (ps: with ps; [ evdev pygobject3 ]))
   ];
 
   mesonFlags = [

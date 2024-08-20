@@ -75,10 +75,7 @@ in
         User = "";
         Group = "";
         DynamicUser = true;
-        ExecStart = [
-          ""
-          "${lib.makeBinPath [ cfg.package ]}/ntp-daemon --config=${configFile}"
-        ];
+        ExecStart = [ "" "${lib.makeBinPath [ cfg.package ]}/ntp-daemon --config=${configFile}" ];
       };
     };
 
@@ -88,10 +85,7 @@ in
         User = "";
         Group = "";
         DynamicUser = true;
-        ExecStart = [
-          ""
-          "${lib.makeBinPath [ cfg.package ]}/ntp-metrics-exporter --config=${configFile}"
-        ];
+        ExecStart = [ "" "${lib.makeBinPath [ cfg.package ]}/ntp-metrics-exporter --config=${configFile}" ];
       };
     };
   };

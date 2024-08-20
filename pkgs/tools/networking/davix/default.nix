@@ -29,11 +29,7 @@ in
 stdenv.mkDerivation rec {
   version = "0.8.7";
   pname = "davix" + lib.optionalString enableThirdPartyCopy "-copy";
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    python3
-  ];
+  nativeBuildInputs = [ cmake pkg-config python3 ];
   buildInputs =
     [
       openssl

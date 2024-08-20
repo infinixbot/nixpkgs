@@ -16,11 +16,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-7huWd71SdnTe1ef8OoHgQKjYQKVpE8k/oNT7bA+OJR0=";
   };
 
-  buildInputs = [
-    pam
-    openssl
-    zlib
-  ];
+  buildInputs = [ pam openssl zlib ];
   configureFlags = [
     "--with-pam=$(out)/lib/security"
     "--prefix=$(out)"

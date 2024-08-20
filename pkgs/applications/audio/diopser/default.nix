@@ -75,10 +75,7 @@ stdenv.mkDerivation rec {
     cp -r Diopser_artefacts/Release/VST3/Diopser.vst3 $out/lib/vst3
   '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   buildInputs = [
     libjack2

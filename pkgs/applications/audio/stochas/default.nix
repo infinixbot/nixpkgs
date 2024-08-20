@@ -31,10 +31,7 @@ stdenv.mkDerivation rec {
       lib/JUCE/modules/juce_gui_basics/windows/juce_ComponentPeer.h # gcc12
   '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   buildInputs = [
     libX11

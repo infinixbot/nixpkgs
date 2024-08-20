@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
     rev = version;
   };
 
-  buildInputs = [
-    vdr
-    graphicsmagick
-  ];
+  buildInputs = [ vdr graphicsmagick ];
 
   installFlags = [ "DESTDIR=$(out)" ];
 

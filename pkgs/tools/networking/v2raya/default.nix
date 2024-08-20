@@ -55,10 +55,7 @@ let
 
   assetsDir = symlinkJoin {
     name = "assets";
-    paths = [
-      v2ray-geoip
-      v2ray-domain-list-community
-    ];
+    paths = [ v2ray-geoip v2ray-domain-list-community ];
   };
 
 in

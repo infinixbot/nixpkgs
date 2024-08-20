@@ -58,10 +58,7 @@ stdenv.mkDerivation (finalAttrs: {
       icon = "jpsxdec";
       desktopName = "jPSXdec";
       comment = finalAttrs.meta.description;
-      categories = [
-        "AudioVideo"
-        "Utility"
-      ];
+      categories = [ "AudioVideo" "Utility" ];
     })
   ];
 

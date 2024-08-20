@@ -23,10 +23,7 @@ else
       hash = "sha256-Tm+xvL2HNdQsD04I9eR9tLL0bs5Ls2q+IndLV/p9sHs=";
     };
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-    ];
+    nativeBuildInputs = [ ocaml findlib ];
     buildInputs = [ ncurses ];
     propagatedBuildInputs = [ camlpdf ];
 

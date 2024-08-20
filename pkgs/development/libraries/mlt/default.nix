@@ -114,10 +114,7 @@ stdenv.mkDerivation rec {
       SDL2
     ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   cmakeFlags =
     [
@@ -157,10 +154,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Open source multimedia framework, designed for television broadcasting";
     homepage = "https://www.mltframework.org/";
-    license = with licenses; [
-      lgpl21Plus
-      gpl2Plus
-    ];
+    license = with licenses; [ lgpl21Plus gpl2Plus ];
     maintainers = [ ];
     platforms = platforms.unix;
   };

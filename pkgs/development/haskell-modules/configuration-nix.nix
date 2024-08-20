@@ -75,10 +75,7 @@ builtins.intersectAttrs super {
       ln -s "$out/bin/haskell-language-server" "$out/bin/haskell-language-server-${self.ghc.version}"
       chmod +x "$out/bin/haskell-language-server"
     '';
-    testToolDepends = [
-      self.cabal-install
-      pkgs.git
-    ];
+    testToolDepends = [ self.cabal-install pkgs.git ];
     testTarget = "func-test"; # wrapper test accesses internet
     preCheck = ''
       export PATH=$PATH:$PWD/dist/build/haskell-language-server:$PWD/dist/build/haskell-language-server-wrapper
@@ -121,20 +118,14 @@ builtins.intersectAttrs super {
 
   audacity = enableCabalFlag "buildExamples" (
     overrideCabal (drv: {
-      executableHaskellDepends = [
-        self.optparse-applicative
-        self.soxlib
-      ];
+      executableHaskellDepends = [ self.optparse-applicative self.soxlib ];
     }) super.audacity
   );
   # 2023-04-27: Deactivating examples for now because they cause a non-trivial build failure.
   # med-module = enableCabalFlag "buildExamples" super.med-module;
   spreadsheet = enableCabalFlag "buildExamples" (
     overrideCabal (drv: {
-      executableHaskellDepends = [
-        self.optparse-applicative
-        self.shell-utility
-      ];
+      executableHaskellDepends = [ self.optparse-applicative self.shell-utility ];
     }) super.spreadsheet
   );
 
@@ -466,10 +457,7 @@ builtins.intersectAttrs super {
   gi-gtk-declarative = dontCheck super.gi-gtk-declarative;
   gi-gtk-declarative-app-simple = dontCheck super.gi-gtk-declarative-app-simple;
   hsqml = dontCheck (
-    addExtraLibraries [
-      pkgs.libGLU
-      pkgs.libGL
-    ] (super.hsqml.override { qt5 = pkgs.qt5Full; })
+    addExtraLibraries [ pkgs.libGLU pkgs.libGL ] (super.hsqml.override { qt5 = pkgs.qt5Full; })
   );
   monomer = dontCheck super.monomer;
 
@@ -530,10 +518,9 @@ builtins.intersectAttrs super {
 
   # https://github.com/edwinb/EpiVM/issues/13
   # https://github.com/edwinb/EpiVM/issues/14
-  epic = addExtraLibraries [
-    pkgs.boehmgc
-    pkgs.gmp
-  ] (addBuildTool self.buildHaskellPackages.happy super.epic);
+  epic = addExtraLibraries [ pkgs.boehmgc pkgs.gmp ] (
+    addBuildTool self.buildHaskellPackages.happy super.epic
+  );
 
   # https://github.com/ekmett/wl-pprint-terminfo/issues/7
   wl-pprint-terminfo = addExtraLibrary pkgs.ncurses super.wl-pprint-terminfo;
@@ -586,11 +573,7 @@ builtins.intersectAttrs super {
   # https://github.com/deech/fltkhs/issues/16
   fltkhs = overrideCabal (drv: {
     libraryToolDepends = (drv.libraryToolDepends or [ ]) ++ [ pkgs.buildPackages.autoconf ];
-    librarySystemDepends = (drv.librarySystemDepends or [ ]) ++ [
-      pkgs.fltk13
-      pkgs.libGL
-      pkgs.libjpeg
-    ];
+    librarySystemDepends = (drv.librarySystemDepends or [ ]) ++ [ pkgs.fltk13 pkgs.libGL pkgs.libjpeg ];
   }) super.fltkhs;
 
   # https://github.com/skogsbaer/hscurses/pull/26
@@ -693,10 +676,7 @@ builtins.intersectAttrs super {
   secp256k1-haskell = addPkgconfigDepend pkgs.secp256k1 super.secp256k1-haskell;
 
   # tests require git and zsh
-  hapistrano = addBuildTools [
-    pkgs.buildPackages.git
-    pkgs.buildPackages.zsh
-  ] super.hapistrano;
+  hapistrano = addBuildTools [ pkgs.buildPackages.git pkgs.buildPackages.zsh ] super.hapistrano;
 
   # This propagates this to everything depending on haskell-gi-base
   haskell-gi-base = addBuildDepend pkgs.gobject-introspection super.haskell-gi-base;
@@ -805,28 +785,20 @@ builtins.intersectAttrs super {
   Frames-beam = dontCheck super.Frames-beam;
 
   # Compile manpages (which are in RST and are compiled with Sphinx).
-  futhark =
-    overrideCabal
-      (_drv: {
-        postBuild =
-          (_drv.postBuild or "")
-          + ''
-            make -C docs man
-          '';
+  futhark = overrideCabal (_drv: {
+    postBuild =
+      (_drv.postBuild or "")
+      + ''
+        make -C docs man
+      '';
 
-        postInstall =
-          (_drv.postInstall or "")
-          + ''
-            mkdir -p $out/share/man/man1
-            mv docs/_build/man/*.1 $out/share/man/man1/
-          '';
-      })
-      (
-        addBuildTools (with pkgs.buildPackages; [
-          makeWrapper
-          python3Packages.sphinx
-        ]) super.futhark
-      );
+    postInstall =
+      (_drv.postInstall or "")
+      + ''
+        mkdir -p $out/share/man/man1
+        mv docs/_build/man/*.1 $out/share/man/man1/
+      '';
+  }) (addBuildTools (with pkgs.buildPackages; [ makeWrapper python3Packages.sphinx ]) super.futhark);
 
   git-annex =
     let
@@ -901,15 +873,7 @@ builtins.intersectAttrs super {
         postFixup =
           ''
             wrapProgram $out/bin/git-annex \
-              --prefix PATH : "${
-                pkgs.lib.makeBinPath (
-                  with pkgs;
-                  [
-                    coreutils
-                    lsof
-                  ]
-                )
-              }"
+              --prefix PATH : "${pkgs.lib.makeBinPath (with pkgs; [ coreutils lsof ])}"
           ''
           + (drv.postFixup or "");
         buildTools = [
@@ -1050,10 +1014,7 @@ builtins.intersectAttrs super {
 
   cut-the-crap =
     let
-      path = pkgs.lib.makeBinPath [
-        pkgs.ffmpeg
-        pkgs.youtube-dl
-      ];
+      path = pkgs.lib.makeBinPath [ pkgs.ffmpeg pkgs.youtube-dl ];
     in
     overrideCabal (_drv: {
       postInstall = ''
@@ -1081,18 +1042,9 @@ builtins.intersectAttrs super {
   postgresql-libpq-notify = dontCheck super.postgresql-libpq-notify;
   postgresql-pure = dontCheck super.postgresql-pure;
 
-  retrie = addTestToolDepends [
-    pkgs.git
-    pkgs.mercurial
-  ] super.retrie;
-  retrie_1_2_0_0 = addTestToolDepends [
-    pkgs.git
-    pkgs.mercurial
-  ] super.retrie_1_2_0_0;
-  retrie_1_2_1_1 = addTestToolDepends [
-    pkgs.git
-    pkgs.mercurial
-  ] super.retrie_1_2_1_1;
+  retrie = addTestToolDepends [ pkgs.git pkgs.mercurial ] super.retrie;
+  retrie_1_2_0_0 = addTestToolDepends [ pkgs.git pkgs.mercurial ] super.retrie_1_2_0_0;
+  retrie_1_2_1_1 = addTestToolDepends [ pkgs.git pkgs.mercurial ] super.retrie_1_2_1_1;
 
   # there are three very heavy test suites that need external repos, one requires network access
   hevm = dontCheck super.hevm;
@@ -1193,12 +1145,7 @@ builtins.intersectAttrs super {
       ${drv.postInstall or ""}
 
       wrapProgram $out/bin/cabal2nix \
-        --prefix PATH ":" "${
-          pkgs.lib.makeBinPath [
-            pkgs.nix
-            pkgs.nix-prefetch-scripts
-          ]
-        }"
+        --prefix PATH ":" "${pkgs.lib.makeBinPath [ pkgs.nix pkgs.nix-prefetch-scripts ]}"
     '';
   }) (justStaticExecutables super.cabal2nix-unstable);
 
@@ -1552,32 +1499,16 @@ builtins.intersectAttrs super {
   # Also adds required test dependencies for checks to pass
   mpi-hs =
     let
-      validMpi = [
-        "openmpi"
-        "mpich"
-        "mvapich"
-      ];
+      validMpi = [ "openmpi" "mpich" "mvapich" ];
       mpiImpl = pkgs.mpi.pname;
       disableUnused = with builtins; map disableCabalFlag (filter (n: n != mpiImpl) validMpi);
     in
     lib.pipe (super.mpi-hs_0_7_3_0.override { ompi = pkgs.mpi; }) (
-      [
-        (addTestToolDepends [
-          pkgs.openssh
-          pkgs.mpiCheckPhaseHook
-        ])
-      ]
+      [ (addTestToolDepends [ pkgs.openssh pkgs.mpiCheckPhaseHook ]) ]
       ++ disableUnused
       ++ lib.optional (builtins.elem mpiImpl validMpi) (enableCabalFlag mpiImpl)
     );
-  inherit
-    (lib.mapAttrs (
-      _:
-      addTestToolDepends [
-        pkgs.openssh
-        pkgs.mpiCheckPhaseHook
-      ]
-    ) super)
+  inherit (lib.mapAttrs (_: addTestToolDepends [ pkgs.openssh pkgs.mpiCheckPhaseHook ]) super)
     mpi-hs-store
     mpi-hs-cereal
     mpi-hs-binary

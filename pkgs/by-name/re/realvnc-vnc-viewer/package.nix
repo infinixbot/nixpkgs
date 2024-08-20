@@ -16,10 +16,7 @@ let
       url = "https://static.realvnc.com/media/documents/LICENSE-4.0a_en.pdf";
       free = false;
     };
-    maintainers = with lib.maintainers; [
-      emilytrau
-      onedragon
-    ];
+    maintainers = with lib.maintainers; [ emilytrau onedragon ];
     platforms = [ "x86_64-linux" ] ++ lib.platforms.darwin;
     mainProgram = "vncviewer";
   };

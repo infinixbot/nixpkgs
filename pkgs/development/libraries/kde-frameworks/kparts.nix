@@ -27,9 +27,5 @@ mkDerivation {
     kservice
     kwidgetsaddons
   ];
-  propagatedBuildInputs = [
-    kio
-    ktextwidgets
-    kxmlgui
-  ];
+  propagatedBuildInputs = [ kio ktextwidgets kxmlgui ];
 }

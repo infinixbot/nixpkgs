@@ -31,10 +31,7 @@ buildDunePackage rec {
   ];
 
   doCheck = true;
-  checkInputs = [
-    ounit2
-    randomconv
-  ];
+  checkInputs = [ ounit2 randomconv ];
 
   meta = mirage-crypto.meta // {
     description = "Simple public-key cryptography for the modern age";

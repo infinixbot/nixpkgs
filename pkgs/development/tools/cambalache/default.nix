@@ -78,12 +78,7 @@ python3.pkgs.buildPythonApplication rec {
     # Let python wrapper use GNOME flags.
     makeWrapperArgs+=(
       # For broadway daemons
-      --prefix PATH : "${
-        lib.makeBinPath [
-          gtk3
-          gtk4
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ gtk3 gtk4 ]}"
       "''${gappsWrapperArgs[@]}"
     )
   '';

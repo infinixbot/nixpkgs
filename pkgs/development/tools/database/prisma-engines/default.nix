@@ -38,10 +38,7 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    git
-  ];
+  nativeBuildInputs = [ pkg-config git ];
 
   buildInputs = [
     openssl
@@ -83,11 +80,7 @@ rustPlatform.buildRustPackage rec {
     license = licenses.asl20;
     platforms = platforms.unix;
     mainProgram = "prisma";
-    maintainers = with maintainers; [
-      pimeys
-      tomhoule
-      aqrln
-    ];
+    maintainers = with maintainers; [ pimeys tomhoule aqrln ];
   };
 }
 

@@ -31,10 +31,7 @@ mkDerivation rec {
     mv $out/linux-bin $out/bin
   '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
   buildInputs = [
     airspy
     rtl-sdr

@@ -23,31 +23,17 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "transmission"
-        "port"
-      ]
-      [
-        "services"
-        "transmission"
-        "settings"
-        "rpc-port"
-      ]
-    )
-    (mkAliasOptionModuleMD
-      [
-        "services"
-        "transmission"
-        "openFirewall"
-      ]
-      [
-        "services"
-        "transmission"
-        "openPeerPorts"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "transmission" "port" ] [
+      "services"
+      "transmission"
+      "settings"
+      "rpc-port"
+    ])
+    (mkAliasOptionModuleMD [ "services" "transmission" "openFirewall" ] [
+      "services"
+      "transmission"
+      "openPeerPorts"
+    ])
   ];
   options = {
     services.transmission = {
@@ -429,11 +415,7 @@ in
         RemoveIPC = true;
         # AF_UNIX may become usable one day:
         # https://github.com/transmission/transmission/issues/441
-        RestrictAddressFamilies = [
-          "AF_UNIX"
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;

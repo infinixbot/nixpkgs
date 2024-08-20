@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-LSZ948nXXY3pXltR2hHnql6YEpHumjTvbtz4/qUIRCQ=";
   };
 
-  nativeBuildInputs = [
-    gfortran
-    makeWrapper
-  ];
+  nativeBuildInputs = [ gfortran makeWrapper ];
 
   postInstall = ''
     wrapProgram $out/bin/c-graph --prefix PATH : ${lib.makeBinPath [ gnuplot ]}

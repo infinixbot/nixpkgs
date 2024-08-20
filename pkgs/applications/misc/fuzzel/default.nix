@@ -68,15 +68,9 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://codeberg.org/dnkl/fuzzel/releases/tag/${finalAttrs.version}";
     description = "Wayland-native application launcher, similar to rofi’s drun mode";
     homepage = "https://codeberg.org/dnkl/fuzzel";
-    license = with licenses; [
-      mit
-      zlib
-    ];
+    license = with licenses; [ mit zlib ];
     mainProgram = "fuzzel";
-    maintainers = with maintainers; [
-      fionera
-      rodrgz
-    ];
+    maintainers = with maintainers; [ fionera rodrgz ];
     platforms = with platforms; linux;
   };
 })

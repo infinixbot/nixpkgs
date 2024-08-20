@@ -18,11 +18,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    glib
-    gtk2
-    menu-cache
-  ];
+  buildInputs = [ glib gtk2 menu-cache ];
 
   # Enables SVG support by uncommenting the Makefile
   patches = [ ./000-enable-svg.patch ];

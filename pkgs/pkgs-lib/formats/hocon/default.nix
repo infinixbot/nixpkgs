@@ -62,17 +62,10 @@ in
                   _type = "include";
                 };
           in
-          assert lib.assertMsg
-            (lib.elem includeStatement.type [
-              "file"
-              "url"
-              "classpath"
-              null
-            ])
-            ''
-              Type of HOCON mkInclude is not of type 'file', 'url' or 'classpath':
-              ${(lib.generators.toPretty { }) includeStatement}
-            '';
+          assert lib.assertMsg (lib.elem includeStatement.type [ "file" "url" "classpath" null ]) ''
+            Type of HOCON mkInclude is not of type 'file', 'url' or 'classpath':
+            ${(lib.generators.toPretty { }) includeStatement}
+          '';
           includeStatement;
 
         mkAppend = value: {

@@ -23,10 +23,7 @@ rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ pkg-config ];
   buildInputs =
-    [
-      libiconv
-      openssl
-    ]
+    [ libiconv openssl ]
     # Use a newer SDK for CoreFoundation, because the sysinfo crate requires
     # it, https://github.com/GuillaumeGomez/sysinfo/issues/915
     ++ lib.optionals stdenv.isDarwin (
@@ -41,10 +38,7 @@ rustPlatform.buildRustPackage rec {
     description = "Check the health of your Nix setup";
     homepage = "https://github.com/juspay/nix-health";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      srid
-      shivaraj-bh
-    ];
+    maintainers = with maintainers; [ srid shivaraj-bh ];
     mainProgram = "nix-health";
   };
 }

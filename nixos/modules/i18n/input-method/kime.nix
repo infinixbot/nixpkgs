@@ -20,31 +20,15 @@ in
 
   options.i18n.inputMethod.kime = {
     daemonModules = lib.mkOption {
-      type = lib.types.listOf (
-        lib.types.enum [
-          "Xim"
-          "Wayland"
-          "Indicator"
-        ]
-      );
-      default = [
-        "Xim"
-        "Wayland"
-        "Indicator"
-      ];
-      example = [
-        "Xim"
-        "Indicator"
-      ];
+      type = lib.types.listOf (lib.types.enum [ "Xim" "Wayland" "Indicator" ]);
+      default = [ "Xim" "Wayland" "Indicator" ];
+      example = [ "Xim" "Indicator" ];
       description = ''
         List of enabled daemon modules
       '';
     };
     iconColor = lib.mkOption {
-      type = lib.types.enum [
-        "Black"
-        "White"
-      ];
+      type = lib.types.enum [ "Black" "White" ];
       default = "Black";
       example = "White";
       description = ''

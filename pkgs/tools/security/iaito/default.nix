@@ -35,10 +35,7 @@ in
 stdenv.mkDerivation (finalAttrs: {
   inherit pname version;
 
-  srcs = [
-    main_src
-    translations_src
-  ];
+  srcs = [ main_src translations_src ];
   sourceRoot = "${main_src.name}/src";
 
   postUnpack = ''

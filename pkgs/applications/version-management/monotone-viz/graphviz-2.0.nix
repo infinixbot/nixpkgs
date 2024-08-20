@@ -40,10 +40,7 @@ stdenv.mkDerivation rec {
     libwebp
   ];
 
-  hardeningDisable = [
-    "format"
-    "fortify"
-  ];
+  hardeningDisable = [ "format" "fortify" ];
 
   configureFlags = [
     "--with-pngincludedir=${libpng.dev}/include"

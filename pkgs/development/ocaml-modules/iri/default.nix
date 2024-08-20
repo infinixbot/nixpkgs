@@ -21,11 +21,7 @@ buildDunePackage rec {
     hash = "sha256-6Q7qPezmdcO6JSevWl55XAxFuIROZNDrMkYw8VRR7qg=";
   };
 
-  propagatedBuildInputs = [
-    sedlex
-    uunf
-    uutf
-  ];
+  propagatedBuildInputs = [ sedlex uunf uutf ];
 
   meta = {
     description = "IRI (RFC3987) native OCaml implementation";

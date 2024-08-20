@@ -32,8 +32,5 @@ in
     hardware.cpu.amd.ryzen-smu.enable = true;
   };
 
-  meta.maintainers = with lib.maintainers; [
-    Cryolitia
-    phdyellow
-  ];
+  meta.maintainers = with lib.maintainers; [ Cryolitia phdyellow ];
 }

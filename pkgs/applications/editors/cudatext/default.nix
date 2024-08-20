@@ -25,11 +25,7 @@
   additionalLexers ? [ "Nix" ],
 }:
 
-assert builtins.elem widgetset [
-  "gtk2"
-  "gtk3"
-  "qt5"
-];
+assert builtins.elem widgetset [ "gtk2" "gtk3" "qt5" ];
 
 let
   deps = lib.mapAttrs (
@@ -59,20 +55,11 @@ stdenv.mkDerivation rec {
       --subst-var-by python3 ${python3}
   '';
 
-  nativeBuildInputs = [
-    lazarus
-    fpc
-  ] ++ lib.optional (widgetset == "qt5") qt5.wrapQtAppsHook;
+  nativeBuildInputs = [ lazarus fpc ] ++ lib.optional (widgetset == "qt5") qt5.wrapQtAppsHook;
 
   buildInputs =
     [ libX11 ]
-    ++ lib.optionals (lib.hasPrefix "gtk" widgetset) [
-      pango
-      cairo
-      glib
-      atk
-      gdk-pixbuf
-    ]
+    ++ lib.optionals (lib.hasPrefix "gtk" widgetset) [ pango cairo glib atk gdk-pixbuf ]
     ++ lib.optional (widgetset == "gtk2") gtk2
     ++ lib.optional (widgetset == "gtk3") gtk3
     ++ lib.optional (widgetset == "qt5") libqt5pas;

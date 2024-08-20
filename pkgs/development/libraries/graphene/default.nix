@@ -30,10 +30,7 @@ stdenv.mkDerivation (finalAttrs: {
   version = "1.10.8";
 
   outputs =
-    [
-      "out"
-      "dev"
-    ]
+    [ "out" "dev" ]
     ++ lib.optionals withDocumentation [ "devdoc" ]
     ++ lib.optionals (stdenv.hostPlatform == stdenv.buildPlatform) [ "installedTests" ];
 
@@ -111,10 +108,7 @@ stdenv.mkDerivation (finalAttrs: {
     ''
     + lib.optionalString withIntrospection ''
       PATH=${
-        python3.withPackages (pp: [
-          pp.pygobject3
-          pp.tappy
-        ])
+        python3.withPackages (pp: [ pp.pygobject3 pp.tappy ])
       }/bin:$PATH patchShebangs tests/introspection.py
     '';
 
@@ -146,9 +140,6 @@ stdenv.mkDerivation (finalAttrs: {
     license = licenses.mit;
     maintainers = teams.gnome.members ++ (with maintainers; [ ]);
     platforms = platforms.unix;
-    pkgConfigModules = [
-      "graphene-1.0"
-      "graphene-gobject-1.0"
-    ];
+    pkgConfigModules = [ "graphene-1.0" "graphene-gobject-1.0" ];
   };
 })

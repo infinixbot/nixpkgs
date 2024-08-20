@@ -23,11 +23,7 @@ stdenv.mkDerivation (finalAttrs: {
     outputHash = "sha256-HMTnr3awTIAgLSl4eF36U1kv162ajJxC5MreSk2TfUE=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    installShellFiles
-    setJavaClassPath
-  ];
+  nativeBuildInputs = [ makeWrapper installShellFiles setJavaClassPath ];
   buildInputs = [ finalAttrs.deps ];
 
   dontUnpack = true;

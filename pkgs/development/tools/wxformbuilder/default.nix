@@ -68,10 +68,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/wxFormBuilder/wxFormBuilder";
     license = licenses.gpl2Only;
     mainProgram = "wxformbuilder";
-    maintainers = with maintainers; [
-      matthuszagh
-      wegank
-    ];
+    maintainers = with maintainers; [ matthuszagh wegank ];
     platforms = platforms.unix;
   };
 })

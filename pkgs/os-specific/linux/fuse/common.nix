@@ -40,10 +40,7 @@ stdenv.mkDerivation rec {
     })
     ++ (
       if isFuse3 then
-        [
-          ./fuse3-install.patch
-          ./fuse3-Do-not-set-FUSERMOUNT_DIR.patch
-        ]
+        [ ./fuse3-install.patch ./fuse3-Do-not-set-FUSERMOUNT_DIR.patch ]
       else
         [
           ./fuse2-Do-not-set-FUSERMOUNT_DIR.patch
@@ -54,18 +51,7 @@ stdenv.mkDerivation rec {
         ]
     );
 
-  nativeBuildInputs =
-    if isFuse3 then
-      [
-        meson
-        ninja
-        pkg-config
-      ]
-    else
-      [
-        autoreconfHook
-        gettext
-      ];
+  nativeBuildInputs = if isFuse3 then [ meson ninja pkg-config ] else [ autoreconfHook gettext ];
 
   outputs = [ "out" ] ++ lib.optional isFuse3 "common";
 
@@ -104,12 +90,7 @@ stdenv.mkDerivation rec {
         ''
     );
 
-  nativeCheckInputs =
-    [ which ]
-    ++ (with python3Packages; [
-      python
-      pytest
-    ]);
+  nativeCheckInputs = [ which ] ++ (with python3Packages; [ python pytest ]);
 
   checkPhase = ''
     python3 -m pytest test/
@@ -145,10 +126,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/libfuse/libfuse";
     changelog = "https://github.com/libfuse/libfuse/releases/tag/fuse-${version}";
     platforms = platforms.linux;
-    license = with licenses; [
-      gpl2Only
-      lgpl21Only
-    ];
+    license = with licenses; [ gpl2Only lgpl21Only ];
     maintainers = [ maintainers.primeos ];
   };
 }

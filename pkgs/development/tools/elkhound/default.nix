@@ -25,12 +25,7 @@ stdenv.mkDerivation rec {
 
   sourceRoot = "${src.name}/src";
 
-  nativeBuildInputs = [
-    bison
-    cmake
-    flex
-    perl
-  ];
+  nativeBuildInputs = [ bison cmake flex perl ];
 
   installPhase = ''
     runHook preInstall

@@ -20,11 +20,7 @@ python3.pkgs.buildPythonApplication {
 
   doCheck = false;
 
-  propagatedBuildInputs = with python3.pkgs; [
-    requests
-    radon
-    pyaml
-  ];
+  propagatedBuildInputs = with python3.pkgs; [ requests radon pyaml ];
 
   meta = with lib; {
     description = "Monitoring tool based on radon";

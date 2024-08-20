@@ -2,15 +2,8 @@
 {
   imports = [
     (lib.doRename {
-      from = [
-        "a"
-        "b"
-      ];
-      to = [
-        "c"
-        "d"
-        "e"
-      ];
+      from = [ "a" "b" ];
+      to = [ "c" "d" "e" ];
       warn = true;
       use = x: x;
       visible = true;

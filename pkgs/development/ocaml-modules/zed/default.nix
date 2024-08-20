@@ -14,14 +14,7 @@ buildDunePackage rec {
   pname = "zed";
   version = "3.2.3";
 
-  propagatedBuildInputs = [
-    react
-    result
-    uchar
-    uutf
-    uucp
-    uuseg
-  ];
+  propagatedBuildInputs = [ react result uchar uutf uucp uuseg ];
 
   src = fetchFromGitHub {
     owner = "ocaml-community";

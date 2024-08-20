@@ -2,14 +2,7 @@
   lib,
   buildNimPackage,
   fetchFromGitLab,
-  enableShells ? [
-    "bash"
-    "zsh"
-    "fish"
-    "sh"
-    "posh"
-    "codium"
-  ],
+  enableShells ? [ "bash" "zsh" "fish" "sh" "posh" "codium" ],
 }:
 
 buildNimPackage (finalAttrs: {

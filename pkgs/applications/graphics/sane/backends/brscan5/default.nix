@@ -40,16 +40,8 @@ stdenv.mkDerivation rec {
     tar xfv data.tar.xz
   '';
 
-  nativeBuildInputs = [
-    makeWrapper
-    patchelf
-  ];
-  buildInputs = [
-    libusb1
-    avahi-compat
-    stdenv.cc.cc
-    glib
-  ];
+  nativeBuildInputs = [ makeWrapper patchelf ];
+  buildInputs = [ libusb1 avahi-compat stdenv.cc.cc glib ];
   dontBuild = true;
 
   postPatch =
@@ -130,10 +122,7 @@ stdenv.mkDerivation rec {
   meta = {
     description = "Brother brscan5 sane backend driver";
     homepage = "https://www.brother.com";
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
     license = lib.licenses.unfree;
     maintainers = with lib.maintainers; [ mattchrist ];

@@ -201,10 +201,7 @@ let
               texliveBinaries.core-big.${outName} or null
             ]
             ++ (args.extraBuildInputs or [ ])
-            ++ [
-              bash
-              perl
-            ]
+            ++ [ bash perl ]
             ++ (lib.attrVals (args.scriptExts or [ ]) extToInput);
           nativeBuildInputs = extraNativeBuildInputs;
           # absolute scripts folder

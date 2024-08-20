@@ -179,10 +179,7 @@ stdenv.mkDerivation (
         args.overrideNativeBuildInputs or (
           [ which ]
           ++ optional useDune coq.ocamlPackages.dune_3
-          ++ optionals (useDune || mlPlugin) [
-            coq.ocamlPackages.ocaml
-            coq.ocamlPackages.findlib
-          ]
+          ++ optionals (useDune || mlPlugin) [ coq.ocamlPackages.ocaml coq.ocamlPackages.findlib ]
           ++ (args.nativeBuildInputs or [ ])
           ++ extraNativeBuildInputs
         );

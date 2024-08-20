@@ -173,11 +173,7 @@
   sonnet ? null,
 }:
 
-assert builtins.elem variant [
-  "fresh"
-  "still"
-  "collabora"
-];
+assert builtins.elem variant [ "fresh" "still" "collabora" ];
 
 let
   inherit (lib)
@@ -209,12 +205,7 @@ let
   };
 
   jre' = jre17_minimal.override {
-    modules = [
-      "java.base"
-      "java.desktop"
-      "java.logging"
-      "java.sql"
-    ];
+    modules = [ "java.base" "java.desktop" "java.logging" "java.sql" ];
   };
 
   importVariant = f: import (./. + "/src-${variant}/${f}");
@@ -256,20 +247,15 @@ let
   kdeDeps = symlinkJoin {
     name = "libreoffice-kde-dependencies-${version}";
     paths = flatten (
-      map
-        (e: [
-          (getDev e)
-          (getLib e)
-        ])
-        [
-          qtbase
-          qtx11extras
-          kconfig
-          kcoreaddons
-          ki18n
-          kio
-          kwindowsystem
-        ]
+      map (e: [ (getDev e) (getLib e) ]) [
+        qtbase
+        qtx11extras
+        kconfig
+        kcoreaddons
+        ki18n
+        kio
+        kwindowsystem
+      ]
     );
   };
   tarballPath = "external/tarballs";

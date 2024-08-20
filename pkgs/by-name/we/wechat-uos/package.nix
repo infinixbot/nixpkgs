@@ -251,16 +251,9 @@ let
       description = "Messaging app";
       homepage = "https://weixin.qq.com/";
       license = licenses.unfree;
-      platforms = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "loongarch64-linux"
-      ];
+      platforms = [ "x86_64-linux" "aarch64-linux" "loongarch64-linux" ];
       sourceProvenance = with sourceTypes; [ binaryNativeCode ];
-      maintainers = with maintainers; [
-        pokon548
-        xddxdd
-      ];
+      maintainers = with maintainers; [ pokon548 xddxdd ];
       mainProgram = "wechat-uos";
     };
   };
@@ -297,10 +290,5 @@ buildFHSEnv {
 
   passthru.updateScript = ./update.sh;
 
-  extraOutputsToInstall = [
-    "usr"
-    "var/lib/uos"
-    "var/uos"
-    "etc"
-  ];
+  extraOutputsToInstall = [ "usr" "var/lib/uos" "var/uos" "etc" ];
 }

@@ -47,10 +47,7 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "https://jorisroovers.com/gitlint/";
     changelog = "https://github.com/jorisroovers/gitlint/releases/tag/v${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      ethancedwards8
-      fab
-    ];
+    maintainers = with maintainers; [ ethancedwards8 fab ];
     mainProgram = "gitlint";
   };
 }

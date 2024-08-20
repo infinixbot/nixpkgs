@@ -178,17 +178,7 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "boot"
-        "binfmtMiscRegistrations"
-      ]
-      [
-        "boot"
-        "binfmt"
-        "registrations"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "boot" "binfmtMiscRegistrations" ] [ "boot" "binfmt" "registrations" ])
   ];
 
   options = {
@@ -209,10 +199,7 @@ in
                 recognitionType = mkOption {
                   default = "magic";
                   description = "Whether to recognize executables by magic number or extension.";
-                  type = types.enum [
-                    "magic"
-                    "extension"
-                  ];
+                  type = types.enum [ "magic" "extension" ];
                 };
 
                 offset = mkOption {
@@ -317,11 +304,7 @@ in
 
       emulatedSystems = mkOption {
         default = [ ];
-        example = [
-          "wasm32-wasi"
-          "x86_64-windows"
-          "aarch64-linux"
-        ];
+        example = [ "wasm32-wasi" "x86_64-windows" "aarch64-linux" ];
         description = ''
           List of systems to emulate. Will also configure Nix to
           support your new systems.

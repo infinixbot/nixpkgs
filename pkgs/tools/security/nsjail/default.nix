@@ -27,20 +27,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-/K+qJV5Dq+my45Cpw6czdsWLtO9lnJwZTsOIRt4Iijk=";
   };
 
-  nativeBuildInputs = [
-    autoconf
-    bison
-    flex
-    installShellFiles
-    libtool
-    pkg-config
-    which
-  ];
-  buildInputs = [
-    libnl
-    protobuf
-    protobufc
-  ];
+  nativeBuildInputs = [ autoconf bison flex installShellFiles libtool pkg-config which ];
+  buildInputs = [ libnl protobuf protobufc ];
   enableParallelBuilding = true;
 
   env.NIX_CFLAGS_COMPILE = toString [ "-Wno-error" ];
@@ -61,11 +49,7 @@ stdenv.mkDerivation rec {
     homepage = "https://nsjail.dev/";
     changelog = "https://github.com/google/nsjail/releases/tag/${version}";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      arturcygan
-      bosu
-      c0bw3b
-    ];
+    maintainers = with maintainers; [ arturcygan bosu c0bw3b ];
     platforms = platforms.linux;
     mainProgram = "nsjail";
   };

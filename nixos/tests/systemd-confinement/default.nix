@@ -19,10 +19,7 @@ import ../make-test-python.nix {
         name: testScript:
         pkgs.writers.writePython3 "${name}.py"
           {
-            libraries = [
-              pkgs.python3Packages.pytest
-              testLib
-            ];
+            libraries = [ pkgs.python3Packages.pytest testLib ];
           }
           ''
             # This runs our test script by using pytest's assertion rewriting, so
@@ -66,22 +63,17 @@ import ../make-test-python.nix {
             }
           );
 
-          systemd.services.${serviceName} =
-            {
-              inherit description;
-              requiredBy = [ "multi-user.target" ];
-              confinement = (config.confinement or { }) // {
-                enable = true;
-              };
-              serviceConfig = (config.serviceConfig or { }) // {
-                ExecStart = mkTest serviceName testScript;
-                Type = "oneshot";
-              };
-            }
-            // removeAttrs config [
-              "confinement"
-              "serviceConfig"
-            ];
+          systemd.services.${serviceName} = {
+            inherit description;
+            requiredBy = [ "multi-user.target" ];
+            confinement = (config.confinement or { }) // {
+              enable = true;
+            };
+            serviceConfig = (config.serviceConfig or { }) // {
+              ExecStart = mkTest serviceName testScript;
+              Type = "oneshot";
+            };
+          } // removeAttrs config [ "confinement" "serviceConfig" ];
         };
 
       parametrisedTests =
@@ -203,15 +195,8 @@ import ../make-test-python.nix {
           )
           (
             lib.cartesianProduct {
-              user = [
-                "root"
-                "dynamic-user"
-                "static-user"
-              ];
-              privateTmp = [
-                true
-                false
-              ];
+              user = [ "root" "dynamic-user" "static-user" ];
+              privateTmp = [ true false ];
             }
           );
 

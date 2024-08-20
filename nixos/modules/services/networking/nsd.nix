@@ -31,10 +31,7 @@ let
     concatStrings (
       mapAttrsToList (keyName: keyOptions: ''
         fakeKey="$(${pkgs.bind}/bin/tsig-keygen -a ${
-          escapeShellArgs [
-            keyOptions.algorithm
-            keyName
-          ]
+          escapeShellArgs [ keyOptions.algorithm keyName ]
         } | grep -oP "\s*secret \"\K.*(?=\";)")"
         sed "s@^\s*include:\s*\"${stateDir}/private/${keyName}\"\$@secret: $fakeKey@" -i $out/nsd.conf
       '') keys
@@ -373,10 +370,7 @@ let
       notify = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "10.0.0.1@3721 my_key"
-          "::5 NOKEY"
-        ];
+        example = [ "10.0.0.1@3721 my_key" "::5 NOKEY" ];
         description = ''
           This primary server will notify all given secondary servers about
           zone changes.
@@ -414,10 +408,7 @@ let
       provideXFR = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "192.0.2.0/24 NOKEY"
-          "192.0.2.0/24 my_tsig_key_name"
-        ];
+        example = [ "192.0.2.0/24 NOKEY" "192.0.2.0/24 my_tsig_key_name" ];
         description = ''
           Allow these IPs and TSIG to transfer zones, addr TSIG|NOKEY|BLOCKED
           address range 192.0.2.0/24, 1.2.3.4&255.255.0.0, 3.0.2.20-3.0.2.40
@@ -565,10 +556,7 @@ in
 
     interfaces = mkOption {
       type = types.listOf types.str;
-      default = [
-        "127.0.0.0"
-        "::1"
-      ];
+      default = [ "127.0.0.0" "::1" ];
       description = ''
         What addresses the server should listen to.
       '';
@@ -880,10 +868,7 @@ in
 
       interfaces = mkOption {
         type = types.listOf types.str;
-        default = [
-          "127.0.0.1"
-          "::1"
-        ];
+        default = [ "127.0.0.1" "::1" ];
         description = ''
           Which interfaces NSD should bind to for remote control.
         '';

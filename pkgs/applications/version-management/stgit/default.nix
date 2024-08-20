@@ -78,11 +78,7 @@ rustPlatform.buildRustPackage rec {
   checkTarget = "test";
 
   dontCargoInstall = true;
-  installTargets = [
-    "install"
-    "install-man"
-    "install-html"
-  ];
+  installTargets = [ "install" "install-man" "install-html" ];
 
   postInstall = ''
     wrapProgram $out/bin/stg --prefix PATH : ${lib.makeBinPath [ git ]}

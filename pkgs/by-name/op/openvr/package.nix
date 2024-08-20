@@ -58,10 +58,7 @@ stdenv.mkDerivation (finalAttrs: {
       Foundation
     ];
 
-  cmakeFlags = [
-    "-DUSE_SYSTEM_JSONCPP=ON"
-    "-DBUILD_SHARED=1"
-  ];
+  cmakeFlags = [ "-DUSE_SYSTEM_JSONCPP=ON" "-DBUILD_SHARED=1" ];
 
   passthru.updateScript = nix-update-script { };
 

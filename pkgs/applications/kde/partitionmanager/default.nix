@@ -68,19 +68,9 @@ in
 mkDerivation {
   pname = "partitionmanager";
 
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools wrapGAppsHook3 ];
 
-  propagatedBuildInputs = [
-    kconfig
-    kcrash
-    kinit
-    kpmcore
-    polkit-qt
-  ];
+  propagatedBuildInputs = [ kconfig kcrash kinit kpmcore polkit-qt ];
 
   dontWrapGApps = true;
   preFixup = ''
@@ -103,18 +93,9 @@ mkDerivation {
 
       To install on NixOS, use the option `programs.partition-manager.enable = true`.
     '';
-    license = with licenses; [
-      cc-by-40
-      cc0
-      gpl3Plus
-      lgpl3Plus
-      mit
-    ];
+    license = with licenses; [ cc-by-40 cc0 gpl3Plus lgpl3Plus mit ];
     homepage = "https://www.kde.org/applications/system/kdepartitionmanager/";
-    maintainers = with maintainers; [
-      peterhoeg
-      oxalica
-    ];
+    maintainers = with maintainers; [ peterhoeg oxalica ];
     mainProgram = "partitionmanager";
   };
 }

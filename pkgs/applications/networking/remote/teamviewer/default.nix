@@ -26,10 +26,7 @@
 mkDerivation rec {
   pname = "teamviewer";
   # teamviewer itself has not development files but the dev output removes propagated other dev outputs from runtime
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
   version = "15.54.3";
 
   src =
@@ -53,16 +50,8 @@ mkDerivation rec {
     tar xf data.tar.*
   '';
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    makeWrapper
-    wrapQtAppsHook
-  ];
-  buildInputs = [
-    minizip
-    icu63
-    nss
-  ];
+  nativeBuildInputs = [ autoPatchelfHook makeWrapper wrapQtAppsHook ];
+  buildInputs = [ minizip icu63 nss ];
 
   installPhase = ''
     mkdir -p $out/share/teamviewer $out/bin $out/share/applications
@@ -119,24 +108,9 @@ mkDerivation rec {
   '';
 
   makeWrapperArgs = [
-    "--prefix PATH : ${
-      lib.makeBinPath [
-        getconf
-        coreutils
-      ]
-    }"
+    "--prefix PATH : ${lib.makeBinPath [ getconf coreutils ]}"
     "--prefix LD_LIBRARY_PATH : ${
-      lib.makeLibraryPath [
-        libXrandr
-        libX11
-        libXext
-        libXdamage
-        libXtst
-        libSM
-        libXfixes
-        dbus
-        icu63
-      ]
+      lib.makeLibraryPath [ libXrandr libX11 libXext libXdamage libXtst libSM libXfixes dbus icu63 ]
     }"
   ];
 
@@ -158,10 +132,6 @@ mkDerivation rec {
     license = licenses.unfree;
     description = "Desktop sharing application, providing remote support and online meetings";
     platforms = [ "x86_64-linux" ];
-    maintainers = with maintainers; [
-      jagajaga
-      jraygauthier
-      gador
-    ];
+    maintainers = with maintainers; [ jagajaga jraygauthier gador ];
   };
 }

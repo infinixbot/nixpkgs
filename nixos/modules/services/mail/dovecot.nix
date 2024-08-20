@@ -237,27 +237,13 @@ let
           description = "The name of the mailbox.";
         };
         auto = mkOption {
-          type = types.enum [
-            "no"
-            "create"
-            "subscribe"
-          ];
+          type = types.enum [ "no" "create" "subscribe" ];
           default = "no";
           example = "subscribe";
           description = "Whether to automatically create or create and subscribe to the mailbox or not.";
         };
         specialUse = mkOption {
-          type = types.nullOr (
-            types.enum [
-              "All"
-              "Archive"
-              "Drafts"
-              "Flagged"
-              "Junk"
-              "Sent"
-              "Trash"
-            ]
-          );
+          type = types.nullOr (types.enum [ "All" "Archive" "Drafts" "Flagged" "Junk" "Sent" "Trash" ]);
           default = null;
           example = "Junk";
           description = "Null if no special use flag is set. Other than that every use flag mentioned in the RFC is valid.";
@@ -276,24 +262,13 @@ let
 in
 {
   imports = [
-    (mkRemovedOptionModule [
+    (mkRemovedOptionModule [ "services" "dovecot2" "package" ] "")
+    (mkRenamedOptionModule [ "services" "dovecot2" "sieveScripts" ] [
       "services"
       "dovecot2"
-      "package"
-    ] "")
-    (mkRenamedOptionModule
-      [
-        "services"
-        "dovecot2"
-        "sieveScripts"
-      ]
-      [
-        "services"
-        "dovecot2"
-        "sieve"
-        "scripts"
-      ]
-    )
+      "sieve"
+      "scripts"
+    ])
   ];
 
   options.services.dovecot2 = {
@@ -498,12 +473,7 @@ in
 
     pluginSettings = mkOption {
       # types.str does not coerce from packages, like `sievePipeBinScriptDirectory`.
-      type = types.attrsOf (
-        types.oneOf [
-          types.str
-          types.package
-        ]
-      );
+      type = types.attrsOf (types.oneOf [ types.str types.package ]);
       default = { };
       example = literalExpression ''
         {
@@ -558,17 +528,8 @@ in
 
                   This has no effect on the user script, which is always executed no matter the cause.
                 '';
-                example = [
-                  "COPY"
-                  "APPEND"
-                ];
-                type = types.listOf (
-                  types.enum [
-                    "APPEND"
-                    "COPY"
-                    "FLAG"
-                  ]
-                );
+                example = [ "COPY" "APPEND" ];
+                type = types.listOf (types.enum [ "APPEND" "COPY" "FLAG" ]);
               };
 
               before = mkOption {
@@ -609,11 +570,7 @@ in
       extensions = mkOption {
         default = [ ];
         description = "Sieve extensions for use in user scripts";
-        example = [
-          "notify"
-          "imapflags"
-          "vnd.dovecot.filter"
-        ];
+        example = [ "notify" "imapflags" "vnd.dovecot.filter" ];
         type = types.listOf types.str;
       };
 
@@ -720,10 +677,7 @@ in
 
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
-      restartTriggers = [
-        cfg.configFile
-        modulesDir
-      ];
+      restartTriggers = [ cfg.configFile modulesDir ];
 
       startLimitIntervalSec = 60; # 1 min
       serviceConfig = {

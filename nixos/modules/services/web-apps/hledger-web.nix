@@ -33,12 +33,7 @@ in
     };
 
     allow = mkOption {
-      type = types.enum [
-        "view"
-        "add"
-        "edit"
-        "sandstorm"
-      ];
+      type = types.enum [ "view" "add" "edit" "sandstorm" ];
       default = "view";
       description = ''
         User's access level for changing data.
@@ -148,8 +143,5 @@ in
 
   };
 
-  meta.maintainers = with lib.maintainers; [
-    marijanp
-    erictapen
-  ];
+  meta.maintainers = with lib.maintainers; [ marijanp erictapen ];
 }

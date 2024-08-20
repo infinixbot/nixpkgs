@@ -146,10 +146,7 @@ let
         IOSchedulingClass = "idle";
         ProtectSystem = "strict";
         ReadWritePaths =
-          [
-            "${userHome}/.config/borg"
-            "${userHome}/.cache/borg"
-          ]
+          [ "${userHome}/.config/borg" "${userHome}/.cache/borg" ]
           ++ cfg.readWritePaths
           # Borg needs write access to repo if it is not remote
           ++ optional (isLocalPath cfg.repo) cfg.repo;
@@ -284,11 +281,7 @@ let
   };
 
   mkSourceAssertions = name: cfg: {
-    assertion =
-      count isNull [
-        cfg.dumpCommand
-        cfg.paths
-      ] == 1;
+    assertion = count isNull [ cfg.dumpCommand cfg.paths ] == 1;
     message = ''
       Exactly one of borgbackup.jobs.${name}.paths or borgbackup.jobs.${name}.dumpCommand
       must be set.

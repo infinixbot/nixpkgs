@@ -23,11 +23,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-4hi1U4jl6QA7H8AKHlU+Hqz5iKGYHRXHDsrcqY7imkU=";
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    makeWrapper
-  ];
+  nativeBuildInputs = [ cmake pkg-config makeWrapper ];
 
   buildInputs = lib.optionals stdenv.isLinux (
     with xorg;
@@ -56,10 +52,7 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "rx";
     homepage = "https://rx.cloudhead.io/";
     license = licenses.gpl3;
-    maintainers = with maintainers; [
-      minijackson
-      Br1ght0ne
-    ];
+    maintainers = with maintainers; [ minijackson Br1ght0ne ];
     platforms = [ "x86_64-linux" ];
   };
 }

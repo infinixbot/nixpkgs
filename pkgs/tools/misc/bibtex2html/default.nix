@@ -17,10 +17,7 @@ stdenv.mkDerivation {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    ocaml
-    perl
-  ];
+  nativeBuildInputs = [ ocaml perl ];
 
   meta = with lib; {
     description = "Collection of tools for translating from BibTeX to HTML";

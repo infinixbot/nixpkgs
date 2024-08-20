@@ -22,10 +22,7 @@ runCommand "${elasticmq-server.name}-tests"
       '';
     in
     {
-      buildInputs = with python3Packages; [
-        python
-        boto3
-      ];
+      buildInputs = with python3Packages; [ python boto3 ];
       emqConfig = writeText "emq-test.conf" ''
         generate-node-address = true
 

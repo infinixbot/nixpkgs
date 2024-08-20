@@ -23,10 +23,7 @@ let
 
 in
 {
-  meta.maintainers = with maintainers; [
-    jbedo
-    cfhammill
-  ];
+  meta.maintainers = with maintainers; [ jbedo cfhammill ];
 
   options.services.rstudio-server = {
     enable = mkEnableOption "RStudio server";
@@ -75,10 +72,7 @@ in
 
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
-      restartTriggers = [
-        rserver-conf
-        rsession-conf
-      ];
+      restartTriggers = [ rserver-conf rsession-conf ];
 
       serviceConfig = {
         Restart = "on-failure";

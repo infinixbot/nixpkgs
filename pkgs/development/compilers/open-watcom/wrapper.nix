@@ -124,39 +124,31 @@ let
               ${lib.optionalString (!stdenv.hostPlatform.isDarwin && !stdenv.hostPlatform.isAarch) "./test_cpp"}
               touch $out
             '';
-            cross =
-              runCommand "${name}-test-cross"
-                {
-                  nativeBuildInputs = [
-                    wrapped
-                    file
-                  ];
-                }
-                ''
-                  cat <<EOF >test.c
-                  #include <stdio.h>
-                  int main() {
-                    printf ("Testing OpenWatcom cross-compilation.\n");
-                    return 0;
-                  }
-                  EOF
-                  cat test.c
+            cross = runCommand "${name}-test-cross" { nativeBuildInputs = [ wrapped file ]; } ''
+              cat <<EOF >test.c
+              #include <stdio.h>
+              int main() {
+                printf ("Testing OpenWatcom cross-compilation.\n");
+                return 0;
+              }
+              EOF
+              cat test.c
 
-                  echo "Test compiling"
-                  wcl386 -bcl=linux -fe=linux test.c
-                  wcl386 -bcl=nt -fe=nt test.c
-                  wcl386 -bcl=dos4g -fe=dos4g test.c
-                  wcl -bcl=windows -fe=windows test.c
-                  wcl -bcl=dos -fe=dos test.c
+              echo "Test compiling"
+              wcl386 -bcl=linux -fe=linux test.c
+              wcl386 -bcl=nt -fe=nt test.c
+              wcl386 -bcl=dos4g -fe=dos4g test.c
+              wcl -bcl=windows -fe=windows test.c
+              wcl -bcl=dos -fe=dos test.c
 
-                  echo "Test file format"
-                  file ./linux | grep "32-bit" | grep "Linux"
-                  file ./nt.exe | grep "PE32" | grep "Windows"
-                  file ./dos4g.exe | grep "MS-DOS" | grep "LE executable"
-                  file ./windows.exe | grep "MS-DOS" | grep "Windows 3.x"
-                  file ./dos.exe | grep "MS-DOS" | grep -v "LE" | grep -v "Windows 3.x"
-                  touch $out
-                '';
+              echo "Test file format"
+              file ./linux | grep "32-bit" | grep "Linux"
+              file ./nt.exe | grep "PE32" | grep "Windows"
+              file ./dos4g.exe | grep "MS-DOS" | grep "LE executable"
+              file ./windows.exe | grep "MS-DOS" | grep "Windows 3.x"
+              file ./dos.exe | grep "MS-DOS" | grep -v "LE" | grep -v "Windows 3.x"
+              touch $out
+            '';
           };
       };
 

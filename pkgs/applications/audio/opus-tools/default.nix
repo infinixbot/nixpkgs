@@ -20,13 +20,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libogg
-    libao
-    flac
-    opusfile
-    libopusenc
-  ];
+  buildInputs = [ libogg libao flac opusfile libopusenc ];
 
   meta = {
     description = "Tools to work with opus encoded audio streams";

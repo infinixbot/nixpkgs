@@ -76,10 +76,7 @@ let
   #
   # The lifespans of Citrix products can be found here:
   # https://www.citrix.com/support/product-lifecycle/workspace-app.html
-  unsupportedVersions = [
-    "23.02.0"
-    "23.07.0"
-  ];
+  unsupportedVersions = [ "23.02.0" "23.07.0" ];
 in
 {
   inherit supportedVersions unsupportedVersions;

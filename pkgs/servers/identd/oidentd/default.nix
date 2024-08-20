@@ -9,10 +9,7 @@
 stdenv.mkDerivation rec {
   pname = "oidentd";
   version = "3.1.0";
-  nativeBuildInputs = [
-    bison
-    flex
-  ];
+  nativeBuildInputs = [ bison flex ];
 
   src = fetchurl {
     url = "https://files.janikrabe.com/pub/oidentd/releases/${version}/${pname}-${version}.tar.gz";

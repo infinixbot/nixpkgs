@@ -94,10 +94,7 @@ rustPlatform.buildRustPackage rec {
   # Not sure what pathological case it hits when compiling tests with LTO,
   # but disabling it takes the total `cargo check` time from 40 minutes to
   # around 5 on a 16-core machine.
-  cargoTestFlags = [
-    "--config"
-    ''profile.release.lto="off"''
-  ];
+  cargoTestFlags = [ "--config" ''profile.release.lto="off"'' ];
 
   preFixup = ''
     installShellCompletion \
@@ -125,10 +122,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/kanidm/kanidm";
     license = licenses.mpl20;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      adamcstephens
-      erictapen
-      Flakebi
-    ];
+    maintainers = with maintainers; [ adamcstephens erictapen Flakebi ];
   };
 }

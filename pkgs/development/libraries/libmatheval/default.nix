@@ -12,10 +12,7 @@ stdenv.mkDerivation rec {
   version = "1.1.11";
   pname = "libmatheval";
 
-  nativeBuildInputs = [
-    pkg-config
-    flex
-  ];
+  nativeBuildInputs = [ pkg-config flex ];
   buildInputs = [ guile ];
 
   src = fetchurl {

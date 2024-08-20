@@ -115,10 +115,7 @@ in
         RuntimeDirectory = "unit";
         RuntimeDirectoryMode = "0750";
         # Access write directories
-        ReadWritePaths = [
-          cfg.stateDir
-          cfg.logDir
-        ];
+        ReadWritePaths = [ cfg.stateDir cfg.logDir ];
         # Security
         NoNewPrivileges = true;
         # Sandboxing
@@ -133,11 +130,7 @@ in
         ProtectKernelModules = true;
         ProtectKernelLogs = true;
         ProtectControlGroups = true;
-        RestrictAddressFamilies = [
-          "AF_UNIX"
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
         LockPersonality = true;
         MemoryDenyWriteExecute = true;
         RestrictRealtime = true;

@@ -31,14 +31,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [
-    gnulib
-    perl
-  ];
-  nativeBuildInputs = [
-    autoconf
-    automake
-  ];
+  buildInputs = [ gnulib perl ];
+  nativeBuildInputs = [ autoconf automake ];
 
   preConfigure = ''
     substituteInPlace configure.ac --replace 'AC_PREREQ([2.63])' 'AC_PREREQ(2.64)'

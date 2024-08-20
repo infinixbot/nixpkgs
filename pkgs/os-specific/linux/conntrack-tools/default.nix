@@ -38,11 +38,7 @@ stdenv.mkDerivation rec {
     ++ lib.optionals systemdSupport [
       systemd
     ];
-  nativeBuildInputs = [
-    flex
-    bison
-    pkg-config
-  ];
+  nativeBuildInputs = [ flex bison pkg-config ];
 
   configureFlags = [
     (lib.enableFeature systemdSupport "systemd")

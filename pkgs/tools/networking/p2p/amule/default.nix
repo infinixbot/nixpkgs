@@ -46,12 +46,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    cmake
-    gettext
-    makeWrapper
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake gettext makeWrapper pkg-config ];
 
   buildInputs = [
     zlib

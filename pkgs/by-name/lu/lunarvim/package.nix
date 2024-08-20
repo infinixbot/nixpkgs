@@ -140,10 +140,7 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://github.com/LunarVim/LunarVim/blob/${finalAttrs.src.rev}/CHANGELOG.md";
     sourceProvenance = with sourceTypes; [ fromSource ];
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      prominentretail
-      lebensterben
-    ];
+    maintainers = with maintainers; [ prominentretail lebensterben ];
     platforms = platforms.unix;
     mainProgram = "lvim";
   };

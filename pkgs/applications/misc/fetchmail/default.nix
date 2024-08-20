@@ -15,10 +15,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-dRCaHzB7U4FV+gX17ymOgpjLTerpWu0kwWs402/woYY=";
   };
 
-  buildInputs = [
-    openssl
-    python3
-  ];
+  buildInputs = [ openssl python3 ];
 
   configureFlags = [ "--with-ssl=${openssl.dev}" ];
 

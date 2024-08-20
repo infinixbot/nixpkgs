@@ -85,10 +85,7 @@ import ./make-test-python.nix (
               pkgs.writers.writePython3Bin "browser-test"
                 {
                   libraries = [ pkgs.python3Packages.selenium ];
-                  flakeIgnore = [
-                    "E124"
-                    "E501"
-                  ];
+                  flakeIgnore = [ "E124" "E501" ];
                 }
                 ''
                   from selenium.webdriver.common.by import By
@@ -216,10 +213,7 @@ import ./make-test-python.nix (
             browser-test
             (pkgs.writeShellApplication {
               name = "build-mp3";
-              runtimeInputs = with pkgs; [
-                sox
-                lame
-              ];
+              runtimeInputs = with pkgs; [ sox lame ];
               text = ''
                 out=/tmp/podcast.mp3
                 sox -n -r 48000 -t wav - synth ${targetPodcastDuration} sine 440 `

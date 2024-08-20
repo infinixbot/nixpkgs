@@ -33,14 +33,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  buildInputs = [
-    fuse
-    mbedtls_2
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
+  buildInputs = [ fuse mbedtls_2 ];
 
   meta = with lib; {
     description = "Read BitLocker encrypted partitions in Linux";

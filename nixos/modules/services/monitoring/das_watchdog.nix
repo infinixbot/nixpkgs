@@ -27,10 +27,7 @@ in
     environment.systemPackages = [ das_watchdog ];
     systemd.services.das_watchdog = {
       description = "Watchdog to ensure a realtime process won't hang the machine";
-      after = [
-        "multi-user.target"
-        "sound.target"
-      ];
+      after = [ "multi-user.target" "sound.target" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         User = "root";

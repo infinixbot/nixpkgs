@@ -14,11 +14,7 @@ stdenv.mkDerivation rec {
     sha256 = "1fc64g45ykmv73kdndr4zdm4wxhimhrir4rxnygxvwkych5l81w0";
   };
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
 
   buildInputs = [ perl ];
 

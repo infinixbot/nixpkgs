@@ -18,11 +18,7 @@ stdenv.mkDerivation {
     hash = "sha256-v2eS7un2ABnpWBwuKq+0CeLX8ivtlNUjM2jRboKumOE=";
   };
 
-  buildInputs = [
-    libX11
-    libXtst
-    libXi
-  ];
+  buildInputs = [ libX11 libXtst libXi ];
 
   makeFlags = [
     "PREFIX=$(out)"

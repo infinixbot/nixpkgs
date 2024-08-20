@@ -18,10 +18,7 @@ buildGoModule rec {
 
   vendorHash = null;
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   passthru.tests = {
     inherit (nixosTests) certmgr;
@@ -33,9 +30,6 @@ buildGoModule rec {
     mainProgram = "certmgr";
     platforms = platforms.linux;
     license = licenses.bsd2;
-    maintainers = with maintainers; [
-      johanot
-      srhb
-    ];
+    maintainers = with maintainers; [ johanot srhb ];
   };
 }

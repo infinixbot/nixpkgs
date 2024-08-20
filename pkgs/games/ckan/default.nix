@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ makeWrapper ];
   buildInputs = [ mono ];
 
-  libraries = lib.makeLibraryPath [
-    gtk2
-    curl
-  ];
+  libraries = lib.makeLibraryPath [ gtk2 curl ];
 
   buildPhase = "true";
 
@@ -41,10 +38,7 @@ stdenv.mkDerivation rec {
     mainProgram = "ckan";
     homepage = "https://github.com/KSP-CKAN/CKAN";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      Baughn
-      ymarkus
-    ];
+    maintainers = with maintainers; [ Baughn ymarkus ];
     platforms = platforms.all;
   };
 }

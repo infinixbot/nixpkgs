@@ -31,10 +31,7 @@ buildDotnetModule rec {
     graphicsmagick
   ];
 
-  buildInputs = [
-    stdenv.cc.cc.lib
-    fontconfig
-  ];
+  buildInputs = [ stdenv.cc.cc.lib fontconfig ];
 
   runtimeDeps = [
     libglvnd

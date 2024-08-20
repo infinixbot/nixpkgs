@@ -30,11 +30,7 @@ let
     type = "Application";
     exec = "yourkit-java-profiler %f";
     icon = "yourkit-java-profiler";
-    categories = [
-      "Development"
-      "Java"
-      "Profiling"
-    ];
+    categories = [ "Development" "Java" "Profiling" ];
     terminal = false;
     startupWMClass = "YourKit Java Profiler";
   };
@@ -49,10 +45,7 @@ stdenvNoCC.mkDerivation {
     hash = hashes.${arch};
   };
 
-  nativeBuildInputs = [
-    copyDesktopItems
-    imagemagick
-  ];
+  nativeBuildInputs = [ copyDesktopItems imagemagick ];
 
   buildInputs = [ jre ];
 

@@ -47,10 +47,7 @@ stdenv.mkDerivation rec {
     homepage = "https://dthompson.us/projects/guile-sdl2.html";
     description = "Bindings to SDL2 for GNU Guile";
     license = licenses.lgpl3Plus;
-    maintainers = with maintainers; [
-      seppeljordan
-      vyp
-    ];
+    maintainers = with maintainers; [ seppeljordan vyp ];
     platforms = platforms.all;
   };
 }

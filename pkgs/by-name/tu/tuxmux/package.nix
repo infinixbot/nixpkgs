@@ -21,10 +21,7 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "sha256-OBaFBEsFjK7Mf2zqI60q6uSG5JnZiohQg79+Fm++tK4=";
 
   buildInputs = [ libiconv ];
-  nativeBuildInputs = [
-    pkg-config
-    installShellFiles
-  ];
+  nativeBuildInputs = [ pkg-config installShellFiles ];
 
   postInstall = ''
     installShellCompletion $releaseDir/../completions/tux.{bash,fish}

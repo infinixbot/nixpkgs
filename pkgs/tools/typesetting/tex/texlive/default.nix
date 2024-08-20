@@ -413,10 +413,7 @@ let
       publicDomain
       x11
     ];
-    scheme-infraonly = [
-      gpl2Plus
-      lgpl21
-    ];
+    scheme-infraonly = [ gpl2Plus lgpl21 ];
     scheme-medium = [
       artistic1-cl8
       asl20
@@ -449,18 +446,7 @@ let
       publicDomain
       x11
     ];
-    scheme-minimal = [
-      free
-      gpl1Only
-      gpl2Plus
-      knuth
-      lgpl21
-      lppl1
-      lppl13c
-      mit
-      ofl
-      publicDomain
-    ];
+    scheme-minimal = [ free gpl1Only gpl2Plus knuth lgpl21 lppl1 lppl13c mit ofl publicDomain ];
     scheme-small = [
       asl20
       cc-by-40
@@ -563,25 +549,12 @@ let
   );
 
   schemes = lib.listToAttrs (
-    map
-      (s: {
-        name = "texlive" + s;
-        value = lib.addMetaAttrs { license = licenses.${"scheme-" + (lib.toLower s)}; } (buildTeXEnv {
-          requiredTeXPackages = ps: [ ps.${"scheme-" + (lib.toLower s)} ];
-        });
-      })
-      [
-        "Basic"
-        "BookPub"
-        "ConTeXt"
-        "Full"
-        "GUST"
-        "InfraOnly"
-        "Medium"
-        "Minimal"
-        "Small"
-        "TeTeX"
-      ]
+    map (s: {
+      name = "texlive" + s;
+      value = lib.addMetaAttrs { license = licenses.${"scheme-" + (lib.toLower s)}; } (buildTeXEnv {
+        requiredTeXPackages = ps: [ ps.${"scheme-" + (lib.toLower s)} ];
+      });
+    }) [ "Basic" "BookPub" "ConTeXt" "Full" "GUST" "InfraOnly" "Medium" "Minimal" "Small" "TeTeX" ]
   );
 
 in

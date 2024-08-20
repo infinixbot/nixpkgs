@@ -11,10 +11,7 @@ stdenv.mkDerivation {
   version = "1";
 
   nativeBuildInputs = [ makeWrapper ];
-  buildInputs = [
-    perl
-    perlPackages.XMLSimple
-  ];
+  buildInputs = [ perl perlPackages.XMLSimple ];
 
   dontUnpack = true;
   dontBuild = true;

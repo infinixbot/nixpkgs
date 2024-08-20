@@ -16,11 +16,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-MbLDhLn/JY6OcdOz9/mIPAQRp5TZ6IKuQ/FQ/R3wjGc=";
   };
 
-  outputs = [
-    "out"
-    "man"
-    "dev"
-  ];
+  outputs = [ "out" "man" "dev" ];
 
   postPatch = ''
     substituteInPlace Makefile \
@@ -43,10 +39,7 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://git.sr.ht/~sircmpwn/scdoc/refs/${finalAttrs.src.rev}";
     license = lib.licenses.mit;
     mainProgram = "scdoc";
-    maintainers = with lib.maintainers; [
-      primeos
-      AndersonTorres
-    ];
+    maintainers = with lib.maintainers; [ primeos AndersonTorres ];
     platforms = lib.platforms.unix;
   };
 })

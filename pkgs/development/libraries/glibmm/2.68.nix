@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
   pname = "glibmm";
   version = "2.80.0";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";

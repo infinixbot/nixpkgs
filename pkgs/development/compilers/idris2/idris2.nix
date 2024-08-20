@@ -36,15 +36,8 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [
-    makeWrapper
-    clang
-    platformChez
-  ] ++ lib.optionals stdenv.isDarwin [ zsh ];
-  buildInputs = [
-    platformChez
-    gmp
-  ];
+  nativeBuildInputs = [ makeWrapper clang platformChez ] ++ lib.optionals stdenv.isDarwin [ zsh ];
+  buildInputs = [ platformChez gmp ];
 
   prePatch = ''
     patchShebangs --build tests
@@ -53,16 +46,10 @@ stdenv.mkDerivation rec {
   makeFlags = [ "PREFIX=$(out)" ] ++ lib.optional stdenv.isDarwin "OS=";
 
   # The name of the main executable of pkgs.chez is `scheme`
-  buildFlags = [
-    "bootstrap"
-    "SCHEME=scheme"
-  ];
+  buildFlags = [ "bootstrap" "SCHEME=scheme" ];
 
   checkTarget = "test";
-  nativeCheckInputs = [
-    gambit
-    nodejs
-  ]; # racket ];
+  nativeCheckInputs = [ gambit nodejs ]; # racket ];
   checkFlags = [ "INTERACTIVE=" ];
 
   # TODO: Move this into its own derivation, such that this can be changed
@@ -108,11 +95,7 @@ stdenv.mkDerivation rec {
     mainProgram = "idris2";
     homepage = "https://github.com/idris-lang/Idris2";
     license = lib.licenses.bsd3;
-    maintainers = with lib.maintainers; [
-      fabianhjr
-      wchresta
-      mattpolzin
-    ];
+    maintainers = with lib.maintainers; [ fabianhjr wchresta mattpolzin ];
     inherit (chez.meta) platforms;
   };
 }

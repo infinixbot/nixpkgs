@@ -74,10 +74,7 @@ stdenv.mkDerivation rec {
     lvm2
   ];
 
-  outputs = [
-    "out"
-    "initrd"
-  ];
+  outputs = [ "out" "initrd" ];
 
   env.EXECUTABLES_PATHS = lib.makeBinPath (
     [
@@ -95,10 +92,7 @@ stdenv.mkDerivation rec {
     ]
   );
 
-  makeFlags = [
-    "PREFIX=${placeholder "out"}"
-    "INSTALL=install"
-  ];
+  makeFlags = [ "PREFIX=${placeholder "out"}" "INSTALL=install" ];
   buildFlags = [ "build-all" ];
 
   doCheck = true;

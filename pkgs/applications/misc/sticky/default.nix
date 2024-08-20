@@ -73,9 +73,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/linuxmint/sticky";
     license = licenses.gpl2Only;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      linsui
-      bobby285271
-    ];
+    maintainers = with maintainers; [ linsui bobby285271 ];
   };
 }

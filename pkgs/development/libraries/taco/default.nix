@@ -9,12 +9,7 @@
 }:
 
 let
-  pyEnv = python.withPackages (
-    p: with p; [
-      numpy
-      scipy
-    ]
-  );
+  pyEnv = python.withPackages (p: with p; [ numpy scipy ]);
 
 in
 stdenv.mkDerivation rec {

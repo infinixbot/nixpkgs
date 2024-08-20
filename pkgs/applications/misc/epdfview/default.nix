@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    gtk2
-    poppler
-  ];
+  buildInputs = [ gtk2 poppler ];
 
   hardeningDisable = [ "format" ];
 

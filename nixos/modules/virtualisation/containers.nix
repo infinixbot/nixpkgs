@@ -63,10 +63,7 @@ in
     registries = {
       search = mkOption {
         type = types.listOf types.str;
-        default = [
-          "docker.io"
-          "quay.io"
-        ];
+        default = [ "docker.io" "quay.io" ];
         description = ''
           List of repositories to search.
         '';

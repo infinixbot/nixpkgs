@@ -69,20 +69,9 @@ stdenv.mkDerivation rec {
         configure
     '';
 
-  nativeBuildInputs = [
-    pkg-config
-    gettext
-    which
-  ];
+  nativeBuildInputs = [ pkg-config gettext which ];
 
-  buildInputs = [
-    gtk3
-    qt5.qtbase
-    gnutls
-    openssl
-    libgcrypt
-    libgpg-error
-  ];
+  buildInputs = [ gtk3 qt5.qtbase gnutls openssl libgcrypt libgpg-error ];
 
   dontWrapQtApps = true;
 

@@ -45,41 +45,30 @@ stdenv.mkDerivation rec {
     + lib.optionalString (!dbusSupport) ''
       substituteInPlace cmake/modules.cmake --replace 'list(APPEND MODULES ctrl_dbus)' ""
     '';
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  buildInputs =
-    [
-      SDL2
-      alsa-lib
-      cairo
-      celt
-      ffmpeg
-      gsm
-      gtk3
-      libre
-      librem
-      libsndfile
-      libuuid
-      libv4l
-      libvpx
-      mpg123
-      openssl
-      pipewire
-      portaudio
-      spandsp3
-      speex
-      srtp
-      zlib
-    ]
-    ++ (with gst_all_1; [
-      gstreamer
-      gst-libav
-      gst-plugins-base
-      gst-plugins-bad
-      gst-plugins-good
-    ]);
+  nativeBuildInputs = [ cmake pkg-config ];
+  buildInputs = [
+    SDL2
+    alsa-lib
+    cairo
+    celt
+    ffmpeg
+    gsm
+    gtk3
+    libre
+    librem
+    libsndfile
+    libuuid
+    libv4l
+    libvpx
+    mpg123
+    openssl
+    pipewire
+    portaudio
+    spandsp3
+    speex
+    srtp
+    zlib
+  ] ++ (with gst_all_1; [ gstreamer gst-libav gst-plugins-base gst-plugins-bad gst-plugins-good ]);
 
   cmakeFlags = [
     "-DCMAKE_SKIP_BUILD_RPATH=ON"
@@ -174,10 +163,7 @@ stdenv.mkDerivation rec {
   meta = {
     description = "Modular SIP User-Agent with audio and video support";
     homepage = "https://github.com/baresip/baresip";
-    maintainers = with lib.maintainers; [
-      raskin
-      ehmry
-    ];
+    maintainers = with lib.maintainers; [ raskin ehmry ];
     mainProgram = "baresip";
     license = lib.licenses.bsd3;
     platforms = lib.platforms.unix;

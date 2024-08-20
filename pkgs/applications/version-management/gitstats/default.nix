@@ -33,10 +33,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    installShellFiles
-    perl
-  ];
+  nativeBuildInputs = [ installShellFiles perl ];
 
   buildInputs = [ python3 ];
 

@@ -107,10 +107,7 @@ stdenvNoCC.mkDerivation (
       description = "Protocol Buffers with small code size";
       homepage = "https://jpa.kapsi.fi/nanopb/";
       license = licenses.zlib;
-      maintainers = with maintainers; [
-        kalbasit
-        liarokapisv
-      ];
+      maintainers = with maintainers; [ kalbasit liarokapisv ];
 
       longDescription = ''
         Nanopb is a small code-size Protocol Buffers implementation in ansi C. It

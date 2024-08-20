@@ -37,31 +37,11 @@ mkDerivation rec {
       src = appimage;
     };
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    desktop-file-utils
-    imagemagick
-  ];
+  nativeBuildInputs = [ autoPatchelfHook desktop-file-utils imagemagick ];
   buildInputs =
-    [
-      libsodium
-      libopus
-      libGL
-      alsa-lib
-    ]
-    ++ [
-      qtbase
-      qtsvg
-      qtmultimedia
-      qtwebsockets
-      qtimageformats
-    ]
-    ++ (with xorg; [
-      libX11
-      libXScrnSaver
-      libXcursor
-      xkeyboardconfig
-    ]);
+    [ libsodium libopus libGL alsa-lib ]
+    ++ [ qtbase qtsvg qtmultimedia qtwebsockets qtimageformats ]
+    ++ (with xorg; [ libX11 libXScrnSaver libXcursor xkeyboardconfig ]);
 
   fontsConf = makeFontsConf {
     fontDirectories = [ twemoji-color-font ];

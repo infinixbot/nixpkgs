@@ -95,10 +95,7 @@ rustPlatform.buildRustPackage rec {
       icon = "bite";
       desktopName = "BiTE";
       comment = meta.description;
-      categories = [
-        "Development"
-        "Utility"
-      ];
+      categories = [ "Development" "Utility" ];
     })
   ];
 

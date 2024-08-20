@@ -21,15 +21,8 @@ stdenv.mkDerivation rec {
   };
 
   hardeningDisable = [ "format" ];
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  buildInputs = [
-    glib
-    gettext
-    readline
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
+  buildInputs = [ glib gettext readline ];
 
   preInstall = ''
     mkdir locale

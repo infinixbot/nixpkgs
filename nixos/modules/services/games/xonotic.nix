@@ -70,24 +70,14 @@ in
         freeformType =
           with lib.types;
           let
-            scalars = oneOf [
-              singleLineStr
-              int
-              float
-            ];
+            scalars = oneOf [ singleLineStr int float ];
           in
-          attrsOf (oneOf [
-            scalars
-            (nonEmptyListOf scalars)
-          ]);
+          attrsOf (oneOf [ scalars (nonEmptyListOf scalars) ]);
 
         options.sv_public = lib.mkOption {
           type = lib.types.int;
           default = 0;
-          example = [
-            (-1)
-            1
-          ];
+          example = [ (-1) 1 ];
           description = ''
             Controls whether the server will be publicly listed.
           '';

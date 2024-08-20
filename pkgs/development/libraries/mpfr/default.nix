@@ -24,12 +24,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-J3gHNTpnJpeJlpRa8T5Sgp46vXqaW3+yeTiU4Y8fy7I=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-    "info"
-  ];
+  outputs = [ "out" "dev" "doc" "info" ];
 
   strictDeps = true;
   # necessary to build on FreeBSD native pending inclusion of

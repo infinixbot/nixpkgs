@@ -804,12 +804,9 @@ in
     }:
     stdenvNoCC.mkDerivation {
       inherit name src;
-      depsBuildBuild =
-        [ buildPackages.stdenv.cc ]
-        ++ lib.optionals (lib.versionAtLeast version "4.16") [
-          buildPackages.bison
-          buildPackages.flex
-        ];
+      depsBuildBuild = [
+        buildPackages.stdenv.cc
+      ] ++ lib.optionals (lib.versionAtLeast version "4.16") [ buildPackages.bison buildPackages.flex ];
       patches = map (p: p.patch) kernelPatches; # Patches may include new configs.
       postPatch = ''
         patchShebangs scripts/

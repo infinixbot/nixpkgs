@@ -80,10 +80,7 @@ assert lib.assertMsg (lib.unique moduleNames == moduleNames)
 stdenv.mkDerivation {
   inherit pname version nginxVersion;
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   src =
     if src != null then
@@ -100,14 +97,7 @@ stdenv.mkDerivation {
   ] ++ nativeBuildInputs;
 
   buildInputs =
-    [
-      openssl
-      zlib
-      pcre
-      libxml2
-      libxslt
-      perl
-    ]
+    [ openssl zlib pcre libxml2 libxslt perl ]
     ++ buildInputs
     ++ mapModules "inputs"
     ++ lib.optional withGeoIP geoip
@@ -296,11 +286,6 @@ stdenv.mkDerivation {
         platforms = platforms.all;
         maintainers =
           with maintainers;
-          [
-            fpletz
-            raitobezarius
-          ]
-          ++ teams.helsinki-systems.members
-          ++ teams.stridtech.members;
+          [ fpletz raitobezarius ] ++ teams.helsinki-systems.members ++ teams.stridtech.members;
       };
 }

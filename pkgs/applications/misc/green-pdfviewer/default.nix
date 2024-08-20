@@ -21,12 +21,7 @@ stdenv.mkDerivation {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    poppler
-    gdk-pixbuf
-    SDL
-    gtk2
-  ];
+  buildInputs = [ poppler gdk-pixbuf SDL gtk2 ];
 
   patches = [
     ./gdk-libs.patch

@@ -67,20 +67,14 @@ let
     exec = pname;
     comment = "Audio Grabber for CDs";
     desktopName = "Exact Audio Copy";
-    categories = [
-      "Audio"
-      "AudioVideo"
-    ];
+    categories = [ "Audio" "AudioVideo" ];
     icon = "${patched_eac}/eac.ico.128.png";
   };
 in
 symlinkJoin {
   name = "${pname}-${version}";
 
-  paths = [
-    wrapper
-    desktopItem
-  ];
+  paths = [ wrapper desktopItem ];
 
   meta = with lib; {
     description = "Precise CD audio grabber for creating perfect quality rips using CD and DVD drives";

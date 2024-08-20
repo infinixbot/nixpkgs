@@ -16,14 +16,8 @@
 
 mkDerivation {
   pname = "kservice";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
-  propagatedNativeBuildInputs = [
-    bison
-    flex
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
+  propagatedNativeBuildInputs = [ bison flex ];
   buildInputs = [
     kcrash
     kdbusaddons
@@ -31,10 +25,7 @@ mkDerivation {
     kwindowsystem
     qtbase
   ];
-  propagatedBuildInputs = [
-    kconfig
-    kcoreaddons
-  ];
+  propagatedBuildInputs = [ kconfig kcoreaddons ];
   propagatedUserEnvPkgs = [ shared-mime-info ]; # for kbuildsycoca5
   patches = [
     ./qdiriterator-follow-symlinks.patch

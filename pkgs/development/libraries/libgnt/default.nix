@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
   pname = "libgnt";
   version = "2.14.3";
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optional buildDocs "devdoc";
+  outputs = [ "out" "dev" ] ++ lib.optional buildDocs "devdoc";
 
   src = fetchurl {
     url = "mirror://sourceforge/pidgin/${pname}-${version}.tar.xz";
@@ -28,25 +25,13 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs =
-    [
-      glib
-      meson
-      ninja
-      pkg-config
-    ]
-    ++ lib.optionals buildDocs [
-      gtk-doc
-      docbook-xsl-nons
-    ]
+    [ glib meson ninja pkg-config ]
+    ++ lib.optionals buildDocs [ gtk-doc docbook-xsl-nons ]
     ++ lib.optionals (buildDocs && !stdenv.buildPlatform.canExecute stdenv.hostPlatform) [
       mesonEmulatorHook
     ];
 
-  buildInputs = [
-    glib
-    ncurses
-    libxml2
-  ];
+  buildInputs = [ glib ncurses libxml2 ];
 
   postPatch = ''
     substituteInPlace meson.build --replace \

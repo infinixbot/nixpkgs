@@ -48,15 +48,7 @@ stdenv.mkDerivation (finalAttrs: {
     linuxHeaders
     xz
   ] ++ kernel.moduleBuildDependencies;
-  buildInputs = [
-    dbus
-    libxslt
-    libXext
-    libXcursor
-    pam
-    libXmu
-    libXrandr
-  ];
+  buildInputs = [ dbus libxslt libXext libXcursor pam libXmu libXrandr ];
 
   KERN_DIR = "${kernel.dev}/lib/modules/${kernel.modDirVersion}/build";
   KERN_INCL = "${kernel.dev}/lib/modules/${kernel.modDirVersion}/source/include";

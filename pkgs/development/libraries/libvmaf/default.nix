@@ -24,19 +24,11 @@ stdenv.mkDerivation (finalAttrs: {
 
   sourceRoot = "${finalAttrs.src.name}/libvmaf";
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    nasm
-    xxd
-  ];
+  nativeBuildInputs = [ meson ninja nasm xxd ];
 
   mesonFlags = [ "-Denable_avx512=true" ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
   doCheck = false;
 
   passthru.tests = {

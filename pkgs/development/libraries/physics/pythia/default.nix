@@ -23,13 +23,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ rsync ] ++ lib.optionals stdenv.isDarwin [ fixDarwinDylibNames ];
-  buildInputs = [
-    boost
-    fastjet
-    hepmc
-    zlib
-    lhapdf
-  ];
+  buildInputs = [ boost fastjet hepmc zlib lhapdf ];
 
   configureFlags =
     [

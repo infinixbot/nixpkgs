@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
   pname = "pangomm";
   version = "2.52.0";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";
@@ -65,12 +62,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://www.pango.org/";
     license = licenses.lgpl21Plus;
-    maintainers =
-      teams.gnome.members
-      ++ (with maintainers; [
-        lovek323
-        raskin
-      ]);
+    maintainers = teams.gnome.members ++ (with maintainers; [ lovek323 raskin ]);
     platforms = platforms.unix;
   };
 }

@@ -236,20 +236,8 @@ in
       after = [ "network.target" ];
       unitConfig.RequiresMountsFor = stateDir;
       # Make sure package upgrades trigger a service restart
-      restartTriggers = [
-        cfg.unifiVideoPackage
-        cfg.mongodbPackage
-      ];
-      path = with pkgs; [
-        gawk
-        coreutils
-        busybox
-        which
-        jre8
-        lsb-release
-        libcap
-        util-linux
-      ];
+      restartTriggers = [ cfg.unifiVideoPackage cfg.mongodbPackage ];
+      path = with pkgs; [ gawk coreutils busybox which jre8 lsb-release libcap util-linux ];
       serviceConfig = {
         Type = "simple";
         ExecStart = "${(removeSuffix "\n" cmd)} ${mainClass} start";
@@ -263,18 +251,11 @@ in
   };
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "unifi-video"
-        "openPorts"
-      ]
-      [
-        "services"
-        "unifi-video"
-        "openFirewall"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "unifi-video" "openPorts" ] [
+      "services"
+      "unifi-video"
+      "openFirewall"
+    ])
   ];
 
   meta.maintainers = with lib.maintainers; [ rsynnest ];

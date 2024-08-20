@@ -19,61 +19,28 @@ let
   settingsFormat = pkgs.formats.json { };
 in
 {
-  meta.maintainers = with lib.maintainers; [
-    SuperSandro2000
-    h7x4
-  ];
+  meta.maintainers = with lib.maintainers; [ SuperSandro2000 h7x4 ];
 
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "codimd"
-      ]
-      [
-        "services"
-        "hedgedoc"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "hedgedoc"
-        "configuration"
-      ]
-      [
-        "services"
-        "hedgedoc"
-        "settings"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "hedgedoc"
-        "groups"
-      ]
-      [
-        "users"
-        "users"
-        "hedgedoc"
-        "extraGroups"
-      ]
-    )
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "hedgedoc"
-        "workDir"
-      ]
-      ''
-        This option has been removed in favor of systemd managing the state directory.
+    (lib.mkRenamedOptionModule [ "services" "codimd" ] [ "services" "hedgedoc" ])
+    (lib.mkRenamedOptionModule [ "services" "hedgedoc" "configuration" ] [
+      "services"
+      "hedgedoc"
+      "settings"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "hedgedoc" "groups" ] [
+      "users"
+      "users"
+      "hedgedoc"
+      "extraGroups"
+    ])
+    (lib.mkRemovedOptionModule [ "services" "hedgedoc" "workDir" ] ''
+      This option has been removed in favor of systemd managing the state directory.
 
-        If you have set this option without specifying `services.settings.uploadsDir`,
-        please move these files to `/var/lib/hedgedoc/uploads`, or set the option to point
-        at the correct location.
-      ''
-    )
+      If you have set this option without specifying `services.settings.uploadsDir`,
+      please move these files to `/var/lib/hedgedoc/uploads`, or set the option to point
+      at the correct location.
+    '')
   ];
 
   options.services.hedgedoc = {
@@ -154,10 +121,7 @@ in
             defaultText = literalExpression ''
               with config.services.hedgedoc.settings; [ host ] ++ lib.optionals (domain != null) [ domain ]
             '';
-            example = [
-              "localhost"
-              "hedgedoc.org"
-            ];
+            example = [ "localhost" "hedgedoc.org" ];
             description = ''
               List of domains to whitelist.
             '';

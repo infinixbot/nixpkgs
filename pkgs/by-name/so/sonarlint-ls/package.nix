@@ -87,13 +87,7 @@ maven.buildMavenPackage rec {
       in
       lib.getExe (writeShellApplication {
         name = "update-${pname}";
-        runtimeInputs = [
-          curl
-          pcre
-          common-updater-scripts
-          jq
-          gnused
-        ];
+        runtimeInputs = [ curl pcre common-updater-scripts jq gnused ];
         text = ''
           LATEST_TAG=$(curl https://api.github.com/repos/${src.owner}/${src.repo}/tags | \
             jq -r '[.[] | select(.name | test("^[0-9]"))] | sort_by(.name | split(".") |

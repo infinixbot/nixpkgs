@@ -63,11 +63,7 @@ rustPlatform.buildRustPackage rec {
       unlicense # or
       mit
     ];
-    maintainers = with maintainers; [
-      globin
-      ma27
-      zowoq
-    ];
+    maintainers = with maintainers; [ globin ma27 zowoq ];
     mainProgram = "rg";
   };
 }

@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-jkXdt1aQRVgItfFPuyh45uXjUFgJtKng/17Po5i7ang=";
   };
 
-  propagatedBuildInputs = [
-    jq
-    openjdk11
-  ];
+  propagatedBuildInputs = [ jq openjdk11 ];
 
   installPhase = ''
     runHook preInstall

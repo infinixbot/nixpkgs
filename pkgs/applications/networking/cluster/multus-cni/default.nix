@@ -37,10 +37,7 @@ buildGoModule rec {
     homepage = "https://github.com/k8snetworkplumbingwg/multus-cni";
     license = licenses.asl20;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      onixie
-      kashw2
-    ];
+    maintainers = with maintainers; [ onixie kashw2 ];
     mainProgram = "multus";
   };
 }

@@ -101,10 +101,7 @@ buildDotnetModule rec {
           (nativeWrapperToReplaceFormat { depname = "Stb"; })
           (nativeWrapperToReplaceFormat {
             depname = "Vorbis";
-            buildInputs = [
-              libogg
-              libvorbis
-            ];
+            buildInputs = [ libogg libvorbis ];
           })
         ];
       libraryReplaceArgs = lib.strings.concatMapStringsSep " " (

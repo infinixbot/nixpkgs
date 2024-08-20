@@ -57,9 +57,6 @@ stdenv.mkDerivation rec {
     homepage = "https://cmocka.org/";
     license = licenses.asl20;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      kragniz
-      rasendubi
-    ];
+    maintainers = with maintainers; [ kragniz rasendubi ];
   };
 }

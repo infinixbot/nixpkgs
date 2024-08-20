@@ -43,10 +43,7 @@ stdenv.mkDerivation (finalAttrs: {
   nativeBuildInputs = [ cmake ];
   buildInputs =
     lib.optionals batchVersion [ yaml-cpp ]
-    ++ lib.optionals withOpenJpeg [
-      openjpeg
-      openjpeg.dev
-    ];
+    ++ lib.optionals withOpenJpeg [ openjpeg openjpeg.dev ];
 
   cmakeFlags =
     lib.optionals batchVersion [
@@ -73,10 +70,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://www.nitrc.org/projects/dcm2nii";
     changelog = "https://github.com/rordenlab/dcm2niix/releases/tag/v${finalAttrs.version}";
     license = lib.licenses.bsd3;
-    maintainers = with lib.maintainers; [
-      ashgillman
-      rbreslow
-    ];
+    maintainers = with lib.maintainers; [ ashgillman rbreslow ];
     platforms = lib.platforms.all;
   };
 })

@@ -23,14 +23,8 @@ stdenv.mkDerivation {
     patchShebangs .
   '';
 
-  nativeBuildInputs = [
-    cmake
-    perl
-  ];
-  buildInputs = [
-    libubox
-    json_c
-  ];
+  nativeBuildInputs = [ cmake perl ];
+  buildInputs = [ libubox json_c ];
 
   env.NIX_CFLAGS_COMPILE = toString (
     lib.optionals (stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "12") [
@@ -48,10 +42,7 @@ stdenv.mkDerivation {
     homepage = "https://git.openwrt.org/?p=project/uqmi.git;a=summary";
     license = licenses.gpl2Plus;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      fpletz
-      mkg20001
-    ];
+    maintainers = with maintainers; [ fpletz mkg20001 ];
     mainProgram = "uqmi";
   };
 }

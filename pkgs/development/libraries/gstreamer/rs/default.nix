@@ -65,24 +65,14 @@ let
     raptorq = [ ];
     reqwest = [ openssl ] ++ lib.optionals stdenv.isDarwin [ Security ];
     rtp = [ ];
-    webrtc =
-      [
-        gst-plugins-bad
-        openssl
-      ]
-      ++ lib.optionals stdenv.isDarwin [
-        Security
-        SystemConfiguration
-      ];
-    webrtchttp =
-      [
-        gst-plugins-bad
-        openssl
-      ]
-      ++ lib.optionals stdenv.isDarwin [
-        Security
-        SystemConfiguration
-      ];
+    webrtc = [
+      gst-plugins-bad
+      openssl
+    ] ++ lib.optionals stdenv.isDarwin [ Security SystemConfiguration ];
+    webrtchttp = [
+      gst-plugins-bad
+      openssl
+    ] ++ lib.optionals stdenv.isDarwin [ Security SystemConfiguration ];
 
     # text
     textahead = [ ];
@@ -172,10 +162,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "gst-plugins-rs";
   version = "0.12.8";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.freedesktop.org";
@@ -273,11 +260,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
 
   # give meson longer before timing out for tests
-  mesonCheckFlags = [
-    "--verbose"
-    "--timeout-multiplier"
-    "12"
-  ];
+  mesonCheckFlags = [ "--verbose" "--timeout-multiplier" "12" ];
 
   doInstallCheck =
     (lib.elem "webp" selectedPlugins) && !stdenv.hostPlatform.isStatic && stdenv.hostPlatform.isElf;
@@ -290,22 +273,14 @@ stdenv.mkDerivation (finalAttrs: {
   passthru.updateScript = nix-update-script {
     # use numbered releases rather than gstreamer-* releases
     # this matches upstream's recommendation: https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs/-/issues/470#note_2202772
-    extraArgs = [
-      "--version-regex"
-      "([0-9.]+)"
-    ];
+    extraArgs = [ "--version-regex" "([0-9.]+)" ];
   };
 
   meta = with lib; {
     description = "GStreamer plugins written in Rust";
     mainProgram = "gst-webrtc-signalling-server";
     homepage = "https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs";
-    license = with licenses; [
-      mpl20
-      asl20
-      mit
-      lgpl21Plus
-    ];
+    license = with licenses; [ mpl20 asl20 mit lgpl21Plus ];
     platforms = platforms.unix;
     maintainers = [ ];
   };

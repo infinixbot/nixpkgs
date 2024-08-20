@@ -21,10 +21,7 @@ buildGoModule rec {
   vendorHash = "sha256-+AtvnplvPWkUwmxfB7rjYcLTQibQsObFT1QRR0FXAe0=";
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    btrfs-progs
-    lvm2
-  ];
+  buildInputs = [ btrfs-progs lvm2 ];
 
   ldflags = [
     "-s"

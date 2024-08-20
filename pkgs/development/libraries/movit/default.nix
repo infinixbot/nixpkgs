@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-szBztwXwzLasSULPURUVFUB7QLtOmi3QIowcLLH7wRo=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   GTEST_DIR = "${gtest.src}/googletest";
 

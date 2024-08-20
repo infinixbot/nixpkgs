@@ -39,11 +39,7 @@ stdenv.mkDerivation {
   pname = "nanopb-generator-out";
   inherit src version;
 
-  nativeBuildInputs = [
-    cmake
-    protobuf
-    python3
-  ];
+  nativeBuildInputs = [ cmake protobuf python3 ];
 
   cmakeFlags = [
     "-Dnanopb_BUILD_RUNTIME=OFF"

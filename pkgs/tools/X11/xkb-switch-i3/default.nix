@@ -23,17 +23,8 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  buildInputs = [
-    i3
-    jsoncpp
-    libsigcxx
-    libX11
-    libxkbfile
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
+  buildInputs = [ i3 jsoncpp libsigcxx libX11 libxkbfile ];
 
   meta = with lib; {
     description = "Switch your X keyboard layouts from the command line(i3 edition)";

@@ -95,11 +95,7 @@ stdenv.mkDerivation rec {
     "--syslibdir=${placeholder "out"}/lib"
   ];
 
-  outputs = [
-    "out"
-    "bin"
-    "dev"
-  ];
+  outputs = [ "out" "bin" "dev" ];
 
   dontDisableStatic = true;
   dontAddStaticConfigureFlags = true;
@@ -182,9 +178,6 @@ stdenv.mkDerivation rec {
       "riscv64-linux"
       "s390x-linux"
     ];
-    maintainers = with maintainers; [
-      thoughtpolice
-      dtzWill
-    ];
+    maintainers = with maintainers; [ thoughtpolice dtzWill ];
   };
 }

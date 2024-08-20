@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  nativeBuildInputs = [
-    libtool
-    which
-  ];
+  nativeBuildInputs = [ libtool which ];
 
   meta = with lib; {
     description = "Library and command line tool to detect SHA-1 collision";

@@ -15,10 +15,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-Oz+FdMrIGNmJKHl/wOVZCP1b0AJODcURvDUKz4gCqYU=";
   };
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   nativeBuildInputs = [ brotli ];
 

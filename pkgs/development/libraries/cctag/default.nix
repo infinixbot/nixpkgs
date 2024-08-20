@@ -16,11 +16,7 @@ stdenv.mkDerivation rec {
   pname = "cctag";
   version = "1.0.3";
 
-  outputs = [
-    "lib"
-    "dev"
-    "out"
-  ];
+  outputs = [ "lib" "dev" "out" ];
 
   src = fetchFromGitHub {
     owner = "alicevision";

@@ -19,10 +19,7 @@ import ./make-test-python.nix (
         services.jibri.ignoreCert = true;
         services.jitsi-videobridge.openFirewall = true;
 
-        networking.firewall.allowedTCPPorts = [
-          80
-          443
-        ];
+        networking.firewall.allowedTCPPorts = [ 80 443 ];
 
         services.nginx.virtualHosts.machine = {
           enableACME = true;

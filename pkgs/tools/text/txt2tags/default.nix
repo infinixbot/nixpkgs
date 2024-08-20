@@ -34,9 +34,6 @@ python3.pkgs.buildPythonApplication rec {
     mainProgram = "txt2tags";
     homepage = "https://txt2tags.org/";
     license = lib.licenses.gpl2Plus;
-    maintainers = with lib.maintainers; [
-      dotlambda
-      kovirobi
-    ];
+    maintainers = with lib.maintainers; [ dotlambda kovirobi ];
   };
 }

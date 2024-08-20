@@ -67,10 +67,7 @@ in
     initialClusterState = mkOption {
       description = "Etcd initial cluster configuration for bootstrapping.";
       default = "new";
-      type = types.enum [
-        "new"
-        "existing"
-      ];
+      type = types.enum [ "new" "existing" ];
     };
 
     initialClusterToken = mkOption {

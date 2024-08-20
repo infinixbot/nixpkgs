@@ -87,11 +87,7 @@ buildGoModule rec {
 
   doCheck = false;
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X main.version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X main.version=${version}" ];
 
   excludedPackages = "test";
 
@@ -103,9 +99,6 @@ buildGoModule rec {
     description = "Open-source distributed time series database";
     license = licenses.mit;
     homepage = "https://influxdata.com/";
-    maintainers = with maintainers; [
-      offline
-      zimbatm
-    ];
+    maintainers = with maintainers; [ offline zimbatm ];
   };
 }

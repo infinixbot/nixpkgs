@@ -22,11 +22,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-OBDTa1B5JW9PL3zlUuIiE9Q7EDHBMVON+KLbw8VwmDo=";
   };
 
-  nativeBuildInputs = [
-    pandoc
-    pkg-config
-    makeWrapper
-  ];
+  nativeBuildInputs = [ pandoc pkg-config makeWrapper ];
   buildInputs = [
     curl
     openssl

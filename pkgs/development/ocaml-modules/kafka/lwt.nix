@@ -18,10 +18,7 @@ lib.throwIf (lib.versionAtLeast ocaml.version "5.0")
 
     buildInputs = [ cmdliner ];
 
-    propagatedBuildInputs = [
-      kafka
-      lwt
-    ];
+    propagatedBuildInputs = [ kafka lwt ];
 
     meta = kafka.meta // {
       description = "OCaml bindings for Kafka, Lwt bindings";

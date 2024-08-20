@@ -87,12 +87,7 @@ stdenv.mkDerivation {
     makeWrapper
     gnum4
     texinfo
-    (texliveSmall.withPackages (
-      ps: with ps; [
-        epsf
-        ps.texinfo
-      ]
-    ))
+    (texliveSmall.withPackages (ps: with ps; [ epsf ps.texinfo ]))
     automake
     ghostscript
     autoconf

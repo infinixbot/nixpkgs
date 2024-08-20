@@ -8,12 +8,7 @@
 stdenv.mkDerivation rec {
   pname = "mpdecimal";
   version = "4.0.0";
-  outputs = [
-    "out"
-    "cxx"
-    "doc"
-    "dev"
-  ];
+  outputs = [ "out" "cxx" "doc" "dev" ];
 
   src = fetchurl {
     url = "https://www.bytereef.org/software/mpdecimal/releases/mpdecimal-${version}.tar.gz";

@@ -31,19 +31,11 @@
 
     cargoLock.lockFile = ./Cargo.lock;
 
-    nativeBuildInputs = [
-      makeWrapper
-      pkg-config
-    ];
+    nativeBuildInputs = [ makeWrapper pkg-config ];
     buildInputs = [ curl ];
 
     postInstall = ''
-      wrapProgram "$out/bin/prefetch-npm-deps" --prefix PATH : ${
-        lib.makeBinPath [
-          gnutar
-          gzip
-        ]
-      }
+      wrapProgram "$out/bin/prefetch-npm-deps" --prefix PATH : ${lib.makeBinPath [ gnutar gzip ]}
     '';
 
     passthru.tests =

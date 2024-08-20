@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs = [ zlib ];
-  nativeBuildInputs = [
-    perl
-    python3
-  ];
+  nativeBuildInputs = [ perl python3 ];
 
   meta = with lib; {
     description = "Motif-based sequence analysis tools";

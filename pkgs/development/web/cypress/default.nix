@@ -42,11 +42,7 @@ stdenv.mkDerivation rec {
   # don't remove runtime deps
   dontPatchELF = true;
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    wrapGAppsHook3
-    unzip
-  ];
+  nativeBuildInputs = [ autoPatchelfHook wrapGAppsHook3 unzip ];
 
   buildInputs =
     with xorg;
@@ -102,10 +98,6 @@ stdenv.mkDerivation rec {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.mit;
     platforms = lib.attrNames availableBinaries;
-    maintainers = with maintainers; [
-      tweber
-      mmahut
-      Crafter
-    ];
+    maintainers = with maintainers; [ tweber mmahut Crafter ];
   };
 }

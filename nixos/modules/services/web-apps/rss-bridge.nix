@@ -29,20 +29,13 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "rss-bridge"
-        "whitelist"
-      ]
-      [
-        "services"
-        "rss-bridge"
-        "config"
-        "system"
-        "enabled_bridges"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "rss-bridge" "whitelist" ] [
+      "services"
+      "rss-bridge"
+      "config"
+      "system"
+      "enabled_bridges"
+    ])
   ];
 
   options = {
@@ -93,16 +86,7 @@ in
       };
 
       config = mkOption {
-        type =
-          with types;
-          attrsOf (
-            attrsOf (oneOf [
-              bool
-              int
-              str
-              (listOf str)
-            ])
-          );
+        type = with types; attrsOf (attrsOf (oneOf [ bool int str (listOf str) ]));
         default = { };
         defaultText = options.literalExpression "FileCache.path = \"\${config.services.rss-bridge.dataDir}/cache/\"";
         example = options.literalExpression ''

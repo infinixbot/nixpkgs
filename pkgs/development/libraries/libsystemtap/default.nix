@@ -19,11 +19,7 @@ stdenv.mkDerivation {
 
   dontBuild = true;
 
-  nativeBuildInputs = [
-    gettext
-    python3
-    elfutils
-  ];
+  nativeBuildInputs = [ gettext python3 elfutils ];
 
   installPhase = ''
     mkdir -p $out/include

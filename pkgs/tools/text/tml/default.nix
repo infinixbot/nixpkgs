@@ -17,10 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-CHZS1SpPko8u3tZAYbf+Di882W55X9Q/zd4SmFCRgKM=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     description = "Tiny markup language for terminal output";

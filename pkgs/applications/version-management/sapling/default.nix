@@ -200,10 +200,7 @@ python3Packages.buildPythonApplication {
     description = "Scalable, User-Friendly Source Control System";
     homepage = "https://sapling-scm.com";
     license = licenses.gpl2Only;
-    maintainers = with maintainers; [
-      pbar
-      thoughtpolice
-    ];
+    maintainers = with maintainers; [ pbar thoughtpolice ];
     platforms = platforms.unix;
     mainProgram = "sl";
   };

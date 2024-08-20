@@ -36,17 +36,8 @@ in
 stdenv.mkDerivation {
   pname = "skk-dicts-unstable";
   version = "2020-03-24";
-  srcs = [
-    small
-    medium
-    large
-    edict
-    assoc
-  ];
-  nativeBuildInputs = [
-    iconv
-    skktools
-  ];
+  srcs = [ small medium large edict assoc ];
+  nativeBuildInputs = [ iconv skktools ];
 
   strictDeps = true;
 

@@ -53,12 +53,7 @@ import ./make-test-python.nix (
                   '';
             in
             with pkgs;
-            [
-              curl
-              firefox-unwrapped
-              geckodriver
-              seleniumScript
-            ];
+            [ curl firefox-unwrapped geckodriver seleniumScript ];
         };
     };
     # This is the test code that will check if our service is running correctly:

@@ -33,10 +33,7 @@ in
   };
   config = lib.mkIf cfg.enable {
     networking.firewall = lib.mkIf cfg.openFirewall {
-      allowedTCPPorts = [
-        1701
-        9001
-      ];
+      allowedTCPPorts = [ 1701 9001 ];
     };
 
     hardware.uinput.enable = true;

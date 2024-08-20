@@ -22,10 +22,7 @@ listToAttrs (
       sha256 = v.sha256;
       meta = {
         platforms = platforms.all;
-        maintainers = [
-          maintainers.matthewbauer
-          maintainers.shazow
-        ];
+        maintainers = [ maintainers.matthewbauer maintainers.shazow ];
         license = licenses.free;
       };
     };

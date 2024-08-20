@@ -22,10 +22,7 @@ buildDunePackage rec {
   };
 
   nativeBuildInputs = [ cppo ];
-  buildInputs = [
-    cmdliner
-    re
-  ];
+  buildInputs = [ cmdliner re ];
 
   propagatedBuildInputs = [ ocp-indent ];
 

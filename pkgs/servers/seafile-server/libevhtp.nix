@@ -30,9 +30,6 @@ stdenv.mkDerivation rec {
     description = "Create extremely-fast and secure embedded HTTP servers with ease";
     homepage = "https://github.com/criticalstack/libevhtp";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      greizgh
-      schmittlauch
-    ];
+    maintainers = with maintainers; [ greizgh schmittlauch ];
   };
 }

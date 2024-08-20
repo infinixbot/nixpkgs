@@ -34,13 +34,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  buildInputs = [
-    cups
-    cups-filters
-    ghostscript
-    libpng
-    libxml2
-  ];
+  buildInputs = [ cups cups-filters ghostscript libpng libxml2 ];
   nativeBuildInputs = [
     autoreconfHook
     foomatic-db-engine

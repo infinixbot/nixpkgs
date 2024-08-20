@@ -110,13 +110,7 @@ mkDerivation {
   meta = with lib; {
     description = "Front end to powerful mathematics and statistics packages";
     homepage = "https://cantor.kde.org/";
-    license = with licenses; [
-      bsd3
-      cc0
-      gpl2Only
-      gpl2Plus
-      gpl3Only
-    ];
+    license = with licenses; [ bsd3 cc0 gpl2Only gpl2Plus gpl3Only ];
     maintainers = with maintainers; [ hqurve ];
   };
 }

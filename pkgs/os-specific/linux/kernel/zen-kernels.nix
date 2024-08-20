@@ -132,17 +132,11 @@ let
             UCLAMP_TASK_GROUP = lib.mkForce (option no);
           };
 
-        passthru.updateScript = [
-          ./update-zen.py
-          (if isLqx then "lqx" else "zen")
-        ];
+        passthru.updateScript = [ ./update-zen.py (if isLqx then "lqx" else "zen") ];
 
         extraMeta = {
           branch = lib.versions.majorMinor version + "/master";
-          maintainers = with lib.maintainers; [
-            thiagokokada
-            jerrysm64
-          ];
+          maintainers = with lib.maintainers; [ thiagokokada jerrysm64 ];
           description =
             "Built using the best configuration and kernel sources for desktop, multimedia, and gaming workloads."
             + lib.optionalString isLqx " (Same as linux_zen, but less aggressive release schedule and additional extra config)";

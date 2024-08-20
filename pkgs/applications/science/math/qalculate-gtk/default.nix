@@ -31,21 +31,13 @@ stdenv.mkDerivation (finalAttrs: {
     autoreconfHook
     wrapGAppsHook3
   ] ++ lib.optionals stdenv.isDarwin [ desktopToDarwinBundle ];
-  buildInputs = [
-    libqalculate
-    gtk3
-    curl
-  ];
+  buildInputs = [ libqalculate gtk3 curl ];
   enableParallelBuilding = true;
 
   meta = with lib; {
     description = "Ultimate desktop calculator";
     homepage = "http://qalculate.github.io";
-    maintainers = with maintainers; [
-      gebner
-      doronbehar
-      alyaeanyx
-    ];
+    maintainers = with maintainers; [ gebner doronbehar alyaeanyx ];
     license = licenses.gpl2Plus;
     mainProgram = "qalculate-gtk";
     platforms = platforms.all;

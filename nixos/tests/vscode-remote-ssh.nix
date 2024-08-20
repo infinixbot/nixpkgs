@@ -42,19 +42,12 @@ import ./make-test-python.nix (
             ];
             services.openssh.enable = true;
             users.users.root.openssh.authorizedKeys.keys = [ snakeOilPublicKey ];
-            virtualisation.additionalPaths = with pkgs; [
-              patchelf
-              bintools
-              stdenv.cc.cc.lib
-            ];
+            virtualisation.additionalPaths = with pkgs; [ patchelf bintools stdenv.cc.cc.lib ];
           };
         client =
           { ... }:
           {
-            imports = [
-              ./common/x11.nix
-              ./common/user-account.nix
-            ];
+            imports = [ ./common/x11.nix ./common/user-account.nix ];
             networking.interfaces.eth1.ipv4.addresses = [
               {
                 address = clientAddress;

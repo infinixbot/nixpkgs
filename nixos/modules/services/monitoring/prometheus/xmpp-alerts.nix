@@ -14,20 +14,12 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "prometheus"
-        "xmpp-alerts"
-        "configuration"
-      ]
-      [
-        "services"
-        "prometheus"
-        "xmpp-alerts"
-        "settings"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "prometheus" "xmpp-alerts" "configuration" ] [
+      "services"
+      "prometheus"
+      "xmpp-alerts"
+      "settings"
+    ])
   ];
 
   options.services.prometheus.xmpp-alerts = {
@@ -63,10 +55,7 @@ in
         ProtectControlGroups = true;
         NoNewPrivileges = true;
         SystemCallArchitectures = "native";
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
         SystemCallFilter = [ "@system-service" ];
       };
     };

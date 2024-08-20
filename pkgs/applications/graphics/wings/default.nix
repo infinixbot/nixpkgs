@@ -37,12 +37,7 @@ stdenv.mkDerivation rec {
     find . -type f -name "*.[eh]rl" -exec sed -i 's,wings/intl_tools/,../intl_tools/,' {} \;
   '';
 
-  buildInputs = [
-    erlang
-    cl
-    libGL
-    libGLU
-  ];
+  buildInputs = [ erlang cl libGL libGLU ];
 
   ERL_LIBS = "${cl}/lib/erlang/lib";
 

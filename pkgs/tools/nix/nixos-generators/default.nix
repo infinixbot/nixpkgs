@@ -25,14 +25,7 @@ stdenv.mkDerivation rec {
   installFlags = [ "PREFIX=$(out)" ];
   postFixup = ''
     wrapProgram $out/bin/nixos-generate \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          jq
-          coreutils
-          findutils
-          nix
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ jq coreutils findutils nix ]}
   '';
 
   meta = with lib; {

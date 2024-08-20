@@ -18,10 +18,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-vejIRlcVjxQJpxJabJJcljODYr+lLJjYINVtAPObvkQ=";
   };
 
-  propagatedBuildInputs = [
-    perl
-    perlPackages.ParseWin32Registry
-  ];
+  propagatedBuildInputs = [ perl perlPackages.ParseWin32Registry ];
 
   postPatch = ''
     substituteInPlace rip.pl rr.pl \

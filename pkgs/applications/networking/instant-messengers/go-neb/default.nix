@@ -33,9 +33,6 @@ buildGoModule {
     mainProgram = "go-neb";
     homepage = "https://github.com/matrix-org/go-neb";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      hexa
-      maralorn
-    ];
+    maintainers = with maintainers; [ hexa maralorn ];
   };
 }

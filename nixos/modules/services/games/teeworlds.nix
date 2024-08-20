@@ -165,10 +165,7 @@ in
         description = ''
           Extra configuration lines for the {file}`teeworlds.cfg`. See [Teeworlds Documentation](https://www.teeworlds.com/?page=docs&wiki=server_settings).
         '';
-        example = [
-          "sv_map dm1"
-          "sv_gametype dm"
-        ];
+        example = [ "sv_map dm1" "sv_gametype dm" ];
       };
 
       server = {
@@ -197,11 +194,7 @@ in
         };
 
         inactivePenalty = mkOption {
-          type = types.enum [
-            "spectator"
-            "spectator/kick"
-            "kick"
-          ];
+          type = types.enum [ "spectator" "spectator/kick" "kick" ];
           example = "spectator";
           default = "spectator/kick";
           description = ''
@@ -248,11 +241,7 @@ in
         };
 
         skillLevel = mkOption {
-          type = types.enum [
-            "casual"
-            "normal"
-            "competitive"
-          ];
+          type = types.enum [ "casual" "normal" "competitive" ];
           default = "normal";
           description = ''
             The skill level shown in the server browser.
@@ -357,11 +346,7 @@ in
         };
 
         tournamentMode = mkOption {
-          type = types.enum [
-            "disable"
-            "enable"
-            "restrictSpectators"
-          ];
+          type = types.enum [ "disable" "enable" "restrictSpectators" ];
           default = "disable";
           description = ''
             Whether to enable tournament mode. In tournament mode, players join as spectators.
@@ -418,10 +403,7 @@ in
         ProtectKernelLogs = true;
         ProtectKernelModules = true;
         ProtectKernelTunables = true;
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         SystemCallArchitectures = "native";
       };

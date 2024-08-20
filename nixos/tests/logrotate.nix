@@ -73,10 +73,7 @@ import ./make-test-python.nix (
               };
               # multiple paths should be aggregated
               multipath = {
-                files = [
-                  "file1"
-                  "file2"
-                ];
+                files = [ "file1" "file2" ];
               };
               # overriding imported path should keep existing attributes
               # (e.g. olddir is still set)

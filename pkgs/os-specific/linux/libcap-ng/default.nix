@@ -13,11 +13,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-O6UpTRy9+pivqs+8ALavntK4PoohgXGF39hEzIx6xv8=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
   configureFlags = [
     "--without-python"

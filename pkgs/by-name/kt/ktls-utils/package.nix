@@ -36,10 +36,7 @@ stdenv.mkDerivation rec {
     libnl
   ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   configureFlags = lib.optional withSystemd [ "--with-systemd" ];
 

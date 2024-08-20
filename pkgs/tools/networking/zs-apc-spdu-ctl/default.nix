@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    libowlevelzs
-    net-snmp
-  ];
+  buildInputs = [ libowlevelzs net-snmp ];
 
   postPatch = ''
     substituteInPlace src/confent.cxx \

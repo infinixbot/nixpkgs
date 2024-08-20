@@ -48,13 +48,7 @@ let
               if builtins.elem reason fatalErrors then
                 abort errormsg
               # hydra does not build unfree packages, so tons of them are broken yet not marked meta.broken.
-              else if
-                !includeBroken
-                && builtins.elem reason [
-                  "broken"
-                  "unfree"
-                ]
-              then
+              else if !includeBroken && builtins.elem reason [ "broken" "unfree" ] then
                 throw "broken"
               else if builtins.elem reason [ "unsupported" ] then
                 throw "unsupported"

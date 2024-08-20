@@ -36,10 +36,7 @@ let
     exec = "SideQuest";
     desktopName = name;
     genericName = "VR App Store";
-    categories = [
-      "Settings"
-      "PackageManager"
-    ];
+    categories = [ "Settings" "PackageManager" ];
   };
 
   sidequest = stdenv.mkDerivation {
@@ -111,10 +108,7 @@ buildFHSEnv {
       downloadPage = "https://github.com/SideQuestVR/SideQuest/releases";
       sourceProvenance = with sourceTypes; [ binaryNativeCode ];
       license = licenses.mit;
-      maintainers = with maintainers; [
-        joepie91
-        rvolosatovs
-      ];
+      maintainers = with maintainers; [ joepie91 rvolosatovs ];
       platforms = [ "x86_64-linux" ];
       mainProgram = "SideQuest";
     };

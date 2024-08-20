@@ -20,10 +20,7 @@ stdenv.mkDerivation {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [
-    byacc
-    installShellFiles
-  ];
+  nativeBuildInputs = [ byacc installShellFiles ];
   enableParallelBuilding = true;
   patches = [ ./path.patch ];
   makeFlags = [ "PREFIX=$(out)" ];

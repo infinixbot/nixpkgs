@@ -24,10 +24,7 @@
   buildMan ? true,
   buildTests ? true,
   llvmTargetsToBuild ? [ "NATIVE" ], # "NATIVE" resolves into x86 or aarch64 depending on stdenv
-  llvmProjectsToBuild ? [
-    "llvm"
-    "mlir"
-  ],
+  llvmProjectsToBuild ? [ "llvm" "mlir" ],
 }:
 
 let
@@ -40,22 +37,13 @@ let
       throw "Currently unsupported LLVM platform '${stdenv.hostPlatform.config}'";
 
   inferNativeTarget = t: if t == "NATIVE" then llvmNativeTarget else t;
-  llvmTargetsToBuild' = [
-    "AMDGPU"
-    "NVPTX"
-  ] ++ builtins.map inferNativeTarget llvmTargetsToBuild;
+  llvmTargetsToBuild' = [ "AMDGPU" "NVPTX" ] ++ builtins.map inferNativeTarget llvmTargetsToBuild;
 
   # This LLVM version can't seem to find pygments/pyyaml,
   # but a later update will likely fix this (triton-2.1.0)
   python =
     if buildTests then
-      python3Packages.python.withPackages (
-        p: with p; [
-          psutil
-          pygments
-          pyyaml
-        ]
-      )
+      python3Packages.python.withPackages (p: with p; [ psutil pygments pyyaml ])
     else
       python3Packages.python;
 
@@ -164,12 +152,7 @@ stdenv.mkDerivation (finalAttrs: {
       [
         (lib.cmakeBool "CMAKE_CROSSCOMPILING" true)
         (lib.cmakeFeature "CROSS_TOOLCHAIN_FLAGS_NATIVE" (
-          lib.concatStringsSep ";" (
-            lib.concatLists [
-              nativeToolchainFlags
-              nativeInstallFlags
-            ]
-          )
+          lib.concatStringsSep ";" (lib.concatLists [ nativeToolchainFlags nativeInstallFlags ])
         ))
       ]
     );
@@ -207,10 +190,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Collection of modular and reusable compiler and toolchain technologies";
     homepage = "https://github.com/llvm/llvm-project";
     license = with licenses; [ ncsa ];
-    maintainers = with maintainers; [
-      SomeoneSerge
-      Madouura
-    ];
+    maintainers = with maintainers; [ SomeoneSerge Madouura ];
     platforms = with platforms; aarch64 ++ x86;
   };
 })

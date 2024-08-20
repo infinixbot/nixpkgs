@@ -28,9 +28,6 @@ buildPythonPackage rec {
     description = "Convert data to their natural (human-readable) format";
     homepage = "https://github.com/tehmaze/natural";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [
-      sailord
-      vinetos
-    ];
+    maintainers = with lib.maintainers; [ sailord vinetos ];
   };
 }

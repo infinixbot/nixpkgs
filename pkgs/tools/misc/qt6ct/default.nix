@@ -23,17 +23,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-MmN/qPBlsF2mBST+3eYeXaq+7B3b+nTN2hi6CmxrILc=";
   };
 
-  nativeBuildInputs = [
-    qmake
-    qttools
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ qmake qttools wrapQtAppsHook ];
 
-  buildInputs = [
-    qtbase
-    qtsvg
-    qtwayland
-  ];
+  buildInputs = [ qtbase qtsvg qtwayland ];
 
   qmakeFlags = [
     "LRELEASE_EXECUTABLE=${getDev qttools}/bin/lrelease"
@@ -46,10 +38,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/trialuser02/qt6ct";
     platforms = platforms.linux;
     license = licenses.bsd2;
-    maintainers = with maintainers; [
-      Flakebi
-      Scrumplex
-    ];
+    maintainers = with maintainers; [ Flakebi Scrumplex ];
     mainProgram = "qt6ct";
   };
 })

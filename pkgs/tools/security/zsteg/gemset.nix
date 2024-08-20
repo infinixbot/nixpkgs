@@ -20,10 +20,7 @@
     version = "0.0.5";
   };
   prime = {
-    dependencies = [
-      "forwardable"
-      "singleton"
-    ];
+    dependencies = [ "forwardable" "singleton" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -65,11 +62,7 @@
     version = "0.4.5";
   };
   zsteg = {
-    dependencies = [
-      "iostruct"
-      "prime"
-      "zpng"
-    ];
+    dependencies = [ "iostruct" "prime" "zpng" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

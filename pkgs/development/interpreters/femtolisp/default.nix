@@ -33,10 +33,7 @@ stdenv.mkDerivation {
   meta = {
     description = "Compact interpreter for a minimal lisp/scheme dialect";
     homepage = "https://git.sr.ht/~ft/femtolisp";
-    license = with lib.licenses; [
-      mit
-      bsd3
-    ];
+    license = with lib.licenses; [ mit bsd3 ];
     maintainers = with lib.maintainers; [ moody ];
     broken = stdenv.isDarwin;
     platforms = lib.platforms.unix;

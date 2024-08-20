@@ -65,13 +65,7 @@ stdenv.mkDerivation rec {
   ] ++ lib.optional stdenv.isDarwin desktopToDarwinBundle;
 
   buildInputs =
-    [
-      curl
-      gdk-pixbuf
-      gtk3
-      json-glib
-      libxml2
-    ]
+    [ curl gdk-pixbuf gtk3 json-glib libxml2 ]
     ++ lib.optional withGeoClue geoclue2
     ++ lib.optional withGeoTag gexiv2
     ++ lib.optional withMagic file
@@ -114,10 +108,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://sourceforge.net/projects/viking/";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      pSub
-      sikmir
-    ];
+    maintainers = with maintainers; [ pSub sikmir ];
     platforms = with platforms; unix;
   };
 }

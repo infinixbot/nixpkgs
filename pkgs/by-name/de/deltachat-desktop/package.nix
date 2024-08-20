@@ -135,11 +135,7 @@ buildNpmPackage rec {
     desktopName = "Delta Chat";
     genericName = "Delta Chat";
     comment = meta.description;
-    categories = [
-      "Network"
-      "InstantMessaging"
-      "Chat"
-    ];
+    categories = [ "Network" "InstantMessaging" "Chat" ];
     startupWMClass = "DeltaChat";
     mimeTypes = [
       "x-scheme-handler/openpgp4fpr"

@@ -55,10 +55,7 @@ stdenv.mkDerivation rec {
       --replace "DGuiApplicationHelper" "Dtk::Gui::DGuiApplicationHelper"
   '';
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs = [
     cmake
@@ -117,13 +114,7 @@ stdenv.mkDerivation rec {
 
   qtWrapperArgs = [
     "--prefix LD_LIBRARY_PATH : ${
-      lib.makeLibraryPath [
-        mpv
-        ffmpeg
-        ffmpegthumbnailer
-        gst_all_1.gstreamer
-        gst_all_1.gst-plugins-base
-      ]
+      lib.makeLibraryPath [ mpv ffmpeg ffmpegthumbnailer gst_all_1.gstreamer gst_all_1.gst-plugins-base ]
     }"
   ];
 

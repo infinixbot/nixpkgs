@@ -17,11 +17,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-qoeEM9SdpuFuBPeQlCzuhPLcJ+bMQkTUTGiT8QdU8rc=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "lib"
-  ];
+  outputs = [ "out" "dev" "lib" ];
   doCheck = true;
 
   nativeBuildInputs = [ copyPkgconfigItems ];
@@ -31,10 +27,7 @@ stdenv.mkDerivation rec {
       name = "cadical";
       inherit version;
       cflags = [ "-I\${includedir}" ];
-      libs = [
-        "-L\${libdir}"
-        "-lcadical"
-      ];
+      libs = [ "-L\${libdir}" "-lcadical" ];
       variables = {
         includedir = "@includedir@";
         libdir = "@libdir@";

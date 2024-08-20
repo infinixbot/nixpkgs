@@ -25,11 +25,7 @@ stdenv.mkDerivation {
     inherit (release) url sha256;
     name = "ucto-${release.version}.tar.gz";
   };
-  nativeBuildInputs = [
-    pkg-config
-    automake
-    autoconf
-  ];
+  nativeBuildInputs = [ pkg-config automake autoconf ];
   buildInputs = [
     bzip2
     libtool

@@ -321,13 +321,7 @@ stdenv.mkDerivation rec {
     makeWrapper
   ];
 
-  buildInputs = [
-    curl
-    jdk
-    nettools
-    python3
-    git
-  ];
+  buildInputs = [ curl jdk nettools python3 git ];
 
   preConfigure = ''
     chmod +x build-aux/fetchdep.sh.in

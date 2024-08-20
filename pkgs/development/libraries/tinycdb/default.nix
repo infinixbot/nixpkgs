@@ -21,11 +21,7 @@ stdenv.mkDerivation rec {
   # In general, static library (.a) goes to "dev", shared (.so) to
   # "lib". In case of static build, there is no .so library, so "lib"
   # output is useless and empty.
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ] ++ lib.optional (!static) "lib";
+  outputs = [ "out" "dev" "man" ] ++ lib.optional (!static) "lib";
   separateDebugInfo = true;
   makeFlags = [
     "prefix=$(out)"

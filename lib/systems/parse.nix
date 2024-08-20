@@ -95,13 +95,7 @@ rec {
   ################################################################################
 
   # Reasonable power of 2
-  types.bitWidth = enum [
-    8
-    16
-    32
-    64
-    128
-  ];
+  types.bitWidth = enum [ 8 16 32 64 128 ];
 
   ################################################################################
 
@@ -816,15 +810,7 @@ rec {
           };
       "3" =
         # cpu-kernel-environment
-        if
-          elemAt l 1 == "linux"
-          || elem (elemAt l 2) [
-            "eabi"
-            "eabihf"
-            "elf"
-            "gnu"
-          ]
-        then
+        if elemAt l 1 == "linux" || elem (elemAt l 2) [ "eabi" "eabihf" "elf" "gnu" ] then
           {
             cpu = elemAt l 0;
             kernel = elemAt l 1;
@@ -834,12 +820,7 @@ rec {
         # cpu-vendor-os
         else if
           elemAt l 1 == "apple"
-          || elem (elemAt l 2) [
-            "redox"
-            "mmixware"
-            "ghcjs"
-            "mingw32"
-          ]
+          || elem (elemAt l 2) [ "redox" "mmixware" "ghcjs" "mingw32" ]
           || hasPrefix "freebsd" (elemAt l 2)
           || hasPrefix "netbsd" (elemAt l 2)
           || hasPrefix "openbsd" (elemAt l 2)

@@ -22,14 +22,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    libpng
-    zlib
-    libtiff
-    libxml2
-    openssl
-    libiconv
-  ];
+  buildInputs = [ libpng zlib libtiff libxml2 openssl libiconv ];
 
   doCheck = true;
 

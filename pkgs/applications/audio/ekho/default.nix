@@ -34,12 +34,7 @@ stdenv.mkDerivation rec {
     "-I${lib.getDev utf8cpp}/include/utf8cpp"
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    autoconf
-    automake
-    libtool
-  ];
+  nativeBuildInputs = [ pkg-config autoconf automake libtool ];
 
   buildInputs = [
     libsndfile

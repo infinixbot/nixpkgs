@@ -40,12 +40,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     pkg-config
     cmake
-    (python3.withPackages (
-      pp: with pp; [
-        pp.protobuf
-        setuptools
-      ]
-    ))
+    (python3.withPackages (pp: with pp; [ pp.protobuf setuptools ]))
   ];
 
   buildInputs = [

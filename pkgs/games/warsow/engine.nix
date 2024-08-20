@@ -85,10 +85,7 @@ stdenv.mkDerivation rec {
     description = "Multiplayer FPS game designed for competitive gaming (engine only)";
     homepage = "http://www.warsow.net";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      astsmtl
-      abbradar
-    ];
+    maintainers = with maintainers; [ astsmtl abbradar ];
     platforms = platforms.linux;
     broken = stdenv.isAarch64;
   };

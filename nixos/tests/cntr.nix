@@ -15,10 +15,7 @@ let
       name = "cntr-${backend}";
 
       meta = {
-        maintainers = with lib.maintainers; [
-          sorki
-          mic92
-        ];
+        maintainers = with lib.maintainers; [ sorki mic92 ];
       };
 
       nodes = {
@@ -57,10 +54,7 @@ let
     name = "cntr-containers";
 
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        sorki
-        mic92
-      ];
+      maintainers = [ sorki mic92 ];
     };
 
     nodes.machine =

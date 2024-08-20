@@ -14,10 +14,7 @@ import ./make-test-python.nix (
     unfreePredicate =
       pkg:
       let
-        allowPackageNames = [
-          "quake3-demodata"
-          "quake3-pointrelease"
-        ];
+        allowPackageNames = [ "quake3-demodata" "quake3-pointrelease" ];
         allowLicenses = [ lib.licenses.unfreeRedistributable ];
       in
       lib.elem pkg.pname allowPackageNames && lib.elem (pkg.meta.license or null) allowLicenses;

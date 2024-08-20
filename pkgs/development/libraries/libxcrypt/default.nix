@@ -66,12 +66,7 @@ stdenv.mkDerivation (finalAttrs: {
       passthruMatches = runCommand "libxcrypt-test-passthru-matches" { } ''
         ${python3.interpreter} "${./check_passthru_matches.py}" ${
           lib.escapeShellArgs (
-            [
-              finalAttrs.src
-              enableHashes
-              "--"
-            ]
-            ++ finalAttrs.passthru.enabledCryptSchemeIds
+            [ finalAttrs.src enableHashes "--" ] ++ finalAttrs.passthru.enabledCryptSchemeIds
           )
         }
         touch "$out"
@@ -94,10 +89,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Extended crypt library for descrypt, md5crypt, bcrypt, and others";
     homepage = "https://github.com/besser82/libxcrypt/";
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      dottedmag
-      hexa
-    ];
+    maintainers = with maintainers; [ dottedmag hexa ];
     license = licenses.lgpl21Plus;
   };
 })

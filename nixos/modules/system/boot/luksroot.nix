@@ -591,10 +591,7 @@ let
           opts =
             v.crypttabExtraOpts
             ++ optional v.allowDiscards "discard"
-            ++ optionals v.bypassWorkqueues [
-              "no-read-workqueue"
-              "no-write-workqueue"
-            ]
+            ++ optionals v.bypassWorkqueues [ "no-read-workqueue" "no-write-workqueue" ]
             ++ optional (v.header != null) "header=${v.header}"
             ++ optional (v.keyFileOffset != null) "keyfile-offset=${toString v.keyFileOffset}"
             ++ optional (v.keyFileSize != null) "keyfile-size=${toString v.keyFileSize}"
@@ -609,12 +606,7 @@ let
 in
 {
   imports = [
-    (mkRemovedOptionModule [
-      "boot"
-      "initrd"
-      "luks"
-      "enable"
-    ] "")
+    (mkRemovedOptionModule [ "boot" "initrd" "luks" "enable" ] "")
   ];
 
   options = {
@@ -1134,12 +1126,7 @@ in
 
     # Some modules that may be needed for mounting anything ciphered
     boot.initrd.availableKernelModules =
-      [
-        "dm_mod"
-        "dm_crypt"
-        "cryptd"
-        "input_leds"
-      ]
+      [ "dm_mod" "dm_crypt" "cryptd" "input_leds" ]
       ++ luks.cryptoModules
       # workaround until https://marc.info/?l=linux-crypto-vger&m=148783562211457&w=4 is merged
       # remove once 'modprobe --show-depends xts' shows ecb as a dependency
@@ -1267,10 +1254,7 @@ in
               umask 277
               clevis decrypt < /etc/clevis/${name}.jwe > /clevis-${name}/decrypted
             '';
-            conflicts = [
-              "initrd-switch-root.target"
-              "shutdown.target"
-            ];
+            conflicts = [ "initrd-switch-root.target" "shutdown.target" ];
             unitConfig.DefaultDependencies = "no";
             serviceConfig = {
               Type = "oneshot";

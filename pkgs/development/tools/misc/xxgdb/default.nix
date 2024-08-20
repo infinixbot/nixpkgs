@@ -25,17 +25,8 @@ stdenv.mkDerivation rec {
     ./xxgdb-pty.patch
   ];
 
-  nativeBuildInputs = [
-    imake
-    gccmakedep
-  ];
-  buildInputs = [
-    libX11
-    libXaw
-    libXext
-    libXmu
-    libXt
-  ];
+  nativeBuildInputs = [ imake gccmakedep ];
+  buildInputs = [ libX11 libXaw libXext libXmu libXt ];
 
   preConfigure = ''
     mkdir build

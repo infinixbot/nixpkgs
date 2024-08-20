@@ -50,12 +50,7 @@ let
   immutablePasswordFilesLocation = "/var/lib/nixos/etc";
   passwordFilesLocation = if immutableEtc then immutablePasswordFilesLocation else "/etc";
   # The filenames created by systemd-sysusers.
-  passwordFiles = [
-    "passwd"
-    "group"
-    "shadow"
-    "gshadow"
-  ];
+  passwordFiles = [ "passwd" "group" "shadow" "gshadow" ];
 
 in
 

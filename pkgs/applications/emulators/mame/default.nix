@@ -49,10 +49,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-zH/82WC4xXa/NMJ2W4U57Uv8+5994U5YcMbRvPiAtTI=";
   };
 
-  outputs = [
-    "out"
-    "tools"
-  ];
+  outputs = [ "out" "tools" ];
 
   makeFlags = [
     "CC=${stdenv.cc.targetPrefix}cc"
@@ -95,18 +92,8 @@ stdenv.mkDerivation rec {
       sqlite
       qtbase
     ]
-    ++ lib.optionals stdenv.isLinux [
-      alsa-lib
-      libpulseaudio
-      libXinerama
-      libXi
-      fontconfig
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      libpcap
-      CoreAudioKit
-      ForceFeedback
-    ];
+    ++ lib.optionals stdenv.isLinux [ alsa-lib libpulseaudio libXinerama libXi fontconfig ]
+    ++ lib.optionals stdenv.isDarwin [ libpcap CoreAudioKit ForceFeedback ];
 
   nativeBuildInputs = [
     copyDesktopItems
@@ -140,15 +127,8 @@ stdenv.mkDerivation rec {
       type = "Application";
       genericName = "MAME is a multi-purpose emulation framework";
       comment = "Play vintage games using the MAME emulator";
-      categories = [
-        "Game"
-        "Emulator"
-      ];
-      keywords = [
-        "Game"
-        "Emulator"
-        "Arcade"
-      ];
+      categories = [ "Game" "Emulator" ];
+      keywords = [ "Game" "Emulator" "Arcade" ];
     })
   ];
 
@@ -216,10 +196,7 @@ stdenv.mkDerivation rec {
       focus.
     '';
     changelog = "https://github.com/mamedev/mame/releases/download/mame${srcVersion}/whatsnew_${srcVersion}.txt";
-    license = with licenses; [
-      bsd3
-      gpl2Plus
-    ];
+    license = with licenses; [ bsd3 gpl2Plus ];
     maintainers = with maintainers; [ thiagokokada ];
     platforms = platforms.unix;
     broken = stdenv.isDarwin;

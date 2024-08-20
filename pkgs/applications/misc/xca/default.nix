@@ -22,10 +22,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-E0Ap+JDK/oYTG+uaRHsdOxyLIywlYJ01T4ANQhNH220=";
   };
 
-  buildInputs = [
-    openssl
-    qtbase
-  ];
+  buildInputs = [ openssl qtbase ];
 
   nativeBuildInputs = [
     cmake
@@ -45,10 +42,7 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "xca";
     homepage = "https://hohnstaedt.de/xca/";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      offline
-      peterhoeg
-    ];
+    maintainers = with maintainers; [ offline peterhoeg ];
     inherit (qtbase.meta) platforms;
   };
 })

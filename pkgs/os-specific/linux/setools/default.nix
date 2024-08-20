@@ -23,18 +23,9 @@ python3.pkgs.buildPythonApplication rec {
   buildInputs = [ libsepol ];
   propagatedBuildInputs =
     with python3.pkgs;
-    [
-      enum34
-      libselinux
-      networkx
-      setuptools
-    ]
-    ++ lib.optionals withGraphics [ pyqt5 ];
+    [ enum34 libselinux networkx setuptools ] ++ lib.optionals withGraphics [ pyqt5 ];
 
-  nativeCheckInputs = [
-    python3.pkgs.tox
-    checkpolicy
-  ];
+  nativeCheckInputs = [ python3.pkgs.tox checkpolicy ];
   preCheck = ''
     export CHECKPOLICY=${checkpolicy}/bin/checkpolicy
   '';

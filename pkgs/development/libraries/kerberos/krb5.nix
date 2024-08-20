@@ -50,19 +50,13 @@ stdenv.mkDerivation rec {
     hash = "sha256-t6TNXq1n+wi5gLIavRUP9yF+heoyDJ7QxtrdMEhArTU=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   configureFlags =
     [ "--localstatedir=/var/lib" ]
     # krb5's ./configure does not allow passing --enable-shared and --enable-static at the same time.
     # See https://bbs.archlinux.org/viewtopic.php?pid=1576737#p1576737
-    ++ lib.optionals staticOnly [
-      "--enable-static"
-      "--disable-shared"
-    ]
+    ++ lib.optionals staticOnly [ "--enable-static" "--disable-shared" ]
     ++ lib.optional withLdap "--with-ldap"
     ++ lib.optional withVerto "--with-system-verto"
     ++ lib.optional stdenv.isFreeBSD ''WARN_CFLAGS=''
@@ -73,10 +67,7 @@ stdenv.mkDerivation rec {
     ];
 
   nativeBuildInputs =
-    [
-      pkg-config
-      perl
-    ]
+    [ pkg-config perl ]
     ++ lib.optional (!libOnly) bison
     # Provides the mig command used by the build scripts
     ++ lib.optional stdenv.isDarwin bootstrap_cmds;
@@ -113,12 +104,7 @@ stdenv.mkDerivation rec {
       substituteInPlace ./config/config.guess --replace-fail /usr/bin/uname uname
     '';
 
-  libFolders = [
-    "util"
-    "include"
-    "lib"
-    "build-tools"
-  ];
+  libFolders = [ "util" "include" "lib" "build-tools" ];
 
   buildPhase = lib.optionalString libOnly ''
     runHook preBuild

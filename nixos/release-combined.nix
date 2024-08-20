@@ -9,10 +9,7 @@
     shortRev = "gfedcba";
   },
   stableBranch ? false,
-  supportedSystems ? [
-    "aarch64-linux"
-    "x86_64-linux"
-  ],
+  supportedSystems ? [ "aarch64-linux" "x86_64-linux" ],
   limitedSupportedSystems ? [ ],
 }:
 
@@ -70,10 +67,7 @@ rec {
         [ "nixos.channel" ]
         (onFullSupported "nixos.dummy")
         (onAllSupported "nixos.iso_minimal")
-        (onSystems [
-          "x86_64-linux"
-          "aarch64-linux"
-        ] "nixos.amazonImage")
+        (onSystems [ "x86_64-linux" "aarch64-linux" ] "nixos.amazonImage")
         (onFullSupported "nixos.iso_plasma6")
         (onFullSupported "nixos.iso_gnome")
         (onFullSupported "nixos.manual")

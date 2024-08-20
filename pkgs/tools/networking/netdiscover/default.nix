@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ autoreconfHook ];
-  buildInputs = [
-    libpcap
-    libnet
-  ];
+  buildInputs = [ libpcap libnet ];
 
   # Running update-oui-database.sh would probably make the build irreproducible
 

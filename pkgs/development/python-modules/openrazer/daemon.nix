@@ -35,11 +35,7 @@ buildPythonPackage (
         --replace-fail "plugdev" "openrazer"
     '';
 
-    nativeBuildInputs = [
-      setuptools
-      wrapGAppsNoGuiHook
-      gobject-introspection
-    ];
+    nativeBuildInputs = [ setuptools wrapGAppsNoGuiHook gobject-introspection ];
 
     buildInputs = [
       glib

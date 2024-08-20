@@ -23,65 +23,32 @@
         "/dev" = {
           type = "tmpfs";
           source = "tmpfs";
-          options = [
-            "nosuid"
-            "strictatime"
-            "mode=755"
-            "size=65536k"
-          ];
+          options = [ "nosuid" "strictatime" "mode=755" "size=65536k" ];
         };
         "/dev/pts" = {
           type = "devpts";
           source = "devpts";
-          options = [
-            "nosuid"
-            "noexec"
-            "newinstance"
-            "ptmxmode=0666"
-            "mode=755"
-            "gid=5"
-          ];
+          options = [ "nosuid" "noexec" "newinstance" "ptmxmode=0666" "mode=755" "gid=5" ];
         };
         "/dev/shm" = {
           type = "tmpfs";
           source = "shm";
-          options = [
-            "nosuid"
-            "noexec"
-            "nodev"
-            "mode=1777"
-            "size=65536k"
-          ];
+          options = [ "nosuid" "noexec" "nodev" "mode=1777" "size=65536k" ];
         };
         "/dev/mqueue" = {
           type = "mqueue";
           source = "mqueue";
-          options = [
-            "nosuid"
-            "noexec"
-            "nodev"
-          ];
+          options = [ "nosuid" "noexec" "nodev" ];
         };
         "/sys" = {
           type = "sysfs";
           source = "sysfs";
-          options = [
-            "nosuid"
-            "noexec"
-            "nodev"
-            "ro"
-          ];
+          options = [ "nosuid" "noexec" "nodev" "ro" ];
         };
         "/sys/fs/cgroup" = {
           type = "cgroup";
           source = "cgroup";
-          options = [
-            "nosuid"
-            "noexec"
-            "nodev"
-            "relatime"
-            "ro"
-          ];
+          options = [ "nosuid" "noexec" "nodev" "relatime" "ro" ];
         };
       };
       config = writeText "config.json" (
@@ -92,13 +59,7 @@
           };
 
           linux = {
-            namespaces = map (type: { inherit type; }) [
-              "pid"
-              "network"
-              "mount"
-              "ipc"
-              "uts"
-            ];
+            namespaces = map (type: { inherit type; }) [ "pid" "network" "mount" "ipc" "uts" ];
           };
 
           root = {

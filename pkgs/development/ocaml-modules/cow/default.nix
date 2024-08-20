@@ -21,12 +21,7 @@ buildDunePackage rec {
     sha256 = "1x77lwpskda4zyikwxh500xjn90pgdwz6jm7ca7f36pyav4vl6zx";
   };
 
-  propagatedBuildInputs = [
-    xmlm
-    uri
-    ezjsonm
-    omd
-  ];
+  propagatedBuildInputs = [ xmlm uri ezjsonm omd ];
   checkInputs = [ alcotest ];
   doCheck = true;
 

@@ -8,8 +8,5 @@ mkKdeDerivation {
   pname = "knotifications";
 
   extraNativeBuildInputs = [ qttools ];
-  extraBuildInputs = [
-    qtdeclarative
-    libcanberra
-  ];
+  extraBuildInputs = [ qtdeclarative libcanberra ];
 }

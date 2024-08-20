@@ -122,14 +122,7 @@ stdenv.mkDerivation rec {
     strip-nondeterminism
     stripJavaArchivesHook
   ];
-  buildInputs = [
-    boost
-    libX11
-    libXdamage
-    nss
-    nspr
-    thrift
-  ];
+  buildInputs = [ boost libX11 libXdamage nss nspr thrift ];
 
   src = fetchFromGitHub {
     owner = "jetbrains";
@@ -197,10 +190,7 @@ stdenv.mkDerivation rec {
     runHook postConfigure
   '';
 
-  outputs = [
-    "out"
-    "unpacked"
-  ];
+  outputs = [ "out" "unpacked" ];
 
   postBuild = ''
     export JCEF_ROOT_DIR=$(realpath ..)

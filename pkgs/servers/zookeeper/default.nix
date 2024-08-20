@@ -55,11 +55,7 @@ stdenv.mkDerivation rec {
     description = "Apache Zookeeper";
     changelog = "https://zookeeper.apache.org/doc/r${version}/releasenotes.html";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      nathan-gs
-      pradeepchhetri
-      ztzg
-    ];
+    maintainers = with maintainers; [ nathan-gs pradeepchhetri ztzg ];
     platforms = platforms.unix;
     sourceProvenance = with sourceTypes; [ binaryBytecode ];
   };

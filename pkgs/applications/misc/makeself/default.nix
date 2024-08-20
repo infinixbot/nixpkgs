@@ -29,11 +29,7 @@ stdenv.mkDerivation rec {
   # when running these tests inside build, based on free disk space.
   doCheck = false;
   checkTarget = "test";
-  nativeCheckInputs = [
-    which
-    zstd
-    pbzip2
-  ];
+  nativeCheckInputs = [ which zstd pbzip2 ];
 
   sharePath = "$out/share/${pname}";
 

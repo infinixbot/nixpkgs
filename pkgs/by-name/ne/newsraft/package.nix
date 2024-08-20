@@ -25,14 +25,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    curl
-    expat
-    gumbo
-    ncurses
-    sqlite
-    yajl
-  ];
+  buildInputs = [ curl expat gumbo ncurses sqlite yajl ];
 
   makeFlags = [ "PREFIX=$(out)" ];
 

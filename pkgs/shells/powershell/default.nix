@@ -117,14 +117,7 @@ stdenv.mkDerivation rec {
     };
     updateScript = writeShellScript "update-powershell" ''
       set -o errexit
-      export PATH="${
-        lib.makeBinPath [
-          common-updater-scripts
-          curl
-          gnused
-          jq
-        ]
-      }"
+      export PATH="${lib.makeBinPath [ common-updater-scripts curl gnused jq ]}"
       NEW_VERSION=$(curl -s https://api.github.com/repos/PowerShell/PowerShell/releases/latest | jq .tag_name --raw-output | sed -e 's/v//')
 
       if [[ "${version}" = "$NEW_VERSION" ]]; then

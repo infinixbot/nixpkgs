@@ -114,31 +114,13 @@ let
       );
 
       libs =
-        lib.optionals stdenv.isLinux [
-          udev
-          libva
-          mesa
-          libnotify
-          xorg.libXScrnSaver
-          cups
-          pciutils
-        ]
+        lib.optionals stdenv.isLinux [ udev libva mesa libnotify xorg.libXScrnSaver cups pciutils ]
         ++ lib.optional pipewireSupport pipewire
         ++ lib.optional ffmpegSupport ffmpeg
         ++ lib.optional gssSupport libkrb5
         ++ lib.optional useGlvnd libglvnd
         ++ lib.optionals (cfg.enableQuakeLive or false) (
-          with xorg;
-          [
-            stdenv.cc
-            libX11
-            libXxf86dga
-            libXxf86vm
-            libXext
-            libXt
-            alsa-lib
-            zlib
-          ]
+          with xorg; [ stdenv.cc libX11 libXxf86dga libXxf86vm libXext libXt alsa-lib zlib ]
         )
         ++ lib.optional (config.pulseaudio or true) libpulseaudio
         ++ lib.optional alsaSupport alsa-lib
@@ -284,10 +266,7 @@ let
           else
             {
               genericName = "Web Browser";
-              categories = [
-                "Network"
-                "WebBrowser"
-              ];
+              categories = [ "Network" "WebBrowser" ];
               mimeTypes = [
                 "text/html"
                 "text/xml"
@@ -314,12 +293,7 @@ let
         )
       );
 
-      nativeBuildInputs = [
-        makeWrapper
-        lndir
-        jq
-        removeReferencesTo
-      ];
+      nativeBuildInputs = [ makeWrapper lndir jq removeReferencesTo ];
       buildInputs = [ browser.gtk3 ];
 
       buildCommand = ''

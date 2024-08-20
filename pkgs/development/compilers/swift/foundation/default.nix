@@ -35,21 +35,10 @@ stdenv.mkDerivation {
     })
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-    swift
-  ];
-  buildInputs = [
-    icu
-    libxml2
-    curl
-  ];
+  nativeBuildInputs = [ cmake ninja swift ];
+  buildInputs = [ icu libxml2 curl ];
   propagatedBuildInputs = [ Dispatch ];
 
   preConfigure = ''

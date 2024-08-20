@@ -38,10 +38,7 @@ in
 
     extraOptions = mkOption {
       type = listOf str;
-      default = [
-        "--config"
-        "/var/lib/music-assistant"
-      ];
+      default = [ "--config" "/var/lib/music-assistant" ];
       example = [
         "--log-level"
         "DEBUG"

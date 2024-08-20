@@ -27,11 +27,7 @@ in
 pkgs.stdenv.mkDerivation {
   name = "btrfs-fs.img${lib.optionalString compressImage ".zst"}";
 
-  nativeBuildInputs = [
-    btrfs-progs
-    libfaketime
-    fakeroot
-  ] ++ lib.optional compressImage zstd;
+  nativeBuildInputs = [ btrfs-progs libfaketime fakeroot ] ++ lib.optional compressImage zstd;
 
   buildCommand = ''
     ${if compressImage then "img=temp.img" else "img=$out"}

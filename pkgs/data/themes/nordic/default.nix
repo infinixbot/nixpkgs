@@ -81,10 +81,7 @@ stdenvNoCC.mkDerivation rec {
 
   sourceRoot = ".";
 
-  outputs = [
-    "out"
-    "sddm"
-  ];
+  outputs = [ "out" "sddm" ];
 
   nativeBuildInputs = [ jdupes ];
 

@@ -15,10 +15,7 @@
 
 mkDerivation {
   pname = "konqueror";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     kcmutils
     khtml

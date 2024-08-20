@@ -17,10 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-39jXqCXAwg/C+9gEXiS1X58OD61nMNQifnhgVGEF6ck=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   meta = with lib; {
     description = "Sensitive data detection tool capable of scanning source code repositories for passwords, key files, and more";

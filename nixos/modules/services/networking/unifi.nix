@@ -10,10 +10,7 @@ let
   cfg = config.services.unifi;
   stateDir = "/var/lib/unifi";
   cmd = lib.escapeShellArgs (
-    [
-      "@${cfg.jrePackage}/bin/java"
-      "java"
-    ]
+    [ "@${cfg.jrePackage}/bin/java" "java" ]
     ++ lib.optionals (lib.versionAtLeast (lib.getVersion cfg.jrePackage) "16") [
       "--add-opens=java.base/java.lang=ALL-UNNAMED"
       "--add-opens=java.base/java.time=ALL-UNNAMED"
@@ -24,10 +21,7 @@ let
     ++ (lib.optional (cfg.initialJavaHeapSize != null) "-Xms${(toString cfg.initialJavaHeapSize)}m")
     ++ (lib.optional (cfg.maximumJavaHeapSize != null) "-Xmx${(toString cfg.maximumJavaHeapSize)}m")
     ++ cfg.extraJvmOptions
-    ++ [
-      "-jar"
-      "${stateDir}/lib/ace.jar"
-    ]
+    ++ [ "-jar" "${stateDir}/lib/ace.jar" ]
   );
 in
 {
@@ -143,10 +137,7 @@ in
       # This a HACK to fix missing dependencies of dynamic libs extracted from jars
       environment.LD_LIBRARY_PATH = with pkgs.stdenv; "${cc.cc.lib}/lib";
       # Make sure package upgrades trigger a service restart
-      restartTriggers = [
-        cfg.unifiPackage
-        cfg.mongodbPackage
-      ];
+      restartTriggers = [ cfg.unifiPackage cfg.mongodbPackage ];
 
       serviceConfig = {
         Type = "simple";
@@ -226,17 +217,6 @@ in
       "unifi"
       "dataDir"
     ] "You should move contents of dataDir to /var/lib/unifi/data")
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "unifi"
-        "openPorts"
-      ]
-      [
-        "services"
-        "unifi"
-        "openFirewall"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "unifi" "openPorts" ] [ "services" "unifi" "openFirewall" ])
   ];
 }

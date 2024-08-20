@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
     patchShebangs BUILDSCRIPT_MULTIPROC.bash44
   '';
 
-  buildInputs = [
-    openssl
-    sqlite
-  ];
+  buildInputs = [ openssl sqlite ];
 
   buildPhase = ''
     runHook preBuild

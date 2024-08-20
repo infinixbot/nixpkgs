@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs = [ boost ];
-  nativeBuildInputs = [
-    cmake
-    git
-  ];
+  nativeBuildInputs = [ cmake git ];
 
   installPhase = ''
     mkdir -p $out/bin

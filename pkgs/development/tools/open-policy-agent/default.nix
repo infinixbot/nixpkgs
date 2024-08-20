@@ -39,11 +39,7 @@ buildGoModule rec {
 
   subPackages = [ "." ];
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X github.com/open-policy-agent/opa/version.Version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X github.com/open-policy-agent/opa/version.Version=${version}" ];
 
   tags = lib.optional enableWasmEval (
     builtins.trace (
@@ -106,9 +102,6 @@ buildGoModule rec {
       in microservices, Kubernetes, CI/CD pipelines, API gateways, and more.
     '';
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      lewo
-      jk
-    ];
+    maintainers = with maintainers; [ lewo jk ];
   };
 }

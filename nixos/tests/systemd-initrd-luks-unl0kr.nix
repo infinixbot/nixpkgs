@@ -15,10 +15,7 @@ import ./make-test-python.nix (
       { pkgs, ... }:
       {
         virtualisation = {
-          emptyDiskImages = [
-            512
-            512
-          ];
+          emptyDiskImages = [ 512 512 ];
           useBootLoader = true;
           mountHostNixStore = true;
           useEFIBoot = true;

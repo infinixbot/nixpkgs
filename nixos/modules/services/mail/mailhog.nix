@@ -26,11 +26,7 @@ in
   ###### interface
 
   imports = [
-    (mkRemovedOptionModule [
-      "services"
-      "mailhog"
-      "user"
-    ] "")
+    (mkRemovedOptionModule [ "services" "mailhog" "user" ] "")
   ];
 
   options = {
@@ -39,10 +35,7 @@ in
       enable = mkEnableOption "MailHog, web and API based SMTP testing";
 
       storage = mkOption {
-        type = types.enum [
-          "maildir"
-          "memory"
-        ];
+        type = types.enum [ "maildir" "memory" ];
         default = "memory";
         description = "Store mails on disk or in memory.";
       };

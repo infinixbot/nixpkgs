@@ -40,10 +40,7 @@ stdenv.mkDerivation rec {
       --replace '#!/bin/bash' '${stdenv.shell}'
   '';
 
-  nativeBuildInputs = [
-    m4
-    removeReferencesTo
-  ];
+  nativeBuildInputs = [ m4 removeReferencesTo ];
 
   buildInputs = [
     curl
@@ -64,18 +61,13 @@ stdenv.mkDerivation rec {
     # tracked upstream here: https://github.com/Unidata/netcdf-c/issues/2715
     lib.optionalString stdenv.cc.isClang "-Wno-error=incompatible-function-pointer-types";
 
-  configureFlags =
-    [
-      "--enable-netcdf-4"
-      "--enable-dap"
-      "--enable-shared"
-      "--disable-dap-remote-tests"
-      "--with-plugin-dir=${placeholder "out"}/lib/hdf5-plugins"
-    ]
-    ++ (lib.optionals mpiSupport [
-      "--enable-parallel-tests"
-      "CC=${lib.getDev mpi}/bin/mpicc"
-    ]);
+  configureFlags = [
+    "--enable-netcdf-4"
+    "--enable-dap"
+    "--enable-shared"
+    "--disable-dap-remote-tests"
+    "--with-plugin-dir=${placeholder "out"}/lib/hdf5-plugins"
+  ] ++ (lib.optionals mpiSupport [ "--enable-parallel-tests" "CC=${lib.getDev mpi}/bin/mpicc" ]);
 
   enableParallelBuilding = true;
 

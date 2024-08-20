@@ -23,15 +23,8 @@ stdenv.mkDerivation (finalAttrs: {
     }
     .${stdenv.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    rpmextract
-  ];
-  buildInputs = [
-    libX11
-    libXext
-    stdenv.cc.cc.libgcc or null
-  ];
+  nativeBuildInputs = [ autoPatchelfHook rpmextract ];
+  buildInputs = [ libX11 libXext stdenv.cc.cc.libgcc or null ];
 
   unpackPhase = ''
     rpmextract $src

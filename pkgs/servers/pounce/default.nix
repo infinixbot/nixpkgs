@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-6PGiaU5sOwqO4V2PKJgIi3kI2jXsBOldEH51D7Sx9tg=";
   };
 
-  buildInputs = [
-    libressl
-    libxcrypt
-  ];
+  buildInputs = [ libressl libxcrypt ];
 
   nativeBuildInputs = [ pkg-config ];
 

@@ -113,10 +113,7 @@ buildGoModule rec {
         "TestDuplicateHook"
       ];
     in
-    [
-      "-skip"
-      "${builtins.concatStringsSep "|" skippedTests}"
-    ];
+    [ "-skip" "${builtins.concatStringsSep "|" skippedTests}" ];
 
   postInstall = lib.optionalString (containerRuntimePath != null) ''
     mkdir -p $out/etc/nvidia-container-runtime

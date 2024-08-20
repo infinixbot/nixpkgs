@@ -24,10 +24,7 @@ rustPlatform.buildRustPackage rec {
 
   buildFeatures = [ "full" ];
 
-  nativeBuildInputs = [
-    installShellFiles
-    pkg-config
-  ];
+  nativeBuildInputs = [ installShellFiles pkg-config ];
   buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ Security ];
 
   checkFlags = [

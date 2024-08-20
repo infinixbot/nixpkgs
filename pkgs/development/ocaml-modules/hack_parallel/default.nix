@@ -40,11 +40,7 @@ buildDunePackage rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  propagatedBuildInputs = [
-    core
-    core_unix
-    sqlite
-  ];
+  propagatedBuildInputs = [ core core_unix sqlite ];
 
   meta = {
     description = "Core parallel and shared memory library used by Hack, Flow, and Pyre";

@@ -35,18 +35,8 @@ stdenv.mkDerivation rec {
     "--without-libfam"
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    groff
-    pkg-config
-  ];
-  buildInputs = [
-    guile
-    gtk2
-    flex
-    gawk
-    perl
-  ];
+  nativeBuildInputs = [ autoreconfHook groff pkg-config ];
+  buildInputs = [ guile gtk2 flex gawk perl ];
 
   meta = with lib; {
     description = "Full GPL'd suite of Electronic Design Automation tools";

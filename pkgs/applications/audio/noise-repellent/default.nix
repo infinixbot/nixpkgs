@@ -26,12 +26,7 @@ stdenv.mkDerivation rec {
     "--buildtype=release"
   ];
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    cmake
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config cmake ];
   buildInputs = [
     libspecbleach
     lv2

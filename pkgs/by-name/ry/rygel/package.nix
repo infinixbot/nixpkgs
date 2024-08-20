@@ -33,10 +33,7 @@ stdenv.mkDerivation (finalAttrs: {
   version = "0.42.6";
 
   # TODO: split out lib
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/rygel/${lib.versions.majorMinor finalAttrs.version}/rygel-${finalAttrs.version}.tar.xz";

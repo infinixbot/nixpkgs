@@ -14,11 +14,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-OkiQl7tBFUlfO9ha54KFK3CXxVbZUACI10tvo429Ev8=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
   patches = [
     ./01-cygwin.patch

@@ -29,14 +29,7 @@ stdenv.mkDerivation rec {
   '';
 
   buildInputs =
-    [
-      postgresql
-      sqlite
-      zlib
-      ncurses
-      openssl
-      readline
-    ]
+    [ postgresql sqlite zlib ncurses openssl readline ]
     ++ lib.optionals stdenv.hostPlatform.isDarwin [
       CoreFoundation
       IOKit
@@ -65,14 +58,8 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Enterprise ready, Network Backup Tool";
     homepage = "http://bacula.org/";
-    license = with licenses; [
-      agpl3Only
-      bsd2
-    ];
-    maintainers = with maintainers; [
-      lovek323
-      eleanor
-    ];
+    license = with licenses; [ agpl3Only bsd2 ];
+    maintainers = with maintainers; [ lovek323 eleanor ];
     platforms = platforms.all;
   };
 }

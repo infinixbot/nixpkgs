@@ -91,15 +91,9 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
   buildInputs =
-    [
-      nettle
-      libidn
-    ]
+    [ nettle libidn ]
     ++ lib.optionals dbusSupport [ dbus ]
-    ++ lib.optionals stdenv.isLinux [
-      libnetfilter_conntrack
-      nftables
-    ];
+    ++ lib.optionals stdenv.isLinux [ libnetfilter_conntrack nftables ];
 
   passthru.tests = {
     prometheus-exporter = nixosTests.prometheus-exporters.dnsmasq;
@@ -116,10 +110,6 @@ stdenv.mkDerivation rec {
     license = licenses.gpl2Only;
     mainProgram = "dnsmasq";
     platforms = with platforms; linux ++ darwin;
-    maintainers = with maintainers; [
-      eelco
-      fpletz
-      globin
-    ];
+    maintainers = with maintainers; [ eelco fpletz globin ];
   };
 }

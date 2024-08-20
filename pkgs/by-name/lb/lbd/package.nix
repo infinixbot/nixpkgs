@@ -34,15 +34,7 @@ stdenvNoCC.mkDerivation {
     cp lbd $out/share/lbd/
     makeWrapper ${lib.getExe bash} $out/bin/lbd \
       --prefix PATH : "${
-        lib.makeBinPath [
-          coreutils
-          diffutils
-          gawk
-          gnugrep
-          gnused
-          host
-          netcat-openbsd
-        ]
+        lib.makeBinPath [ coreutils diffutils gawk gnugrep gnused host netcat-openbsd ]
       }" \
       --add-flags "$out/share/lbd/lbd"
     runHook postInstall

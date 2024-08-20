@@ -132,20 +132,14 @@ in
       '';
     };
 
-    hardware.sane.drivers.scanSnap.package =
-      mkPackageOption pkgs
-        [
-          "sane-drivers"
-          "epjitsu"
-        ]
-        {
-          extraDescription = ''
-            Useful if you want to extract the driver files yourself.
+    hardware.sane.drivers.scanSnap.package = mkPackageOption pkgs [ "sane-drivers" "epjitsu" ] {
+      extraDescription = ''
+        Useful if you want to extract the driver files yourself.
 
-            The process is described in the {file}`/etc/sane.d/epjitsu.conf` file in
-            the `sane-backends` package.
-          '';
-        };
+        The process is described in the {file}`/etc/sane.d/epjitsu.conf` file in
+        the `sane-backends` package.
+      '';
+    };
 
     hardware.sane.openFirewall = mkOption {
       type = types.bool;
@@ -215,10 +209,7 @@ in
       systemd.sockets.saned = {
         description = "saned incoming socket";
         wantedBy = [ "sockets.target" ];
-        listenStreams = [
-          "0.0.0.0:6566"
-          "[::]:6566"
-        ];
+        listenStreams = [ "0.0.0.0:6566" "[::]:6566" ];
         socketConfig = {
           # saned needs to distinguish between IPv4 and IPv6 to open matching data sockets.
           BindIPv6Only = "ipv6-only";

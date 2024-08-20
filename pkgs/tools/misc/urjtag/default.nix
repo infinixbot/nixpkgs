@@ -48,10 +48,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "http://urjtag.org/";
     description = "Universal JTAG library, server and tools";
-    license = with licenses; [
-      gpl2Plus
-      lgpl21Plus
-    ];
+    license = with licenses; [ gpl2Plus lgpl21Plus ];
     maintainers = with maintainers; [ AndersonTorres ];
     platforms = platforms.linux;
   };

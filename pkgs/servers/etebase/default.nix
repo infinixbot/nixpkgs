@@ -73,9 +73,6 @@ python.pkgs.buildPythonApplication rec {
     mainProgram = "etebase-server";
     changelog = "https://github.com/etesync/server/blob/${version}/ChangeLog.md";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [
-      felschr
-      phaer
-    ];
+    maintainers = with maintainers; [ felschr phaer ];
   };
 }

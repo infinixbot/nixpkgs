@@ -17,10 +17,7 @@ mkDerivation {
     license = with lib.licenses; [ gpl2 ];
     maintainers = [ ];
   };
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     kcompletion
     kconfig
@@ -29,8 +26,5 @@ mkDerivation {
     ki18n
     kwidgetsaddons
   ];
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 }

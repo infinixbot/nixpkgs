@@ -24,22 +24,12 @@ stdenv.mkDerivation {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    makeWrapper
-    ocaml
-    perl
-  ];
+  nativeBuildInputs = [ makeWrapper ocaml perl ];
   installPhase = ''
     mkdir -p $out/bin
     cp -p pdfsandwich $out/bin
     wrapProgram $out/bin/pdfsandwich --prefix PATH : ${
-      lib.makeBinPath [
-        imagemagick
-        ghostscript
-        poppler_utils
-        unpaper
-        tesseract
-      ]
+      lib.makeBinPath [ imagemagick ghostscript poppler_utils unpaper tesseract ]
     }
 
     mkdir -p $out/man/man1

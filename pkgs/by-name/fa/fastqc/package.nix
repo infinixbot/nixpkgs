@@ -24,16 +24,10 @@ stdenv.mkDerivation (finalAttrs: {
   dontBuild = true;
 
   nativeBuildInputs =
-    [
-      makeWrapper
-      imagemagick
-    ]
+    [ makeWrapper imagemagick ]
     ++ lib.optional stdenv.isLinux copyDesktopItems # postInstallHook
     ++ lib.optional stdenv.isDarwin desktopToDarwinBundle; # fixupOutputHook
-  buildInputs = [
-    jre
-    perl
-  ];
+  buildInputs = [ jre perl ];
 
   desktopItem = (
     makeDesktopItem {
@@ -85,10 +79,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     homepage = "https://www.bioinformatics.babraham.ac.uk/projects/fastqc/";
     sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
-    license = with lib.licenses; [
-      gpl3Plus
-      asl20
-    ];
+    license = with lib.licenses; [ gpl3Plus asl20 ];
     maintainers = [ lib.maintainers.dflores ];
     mainProgram = "fastqc";
     platforms = lib.platforms.unix;

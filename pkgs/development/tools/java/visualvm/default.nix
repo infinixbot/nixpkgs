@@ -52,9 +52,6 @@ stdenv.mkDerivation rec {
     homepage = "https://visualvm.github.io";
     license = licenses.gpl2ClasspathPlus;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      michalrus
-      moaxcp
-    ];
+    maintainers = with maintainers; [ michalrus moaxcp ];
   };
 }

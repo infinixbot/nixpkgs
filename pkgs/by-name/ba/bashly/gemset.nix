@@ -30,10 +30,7 @@
     version = "1.0.0";
   };
   completely = {
-    dependencies = [
-      "colsole"
-      "mister_bin"
-    ];
+    dependencies = [ "colsole" "mister_bin" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -96,10 +93,7 @@
     version = "0.2.1";
   };
   mister_bin = {
-    dependencies = [
-      "colsole"
-      "docopt_ng"
-    ];
+    dependencies = [ "colsole" "docopt_ng" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -172,11 +166,7 @@
     version = "3.1.0";
   };
   strings = {
-    dependencies = [
-      "strings-ansi"
-      "unicode-display_width"
-      "unicode_utils"
-    ];
+    dependencies = [ "strings-ansi" "unicode-display_width" "unicode_utils" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -207,14 +197,7 @@
     version = "0.6.0";
   };
   tty-markdown = {
-    dependencies = [
-      "kramdown"
-      "pastel"
-      "rouge"
-      "strings"
-      "tty-color"
-      "tty-screen"
-    ];
+    dependencies = [ "kramdown" "pastel" "rouge" "strings" "tty-color" "tty-screen" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

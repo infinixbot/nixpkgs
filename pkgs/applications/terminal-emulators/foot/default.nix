@@ -194,11 +194,7 @@ stdenv.mkDerivation {
 
   strictDeps = true;
 
-  outputs = [
-    "out"
-    "terminfo"
-    "themes"
-  ];
+  outputs = [ "out" "terminfo" "themes" ];
 
   passthru.tests = {
     clang-default-compilation = foot.override {
@@ -222,10 +218,7 @@ stdenv.mkDerivation {
     changelog = "https://codeberg.org/dnkl/foot/releases/tag/${version}";
     description = "Fast, lightweight and minimalistic Wayland terminal emulator";
     license = licenses.mit;
-    maintainers = [
-      maintainers.sternenseemann
-      maintainers.abbe
-    ];
+    maintainers = [ maintainers.sternenseemann maintainers.abbe ];
     platforms = platforms.linux;
     mainProgram = "foot";
   };

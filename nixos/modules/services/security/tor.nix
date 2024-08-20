@@ -86,12 +86,7 @@ let
     '';
   };
   optionPort = mkOption {
-    type =
-      with types;
-      nullOr (oneOf [
-        port
-        (enum [ "auto" ])
-      ]);
+    type = with types; nullOr (oneOf [ port (enum [ "auto" ]) ]);
     default = null;
   };
   optionPorts =
@@ -224,12 +219,7 @@ let
             (submodule (
               { config, ... }:
               let
-                flags = [
-                  "IPv4Only"
-                  "IPv6Only"
-                  "NoAdvertise"
-                  "NoListen"
-                ];
+                flags = [ "IPv4Only" "IPv6Only" "NoAdvertise" "NoListen" ];
               in
               {
                 options =
@@ -298,15 +288,7 @@ let
         lib.mapAttrs (
           k: v:
           # Not necesssary, but prettier rendering
-          if
-            elem k [
-              "AutomapHostsSuffixes"
-              "DirPolicy"
-              "ExitPolicy"
-              "SocksPolicy"
-            ]
-            && v != [ ]
-          then
+          if elem k [ "AutomapHostsSuffixes" "DirPolicy" "ExitPolicy" "SocksPolicy" ] && v != [ ] then
             concatStringsSep "," v
           else
             v
@@ -323,21 +305,12 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "tor"
-        "client"
-        "dns"
-        "automapHostsSuffixes"
-      ]
-      [
-        "services"
-        "tor"
-        "settings"
-        "AutomapHostsSuffixes"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "tor" "client" "dns" "automapHostsSuffixes" ] [
+      "services"
+      "tor"
+      "settings"
+      "AutomapHostsSuffixes"
+    ])
     (mkRemovedOptionModule [
       "services"
       "tor"
@@ -371,20 +344,12 @@ in
       "client"
       "socksListenAddressFaster"
     ] "Use services.tor.settings.SOCKSPort instead.")
-    (mkRenamedOptionModule
-      [
-        "services"
-        "tor"
-        "client"
-        "socksPolicy"
-      ]
-      [
-        "services"
-        "tor"
-        "settings"
-        "SocksPolicy"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "tor" "client" "socksPolicy" ] [
+      "services"
+      "tor"
+      "settings"
+      "SocksPolicy"
+    ])
     (mkRemovedOptionModule [
       "services"
       "tor"
@@ -399,204 +364,92 @@ in
       "transparentProxy"
       "listenAddress"
     ] "Use services.tor.settings.TransPort instead.")
-    (mkRenamedOptionModule
-      [
-        "services"
-        "tor"
-        "controlPort"
-      ]
-      [
-        "services"
-        "tor"
-        "settings"
-        "ControlPort"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "tor" "controlPort" ] [
+      "services"
+      "tor"
+      "settings"
+      "ControlPort"
+    ])
     (mkRemovedOptionModule [
       "services"
       "tor"
       "extraConfig"
     ] "Please use services.tor.settings instead.")
-    (mkRenamedOptionModule
-      [
-        "services"
-        "tor"
-        "hiddenServices"
-      ]
-      [
-        "services"
-        "tor"
-        "relay"
-        "onionServices"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "tor"
-        "relay"
-        "accountingMax"
-      ]
-      [
-        "services"
-        "tor"
-        "settings"
-        "AccountingMax"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "tor"
-        "relay"
-        "accountingStart"
-      ]
-      [
-        "services"
-        "tor"
-        "settings"
-        "AccountingStart"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "tor"
-        "relay"
-        "address"
-      ]
-      [
-        "services"
-        "tor"
-        "settings"
-        "Address"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "tor"
-        "relay"
-        "bandwidthBurst"
-      ]
-      [
-        "services"
-        "tor"
-        "settings"
-        "BandwidthBurst"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "tor"
-        "relay"
-        "bandwidthRate"
-      ]
-      [
-        "services"
-        "tor"
-        "settings"
-        "BandwidthRate"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "tor"
-        "relay"
-        "bridgeTransports"
-      ]
-      [
-        "services"
-        "tor"
-        "settings"
-        "ServerTransportPlugin"
-        "transports"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "tor"
-        "relay"
-        "contactInfo"
-      ]
-      [
-        "services"
-        "tor"
-        "settings"
-        "ContactInfo"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "tor"
-        "relay"
-        "exitPolicy"
-      ]
-      [
-        "services"
-        "tor"
-        "settings"
-        "ExitPolicy"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "tor" "hiddenServices" ] [
+      "services"
+      "tor"
+      "relay"
+      "onionServices"
+    ])
+    (mkRenamedOptionModule [ "services" "tor" "relay" "accountingMax" ] [
+      "services"
+      "tor"
+      "settings"
+      "AccountingMax"
+    ])
+    (mkRenamedOptionModule [ "services" "tor" "relay" "accountingStart" ] [
+      "services"
+      "tor"
+      "settings"
+      "AccountingStart"
+    ])
+    (mkRenamedOptionModule [ "services" "tor" "relay" "address" ] [
+      "services"
+      "tor"
+      "settings"
+      "Address"
+    ])
+    (mkRenamedOptionModule [ "services" "tor" "relay" "bandwidthBurst" ] [
+      "services"
+      "tor"
+      "settings"
+      "BandwidthBurst"
+    ])
+    (mkRenamedOptionModule [ "services" "tor" "relay" "bandwidthRate" ] [
+      "services"
+      "tor"
+      "settings"
+      "BandwidthRate"
+    ])
+    (mkRenamedOptionModule [ "services" "tor" "relay" "bridgeTransports" ] [
+      "services"
+      "tor"
+      "settings"
+      "ServerTransportPlugin"
+      "transports"
+    ])
+    (mkRenamedOptionModule [ "services" "tor" "relay" "contactInfo" ] [
+      "services"
+      "tor"
+      "settings"
+      "ContactInfo"
+    ])
+    (mkRenamedOptionModule [ "services" "tor" "relay" "exitPolicy" ] [
+      "services"
+      "tor"
+      "settings"
+      "ExitPolicy"
+    ])
     (mkRemovedOptionModule [
       "services"
       "tor"
       "relay"
       "isBridge"
     ] "Use services.tor.relay.role instead.")
-    (mkRemovedOptionModule [
+    (mkRemovedOptionModule [ "services" "tor" "relay" "isExit" ] "Use services.tor.relay.role instead.")
+    (mkRenamedOptionModule [ "services" "tor" "relay" "nickname" ] [
       "services"
       "tor"
-      "relay"
-      "isExit"
-    ] "Use services.tor.relay.role instead.")
-    (mkRenamedOptionModule
-      [
-        "services"
-        "tor"
-        "relay"
-        "nickname"
-      ]
-      [
-        "services"
-        "tor"
-        "settings"
-        "Nickname"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "tor"
-        "relay"
-        "port"
-      ]
-      [
-        "services"
-        "tor"
-        "settings"
-        "ORPort"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "tor"
-        "relay"
-        "portSpec"
-      ]
-      [
-        "services"
-        "tor"
-        "settings"
-        "ORPort"
-      ]
-    )
+      "settings"
+      "Nickname"
+    ])
+    (mkRenamedOptionModule [ "services" "tor" "relay" "port" ] [ "services" "tor" "settings" "ORPort" ])
+    (mkRenamedOptionModule [ "services" "tor" "relay" "portSpec" ] [
+      "services"
+      "tor"
+      "settings"
+      "ORPort"
+    ])
   ];
 
   options = {
@@ -697,12 +550,7 @@ in
         };
 
         role = mkOption {
-          type = types.enum [
-            "exit"
-            "relay"
-            "bridge"
-            "private-bridge"
-          ];
+          type = types.enum [ "exit" "relay" "bridge" "private-bridge" ];
           description = ''
             Your role in Tor network. There're several options:
 
@@ -832,10 +680,7 @@ in
                       {
                         options = {
                           authType = mkOption {
-                            type = types.enum [
-                              "basic"
-                              "stealth"
-                            ];
+                            type = types.enum [ "basic" "stealth" ];
                             description = ''
                               Either `"basic"` for a general-purpose authorization protocol
                               or `"stealth"` for a less scalable protocol
@@ -912,12 +757,7 @@ in
                 };
                 options.version = mkOption {
                   description = (descriptionGeneric "HiddenServiceVersion");
-                  type =
-                    with types;
-                    nullOr (enum [
-                      2
-                      3
-                    ]);
+                  type = with types; nullOr (enum [ 2 3 ]);
                   default = null;
                 };
                 options.settings = mkOption {
@@ -929,14 +769,7 @@ in
                   type = types.submodule {
                     freeformType =
                       with types;
-                      (attrsOf (
-                        nullOr (oneOf [
-                          str
-                          int
-                          bool
-                          (listOf str)
-                        ])
-                      ))
+                      (attrsOf (nullOr (oneOf [ str int bool (listOf str) ])))
                       // {
                         description = "settings option";
                       };
@@ -989,14 +822,7 @@ in
         type = types.submodule {
           freeformType =
             with types;
-            (attrsOf (
-              nullOr (oneOf [
-                str
-                int
-                bool
-                (listOf str)
-              ])
-            ))
+            (attrsOf (nullOr (oneOf [ str int bool (listOf str) ])))
             // {
               description = "settings option";
             };
@@ -1012,10 +838,7 @@ in
           options.AuthoritativeDirectory = optionBool "AuthoritativeDirectory";
           options.AutomapHostsOnResolve = optionBool "AutomapHostsOnResolve";
           options.AutomapHostsSuffixes = optionStrings "AutomapHostsSuffixes" // {
-            default = [
-              ".onion"
-              ".exit"
-            ];
+            default = [ ".onion" ".exit" ];
             example = [ ".onion" ];
           };
           options.BandwidthBurst = optionBandwidth "BandwidthBurst";
@@ -1058,11 +881,7 @@ in
                   (submodule (
                     { config, ... }:
                     let
-                      flags = [
-                        "GroupWritable"
-                        "RelaxDirModeCheck"
-                        "WorldWritable"
-                      ];
+                      flags = [ "GroupWritable" "RelaxDirModeCheck" "WorldWritable" ];
                     in
                     {
                       options =
@@ -1222,18 +1041,7 @@ in
           options.PublishHidServDescriptors = optionBool "PublishHidServDescriptors";
           options.PublishServerDescriptor = mkOption {
             description = (descriptionGeneric "PublishServerDescriptor");
-            type =
-              with types;
-              nullOr (enum [
-                false
-                true
-                0
-                1
-                "0"
-                "1"
-                "v3"
-                "bridge"
-              ]);
+            type = with types; nullOr (enum [ false true 0 1 "0" "1" "v3" "bridge" ]);
             default = null;
           };
           options.ReducedExitPolicy = optionBool "ReducedExitPolicy";
@@ -1262,12 +1070,7 @@ in
                       transports = mkOption {
                         description = "List of pluggable transports.";
                         type = listOf str;
-                        example = [
-                          "obfs2"
-                          "obfs3"
-                          "obfs4"
-                          "scramblesuit"
-                        ];
+                        example = [ "obfs2" "obfs3" "obfs4" "scramblesuit" ];
                       };
                       exec = mkOption {
                         type = types.str;
@@ -1301,14 +1104,7 @@ in
           options.TransPort = optionIsolablePorts "TransPort";
           options.TransProxyType = mkOption {
             description = (descriptionGeneric "TransProxyType");
-            type =
-              with types;
-              nullOr (enum [
-                "default"
-                "TPROXY"
-                "ipfw"
-                "pf-divert"
-              ]);
+            type = with types; nullOr (enum [ "default" "TPROXY" "ipfw" "pf-divert" ]);
             default = null;
           };
           #options.TruncateLogFile
@@ -1391,18 +1187,12 @@ in
         optionalAttrs (cfg.relay.role != "exit") {
           ExitPolicy = mkForce [ "reject *:*" ];
         }
-        //
-          optionalAttrs
-            (elem cfg.relay.role [
-              "bridge"
-              "private-bridge"
-            ])
-            {
-              BridgeRelay = true;
-              ExtORPort.port = mkDefault "auto";
-              ServerTransportPlugin.transports = mkDefault [ "obfs4" ];
-              ServerTransportPlugin.exec = mkDefault "${lib.getExe pkgs.obfs4} managed";
-            }
+        // optionalAttrs (elem cfg.relay.role [ "bridge" "private-bridge" ]) {
+          BridgeRelay = true;
+          ExtORPort.port = mkDefault "auto";
+          ServerTransportPlugin.transports = mkDefault [ "obfs4" ];
+          ServerTransportPlugin.exec = mkDefault "${lib.getExe pkgs.obfs4} managed";
+        }
         // optionalAttrs (cfg.relay.role == "private-bridge") {
           ExtraInfoStatistics = false;
           PublishServerDescriptor = false;
@@ -1559,10 +1349,7 @@ in
         UMask = "0066";
         BindPaths = [ stateDir ];
         BindReadOnlyPaths =
-          [
-            storeDir
-            "/etc"
-          ]
+          [ storeDir "/etc" ]
           ++ optionals config.services.resolved.enable [
             "/run/systemd/resolve/stub-resolv.conf"
             "/run/systemd/resolve/resolv.conf"
@@ -1592,12 +1379,7 @@ in
         ProtectProc = "invisible";
         ProtectSystem = "strict";
         RemoveIPC = true;
-        RestrictAddressFamilies = [
-          "AF_UNIX"
-          "AF_INET"
-          "AF_INET6"
-          "AF_NETLINK"
-        ];
+        RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" "AF_NETLINK" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;

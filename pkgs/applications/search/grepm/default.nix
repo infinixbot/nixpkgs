@@ -17,10 +17,7 @@ stdenv.mkDerivation {
 
   dontUnpack = true;
 
-  buildInputs = [
-    perlPackages.grepmail
-    mutt
-  ];
+  buildInputs = [ perlPackages.grepmail mutt ];
 
   installPhase = ''
     mkdir -p $out/bin

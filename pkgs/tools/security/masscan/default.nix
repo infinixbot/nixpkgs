@@ -33,10 +33,7 @@ stdenv.mkDerivation rec {
     substituteInPlace Makefile --replace "-pm755" "-pDm755"
   '';
 
-  nativeBuildInputs = [
-    makeWrapper
-    installShellFiles
-  ];
+  nativeBuildInputs = [ makeWrapper installShellFiles ];
 
   makeFlags = [
     "PREFIX=$(out)"

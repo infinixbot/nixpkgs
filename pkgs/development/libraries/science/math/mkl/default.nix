@@ -73,17 +73,9 @@ stdenvNoCC.mkDerivation (
 
     sourceRoot = if stdenvNoCC.isDarwin then "." else null;
 
-    nativeBuildInputs =
-      [ validatePkgConfig ]
-      ++ (
-        if stdenvNoCC.isDarwin then
-          [
-            _7zz
-            cctools
-          ]
-        else
-          [ rpmextract ]
-      );
+    nativeBuildInputs = [
+      validatePkgConfig
+    ] ++ (if stdenvNoCC.isDarwin then [ _7zz cctools ] else [ rpmextract ]);
 
     buildPhase =
       if stdenvNoCC.isDarwin then
@@ -208,10 +200,7 @@ stdenvNoCC.mkDerivation (
       homepage = "https://software.intel.com/en-us/mkl";
       sourceProvenance = with sourceTypes; [ binaryNativeCode ];
       license = licenses.issl;
-      platforms = [
-        "x86_64-linux"
-        "x86_64-darwin"
-      ];
+      platforms = [ "x86_64-linux" "x86_64-darwin" ];
       maintainers = with maintainers; [ bhipple ];
     };
   }

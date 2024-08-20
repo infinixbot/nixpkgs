@@ -39,11 +39,7 @@ bash.runCommand "${pname}-${version}"
       result:
       bash.runCommand "${pname}-simple-program-${version}"
         {
-          nativeBuildInputs = [
-            gcc
-            binutils
-            result
-          ];
+          nativeBuildInputs = [ gcc binutils result ];
         }
         ''
           cat <<EOF >> test.c

@@ -24,10 +24,7 @@
       escapedString = ''
         '\
       '';
-      tuple = mkTuple [
-        (mkInt32 1)
-        [ "foo" ]
-      ];
+      tuple = mkTuple [ (mkInt32 1) [ "foo" ] ];
       maybe1 = mkNothing type.string;
       maybe2 = mkJust (mkUint32 4);
       variant = mkVariant "foo";

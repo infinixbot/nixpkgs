@@ -53,51 +53,25 @@ in
   };
 
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "desktopManager"
-        "plasma6"
-        "enable"
-      ]
-      [
-        "services"
-        "desktopManager"
-        "plasma6"
-        "enable"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "desktopManager"
-        "plasma6"
-        "enableQt5Integration"
-      ]
-      [
-        "services"
-        "desktopManager"
-        "plasma6"
-        "enableQt5Integration"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "desktopManager"
-        "plasma6"
-        "notoPackage"
-      ]
-      [
-        "services"
-        "desktopManager"
-        "plasma6"
-        "notoPackage"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "xserver" "desktopManager" "plasma6" "enable" ] [
+      "services"
+      "desktopManager"
+      "plasma6"
+      "enable"
+    ])
+    (lib.mkRenamedOptionModule [
+      "services"
+      "xserver"
+      "desktopManager"
+      "plasma6"
+      "enableQt5Integration"
+    ] [ "services" "desktopManager" "plasma6" "enableQt5Integration" ])
+    (lib.mkRenamedOptionModule [ "services" "xserver" "desktopManager" "plasma6" "notoPackage" ] [
+      "services"
+      "desktopManager"
+      "plasma6"
+      "notoPackage"
+    ])
   ];
 
   config = mkIf cfg.enable {
@@ -223,12 +197,7 @@ in
         kio-extras-kf5
       ]
       # Optional and hardware support features
-      ++ lib.optionals config.hardware.bluetooth.enable [
-        bluedevil
-        bluez-qt
-        pkgs.openobex
-        pkgs.obexftp
-      ]
+      ++ lib.optionals config.hardware.bluetooth.enable [ bluedevil bluez-qt pkgs.openobex pkgs.obexftp ]
       ++ lib.optional config.networking.networkmanager.enable plasma-nm
       ++ lib.optional config.hardware.pulseaudio.enable plasma-pa
       ++ lib.optional config.services.pipewire.pulse.enable plasma-pa
@@ -264,15 +233,9 @@ in
     # Enable GTK applications to load SVG icons
     programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
 
-    fonts.packages = [
-      cfg.notoPackage
-      pkgs.hack-font
-    ];
+    fonts.packages = [ cfg.notoPackage pkgs.hack-font ];
     fonts.fontconfig.defaultFonts = {
-      monospace = [
-        "Hack"
-        "Noto Sans Mono"
-      ];
+      monospace = [ "Hack" "Noto Sans Mono" ];
       sansSerif = [ "Noto Sans" ];
       serif = [ "Noto Serif" ];
     };

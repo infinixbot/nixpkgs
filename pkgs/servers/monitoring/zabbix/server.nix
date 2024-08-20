@@ -47,10 +47,7 @@ import ./versions.nix (
       inherit hash;
     };
 
-    nativeBuildInputs = [
-      autoreconfHook
-      pkg-config
-    ];
+    nativeBuildInputs = [ autoreconfHook pkg-config ];
     buildInputs =
       [
         curl
@@ -120,10 +117,7 @@ import ./versions.nix (
       description = "Enterprise-class open source distributed monitoring solution";
       homepage = "https://www.zabbix.com/";
       license = licenses.gpl2Plus;
-      maintainers = with maintainers; [
-        mmahut
-        psyanticy
-      ];
+      maintainers = with maintainers; [ mmahut psyanticy ];
       platforms = platforms.linux;
     };
   }

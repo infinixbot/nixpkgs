@@ -25,21 +25,14 @@ stdenv.mkDerivation {
       --replace 'DOCDIR = $(DATAROOTDIR)@docdir@' 'DOCDIR = @docdir@'
   '';
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
   separateDebugInfo = stdenv.isLinux;
 
   enableParallelBuilding = true;
 
   configureFlags = [ "--without-gnutls" ];
   nativeBuildInputs = [ autoreconfHook ];
-  buildInputs = [
-    expat
-    ncurses
-    openssl
-  ];
+  buildInputs = [ expat ncurses openssl ];
 
   meta = with lib; {
     description = "Curses based fullscreen BOINC manager";

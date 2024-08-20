@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
   pname = "libspelling";
   version = "0.2.1";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.gnome.org";

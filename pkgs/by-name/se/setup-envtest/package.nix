@@ -19,10 +19,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-Xr5b/CRz/DMmoc4bvrEyAZcNufLIZOY5OGQ6yw4/W9k=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   __darwinAllowLocalNetworking = true;
 

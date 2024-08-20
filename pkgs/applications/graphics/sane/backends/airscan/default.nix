@@ -17,20 +17,8 @@ stdenv.mkDerivation rec {
   pname = "sane-airscan";
   version = "0.99.29";
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-  ];
-  buildInputs = [
-    avahi
-    gnutls
-    libjpeg
-    libpng
-    libxml2
-    libtiff
-    sane-backends
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config ];
+  buildInputs = [ avahi gnutls libjpeg libpng libxml2 libtiff sane-backends ];
 
   src = fetchFromGitHub {
     owner = "alexpevzner";

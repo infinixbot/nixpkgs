@@ -33,9 +33,6 @@ buildGoModule rec {
     homepage = "https://k8sgpt.ai";
     changelog = "https://github.com/k8sgpt-ai/k8sgpt/releases/tag/v${version}";
     license = lib.licenses.asl20;
-    maintainers = with lib.maintainers; [
-      developer-guy
-      kranurag7
-    ];
+    maintainers = with lib.maintainers; [ developer-guy kranurag7 ];
   };
 }

@@ -132,19 +132,8 @@ in
     ];
 
     networking.firewall = mkIf cfg.openFirewall {
-      allowedTCPPorts = generatePorts cfg.settings.port [
-        (-5)
-        0
-        1
-        21
-      ];
-      allowedUDPPorts = generatePorts cfg.settings.port [
-        9
-        10
-        11
-        13
-        21
-      ];
+      allowedTCPPorts = generatePorts cfg.settings.port [ (-5) 0 1 21 ];
+      allowedUDPPorts = generatePorts cfg.settings.port [ 9 10 11 13 21 ];
     };
 
     boot.kernelModules = [ "uinput" ];

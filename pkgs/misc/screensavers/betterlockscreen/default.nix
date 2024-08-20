@@ -66,9 +66,6 @@ stdenv.mkDerivation rec {
     mainProgram = "betterlockscreen";
     license = licenses.mit;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      eyjhb
-      sebtm
-    ];
+    maintainers = with maintainers; [ eyjhb sebtm ];
   };
 }

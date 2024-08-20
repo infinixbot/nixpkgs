@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-0+WBr1IZIhQjxOsKO/yuXjaTRWPObhMdGqgibcpXGtI=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    unzip
-  ];
+  nativeBuildInputs = [ pkg-config unzip ];
   buildInputs = [
     cdk
     gtk2

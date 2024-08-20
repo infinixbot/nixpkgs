@@ -78,10 +78,7 @@ buildPythonPackage rec {
   meta = with lib; {
     description = "Utilities to facilitate the installation of Python packages";
     homepage = "https://pypi.python.org/pypi/setuptools";
-    license = with licenses; [
-      psfl
-      zpl20
-    ];
+    license = with licenses; [ psfl zpl20 ];
     platforms = python.meta.platforms;
     priority = 10;
   };

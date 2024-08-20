@@ -21,10 +21,7 @@ rustPlatform.buildRustPackage rec {
     description = "Simple, user-friendly alternative to sort | uniq";
     homepage = "https://github.com/lostutils/uq";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      doronbehar
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ doronbehar matthiasbeyer ];
     mainProgram = "uq";
   };
 }

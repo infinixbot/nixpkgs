@@ -229,10 +229,7 @@ in
         Group = "monero";
         ExecStart = "${pkgs.monero-cli}/bin/monerod --config-file=${configFile} --non-interactive";
         Restart = "always";
-        SuccessExitStatus = [
-          0
-          1
-        ];
+        SuccessExitStatus = [ 0 1 ];
       };
     };
 

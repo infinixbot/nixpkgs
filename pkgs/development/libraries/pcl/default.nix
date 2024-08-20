@@ -47,18 +47,13 @@ stdenv.mkDerivation rec {
     wrapQtAppsHook
   ] ++ lib.optionals cudaSupport [ cudaPackages.cuda_nvcc ];
 
-  buildInputs =
-    [
-      eigen
-      libusb1
-      libpcap
-      qtbase
-      libXt
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      Cocoa
-      AGL
-    ];
+  buildInputs = [
+    eigen
+    libusb1
+    libpcap
+    qtbase
+    libXt
+  ] ++ lib.optionals stdenv.isDarwin [ Cocoa AGL ];
 
   propagatedBuildInputs = [
     boost

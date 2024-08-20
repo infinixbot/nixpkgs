@@ -116,10 +116,7 @@ in
       "DESTDIR=$(out)"
     ];
 
-    outputs = [
-      "out"
-      "man"
-    ];
+    outputs = [ "out" "man" ];
 
     meta = with lib; {
       inherit (src.meta) homepage;
@@ -168,10 +165,7 @@ in
       sha256 = "19hkwmaw6nwak38bv6cm2vcjjkf4w5yjyxb98qq6zfjjh5wq54aa";
     };
 
-    buildInputs = [
-      vdr
-      graphicsmagick
-    ];
+    buildInputs = [ vdr graphicsmagick ];
 
     buildFlags = [
       "DESTDIR=$(out)"
@@ -208,11 +202,7 @@ in
       fetchSubmodules = true;
     };
 
-    buildInputs = [
-      vdr
-      boost
-      libgcrypt
-    ];
+    buildInputs = [ vdr boost libgcrypt ];
 
     installFlags = [ "DESTDIR=$(out)" ];
 

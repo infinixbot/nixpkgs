@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
     inherit blas64;
   };
 
-  nativeBuildInputs = [
-    cmake
-    gfortran
-  ];
+  nativeBuildInputs = [ cmake gfortran ];
 
   cmakeFlags = [ "-DBUILD_SHARED_LIBS=ON" ] ++ lib.optional blas64 "-DBUILD_INDEX64=ON";
 

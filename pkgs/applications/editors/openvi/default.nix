@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-ukNgTtVrYkL7Bf7O7ERyQ9TOR8ss/EHCTMbzHi3tkG4=";
   };
 
-  buildInputs = [
-    ncurses
-    perl
-  ];
+  buildInputs = [ ncurses perl ];
 
   makeFlags = [
     "PREFIX=$(out)"

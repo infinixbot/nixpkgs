@@ -33,10 +33,7 @@ stdenv.mkDerivation rec {
       --replace '\$'{datarootdir}/'$'{base_docdir} '$'{CMAKE_INSTALL_FULL_DOCDIR}
   '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
   buildInputs = [ check ];
 
   doCheck = false;

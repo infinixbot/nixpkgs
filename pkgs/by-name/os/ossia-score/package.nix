@@ -54,14 +54,7 @@ clangStdenv.mkDerivation (finalAttrs: {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-    git
-    pkg-config
-    qt6.qttools
-    qt6.wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake ninja git pkg-config qt6.qttools qt6.wrapQtAppsHook ];
 
   buildInputs = [
     alsa-lib
@@ -161,9 +154,6 @@ clangStdenv.mkDerivation (finalAttrs: {
     '';
     platforms = platforms.linux;
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      jcelerier
-      minijackson
-    ];
+    maintainers = with maintainers; [ jcelerier minijackson ];
   };
 })

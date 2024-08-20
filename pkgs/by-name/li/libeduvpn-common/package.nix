@@ -31,10 +31,7 @@ buildGoModule rec {
     changelog = "https://raw.githubusercontent.com/eduvpn/eduvpn-common/${version}/CHANGES.md";
     description = "Code to be shared between eduVPN clients";
     homepage = "https://github.com/eduvpn/eduvpn-common";
-    maintainers = with maintainers; [
-      benneti
-      jwijenbergh
-    ];
+    maintainers = with maintainers; [ benneti jwijenbergh ];
     license = licenses.mit;
     platforms = platforms.linux;
   };

@@ -22,15 +22,8 @@ mkDerivation rec {
 
   doCheck = true;
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  buildInputs = [
-    libchewing
-    qtbase
-    qttools
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
+  buildInputs = [ libchewing qtbase qttools ];
 
   meta = with lib; {
     description = "Cross platform chewing user phrase editor";

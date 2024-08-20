@@ -29,10 +29,7 @@ stdenv.mkDerivation rec {
   pname = "elementary-files";
   version = "7.0.0";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "elementary";

@@ -36,26 +36,15 @@ stdenv.mkDerivation rec {
     patchShebangs src/hsts-make-dafsa
   '';
 
-  nativeBuildInputs = [
-    autoconf-archive
-    autoreconfHook
-    pkg-config
-    python3
-  ];
+  nativeBuildInputs = [ autoconf-archive autoreconfHook pkg-config python3 ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   meta = with lib; {
     description = "Library to easily check a domain against the Chromium HSTS Preload list";
     mainProgram = "hsts";
     homepage = "https://gitlab.com/rockdaboot/libhsts";
-    license = with licenses; [
-      mit
-      bsd3
-    ];
+    license = with licenses; [ mit bsd3 ];
     maintainers = [ ];
   };
 }

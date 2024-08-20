@@ -232,14 +232,7 @@ stdenv.mkDerivation {
   '';
 
   buildInputs =
-    [
-      zlib
-      pcre
-      hdf5
-      glog
-      boost
-      gflags
-    ]
+    [ zlib pcre hdf5 glog boost gflags ]
     ++ lib.optional useSystemProtobuf protobuf_21
     ++ lib.optional enablePython pythonPackages.python
     ++ lib.optional enableGtk2 gtk2
@@ -250,14 +243,8 @@ stdenv.mkDerivation {
     ++ lib.optional enableWebP libwebp
     ++ lib.optionals enableEXR [ openexr_3 ]
     ++ lib.optional enableFfmpeg ffmpeg
-    ++ lib.optionals (enableFfmpeg && stdenv.isDarwin) [
-      VideoDecodeAcceleration
-      bzip2
-    ]
-    ++ lib.optionals enableGStreamer [
-      gst_all_1.gstreamer
-      gst_all_1.gst-plugins-base
-    ]
+    ++ lib.optionals (enableFfmpeg && stdenv.isDarwin) [ VideoDecodeAcceleration bzip2 ]
+    ++ lib.optionals enableGStreamer [ gst_all_1.gstreamer gst_all_1.gst-plugins-base ]
     ++ lib.optional enableOvis ogre
     ++ lib.optional enableGPhoto2 libgphoto2
     ++ lib.optional enableDC1394 libdc1394
@@ -266,10 +253,7 @@ stdenv.mkDerivation {
     # There is seemingly no compile-time flag for Tesseract.  It's
     # simply enabled automatically if contrib is built, and it detects
     # tesseract & leptonica.
-    ++ lib.optionals enableTesseract [
-      tesseract
-      leptonica
-    ]
+    ++ lib.optionals enableTesseract [ tesseract leptonica ]
     ++ lib.optional enableTbb tbb
     ++ lib.optionals stdenv.isDarwin [
       bzip2
@@ -280,20 +264,13 @@ stdenv.mkDerivation {
       MediaToolbox
       Accelerate
     ]
-    ++ lib.optionals enableDocs [
-      doxygen
-      graphviz-nox
-    ];
+    ++ lib.optionals enableDocs [ doxygen graphviz-nox ];
 
   propagatedBuildInputs =
     lib.optional enablePython pythonPackages.numpy
     ++ lib.optional enableCuda cudatoolkit;
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    unzip
-  ];
+  nativeBuildInputs = [ cmake pkg-config unzip ];
 
   # Configure can't find the library without this.
   OpenBLAS_HOME = lib.optionalString enableOpenblas openblas;
@@ -366,10 +343,7 @@ stdenv.mkDerivation {
       "$out/lib/pkgconfig/opencv.pc"
   '';
 
-  hardeningDisable = [
-    "bindnow"
-    "relro"
-  ];
+  hardeningDisable = [ "bindnow" "relro" ];
 
   passthru = lib.optionalAttrs enablePython { pythonPath = [ ]; } // {
     tests = lib.optionalAttrs enableCuda {
@@ -383,10 +357,7 @@ stdenv.mkDerivation {
     # OpenCV 3 won't build with CUDA 12+
     broken = enableCuda && cudaPackages.cudaAtLeast "12";
     license = if enableUnfree then lib.licenses.unfree else lib.licenses.bsd3;
-    maintainers = with lib.maintainers; [
-      mdaiter
-      basvandijk
-    ];
+    maintainers = with lib.maintainers; [ mdaiter basvandijk ];
     platforms = with lib.platforms; linux ++ darwin;
   };
 }

@@ -21,12 +21,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    asio
-    obs-studio
-    qtbase
-    websocketpp
-  ];
+  buildInputs = [ asio obs-studio qtbase websocketpp ];
 
   dontWrapQtApps = true;
 
@@ -42,9 +37,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/obsproject/obs-websocket";
     maintainers = with maintainers; [ flexiondotorg ];
     license = licenses.gpl2Plus;
-    platforms = [
-      "x86_64-linux"
-      "i686-linux"
-    ];
+    platforms = [ "x86_64-linux" "i686-linux" ];
   };
 }

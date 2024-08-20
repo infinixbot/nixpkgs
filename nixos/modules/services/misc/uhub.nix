@@ -9,13 +9,7 @@ with lib;
 
 let
   settingsFormat = {
-    type =
-      with lib.types;
-      attrsOf (oneOf [
-        bool
-        int
-        str
-      ]);
+    type = with lib.types; attrsOf (oneOf [ bool int str ]);
     generate =
       name: attrs:
       pkgs.writeText name (

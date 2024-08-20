@@ -37,12 +37,7 @@ buildNimPackage (finalAttrs: {
     "-d:tempDir=/tmp"
   ];
 
-  nimDefines = [
-    "nimcore"
-    "nimsuggest"
-    "debugCommunication"
-    "debugLogging"
-  ];
+  nimDefines = [ "nimcore" "nimsuggest" "debugCommunication" "debugLogging" ];
 
   doCheck = false;
 

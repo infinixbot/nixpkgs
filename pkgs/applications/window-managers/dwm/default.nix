@@ -21,11 +21,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Ideev6ny+5MUGDbCZmy4H0eExp1k5/GyNS+blwuglyk=";
   };
 
-  buildInputs = [
-    libX11
-    libXinerama
-    libXft
-  ];
+  buildInputs = [ libX11 libXinerama libXft ];
 
   prePatch = ''
     sed -i "s@/usr/local@$out@" config.mk

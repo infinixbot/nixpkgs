@@ -38,20 +38,11 @@ rec {
         copySources
         ;
 
-      includes =
-        map
-          (x: [
-            x.key
-            (baseNameOf (toString x.key))
-          ])
-          (findLaTeXIncludes {
-            inherit rootFile;
-          });
+      includes = map (x: [ x.key (baseNameOf (toString x.key)) ]) (findLaTeXIncludes {
+        inherit rootFile;
+      });
 
-      buildInputs = [
-        tex
-        pkgs.perl
-      ] ++ packages;
+      buildInputs = [ tex pkgs.perl ] ++ packages;
     };
 
   # Returns the closure of the "dependencies" of a LaTeX source file.
@@ -91,17 +82,9 @@ rec {
             let
               exts =
                 if dep.type == "img" then
-                  [
-                    ".pdf"
-                    ".png"
-                    ".ps"
-                    ".jpg"
-                  ]
+                  [ ".pdf" ".png" ".ps" ".jpg" ]
                 else if dep.type == "tex" then
-                  [
-                    ".tex"
-                    ""
-                  ]
+                  [ ".tex" "" ]
                 else
                   [ "" ];
               fn = pkgs.lib.findFirst (fn: builtins.pathExists fn) null (
@@ -180,20 +163,11 @@ rec {
       name = "tex";
       builder = ./lhs2tex.sh;
       inherit source flags;
-      buildInputs = [
-        pkgs.lhs2tex
-        pkgs.perl
-      ];
+      buildInputs = [ pkgs.lhs2tex pkgs.perl ];
       copyIncludes = ./copy-includes.pl;
-      includes =
-        map
-          (x: [
-            x.key
-            (baseNameOf (toString x.key))
-          ])
-          (findLhs2TeXIncludes {
-            rootFile = source;
-          });
+      includes = map (x: [ x.key (baseNameOf (toString x.key)) ]) (findLhs2TeXIncludes {
+        rootFile = source;
+      });
     };
 
   animateDot =
@@ -237,10 +211,7 @@ rec {
       name = "png";
       inherit postscript;
 
-      buildInputs = [
-        pkgs.imagemagick
-        pkgs.ghostscript
-      ];
+      buildInputs = [ pkgs.imagemagick pkgs.ghostscript ];
 
       buildCommand = ''
         if test -d $postscript; then

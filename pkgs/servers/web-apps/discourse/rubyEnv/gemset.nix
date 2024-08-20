@@ -29,11 +29,7 @@
       "rails-dom-testing"
       "rails-html-sanitizer"
     ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -43,18 +39,8 @@
     version = "7.0.8";
   };
   actionview = {
-    dependencies = [
-      "activesupport"
-      "builder"
-      "erubi"
-      "rails-dom-testing"
-      "rails-html-sanitizer"
-    ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    dependencies = [ "activesupport" "builder" "erubi" "rails-dom-testing" "rails-html-sanitizer" ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -86,10 +72,7 @@
     version = "0.8.4";
   };
   activejob = {
-    dependencies = [
-      "activesupport"
-      "globalid"
-    ];
+    dependencies = [ "activesupport" "globalid" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -101,11 +84,7 @@
   };
   activemodel = {
     dependencies = [ "activesupport" ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -115,15 +94,8 @@
     version = "7.0.8";
   };
   activerecord = {
-    dependencies = [
-      "activemodel"
-      "activesupport"
-    ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    dependencies = [ "activemodel" "activesupport" ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -133,17 +105,8 @@
     version = "7.0.8";
   };
   activesupport = {
-    dependencies = [
-      "concurrent-ruby"
-      "i18n"
-      "minitest"
-      "tzinfo"
-    ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    dependencies = [ "concurrent-ruby" "i18n" "minitest" "tzinfo" ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -154,11 +117,7 @@
   };
   addressable = {
     dependencies = [ "public_suffix" ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -168,14 +127,8 @@
     version = "2.8.6";
   };
   annotate = {
-    dependencies = [
-      "activerecord"
-      "rake"
-    ];
-    groups = [
-      "development"
-      "test"
-    ];
+    dependencies = [ "activerecord" "rake" ];
+    groups = [ "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -185,11 +138,7 @@
     version = "3.2.0";
   };
   ast = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -219,12 +168,7 @@
     version = "1.583.0";
   };
   aws-sdk-core = {
-    dependencies = [
-      "aws-eventstream"
-      "aws-partitions"
-      "aws-sigv4"
-      "jmespath"
-    ];
+    dependencies = [ "aws-eventstream" "aws-partitions" "aws-sigv4" "jmespath" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -235,10 +179,7 @@
     version = "3.130.2";
   };
   aws-sdk-kms = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -249,11 +190,7 @@
     version = "1.56.0";
   };
   aws-sdk-s3 = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sdk-kms"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sdk-kms" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -264,10 +201,7 @@
     version = "1.114.0";
   };
   aws-sdk-sns = {
-    dependencies = [
-      "aws-sdk-core"
-      "aws-sigv4"
-    ];
+    dependencies = [ "aws-sdk-core" "aws-sigv4" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -289,10 +223,7 @@
     version = "1.5.0";
   };
   base64 = {
-    groups = [
-      "default"
-      "test"
-    ];
+    groups = [ "default" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -302,11 +233,7 @@
     version = "0.2.0";
   };
   better_errors = {
-    dependencies = [
-      "erubi"
-      "rack"
-      "rouge"
-    ];
+    dependencies = [ "erubi" "rack" "rouge" ];
     groups = [ "development" ];
     platforms = [
       {
@@ -324,10 +251,7 @@
     version = "2.10.1";
   };
   bigdecimal = {
-    groups = [
-      "default"
-      "test"
-    ];
+    groups = [ "default" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -366,11 +290,7 @@
     version = "1.17.1";
   };
   builder = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -380,10 +300,7 @@
     version = "3.2.4";
   };
   bullet = {
-    dependencies = [
-      "activesupport"
-      "uniform_notifier"
-    ];
+    dependencies = [ "activesupport" "uniform_notifier" ];
     groups = [ "development" ];
     platforms = [ ];
     source = {
@@ -394,10 +311,7 @@
     version = "7.1.6";
   };
   byebug = {
-    groups = [
-      "development"
-      "test"
-    ];
+    groups = [ "development" "test" ];
     platforms = [
       {
         engine = "maglev";
@@ -444,10 +358,7 @@
     version = "0.5.9.8";
   };
   certified = {
-    groups = [
-      "development"
-      "test"
-    ];
+    groups = [ "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -477,10 +388,7 @@
     version = "1.4.0";
   };
   coderay = {
-    groups = [
-      "default"
-      "development"
-    ];
+    groups = [ "default" "development" ];
     platforms = [
       {
         engine = "maglev";
@@ -507,11 +415,7 @@
     version = "4.0.0";
   };
   concurrent-ruby = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -531,10 +435,7 @@
     version = "2.4.1";
   };
   cose = {
-    dependencies = [
-      "cbor"
-      "openssl-signature_algorithm"
-    ];
+    dependencies = [ "cbor" "openssl-signature_algorithm" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -555,14 +456,8 @@
     version = "0.4.2";
   };
   crack = {
-    dependencies = [
-      "bigdecimal"
-      "rexml"
-    ];
-    groups = [
-      "default"
-      "test"
-    ];
+    dependencies = [ "bigdecimal" "rexml" ];
+    groups = [ "default" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -572,11 +467,7 @@
     version = "0.4.6";
   };
   crass = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -617,10 +508,7 @@
     version = "3.3.4";
   };
   debug_inspector = {
-    groups = [
-      "default"
-      "development"
-    ];
+    groups = [ "default" "development" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -630,11 +518,7 @@
     version = "1.2.0";
   };
   diff-lcs = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -674,10 +558,7 @@
     version = "0.0.9";
   };
   discourse-seed-fu = {
-    dependencies = [
-      "activerecord"
-      "activesupport"
-    ];
+    dependencies = [ "activerecord" "activesupport" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -688,14 +569,8 @@
     version = "2.3.12";
   };
   discourse_dev_assets = {
-    dependencies = [
-      "faker"
-      "literate_randomizer"
-    ];
-    groups = [
-      "development"
-      "test"
-    ];
+    dependencies = [ "faker" "literate_randomizer" ];
+    groups = [ "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -705,10 +580,7 @@
     version = "0.0.4";
   };
   docile = {
-    groups = [
-      "default"
-      "test"
-    ];
+    groups = [ "default" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -738,11 +610,7 @@
     version = "0.1.13";
   };
   erubi = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [
       {
         engine = "maglev";
@@ -769,10 +637,7 @@
     version = "0.109.0";
   };
   execjs = {
-    groups = [
-      "assets"
-      "default"
-    ];
+    groups = [ "assets" "default" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -792,10 +657,7 @@
     version = "1.4.0";
   };
   fabrication = {
-    groups = [
-      "development"
-      "test"
-    ];
+    groups = [ "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -806,10 +668,7 @@
   };
   faker = {
     dependencies = [ "i18n" ];
-    groups = [
-      "development"
-      "test"
-    ];
+    groups = [ "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -892,11 +751,7 @@
     version = "2.3.0";
   };
   ffi = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [
       {
         engine = "maglev";
@@ -964,10 +819,7 @@
     version = "1.3.7";
   };
   hashdiff = {
-    groups = [
-      "default"
-      "test"
-    ];
+    groups = [ "default" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1018,11 +870,7 @@
   };
   i18n = {
     dependencies = [ "concurrent-ruby" ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1032,13 +880,7 @@
     version = "1.14.1";
   };
   image_optim = {
-    dependencies = [
-      "exifr"
-      "fspath"
-      "image_size"
-      "in_threads"
-      "progress"
-    ];
+    dependencies = [ "exifr" "fspath" "image_size" "in_threads" "progress" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1079,11 +921,7 @@
     version = "1.6.2";
   };
   json = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1094,11 +932,7 @@
   };
   json-schema = {
     dependencies = [ "addressable" ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1108,11 +942,7 @@
     version = "4.1.1";
   };
   json_schemer = {
-    dependencies = [
-      "hana"
-      "regexp_parser"
-      "simpleidn"
-    ];
+    dependencies = [ "hana" "regexp_parser" "simpleidn" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1153,11 +983,7 @@
     version = "2.11.4";
   };
   language_server-protocol = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1177,14 +1003,8 @@
     version = "18.16.0.0";
   };
   listen = {
-    dependencies = [
-      "rb-fsevent"
-      "rb-inotify"
-    ];
-    groups = [
-      "development"
-      "test"
-    ];
+    dependencies = [ "rb-fsevent" "rb-inotify" ];
+    groups = [ "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1194,10 +1014,7 @@
     version = "3.8.0";
   };
   literate_randomizer = {
-    groups = [
-      "default"
-      "development"
-    ];
+    groups = [ "default" "development" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1207,12 +1024,7 @@
     version = "0.4.0";
   };
   lograge = {
-    dependencies = [
-      "actionpack"
-      "activesupport"
-      "railties"
-      "request_store"
-    ];
+    dependencies = [ "actionpack" "activesupport" "railties" "request_store" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1254,15 +1066,8 @@
     version = "2.16.0";
   };
   loofah = {
-    dependencies = [
-      "crass"
-      "nokogiri"
-    ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    dependencies = [ "crass" "nokogiri" ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1302,12 +1107,7 @@
     version = "0.3.3";
   };
   mail = {
-    dependencies = [
-      "mini_mime"
-      "net-imap"
-      "net-pop"
-      "net-smtp"
-    ];
+    dependencies = [ "mini_mime" "net-imap" "net-pop" "net-smtp" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1318,10 +1118,7 @@
     version = "2.8.1";
   };
   matrix = {
-    groups = [
-      "default"
-      "test"
-    ];
+    groups = [ "default" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1369,11 +1166,7 @@
     version = "4.3.8";
   };
   method_source = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1383,10 +1176,7 @@
     version = "1.0.0";
   };
   mini_mime = {
-    groups = [
-      "default"
-      "test"
-    ];
+    groups = [ "default" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1396,12 +1186,7 @@
     version = "1.1.5";
   };
   mini_portile2 = {
-    groups = [
-      "default"
-      "development"
-      "generic_import"
-      "test"
-    ];
+    groups = [ "default" "development" "generic_import" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1464,11 +1249,7 @@
     version = "0.1.2";
   };
   minitest = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1479,10 +1260,7 @@
   };
   mocha = {
     dependencies = [ "ruby2_keywords" ];
-    groups = [
-      "development"
-      "test"
-    ];
+    groups = [ "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1560,10 +1338,7 @@
     version = "0.4.1";
   };
   net-imap = {
-    dependencies = [
-      "date"
-      "net-protocol"
-    ];
+    dependencies = [ "date" "net-protocol" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1617,15 +1392,8 @@
     version = "2.7.0";
   };
   nokogiri = {
-    dependencies = [
-      "mini_portile2"
-      "racc"
-    ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    dependencies = [ "mini_portile2" "racc" ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1635,11 +1403,7 @@
     version = "1.16.0";
   };
   oauth = {
-    dependencies = [
-      "oauth-tty"
-      "snaky_hash"
-      "version_gem"
-    ];
+    dependencies = [ "oauth-tty" "snaky_hash" "version_gem" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1661,13 +1425,7 @@
     version = "1.0.5";
   };
   oauth2 = {
-    dependencies = [
-      "faraday"
-      "jwt"
-      "multi_json"
-      "multi_xml"
-      "rack"
-    ];
+    dependencies = [ "faraday" "jwt" "multi_json" "multi_xml" "rack" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1689,10 +1447,7 @@
     version = "3.16.3";
   };
   omniauth = {
-    dependencies = [
-      "hashie"
-      "rack"
-    ];
+    dependencies = [ "hashie" "rack" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1714,10 +1469,7 @@
     version = "9.0.0";
   };
   omniauth-github = {
-    dependencies = [
-      "omniauth"
-      "omniauth-oauth2"
-    ];
+    dependencies = [ "omniauth" "omniauth-oauth2" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1728,12 +1480,7 @@
     version = "1.4.0";
   };
   omniauth-google-oauth2 = {
-    dependencies = [
-      "jwt"
-      "oauth2"
-      "omniauth"
-      "omniauth-oauth2"
-    ];
+    dependencies = [ "jwt" "oauth2" "omniauth" "omniauth-oauth2" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1744,10 +1491,7 @@
     version = "0.8.2";
   };
   omniauth-oauth = {
-    dependencies = [
-      "oauth"
-      "omniauth"
-    ];
+    dependencies = [ "oauth" "omniauth" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1758,10 +1502,7 @@
     version = "1.2.0";
   };
   omniauth-oauth2 = {
-    dependencies = [
-      "oauth2"
-      "omniauth"
-    ];
+    dependencies = [ "oauth2" "omniauth" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1772,10 +1513,7 @@
     version = "1.7.3";
   };
   omniauth-twitter = {
-    dependencies = [
-      "omniauth-oauth"
-      "rack"
-    ];
+    dependencies = [ "omniauth-oauth" "rack" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1824,11 +1562,7 @@
     version = "3.1.0";
   };
   parallel = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1839,10 +1573,7 @@
   };
   parallel_tests = {
     dependencies = [ "parallel" ];
-    groups = [
-      "development"
-      "test"
-    ];
+    groups = [ "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1852,15 +1583,8 @@
     version = "4.4.0";
   };
   parser = {
-    dependencies = [
-      "ast"
-      "racc"
-    ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    dependencies = [ "ast" "racc" ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1880,11 +1604,7 @@
     version = "1.5.4";
   };
   prettier_print = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1904,10 +1624,7 @@
     version = "3.6.0";
   };
   pry = {
-    dependencies = [
-      "coderay"
-      "method_source"
-    ];
+    dependencies = [ "coderay" "method_source" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1918,10 +1635,7 @@
     version = "0.14.2";
   };
   pry-byebug = {
-    dependencies = [
-      "byebug"
-      "pry"
-    ];
+    dependencies = [ "byebug" "pry" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -1943,11 +1657,7 @@
     version = "0.3.9";
   };
   public_suffix = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1968,11 +1678,7 @@
     version = "6.4.2";
   };
   racc = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -1982,11 +1688,7 @@
     version = "1.7.3";
   };
   rack = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [
       {
         engine = "maglev";
@@ -2014,10 +1716,7 @@
     version = "3.3.0";
   };
   rack-protection = {
-    dependencies = [
-      "base64"
-      "rack"
-    ];
+    dependencies = [ "base64" "rack" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2029,11 +1728,7 @@
   };
   rack-test = {
     dependencies = [ "rack" ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2043,16 +1738,8 @@
     version = "2.1.0";
   };
   rails-dom-testing = {
-    dependencies = [
-      "activesupport"
-      "minitest"
-      "nokogiri"
-    ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    dependencies = [ "activesupport" "minitest" "nokogiri" ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2062,15 +1749,8 @@
     version = "2.2.0";
   };
   rails-html-sanitizer = {
-    dependencies = [
-      "loofah"
-      "nokogiri"
-    ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    dependencies = [ "loofah" "nokogiri" ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2080,11 +1760,7 @@
     version = "1.6.0";
   };
   rails_failover = {
-    dependencies = [
-      "activerecord"
-      "concurrent-ruby"
-      "railties"
-    ];
+    dependencies = [ "activerecord" "concurrent-ruby" "railties" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2095,10 +1771,7 @@
     version = "2.0.1";
   };
   rails_multisite = {
-    dependencies = [
-      "activerecord"
-      "railties"
-    ];
+    dependencies = [ "activerecord" "railties" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2109,19 +1782,8 @@
     version = "5.0.0";
   };
   railties = {
-    dependencies = [
-      "actionpack"
-      "activesupport"
-      "method_source"
-      "rake"
-      "thor"
-      "zeitwerk"
-    ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    dependencies = [ "actionpack" "activesupport" "method_source" "rake" "thor" "zeitwerk" ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2131,11 +1793,7 @@
     version = "7.0.8";
   };
   rainbow = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2165,11 +1823,7 @@
     version = "0.20.1";
   };
   rake = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2179,10 +1833,7 @@
     version = "13.1.0";
   };
   rb-fsevent = {
-    groups = [
-      "development"
-      "test"
-    ];
+    groups = [ "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2193,11 +1844,7 @@
   };
   rb-inotify = {
     dependencies = [ "ffi" ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2207,11 +1854,7 @@
     version = "0.10.1";
   };
   rbtrace = {
-    dependencies = [
-      "ffi"
-      "msgpack"
-      "optimist"
-    ];
+    dependencies = [ "ffi" "msgpack" "optimist" ];
     groups = [ "default" ];
     platforms = [
       {
@@ -2270,11 +1913,7 @@
     version = "1.11.0";
   };
   regexp_parser = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2295,11 +1934,7 @@
     version = "1.5.1";
   };
   rexml = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2329,10 +1964,7 @@
     version = "6.3.0";
   };
   rouge = {
-    groups = [
-      "default"
-      "development"
-    ];
+    groups = [ "default" "development" ];
     platforms = [
       {
         engine = "maglev";
@@ -2349,10 +1981,7 @@
     version = "4.2.0";
   };
   rqrcode = {
-    dependencies = [
-      "chunky_png"
-      "rqrcode_core"
-    ];
+    dependencies = [ "chunky_png" "rqrcode_core" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2373,15 +2002,8 @@
     version = "1.2.0";
   };
   rspec = {
-    dependencies = [
-      "rspec-core"
-      "rspec-expectations"
-      "rspec-mocks"
-    ];
-    groups = [
-      "development"
-      "test"
-    ];
+    dependencies = [ "rspec-core" "rspec-expectations" "rspec-mocks" ];
+    groups = [ "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2392,11 +2014,7 @@
   };
   rspec-core = {
     dependencies = [ "rspec-support" ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2406,15 +2024,8 @@
     version = "3.12.2";
   };
   rspec-expectations = {
-    dependencies = [
-      "diff-lcs"
-      "rspec-support"
-    ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    dependencies = [ "diff-lcs" "rspec-support" ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2424,14 +2035,8 @@
     version = "3.12.3";
   };
   rspec-html-matchers = {
-    dependencies = [
-      "nokogiri"
-      "rspec"
-    ];
-    groups = [
-      "development"
-      "test"
-    ];
+    dependencies = [ "nokogiri" "rspec" ];
+    groups = [ "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2441,15 +2046,8 @@
     version = "0.10.0";
   };
   rspec-mocks = {
-    dependencies = [
-      "diff-lcs"
-      "rspec-support"
-    ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    dependencies = [ "diff-lcs" "rspec-support" ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2468,10 +2066,7 @@
       "rspec-mocks"
       "rspec-support"
     ];
-    groups = [
-      "development"
-      "test"
-    ];
+    groups = [ "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2481,11 +2076,7 @@
     version = "6.1.1";
   };
   rspec-support = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2506,16 +2097,8 @@
     version = "0.3.0";
   };
   rswag-specs = {
-    dependencies = [
-      "activesupport"
-      "json-schema"
-      "railties"
-      "rspec-core"
-    ];
-    groups = [
-      "development"
-      "test"
-    ];
+    dependencies = [ "activesupport" "json-schema" "railties" "rspec-core" ];
+    groups = [ "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2548,11 +2131,7 @@
       "ruby-progressbar"
       "unicode-display_width"
     ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2563,11 +2142,7 @@
   };
   rubocop-ast = {
     dependencies = [ "parser" ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2578,11 +2153,7 @@
   };
   rubocop-capybara = {
     dependencies = [ "rubocop" ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2592,14 +2163,8 @@
     version = "2.20.0";
   };
   rubocop-discourse = {
-    dependencies = [
-      "rubocop"
-      "rubocop-rspec"
-    ];
-    groups = [
-      "development"
-      "test"
-    ];
+    dependencies = [ "rubocop" "rubocop-rspec" ];
+    groups = [ "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2610,11 +2175,7 @@
   };
   rubocop-factory_bot = {
     dependencies = [ "rubocop" ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2624,16 +2185,8 @@
     version = "2.25.1";
   };
   rubocop-rspec = {
-    dependencies = [
-      "rubocop"
-      "rubocop-capybara"
-      "rubocop-factory_bot"
-    ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    dependencies = [ "rubocop" "rubocop-capybara" "rubocop-factory_bot" ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2660,11 +2213,7 @@
     version = "1.7.0";
   };
   ruby-progressbar = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2674,10 +2223,7 @@
     version = "1.13.0";
   };
   ruby-readability = {
-    dependencies = [
-      "guess_html_encoding"
-      "nokogiri"
-    ];
+    dependencies = [ "guess_html_encoding" "nokogiri" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2688,11 +2234,7 @@
     version = "0.7.0";
   };
   ruby2_keywords = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2712,10 +2254,7 @@
     version = "2.3.2";
   };
   sanitize = {
-    dependencies = [
-      "crass"
-      "nokogiri"
-    ];
+    dependencies = [ "crass" "nokogiri" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2726,10 +2265,7 @@
     version = "6.1.0";
   };
   sass-embedded = {
-    dependencies = [
-      "google-protobuf"
-      "rake"
-    ];
+    dependencies = [ "google-protobuf" "rake" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2762,12 +2298,7 @@
     version = "0.121.0";
   };
   selenium-webdriver = {
-    dependencies = [
-      "base64"
-      "rexml"
-      "rubyzip"
-      "websocket"
-    ];
+    dependencies = [ "base64" "rexml" "rubyzip" "websocket" ];
     groups = [ "test" ];
     platforms = [ ];
     source = {
@@ -2779,10 +2310,7 @@
   };
   shoulda-matchers = {
     dependencies = [ "activesupport" ];
-    groups = [
-      "development"
-      "test"
-    ];
+    groups = [ "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2792,11 +2320,7 @@
     version = "6.1.0";
   };
   sidekiq = {
-    dependencies = [
-      "connection_pool"
-      "rack"
-      "redis"
-    ];
+    dependencies = [ "connection_pool" "rack" "redis" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2807,11 +2331,7 @@
     version = "6.5.12";
   };
   simplecov = {
-    dependencies = [
-      "docile"
-      "simplecov-html"
-      "simplecov_json_formatter"
-    ];
+    dependencies = [ "docile" "simplecov-html" "simplecov_json_formatter" ];
     groups = [ "test" ];
     platforms = [ ];
     source = {
@@ -2822,10 +2342,7 @@
     version = "0.22.0";
   };
   simplecov-html = {
-    groups = [
-      "default"
-      "test"
-    ];
+    groups = [ "default" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2835,10 +2352,7 @@
     version = "0.12.3";
   };
   simplecov_json_formatter = {
-    groups = [
-      "default"
-      "test"
-    ];
+    groups = [ "default" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2859,10 +2373,7 @@
     version = "0.2.1";
   };
   snaky_hash = {
-    dependencies = [
-      "hashie"
-      "version_gem"
-    ];
+    dependencies = [ "hashie" "version_gem" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2873,10 +2384,7 @@
     version = "2.0.1";
   };
   sprockets = {
-    dependencies = [
-      "concurrent-ruby"
-      "rack"
-    ];
+    dependencies = [ "concurrent-ruby" "rack" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2889,11 +2397,7 @@
     version = "3.7.2";
   };
   sprockets-rails = {
-    dependencies = [
-      "actionpack"
-      "activesupport"
-      "sprockets"
-    ];
+    dependencies = [ "actionpack" "activesupport" "sprockets" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -2943,10 +2447,7 @@
   };
   syntax_tree = {
     dependencies = [ "prettier_print" ];
-    groups = [
-      "development"
-      "test"
-    ];
+    groups = [ "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2956,10 +2457,7 @@
     version = "6.2.0";
   };
   syntax_tree-disable_ternary = {
-    groups = [
-      "development"
-      "test"
-    ];
+    groups = [ "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -2979,11 +2477,7 @@
     version = "1.3.1";
   };
   thor = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -3004,11 +2498,7 @@
   };
   tzinfo = {
     dependencies = [ "concurrent-ruby" ];
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -3061,11 +2551,7 @@
     version = "0.0.9.1";
   };
   unicode-display_width = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -3075,10 +2561,7 @@
     version = "2.5.0";
   };
   unicorn = {
-    dependencies = [
-      "kgio"
-      "raindrops"
-    ];
+    dependencies = [ "kgio" "raindrops" ];
     groups = [ "default" ];
     platforms = [
       {
@@ -3099,10 +2582,7 @@
     version = "6.1.0";
   };
   uniform_notifier = {
-    groups = [
-      "default"
-      "development"
-    ];
+    groups = [ "default" "development" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -3132,10 +2612,7 @@
     version = "1.1.3";
   };
   web-push = {
-    dependencies = [
-      "jwt"
-      "openssl"
-    ];
+    dependencies = [ "jwt" "openssl" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -3146,11 +2623,7 @@
     version = "3.0.1";
   };
   webmock = {
-    dependencies = [
-      "addressable"
-      "crack"
-      "hashdiff"
-    ];
+    dependencies = [ "addressable" "crack" "hashdiff" ];
     groups = [ "test" ];
     platforms = [ ];
     source = {
@@ -3161,10 +2634,7 @@
     version = "3.19.1";
   };
   websocket = {
-    groups = [
-      "default"
-      "test"
-    ];
+    groups = [ "default" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -3175,10 +2645,7 @@
   };
   xpath = {
     dependencies = [ "nokogiri" ];
-    groups = [
-      "default"
-      "test"
-    ];
+    groups = [ "default" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];
@@ -3208,11 +2675,7 @@
     version = "0.9.34";
   };
   zeitwerk = {
-    groups = [
-      "default"
-      "development"
-      "test"
-    ];
+    groups = [ "default" "development" "test" ];
     platforms = [ ];
     source = {
       remotes = [ "https://rubygems.org" ];

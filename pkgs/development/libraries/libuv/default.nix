@@ -33,10 +33,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-U68BmIQNpmIy3prS7LkYl+wvDJQNikoeFiKh50yQFoA=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   postPatch =
     let
@@ -137,12 +134,7 @@ stdenv.mkDerivation (finalAttrs: {
       sed '/${tdRegexp}/d' -i test/test-list.h
     '';
 
-  nativeBuildInputs = [
-    automake
-    autoconf
-    libtool
-    pkg-config
-  ];
+  nativeBuildInputs = [ automake autoconf libtool pkg-config ];
 
   preConfigure = ''
     LIBTOOLIZE=libtoolize ./autogen.sh
@@ -187,13 +179,7 @@ stdenv.mkDerivation (finalAttrs: {
     pkgConfigModules = [ "libuv" ];
     maintainers = [ ];
     platforms = platforms.all;
-    license = with licenses; [
-      mit
-      isc
-      bsd2
-      bsd3
-      cc-by-40
-    ];
+    license = with licenses; [ mit isc bsd2 bsd3 cc-by-40 ];
   };
 
 })

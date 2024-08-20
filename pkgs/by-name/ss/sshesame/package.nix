@@ -19,10 +19,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-tfxqr1yDXE+ACCfAtZ0xePpB/xktfwJe/xPU8qAVz54=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   hardeningEnable = lib.optionals (!stdenv.isDarwin) [ "pie" ];
 

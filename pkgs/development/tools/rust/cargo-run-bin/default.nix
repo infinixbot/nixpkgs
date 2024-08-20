@@ -24,9 +24,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/dustinblackman/cargo-run-bin";
     changelog = "https://github.com/dustinblackman/cargo-run-bin/blob/v${version}/CHANGELOG.md";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      mightyiam
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ mightyiam matthiasbeyer ];
   };
 }

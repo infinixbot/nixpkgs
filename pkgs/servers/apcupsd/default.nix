@@ -25,11 +25,7 @@ stdenv.mkDerivation rec {
     sha256 = "0rwqiyzlg9p0szf3x6q1ppvrw6f6dbpn2rc5z623fk3bkdalhxyv";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    man
-    util-linux
-  ];
+  nativeBuildInputs = [ pkg-config man util-linux ];
   buildInputs = lib.optional enableCgiScripts gd;
 
   prePatch = ''

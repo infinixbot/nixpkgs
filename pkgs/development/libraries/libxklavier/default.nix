@@ -37,10 +37,7 @@ stdenv.mkDerivation rec {
       })
     ];
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optionals withDoc [ "devdoc" ];
+  outputs = [ "out" "dev" ] ++ lib.optionals withDoc [ "devdoc" ];
 
   # TODO: enable xmodmap support, needs xmodmap DB
   propagatedBuildInputs = with xorg; [
@@ -54,13 +51,7 @@ stdenv.mkDerivation rec {
     isocodes
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    gtk-doc
-    docbook_xsl
-    gobject-introspection
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config gtk-doc docbook_xsl gobject-introspection ];
 
   preAutoreconf = ''
     export NOCONFIGURE=1

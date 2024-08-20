@@ -107,11 +107,7 @@ stdenv.mkDerivation rec {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
     maintainers = [ ];
-    platforms = [
-      "aarch64-linux"
-      "armv7l-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "aarch64-linux" "armv7l-linux" "x86_64-linux" ];
     mainProgram = "TouchOSC";
   };
 }

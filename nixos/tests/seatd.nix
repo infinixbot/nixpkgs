@@ -28,10 +28,7 @@ import ./make-test-python.nix (
       {
         imports = [ ./common/user-account.nix ];
         services.getty.autologinUser = "alice";
-        users.users.alice.extraGroups = [
-          "seat"
-          "wheel"
-        ];
+        users.users.alice.extraGroups = [ "seat" "wheel" ];
 
         fonts.enableDefaultPackages = true;
         environment.systemPackages = with pkgs; [

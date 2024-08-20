@@ -50,10 +50,7 @@ stdenv.mkDerivation rec {
     extra-cmake-modules
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   env.NIX_CFLAGS_COMPILE = toString (
     [

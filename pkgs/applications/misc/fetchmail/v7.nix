@@ -15,16 +15,8 @@ stdenv.mkDerivation {
     hash = "sha256-83D2YlFCODK2YD+oLICdim2NtNkkJU67S3YLi8Q6ga8=";
   };
 
-  buildInputs = with pkgs; [
-    openssl
-    python3
-  ];
-  nativeBuildInputs = with pkgs; [
-    autoreconfHook
-    pkg-config
-    bison
-    flex
-  ];
+  buildInputs = with pkgs; [ openssl python3 ];
+  nativeBuildInputs = with pkgs; [ autoreconfHook pkg-config bison flex ];
 
   configureFlags = [ "--with-ssl=${pkgs.openssl.dev}" ];
 

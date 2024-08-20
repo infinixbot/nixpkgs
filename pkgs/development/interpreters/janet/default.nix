@@ -30,10 +30,7 @@ stdenv.mkDerivation (finalAttrs: {
         --replace "'test/suite-ev.janet'," ""
     '';
 
-  nativeBuildInputs = [
-    meson
-    ninja
-  ];
+  nativeBuildInputs = [ meson ninja ];
 
   mesonBuildType = "release";
   mesonFlags = [ "-Dgit_hash=release" ];
@@ -69,10 +66,7 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "janet";
     homepage = "https://janet-lang.org/";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      andrewchambers
-      peterhoeg
-    ];
+    maintainers = with maintainers; [ andrewchambers peterhoeg ];
     platforms = platforms.all;
   };
 })

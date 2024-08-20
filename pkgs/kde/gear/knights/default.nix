@@ -8,9 +8,6 @@ mkKdeDerivation {
   pname = "knights";
 
   extraNativeBuildInputs = [ _7zz ];
-  extraBuildInputs = [
-    qtsvg
-    qtspeech
-  ];
+  extraBuildInputs = [ qtsvg qtspeech ];
   meta.mainProgram = "knights";
 }

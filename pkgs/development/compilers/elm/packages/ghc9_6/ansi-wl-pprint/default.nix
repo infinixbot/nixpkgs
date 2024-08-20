@@ -16,10 +16,7 @@ mkDerivation {
   };
   isLibrary = true;
   isExecutable = true;
-  libraryHaskellDepends = [
-    ansi-terminal
-    base
-  ];
+  libraryHaskellDepends = [ ansi-terminal base ];
   homepage = "http://github.com/ekmett/ansi-wl-pprint";
   description = "Wadler/Leijen Pretty Printer for colored ANSI terminal output";
   license = lib.licenses.bsd3;

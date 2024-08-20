@@ -105,10 +105,7 @@ in
     extraFlags = mkOption {
       type = types.listOf types.str;
       default = [ ];
-      example = [
-        "--backend-retry-delay"
-        "100"
-      ];
+      example = [ "--backend-retry-delay" "100" ];
       description = ''
         Extra command-line flags passed to duplicity. See
         {manpage}`duplicity(1)`.
@@ -173,13 +170,7 @@ in
           script =
             let
               target = escapeShellArg cfg.targetUrl;
-              extra = escapeShellArgs (
-                [
-                  "--archive-dir"
-                  stateDirectory
-                ]
-                ++ cfg.extraFlags
-              );
+              extra = escapeShellArgs ([ "--archive-dir" stateDirectory ] ++ cfg.extraFlags);
               dup = "${pkgs.duplicity}/bin/duplicity";
             in
             ''
@@ -196,26 +187,11 @@ in
               ) "${dup} remove-all-inc-of-but-n-full ${toString cfg.cleanup.maxIncr} ${target} --force ${extra}"}
               exec ${dup} ${if cfg.fullIfOlderThan == "always" then "full" else "incr"} ${
                 lib.escapeShellArgs (
-                  [
-                    cfg.root
-                    cfg.targetUrl
-                  ]
-                  ++ lib.optionals (cfg.includeFileList != null) [
-                    "--include-filelist"
-                    cfg.includeFileList
-                  ]
-                  ++ lib.optionals (cfg.excludeFileList != null) [
-                    "--exclude-filelist"
-                    cfg.excludeFileList
-                  ]
-                  ++ concatMap (p: [
-                    "--include"
-                    p
-                  ]) cfg.include
-                  ++ concatMap (p: [
-                    "--exclude"
-                    p
-                  ]) cfg.exclude
+                  [ cfg.root cfg.targetUrl ]
+                  ++ lib.optionals (cfg.includeFileList != null) [ "--include-filelist" cfg.includeFileList ]
+                  ++ lib.optionals (cfg.excludeFileList != null) [ "--exclude-filelist" cfg.excludeFileList ]
+                  ++ concatMap (p: [ "--include" p ]) cfg.include
+                  ++ concatMap (p: [ "--exclude" p ]) cfg.exclude
                   ++ (lib.optionals (cfg.fullIfOlderThan != "never" && cfg.fullIfOlderThan != "always") [
                     "--full-if-older-than"
                     cfg.fullIfOlderThan

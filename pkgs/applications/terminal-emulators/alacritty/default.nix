@@ -85,10 +85,7 @@ rustPlatform.buildRustPackage rec {
       OpenGL
     ];
 
-  outputs = [
-    "out"
-    "terminfo"
-  ];
+  outputs = [ "out" "terminfo" ];
 
   postPatch = lib.optionalString stdenv.isLinux ''
     substituteInPlace alacritty/src/config/ui_config.rs \
@@ -147,10 +144,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/alacritty/alacritty";
     license = licenses.asl20;
     mainProgram = "alacritty";
-    maintainers = with maintainers; [
-      Br1ght0ne
-      mic92
-    ];
+    maintainers = with maintainers; [ Br1ght0ne mic92 ];
     platforms = platforms.unix;
     changelog = "https://github.com/alacritty/alacritty/blob/v${version}/CHANGELOG.md";
   };

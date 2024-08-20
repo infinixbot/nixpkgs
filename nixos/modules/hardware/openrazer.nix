@@ -141,19 +141,12 @@ in
   };
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "hardware"
-        "openrazer"
-        "mouseBatteryNotifier"
-      ]
-      [
-        "hardware"
-        "openrazer"
-        "batteryNotifier"
-        "enable"
-      ]
-    )
+    (mkRenamedOptionModule [ "hardware" "openrazer" "mouseBatteryNotifier" ] [
+      "hardware"
+      "openrazer"
+      "batteryNotifier"
+      "enable"
+    ])
   ];
 
   config = mkIf cfg.enable {

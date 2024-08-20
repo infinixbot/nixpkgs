@@ -18,19 +18,8 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "obs-tuna";
   version = "1.9.7";
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    wrapQtAppsHook
-  ];
-  buildInputs = [
-    obs-studio
-    qtbase
-    zlib
-    curl
-    taglib
-    dbus
-  ];
+  nativeBuildInputs = [ cmake pkg-config wrapQtAppsHook ];
+  buildInputs = [ obs-studio qtbase zlib curl taglib dbus ];
 
   src = fetchFromGitHub {
     owner = "univrsal";

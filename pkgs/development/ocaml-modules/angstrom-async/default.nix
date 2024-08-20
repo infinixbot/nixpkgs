@@ -12,10 +12,7 @@ buildDunePackage rec {
 
   minimalOCamlVersion = "4.04.1";
 
-  propagatedBuildInputs = [
-    angstrom
-    async
-  ];
+  propagatedBuildInputs = [ angstrom async ];
 
   doCheck = true;
 

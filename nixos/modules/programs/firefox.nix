@@ -104,13 +104,7 @@ in
     };
 
     preferences = lib.mkOption {
-      type =
-        with lib.types;
-        attrsOf (oneOf [
-          bool
-          int
-          str
-        ]);
+      type = with lib.types; attrsOf (oneOf [ bool int str ]);
       default = { };
       description = ''
         Preferences to set from `about:config`.
@@ -123,12 +117,7 @@ in
     };
 
     preferencesStatus = lib.mkOption {
-      type = lib.types.enum [
-        "default"
-        "locked"
-        "user"
-        "clear"
-      ];
+      type = lib.types.enum [ "default" "locked" "user" "clear" ];
       default = "locked";
       description = ''
         The status of `firefox.preferences`.

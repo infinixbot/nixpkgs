@@ -14,14 +14,7 @@ let
   # 4.2 -> 402, 3.11 -> 311
   stableVersion = lib.removePrefix "0" (
     lib.concatMapStrings (
-      p:
-      if (lib.toInt p) < 10 then
-        (lib.concatStrings [
-          "0"
-          p
-        ])
-      else
-        p
+      p: if (lib.toInt p) < 10 then (lib.concatStrings [ "0" p ]) else p
     ) versionParts
   );
 

@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ qt6.wrapQtAppsHook ];
 
-  buildInputs = [
-    qt6.qtbase
-    qt6.qtwayland
-  ];
+  buildInputs = [ qt6.qtbase qt6.qtwayland ];
 
   buildPhase = ''
     runHook preBuild

@@ -29,10 +29,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    ocl-icd
-    opencl-clhpp
-  ];
+  buildInputs = [ ocl-icd opencl-clhpp ];
 
   meta = with lib; {
     description = "Tool which profiles OpenCL devices to find their peak capacities";

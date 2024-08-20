@@ -63,10 +63,7 @@ let
     '';
     homepage = "https://www.xonotic.org/";
     license = lib.licenses.gpl2Plus;
-    maintainers = with lib.maintainers; [
-      astsmtl
-      zalakain
-    ];
+    maintainers = with lib.maintainers; [ astsmtl zalakain ];
     platforms = lib.platforms.linux;
   };
 
@@ -75,10 +72,7 @@ let
     exec = "xonotic";
     comment = meta.description;
     desktopName = "Xonotic";
-    categories = [
-      "Game"
-      "Shooter"
-    ];
+    categories = [ "Game" "Shooter" ];
     icon = "xonotic";
     startupNotify = false;
   };
@@ -94,22 +88,8 @@ let
 
     nativeBuildInputs = [ unzip ];
     buildInputs =
-      [
-        libjpeg
-        zlib
-        libvorbis
-        curl
-        gmp
-      ]
-      ++ lib.optionals withGLX [
-        libX11
-        libGLU
-        libGL
-        libXpm
-        libXext
-        libXxf86vm
-        alsa-lib
-      ]
+      [ libjpeg zlib libvorbis curl gmp ]
+      ++ lib.optionals withGLX [ libX11 libGLU libGL libXpm libXext libXxf86vm alsa-lib ]
       ++ lib.optionals withSDL [ SDL2 ];
 
     sourceRoot = "Xonotic/source/darkplaces";
@@ -225,10 +205,7 @@ rec {
     runCommand "xonotic${variant}-${version}"
       {
         inherit xonotic-unwrapped;
-        nativeBuildInputs = [
-          makeWrapper
-          copyDesktopItems
-        ];
+        nativeBuildInputs = [ makeWrapper copyDesktopItems ];
         desktopItems = [ desktopItem ];
         passthru = {
           inherit version;

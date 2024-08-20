@@ -33,11 +33,7 @@ let
     description = "Kubernetes IDE";
     homepage = "https://k8slens.dev/";
     license = licenses.lens;
-    maintainers = with maintainers; [
-      dbirks
-      RossComputerGuy
-      starkca90
-    ];
+    maintainers = with maintainers; [ dbirks RossComputerGuy starkca90 ];
     platforms = builtins.attrNames sources;
   };
 

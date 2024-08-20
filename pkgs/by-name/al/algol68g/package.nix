@@ -22,10 +22,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-hKiRMU98sZhGgHhjgtwUNSIv2iPgb4T+dgYw58IGK8Q=";
   };
 
-  outputs = [
-    "out"
-    "man"
-  ] ++ lib.optionals withPDFDoc [ "doc" ];
+  outputs = [ "out" "man" ] ++ lib.optionals withPDFDoc [ "doc" ];
 
   nativeBuildInputs = [
     pkg-config

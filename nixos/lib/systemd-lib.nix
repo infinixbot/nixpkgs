@@ -63,22 +63,7 @@ rec {
 
   shellEscape = s: (replaceStrings [ "\\" ] [ "\\\\" ] s);
 
-  mkPathSafeName =
-    replaceStrings
-      [
-        "@"
-        ":"
-        "\\"
-        "["
-        "]"
-      ]
-      [
-        "-"
-        "-"
-        "-"
-        ""
-        ""
-      ];
+  mkPathSafeName = replaceStrings [ "@" ":" "\\" "[" "]" ] [ "-" "-" "-" "" "" ];
 
   # a type for options that take a unit name
   unitNameType = types.strMatching "[a-zA-Z0-9@%:_.\\-]+[.](service|socket|device|mount|automount|swap|target|path|timer|scope|slice)";
@@ -113,12 +98,7 @@ rec {
           ln -s /dev/null "$out/$name"
         '';
 
-  boolValues = [
-    true
-    false
-    "yes"
-    "no"
-  ];
+  boolValues = [ true false "yes" "no" ];
 
   digits = map toString (range 0 9);
 
@@ -129,16 +109,7 @@ rec {
       suffix = head l;
       nums = tail l;
     in
-    elem suffix (
-      [
-        "K"
-        "M"
-        "G"
-        "T"
-      ]
-      ++ digits
-    )
-    && all (num: elem num digits) nums;
+    elem suffix ([ "K" "M" "G" "T" ] ++ digits) && all (num: elem num digits) nums;
 
   assertByteFormat =
     name: group: attr:
@@ -541,17 +512,7 @@ rec {
   makeJobScript =
     name: text:
     let
-      scriptName =
-        replaceStrings
-          [
-            "\\"
-            "@"
-          ]
-          [
-            "-"
-            "_"
-          ]
-          (shellEscape name);
+      scriptName = replaceStrings [ "\\" "@" ] [ "-" "_" ] (shellEscape name);
       out =
         (pkgs.writeShellScriptBin scriptName ''
           set -e

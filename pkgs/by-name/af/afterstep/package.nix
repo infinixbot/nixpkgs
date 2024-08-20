@@ -59,10 +59,7 @@ stdenv.mkDerivation (finalAttrs: {
     libtiff
   ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   strictDeps = true;
 

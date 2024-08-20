@@ -4,10 +4,7 @@ let
   snakeoil = import ../common/acme/server/snakeoil-certs.nix;
 
   hosts = lib.mkForce {
-    "fd::a" = [
-      "server"
-      snakeoil.domain
-    ];
+    "fd::a" = [ "server" snakeoil.domain ];
     "fd::b" = [ "client" ];
   };
 in

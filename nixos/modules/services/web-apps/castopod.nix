@@ -83,13 +83,7 @@ in
         };
       };
       settings = lib.mkOption {
-        type =
-          with lib.types;
-          attrsOf (oneOf [
-            str
-            int
-            bool
-          ]);
+        type = with lib.types; attrsOf (oneOf [ str int bool ]);
         default = { };
         example = {
           "email.protocol" = "smtp";
@@ -126,13 +120,7 @@ in
         description = "The domain serving your CastoPod instance.";
       };
       poolSettings = lib.mkOption {
-        type =
-          with lib.types;
-          attrsOf (oneOf [
-            str
-            int
-            bool
-          ]);
+        type = with lib.types; attrsOf (oneOf [ str int bool ]);
         default = {
           "pm" = "dynamic";
           "pm.max_children" = "32";
@@ -211,10 +199,7 @@ in
       after = lib.optional config.services.mysql.enable "mysql.service";
       requires = lib.optional config.services.mysql.enable "mysql.service";
       wantedBy = [ "multi-user.target" ];
-      path = [
-        pkgs.openssl
-        phpPackage
-      ];
+      path = [ pkgs.openssl phpPackage ];
       script =
         let
           envFile = "${cfg.dataDir}/.env";

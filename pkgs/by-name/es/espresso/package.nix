@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   passthru.updateScript = nix-update-script { };
 

@@ -30,10 +30,7 @@ stdenvNoCC.mkDerivation {
     homepage = "http://dotcolon.net/font/f5_6/";
     description = "Weighted decorative font";
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      leenaars
-      minijackson
-    ];
+    maintainers = with maintainers; [ leenaars minijackson ];
     license = licenses.ofl;
   };
 }

@@ -23,12 +23,7 @@ stdenv.mkDerivation rec {
     sed -i "s|/usr/local|$out|" Makefile
   '';
 
-  buildInputs = [
-    libxcb
-    git
-    xcbutil
-    xcbutilwm
-  ];
+  buildInputs = [ libxcb git xcbutil xcbutilwm ];
 
   meta = with lib; {
     description = "Outputs X window titles";

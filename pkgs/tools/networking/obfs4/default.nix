@@ -22,10 +22,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-O8CsvpwL9cfipl4M0BquSnG9tBrt/+i+i80OYk2mNiI=";
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   nativeBuildInputs = [ installShellFiles ];
 
@@ -51,10 +48,6 @@ buildGoModule rec {
     maintainers = with maintainers; [ thoughtpolice ];
     mainProgram = "lyrebird";
     changelog = "https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/lyrebird/-/raw/${src.rev}/ChangeLog";
-    license = with lib.licenses; [
-      bsd2
-      bsd3
-      gpl3
-    ];
+    license = with lib.licenses; [ bsd2 bsd3 gpl3 ];
   };
 }

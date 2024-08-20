@@ -149,10 +149,7 @@ in
         environment =
           let
             penv = python.buildEnv.override {
-              extraLibs = [
-                bepasty
-                gevent
-              ];
+              extraLibs = [ bepasty gevent ];
             };
           in
           {

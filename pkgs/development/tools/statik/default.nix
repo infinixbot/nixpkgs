@@ -18,10 +18,7 @@ buildGoModule rec {
   vendorHash = null;
 
   # Avoid building example
-  subPackages = [
-    "."
-    "fs"
-  ];
+  subPackages = [ "." "fs" ];
   # Tests are checking that the files embedded are preserving
   # their meta data like dates etc, but it assumes to be in 2048
   # which is not the case once entered the nix store

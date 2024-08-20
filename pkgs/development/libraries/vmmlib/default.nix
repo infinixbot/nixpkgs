@@ -26,20 +26,11 @@ stdenv.mkDerivation rec {
     ./disable-cpack.patch # disable the need of cpack/rpm
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-  ];
-  buildInputs =
-    [
-      boost
-      lapack
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      Accelerate
-      CoreGraphics
-      CoreVideo
-    ];
+  nativeBuildInputs = [ pkg-config cmake ];
+  buildInputs = [
+    boost
+    lapack
+  ] ++ lib.optionals stdenv.isDarwin [ Accelerate CoreGraphics CoreVideo ];
 
   doCheck = !stdenv.isDarwin;
 

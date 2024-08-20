@@ -28,9 +28,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/astrale-sharp/typstfmt";
     license = lib.licenses.mit;
     mainProgram = "typstfmt";
-    maintainers = with lib.maintainers; [
-      figsoda
-      geri1701
-    ];
+    maintainers = with lib.maintainers; [ figsoda geri1701 ];
   };
 }

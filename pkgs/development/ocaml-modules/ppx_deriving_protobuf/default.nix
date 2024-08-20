@@ -20,10 +20,7 @@ buildDunePackage rec {
   };
 
   nativeBuildInputs = [ cppo ];
-  buildInputs = [
-    ppxlib
-    dune-configurator
-  ];
+  buildInputs = [ ppxlib dune-configurator ];
   propagatedBuildInputs = [ ppx_deriving ];
 
   meta = with lib; {

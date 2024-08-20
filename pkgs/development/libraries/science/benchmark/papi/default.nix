@@ -27,9 +27,6 @@ stdenv.mkDerivation rec {
     description = "Library providing access to various hardware performance counters";
     license = licenses.bsdOriginal;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      costrouc
-      zhaofengli
-    ];
+    maintainers = with maintainers; [ costrouc zhaofengli ];
   };
 }

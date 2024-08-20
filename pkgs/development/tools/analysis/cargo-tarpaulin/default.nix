@@ -25,12 +25,7 @@ rustPlatform.buildRustPackage rec {
   nativeBuildInputs = [
     pkg-config
   ];
-  buildInputs =
-    [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [
-      curl
-      Security
-    ];
+  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ curl Security ];
 
   doCheck = false;
 
@@ -43,9 +38,6 @@ rustPlatform.buildRustPackage rec {
       mit # or
       asl20
     ];
-    maintainers = with maintainers; [
-      figsoda
-      hugoreeves
-    ];
+    maintainers = with maintainers; [ figsoda hugoreeves ];
   };
 }

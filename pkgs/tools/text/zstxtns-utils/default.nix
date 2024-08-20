@@ -26,19 +26,8 @@ stdenvNoCC.mkDerivation rec {
   '';
 
   postInstall = ''
-    wrapProgram $out/bin/zstxtns-merge --set PATH "${
-      lib.makeBinPath [
-        coreutils
-        gnugrep
-        moreutils
-      ]
-    }"
-    wrapProgram $out/bin/zstxtns-unmerge --set PATH "${
-      lib.makeBinPath [
-        coreutils
-        gnugrep
-      ]
-    }"
+    wrapProgram $out/bin/zstxtns-merge --set PATH "${lib.makeBinPath [ coreutils gnugrep moreutils ]}"
+    wrapProgram $out/bin/zstxtns-unmerge --set PATH "${lib.makeBinPath [ coreutils gnugrep ]}"
   '';
 
   meta = with lib; {

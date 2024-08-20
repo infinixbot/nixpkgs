@@ -37,10 +37,7 @@ stdenv.mkDerivation rec {
     hdf5
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   doCheck = true;
 

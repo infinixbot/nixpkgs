@@ -26,11 +26,7 @@ stdenv.mkDerivation rec {
     rev = version;
     hash = "sha256-Ve3wmX5+kABCu8IRe4ySrwsBJm47g1zvMqDbqrpQl88=";
   };
-  nativeBuildInputs = [
-    cmake
-    ninja
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake ninja pkg-config ];
   buildInputs = [
     libX11
     libXrandr

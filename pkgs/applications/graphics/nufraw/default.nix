@@ -31,12 +31,7 @@ stdenv.mkDerivation rec {
     sha256 = "0b63qvw9r8kaqw36bk3a9zwxc41h8fr6498indkw4glrj0awqz9c";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    gettext
-    perl
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook gettext perl pkg-config ];
 
   buildInputs = [
     bzip2

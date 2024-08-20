@@ -29,15 +29,8 @@ mkDerivation rec {
   # updating this derivation.
   NIX_CFLAGS_COMPILE = "-Wno-error";
 
-  nativeBuildInputs = [
-    cmake
-    bison
-    flex
-  ];
-  buildInputs = [
-    qtbase
-    capstone
-  ];
+  nativeBuildInputs = [ cmake bison flex ];
+  buildInputs = [ qtbase capstone ];
   patches = [
     (fetchpatch {
       name = "include-missing-cstdint.patch";

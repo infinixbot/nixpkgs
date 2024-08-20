@@ -21,12 +21,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   PCRE_CONFIG = "${pcre2.dev}/bin/pcre-config";
-  nativeBuildInputs = [
-    autoconf
-    automake
-    libtool
-    bison
-  ];
+  nativeBuildInputs = [ autoconf automake libtool bison ];
   buildInputs = [ pcre2 ];
 
   configureFlags = [ "--without-tcl" ];

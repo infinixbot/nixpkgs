@@ -17,11 +17,7 @@ stdenv.mkDerivation rec {
   pname = "libqrtr-glib";
   version = "1.2.2";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.freedesktop.org";

@@ -41,10 +41,7 @@ perlPackages.buildPerlPackage rec {
     [ curl ]
     # provide some "cups-*" commands to `foomatic-{configure,printjob}`
     # so that they can manage a local cups server (add queues, add jobs...)
-    ++ lib.optionals withCupsAccess [
-      cups
-      cups-filters
-    ]
+    ++ lib.optionals withCupsAccess [ cups cups-filters ]
     # the commands `foomatic-{configure,getpjloptions}` need
     # netcat if they are used to query or alter a network
     # printer via AppSocket/HP JetDirect protocol
@@ -53,12 +50,7 @@ perlPackages.buildPerlPackage rec {
     # shared via the SMB protocol, but it needs the `smbclient` binary
     ++ lib.optional withSMBAccess samba;
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-    file
-    makeWrapper
-  ];
+  nativeBuildInputs = [ autoconf automake file makeWrapper ];
 
   # sed-substitute indirection is more robust against
   # characters in paths that might need escaping

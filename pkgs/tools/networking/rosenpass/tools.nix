@@ -13,10 +13,7 @@ stdenv.mkDerivation {
   inherit (rosenpass) version src;
   pname = "rosenpass-tools";
 
-  nativeBuildInputs = [
-    makeWrapper
-    installShellFiles
-  ];
+  nativeBuildInputs = [ makeWrapper installShellFiles ];
 
   postInstall = ''
     install -D $src/rp $out/bin/rp

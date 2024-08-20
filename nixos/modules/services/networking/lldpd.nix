@@ -19,11 +19,7 @@ in
     extraArgs = mkOption {
       type = types.listOf types.str;
       default = [ ];
-      example = [
-        "-c"
-        "-k"
-        "-I eth0"
-      ];
+      example = [ "-c" "-k" "-I eth0" ];
       description = "List of command line parameters for lldpd";
     };
   };

@@ -205,15 +205,8 @@ in
       description = "Re-setup tmpfiles on a system that is already running.";
 
       requiredBy = [ "sysinit-reactivation.target" ];
-      after = [
-        "local-fs.target"
-        "systemd-sysusers.service"
-        "systemd-journald.service"
-      ];
-      before = [
-        "sysinit-reactivation.target"
-        "shutdown.target"
-      ];
+      after = [ "local-fs.target" "systemd-sysusers.service" "systemd-journald.service" ];
+      before = [ "sysinit-reactivation.target" "shutdown.target" ];
       conflicts = [ "shutdown.target" ];
       restartTriggers = [ config.environment.etc."tmpfiles.d".source ];
 
@@ -335,10 +328,7 @@ in
           "shutdown.target"
           "initrd-switch-root.target"
         ];
-        conflicts = [
-          "shutdown.target"
-          "initrd-switch-root.target"
-        ];
+        conflicts = [ "shutdown.target" "initrd-switch-root.target" ];
         wantedBy = [ "initrd.target" ];
         serviceConfig = {
           Type = "oneshot";

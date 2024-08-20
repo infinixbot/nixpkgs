@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
 
   dontUnpack = true;
 
-  buildInputs = [
-    python3
-    python3.pkgs.lz4
-  ];
+  buildInputs = [ python3 python3.pkgs.lz4 ];
 
   installPhase = ''
     mkdir -p "$out/bin" "$out/${python3.sitePackages}/"
@@ -35,11 +32,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "MozLz4a compression/decompression utility";
     license = licenses.bsd2;
-    maintainers = with maintainers; [
-      kira-bruneau
-      pshirshov
-      raskin
-    ];
+    maintainers = with maintainers; [ kira-bruneau pshirshov raskin ];
     platforms = python3.meta.platforms;
     homepage = "https://gist.github.com/Tblue/62ff47bef7f894e92ed5";
     mainProgram = "mozlz4a";

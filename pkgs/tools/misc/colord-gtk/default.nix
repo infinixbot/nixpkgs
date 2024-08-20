@@ -24,11 +24,7 @@ stdenv.mkDerivation rec {
   pname = "colord-gtk";
   version = "0.3.1";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchurl {
     url = "https://www.freedesktop.org/software/colord/releases/${pname}-${version}.tar.xz";

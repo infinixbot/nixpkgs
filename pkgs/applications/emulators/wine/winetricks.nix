@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
 
   src = (callPackage ./sources.nix { }).winetricks;
 
-  buildInputs = [
-    perl
-    which
-  ];
+  buildInputs = [ perl which ];
 
   # coreutils is for sha1sum
   pathAdd = lib.makeBinPath [

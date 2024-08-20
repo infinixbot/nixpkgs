@@ -37,10 +37,7 @@ buildNpmPackage rec {
     icon = "vieb";
     desktopName = "Web Browser";
     genericName = "Web Browser";
-    categories = [
-      "Network"
-      "WebBrowser"
-    ];
+    categories = [ "Network" "WebBrowser" ];
     mimeTypes = [
       "text/html"
       "application/xhtml+xml"
@@ -70,10 +67,7 @@ buildNpmPackage rec {
     changelog = "https://github.com/Jelmerro/Vieb/releases/tag/${version}";
     description = "Vim Inspired Electron Browser";
     mainProgram = "vieb";
-    maintainers = with maintainers; [
-      gebner
-      tejing
-    ];
+    maintainers = with maintainers; [ gebner tejing ];
     platforms = platforms.unix;
     license = licenses.gpl3Plus;
   };

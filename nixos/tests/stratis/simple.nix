@@ -11,12 +11,7 @@ import ../make-test-python.nix (
       { pkgs, ... }:
       {
         services.stratis.enable = true;
-        virtualisation.emptyDiskImages = [
-          2048
-          1024
-          1024
-          1024
-        ];
+        virtualisation.emptyDiskImages = [ 2048 1024 1024 1024 ];
       };
 
     testScript = ''

@@ -27,12 +27,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = lib.optional stdenv.isDarwin desktopToDarwinBundle;
 
-  buildInputs = [
-    SDL2
-    SDL2_net
-    glew
-    lua5_4
-  ];
+  buildInputs = [ SDL2 SDL2_net glew lua5_4 ];
 
   makeFlags = [ "CC:=$(CC)" ];
 

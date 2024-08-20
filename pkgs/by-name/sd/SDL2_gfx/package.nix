@@ -33,10 +33,7 @@ stdenv.mkDerivation (finalAttrs: {
       darwin.libobjc
     ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   configureFlags = [
     (lib.enableFeature enableMmx "mmx")

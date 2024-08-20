@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-K08eeruyT5vKzK3PzfCkubZiHbf9Yq7wzD1z69MeDtY=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    installShellFiles
-  ];
+  nativeBuildInputs = [ makeWrapper installShellFiles ];
 
   installPhase = ''
     installManPage docs/man/dehydrated.1
@@ -40,16 +37,7 @@ stdenv.mkDerivation rec {
     mkdir -p $out/bin
     cp -a dehydrated $out/bin
     wrapProgram "$out/bin/dehydrated" --prefix PATH : "${
-      lib.makeBinPath [
-        openssl
-        coreutils
-        gnused
-        gnugrep
-        diffutils
-        curl
-        gawk
-        hexdump
-      ]
+      lib.makeBinPath [ openssl coreutils gnused gnugrep diffutils curl gawk hexdump ]
     }"
   '';
 

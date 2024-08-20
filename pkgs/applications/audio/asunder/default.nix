@@ -32,15 +32,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-iGji4bl7ZofIAOf2EiYqMWu4V+3TmIN2jOYottJTN2s=";
   };
 
-  nativeBuildInputs = [
-    intltool
-    makeWrapper
-    pkg-config
-  ];
-  buildInputs = [
-    gtk2
-    libcddb
-  ];
+  nativeBuildInputs = [ intltool makeWrapper pkg-config ];
+  buildInputs = [ gtk2 libcddb ];
 
   runtimeDeps =
     lib.optional mp3Support lame

@@ -11,19 +11,8 @@
 
 mkDerivation {
   pname = "karchive";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    qttools
-  ];
-  buildInputs = [
-    bzip2
-    xz
-    zlib
-    zstd
-  ];
+  nativeBuildInputs = [ extra-cmake-modules qttools ];
+  buildInputs = [ bzip2 xz zlib zstd ];
   propagatedBuildInputs = [ qtbase ];
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 }

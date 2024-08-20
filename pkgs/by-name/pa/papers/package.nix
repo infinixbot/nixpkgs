@@ -40,11 +40,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "papers";
   version = "46.2";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchFromGitLab {
     domain = "gitlab.gnome.org";

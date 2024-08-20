@@ -27,11 +27,7 @@ buildPythonApplication rec {
 
   passthru.updateScript = nix-update-script { };
 
-  propagatedBuildInputs = [
-    natsort
-    panflute
-    lxml
-  ];
+  propagatedBuildInputs = [ natsort panflute lxml ];
 
   pythonImportsCheck = [ "pandoc_include.main" ];
 
@@ -39,10 +35,7 @@ buildPythonApplication rec {
     description = "Pandoc filter to allow file and header includes";
     homepage = "https://github.com/DCsunset/pandoc-include";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      ppenguin
-      DCsunset
-    ];
+    maintainers = with maintainers; [ ppenguin DCsunset ];
     mainProgram = "pandoc-include";
   };
 }

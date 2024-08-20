@@ -15,10 +15,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-HZ9O/3BQHHrTVLLlU0o1fLHxyRSesBhreT3IdGHnNsg=";
   };
 
-  makeFlags = [
-    "PREFIX=$(out)"
-    "CC:=$(CC)"
-  ];
+  makeFlags = [ "PREFIX=$(out)" "CC:=$(CC)" ];
 
   meta = with lib; {
     homepage = "https://github.com/openresty/sregex";

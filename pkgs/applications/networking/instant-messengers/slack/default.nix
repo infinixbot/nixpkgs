@@ -89,15 +89,8 @@ let
     changelog = "https://slack.com/release-notes";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
-    maintainers = with maintainers; [
-      mmahut
-      teutat3s
-    ];
-    platforms = [
-      "x86_64-darwin"
-      "x86_64-linux"
-      "aarch64-darwin"
-    ];
+    maintainers = with maintainers; [ mmahut teutat3s ];
+    platforms = [ "x86_64-darwin" "x86_64-linux" "aarch64-darwin" ];
     mainProgram = "slack";
   };
 
@@ -163,11 +156,7 @@ let
       gtk3 # needed for GSETTINGS_SCHEMAS_PATH
     ];
 
-    nativeBuildInputs = [
-      dpkg
-      makeWrapper
-      asar
-    ];
+    nativeBuildInputs = [ dpkg makeWrapper asar ];
 
     dontUnpack = true;
     dontBuild = true;

@@ -45,14 +45,7 @@ stdenvNoCC.mkDerivation rec {
     runHook preInstall
     install -Dm555 discord.sh $out/bin/discord.sh
     wrapProgram $out/bin/discord.sh \
-      --set PATH "${
-        lib.makeBinPath [
-          curl
-          jq
-          coreutils
-          file
-        ]
-      }"
+      --set PATH "${lib.makeBinPath [ curl jq coreutils file ]}"
     runHook postInstall
   '';
 

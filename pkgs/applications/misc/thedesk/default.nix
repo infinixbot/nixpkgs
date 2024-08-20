@@ -28,13 +28,7 @@ stdenv.mkDerivation rec {
     makeWrapper
   ];
 
-  buildInputs = [
-    alsa-lib
-    gtk3
-    libxshmfence
-    mesa
-    nss
-  ];
+  buildInputs = [ alsa-lib gtk3 libxshmfence mesa nss ];
 
   dontBuild = true;
   dontConfigure = true;

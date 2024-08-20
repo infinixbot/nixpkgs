@@ -69,11 +69,7 @@ in
       description = "ZNC module for client specific buffers";
       homepage = "https://github.com/CyberShadow/znc-clientbuffer";
       license = licenses.asl20;
-      maintainers = with maintainers; [
-        hrdinka
-        szlend
-        cybershadow
-      ];
+      maintainers = with maintainers; [ hrdinka szlend cybershadow ];
     };
   };
 
@@ -211,10 +207,7 @@ in
       description = "Push notification service module for ZNC";
       homepage = "https://github.com/jreese/znc-push";
       license = lib.licenses.mit;
-      maintainers = with lib.maintainers; [
-        offline
-        schneefux
-      ];
+      maintainers = with lib.maintainers; [ offline schneefux ];
     };
   };
 

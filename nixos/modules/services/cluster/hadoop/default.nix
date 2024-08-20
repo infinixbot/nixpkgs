@@ -11,11 +11,7 @@ let
 in
 with lib;
 {
-  imports = [
-    ./yarn.nix
-    ./hdfs.nix
-    ./hbase.nix
-  ];
+  imports = [ ./yarn.nix ./hdfs.nix ./hbase.nix ];
 
   options.services.hadoop = {
     coreSite = mkOption {

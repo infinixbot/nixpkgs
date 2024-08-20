@@ -27,11 +27,7 @@ stdenv.mkDerivation {
       --replace "set(CMAKE_CXX_STANDARD 11)" "set(CMAKE_CXX_STANDARD 14)"
   '';
 
-  propagatedBuildInputs = [
-    clipper
-    nlopt
-    boost
-  ];
+  propagatedBuildInputs = [ clipper nlopt boost ];
   nativeBuildInputs = [ cmake ];
 
   CLIPPER_PATH = "${clipper.out}";

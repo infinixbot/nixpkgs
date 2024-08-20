@@ -122,10 +122,7 @@ lib.makeScope pkgs.newScope (
           pname = "php-${name}";
           extensionName = extName;
 
-          outputs = [
-            "out"
-            "dev"
-          ];
+          outputs = [ "out" "dev" ];
 
           inherit (php.unwrapped) version src;
 
@@ -506,10 +503,7 @@ lib.makeScope pkgs.newScope (
             }
             {
               name = "gd";
-              buildInputs = [
-                zlib
-                gd
-              ];
+              buildInputs = [ zlib gd ];
               configureFlags = [
                 "--enable-gd"
                 "--with-external-gd=${gd.dev}"
@@ -536,18 +530,8 @@ lib.makeScope pkgs.newScope (
             }
             {
               name = "imap";
-              buildInputs = [
-                uwimap
-                openssl
-                pam
-                pcre2
-                libkrb5
-              ];
-              configureFlags = [
-                "--with-imap=${uwimap}"
-                "--with-imap-ssl"
-                "--with-kerberos"
-              ];
+              buildInputs = [ uwimap openssl pam pcre2 libkrb5 ];
+              configureFlags = [ "--with-imap=${uwimap}" "--with-imap-ssl" "--with-kerberos" ];
               # Using version from PECL on new PHP versions.
               enable = lib.versionOlder php.version "8.3";
             }
@@ -557,10 +541,7 @@ lib.makeScope pkgs.newScope (
             }
             {
               name = "ldap";
-              buildInputs = [
-                openldap
-                cyrus_sasl
-              ];
+              buildInputs = [ openldap cyrus_sasl ];
               configureFlags =
                 [
                   "--with-ldap"
@@ -575,27 +556,18 @@ lib.makeScope pkgs.newScope (
             }
             {
               name = "mbstring";
-              buildInputs = [
-                oniguruma
-                pcre2
-              ];
+              buildInputs = [ oniguruma pcre2 ];
               doCheck = false;
             }
             {
               name = "mysqli";
               internalDeps = [ php.extensions.mysqlnd ];
-              configureFlags = [
-                "--with-mysqli=mysqlnd"
-                "--with-mysql-sock=/run/mysqld/mysqld.sock"
-              ];
+              configureFlags = [ "--with-mysqli=mysqlnd" "--with-mysql-sock=/run/mysqld/mysqld.sock" ];
               doCheck = false;
             }
             {
               name = "mysqlnd";
-              buildInputs = [
-                zlib
-                openssl
-              ];
+              buildInputs = [ zlib openssl ];
               # The configure script doesn't correctly add library link
               # flags, so we add them to the variable used by the Makefile
               # when linking.
@@ -669,14 +641,8 @@ lib.makeScope pkgs.newScope (
             }
             {
               name = "pdo_mysql";
-              internalDeps = with php.extensions; [
-                pdo
-                mysqlnd
-              ];
-              configureFlags = [
-                "--with-pdo-mysql=mysqlnd"
-                "PHP_MYSQL_SOCK=/run/mysqld/mysqld.sock"
-              ];
+              internalDeps = with php.extensions; [ pdo mysqlnd ];
+              configureFlags = [ "--with-pdo-mysql=mysqlnd" "PHP_MYSQL_SOCK=/run/mysqld/mysqld.sock" ];
               doCheck = false;
             }
             {
@@ -738,10 +704,7 @@ lib.makeScope pkgs.newScope (
             { name = "shmop"; }
             {
               name = "simplexml";
-              buildInputs = [
-                libxml2
-                pcre2
-              ];
+              buildInputs = [ libxml2 pcre2 ];
               configureFlags = [
                 "--enable-simplexml"
               ];
@@ -787,10 +750,7 @@ lib.makeScope pkgs.newScope (
             }
             {
               name = "snmp";
-              buildInputs = [
-                net-snmp
-                openssl
-              ];
+              buildInputs = [ net-snmp openssl ];
               configureFlags = [ "--with-snmp" ];
               # net-snmp doesn't build on darwin.
               enable = (!stdenv.isDarwin);
@@ -926,10 +886,7 @@ lib.makeScope pkgs.newScope (
               name = "xmlreader";
               buildInputs = [ libxml2 ];
               internalDeps = [ php.extensions.dom ];
-              env.NIX_CFLAGS_COMPILE = toString [
-                "-I../.."
-                "-DHAVE_DOM"
-              ];
+              env.NIX_CFLAGS_COMPILE = toString [ "-I../.." "-DHAVE_DOM" ];
               doCheck = false;
               configureFlags = [
                 "--enable-xmlreader"
@@ -983,16 +940,10 @@ lib.makeScope pkgs.newScope (
             }
             {
               name = "xsl";
-              buildInputs = [
-                libxslt
-                libxml2
-              ];
+              buildInputs = [ libxslt libxml2 ];
               internalDeps = [ php.extensions.dom ];
               doCheck = false;
-              env.NIX_CFLAGS_COMPILE = toString [
-                "-I../.."
-                "-DHAVE_DOM"
-              ];
+              env.NIX_CFLAGS_COMPILE = toString [ "-I../.." "-DHAVE_DOM" ];
               configureFlags = [ "--with-xsl=${libxslt.dev}" ];
             }
             {
@@ -1002,10 +953,7 @@ lib.makeScope pkgs.newScope (
             }
             {
               name = "zip";
-              buildInputs = [
-                libzip
-                pcre2
-              ];
+              buildInputs = [ libzip pcre2 ];
               configureFlags = [
                 "--with-zip"
               ];

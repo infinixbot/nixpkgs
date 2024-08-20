@@ -39,10 +39,7 @@ let
     downloadPage = "https://github.com/grame-cncm/faust/";
     license = licenses.gpl2;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      magnetophon
-      pmahoney
-    ];
+    maintainers = with maintainers; [ magnetophon pmahoney ];
   };
 
   faust =
@@ -56,13 +53,7 @@ let
 
       inherit src;
 
-      nativeBuildInputs = [
-        makeWrapper
-        pkg-config
-        cmake
-        vim
-        which
-      ];
+      nativeBuildInputs = [ makeWrapper pkg-config cmake vim which ];
       buildInputs = [
         llvm
         emscripten
@@ -88,10 +79,7 @@ let
           --replace 'rm -rf $(TMP)' ' '
       '';
 
-      cmakeFlags = [
-        "-C../backends/all.cmake"
-        "-C../targets/all.cmake"
-      ];
+      cmakeFlags = [ "-C../backends/all.cmake" "-C../targets/all.cmake" ];
 
       postInstall = ''
         # syntax error when eval'd directly
@@ -204,10 +192,7 @@ let
       (faust2ApplBase args)
       // {
 
-        nativeBuildInputs = [
-          pkg-config
-          makeWrapper
-        ];
+        nativeBuildInputs = [ pkg-config makeWrapper ];
 
         propagatedBuildInputs = [ faust ] ++ propagatedBuildInputs;
 

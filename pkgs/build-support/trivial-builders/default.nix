@@ -128,10 +128,7 @@ rec {
             // meta
             // derivationArgs.meta or { };
         }
-        // removeAttrs derivationArgs [
-          "passAsFile"
-          "meta"
-        ]
+        // removeAttrs derivationArgs [ "passAsFile" "meta" ]
       )
       ''
         target=$out${lib.escapeShellArg destination}
@@ -290,11 +287,7 @@ rec {
 
          Type: [String]
       */
-      bashOptions ? [
-        "errexit"
-        "nounset"
-        "pipefail"
-      ],
+      bashOptions ? [ "errexit" "nounset" "pipefail" ],
       /*
         Extra arguments to pass to `stdenv.mkDerivation`.
 
@@ -532,15 +525,10 @@ rec {
       ...
     }:
     let
-      args =
-        removeAttrs args_ [
-          "name"
-          "postBuild"
-        ]
-        // {
-          inherit preferLocalBuild allowSubstitutes;
-          passAsFile = [ "paths" ];
-        }; # pass the defaults
+      args = removeAttrs args_ [ "name" "postBuild" ] // {
+        inherit preferLocalBuild allowSubstitutes;
+        passAsFile = [ "paths" ];
+      }; # pass the defaults
     in
     runCommand name args ''
       mkdir -p $out
@@ -737,10 +725,7 @@ rec {
     path:
     runCommand "runtime-references"
       {
-        exportReferencesGraph = [
-          "graph"
-          path
-        ];
+        exportReferencesGraph = [ "graph" path ];
         inherit path;
       }
       ''
@@ -976,13 +961,7 @@ rec {
         }
         # Carry `meta` information from the underlying `src` if present.
         // (optionalAttrs (src ? meta) { inherit (src) meta; })
-        // (removeAttrs args [
-          "src"
-          "name"
-          "patches"
-          "prePatch"
-          "postPatch"
-        ])
+        // (removeAttrs args [ "src" "name" "patches" "prePatch" "postPatch" ])
       );
 
   # TODO: move docs to Nixpkgs manual

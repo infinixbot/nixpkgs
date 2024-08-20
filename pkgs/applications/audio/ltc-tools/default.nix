@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libltc
-    libsndfile
-    jack2
-  ];
+  buildInputs = [ libltc libsndfile jack2 ];
 
   makeFlags = [ "PREFIX=$(out)" ];
 

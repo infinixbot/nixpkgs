@@ -28,20 +28,8 @@ stdenv.mkDerivation rec {
 
   prePatch = "cd alliance/src";
 
-  nativeBuildInputs = [
-    libtool
-    automake
-    autoconf
-    flex
-  ];
-  buildInputs = [
-    xorgproto
-    motif
-    libX11
-    libXt
-    libXpm
-    bison
-  ];
+  nativeBuildInputs = [ libtool automake autoconf flex ];
+  buildInputs = [ xorgproto motif libX11 libXt libXpm bison ];
 
   # Disable parallel build, errors:
   #  ./pat_decl_y.y:736:5: error: expected '=', ...

@@ -13,10 +13,7 @@ in
 buildEnv {
   name = "iortcw";
 
-  paths = [
-    sp
-    mp
-  ];
+  paths = [ sp mp ];
 
   pathsToLink = [ "/opt" ];
 

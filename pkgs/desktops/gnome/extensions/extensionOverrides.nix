@@ -52,15 +52,8 @@ lib.trivial.pipe super [
   }))
 
   (patchExtension "ddterm@amezin.github.com" (old: {
-    nativeBuildInputs = [
-      gobject-introspection
-      wrapGAppsHook3
-    ];
-    buildInputs = [
-      vte
-      libhandy
-      gjs
-    ];
+    nativeBuildInputs = [ gobject-introspection wrapGAppsHook3 ];
+    buildInputs = [ vte libhandy gjs ];
     postFixup = ''
       patchShebangs "$out/share/gnome-shell/extensions/ddterm@amezin.github.com/bin/com.github.amezin.ddterm"
       wrapGApp "$out/share/gnome-shell/extensions/ddterm@amezin.github.com/bin/com.github.amezin.ddterm"

@@ -15,10 +15,7 @@
 }:
 
 let
-  libwebrtcRpath = lib.makeLibraryPath [
-    mesa
-    libdrm
-  ];
+  libwebrtcRpath = lib.makeLibraryPath [ mesa libdrm ];
   pubspecLock = lib.importJSON ./pubspec.lock.json;
 in
 flutter319.buildFlutterApplication (
@@ -47,14 +44,8 @@ flutter319.buildFlutterApplication (
       homepage = "https://fluffychat.im/";
       license = licenses.agpl3Plus;
       mainProgram = "fluffychat";
-      maintainers = with maintainers; [
-        mkg20001
-        gilice
-      ];
-      platforms = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
+      maintainers = with maintainers; [ mkg20001 gilice ];
+      platforms = [ "x86_64-linux" "aarch64-linux" ];
       sourceProvenance = [ sourceTypes.fromSource ];
       inherit (olm.meta) knownVulnerabilities;
     };
@@ -74,11 +65,7 @@ flutter319.buildFlutterApplication (
       icon = "fluffychat";
       desktopName = "Fluffychat";
       genericName = "Chat with your friends (matrix client)";
-      categories = [
-        "Chat"
-        "Network"
-        "InstantMessaging"
-      ];
+      categories = [ "Chat" "Network" "InstantMessaging" ];
     };
 
     postInstall = ''

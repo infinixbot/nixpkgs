@@ -62,12 +62,7 @@ stdenv.mkDerivation rec {
       '') testInputs}
     '';
 
-  nativeBuildInputs = [
-    jdk
-    ant
-    makeWrapper
-    stripJavaArchivesHook
-  ];
+  nativeBuildInputs = [ jdk ant makeWrapper stripJavaArchivesHook ];
 
   buildPhase = ''
     runHook preBuild
@@ -100,11 +95,7 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  passthru.updateScript = [
-    ./update.sh
-    "mkgmap"
-    meta.downloadPage
-  ];
+  passthru.updateScript = [ ./update.sh "mkgmap" meta.downloadPage ];
 
   meta = with lib; {
     description = "Create maps for Garmin GPS devices from OpenStreetMap (OSM) data";

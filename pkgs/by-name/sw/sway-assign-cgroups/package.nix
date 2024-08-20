@@ -15,13 +15,7 @@ python3Packages.buildPythonApplication rec {
   };
   format = "other";
 
-  propagatedBuildInputs = with python3Packages; [
-    dbus-next
-    i3ipc
-    psutil
-    tenacity
-    xlib
-  ];
+  propagatedBuildInputs = with python3Packages; [ dbus-next i3ipc psutil tenacity xlib ];
 
   installPhase = ''
     runHook preInstall

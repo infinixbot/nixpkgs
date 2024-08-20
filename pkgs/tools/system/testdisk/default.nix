@@ -50,11 +50,7 @@ assert enableQt -> qwt != null;
     ]
     ++ lib.optional enableNtfs ntfs3g
     ++ lib.optional enableExtFs e2fsprogs
-    ++ lib.optionals enableQt [
-      qtbase
-      qttools
-      qwt
-    ];
+    ++ lib.optionals enableQt [ qtbase qttools qwt ];
 
   nativeBuildInputs = [ pkg-config ];
 
@@ -80,9 +76,6 @@ assert enableQt -> qwt != null;
     '';
     license = lib.licenses.gpl2Plus;
     platforms = lib.platforms.all;
-    maintainers = with maintainers; [
-      fgaz
-      eelco
-    ];
+    maintainers = with maintainers; [ fgaz eelco ];
   };
 }

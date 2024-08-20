@@ -76,11 +76,7 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "https://github.com/laramies/theHarvester";
     changelog = "https://github.com/laramies/theHarvester/releases/tag/${version}";
     license = licenses.gpl2Only;
-    maintainers = with maintainers; [
-      c0bw3b
-      fab
-      treemo
-    ];
+    maintainers = with maintainers; [ c0bw3b fab treemo ];
     mainProgram = "theHarvester";
   };
 }

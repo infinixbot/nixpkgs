@@ -23,10 +23,7 @@ lib.makeOverridable (
   else
     stdenvNoCC.mkDerivation {
       inherit name;
-      nativeBuildInputs = [
-        pijul
-        cacert
-      ];
+      nativeBuildInputs = [ pijul cacert ];
       strictDeps = true;
 
       dontUnpack = true;

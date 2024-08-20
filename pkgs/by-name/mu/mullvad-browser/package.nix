@@ -85,11 +85,7 @@ let
       zlib
     ]
     ++ lib.optionals libnotifySupport [ libnotify ]
-    ++ lib.optionals waylandSupport [
-      libxkbcommon
-      libdrm
-      libGL
-    ]
+    ++ lib.optionals waylandSupport [ libxkbcommon libdrm libGL ]
     ++ lib.optionals pipewireSupport [ pipewire ]
     ++ lib.optionals pulseaudioSupport [ libpulseaudio ]
     ++ lib.optionals libvaSupport [ libva ]
@@ -137,12 +133,7 @@ stdenv.mkDerivation rec {
     sources.${stdenv.hostPlatform.system}
       or (throw "unsupported system: ${stdenv.hostPlatform.system}");
 
-  nativeBuildInputs = [
-    copyDesktopItems
-    makeWrapper
-    wrapGAppsHook3
-    autoPatchelfHook
-  ];
+  nativeBuildInputs = [ copyDesktopItems makeWrapper wrapGAppsHook3 autoPatchelfHook ];
   buildInputs = [
     gtk3
     alsa-lib
@@ -161,11 +152,7 @@ stdenv.mkDerivation rec {
       desktopName = "Mullvad Browser";
       genericName = "Web Browser";
       comment = meta.description;
-      categories = [
-        "Network"
-        "WebBrowser"
-        "Security"
-      ];
+      categories = [ "Network" "WebBrowser" "Security" ];
       mimeTypes = [
         "text/html"
         "text/xml"
@@ -295,19 +282,11 @@ stdenv.mkDerivation rec {
     mainProgram = "mullvad-browser";
     homepage = "https://mullvad.net/en/browser";
     platforms = attrNames sources;
-    maintainers = with maintainers; [
-      felschr
-      panicgh
-    ];
+    maintainers = with maintainers; [ felschr panicgh ];
     # MPL2.0+, GPL+, &c.  While it's not entirely clear whether
     # the compound is "libre" in a strict sense (some components place certain
     # restrictions on redistribution), it's free enough for our purposes.
-    license = with licenses; [
-      mpl20
-      lgpl21Plus
-      lgpl3Plus
-      free
-    ];
+    license = with licenses; [ mpl20 lgpl21Plus lgpl3Plus free ];
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
   };
 }

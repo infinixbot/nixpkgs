@@ -32,18 +32,11 @@ stdenv.mkDerivation rec {
   strictDeps = true;
 
   buildInputs =
-    lib.optionals stdenv.isLinux [
-      alsa-lib
-      udev
-    ]
+    lib.optionals stdenv.isLinux [ alsa-lib udev ]
     ++ lib.optionals stdenv.isDarwin [ portaudio ]
     ++ lib.optionals gpsdSupport [ gpsd ]
     ++ lib.optionals hamlibSupport [ hamlib ]
-    ++ lib.optionals extraScripts [
-      python3
-      perl
-      espeak
-    ];
+    ++ lib.optionals extraScripts [ python3 perl espeak ];
 
   preConfigure = lib.optionals (!extraScripts) ''
     echo "" > scripts/CMakeLists.txt
@@ -76,9 +69,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/wb2osz/direwolf/";
     license = licenses.gpl2;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      lasandell
-      sarcasticadmin
-    ];
+    maintainers = with maintainers; [ lasandell sarcasticadmin ];
   };
 }

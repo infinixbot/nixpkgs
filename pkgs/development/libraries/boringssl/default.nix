@@ -19,11 +19,7 @@ buildGoModule {
     hash = "sha256-nu+5TeWEAVLGhTE15kxmTWZxo0V2elNUy67gdaU3Y+I=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-    perl
-  ];
+  nativeBuildInputs = [ cmake ninja perl ];
 
   vendorHash = "sha256-074bgtoBRS3SOxLrwZbBdK1jFpdCvF6tRtU1CkrhoDY=";
   proxyVendor = true;
@@ -64,22 +60,13 @@ buildGoModule {
     mv ../include $dev
   '';
 
-  outputs = [
-    "out"
-    "bin"
-    "dev"
-  ];
+  outputs = [ "out" "bin" "dev" ];
 
   meta = with lib; {
     description = "Free TLS/SSL implementation";
     mainProgram = "bssl";
     homepage = "https://boringssl.googlesource.com";
     maintainers = [ maintainers.thoughtpolice ];
-    license = with licenses; [
-      openssl
-      isc
-      mit
-      bsd3
-    ];
+    license = with licenses; [ openssl isc mit bsd3 ];
   };
 }

@@ -28,17 +28,10 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-iivlaQWtOMJHchmR92FoqTaosGJ9F1AgFtuFgDE/9qQ=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    mono
-    unzip
-  ];
+  nativeBuildInputs = [ makeWrapper mono unzip ];
   sourceRoot = ".";
 
-  AOT_FILES = [
-    "MissionPlanner.exe"
-    "MissionPlanner.*.dll"
-  ];
+  AOT_FILES = [ "MissionPlanner.exe" "MissionPlanner.*.dll" ];
 
   buildPhase = ''
     runHook preBuild

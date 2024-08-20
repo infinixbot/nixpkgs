@@ -29,11 +29,7 @@ python3Packages.buildPythonApplication rec {
     pynput
   ];
 
-  nativeCheckInputs = [
-    xvfb-run
-    xdotool
-    dmenu
-  ];
+  nativeCheckInputs = [ xvfb-run xdotool dmenu ];
 
   postPatch = ''
     substituteInPlace tests/keepmenu-config.ini tests/tests.py \

@@ -39,11 +39,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-XxDW1xikpRwX7RsysDHU+bgLBh6CdlNbK+MeWsS3Xm8=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
   nativeBuildInputs = [
     autoreconfHook
@@ -90,10 +86,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = {
     homepage = "https://xine.sourceforge.net/";
     description = "High-performance, portable and reusable multimedia playback engine";
-    license = with lib.licenses; [
-      gpl2Plus
-      lgpl2Plus
-    ];
+    license = with lib.licenses; [ gpl2Plus lgpl2Plus ];
     maintainers = with lib.maintainers; [ AndersonTorres ];
     platforms = lib.platforms.linux;
   };

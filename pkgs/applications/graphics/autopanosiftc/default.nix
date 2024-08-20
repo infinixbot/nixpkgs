@@ -20,13 +20,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    libpng
-    libtiff
-    libjpeg
-    panotools
-    libxml2
-  ];
+  buildInputs = [ libpng libtiff libjpeg panotools libxml2 ];
 
   patches = [
     (fetchurl {

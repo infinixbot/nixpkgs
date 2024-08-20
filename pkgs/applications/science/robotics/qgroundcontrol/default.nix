@@ -46,12 +46,7 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs = [ SDL2 ] ++ gstInputs ++ propagatedBuildInputs;
-  nativeBuildInputs = [
-    pkg-config
-    qmake
-    qttools
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ pkg-config qmake qttools wrapQtAppsHook ];
 
   preConfigure = ''
     mkdir build
@@ -106,10 +101,7 @@ stdenv.mkDerivation rec {
     homepage = "http://qgroundcontrol.com/";
     license = licenses.gpl3Plus;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      lopsided98
-      pandapip1
-    ];
+    maintainers = with maintainers; [ lopsided98 pandapip1 ];
     mainProgram = "QGroundControl";
   };
 }

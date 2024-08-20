@@ -42,11 +42,7 @@ buildNpmPackage rec {
   npmDepsHash = "sha256-GTjL6cjYPoa1ohtqslxDskCN9tKuu1OP1ZWIWtFx+E0=";
   npmFlags = [ "--legacy-peer-deps" ];
   npmBuildScript = if buildWebExtension then "buildWeb" else "build";
-  npmBuildFlags = [
-    "--"
-    "--standalone"
-    "--disable-updater"
-  ];
+  npmBuildFlags = [ "--" "--standalone" "--disable-updater" ];
 
   prePatch = ''
     cp ${./package-lock.json} ./package-lock.json
@@ -72,10 +68,6 @@ buildNpmPackage rec {
     description = "Vencord web extension";
     homepage = "https://github.com/Vendicated/Vencord";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      FlafyDev
-      NotAShelf
-      Scrumplex
-    ];
+    maintainers = with maintainers; [ FlafyDev NotAShelf Scrumplex ];
   };
 }

@@ -12,10 +12,7 @@ buildPythonApplication rec {
   pname = "rss2email";
   version = "3.14";
 
-  propagatedBuildInputs = [
-    feedparser
-    html2text
-  ];
+  propagatedBuildInputs = [ feedparser html2text ];
   nativeCheckInputs = [ beautifulsoup4 ];
 
   src = fetchPypi {
@@ -31,11 +28,7 @@ buildPythonApplication rec {
     })
   ];
 
-  outputs = [
-    "out"
-    "man"
-    "doc"
-  ];
+  outputs = [ "out" "man" "doc" ];
 
   postPatch = ''
     # sendmail executable is called from PATH instead of sbin by default

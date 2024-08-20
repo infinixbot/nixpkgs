@@ -72,9 +72,6 @@ buildGoModule rec {
     description = "Amazon SSM Session Manager Plugin";
     mainProgram = "session-manager-plugin";
     license = lib.licenses.asl20;
-    maintainers = with lib.maintainers; [
-      amarshall
-      mbaillie
-    ];
+    maintainers = with lib.maintainers; [ amarshall mbaillie ];
   };
 }

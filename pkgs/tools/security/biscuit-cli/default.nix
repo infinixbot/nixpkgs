@@ -32,10 +32,7 @@ rustPlatform.buildRustPackage rec {
   meta = with lib; {
     description = "CLI to generate and inspect biscuit tokens";
     homepage = "https://www.biscuitsec.org/";
-    maintainers = with maintainers; [
-      shlevy
-      gaelreyrol
-    ];
+    maintainers = with maintainers; [ shlevy gaelreyrol ];
     license = licenses.bsd3;
     mainProgram = "biscuit";
   };

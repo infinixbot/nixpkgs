@@ -30,13 +30,7 @@
 let
   shared_meta = lib: {
     homepage = "https://www.picotech.com/downloads/linux";
-    maintainers =
-      with lib.maintainers;
-      [
-        expipiplus1
-        wirew0rm
-      ]
-      ++ lib.teams.lumiguide.members;
+    maintainers = with lib.maintainers; [ expipiplus1 wirew0rm ] ++ lib.teams.lumiguide.members;
     platforms = [ "x86_64-linux" ];
     license = lib.licenses.unfree;
   };
@@ -53,10 +47,7 @@ let
       pname = "libpicoipp";
       inherit (sources.libpicoipp) version;
       src = fetchurl { inherit (sources.libpicoipp) url sha256; };
-      nativeBuildInputs = [
-        dpkg
-        autoPatchelfHook
-      ];
+      nativeBuildInputs = [ dpkg autoPatchelfHook ];
       buildInputs = [ stdenv.cc.cc.lib ];
       sourceRoot = ".";
       unpackCmd = "dpkg-deb -x $src .";
@@ -117,17 +108,8 @@ stdenv.mkDerivation rec {
 
   src = fetchurl { inherit (sources.picoscope) url sha256; };
 
-  nativeBuildInputs = [
-    dpkg
-    makeWrapper
-  ];
-  buildInputs = [
-    gtk-sharp-3_0
-    mono
-    glib
-    libusb1
-    zlib
-  ];
+  nativeBuildInputs = [ dpkg makeWrapper ];
+  buildInputs = [ gtk-sharp-3_0 mono glib libusb1 zlib ];
 
   unpackCmd = "dpkg-deb -x $src .";
   sourceRoot = ".";

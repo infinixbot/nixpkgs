@@ -39,11 +39,7 @@ import ./make-test-python.nix (
   {
     name = "bittorrent";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        domenkozar
-        rob
-        bobvanderlinden
-      ];
+      maintainers = [ domenkozar rob bobvanderlinden ];
     };
 
     nodes = {
@@ -77,10 +73,7 @@ import ./make-test-python.nix (
       router =
         { pkgs, nodes, ... }:
         {
-          virtualisation.vlans = [
-            1
-            2
-          ];
+          virtualisation.vlans = [ 1 2 ];
           networking.nat.enable = true;
           networking.nat.internalInterfaces = [ "eth2" ];
           networking.nat.externalInterface = "eth1";

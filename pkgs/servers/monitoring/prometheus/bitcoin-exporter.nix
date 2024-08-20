@@ -21,11 +21,7 @@ python3Packages.buildPythonApplication rec {
   # The makefile builds docker containers.
   dontBuild = true;
 
-  propagatedBuildInputs = with python3Packages; [
-    prometheus-client
-    bitcoinlib
-    riprova
-  ];
+  propagatedBuildInputs = with python3Packages; [ prometheus-client bitcoinlib riprova ];
 
   installPhase = ''
     mkdir -p $out/bin

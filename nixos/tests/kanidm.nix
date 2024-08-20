@@ -10,11 +10,7 @@ import ./make-test-python.nix (
   in
   {
     name = "kanidm";
-    meta.maintainers = with pkgs.lib.maintainers; [
-      erictapen
-      Flakebi
-      oddlama
-    ];
+    meta.maintainers = with pkgs.lib.maintainers; [ erictapen Flakebi oddlama ];
 
     nodes.server =
       { pkgs, ... }:
@@ -38,11 +34,7 @@ import ./make-test-python.nix (
 
         users.users.kanidm.shell = pkgs.bashInteractive;
 
-        environment.systemPackages = with pkgs; [
-          kanidm
-          openldap
-          ripgrep
-        ];
+        environment.systemPackages = with pkgs; [ kanidm openldap ripgrep ];
       };
 
     nodes.client =

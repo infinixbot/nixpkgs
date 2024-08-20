@@ -23,10 +23,7 @@ rustPlatform.buildRustPackage rec {
     description = "Linter / Formatter for Twig template files which respects HTML and your time";
     homepage = "https://github.com/MalteJanz/ludtwig";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      shyim
-      maltejanz
-    ];
+    maintainers = with maintainers; [ shyim maltejanz ];
     mainProgram = "ludtwig";
   };
 }

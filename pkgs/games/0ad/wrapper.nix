@@ -12,15 +12,9 @@ buildEnv {
 
   nativeBuildInputs = [ makeWrapper ];
 
-  paths = [
-    zeroad-unwrapped
-    zeroad-data
-  ];
+  paths = [ zeroad-unwrapped zeroad-data ];
 
-  pathsToLink = [
-    "/"
-    "/bin"
-  ];
+  pathsToLink = [ "/" "/bin" ];
 
   postBuild = ''
     for i in $out/bin/*; do

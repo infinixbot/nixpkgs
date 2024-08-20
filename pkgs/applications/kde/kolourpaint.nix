@@ -13,10 +13,7 @@
 
 mkDerivation {
   pname = "kolourpaint";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     kguiaddons
     kio

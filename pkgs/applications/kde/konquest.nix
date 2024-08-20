@@ -16,10 +16,7 @@
 
 mkDerivation {
   pname = "konquest";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     kconfig
     kcoreaddons

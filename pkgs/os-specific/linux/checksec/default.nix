@@ -102,9 +102,6 @@ stdenv.mkDerivation rec {
     homepage = "https://www.trapkit.de/tools/checksec/";
     license = licenses.bsd3;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      thoughtpolice
-      globin
-    ];
+    maintainers = with maintainers; [ thoughtpolice globin ];
   };
 }

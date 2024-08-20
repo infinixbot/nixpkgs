@@ -30,13 +30,7 @@ stdenv.mkDerivation rec {
 
   requiredSystemFeatures = [ "big-parallel" ];
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-    git
-    pythonEnv
-    z3
-  ];
+  nativeBuildInputs = [ cmake ninja git pythonEnv z3 ];
   buildInputs = [ circt-llvm ];
 
   cmakeFlags = [
@@ -72,11 +66,7 @@ stdenv.mkDerivation rec {
   doCheck = true;
   checkTarget = "check-circt check-circt-integration";
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-  ];
+  outputs = [ "out" "lib" "dev" ];
 
   # Copy circt-llvm's postFixup stage so that it can make all our dylib references
   # absolute as well.
@@ -100,10 +90,7 @@ stdenv.mkDerivation rec {
     description = "Circuit IR compilers and tools";
     homepage = "https://circt.org/";
     license = lib.licenses.asl20;
-    maintainers = with lib.maintainers; [
-      sharzy
-      pineapplehunter
-    ];
+    maintainers = with lib.maintainers; [ sharzy pineapplehunter ];
     platforms = lib.platforms.all;
   };
 }

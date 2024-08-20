@@ -50,14 +50,7 @@ let
     pname = "${pname}-unwrapped";
     inherit version src;
 
-    nativeBuildInputs = [
-      fixup-yarn-lock
-      git
-      nodejs
-      util-linux
-      yarn
-      zip
-    ];
+    nativeBuildInputs = [ fixup-yarn-lock git nodejs util-linux yarn zip ];
 
     configurePhase = ''
       export HOME=$TMPDIR
@@ -98,11 +91,7 @@ let
     exec = "electron-fiddle %U";
     icon = "electron-fiddle";
     startupNotify = true;
-    categories = [
-      "GNOME"
-      "GTK"
-      "Utility"
-    ];
+    categories = [ "GNOME" "GTK" "Utility" ];
     mimeTypes = [ "x-scheme-handler/electron-fiddle" ];
   };
 

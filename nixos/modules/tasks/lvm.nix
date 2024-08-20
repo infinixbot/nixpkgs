@@ -69,10 +69,7 @@ in
     })
     (mkIf cfg.boot.thin.enable {
       boot.initrd = {
-        kernelModules = [
-          "dm-snapshot"
-          "dm-thin-pool"
-        ];
+        kernelModules = [ "dm-snapshot" "dm-thin-pool" ];
 
         systemd.initrdBin = lib.mkIf config.boot.initrd.services.lvm.enable [
           pkgs.thin-provisioning-tools
@@ -91,17 +88,9 @@ in
         '';
       };
 
-      environment.etc."lvm/lvm.conf".text =
-        concatMapStringsSep "\n"
-          (bin: "global/${bin}_executable = ${pkgs.thin-provisioning-tools}/bin/${bin}")
-          [
-            "thin_check"
-            "thin_dump"
-            "thin_repair"
-            "cache_check"
-            "cache_dump"
-            "cache_repair"
-          ];
+      environment.etc."lvm/lvm.conf".text = concatMapStringsSep "\n" (
+        bin: "global/${bin}_executable = ${pkgs.thin-provisioning-tools}/bin/${bin}"
+      ) [ "thin_check" "thin_dump" "thin_repair" "cache_check" "cache_dump" "cache_repair" ];
 
       environment.systemPackages = [ pkgs.thin-provisioning-tools ];
     })

@@ -59,9 +59,6 @@ mkCoqDerivation rec {
   meta = with lib; {
     description = "Coq development of the Iris Project";
     license = licenses.bsd3;
-    maintainers = [
-      maintainers.vbgl
-      maintainers.ineol
-    ];
+    maintainers = [ maintainers.vbgl maintainers.ineol ];
   };
 }

@@ -65,14 +65,7 @@ buildGoModule {
     ''
     + lib.optionalString stdenv.isLinux ''
       wrapProgram $out/bin/tailscaled \
-        --prefix PATH : ${
-          lib.makeBinPath [
-            iproute2
-            iptables
-            getent
-            shadow
-          ]
-        } \
+        --prefix PATH : ${lib.makeBinPath [ iproute2 iptables getent shadow ]} \
         --suffix PATH : ${lib.makeBinPath [ procps ]}
       sed -i -e "s#/usr/sbin#$out/bin#" -e "/^EnvironmentFile/d" ./cmd/tailscaled/tailscaled.service
       install -D -m0444 -t $out/lib/systemd/system ./cmd/tailscaled/tailscaled.service
@@ -96,11 +89,6 @@ buildGoModule {
     changelog = "https://github.com/tailscale/tailscale/releases/tag/v${version}";
     license = licenses.bsd3;
     mainProgram = "tailscale";
-    maintainers = with maintainers; [
-      mbaillie
-      jk
-      mfrw
-      pyrox0
-    ];
+    maintainers = with maintainers; [ mbaillie jk mfrw pyrox0 ];
   };
 }

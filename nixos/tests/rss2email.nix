@@ -54,10 +54,7 @@ import ./make-test-python.nix {
                 assert status == 'OK'
             '';
           in
-          [
-            pkgs.opensmtpd
-            checkMailLanded
-          ];
+          [ pkgs.opensmtpd checkMailLanded ];
       };
   };
 

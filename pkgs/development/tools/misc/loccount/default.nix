@@ -21,10 +21,7 @@ buildGoModule rec {
 
   nativeBuildInputs = [ python3 ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   preBuild = ''
     patchShebangs --build tablegen.py

@@ -17,11 +17,7 @@ stdenv.mkDerivation rec {
   pname = "bpkg";
   version = "0.16.0";
 
-  outputs = [
-    "out"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "doc" "man" ];
 
   src = fetchurl {
     url = "https://pkg.cppget.org/1/alpha/build2/bpkg-${version}.tar.gz";

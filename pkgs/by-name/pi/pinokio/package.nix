@@ -29,10 +29,7 @@ let
     description = "Browser to install, run, and programmatically control ANY application automatically";
     license = lib.licenses.mit;
     maintainers = with lib.maintainers; [ ByteSudoer ];
-    platforms = [
-      "x86_64-darwin"
-      "x86_64-linux"
-    ];
+    platforms = [ "x86_64-darwin" "x86_64-linux" ];
     mainProgram = "pinokio";
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
   };

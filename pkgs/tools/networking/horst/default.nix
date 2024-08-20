@@ -36,10 +36,7 @@ stdenv.mkDerivation rec {
   '';
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    ncurses
-    libnl
-  ];
+  buildInputs = [ ncurses libnl ];
 
   installFlags = [ "DESTDIR=${placeholder "out"}" ];
 

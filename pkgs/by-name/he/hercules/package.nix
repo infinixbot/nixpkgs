@@ -48,10 +48,7 @@ let
       meta = with lib; {
         description = "Hercules ${depName} library";
         license = lib.licenses.free; # Mixture of Public Domain, ICU (MIT compatible) and others
-        maintainers = with maintainers; [
-          anna328p
-          vifino
-        ];
+        maintainers = with maintainers; [ anna328p vifino ];
       };
     }).overrideAttrs
       (default: attrFn default);
@@ -155,9 +152,6 @@ stdenv.mkDerivation rec {
       Mac OS X.
     '';
     license = licenses.qpl;
-    maintainers = with maintainers; [
-      anna328p
-      vifino
-    ];
+    maintainers = with maintainers; [ anna328p vifino ];
   };
 }

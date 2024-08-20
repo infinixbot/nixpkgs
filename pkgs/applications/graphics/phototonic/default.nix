@@ -28,14 +28,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    qmake
-    wrapQtAppsHook
-  ];
-  buildInputs = [
-    qtbase
-    exiv2
-  ];
+  nativeBuildInputs = [ qmake wrapQtAppsHook ];
+  buildInputs = [ qtbase exiv2 ];
 
   preConfigure = ''
     sed -i 's;/usr;$$PREFIX/;g' phototonic.pro

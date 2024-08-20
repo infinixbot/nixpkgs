@@ -35,10 +35,7 @@ let
   # This way the plantuml derivation can remain unchanged.
   plantumlWithExtraPath =
     let
-      plantumlIncludePath = lib.concatStringsSep ":" [
-        c4-lib
-        sprites
-      ];
+      plantumlIncludePath = lib.concatStringsSep ":" [ c4-lib sprites ];
       includeFlag = "-Dplantuml.include.path=${lib.escapeShellArg plantumlIncludePath}";
       postFixedJre = runCommand "jre-postfixed" { nativeBuildInputs = [ makeWrapper ]; } ''
         mkdir -p $out/bin

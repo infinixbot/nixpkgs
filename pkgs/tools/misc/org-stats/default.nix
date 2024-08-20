@@ -34,10 +34,7 @@ buildGoModule rec {
     installShellFiles
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   postInstall = ''
     $out/bin/org-stats man > org-stats.1

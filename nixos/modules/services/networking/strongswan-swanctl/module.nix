@@ -73,12 +73,7 @@ in
       wantedBy = [ "multi-user.target" ];
       wants = [ "network-online.target" ];
       after = [ "network-online.target" ];
-      path = with pkgs; [
-        kmod
-        iproute2
-        iptables
-        util-linux
-      ];
+      path = with pkgs; [ kmod iproute2 iptables util-linux ];
       environment = {
         STRONGSWAN_CONF = pkgs.writeTextFile {
           name = "strongswan.conf";

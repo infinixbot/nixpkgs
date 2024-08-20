@@ -66,10 +66,7 @@ rustPlatform.buildRustPackage {
     description = "Multi-tenant Nix Binary Cache";
     homepage = "https://github.com/zhaofengli/attic";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      zhaofengli
-      aciceri
-    ];
+    maintainers = with maintainers; [ zhaofengli aciceri ];
     platforms = platforms.linux ++ platforms.darwin;
     mainProgram = "attic";
   };

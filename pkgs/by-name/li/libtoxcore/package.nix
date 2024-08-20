@@ -42,10 +42,7 @@ stdenv.mkDerivation rec {
       libvpx
     ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   doCheck = true;
   nativeCheckInputs = [ check ];
@@ -62,10 +59,7 @@ stdenv.mkDerivation rec {
     description = "P2P FOSS instant messaging application aimed to replace Skype";
     homepage = "https://tox.chat";
     license = lib.licenses.gpl3Plus;
-    maintainers = with lib.maintainers; [
-      peterhoeg
-      ehmry
-    ];
+    maintainers = with lib.maintainers; [ peterhoeg ehmry ];
     platforms = lib.platforms.all;
   };
 }

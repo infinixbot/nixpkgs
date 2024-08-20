@@ -69,10 +69,7 @@ in
         {
           Type = "simple";
           ExecStart = "${cfg.package}/bin/warp-svc";
-          ReadWritePaths = [
-            "${cfg.rootDir}"
-            "/etc/resolv.conf"
-          ];
+          ReadWritePaths = [ "${cfg.rootDir}" "/etc/resolv.conf" ];
           CapabilityBoundingSet = caps;
           AmbientCapabilities = caps;
           Restart = "always";

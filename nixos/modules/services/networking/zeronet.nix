@@ -46,14 +46,7 @@ with lib;
     package = mkPackageOption pkgs "zeronet" { };
 
     settings = mkOption {
-      type =
-        with types;
-        attrsOf (oneOf [
-          str
-          int
-          bool
-          (listOf str)
-        ]);
+      type = with types; attrsOf (oneOf [ str int bool (listOf str) ]);
       default = { };
       example = literalExpression "{ global.tor = enable; }";
 

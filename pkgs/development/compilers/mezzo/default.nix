@@ -39,22 +39,8 @@ else
 
     strictDeps = true;
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-      ocamlbuild
-      camlp4
-      menhir
-    ];
-    buildInputs = [
-      yojson
-      menhirLib
-      ulex
-      pprint
-      fix
-      functory
-      ocamlbuild
-    ];
+    nativeBuildInputs = [ ocaml findlib ocamlbuild camlp4 menhir ];
+    buildInputs = [ yojson menhirLib ulex pprint fix functory ocamlbuild ];
 
     # Sets warning 3 as non-fatal
     prePatch =

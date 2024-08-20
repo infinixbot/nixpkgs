@@ -22,10 +22,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-akMW3S2/qUyLK8F77EtnaXPDXvIMpkGfNB2jOD6hQho=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    python3
-  ];
+  nativeBuildInputs = [ cmake python3 ];
 
   preConfigure = ''
     if [ $doCheck -eq 1 ]; then
@@ -35,12 +32,7 @@ stdenv.mkDerivation rec {
     fi
   '';
 
-  nativeCheckInputs = [
-    gtest
-    lit
-    nodejs
-    filecheck
-  ];
+  nativeCheckInputs = [ gtest lit nodejs filecheck ];
   checkPhase = ''
     LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/lib python3 ../check.py $tests
   '';
@@ -70,10 +62,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/WebAssembly/binaryen";
     description = "Compiler infrastructure and toolchain library for WebAssembly, in C++";
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      asppsa
-      willcohen
-    ];
+    maintainers = with maintainers; [ asppsa willcohen ];
     license = licenses.asl20;
   };
 

@@ -62,10 +62,7 @@ stdenv.mkDerivation (finalAttrs: rec {
   pname = "poppler-${suffix}";
   version = "24.02.0"; # beware: updates often break cups-filters build, check scribus too!
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "https://poppler.freedesktop.org/poppler-${version}.tar.xz";

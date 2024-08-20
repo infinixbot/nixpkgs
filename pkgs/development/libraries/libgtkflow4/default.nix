@@ -16,11 +16,7 @@ stdenv.mkDerivation rec {
   pname = "libgtkflow4";
   version = "0.2.6";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
   outputBin = "devdoc"; # demo app
 
   src = fetchFromGitea {

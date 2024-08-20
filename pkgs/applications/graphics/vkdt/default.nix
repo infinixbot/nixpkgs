@@ -62,10 +62,7 @@ stdenv.mkDerivation rec {
 
   dontUseCmakeConfigure = true;
 
-  makeFlags = [
-    "DESTDIR=$(out)"
-    "prefix="
-  ];
+  makeFlags = [ "DESTDIR=$(out)" "prefix=" ];
 
   passthru.tests.version = testers.testVersion {
     package = vkdt;

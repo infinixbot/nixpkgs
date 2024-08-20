@@ -32,10 +32,7 @@ stdenv.mkDerivation rec {
 
   inherit version src;
 
-  nativeBuildInputs = [
-    cmake
-    autoPatchelfHook
-  ];
+  nativeBuildInputs = [ cmake autoPatchelfHook ];
 
   buildInputs = [
     indilib
@@ -94,10 +91,7 @@ stdenv.mkDerivation rec {
     description = "Third party firmware for the INDI astronomical software suite";
     changelog = "https://github.com/indilib/indi-3rdparty/releases/tag/v${version}";
     license = licenses.lgpl2Plus;
-    maintainers = with maintainers; [
-      hjones2199
-      sheepforce
-    ];
+    maintainers = with maintainers; [ hjones2199 sheepforce ];
     platforms = platforms.linux;
   };
 }

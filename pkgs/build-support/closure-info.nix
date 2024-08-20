@@ -23,10 +23,7 @@ stdenv.mkDerivation {
 
   preferLocalBuild = true;
 
-  nativeBuildInputs = [
-    coreutils
-    jq
-  ];
+  nativeBuildInputs = [ coreutils jq ];
 
   empty = rootPaths == [ ];
 

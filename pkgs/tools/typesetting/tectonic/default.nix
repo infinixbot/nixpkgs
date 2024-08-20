@@ -46,19 +46,9 @@ rustPlatform.buildRustPackage rec {
   buildFeatures = [ "external-harfbuzz" ];
 
   buildInputs =
-    [
-      icu
-      fontconfig
-      harfbuzz
-      openssl
-    ]
+    [ icu fontconfig harfbuzz openssl ]
     ++ lib.optionals stdenv.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        ApplicationServices
-        Cocoa
-        Foundation
-      ]
+      with darwin.apple_sdk.frameworks; [ ApplicationServices Cocoa Foundation ]
     );
 
   postInstall =
@@ -81,10 +71,6 @@ rustPlatform.buildRustPackage rec {
     changelog = "https://github.com/tectonic-typesetting/tectonic/blob/tectonic@${version}/CHANGELOG.md";
     license = with licenses; [ mit ];
     mainProgram = "tectonic";
-    maintainers = with maintainers; [
-      lluchs
-      doronbehar
-      bryango
-    ];
+    maintainers = with maintainers; [ lluchs doronbehar bryango ];
   };
 }

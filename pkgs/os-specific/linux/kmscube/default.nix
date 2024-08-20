@@ -24,11 +24,7 @@ stdenv.mkDerivation {
     hash = "sha256-kpnn4JBNvwatrcCF/RGk/fQ7qiKD26iLBr9ovDmAKBo=";
   };
 
-  nativeBuildInputs = [
-    meson
-    pkg-config
-    ninja
-  ];
+  nativeBuildInputs = [ meson pkg-config ninja ];
   buildInputs =
     [
       libdrm

@@ -21,10 +21,7 @@ let
         dontBuild = true;
         darwinDontCodeSign = true;
 
-        nativeBuildInputs = [
-          cpio
-          pbzx
-        ];
+        nativeBuildInputs = [ cpio pbzx ];
 
         outputs = [ "out" ];
 
@@ -105,21 +102,13 @@ let
       stdenv = mkStdenv stdenv;
     }
     // builtins.listToAttrs (
-      map
-        (v: {
-          name = "llvmPackages_${v}";
-          value = pkgs."llvmPackages_${v}" // {
-            stdenv = mkStdenv pkgs."llvmPackages_${v}".stdenv;
-            clang = mkCc pkgs."llvmPackages_${v}".clang;
-          };
-        })
-        [
-          "12"
-          "13"
-          "14"
-          "15"
-          "16"
-        ]
+      map (v: {
+        name = "llvmPackages_${v}";
+        value = pkgs."llvmPackages_${v}" // {
+          stdenv = mkStdenv pkgs."llvmPackages_${v}".stdenv;
+          clang = mkCc pkgs."llvmPackages_${v}".clang;
+        };
+      }) [ "12" "13" "14" "15" "16" ]
     );
 
   callPackage = newScope (packages // pkgs.darwin // { inherit MacOSX-SDK; });

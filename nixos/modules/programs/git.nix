@@ -57,10 +57,7 @@ in
         default = [ ];
         example = {
           init.defaultBranch = "main";
-          url."https://github.com/".insteadOf = [
-            "gh:"
-            "github:"
-          ];
+          url."https://github.com/".insteadOf = [ "gh:" "github:" ];
         };
         description = ''
           Configuration to write to /etc/gitconfig. A list can also be

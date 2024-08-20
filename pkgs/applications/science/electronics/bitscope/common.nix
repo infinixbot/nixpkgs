@@ -42,10 +42,7 @@ let
       }
       // (attrs.meta or { });
 
-    nativeBuildInputs = [
-      makeWrapper
-      dpkg
-    ];
+    nativeBuildInputs = [ makeWrapper dpkg ];
 
     libs =
       attrs.libs or [

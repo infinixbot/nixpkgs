@@ -27,29 +27,15 @@ stdenv.mkDerivation rec {
     intltoolize --copy --force --automake
   '';
 
-  nativeBuildInputs = [
-    pkg-config
-    wrapGAppsHook3
-    autoreconfHook
-    intltool
-  ];
-  configureFlags = [
-    "--with-gtk3"
-    "--enable-appindicator=yes"
-  ];
-  buildInputs = [
-    gtk3
-    libayatana-appindicator
-  ];
+  nativeBuildInputs = [ pkg-config wrapGAppsHook3 autoreconfHook intltool ];
+  configureFlags = [ "--with-gtk3" "--enable-appindicator=yes" ];
+  buildInputs = [ gtk3 libayatana-appindicator ];
 
   gappsWrapperArgs = [
     "--prefix"
     "PATH"
     ":"
-    "${lib.makeBinPath [
-      xdotool
-      which
-    ]}"
+    "${lib.makeBinPath [ xdotool which ]}"
   ];
 
   meta = with lib; {

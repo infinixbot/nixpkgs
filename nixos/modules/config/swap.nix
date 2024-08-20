@@ -162,13 +162,7 @@ let
         discardPolicy = mkOption {
           default = null;
           example = "once";
-          type = types.nullOr (
-            types.enum [
-              "once"
-              "pages"
-              "both"
-            ]
-          );
+          type = types.nullOr (types.enum [ "once" "pages" "both" ]);
           description = ''
             Specify the discard policy for the swap device. If "once", then the
             whole swap space is discarded at swapon invocation. If "pages",
@@ -277,10 +271,7 @@ in
             # avoid this race condition.
             after = [ "systemd-modules-load.service" ];
             wantedBy = [ "${realDevice'}.swap" ];
-            before = [
-              "${realDevice'}.swap"
-              "shutdown.target"
-            ];
+            before = [ "${realDevice'}.swap" "shutdown.target" ];
             conflicts = [ "shutdown.target" ];
             path = [
               pkgs.util-linux

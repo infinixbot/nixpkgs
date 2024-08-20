@@ -43,15 +43,10 @@ stdenv.mkDerivation {
 
   separateDebugInfo = true;
 
-  nativeBuildInputs =
-    [
-      pkg-config
-      asciidoc
-    ]
-    ++ (with python3Packages; [
-      python
-      wrapPython
-    ]);
+  nativeBuildInputs = [
+    pkg-config
+    asciidoc
+  ] ++ (with python3Packages; [ python wrapPython ]);
   buildInputs = buildInputs ++ [
     openssl
     zlib
@@ -59,10 +54,7 @@ stdenv.mkDerivation {
     libxslt
     docbook_xsl
   ];
-  pythonPath = with python3Packages; [
-    pygments
-    markdown
-  ];
+  pythonPath = with python3Packages; [ pygments markdown ];
 
   postPatch = ''
     sed -e 's|"gzip"|"${gzip}/bin/gzip"|' \
@@ -106,12 +98,7 @@ stdenv.mkDerivation {
     wrapPythonProgramsIn "$out/lib/cgit/filters" "$out $pythonPath"
 
     for script in $out/lib/cgit/filters/*.sh $out/lib/cgit/filters/html-converters/txt2html; do
-      wrapProgram $script --prefix PATH : '${
-        lib.makeBinPath [
-          coreutils
-          gnused
-        ]
-      }'
+      wrapProgram $script --prefix PATH : '${lib.makeBinPath [ coreutils gnused ]}'
     done
   '';
 

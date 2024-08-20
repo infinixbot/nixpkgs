@@ -50,12 +50,7 @@ stdenv.mkDerivation (finalAttrs: {
     dontUnpack = true;
     doCheck = true;
     buildInputs = [ postgresqlTestHook ];
-    nativeCheckInputs = [
-      (postgresql.withPackages (ps: [
-        ps.h3-pg
-        ps.postgis
-      ]))
-    ];
+    nativeCheckInputs = [ (postgresql.withPackages (ps: [ ps.h3-pg ps.postgis ])) ];
     postgresqlTestUserOptions = "LOGIN SUPERUSER";
     passAsFile = [ "sql" ];
     sql = ''

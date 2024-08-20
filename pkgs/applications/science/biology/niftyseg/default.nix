@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    eigen
-    zlib
-  ];
+  buildInputs = [ eigen zlib ];
 
   meta = with lib; {
     homepage = "http://cmictig.cs.ucl.ac.uk/research/software/software-nifty/niftyseg";

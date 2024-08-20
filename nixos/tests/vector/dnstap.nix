@@ -53,14 +53,8 @@ import ../make-test-python.nix (
             package = pkgs.unbound-full;
             settings = {
               server = {
-                interface = [
-                  "0.0.0.0"
-                  "::"
-                ];
-                access-control = [
-                  "192.168.0.0/24 allow"
-                  "::/0 allow"
-                ];
+                interface = [ "0.0.0.0" "::" ];
+                access-control = [ "192.168.0.0/24 allow" "::/0 allow" ];
 
                 domain-insecure = "local";
                 private-domain = "local";

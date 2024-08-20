@@ -43,12 +43,7 @@ stdenv.mkDerivation rec {
 
   passthru.updateScript = ./update.sh;
 
-  nativeBuildInputs = [
-    wrapGAppsHook3
-    autoPatchelfHook
-    rpmextract
-    mesa
-  ];
+  nativeBuildInputs = [ wrapGAppsHook3 autoPatchelfHook rpmextract mesa ];
 
   buildInputs = [
     alsa-lib

@@ -27,10 +27,7 @@ stdenv.mkDerivation rec {
   pname = "wireplumber";
   version = "0.5.5";
 
-  outputs = [
-    "out"
-    "dev"
-  ] ++ lib.optional enableDocs "doc";
+  outputs = [ "out" "dev" ] ++ lib.optional enableDocs "doc";
 
   src = fetchFromGitLab {
     domain = "gitlab.freedesktop.org";
@@ -57,12 +54,7 @@ stdenv.mkDerivation rec {
       (python3.pythonOnBuildForHost.withPackages (
         ps:
         with ps;
-        lib.optionals enableDocs [
-          sphinx
-          sphinx-rtd-theme
-          breathe
-        ]
-        ++ lib.optionals enableGI [ lxml ]
+        lib.optionals enableDocs [ sphinx sphinx-rtd-theme breathe ] ++ lib.optionals enableGI [ lxml ]
       ))
     ];
 

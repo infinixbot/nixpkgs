@@ -176,10 +176,7 @@ lib.makeScope pkgs.newScope (
         homepage = "https://www.gimp.org";
         # The main code is given in GPLv3, but it has ffmpeg in it, and I think ffmpeg license
         # falls inside "free".
-        license = with licenses; [
-          gpl3
-          free
-        ];
+        license = with licenses; [ gpl3 free ];
       };
     };
 
@@ -352,10 +349,7 @@ lib.makeScope pkgs.newScope (
         sha256 = "1jj3n7spkjc63aipwdqsvq9gi07w13bb1v8iqzvxwzld2kxa3c8w";
       };
 
-      buildInputs = with pkgs; [
-        lensfun
-        gexiv2
-      ];
+      buildInputs = with pkgs; [ lensfun gexiv2 ];
 
       installPhase = "
       installPlugin gimp-lensfun

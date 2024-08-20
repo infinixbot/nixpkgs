@@ -23,10 +23,7 @@ lib.throwIf (lib.versionAtLeast ocaml.version "5.1")
     meta = {
       description = "Convert OCaml parsetrees between different major versions";
       license = lib.licenses.lgpl21;
-      maintainers = with lib.maintainers; [
-        vbgl
-        sternenseemann
-      ];
+      maintainers = with lib.maintainers; [ vbgl sternenseemann ];
       homepage = "https://github.com/ocaml-ppx/ocaml-migrate-parsetree";
     };
   }

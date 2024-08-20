@@ -21,17 +21,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-VZGHVATA6B/+WB541tsnY3lVi526p7+Rd7cSGpNICLU=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
-  buildInputs = [
-    intel-gmmlib
-    intel-graphics-compiler
-    libva
-    level-zero
-  ];
+  buildInputs = [ intel-gmmlib intel-graphics-compiler libva level-zero ];
 
   cmakeFlags = [
     "-DSKIP_UNIT_TESTS=1"
@@ -41,10 +33,7 @@ stdenv.mkDerivation rec {
     "-DCMAKE_INSTALL_LIBDIR=lib"
   ];
 
-  outputs = [
-    "out"
-    "drivers"
-  ];
+  outputs = [ "out" "drivers" ];
 
   # causes redefinition of _FORTIFY_SOURCE
   hardeningDisable = [ "fortify3" ];
@@ -59,12 +48,7 @@ stdenv.mkDerivation rec {
 
   postFixup = ''
     patchelf --set-rpath ${
-      lib.makeLibraryPath [
-        intel-gmmlib
-        intel-graphics-compiler
-        libva
-        stdenv.cc.cc.lib
-      ]
+      lib.makeLibraryPath [ intel-gmmlib intel-graphics-compiler libva stdenv.cc.cc.lib ]
     } \
       $out/lib/intel-opencl/libigdrcl.so
   '';
@@ -75,10 +59,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/intel/compute-runtime";
     changelog = "https://github.com/intel/compute-runtime/releases/tag/${version}";
     license = licenses.mit;
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
     maintainers = with maintainers; [ SuperSandro2000 ];
   };
 }

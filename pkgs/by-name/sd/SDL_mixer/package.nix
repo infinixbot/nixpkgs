@@ -86,10 +86,7 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.enableFeature enableSmpegtest "smpegtest")
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   strictDeps = true;
 

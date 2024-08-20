@@ -27,10 +27,7 @@ buildDunePackage rec {
   '';
 
   buildInputs = [ dune-configurator ];
-  propagatedBuildInputs = [
-    zarith
-    zlib
-  ];
+  propagatedBuildInputs = [ zarith zlib ];
 
   doCheck = true;
 

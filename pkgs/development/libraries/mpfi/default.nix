@@ -26,10 +26,7 @@ stdenv.mkDerivation rec {
 
   sourceRoot = "${src.name}/mpfi";
 
-  nativeBuildInputs = [
-    autoreconfHook
-    texinfo
-  ];
+  nativeBuildInputs = [ autoreconfHook texinfo ];
   buildInputs = [ mpfr ];
 
   meta = {

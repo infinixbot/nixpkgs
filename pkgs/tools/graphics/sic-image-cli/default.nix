@@ -19,10 +19,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-Pw5PJ0xQCLfPaVEzsfqeHJ0E3miDwlj+71J98KRrYDs=";
 
-  nativeBuildInputs = [
-    installShellFiles
-    nasm
-  ];
+  nativeBuildInputs = [ installShellFiles nasm ];
 
   postBuild = ''
     cargo run --example gen_completions

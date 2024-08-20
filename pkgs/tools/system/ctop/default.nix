@@ -17,12 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-UAja7XuoLqJFNcK1PgHGcuf/HbvSrWyRvW2D3T7Hg0g=";
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X main.version=${version}"
-    "-X main.build=v${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X main.version=${version}" "-X main.build=v${version}" ];
 
   meta = with lib; {
     description = "Top-like interface for container metrics";

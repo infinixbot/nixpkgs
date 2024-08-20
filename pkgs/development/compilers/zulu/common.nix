@@ -186,10 +186,7 @@ let
       mainProgram = "java";
       maintainers = [ ];
       platforms = builtins.attrNames dists;
-      sourceProvenance = with lib.sourceTypes; [
-        binaryBytecode
-        binaryNativeCode
-      ];
+      sourceProvenance = with lib.sourceTypes; [ binaryBytecode binaryNativeCode ];
     };
   };
 in

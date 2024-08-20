@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ makeWrapper ];
 
-  configureFlags = [
-    "--enable-padlock"
-    "--enable-intelaes"
-  ];
+  configureFlags = [ "--enable-padlock" "--enable-intelaes" ];
 
   postInstall = ''
     cp bz2aespipe $out/bin

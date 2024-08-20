@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
   pname = "xapp";
   version = "2.8.5";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "linuxmint";

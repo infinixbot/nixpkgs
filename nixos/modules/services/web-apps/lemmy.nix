@@ -103,11 +103,7 @@ in
             description = "Enable Captcha.";
           };
           difficulty = mkOption {
-            type = types.enum [
-              "easy"
-              "medium"
-              "hard"
-            ];
+            type = types.enum [ "easy" "medium" "hard" ];
             default = "medium";
             description = "The difficultly of the captcha to solve.";
           };
@@ -120,31 +116,19 @@ in
     let
       secretOptions = {
         pictrsApiKeyFile = {
-          setting = [
-            "pictrs"
-            "api_key"
-          ];
+          setting = [ "pictrs" "api_key" ];
           path = cfg.pictrsApiKeyFile;
         };
         smtpPasswordFile = {
-          setting = [
-            "email"
-            "smtp_password"
-          ];
+          setting = [ "email" "smtp_password" ];
           path = cfg.smtpPasswordFile;
         };
         adminPasswordFile = {
-          setting = [
-            "setup"
-            "admin_password"
-          ];
+          setting = [ "setup" "admin_password" ];
           path = cfg.adminPasswordFile;
         };
         uriFile = {
-          setting = [
-            "database"
-            "uri"
-          ];
+          setting = [ "database" "uri" ];
           path = cfg.database.uriFile;
         };
       };
@@ -288,12 +272,7 @@ in
         {
           assertion =
             (!(hasAttrByPath [ "federation" ] cfg.settings))
-            && (
-              !(hasAttrByPath [
-                "federation"
-                "enabled"
-              ] cfg.settings)
-            );
+            && (!(hasAttrByPath [ "federation" "enabled" ] cfg.settings));
           message = "`services.lemmy.settings.federation` was removed in 0.17.0 and no longer has any effect";
         }
         {

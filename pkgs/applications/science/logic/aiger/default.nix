@@ -53,11 +53,7 @@ stdenv.mkDerivation rec {
     cp -v aiger.h $dev/include
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "lib"
-  ];
+  outputs = [ "out" "dev" "lib" ];
 
   meta = {
     description = "And-Inverter Graph (AIG) utilities";

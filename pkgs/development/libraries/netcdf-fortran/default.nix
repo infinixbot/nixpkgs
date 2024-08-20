@@ -23,11 +23,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ gfortran ];
   buildInputs =
-    [
-      netcdf
-      hdf5
-      curl
-    ]
+    [ netcdf hdf5 curl ]
     ++ lib.optionals stdenv.isDarwin [
       CoreFoundation
       CoreServices

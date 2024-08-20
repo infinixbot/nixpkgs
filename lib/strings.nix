@@ -154,15 +154,7 @@ rec {
   */
   intersperse =
     separator: list:
-    if list == [ ] || length list == 1 then
-      list
-    else
-      tail (
-        lib.concatMap (x: [
-          separator
-          x
-        ]) list
-      );
+    if list == [ ] || length list == 1 then list else tail (lib.concatMap (x: [ separator x ]) list);
 
   /**
     Concatenate a list of strings with a separator between each element
@@ -1345,22 +1337,13 @@ rec {
 
     :::
   */
-  escapeXML =
-    builtins.replaceStrings
-      [
-        "\""
-        "'"
-        "<"
-        ">"
-        "&"
-      ]
-      [
-        "&quot;"
-        "&apos;"
-        "&lt;"
-        "&gt;"
-        "&amp;"
-      ];
+  escapeXML = builtins.replaceStrings [ "\"" "'" "<" ">" "&" ] [
+    "&quot;"
+    "&apos;"
+    "&lt;"
+    "&gt;"
+    "&amp;"
+  ];
 
   # warning added 12-12-2022
   replaceChars = lib.warn "lib.replaceChars is a deprecated alias of lib.replaceStrings." builtins.replaceStrings;
@@ -1832,13 +1815,7 @@ rec {
   */
   cmakeOptionType =
     let
-      types = [
-        "BOOL"
-        "FILEPATH"
-        "PATH"
-        "STRING"
-        "INTERNAL"
-      ];
+      types = [ "BOOL" "FILEPATH" "PATH" "STRING" "INTERNAL" ];
     in
     type: feature: value:
     assert (elem (toUpper type) types);
@@ -2330,12 +2307,7 @@ rec {
   */
   isConvertibleWithToString =
     let
-      types = [
-        "null"
-        "int"
-        "float"
-        "bool"
-      ];
+      types = [ "null" "int" "float" "bool" ];
     in
     x: isStringLike x || elem (typeOf x) types || (isList x && lib.all isConvertibleWithToString x);
 

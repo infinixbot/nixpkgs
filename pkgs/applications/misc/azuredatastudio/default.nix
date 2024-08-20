@@ -45,17 +45,8 @@ let
     icon = "azuredatastudio";
     startupNotify = true;
     startupWMClass = "azuredatastudio";
-    categories = [
-      "Utility"
-      "TextEditor"
-      "Development"
-      "IDE"
-    ];
-    mimeTypes = [
-      "text/plain"
-      "inode/directory"
-      "application/x-azuredatastudio-workspace"
-    ];
+    categories = [ "Utility" "TextEditor" "Development" "IDE" ];
+    mimeTypes = [ "text/plain" "inode/directory" "application/x-azuredatastudio-workspace" ];
     keywords = [ "azuredatastudio" ];
     actions.new-empty-window = {
       name = "New Empty Window";
@@ -73,12 +64,7 @@ let
     icon = "azuredatastudio";
     startupNotify = true;
     startupWMClass = "azuredatastudio";
-    categories = [
-      "Utility"
-      "TextEditor"
-      "Development"
-      "IDE"
-    ];
+    categories = [ "Utility" "TextEditor" "Development" "IDE" ];
     mimeTypes = [ "x-scheme-handler/azuredatastudio" ];
     keywords = [ "azuredatastudio" ];
     noDisplay = true;
@@ -89,10 +75,7 @@ stdenv.mkDerivation rec {
   pname = "azuredatastudio";
   version = "1.48.1";
 
-  desktopItems = [
-    desktopItem
-    urlHandlerDesktopItem
-  ];
+  desktopItems = [ desktopItem urlHandlerDesktopItem ];
 
   src = fetchurl {
     name = "${pname}-${version}.tar.gz";

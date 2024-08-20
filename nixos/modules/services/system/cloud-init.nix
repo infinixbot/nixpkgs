@@ -182,10 +182,7 @@ in
       # In certain environments (AWS for example), cloud-init-local will
       # first configure an IP through DHCP, and later delete it.
       # This can cause race conditions with anything else trying to set IP through DHCP.
-      before = [
-        "systemd-networkd.service"
-        "dhcpcd.service"
-      ];
+      before = [ "systemd-networkd.service" "dhcpcd.service" ];
       path = path;
       serviceConfig = {
         Type = "oneshot";
@@ -205,14 +202,8 @@ in
         "sshd.service"
         "sshd-keygen.service"
       ];
-      after = [
-        "network-online.target"
-        "cloud-init-local.service"
-      ];
-      before = [
-        "sshd.service"
-        "sshd-keygen.service"
-      ];
+      after = [ "network-online.target" "cloud-init-local.service" ];
+      before = [ "sshd.service" "sshd-keygen.service" ];
       requires = [ "network.target" ];
       path = path;
       serviceConfig = {
@@ -228,10 +219,7 @@ in
       description = "Apply the settings specified in cloud-config";
       wantedBy = [ "multi-user.target" ];
       wants = [ "network-online.target" ];
-      after = [
-        "network-online.target"
-        "cloud-config.target"
-      ];
+      after = [ "network-online.target" "cloud-config.target" ];
 
       path = path;
       serviceConfig = {
@@ -247,11 +235,7 @@ in
       description = "Execute cloud user/final scripts";
       wantedBy = [ "multi-user.target" ];
       wants = [ "network-online.target" ];
-      after = [
-        "network-online.target"
-        "cloud-config.service"
-        "rc-local.service"
-      ];
+      after = [ "network-online.target" "cloud-config.service" "rc-local.service" ];
       requires = [ "cloud-config.target" ];
       path = path;
       serviceConfig = {
@@ -265,10 +249,7 @@ in
 
     systemd.targets.cloud-config = {
       description = "Cloud-config availability";
-      requires = [
-        "cloud-init-local.service"
-        "cloud-init.service"
-      ];
+      requires = [ "cloud-init-local.service" "cloud-init.service" ];
     };
   };
 

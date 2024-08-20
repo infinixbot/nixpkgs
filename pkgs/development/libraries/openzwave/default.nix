@@ -22,19 +22,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-CLK2MeoTmZ8GMKb1OAZFNLyc4C+k+REK2w+WQxZv0/E=";
   };
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
-  nativeBuildInputs = [
-    doxygen
-    fontconfig
-    graphviz-nox
-    libxml2
-    pkg-config
-    which
-  ];
+  nativeBuildInputs = [ doxygen fontconfig graphviz-nox libxml2 pkg-config which ];
 
   buildInputs = [ systemd ];
 

@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
     ./malloc_to_stdlib.patch
   ];
 
-  buildInputs = [
-    libmcrypt
-    libmhash
-  ];
+  buildInputs = [ libmcrypt libmhash ];
 
   env = lib.optionalAttrs stdenv.cc.isClang {
     NIX_CFLAGS_COMPILE = "-Wno-implicit-function-declaration";

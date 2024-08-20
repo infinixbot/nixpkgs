@@ -25,17 +25,9 @@ let
       hash = "sha256-qARQpUiYsamHbko/I1gPZE9pUGJ+3396Vk2n7ERSftA=";
     };
 
-    nativeBuildInputs = [
-      cmake
-      pkg-config
-    ];
+    nativeBuildInputs = [ cmake pkg-config ];
 
-    buildInputs = [
-      glew
-      libglut
-      opencl-headers
-      ocl-icd
-    ];
+    buildInputs = [ glew libglut opencl-headers ocl-icd ];
 
     installPhase = ''
       runHook preInstall
@@ -63,11 +55,7 @@ makeImpureTest {
   name = "opencl-example";
   testedPackage = "rocmPackages_6.clr";
 
-  sandboxPaths = [
-    "/sys"
-    "/dev/dri"
-    "/dev/kfd"
-  ];
+  sandboxPaths = [ "/sys" "/dev/dri" "/dev/kfd" ];
 
   nativeBuildInputs = [ examples ];
 

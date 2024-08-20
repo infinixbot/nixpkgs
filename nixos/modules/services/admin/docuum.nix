@@ -78,14 +78,8 @@ in
             "--deletion-chunk-size"
             cfg.deletionChunkSize
           ]
-          ++ (concatMap (keep: [
-            "--keep"
-            keep
-          ]) cfg.keep)
-          ++ (optionals (cfg.minAge != null) [
-            "--min-age"
-            cfg.minAge
-          ])
+          ++ (concatMap (keep: [ "--keep" keep ]) cfg.keep)
+          ++ (optionals (cfg.minAge != null) [ "--min-age" cfg.minAge ])
         );
       };
     };

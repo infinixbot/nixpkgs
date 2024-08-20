@@ -35,10 +35,7 @@ let
     inherit version;
     nativeBuildInputs = [ cmake ];
     buildInputs = [ python ];
-    cmakeFlags = [
-      "-DBUILD_DEMO=OFF"
-      "-DDISABLE_PYTHON2=ON"
-    ];
+    cmakeFlags = [ "-DBUILD_DEMO=OFF" "-DDISABLE_PYTHON2=ON" ];
   };
 
 in
@@ -58,10 +55,7 @@ buildGo121Module rec {
     "cmd/trace-agent"
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    makeWrapper
-  ];
+  nativeBuildInputs = [ pkg-config makeWrapper ];
   buildInputs = [ rtloader ] ++ lib.optionals withSystemd [ systemd ];
   PKG_CONFIG_PATH = "${python}/lib/pkgconfig";
 
@@ -113,10 +107,7 @@ buildGo121Module rec {
     + lib.optionalString withSystemd ''
       \
            --prefix LD_LIBRARY_PATH : ''
-    + lib.makeLibraryPath [
-      (lib.getLib systemd)
-      rtloader
-    ];
+    + lib.makeLibraryPath [ (lib.getLib systemd) rtloader ];
 
   passthru.tests.version = testers.testVersion {
     package = datadog-agent;
@@ -130,10 +121,7 @@ buildGo121Module rec {
     '';
     homepage = "https://www.datadoghq.com";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      thoughtpolice
-      domenkozar
-    ];
+    maintainers = with maintainers; [ thoughtpolice domenkozar ];
     # never built on aarch64-darwin since first introduction in nixpkgs
     broken = stdenv.isDarwin && stdenv.isAarch64;
   };

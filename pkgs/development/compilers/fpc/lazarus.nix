@@ -57,25 +57,20 @@ stdenv.mkDerivation rec {
     cp ${overrides} ide/${overrides.name}
   '';
 
-  buildInputs =
-    [
-      # we need gtk2 unconditionally as that is the default target when building applications with lazarus
-      fpc
-      gtk2
-      glib
-      libXi
-      xorgproto
-      libX11
-      libXext
-      pango
-      atk
-      stdenv.cc
-      gdk-pixbuf
-    ]
-    ++ lib.optionals withQt [
-      libqt5pas
-      qtbase
-    ];
+  buildInputs = [
+    # we need gtk2 unconditionally as that is the default target when building applications with lazarus
+    fpc
+    gtk2
+    glib
+    libXi
+    xorgproto
+    libX11
+    libXext
+    pango
+    atk
+    stdenv.cc
+    gdk-pixbuf
+  ] ++ lib.optionals withQt [ libqt5pas qtbase ];
 
   # Disable parallel build, errors:
   #  Fatal: (1018) Compilation aborted
@@ -134,14 +129,7 @@ stdenv.mkDerivation rec {
         --prefix NIX_LDFLAGS ' ' "${ldFlags}" \
         --prefix NIX_LDFLAGS_${binutils.suffixSalt} ' ' "${ldFlags}" \
         --prefix LCL_PLATFORM ' ' "$LCL_PLATFORM" \
-        --prefix PATH ':' "${
-          lib.makeBinPath [
-            fpc
-            gdb
-            gnumake
-            binutils
-          ]
-        }"
+        --prefix PATH ':' "${lib.makeBinPath [ fpc gdb gnumake binutils ]}"
     '';
 
   meta = with lib; {

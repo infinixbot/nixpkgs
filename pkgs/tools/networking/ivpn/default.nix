@@ -46,10 +46,7 @@ builtins.mapAttrs
           homepage = "https://www.ivpn.net/apps";
           changelog = "https://github.com/ivpn/desktop-app/releases/tag/v${version}";
           license = licenses.gpl3Only;
-          maintainers = with maintainers; [
-            urandom
-            ataraxiasjel
-          ];
+          maintainers = with maintainers; [ urandom ataraxiasjel ];
           mainProgram = "ivpn";
         };
       }
@@ -98,13 +95,7 @@ builtins.mapAttrs
         patchShebangs --build $out/etc/firewall.sh $out/etc/splittun.sh $out/etc/client.down $out/etc/client.up
 
         wrapProgram "$out/bin/ivpn-service" \
-          --suffix PATH : ${
-            lib.makeBinPath [
-              iptables
-              gawk
-              util-linux
-            ]
-          }
+          --suffix PATH : ${lib.makeBinPath [ iptables gawk util-linux ]}
       '';
     };
   }

@@ -8,10 +8,7 @@
 {
   buildInputs ? [ ],
   nativeBuildInputs ? [ ],
-  outputs ? [
-    "out"
-    "devdoc"
-  ],
+  outputs ? [ "out" "devdoc" ],
   src ? null,
 
   # enabling or disabling does nothing for perl packages so set it explicitly

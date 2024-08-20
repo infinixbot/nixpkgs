@@ -28,17 +28,7 @@ let
         }) values;
       # https://codeberg.org/forgejo/forgejo/src/tag/v7.0.2/contrib/environment-to-ini/environment-to-ini.go
       envEscape =
-        string:
-        lib.replaceStrings
-          [
-            "."
-            "-"
-          ]
-          [
-            "_0X2E_"
-            "_0X2D_"
-          ]
-          (lib.strings.toUpper string);
+        string: lib.replaceStrings [ "." "-" ] [ "_0X2E_" "_0X2D_" ] (lib.strings.toUpper string);
     in
     lib.flatten (lib.mapAttrsToList mkSecret cfg.secrets);
 
@@ -61,218 +51,106 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "forgejo"
-        "appName"
-      ]
-      [
-        "services"
-        "forgejo"
-        "settings"
-        "DEFAULT"
-        "APP_NAME"
-      ]
-    )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "forgejo"
-        "extraConfig"
-      ]
+    (mkRenamedOptionModule [ "services" "forgejo" "appName" ] [
+      "services"
+      "forgejo"
+      "settings"
+      "DEFAULT"
+      "APP_NAME"
+    ])
+    (mkRemovedOptionModule [ "services" "forgejo" "extraConfig" ]
       "services.forgejo.extraConfig has been removed. Please use the freeform services.forgejo.settings option instead"
     )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "forgejo"
-        "database"
-        "password"
-      ]
+    (mkRemovedOptionModule [ "services" "forgejo" "database" "password" ]
       "services.forgejo.database.password has been removed. Please use services.forgejo.database.passwordFile instead"
     )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "forgejo"
-        "mailerPasswordFile"
-      ]
-      [
-        "services"
-        "forgejo"
-        "secrets"
-        "mailer"
-        "PASSWD"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "forgejo" "mailerPasswordFile" ] [
+      "services"
+      "forgejo"
+      "secrets"
+      "mailer"
+      "PASSWD"
+    ])
 
     # copied from services.gitea; remove at some point
-    (mkRenamedOptionModule
-      [
-        "services"
-        "forgejo"
-        "cookieSecure"
-      ]
-      [
-        "services"
-        "forgejo"
-        "settings"
-        "session"
-        "COOKIE_SECURE"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "forgejo"
-        "disableRegistration"
-      ]
-      [
-        "services"
-        "forgejo"
-        "settings"
-        "service"
-        "DISABLE_REGISTRATION"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "forgejo"
-        "domain"
-      ]
-      [
-        "services"
-        "forgejo"
-        "settings"
-        "server"
-        "DOMAIN"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "forgejo"
-        "httpAddress"
-      ]
-      [
-        "services"
-        "forgejo"
-        "settings"
-        "server"
-        "HTTP_ADDR"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "forgejo"
-        "httpPort"
-      ]
-      [
-        "services"
-        "forgejo"
-        "settings"
-        "server"
-        "HTTP_PORT"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "forgejo"
-        "log"
-        "level"
-      ]
-      [
-        "services"
-        "forgejo"
-        "settings"
-        "log"
-        "LEVEL"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "forgejo"
-        "log"
-        "rootPath"
-      ]
-      [
-        "services"
-        "forgejo"
-        "settings"
-        "log"
-        "ROOT_PATH"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "forgejo"
-        "rootUrl"
-      ]
-      [
-        "services"
-        "forgejo"
-        "settings"
-        "server"
-        "ROOT_URL"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "forgejo"
-        "ssh"
-        "clonePort"
-      ]
-      [
-        "services"
-        "forgejo"
-        "settings"
-        "server"
-        "SSH_PORT"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "forgejo"
-        "staticRootPath"
-      ]
-      [
-        "services"
-        "forgejo"
-        "settings"
-        "server"
-        "STATIC_ROOT_PATH"
-      ]
-    )
-    (mkChangedOptionModule
-      [
-        "services"
-        "forgejo"
-        "enableUnixSocket"
-      ]
-      [
-        "services"
-        "forgejo"
-        "settings"
-        "server"
-        "PROTOCOL"
-      ]
-      (config: if config.services.forgejo.enableUnixSocket then "http+unix" else "http")
-    )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "forgejo"
-        "ssh"
-        "enable"
-      ]
+    (mkRenamedOptionModule [ "services" "forgejo" "cookieSecure" ] [
+      "services"
+      "forgejo"
+      "settings"
+      "session"
+      "COOKIE_SECURE"
+    ])
+    (mkRenamedOptionModule [ "services" "forgejo" "disableRegistration" ] [
+      "services"
+      "forgejo"
+      "settings"
+      "service"
+      "DISABLE_REGISTRATION"
+    ])
+    (mkRenamedOptionModule [ "services" "forgejo" "domain" ] [
+      "services"
+      "forgejo"
+      "settings"
+      "server"
+      "DOMAIN"
+    ])
+    (mkRenamedOptionModule [ "services" "forgejo" "httpAddress" ] [
+      "services"
+      "forgejo"
+      "settings"
+      "server"
+      "HTTP_ADDR"
+    ])
+    (mkRenamedOptionModule [ "services" "forgejo" "httpPort" ] [
+      "services"
+      "forgejo"
+      "settings"
+      "server"
+      "HTTP_PORT"
+    ])
+    (mkRenamedOptionModule [ "services" "forgejo" "log" "level" ] [
+      "services"
+      "forgejo"
+      "settings"
+      "log"
+      "LEVEL"
+    ])
+    (mkRenamedOptionModule [ "services" "forgejo" "log" "rootPath" ] [
+      "services"
+      "forgejo"
+      "settings"
+      "log"
+      "ROOT_PATH"
+    ])
+    (mkRenamedOptionModule [ "services" "forgejo" "rootUrl" ] [
+      "services"
+      "forgejo"
+      "settings"
+      "server"
+      "ROOT_URL"
+    ])
+    (mkRenamedOptionModule [ "services" "forgejo" "ssh" "clonePort" ] [
+      "services"
+      "forgejo"
+      "settings"
+      "server"
+      "SSH_PORT"
+    ])
+    (mkRenamedOptionModule [ "services" "forgejo" "staticRootPath" ] [
+      "services"
+      "forgejo"
+      "settings"
+      "server"
+      "STATIC_ROOT_PATH"
+    ])
+    (mkChangedOptionModule [ "services" "forgejo" "enableUnixSocket" ] [
+      "services"
+      "forgejo"
+      "settings"
+      "server"
+      "PROTOCOL"
+    ] (config: if config.services.forgejo.enableUnixSocket then "http+unix" else "http"))
+    (mkRemovedOptionModule [ "services" "forgejo" "ssh" "enable" ]
       "services.forgejo.ssh.enable has been migrated into freeform setting services.forgejo.settings.server.DISABLE_SSH. Keep in mind that the setting is inverted"
     )
   ];
@@ -324,11 +202,7 @@ in
 
       database = {
         type = mkOption {
-          type = types.enum [
-            "sqlite3"
-            "mysql"
-            "postgres"
-          ];
+          type = types.enum [ "sqlite3" "mysql" "postgres" ];
           example = "mysql";
           default = "sqlite3";
           description = "Database engine to use.";
@@ -424,17 +298,7 @@ in
         };
 
         type = mkOption {
-          type = types.enum [
-            "zip"
-            "tar"
-            "tar.sz"
-            "tar.gz"
-            "tar.xz"
-            "tar.bz2"
-            "tar.br"
-            "tar.lz4"
-            "tar.zst"
-          ];
+          type = types.enum [ "zip" "tar" "tar.sz" "tar.gz" "tar.xz" "tar.bz2" "tar.br" "tar.lz4" "tar.zst" ];
           default = "zip";
           description = "Archive format used to store the dump file.";
         };
@@ -508,27 +372,14 @@ in
               };
               LEVEL = mkOption {
                 default = "Info";
-                type = types.enum [
-                  "Trace"
-                  "Debug"
-                  "Info"
-                  "Warn"
-                  "Error"
-                  "Critical"
-                ];
+                type = types.enum [ "Trace" "Debug" "Info" "Warn" "Error" "Critical" ];
                 description = "General log level.";
               };
             };
 
             server = {
               PROTOCOL = mkOption {
-                type = types.enum [
-                  "http"
-                  "https"
-                  "fcgi"
-                  "http+unix"
-                  "fcgi+unix"
-                ];
+                type = types.enum [ "http" "https" "fcgi" "http+unix" "fcgi+unix" ];
                 default = "http";
                 description = ''Listen protocol. `+unix` means "over unix", not "in addition to."'';
               };
@@ -842,11 +693,7 @@ in
           "forgejo-secrets.service"
         ];
       wantedBy = [ "multi-user.target" ];
-      path = [
-        cfg.package
-        pkgs.git
-        pkgs.gnupg
-      ];
+      path = [ cfg.package pkgs.git pkgs.gnupg ];
 
       # In older versions the secret naming for JWT was kind of confusing.
       # The file jwt_secret hold the value for LFS_JWT_SECRET and JWT_SECRET
@@ -919,11 +766,7 @@ in
         ProtectKernelModules = true;
         ProtectKernelLogs = true;
         ProtectControlGroups = true;
-        RestrictAddressFamilies = [
-          "AF_UNIX"
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         LockPersonality = true;
         MemoryDenyWriteExecute = true;
@@ -999,8 +842,5 @@ in
   };
 
   meta.doc = ./forgejo.md;
-  meta.maintainers = with lib.maintainers; [
-    bendlas
-    emilylange
-  ];
+  meta.maintainers = with lib.maintainers; [ bendlas emilylange ];
 }

@@ -27,18 +27,8 @@ import ./make-test-python.nix (
 
     firewallSettings = {
       # See https://www.consul.io/docs/install/ports.html
-      allowedTCPPorts = [
-        8301
-        8302
-        8600
-        8500
-        8300
-      ];
-      allowedUDPPorts = [
-        8301
-        8302
-        8600
-      ];
+      allowedTCPPorts = [ 8301 8302 8600 8500 8300 ];
+      allowedUDPPorts = [ 8301 8302 8600 ];
     };
 
     client =

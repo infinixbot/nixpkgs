@@ -11,10 +11,7 @@
 buildGoModule rec {
   pname = "eris-go";
   version = "20240128";
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   src = fetchFromGitea {
     domain = "codeberg.org";
@@ -26,10 +23,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-pA/fz7JpDwdTRFfLDY0M6p9TeBOK68byhy/0Cw53p4M=";
 
-  nativeBuildInputs = [
-    mandoc
-    tup
-  ];
+  nativeBuildInputs = [ mandoc tup ];
 
   postConfigure = ''
     rm -f *.md

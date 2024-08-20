@@ -52,10 +52,7 @@ buildPerlPackage rec {
       gpl1Plus # or
       artistic2
     ];
-    maintainers = with lib.maintainers; [
-      kiloreux
-      anthonyroussel
-    ];
+    maintainers = with lib.maintainers; [ kiloreux anthonyroussel ];
     mainProgram = "exiftool";
   };
 }

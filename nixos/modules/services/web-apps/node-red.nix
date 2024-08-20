@@ -15,10 +15,7 @@ in
   options.services.node-red = {
     enable = mkEnableOption "the Node-RED service";
 
-    package = mkPackageOption pkgs [
-      "nodePackages"
-      "node-red"
-    ] { };
+    package = mkPackageOption pkgs [ "nodePackages" "node-red" ] { };
 
     openFirewall = mkOption {
       type = types.bool;
@@ -126,10 +123,7 @@ in
       environment = {
         HOME = cfg.userDir;
       };
-      path = lib.optionals cfg.withNpmAndGcc [
-        pkgs.nodePackages.npm
-        pkgs.gcc
-      ];
+      path = lib.optionals cfg.withNpmAndGcc [ pkgs.nodePackages.npm pkgs.gcc ];
       serviceConfig = mkMerge [
         {
           User = cfg.user;

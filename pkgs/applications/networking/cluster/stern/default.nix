@@ -24,11 +24,7 @@ buildGoModule rec {
 
   nativeBuildInputs = [ installShellFiles ];
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X github.com/stern/stern/cmd.version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X github.com/stern/stern/cmd.version=${version}" ];
 
   postInstall =
     let
@@ -46,9 +42,6 @@ buildGoModule rec {
     mainProgram = "stern";
     homepage = "https://github.com/stern/stern";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      mbode
-      preisschild
-    ];
+    maintainers = with maintainers; [ mbode preisschild ];
   };
 }

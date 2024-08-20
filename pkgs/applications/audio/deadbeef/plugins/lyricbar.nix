@@ -20,11 +20,7 @@ stdenv.mkDerivation {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    deadbeef
-    gtkmm3
-    libxmlxx3
-  ];
+  buildInputs = [ deadbeef gtkmm3 libxmlxx3 ];
 
   buildFlags = [ "gtk3" ];
 

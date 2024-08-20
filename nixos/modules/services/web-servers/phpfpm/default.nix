@@ -118,13 +118,7 @@ let
         };
 
         settings = mkOption {
-          type =
-            with types;
-            attrsOf (oneOf [
-              str
-              int
-              bool
-            ]);
+          type = with types; attrsOf (oneOf [ str int bool ]);
           default = { };
           description = ''
             PHP-FPM pool directives. Refer to the "List of pool directives" section of
@@ -171,28 +165,14 @@ let
 in
 {
   imports = [
-    (mkRemovedOptionModule [
-      "services"
-      "phpfpm"
-      "poolConfigs"
-    ] "Use services.phpfpm.pools instead.")
-    (mkRemovedOptionModule [
-      "services"
-      "phpfpm"
-      "phpIni"
-    ] "")
+    (mkRemovedOptionModule [ "services" "phpfpm" "poolConfigs" ] "Use services.phpfpm.pools instead.")
+    (mkRemovedOptionModule [ "services" "phpfpm" "phpIni" ] "")
   ];
 
   options = {
     services.phpfpm = {
       settings = mkOption {
-        type =
-          with types;
-          attrsOf (oneOf [
-            str
-            int
-            bool
-          ]);
+        type = with types; attrsOf (oneOf [ str int bool ]);
         default = { };
         description = ''
           PHP-FPM global directives. Refer to the "List of global php-fpm.conf directives" section of

@@ -77,9 +77,6 @@ stdenvNoCC.mkDerivation {
     license = licenses.lgpl3;
     maintainers = with maintainers; [ tricktron ];
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
-    platforms = [
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
+    platforms = [ "x86_64-darwin" "aarch64-darwin" ];
   };
 }

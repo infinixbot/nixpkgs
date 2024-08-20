@@ -14,11 +14,7 @@ appimageTools.wrapType1 rec {
   src =
     runCommand "PureRef-${version}_x64.Appimage"
       {
-        nativeBuildInputs = [
-          curl
-          gnugrep
-          cacert
-        ];
+        nativeBuildInputs = [ curl gnugrep cacert ];
         outputHash = "sha256-da/dH0ruI562JylpvE9f2zMUSJ56+T7Y0xlP/xr3yhY=";
       }
       ''

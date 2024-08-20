@@ -22,16 +22,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-6aKF3Xqp/1BoHEiZVZJSemTjn5Qwwr3QyhsXOIjTr08=";
   };
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-    pkg-config
-  ];
-  buildInputs = [
-    cairo
-    poppler
-    wxGTK
-  ] ++ lib.optionals stdenv.isDarwin [ Cocoa ];
+  nativeBuildInputs = [ autoconf automake pkg-config ];
+  buildInputs = [ cairo poppler wxGTK ] ++ lib.optionals stdenv.isDarwin [ Cocoa ];
 
   preConfigure = "./bootstrap";
 

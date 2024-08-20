@@ -33,36 +33,9 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "security"
-        "duosec"
-        "group"
-      ]
-      [
-        "security"
-        "duosec"
-        "groups"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "security"
-        "duosec"
-        "ikey"
-      ]
-      [
-        "security"
-        "duosec"
-        "integrationKey"
-      ]
-    )
-    (mkRemovedOptionModule
-      [
-        "security"
-        "duosec"
-        "skey"
-      ]
+    (mkRenamedOptionModule [ "security" "duosec" "group" ] [ "security" "duosec" "groups" ])
+    (mkRenamedOptionModule [ "security" "duosec" "ikey" ] [ "security" "duosec" "integrationKey" ])
+    (mkRemovedOptionModule [ "security" "duosec" "skey" ]
       "The insecure security.duosec.skey option has been replaced by a new security.duosec.secretKeyFile option. Use this new option to store a secure copy of your key instead."
     )
   ];
@@ -113,10 +86,7 @@ in
       };
 
       failmode = mkOption {
-        type = types.enum [
-          "safe"
-          "secure"
-        ];
+        type = types.enum [ "safe" "secure" ];
         default = "safe";
         description = ''
           On service or configuration errors that prevent Duo
@@ -158,11 +128,7 @@ in
       };
 
       prompts = mkOption {
-        type = types.enum [
-          1
-          2
-          3
-        ];
+        type = types.enum [ 1 2 3 ];
         default = 3;
         description = ''
           If a user fails to authenticate with a second factor, Duo
@@ -238,10 +204,7 @@ in
 
     systemd.services.login-duo = lib.mkIf cfg.ssh.enable {
       wantedBy = [ "sysinit.target" ];
-      before = [
-        "sysinit.target"
-        "shutdown.target"
-      ];
+      before = [ "sysinit.target" "shutdown.target" ];
       conflicts = [ "shutdown.target" ];
       unitConfig.DefaultDependencies = false;
       script = ''
@@ -264,10 +227,7 @@ in
 
     systemd.services.pam-duo = lib.mkIf cfg.ssh.enable {
       wantedBy = [ "sysinit.target" ];
-      before = [
-        "sysinit.target"
-        "shutdown.target"
-      ];
+      before = [ "sysinit.target" "shutdown.target" ];
       conflicts = [ "shutdown.target" ];
       unitConfig.DefaultDependencies = false;
       script = ''

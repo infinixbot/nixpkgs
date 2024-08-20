@@ -220,10 +220,7 @@ stdenv.mkDerivation {
   ];
   configureScript = "./mvm";
 
-  installTargets = [
-    "install"
-    "install-image"
-  ];
+  installTargets = [ "install" "install-image" ];
 
   postInstall = ''
     rm "$out/squeak"
@@ -233,10 +230,7 @@ stdenv.mkDerivation {
   meta = with lib; {
     description = "Squeak virtual machine";
     homepage = "https://opensmalltalk.org/";
-    license = with licenses; [
-      asl20
-      mit
-    ];
+    license = with licenses; [ asl20 mit ];
     maintainers = with lib.maintainers; [ ehmry ];
     platforms = [ "x86_64-linux" ];
   };

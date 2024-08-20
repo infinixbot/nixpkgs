@@ -21,17 +21,10 @@ buildDunePackage rec {
     hash = "sha256-i+RJVTN5uy3F6LeYBcgER2kKA9yj6a7pWf7PRtgnj7c=";
   };
 
-  propagatedBuildInputs = [
-    stdlib-shims
-    uutf
-    uucp
-  ];
+  propagatedBuildInputs = [ stdlib-shims uutf uucp ];
 
   doCheck = lib.versionAtLeast ocaml.version "4.08";
-  checkInputs = [
-    alcotest
-    fmt
-  ];
+  checkInputs = [ alcotest fmt ];
 
   meta = with lib; {
     description = "Basic utilities for interacting with terminals";

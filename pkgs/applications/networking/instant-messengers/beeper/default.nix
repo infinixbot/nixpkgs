@@ -54,11 +54,7 @@ stdenvNoCC.mkDerivation rec {
   passthru = {
     updateScript = lib.getExe (writeShellApplication {
       name = "update-beeper";
-      runtimeInputs = [
-        curl
-        yq
-        common-updater-scripts
-      ];
+      runtimeInputs = [ curl yq common-updater-scripts ];
       text = ''
         set -o errexit
         latestLinux="$(curl -s https://download.todesktop.com/2003241lzgn20jd/latest-linux.yml)"
@@ -78,11 +74,7 @@ stdenvNoCC.mkDerivation rec {
     '';
     homepage = "https://beeper.com";
     license = licenses.unfree;
-    maintainers = with maintainers; [
-      jshcmpbll
-      mjm
-      edmundmiller
-    ];
+    maintainers = with maintainers; [ jshcmpbll mjm edmundmiller ];
     platforms = [ "x86_64-linux" ];
   };
 }

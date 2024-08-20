@@ -21,17 +21,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-BaOaMpsF8ho8EIVuHfu4+CiVV3yLoC3tDkLq4R8BYBA=";
   };
 
-  propagatedBuildInputs = [
-    mpi
-    mpich
-    reptyr
-    tmux
-  ];
+  propagatedBuildInputs = [ mpi mpich reptyr tmux ];
 
-  buildInputs = [
-    autoconf
-    makeWrapper
-  ];
+  buildInputs = [ autoconf makeWrapper ];
 
   installPhase = ''
     runHook preInstall
@@ -41,14 +33,7 @@ stdenv.mkDerivation rec {
     install -m755 tmpi $out/bin/tmpi
 
     wrapProgram $out/bin/tmpi \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          mpi
-          mpich
-          tmux
-          reptyr
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ mpi mpich tmux reptyr ]}
 
     runHook postInstall
   '';

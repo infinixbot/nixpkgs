@@ -52,14 +52,7 @@ stdenv.mkDerivation rec {
     "-DWL_INSTALL_BINDIR=${placeholder "out"}/bin"
   ];
 
-  nativeBuildInputs = [
-    cmake
-    doxygen
-    gettext
-    graphviz
-    installShellFiles
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake doxygen gettext graphviz installShellFiles pkg-config ];
 
   enableParallelBuilding = true;
 
@@ -113,10 +106,7 @@ stdenv.mkDerivation rec {
     changelog = "https://github.com/widelands/widelands/releases/tag/v${version}";
     mainProgram = "widelands";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      raskin
-      jcumming
-    ];
+    maintainers = with maintainers; [ raskin jcumming ];
     platforms = platforms.linux ++ platforms.darwin;
     hydraPlatforms = [ ];
   };

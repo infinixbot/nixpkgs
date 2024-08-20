@@ -81,11 +81,7 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "sha256-AdlJaCJOrN+NkkzzzgELtgAr5iZ9dvlVYVc7tYiM+R8=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "doc"
-  ]; # bin/ isn't really big
+  outputs = [ "out" "dev" "doc" ]; # bin/ isn't really big
   outputMan = "out"; # it's tiny
 
   enableParallelBuilding = true;
@@ -105,10 +101,7 @@ stdenv.mkDerivation (finalAttrs: {
       "--disable-shared"
     ];
 
-  nativeBuildInputs = [
-    pkg-config
-    libtool
-  ];
+  nativeBuildInputs = [ pkg-config libtool ];
 
   buildInputs =
     [ ]
@@ -166,10 +159,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://legacy.imagemagick.org/";
     changelog = "https://legacy.imagemagick.org/script/changelog.php";
     description = "Software suite to create, edit, compose, or convert bitmap images";
-    pkgConfigModules = [
-      "ImageMagick"
-      "MagickWand"
-    ];
+    pkgConfigModules = [ "ImageMagick" "MagickWand" ];
     platforms = platforms.linux ++ platforms.darwin;
     maintainers = [ ];
     license = licenses.asl20;

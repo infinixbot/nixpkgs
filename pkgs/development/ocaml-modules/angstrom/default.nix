@@ -23,10 +23,7 @@ buildDunePackage rec {
     hash = "sha256-vilGto5ciyKzVJd72z4B+AvM1nf3x3O7DHXrK5SIajQ=";
   };
 
-  checkInputs = [
-    alcotest
-    ppx_let
-  ];
+  checkInputs = [ alcotest ppx_let ];
   buildInputs = [ ocaml-syntax-shims ];
   propagatedBuildInputs = [ bigstringaf ];
   doCheck = lib.versionAtLeast ocaml.version "4.08";

@@ -32,11 +32,7 @@ in
     old:
     (
       (addToBuildInputsWithPkgConfig (
-        [
-          pkgs.allegro5
-          pkgs.libglvnd
-          pkgs.libGLU
-        ]
+        [ pkgs.allegro5 pkgs.libglvnd pkgs.libGLU ]
         ++ lib.optionals stdenv.isDarwin [ pkgs.darwin.apple_sdk.frameworks.OpenGL ]
         ++ lib.optionals stdenv.isLinux [ pkgs.xorg.libX11 ]
       ))
@@ -56,10 +52,7 @@ in
   cairo =
     old:
     (addToBuildInputsWithPkgConfig pkgs.cairo old)
-    // (addToPropagatedBuildInputs (with chickenEggs; [
-      srfi-1
-      srfi-13
-    ]) old);
+    // (addToPropagatedBuildInputs (with chickenEggs; [ srfi-1 srfi-13 ]) old);
   cmark = addToBuildInputs pkgs.cmark;
   epoxy =
     old:
@@ -117,10 +110,7 @@ in
   nanomsg = addToBuildInputs pkgs.nanomsg;
   ncurses = addToBuildInputsWithPkgConfig [ pkgs.ncurses ];
   opencl = addToBuildInputs (
-    [
-      pkgs.opencl-headers
-      pkgs.ocl-icd
-    ]
+    [ pkgs.opencl-headers pkgs.ocl-icd ]
     ++ lib.optionals stdenv.isDarwin [ pkgs.darwin.apple_sdk.frameworks.OpenCL ]
   );
   openssl = addToBuildInputs pkgs.openssl;
@@ -168,18 +158,10 @@ in
   sqlite3 = addToBuildInputs pkgs.sqlite;
   stemmer = old: (addToBuildInputs pkgs.libstemmer old) // (addToCscOptions "-L -lstemmer" old);
   stfl =
-    old:
-    (addToBuildInputs [
-      pkgs.ncurses
-      pkgs.stfl
-    ] old)
-    // (addToCscOptions "-L -lncurses" old);
+    old: (addToBuildInputs [ pkgs.ncurses pkgs.stfl ] old) // (addToCscOptions "-L -lncurses" old);
   taglib =
     old:
-    (addToBuildInputs [
-      pkgs.zlib
-      pkgs.taglib
-    ] old)
+    (addToBuildInputs [ pkgs.zlib pkgs.taglib ] old)
     // (
       # needed for tablib-config to be in PATH
       addToNativeBuildInputs pkgs.taglib old
@@ -214,10 +196,7 @@ in
   opengl =
     old:
     (addToBuildInputsWithPkgConfig (
-      lib.optionals (!stdenv.isDarwin) [
-        pkgs.libGL
-        pkgs.libGLU
-      ]
+      lib.optionals (!stdenv.isDarwin) [ pkgs.libGL pkgs.libGLU ]
       ++ lib.optionals stdenv.isDarwin [
         pkgs.darwin.apple_sdk.frameworks.Foundation
         pkgs.darwin.apple_sdk.frameworks.OpenGL

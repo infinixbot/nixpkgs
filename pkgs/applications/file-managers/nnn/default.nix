@@ -46,11 +46,7 @@ stdenv.mkDerivation (finalAttrs: {
   configFile = lib.optionalString (conf != null) (builtins.toFile "nnn.h" conf);
   preBuild = lib.optionalString (conf != null) "cp ${finalAttrs.configFile} src/nnn.h";
 
-  nativeBuildInputs = [
-    installShellFiles
-    makeWrapper
-    pkg-config
-  ];
+  nativeBuildInputs = [ installShellFiles makeWrapper pkg-config ];
   buildInputs = [
     readline
     ncurses
@@ -67,15 +63,9 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optionals withPcre [ "O_PCRE=1" ]
     ++ extraMakeFlags;
 
-  binPath = lib.makeBinPath [
-    file
-    which
-  ];
+  binPath = lib.makeBinPath [ file which ];
 
-  installTargets = [
-    "install"
-    "install-desktop"
-  ];
+  installTargets = [ "install" "install-desktop" ];
 
   postInstall = ''
     installShellCompletion --bash --name nnn.bash misc/auto-completion/bash/nnn-completion.bash

@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-jlO/ykrwGJkgKiPxfRQEX4TSksrbPQhkQs+QddwqaQ4=";
   };
 
-  makeFlags = [
-    "PREFIX="
-    "DESTDIR=$(out)"
-  ];
+  makeFlags = [ "PREFIX=" "DESTDIR=$(out)" ];
 
   nativeCheckInputs = [ python ];
 

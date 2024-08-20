@@ -24,28 +24,11 @@ stdenv.mkDerivation rec {
     hash = "sha256-2e+J4rjvn4WxOsPC+uww4grPLJ86nIxFzmN/K8leV2w=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    meson
-    ninja
-    jdk_headless
-  ];
+  nativeBuildInputs = [ pkg-config meson ninja jdk_headless ];
   buildInputs =
-    [
-      libsamplerate
-      libsndfile
-      fftw
-      vamp-plugin-sdk
-      ladspaH
-      lv2
-    ]
+    [ libsamplerate libsndfile fftw vamp-plugin-sdk ladspaH lv2 ]
     ++ lib.optionals stdenv.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        Accelerate
-        CoreGraphics
-        CoreVideo
-      ]
+      with darwin.apple_sdk.frameworks; [ Accelerate CoreGraphics CoreVideo ]
     );
   makeFlags = [ "AR:=$(AR)" ];
 

@@ -20,15 +20,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-JNJj0CJGJXuIRpob2RXYqDRrU4Cn20PRxOjQ6TFsVYQ=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
-  buildInputs = [
-    libite
-    libuev
-    libconfuse
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
+  buildInputs = [ libite libuev libconfuse ];
 
   passthru.tests = {
     inherit (nixosTests) watchdogd;

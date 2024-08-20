@@ -385,10 +385,7 @@ in
                 };
                 root = {
                   level = "DEBUG";
-                  handlers = [
-                    "file"
-                    "console"
-                  ];
+                  handlers = [ "file" "console" ];
                 };
               };
             };

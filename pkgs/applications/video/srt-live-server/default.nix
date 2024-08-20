@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
     ./add-ctime-include.patch
   ];
 
-  buildInputs = [
-    srt
-    zlib
-  ];
+  buildInputs = [ srt zlib ];
 
   makeFlags = [
     "PREFIX=$(out)"

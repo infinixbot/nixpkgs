@@ -36,20 +36,8 @@ let
 
   libPath =
     {
-      osx = "DYLD_LIBRARY_PATH : ${
-        lib.makeLibraryPath [
-          darwin.ICU
-          openssl
-          zlib
-        ]
-      }";
-      linux = "LD_LIBRARY_PATH : ${
-        lib.makeLibraryPath [
-          icu
-          openssl
-          zlib
-        ]
-      }";
+      osx = "DYLD_LIBRARY_PATH : ${lib.makeLibraryPath [ darwin.ICU openssl zlib ]}";
+      linux = "LD_LIBRARY_PATH : ${lib.makeLibraryPath [ icu openssl zlib ]}";
     }
     ."${os}";
 
@@ -68,10 +56,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs =
     [ makeWrapper ]
     ++ lib.optional stdenv.isLinux autoPatchelfHook ++ lib.optional stdenv.isDarwin fixDarwinDylibNames;
-  buildInputs = [
-    icu
-    zlib
-  ];
+  buildInputs = [ icu zlib ];
 
   installPhase = ''
     runHook preInstall
@@ -104,11 +89,6 @@ stdenv.mkDerivation rec {
     license = licenses.mit;
     maintainers = with maintainers; [ josephst ];
     mainProgram = "recyclarr";
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
   };
 }

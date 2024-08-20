@@ -81,10 +81,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     homepage = "https://linuxonly.ru/page/modem-manager-gui";
     license = licenses.gpl3;
-    maintainers = with maintainers; [
-      ahuzik
-      galagora
-    ];
+    maintainers = with maintainers; [ ahuzik galagora ];
     platforms = platforms.linux;
     mainProgram = "modem-manager-gui";
   };

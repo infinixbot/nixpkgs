@@ -176,10 +176,7 @@ import ./make-test-python.nix {
       {
         virtualisation.diskSize = 2 * 1024;
         virtualisation.memorySize = 2048;
-        environment.systemPackages = with pkgs; [
-          jq
-          thanos
-        ];
+        environment.systemPackages = with pkgs; [ jq thanos ];
         services.thanos.store = {
           enable = true;
           http-address = "0.0.0.0:10902";

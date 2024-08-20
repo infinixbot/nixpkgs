@@ -23,19 +23,9 @@ else
 
     minimalOCamlVersion = "4.08";
 
-    propagatedBuildInputs = [
-      cstruct
-      ppxlib
-      sexplib
-    ];
+    propagatedBuildInputs = [ cstruct ppxlib sexplib ];
 
     doCheck = !lib.versionAtLeast ocaml.version "5.1";
     nativeCheckInputs = [ cppo ];
-    checkInputs = [
-      ounit
-      ppx_sexp_conv
-      cstruct-sexp
-      cstruct-unix
-      ocaml-migrate-parsetree-2
-    ];
+    checkInputs = [ ounit ppx_sexp_conv cstruct-sexp cstruct-unix ocaml-migrate-parsetree-2 ];
   }

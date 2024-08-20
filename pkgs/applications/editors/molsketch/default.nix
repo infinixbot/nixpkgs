@@ -42,12 +42,7 @@ stdenv.mkDerivation rec {
     ln -s $out/lib/molsketch/* $out/lib/.
   '';
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    qttools
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake pkg-config qttools wrapQtAppsHook ];
   buildInputs = [
     hicolor-icon-theme
     openbabel

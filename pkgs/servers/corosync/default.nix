@@ -32,10 +32,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-cCNUT6O7NsALvKvZk1tyabQdiWc4oQjtMuqbnJsn7D0=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    pkg-config
-  ];
+  nativeBuildInputs = [ makeWrapper pkg-config ];
 
   buildInputs =
     [
@@ -100,9 +97,6 @@ stdenv.mkDerivation rec {
     description = "Group Communication System with features for implementing high availability within applications";
     license = licenses.bsd3;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      montag451
-      ryantm
-    ];
+    maintainers = with maintainers; [ montag451 ryantm ];
   };
 }

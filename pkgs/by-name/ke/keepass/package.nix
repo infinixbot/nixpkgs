@@ -75,16 +75,7 @@ stdenv.mkDerivation (finalAttrs: {
         ) plugins
       );
     in
-    replaceStrings
-      [
-        "$OUTPUT_LC$"
-        "$DO_LOADS$"
-      ]
-      [
-        outputLc
-        loads
-      ]
-      patchTemplate;
+    replaceStrings [ "$OUTPUT_LC$" "$DO_LOADS$" ] [ outputLc loads ] patchTemplate;
 
   passAsFile = [ "pluginLoadPathsPatch" ];
   postPatch = ''
@@ -174,10 +165,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = {
     description = "GUI password manager with strong cryptography";
     homepage = "http://www.keepass.info/";
-    maintainers = with lib.maintainers; [
-      amorsillo
-      obadz
-    ];
+    maintainers = with lib.maintainers; [ amorsillo obadz ];
     platforms = with lib.platforms; all;
     license = lib.licenses.gpl2;
     mainProgram = "keepass";

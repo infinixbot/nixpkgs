@@ -31,10 +31,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-QzyNPThwbjPKANeZ4GAT9b4f8LTcjXnCiK+vzRkhM4c=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   cargoDeps = rustPlatform.fetchCargoTarball {
     inherit (finalAttrs) pname version src;
@@ -54,11 +51,7 @@ stdenv.mkDerivation (finalAttrs: {
       glibc
       glibc.static
     ]
-    ++ lib.optionals withGpu [
-      libepoxy
-      libdrm
-      virglrenderer
-    ]
+    ++ lib.optionals withGpu [ libepoxy libdrm virglrenderer ]
     ++ lib.optional withSound pipewire
     ++ lib.optional sevVariant openssl;
 
@@ -83,10 +76,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Dynamic library providing Virtualization-based process isolation capabilities";
     homepage = "https://github.com/containers/libkrun";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      nickcao
-      RossComputerGuy
-    ];
+    maintainers = with maintainers; [ nickcao RossComputerGuy ];
     platforms = libkrunfw.meta.platforms;
   };
 })

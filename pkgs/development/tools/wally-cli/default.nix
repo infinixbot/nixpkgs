@@ -31,9 +31,6 @@ buildGoModule rec {
     homepage = "https://ergodox-ez.com/pages/wally-planck";
     platforms = with platforms; linux ++ darwin;
     license = licenses.mit;
-    maintainers = with maintainers; [
-      spacekookie
-      r-burns
-    ];
+    maintainers = with maintainers; [ spacekookie r-burns ];
   };
 }

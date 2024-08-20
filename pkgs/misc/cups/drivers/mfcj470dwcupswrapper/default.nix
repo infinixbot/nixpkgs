@@ -21,11 +21,7 @@ stdenv.mkDerivation rec {
     bash # shebang
   ];
 
-  makeFlags = [
-    "-C"
-    "brcupsconfpt1"
-    "all"
-  ];
+  makeFlags = [ "-C" "brcupsconfpt1" "all" ];
 
   postPatch = ''
     WRAPPER=cupswrapper/cupswrappermfcj470dw

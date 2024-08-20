@@ -14,10 +14,7 @@ pythonPackages.buildPythonApplication rec {
     hash = "sha256-RlCC+39zC+LeA/QDWPHYx5TrEwOgVrnvcH1Xg12qSLE=";
   };
 
-  propagatedBuildInputs = with pythonPackages; [
-    mopidy
-    configobj
-  ];
+  propagatedBuildInputs = with pythonPackages; [ mopidy configobj ];
 
   # no tests implemented
   doCheck = false;

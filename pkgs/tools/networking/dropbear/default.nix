@@ -38,13 +38,7 @@ stdenv.mkDerivation rec {
       VPATH=$(cat $NIX_CC/nix-support/orig-libc)/lib
       PROGRAMS="${
         lib.concatStringsSep " " (
-          [
-            "dropbear"
-            "dbclient"
-            "dropbearkey"
-            "dropbearconvert"
-          ]
-          ++ lib.optionals enableSCP [ "scp" ]
+          [ "dropbear" "dbclient" "dropbearkey" "dropbearconvert" ] ++ lib.optionals enableSCP [ "scp" ]
         )
       }"
     )
@@ -60,10 +54,7 @@ stdenv.mkDerivation rec {
     ./pass-path.patch
   ];
 
-  buildInputs = [
-    zlib
-    libxcrypt
-  ];
+  buildInputs = [ zlib libxcrypt ];
 
   meta = with lib; {
     description = "Small footprint implementation of the SSH 2 protocol";

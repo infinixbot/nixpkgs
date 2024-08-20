@@ -24,25 +24,12 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-4WbK4ppBfasAjbnKCHQCPzU6MBewdpOgNu2XSH7aNbE=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ] ++ lib.optional enablePython "py";
+  outputs = [ "out" "dev" "man" ] ++ lib.optional enablePython "py";
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    bison
-    flex
-    pkg-config
-  ] ++ lib.optional enablePython swig;
-  buildInputs = [
-    libsepol
-    libselinux
-    bzip2
-    audit
-  ] ++ lib.optional enablePython python;
+  nativeBuildInputs = [ bison flex pkg-config ] ++ lib.optional enablePython swig;
+  buildInputs = [ libsepol libselinux bzip2 audit ] ++ lib.optional enablePython python;
 
   makeFlags = [
     "PREFIX=$(out)"

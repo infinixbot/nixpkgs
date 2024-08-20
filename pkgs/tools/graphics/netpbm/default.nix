@@ -23,11 +23,7 @@ stdenv.mkDerivation {
   pname = "netpbm";
   version = "11.7.0";
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-  ];
+  outputs = [ "bin" "out" "dev" ];
 
   src = fetchsvn {
     url = "https://svn.code.sf.net/p/netpbm/code/advanced";

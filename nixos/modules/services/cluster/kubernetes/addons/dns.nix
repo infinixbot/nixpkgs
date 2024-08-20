@@ -58,10 +58,7 @@ in
         See: <https://github.com/kubernetes/kubernetes/blob/master/cluster/addons/addon-manager/README.md>.
       '';
       default = "Reconcile";
-      type = types.enum [
-        "Reconcile"
-        "EnsureExists"
-      ];
+      type = types.enum [ "Reconcile" "EnsureExists" ];
     };
 
     coredns = mkOption {
@@ -137,16 +134,8 @@ in
         rules = [
           {
             apiGroups = [ "" ];
-            resources = [
-              "endpoints"
-              "services"
-              "pods"
-              "namespaces"
-            ];
-            verbs = [
-              "list"
-              "watch"
-            ];
+            resources = [ "endpoints" "services" "pods" "namespaces" ];
+            verbs = [ "list" "watch" ];
           }
           {
             apiGroups = [ "" ];
@@ -156,10 +145,7 @@ in
           {
             apiGroups = [ "discovery.k8s.io" ];
             resources = [ "endpointslices" ];
-            verbs = [
-              "list"
-              "watch"
-            ];
+            verbs = [ "list" "watch" ];
           }
         ];
       };
@@ -261,10 +247,7 @@ in
             spec = {
               containers = [
                 {
-                  args = [
-                    "-conf"
-                    "/etc/coredns/Corefile"
-                  ];
+                  args = [ "-conf" "/etc/coredns/Corefile" ];
                   image = with cfg.coredns; "${imageName}:${finalImageTag}";
                   imagePullPolicy = "Never";
                   livenessProbe = {

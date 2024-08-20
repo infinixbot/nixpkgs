@@ -155,10 +155,7 @@ in
     server =
       { nodes, ... }:
       {
-        networking.firewall.allowedTCPPorts = [
-          sftpPort
-          httpPort
-        ];
+        networking.firewall.allowedTCPPorts = [ sftpPort httpPort ];
 
         # nodes.server.configure postgresql database
         services.postgresql = {
@@ -288,10 +285,7 @@ in
           privilegedPorts.configuration =
             { ... }:
             {
-              networking.firewall.allowedTCPPorts = [
-                22
-                80
-              ];
+              networking.firewall.allowedTCPPorts = [ 22 80 ];
               services.sftpgo = {
                 settings = {
                   sftpd.bindings = lib.mkForce [

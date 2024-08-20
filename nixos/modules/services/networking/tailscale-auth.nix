@@ -111,8 +111,5 @@ in
     };
   };
 
-  meta.maintainers = with maintainers; [
-    dan-theriault
-    phaer
-  ];
+  meta.maintainers = with maintainers; [ dan-theriault phaer ];
 }

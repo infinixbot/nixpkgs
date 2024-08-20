@@ -40,10 +40,7 @@
 assert gtk3Support -> gtk3 != null;
 
 let
-  luaEnv = lua.withPackages (ps: [
-    ps.lgi
-    ps.ldoc
-  ]);
+  luaEnv = lua.withPackages (ps: [ ps.lgi ps.ldoc ]);
 in
 
 stdenv.mkDerivation rec {
@@ -86,10 +83,7 @@ stdenv.mkDerivation rec {
     gobject-introspection
   ];
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   FONTCONFIG_FILE = toString fontsConf;
 
@@ -154,10 +148,7 @@ stdenv.mkDerivation rec {
     description = "Highly configurable, dynamic window manager for X";
     homepage = "https://awesomewm.org/";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      lovek323
-      rasendubi
-    ];
+    maintainers = with maintainers; [ lovek323 rasendubi ];
     platforms = platforms.linux;
   };
 }

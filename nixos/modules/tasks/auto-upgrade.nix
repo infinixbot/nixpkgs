@@ -29,10 +29,7 @@ in
       };
 
       operation = mkOption {
-        type = types.enum [
-          "switch"
-          "boot"
-        ];
+        type = types.enum [ "switch" "boot" ];
         default = "switch";
         example = "boot";
         description = ''

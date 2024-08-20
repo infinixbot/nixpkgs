@@ -31,10 +31,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-YWLV+wgQ9RfKRSSWh/x0PMjB6tFA4YpHb9WtYOOgZZI=";
   };
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   nativeBuildInputs = [ autoPatchelfHook ];
 
@@ -121,10 +118,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Clone of Guitar Hero and Rockband-style games";
     homepage = "https://clonehero.net";
     license = licenses.unfree;
-    maintainers = with maintainers; [
-      kira-bruneau
-      syboxez
-    ];
+    maintainers = with maintainers; [ kira-bruneau syboxez ];
     platforms = [ "x86_64-linux" ];
   };
 })

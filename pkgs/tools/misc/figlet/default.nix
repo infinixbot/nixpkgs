@@ -34,11 +34,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  makeFlags = [
-    "prefix=$(out)"
-    "CC:=$(CC)"
-    "LD:=$(CC)"
-  ];
+  makeFlags = [ "prefix=$(out)" "CC:=$(CC)" "LD:=$(CC)" ];
 
   postInstall = "cp -ar ${contributed}/* $out/share/figlet/";
 

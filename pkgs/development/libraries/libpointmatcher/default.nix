@@ -21,12 +21,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    eigen
-    boost
-    libnabo
-    yaml-cpp
-  ];
+  buildInputs = [ eigen boost libnabo yaml-cpp ];
 
   cmakeFlags = [
     (lib.cmakeFeature "EIGEN_INCLUDE_DIR" "${eigen}/include/eigen3")

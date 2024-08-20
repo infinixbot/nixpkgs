@@ -22,11 +22,7 @@ lib.throwIf (lib.versionAtLeast ocaml.version "5.0")
 
     strictDeps = true;
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-      ocamlbuild
-    ];
+    nativeBuildInputs = [ ocaml findlib ocamlbuild ];
 
     configurePhase = ''
       substituteInPlace src/ocamlify.ml --replace 'OCamlifyConfig.version' '"0.0.2"'

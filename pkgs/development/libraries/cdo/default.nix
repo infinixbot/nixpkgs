@@ -20,12 +20,7 @@ stdenv.mkDerivation rec {
   version = "2.2.2";
 
   # Dependencies
-  buildInputs = [
-    curl
-    netcdf
-    hdf5
-    python3
-  ];
+  buildInputs = [ curl netcdf hdf5 python3 ];
 
   src = fetchurl {
     url = "https://code.mpimet.mpg.de/attachments/download/28882/${pname}-${version}.tar.gz";

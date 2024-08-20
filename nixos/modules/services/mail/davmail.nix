@@ -13,12 +13,7 @@ let
 
   configType =
     with types;
-    oneOf [
-      (attrsOf configType)
-      str
-      int
-      bool
-    ]
+    oneOf [ (attrsOf configType) str int bool ]
     // {
       description = "davmail config type (str, int, bool or attribute set thereof)";
     };
@@ -128,10 +123,7 @@ in
         ProtectKernelTunables = true;
         ProtectProc = "invisible";
         RemoveIPC = true;
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;

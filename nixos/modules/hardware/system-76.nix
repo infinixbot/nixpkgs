@@ -104,9 +104,5 @@ in
     };
   };
 
-  config = mkMerge [
-    moduleConfig
-    firmwareConfig
-    powerConfig
-  ];
+  config = mkMerge [ moduleConfig firmwareConfig powerConfig ];
 }

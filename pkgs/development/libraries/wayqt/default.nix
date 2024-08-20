@@ -50,10 +50,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   dontWrapQtApps = true;
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   meta = {
     homepage = "https://gitlab.com/desktop-frameworks/wayqt";

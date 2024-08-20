@@ -18,10 +18,7 @@ mkDerivation rec {
 
   everythingFile = "./index.agda";
 
-  includePaths = [
-    "src"
-    "examples"
-  ];
+  includePaths = [ "src" "examples" ];
 
   buildInputs = [ standard-library ];
 

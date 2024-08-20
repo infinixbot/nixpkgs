@@ -17,11 +17,7 @@ stdenv.mkDerivation rec {
   pname = "dee";
   version = "unstable-2017-06-16";
 
-  outputs = [
-    "out"
-    "dev"
-    "py"
-  ];
+  outputs = [ "out" "dev" "py" ];
 
   src = fetchgit {
     url = "https://git.launchpad.net/ubuntu/+source/dee";

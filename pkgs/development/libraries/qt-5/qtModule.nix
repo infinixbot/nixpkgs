@@ -46,11 +46,7 @@ mkDerivation (
   }
   // {
 
-    outputs =
-      args.outputs or [
-        "out"
-        "dev"
-      ];
+    outputs = args.outputs or [ "out" "dev" ];
     setOutputFlags = args.setOutputFlags or false;
 
     preHook = ''
@@ -104,18 +100,8 @@ mkDerivation (
     meta = {
       homepage = "https://www.qt.io";
       description = "Cross-platform application framework for C++";
-      license = with licenses; [
-        fdl13Plus
-        gpl2Plus
-        lgpl21Plus
-        lgpl3Plus
-      ];
-      maintainers = with maintainers; [
-        qknight
-        ttuegel
-        periklis
-        bkchr
-      ];
+      license = with licenses; [ fdl13Plus gpl2Plus lgpl21Plus lgpl3Plus ];
+      maintainers = with maintainers; [ qknight ttuegel periklis bkchr ];
       platforms = platforms.unix;
     } // (args.meta or { });
   }

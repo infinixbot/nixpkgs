@@ -15,10 +15,7 @@ import ./make-test-python.nix (
       {
         services.intune.enable = true;
         services.gnome.gnome-keyring.enable = true;
-        imports = [
-          ./common/user-account.nix
-          ./common/x11.nix
-        ];
+        imports = [ ./common/user-account.nix ./common/x11.nix ];
         test-support.displayManager.auto.user = user.name;
         environment = {
           variables.DBUS_SESSION_BUS_ADDRESS = "unix:path=/run/user/${builtins.toString user.uid}/bus";

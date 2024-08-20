@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    ncurses
-    uthash
-  ];
+  buildInputs = [ ncurses uthash ];
 
   makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];
   installFlags = [ "DESTDIR=$(out)" ];

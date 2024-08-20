@@ -129,9 +129,6 @@ stdenv.mkDerivation rec {
     license = licenses.bsd3;
     platforms = platforms.all;
     branch = versions.majorMinor version;
-    maintainers = with maintainers; [
-      nequissimus
-      kashw2
-    ];
+    maintainers = with maintainers; [ nequissimus kashw2 ];
   };
 }

@@ -50,12 +50,7 @@ in
 
     systemd.services.pdns = {
       wantedBy = [ "multi-user.target" ];
-      after = [
-        "network.target"
-        "mysql.service"
-        "postgresql.service"
-        "openldap.service"
-      ];
+      after = [ "network.target" "mysql.service" "postgresql.service" "openldap.service" ];
 
       serviceConfig = {
         EnvironmentFile = lib.optional (cfg.secretFile != null) cfg.secretFile;

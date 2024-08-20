@@ -16,10 +16,7 @@ stdenvNoCC.mkDerivation rec {
   };
 
   dontWrapQtApps = true;
-  propagatedBuildInputs = with pkgs.kdePackages; [
-    qt5compat
-    qtsvg
-  ];
+  propagatedBuildInputs = with pkgs.kdePackages; [ qt5compat qtsvg ];
 
   installPhase =
     let

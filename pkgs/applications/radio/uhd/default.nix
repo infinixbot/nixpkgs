@@ -43,10 +43,7 @@ stdenv.mkDerivation (finalAttrs: {
   #
   version = "4.6.0.0";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "EttusResearch";
@@ -230,11 +227,6 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://uhd.ettus.com/";
     license = licenses.gpl3Plus;
     platforms = platforms.linux ++ platforms.darwin;
-    maintainers = with maintainers; [
-      bjornfor
-      fpletz
-      tomberek
-      doronbehar
-    ];
+    maintainers = with maintainers; [ bjornfor fpletz tomberek doronbehar ];
   };
 })

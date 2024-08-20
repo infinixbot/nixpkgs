@@ -78,13 +78,7 @@ let
     drv:
     concatLists (
       mapAttrsToList (n: v: derivationsIn v) (
-        removeAttrs drv (
-          [
-            "meta"
-            "passthru"
-          ]
-          ++ optionals (drv ? passthru) (attrNames drv.passthru)
-        )
+        removeAttrs drv ([ "meta" "passthru" ] ++ optionals (drv ? passthru) (attrNames drv.passthru))
       )
     );
 

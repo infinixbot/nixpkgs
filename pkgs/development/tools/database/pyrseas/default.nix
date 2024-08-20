@@ -19,10 +19,7 @@ let
     # The tests are impure (they try to access a PostgreSQL server)
     doCheck = false;
 
-    propagatedBuildInputs = with python3Packages; [
-      psycopg2
-      pytest
-    ];
+    propagatedBuildInputs = with python3Packages; [ psycopg2 pytest ];
   };
 in
 

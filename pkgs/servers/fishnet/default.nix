@@ -43,14 +43,8 @@ rustPlatform.buildRustPackage rec {
     description = "Distributed Stockfish analysis for lichess.org";
     homepage = "https://github.com/lichess-org/fishnet";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      tu-maurice
-      thibaultd
-    ];
-    platforms = [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
+    maintainers = with maintainers; [ tu-maurice thibaultd ];
+    platforms = [ "aarch64-linux" "x86_64-linux" ];
     mainProgram = "fishnet";
   };
 }

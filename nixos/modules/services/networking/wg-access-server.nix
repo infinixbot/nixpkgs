@@ -79,24 +79,10 @@ in
         })
         [
           [ "adminPassword" ]
-          [
-            "wireguard"
-            "privateKey"
-          ]
-          [
-            "auth"
-            "sessionStore"
-          ]
-          [
-            "auth"
-            "oidc"
-            "clientSecret"
-          ]
-          [
-            "auth"
-            "gitlab"
-            "clientSecret"
-          ]
+          [ "wireguard" "privateKey" ]
+          [ "auth" "sessionStore" ]
+          [ "auth" "oidc" "clientSecret" ]
+          [ "auth" "gitlab" "clientSecret" ]
         ];
 
     boot.kernel.sysctl = {

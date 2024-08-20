@@ -78,10 +78,7 @@ in
     xdg.portal.lxqt.enable = mkDefault true;
 
     # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1050804
-    xdg.portal.config.lxqt.default = mkDefault [
-      "lxqt"
-      "gtk"
-    ];
+    xdg.portal.config.lxqt.default = mkDefault [ "lxqt" "gtk" ];
   };
 
 }

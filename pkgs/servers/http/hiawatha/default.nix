@@ -32,19 +32,8 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-YsZdVqanVNibA4KnAknLh61hVo7x5uu67lb+RX2N7c8=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-  ];
-  buildInputs =
-    [
-      mbedtls
-      libxcrypt
-    ]
-    ++ lib.optionals enableXslt [
-      libxslt
-      libxml2
-    ];
+  nativeBuildInputs = [ cmake ninja ];
+  buildInputs = [ mbedtls libxcrypt ] ++ lib.optionals enableXslt [ libxslt libxml2 ];
 
   prePatch = ''
     substituteInPlace CMakeLists.txt --replace SETUID ""

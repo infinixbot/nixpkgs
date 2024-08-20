@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
   pname = "libgdamm";
   version = "4.99.11";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";
@@ -31,10 +28,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    glibmm
-    libxml2
-  ];
+  buildInputs = [ glibmm libxml2 ];
   propagatedBuildInputs = [ gda ];
 
   enableParallelBuilding = true;

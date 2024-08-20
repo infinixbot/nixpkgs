@@ -30,19 +30,8 @@ buildDunePackage rec {
   # disable xmldiff tests, so we don't need to package unmaintained and legacy pkgs
   postPatch = "rm -rf examples/xmldiff";
 
-  propagatedBuildInputs = [
-    ocplib-endian
-    cmdliner
-    afl-persistent
-  ];
-  checkInputs = [
-    calendar
-    fpath
-    pprint
-    uutf
-    uunf
-    uucp
-  ];
+  propagatedBuildInputs = [ ocplib-endian cmdliner afl-persistent ];
+  checkInputs = [ calendar fpath pprint uutf uunf uucp ];
   # uunf is broken on aarch64
   doCheck = !stdenv.isAarch64;
 

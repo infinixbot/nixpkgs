@@ -59,10 +59,7 @@ stdenv.mkDerivation rec {
     description = "Open source re-implementation of Caesar III";
     mainProgram = "julius";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [
-      Thra11
-      matteopacini
-    ];
+    maintainers = with maintainers; [ Thra11 matteopacini ];
     platforms = platforms.all;
   };
 }

@@ -38,13 +38,7 @@ stdenv.mkDerivation (finalAttrs: {
   version = "2.90";
   pname = "asymptote";
 
-  outputs = [
-    "out"
-    "man"
-    "info"
-    "doc"
-    "tex"
-  ];
+  outputs = [ "out" "man" "info" "doc" "tex" ];
 
   src = fetchurl {
     url = "mirror://sourceforge/asymptote/${finalAttrs.version}/asymptote-${finalAttrs.version}.src.tgz";
@@ -68,14 +62,7 @@ stdenv.mkDerivation (finalAttrs: {
     ]
     ++ lib.optional (finalAttrs.texContainer == null || finalAttrs.texdocContainer == null) (
       texliveSmall.withPackages (
-        ps: with ps; [
-          epsf
-          cm-super
-          ps.texinfo
-          media9
-          ocgx2
-          collection-latexextra
-        ]
+        ps: with ps; [ epsf cm-super ps.texinfo media9 ocgx2 collection-latexextra ]
       )
     );
 
@@ -95,13 +82,7 @@ stdenv.mkDerivation (finalAttrs: {
     qtbase
     qtsvg
     boost
-    (python3.withPackages (
-      ps: with ps; [
-        cson
-        numpy
-        pyqt5
-      ]
-    ))
+    (python3.withPackages (ps: with ps; [ cson numpy pyqt5 ]))
   ] ++ lib.optionals stdenv.isLinux [ libtirpc ];
 
   propagatedBuildInputs =

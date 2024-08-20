@@ -22,10 +22,7 @@ buildGoModule rec {
 
   doCheck = false;
 
-  ldflags = [
-    "-X"
-    "github.com/pulumi/kubespy/version.Version=${version}"
-  ];
+  ldflags = [ "-X" "github.com/pulumi/kubespy/version.Version=${version}" ];
 
   postInstall = ''
     for shell in bash fish zsh; do

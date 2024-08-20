@@ -24,16 +24,8 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-hkfFhx0y2v122ozeWMm+tu+EHSxzu/bSbCpXKIm57rQ=";
 
-  nativeBuildInputs = [
-    pkg-config
-    makeWrapper
-  ];
-  buildInputs =
-    [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [
-      libiconv
-      Security
-    ];
+  nativeBuildInputs = [ pkg-config makeWrapper ];
+  buildInputs = [ openssl ] ++ lib.optionals stdenv.isDarwin [ libiconv Security ];
 
   buildFeatures = [ "ssl" ];
 
@@ -53,10 +45,7 @@ rustPlatform.buildRustPackage rec {
     description = "Command-line client for WebSockets (like netcat/socat)";
     changelog = "https://github.com/vi/websocat/releases/tag/v${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      thoughtpolice
-      Br1ght0ne
-    ];
+    maintainers = with maintainers; [ thoughtpolice Br1ght0ne ];
     mainProgram = "websocat";
   };
 }

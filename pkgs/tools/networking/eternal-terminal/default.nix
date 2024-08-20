@@ -56,10 +56,7 @@ stdenv.mkDerivation rec {
     homepage = "https://eternalterminal.dev/";
     changelog = "https://github.com/MisterTea/EternalTerminal/releases/tag/et-v${version}";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      dezgeg
-      jshort
-    ];
+    maintainers = with maintainers; [ dezgeg jshort ];
     platforms = platforms.linux ++ platforms.darwin;
   };
 }

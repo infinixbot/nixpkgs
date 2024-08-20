@@ -46,15 +46,8 @@ let
     '';
     homepage = "https://notesnook.com";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      cig0
-      j0lol
-    ];
-    platforms = [
-      "x86_64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
+    maintainers = with maintainers; [ cig0 j0lol ];
+    platforms = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ];
     mainProgram = "notesnook";
   };
 

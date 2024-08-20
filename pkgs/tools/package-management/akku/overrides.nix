@@ -46,10 +46,7 @@ in
   };
 
   akku = joinOverrides [
-    (addToBuildInputs [
-      curl
-      git
-    ])
+    (addToBuildInputs [ curl git ])
     (pkg: old: {
       # hardcode-libcurl
       patches = akku.patches;

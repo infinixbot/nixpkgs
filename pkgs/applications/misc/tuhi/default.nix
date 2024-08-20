@@ -44,10 +44,7 @@ python3Packages.buildPythonApplication rec {
     gtk3
     glib
   ];
-  nativeCheckInputs = with python3Packages; [
-    flake8
-    pytest
-  ];
+  nativeCheckInputs = with python3Packages; [ flake8 pytest ];
   propagatedBuildInputs = with python3Packages; [
     svgwrite
     pyxdg

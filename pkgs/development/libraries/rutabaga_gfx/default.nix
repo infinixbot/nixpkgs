@@ -42,11 +42,7 @@ stdenv.mkDerivation (finalAttrs: {
     ./darwin-install.patch
   ];
 
-  nativeBuildInputs = [
-    cargo
-    pkg-config
-    rustPlatform.cargoSetupHook
-  ];
+  nativeBuildInputs = [ cargo pkg-config rustPlatform.cargoSetupHook ];
   buildInputs =
     [ libiconv ]
     ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform gfxstream) (

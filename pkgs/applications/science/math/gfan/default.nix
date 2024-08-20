@@ -27,16 +27,9 @@ stdenv.mkDerivation rec {
     done
   '';
 
-  buildFlags = [
-    "CC=${stdenv.cc.targetPrefix}cc"
-    "CXX=${stdenv.cc.targetPrefix}c++"
-  ];
+  buildFlags = [ "CC=${stdenv.cc.targetPrefix}cc" "CXX=${stdenv.cc.targetPrefix}c++" ];
   installFlags = [ "PREFIX=$(out)" ];
-  buildInputs = [
-    gmp
-    mpir
-    cddlib
-  ];
+  buildInputs = [ gmp mpir cddlib ];
 
   meta = {
     description = "Software package for computing Gröbner fans and tropical varieties";

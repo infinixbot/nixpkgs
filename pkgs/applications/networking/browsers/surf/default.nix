@@ -31,10 +31,7 @@ stdenv.mkDerivation rec {
     sha256 = "1v926hiayddylq79n8l7dy51bm0dsa9n18nx9bkhg666cx973x4z";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ pkg-config wrapGAppsHook3 ];
   buildInputs =
     [
       glib
@@ -61,13 +58,7 @@ stdenv.mkDerivation rec {
   # override the dependencies with their own PATH.
   preFixup =
     let
-      depsPath = lib.makeBinPath [
-        xorg.xprop
-        dmenu
-        findutils
-        gnused
-        coreutils
-      ];
+      depsPath = lib.makeBinPath [ xorg.xprop dmenu findutils gnused coreutils ];
     in
     ''
       gappsWrapperArgs+=(

@@ -69,10 +69,7 @@ stdenv.mkDerivation rec {
   ];
 
   hardeningDisable = [ "format" ];
-  makeFlags = [
-    "SYSDEPS=true"
-    "PREFIX=$(out)"
-  ];
+  makeFlags = [ "SYSDEPS=true" "PREFIX=$(out)" ];
 
   postInstall = ''
     wrapProgram $out/bin/Cardinal \
@@ -89,10 +86,7 @@ stdenv.mkDerivation rec {
     description = "Plugin wrapper around VCV Rack";
     homepage = "https://github.com/DISTRHO/cardinal";
     license = lib.licenses.gpl3;
-    maintainers = with lib.maintainers; [
-      magnetophon
-      PowerUser64
-    ];
+    maintainers = with lib.maintainers; [ magnetophon PowerUser64 ];
     mainProgram = "Cardinal";
     platforms = lib.platforms.all;
     # never built on aarch64-darwin, x86_64-darwin since first introduction in nixpkgs

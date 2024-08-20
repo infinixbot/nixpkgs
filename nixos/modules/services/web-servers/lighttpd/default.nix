@@ -172,10 +172,7 @@ in
       enableModules = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "mod_cgi"
-          "mod_status"
-        ];
+        example = [ "mod_cgi" "mod_status" ];
         description = ''
           List of lighttpd modules to enable. Sub-services take care of
           enabling modules as needed, so this option is mainly for when you

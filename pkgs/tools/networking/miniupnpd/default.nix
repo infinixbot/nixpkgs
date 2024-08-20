@@ -54,20 +54,12 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-+91VAQOXMPBKhCDqL49Ut99j+fBM3i3Gf6c3HoBHe74=";
   };
 
-  buildInputs =
-    [
-      iptables-legacy
-      libuuid
-      openssl
-    ]
-    ++ lib.optionals (firewall == "nftables") [
-      libmnl
-      libnftnl
-    ];
-  nativeBuildInputs = [
-    pkg-config
-    makeWrapper
-  ];
+  buildInputs = [
+    iptables-legacy
+    libuuid
+    openssl
+  ] ++ lib.optionals (firewall == "nftables") [ libmnl libnftnl ];
+  nativeBuildInputs = [ pkg-config makeWrapper ];
 
   # ./configure is not a standard configure file, errors with:
   # Option not recognized : --prefix=
@@ -83,10 +75,7 @@ stdenv.mkDerivation rec {
     "--portinuse"
   ];
 
-  installFlags = [
-    "PREFIX=$(out)"
-    "INSTALLPREFIX=$(out)"
-  ];
+  installFlags = [ "PREFIX=$(out)" "INSTALLPREFIX=$(out)" ];
 
   postFixup =
     {

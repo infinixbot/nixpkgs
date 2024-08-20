@@ -127,10 +127,7 @@ in
 
     mail = {
       driver = mkOption {
-        type = types.enum [
-          "smtp"
-          "sendmail"
-        ];
+        type = types.enum [ "smtp" "sendmail" ];
         default = "smtp";
         description = "Mail driver to use.";
       };
@@ -184,13 +181,7 @@ in
     };
 
     poolConfig = mkOption {
-      type =
-        with types;
-        attrsOf (oneOf [
-          str
-          int
-          bool
-        ]);
+      type = with types; attrsOf (oneOf [ str int bool ]);
       default = {
         "pm" = "dynamic";
         "pm.max_children" = 32;
@@ -418,22 +409,10 @@ in
           };
           secretPaths = lib.mapAttrsToList (_: v: v._secret) (lib.filterAttrs (_: isSecret) cfg.config);
           mkSecretReplacement = file: ''
-            replace-secret ${
-              escapeShellArgs [
-                (builtins.hashString "sha256" file)
-                file
-                "${cfg.dataDir}/.env"
-              ]
-            }
+            replace-secret ${escapeShellArgs [ (builtins.hashString "sha256" file) file "${cfg.dataDir}/.env" ]}
           '';
           secretReplacements = lib.concatMapStrings mkSecretReplacement secretPaths;
-          filteredConfig = lib.converge (lib.filterAttrsRecursive (
-            _: v:
-            !elem v [
-              { }
-              null
-            ]
-          )) cfg.config;
+          filteredConfig = lib.converge (lib.filterAttrsRecursive (_: v: !elem v [ { } null ])) cfg.config;
           monicaEnv = pkgs.writeText "monica.env" (monicaEnvVars filteredConfig);
         in
         ''

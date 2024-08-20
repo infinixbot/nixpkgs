@@ -20,11 +20,7 @@ buildPythonPackage rec {
     sha256 = "+Fdaw9EGyFGH9/DSeVJczS8gPzAOv+qn+1U20zQBBqQ=";
   };
 
-  buildInputs = [
-    openvpn
-    iproute2
-    util-linux
-  ];
+  buildInputs = [ openvpn iproute2 util-linux ];
 
   postPatch = ''
     substituteInPlace namespaced-openvpn \

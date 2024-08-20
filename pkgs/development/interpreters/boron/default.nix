@@ -29,10 +29,7 @@ stdenv.mkDerivation rec {
     zlib
   ];
 
-  installTargets = [
-    "install"
-    "install-dev"
-  ];
+  installTargets = [ "install" "install-dev" ];
 
   doCheck = true;
 

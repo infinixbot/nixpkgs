@@ -45,10 +45,7 @@ stdenv.mkDerivation rec {
     ++ lib.optionals opensslSupport [ openssl ];
 
   configureFlags =
-    [
-      "--with-ccffile=/dev/null"
-      "--with-cffile=/dev/null"
-    ]
+    [ "--with-ccffile=/dev/null" "--with-cffile=/dev/null" ]
     ++ lib.optionals freeipmiSupport [ "--with-freeipmi=${freeipmi}/include" ]
     ++ lib.optionals gssapiSupport [ "--with-gssapi=${libkrb5.dev}/include" ]
     ++ lib.optionals ipv6Support [ "--with-ipv6" ]

@@ -23,11 +23,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = lib.optionals withGPerfTools [ gperftools ];
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-  ];
+  outputs = [ "bin" "dev" "out" ];
 
   # https://github.com/google/sentencepiece/issues/754
   postPatch = ''

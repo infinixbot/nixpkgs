@@ -83,12 +83,7 @@ stdenv.mkDerivation rec {
     zstd
     libmd
   ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.CoreServices ];
-  nativeBuildInputs = [
-    makeWrapper
-    perl
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ makeWrapper perl autoreconfHook pkg-config ];
 
   postInstall = ''
     for i in $out/bin/*; do

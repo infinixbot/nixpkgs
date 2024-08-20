@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
   # test suite is not thread safe
   enableParallelBuilding = false;
 
-  nativeBuildInputs = [
-    texinfo
-    help2man
-  ];
+  nativeBuildInputs = [ texinfo help2man ];
 
   #Fix, see #28255
   postPatch = ''

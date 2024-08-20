@@ -22,12 +22,7 @@ stdenv.mkDerivation rec {
 
   sourceRoot = "${src.name}/src";
 
-  nativeBuildInputs = [
-    makeWrapper
-    ncurses
-    readline
-    ronn
-  ];
+  nativeBuildInputs = [ makeWrapper ncurses readline ronn ];
 
   env.NIX_CFLAGS_COMPILE = "-std=gnu89";
 

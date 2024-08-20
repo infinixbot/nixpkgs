@@ -15,16 +15,9 @@ stdenv.mkDerivation {
 
   src = kcachegrind.src;
 
-  buildInputs = [
-    qtbase
-    perl
-    php
-  ];
+  buildInputs = [ qtbase perl php ];
 
-  nativeBuildInputs = [
-    qmake
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ qmake wrapQtAppsHook ];
 
   dontWrapQtApps = true;
 

@@ -69,14 +69,7 @@ python3Packages.buildPythonApplication rec {
 
     patchShebangs --host $out/lib/waydroid/data/scripts
     wrapProgram $out/lib/waydroid/data/scripts/waydroid-net.sh \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          dnsmasq
-          getent
-          iproute2
-          iptables
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ dnsmasq getent iproute2 iptables ]}
 
     wrapPythonProgramsIn $out/lib/waydroid/ "${
       lib.concatStringsSep " " (

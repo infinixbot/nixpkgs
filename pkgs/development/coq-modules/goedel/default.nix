@@ -26,10 +26,7 @@ mkCoqDerivation {
       }
     ] null;
 
-  propagatedBuildInputs = [
-    hydra-battles
-    pocklington
-  ];
+  propagatedBuildInputs = [ hydra-battles pocklington ];
 
   meta = with lib; {
     description = "Gödel-Rosser 1st incompleteness theorem in Coq";

@@ -19,10 +19,7 @@
 
 mkDerivation {
   pname = "kde-gtk-config";
-  nativeBuildInputs = [
-    extra-cmake-modules
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ extra-cmake-modules wrapGAppsHook3 ];
   dontWrapGApps = true; # There is nothing to wrap
   buildInputs = [
     ki18n

@@ -27,15 +27,7 @@ buildDunePackage rec {
 
   duneVersion = "3";
 
-  propagatedBuildInputs = [
-    bos
-    fpath
-    ptime
-    mirage-crypto
-    x509
-    astring
-    logs
-  ];
+  propagatedBuildInputs = [ bos fpath ptime mirage-crypto x509 astring logs ];
 
   doCheck = true;
   checkInputs = [

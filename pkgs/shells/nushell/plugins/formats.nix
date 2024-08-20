@@ -15,10 +15,7 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "sha256-R4a+lD0KkdKrh2l7Fuyf/g/SvluDLjgAkolAF2h3Bl4=";
 
   nativeBuildInputs = [ pkg-config ] ++ lib.optionals stdenv.cc.isClang [ rustPlatform.bindgenHook ];
-  buildInputs = lib.optionals stdenv.isDarwin [
-    IOKit
-    Foundation
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ IOKit Foundation ];
   cargoBuildFlags = [ "--package nu_plugin_formats" ];
 
   checkPhase = ''
@@ -35,10 +32,7 @@ rustPlatform.buildRustPackage rec {
     mainProgram = "nu_plugin_formats";
     homepage = "https://github.com/nushell/nushell/tree/${version}/crates/nu_plugin_formats";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      viraptor
-      aidalgol
-    ];
+    maintainers = with maintainers; [ viraptor aidalgol ];
     platforms = with platforms; all;
   };
 }

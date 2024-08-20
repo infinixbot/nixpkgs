@@ -20,16 +20,11 @@ stdenv.mkDerivation rec {
     hash = "sha256-AfWw9CMBAzTTsrZXDEoOdpvUofIQfLCW7hRgSb7LB00=";
   };
 
-  buildInputs =
-    [
-      zlib
-      pcre
-      gnutls
-    ]
-    ++ lib.optionals (stdenv.system == "x86_64-darwin") [
-      memorymappingHook
-      memstreamHook
-    ];
+  buildInputs = [
+    zlib
+    pcre
+    gnutls
+  ] ++ lib.optionals (stdenv.system == "x86_64-darwin") [ memorymappingHook memstreamHook ];
 
   preConfigure = ''
     cd src

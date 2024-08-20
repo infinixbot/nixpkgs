@@ -94,10 +94,7 @@ python3.pkgs.buildPythonApplication rec {
       builtins.replaceStrings [ "." ] [ "-" ] version
     }";
     license = lib.licenses.isc;
-    maintainers = with lib.maintainers; [
-      leenaars
-      antonmosich
-    ];
+    maintainers = with lib.maintainers; [ leenaars antonmosich ];
     mainProgram = "todo";
   };
 }

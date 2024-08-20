@@ -21,14 +21,7 @@ stdenv.mkDerivation rec {
   pname = "libmodulemd";
   version = "2.15.0";
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-    "devdoc"
-    "man"
-    "py"
-  ];
+  outputs = [ "bin" "out" "dev" "devdoc" "man" "py" ];
 
   src = fetchFromGitHub {
     owner = "fedora-modularity";

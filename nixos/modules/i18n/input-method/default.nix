@@ -9,24 +9,14 @@ with lib;
 let
   cfg = config.i18n.inputMethod;
 
-  allowedTypes = types.enum [
-    "ibus"
-    "fcitx5"
-    "nabi"
-    "uim"
-    "hime"
-    "kime"
-  ];
+  allowedTypes = types.enum [ "ibus" "fcitx5" "nabi" "uim" "hime" "kime" ];
 
   gtk2_cache =
     pkgs.runCommand "gtk2-immodule.cache"
       {
         preferLocalBuild = true;
         allowSubstitutes = false;
-        buildInputs = [
-          pkgs.gtk2
-          cfg.package
-        ];
+        buildInputs = [ pkgs.gtk2 cfg.package ];
       }
       ''
         mkdir -p $out/etc/gtk-2.0/
@@ -38,10 +28,7 @@ let
       {
         preferLocalBuild = true;
         allowSubstitutes = false;
-        buildInputs = [
-          pkgs.gtk3
-          cfg.package
-        ];
+        buildInputs = [ pkgs.gtk3 cfg.package ];
       }
       ''
         mkdir -p $out/etc/gtk-3.0/
@@ -100,11 +87,7 @@ in
     warnings =
       optional (cfg.enabled != null)
         "i18n.inputMethod.enabled will be removed in a future release. Please use .type, and .enable = true instead";
-    environment.systemPackages = [
-      cfg.package
-      gtk2_cache
-      gtk3_cache
-    ];
+    environment.systemPackages = [ cfg.package gtk2_cache gtk3_cache ];
   };
 
   meta = {

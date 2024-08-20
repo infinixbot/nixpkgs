@@ -150,19 +150,7 @@ let
   '';
 
   linkOption =
-    name: destination:
-    "[${name}](#opt-${
-      builtins.replaceStrings
-        [
-          "<"
-          ">"
-        ]
-        [
-          "_"
-          "_"
-        ]
-        destination
-    })";
+    name: destination: "[${name}](#opt-${builtins.replaceStrings [ "<" ">" ] [ "_" "_" ] destination})";
   tlsLink =
     destination: submodulePath:
     linkOption "${submodulePath}.${destination}" "${submodulePath}.${destination}";
@@ -278,10 +266,7 @@ let
         };
 
         monitor = mkOption {
-          type = types.enum [
-            "no"
-            "yes"
-          ];
+          type = types.enum [ "no" "yes" ];
           default = "no";
           example = "yes";
           description = ''
@@ -720,10 +705,7 @@ in
     services.postgresql.enable = lib.mkIf dir_cfg.enable true;
 
     systemd.services.bacula-dir = mkIf dir_cfg.enable {
-      after = [
-        "network.target"
-        "postgresql.service"
-      ];
+      after = [ "network.target" "postgresql.service" ];
       description = "Bacula Director Daemon";
       wantedBy = [ "multi-user.target" ];
       path = [ pkgs.bacula ];

@@ -52,23 +52,14 @@ stdenv.mkDerivation (finalAttrs: {
 
   postFixup = ''
     wrapProgram $out/bin/IMSProg_database_update \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          wget
-          zenity
-        ]
-      }"
+      --prefix PATH : "${lib.makeBinPath [ wget zenity ]}"
   '';
 
   meta = {
     changelog = "https://github.com/bigbigmdm/IMSProg/releases/tag/v${finalAttrs.version}";
     description = "A free I2C EEPROM programmer tool for CH341A device";
     homepage = "https://github.com/bigbigmdm/IMSProg";
-    license = with lib.licenses; [
-      gpl3Plus
-      gpl2Plus
-      lgpl21Only
-    ];
+    license = with lib.licenses; [ gpl3Plus gpl2Plus lgpl21Only ];
     mainProgram = "IMSProg";
     maintainers = with lib.maintainers; [ wucke13 ];
     platforms = lib.platforms.unix;

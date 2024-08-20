@@ -186,18 +186,10 @@ in
         let
           optionalParam =
             param: argument:
-            optionals
-              (
-                !elem argument [
-                  null
-                  0
-                  false
-                ]
-              )
-              [
-                param
-                argument
-              ];
+            optionals (!elem argument [ null 0 false ]) [
+              param
+              argument
+            ];
         in
         ''
           export XDG_RUNTIME_DIR=/run/user/$UID

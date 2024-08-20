@@ -77,9 +77,6 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "https://github.com/pubs/pubs";
     changelog = "https://github.com/pubs/pubs/blob/v${version}/changelog.md";
     license = licenses.lgpl3Only;
-    maintainers = with maintainers; [
-      gebner
-      dotlambda
-    ];
+    maintainers = with maintainers; [ gebner dotlambda ];
   };
 }

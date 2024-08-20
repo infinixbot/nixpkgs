@@ -15,10 +15,7 @@ stdenv.mkDerivation {
     sha256 = "0487mh6s99ijqf1pfmbm302pa5i4pzmm8s439hdl1ffs5g8jqpqd";
   };
 
-  buildInputs = [
-    ncurses
-    libxcrypt
-  ];
+  buildInputs = [ ncurses libxcrypt ];
 
   unpackPhase = ''
     mkdir -p src

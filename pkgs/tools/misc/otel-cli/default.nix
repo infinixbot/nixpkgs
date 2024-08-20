@@ -28,10 +28,7 @@ buildGoModule rec {
     + lib.optionalString (!stdenv.isDarwin) ''
       substituteInPlace main_test.go \
         --replace-fail 'const minimumPath = `/bin:/usr/bin`' 'const minimumPath = `${
-          lib.makeBinPath [
-            getent
-            coreutils
-          ]
+          lib.makeBinPath [ getent coreutils ]
         }`'
     '';
 
@@ -44,10 +41,7 @@ buildGoModule rec {
     description = "Command-line tool for sending OpenTelemetry traces";
     changelog = "https://github.com/equinix-labs/otel-cli/releases/tag/v${version}";
     license = licenses.asl20;
-    maintainers = with lib.maintainers; [
-      emattiza
-      urandom
-    ];
+    maintainers = with lib.maintainers; [ emattiza urandom ];
     mainProgram = "otel-cli";
   };
 }

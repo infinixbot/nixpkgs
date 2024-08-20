@@ -59,11 +59,7 @@ let
       libidn2
     ] ++ optionals stdenv.isDarwin [ Security ] ++ optionals withKeyring [ libsecret ];
 
-    nativeBuildInputs = [
-      autoreconfHook
-      pkg-config
-      texinfo
-    ];
+    nativeBuildInputs = [ autoreconfHook pkg-config texinfo ];
 
     enableParallelBuilding = true;
 
@@ -143,10 +139,7 @@ if withScripts then
   symlinkJoin {
     name = "msmtp-${version}";
     inherit version meta;
-    paths = [
-      binaries
-      scripts
-    ];
+    paths = [ binaries scripts ];
     passthru = {
       inherit binaries scripts;
     };

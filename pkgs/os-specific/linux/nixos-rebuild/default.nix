@@ -41,13 +41,7 @@ substitute {
     fallback.aarch64-linux
     "--subst-var-by"
     "path"
-    (lib.makeBinPath [
-      coreutils
-      gnused
-      gnugrep
-      jq
-      util-linux
-    ])
+    (lib.makeBinPath [ coreutils gnused gnugrep jq util-linux ])
   ];
 
   nativeBuildInputs = [

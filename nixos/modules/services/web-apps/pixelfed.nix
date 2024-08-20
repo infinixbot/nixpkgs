@@ -13,29 +13,11 @@ let
   group = cfg.group;
   pixelfed = cfg.package.override { inherit (cfg) dataDir runtimeDir; };
   # https://github.com/pixelfed/pixelfed/blob/dev/app/Console/Commands/Installer.php#L185-L190
-  extraPrograms = with pkgs; [
-    jpegoptim
-    optipng
-    pngquant
-    gifsicle
-    ffmpeg
-  ];
+  extraPrograms = with pkgs; [ jpegoptim optipng pngquant gifsicle ffmpeg ];
   # Ensure PHP extensions: https://github.com/pixelfed/pixelfed/blob/dev/app/Console/Commands/Installer.php#L135-L147
   phpPackage = cfg.phpPackage.buildEnv {
     extensions =
-      { enabled, all }:
-      enabled
-      ++ (with all; [
-        bcmath
-        ctype
-        curl
-        mbstring
-        gd
-        intl
-        zip
-        redis
-        imagick
-      ]);
+      { enabled, all }: enabled ++ (with all; [ bcmath ctype curl mbstring gd intl zip redis imagick ]);
   };
   configFile = pkgs.writeText "pixelfed-env" (lib.generators.toKeyValue { } cfg.settings);
   # Management script
@@ -112,13 +94,7 @@ in
       };
 
       settings = mkOption {
-        type =
-          with types;
-          (attrsOf (oneOf [
-            bool
-            int
-            str
-          ]));
+        type = with types; (attrsOf (oneOf [ bool int str ]));
         description = ''
           .env settings for Pixelfed.
           Secrets should use `secretFile` option instead.
@@ -165,10 +141,7 @@ in
         };
 
         type = mkOption {
-          type = types.enum [
-            "mysql"
-            "pgsql"
-          ];
+          type = types.enum [ "mysql" "pgsql" ];
           example = "pgsql";
           default = "mysql";
           description = ''
@@ -193,13 +166,7 @@ in
       };
 
       poolConfig = mkOption {
-        type =
-          with types;
-          attrsOf (oneOf [
-            int
-            str
-            bool
-          ]);
+        type = with types; attrsOf (oneOf [ int str bool ]);
         default = { };
 
         description = ''
@@ -351,10 +318,7 @@ in
 
     systemd.services.phpfpm-pixelfed.after = [ "pixelfed-data-setup.service" ];
     systemd.services.phpfpm-pixelfed.requires =
-      [
-        "pixelfed-horizon.service"
-        "pixelfed-data-setup.service"
-      ]
+      [ "pixelfed-horizon.service" "pixelfed-data-setup.service" ]
       ++ lib.optional cfg.database.createLocally dbService
       ++ lib.optional cfg.redis.createLocally redisService;
     # Ensure image optimizations programs are available.
@@ -362,10 +326,7 @@ in
 
     systemd.services.pixelfed-horizon = {
       description = "Pixelfed task queueing via Laravel Horizon framework";
-      after = [
-        "network.target"
-        "pixelfed-data-setup.service"
-      ];
+      after = [ "network.target" "pixelfed-data-setup.service" ];
       requires =
         [ "pixelfed-data-setup.service" ]
         ++ (lib.optional cfg.database.createLocally dbService)
@@ -414,14 +375,7 @@ in
       wantedBy = [ "multi-user.target" ];
       after = lib.optional cfg.database.createLocally dbService;
       requires = lib.optional cfg.database.createLocally dbService;
-      path =
-        with pkgs;
-        [
-          bash
-          pixelfed-manage
-          rsync
-        ]
-        ++ extraPrograms;
+      path = with pkgs; [ bash pixelfed-manage rsync ] ++ extraPrograms;
 
       serviceConfig = {
         Type = "oneshot";

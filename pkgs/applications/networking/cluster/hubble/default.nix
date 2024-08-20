@@ -49,9 +49,6 @@ buildGoModule rec {
     mainProgram = "hubble";
     license = licenses.asl20;
     homepage = "https://github.com/cilium/hubble/";
-    maintainers = with maintainers; [
-      humancalico
-      bryanasdev000
-    ];
+    maintainers = with maintainers; [ humancalico bryanasdev000 ];
   };
 }

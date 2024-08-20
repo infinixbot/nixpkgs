@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs = [ perlPackages.perl ];
-  nativeBuildInputs = [
-    makeWrapper
-    installShellFiles
-  ];
+  nativeBuildInputs = [ makeWrapper installShellFiles ];
 
   preBuild = ''
     # Fixes failing build when not building in git repo
@@ -32,11 +29,7 @@ stdenv.mkDerivation rec {
     echo "$(date +%Y-%m-%d)" > datefile
   '';
 
-  buildFlags = [
-    "PERL5LIB=${perlPackages.makePerlPath [ perlPackages.FileSlurp ]}"
-    "bin"
-    "man"
-  ];
+  buildFlags = [ "PERL5LIB=${perlPackages.makePerlPath [ perlPackages.FileSlurp ]}" "bin" "man" ];
 
   installPhase = ''
     mkdir -p $out/bin

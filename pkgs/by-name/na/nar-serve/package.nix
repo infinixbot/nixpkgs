@@ -28,9 +28,6 @@ buildGoModule rec {
     mainProgram = "nar-serve";
     homepage = "https://github.com/numtide/nar-serve";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      rizary
-      zimbatm
-    ];
+    maintainers = with maintainers; [ rizary zimbatm ];
   };
 }

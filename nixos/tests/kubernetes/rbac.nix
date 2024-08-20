@@ -51,11 +51,7 @@ let
         {
           apiGroups = [ "" ];
           resources = [ "pods" ];
-          verbs = [
-            "get"
-            "list"
-            "watch"
-          ];
+          verbs = [ "get" "list" "watch" ];
         }
       ];
     }
@@ -73,10 +69,7 @@ let
         {
           name = "kubectl";
           image = "kubectl:latest";
-          command = [
-            "/bin/tail"
-            "-f"
-          ];
+          command = [ "/bin/tail" "-f" ];
           imagePullPolicy = "Never";
           tty = true;
         }
@@ -96,10 +89,7 @@ let
         {
           name = "kubectl-2";
           image = "kubectl:latest";
-          command = [
-            "/bin/tail"
-            "-f"
-          ];
+          command = [ "/bin/tail" "-f" ];
           imagePullPolicy = "Never";
           tty = true;
         }
@@ -118,11 +108,7 @@ let
     copyToRoot = pkgs.buildEnv {
       name = "image-root";
       pathsToLink = [ "/bin" ];
-      paths = [
-        copyKubectl
-        pkgs.busybox
-        kubectlPod2
-      ];
+      paths = [ copyKubectl pkgs.busybox kubectlPod2 ];
     };
     config.Entrypoint = [ "/bin/sh" ];
   };

@@ -25,13 +25,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    godot3-headless
-    makeWrapper
-    just
-    inkscape
-    imagemagick
-  ];
+  nativeBuildInputs = [ godot3-headless makeWrapper just inkscape imagemagick ];
 
   postPatch = ''
     substituteInPlace export_presets.cfg --replace 'res://build/icons/usr/share/icons/hicolor' $out/share/icons/hicolor

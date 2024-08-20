@@ -47,18 +47,9 @@ stdenv.mkDerivation rec {
       '';
 
   buildInputs =
-    [
-      bzip2
-      icu
-      openssl
-      wavpack
-      zlib
-    ]
+    [ bzip2 icu openssl wavpack zlib ]
     ++ lib.optionals stdenv.isLinux [ gnustep.base ]
-    ++ lib.optionals stdenv.isDarwin [
-      Foundation
-      AppKit
-    ];
+    ++ lib.optionals stdenv.isDarwin [ Foundation AppKit ];
 
   nativeBuildInputs = [
     installShellFiles

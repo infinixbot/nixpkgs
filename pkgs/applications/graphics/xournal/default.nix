@@ -48,12 +48,7 @@ stdenv.mkDerivation rec {
     poppler
   ];
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-    libtool
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoconf automake libtool pkg-config ];
 
   NIX_LDFLAGS = "-lz" + lib.optionalString (!isGdkQuartzBackend) " -lX11";
 
@@ -63,14 +58,8 @@ stdenv.mkDerivation rec {
     icon = "xournal";
     desktopName = "Xournal";
     comment = meta.description;
-    categories = [
-      "Office"
-      "Graphics"
-    ];
-    mimeTypes = [
-      "application/pdf"
-      "application/x-xoj"
-    ];
+    categories = [ "Office" "Graphics" ];
+    mimeTypes = [ "application/pdf" "application/x-xoj" ];
     genericName = "PDF Editor";
   };
 

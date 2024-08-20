@@ -28,10 +28,7 @@ stdenv.mkDerivation rec {
 
   cmakeFlags =
     lib.optional withQt [ "-DQT=ON" ]
-    ++ lib.optional withCurses [
-      "-DCURSES=ON"
-      "-DQT=OFF"
-    ];
+    ++ lib.optional withCurses [ "-DCURSES=ON" "-DQT=OFF" ];
 
   preConfigure =
     ''
@@ -48,11 +45,7 @@ stdenv.mkDerivation rec {
     description = "Extensible text editor based on Scintilla with Lua scripting";
     homepage = "http://foicica.com/textadept";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      raskin
-      mirrexagon
-      arcuru
-    ];
+    maintainers = with maintainers; [ raskin mirrexagon arcuru ];
     platforms = platforms.linux;
     mainProgram = "textadept";
   };

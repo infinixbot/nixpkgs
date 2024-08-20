@@ -28,9 +28,6 @@ bundlerApp {
     homepage = "https://taskjuggler.org/";
     license = licenses.gpl2;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      manveru
-      nicknovitski
-    ];
+    maintainers = with maintainers; [ manveru nicknovitski ];
   };
 }

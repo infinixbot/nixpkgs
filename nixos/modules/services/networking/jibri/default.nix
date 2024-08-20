@@ -319,23 +319,14 @@ in
       isSystemUser = true;
       group = "jibri";
       home = "/var/lib/jibri";
-      extraGroups = [
-        "jitsi-meet"
-        "adm"
-        "audio"
-        "video"
-        "plugdev"
-      ];
+      extraGroups = [ "jitsi-meet" "adm" "audio" "video" "plugdev" ];
     };
 
     systemd.services.jibri-xorg = {
       description = "Jitsi Xorg Process";
 
       after = [ "network.target" ];
-      wantedBy = [
-        "jibri.service"
-        "jibri-icewm.service"
-      ];
+      wantedBy = [ "jibri.service" "jibri-icewm.service" ];
 
       preStart = ''
         cp --no-preserve=mode,ownership ${pkgs.jibri}/etc/jitsi/jibri/* /var/lib/jibri
@@ -383,18 +374,11 @@ in
     systemd.services.jibri = {
       description = "Jibri Process";
 
-      requires = [
-        "jibri-icewm.service"
-        "jibri-xorg.service"
-      ];
+      requires = [ "jibri-icewm.service" "jibri-xorg.service" ];
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
 
-      path = with pkgs; [
-        chromedriver
-        chromium
-        ffmpeg-full
-      ];
+      path = with pkgs; [ chromedriver chromium ffmpeg-full ];
 
       script =
         (concatStrings (

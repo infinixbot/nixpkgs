@@ -8,10 +8,7 @@ import ../make-test-python.nix (
     name = "netbox-upgrade";
 
     meta = with lib.maintainers; {
-      maintainers = [
-        minijackson
-        raitobezarius
-      ];
+      maintainers = [ minijackson raitobezarius ];
     };
 
     nodes.machine =

@@ -38,11 +38,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-jEpLHUnHFJINJo/jmNeZVZqzxc9ZoDaGGUs3yz020ws=";
   };
 
-  nativeBuildInputs = [
-    bison
-    cmake
-    pkg-config
-  ] ++ lib.optionals (!stdenv.isDarwin) [ rpcsvc-proto ];
+  nativeBuildInputs = [ bison cmake pkg-config ] ++ lib.optionals (!stdenv.isDarwin) [ rpcsvc-proto ];
 
   patches = [
     ./no-force-outline-atomics.patch # Do not force compilers to turn on -moutline-atomics switch
@@ -82,10 +78,7 @@ stdenv.mkDerivation (finalAttrs: {
       DarwinTools
     ];
 
-  outputs = [
-    "out"
-    "static"
-  ];
+  outputs = [ "out" "static" ];
 
   cmakeFlags = [
     "-DFORCE_UNSUPPORTED_COMPILER=1" # To configure on Darwin.

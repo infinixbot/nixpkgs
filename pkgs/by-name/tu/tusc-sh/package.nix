@@ -35,12 +35,7 @@ let
 in
 writeShellApplication {
   name = "tusc";
-  runtimeInputs = [
-    tusc
-    curl
-    coreutils
-    jq
-  ];
+  runtimeInputs = [ tusc curl coreutils jq ];
   text = ''
     tusc.sh "$@"
   '';

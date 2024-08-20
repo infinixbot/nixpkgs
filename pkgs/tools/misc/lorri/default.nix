@@ -31,11 +31,7 @@ in
     inherit sha256;
   };
 
-  outputs = [
-    "out"
-    "man"
-    "doc"
-  ];
+  outputs = [ "out" "man" "doc" ];
 
   inherit cargoHash;
   doCheck = false;
@@ -44,10 +40,7 @@ in
   RUN_TIME_CLOSURE = pkgs.callPackage ./runtime.nix { };
 
   nativeBuildInputs = [ rustPackages.rustfmt ];
-  buildInputs = lib.optionals stdenv.isDarwin [
-    CoreServices
-    Security
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ CoreServices Security ];
 
   # copy the docs to the $man and $doc outputs
   postInstall = ''
@@ -75,11 +68,7 @@ in
     description = "Your project's nix-env";
     homepage = "https://github.com/nix-community/lorri";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      grahamc
-      Profpatsch
-      nyarly
-    ];
+    maintainers = with maintainers; [ grahamc Profpatsch nyarly ];
     mainProgram = "lorri";
   };
 })

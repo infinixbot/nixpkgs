@@ -102,12 +102,7 @@ let
     ProtectKernelModules = true;
     ProtectKernelTunables = true;
     ProtectControlGroups = true;
-    RestrictAddressFamilies = [
-      "AF_UNIX"
-      "AF_INET"
-      "AF_INET6"
-      "AF_NETLINK"
-    ];
+    RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" "AF_NETLINK" ];
     RestrictNamespaces = true;
     LockPersonality = true;
     MemoryDenyWriteExecute = false;
@@ -160,10 +155,7 @@ let
         threads = toString (if processCfg.threads == null then cfg.sidekiqThreads else processCfg.threads);
       in
       {
-        after = [
-          "network.target"
-          "mastodon-init-dirs.service"
-        ] ++ commonServices;
+        after = [ "network.target" "mastodon-init-dirs.service" ] ++ commonServices;
         requires = [ "mastodon-init-dirs.service" ] ++ commonServices;
         description = "Mastodon sidekiq${jobClassLabel}";
         wantedBy = [ "mastodon.target" ];
@@ -179,18 +171,9 @@ let
           WorkingDirectory = cfg.package;
           LimitNOFILE = "1024000";
           # System Call Filtering
-          SystemCallFilter = [
-            ("~" + lib.concatStringsSep " " systemCallsList)
-            "@chown"
-            "pipe"
-            "pipe2"
-          ];
+          SystemCallFilter = [ ("~" + lib.concatStringsSep " " systemCallsList) "@chown" "pipe" "pipe2" ];
         } // cfgService;
-        path = with pkgs; [
-          ffmpeg-headless
-          file
-          imagemagick
-        ];
+        path = with pkgs; [ ffmpeg-headless file imagemagick ];
       }
     )
   ) cfg.sidekiqProcesses;
@@ -199,15 +182,9 @@ let
     map (i: {
       name = "mastodon-streaming-${toString i}";
       value = {
-        after = [
-          "network.target"
-          "mastodon-init-dirs.service"
-        ] ++ commonServices;
+        after = [ "network.target" "mastodon-init-dirs.service" ] ++ commonServices;
         requires = [ "mastodon-init-dirs.service" ] ++ commonServices;
-        wantedBy = [
-          "mastodon.target"
-          "mastodon-streaming.target"
-        ];
+        wantedBy = [ "mastodon.target" "mastodon-streaming.target" ];
         description = "Mastodon streaming ${toString i}";
         environment = env // {
           SOCKET = "/run/mastodon-streaming/streaming-${toString i}.socket";
@@ -223,16 +200,7 @@ let
           RuntimeDirectoryMode = "0750";
           # System Call Filtering
           SystemCallFilter = [
-            (
-              "~"
-              + lib.concatStringsSep " " (
-                systemCallsList
-                ++ [
-                  "@memlock"
-                  "@resources"
-                ]
-              )
-            )
+            ("~" + lib.concatStringsSep " " (systemCallsList ++ [ "@memlock" "@resources" ]))
             "pipe"
             "pipe2"
           ];
@@ -344,14 +312,7 @@ in
           attrsOf (submodule {
             options = {
               jobClasses = lib.mkOption {
-                type = listOf (enum [
-                  "default"
-                  "push"
-                  "pull"
-                  "mailers"
-                  "scheduler"
-                  "ingress"
-                ]);
+                type = listOf (enum [ "default" "push" "pull" "mailers" "scheduler" "ingress" ]);
                 description = "If not empty, which job classes should be executed by this process. *Only one process should handle the 'scheduler' class. If left empty, this process will handle the 'scheduler' class.*";
               };
               threads = lib.mkOption {
@@ -380,10 +341,7 @@ in
             threads = 10;
           };
           push-pull = {
-            jobClasses = [
-              "push"
-              "pull"
-            ];
+            jobClasses = [ "push" "pull" ];
             threads = 5;
           };
         };
@@ -625,11 +583,7 @@ in
           description = ''
             It controls the ElasticSearch indices configuration (number of shards and replica).
           '';
-          type = lib.types.enum [
-            "single_node_cluster"
-            "small_cluster"
-            "large_cluster"
-          ];
+          type = lib.types.enum [ "single_node_cluster" "small_cluster" "large_cluster" ];
           default = "single_node_cluster";
           example = "large_cluster";
         };
@@ -799,10 +753,7 @@ in
 
         systemd.targets.mastodon-streaming = {
           description = "Target for all Mastodon streaming services";
-          wantedBy = [
-            "multi-user.target"
-            "mastodon.target"
-          ];
+          wantedBy = [ "multi-user.target" "mastodon.target" ];
           after = [ "network.target" ];
         };
 
@@ -891,10 +842,7 @@ in
             + lib.optionalString (!databaseActuallyCreateLocally) ''
               unset PGPASSWORD
             '';
-          path = [
-            cfg.package
-            config.services.postgresql.package
-          ];
+          path = [ cfg.package config.services.postgresql.package ];
           environment =
             env
             // lib.optionalAttrs (!databaseActuallyCreateLocally) {
@@ -925,10 +873,7 @@ in
         };
 
         systemd.services.mastodon-web = {
-          after = [
-            "network.target"
-            "mastodon-init-dirs.service"
-          ] ++ commonServices;
+          after = [ "network.target" "mastodon-init-dirs.service" ] ++ commonServices;
           requires = [ "mastodon-init-dirs.service" ] ++ commonServices;
           wantedBy = [ "mastodon.target" ];
           description = "Mastodon web";
@@ -950,18 +895,9 @@ in
             RuntimeDirectory = "mastodon-web";
             RuntimeDirectoryMode = "0750";
             # System Call Filtering
-            SystemCallFilter = [
-              ("~" + lib.concatStringsSep " " systemCallsList)
-              "@chown"
-              "pipe"
-              "pipe2"
-            ];
+            SystemCallFilter = [ ("~" + lib.concatStringsSep " " systemCallsList) "@chown" "pipe" "pipe2" ];
           } // cfgService;
-          path = with pkgs; [
-            ffmpeg-headless
-            file
-            imagemagick
-          ];
+          path = with pkgs; [ ffmpeg-headless file imagemagick ];
         };
 
         systemd.services.mastodon-media-auto-remove = lib.mkIf cfg.mediaAutoRemove.enable {
@@ -1058,16 +994,7 @@ in
               inherit (cfg) group;
             };
           })
-          (lib.attrsets.setAttrByPath
-            [
-              cfg.user
-              "packages"
-            ]
-            [
-              cfg.package
-              pkgs.imagemagick
-            ]
-          )
+          (lib.attrsets.setAttrByPath [ cfg.user "packages" ] [ cfg.package pkgs.imagemagick ])
           (lib.mkIf (cfg.redis.createLocally && cfg.redis.enableUnixSocket) {
             ${config.services.mastodon.user}.extraGroups = [ "redis-mastodon" ];
           })
@@ -1075,18 +1002,10 @@ in
 
         users.groups.${cfg.group}.members = lib.optional cfg.configureNginx config.services.nginx.user;
       }
-      {
-        systemd.services = lib.mkMerge [
-          sidekiqUnits
-          streamingUnits
-        ];
-      }
+      { systemd.services = lib.mkMerge [ sidekiqUnits streamingUnits ]; }
     ]
   );
 
-  meta.maintainers = with lib.maintainers; [
-    happy-river
-    erictapen
-  ];
+  meta.maintainers = with lib.maintainers; [ happy-river erictapen ];
 
 }

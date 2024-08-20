@@ -18,12 +18,7 @@ stdenv.mkDerivation rec {
 
   patches = [ ];
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-    "info"
-  ];
+  outputs = [ "out" "dev" "man" "info" ];
 
   configureFlags = [
     "--with-gcc-arch=generic" # no detection of -march= or -mtune=

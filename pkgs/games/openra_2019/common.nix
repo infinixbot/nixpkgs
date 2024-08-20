@@ -32,19 +32,8 @@ let
     platforms
     ;
 
-  path = makeBinPath (
-    [
-      mono
-      python3
-    ]
-    ++ optional (zenity != null) zenity
-  );
-  rpath = makeLibraryPath [
-    lua
-    freetype
-    openal
-    SDL2
-  ];
+  path = makeBinPath ([ mono python3 ] ++ optional (zenity != null) zenity);
+  rpath = makeLibraryPath [ lua freetype openal SDL2 ];
   mkdirp = makeSetupHook {
     name = "openra-mkdirp-hook";
   } ./mkdirp.sh;
@@ -95,10 +84,7 @@ in
     dontStrip = true;
 
     meta = {
-      maintainers = with maintainers; [
-        fusion809
-        msteen
-      ];
+      maintainers = with maintainers; [ fusion809 msteen ];
       license = licenses.gpl3;
       platforms = platforms.linux;
     };

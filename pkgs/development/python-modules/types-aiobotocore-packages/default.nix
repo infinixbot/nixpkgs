@@ -20,11 +20,7 @@ let
       pyproject = true;
       disabled = pythonOlder "3.7";
 
-      oldStylePackages = [
-        "gamesparks"
-        "iot-roborunner"
-        "macie"
-      ];
+      oldStylePackages = [ "gamesparks" "iot-roborunner" "macie" ];
 
       src = fetchPypi {
         pname =
@@ -35,10 +31,7 @@ let
         inherit version hash;
       };
       build-system = [ setuptools ];
-      dependencies = [
-        aiobotocore
-        botocore
-      ] ++ lib.optionals (pythonOlder "3.12") [ typing-extensions ];
+      dependencies = [ aiobotocore botocore ] ++ lib.optionals (pythonOlder "3.12") [ typing-extensions ];
       # Module has no tests
       doCheck = false;
       pythonImportsCheck = [ "types_aiobotocore_${toUnderscore serviceName}" ];

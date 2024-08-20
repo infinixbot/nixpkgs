@@ -54,11 +54,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Set of themes from MATE";
     homepage = "https://mate-desktop.org";
-    license = with licenses; [
-      lgpl21Plus
-      lgpl3Only
-      gpl3Plus
-    ];
+    license = with licenses; [ lgpl21Plus lgpl3Only gpl3Plus ];
     platforms = platforms.unix;
     maintainers = teams.mate.members;
   };

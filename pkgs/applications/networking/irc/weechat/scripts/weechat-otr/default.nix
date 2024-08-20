@@ -63,10 +63,7 @@ stdenv.mkDerivation rec {
       env = "${
         buildEnv {
           name = "weechat-otr-env";
-          paths = [
-            potr
-            pycrypto
-          ];
+          paths = [ potr pycrypto ];
         }
       }/${python3Packages.python.sitePackages}";
     })

@@ -13,10 +13,7 @@ in
 {
   imports = [
     # Should have never been on the top-level.
-    (mkRenamedOptionModule [ "snapraid" ] [
-      "services"
-      "snapraid"
-    ])
+    (mkRenamedOptionModule [ "snapraid" ] [ "services" "snapraid" ])
   ];
 
   options.services.snapraid = with types; {
@@ -56,11 +53,7 @@ in
     };
     exclude = mkOption {
       default = [ ];
-      example = [
-        "*.unrecoverable"
-        "/tmp/"
-        "/lost+found/"
-      ];
+      example = [ "*.unrecoverable" "/tmp/" "/lost+found/" ];
       description = "SnapRAID exclude directives.";
       type = listOf str;
     };

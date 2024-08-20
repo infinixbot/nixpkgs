@@ -25,10 +25,7 @@ let
   kernelVersion = kernel.modDirVersion;
   kernelDir = "${kernel.dev}/lib/modules/${kernelVersion}";
 
-  libPath = lib.concatStringsSep ":" [
-    "${glib.out}/lib"
-    "${xorg.libXrandr}/lib"
-  ];
+  libPath = lib.concatStringsSep ":" [ "${glib.out}/lib" "${xorg.libXrandr}/lib" ];
   scriptPath = lib.concatStringsSep ":" [
     "${bash}/bin"
     "${cups}/sbin"
@@ -49,10 +46,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-VBHCsxaMI6mfmc/iQ4hJW/592rKck9HilTX2Hq7Hb5s=";
   };
 
-  hardeningDisable = [
-    "pic"
-    "format"
-  ];
+  hardeningDisable = [ "pic" "format" ];
 
   nativeBuildInputs = [
     autoPatchelfHook
@@ -183,10 +177,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Parallels Tools for Linux guests";
     homepage = "https://parallels.com";
     license = licenses.unfree;
-    maintainers = with maintainers; [
-      catap
-      wegank
-    ];
+    maintainers = with maintainers; [ catap wegank ];
     platforms = platforms.linux;
   };
 })

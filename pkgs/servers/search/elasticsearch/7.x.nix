@@ -48,11 +48,7 @@ stdenv.mkDerivation rec {
     makeWrapper
   ] ++ lib.optional (!stdenv.hostPlatform.isDarwin) autoPatchelfHook;
 
-  buildInputs = [
-    jre_headless
-    util-linux
-    zlib
-  ];
+  buildInputs = [ jre_headless util-linux zlib ];
 
   runtimeDependencies = [ zlib ];
 
@@ -66,13 +62,7 @@ stdenv.mkDerivation rec {
       --replace 'bin/elasticsearch-keystore' "$out/bin/elasticsearch-keystore"
 
     wrapProgram $out/bin/elasticsearch \
-      --prefix PATH : "${
-        lib.makeBinPath [
-          util-linux
-          coreutils
-          gnugrep
-        ]
-      }" \
+      --prefix PATH : "${lib.makeBinPath [ util-linux coreutils gnugrep ]}" \
       --set JAVA_HOME "${jre_headless}"
 
     wrapProgram $out/bin/elasticsearch-plugin --set JAVA_HOME "${jre_headless}"
@@ -90,9 +80,6 @@ stdenv.mkDerivation rec {
     ];
     license = licenses.elastic20;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      apeschar
-      basvandijk
-    ];
+    maintainers = with maintainers; [ apeschar basvandijk ];
   };
 }

@@ -44,35 +44,20 @@ python3.pkgs.buildPythonApplication rec {
   };
 
   nativeBuildInputs =
-    [
-      copyDesktopItems
-      python3.pkgs.poetry-core
-    ]
-    ++ lib.optionals withGTK [
-      wrapGAppsHook3
-      gobject-introspection
-    ]
+    [ copyDesktopItems python3.pkgs.poetry-core ]
+    ++ lib.optionals withGTK [ wrapGAppsHook3 gobject-introspection ]
     ++ lib.optionals withQT [ qt5.wrapQtAppsHook ];
 
-  buildInputs = lib.optionals withGTK [
-    glib
-    gtk3
-  ];
+  buildInputs = lib.optionals withGTK [ glib gtk3 ];
 
   propagatedBuildInputs =
     with python3.pkgs;
     (
       [ requests ]
       ++ lib.optionals withQT [ pyqt5 ]
-      ++ lib.optionals withGTK [
-        pycairo
-        pygobject3
-      ]
+      ++ lib.optionals withGTK [ pycairo pygobject3 ]
       ++ lib.optionals withCurses [ urwid ]
-      ++ lib.optionals stdenv.isLinux [
-        pydbus
-        pyinotify
-      ]
+      ++ lib.optionals stdenv.isLinux [ pydbus pyinotify ]
       ++ lib.optionals (withGTK || withQT) [ pillow ]
     );
 

@@ -38,11 +38,7 @@ stdenv.mkDerivation rec {
     scdoc < src/wtwitch.1.scd > wtwitch.1
   '';
 
-  nativeBuildInputs = [
-    scdoc
-    installShellFiles
-    makeWrapper
-  ];
+  nativeBuildInputs = [ scdoc installShellFiles makeWrapper ];
 
   installPhase = ''
     installManPage wtwitch.1

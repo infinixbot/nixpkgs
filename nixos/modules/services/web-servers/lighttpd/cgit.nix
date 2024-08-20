@@ -69,11 +69,7 @@ in
     environment.systemPackages = [ pkgs.cgit ];
 
     # declare module dependencies
-    services.lighttpd.enableModules = [
-      "mod_cgi"
-      "mod_alias"
-      "mod_setenv"
-    ];
+    services.lighttpd.enableModules = [ "mod_cgi" "mod_alias" "mod_setenv" ];
 
     services.lighttpd.extraConfig = ''
       $HTTP["url"] =~ "^/${cfg.subdir}" {

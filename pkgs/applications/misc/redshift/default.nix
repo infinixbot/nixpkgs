@@ -93,19 +93,12 @@ let
         ++ lib.optional withGeoclue geoclue
         ++ lib.optional withDrm libdrm
         ++ lib.optional withQuartz ApplicationServices
-        ++ lib.optionals withCoreLocation [
-          CoreLocation
-          Foundation
-          Cocoa
-        ]
+        ++ lib.optionals withCoreLocation [ CoreLocation Foundation Cocoa ]
         ++ lib.optional withAppIndicator (
           if (pname != "gammastep") then libappindicator else libayatana-appindicator
         );
 
-      pythonPath = [
-        pygobject3
-        pyxdg
-      ];
+      pythonPath = [ pygobject3 pyxdg ];
 
       preConfigure = "./bootstrap";
 
@@ -187,12 +180,7 @@ rec {
       longDescription = "Gammastep" + lib.removePrefix "Redshift" redshift.meta.longDescription;
       homepage = "https://gitlab.com/chinstrap/gammastep";
       mainProgram = "gammastep";
-      maintainers =
-        (with lib.maintainers; [
-          eclairevoyant
-          primeos
-        ])
-        ++ redshift.meta.maintainers;
+      maintainers = (with lib.maintainers; [ eclairevoyant primeos ]) ++ redshift.meta.maintainers;
     };
   };
 }

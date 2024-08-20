@@ -28,11 +28,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    makeWrapper
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config makeWrapper ];
 
   buildInputs = [ gtk3 ];
 

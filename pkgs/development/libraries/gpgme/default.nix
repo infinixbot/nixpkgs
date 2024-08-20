@@ -27,11 +27,7 @@ stdenv.mkDerivation rec {
   version = "1.23.2";
   pyproject = true;
 
-  outputs = [
-    "out"
-    "dev"
-    "info"
-  ];
+  outputs = [ "out" "dev" "info" ];
 
   outputBin = "dev"; # gpgme-config; not so sure about gpgme-tool
 
@@ -127,10 +123,7 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  checkFlags = [
-    "-C"
-    "tests"
-  ];
+  checkFlags = [ "-C" "tests" ];
 
   passthru.tests = {
     python = python3.pkgs.gpgme;
@@ -148,10 +141,7 @@ stdenv.mkDerivation rec {
       encryption, decryption, signing, signature verification and key
       management.
     '';
-    license = with licenses; [
-      lgpl21Plus
-      gpl3Plus
-    ];
+    license = with licenses; [ lgpl21Plus gpl3Plus ];
     platforms = platforms.unix;
     maintainers = with maintainers; [ dotlambda ];
   };

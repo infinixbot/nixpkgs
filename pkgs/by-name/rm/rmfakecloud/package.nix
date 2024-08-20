@@ -42,10 +42,7 @@ buildGoModule rec {
     description = "Host your own cloud for the Remarkable";
     homepage = "https://ddvk.github.io/rmfakecloud/";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [
-      pacien
-      martinetd
-    ];
+    maintainers = with maintainers; [ pacien martinetd ];
     mainProgram = "rmfakecloud";
   };
 }

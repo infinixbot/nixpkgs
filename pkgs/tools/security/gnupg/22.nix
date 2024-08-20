@@ -40,10 +40,7 @@ stdenv.mkDerivation rec {
   };
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
-  nativeBuildInputs = [
-    pkg-config
-    texinfo
-  ];
+  nativeBuildInputs = [ pkg-config texinfo ];
   buildInputs =
     [
       gettext

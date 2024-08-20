@@ -28,13 +28,7 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  buildInputs = [
-    libsodium
-    mbedtls_2
-    libev
-    c-ares
-    pcre
-  ];
+  buildInputs = [ libsodium mbedtls_2 libev c-ares pcre ];
   nativeBuildInputs = [
     cmake
     asciidoc

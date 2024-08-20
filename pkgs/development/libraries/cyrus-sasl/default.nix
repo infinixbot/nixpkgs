@@ -41,13 +41,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-    "man"
-    "devdoc"
-  ];
+  outputs = [ "bin" "dev" "out" "man" "devdoc" ];
 
   depsBuildBuild = [ buildPackages.stdenv.cc ];
   nativeBuildInputs = [

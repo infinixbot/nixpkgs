@@ -89,11 +89,7 @@ stdenv.mkDerivation rec {
     cp -r . $source
   '';
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake ninja pkg-config ];
 
   buildInputs =
     [
@@ -110,16 +106,8 @@ stdenv.mkDerivation rec {
       rapidjson
       protobuf
     ]
-    ++ lib.optionals stdenv.isDarwin [
-      IOKit
-      CoreData
-      PCSC
-    ]
-    ++ lib.optionals trezorSupport [
-      libusb1
-      protobuf
-      python3
-    ];
+    ++ lib.optionals stdenv.isDarwin [ IOKit CoreData PCSC ]
+    ++ lib.optionals trezorSupport [ libusb1 protobuf python3 ];
 
   cmakeFlags = [
     "-DUSE_DEVICE_TREZOR=ON"
@@ -128,10 +116,7 @@ stdenv.mkDerivation rec {
     "-DRandomX_ROOT_DIR=${randomx}"
   ] ++ lib.optional stdenv.isDarwin "-DBoost_USE_MULTITHREADED=OFF";
 
-  outputs = [
-    "out"
-    "source"
-  ];
+  outputs = [ "out" "source" ];
 
   meta = with lib; {
     description = "Private, secure, untraceable currency";

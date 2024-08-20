@@ -17,11 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-Xfev2TsAtP9XddAUNCCKOeIFpKLnD00SdkH2io2REQk=";
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X github.com/databus23/helm-diff/v3/cmd.Version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X github.com/databus23/helm-diff/v3/cmd.Version=${version}" ];
 
   # NOTE: Remove the install and upgrade hooks.
   postPatch = ''

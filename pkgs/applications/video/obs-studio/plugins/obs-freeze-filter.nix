@@ -20,10 +20,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    obs-studio
-    qtbase
-  ];
+  buildInputs = [ obs-studio qtbase ];
 
   postInstall = ''
     rm -rf "$out/share"

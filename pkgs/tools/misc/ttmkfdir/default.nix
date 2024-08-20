@@ -40,17 +40,9 @@ stdenv.mkDerivation {
       --replace "freetype-config" "${stdenv.cc.targetPrefix}pkg-config freetype2"
   '';
 
-  makeFlags = [
-    "DESTDIR=${placeholder "out"}"
-    "BINDIR=/bin"
-    "CXX=${stdenv.cc.targetPrefix}c++"
-  ];
+  makeFlags = [ "DESTDIR=${placeholder "out"}" "BINDIR=/bin" "CXX=${stdenv.cc.targetPrefix}c++" ];
 
-  nativeBuildInputs = [
-    flex
-    bison
-    pkg-config
-  ];
+  nativeBuildInputs = [ flex bison pkg-config ];
   buildInputs = [ freetype ];
 
   meta = {

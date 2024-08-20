@@ -9,10 +9,7 @@ import ./make-test-python.nix (
   {
     name = "nginx";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        mbbx6spp
-        danbst
-      ];
+      maintainers = [ mbbx6spp danbst ];
     };
 
     nodes = {

@@ -15,10 +15,7 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs = [ texinfo ];
-  makeFlags = [
-    "PREFIX=$(out)"
-    "LOCAL_ROOT=$(out)/share/polipo/www"
-  ];
+  makeFlags = [ "PREFIX=$(out)" "LOCAL_ROOT=$(out)/share/polipo/www" ];
 
   meta = with lib; {
     homepage = "http://www.pps.jussieu.fr/~jch/software/polipo/";

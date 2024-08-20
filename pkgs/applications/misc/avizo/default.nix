@@ -30,24 +30,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-Vj8OrNlAstl0AXTeVAPdEf5JgnAmJwl9s3Jdc0ZiYQc=";
   };
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    vala
-    gobject-introspection
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config vala gobject-introspection wrapGAppsHook3 ];
 
-  buildInputs = [
-    dbus
-    dbus-glib
-    gdk-pixbuf
-    glib
-    gtk-layer-shell
-    gtk3
-    librsvg
-  ];
+  buildInputs = [ dbus dbus-glib gdk-pixbuf glib gtk-layer-shell gtk3 librsvg ];
 
   postInstall = ''
     wrapProgram $out/bin/volumectl --suffix PATH : $out/bin:${lib.makeBinPath ([ pamixer ])}

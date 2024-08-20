@@ -71,13 +71,7 @@ let
         export ${ldLibPathEnvName}=$PREVIOUS_${ldLibPathEnvName}
       '';
 
-      outputs = [
-        "bin"
-        "dev"
-        "out"
-        "man"
-        "nc"
-      ];
+      outputs = [ "bin" "dev" "out" "man" "nc" ];
 
       postFixup = ''
         moveToOutput "bin/nc" "$nc"
@@ -89,20 +83,9 @@ let
       meta = with lib; {
         description = "Free TLS/SSL implementation";
         homepage = "https://www.libressl.org";
-        license = with licenses; [
-          publicDomain
-          bsdOriginal
-          bsd0
-          bsd3
-          gpl3
-          isc
-          openssl
-        ];
+        license = with licenses; [ publicDomain bsdOriginal bsd0 bsd3 gpl3 isc openssl ];
         platforms = platforms.all;
-        maintainers = with maintainers; [
-          thoughtpolice
-          fpletz
-        ];
+        maintainers = with maintainers; [ thoughtpolice fpletz ];
         inherit knownVulnerabilities;
 
         # OpenBSD believes that PowerPC should be always-big-endian;

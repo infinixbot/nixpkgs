@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
       --replace 'LDFLAGS = -s -N' '#LDFLAGS = -s -N'
   '';
 
-  buildInputs = [
-    ncurses
-    glibc
-  ];
+  buildInputs = [ ncurses glibc ];
 
   installPhase = ''
     mkdir -p $out/bin

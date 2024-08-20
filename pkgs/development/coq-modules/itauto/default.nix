@@ -70,10 +70,6 @@
       propagatedBuildInputs = [ coq.ocamlPackages.findlib ];
     }
     // lib.optionalAttrs (o.version == "dev" || lib.versionAtLeast o.version "8.18") {
-      nativeBuildInputs = with coq.ocamlPackages; [
-        ocaml
-        findlib
-        dune_3
-      ];
+      nativeBuildInputs = with coq.ocamlPackages; [ ocaml findlib dune_3 ];
     }
   )

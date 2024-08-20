@@ -127,33 +127,16 @@ in
     };
   };
 
-  imports =
-    map
-      (
-        opt:
-        mkRemovedOptionModule
-          (
-            [
-              "boot"
-              "initrd"
-              "network"
-              "ssh"
-            ]
-            ++ [ opt ]
-          )
-          ''
-            The initrd SSH functionality now uses OpenSSH rather than Dropbear.
+  imports = map (
+    opt:
+    mkRemovedOptionModule ([ "boot" "initrd" "network" "ssh" ] ++ [ opt ]) ''
+      The initrd SSH functionality now uses OpenSSH rather than Dropbear.
 
-            If you want to keep your existing initrd SSH host keys, convert them with
-              $ dropbearconvert dropbear openssh dropbear_host_$type_key ssh_host_$type_key
-            and then set options.boot.initrd.network.ssh.hostKeys.
-          ''
-      )
-      [
-        "hostRSAKey"
-        "hostDSSKey"
-        "hostECDSAKey"
-      ];
+      If you want to keep your existing initrd SSH host keys, convert them with
+        $ dropbearconvert dropbear openssh dropbear_host_$type_key ssh_host_$type_key
+      and then set options.boot.initrd.network.ssh.hostKeys.
+    ''
+  ) [ "hostRSAKey" "hostDSSKey" "hostECDSAKey" ];
 
   config =
     let
@@ -334,10 +317,7 @@ in
         services.sshd = {
           description = "SSH Daemon";
           wantedBy = [ "initrd.target" ];
-          after = [
-            "network.target"
-            "initrd-nixos-copy-secrets.service"
-          ];
+          after = [ "network.target" "initrd-nixos-copy-secrets.service" ];
           before = [ "shutdown.target" ];
           conflicts = [ "shutdown.target" ];
 

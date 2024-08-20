@@ -23,17 +23,9 @@ stdenv.mkDerivation {
     hash = "sha256-UJeFPVi3423Jh72fVk8QbLX1tTNAQ504xYs9HwVCkZc=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
-  buildInputs = [
-    jsoncpp
-    libtins
-    libpcap
-    openssl
-  ];
+  buildInputs = [ jsoncpp libtins libpcap openssl ];
 
   outputs = [
     "out"

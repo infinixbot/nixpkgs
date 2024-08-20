@@ -85,9 +85,6 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://github.com/facebookincubator/fizz/releases/tag/v${finalAttrs.version}";
     license = licenses.bsd3;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      pierreis
-      kylesferrazza
-    ];
+    maintainers = with maintainers; [ pierreis kylesferrazza ];
   };
 })

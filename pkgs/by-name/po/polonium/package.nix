@@ -27,10 +27,7 @@ buildNpmPackage rec {
 
   # the installer does a bunch of stuff that fails in our sandbox, so just build here and then we
   # manually do the install
-  buildFlags = [
-    "res"
-    "src"
-  ];
+  buildFlags = [ "res" "src" ];
 
   nativeBuildInputs = with libsForQt5; [ plasma-framework ];
 

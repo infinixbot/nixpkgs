@@ -83,15 +83,8 @@ stdenv.mkDerivation {
   meta = {
     description = "Cryptographic library for Intel SGX enclave applications based on OpenSSL";
     homepage = "https://github.com/intel/intel-sgx-ssl";
-    maintainers = with lib.maintainers; [
-      phlip9
-      trundle
-      veehaitch
-    ];
+    maintainers = with lib.maintainers; [ phlip9 trundle veehaitch ];
     platforms = [ "x86_64-linux" ];
-    license = with lib.licenses; [
-      bsd3
-      openssl
-    ];
+    license = with lib.licenses; [ bsd3 openssl ];
   };
 }

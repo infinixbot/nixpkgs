@@ -30,13 +30,7 @@ stdenv.mkDerivation rec {
         chmod +x "$out/share/neo4j/bin/$NEO4J_SCRIPT"
         makeWrapper "$out/share/neo4j/bin/$NEO4J_SCRIPT" \
             "$out/bin/$NEO4J_SCRIPT" \
-            --prefix PATH : "${
-              lib.makeBinPath [
-                openjdk17
-                which
-                gawk
-              ]
-            }" \
+            --prefix PATH : "${lib.makeBinPath [ openjdk17 which gawk ]}" \
             --set JAVA_HOME "${openjdk17}"
     done
 

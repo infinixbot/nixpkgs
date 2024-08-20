@@ -38,10 +38,7 @@ buildGoModule (
       description = "Web hosting service for the sr.ht network";
       mainProgram = "pages.sr.ht";
       license = licenses.agpl3Only;
-      maintainers = with maintainers; [
-        eadwu
-        christoph-heiss
-      ];
+      maintainers = with maintainers; [ eadwu christoph-heiss ];
     };
     # There is no ./loaders but this does not cause troubles
     # to go generate

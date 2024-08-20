@@ -30,18 +30,10 @@ stdenv.mkDerivation rec {
     inherit sha256;
   };
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "bin" "out" "dev" "devdoc" ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    numactl
-    python3
-  ];
+  buildInputs = [ numactl python3 ];
 
   preConfigure = ''
     patchShebangs .
@@ -59,11 +51,7 @@ stdenv.mkDerivation rec {
     description = "LTTng Userspace Tracer libraries";
     mainProgram = "lttng-gen-tp";
     homepage = "https://lttng.org/";
-    license = with licenses; [
-      lgpl21Only
-      gpl2Only
-      mit
-    ];
+    license = with licenses; [ lgpl21Only gpl2Only mit ];
     platforms = lib.intersectLists platforms.linux liburcu.meta.platforms;
     maintainers = [ maintainers.bjornfor ];
   };

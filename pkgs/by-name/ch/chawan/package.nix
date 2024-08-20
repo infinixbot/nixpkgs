@@ -53,10 +53,7 @@ stdenv.mkDerivation {
     zlib
   ];
 
-  buildFlags = [
-    "all"
-    "manpage"
-  ];
+  buildFlags = [ "all" "manpage" ];
   installFlags = [
     "DESTDIR=$(out)"
     "PREFIX=/"

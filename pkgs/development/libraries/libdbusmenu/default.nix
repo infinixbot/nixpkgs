@@ -29,12 +29,7 @@ stdenv.mkDerivation (finalAttrs: {
       sha256 = "12l7z8dhl917iy9h02sxmpclnhkdjryn08r8i4sr8l3lrlm4mk5r";
     };
 
-  nativeBuildInputs = [
-    vala
-    pkg-config
-    intltool
-    gobject-introspection
-  ];
+  nativeBuildInputs = [ vala pkg-config intltool gobject-introspection ];
 
   buildInputs =
     [
@@ -88,11 +83,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = with lib; {
     description = "Library for passing menu structures across DBus";
     homepage = "https://launchpad.net/dbusmenu";
-    license = with licenses; [
-      gpl3
-      lgpl21
-      lgpl3
-    ];
+    license = with licenses; [ gpl3 lgpl21 lgpl3 ];
     pkgConfigModules = [
       "dbusmenu-glib-0.4"
       "dbusmenu-jsonloader-0.4"

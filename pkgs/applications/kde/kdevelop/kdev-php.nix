@@ -12,16 +12,8 @@
 mkDerivation rec {
   pname = "kdev-php";
 
-  nativeBuildInputs = [
-    cmake
-    extra-cmake-modules
-  ];
-  buildInputs = [
-    kdevelop-pg-qt
-    threadweaver
-    ktexteditor
-    kdevelop-unwrapped
-  ];
+  nativeBuildInputs = [ cmake extra-cmake-modules ];
+  buildInputs = [ kdevelop-pg-qt threadweaver ktexteditor kdevelop-unwrapped ];
 
   dontWrapQtApps = true;
 

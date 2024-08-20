@@ -159,16 +159,7 @@ stdenv.mkDerivation rec {
     "--localstatedir=/var"
   ];
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-    libtool
-    pkg-config
-    bison
-    flex
-    makeWrapper
-    rpcsvc-proto
-  ];
+  nativeBuildInputs = [ autoconf automake libtool pkg-config bison flex makeWrapper rpcsvc-proto ];
 
   makeFlags = [ "DESTDIR=$(out)" ];
 

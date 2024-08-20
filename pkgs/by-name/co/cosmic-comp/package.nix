@@ -53,10 +53,7 @@ rustPlatform.buildRustPackage rec {
 
   separateDebugInfo = true;
 
-  nativeBuildInputs = [
-    makeBinaryWrapper
-    pkg-config
-  ];
+  nativeBuildInputs = [ makeBinaryWrapper pkg-config ];
   buildInputs = [
     libglvnd
     libinput
@@ -106,10 +103,7 @@ rustPlatform.buildRustPackage rec {
     description = "Compositor for the COSMIC Desktop Environment";
     mainProgram = "cosmic-comp";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      qyliss
-      nyanbinary
-    ];
+    maintainers = with maintainers; [ qyliss nyanbinary ];
     platforms = platforms.linux;
   };
 }

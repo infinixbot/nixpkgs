@@ -21,10 +21,7 @@ stdenv.mkDerivation {
   pname = "dropbox-cli";
   inherit version;
 
-  outputs = [
-    "out"
-    "nautilusExtension"
-  ];
+  outputs = [ "out" "nautilusExtension" ];
 
   src = fetchurl {
     url = "https://linux.dropbox.com/packages/nautilus-dropbox-${version}.tar.bz2";

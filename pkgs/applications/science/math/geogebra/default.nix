@@ -26,15 +26,8 @@ let
     desktopName = "Geogebra";
     genericName = "Geogebra";
     comment = meta.description;
-    categories = [
-      "Education"
-      "Science"
-      "Math"
-    ];
-    mimeTypes = [
-      "application/vnd.geogebra.file"
-      "application/vnd.geogebra.tool"
-    ];
+    categories = [ "Education" "Science" "Math" ];
+    mimeTypes = [ "application/vnd.geogebra.file" "application/vnd.geogebra.tool" ];
   };
 
   meta = with lib; {
@@ -45,15 +38,8 @@ let
       calculus in one easy-to-use package.
     '';
     homepage = "https://www.geogebra.org/";
-    maintainers = with maintainers; [
-      sikmir
-      soupglasses
-    ];
-    license = with licenses; [
-      gpl3
-      cc-by-nc-sa-30
-      geogebra
-    ];
+    maintainers = with maintainers; [ sikmir soupglasses ];
+    license = with licenses; [ gpl3 cc-by-nc-sa-30 geogebra ];
     sourceProvenance = with sourceTypes; [
       binaryBytecode
       binaryNativeCode # some jars include native binaries
@@ -89,12 +75,7 @@ let
       # The bundled jogl (required for 3D graphics) links to libXxf86vm, and loads libGL at runtime
       # OpenGL versions newer than 3.0 cause "javax.media.opengl.GLException: Not a GL2 implementation"
       makeWrapper "$out/libexec/geogebra/geogebra" "$out/bin/geogebra" \
-        --prefix LD_LIBRARY_PATH : "${
-          lib.makeLibraryPath [
-            libGL
-            xorg.libXxf86vm
-          ]
-        }" \
+        --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ libGL xorg.libXxf86vm ]}" \
         --set MESA_GL_VERSION_OVERRIDE 3.0 \
         --set JAVACMD "${jre}/bin/java" \
         --set GG_PATH "$out/libexec/geogebra" \

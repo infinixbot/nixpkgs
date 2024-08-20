@@ -18,12 +18,7 @@ stdenv.mkDerivation {
     sha256 = "10bvpq63kmszy1habydwncm0j1dgvam0fkrmvkgbkvf804dcjp6g";
   };
 
-  buildInputs = [
-    boost
-    hepmc2
-    lhapdf
-    pythia
-  ];
+  buildInputs = [ boost hepmc2 lhapdf pythia ];
   nativeBuildInputs = [ makeWrapper ];
 
   patches = [

@@ -22,10 +22,7 @@ buildGoModule rec {
   meta = with lib; {
     description = "Command code search tool";
     homepage = "https://github.com/boyter/cs";
-    license = with licenses; [
-      mit
-      unlicense
-    ];
+    license = with licenses; [ mit unlicense ];
     maintainers = with maintainers; [ viraptor ];
     mainProgram = "cs";
   };

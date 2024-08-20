@@ -3,10 +3,7 @@ import ./make-test-python.nix (
   {
     name = "wpa_supplicant";
     meta = with lib.maintainers; {
-      maintainers = [
-        oddlama
-        rnhmjoj
-      ];
+      maintainers = [ oddlama rnhmjoj ];
     };
 
     nodes =
@@ -101,10 +98,7 @@ import ./make-test-python.nix (
                 # test WPA2 fallback
                 mixed-wpa = {
                   psk = "password";
-                  authProtocols = [
-                    "WPA-PSK"
-                    "SAE"
-                  ];
+                  authProtocols = [ "WPA-PSK" "SAE" ];
                 };
                 sae-only = {
                   psk = "password";

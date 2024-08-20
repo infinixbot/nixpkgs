@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
 
-  propagatedBuildInputs = [
-    zlib
-    coin-utils
-    osi
-  ];
+  propagatedBuildInputs = [ zlib coin-utils osi ];
 
   doCheck = true;
 

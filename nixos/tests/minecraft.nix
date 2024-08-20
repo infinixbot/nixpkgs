@@ -12,10 +12,7 @@ import ./make-test-python.nix (
         user = nodes.client.config.users.users.alice;
       in
       {
-        imports = [
-          ./common/user-account.nix
-          ./common/x11.nix
-        ];
+        imports = [ ./common/user-account.nix ./common/x11.nix ];
 
         environment.systemPackages = [ pkgs.minecraft ];
 

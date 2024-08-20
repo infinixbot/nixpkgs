@@ -89,9 +89,6 @@ stdenv.mkDerivation rec {
       libstun as well as GStreamer elements.'';
     homepage = "https://libnice.freedesktop.org/";
     platforms = platforms.unix;
-    license = with licenses; [
-      lgpl21
-      mpl11
-    ];
+    license = with licenses; [ lgpl21 mpl11 ];
   };
 }

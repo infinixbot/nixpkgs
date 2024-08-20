@@ -13,11 +13,7 @@ let
       ...
     }@attrs:
     let
-      attrs' = builtins.removeAttrs attrs [
-        "version"
-        "sha256"
-        "rev"
-      ];
+      attrs' = builtins.removeAttrs attrs [ "version" "sha256" "rev" ];
     in
     buildGoModule {
       pname = "kops";
@@ -58,12 +54,7 @@ let
         homepage = "https://github.com/kubernetes/kops";
         changelog = "https://github.com/kubernetes/kops/tree/master/docs/releases";
         license = licenses.asl20;
-        maintainers = with maintainers; [
-          offline
-          zimbatm
-          diegolelis
-          yurrriq
-        ];
+        maintainers = with maintainers; [ offline zimbatm diegolelis yurrriq ];
       };
     }
     // attrs';

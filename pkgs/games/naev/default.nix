@@ -57,12 +57,7 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [
-    (python3.withPackages (
-      ps: with ps; [
-        pyyaml
-        mutagen
-      ]
-    ))
+    (python3.withPackages (ps: with ps; [ pyyaml mutagen ]))
     meson
     ninja
     pkg-config

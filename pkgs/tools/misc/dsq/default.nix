@@ -24,17 +24,9 @@ buildGoModule rec {
 
   vendorHash = "sha256-MbBR+OC1OGhZZGcZqc+Jzmabdc5ZfFEwzqP5YMrj6mY=";
 
-  ldflags = [
-    "-X"
-    "main.Version=${version}"
-  ];
+  ldflags = [ "-X" "main.Version=${version}" ];
 
-  nativeCheckInputs = [
-    python3
-    curl
-    jq
-    p7zip
-  ];
+  nativeCheckInputs = [ python3 curl jq p7zip ];
 
   preCheck = ''
     substituteInPlace scripts/test.py \

@@ -27,9 +27,5 @@ mkDerivation {
     kwidgetsaddons
     kwindowsystem
   ];
-  propagatedBuildInputs = [
-    kconfig
-    kpackage
-    qtdeclarative
-  ];
+  propagatedBuildInputs = [ kconfig kpackage qtdeclarative ];
 }

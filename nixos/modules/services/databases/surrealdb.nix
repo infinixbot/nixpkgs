@@ -49,12 +49,7 @@ in
       extraFlags = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "--allow-all"
-          "--auth"
-          "--user root"
-          "--pass root"
-        ];
+        example = [ "--allow-all" "--auth" "--user root" "--pass root" ];
         description = ''
           Specify a list of additional command line flags,
           which get escaped and are then passed to surrealdb.
@@ -95,10 +90,7 @@ in
         RestrictNamespaces = true;
         LockPersonality = true;
         RemoveIPC = true;
-        SystemCallFilter = [
-          "@system-service"
-          "~@privileged"
-        ];
+        SystemCallFilter = [ "@system-service" "~@privileged" ];
       };
     };
   };

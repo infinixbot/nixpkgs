@@ -53,10 +53,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Synchronise your ownCloud with your computer using this desktop client";
     homepage = "https://owncloud.org";
-    maintainers = with maintainers; [
-      qknight
-      hellwolf
-    ];
+    maintainers = with maintainers; [ qknight hellwolf ];
     platforms = platforms.unix;
     license = licenses.gpl2Plus;
     changelog = "https://github.com/owncloud/client/releases/tag/v${version}";

@@ -36,10 +36,7 @@ stdenv.mkDerivation rec {
     inherit sha256;
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    asar
-  ];
+  nativeBuildInputs = [ makeWrapper asar ];
 
   dontConfigure = true;
   dontBuild = true;

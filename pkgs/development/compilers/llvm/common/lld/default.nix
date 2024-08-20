@@ -51,10 +51,7 @@ stdenv.mkDerivation (
     sourceRoot = if lib.versionOlder release_version "13" then null else "${src.name}/${pname}";
 
     nativeBuildInputs = [ cmake ] ++ lib.optional (lib.versionAtLeast release_version "15") ninja;
-    buildInputs = [
-      libllvm
-      libxml2
-    ];
+    buildInputs = [ libllvm libxml2 ];
 
     cmakeFlags =
       lib.optionals (lib.versionOlder release_version "14") [
@@ -72,11 +69,7 @@ stdenv.mkDerivation (
     # Musl's default stack size is too small for lld to be able to link Firefox.
     LDFLAGS = lib.optionalString stdenv.hostPlatform.isMusl "-Wl,-z,stack-size=2097152";
 
-    outputs = [
-      "out"
-      "lib"
-      "dev"
-    ];
+    outputs = [ "out" "lib" "dev" ];
 
     meta = llvm_meta // {
       homepage = "https://lld.llvm.org/";

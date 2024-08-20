@@ -110,11 +110,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = optional stdenv.isLinux autoPatchelfHook;
   buildInputs =
-    optionals isAtLeast50 [
-      SDL2
-      SDL2_image
-      SDL2_mixer
-    ]
+    optionals isAtLeast50 [ SDL2 SDL2_image SDL2_mixer ]
     ++ optional (!isAtLeast50) SDL
     ++ optional enableUnfuck dwarf-fortress-unfuck
     ++ [ stdenv.cc.cc.lib ];
@@ -193,14 +189,6 @@ stdenv.mkDerivation {
     homepage = "https://www.bay12games.com/dwarves/";
     license = licenses.unfreeRedistributable;
     platforms = attrNames platforms;
-    maintainers = with maintainers; [
-      a1russell
-      robbinch
-      roconnor
-      abbradar
-      numinit
-      shazow
-      ncfavier
-    ];
+    maintainers = with maintainers; [ a1russell robbinch roconnor abbradar numinit shazow ncfavier ];
   };
 }

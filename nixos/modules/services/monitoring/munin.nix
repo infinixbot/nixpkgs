@@ -253,10 +253,7 @@ in
           `/var/log/munin/munin-update.log` for timing
           information, and the NixOS build of Munin does not write this file.
         '';
-        example = [
-          "diskstats"
-          "zfs_usage_*"
-        ];
+        example = [ "diskstats" "zfs_usage_*" ];
       };
     };
 
@@ -350,12 +347,7 @@ in
         description = "Munin Node";
         after = [ "network.target" ];
         wantedBy = [ "multi-user.target" ];
-        path = with pkgs; [
-          munin
-          smartmontools
-          "/run/current-system/sw"
-          "/run/wrappers"
-        ];
+        path = with pkgs; [ munin smartmontools "/run/current-system/sw" "/run/wrappers" ];
         environment.MUNIN_LIBDIR = "${pkgs.munin}/lib";
         environment.MUNIN_PLUGSTATE = "/run/munin";
         environment.MUNIN_LOGDIR = "/var/log/munin";

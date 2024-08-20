@@ -20,23 +20,10 @@ stdenv.mkDerivation {
     sha256 = "0n1718bmr2lfpwx57hajancda51fyrgyk9rbybbadvd8gypvzmhh";
   };
 
-  buildInputs = [
-    tcl-8_6
-    tcllib
-    coreutils
-  ];
-  nativeBuildInputs = [
-    makeWrapper
-    tcl-8_6.tclPackageHook
-    installShellFiles
-  ];
+  buildInputs = [ tcl-8_6 tcllib coreutils ];
+  nativeBuildInputs = [ makeWrapper tcl-8_6.tclPackageHook installShellFiles ];
 
-  tclWrapperArgs = [
-    "--prefix"
-    "PATH"
-    ":"
-    (lib.makeBinPath [ tcl-8_6 ])
-  ];
+  tclWrapperArgs = [ "--prefix" "PATH" ":" (lib.makeBinPath [ tcl-8_6 ]) ];
 
   installPhase = ''
     runHook preInstall

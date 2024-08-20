@@ -150,10 +150,7 @@ in
         warn =
           k: optional (cfg.${k} != "") "config.services.longview.${k} is insecure. Use ${k}File instead.";
       in
-      concatMap warn [
-        "apiKey"
-        "mysqlPassword"
-      ];
+      concatMap warn [ "apiKey" "mysqlPassword" ];
 
     assertions = [
       {

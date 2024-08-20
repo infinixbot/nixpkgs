@@ -27,11 +27,7 @@ stdenv.mkDerivation rec {
     install -D testing/ptest/HPL.dat $out/share/hpl/HPL.dat
   '';
 
-  buildInputs = [
-    blas
-    lapack
-    mpi
-  ];
+  buildInputs = [ blas lapack mpi ];
 
   meta = with lib; {
     description = "Portable Implementation of the Linpack Benchmark for Distributed-Memory Computers";

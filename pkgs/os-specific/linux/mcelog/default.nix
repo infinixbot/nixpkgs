@@ -31,11 +31,7 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  installFlags = [
-    "DESTDIR=$(out)"
-    "prefix="
-    "DOCDIR=/share/doc"
-  ];
+  installFlags = [ "DESTDIR=$(out)" "prefix=" "DOCDIR=/share/doc" ];
 
   postInstall = ''
     mkdir -p $out/lib/systemd/system

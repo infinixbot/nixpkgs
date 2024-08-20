@@ -30,10 +30,7 @@ let
       cp ${./staticfiles.go.mod} go.mod
     '';
 
-    ldflags = [
-      "-s"
-      "-w"
-    ];
+    ldflags = [ "-s" "-w" ];
   };
 in
 buildGoModule rec {

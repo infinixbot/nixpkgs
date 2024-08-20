@@ -42,16 +42,10 @@ in
     dontBuild = true;
     dontConfigure = true;
 
-    outputs = [
-      "out"
-      "man"
-    ];
+    outputs = [ "out" "man" ];
 
     strictDeps = true;
-    nativeBuildInputs = [
-      makeWrapper
-      installShellFiles
-    ];
+    nativeBuildInputs = [ makeWrapper installShellFiles ];
     buildInputs = [ bash ];
     installPhase = ''
       installManPage grimshot.1

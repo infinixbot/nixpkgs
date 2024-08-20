@@ -20,9 +20,6 @@ buildFishPlugin rec {
     homepage = "https://github.com/jhillyerd/plugin-git";
     changelog = "https://github.com/jhillyerd/plugin-git/releases/tag/v${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      GaetanLepage
-      unsolvedcypher
-    ];
+    maintainers = with maintainers; [ GaetanLepage unsolvedcypher ];
   };
 }

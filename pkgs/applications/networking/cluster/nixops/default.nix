@@ -131,10 +131,7 @@ let
 
     package =
       lib.lazyDerivation {
-        outputs = [
-          "out"
-          "dist"
-        ];
+        outputs = [ "out" "dist" ];
         derivation = this.rawPackage;
       }
       // this.extraPackageAttrs;

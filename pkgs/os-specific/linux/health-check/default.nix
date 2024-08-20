@@ -17,15 +17,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-CPKXpPpdagq3UnTk8Z58WtSPek8L79totKX+Uh6foVg=";
   };
 
-  buildInputs = [
-    json_c
-    libbsd
-  ];
+  buildInputs = [ json_c libbsd ];
 
-  makeFlags = [
-    "JSON_OUTPUT=y"
-    "FNOTIFY=y"
-  ];
+  makeFlags = [ "JSON_OUTPUT=y" "FNOTIFY=y" ];
 
   installFlags = [
     "BINDIR=${placeholder "out"}/bin"

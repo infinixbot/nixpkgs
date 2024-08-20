@@ -35,11 +35,7 @@ stdenv.mkDerivation rec {
     substituteInPlace ./config.guess --replace-fail /usr/bin/uname uname
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   propagatedBuildInputs = [ openssl ]; # see Libs: in libssh2.pc
   buildInputs = [ zlib ] ++ lib.optional stdenv.hostPlatform.isMinGW windows.mingw_w64;
@@ -58,10 +54,7 @@ stdenv.mkDerivation rec {
     description = "Client-side C library implementing the SSH2 protocol";
     homepage = "https://www.libssh2.org";
     platforms = platforms.all;
-    license = with licenses; [
-      bsd3
-      libssh2
-    ];
+    license = with licenses; [ bsd3 libssh2 ];
     maintainers = with maintainers; [ SuperSandro2000 ];
   };
 }

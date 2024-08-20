@@ -33,15 +33,8 @@ let
     comment = "Java Decompiler JD-GUI";
     desktopName = "JD-GUI";
     genericName = "Java Decompiler";
-    mimeTypes = [
-      "application/java"
-      "application/java-vm"
-      "application/java-archive"
-    ];
-    categories = [
-      "Development"
-      "Debugger"
-    ];
+    mimeTypes = [ "application/java" "application/java-vm" "application/java-archive" ];
+    categories = [ "Development" "Debugger" ];
     startupWMClass = "org-jd-gui-App";
   };
 
@@ -58,11 +51,7 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    jdk
-    gradle
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ jdk gradle copyDesktopItems ];
 
   mitmCache = gradle.fetchDeps {
     inherit pname;

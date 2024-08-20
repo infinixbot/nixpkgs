@@ -24,14 +24,8 @@ buildEnv {
     description = "Fantasy action RPG using the FLARE engine";
     mainProgram = "flare";
     homepage = "https://flarerpg.org/";
-    maintainers = with maintainers; [
-      aanderse
-      McSinyx
-    ];
-    license = [
-      licenses.gpl3
-      licenses.cc-by-sa-30
-    ];
+    maintainers = with maintainers; [ aanderse McSinyx ];
+    license = [ licenses.gpl3 licenses.cc-by-sa-30 ];
     platforms = platforms.unix;
   };
 }

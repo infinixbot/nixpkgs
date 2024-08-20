@@ -54,12 +54,7 @@ import ../make-test-python.nix (
                 '';
           in
           with pkgs;
-          [
-            curl
-            firefox-unwrapped
-            geckodriver
-            seleniumScript
-          ];
+          [ curl firefox-unwrapped geckodriver seleniumScript ];
       };
 
     testScript = ''

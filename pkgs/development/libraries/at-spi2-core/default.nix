@@ -29,10 +29,7 @@ stdenv.mkDerivation rec {
   pname = "at-spi2-core";
   version = "2.52.0";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
   separateDebugInfo = true;
 
   src = fetchurl {

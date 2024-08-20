@@ -27,11 +27,7 @@ stdenv.mkDerivation rec {
     pyserial
   ];
 
-  nativeBuildInputs = [
-    wrapPython
-    qt5.wrapQtAppsHook
-    dos2unix
-  ];
+  nativeBuildInputs = [ wrapPython qt5.wrapQtAppsHook dos2unix ];
 
   buildPhase = "true";
 

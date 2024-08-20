@@ -76,10 +76,7 @@ stdenv.mkDerivation rec {
     ];
 
   # Tests are disabled so we do not have to pull in googletest and more dependencies
-  cmakeFlags = [
-    "-DAMBER_SKIP_TESTS=ON"
-    "-DAMBER_DISABLE_WERROR=ON"
-  ];
+  cmakeFlags = [ "-DAMBER_SKIP_TESTS=ON" "-DAMBER_DISABLE_WERROR=ON" ];
 
   prePatch = ''
     cp -r ${glslang}/ third_party/glslang

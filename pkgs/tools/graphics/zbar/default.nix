@@ -35,13 +35,7 @@ stdenv.mkDerivation rec {
   pname = "zbar";
   version = "0.23.92";
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-    "doc"
-    "man"
-  ];
+  outputs = [ "out" "lib" "dev" "doc" "man" ];
 
   src = fetchFromGitHub {
     owner = "mchehab";

@@ -13,10 +13,7 @@ mkXfceDerivation {
 
   sha256 = "sha256-Iu/LHyk/lOvu8uJuJRDxIkabiX0vZB4H99vVKRiugVo=";
 
-  nativeBuildInputs = [
-    gobject-introspection
-    vala
-  ];
+  nativeBuildInputs = [ gobject-introspection vala ];
 
   buildInputs = [ libxfce4util ];
 

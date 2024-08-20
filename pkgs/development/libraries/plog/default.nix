@@ -9,10 +9,7 @@ stdenv.mkDerivation rec {
   pname = "plog";
   version = "1.1.10";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "SergiusTheBest";
@@ -35,9 +32,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/SergiusTheBest/plog";
     license = licenses.mit;
     platforms = platforms.linux ++ platforms.darwin;
-    maintainers = with maintainers; [
-      raphaelr
-      erdnaxe
-    ];
+    maintainers = with maintainers; [ raphaelr erdnaxe ];
   };
 }

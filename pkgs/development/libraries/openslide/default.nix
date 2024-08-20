@@ -27,23 +27,9 @@ stdenv.mkDerivation rec {
     sha256 = "1g4hhjr4cbx754cwi9wl84k33bkg232w8ajic7aqhzm8x182hszp";
   };
 
-  buildInputs = [
-    cairo
-    glib
-    gdk-pixbuf
-    libjpeg
-    libpng
-    libtiff
-    libxml2
-    openjpeg
-    sqlite
-    zlib
-  ];
+  buildInputs = [ cairo glib gdk-pixbuf libjpeg libpng libtiff libxml2 openjpeg sqlite zlib ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
   meta = with lib; {
     homepage = "https://openslide.org";

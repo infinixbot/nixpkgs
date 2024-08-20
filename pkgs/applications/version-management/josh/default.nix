@@ -13,11 +13,7 @@
 
 let
   # josh-ui requires javascript dependencies, haven't tried to figure it out yet
-  cargoFlags = [
-    "--workspace"
-    "--exclude"
-    "josh-ui"
-  ];
+  cargoFlags = [ "--workspace" "--exclude" "josh-ui" ];
   version = "24.08.14";
 in
 

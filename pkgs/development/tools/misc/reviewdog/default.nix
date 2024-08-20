@@ -21,11 +21,7 @@ buildGoModule rec {
 
   subPackages = [ "cmd/reviewdog" ];
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X github.com/reviewdog/reviewdog/commands.Version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X github.com/reviewdog/reviewdog/commands.Version=${version}" ];
 
   meta = with lib; {
     description = "Automated code review tool integrated with any code analysis tools regardless of programming language";

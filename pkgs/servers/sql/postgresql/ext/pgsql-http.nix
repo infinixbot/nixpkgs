@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-CPHfx7vhWfxkXsoKTzyFuTt47BPMvzi/pi1leGcuD60=";
   };
 
-  buildInputs = [
-    curl
-    postgresql
-  ];
+  buildInputs = [ curl postgresql ];
 
   installPhase = ''
     install -D -t $out/lib *${postgresql.dlSuffix}

@@ -26,10 +26,7 @@ buildGoModule rec {
   vendorHash = "sha256-27ykI9HK1jFanxwa6QrN6ZS548JbFNSZHaXr4ciCVOE=";
   proxyVendor = true;
 
-  ldflags = [
-    "-s"
-    "-X main.version=v${version}"
-  ];
+  ldflags = [ "-s" "-X main.version=v${version}" ];
 
   postInstall = ''
     mv $out/bin/snicat $out/bin/sc

@@ -47,10 +47,6 @@ buildGoModule rec {
     description = "Thin wrapper for Terraform that supports locking for Terraform state and enforces best practices";
     mainProgram = "terragrunt";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      jk
-      qjoly
-      kashw2
-    ];
+    maintainers = with maintainers; [ jk qjoly kashw2 ];
   };
 }

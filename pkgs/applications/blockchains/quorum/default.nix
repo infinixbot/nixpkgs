@@ -23,10 +23,7 @@ buildGoModule rec {
     "cmd/bootnode"
   ];
 
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  ldflags = [ "-s" "-w" ];
 
   passthru.tests = {
     inherit (nixosTests) quorum;

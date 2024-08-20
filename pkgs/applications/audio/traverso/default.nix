@@ -27,10 +27,7 @@ mkDerivation {
     sha256 = "12f7x8kw4fw1j0xkwjrp54cy4cv1ql0zwz2ba5arclk4pf6bhl7q";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
   buildInputs = [
     alsa-lib
     fftw
@@ -47,12 +44,7 @@ mkDerivation {
     wavpack
   ];
 
-  cmakeFlags = [
-    "-DWANT_PORTAUDIO=1"
-    "-DWANT_PULSEAUDIO=1"
-    "-DWANT_MP3_ENCODE=1"
-    "-DWANT_LV2=0"
-  ];
+  cmakeFlags = [ "-DWANT_PORTAUDIO=1" "-DWANT_PULSEAUDIO=1" "-DWANT_MP3_ENCODE=1" "-DWANT_LV2=0" ];
 
   hardeningDisable = [ "format" ];
 
@@ -60,10 +52,7 @@ mkDerivation {
     description = "Cross-platform multitrack audio recording and audio editing suite";
     mainProgram = "traverso";
     homepage = "https://traverso-daw.org/";
-    license = with licenses; [
-      gpl2Plus
-      lgpl21Plus
-    ];
+    license = with licenses; [ gpl2Plus lgpl21Plus ];
     platforms = platforms.all;
     maintainers = with maintainers; [ coconnor ];
   };

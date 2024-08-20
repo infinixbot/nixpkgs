@@ -24,10 +24,7 @@ let
       url = "https://www.netacad.com";
     };
 
-    nativeBuildInputs = [
-      dpkg
-      makeWrapper
-    ];
+    nativeBuildInputs = [ dpkg makeWrapper ];
 
     installPhase = ''
       dpkg-deb -x $src $out
@@ -41,11 +38,7 @@ let
     desktopName = "Cisco Packet Tracer 7";
     icon = "${ptFiles}/opt/pt/art/app.png";
     exec = "packettracer7 %f";
-    mimeTypes = [
-      "application/x-pkt"
-      "application/x-pka"
-      "application/x-pkz"
-    ];
+    mimeTypes = [ "application/x-pkt" "application/x-pka" "application/x-pkz" ];
   };
 
   fhs = buildFHSEnv {

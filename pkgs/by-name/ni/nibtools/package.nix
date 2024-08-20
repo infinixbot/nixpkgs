@@ -28,11 +28,7 @@ stdenv.mkDerivation {
   ];
 
   preBuild = "mkdir build";
-  makeFlags = [
-    "-f"
-    "GNU/Makefile"
-    "linux"
-  ];
+  makeFlags = [ "-f" "GNU/Makefile" "linux" ];
 
   installPhase = ''
     runHook preInstall

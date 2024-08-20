@@ -37,10 +37,7 @@ mkDerivation rec {
     qtwebsockets
   ];
 
-  qmakeFlags = [
-    "michabo.pro"
-    "DESTDIR=${placeholder "out"}/bin"
-  ];
+  qmakeFlags = [ "michabo.pro" "DESTDIR=${placeholder "out"}/bin" ];
 
   postInstall = ''
     ln -s ${desktopItem}/share $out/share

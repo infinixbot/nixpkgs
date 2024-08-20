@@ -41,11 +41,7 @@ mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [
-    qmake
-    pkg-config
-    qttools
-  ];
+  nativeBuildInputs = [ qmake pkg-config qttools ];
   buildInputs = [
     kirigami2
     qtquickcontrols2

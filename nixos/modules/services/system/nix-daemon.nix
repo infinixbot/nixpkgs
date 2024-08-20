@@ -47,30 +47,15 @@ in
   imports = [
     (mkRenamedOptionModuleWith {
       sinceRelease = 2205;
-      from = [
-        "nix"
-        "daemonIONiceLevel"
-      ];
-      to = [
-        "nix"
-        "daemonIOSchedPriority"
-      ];
+      from = [ "nix" "daemonIONiceLevel" ];
+      to = [ "nix" "daemonIOSchedPriority" ];
     })
     (mkRenamedOptionModuleWith {
       sinceRelease = 2211;
-      from = [
-        "nix"
-        "readOnlyStore"
-      ];
-      to = [
-        "boot"
-        "readOnlyNixStore"
-      ];
+      from = [ "nix" "readOnlyStore" ];
+      to = [ "boot" "readOnlyNixStore" ];
     })
-    (mkRemovedOptionModule [
-      "nix"
-      "daemonNiceLevel"
-    ] "Consider nix.daemonCPUSchedPolicy instead.")
+    (mkRemovedOptionModule [ "nix" "daemonNiceLevel" ] "Consider nix.daemonCPUSchedPolicy instead.")
   ];
 
   ###### interface
@@ -98,11 +83,7 @@ in
       };
 
       daemonCPUSchedPolicy = mkOption {
-        type = types.enum [
-          "other"
-          "batch"
-          "idle"
-        ];
+        type = types.enum [ "other" "batch" "idle" ];
         default = "other";
         example = "batch";
         description = ''
@@ -132,10 +113,7 @@ in
       };
 
       daemonIOSchedClass = mkOption {
-        type = types.enum [
-          "best-effort"
-          "idle"
-        ];
+        type = types.enum [ "best-effort" "idle" ];
         default = "best-effort";
         example = "idle";
         description = ''

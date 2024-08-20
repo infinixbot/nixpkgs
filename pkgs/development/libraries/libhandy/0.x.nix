@@ -22,11 +22,7 @@ stdenv.mkDerivation rec {
   pname = "libhandy";
   version = "0.0.13";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
   outputBin = "dev";
 
   src = fetchFromGitLab {
@@ -48,16 +44,8 @@ stdenv.mkDerivation rec {
     docbook_xsl
     docbook_xml_dtd_43
   ];
-  buildInputs = [
-    gnome-desktop
-    gtk3
-    libxml2
-  ];
-  nativeCheckInputs = [
-    dbus
-    xvfb-run
-    hicolor-icon-theme
-  ];
+  buildInputs = [ gnome-desktop gtk3 libxml2 ];
+  nativeCheckInputs = [ dbus xvfb-run hicolor-icon-theme ];
 
   mesonFlags = [
     "-Dgtk_doc=true"

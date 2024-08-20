@@ -29,10 +29,7 @@ stdenv.mkDerivation rec {
     openssl
   ] ++ lib.optionals buildllvmsparse [ libllvm ] ++ lib.optionals buildc2xml [ libxml2.dev ];
 
-  makeFlags = [
-    "PREFIX=${placeholder "out"}"
-    "CXX=${stdenv.cc.targetPrefix}c++"
-  ];
+  makeFlags = [ "PREFIX=${placeholder "out"}" "CXX=${stdenv.cc.targetPrefix}c++" ];
 
   meta = with lib; {
     description = "Semantic analysis tool for C";

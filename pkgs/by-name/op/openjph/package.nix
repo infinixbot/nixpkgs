@@ -19,15 +19,9 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-v4rqBTS6rk5fgDQqvqPwFAYxLNxtsRhZuQsj+y3sE3o=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    validatePkgConfig
-  ];
+  nativeBuildInputs = [ cmake validatePkgConfig ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   cmakeFlags = [
     (lib.cmakeBool "OJPH_ENABLE_TIFF_SUPPORT" false)

@@ -43,9 +43,6 @@ buildGoModule rec {
     description = "Ory CLI";
     homepage = "https://www.ory.sh/cli";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      luleyleo
-      nicolas-goudry
-    ];
+    maintainers = with maintainers; [ luleyleo nicolas-goudry ];
   };
 }

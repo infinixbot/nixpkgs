@@ -22,13 +22,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    makeWrapper
-    eprover
-    ocaml
-    camlp4
-    perl
-  ];
+  nativeBuildInputs = [ makeWrapper eprover ocaml camlp4 perl ];
   buildInputs = [ zlib ];
 
   patches = [

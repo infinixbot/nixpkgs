@@ -51,28 +51,14 @@ mkDerivation rec {
 
     ${patchelf}/bin/patchelf \
       --interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-      --set-rpath "${
-        lib.makeLibraryPath [
-          qt5.qtbase
-          libXtst
-          libXext
-          libX11
-          libXScrnSaver
-        ]
-      }" \
+      --set-rpath "${lib.makeLibraryPath [ qt5.qtbase libXtst libXext libX11 libXScrnSaver ]}" \
       $out/bin/rescuetime
   '';
 
   passthru.updateScript = writeScript "${pname}-updater" ''
     #!${stdenv.shell}
     set -eu -o pipefail
-    PATH=${
-      lib.makeBinPath [
-        curl
-        pup
-        common-updater-scripts
-      ]
-    }:$PATH
+    PATH=${lib.makeBinPath [ curl pup common-updater-scripts ]}:$PATH
     latestVersion="$(curl -sS https://www.rescuetime.com/release-notes/linux | pup '.release:first-of-type h2 strong text{}' | tr -d '\n')"
 
     for platform in ${lib.concatStringsSep " " meta.platforms}; do
@@ -86,9 +72,6 @@ mkDerivation rec {
     maintainers = [ ];
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
   };
 }

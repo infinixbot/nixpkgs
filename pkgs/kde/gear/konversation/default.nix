@@ -8,10 +8,7 @@ mkKdeDerivation {
   pname = "konversation";
 
   extraBuildInputs = [ qt5compat ];
-  extraNativeBuildInputs = [
-    qtmultimedia
-    qttools
-  ];
+  extraNativeBuildInputs = [ qtmultimedia qttools ];
 
   meta.mainProgram = "konversation";
 }

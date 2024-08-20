@@ -124,40 +124,16 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs =
-    [
-      cmake
-      pkg-config
-    ]
-    ++ lib.optionals docsSupport [
-      docbook2x
-      docbook_xsl
-      docbook_xml_dtd_44
-      libxslt
-      man
-      less
-    ]
+    [ cmake pkg-config ]
+    ++ lib.optionals docsSupport [ docbook2x docbook_xsl docbook_xml_dtd_44 libxslt man less ]
     ++ lib.optional waylandSupport wayland-scanner
     ++ lib.optional luaImlib2Support toluapp
     ++ lib.optional luaCairoSupport toluapp;
   buildInputs =
-    [
-      glib
-      libXinerama
-    ]
+    [ glib libXinerama ]
     ++ lib.optional ncursesSupport ncurses
-    ++ lib.optionals x11Support [
-      freetype
-      xorg.libICE
-      xorg.libX11
-      xorg.libXext
-      xorg.libXft
-      xorg.libSM
-    ]
-    ++ lib.optionals waylandSupport [
-      pango
-      wayland
-      wayland-protocols
-    ]
+    ++ lib.optionals x11Support [ freetype xorg.libICE xorg.libX11 xorg.libXext xorg.libXft xorg.libSM ]
+    ++ lib.optionals waylandSupport [ pango wayland wayland-protocols ]
     ++ lib.optional xdamageSupport libXdamage
     ++ lib.optional imlib2Support imlib2
     ++ lib.optional luaSupport lua

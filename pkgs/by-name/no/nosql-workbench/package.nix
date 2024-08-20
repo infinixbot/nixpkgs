@@ -34,11 +34,7 @@ let
     changelog = "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkbenchDocumentHistory.html";
     license = lib.licenses.unfree;
     maintainers = with lib.maintainers; [ DataHearth ];
-    platforms = [
-      "aarch64-darwin"
-      "x86_64-darwin"
-      "x86_64-linux"
-    ];
+    platforms = [ "aarch64-darwin" "x86_64-darwin" "x86_64-linux" ];
   };
 in
 if stdenv.isDarwin then

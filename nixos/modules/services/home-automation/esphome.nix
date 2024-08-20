@@ -58,10 +58,7 @@ in
     };
 
     allowedDevices = mkOption {
-      default = [
-        "char-ttyS"
-        "char-ttyUSB"
-      ];
+      default = [ "char-ttyS" "char-ttyUSB" ];
       example = [
         "/dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0"
       ];

@@ -125,15 +125,7 @@ let
   releaseRev = v: "mathcomp-${v}";
 
   # list of core mathcomp packages sorted by dependency order
-  packages = [
-    "ssreflect"
-    "fingroup"
-    "algebra"
-    "solvable"
-    "field"
-    "character"
-    "all"
-  ];
+  packages = [ "ssreflect" "fingroup" "algebra" "solvable" "field" "character" "all" ];
 
   mathcomp_ =
     package:
@@ -161,10 +153,7 @@ let
             ;
 
           mlPlugin = lib.versions.isLe "8.6" coq.coq-version;
-          nativeBuildInputs = lib.optionals withDoc [
-            graphviz
-            lua
-          ];
+          nativeBuildInputs = lib.optionals withDoc [ graphviz lua ];
           buildInputs = [ ncurses ];
           propagatedBuildInputs = mathcomp-deps;
 
@@ -187,11 +176,7 @@ let
           meta = {
             homepage = "https://math-comp.github.io/";
             license = lib.licenses.cecill-b;
-            maintainers = with lib.maintainers; [
-              vbgl
-              jwiegley
-              cohencyril
-            ];
+            maintainers = with lib.maintainers; [ vbgl jwiegley cohencyril ];
           };
         }
         // lib.optionalAttrs (package != "single") { passthru = lib.genAttrs packages mathcomp_; }

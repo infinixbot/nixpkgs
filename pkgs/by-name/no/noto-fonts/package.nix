@@ -81,10 +81,6 @@ stdenvNoCC.mkDerivation rec {
     inherit longDescription;
     license = lib.licenses.ofl;
     platforms = lib.platforms.all;
-    maintainers = with lib.maintainers; [
-      mathnerd314
-      emily
-      jopejoe1
-    ];
+    maintainers = with lib.maintainers; [ mathnerd314 emily jopejoe1 ];
   };
 }

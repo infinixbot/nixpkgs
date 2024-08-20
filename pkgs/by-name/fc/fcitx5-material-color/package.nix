@@ -36,10 +36,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     description = "Fcitx5 themes based on Material color";
     homepage = "https://github.com/hosxy/Fcitx5-Material-Color";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      Cryolitia
-      h7x4
-    ];
+    maintainers = with maintainers; [ Cryolitia h7x4 ];
     platforms = platforms.all;
   };
 })

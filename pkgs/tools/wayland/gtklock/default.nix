@@ -51,10 +51,7 @@ stdenv.mkDerivation rec {
     ''; # Following  nixpkgs/pkgs/applications/window-managers/sway/lock.nix
     homepage = "https://github.com/jovanlanik/gtklock";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      dit7ya
-      aleksana
-    ];
+    maintainers = with maintainers; [ dit7ya aleksana ];
     platforms = platforms.linux;
     mainProgram = "gtklock";
   };

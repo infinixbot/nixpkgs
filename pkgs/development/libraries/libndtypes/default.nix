@@ -8,10 +8,7 @@ stdenv.mkDerivation {
   pname = "libndtypes";
   version = "unstable-2019-08-01";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "xnd-project";

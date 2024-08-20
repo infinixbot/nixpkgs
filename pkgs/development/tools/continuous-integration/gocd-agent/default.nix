@@ -29,10 +29,7 @@ stdenv.mkDerivation rec {
       binaryBytecode
       binaryNativeCode
     ];
-    maintainers = with maintainers; [
-      grahamc
-      swarren83
-    ];
+    maintainers = with maintainers; [ grahamc swarren83 ];
   };
 
   nativeBuildInputs = [ unzip ];

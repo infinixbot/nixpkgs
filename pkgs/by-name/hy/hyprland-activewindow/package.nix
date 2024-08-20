@@ -22,10 +22,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/FieldofClay/hyprland-activewindow";
     license = licenses.mit;
     platforms = platforms.linux;
-    maintainers = with maintainers; [
-      kiike
-      donovanglover
-    ];
+    maintainers = with maintainers; [ kiike donovanglover ];
     mainProgram = "hyprland-activewindow";
   };
 }

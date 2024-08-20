@@ -33,10 +33,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-W2P7Txv3RtmKhQ5c0+b4ghf+OMsN+ydUZt+6tB+LClM=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    makeWrapper
-  ];
+  nativeBuildInputs = [ cmake makeWrapper ];
   buildInputs = [
     SDL2
     SDL2_mixer
@@ -65,10 +62,7 @@ stdenv.mkDerivation rec {
     description = "Reverse engineering of 3D Pinball for Windows – Space Cadet, a game bundled with Windows";
     homepage = "https://github.com/k4zmu2a/SpaceCadetPinball";
     # The assets are unfree while the code is labeled as MIT
-    license = with licenses; [
-      unfree
-      mit
-    ];
+    license = with licenses; [ unfree mit ];
     maintainers = [ maintainers.hqurve ];
     platforms = platforms.all;
     mainProgram = "SpaceCadetPinball";

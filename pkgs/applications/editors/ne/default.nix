@@ -25,12 +25,7 @@ stdenv.mkDerivation rec {
     substituteInPlace src/makefile --replace "-lcurses" "-lncurses"
   '';
 
-  nativeBuildInputs = [
-    texliveMedium
-    texinfo6
-    perl
-    ghostscript
-  ];
+  nativeBuildInputs = [ texliveMedium texinfo6 perl ghostscript ];
   buildInputs = [ ncurses ];
 
   makeFlags = [ "PREFIX=${placeholder "out"}" ];

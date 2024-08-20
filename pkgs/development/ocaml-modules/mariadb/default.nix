@@ -50,17 +50,8 @@ lib.throwIfNot (lib.versionAtLeast ocaml.version "4.07")
         '#directory "${findlib}/lib/ocaml/${ocaml.version}/site-lib/";; #use "topfind"'
     '';
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-      ocamlbuild
-    ];
-    buildInputs = [
-      mariadb
-      libmysqlclient
-      camlp-streams
-      ocamlbuild
-    ];
+    nativeBuildInputs = [ ocaml findlib ocamlbuild ];
+    buildInputs = [ mariadb libmysqlclient camlp-streams ocamlbuild ];
     propagatedBuildInputs = [ ctypes ];
 
     strictDeps = true;

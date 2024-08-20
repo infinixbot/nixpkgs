@@ -64,44 +64,20 @@ with lib;
 {
 
   imports = [
-    (mkChangedOptionModule
-      [
-        "services"
-        "ddclient"
-        "domain"
-      ]
-      [
-        "services"
-        "ddclient"
-        "domains"
-      ]
-      (
-        config:
-        let
-          value = getAttrFromPath [
-            "services"
-            "ddclient"
-            "domain"
-          ] config;
-        in
-        optional (value != "") value
-      )
-    )
-    (mkRemovedOptionModule [
-      "services"
-      "ddclient"
-      "homeDir"
-    ] "")
+    (mkChangedOptionModule [ "services" "ddclient" "domain" ] [ "services" "ddclient" "domains" ] (
+      config:
+      let
+        value = getAttrFromPath [ "services" "ddclient" "domain" ] config;
+      in
+      optional (value != "") value
+    ))
+    (mkRemovedOptionModule [ "services" "ddclient" "homeDir" ] "")
     (mkRemovedOptionModule [
       "services"
       "ddclient"
       "password"
     ] "Use services.ddclient.passwordFile instead.")
-    (mkRemovedOptionModule [
-      "services"
-      "ddclient"
-      "ipv6"
-    ] "")
+    (mkRemovedOptionModule [ "services" "ddclient" "ipv6" ] "")
   ];
 
   ###### interface

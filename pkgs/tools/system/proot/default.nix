@@ -30,14 +30,8 @@ stdenv.mkDerivation rec {
     sed -i /CROSS_COMPILE/d src/GNUmakefile
   '';
 
-  buildInputs = [
-    ncurses
-    talloc
-  ] ++ lib.optional enablePython python3;
-  nativeBuildInputs = [
-    pkg-config
-    docutils
-  ] ++ lib.optional enablePython swig;
+  buildInputs = [ ncurses talloc ] ++ lib.optional enablePython python3;
+  nativeBuildInputs = [ pkg-config docutils ] ++ lib.optional enablePython swig;
 
   enableParallelBuilding = true;
 
@@ -61,11 +55,7 @@ stdenv.mkDerivation rec {
     description = "User-space implementation of chroot, mount --bind and binfmt_misc";
     platforms = platforms.linux;
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      ianwookim
-      makefu
-      veprbl
-    ];
+    maintainers = with maintainers; [ ianwookim makefu veprbl ];
     mainProgram = "proot";
   };
 }

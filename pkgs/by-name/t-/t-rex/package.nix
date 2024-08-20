@@ -22,15 +22,9 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-nxq4mX2Sy6Hyi8tA2CQsQwISB/kau4DEkAgIm4SvGns=";
 
-  nativeBuildInputs = [
-    pkg-config
-    rustPlatform.bindgenHook
-  ];
+  nativeBuildInputs = [ pkg-config rustPlatform.bindgenHook ];
 
-  buildInputs = [
-    gdal
-    openssl
-  ] ++ lib.optional stdenv.isDarwin darwin.apple_sdk.frameworks.Security;
+  buildInputs = [ gdal openssl ] ++ lib.optional stdenv.isDarwin darwin.apple_sdk.frameworks.Security;
 
   meta = with lib; {
     description = "Vector tile server specialized on publishing MVT tiles";

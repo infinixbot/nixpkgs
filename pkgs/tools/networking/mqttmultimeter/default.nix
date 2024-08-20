@@ -35,10 +35,7 @@ buildDotnetModule rec {
     copyDesktopItems
   ];
 
-  buildInputs = [
-    stdenv.cc.cc.lib
-    fontconfig
-  ];
+  buildInputs = [ stdenv.cc.cc.lib fontconfig ];
 
   postInstall = ''
     rm -rf $out/lib/${lib.toLower pname}/runtimes/{*musl*,win*}

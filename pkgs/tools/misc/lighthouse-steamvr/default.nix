@@ -38,10 +38,7 @@ rustPlatform.buildRustPackage rec {
     description = "VR Lighthouse power state management";
     homepage = "https://github.com/ShayBox/Lighthouse";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      expipiplus1
-      bddvlpr
-    ];
+    maintainers = with maintainers; [ expipiplus1 bddvlpr ];
     mainProgram = "lighthouse";
   };
 }

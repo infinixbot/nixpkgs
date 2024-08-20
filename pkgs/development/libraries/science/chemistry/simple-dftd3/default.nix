@@ -25,24 +25,11 @@ stdenv.mkDerivation rec {
     hash = "sha256-XeLf5v/GraDGcTsVIEBnS4AL8tMeO11YTuPHlNt5Ap8=";
   };
 
-  nativeBuildInputs = [
-    gfortran
-    meson
-    ninja
-    pkg-config
-  ];
+  nativeBuildInputs = [ gfortran meson ninja pkg-config ];
 
-  buildInputs = [
-    mctc-lib
-    mstore
-    toml-f
-    blas
-  ];
+  buildInputs = [ mctc-lib mstore toml-f blas ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   doCheck = true;
   preCheck = ''
@@ -52,10 +39,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Reimplementation of the DFT-D3 program";
     mainProgram = "s-dftd3";
-    license = with licenses; [
-      lgpl3Only
-      gpl3Only
-    ];
+    license = with licenses; [ lgpl3Only gpl3Only ];
     homepage = "https://github.com/dftd3/simple-dftd3";
     platforms = platforms.linux;
     maintainers = [ maintainers.sheepforce ];

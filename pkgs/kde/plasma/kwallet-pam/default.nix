@@ -14,8 +14,5 @@ mkKdeDerivation {
   '';
 
   extraNativeBuildInputs = [ pkg-config ];
-  extraBuildInputs = [
-    pam
-    libgcrypt
-  ];
+  extraBuildInputs = [ pam libgcrypt ];
 }

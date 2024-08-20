@@ -60,10 +60,6 @@ rustPlatform.buildRustPackage rec {
     changelog = "https://github.com/extrawurst/gitui/blob/v${version}/CHANGELOG.md";
     mainProgram = "gitui";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [
-      Br1ght0ne
-      yanganto
-      mfrw
-    ];
+    maintainers = with lib.maintainers; [ Br1ght0ne yanganto mfrw ];
   };
 }

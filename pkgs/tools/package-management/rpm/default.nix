@@ -35,18 +35,10 @@ stdenv.mkDerivation rec {
     hash = "sha256-N/O0LAlmlB4q0/EP3jY5gkplkdBxl7qP0IacoHeeH1Y=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
   separateDebugInfo = true;
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    pandoc
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config pandoc ];
   buildInputs = [
     cpio
     zlib
@@ -117,10 +109,7 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     homepage = "https://www.rpm.org/";
-    license = with licenses; [
-      gpl2Plus
-      lgpl21Plus
-    ];
+    license = with licenses; [ gpl2Plus lgpl21Plus ];
     description = "RPM Package Manager";
     maintainers = with maintainers; [ copumpkin ];
     platforms = platforms.linux;

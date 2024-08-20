@@ -17,10 +17,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-hWemj83cxdY8p+Jhkh5GcPvI0Sy5aKYZJCsKDjHTUUk=";
   };
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   nativeBuildInputs = [ python3 ];
 
@@ -33,11 +30,7 @@ stdenv.mkDerivation (finalAttrs: {
     "EXTRAVERSION=\"-nixpkgs\""
   ];
 
-  hardeningDisable = [
-    "pic"
-    "stackprotector"
-    "fortify"
-  ];
+  hardeningDisable = [ "pic" "stackprotector" "fortify" ];
 
   postConfigure =
     let

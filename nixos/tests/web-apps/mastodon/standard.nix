@@ -16,11 +16,7 @@ import ../../make-test-python.nix (
   in
   {
     name = "mastodon-standard";
-    meta.maintainers = with pkgs.lib.maintainers; [
-      erictapen
-      izorkin
-      turion
-    ];
+    meta.maintainers = with pkgs.lib.maintainers; [ erictapen izorkin turion ];
 
     nodes = {
       server =
@@ -39,10 +35,7 @@ import ../../make-test-python.nix (
               ];
             };
             extraHosts = hosts;
-            firewall.allowedTCPPorts = [
-              80
-              443
-            ];
+            firewall.allowedTCPPorts = [ 80 443 ];
           };
 
           security = {

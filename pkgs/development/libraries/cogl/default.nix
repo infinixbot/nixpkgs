@@ -41,18 +41,9 @@ stdenv.mkDerivation rec {
     ./patches/gnome_bugzilla_787443_361056_deepin.patch
   ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
-  nativeBuildInputs = [
-    pkg-config
-    libintl
-    automake
-    autoconf
-    gobject-introspection
-  ];
+  nativeBuildInputs = [ pkg-config libintl automake autoconf gobject-introspection ];
 
   configureFlags =
     [
@@ -99,11 +90,7 @@ stdenv.mkDerivation rec {
     ];
 
   buildInputs =
-    lib.optionals pangoSupport [
-      pango
-      cairo
-      harfbuzz
-    ]
+    lib.optionals pangoSupport [ pango cairo harfbuzz ]
     ++ lib.optionals stdenv.isDarwin [ OpenGL ];
 
   env =
@@ -141,11 +128,6 @@ stdenv.mkDerivation rec {
     '';
 
     platforms = platforms.unix;
-    license = with licenses; [
-      mit
-      bsd3
-      publicDomain
-      sgi-b-20
-    ];
+    license = with licenses; [ mit bsd3 publicDomain sgi-b-20 ];
   };
 }

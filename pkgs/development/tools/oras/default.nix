@@ -60,9 +60,6 @@ buildGoModule rec {
     description = "ORAS project provides a way to push and pull OCI Artifacts to and from OCI Registries";
     mainProgram = "oras";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      jk
-      developer-guy
-    ];
+    maintainers = with maintainers; [ jk developer-guy ];
   };
 }

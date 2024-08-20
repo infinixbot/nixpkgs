@@ -22,10 +22,7 @@ buildNpmPackage rec {
 
   npmDepsHash = "sha256-+ptjsz2MDIB/aqu4UxkBLCcehtamFdmswNUsHs23LuE=";
 
-  nativeBuildInputs = [
-    pkg-config
-    python3
-  ];
+  nativeBuildInputs = [ pkg-config python3 ];
   buildInputs =
     lib.optionals stdenv.isLinux [
       libsecret

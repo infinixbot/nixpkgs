@@ -101,37 +101,15 @@ edk2.mkDerivation projectDscPath (finalAttrs: {
   pname = "OVMF";
   inherit version;
 
-  outputs = [
-    "out"
-    "fd"
-  ];
+  outputs = [ "out" "fd" ];
 
   nativeBuildInputs =
-    [
-      util-linux
-      nasm
-      acpica-tools
-    ]
-    ++ lib.optionals stdenv.cc.isClang [
-      llvmPackages.bintools
-      llvmPackages.llvm
-    ]
-    ++ lib.optionals msVarsTemplate [
-      python3
-      pexpect
-      xorriso
-      qemu
-      dosfstools
-      mtools
-    ];
+    [ util-linux nasm acpica-tools ]
+    ++ lib.optionals stdenv.cc.isClang [ llvmPackages.bintools llvmPackages.llvm ]
+    ++ lib.optionals msVarsTemplate [ python3 pexpect xorriso qemu dosfstools mtools ];
   strictDeps = true;
 
-  hardeningDisable = [
-    "format"
-    "stackprotector"
-    "pic"
-    "fortify"
-  ];
+  hardeningDisable = [ "format" "stackprotector" "pic" "fortify" ];
 
   buildFlags =
     # IPv6 has no reason to be disabled.
@@ -142,16 +120,9 @@ edk2.mkDerivation projectDscPath (finalAttrs: {
     ++ lib.optionals systemManagementModeRequired [ "-D SMM_REQUIRE=TRUE" ]
     ++ lib.optionals fdSize2MB [ "-D FD_SIZE_2MB" ]
     ++ lib.optionals fdSize4MB [ "-D FD_SIZE_4MB" ]
-    ++ lib.optionals httpSupport [
-      "-D NETWORK_HTTP_ENABLE=TRUE"
-      "-D NETWORK_HTTP_BOOT_ENABLE=TRUE"
-    ]
+    ++ lib.optionals httpSupport [ "-D NETWORK_HTTP_ENABLE=TRUE" "-D NETWORK_HTTP_BOOT_ENABLE=TRUE" ]
     ++ lib.optionals tlsSupport [ "-D NETWORK_TLS_ENABLE=TRUE" ]
-    ++ lib.optionals tpmSupport [
-      "-D TPM_ENABLE"
-      "-D TPM2_ENABLE"
-      "-D TPM2_CONFIG_ENABLE"
-    ];
+    ++ lib.optionals tpmSupport [ "-D TPM_ENABLE" "-D TPM2_ENABLE" "-D TPM2_CONFIG_ENABLE" ];
 
   buildConfig = if debug then "DEBUG" else "RELEASE";
   env.NIX_CFLAGS_COMPILE = lib.optionalString stdenv.cc.isClang "-Qunused-arguments";
@@ -252,10 +223,7 @@ edk2.mkDerivation projectDscPath (finalAttrs: {
     homepage = "https://github.com/tianocore/tianocore.github.io/wiki/OVMF";
     license = lib.licenses.bsd2;
     platforms = metaPlatforms;
-    maintainers = with lib.maintainers; [
-      adamcstephens
-      raitobezarius
-    ];
+    maintainers = with lib.maintainers; [ adamcstephens raitobezarius ];
     broken = stdenv.isDarwin;
   };
 })

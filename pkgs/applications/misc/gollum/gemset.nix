@@ -140,10 +140,7 @@
     version = "6.0";
   };
   gollum-rugged_adapter = {
-    dependencies = [
-      "mime-types"
-      "rugged"
-    ];
+    dependencies = [ "mime-types" "rugged" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -207,10 +204,7 @@
     version = "1.1.0";
   };
   loofah = {
-    dependencies = [
-      "crass"
-      "nokogiri"
-    ];
+    dependencies = [ "crass" "nokogiri" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -294,10 +288,7 @@
     version = "3.0.0";
   };
   nokogiri = {
-    dependencies = [
-      "mini_portile2"
-      "racc"
-    ];
+    dependencies = [ "mini_portile2" "racc" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -360,10 +351,7 @@
     version = "3.1.7";
   };
   rack-protection = {
-    dependencies = [
-      "base64"
-      "rack"
-    ];
+    dependencies = [ "base64" "rack" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -385,10 +373,7 @@
     version = "2.0.0";
   };
   rackup = {
-    dependencies = [
-      "rack"
-      "webrick"
-    ];
+    dependencies = [ "rack" "webrick" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -482,13 +467,7 @@
     version = "1.7.2";
   };
   sinatra = {
-    dependencies = [
-      "mustermann"
-      "rack"
-      "rack-protection"
-      "rack-session"
-      "tilt"
-    ];
+    dependencies = [ "mustermann" "rack" "rack-protection" "rack-session" "tilt" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -499,13 +478,7 @@
     version = "4.0.0";
   };
   sinatra-contrib = {
-    dependencies = [
-      "multi_json"
-      "mustermann"
-      "rack-protection"
-      "sinatra"
-      "tilt"
-    ];
+    dependencies = [ "multi_json" "mustermann" "rack-protection" "sinatra" "tilt" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -516,10 +489,7 @@
     version = "4.0.0";
   };
   sprockets = {
-    dependencies = [
-      "concurrent-ruby"
-      "rack"
-    ];
+    dependencies = [ "concurrent-ruby" "rack" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {
@@ -644,13 +614,7 @@
     version = "1.8.1";
   };
   wikicloth = {
-    dependencies = [
-      "builder"
-      "expression_parser"
-      "htmlentities"
-      "nokogiri"
-      "twitter-text"
-    ];
+    dependencies = [ "builder" "expression_parser" "htmlentities" "nokogiri" "twitter-text" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

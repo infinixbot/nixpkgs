@@ -132,16 +132,7 @@ in
       indicators = mkOption {
         type = types.nullOr (types.listOf types.str);
         default = null;
-        example = [
-          "~host"
-          "~spacer"
-          "~clock"
-          "~spacer"
-          "~session"
-          "~language"
-          "~a11y"
-          "~power"
-        ];
+        example = [ "~host" "~spacer" "~clock" "~spacer" "~session" "~language" "~a11y" "~power" ];
         description = ''
           List of allowed indicator modules to use for the lightdm gtk
           greeter panel.

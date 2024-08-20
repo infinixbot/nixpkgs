@@ -19,10 +19,7 @@ buildNimPackage (finalAttrs: {
 
   lockFile = ./lock.json;
 
-  buildInputs = [
-    openssl
-    pcre
-  ];
+  buildInputs = [ openssl pcre ];
 
   prePatch = ''
     # substitude our code for their code for data

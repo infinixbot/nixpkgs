@@ -29,15 +29,8 @@ lib.throwIf (lib.versionAtLeast ocaml.version "5.0")
       ./lib-gen-link-bigarray.patch
     ];
 
-    nativeBuildInputs = [
-      ocaml
-      findlib
-      ocamlbuild
-    ];
-    propagatedBuildInputs = [
-      ctypes
-      libsodium
-    ];
+    nativeBuildInputs = [ ocaml findlib ocamlbuild ];
+    propagatedBuildInputs = [ ctypes libsodium ];
 
     strictDeps = true;
 

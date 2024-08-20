@@ -21,10 +21,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-zE/9EaOsNJwzE4Doasm9N8QG4t7wDOxqpV/Nhc4p7Ws=";
   };
 
-  nativeBuildInputs = [
-    dpkg
-    makeWrapper
-  ];
+  nativeBuildInputs = [ dpkg makeWrapper ];
 
   unpackPhase = ''
     dpkg-deb -x $src opt
@@ -34,14 +31,7 @@ stdenv.mkDerivation rec {
     wrapBin() {
       makeWrapper $1 $out/bin/$(basename $1) \
         --set INSTALL4J_JAVA_HOME "${openjdk17}" \
-        --prefix PATH : ${
-          lib.makeBinPath [
-            coreutils
-            gawk
-            gnugrep
-            gnused
-          ]
-        }
+        --prefix PATH : ${lib.makeBinPath [ coreutils gawk gnugrep gnused ]}
     }
     cp -r opt $out
     mkdir -p $out/bin $out/share/pixmaps $out/share/applications
@@ -53,15 +43,9 @@ stdenv.mkDerivation rec {
       wrapBin $out/opt/chemaxon/marvinsuite/bin/$name
     done
     ${lib.concatStrings (
-      map
-        (name: ''
-          substitute ${./. + "/${name}.desktop"} $out/share/applications/${name}.desktop --subst-var out
-        '')
-        [
-          "LicenseManager"
-          "MarvinSketch"
-          "MarvinView"
-        ]
+      map (name: ''
+        substitute ${./. + "/${name}.desktop"} $out/share/applications/${name}.desktop --subst-var out
+      '') [ "LicenseManager" "MarvinSketch" "MarvinView" ]
     )}
   '';
 

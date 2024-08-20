@@ -25,10 +25,7 @@ mkDerivation rec {
     sha256 = "1n9g4j7qznvg9zl6x163pi9f7wsc3x6q76i33psnm7x2v1i22x5w";
   };
 
-  buildInputs = [
-    qtbase
-    qtwebengine
-  ] ++ lib.optional preferQWebView qtwebkit;
+  buildInputs = [ qtbase qtwebengine ] ++ lib.optional preferQWebView qtwebkit;
 
   nativeBuildInputs = [ cmake ];
 
@@ -81,10 +78,7 @@ mkDerivation rec {
       Written in C++ with Qt.
     '';
     license = licenses.lgpl3;
-    maintainers = with maintainers; [
-      zraexy
-      peterhoeg
-    ];
+    maintainers = with maintainers; [ zraexy peterhoeg ];
     platforms = platforms.all;
     broken = !preferNative || stdenv.isDarwin;
   };

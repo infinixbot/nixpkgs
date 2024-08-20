@@ -28,12 +28,7 @@ stdenv.mkDerivation {
     mainProgram = "nettee";
   };
 
-  outputs = [
-    "bin"
-    "man"
-    "doc"
-    "out"
-  ];
+  outputs = [ "bin" "man" "doc" "out" ];
 
   patchPhase = ''
     # h_addr field was removed

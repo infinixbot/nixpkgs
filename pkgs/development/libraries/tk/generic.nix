@@ -17,11 +17,7 @@ tcl.mkTclDerivation {
 
   inherit src patches;
 
-  outputs = [
-    "out"
-    "man"
-    "dev"
-  ];
+  outputs = [ "out" "man" "dev" ];
 
   setOutputFlags = false;
 

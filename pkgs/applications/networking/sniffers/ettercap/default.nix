@@ -42,12 +42,7 @@ stdenv.mkDerivation rec {
   ];
 
   strictDeps = true;
-  nativeBuildInputs = [
-    cmake
-    flex
-    bison
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake flex bison pkg-config ];
   buildInputs = [
     libpcap
     libnet

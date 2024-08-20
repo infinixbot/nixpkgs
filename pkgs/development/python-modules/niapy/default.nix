@@ -35,10 +35,7 @@ buildPythonPackage rec {
     pandas
   ];
 
-  nativeCheckInputs = [
-    pytest7CheckHook
-    pytest-xdist
-  ];
+  nativeCheckInputs = [ pytest7CheckHook pytest-xdist ];
 
   pythonImportsCheck = [ "niapy" ];
 

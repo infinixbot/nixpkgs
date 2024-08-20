@@ -25,14 +25,8 @@ stdenv.mkDerivation rec {
   # causes `dnscrypt-wrapper --gen-provider-keypair` to crash
   hardeningDisable = [ "fortify3" ];
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
-  buildInputs = [
-    libsodium
-    libevent
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
+  buildInputs = [ libsodium libevent ];
 
   passthru.tests = {
     inherit (nixosTests) dnscrypt-wrapper;

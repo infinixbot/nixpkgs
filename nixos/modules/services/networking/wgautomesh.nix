@@ -23,13 +23,7 @@ in
   options.services.wgautomesh = {
     enable = mkEnableOption "the wgautomesh daemon";
     logLevel = mkOption {
-      type = types.enum [
-        "trace"
-        "debug"
-        "info"
-        "warn"
-        "error"
-      ];
+      type = types.enum [ "trace" "debug" "info" "warn" "error" ];
       default = "info";
       description = "wgautomesh log level.";
     };

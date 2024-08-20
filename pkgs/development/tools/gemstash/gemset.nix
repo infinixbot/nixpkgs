@@ -417,12 +417,7 @@
     version = "0.1.0";
   };
   sinatra = {
-    dependencies = [
-      "mustermann"
-      "rack"
-      "rack-protection"
-      "tilt"
-    ];
+    dependencies = [ "mustermann" "rack" "rack-protection" "tilt" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

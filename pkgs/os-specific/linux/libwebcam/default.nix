@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
     ./uvcdynctrl_symlink_support_and_take_data_dir_from_env.patch
   ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
   buildInputs = [ libxml2 ];
 
   postPatch = ''

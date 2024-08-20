@@ -345,9 +345,6 @@ in
     };
 
   meta = {
-    maintainers = with lib.maintainers; [
-      ppom
-      melvyn2
-    ];
+    maintainers = with lib.maintainers; [ ppom melvyn2 ];
   };
 }

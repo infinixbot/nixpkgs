@@ -30,13 +30,7 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-uYzLRZ+6ZgIwhSuJWRBpLYHgonX7sFXgUZid0V26V0Q=";
   };
 
-  nativeBuildInputs = [
-    gobject-introspection
-    meson
-    ninja
-    pkg-config
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ gobject-introspection meson ninja pkg-config wrapGAppsHook3 ];
 
   buildInputs = [
     libayatana-appindicator
@@ -69,15 +63,7 @@ python3Packages.buildPythonApplication rec {
 
   preFixup = ''
     gappsWrapperArgs+=(
-      --prefix PATH : ${
-        lib.makeBinPath [
-          procps
-          xautolock
-          xscreensaver
-          xfce.xfconf
-          xset
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ procps xautolock xscreensaver xfce.xfconf xset ]}
     )
     makeWrapperArgs+=("''${gappsWrapperArgs[@]}")
   '';

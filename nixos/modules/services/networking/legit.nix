@@ -65,10 +65,7 @@ in
           };
           mainBranch = mkOption {
             type = types.listOf types.str;
-            default = [
-              "main"
-              "master"
-            ];
+            default = [ "main" "master" ];
             description = "Main branch to look for.";
           };
           ignore = mkOption {
@@ -178,18 +175,12 @@ in
         ProtectSystem = "strict";
         ReadWritePaths = cfg.settings.repo.scanPath;
         RemoveIPC = true;
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-        ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
         SystemCallArchitectures = "native";
-        SystemCallFilter = [
-          "@system-service"
-          "~@privileged"
-        ];
+        SystemCallFilter = [ "@system-service" "~@privileged" ];
         UMask = "0077";
       };
     };

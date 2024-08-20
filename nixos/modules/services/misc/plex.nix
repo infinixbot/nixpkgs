@@ -167,12 +167,7 @@ in
         ProtectControlGroups = true;
         ProtectKernelModules = true;
         ProtectKernelTunables = true;
-        RestrictAddressFamilies = [
-          "AF_UNIX"
-          "AF_INET"
-          "AF_INET6"
-          "AF_NETLINK"
-        ];
+        RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" "AF_NETLINK" ];
         # This could be made to work if the namespaces needed were known
         # RestrictNamespaces = true;
         RestrictRealtime = true;
@@ -204,20 +199,8 @@ in
     };
 
     networking.firewall = mkIf cfg.openFirewall {
-      allowedTCPPorts = [
-        32400
-        3005
-        8324
-        32469
-      ];
-      allowedUDPPorts = [
-        1900
-        5353
-        32410
-        32412
-        32413
-        32414
-      ];
+      allowedTCPPorts = [ 32400 3005 8324 32469 ];
+      allowedUDPPorts = [ 1900 5353 32410 32412 32413 32414 ];
     };
 
     users.users = mkIf (cfg.user == "plex") {

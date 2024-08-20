@@ -24,10 +24,7 @@ stdenv.mkDerivation rec {
   '';
 
   buildInputs = [ qtserialport ];
-  nativeBuildInputs = [
-    cmake
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake wrapQtAppsHook ];
 
   postInstall =
     if stdenv.isDarwin then

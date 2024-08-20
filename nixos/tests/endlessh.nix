@@ -23,10 +23,7 @@ import ./make-test-python.nix (
       client =
         { pkgs, ... }:
         {
-          environment.systemPackages = with pkgs; [
-            curl
-            netcat
-          ];
+          environment.systemPackages = with pkgs; [ curl netcat ];
         };
     };
 

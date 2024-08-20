@@ -60,15 +60,9 @@ buildGoModule rec {
     vendorHash
     ;
 
-  subPackages = [
-    "."
-    "contrib/environment-to-ini"
-  ];
+  subPackages = [ "." "contrib/environment-to-ini" ];
 
-  outputs = [
-    "out"
-    "data"
-  ];
+  outputs = [ "out" "data" ];
 
   nativeBuildInputs = [
     makeWrapper
@@ -87,10 +81,7 @@ buildGoModule rec {
     substituteInPlace modules/setting/server.go --subst-var data
   '';
 
-  tags = lib.optionals sqliteSupport [
-    "sqlite"
-    "sqlite_unlock_notify"
-  ];
+  tags = lib.optionals sqliteSupport [ "sqlite" "sqlite_unlock_notify" ];
 
   ldflags = [
     "-s"
@@ -135,14 +126,7 @@ buildGoModule rec {
     mkdir -p $out
     cp -R ./options/locale $out/locale
     wrapProgram $out/bin/gitea \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          bash
-          git
-          gzip
-          openssh
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ bash git gzip openssh ]}
   '';
 
   # $data is not available in goModules.drv
@@ -159,10 +143,7 @@ buildGoModule rec {
     data-compressed =
       runCommand "forgejo-data-compressed"
         {
-          nativeBuildInputs = [
-            brotli
-            xorg.lndir
-          ];
+          nativeBuildInputs = [ brotli xorg.lndir ];
         }
         ''
           mkdir $out
@@ -183,12 +164,7 @@ buildGoModule rec {
     homepage = "https://forgejo.org";
     changelog = "https://codeberg.org/forgejo/forgejo/releases/tag/${src.rev}";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [
-      emilylange
-      urandom
-      bendlas
-      adamcstephens
-    ];
+    maintainers = with lib.maintainers; [ emilylange urandom bendlas adamcstephens ];
     broken = stdenv.isDarwin;
     mainProgram = "gitea";
   };

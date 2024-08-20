@@ -105,11 +105,7 @@ let
       // {
         nativeBuildInputs =
           (attrs.nativeBuildInputs or [ ])
-          ++ [
-            cmake
-            ninja
-            swift
-          ]
+          ++ [ cmake ninja swift ]
           ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
 
         buildInputs = (attrs.buildInputs or [ ]) ++ [ Foundation ];
@@ -254,10 +250,7 @@ let
     name = "swift-argument-parser";
     src = generated.sources.swift-argument-parser;
 
-    buildInputs = [
-      ncursesInput
-      sqlite
-    ];
+    buildInputs = [ ncursesInput sqlite ];
 
     cmakeFlags = [
       "-DBUILD_TESTING=NO"
@@ -288,10 +281,7 @@ let
     src = generated.sources.swift-llbuild;
 
     nativeBuildInputs = lib.optional stdenv.isDarwin xcbuild;
-    buildInputs = [
-      ncursesInput
-      sqlite
-    ];
+    buildInputs = [ ncursesInput sqlite ];
 
     patches = [
       ./patches/llbuild-cmake-disable-rpath.patch

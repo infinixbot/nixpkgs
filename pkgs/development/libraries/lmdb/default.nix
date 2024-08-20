@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
 
   postUnpack = "sourceRoot=\${sourceRoot}/libraries/liblmdb";
 
-  patches = [
-    ./hardcoded-compiler.patch
-    ./bin-ext.patch
-  ];
+  patches = [ ./hardcoded-compiler.patch ./bin-ext.patch ];
   patchFlags = [ "-p3" ];
 
   # Don't attempt the .so if static, as it would fail.
@@ -30,11 +27,7 @@ stdenv.mkDerivation rec {
     sed 's/^ILIBS\>.*/ILIBS = liblmdb.a/' -i Makefile
   '';
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-  ];
+  outputs = [ "bin" "out" "dev" ];
 
   buildInputs = lib.optional stdenv.hostPlatform.isWindows windows.pthreads;
 
@@ -45,10 +38,7 @@ stdenv.mkDerivation rec {
       "AR=${stdenv.cc.targetPrefix}ar"
     ]
     ++ lib.optional stdenv.isDarwin "LDFLAGS=-Wl,-install_name,$(out)/lib/liblmdb.so"
-    ++ lib.optionals stdenv.hostPlatform.isWindows [
-      "SOEXT=.dll"
-      "BINEXT=.exe"
-    ];
+    ++ lib.optionals stdenv.hostPlatform.isWindows [ "SOEXT=.dll" "BINEXT=.exe" ];
 
   doCheck = true;
   checkTarget = "test";
@@ -84,10 +74,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://symas.com/lmdb/";
     changelog = "https://git.openldap.org/openldap/openldap/-/blob/LMDB_${version}/libraries/liblmdb/CHANGES";
-    maintainers = with maintainers; [
-      jb55
-      vcunat
-    ];
+    maintainers = with maintainers; [ jb55 vcunat ];
     license = licenses.openldap;
     platforms = platforms.all;
   };

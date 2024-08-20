@@ -187,19 +187,12 @@ in
           ProtectSystem = "strict";
           ReadWritePaths = cfg.recordingsDir;
           RemoveIPC = true;
-          RestrictAddressFamilies = [
-            "AF_INET"
-            "AF_INET6"
-            "AF_NETLINK"
-          ];
+          RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_NETLINK" ];
           RestrictNamespaces = true;
           RestrictRealtime = true;
           RestrictSUIDSGID = true;
           SystemCallArchitectures = "native";
-          SystemCallFilter = [
-            "@system-service"
-            "~@privileged"
-          ];
+          SystemCallFilter = [ "@system-service" "~@privileged" ];
           UMask = "0077";
         }
       ];

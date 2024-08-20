@@ -37,10 +37,7 @@ rustPlatform.buildRustPackage rec {
     pkg-config
   ] ++ lib.optionals stdenv.isDarwin [ DarwinTools ];
 
-  buildInputs = [
-    libusb1
-    openssl
-  ] ++ lib.optionals stdenv.isDarwin [ AppKit ];
+  buildInputs = [ libusb1 openssl ] ++ lib.optionals stdenv.isDarwin [ AppKit ];
 
   checkFlags = [
     # require a physical probe
@@ -71,9 +68,6 @@ rustPlatform.buildRustPackage rec {
       asl20 # or
       mit
     ];
-    maintainers = with maintainers; [
-      xgroleau
-      newam
-    ];
+    maintainers = with maintainers; [ xgroleau newam ];
   };
 }

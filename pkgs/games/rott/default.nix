@@ -33,10 +33,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ copyDesktopItems ];
 
-  buildInputs = [
-    SDL
-    SDL_mixer
-  ];
+  buildInputs = [ SDL SDL_mixer ];
 
   sourceRoot = "rott-${version}/rott";
 

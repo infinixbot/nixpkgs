@@ -17,11 +17,7 @@ python3Packages.buildPythonApplication rec {
     sha256 = "sha256-V26zmu8cQkLs0IMR7eFO8x34McnT3xYyzlZfntApYkk=";
   };
 
-  nativeBuildInputs = with python3Packages; [
-    pyqt5
-    setuptools
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = with python3Packages; [ pyqt5 setuptools wrapQtAppsHook ];
   propagatedBuildInputs = with python3Packages; [
     pyqt5
     paramiko

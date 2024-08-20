@@ -47,12 +47,7 @@ pypkgs.buildPythonApplication rec {
 
   sourceRoot = "${src.name}/py-kms";
 
-  propagatedBuildInputs = with pypkgs; [
-    systemd
-    pytz
-    tzlocal
-    dnspython
-  ];
+  propagatedBuildInputs = with pypkgs; [ systemd pytz tzlocal dnspython ];
 
   postPatch = ''
     siteDir=$out/${python3.sitePackages}
@@ -98,9 +93,6 @@ pypkgs.buildPythonApplication rec {
     description = "Windows KMS (Key Management Service) server written in Python";
     homepage = "https://github.com/Py-KMS-Organization/py-kms";
     license = licenses.unlicense;
-    maintainers = with maintainers; [
-      peterhoeg
-      zopieux
-    ];
+    maintainers = with maintainers; [ peterhoeg zopieux ];
   };
 }

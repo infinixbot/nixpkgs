@@ -42,10 +42,7 @@ buildDunePackage rec {
     homepage = "https://github.com/ocaml-opam/${pname}";
     description = "Tool to ease contributions to opam repositories";
     mainProgram = "opam-publish";
-    license = with licenses; [
-      lgpl21Only
-      ocamlLgplLinkingException
-    ];
+    license = with licenses; [ lgpl21Only ocamlLgplLinkingException ];
     maintainers = with maintainers; [ niols ];
   };
 }

@@ -17,16 +17,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-zK20/vhbVihrxmd52DjByDUO99pBAr8SlJtQpX5fmwY=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "lib"
-  ];
+  outputs = [ "out" "dev" "lib" ];
 
-  nativeCheckInputs = [
-    drat-trim
-    p7zip
-  ];
+  nativeCheckInputs = [ drat-trim p7zip ];
   doCheck = true;
 
   # 'make test' assumes that /etc/passwd is not writable.

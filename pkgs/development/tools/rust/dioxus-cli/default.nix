@@ -23,10 +23,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-shllaNdg9g6fD8qRyCKpN47keFUTu0g96MzVX4BrhXI=";
 
-  nativeBuildInputs = [
-    pkg-config
-    cacert
-  ];
+  nativeBuildInputs = [ pkg-config cacert ];
   buildInputs =
     [ openssl ]
     ++ lib.optionals stdenv.isDarwin [
@@ -53,14 +50,8 @@ rustPlatform.buildRustPackage rec {
   meta = with lib; {
     homepage = "https://dioxuslabs.com";
     description = "CLI tool for developing, testing, and publishing Dioxus apps";
-    license = with licenses; [
-      mit
-      asl20
-    ];
-    maintainers = with maintainers; [
-      xanderio
-      cathalmullan
-    ];
+    license = with licenses; [ mit asl20 ];
+    maintainers = with maintainers; [ xanderio cathalmullan ];
     mainProgram = "dx";
   };
 }

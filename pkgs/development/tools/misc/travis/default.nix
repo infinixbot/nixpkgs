@@ -17,9 +17,6 @@ bundlerEnv {
     mainProgram = "travis";
     homepage = "https://github.com/travis-ci/travis.rb";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      zimbatm
-      nicknovitski
-    ];
+    maintainers = with maintainers; [ zimbatm nicknovitski ];
   };
 }

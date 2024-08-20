@@ -315,35 +315,23 @@ stdenv.mkDerivation (finalAttrs: {
   # use it for the normal build. This disables cmake in Nix.
   dontUseCmakeConfigure = true;
 
-  depsBuildBuild = [
-    pkgsBuildHost.stdenv.cc
-    pkg-config
-  ];
+  depsBuildBuild = [ pkgsBuildHost.stdenv.cc pkg-config ];
 
-  nativeBuildInputs =
-    [
-      file
-      python3
-      rustc
-      cmake
-      which
-      libffi
-      removeReferencesTo
-      pkg-config
-      xz
-    ]
-    ++ optionals fastCross [
-      lndir
-      makeWrapper
-    ];
+  nativeBuildInputs = [
+    file
+    python3
+    rustc
+    cmake
+    which
+    libffi
+    removeReferencesTo
+    pkg-config
+    xz
+  ] ++ optionals fastCross [ lndir makeWrapper ];
 
   buildInputs =
     [ openssl ]
-    ++ optionals stdenv.isDarwin [
-      libiconv
-      Security
-      zlib
-    ]
+    ++ optionals stdenv.isDarwin [ libiconv Security zlib ]
     ++ optional (!withBundledLLVM) llvmShared.lib
     ++ optional (useLLVM && !withBundledLLVM) [
       llvmPackages.libunwind
@@ -355,11 +343,7 @@ stdenv.mkDerivation (finalAttrs: {
       '')
     ];
 
-  outputs = [
-    "out"
-    "man"
-    "doc"
-  ];
+  outputs = [ "out" "man" "doc" ];
   setOutputFlags = false;
 
   postInstall =
@@ -404,10 +388,7 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://www.rust-lang.org/";
     description = "Safe, concurrent, practical language";
     maintainers = with maintainers; [ havvy ] ++ teams.rust.members;
-    license = [
-      licenses.mit
-      licenses.asl20
-    ];
+    license = [ licenses.mit licenses.asl20 ];
     platforms = [
       # Platforms with host tools from
       # https://doc.rust-lang.org/nightly/rustc/platform-support.html

@@ -12,12 +12,7 @@ stdenv.mkDerivation rec {
   pname = "libsmartcols";
   version = "2.39.3";
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    python3
-    gtk-doc
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config python3 gtk-doc ];
 
   src = fetchFromGitHub {
     owner = "karelzak";
@@ -26,19 +21,13 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-X39os2iHqSrrYP6HVHPOkuTfc6vNB3pmsOP3VjW50fI=";
   };
 
-  configureFlags = [
-    "--disable-all-programs"
-    "--enable-libsmartcols"
-  ];
+  configureFlags = [ "--disable-all-programs" "--enable-libsmartcols" ];
 
   buildPhase = ''
     make libsmartcols.la
   '';
 
-  installTargets = [
-    "install-am"
-    "install-pkgconfigDATA"
-  ];
+  installTargets = [ "install-am" "install-pkgconfigDATA" ];
 
   meta = {
     description = "smart column output alignment library";

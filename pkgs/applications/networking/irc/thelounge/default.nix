@@ -92,10 +92,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Modern, responsive, cross-platform, self-hosted web IRC client";
     homepage = "https://thelounge.chat";
     changelog = "https://github.com/thelounge/thelounge/releases/tag/v${finalAttrs.version}";
-    maintainers = with maintainers; [
-      winter
-      raitobezarius
-    ];
+    maintainers = with maintainers; [ winter raitobezarius ];
     license = licenses.mit;
     inherit (nodejs.meta) platforms;
     mainProgram = "thelounge";

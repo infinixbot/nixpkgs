@@ -36,18 +36,8 @@ stdenv.mkDerivation rec {
     install -D $src $out/lib/photonvision.jar
 
     makeWrapper ${temurin-jre-bin-11}/bin/java $out/bin/photonvision \
-      --prefix LD_LIBRARY_PATH : ${
-        lib.makeLibraryPath [
-          stdenv.cc.cc.lib
-          suitesparse
-        ]
-      } \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          temurin-jre-bin-11
-          bash.out
-        ]
-      } \
+      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ stdenv.cc.cc.lib suitesparse ]} \
+      --prefix PATH : ${lib.makeBinPath [ temurin-jre-bin-11 bash.out ]} \
       --add-flags "-jar $out/lib/photonvision.jar"
 
     runHook postInstall
@@ -63,9 +53,6 @@ stdenv.mkDerivation rec {
     license = licenses.gpl3;
     maintainers = with maintainers; [ max-niederman ];
     mainProgram = "photonvision";
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
   };
 }

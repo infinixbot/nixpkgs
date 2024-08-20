@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
   '';
   preFixup =
     let
-      libPath = lib.makeLibraryPath [
-        stdenv.cc.cc.lib
-        gcc
-      ];
+      libPath = lib.makeLibraryPath [ stdenv.cc.cc.lib gcc ];
     in
     ''
       patchelf \

@@ -12,11 +12,7 @@ let
 in
 {
   meta = {
-    maintainers = with maintainers; [
-      cole-h
-      grahamc
-      raitobezarius
-    ];
+    maintainers = with maintainers; [ cole-h grahamc raitobezarius ];
     doc = ./external.md;
   };
 

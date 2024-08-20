@@ -84,10 +84,7 @@ stdenv.mkDerivation rec {
     ++ lib.optionals enableDdc [ ddcutil ]
     ++ lib.optionals enableDpms [ libXext ]
     ++ lib.optionals enableGamma [ libXrandr ]
-    ++ lib.optionals (enableDpms || enableGamma || enableScreen) [
-      libdrm
-      wayland
-    ];
+    ++ lib.optionals (enableDpms || enableGamma || enableScreen) [ libdrm wayland ];
 
   postInstall = ''
     mkdir -p $out/bin

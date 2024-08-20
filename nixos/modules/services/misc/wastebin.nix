@@ -62,13 +62,7 @@ in
 
       type = types.submodule {
 
-        freeformType =
-          with types;
-          attrsOf (oneOf [
-            bool
-            int
-            str
-          ]);
+        freeformType = with types; attrsOf (oneOf [ bool int str ]);
 
         options = {
 
@@ -160,10 +154,7 @@ in
           ProtectKernelModules = true;
           ProtectKernelTunables = true;
           ProtectProc = "invisible";
-          RestrictAddressFamilies = [
-            "AF_INET"
-            "AF_INET6"
-          ];
+          RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
           RestrictNamespaces = true;
           RestrictRealtime = true;
           SystemCallArchitectures = [ "native" ];

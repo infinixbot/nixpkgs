@@ -21,15 +21,9 @@ stdenv.mkDerivation (finalAttrs: {
     sha256 = "1790ajyhk0ax8xxamnrk176gc9gvhadzy78qia4rd8jzm89ir7gr";
   };
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-  ];
+  nativeBuildInputs = [ pkg-config cmake ];
   buildInputs =
     [ freetype ]
     ++ lib.optional (stdenv.targetPlatform.useLLVM or false) (

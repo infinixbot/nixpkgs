@@ -65,10 +65,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/imsnif/bandwhich";
     changelog = "https://github.com/imsnif/bandwhich/blob/${src.rev}/CHANGELOG.md";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      Br1ght0ne
-      figsoda
-    ];
+    maintainers = with maintainers; [ Br1ght0ne figsoda ];
     platforms = platforms.unix;
     mainProgram = "bandwhich";
   };

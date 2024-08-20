@@ -61,13 +61,7 @@ stdenv.mkDerivation rec {
 
   dontWrapGApps = true;
   makeWrapperArgs = [
-    "--prefix LD_LIBRARY_PATH : ${
-      lib.makeLibraryPath [
-        gcc-unwrapped.lib
-        gtk3
-        udev
-      ]
-    }"
+    "--prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ gcc-unwrapped.lib gtk3 udev ]}"
     "--prefix PATH : ${lib.makeBinPath [ stdenv.cc ]}"
   ];
 

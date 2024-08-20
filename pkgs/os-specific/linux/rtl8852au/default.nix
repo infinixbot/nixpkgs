@@ -18,14 +18,8 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-c2dpnZS6a0waL1khB9ZEglTwJIBsyRebTMig1B4A0xU=";
   };
 
-  nativeBuildInputs = [
-    bc
-    nukeReferences
-  ] ++ kernel.moduleBuildDependencies;
-  hardeningDisable = [
-    "pic"
-    "format"
-  ];
+  nativeBuildInputs = [ bc nukeReferences ] ++ kernel.moduleBuildDependencies;
+  hardeningDisable = [ "pic" "format" ];
 
   postPatch = ''
     substituteInPlace ./Makefile \

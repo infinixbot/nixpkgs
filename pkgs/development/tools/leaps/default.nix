@@ -21,11 +21,7 @@ buildGoModule rec {
   proxyVendor = true; # darwin/linux hash mismatch
   vendorHash = "sha256-0dwUOoV2bxPB+B6CKxJPImPIDlBMPcm0AwEMrVUkALc=";
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X main.version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X main.version=${version}" ];
 
   passthru.tests = {
     version = testers.testVersion { package = leaps; };

@@ -21,9 +21,6 @@ buildGoModule rec {
     mainProgram = "babelfish";
     homepage = "https://github.com/bouk/babelfish";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      bouk
-      kevingriffin
-    ];
+    maintainers = with maintainers; [ bouk kevingriffin ];
   };
 }

@@ -24,20 +24,9 @@ stdenv.mkDerivation {
     hash = "sha256-3ZIAvA3w/ZhoJtVmUD444nch0PGD58PdBRke7zd9IuQ=";
   };
 
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-  ];
+  nativeBuildInputs = [ meson ninja pkg-config ];
 
-  buildInputs = [
-    glib
-    pcre
-    readline
-    systemd
-    udev
-    iproute2
-  ];
+  buildInputs = [ glib pcre readline systemd udev iproute2 ];
 
   mesonFlags = [
     "-Drely-udev=true"

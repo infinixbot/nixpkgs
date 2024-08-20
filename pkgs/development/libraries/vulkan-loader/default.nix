@@ -27,18 +27,10 @@ stdenv.mkDerivation (finalAttrs: {
 
   patches = [ ./fix-pkgconfig.patch ];
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  buildInputs =
-    [ vulkan-headers ]
-    ++ lib.optionals stdenv.isLinux [
-      libX11
-      libxcb
-      libXrandr
-      wayland
-    ];
+  nativeBuildInputs = [ cmake pkg-config ];
+  buildInputs = [
+    vulkan-headers
+  ] ++ lib.optionals stdenv.isLinux [ libX11 libxcb libXrandr wayland ];
 
   cmakeFlags =
     [ "-DCMAKE_INSTALL_INCLUDEDIR=${vulkan-headers}/include" ]
@@ -46,10 +38,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional stdenv.isLinux "-DSYSCONFDIR=${addDriverRunpath.driverLink}/share"
     ++ lib.optional (stdenv.buildPlatform != stdenv.hostPlatform) "-DUSE_GAS=OFF";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   doInstallCheck = true;
 

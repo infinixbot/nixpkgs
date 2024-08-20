@@ -60,19 +60,12 @@ let
     name:
     let
       # trigger a deep type check using the module system
-      typeCheck =
-        lib.modules.mergeDefinitions
-          [
-            "tests"
-            name
-          ]
-          format.type
-          [
-            {
-              file = "format-test-${name}";
-              value = input;
-            }
-          ];
+      typeCheck = lib.modules.mergeDefinitions [ "tests" name ] format.type [
+        {
+          file = "format-test-${name}";
+          value = input;
+        }
+      ];
       # actually use the return value to trigger the evaluation
       eval = builtins.tryEval (typeCheck.mergedValue == input);
       # the check failing is what we want, so don't do anything here
@@ -121,10 +114,7 @@ runBuildTests {
       float = 3.141;
       str = "foo";
       attrs.foo = null;
-      list = [
-        null
-        null
-      ];
+      list = [ null null ];
       path = ./formats.nix;
     };
     expected = ''
@@ -156,10 +146,7 @@ runBuildTests {
       float = 3.141;
       str = "foo";
       attrs.foo = null;
-      list = [
-        null
-        null
-      ];
+      list = [ null null ];
       path = ./formats.nix;
     };
     expected = ''
@@ -209,13 +196,7 @@ runBuildTests {
     format = formats.ini { };
     input = {
       foo = {
-        bar = [
-          null
-          true
-          "test"
-          1.2
-          10
-        ];
+        bar = [ null true "test" 1.2 10 ];
         baz = false;
         qux = "qux";
       };
@@ -226,13 +207,7 @@ runBuildTests {
     format = formats.ini { listsAsDuplicateKeys = true; };
     input = {
       foo = {
-        bar = [
-          null
-          true
-          "test"
-          1.2
-          10
-        ];
+        bar = [ null true "test" 1.2 10 ];
         baz = false;
         qux = "qux";
       };
@@ -255,13 +230,7 @@ runBuildTests {
     };
     input = {
       foo = {
-        bar = [
-          null
-          true
-          "test"
-          1.2
-          10
-        ];
+        bar = [ null true "test" 1.2 10 ];
         baz = false;
         qux = "qux";
       };
@@ -347,25 +316,13 @@ runBuildTests {
     };
     input = {
       globalSection = {
-        bar = [
-          null
-          true
-          "test"
-          1.2
-          10
-        ];
+        bar = [ null true "test" 1.2 10 ];
         baz = false;
         qux = "qux";
       };
       sections = {
         foo = {
-          bar = [
-            null
-            true
-            "test"
-            1.2
-            10
-          ];
+          bar = [ null true "test" 1.2 10 ];
           baz = false;
           qux = "qux";
         };
@@ -402,13 +359,7 @@ runBuildTests {
   keyValueDuplicateKeys = shouldPass {
     format = formats.keyValue { listsAsDuplicateKeys = true; };
     input = {
-      bar = [
-        null
-        true
-        "test"
-        1.2
-        10
-      ];
+      bar = [ null true "test" 1.2 10 ];
       baz = false;
       qux = "qux";
     };
@@ -428,13 +379,7 @@ runBuildTests {
       listToValue = lib.concatMapStringsSep ", " (lib.generators.mkValueStringDefault { });
     };
     input = {
-      bar = [
-        null
-        true
-        "test"
-        1.2
-        10
-      ];
+      bar = [ null true "test" 1.2 10 ];
       baz = false;
       qux = "qux";
     };
@@ -454,10 +399,7 @@ runBuildTests {
       float = 3.141;
       str = "foo";
       attrs.foo = "foo";
-      list = [
-        1
-        2
-      ];
+      list = [ 1 2 ];
       level1.level2.level3.level4 = "deep";
     };
     expected = ''
@@ -520,20 +462,11 @@ runBuildTests {
       str = "foo";
       str_special = "foo\ntesthello'''";
       attrs.foo = null;
-      list = [
-        null
-        null
-      ];
-      mixed =
-        format.lib.mkMixedArray
-          [
-            10
-            3.141
-          ]
-          {
-            str = "foo";
-            attrs.foo = null;
-          };
+      list = [ null null ];
+      mixed = format.lib.mkMixedArray [ 10 3.141 ] {
+        str = "foo";
+        attrs.foo = null;
+      };
       raw = format.lib.mkRaw "random_function()";
     };
     expected = ''

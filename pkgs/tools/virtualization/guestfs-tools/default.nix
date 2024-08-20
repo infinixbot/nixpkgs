@@ -103,30 +103,17 @@ stdenv.mkDerivation rec {
   postInstall = ''
     wrapProgram $out/bin/virt-builder \
       --argv0 virt-builder \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          curl
-          gnupg
-        ]
-      }:$out/bin \
+      --prefix PATH : ${lib.makeBinPath [ curl gnupg ]}:$out/bin \
       --suffix VIRT_BUILDER_DIRS : /etc:$out/etc
     wrapProgram $out/bin/virt-win-reg \
       --prefix PERL5LIB : ${
-        with perlPackages;
-        makeFullPerlPath [
-          hivex
-          libintl-perl
-          libguestfs-with-appliance
-        ]
+        with perlPackages; makeFullPerlPath [ hivex libintl-perl libguestfs-with-appliance ]
       }
   '';
 
   meta = with lib; {
     description = "Extra tools for accessing and modifying virtual machine disk images";
-    license = with licenses; [
-      gpl2Plus
-      lgpl21Plus
-    ];
+    license = with licenses; [ gpl2Plus lgpl21Plus ];
     homepage = "https://libguestfs.org/";
     maintainers = [ ];
     platforms = platforms.linux;

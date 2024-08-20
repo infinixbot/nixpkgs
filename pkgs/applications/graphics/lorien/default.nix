@@ -76,10 +76,7 @@ stdenv.mkDerivation rec {
       desktopName = "Lorien";
       genericName = "Whiteboard";
       comment = meta.description;
-      categories = [
-        "Graphics"
-        "Office"
-      ];
+      categories = [ "Graphics" "Office" ];
       keywords = [ "whiteboard" ];
     })
   ];

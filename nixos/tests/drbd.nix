@@ -45,11 +45,7 @@ import ./make-test-python.nix (
   {
     name = "drbd";
     meta = with pkgs.lib.maintainers; {
-      maintainers = [
-        ryantm
-        astro
-        birkb
-      ];
+      maintainers = [ ryantm astro birkb ];
     };
 
     nodes.drbd1 = drbdConfig;

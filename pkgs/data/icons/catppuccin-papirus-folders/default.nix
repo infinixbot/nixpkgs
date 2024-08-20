@@ -24,12 +24,7 @@ let
     "teal"
     "yellow"
   ];
-  validFlavors = [
-    "latte"
-    "frappe"
-    "macchiato"
-    "mocha"
-  ];
+  validFlavors = [ "latte" "frappe" "macchiato" "mocha" ];
   pname = "catppuccin-papirus-folders";
 in
 lib.checkListOfEnum "${pname}: accent colors" validAccents [ accent ] lib.checkListOfEnum

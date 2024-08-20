@@ -12,10 +12,7 @@ let
   isNetworkd = config.networking.useNetworkd;
 in
 {
-  meta.maintainers = with maintainers; [
-    mbaillie
-    mfrw
-  ];
+  meta.maintainers = with maintainers; [ mbaillie mfrw ];
 
   options.services.tailscale = {
     enable = mkEnableOption "Tailscale client daemon";
@@ -47,12 +44,7 @@ in
     };
 
     useRoutingFeatures = mkOption {
-      type = types.enum [
-        "none"
-        "client"
-        "server"
-        "both"
-      ];
+      type = types.enum [ "none" "client" "server" "both" ];
       default = "none";
       example = "server";
       description = ''

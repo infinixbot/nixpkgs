@@ -81,10 +81,7 @@ stdenv.mkDerivation rec {
 
   dontBuild = true;
 
-  nativeBuildInputs = [
-    makeWrapper
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ makeWrapper wrapGAppsHook3 ];
 
   buildInputs = deps;
 
@@ -129,11 +126,7 @@ stdenv.mkDerivation rec {
     homepage = "https://pencil.evolus.vn/";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.gpl2; # Commercial license is also available
-    maintainers = with maintainers; [
-      bjornfor
-      prikhi
-      mrVanDalo
-    ];
+    maintainers = with maintainers; [ bjornfor prikhi mrVanDalo ];
     platforms = platforms.linux;
   };
 }

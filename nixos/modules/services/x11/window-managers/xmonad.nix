@@ -20,10 +20,7 @@ let
   packages =
     self:
     cfg.extraPackages self
-    ++ optionals cfg.enableContribAndExtras [
-      self.xmonad-contrib
-      self.xmonad-extras
-    ];
+    ++ optionals cfg.enableContribAndExtras [ self.xmonad-contrib self.xmonad-extras ];
 
   xmonad-vanilla = pkgs.xmonad-with-packages.override {
     inherit ghcWithPackages packages;
@@ -59,12 +56,7 @@ let
   xmonad = if (cfg.config != null) then xmonad-config else xmonad-vanilla;
 in
 {
-  meta.maintainers = with maintainers; [
-    lassulus
-    xaverdh
-    ivanbrennan
-    slotThe
-  ];
+  meta.maintainers = with maintainers; [ lassulus xaverdh ivanbrennan slotThe ];
 
   options = {
     services.xserver.windowManager.xmonad = {

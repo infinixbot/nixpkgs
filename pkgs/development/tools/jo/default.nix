@@ -20,11 +20,7 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pandoc
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pandoc pkg-config ];
 
   meta = with lib; {
     description = "Small utility to create JSON objects";

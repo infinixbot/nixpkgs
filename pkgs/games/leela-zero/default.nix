@@ -22,13 +22,7 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  buildInputs = [
-    boost
-    opencl-headers
-    ocl-icd
-    qtbase
-    zlib
-  ];
+  buildInputs = [ boost opencl-headers ocl-icd qtbase zlib ];
 
   nativeBuildInputs = [ cmake ];
 
@@ -38,10 +32,7 @@ stdenv.mkDerivation rec {
     description = "Go engine modeled after AlphaGo Zero";
     homepage = "https://github.com/gcp/leela-zero";
     license = licenses.gpl3Plus;
-    maintainers = [
-      maintainers.averelld
-      maintainers.omnipotententity
-    ];
+    maintainers = [ maintainers.averelld maintainers.omnipotententity ];
     platforms = platforms.linux;
   };
 }

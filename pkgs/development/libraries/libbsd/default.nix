@@ -16,11 +16,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-uIzJFj0MZSqvOamZkdl03bocOpcR248bWDivKhRzEBQ=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ];
+  outputs = [ "out" "dev" "man" ];
 
   enableParallelBuilding = true;
 
@@ -48,14 +44,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Common functions found on BSD systems";
     homepage = "https://libbsd.freedesktop.org/";
-    license = with licenses; [
-      beerware
-      bsd2
-      bsd3
-      bsdOriginal
-      isc
-      mit
-    ];
+    license = with licenses; [ beerware bsd2 bsd3 bsdOriginal isc mit ];
     platforms = platforms.unix;
     # See architectures defined in src/local-elf.h.
     badPlatforms = lib.platforms.microblaze;

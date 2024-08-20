@@ -20,10 +20,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-9pUUKxPpyoX9f10ZiLWsol2rv66WzQqwa6VubRTrT9Y=";
 
-  buildInputs = lib.optionals stdenv.isDarwin [
-    libiconv
-    Security
-  ];
+  buildInputs = lib.optionals stdenv.isDarwin [ libiconv Security ];
 
   # Compilation during tests fails if this env var is not set.
   preCheck = "export GIRT_BUILD_GIT_HASH=${version}";
@@ -34,11 +31,7 @@ rustPlatform.buildRustPackage rec {
     description = "Native cross platform full feature terminal based sequence editor for git interactive rebase";
     changelog = "https://github.com/MitMaro/git-interactive-rebase-tool/releases/tag/${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      SuperSandro2000
-      zowoq
-      ma27
-    ];
+    maintainers = with maintainers; [ SuperSandro2000 zowoq ma27 ];
     mainProgram = "interactive-rebase-tool";
   };
 }

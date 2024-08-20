@@ -53,17 +53,11 @@ buildGoModule rec {
     npmDepsHash = "sha256-oWFXtV/dxzHv3sfIi01l1lHE5tcJgpVq87XgS6Iy62g=";
 
     NODE_OPTIONS = "--openssl-legacy-provider";
-    npmBuildFlags = [
-      "--"
-      "--dest=${placeholder "out"}"
-    ];
+    npmBuildFlags = [ "--" "--dest=${placeholder "out"}" ];
     dontNpmInstall = true;
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-    go-swag
-  ];
+  nativeBuildInputs = [ makeWrapper go-swag ];
 
   vendorHash = "sha256-1U7l7YW1fu5M0/pPHTLamLsTQdEltesRODUn21SuP8w=";
   proxyVendor = true;

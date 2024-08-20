@@ -28,10 +28,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   meta = {
     description = "Fcitx 5 pinyin dictionary from zh.moegirl.org.cn";
     homepage = "https://github.com/outloudvi/mw2fcitx";
-    license = with lib.licenses; [
-      unlicense
-      cc-by-nc-sa-30
-    ];
+    license = with lib.licenses; [ unlicense cc-by-nc-sa-30 ];
     maintainers = with lib.maintainers; [ Guanran928 ];
     platforms = lib.platforms.all;
   };

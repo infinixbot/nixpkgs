@@ -69,11 +69,7 @@ in
           freeformType =
             with lib.types;
             let
-              type = oneOf [
-                str
-                int
-                bool
-              ];
+              type = oneOf [ str int bool ];
             in
             attrsOf (either type (listOf type));
 
@@ -189,11 +185,7 @@ in
             secretPaths = lib.catAttrs "_secret" (lib.collect isSecret cfg.settings);
             mkSecretReplacement = file: ''
               replace-secret ${
-                lib.escapeShellArgs [
-                  (hashString "sha256" file)
-                  file
-                  "/run/geoipupdate/GeoIP.conf"
-                ]
+                lib.escapeShellArgs [ (hashString "sha256" file) file "/run/geoipupdate/GeoIP.conf" ]
               }
             '';
             secretReplacements = lib.concatMapStrings mkSecretReplacement secretPaths;
@@ -230,14 +222,8 @@ in
         ProtectKernelTunables = true;
         ProtectProc = "invisible";
         ProcSubset = "pid";
-        SystemCallFilter = [
-          "@system-service"
-          "~@privileged"
-        ];
-        RestrictAddressFamilies = [
-          "AF_INET"
-          "AF_INET6"
-        ];
+        SystemCallFilter = [ "@system-service" "~@privileged" ];
+        RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
         RestrictRealtime = true;
         RestrictNamespaces = true;
         MemoryDenyWriteExecute = true;

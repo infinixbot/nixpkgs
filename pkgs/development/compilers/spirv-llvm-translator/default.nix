@@ -100,15 +100,9 @@ stdenv.mkDerivation {
       })
     ];
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-  ] ++ (if isROCm then [ llvm ] else [ llvm.dev ]);
+  nativeBuildInputs = [ pkg-config cmake ] ++ (if isROCm then [ llvm ] else [ llvm.dev ]);
 
-  buildInputs = [
-    spirv-headers
-    spirv-tools
-  ] ++ lib.optionals (!isROCm) [ llvm ];
+  buildInputs = [ spirv-headers spirv-tools ] ++ lib.optionals (!isROCm) [ llvm ];
 
   nativeCheckInputs = [ lit ];
 
@@ -126,10 +120,7 @@ stdenv.mkDerivation {
   # FIXME: CMake tries to run "/llvm-lit" which of course doesn't exist
   doCheck = false;
 
-  makeFlags = [
-    "all"
-    "llvm-spirv"
-  ];
+  makeFlags = [ "all" "llvm-spirv" ];
 
   postInstall =
     ''

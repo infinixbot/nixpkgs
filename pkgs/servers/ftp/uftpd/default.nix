@@ -19,14 +19,8 @@ stdenv.mkDerivation rec {
     hash = "sha256-+y1eRPUgYf5laRFIDD1XOEfonPP8QMJNCSkmHlXIjdY=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    autoreconfHook
-  ];
-  buildInputs = [
-    libuev
-    libite
-  ];
+  nativeBuildInputs = [ pkg-config autoreconfHook ];
+  buildInputs = [ libuev libite ];
 
   meta = with lib; {
     description = "FTP/TFTP server for Linux that just works™";

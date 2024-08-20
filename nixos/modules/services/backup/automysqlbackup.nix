@@ -54,18 +54,11 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "automysqlbackup"
-        "config"
-      ]
-      [
-        "services"
-        "automysqlbackup"
-        "settings"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "automysqlbackup" "config" ] [
+      "services"
+      "automysqlbackup"
+      "settings"
+    ])
   ];
 
   # interface
@@ -83,14 +76,7 @@ in
       };
 
       settings = mkOption {
-        type =
-          with types;
-          attrsOf (oneOf [
-            str
-            int
-            bool
-            (listOf str)
-          ]);
+        type = with types; attrsOf (oneOf [ str int bool (listOf str) ]);
         default = { };
         description = ''
           automysqlbackup configuration. Refer to
@@ -125,10 +111,7 @@ in
       mysql_dump_host = "localhost";
       mysql_dump_socket = "/run/mysqld/mysqld.sock";
       backup_dir = "/var/backup/mysql";
-      db_exclude = [
-        "information_schema"
-        "performance_schema"
-      ];
+      db_exclude = [ "information_schema" "performance_schema" ];
       mailcontent = "stdout";
       mysql_dump_single_transaction = true;
     };

@@ -39,11 +39,7 @@ import ./make-test-python.nix (
               initial_admin_keys = [ snakeOilPublicKey ];
             };
           };
-          networking.firewall.allowedTCPPorts = [
-            sshPort
-            httpPort
-            statsPort
-          ];
+          networking.firewall.allowedTCPPorts = [ sshPort httpPort statsPort ];
         };
     };
 

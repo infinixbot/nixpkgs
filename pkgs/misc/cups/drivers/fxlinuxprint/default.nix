@@ -25,10 +25,7 @@ stdenv.mkDerivation rec {
     sha256 = "1mv07ch6ysk9bknfmjqsgxb803sj6vfin29s9knaqv17jvgyh0n3";
   };
 
-  nativeBuildInputs = [
-    dpkg
-    autoPatchelfHook
-  ];
+  nativeBuildInputs = [ dpkg autoPatchelfHook ];
   buildInputs = [ cups ];
 
   sourceRoot = ".";

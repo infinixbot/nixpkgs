@@ -106,12 +106,7 @@ stdenv.mkDerivation (finalAttrs: {
       python3
       wayland
     ]
-    ++ lib.optionals stdenv.isLinux [
-      fuse3
-      libappindicator-gtk3
-      libdbusmenu-gtk3
-      webkitgtk_4_1
-    ]
+    ++ lib.optionals stdenv.isLinux [ fuse3 libappindicator-gtk3 libdbusmenu-gtk3 webkitgtk_4_1 ]
     ++ lib.optionals withLibsecret [ libsecret ]
     ++ lib.optionals withKf5Wallet [ libsForQt5.kwallet ]
     ++ lib.optionals withVte [ vte ];
@@ -157,11 +152,7 @@ stdenv.mkDerivation (finalAttrs: {
     }";
     description = "Remote desktop client written in GTK";
     mainProgram = "remmina";
-    maintainers = with maintainers; [
-      bbigras
-      melsigl
-      ryantm
-    ];
+    maintainers = with maintainers; [ bbigras melsigl ryantm ];
     platforms = platforms.linux ++ platforms.darwin;
   };
 })

@@ -47,11 +47,7 @@ mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    qmake
-    cmake
-  ];
+  nativeBuildInputs = [ pkg-config qmake cmake ];
   buildInputs = [
     speex
     miniupnpc

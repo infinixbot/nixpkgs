@@ -72,11 +72,7 @@ buildNpmPackage rec {
       wrapProgram $out/bin/sitespeed-io \
         --set PATH ${
           lib.makeBinPath ([
-            (python3.withPackages (p: [
-              p.numpy
-              p.opencv4
-              p.pyssim
-            ]))
+            (python3.withPackages (p: [ p.numpy p.opencv4 p.pyssim ]))
             ffmpeg-headless
             imagemagick_light
             xorg.xorgserver

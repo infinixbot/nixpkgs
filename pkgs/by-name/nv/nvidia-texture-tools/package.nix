@@ -28,11 +28,7 @@ stdenv.mkDerivation {
       sed -i '/libsquish/d;/CMP_Core/d' extern/CMakeLists.txt
     '';
 
-  outputs = [
-    "out"
-    "dev"
-    "lib"
-  ];
+  outputs = [ "out" "dev" "lib" ];
 
   nativeBuildInputs = [
     cmake

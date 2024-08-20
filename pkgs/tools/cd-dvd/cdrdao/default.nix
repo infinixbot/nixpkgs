@@ -21,11 +21,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-0ZtnyFPF26JAavqrbNeI53817r5jTKxGeVKEd8e+AbY=";
   };
 
-  makeFlags = [
-    "RM=rm"
-    "LN=ln"
-    "MV=mv"
-  ];
+  makeFlags = [ "RM=rm" "LN=ln" "MV=mv" ];
 
   nativeBuildInputs = [
     pkg-config

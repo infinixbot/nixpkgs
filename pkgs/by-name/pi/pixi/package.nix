@@ -43,13 +43,7 @@ rustPlatform.buildRustPackage rec {
       openssl
     ]
     ++ lib.optionals stdenv.isDarwin (
-      with darwin.apple_sdk_11_0.frameworks;
-      [
-        CoreFoundation
-        IOKit
-        SystemConfiguration
-        Security
-      ]
+      with darwin.apple_sdk_11_0.frameworks; [ CoreFoundation IOKit SystemConfiguration Security ]
     );
 
   env = {
@@ -115,10 +109,7 @@ rustPlatform.buildRustPackage rec {
     description = "Package management made easy";
     homepage = "https://pixi.sh/";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      aaronjheng
-      edmundmiller
-    ];
+    maintainers = with maintainers; [ aaronjheng edmundmiller ];
     mainProgram = "pixi";
   };
 }

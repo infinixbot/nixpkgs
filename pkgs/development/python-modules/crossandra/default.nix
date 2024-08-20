@@ -19,10 +19,7 @@ buildPythonPackage rec {
     hash = "sha256-/JhrjXRH7Rs2bUil9HRneBC9wlVYEyfwivjzb+eyRv8=";
   };
 
-  build-system = [
-    setuptools
-    mypy
-  ];
+  build-system = [ setuptools mypy ];
   dependencies = [ result ];
 
   pythonImportsCheck = [ "crossandra" ];

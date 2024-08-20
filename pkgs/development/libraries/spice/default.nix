@@ -107,10 +107,7 @@ stdenv.mkDerivation rec {
     homepage = "https://www.spice-space.org/";
     license = licenses.lgpl21;
 
-    maintainers = with maintainers; [
-      bluescreen303
-      atemu
-    ];
+    maintainers = with maintainers; [ bluescreen303 atemu ];
     platforms = with platforms; linux ++ darwin;
   };
 }

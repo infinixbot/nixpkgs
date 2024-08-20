@@ -28,12 +28,7 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-kusb58nGxYA3U9GbZdW3hLjA3NmHc+af0VT4iGRewBw=";
   };
 
-  outputs = [
-    "out"
-    "dev"
-    "lib"
-    "man"
-  ];
+  outputs = [ "out" "dev" "lib" "man" ];
 
   patches = [
     # Add @libraryPath@ template variable to fix loading the PRELOAD library

@@ -69,11 +69,7 @@ stdenv.mkDerivation {
 
   src = fetchurl { inherit (source) url sha256; };
 
-  nativeBuildInputs = [
-    wrapGAppsHook3
-    autoPatchelfHook
-    patchelfUnstable
-  ];
+  nativeBuildInputs = [ wrapGAppsHook3 autoPatchelfHook patchelfUnstable ];
   buildInputs = [
     gtk3
     adwaita-icon-theme
@@ -143,10 +139,7 @@ stdenv.mkDerivation {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     platforms = builtins.attrNames mozillaPlatforms;
     hydraPlatforms = [ ];
-    maintainers = with maintainers; [
-      taku0
-      lovesegfault
-    ];
+    maintainers = with maintainers; [ taku0 lovesegfault ];
     mainProgram = binaryName;
   };
 }

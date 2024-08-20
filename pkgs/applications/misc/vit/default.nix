@@ -25,12 +25,7 @@ buildPythonApplication rec {
 
   nativeCheckInputs = [ glibcLocales ];
 
-  makeWrapperArgs = [
-    "--suffix"
-    "PATH"
-    ":"
-    "${taskwarrior2}/bin"
-  ];
+  makeWrapperArgs = [ "--suffix" "PATH" ":" "${taskwarrior2}/bin" ];
 
   preCheck = ''
     export TERM=''${TERM-linux}

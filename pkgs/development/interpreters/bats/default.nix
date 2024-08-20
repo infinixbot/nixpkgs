@@ -195,12 +195,7 @@ resholve.mkDerivation rec {
           }
           ''
             ${
-              bats.withLibraries (p: [
-                p.bats-support
-                p.bats-assert
-                p.bats-file
-                p.bats-detik
-              ])
+              bats.withLibraries (p: [ p.bats-support p.bats-assert p.bats-file p.bats-detik ])
             }/bin/bats "$testScriptPath"
             touch "$out"
           '';

@@ -32,11 +32,7 @@ mkDerivation rec {
     hash = "sha256-2UzXWd/fR5UwGywebYGWhh817x+VC76zmVaVZSBOg7M=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    extra-cmake-modules
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake extra-cmake-modules pkg-config ];
 
   buildInputs = with gst_all_1; [
     qtquickcontrols2

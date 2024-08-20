@@ -820,17 +820,9 @@ in
 
     fileSystems = config.lib.isoFileSystems;
 
-    boot.initrd.availableKernelModules = [
-      "squashfs"
-      "iso9660"
-      "uas"
-      "overlay"
-    ];
+    boot.initrd.availableKernelModules = [ "squashfs" "iso9660" "uas" "overlay" ];
 
-    boot.initrd.kernelModules = [
-      "loop"
-      "overlay"
-    ];
+    boot.initrd.kernelModules = [ "loop" "overlay" ];
 
     # Closures to be copied to the Nix store on the CD, namely the init
     # script and the top-level system configuration directory.

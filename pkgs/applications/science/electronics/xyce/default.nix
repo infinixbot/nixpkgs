@@ -53,10 +53,7 @@ stdenv.mkDerivation rec {
   pname = "xyce";
   inherit version;
 
-  srcs = [
-    xyce_src
-    regression_src
-  ];
+  srcs = [ xyce_src regression_src ];
 
   sourceRoot = xyce_src.name;
 
@@ -128,21 +125,11 @@ stdenv.mkDerivation rec {
     popd
   '';
 
-  nativeCheckInputs =
-    [
-      bc
-      perl
-      (python3.withPackages (
-        ps: with ps; [
-          numpy
-          scipy
-        ]
-      ))
-    ]
-    ++ lib.optionals withMPI [
-      mpi
-      openssh
-    ];
+  nativeCheckInputs = [
+    bc
+    perl
+    (python3.withPackages (ps: with ps; [ numpy scipy ]))
+  ] ++ lib.optionals withMPI [ mpi openssh ];
 
   checkPhase = ''
     XYCE_BINARY="$(pwd)/src/Xyce"
@@ -167,10 +154,7 @@ stdenv.mkDerivation rec {
       "''${EXECSTRING}"
   '';
 
-  outputs = [
-    "out"
-    "doc"
-  ];
+  outputs = [ "out" "doc" ];
 
   postInstall = lib.optionalString enableDocs ''
     local docFiles=("doc/Users_Guide/Xyce_UG"

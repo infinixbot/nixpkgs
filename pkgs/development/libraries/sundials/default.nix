@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
   pname = "sundials";
   version = "7.1.1";
 
-  outputs = [
-    "out"
-    "examples"
-  ];
+  outputs = [ "out" "examples" ];
 
   src = fetchurl {
     url = "https://github.com/LLNL/sundials/releases/download/v${version}/sundials-${version}.tar.gz";

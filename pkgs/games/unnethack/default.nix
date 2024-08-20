@@ -23,11 +23,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ ncurses ];
 
-  nativeBuildInputs = [
-    util-linux
-    flex
-    bison
-  ];
+  nativeBuildInputs = [ util-linux flex bison ];
 
   configureFlags = [
     "--enable-curses-graphics"

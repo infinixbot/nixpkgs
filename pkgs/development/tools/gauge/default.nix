@@ -23,19 +23,13 @@ buildGoModule rec {
 
   vendorHash = "sha256-yh7hAKmt2qn2jmPKGF+ATvZd4miNHuHsKlFNaWibTJQ=";
 
-  excludedPackages = [
-    "build"
-    "man"
-  ];
+  excludedPackages = [ "build" "man" ];
 
   meta = with lib; {
     description = "Light weight cross-platform test automation";
     mainProgram = "gauge";
     homepage = "https://gauge.org";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      vdemeester
-      marie
-    ];
+    maintainers = with maintainers; [ vdemeester marie ];
   };
 }

@@ -66,10 +66,7 @@ stdenv.mkDerivation rec {
     description = "Self-hosted dynamic blogging program";
     maintainers = with lib.maintainers; [ yah ];
     license = lib.licenses.gpl3Only;
-    platforms = [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "aarch64-linux" "x86_64-linux" ];
     mainProgram = "halo";
     sourceProvenance = with lib.sourceTypes; [ binaryBytecode ];
   };

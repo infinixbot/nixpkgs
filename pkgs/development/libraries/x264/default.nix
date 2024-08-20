@@ -30,11 +30,7 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-  ];
+  outputs = [ "out" "lib" "dev" ];
 
   preConfigure =
     lib.optionalString stdenv.hostPlatform.isx86 ''

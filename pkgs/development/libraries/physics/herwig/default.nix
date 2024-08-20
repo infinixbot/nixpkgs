@@ -23,26 +23,12 @@ stdenv.mkDerivation rec {
     hash = "sha256-JiSBnS3/EFupUuobXPEutvSSbUlRd0pBkHaZ4vVnaGw=";
   };
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-    libtool
-    gfortran
-  ];
+  nativeBuildInputs = [ autoconf automake libtool gfortran ];
 
   buildInputs =
-    [
-      boost
-      fastjet
-      gsl
-      thepeg
-      zlib
-    ]
+    [ boost fastjet gsl thepeg zlib ]
     # There is a bug that requires for default PDF's to be present during the build
-    ++ (with lhapdf.pdf_sets; [
-      CT14lo
-      CT14nlo
-    ]);
+    ++ (with lhapdf.pdf_sets; [ CT14lo CT14nlo ]);
 
   postPatch = ''
     patchShebangs ./

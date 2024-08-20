@@ -19,11 +19,7 @@ buildDunePackage rec {
   minimalOCamlVersion = "4.06";
   duneVersion = "3";
 
-  buildInputs = [
-    cmdliner
-    base
-    stdio
-  ];
+  buildInputs = [ cmdliner base stdio ];
 
   # core v0.17 compatibility, obtained by `git diff -r 3e37827~2..3e37827`
   patches = [ ./merge-fmt.patch ];

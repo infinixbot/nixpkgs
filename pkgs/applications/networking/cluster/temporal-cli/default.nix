@@ -39,10 +39,7 @@ let
 
     nativeBuildInputs = [ installShellFiles ];
 
-    excludedPackages = [
-      "./cmd/docgen"
-      "./tests"
-    ];
+    excludedPackages = [ "./cmd/docgen" "./tests" ];
 
     ldflags = [
       "-s"
@@ -90,10 +87,7 @@ let
 
     excludedPackages = [ "./cmd/copyright" ];
 
-    ldflags = [
-      "-s"
-      "-w"
-    ];
+    ldflags = [ "-s" "-w" ];
 
     preCheck = ''
       export HOME="$(mktemp -d)"

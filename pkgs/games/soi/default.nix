@@ -23,14 +23,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    boost
-    lua
-    luabind
-    libGLU
-    libGL
-    SDL
-  ];
+  buildInputs = [ boost lua luabind libGLU libGL SDL ];
 
   cmakeFlags = [
     "-DEIGEN_INCLUDE_DIR=${eigen2}/include/eigen2"

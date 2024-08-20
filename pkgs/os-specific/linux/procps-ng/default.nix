@@ -48,21 +48,13 @@ stdenv.mkDerivation rec {
   buildInputs = [ ncurses ] ++ lib.optional withSystemd systemd;
   nativeBuildInputs = [ pkg-config ];
 
-  makeFlags =
-    [ "usrbin_execdir=$(out)/bin" ]
-    ++ lib.optionals watchOnly [
-      "watch"
-      "PKG_LDFLAGS="
-    ];
+  makeFlags = [ "usrbin_execdir=$(out)/bin" ] ++ lib.optionals watchOnly [ "watch" "PKG_LDFLAGS=" ];
 
   enableParallelBuilding = true;
 
   # Too red; 8bit support for fixing https://github.com/NixOS/nixpkgs/issues/275220
   configureFlags =
-    [
-      "--disable-modern-top"
-      "--enable-watch8bit"
-    ]
+    [ "--disable-modern-top" "--enable-watch8bit" ]
     ++ lib.optional withSystemd "--with-systemd"
     ++ lib.optionals (stdenv.hostPlatform != stdenv.buildPlatform) [
       "ac_cv_func_malloc_0_nonnull=yes"

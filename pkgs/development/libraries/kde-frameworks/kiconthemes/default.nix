@@ -26,9 +26,5 @@ mkDerivation {
     ki18n
     kitemviews
   ];
-  propagatedBuildInputs = [
-    qtbase
-    qtsvg
-    qttools
-  ];
+  propagatedBuildInputs = [ qtbase qtsvg qttools ];
 }

@@ -9,11 +9,7 @@
 }:
 
 let
-  bins = [
-    "regbot"
-    "regctl"
-    "regsync"
-  ];
+  bins = [ "regbot" "regctl" "regsync" ];
 in
 
 buildGoModule rec {
@@ -37,10 +33,7 @@ buildGoModule rec {
     "-X github.com/regclient/regclient/internal/version.vcsTag=${tag}"
   ];
 
-  nativeBuildInputs = [
-    installShellFiles
-    lndir
-  ];
+  nativeBuildInputs = [ installShellFiles lndir ];
 
   postInstall = lib.concatMapStringsSep "\n" (bin: ''
     export bin=''$${bin}

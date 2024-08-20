@@ -44,12 +44,7 @@ stdenv.mkDerivation rec {
       --replace-fail "addr2line" "${binutils}/bin/addr2line"
   '';
 
-  nativeBuildInputs = [
-    cmake
-    gettext
-    pkg-config
-    wrapGAppsHook3
-  ];
+  nativeBuildInputs = [ cmake gettext pkg-config wrapGAppsHook3 ];
 
   buildInputs =
     lib.optionals stdenv.isLinux [

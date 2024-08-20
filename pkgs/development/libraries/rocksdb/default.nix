@@ -33,18 +33,9 @@ stdenv.mkDerivation (finalAttrs: {
     lib.versionAtLeast finalAttrs.version "6.29.3" && enableLiburing
   ) ./fix-findliburing.patch;
 
-  nativeBuildInputs = [
-    cmake
-    ninja
-  ];
+  nativeBuildInputs = [ cmake ninja ];
 
-  propagatedBuildInputs = [
-    bzip2
-    lz4
-    snappy
-    zlib
-    zstd
-  ];
+  propagatedBuildInputs = [ bzip2 lz4 snappy zlib zstd ];
 
   buildInputs =
     lib.optional enableJemalloc jemalloc
@@ -127,9 +118,6 @@ stdenv.mkDerivation (finalAttrs: {
     changelog = "https://github.com/facebook/rocksdb/raw/v${finalAttrs.version}/HISTORY.md";
     license = licenses.asl20;
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      adev
-      magenbluten
-    ];
+    maintainers = with maintainers; [ adev magenbluten ];
   };
 })

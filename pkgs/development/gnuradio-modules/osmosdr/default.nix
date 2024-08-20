@@ -53,10 +53,7 @@ mkDerivation {
   inherit version src;
   disabled = gnuradioAtLeast "3.11";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   buildInputs =
     [

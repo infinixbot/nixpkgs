@@ -12,10 +12,5 @@ mkDerivation {
   pname = "ksystemstats";
   env.NIX_CFLAGS_COMPILE = toString [ "-I${lib.getBin libksysguard}/share" ];
   nativeBuildInputs = [ extra-cmake-modules ];
-  buildInputs = [
-    libksysguard
-    libnl
-    lm_sensors
-    networkmanager-qt
-  ];
+  buildInputs = [ libksysguard libnl lm_sensors networkmanager-qt ];
 }

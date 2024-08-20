@@ -15,10 +15,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-9mB9hketooqW+rg8Sa1y/IPrbTiZHKJ7JJWzWP8Pbew=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
 
   meta = with lib; {
     description = "Wrapper for the user, group and hosts NSS API";

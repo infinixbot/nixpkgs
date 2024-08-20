@@ -20,12 +20,7 @@ lib.throwIfNot (lib.versionAtLeast ocaml.version "4.08")
       url = "https://erratique.ch/software/note/releases/note-${version}.tbz";
       hash = "sha256-ZZOvCnyz7UWzFtGFI1uC0ZApzyylgZYM/HYIXGVXY2k=";
     };
-    buildInputs = [
-      ocaml
-      findlib
-      ocamlbuild
-      topkg
-    ];
+    buildInputs = [ ocaml findlib ocamlbuild topkg ];
     inherit (topkg) buildPhase installPhase;
 
     propagatedBuildInputs = [ brr ];

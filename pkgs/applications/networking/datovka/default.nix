@@ -20,14 +20,7 @@ mkDerivation rec {
     sha256 = "sha256-/thevIj3nliVkkFGQ0fr6qAprkNj1FgHsXx7Wmn10xI=";
   };
 
-  buildInputs = [
-    libdatovka
-    qmake
-    qtbase
-    qtsvg
-    libxml2
-    qtwebsockets
-  ];
+  buildInputs = [ libdatovka qmake qtbase qtsvg libxml2 qtwebsockets ];
 
   nativeBuildInputs = [ pkg-config ];
 

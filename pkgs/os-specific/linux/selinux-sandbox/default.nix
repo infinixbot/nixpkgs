@@ -29,21 +29,8 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ wrapPython ];
-  buildInputs = [
-    bash
-    coreutils
-    libcap_ng
-    policycoreutils
-    python3
-    xorgserver
-    openbox
-    xmodmap
-    dbus
-  ];
-  propagatedBuildInputs = [
-    pygobject3
-    selinux-python
-  ];
+  buildInputs = [ bash coreutils libcap_ng policycoreutils python3 xorgserver openbox xmodmap dbus ];
+  propagatedBuildInputs = [ pygobject3 selinux-python ];
 
   postPatch = ''
     # Fix setuid install

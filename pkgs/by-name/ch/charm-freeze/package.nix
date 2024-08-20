@@ -17,11 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-AUFzxmQOb/h0UgcprY09IVI7Auitn3JTDU/ptKicIAU=";
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X=main.Version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X=main.Version=${version}" ];
 
   meta = with lib; {
     description = "Tool to generate images of code and terminal output";
@@ -29,9 +25,6 @@ buildGoModule rec {
     homepage = "https://github.com/charmbracelet/freeze";
     changelog = "https://github.com/charmbracelet/freeze/releases/tag/v${version}";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      caarlos0
-      maaslalani
-    ];
+    maintainers = with maintainers; [ caarlos0 maaslalani ];
   };
 }

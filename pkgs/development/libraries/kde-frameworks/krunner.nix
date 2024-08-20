@@ -28,11 +28,7 @@ let
       solid
       threadweaver
     ];
-    propagatedBuildInputs = [
-      plasma-framework
-      qtbase
-      kwindowsystem
-    ];
+    propagatedBuildInputs = [ plasma-framework qtbase kwindowsystem ];
   };
 in
 self

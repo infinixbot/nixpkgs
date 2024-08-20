@@ -36,10 +36,7 @@ appimageTools.wrapType2 {
     description = "Desktop client for Zulip Chat";
     homepage = "https://zulip.com";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      andersk
-      jonafato
-    ];
+    maintainers = with maintainers; [ andersk jonafato ];
     platforms = [ "x86_64-linux" ];
     mainProgram = "zulip";
   };

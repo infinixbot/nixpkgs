@@ -64,11 +64,7 @@ stdenv.mkDerivation {
     hash = "sha256-Aqecw8K+igHx5R34lQiWtdNfeGn+umcjcS4w0vXgpLM=";
   };
 
-  propagatedBuildInputs = [
-    glfw
-    freetype
-    openssl
-  ] ++ lib.optional stdenv.hostPlatform.isUnix upx;
+  propagatedBuildInputs = [ glfw freetype openssl ] ++ lib.optional stdenv.hostPlatform.isUnix upx;
 
   nativeBuildInputs = [ makeWrapper ];
 
@@ -123,10 +119,7 @@ stdenv.mkDerivation {
     homepage = "https://vlang.io/";
     description = "Simple, fast, safe, compiled language for developing maintainable software";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      Madouura
-      delta231
-    ];
+    maintainers = with maintainers; [ Madouura delta231 ];
     mainProgram = "v";
     platforms = platforms.all;
   };

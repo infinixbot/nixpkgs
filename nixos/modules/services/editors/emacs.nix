@@ -88,10 +88,7 @@ in
         wantedBy = if cfg.startWithGraphical then [ "graphical-session.target" ] else [ "default.target" ];
       };
 
-    environment.systemPackages = [
-      cfg.package
-      editorScript
-    ];
+    environment.systemPackages = [ cfg.package editorScript ];
 
     environment.variables.EDITOR = mkIf cfg.defaultEditor (mkOverride 900 "emacseditor");
   };

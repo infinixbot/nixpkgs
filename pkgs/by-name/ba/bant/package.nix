@@ -27,10 +27,7 @@ buildBazelPackage rec {
     hash = "sha256-4h76ok2aN7WfD8OHIS0O2Dk924+hFXJXewKRM7XYjKw=";
   };
 
-  bazelFlags = [
-    "--registry"
-    "file://${registry}"
-  ];
+  bazelFlags = [ "--registry" "file://${registry}" ];
 
   postPatch = ''
     patchShebangs scripts/create-workspace-status.sh
@@ -64,10 +61,7 @@ buildBazelPackage rec {
     description = "Bazel/Build Analysis and Navigation Tool";
     homepage = "http://bant.build/";
     license = licenses.gpl2Only;
-    maintainers = with maintainers; [
-      hzeller
-      lromor
-    ];
+    maintainers = with maintainers; [ hzeller lromor ];
     platforms = platforms.linux;
   };
 }

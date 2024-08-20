@@ -13,10 +13,7 @@ stdenv.mkDerivation {
   pname = "electron";
   inherit (electron-unwrapped) version;
 
-  nativeBuildInputs = [
-    wrapGAppsHook3
-    makeWrapper
-  ];
+  nativeBuildInputs = [ wrapGAppsHook3 makeWrapper ];
   buildInputs = [
     # needed for GSETTINGS_SCHEMAS_PATH
     gsettings-desktop-schemas

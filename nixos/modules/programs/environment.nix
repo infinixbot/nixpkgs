@@ -37,26 +37,15 @@ in
     # TODO: move most of these elsewhere
     environment.profileRelativeSessionVariables = {
       PATH = [ "/bin" ];
-      INFOPATH = [
-        "/info"
-        "/share/info"
-      ];
+      INFOPATH = [ "/info" "/share/info" ];
       QTWEBKIT_PLUGIN_PATH = [ "/lib/mozilla/plugins/" ];
-      GTK_PATH = [
-        "/lib/gtk-2.0"
-        "/lib/gtk-3.0"
-        "/lib/gtk-4.0"
-      ];
+      GTK_PATH = [ "/lib/gtk-2.0" "/lib/gtk-3.0" "/lib/gtk-4.0" ];
       XDG_CONFIG_DIRS = [ "/etc/xdg" ];
       XDG_DATA_DIRS = [ "/share" ];
       LIBEXEC_PATH = [ "/libexec" ];
     };
 
-    environment.pathsToLink = [
-      "/lib/gtk-2.0"
-      "/lib/gtk-3.0"
-      "/lib/gtk-4.0"
-    ];
+    environment.pathsToLink = [ "/lib/gtk-2.0" "/lib/gtk-3.0" "/lib/gtk-4.0" ];
 
     environment.extraInit = ''
       export NIX_USER_PROFILE_DIR="/nix/var/nix/profiles/per-user/$USER"

@@ -1,9 +1,6 @@
 {
   facter = {
-    dependencies = [
-      "hocon"
-      "thor"
-    ];
+    dependencies = [ "hocon" "thor" ];
     groups = [ "default" ];
     platforms = [ ];
     source = {

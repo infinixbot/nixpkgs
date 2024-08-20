@@ -18,11 +18,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-HBl30BnSERivIHb3dbfhDwwBvs3MUkltDf+R790vSGE=";
 
-  subPackages = [
-    "cmd/genkeys"
-    "cmd/yggdrasil"
-    "cmd/yggdrasilctl"
-  ];
+  subPackages = [ "cmd/genkeys" "cmd/yggdrasil" "cmd/yggdrasilctl" ];
 
   ldflags = [
     "-X github.com/yggdrasil-network/yggdrasil-go/src/version.buildVersion=${version}"
@@ -38,11 +34,6 @@ buildGoModule rec {
     description = "An experiment in scalable routing as an encrypted IPv6 overlay network";
     homepage = "https://yggdrasil-network.github.io/";
     license = licenses.lgpl3;
-    maintainers = with maintainers; [
-      ehmry
-      gazally
-      lassulus
-      peigongdsd
-    ];
+    maintainers = with maintainers; [ ehmry gazally lassulus peigongdsd ];
   };
 }

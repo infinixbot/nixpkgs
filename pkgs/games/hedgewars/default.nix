@@ -52,12 +52,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-IB/l5FvYyls9gbGOwGvWu8n6fCxjvwGQBeL4C+W88hI=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-    qttools
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake pkg-config qttools wrapQtAppsHook ];
 
   buildInputs = [
     SDL2_ttf
@@ -94,14 +89,7 @@ stdenv.mkDerivation rec {
   ];
 
   qtWrapperArgs = [
-    "--prefix LD_LIBRARY_PATH : ${
-      lib.makeLibraryPath [
-        libGL
-        libGLU
-        libglut
-        physfs
-      ]
-    }"
+    "--prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ libGL libGLU libglut physfs ]}"
   ];
 
   meta = with lib; {
@@ -131,10 +119,7 @@ stdenv.mkDerivation rec {
       contact with explosions, to zero (the damage dealt to the attacked
       hedgehog or hedgehogs after a player's or CPU turn is shown only when
       all movement on the battlefield has ceased).'';
-    maintainers = with maintainers; [
-      kragniz
-      fpletz
-    ];
+    maintainers = with maintainers; [ kragniz fpletz ];
     broken = stdenv.isDarwin;
     platforms = platforms.linux;
   };

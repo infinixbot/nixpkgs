@@ -17,11 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-rIIMqYMgLNCMYEH+44v79i8yGbHDmUY21X3h1E2jP9Q=";
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X=main.Version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X=main.Version=${version}" ];
 
   subPackages = [ "cmd/gok" ];
 

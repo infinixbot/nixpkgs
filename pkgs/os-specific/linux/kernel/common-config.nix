@@ -397,14 +397,8 @@ let
       B43_PHY_HT = option yes;
       BCMA_HOST_PCI = option yes;
       RTW88 = whenAtLeast "5.2" module;
-      RTW88_8822BE = lib.mkMerge [
-        (whenBetween "5.2" "5.8" yes)
-        (whenAtLeast "5.8" module)
-      ];
-      RTW88_8822CE = lib.mkMerge [
-        (whenBetween "5.2" "5.8" yes)
-        (whenAtLeast "5.8" module)
-      ];
+      RTW88_8822BE = lib.mkMerge [ (whenBetween "5.2" "5.8" yes) (whenAtLeast "5.8" module) ];
+      RTW88_8822CE = lib.mkMerge [ (whenBetween "5.2" "5.8" yes) (whenAtLeast "5.8" module) ];
     };
 
     fb = {

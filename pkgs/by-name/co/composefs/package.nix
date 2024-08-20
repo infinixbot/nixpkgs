@@ -36,11 +36,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   strictDeps = true;
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-  ];
+  outputs = [ "out" "lib" "dev" ];
 
   patches = [
     # fixes composefs-info tests, remove in next release
@@ -60,11 +56,7 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.enableFeature enableValgrindCheck "valgrind-test")
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    go-md2man
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook go-md2man pkg-config ];
   buildInputs =
     [ openssl ]
     ++ lib.optional fuseSupport fuse3
@@ -75,16 +67,10 @@ stdenv.mkDerivation (finalAttrs: {
 
   doCheck = true;
   nativeCheckInputs =
-    [
-      python3
-      which
-    ]
+    [ python3 which ]
     ++ lib.optional enableValgrindCheck valgrind
     ++ lib.optional fuseSupport fuse3
-    ++ lib.filter (lib.meta.availableOn stdenv.buildPlatform) [
-      erofs-utils
-      fsverity-utils
-    ];
+    ++ lib.filter (lib.meta.availableOn stdenv.buildPlatform) [ erofs-utils fsverity-utils ];
 
   preCheck = ''
     patchShebangs --build tests/*dir tests/*.sh
@@ -106,10 +92,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "File system for mounting container images";
     homepage = "https://github.com/containers/composefs";
     changelog = "https://github.com/containers/composefs/releases/tag/v${finalAttrs.version}";
-    license = with lib.licenses; [
-      gpl3Plus
-      lgpl21Plus
-    ];
+    license = with lib.licenses; [ gpl3Plus lgpl21Plus ];
     maintainers = with lib.maintainers; [ kiskae ];
     mainProgram = "mkcomposefs";
     pkgConfigModules = [ "composefs" ];

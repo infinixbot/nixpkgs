@@ -126,11 +126,7 @@ in
           WorkingDirectory = cfg.package;
           User = cfg.user;
           Group = cfg.group;
-          RestrictAddressFamilies = [
-            "AF_UNIX"
-            "AF_INET"
-            "AF_INET6"
-          ];
+          RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
           MemoryDenyWriteExecute = false;
           LoadCredential = lib.optional (
             cfg.redis.enable && cfg.redis.passwordFile != null

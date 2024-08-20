@@ -315,12 +315,7 @@ let
           default = "Prosody Chatrooms";
         };
         restrictRoomCreation = mkOption {
-          type = types.enum [
-            true
-            false
-            "admin"
-            "local"
-          ];
+          type = types.enum [ true false "admin" "local" ];
           default = false;
           description = "Restrict room creation to server admins";
         };
@@ -467,12 +462,7 @@ let
       freeformType =
         with types;
         let
-          atom = oneOf [
-            int
-            bool
-            str
-            (listOf atom)
-          ];
+          atom = oneOf [ int bool str (listOf atom) ];
         in
         attrsOf (nullOr atom)
         // {
@@ -624,10 +614,7 @@ in
 
       httpInterfaces = mkOption {
         type = types.listOf types.str;
-        default = [
-          "*"
-          "::"
-        ];
+        default = [ "*" "::" ];
         description = "Interfaces on which the HTTP server will listen on.";
       };
 
@@ -639,10 +626,7 @@ in
 
       httpsInterfaces = mkOption {
         type = types.listOf types.str;
-        default = [
-          "*"
-          "::"
-        ];
+        default = [ "*" "::" ];
         description = "Interfaces on which the HTTPS server will listen on.";
       };
 
@@ -776,20 +760,12 @@ in
       admins = mkOption {
         type = types.listOf types.str;
         default = [ ];
-        example = [
-          "admin1@example.com"
-          "admin2@example.com"
-        ];
+        example = [ "admin1@example.com" "admin2@example.com" ];
         description = "List of administrators of the current host";
       };
 
       authentication = mkOption {
-        type = types.enum [
-          "internal_plain"
-          "internal_hashed"
-          "cyrus"
-          "anonymous"
-        ];
+        type = types.enum [ "internal_plain" "internal_hashed" "cyrus" "anonymous" ];
         default = "internal_hashed";
         example = "internal_plain";
         description = "Authentication mechanism used for logins.";

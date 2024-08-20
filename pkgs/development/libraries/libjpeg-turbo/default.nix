@@ -54,14 +54,7 @@ stdenv.mkDerivation (finalAttrs: {
       ./mingw-boolean.patch
     ];
 
-  outputs = [
-    "bin"
-    "dev"
-    "dev_private"
-    "out"
-    "man"
-    "doc"
-  ];
+  outputs = [ "bin" "dev" "dev_private" "out" "man" "doc" ];
 
   postFixup = ''
     moveToOutput include/transupp.h $dev_private
@@ -122,15 +115,8 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://libjpeg-turbo.org/";
     description = "Faster (using SIMD) libjpeg implementation";
     license = licenses.ijg; # and some parts under other BSD-style licenses
-    pkgConfigModules = [
-      "libjpeg"
-      "libturbojpeg"
-    ];
-    maintainers = with maintainers; [
-      vcunat
-      colemickens
-      kamadorueda
-    ];
+    pkgConfigModules = [ "libjpeg" "libturbojpeg" ];
+    maintainers = with maintainers; [ vcunat colemickens kamadorueda ];
     platforms = platforms.all;
   };
 })

@@ -16,10 +16,7 @@ stdenv.mkDerivation (finalAttrs: {
   pname = "libgtop";
   version = "2.41.3";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/libgtop/${lib.versions.majorMinor finalAttrs.version}/libgtop-${finalAttrs.version}.tar.xz";

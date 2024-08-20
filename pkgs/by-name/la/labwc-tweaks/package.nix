@@ -48,9 +48,6 @@ stdenv.mkDerivation {
     mainProgram = "labwc-tweaks";
     license = lib.licenses.gpl2Only;
     platforms = lib.platforms.unix;
-    maintainers = with lib.maintainers; [
-      AndersonTorres
-      romildo
-    ];
+    maintainers = with lib.maintainers; [ AndersonTorres romildo ];
   };
 }

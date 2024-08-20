@@ -42,13 +42,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    openssl
-    protobuf
-    catch2
-    boost
-    icu
-  ];
+  buildInputs = [ openssl protobuf catch2 boost icu ];
 
   # causes redefinition of _FORTIFY_SOURCE
   hardeningDisable = [ "fortify3" ];

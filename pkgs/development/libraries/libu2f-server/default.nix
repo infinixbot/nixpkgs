@@ -31,15 +31,7 @@ stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    json_c
-    openssl
-    check
-    file
-    help2man
-    which
-    gengetopt
-  ];
+  buildInputs = [ json_c openssl check file help2man which gengetopt ];
 
   meta = with lib; {
     homepage = "https://developers.yubico.com/libu2f-server/";

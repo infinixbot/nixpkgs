@@ -23,10 +23,7 @@ stdenv.mkDerivation rec {
   '';
 
   buildInputs = [ bobcat ];
-  nativeBuildInputs = [
-    icmake
-    yodl
-  ];
+  nativeBuildInputs = [ icmake yodl ];
 
   postPatch = ''
     substituteInPlace INSTALL.im --replace /usr $out

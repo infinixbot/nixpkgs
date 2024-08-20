@@ -27,20 +27,9 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-7MgUzMs+l+3RVUbORAWyU1OUpgrKIeWhS+ObgRJtOHc=";
   };
 
-  nativeBuildInputs = [
-    lazarus
-    fpc
-  ];
+  nativeBuildInputs = [ lazarus fpc ];
 
-  buildInputs = [
-    pango
-    cairo
-    glib
-    atk
-    gtk2
-    libX11
-    gdk-pixbuf
-  ];
+  buildInputs = [ pango cairo glib atk gtk2 libX11 gdk-pixbuf ];
 
   NIX_LDFLAGS = "--as-needed -rpath ${lib.makeLibraryPath buildInputs}";
 

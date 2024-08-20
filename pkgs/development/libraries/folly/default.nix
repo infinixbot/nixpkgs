@@ -83,10 +83,7 @@ stdenv.mkDerivation rec {
     ];
 
   # split outputs to reduce downstream closure sizes
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   # patch prefix issues again
   # see https://github.com/NixOS/nixpkgs/issues/144170
@@ -112,15 +109,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/facebook/folly";
     license = licenses.asl20;
     # 32bit is not supported: https://github.com/facebook/folly/issues/103
-    platforms = [
-      "x86_64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-      "aarch64-linux"
-    ];
-    maintainers = with maintainers; [
-      abbradar
-      pierreis
-    ];
+    platforms = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" "aarch64-linux" ];
+    maintainers = with maintainers; [ abbradar pierreis ];
   };
 }

@@ -27,10 +27,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ go-md2man ];
 
-  makeFlags = [
-    "PREFIX=$(out)"
-    "AADIR=$(out)/etc/apparmor.d"
-  ];
+  makeFlags = [ "PREFIX=$(out)" "AADIR=$(out)/etc/apparmor.d" ];
 
   installTargets = [ "install-dist" ];
 
@@ -38,10 +35,7 @@ stdenv.mkDerivation rec {
     description = "Backlight and Keyboard LED control tool";
     homepage = "https://gitlab.com/cameronnemo/brillo";
     mainProgram = "brillo";
-    license = [
-      licenses.gpl3
-      licenses.bsd0
-    ];
+    license = [ licenses.gpl3 licenses.bsd0 ];
     platforms = platforms.linux;
     maintainers = [ maintainers.alexarice ];
   };

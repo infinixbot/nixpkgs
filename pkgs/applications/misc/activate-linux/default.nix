@@ -65,10 +65,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "\"Activate Windows\" watermark ported to Linux";
     homepage = "https://github.com/MrGlockenspiel/activate-linux";
     license = licenses.gpl3;
-    maintainers = with maintainers; [
-      alexnortung
-      donovanglover
-    ];
+    maintainers = with maintainers; [ alexnortung donovanglover ];
     platforms = platforms.linux;
     mainProgram = "activate-linux";
   };

@@ -31,20 +31,12 @@ buildPythonApplication {
     wrapGAppsHook3
   ];
 
-  propagatedBuildInputs = [
-    pygobject3
-    xcffib
-    pycairo
-    numpy
-  ];
+  propagatedBuildInputs = [ pygobject3 xcffib pycairo numpy ];
 
   # Cannot find pango without strictDeps = false
   strictDeps = false;
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   makeWrapperArgs = [ "--prefix PATH : ${lib.makeBinPath [ ffmpeg-full ]}" ];
 

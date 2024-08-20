@@ -26,10 +26,7 @@ stdenv.mkDerivation rec {
     openssl
   ] ++ lib.optional odbcSupport unixODBC;
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
   meta = with lib; {
     description = "Libraries to natively talk to Microsoft SQL Server and Sybase databases";

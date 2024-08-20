@@ -84,12 +84,7 @@ let
 
       hardeningEnable = lib.optionals (!stdenv'.cc.isClang) [ "pie" ];
 
-      outputs = [
-        "out"
-        "lib"
-        "doc"
-        "man"
-      ];
+      outputs = [ "out" "lib" "doc" "man" ];
       setOutputFlags = false; # $out retains configureFlags :-/
 
       buildInputs =
@@ -110,16 +105,10 @@ let
         ++ lib.optionals stdenv'.isLinux [ linux-pam ]
         ++ lib.optionals (!stdenv'.isDarwin) [ libossp_uuid ];
 
-      nativeBuildInputs =
-        [
-          makeWrapper
-          pkg-config
-        ]
-        ++ lib.optionals jitSupport [
-          llvmPackages.llvm.dev
-          nukeReferences
-          patchelf
-        ];
+      nativeBuildInputs = [
+        makeWrapper
+        pkg-config
+      ] ++ lib.optionals jitSupport [ llvmPackages.llvm.dev nukeReferences patchelf ];
 
       enableParallelBuilding = true;
 
@@ -309,20 +298,8 @@ let
         description = "Powerful, open source object-relational database system";
         license = licenses.postgresql;
         changelog = "https://www.postgresql.org/docs/release/${finalAttrs.version}/";
-        maintainers = with maintainers; [
-          thoughtpolice
-          danbst
-          globin
-          ivan
-          ma27
-          wolfgangwalther
-        ];
-        pkgConfigModules = [
-          "libecpg"
-          "libecpg_compat"
-          "libpgtypes"
-          "libpq"
-        ];
+        maintainers = with maintainers; [ thoughtpolice danbst globin ivan ma27 wolfgangwalther ];
+        pkgConfigModules = [ "libecpg" "libecpg_compat" "libpgtypes" "libpq" ];
         platforms = platforms.unix;
 
         # JIT support doesn't work with cross-compilation. It is attempted to build LLVM-bytecode
@@ -361,10 +338,7 @@ let
       # We include /bin to ensure the $out/bin directory is created, which is
       # needed because we'll be removing the files from that directory in postBuild
       # below. See #22653
-      pathsToLink = [
-        "/"
-        "/bin"
-      ];
+      pathsToLink = [ "/" "/bin" ];
 
       # Note: the duplication of executables is about 4MB size.
       # So a nicer solution was patching postgresql to allow setting the

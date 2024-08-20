@@ -20,15 +20,7 @@ in
     package = mkPackageOption pkgs "livebook" { };
 
     environment = mkOption {
-      type =
-        with types;
-        attrsOf (
-          nullOr (oneOf [
-            bool
-            int
-            str
-          ])
-        );
+      type = with types; attrsOf (nullOr (oneOf [ bool int str ]));
       default = { };
       description = ''
         Environment variables to set.
@@ -120,9 +112,6 @@ in
 
   meta = {
     doc = ./livebook.md;
-    maintainers = with lib.maintainers; [
-      munksgaard
-      scvalex
-    ];
+    maintainers = with lib.maintainers; [ munksgaard scvalex ];
   };
 }

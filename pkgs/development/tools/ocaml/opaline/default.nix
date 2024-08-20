@@ -16,11 +16,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-6htaiFIcRMUYWn0U7zTNfCyDaTgDEvPch2q57qzvND4=";
   };
 
-  nativeBuildInputs = with ocamlPackages; [
-    ocaml
-    findlib
-    ocamlbuild
-  ];
+  nativeBuildInputs = with ocamlPackages; [ ocaml findlib ocamlbuild ];
   buildInputs = with ocamlPackages; [ opam-file-format ];
 
   preInstall = "mkdir -p $out/bin";

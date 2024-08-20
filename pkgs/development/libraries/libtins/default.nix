@@ -32,10 +32,7 @@ stdenv.mkDerivation rec {
     chmod -R a+w googletest
   '';
 
-  nativeBuildInputs = [
-    cmake
-    gtest
-  ];
+  nativeBuildInputs = [ cmake gtest ];
   buildInputs = [
     openssl
     libpcap

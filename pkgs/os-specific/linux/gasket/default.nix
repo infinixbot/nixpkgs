@@ -27,10 +27,7 @@ stdenv.mkDerivation rec {
   installTargets = [ "modules_install" ];
 
   sourceRoot = "${src.name}/src";
-  hardeningDisable = [
-    "pic"
-    "format"
-  ];
+  hardeningDisable = [ "pic" "format" ];
   nativeBuildInputs = kernel.moduleBuildDependencies;
 
   meta = with lib; {

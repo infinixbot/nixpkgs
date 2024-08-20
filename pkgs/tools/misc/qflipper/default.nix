@@ -103,10 +103,6 @@ mkDerivation {
     homepage = "https://flipperzero.one/";
     license = licenses.gpl3Only;
     maintainers = with maintainers; [ cab404 ];
-    platforms = [
-      "x86_64-linux"
-      "x86_64-darwin"
-      "aarch64-linux"
-    ]; # qtbase doesn't build yet on aarch64-darwin
+    platforms = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" ]; # qtbase doesn't build yet on aarch64-darwin
   };
 }

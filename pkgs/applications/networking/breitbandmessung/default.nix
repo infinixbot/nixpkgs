@@ -92,11 +92,7 @@ stdenv.mkDerivation (
       license = licenses.unfree;
       sourceProvenance = with sourceTypes; [ binaryNativeCode ];
       maintainers = with maintainers; [ b4dm4n ];
-      platforms = [
-        "x86_64-linux"
-        "x86_64-darwin"
-        "aarch64-darwin"
-      ];
+      platforms = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ];
     };
   }
   // systemArgs

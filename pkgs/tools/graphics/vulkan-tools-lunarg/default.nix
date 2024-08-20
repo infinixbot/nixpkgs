@@ -36,14 +36,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-kRioHGrk6zsBIsnvusq6usAQqxQmCMmGk+O3ckkGEG4=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    python3
-    jq
-    which
-    pkg-config
-    libsForQt5.qt5.wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake python3 jq which pkg-config libsForQt5.qt5.wrapQtAppsHook ];
 
   buildInputs = [
     expat

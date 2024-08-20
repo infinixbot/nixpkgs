@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    ncurses
-    gtk2
-  ];
+  buildInputs = [ ncurses gtk2 ];
 
   hardeningDisable = [ "format" ];
 

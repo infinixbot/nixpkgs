@@ -42,9 +42,6 @@ buildGoModule rec {
     changelog = "https://github.com/mikefarah/yq/raw/v${version}/release_notes.txt";
     mainProgram = "yq";
     license = [ licenses.mit ];
-    maintainers = with maintainers; [
-      lewo
-      SuperSandro2000
-    ];
+    maintainers = with maintainers; [ lewo SuperSandro2000 ];
   };
 }

@@ -23,14 +23,8 @@ buildGoModule rec {
 
   buildInputs = [ sqlite ];
 
-  tags = [
-    "fts5"
-    "libsqlite3"
-  ];
-  ldflags = [
-    "-s"
-    "-w"
-  ];
+  tags = [ "fts5" "libsqlite3" ];
+  ldflags = [ "-s" "-w" ];
 
   doCheck = !stdenv.hostPlatform.isStatic;
 

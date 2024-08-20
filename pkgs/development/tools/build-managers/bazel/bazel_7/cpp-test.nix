@@ -32,10 +32,7 @@ let
 
   mergedDistDir = symlinkJoin {
     name = "mergedDistDir";
-    paths = [
-      localDistDir
-      distDir
-    ];
+    paths = [ localDistDir distDir ];
   };
 
   toolsBazel = writeScript "bazel" ''

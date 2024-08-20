@@ -44,10 +44,7 @@ let
       in
       {
         expr = nixos.config.systemd.services.systemd-test-nixos.serviceConfig.StateDirectory;
-        expected = [
-          "foo"
-          "bar"
-        ];
+        expected = [ "foo" "bar" ];
       };
   };
 in

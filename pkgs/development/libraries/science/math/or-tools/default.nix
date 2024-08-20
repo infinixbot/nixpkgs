@@ -139,10 +139,7 @@ stdenv.mkDerivation rec {
     pip install --prefix="$python" python/
   '';
 
-  outputs = [
-    "out"
-    "python"
-  ];
+  outputs = [ "out" "python" ];
 
   meta = with lib; {
     homepage = "https://github.com/google/or-tools";

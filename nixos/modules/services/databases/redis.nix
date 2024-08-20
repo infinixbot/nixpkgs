@@ -49,315 +49,130 @@ in
       "redis"
       "dbFilename"
     ] "The redis module now uses /var/lib/redis/dump.rdb as database dump location.")
-    (mkRemovedOptionModule [
-      "services"
-      "redis"
-      "appendOnlyFilename"
-    ] "This option was never used.")
-    (mkRemovedOptionModule [
-      "services"
-      "redis"
-      "pidFile"
-    ] "This option was removed.")
+    (mkRemovedOptionModule [ "services" "redis" "appendOnlyFilename" ] "This option was never used.")
+    (mkRemovedOptionModule [ "services" "redis" "pidFile" ] "This option was removed.")
     (mkRemovedOptionModule [
       "services"
       "redis"
       "extraConfig"
     ] "Use services.redis.servers.*.settings instead.")
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "enable"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "enable"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "port"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "port"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "openFirewall"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "openFirewall"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "bind"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "bind"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "unixSocket"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "unixSocket"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "unixSocketPerm"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "unixSocketPerm"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "logLevel"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "logLevel"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "logfile"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "logfile"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "syslog"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "syslog"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "databases"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "databases"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "maxclients"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "maxclients"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "save"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "save"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "slaveOf"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "slaveOf"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "masterAuth"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "masterAuth"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "requirePass"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "requirePass"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "requirePassFile"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "requirePassFile"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "appendOnly"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "appendOnly"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "appendFsync"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "appendFsync"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "slowLogLogSlowerThan"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "slowLogLogSlowerThan"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "slowLogMaxLen"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "slowLogMaxLen"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "redis"
-        "settings"
-      ]
-      [
-        "services"
-        "redis"
-        "servers"
-        ""
-        "settings"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "redis" "enable" ] [ "services" "redis" "servers" "" "enable" ])
+    (mkRenamedOptionModule [ "services" "redis" "port" ] [ "services" "redis" "servers" "" "port" ])
+    (mkRenamedOptionModule [ "services" "redis" "openFirewall" ] [
+      "services"
+      "redis"
+      "servers"
+      ""
+      "openFirewall"
+    ])
+    (mkRenamedOptionModule [ "services" "redis" "bind" ] [ "services" "redis" "servers" "" "bind" ])
+    (mkRenamedOptionModule [ "services" "redis" "unixSocket" ] [
+      "services"
+      "redis"
+      "servers"
+      ""
+      "unixSocket"
+    ])
+    (mkRenamedOptionModule [ "services" "redis" "unixSocketPerm" ] [
+      "services"
+      "redis"
+      "servers"
+      ""
+      "unixSocketPerm"
+    ])
+    (mkRenamedOptionModule [ "services" "redis" "logLevel" ] [
+      "services"
+      "redis"
+      "servers"
+      ""
+      "logLevel"
+    ])
+    (mkRenamedOptionModule [ "services" "redis" "logfile" ] [
+      "services"
+      "redis"
+      "servers"
+      ""
+      "logfile"
+    ])
+    (mkRenamedOptionModule [ "services" "redis" "syslog" ] [ "services" "redis" "servers" "" "syslog" ])
+    (mkRenamedOptionModule [ "services" "redis" "databases" ] [
+      "services"
+      "redis"
+      "servers"
+      ""
+      "databases"
+    ])
+    (mkRenamedOptionModule [ "services" "redis" "maxclients" ] [
+      "services"
+      "redis"
+      "servers"
+      ""
+      "maxclients"
+    ])
+    (mkRenamedOptionModule [ "services" "redis" "save" ] [ "services" "redis" "servers" "" "save" ])
+    (mkRenamedOptionModule [ "services" "redis" "slaveOf" ] [
+      "services"
+      "redis"
+      "servers"
+      ""
+      "slaveOf"
+    ])
+    (mkRenamedOptionModule [ "services" "redis" "masterAuth" ] [
+      "services"
+      "redis"
+      "servers"
+      ""
+      "masterAuth"
+    ])
+    (mkRenamedOptionModule [ "services" "redis" "requirePass" ] [
+      "services"
+      "redis"
+      "servers"
+      ""
+      "requirePass"
+    ])
+    (mkRenamedOptionModule [ "services" "redis" "requirePassFile" ] [
+      "services"
+      "redis"
+      "servers"
+      ""
+      "requirePassFile"
+    ])
+    (mkRenamedOptionModule [ "services" "redis" "appendOnly" ] [
+      "services"
+      "redis"
+      "servers"
+      ""
+      "appendOnly"
+    ])
+    (mkRenamedOptionModule [ "services" "redis" "appendFsync" ] [
+      "services"
+      "redis"
+      "servers"
+      ""
+      "appendFsync"
+    ])
+    (mkRenamedOptionModule [ "services" "redis" "slowLogLogSlowerThan" ] [
+      "services"
+      "redis"
+      "servers"
+      ""
+      "slowLogLogSlowerThan"
+    ])
+    (mkRenamedOptionModule [ "services" "redis" "slowLogMaxLen" ] [
+      "services"
+      "redis"
+      "servers"
+      ""
+      "slowLogMaxLen"
+    ])
+    (mkRenamedOptionModule [ "services" "redis" "settings" ] [
+      "services"
+      "redis"
+      "servers"
+      ""
+      "settings"
+    ])
   ];
 
   ###### interface
@@ -480,20 +295,7 @@ in
 
                   save = mkOption {
                     type = with types; listOf (listOf int);
-                    default = [
-                      [
-                        900
-                        1
-                      ]
-                      [
-                        300
-                        10
-                      ]
-                      [
-                        60
-                        10000
-                      ]
-                    ];
+                    default = [ [ 900 1 ] [ 300 10 ] [ 60 10000 ] ];
                     description = ''
                       The schedule in which data is persisted to disk, represented as a list of lists where the first element represent the amount of seconds and the second the number of changes.
 
@@ -587,14 +389,7 @@ in
 
                   settings = mkOption {
                     # TODO: this should be converted to freeformType
-                    type =
-                      with types;
-                      attrsOf (oneOf [
-                        bool
-                        int
-                        str
-                        (listOf str)
-                      ]);
+                    type = with types; attrsOf (oneOf [ bool int str (listOf str) ]);
                     default = { };
                     description = ''
                       Redis configuration. Refer to
@@ -758,11 +553,7 @@ in
           ProtectKernelModules = true;
           ProtectKernelTunables = true;
           ProtectControlGroups = true;
-          RestrictAddressFamilies = [
-            "AF_INET"
-            "AF_INET6"
-            "AF_UNIX"
-          ];
+          RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_UNIX" ];
           RestrictNamespaces = true;
           LockPersonality = true;
           # we need to disable MemoryDenyWriteExecute for keydb

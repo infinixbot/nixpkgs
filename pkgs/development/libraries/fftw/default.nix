@@ -13,12 +13,7 @@
   testers,
 }:
 
-assert lib.elem precision [
-  "single"
-  "double"
-  "long-double"
-  "quad-precision"
-];
+assert lib.elem precision [ "single" "double" "long-double" "quad-precision" ];
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "fftw-${precision}";
@@ -40,11 +35,7 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-  ] ++ lib.optional withDoc "info"; # it's dev-doc only
+  outputs = [ "out" "dev" "man" ] ++ lib.optional withDoc "info"; # it's dev-doc only
   outputBin = "dev"; # fftw-wisdom
 
   nativeBuildInputs = [ gfortran ];

@@ -93,10 +93,7 @@ stdenv.mkDerivation rec {
       --replace "0000000000000000000000000000000000000000" "${src.rev}"
   '';
 
-  makeFlags = optionals (debug) [
-    "CFLAGS+=-Og"
-    "CFLAGS+=-ggdb"
-  ];
+  makeFlags = optionals (debug) [ "CFLAGS+=-Og" "CFLAGS+=-ggdb" ];
 
   cmakeFlags =
     [

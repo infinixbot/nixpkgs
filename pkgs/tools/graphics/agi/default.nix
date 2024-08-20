@@ -60,12 +60,7 @@ stdenvNoCC.mkDerivation rec {
     desktopName = "Android GPU Inspector";
     exec = "agi";
     icon = "agi";
-    categories = [
-      "Development"
-      "Debugger"
-      "Graphics"
-      "3DGraphics"
-    ];
+    categories = [ "Development" "Debugger" "Graphics" "3DGraphics" ];
   });
 
   meta = with lib; {

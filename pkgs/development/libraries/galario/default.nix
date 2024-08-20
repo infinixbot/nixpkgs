@@ -32,10 +32,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ cmake ];
 
   buildInputs =
-    [
-      fftw
-      fftwFloat
-    ]
+    [ fftw fftwFloat ]
     ++ lib.optional enablePython pythonPackages.python
     ++ lib.optional stdenv.isDarwin llvmPackages.openmp;
 
@@ -45,10 +42,7 @@ stdenv.mkDerivation rec {
     pythonPackages.pytest
   ];
 
-  nativeCheckInputs = lib.optionals enablePython [
-    pythonPackages.scipy
-    pythonPackages.pytest-cov
-  ];
+  nativeCheckInputs = lib.optionals enablePython [ pythonPackages.scipy pythonPackages.pytest-cov ];
 
   preConfigure = ''
     mkdir -p build/external/src

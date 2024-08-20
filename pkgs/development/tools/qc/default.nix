@@ -46,9 +46,6 @@ buildGoModule rec {
     mainProgram = "qc";
     homepage = "https://github.com/qownnotes/qc";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      pbek
-      totoroot
-    ];
+    maintainers = with maintainers; [ pbek totoroot ];
   };
 }

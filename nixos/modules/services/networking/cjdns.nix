@@ -256,10 +256,7 @@ in
 
     systemd.services.cjdns = {
       description = "cjdns: routing engine designed for security, scalability, speed and ease of use";
-      wantedBy = [
-        "multi-user.target"
-        "sleep.target"
-      ];
+      wantedBy = [ "multi-user.target" "sleep.target" ];
       after = [ "network-online.target" ];
       bindsTo = [ "network-online.target" ];
 

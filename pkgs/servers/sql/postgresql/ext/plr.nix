@@ -19,10 +19,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    R
-    postgresql
-  ];
+  buildInputs = [ R postgresql ];
   preBuild = ''
     export USE_PGXS=1
   '';

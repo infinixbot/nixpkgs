@@ -17,9 +17,6 @@ collectd.overrideAttrs (oldAttrs: {
     homepage = "http://collectd.org";
     license = licenses.gpl2;
     platforms = platforms.linux; # TODO: collectd may be linux but the C client may be more portable?
-    maintainers = [
-      maintainers.sheenobu
-      maintainers.bjornfor
-    ];
+    maintainers = [ maintainers.sheenobu maintainers.bjornfor ];
   };
 })

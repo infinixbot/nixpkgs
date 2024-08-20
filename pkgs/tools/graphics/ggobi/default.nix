@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libxml2
-    gtk2
-  ];
+  buildInputs = [ libxml2 gtk2 ];
 
   configureFlags = [ "--with-all-plugins" ];
 

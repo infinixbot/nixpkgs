@@ -17,10 +17,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-VlpdZcqg7yWUADN8oD/IAgAXVdzJeIeymx2Pu/7E21o=";
 
-  subPackages = [
-    "."
-    "rice"
-  ];
+  subPackages = [ "." "rice" ];
 
   meta = with lib; {
     description = "Go package that makes working with resources such as html, js, css, images, templates very easy";

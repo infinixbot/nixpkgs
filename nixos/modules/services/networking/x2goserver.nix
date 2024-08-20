@@ -26,16 +26,7 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "programs"
-        "x2goserver"
-      ]
-      [
-        "services"
-        "x2goserver"
-      ]
-    )
+    (mkRenamedOptionModule [ "programs" "x2goserver" ] [ "services" "x2goserver" ])
   ];
 
   options.services.x2goserver = {
@@ -58,10 +49,7 @@ in
 
     nxagentDefaultOptions = mkOption {
       type = types.listOf types.str;
-      default = [
-        "-extension GLX"
-        "-nolisten tcp"
-      ];
+      default = [ "-extension GLX" "-nolisten tcp" ];
       description = ''
         List of default nx agent options.
       '';

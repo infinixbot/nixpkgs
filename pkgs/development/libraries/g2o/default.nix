@@ -28,22 +28,11 @@ mkDerivation rec {
   # Removes a reference to gcc that is only used in a debug message
   patches = [ ./remove-compiler-reference.patch ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
   separateDebugInfo = true;
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    eigen
-    suitesparse
-    blas
-    lapack
-    libGLU
-    qtbase
-    libqglviewer
-  ];
+  buildInputs = [ eigen suitesparse blas lapack libGLU qtbase libqglviewer ];
   propagatedBuildInputs = [ spdlog ];
 
   dontWrapQtApps = true;
@@ -65,11 +54,7 @@ mkDerivation rec {
   meta = with lib; {
     description = "General Framework for Graph Optimization";
     homepage = "https://github.com/RainerKuemmerle/g2o";
-    license = with licenses; [
-      bsd3
-      lgpl3
-      gpl3
-    ];
+    license = with licenses; [ bsd3 lgpl3 gpl3 ];
     maintainers = with maintainers; [ lopsided98 ];
     platforms = platforms.all;
     # fatal error: 'qglviewer.h' file not found

@@ -18,11 +18,7 @@ stdenvNoCC.mkDerivation rec {
     hash = "sha256-+7QtHgBuhJtQejiHeZ+QoedJo24LqSY51XRVLv9Ho2g=";
   };
 
-  nativeBuildInputs = [
-    imagemagick
-    inkscape
-    xcursorgen
-  ];
+  nativeBuildInputs = [ imagemagick inkscape xcursorgen ];
 
   postPatch = ''
     patchShebangs *.sh
@@ -38,10 +34,7 @@ stdenvNoCC.mkDerivation rec {
     "XCURSORGEN=xcursorgen"
   ];
 
-  buildFlags = [
-    "theme"
-    "theme.left"
-  ];
+  buildFlags = [ "theme" "theme.left" ];
 
   # The Makefile declares a dependency on the value of $(INKSCAPE) for some reason;
   # it's unnecessary for building though.

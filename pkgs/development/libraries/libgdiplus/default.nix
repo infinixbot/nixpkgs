@@ -34,17 +34,11 @@ stdenv.mkDerivation (finalAttrs: {
 
   NIX_LDFLAGS = "-lgif";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   hardeningDisable = [ "format" ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
   configureFlags = lib.optional stdenv.cc.isClang "--host=${stdenv.hostPlatform.system}";
 

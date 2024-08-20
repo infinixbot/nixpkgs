@@ -62,11 +62,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = {
     description = "Qt and QML bindings for wlroots";
     homepage = "https://github.com/vioken/qwlroots";
-    license = with lib.licenses; [
-      gpl3Only
-      lgpl3Only
-      asl20
-    ];
+    license = with lib.licenses; [ gpl3Only lgpl3Only asl20 ];
     platforms = wlroots.meta.platforms;
     maintainers = with lib.maintainers; [ rewine ];
   };

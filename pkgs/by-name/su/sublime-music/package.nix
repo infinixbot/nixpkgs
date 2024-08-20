@@ -102,10 +102,7 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "https://sublimemusic.app";
     changelog = "https://github.com/sublime-music/sublime-music/blob/v${version}/CHANGELOG.rst";
     license = licenses.gpl3Plus;
-    maintainers = with maintainers; [
-      albakham
-      sumnerevans
-    ];
+    maintainers = with maintainers; [ albakham sumnerevans ];
     mainProgram = "sublime-music";
   };
 }

@@ -21,13 +21,7 @@ stdenv.mkDerivation rec {
   pname = "libxmlb";
   version = "0.3.19";
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-    "devdoc"
-    "installedTests"
-  ];
+  outputs = [ "out" "lib" "dev" "devdoc" "installedTests" ];
 
   src = fetchFromGitHub {
     owner = "hughsie";

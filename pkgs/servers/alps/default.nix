@@ -53,11 +53,7 @@ buildGoModule rec {
     description = "Simple and extensible webmail";
     homepage = "https://git.sr.ht/~migadu/alps";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      booklearner
-      madonius
-      hmenke
-    ];
+    maintainers = with maintainers; [ booklearner madonius hmenke ];
     mainProgram = "alps";
   };
 }

@@ -49,10 +49,7 @@ buildGoModule rec {
     homepage = "https://github.com/GoogleContainerTools/kaniko";
     license = lib.licenses.asl20;
     platforms = lib.platforms.linux;
-    maintainers = with lib.maintainers; [
-      jk
-      qjoly
-    ];
+    maintainers = with lib.maintainers; [ jk qjoly ];
     mainProgram = "executor";
   };
 }

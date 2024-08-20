@@ -3,11 +3,7 @@ import ./make-test-python.nix (
   {
     name = "containers-imperative";
     meta = {
-      maintainers = with lib.maintainers; [
-        aristid
-        aszlig
-        kampfschlaefer
-      ];
+      maintainers = with lib.maintainers; [ aristid aszlig kampfschlaefer ];
     };
 
     nodes.machine =

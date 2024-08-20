@@ -28,26 +28,10 @@ stdenv.mkDerivation rec {
     patchShebangs --build check-manpages.sh Documentation/install-docs.sh.in
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "devman"
-    "doc"
-  ];
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    asciidoc
-    xmlto
-    docbook_xml_dtd_45
-    docbook_xsl
-  ];
+  outputs = [ "out" "dev" "devman" "doc" ];
+  nativeBuildInputs = [ meson ninja pkg-config asciidoc xmlto docbook_xml_dtd_45 docbook_xsl ];
 
-  ninjaFlags = [
-    "all"
-    "docs"
-  ];
+  ninjaFlags = [ "all" "docs" ];
 
   doCheck = true;
   checkInputs = [ cunit ];

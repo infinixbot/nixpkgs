@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
   };
 
   dontBuild = true;
-  nativeBuildInputs = [
-    libarchive
-    p7zip
-  ];
+  nativeBuildInputs = [ libarchive p7zip ];
 
   unpackPhase = ''
     7z x $src

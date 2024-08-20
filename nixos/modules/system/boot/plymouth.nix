@@ -244,10 +244,7 @@ in
         plymouth-quit.wantedBy = [ "multi-user.target" ];
         plymouth-read-write.wantedBy = [ "sysinit.target" ];
         plymouth-reboot.wantedBy = [ "reboot.target" ];
-        plymouth-start.wantedBy = [
-          "initrd-switch-root.target"
-          "sysinit.target"
-        ];
+        plymouth-start.wantedBy = [ "initrd-switch-root.target" "sysinit.target" ];
         plymouth-switch-root-initramfs.wantedBy = [
           "halt.target"
           "kexec.target"

@@ -53,10 +53,7 @@ stdenv.mkDerivation rec {
   # $guest output contains all executables needed for cloud-init and $out the rest + $guest
   # This is similar to debian's package split into cloud-image-utils and cloud-guest-utils
   # The reason is to reduce the closure size
-  outputs = [
-    "out"
-    "guest"
-  ];
+  outputs = [ "out" "guest" ];
 
   postFixup = ''
     moveToOutput bin/ec2metadata $guest

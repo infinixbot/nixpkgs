@@ -109,10 +109,7 @@ in
       packages = [ cfg.package ];
       services.stalwart-mail = {
         wantedBy = [ "multi-user.target" ];
-        after = [
-          "local-fs.target"
-          "network.target"
-        ];
+        after = [ "local-fs.target" "network.target" ];
 
         preStart =
           if useLegacyStorage then
@@ -156,18 +153,12 @@ in
           ProtectKernelTunables = true;
           ProtectProc = "invisible";
           ProtectSystem = "strict";
-          RestrictAddressFamilies = [
-            "AF_INET"
-            "AF_INET6"
-          ];
+          RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
           RestrictNamespaces = true;
           RestrictRealtime = true;
           RestrictSUIDSGID = true;
           SystemCallArchitectures = "native";
-          SystemCallFilter = [
-            "@system-service"
-            "~@privileged"
-          ];
+          SystemCallFilter = [ "@system-service" "~@privileged" ];
           UMask = "0077";
         };
         unitConfig.ConditionPathExists = [
@@ -186,10 +177,6 @@ in
   };
 
   meta = {
-    maintainers = with maintainers; [
-      happysalada
-      pacien
-      onny
-    ];
+    maintainers = with maintainers; [ happysalada pacien onny ];
   };
 }

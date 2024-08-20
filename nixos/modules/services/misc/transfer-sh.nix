@@ -28,15 +28,7 @@ in
     package = mkPackageOption pkgs "transfer-sh" { };
 
     settings = mkOption {
-      type = types.submodule {
-        freeformType =
-          with types;
-          attrsOf (oneOf [
-            bool
-            int
-            str
-          ]);
-      };
+      type = types.submodule { freeformType = with types; attrsOf (oneOf [ bool int str ]); };
       default = { };
       example = {
         LISTENER = ":8080";
@@ -53,12 +45,7 @@ in
     };
 
     provider = mkOption {
-      type = types.enum [
-        "local"
-        "s3"
-        "storj"
-        "gdrive"
-      ];
+      type = types.enum [ "local" "s3" "storj" "gdrive" ];
       default = "local";
       description = "Storage providers to use";
     };
@@ -114,10 +101,7 @@ in
             ProtectKernelModules = true;
             ProtectKernelTunables = true;
             ProtectProc = "invisible";
-            RestrictAddressFamilies = [
-              "AF_INET"
-              "AF_INET6"
-            ];
+            RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
             RestrictNamespaces = true;
             RestrictRealtime = true;
             SystemCallArchitectures = [ "native" ];

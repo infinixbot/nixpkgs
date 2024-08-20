@@ -55,13 +55,7 @@ stdenv.mkDerivation {
     ncurses
   ];
 
-  nativeBuildInputs = [
-    cmake
-    flex
-    lemon
-    wrapQtAppsHook
-    copyDesktopItems
-  ];
+  nativeBuildInputs = [ cmake flex lemon wrapQtAppsHook copyDesktopItems ];
 
   desktopItems = [
     (makeDesktopItem {
@@ -71,15 +65,8 @@ stdenv.mkDerivation {
       genericName = "CAD Application";
       exec = "antimony %f";
       icon = "antimony";
-      categories = [
-        "Graphics"
-        "Science"
-        "Engineering"
-      ];
-      mimeTypes = [
-        "application/x-extension-sb"
-        "application/x-antimony"
-      ];
+      categories = [ "Graphics" "Science" "Engineering" ];
+      mimeTypes = [ "application/x-extension-sb" "application/x-antimony" ];
       startupWMClass = "antimony";
     })
   ];

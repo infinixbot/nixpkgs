@@ -50,12 +50,7 @@ let
         inherit rev hash;
       };
 
-      buildInputs = [
-        ssl
-        boost
-        msgpack-cxx
-        toml11
-      ];
+      buildInputs = [ ssl boost msgpack-cxx toml11 ];
 
       nativeBuildInputs = [
         pkg-config
@@ -145,22 +140,14 @@ let
         mv lib/fdb-java-*.jar $lib/share/java/fdb-java.jar
       '';
 
-      outputs = [
-        "out"
-        "dev"
-        "lib"
-        "pythonsrc"
-      ];
+      outputs = [ "out" "dev" "lib" "pythonsrc" ];
 
       meta = with lib; {
         description = "Open source, distributed, transactional key-value store";
         homepage = "https://www.foundationdb.org";
         license = licenses.asl20;
         platforms = [ "x86_64-linux" ] ++ lib.optionals (!(avxEnabled version)) [ "aarch64-linux" ];
-        maintainers = with maintainers; [
-          thoughtpolice
-          lostnet
-        ];
+        maintainers = with maintainers; [ thoughtpolice lostnet ];
       };
     };
 in

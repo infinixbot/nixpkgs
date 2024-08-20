@@ -26,11 +26,7 @@ stdenv.mkDerivation rec {
     "-DENABLE_TESTS=0" # tests fail because xcb platform plugin is not found
   ];
 
-  nativeBuildInputs = [
-    cmake
-    doxygen
-    libsForQt5.wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ cmake doxygen libsForQt5.wrapQtAppsHook ];
 
   buildInputs =
     [

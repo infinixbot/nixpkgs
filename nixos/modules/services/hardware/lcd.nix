@@ -170,10 +170,7 @@ with lib;
 
     systemd.targets.lcd = {
       description = "LCD client/server";
-      after = [
-        "lcdd.service"
-        "lcdproc.service"
-      ];
+      after = [ "lcdd.service" "lcdproc.service" ];
       wantedBy = [ "multi-user.target" ];
     };
   };

@@ -142,12 +142,7 @@ buildFHSEnv {
     PLEX_USR_PATH=${lib.makeSearchPath "usr/lib/x86_64-linux-gnu" [ plex-desktop ]}
 
     set -o allexport
-    LD_LIBRARY_PATH=${
-      lib.makeLibraryPath [
-        plex-desktop
-        libglvnd-1_4_0
-      ]
-    }:$PLEX_USR_PATH
+    LD_LIBRARY_PATH=${lib.makeLibraryPath [ plex-desktop libglvnd-1_4_0 ]}:$PLEX_USR_PATH
     LIBGL_DRIVERS_PATH=$PLEX_USR_PATH/dri
     ${lib.toShellVars extraEnv}
     exec ${plex-desktop}/Plex.sh

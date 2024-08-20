@@ -32,10 +32,7 @@ buildGoModule {
       The main goal of morty is to provide a result proxy for searx, but it can be used as a standalone sanitizer service too.
     '';
     homepage = "https://github.com/asciimoo/morty";
-    maintainers = with maintainers; [
-      leenaars
-      SuperSandro2000
-    ];
+    maintainers = with maintainers; [ leenaars SuperSandro2000 ];
     license = licenses.agpl3Only;
   };
 }

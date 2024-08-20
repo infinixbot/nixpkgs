@@ -17,12 +17,7 @@ let
     pname = "link-grammar";
     version = "5.10.5";
 
-    outputs = [
-      "bin"
-      "out"
-      "dev"
-      "man"
-    ];
+    outputs = [ "bin" "out" "dev" "man" ];
 
     src = fetchurl {
       url = "http://www.abisource.com/downloads/${pname}/${version}/${pname}-${version}.tar.gz";

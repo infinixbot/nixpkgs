@@ -21,10 +21,7 @@ mkDerivation {
     mainProgram = "kwalletmanager5";
     license = with lib.licenses; [ gpl2 ];
   };
-  nativeBuildInputs = [
-    extra-cmake-modules
-    kdoctools
-  ];
+  nativeBuildInputs = [ extra-cmake-modules kdoctools ];
   buildInputs = [
     kauth
     kcmutils

@@ -49,11 +49,7 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  installTargets = [
-    "install"
-    "install-po"
-    "install-desktop-file"
-  ];
+  installTargets = [ "install" "install-po" "install-desktop-file" ];
 
   meta = with lib; {
     description = "GPS photo correlation tool, to add EXIF geotags";

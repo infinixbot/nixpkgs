@@ -40,21 +40,9 @@ stdenv.mkDerivation rec {
     hash = "sha256-LaOTJiS+COJUlyJiN9H2kEKwv5lbJqOHsUXOnb+IQFA=";
   };
 
-  nativeBuildInputs = [
-    lazarus
-    fpc
-    makeWrapper
-  ];
+  nativeBuildInputs = [ lazarus fpc makeWrapper ];
 
-  buildInputs = [
-    pango
-    cairo
-    glib
-    atk
-    gtk2
-    libX11
-    gdk-pixbuf
-  ];
+  buildInputs = [ pango cairo glib atk gtk2 libX11 gdk-pixbuf ];
 
   NIX_LDFLAGS = "--as-needed -rpath ${lib.makeLibraryPath buildInputs}";
 

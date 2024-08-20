@@ -19,14 +19,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-R4ycoSn9LjRD/icxS0VeIR4NjGC8j/ffcDhz3u7lgMI=";
   };
 
-  outputs = [
-    "bin"
-    "doc"
-    "man"
-    "dev"
-    "lib"
-    "out"
-  ];
+  outputs = [ "bin" "doc" "man" "dev" "lib" "out" ];
 
   # https://github.com/jqlang/jq/issues/2871
   postPatch = lib.optionalString stdenv.isFreeBSD ''
@@ -49,11 +42,7 @@ stdenv.mkDerivation rec {
   '';
 
   buildInputs = lib.optionals onigurumaSupport [ oniguruma ];
-  nativeBuildInputs = [
-    removeReferencesTo
-    autoreconfHook
-    bison
-  ];
+  nativeBuildInputs = [ removeReferencesTo autoreconfHook bison ];
 
   # Darwin requires _REENTRANT be defined to use functions like `lgamma_r`.
   # Otherwise, configure will detect that they’re in libm, but the build will fail
@@ -97,11 +86,7 @@ stdenv.mkDerivation rec {
     description = "Lightweight and flexible command-line JSON processor";
     homepage = "https://jqlang.github.io/jq/";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      raskin
-      artturin
-      ncfavier
-    ];
+    maintainers = with maintainers; [ raskin artturin ncfavier ];
     platforms = platforms.unix;
     downloadPage = "https://jqlang.github.io/jq/download/";
     mainProgram = "jq";

@@ -15,11 +15,7 @@ stdenv.mkDerivation rec {
     sha256 = "14fmwzki1rlz8bs2p810lk6jqdxsk966d8drgsjmi54cd00rrikg";
   };
 
-  outputs = [
-    "out"
-    "man"
-    "doc"
-  ];
+  outputs = [ "out" "man" "doc" ];
   strictDeps = true;
 
   # Process Requires.private properly, see

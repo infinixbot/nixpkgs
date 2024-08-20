@@ -32,11 +32,7 @@ let
       enable = lib.mkEnableOption "this proxy";
 
       type = lib.mkOption {
-        type = lib.types.enum [
-          "http"
-          "socks4"
-          "socks5"
-        ];
+        type = lib.types.enum [ "http" "socks4" "socks5" ];
         description = "Proxy type.";
       };
 
@@ -69,11 +65,7 @@ in
 
       chain = {
         type = lib.mkOption {
-          type = lib.types.enum [
-            "dynamic"
-            "strict"
-            "random"
-          ];
+          type = lib.types.enum [ "dynamic" "strict" "random" ];
           default = "strict";
           description = ''
             `dynamic` - Each connection will be done via chained proxies
@@ -109,11 +101,7 @@ in
       quietMode = lib.mkEnableOption "Quiet mode (no output from the library)";
 
       remoteDNSSubnet = lib.mkOption {
-        type = lib.types.enum [
-          10
-          127
-          224
-        ];
+        type = lib.types.enum [ 10 127 224 ];
         default = 224;
         description = ''
           Set the class A subnet number to use for the internal remote DNS mapping, uses the reserved 224.x.x.x range by default.

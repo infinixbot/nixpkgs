@@ -17,10 +17,7 @@ buildDunePackage rec {
     hash = "sha256-kPbmO9EkClHYubL3IgWb15zgC1J2vdYji49cYTwOc4g=";
   };
 
-  propagatedBuildInputs = [
-    seq
-    stdlib-shims
-  ];
+  propagatedBuildInputs = [ seq stdlib-shims ];
 
   doCheck = true;
 

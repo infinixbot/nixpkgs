@@ -32,10 +32,7 @@ stdenv.mkDerivation rec {
     description = "Library of PureData classes, bringing some level of compatibility between Max/MSP and Pd environments";
     homepage = "http://puredata.info/downloads/cyclone";
     license = licenses.tcltk;
-    maintainers = with maintainers; [
-      magnetophon
-      carlthome
-    ];
+    maintainers = with maintainers; [ magnetophon carlthome ];
     platforms = platforms.linux;
   };
 }

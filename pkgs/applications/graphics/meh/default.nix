@@ -22,18 +22,9 @@ stdenv.mkDerivation {
 
   installFlags = [ "PREFIX=${placeholder "out"}" ];
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
-  buildInputs = [
-    libXext
-    libX11
-    libjpeg
-    libpng
-    giflib
-  ];
+  buildInputs = [ libXext libX11 libjpeg libpng giflib ];
 
   meta = {
     description = "Minimal image viewer using raw XLib";

@@ -10,10 +10,7 @@ buildDunePackage {
   pname = "ppx_lun";
   inherit (lun) version src;
 
-  propagatedBuildInputs = [
-    lun
-    ppxlib
-  ];
+  propagatedBuildInputs = [ lun ppxlib ];
 
   checkInputs = [ fmt ];
 

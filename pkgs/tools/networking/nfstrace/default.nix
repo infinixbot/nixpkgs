@@ -49,12 +49,7 @@ stdenv.mkDerivation rec {
        --replace "-Werror" ""
   '';
 
-  buildInputs = [
-    json_c
-    libpcap
-    ncurses
-    libtirpc
-  ];
+  buildInputs = [ json_c libpcap ncurses libtirpc ];
   nativeBuildInputs = [ cmake ];
 
   # To build with GCC 8+ it needs:

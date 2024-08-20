@@ -91,10 +91,7 @@ stdenv.mkDerivation rec {
     ++ lib.optional withAnthy anthy
     ++ lib.optional withGtk2 gtk2
     ++ lib.optional withGtk3 gtk3
-    ++ lib.optionals withQt5 [
-      qt5.qtbase
-      qt5.qtx11extras
-    ]
+    ++ lib.optionals withQt5 [ qt5.qtbase qt5.qtx11extras ]
     ++ lib.optional withLibnotify libnotify
     ++ lib.optional withSqlite sqlite
     ++ lib.optionals withNetworking [
@@ -183,9 +180,6 @@ stdenv.mkDerivation rec {
     description = "Multilingual input method framework";
     license = licenses.bsd3;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      ericsagnes
-      oxij
-    ];
+    maintainers = with maintainers; [ ericsagnes oxij ];
   };
 }

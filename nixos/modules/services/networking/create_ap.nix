@@ -16,13 +16,7 @@ in
     services.create_ap = {
       enable = mkEnableOption "setting up wifi hotspots using create_ap";
       settings = mkOption {
-        type =
-          with types;
-          attrsOf (oneOf [
-            int
-            bool
-            str
-          ]);
+        type = with types; attrsOf (oneOf [ int bool str ]);
         default = { };
         description = ''
           Configuration for `create_ap`.

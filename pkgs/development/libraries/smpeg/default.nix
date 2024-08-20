@@ -51,27 +51,11 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  nativeBuildInputs = [
-    autoconf
-    automake
-    libtool
-    m4
-    pkg-config
-    makeWrapper
-  ];
+  nativeBuildInputs = [ autoconf automake libtool m4 pkg-config makeWrapper ];
 
-  buildInputs =
-    [ SDL ]
-    ++ lib.optionals (!stdenv.isDarwin) [
-      gtk2
-      libGLU
-      libGL
-    ];
+  buildInputs = [ SDL ] ++ lib.optionals (!stdenv.isDarwin) [ gtk2 libGLU libGL ];
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   preConfigure = ''
     touch NEWS AUTHORS ChangeLog

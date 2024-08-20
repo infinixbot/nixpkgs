@@ -144,10 +144,7 @@ stdenv.mkDerivation {
       desktopName = "Epson Scan 2";
       genericName = "Epson Scan 2";
       comment = description;
-      categories = [
-        "Graphics"
-        "Scanning"
-      ];
+      categories = [ "Graphics" "Scanning" ];
     })
   ];
 
@@ -170,10 +167,7 @@ stdenv.mkDerivation {
       </literal>
     '';
     homepage = "https://support.epson.net/linux/en/epsonscan2.php";
-    platforms = [
-      "i686-linux"
-      "x86_64-linux"
-    ];
+    platforms = [ "i686-linux" "x86_64-linux" ];
     sourceProvenance =
       with lib.sourceTypes;
       [ fromSource ] ++ lib.optionals withNonFreePlugins [ binaryNativeCode ];

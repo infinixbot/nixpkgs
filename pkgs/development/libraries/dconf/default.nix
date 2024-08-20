@@ -24,11 +24,7 @@ stdenv.mkDerivation rec {
   pname = "dconf";
   version = "0.40.0";
 
-  outputs = [
-    "out"
-    "lib"
-    "dev"
-  ] ++ lib.optional withDocs "devdoc";
+  outputs = [ "out" "lib" "dev" ] ++ lib.optional withDocs "devdoc";
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${lib.versions.majorMinor version}/${pname}-${version}.tar.xz";

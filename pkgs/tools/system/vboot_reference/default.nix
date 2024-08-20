@@ -21,12 +21,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    libuuid
-    libyaml
-    openssl
-    xz
-  ];
+  buildInputs = [ libuuid libyaml openssl xz ];
 
   enableParallelBuilding = true;
 

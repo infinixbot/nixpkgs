@@ -30,10 +30,7 @@ stdenvNoCC.mkDerivation {
     homepage = "http://dotcolon.net/font/eunomia/";
     description = "Futuristic decorative font";
     platforms = platforms.all;
-    maintainers = with maintainers; [
-      leenaars
-      minijackson
-    ];
+    maintainers = with maintainers; [ leenaars minijackson ];
     license = licenses.ofl;
   };
 }

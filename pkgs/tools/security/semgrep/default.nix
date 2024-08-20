@@ -77,10 +77,7 @@ buildPythonApplication rec {
   doCheck = true;
 
   nativeCheckInputs =
-    [
-      git
-      pytestCheckHook
-    ]
+    [ git pytestCheckHook ]
     ++ (with pythonPackages; [
       flaky
       pytest-snapshot

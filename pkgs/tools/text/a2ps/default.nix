@@ -26,18 +26,8 @@ stdenv.mkDerivation rec {
     substituteInPlace tests/defs.in --replace "/bin/rm" "rm"
   '';
 
-  nativeBuildInputs = [
-    autoconf
-    bison
-    file
-    perl
-    pkg-config
-  ];
-  buildInputs = [
-    boehmgc
-    gperf
-    libpaper
-  ];
+  nativeBuildInputs = [ autoconf bison file perl pkg-config ];
+  buildInputs = [ boehmgc gperf libpaper ];
 
   strictDeps = true;
 

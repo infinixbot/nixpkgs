@@ -26,17 +26,8 @@ buildGoModule {
   inherit pname version src;
   vendorHash = "sha256-OOiiKtKb+BiFkoSBUQQfqm4dMfDW3Is+30Kwcdg8LNA=";
 
-  nativeBuildInputs = [
-    pkg-config
-    installShellFiles
-    wrapGAppsHook3
-  ];
-  buildInputs = [
-    webkitgtk_4_1
-    glib
-    fuse
-    glib-networking
-  ];
+  nativeBuildInputs = [ pkg-config installShellFiles wrapGAppsHook3 ];
+  buildInputs = [ webkitgtk_4_1 glib fuse glib-networking ];
 
   ldflags = [ "-X github.com/jstaf/onedriver/cmd/common.commit=v${version}" ];
 

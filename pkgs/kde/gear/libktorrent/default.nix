@@ -11,9 +11,5 @@ mkKdeDerivation {
 
   extraNativeBuildInputs = [ doxygen ];
   extraBuildInputs = [ qt5compat ];
-  extraPropagatedBuildInputs = [
-    boost
-    gmp
-    libgcrypt
-  ];
+  extraPropagatedBuildInputs = [ boost gmp libgcrypt ];
 }

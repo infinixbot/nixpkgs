@@ -99,10 +99,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Open-source multi-system emulator with a focus on accuracy and preservation";
     mainProgram = "ares";
     license = lib.licenses.isc;
-    maintainers = with lib.maintainers; [
-      Madouura
-      AndersonTorres
-    ];
+    maintainers = with lib.maintainers; [ Madouura AndersonTorres ];
     platforms = lib.platforms.unix;
     broken = stdenv.isDarwin;
   };

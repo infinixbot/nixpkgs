@@ -21,12 +21,7 @@ stdenv.mkDerivation rec {
     patchShebangs doc/doxyparse.pl
   '';
 
-  outputs = [
-    "out"
-    "dev"
-    "man"
-    "examples"
-  ];
+  outputs = [ "out" "dev" "man" "examples" ];
 
   nativeBuildInputs = [ perl ];
   buildInputs = [ openssl ];

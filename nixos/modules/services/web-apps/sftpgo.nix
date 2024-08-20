@@ -39,10 +39,7 @@ in
       description = ''
         Additional command line arguments to pass to the sftpgo daemon.
       '';
-      example = [
-        "--log-level"
-        "info"
-      ];
+      example = [ "--log-level" "info" ];
     };
 
     dataDir = mkOption {
@@ -258,11 +255,7 @@ in
                   };
 
                   encryption = mkOption {
-                    type = types.enum [
-                      0
-                      1
-                      2
-                    ];
+                    type = types.enum [ 0 1 2 ];
                     default = 1;
                     description = ''
                       Encryption scheme:
@@ -273,11 +266,7 @@ in
                   };
 
                   auth_type = mkOption {
-                    type = types.enum [
-                      0
-                      1
-                      2
-                    ];
+                    type = types.enum [ 0 1 2 ];
                     default = 0;
                     description = ''
                       - `0`: Plain
@@ -384,10 +373,7 @@ in
           RestrictRealtime = true;
           RestrictSUIDSGID = true;
           SystemCallArchitectures = "native";
-          SystemCallFilter = [
-            "@system-service"
-            "~@privileged"
-          ];
+          SystemCallFilter = [ "@system-service" "~@privileged" ];
           UMask = "0077";
         })
         (mkIf hasPrivilegedPorts {

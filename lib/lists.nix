@@ -1318,10 +1318,7 @@ rec {
     f: list:
     let
       # Heterogenous list as pair may be ugly, but requires minimal allocations.
-      pairs = map (x: [
-        (f x)
-        x
-      ]) list;
+      pairs = map (x: [ (f x) x ]) list;
     in
     map (x: builtins.elemAt x 1) (
       sort
@@ -1406,10 +1403,7 @@ rec {
     lst:
     let
       vectorise = s: map (x: if isList x then toInt (head x) else x) (builtins.split "(0|[1-9][0-9]*)" s);
-      prepared = map (x: [
-        (vectorise x)
-        x
-      ]) lst; # remember vectorised version for O(n) regex splits
+      prepared = map (x: [ (vectorise x) x ]) lst; # remember vectorised version for O(n) regex splits
       less = a: b: (compareLists compare (head a) (head b)) < 0;
     in
     map (x: elemAt x 1) (sort less prepared);

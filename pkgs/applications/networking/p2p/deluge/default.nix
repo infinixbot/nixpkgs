@@ -109,10 +109,7 @@ let
         description = "Torrent client";
         homepage = "https://deluge-torrent.org";
         license = licenses.gpl3Plus;
-        maintainers = with maintainers; [
-          domenkozar
-          ebzzry
-        ];
+        maintainers = with maintainers; [ domenkozar ebzzry ];
         platforms = platforms.all;
       };
     };

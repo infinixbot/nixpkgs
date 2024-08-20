@@ -47,20 +47,11 @@ stdenv.mkDerivation rec {
     sed -i '/xssep/d;/xsgsep/d;/xssyevr/d' TESTING/CMakeLists.txt
   '';
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   nativeBuildInputs = [ cmake ];
-  nativeCheckInputs = [
-    openssh
-    mpiCheckPhaseHook
-  ];
-  buildInputs = [
-    blas
-    lapack
-  ];
+  nativeCheckInputs = [ openssh mpiCheckPhaseHook ];
+  buildInputs = [ blas lapack ];
   propagatedBuildInputs = [ mpi ];
   hardeningDisable = lib.optionals (stdenv.isAarch64 && stdenv.isDarwin) [ "stackprotector" ];
 
@@ -101,11 +92,7 @@ stdenv.mkDerivation rec {
     description = "Library of high-performance linear algebra routines for parallel distributed memory machines";
     license = licenses.bsd3;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      costrouc
-      markuskowa
-      gdinh
-    ];
+    maintainers = with maintainers; [ costrouc markuskowa gdinh ];
     # xslu and xsllt tests fail on x86 darwin
     broken = stdenv.isDarwin && stdenv.isx86_64;
   };

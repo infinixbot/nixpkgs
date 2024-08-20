@@ -54,10 +54,7 @@ rec {
     runCommand "initrd-utils"
       {
         nativeBuildInputs = [ buildPackages.nukeReferences ];
-        allowedReferences = [
-          "out"
-          modulesClosure
-        ]; # prevent accidents like glibc being included in the initrd
+        allowedReferences = [ "out" modulesClosure ]; # prevent accidents like glibc being included in the initrd
       }
       ''
         mkdir -p $out/bin
@@ -372,10 +369,7 @@ rec {
       {
         requiredSystemFeatures = [ "kvm" ];
         builder = "${bash}/bin/sh";
-        args = [
-          "-e"
-          (vmRunCommand qemuCommandLinux)
-        ];
+        args = [ "-e" (vmRunCommand qemuCommandLinux) ];
         origArgs = args;
         origBuilder = builder;
         QEMU_OPTS = "${QEMU_OPTS} -m ${toString memSize}";
@@ -420,10 +414,7 @@ rec {
     runInLinuxVM (
       stdenv.mkDerivation {
         name = "extract-file-mtd";
-        buildInputs = [
-          pkgs.util-linux
-          pkgs.mtdutils
-        ];
+        buildInputs = [ pkgs.util-linux pkgs.mtdutils ];
         buildCommand = ''
           ln -s ${kernel}/lib /lib
           ${kmod}/bin/modprobe mtd
@@ -612,10 +603,7 @@ rec {
     runInLinuxImage (
       stdenv.mkDerivation (
         {
-          prePhases = [
-            "prepareImagePhase"
-            "sysInfoPhase"
-          ];
+          prePhases = [ "prepareImagePhase" "sysInfoPhase" ];
           dontConfigure = true;
 
           outDir = "rpms/${attrs.diskImage.name}";
@@ -711,13 +699,7 @@ rec {
           buildCommand = ''
             ${createRootFS}
 
-            PATH=$PATH:${
-              lib.makeBinPath [
-                pkgs.dpkg
-                pkgs.glibc
-                pkgs.xz
-              ]
-            }
+            PATH=$PATH:${lib.makeBinPath [ pkgs.dpkg pkgs.glibc pkgs.xz ]}
 
             # Unpack the .debs.  We do this to prevent pre-install scripts
             # (which have lots of circular dependencies) from barfing.
@@ -810,10 +792,7 @@ rec {
     assert (builtins.length packagesLists) == (builtins.length urlPrefixes);
     runCommand "${name}.nix"
       {
-        nativeBuildInputs = [
-          buildPackages.perl
-          buildPackages.perlPackages.XMLSimple
-        ];
+        nativeBuildInputs = [ buildPackages.perl buildPackages.perlPackages.XMLSimple ];
         inherit archs;
       }
       ''
@@ -848,10 +827,7 @@ rec {
       extraPackages ? [ ],
       preInstall ? "",
       postInstall ? "",
-      archs ? [
-        "noarch"
-        "i386"
-      ],
+      archs ? [ "noarch" "i386" ],
       runScripts ? true,
       createRootFS ? defaultCreateRootFS,
       QEMU_OPTS ? "",
@@ -896,32 +872,25 @@ rec {
       packages,
     }:
 
-    runCommand "${name}.nix"
-      {
-        nativeBuildInputs = [
-          buildPackages.perl
-          buildPackages.dpkg
-        ];
-      }
-      ''
-        for i in ${toString packagesLists}; do
-          echo "adding $i..."
-          case $i in
-            *.xz | *.lzma)
-              xz -d < $i >> ./Packages
-              ;;
-            *.bz2)
-              bunzip2 < $i >> ./Packages
-              ;;
-            *.gz)
-              gzip -dc < $i >> ./Packages
-              ;;
-          esac
-        done
+    runCommand "${name}.nix" { nativeBuildInputs = [ buildPackages.perl buildPackages.dpkg ]; } ''
+      for i in ${toString packagesLists}; do
+        echo "adding $i..."
+        case $i in
+          *.xz | *.lzma)
+            xz -d < $i >> ./Packages
+            ;;
+          *.bz2)
+            bunzip2 < $i >> ./Packages
+            ;;
+          *.gz)
+            gzip -dc < $i >> ./Packages
+            ;;
+        esac
+      done
 
-        perl -w ${deb/deb-closure.pl} \
-          ./Packages ${urlPrefix} ${toString packages} > $out
-      '';
+      perl -w ${deb/deb-closure.pl} \
+        ./Packages ${urlPrefix} ${toString packages} > $out
+    '';
 
   /*
     Helper function that combines debClosureGenerator and
@@ -989,14 +958,8 @@ rec {
           sha256 = "880055a50c05b20641530d09b23f64501a000b2f92fe252417c530178730a95e";
         };
         urlPrefix = "mirror://fedora/linux/releases/${version}/Everything/x86_64/os";
-        archs = [
-          "noarch"
-          "x86_64"
-        ];
-        packages = commonFedoraPackages ++ [
-          "cronie"
-          "util-linux"
-        ];
+        archs = [ "noarch" "x86_64" ];
+        packages = commonFedoraPackages ++ [ "cronie" "util-linux" ];
         unifiedSystemDir = true;
       };
 
@@ -1012,14 +975,8 @@ rec {
           sha256 = "48986ce4583cd09825c6d437150314446f0f49fa1a1bd62dcfa1085295030fe9";
         };
         urlPrefix = "mirror://fedora/linux/releases/${version}/Everything/x86_64/os";
-        archs = [
-          "noarch"
-          "x86_64"
-        ];
-        packages = commonFedoraPackages ++ [
-          "cronie"
-          "util-linux"
-        ];
+        archs = [ "noarch" "x86_64" ];
+        packages = commonFedoraPackages ++ [ "cronie" "util-linux" ];
         unifiedSystemDir = true;
       };
 
@@ -1035,10 +992,7 @@ rec {
           url = "${urlPrefix}/repodata/${sha256}-primary.xml.gz";
           sha256 = "b826a45082ef68340325c0855f3d2e5d5a4d0f77d28ba3b871791d6f14a97aeb";
         };
-        archs = [
-          "noarch"
-          "i386"
-        ];
+        archs = [ "noarch" "i386" ];
         packages = commonCentOSPackages ++ [ "procps" ];
       };
 
@@ -1054,10 +1008,7 @@ rec {
           url = "${urlPrefix}/repodata/${sha256}-primary.xml.gz";
           sha256 = "ed2b2d4ac98d774d4cd3e91467e1532f7e8b0275cfc91a0d214b532dcaf1e979";
         };
-        archs = [
-          "noarch"
-          "x86_64"
-        ];
+        archs = [ "noarch" "x86_64" ];
         packages = commonCentOSPackages ++ [ "procps" ];
       };
 
@@ -1074,10 +1025,7 @@ rec {
           url = "${urlPrefix}/repodata/${sha256}-primary.xml.gz";
           sha256 = "b686d3a0f337323e656d9387b9a76ce6808b26255fc3a138b1a87d3b1cb95ed5";
         };
-        archs = [
-          "noarch"
-          "x86_64"
-        ];
+        archs = [ "noarch" "x86_64" ];
         packages = commonCentOSPackages ++ [ "procps-ng" ];
       };
   };
@@ -1099,10 +1047,7 @@ rec {
         })
       ];
       urlPrefix = "mirror://ubuntu";
-      packages = commonDebPackages ++ [
-        "diffutils"
-        "libc-bin"
-      ];
+      packages = commonDebPackages ++ [ "diffutils" "libc-bin" ];
     };
 
     ubuntu1404x86_64 = {
@@ -1119,10 +1064,7 @@ rec {
         })
       ];
       urlPrefix = "mirror://ubuntu";
-      packages = commonDebPackages ++ [
-        "diffutils"
-        "libc-bin"
-      ];
+      packages = commonDebPackages ++ [ "diffutils" "libc-bin" ];
     };
 
     ubuntu1604i386 = {
@@ -1139,10 +1081,7 @@ rec {
         })
       ];
       urlPrefix = "mirror://ubuntu";
-      packages = commonDebPackages ++ [
-        "diffutils"
-        "libc-bin"
-      ];
+      packages = commonDebPackages ++ [ "diffutils" "libc-bin" ];
     };
 
     ubuntu1604x86_64 = {
@@ -1159,10 +1098,7 @@ rec {
         })
       ];
       urlPrefix = "mirror://ubuntu";
-      packages = commonDebPackages ++ [
-        "diffutils"
-        "libc-bin"
-      ];
+      packages = commonDebPackages ++ [ "diffutils" "libc-bin" ];
     };
 
     ubuntu1804i386 = {
@@ -1179,10 +1115,7 @@ rec {
         })
       ];
       urlPrefix = "mirror://ubuntu";
-      packages = commonDebPackages ++ [
-        "diffutils"
-        "libc-bin"
-      ];
+      packages = commonDebPackages ++ [ "diffutils" "libc-bin" ];
     };
 
     ubuntu1804x86_64 = {
@@ -1199,10 +1132,7 @@ rec {
         })
       ];
       urlPrefix = "mirror://ubuntu";
-      packages = commonDebPackages ++ [
-        "diffutils"
-        "libc-bin"
-      ];
+      packages = commonDebPackages ++ [ "diffutils" "libc-bin" ];
     };
 
     ubuntu2004i386 = {
@@ -1219,10 +1149,7 @@ rec {
         })
       ];
       urlPrefix = "mirror://ubuntu";
-      packages = commonDebPackages ++ [
-        "diffutils"
-        "libc-bin"
-      ];
+      packages = commonDebPackages ++ [ "diffutils" "libc-bin" ];
     };
 
     ubuntu2004x86_64 = {
@@ -1239,10 +1166,7 @@ rec {
         })
       ];
       urlPrefix = "mirror://ubuntu";
-      packages = commonDebPackages ++ [
-        "diffutils"
-        "libc-bin"
-      ];
+      packages = commonDebPackages ++ [ "diffutils" "libc-bin" ];
     };
 
     ubuntu2204i386 = {
@@ -1259,10 +1183,7 @@ rec {
         })
       ];
       urlPrefix = "mirror://ubuntu";
-      packages = commonDebPackages ++ [
-        "diffutils"
-        "libc-bin"
-      ];
+      packages = commonDebPackages ++ [ "diffutils" "libc-bin" ];
     };
 
     ubuntu2204x86_64 = {
@@ -1279,10 +1200,7 @@ rec {
         })
       ];
       urlPrefix = "mirror://ubuntu";
-      packages = commonDebPackages ++ [
-        "diffutils"
-        "libc-bin"
-      ];
+      packages = commonDebPackages ++ [ "diffutils" "libc-bin" ];
     };
 
     debian10i386 = {
@@ -1474,10 +1392,7 @@ rec {
     "passwd"
   ];
 
-  commonDebianPackages = commonDebPackages ++ [
-    "sysvinit"
-    "diff"
-  ];
+  commonDebianPackages = commonDebPackages ++ [ "sysvinit" "diff" ];
 
   /*
     A set of functions that build the Linux distributions specified

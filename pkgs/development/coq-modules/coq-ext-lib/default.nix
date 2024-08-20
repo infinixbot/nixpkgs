@@ -65,9 +65,6 @@ mkCoqDerivation rec {
 
   meta = {
     description = "Collection of theories and plugins that may be useful in other Coq developments";
-    maintainers = with lib.maintainers; [
-      jwiegley
-      ptival
-    ];
+    maintainers = with lib.maintainers; [ jwiegley ptival ];
   };
 }

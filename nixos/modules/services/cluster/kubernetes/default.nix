@@ -142,11 +142,7 @@ in
       "addons"
       "dashboard"
     ] "Removed due to it being an outdated version")
-    (mkRemovedOptionModule [
-      "services"
-      "kubernetes"
-      "verbose"
-    ] "")
+    (mkRemovedOptionModule [ "services" "kubernetes" "verbose" ] "")
   ];
 
   ###### interface
@@ -161,12 +157,7 @@ in
         Node role will enable flannel, docker, kubelet and proxy services.
       '';
       default = [ ];
-      type = types.listOf (
-        types.enum [
-          "master"
-          "node"
-        ]
-      );
+      type = types.listOf (types.enum [ "master" "node" ]);
     };
 
     package = mkPackageOption pkgs "kubernetes" { };

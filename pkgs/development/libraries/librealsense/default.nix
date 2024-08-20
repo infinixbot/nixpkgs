@@ -28,10 +28,7 @@ stdenv.mkDerivation rec {
   pname = "librealsense";
   version = "2.55.1";
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   src = fetchFromGitHub {
     owner = "IntelRealSense";
@@ -47,20 +44,8 @@ stdenv.mkDerivation rec {
       nlohmann_json
     ]
     ++ lib.optionals cudaSupport [ cudaPackages.cuda_cudart ]
-    ++ lib.optionals enablePython (
-      with pythonPackages;
-      [
-        python
-        pybind11
-      ]
-    )
-    ++ lib.optionals enableGUI [
-      mesa
-      gtk3
-      glfw
-      libGLU
-      curl
-    ];
+    ++ lib.optionals enablePython (with pythonPackages; [ python pybind11 ])
+    ++ lib.optionals enableGUI [ mesa gtk3 glfw libGLU curl ];
 
   patches = [
     ./py_pybind11_no_external_download.patch
@@ -115,10 +100,7 @@ stdenv.mkDerivation rec {
     description = "Cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300)";
     homepage = "https://github.com/IntelRealSense/librealsense";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      brian-dawn
-      pbsds
-    ];
+    maintainers = with maintainers; [ brian-dawn pbsds ];
     platforms = platforms.unix;
   };
 }

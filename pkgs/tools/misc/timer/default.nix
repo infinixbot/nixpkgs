@@ -19,11 +19,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-mE/C4S2gqcFGfnmCeMS/VpQwXHrI8SXos0M1+rV3hPo=";
 
-  ldflags = [
-    "-s"
-    "-w"
-    "-X main.version=${version}"
-  ];
+  ldflags = [ "-s" "-w" "-X main.version=${version}" ];
 
   passthru.tests.version = testers.testVersion { package = timer; };
 
@@ -31,10 +27,7 @@ buildGoModule rec {
     description = "`sleep` with progress";
     homepage = "https://github.com/caarlos0/timer";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      zowoq
-      caarlos0
-    ];
+    maintainers = with maintainers; [ zowoq caarlos0 ];
     mainProgram = "timer";
   };
 }

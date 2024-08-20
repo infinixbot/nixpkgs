@@ -16,10 +16,7 @@ stdenv.mkDerivation rec {
   };
 
   strictDeps = true;
-  nativeBuildInputs = [
-    ocaml
-    perl
-  ];
+  nativeBuildInputs = [ ocaml perl ];
   setSourceRoot = "export sourceRoot=$(echo */ekrh/src)";
   preInstall = "export INSTALLDIR=$out";
   postInstall = ''for i in "$out/casc"/*; do ln -s "$i" "$out/bin/ekrh-casc-$(basename $i)"; done '';

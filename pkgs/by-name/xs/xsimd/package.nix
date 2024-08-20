@@ -58,10 +58,7 @@ stdenv.mkDerivation (finalAttrs: {
     description = "C++ wrappers for SIMD intrinsics";
     homepage = "https://github.com/xtensor-stack/xsimd";
     license = licenses.bsd3;
-    maintainers = with maintainers; [
-      tobim
-      doronbehar
-    ];
+    maintainers = with maintainers; [ tobim doronbehar ];
     platforms = platforms.all;
   };
 })

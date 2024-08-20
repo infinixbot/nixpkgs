@@ -24,12 +24,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-M6EOJiykmAKWIuAXdm9ebTSX1eVoO+1axgzxlAmuI8U=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    ldc
-    installShellFiles
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook ldc installShellFiles pkg-config ];
 
   buildInputs = [
     curl
@@ -59,11 +54,7 @@ stdenv.mkDerivation rec {
     mainProgram = "onedrive";
     homepage = "https://github.com/abraunegg/onedrive";
     license = licenses.gpl3Only;
-    maintainers = with maintainers; [
-      srgom
-      peterhoeg
-      bertof
-    ];
+    maintainers = with maintainers; [ srgom peterhoeg bertof ];
     platforms = platforms.linux;
   };
 }

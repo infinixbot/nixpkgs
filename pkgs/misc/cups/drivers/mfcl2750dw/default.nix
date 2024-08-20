@@ -15,11 +15,7 @@
 }:
 
 let
-  arches = [
-    "x86_64"
-    "i686"
-    "armv7l"
-  ];
+  arches = [ "x86_64" "i686" "armv7l" ];
 
   runtimeDeps = [
     ghostscript
@@ -35,11 +31,7 @@ stdenv.mkDerivation rec {
   pname = "cups-brother-mfcl2750dw";
   version = "4.0.0-1";
 
-  nativeBuildInputs = [
-    dpkg
-    makeWrapper
-    autoPatchelfHook
-  ];
+  nativeBuildInputs = [ dpkg makeWrapper autoPatchelfHook ];
   buildInputs = [ perl ];
 
   dontUnpack = true;

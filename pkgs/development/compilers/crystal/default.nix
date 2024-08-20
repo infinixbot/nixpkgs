@@ -44,15 +44,7 @@ let
 
   arch = archs.${stdenv.system} or (throw "system ${stdenv.system} not supported");
 
-  nativeCheckInputs = [
-    git
-    gmp
-    openssl
-    readline
-    libxml2
-    libyaml
-    libffi
-  ];
+  nativeCheckInputs = [ git gmp openssl readline libxml2 libyaml libffi ];
 
   binaryUrl =
     version: rel:
@@ -95,11 +87,7 @@ let
       llvmPackages,
       doCheck ? true,
       extraBuildInputs ? [ ],
-      buildFlags ? [
-        "all"
-        "docs"
-        "release=1"
-      ],
+      buildFlags ? [ "all" "docs" "release=1" ],
     }:
     stdenv.mkDerivation (finalAttrs: {
       pname = "crystal";
@@ -129,11 +117,7 @@ let
           })
         ];
 
-      outputs = [
-        "out"
-        "lib"
-        "bin"
-      ];
+      outputs = [ "out" "lib" "bin" ];
 
       postPatch =
         ''
@@ -195,13 +179,7 @@ let
       '';
 
       strictDeps = true;
-      nativeBuildInputs = [
-        binary
-        makeWrapper
-        which
-        pkg-config
-        llvmPackages.llvm
-      ];
+      nativeBuildInputs = [ binary makeWrapper which pkg-config llvmPackages.llvm ];
       buildInputs = [
         boehmgc
         (if lib.versionAtLeast version "1.8" then pcre2 else pcre)
@@ -239,13 +217,7 @@ let
 
         install -Dm755 .build/crystal $bin/bin/crystal
         wrapProgram $bin/bin/crystal \
-          --suffix PATH : ${
-            lib.makeBinPath [
-              pkg-config
-              llvmPackages.clang
-              which
-            ]
-          } \
+          --suffix PATH : ${lib.makeBinPath [ pkg-config llvmPackages.clang which ]} \
           --suffix CRYSTAL_PATH : lib:$lib/crystal \
           --suffix PKG_CONFIG_PATH : ${
             lib.makeSearchPathOutput "dev" "lib/pkgconfig" finalAttrs.buildInputs
@@ -294,12 +266,7 @@ let
         mainProgram = "crystal";
         homepage = "https://crystal-lang.org/";
         license = licenses.asl20;
-        maintainers = with maintainers; [
-          david50407
-          manveru
-          peterhoeg
-          donovanglover
-        ];
+        maintainers = with maintainers; [ david50407 manveru peterhoeg donovanglover ];
       };
     });
 in

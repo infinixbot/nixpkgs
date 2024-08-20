@@ -33,10 +33,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-XxpiLojs1TI3qM7yXS+OPcHKo6pLcfJ+Eop7GjQ4HQw=";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
   # snapcast also supports building against tremor but as we have libogg, that's
   # not needed
   buildInputs =
@@ -54,10 +51,7 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optional pulseaudioSupport libpulseaudio
     ++ lib.optional stdenv.isLinux alsa-lib
-    ++ lib.optionals stdenv.isDarwin [
-      IOKit
-      AudioToolbox
-    ];
+    ++ lib.optionals stdenv.isDarwin [ IOKit AudioToolbox ];
 
   TARGET = lib.optionalString stdenv.isDarwin "MACOS";
 

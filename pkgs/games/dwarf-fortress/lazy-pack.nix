@@ -68,10 +68,7 @@ buildEnv {
   meta = {
     inherit mainProgram;
     description = "Opinionated wrapper for Dwarf Fortress";
-    maintainers = with maintainers; [
-      Baughn
-      numinit
-    ];
+    maintainers = with maintainers; [ Baughn numinit ];
     license = licenses.mit;
     platforms = platforms.all;
     homepage = "https://github.com/NixOS/nixpkgs/";

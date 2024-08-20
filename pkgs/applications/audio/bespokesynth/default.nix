@@ -74,13 +74,7 @@ stdenv.mkDerivation rec {
 
   cmakeFlags = lib.optionals enableVST2 [ "-DBESPOKE_VST2_SDK_LOCATION=${vst-sdk}/VST2_SDK" ];
 
-  nativeBuildInputs = [
-    python3
-    makeWrapper
-    cmake
-    pkg-config
-    ninja
-  ];
+  nativeBuildInputs = [ python3 makeWrapper cmake pkg-config ninja ];
 
   buildInputs =
     lib.optionals stdenv.hostPlatform.isLinux [
@@ -169,12 +163,7 @@ stdenv.mkDerivation rec {
         gpl3Plus
       ]
       ++ lib.optional enableVST2 unfree;
-    maintainers = with maintainers; [
-      astro
-      tobiasBora
-      OPNA2608
-      PowerUser64
-    ];
+    maintainers = with maintainers; [ astro tobiasBora OPNA2608 PowerUser64 ];
     mainProgram = "BespokeSynth";
     platforms = platforms.all;
   };

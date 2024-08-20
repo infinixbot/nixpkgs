@@ -25,12 +25,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs = [
-    openssl
-    protobuf
-    libpcap
-    traceroute
-  ] ++ optional withGUI qt5.qtbase;
+  buildInputs = [ openssl protobuf libpcap traceroute ] ++ optional withGUI qt5.qtbase;
 
   dontWrapQtApps = true;
 

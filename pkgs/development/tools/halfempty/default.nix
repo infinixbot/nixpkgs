@@ -20,10 +20,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-YGq6fneAMo2jCpLPrjzRJ0eeOsStKaK5L+lwQfqcfpY=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    hexdump
-  ];
+  nativeBuildInputs = [ pkg-config hexdump ];
   buildInputs = [ glib ];
 
   makeFlags = [ "CC=${stdenv.cc.targetPrefix}cc" ];

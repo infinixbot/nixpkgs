@@ -21,13 +21,7 @@ stdenv.mkDerivation rec {
   pname = "gcab";
   version = "1.6";
 
-  outputs = [
-    "bin"
-    "out"
-    "dev"
-    "devdoc"
-    "installedTests"
-  ];
+  outputs = [ "bin" "out" "dev" "devdoc" "installedTests" ];
 
   src = fetchurl {
     url = "mirror://gnome/sources/gcab/${lib.versions.majorMinor version}/gcab-${version}.tar.xz";

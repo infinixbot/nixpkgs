@@ -39,18 +39,11 @@ buildDunePackage rec {
     re
     findlib
   ];
-  checkInputs = [
-    alcotest
-    lwt
-  ];
+  checkInputs = [ alcotest lwt ];
 
   doCheck = true;
 
-  outputs = [
-    "bin"
-    "lib"
-    "out"
-  ];
+  outputs = [ "bin" "lib" "out" ];
 
   installPhase = ''
     runHook preInstall

@@ -42,10 +42,7 @@ stdenv.mkDerivation (finalAttrs: {
       exec = "Mars";
       icon = "mars";
       comment = finalAttrs.meta.description;
-      categories = [
-        "Development"
-        "IDE"
-      ];
+      categories = [ "Development" "IDE" ];
     })
   ];
 

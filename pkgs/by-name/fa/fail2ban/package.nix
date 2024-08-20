@@ -19,10 +19,7 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-0xPNhbu6/p/cbHOr5Y+PXbMbt5q/S13S5100ZZSdylE=";
   };
 
-  outputs = [
-    "out"
-    "man"
-  ];
+  outputs = [ "out" "man" ];
 
   nativeBuildInputs = [ installShellFiles ];
 
@@ -102,9 +99,6 @@ python3.pkgs.buildPythonApplication rec {
     homepage = "https://www.fail2ban.org/";
     description = "Program that scans log files for repeated failing login attempts and bans IP addresses";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      eelco
-      lovek323
-    ];
+    maintainers = with maintainers; [ eelco lovek323 ];
   };
 }

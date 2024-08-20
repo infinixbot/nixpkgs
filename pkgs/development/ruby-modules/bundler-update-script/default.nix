@@ -14,15 +14,7 @@ attrPath:
 let
   updateScript = writeScript "bundler-update-script" ''
     #!${runtimeShell}
-    PATH=${
-      lib.makeBinPath [
-        bundler
-        bundix
-        coreutils
-        git
-        nix
-      ]
-    }
+    PATH=${lib.makeBinPath [ bundler bundix coreutils git nix ]}
     set -o errexit
     set -o nounset
     set -o pipefail
@@ -39,7 +31,4 @@ let
     bundix
   '';
 in
-[
-  updateScript
-  attrPath
-]
+[ updateScript attrPath ]

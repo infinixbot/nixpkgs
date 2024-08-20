@@ -96,10 +96,7 @@ stdenv.mkDerivation {
       icon = "urbanterror";
       comment = "A multiplayer tactical FPS on top of Quake 3 engine";
       desktopName = "Urban Terror";
-      categories = [
-        "Game"
-        "ActionGame"
-      ];
+      categories = [ "Game" "ActionGame" ];
     })
   ];
 
@@ -115,10 +112,7 @@ stdenv.mkDerivation {
       realism". This results in a very unique, enjoyable and addictive game.
     '';
     mainProgram = "urbanterror";
-    maintainers = with lib.maintainers; [
-      astsmtl
-      drupol
-    ];
+    maintainers = with lib.maintainers; [ astsmtl drupol ];
     platforms = lib.platforms.linux;
   };
 }

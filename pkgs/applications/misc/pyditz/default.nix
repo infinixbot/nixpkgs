@@ -15,12 +15,7 @@ buildPythonApplication rec {
     hash = "sha256-2gNlrpBk4wxKJ1JvsNeoAv2lyGUc2mmQ0Xvn7eiaJVE=";
   };
   nativeBuildInputs = [ setuptools-scm ];
-  propagatedBuildInputs = [
-    pyyaml
-    six
-    jinja2
-    cerberus
-  ];
+  propagatedBuildInputs = [ pyyaml six jinja2 cerberus ];
 
   nativeCheckInputs = [ unittestCheckHook ];
 

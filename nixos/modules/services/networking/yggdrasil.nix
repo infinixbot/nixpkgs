@@ -16,18 +16,7 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "yggdrasil"
-        "config"
-      ]
-      [
-        "services"
-        "yggdrasil"
-        "settings"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "yggdrasil" "config" ] [ "services" "yggdrasil" "settings" ])
   ];
 
   options = with types; {
@@ -133,10 +122,7 @@ in
       extraArgs = mkOption {
         type = listOf str;
         default = [ ];
-        example = [
-          "-loglevel"
-          "info"
-        ];
+        example = [ "-loglevel" "info" ];
         description = "Extra command line arguments.";
       };
 
@@ -239,10 +225,7 @@ in
             RestrictNamespaces = true;
             RestrictRealtime = true;
             SystemCallArchitectures = "native";
-            SystemCallFilter = [
-              "@system-service"
-              "~@privileged @keyring"
-            ];
+            SystemCallFilter = [ "@system-service" "~@privileged @keyring" ];
           }
           // (
             if (cfg.group != null) then
@@ -263,9 +246,6 @@ in
   );
   meta = {
     doc = ./yggdrasil.md;
-    maintainers = with lib.maintainers; [
-      gazally
-      ehmry
-    ];
+    maintainers = with lib.maintainers; [ gazally ehmry ];
   };
 }

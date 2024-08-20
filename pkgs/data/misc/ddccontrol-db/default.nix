@@ -17,10 +17,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-vXG9aa6Zdv5R7q62tpFaUIw4MVnT/jWwZ+jw1S9K7MM=";
   };
 
-  nativeBuildInputs = [
-    autoreconfHook
-    intltool
-  ];
+  nativeBuildInputs = [ autoreconfHook intltool ];
 
   meta = with lib; {
     description = "Monitor database for DDCcontrol";

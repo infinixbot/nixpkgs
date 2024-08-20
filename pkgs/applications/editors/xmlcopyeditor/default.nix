@@ -60,10 +60,7 @@ stdenv.mkDerivation rec {
     homepage = "https://xml-copy-editor.sourceforge.io/";
     license = licenses.gpl2Plus;
     platforms = platforms.unix;
-    maintainers = with maintainers; [
-      candeira
-      wegank
-    ];
+    maintainers = with maintainers; [ candeira wegank ];
     mainProgram = "xmlcopyeditor";
   };
 }

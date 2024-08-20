@@ -42,35 +42,16 @@ let
 in
 {
   imports = [
-    (mkRemovedOptionModule
-      [
-        "services"
-        "prometheus"
-        "alertmanager"
-        "user"
-      ]
+    (mkRemovedOptionModule [ "services" "prometheus" "alertmanager" "user" ]
       "The alertmanager service is now using systemd's DynamicUser mechanism which obviates a user setting."
     )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "prometheus"
-        "alertmanager"
-        "group"
-      ]
+    (mkRemovedOptionModule [ "services" "prometheus" "alertmanager" "group" ]
       "The alertmanager service is now using systemd's DynamicUser mechanism which obviates a group setting."
     )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "prometheus"
-        "alertmanagerURL"
-      ]
-      ''
-        Due to incompatibility, the alertmanagerURL option has been removed,
-        please use 'services.prometheus.alertmanagers' instead.
-      ''
-    )
+    (mkRemovedOptionModule [ "services" "prometheus" "alertmanagerURL" ] ''
+      Due to incompatibility, the alertmanagerURL option has been removed,
+      please use 'services.prometheus.alertmanagers' instead.
+    '')
   ];
 
   options = {
@@ -121,13 +102,7 @@ in
       };
 
       logLevel = mkOption {
-        type = types.enum [
-          "debug"
-          "info"
-          "warn"
-          "error"
-          "fatal"
-        ];
+        type = types.enum [ "debug" "info" "warn" "error" "fatal" ];
         default = "warn";
         description = ''
           Only log messages with the given severity or above.
@@ -256,11 +231,7 @@ in
 
           Restart = "always";
 
-          RestrictAddressFamilies = [
-            "AF_INET"
-            "AF_INET6"
-            "AF_NETLINK"
-          ];
+          RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_NETLINK" ];
           RestrictNamespaces = true;
           RestrictRealtime = true;
           RestrictSUIDSGID = true;

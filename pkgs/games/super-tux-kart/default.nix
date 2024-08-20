@@ -114,13 +114,7 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optional (stdenv.hostPlatform.isWindows || stdenv.hostPlatform.isLinux) libopenglrecorder
     ++ lib.optional stdenv.hostPlatform.isLinux openal
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      OpenAL
-      IOKit
-      Cocoa
-      IOBluetooth
-      libsamplerate
-    ];
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ OpenAL IOKit Cocoa IOBluetooth libsamplerate ];
 
   cmakeFlags = [
     "-DBUILD_RECORDER=${
@@ -163,10 +157,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://supertuxkart.net/";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [
-      pyrolagus
-      peterhoeg
-    ];
+    maintainers = with maintainers; [ pyrolagus peterhoeg ];
     platforms = with platforms; unix;
     changelog = "https://github.com/supertuxkart/stk-code/blob/${version}/CHANGELOG.md";
   };

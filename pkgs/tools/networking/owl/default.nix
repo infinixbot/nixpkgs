@@ -21,11 +21,7 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ cmake ];
-  buildInputs = [
-    libev
-    libnl
-    libpcap
-  ];
+  buildInputs = [ libev libnl libpcap ];
 
   meta = with lib; {
     description = "Open Apple Wireless Direct Link (AWDL) implementation written in C";

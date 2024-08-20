@@ -47,10 +47,7 @@ stdenv.mkDerivation rec {
       freealut
       qrencode
     ];
-  nativeBuildInputs = [
-    pkg-config
-    libconfig
-  ];
+  nativeBuildInputs = [ pkg-config libconfig ];
 
   meta = src.meta // {
     description = "Reference CLI for Tox";

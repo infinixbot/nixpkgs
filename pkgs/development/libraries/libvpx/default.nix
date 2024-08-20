@@ -148,11 +148,7 @@ stdenv.mkDerivation rec {
       --replace "check_cflags -Wshorten-64-to-32 && add_cflags_only -Wshorten-64-to-32" ""
   '';
 
-  outputs = [
-    "bin"
-    "dev"
-    "out"
-  ];
+  outputs = [ "bin" "dev" "out" ];
   setOutputFlags = false;
 
   configurePlatforms = [ ];
@@ -225,17 +221,9 @@ stdenv.mkDerivation rec {
     ++ optional experimentalFpMbStatsSupport "--enable-fp-mb-stats"
     ++ optional experimentalEmulateHardwareSupport "--enable-emulate-hardware";
 
-  nativeBuildInputs = [
-    perl
-    yasm
-  ];
+  nativeBuildInputs = [ perl yasm ];
 
-  buildInputs =
-    [ ]
-    ++ optionals unitTestsSupport [
-      coreutils
-      curl
-    ];
+  buildInputs = [ ] ++ optionals unitTestsSupport [ coreutils curl ];
 
   NIX_LDFLAGS = [
     "-lpthread" # fixes linker errors

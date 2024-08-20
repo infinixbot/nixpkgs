@@ -62,63 +62,46 @@ stdenv.mkDerivation (finalAttrs: {
       sha256 = "sha256-tMtnXequtymdOyZdIYzeQ/GSlRzluJt7saUUijay2U0=";
     };
 
-  outputs = [
-    "out"
-    "tex"
-  ];
+  outputs = [ "out" "tex" ];
 
   dontUseImakeConfigure = true;
 
   nativeBuildInputs = [ pkg-config ];
-  buildInputs =
-    [
-      bzip2
-      gfortran
-      libX11
-      libXmu
-      libXt
-      libXt
-      libjpeg
-      libpng
-      libtiff
-      ncurses
-      pango
-      pcre2
-      perl
-      readline
-      (texliveSmall.withPackages (
-        ps: with ps; [
-          inconsolata
-          helvetic
-          ps.texinfo
-          fancyvrb
-          cm-super
-          rsfs
-        ]
-      ))
-      xz
-      zlib
-      less
-      texinfo
-      graphviz
-      icu
-      bison
-      imake
-      which
-      blas
-      lapack
-      curl
-      tcl
-      tk
-      jdk
-      tzdata
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      Cocoa
-      Foundation
-      libobjc
-      libcxx
-    ];
+  buildInputs = [
+    bzip2
+    gfortran
+    libX11
+    libXmu
+    libXt
+    libXt
+    libjpeg
+    libpng
+    libtiff
+    ncurses
+    pango
+    pcre2
+    perl
+    readline
+    (texliveSmall.withPackages (
+      ps: with ps; [ inconsolata helvetic ps.texinfo fancyvrb cm-super rsfs ]
+    ))
+    xz
+    zlib
+    less
+    texinfo
+    graphviz
+    icu
+    bison
+    imake
+    which
+    blas
+    lapack
+    curl
+    tcl
+    tk
+    jdk
+    tzdata
+  ] ++ lib.optionals stdenv.isDarwin [ Cocoa Foundation libobjc libcxx ];
 
   patches = [
     ./no-usr-local-search-paths.patch
@@ -177,11 +160,7 @@ stdenv.mkDerivation (finalAttrs: {
       echo >>etc/Renviron.in "TZDIR=${tzdata}/share/zoneinfo"
     '';
 
-  installTargets = [
-    "install"
-    "install-info"
-    "install-pdf"
-  ];
+  installTargets = [ "install" "install-info" "install-pdf" ];
 
   # move tex files to $tex for use with texlive.combine
   # add link in $out since ${R_SHARE_DIR}/texmf is hardcoded in several places

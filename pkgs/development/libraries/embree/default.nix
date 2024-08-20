@@ -42,11 +42,7 @@ stdenv.mkDerivation rec {
     "-DTBB_INCLUDE_DIR=${tbb.dev}/include"
   ];
 
-  nativeBuildInputs = [
-    ispc
-    pkg-config
-    cmake
-  ];
+  nativeBuildInputs = [ ispc pkg-config cmake ];
   buildInputs = [
     tbb
     glfw
@@ -60,10 +56,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "High performance ray tracing kernels from Intel";
     homepage = "https://embree.github.io/";
-    maintainers = with maintainers; [
-      hodapp
-      gebner
-    ];
+    maintainers = with maintainers; [ hodapp gebner ];
     license = licenses.asl20;
     platforms = platforms.unix;
   };

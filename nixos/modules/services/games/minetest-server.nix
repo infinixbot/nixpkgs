@@ -46,12 +46,7 @@ let
     );
 
   cfg = config.services.minetest-server;
-  flag =
-    val: name:
-    lib.optionals (val != null) [
-      "--${name}"
-      "${toString val}"
-    ];
+  flag = val: name: lib.optionals (val != null) [ "--${name}" "${toString val}" ];
 
   flags =
     [
@@ -59,15 +54,9 @@ let
     ]
     ++ (
       if cfg.configPath != null then
-        [
-          "--config"
-          cfg.configPath
-        ]
+        [ "--config" cfg.configPath ]
       else
-        [
-          "--config"
-          (builtins.toFile "minetest.conf" (toConf cfg.config))
-        ]
+        [ "--config" (builtins.toFile "minetest.conf" (toConf cfg.config)) ]
     )
     ++ (flag cfg.gameId "gameid")
     ++ (flag cfg.world "world")

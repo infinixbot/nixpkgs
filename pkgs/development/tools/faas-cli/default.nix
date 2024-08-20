@@ -47,10 +47,7 @@ buildGoModule rec {
     "-X github.com/openfaas/faas-cli/commands.Platform=${faasPlatform stdenv.hostPlatform}"
   ];
 
-  nativeBuildInputs = [
-    makeWrapper
-    installShellFiles
-  ];
+  nativeBuildInputs = [ makeWrapper installShellFiles ];
 
   postInstall = ''
     wrapProgram "$out/bin/faas-cli" \
@@ -71,9 +68,6 @@ buildGoModule rec {
     mainProgram = "faas-cli";
     homepage = "https://github.com/openfaas/faas-cli";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      welteki
-      techknowlogick
-    ];
+    maintainers = with maintainers; [ welteki techknowlogick ];
   };
 }

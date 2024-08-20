@@ -14,13 +14,7 @@ buildDunePackage rec {
 
   inherit (metrics) version src;
 
-  propagatedBuildInputs = [
-    gnuplot
-    lwt
-    metrics
-    mtime
-    uuidm
-  ];
+  propagatedBuildInputs = [ gnuplot lwt metrics mtime uuidm ];
 
   nativeCheckInputs = [ gnuplot ];
   checkInputs = [ metrics-lwt ];

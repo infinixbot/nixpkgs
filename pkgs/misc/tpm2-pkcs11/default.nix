@@ -64,22 +64,10 @@ stdenv.mkDerivation rec {
     openssl
     sqlite
     libyaml
-    (python3.withPackages (
-      ps: with ps; [
-        packaging
-        pyyaml
-        cryptography
-        pyasn1-modules
-        tpm2-pytss
-      ]
-    ))
+    (python3.withPackages (ps: with ps; [ packaging pyyaml cryptography pyasn1-modules tpm2-pytss ]))
   ];
 
-  outputs = [
-    "out"
-    "bin"
-    "dev"
-  ];
+  outputs = [ "out" "bin" "dev" ];
 
   dontStrip = true;
   dontPatchELF = true;

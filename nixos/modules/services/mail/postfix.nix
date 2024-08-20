@@ -69,13 +69,7 @@ let
         };
 
         type = mkOption {
-          type = types.enum [
-            "inet"
-            "unix"
-            "unix-dgram"
-            "fifo"
-            "pass"
-          ];
+          type = types.enum [ "inet" "unix" "unix-dgram" "fifo" "pass" ];
           default = "unix";
           example = "inet";
           description = "The type of the service";
@@ -152,10 +146,7 @@ let
         args = mkOption {
           type = types.listOf types.str;
           default = [ ];
-          example = [
-            "-o"
-            "smtp_helo_timeout=5"
-          ];
+          example = [ "-o" "smtp_helo_timeout=5" ];
           description = ''
             Arguments to pass to the {option}`command`. There is no shell
             processing involved and shell syntax is passed verbatim to the
@@ -242,10 +233,7 @@ let
             zipListsWith max acc columnLengths;
           # We need to handle the last column specially here, because it's
           # open-ended (command + args).
-          lines = [
-            labels
-            labelDefaults
-          ] ++ (map (l: init l ++ [ "" ]) masterCf);
+          lines = [ labels labelDefaults ] ++ (map (l: init l ++ [ "" ]) masterCf);
         in
         foldr foldLine (genList (const 0) (length labels)) lines;
 
@@ -266,12 +254,7 @@ let
       formattedLabels =
         let
           sep = "# " + concatStrings (genList (const "=") (fullWidth + 5));
-          lines = [
-            sep
-            (formatLine labels)
-            (formatLine labelDefaults)
-            sep
-          ];
+          lines = [ sep (formatLine labels) (formatLine labelDefaults) sep ];
         in
         concatStringsSep "\n" lines;
 
@@ -548,27 +531,14 @@ in
       };
 
       aliasMapType = mkOption {
-        type =
-          with types;
-          enum [
-            "hash"
-            "regexp"
-            "pcre"
-          ];
+        type = with types; enum [ "hash" "regexp" "pcre" ];
         default = "hash";
         example = "regexp";
         description = "The format the alias map should have. Use regexp if you want to use regular expressions.";
       };
 
       config = mkOption {
-        type =
-          with types;
-          attrsOf (oneOf [
-            bool
-            int
-            str
-            (listOf str)
-          ]);
+        type = with types; attrsOf (oneOf [ bool int str (listOf str) ]);
         description = ''
           The main.cf configuration file as key value set.
         '';
@@ -633,11 +603,7 @@ in
       };
 
       virtualMapType = mkOption {
-        type = types.enum [
-          "hash"
-          "regexp"
-          "pcre"
-        ];
+        type = types.enum [ "hash" "regexp" "pcre" ];
         default = "hash";
         description = ''
           What type of virtual alias map file to use. Use `"regexp"` for regular expressions.
@@ -683,10 +649,7 @@ in
         example = {
           submission = {
             type = "inet";
-            args = [
-              "-o"
-              "smtpd_tls_security_level=encrypt"
-            ];
+            args = [ "-o" "smtpd_tls_security_level=encrypt" ];
           };
         };
         description = ''
@@ -867,10 +830,7 @@ in
         description = "Postfix mail server";
 
         wantedBy = [ "multi-user.target" ];
-        after = [
-          "network.target"
-          "postfix-setup.service"
-        ];
+        after = [ "network.target" "postfix-setup.service" ];
         requires = [ "postfix-setup.service" ];
         path = [ pkgs.postfix ];
 
@@ -891,12 +851,7 @@ in
           ProtectKernelModules = true;
           ProtectKernelTunables = true;
           ProtectControlGroups = true;
-          RestrictAddressFamilies = [
-            "AF_INET"
-            "AF_INET6"
-            "AF_NETLINK"
-            "AF_UNIX"
-          ];
+          RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_NETLINK" "AF_UNIX" ];
           RestrictNamespaces = true;
           RestrictRealtime = true;
         };
@@ -1059,10 +1014,7 @@ in
             command = "smtpd";
             args =
               let
-                mkKeyVal = opt: val: [
-                  "-o"
-                  (opt + "=" + val)
-                ];
+                mkKeyVal = opt: val: [ "-o" (opt + "=" + val) ];
               in
               concatLists (mapAttrsToList mkKeyVal cfg.submissionOptions);
           };
@@ -1077,10 +1029,7 @@ in
           smtp = { };
           relay = {
             command = "smtp";
-            args = [
-              "-o"
-              "smtp_fallback_relay="
-            ];
+            args = [ "-o" "smtp_fallback_relay=" ];
           };
         }
         // optionalAttrs cfg.enableSubmissions {
@@ -1090,10 +1039,7 @@ in
             command = "smtpd";
             args =
               let
-                mkKeyVal = opt: val: [
-                  "-o"
-                  (opt + "=" + val)
-                ];
+                mkKeyVal = opt: val: [ "-o" (opt + "=" + val) ];
                 adjustSmtpTlsSecurityLevel =
                   !(cfg.submissionsOptions ? smtpd_tls_security_level)
                   || cfg.submissionsOptions.smtpd_tls_security_level == "none"
@@ -1136,28 +1082,15 @@ in
   ]);
 
   imports = [
-    (mkRemovedOptionModule
-      [
-        "services"
-        "postfix"
-        "sslCACert"
-      ]
+    (mkRemovedOptionModule [ "services" "postfix" "sslCACert" ]
       "services.postfix.sslCACert was replaced by services.postfix.tlsTrustedAuthorities. In case you intend that your server should validate requested client certificates use services.postfix.extraConfig."
     )
 
-    (mkChangedOptionModule
-      [
-        "services"
-        "postfix"
-        "useDane"
-      ]
-      [
-        "services"
-        "postfix"
-        "config"
-        "smtp_tls_security_level"
-      ]
-      (config: mkIf config.services.postfix.useDane "dane")
-    )
+    (mkChangedOptionModule [ "services" "postfix" "useDane" ] [
+      "services"
+      "postfix"
+      "config"
+      "smtp_tls_security_level"
+    ] (config: mkIf config.services.postfix.useDane "dane"))
   ];
 }

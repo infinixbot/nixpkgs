@@ -56,9 +56,6 @@ mkCoqDerivation rec {
   meta = with lib; {
     description = "Extended “Standard Library” for Coq";
     license = licenses.bsd3;
-    maintainers = [
-      maintainers.vbgl
-      maintainers.ineol
-    ];
+    maintainers = [ maintainers.vbgl maintainers.ineol ];
   };
 }

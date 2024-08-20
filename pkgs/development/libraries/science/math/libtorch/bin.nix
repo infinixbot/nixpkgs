@@ -96,10 +96,7 @@ stdenv.mkDerivation {
       done
     '';
 
-  outputs = [
-    "out"
-    "dev"
-  ];
+  outputs = [ "out" "dev" ];
 
   passthru.tests.cmake = callPackage ./test {
     inherit cudaSupport;

@@ -5,10 +5,7 @@ import ./make-test-python.nix (
   {
     name = "pgjwt";
     meta = with lib.maintainers; {
-      maintainers = [
-        spinus
-        willibutz
-      ];
+      maintainers = [ spinus willibutz ];
     };
 
     nodes = {
@@ -17,11 +14,7 @@ import ./make-test-python.nix (
         {
           services.postgresql = {
             enable = true;
-            extraPlugins =
-              ps: with ps; [
-                pgjwt
-                pgtap
-              ];
+            extraPlugins = ps: with ps; [ pgjwt pgtap ];
           };
         };
     };

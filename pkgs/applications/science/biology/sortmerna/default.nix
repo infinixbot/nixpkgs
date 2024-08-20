@@ -23,15 +23,8 @@ stdenv.mkDerivation rec {
     sha256 = "0r91viylzr069jm7kpcgb45kagvf8sqcj5zc1af4arl9sgfs1f3j";
   };
 
-  nativeBuildInputs = [
-    cmake
-    pkg-config
-  ];
-  buildInputs = [
-    zlib
-    rocksdb
-    rapidjson
-  ];
+  nativeBuildInputs = [ cmake pkg-config ];
+  buildInputs = [ zlib rocksdb rapidjson ];
 
   cmakeFlags = [
     "-DPORTABLE=off"

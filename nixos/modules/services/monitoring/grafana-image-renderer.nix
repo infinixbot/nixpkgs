@@ -43,12 +43,7 @@ in
               '';
             };
             logging.level = mkOption {
-              type = types.enum [
-                "error"
-                "warning"
-                "info"
-                "debug"
-              ];
+              type = types.enum [ "error" "warning" "info" "debug" ];
               default = "info";
               description = ''
                 The log-level of the {file}`grafana-image-renderer.service`-unit.
@@ -72,11 +67,7 @@ in
             };
             mode = mkOption {
               default = "default";
-              type = types.enum [
-                "default"
-                "reusable"
-                "clustered"
-              ];
+              type = types.enum [ "default" "reusable" "clustered" ];
               description = ''
                 Rendering mode of `grafana-image-renderer`:
 

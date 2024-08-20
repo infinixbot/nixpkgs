@@ -40,19 +40,9 @@ stdenv.mkDerivation rec {
 
   sourceRoot = "${src.name}/src";
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-    bison
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config bison ];
   buildInputs =
-    [
-      libgcrypt
-      libxcrypt
-      pcre
-      json_c
-      libxml2
-    ]
+    [ libgcrypt libxcrypt pcre json_c libxml2 ]
     ++ lib.optional mccpSupport zlib
     ++ lib.optional mysqlSupport libmysqlclient
     ++ lib.optional postgresSupport postgresql
@@ -87,11 +77,7 @@ stdenv.mkDerivation rec {
     export LDFLAGS="-L${libmysqlclient}/lib/mysql"
   '';
 
-  installTargets = [
-    "install-driver"
-    "install-utils"
-    "install-headers"
-  ];
+  installTargets = [ "install-driver" "install-utils" "install-headers" ];
 
   postInstall = ''
     mkdir -p "$out/share/"

@@ -39,10 +39,7 @@ buildDunePackage rec {
 
   duneVersion = "3";
 
-  buildInputs = [
-    cmdliner
-    hxd
-  ];
+  buildInputs = [ cmdliner hxd ];
 
   propagatedBuildInputs = [
     angstrom

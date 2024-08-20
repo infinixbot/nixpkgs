@@ -24,10 +24,7 @@ stdenv.mkDerivation {
     ./sunrpc.patch
   ];
 
-  buildInputs = [
-    libnsl
-    libtirpc
-  ] ++ lib.optional useSystemd systemd;
+  buildInputs = [ libnsl libtirpc ] ++ lib.optional useSystemd systemd;
 
   configureFlags = [
     "--with-systemdsystemunitdir=${
@@ -37,10 +34,7 @@ stdenv.mkDerivation {
     "--with-rpcuser=rpc"
   ];
 
-  nativeBuildInputs = [
-    autoreconfHook
-    pkg-config
-  ];
+  nativeBuildInputs = [ autoreconfHook pkg-config ];
 
   meta = with lib; {
     description = "ONC RPC portmapper";

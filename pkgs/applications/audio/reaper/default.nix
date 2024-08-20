@@ -114,15 +114,7 @@ stdenv.mkDerivation rec {
         # Note that libcurl and libxml2 are needed for ReaPack to run.
         wrapProgram $out/opt/REAPER/reaper \
           --prefix LD_LIBRARY_PATH : "${
-            lib.makeLibraryPath [
-              curl
-              lame
-              libxml2
-              ffmpeg
-              vlc
-              xdotool
-              stdenv.cc.cc.lib
-            ]
+            lib.makeLibraryPath [ curl lame libxml2 ffmpeg vlc xdotool stdenv.cc.cc.lib ]
           }"
 
         mkdir $out/bin
@@ -139,17 +131,7 @@ stdenv.mkDerivation rec {
     homepage = "https://www.reaper.fm/";
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.unfree;
-    platforms = [
-      "x86_64-linux"
-      "aarch64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
-    maintainers = with maintainers; [
-      ilian
-      orivej
-      uniquepointer
-      viraptor
-    ];
+    platforms = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+    maintainers = with maintainers; [ ilian orivej uniquepointer viraptor ];
   };
 }

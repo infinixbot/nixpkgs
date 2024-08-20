@@ -17,15 +17,9 @@ python3Packages.buildPythonPackage rec {
     sha256 = "sha256-uVFuwtsmR/9epoqot3lJ/5v5OuJjuRjL7FJF7oXNDzU=";
   };
 
-  nativeBuildInputs = [
-    wrapGAppsNoGuiHook
-    gobject-introspection
-  ];
+  nativeBuildInputs = [ wrapGAppsNoGuiHook gobject-introspection ];
 
-  propagatedBuildInputs = with python3Packages; [
-    dbus-python
-    pygobject3
-  ];
+  propagatedBuildInputs = with python3Packages; [ dbus-python pygobject3 ];
 
   checkInputs = with python3Packages; [ dbus-python ];
 

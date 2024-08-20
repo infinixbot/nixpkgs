@@ -207,11 +207,7 @@ in
         NoNewPrivileges = true;
         LockPersonality = true;
         RestrictRealtime = true;
-        SystemCallFilter = [
-          "@system-service"
-          "~@privileged"
-          "@chown"
-        ];
+        SystemCallFilter = [ "@system-service" "~@privileged" "@chown" ];
         SystemCallArchitectures = "native";
         RestrictAddressFamilies = "AF_INET AF_INET6";
       };

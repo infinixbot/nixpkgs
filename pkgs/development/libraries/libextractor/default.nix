@@ -19,12 +19,7 @@
   gst_all_1,
   # ^ Needed e.g. for proper id3 and FLAC support.
   #   Set to `false` to decrease package closure size by about 87 MB (53%).
-  gstPlugins ? (
-    gst: [
-      gst.gst-plugins-base
-      gst.gst-plugins-good
-    ]
-  ),
+  gstPlugins ? (gst: [ gst.gst-plugins-base gst.gst-plugins-good ]),
   # If an application needs additional gstreamer plugins it can also make them
   # available by adding them to the environment variable
   # GST_PLUGIN_SYSTEM_PATH_1_0, e.g. like this:
@@ -89,10 +84,7 @@ stdenv.mkDerivation rec {
     ]
     ++ lib.optionals rpmSupport [ rpm ]
     ++ lib.optionals gstreamerSupport ([ gst_all_1.gstreamer ] ++ gstPlugins gst_all_1)
-    ++ lib.optionals gtkSupport [
-      glib
-      gtk3
-    ]
+    ++ lib.optionals gtkSupport [ glib gtk3 ]
     ++ lib.optionals videoSupport [ libmpeg2 ];
 
   # Checks need to be run after "make install", otherwise plug-ins are not in

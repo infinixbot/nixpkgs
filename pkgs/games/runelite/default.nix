@@ -50,12 +50,7 @@ maven.buildMavenPackage rec {
     ln -s ${desktop}/share/applications/RuneLite.desktop $out/share/applications/RuneLite.desktop
 
     makeWrapper ${jre}/bin/java $out/bin/runelite \
-      --prefix LD_LIBRARY_PATH : "${
-        lib.makeLibraryPath [
-          xorg.libXxf86vm
-          libGL
-        ]
-      }" \
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ xorg.libXxf86vm libGL ]}" \
       --add-flags "-jar $out/share/RuneLite.jar"
   '';
 
@@ -69,10 +64,7 @@ maven.buildMavenPackage rec {
       binaryNativeCode
     ];
     license = lib.licenses.bsd2;
-    maintainers = with lib.maintainers; [
-      kmeakin
-      moody
-    ];
+    maintainers = with lib.maintainers; [ kmeakin moody ];
     platforms = [ "x86_64-linux" ];
     mainProgram = "runelite";
   };

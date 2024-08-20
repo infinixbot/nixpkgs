@@ -24,13 +24,7 @@ skawarePackages.buildPackage {
   description = "Service manager for s6-based systems";
   platforms = lib.platforms.unix;
 
-  outputs = [
-    "bin"
-    "lib"
-    "dev"
-    "doc"
-    "out"
-  ];
+  outputs = [ "bin" "lib" "dev" "doc" "out" ];
 
   configureFlags = [
     "--libdir=\${lib}/lib"

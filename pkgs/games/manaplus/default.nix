@@ -46,10 +46,7 @@ stdenv.mkDerivation rec {
     libGL
   ];
 
-  configureFlags = [
-    "--with-sdl2"
-    "--without-dyecmd"
-  ];
+  configureFlags = [ "--with-sdl2" "--without-dyecmd" ];
 
   enableParallelBuilding = true;
 

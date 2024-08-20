@@ -50,11 +50,7 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/pksunkara/cargo-workspaces";
     changelog = "https://github.com/pksunkara/cargo-workspaces/blob/v${version}/CHANGELOG.md";
     license = licenses.mit;
-    maintainers = with maintainers; [
-      figsoda
-      macalinao
-      matthiasbeyer
-    ];
+    maintainers = with maintainers; [ figsoda macalinao matthiasbeyer ];
     mainProgram = "cargo-workspaces";
   };
 }

@@ -42,12 +42,7 @@ buildGoModule rec {
         --replace "/usr/share/AAVMF/AAVMF_CODE.fd" "${OVMF.firmware}"
     '');
 
-  nativeBuildInputs = [
-    installShellFiles
-    pkg-config
-    which
-    makeWrapper
-  ];
+  nativeBuildInputs = [ installShellFiles pkg-config which makeWrapper ];
 
   buildInputs =
     if stdenv.isDarwin then
@@ -78,12 +73,6 @@ buildGoModule rec {
     description = "Tool that makes it easy to run Kubernetes locally";
     mainProgram = "minikube";
     license = licenses.asl20;
-    maintainers = with maintainers; [
-      ebzzry
-      copumpkin
-      vdemeester
-      atkinschang
-      Chili-Man
-    ];
+    maintainers = with maintainers; [ ebzzry copumpkin vdemeester atkinschang Chili-Man ];
   };
 }

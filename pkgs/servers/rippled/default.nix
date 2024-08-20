@@ -134,21 +134,8 @@ stdenv.mkDerivation rec {
     "-DSNAPPY_INCLUDE_DIR=${snappy}/include"
   ];
 
-  nativeBuildInputs = [
-    pkg-config
-    cmake
-    git
-  ];
-  buildInputs = [
-    openssl
-    openssl.dev
-    boostSharedStatic
-    grpc
-    protobuf
-    libnsl
-    rocksdb_6_23
-    snappy
-  ];
+  nativeBuildInputs = [ pkg-config cmake git ];
+  buildInputs = [ openssl openssl.dev boostSharedStatic grpc protobuf libnsl rocksdb_6_23 snappy ];
 
   preConfigure = ''
     export HOME=$PWD
@@ -180,10 +167,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "Ripple P2P payment network reference server";
     homepage = "https://github.com/ripple/rippled";
-    maintainers = with maintainers; [
-      offline
-      RaghavSood
-    ];
+    maintainers = with maintainers; [ offline RaghavSood ];
     license = licenses.isc;
     platforms = platforms.linux;
     mainProgram = "rippled";

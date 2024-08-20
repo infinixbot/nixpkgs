@@ -47,10 +47,7 @@ rustPlatform.buildRustPackage {
 
   buildAndTestSubdir = "devenv";
 
-  nativeBuildInputs = [
-    makeWrapper
-    pkg-config
-  ];
+  nativeBuildInputs = [ makeWrapper pkg-config ];
 
   buildInputs =
     [ openssl ]

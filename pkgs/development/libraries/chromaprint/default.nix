@@ -39,19 +39,10 @@ stdenv.mkDerivation rec {
   buildInputs =
     [ ffmpeg_6 ]
     ++ lib.optionals stdenv.isDarwin (
-      with darwin.apple_sdk.frameworks;
-      [
-        Accelerate
-        CoreGraphics
-        CoreVideo
-        zlib
-      ]
+      with darwin.apple_sdk.frameworks; [ Accelerate CoreGraphics CoreVideo zlib ]
     );
 
-  cmakeFlags = [
-    "-DBUILD_EXAMPLES=ON"
-    "-DBUILD_TOOLS=ON"
-  ];
+  cmakeFlags = [ "-DBUILD_EXAMPLES=ON" "-DBUILD_TOOLS=ON" ];
 
   meta = with lib; {
     homepage = "https://acoustid.org/chromaprint";

@@ -33,11 +33,7 @@ stdenv.mkDerivation rec {
   pname = "feedbackd";
   version = "0.2.0";
 
-  outputs = [
-    "out"
-    "dev"
-    "devdoc"
-  ];
+  outputs = [ "out" "dev" "devdoc" ];
 
   src = fetchFromGitLab {
     domain = "source.puri.sm";

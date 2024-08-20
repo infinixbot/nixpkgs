@@ -18,10 +18,7 @@ rec {
           inherit (buildPlatform) system;
           inherit (meta) name;
         }
-        // (builtins.removeAttrs attrs [
-          "meta"
-          "passthru"
-        ])
+        // (builtins.removeAttrs attrs [ "meta" "passthru" ])
       );
       passthru' =
         passthru

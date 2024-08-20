@@ -167,10 +167,7 @@ stdenv.mkDerivation (finalAttrs: {
       starting them inside its own Application Confinement.
     '';
     homepage = "https://gitlab.com/ubports/development/core/lomiri-url-dispatcher";
-    license = with licenses; [
-      lgpl3Only
-      gpl3Only
-    ];
+    license = with licenses; [ lgpl3Only gpl3Only ];
     maintainers = teams.lomiri.members;
     platforms = platforms.linux;
     pkgConfigModules = [

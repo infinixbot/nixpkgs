@@ -21,16 +21,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-UgJHsniDbfAcohnrYYUUJ4OhL2Fr65kGu26dsw9vYyM=";
   };
 
-  nativeBuildInputs = [
-    pkg-config
-    installShellFiles
-  ];
-  buildInputs = [
-    gnugrep
-    ncurses
-    readline
-    postgresql
-  ];
+  nativeBuildInputs = [ pkg-config installShellFiles ];
+  buildInputs = [ gnugrep ncurses readline postgresql ];
 
   makeFlags = [ "PREFIX=${placeholder "out"}" ];
 

@@ -32,16 +32,9 @@ stdenv.mkDerivation rec {
       --replace 'APP_GIT_VERSION = ?' 'APP_GIT_VERSION = ${src.rev}'
   '';
 
-  nativeBuildInputs = [
-    qmake
-    wrapQtAppsHook
-  ];
+  nativeBuildInputs = [ qmake wrapQtAppsHook ];
 
-  buildInputs = [
-    alsa-lib
-    qtgraphicaleffects
-    qtquickcontrols2
-  ];
+  buildInputs = [ alsa-lib qtgraphicaleffects qtquickcontrols2 ];
 
   installPhase = ''
     runHook preInstall
