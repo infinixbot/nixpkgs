@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -45,7 +50,7 @@ in
           description = "Number of sentences cached.";
         };
       };
-      default = {};
+      default = { };
       description = ''
         Configuration file options for LanguageTool, see
         'languagetool-http-server --help'
@@ -80,7 +85,10 @@ in
         Group = "languagetool";
         CapabilityBoundingSet = [ "" ];
         RestrictNamespaces = [ "" ];
-        SystemCallFilter = [ "@system-service" "~ @privileged" ];
+        SystemCallFilter = [
+          "@system-service"
+          "~ @privileged"
+        ];
         ProtectHome = "yes";
         Restart = "on-failure";
         ExecStart = ''

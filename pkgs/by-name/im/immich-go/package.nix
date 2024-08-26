@@ -1,4 +1,11 @@
-{ lib, buildGoModule, fetchFromGitHub, nix-update-script, testers, immich-go }:
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+  nix-update-script,
+  testers,
+  immich-go,
+}:
 buildGoModule rec {
   pname = "immich-go";
   version = "1.21.3";
