@@ -1,12 +1,13 @@
-{ lib
-, stdenv
-, buildNpmPackage
-, nodejs_20
-, fetchFromGitHub
-, python3
-, cctools
-, nixosTests
-, xcbuild
+{
+  lib,
+  stdenv,
+  buildNpmPackage,
+  nodejs_20,
+  fetchFromGitHub,
+  python3,
+  cctools,
+  nixosTests,
+  xcbuild,
 }:
 
 buildNpmPackage rec {
@@ -29,12 +30,14 @@ buildNpmPackage rec {
 
   npmDepsHash = "sha256-5neEpU7ZhVO5OR181owsvAnFfl7lr0MymvqbRFCPs3M=";
 
-  nativeBuildInputs = [
-    python3
-  ] ++ lib.optionals stdenv.isDarwin [
-    cctools
-    xcbuild.xcrun
-  ];
+  nativeBuildInputs =
+    [
+      python3
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      cctools
+      xcbuild.xcrun
+    ];
 
   makeCacheWritable = true;
 

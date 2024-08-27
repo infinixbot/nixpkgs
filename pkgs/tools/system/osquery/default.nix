@@ -1,20 +1,21 @@
-{ lib
-, cmake
-, fetchFromGitHub
-, fetchzip
-, fetchurl
-, git
-, perl
-, python3
-, stdenv
-, stdenvNoCC
-, ninja
-, autoPatchelfHook
-, writeShellApplication
-, jq
-, removeReferencesTo
-, nixosTests
-, file
+{
+  lib,
+  cmake,
+  fetchFromGitHub,
+  fetchzip,
+  fetchurl,
+  git,
+  perl,
+  python3,
+  stdenv,
+  stdenvNoCC,
+  ninja,
+  autoPatchelfHook,
+  writeShellApplication,
+  jq,
+  removeReferencesTo,
+  nixosTests,
+  file,
 }:
 
 let
@@ -52,7 +53,14 @@ let
     sha256 = opensslSha256;
   };
 
-  toolchain = import ./toolchain-bin.nix { inherit stdenv lib fetchzip file; };
+  toolchain = import ./toolchain-bin.nix {
+    inherit
+      stdenv
+      lib
+      fetchzip
+      file
+      ;
+  };
 
 in
 
@@ -129,9 +137,16 @@ stdenvNoCC.mkDerivation rec {
   meta = with lib; {
     description = "SQL powered operating system instrumentation, monitoring, and analytics";
     homepage = "https://osquery.io";
-    license = with licenses; [ gpl2Only asl20 ];
+    license = with licenses; [
+      gpl2Only
+      asl20
+    ];
     platforms = platforms.linux;
     sourceProvenance = with sourceTypes; [ fromSource ];
-    maintainers = with maintainers; [ znewman01 lewo squalus ];
+    maintainers = with maintainers; [
+      znewman01
+      lewo
+      squalus
+    ];
   };
 }

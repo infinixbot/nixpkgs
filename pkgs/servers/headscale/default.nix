@@ -27,12 +27,16 @@ buildGoModule rec {
     ./sigterm-fix.patch
   ];
 
-  ldflags = ["-s" "-w" "-X github.com/juanfont/headscale/cmd/headscale/cli.Version=v${version}"];
+  ldflags = [
+    "-s"
+    "-w"
+    "-X github.com/juanfont/headscale/cmd/headscale/cli.Version=v${version}"
+  ];
 
-  nativeBuildInputs = [installShellFiles];
-  checkFlags = ["-short"];
+  nativeBuildInputs = [ installShellFiles ];
+  checkFlags = [ "-short" ];
 
-  tags = ["ts2019"];
+  tags = [ "ts2019" ];
 
   postInstall = ''
     installShellCompletion --cmd headscale \
@@ -41,7 +45,9 @@ buildGoModule rec {
       --zsh <($out/bin/headscale completion zsh)
   '';
 
-  passthru.tests = { inherit (nixosTests) headscale; };
+  passthru.tests = {
+    inherit (nixosTests) headscale;
+  };
 
   meta = with lib; {
     homepage = "https://github.com/juanfont/headscale";
@@ -63,6 +69,12 @@ buildGoModule rec {
       Headscale implements this coordination server.
     '';
     license = licenses.bsd3;
-    maintainers = with maintainers; [nkje jk kradalby misterio77 ghuntley];
+    maintainers = with maintainers; [
+      nkje
+      jk
+      kradalby
+      misterio77
+      ghuntley
+    ];
   };
 }
