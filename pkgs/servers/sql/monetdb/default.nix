@@ -1,4 +1,15 @@
-{ lib, stdenv, fetchurl, cmake, python3, bison, openssl, readline, bzip2, nixosTests }:
+{
+  lib,
+  stdenv,
+  fetchurl,
+  cmake,
+  python3,
+  bison,
+  openssl,
+  readline,
+  bzip2,
+  nixosTests,
+}:
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "monetdb";
@@ -9,8 +20,16 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-tnGRNTx/SH7Yj8xvaFUxKr8af+7b8ZouU4PdmKEMkKk=";
   };
 
-  nativeBuildInputs = [ bison cmake python3 ];
-  buildInputs = [ openssl readline bzip2 ];
+  nativeBuildInputs = [
+    bison
+    cmake
+    python3
+  ];
+  buildInputs = [
+    openssl
+    readline
+    bzip2
+  ];
 
   postPatch = ''
     substituteInPlace cmake/monetdb-packages.cmake --replace \
@@ -30,7 +49,9 @@ stdenv.mkDerivation (finalAttrs: {
       $out/bin/Mconvert.py
   '';
 
-  passthru.tests = { inherit (nixosTests) monetdb; };
+  passthru.tests = {
+    inherit (nixosTests) monetdb;
+  };
 
   meta = with lib; {
     description = "Open source database system";

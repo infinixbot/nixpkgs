@@ -1,7 +1,8 @@
-{ lib
-, stdenv
-, fetchzip
-, buildFHSEnv
+{
+  lib,
+  stdenv,
+  fetchzip,
+  buildFHSEnv,
 }:
 
 let
@@ -24,7 +25,8 @@ let
       hash = "sha256-goCBE+zv9KArdoMsI48rlISurUM0bL/l1OEYWQKqzv0=";
     };
   };
-  src = srcs.${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
+  src =
+    srcs.${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
 
 in
 buildFHSEnv {
@@ -44,7 +46,13 @@ buildFHSEnv {
       mit
       cockroachdb-community-license
     ];
-    platforms = [ "aarch64-linux" "x86_64-linux" ];
-    maintainers = with maintainers; [ rushmorem thoughtpolice ];
+    platforms = [
+      "aarch64-linux"
+      "x86_64-linux"
+    ];
+    maintainers = with maintainers; [
+      rushmorem
+      thoughtpolice
+    ];
   };
 }
