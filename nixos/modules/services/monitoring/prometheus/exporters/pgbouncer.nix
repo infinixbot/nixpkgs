@@ -1,4 +1,10 @@
-{ config, lib, pkgs, options, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  options,
+  ...
+}:
 
 let
   cfg = config.services.prometheus.exporters.pgbouncer;
@@ -91,7 +97,12 @@ in
     };
 
     logLevel = mkOption {
-      type = types.enum [ "debug" "info" "warn" "error" ];
+      type = types.enum [
+        "debug"
+        "info"
+        "warn"
+        "error"
+      ];
       default = "info";
       description = ''
         Only log messages with the given severity or above.
@@ -99,7 +110,10 @@ in
     };
 
     logFormat = mkOption {
-      type = types.enum [ "logfmt" "json" ];
+      type = types.enum [
+        "logfmt"
+        "json"
+      ];
       default = "logfmt";
       description = ''
         Output format of log messages. One of: [logfmt, json]
@@ -126,30 +140,52 @@ in
 
   serviceOpts = {
     after = [ "pgbouncer.service" ];
-    script = optionalString (cfg.connectionStringFile != null) ''
-      connectionString=$(${escapeShellArgs [
-        (getExe' pkgs.coreutils "cat") "--" cfg.connectionStringFile
-      ]})
-    '' + concatStringsSep " " ([
-      "exec -- ${escapeShellArg (getExe cfg.package)}"
-      "--web.listen-address ${cfg.listenAddress}:${toString cfg.port}"
-      "--pgBouncer.connectionString ${if cfg.connectionStringFile != null
-          then "\"$connectionString\""
-          else "${escapeShellArg cfg.connectionString}"}"
-    ] ++ optionals (cfg.telemetryPath != null) [
-      "--web.telemetry-path ${escapeShellArg cfg.telemetryPath}"
-    ] ++ optionals (cfg.pidFile != null) [
-      "--pgBouncer.pid-file ${escapeShellArg cfg.pidFile}"
-    ] ++ optionals (cfg.logLevel != null) [
-      "--log.level ${escapeShellArg cfg.logLevel}"
-    ] ++ optionals (cfg.logFormat != null) [
-      "--log.format ${escapeShellArg cfg.logFormat}"
-    ] ++ optionals (cfg.webSystemdSocket != false) [
-      "--web.systemd-socket ${escapeShellArg cfg.webSystemdSocket}"
-    ] ++ optionals (cfg.webConfigFile != null) [
-      "--web.config.file ${escapeShellArg cfg.webConfigFile}"
-    ] ++ cfg.extraFlags);
+    script =
+      optionalString (cfg.connectionStringFile != null) ''
+        connectionString=$(${
+          escapeShellArgs [
+            (getExe' pkgs.coreutils "cat")
+            "--"
+            cfg.connectionStringFile
+          ]
+        })
+      ''
+      + concatStringsSep " " (
+        [
+          "exec -- ${escapeShellArg (getExe cfg.package)}"
+          "--web.listen-address ${cfg.listenAddress}:${toString cfg.port}"
+          "--pgBouncer.connectionString ${
+            if cfg.connectionStringFile != null then
+              "\"$connectionString\""
+            else
+              "${escapeShellArg cfg.connectionString}"
+          }"
+        ]
+        ++ optionals (cfg.telemetryPath != null) [
+          "--web.telemetry-path ${escapeShellArg cfg.telemetryPath}"
+        ]
+        ++ optionals (cfg.pidFile != null) [
+          "--pgBouncer.pid-file ${escapeShellArg cfg.pidFile}"
+        ]
+        ++ optionals (cfg.logLevel != null) [
+          "--log.level ${escapeShellArg cfg.logLevel}"
+        ]
+        ++ optionals (cfg.logFormat != null) [
+          "--log.format ${escapeShellArg cfg.logFormat}"
+        ]
+        ++ optionals (cfg.webSystemdSocket != false) [
+          "--web.systemd-socket ${escapeShellArg cfg.webSystemdSocket}"
+        ]
+        ++ optionals (cfg.webConfigFile != null) [
+          "--web.config.file ${escapeShellArg cfg.webConfigFile}"
+        ]
+        ++ cfg.extraFlags
+      );
 
-    serviceConfig.RestrictAddressFamilies = [ "AF_INET" "AF_INET6" "AF_UNIX" ];
+    serviceConfig.RestrictAddressFamilies = [
+      "AF_INET"
+      "AF_INET6"
+      "AF_UNIX"
+    ];
   };
 }
