@@ -1,4 +1,10 @@
-{ lib, stdenv, fetchFromGitHub, addDriverRunpath, cudatoolkit }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  addDriverRunpath,
+  cudatoolkit,
+}:
 
 stdenv.mkDerivation {
   pname = "gpu-burn";

@@ -1,17 +1,18 @@
-{ lib
-, stdenv
-, boost179 # probably needs to match the one from ndn-cxx
-, fetchFromGitHub
-, libpcap
-, ndn-cxx
-, openssl
-, pkg-config
-, sphinx
-, systemd
-, wafHook
-, websocketpp
-, withSystemd ? lib.meta.availableOn stdenv.hostPlatform systemd
-, withWebSocket ? true
+{
+  lib,
+  stdenv,
+  boost179, # probably needs to match the one from ndn-cxx
+  fetchFromGitHub,
+  libpcap,
+  ndn-cxx,
+  openssl,
+  pkg-config,
+  sphinx,
+  systemd,
+  wafHook,
+  websocketpp,
+  withSystemd ? lib.meta.availableOn stdenv.hostPlatform systemd,
+  withWebSocket ? true,
 }:
 
 stdenv.mkDerivation rec {
@@ -31,8 +32,18 @@ stdenv.mkDerivation rec {
     rm tests/daemon/mgmt/general-config-section.t.cpp
   '';
 
-  nativeBuildInputs = [ pkg-config sphinx wafHook ];
-  buildInputs = [ boost179 libpcap ndn-cxx openssl websocketpp ] ++ lib.optional withSystemd systemd;
+  nativeBuildInputs = [
+    pkg-config
+    sphinx
+    wafHook
+  ];
+  buildInputs = [
+    boost179
+    libpcap
+    ndn-cxx
+    openssl
+    websocketpp
+  ] ++ lib.optional withSystemd systemd;
 
   wafConfigureFlags = [
     "--boost-includes=${boost179.dev}/include"

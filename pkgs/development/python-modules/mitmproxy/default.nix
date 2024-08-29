@@ -57,7 +57,6 @@ buildPythonPackage rec {
     hash = "sha256-1OMVgV6dFKoG/upv+RWbYqftqejeQLBlsycuy2+Na6E=";
   };
 
-
   pythonRelaxDeps = [
     "urwid"
   ];
