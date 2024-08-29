@@ -1,4 +1,9 @@
-{ stdenv, fetchFromGitHub, crossLibcStdenv, buildPackages }:
+{
+  stdenv,
+  fetchFromGitHub,
+  crossLibcStdenv,
+  buildPackages,
+}:
 
 crossLibcStdenv.mkDerivation {
   name = "newlib";
@@ -16,7 +21,10 @@ crossLibcStdenv.mkDerivation {
     export CC=cc
   '';
 
-  configurePlatforms = [ "build" "target" ];
+  configurePlatforms = [
+    "build"
+    "target"
+  ];
   configureFlags = [
     "--host=${stdenv.buildPlatform.config}"
 

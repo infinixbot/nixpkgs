@@ -36,7 +36,6 @@ buildPythonPackage rec {
     '';
   };
 
-
   propagatedBuildInputs = [
     aiohttp
     attrs
@@ -73,6 +72,9 @@ buildPythonPackage rec {
     homepage = "https://www.hikari-py.dev/";
     changelog = "https://github.com/hikari-py/hikari/releases/tag/${version}";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [ tomodachi94 sigmanificient ];
+    maintainers = with lib.maintainers; [
+      tomodachi94
+      sigmanificient
+    ];
   };
 }
