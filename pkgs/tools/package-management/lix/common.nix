@@ -264,13 +264,14 @@ stdenv.mkDerivation {
     meson test --no-rebuild "''${flagsArray[@]}"
     runHook postInstallCheck
   '';
-  hardeningDisable = [
-    "shadowstack"
-    # strictoverflow is disabled because we trap on signed overflow instead
-    "strictoverflow"
-  ]
-  # fortify breaks the build with lto and musl for some reason
-  ++ lib.optional stdenv.hostPlatform.isMusl "fortify";
+  hardeningDisable =
+    [
+      "shadowstack"
+      # strictoverflow is disabled because we trap on signed overflow instead
+      "strictoverflow"
+    ]
+    # fortify breaks the build with lto and musl for some reason
+    ++ lib.optional stdenv.hostPlatform.isMusl "fortify";
 
   # hardeningEnable = lib.optionals (!stdenv.isDarwin) [ "pie" ];
   separateDebugInfo = stdenv.isLinux && !enableStatic;

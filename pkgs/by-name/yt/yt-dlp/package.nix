@@ -1,14 +1,15 @@
-{ lib
-, python3Packages
-, fetchPypi
-, ffmpeg-headless
-, rtmpdump
-, atomicparsley
-, atomicparsleySupport ? true
-, ffmpegSupport ? true
-, rtmpSupport ? true
-, withAlias ? false # Provides bin/youtube-dl for backcompat
-, update-python-libraries
+{
+  lib,
+  python3Packages,
+  fetchPypi,
+  ffmpeg-headless,
+  rtmpdump,
+  atomicparsley,
+  atomicparsleySupport ? true,
+  ffmpegSupport ? true,
+  rtmpSupport ? true,
+  withAlias ? false, # Provides bin/youtube-dl for backcompat
+  update-python-libraries,
 }:
 
 python3Packages.buildPythonApplication rec {
@@ -36,7 +37,7 @@ python3Packages.buildPythonApplication rec {
     mutagen
     pycryptodomex
     requests
-    secretstorage  # "optional", as in not in requirements.txt, needed for `--cookies-from-browser`
+    secretstorage # "optional", as in not in requirements.txt, needed for `--cookies-from-browser`
     urllib3
     websockets
   ];
@@ -47,12 +48,15 @@ python3Packages.buildPythonApplication rec {
   # - atomicparsley: embedding thumbnails
   makeWrapperArgs =
     let
-      packagesToBinPath = []
+      packagesToBinPath =
+        [ ]
         ++ lib.optional atomicparsleySupport atomicparsley
         ++ lib.optional ffmpegSupport ffmpeg-headless
         ++ lib.optional rtmpSupport rtmpdump;
-    in lib.optionals (packagesToBinPath != [])
-    [ ''--prefix PATH : "${lib.makeBinPath packagesToBinPath}"'' ];
+    in
+    lib.optionals (packagesToBinPath != [ ]) [
+      ''--prefix PATH : "${lib.makeBinPath packagesToBinPath}"''
+    ];
 
   setupPyBuildFlags = [
     "build_lazy_extractors"
@@ -65,7 +69,10 @@ python3Packages.buildPythonApplication rec {
     ln -s "$out/bin/yt-dlp" "$out/bin/youtube-dl"
   '';
 
-  passthru.updateScript = [ update-python-libraries (toString ./.) ];
+  passthru.updateScript = [
+    update-python-libraries
+    (toString ./.)
+  ];
 
   meta = with lib; {
     homepage = "https://github.com/yt-dlp/yt-dlp/";
@@ -80,7 +87,10 @@ python3Packages.buildPythonApplication rec {
     '';
     changelog = "https://github.com/yt-dlp/yt-dlp/releases/tag/${version}";
     license = licenses.unlicense;
-    maintainers = with maintainers; [ mkg20001 SuperSandro2000 ];
+    maintainers = with maintainers; [
+      mkg20001
+      SuperSandro2000
+    ];
     mainProgram = "yt-dlp";
   };
 }
