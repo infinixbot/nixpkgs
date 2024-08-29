@@ -1,11 +1,12 @@
-{ stdenv
-, lib
-, python3Packages
-, fetchFromGitHub
-, ffmpeg
-, libsForQt5
-, testers
-, corrscope
+{
+  stdenv,
+  lib,
+  python3Packages,
+  fetchFromGitHub,
+  ffmpeg,
+  libsForQt5,
+  testers,
+  corrscope,
 }:
 
 python3Packages.buildPythonApplication rec {
@@ -20,21 +21,32 @@ python3Packages.buildPythonApplication rec {
     hash = "sha256-hyLCygaSWMQd+UJ/Ijgk9C+3O/r5x0aaW/x9PoojDIg=";
   };
 
-  pythonRelaxDeps = [ "attrs" "ruamel.yaml" ];
+  pythonRelaxDeps = [
+    "attrs"
+    "ruamel.yaml"
+  ];
 
-  nativeBuildInputs = (with libsForQt5; [
-    wrapQtAppsHook
-  ]) ++ (with python3Packages; [
-    poetry-core
-  ]);
+  nativeBuildInputs =
+    (with libsForQt5; [
+      wrapQtAppsHook
+    ])
+    ++ (with python3Packages; [
+      poetry-core
+    ]);
 
-  buildInputs = [
-    ffmpeg
-  ] ++ (with libsForQt5; [
-    qtbase
-  ] ++ lib.optionals stdenv.hostPlatform.isLinux [
-    qtwayland
-  ]);
+  buildInputs =
+    [
+      ffmpeg
+    ]
+    ++ (
+      with libsForQt5;
+      [
+        qtbase
+      ]
+      ++ lib.optionals stdenv.hostPlatform.isLinux [
+        qtwayland
+      ]
+    );
 
   propagatedBuildInputs = with python3Packages; [
     appdirs
