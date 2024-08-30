@@ -1,9 +1,15 @@
-{ lib, pkgs, stdenvNoCC }:
+{
+  lib,
+  pkgs,
+  stdenvNoCC,
+}:
 
 let
   tests =
     let
-      p = pkgs.python3Packages.xpybutil.overridePythonAttrs (_: { dontWrapPythonPrograms = true; });
+      p = pkgs.python3Packages.xpybutil.overridePythonAttrs (_: {
+        dontWrapPythonPrograms = true;
+      });
     in
     {
       overridePythonAttrs = {
@@ -24,39 +30,62 @@ let
       };
       overriding-using-only-attrset-no-final-attrs = {
         name = "overriding-using-only-attrset-no-final-attrs";
-        expr = ((stdenvNoCC.mkDerivation { pname = "hello-no-final-attrs"; }).overrideAttrs { pname = "hello-no-final-attrs-overridden"; }).pname == "hello-no-final-attrs-overridden";
+        expr =
+          ((stdenvNoCC.mkDerivation { pname = "hello-no-final-attrs"; }).overrideAttrs {
+            pname = "hello-no-final-attrs-overridden";
+          }).pname == "hello-no-final-attrs-overridden";
         expected = true;
       };
     };
 
-  addEntangled = origOverrideAttrs: f:
+  addEntangled =
+    origOverrideAttrs: f:
     origOverrideAttrs (
-      lib.composeExtensions f (self: super: {
-        passthru = super.passthru // {
-          entangled = super.passthru.entangled.overrideAttrs f;
-          overrideAttrs = addEntangled self.overrideAttrs;
-        };
-      })
+      lib.composeExtensions f (
+        self: super: {
+          passthru = super.passthru // {
+            entangled = super.passthru.entangled.overrideAttrs f;
+            overrideAttrs = addEntangled self.overrideAttrs;
+          };
+        }
+      )
     );
 
-  entangle = pkg1: pkg2: pkg1.overrideAttrs (self: super: {
-    passthru = super.passthru // {
-      entangled = pkg2;
-      overrideAttrs = addEntangled self.overrideAttrs;
-    };
-  });
+  entangle =
+    pkg1: pkg2:
+    pkg1.overrideAttrs (
+      self: super: {
+        passthru = super.passthru // {
+          entangled = pkg2;
+          overrideAttrs = addEntangled self.overrideAttrs;
+        };
+      }
+    );
 
   example = entangle pkgs.hello pkgs.figlet;
 
   overrides1 = example.overrideAttrs (_: super: { pname = "a-better-${super.pname}"; });
 
-  repeatedOverrides = overrides1.overrideAttrs (_: super: { pname = "${super.pname}-with-blackjack"; });
+  repeatedOverrides = overrides1.overrideAttrs (
+    _: super: { pname = "${super.pname}-with-blackjack"; }
+  );
 in
 
 stdenvNoCC.mkDerivation {
   name = "test-overriding";
-  passthru = { inherit tests; };
-  buildCommand = ''
-    touch $out
-  '' + lib.concatStringsSep "\n" (lib.attrValues (lib.mapAttrs (name: t: "([[ ${lib.boolToString t.expr} == ${lib.boolToString t.expected} ]] && echo '${name} success') || (echo '${name} fail' && exit 1)") tests));
+  passthru = {
+    inherit tests;
+  };
+  buildCommand =
+    ''
+      touch $out
+    ''
+    + lib.concatStringsSep "\n" (
+      lib.attrValues (
+        lib.mapAttrs (
+          name: t:
+          "([[ ${lib.boolToString t.expr} == ${lib.boolToString t.expected} ]] && echo '${name} success') || (echo '${name} fail' && exit 1)"
+        ) tests
+      )
+    );
 }

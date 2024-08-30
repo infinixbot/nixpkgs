@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
 let
   cfg = config.services.radicle;
@@ -45,7 +50,9 @@ let
       {
         BindReadOnlyPaths = [
           "${cfg.configFile}:${env.RAD_HOME}/config.json"
-          "${if types.path.check cfg.publicKey then cfg.publicKey else pkgs.writeText "radicle.pub" cfg.publicKey}:${env.RAD_HOME}/keys/radicle.pub"
+          "${
+            if types.path.check cfg.publicKey then cfg.publicKey else pkgs.writeText "radicle.pub" cfg.publicKey
+          }:${env.RAD_HOME}/keys/radicle.pub"
         ];
         KillMode = "process";
         StateDirectory = [ "radicle" ];
@@ -76,7 +83,11 @@ let
         ProtectProc = "invisible";
         ProtectSystem = "strict";
         RemoveIPC = true;
-        RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" "AF_INET6" ];
+        RestrictAddressFamilies = [
+          "AF_UNIX"
+          "AF_INET"
+          "AF_INET6"
+        ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
         RestrictSUIDSGID = true;
@@ -163,21 +174,27 @@ in
           preferLocalBuild = true;
           # None of the usual phases are run here because runCommandWith uses buildCommand,
           # so just append to buildCommand what would usually be a checkPhase.
-          buildCommand = previousAttrs.buildCommand + optionalString cfg.checkConfig ''
-            ln -s $out config.json
-            install -D -m 644 /dev/stdin keys/radicle.pub <<<"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBgFMhajUng+Rjj/sCFXI9PzG8BQjru2n7JgUVF1Kbv5 snakeoil"
-            export RAD_HOME=$PWD
-            ${getExe' pkgs.buildPackages.radicle-node "rad"} config >/dev/null || {
-              cat -n config.json
-              echo "Invalid config.json according to rad."
-              echo "Please double-check your services.radicle.settings (producing the config.json above),"
-              echo "some settings may be missing or have the wrong type."
-              exit 1
-            } >&2
-          '';
+          buildCommand =
+            previousAttrs.buildCommand
+            + optionalString cfg.checkConfig ''
+              ln -s $out config.json
+              install -D -m 644 /dev/stdin keys/radicle.pub <<<"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBgFMhajUng+Rjj/sCFXI9PzG8BQjru2n7JgUVF1Kbv5 snakeoil"
+              export RAD_HOME=$PWD
+              ${getExe' pkgs.buildPackages.radicle-node "rad"} config >/dev/null || {
+                cat -n config.json
+                echo "Invalid config.json according to rad."
+                echo "Please double-check your services.radicle.settings (producing the config.json above),"
+                echo "some settings may be missing or have the wrong type."
+                exit 1
+              } >&2
+            '';
         });
       };
-      checkConfig = mkEnableOption "checking the {file}`config.json` file resulting from {option}`services.radicle.settings`" // { default = true; };
+      checkConfig =
+        mkEnableOption "checking the {file}`config.json` file resulting from {option}`services.radicle.settings`"
+        // {
+          default = true;
+        };
       settings = mkOption {
         description = ''
           See https://app.radicle.xyz/nodes/seed.radicle.garden/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5/tree/radicle/src/node/config.rs#L275
@@ -210,14 +227,16 @@ in
         };
         nginx = mkOption {
           # Type of a single virtual host, or null.
-          type = types.nullOr (types.submodule (
-            recursiveUpdate (import ../web-servers/nginx/vhost-options.nix { inherit config lib; }) {
-              options.serverName = {
-                default = "radicle-${config.networking.hostName}.${config.networking.domain}";
-                defaultText = "radicle-\${config.networking.hostName}.\${config.networking.domain}";
-              };
-            }
-          ));
+          type = types.nullOr (
+            types.submodule (
+              recursiveUpdate (import ../web-servers/nginx/vhost-options.nix { inherit config lib; }) {
+                options.serverName = {
+                  default = "radicle-${config.networking.hostName}.${config.networking.domain}";
+                  defaultText = "radicle-\${config.networking.hostName}.\${config.networking.domain}";
+                };
+              }
+            )
+          );
           default = null;
           example = literalExpression ''
             {
@@ -270,17 +289,24 @@ in
         # Give only access to the private key to radicle-node.
         {
           serviceConfig =
-            let keyCred = builtins.split ":" "${cfg.privateKeyFile}"; in
-            if length keyCred > 1
-            then {
-              LoadCredentialEncrypted = [ cfg.privateKeyFile ];
-              # Note that neither %d nor ${CREDENTIALS_DIRECTORY} works in BindReadOnlyPaths=
-              BindReadOnlyPaths = [ "/run/credentials/radicle-node.service/${head keyCred}:${env.RAD_HOME}/keys/radicle" ];
-            }
-            else {
-              LoadCredential = [ "radicle:${cfg.privateKeyFile}" ];
-              BindReadOnlyPaths = [ "/run/credentials/radicle-node.service/radicle:${env.RAD_HOME}/keys/radicle" ];
-            };
+            let
+              keyCred = builtins.split ":" "${cfg.privateKeyFile}";
+            in
+            if length keyCred > 1 then
+              {
+                LoadCredentialEncrypted = [ cfg.privateKeyFile ];
+                # Note that neither %d nor ${CREDENTIALS_DIRECTORY} works in BindReadOnlyPaths=
+                BindReadOnlyPaths = [
+                  "/run/credentials/radicle-node.service/${head keyCred}:${env.RAD_HOME}/keys/radicle"
+                ];
+              }
+            else
+              {
+                LoadCredential = [ "radicle:${cfg.privateKeyFile}" ];
+                BindReadOnlyPaths = [
+                  "/run/credentials/radicle-node.service/radicle:${env.RAD_HOME}/keys/radicle"
+                ];
+              };
         }
       ];
 
@@ -299,8 +325,9 @@ in
           home = env.HOME;
           isSystemUser = true;
         };
-        groups.radicle = {
-        };
+        groups.radicle =
+          {
+          };
       };
     }
 
@@ -321,9 +348,9 @@ in
                 "@timer"
               ];
             };
-          confinement.packages = [
-            cfg.httpd.package
-          ];
+            confinement.packages = [
+              cfg.httpd.package
+            ];
           }
         ];
       }

@@ -158,7 +158,6 @@ buildPythonPackage {
     hash = "sha256-tnM6ye0Sxh8P2bm3awE72GvXEY0gXX1Sv+wPr77wRGU=";
   };
 
-
   pythonRemoveDeps = [
     # We call it faiss, not faiss-cpu.
     "faiss-cpu"

@@ -1,22 +1,26 @@
-{ lib
-, python311
-, fetchFromGitHub
-, file
-, gnupg
-, gawk
-, procps
-, withManpage ? false
+{
+  lib,
+  python311,
+  fetchFromGitHub,
+  file,
+  gnupg,
+  gawk,
+  procps,
+  withManpage ? false,
 }:
 
-with python311.pkgs; buildPythonApplication rec {
+with python311.pkgs;
+buildPythonApplication rec {
   pname = "alot";
   version = "0.10";
 
-  outputs = [
-    "out"
-  ] ++ lib.optionals withManpage [
-    "man"
-  ];
+  outputs =
+    [
+      "out"
+    ]
+    ++ lib.optionals withManpage [
+      "man"
+    ];
 
   disabled = !isPy3k;
 

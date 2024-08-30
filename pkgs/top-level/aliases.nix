@@ -22,43 +22,50 @@ with self;
 let
   # Removing recurseForDerivation prevents derivations of aliased attribute set
   # to appear while listing all the packages available.
-  removeRecurseForDerivations = alias:
-    if alias.recurseForDerivations or false
-    then lib.removeAttrs alias [ "recurseForDerivations" ]
-    else alias;
+  removeRecurseForDerivations =
+    alias:
+    if alias.recurseForDerivations or false then
+      lib.removeAttrs alias [ "recurseForDerivations" ]
+    else
+      alias;
 
   # Disabling distribution prevents top-level aliases for non-recursed package
   # sets from building on Hydra.
-  removeDistribute = alias:
-    if lib.isDerivation alias then
-      lib.dontDistribute alias
-    else alias;
+  removeDistribute = alias: if lib.isDerivation alias then lib.dontDistribute alias else alias;
 
-  transmission3Warning = { prefix ? "", suffix ? "" }: let
-    p = "${prefix}transmission${suffix}";
-    p3 = "${prefix}transmission_3${suffix}";
-    p4 = "${prefix}transmission_4${suffix}";
-  in "${p} has been renamed to ${p3} since ${p4} is also available. Note that upgrade caused data loss for some users so backup is recommended (see NixOS 24.11 release notes for details)";
+  transmission3Warning =
+    {
+      prefix ? "",
+      suffix ? "",
+    }:
+    let
+      p = "${prefix}transmission${suffix}";
+      p3 = "${prefix}transmission_3${suffix}";
+      p4 = "${prefix}transmission_4${suffix}";
+    in
+    "${p} has been renamed to ${p3} since ${p4} is also available. Note that upgrade caused data loss for some users so backup is recommended (see NixOS 24.11 release notes for details)";
 
   # Make sure that we are not shadowing something from all-packages.nix.
-  checkInPkgs = n: alias:
-    if builtins.hasAttr n super
-    then throw "Alias ${n} is still in all-packages.nix"
-    else alias;
+  checkInPkgs =
+    n: alias:
+    if builtins.hasAttr n super then throw "Alias ${n} is still in all-packages.nix" else alias;
 
-  mapAliases = aliases:
-    lib.mapAttrs
-      (n: alias:
-        removeDistribute
-          (removeRecurseForDerivations
-            (checkInPkgs n alias)))
-      aliases;
+  mapAliases =
+    aliases:
+    lib.mapAttrs (
+      n: alias: removeDistribute (removeRecurseForDerivations (checkInPkgs n alias))
+    ) aliases;
 in
 
 mapAliases ({
   # Added 2018-07-16 preserve, reason: forceSystem should not be used directly in Nixpkgs.
-  forceSystem = system: _:
-    (import self.path { localSystem = { inherit system; }; });
+  forceSystem =
+    system: _:
+    (import self.path {
+      localSystem = {
+        inherit system;
+      };
+    });
 
   ### A ###
 
@@ -165,8 +172,10 @@ mapAliases ({
   bitwarden = bitwarden-desktop; # Added 2024-02-25
   bitwig-studio1 = throw "bitwig-studio1 has been removed, you can upgrade to 'bitwig-studio'"; # Added 2023-01-03
   bitwig-studio2 = throw "bitwig-studio2 has been removed, you can upgrade to 'bitwig-studio'"; # Added 2023-01-03
-  blender-with-packages = args:
-    lib.warn "blender-with-packages is deprecated in favor of blender.withPackages, e.g. `blender.withPackages(ps: [ ps.foobar ])`"
+  blender-with-packages =
+    args:
+    lib.warn
+      "blender-with-packages is deprecated in favor of blender.withPackages, e.g. `blender.withPackages(ps: [ ps.foobar ])`"
       (blender.withPackages (_: args.packages)).overrideAttrs
       (lib.optionalAttrs (args ? name) { pname = "blender-" + args.name; }); # Added 2023-10-30
   blockbench-electron = blockbench; # Added 2024-03-16
@@ -205,8 +214,6 @@ mapAliases ({
   bitwarden_rs-postgresql = vaultwarden-postgresql;
   bitwarden_rs-sqlite = vaultwarden-sqlite;
   bitwarden_rs-vault = vaultwarden-vault;
-
-
 
   ### C ###
 
@@ -288,13 +295,13 @@ mapAliases ({
 
   clang-tools_6 = throw "clang-tools_6 has been removed from nixpkgs"; # Added 2024-01-08
   clang-tools_7 = throw "clang-tools_7 has been removed from nixpkgs"; # Added 2023-11-19
-  clang-tools_8  = throw "clang-tools_8 has been removed from nixpkgs"; # Added 2024-01-24
+  clang-tools_8 = throw "clang-tools_8 has been removed from nixpkgs"; # Added 2024-01-24
   clang-tools_9 = throw "clang-tools_9 has been removed from nixpkgs"; # Added 2024-04-08
   clang-tools_10 = throw "clang-tools_10 has been removed from nixpkgs"; # Added 2023-01-26
   clang-tools_11 = throw "clang-tools_11 has been removed from nixpkgs"; # Added 2023-01-24
   clang_6 = throw "clang_6 has been removed from nixpkgs"; # Added 2024-01-08
   clang_7 = throw "clang_7 has been removed from nixpkgs"; # Added 2023-11-19
-  clang_8  = throw "clang_8 has been removed from nixpkgs"; # Added 2024-01-24
+  clang_8 = throw "clang_8 has been removed from nixpkgs"; # Added 2024-01-24
   clang_9 = throw "clang_9 has been removed from nixpkgs"; # Added 2024-04-08
   clang_10 = throw "clang_10 has been removed from nixpkgs"; # Added 2024-01-26
   clang_11 = throw "clang_11 has been removed from nixpkgs"; # Added 2023-01-24
@@ -460,7 +467,7 @@ mapAliases ({
   firmwareLinuxNonfree = linux-firmware; # Added 2022-01-09
   fishfight = jumpy; # Added 2022-08-03
   fitnesstrax = throw "fitnesstrax was removed from nixpkgs because it disappeared upstream and no longer compiles"; # added 2023-07-04
-  flashrom-stable = flashprog;   # Added 2024-03-01
+  flashrom-stable = flashprog; # Added 2024-03-01
   flatbuffers_2_0 = flatbuffers; # Added 2022-05-12
   flintqs = throw "FlintQS has been removed due to lack of maintenance and security issues; use SageMath or FLINT instead"; # Added 2024-03-21
   flutter2 = throw "flutter2 has been removed because it isn't updated anymore, and no packages in nixpkgs use it. If you still need it, use flutter.mkFlutter to get a custom version"; # Added 2023-07-03
@@ -500,7 +507,8 @@ mapAliases ({
   garage_0_7_3 = throw "garage 0.7.x has been removed as it is EOL. Please upgrade to 0.8 series."; # Added 2023-10-10
   garmin-plugin = throw "garmin-plugin has been removed, as it is unmaintained upstream and no longer works with modern browsers."; # Added 2024-01-12
   garmindev = throw "'garmindev' has been removed as the dependent software 'qlandkartegt' has been removed"; # Added 2023-04-17
-  gcc10StdenvCompat = if stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "11" then gcc10Stdenv else stdenv; # Added 2024-03-21
+  gcc10StdenvCompat =
+    if stdenv.cc.isGNU && lib.versionAtLeast stdenv.cc.version "11" then gcc10Stdenv else stdenv; # Added 2024-03-21
   gcl_2_6_13_pre = throw "'gcl_2_6_13_pre' has been removed in favor of 'gcl'"; # Added 2024-01-11
   geekbench4 = throw "'geekbench4' has been renamed to 'geekbench_4'"; # Added 2023-03-10
   geekbench5 = throw "'geekbench5' has been renamed to 'geekbench_5'"; # Added 2023-03-10
@@ -531,20 +539,20 @@ mapAliases ({
   gnatboot11 = gnat-bootstrap11;
   gnatboot12 = gnat-bootstrap12;
   gnatboot = gnat-bootstrap;
-  gnatcoll-core     = gnatPackages.gnatcoll-core; # Added 2024-02-25
-  gnatcoll-gmp      = gnatPackages.gnatcoll-gmp; # Added 2024-02-25
-  gnatcoll-iconv    = gnatPackages.gnatcoll-iconv; # Added 2024-02-25
-  gnatcoll-lzma     = gnatPackages.gnatcoll-lzma; # Added 2024-02-25
-  gnatcoll-omp      = gnatPackages.gnatcoll-omp; # Added 2024-02-25
-  gnatcoll-python3  = gnatPackages.gnatcoll-python3; # Added 2024-02-25
+  gnatcoll-core = gnatPackages.gnatcoll-core; # Added 2024-02-25
+  gnatcoll-gmp = gnatPackages.gnatcoll-gmp; # Added 2024-02-25
+  gnatcoll-iconv = gnatPackages.gnatcoll-iconv; # Added 2024-02-25
+  gnatcoll-lzma = gnatPackages.gnatcoll-lzma; # Added 2024-02-25
+  gnatcoll-omp = gnatPackages.gnatcoll-omp; # Added 2024-02-25
+  gnatcoll-python3 = gnatPackages.gnatcoll-python3; # Added 2024-02-25
   gnatcoll-readline = gnatPackages.gnatcoll-readline; # Added 2024-02-25
-  gnatcoll-syslog   = gnatPackages.gnatcoll-syslog; # Added 2024-02-25
-  gnatcoll-zlib     = gnatPackages.gnatcoll-zlib; # Added 2024-02-25
+  gnatcoll-syslog = gnatPackages.gnatcoll-syslog; # Added 2024-02-25
+  gnatcoll-zlib = gnatPackages.gnatcoll-zlib; # Added 2024-02-25
   gnatcoll-postgres = gnatPackages.gnatcoll-postgres; # Added 2024-02-25
-  gnatcoll-sql      = gnatPackages.gnatcoll-sql; # Added 2024-02-25
-  gnatcoll-sqlite   = gnatPackages.gnatcoll-sqlite; # Added 2024-02-25
-  gnatcoll-xref     = gnatPackages.gnatcoll-xref; # Added 2024-02-25
-  gnatcoll-db2ada   = gnatPackages.gnatcoll-db2ada; # Added 2024-02-25
+  gnatcoll-sql = gnatPackages.gnatcoll-sql; # Added 2024-02-25
+  gnatcoll-sqlite = gnatPackages.gnatcoll-sqlite; # Added 2024-02-25
+  gnatcoll-xref = gnatPackages.gnatcoll-xref; # Added 2024-02-25
+  gnatcoll-db2ada = gnatPackages.gnatcoll-db2ada; # Added 2024-02-25
   gnatinspect = gnatPackages.gnatinspect; # Added 2024-02-25
   gnome-firmware-updater = gnome-firmware; # added 2022-04-14
   gnome-passwordsafe = gnome-secrets; # added 2022-01-30
@@ -560,8 +568,7 @@ mapAliases ({
       "nacl"
       "rds"
       "limesdr"
-    ]
-      gnuradio3_7Packages;
+    ] gnuradio3_7Packages;
   }; # Added 2020-10-16
 
   gmock = gtest; # moved from top-level 2021-03-14
@@ -674,7 +681,7 @@ mapAliases ({
   indigenous-desktop = throw "'indigenous-desktop' has been renamed to/replaced by 'indiepass-desktop'"; # Added 2023-11-08
   input-utils = throw "The input-utils package was dropped since it was unmaintained."; # Added 2024-06-21
   instead-launcher = throw "instead-launcher has been removed, because it depended on qt4"; # Added 2023-07-26
-  insync-v3 = throw "insync-v3 has been merged into the insync package; use insync instead"; #Added 2023-05-13
+  insync-v3 = throw "insync-v3 has been merged into the insync package; use insync instead"; # Added 2023-05-13
   index-fm = libsForQt5.mauiPackages.index; # added 2022-05-17
   infiniband-diags = throw "'infiniband-diags' has been renamed to/replaced by 'rdma-core'"; # Converted to throw 2023-09-10
   inotifyTools = inotify-tools;
@@ -689,7 +696,6 @@ mapAliases ({
   iso-flags-png-320x420 = lib.warn "iso-flags-png-320x420 has been renamed to iso-flags-png-320x240" iso-flags-png-320x240; # Added 2024-07-17
 
   ### J ###
-
 
   jack2Full = jack2; # moved from top-level 2021-03-14
   jami-client-qt = jami-client; # Added 2022-11-06
@@ -939,7 +945,7 @@ mapAliases ({
   mailman-rss = throw "The mailman-rss package was dropped since it was unmaintained."; # Added 2024-06-21
   mariadb_104 = throw "mariadb_104 has been removed from nixpkgs, please switch to another version like mariadb_106"; # Added 2023-09-11
   mariadb_1010 = throw "mariadb_1010 has been removed from nixpkgs, please switch to another version like mariadb_1011"; # Added 2023-11-14
-  mariadb-client = hiPrio mariadb.client; #added 2019.07.28
+  mariadb-client = hiPrio mariadb.client; # added 2019.07.28
   markdown-pp = throw "markdown-pp was removed from nixpkgs, because the upstream archived it on 2021-09-02"; # Added 2023-07-22
   markmind = throw "markmind has been removed from nixpkgs, because it depended on an old version of electron"; # Added 2023-09-12
   maligned = throw "maligned was deprecated upstream in favor of x/tools/go/analysis/passes/fieldalignment"; # Added 20204-08-24
@@ -1036,8 +1042,8 @@ mapAliases ({
   nix-ld-rs = nix-ld; # Added 2024-08-17
   nix-repl = throw (
     # Added 2018-08-26
-    "nix-repl has been removed because it's not maintained anymore, " +
-    "use `nix repl` instead. Also see https://github.com/NixOS/nixpkgs/pull/44903"
+    "nix-repl has been removed because it's not maintained anymore, "
+    + "use `nix repl` instead. Also see https://github.com/NixOS/nixpkgs/pull/44903"
   );
   nix-review = throw "'nix-review' has been renamed to/replaced by 'nixpkgs-review'"; # Converted to throw 2023-09-10
   nix-simple-deploy = throw "'nix-simple-deploy' has been removed as it is broken and unmaintained"; # Added 2024-08-17
@@ -1131,12 +1137,12 @@ mapAliases ({
   openvpn_24 = throw "openvpn_24 has been removed, because it went EOL. 2.5.x or newer is still available"; # Added 2023-01-23
   optparse-bash = throw "'optparse-bash' (GitHub: nk412/optparse) has been removed. Use 'argparse' instead"; # Added 2024-01-12
   orchis = orchis-theme; # Added 2021-06-09
-  oni2 = throw "oni2 was removed, because it is unmaintained and was abandoned years ago."; #Added 2024-01-15
+  oni2 = throw "oni2 was removed, because it is unmaintained and was abandoned years ago."; # Added 2024-01-15
   onlyoffice-bin_latest = onlyoffice-bin; # Added 2024-07-03
   onlyoffice-bin_7_2 = throw "onlyoffice-bin_7_2 has been removed. Please use the latest version available under onlyoffice-bin"; # Added 2024-07-03
   onlyoffice-bin_7_5 = throw "onlyoffice-bin_7_5 has been removed. Please use the latest version available under onlyoffice-bin"; # Added 2024-07-03
   openvswitch-lts = throw "openvswitch-lts has been removed. Please use the latest version available under openvswitch"; # Added 2024-08-24
-  oroborus = throw "oroborus was removed, because it was abandoned years ago."; #Added 2023-09-10
+  oroborus = throw "oroborus was removed, because it was abandoned years ago."; # Added 2023-09-10
   osxfuse = macfuse-stubs; # Added 2021-03-20
   ovn-lts = throw "ovn-lts has been removed. Please use the latest version available under ovn"; # Added 2024-08-24
   oxen = throw "'oxen' has been removed, because it was broken, outdated and unmaintained"; # Added 2023-12-09
@@ -1214,7 +1220,14 @@ mapAliases ({
     gtk2 = pinentry-gtk2;
     qt = pinentry-qt;
     tty = pinentry-tty;
-    flavors = [ "curses" "emacs" "gnome3" "gtk2" "qt" "tty" ];
+    flavors = [
+      "curses"
+      "emacs"
+      "gnome3"
+      "gtk2"
+      "qt"
+      "tty"
+    ];
   }; # added 2024-01-15
   pinentry_curses = throw "'pinentry_curses' has been renamed to/replaced by 'pinentry-curses'"; # Converted to throw 2023-09-10
   pinentry_emacs = throw "'pinentry_emacs' has been renamed to/replaced by 'pinentry-emacs'"; # Converted to throw 2023-09-10
@@ -1434,7 +1447,6 @@ mapAliases ({
   source-han-serif-simplified-chinese = source-han-serif;
   source-han-serif-traditional-chinese = source-han-serif;
 
-
   spacegun = throw "'spacegun' has been removed as unmaintained"; # Added 2023-05-20
   spectral = neochat; # Added 2020-12-27
   speedtest-exporter = throw "'speedtest-exporter' has been removed as unmaintained"; # Added 2023-07-31
@@ -1493,7 +1505,7 @@ mapAliases ({
   invalidateFetcherByDrvHash = testers.invalidateFetcherByDrvHash; # Added 2022-05-05
   timescale-prometheus = promscale; # Added 2020-09-29
   tinygltf = throw "TinyglTF has been embedded in draco due to lack of other users and compatibility breaks."; # Added 2023-06-25
-  tightvnc = throw "'tightvnc' has been removed as the version 1.3 is not maintained upstream anymore and is insecure"; # Added 2024-08-22
+  tightvnc = throw "'tightvnc' has been removed as the version 1.3 is not maintained upstream anymore and is insecure"; # Added 2024-08-22
   tixati = throw "'tixati' has been removed from nixpkgs as it is unfree and unmaintained"; # Added 2023-03-17
   tkcvs = tkrev; # Added 2022-03-07
   tokodon = plasma5Packages.tokodon;
@@ -1501,11 +1513,11 @@ mapAliases ({
   tomcat_connectors = apacheHttpdPackages.mod_jk; # Added 2024-06-07
   tootle = throw "'tootle' has been removed as it is not maintained upstream. Consider using 'tuba' instead"; # Added 2024-02-11
   tor-browser-bundle-bin = tor-browser; # Added 2023-09-23
-  transmission = lib.warn (transmission3Warning {}) transmission_3; # Added 2024-06-10
-  transmission-gtk = lib.warn (transmission3Warning {suffix = "-gtk";}) transmission_3-gtk; # Added 2024-06-10
-  transmission-qt = lib.warn (transmission3Warning {suffix = "-qt";}) transmission_3-qt; # Added 2024-06-10
+  transmission = lib.warn (transmission3Warning { }) transmission_3; # Added 2024-06-10
+  transmission-gtk = lib.warn (transmission3Warning { suffix = "-gtk"; }) transmission_3-gtk; # Added 2024-06-10
+  transmission-qt = lib.warn (transmission3Warning { suffix = "-qt"; }) transmission_3-qt; # Added 2024-06-10
   treefmt = treefmt2; # 2024-06-28
-  libtransmission = lib.warn (transmission3Warning {prefix = "lib";}) libtransmission_3; # Added 2024-06-10
+  libtransmission = lib.warn (transmission3Warning { prefix = "lib"; }) libtransmission_3; # Added 2024-06-10
   transfig = fig2dev; # Added 2022-02-15
   transifex-client = transifex-cli; # Added 2023-12-29
   trfl = throw "trfl has been removed, because it has not received an update for 3 years and was broken"; # Added 2024-07-25
@@ -1556,7 +1568,9 @@ mapAliases ({
   ### V ###
 
   v4l_utils = throw "'v4l_utils' has been renamed to/replaced by 'v4l-utils'"; # Converted to throw 2023-09-10
-  vamp = { vampSDK = vamp-plugin-sdk; }; # Added 2020-03-26
+  vamp = {
+    vampSDK = vamp-plugin-sdk;
+  }; # Added 2020-03-26
   vaapiIntel = intel-vaapi-driver; # Added 2023-05-31
   vaapiVdpau = libva-vdpau-driver; # Added 2024-06-05
   vaultwarden-vault = vaultwarden.webvault; # Added 2022-12-13
@@ -1658,7 +1672,11 @@ mapAliases ({
   zinc = zincsearch; # Added 2023-05-28
   zk-shell = throw "zk-shell has been removed as it was broken and unmaintained"; # Added 2024-08-10
   zkg = throw "'zkg' has been replaced by 'zeek'";
-  zq = zed.overrideAttrs (old: { meta = old.meta // { mainProgram = "zq"; }; }); # Added 2023-02-06
+  zq = zed.overrideAttrs (old: {
+    meta = old.meta // {
+      mainProgram = "zq";
+    };
+  }); # Added 2023-02-06
   zz = throw "'zz' has been removed because it was archived in 2022 and had no maintainer"; # added 2024-05-10
 
   ### UNSORTED ###
@@ -1684,30 +1702,144 @@ mapAliases ({
   # LLVM packages for (integration) testing that should not be used inside Nixpkgs:
   llvmPackages_latest = llvmPackages_18;
 
-  /* If these are in the scope of all-packages.nix, they cause collisions
-    between mixed versions of qt. See:
-  https://github.com/NixOS/nixpkgs/pull/101369 */
+  /*
+    If these are in the scope of all-packages.nix, they cause collisions
+      between mixed versions of qt. See:
+    https://github.com/NixOS/nixpkgs/pull/101369
+  */
 
   inherit (plasma5Packages)
-    akonadi akregator arianna ark bluedevil bomber bovo breeze-grub breeze-gtk
-    breeze-icons breeze-plymouth breeze-qt5 colord-kde discover dolphin dragon elisa falkon
-    ffmpegthumbs filelight granatier gwenview k3b kactivitymanagerd kaddressbook
-    kalzium kapman kapptemplate kate katomic kblackbox kblocks kbounce
-    kcachegrind kcalc kcharselect kcolorchooser kde-cli-tools kde-gtk-config
-    kdenlive kdeplasma-addons kdevelop-pg-qt kdevelop-unwrapped kdev-php
-    kdev-python kdevelop kdf kdialog kdiamond keditbookmarks kfind
-    kgamma5 kget kgpg khelpcenter kig kigo killbots kinfocenter kitinerary
-    kleopatra klettres klines kmag kmail kmenuedit kmines kmix kmplot
-    knavalbattle knetwalk knights kollision kolourpaint kompare konsole kontact
-    konversation korganizer kpkpass krdc kreversi krfb kscreen kscreenlocker
-    kshisen ksquares ksshaskpass ksystemlog kteatime ktimer ktorrent ktouch
-    kturtle kwallet-pam kwalletmanager kwave kwayland-integration kwin kwrited
-    marble merkuro milou minuet okular oxygen oxygen-icons5 picmi
-    plasma-browser-integration plasma-desktop plasma-integration plasma-nano
-    plasma-nm plasma-pa plasma-mobile plasma-systemmonitor plasma-thunderbolt
-    plasma-vault plasma-workspace plasma-workspace-wallpapers polkit-kde-agent
-    powerdevil qqc2-breeze-style sddm-kcm skanlite skanpage spectacle
-    systemsettings xdg-desktop-portal-kde yakuake zanshin
+    akonadi
+    akregator
+    arianna
+    ark
+    bluedevil
+    bomber
+    bovo
+    breeze-grub
+    breeze-gtk
+    breeze-icons
+    breeze-plymouth
+    breeze-qt5
+    colord-kde
+    discover
+    dolphin
+    dragon
+    elisa
+    falkon
+    ffmpegthumbs
+    filelight
+    granatier
+    gwenview
+    k3b
+    kactivitymanagerd
+    kaddressbook
+    kalzium
+    kapman
+    kapptemplate
+    kate
+    katomic
+    kblackbox
+    kblocks
+    kbounce
+    kcachegrind
+    kcalc
+    kcharselect
+    kcolorchooser
+    kde-cli-tools
+    kde-gtk-config
+    kdenlive
+    kdeplasma-addons
+    kdevelop-pg-qt
+    kdevelop-unwrapped
+    kdev-php
+    kdev-python
+    kdevelop
+    kdf
+    kdialog
+    kdiamond
+    keditbookmarks
+    kfind
+    kgamma5
+    kget
+    kgpg
+    khelpcenter
+    kig
+    kigo
+    killbots
+    kinfocenter
+    kitinerary
+    kleopatra
+    klettres
+    klines
+    kmag
+    kmail
+    kmenuedit
+    kmines
+    kmix
+    kmplot
+    knavalbattle
+    knetwalk
+    knights
+    kollision
+    kolourpaint
+    kompare
+    konsole
+    kontact
+    konversation
+    korganizer
+    kpkpass
+    krdc
+    kreversi
+    krfb
+    kscreen
+    kscreenlocker
+    kshisen
+    ksquares
+    ksshaskpass
+    ksystemlog
+    kteatime
+    ktimer
+    ktorrent
+    ktouch
+    kturtle
+    kwallet-pam
+    kwalletmanager
+    kwave
+    kwayland-integration
+    kwin
+    kwrited
+    marble
+    merkuro
+    milou
+    minuet
+    okular
+    oxygen
+    oxygen-icons5
+    picmi
+    plasma-browser-integration
+    plasma-desktop
+    plasma-integration
+    plasma-nano
+    plasma-nm
+    plasma-pa
+    plasma-mobile
+    plasma-systemmonitor
+    plasma-thunderbolt
+    plasma-vault
+    plasma-workspace
+    plasma-workspace-wallpapers
+    polkit-kde-agent
+    powerdevil
+    qqc2-breeze-style
+    sddm-kcm
+    skanlite
+    skanpage
+    spectacle
+    systemsettings
+    xdg-desktop-portal-kde
+    yakuake
+    zanshin
     ;
 
   kalendar = merkuro; # Renamed in 23.08

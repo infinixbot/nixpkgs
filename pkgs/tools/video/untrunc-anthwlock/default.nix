@@ -1,4 +1,12 @@
-{ lib, stdenv, fetchFromGitHub, ffmpeg_7, libui, unstableGitUpdater, wrapGAppsHook3 }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  ffmpeg_7,
+  libui,
+  unstableGitUpdater,
+  wrapGAppsHook3,
+}:
 
 stdenv.mkDerivation {
   pname = "untrunc-anthwlock";
@@ -13,7 +21,10 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ wrapGAppsHook3 ];
 
-  buildInputs = [ ffmpeg_7 libui ];
+  buildInputs = [
+    ffmpeg_7
+    libui
+  ];
 
   buildPhase = ''
     runHook preBuild

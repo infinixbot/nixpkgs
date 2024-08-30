@@ -1,16 +1,17 @@
-{ lib
-, stdenv
-, libxml2
-, curl
-, libxslt
-, pkg-config
-, cmake
-, fetchFromGitHub
-, perl
-, bison
-, flex
-, fetchpatch
-, static ? stdenv.hostPlatform.isStatic
+{
+  lib,
+  stdenv,
+  libxml2,
+  curl,
+  libxslt,
+  pkg-config,
+  cmake,
+  fetchFromGitHub,
+  perl,
+  bison,
+  flex,
+  fetchpatch,
+  static ? stdenv.hostPlatform.isStatic,
 }:
 
 stdenv.mkDerivation rec {
@@ -45,7 +46,13 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [ pkg-config cmake perl bison flex ];
+  nativeBuildInputs = [
+    pkg-config
+    cmake
+    perl
+    bison
+    flex
+  ];
   buildInputs = [
     curl
     libxml2
@@ -56,7 +63,10 @@ stdenv.mkDerivation rec {
     description = "RDF Parser Toolkit";
     mainProgram = "rapper";
     homepage = "https://librdf.org/raptor";
-    license = with lib.licenses; [ lgpl21 asl20 ];
+    license = with lib.licenses; [
+      lgpl21
+      asl20
+    ];
     maintainers = with lib.maintainers; [ marcweber ];
     platforms = lib.platforms.unix;
   };

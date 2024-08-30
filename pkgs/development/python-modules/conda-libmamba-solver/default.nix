@@ -20,7 +20,6 @@ buildPythonPackage rec {
     hash = "sha256-HBbApS6hyIbRyxOpOwbC1+IalIYk17rYRo6HLcwKKW4=";
   };
 
-
   build-system = [
     hatchling
     hatch-vcs

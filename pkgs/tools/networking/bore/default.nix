@@ -1,4 +1,12 @@
-{ lib, stdenv, rustPlatform, fetchFromBitbucket, Libsystem, SystemConfiguration, installShellFiles }:
+{
+  lib,
+  stdenv,
+  rustPlatform,
+  fetchFromBitbucket,
+  Libsystem,
+  SystemConfiguration,
+  installShellFiles,
+}:
 
 rustPlatform.buildRustPackage rec {
   pname = "bore";
@@ -12,17 +20,22 @@ rustPlatform.buildRustPackage rec {
   };
 
   cargoHash = "sha256-vUKv98lfsrxBiJxjL8ZKLZ1IVCX5hHzl+F5y4Ot3i/Y=";
-  cargoBuildFlags = [ "-p" pname ];
+  cargoBuildFlags = [
+    "-p"
+    pname
+  ];
 
   # error[E0793]: reference to packed field is unaligned
   doCheck = !stdenv.isDarwin;
 
   # FIXME can’t test --all-targets and --doc in a single invocation
-  cargoTestFlags = [ "--all-targets" "--workspace" ];
+  cargoTestFlags = [
+    "--all-targets"
+    "--workspace"
+  ];
   checkFeatures = [ "std" ];
 
-  nativeBuildInputs = [ installShellFiles ]
-    ++ lib.optional stdenv.isDarwin rustPlatform.bindgenHook;
+  nativeBuildInputs = [ installShellFiles ] ++ lib.optional stdenv.isDarwin rustPlatform.bindgenHook;
 
   buildInputs = lib.optionals stdenv.isDarwin [
     Libsystem

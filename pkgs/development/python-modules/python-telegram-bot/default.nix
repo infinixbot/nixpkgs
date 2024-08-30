@@ -36,7 +36,10 @@ buildPythonPackage rec {
     hash = "sha256-5raEejd8WH9JrFvMIy2AuMGK9O/FJ2rq9PeVqK+IMOU=";
   };
 
-  build-system = [ setuptools hatchling ];
+  build-system = [
+    setuptools
+    hatchling
+  ];
 
   dependencies = [
     httpx
@@ -47,7 +50,10 @@ buildPythonPackage rec {
     callback-data = [ cachetools ];
     ext = callback-data ++ job-queue ++ rate-limiter ++ webhooks;
     http2 = httpx.optional-dependencies.http2;
-    job-queue = [ apscheduler pytz ];
+    job-queue = [
+      apscheduler
+      pytz
+    ];
     passport = [ cryptography ] ++ lib.optionals (pythonAtLeast "3.13") [ cffi ];
     rate-limiter = [ aiolimiter ];
     socks = httpx.optional-dependencies.socks;

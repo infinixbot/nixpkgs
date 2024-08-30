@@ -1,19 +1,22 @@
-{ nix
-, makeWrapper
-, python3Packages
-, lib
-, nix-prefetch-scripts
-, luarocks-nix
-, lua5_1
-, lua5_2
-, lua5_3
-, lua5_4
-, pluginupdate
+{
+  nix,
+  makeWrapper,
+  python3Packages,
+  lib,
+  nix-prefetch-scripts,
+  luarocks-nix,
+  lua5_1,
+  lua5_2,
+  lua5_3,
+  lua5_4,
+  pluginupdate,
 }:
 let
 
   path = lib.makeBinPath [
-    nix nix-prefetch-scripts luarocks-nix
+    nix
+    nix-prefetch-scripts
+    luarocks-nix
   ];
 
   luaversions = [
@@ -40,8 +43,7 @@ python3Packages.buildPythonApplication {
 
   dontUnpack = true;
 
-  installPhase =
-    ''
+  installPhase = ''
     mkdir -p $out/bin $out/lib
     cp ${./updater.py} $out/bin/luarocks-packages-updater
     cp ${pluginupdate} $out/lib/pluginupdate.py
@@ -63,5 +65,3 @@ python3Packages.buildPythonApplication {
 
   meta.mainProgram = "luarocks-packages-updater";
 }
-
-

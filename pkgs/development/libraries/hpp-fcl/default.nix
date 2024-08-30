@@ -1,15 +1,16 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, cmake
-, doxygen
-, boost
-, eigen
-, assimp
-, octomap
-, qhull
-, pythonSupport ? false
-, python3Packages
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  cmake,
+  doxygen,
+  boost,
+  eigen,
+  assimp,
+  octomap,
+  qhull,
+  pythonSupport ? false,
+  python3Packages,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -26,43 +27,53 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  nativeBuildInputs = [
-    cmake
-    doxygen
-  ] ++ lib.optionals pythonSupport [
-    python3Packages.numpy
-  ];
+  nativeBuildInputs =
+    [
+      cmake
+      doxygen
+    ]
+    ++ lib.optionals pythonSupport [
+      python3Packages.numpy
+    ];
 
-  propagatedBuildInputs = [
-    assimp
-    qhull
-    octomap
-  ] ++ lib.optionals (!pythonSupport) [
-    boost
-    eigen
-  ] ++ lib.optionals pythonSupport [
-    python3Packages.boost
-    python3Packages.eigenpy
-  ];
+  propagatedBuildInputs =
+    [
+      assimp
+      qhull
+      octomap
+    ]
+    ++ lib.optionals (!pythonSupport) [
+      boost
+      eigen
+    ]
+    ++ lib.optionals pythonSupport [
+      python3Packages.boost
+      python3Packages.eigenpy
+    ];
 
-  cmakeFlags = [
-    "-DHPP_FCL_HAS_QHULL=ON"
-    "-DINSTALL_DOCUMENTATION=ON"
-  ] ++ lib.optionals (!pythonSupport) [
-    "-DBUILD_PYTHON_INTERFACE=OFF"
-  ];
+  cmakeFlags =
+    [
+      "-DHPP_FCL_HAS_QHULL=ON"
+      "-DINSTALL_DOCUMENTATION=ON"
+    ]
+    ++ lib.optionals (!pythonSupport) [
+      "-DBUILD_PYTHON_INTERFACE=OFF"
+    ];
 
   doCheck = true;
   pythonImportsCheck = lib.optionals (!pythonSupport) [
     "hppfcl"
   ];
 
-  outputs = [ "dev" "out" "doc" ];
+  outputs = [
+    "dev"
+    "out"
+    "doc"
+  ];
   postFixup = ''
     moveToOutput share/ament_index "$dev"
     moveToOutput share/${finalAttrs.pname} "$dev"
   '';
-
 
   meta = with lib; {
     description = "Extension of the Flexible Collision Library";

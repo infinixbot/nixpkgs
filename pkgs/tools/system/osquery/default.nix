@@ -1,21 +1,22 @@
-{ lib
-, cmake
-, fetchFromGitHub
-, fetchzip
-, fetchurl
-, git
-, perl
-, python3
-, stdenv
-, stdenvNoCC
-, ninja
-, nix-prefetch-git
-, autoPatchelfHook
-, jq
-, removeReferencesTo
-, nixosTests
-, file
-, writers
+{
+  lib,
+  cmake,
+  fetchFromGitHub,
+  fetchzip,
+  fetchurl,
+  git,
+  perl,
+  python3,
+  stdenv,
+  stdenvNoCC,
+  ninja,
+  nix-prefetch-git,
+  autoPatchelfHook,
+  jq,
+  removeReferencesTo,
+  nixosTests,
+  file,
+  writers,
 }:
 
 let
@@ -24,7 +25,14 @@ let
 
   opensslSrc = fetchurl info.openssl;
 
-  toolchain = import ./toolchain-bin.nix { inherit stdenv lib fetchzip file; };
+  toolchain = import ./toolchain-bin.nix {
+    inherit
+      stdenv
+      lib
+      fetchzip
+      file
+      ;
+  };
 
 in
 
@@ -80,18 +88,24 @@ stdenvNoCC.mkDerivation rec {
     tests = {
       inherit (nixosTests) osquery;
     };
-    updateScript = writers.writePython3
-      "osquery-update"
-      { makeWrapperArgs = "--prefix PATH : ${lib.makeBinPath [ nix-prefetch-git ]}"; }
-      (builtins.readFile ./update.py);
+    updateScript = writers.writePython3 "osquery-update" {
+      makeWrapperArgs = "--prefix PATH : ${lib.makeBinPath [ nix-prefetch-git ]}";
+    } (builtins.readFile ./update.py);
   };
 
   meta = with lib; {
     description = "SQL powered operating system instrumentation, monitoring, and analytics";
     homepage = "https://osquery.io";
-    license = with licenses; [ gpl2Only asl20 ];
+    license = with licenses; [
+      gpl2Only
+      asl20
+    ];
     platforms = platforms.linux;
     sourceProvenance = with sourceTypes; [ fromSource ];
-    maintainers = with maintainers; [ znewman01 lewo squalus ];
+    maintainers = with maintainers; [
+      znewman01
+      lewo
+      squalus
+    ];
   };
 }

@@ -1,16 +1,17 @@
-{ alsa-lib
-, autoPatchelfHook
-, fetchzip
-, gtk2
-, gtk3
-, lib
-, mesa
-, nss
-, stdenv
-, udev
-, unzip
-, wrapGAppsHook3
-, xorg
+{
+  alsa-lib,
+  autoPatchelfHook,
+  fetchzip,
+  gtk2,
+  gtk3,
+  lib,
+  mesa,
+  nss,
+  stdenv,
+  udev,
+  unzip,
+  wrapGAppsHook3,
+  xorg,
 }:
 
 let
@@ -25,9 +26,11 @@ let
     };
   };
   inherit (stdenv.hostPlatform) system;
-  binary = availableBinaries.${system} or (throw "cypress: No binaries available for system ${system}");
+  binary =
+    availableBinaries.${system} or (throw "cypress: No binaries available for system ${system}");
   inherit (binary) platform checksum;
-in stdenv.mkDerivation rec {
+in
+stdenv.mkDerivation rec {
   pname = "cypress";
   version = "13.13.2";
 
@@ -39,20 +42,27 @@ in stdenv.mkDerivation rec {
   # don't remove runtime deps
   dontPatchELF = true;
 
-  nativeBuildInputs = [ autoPatchelfHook wrapGAppsHook3 unzip ];
-
-  buildInputs = with xorg; [
-    libXScrnSaver
-    libXdamage
-    libXtst
-    libxshmfence
-  ] ++ [
-    nss
-    gtk2
-    alsa-lib
-    gtk3
-    mesa # for libgbm
+  nativeBuildInputs = [
+    autoPatchelfHook
+    wrapGAppsHook3
+    unzip
   ];
+
+  buildInputs =
+    with xorg;
+    [
+      libXScrnSaver
+      libXdamage
+      libXtst
+      libxshmfence
+    ]
+    ++ [
+      nss
+      gtk2
+      alsa-lib
+      gtk3
+      mesa # for libgbm
+    ];
 
   runtimeDependencies = [ (lib.getLib udev) ];
 
@@ -92,6 +102,10 @@ in stdenv.mkDerivation rec {
     sourceProvenance = with sourceTypes; [ binaryNativeCode ];
     license = licenses.mit;
     platforms = lib.attrNames availableBinaries;
-    maintainers = with maintainers; [ tweber mmahut Crafter ];
+    maintainers = with maintainers; [
+      tweber
+      mmahut
+      Crafter
+    ];
   };
 }

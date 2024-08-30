@@ -1,12 +1,13 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, rustPlatform
-, nix-update-script
-, polaris-web
-, fetchpatch
-, darwin
-, nixosTests
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  rustPlatform,
+  nix-update-script,
+  polaris-web,
+  fetchpatch,
+  darwin,
+  nixosTests,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -32,7 +33,8 @@ rustPlatform.buildRustPackage rec {
   };
 
   cargoPatches = [
-    (fetchpatch { # https://github.com/agersant/polaris/pull/213
+    (fetchpatch {
+      # https://github.com/agersant/polaris/pull/213
       name = "bump-time-crate.patch";
       url = "https://github.com/agersant/polaris/commit/f625c57d203bdd3f2d7fcd99ccce1032f04d9b91.patch";
       hash = "sha256-ICScYbSv4sCMbfZN2thhZMXGPcDX89xIhZqBJpGOzrY=";

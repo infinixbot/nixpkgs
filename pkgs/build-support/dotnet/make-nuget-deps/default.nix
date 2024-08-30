@@ -1,26 +1,30 @@
-{ symlinkJoin
-, fetchurl
-, stdenvNoCC
-, lib
-, unzip
-, patchNupkgs
-, nugetPackageHook
+{
+  symlinkJoin,
+  fetchurl,
+  stdenvNoCC,
+  lib,
+  unzip,
+  patchNupkgs,
+  nugetPackageHook,
 }:
-lib.makeOverridable(
-  { name
-  , nugetDeps ? import sourceFile
-  , sourceFile ? null
-  , installable ? false
+lib.makeOverridable (
+  {
+    name,
+    nugetDeps ? import sourceFile,
+    sourceFile ? null,
+    installable ? false,
   }:
   (symlinkJoin {
     name = "${name}-nuget-deps";
     paths = nugetDeps {
       fetchNuGet =
-        { pname
-        , version
-        , sha256 ? ""
-        , hash ? ""
-        , url ? "https://www.nuget.org/api/v2/package/${pname}/${version}" }:
+        {
+          pname,
+          version,
+          sha256 ? "",
+          hash ? "",
+          url ? "https://www.nuget.org/api/v2/package/${pname}/${version}",
+        }:
         stdenvNoCC.mkDerivation rec {
           inherit pname version;
 
@@ -29,7 +33,12 @@ lib.makeOverridable(
             # There is no need to verify whether both sha256 and hash are
             # valid here, because nuget-to-nix does not generate a deps.nix
             # containing both.
-            inherit url sha256 hash version;
+            inherit
+              url
+              sha256
+              hash
+              version
+              ;
           };
 
           nativeBuildInputs = [
@@ -66,6 +75,8 @@ lib.makeOverridable(
           createInstallableNugetSource = installable;
         };
     };
-  }) // {
-    inherit sourceFile;
   })
+  // {
+    inherit sourceFile;
+  }
+)

@@ -2,8 +2,7 @@
   stable = {
     chromedriver = {
       hash_darwin = "sha256-tC2BZmjKeYjBfwJINtgVQEJjiqJidVtnXdxigFkR2/M=";
-      hash_darwin_aarch64 =
-        "sha256-MRXiiQPY8EZ85zRCmJyxuI7SG5RbalBBg+vt0goeWus=";
+      hash_darwin_aarch64 = "sha256-MRXiiQPY8EZ85zRCmJyxuI7SG5RbalBBg+vt0goeWus=";
       hash_linux = "sha256-rQ/WYDghBXewFqMTGf7ZJGp2mMiPwjf8ImNyTvXulQU=";
       version = "128.0.6613.86";
     };

@@ -1,16 +1,17 @@
-{ lib
-, buildPythonApplication
-, fetchFromGitHub
-, cmake
-, colordiff
-, flex
-, libclang
-, llvm
-, unifdef
-, chardet
-, pebble
-, psutil
-, pytestCheckHook
+{
+  lib,
+  buildPythonApplication,
+  fetchFromGitHub,
+  cmake,
+  colordiff,
+  flex,
+  libclang,
+  llvm,
+  unifdef,
+  chardet,
+  pebble,
+  psutil,
+  pytestCheckHook,
 }:
 
 buildPythonApplication rec {
