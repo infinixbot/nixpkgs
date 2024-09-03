@@ -1,18 +1,19 @@
-{ lib
-, buildDunePackage
-, fetchurl
-, alcotest
-, cstruct
-, domain-name
-, duration
-, gmap
-, ipaddr
-, logs
-, lru
-, metrics
-, ptime
-, fmt
-, base64
+{
+  lib,
+  buildDunePackage,
+  fetchurl,
+  alcotest,
+  cstruct,
+  domain-name,
+  duration,
+  gmap,
+  ipaddr,
+  logs,
+  lru,
+  metrics,
+  ptime,
+  fmt,
+  base64,
 }:
 
 buildDunePackage rec {
@@ -26,7 +27,19 @@ buildDunePackage rec {
     hash = "sha256-CIIGG8W/p1FasmyEyoBiMjrFkxs/iuKVJ5SwySfYhU4=";
   };
 
-  propagatedBuildInputs = [ fmt logs ptime domain-name gmap cstruct ipaddr lru duration metrics base64 ];
+  propagatedBuildInputs = [
+    fmt
+    logs
+    ptime
+    domain-name
+    gmap
+    cstruct
+    ipaddr
+    lru
+    duration
+    metrics
+    base64
+  ];
 
   doCheck = true;
   checkInputs = [ alcotest ];

@@ -1,8 +1,9 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, rustPlatform
-, darwin
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  rustPlatform,
+  darwin,
 }:
 
 rustPlatform.buildRustPackage {
@@ -21,10 +22,13 @@ rustPlatform.buildRustPackage {
   # tests are network based :(
   doCheck = false;
 
-  buildInputs = lib.optionals stdenv.isDarwin (with darwin.apple_sdk.frameworks; [
-    CoreServices
-    AppKit
-  ]);
+  buildInputs = lib.optionals stdenv.isDarwin (
+    with darwin.apple_sdk.frameworks;
+    [
+      CoreServices
+      AppKit
+    ]
+  );
 
   meta = with lib; {
     description = "TUI RSS reader with vim-like controls and a local-first, offline-first focus";

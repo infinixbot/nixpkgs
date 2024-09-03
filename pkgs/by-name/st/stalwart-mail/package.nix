@@ -57,17 +57,19 @@ rustPlatform.buildRustPackage {
     rustPlatform.bindgenHook
   ];
 
-  buildInputs = [
-    bzip2
-    openssl
-    sqlite
-    foundationdb
-    zstd
-  ] ++ lib.optionals stdenv.isDarwin [
-    darwin.apple_sdk.frameworks.CoreFoundation
-    darwin.apple_sdk.frameworks.Security
-    darwin.apple_sdk.frameworks.SystemConfiguration
-  ];
+  buildInputs =
+    [
+      bzip2
+      openssl
+      sqlite
+      foundationdb
+      zstd
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.CoreFoundation
+      darwin.apple_sdk.frameworks.Security
+      darwin.apple_sdk.frameworks.SystemConfiguration
+    ];
 
   env = {
     OPENSSL_NO_VENDOR = true;
@@ -148,6 +150,10 @@ rustPlatform.buildRustPackage {
     homepage = "https://github.com/stalwartlabs/mail-server";
     changelog = "https://github.com/stalwartlabs/mail-server/blob/${version}/CHANGELOG";
     license = licenses.agpl3Only;
-    maintainers = with maintainers; [ happysalada onny oddlama ];
+    maintainers = with maintainers; [
+      happysalada
+      onny
+      oddlama
+    ];
   };
 }

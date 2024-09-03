@@ -1,12 +1,22 @@
-{ system ? builtins.currentSystem
-, config ? { }
-, pkgs ? import ../.. { inherit system config; }
+{
+  system ? builtins.currentSystem,
+  config ? { },
+  pkgs ? import ../.. { inherit system config; },
 }:
 
 let
   inherit (import ../lib/testing-python.nix { inherit system pkgs; }) makeTest;
-  inherit (pkgs.lib) concatStringsSep maintainers mapAttrs mkMerge
-    removeSuffix replaceStrings singleton splitString makeBinPath;
+  inherit (pkgs.lib)
+    concatStringsSep
+    maintainers
+    mapAttrs
+    mkMerge
+    removeSuffix
+    replaceStrings
+    singleton
+    splitString
+    makeBinPath
+    ;
 
   /*
     * The attrset `exporterTests` contains one attribute
@@ -161,12 +171,14 @@ let
     blackbox = {
       exporterConfig = {
         enable = true;
-        configFile = pkgs.writeText "config.yml" (builtins.toJSON {
-          modules.icmp_v6 = {
-            prober = "icmp";
-            icmp.preferred_ip_protocol = "ip6";
-          };
-        });
+        configFile = pkgs.writeText "config.yml" (
+          builtins.toJSON {
+            modules.icmp_v6 = {
+              prober = "icmp";
+              icmp.preferred_ip_protocol = "ip6";
+            };
+          }
+        );
       };
       exporterTest = ''
         wait_for_unit("prometheus-blackbox-exporter.service")
@@ -185,7 +197,12 @@ let
       metricProvider = {
         services.borgmatic.enable = true;
         services.borgmatic.settings.source_directories = [ "/home" ];
-        services.borgmatic.settings.repositories = [ { label = "local"; path = "/var/backup"; } ];
+        services.borgmatic.settings.repositories = [
+          {
+            label = "local";
+            path = "/var/backup";
+          }
+        ];
         services.borgmatic.settings.keep_daily = 10;
       };
       exporterTest = ''
@@ -202,17 +219,20 @@ let
         enable = true;
         extraFlags = [ "--web.collectd-push-path /collectd" ];
       };
-      exporterTest = let postData = replaceStrings [ "\n" ] [ "" ] ''
-        [{
-          "values":[23],
-          "dstypes":["gauge"],
-          "type":"gauge",
-          "interval":1000,
-          "host":"testhost",
-          "plugin":"testplugin",
-          "time":DATE
-        }]
-      ''; in
+      exporterTest =
+        let
+          postData = replaceStrings [ "\n" ] [ "" ] ''
+            [{
+              "values":[23],
+              "dstypes":["gauge"],
+              "type":"gauge",
+              "interval":1000,
+              "host":"testhost",
+              "plugin":"testplugin",
+              "time":DATE
+            }]
+          '';
+        in
         ''
           wait_for_unit("prometheus-collectd-exporter.service")
           wait_for_open_port(9103)
@@ -244,8 +264,8 @@ let
         services.deluge.declarative = true;
         services.deluge.config.daemon_port = 2345;
         services.deluge.authFile = pkgs.writeText "authFile" ''
-        localclient:abcdef:10
-        user:weak_password:10
+          localclient:abcdef:10
+          user:weak_password:10
         '';
       };
       exporterTest = ''
@@ -297,14 +317,18 @@ let
               listen: 127.0.0.1@53
             template:
               - id: default
-                storage: ${pkgs.buildEnv {
-                  name = "zones";
-                  paths = [(pkgs.writeTextDir "example.com.zone" ''
-                    @ SOA ns1.example.com. noc.example.com. 2024032401 86400 7200 3600000 172800
-                    @       NS      ns1
-                    ns1     A       192.168.0.1
-                  '')];
-                }}
+                storage: ${
+                  pkgs.buildEnv {
+                    name = "zones";
+                    paths = [
+                      (pkgs.writeTextDir "example.com.zone" ''
+                        @ SOA ns1.example.com. noc.example.com. 2024032401 86400 7200 3600000 172800
+                        @       NS      ns1
+                        ns1     A       192.168.0.1
+                      '')
+                    ];
+                  }
+                }
                 zonefile-load: difference
                 zonefile-sync: -1
             zone:
@@ -387,14 +411,16 @@ let
         enable = true;
         port = 9108;
         graphitePort = 9109;
-        mappingSettings.mappings = [{
-          match = "test.*.*";
-          name = "testing";
-          labels = {
-            protocol = "$1";
-            author = "$2";
-          };
-        }];
+        mappingSettings.mappings = [
+          {
+            match = "test.*.*";
+            name = "testing";
+            labels = {
+              protocol = "$1";
+              author = "$2";
+            };
+          }
+        ];
       };
       exporterTest = ''
         wait_for_unit("prometheus-graphite-exporter.service")
@@ -411,7 +437,10 @@ let
         port = 9348;
         configuration = {
           hosts = {
-            default = { username = "username"; password = "password"; };
+            default = {
+              username = "username";
+              password = "password";
+            };
           };
         };
       };
@@ -483,15 +512,20 @@ let
       exporterConfig = {
         enable = true;
         url = "http://localhost";
-        configFile = pkgs.writeText "json-exporter-conf.json" (builtins.toJSON {
-          modules = {
-            default = {
-              metrics = [
-                { name = "json_test_metric"; path = "{ .test }"; }
-              ];
+        configFile = pkgs.writeText "json-exporter-conf.json" (
+          builtins.toJSON {
+            modules = {
+              default = {
+                metrics = [
+                  {
+                    name = "json_test_metric";
+                    path = "{ .test }";
+                  }
+                ];
+              };
             };
-          };
-        });
+          }
+        );
       };
       metricProvider = {
         systemd.services.prometheus-json-exporter.after = [ "nginx.service" ];
@@ -534,17 +568,19 @@ let
                 kasp-db: /var/lib/knot/kasp
                 timer-db: /var/lib/knot/timer
                 zonefile-load: difference
-                storage: ${pkgs.buildEnv {
-                  name = "foo";
-                  paths = [
-                    (pkgs.writeTextDir "test.zone" ''
-                      @ SOA ns.example.com. noc.example.com. 2019031301 86400 7200 3600000 172800
-                      @       NS      ns1
-                      @       NS      ns2
-                      ns1     A       192.168.0.1
-                    '')
-                  ];
-                }}
+                storage: ${
+                  pkgs.buildEnv {
+                    name = "foo";
+                    paths = [
+                      (pkgs.writeTextDir "test.zone" ''
+                        @ SOA ns.example.com. noc.example.com. 2019031301 86400 7200 3600000 172800
+                        @       NS      ns1
+                        @       NS      ns2
+                        ns1     A       192.168.0.1
+                      '')
+                    ];
+                  }
+                }
 
             mod-stats:
               - id: custom
@@ -658,14 +694,16 @@ let
         configuration = {
           monitoringInterval = "2s";
           mailCheckTimeout = "10s";
-          servers = [{
-            name = "testserver";
-            server = "localhost";
-            port = 25;
-            from = "mail-exporter@localhost";
-            to = "mail-exporter@localhost";
-            detectionDir = "/var/spool/mail/mail-exporter/new";
-          }];
+          servers = [
+            {
+              name = "testserver";
+              server = "localhost";
+              port = 25;
+              from = "mail-exporter@localhost";
+              to = "mail-exporter@localhost";
+              detectionDir = "/var/spool/mail/mail-exporter/new";
+            }
+          ];
         };
       };
       metricProvider = {
@@ -689,7 +727,7 @@ let
           isSystemUser = true;
           group = "mailexporter";
         };
-        users.groups.mailexporter = {};
+        users.groups.mailexporter = { };
       };
       exporterTest = ''
         wait_for_unit("postfix.service")
@@ -753,7 +791,10 @@ let
         networking.networkmanager.enable = true;
         systemd.services.ModemManager = {
           enable = true;
-          wantedBy = [ "NetworkManager.service" "prometheus-modemmanager-exporter.service" ];
+          wantedBy = [
+            "NetworkManager.service"
+            "prometheus-modemmanager-exporter.service"
+          ];
         };
       };
       exporterTest = ''
@@ -952,7 +993,10 @@ let
             ];
             "olcDatabase={1}mdb" = {
               attrs = {
-                objectClass = [ "olcDatabaseConfig" "olcMdbConfig" ];
+                objectClass = [
+                  "olcDatabaseConfig"
+                  "olcMdbConfig"
+                ];
                 olcDatabase = "{1}mdb";
                 olcDbDirectory = "/var/lib/openldap/db";
                 olcSuffix = "dc=example";
@@ -1047,9 +1091,9 @@ let
       metricProvider = {
         users.users."php-fpm-exporter" = {
           isSystemUser = true;
-          group  = "php-fpm-exporter";
+          group = "php-fpm-exporter";
         };
-        users.groups."php-fpm-exporter" = {};
+        users.groups."php-fpm-exporter" = { };
         services.phpfpm.pools."php-fpm-exporter" = {
           user = "php-fpm-exporter";
           group = "php-fpm-exporter";
@@ -1079,26 +1123,31 @@ let
         enable = true;
 
         settings = {
-          targets = [ {
-            "localhost" = {
-              alias = "local machine";
-              env = "prod";
-              type = "domain";
-            };
-          } {
-            "127.0.0.1" = {
-              alias = "local machine";
-              type = "v4";
-            };
-          } {
-            "::1" = {
-              alias = "local machine";
-              type = "v6";
-            };
-          } {
-            "google.com" = {};
-          } ];
-          dns = {};
+          targets = [
+            {
+              "localhost" = {
+                alias = "local machine";
+                env = "prod";
+                type = "domain";
+              };
+            }
+            {
+              "127.0.0.1" = {
+                alias = "local machine";
+                type = "v4";
+              };
+            }
+            {
+              "::1" = {
+                alias = "local machine";
+                type = "v6";
+              };
+            }
+            {
+              "google.com" = { };
+            }
+          ];
+          dns = { };
           ping = {
             interval = "2s";
             timeout = "3s";
@@ -1174,7 +1223,10 @@ let
         enable = true;
         settings.process_names = [
           # Remove nix store path from process name
-          { name = "{{.Matches.Wrapped}} {{ .Matches.Args }}"; cmdline = [ "^/nix/store[^ ]*/(?P<Wrapped>[^ /]*) (?P<Args>.*)" ]; }
+          {
+            name = "{{.Matches.Wrapped}} {{ .Matches.Args }}";
+            cmdline = [ "^/nix/store[^ ]*/(?P<Wrapped>[^ /]*) (?P<Args>.*)" ];
+          }
         ];
       };
       exporterTest = ''
@@ -1188,26 +1240,28 @@ let
       '';
     };
 
-    pve = let
-      pveExporterEnvFile = pkgs.writeTextFile {
-        name = "pve.env";
-        text = ''
-          PVE_USER="test_user@pam"
-          PVE_PASSWORD="hunter3"
-          PVE_VERIFY_SSL="false"
+    pve =
+      let
+        pveExporterEnvFile = pkgs.writeTextFile {
+          name = "pve.env";
+          text = ''
+            PVE_USER="test_user@pam"
+            PVE_PASSWORD="hunter3"
+            PVE_VERIFY_SSL="false"
+          '';
+        };
+      in
+      {
+        exporterConfig = {
+          enable = true;
+          environmentFile = pveExporterEnvFile;
+        };
+        exporterTest = ''
+          wait_for_unit("prometheus-pve-exporter.service")
+          wait_for_open_port(9221)
+          wait_until_succeeds("curl localhost:9221")
         '';
       };
-    in {
-      exporterConfig = {
-        enable = true;
-        environmentFile = pveExporterEnvFile;
-      };
-      exporterTest = ''
-        wait_for_unit("prometheus-pve-exporter.service")
-        wait_for_open_port(9221)
-        wait_until_succeeds("curl localhost:9221")
-      '';
-    };
 
     py-air-control = {
       nodeName = "py_air_control";
@@ -1325,10 +1379,12 @@ let
     sabnzbd = {
       exporterConfig = {
         enable = true;
-        servers = [{
-          baseUrl = "http://localhost:8080";
-          apiKeyFile = "/var/sabnzbd-apikey";
-        }];
+        servers = [
+          {
+            baseUrl = "http://localhost:8080";
+            apiKeyFile = "/var/sabnzbd-apikey";
+          }
+        ];
       };
 
       metricProvider = {
@@ -1394,7 +1450,10 @@ let
       exporterConfig = {
         enable = true;
         settings.scripts = [
-          { name = "success"; script = "sleep 1"; }
+          {
+            name = "success";
+            script = "sleep 1";
+          }
         ];
       };
       exporterTest = ''
@@ -1595,7 +1654,7 @@ let
     unpoller = {
       nodeName = "unpoller";
       exporterConfig.enable = true;
-      exporterConfig.controllers = [{ }];
+      exporterConfig.controllers = [ { } ];
       exporterTest = ''
         wait_until_succeeds(
             'journalctl -eu prometheus-unpoller-exporter.service -o cat | grep "Connection Error"'
@@ -1635,7 +1694,7 @@ let
         services.v2ray = {
           enable = true;
           config = {
-            stats = {};
+            stats = { };
             api = {
               tag = "api";
               services = [ "StatsService" ];
@@ -1650,7 +1709,9 @@ let
                 listen = "127.0.0.1";
                 port = 54321;
                 protocol = "dokodemo-door";
-                settings = { address = "127.0.0.1"; };
+                settings = {
+                  address = "127.0.0.1";
+                };
                 tag = "api";
               }
             ];
@@ -1660,7 +1721,7 @@ let
               }
               {
                 protocol = "freedom";
-                settings = {};
+                settings = { };
                 tag = "api";
               }
             ];
@@ -1715,21 +1776,28 @@ let
       '';
     };
 
-    wireguard = let
-      snakeoil = import ./wireguard/snakeoil-keys.nix;
-      publicKeyWithoutNewlines = replaceStrings [ "\n" ] [ "" ] snakeoil.peer1.publicKey;
-    in
+    wireguard =
+      let
+        snakeoil = import ./wireguard/snakeoil-keys.nix;
+        publicKeyWithoutNewlines = replaceStrings [ "\n" ] [ "" ] snakeoil.peer1.publicKey;
+      in
       {
         exporterConfig.enable = true;
         metricProvider = {
           networking.wireguard.interfaces.wg0 = {
-            ips = [ "10.23.42.1/32" "fc00::1/128" ];
+            ips = [
+              "10.23.42.1/32"
+              "fc00::1/128"
+            ];
             listenPort = 23542;
 
             inherit (snakeoil.peer0) privateKey;
 
             peers = singleton {
-              allowedIPs = [ "10.23.42.2/32" "fc00::2/128" ];
+              allowedIPs = [
+                "10.23.42.2/32"
+                "fc00::2/128"
+              ];
 
               inherit (snakeoil.peer1) publicKey;
             };
@@ -1762,8 +1830,9 @@ let
     };
   };
 in
-mapAttrs
-  (exporter: testConfig: (makeTest (
+mapAttrs (
+  exporter: testConfig:
+  (makeTest (
     let
       nodeName = testConfig.nodeName or exporter;
 
@@ -1771,22 +1840,31 @@ mapAttrs
     {
       name = "prometheus-${exporter}-exporter";
 
-      nodes.${nodeName} = mkMerge [{
-        services.prometheus.exporters.${exporter} = testConfig.exporterConfig;
-      } testConfig.metricProvider or { }];
+      nodes.${nodeName} = mkMerge [
+        {
+          services.prometheus.exporters.${exporter} = testConfig.exporterConfig;
+        }
+        testConfig.metricProvider or { }
+      ];
 
       testScript = ''
         ${nodeName}.start()
-        ${concatStringsSep "\n" (map (line:
-          if builtins.any (b: b) [
-            (builtins.match "^[[:space:]]*$" line != null)
-            (builtins.substring 0 1 line == "#")
-            (builtins.substring 0 1 line == " ")
-            (builtins.substring 0 1 line == ")")
-          ]
-          then line
-          else "${nodeName}.${line}"
-        ) (splitString "\n" (removeSuffix "\n" testConfig.exporterTest)))}
+        ${concatStringsSep "\n" (
+          map (
+            line:
+            if
+              builtins.any (b: b) [
+                (builtins.match "^[[:space:]]*$" line != null)
+                (builtins.substring 0 1 line == "#")
+                (builtins.substring 0 1 line == " ")
+                (builtins.substring 0 1 line == ")")
+              ]
+            then
+              line
+            else
+              "${nodeName}.${line}"
+          ) (splitString "\n" (removeSuffix "\n" testConfig.exporterTest))
+        )}
         ${nodeName}.shutdown()
       '';
 
@@ -1794,5 +1872,5 @@ mapAttrs
         maintainers = [ willibutz ];
       };
     }
-  )))
-  exporterTests
+  ))
+) exporterTests

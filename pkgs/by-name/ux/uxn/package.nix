@@ -1,8 +1,9 @@
-{ lib
-, stdenv
-, fetchFromSourcehut
-, SDL2
-, unstableGitUpdater
+{
+  lib,
+  stdenv,
+  fetchFromSourcehut,
+  SDL2,
+  unstableGitUpdater,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -16,7 +17,10 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-YTDL3NZSjbVqu6aPJBmUmsT3bDX2VUeufXq/Q+jn4Og=";
   };
 
-  outputs = [ "out" "projects" ];
+  outputs = [
+    "out"
+    "projects"
+  ];
 
   nativeBuildInputs = [
     SDL2

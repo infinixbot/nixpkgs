@@ -21,10 +21,11 @@ stdenv.mkDerivation (finalAttrs: {
     repo = "pico-sdk";
     rev = finalAttrs.version;
     fetchSubmodules = withSubmodules;
-    hash = if (withSubmodules) then
-      "sha256-GY5jjJzaENL3ftuU5KpEZAmEZgyFRtLwGVg3W1e/4Ho="
-    else
-      "sha256-JNcxd86XNNiPkvipVFR3X255boMmq+YcuJXUP4JwInU=";
+    hash =
+      if (withSubmodules) then
+        "sha256-GY5jjJzaENL3ftuU5KpEZAmEZgyFRtLwGVg3W1e/4Ho="
+      else
+        "sha256-JNcxd86XNNiPkvipVFR3X255boMmq+YcuJXUP4JwInU=";
   };
 
   nativeBuildInputs = [ cmake ];

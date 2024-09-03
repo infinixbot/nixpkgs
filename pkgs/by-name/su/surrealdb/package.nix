@@ -1,14 +1,15 @@
-{ lib
-, stdenv
-, rustPlatform
-, fetchFromGitHub
-, pkg-config
-, openssl
-, rocksdb_8_3
-, testers
-, surrealdb
-, darwin
-, protobuf
+{
+  lib,
+  stdenv,
+  rustPlatform,
+  fetchFromGitHub,
+  pkg-config,
+  openssl,
+  rocksdb_8_3,
+  testers,
+  surrealdb,
+  darwin,
+  protobuf,
 }:
 
 let
@@ -26,7 +27,7 @@ rustPlatform.buildRustPackage rec {
   };
 
   patches = [
-      ./time.patch  # TODO: remove when https://github.com/surrealdb/surrealdb/pull/4565 merged
+    ./time.patch # TODO: remove when https://github.com/surrealdb/surrealdb/pull/4565 merged
   ];
 
   cargoHash = "sha256-5qIIPdE6HYov5EIR4do+pMeZ1Lo3at39aKOP9scfMy8=";
@@ -49,8 +50,9 @@ rustPlatform.buildRustPackage rec {
     rustPlatform.bindgenHook
   ];
 
-  buildInputs = [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.SystemConfiguration ];
+  buildInputs = [
+    openssl
+  ] ++ lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.SystemConfiguration ];
 
   doCheck = false;
 
@@ -73,6 +75,10 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://surrealdb.com/";
     mainProgram = "surreal";
     license = licenses.bsl11;
-    maintainers = with maintainers; [ sikmir happysalada siriobalmelli ];
+    maintainers = with maintainers; [
+      sikmir
+      happysalada
+      siriobalmelli
+    ];
   };
 }

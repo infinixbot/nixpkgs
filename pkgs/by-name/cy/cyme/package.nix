@@ -1,14 +1,14 @@
 {
-  lib
-, fetchFromGitHub
-, rustPlatform
-, pkg-config
-, stdenv
-, darwin
-, libusb1
-, nix-update-script
-, testers
-, cyme
+  lib,
+  fetchFromGitHub,
+  rustPlatform,
+  pkg-config,
+  stdenv,
+  darwin,
+  libusb1,
+  nix-update-script,
+  testers,
+  cyme,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -24,23 +24,27 @@ rustPlatform.buildRustPackage rec {
 
   cargoHash = "sha256-XvU8r4bmI18qp+1O3nsJG3RTiiNxfKksRgkSBMsja5s=";
 
-  nativeBuildInputs = [
-    pkg-config
-  ] ++ lib.optionals stdenv.isDarwin [
-    darwin.DarwinTools
-  ];
+  nativeBuildInputs =
+    [
+      pkg-config
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.DarwinTools
+    ];
 
   buildInputs = [
     libusb1
   ];
 
-  checkFlags = [
-    # doctest that requires access outside sandbox
-    "--skip=udev::hwdb::get"
-  ] ++ lib.optionals stdenv.isDarwin [
-    # system_profiler is not available in the sandbox
-    "--skip=test_run"
-  ];
+  checkFlags =
+    [
+      # doctest that requires access outside sandbox
+      "--skip=udev::hwdb::get"
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      # system_profiler is not available in the sandbox
+      "--skip=test_run"
+    ];
 
   passthru = {
     updateScript = nix-update-script { };

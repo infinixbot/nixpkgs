@@ -1,9 +1,18 @@
-{ lib, stdenv, buildGoModule, fetchFromGitea, nixosTests }:
+{
+  lib,
+  stdenv,
+  buildGoModule,
+  fetchFromGitea,
+  nixosTests,
+}:
 
 buildGoModule rec {
   pname = "eris-go";
   version = "20240826";
-  outputs = [ "out" "man" ];
+  outputs = [
+    "out"
+    "man"
+  ];
 
   src = fetchFromGitea {
     domain = "codeberg.org";
@@ -21,7 +30,9 @@ buildGoModule rec {
 
   env.skipNetworkTests = true;
 
-  passthru.tests = { inherit (nixosTests) eris-server; };
+  passthru.tests = {
+    inherit (nixosTests) eris-server;
+  };
 
   meta = src.meta // {
     description = "Implementation of ERIS for Go";

@@ -1,84 +1,91 @@
-{ config, pkgs, lib }:
+{
+  config,
+  pkgs,
+  lib,
+}:
 
 # NOTE: New packages should generally go to top-level instead of here!
-lib.makeScope pkgs.newScope (self:
-let
-  inherit (self) callPackage;
-in
-{
-  updateScript = callPackage ./update.nix { };
+lib.makeScope pkgs.newScope (
+  self:
+  let
+    inherit (self) callPackage;
+  in
+  {
+    updateScript = callPackage ./update.nix { };
 
-  # Temporary helper until gdk-pixbuf supports multiple cache files.
-  # This will go away, do not use outside Nixpkgs.
-  _gdkPixbufCacheBuilder_DO_NOT_USE = callPackage ./gdk-pixbuf-cache-builder.nix { };
+    # Temporary helper until gdk-pixbuf supports multiple cache files.
+    # This will go away, do not use outside Nixpkgs.
+    _gdkPixbufCacheBuilder_DO_NOT_USE = callPackage ./gdk-pixbuf-cache-builder.nix { };
 
-# ISO installer
-# installerIso = callPackage ./installer.nix {};
+    # ISO installer
+    # installerIso = callPackage ./installer.nix {};
 
-#### Core (http://ftp.acc.umu.se/pub/GNOME/core/)
+    #### Core (http://ftp.acc.umu.se/pub/GNOME/core/)
 
-  gnome-bluetooth = callPackage ./core/gnome-bluetooth { };
+    gnome-bluetooth = callPackage ./core/gnome-bluetooth { };
 
-  gnome-bluetooth_1_0 = callPackage ./core/gnome-bluetooth/1.0 { };
+    gnome-bluetooth_1_0 = callPackage ./core/gnome-bluetooth/1.0 { };
 
-  gnome-control-center = callPackage ./core/gnome-control-center { };
+    gnome-control-center = callPackage ./core/gnome-control-center { };
 
-  gnome-session = callPackage ./core/gnome-session { };
+    gnome-session = callPackage ./core/gnome-session { };
 
-  gnome-session-ctl = callPackage ./core/gnome-session/ctl.nix { };
+    gnome-session-ctl = callPackage ./core/gnome-session/ctl.nix { };
 
-  gnome-shell = callPackage ./core/gnome-shell { };
+    gnome-shell = callPackage ./core/gnome-shell { };
 
-  gnome-settings-daemon = callPackage ./core/gnome-settings-daemon { };
+    gnome-settings-daemon = callPackage ./core/gnome-settings-daemon { };
 
-  # Using 43 to match Mutter used in Pantheon
-  gnome-settings-daemon43 = callPackage ./core/gnome-settings-daemon/43 { };
+    # Using 43 to match Mutter used in Pantheon
+    gnome-settings-daemon43 = callPackage ./core/gnome-settings-daemon/43 { };
 
-  gvfs = pkgs.gvfs.override { gnomeSupport = true; };
+    gvfs = pkgs.gvfs.override { gnomeSupport = true; };
 
-  mutter = callPackage ./core/mutter { };
+    mutter = callPackage ./core/mutter { };
 
-  # Needed for elementary's gala, wingpanel and greeter until support for higher versions is provided
-  mutter43 = callPackage ./core/mutter/43 { };
+    # Needed for elementary's gala, wingpanel and greeter until support for higher versions is provided
+    mutter43 = callPackage ./core/mutter/43 { };
 
-  networkmanager-openvpn = pkgs.networkmanager-openvpn.override {
-    withGnome = true;
-  };
+    networkmanager-openvpn = pkgs.networkmanager-openvpn.override {
+      withGnome = true;
+    };
 
-  networkmanager-vpnc = pkgs.networkmanager-vpnc.override {
-    withGnome = true;
-  };
+    networkmanager-vpnc = pkgs.networkmanager-vpnc.override {
+      withGnome = true;
+    };
 
-  networkmanager-openconnect = pkgs.networkmanager-openconnect.override {
-    withGnome = true;
-  };
+    networkmanager-openconnect = pkgs.networkmanager-openconnect.override {
+      withGnome = true;
+    };
 
-  networkmanager-fortisslvpn = pkgs.networkmanager-fortisslvpn.override {
-    withGnome = true;
-  };
+    networkmanager-fortisslvpn = pkgs.networkmanager-fortisslvpn.override {
+      withGnome = true;
+    };
 
-  networkmanager-l2tp = pkgs.networkmanager-l2tp.override {
-    withGnome = true;
-  };
+    networkmanager-l2tp = pkgs.networkmanager-l2tp.override {
+      withGnome = true;
+    };
 
-  networkmanager-iodine = pkgs.networkmanager-iodine.override {
-    withGnome = true;
-  };
+    networkmanager-iodine = pkgs.networkmanager-iodine.override {
+      withGnome = true;
+    };
 
-  nixos-gsettings-overrides = callPackage ./nixos/gsettings-overrides { };
+    nixos-gsettings-overrides = callPackage ./nixos/gsettings-overrides { };
 
-#### Misc -- other packages on http://ftp.gnome.org/pub/GNOME/sources/
+    #### Misc -- other packages on http://ftp.gnome.org/pub/GNOME/sources/
 
-  gnome-applets = callPackage ./misc/gnome-applets { };
+    gnome-applets = callPackage ./misc/gnome-applets { };
 
-  gnome-flashback = callPackage ./misc/gnome-flashback { };
+    gnome-flashback = callPackage ./misc/gnome-flashback { };
 
-  gnome-panel = callPackage ./misc/gnome-panel { };
+    gnome-panel = callPackage ./misc/gnome-panel { };
 
-  gnome-panel-with-modules = callPackage ./misc/gnome-panel/wrapper.nix { };
+    gnome-panel-with-modules = callPackage ./misc/gnome-panel/wrapper.nix { };
 
-}) // lib.optionalAttrs config.allowAliases {
-#### Legacy aliases. They need to be outside the scope or they will shadow the attributes from parent scope.
+  }
+)
+// lib.optionalAttrs config.allowAliases {
+  #### Legacy aliases. They need to be outside the scope or they will shadow the attributes from parent scope.
   libgnome-keyring = lib.warn "The ‘gnome.libgnome-keyring’ was moved to top-level. Please use ‘pkgs.libgnome-keyring’ directly." pkgs.libgnome-keyring; # Added on 2024-06-22.
   libchamplain = lib.warn "The ‘gnome.libchamplain’ was removed as unused. Please use ‘pkgs.libchamplain’ directly." pkgs.libchamplain; # Added on 2024-08-11.
   libsoup = lib.warn "The ‘gnome.libsoup’ was removed as unused. Please use ‘pkgs.libsoup’." pkgs.libsoup; # Added on 2024-08-11.
@@ -173,6 +180,6 @@ in
   yelp-xsl = lib.warn "The ‘gnome.yelp-xsl’ was moved to top-level. Please use ‘pkgs.yelp-xsl’ directly." pkgs.yelp-xsl; # Added on 2024-06-22.
   zenity = lib.warn "The ‘gnome.zenity’ was moved to top-level. Please use ‘pkgs.zenity’ directly." pkgs.zenity; # Added on 2024-06-22.
 
-#### Removals
+  #### Removals
   anjuta = throw "`anjuta` was removed after not being maintained upstream and losing control of its official domain."; # 2024-01-16
 }

@@ -1,9 +1,19 @@
-{ lib, buildDunePackage, coqPackages, version ? "20231231" }:
+{
+  lib,
+  buildDunePackage,
+  coqPackages,
+  version ? "20231231",
+}:
 
-let fetched = coqPackages.metaFetch ({
+let
+  fetched = coqPackages.metaFetch ({
     release."20231231".sha256 = "sha256-veB0ORHp6jdRwCyDDAfc7a7ov8sOeHUmiELdOFf/QYk=";
     releaseRev = v: "v${v}";
-    location = { domain = "gitlab.inria.fr"; owner = "fpottier"; repo = "menhir"; };
+    location = {
+      domain = "gitlab.inria.fr";
+      owner = "fpottier";
+      repo = "menhir";
+    };
   }) version;
 in
 buildDunePackage rec {

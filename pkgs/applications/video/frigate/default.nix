@@ -1,11 +1,12 @@
-{ lib
-, callPackage
-, python311
-, fetchFromGitHub
-, fetchurl
-, fetchpatch2
-, frigate
-, nixosTests
+{
+  lib,
+  callPackage,
+  python311,
+  fetchFromGitHub,
+  fetchurl,
+  fetchpatch2,
+  frigate,
+  nixosTests,
 }:
 
 let
@@ -173,7 +174,8 @@ python.pkgs.buildPythonApplication rec {
   passthru = {
     web = frigate-web;
     inherit python;
-    pythonPath =(python.pkgs.makePythonPath propagatedBuildInputs) + ":${frigate}/${python.sitePackages}";
+    pythonPath =
+      (python.pkgs.makePythonPath propagatedBuildInputs) + ":${frigate}/${python.sitePackages}";
     tests = {
       inherit (nixosTests) frigate;
     };
