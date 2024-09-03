@@ -125,14 +125,14 @@ in
     };
 
     fadeSteps = mkOption {
-      type = pairOf (types.numbers.between 1.0e-2 1);
+      type = pairOf (types.numbers.between 0.01 1);
       default = [
-        2.8e-2
-        3.0e-2
+        0.028
+        0.03
       ];
       example = [
-        4.0e-2
-        4.0e-2
+        0.04
+        0.04
       ];
       description = ''
         Opacity change between fade steps (in and out).
