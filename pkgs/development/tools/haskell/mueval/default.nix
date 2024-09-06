@@ -36,8 +36,6 @@ stdenv.mkDerivation {
     runHook postBuild
   '';
 
-  passthru = {
-    inherit defaultPkgs;
-  };
+  passthru = { inherit defaultPkgs; };
   meta.mainProgram = "mueval";
 }

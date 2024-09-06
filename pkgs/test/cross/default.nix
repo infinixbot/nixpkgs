@@ -75,9 +75,7 @@ let
       name: system:
       test rec {
         crossPkgs = import pkgs.path {
-          localSystem = {
-            inherit (pkgs.stdenv.hostPlatform) config;
-          };
+          localSystem = { inherit (pkgs.stdenv.hostPlatform) config; };
           crossSystem = crossSystemFun system;
         };
 

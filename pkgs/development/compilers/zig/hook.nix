@@ -46,9 +46,7 @@ makeSetupHook {
       ];
   };
 
-  passthru = {
-    inherit zig;
-  };
+  passthru = { inherit zig; };
 
   meta = {
     description = "Setup hook for using the Zig compiler in Nixpkgs";

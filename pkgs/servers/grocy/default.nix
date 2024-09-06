@@ -61,9 +61,7 @@ php.buildComposerProject (finalAttrs: {
     runHook postInstall
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) grocy;
-  };
+  passthru.tests = { inherit (nixosTests) grocy; };
 
   meta = with lib; {
     license = licenses.mit;

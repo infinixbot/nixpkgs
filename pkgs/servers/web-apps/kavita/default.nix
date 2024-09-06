@@ -76,9 +76,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   '';
 
   passthru = {
-    tests = {
-      inherit (nixosTests) kavita;
-    };
+    tests = { inherit (nixosTests) kavita; };
     updateScript = ./update.sh;
   };
 

@@ -102,9 +102,7 @@ let
   fetch = import ../coq/meta-fetch/default.nix { inherit lib stdenv fetchzip; } (
     {
       inherit release releaseRev;
-      location = {
-        inherit domain owner repo;
-      };
+      location = { inherit domain owner repo; };
     }
     // optionalAttrs (args ? fetcher) { inherit fetcher; }
   );

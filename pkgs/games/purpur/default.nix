@@ -33,9 +33,7 @@ stdenv.mkDerivation rec {
   dontUnpack = true;
 
   passthru = {
-    tests = {
-      inherit (nixosTests) minecraft-server;
-    };
+    tests = { inherit (nixosTests) minecraft-server; };
   };
 
   meta = with lib; {

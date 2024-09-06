@@ -43,9 +43,7 @@ let
 
     passthru = {
       inherit full plugins withPlugins;
-      tests = {
-        inherit opentofu_plugins_test;
-      };
+      tests = { inherit opentofu_plugins_test; };
     };
 
     # https://github.com/posener/complete/blob/9a4745ac49b29530e07dc2581745a218b646b7a3/cmd/install/bash.go#L8

@@ -26,9 +26,7 @@ buildGoModule rec {
     wrapProgram $out/bin/ipmi_exporter --prefix PATH : ${lib.makeBinPath [ freeipmi ]}
   '';
 
-  passthru.tests = {
-    inherit (nixosTests.prometheus-exporters) ipmi;
-  };
+  passthru.tests = { inherit (nixosTests.prometheus-exporters) ipmi; };
 
   ldflags = [
     "-s"

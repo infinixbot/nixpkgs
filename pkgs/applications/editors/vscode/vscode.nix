@@ -77,9 +77,7 @@ callPackage ./generic.nix rec {
     };
   };
 
-  tests = {
-    inherit (nixosTests) vscode-remote-ssh;
-  };
+  tests = { inherit (nixosTests) vscode-remote-ssh; };
 
   updateScript = ./update-vscode.sh;
 

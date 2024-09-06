@@ -231,54 +231,22 @@ rec {
           # added. If, for a given framework, you are able to reverify the extra
           # deps are really necessary on top of the generator deps, move it above
           # this comment (and maybe document your findings).
-          AVFoundation = {
-            inherit ApplicationServices AVFCapture AVFCore;
-          };
-          Accelerate = {
-            inherit CoreWLAN IOBluetooth;
-          };
-          AddressBook = {
-            inherit AddressBookCore ContactsPersistence libobjc;
-          };
-          AppKit = {
-            inherit AudioToolbox AudioUnit UIFoundation;
-          };
-          AudioToolbox = {
-            inherit AudioToolboxCore;
-          };
-          AudioUnit = {
-            inherit Carbon CoreAudio;
-          };
-          Carbon = {
-            inherit IOKit QuartzCore libobjc;
-          };
-          CoreAudio = {
-            inherit IOKit;
-          };
-          CoreFoundation = {
-            inherit libobjc;
-          };
-          CoreGraphics = {
-            inherit SystemConfiguration;
-          };
-          CoreMIDIServer = {
-            inherit CoreMIDI;
-          };
-          CoreMedia = {
-            inherit ApplicationServices AudioToolbox AudioUnit;
-          };
-          CoreServices = {
-            inherit CoreAudio NetFS ServiceManagement;
-          };
-          CoreWLAN = {
-            inherit SecurityFoundation;
-          };
-          DiscRecording = {
-            inherit IOKit libobjc;
-          };
-          Foundation = {
-            inherit SystemConfiguration libobjc;
-          };
+          AVFoundation = { inherit ApplicationServices AVFCapture AVFCore; };
+          Accelerate = { inherit CoreWLAN IOBluetooth; };
+          AddressBook = { inherit AddressBookCore ContactsPersistence libobjc; };
+          AppKit = { inherit AudioToolbox AudioUnit UIFoundation; };
+          AudioToolbox = { inherit AudioToolboxCore; };
+          AudioUnit = { inherit Carbon CoreAudio; };
+          Carbon = { inherit IOKit QuartzCore libobjc; };
+          CoreAudio = { inherit IOKit; };
+          CoreFoundation = { inherit libobjc; };
+          CoreGraphics = { inherit SystemConfiguration; };
+          CoreMIDIServer = { inherit CoreMIDI; };
+          CoreMedia = { inherit ApplicationServices AudioToolbox AudioUnit; };
+          CoreServices = { inherit CoreAudio NetFS ServiceManagement; };
+          CoreWLAN = { inherit SecurityFoundation; };
+          DiscRecording = { inherit IOKit libobjc; };
+          Foundation = { inherit SystemConfiguration libobjc; };
           GameKit = {
             inherit
               GameCenterFoundation
@@ -287,36 +255,16 @@ rec {
               ReplayKit
               ;
           };
-          ICADevices = {
-            inherit Carbon libobjc;
-          };
-          IOBluetooth = {
-            inherit CoreBluetooth;
-          };
-          JavaScriptCore = {
-            inherit libobjc;
-          };
-          Kernel = {
-            inherit IOKit;
-          };
-          LinkPresentation = {
-            inherit URLFormatting;
-          };
-          MediaToolbox = {
-            inherit AudioUnit;
-          };
-          MetricKit = {
-            inherit SignpostMetrics;
-          };
-          Network = {
-            inherit libnetwork;
-          };
-          PCSC = {
-            inherit CoreData;
-          };
-          PassKit = {
-            inherit PassKitCore;
-          };
+          ICADevices = { inherit Carbon libobjc; };
+          IOBluetooth = { inherit CoreBluetooth; };
+          JavaScriptCore = { inherit libobjc; };
+          Kernel = { inherit IOKit; };
+          LinkPresentation = { inherit URLFormatting; };
+          MediaToolbox = { inherit AudioUnit; };
+          MetricKit = { inherit SignpostMetrics; };
+          Network = { inherit libnetwork; };
+          PCSC = { inherit CoreData; };
+          PassKit = { inherit PassKitCore; };
           QTKit = {
             inherit
               CoreMedia
@@ -325,9 +273,7 @@ rec {
               VideoToolbox
               ;
           };
-          Quartz = {
-            inherit QTKit;
-          };
+          Quartz = { inherit QTKit; };
           QuartzCore = {
             inherit
               ApplicationServices
@@ -338,18 +284,10 @@ rec {
               libobjc
               ;
           };
-          Security = {
-            inherit IOKit libDER;
-          };
-          TWAIN = {
-            inherit Carbon;
-          };
-          VideoDecodeAcceleration = {
-            inherit CoreVideo;
-          };
-          WebKit = {
-            inherit ApplicationServices Carbon libobjc;
-          };
+          Security = { inherit IOKit libDER; };
+          TWAIN = { inherit Carbon; };
+          VideoDecodeAcceleration = { inherit CoreVideo; };
+          WebKit = { inherit ApplicationServices Carbon libobjc; };
         };
 
       # Overrides for framework derivations.

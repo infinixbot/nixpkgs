@@ -90,9 +90,7 @@ stdenv.mkDerivation rec {
         ''
     );
 
-  passthru.tests = {
-    inherit (nixosTests) atop;
-  };
+  passthru.tests = { inherit (nixosTests) atop; };
 
   meta = with lib; {
     platforms = platforms.linux;

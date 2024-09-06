@@ -22,9 +22,7 @@ buildGoModule rec {
   # dns-lookup is performed for the tests
   doCheck = false;
 
-  passthru.tests = {
-    inherit (nixosTests.prometheus-exporters) blackbox;
-  };
+  passthru.tests = { inherit (nixosTests.prometheus-exporters) blackbox; };
 
   ldflags = [
     "-s"

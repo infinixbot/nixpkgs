@@ -128,9 +128,7 @@ buildGoModule rec {
   # Test mock data uses 64 bit data without an explicit (u)int64
   doCheck = !(stdenv.isDarwin || stdenv.hostPlatform.parsed.cpu.bits < 64);
 
-  passthru.tests = {
-    inherit (nixosTests) prometheus;
-  };
+  passthru.tests = { inherit (nixosTests) prometheus; };
 
   meta = with lib; {
     description = "Service monitoring system and time series database";

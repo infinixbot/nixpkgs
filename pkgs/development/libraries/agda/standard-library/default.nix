@@ -25,9 +25,7 @@ mkDerivation rec {
     rm EverythingSafe.agda
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) agda;
-  };
+  passthru.tests = { inherit (nixosTests) agda; };
   meta = with lib; {
     homepage = "https://wiki.portal.chalmers.se/agda/pmwiki.php?n=Libraries.StandardLibrary";
     description = "Standard library for use with the Agda compiler";

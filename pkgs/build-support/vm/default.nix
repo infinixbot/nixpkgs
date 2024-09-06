@@ -568,9 +568,7 @@ rec {
           ${util-linux}/bin/umount /mnt
         '';
 
-        passthru = {
-          inherit fullName;
-        };
+        passthru = { inherit fullName; };
       }
     );
 
@@ -785,9 +783,7 @@ rec {
             ${util-linux}/bin/umount /mnt
           '';
 
-          passthru = {
-            inherit fullName;
-          };
+          passthru = { inherit fullName; };
         }
         // args
       )

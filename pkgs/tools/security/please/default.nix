@@ -33,9 +33,7 @@ rustPlatform.buildRustPackage rec {
   # Unit tests are broken on NixOS.
   doCheck = false;
 
-  passthru.tests = {
-    inherit (nixosTests) please;
-  };
+  passthru.tests = { inherit (nixosTests) please; };
 
   meta = with lib; {
     description = "Polite regex-first sudo alternative";

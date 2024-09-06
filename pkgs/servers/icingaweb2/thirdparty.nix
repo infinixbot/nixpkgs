@@ -21,9 +21,7 @@ stdenvNoCC.mkDerivation rec {
     cp -r * "$out"
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) icingaweb2;
-  };
+  passthru.tests = { inherit (nixosTests) icingaweb2; };
 
   meta = {
     description = "Third party dependencies for Icingaweb 2";

@@ -166,9 +166,7 @@ php.buildComposerProject (finalAttrs: {
   '';
 
   passthru = {
-    tests = {
-      inherit (nixosTests) movim;
-    };
+    tests = { inherit (nixosTests) movim; };
   };
 
   meta = {

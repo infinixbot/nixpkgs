@@ -147,9 +147,7 @@ if withScripts then
       binaries
       scripts
     ];
-    passthru = {
-      inherit binaries scripts;
-    };
+    passthru = { inherit binaries scripts; };
   }
 else
   binaries

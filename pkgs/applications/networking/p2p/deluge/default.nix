@@ -101,9 +101,7 @@ let
         done
       '';
 
-      passthru.tests = {
-        inherit (nixosTests) deluge;
-      };
+      passthru.tests = { inherit (nixosTests) deluge; };
 
       meta = with lib; {
         description = "Torrent client";

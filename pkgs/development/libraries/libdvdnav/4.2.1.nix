@@ -52,7 +52,5 @@ stdenv.mkDerivation rec {
     platforms = lib.platforms.linux;
   };
 
-  passthru = {
-    inherit libdvdread;
-  };
+  passthru = { inherit libdvdread; };
 }

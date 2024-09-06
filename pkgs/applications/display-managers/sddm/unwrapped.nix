@@ -93,9 +93,7 @@ stdenv.mkDerivation (finalAttrs: {
     done
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) sddm;
-  };
+  passthru.tests = { inherit (nixosTests) sddm; };
 
   meta = with lib; {
     description = "QML based X11 display manager";

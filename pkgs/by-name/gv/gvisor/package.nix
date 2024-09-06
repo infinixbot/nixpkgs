@@ -60,9 +60,7 @@ buildGoModule {
     mv $out/bin/shim $out/bin/containerd-shim-runsc-v1
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) gvisor;
-  };
+  passthru.tests = { inherit (nixosTests) gvisor; };
 
   meta = with lib; {
     description = "Application Kernel for Containers";

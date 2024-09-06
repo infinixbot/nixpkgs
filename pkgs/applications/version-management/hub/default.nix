@@ -71,9 +71,7 @@ buildGoModule rec {
     git
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) hub;
-  };
+  passthru.tests = { inherit (nixosTests) hub; };
 
   meta = with lib; {
     description = "Command-line wrapper for git that makes you better at GitHub";

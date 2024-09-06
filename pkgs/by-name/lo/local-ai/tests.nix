@@ -76,9 +76,7 @@ in
         virtualisation.memorySize = 2048;
         services.local-ai.models = models;
       };
-      passthru = {
-        inherit models requests;
-      };
+      passthru = { inherit models requests; };
       testScript =
         let
           port = "8080";
@@ -183,9 +181,7 @@ in
         # TODO: Add test case parallel requests
         services.local-ai.parallelRequests = 2;
       };
-      passthru = {
-        inherit models requests;
-      };
+      passthru = { inherit models requests; };
       testScript =
         let
           port = "8080";
@@ -269,9 +265,7 @@ in
             virtualisation.cores = 2;
             services.local-ai.models = models;
           };
-          passthru = {
-            inherit models requests;
-          };
+          passthru = { inherit models requests; };
           testScript =
             let
               port = "8080";

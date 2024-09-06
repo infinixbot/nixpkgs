@@ -70,9 +70,7 @@
       lib = {
         mkMixedArray = list: set: {
           _phpType = "mixed_array";
-          value = {
-            inherit list set;
-          };
+          value = { inherit list set; };
         };
         mkRaw = raw: {
           _phpType = "raw";

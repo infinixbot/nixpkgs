@@ -72,9 +72,7 @@ stdenv.mkDerivation rec {
 
   passthru = {
     inherit enablePrivSep;
-    tests = {
-      inherit (nixosTests.networking.scripted) macvlan dhcpSimple dhcpOneIf;
-    };
+    tests = { inherit (nixosTests.networking.scripted) macvlan dhcpSimple dhcpOneIf; };
   };
 
   meta = with lib; {

@@ -43,9 +43,7 @@ derivationWithMeta {
     inherit platforms;
   };
 
-  passthru = {
-    inherit hex0-seed;
-  };
+  passthru = { inherit hex0-seed; };
 
   # Ensure the untrusted hex0-seed binary produces a known-good hex0
   outputHashMode = "recursive";

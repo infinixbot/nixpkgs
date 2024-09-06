@@ -55,9 +55,7 @@ let
 
   });
 
-  passthru = {
-    inherit tesseractBase languages tessdata;
-  };
+  passthru = { inherit tesseractBase languages tessdata; };
 
   # Only run test when all languages are available
   test = lib.optionalAttrs (enableLanguages == null) {

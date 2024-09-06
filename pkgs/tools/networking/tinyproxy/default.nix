@@ -26,9 +26,7 @@ stdenv.mkDerivation rec {
   ];
 
   configureFlags = lib.optionals withDebug [ "--enable-debug" ]; # Enable debugging support code and methods.
-  passthru.tests = {
-    inherit (nixosTests) tinyproxy;
-  };
+  passthru.tests = { inherit (nixosTests) tinyproxy; };
 
   meta = with lib; {
     homepage = "https://tinyproxy.github.io/";

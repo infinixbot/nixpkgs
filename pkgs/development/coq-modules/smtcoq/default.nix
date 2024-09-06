@@ -90,9 +90,7 @@ mkCoqDerivation {
   nativeBuildInputs = (with pkgs; [ gnumake42 ]) ++ (with coq.ocamlPackages; [ ocamlbuild ]);
 
   # This is meant to ease future troubleshooting of cvc5 build failures
-  passthru = {
-    inherit cvc5;
-  };
+  passthru = { inherit cvc5; };
 
   meta = with lib; {
     description = "Communication between Coq and SAT/SMT solvers";

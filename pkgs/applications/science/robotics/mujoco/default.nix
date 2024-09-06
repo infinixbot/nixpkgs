@@ -177,9 +177,7 @@ stdenv.mkDerivation rec {
     ln -s ${pin.marchingcubecpp} build/_deps/marchingcubecpp-src
   '';
 
-  passthru.pin = {
-    inherit (pin) lodepng eigen3 abseil-cpp;
-  };
+  passthru.pin = { inherit (pin) lodepng eigen3 abseil-cpp; };
 
   meta = {
     description = "Multi-Joint dynamics with Contact. A general purpose physics simulator";

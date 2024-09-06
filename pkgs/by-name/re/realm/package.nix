@@ -29,9 +29,7 @@ rustPlatform.buildRustPackage rec {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests = {
-      inherit (nixosTests) realm;
-    };
+    tests = { inherit (nixosTests) realm; };
   };
 
   meta = with lib; {

@@ -18,9 +18,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-bvLwHLviIAGmxYY1O0wFDWAMginEUklicrbjIbbPuUw=";
 
-  passthru.tests = {
-    inherit (nixosTests.prometheus-exporters) apcupsd;
-  };
+  passthru.tests = { inherit (nixosTests.prometheus-exporters) apcupsd; };
 
   meta = with lib; {
     description = "Provides a Prometheus exporter for the apcupsd Network Information Server (NIS)";

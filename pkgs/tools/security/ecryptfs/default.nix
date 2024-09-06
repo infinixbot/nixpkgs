@@ -96,9 +96,7 @@ stdenv.mkDerivation rec {
     done
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) ecryptfs;
-  };
+  passthru.tests = { inherit (nixosTests) ecryptfs; };
 
   meta = with lib; {
     description = "Enterprise-class stacked cryptographic filesystem";

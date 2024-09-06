@@ -73,9 +73,7 @@ buildGoModule rec {
     runHook postInstall
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) cri-o;
-  };
+  passthru.tests = { inherit (nixosTests) cri-o; };
 
   meta = with lib; {
     homepage = "https://cri-o.io";

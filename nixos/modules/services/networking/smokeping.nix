@@ -361,9 +361,7 @@ in
     services.fcgiwrap.instances.smokeping = mkIf cfg.webService {
       process.user = cfg.user;
       process.group = cfg.user;
-      socket = {
-        inherit (config.services.nginx) user group;
-      };
+      socket = { inherit (config.services.nginx) user group; };
     };
     services.nginx = mkIf cfg.webService {
       enable = true;

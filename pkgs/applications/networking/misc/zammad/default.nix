@@ -164,9 +164,7 @@ stdenv.mkDerivation {
       pname
       (toString ./.)
     ];
-    tests = {
-      inherit (nixosTests) zammad;
-    };
+    tests = { inherit (nixosTests) zammad; };
   };
 
   meta = with lib; {

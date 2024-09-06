@@ -25,9 +25,7 @@ callPackage (import ./common.nix rec {
 
   buildInputs = [ luajit ];
 
-  passthru.tests = {
-    inherit (nixosTests) cgit;
-  };
+  passthru.tests = { inherit (nixosTests) cgit; };
 
   homepage = "https://git.zx2c4.com/cgit/about/";
   description = "Web frontend for git repositories";

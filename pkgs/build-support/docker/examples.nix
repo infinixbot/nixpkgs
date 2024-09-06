@@ -646,9 +646,7 @@ rec {
       ];
     }
     // {
-      passthru = {
-        inherit symlink;
-      };
+      passthru = { inherit symlink; };
     };
 
   # image with registry/ prefix

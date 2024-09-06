@@ -30,9 +30,7 @@ buildGoModule rec {
     "c2FmZQ-server"
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) c2fmzq;
-  };
+  passthru.tests = { inherit (nixosTests) c2fmzq; };
 
   meta = with lib; {
     description = "Securely encrypt, store, and share files, including but not limited to pictures and videos";

@@ -41,9 +41,7 @@ buildNimPackage (
     '';
 
     passthru = {
-      tests = {
-        inherit (nixosTests) nitter;
-      };
+      tests = { inherit (nixosTests) nitter; };
       updateScript = unstableGitUpdater { branch = "guest_accounts"; };
     };
 

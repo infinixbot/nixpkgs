@@ -32,9 +32,7 @@ buildGoModule rec {
     "cmd/gobgpd"
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) gobgpd;
-  };
+  passthru.tests = { inherit (nixosTests) gobgpd; };
 
   meta = with lib; {
     description = "BGP implemented in Go";

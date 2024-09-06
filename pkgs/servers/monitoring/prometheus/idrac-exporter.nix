@@ -27,9 +27,7 @@ buildGoModule rec {
 
   doCheck = true;
 
-  passthru.tests = {
-    inherit (nixosTests.prometheus-exporters) idrac;
-  };
+  passthru.tests = { inherit (nixosTests.prometheus-exporters) idrac; };
 
   meta = with lib; {
     inherit (src.meta) homepage;

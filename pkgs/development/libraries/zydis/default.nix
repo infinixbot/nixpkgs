@@ -32,9 +32,7 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
   nativeCheckInputs = [ python3 ];
-  passthru = {
-    inherit zycore;
-  };
+  passthru = { inherit zycore; };
 
   meta = with lib; {
     homepage = "https://zydis.re/";

@@ -37,9 +37,7 @@ runCommand "nano-test-expect"
       nano
       expect
     ];
-    passthru = {
-      inherit expect-script;
-    };
+    passthru = { inherit expect-script; };
   }
   ''
     expect -f ${expect-script}/bin/expect-script

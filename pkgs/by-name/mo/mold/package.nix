@@ -69,35 +69,29 @@ stdenv.mkDerivation rec {
             command = "$READELF -p .comment ${lib.getExe helloMold}";
             emulator = stdenv.hostPlatform.emulator buildPackages;
           in
-          runCommandCC "mold-${name}-test"
-            {
-              passthru = {
-                inherit helloMold;
-              };
-            }
-            ''
-              echo "Testing running the 'hello' binary which should be linked with 'mold'" >&2
-              ${emulator} ${lib.getExe helloMold}
+          runCommandCC "mold-${name}-test" { passthru = { inherit helloMold; }; } ''
+            echo "Testing running the 'hello' binary which should be linked with 'mold'" >&2
+            ${emulator} ${lib.getExe helloMold}
 
-              echo "Checking for mold in the '.comment' section" >&2
-              if output=$(${command} 2>&1); then
-                if grep -Fw -- "mold" - <<< "$output"; then
-                  touch $out
-                else
-                  echo "No mention of 'mold' detected in the '.comment' section" >&2
-                  echo "The command was:" >&2
-                  echo "${command}" >&2
-                  echo "The output was:" >&2
-                  echo "$output" >&2
-                  exit 1
-                fi
+            echo "Checking for mold in the '.comment' section" >&2
+            if output=$(${command} 2>&1); then
+              if grep -Fw -- "mold" - <<< "$output"; then
+                touch $out
               else
-                echo -n "${command}" >&2
-                echo " returned a non-zero exit code." >&2
+                echo "No mention of 'mold' detected in the '.comment' section" >&2
+                echo "The command was:" >&2
+                echo "${command}" >&2
+                echo "The output was:" >&2
                 echo "$output" >&2
                 exit 1
               fi
-            '';
+            else
+              echo -n "${command}" >&2
+              echo " returned a non-zero exit code." >&2
+              echo "$output" >&2
+              exit 1
+            fi
+          '';
       in
       {
         version = testers.testVersion { package = mold; };

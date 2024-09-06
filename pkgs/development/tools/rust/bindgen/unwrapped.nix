@@ -37,9 +37,7 @@ rustPlatform.buildRustPackage rec {
     patchShebangs .
   '';
 
-  passthru = {
-    inherit clang;
-  };
+  passthru = { inherit clang; };
 
   meta = with lib; {
     description = "Automatically generates Rust FFI bindings to C (and some C++) libraries";

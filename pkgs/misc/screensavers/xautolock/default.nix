@@ -45,9 +45,7 @@ stdenv.mkDerivation (finalAttrs: {
     "install.man"
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) xautolock;
-  };
+  passthru.tests = { inherit (nixosTests) xautolock; };
 
   meta = with lib; {
     description = "Launch a given program when your X session has been idle for a given time";

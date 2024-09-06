@@ -174,9 +174,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   setupHook = ./setup-hook.sh;
 
-  passthru = {
-    inherit openglSupport;
-  };
+  passthru = { inherit openglSupport; };
 
   meta = {
     homepage = "http://www.libsdl.org/";

@@ -27,9 +27,7 @@ buildGoModule rec {
     "-X main.version=${version}"
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) mailhog;
-  };
+  passthru.tests = { inherit (nixosTests) mailhog; };
 
   meta = with lib; {
     description = "Web and API based SMTP testing";

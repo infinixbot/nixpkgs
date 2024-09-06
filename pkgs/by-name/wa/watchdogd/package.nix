@@ -30,9 +30,7 @@ stdenv.mkDerivation rec {
     libconfuse
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) watchdogd;
-  };
+  passthru.tests = { inherit (nixosTests) watchdogd; };
 
   meta = with lib; {
     description = "Advanced system & process supervisor for Linux";

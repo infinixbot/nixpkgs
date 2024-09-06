@@ -219,9 +219,7 @@ stdenv.mkDerivation rec {
   '';
 
   passthru = {
-    tests = {
-      inherit (nixosTests) cockpit;
-    };
+    tests = { inherit (nixosTests) cockpit; };
     updateScript = nix-update-script { };
   };
 

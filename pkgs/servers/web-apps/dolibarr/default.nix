@@ -36,9 +36,7 @@ stdenv.mkDerivation rec {
     cp -r * $out
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) dolibarr;
-  };
+  passthru.tests = { inherit (nixosTests) dolibarr; };
 
   meta = with lib; {
     description = "Enterprise resource planning (ERP) and customer relationship manager (CRM) server";

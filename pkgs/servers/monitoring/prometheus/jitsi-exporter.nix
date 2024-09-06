@@ -17,9 +17,7 @@ buildGoModule rec {
 
   vendorHash = null;
 
-  passthru.tests = {
-    inherit (nixosTests.prometheus-exporters) jitsi;
-  };
+  passthru.tests = { inherit (nixosTests.prometheus-exporters) jitsi; };
 
   meta = with lib; {
     description = "Export Jitsi Videobridge metrics to Prometheus";

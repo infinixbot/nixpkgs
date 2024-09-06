@@ -171,9 +171,7 @@ stdenv.mkDerivation rec {
     chmod +x $out/bin/anbox-application-manager
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) anbox;
-  };
+  passthru.tests = { inherit (nixosTests) anbox; };
   passthru.image = callPackage ./postmarketos-image.nix { };
 
   meta = with lib; {

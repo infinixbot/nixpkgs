@@ -186,9 +186,7 @@ in
 
 stdenvNoCC.mkDerivation {
   name = "test-overriding";
-  passthru = {
-    inherit tests;
-  };
+  passthru = { inherit tests; };
   buildCommand =
     ''
       touch $out

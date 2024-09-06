@@ -47,9 +47,7 @@ rustPlatform.buildRustPackage rec {
         "harmonia-v(.*)"
       ];
     };
-    tests = {
-      inherit (nixosTests) harmonia;
-    };
+    tests = { inherit (nixosTests) harmonia; };
   };
 
   meta = with lib; {

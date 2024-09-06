@@ -51,9 +51,7 @@ stdenv.mkDerivation rec {
 
   doCheck = false;
 
-  passthru = {
-    inherit dbus glib;
-  };
+  passthru = { inherit dbus glib; };
 
   meta = {
     homepage = "https://dbus.freedesktop.org";

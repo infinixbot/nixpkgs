@@ -203,9 +203,7 @@ stdenv.mkDerivation rec {
     runHook postInstallCheck
   '';
 
-  passthru = {
-    inherit mpi;
-  };
+  passthru = { inherit mpi; };
 
   meta = with lib; {
     description = "Open Source High-Performance Computational Chemistry";

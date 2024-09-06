@@ -46,7 +46,5 @@ buildMongoDB {
     # Fix building with python 3.12 since the imp module was removed
     ./mongodb-python312.patch
   ] ++ variants.patches;
-  passthru.tests = {
-    inherit (nixosTests) mongodb;
-  };
+  passthru.tests = { inherit (nixosTests) mongodb; };
 }

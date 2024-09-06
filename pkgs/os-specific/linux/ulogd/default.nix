@@ -76,9 +76,7 @@ stdenv.mkDerivation rec {
     linuxdoc-tools
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) ulogd;
-  };
+  passthru.tests = { inherit (nixosTests) ulogd; };
 
   meta = with lib; {
     description = "Userspace logging daemon for netfilter/iptables";

@@ -124,9 +124,7 @@ in
       home = "/var/empty";
     };
 
-    users.groups.gpsd = {
-      inherit gid;
-    };
+    users.groups.gpsd = { inherit gid; };
 
     systemd.services.gpsd = {
       description = "GPSD daemon";

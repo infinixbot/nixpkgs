@@ -151,9 +151,7 @@ rustPlatform.buildRustPackage {
 
   passthru = {
     inherit features;
-    tests = {
-      inherit (nixosTests) vector;
-    };
+    tests = { inherit (nixosTests) vector; };
     updateScript = nix-update-script { };
   };
 

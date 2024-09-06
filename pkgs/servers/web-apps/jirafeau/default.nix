@@ -29,9 +29,7 @@ stdenv.mkDerivation rec {
     cp ${localConfig} $out/lib/config.local.php
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) jirafeau;
-  };
+  passthru.tests = { inherit (nixosTests) jirafeau; };
 
   meta = with lib; {
     description = "Website permitting upload of a file in a simple way and giving a unique link to it";

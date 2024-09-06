@@ -26,9 +26,7 @@ stdenv.mkDerivation {
 
   passthru.updateScript = unstableGitUpdater { };
 
-  passthru.tests = {
-    inherit (nixosTests) pgjwt;
-  };
+  passthru.tests = { inherit (nixosTests) pgjwt; };
 
   meta = with lib; {
     description = "PostgreSQL implementation of JSON Web Tokens";

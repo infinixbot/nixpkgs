@@ -101,9 +101,7 @@ stdenv.mkDerivation rec {
 
   passthru = {
     updateScript = ./update.sh;
-    tests = {
-      inherit (nixosTests) intune;
-    };
+    tests = { inherit (nixosTests) intune; };
   };
 
   meta = with lib; {

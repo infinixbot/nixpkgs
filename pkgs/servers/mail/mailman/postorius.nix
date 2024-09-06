@@ -29,9 +29,7 @@ buildPythonPackage rec {
   # Tries to connect to database.
   doCheck = false;
 
-  passthru.tests = {
-    inherit (nixosTests) mailman;
-  };
+  passthru.tests = { inherit (nixosTests) mailman; };
 
   meta = with lib; {
     homepage = "https://docs.mailman3.org/projects/postorius";

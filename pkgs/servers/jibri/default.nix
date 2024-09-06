@@ -51,9 +51,7 @@ stdenv.mkDerivation rec {
 
   passthru.updateScript = ./update.sh;
 
-  passthru.tests = {
-    inherit (nixosTests) jibri;
-  };
+  passthru.tests = { inherit (nixosTests) jibri; };
 
   meta = with lib; {
     description = "JItsi BRoadcasting Infrastructure";

@@ -70,9 +70,7 @@ in
 
   config = lib.mkIf cfg.enable {
     systemd.tmpfiles.settings.pyload = {
-      ${cfg.downloadDirectory}.d = {
-        inherit (cfg) user group;
-      };
+      ${cfg.downloadDirectory}.d = { inherit (cfg) user group; };
     };
 
     systemd.services.pyload = {

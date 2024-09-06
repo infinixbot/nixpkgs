@@ -6,9 +6,7 @@ with frameworks;
   Apple80211 = { };
   AVFCapture = { };
   AVFCore = { };
-  AddressBookCore = {
-    inherit ContactsPersistence;
-  };
+  AddressBookCore = { inherit ContactsPersistence; };
   AudioToolboxCore = { };
   ContactsPersistence = { };
   GameCenterFoundation = { };
@@ -28,9 +26,7 @@ with frameworks;
   DebugSymbols = { };
 
   # Also expose DisplayServices; used by `sketchybar` package.
-  DisplayServices = {
-    inherit libobjc;
-  };
+  DisplayServices = { inherit libobjc; };
 
   # Also expose MultitouchSupport; used by `chuck` package.
   MultitouchSupport = { };

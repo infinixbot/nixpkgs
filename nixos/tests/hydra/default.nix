@@ -28,9 +28,7 @@ let
         { pkgs, lib, ... }:
         {
           imports = [ baseConfig ];
-          services.hydra = {
-            inherit package;
-          };
+          services.hydra = { inherit package; };
         };
 
       testScript = ''

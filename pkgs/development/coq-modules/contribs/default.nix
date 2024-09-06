@@ -23,9 +23,7 @@ let
             {
               defaultVersion = param.version;
               release = {
-                "${param.version}" = {
-                  inherit (param) rev sha256;
-                };
+                "${param.version}" = { inherit (param) rev sha256; };
               };
             }
             // (removeAttrs param [

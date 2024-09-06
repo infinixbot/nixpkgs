@@ -19,9 +19,7 @@ import ./make-test-python.nix (
         services.osquery = {
           enable = true;
 
-          settings.options = {
-            inherit nullvalue utc;
-          };
+          settings.options = { inherit nullvalue utc; };
           flags = {
             inherit config_refresh;
             nullvalue = "IGNORED";

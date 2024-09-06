@@ -37,9 +37,7 @@ let
       nim_builder --phase:install
       runHook postInstall
     '';
-    meta = {
-      inherit (nim2.meta) maintainers platforms;
-    };
+    meta = { inherit (nim2.meta) maintainers platforms; };
   };
 
   fodFromLockEntry =

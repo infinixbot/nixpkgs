@@ -16,9 +16,7 @@ import ./make-test-python.nix (
             enable = true;
             settings = {
               server.port = 5000;
-              repo = {
-                inherit scanPath;
-              };
+              repo = { inherit scanPath; };
             };
           };
 

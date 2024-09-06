@@ -124,9 +124,7 @@ python.pkgs.buildPythonApplication rec {
   dontStrip = true;
 
   passthru = {
-    tests = {
-      inherit (nixosTests) odoo15;
-    };
+    tests = { inherit (nixosTests) odoo15; };
   };
 
   meta = with lib; {

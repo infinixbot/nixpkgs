@@ -97,9 +97,7 @@ stdenv.mkDerivation (
                   {
                     src = built;
                     nativeBuildInputs = [ built ] ++ runInputs;
-                    passthru = {
-                      inherit built;
-                    };
+                    passthru = { inherit built; };
                   }
                   // lib.optionalAttrs (stdenv.isDarwin && runAllowNetworking) {
                     sandboxProfile = ''

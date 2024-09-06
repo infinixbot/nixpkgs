@@ -27,9 +27,7 @@ buildGoModule rec {
     })
   ];
 
-  passthru.tests = {
-    inherit (nixosTests.prometheus-exporters) dovecot;
-  };
+  passthru.tests = { inherit (nixosTests.prometheus-exporters) dovecot; };
 
   meta = {
     inherit (src.meta) homepage;

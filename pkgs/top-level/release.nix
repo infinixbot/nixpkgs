@@ -259,9 +259,7 @@ let
         let
           bootstrap = import ../stdenv/linux/make-bootstrap-tools.nix {
             pkgs = import ../.. {
-              localSystem = {
-                inherit config;
-              };
+              localSystem = { inherit config; };
             };
           };
         in
@@ -271,9 +269,7 @@ let
       else if hasSuffix "-darwin" config then
         let
           bootstrap = import ../stdenv/darwin/make-bootstrap-tools.nix {
-            localSystem = {
-              inherit config;
-            };
+            localSystem = { inherit config; };
           };
         in
         {
@@ -287,9 +283,7 @@ let
         let
           bootstrap = import ../stdenv/freebsd/make-bootstrap-tools.nix {
             pkgs = import ../.. {
-              localSystem = {
-                inherit config;
-              };
+              localSystem = { inherit config; };
             };
           };
         in

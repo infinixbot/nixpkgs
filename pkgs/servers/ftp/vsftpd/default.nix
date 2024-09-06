@@ -51,9 +51,7 @@ stdenv.mkDerivation rec {
   enableParallelBuilding = true;
 
   passthru = {
-    tests = {
-      inherit (nixosTests) vsftpd;
-    };
+    tests = { inherit (nixosTests) vsftpd; };
   };
 
   meta = with lib; {

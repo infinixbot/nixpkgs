@@ -30,9 +30,7 @@ python3.pkgs.buildPythonApplication rec {
     "knot_exporter"
   ];
 
-  passthru.tests = {
-    inherit (nixosTests.prometheus-exporters) knot;
-  };
+  passthru.tests = { inherit (nixosTests.prometheus-exporters) knot; };
 
   meta = with lib; {
     description = "Prometheus exporter for Knot DNS";

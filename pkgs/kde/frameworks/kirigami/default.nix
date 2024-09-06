@@ -37,7 +37,5 @@ stdenv.mkDerivation {
   dontUnpack = true;
   dontWrapQtApps = true;
 
-  passthru = {
-    inherit unwrapped;
-  };
+  passthru = { inherit unwrapped; };
 }

@@ -132,9 +132,7 @@ buildGoModule {
     "-X main.version=${version}"
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) influxdb2;
-  };
+  passthru.tests = { inherit (nixosTests) influxdb2; };
 
   meta = with lib; {
     description = "Open-source distributed time series database";

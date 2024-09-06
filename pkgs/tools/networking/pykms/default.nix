@@ -90,9 +90,7 @@ pypkgs.buildPythonApplication rec {
     runHook postInstall
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) pykms;
-  };
+  passthru.tests = { inherit (nixosTests) pykms; };
 
   meta = with lib; {
     description = "Windows KMS (Key Management Service) server written in Python";

@@ -24,9 +24,7 @@ stdenv.mkDerivation rec {
     makeWrapper ${jre}/bin/java $out/bin/ergo --add-flags "-jar $src"
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) ergo;
-  };
+  passthru.tests = { inherit (nixosTests) ergo; };
 
   meta = with lib; {
     description = "Open protocol that implements modern scientific ideas in the blockchain area";

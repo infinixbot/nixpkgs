@@ -21,9 +21,7 @@ runCommand (radian.name + "-wrapper")
 
     nativeBuildInputs = [ makeWrapper ];
 
-    passthru = {
-      inherit recommendedPackages;
-    };
+    passthru = { inherit recommendedPackages; };
 
     meta = radian.meta // {
       # To prevent builds on hydra

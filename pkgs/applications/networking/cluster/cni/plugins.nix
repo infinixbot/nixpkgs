@@ -45,9 +45,7 @@ buildGoModule rec {
     "plugins/meta/vrf"
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) cri-o;
-  };
+  passthru.tests = { inherit (nixosTests) cri-o; };
 
   meta = with lib; {
     changelog = "https://github.com/containernetworking/plugins/releases/tag/${src.rev}";

@@ -214,9 +214,7 @@ let
   mkTmpfiles =
     name: cfg:
     let
-      settings = {
-        inherit (cfg) user group;
-      };
+      settings = { inherit (cfg) user group; };
     in
     lib.nameValuePair "borgbackup-job-${name}" (
       {

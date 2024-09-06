@@ -73,9 +73,7 @@ stdenv.mkDerivation rec {
 
   passthru.updateScript = ./update.sh;
 
-  passthru.tests = {
-    inherit (nixosTests) archi;
-  };
+  passthru.tests = { inherit (nixosTests) archi; };
 
   meta = with lib; {
     description = "ArchiMate modelling toolkit";

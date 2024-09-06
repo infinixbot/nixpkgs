@@ -45,9 +45,7 @@ buildGoModule rec {
       --zsh <($out/bin/headscale completion zsh)
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) headscale;
-  };
+  passthru.tests = { inherit (nixosTests) headscale; };
 
   meta = with lib; {
     homepage = "https://github.com/juanfont/headscale";

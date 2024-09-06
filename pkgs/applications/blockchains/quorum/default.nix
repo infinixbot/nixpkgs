@@ -28,9 +28,7 @@ buildGoModule rec {
     "-w"
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) quorum;
-  };
+  passthru.tests = { inherit (nixosTests) quorum; };
 
   meta = with lib; {
     description = "Permissioned implementation of Ethereum supporting data privacy";

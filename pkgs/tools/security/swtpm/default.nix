@@ -114,9 +114,7 @@ stdenv.mkDerivation (finalAttrs: {
     "man"
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) systemd-cryptenroll;
-  };
+  passthru.tests = { inherit (nixosTests) systemd-cryptenroll; };
 
   meta = with lib; {
     description = "Libtpms-based TPM emulator";

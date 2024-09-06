@@ -46,9 +46,7 @@ stdenv.mkDerivation {
     runHook postInstall
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) tinywl;
-  };
+  passthru.tests = { inherit (nixosTests) tinywl; };
 
   meta = {
     homepage = "https://gitlab.freedesktop.org/wlroots/wlroots/tree/master/tinywl";

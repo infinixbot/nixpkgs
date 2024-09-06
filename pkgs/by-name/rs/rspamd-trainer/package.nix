@@ -50,9 +50,7 @@ python3Packages.buildPythonApplication {
     imapclient
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) rspamd-trainer;
-  };
+  passthru.tests = { inherit (nixosTests) rspamd-trainer; };
 
   meta = {
     homepage = "https://gitlab.com/onlime/rspamd-trainer";

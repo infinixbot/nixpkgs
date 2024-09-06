@@ -178,9 +178,7 @@ stdenv.mkDerivation rec {
   '';
 
   passthru = {
-    tests = {
-      inherit (nixosTests) postfix postfix-raise-smtpd-tls-security-level;
-    };
+    tests = { inherit (nixosTests) postfix postfix-raise-smtpd-tls-security-level; };
 
     updateScript = ./update.sh;
   };

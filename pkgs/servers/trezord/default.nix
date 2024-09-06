@@ -41,9 +41,7 @@ buildGoModule rec {
     "-X main.githash=${commit}"
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) trezord;
-  };
+  passthru.tests = { inherit (nixosTests) trezord; };
 
   meta = with lib; {
     description = "Trezor Communication Daemon aka Trezor Bridge";

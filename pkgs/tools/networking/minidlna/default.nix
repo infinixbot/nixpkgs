@@ -54,9 +54,7 @@ stdenv.mkDerivation {
     cp minidlnad.8 $out/share/man/man8
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) minidlna;
-  };
+  passthru.tests = { inherit (nixosTests) minidlna; };
 
   meta = with lib; {
     description = "Media server software";

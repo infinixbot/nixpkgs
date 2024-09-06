@@ -46,9 +46,7 @@ stdenv.mkDerivation (
   {
     inherit dontUnpack jar;
 
-    env = {
-      inherit LC_ALL;
-    };
+    env = { inherit LC_ALL; };
 
     nativeBuildInputs = (args.nativeBuildInputs or [ ]) ++ [
       graalvmDrv
@@ -83,9 +81,7 @@ stdenv.mkDerivation (
 
     disallowedReferences = [ graalvmDrv ];
 
-    passthru = {
-      inherit graalvmDrv;
-    };
+    passthru = { inherit graalvmDrv; };
 
     meta = {
       # default to graalvm's platforms

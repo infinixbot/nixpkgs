@@ -54,9 +54,7 @@ stdenv.mkDerivation rec {
 
   doCheck = true;
 
-  passthru.tests = {
-    inherit (nixosTests) moosefs;
-  };
+  passthru.tests = { inherit (nixosTests) moosefs; };
 
   meta = with lib; {
     homepage = "https://moosefs.com";

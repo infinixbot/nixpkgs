@@ -21,9 +21,7 @@ buildGoModule rec {
   # Irrelevant tools dependencies.
   excludedPackages = [ "./tools" ];
 
-  passthru.tests = {
-    inherit (nixosTests.prometheus-exporters) lnd;
-  };
+  passthru.tests = { inherit (nixosTests.prometheus-exporters) lnd; };
 
   meta = with lib; {
     homepage = "https://github.com/lightninglabs/lndmon";

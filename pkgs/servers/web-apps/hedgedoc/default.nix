@@ -103,9 +103,7 @@ stdenv.mkDerivation {
 
   passthru = {
     inherit offlineCache;
-    tests = {
-      inherit (nixosTests) hedgedoc;
-    };
+    tests = { inherit (nixosTests) hedgedoc; };
   };
 
   meta = {

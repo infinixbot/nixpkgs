@@ -97,9 +97,7 @@ rec {
     isArmv7 = map (
       { arch, ... }:
       {
-        cpu = {
-          inherit arch;
-        };
+        cpu = { inherit arch; };
       }
     ) (filter (cpu: hasPrefix "armv7" cpu.arch or "") (attrValues cpuTypes));
     isAarch64 = {
@@ -290,16 +288,12 @@ rec {
 
     isBSD = {
       kernel = {
-        families = {
-          inherit (kernelFamilies) bsd;
-        };
+        families = { inherit (kernelFamilies) bsd; };
       };
     };
     isDarwin = {
       kernel = {
-        families = {
-          inherit (kernelFamilies) darwin;
-        };
+        families = { inherit (kernelFamilies) darwin; };
       };
     };
     isUnix = [

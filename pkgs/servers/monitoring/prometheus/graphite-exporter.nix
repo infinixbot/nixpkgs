@@ -30,9 +30,7 @@ buildGoModule rec {
     in
     [ "-skip=^${builtins.concatStringsSep "$|^" skippedTests}$" ];
 
-  passthru.tests = {
-    inherit (nixosTests.prometheus-exporters) graphite;
-  };
+  passthru.tests = { inherit (nixosTests.prometheus-exporters) graphite; };
 
   meta = {
     description = "Exporter for metrics exported in the Graphite plaintext protocol";

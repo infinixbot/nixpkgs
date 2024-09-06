@@ -58,9 +58,7 @@ stdenv.mkDerivation (finalAttrs: {
       runHook postInstall
     '';
 
-  passthru = {
-    inherit jdk;
-  };
+  passthru = { inherit jdk; };
 
   meta = {
     homepage = "https://infinitekind.com/moneydance";

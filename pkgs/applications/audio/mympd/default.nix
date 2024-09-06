@@ -59,9 +59,7 @@ stdenv.mkDerivation (finalAttrs: {
   # 5 tests out of 23 fail, probably due to the sandbox...
   doCheck = false;
 
-  passthru.tests = {
-    inherit (nixosTests) mympd;
-  };
+  passthru.tests = { inherit (nixosTests) mympd; };
 
   meta = {
     homepage = "https://jcorporation.github.io/myMPD";

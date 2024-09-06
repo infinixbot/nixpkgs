@@ -88,9 +88,7 @@ stdenv.mkDerivation rec {
     addDriverRunpath $out/lib/libGLX.so
   '';
 
-  passthru = {
-    inherit (addDriverRunpath) driverLink;
-  };
+  passthru = { inherit (addDriverRunpath) driverLink; };
 
   meta = with lib; {
     description = "GL Vendor-Neutral Dispatch library";

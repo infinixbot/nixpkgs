@@ -53,9 +53,7 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  passthru = {
-    inherit withGurobi withCplex;
-  };
+  passthru = { inherit withGurobi withCplex; };
 
   meta = with lib; {
     description = "Abstract base class to a generic linear programming (LP) solver";

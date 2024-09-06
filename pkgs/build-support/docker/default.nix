@@ -1425,9 +1425,7 @@ rec {
     in
     runCommand "${drv.name}-env.tar${compress.ext}" {
       inherit (stream) imageName;
-      passthru = {
-        inherit (stream) imageTag;
-      };
+      passthru = { inherit (stream) imageTag; };
       nativeBuildInputs = compress.nativeInputs;
     } "${stream} | ${compress.compress} > $out";
 }

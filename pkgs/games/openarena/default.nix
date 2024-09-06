@@ -107,9 +107,7 @@ stdenv.mkDerivation (finalAttrs: {
     })
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) openarena;
-  };
+  passthru.tests = { inherit (nixosTests) openarena; };
 
   meta = {
     description = "Fast-paced 3D first-person shooter, similar to id Software Inc.'s Quake III Arena";

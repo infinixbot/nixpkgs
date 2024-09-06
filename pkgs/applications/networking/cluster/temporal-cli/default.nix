@@ -122,9 +122,7 @@ symlinkJoin rec {
     tctl
   ];
 
-  passthru = {
-    inherit tctl tctl-next;
-  };
+  passthru = { inherit tctl tctl-next; };
 
   meta = metaCommon // {
     mainProgram = "temporal";

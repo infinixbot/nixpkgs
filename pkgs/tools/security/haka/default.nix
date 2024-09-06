@@ -49,9 +49,7 @@ stdenv.mkDerivation {
     pcre
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) haka;
-  };
+  passthru.tests = { inherit (nixosTests) haka; };
 
   meta = {
     description = "Collection of tools that allows capturing TCP/IP packets and filtering them based on Lua policy files";

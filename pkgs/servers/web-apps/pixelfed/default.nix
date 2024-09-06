@@ -35,9 +35,7 @@ php.buildComposerProject (finalAttrs: {
   '';
 
   passthru = {
-    tests = {
-      inherit (nixosTests) pixelfed;
-    };
+    tests = { inherit (nixosTests) pixelfed; };
     updateScript = nix-update-script { };
   };
 

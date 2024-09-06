@@ -567,22 +567,16 @@ rec {
       # the normalized name for macOS.
       macos = {
         execFormat = macho;
-        families = {
-          inherit darwin;
-        };
+        families = { inherit darwin; };
         name = "darwin";
       };
       ios = {
         execFormat = macho;
-        families = {
-          inherit darwin;
-        };
+        families = { inherit darwin; };
       };
       freebsd = {
         execFormat = elf;
-        families = {
-          inherit bsd;
-        };
+        families = { inherit bsd; };
         name = "freebsd";
       };
       linux = {
@@ -591,9 +585,7 @@ rec {
       };
       netbsd = {
         execFormat = elf;
-        families = {
-          inherit bsd;
-        };
+        families = { inherit bsd; };
       };
       none = {
         execFormat = unknown;
@@ -601,9 +593,7 @@ rec {
       };
       openbsd = {
         execFormat = elf;
-        families = {
-          inherit bsd;
-        };
+        families = { inherit bsd; };
       };
       solaris = {
         execFormat = elf;

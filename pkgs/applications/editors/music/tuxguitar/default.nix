@@ -60,9 +60,7 @@ stdenv.mkDerivation rec {
       --prefix CLASSPATH : "${swt}/jars/swt.jar:$out/lib/tuxguitar.jar:$out/lib/itext.jar"
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) tuxguitar;
-  };
+  passthru.tests = { inherit (nixosTests) tuxguitar; };
 
   meta = with lib; {
     description = "Multitrack guitar tablature editor";

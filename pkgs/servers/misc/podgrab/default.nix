@@ -24,9 +24,7 @@ buildGoModule rec {
     cp -r $src/webassets $out/share/
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) podgrab;
-  };
+  passthru.tests = { inherit (nixosTests) podgrab; };
 
   meta = with lib; {
     description = "Self-hosted podcast manager to download episodes as soon as they become live";

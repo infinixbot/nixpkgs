@@ -434,9 +434,7 @@ in
           ]
         ];
 
-    system.build = {
-      inherit initialRamdisk;
-    };
+    system.build = { inherit initialRamdisk; };
 
     boot.initrd.availableKernelModules =
       [

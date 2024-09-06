@@ -33,9 +33,7 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  passthru = {
-    inherit openssl;
-  };
+  passthru = { inherit openssl; };
 
   meta = with lib; {
     description = "Small layer on top of PKCS#11 API to make PKCS#11 implementations easier";

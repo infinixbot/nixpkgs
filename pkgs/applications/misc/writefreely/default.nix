@@ -32,9 +32,7 @@ buildGoModule rec {
 
   subPackages = [ "cmd/writefreely" ];
 
-  passthru.tests = {
-    inherit (nixosTests) writefreely;
-  };
+  passthru.tests = { inherit (nixosTests) writefreely; };
 
   meta = with lib; {
     description = "Build a digital writing community";

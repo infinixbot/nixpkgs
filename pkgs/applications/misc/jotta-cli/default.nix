@@ -28,9 +28,7 @@ stdenv.mkDerivation rec {
     $out/bin/jotta-cli completion bash > $out/share/bash-completion/completions/jotta-cli.bash
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) jotta-cli;
-  };
+  passthru.tests = { inherit (nixosTests) jotta-cli; };
 
   meta = with lib; {
     description = "Jottacloud CLI";

@@ -166,9 +166,7 @@ stdenv.mkDerivation rec {
   };
 
   passthru = {
-    tests = {
-      inherit (nixosTests) minecraft;
-    };
+    tests = { inherit (nixosTests) minecraft; };
     updateScript = ./update.sh;
   };
 }

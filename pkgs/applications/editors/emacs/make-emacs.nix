@@ -503,9 +503,7 @@ mkDerivation (finalAttrs: {
     inherit withNativeCompilation;
     inherit withTreeSitter;
     pkgs = recurseIntoAttrs (emacsPackagesFor finalAttrs.finalPackage);
-    tests = {
-      inherit (nixosTests) emacs-daemon;
-    };
+    tests = { inherit (nixosTests) emacs-daemon; };
   };
 
   meta = meta // {

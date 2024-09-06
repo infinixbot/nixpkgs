@@ -31,9 +31,7 @@ stdenv.mkDerivation rec {
     substituteInPlace CMakeLists.txt --replace '-mtune=native' ""
   '';
 
-  passthru = {
-    inherit blas64;
-  };
+  passthru = { inherit blas64; };
 
   nativeBuildInputs = [
     cmake

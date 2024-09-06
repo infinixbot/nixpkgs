@@ -81,9 +81,7 @@ stdenv.mkDerivation rec {
     sed -i 's:openssl:${openssl}/bin/openssl:' $out/bin/pvfs2-gen-keys.sh
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) orangefs;
-  };
+  passthru.tests = { inherit (nixosTests) orangefs; };
 
   meta = with lib; {
     description = "Scale-out network file system for use on high-end computing systems";

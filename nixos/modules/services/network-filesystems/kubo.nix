@@ -349,9 +349,7 @@ in
 
     systemd.tmpfiles.settings."10-kubo" =
       let
-        defaultConfig = {
-          inherit (cfg) user group;
-        };
+        defaultConfig = { inherit (cfg) user group; };
       in
       {
         ${cfg.dataDir}.d = defaultConfig;

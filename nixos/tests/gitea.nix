@@ -46,9 +46,7 @@ let
             virtualisation.memorySize = 2047;
             services.gitea = {
               enable = true;
-              database = {
-                inherit type;
-              };
+              database = { inherit type; };
               package = giteaPackage;
               metricsTokenFile = (pkgs.writeText "metrics_secret" "fakesecret").outPath;
               settings.service.DISABLE_REGISTRATION = true;

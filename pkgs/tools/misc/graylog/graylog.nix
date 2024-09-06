@@ -34,9 +34,7 @@ stdenv.mkDerivation rec {
     "--prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ systemd ]}"
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) graylog;
-  };
+  passthru.tests = { inherit (nixosTests) graylog; };
 
   installPhase =
     ''

@@ -33,9 +33,7 @@ import ./make-test-python.nix (
           let
             emptyContainer = import ../lib/eval-config.nix {
               modules = lib.singleton {
-                nixpkgs = {
-                  inherit (config.nixpkgs) localSystem;
-                };
+                nixpkgs = { inherit (config.nixpkgs) localSystem; };
 
                 containers.foo.config = { };
               };

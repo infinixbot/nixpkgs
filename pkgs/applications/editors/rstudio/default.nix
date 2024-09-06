@@ -246,9 +246,7 @@ in
 
     passthru = {
       inherit server;
-      tests = {
-        inherit (nixosTests) rstudio-server;
-      };
+      tests = { inherit (nixosTests) rstudio-server; };
     };
   }
   // lib.optionalAttrs (!server) {

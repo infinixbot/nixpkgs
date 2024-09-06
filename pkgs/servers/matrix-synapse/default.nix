@@ -172,9 +172,7 @@ python3.pkgs.buildPythonApplication rec {
   '';
 
   passthru = {
-    tests = {
-      inherit (nixosTests) matrix-synapse matrix-synapse-workers;
-    };
+    tests = { inherit (nixosTests) matrix-synapse matrix-synapse-workers; };
     inherit plugins tools;
     python = python3;
   };

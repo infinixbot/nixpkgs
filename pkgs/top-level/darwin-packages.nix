@@ -312,9 +312,7 @@ makeScopeWithSplicing' {
               # in the first place, ie change `pkgs` in `pkgs.darwin.linux-builder`.
               # or if you're creating new wiring that's not `pkgs`-centric, perhaps use the
               # macos-builder profile directly.
-              virtualisation.host = {
-                inherit pkgs;
-              };
+              virtualisation.host = { inherit pkgs; };
 
               nixpkgs.hostPlatform = lib.mkDefault (toGuest stdenv.hostPlatform.system);
             };

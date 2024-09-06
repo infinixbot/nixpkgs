@@ -19,9 +19,7 @@ buildGoModule rec {
 
   doCheck = false;
 
-  passthru.tests = {
-    inherit (nixosTests) nar-serve;
-  };
+  passthru.tests = { inherit (nixosTests) nar-serve; };
 
   meta = with lib; {
     description = "Serve NAR file contents via HTTP";

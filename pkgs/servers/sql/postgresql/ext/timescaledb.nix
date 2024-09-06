@@ -51,9 +51,7 @@ stdenv.mkDerivation rec {
     done
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) timescaledb;
-  };
+  passthru.tests = { inherit (nixosTests) timescaledb; };
 
   meta = with lib; {
     description = "Scales PostgreSQL for time-series data via automatic partitioning across time and space";

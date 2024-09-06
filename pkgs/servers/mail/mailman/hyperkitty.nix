@@ -59,9 +59,7 @@ buildPythonPackage rec {
       --settings=hyperkitty.tests.settings_test hyperkitty
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) mailman;
-  };
+  passthru.tests = { inherit (nixosTests) mailman; };
 
   meta = {
     changelog = "https://docs.mailman3.org/projects/hyperkitty/en/latest/news.html";

@@ -105,9 +105,7 @@ stdenv.mkDerivation rec {
     ${python311.interpreter} ./setup.py install --prefix="$out" --use-python-path --verbose
   '';
 
-  passthru = {
-    inherit tex;
-  };
+  passthru = { inherit tex; };
 
   meta = {
     description = "Program to convert DocBook to DVI, PostScript or PDF via LaTeX or ConTeXt";

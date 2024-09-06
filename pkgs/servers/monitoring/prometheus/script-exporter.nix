@@ -18,9 +18,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-Hs1SNpC+t1OCcoF3FBgpVGkhR97ulq6zYhi8BQlgfVc=";
 
-  passthru.tests = {
-    inherit (nixosTests.prometheus-exporters) script;
-  };
+  passthru.tests = { inherit (nixosTests.prometheus-exporters) script; };
 
   meta = with lib; {
     description = "Shell script prometheus exporter";

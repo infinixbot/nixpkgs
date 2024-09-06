@@ -278,9 +278,7 @@ python.pkgs.buildPythonApplication rec {
       snowball_data
       stopwords
     ];
-    tests = {
-      inherit (nixosTests) paperless;
-    };
+    tests = { inherit (nixosTests) paperless; };
   };
 
   meta = with lib; {

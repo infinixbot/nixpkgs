@@ -47,9 +47,7 @@ stdenv.mkDerivation rec {
 
   cmakeFlags = [ "-DWEBOS_TARGET_MACHINE_IMPL=host" ];
 
-  passthru.tests = {
-    inherit (nixosTests) novacomd;
-  };
+  passthru.tests = { inherit (nixosTests) novacomd; };
 
   meta = with lib; {
     description = "Daemon for communicating with WebOS devices";

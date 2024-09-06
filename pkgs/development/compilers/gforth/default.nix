@@ -35,9 +35,7 @@ stdenv.mkDerivation rec {
     libffi
   ];
 
-  passthru = {
-    inherit bootForth;
-  };
+  passthru = { inherit bootForth; };
 
   configureFlags =
     [

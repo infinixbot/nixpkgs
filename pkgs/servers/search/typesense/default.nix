@@ -35,9 +35,7 @@ stdenv.mkDerivation {
   '';
 
   passthru = {
-    tests = {
-      inherit (nixosTests) typesense;
-    };
+    tests = { inherit (nixosTests) typesense; };
     updateScript = ./update.sh;
   };
 

@@ -63,9 +63,7 @@ stdenv.mkDerivation rec {
 
   hardeningEnable = [ "pie" ];
 
-  passthru.tests = {
-    inherit (nixosTests) chrony chrony-ptp;
-  };
+  passthru.tests = { inherit (nixosTests) chrony chrony-ptp; };
 
   meta = with lib; {
     description = "Sets your computer's clock from time servers on the Net";

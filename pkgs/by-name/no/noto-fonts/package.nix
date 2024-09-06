@@ -71,9 +71,7 @@ stdenvNoCC.mkDerivation rec {
     rev-prefix = "noto-monthly-release-";
   };
 
-  passthru.tests = {
-    inherit (nixosTests) noto-fonts;
-  };
+  passthru.tests = { inherit (nixosTests) noto-fonts; };
 
   meta = {
     description = "Beautiful and free fonts for many languages";

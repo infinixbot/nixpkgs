@@ -22,9 +22,7 @@ buildGoModule {
   pname = "nix-snapshotter";
   inherit version src;
   vendorHash = "sha256-QBLePOnfsr6I19ddyZNSFDih6mCaZ/NV2Qz1B1pSHxs=";
-  passthru = {
-    inherit (nix-snapshotter-lib) buildImage;
-  };
+  passthru = { inherit (nix-snapshotter-lib) buildImage; };
 
   meta = {
     description = "Brings native understanding of Nix packages to containerd";

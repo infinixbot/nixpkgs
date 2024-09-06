@@ -23,9 +23,7 @@ buildGoModule rec {
     "-w"
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) certmgr;
-  };
+  passthru.tests = { inherit (nixosTests) certmgr; };
 
   meta = with lib; {
     homepage = "https://cfssl.org/";

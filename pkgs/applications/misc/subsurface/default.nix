@@ -155,9 +155,7 @@ stdenv.mkDerivation {
     "-DNO_PRINTING=OFF"
   ];
 
-  passthru = {
-    inherit version libdc googlemaps;
-  };
+  passthru = { inherit version libdc googlemaps; };
 
   meta = with lib; {
     description = "Divelog program";

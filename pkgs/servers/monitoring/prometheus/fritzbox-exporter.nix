@@ -20,9 +20,7 @@ buildGoModule rec {
 
   subPackages = [ "cmd/exporter" ];
 
-  passthru.tests = {
-    inherit (nixosTests.prometheus-exporters) fritzbox;
-  };
+  passthru.tests = { inherit (nixosTests.prometheus-exporters) fritzbox; };
 
   meta = with lib; {
     description = "Prometheus Exporter for FRITZ!Box (TR64 and UPnP)";

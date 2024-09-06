@@ -159,9 +159,7 @@ stdenv.mkDerivation rec {
     zlib
   ] ++ flatten (builtins.catAttrs "packages" (builtins.filter (e: e.enable) options));
 
-  passthru.tests = {
-    inherit (nixosTests) mediatomb;
-  };
+  passthru.tests = { inherit (nixosTests) mediatomb; };
 
   meta = with lib; {
     homepage = "https://docs.gerbera.io/";

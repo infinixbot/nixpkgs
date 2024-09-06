@@ -25,9 +25,7 @@ rustPlatform.buildRustPackage rec {
     libiconv
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) doh-proxy-rust;
-  };
+  passthru.tests = { inherit (nixosTests) doh-proxy-rust; };
 
   meta = with lib; {
     homepage = "https://github.com/jedisct1/doh-server";

@@ -36,9 +36,7 @@ let
       nodes.machine = {
         services.keyd = {
           enable = true;
-          keyboards = {
-            inherit default;
-          };
+          keyboards = { inherit default; };
         };
       };
 

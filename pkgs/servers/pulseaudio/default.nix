@@ -267,9 +267,7 @@ stdenv.mkDerivation rec {
       done
     '';
 
-  passthru.tests = {
-    inherit (nixosTests) pulseaudio;
-  };
+  passthru.tests = { inherit (nixosTests) pulseaudio; };
 
   meta = {
     description = "Sound server for POSIX and Win32 systems";

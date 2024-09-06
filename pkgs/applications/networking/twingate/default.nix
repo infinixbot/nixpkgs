@@ -51,9 +51,7 @@ stdenv.mkDerivation rec {
     mv usr/share $out/share
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) twingate;
-  };
+  passthru.tests = { inherit (nixosTests) twingate; };
 
   meta = with lib; {
     description = "Twingate Client";

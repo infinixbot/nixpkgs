@@ -44,9 +44,7 @@ buildPythonPackage rec {
     "--suffix PATH : ${lib.makeBinPath [ sassc ]}"
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) mailman;
-  };
+  passthru.tests = { inherit (nixosTests) mailman; };
 
   meta = with lib; {
     homepage = "https://gitlab.com/mailman/mailman-web";

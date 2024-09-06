@@ -59,9 +59,7 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  passthru.tests = {
-    inherit (nixosTests) ustreamer;
-  };
+  passthru.tests = { inherit (nixosTests) ustreamer; };
 
   meta = with lib; {
     homepage = "https://github.com/pikvm/ustreamer";

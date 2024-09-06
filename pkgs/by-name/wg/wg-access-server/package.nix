@@ -62,9 +62,7 @@ buildGoModule rec {
   '';
 
   passthru = {
-    tests = {
-      inherit (nixosTests) wg-access-server;
-    };
+    tests = { inherit (nixosTests) wg-access-server; };
   };
 
   meta = with lib; {

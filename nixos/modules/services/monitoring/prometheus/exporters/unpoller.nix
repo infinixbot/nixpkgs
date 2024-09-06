@@ -12,12 +12,8 @@ let
 
   configFile = pkgs.writeText "prometheus-unpoller-exporter.json" (
     generators.toJSON { } {
-      poller = {
-        inherit (cfg.log) debug quiet;
-      };
-      unifi = {
-        inherit (cfg) controllers;
-      };
+      poller = { inherit (cfg.log) debug quiet; };
+      unifi = { inherit (cfg) controllers; };
       influxdb.disable = true;
       datadog.disable = true; # workaround for https://github.com/unpoller/unpoller/issues/442
       prometheus = {

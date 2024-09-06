@@ -149,9 +149,7 @@ stdenv.mkDerivation {
   # Breaks dfhack because of inlining.
   hardeningDisable = [ "fortify" ];
 
-  passthru = {
-    inherit dfVersion;
-  };
+  passthru = { inherit dfVersion; };
 
   meta = {
     description = "Unfucked multimedia layer for Dwarf Fortress";

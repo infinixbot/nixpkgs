@@ -37,9 +37,7 @@ stdenv.mkDerivation rec {
     "KERNELDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) fanout;
-  };
+  passthru.tests = { inherit (nixosTests) fanout; };
 
   meta = with lib; {
     description = "Kernel-based publish-subscribe system";

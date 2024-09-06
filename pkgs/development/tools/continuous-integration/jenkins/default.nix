@@ -42,9 +42,7 @@ stdenv.mkDerivation rec {
   '';
 
   passthru = {
-    tests = {
-      inherit (nixosTests) jenkins jenkins-cli;
-    };
+    tests = { inherit (nixosTests) jenkins jenkins-cli; };
 
     updateScript = writeScript "update.sh" ''
       #!${stdenv.shell}

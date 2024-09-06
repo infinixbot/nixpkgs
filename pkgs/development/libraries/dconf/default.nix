@@ -80,9 +80,7 @@ stdenv.mkDerivation rec {
       packageName = pname;
       versionPolicy = "odd-unstable";
     };
-    tests = {
-      inherit (nixosTests) dconf;
-    };
+    tests = { inherit (nixosTests) dconf; };
   };
 
   meta = with lib; {

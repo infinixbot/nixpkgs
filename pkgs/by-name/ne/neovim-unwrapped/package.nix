@@ -199,12 +199,8 @@ stdenv.mkDerivation (
         disallowedRequisites = [ stdenv.cc ] ++ lib.optional (lua != codegenLua) codegenLua;
       in
       {
-        out = {
-          inherit disallowedRequisites;
-        };
-        debug = {
-          inherit disallowedRequisites;
-        };
+        out = { inherit disallowedRequisites; };
+        debug = { inherit disallowedRequisites; };
       };
 
     cmakeFlags =

@@ -49,9 +49,7 @@ stdenv.mkDerivation (finalAttrs: {
       $out/bin/Mconvert.py
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) monetdb;
-  };
+  passthru.tests = { inherit (nixosTests) monetdb; };
 
   meta = with lib; {
     description = "Open source database system";

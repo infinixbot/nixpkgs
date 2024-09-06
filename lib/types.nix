@@ -824,9 +824,7 @@ let
           nestedTypes = tags;
           functor = defaultFunctor "attrTag" // {
             type = { tags, ... }: types.attrTag tags;
-            payload = {
-              inherit tags;
-            };
+            payload = { inherit tags; };
             binOp =
               let
                 # Add metadata in the format that submodules work with

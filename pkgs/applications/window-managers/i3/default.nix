@@ -139,9 +139,7 @@ stdenv.mkDerivation rec {
 
   separateDebugInfo = true;
 
-  passthru.tests = {
-    inherit (nixosTests) i3wm;
-  };
+  passthru.tests = { inherit (nixosTests) i3wm; };
 
   meta = with lib; {
     description = "Tiling window manager";

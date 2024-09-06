@@ -40,9 +40,7 @@ buildDotnetModule rec {
   '';
   passthru.updateScript = ./updater.sh;
 
-  passthru.tests = {
-    inherit (nixosTests) jackett;
-  };
+  passthru.tests = { inherit (nixosTests) jackett; };
 
   meta = with lib; {
     description = "API Support for your favorite torrent trackers";

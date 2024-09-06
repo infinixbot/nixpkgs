@@ -343,9 +343,7 @@ rec {
       ''
       + common.moveBins;
 
-    passthru = {
-      inherit version buildInputs;
-    };
+    passthru = { inherit version buildInputs; };
 
     meta = with lib; {
       description = "Basic binaries for TeX Live";

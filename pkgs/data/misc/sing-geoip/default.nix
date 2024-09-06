@@ -60,9 +60,7 @@ stdenvNoCC.mkDerivation {
     runHook postInstall
   '';
 
-  passthru = {
-    inherit generator;
-  };
+  passthru = { inherit generator; };
 
   meta = generator.meta // {
     inherit (dbip-country-lite.meta) license;

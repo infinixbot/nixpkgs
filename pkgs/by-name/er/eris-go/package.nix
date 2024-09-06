@@ -30,9 +30,7 @@ buildGoModule rec {
 
   env.skipNetworkTests = true;
 
-  passthru.tests = {
-    inherit (nixosTests) eris-server;
-  };
+  passthru.tests = { inherit (nixosTests) eris-server; };
 
   meta = src.meta // {
     description = "Implementation of ERIS for Go";

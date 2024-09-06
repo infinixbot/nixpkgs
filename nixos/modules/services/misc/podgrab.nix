@@ -52,9 +52,7 @@ in
 
   config = lib.mkIf cfg.enable {
     systemd.tmpfiles.settings."10-pyload" = {
-      ${cfg.dataDirectory}.d = {
-        inherit (cfg) user group;
-      };
+      ${cfg.dataDirectory}.d = { inherit (cfg) user group; };
     };
 
     systemd.services.podgrab = {

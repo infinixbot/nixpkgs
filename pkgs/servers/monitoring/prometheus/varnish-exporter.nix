@@ -27,9 +27,7 @@ buildGoModule rec {
       --prefix PATH : "${varnish}/bin"
   '';
 
-  passthru.tests = {
-    inherit (nixosTests.prometheus-exporters) varnish;
-  };
+  passthru.tests = { inherit (nixosTests.prometheus-exporters) varnish; };
 
   meta = {
     homepage = "https://github.com/jonnenauha/prometheus_varnish_exporter";

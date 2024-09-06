@@ -31,9 +31,7 @@ rustPlatform.buildRustPackage rec {
     Security
   ];
 
-  passthru.tests = {
-    inherit (nixosTests.prometheus-exporters) wireguard;
-  };
+  passthru.tests = { inherit (nixosTests.prometheus-exporters) wireguard; };
 
   meta = with lib; {
     description = "Prometheus exporter for WireGuard, written in Rust";

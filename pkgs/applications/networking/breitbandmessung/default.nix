@@ -81,9 +81,7 @@ stdenv.mkDerivation (
     pname = "breitbandmessung";
     inherit (sources) version;
 
-    passthru.tests = {
-      inherit (nixosTests) breitbandmessung;
-    };
+    passthru.tests = { inherit (nixosTests) breitbandmessung; };
     passthru.updateScript = ./update.sh;
 
     meta = with lib; {

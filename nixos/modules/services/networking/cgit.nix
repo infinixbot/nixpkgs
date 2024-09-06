@@ -222,12 +222,8 @@ in
     services.fcgiwrap.instances = flip mapAttrs' cfgs (
       name: cfg:
       nameValuePair "cgit-${name}" {
-        process = {
-          inherit (cfg) user group;
-        };
-        socket = {
-          inherit (config.services.nginx) user group;
-        };
+        process = { inherit (cfg) user group; };
+        socket = { inherit (config.services.nginx) user group; };
       }
     );
 

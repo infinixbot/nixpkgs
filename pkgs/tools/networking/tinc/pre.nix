@@ -54,9 +54,7 @@ stdenv.mkDerivation rec {
     "--localstatedir=/var"
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) tinc;
-  };
+  passthru.tests = { inherit (nixosTests) tinc; };
 
   meta = with lib; {
     description = "VPN daemon with full mesh routing";

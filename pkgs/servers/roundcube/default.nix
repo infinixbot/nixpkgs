@@ -37,9 +37,7 @@ stdenv.mkDerivation rec {
       paths = (f roundcubePlugins) ++ [ roundcube ];
     };
 
-  passthru.tests = {
-    inherit (nixosTests) roundcube;
-  };
+  passthru.tests = { inherit (nixosTests) roundcube; };
 
   meta = {
     description = "Open Source Webmail Software";

@@ -74,7 +74,5 @@ stdenv.mkDerivation {
   '';
   inherit meta;
 
-  passthru = {
-    inherit minimal full-ttf;
-  };
+  passthru = { inherit minimal full-ttf; };
 }

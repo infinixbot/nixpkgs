@@ -46,9 +46,7 @@ stdenv.mkDerivation rec {
     makeWrapper
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) taskserver;
-  };
+  passthru.tests = { inherit (nixosTests) taskserver; };
 
   meta = {
     description = "Server for synchronising Taskwarrior clients";

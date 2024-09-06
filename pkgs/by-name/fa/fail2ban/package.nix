@@ -94,9 +94,7 @@ python3.pkgs.buildPythonApplication rec {
       rm -r "${sitePackages}/usr"
     '';
 
-  passthru.tests = {
-    inherit (nixosTests) fail2ban;
-  };
+  passthru.tests = { inherit (nixosTests) fail2ban; };
 
   meta = with lib; {
     homepage = "https://www.fail2ban.org/";

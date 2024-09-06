@@ -122,9 +122,7 @@ crystal.buildCrystalPackage rec {
   '';
 
   passthru = {
-    tests = {
-      inherit (nixosTests) invidious;
-    };
+    tests = { inherit (nixosTests) invidious; };
     updateScript = ./update.sh;
   };
 

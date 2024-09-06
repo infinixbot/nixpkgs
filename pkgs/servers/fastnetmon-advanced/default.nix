@@ -65,9 +65,7 @@ stdenv.mkDerivation rec {
     $out/bin/fnm-gobgpd --help 2>&1 | grep "Application Options"
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) fastnetmon-advanced;
-  };
+  passthru.tests = { inherit (nixosTests) fastnetmon-advanced; };
 
   meta = with lib; {
     description = "High performance DDoS detector / sensor - commercial edition";

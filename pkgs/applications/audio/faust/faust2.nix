@@ -75,9 +75,7 @@ let
         ncurses_static
       ];
 
-      passthru = {
-        inherit wrap wrapWithBuildEnv faust2ApplBase;
-      };
+      passthru = { inherit wrap wrapWithBuildEnv faust2ApplBase; };
 
       preConfigure = ''
         cd build

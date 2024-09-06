@@ -63,9 +63,7 @@ buildGoModule rec {
 
   passthru = {
     updateScript = nix-update-script { };
-    tests = {
-      inherit (nixosTests) sing-box;
-    };
+    tests = { inherit (nixosTests) sing-box; };
   };
 
   meta = with lib; {

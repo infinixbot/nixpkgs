@@ -22,9 +22,7 @@ buildGoModule rec {
 
   vendorHash = null;
 
-  passthru.tests = {
-    inherit (nixosTests.prometheus-exporters) surfboard;
-  };
+  passthru.tests = { inherit (nixosTests.prometheus-exporters) surfboard; };
 
   meta = with lib; {
     description = "Arris Surfboard signal metrics exporter";

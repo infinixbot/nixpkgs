@@ -57,9 +57,7 @@ runCommand "systemtap-${kernel.version}-${version}"
   {
     inherit stapBuild;
     nativeBuildInputs = [ makeWrapper ];
-    passthru.tests = {
-      inherit (nixosTests.systemtap) linux_default linux_latest;
-    };
+    passthru.tests = { inherit (nixosTests.systemtap) linux_default linux_latest; };
     meta = {
       homepage = "https://sourceware.org/systemtap/";
       description = "Provides a scripting language for instrumentation on a live kernel plus user-space";

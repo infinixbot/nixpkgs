@@ -67,9 +67,7 @@ let
             services.forgejo = {
               enable = true;
               package = forgejoPackage;
-              database = {
-                inherit type;
-              };
+              database = { inherit type; };
               settings.service.DISABLE_REGISTRATION = true;
               settings."repository.signing".SIGNING_KEY = signingPrivateKeyId;
               settings.actions.ENABLED = true;

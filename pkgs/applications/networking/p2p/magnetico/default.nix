@@ -34,9 +34,7 @@ buildGoModule rec {
 
   doCheck = !stdenv.hostPlatform.isStatic;
 
-  passthru.tests = {
-    inherit (nixosTests) magnetico;
-  };
+  passthru.tests = { inherit (nixosTests) magnetico; };
 
   meta = with lib; {
     description = "Autonomous (self-hosted) BitTorrent DHT search engine suite";

@@ -37,9 +37,7 @@ stdenv.mkDerivation {
     xcbutil
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) xss-lock;
-  };
+  passthru.tests = { inherit (nixosTests) xss-lock; };
 
   meta = with lib; {
     description = "Use external locker (such as i3lock) as X screen saver";

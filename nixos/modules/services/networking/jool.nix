@@ -87,9 +87,7 @@ let
     # The format is, again, plain JSON
     freeformType = configFormat.type;
     # Some options with a default value
-    options = {
-      inherit (nat64Options.getSubOptions [ ]) framework;
-    };
+    options = { inherit (nat64Options.getSubOptions [ ]) framework; };
   };
 
   makeNat64Unit = name: opts: {

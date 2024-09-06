@@ -227,8 +227,6 @@ symlinkJoin rec {
 
     inherit (passthru.curl-impersonate-chrome) src;
 
-    tests = {
-      inherit (nixosTests) curl-impersonate;
-    };
+    tests = { inherit (nixosTests) curl-impersonate; };
   };
 }

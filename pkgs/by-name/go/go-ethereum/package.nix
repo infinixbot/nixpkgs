@@ -66,9 +66,7 @@ buildGoModule rec {
     IOKit
   ];
 
-  passthru.tests = {
-    inherit (nixosTests) geth;
-  };
+  passthru.tests = { inherit (nixosTests) geth; };
 
   meta = with lib; {
     homepage = "https://geth.ethereum.org/";

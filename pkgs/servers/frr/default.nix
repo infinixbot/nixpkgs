@@ -248,7 +248,5 @@ lib.warnIf (!(stdenv.buildPlatform.canExecute stdenv.hostPlatform))
       platforms = (platforms.linux ++ platforms.freebsd ++ platforms.netbsd ++ platforms.openbsd);
     };
 
-    passthru.tests = {
-      inherit (nixosTests) frr;
-    };
+    passthru.tests = { inherit (nixosTests) frr; };
   }

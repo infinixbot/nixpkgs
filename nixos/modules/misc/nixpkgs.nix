@@ -248,9 +248,7 @@ in
 
     localSystem = mkOption {
       type = types.attrs; # TODO utilize lib.systems.parsedPlatform
-      default = {
-        inherit (cfg) system;
-      };
+      default = { inherit (cfg) system; };
       example = {
         system = "aarch64-linux";
       };

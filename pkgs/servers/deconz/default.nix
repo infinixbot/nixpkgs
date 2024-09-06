@@ -83,9 +83,7 @@ stdenv.mkDerivation rec {
   '';
 
   passthru = {
-    tests = {
-      inherit (nixosTests) deconz;
-    };
+    tests = { inherit (nixosTests) deconz; };
   };
 
   meta = with lib; {

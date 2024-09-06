@@ -34,9 +34,7 @@ buildGoModule rec {
 
   subPackages = [ "." ];
 
-  passthru.tests = {
-    inherit (nixosTests) documize;
-  };
+  passthru.tests = { inherit (nixosTests) documize; };
 
   postInstall = ''
     mv $out/bin/edition $out/bin/documize

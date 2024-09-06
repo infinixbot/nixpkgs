@@ -129,9 +129,7 @@ let
           cp ${spark.src}/yarn/spark-${spark.version}-yarn-shuffle.jar $out/share/hadoop/yarn/
         '');
 
-      passthru = {
-        inherit tests;
-      };
+      passthru = { inherit tests; };
 
       meta =
         with lib;

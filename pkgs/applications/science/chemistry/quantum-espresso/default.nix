@@ -77,9 +77,7 @@ stdenv.mkDerivation rec {
       --replace 'libdir="''${prefix}/@CMAKE_INSTALL_LIBDIR@"' 'libdir="@CMAKE_INSTALL_FULL_LIBDIR@"'
   '';
 
-  passthru = {
-    inherit mpi;
-  };
+  passthru = { inherit mpi; };
 
   nativeBuildInputs = [
     cmake

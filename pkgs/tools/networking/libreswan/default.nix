@@ -122,9 +122,7 @@ stdenv.mkDerivation rec {
         -i $out/bin/ipsec
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) libreswan libreswan-nat;
-  };
+  passthru.tests = { inherit (nixosTests) libreswan libreswan-nat; };
 
   meta = with lib; {
     homepage = "https://libreswan.org";

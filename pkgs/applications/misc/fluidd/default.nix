@@ -31,9 +31,7 @@ stdenvNoCC.mkDerivation rec {
     cp -r fluidd $out/share/fluidd/htdocs
   '';
 
-  passthru.tests = {
-    inherit (nixosTests) fluidd;
-  };
+  passthru.tests = { inherit (nixosTests) fluidd; };
 
   meta = with lib; {
     description = "Klipper web interface";

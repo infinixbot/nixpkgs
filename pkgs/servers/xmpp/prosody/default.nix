@@ -101,9 +101,7 @@ stdenv.mkDerivation rec {
 
   passthru = {
     communityModules = withCommunityModules;
-    tests = {
-      inherit (nixosTests) prosody prosody-mysql;
-    };
+    tests = { inherit (nixosTests) prosody prosody-mysql; };
   };
 
   meta = with lib; {
