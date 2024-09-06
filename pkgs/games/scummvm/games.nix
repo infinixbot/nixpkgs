@@ -57,17 +57,7 @@ let
         "files"
         "version"
       ];
-      pname =
-        lib.replaceStrings
-          [
-            " "
-            ":"
-          ]
-          [
-            "-"
-            ""
-          ]
-          (lib.toLower plong);
+      pname = lib.replaceStrings [ " " ":" ] [ "-" "" ] (lib.toLower plong);
     in
     stdenv.mkDerivation (
       {

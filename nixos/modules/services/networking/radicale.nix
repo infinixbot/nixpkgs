@@ -24,12 +24,7 @@ let
 
   rightsFile = format.generate "radicale.rights" cfg.rights;
 
-  bindLocalhost =
-    cfg.settings != { }
-    && !hasAttrByPath [
-      "server"
-      "hosts"
-    ] cfg.settings;
+  bindLocalhost = cfg.settings != { } && !hasAttrByPath [ "server" "hosts" ] cfg.settings;
 
 in
 {

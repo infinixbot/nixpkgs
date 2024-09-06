@@ -288,12 +288,7 @@ in
         {
           assertion =
             (!(hasAttrByPath [ "federation" ] cfg.settings))
-            && (
-              !(hasAttrByPath [
-                "federation"
-                "enabled"
-              ] cfg.settings)
-            );
+            && (!(hasAttrByPath [ "federation" "enabled" ] cfg.settings));
           message = "`services.lemmy.settings.federation` was removed in 0.17.0 and no longer has any effect";
         }
         {

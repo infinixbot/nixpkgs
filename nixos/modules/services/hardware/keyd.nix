@@ -64,20 +64,10 @@ let
 in
 {
   imports = [
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "keyd"
-        "ids"
-      ]
+    (lib.mkRemovedOptionModule [ "services" "keyd" "ids" ]
       ''Use keyboards.<filename>.ids instead. If you don't need a multi-file configuration, just add keyboards.default before the ids. See https://github.com/NixOS/nixpkgs/pull/243271.''
     )
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "keyd"
-        "settings"
-      ]
+    (lib.mkRemovedOptionModule [ "services" "keyd" "settings" ]
       ''Use keyboards.<filename>.settings instead. If you don't need a multi-file configuration, just add keyboards.default before the settings. See https://github.com/NixOS/nixpkgs/pull/243271.''
     )
   ];

@@ -79,12 +79,7 @@ in
       "fail2ban"
       "daemonConfig"
     ] "The daemon is now configured through the attribute set `services.fail2ban.daemonSettings`.")
-    (mkRemovedOptionModule
-      [
-        "services"
-        "fail2ban"
-        "extraSettings"
-      ]
+    (mkRemovedOptionModule [ "services" "fail2ban" "extraSettings" ]
       "The extra default configuration can now be set using `services.fail2ban.jails.DEFAULT.settings`."
     )
   ];

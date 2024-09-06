@@ -18,18 +18,11 @@ in
 {
 
   imports = [
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "rabbitmq"
-        "cookie"
-      ]
-      ''
-        This option wrote the Erlang cookie to the store, while it should be kept secret.
-        Please remove it from your NixOS configuration and deploy a cookie securely instead.
-        The renamed `unsafeCookie` must ONLY be used in isolated non-production environments such as NixOS VM tests.
-      ''
-    )
+    (lib.mkRemovedOptionModule [ "services" "rabbitmq" "cookie" ] ''
+      This option wrote the Erlang cookie to the store, while it should be kept secret.
+      Please remove it from your NixOS configuration and deploy a cookie securely instead.
+      The renamed `unsafeCookie` must ONLY be used in isolated non-production environments such as NixOS VM tests.
+    '')
   ];
 
   ###### interface

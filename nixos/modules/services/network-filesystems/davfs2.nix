@@ -50,17 +50,10 @@ in
 {
 
   imports = [
-    (mkRemovedOptionModule
-      [
-        "services"
-        "davfs2"
-        "extraConfig"
-      ]
-      ''
-        The option extraConfig got removed, please migrate to
-        services.davfs2.settings instead.
-      ''
-    )
+    (mkRemovedOptionModule [ "services" "davfs2" "extraConfig" ] ''
+      The option extraConfig got removed, please migrate to
+      services.davfs2.settings instead.
+    '')
   ];
 
   options.services.davfs2 = {

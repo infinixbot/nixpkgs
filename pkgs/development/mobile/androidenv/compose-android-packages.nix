@@ -199,12 +199,7 @@ rec {
   # put a much nicer error message that includes the available options.
   check-version =
     packages: package: version:
-    if
-      lib.hasAttrByPath [
-        package
-        version
-      ] packages
-    then
+    if lib.hasAttrByPath [ package version ] packages then
       packages.${package}.${version}
     else
       throw ''
@@ -308,12 +303,7 @@ rec {
         let
           availablePackages = map (abiVersion: system-images-packages.${apiVersion}.${type}.${abiVersion}) (
             builtins.filter (
-              abiVersion:
-              lib.hasAttrByPath [
-                apiVersion
-                type
-                abiVersion
-              ] system-images-packages
+              abiVersion: lib.hasAttrByPath [ apiVersion type abiVersion ] system-images-packages
             ) abiVersions
           );
 

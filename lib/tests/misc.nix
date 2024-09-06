@@ -1563,32 +1563,20 @@ runTests {
   };
 
   testHasAttrByPathTrue = {
-    expr =
-      hasAttrByPath
-        [
-          "a"
-          "b"
-        ]
-        {
-          a = {
-            b = "yey";
-          };
-        };
+    expr = hasAttrByPath [ "a" "b" ] {
+      a = {
+        b = "yey";
+      };
+    };
     expected = true;
   };
 
   testHasAttrByPathFalse = {
-    expr =
-      hasAttrByPath
-        [
-          "a"
-          "b"
-        ]
-        {
-          a = {
-            c = "yey";
-          };
-        };
+    expr = hasAttrByPath [ "a" "b" ] {
+      a = {
+        c = "yey";
+      };
+    };
     expected = false;
   };
 
@@ -1608,36 +1596,22 @@ runTests {
   };
 
   testLongestValidPathPrefix_zero = {
-    expr = attrsets.longestValidPathPrefix [
-      "a"
-      (throw "do not use")
-    ] { d = null; };
+    expr = attrsets.longestValidPathPrefix [ "a" (throw "do not use") ] { d = null; };
     expected = [ ];
   };
 
   testLongestValidPathPrefix_zero_b = {
-    expr = attrsets.longestValidPathPrefix [
-      "z"
-      "z"
-    ] "remarkably harmonious";
+    expr = attrsets.longestValidPathPrefix [ "z" "z" ] "remarkably harmonious";
     expected = [ ];
   };
 
   testLongestValidPathPrefix_one = {
-    expr = attrsets.longestValidPathPrefix [
-      "a"
-      "b"
-      "c"
-    ] { a = null; };
+    expr = attrsets.longestValidPathPrefix [ "a" "b" "c" ] { a = null; };
     expected = [ "a" ];
   };
 
   testLongestValidPathPrefix_two = {
-    expr = attrsets.longestValidPathPrefix [
-      "a"
-      "b"
-      "c"
-    ] { a.b = null; };
+    expr = attrsets.longestValidPathPrefix [ "a" "b" "c" ] { a.b = null; };
     expected = [
       "a"
       "b"
@@ -1645,11 +1619,7 @@ runTests {
   };
 
   testLongestValidPathPrefix_three = {
-    expr = attrsets.longestValidPathPrefix [
-      "a"
-      "b"
-      "c"
-    ] { a.b.c = null; };
+    expr = attrsets.longestValidPathPrefix [ "a" "b" "c" ] { a.b.c = null; };
     expected = [
       "a"
       "b"
@@ -1658,11 +1628,7 @@ runTests {
   };
 
   testLongestValidPathPrefix_three_extra = {
-    expr = attrsets.longestValidPathPrefix [
-      "a"
-      "b"
-      "c"
-    ] { a.b.c.d = throw "nope"; };
+    expr = attrsets.longestValidPathPrefix [ "a" "b" "c" ] { a.b.c.d = throw "nope"; };
     expected = [
       "a"
       "b"

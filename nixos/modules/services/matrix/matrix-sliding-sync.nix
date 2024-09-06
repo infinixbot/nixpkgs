@@ -10,17 +10,10 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "matrix-synapse"
-        "sliding-sync"
-      ]
-      [
-        "services"
-        "matrix-sliding-sync"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "matrix-synapse" "sliding-sync" ] [
+      "services"
+      "matrix-sliding-sync"
+    ])
   ];
 
   options.services.matrix-sliding-sync = {

@@ -93,17 +93,12 @@ stdenv.mkDerivation (
         flags = new: old: if lib.versionAtLeast version "4.08" then new else old;
       in
       optionals useX11 (
-        flags
-          [
-            "--x-libraries=${x11lib}"
-            "--x-includes=${x11inc}"
-          ]
-          [
-            "-x11lib"
-            x11lib
-            "-x11include"
-            x11inc
-          ]
+        flags [ "--x-libraries=${x11lib}" "--x-includes=${x11inc}" ] [
+          "-x11lib"
+          x11lib
+          "-x11include"
+          x11inc
+        ]
       )
       ++ optional aflSupport (flags "--with-afl" "-afl-instrument")
       ++ optional flambdaSupport (flags "--enable-flambda" "-flambda")

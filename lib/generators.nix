@@ -242,13 +242,7 @@ rec {
   */
   toINI =
     {
-      mkSectionName ? (
-        name:
-        escape [
-          "["
-          "]"
-        ] name
-      ),
+      mkSectionName ? (name: escape [ "[" "]" ] name),
       mkKeyValue ? mkKeyValueDefault { } "=",
       listsAsDuplicateKeys ? false,
     }:
@@ -331,13 +325,7 @@ rec {
   */
   toINIWithGlobalSection =
     {
-      mkSectionName ? (
-        name:
-        escape [
-          "["
-          "]"
-        ] name
-      ),
+      mkSectionName ? (name: escape [ "[" "]" ] name),
       mkKeyValue ? mkKeyValueDefault { } "=",
       listsAsDuplicateKeys ? false,
     }:
@@ -406,22 +394,7 @@ rec {
       mkValueString =
         v:
         let
-          escapedV = ''"${
-            replaceStrings
-              [
-                "\n"
-                "	"
-                ''"''
-                "\\"
-              ]
-              [
-                "\\n"
-                "\\t"
-                ''\"''
-                "\\\\"
-              ]
-              v
-          }"'';
+          escapedV = ''"${replaceStrings [ "\n" "	" ''"'' "\\" ] [ "\\n" "\\t" ''\"'' "\\\\" ] v}"'';
         in
         mkValueStringDefault { } (if isString v then escapedV else v);
 
@@ -574,16 +547,10 @@ rec {
               "\""
               "\${"
             ];
-            escapeMultiline =
-              replaceStrings
-                [
-                  "\${"
-                  "''"
-                ]
-                [
-                  "''\${"
-                  "'''"
-                ];
+            escapeMultiline = replaceStrings [ "\${" "''" ] [
+              "''\${"
+              "'''"
+            ];
             singlelineResult = "\"" + concatStringsSep "\\n" (map escapeSingleline lines) + "\"";
             multilineResult =
               let

@@ -1254,105 +1254,45 @@ in
       '';
     in
     [
-      (mkRemovedOptionModule
-        [
-          "services"
-          "hostapd"
-          "interface"
-        ]
-        (
-          renamedOptionMessage "All other options for this interface are now set via `services.hostapd.radios.«interface».*`."
-        )
-      )
+      (mkRemovedOptionModule [ "services" "hostapd" "interface" ] (
+        renamedOptionMessage "All other options for this interface are now set via `services.hostapd.radios.«interface».*`."
+      ))
 
-      (mkRemovedOptionModule [
-        "services"
-        "hostapd"
-        "driver"
-      ] (renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».driver`."))
-      (mkRemovedOptionModule [
-        "services"
-        "hostapd"
-        "noScan"
-      ] (renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».noScan`."))
-      (mkRemovedOptionModule
-        [
-          "services"
-          "hostapd"
-          "countryCode"
-        ]
-        (renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».countryCode`.")
-      )
-      (mkRemovedOptionModule [
-        "services"
-        "hostapd"
-        "hwMode"
-      ] (renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».band`."))
-      (mkRemovedOptionModule [
-        "services"
-        "hostapd"
-        "channel"
-      ] (renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».channel`."))
-      (mkRemovedOptionModule
-        [
-          "services"
-          "hostapd"
-          "extraConfig"
-        ]
-        (renamedOptionMessage ''
-          It has been replaced by `services.hostapd.radios.«interface».settings` and
-          `services.hostapd.radios.«interface».networks.«network».settings` respectively
-          for per-radio and per-network extra configuration. The module now supports a lot more
-          options inherently, so please re-check whether using settings is still necessary.'')
-      )
+      (mkRemovedOptionModule [ "services" "hostapd" "driver" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».driver`."
+      ))
+      (mkRemovedOptionModule [ "services" "hostapd" "noScan" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».noScan`."
+      ))
+      (mkRemovedOptionModule [ "services" "hostapd" "countryCode" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».countryCode`."
+      ))
+      (mkRemovedOptionModule [ "services" "hostapd" "hwMode" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».band`."
+      ))
+      (mkRemovedOptionModule [ "services" "hostapd" "channel" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».channel`."
+      ))
+      (mkRemovedOptionModule [ "services" "hostapd" "extraConfig" ] (renamedOptionMessage ''
+        It has been replaced by `services.hostapd.radios.«interface».settings` and
+        `services.hostapd.radios.«interface».networks.«network».settings` respectively
+        for per-radio and per-network extra configuration. The module now supports a lot more
+        options inherently, so please re-check whether using settings is still necessary.''))
 
-      (mkRemovedOptionModule
-        [
-          "services"
-          "hostapd"
-          "logLevel"
-        ]
-        (
-          renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».networks.«network».logLevel`."
-        )
-      )
-      (mkRemovedOptionModule
-        [
-          "services"
-          "hostapd"
-          "group"
-        ]
-        (
-          renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».networks.«network».group`."
-        )
-      )
-      (mkRemovedOptionModule
-        [
-          "services"
-          "hostapd"
-          "ssid"
-        ]
-        (
-          renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».networks.«network».ssid`."
-        )
-      )
+      (mkRemovedOptionModule [ "services" "hostapd" "logLevel" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».networks.«network».logLevel`."
+      ))
+      (mkRemovedOptionModule [ "services" "hostapd" "group" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».networks.«network».group`."
+      ))
+      (mkRemovedOptionModule [ "services" "hostapd" "ssid" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».networks.«network».ssid`."
+      ))
 
-      (mkRemovedOptionModule
-        [
-          "services"
-          "hostapd"
-          "wpa"
-        ]
-        (
-          renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».networks.«network».authentication.mode`."
-        )
-      )
-      (mkRemovedOptionModule
-        [
-          "services"
-          "hostapd"
-          "wpaPassphrase"
-        ]
+      (mkRemovedOptionModule [ "services" "hostapd" "wpa" ] (
+        renamedOptionMessage "It has been replaced by `services.hostapd.radios.«interface».networks.«network».authentication.mode`."
+      ))
+      (mkRemovedOptionModule [ "services" "hostapd" "wpaPassphrase" ]
         (renamedOptionMessage ''
           It has been replaced by `services.hostapd.radios.«interface».networks.«network».authentication.wpaPassword`.
           While upgrading your config, please consider using the newer SAE authentication scheme

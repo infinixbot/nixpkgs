@@ -42,32 +42,18 @@ let
 
 in
 
-lib.checkListOfEnum "${pname}: button size variants"
-  [
-    "standard"
-    "small"
-  ]
-  buttonSizeVariants
+lib.checkListOfEnum "${pname}: button size variants" [ "standard" "small" ] buttonSizeVariants
   lib.checkListOfEnum
   "${pname}: button variants"
-  [
-    "standard"
-    "alt"
-  ]
+  [ "standard" "alt" ]
   buttonVariants
   lib.checkListOfEnum
   "${pname}: color variants"
-  [
-    "light"
-    "dark"
-  ]
+  [ "light" "dark" ]
   colorVariants
   lib.checkListOfEnum
   "${pname}: opacity variants"
-  [
-    "standard"
-    "solid"
-  ]
+  [ "standard" "solid" ]
   opacityVariants
   lib.checkListOfEnum
   "${pname}: theme variants"

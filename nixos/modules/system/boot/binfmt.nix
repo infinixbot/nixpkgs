@@ -178,17 +178,11 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "boot"
-        "binfmtMiscRegistrations"
-      ]
-      [
-        "boot"
-        "binfmt"
-        "registrations"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "boot" "binfmtMiscRegistrations" ] [
+      "boot"
+      "binfmt"
+      "registrations"
+    ])
   ];
 
   options = {

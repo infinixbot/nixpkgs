@@ -1145,28 +1145,15 @@ in
   );
 
   imports = [
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "postfix"
-        "sslCACert"
-      ]
+    (lib.mkRemovedOptionModule [ "services" "postfix" "sslCACert" ]
       "services.postfix.sslCACert was replaced by services.postfix.tlsTrustedAuthorities. In case you intend that your server should validate requested client certificates use services.postfix.extraConfig."
     )
 
-    (lib.mkChangedOptionModule
-      [
-        "services"
-        "postfix"
-        "useDane"
-      ]
-      [
-        "services"
-        "postfix"
-        "config"
-        "smtp_tls_security_level"
-      ]
-      (config: lib.mkIf config.services.postfix.useDane "dane")
-    )
+    (lib.mkChangedOptionModule [ "services" "postfix" "useDane" ] [
+      "services"
+      "postfix"
+      "config"
+      "smtp_tls_security_level"
+    ] (config: lib.mkIf config.services.postfix.useDane "dane"))
   ];
 }

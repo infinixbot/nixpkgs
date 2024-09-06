@@ -541,17 +541,7 @@ rec {
   makeJobScript =
     name: text:
     let
-      scriptName =
-        replaceStrings
-          [
-            "\\"
-            "@"
-          ]
-          [
-            "-"
-            "_"
-          ]
-          (shellEscape name);
+      scriptName = replaceStrings [ "\\" "@" ] [ "-" "_" ] (shellEscape name);
       out =
         (pkgs.writeShellScriptBin scriptName ''
           set -e

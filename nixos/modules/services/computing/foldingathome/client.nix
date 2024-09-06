@@ -21,38 +21,18 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "foldingAtHome"
-      ]
-      [
-        "services"
-        "foldingathome"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "foldingathome"
-        "nickname"
-      ]
-      [
-        "services"
-        "foldingathome"
-        "user"
-      ]
-    )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "foldingathome"
-        "config"
-      ]
-      ''
-        Use <literal>services.foldingathome.extraArgs instead<literal>
-      ''
-    )
+    (mkRenamedOptionModule [ "services" "foldingAtHome" ] [
+      "services"
+      "foldingathome"
+    ])
+    (mkRenamedOptionModule [ "services" "foldingathome" "nickname" ] [
+      "services"
+      "foldingathome"
+      "user"
+    ])
+    (mkRemovedOptionModule [ "services" "foldingathome" "config" ] ''
+      Use <literal>services.foldingathome.extraArgs instead<literal>
+    '')
   ];
   options.services.foldingathome = {
     enable = mkEnableOption "Folding@home client";

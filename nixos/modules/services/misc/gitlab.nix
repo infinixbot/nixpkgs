@@ -275,36 +275,18 @@ in
 {
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "gitlab"
-        "stateDir"
-      ]
-      [
-        "services"
-        "gitlab"
-        "statePath"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "gitlab"
-        "backupPath"
-      ]
-      [
-        "services"
-        "gitlab"
-        "backup"
-        "path"
-      ]
-    )
-    (mkRemovedOptionModule [
+    (mkRenamedOptionModule [ "services" "gitlab" "stateDir" ] [
       "services"
       "gitlab"
-      "satelliteDir"
-    ] "")
+      "statePath"
+    ])
+    (mkRenamedOptionModule [ "services" "gitlab" "backupPath" ] [
+      "services"
+      "gitlab"
+      "backup"
+      "path"
+    ])
+    (mkRemovedOptionModule [ "services" "gitlab" "satelliteDir" ] "")
     (mkRemovedOptionModule [
       "services"
       "gitlab"

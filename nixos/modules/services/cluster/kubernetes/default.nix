@@ -142,11 +142,7 @@ in
       "addons"
       "dashboard"
     ] "Removed due to it being an outdated version")
-    (mkRemovedOptionModule [
-      "services"
-      "kubernetes"
-      "verbose"
-    ] "")
+    (mkRemovedOptionModule [ "services" "kubernetes" "verbose" ] "")
   ];
 
   ###### interface

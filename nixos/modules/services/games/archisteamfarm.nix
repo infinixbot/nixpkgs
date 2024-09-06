@@ -60,19 +60,13 @@ in
             description = "Whether to start the web-ui. This is the preferred way of configuring things such as the steam guard token.";
           };
 
-          package =
-            lib.mkPackageOption pkgs
-              [
-                "ArchiSteamFarm"
-                "ui"
-              ]
-              {
-                extraDescription = ''
-                  ::: {.note}
-                  Contents must be in lib/dist
-                  :::
-                '';
-              };
+          package = lib.mkPackageOption pkgs [ "ArchiSteamFarm" "ui" ] {
+            extraDescription = ''
+              ::: {.note}
+              Contents must be in lib/dist
+              :::
+            '';
+          };
         };
       };
       default = {

@@ -67,10 +67,7 @@ in
         "readOnlyNixStore"
       ];
     })
-    (mkRemovedOptionModule [
-      "nix"
-      "daemonNiceLevel"
-    ] "Consider nix.daemonCPUSchedPolicy instead.")
+    (mkRemovedOptionModule [ "nix" "daemonNiceLevel" ] "Consider nix.daemonCPUSchedPolicy instead.")
   ];
 
   ###### interface

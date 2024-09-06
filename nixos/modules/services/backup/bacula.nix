@@ -150,19 +150,7 @@ let
   '';
 
   linkOption =
-    name: destination:
-    "[${name}](#opt-${
-      builtins.replaceStrings
-        [
-          "<"
-          ">"
-        ]
-        [
-          "_"
-          "_"
-        ]
-        destination
-    })";
+    name: destination: "[${name}](#opt-${builtins.replaceStrings [ "<" ">" ] [ "_" "_" ] destination})";
   tlsLink =
     destination: submodulePath:
     linkOption "${submodulePath}.${destination}" "${submodulePath}.${destination}";

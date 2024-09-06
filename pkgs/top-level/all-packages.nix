@@ -5962,12 +5962,7 @@ with pkgs;
         substitutions = {
           crossFile = writeText "cross-file.conf" ''
             [binaries]
-            exe_wrapper = '${
-              lib.escape [
-                "'"
-                "\\"
-              ] (stdenv.targetPlatform.emulator pkgs)
-            }'
+            exe_wrapper = '${lib.escape [ "'" "\\" ] (stdenv.targetPlatform.emulator pkgs)}'
           '';
         };
       }

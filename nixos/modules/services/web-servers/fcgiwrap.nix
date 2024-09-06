@@ -28,18 +28,12 @@ in
       ]
       (
         attr:
-        mkRemovedOptionModule
-          [
-            "services"
-            "fcgiwrap"
-            attr
-          ]
-          ''
-            The global shared fcgiwrap instance is no longer supported due to
-            security issues.
-            Isolated instances should instead be configured through
-            `services.fcgiwrap.instances.*'.
-          ''
+        mkRemovedOptionModule [ "services" "fcgiwrap" attr ] ''
+          The global shared fcgiwrap instance is no longer supported due to
+          security issues.
+          Isolated instances should instead be configured through
+          `services.fcgiwrap.instances.*'.
+        ''
       );
 
   options.services.fcgiwrap.instances = mkOption {

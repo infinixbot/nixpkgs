@@ -82,42 +82,21 @@ in
   ###### interface
 
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "mailman"
-        "hyperkittyBaseUrl"
-      ]
-      [
-        "services"
-        "mailman"
-        "hyperkitty"
-        "baseUrl"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "mailman" "hyperkittyBaseUrl" ] [
+      "services"
+      "mailman"
+      "hyperkitty"
+      "baseUrl"
+    ])
 
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "mailman"
-        "hyperkittyApiKey"
-      ]
-      ''
-        The Hyperkitty API key is now generated on first run, and not
-        stored in the world-readable Nix store.  To continue using
-        Hyperkitty, you must set services.mailman.hyperkitty.enable = true.
-      ''
-    )
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "mailman"
-        "package"
-      ]
-      ''
-        Didn't have an effect for several years.
-      ''
-    )
+    (lib.mkRemovedOptionModule [ "services" "mailman" "hyperkittyApiKey" ] ''
+      The Hyperkitty API key is now generated on first run, and not
+      stored in the world-readable Nix store.  To continue using
+      Hyperkitty, you must set services.mailman.hyperkitty.enable = true.
+    '')
+    (lib.mkRemovedOptionModule [ "services" "mailman" "package" ] ''
+      Didn't have an effect for several years.
+    '')
   ];
 
   options = {
@@ -446,18 +425,9 @@ in
             for more info.
           '';
         }
-        (requirePostfixHash [
-          "config"
-          "relay_domains"
-        ] "postfix_domains")
-        (requirePostfixHash [
-          "config"
-          "transport_maps"
-        ] "postfix_lmtp")
-        (requirePostfixHash [
-          "config"
-          "local_recipient_maps"
-        ] "postfix_lmtp")
+        (requirePostfixHash [ "config" "relay_domains" ] "postfix_domains")
+        (requirePostfixHash [ "config" "transport_maps" ] "postfix_lmtp")
+        (requirePostfixHash [ "config" "local_recipient_maps" ] "postfix_lmtp")
       ]);
 
     users.users.mailman = {

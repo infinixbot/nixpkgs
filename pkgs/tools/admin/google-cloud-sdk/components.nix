@@ -100,10 +100,7 @@ let
       # Architectures supported by this component.  Defaults to all available
       # architectures.
       architectures = builtins.filter (arch: builtins.elem arch (builtins.attrNames arches)) (
-        lib.attrByPath [
-          "platform"
-          "architectures"
-        ] allArches component
+        lib.attrByPath [ "platform" "architectures" ] allArches component
       );
       # Operating systems supported by this component
       operating_systems = builtins.filter (
@@ -117,10 +114,7 @@ let
         "data"
         "source"
       ] component) "${baseUrl}/${component.data.source}";
-      sha256 = lib.attrByPath [
-        "data"
-        "checksum"
-      ] "" component;
+      sha256 = lib.attrByPath [ "data" "checksum" ] "" component;
       dependencies = builtins.map (dep: builtins.getAttr dep components) component.dependencies;
       platforms =
         if component.platform == { } then

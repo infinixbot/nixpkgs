@@ -41,50 +41,26 @@ in
 
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "networking"
-        "dnsSingleRequest"
-      ]
-      [
-        "networking"
-        "resolvconf"
-        "dnsSingleRequest"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "networking"
-        "dnsExtensionMechanism"
-      ]
-      [
-        "networking"
-        "resolvconf"
-        "dnsExtensionMechanism"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "networking"
-        "extraResolvconfConf"
-      ]
-      [
-        "networking"
-        "resolvconf"
-        "extraConfig"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "networking"
-        "resolvconfOptions"
-      ]
-      [
-        "networking"
-        "resolvconf"
-        "extraOptions"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "networking" "dnsSingleRequest" ] [
+      "networking"
+      "resolvconf"
+      "dnsSingleRequest"
+    ])
+    (lib.mkRenamedOptionModule [ "networking" "dnsExtensionMechanism" ] [
+      "networking"
+      "resolvconf"
+      "dnsExtensionMechanism"
+    ])
+    (lib.mkRenamedOptionModule [ "networking" "extraResolvconfConf" ] [
+      "networking"
+      "resolvconf"
+      "extraConfig"
+    ])
+    (lib.mkRenamedOptionModule [ "networking" "resolvconfOptions" ] [
+      "networking"
+      "resolvconf"
+      "extraOptions"
+    ])
     (lib.mkRemovedOptionModule [
       "networking"
       "resolvconf"

@@ -171,10 +171,7 @@ let
           default = [ ];
         };
 
-        package = mkPackageOption pkgs [
-          "go-ethereum"
-          "geth"
-        ] { };
+        package = mkPackageOption pkgs [ "go-ethereum" "geth" ] { };
       };
     };
 in

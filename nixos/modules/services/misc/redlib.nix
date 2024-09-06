@@ -17,16 +17,10 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "libreddit"
-      ]
-      [
-        "services"
-        "redlib"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "libreddit" ] [
+      "services"
+      "redlib"
+    ])
   ];
 
   options = {

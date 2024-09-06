@@ -221,13 +221,7 @@ lib.recursiveUpdate orig rec {
   texlive-scripts.binfiles = lib.remove "man" orig.texlive-scripts.binfiles;
   # xindy is broken on some platforms unfortunately
   xindy.binfiles =
-    if bin ? xindy then
-      lib.subtractLists [
-        "xindy.mem"
-        "xindy.run"
-      ] orig.xindy.binfiles
-    else
-      [ ];
+    if bin ? xindy then lib.subtractLists [ "xindy.mem" "xindy.run" ] orig.xindy.binfiles else [ ];
 
   #### additional symlinks
   cluttex.binlinks = {
@@ -480,10 +474,7 @@ lib.recursiveUpdate orig rec {
   xdvi.deps = (orig.xdvi.deps or [ ]) ++ [ "metafont" ];
 
   # remove dependency-heavy packages from the basic collections
-  collection-basic.deps = lib.subtractLists [
-    "metafont"
-    "xdvi"
-  ] orig.collection-basic.deps;
+  collection-basic.deps = lib.subtractLists [ "metafont" "xdvi" ] orig.collection-basic.deps;
 
   # add them elsewhere so that collections cover all packages
   collection-metapost.deps = orig.collection-metapost.deps ++ [ "metafont" ];

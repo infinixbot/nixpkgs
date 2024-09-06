@@ -14,16 +14,10 @@ let
     ;
 
   maintainers = import ../maintainer-list.nix;
-  simplify =
-    replaceStrings
-      [
-        "-"
-        "_"
-      ]
-      [
-        ""
-        ""
-      ];
+  simplify = replaceStrings [ "-" "_" ] [
+    ""
+    ""
+  ];
   compare = a: b: simplify (toLower a) < simplify (toLower b);
   namesSorted = sort (a: b: a.key < b.key) (
     map (

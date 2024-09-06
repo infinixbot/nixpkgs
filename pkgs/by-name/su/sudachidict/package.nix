@@ -25,13 +25,7 @@ let
   };
 in
 
-lib.checkListOfEnum "${pname}: dict-type"
-  [
-    "core"
-    "full"
-    "small"
-  ]
-  [ dict-type ]
+lib.checkListOfEnum "${pname}: dict-type" [ "core" "full" "small" ] [ dict-type ]
 
   stdenvNoCC.mkDerivation
   {

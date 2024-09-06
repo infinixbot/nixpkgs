@@ -594,16 +594,10 @@ in
   };
 
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "oauth2_proxy"
-      ]
-      [
-        "services"
-        "oauth2-proxy"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "oauth2_proxy" ] [
+      "services"
+      "oauth2-proxy"
+    ])
   ];
 
   config = lib.mkIf cfg.enable {

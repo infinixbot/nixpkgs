@@ -60,66 +60,31 @@ in
   meta.maintainers = with lib.maintainers; [ colinsane ];
 
   imports = with lib; [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "trust-dns"
-        "enable"
-      ]
-      [
-        "services"
-        "hickory-dns"
-        "enable"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "trust-dns"
-        "package"
-      ]
-      [
-        "services"
-        "hickory-dns"
-        "package"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "trust-dns"
-        "settings"
-      ]
-      [
-        "services"
-        "hickory-dns"
-        "settings"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "trust-dns"
-        "quiet"
-      ]
-      [
-        "services"
-        "hickory-dns"
-        "quiet"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "trust-dns"
-        "debug"
-      ]
-      [
-        "services"
-        "hickory-dns"
-        "debug"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "trust-dns" "enable" ] [
+      "services"
+      "hickory-dns"
+      "enable"
+    ])
+    (mkRenamedOptionModule [ "services" "trust-dns" "package" ] [
+      "services"
+      "hickory-dns"
+      "package"
+    ])
+    (mkRenamedOptionModule [ "services" "trust-dns" "settings" ] [
+      "services"
+      "hickory-dns"
+      "settings"
+    ])
+    (mkRenamedOptionModule [ "services" "trust-dns" "quiet" ] [
+      "services"
+      "hickory-dns"
+      "quiet"
+    ])
+    (mkRenamedOptionModule [ "services" "trust-dns" "debug" ] [
+      "services"
+      "hickory-dns"
+      "debug"
+    ])
   ];
 
   options = {

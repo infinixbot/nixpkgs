@@ -101,17 +101,11 @@
   };
 
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "system"
-        "nssHosts"
-      ]
-      [
-        "system"
-        "nssDatabases"
-        "hosts"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "system" "nssHosts" ] [
+      "system"
+      "nssDatabases"
+      "hosts"
+    ])
   ];
 
   config = {

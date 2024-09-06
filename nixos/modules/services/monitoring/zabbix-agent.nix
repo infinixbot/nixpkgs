@@ -55,10 +55,7 @@ in
     services.zabbixAgent = {
       enable = mkEnableOption "the Zabbix Agent";
 
-      package = mkPackageOption pkgs [
-        "zabbix"
-        "agent"
-      ] { };
+      package = mkPackageOption pkgs [ "zabbix" "agent" ] { };
 
       extraPackages = mkOption {
         type = types.listOf types.package;

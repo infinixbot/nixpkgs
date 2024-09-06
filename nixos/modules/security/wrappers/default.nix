@@ -167,14 +167,8 @@ let
 in
 {
   imports = [
-    (lib.mkRemovedOptionModule [
-      "security"
-      "setuidOwners"
-    ] "Use security.wrappers instead")
-    (lib.mkRemovedOptionModule [
-      "security"
-      "setuidPrograms"
-    ] "Use security.wrappers instead")
+    (lib.mkRemovedOptionModule [ "security" "setuidOwners" ] "Use security.wrappers instead")
+    (lib.mkRemovedOptionModule [ "security" "setuidPrograms" ] "Use security.wrappers instead")
   ];
 
   ###### interface

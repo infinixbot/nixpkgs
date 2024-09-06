@@ -14,12 +14,8 @@ let
 
   isConfined = config.systemd.services.akkoma.confinement.enable;
   hasSmtp =
-    (attrByPath [
-      ":pleroma"
-      "Pleroma.Emails.Mailer"
-      "adapter"
-      "value"
-    ] null ex) == "Swoosh.Adapters.SMTP";
+    (attrByPath [ ":pleroma" "Pleroma.Emails.Mailer" "adapter" "value" ] null ex)
+    == "Swoosh.Adapters.SMTP";
 
   isAbsolutePath = v: isString v && substring 0 1 v == "/";
   isSecret = v: isAttrs v && v ? _secret && isAbsolutePath v._secret;

@@ -65,11 +65,7 @@ in
           "inetPort"
         ]
       ]
-      [
-        "services"
-        "postgrey"
-        "socket"
-      ]
+      [ "services" "postgrey" "socket" ]
       (
         config:
         let

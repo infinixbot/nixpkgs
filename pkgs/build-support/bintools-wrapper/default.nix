@@ -120,17 +120,7 @@ let
   coreutils_bin = optionalString (!nativeTools) (getBin coreutils);
 
   # See description in cc-wrapper.
-  suffixSalt =
-    replaceStrings
-      [
-        "-"
-        "."
-      ]
-      [
-        "_"
-        "_"
-      ]
-      targetPlatform.config;
+  suffixSalt = replaceStrings [ "-" "." ] [ "_" "_" ] targetPlatform.config;
 
   # The dynamic linker has different names on different platforms. This is a
   # shell glob that ought to match it.
@@ -511,11 +501,7 @@ stdenvNoCC.mkDerivation {
     (optionalAttrs (bintools_ ? meta) (removeAttrs bintools.meta [ "priority" ]))
     // {
       description =
-        attrByPath [
-          "meta"
-          "description"
-        ] "System binary utilities" bintools_
-        + " (wrapper script)";
+        attrByPath [ "meta" "description" ] "System binary utilities" bintools_ + " (wrapper script)";
       priority = 10;
     }
     // optionalAttrs useMacosReexportHack {

@@ -52,12 +52,7 @@ let
 in
 {
   imports = [
-    (mkRemovedOptionModule
-      [
-        "services"
-        "jitsi-videobridge"
-        "apis"
-      ]
+    (mkRemovedOptionModule [ "services" "jitsi-videobridge" "apis" ]
       "services.jitsi-videobridge.apis was broken and has been migrated into the boolean option services.jitsi-videobridge.colibriRestApi. It is set to false by default, setting it to true will correctly enable the private /colibri rest API."
     )
   ];

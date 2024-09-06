@@ -166,12 +166,7 @@ let
             :::
           '';
           type = lib.types.submodule {
-            options = lib.genAttrs [
-              "account"
-              "auth"
-              "password"
-              "session"
-            ] mkRulesTypeOption;
+            options = lib.genAttrs [ "account" "auth" "password" "session" ] mkRulesTypeOption;
           };
         };
 
@@ -1555,122 +1550,60 @@ in
   meta.maintainers = [ lib.maintainers.majiir ];
 
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "security"
-        "pam"
-        "enableU2F"
-      ]
-      [
-        "security"
-        "pam"
-        "u2f"
-        "enable"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "security"
-        "pam"
-        "enableSSHAgentAuth"
-      ]
-      [
-        "security"
-        "pam"
-        "sshAgentAuth"
-        "enable"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "security"
-        "pam"
-        "u2f"
-        "authFile"
-      ]
-      [
-        "security"
-        "pam"
-        "u2f"
-        "settings"
-        "authfile"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "security"
-        "pam"
-        "u2f"
-        "appId"
-      ]
-      [
-        "security"
-        "pam"
-        "u2f"
-        "settings"
-        "appid"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "security"
-        "pam"
-        "u2f"
-        "origin"
-      ]
-      [
-        "security"
-        "pam"
-        "u2f"
-        "settings"
-        "origin"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "security"
-        "pam"
-        "u2f"
-        "debug"
-      ]
-      [
-        "security"
-        "pam"
-        "u2f"
-        "settings"
-        "debug"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "security"
-        "pam"
-        "u2f"
-        "interactive"
-      ]
-      [
-        "security"
-        "pam"
-        "u2f"
-        "settings"
-        "interactive"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "security"
-        "pam"
-        "u2f"
-        "cue"
-      ]
-      [
-        "security"
-        "pam"
-        "u2f"
-        "settings"
-        "cue"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "security" "pam" "enableU2F" ] [
+      "security"
+      "pam"
+      "u2f"
+      "enable"
+    ])
+    (lib.mkRenamedOptionModule [ "security" "pam" "enableSSHAgentAuth" ] [
+      "security"
+      "pam"
+      "sshAgentAuth"
+      "enable"
+    ])
+    (lib.mkRenamedOptionModule [ "security" "pam" "u2f" "authFile" ] [
+      "security"
+      "pam"
+      "u2f"
+      "settings"
+      "authfile"
+    ])
+    (lib.mkRenamedOptionModule [ "security" "pam" "u2f" "appId" ] [
+      "security"
+      "pam"
+      "u2f"
+      "settings"
+      "appid"
+    ])
+    (lib.mkRenamedOptionModule [ "security" "pam" "u2f" "origin" ] [
+      "security"
+      "pam"
+      "u2f"
+      "settings"
+      "origin"
+    ])
+    (lib.mkRenamedOptionModule [ "security" "pam" "u2f" "debug" ] [
+      "security"
+      "pam"
+      "u2f"
+      "settings"
+      "debug"
+    ])
+    (lib.mkRenamedOptionModule [ "security" "pam" "u2f" "interactive" ] [
+      "security"
+      "pam"
+      "u2f"
+      "settings"
+      "interactive"
+    ])
+    (lib.mkRenamedOptionModule [ "security" "pam" "u2f" "cue" ] [
+      "security"
+      "pam"
+      "u2f"
+      "settings"
+      "cue"
+    ])
   ];
 
   ###### interface

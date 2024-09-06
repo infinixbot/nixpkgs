@@ -153,17 +153,7 @@ let
     default_cc_wrapper = clang; # Instead of `@out@` in the original.
     coreutils_bin = lib.getBin coreutils;
     gnugrep_bin = gnugrep;
-    suffixSalt =
-      lib.replaceStrings
-        [
-          "-"
-          "."
-        ]
-        [
-          "_"
-          "_"
-        ]
-        targetPlatform.config;
+    suffixSalt = lib.replaceStrings [ "-" "." ] [ "_" "_" ] targetPlatform.config;
     use_response_file_by_default = 1;
     swiftDriver = "";
     # NOTE: @prog@ needs to be filled elsewhere.

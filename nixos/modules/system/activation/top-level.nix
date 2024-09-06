@@ -108,16 +108,10 @@ in
       "nesting"
       "children"
     ] "Use `specialisation.«name».configuration = { ... }` instead.")
-    (mkRenamedOptionModule
-      [
-        "system"
-        "forbiddenDependenciesRegex"
-      ]
-      [
-        "system"
-        "forbiddenDependenciesRegexes"
-      ]
-    )
+    (mkRenamedOptionModule [ "system" "forbiddenDependenciesRegex" ] [
+      "system"
+      "forbiddenDependenciesRegexes"
+    ])
   ];
 
   options = {

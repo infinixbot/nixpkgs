@@ -31,10 +31,7 @@ let
     lib.concatStrings (
       lib.concatMap (s: [
         "  "
-        (trim [
-          " "
-          "\t"
-        ] s)
+        (trim [ " " "\t" ] s)
         "\n"
       ]) (lib.splitString "\n" str)
     );

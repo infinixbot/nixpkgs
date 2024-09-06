@@ -473,10 +473,7 @@ builtins.intersectAttrs super {
   gi-gtk-declarative = dontCheck super.gi-gtk-declarative;
   gi-gtk-declarative-app-simple = dontCheck super.gi-gtk-declarative-app-simple;
   hsqml = dontCheck (
-    addExtraLibraries [
-      pkgs.libGLU
-      pkgs.libGL
-    ] (super.hsqml.override { qt5 = pkgs.qt5Full; })
+    addExtraLibraries [ pkgs.libGLU pkgs.libGL ] (super.hsqml.override { qt5 = pkgs.qt5Full; })
   );
   monomer = dontCheck super.monomer;
 
@@ -537,10 +534,9 @@ builtins.intersectAttrs super {
 
   # https://github.com/edwinb/EpiVM/issues/13
   # https://github.com/edwinb/EpiVM/issues/14
-  epic = addExtraLibraries [
-    pkgs.boehmgc
-    pkgs.gmp
-  ] (addBuildTool self.buildHaskellPackages.happy super.epic);
+  epic = addExtraLibraries [ pkgs.boehmgc pkgs.gmp ] (
+    addBuildTool self.buildHaskellPackages.happy super.epic
+  );
 
   # https://github.com/ekmett/wl-pprint-terminfo/issues/7
   wl-pprint-terminfo = addExtraLibrary pkgs.ncurses super.wl-pprint-terminfo;
@@ -700,10 +696,7 @@ builtins.intersectAttrs super {
   secp256k1-haskell = addPkgconfigDepend pkgs.secp256k1 super.secp256k1-haskell;
 
   # tests require git and zsh
-  hapistrano = addBuildTools [
-    pkgs.buildPackages.git
-    pkgs.buildPackages.zsh
-  ] super.hapistrano;
+  hapistrano = addBuildTools [ pkgs.buildPackages.git pkgs.buildPackages.zsh ] super.hapistrano;
 
   # This propagates this to everything depending on haskell-gi-base
   haskell-gi-base = addBuildDepend pkgs.gobject-introspection super.haskell-gi-base;
@@ -1085,18 +1078,9 @@ builtins.intersectAttrs super {
   postgresql-libpq-notify = dontCheck super.postgresql-libpq-notify;
   postgresql-pure = dontCheck super.postgresql-pure;
 
-  retrie = addTestToolDepends [
-    pkgs.git
-    pkgs.mercurial
-  ] super.retrie;
-  retrie_1_2_0_0 = addTestToolDepends [
-    pkgs.git
-    pkgs.mercurial
-  ] super.retrie_1_2_0_0;
-  retrie_1_2_1_1 = addTestToolDepends [
-    pkgs.git
-    pkgs.mercurial
-  ] super.retrie_1_2_1_1;
+  retrie = addTestToolDepends [ pkgs.git pkgs.mercurial ] super.retrie;
+  retrie_1_2_0_0 = addTestToolDepends [ pkgs.git pkgs.mercurial ] super.retrie_1_2_0_0;
+  retrie_1_2_1_1 = addTestToolDepends [ pkgs.git pkgs.mercurial ] super.retrie_1_2_1_1;
 
   # there are three very heavy test suites that need external repos, one requires network access
   hevm = dontCheck super.hevm;

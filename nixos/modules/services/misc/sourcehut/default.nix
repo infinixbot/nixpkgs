@@ -1539,55 +1539,27 @@ in
       };
     })
 
-    (mkRenamedOptionModule
-      [
-        "services"
-        "sourcehut"
-        "originBase"
-      ]
-      [
-        "services"
-        "sourcehut"
-        "settings"
-        "sr.ht"
-        "global-domain"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "sourcehut"
-        "address"
-      ]
-      [
-        "services"
-        "sourcehut"
-        "listenAddress"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "sourcehut" "originBase" ] [
+      "services"
+      "sourcehut"
+      "settings"
+      "sr.ht"
+      "global-domain"
+    ])
+    (mkRenamedOptionModule [ "services" "sourcehut" "address" ] [
+      "services"
+      "sourcehut"
+      "listenAddress"
+    ])
 
-    (mkRemovedOptionModule
-      [
-        "services"
-        "sourcehut"
-        "dispatch"
-      ]
-      ''
-        dispatch is deprecated. See https://sourcehut.org/blog/2022-08-01-dispatch-deprecation-plans/
-        for more information.
-      ''
-    )
+    (mkRemovedOptionModule [ "services" "sourcehut" "dispatch" ] ''
+      dispatch is deprecated. See https://sourcehut.org/blog/2022-08-01-dispatch-deprecation-plans/
+      for more information.
+    '')
 
-    (mkRemovedOptionModule
-      [
-        "services"
-        "sourcehut"
-        "services"
-      ]
-      ''
-        This option was removed in favor of individual <service>.enable flags.
-      ''
-    )
+    (mkRemovedOptionModule [ "services" "sourcehut" "services" ] ''
+      This option was removed in favor of individual <service>.enable flags.
+    '')
   ];
 
   meta.doc = ./default.md;

@@ -19,29 +19,14 @@ let
   pname = "qogir-theme";
 
 in
-lib.checkListOfEnum "${pname}: theme variants"
-  [
-    "default"
-    "manjaro"
-    "ubuntu"
-    "all"
-  ]
-  themeVariants
+lib.checkListOfEnum "${pname}: theme variants" [ "default" "manjaro" "ubuntu" "all" ] themeVariants
   lib.checkListOfEnum
   "${pname}: color variants"
-  [
-    "standard"
-    "light"
-    "dark"
-  ]
+  [ "standard" "light" "dark" ]
   colorVariants
   lib.checkListOfEnum
   "${pname}: tweaks"
-  [
-    "image"
-    "square"
-    "round"
-  ]
+  [ "image" "square" "round" ]
   tweaks
 
   stdenv.mkDerivation

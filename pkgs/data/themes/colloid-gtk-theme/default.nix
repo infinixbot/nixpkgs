@@ -32,18 +32,11 @@ lib.checkListOfEnum "${pname}: theme variants"
   themeVariants
   lib.checkListOfEnum
   "${pname}: color variants"
-  [
-    "standard"
-    "light"
-    "dark"
-  ]
+  [ "standard" "light" "dark" ]
   colorVariants
   lib.checkListOfEnum
   "${pname}: size variants"
-  [
-    "standard"
-    "compact"
-  ]
+  [ "standard" "compact" ]
   sizeVariants
   lib.checkListOfEnum
   "${pname}: tweaks"

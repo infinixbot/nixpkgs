@@ -13,10 +13,7 @@ in
   options.services.greetd = {
     enable = lib.mkEnableOption "greetd, a minimal and flexible login manager daemon";
 
-    package = lib.mkPackageOption pkgs [
-      "greetd"
-      "greetd"
-    ] { };
+    package = lib.mkPackageOption pkgs [ "greetd" "greetd" ] { };
 
     settings = lib.mkOption {
       type = settingsFormat.type;

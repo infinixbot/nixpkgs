@@ -23,11 +23,7 @@ in
   ###### interface
 
   imports = [
-    (lib.mkRemovedOptionModule [
-      "services"
-      "mailhog"
-      "user"
-    ] "")
+    (lib.mkRemovedOptionModule [ "services" "mailhog" "user" ] "")
   ];
 
   options = {

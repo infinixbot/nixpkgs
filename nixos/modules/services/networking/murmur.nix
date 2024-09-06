@@ -54,23 +54,12 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "murmur"
-        "welcome"
-      ]
-      [
-        "services"
-        "murmur"
-        "welcometext"
-      ]
-    )
-    (mkRemovedOptionModule [
+    (mkRenamedOptionModule [ "services" "murmur" "welcome" ] [
       "services"
       "murmur"
-      "pidfile"
-    ] "Hardcoded to /run/murmur/murmurd.pid now")
+      "welcometext"
+    ])
+    (mkRemovedOptionModule [ "services" "murmur" "pidfile" ] "Hardcoded to /run/murmur/murmurd.pid now")
   ];
 
   options = {

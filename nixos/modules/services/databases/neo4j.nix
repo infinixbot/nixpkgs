@@ -106,82 +106,40 @@ in
 {
 
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "neo4j"
-        "host"
-      ]
-      [
-        "services"
-        "neo4j"
-        "defaultListenAddress"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "neo4j"
-        "listenAddress"
-      ]
-      [
-        "services"
-        "neo4j"
-        "defaultListenAddress"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "neo4j"
-        "enableBolt"
-      ]
-      [
-        "services"
-        "neo4j"
-        "bolt"
-        "enable"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "neo4j"
-        "enableHttps"
-      ]
-      [
-        "services"
-        "neo4j"
-        "https"
-        "enable"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "neo4j"
-        "certDir"
-      ]
-      [
-        "services"
-        "neo4j"
-        "directories"
-        "certificates"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "neo4j"
-        "dataDir"
-      ]
-      [
-        "services"
-        "neo4j"
-        "directories"
-        "home"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "neo4j" "host" ] [
+      "services"
+      "neo4j"
+      "defaultListenAddress"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "neo4j" "listenAddress" ] [
+      "services"
+      "neo4j"
+      "defaultListenAddress"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "neo4j" "enableBolt" ] [
+      "services"
+      "neo4j"
+      "bolt"
+      "enable"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "neo4j" "enableHttps" ] [
+      "services"
+      "neo4j"
+      "https"
+      "enable"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "neo4j" "certDir" ] [
+      "services"
+      "neo4j"
+      "directories"
+      "certificates"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "neo4j" "dataDir" ] [
+      "services"
+      "neo4j"
+      "directories"
+      "home"
+    ])
     (lib.mkRemovedOptionModule [
       "services"
       "neo4j"

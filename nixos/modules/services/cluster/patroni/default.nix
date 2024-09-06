@@ -16,26 +16,12 @@ let
 in
 {
   imports = [
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "patroni"
-        "raft"
-      ]
-      ''
-        Raft has been deprecated by upstream.
-      ''
-    )
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "patroni"
-        "raftPort"
-      ]
-      ''
-        Raft has been deprecated by upstream.
-      ''
-    )
+    (lib.mkRemovedOptionModule [ "services" "patroni" "raft" ] ''
+      Raft has been deprecated by upstream.
+    '')
+    (lib.mkRemovedOptionModule [ "services" "patroni" "raftPort" ] ''
+      Raft has been deprecated by upstream.
+    '')
   ];
 
   options.services.patroni = {

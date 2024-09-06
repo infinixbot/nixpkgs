@@ -55,12 +55,7 @@ let
           z
           // {
             function = foldArgs merger f arg;
-            args =
-              (attrByPath [
-                "passthru"
-                "args"
-              ] { } z)
-              // x;
+            args = (attrByPath [ "passthru" "args" ] { } z) // x;
           }
         )
       );

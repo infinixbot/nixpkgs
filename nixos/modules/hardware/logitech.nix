@@ -14,32 +14,18 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "hardware"
-        "logitech"
-        "enable"
-      ]
-      [
-        "hardware"
-        "logitech"
-        "wireless"
-        "enable"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "hardware"
-        "logitech"
-        "enableGraphical"
-      ]
-      [
-        "hardware"
-        "logitech"
-        "wireless"
-        "enableGraphical"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "hardware" "logitech" "enable" ] [
+      "hardware"
+      "logitech"
+      "wireless"
+      "enable"
+    ])
+    (lib.mkRenamedOptionModule [ "hardware" "logitech" "enableGraphical" ] [
+      "hardware"
+      "logitech"
+      "wireless"
+      "enableGraphical"
+    ])
   ];
 
   options.hardware.logitech = {

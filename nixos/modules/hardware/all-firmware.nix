@@ -10,56 +10,26 @@ in
 {
 
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "networking"
-        "enableRT73Firmware"
-      ]
-      [
-        "hardware"
-        "enableRedistributableFirmware"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "networking"
-        "enableIntel3945ABGFirmware"
-      ]
-      [
-        "hardware"
-        "enableRedistributableFirmware"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "networking"
-        "enableIntel2100BGFirmware"
-      ]
-      [
-        "hardware"
-        "enableRedistributableFirmware"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "networking"
-        "enableRalinkFirmware"
-      ]
-      [
-        "hardware"
-        "enableRedistributableFirmware"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "networking"
-        "enableRTL8192cFirmware"
-      ]
-      [
-        "hardware"
-        "enableRedistributableFirmware"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "networking" "enableRT73Firmware" ] [
+      "hardware"
+      "enableRedistributableFirmware"
+    ])
+    (lib.mkRenamedOptionModule [ "networking" "enableIntel3945ABGFirmware" ] [
+      "hardware"
+      "enableRedistributableFirmware"
+    ])
+    (lib.mkRenamedOptionModule [ "networking" "enableIntel2100BGFirmware" ] [
+      "hardware"
+      "enableRedistributableFirmware"
+    ])
+    (lib.mkRenamedOptionModule [ "networking" "enableRalinkFirmware" ] [
+      "hardware"
+      "enableRedistributableFirmware"
+    ])
+    (lib.mkRenamedOptionModule [ "networking" "enableRTL8192cFirmware" ] [
+      "hardware"
+      "enableRedistributableFirmware"
+    ])
   ];
 
   ###### interface

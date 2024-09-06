@@ -910,9 +910,8 @@ rec {
 
       correctLicenses =
         scheme:
-        builtins.foldl' (
-          acc: pkg: concatLicenses acc (lib.toList (pkg.meta.license or [ ]))
-        ) [ ] scheme.passthru.requiredTeXPackages;
+        builtins.foldl' (acc: pkg: concatLicenses acc (lib.toList (pkg.meta.license or [ ]))) [
+        ] scheme.passthru.requiredTeXPackages;
       correctLicensesAttrNames = scheme: lib.sort lt (map licenseToAttrName (correctLicenses scheme));
 
       hasLicenseMismatch =

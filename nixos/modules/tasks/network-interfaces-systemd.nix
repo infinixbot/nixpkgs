@@ -33,29 +33,24 @@ let
     );
 
   defaultGateways = mkMerge (
-    forEach
-      [
-        cfg.defaultGateway
-        cfg.defaultGateway6
-      ]
-      (
-        gateway:
-        optionalAttrs (gateway != null && gateway.interface != null) {
-          networks."40-${gateway.interface}" = {
-            matchConfig.Name = gateway.interface;
-            routes = [
-              (
-                {
-                  Gateway = gateway.address;
-                }
-                // optionalAttrs (gateway.metric != null) {
-                  Metric = gateway.metric;
-                }
-              )
-            ];
-          };
-        }
-      )
+    forEach [ cfg.defaultGateway cfg.defaultGateway6 ] (
+      gateway:
+      optionalAttrs (gateway != null && gateway.interface != null) {
+        networks."40-${gateway.interface}" = {
+          matchConfig.Name = gateway.interface;
+          routes = [
+            (
+              {
+                Gateway = gateway.address;
+              }
+              // optionalAttrs (gateway.metric != null) {
+                Metric = gateway.metric;
+              }
+            )
+          ];
+        };
+      }
+    )
   );
 
   genericDhcpNetworks =

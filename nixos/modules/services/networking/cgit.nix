@@ -258,22 +258,14 @@ in
       mapAttrsToList (name: cfg: {
         ${cfg.nginx.virtualHost} = {
           locations =
-            (genAttrs'
-              [
-                "cgit.css"
-                "cgit.png"
-                "favicon.ico"
-                "robots.txt"
-              ]
-              (
-                fileName:
-                nameValuePair "= ${stripLocation cfg}/${fileName}" {
-                  extraConfig = ''
-                    alias ${cfg.package}/cgit/${fileName};
-                  '';
-                }
-              )
-            )
+            (genAttrs' [ "cgit.css" "cgit.png" "favicon.ico" "robots.txt" ] (
+              fileName:
+              nameValuePair "= ${stripLocation cfg}/${fileName}" {
+                extraConfig = ''
+                  alias ${cfg.package}/cgit/${fileName};
+                '';
+              }
+            ))
             // {
               "~ ${regexLocation cfg}/.+/(info/refs|git-upload-pack)" = {
                 fastcgiParams = rec {

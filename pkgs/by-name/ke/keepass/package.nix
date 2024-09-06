@@ -75,16 +75,7 @@ stdenv.mkDerivation (finalAttrs: {
         ) plugins
       );
     in
-    replaceStrings
-      [
-        "$OUTPUT_LC$"
-        "$DO_LOADS$"
-      ]
-      [
-        outputLc
-        loads
-      ]
-      patchTemplate;
+    replaceStrings [ "$OUTPUT_LC$" "$DO_LOADS$" ] [ outputLc loads ] patchTemplate;
 
   passAsFile = [ "pluginLoadPathsPatch" ];
   postPatch = ''

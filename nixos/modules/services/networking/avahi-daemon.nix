@@ -52,30 +52,16 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "avahi"
-        "interfaces"
-      ]
-      [
-        "services"
-        "avahi"
-        "allowInterfaces"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "avahi"
-        "nssmdns"
-      ]
-      [
-        "services"
-        "avahi"
-        "nssmdns4"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "avahi" "interfaces" ] [
+      "services"
+      "avahi"
+      "allowInterfaces"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "avahi" "nssmdns" ] [
+      "services"
+      "avahi"
+      "nssmdns4"
+    ])
   ];
 
   options.services.avahi = {

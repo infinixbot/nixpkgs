@@ -216,16 +216,7 @@ stdenv.mkDerivation rec {
       #!nix-shell -i bash -p curl gnugrep common-updater-scripts
       set -eou pipefail;
       url=$(curl -sI "https://discordapp.com/api/download/${
-        builtins.replaceStrings
-          [
-            "discord-"
-            "discord"
-          ]
-          [
-            ""
-            "stable"
-          ]
-          pname
+        builtins.replaceStrings [ "discord-" "discord" ] [ "" "stable" ] pname
       }?platform=linux&format=tar.gz" | grep -oP 'location: \K\S+')
       version=''${url##https://dl*.discordapp.net/apps/linux/}
       version=''${version%%/*.tar.gz}

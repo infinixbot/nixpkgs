@@ -1058,16 +1058,10 @@ in
               inherit (cfg) group;
             };
           })
-          (lib.attrsets.setAttrByPath
-            [
-              cfg.user
-              "packages"
-            ]
-            [
-              cfg.package
-              pkgs.imagemagick
-            ]
-          )
+          (lib.attrsets.setAttrByPath [ cfg.user "packages" ] [
+            cfg.package
+            pkgs.imagemagick
+          ])
           (lib.mkIf (cfg.redis.createLocally && cfg.redis.enableUnixSocket) {
             ${config.services.mastodon.user}.extraGroups = [ "redis-mastodon" ];
           })

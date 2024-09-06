@@ -15,13 +15,7 @@ let
   };
   valFlag =
     name: val:
-    lib.optionalString (val != null)
-      "-${name} \"${
-        lib.escape [
-          "\\"
-          "\""
-        ] (toString val)
-      }\"";
+    lib.optionalString (val != null) "-${name} \"${lib.escape [ "\\" "\"" ] (toString val)}\"";
   boolFlag = name: val: lib.optionalString val "-${name}";
   flags = [
     (valFlag "port" cfg.port)

@@ -24,10 +24,7 @@ in
 
 {
   imports = [
-    (lib.mkRemovedOptionModule [
-      "networking"
-      "hostConf"
-    ] "Use environment.etc.\"host.conf\" instead.")
+    (lib.mkRemovedOptionModule [ "networking" "hostConf" ] "Use environment.etc.\"host.conf\" instead.")
   ];
 
   options = {

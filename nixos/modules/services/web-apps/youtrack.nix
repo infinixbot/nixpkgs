@@ -10,32 +10,18 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "youtrack"
-        "baseUrl"
-      ]
-      [
-        "services"
-        "youtrack"
-        "environmentalParameters"
-        "base-url"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "youtrack"
-        "port"
-      ]
-      [
-        "services"
-        "youtrack"
-        "environmentalParameters"
-        "listen-port"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "youtrack" "baseUrl" ] [
+      "services"
+      "youtrack"
+      "environmentalParameters"
+      "base-url"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "youtrack" "port" ] [
+      "services"
+      "youtrack"
+      "environmentalParameters"
+      "listen-port"
+    ])
     (lib.mkRemovedOptionModule [
       "services"
       "youtrack"

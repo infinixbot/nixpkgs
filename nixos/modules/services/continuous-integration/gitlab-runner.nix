@@ -830,18 +830,11 @@ in
     );
   };
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "gitlab-runner"
-        "packages"
-      ]
-      [
-        "services"
-        "gitlab-runner"
-        "extraPackages"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "gitlab-runner" "packages" ] [
+      "services"
+      "gitlab-runner"
+      "extraPackages"
+    ])
     (mkRemovedOptionModule [
       "services"
       "gitlab-runner"
@@ -853,104 +846,52 @@ in
       "workDir"
     ] "You should move contents of workDir (if any) to /var/lib/gitlab-runner")
 
-    (mkRenamedOptionModule
-      [
-        "services"
-        "gitlab-runner"
-        "checkInterval"
-      ]
-      [
-        "services"
-        "gitlab-runner"
-        "settings"
-        "check_interval"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "gitlab-runner"
-        "concurrent"
-      ]
-      [
-        "services"
-        "gitlab-runner"
-        "settings"
-        "concurrent"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "gitlab-runner"
-        "sentryDSN"
-      ]
-      [
-        "services"
-        "gitlab-runner"
-        "settings"
-        "sentry_dsn"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "gitlab-runner"
-        "prometheusListenAddress"
-      ]
-      [
-        "services"
-        "gitlab-runner"
-        "settings"
-        "listen_address"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "gitlab-runner" "checkInterval" ] [
+      "services"
+      "gitlab-runner"
+      "settings"
+      "check_interval"
+    ])
+    (mkRenamedOptionModule [ "services" "gitlab-runner" "concurrent" ] [
+      "services"
+      "gitlab-runner"
+      "settings"
+      "concurrent"
+    ])
+    (mkRenamedOptionModule [ "services" "gitlab-runner" "sentryDSN" ] [
+      "services"
+      "gitlab-runner"
+      "settings"
+      "sentry_dsn"
+    ])
+    (mkRenamedOptionModule [ "services" "gitlab-runner" "prometheusListenAddress" ] [
+      "services"
+      "gitlab-runner"
+      "settings"
+      "listen_address"
+    ])
 
-    (mkRenamedOptionModule
-      [
-        "services"
-        "gitlab-runner"
-        "sessionServer"
-        "listenAddress"
-      ]
-      [
-        "services"
-        "gitlab-runner"
-        "settings"
-        "session_server"
-        "listen_address"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "gitlab-runner"
-        "sessionServer"
-        "advertiseAddress"
-      ]
-      [
-        "services"
-        "gitlab-runner"
-        "settings"
-        "session_server"
-        "advertise_address"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "gitlab-runner"
-        "sessionServer"
-        "sessionTimeout"
-      ]
-      [
-        "services"
-        "gitlab-runner"
-        "settings"
-        "session_server"
-        "session_timeout"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "gitlab-runner" "sessionServer" "listenAddress" ] [
+      "services"
+      "gitlab-runner"
+      "settings"
+      "session_server"
+      "listen_address"
+    ])
+    (mkRenamedOptionModule [ "services" "gitlab-runner" "sessionServer" "advertiseAddress" ] [
+      "services"
+      "gitlab-runner"
+      "settings"
+      "session_server"
+      "advertise_address"
+    ])
+    (mkRenamedOptionModule [ "services" "gitlab-runner" "sessionServer" "sessionTimeout" ] [
+      "services"
+      "gitlab-runner"
+      "settings"
+      "session_server"
+      "session_timeout"
+    ])
   ];
 
   meta.maintainers = teams.gitlab.members;

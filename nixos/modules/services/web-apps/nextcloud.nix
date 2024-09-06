@@ -232,162 +232,72 @@ in
 {
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "cron"
-        "memoryLimit"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "cli"
-        "memoryLimit"
-      ]
-    )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "enableBrokenCiphersForSSE"
-      ]
-      ''
-        This option has no effect since there's no supported Nextcloud version packaged here
-        using OpenSSL for RC4 SSE.
-      ''
-    )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "config"
-        "dbport"
-      ]
-      ''
-        Add port to services.nextcloud.config.dbhost instead.
-      ''
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "logLevel"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-        "loglevel"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "logType"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-        "log_type"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "config"
-        "defaultPhoneRegion"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-        "default_phone_region"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "config"
-        "overwriteProtocol"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-        "overwriteprotocol"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "skeletonDirectory"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-        "skeletondirectory"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "globalProfiles"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-        "profile.enabled"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "config"
-        "extraTrustedDomains"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-        "trusted_domains"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "config"
-        "trustedProxies"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-        "trusted_proxies"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "nextcloud"
-        "extraOptions"
-      ]
-      [
-        "services"
-        "nextcloud"
-        "settings"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "nextcloud" "cron" "memoryLimit" ] [
+      "services"
+      "nextcloud"
+      "cli"
+      "memoryLimit"
+    ])
+    (mkRemovedOptionModule [ "services" "nextcloud" "enableBrokenCiphersForSSE" ] ''
+      This option has no effect since there's no supported Nextcloud version packaged here
+      using OpenSSL for RC4 SSE.
+    '')
+    (mkRemovedOptionModule [ "services" "nextcloud" "config" "dbport" ] ''
+      Add port to services.nextcloud.config.dbhost instead.
+    '')
+    (mkRenamedOptionModule [ "services" "nextcloud" "logLevel" ] [
+      "services"
+      "nextcloud"
+      "settings"
+      "loglevel"
+    ])
+    (mkRenamedOptionModule [ "services" "nextcloud" "logType" ] [
+      "services"
+      "nextcloud"
+      "settings"
+      "log_type"
+    ])
+    (mkRenamedOptionModule [ "services" "nextcloud" "config" "defaultPhoneRegion" ] [
+      "services"
+      "nextcloud"
+      "settings"
+      "default_phone_region"
+    ])
+    (mkRenamedOptionModule [ "services" "nextcloud" "config" "overwriteProtocol" ] [
+      "services"
+      "nextcloud"
+      "settings"
+      "overwriteprotocol"
+    ])
+    (mkRenamedOptionModule [ "services" "nextcloud" "skeletonDirectory" ] [
+      "services"
+      "nextcloud"
+      "settings"
+      "skeletondirectory"
+    ])
+    (mkRenamedOptionModule [ "services" "nextcloud" "globalProfiles" ] [
+      "services"
+      "nextcloud"
+      "settings"
+      "profile.enabled"
+    ])
+    (mkRenamedOptionModule [ "services" "nextcloud" "config" "extraTrustedDomains" ] [
+      "services"
+      "nextcloud"
+      "settings"
+      "trusted_domains"
+    ])
+    (mkRenamedOptionModule [ "services" "nextcloud" "config" "trustedProxies" ] [
+      "services"
+      "nextcloud"
+      "settings"
+      "trusted_proxies"
+    ])
+    (mkRenamedOptionModule [ "services" "nextcloud" "extraOptions" ] [
+      "services"
+      "nextcloud"
+      "settings"
+    ])
   ];
 
   options.services.nextcloud = {

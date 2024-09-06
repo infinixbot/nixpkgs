@@ -25,33 +25,19 @@ in
       "etebase-server"
       "database"
     ] "Set the option `services.etebase-server.settings.database' instead.")
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "etebase-server"
-        "secretFile"
-      ]
-      [
-        "services"
-        "etebase-server"
-        "settings"
-        "secret_file"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "etebase-server"
-        "host"
-      ]
-      [
-        "services"
-        "etebase-server"
-        "settings"
-        "allowed_hosts"
-        "allowed_host1"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "etebase-server" "secretFile" ] [
+      "services"
+      "etebase-server"
+      "settings"
+      "secret_file"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "etebase-server" "host" ] [
+      "services"
+      "etebase-server"
+      "settings"
+      "allowed_hosts"
+      "allowed_host1"
+    ])
   ];
 
   options = {

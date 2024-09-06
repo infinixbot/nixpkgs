@@ -100,10 +100,7 @@ in
   # Testing the test driver
   nixos-test-driver = {
     extra-python-packages = handleTest ./nixos-test-driver/extra-python-packages.nix { };
-    lib-extend = handleTestOn [
-      "x86_64-linux"
-      "aarch64-linux"
-    ] ./nixos-test-driver/lib-extend.nix { };
+    lib-extend = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./nixos-test-driver/lib-extend.nix { };
     node-name = runTest ./nixos-test-driver/node-name.nix;
     busybox = runTest ./nixos-test-driver/busybox.nix;
     driver-timeout =
@@ -132,14 +129,8 @@ in
   agate = runTest ./web-servers/agate.nix;
   agda = handleTest ./agda.nix { };
   airsonic = handleTest ./airsonic.nix { };
-  akkoma = handleTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./akkoma.nix { };
-  akkoma-confined = handleTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./akkoma.nix { confined = true; };
+  akkoma = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./akkoma.nix { };
+  akkoma-confined = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./akkoma.nix { confined = true; };
   alice-lg = handleTest ./alice-lg.nix { };
   alloy = handleTest ./alloy.nix { };
   allTerminfo = handleTest ./all-terminfo.nix { };
@@ -170,10 +161,7 @@ in
   ayatana-indicators = runTest ./ayatana-indicators.nix;
   babeld = handleTest ./babeld.nix { };
   bazarr = handleTest ./bazarr.nix { };
-  bcachefs = handleTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./bcachefs.nix { };
+  bcachefs = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./bcachefs.nix { };
   beanstalkd = handleTest ./beanstalkd.nix { };
   bees = handleTest ./bees.nix { };
   benchexec = handleTest ./benchexec.nix { };
@@ -185,19 +173,13 @@ in
   bittorrent = handleTest ./bittorrent.nix { };
   blockbook-frontend = handleTest ./blockbook-frontend.nix { };
   blocky = handleTest ./blocky.nix { };
-  boot = handleTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./boot.nix { };
+  boot = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./boot.nix { };
   bootspec = handleTestOn [ "x86_64-linux" ] ./bootspec.nix { };
   boot-stage1 = handleTest ./boot-stage1.nix { };
   borgbackup = handleTest ./borgbackup.nix { };
   borgmatic = handleTest ./borgmatic.nix { };
   botamusique = handleTest ./botamusique.nix { };
-  bpf = handleTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./bpf.nix { };
+  bpf = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./bpf.nix { };
   bpftune = handleTest ./bpftune.nix { };
   breitbandmessung = handleTest ./breitbandmessung.nix { };
   brscan5 = handleTest ./brscan5.nix { };
@@ -220,14 +202,8 @@ in
   cassandra_3_11 = handleTest ./cassandra.nix { testPackage = pkgs.cassandra_3_11; };
   cassandra_4 = handleTest ./cassandra.nix { testPackage = pkgs.cassandra_4; };
   centrifugo = runTest ./centrifugo.nix;
-  ceph-multi-node = handleTestOn [
-    "aarch64-linux"
-    "x86_64-linux"
-  ] ./ceph-multi-node.nix { };
-  ceph-single-node = handleTestOn [
-    "aarch64-linux"
-    "x86_64-linux"
-  ] ./ceph-single-node.nix { };
+  ceph-multi-node = handleTestOn [ "aarch64-linux" "x86_64-linux" ] ./ceph-multi-node.nix { };
+  ceph-single-node = handleTestOn [ "aarch64-linux" "x86_64-linux" ] ./ceph-single-node.nix { };
   ceph-single-node-bluestore = handleTestOn [
     "aarch64-linux"
     "x86_64-linux"
@@ -237,26 +213,13 @@ in
     "x86_64-linux"
   ] ./ceph-single-node-bluestore-dmcrypt.nix { };
   certmgr = handleTest ./certmgr.nix { };
-  cfssl = handleTestOn [
-    "aarch64-linux"
-    "x86_64-linux"
-  ] ./cfssl.nix { };
+  cfssl = handleTestOn [ "aarch64-linux" "x86_64-linux" ] ./cfssl.nix { };
   cgit = handleTest ./cgit.nix { };
   charliecloud = handleTest ./charliecloud.nix { };
   chromadb = runTest ./chromadb.nix;
-  chromium =
-    (handleTestOn [
-      "aarch64-linux"
-      "x86_64-linux"
-    ] ./chromium.nix { }).stable or { };
-  chrony = handleTestOn [
-    "aarch64-linux"
-    "x86_64-linux"
-  ] ./chrony.nix { };
-  chrony-ptp = handleTestOn [
-    "aarch64-linux"
-    "x86_64-linux"
-  ] ./chrony-ptp.nix { };
+  chromium = (handleTestOn [ "aarch64-linux" "x86_64-linux" ] ./chromium.nix { }).stable or { };
+  chrony = handleTestOn [ "aarch64-linux" "x86_64-linux" ] ./chrony.nix { };
+  chrony-ptp = handleTestOn [ "aarch64-linux" "x86_64-linux" ] ./chrony-ptp.nix { };
   cinnamon = handleTest ./cinnamon.nix { };
   cinnamon-wayland = handleTest ./cinnamon-wayland.nix { };
   cjdns = handleTest ./cjdns.nix { };
@@ -265,10 +228,7 @@ in
   cloud-init = handleTest ./cloud-init.nix { };
   cloud-init-hostname = handleTest ./cloud-init-hostname.nix { };
   cloudlog = handleTest ./cloudlog.nix { };
-  cntr = handleTestOn [
-    "aarch64-linux"
-    "x86_64-linux"
-  ] ./cntr.nix { };
+  cntr = handleTestOn [ "aarch64-linux" "x86_64-linux" ] ./cntr.nix { };
   cockpit = handleTest ./cockpit.nix { };
   cockroachdb = handleTestOn [ "x86_64-linux" ] ./cockroachdb.nix { };
   code-server = handleTest ./code-server.nix { };
@@ -300,10 +260,7 @@ in
   coturn = handleTest ./coturn.nix { };
   couchdb = handleTest ./couchdb.nix { };
   crabfit = handleTest ./crabfit.nix { };
-  cri-o = handleTestOn [
-    "aarch64-linux"
-    "x86_64-linux"
-  ] ./cri-o.nix { };
+  cri-o = handleTestOn [ "aarch64-linux" "x86_64-linux" ] ./cri-o.nix { };
   cryptpad = runTest ./cryptpad.nix;
   cups-pdf = handleTest ./cups-pdf.nix { };
   curl-impersonate = handleTest ./curl-impersonate.nix { };
@@ -329,21 +286,12 @@ in
   dnscrypt-wrapper = runTestOn [ "x86_64-linux" ] ./dnscrypt-wrapper;
   dnsdist = import ./dnsdist.nix { inherit pkgs runTest; };
   doas = handleTest ./doas.nix { };
-  docker = handleTestOn [
-    "aarch64-linux"
-    "x86_64-linux"
-  ] ./docker.nix { };
-  docker-rootless = handleTestOn [
-    "aarch64-linux"
-    "x86_64-linux"
-  ] ./docker-rootless.nix { };
+  docker = handleTestOn [ "aarch64-linux" "x86_64-linux" ] ./docker.nix { };
+  docker-rootless = handleTestOn [ "aarch64-linux" "x86_64-linux" ] ./docker-rootless.nix { };
   docker-registry = handleTest ./docker-registry.nix { };
   docker-tools = handleTestOn [ "x86_64-linux" ] ./docker-tools.nix { };
   docker-tools-nix-shell = runTest ./docker-tools-nix-shell.nix;
-  docker-tools-cross = handleTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./docker-tools-cross.nix { };
+  docker-tools-cross = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./docker-tools-cross.nix { };
   docker-tools-overlay = handleTestOn [ "x86_64-linux" ] ./docker-tools-overlay.nix { };
   documize = handleTest ./documize.nix { };
   documentation = pkgs.callPackage ../modules/misc/documentation/test.nix { inherit nixosLib; };
@@ -386,14 +334,8 @@ in
   activation-etc-overlay-mutable = runTest ./activation/etc-overlay-mutable.nix;
   activation-etc-overlay-immutable = runTest ./activation/etc-overlay-immutable.nix;
   activation-perlless = runTest ./activation/perlless.nix;
-  etcd = handleTestOn [
-    "aarch64-linux"
-    "x86_64-linux"
-  ] ./etcd/etcd.nix { };
-  etcd-cluster = handleTestOn [
-    "aarch64-linux"
-    "x86_64-linux"
-  ] ./etcd/etcd-cluster.nix { };
+  etcd = handleTestOn [ "aarch64-linux" "x86_64-linux" ] ./etcd/etcd.nix { };
+  etcd-cluster = handleTestOn [ "aarch64-linux" "x86_64-linux" ] ./etcd/etcd-cluster.nix { };
   etebase-server = handleTest ./etebase-server.nix { };
   etesync-dav = handleTest ./etesync-dav.nix { };
   evcc = handleTest ./evcc.nix { };
@@ -522,10 +464,7 @@ in
   isolate = handleTest ./isolate.nix { };
   livebook-service = handleTest ./livebook-service.nix { };
   pyload = handleTest ./pyload.nix { };
-  oci-containers = handleTestOn [
-    "aarch64-linux"
-    "x86_64-linux"
-  ] ./oci-containers.nix { };
+  oci-containers = handleTestOn [ "aarch64-linux" "x86_64-linux" ] ./oci-containers.nix { };
   odoo = handleTest ./odoo.nix { };
   odoo16 = handleTest ./odoo.nix { package = pkgs.odoo16; };
   odoo15 = handleTest ./odoo.nix { package = pkgs.odoo15; };
@@ -559,10 +498,7 @@ in
   incus-lts = pkgs.recurseIntoAttrs (handleTest ./incus { inherit handleTestOn; });
   influxdb = handleTest ./influxdb.nix { };
   influxdb2 = handleTest ./influxdb2.nix { };
-  initrd-network-openvpn = handleTestOn [
-    "x86_64-linux"
-    "i686-linux"
-  ] ./initrd-network-openvpn { };
+  initrd-network-openvpn = handleTestOn [ "x86_64-linux" "i686-linux" ] ./initrd-network-openvpn { };
   initrd-network-ssh = handleTest ./initrd-network-ssh { };
   initrd-luks-empty-passphrase = handleTest ./initrd-luks-empty-passphrase.nix { };
   initrdNetwork = handleTest ./initrd-network.nix { };
@@ -633,10 +569,7 @@ in
   lightdm = handleTest ./lightdm.nix { };
   lighttpd = handleTest ./lighttpd.nix { };
   limesurvey = handleTest ./limesurvey.nix { };
-  listmonk = handleTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./listmonk.nix { };
+  listmonk = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./listmonk.nix { };
   litestream = handleTest ./litestream.nix { };
   lldap = handleTest ./lldap.nix { };
   localsend = handleTest ./localsend.nix { };
@@ -736,10 +669,7 @@ in
   mysql-backup = handleTest ./mysql/mysql-backup.nix { };
   mysql-replication = handleTest ./mysql/mysql-replication.nix { };
   n8n = handleTest ./n8n.nix { };
-  nagios = handleTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./nagios.nix { };
+  nagios = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./nagios.nix { };
   nar-serve = handleTest ./nar-serve.nix { };
   nat.firewall = handleTest ./nat.nix { withFirewall = true; };
   nat.standalone = handleTest ./nat.nix { withFirewall = false; };
@@ -832,20 +762,11 @@ in
   nzbget = handleTest ./nzbget.nix { };
   nzbhydra2 = handleTest ./nzbhydra2.nix { };
   ocis = handleTest ./ocis.nix { };
-  oddjobd = handleTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./oddjobd.nix { };
+  oddjobd = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./oddjobd.nix { };
   oh-my-zsh = handleTest ./oh-my-zsh.nix { };
   ollama = runTest ./ollama.nix;
-  ollama-cuda = runTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./ollama-cuda.nix;
-  ollama-rocm = runTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./ollama-rocm.nix;
+  ollama-cuda = runTestOn [ "x86_64-linux" "aarch64-linux" ] ./ollama-cuda.nix;
+  ollama-rocm = runTestOn [ "x86_64-linux" "aarch64-linux" ] ./ollama-rocm.nix;
   ombi = handleTest ./ombi.nix { };
   openarena = handleTest ./openarena.nix { };
   openldap = handleTest ./openldap.nix { };
@@ -862,10 +783,7 @@ in
     (handleTestOn [ "x86_64-linux" ] ./openstack-image.nix { }).userdata or { };
   opentabletdriver = handleTest ./opentabletdriver.nix { };
   opentelemetry-collector = handleTest ./opentelemetry-collector.nix { };
-  ocsinventory-agent = handleTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./ocsinventory-agent.nix { };
+  ocsinventory-agent = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./ocsinventory-agent.nix { };
   owncast = handleTest ./owncast.nix { };
   outline = handleTest ./outline.nix { };
   image-contents = handleTest ./image-contents.nix { };
@@ -920,17 +838,11 @@ in
   plasma5-systemd-start = handleTest ./plasma5-systemd-start.nix { };
   plausible = handleTest ./plausible.nix { };
   please = handleTest ./please.nix { };
-  pleroma = handleTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./pleroma.nix { };
+  pleroma = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./pleroma.nix { };
   plikd = handleTest ./plikd.nix { };
   plotinus = handleTest ./plotinus.nix { };
   podgrab = handleTest ./podgrab.nix { };
-  podman = handleTestOn [
-    "aarch64-linux"
-    "x86_64-linux"
-  ] ./podman/default.nix { };
+  podman = handleTestOn [ "aarch64-linux" "x86_64-linux" ] ./podman/default.nix { };
   podman-tls-ghostunnel = handleTestOn [
     "aarch64-linux"
     "x86_64-linux"
@@ -971,10 +883,7 @@ in
   public-inbox = handleTest ./public-inbox.nix { };
   pufferpanel = handleTest ./pufferpanel.nix { };
   pulseaudio = discoverTests (import ./pulseaudio.nix);
-  qboot = handleTestOn [
-    "x86_64-linux"
-    "i686-linux"
-  ] ./qboot.nix { };
+  qboot = handleTestOn [ "x86_64-linux" "i686-linux" ] ./qboot.nix { };
   qemu-vm-restrictnetwork = handleTest ./qemu-vm-restrictnetwork.nix { };
   qemu-vm-volatile-root = runTest ./qemu-vm-volatile-root.nix;
   qemu-vm-external-disk-image = runTest ./qemu-vm-external-disk-image.nix;
@@ -982,10 +891,7 @@ in
   qgis = handleTest ./qgis.nix { qgisPackage = pkgs.qgis; };
   qgis-ltr = handleTest ./qgis.nix { qgisPackage = pkgs.qgis-ltr; };
   qownnotes = handleTest ./qownnotes.nix { };
-  qtile = handleTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./qtile/default.nix { };
+  qtile = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./qtile/default.nix { };
   quake3 = handleTest ./quake3.nix { };
   quicktun = handleTest ./quicktun.nix { };
   quickwit = handleTest ./quickwit.nix { };
@@ -1007,10 +913,7 @@ in
   restic-rest-server = handleTest ./restic-rest-server.nix { };
   restic = handleTest ./restic.nix { };
   retroarch = handleTest ./retroarch.nix { };
-  rke2 = handleTestOn [
-    "aarch64-linux"
-    "x86_64-linux"
-  ] ./rke2 { };
+  rke2 = handleTestOn [ "aarch64-linux" "x86_64-linux" ] ./rke2 { };
   rkvm = handleTest ./rkvm { };
   robustirc-bridge = handleTest ./robustirc-bridge.nix { };
   roundcube = handleTest ./roundcube.nix { };
@@ -1065,22 +968,13 @@ in
   sonic-server = handleTest ./sonic-server.nix { };
   sourcehut = handleTest ./sourcehut { };
   spacecookie = handleTest ./spacecookie.nix { };
-  spark = handleTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./spark { };
+  spark = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./spark { };
   sqlite3-to-mysql = handleTest ./sqlite3-to-mysql.nix { };
   sslh = handleTest ./sslh.nix { };
   ssh-agent-auth = handleTest ./ssh-agent-auth.nix { };
   ssh-audit = handleTest ./ssh-audit.nix { };
-  sssd = handleTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./sssd.nix { };
-  sssd-ldap = handleTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./sssd-ldap.nix { };
+  sssd = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./sssd.nix { };
+  sssd-ldap = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./sssd-ldap.nix { };
   stalwart-mail = handleTest ./stalwart-mail.nix { };
   stargazer = runTest ./web-servers/stargazer.nix;
   starship = handleTest ./starship.nix { };
@@ -1088,10 +982,7 @@ in
   step-ca = handleTestOn [ "x86_64-linux" ] ./step-ca.nix { };
   stratis = handleTest ./stratis { };
   strongswan-swanctl = handleTest ./strongswan-swanctl.nix { };
-  stub-ld = handleTestOn [
-    "x86_64-linux"
-    "aarch64-linux"
-  ] ./stub-ld.nix { };
+  stub-ld = handleTestOn [ "x86_64-linux" "aarch64-linux" ] ./stub-ld.nix { };
   stunnel = handleTest ./stunnel.nix { };
   sudo = handleTest ./sudo.nix { };
   sudo-rs = handleTest ./sudo-rs.nix { };
@@ -1147,10 +1038,7 @@ in
   systemd-journal = handleTest ./systemd-journal.nix { };
   systemd-journal-gateway = handleTest ./systemd-journal-gateway.nix { };
   systemd-journal-upload = handleTest ./systemd-journal-upload.nix { };
-  systemd-lock-handler = runTestOn [
-    "aarch64-linux"
-    "x86_64-linux"
-  ] ./systemd-lock-handler.nix;
+  systemd-lock-handler = runTestOn [ "aarch64-linux" "x86_64-linux" ] ./systemd-lock-handler.nix;
   systemd-machinectl = handleTest ./systemd-machinectl.nix { };
   systemd-networkd = handleTest ./systemd-networkd.nix { };
   systemd-networkd-bridge = handleTest ./systemd-networkd-bridge.nix { };
@@ -1207,10 +1095,7 @@ in
   tmate-ssh-server = handleTest ./tmate-ssh-server.nix { };
   tomcat = handleTest ./tomcat.nix { };
   tor = handleTest ./tor.nix { };
-  traefik = handleTestOn [
-    "aarch64-linux"
-    "x86_64-linux"
-  ] ./traefik.nix { };
+  traefik = handleTestOn [ "aarch64-linux" "x86_64-linux" ] ./traefik.nix { };
   trafficserver = handleTest ./trafficserver.nix { };
   transfer-sh = handleTest ./transfer-sh.nix { };
   transmission_3 = handleTest ./transmission.nix { transmission = pkgs.transmission_3; };

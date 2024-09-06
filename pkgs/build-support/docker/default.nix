@@ -141,18 +141,7 @@ rec {
 
   pullImage =
     let
-      fixName =
-        name:
-        builtins.replaceStrings
-          [
-            "/"
-            ":"
-          ]
-          [
-            "-"
-            "-"
-          ]
-          name;
+      fixName = name: builtins.replaceStrings [ "/" ":" ] [ "-" "-" ] name;
     in
     {
       imageName,

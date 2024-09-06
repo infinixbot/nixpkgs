@@ -28,12 +28,7 @@ lib.checkListOfEnum "${pname}: theme accent"
   [ accent ]
   lib.checkListOfEnum
   "${pname}: color variant"
-  [
-    "Latte"
-    "Frappe"
-    "Macchiato"
-    "Mocha"
-  ]
+  [ "Latte" "Frappe" "Macchiato" "Mocha" ]
   [ variant ]
 
   stdenvNoCC.mkDerivation

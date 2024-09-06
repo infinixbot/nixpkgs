@@ -36,18 +36,11 @@ lib.checkListOfEnum "${pname}: theme variants"
   themeVariants
   lib.checkListOfEnum
   "${pname}: color variants"
-  [
-    "standard"
-    "light"
-    "dark"
-  ]
+  [ "standard" "light" "dark" ]
   colorVariants
   lib.checkListOfEnum
   "${pname}: size variants"
-  [
-    "standard"
-    "compact"
-  ]
+  [ "standard" "compact" ]
   sizeVariants
   lib.checkListOfEnum
   "${pname}: tweaks"
@@ -63,11 +56,7 @@ lib.checkListOfEnum "${pname}: theme variants"
   tweaks
   lib.checkListOfEnum
   "${pname}: grub screens"
-  [
-    "1080p"
-    "2k"
-    "4k"
-  ]
+  [ "1080p" "2k" "4k" ]
   grubScreens
 
   stdenvNoCC.mkDerivation

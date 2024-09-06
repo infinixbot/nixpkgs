@@ -909,122 +909,65 @@ in
   ];
 
   imports = [
-    (mkRemovedOptionModule [
+    (mkRemovedOptionModule [ "boot" "loader" "grub" "bootDevice" ] "")
+    (mkRenamedOptionModule [ "boot" "copyKernels" ] [
+      "boot"
+      "loader"
+      "grub"
+      "copyKernels"
+    ])
+    (mkRenamedOptionModule [ "boot" "extraGrubEntries" ] [
+      "boot"
+      "loader"
+      "grub"
+      "extraEntries"
+    ])
+    (mkRenamedOptionModule [ "boot" "extraGrubEntriesBeforeNixos" ] [
+      "boot"
+      "loader"
+      "grub"
+      "extraEntriesBeforeNixOS"
+    ])
+    (mkRenamedOptionModule [ "boot" "grubDevice" ] [
+      "boot"
+      "loader"
+      "grub"
+      "device"
+    ])
+    (mkRenamedOptionModule [ "boot" "bootMount" ] [
       "boot"
       "loader"
       "grub"
       "bootDevice"
-    ] "")
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "copyKernels"
-      ]
-      [
-        "boot"
-        "loader"
-        "grub"
-        "copyKernels"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "extraGrubEntries"
-      ]
-      [
-        "boot"
-        "loader"
-        "grub"
-        "extraEntries"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "extraGrubEntriesBeforeNixos"
-      ]
-      [
-        "boot"
-        "loader"
-        "grub"
-        "extraEntriesBeforeNixOS"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "grubDevice"
-      ]
-      [
-        "boot"
-        "loader"
-        "grub"
-        "device"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "bootMount"
-      ]
-      [
-        "boot"
-        "loader"
-        "grub"
-        "bootDevice"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "grubSplashImage"
-      ]
-      [
-        "boot"
-        "loader"
-        "grub"
-        "splashImage"
-      ]
-    )
-    (mkRemovedOptionModule
-      [
-        "boot"
-        "loader"
-        "grub"
-        "trustedBoot"
-      ]
-      ''
-        Support for Trusted GRUB has been removed, because the project
-        has been retired upstream.
-      ''
-    )
-    (mkRemovedOptionModule
-      [
-        "boot"
-        "loader"
-        "grub"
-        "extraInitrd"
-      ]
-      ''
-        This option has been replaced with the bootloader agnostic
-        boot.initrd.secrets option. To migrate to the initrd secrets system,
-        extract the extraInitrd archive into your main filesystem:
+    ])
+    (mkRenamedOptionModule [ "boot" "grubSplashImage" ] [
+      "boot"
+      "loader"
+      "grub"
+      "splashImage"
+    ])
+    (mkRemovedOptionModule [ "boot" "loader" "grub" "trustedBoot" ] ''
+      Support for Trusted GRUB has been removed, because the project
+      has been retired upstream.
+    '')
+    (mkRemovedOptionModule [ "boot" "loader" "grub" "extraInitrd" ] ''
+      This option has been replaced with the bootloader agnostic
+      boot.initrd.secrets option. To migrate to the initrd secrets system,
+      extract the extraInitrd archive into your main filesystem:
 
-          # zcat /boot/extra_initramfs.gz | cpio -idvmD /etc/secrets/initrd
-          /path/to/secret1
-          /path/to/secret2
+        # zcat /boot/extra_initramfs.gz | cpio -idvmD /etc/secrets/initrd
+        /path/to/secret1
+        /path/to/secret2
 
-        then replace boot.loader.grub.extraInitrd with boot.initrd.secrets:
+      then replace boot.loader.grub.extraInitrd with boot.initrd.secrets:
 
-          boot.initrd.secrets = {
-            "/path/to/secret1" = "/etc/secrets/initrd/path/to/secret1";
-            "/path/to/secret2" = "/etc/secrets/initrd/path/to/secret2";
-          };
+        boot.initrd.secrets = {
+          "/path/to/secret1" = "/etc/secrets/initrd/path/to/secret1";
+          "/path/to/secret2" = "/etc/secrets/initrd/path/to/secret2";
+        };
 
-        See the boot.initrd.secrets option documentation for more information.
-      ''
-    )
+      See the boot.initrd.secrets option documentation for more information.
+    '')
   ];
 
 }

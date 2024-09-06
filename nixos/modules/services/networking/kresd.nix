@@ -47,35 +47,17 @@ in
   ];
 
   imports = [
-    (lib.mkChangedOptionModule
-      [
-        "services"
-        "kresd"
-        "interfaces"
-      ]
-      [
-        "services"
-        "kresd"
-        "listenPlain"
-      ]
+    (lib.mkChangedOptionModule [ "services" "kresd" "interfaces" ] [ "services" "kresd" "listenPlain" ]
       (
         config:
         let
-          value = lib.getAttrFromPath [
-            "services"
-            "kresd"
-            "interfaces"
-          ] config;
+          value = lib.getAttrFromPath [ "services" "kresd" "interfaces" ] config;
         in
         map (iface: if lib.elem ":" (lib.stringToCharacters iface) then "[${iface}]:53" else "${iface}:53") # Syntax depends on being IPv6 or IPv4.
           value
       )
     )
-    (lib.mkRemovedOptionModule [
-      "services"
-      "kresd"
-      "cacheDir"
-    ] "Please use (bind-)mounting instead.")
+    (lib.mkRemovedOptionModule [ "services" "kresd" "cacheDir" ] "Please use (bind-)mounting instead.")
   ];
 
   ###### interface

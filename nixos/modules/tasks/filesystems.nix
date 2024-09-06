@@ -222,18 +222,7 @@ let
       skipCheck =
         fs: fs.noCheck || fs.device == "none" || builtins.elem fs.fsType fsToSkipCheck || isBindMount fs;
       # https://wiki.archlinux.org/index.php/fstab#Filepath_spaces
-      escape =
-        string:
-        builtins.replaceStrings
-          [
-            " "
-            "\t"
-          ]
-          [
-            "\\040"
-            "\\011"
-          ]
-          string;
+      escape = string: builtins.replaceStrings [ " " "\t" ] [ "\\040" "\\011" ] string;
     in
     fstabFileSystems:
     { }:

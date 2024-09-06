@@ -11,49 +11,21 @@ in
 {
   imports = [
     # removed option 'services.esdm.cuseRandomEnable'
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "esdm"
-        "cuseRandomEnable"
-      ]
-      ''
-        Use services.esdm.enableLinuxCompatServices instead.
-      ''
-    )
+    (lib.mkRemovedOptionModule [ "services" "esdm" "cuseRandomEnable" ] ''
+      Use services.esdm.enableLinuxCompatServices instead.
+    '')
     # removed option 'services.esdm.cuseUrandomEnable'
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "esdm"
-        "cuseUrandomEnable"
-      ]
-      ''
-        Use services.esdm.enableLinuxCompatServices instead.
-      ''
-    )
+    (lib.mkRemovedOptionModule [ "services" "esdm" "cuseUrandomEnable" ] ''
+      Use services.esdm.enableLinuxCompatServices instead.
+    '')
     # removed option 'services.esdm.procEnable'
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "esdm"
-        "procEnable"
-      ]
-      ''
-        Use services.esdm.enableLinuxCompatServices instead.
-      ''
-    )
+    (lib.mkRemovedOptionModule [ "services" "esdm" "procEnable" ] ''
+      Use services.esdm.enableLinuxCompatServices instead.
+    '')
     # removed option 'services.esdm.verbose'
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "esdm"
-        "verbose"
-      ]
-      ''
-        There is no replacement.
-      ''
-    )
+    (lib.mkRemovedOptionModule [ "services" "esdm" "verbose" ] ''
+      There is no replacement.
+    '')
   ];
 
   options.services.esdm = {

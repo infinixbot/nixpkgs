@@ -29,26 +29,14 @@ let
   single = x: lib.optional (x != null) x;
 
 in
-lib.checkListOfEnum "${pname}: alt variants"
-  [
-    "normal"
-    "alt"
-    "all"
-  ]
-  altVariants
+lib.checkListOfEnum "${pname}: alt variants" [ "normal" "alt" "all" ] altVariants
   lib.checkListOfEnum
   "${pname}: color variants"
-  [
-    "Light"
-    "Dark"
-  ]
+  [ "Light" "Dark" ]
   colorVariants
   lib.checkListOfEnum
   "${pname}: opacity variants"
-  [
-    "normal"
-    "solid"
-  ]
+  [ "normal" "solid" ]
   opacityVariants
   lib.checkListOfEnum
   "${pname}: theme variants"
@@ -88,12 +76,7 @@ lib.checkListOfEnum "${pname}: alt variants"
   (single iconVariant)
   lib.checkListOfEnum
   "${pname}: nautilus style"
-  [
-    "stable"
-    "normal"
-    "mojave"
-    "glassy"
-  ]
+  [ "stable" "normal" "mojave" "glassy" ]
   (single nautilusStyle)
   lib.checkListOfEnum
   "${pname}: nautilus sidebar minimum width"
@@ -118,11 +101,7 @@ lib.checkListOfEnum "${pname}: alt variants"
   (single panelOpacity)
   lib.checkListOfEnum
   "${pname}: panel size"
-  [
-    "default"
-    "smaller"
-    "bigger"
-  ]
+  [ "default" "smaller" "bigger" ]
   (single panelSize)
 
   stdenv.mkDerivation

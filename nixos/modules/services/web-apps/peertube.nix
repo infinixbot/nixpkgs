@@ -938,18 +938,12 @@ in
           home = cfg.package;
         };
       })
-      (lib.attrsets.setAttrByPath
-        [
-          cfg.user
-          "packages"
-        ]
-        [
-          peertubeEnv
-          pkgs.nodejs_18
-          pkgs.yarn
-          pkgs.ffmpeg-headless
-        ]
-      )
+      (lib.attrsets.setAttrByPath [ cfg.user "packages" ] [
+        peertubeEnv
+        pkgs.nodejs_18
+        pkgs.yarn
+        pkgs.ffmpeg-headless
+      ])
       (lib.mkIf cfg.redis.enableUnixSocket {
         ${config.services.peertube.user}.extraGroups = [ "redis-peertube" ];
       })

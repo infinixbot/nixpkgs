@@ -17,63 +17,30 @@ in
 
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "sslh"
-        "listenAddress"
-      ]
-      [
-        "services"
-        "sslh"
-        "listenAddresses"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "sslh"
-        "timeout"
-      ]
-      [
-        "services"
-        "sslh"
-        "settings"
-        "timeout"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "services"
-        "sslh"
-        "transparent"
-      ]
-      [
-        "services"
-        "sslh"
-        "settings"
-        "transparent"
-      ]
-    )
-    (mkRemovedOptionModule [
+    (mkRenamedOptionModule [ "services" "sslh" "listenAddress" ] [
       "services"
       "sslh"
-      "appendConfig"
-    ] "Use services.sslh.settings instead")
-    (mkChangedOptionModule
-      [
-        "services"
-        "sslh"
-        "verbose"
-      ]
-      [
-        "services"
-        "sslh"
-        "settings"
-        "verbose-connections"
-      ]
-      (config: if config.services.sslh.verbose then 1 else 0)
-    )
+      "listenAddresses"
+    ])
+    (mkRenamedOptionModule [ "services" "sslh" "timeout" ] [
+      "services"
+      "sslh"
+      "settings"
+      "timeout"
+    ])
+    (mkRenamedOptionModule [ "services" "sslh" "transparent" ] [
+      "services"
+      "sslh"
+      "settings"
+      "transparent"
+    ])
+    (mkRemovedOptionModule [ "services" "sslh" "appendConfig" ] "Use services.sslh.settings instead")
+    (mkChangedOptionModule [ "services" "sslh" "verbose" ] [
+      "services"
+      "sslh"
+      "settings"
+      "verbose-connections"
+    ] (config: if config.services.sslh.verbose then 1 else 0))
   ];
 
   meta.buildDocsInSandbox = false;

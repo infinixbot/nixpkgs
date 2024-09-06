@@ -37,13 +37,7 @@ in
       "nzbget"
       "dataDir"
     ] "The data directory for nzbget is now /var/lib/nzbget.")
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "misc"
-        "nzbget"
-        "openFirewall"
-      ]
+    (lib.mkRemovedOptionModule [ "services" "misc" "nzbget" "openFirewall" ]
       "The port used by nzbget is managed through the web interface so you should adjust your firewall rules accordingly."
     )
   ];

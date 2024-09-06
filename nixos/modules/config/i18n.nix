@@ -60,23 +60,7 @@
         type = lib.types.listOf lib.types.str;
         default = lib.unique (
           builtins.map
-            (
-              l:
-              (lib.replaceStrings
-                [
-                  "utf8"
-                  "utf-8"
-                  "UTF8"
-                ]
-                [
-                  "UTF-8"
-                  "UTF-8"
-                  "UTF-8"
-                ]
-                l
-              )
-              + "/UTF-8"
-            )
+            (l: (lib.replaceStrings [ "utf8" "utf-8" "UTF8" ] [ "UTF-8" "UTF-8" "UTF-8" ] l) + "/UTF-8")
             (
               [
                 "C.UTF-8"

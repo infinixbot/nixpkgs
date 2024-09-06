@@ -75,36 +75,18 @@ in
   ];
 
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "qt5"
-        "enable"
-      ]
-      [
-        "qt"
-        "enable"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "qt5"
-        "platformTheme"
-      ]
-      [
-        "qt"
-        "platformTheme"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "qt5"
-        "style"
-      ]
-      [
-        "qt"
-        "style"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "qt5" "enable" ] [
+      "qt"
+      "enable"
+    ])
+    (lib.mkRenamedOptionModule [ "qt5" "platformTheme" ] [
+      "qt"
+      "platformTheme"
+    ])
+    (lib.mkRenamedOptionModule [ "qt5" "style" ] [
+      "qt"
+      "style"
+    ])
   ];
 
   options = {

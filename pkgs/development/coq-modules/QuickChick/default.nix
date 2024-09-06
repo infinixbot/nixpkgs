@@ -15,93 +15,86 @@ in
   pname = "QuickChick";
   owner = "QuickChick";
   inherit version;
-  defaultVersion =
-    lib.switch
-      [
-        coq.coq-version
-        ssreflect.version
-      ]
-      [
-        {
-          cases = [
-            (lib.versions.range "8.15" "8.19")
-            lib.pred.true
-          ];
-          out = "2.0.2";
-        }
-        {
-          cases = [
-            (lib.versions.range "8.13" "8.17")
-            lib.pred.true
-          ];
-          out = "1.6.5";
-        }
-        {
-          cases = [
-            "8.13"
-            lib.pred.true
-          ];
-          out = "1.5.0";
-        }
-        {
-          cases = [
-            "8.12"
-            lib.pred.true
-          ];
-          out = "1.4.0";
-        }
-        {
-          cases = [
-            "8.11"
-            lib.pred.true
-          ];
-          out = "1.3.2";
-        }
-        {
-          cases = [
-            "8.10"
-            lib.pred.true
-          ];
-          out = "1.2.1";
-        }
-        {
-          cases = [
-            "8.9"
-            lib.pred.true
-          ];
-          out = "1.1.0";
-        }
-        {
-          cases = [
-            "8.8"
-            lib.pred.true
-          ];
-          out = "20190311";
-        }
-        {
-          cases = [
-            "8.7"
-            lib.versions.isLe
-            "1.8"
-          ];
-          out = "1.0.0";
-        }
-        {
-          cases = [
-            "8.6"
-            lib.pred.true
-          ];
-          out = "20171102";
-        }
-        {
-          cases = [
-            "8.5"
-            lib.pred.true
-          ];
-          out = "20170512";
-        }
-      ]
-      null;
+  defaultVersion = lib.switch [ coq.coq-version ssreflect.version ] [
+    {
+      cases = [
+        (lib.versions.range "8.15" "8.19")
+        lib.pred.true
+      ];
+      out = "2.0.2";
+    }
+    {
+      cases = [
+        (lib.versions.range "8.13" "8.17")
+        lib.pred.true
+      ];
+      out = "1.6.5";
+    }
+    {
+      cases = [
+        "8.13"
+        lib.pred.true
+      ];
+      out = "1.5.0";
+    }
+    {
+      cases = [
+        "8.12"
+        lib.pred.true
+      ];
+      out = "1.4.0";
+    }
+    {
+      cases = [
+        "8.11"
+        lib.pred.true
+      ];
+      out = "1.3.2";
+    }
+    {
+      cases = [
+        "8.10"
+        lib.pred.true
+      ];
+      out = "1.2.1";
+    }
+    {
+      cases = [
+        "8.9"
+        lib.pred.true
+      ];
+      out = "1.1.0";
+    }
+    {
+      cases = [
+        "8.8"
+        lib.pred.true
+      ];
+      out = "20190311";
+    }
+    {
+      cases = [
+        "8.7"
+        lib.versions.isLe
+        "1.8"
+      ];
+      out = "1.0.0";
+    }
+    {
+      cases = [
+        "8.6"
+        lib.pred.true
+      ];
+      out = "20171102";
+    }
+    {
+      cases = [
+        "8.5"
+        lib.pred.true
+      ];
+      out = "20170512";
+    }
+  ] null;
   release."2.0.2".sha256 = "sha256-xxKkwDRjB8nUiXNhein1Ppn0DP5FZ13J90xUPAnQBbs=";
   release."2.0.1".sha256 = "sha256-gJc+9Or6tbqE00920Il4pnEvokRoiADX6CxP/Q0QZaY=";
   release."1.6.5".sha256 = "sha256-rcFyRDH8UbB9KVk10P5qjtPkWs04p78VNHkCq4mXr3U=";

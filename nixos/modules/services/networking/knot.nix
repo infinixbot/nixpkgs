@@ -230,10 +230,7 @@ in
 
       enableXDP = mkOption {
         type = types.bool;
-        default = lib.hasAttrByPath [
-          "xdp"
-          "listen"
-        ] cfg.settings;
+        default = lib.hasAttrByPath [ "xdp" "listen" ] cfg.settings;
         defaultText = ''
           Enabled when the `xdp.listen` setting is configured through `settings`.
         '';
@@ -308,19 +305,9 @@ in
   };
   imports = [
     # Compatibility with NixOS 23.05.
-    (mkChangedOptionModule
-      [
-        "services"
-        "knot"
-        "extraConfig"
-      ]
-      [
-        "services"
-        "knot"
-        "settingsFile"
-      ]
-      (config: mkConfigFile config.services.knot.extraConfig)
-    )
+    (mkChangedOptionModule [ "services" "knot" "extraConfig" ] [ "services" "knot" "settingsFile" ] (
+      config: mkConfigFile config.services.knot.extraConfig
+    ))
   ];
 
   config = mkIf config.services.knot.enable {

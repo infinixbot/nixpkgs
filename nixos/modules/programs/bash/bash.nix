@@ -24,11 +24,7 @@ in
 
 {
   imports = [
-    (lib.mkRemovedOptionModule [
-      "programs"
-      "bash"
-      "enable"
-    ] "")
+    (lib.mkRemovedOptionModule [ "programs" "bash" "enable" ] "")
   ];
 
   options = {

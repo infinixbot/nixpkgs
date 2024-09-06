@@ -43,18 +43,11 @@ in
 
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "logstash"
-        "address"
-      ]
-      [
-        "services"
-        "logstash"
-        "listenAddress"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "logstash" "address" ] [
+      "services"
+      "logstash"
+      "listenAddress"
+    ])
     (lib.mkRemovedOptionModule [
       "services"
       "logstash"

@@ -255,58 +255,39 @@ rec {
 
   # A variant with a more recent (but possibly less stable) kernel that might support more hardware.
   # This variant keeps zfs support enabled, hoping it will build and work.
-  iso_minimal_new_kernel =
-    forMatchingSystems
-      [
-        "x86_64-linux"
-        "aarch64-linux"
-      ]
-      (
-        system:
-        makeIso {
-          module = ./modules/installer/cd-dvd/installation-cd-minimal-new-kernel.nix;
-          type = "minimal-new-kernel";
-          inherit system;
-        }
-      );
+  iso_minimal_new_kernel = forMatchingSystems [ "x86_64-linux" "aarch64-linux" ] (
+    system:
+    makeIso {
+      module = ./modules/installer/cd-dvd/installation-cd-minimal-new-kernel.nix;
+      type = "minimal-new-kernel";
+      inherit system;
+    }
+  );
 
   # A variant with a more recent (but possibly less stable) kernel that might support more hardware.
   # ZFS support disabled since it is unlikely to support the latest kernel.
-  iso_minimal_new_kernel_no_zfs =
-    forMatchingSystems
-      [
-        "x86_64-linux"
-        "aarch64-linux"
-      ]
-      (
-        system:
-        makeIso {
-          module = ./modules/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix;
-          type = "minimal-new-kernel-no-zfs";
-          inherit system;
-        }
-      );
+  iso_minimal_new_kernel_no_zfs = forMatchingSystems [ "x86_64-linux" "aarch64-linux" ] (
+    system:
+    makeIso {
+      module = ./modules/installer/cd-dvd/installation-cd-minimal-new-kernel-no-zfs.nix;
+      type = "minimal-new-kernel-no-zfs";
+      inherit system;
+    }
+  );
 
-  sd_image =
-    forMatchingSystems
-      [
-        "armv6l-linux"
-        "armv7l-linux"
-        "aarch64-linux"
-      ]
-      (
-        system:
-        makeSdImage {
-          module =
-            {
-              armv6l-linux = ./modules/installer/sd-card/sd-image-raspberrypi-installer.nix;
-              armv7l-linux = ./modules/installer/sd-card/sd-image-armv7l-multiplatform-installer.nix;
-              aarch64-linux = ./modules/installer/sd-card/sd-image-aarch64-installer.nix;
-            }
-            .${system};
-          inherit system;
+  sd_image = forMatchingSystems [ "armv6l-linux" "armv7l-linux" "aarch64-linux" ] (
+    system:
+    makeSdImage {
+      module =
+        {
+          armv6l-linux = ./modules/installer/sd-card/sd-image-raspberrypi-installer.nix;
+          armv7l-linux = ./modules/installer/sd-card/sd-image-armv7l-multiplatform-installer.nix;
+          aarch64-linux = ./modules/installer/sd-card/sd-image-aarch64-installer.nix;
         }
-      );
+        .${system};
+      inherit system;
+    }
+  );
 
   sd_image_new_kernel = forMatchingSystems [ "aarch64-linux" ] (
     system:
@@ -383,84 +364,66 @@ rec {
   );
 
   # A disk image that can be imported to Amazon EC2 and registered as an AMI
-  amazonImage =
-    forMatchingSystems
-      [
-        "x86_64-linux"
-        "aarch64-linux"
-      ]
-      (
-        system:
+  amazonImage = forMatchingSystems [ "x86_64-linux" "aarch64-linux" ] (
+    system:
 
-        with import ./.. { inherit system; };
+    with import ./.. { inherit system; };
 
-        hydraJob (
-          (import lib/eval-config.nix {
-            inherit system;
-            modules = [
-              configuration
-              versionModule
-              ./maintainers/scripts/ec2/amazon-image.nix
-            ];
-          }).config.system.build.amazonImage
-        )
+    hydraJob (
+      (import lib/eval-config.nix {
+        inherit system;
+        modules = [
+          configuration
+          versionModule
+          ./maintainers/scripts/ec2/amazon-image.nix
+        ];
+      }).config.system.build.amazonImage
+    )
 
-      );
-  amazonImageZfs =
-    forMatchingSystems
-      [
-        "x86_64-linux"
-        "aarch64-linux"
-      ]
-      (
-        system:
+  );
+  amazonImageZfs = forMatchingSystems [ "x86_64-linux" "aarch64-linux" ] (
+    system:
 
-        with import ./.. { inherit system; };
+    with import ./.. { inherit system; };
 
-        hydraJob (
-          (import lib/eval-config.nix {
-            inherit system;
-            modules = [
-              configuration
-              versionModule
-              ./maintainers/scripts/ec2/amazon-image-zfs.nix
-            ];
-          }).config.system.build.amazonImage
-        )
+    hydraJob (
+      (import lib/eval-config.nix {
+        inherit system;
+        modules = [
+          configuration
+          versionModule
+          ./maintainers/scripts/ec2/amazon-image-zfs.nix
+        ];
+      }).config.system.build.amazonImage
+    )
 
-      );
+  );
 
   # Test job for https://github.com/NixOS/nixpkgs/issues/121354 to test
   # automatic sizing without blocking the channel.
-  amazonImageAutomaticSize =
-    forMatchingSystems
-      [
-        "x86_64-linux"
-        "aarch64-linux"
-      ]
-      (
-        system:
+  amazonImageAutomaticSize = forMatchingSystems [ "x86_64-linux" "aarch64-linux" ] (
+    system:
 
-        with import ./.. { inherit system; };
+    with import ./.. { inherit system; };
 
-        hydraJob (
-          (import lib/eval-config.nix {
-            inherit system;
-            modules = [
-              configuration
-              versionModule
-              ./maintainers/scripts/ec2/amazon-image.nix
-              (
-                { ... }:
-                {
-                  amazonImage.sizeMB = "auto";
-                }
-              )
-            ];
-          }).config.system.build.amazonImage
-        )
+    hydraJob (
+      (import lib/eval-config.nix {
+        inherit system;
+        modules = [
+          configuration
+          versionModule
+          ./maintainers/scripts/ec2/amazon-image.nix
+          (
+            { ... }:
+            {
+              amazonImage.sizeMB = "auto";
+            }
+          )
+        ];
+      }).config.system.build.amazonImage
+    )
 
-      );
+  );
 
   # An image that can be imported into incus and used for container creation
   incusContainerImage =
@@ -558,128 +521,98 @@ rec {
       );
 
   # An image that can be imported into lxd and used for container creation
-  lxdContainerImage =
-    forMatchingSystems
-      [
-        "x86_64-linux"
-        "aarch64-linux"
-      ]
-      (
-        system:
+  lxdContainerImage = forMatchingSystems [ "x86_64-linux" "aarch64-linux" ] (
+    system:
 
-        with import ./.. { inherit system; };
+    with import ./.. { inherit system; };
 
-        hydraJob (
-          (import lib/eval-config.nix {
-            inherit system;
-            modules = [
-              configuration
-              versionModule
-              ./maintainers/scripts/lxd/lxd-container-image.nix
-            ];
-          }).config.system.build.tarball
-        )
+    hydraJob (
+      (import lib/eval-config.nix {
+        inherit system;
+        modules = [
+          configuration
+          versionModule
+          ./maintainers/scripts/lxd/lxd-container-image.nix
+        ];
+      }).config.system.build.tarball
+    )
 
-      );
+  );
 
-  lxdContainerImageSquashfs =
-    forMatchingSystems
-      [
-        "x86_64-linux"
-        "aarch64-linux"
-      ]
-      (
-        system:
+  lxdContainerImageSquashfs = forMatchingSystems [ "x86_64-linux" "aarch64-linux" ] (
+    system:
 
-        with import ./.. { inherit system; };
+    with import ./.. { inherit system; };
 
-        hydraJob (
-          (import lib/eval-config.nix {
-            inherit system;
-            modules = [
-              configuration
-              versionModule
-              ./maintainers/scripts/lxd/lxd-container-image.nix
-            ];
-          }).config.system.build.squashfs
-        )
+    hydraJob (
+      (import lib/eval-config.nix {
+        inherit system;
+        modules = [
+          configuration
+          versionModule
+          ./maintainers/scripts/lxd/lxd-container-image.nix
+        ];
+      }).config.system.build.squashfs
+    )
 
-      );
+  );
 
   # Metadata for the lxd image
-  lxdContainerMeta =
-    forMatchingSystems
-      [
-        "x86_64-linux"
-        "aarch64-linux"
-      ]
-      (
-        system:
+  lxdContainerMeta = forMatchingSystems [ "x86_64-linux" "aarch64-linux" ] (
+    system:
 
-        with import ./.. { inherit system; };
+    with import ./.. { inherit system; };
 
-        hydraJob (
-          (import lib/eval-config.nix {
-            inherit system;
-            modules = [
-              configuration
-              versionModule
-              ./maintainers/scripts/lxd/lxd-container-image.nix
-            ];
-          }).config.system.build.metadata
-        )
+    hydraJob (
+      (import lib/eval-config.nix {
+        inherit system;
+        modules = [
+          configuration
+          versionModule
+          ./maintainers/scripts/lxd/lxd-container-image.nix
+        ];
+      }).config.system.build.metadata
+    )
 
-      );
+  );
 
   # An image that can be imported into lxd and used for container creation
-  lxdVirtualMachineImage =
-    forMatchingSystems
-      [
-        "x86_64-linux"
-        "aarch64-linux"
-      ]
-      (
-        system:
+  lxdVirtualMachineImage = forMatchingSystems [ "x86_64-linux" "aarch64-linux" ] (
+    system:
 
-        with import ./.. { inherit system; };
+    with import ./.. { inherit system; };
 
-        hydraJob (
-          (import lib/eval-config.nix {
-            inherit system;
-            modules = [
-              configuration
-              versionModule
-              ./maintainers/scripts/lxd/lxd-virtual-machine-image.nix
-            ];
-          }).config.system.build.qemuImage
-        )
+    hydraJob (
+      (import lib/eval-config.nix {
+        inherit system;
+        modules = [
+          configuration
+          versionModule
+          ./maintainers/scripts/lxd/lxd-virtual-machine-image.nix
+        ];
+      }).config.system.build.qemuImage
+    )
 
-      );
+  );
 
   # Metadata for the lxd image
-  lxdVirtualMachineImageMeta =
-    forMatchingSystems
-      [
-        "x86_64-linux"
-        "aarch64-linux"
-      ]
-      (
-        system:
+  lxdVirtualMachineImageMeta = forMatchingSystems [ "x86_64-linux" "aarch64-linux" ] (
+    system:
 
-        with import ./.. { inherit system; };
+    with import ./.. { inherit system; };
 
-        hydraJob (
-          (import lib/eval-config.nix {
-            inherit system;
-            modules = [
-              configuration
-              versionModule
-              ./maintainers/scripts/lxd/lxd-virtual-machine-image.nix
-            ];
-          }).config.system.build.metadata
-        )
+    hydraJob (
+      (import lib/eval-config.nix {
+        inherit system;
+        modules = [
+          configuration
+          versionModule
+          ./maintainers/scripts/lxd/lxd-virtual-machine-image.nix
+        ];
+      }).config.system.build.metadata
+    )
 
-      );
+  );
 
   # Ensure that all packages used by the minimal NixOS config end up in the channel.
   dummy = forAllSystems (

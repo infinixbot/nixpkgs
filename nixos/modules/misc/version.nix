@@ -24,19 +24,7 @@ let
     ;
 
   needsEscaping = s: null != builtins.match "[a-zA-Z0-9]+" s;
-  escapeIfNecessary =
-    s:
-    if needsEscaping s then
-      s
-    else
-      ''"${
-        lib.escape [
-          "\$"
-          "\""
-          "\\"
-          "\`"
-        ] s
-      }"'';
+  escapeIfNecessary = s: if needsEscaping s then s else ''"${lib.escape [ "\$" "\"" "\\" "\`" ] s}"'';
   attrsToText =
     attrs:
     concatStringsSep "\n" (mapAttrsToList (n: v: ''${n}=${escapeIfNecessary (toString v)}'') attrs)
@@ -76,50 +64,26 @@ in
 {
   imports = [
     ./label.nix
-    (mkRenamedOptionModule
-      [
-        "system"
-        "nixosVersion"
-      ]
-      [
-        "system"
-        "nixos"
-        "version"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "system"
-        "nixosVersionSuffix"
-      ]
-      [
-        "system"
-        "nixos"
-        "versionSuffix"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "system"
-        "nixosRevision"
-      ]
-      [
-        "system"
-        "nixos"
-        "revision"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "system"
-        "nixosLabel"
-      ]
-      [
-        "system"
-        "nixos"
-        "label"
-      ]
-    )
+    (mkRenamedOptionModule [ "system" "nixosVersion" ] [
+      "system"
+      "nixos"
+      "version"
+    ])
+    (mkRenamedOptionModule [ "system" "nixosVersionSuffix" ] [
+      "system"
+      "nixos"
+      "versionSuffix"
+    ])
+    (mkRenamedOptionModule [ "system" "nixosRevision" ] [
+      "system"
+      "nixos"
+      "revision"
+    ])
+    (mkRenamedOptionModule [ "system" "nixosLabel" ] [
+      "system"
+      "nixos"
+      "label"
+    ])
   ];
 
   options.boot.initrd.osRelease = mkOption {

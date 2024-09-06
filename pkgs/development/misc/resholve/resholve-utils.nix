@@ -39,11 +39,7 @@ rec {
     else if builtins.isList val then
       "${name}:${semicolons (map lib.escapeShellArg val)}"
     else
-      nope [
-        solution
-        env
-        name
-      ] "unexpected type: ${builtins.typeOf val}";
+      nope [ solution env name ] "unexpected type: ${builtins.typeOf val}";
 
   # Build fake/fix/keep directives from Nix types
   phraseDirectives =
@@ -72,10 +68,7 @@ rec {
     else if builtins.isAttrs val then
       spaces (phraseDirectives solution env val)
     else
-      nope [
-        solution
-        env
-      ] "unexpected type: ${builtins.typeOf val}";
+      nope [ solution env ] "unexpected type: ${builtins.typeOf val}";
 
   # Shell-format each env value
   shellEnv =

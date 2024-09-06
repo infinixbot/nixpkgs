@@ -449,10 +449,7 @@ let
               [ "ipAddress" ]
               [ "prefixLength" ]
             ]
-            [
-              "ipv4"
-              "addresses"
-            ]
+            [ "ipv4" "addresses" ]
             (
               cfg:
               with cfg;
@@ -467,10 +464,7 @@ let
               [ "ipv6Address" ]
               [ "ipv6PrefixLength" ]
             ]
-            [
-              "ipv6"
-              "addresses"
-            ]
+            [ "ipv6" "addresses" ]
             (
               cfg:
               with cfg;

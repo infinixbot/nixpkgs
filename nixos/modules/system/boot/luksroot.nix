@@ -609,12 +609,7 @@ let
 in
 {
   imports = [
-    (mkRemovedOptionModule [
-      "boot"
-      "initrd"
-      "luks"
-      "enable"
-    ] "")
+    (mkRemovedOptionModule [ "boot" "initrd" "luks" "enable" ] "")
   ];
 
   options = {

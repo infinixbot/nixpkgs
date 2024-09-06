@@ -22,106 +22,55 @@ in
   };
 
   imports = [
-    (mkRemovedOptionModule [
-      "services"
-      "samba"
-      "defaultShare"
-    ] "")
-    (mkRemovedOptionModule
-      [
-        "services"
-        "samba"
-        "syncPasswordsByPam"
-      ]
+    (mkRemovedOptionModule [ "services" "samba" "defaultShare" ] "")
+    (mkRemovedOptionModule [ "services" "samba" "syncPasswordsByPam" ]
       "This option has been removed by upstream, see https://bugzilla.samba.org/show_bug.cgi?id=10669#c10"
     )
 
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "samba"
-        "configText"
-      ]
-      ''
-        Use services.samba.settings instead.
+    (lib.mkRemovedOptionModule [ "services" "samba" "configText" ] ''
+      Use services.samba.settings instead.
 
-        This is part of the general move to use structured settings instead of raw
-        text for config as introduced by RFC0042:
-        https://github.com/NixOS/rfcs/blob/master/rfcs/0042-config-option.md
-      ''
-    )
+      This is part of the general move to use structured settings instead of raw
+      text for config as introduced by RFC0042:
+      https://github.com/NixOS/rfcs/blob/master/rfcs/0042-config-option.md
+    '')
     (lib.mkRemovedOptionModule [
       "services"
       "samba"
       "extraConfig"
     ] "Use services.samba.settings instead.")
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "samba"
-        "invalidUsers"
-      ]
-      [
-        "services"
-        "samba"
-        "settings"
-        "global"
-        "invalid users"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "samba"
-        "securityType"
-      ]
-      [
-        "services"
-        "samba"
-        "settings"
-        "global"
-        "security type"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "samba"
-        "shares"
-      ]
-      [
-        "services"
-        "samba"
-        "settings"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "samba" "invalidUsers" ] [
+      "services"
+      "samba"
+      "settings"
+      "global"
+      "invalid users"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "samba" "securityType" ] [
+      "services"
+      "samba"
+      "settings"
+      "global"
+      "security type"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "samba" "shares" ] [
+      "services"
+      "samba"
+      "settings"
+    ])
 
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "samba"
-        "enableWinbindd"
-      ]
-      [
-        "services"
-        "samba"
-        "winbindd"
-        "enable"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "samba"
-        "enableNmbd"
-      ]
-      [
-        "services"
-        "samba"
-        "nmbd"
-        "enable"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "samba" "enableWinbindd" ] [
+      "services"
+      "samba"
+      "winbindd"
+      "enable"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "samba" "enableNmbd" ] [
+      "services"
+      "samba"
+      "nmbd"
+      "enable"
+    ])
   ];
 
   ###### interface

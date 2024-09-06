@@ -14,35 +14,17 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "locate"
-        "period"
-      ]
-      [
-        "services"
-        "locate"
-        "interval"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "locate"
-        "locate"
-      ]
-      [
-        "services"
-        "locate"
-        "package"
-      ]
-    )
-    (lib.mkRemovedOptionModule [
+    (lib.mkRenamedOptionModule [ "services" "locate" "period" ] [
       "services"
       "locate"
-      "includeStore"
-    ] "Use services.locate.prunePaths")
+      "interval"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "locate" "locate" ] [
+      "services"
+      "locate"
+      "package"
+    ])
+    (lib.mkRemovedOptionModule [ "services" "locate" "includeStore" ] "Use services.locate.prunePaths")
   ];
 
   options.services.locate = {
@@ -55,15 +37,9 @@ in
       '';
     };
 
-    package =
-      lib.mkPackageOption pkgs
-        [
-          "findutils"
-          "locate"
-        ]
-        {
-          example = "mlocate";
-        };
+    package = lib.mkPackageOption pkgs [ "findutils" "locate" ] {
+      example = "mlocate";
+    };
 
     interval = lib.mkOption {
       type = lib.types.str;

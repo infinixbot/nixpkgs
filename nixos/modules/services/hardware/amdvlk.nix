@@ -17,10 +17,7 @@ in
     supportExperimental.enable = lib.mkEnableOption "Experimental features support";
 
     support32Bit.enable = lib.mkEnableOption "32-bit driver support";
-    support32Bit.package = lib.mkPackageOption pkgs [
-      "driversi686Linux"
-      "amdvlk"
-    ] { };
+    support32Bit.package = lib.mkPackageOption pkgs [ "driversi686Linux" "amdvlk" ] { };
 
     settings = lib.mkOption {
       type = with lib.types; attrsOf (either str int);

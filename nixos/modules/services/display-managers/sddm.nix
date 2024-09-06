@@ -392,10 +392,7 @@ in
         '';
       };
 
-      package = mkPackageOption pkgs [
-        "plasma5Packages"
-        "sddm"
-      ] { };
+      package = mkPackageOption pkgs [ "plasma5Packages" "sddm" ] { };
 
       enableHidpi = mkOption {
         type = types.bool;

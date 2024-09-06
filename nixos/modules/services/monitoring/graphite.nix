@@ -75,21 +75,9 @@ in
 {
 
   imports = [
-    (mkRemovedOptionModule [
-      "services"
-      "graphite"
-      "api"
-    ] "")
-    (mkRemovedOptionModule [
-      "services"
-      "graphite"
-      "beacon"
-    ] "")
-    (mkRemovedOptionModule [
-      "services"
-      "graphite"
-      "pager"
-    ] "")
+    (mkRemovedOptionModule [ "services" "graphite" "api" ] "")
+    (mkRemovedOptionModule [ "services" "graphite" "beacon" ] "")
+    (mkRemovedOptionModule [ "services" "graphite" "pager" ] "")
   ];
 
   ###### interface

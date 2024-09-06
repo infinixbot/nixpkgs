@@ -54,18 +54,11 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "automysqlbackup"
-        "config"
-      ]
-      [
-        "services"
-        "automysqlbackup"
-        "settings"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "automysqlbackup" "config" ] [
+      "services"
+      "automysqlbackup"
+      "settings"
+    ])
   ];
 
   # interface

@@ -14,11 +14,7 @@ let
       configLine:
       "grep -q '^${configLine.name}=' theme.conf || echo '${configLine.name}=' >> \"$1\"\n"
       + "sed -i -e 's/^${configLine.name}=.*$/${configLine.name}=${
-        lib.escape [
-          "/"
-          "&"
-          "\\"
-        ] (customToString configLine.value)
+        lib.escape [ "/" "&" "\\" ] (customToString configLine.value)
       }/' theme.conf"
     ) configLines);
 in

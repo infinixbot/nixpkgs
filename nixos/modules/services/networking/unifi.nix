@@ -226,17 +226,10 @@ in
       "unifi"
       "dataDir"
     ] "You should move contents of dataDir to /var/lib/unifi/data")
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "unifi"
-        "openPorts"
-      ]
-      [
-        "services"
-        "unifi"
-        "openFirewall"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "unifi" "openPorts" ] [
+      "services"
+      "unifi"
+      "openFirewall"
+    ])
   ];
 }

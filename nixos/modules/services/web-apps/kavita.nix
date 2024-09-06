@@ -14,43 +14,22 @@ let
 in
 {
   imports = [
-    (lib.mkChangedOptionModule
-      [
-        "services"
-        "kavita"
-        "ipAdresses"
-      ]
-      [
-        "services"
-        "kavita"
-        "settings"
-        "IpAddresses"
-      ]
+    (lib.mkChangedOptionModule [ "services" "kavita" "ipAdresses" ]
+      [ "services" "kavita" "settings" "IpAddresses" ]
       (
         config:
         let
-          value = lib.getAttrFromPath [
-            "services"
-            "kavita"
-            "ipAdresses"
-          ] config;
+          value = lib.getAttrFromPath [ "services" "kavita" "ipAdresses" ] config;
         in
         lib.concatStringsSep "," value
       )
     )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "kavita"
-        "port"
-      ]
-      [
-        "services"
-        "kavita"
-        "settings"
-        "Port"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "kavita" "port" ] [
+      "services"
+      "kavita"
+      "settings"
+      "Port"
+    ])
   ];
 
   options.services.kavita = {

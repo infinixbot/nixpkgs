@@ -159,64 +159,31 @@ in
   };
 
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "fwupd"
-        "blacklistDevices"
-      ]
-      [
-        "services"
-        "fwupd"
-        "daemonSettings"
-        "DisabledDevices"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "fwupd"
-        "blacklistPlugins"
-      ]
-      [
-        "services"
-        "fwupd"
-        "daemonSettings"
-        "DisabledPlugins"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "fwupd"
-        "disabledDevices"
-      ]
-      [
-        "services"
-        "fwupd"
-        "daemonSettings"
-        "DisabledDevices"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "fwupd"
-        "disabledPlugins"
-      ]
-      [
-        "services"
-        "fwupd"
-        "daemonSettings"
-        "DisabledPlugins"
-      ]
-    )
-    (lib.mkRemovedOptionModule
-      [
-        "services"
-        "fwupd"
-        "enableTestRemote"
-      ]
+    (lib.mkRenamedOptionModule [ "services" "fwupd" "blacklistDevices" ] [
+      "services"
+      "fwupd"
+      "daemonSettings"
+      "DisabledDevices"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "fwupd" "blacklistPlugins" ] [
+      "services"
+      "fwupd"
+      "daemonSettings"
+      "DisabledPlugins"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "fwupd" "disabledDevices" ] [
+      "services"
+      "fwupd"
+      "daemonSettings"
+      "DisabledDevices"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "fwupd" "disabledPlugins" ] [
+      "services"
+      "fwupd"
+      "daemonSettings"
+      "DisabledPlugins"
+    ])
+    (lib.mkRemovedOptionModule [ "services" "fwupd" "enableTestRemote" ]
       "This option was removed after being removed upstream. It only provided a method for testing fwupd functionality, and should not have been exposed for use outside of nix tests."
     )
   ];

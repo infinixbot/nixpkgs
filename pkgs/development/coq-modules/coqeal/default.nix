@@ -17,70 +17,64 @@
   inherit version;
   defaultVersion =
     with lib.versions;
-    lib.switch
-      [
-        coq.version
-        mathcomp.version
-      ]
-      [
-        {
-          cases = [
-            (range "8.16" "8.20")
-            (isGe "2.0.0")
-          ];
-          out = "2.0.1";
-        }
-        {
-          cases = [
-            (range "8.16" "8.17")
-            (isGe "2.0.0")
-          ];
-          out = "2.0.0";
-        }
-        {
-          cases = [
-            (range "8.15" "8.18")
-            (range "1.15.0" "1.18.0")
-          ];
-          out = "1.1.3";
-        }
-        {
-          cases = [
-            (range "8.13" "8.17")
-            (range "1.13.0" "1.18.0")
-          ];
-          out = "1.1.1";
-        }
-        {
-          cases = [
-            (range "8.10" "8.15")
-            (range "1.12.0" "1.18.0")
-          ];
-          out = "1.1.0";
-        }
-        {
-          cases = [
-            (isGe "8.10")
-            (range "1.11.0" "1.12.0")
-          ];
-          out = "1.0.5";
-        }
-        {
-          cases = [
-            (isGe "8.7")
-            "1.11.0"
-          ];
-          out = "1.0.4";
-        }
-        {
-          cases = [
-            (isGe "8.7")
-            "1.10.0"
-          ];
-          out = "1.0.3";
-        }
-      ]
-      null;
+    lib.switch [ coq.version mathcomp.version ] [
+      {
+        cases = [
+          (range "8.16" "8.20")
+          (isGe "2.0.0")
+        ];
+        out = "2.0.1";
+      }
+      {
+        cases = [
+          (range "8.16" "8.17")
+          (isGe "2.0.0")
+        ];
+        out = "2.0.0";
+      }
+      {
+        cases = [
+          (range "8.15" "8.18")
+          (range "1.15.0" "1.18.0")
+        ];
+        out = "1.1.3";
+      }
+      {
+        cases = [
+          (range "8.13" "8.17")
+          (range "1.13.0" "1.18.0")
+        ];
+        out = "1.1.1";
+      }
+      {
+        cases = [
+          (range "8.10" "8.15")
+          (range "1.12.0" "1.18.0")
+        ];
+        out = "1.1.0";
+      }
+      {
+        cases = [
+          (isGe "8.10")
+          (range "1.11.0" "1.12.0")
+        ];
+        out = "1.0.5";
+      }
+      {
+        cases = [
+          (isGe "8.7")
+          "1.11.0"
+        ];
+        out = "1.0.4";
+      }
+      {
+        cases = [
+          (isGe "8.7")
+          "1.10.0"
+        ];
+        out = "1.0.3";
+      }
+    ] null;
 
   release."2.0.1".sha256 = "sha256-d/IQ4IdS2tpyPewcGobj2S6m2HU+iXQmlvR+ITNIcjI=";
   release."2.0.0".sha256 = "sha256-SG/KVnRJz2P+ZxkWVp1dDOnc/JVgigoexKfRUh1Y0GM";

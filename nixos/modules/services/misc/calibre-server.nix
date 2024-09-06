@@ -28,25 +28,12 @@ in
 
 {
   imports = [
-    (lib.mkChangedOptionModule
-      [
-        "services"
-        "calibre-server"
-        "libraryDir"
-      ]
-      [
-        "services"
-        "calibre-server"
-        "libraries"
-      ]
+    (lib.mkChangedOptionModule [ "services" "calibre-server" "libraryDir" ]
+      [ "services" "calibre-server" "libraries" ]
       (
         config:
         let
-          libraryDir = lib.getAttrFromPath [
-            "services"
-            "calibre-server"
-            "libraryDir"
-          ] config;
+          libraryDir = lib.getAttrFromPath [ "services" "calibre-server" "libraryDir" ] config;
         in
         [ libraryDir ]
       )

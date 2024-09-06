@@ -68,20 +68,10 @@ let
 in
 {
   imports = [
-    (mkRemovedOptionModule
-      [
-        "services"
-        "syncplay"
-        "user"
-      ]
+    (mkRemovedOptionModule [ "services" "syncplay" "user" ]
       "The syncplay service now uses DynamicUser, override the systemd unit settings if you need the old functionality."
     )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "syncplay"
-        "group"
-      ]
+    (mkRemovedOptionModule [ "services" "syncplay" "group" ]
       "The syncplay service now uses DynamicUser, override the systemd unit settings if you need the old functionality."
     )
   ];

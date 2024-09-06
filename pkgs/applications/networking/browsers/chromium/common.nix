@@ -131,15 +131,7 @@ let
     let
       # Serialize Nix types into GN types according to this document:
       # https://source.chromium.org/gn/gn/+/master:docs/language.md
-      mkGnString =
-        value:
-        "\"${
-          lib.escape [
-            "\""
-            "$"
-            "\\"
-          ] value
-        }\"";
+      mkGnString = value: "\"${lib.escape [ "\"" "$" "\\" ] value}\"";
       sanitize =
         value:
         if value == true then

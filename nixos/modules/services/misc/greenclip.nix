@@ -12,10 +12,7 @@ in
   options.services.greenclip = {
     enable = lib.mkEnableOption "Greenclip, a clipboard manager";
 
-    package = lib.mkPackageOption pkgs [
-      "haskellPackages"
-      "greenclip"
-    ] { };
+    package = lib.mkPackageOption pkgs [ "haskellPackages" "greenclip" ] { };
   };
 
   config = lib.mkIf cfg.enable {

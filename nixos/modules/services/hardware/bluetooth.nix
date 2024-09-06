@@ -38,32 +38,18 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "hardware"
-        "bluetooth"
-        "config"
-      ]
-      [
-        "hardware"
-        "bluetooth"
-        "settings"
-      ]
-    )
-    (mkRemovedOptionModule
-      [
-        "hardware"
-        "bluetooth"
-        "extraConfig"
-      ]
-      ''
-        Use hardware.bluetooth.settings instead.
+    (mkRenamedOptionModule [ "hardware" "bluetooth" "config" ] [
+      "hardware"
+      "bluetooth"
+      "settings"
+    ])
+    (mkRemovedOptionModule [ "hardware" "bluetooth" "extraConfig" ] ''
+      Use hardware.bluetooth.settings instead.
 
-        This is part of the general move to use structured settings instead of raw
-        text for config as introduced by RFC0042:
-        https://github.com/NixOS/rfcs/blob/master/rfcs/0042-config-option.md
-      ''
-    )
+      This is part of the general move to use structured settings instead of raw
+      text for config as introduced by RFC0042:
+      https://github.com/NixOS/rfcs/blob/master/rfcs/0042-config-option.md
+    '')
   ];
 
   ###### interface

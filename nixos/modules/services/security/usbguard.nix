@@ -278,12 +278,7 @@ in
       '';
   };
   imports = [
-    (mkRemovedOptionModule
-      [
-        "services"
-        "usbguard"
-        "IPCAccessControlFiles"
-      ]
+    (mkRemovedOptionModule [ "services" "usbguard" "IPCAccessControlFiles" ]
       "The usbguard module now hardcodes IPCAccessControlFiles to /var/lib/usbguard/IPCAccessControl.d."
     )
     (mkRemovedOptionModule [
@@ -291,17 +286,10 @@ in
       "usbguard"
       "auditFilePath"
     ] "Removed usbguard module audit log files. Audit logs can be found in the systemd journal.")
-    (mkRenamedOptionModule
-      [
-        "services"
-        "usbguard"
-        "implictPolicyTarget"
-      ]
-      [
-        "services"
-        "usbguard"
-        "implicitPolicyTarget"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "usbguard" "implictPolicyTarget" ] [
+      "services"
+      "usbguard"
+      "implicitPolicyTarget"
+    ])
   ];
 }

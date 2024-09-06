@@ -168,18 +168,10 @@ in
   sqlite3 = addToBuildInputs pkgs.sqlite;
   stemmer = old: (addToBuildInputs pkgs.libstemmer old) // (addToCscOptions "-L -lstemmer" old);
   stfl =
-    old:
-    (addToBuildInputs [
-      pkgs.ncurses
-      pkgs.stfl
-    ] old)
-    // (addToCscOptions "-L -lncurses" old);
+    old: (addToBuildInputs [ pkgs.ncurses pkgs.stfl ] old) // (addToCscOptions "-L -lncurses" old);
   taglib =
     old:
-    (addToBuildInputs [
-      pkgs.zlib
-      pkgs.taglib
-    ] old)
+    (addToBuildInputs [ pkgs.zlib pkgs.taglib ] old)
     // (
       # needed for tablib-config to be in PATH
       addToNativeBuildInputs pkgs.taglib old

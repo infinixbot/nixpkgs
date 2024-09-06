@@ -1020,11 +1020,7 @@ self: super:
               + "/${name}";
           }) super.${name};
       in
-      lib.genAttrs [
-        "selda"
-        "selda-sqlite"
-        "selda-json"
-      ] mkSeldaPackage
+      lib.genAttrs [ "selda" "selda-sqlite" "selda-json" ] mkSeldaPackage
     )
     selda
     selda-sqlite

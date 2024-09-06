@@ -60,19 +60,12 @@ let
     name:
     let
       # trigger a deep type check using the module system
-      typeCheck =
-        lib.modules.mergeDefinitions
-          [
-            "tests"
-            name
-          ]
-          format.type
-          [
-            {
-              file = "format-test-${name}";
-              value = input;
-            }
-          ];
+      typeCheck = lib.modules.mergeDefinitions [ "tests" name ] format.type [
+        {
+          file = "format-test-${name}";
+          value = input;
+        }
+      ];
       # actually use the return value to trigger the evaluation
       eval = builtins.tryEval (typeCheck.mergedValue == input);
       # the check failing is what we want, so don't do anything here

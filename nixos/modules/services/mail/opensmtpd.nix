@@ -21,18 +21,11 @@ in
   ###### interface
 
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "opensmtpd"
-        "addSendmailToSystemPath"
-      ]
-      [
-        "services"
-        "opensmtpd"
-        "setSendmail"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "opensmtpd" "addSendmailToSystemPath" ] [
+      "services"
+      "opensmtpd"
+      "setSendmail"
+    ])
   ];
 
   options = {

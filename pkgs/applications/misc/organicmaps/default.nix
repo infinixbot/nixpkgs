@@ -47,18 +47,7 @@ stdenv.mkDerivation rec {
     echo "exit 0" > tools/unix/check_cert.sh
 
     # crude fix for https://github.com/organicmaps/organicmaps/issues/1862
-    echo "echo ${
-      lib.replaceStrings
-        [
-          "."
-          "-"
-        ]
-        [
-          ""
-          ""
-        ]
-        version
-    }" > tools/unix/version.sh
+    echo "echo ${lib.replaceStrings [ "." "-" ] [ "" "" ] version}" > tools/unix/version.sh
 
     # TODO use system boost instead, see https://github.com/organicmaps/organicmaps/issues/5345
     patchShebangs 3party/boost/tools/build/src/engine/build.sh

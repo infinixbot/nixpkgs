@@ -14,21 +14,10 @@ let
   pname = "qogir-icon-theme";
 
 in
-lib.checkListOfEnum "${pname}: color variants"
-  [
-    "standard"
-    "dark"
-    "all"
-  ]
-  colorVariants
+lib.checkListOfEnum "${pname}: color variants" [ "standard" "dark" "all" ] colorVariants
   lib.checkListOfEnum
   "${pname}: theme variants"
-  [
-    "default"
-    "manjaro"
-    "ubuntu"
-    "all"
-  ]
+  [ "default" "manjaro" "ubuntu" "all" ]
   themeVariants
 
   stdenvNoCC.mkDerivation

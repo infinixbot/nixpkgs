@@ -330,12 +330,7 @@ in
 
   imports = [
     (lib.mkRemovedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "desktopManagerHandlesLidAndPower"
-      ]
+      [ "services" "xserver" "displayManager" "desktopManagerHandlesLidAndPower" ]
       "The option is no longer necessary because all display managers have already delegated lid management to systemd."
     )
     (lib.mkRenamedOptionModule
@@ -352,32 +347,16 @@ in
         "logToFile"
       ]
     )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "logToJournal"
-      ]
-      [
-        "services"
-        "displayManager"
-        "logToJournal"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "displayManager"
-        "extraSessionFilesPackages"
-      ]
-      [
-        "services"
-        "displayManager"
-        "sessionPackages"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "logToJournal" ] [
+      "services"
+      "displayManager"
+      "logToJournal"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "xserver" "displayManager" "extraSessionFilesPackages" ] [
+      "services"
+      "displayManager"
+      "sessionPackages"
+    ])
   ];
 
 }

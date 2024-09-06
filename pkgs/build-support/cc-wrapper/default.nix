@@ -133,17 +133,7 @@ let
   # without interfering. For the moment, it is defined as the target triple,
   # adjusted to be a valid bash identifier. This should be considered an
   # unstable implementation detail, however.
-  suffixSalt =
-    replaceStrings
-      [
-        "-"
-        "."
-      ]
-      [
-        "_"
-        "_"
-      ]
-      targetPlatform.config;
+  suffixSalt = replaceStrings [ "-" "." ] [ "_" "_" ] targetPlatform.config;
 
   useGccForLibs =
     useCcForLibs
@@ -868,12 +858,7 @@ stdenvNoCC.mkDerivation {
     in
     (optionalAttrs (cc_ ? meta) (removeAttrs cc.meta [ "priority" ]))
     // {
-      description =
-        attrByPath [
-          "meta"
-          "description"
-        ] "System C compiler" cc_
-        + " (wrapper script)";
+      description = attrByPath [ "meta" "description" ] "System C compiler" cc_ + " (wrapper script)";
       priority = 10;
       mainProgram = if name != "" then name else "${targetPrefix}${ccName}";
     };

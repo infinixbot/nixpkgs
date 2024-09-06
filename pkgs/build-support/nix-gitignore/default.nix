@@ -81,16 +81,10 @@ rec {
         ];
 
       # regex -> regex
-      handleHashesBangs =
-        replaceStrings
-          [
-            "\\#"
-            "\\!"
-          ]
-          [
-            "#"
-            "!"
-          ];
+      handleHashesBangs = replaceStrings [ "\\#" "\\!" ] [
+        "#"
+        "!"
+      ];
 
       # ignore -> regex
       substWildcards =

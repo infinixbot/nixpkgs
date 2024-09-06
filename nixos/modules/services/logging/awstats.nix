@@ -108,18 +108,11 @@ in
       "service"
       "urlPrefix"
     ] "Please set per domain with `services.awstats.configs.<name>.webService.urlPrefix`")
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "awstats"
-        "vardir"
-      ]
-      [
-        "services"
-        "awstats"
-        "dataDir"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "awstats" "vardir" ] [
+      "services"
+      "awstats"
+      "dataDir"
+    ])
   ];
 
   options.services.awstats = {

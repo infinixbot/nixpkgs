@@ -17,17 +17,7 @@
 }:
 let
   version = "2.0-1442";
-  urlVersion =
-    builtins.replaceStrings
-      [
-        "."
-        "-"
-      ]
-      [
-        "00"
-        "0"
-      ]
-      version;
+  urlVersion = builtins.replaceStrings [ "." "-" ] [ "00" "0" ] version;
 in
 stdenv.mkDerivation {
   pname = "roon-server";

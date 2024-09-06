@@ -228,16 +228,8 @@ in
   };
 
   imports = [
-    (mkRemovedOptionModule
-      [
-        "services"
-        "jira"
-        "sso"
-        "applicationPassword"
-      ]
-      ''
-        Use `applicationPasswordFile` instead!
-      ''
-    )
+    (mkRemovedOptionModule [ "services" "jira" "sso" "applicationPassword" ] ''
+      Use `applicationPasswordFile` instead!
+    '')
   ];
 }

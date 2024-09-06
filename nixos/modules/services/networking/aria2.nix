@@ -43,45 +43,24 @@ in
       "aria2"
       "extraArguments"
     ] "Use services.aria2.settings instead")
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "aria2"
-        "downloadDir"
-      ]
-      [
-        "services"
-        "aria2"
-        "settings"
-        "dir"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "aria2"
-        "listenPortRange"
-      ]
-      [
-        "services"
-        "aria2"
-        "settings"
-        "listen-port"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "aria2"
-        "rpcListenPort"
-      ]
-      [
-        "services"
-        "aria2"
-        "settings"
-        "rpc-listen-port"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "aria2" "downloadDir" ] [
+      "services"
+      "aria2"
+      "settings"
+      "dir"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "aria2" "listenPortRange" ] [
+      "services"
+      "aria2"
+      "settings"
+      "listen-port"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "aria2" "rpcListenPort" ] [
+      "services"
+      "aria2"
+      "settings"
+      "rpc-listen-port"
+    ])
   ];
 
   options = {

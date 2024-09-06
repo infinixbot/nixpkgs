@@ -214,62 +214,44 @@ in
           specified; this option has no effect on connections using IKEv2.
         '';
 
-        fragmentation =
-          mkEnumParam
-            [
-              "yes"
-              "accept"
-              "force"
-              "no"
-            ]
-            "yes"
-            ''
-              Use IKE fragmentation (proprietary IKEv1 extension or RFC 7383 IKEv2
-              fragmentation). Acceptable values are `yes` (the default
-              since 5.5.1), `accept` (since versions:5.5.3),
-              `force` and `no`.
+        fragmentation = mkEnumParam [ "yes" "accept" "force" "no" ] "yes" ''
+          Use IKE fragmentation (proprietary IKEv1 extension or RFC 7383 IKEv2
+          fragmentation). Acceptable values are `yes` (the default
+          since 5.5.1), `accept` (since versions:5.5.3),
+          `force` and `no`.
 
-              - If set to `yes`, and the peer
-                supports it, oversized IKE messages will be sent in fragments.
-              - If set to
-                `accept`, support for fragmentation is announced to the peer but the daemon
-                does not send its own messages in fragments.
-              - If set to `force` (only
-                supported for IKEv1) the initial IKE message will already be fragmented if
-                required.
-              - Finally, setting the option to `no` will disable announcing
-                support for this feature.
+          - If set to `yes`, and the peer
+            supports it, oversized IKE messages will be sent in fragments.
+          - If set to
+            `accept`, support for fragmentation is announced to the peer but the daemon
+            does not send its own messages in fragments.
+          - If set to `force` (only
+            supported for IKEv1) the initial IKE message will already be fragmented if
+            required.
+          - Finally, setting the option to `no` will disable announcing
+            support for this feature.
 
-              Note that fragmented IKE messages sent by a peer are always processed
-              irrespective of the value of this option (even when set to no).
-            '';
+          Note that fragmented IKE messages sent by a peer are always processed
+          irrespective of the value of this option (even when set to no).
+        '';
 
-        childless =
-          mkEnumParam
-            [
-              "allow"
-              "prefer"
-              "force"
-              "never"
-            ]
-            "allow"
-            ''
-              Use childless IKE_SA initiation (_allow_, _prefer_, _force_ or _never_).
+        childless = mkEnumParam [ "allow" "prefer" "force" "never" ] "allow" ''
+          Use childless IKE_SA initiation (_allow_, _prefer_, _force_ or _never_).
 
-              Use childless IKE_SA initiation (RFC 6023) for IKEv2, with the first
-              CHILD_SA created with a separate CREATE_CHILD_SA exchange (e.g. to use an
-              independent DH exchange for all CHILD_SAs).  Acceptable values are `allow`
-              (the default), `prefer`, `force` and `never`. If set to `allow`, responders
-              will accept childless IKE_SAs (as indicated via notify in the IKE_SA_INIT
-              response) while initiators continue to create regular IKE_SAs with the first
-              CHILD_SA created during IKE_AUTH, unless the IKE_SA is initiated explicitly
-              without any children (which will fail if the responder does not support or
-              has disabled this extension). The effect of `prefer` is the same as `allow`
-              on responders, but as initiator a childless IKE_SA is initiated if the
-              responder supports it. If set to `force`, only childless initiation is
-              accepted in either role.  Finally, setting the option to `never` disables
-              support for childless IKE_SAs as responder.
-            '';
+          Use childless IKE_SA initiation (RFC 6023) for IKEv2, with the first
+          CHILD_SA created with a separate CREATE_CHILD_SA exchange (e.g. to use an
+          independent DH exchange for all CHILD_SAs).  Acceptable values are `allow`
+          (the default), `prefer`, `force` and `never`. If set to `allow`, responders
+          will accept childless IKE_SAs (as indicated via notify in the IKE_SA_INIT
+          response) while initiators continue to create regular IKE_SAs with the first
+          CHILD_SA created during IKE_AUTH, unless the IKE_SA is initiated explicitly
+          without any children (which will fail if the responder does not support or
+          has disabled this extension). The effect of `prefer` is the same as `allow`
+          on responders, but as initiator a childless IKE_SA is initiated if the
+          responder supports it. If set to `force`, only childless initiation is
+          accepted in either role.  Finally, setting the option to `never` disables
+          support for childless IKE_SAs as responder.
+        '';
 
         send_certreq = mkYesNoParam yes ''
           Send certificate request payloads to offer trusted root CA certificates to
@@ -280,24 +262,16 @@ in
           of the initial IKE packets.
         '';
 
-        send_cert =
-          mkEnumParam
-            [
-              "always"
-              "never"
-              "ifasked"
-            ]
-            "ifasked"
-            ''
-              Send certificate payloads when using certificate authentication.
+        send_cert = mkEnumParam [ "always" "never" "ifasked" ] "ifasked" ''
+          Send certificate payloads when using certificate authentication.
 
-              - With the default of `ifasked` the daemon sends
-                certificate payloads only if certificate requests have been received.
-              - `never` disables sending of certificate payloads
-                altogether,
-              - `always` causes certificate payloads to be sent
-                unconditionally whenever certificate authentication is used.
-            '';
+          - With the default of `ifasked` the daemon sends
+            certificate payloads only if certificate requests have been received.
+          - `never` disables sending of certificate payloads
+            altogether,
+          - `always` causes certificate payloads to be sent
+            unconditionally whenever certificate authentication is used.
+        '';
 
         ppk_id = mkOptionalStrParam ''
           String identifying the Postquantum Preshared Key (PPK) to be used.
@@ -316,37 +290,28 @@ in
           establishes or fails with a permanent error.
         '';
 
-        unique =
-          mkEnumParam
-            [
-              "no"
-              "never"
-              "keep"
-              "replace"
-            ]
-            "no"
-            ''
-              Connection uniqueness policy to enforce. To avoid multiple connections
-              from the same user, a uniqueness policy can be enforced.
+        unique = mkEnumParam [ "no" "never" "keep" "replace" ] "no" ''
+          Connection uniqueness policy to enforce. To avoid multiple connections
+          from the same user, a uniqueness policy can be enforced.
 
-              - The value `never` does never enforce such a policy, even
-                if a peer included INITIAL_CONTACT notification messages,
-              - whereas `no` replaces existing connections for the same
-                identity if a new one has the INITIAL_CONTACT notify.
-              - `keep` rejects new connection attempts if the same user
-                already has an active connection,
-              - `replace` deletes any existing connection if a new one
-                for the same user gets established.
+          - The value `never` does never enforce such a policy, even
+            if a peer included INITIAL_CONTACT notification messages,
+          - whereas `no` replaces existing connections for the same
+            identity if a new one has the INITIAL_CONTACT notify.
+          - `keep` rejects new connection attempts if the same user
+            already has an active connection,
+          - `replace` deletes any existing connection if a new one
+            for the same user gets established.
 
-              To compare connections for uniqueness, the remote IKE identity is used. If
-              EAP or XAuth authentication is involved, the EAP-Identity or XAuth
-              username is used to enforce the uniqueness policy instead.
+          To compare connections for uniqueness, the remote IKE identity is used. If
+          EAP or XAuth authentication is involved, the EAP-Identity or XAuth
+          username is used to enforce the uniqueness policy instead.
 
-              On initiators this setting specifies whether an INITIAL_CONTACT notify is
-              sent during IKE_AUTH if no existing connection is found with the remote
-              peer (determined by the identities of the first authentication
-              round). Unless set to `never` the client will send a notify.
-            '';
+          On initiators this setting specifies whether an INITIAL_CONTACT notify is
+          sent during IKE_AUTH if no existing connection is found with the remote
+          peer (determined by the identities of the first authentication
+          round). Unless set to `never` the client will send a notify.
+        '';
 
         reauth_time = mkDurationParam "0s" ''
           Time to schedule IKE reauthentication. IKE reauthentication recreates the
@@ -633,25 +598,17 @@ in
                 `pubkey` directory or an absolute path.
               '';
 
-              revocation =
-                mkEnumParam
-                  [
-                    "strict"
-                    "ifuri"
-                    "relaxed"
-                  ]
-                  "relaxed"
-                  ''
-                    Certificate revocation policy for CRL or OCSP revocation.
+              revocation = mkEnumParam [ "strict" "ifuri" "relaxed" ] "relaxed" ''
+                Certificate revocation policy for CRL or OCSP revocation.
 
-                    - A `strict` revocation policy fails if no revocation information is
-                      available, i.e. the certificate is not known to be unrevoked.
-                    - `ifuri` fails only if a CRL/OCSP URI is available, but certificate
-                      revocation checking fails, i.e. there should be revocation information
-                      available, but it could not be obtained.
-                    - The default revocation policy `relaxed` fails only if a certificate is
-                      revoked, i.e. it is explicitly known that it is bad.
-                  '';
+                - A `strict` revocation policy fails if no revocation information is
+                  available, i.e. the certificate is not known to be unrevoked.
+                - `ifuri` fails only if a CRL/OCSP URI is available, but certificate
+                  revocation checking fails, i.e. there should be revocation information
+                  available, but it could not be obtained.
+                - The default revocation policy `relaxed` fails only if a certificate is
+                  revoked, i.e. it is explicitly known that it is bad.
+              '';
 
               auth = mkStrParam "pubkey" ''
                 Authentication to expect from remote. See the {option}`local`
@@ -920,21 +877,13 @@ in
                 forwarded traffic for this CHILD_SA. Since 5.5.1.
               '';
 
-              dpd_action =
-                mkEnumParam
-                  [
-                    "clear"
-                    "trap"
-                    "restart"
-                  ]
-                  "clear"
-                  ''
-                    Action to perform for this CHILD_SA on DPD timeout. The default clear
-                    closes the CHILD_SA and does not take further action. trap installs a
-                    trap policy, which will catch matching traffic and tries to re-negotiate
-                    the tunnel on-demand. restart immediately tries to re-negotiate the
-                    CHILD_SA under a fresh IKE_SA.
-                  '';
+              dpd_action = mkEnumParam [ "clear" "trap" "restart" ] "clear" ''
+                Action to perform for this CHILD_SA on DPD timeout. The default clear
+                closes the CHILD_SA and does not take further action. trap installs a
+                trap policy, which will catch matching traffic and tries to re-negotiate
+                the tunnel on-demand. restart immediately tries to re-negotiate the
+                CHILD_SA under a fresh IKE_SA.
+              '';
 
               ipcomp = mkYesNoParam no ''
                 Enable IPComp compression before encryption. If enabled, IKE tries to
@@ -1104,74 +1053,49 @@ in
                 not supported by all kernel interfaces.
               '';
 
-              copy_dscp =
-                mkEnumParam
-                  [
-                    "out"
-                    "in"
-                    "yes"
-                    "no"
-                  ]
-                  "out"
-                  ''
-                    Whether to copy the DSCP (Differentiated Services Field Codepoint)
-                    header field to/from the outer IP header in tunnel mode. The value
-                    `out` only copies the field from the inner to the outer
-                    header, the value `in` does the opposite and only
-                    copies the field from the outer to the inner header when decapsulating,
-                    the value `yes` copies the field in both directions,
-                    and the value `no` disables copying the field
-                    altogether. Setting this to `yes` or
-                    `in` could allow an attacker to adversely affect other
-                    traffic at the receiver, which is why the default is
-                    `out`. Controlling this behavior is not supported by
-                    all kernel interfaces.
-                  '';
+              copy_dscp = mkEnumParam [ "out" "in" "yes" "no" ] "out" ''
+                Whether to copy the DSCP (Differentiated Services Field Codepoint)
+                header field to/from the outer IP header in tunnel mode. The value
+                `out` only copies the field from the inner to the outer
+                header, the value `in` does the opposite and only
+                copies the field from the outer to the inner header when decapsulating,
+                the value `yes` copies the field in both directions,
+                and the value `no` disables copying the field
+                altogether. Setting this to `yes` or
+                `in` could allow an attacker to adversely affect other
+                traffic at the receiver, which is why the default is
+                `out`. Controlling this behavior is not supported by
+                all kernel interfaces.
+              '';
 
-              start_action =
-                mkEnumParam
-                  [
-                    "none"
-                    "trap"
-                    "start"
-                  ]
-                  "none"
-                  ''
-                    Action to perform after loading the configuration.
+              start_action = mkEnumParam [ "none" "trap" "start" ] "none" ''
+                Action to perform after loading the configuration.
 
-                    - The default of `none` loads the connection only, which
-                      then can be manually initiated or used as a responder configuration.
-                    - The value `trap` installs a trap policy, which triggers
-                      the tunnel as soon as matching traffic has been detected.
-                    - The value `start` initiates the connection actively.
+                - The default of `none` loads the connection only, which
+                  then can be manually initiated or used as a responder configuration.
+                - The value `trap` installs a trap policy, which triggers
+                  the tunnel as soon as matching traffic has been detected.
+                - The value `start` initiates the connection actively.
 
-                    When unloading or replacing a CHILD_SA configuration having a
-                    {option}`start_action` different from `none`,
-                    the inverse action is performed. Configurations with
-                    `start` get closed, while such with
-                    `trap` get uninstalled.
-                  '';
+                When unloading or replacing a CHILD_SA configuration having a
+                {option}`start_action` different from `none`,
+                the inverse action is performed. Configurations with
+                `start` get closed, while such with
+                `trap` get uninstalled.
+              '';
 
-              close_action =
-                mkEnumParam
-                  [
-                    "none"
-                    "trap"
-                    "start"
-                  ]
-                  "none"
-                  ''
-                    Action to perform after a CHILD_SA gets closed by the peer.
+              close_action = mkEnumParam [ "none" "trap" "start" ] "none" ''
+                Action to perform after a CHILD_SA gets closed by the peer.
 
-                    - The default of `none` does not take any action,
-                    - `trap` installs a trap policy for the CHILD_SA.
-                    - `start` tries to re-create the CHILD_SA.
+                - The default of `none` does not take any action,
+                - `trap` installs a trap policy for the CHILD_SA.
+                - `start` tries to re-create the CHILD_SA.
 
-                    {option}`close_action` does not provide any guarantee that the
-                    CHILD_SA is kept alive. It acts on explicit close messages only, but not
-                    on negotiation failures. Use trap policies to reliably re-create failed
-                    CHILD_SAs.
-                  '';
+                {option}`close_action` does not provide any guarantee that the
+                CHILD_SA is kept alive. It acts on explicit close messages only, but not
+                on negotiation failures. Use trap policies to reliably re-create failed
+                CHILD_SAs.
+              '';
 
             }
             ''

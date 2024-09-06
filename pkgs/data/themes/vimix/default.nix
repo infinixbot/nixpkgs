@@ -31,28 +31,15 @@ lib.checkListOfEnum "${pname}: theme variants"
   themeVariants
   lib.checkListOfEnum
   "${pname}: color variants"
-  [
-    "standard"
-    "light"
-    "dark"
-  ]
+  [ "standard" "light" "dark" ]
   colorVariants
   lib.checkListOfEnum
   "${pname}: size variants"
-  [
-    "standard"
-    "compact"
-    "all"
-  ]
+  [ "standard" "compact" "all" ]
   sizeVariants
   lib.checkListOfEnum
   "${pname}: tweaks"
-  [
-    "flat"
-    "grey"
-    "mix"
-    "translucent"
-  ]
+  [ "flat" "grey" "mix" "translucent" ]
   tweaks
 
   stdenvNoCC.mkDerivation

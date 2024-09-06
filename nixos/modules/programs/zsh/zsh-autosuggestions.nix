@@ -10,19 +10,12 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "programs"
-        "zsh"
-        "enableAutosuggestions"
-      ]
-      [
-        "programs"
-        "zsh"
-        "autosuggestions"
-        "enable"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "programs" "zsh" "enableAutosuggestions" ] [
+      "programs"
+      "zsh"
+      "autosuggestions"
+      "enable"
+    ])
   ];
 
   options.programs.zsh.autosuggestions = {

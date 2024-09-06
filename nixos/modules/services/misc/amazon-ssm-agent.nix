@@ -31,30 +31,16 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "ssm-agent"
-        "enable"
-      ]
-      [
-        "services"
-        "amazon-ssm-agent"
-        "enable"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "ssm-agent"
-        "package"
-      ]
-      [
-        "services"
-        "amazon-ssm-agent"
-        "package"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "ssm-agent" "enable" ] [
+      "services"
+      "amazon-ssm-agent"
+      "enable"
+    ])
+    (lib.mkRenamedOptionModule [ "services" "ssm-agent" "package" ] [
+      "services"
+      "amazon-ssm-agent"
+      "package"
+    ])
   ];
 
   options.services.amazon-ssm-agent = {

@@ -40,62 +40,30 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "programs"
-        "zsh"
-        "oh-my-zsh"
-        "enable"
-      ]
-      [
-        "programs"
-        "zsh"
-        "ohMyZsh"
-        "enable"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "programs"
-        "zsh"
-        "oh-my-zsh"
-        "theme"
-      ]
-      [
-        "programs"
-        "zsh"
-        "ohMyZsh"
-        "theme"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "programs"
-        "zsh"
-        "oh-my-zsh"
-        "custom"
-      ]
-      [
-        "programs"
-        "zsh"
-        "ohMyZsh"
-        "custom"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "programs"
-        "zsh"
-        "oh-my-zsh"
-        "plugins"
-      ]
-      [
-        "programs"
-        "zsh"
-        "ohMyZsh"
-        "plugins"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "programs" "zsh" "oh-my-zsh" "enable" ] [
+      "programs"
+      "zsh"
+      "ohMyZsh"
+      "enable"
+    ])
+    (lib.mkRenamedOptionModule [ "programs" "zsh" "oh-my-zsh" "theme" ] [
+      "programs"
+      "zsh"
+      "ohMyZsh"
+      "theme"
+    ])
+    (lib.mkRenamedOptionModule [ "programs" "zsh" "oh-my-zsh" "custom" ] [
+      "programs"
+      "zsh"
+      "ohMyZsh"
+      "custom"
+    ])
+    (lib.mkRenamedOptionModule [ "programs" "zsh" "oh-my-zsh" "plugins" ] [
+      "programs"
+      "zsh"
+      "ohMyZsh"
+      "plugins"
+    ])
   ];
 
   options = {

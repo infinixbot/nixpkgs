@@ -154,12 +154,7 @@ stdenv.mkDerivation (finalAttrs: {
       # Executes qmlplugindump
       export QT_PLUGIN_PATH=${listToQtVar [ qtbase ] qtbase.qtPluginPrefix}
       export QML2_IMPORT_PATH=${
-        listToQtVar [
-          qtdeclarative
-          lomiri-ui-toolkit
-          qtfeedback
-          qtgraphicaleffects
-        ] qtbase.qtQmlPrefix
+        listToQtVar [ qtdeclarative lomiri-ui-toolkit qtfeedback qtgraphicaleffects ] qtbase.qtQmlPrefix
       }
     '';
 

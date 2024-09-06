@@ -14,13 +14,7 @@ let
   ibusEngine = lib.types.mkOptionType {
     name = "ibus-engine";
     inherit (lib.types.package) descriptionClass merge;
-    check =
-      x:
-      (lib.types.package.check x)
-      && (attrByPath [
-        "meta"
-        "isIbusEngine"
-      ] false x);
+    check = x: (lib.types.package.check x) && (attrByPath [ "meta" "isIbusEngine" ] false x);
   };
 
   impanel = optionalString (cfg.panel != null) "--panel=${cfg.panel}";
@@ -40,19 +34,12 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule
-      [
-        "programs"
-        "ibus"
-        "plugins"
-      ]
-      [
-        "i18n"
-        "inputMethod"
-        "ibus"
-        "engines"
-      ]
-    )
+    (mkRenamedOptionModule [ "programs" "ibus" "plugins" ] [
+      "i18n"
+      "inputMethod"
+      "ibus"
+      "engines"
+    ])
   ];
 
   options = {

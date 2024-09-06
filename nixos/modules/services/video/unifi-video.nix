@@ -263,18 +263,11 @@ in
   };
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "unifi-video"
-        "openPorts"
-      ]
-      [
-        "services"
-        "unifi-video"
-        "openFirewall"
-      ]
-    )
+    (mkRenamedOptionModule [ "services" "unifi-video" "openPorts" ] [
+      "services"
+      "unifi-video"
+      "openFirewall"
+    ])
   ];
 
   meta.maintainers = with lib.maintainers; [ rsynnest ];

@@ -85,13 +85,7 @@ let
   };
 
   requiredLv2Packages = flatten (
-    concatMap (
-      p:
-      attrByPath [
-        "passthru"
-        "requiredLv2Packages"
-      ] [ ] p
-    ) configPackages
+    concatMap (p: attrByPath [ "passthru" "requiredLv2Packages" ] [ ] p) configPackages
   );
 
   lv2Plugins = pkgs.buildEnv {
@@ -346,28 +340,14 @@ in
   };
 
   imports = [
-    (mkRemovedOptionModule
-      [
-        "services"
-        "pipewire"
-        "config"
-      ]
-      ''
-        Overriding default PipeWire configuration through NixOS options never worked correctly and is no longer supported.
-        Please create drop-in configuration files via `services.pipewire.extraConfig` instead.
-      ''
-    )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "pipewire"
-        "media-session"
-      ]
-      ''
-        pipewire-media-session is no longer supported upstream and has been removed.
-        Please switch to `services.pipewire.wireplumber` instead.
-      ''
-    )
+    (mkRemovedOptionModule [ "services" "pipewire" "config" ] ''
+      Overriding default PipeWire configuration through NixOS options never worked correctly and is no longer supported.
+      Please create drop-in configuration files via `services.pipewire.extraConfig` instead.
+    '')
+    (mkRemovedOptionModule [ "services" "pipewire" "media-session" ] ''
+      pipewire-media-session is no longer supported upstream and has been removed.
+      Please switch to `services.pipewire.wireplumber` instead.
+    '')
   ];
 
   ###### implementation

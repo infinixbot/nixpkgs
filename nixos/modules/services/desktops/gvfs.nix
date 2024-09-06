@@ -28,10 +28,7 @@ in
       enable = lib.mkEnableOption "GVfs, a userspace virtual filesystem";
 
       # gvfs can be built with multiple configurations
-      package = lib.mkPackageOption pkgs [
-        "gnome"
-        "gvfs"
-      ] { };
+      package = lib.mkPackageOption pkgs [ "gnome" "gvfs" ] { };
 
     };
 

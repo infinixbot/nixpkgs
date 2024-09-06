@@ -797,57 +797,27 @@ in
 
   # FIXME: Remove these eventually.
   imports = [
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "systemd"
-        "sockets"
-      ]
-      [
-        "systemd"
-        "sockets"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "systemd"
-        "targets"
-      ]
-      [
-        "systemd"
-        "targets"
-      ]
-    )
-    (mkRenamedOptionModule
-      [
-        "boot"
-        "systemd"
-        "services"
-      ]
-      [
-        "systemd"
-        "services"
-      ]
-    )
+    (mkRenamedOptionModule [ "boot" "systemd" "sockets" ] [
+      "systemd"
+      "sockets"
+    ])
+    (mkRenamedOptionModule [ "boot" "systemd" "targets" ] [
+      "systemd"
+      "targets"
+    ])
+    (mkRenamedOptionModule [ "boot" "systemd" "services" ] [
+      "systemd"
+      "services"
+    ])
     (mkRenamedOptionModule [ "jobs" ] [
       "systemd"
       "services"
     ])
-    (mkRemovedOptionModule [
-      "systemd"
-      "generator-packages"
-    ] "Use systemd.packages instead.")
-    (mkRemovedOptionModule
-      [
-        "systemd"
-        "enableUnifiedCgroupHierarchy"
-      ]
-      ''
-        In 256 support for cgroup v1 ('legacy' and 'hybrid' hierarchies) is now considered obsolete and systemd by default will refuse to boot under it.
-        To forcibly reenable cgroup v1 support, you can set boot.kernelParams = [ "systemd.unified_cgroup_hierachy=0" "SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1" ].
-        NixOS does not officially support this configuration and might cause your system to be unbootable in future versions. You are on your own.
-      ''
-    )
+    (mkRemovedOptionModule [ "systemd" "generator-packages" ] "Use systemd.packages instead.")
+    (mkRemovedOptionModule [ "systemd" "enableUnifiedCgroupHierarchy" ] ''
+      In 256 support for cgroup v1 ('legacy' and 'hybrid' hierarchies) is now considered obsolete and systemd by default will refuse to boot under it.
+      To forcibly reenable cgroup v1 support, you can set boot.kernelParams = [ "systemd.unified_cgroup_hierachy=0" "SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE=1" ].
+      NixOS does not officially support this configuration and might cause your system to be unbootable in future versions. You are on your own.
+    '')
   ];
 }

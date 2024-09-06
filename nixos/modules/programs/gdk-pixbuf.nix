@@ -15,17 +15,10 @@ in
 
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "gdk-pixbuf"
-      ]
-      [
-        "programs"
-        "gdk-pixbuf"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "xserver" "gdk-pixbuf" ] [
+      "programs"
+      "gdk-pixbuf"
+    ])
   ];
 
   options = {

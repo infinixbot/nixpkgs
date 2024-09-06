@@ -264,85 +264,37 @@ in
   ];
 
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "i18n"
-        "consoleFont"
-      ]
-      [
-        "console"
-        "font"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "i18n"
-        "consoleKeyMap"
-      ]
-      [
-        "console"
-        "keyMap"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "i18n"
-        "consoleColors"
-      ]
-      [
-        "console"
-        "colors"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "i18n"
-        "consolePackages"
-      ]
-      [
-        "console"
-        "packages"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "i18n"
-        "consoleUseXkbConfig"
-      ]
-      [
-        "console"
-        "useXkbConfig"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "boot"
-        "earlyVconsoleSetup"
-      ]
-      [
-        "console"
-        "earlySetup"
-      ]
-    )
-    (lib.mkRenamedOptionModule
-      [
-        "boot"
-        "extraTTYs"
-      ]
-      [
-        "console"
-        "extraTTYs"
-      ]
-    )
-    (lib.mkRemovedOptionModule
-      [
-        "console"
-        "extraTTYs"
-      ]
-      ''
-        Since NixOS switched to systemd (circa 2012), TTYs have been spawned on
-        demand, so there is no need to configure them manually.
-      ''
-    )
+    (lib.mkRenamedOptionModule [ "i18n" "consoleFont" ] [
+      "console"
+      "font"
+    ])
+    (lib.mkRenamedOptionModule [ "i18n" "consoleKeyMap" ] [
+      "console"
+      "keyMap"
+    ])
+    (lib.mkRenamedOptionModule [ "i18n" "consoleColors" ] [
+      "console"
+      "colors"
+    ])
+    (lib.mkRenamedOptionModule [ "i18n" "consolePackages" ] [
+      "console"
+      "packages"
+    ])
+    (lib.mkRenamedOptionModule [ "i18n" "consoleUseXkbConfig" ] [
+      "console"
+      "useXkbConfig"
+    ])
+    (lib.mkRenamedOptionModule [ "boot" "earlyVconsoleSetup" ] [
+      "console"
+      "earlySetup"
+    ])
+    (lib.mkRenamedOptionModule [ "boot" "extraTTYs" ] [
+      "console"
+      "extraTTYs"
+    ])
+    (lib.mkRemovedOptionModule [ "console" "extraTTYs" ] ''
+      Since NixOS switched to systemd (circa 2012), TTYs have been spawned on
+      demand, so there is no need to configure them manually.
+    '')
   ];
 }

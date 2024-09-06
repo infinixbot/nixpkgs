@@ -12,28 +12,15 @@
 let
   pname = "fuchsia-cursor";
 in
-lib.checkListOfEnum "${pname}: theme variants"
-  [
-    "Fuchsia"
-    "Fuchsia-Pop"
-    "Fuchsia-Red"
-  ]
+lib.checkListOfEnum "${pname}: theme variants" [ "Fuchsia" "Fuchsia-Pop" "Fuchsia-Red" ]
   themeVariants
   lib.checkListOfEnum
   "${pname}: size variants"
-  [
-    "16"
-    "24"
-    "32"
-    "48"
-  ]
+  [ "16" "24" "32" "48" ]
   sizeVariants
   lib.checkListOfEnum
   "${pname}: platform variants"
-  [
-    "x11"
-    "windows"
-  ]
+  [ "x11" "windows" ]
   platformVariants
 
   stdenvNoCC.mkDerivation

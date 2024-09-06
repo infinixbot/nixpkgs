@@ -272,13 +272,7 @@ in
       };
 
       requiredLv2Packages = flatten (
-        concatMap (
-          p:
-          attrByPath [
-            "passthru"
-            "requiredLv2Packages"
-          ] [ ] p
-        ) configPackages
+        concatMap (p: attrByPath [ "passthru" "requiredLv2Packages" ] [ ] p) configPackages
       );
 
       lv2Plugins = pkgs.buildEnv {

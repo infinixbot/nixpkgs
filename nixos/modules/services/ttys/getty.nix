@@ -34,22 +34,11 @@ in
   ###### interface
 
   imports = [
-    (mkRenamedOptionModule
-      [
-        "services"
-        "mingetty"
-      ]
-      [
-        "services"
-        "getty"
-      ]
-    )
-    (mkRemovedOptionModule
-      [
-        "services"
-        "getty"
-        "serialSpeed"
-      ]
+    (mkRenamedOptionModule [ "services" "mingetty" ] [
+      "services"
+      "getty"
+    ])
+    (mkRemovedOptionModule [ "services" "getty" "serialSpeed" ]
       ''set non-standard baudrates with `boot.kernelParams` i.e. boot.kernelParams = ["console=ttyS2,1500000"];''
     )
   ];

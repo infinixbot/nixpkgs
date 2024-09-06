@@ -14,11 +14,7 @@ in
 {
 
   imports = [
-    (lib.mkRemovedOptionModule [
-      "services"
-      "tumbler"
-      "package"
-    ] "")
+    (lib.mkRemovedOptionModule [ "services" "tumbler" "package" ] "")
   ];
 
   meta = with lib; {

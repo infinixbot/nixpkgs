@@ -206,12 +206,7 @@ in
       "xserver"
       "useXFS"
     ] "Use services.xserver.fontPath instead of useXFS")
-    (mkRemovedOptionModule
-      [
-        "services"
-        "xserver"
-        "useGlamor"
-      ]
+    (mkRemovedOptionModule [ "services" "xserver" "useGlamor" ]
       "Option services.xserver.useGlamor was removed because it is unnecessary. Drivers that uses Glamor will use it automatically."
     )
     (lib.mkRenamedOptionModuleWith {

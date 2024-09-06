@@ -54,19 +54,12 @@ in
 
 {
   imports = [
-    (lib.mkRenamedOptionModule
-      [
-        "services"
-        "zabbixServer"
-        "dbServer"
-      ]
-      [
-        "services"
-        "zabbixServer"
-        "database"
-        "host"
-      ]
-    )
+    (lib.mkRenamedOptionModule [ "services" "zabbixServer" "dbServer" ] [
+      "services"
+      "zabbixServer"
+      "database"
+      "host"
+    ])
     (lib.mkRemovedOptionModule [
       "services"
       "zabbixServer"

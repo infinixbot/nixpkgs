@@ -129,20 +129,14 @@ in
       '';
     };
 
-    hardware.sane.drivers.scanSnap.package =
-      lib.mkPackageOption pkgs
-        [
-          "sane-drivers"
-          "epjitsu"
-        ]
-        {
-          extraDescription = ''
-            Useful if you want to extract the driver files yourself.
+    hardware.sane.drivers.scanSnap.package = lib.mkPackageOption pkgs [ "sane-drivers" "epjitsu" ] {
+      extraDescription = ''
+        Useful if you want to extract the driver files yourself.
 
-            The process is described in the {file}`/etc/sane.d/epjitsu.conf` file in
-            the `sane-backends` package.
-          '';
-        };
+        The process is described in the {file}`/etc/sane.d/epjitsu.conf` file in
+        the `sane-backends` package.
+      '';
+    };
 
     hardware.sane.openFirewall = lib.mkOption {
       type = lib.types.bool;

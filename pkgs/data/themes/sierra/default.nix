@@ -16,32 +16,18 @@
 let
   pname = "sierra-gtk-theme";
 in
-lib.checkListOfEnum "${pname}: button variants"
-  [
-    "standard"
-    "alt"
-  ]
-  buttonVariants
+lib.checkListOfEnum "${pname}: button variants" [ "standard" "alt" ] buttonVariants
   lib.checkListOfEnum
   "${pname}: color variants"
-  [
-    "light"
-    "dark"
-  ]
+  [ "light" "dark" ]
   colorVariants
   lib.checkListOfEnum
   "${pname}: opacity variants"
-  [
-    "standard"
-    "solid"
-  ]
+  [ "standard" "solid" ]
   opacityVariants
   lib.checkListOfEnum
   "${pname}: size variants"
-  [
-    "standard"
-    "compact"
-  ]
+  [ "standard" "compact" ]
   sizeVariants
 
   stdenv.mkDerivation

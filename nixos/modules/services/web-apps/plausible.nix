@@ -177,12 +177,7 @@ in
   };
 
   imports = [
-    (mkRemovedOptionModule
-      [
-        "services"
-        "plausible"
-        "releaseCookiePath"
-      ]
+    (mkRemovedOptionModule [ "services" "plausible" "releaseCookiePath" ]
       "Plausible uses no distributed Erlang features, so this option is no longer necessary and was removed"
     )
   ];
