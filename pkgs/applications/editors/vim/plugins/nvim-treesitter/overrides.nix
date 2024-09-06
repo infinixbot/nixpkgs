@@ -1,4 +1,11 @@
-{ lib, callPackage, tree-sitter, neovim, neovimUtils, runCommand }:
+{
+  lib,
+  callPackage,
+  tree-sitter,
+  neovim,
+  neovimUtils,
+  runCommand,
+}:
 
 self: super:
 
@@ -15,18 +22,21 @@ let
   #   ocaml-interface
   #   tree-sitter-ocaml-interface
   #   tree-sitter-ocaml_interface
-  builtGrammars = generatedGrammars // lib.concatMapAttrs
-    (k: v:
+  builtGrammars =
+    generatedGrammars
+    // lib.concatMapAttrs (
+      k: v:
       let
         replaced = lib.replaceStrings [ "_" ] [ "-" ] k;
       in
       {
         "tree-sitter-${k}" = v;
-      } // lib.optionalAttrs (k != replaced) {
+      }
+      // lib.optionalAttrs (k != replaced) {
         ${replaced} = v;
         "tree-sitter-${replaced}" = v;
-      })
-    generatedDerivations;
+      }
+    ) generatedDerivations;
 
   allGrammars = lib.attrValues generatedDerivations;
 
@@ -35,22 +45,23 @@ let
   # or for all grammars:
   # pkgs.vimPlugins.nvim-treesitter.withAllGrammars
   withPlugins =
-    f: self.nvim-treesitter.overrideAttrs {
+    f:
+    self.nvim-treesitter.overrideAttrs {
       passthru.dependencies =
         let
-          grammars = map grammarToPlugin
-            (f (tree-sitter.builtGrammars // builtGrammars));
-          copyGrammar = grammar:
-            let name = lib.last (lib.splitString "-" grammar.name); in
+          grammars = map grammarToPlugin (f (tree-sitter.builtGrammars // builtGrammars));
+          copyGrammar =
+            grammar:
+            let
+              name = lib.last (lib.splitString "-" grammar.name);
+            in
             "ln -sf ${grammar}/parser/${name}.so $out/parser/${name}.so";
         in
         [
-          (runCommand "vimplugin-treesitter-grammars"
-            { meta.platforms = lib.platforms.all; }
-            ''
-              mkdir -p $out/parser
-              ${lib.concatMapStringsSep "\n" copyGrammar grammars}
-            '')
+          (runCommand "vimplugin-treesitter-grammars" { meta.platforms = lib.platforms.all; } ''
+            mkdir -p $out/parser
+            ${lib.concatMapStringsSep "\n" copyGrammar grammars}
+          '')
         ];
     };
 
@@ -63,7 +74,13 @@ in
   '';
 
   passthru = (super.nvim-treesitter.passthru or { }) // {
-    inherit builtGrammars allGrammars grammarToPlugin withPlugins withAllGrammars;
+    inherit
+      builtGrammars
+      allGrammars
+      grammarToPlugin
+      withPlugins
+      withAllGrammars
+      ;
 
     grammarPlugins = lib.mapAttrs (_: grammarToPlugin) generatedDerivations;
 
@@ -92,8 +109,11 @@ in
         '';
   };
 
-  meta = with lib; (super.nvim-treesitter.meta or { }) // {
-    license = licenses.asl20;
-    maintainers = with maintainers; [ figsoda ];
-  };
+  meta =
+    with lib;
+    (super.nvim-treesitter.meta or { })
+    // {
+      license = licenses.asl20;
+      maintainers = with maintainers; [ figsoda ];
+    };
 }

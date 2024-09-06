@@ -1,14 +1,15 @@
-{ lib
-, blueprint-compiler
-, buildGoModule
-, fetchFromGitHub
-, gobject-introspection
-, gtk4
-, libadwaita
-, libfido2
-, libnotify
-, python3
-, wrapGAppsHook4
+{
+  lib,
+  blueprint-compiler,
+  buildGoModule,
+  fetchFromGitHub,
+  gobject-introspection,
+  gtk4,
+  libadwaita,
+  libfido2,
+  libnotify,
+  python3,
+  wrapGAppsHook4,
 }:
 
 buildGoModule rec {
@@ -40,7 +41,10 @@ buildGoModule rec {
 
   vendorHash = "sha256-TSmYqLMeS/G1rYNxVfh3uIK9bQJhsd7mos50yIXQoT4=";
 
-  ldflags = [ "-s" "-w" ];
+  ldflags = [
+    "-s"
+    "-w"
+  ];
 
   nativeBuildInputs = [
     blueprint-compiler

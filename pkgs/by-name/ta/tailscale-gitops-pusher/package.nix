@@ -1,10 +1,16 @@
-{ lib
-, tailscale
-, buildGoModule
+{
+  lib,
+  tailscale,
+  buildGoModule,
 }:
 
 buildGoModule {
-  inherit (tailscale) version src vendorHash CGO_ENABLED;
+  inherit (tailscale)
+    version
+    src
+    vendorHash
+    CGO_ENABLED
+    ;
   pname = "tailscale-gitops-pusher";
 
   subPackages = [

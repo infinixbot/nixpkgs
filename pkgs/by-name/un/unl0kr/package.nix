@@ -1,15 +1,16 @@
-{ lib
-, nixosTests
-, stdenv
-, fetchFromGitLab
-, inih
-, libdrm
-, libinput
-, libxkbcommon
-, meson
-, ninja
-, pkg-config
-, scdoc
+{
+  lib,
+  nixosTests,
+  stdenv,
+  fetchFromGitLab,
+  inih,
+  libdrm,
+  libinput,
+  libxkbcommon,
+  meson,
+  ninja,
+  pkg-config,
+  scdoc,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -52,7 +53,7 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "unl0kr";
     homepage = "https://gitlab.com/cherrypicker/unl0kr";
     license = licenses.gpl3Plus;
-    maintainers = [];
+    maintainers = [ ];
     platforms = platforms.linux;
   };
 })

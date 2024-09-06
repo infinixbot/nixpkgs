@@ -1,21 +1,27 @@
-{ lib
-, stdenv
-, buildNpmPackage
-, fetchFromGitHub
-, copyDesktopItems
-, makeDesktopItem
-, makeWrapper
-, libpng
-, libX11
-, libXi
-, libXtst
-, zlib
-, darwin
-, electron
+{
+  lib,
+  stdenv,
+  buildNpmPackage,
+  fetchFromGitHub,
+  copyDesktopItems,
+  makeDesktopItem,
+  makeWrapper,
+  libpng,
+  libX11,
+  libXi,
+  libXtst,
+  zlib,
+  darwin,
+  electron,
 }:
 
 let
-  inherit (darwin.apple_sdk.frameworks) Carbon CoreFoundation ApplicationServices OpenGL;
+  inherit (darwin.apple_sdk.frameworks)
+    Carbon
+    CoreFoundation
+    ApplicationServices
+    OpenGL
+    ;
 in
 buildNpmPackage rec {
   pname = "jitsi-meet-electron";
@@ -28,25 +34,29 @@ buildNpmPackage rec {
     hash = "sha256-BGN+t9Caw5n/NN1E5Oi/ruMLjoVh0jUlpzYR6vodHbw=";
   };
 
-  nativeBuildInputs = [
-    makeWrapper
-  ] ++ lib.optionals stdenv.isLinux [
-    copyDesktopItems
-  ];
+  nativeBuildInputs =
+    [
+      makeWrapper
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      copyDesktopItems
+    ];
 
   # robotjs node-gyp dependencies
-  buildInputs = lib.optionals stdenv.isLinux [
-    libpng
-    libX11
-    libXi
-    libXtst
-    zlib
-  ] ++ lib.optionals stdenv.isDarwin [
-    Carbon
-    CoreFoundation
-    ApplicationServices
-    OpenGL
-  ];
+  buildInputs =
+    lib.optionals stdenv.isLinux [
+      libpng
+      libX11
+      libXi
+      libXtst
+      zlib
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Carbon
+      CoreFoundation
+      ApplicationServices
+      OpenGL
+    ];
 
   npmDepsHash = "sha256-KanG8y+tYzswCCXjSkOlk+p9XKaouP2Z7IhsD5bDtRk=";
 
@@ -113,7 +123,13 @@ buildNpmPackage rec {
       icon = "jitsi-meet-electron";
       desktopName = "Jitsi Meet";
       comment = meta.description;
-      categories = [ "VideoConference" "AudioVideo" "Audio" "Video" "Network" ];
+      categories = [
+        "VideoConference"
+        "AudioVideo"
+        "Audio"
+        "Video"
+        "Network"
+      ];
       mimeTypes = [ "x-scheme-handler/jitsi-meet" ];
       terminal = false;
     })

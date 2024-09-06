@@ -6,28 +6,31 @@ let
   libBuildHelper = import ./lib-build-helper.nix;
 in
 
-libBuildHelper.extendMkDerivation' (callPackage ./generic.nix envargs) (finalAttrs:
+libBuildHelper.extendMkDerivation' (callPackage ./generic.nix envargs) (
+  finalAttrs:
 
-args:
+  args:
 
-{
-  buildPhase = args.buildPhase or ''
-    runHook preBuild
+  {
+    buildPhase =
+      args.buildPhase or ''
+        runHook preBuild
 
-    emacs -L . --batch -f batch-byte-compile *.el
+        emacs -L . --batch -f batch-byte-compile *.el
 
-    runHook postBuild
-  '';
+        runHook postBuild
+      '';
 
-  installPhase = args.installPhase or ''
-    runHook preInstall
+    installPhase =
+      args.installPhase or ''
+        runHook preInstall
 
-    LISPDIR=$out/share/emacs/site-lisp
-    install -d $LISPDIR
-    install *.el *.elc $LISPDIR
+        LISPDIR=$out/share/emacs/site-lisp
+        install -d $LISPDIR
+        install *.el *.elc $LISPDIR
 
-    runHook postInstall
-  '';
-}
+        runHook postInstall
+      '';
+  }
 
 )

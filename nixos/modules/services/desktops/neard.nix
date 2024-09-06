@@ -1,5 +1,10 @@
 # neard service.
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   ###### interface
   options = {
@@ -7,7 +12,6 @@
       enable = lib.mkEnableOption "neard, an NFC daemon";
     };
   };
-
 
   ###### implementation
   config = lib.mkIf config.services.neard.enable {

@@ -1,12 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
-  cfg     = config.services.dnscrypt-wrapper;
+  cfg = config.services.dnscrypt-wrapper;
   dataDir = "/var/lib/dnscrypt-wrapper";
 
-  mkPath = path: default:
-    if path != null
-      then toString path
-      else default;
+  mkPath = path: default: if path != null then toString path else default;
 
   publicKey = mkPath cfg.providerKey.public "${dataDir}/public.key";
   secretKey = mkPath cfg.providerKey.secret "${dataDir}/secret.key";
@@ -75,13 +77,20 @@ let
     fi
   '';
 
-
   # This is the fork of the original dnscrypt-proxy maintained by Dyne.org.
   # dnscrypt-proxy2 doesn't provide the `--test` feature that is needed to
   # correctly implement key rotation of dnscrypt-wrapper ephemeral keys.
-  dnscrypt-proxy1 = pkgs.callPackage
-    ({ stdenv, fetchFromGitHub, autoreconfHook
-    , pkg-config, libsodium, ldns, openssl, systemd }:
+  dnscrypt-proxy1 = pkgs.callPackage (
+    {
+      stdenv,
+      fetchFromGitHub,
+      autoreconfHook,
+      pkg-config,
+      libsodium,
+      ldns,
+      openssl,
+      systemd,
+    }:
 
     stdenv.mkDerivation rec {
       pname = "dnscrypt-proxy";
@@ -96,10 +105,17 @@ let
 
       configureFlags = lib.optional stdenv.isLinux "--with-systemd";
 
-      nativeBuildInputs = [ autoreconfHook pkg-config ];
+      nativeBuildInputs = [
+        autoreconfHook
+        pkg-config
+      ];
 
       # <ldns/ldns.h> depends on <openssl/ssl.h>
-      buildInputs = [ libsodium openssl.dev ldns ] ++ lib.optional stdenv.isLinux systemd;
+      buildInputs = [
+        libsodium
+        openssl.dev
+        ldns
+      ] ++ lib.optional stdenv.isLinux systemd;
 
       postInstall = ''
         # Previous versions required libtool files to load plugins; they are
@@ -114,10 +130,11 @@ let
         maintainers = with lib.maintainers; [ rnhmjoj ];
         platforms = lib.platforms.linux;
       };
-    }) { };
+    }
+  ) { };
 
-in {
-
+in
+{
 
   ###### interface
 
@@ -206,7 +223,6 @@ in {
 
   };
 
-
   ###### implementation
 
   config = lib.mkIf cfg.enable {
@@ -222,31 +238,34 @@ in {
 
     systemd.services.dnscrypt-wrapper = {
       description = "dnscrypt-wrapper daemon";
-      after    = [ "network.target" ];
+      after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
-      path     = [ pkgs.dnscrypt-wrapper ];
+      path = [ pkgs.dnscrypt-wrapper ];
 
       serviceConfig = {
         User = "dnscrypt-wrapper";
         WorkingDirectory = dataDir;
-        Restart   = "always";
+        Restart = "always";
         ExecStart = "${pkgs.dnscrypt-wrapper}/bin/dnscrypt-wrapper ${toString daemonArgs}";
       };
 
       preStart = genKeys;
     };
 
-
     systemd.services.dnscrypt-wrapper-rotate = {
-      after    = [ "network.target" ];
+      after = [ "network.target" ];
       requires = [ "dnscrypt-wrapper.service" ];
       description = "Rotates DNSCrypt wrapper keys if soon to expire";
 
-      path   = with pkgs; [ dnscrypt-wrapper dnscrypt-proxy1 gawk procps ];
+      path = with pkgs; [
+        dnscrypt-wrapper
+        dnscrypt-proxy1
+        gawk
+        procps
+      ];
       script = rotateKeys;
       serviceConfig.User = "dnscrypt-wrapper";
     };
-
 
     systemd.timers.dnscrypt-wrapper-rotate = {
       description = "Periodically check DNSCrypt wrapper keys for expiration";
@@ -260,8 +279,10 @@ in {
     };
 
     assertions = with cfg; [
-      { assertion = (providerKey.public == null && providerKey.secret == null) ||
-                    (providerKey.secret != null && providerKey.public != null);
+      {
+        assertion =
+          (providerKey.public == null && providerKey.secret == null)
+          || (providerKey.secret != null && providerKey.public != null);
         message = "The secret and public provider key must be set together.";
       }
     ];

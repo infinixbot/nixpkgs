@@ -1,4 +1,12 @@
-{ stdenv, lib, fetchurl, openssl, perl, pps-tools, libcap }:
+{
+  stdenv,
+  lib,
+  fetchurl,
+  openssl,
+  perl,
+  pps-tools,
+  libcap,
+}:
 
 stdenv.mkDerivation rec {
   pname = "ntp";
@@ -18,8 +26,15 @@ stdenv.mkDerivation rec {
     "--with-yielding-select=yes"
   ] ++ lib.optional stdenv.isLinux "--enable-linuxcaps";
 
-  buildInputs = [ openssl perl ]
-    ++ lib.optionals stdenv.isLinux [ pps-tools libcap ];
+  buildInputs =
+    [
+      openssl
+      perl
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      pps-tools
+      libcap
+    ];
 
   hardeningEnable = [ "pie" ];
 

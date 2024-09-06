@@ -1,10 +1,11 @@
-{ lib
-, buildGoModule
-, fetchFromGitHub
-, fetchpatch
-, installShellFiles
-, testers
-, go-task
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+  fetchpatch,
+  installShellFiles,
+  testers,
+  go-task,
 }:
 
 buildGoModule rec {
