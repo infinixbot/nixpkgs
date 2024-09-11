@@ -1,10 +1,11 @@
-{ lib
-, stdenvNoCC
-, fetchFromGitHub
-, buildDotnetModule
-, buildNpmPackage
-, dotnetCorePackages
-, nixosTests
+{
+  lib,
+  stdenvNoCC,
+  fetchFromGitHub,
+  buildDotnetModule,
+  buildNpmPackage,
+  dotnetCorePackages,
+  nixosTests,
 }:
 
 stdenvNoCC.mkDerivation (finalAttrs: {
@@ -49,7 +50,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     dotnet-runtime = dotnetCorePackages.aspnetcore_8_0;
   };
 
-  frontend =  buildNpmPackage {
+  frontend = buildNpmPackage {
     pname = "kavita-frontend";
     inherit (finalAttrs) version src;
 
@@ -85,7 +86,10 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     changelog = "https://github.com/kareadita/kavita/releases/tag/${finalAttrs.src.rev}";
     license = lib.licenses.gpl3Only;
     platforms = lib.platforms.linux;
-    maintainers = with lib.maintainers; [ misterio77 nevivurn ];
+    maintainers = with lib.maintainers; [
+      misterio77
+      nevivurn
+    ];
     mainProgram = "kavita";
   };
 })

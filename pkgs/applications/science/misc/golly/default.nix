@@ -1,19 +1,38 @@
-{lib, stdenv, fetchurl, wxGTK, perl, python3, zlib, libGLU, libGL, libX11, SDL2}:
+{
+  lib,
+  stdenv,
+  fetchurl,
+  wxGTK,
+  perl,
+  python3,
+  zlib,
+  libGLU,
+  libGL,
+  libX11,
+  SDL2,
+}:
 stdenv.mkDerivation rec {
   pname = "golly";
   version = "4.2";
 
   src = fetchurl {
     hash = "sha256-VpEoqSPaZMP/AGIYZAbk5R/f8Crqvx8pKYN1O9Bl6V0=";
-    url="mirror://sourceforge/project/golly/golly/golly-${version}/golly-${version}-src.tar.gz";
+    url = "mirror://sourceforge/project/golly/golly/golly-${version}/golly-${version}-src.tar.gz";
   };
 
   buildInputs = [
-    wxGTK perl python3 zlib libGLU libGL libX11 SDL2
+    wxGTK
+    perl
+    python3
+    zlib
+    libGLU
+    libGL
+    libX11
+    SDL2
   ];
 
   nativeBuildInputs = [
-    (python3.withPackages (ps: [ps.setuptools]))
+    (python3.withPackages (ps: [ ps.setuptools ]))
   ];
 
   setSourceRoot = ''
@@ -29,9 +48,11 @@ stdenv.mkDerivation rec {
     grep /libperl wxprefs.cpp
   '';
 
-  makeFlags=[
-    "-f" "makefile-gtk"
-    "ENABLE_SOUND=1" "ENABLE_PERL=1"
+  makeFlags = [
+    "-f"
+    "makefile-gtk"
+    "ENABLE_SOUND=1"
+    "ENABLE_PERL=1"
     "GOLLYDIR=${placeholder "out"}/share/golly"
   ];
 
@@ -49,7 +70,7 @@ stdenv.mkDerivation rec {
   meta = {
     description = "Cellular automata simulation program";
     license = lib.licenses.gpl2;
-    maintainers = [lib.maintainers.raskin];
+    maintainers = [ lib.maintainers.raskin ];
     platforms = lib.platforms.linux;
     downloadPage = "https://sourceforge.net/projects/golly/files/golly";
   };

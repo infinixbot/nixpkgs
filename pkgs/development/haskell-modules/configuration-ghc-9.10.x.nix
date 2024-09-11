@@ -5,7 +5,9 @@ with haskellLib;
 let
   inherit (pkgs) lib;
 
-  disableParallelBuilding = haskellLib.overrideCabal (drv: { enableParallelBuilding = false; });
+  disableParallelBuilding = haskellLib.overrideCabal (drv: {
+    enableParallelBuilding = false;
+  });
 in
 
 self: super: {
@@ -48,7 +50,11 @@ self: super: {
   system-cxx-std-lib = null;
   template-haskell = null;
   # GHC only builds terminfo if it is a native compiler
-  terminfo = if pkgs.stdenv.hostPlatform == pkgs.stdenv.buildPlatform then null else doDistribute self.terminfo_0_4_1_6;
+  terminfo =
+    if pkgs.stdenv.hostPlatform == pkgs.stdenv.buildPlatform then
+      null
+    else
+      doDistribute self.terminfo_0_4_1_6;
   text = null;
   time = null;
   transformers = null;
@@ -124,7 +130,17 @@ self: super: {
   resolv = dontCheck super.resolv; # doesn't compile with filepath ==1.5.*
   primitive-unlifted = dontCheck super.primitive-unlifted; # doesn't compile with primitive ==0.9.*
 
-  haskell-language-server = disableCabalFlag "retrie" (disableCabalFlag "hlint" (disableCabalFlag "stylishhaskel" (super.haskell-language-server.override {stylish-haskell = null;retrie = null;apply-refact=null;hlint = null;})));
-
+  haskell-language-server = disableCabalFlag "retrie" (
+    disableCabalFlag "hlint" (
+      disableCabalFlag "stylishhaskel" (
+        super.haskell-language-server.override {
+          stylish-haskell = null;
+          retrie = null;
+          apply-refact = null;
+          hlint = null;
+        }
+      )
+    )
+  );
 
 }

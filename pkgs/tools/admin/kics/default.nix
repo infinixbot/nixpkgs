@@ -1,8 +1,9 @@
-{ lib
-, buildGoModule
-, fetchFromGitHub
-, testers
-, kics
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+  testers,
+  kics,
 }:
 
 buildGoModule rec {
@@ -25,7 +26,8 @@ buildGoModule rec {
   '';
 
   ldflags = [
-    "-s" "-w"
+    "-s"
+    "-w"
     "-X github.com/Checkmarx/kics/v2/internal/constants.SCMCommit=${version}"
     "-X github.com/Checkmarx/kics/v2/internal/constants.Version=${version}"
   ];

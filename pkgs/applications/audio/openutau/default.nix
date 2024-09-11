@@ -1,11 +1,12 @@
-{ lib
-, stdenv
-, buildDotnetModule
-, fetchFromGitHub
-, dotnetCorePackages
-, dbus
-, fontconfig
-, portaudio
+{
+  lib,
+  stdenv,
+  buildDotnetModule,
+  fetchFromGitHub,
+  dotnetCorePackages,
+  dbus,
+  fontconfig,
+  portaudio,
 }:
 
 buildDotnetModule rec {
@@ -49,14 +50,21 @@ buildDotnetModule rec {
   '';
 
   # need to make sure proprietary worldline resampler is copied
-  postInstall = let
-    runtime = if (stdenv.isLinux && stdenv.isx86_64) then "linux-x64"
-         else if (stdenv.isLinux && stdenv.isAarch64) then "linux-arm64"
-         else if stdenv.isDarwin then "osx"
-         else null;
-  in lib.optionalString (runtime != null) ''
-    cp runtimes/${runtime}/native/libworldline${stdenv.hostPlatform.extensions.sharedLibrary} $out/lib/OpenUtau/
-  '';
+  postInstall =
+    let
+      runtime =
+        if (stdenv.isLinux && stdenv.isx86_64) then
+          "linux-x64"
+        else if (stdenv.isLinux && stdenv.isAarch64) then
+          "linux-arm64"
+        else if stdenv.isDarwin then
+          "osx"
+        else
+          null;
+    in
+    lib.optionalString (runtime != null) ''
+      cp runtimes/${runtime}/native/libworldline${stdenv.hostPlatform.extensions.sharedLibrary} $out/lib/OpenUtau/
+    '';
 
   passthru.updateScript = ./update.sh;
 
@@ -77,7 +85,12 @@ buildDotnetModule rec {
       unfreeRedistributable
     ];
     maintainers = [ ];
-    platforms = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+    platforms = [
+      "x86_64-linux"
+      "aarch64-linux"
+      "x86_64-darwin"
+      "aarch64-darwin"
+    ];
     mainProgram = "OpenUtau";
   };
 }

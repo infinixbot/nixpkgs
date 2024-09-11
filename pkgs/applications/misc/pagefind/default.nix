@@ -1,15 +1,16 @@
-{ lib
-, rustPlatform
-, fetchFromGitHub
-, fetchNpmDeps
-, npmHooks
-, binaryen
-, gzip
-, nodejs
-, rustc
-, wasm-bindgen-cli
-, wasm-pack
-, fetchpatch
+{
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
+  fetchNpmDeps,
+  npmHooks,
+  binaryen,
+  gzip,
+  nodejs,
+  rustc,
+  wasm-bindgen-cli,
+  wasm-pack,
+  fetchpatch,
 }:
 
 let
@@ -34,7 +35,8 @@ rustPlatform.buildRustPackage rec {
   };
 
   cargoPatches = [
-    (fetchpatch { # https://github.com/CloudCannon/pagefind/pull/680
+    (fetchpatch {
+      # https://github.com/CloudCannon/pagefind/pull/680
       name = "cargo-update-time.patch";
       url = "https://github.com/CloudCannon/pagefind/commit/e6778572d225316803180db822f5cc12a936acd2.patch";
       hash = "sha256-XHpHA1hPIe+wjDQ6LE9hn2jn3eMBOK9Yoo920jfH9do=";

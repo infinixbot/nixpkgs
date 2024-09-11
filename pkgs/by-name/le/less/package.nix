@@ -1,9 +1,10 @@
-{ lib
-, stdenv
-, fetchurl
-, ncurses
-, pcre2
-, withSecure ? false
+{
+  lib,
+  stdenv,
+  fetchurl,
+  ncurses,
+  pcre2,
+  withSecure ? false,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -22,7 +23,10 @@ stdenv.mkDerivation (finalAttrs: {
     pcre2
   ];
 
-  outputs = [ "out" "man" ];
+  outputs = [
+    "out"
+    "man"
+  ];
 
   configureFlags = [
     # Look for 'sysless' in /etc.

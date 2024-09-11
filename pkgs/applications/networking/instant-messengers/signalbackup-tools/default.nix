@@ -1,4 +1,12 @@
-{ lib, stdenv, fetchFromGitHub, cmake, darwin, openssl, sqlite }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  cmake,
+  darwin,
+  openssl,
+  sqlite,
+}:
 
 stdenv.mkDerivation rec {
   pname = "signalbackup-tools";
@@ -13,12 +21,14 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake ];
 
-  buildInputs = [
-    openssl
-    sqlite
-  ] ++ lib.optionals stdenv.isDarwin [
-    darwin.apple_sdk_11_0.frameworks.Security
-  ];
+  buildInputs =
+    [
+      openssl
+      sqlite
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk_11_0.frameworks.Security
+    ];
 
   installPhase = ''
     runHook preInstall

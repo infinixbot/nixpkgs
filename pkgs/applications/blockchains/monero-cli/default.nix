@@ -112,7 +112,10 @@ stdenv.mkDerivation rec {
       "-DCMAKE_CXX_FLAGS=-fpermissive"
     ];
 
-  outputs = [ "out" "source" ];
+  outputs = [
+    "out"
+    "source"
+  ];
 
   meta = {
     description = "Private, secure, untraceable currency";

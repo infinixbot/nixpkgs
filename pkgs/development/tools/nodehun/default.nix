@@ -1,12 +1,13 @@
-{ buildNpmPackage
-, cctools
-, darwin
-, fetchFromGitHub
-, lib
-, node-gyp
-, nodejs
-, python3
-, stdenv
+{
+  buildNpmPackage,
+  cctools,
+  darwin,
+  fetchFromGitHub,
+  lib,
+  node-gyp,
+  nodejs,
+  python3,
+  stdenv,
 }:
 
 buildNpmPackage {
@@ -31,8 +32,10 @@ buildNpmPackage {
   npmDepsHash = "sha256-mV6rWNf2p2w4H0ESUT0/Ybtx9YEdvO5l2gCvlWFXK+U=";
 
   buildInputs = lib.optionals stdenv.isDarwin [ darwin.apple_sdk.frameworks.CoreServices ];
-  nativeBuildInputs = [ node-gyp python3 ]
-    ++ lib.optionals stdenv.isDarwin [ cctools ];
+  nativeBuildInputs = [
+    node-gyp
+    python3
+  ] ++ lib.optionals stdenv.isDarwin [ cctools ];
 
   postInstall = ''
     # Only keep the necessary parts of build/Release to reduce closure size

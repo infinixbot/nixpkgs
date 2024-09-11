@@ -1,20 +1,21 @@
-{ lib
-, buildDotnetModule
-, dotnetCorePackages
-, fetchFromGitHub
-, libX11
-, libgdiplus
-, ffmpeg
-, openal
-, libsoundio
-, sndio
-, pulseaudio
-, vulkan-loader
-, glew
-, libGL
-, udev
-, SDL2
-, SDL2_mixer
+{
+  lib,
+  buildDotnetModule,
+  dotnetCorePackages,
+  fetchFromGitHub,
+  libX11,
+  libgdiplus,
+  ffmpeg,
+  openal,
+  libsoundio,
+  sndio,
+  pulseaudio,
+  vulkan-loader,
+  glew,
+  libGL,
+  udev,
+  SDL2,
+  SDL2_mixer,
 }:
 
 buildDotnetModule rec {
@@ -110,8 +111,14 @@ buildDotnetModule rec {
       2017.
     '';
     license = licenses.mit;
-    maintainers = with maintainers; [ jk artemist ];
-    platforms = [ "x86_64-linux" "aarch64-linux" ];
+    maintainers = with maintainers; [
+      jk
+      artemist
+    ];
+    platforms = [
+      "x86_64-linux"
+      "aarch64-linux"
+    ];
     mainProgram = "Ryujinx";
   };
 }

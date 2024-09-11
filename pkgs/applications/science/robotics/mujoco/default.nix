@@ -1,12 +1,13 @@
-{ cereal_1_3_2
-, cmake
-, fetchFromGitHub
-, fetchFromGitLab
-, glfw
-, glm
-, lib
-, spdlog
-, stdenv
+{
+  cereal_1_3_2,
+  cmake,
+  fetchFromGitHub,
+  fetchFromGitLab,
+  glfw,
+  glm,
+  lib,
+  spdlog,
+  stdenv,
 }:
 
 let
@@ -127,7 +128,8 @@ let
 
   };
 
-in stdenv.mkDerivation rec {
+in
+stdenv.mkDerivation rec {
   pname = "mujoco";
   version = "3.2.2";
 
