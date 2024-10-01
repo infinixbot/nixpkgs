@@ -1,6 +1,20 @@
-{ pkgs, lib, stdenv, fetchFromGitHub, fetchzip, darktable, rawtherapee, ffmpeg_7, libheif, exiftool, imagemagick, makeWrapper, testers
-, nixosTests
-, librsvg }:
+{
+  pkgs,
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  fetchzip,
+  darktable,
+  rawtherapee,
+  ffmpeg_7,
+  libheif,
+  exiftool,
+  imagemagick,
+  makeWrapper,
+  testers,
+  nixosTests,
+  librsvg,
+}:
 
 let
   version = "240711-2197af848";
@@ -17,7 +31,8 @@ let
   backend = pkgs.callPackage ./backend.nix { inherit libtensorflow src version; };
   frontend = pkgs.callPackage ./frontend.nix { inherit src version; };
 
-  fetchModel = { name, hash }:
+  fetchModel =
+    { name, hash }:
     fetchzip {
       inherit hash;
       url = "https://dl.photoprism.org/tensorflow/${name}.zip";

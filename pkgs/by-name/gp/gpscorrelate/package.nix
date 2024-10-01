@@ -1,16 +1,17 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, pkg-config
-, exiv2
-, libxml2
-, gtk3
-, libxslt
-, docbook_xsl
-, docbook_xml_dtd_42
-, desktop-file-utils
-, wrapGAppsHook3
-, desktopToDarwinBundle
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  pkg-config,
+  exiv2,
+  libxml2,
+  gtk3,
+  libxslt,
+  docbook_xsl,
+  docbook_xml_dtd_42,
+  desktop-file-utils,
+  wrapGAppsHook3,
+  desktopToDarwinBundle,
 }:
 
 stdenv.mkDerivation rec {
@@ -53,7 +54,11 @@ stdenv.mkDerivation rec {
     rm tests/data/test005.*
   '';
 
-  installTargets = [ "install" "install-po" "install-desktop-file" ];
+  installTargets = [
+    "install"
+    "install-po"
+    "install-desktop-file"
+  ];
 
   meta = with lib; {
     description = "GPS photo correlation tool, to add EXIF geotags";

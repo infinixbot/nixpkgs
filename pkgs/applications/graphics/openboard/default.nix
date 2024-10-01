@@ -1,7 +1,37 @@
-{ stdenv, lib, fetchFromGitHub, fetchpatch2, copyDesktopItems, makeDesktopItem, qmake
-, qtbase, qtxmlpatterns, qttools, qtwebengine, libGL, fontconfig, openssl, poppler, wrapQtAppsHook
-, ffmpeg_7, libva, alsa-lib, SDL, x264, libvpx, libvorbis, libtheora, libogg
-, libopus, lame, fdk_aac, libass, quazip, libXext, libXfixes }:
+{
+  stdenv,
+  lib,
+  fetchFromGitHub,
+  fetchpatch2,
+  copyDesktopItems,
+  makeDesktopItem,
+  qmake,
+  qtbase,
+  qtxmlpatterns,
+  qttools,
+  qtwebengine,
+  libGL,
+  fontconfig,
+  openssl,
+  poppler,
+  wrapQtAppsHook,
+  ffmpeg_7,
+  libva,
+  alsa-lib,
+  SDL,
+  x264,
+  libvpx,
+  libvorbis,
+  libtheora,
+  libogg,
+  libopus,
+  lame,
+  fdk_aac,
+  libass,
+  quazip,
+  libXext,
+  libXfixes,
+}:
 
 let
   importer = stdenv.mkDerivation {
@@ -23,7 +53,8 @@ let
       install -Dm755 OpenBoardImporter $out/bin/OpenBoardImporter
     '';
   };
-in stdenv.mkDerivation (finalAttrs: {
+in
+stdenv.mkDerivation (finalAttrs: {
   pname = "openboard";
   version = "1.7.0";
 
@@ -57,7 +88,11 @@ in stdenv.mkDerivation (finalAttrs: {
       --replace '/usr/include/poppler' '${lib.getDev poppler}/include/poppler'
   '';
 
-  nativeBuildInputs = [ qmake copyDesktopItems wrapQtAppsHook ];
+  nativeBuildInputs = [
+    qmake
+    copyDesktopItems
+    wrapQtAppsHook
+  ];
 
   buildInputs = [
     qtbase

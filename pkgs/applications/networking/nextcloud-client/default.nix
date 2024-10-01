@@ -1,34 +1,38 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, cmake
-, extra-cmake-modules
-, inotify-tools
-, kdePackages
-, libcloudproviders
-, librsvg
-, libsecret
-, openssl
-, pcre
-, pkg-config
-, qt5compat
-, qtbase
-, qtkeychain
-, qtsvg
-, qttools
-, qtwebengine
-, qtwebsockets
-, sphinx
-, sqlite
-, xdg-utils
-, wrapQtAppsHook
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  cmake,
+  extra-cmake-modules,
+  inotify-tools,
+  kdePackages,
+  libcloudproviders,
+  librsvg,
+  libsecret,
+  openssl,
+  pcre,
+  pkg-config,
+  qt5compat,
+  qtbase,
+  qtkeychain,
+  qtsvg,
+  qttools,
+  qtwebengine,
+  qtwebsockets,
+  sphinx,
+  sqlite,
+  xdg-utils,
+  wrapQtAppsHook,
 }:
 
 stdenv.mkDerivation rec {
   pname = "nextcloud-client";
   version = "3.14.0";
 
-  outputs = [ "out" "dev" ];
+  outputs = [
+    "out"
+    "dev"
+  ];
 
   src = fetchFromGitHub {
     owner = "nextcloud-releases";
@@ -97,7 +101,10 @@ stdenv.mkDerivation rec {
     description = "Nextcloud themed desktop client";
     homepage = "https://nextcloud.com";
     license = licenses.gpl2Plus;
-    maintainers = with maintainers; [ kranzes SuperSandro2000 ];
+    maintainers = with maintainers; [
+      kranzes
+      SuperSandro2000
+    ];
     platforms = platforms.linux;
     mainProgram = "nextcloud";
   };

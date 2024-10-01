@@ -1,4 +1,8 @@
-{ lib, python3, fetchPypi }:
+{
+  lib,
+  python3,
+  fetchPypi,
+}:
 
 python3.pkgs.buildPythonApplication rec {
   pname = "luigi";
@@ -12,7 +16,12 @@ python3.pkgs.buildPythonApplication rec {
 
   build-system = [ python3.pkgs.setuptools ];
 
-  dependencies = with python3.pkgs; [ python-dateutil tornado python-daemon tenacity ];
+  dependencies = with python3.pkgs; [
+    python-dateutil
+    tornado
+    python-daemon
+    tenacity
+  ];
 
   pythonImportsCheck = [ "luigi" ];
 

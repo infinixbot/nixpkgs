@@ -1,19 +1,20 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, nix-update-script
-, substituteAll
-, pkg-config
-, meson
-, ninja
-, vala
-, gtk3
-, granite
-, networkmanager
-, polkit
-, libnma
-, wingpanel
-, libgee
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  nix-update-script,
+  substituteAll,
+  pkg-config,
+  meson,
+  ninja,
+  vala,
+  gtk3,
+  granite,
+  networkmanager,
+  polkit,
+  libnma,
+  wingpanel,
+  libgee,
 }:
 
 stdenv.mkDerivation rec {

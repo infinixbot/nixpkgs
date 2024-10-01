@@ -1,16 +1,17 @@
-{ lib
-, stdenv
-, fetchFromSourcehut
-, pixman
-, libpng
-, libjpeg
-, meson
-, ninja
-, pkg-config
-, scdoc
-, wayland
-, wayland-protocols
-, wayland-scanner
+{
+  lib,
+  stdenv,
+  fetchFromSourcehut,
+  pixman,
+  libpng,
+  libjpeg,
+  meson,
+  ninja,
+  pkg-config,
+  scdoc,
+  wayland,
+  wayland-protocols,
+  wayland-scanner,
 }:
 
 stdenv.mkDerivation rec {

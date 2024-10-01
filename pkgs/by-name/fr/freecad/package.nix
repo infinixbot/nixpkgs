@@ -1,36 +1,37 @@
-{ lib
-, cmake
-, coin3d
-, doxygen
-, eigen
-, fetchFromGitHub
-, fmt
-, freecad
-, gfortran
-, gts
-, hdf5
-, libGLU
-, libXmu
-, libf2c
-, libredwg
-, libsForQt5
-, libspnav
-, medfile
-, mpi
-, ninja
-, ode
-, opencascade-occt_7_6
-, pkg-config
-, python311Packages
-, runCommand  # for passthru.tests
-, spaceNavSupport ? stdenv.isLinux
-, stdenv
-, swig
-, vtk
-, wrapGAppsHook3
-, xercesc
-, zlib
-, withWayland ? false
+{
+  lib,
+  cmake,
+  coin3d,
+  doxygen,
+  eigen,
+  fetchFromGitHub,
+  fmt,
+  freecad,
+  gfortran,
+  gts,
+  hdf5,
+  libGLU,
+  libXmu,
+  libf2c,
+  libredwg,
+  libsForQt5,
+  libspnav,
+  medfile,
+  mpi,
+  ninja,
+  ode,
+  opencascade-occt_7_6,
+  pkg-config,
+  python311Packages,
+  runCommand, # for passthru.tests
+  spaceNavSupport ? stdenv.isLinux,
+  stdenv,
+  swig,
+  vtk,
+  wrapGAppsHook3,
+  xercesc,
+  zlib,
+  withWayland ? false,
 }:
 let
   opencascade-occt = opencascade-occt_7_6;
@@ -151,12 +152,10 @@ stdenv.mkDerivation (finalAttrs: {
     qtWrapperArgs+=(--prefix PYTHONPATH : "$PYTHONPATH")
   '';
 
-  qtWrapperArgs =
-    [
-      "--set COIN_GL_NO_CURRENT_CONTEXT_CHECK 1"
-      "--prefix PATH : ${libredwg}/bin"
-    ]
-    ++ lib.optionals (!withWayland) [ "--set QT_QPA_PLATFORM xcb" ];
+  qtWrapperArgs = [
+    "--set COIN_GL_NO_CURRENT_CONTEXT_CHECK 1"
+    "--prefix PATH : ${libredwg}/bin"
+  ] ++ lib.optionals (!withWayland) [ "--set QT_QPA_PLATFORM xcb" ];
 
   postFixup = ''
     mv $out/share/doc $out
@@ -176,9 +175,10 @@ stdenv.mkDerivation (finalAttrs: {
       runCommand "freecad-test-console"
         {
           nativeBuildInputs = [ freecad ];
-        } ''
-        HOME="$(mktemp -d)" PYTHONPATH="$(pwd)/test" FreeCADCmd --log-file $out -c "if not '$(pwd)/test' in sys.path: sys.exit(1)" </dev/null
-      '';
+        }
+        ''
+          HOME="$(mktemp -d)" PYTHONPATH="$(pwd)/test" FreeCADCmd --log-file $out -c "if not '$(pwd)/test' in sys.path: sys.exit(1)" </dev/null
+        '';
   };
 
   meta = {
@@ -201,7 +201,10 @@ stdenv.mkDerivation (finalAttrs: {
       right at home with FreeCAD.
     '';
     license = lib.licenses.lgpl2Plus;
-    maintainers = with lib.maintainers; [ gebner AndersonTorres ];
+    maintainers = with lib.maintainers; [
+      gebner
+      AndersonTorres
+    ];
     platforms = lib.platforms.linux;
   };
 })

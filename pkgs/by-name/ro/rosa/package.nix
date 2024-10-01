@@ -1,4 +1,13 @@
-{ lib, buildGoModule, fetchFromGitHub, fetchpatch, installShellFiles, testers, rosa, nix-update-script }:
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+  fetchpatch,
+  installShellFiles,
+  testers,
+  rosa,
+  nix-update-script,
+}:
 
 buildGoModule rec {
   pname = "rosa";
@@ -21,7 +30,10 @@ buildGoModule rec {
     })
   ];
 
-  ldflags = [ "-s" "-w" ];
+  ldflags = [
+    "-s"
+    "-w"
+  ];
 
   __darwinAllowLocalNetworking = true;
 

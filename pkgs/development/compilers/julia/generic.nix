@@ -1,20 +1,22 @@
-{ version
-, hash
-, patches
+{
+  version,
+  hash,
+  patches,
 }:
 
-{ lib
-, stdenv
-, fetchurl
-, which
-, python3
-, gfortran
-, cmake
-, perl
-, gnum4
-, openssl
-, libxml2
-, zlib
+{
+  lib,
+  stdenv,
+  fetchurl,
+  which,
+  python3,
+  gfortran,
+  cmake,
+  perl,
+  gnum4,
+  openssl,
+  libxml2,
+  zlib,
 }:
 
 stdenv.mkDerivation rec {
@@ -50,15 +52,18 @@ stdenv.mkDerivation rec {
     patchShebangs .
   '';
 
-  makeFlags = [
-    "prefix=$(out)"
-    "USE_BINARYBUILDER=0"
-  ] ++ lib.optionals stdenv.isx86_64 [
-    # https://github.com/JuliaCI/julia-buildkite/blob/main/utilities/build_envs.sh
-    "JULIA_CPU_TARGET=generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1);x86-64-v4,-rdrnd,base(1)"
-  ] ++ lib.optionals stdenv.isAarch64 [
-    "JULIA_CPU_TARGET=generic;cortex-a57;thunderx2t99;carmel,clone_all;apple-m1,base(3);neoverse-512tvb,base(3)"
-  ];
+  makeFlags =
+    [
+      "prefix=$(out)"
+      "USE_BINARYBUILDER=0"
+    ]
+    ++ lib.optionals stdenv.isx86_64 [
+      # https://github.com/JuliaCI/julia-buildkite/blob/main/utilities/build_envs.sh
+      "JULIA_CPU_TARGET=generic;sandybridge,-xsaveopt,clone_all;haswell,-rdrnd,base(1);x86-64-v4,-rdrnd,base(1)"
+    ]
+    ++ lib.optionals stdenv.isAarch64 [
+      "JULIA_CPU_TARGET=generic;cortex-a57;thunderx2t99;carmel,clone_all;apple-m1,base(3);neoverse-512tvb,base(3)"
+    ];
 
   # remove forbidden reference to $TMPDIR
   preFixup = ''
@@ -88,7 +93,14 @@ stdenv.mkDerivation rec {
     mainProgram = "julia";
     homepage = "https://julialang.org/";
     license = licenses.mit;
-    maintainers = with maintainers; [ nickcao joshniemela thomasjm ];
-    platforms = [ "x86_64-linux" "aarch64-linux" ];
+    maintainers = with maintainers; [
+      nickcao
+      joshniemela
+      thomasjm
+    ];
+    platforms = [
+      "x86_64-linux"
+      "aarch64-linux"
+    ];
   };
 }

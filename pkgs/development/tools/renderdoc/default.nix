@@ -1,25 +1,26 @@
-{ lib
-, fetchFromGitHub
-, nix-update-script
-, cmake
-, pkg-config
-, mkDerivation
-, qtbase
-, qtx11extras
-, qtsvg
-, makeWrapper
-, vulkan-loader
-, libglvnd
-, xorg
-, python311
-, python311Packages
-, bison
-, pcre
-, automake
-, autoconf
-, addDriverRunpath
-, waylandSupport ? false
-, wayland
+{
+  lib,
+  fetchFromGitHub,
+  nix-update-script,
+  cmake,
+  pkg-config,
+  mkDerivation,
+  qtbase,
+  qtx11extras,
+  qtsvg,
+  makeWrapper,
+  vulkan-loader,
+  libglvnd,
+  xorg,
+  python311,
+  python311Packages,
+  bison,
+  pcre,
+  automake,
+  autoconf,
+  addDriverRunpath,
+  waylandSupport ? false,
+  wayland,
 }:
 let
   custom_swig = fetchFromGitHub {
@@ -41,14 +42,33 @@ mkDerivation rec {
     sha256 = "sha256-obRCILzMR7tCni0YoT3/oesTSADGI2sXqY3G6RS1h1o=";
   };
 
-  buildInputs = [
-    qtbase qtsvg xorg.libpthreadstubs xorg.libXdmcp qtx11extras vulkan-loader python311
-  ] ++ (with python311Packages; [
-    pyside2 pyside2-tools shiboken2
-  ])
-  ++ lib.optional waylandSupport wayland;
+  buildInputs =
+    [
+      qtbase
+      qtsvg
+      xorg.libpthreadstubs
+      xorg.libXdmcp
+      qtx11extras
+      vulkan-loader
+      python311
+    ]
+    ++ (with python311Packages; [
+      pyside2
+      pyside2-tools
+      shiboken2
+    ])
+    ++ lib.optional waylandSupport wayland;
 
-  nativeBuildInputs = [ cmake makeWrapper pkg-config bison pcre automake autoconf addDriverRunpath ];
+  nativeBuildInputs = [
+    cmake
+    makeWrapper
+    pkg-config
+    bison
+    pcre
+    automake
+    autoconf
+    addDriverRunpath
+  ];
 
   postUnpack = ''
     cp -r ${custom_swig} swig
@@ -95,6 +115,9 @@ mkDerivation rec {
       Windows 7 - 10, Linux or Android.
     '';
     maintainers = [ ];
-    platforms = [ "i686-linux" "x86_64-linux" ];
+    platforms = [
+      "i686-linux"
+      "x86_64-linux"
+    ];
   };
 }

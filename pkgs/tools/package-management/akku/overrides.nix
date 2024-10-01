@@ -1,11 +1,17 @@
-{ stdenv, lib, akku, curl, git }:
+{
+  stdenv,
+  lib,
+  akku,
+  curl,
+  git,
+}:
 let
   joinOverrides =
     overrides: pkg: old:
     lib.attrsets.mergeAttrsList (map (o: o pkg old) overrides);
-  addToBuildInputs =
-    extras: pkg: old:
-    { propagatedBuildInputs = old.propagatedBuildInputs ++ extras; };
+  addToBuildInputs = extras: pkg: old: {
+    propagatedBuildInputs = old.propagatedBuildInputs ++ extras;
+  };
   broken = lib.addMetaAttrs { broken = true; };
   skipTests = pkg: old: { doCheck = false; };
   # debugging
@@ -40,7 +46,10 @@ in
 
   akku = joinOverrides [
     # uses chez
-    (addToBuildInputs [ curl git ])
+    (addToBuildInputs [
+      curl
+      git
+    ])
     (pkg: old: {
       # bump akku to 1.1.0-unstable-2024-03-03
       src = akku.src;

@@ -1,8 +1,9 @@
-{ stdenv
-, lib
-, fetchFromGitHub
-, cmake
-, scdoc
+{
+  stdenv,
+  lib,
+  fetchFromGitHub,
+  cmake,
+  scdoc,
 }:
 
 stdenv.mkDerivation rec {
@@ -16,7 +17,10 @@ stdenv.mkDerivation rec {
     hash = "sha256-uBKHGR4kv62EMOIT/K+WbvFtdJ0V5IbsxjwQvhUu9f8=";
   };
 
-  nativeBuildInputs = [ cmake scdoc ];
+  nativeBuildInputs = [
+    cmake
+    scdoc
+  ];
 
   cmakeFlags = [
     "-DINSTALL_DOCUMENTATION=ON"

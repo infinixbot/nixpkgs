@@ -1,18 +1,19 @@
-{ lib
-, substituteAll
-, fetchurl
-, fetchpatch
-, ocaml
-, dune_3
-, buildDunePackage
-, yojson
-, csexp
-, merlin-lib
-, dot-merlin-reader
-, jq
-, menhir
-, menhirLib
-, menhirSdk
+{
+  lib,
+  substituteAll,
+  fetchurl,
+  fetchpatch,
+  ocaml,
+  dune_3,
+  buildDunePackage,
+  yojson,
+  csexp,
+  merlin-lib,
+  dot-merlin-reader,
+  jq,
+  menhir,
+  menhirLib,
+  menhirSdk,
 }:
 
 let
@@ -44,67 +45,70 @@ let
 
 in
 
-if !lib.hasAttr ocaml.version merlinVersions
-then builtins.throw "merlin is not available for OCaml ${ocaml.version}"
+if !lib.hasAttr ocaml.version merlinVersions then
+  builtins.throw "merlin is not available for OCaml ${ocaml.version}"
 else
 
-buildDunePackage {
-  pname = "merlin";
-  inherit version;
+  buildDunePackage {
+    pname = "merlin";
+    inherit version;
 
-  src = fetchurl {
-    url = "https://github.com/ocaml/merlin/releases/download/v${version}/merlin-${version}.tbz";
-    sha256 = hashes."${version}";
-  };
+    src = fetchurl {
+      url = "https://github.com/ocaml/merlin/releases/download/v${version}/merlin-${version}.tbz";
+      sha256 = hashes."${version}";
+    };
 
-  patches = let
-    branch = lib.head (lib.tail (lib.splitString "-" version));
-    needsVimPatch = lib.versionOlder version "4.17" ||
-                    branch == "502" && lib.versionOlder version "5.2";
-  in
-  [
-    (substituteAll {
-      src = ./fix-paths.patch;
-      dot_merlin_reader = "${dot-merlin-reader}/bin/dot-merlin-reader";
-      dune = "${dune_3}/bin/dune";
-    })
-  ] ++ lib.optionals needsVimPatch [
-    # https://github.com/ocaml/merlin/pull/1798
-    (fetchpatch {
-      name = "vim-python-12-syntax-warning-fix.patch";
-      url = "https://github.com/ocaml/merlin/commit/9e0c47b0d5fd0c4edc37c4c7ce927b155877557d.patch";
-      hash = "sha256-HmdTISE/s45C5cwLgsCHNUW6OAPSsvQ/GcJE6VDEobs=";
-    })
-  ];
+    patches =
+      let
+        branch = lib.head (lib.tail (lib.splitString "-" version));
+        needsVimPatch =
+          lib.versionOlder version "4.17" || branch == "502" && lib.versionOlder version "5.2";
+      in
+      [
+        (substituteAll {
+          src = ./fix-paths.patch;
+          dot_merlin_reader = "${dot-merlin-reader}/bin/dot-merlin-reader";
+          dune = "${dune_3}/bin/dune";
+        })
+      ]
+      ++ lib.optionals needsVimPatch [
+        # https://github.com/ocaml/merlin/pull/1798
+        (fetchpatch {
+          name = "vim-python-12-syntax-warning-fix.patch";
+          url = "https://github.com/ocaml/merlin/commit/9e0c47b0d5fd0c4edc37c4c7ce927b155877557d.patch";
+          hash = "sha256-HmdTISE/s45C5cwLgsCHNUW6OAPSsvQ/GcJE6VDEobs=";
+        })
+      ];
 
-  strictDeps = true;
+    strictDeps = true;
 
-  nativeBuildInputs = [
-    menhir
-    jq
-  ];
-  buildInputs = [
-    dot-merlin-reader
-    yojson
-    (if lib.versionAtLeast version "4.7-414"
-     then merlin-lib
-     else csexp)
-    menhirSdk
-    menhirLib
-  ];
+    nativeBuildInputs = [
+      menhir
+      jq
+    ];
+    buildInputs = [
+      dot-merlin-reader
+      yojson
+      (if lib.versionAtLeast version "4.7-414" then merlin-lib else csexp)
+      menhirSdk
+      menhirLib
+    ];
 
-  doCheck = false;
-  checkPhase = ''
-    runHook preCheck
-    patchShebangs tests/merlin-wrapper
-    dune runtest # filtering with -p disables tests
-    runHook postCheck
-  '';
+    doCheck = false;
+    checkPhase = ''
+      runHook preCheck
+      patchShebangs tests/merlin-wrapper
+      dune runtest # filtering with -p disables tests
+      runHook postCheck
+    '';
 
-  meta = with lib; {
-    description = "Editor-independent tool to ease the development of programs in OCaml";
-    homepage = "https://github.com/ocaml/merlin";
-    license = licenses.mit;
-    maintainers = [ maintainers.vbgl maintainers.sternenseemann ];
-  };
-}
+    meta = with lib; {
+      description = "Editor-independent tool to ease the development of programs in OCaml";
+      homepage = "https://github.com/ocaml/merlin";
+      license = licenses.mit;
+      maintainers = [
+        maintainers.vbgl
+        maintainers.sternenseemann
+      ];
+    };
+  }

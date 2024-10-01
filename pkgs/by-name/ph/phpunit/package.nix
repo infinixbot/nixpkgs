@@ -1,7 +1,8 @@
-{ lib
-, fetchFromGitHub
-, nix-update-script
-, php
+{
+  lib,
+  fetchFromGitHub,
+  nix-update-script,
+  php,
 }:
 
 php.buildComposerProject2 (finalAttrs: {

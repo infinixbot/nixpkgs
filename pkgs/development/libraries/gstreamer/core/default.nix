@@ -1,31 +1,35 @@
-{ stdenv
-, fetchurl
-, meson
-, ninja
-, pkg-config
-, gettext
-, bison
-, flex
-, python3
-, glib
-, makeWrapper
-, libcap
-, elfutils # for libdw
-, bash-completion
-, lib
-, Cocoa
-, CoreServices
-, rustc
-, testers
-, gobject-introspection
-, buildPackages
-, withIntrospection ? lib.meta.availableOn stdenv.hostPlatform gobject-introspection && stdenv.hostPlatform.emulatorAvailable buildPackages
-, libunwind
-, withLibunwind ?
-  lib.meta.availableOn stdenv.hostPlatform libunwind &&
-    lib.elem "libunwind" libunwind.meta.pkgConfigModules or []
-# Checks meson.is_cross_build(), so even canExecute isn't enough.
-, enableDocumentation ? stdenv.hostPlatform == stdenv.buildPlatform, hotdoc
+{
+  stdenv,
+  fetchurl,
+  meson,
+  ninja,
+  pkg-config,
+  gettext,
+  bison,
+  flex,
+  python3,
+  glib,
+  makeWrapper,
+  libcap,
+  elfutils, # for libdw
+  bash-completion,
+  lib,
+  Cocoa,
+  CoreServices,
+  rustc,
+  testers,
+  gobject-introspection,
+  buildPackages,
+  withIntrospection ?
+    lib.meta.availableOn stdenv.hostPlatform gobject-introspection
+    && stdenv.hostPlatform.emulatorAvailable buildPackages,
+  libunwind,
+  withLibunwind ?
+    lib.meta.availableOn stdenv.hostPlatform libunwind
+    && lib.elem "libunwind" libunwind.meta.pkgConfigModules or [ ],
+  # Checks meson.is_cross_build(), so even canExecute isn't enough.
+  enableDocumentation ? stdenv.hostPlatform == stdenv.buildPlatform,
+  hotdoc,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
@@ -40,50 +44,61 @@ stdenv.mkDerivation (finalAttrs: {
 
   separateDebugInfo = true;
 
-  src = let
-    inherit (finalAttrs) pname version;
-  in fetchurl {
-    url = "https://gstreamer.freedesktop.org/src/${pname}/${pname}-${version}.tar.xz";
-    hash = "sha256-EiXvSjKfrhytxexyfaskmtVn6AcoeUk1Yc65HtNKpBQ=";
-  };
+  src =
+    let
+      inherit (finalAttrs) pname version;
+    in
+    fetchurl {
+      url = "https://gstreamer.freedesktop.org/src/${pname}/${pname}-${version}.tar.xz";
+      hash = "sha256-EiXvSjKfrhytxexyfaskmtVn6AcoeUk1Yc65HtNKpBQ=";
+    };
 
   depsBuildBuild = [
     pkg-config
   ];
 
   strictDeps = true;
-  nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    gettext
-    bison
-    flex
-    python3
-    makeWrapper
-    glib
-    bash-completion
-    rustc
-  ] ++ lib.optionals stdenv.isLinux [
-    libcap # for setcap binary
-  ] ++ lib.optionals withIntrospection [
-    gobject-introspection
-  ] ++ lib.optionals enableDocumentation [
-    hotdoc
-  ];
+  nativeBuildInputs =
+    [
+      meson
+      ninja
+      pkg-config
+      gettext
+      bison
+      flex
+      python3
+      makeWrapper
+      glib
+      bash-completion
+      rustc
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      libcap # for setcap binary
+    ]
+    ++ lib.optionals withIntrospection [
+      gobject-introspection
+    ]
+    ++ lib.optionals enableDocumentation [
+      hotdoc
+    ];
 
-  buildInputs = [
-    bash-completion
-  ] ++ lib.optionals stdenv.isLinux [
-    libcap
-  ] ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [
-    elfutils
-  ] ++ lib.optionals withLibunwind [
-    libunwind
-  ] ++ lib.optionals stdenv.isDarwin [
-    Cocoa
-    CoreServices
-  ];
+  buildInputs =
+    [
+      bash-completion
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      libcap
+    ]
+    ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [
+      elfutils
+    ]
+    ++ lib.optionals withLibunwind [
+      libunwind
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      Cocoa
+      CoreServices
+    ];
 
   propagatedBuildInputs = [
     glib
@@ -131,6 +146,9 @@ stdenv.mkDerivation (finalAttrs: {
       "gstreamer-controller-1.0"
     ];
     platforms = platforms.unix;
-    maintainers = with maintainers; [ ttuegel matthewbauer ];
+    maintainers = with maintainers; [
+      ttuegel
+      matthewbauer
+    ];
   };
 })

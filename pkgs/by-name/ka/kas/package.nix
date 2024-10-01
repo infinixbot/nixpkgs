@@ -1,4 +1,10 @@
-{ lib, fetchFromGitHub, python3, testers, kas }:
+{
+  lib,
+  fetchFromGitHub,
+  python3,
+  testers,
+  kas,
+}:
 
 python3.pkgs.buildPythonApplication rec {
   pname = "kas";
@@ -11,7 +17,14 @@ python3.pkgs.buildPythonApplication rec {
     hash = "sha256-ws2V16HSGn2zyMmcG601ScHfONSE/DBVO3Gaj8dktf4=";
   };
 
-  propagatedBuildInputs = with python3.pkgs; [ setuptools kconfiglib jsonschema distro pyyaml gitpython ];
+  propagatedBuildInputs = with python3.pkgs; [
+    setuptools
+    kconfiglib
+    jsonschema
+    distro
+    pyyaml
+    gitpython
+  ];
 
   # Tests require network as they try to clone repos
   doCheck = false;

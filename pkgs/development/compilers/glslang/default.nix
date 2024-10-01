@@ -1,11 +1,13 @@
-{ lib, stdenv
-, fetchFromGitHub
-, bison
-, cmake
-, jq
-, python3
-, spirv-headers
-, spirv-tools
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  bison,
+  cmake,
+  jq,
+  python3,
+  spirv-headers,
+  spirv-tools,
 }:
 stdenv.mkDerivation rec {
   pname = "glslang";
@@ -18,7 +20,11 @@ stdenv.mkDerivation rec {
     hash = "sha256-slKBFq6NyWHQmJq/YR3LmbGnHyZgRg0hej90tZDOGzA=";
   };
 
-  outputs = [ "bin" "out" "dev" ];
+  outputs = [
+    "bin"
+    "out"
+    "dev"
+  ];
 
   # These get set at all-packages, keep onto them for child drvs
   passthru = {
@@ -26,7 +32,12 @@ stdenv.mkDerivation rec {
     spirv-headers = spirv-headers;
   };
 
-  nativeBuildInputs = [ cmake python3 bison jq ];
+  nativeBuildInputs = [
+    cmake
+    python3
+    bison
+    jq
+  ];
 
   postPatch = ''
     cp --no-preserve=mode -r "${spirv-tools.src}" External/spirv-tools
