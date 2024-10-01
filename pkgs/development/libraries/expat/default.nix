@@ -19,7 +19,12 @@
 
 let
   version = "2.6.2";
-  tag = "R_${lib.replaceStrings [ "." ] [ "_" ] version}";
+  tag = "R_${
+    lib.replaceStrings
+      [ "." ]
+      [ "_" ]
+      version
+  }";
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "expat";

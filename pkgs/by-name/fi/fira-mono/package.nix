@@ -10,7 +10,10 @@ stdenvNoCC.mkDerivation rec {
 
   src = fetchzip {
     url = "https://bboxtype.com/downloads/Fira/Fira_Mono_${
-      lib.replaceStrings [ "." ] [ "_" ] version
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
     }.zip";
     hash = "sha256-Ukc+K2sdSz+vUQFD8mmwJHZQ3N68oM4fk6YzGLwzAfQ=";
   };

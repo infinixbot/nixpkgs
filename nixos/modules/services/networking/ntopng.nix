@@ -40,7 +40,10 @@ in
 {
 
   imports = [
-    (mkRenamedOptionModule [ "services" "ntopng" "http-port" ] [ "services" "ntopng" "httpPort" ])
+    (mkRenamedOptionModule
+      [ "services" "ntopng" "http-port" ]
+      [ "services" "ntopng" "httpPort" ]
+    )
   ];
 
   options = {

@@ -13,7 +13,11 @@
 stdenv.mkDerivation rec {
   pname = "crypto++";
   version = "8.9.0";
-  underscoredVersion = lib.strings.replaceStrings [ "." ] [ "_" ] version;
+  underscoredVersion =
+    lib.strings.replaceStrings
+      [ "." ]
+      [ "_" ]
+      version;
 
   src = fetchFromGitHub {
     owner = "weidai11";

@@ -30,14 +30,7 @@ let
 
         family = mkOption {
           description = "Table family.";
-          type = types.enum [
-            "ip"
-            "ip6"
-            "inet"
-            "arp"
-            "bridge"
-            "netdev"
-          ];
+          type = types.enum [ "ip" "ip6" "inet" "arp" "bridge" "netdev" ];
         };
       };
 

@@ -23,7 +23,10 @@ in
 
 {
   imports = [
-    (mkRenamedOptionModule [ "services" "flatpak" "extraPortals" ] [ "xdg" "portal" "extraPortals" ])
+    (mkRenamedOptionModule
+      [ "services" "flatpak" "extraPortals" ]
+      [ "xdg" "portal" "extraPortals" ]
+    )
     (mkRemovedOptionModule [
       "xdg"
       "portal"

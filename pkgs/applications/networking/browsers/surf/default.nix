@@ -61,13 +61,7 @@ stdenv.mkDerivation rec {
   # override the dependencies with their own PATH.
   preFixup =
     let
-      depsPath = lib.makeBinPath [
-        xorg.xprop
-        dmenu
-        findutils
-        gnused
-        coreutils
-      ];
+      depsPath = lib.makeBinPath [ xorg.xprop dmenu findutils gnused coreutils ];
     in
     ''
       gappsWrapperArgs+=(

@@ -57,18 +57,7 @@ lib.checkListOfEnum "${pname}: button size variants" [ "standard" "small" ] butt
   opacityVariants
   lib.checkListOfEnum
   "${pname}: theme variants"
-  [
-    "default"
-    "blue"
-    "purple"
-    "pink"
-    "red"
-    "orange"
-    "yellow"
-    "green"
-    "grey"
-    "all"
-  ]
+  [ "default" "blue" "purple" "pink" "red" "orange" "yellow" "green" "grey" "all" ]
   themeVariants
 
   stdenvNoCC.mkDerivation

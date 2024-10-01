@@ -43,7 +43,10 @@ stdenv.mkDerivation rec {
       '';
     fetchurl {
       url = "https://www.xmlmind.com/xmleditor/_download/xxe-perso-${
-        builtins.replaceStrings [ "." ] [ "_" ] version
+        builtins.replaceStrings
+          [ "." ]
+          [ "_" ]
+          version
       }.zip";
       sha256 = "sha256-JZ9nQwMrQL/1HKGwvXoWlnTx55ZK/UYjMJAddCtm0rw=";
     };

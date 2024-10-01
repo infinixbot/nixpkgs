@@ -57,7 +57,12 @@ makePythonHook {
         /\\$|,$/{N;br}
         /__future__|^ |^ *(#.*)?$/{n;br}
         ${lib.concatImapStrings mkStringSkipper quoteVariants}
-        /^[^# ]/i ${lib.replaceStrings [ "\n" ] [ ";" ] preamble}
+        /^[^# ]/i ${
+          lib.replaceStrings
+            [ "\n" ]
+            [ ";" ]
+            preamble
+        }
       }
     '';
 } ./wrap.sh

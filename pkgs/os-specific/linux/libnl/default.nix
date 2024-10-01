@@ -24,7 +24,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     repo = "libnl";
     owner = "thom311";
-    rev = "libnl${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "libnl${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     hash = "sha256-zVpoRlB5xDfo6wJkCJGGptuCXkNkriudtZF2Job9YD4=";
   };
 

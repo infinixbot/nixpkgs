@@ -18,7 +18,12 @@
   librsvg,
 }:
 let
-  versionForFile = v: builtins.replaceStrings [ "." ] [ "" ] v;
+  versionForFile =
+    v:
+    builtins.replaceStrings
+      [ "." ]
+      [ "" ]
+      v;
 
   mkPianoteq =
     {

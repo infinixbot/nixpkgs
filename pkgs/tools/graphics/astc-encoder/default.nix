@@ -40,22 +40,8 @@ let
   # The suffix of the binary to link as 'astcenc'
   mainBinary =
     replaceStrings
-      [
-        "AVX2"
-        "SSE41"
-        "SSE2"
-        "NEON"
-        "NONE"
-        "NATIVE"
-      ]
-      [
-        "avx2"
-        "sse4.1"
-        "sse2"
-        "neon"
-        "none"
-        "native"
-      ]
+      [ "AVX2" "SSE41" "SSE2" "NEON" "NONE" "NATIVE" ]
+      [ "avx2" "sse4.1" "sse2" "neon" "none" "native" ]
       (head isas);
 in
 

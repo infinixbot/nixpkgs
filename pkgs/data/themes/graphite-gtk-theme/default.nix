@@ -21,18 +21,7 @@ let
 
 in
 lib.checkListOfEnum "${pname}: theme variants"
-  [
-    "default"
-    "purple"
-    "pink"
-    "red"
-    "orange"
-    "yellow"
-    "green"
-    "teal"
-    "blue"
-    "all"
-  ]
+  [ "default" "purple" "pink" "red" "orange" "yellow" "green" "teal" "blue" "all" ]
   themeVariants
   lib.checkListOfEnum
   "${pname}: color variants"
@@ -44,15 +33,7 @@ lib.checkListOfEnum "${pname}: theme variants"
   sizeVariants
   lib.checkListOfEnum
   "${pname}: tweaks"
-  [
-    "nord"
-    "black"
-    "darker"
-    "rimless"
-    "normal"
-    "float"
-    "colorful"
-  ]
+  [ "nord" "black" "darker" "rimless" "normal" "float" "colorful" ]
   tweaks
   lib.checkListOfEnum
   "${pname}: grub screens"

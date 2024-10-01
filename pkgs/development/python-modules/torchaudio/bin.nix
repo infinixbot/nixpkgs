@@ -21,7 +21,11 @@ buildPythonPackage rec {
 
   src =
     let
-      pyVerNoDot = lib.replaceStrings [ "." ] [ "" ] python.pythonVersion;
+      pyVerNoDot =
+        lib.replaceStrings
+          [ "." ]
+          [ "" ]
+          python.pythonVersion;
       unsupported = throw "Unsupported system";
       srcs = (import ./binary-hashes.nix version)."${stdenv.system}-${pyVerNoDot}" or unsupported;
     in

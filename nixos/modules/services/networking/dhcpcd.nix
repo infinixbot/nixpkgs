@@ -218,14 +218,7 @@ in
     };
 
     networking.dhcpcd.wait = lib.mkOption {
-      type = lib.types.enum [
-        "background"
-        "any"
-        "ipv4"
-        "ipv6"
-        "both"
-        "if-carrier-up"
-      ];
+      type = lib.types.enum [ "background" "any" "ipv4" "ipv6" "both" "if-carrier-up" ];
       default = "any";
       description = ''
         This option specifies when the dhcpcd service will fork to background.

@@ -168,7 +168,12 @@ let
                 tests = {
                   nixos =
                     lib.recurseIntoAttrs
-                      nixosTests."php${lib.strings.replaceStrings [ "." ] [ "" ] (lib.versions.majorMinor php.version)}";
+                      nixosTests."php${
+                        lib.strings.replaceStrings
+                          [ "." ]
+                          [ "" ]
+                          (lib.versions.majorMinor php.version)
+                      }";
                   package = tests.php;
                 };
                 inherit (php-packages)

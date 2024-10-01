@@ -91,13 +91,7 @@ stdenv.mkDerivation rec {
     dpkg
   ];
 
-  runtimeLibs = lib.makeLibraryPath [
-    libudev0-shim
-    glibc
-    curl
-    openssl
-    libnghttp2
-  ];
+  runtimeLibs = lib.makeLibraryPath [ libudev0-shim glibc curl openssl libnghttp2 ];
 
   unpackPhase = "dpkg-deb -x $src .";
 

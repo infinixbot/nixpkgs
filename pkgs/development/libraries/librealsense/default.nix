@@ -54,13 +54,7 @@ stdenv.mkDerivation rec {
         pybind11
       ]
     )
-    ++ lib.optionals enableGUI [
-      mesa
-      gtk3
-      glfw
-      libGLU
-      curl
-    ];
+    ++ lib.optionals enableGUI [ mesa gtk3 glfw libGLU curl ];
 
   patches = [
     ./py_pybind11_no_external_download.patch

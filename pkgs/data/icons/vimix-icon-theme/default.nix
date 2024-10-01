@@ -14,16 +14,7 @@ let
 
 in
 lib.checkListOfEnum "${pname}: color variants"
-  [
-    "standard"
-    "Amethyst"
-    "Beryl"
-    "Doder"
-    "Ruby"
-    "Jade"
-    "Black"
-    "White"
-  ]
+  [ "standard" "Amethyst" "Beryl" "Doder" "Ruby" "Jade" "Black" "White" ]
   colorVariants
 
   stdenvNoCC.mkDerivation

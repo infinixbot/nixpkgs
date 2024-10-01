@@ -193,13 +193,7 @@ stdenv.mkDerivation {
     ]
     ++ lib.optional (guiSupport == "gtk2") gtk2-x11
     ++ lib.optional (guiSupport == "gtk3") gtk3-x11
-    ++ lib.optionals darwinSupport [
-      CoreServices
-      CoreData
-      Cocoa
-      Foundation
-      libobjc
-    ]
+    ++ lib.optionals darwinSupport [ CoreServices CoreData Cocoa Foundation libobjc ]
     ++ lib.optional luaSupport lua
     ++ lib.optional pythonSupport python3
     ++ lib.optional tclSupport tcl

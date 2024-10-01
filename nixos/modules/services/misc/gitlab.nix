@@ -26,7 +26,12 @@ let
 
   gitlabSocket = "${cfg.statePath}/tmp/sockets/gitlab.socket";
   gitalySocket = "${cfg.statePath}/tmp/sockets/gitaly.socket";
-  pathUrlQuote = url: replaceStrings [ "/" ] [ "%2F" ] url;
+  pathUrlQuote =
+    url:
+    replaceStrings
+      [ "/" ]
+      [ "%2F" ]
+      url;
 
   gitlabVersionAtLeast = version: lib.versionAtLeast (lib.getVersion cfg.packages.gitlab) version;
 
@@ -275,8 +280,14 @@ in
 {
 
   imports = [
-    (mkRenamedOptionModule [ "services" "gitlab" "stateDir" ] [ "services" "gitlab" "statePath" ])
-    (mkRenamedOptionModule [ "services" "gitlab" "backupPath" ] [ "services" "gitlab" "backup" "path" ])
+    (mkRenamedOptionModule
+      [ "services" "gitlab" "stateDir" ]
+      [ "services" "gitlab" "statePath" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitlab" "backupPath" ]
+      [ "services" "gitlab" "backup" "path" ]
+    )
     (mkRemovedOptionModule [ "services" "gitlab" "satelliteDir" ] "")
     (mkRemovedOptionModule [
       "services"

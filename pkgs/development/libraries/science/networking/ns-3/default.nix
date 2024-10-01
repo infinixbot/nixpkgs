@@ -84,13 +84,7 @@ stdenv.mkDerivation rec {
   buildInputs =
     lib.optionals pythonSupport [ castxml ncurses ]
     ++ lib.optionals enableDoxygen [ doxygen graphviz imagemagick ]
-    ++ lib.optionals withManual [
-      dia
-      tetex
-      ghostscript
-      imagemagick
-      texliveMedium
-    ]
+    ++ lib.optionals withManual [ dia tetex ghostscript imagemagick texliveMedium ]
     ++ [
       libxml2
       pythonEnv

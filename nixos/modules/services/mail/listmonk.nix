@@ -12,7 +12,10 @@ let
   setDatabaseOption =
     key: value:
     "UPDATE settings SET value = '${
-      lib.replaceStrings [ "'" ] [ "''" ] (builtins.toJSON value)
+      lib.replaceStrings
+        [ "'" ]
+        [ "''" ]
+        (builtins.toJSON value)
     }' WHERE key = '${key}';";
   updateDatabaseConfigSQL = pkgs.writeText "update-database-config.sql" (
     lib.concatStringsSep "\n" (
@@ -36,13 +39,7 @@ let
   '';
 
   databaseSettingsOpts = with lib.types; {
-    freeformType = oneOf [
-      (listOf str)
-      (listOf (attrsOf anything))
-      str
-      int
-      bool
-    ];
+    freeformType = oneOf [ (listOf str) (listOf (attrsOf anything)) str int bool ];
 
     options = {
       "app.notify_emails" = lib.mkOption {

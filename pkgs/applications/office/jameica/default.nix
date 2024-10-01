@@ -49,7 +49,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "willuhn";
     repo = "jameica";
-    rev = "V_${builtins.replaceStrings [ "." ] [ "_" ] _version}_BUILD_${_build}";
+    rev = "V_${
+      builtins.replaceStrings
+        [ "." ]
+        [ "_" ]
+        _version
+    }_BUILD_${_build}";
     hash = "sha256-MSVSd5DyVL+dcfTDv1M99hxickPwT2Pt6QGNsu6DGZI=";
   };
 

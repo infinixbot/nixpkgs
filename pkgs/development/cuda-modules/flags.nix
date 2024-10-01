@@ -110,7 +110,12 @@ let
   jetsonTargets = lists.intersectLists jetsonComputeCapabilities cudaCapabilities;
 
   # dropDot :: String -> String
-  dropDot = ver: builtins.replaceStrings [ "." ] [ "" ] ver;
+  dropDot =
+    ver:
+    builtins.replaceStrings
+      [ "." ]
+      [ "" ]
+      ver;
 
   # archMapper :: String -> List String -> List String
   # Maps a feature across a list of architecture versions to produce a list of architectures.

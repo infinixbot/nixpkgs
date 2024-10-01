@@ -33,12 +33,10 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "virtualisation" "virtualbox" "guest" "draganddrop" ] [
-      "virtualisation"
-      "virtualbox"
-      "guest"
-      "dragAndDrop"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "virtualisation" "virtualbox" "guest" "draganddrop" ]
+      [ "virtualisation" "virtualbox" "guest" "dragAndDrop" ]
+    )
   ];
 
   options.virtualisation.virtualbox.guest = {

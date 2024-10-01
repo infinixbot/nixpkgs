@@ -49,7 +49,12 @@ buildPythonPackage rec {
   src = fetchFromGitHub {
     owner = "sqlalchemy";
     repo = "sqlalchemy";
-    rev = "refs/tags/rel_${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "refs/tags/rel_${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     hash = "sha256-B0T4GsTIis2ZZykRnNOFfhyfW4qU/waXeP0BS5+G1IM=";
   };
 
@@ -115,7 +120,10 @@ buildPythonPackage rec {
 
   meta = with lib; {
     changelog = "https://github.com/sqlalchemy/sqlalchemy/releases/tag/rel_${
-      builtins.replaceStrings [ "." ] [ "_" ] version
+      builtins.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
     }";
     description = "Python SQL toolkit and Object Relational Mapper";
     homepage = "http://www.sqlalchemy.org/";

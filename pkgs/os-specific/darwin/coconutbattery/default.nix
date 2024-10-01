@@ -10,7 +10,10 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   src = fetchzip {
     url = "https://coconut-flavour.com/downloads/coconutBattery_${
-      builtins.replaceStrings [ "." ] [ "" ] finalAttrs.version
+      builtins.replaceStrings
+        [ "." ]
+        [ "" ]
+        finalAttrs.version
     }.zip";
     hash = "sha256-zKSPKwDBwxlyNJFurCLLGtba9gpizJCjOOAd81vdD5Q=";
   };

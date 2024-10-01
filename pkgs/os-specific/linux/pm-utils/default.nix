@@ -13,15 +13,7 @@
 
 let
 
-  binPath = lib.makeBinPath [
-    coreutils
-    gnugrep
-    util-linux
-    kmod
-    procps
-    kbd
-    dbus
-  ];
+  binPath = lib.makeBinPath [ coreutils gnugrep util-linux kmod procps kbd dbus ];
 
   sbinPath = lib.makeSearchPathOutput "bin" "sbin" [ procps ];
 

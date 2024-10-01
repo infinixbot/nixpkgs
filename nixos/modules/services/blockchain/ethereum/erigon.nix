@@ -89,14 +89,7 @@ in
       chain = lib.mkDefault "mainnet";
       http = lib.mkDefault true;
       "http.port" = lib.mkDefault 8545;
-      "http.api" = lib.mkDefault [
-        "eth"
-        "debug"
-        "net"
-        "trace"
-        "web3"
-        "erigon"
-      ];
+      "http.api" = lib.mkDefault [ "eth" "debug" "net" "trace" "web3" "erigon" ];
       ws = lib.mkDefault true;
       port = lib.mkDefault 30303;
       "authrpc.port" = lib.mkDefault 8551;

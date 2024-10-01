@@ -111,8 +111,13 @@ stdenv.mkDerivation rec {
         runtimeDeps: program: "wrapProgram $out/bin/${program} ${wrapperArgs runtimeDeps}\n";
       wrapPrograms = runtimeDeps: programs: lib.concatMapStrings (wrapMonkeysphere runtimeDeps) programs;
     in
-    wrapPrograms [ gnupg ] [ "monkeysphere-authentication" "monkeysphere-host" ]
-    + wrapPrograms [ gnupg lockfileProgs ] [ "monkeysphere" ]
+    wrapPrograms
+      [ gnupg ]
+      [ "monkeysphere-authentication" "monkeysphere-host" ]
+    +
+      wrapPrograms
+        [ gnupg lockfileProgs ]
+        [ "monkeysphere" ]
     + ''
       # These 4 programs depend on the program name ($0):
       for program in openpgp2pem openpgp2spki openpgp2ssh pem2openpgp; do

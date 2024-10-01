@@ -39,7 +39,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "freeciv";
     repo = "freeciv";
-    rev = "R${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "R${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     hash = "sha256-gneg43RJCf32LUjOHTHlvZxN9RnyJYeXXi6EU3r3mBw=";
   };
 

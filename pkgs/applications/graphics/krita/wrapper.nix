@@ -11,7 +11,11 @@
 }:
 
 symlinkJoin {
-  name = lib.replaceStrings [ "-unwrapped" ] [ "" ] unwrapped.name;
+  name =
+    lib.replaceStrings
+      [ "-unwrapped" ]
+      [ "" ]
+      unwrapped.name;
   inherit (unwrapped)
     version
     buildInputs

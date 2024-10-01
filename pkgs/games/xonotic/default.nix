@@ -101,15 +101,7 @@ let
         curl
         gmp
       ]
-      ++ lib.optionals withGLX [
-        libX11
-        libGLU
-        libGL
-        libXpm
-        libXext
-        libXxf86vm
-        alsa-lib
-      ]
+      ++ lib.optionals withGLX [ libX11 libGLU libGL libXpm libXext libXxf86vm alsa-lib ]
       ++ lib.optionals withSDL [ SDL2 ];
 
     sourceRoot = "Xonotic/source/darkplaces";

@@ -33,7 +33,14 @@ let
         _0_8_18 = _0_8_22;
         _0_8_17 = _0_8_22;
       }
-      .${"_" + (lib.replaceStrings [ "." ] [ "_" ] version)} or (throw ''
+      .${
+        "_"
+        + (lib.replaceStrings
+          [ "." ]
+          [ "_" ]
+          version
+        )
+      } or (throw ''
         Unsupported version of pub 'super_native_extensions': '${version}'
         Please add ${src}/rust/Cargo.lock
         to this path, and add corresponding entry here. If the lock

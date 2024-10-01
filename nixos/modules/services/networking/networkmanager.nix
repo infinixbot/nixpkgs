@@ -84,13 +84,7 @@ let
 
   macAddressOptWifi = mkOption {
     type = types.either types.str (
-      types.enum [
-        "permanent"
-        "preserve"
-        "random"
-        "stable"
-        "stable-ssid"
-      ]
+      types.enum [ "permanent" "preserve" "random" "stable" "stable-ssid" ]
     );
     default = "preserve";
     example = "00:11:22:33:44:55";
@@ -241,14 +235,7 @@ in
       };
 
       logLevel = mkOption {
-        type = types.enum [
-          "OFF"
-          "ERR"
-          "WARN"
-          "INFO"
-          "DEBUG"
-          "TRACE"
-        ];
+        type = types.enum [ "OFF" "ERR" "WARN" "INFO" "DEBUG" "TRACE" ];
         default = "WARN";
         description = ''
           Set the default logging verbosity level.
@@ -474,16 +461,14 @@ in
   };
 
   imports = [
-    (mkRenamedOptionModule [ "networking" "networkmanager" "packages" ] [
-      "networking"
-      "networkmanager"
-      "plugins"
-    ])
-    (mkRenamedOptionModule [ "networking" "networkmanager" "useDnsmasq" ] [
-      "networking"
-      "networkmanager"
-      "dns"
-    ])
+    (mkRenamedOptionModule
+      [ "networking" "networkmanager" "packages" ]
+      [ "networking" "networkmanager" "plugins" ]
+    )
+    (mkRenamedOptionModule
+      [ "networking" "networkmanager" "useDnsmasq" ]
+      [ "networking" "networkmanager" "dns" ]
+    )
     (mkRemovedOptionModule [ "networking" "networkmanager" "extraConfig" ] ''
       This option was removed in favour of `networking.networkmanager.settings`,
       which accepts structured nix-code equivalent to the ini

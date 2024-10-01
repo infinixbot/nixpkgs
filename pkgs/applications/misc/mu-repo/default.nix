@@ -15,7 +15,12 @@ buildPythonApplication rec {
   src = fetchFromGitHub {
     owner = "fabioz";
     repo = "mu-repo";
-    rev = "mu_repo_${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "mu_repo_${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     hash = "sha256-COc7hbu72eA+ikZQkz6zXtFyaa/AKhoF+Zvsr6ZVOuY=";
   };
 

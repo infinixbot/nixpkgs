@@ -60,7 +60,10 @@ let
     };
 
   relativeLocs = (builtins.map fnLocationRelative liblocations);
-  sanitizeId = builtins.replaceStrings [ "'" ] [ "-prime" ];
+  sanitizeId =
+    builtins.replaceStrings
+      [ "'" ]
+      [ "-prime" ];
 
   urlPrefix = "https://github.com/NixOS/nixpkgs/blob/${revision}";
   jsonLocs = builtins.listToAttrs (

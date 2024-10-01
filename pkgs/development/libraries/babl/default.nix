@@ -64,7 +64,10 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "babl";
     homepage = "https://gegl.org/babl/";
     changelog = "https://gitlab.gnome.org/GNOME/babl/-/blob/BABL_${
-      replaceStrings [ "." ] [ "_" ] finalAttrs.version
+      replaceStrings
+        [ "." ]
+        [ "_" ]
+        finalAttrs.version
     }/NEWS";
     license = licenses.lgpl3Plus;
     maintainers = with maintainers; [ jtojnar ];

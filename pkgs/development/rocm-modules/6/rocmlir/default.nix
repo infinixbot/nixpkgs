@@ -119,13 +119,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   postInstall =
     let
-      libPath = lib.makeLibraryPath [
-        zstd
-        zlib
-        ncurses
-        clr
-        stdenv.cc.cc
-      ];
+      libPath = lib.makeLibraryPath [ zstd zlib ncurses clr stdenv.cc.cc ];
     in
     lib.optionals (!buildRockCompiler) ''
       mkdir -p $external/lib

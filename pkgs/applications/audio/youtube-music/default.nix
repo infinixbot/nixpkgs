@@ -98,7 +98,10 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Electron wrapper around YouTube Music";
     homepage = "https://th-ch.github.io/youtube-music/";
     changelog = "https://github.com/th-ch/youtube-music/blob/master/changelog.md#${
-      lib.replaceStrings [ "." ] [ "" ] finalAttrs.src.rev
+      lib.replaceStrings
+        [ "." ]
+        [ "" ]
+        finalAttrs.src.rev
     }";
     license = licenses.mit;
     maintainers = with maintainers; [

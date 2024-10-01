@@ -44,7 +44,11 @@ stdenv.mkDerivation rec {
     else
       let
         platform = platforms.${stdenv.system} or (throw "unsupported system ${stdenv.hostPlatform.system}");
-        urlVersion = lib.replaceStrings [ "." ] [ "_" ] version;
+        urlVersion =
+          lib.replaceStrings
+            [ "." ]
+            [ "_" ]
+            version;
       in
       fetchurl {
         urls = [

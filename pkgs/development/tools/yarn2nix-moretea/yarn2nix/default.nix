@@ -220,7 +220,10 @@ rec {
 
       packageResolutions = package.resolutions or { };
 
-      globElemToRegex = lib.replaceStrings [ "*" ] [ ".*" ];
+      globElemToRegex =
+        lib.replaceStrings
+          [ "*" ]
+          [ ".*" ];
 
       # PathGlob -> [PathGlobElem]
       splitGlob = lib.splitString "/";

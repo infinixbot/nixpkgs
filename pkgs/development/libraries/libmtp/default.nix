@@ -20,7 +20,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "libmtp";
     repo = "libmtp";
-    rev = "libmtp-${builtins.replaceStrings [ "." ] [ "-" ] version}";
+    rev = "libmtp-${
+      builtins.replaceStrings
+        [ "." ]
+        [ "-" ]
+        version
+    }";
     sha256 = "sha256-m9QFVD8udQ3SdGwn276BnIKqGeATA5QuokOK29Ykc1k=";
   };
 

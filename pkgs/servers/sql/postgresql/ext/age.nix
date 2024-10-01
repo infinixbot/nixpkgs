@@ -25,7 +25,10 @@ stdenv.mkDerivation rec {
     owner = "apache";
     repo = "age";
     rev = "PG${lib.versions.major postgresql.version}/v${
-      builtins.replaceStrings [ "." ] [ "_" ] version
+      builtins.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
     }";
     hash =
       hashes.${lib.versions.major postgresql.version}

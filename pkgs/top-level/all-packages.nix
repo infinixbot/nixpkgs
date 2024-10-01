@@ -22644,15 +22644,7 @@ with pkgs;
   # We also provide `libiconvReal`, which will always be a standalone libiconv,
   # just in case you want it regardless of platform.
   libiconv =
-    if
-      lib.elem stdenv.hostPlatform.libc [
-        "glibc"
-        "musl"
-        "nblibc"
-        "wasilibc"
-        "fblibc"
-      ]
-    then
+    if lib.elem stdenv.hostPlatform.libc [ "glibc" "musl" "nblibc" "wasilibc" "fblibc" ] then
       libcIconv (if stdenv.hostPlatform != stdenv.buildPlatform then libcCross else stdenv.cc.libc)
     else if stdenv.hostPlatform.isDarwin then
       libiconv-darwin
@@ -23804,7 +23796,12 @@ with pkgs;
   opencascade-occt_7_6 = opencascade-occt.overrideAttrs rec {
     pname = "opencascade-occt";
     version = "7.6.2";
-    commit = "V${builtins.replaceStrings [ "." ] [ "_" ] version}";
+    commit = "V${
+      builtins.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     src = fetchurl {
       name = "occt-${commit}.tar.gz";
       url = "https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=${commit};sf=tgz";

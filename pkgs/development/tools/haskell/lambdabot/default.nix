@@ -27,8 +27,16 @@ let
     ++ lib.optional withDjinn haskellPackages.djinn
     ++ lib.optional (aspell != null) aspell
   );
-  modulesStr = lib.replaceStrings [ "\n" ] [ " " ] modules;
-  configStr = lib.replaceStrings [ "\n" ] [ " " ] configuration;
+  modulesStr =
+    lib.replaceStrings
+      [ "\n" ]
+      [ " " ]
+      modules;
+  configStr =
+    lib.replaceStrings
+      [ "\n" ]
+      [ " " ]
+      configuration;
 
 in
 haskellLib.overrideCabal (self: {

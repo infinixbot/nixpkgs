@@ -181,8 +181,15 @@ let
                     ++ lib.optional (!builtins.elem latestVer uniqueVersions' && releaseVer != latestVer) latestVer;
 
                   lastUpdated =
-                    v.lastUpdated
-                      or (if vMeta then builtins.replaceStrings [ "." ] [ "" ] snapshotTs else "20240101123456");
+                    v.lastUpdated or (
+                      if vMeta then
+                        builtins.replaceStrings
+                          [ "." ]
+                          [ "" ]
+                          snapshotTs
+                      else
+                        "20240101123456"
+                    );
 
                   # the following are only used for snapshots
                   snapshotTsAndNum = lib.splitString "-" latestVer;
@@ -193,7 +200,12 @@ let
                   containsSpecialXmlChars = s: builtins.match ''.*[<>"'&].*'' s != null;
                 in
                 # make sure all user-provided data is safe
-                assert lib.hasInfix "${builtins.replaceStrings [ "." ] [ "/" ] groupId}/${artifactId}" url;
+                assert lib.hasInfix "${
+                  builtins.replaceStrings
+                    [ "." ]
+                    [ "/" ]
+                    groupId
+                }/${artifactId}" url;
                 assert !containsSpecialXmlChars groupId;
                 assert !containsSpecialXmlChars lastUpdated;
                 if vMeta then
@@ -219,7 +231,12 @@ let
                           }
                             <extension>${x.extension}</extension>
                             <value>${x.version}</value>
-                            <updated>${builtins.replaceStrings [ "." ] [ "" ] x.timestamp}</updated>
+                            <updated>${
+                              builtins.replaceStrings
+                                [ "." ]
+                                [ "" ]
+                                x.timestamp
+                            }</updated>
                           </snapshotVersion>''
                       ) sortedJarPomList
                     )}

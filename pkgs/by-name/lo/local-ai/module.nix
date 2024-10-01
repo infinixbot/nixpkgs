@@ -40,13 +40,7 @@ in
     };
 
     logLevel = mkOption {
-      type = types.enum [
-        "error"
-        "warn"
-        "info"
-        "debug"
-        "trace"
-      ];
+      type = types.enum [ "error" "warn" "info" "debug" "trace" ];
       default = "warn";
     };
   };

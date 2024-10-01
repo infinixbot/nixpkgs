@@ -114,7 +114,12 @@ stdenv.mkDerivation rec {
   };
 
   meta = with lib; {
-    changelog = "https://www.sqlite.org/releaselog/${lib.replaceStrings [ "." ] [ "_" ] version}.html";
+    changelog = "https://www.sqlite.org/releaselog/${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }.html";
     description = "Self-contained, serverless, zero-configuration, transactional SQL database engine";
     downloadPage = "https://sqlite.org/download.html";
     homepage = "https://www.sqlite.org/";

@@ -31,14 +31,7 @@
 }:
 
 let
-  binPath = lib.makeBinPath [
-    bc
-    coreutils
-    gawk
-    gnused
-    gnugrep
-    which
-  ];
+  binPath = lib.makeBinPath [ bc coreutils gawk gnused gnugrep which ];
 
 in
 stdenv.mkDerivation rec {

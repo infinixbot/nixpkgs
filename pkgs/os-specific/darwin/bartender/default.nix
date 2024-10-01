@@ -12,7 +12,10 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   src = fetchurl {
     name = "Bartender ${lib.versions.major finalAttrs.version}.dmg";
     url = "https://www.macbartender.com/B2/updates/${
-      builtins.replaceStrings [ "." ] [ "-" ] finalAttrs.version
+      builtins.replaceStrings
+        [ "." ]
+        [ "-" ]
+        finalAttrs.version
     }/Bartender%20${lib.versions.major finalAttrs.version}.dmg";
     hash = "sha256-t3ygKL3CPebSK1JcVbabVHFpe7lvrMrFQxTh0DVyGmU=";
   };

@@ -79,7 +79,10 @@ in
     ]
   );
   imports = [
-    (mkRenamedOptionModule [ "telemetryEndpoint" ] [ "telemetryPath" ])
+    (mkRenamedOptionModule
+      [ "telemetryEndpoint" ]
+      [ "telemetryPath" ]
+    )
     (mkRemovedOptionModule [ "insecure" ] ''
       This option was replaced by 'prometheus.exporters.nginx.sslVerify'.
     '')

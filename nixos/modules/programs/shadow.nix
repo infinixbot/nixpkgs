@@ -62,13 +62,7 @@ in
               description = "This defines the system default encryption algorithm for encrypting passwords.";
               # The default crypt() method, keep in sync with the PAM default
               default = "YESCRYPT";
-              type = lib.types.enum [
-                "YESCRYPT"
-                "SHA512"
-                "SHA256"
-                "MD5"
-                "DES"
-              ];
+              type = lib.types.enum [ "YESCRYPT" "SHA512" "SHA256" "MD5" "DES" ];
             };
 
             SYS_UID_MIN = lib.mkOption {

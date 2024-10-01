@@ -40,7 +40,12 @@ in
     sshPublicKey = snakeOilPublicKey;
     userData = ''
       SSH_HOST_ED25519_KEY_PUB:${snakeOilPublicKey}
-      SSH_HOST_ED25519_KEY:${replaceStrings [ "\n" ] [ "|" ] snakeOilPrivateKey}
+      SSH_HOST_ED25519_KEY:${
+        replaceStrings
+          [ "\n" ]
+          [ "|" ]
+          snakeOilPrivateKey
+      }
     '';
     script = ''
       machine.start()

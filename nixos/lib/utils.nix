@@ -111,13 +111,16 @@ let
         trim = s: removeSuffix "/" (removePrefix "/" s);
         normalizedPath = normalizePath s;
       in
-      replaceStrings [ "/" ] [ "-" ] (
-        replacePrefix "." (escapeC [ "." ] ".") (
-          escapeC (stringToCharacters " !\"#$%&'()*+,;<=>=@[\\]^`{|}~-") (
-            if normalizedPath == "/" then normalizedPath else trim normalizedPath
+      replaceStrings
+        [ "/" ]
+        [ "-" ]
+        (
+          replacePrefix "." (escapeC [ "." ] ".") (
+            escapeC (stringToCharacters " !\"#$%&'()*+,;<=>=@[\\]^`{|}~-") (
+              if normalizedPath == "/" then normalizedPath else trim normalizedPath
+            )
           )
-        )
-      );
+        );
 
     # Quotes an argument for use in Exec* service lines.
     # systemd accepts "-quoted strings with escape sequences, toJSON produces
@@ -139,7 +142,10 @@ let
           else
             throw "escapeSystemdExecArg only allows strings, paths, numbers and derivations";
       in
-      replaceStrings [ "%" "$" ] [ "%%" "$$" ] (toJSON s);
+      replaceStrings
+        [ "%" "$" ]
+        [ "%%" "$$" ]
+        (toJSON s);
 
     # Quotes a list of arguments into a single string for use in a Exec*
     # line.
@@ -217,7 +223,12 @@ let
             map (
               name:
               let
-                escapedName = ''"${replaceStrings [ ''"'' "\\" ] [ ''\"'' "\\\\" ] name}"'';
+                escapedName = ''"${
+                  replaceStrings
+                    [ ''"'' "\\" ]
+                    [ ''\"'' "\\\\" ]
+                    name
+                }"'';
               in
               recurse (prefix + "." + escapedName) item.${name}
             ) (attrNames item)

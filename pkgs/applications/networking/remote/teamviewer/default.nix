@@ -121,17 +121,7 @@ mkDerivation rec {
   makeWrapperArgs = [
     "--prefix PATH : ${lib.makeBinPath [ getconf coreutils ]}"
     "--prefix LD_LIBRARY_PATH : ${
-      lib.makeLibraryPath [
-        libXrandr
-        libX11
-        libXext
-        libXdamage
-        libXtst
-        libSM
-        libXfixes
-        dbus
-        icu63
-      ]
+      lib.makeLibraryPath [ libXrandr libX11 libXext libXdamage libXtst libSM libXfixes dbus icu63 ]
     }"
   ];
 

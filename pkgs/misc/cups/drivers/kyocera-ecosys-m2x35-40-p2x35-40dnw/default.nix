@@ -14,7 +14,11 @@ stdenv.mkDerivation rec {
 
   src =
     let
-      urlVersion = builtins.replaceStrings [ "." ] [ "_" ] version;
+      urlVersion =
+        builtins.replaceStrings
+          [ "." ]
+          [ "_" ]
+          version;
     in
     fetchzip {
       url = "https://www.kyoceradocumentsolutions.de/content/download-center/de/drivers/all/Linux_${urlVersion}_ECOSYS_M2x35_40_P2x35_40dnw_zip.download.zip";

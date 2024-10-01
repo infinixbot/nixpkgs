@@ -43,13 +43,7 @@ stdenv.mkDerivation rec {
       runHook preBuild
 
       patchelf --set-rpath "${
-        lib.makeLibraryPath [
-          libX11
-          libXext
-          libXrender
-          libXtst
-          libXi
-        ]
+        lib.makeLibraryPath [ libX11 libXext libXrender libXtst libXi ]
       }" ./jre/lib/libawt_xawt.so
       patchelf --set-rpath "${lib.makeLibraryPath [ freetype ]}" ./jre/lib/libfontmanager.so
       patchelf --set-rpath "${gcc.cc}/lib:$out/jre/lib/jli" --set-interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" ./jre/bin/java

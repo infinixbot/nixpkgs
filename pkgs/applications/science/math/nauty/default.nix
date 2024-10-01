@@ -9,7 +9,10 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://pallini.di.uniroma1.it/nauty${
-      builtins.replaceStrings [ "." ] [ "_" ] version
+      builtins.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
     }.tar.gz";
     sha256 = "sha256-FZ0hVoEKa7JAQQzWHrZBrdhQiNnxXIiM2qN7hoH5Kc4=";
   };

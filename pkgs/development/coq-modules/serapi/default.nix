@@ -113,7 +113,13 @@ in
       {
         src = fetchzip {
           url = "https://github.com/ejgallego/coq-serapi/releases/download/${version}/coq-serapi-${
-            if version == "8.11.0+0.11.1" then version else builtins.replaceStrings [ "+" ] [ "." ] version
+            if version == "8.11.0+0.11.1" then
+              version
+            else
+              builtins.replaceStrings
+                [ "+" ]
+                [ "." ]
+                version
           }.tbz";
           sha256 = release."${version}".sha256;
         };

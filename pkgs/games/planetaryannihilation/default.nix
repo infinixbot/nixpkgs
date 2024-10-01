@@ -90,14 +90,7 @@ stdenv.mkDerivation rec {
 
     for f in $out/lib/*; do
       patchelf --set-rpath "${
-        lib.makeLibraryPath [
-          stdenv.cc.cc.lib
-          curl
-          xorg.libX11
-          stdenv.cc.libc
-          xorg.libXcursor
-          "$out"
-        ]
+        lib.makeLibraryPath [ stdenv.cc.cc.lib curl xorg.libX11 stdenv.cc.libc xorg.libXcursor "$out" ]
       }:${stdenv.cc.cc.lib}/lib64:${stdenv.cc.libc}/lib64" $f
     done
   '';

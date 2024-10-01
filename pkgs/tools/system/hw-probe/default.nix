@@ -126,14 +126,7 @@ stdenv.mkDerivation rec {
     [
       "--set"
       "PERL5LIB"
-      "${makePerlPath [
-        LWP
-        LWPProtocolHttps
-        HTTPMessage
-        URI
-        HTTPDate
-        TryTiny
-      ]}"
+      "${makePerlPath [ LWP LWPProtocolHttps HTTPMessage URI HTTPDate TryTiny ]}"
       "--prefix"
       "PATH"
       ":"

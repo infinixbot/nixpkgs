@@ -59,13 +59,17 @@ in
 {
 
   imports = [
-    (lib.mkChangedOptionModule [ "services" "ddclient" "domain" ] [ "services" "ddclient" "domains" ] (
-      config:
-      let
-        value = lib.getAttrFromPath [ "services" "ddclient" "domain" ] config;
-      in
-      lib.optional (value != "") value
-    ))
+    (lib.mkChangedOptionModule
+      [ "services" "ddclient" "domain" ]
+      [ "services" "ddclient" "domains" ]
+      (
+        config:
+        let
+          value = lib.getAttrFromPath [ "services" "ddclient" "domain" ] config;
+        in
+        lib.optional (value != "") value
+      )
+    )
     (lib.mkRemovedOptionModule [ "services" "ddclient" "homeDir" ] "")
     (lib.mkRemovedOptionModule [
       "services"

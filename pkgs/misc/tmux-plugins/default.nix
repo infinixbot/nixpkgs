@@ -21,7 +21,13 @@ let
   mkTmuxPlugin =
     a@{
       pluginName,
-      rtpFilePath ? (builtins.replaceStrings [ "-" ] [ "_" ] pluginName) + ".tmux",
+      rtpFilePath ?
+        (builtins.replaceStrings
+          [ "-" ]
+          [ "_" ]
+          pluginName
+        )
+        + ".tmux",
       namePrefix ? "tmuxplugin-",
       src,
       unpackPhase ? "",

@@ -17,7 +17,10 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://www.syntevo.com/downloads/deepgit/deepgit-linux-${
-      lib.replaceStrings [ "." ] [ "_" ] version
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
     }.tar.gz";
     hash = "sha256-ILqwXDyW7/hZzoSxxaxv4bF5xsB/JFaOBYAJFb7xmdk=";
   };

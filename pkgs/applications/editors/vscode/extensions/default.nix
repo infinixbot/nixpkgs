@@ -4199,7 +4199,10 @@ let
         };
         meta = {
           changelog = "https://github.com/sdras/night-owl-vscode-theme/blob/main/CHANGELOG.md#${
-            builtins.replaceStrings [ "." ] [ "" ] mktplcRef.version
+            builtins.replaceStrings
+              [ "." ]
+              [ "" ]
+              mktplcRef.version
           }";
           description = "A Visual Studio Code theme named Light Owl for daytime usage";
           longDescription = ''

@@ -198,7 +198,11 @@ let
         n:
         map (v: {
           name = v;
-          value = builtins.replaceStrings [ "-" ] [ "_" ] n;
+          value =
+            builtins.replaceStrings
+              [ "-" ]
+              [ "_" ]
+              n;
         }) binPackages.${n}.binfiles or [ ]
       ) (builtins.attrNames binPackages)
     );
@@ -247,12 +251,17 @@ rec {
       })
     ];
 
-    outputs = [
-      "out"
-      "dev"
-      "man"
-      "info"
-    ] ++ (builtins.map (builtins.replaceStrings [ "-" ] [ "_" ]) corePackages);
+    outputs =
+      [
+        "out"
+        "dev"
+        "man"
+        "info"
+      ]
+      ++ (builtins.map (builtins.replaceStrings
+        [ "-" ]
+        [ "_" ]
+      ) corePackages);
 
     nativeBuildInputs =
       [
@@ -441,14 +450,7 @@ rec {
 
     configureFlags =
       common.configureFlags
-      ++ withSystemLibs [
-        "kpathsea"
-        "ptexenc"
-        "cairo"
-        "harfbuzz"
-        "icu"
-        "graphite2"
-      ]
+      ++ withSystemLibs [ "kpathsea" "ptexenc" "cairo" "harfbuzz" "icu" "graphite2" ]
       ++
         map (prog: "--disable-${prog}") # don't build things we already have
           # list from texk/web2c/configure
@@ -489,7 +491,10 @@ rec {
         "man"
         "info"
       ]
-      ++ (builtins.map (builtins.replaceStrings [ "-" ] [ "_" ]) coreBigPackages)
+      ++ (builtins.map (builtins.replaceStrings
+        [ "-" ]
+        [ "_" ]
+      ) coreBigPackages)
       # some outputs of metapost, omegaware are for ptex/uptex
       ++ [
         "ptex"

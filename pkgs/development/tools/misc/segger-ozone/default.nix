@@ -22,13 +22,19 @@ stdenv.mkDerivation rec {
     {
       x86_64-linux = fetchurl {
         url = "https://www.segger.com/downloads/jlink/Ozone_Linux_V${
-          builtins.replaceStrings [ "." ] [ "" ] version
+          builtins.replaceStrings
+            [ "." ]
+            [ "" ]
+            version
         }_x86_64.tgz";
         hash = "sha256-W8Fo0q58pAn1aB92CjYARcN3vMLEguvsyozsS7VRArQ=";
       };
       i686-linux = fetchurl {
         url = "https://www.segger.com/downloads/jlink/Ozone_Linux_V${
-          builtins.replaceStrings [ "." ] [ "" ] version
+          builtins.replaceStrings
+            [ "." ]
+            [ "" ]
+            version
         }_i386.tgz";
         hash = "sha256-Xq/69lwF2Ll5VdkYMDNRtc0YUUvWc+XR0FHJXxOLNQ4=";
       };

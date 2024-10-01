@@ -178,74 +178,59 @@ in
 
 {
   imports = [
-    (lib.mkAliasOptionModuleMD [ "services" "sshd" "enable" ] [ "services" "openssh" "enable" ])
-    (lib.mkAliasOptionModuleMD [ "services" "openssh" "knownHosts" ] [ "programs" "ssh" "knownHosts" ])
-    (lib.mkRenamedOptionModule [ "services" "openssh" "challengeResponseAuthentication" ] [
-      "services"
-      "openssh"
-      "kbdInteractiveAuthentication"
-    ])
+    (lib.mkAliasOptionModuleMD
+      [ "services" "sshd" "enable" ]
+      [ "services" "openssh" "enable" ]
+    )
+    (lib.mkAliasOptionModuleMD
+      [ "services" "openssh" "knownHosts" ]
+      [ "programs" "ssh" "knownHosts" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "openssh" "challengeResponseAuthentication" ]
+      [ "services" "openssh" "kbdInteractiveAuthentication" ]
+    )
 
-    (lib.mkRenamedOptionModule [ "services" "openssh" "kbdInteractiveAuthentication" ] [
-      "services"
-      "openssh"
-      "settings"
-      "KbdInteractiveAuthentication"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "openssh" "passwordAuthentication" ] [
-      "services"
-      "openssh"
-      "settings"
-      "PasswordAuthentication"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "openssh" "useDns" ] [
-      "services"
-      "openssh"
-      "settings"
-      "UseDns"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "openssh" "permitRootLogin" ] [
-      "services"
-      "openssh"
-      "settings"
-      "PermitRootLogin"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "openssh" "logLevel" ] [
-      "services"
-      "openssh"
-      "settings"
-      "LogLevel"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "openssh" "macs" ] [
-      "services"
-      "openssh"
-      "settings"
-      "Macs"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "openssh" "ciphers" ] [
-      "services"
-      "openssh"
-      "settings"
-      "Ciphers"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "openssh" "kexAlgorithms" ] [
-      "services"
-      "openssh"
-      "settings"
-      "KexAlgorithms"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "openssh" "gatewayPorts" ] [
-      "services"
-      "openssh"
-      "settings"
-      "GatewayPorts"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "openssh" "forwardX11" ] [
-      "services"
-      "openssh"
-      "settings"
-      "X11Forwarding"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "openssh" "kbdInteractiveAuthentication" ]
+      [ "services" "openssh" "settings" "KbdInteractiveAuthentication" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "openssh" "passwordAuthentication" ]
+      [ "services" "openssh" "settings" "PasswordAuthentication" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "openssh" "useDns" ]
+      [ "services" "openssh" "settings" "UseDns" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "openssh" "permitRootLogin" ]
+      [ "services" "openssh" "settings" "PermitRootLogin" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "openssh" "logLevel" ]
+      [ "services" "openssh" "settings" "LogLevel" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "openssh" "macs" ]
+      [ "services" "openssh" "settings" "Macs" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "openssh" "ciphers" ]
+      [ "services" "openssh" "settings" "Ciphers" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "openssh" "kexAlgorithms" ]
+      [ "services" "openssh" "settings" "KexAlgorithms" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "openssh" "gatewayPorts" ]
+      [ "services" "openssh" "settings" "GatewayPorts" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "openssh" "forwardX11" ]
+      [ "services" "openssh" "settings" "X11Forwarding" ]
+    )
   ];
 
   ###### interface
@@ -484,17 +469,7 @@ in
               };
               LogLevel = lib.mkOption {
                 type = lib.types.nullOr (
-                  lib.types.enum [
-                    "QUIET"
-                    "FATAL"
-                    "ERROR"
-                    "INFO"
-                    "VERBOSE"
-                    "DEBUG"
-                    "DEBUG1"
-                    "DEBUG2"
-                    "DEBUG3"
-                  ]
+                  lib.types.enum [ "QUIET" "FATAL" "ERROR" "INFO" "VERBOSE" "DEBUG" "DEBUG1" "DEBUG2" "DEBUG3" ]
                 );
                 default = "INFO"; # upstream default
                 description = ''
@@ -534,13 +509,7 @@ in
               PermitRootLogin = lib.mkOption {
                 default = "prohibit-password";
                 type = lib.types.nullOr (
-                  lib.types.enum [
-                    "yes"
-                    "without-password"
-                    "prohibit-password"
-                    "forced-commands-only"
-                    "no"
-                  ]
+                  lib.types.enum [ "yes" "without-password" "prohibit-password" "forced-commands-only" "no" ]
                 );
                 description = ''
                   Whether the root user can login using ssh.

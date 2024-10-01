@@ -14,7 +14,11 @@ let
   };
 
   arch = lib.optionalString (stdenv.hostPlatform.system == "x86_64-linux") "_64";
-  tarballVersion = lib.replaceStrings [ "." ] [ "_" ] version;
+  tarballVersion =
+    lib.replaceStrings
+      [ "." ]
+      [ "_" ]
+      version;
   tarball = "hybrid-v35${arch}-nodebug-pcoem-${tarballVersion}.tar.gz";
 
   rpmFusionPatches = fetchFromGitHub {

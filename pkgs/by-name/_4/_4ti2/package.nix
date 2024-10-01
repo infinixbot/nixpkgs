@@ -14,7 +14,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = pname;
     repo = pname;
-    rev = "Release_${builtins.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "Release_${
+      builtins.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     hash = "sha256-Rz8O1Tf81kzpTGPq7dkZJvv444F1/VqKu7VuRvH59kQ=";
   };
 

@@ -28,13 +28,7 @@ let
     ++ lib.optional withSQLite "sqlite3_drv"
     ++ lib.optional withDB "libdb4_drv"
   );
-  maintenancePath = lib.makeBinPath [
-    gawk
-    gnused
-    gnugrep
-    coreutils
-    which
-  ];
+  maintenancePath = lib.makeBinPath [ gawk gnused gnugrep coreutils which ];
 
 in
 stdenv.mkDerivation rec {

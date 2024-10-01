@@ -76,14 +76,7 @@ stdenv.mkDerivation rec {
       fontconfig
       libGLU
     ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      AVFoundation
-      Carbon
-      Cocoa
-      CoreAudio
-      Kernel
-      OpenGL
-    ];
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [ AVFoundation Carbon Cocoa CoreAudio Kernel OpenGL ];
 
   env.NIX_CFLAGS_COMPILE = toString [
     # Needed with GCC 12

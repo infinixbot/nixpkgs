@@ -277,19 +277,7 @@ pkgs.lib.mapAttrs mkKeyboardTest {
         "n"
         "s"
       ];
-      numbers.qwerty = map (x: "shift-${x}") [
-        "1"
-        "2"
-        "3"
-        "4"
-        "5"
-        "6"
-        "7"
-        "8"
-        "9"
-        "0"
-        "minus"
-      ];
+      numbers.qwerty = map (x: "shift-${x}") [ "1" "2" "3" "4" "5" "6" "7" "8" "9" "0" "minus" ];
       numbers.expect = [
         "%"
         "7"
@@ -381,14 +369,7 @@ pkgs.lib.mapAttrs mkKeyboardTest {
         "y"
         "z"
       ];
-      altgr.qwerty = map (x: "alt_r-${x}") [
-        "q"
-        "less"
-        "7"
-        "8"
-        "9"
-        "0"
-      ];
+      altgr.qwerty = map (x: "alt_r-${x}") [ "q" "less" "7" "8" "9" "0" ];
       altgr.expect = [
         "@"
         "|"
@@ -423,13 +404,7 @@ pkgs.lib.mapAttrs mkKeyboardTest {
         "@"
         "#"
       ];
-      greek.qwerty = map (x: "alt_r-${x}") [
-        "a"
-        "b"
-        "g"
-        "d"
-        "z"
-      ];
+      greek.qwerty = map (x: "alt_r-${x}") [ "a" "b" "g" "d" "z" ];
       greek.expect = [
         "α"
         "β"

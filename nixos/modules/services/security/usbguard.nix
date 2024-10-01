@@ -10,15 +10,7 @@ let
   cfg = config.services.usbguard;
 
   # valid policy options
-  policy = (
-    types.enum [
-      "allow"
-      "block"
-      "reject"
-      "keep"
-      "apply-policy"
-    ]
-  );
+  policy = (types.enum [ "allow" "block" "reject" "keep" "apply-policy" ]);
 
   # decide what file to use for rules
   ruleFile = if cfg.rules != null then pkgs.writeText "usbguard-rules" cfg.rules else cfg.ruleFile;
@@ -278,10 +270,9 @@ in
       "usbguard"
       "auditFilePath"
     ] "Removed usbguard module audit log files. Audit logs can be found in the systemd journal.")
-    (mkRenamedOptionModule [ "services" "usbguard" "implictPolicyTarget" ] [
-      "services"
-      "usbguard"
-      "implicitPolicyTarget"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "usbguard" "implictPolicyTarget" ]
+      [ "services" "usbguard" "implicitPolicyTarget" ]
+    )
   ];
 }

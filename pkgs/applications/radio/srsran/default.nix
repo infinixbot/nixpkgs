@@ -23,7 +23,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "srsran";
     repo = "srsran";
-    rev = "release_${builtins.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "release_${
+      builtins.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     sha256 = "sha256-3cQMZ75I4cyHpik2d/eBuzw7M4OgbKqroCddycw4uW8=";
   };
 

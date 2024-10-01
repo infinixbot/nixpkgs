@@ -58,7 +58,12 @@ stdenv.mkDerivation rec {
 
       mkdir -p test/resources/in/img
       ${lib.concatMapStringsSep "\n" (res: ''
-        cp ${res} test/resources/in/${builtins.replaceStrings [ "__" ] [ "/" ] res.name}
+        cp ${res} test/resources/in/${
+          builtins.replaceStrings
+            [ "__" ]
+            [ "/" ]
+            res.name
+        }
       '') testInputs}
     '';
 

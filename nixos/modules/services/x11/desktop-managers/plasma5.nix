@@ -193,19 +193,14 @@ in
       "plasma5"
       "supportDDC"
     ] "DDC/CI is no longer supported upstream.")
-    (mkRenamedOptionModule [ "services" "xserver" "desktopManager" "kde5" ] [
-      "services"
-      "xserver"
-      "desktopManager"
-      "plasma5"
-    ])
-    (mkRenamedOptionModule [
-      "services"
-      "xserver"
-      "desktopManager"
-      "plasma5"
-      "excludePackages"
-    ] [ "environment" "plasma5" "excludePackages" ])
+    (mkRenamedOptionModule
+      [ "services" "xserver" "desktopManager" "kde5" ]
+      [ "services" "xserver" "desktopManager" "plasma5" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "xserver" "desktopManager" "plasma5" "excludePackages" ]
+      [ "environment" "plasma5" "excludePackages" ]
+    )
   ];
 
   config = mkMerge [

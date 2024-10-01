@@ -82,7 +82,10 @@ buildPythonPackage rec {
 
   meta = {
     changelog = "https://werkzeug.palletsprojects.com/en/${lib.versions.majorMinor version}.x/changes/#version-${
-      lib.replaceStrings [ "." ] [ "-" ] version
+      lib.replaceStrings
+        [ "." ]
+        [ "-" ]
+        version
     }";
     homepage = "https://palletsprojects.com/p/werkzeug/";
     description = "Comprehensive WSGI web application library";

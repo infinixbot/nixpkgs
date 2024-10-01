@@ -110,7 +110,9 @@ let
       GOFLAGS = GOFLAGS ++ lib.optional (!allowGoReference) "-trimpath";
 
       GOARM = toString (
-        lib.intersectLists [ (stdenv.hostPlatform.parsed.cpu.version or "") ] [ "5" "6" "7" ]
+        lib.intersectLists
+          [ (stdenv.hostPlatform.parsed.cpu.version or "") ]
+          [ "5" "6" "7" ]
       );
 
       # If not set to an explicit value, set the buildid empty for reproducibility.

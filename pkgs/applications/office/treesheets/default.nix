@@ -38,7 +38,10 @@ stdenv.mkDerivation rec {
     ];
 
   env.NIX_CFLAGS_COMPILE = "-DPACKAGE_VERSION=\"${
-    builtins.replaceStrings [ "unstable-" ] [ "" ] version
+    builtins.replaceStrings
+      [ "unstable-" ]
+      [ "" ]
+      version
   }\"";
 
   postInstall = lib.optionalString stdenv.isDarwin ''

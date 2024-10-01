@@ -156,13 +156,7 @@ let
       # is probably a solution, but I'm disabling it for now
       platformMask =
         lib.optionals stdenv.isDarwin [ "mad" "pulse" "jack" "smbclient" ]
-        ++ lib.optionals (!stdenv.isLinux) [
-          "alsa"
-          "pipewire"
-          "io_uring"
-          "systemd"
-          "syslog"
-        ];
+        ++ lib.optionals (!stdenv.isLinux) [ "alsa" "pipewire" "io_uring" "systemd" "syslog" ];
 
       knownFeatures =
         builtins.attrNames featureDependencies

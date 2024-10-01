@@ -18,7 +18,10 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/shirok/Gauche/releases/download/release${
-      lib.replaceStrings [ "." ] [ "_" ] version
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
     }/Gauche-${version}.tgz";
     hash = "sha256-NkPie8fIgiz9b7KJLbGF9ljo42STi8LM/O2yOeNa94M=";
   };

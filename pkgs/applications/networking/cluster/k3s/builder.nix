@@ -464,7 +464,13 @@ buildGoModule rec {
       mkTests =
         version:
         let
-          k3s_version = "k3s_" + lib.replaceStrings [ "." ] [ "_" ] (lib.versions.majorMinor version);
+          k3s_version =
+            "k3s_"
+            +
+              lib.replaceStrings
+                [ "." ]
+                [ "_" ]
+                (lib.versions.majorMinor version);
         in
         lib.mapAttrs (name: value: nixosTests.k3s.${name}.${k3s_version}) nixosTests.k3s;
       tests = passthru.mkTests k3sVersion;

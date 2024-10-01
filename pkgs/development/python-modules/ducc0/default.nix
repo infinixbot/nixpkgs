@@ -20,7 +20,12 @@ buildPythonPackage rec {
     domain = "gitlab.mpcdf.mpg.de";
     owner = "mtr";
     repo = "ducc";
-    rev = "ducc0_${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "ducc0_${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     hash = "sha256-lxNqB3Lt+n4vIH7cVW4DAwhjuPn49y+/3RLKVO8IuJM=";
   };
 

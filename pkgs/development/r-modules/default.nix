@@ -2126,7 +2126,12 @@ let
           src = pkgs.fetchFromGitHub {
             owner = "openbabel";
             repo = "openbabel";
-            rev = "openbabel-${lib.replaceStrings [ "." ] [ "-" ] attrs.version}";
+            rev = "openbabel-${
+              lib.replaceStrings
+                [ "." ]
+                [ "-" ]
+                attrs.version
+            }";
             sha256 = "sha256-wQpgdfCyBAoh4pmj9j7wPTlMtraJ62w/EShxi/olVMY=";
           };
         });

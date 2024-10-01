@@ -43,7 +43,9 @@ in
   ];
 
   imports = [
-    (lib.mkChangedOptionModule [ "services" "kresd" "interfaces" ] [ "services" "kresd" "listenPlain" ]
+    (lib.mkChangedOptionModule
+      [ "services" "kresd" "interfaces" ]
+      [ "services" "kresd" "listenPlain" ]
       (
         config:
         let

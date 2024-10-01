@@ -24,7 +24,11 @@ stdenv.mkDerivation rec {
 
   src =
     let
-      escapedVersion = lib.replaceStrings [ "+" ] [ "%2B" ] version;
+      escapedVersion =
+        lib.replaceStrings
+          [ "+" ]
+          [ "%2B" ]
+          version;
     in
     fetchurl {
       url = "https://download.zotero.org/client/beta/${escapedVersion}/Zotero-${escapedVersion}_linux-x86_64.tar.bz2";

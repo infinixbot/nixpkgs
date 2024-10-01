@@ -19,7 +19,11 @@ let
     in
     builtins.concatStringsSep "" [
       (builtins.elemAt splitTS 0)
-      (builtins.replaceStrings [ "-" ] [ ":" ] (builtins.elemAt splitTS 1))
+      (builtins.replaceStrings
+        [ "-" ]
+        [ ":" ]
+        (builtins.elemAt splitTS 1)
+      )
     ];
 in
 buildGoModule rec {

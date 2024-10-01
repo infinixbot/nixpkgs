@@ -202,7 +202,11 @@ let
   kotlin-jps-plugin-classpath =
     let
       repoUrl = "https://cache-redirector.jetbrains.com/maven.pkg.jetbrains.space/kotlin/p/kotlin/kotlin-ide-plugin-dependencies";
-      groupId = builtins.replaceStrings [ "." ] [ "/" ] "org.jetbrains.kotlin";
+      groupId =
+        builtins.replaceStrings
+          [ "." ]
+          [ "/" ]
+          "org.jetbrains.kotlin";
       artefactId = "kotlin-jps-plugin-classpath";
       version = "1.9.22";
     in

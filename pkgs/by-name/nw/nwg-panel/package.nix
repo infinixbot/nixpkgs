@@ -75,16 +75,7 @@ python3Packages.buildPythonApplication rec {
       "''${gappsWrapperArgs[@]}"
       --prefix XDG_DATA_DIRS : "$out/share"
       --prefix PATH : "${
-        lib.makeBinPath [
-          brightnessctl
-          hyprland
-          nwg-menu
-          pamixer
-          pulseaudio
-          sway
-          systemd
-          wlr-randr
-        ]
+        lib.makeBinPath [ brightnessctl hyprland nwg-menu pamixer pulseaudio sway systemd wlr-randr ]
       }"
     )
   '';

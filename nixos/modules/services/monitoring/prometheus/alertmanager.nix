@@ -102,13 +102,7 @@ in
       };
 
       logLevel = mkOption {
-        type = types.enum [
-          "debug"
-          "info"
-          "warn"
-          "error"
-          "fatal"
-        ];
+        type = types.enum [ "debug" "info" "warn" "error" "fatal" ];
         default = "warn";
         description = ''
           Only log messages with the given severity or above.

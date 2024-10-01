@@ -88,7 +88,11 @@ let
     name: version:
     strings.concatStringsSep "_" [
       name
-      (strings.replaceStrings [ "." ] [ "_" ] (versions.majorMinor version))
+      (strings.replaceStrings
+        [ "." ]
+        [ "_" ]
+        (versions.majorMinor version)
+      )
     ];
 
   composedExtension = fixedPoints.composeManyExtensions (

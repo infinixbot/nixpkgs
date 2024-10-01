@@ -15,8 +15,16 @@ buildDotnetModule rec {
     # Upstream does not provide versioned releases, a mirror has been uploaded
     # to archive.org
     url = "https://archive.org/download/networkminer-${
-      lib.replaceStrings [ "." ] [ "-" ] version
-    }/NetworkMiner_${lib.replaceStrings [ "." ] [ "-" ] version}_source.zip";
+      lib.replaceStrings
+        [ "." ]
+        [ "-" ]
+        version
+    }/NetworkMiner_${
+      lib.replaceStrings
+        [ "." ]
+        [ "-" ]
+        version
+    }_source.zip";
     sha256 = "1n2312acq5rq0jizlcfk0crslx3wgcsd836p47nk3pnapzw0cqvv";
   };
 

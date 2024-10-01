@@ -563,25 +563,12 @@ let
   );
 
   schemes = lib.listToAttrs (
-    map
-      (s: {
-        name = "texlive" + s;
-        value = lib.addMetaAttrs { license = licenses.${"scheme-" + (lib.toLower s)}; } (buildTeXEnv {
-          requiredTeXPackages = ps: [ ps.${"scheme-" + (lib.toLower s)} ];
-        });
-      })
-      [
-        "Basic"
-        "BookPub"
-        "ConTeXt"
-        "Full"
-        "GUST"
-        "InfraOnly"
-        "Medium"
-        "Minimal"
-        "Small"
-        "TeTeX"
-      ]
+    map (s: {
+      name = "texlive" + s;
+      value = lib.addMetaAttrs { license = licenses.${"scheme-" + (lib.toLower s)}; } (buildTeXEnv {
+        requiredTeXPackages = ps: [ ps.${"scheme-" + (lib.toLower s)} ];
+      });
+    }) [ "Basic" "BookPub" "ConTeXt" "Full" "GUST" "InfraOnly" "Medium" "Minimal" "Small" "TeTeX" ]
   );
 
 in

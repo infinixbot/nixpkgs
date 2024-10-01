@@ -43,19 +43,7 @@ stdenv.mkDerivation rec {
 
   postFixup = ''
     wrapProgram $out/bin/xarchiver \
-    --prefix PATH : ${
-      lib.makeBinPath [
-        zip
-        unzip
-        p7zip
-        unar
-        gnutar
-        bzip2
-        gzip
-        lhasa
-        coreutils
-      ]
-    }
+    --prefix PATH : ${lib.makeBinPath [ zip unzip p7zip unar gnutar bzip2 gzip lhasa coreutils ]}
   '';
 
   meta = {

@@ -40,18 +40,7 @@ lib.checkListOfEnum "${pname}: alt variants" [ "normal" "alt" "all" ] altVariant
   opacityVariants
   lib.checkListOfEnum
   "${pname}: theme variants"
-  [
-    "default"
-    "blue"
-    "purple"
-    "pink"
-    "red"
-    "orange"
-    "yellow"
-    "green"
-    "grey"
-    "all"
-  ]
+  [ "default" "blue" "purple" "pink" "red" "orange" "yellow" "green" "grey" "all" ]
   themeVariants
   lib.checkListOfEnum
   "${pname}: Activities icon variants"
@@ -80,24 +69,11 @@ lib.checkListOfEnum "${pname}: alt variants" [ "normal" "alt" "all" ] altVariant
   (single nautilusStyle)
   lib.checkListOfEnum
   "${pname}: nautilus sidebar minimum width"
-  [
-    "default"
-    "180"
-    "220"
-    "240"
-    "260"
-    "280"
-  ]
+  [ "default" "180" "220" "240" "260" "280" ]
   (single nautilusSize)
   lib.checkListOfEnum
   "${pname}: panel opacity"
-  [
-    "default"
-    "30"
-    "45"
-    "60"
-    "75"
-  ]
+  [ "default" "30" "45" "60" "75" ]
   (single panelOpacity)
   lib.checkListOfEnum
   "${pname}: panel size"

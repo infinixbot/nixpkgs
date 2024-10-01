@@ -6,7 +6,10 @@
 }:
 let
   # sanitizeDerivationName
-  normalizeName = lib.replaceStrings [ "." ] [ "-" ];
+  normalizeName =
+    lib.replaceStrings
+      [ "." ]
+      [ "-" ];
 in
 
 # function to create vim plugin from lua packages that are already packaged in

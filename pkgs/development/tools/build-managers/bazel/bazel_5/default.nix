@@ -620,23 +620,15 @@ stdenv.mkDerivation rec {
 
   # when a command can’t be found in a bazel build, you might also
   # need to add it to `defaultShellPath`.
-  nativeBuildInputs =
-    [
-      installShellFiles
-      makeWrapper
-      python3
-      unzip
-      which
-      zip
-      python3.pkgs.absl-py # Needed to build fish completion
-    ]
-    ++ lib.optionals (stdenv.isDarwin) [
-      cctools
-      libcxx
-      CoreFoundation
-      CoreServices
-      Foundation
-    ];
+  nativeBuildInputs = [
+    installShellFiles
+    makeWrapper
+    python3
+    unzip
+    which
+    zip
+    python3.pkgs.absl-py # Needed to build fish completion
+  ] ++ lib.optionals (stdenv.isDarwin) [ cctools libcxx CoreFoundation CoreServices Foundation ];
 
   # Bazel makes extensive use of symlinks in the WORKSPACE.
   # This causes problems with infinite symlinks if the build output is in the same location as the

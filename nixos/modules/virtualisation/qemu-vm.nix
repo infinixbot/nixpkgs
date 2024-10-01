@@ -322,7 +322,10 @@ in
 {
   imports = [
     ../profiles/qemu-guest.nix
-    (mkRenamedOptionModule [ "virtualisation" "pathsInNixDB" ] [ "virtualisation" "additionalPaths" ])
+    (mkRenamedOptionModule
+      [ "virtualisation" "pathsInNixDB" ]
+      [ "virtualisation" "additionalPaths" ]
+    )
     (mkRemovedOptionModule [ "virtualisation" "bootDevice" ]
       "This option was renamed to `virtualisation.rootDevice`, as it was incorrectly named and misleading. Take the time to review what you want to do and look at the new options like `virtualisation.{bootLoaderDevice, bootPartition}`, open an issue in case of issues."
     )

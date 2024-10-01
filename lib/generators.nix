@@ -394,7 +394,12 @@ rec {
       mkValueString =
         v:
         let
-          escapedV = ''"${replaceStrings [ "\n" "	" ''"'' "\\" ] [ "\\n" "\\t" ''\"'' "\\\\" ] v}"'';
+          escapedV = ''"${
+            replaceStrings
+              [ "\n" "	" ''"'' "\\" ]
+              [ "\\n" "\\t" ''\"'' "\\\\" ]
+              v
+          }"'';
         in
         mkValueStringDefault { } (if isString v then escapedV else v);
 
@@ -543,7 +548,10 @@ rec {
           let
             lines = filter (v: !isList v) (split "\n" v);
             escapeSingleline = escape [ "\\" "\"" "\${" ];
-            escapeMultiline = replaceStrings [ "\${" "''" ] [ "''\${" "'''" ];
+            escapeMultiline =
+              replaceStrings
+                [ "\${" "''" ]
+                [ "''\${" "'''" ];
             singlelineResult = "\"" + concatStringsSep "\\n" (map escapeSingleline lines) + "\"";
             multilineResult =
               let

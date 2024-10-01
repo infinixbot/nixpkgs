@@ -15,18 +15,7 @@
 
 writeScript "update-librewolf" ''
   #!${runtimeShell}
-  PATH=${
-    lib.makeBinPath [
-      coreutils
-      curl
-      gnugrep
-      gnupg
-      gnused
-      jq
-      moreutils
-      nix-prefetch-git
-    ]
-  }
+  PATH=${lib.makeBinPath [ coreutils curl gnugrep gnupg gnused jq moreutils nix-prefetch-git ]}
   set -euo pipefail
 
   latestTag=$(curl "https://codeberg.org/api/v1/repos/librewolf/source/tags?page=1&limit=1" | jq -r .[0].name)

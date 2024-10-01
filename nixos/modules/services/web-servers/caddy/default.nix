@@ -78,8 +78,14 @@ in
       "caddy"
       "agree"
     ] "this option is no longer necessary for Caddy 2")
-    (mkRenamedOptionModule [ "services" "caddy" "ca" ] [ "services" "caddy" "acmeCA" ])
-    (mkRenamedOptionModule [ "services" "caddy" "config" ] [ "services" "caddy" "extraConfig" ])
+    (mkRenamedOptionModule
+      [ "services" "caddy" "ca" ]
+      [ "services" "caddy" "acmeCA" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "caddy" "config" ]
+      [ "services" "caddy" "extraConfig" ]
+    )
   ];
 
   # interface

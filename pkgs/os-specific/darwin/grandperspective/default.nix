@@ -13,7 +13,10 @@ stdenv.mkDerivation (finalAttrs: {
   src = fetchurl {
     inherit (finalAttrs) version;
     url = "mirror://sourceforge/grandperspectiv/GrandPerspective-${
-      lib.replaceStrings [ "." ] [ "_" ] finalAttrs.version
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        finalAttrs.version
     }.dmg";
     hash = "sha256-ZgyBeQCoixLGCFS8+UFoMilvtswplEC8MzK3BE4ocDg=";
   };

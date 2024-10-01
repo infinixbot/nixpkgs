@@ -82,7 +82,11 @@ let
 
       init =
         let
-          init = builtins.replaceStrings [ "\n" ] [ ";" ] (config.init or "");
+          init =
+            builtins.replaceStrings
+              [ "\n" ]
+              [ ";" ]
+              (config.init or "");
 
           mkScript = drv: lib.forEach drv.scripts (script: "/script load ${drv}/share/${script}");
 

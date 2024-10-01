@@ -157,7 +157,10 @@ in
             config = {
               hostName = lib.mkDefault name;
               mucNickname = lib.mkDefault (
-                builtins.replaceStrings [ "." ] [ "-" ] (config.networking.fqdnOrHostName)
+                builtins.replaceStrings
+                  [ "." ]
+                  [ "-" ]
+                  (config.networking.fqdnOrHostName)
               );
             };
           }

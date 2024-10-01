@@ -69,16 +69,7 @@ in
       };
 
       logLevel = mkOption {
-        type = types.enum [
-          "emerg"
-          "alert"
-          "crit"
-          "err"
-          "warning"
-          "notice"
-          "info"
-          "debug"
-        ];
+        type = types.enum [ "emerg" "alert" "crit" "err" "warning" "notice" "info" "debug" ];
         default = "info";
         description = "Verbosity of stunnel output.";
       };

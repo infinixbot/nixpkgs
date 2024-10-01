@@ -10,30 +10,22 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "programs" "zsh" "enableSyntaxHighlighting" ] [
-      "programs"
-      "zsh"
-      "syntaxHighlighting"
-      "enable"
-    ])
-    (lib.mkRenamedOptionModule [ "programs" "zsh" "syntax-highlighting" "enable" ] [
-      "programs"
-      "zsh"
-      "syntaxHighlighting"
-      "enable"
-    ])
-    (lib.mkRenamedOptionModule [ "programs" "zsh" "syntax-highlighting" "highlighters" ] [
-      "programs"
-      "zsh"
-      "syntaxHighlighting"
-      "highlighters"
-    ])
-    (lib.mkRenamedOptionModule [ "programs" "zsh" "syntax-highlighting" "patterns" ] [
-      "programs"
-      "zsh"
-      "syntaxHighlighting"
-      "patterns"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "programs" "zsh" "enableSyntaxHighlighting" ]
+      [ "programs" "zsh" "syntaxHighlighting" "enable" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "programs" "zsh" "syntax-highlighting" "enable" ]
+      [ "programs" "zsh" "syntaxHighlighting" "enable" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "programs" "zsh" "syntax-highlighting" "highlighters" ]
+      [ "programs" "zsh" "syntaxHighlighting" "highlighters" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "programs" "zsh" "syntax-highlighting" "patterns" ]
+      [ "programs" "zsh" "syntaxHighlighting" "patterns" ]
+    )
   ];
 
   options = {

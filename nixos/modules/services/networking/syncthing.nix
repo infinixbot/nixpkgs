@@ -660,41 +660,29 @@ in
         This option was removed because Syncthing now has the inotify functionality included under the name "fswatcher".
         It can be enabled on a per-folder basis through the web interface.
       '')
-      (mkRenamedOptionModule [ "services" "syncthing" "extraOptions" ] [
-        "services"
-        "syncthing"
-        "settings"
-      ])
-      (mkRenamedOptionModule [ "services" "syncthing" "folders" ] [
-        "services"
-        "syncthing"
-        "settings"
-        "folders"
-      ])
-      (mkRenamedOptionModule [ "services" "syncthing" "devices" ] [
-        "services"
-        "syncthing"
-        "settings"
-        "devices"
-      ])
-      (mkRenamedOptionModule [ "services" "syncthing" "options" ] [
-        "services"
-        "syncthing"
-        "settings"
-        "options"
-      ])
+      (mkRenamedOptionModule
+        [ "services" "syncthing" "extraOptions" ]
+        [ "services" "syncthing" "settings" ]
+      )
+      (mkRenamedOptionModule
+        [ "services" "syncthing" "folders" ]
+        [ "services" "syncthing" "settings" "folders" ]
+      )
+      (mkRenamedOptionModule
+        [ "services" "syncthing" "devices" ]
+        [ "services" "syncthing" "settings" "devices" ]
+      )
+      (mkRenamedOptionModule
+        [ "services" "syncthing" "options" ]
+        [ "services" "syncthing" "settings" "options" ]
+      )
     ]
-    ++ map
-      (o: mkRenamedOptionModule [ "services" "syncthing" "declarative" o ] [ "services" "syncthing" o ])
-      [
-        "cert"
-        "key"
-        "devices"
-        "folders"
-        "overrideDevices"
-        "overrideFolders"
-        "extraOptions"
-      ];
+    ++ map (
+      o:
+      mkRenamedOptionModule
+        [ "services" "syncthing" "declarative" o ]
+        [ "services" "syncthing" o ]
+    ) [ "cert" "key" "devices" "folders" "overrideDevices" "overrideFolders" "extraOptions" ];
 
   ###### implementation
 

@@ -221,17 +221,21 @@ let
       };
       exporterTest =
         let
-          postData = replaceStrings [ "\n" ] [ "" ] ''
-            [{
-              "values":[23],
-              "dstypes":["gauge"],
-              "type":"gauge",
-              "interval":1000,
-              "host":"testhost",
-              "plugin":"testplugin",
-              "time":DATE
-            }]
-          '';
+          postData =
+            replaceStrings
+              [ "\n" ]
+              [ "" ]
+              ''
+                [{
+                  "values":[23],
+                  "dstypes":["gauge"],
+                  "type":"gauge",
+                  "interval":1000,
+                  "host":"testhost",
+                  "plugin":"testplugin",
+                  "time":DATE
+                }]
+              '';
         in
         ''
           wait_for_unit("prometheus-collectd-exporter.service")
@@ -1714,7 +1718,11 @@ let
     wireguard =
       let
         snakeoil = import ./wireguard/snakeoil-keys.nix;
-        publicKeyWithoutNewlines = replaceStrings [ "\n" ] [ "" ] snakeoil.peer1.publicKey;
+        publicKeyWithoutNewlines =
+          replaceStrings
+            [ "\n" ]
+            [ "" ]
+            snakeoil.peer1.publicKey;
       in
       {
         exporterConfig.enable = true;

@@ -113,44 +113,18 @@ in
   meta.maintainers = with lib.maintainers; [ julienmalka ];
 
   imports = [
-    (mkRenamedOptionModule [ "boot" "loader" "gummiboot" "enable" ] [
-      "boot"
-      "loader"
-      "systemd-boot"
-      "enable"
-    ])
+    (mkRenamedOptionModule
+      [ "boot" "loader" "gummiboot" "enable" ]
+      [ "boot" "loader" "systemd-boot" "enable" ]
+    )
     (lib.mkChangedOptionModule
-      [
-        "boot"
-        "loader"
-        "systemd-boot"
-        "memtest86"
-        "entryFilename"
-      ]
-      [
-        "boot"
-        "loader"
-        "systemd-boot"
-        "memtest86"
-        "sortKey"
-      ]
+      [ "boot" "loader" "systemd-boot" "memtest86" "entryFilename" ]
+      [ "boot" "loader" "systemd-boot" "memtest86" "sortKey" ]
       (config: lib.strings.removeSuffix ".conf" config.boot.loader.systemd-boot.memtest86.entryFilename)
     )
     (lib.mkChangedOptionModule
-      [
-        "boot"
-        "loader"
-        "systemd-boot"
-        "netbootxyz"
-        "entryFilename"
-      ]
-      [
-        "boot"
-        "loader"
-        "systemd-boot"
-        "netbootxyz"
-        "sortKey"
-      ]
+      [ "boot" "loader" "systemd-boot" "netbootxyz" "entryFilename" ]
+      [ "boot" "loader" "systemd-boot" "netbootxyz" "sortKey" ]
       (config: lib.strings.removeSuffix ".conf" config.boot.loader.systemd-boot.netbootxyz.entryFilename)
     )
   ];
@@ -264,15 +238,7 @@ in
     consoleMode = mkOption {
       default = "keep";
 
-      type = types.enum [
-        "0"
-        "1"
-        "2"
-        "5"
-        "auto"
-        "max"
-        "keep"
-      ];
+      type = types.enum [ "0" "1" "2" "5" "auto" "max" "keep" ];
 
       description = ''
         The resolution of the console. The following values are valid:

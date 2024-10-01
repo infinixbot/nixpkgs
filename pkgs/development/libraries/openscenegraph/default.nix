@@ -117,13 +117,7 @@ stdenv.mkDerivation rec {
     ++ lib.optional restSupport asio
     ++ lib.optionals withExamples [ fltk ]
     ++ lib.optionals (!stdenv.isDarwin) [ ]
-    ++ lib.optionals stdenv.isDarwin [
-      AGL
-      Accelerate
-      Carbon
-      Cocoa
-      Foundation
-    ]
+    ++ lib.optionals stdenv.isDarwin [ AGL Accelerate Carbon Cocoa Foundation ]
     ++ lib.optional (restSupport || colladaSupport) boost;
 
   patches = [

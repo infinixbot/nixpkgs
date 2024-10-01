@@ -154,13 +154,7 @@ in
       };
 
       verbosity = mkOption {
-        type = types.enum [
-          "error"
-          "warning"
-          "notice"
-          "info"
-          "debug"
-        ];
+        type = types.enum [ "error" "warning" "notice" "info" "debug" ];
         default = "info";
         example = "error";
         description = ''

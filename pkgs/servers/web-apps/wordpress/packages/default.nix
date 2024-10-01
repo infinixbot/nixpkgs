@@ -110,46 +110,8 @@ let
       # in store paths.
       filterWPString =
         builtins.replaceStrings
-          [
-            " "
-            ","
-            "/"
-            "&"
-            ";"
-            ''"''
-            "'"
-            "$"
-            ":"
-            "("
-            ")"
-            "["
-            "]"
-            "{"
-            "}"
-            "|"
-            "*"
-            "\t"
-          ]
-          [
-            "_"
-            "."
-            "."
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            "-"
-            ""
-            ""
-          ];
+          [ " " "," "/" "&" ";" ''"'' "'" "$" ":" "(" ")" "[" "]" "{" "}" "|" "*" "\t" ]
+          [ "_" "." "." "" "" "" "" "" "" "" "" "" "" "" "" "-" "" "" ];
 
       # Fetch a package from the official wordpress.org SVN.
       # The data supplied is the data straight from the go tool.

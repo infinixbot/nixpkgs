@@ -18,7 +18,11 @@ stdenv.mkDerivation rec {
   # extract debian package from larger zip file
   src =
     let
-      versionWithUnderscores = builtins.replaceStrings [ "." ] [ "_" ] version;
+      versionWithUnderscores =
+        builtins.replaceStrings
+          [ "." ]
+          [ "_" ]
+          version;
     in
     fetchzip {
       url = "https://www.digicert.com/StaticFiles/SAC_${versionWithUnderscores}_GA_Build.zip";

@@ -90,7 +90,10 @@ stdenv.mkDerivation (finalAttrs: {
   # environment variables.
   # [1]: https://github.com/rust-lang/pkg-config-rs/issues/53
   "PKG_CONFIG_${
-    builtins.replaceStrings [ "-" ] [ "_" ] stdenv.buildPlatform.rust.rustcTarget
+    builtins.replaceStrings
+      [ "-" ]
+      [ "_" ]
+      stdenv.buildPlatform.rust.rustcTarget
   }" = "${pkgsBuildHost.stdenv.cc.targetPrefix}pkg-config";
 
   NIX_LDFLAGS = toString (

@@ -147,7 +147,11 @@ stdenv.mkDerivation rec {
           "linux64" = "sha256-qlutM0IsE1emcMe/3p7kwMIK7ou1rZGvpUkrSMVPnCc=";
         }
         .${platform};
-      urlName = builtins.replaceStrings [ "+" ] [ "%2B" ] name;
+      urlName =
+        builtins.replaceStrings
+          [ "+" ]
+          [ "%2B" ]
+          name;
     in
     fetchzip {
       url = "https://cef-builds.spotifycdn.com/${urlName}.tar.bz2";

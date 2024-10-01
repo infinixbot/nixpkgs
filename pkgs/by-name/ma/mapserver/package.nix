@@ -35,7 +35,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "MapServer";
     repo = "MapServer";
-    rev = "rel-${lib.replaceStrings [ "." ] [ "-" ] version}";
+    rev = "rel-${
+      lib.replaceStrings
+        [ "." ]
+        [ "-" ]
+        version
+    }";
     hash = "sha256-kZEDC89yoQP0ma5avp6r+Hz8JMpErGlBVQkhlHO6UFw=";
   };
 

@@ -22,7 +22,12 @@ stdenv.mkDerivation rec {
     domain = "gitlab.gnome.org";
     owner = "GNOME";
     repo = pname;
-    rev = "moserial_${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "moserial_${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     sha256 = "sha256-wfdI51ECqVNcUrIVjYBijf/yqpiwSQeMiKaVJSSma3k=";
   };
 

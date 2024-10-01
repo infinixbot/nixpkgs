@@ -7,7 +7,11 @@
 }:
 
 symlinkJoin rec {
-  pname = lib.replaceStrings [ "-unwrapped" ] [ "" ] kak-tree-sitter-unwrapped.pname;
+  pname =
+    lib.replaceStrings
+      [ "-unwrapped" ]
+      [ "" ]
+      kak-tree-sitter-unwrapped.pname;
   inherit (kak-tree-sitter-unwrapped) version;
   name = "${pname}-${version}";
 

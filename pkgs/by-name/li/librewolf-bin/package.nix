@@ -7,7 +7,11 @@
 let
   pname = "librewolf-bin";
   upstreamVersion = "129.0.2-1";
-  version = lib.replaceStrings [ "-" ] [ "." ] upstreamVersion;
+  version =
+    lib.replaceStrings
+      [ "-" ]
+      [ "." ]
+      upstreamVersion;
   src = fetchurl {
     url = "https://gitlab.com/api/v4/projects/24386000/packages/generic/librewolf/${upstreamVersion}/LibreWolf.x86_64.AppImage";
     hash = "sha256-h4SZnI2BwCSsLADYIxTXu82Jyst1hqYGHt54MnluLss=";

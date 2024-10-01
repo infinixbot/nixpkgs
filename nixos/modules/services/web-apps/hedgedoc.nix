@@ -25,18 +25,18 @@ in
   ];
 
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "codimd" ] [ "services" "hedgedoc" ])
-    (lib.mkRenamedOptionModule [ "services" "hedgedoc" "configuration" ] [
-      "services"
-      "hedgedoc"
-      "settings"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "hedgedoc" "groups" ] [
-      "users"
-      "users"
-      "hedgedoc"
-      "extraGroups"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "codimd" ]
+      [ "services" "hedgedoc" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "hedgedoc" "configuration" ]
+      [ "services" "hedgedoc" "settings" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "hedgedoc" "groups" ]
+      [ "users" "users" "hedgedoc" "extraGroups" ]
+    )
     (lib.mkRemovedOptionModule [ "services" "hedgedoc" "workDir" ] ''
       This option has been removed in favor of systemd managing the state directory.
 

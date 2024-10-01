@@ -26,7 +26,10 @@ let
     lib.concatMapStringsSep " " (
       dep:
       let
-        normalizeName = lib.replaceStrings [ "-" ] [ "_" ];
+        normalizeName =
+          lib.replaceStrings
+            [ "-" ]
+            [ "_" ];
         extern = normalizeName dep.libName;
         # Find a choice that matches in name and optionally version.
         findMatchOrUseExtern =

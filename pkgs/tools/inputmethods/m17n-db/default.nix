@@ -32,7 +32,10 @@ stdenv.mkDerivation rec {
     description = "Multilingual text processing library (database)";
     mainProgram = "m17n-db";
     changelog = "https://git.savannah.nongnu.org/cgit/m17n/m17n-db.git/plain/NEWS?h=REL-${
-      lib.replaceStrings [ "." ] [ "-" ] version
+      lib.replaceStrings
+        [ "." ]
+        [ "-" ]
+        version
     }";
     license = lib.licenses.lgpl21Plus;
     platforms = lib.platforms.linux;

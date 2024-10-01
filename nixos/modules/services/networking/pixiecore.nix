@@ -46,15 +46,7 @@ in
       quick = mkOption {
         description = "Which quick option to use";
         default = "xyz";
-        type = types.enum [
-          "arch"
-          "centos"
-          "coreos"
-          "debian"
-          "fedora"
-          "ubuntu"
-          "xyz"
-        ];
+        type = types.enum [ "arch" "centos" "coreos" "debian" "fedora" "ubuntu" "xyz" ];
       };
 
       kernel = mkOption {

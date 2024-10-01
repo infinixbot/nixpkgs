@@ -59,14 +59,7 @@ let
   configPackages = cfg.configPackages;
 
   extraConfigPkg =
-    extraConfigPkgFromFiles
-      [
-        "pipewire"
-        "client"
-        "client-rt"
-        "jack"
-        "pipewire-pulse"
-      ]
+    extraConfigPkgFromFiles [ "pipewire" "client" "client-rt" "jack" "pipewire-pulse" ]
       (
         mapToFiles "pipewire" cfg.extraConfig.pipewire
         // mapToFiles "client" cfg.extraConfig.client
@@ -85,7 +78,13 @@ let
   };
 
   requiredLv2Packages = flatten (
-    concatMap (p: attrByPath [ "passthru" "requiredLv2Packages" ] [ ] p) configPackages
+    concatMap (
+      p:
+      attrByPath
+        [ "passthru" "requiredLv2Packages" ]
+        [ ]
+        p
+    ) configPackages
   );
 
   lv2Plugins = pkgs.buildEnv {

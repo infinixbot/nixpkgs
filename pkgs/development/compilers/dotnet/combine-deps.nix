@@ -25,7 +25,10 @@ let
   changePackageRid =
     package: rid:
     let
-      replace = replaceStrings [ ".${baseRid}" ] [ ".${rid}" ];
+      replace =
+        replaceStrings
+          [ ".${baseRid}" ]
+          [ ".${rid}" ];
     in
     rec {
       pname = replace package.pname;

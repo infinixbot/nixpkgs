@@ -14,13 +14,7 @@
     if (stdenv.hostPlatform.isDarwin || stdenv.hostPlatform.isStatic) then "null" else "readline",
 }:
 
-assert lib.elem lineEditingLibrary [
-  "null"
-  "edit"
-  "editline"
-  "readline"
-  "vrl"
-];
+assert lib.elem lineEditingLibrary [ "null" "edit" "editline" "readline" "vrl" ];
 assert !(lib.elem lineEditingLibrary [ "edit" "editline" "vrl" ]); # broken
 assert (lineEditingLibrary == "readline") -> readlineSupport;
 stdenv.mkDerivation (finalAttrs: {

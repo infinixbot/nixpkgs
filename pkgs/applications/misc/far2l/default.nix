@@ -84,14 +84,7 @@ stdenv.mkDerivation rec {
         pcpp
       ]
     )
-    ++ lib.optionals stdenv.isDarwin [
-      IOKit
-      Carbon
-      Cocoa
-      AudioToolbox
-      OpenGL
-      System
-    ];
+    ++ lib.optionals stdenv.isDarwin [ IOKit Carbon Cocoa AudioToolbox OpenGL System ];
 
   postPatch = ''
     patchShebangs python/src/prebuild.sh

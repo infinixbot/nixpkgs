@@ -142,16 +142,7 @@ in
           };
 
           path_checker = mkOption {
-            type = enum [
-              "readsector0"
-              "tur"
-              "emc_clariion"
-              "hp_sw"
-              "rdac"
-              "directio"
-              "cciss_tur"
-              "none"
-            ];
+            type = enum [ "readsector0" "tur" "emc_clariion" "hp_sw" "rdac" "directio" "cciss_tur" "none" ];
             default = "tur";
             description = "The default method used to determine the paths state";
           };

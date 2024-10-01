@@ -73,13 +73,7 @@ stdenv.mkDerivation (finalAttrs: {
   buildInputs =
     [ ]
     ++ lib.optionals (!stdenv.hostPlatform.isMinGW && alsaSupport) [ audiofile ]
-    ++ lib.optionals stdenv.isDarwin [
-      AudioUnit
-      CoreAudio
-      CoreServices
-      Kernel
-      OpenGL
-    ];
+    ++ lib.optionals stdenv.isDarwin [ AudioUnit CoreAudio CoreServices Kernel OpenGL ];
 
   configureFlags =
     [

@@ -76,7 +76,11 @@ stdenv.mkDerivation rec {
     homepage = "https://qtractor.sourceforge.io";
     changelog =
       let
-        version' = builtins.replaceStrings [ "." ] [ "_" ] version;
+        version' =
+          builtins.replaceStrings
+            [ "." ]
+            [ "_" ]
+            version;
       in
       "https://github.com/rncbc/qtractor/blob/qtractor_${version'}/ChangeLog";
     license = licenses.gpl2Plus;

@@ -14,15 +14,7 @@ let
       null
     else if builtins.elem n [ "frequency" ] then
       "${v}\n"
-    else if
-      builtins.elem n [
-        "firstaction"
-        "lastaction"
-        "prerotate"
-        "postrotate"
-        "preremove"
-      ]
-    then
+    else if builtins.elem n [ "firstaction" "lastaction" "prerotate" "postrotate" "preremove" ] then
       "${n}\n    ${v}\n  endscript\n"
     else if lib.isInt v then
       "${n} ${toString v}\n"

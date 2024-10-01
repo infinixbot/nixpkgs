@@ -10,7 +10,11 @@
 }:
 
 let
-  pythonVersionNoDot = builtins.replaceStrings [ "." ] [ "" ] python.pythonVersion;
+  pythonVersionNoDot =
+    builtins.replaceStrings
+      [ "." ]
+      [ "" ]
+      python.pythonVersion;
   systemToPlatform = {
     "x86_64-linux" = "manylinux_2_17_x86_64.manylinux2014_x86_64";
     "aarch64-darwin" = "macosx_11_0_arm64";

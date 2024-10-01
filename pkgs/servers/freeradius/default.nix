@@ -41,7 +41,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "FreeRADIUS";
     repo = "freeradius-server";
-    rev = "refs/tags/release_${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "refs/tags/release_${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     hash = "sha256-1n447BpTqmkg5tyXe9yPzjfDoh7wMLZhwouUEzkwxKM=";
   };
 

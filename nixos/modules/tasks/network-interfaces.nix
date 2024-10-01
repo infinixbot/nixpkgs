@@ -421,15 +421,25 @@ let
           defined = x: x != "_mkMergedOptionModule";
         in
         [
-          (mkChangedOptionModule [ "preferTempAddress" ] [ "tempAddress" ] (
-            config:
-            let
-              bool = getAttrFromPath [ "preferTempAddress" ] config;
-            in
-            if bool then "default" else "enabled"
-          ))
-          (mkRenamedOptionModule [ "ip4" ] [ "ipv4" "addresses" ])
-          (mkRenamedOptionModule [ "ip6" ] [ "ipv6" "addresses" ])
+          (mkChangedOptionModule
+            [ "preferTempAddress" ]
+            [ "tempAddress" ]
+            (
+              config:
+              let
+                bool = getAttrFromPath [ "preferTempAddress" ] config;
+              in
+              if bool then "default" else "enabled"
+            )
+          )
+          (mkRenamedOptionModule
+            [ "ip4" ]
+            [ "ipv4" "addresses" ]
+          )
+          (mkRenamedOptionModule
+            [ "ip6" ]
+            [ "ipv6" "addresses" ]
+          )
           (mkRemovedOptionModule [ "subnetMask" ] ''
             Supply a prefix length instead; use option
             networking.interfaces.<name>.ipv{4,6}.addresses'')
@@ -1406,13 +1416,7 @@ in
             };
 
             type = mkOption {
-              type = types.enum [
-                "managed"
-                "ibss"
-                "monitor"
-                "mesh"
-                "wds"
-              ];
+              type = types.enum [ "managed" "ibss" "monitor" "mesh" "wds" ];
               default = "managed";
               example = "ibss";
               description = ''
@@ -1583,7 +1587,13 @@ in
       }
       // listToAttrs (
         forEach interfaces (
-          i: nameValuePair "net.ipv4.conf.${replaceStrings [ "." ] [ "/" ] i.name}.proxy_arp" i.proxyARP
+          i:
+          nameValuePair "net.ipv4.conf.${
+            replaceStrings
+              [ "." ]
+              [ "/" ]
+              i.name
+          }.proxy_arp" i.proxyARP
         )
       )
       // listToAttrs (
@@ -1593,7 +1603,12 @@ in
             opt = i.tempAddress;
             val = tempaddrValues.${opt}.sysctl;
           in
-          nameValuePair "net.ipv6.conf.${replaceStrings [ "." ] [ "/" ] i.name}.use_tempaddr" val
+          nameValuePair "net.ipv6.conf.${
+            replaceStrings
+              [ "." ]
+              [ "/" ]
+              i.name
+          }.use_tempaddr" val
         )
       );
 
@@ -1691,7 +1706,10 @@ in
             ''
               # override to ${msg} for ${i.name}
               ACTION=="add", SUBSYSTEM=="net", NAME=="${i.name}", RUN+="${pkgs.procps}/bin/sysctl net.ipv6.conf.${
-                replaceStrings [ "." ] [ "/" ] i.name
+                replaceStrings
+                  [ "." ]
+                  [ "/" ]
+                  i.name
               }.use_tempaddr=${val}"
             ''
           ) (filter (i: i.tempAddress != cfg.tempAddresses) interfaces);

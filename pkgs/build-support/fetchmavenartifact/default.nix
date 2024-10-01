@@ -42,16 +42,28 @@ assert (repos != [ ]) || (url != "") || (urls != [ ]);
 
 let
   pname =
-    (lib.replaceStrings [ "." ] [ "_" ] groupId)
+    (lib.replaceStrings
+      [ "." ]
+      [ "_" ]
+      groupId
+    )
     + "_"
-    + (lib.replaceStrings [ "." ] [ "_" ] artifactId);
+    + (lib.replaceStrings
+      [ "." ]
+      [ "_" ]
+      artifactId
+    );
   suffix = lib.optionalString (classifier != null) "-${classifier}";
   filename = "${artifactId}-${version}${suffix}.jar";
   mkJarUrl =
     repoUrl:
     lib.concatStringsSep "/" [
       (lib.removeSuffix "/" repoUrl)
-      (lib.replaceStrings [ "." ] [ "/" ] groupId)
+      (lib.replaceStrings
+        [ "." ]
+        [ "/" ]
+        groupId
+      )
       artifactId
       version
       filename
@@ -64,14 +76,7 @@ let
     else
       map mkJarUrl repos;
   jar = fetchurl (
-    builtins.removeAttrs args [
-      "groupId"
-      "artifactId"
-      "version"
-      "classifier"
-      "repos"
-      "url"
-    ]
+    builtins.removeAttrs args [ "groupId" "artifactId" "version" "classifier" "repos" "url" ]
     // {
       urls = urls_;
       name = "${pname}-${version}.jar";

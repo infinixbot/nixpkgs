@@ -11,7 +11,10 @@ stdenv.mkDerivation rec {
   src = fetchurl {
     name = "${pname}-${version}.tar.gz";
     url = "https://geant4.kek.jp/~tanaka/src/dawncut_${
-      builtins.replaceStrings [ "." ] [ "_" ] version
+      builtins.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
     }.taz";
     hash = "sha256-Ux4fDi7TXePisYAxCMDvtzLYOgxnbxQIO9QacTRrT6k=";
   };

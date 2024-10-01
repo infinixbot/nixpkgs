@@ -42,17 +42,7 @@ stdenv.mkDerivation rec {
     install -D completions/git-forgit.zsh $out/share/zsh/${pname}/git-forgit.zsh
     install -D forgit.plugin.zsh $out/share/zsh/${pname}/forgit.plugin.zsh
     wrapProgram $out/bin/git-forgit \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          bash
-          coreutils
-          findutils
-          fzf
-          git
-          gnugrep
-          gnused
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ bash coreutils findutils fzf git gnugrep gnused ]}
 
     runHook postInstall
   '';

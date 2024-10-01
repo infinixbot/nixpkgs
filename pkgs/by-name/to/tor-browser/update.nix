@@ -23,17 +23,7 @@ let
   versionMatch = if prerelease then ''[0-9]+(\.[0-9]+)*.*'' else ''[0-9]+(\.[0-9]+)*'';
 in
 writeShellScript "update-${pname}" ''
-  PATH="${
-    lib.makeBinPath [
-      coreutils
-      curl
-      gnugrep
-      gnused
-      gnupg
-      nix
-      common-updater-scripts
-    ]
-  }"
+  PATH="${lib.makeBinPath [ coreutils curl gnugrep gnused gnupg nix common-updater-scripts ]}"
   set -euo pipefail
 
   trap

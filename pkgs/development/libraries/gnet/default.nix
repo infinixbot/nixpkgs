@@ -15,7 +15,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "GNOME";
     repo = "gnet";
-    rev = "GNET_${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "GNET_${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     sha256 = "1cy78kglzi235md964ikvm0rg801bx0yk9ya8zavndjnaarzqq87";
   };
 

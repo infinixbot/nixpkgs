@@ -27,7 +27,12 @@ import ./make-test-python.nix (
               authorizedKeysFiles = [ "/etc/ssh/authorized_keys.d/%u" ];
               enable = true;
             };
-            security.${lib.replaceStrings [ "_" ] [ "-" ] n} = {
+            security.${
+              lib.replaceStrings
+                [ "_" ]
+                [ "-" ]
+                n
+            } = {
               enable = true;
               wheelNeedsPassword = true; # We are checking `pam_ssh_agent_auth(8)` works for a sudoer
             };

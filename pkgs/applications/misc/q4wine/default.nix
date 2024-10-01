@@ -42,15 +42,7 @@ mkDerivation rec {
   # Add runtime deps.
   postInstall = ''
     wrapProgram $out/bin/q4wine \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          icoutils
-          wget
-          fuseiso
-          wine
-          which
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ icoutils wget fuseiso wine which ]}
   '';
 
   meta = with lib; {

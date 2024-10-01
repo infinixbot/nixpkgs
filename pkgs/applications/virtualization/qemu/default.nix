@@ -186,15 +186,7 @@ stdenv.mkDerivation (finalAttrs: {
       libslirp
     ]
     ++ lib.optionals ncursesSupport [ ncurses ]
-    ++ lib.optionals stdenv.isDarwin [
-      CoreServices
-      Cocoa
-      Hypervisor
-      Kernel
-      rez
-      setfile
-      vmnet
-    ]
+    ++ lib.optionals stdenv.isDarwin [ CoreServices Cocoa Hypervisor Kernel rez setfile vmnet ]
     ++ lib.optionals seccompSupport [ libseccomp ]
     ++ lib.optionals numaSupport [ numactl ]
     ++ lib.optionals alsaSupport [ alsa-lib ]

@@ -32,14 +32,7 @@ in
 
       order = lib.mkOption {
         type = lib.types.listOf (
-          lib.types.enum [
-            "audio"
-            "backlight"
-            "battery"
-            "cpu_load"
-            "network"
-            "time"
-          ]
+          lib.types.enum [ "audio" "backlight" "battery" "cpu_load" "network" "time" ]
         );
         description = ''
           List of enabled features in order.

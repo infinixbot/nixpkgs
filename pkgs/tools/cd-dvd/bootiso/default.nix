@@ -49,17 +49,7 @@ stdenvNoCC.mkDerivation rec {
   postInstall = ''
     wrapProgram $out/bin/bootiso \
       --prefix PATH : ${
-        lib.makeBinPath [
-          bc
-          jq
-          coreutils
-          util-linux
-          wimlib
-          file
-          syslinux
-          gnugrep
-          busybox
-        ]
+        lib.makeBinPath [ bc jq coreutils util-linux wimlib file syslinux gnugrep busybox ]
       } \
   '';
 

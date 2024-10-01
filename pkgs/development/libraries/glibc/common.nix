@@ -248,13 +248,7 @@ stdenv.mkDerivation (
     };
   }
 
-  // (removeAttrs args [
-    "withLinuxHeaders"
-    "withGd"
-    "enableCET"
-    "postInstall"
-    "makeFlags"
-  ])
+  // (removeAttrs args [ "withLinuxHeaders" "withGd" "enableCET" "postInstall" "makeFlags" ])
   //
 
     {

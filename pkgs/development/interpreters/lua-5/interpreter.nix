@@ -178,7 +178,10 @@ stdenv.mkDerivation (
       ln -s "$out/lib/pkgconfig/lua.pc" "$out/lib/pkgconfig/lua-${luaversion}.pc"
       ln -s "$out/lib/pkgconfig/lua.pc" "$out/lib/pkgconfig/lua${luaversion}.pc"
       ln -s "$out/lib/pkgconfig/lua.pc" "$out/lib/pkgconfig/lua${
-        lib.replaceStrings [ "." ] [ "" ] luaversion
+        lib.replaceStrings
+          [ "." ]
+          [ "" ]
+          luaversion
       }.pc"
 
       # Make documentation outputs of different versions co-installable.

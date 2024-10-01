@@ -28,7 +28,12 @@ let
   pname = "paddlepaddle" + lib.optionalString cudaSupport "-gpu";
   version = "2.5.0";
   format = "wheel";
-  pyShortVersion = "cp${builtins.replaceStrings [ "." ] [ "" ] python.pythonVersion}";
+  pyShortVersion = "cp${
+    builtins.replaceStrings
+      [ "." ]
+      [ "" ]
+      python.pythonVersion
+  }";
   cpuOrGpu = if cudaSupport then "gpu" else "cpu";
   allHashAndPlatform = import ./binary-hashes.nix;
   hash =
@@ -42,7 +47,11 @@ let
       hash
       platform
       ;
-    pname = builtins.replaceStrings [ "-" ] [ "_" ] pname;
+    pname =
+      builtins.replaceStrings
+        [ "-" ]
+        [ "_" ]
+        pname;
     dist = pyShortVersion;
     python = pyShortVersion;
     abi = pyShortVersion;

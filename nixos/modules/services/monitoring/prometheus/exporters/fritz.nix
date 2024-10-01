@@ -36,13 +36,7 @@ in
             visible = false;
           };
           log_level = mkOption {
-            type = types.enum [
-              "DEBUG"
-              "INFO"
-              "WARNING"
-              "ERROR"
-              "CRITICAL"
-            ];
+            type = types.enum [ "DEBUG" "INFO" "WARNING" "ERROR" "CRITICAL" ];
             default = "INFO";
             description = ''
               Log level to use for the exporter.

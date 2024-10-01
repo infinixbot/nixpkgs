@@ -29,7 +29,10 @@ let
 
   mainCf =
     let
-      escape = lib.replaceStrings [ "$" ] [ "$$" ];
+      escape =
+        lib.replaceStrings
+          [ "$" ]
+          [ "$$" ];
       mkList = items: "\n  " + lib.concatStringsSep ",\n  " items;
       mkVal =
         value:
@@ -68,13 +71,7 @@ let
         };
 
         type = lib.mkOption {
-          type = lib.types.enum [
-            "inet"
-            "unix"
-            "unix-dgram"
-            "fifo"
-            "pass"
-          ];
+          type = lib.types.enum [ "inet" "unix" "unix-dgram" "fifo" "pass" ];
           default = "unix";
           example = "inet";
           description = "The type of the service";
@@ -1139,11 +1136,10 @@ in
       "services.postfix.sslCACert was replaced by services.postfix.tlsTrustedAuthorities. In case you intend that your server should validate requested client certificates use services.postfix.extraConfig."
     )
 
-    (lib.mkChangedOptionModule [ "services" "postfix" "useDane" ] [
-      "services"
-      "postfix"
-      "config"
-      "smtp_tls_security_level"
-    ] (config: lib.mkIf config.services.postfix.useDane "dane"))
+    (lib.mkChangedOptionModule
+      [ "services" "postfix" "useDane" ]
+      [ "services" "postfix" "config" "smtp_tls_security_level" ]
+      (config: lib.mkIf config.services.postfix.useDane "dane")
+    )
   ];
 }

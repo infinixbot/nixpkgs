@@ -150,13 +150,7 @@ lib.fix (
           ++ specifiedOutputs.texsource or [ ];
 
       # outputs that do not become part of the environment
-      nonEnvOutputs = lib.subtractLists [
-        "out"
-        "tex"
-        "texdoc"
-        "texsource"
-        "tlpkg"
-      ] otherOutputNames;
+      nonEnvOutputs = lib.subtractLists [ "out" "tex" "texdoc" "texsource" "tlpkg" ] otherOutputNames;
 
       # packages that contribute to config files and formats
       fontMaps = lib.filter (p: p ? fontMaps && (p.tlOutputName or p.outputName == "tex")) nonbin;

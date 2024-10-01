@@ -23,7 +23,12 @@ buildPythonPackage rec {
   src = fetchFromGitHub {
     owner = "libstatgrab";
     repo = "pystatgrab";
-    rev = "PYSTATGRAB_${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "PYSTATGRAB_${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     hash = "sha256-0FDhkIK8jy3/SFmCzrl9l4RTeIKDjO0o5UoODx6Wnfs=";
   };
 
@@ -49,7 +54,10 @@ buildPythonPackage rec {
     description = "Python bindings for libstatgrab";
     homepage = "https://github.com/libstatgrab/pystatgrab";
     changelog = "https://github.com/libstatgrab/pystatgrab/blob/PYSTATGRAB_${
-      lib.replaceStrings [ "." ] [ "_" ] version
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
     }/NEWS";
     license = licenses.lgpl21Only;
     maintainers = with maintainers; [ fab ];

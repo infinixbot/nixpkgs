@@ -25,8 +25,16 @@ lib.flip builtins.mapAttrs json (
         let
           packageName = builtins.head (builtins.match "([^~=<>@]*).*" name);
           lower = lib.toLower packageName;
-          dash = builtins.replaceStrings [ "_" ] [ "-" ] packageName;
-          lowerDash = builtins.replaceStrings [ "_" ] [ "-" ] lower;
+          dash =
+            builtins.replaceStrings
+              [ "_" ]
+              [ "-" ]
+              packageName;
+          lowerDash =
+            builtins.replaceStrings
+              [ "_" ]
+              [ "-" ]
+              lower;
         in
         python3.pkgs.${packageName} or python3.pkgs.${lower} or python3.pkgs.${dash}
           or python3.pkgs.${lowerDash} or null

@@ -28,7 +28,11 @@ let
     presets.${stdenv.hostPlatform.system}
       or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
 
-  godot_version_folder = lib.replaceStrings [ "-" ] [ "." ] godot_4.version;
+  godot_version_folder =
+    lib.replaceStrings
+      [ "-" ]
+      [ "." ]
+      godot_4.version;
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "pixelorama";

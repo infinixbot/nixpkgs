@@ -74,7 +74,12 @@ buildPythonPackage rec {
   };
 
   meta = with lib; {
-    changelog = "https://www.starlette.io/release-notes/#${lib.replaceStrings [ "." ] [ "" ] version}";
+    changelog = "https://www.starlette.io/release-notes/#${
+      lib.replaceStrings
+        [ "." ]
+        [ "" ]
+        version
+    }";
     downloadPage = "https://github.com/encode/starlette";
     homepage = "https://www.starlette.io/";
     description = "Little ASGI framework that shines";

@@ -45,7 +45,12 @@ stdenv.mkDerivation rec {
     owner = "SchedMD";
     repo = "slurm";
     # The release tags use - instead of .
-    rev = "${pname}-${builtins.replaceStrings [ "." ] [ "-" ] version}";
+    rev = "${pname}-${
+      builtins.replaceStrings
+        [ "." ]
+        [ "-" ]
+        version
+    }";
     hash = "sha256-qYIpYBjbYgbYzPKEgKEEXEf/0bFyp1sFFl7A7mq6Nco=";
   };
 

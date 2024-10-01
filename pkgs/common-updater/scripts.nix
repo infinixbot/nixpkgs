@@ -35,15 +35,7 @@ stdenv.mkDerivation {
     for f in $out/bin/*; do
       if ! (head -n1 "$f" | grep -q '#!.*/env.*\(python\|pypy\)'); then
         wrapProgram $f --prefix PATH : ${
-          lib.makeBinPath [
-            coreutils
-            diffutils
-            git
-            gnugrep
-            gnused
-            jq
-            nix
-          ]
+          lib.makeBinPath [ coreutils diffutils git gnugrep gnused jq nix ]
         }
       fi
     done

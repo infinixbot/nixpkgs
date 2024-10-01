@@ -26,7 +26,16 @@ let
           if (iface == "LAN") then
             "lan@"
           else
-            (if (iface == "DBUS") then "dbus" else (replaceStrings [ " " ] [ "-" ] iface))
+            (
+              if (iface == "DBUS") then
+                "dbus"
+              else
+                (replaceStrings
+                  [ " " ]
+                  [ "-" ]
+                  iface
+                )
+            )
         )
     }";
 
@@ -47,11 +56,19 @@ let
       driverArg = optionalString (suppl.driver != null) "-D${suppl.driver}";
       bridgeArg = optionalString (suppl.bridge != "") "-b${suppl.bridge}";
       confFileArg = optionalString (suppl.configFile.path != null) "-c${suppl.configFile.path}";
-      extraConfFile = pkgs.writeText "supplicant-extra-conf-${replaceStrings [ " " ] [ "-" ] iface}" ''
-        ${optionalString suppl.userControlled.enable "ctrl_interface=DIR=${suppl.userControlled.socketDir} GROUP=${suppl.userControlled.group}"}
-        ${optionalString suppl.configFile.writable "update_config=1"}
-        ${suppl.extraConf}
-      '';
+      extraConfFile =
+        pkgs.writeText
+          "supplicant-extra-conf-${
+            replaceStrings
+              [ " " ]
+              [ "-" ]
+              iface
+          }"
+          ''
+            ${optionalString suppl.userControlled.enable "ctrl_interface=DIR=${suppl.userControlled.socketDir} GROUP=${suppl.userControlled.group}"}
+            ${optionalString suppl.configFile.writable "update_config=1"}
+            ${suppl.extraConf}
+          '';
     in
     {
       description = "Supplicant ${iface}${optionalString (iface == "WLAN" || iface == "LAN") " %I"}";
@@ -253,7 +270,10 @@ in
               flip (concatMapStringsSep "\n") (splitString " " iface) (
                 i:
                 ''ACTION=="add", SUBSYSTEM=="net", ENV{INTERFACE}=="${i}", TAG+="systemd", ENV{SYSTEMD_WANTS}+="supplicant-${
-                  replaceStrings [ " " ] [ "-" ] iface
+                  replaceStrings
+                    [ " " ]
+                    [ "-" ]
+                    iface
                 }.service", TAG+="SUPPLICANT_ASSIGNED"''
               )
             )

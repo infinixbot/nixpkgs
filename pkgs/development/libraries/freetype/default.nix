@@ -137,7 +137,10 @@ stdenv.mkDerivation (finalAttrs: {
     '';
     homepage = "https://www.freetype.org/";
     changelog = "https://gitlab.freedesktop.org/freetype/freetype/-/raw/VER-${
-      builtins.replaceStrings [ "." ] [ "-" ] finalAttrs.version
+      builtins.replaceStrings
+        [ "." ]
+        [ "-" ]
+        finalAttrs.version
     }/docs/CHANGES";
     license = licenses.gpl2Plus; # or the FreeType License (BSD + advertising clause)
     platforms = platforms.all;

@@ -14,8 +14,14 @@ in
   };
 
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "keter" "keterRoot" ] [ "services" "keter" "root" ])
-    (lib.mkRenamedOptionModule [ "services" "keter" "keterPackage" ] [ "services" "keter" "package" ])
+    (lib.mkRenamedOptionModule
+      [ "services" "keter" "keterRoot" ]
+      [ "services" "keter" "root" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "keter" "keterPackage" ]
+      [ "services" "keter" "package" ]
+    )
   ];
 
   options.services.keter = {

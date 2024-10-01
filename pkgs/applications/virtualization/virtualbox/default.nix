@@ -162,13 +162,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ optional pythonBindings python3 # Python is needed even when not building bindings
     ++ optional pulseSupport libpulseaudio
     ++ optionals headless [ libGL ]
-    ++ optionals (!headless) [
-      qtbase
-      qtx11extras
-      libXinerama
-      SDL2
-      libGLU
-    ]
+    ++ optionals (!headless) [ qtbase qtx11extras libXinerama SDL2 libGLU ]
     ++ optionals enableWebService [ gsoap zlib ];
 
   hardeningDisable = [

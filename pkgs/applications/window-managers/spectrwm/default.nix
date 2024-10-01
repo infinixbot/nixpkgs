@@ -14,7 +14,12 @@ stdenv.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "conformal";
     repo = "spectrwm";
-    rev = "SPECTRWM_${lib.replaceStrings [ "." ] [ "_" ] finalAttrs.version}";
+    rev = "SPECTRWM_${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        finalAttrs.version
+    }";
     hash = "sha256-Dnn/iIrceiAVuMR8iMGcc7LqNhWC496eT5gNrYOInRU=";
   };
 

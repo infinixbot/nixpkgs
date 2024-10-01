@@ -56,18 +56,7 @@ stdenv.mkDerivation rec {
     wrapProgram "$out/bin/syncoid" \
       --prefix PERL5LIB : "$PERL5LIB" \
       --prefix PATH : "${
-        lib.makeBinPath [
-          openssh
-          procps
-          which
-          pv
-          mbuffer
-          lzop
-          gzip
-          pigz
-          "/run/booted-system/sw"
-          zfs
-        ]
+        lib.makeBinPath [ openssh procps which pv mbuffer lzop gzip pigz "/run/booted-system/sw" zfs ]
       }"
 
     install -m755 findoid "$out/bin/findoid"

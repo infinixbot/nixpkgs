@@ -17,7 +17,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "gyunaev";
     repo = pname;
-    rev = "RELEASE_${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "RELEASE_${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     sha256 = "sha256-YNpiBf6AFBCRbAZRPODvqGbQQedJJJrZFQIQyzIeBlw=";
   };
 

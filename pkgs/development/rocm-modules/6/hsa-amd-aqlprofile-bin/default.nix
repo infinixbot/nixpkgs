@@ -13,7 +13,11 @@ stdenv.mkDerivation (finalAttrs: {
   src =
     let
       version = finalAttrs.version;
-      dotless = builtins.replaceStrings [ "." ] [ "0" ] version;
+      dotless =
+        builtins.replaceStrings
+          [ "." ]
+          [ "0" ]
+          version;
       incremental = "115";
       osRelease = "22.04";
     in

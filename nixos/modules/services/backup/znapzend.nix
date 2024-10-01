@@ -52,14 +52,7 @@ let
       description = "string containing all of the characters ${lib.concatStringsSep ", " list}";
     };
 
-  timestampType = stringContainingStrings [
-    "%Y"
-    "%m"
-    "%d"
-    "%H"
-    "%M"
-    "%S"
-  ];
+  timestampType = stringContainingStrings [ "%Y" "%m" "%d" "%H" "%M" "%S" ];
 
   destType =
     srcConfig:
@@ -271,7 +264,10 @@ let
 
   onOff = b: if b then "on" else "off";
   nullOff = b: if b == null then "off" else toString b;
-  stripSlashes = lib.replaceStrings [ "/" ] [ "." ];
+  stripSlashes =
+    lib.replaceStrings
+      [ "/" ]
+      [ "." ];
 
   attrsToFile =
     config: lib.concatStringsSep "\n" (builtins.attrValues (lib.mapAttrs (n: v: "${n}=${v}") config));
@@ -332,13 +328,7 @@ in
       logLevel = lib.mkOption {
         default = "debug";
         example = "warning";
-        type = lib.types.enum [
-          "debug"
-          "info"
-          "warning"
-          "err"
-          "alert"
-        ];
+        type = lib.types.enum [ "debug" "info" "warning" "err" "alert" ];
         description = ''
           The log level when logging to file. Any of debug, info, warning, err,
           alert. Default in daemonized form is debug.

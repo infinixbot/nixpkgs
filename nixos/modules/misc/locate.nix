@@ -14,8 +14,14 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "locate" "period" ] [ "services" "locate" "interval" ])
-    (lib.mkRenamedOptionModule [ "services" "locate" "locate" ] [ "services" "locate" "package" ])
+    (lib.mkRenamedOptionModule
+      [ "services" "locate" "period" ]
+      [ "services" "locate" "interval" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "locate" "locate" ]
+      [ "services" "locate" "package" ]
+    )
     (lib.mkRemovedOptionModule [ "services" "locate" "includeStore" ] "Use services.locate.prunePaths")
   ];
 
@@ -180,13 +186,7 @@ in
 
     pruneNames = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = lib.optionals (!isFindutils) [
-        ".bzr"
-        ".cache"
-        ".git"
-        ".hg"
-        ".svn"
-      ];
+      default = lib.optionals (!isFindutils) [ ".bzr" ".cache" ".git" ".hg" ".svn" ];
       defaultText = lib.literalMD ''
         `[ ".bzr" ".cache" ".git" ".hg" ".svn" ]`, if
         supported by the locate implementation (i.e. mlocate or plocate).

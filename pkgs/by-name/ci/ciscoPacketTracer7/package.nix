@@ -19,7 +19,12 @@ let
 
     dontUnpack = true;
     src = requireFile {
-      name = "PacketTracer_${builtins.replaceStrings [ "." ] [ "" ] version}_amd64.deb";
+      name = "PacketTracer_${
+        builtins.replaceStrings
+          [ "." ]
+          [ "" ]
+          version
+      }_amd64.deb";
       hash = "sha256-w5gC0V3WHQC6J/uMEW2kX9hWKrS0mZZVWtZriN6s4n8=";
       url = "https://www.netacad.com";
     };

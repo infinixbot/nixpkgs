@@ -16,17 +16,7 @@ lib: version: with lib; {
   ];
   mainProgram = "java";
   knownVulnerabilities =
-    optionals
-      (builtins.elem (versions.major version) [
-        "12"
-        "13"
-        "14"
-        "15"
-        "16"
-        "18"
-        "19"
-        "20"
-      ])
+    optionals (builtins.elem (versions.major version) [ "12" "13" "14" "15" "16" "18" "19" "20" ])
       [
         "This OpenJDK version has reached its end of life."
       ];

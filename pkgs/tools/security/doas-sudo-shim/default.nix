@@ -46,15 +46,7 @@ stdenv.mkDerivation rec {
 
   postInstall = ''
     wrapProgram $out/bin/sudo \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          bash
-          coreutils
-          gawk
-          glibc
-          util-linux
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ bash coreutils gawk glibc util-linux ]}
   '';
 
   passthru.tests = {

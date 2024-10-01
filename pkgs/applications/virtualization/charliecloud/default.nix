@@ -65,15 +65,7 @@ stdenv.mkDerivation rec {
   postInstall = ''
     for file in $out/bin/* ; do \
       wrapProgram $file --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          docker
-          gnused
-          gnutar
-          gzip
-          findutils
-          sudo
-        ]
+        lib.makeBinPath [ coreutils docker gnused gnutar gzip findutils sudo ]
       }
     done
   '';

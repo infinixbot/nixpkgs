@@ -71,7 +71,10 @@ buildPythonPackage rec {
 
   meta = with lib; {
     changelog = "https://flask.palletsprojects.com/en/${versions.majorMinor version}.x/changes/#version-${
-      replaceStrings [ "." ] [ "-" ] version
+      replaceStrings
+        [ "." ]
+        [ "-" ]
+        version
     }";
     homepage = "https://flask.palletsprojects.com/";
     description = "Python micro framework for building web applications";

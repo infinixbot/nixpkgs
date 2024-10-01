@@ -46,7 +46,12 @@ let
         fetchFromGitHub {
           owner = "nss-dev";
           repo = "nss";
-          rev = "NSS_${lib.replaceStrings [ "." ] [ "_" ] version}_RTM";
+          rev = "NSS_${
+            lib.replaceStrings
+              [ "." ]
+              [ "_" ]
+              version
+          }_RTM";
           hash = "sha256-KcRiOUbdFnH618MFM6uxmRn+/Jn4QMHtv1BELXrCAX4=";
         };
 

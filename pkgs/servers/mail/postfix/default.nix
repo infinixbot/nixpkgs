@@ -152,15 +152,7 @@ stdenv.mkDerivation rec {
     wrapProgram $out/libexec/postfix/post-install \
       --prefix PATH ":" ${lib.makeBinPath [ coreutils findutils gnugrep ]}
     wrapProgram $out/libexec/postfix/postfix-script \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          coreutils
-          findutils
-          gnugrep
-          gawk
-          gnused
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ coreutils findutils gnugrep gawk gnused ]}
 
     # Avoid dev-only outputs from being retained in final closure.
     # `makedefs.out` is a documenttation-only file. It should be safe

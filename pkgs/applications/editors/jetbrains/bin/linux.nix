@@ -55,7 +55,11 @@ lib.makeOverridable mkDerivation (
     desktopItem = makeDesktopItem {
       name = pname;
       exec = pname;
-      comment = lib.replaceStrings [ "\n" ] [ " " ] meta.longDescription;
+      comment =
+        lib.replaceStrings
+          [ "\n" ]
+          [ " " ]
+          meta.longDescription;
       desktopName = product;
       genericName = meta.description;
       categories = [ "Development" ];
@@ -125,15 +129,7 @@ lib.makeOverridable mkDerivation (
       fi
 
       wrapProgram  "$launcher" \
-        --prefix PATH : "${
-          lib.makeBinPath [
-            jdk
-            coreutils
-            gnugrep
-            which
-            git
-          ]
-        }" \
+        --prefix PATH : "${lib.makeBinPath [ jdk coreutils gnugrep which git ]}" \
         --suffix PATH : "${lib.makeBinPath [ python3 ]}" \
         --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath extraLdPath}" \
         ${lib.concatStringsSep " " extraWrapperArgs} \

@@ -48,7 +48,10 @@ stdenv.mkDerivation (finalAttrs: {
   gmic_stdlib = fetchurl {
     name = "gmic_stdlib_community.h";
     url = "https://gmic.eu/gmic_stdlib_community${
-      lib.replaceStrings [ "." ] [ "" ] finalAttrs.version
+      lib.replaceStrings
+        [ "." ]
+        [ "" ]
+        finalAttrs.version
     }.h";
     hash = "sha256-quzQ0g6kmbJFygUOlKdTn9Fe9J7jhlLOiNal1kX3iHY=";
   };
@@ -95,16 +98,7 @@ stdenv.mkDerivation (finalAttrs: {
 
     updateScript = writeShellScript "gmic-update-script" ''
       set -o errexit
-      PATH=${
-        lib.makeBinPath [
-          common-updater-scripts
-          coreutils
-          curl
-          gnugrep
-          gnused
-          jq
-        ]
-      }
+      PATH=${lib.makeBinPath [ common-updater-scripts coreutils curl gnugrep gnused jq ]}
 
       latestVersion=$(curl 'https://gmic.eu/files/source/' \
                        | grep -E 'gmic_[^"]+\.tar\.gz' \

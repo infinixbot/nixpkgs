@@ -88,13 +88,7 @@ in
     };
 
     dbtype = mkOption {
-      type = types.enum [
-        "mysql"
-        "percona"
-        "mariadb"
-        "postgresql"
-        "sqlserver"
-      ];
+      type = types.enum [ "mysql" "percona" "mariadb" "postgresql" "sqlserver" ];
       default = "postgresql";
       description = ''
         Specify the database provider: `mysql`, `percona`, `mariadb`, `postgresql`, `sqlserver`
@@ -136,14 +130,7 @@ in
         ExecStart = concatStringsSep " " [
           "${cfg.package}/bin/documize"
           (mkParams false [ "db" "dbtype" "port" ])
-          (mkParams true [
-            "offline"
-            "location"
-            "forcesslport"
-            "key"
-            "cert"
-            "salt"
-          ])
+          (mkParams true [ "offline" "location" "forcesslport" "key" "cert" "salt" ])
         ];
         Restart = "always";
         DynamicUser = "yes";

@@ -37,7 +37,11 @@ let
     stdenv.mkDerivation {
       pname =
         let
-          vmNameNoDots = builtins.replaceStrings [ "." ] [ "-" ] vmName;
+          vmNameNoDots =
+            builtins.replaceStrings
+              [ "." ]
+              [ "-" ]
+              vmName;
         in
         "opensmalltalk-vm-${platformDir}-${vmNameNoDots}";
       version = src.rev;

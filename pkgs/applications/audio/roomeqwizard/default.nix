@@ -19,7 +19,10 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://www.roomeqwizard.com/installers/REW_linux_no_jre_${
-      lib.replaceStrings [ "." ] [ "_" ] version
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
     }.sh";
     sha256 = "sha256-qaGkKVoiBJ2UWVKAMqbuqNFi6FGcblMxAbYwhf/71CY=";
   };

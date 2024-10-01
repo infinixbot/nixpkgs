@@ -583,15 +583,7 @@ let
         imports = m.require or [ ] ++ m.imports or [ ];
         options = { };
         config = addFreeformType (
-          removeAttrs m [
-            "_class"
-            "_file"
-            "key"
-            "disabledModules"
-            "require"
-            "imports"
-            "freeformType"
-          ]
+          removeAttrs m [ "_class" "_file" "key" "disabledModules" "require" "imports" "freeformType" ]
         );
       };
 

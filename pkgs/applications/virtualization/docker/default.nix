@@ -144,16 +144,7 @@ rec {
             ++ lib.optional withSeccomp libseccomp;
 
           extraPath = lib.optionals stdenv.isLinux (
-            lib.makeBinPath [
-              iproute2
-              iptables
-              e2fsprogs
-              xz
-              xfsprogs
-              procps
-              util-linux
-              git
-            ]
+            lib.makeBinPath [ iproute2 iptables e2fsprogs xz xfsprogs procps util-linux git ]
           );
 
           extraUserPath = lib.optionals (stdenv.isLinux && !clientOnly) (

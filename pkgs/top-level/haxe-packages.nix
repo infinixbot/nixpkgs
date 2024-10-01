@@ -10,7 +10,10 @@
 }:
 
 let
-  withCommas = lib.replaceStrings [ "." ] [ "," ];
+  withCommas =
+    lib.replaceStrings
+      [ "." ]
+      [ "," ];
 
   # simulate "haxelib dev $libname ."
   simulateHaxelibDev = libname: ''

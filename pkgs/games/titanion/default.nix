@@ -26,7 +26,10 @@ stdenv.mkDerivation (finalAttrs: {
 
   src = fetchurl {
     url = "http://abagames.sakura.ne.jp/windows/ttn${
-      lib.replaceStrings [ "." ] [ "_" ] finalAttrs.version
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        finalAttrs.version
     }.zip";
     sha256 = "sha256-fR0cufi6dU898wP8KGl/vxbfQJzMmMxlYZ3QNGLajfM=";
   };

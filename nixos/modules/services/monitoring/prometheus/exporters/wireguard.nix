@@ -20,7 +20,10 @@ in
 {
   port = 9586;
   imports = [
-    (mkRenamedOptionModule [ "addr" ] [ "listenAddress" ])
+    (mkRenamedOptionModule
+      [ "addr" ]
+      [ "listenAddress" ]
+    )
     ({
       options.warnings = options.warnings;
       options.assertions = options.assertions;

@@ -69,7 +69,12 @@ let
     fetchurl {
       url = "https://packages.blackfire.io/binaries/blackfire-php/${version}/blackfire-php-${
         if isLinux then "linux" else "darwin"
-      }_${hashes.${system}.system}-php-${builtins.replaceStrings [ "." ] [ "" ] phpMajor}.so";
+      }_${hashes.${system}.system}-php-${
+        builtins.replaceStrings
+          [ "." ]
+          [ "" ]
+          phpMajor
+      }.so";
       hash = hashes.${system}.hash.${phpMajor};
     };
 in
@@ -123,7 +128,13 @@ stdenv.mkDerivation (finalAttrs: {
     updateables =
       let
         createName =
-          { phpMajor, system }: "php${builtins.replaceStrings [ "." ] [ "" ] phpMajor}_${system}";
+          { phpMajor, system }:
+          "php${
+            builtins.replaceStrings
+              [ "." ]
+              [ "" ]
+              phpMajor
+          }_${system}";
 
         createUpdateable =
           sourceParams:

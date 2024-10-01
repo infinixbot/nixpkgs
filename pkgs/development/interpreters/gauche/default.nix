@@ -22,7 +22,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "shirok";
     repo = pname;
-    rev = "release${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "release${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     hash = "sha256-M2vZqTMkob+WxUnCo4NDxS4pCVNleVBqkiiRp9nG/KA=";
   };
 

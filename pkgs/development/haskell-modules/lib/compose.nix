@@ -608,7 +608,11 @@ rec {
       haskellPaths = lib.filter (lib.hasSuffix ".nix") (builtins.attrNames (builtins.readDir directory));
 
       toKeyVal = file: {
-        name = builtins.replaceStrings [ ".nix" ] [ "" ] file;
+        name =
+          builtins.replaceStrings
+            [ ".nix" ]
+            [ "" ]
+            file;
 
         value = self.callPackage (directory + "/${file}") { };
       };

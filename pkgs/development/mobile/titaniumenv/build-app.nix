@@ -70,7 +70,11 @@ let
 in
 stdenv.mkDerivation (
   {
-    name = lib.replaceStrings [ " " ] [ "" ] name;
+    name =
+      lib.replaceStrings
+        [ " " ]
+        [ "" ]
+        name;
 
     buildInputs = [
       nodejs

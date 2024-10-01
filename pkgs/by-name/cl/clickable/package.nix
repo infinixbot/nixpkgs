@@ -79,7 +79,10 @@ python3Packages.buildPythonApplication rec {
     mainProgram = "clickable";
     homepage = "https://clickable-ut.dev";
     changelog = "https://clickable-ut.dev/en/latest/changelog.html#changes-in-v${
-      lib.strings.replaceStrings [ "." ] [ "-" ] version
+      lib.strings.replaceStrings
+        [ "." ]
+        [ "-" ]
+        version
     }";
     license = lib.licenses.gpl3Only;
     maintainers = lib.teams.lomiri.members ++ (with lib.maintainers; [ ilyakooo0 ]);

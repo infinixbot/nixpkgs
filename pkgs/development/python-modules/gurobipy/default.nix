@@ -8,7 +8,13 @@
 
 let
   format = "wheel";
-  pyShortVersion = "cp" + builtins.replaceStrings [ "." ] [ "" ] python.pythonVersion;
+  pyShortVersion =
+    "cp"
+    +
+      builtins.replaceStrings
+        [ "." ]
+        [ "" ]
+        python.pythonVersion;
   platforms = rec {
     aarch64-darwin = "macosx_10_9_universal2";
     aarch64-linux = "manylinux2014_aarch64.manylinux_2_17_aarch64";

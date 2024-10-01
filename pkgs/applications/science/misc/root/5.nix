@@ -50,14 +50,7 @@ stdenv.mkDerivation rec {
       xxHash
       libxcrypt
     ]
-    ++ lib.optionals (!stdenv.isDarwin) [
-      libX11
-      libXpm
-      libXft
-      libXext
-      libGLU
-      libGL
-    ]
+    ++ lib.optionals (!stdenv.isDarwin) [ libX11 libXpm libXft libXext libGLU libGL ]
     ++ lib.optionals (stdenv.isDarwin) [ Cocoa OpenGL ];
 
   patches = [

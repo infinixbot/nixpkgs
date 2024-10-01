@@ -199,15 +199,7 @@
     '';
 
     postFixup = ''
-      patchelf --set-rpath ${
-        lib.makeLibraryPath [
-          unixODBC
-          openssl
-          libkrb5
-          libuuid
-          stdenv.cc.cc
-        ]
-      } \
+      patchelf --set-rpath ${lib.makeLibraryPath [ unixODBC openssl libkrb5 libuuid stdenv.cc.cc ]} \
         $out/lib/libmsodbcsql-${versionMajor}.${versionMinor}.so.${versionAdditional}
     '';
 
@@ -294,15 +286,7 @@
     '';
 
     postFixup = lib.optionalString stdenv.isLinux ''
-      patchelf --set-rpath ${
-        lib.makeLibraryPath [
-          unixODBC
-          openssl
-          libkrb5
-          libuuid
-          stdenv.cc.cc
-        ]
-      } \
+      patchelf --set-rpath ${lib.makeLibraryPath [ unixODBC openssl libkrb5 libuuid stdenv.cc.cc ]} \
         $out/${finalAttrs.passthru.driver}
     '';
 

@@ -19,7 +19,12 @@ let
     majorMinorVersion:
     let
       atLeast = lib.versionAtLeast majorMinorVersion;
-      attrName = "gcc${lib.replaceStrings [ "." ] [ "" ] majorMinorVersion}";
+      attrName = "gcc${
+        lib.replaceStrings
+          [ "." ]
+          [ "" ]
+          majorMinorVersion
+      }";
       pkg = lowPrio (
         wrapCC (
           callPackage ./default.nix (

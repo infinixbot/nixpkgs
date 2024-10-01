@@ -119,15 +119,7 @@ let
         + optionalString isAtLeast22Series ''
           substituteInPlace ./udev/vdev_id \
             --replace "PATH=/bin:/sbin:/usr/bin:/usr/sbin" \
-             "PATH=${
-               makeBinPath [
-                 coreutils
-                 gawk
-                 gnused
-                 gnugrep
-                 systemd
-               ]
-             }"
+             "PATH=${makeBinPath [ coreutils gawk gnused gnugrep systemd ]}"
         ''
         + optionalString (!isAtLeast22Series) ''
           substituteInPlace ./etc/zfs/Makefile.am --replace "\$(sysconfdir)/zfs" "$out/etc/zfs"
@@ -136,15 +128,7 @@ let
 
           substituteInPlace ./cmd/vdev_id/vdev_id \
             --replace "PATH=/bin:/sbin:/usr/bin:/usr/sbin" \
-            "PATH=${
-              makeBinPath [
-                coreutils
-                gawk
-                gnused
-                gnugrep
-                systemd
-              ]
-            }"
+            "PATH=${makeBinPath [ coreutils gawk gnused gnugrep systemd ]}"
         ''
         + ''
           substituteInPlace ./config/zfs-build.m4 \
@@ -160,13 +144,7 @@ let
         ++ optionals buildKernel (kernel.moduleBuildDependencies ++ [ perl ])
         ++ optional buildUser pkg-config;
       buildInputs =
-        optionals buildUser [
-          zlib
-          libuuid
-          attr
-          libtirpc
-          pam
-        ]
+        optionals buildUser [ zlib libuuid attr libtirpc pam ]
         ++ optional buildUser openssl
         ++ optional buildUser curl
         ++ optional (buildUser && enablePython) python3;
@@ -262,17 +240,7 @@ let
 
       postFixup =
         let
-          path = "PATH=${
-            makeBinPath [
-              coreutils
-              gawk
-              gnused
-              gnugrep
-              util-linux
-              smartmon
-              sysstat
-            ]
-          }:$PATH";
+          path = "PATH=${makeBinPath [ coreutils gawk gnused gnugrep util-linux smartmon sysstat ]}:$PATH";
         in
         ''
           for i in $out/libexec/zfs/zpool.d/*; do

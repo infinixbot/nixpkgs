@@ -264,31 +264,26 @@ in
 {
   imports =
     [
-      (lib.mkRenamedOptionModule [ "fonts" "fontconfig" "ultimate" "allowBitmaps" ] [
-        "fonts"
-        "fontconfig"
-        "allowBitmaps"
-      ])
-      (lib.mkRenamedOptionModule [ "fonts" "fontconfig" "ultimate" "allowType1" ] [
-        "fonts"
-        "fontconfig"
-        "allowType1"
-      ])
-      (lib.mkRenamedOptionModule [ "fonts" "fontconfig" "ultimate" "useEmbeddedBitmaps" ] [
-        "fonts"
-        "fontconfig"
-        "useEmbeddedBitmaps"
-      ])
-      (lib.mkRenamedOptionModule [ "fonts" "fontconfig" "ultimate" "forceAutohint" ] [
-        "fonts"
-        "fontconfig"
-        "forceAutohint"
-      ])
-      (lib.mkRenamedOptionModule [ "fonts" "fontconfig" "ultimate" "renderMonoTTFAsBitmap" ] [
-        "fonts"
-        "fontconfig"
-        "renderMonoTTFAsBitmap"
-      ])
+      (lib.mkRenamedOptionModule
+        [ "fonts" "fontconfig" "ultimate" "allowBitmaps" ]
+        [ "fonts" "fontconfig" "allowBitmaps" ]
+      )
+      (lib.mkRenamedOptionModule
+        [ "fonts" "fontconfig" "ultimate" "allowType1" ]
+        [ "fonts" "fontconfig" "allowType1" ]
+      )
+      (lib.mkRenamedOptionModule
+        [ "fonts" "fontconfig" "ultimate" "useEmbeddedBitmaps" ]
+        [ "fonts" "fontconfig" "useEmbeddedBitmaps" ]
+      )
+      (lib.mkRenamedOptionModule
+        [ "fonts" "fontconfig" "ultimate" "forceAutohint" ]
+        [ "fonts" "fontconfig" "forceAutohint" ]
+      )
+      (lib.mkRenamedOptionModule
+        [ "fonts" "fontconfig" "ultimate" "renderMonoTTFAsBitmap" ]
+        [ "fonts" "fontconfig" "renderMonoTTFAsBitmap" ]
+      )
       (lib.mkRemovedOptionModule [ "fonts" "fontconfig" "forceAutohint" ] "")
       (lib.mkRemovedOptionModule [ "fonts" "fontconfig" "renderMonoTTFAsBitmap" ] "")
       (lib.mkRemovedOptionModule [ "fonts" "fontconfig" "dpi" ] "Use display server-specific options")
@@ -454,13 +449,7 @@ in
 
           rgba = lib.mkOption {
             default = "none";
-            type = lib.types.enum [
-              "rgb"
-              "bgr"
-              "vrgb"
-              "vbgr"
-              "none"
-            ];
+            type = lib.types.enum [ "rgb" "bgr" "vrgb" "vbgr" "none" ];
             description = ''
               Subpixel order. The overwhelming majority of displays are
               `rgb` in their normal orientation. Select

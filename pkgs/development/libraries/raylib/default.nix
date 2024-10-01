@@ -42,13 +42,7 @@ stdenv.mkDerivation (finalAttrs: {
 
   buildInputs =
     [ glfw ]
-    ++ lib.optionals stdenv.isLinux [
-      mesa
-      libXi
-      libXcursor
-      libXrandr
-      libXinerama
-    ]
+    ++ lib.optionals stdenv.isLinux [ mesa libXi libXcursor libXrandr libXinerama ]
     ++ lib.optionals stdenv.isDarwin [ Carbon Cocoa ]
     ++ lib.optional alsaSupport alsa-lib
     ++ lib.optional pulseSupport libpulseaudio;

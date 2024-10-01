@@ -441,7 +441,12 @@ buildPythonPackage {
 
   src =
     let
-      cp = "cp${builtins.replaceStrings [ "." ] [ "" ] python.pythonVersion}";
+      cp = "cp${
+        builtins.replaceStrings
+          [ "." ]
+          [ "" ]
+          python.pythonVersion
+      }";
     in
     "${bazel-build}/jaxlib-${version}-${cp}-${cp}-${platformTag}.whl";
 

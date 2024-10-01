@@ -226,15 +226,7 @@ in
 
     logLevel = lib.mkOption {
       type = lib.types.nullOr (
-        lib.types.enum [
-          "panic"
-          "fatal"
-          "error"
-          "warning"
-          "info"
-          "debug"
-          "trace"
-        ]
+        lib.types.enum [ "panic" "fatal" "error" "warning" "info" "debug" "trace" ]
       );
       description = ''
         Log level for Athens.
@@ -294,16 +286,7 @@ in
     };
 
     storageType = lib.mkOption {
-      type = lib.types.enum [
-        "memory"
-        "disk"
-        "mongo"
-        "gcp"
-        "minio"
-        "s3"
-        "azureblob"
-        "external"
-      ];
+      type = lib.types.enum [ "memory" "disk" "mongo" "gcp" "minio" "s3" "azureblob" "external" ];
       description = "Specifies the type of storage backend to use.";
       default = "disk";
     };
@@ -467,13 +450,7 @@ in
 
     downloadMode = lib.mkOption {
       type = lib.types.oneOf [
-        (lib.types.enum [
-          "sync"
-          "async"
-          "redirect"
-          "async_redirect"
-          "none"
-        ])
+        (lib.types.enum [ "sync" "async" "redirect" "async_redirect" "none" ])
         (lib.types.strMatching "^file:.*$|^custom:.*$")
       ];
       description = ''
@@ -525,14 +502,7 @@ in
     };
 
     singleFlightType = lib.mkOption {
-      type = lib.types.enum [
-        "memory"
-        "etcd"
-        "redis"
-        "redis-sentinel"
-        "gcp"
-        "azureblob"
-      ];
+      type = lib.types.enum [ "memory" "etcd" "redis" "redis-sentinel" "gcp" "azureblob" ];
       description = ''
         Determines what mechanism Athens uses to manage concurrency flowing into the Athens backend.
       '';

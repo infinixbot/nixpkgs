@@ -11,7 +11,11 @@
 stdenv.mkDerivation rec {
   pname = "terraria-server";
   version = "1.4.4.9";
-  urlVersion = lib.replaceStrings [ "." ] [ "" ] version;
+  urlVersion =
+    lib.replaceStrings
+      [ "." ]
+      [ "" ]
+      version;
 
   src = fetchurl {
     url = "https://terraria.org/api/download/pc-dedicated-server/terraria-server-${urlVersion}.zip";

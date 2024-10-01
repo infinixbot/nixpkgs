@@ -6,11 +6,10 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "systemd" "oomd" "enableUserServices" ] [
-      "systemd"
-      "oomd"
-      "enableUserSlices"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "systemd" "oomd" "enableUserServices" ]
+      [ "systemd" "oomd" "enableUserSlices" ]
+    )
   ];
 
   options.systemd.oomd = {

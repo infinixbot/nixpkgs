@@ -38,7 +38,10 @@ import ./make-test-python.nix (
       };
     };
 
-    machineSafe = builtins.replaceStrings [ "-" ] [ "_" ];
+    machineSafe =
+      builtins.replaceStrings
+        [ "-" ]
+        [ "_" ];
   in
   {
     name = "man";

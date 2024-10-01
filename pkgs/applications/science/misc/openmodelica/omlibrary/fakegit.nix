@@ -19,7 +19,10 @@ let
   hashname =
     r:
     let
-      rpl = lib.replaceStrings [ ":" "/" ] [ "_" "_" ];
+      rpl =
+        lib.replaceStrings
+          [ ":" "/" ]
+          [ "_" "_" ];
     in
     (rpl r.url) + "-" + (rpl r.rev);
 

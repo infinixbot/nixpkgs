@@ -120,14 +120,7 @@ in
         type = str;
       };
       logLevel = lib.mkOption {
-        type = lib.types.enum [
-          "none"
-          "err"
-          "warning"
-          "info"
-          "notice"
-          "debug"
-        ];
+        type = lib.types.enum [ "none" "err" "warning" "info" "notice" "debug" ];
         default = "notice";
         description = "Set inadyn's log level.";
       };

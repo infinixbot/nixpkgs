@@ -17,8 +17,16 @@ stdenv.mkDerivation (finalAttrs: {
 
   src = fetchurl {
     url = "https://courses.missouristate.edu/KenVollmar/MARS/MARS_${
-      lib.replaceStrings [ "." ] [ "_" ] finalAttrs.version
-    }_Aug2014/Mars${lib.replaceStrings [ "." ] [ "_" ] finalAttrs.version}.jar";
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        finalAttrs.version
+    }_Aug2014/Mars${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        finalAttrs.version
+    }.jar";
     hash = "sha256-rDQLZ2uitiJGud935i+BrURHvP0ymrU5cWvNCZULcJY=";
   };
 

@@ -116,14 +116,7 @@ stdenv.mkDerivation rec {
       tbb
       xrootd
     ]
-    ++ lib.optionals (!stdenv.isDarwin) [
-      libX11
-      libXpm
-      libXft
-      libXext
-      libGLU
-      libGL
-    ]
+    ++ lib.optionals (!stdenv.isDarwin) [ libX11 libXpm libXft libXext libGLU libGL ]
     ++ lib.optionals (stdenv.isDarwin) [ Cocoa CoreSymbolication OpenGL ];
 
   patches = [

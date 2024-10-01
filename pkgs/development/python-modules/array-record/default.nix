@@ -22,7 +22,12 @@ buildPythonPackage rec {
 
   src =
     let
-      pyShortVersion = "cp${builtins.replaceStrings [ "." ] [ "" ] python.pythonVersion}";
+      pyShortVersion = "cp${
+        builtins.replaceStrings
+          [ "." ]
+          [ "" ]
+          python.pythonVersion
+      }";
     in
     fetchPypi {
       inherit version format;

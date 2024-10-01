@@ -102,7 +102,11 @@ let
         '';
 
         pythonImportsCheck = [
-          (builtins.replaceStrings [ "-" ] [ "_" ] pname)
+          (builtins.replaceStrings
+            [ "-" ]
+            [ "_" ]
+            pname
+          )
         ];
       }
     ) { };

@@ -11,7 +11,10 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "http://urchlay.naptime.net/~urchlay/src/HawkNL${
-      lib.replaceStrings [ "." ] [ "" ] version
+      lib.replaceStrings
+        [ "." ]
+        [ "" ]
+        version
     }src.zip";
     sha256 = "11shn2fbxj3w0j77w0234pqyj1368x686kkgv09q5yqhi1cdp028";
   };

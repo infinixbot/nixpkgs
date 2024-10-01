@@ -55,7 +55,12 @@ stdenv.mkDerivation rec {
 
       mkdir -p test/resources/in/osm
       ${lib.concatMapStringsSep "\n" (res: ''
-        cp ${res} test/resources/in/${builtins.replaceStrings [ "__" ] [ "/" ] res.name}
+        cp ${res} test/resources/in/${
+          builtins.replaceStrings
+            [ "__" ]
+            [ "/" ]
+            res.name
+        }
       '') testInputs}
     '';
 

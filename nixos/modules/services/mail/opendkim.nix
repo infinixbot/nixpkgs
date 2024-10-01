@@ -28,7 +28,10 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "opendkim" "keyFile" ] [ "services" "opendkim" "keyPath" ])
+    (lib.mkRenamedOptionModule
+      [ "services" "opendkim" "keyFile" ]
+      [ "services" "opendkim" "keyPath" ]
+    )
   ];
 
   ###### interface

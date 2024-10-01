@@ -9,7 +9,12 @@ tcl.mkTclDerivation rec {
   version = "0.9.4";
 
   src = fetchzip {
-    url = "mirror://sourceforge/pdf4tcl/pdf4tcl${lib.replaceStrings [ "." ] [ "" ] version}.tar.gz";
+    url = "mirror://sourceforge/pdf4tcl/pdf4tcl${
+      lib.replaceStrings
+        [ "." ]
+        [ "" ]
+        version
+    }.tar.gz";
     hash = "sha256-lmSt0UQDfUef8S7zevAvvbeWB/vd6jLbKz7Y5A7xJm4=";
   };
 

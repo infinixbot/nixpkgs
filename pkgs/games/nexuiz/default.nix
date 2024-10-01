@@ -31,7 +31,11 @@
 let
   version = "2.5.2";
 
-  version_short = lib.replaceStrings [ "." ] [ "" ] version;
+  version_short =
+    lib.replaceStrings
+      [ "." ]
+      [ "" ]
+      version;
 in
 stdenv.mkDerivation {
   pname = "nexuiz";

@@ -17,7 +17,10 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule [ "controlSocketPaths" ] [ "targets" ])
+    (mkRenamedOptionModule
+      [ "controlSocketPaths" ]
+      [ "targets" ]
+    )
   ];
   port = 9547;
   extraOpts = {

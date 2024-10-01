@@ -1253,10 +1253,13 @@ runTests {
     expected = true;
   };
   testListHasPrefixEmptyList = {
-    expr = lists.hasPrefix [
-      1
-      2
-    ] [ ];
+    expr =
+      lists.hasPrefix
+        [
+          1
+          2
+        ]
+        [ ];
     expected = false;
   };
 
@@ -1308,10 +1311,12 @@ runTests {
   testListRemovePrefixEmptyList = {
     expr =
       (builtins.tryEval (
-        lists.removePrefix [
-          1
-          2
-        ] [ ]
+        lists.removePrefix
+          [
+            1
+            2
+          ]
+          [ ]
       )).success;
     expected = false;
   };

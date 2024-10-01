@@ -35,14 +35,7 @@ stdenv.mkDerivation rec {
     openssl
   ];
 
-  LD_LIBRARY_PATH = lib.makeLibraryPath [
-    sqlite
-    libzip
-    curl
-    git
-    openssl
-    freetds
-  ];
+  LD_LIBRARY_PATH = lib.makeLibraryPath [ sqlite libzip curl git openssl freetds ];
 
   buildPhase = ''
     export PATH=$PATH:$out/bin

@@ -152,7 +152,10 @@ stdenv.mkDerivation rec {
     mainProgram = "x265";
     homepage = "https://www.x265.org/";
     changelog = "https://x265.readthedocs.io/en/master/releasenotes.html#version-${
-      lib.strings.replaceStrings [ "." ] [ "-" ] version
+      lib.strings.replaceStrings
+        [ "." ]
+        [ "-" ]
+        version
     }";
     license = licenses.gpl2Plus;
     maintainers = with maintainers; [ codyopel ];

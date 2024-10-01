@@ -16,7 +16,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "trusteddomainproject";
     repo = "opendmarc";
-    rev = "rel-opendmarc-${builtins.replaceStrings [ "." ] [ "-" ] version}";
+    rev = "rel-opendmarc-${
+      builtins.replaceStrings
+        [ "." ]
+        [ "-" ]
+        version
+    }";
     hash = "sha256-vnWtTvHhzCed7P6rN3wAz6zfRvtV0cLn5GhDxLF8H3c=";
   };
 

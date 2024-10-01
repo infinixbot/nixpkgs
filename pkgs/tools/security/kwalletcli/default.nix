@@ -18,7 +18,12 @@ mkDerivation rec {
   src = fetchFromGitHub {
     owner = "MirBSD";
     repo = pname;
-    rev = "${pname}-${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "${pname}-${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     sha256 = "sha256-DUtaQITzHhQrqA9QJd0U/5EDjH0IzY9/kal/7SYQ/Ck=";
   };
 

@@ -48,16 +48,9 @@ stdenv.mkDerivation (finalAttrs: {
     ninja
   ] ++ lib.optional (!minimal) wayland-scanner;
 
-  buildInputs =
-    [ libdrm ]
-    ++ lib.optionals (!minimal) [
-      libX11
-      libXext
-      libXfixes
-      wayland
-      libffi
-      libGL
-    ];
+  buildInputs = [
+    libdrm
+  ] ++ lib.optionals (!minimal) [ libX11 libXext libXfixes wayland libffi libGL ];
 
   mesonFlags = lib.optionals stdenv.isLinux [
     # Add FHS and Debian paths for non-NixOS applications

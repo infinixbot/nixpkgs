@@ -22,15 +22,7 @@ in
 
     logLevel = mkOption {
       # https://github.com/sirupsen/logrus#level-logging
-      type = types.enum [
-        "Panic"
-        "Fatal"
-        "Error"
-        "Warning"
-        "Info"
-        "Debug"
-        "Trace"
-      ];
+      type = types.enum [ "Panic" "Fatal" "Error" "Warning" "Info" "Debug" "Trace" ];
       default = "Warning";
       example = "Info";
       description = "Only log messages of this priority or higher.";

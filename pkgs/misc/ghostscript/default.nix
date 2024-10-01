@@ -66,7 +66,10 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${
-      lib.replaceStrings [ "." ] [ "" ] version
+      lib.replaceStrings
+        [ "." ]
+        [ "" ]
+        version
     }/ghostscript-${version}.tar.xz";
     hash = "sha256-FXIS7clrjMxAlHXc4uSYM/tEJ/FQxFUlje2WMsEGq+4=";
   };

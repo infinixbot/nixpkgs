@@ -7,14 +7,7 @@
 let
   cfg = config.i18n.inputMethod;
 
-  allowedTypes = lib.types.enum [
-    "ibus"
-    "fcitx5"
-    "nabi"
-    "uim"
-    "hime"
-    "kime"
-  ];
+  allowedTypes = lib.types.enum [ "ibus" "fcitx5" "nabi" "uim" "hime" "kime" ];
 
   gtk2_cache =
     pkgs.runCommand "gtk2-immodule.cache"

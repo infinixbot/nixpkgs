@@ -13,7 +13,12 @@ stdenv.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "cybertec-postgresql";
     repo = "pg_squeeze";
-    rev = "REL${builtins.replaceStrings [ "." ] [ "_" ] finalAttrs.version}";
+    rev = "REL${
+      builtins.replaceStrings
+        [ "." ]
+        [ "_" ]
+        finalAttrs.version
+    }";
     hash = "sha256-YS13iIpQ4NJe0N6bRVa2RDxEMwEzBc2mjNYM5/Vqjn8=";
   };
 

@@ -47,13 +47,7 @@ stdenv.mkDerivation rec {
       libjack2
     ]
     ++ lib.optionals stdenv.isLinux [ alsa-lib libpulseaudio ]
-    ++ lib.optionals stdenv.isDarwin [
-      AppKit
-      AudioUnit
-      CoreAudio
-      CoreMIDI
-      CoreServices
-    ];
+    ++ lib.optionals stdenv.isDarwin [ AppKit AudioUnit CoreAudio CoreMIDI CoreServices ];
 
   cmakeFlags = [
     "-Denable-framework=off"

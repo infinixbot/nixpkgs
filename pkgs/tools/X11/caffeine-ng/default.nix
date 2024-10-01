@@ -69,15 +69,7 @@ python3Packages.buildPythonApplication rec {
 
   preFixup = ''
     gappsWrapperArgs+=(
-      --prefix PATH : ${
-        lib.makeBinPath [
-          procps
-          xautolock
-          xscreensaver
-          xfce.xfconf
-          xset
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ procps xautolock xscreensaver xfce.xfconf xset ]}
     )
     makeWrapperArgs+=("''${gappsWrapperArgs[@]}")
   '';

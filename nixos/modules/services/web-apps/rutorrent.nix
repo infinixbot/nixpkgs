@@ -26,7 +26,15 @@ let
     _cloudflare = [ python3 ];
   };
 
-  getPluginDependencies = dependencies: concatMap (p: attrByPath [ p ] [ ] dependencies);
+  getPluginDependencies =
+    dependencies:
+    concatMap (
+      p:
+      attrByPath
+        [ p ]
+        [ ]
+        dependencies
+    );
 
 in
 {

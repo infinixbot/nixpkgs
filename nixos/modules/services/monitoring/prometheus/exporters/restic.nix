@@ -130,7 +130,15 @@ in
     environment =
       let
         rcloneRemoteName = builtins.elemAt (splitString ":" cfg.repository) 1;
-        rcloneAttrToOpt = v: "RCLONE_" + toUpper (builtins.replaceStrings [ "-" ] [ "_" ] v);
+        rcloneAttrToOpt =
+          v:
+          "RCLONE_"
+          + toUpper (
+            builtins.replaceStrings
+              [ "-" ]
+              [ "_" ]
+              v
+          );
         rcloneAttrToConf = v: "RCLONE_CONFIG_" + toUpper (rcloneRemoteName + "_" + v);
         toRcloneVal = v: if lib.isBool v then lib.boolToString v else v;
       in

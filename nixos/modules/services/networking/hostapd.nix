@@ -748,13 +748,7 @@ in
                       authentication = {
                         mode = mkOption {
                           default = "wpa3-sae";
-                          type = types.enum [
-                            "none"
-                            "wpa2-sha1"
-                            "wpa2-sha256"
-                            "wpa3-sae-transition"
-                            "wpa3-sae"
-                          ];
+                          type = types.enum [ "none" "wpa2-sha1" "wpa2-sha256" "wpa3-sae-transition" "wpa3-sae" ];
                           description = ''
                             Selects the authentication mode for this AP.
 

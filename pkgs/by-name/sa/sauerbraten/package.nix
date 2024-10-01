@@ -22,7 +22,10 @@ stdenv.mkDerivation rec {
 
   src = fetchzip {
     url = "mirror://sourceforge/sauerbraten/sauerbraten_${
-      builtins.replaceStrings [ "-" ] [ "_" ] version
+      builtins.replaceStrings
+        [ "-" ]
+        [ "_" ]
+        version
     }_linux.tar.bz2";
     hash = "sha256-os3SmonqHRw1+5dIRVt7EeXfnSq298GiyKpusS1K3rM=";
   };

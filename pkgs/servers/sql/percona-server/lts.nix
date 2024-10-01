@@ -143,13 +143,7 @@ stdenv.mkDerivation (finalAttrs: {
     ln -s libmysqlclient$so $out/lib/libmysqlclient_r$so
 
     wrapProgram $out/bin/mysqld_safe --prefix PATH : ${
-      lib.makeBinPath [
-        coreutils
-        procps
-        gnugrep
-        gnused
-        hostname
-      ]
+      lib.makeBinPath [ coreutils procps gnugrep gnused hostname ]
     }
     wrapProgram $out/bin/mysql_config --prefix PATH : ${lib.makeBinPath [ coreutils gnused ]}
     wrapProgram $out/bin/ps_mysqld_helper --prefix PATH : ${lib.makeBinPath [ coreutils gnugrep ]}

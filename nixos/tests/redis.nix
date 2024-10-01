@@ -8,7 +8,13 @@
 let
   makeTest = import ./make-test-python.nix;
   mkTestName =
-    pkg: "${pkg.pname}_${builtins.replaceStrings [ "." ] [ "" ] (lib.versions.majorMinor pkg.version)}";
+    pkg:
+    "${pkg.pname}_${
+      builtins.replaceStrings
+        [ "." ]
+        [ "" ]
+        (lib.versions.majorMinor pkg.version)
+    }";
   redisPackages = {
     inherit (pkgs) redis keydb;
   };

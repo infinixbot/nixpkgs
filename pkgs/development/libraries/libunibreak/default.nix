@@ -11,7 +11,11 @@ stdenv.mkDerivation rec {
 
   src =
     let
-      rev_version = lib.replaceStrings [ "." ] [ "_" ] version;
+      rev_version =
+        lib.replaceStrings
+          [ "." ]
+          [ "_" ]
+          version;
     in
     fetchFromGitHub {
       owner = "adah1972";

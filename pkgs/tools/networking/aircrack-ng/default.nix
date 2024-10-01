@@ -81,14 +81,7 @@ stdenv.mkDerivation rec {
   ];
   buildInputs =
     lib.singleton (if useGcrypt then libgcrypt else openssl)
-    ++ lib.optionals stdenv.isLinux [
-      libpcap
-      zlib
-      libnl
-      iw
-      ethtool
-      pciutils
-    ]
+    ++ lib.optionals stdenv.isLinux [ libpcap zlib libnl iw ethtool pciutils ]
     ++ lib.optional (stdenv.isCygwin && stdenv.isClang) libiconv
     ++ lib.optional enableAirolib sqlite
     ++ lib.optional enableRegex pcre2
@@ -125,15 +118,7 @@ stdenv.mkDerivation rec {
     maintainers = with lib.maintainers; [ caralice ];
     platforms =
       with lib.platforms;
-      builtins.concatLists [
-        linux
-        darwin
-        cygwin
-        netbsd
-        openbsd
-        freebsd
-        illumos
-      ];
+      builtins.concatLists [ linux darwin cygwin netbsd openbsd freebsd illumos ];
     changelog = "https://github.com/aircrack-ng/aircrack-ng/blob/${src.rev}/ChangeLog";
   };
 }

@@ -63,14 +63,7 @@ stdenv.mkDerivation rec {
       ncurses
     ]
     ++ (with python3.pkgs; [ pyyaml ])
-    ++ lib.optionals tileMode [
-      libpng
-      SDL2
-      SDL2_image
-      freetype
-      libGLU
-      libGL
-    ]
+    ++ lib.optionals tileMode [ libpng SDL2 SDL2_image freetype libGLU libGL ]
     ++ lib.optional enableSound SDL2_mixer
     ++ (lib.optionals stdenv.isDarwin (
       with darwin.apple_sdk.frameworks;

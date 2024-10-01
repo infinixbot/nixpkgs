@@ -42,7 +42,12 @@ buildPythonPackage rec {
   src = fetchFromGitHub {
     owner = "sqlalchemy";
     repo = "sqlalchemy";
-    rev = "rel_${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "rel_${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     hash = "sha256-CpFvL0W/X7/4N/FpufAdud5o11LHBuox8m+8EailqXg=";
   };
 
@@ -103,7 +108,10 @@ buildPythonPackage rec {
 
   meta = with lib; {
     changelog = "https://github.com/sqlalchemy/sqlalchemy/releases/tag/rel_${
-      builtins.replaceStrings [ "." ] [ "_" ] version
+      builtins.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
     }";
     description = "Database Toolkit for Python";
     homepage = "https://github.com/sqlalchemy/sqlalchemy";

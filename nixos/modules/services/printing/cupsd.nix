@@ -138,13 +138,17 @@ in
 {
 
   imports = [
-    (mkChangedOptionModule [ "services" "printing" "gutenprint" ] [ "services" "printing" "drivers" ] (
-      config:
-      let
-        enabled = getAttrFromPath [ "services" "printing" "gutenprint" ] config;
-      in
-      if enabled then [ pkgs.gutenprint ] else [ ]
-    ))
+    (mkChangedOptionModule
+      [ "services" "printing" "gutenprint" ]
+      [ "services" "printing" "drivers" ]
+      (
+        config:
+        let
+          enabled = getAttrFromPath [ "services" "printing" "gutenprint" ] config;
+        in
+        if enabled then [ pkgs.gutenprint ] else [ ]
+      )
+    )
     (mkRemovedOptionModule [ "services" "printing" "cupsFilesConf" ] "")
     (mkRemovedOptionModule [ "services" "printing" "cupsdConf" ] "")
   ];
@@ -388,7 +392,11 @@ in
           "/run/cups/cups.sock"
         ]
         ++ map (
-          x: replaceStrings [ "localhost" ] [ "127.0.0.1" ] (removePrefix "*:" x)
+          x:
+          replaceStrings
+            [ "localhost" ]
+            [ "127.0.0.1" ]
+            (removePrefix "*:" x)
         ) cfg.listenAddresses;
     };
 

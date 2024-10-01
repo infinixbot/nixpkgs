@@ -31,84 +31,52 @@ in
 
 {
   imports = [
-    (mkRenamedOptionModule [ "services" "gitea" "cookieSecure" ] [
-      "services"
-      "gitea"
-      "settings"
-      "session"
-      "COOKIE_SECURE"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "disableRegistration" ] [
-      "services"
-      "gitea"
-      "settings"
-      "service"
-      "DISABLE_REGISTRATION"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "domain" ] [
-      "services"
-      "gitea"
-      "settings"
-      "server"
-      "DOMAIN"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "httpAddress" ] [
-      "services"
-      "gitea"
-      "settings"
-      "server"
-      "HTTP_ADDR"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "httpPort" ] [
-      "services"
-      "gitea"
-      "settings"
-      "server"
-      "HTTP_PORT"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "log" "level" ] [
-      "services"
-      "gitea"
-      "settings"
-      "log"
-      "LEVEL"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "log" "rootPath" ] [
-      "services"
-      "gitea"
-      "settings"
-      "log"
-      "ROOT_PATH"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "rootUrl" ] [
-      "services"
-      "gitea"
-      "settings"
-      "server"
-      "ROOT_URL"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "ssh" "clonePort" ] [
-      "services"
-      "gitea"
-      "settings"
-      "server"
-      "SSH_PORT"
-    ])
-    (mkRenamedOptionModule [ "services" "gitea" "staticRootPath" ] [
-      "services"
-      "gitea"
-      "settings"
-      "server"
-      "STATIC_ROOT_PATH"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "gitea" "cookieSecure" ]
+      [ "services" "gitea" "settings" "session" "COOKIE_SECURE" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "disableRegistration" ]
+      [ "services" "gitea" "settings" "service" "DISABLE_REGISTRATION" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "domain" ]
+      [ "services" "gitea" "settings" "server" "DOMAIN" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "httpAddress" ]
+      [ "services" "gitea" "settings" "server" "HTTP_ADDR" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "httpPort" ]
+      [ "services" "gitea" "settings" "server" "HTTP_PORT" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "log" "level" ]
+      [ "services" "gitea" "settings" "log" "LEVEL" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "log" "rootPath" ]
+      [ "services" "gitea" "settings" "log" "ROOT_PATH" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "rootUrl" ]
+      [ "services" "gitea" "settings" "server" "ROOT_URL" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "ssh" "clonePort" ]
+      [ "services" "gitea" "settings" "server" "SSH_PORT" ]
+    )
+    (mkRenamedOptionModule
+      [ "services" "gitea" "staticRootPath" ]
+      [ "services" "gitea" "settings" "server" "STATIC_ROOT_PATH" ]
+    )
 
-    (mkChangedOptionModule [ "services" "gitea" "enableUnixSocket" ] [
-      "services"
-      "gitea"
-      "settings"
-      "server"
-      "PROTOCOL"
-    ] (config: if config.services.gitea.enableUnixSocket then "http+unix" else "http"))
+    (mkChangedOptionModule
+      [ "services" "gitea" "enableUnixSocket" ]
+      [ "services" "gitea" "settings" "server" "PROTOCOL" ]
+      (config: if config.services.gitea.enableUnixSocket then "http+unix" else "http")
+    )
 
     (mkRemovedOptionModule [ "services" "gitea" "ssh" "enable" ]
       "services.gitea.ssh.enable has been migrated into freeform setting services.gitea.settings.server.DISABLE_SSH. Keep in mind that the setting is inverted"
@@ -380,27 +348,14 @@ in
               };
               LEVEL = mkOption {
                 default = "Info";
-                type = types.enum [
-                  "Trace"
-                  "Debug"
-                  "Info"
-                  "Warn"
-                  "Error"
-                  "Critical"
-                ];
+                type = types.enum [ "Trace" "Debug" "Info" "Warn" "Error" "Critical" ];
                 description = "General log level.";
               };
             };
 
             server = {
               PROTOCOL = mkOption {
-                type = types.enum [
-                  "http"
-                  "https"
-                  "fcgi"
-                  "http+unix"
-                  "fcgi+unix"
-                ];
+                type = types.enum [ "http" "https" "fcgi" "http+unix" "fcgi+unix" ];
                 default = "http";
                 description = ''Listen protocol. `+unix` means "over unix", not "in addition to."'';
               };

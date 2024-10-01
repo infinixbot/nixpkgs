@@ -16,7 +16,11 @@ assert sensord -> rrdtool != null;
 stdenv.mkDerivation rec {
   pname = "lm-sensors";
   version = "3.6.0";
-  dashedVersion = lib.replaceStrings [ "." ] [ "-" ] version;
+  dashedVersion =
+    lib.replaceStrings
+      [ "." ]
+      [ "-" ]
+      version;
 
   src = fetchFromGitHub {
     owner = "lm-sensors";

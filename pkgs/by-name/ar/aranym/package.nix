@@ -15,7 +15,12 @@ stdenv.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "aranym";
     repo = "aranym";
-    rev = "ARANYM_${lib.replaceStrings [ "." ] [ "_" ] finalAttrs.version}";
+    rev = "ARANYM_${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        finalAttrs.version
+    }";
     hash = "sha256-dtcLIA1oC6sPOeGTRmXhMEbuLan9/JWTbQvO5lp3gKo=";
   };
 

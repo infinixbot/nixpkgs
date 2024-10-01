@@ -5,11 +5,10 @@
   };
 
   imports = [
-    (lib.mkRenamedOptionModule [ "security" "virtualization" "flushL1DataCache" ] [
-      "security"
-      "virtualisation"
-      "flushL1DataCache"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "security" "virtualization" "flushL1DataCache" ]
+      [ "security" "virtualisation" "flushL1DataCache" ]
+    )
   ];
 
   options = {

@@ -29,13 +29,7 @@ in
       };
 
       logLevel = lib.mkOption {
-        type = lib.types.enum [
-          "error"
-          "warn"
-          "info"
-          "debug"
-          "trace"
-        ];
+        type = lib.types.enum [ "error" "warn" "info" "debug" "trace" ];
         default = "error";
         description = "Log level";
       };

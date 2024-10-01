@@ -43,17 +43,7 @@ in
             };
 
             protocol = mkOption {
-              type = types.enum [
-                "both"
-                "both4"
-                "both6"
-                "udp"
-                "udp4"
-                "udp6"
-                "tcp"
-                "tcp4"
-                "tcp6"
-              ];
+              type = types.enum [ "both" "both4" "both6" "udp" "udp4" "udp6" "tcp" "tcp4" "tcp6" ];
               description = "Protocols to serve DNS responses on.";
               default = "both";
             };

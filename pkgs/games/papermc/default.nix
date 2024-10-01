@@ -4,7 +4,10 @@ in
 { callPackage, lib, ... }:
 let
   latestVersion = lib.last (builtins.sort lib.versionOlder (builtins.attrNames versions));
-  escapeVersion = builtins.replaceStrings [ "." ] [ "_" ];
+  escapeVersion =
+    builtins.replaceStrings
+      [ "." ]
+      [ "_" ];
   packages = lib.mapAttrs' (version: value: {
     name = "papermc-${escapeVersion version}";
     value = callPackage ./derivation.nix { inherit (value) version hash; };

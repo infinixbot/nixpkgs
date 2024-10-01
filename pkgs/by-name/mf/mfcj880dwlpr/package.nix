@@ -100,15 +100,7 @@ stdenv.mkDerivation rec {
     wrapProgram $out/opt/brother/Printers/mfcj880dw/lpd/psconvertij2 \
       --prefix PATH ":" ${lib.makeBinPath [ coreutils gnused gawk ]}
     wrapProgram $out/opt/brother/Printers/mfcj880dw/lpd/filtermfcj880dw \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          coreutils
-          gnused
-          file
-          ghostscript
-          a2ps
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ coreutils gnused file ghostscript a2ps ]}
   '';
 
   meta = with lib; {

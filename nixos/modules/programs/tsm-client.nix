@@ -158,12 +158,30 @@ let
           (mkRemovedOptionModule [ "text" ]
             "Please just add options directly to the server attribute set, cf. the description of `programs.tsmClient.servers`."
           )
-          (mkRenamedOptionModule [ "name" ] [ "servername" ])
-          (mkRenamedOptionModule [ "server" ] [ "tcpserveraddress" ])
-          (mkRenamedOptionModule [ "port" ] [ "tcpport" ])
-          (mkRenamedOptionModule [ "node" ] [ "nodename" ])
-          (mkRenamedOptionModule [ "passwdDir" ] [ "passworddir" ])
-          (mkRenamedOptionModule [ "includeExclude" ] [ "inclexcl" ])
+          (mkRenamedOptionModule
+            [ "name" ]
+            [ "servername" ]
+          )
+          (mkRenamedOptionModule
+            [ "server" ]
+            [ "tcpserveraddress" ]
+          )
+          (mkRenamedOptionModule
+            [ "port" ]
+            [ "tcpport" ]
+          )
+          (mkRenamedOptionModule
+            [ "node" ]
+            [ "nodename" ]
+          )
+          (mkRenamedOptionModule
+            [ "passwdDir" ]
+            [ "passworddir" ]
+          )
+          (mkRenamedOptionModule
+            [ "includeExclude" ]
+            [ "inclexcl" ]
+          )
         ];
     };
 

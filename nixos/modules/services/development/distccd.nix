@@ -38,16 +38,7 @@ in
       };
 
       logLevel = lib.mkOption {
-        type = lib.types.nullOr (
-          lib.types.enum [
-            "critical"
-            "error"
-            "warning"
-            "notice"
-            "info"
-            "debug"
-          ]
-        );
+        type = lib.types.nullOr (lib.types.enum [ "critical" "error" "warning" "notice" "info" "debug" ]);
         default = "warning";
         description = ''
           Set the minimum severity of error that will be included in the log

@@ -267,7 +267,11 @@ in
                          prefix="${virtualHost.name}_access_log." pattern="combined" resolveHosts="false"/>
                 '');
               hostElementsString = lib.concatMapStringsSep "\n" hostElementForVirtualHost cfg.virtualHosts;
-              hostElementsSedString = lib.replaceStrings [ "\n" ] [ "\\\n" ] hostElementsString;
+              hostElementsSedString =
+                lib.replaceStrings
+                  [ "\n" ]
+                  [ "\\\n" ]
+                  hostElementsString;
             in
             ''
               # Create a modified server.xml which listens on the given port,

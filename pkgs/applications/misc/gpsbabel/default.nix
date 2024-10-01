@@ -32,7 +32,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "gpsbabel";
     repo = "gpsbabel";
-    rev = "gpsbabel_${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "gpsbabel_${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     sha256 = "sha256-0w8LsO+HwqZF8SQmwd8bCKma9PCM0hAzXhzWR4DgAHs=";
   };
 
@@ -61,15 +66,7 @@ stdenv.mkDerivation rec {
       qmake
     ]
     ++ lib.optionals withGUI [ qttools wrapQtAppsHook ]
-    ++ lib.optionals withDoc [
-      docbook_xml_dtd_45
-      docbook_xsl
-      expat
-      fop
-      libxml2
-      libxslt
-      perl
-    ];
+    ++ lib.optionals withDoc [ docbook_xml_dtd_45 docbook_xsl expat fop libxml2 libxslt perl ];
 
   buildInputs = [
     libusb1

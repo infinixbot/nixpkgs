@@ -8,7 +8,10 @@ with lib;
 let
   cfg = config.services.anki-sync-server;
   name = "anki-sync-server";
-  specEscape = replaceStrings [ "%" ] [ "%%" ];
+  specEscape =
+    replaceStrings
+      [ "%" ]
+      [ "%%" ];
   usersWithIndexes = lists.imap1 (i: user: {
     i = i;
     user = user;

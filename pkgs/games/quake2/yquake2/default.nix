@@ -39,7 +39,12 @@ let
     src = fetchFromGitHub {
       owner = "yquake2";
       repo = "yquake2";
-      rev = "QUAKE2_${builtins.replaceStrings [ "." ] [ "_" ] version}";
+      rev = "QUAKE2_${
+        builtins.replaceStrings
+          [ "." ]
+          [ "_" ]
+          version
+      }";
       sha256 = "sha256-licz659DFS56/5P/hmPSE0YuVPTp1r4yrzS7FIg4Okc=";
     };
 

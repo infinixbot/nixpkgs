@@ -36,13 +36,7 @@ in
         '';
       };
       verbose = lib.mkOption {
-        type = lib.types.enum [
-          "CRITICAL"
-          "ERROR"
-          "WARNING"
-          "INFO"
-          "DEBUG"
-        ];
+        type = lib.types.enum [ "CRITICAL" "ERROR" "WARNING" "INFO" "DEBUG" ];
         default = "WARNING";
         description = "Verbosity level.";
       };

@@ -243,17 +243,7 @@ let
           description = "Whether to automatically create or create and subscribe to the mailbox or not.";
         };
         specialUse = mkOption {
-          type = types.nullOr (
-            types.enum [
-              "All"
-              "Archive"
-              "Drafts"
-              "Flagged"
-              "Junk"
-              "Sent"
-              "Trash"
-            ]
-          );
+          type = types.nullOr (types.enum [ "All" "Archive" "Drafts" "Flagged" "Junk" "Sent" "Trash" ]);
           default = null;
           example = "Junk";
           description = "Null if no special use flag is set. Other than that every use flag mentioned in the RFC is valid.";
@@ -273,12 +263,10 @@ in
 {
   imports = [
     (mkRemovedOptionModule [ "services" "dovecot2" "package" ] "")
-    (mkRenamedOptionModule [ "services" "dovecot2" "sieveScripts" ] [
-      "services"
-      "dovecot2"
-      "sieve"
-      "scripts"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "dovecot2" "sieveScripts" ]
+      [ "services" "dovecot2" "sieve" "scripts" ]
+    )
   ];
 
   options.services.dovecot2 = {

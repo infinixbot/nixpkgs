@@ -12,7 +12,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "eulerto";
     repo = "wal2json";
-    rev = "wal2json_${builtins.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "wal2json_${
+      builtins.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     sha256 = "sha256-Gpc9uDKrs/dmVSFgdgHM453+TaEnhRh9t0gDbSn8FUI=";
   };
 

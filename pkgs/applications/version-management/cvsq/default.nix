@@ -38,54 +38,19 @@ stdenv.mkDerivation rec {
     substituteInPlace $out/bin/cvsq --replace "/bin/sh" "${stdenv.shell}"
     substituteInPlace $out/bin/lcvs --replace "/bin/sh" "${stdenv.shell}"
     wrapProgram $out/bin/cvsq --prefix PATH : ${
-      lib.makeBinPath [
-        cvs
-        nettools
-        findutils
-        rsync
-        coreutils
-        diffutils
-      ]
+      lib.makeBinPath [ cvs nettools findutils rsync coreutils diffutils ]
     }
     wrapProgram $out/bin/cvsq-branch --prefix PATH : ${
-      lib.makeBinPath [
-        cvs
-        nettools
-        findutils
-        rsync
-        coreutils
-        diffutils
-      ]
+      lib.makeBinPath [ cvs nettools findutils rsync coreutils diffutils ]
     }
     wrapProgram $out/bin/cvsq-merge --prefix PATH : ${
-      lib.makeBinPath [
-        cvs
-        nettools
-        findutils
-        rsync
-        coreutils
-        diffutils
-      ]
+      lib.makeBinPath [ cvs nettools findutils rsync coreutils diffutils ]
     }
     wrapProgram $out/bin/cvsq-switch --prefix PATH : ${
-      lib.makeBinPath [
-        cvs
-        nettools
-        findutils
-        rsync
-        coreutils
-        diffutils
-      ]
+      lib.makeBinPath [ cvs nettools findutils rsync coreutils diffutils ]
     }
     wrapProgram $out/bin/lcvs --prefix PATH : ${
-      lib.makeBinPath [
-        cvs
-        nettools
-        findutils
-        rsync
-        coreutils
-        diffutils
-      ]
+      lib.makeBinPath [ cvs nettools findutils rsync coreutils diffutils ]
     }
   '';
 

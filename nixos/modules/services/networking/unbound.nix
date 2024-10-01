@@ -350,21 +350,13 @@ in
   };
 
   imports = [
-    (mkRenamedOptionModule [ "services" "unbound" "interfaces" ] [
-      "services"
-      "unbound"
-      "settings"
-      "server"
-      "interface"
-    ])
-    (mkChangedOptionModule [ "services" "unbound" "allowedAccess" ]
-      [
-        "services"
-        "unbound"
-        "settings"
-        "server"
-        "access-control"
-      ]
+    (mkRenamedOptionModule
+      [ "services" "unbound" "interfaces" ]
+      [ "services" "unbound" "settings" "server" "interface" ]
+    )
+    (mkChangedOptionModule
+      [ "services" "unbound" "allowedAccess" ]
+      [ "services" "unbound" "settings" "server" "access-control" ]
       (
         config:
         map (value: "${value} allow") (getAttrFromPath [ "services" "unbound" "allowedAccess" ] config)

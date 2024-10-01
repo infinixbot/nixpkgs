@@ -20,7 +20,11 @@ stdenv.mkDerivation rec {
 
   src = fetchFromGitHub {
     inherit owner repo;
-    rev = builtins.replaceStrings [ "-" ] [ "." ] version;
+    rev =
+      builtins.replaceStrings
+        [ "-" ]
+        [ "." ]
+        version;
     sha256 = "3B2nNFYkwYHCX6pQz/hMO/rnVqlCiw1BSNmGmJ6KCqE=";
   };
 

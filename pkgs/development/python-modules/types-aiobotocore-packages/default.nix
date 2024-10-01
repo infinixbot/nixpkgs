@@ -12,7 +12,12 @@
 }:
 
 let
-  toUnderscore = str: builtins.replaceStrings [ "-" ] [ "_" ] str;
+  toUnderscore =
+    str:
+    builtins.replaceStrings
+      [ "-" ]
+      [ "_" ]
+      str;
   buildTypesAiobotocorePackage =
     serviceName: version: hash:
     buildPythonPackage rec {

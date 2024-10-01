@@ -81,14 +81,7 @@ stdenv.mkDerivation rec {
       perl
       bash
     ]
-    ++ lib.optionals enableGhostscript [
-      ghostscript
-      gawk
-      libX11
-      libXaw
-      libXt
-      libXmu
-    ]
+    ++ lib.optionals enableGhostscript [ ghostscript gawk libX11 libXaw libXt libXmu ]
     ++ lib.optionals enableHtml [ psutils netpbm ]
     ++ lib.optionals enableIconv [ iconv ]
     ++ lib.optionals enableLibuchardet [ libuchardet ];

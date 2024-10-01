@@ -163,15 +163,7 @@ rustPlatform.buildRustPackage {
     patchelf --set-rpath ${lib.makeLibraryPath [ openssl ]} $out/bin/windmill
 
     wrapProgram "$out/bin/windmill" \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          go
-          pythonEnv
-          deno
-          nsjail
-          bash
-        ]
-      } \
+      --prefix PATH : ${lib.makeBinPath [ go pythonEnv deno nsjail bash ]} \
       --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [ stdenv.cc.cc.lib ]} \
       --set PYTHON_PATH "${pythonEnv}/bin/python3" \
       --set GO_PATH "${go}/bin/go" \

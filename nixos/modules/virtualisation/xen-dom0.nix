@@ -20,11 +20,10 @@ in
       "xen"
       "qemu"
     ] "You don't need this option anymore, it will work without it.")
-    (mkRenamedOptionModule [ "virtualisation" "xen" "qemu-package" ] [
-      "virtualisation"
-      "xen"
-      "package-qemu"
-    ])
+    (mkRenamedOptionModule
+      [ "virtualisation" "xen" "qemu-package" ]
+      [ "virtualisation" "xen" "package-qemu" ]
+    )
   ];
 
   ###### interface

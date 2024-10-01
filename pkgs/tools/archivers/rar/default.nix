@@ -8,7 +8,11 @@
 
 let
   version = "7.01";
-  downloadVersion = lib.replaceStrings [ "." ] [ "" ] version;
+  downloadVersion =
+    lib.replaceStrings
+      [ "." ]
+      [ "" ]
+      version;
   # Use `./update.sh` to generate the entries below
   srcs = {
     i686-linux = {

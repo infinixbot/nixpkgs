@@ -48,7 +48,11 @@ buildPythonPackage rec {
 
   src =
     let
-      versionTag = lib.replaceStrings [ "." ] [ "_" ] version;
+      versionTag =
+        lib.replaceStrings
+          [ "." ]
+          [ "_" ]
+          version;
     in
     fetchFromGitHub {
       owner = pname;

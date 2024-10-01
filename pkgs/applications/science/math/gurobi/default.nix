@@ -15,7 +15,12 @@ stdenv.mkDerivation rec {
     hash = "sha256-gqLIZxwjS7qp3GTaIrGVGr9BxiBH/fdwBOZfJKkd/RM=";
   };
 
-  sourceRoot = "gurobi${builtins.replaceStrings [ "." ] [ "" ] version}/linux64";
+  sourceRoot = "gurobi${
+    builtins.replaceStrings
+      [ "." ]
+      [ "" ]
+      version
+  }/linux64";
 
   nativeBuildInputs = [ autoPatchelfHook ];
   buildInputs = [ (python3.withPackages (ps: [ ps.gurobipy ])) ];
@@ -47,7 +52,11 @@ stdenv.mkDerivation rec {
     ln -s $out/lib/gurobi-javadoc.jar $out/share/java/
   '';
 
-  passthru.libSuffix = lib.replaceStrings [ "." ] [ "" ] (lib.versions.majorMinor version);
+  passthru.libSuffix =
+    lib.replaceStrings
+      [ "." ]
+      [ "" ]
+      (lib.versions.majorMinor version);
 
   meta = with lib; {
     description = "Optimization solver for mathematical programming";

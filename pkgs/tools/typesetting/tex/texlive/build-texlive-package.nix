@@ -193,7 +193,11 @@ let
           # shebang interpreters
           buildInputs =
             let
-              outName = builtins.replaceStrings [ "-" ] [ "_" ] pname;
+              outName =
+                builtins.replaceStrings
+                  [ "-" ]
+                  [ "_" ]
+                  pname;
             in
             [
               texliveBinaries.core.${outName} or null

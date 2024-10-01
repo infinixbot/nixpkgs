@@ -116,15 +116,7 @@ python3.pkgs.buildPythonApplication rec {
 
     gappsWrapperArgs+=(--set PYTHONPATH "$PYTHONPATH")
     # these are called from virt-install in initrdinject.py
-    gappsWrapperArgs+=(--prefix PATH : "${
-      lib.makeBinPath [
-        cpio
-        e2fsprogs
-        file
-        findutils
-        gzip
-      ]
-    }")
+    gappsWrapperArgs+=(--prefix PATH : "${lib.makeBinPath [ cpio e2fsprogs file findutils gzip ]}")
 
     makeWrapperArgs+=("''${gappsWrapperArgs[@]}")
 

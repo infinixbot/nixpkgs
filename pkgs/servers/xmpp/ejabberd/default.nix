@@ -39,15 +39,7 @@
 }:
 
 let
-  ctlpath = lib.makeBinPath [
-    bash
-    gnused
-    gnugrep
-    gawk
-    coreutils
-    util-linux
-    procps
-  ];
+  ctlpath = lib.makeBinPath [ bash gnused gnugrep gawk coreutils util-linux procps ];
 in
 stdenv.mkDerivation rec {
   pname = "ejabberd";

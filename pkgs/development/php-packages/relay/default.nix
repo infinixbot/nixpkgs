@@ -158,14 +158,20 @@ stdenv.mkDerivation (finalAttrs: {
             (
               lib.mapAttrsRecursive (
                 path: _value:
-                lib.nameValuePair (builtins.replaceStrings [ "." ] [ "_" ] (lib.concatStringsSep "_" path)) (
-                  finalAttrs.finalPackage.overrideAttrs (attrs: {
-                    src = makeSource {
-                      system = builtins.head path;
-                      phpMajor = builtins.head (builtins.tail (builtins.tail path));
-                    };
-                  })
-                )
+                lib.nameValuePair
+                  (builtins.replaceStrings
+                    [ "." ]
+                    [ "_" ]
+                    (lib.concatStringsSep "_" path)
+                  )
+                  (
+                    finalAttrs.finalPackage.overrideAttrs (attrs: {
+                      src = makeSource {
+                        system = builtins.head path;
+                        phpMajor = builtins.head (builtins.tail (builtins.tail path));
+                      };
+                    })
+                  )
               ) (lib.filterAttrsRecursive (name: _value: name != "platform") hashes)
             )
         );

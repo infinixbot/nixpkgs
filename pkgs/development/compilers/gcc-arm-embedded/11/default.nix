@@ -46,13 +46,7 @@ stdenv.mkDerivation rec {
       patchelf "$f" > /dev/null 2>&1 || continue
       patchelf --set-interpreter $(cat ${stdenv.cc}/nix-support/dynamic-linker) "$f" || true
       patchelf --set-rpath ${
-        lib.makeLibraryPath [
-          "$out"
-          stdenv.cc.cc
-          ncurses5
-          python39
-          libxcrypt-legacy
-        ]
+        lib.makeLibraryPath [ "$out" stdenv.cc.cc ncurses5 python39 libxcrypt-legacy ]
       } "$f" || true
     done
   '';

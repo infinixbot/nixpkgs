@@ -142,13 +142,7 @@ in
     };
 
     dnssecValidation = mkOption {
-      type = types.enum [
-        "off"
-        "process-no-validate"
-        "process"
-        "log-fail"
-        "validate"
-      ];
+      type = types.enum [ "off" "process-no-validate" "process" "log-fail" "validate" ];
       default = "validate";
       description = ''
         Controls the level of DNSSEC processing done by the PowerDNS Recursor.

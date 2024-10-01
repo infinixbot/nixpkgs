@@ -15,7 +15,10 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "http://files.basex.org/releases/${version}/BaseX${
-      builtins.replaceStrings [ "." ] [ "" ] version
+      builtins.replaceStrings
+        [ "." ]
+        [ "" ]
+        version
     }.zip";
     hash = "sha256-Wl6kM3xiWYiQpQZ8/qyotfrs/SvjvnQ0AHOeRms/Io0=";
   };

@@ -26,13 +26,7 @@ in
     };
 
     logLevel = lib.mkOption {
-      type = lib.types.enum [
-        "critical"
-        "error"
-        "warning"
-        "info"
-        "debug"
-      ];
+      type = lib.types.enum [ "critical" "error" "warning" "info" "debug" ];
       default = "info";
       description = "Verbosity of logs from the matter-server";
     };

@@ -39,7 +39,11 @@ let
   suffix1 = "m17n";
   suffix2 = "03";
 
-  versionNoDots = builtins.replaceStrings [ "." ] [ "" ] version;
+  versionNoDots =
+    builtins.replaceStrings
+      [ "." ]
+      [ "" ]
+      version;
   src_canon = fetchurl {
     url = "http://gdlp01.c-wss.com/gds/${dl}/linux-UFRII-drv-v${versionNoDots}-${suffix1}-${suffix2}.tar.gz";
     hash = "sha256-HvuRQYqkHRCwfajSJPridDcADq7VkYwBEo4qr9W5mqA=";

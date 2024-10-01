@@ -103,7 +103,10 @@ buildPythonPackage rec {
     description = "Python module and CLI utility for parsing DMARC reports";
     homepage = "https://domainaware.github.io/parsedmarc/";
     changelog = "https://github.com/domainaware/parsedmarc/blob/master/CHANGELOG.md#${
-      lib.replaceStrings [ "." ] [ "" ] version
+      lib.replaceStrings
+        [ "." ]
+        [ "" ]
+        version
     }";
     license = licenses.asl20;
     maintainers = with maintainers; [ talyz ];

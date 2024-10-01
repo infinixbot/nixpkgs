@@ -85,14 +85,7 @@ in
 
           logLevel = mkOption {
             default = "info";
-            type = types.enum [
-              "error"
-              "warn"
-              "info"
-              "verbose"
-              "debug"
-              "silly"
-            ];
+            type = types.enum [ "error" "warn" "info" "verbose" "debug" "silly" ];
             description = ''
               Define how much detail is supposed to be logged at runtime.
             '';

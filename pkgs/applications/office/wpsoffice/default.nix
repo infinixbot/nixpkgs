@@ -35,7 +35,11 @@ let
       "sha256-vpXK8YyjqhFdmtajO6ZotYACpe5thMct9hwUT3advUM="
     else
       "sha256-o8njvwE/UsQpPuLyChxGAZ4euvwfuaHxs5pfUvcM7kI=";
-  uri = builtins.replaceStrings [ "https://wps-linux-personal.wpscdn.cn" ] [ "" ] url;
+  uri =
+    builtins.replaceStrings
+      [ "https://wps-linux-personal.wpscdn.cn" ]
+      [ "" ]
+      url;
   securityKey = "7f8faaaa468174dc1c9cd62e5f218a5b";
 in
 stdenv.mkDerivation rec {

@@ -14,7 +14,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "cjlin1";
     repo = "liblinear";
-    rev = "v${builtins.replaceStrings [ "." ] [ "" ] version}";
+    rev = "v${
+      builtins.replaceStrings
+        [ "." ]
+        [ "" ]
+        version
+    }";
     sha256 = "sha256-so7uCc/52NdN0V2Ska8EUdw/wSegaudX5AF+c0xe5jk=";
   };
 

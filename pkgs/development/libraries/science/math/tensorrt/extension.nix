@@ -13,7 +13,12 @@ let
 
   buildTensorRTPackage = args: callPackage ./generic.nix { } args;
 
-  toUnderscore = str: lib.replaceStrings [ "." ] [ "_" ] str;
+  toUnderscore =
+    str:
+    lib.replaceStrings
+      [ "." ]
+      [ "_" ]
+      str;
 
   majorMinorPatch = str: lib.concatStringsSep "." (lib.take 3 (lib.splitVersion str));
 

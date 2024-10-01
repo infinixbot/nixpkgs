@@ -26,12 +26,10 @@ in
       "vmagent"
       "group"
     ] "group has been deprecated in favor of systemd DynamicUser")
-    (lib.mkRenamedOptionModule [ "services" "vmagent" "remoteWriteUrl" ] [
-      "services"
-      "vmagent"
-      "remoteWrite"
-      "url"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "vmagent" "remoteWriteUrl" ]
+      [ "services" "vmagent" "remoteWrite" "url" ]
+    )
   ];
 
   options.services.vmagent = {

@@ -72,13 +72,7 @@ rustPlatform.buildRustPackage rec {
 
   postInstall = ''
     wrapProgram "$out/bin/${meta.mainProgram}" --prefix PATH : ${
-      lib.makeBinPath [
-        util-linux
-        skopeo
-        gnutar
-        ostree
-        ima-evm-utils
-      ]
+      lib.makeBinPath [ util-linux skopeo gnutar ostree ima-evm-utils ]
     }
   '';
 

@@ -1747,16 +1747,7 @@ self: super:
 
         postInstall = ''
           wrapProgram $out/bin/sniprun \
-            --prefix PATH ${
-              lib.makeBinPath [
-                bashInteractive
-                coreutils
-                curl
-                gnugrep
-                gnused
-                procps
-              ]
-            }
+            --prefix PATH ${lib.makeBinPath [ bashInteractive coreutils curl gnugrep gnused procps ]}
         '';
 
         doCheck = false;

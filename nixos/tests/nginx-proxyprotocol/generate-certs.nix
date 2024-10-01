@@ -8,7 +8,11 @@
 let
   conf = import ./snakeoil-certs.nix;
   domain = conf.domain;
-  domainSanitized = pkgs.lib.replaceStrings [ "*" ] [ "_" ] domain;
+  domainSanitized =
+    pkgs.lib.replaceStrings
+      [ "*" ]
+      [ "_" ]
+      domain;
 in
 runCommandCC "generate-tests-certs"
   {

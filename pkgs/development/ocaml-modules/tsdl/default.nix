@@ -47,19 +47,11 @@ else
       topkg
     ];
     buildInputs = [ topkg ];
-    propagatedBuildInputs =
-      [
-        SDL2
-        ctypes
-        ctypes-foreign
-      ]
-      ++ lib.optionals stdenv.isDarwin [
-        AudioToolbox
-        Cocoa
-        CoreAudio
-        CoreVideo
-        ForceFeedback
-      ];
+    propagatedBuildInputs = [
+      SDL2
+      ctypes
+      ctypes-foreign
+    ] ++ lib.optionals stdenv.isDarwin [ AudioToolbox Cocoa CoreAudio CoreVideo ForceFeedback ];
 
     preConfigure = ''
       # The following is done to avoid an additional dependency (ncurses)

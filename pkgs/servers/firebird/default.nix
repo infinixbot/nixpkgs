@@ -61,7 +61,12 @@ rec {
       src = fetchFromGitHub {
         owner = "FirebirdSQL";
         repo = "firebird";
-        rev = "R${builtins.replaceStrings [ "." ] [ "_" ] version}";
+        rev = "R${
+          builtins.replaceStrings
+            [ "." ]
+            [ "_" ]
+            version
+        }";
         sha256 = "sha256-YyvlMeBux80OpVhsCv+6IVxKXFRsgdr+1siupMR13JM=";
       };
 

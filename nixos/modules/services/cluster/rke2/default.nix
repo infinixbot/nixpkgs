@@ -130,13 +130,7 @@ in
     };
 
     cni = lib.mkOption {
-      type = lib.types.enum [
-        "none"
-        "canal"
-        "cilium"
-        "calico"
-        "flannel"
-      ];
+      type = lib.types.enum [ "none" "canal" "cilium" "calico" "flannel" ];
       description = ''
         CNI Plugins to deploy, one of `none`, `calico`, `canal`, `cilium` or `flannel`.
 

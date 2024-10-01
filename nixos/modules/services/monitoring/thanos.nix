@@ -161,19 +161,9 @@ let
 
     log = {
 
-      log.level =
-        mkParamDef
-          (types.enum [
-            "debug"
-            "info"
-            "warn"
-            "error"
-            "fatal"
-          ])
-          "info"
-          ''
-            Log filtering level.
-          '';
+      log.level = mkParamDef (types.enum [ "debug" "info" "warn" "error" "fatal" ]) "info" ''
+        Log filtering level.
+      '';
 
       log.format = mkParam types.str ''
         Log format to use.

@@ -462,7 +462,10 @@ in
       "httpd"
       "stateDir"
     ] "The httpd module now uses /run/httpd as a runtime directory.")
-    (mkRenamedOptionModule [ "services" "httpd" "multiProcessingModule" ] [ "services" "httpd" "mpm" ])
+    (mkRenamedOptionModule
+      [ "services" "httpd" "multiProcessingModule" ]
+      [ "services" "httpd" "mpm" ]
+    )
 
     # virtualHosts options
     (mkRemovedOptionModule [

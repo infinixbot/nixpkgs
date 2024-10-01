@@ -21,7 +21,11 @@
 }:
 
 let
-  underscoreVersion = lib.replaceStrings [ "." ] [ "_" ] version;
+  underscoreVersion =
+    lib.replaceStrings
+      [ "." ]
+      [ "_" ]
+      version;
 in
 stdenv.mkDerivation rec {
   pname = "nss";
@@ -30,7 +34,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "nss-dev";
     repo = "nss";
-    rev = "NSS_${lib.replaceStrings [ "." ] [ "_" ] version}_RTM";
+    rev = "NSS_${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }_RTM";
     inherit hash;
   };
 

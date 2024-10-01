@@ -16,7 +16,12 @@ buildDunePackage rec {
   src = fetchFromGitHub {
     owner = "xavierleroy";
     repo = "cryptokit";
-    rev = "release${lib.replaceStrings [ "." ] [ "" ] version}";
+    rev = "release${
+      lib.replaceStrings
+        [ "." ]
+        [ "" ]
+        version
+    }";
     hash = "sha256-VFY10jGctQfIUVv7dK06KP8zLZHLXTxvLyTCObS+W+E=";
   };
 

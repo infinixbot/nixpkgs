@@ -28,20 +28,8 @@ in
 
   imports = [
     (mkRenamedOptionModule
-      [
-        "services"
-        "xserver"
-        "desktopManager"
-        "e19"
-        "enable"
-      ]
-      [
-        "services"
-        "xserver"
-        "desktopManager"
-        "enlightenment"
-        "enable"
-      ]
+      [ "services" "xserver" "desktopManager" "e19" "enable" ]
+      [ "services" "xserver" "desktopManager" "enlightenment" "enable" ]
     )
   ];
 

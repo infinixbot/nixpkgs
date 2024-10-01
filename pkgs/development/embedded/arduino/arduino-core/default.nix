@@ -182,14 +182,7 @@ stdenv.mkDerivation rec {
   javaPath = lib.makeBinPath [ jdk ];
 
   # Everything else will be patched into rpath
-  rpath = lib.makeLibraryPath [
-    zlib
-    libusb-compat-0_1
-    libusb1
-    readline
-    ncurses5
-    stdenv.cc.cc
-  ];
+  rpath = lib.makeLibraryPath [ zlib libusb-compat-0_1 libusb1 readline ncurses5 stdenv.cc.cc ];
 
   installPhase = ''
     mkdir -p $out/share/arduino

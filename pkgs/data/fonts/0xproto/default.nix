@@ -9,7 +9,11 @@ stdenvNoCC.mkDerivation rec {
 
   src =
     let
-      underscoreVersion = builtins.replaceStrings [ "." ] [ "_" ] version;
+      underscoreVersion =
+        builtins.replaceStrings
+          [ "." ]
+          [ "_" ]
+          version;
     in
     fetchzip {
       url = "https://github.com/0xType/0xProto/releases/download/${version}/0xProto_${underscoreVersion}.zip";

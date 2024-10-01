@@ -99,7 +99,11 @@ in
     + (runCommandOverAyatanaIndicators (
       service:
       let
-        serviceExec = builtins.replaceStrings [ "." ] [ "-" ] service;
+        serviceExec =
+          builtins.replaceStrings
+            [ "." ]
+            [ "-" ]
+            service;
       in
       ''
         machine.wait_until_succeeds("pgrep -u ${user} -f ${serviceExec}")

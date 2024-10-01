@@ -1097,7 +1097,12 @@ rec {
       string = toString arg;
     in
     if match "[[:alnum:],._+:@%/-]+" string == null then
-      "'${replaceStrings [ "'" ] [ "'\\''" ] string}'"
+      "'${
+        replaceStrings
+          [ "'" ]
+          [ "'\\''" ]
+          string
+      }'"
     else
       string;
 
@@ -1358,20 +1363,8 @@ rec {
   */
   escapeXML =
     builtins.replaceStrings
-      [
-        "\""
-        "'"
-        "<"
-        ">"
-        "&"
-      ]
-      [
-        "&quot;"
-        "&apos;"
-        "&lt;"
-        "&gt;"
-        "&amp;"
-      ];
+      [ "\"" "'" "<" ">" "&" ]
+      [ "&quot;" "&apos;" "&lt;" "&gt;" "&amp;" ];
 
   # warning added 12-12-2022
   replaceChars = lib.warn "lib.replaceChars is a deprecated alias of lib.replaceStrings." builtins.replaceStrings;

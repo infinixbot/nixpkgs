@@ -12,14 +12,7 @@
 }:
 
 let
-  rpath = lib.makeLibraryPath [
-    libXmu
-    libXt
-    libX11
-    libXext
-    libXxf86vm
-    libjack2
-  ];
+  rpath = lib.makeLibraryPath [ libXmu libXt libX11 libXext libXxf86vm libjack2 ];
 in
 stdenv.mkDerivation rec {
   pname = "baudline";

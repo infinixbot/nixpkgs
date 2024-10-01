@@ -8,7 +8,12 @@
   typing-extensions,
 }:
 let
-  toUnderscore = str: builtins.replaceStrings [ "-" ] [ "_" ] str;
+  toUnderscore =
+    str:
+    builtins.replaceStrings
+      [ "-" ]
+      [ "_" ]
+      str;
 
   buildMypyBoto3Package =
     serviceName: version: hash:

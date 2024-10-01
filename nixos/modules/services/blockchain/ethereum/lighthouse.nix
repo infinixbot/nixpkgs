@@ -196,13 +196,7 @@ in
       };
 
       network = lib.mkOption {
-        type = lib.types.enum [
-          "mainnet"
-          "gnosis"
-          "chiado"
-          "sepolia"
-          "holesky"
-        ];
+        type = lib.types.enum [ "mainnet" "gnosis" "chiado" "sepolia" "holesky" ];
         default = "mainnet";
         description = ''
           The network to connect to. Mainnet is the default ethereum network.

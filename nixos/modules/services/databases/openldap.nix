@@ -84,7 +84,12 @@ let
       if lib.isAttrs value then
         if lib.hasAttr "path" value then "${attr}:< file://${value.path}" else "${attr}:: ${value.base64}"
       else
-        "${attr}: ${lib.replaceStrings [ "\n" ] [ "\n " ] value}"
+        "${attr}: ${
+          lib.replaceStrings
+            [ "\n" ]
+            [ "\n " ]
+            value
+        }"
     ) listValues;
 
   attrsToLdif =

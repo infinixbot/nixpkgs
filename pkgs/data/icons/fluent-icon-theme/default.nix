@@ -14,17 +14,7 @@ let
   pname = "Fluent-icon-theme";
 in
 lib.checkListOfEnum "${pname}: available color variants"
-  [
-    "standard"
-    "green"
-    "grey"
-    "orange"
-    "pink"
-    "purple"
-    "red"
-    "yellow"
-    "teal"
-  ]
+  [ "standard" "green" "grey" "orange" "pink" "purple" "red" "yellow" "teal" ]
   colorVariants
 
   stdenvNoCC.mkDerivation

@@ -21,14 +21,7 @@ let
     ]
   );
 
-  apps = lib.makeBinPath [
-    openssh
-    python'
-    cron
-    rsync
-    sshfs-fuse
-    encfs
-  ];
+  apps = lib.makeBinPath [ openssh python' cron rsync sshfs-fuse encfs ];
 in
 stdenv.mkDerivation rec {
   pname = "backintime-common";

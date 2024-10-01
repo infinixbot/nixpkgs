@@ -11,7 +11,10 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "vmwareGuest" ] [ "virtualisation" "vmware" "guest" ])
+    (lib.mkRenamedOptionModule
+      [ "services" "vmwareGuest" ]
+      [ "virtualisation" "vmware" "guest" ]
+    )
   ];
 
   options.virtualisation.vmware.guest = {

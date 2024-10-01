@@ -15,12 +15,10 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule [ "services" "kubernetes" "controllerManager" "address" ] [
-      "services"
-      "kubernetes"
-      "controllerManager"
-      "bindAddress"
-    ])
+    (mkRenamedOptionModule
+      [ "services" "kubernetes" "controllerManager" "address" ]
+      [ "services" "kubernetes" "controllerManager" "bindAddress" ]
+    )
     (mkRemovedOptionModule [ "services" "kubernetes" "controllerManager" "insecurePort" ] "")
   ];
 

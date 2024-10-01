@@ -75,7 +75,12 @@ in
   LIB_PATH="${libPath}"
   LIB_NAME="${libName}"
 
-  CRATE_NAME='${lib.replaceStrings [ "-" ] [ "_" ] libName}'
+  CRATE_NAME='${
+    lib.replaceStrings
+      [ "-" ]
+      [ "_" ]
+      libName
+  }'
 
   setup_link_paths
 

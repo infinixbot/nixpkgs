@@ -51,15 +51,7 @@ mkDerivation rec {
 
     ${patchelf}/bin/patchelf \
       --interpreter "$(cat $NIX_CC/nix-support/dynamic-linker)" \
-      --set-rpath "${
-        lib.makeLibraryPath [
-          qt5.qtbase
-          libXtst
-          libXext
-          libX11
-          libXScrnSaver
-        ]
-      }" \
+      --set-rpath "${lib.makeLibraryPath [ qt5.qtbase libXtst libXext libX11 libXScrnSaver ]}" \
       $out/bin/rescuetime
   '';
 

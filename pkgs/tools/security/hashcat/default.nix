@@ -44,18 +44,10 @@ stdenv.mkDerivation rec {
       addDriverRunpath
     ];
 
-  buildInputs =
-    [
-      opencl-headers
-      xxHash
-    ]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [
-      Foundation
-      IOKit
-      Metal
-      OpenCL
-      libiconv
-    ];
+  buildInputs = [
+    opencl-headers
+    xxHash
+  ] ++ lib.optionals stdenv.hostPlatform.isDarwin [ Foundation IOKit Metal OpenCL libiconv ];
 
   makeFlags =
     [

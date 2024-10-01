@@ -21,7 +21,11 @@ stdenv.mkDerivation rec {
 
   srcs =
     let
-      versionNoPoint = lib.replaceStrings [ "." ] [ "" ] version;
+      versionNoPoint =
+        lib.replaceStrings
+          [ "." ]
+          [ "" ]
+          version;
     in
     [
       (fetchurl {

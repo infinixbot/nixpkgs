@@ -70,7 +70,13 @@ let
 
       passthru.tests = lib.optionalAttrs (pname == "wasmer") { pytest = callPackage ./tests.nix { }; };
 
-      pythonImportsCheck = [ "${lib.replaceStrings [ "-" ] [ "_" ] pname}" ];
+      pythonImportsCheck = [
+        "${lib.replaceStrings
+          [ "-" ]
+          [ "_" ]
+          pname
+        }"
+      ];
 
       meta = with lib; {
         # https://github.com/wasmerio/wasmer-python/issues/778

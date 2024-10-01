@@ -188,15 +188,7 @@ stdenv.mkDerivation rec {
         --unset QML2_IMPORT_PATH \
         --unset QT_PLUGIN_PATH \
         --unset QT_SCREEN_SCALE_FACTORS \
-        --prefix PATH : ${
-          lib.makeBinPath [
-            coreutils
-            glib.dev
-            pciutils
-            procps
-            util-linux
-          ]
-        } \
+        --prefix PATH : ${lib.makeBinPath [ coreutils glib.dev pciutils procps util-linux ]} \
         --prefix LD_LIBRARY_PATH ":" ${libs}
 
       # Backwards compatibility: we used to call it zoom-us

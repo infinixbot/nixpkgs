@@ -26,14 +26,7 @@ stdenv.mkDerivation rec {
 
   buildInputs =
     [ glew ]
-    ++ lib.optionals stdenv.isLinux [
-      libGLU
-      libGL
-      libglut
-      libXmu
-      libXext
-      libX11
-    ]
+    ++ lib.optionals stdenv.isLinux [ libGLU libGL libglut libXmu libXext libX11 ]
     ++ lib.optional stdenv.isDarwin GLUT;
 
   doCheck = false;

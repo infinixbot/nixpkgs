@@ -205,20 +205,8 @@ let
       name = mkOption {
         default =
           replaceStrings
-            [
-              "/"
-              "-"
-              " "
-              "+"
-              "="
-            ]
-            [
-              "-"
-              "\\x2d"
-              "\\x20"
-              "\\x2b"
-              "\\x3d"
-            ]
+            [ "/" "-" " " "+" "=" ]
+            [ "-" "\\x2d" "\\x20" "\\x2b" "\\x3d" ]
             self.config.publicKey;
         defaultText = literalExpression "publicKey";
         example = "bernd";

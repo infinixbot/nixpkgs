@@ -159,7 +159,10 @@ stdenv.mkDerivation (finalAttrs: {
 
   meta = {
     changelog = "https://dyalog.com/dyalog/dyalog-versions/${
-      lib.replaceStrings [ "." ] [ "" ] finalAttrs.shortVersion
+      lib.replaceStrings
+        [ "." ]
+        [ "" ]
+        finalAttrs.shortVersion
     }.htm";
     description = "Dyalog APL interpreter";
     homepage = "https://www.dyalog.com";

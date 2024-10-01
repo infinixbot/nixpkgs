@@ -50,7 +50,12 @@ else
           src = fetchFromGitHub {
             owner = "camlp5";
             repo = "camlp5";
-            rev = "rel${builtins.replaceStrings [ "." ] [ "" ] version}";
+            rev = "rel${
+              builtins.replaceStrings
+                [ "." ]
+                [ "" ]
+                version
+            }";
             sha256 = "1dd68bisbpqn5lq2pslm582hxglcxnbkgfkwhdz67z4w9d5nvr7w";
           };
           nativeBuildInputs = [

@@ -112,13 +112,7 @@ let
           "magic"
           "secureon"
         ] "off")
-        (assertValueOneOf "Port" [
-          "tp"
-          "aui"
-          "bnc"
-          "mii"
-          "fibre"
-        ])
+        (assertValueOneOf "Port" [ "tp" "aui" "bnc" "mii" "fibre" ])
         (assertValueOneOf "ReceiveChecksumOffload" boolValues)
         (assertValueOneOf "TransmitChecksumOffload" boolValues)
         (assertValueOneOf "TCPSegmentationOffload" boolValues)
@@ -903,13 +897,7 @@ let
         (assertValueOneOf "GatewayOnLink" boolValues)
         (assertInt "Metric")
         (assertValueOneOf "IPv6Preference" [ "low" "medium" "high" ])
-        (assertValueOneOf "Scope" [
-          "global"
-          "site"
-          "link"
-          "host"
-          "nowhere"
-        ])
+        (assertValueOneOf "Scope" [ "global" "site" "link" "host" "nowhere" ])
         (assertValueOneOf "Type" [
           "unicast"
           "local"
@@ -1148,13 +1136,7 @@ let
         ])
         (assertValueOneOf "Managed" boolValues)
         (assertValueOneOf "OtherInformation" boolValues)
-        (assertValueOneOf "RouterPreference" [
-          "high"
-          "medium"
-          "low"
-          "normal"
-          "default"
-        ])
+        (assertValueOneOf "RouterPreference" [ "high" "medium" "low" "normal" "default" ])
         (assertInt "HopLimit")
         (assertValueOneOf "EmitDNS" boolValues)
         (assertValueOneOf "EmitDomains" boolValues)

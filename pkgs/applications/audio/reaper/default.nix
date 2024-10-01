@@ -29,11 +29,17 @@ let
     version: arch:
     if stdenv.isDarwin then
       "https://www.reaper.fm/files/${lib.versions.major version}.x/reaper${
-        builtins.replaceStrings [ "." ] [ "" ] version
+        builtins.replaceStrings
+          [ "." ]
+          [ "" ]
+          version
       }_universal.dmg"
     else
       "https://www.reaper.fm/files/${lib.versions.major version}.x/reaper${
-        builtins.replaceStrings [ "." ] [ "" ] version
+        builtins.replaceStrings
+          [ "." ]
+          [ "" ]
+          version
       }_linux_${arch}.tar.xz";
 in
 stdenv.mkDerivation rec {
@@ -114,15 +120,7 @@ stdenv.mkDerivation rec {
         # Note that libcurl and libxml2 are needed for ReaPack to run.
         wrapProgram $out/opt/REAPER/reaper \
           --prefix LD_LIBRARY_PATH : "${
-            lib.makeLibraryPath [
-              curl
-              lame
-              libxml2
-              ffmpeg
-              vlc
-              xdotool
-              stdenv.cc.cc.lib
-            ]
+            lib.makeLibraryPath [ curl lame libxml2 ffmpeg vlc xdotool stdenv.cc.cc.lib ]
           }"
 
         mkdir $out/bin

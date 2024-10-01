@@ -9,7 +9,11 @@
 stdenv.mkDerivation rec {
   pname = "kcgi";
   version = "0.10.8";
-  underscoreVersion = lib.replaceStrings [ "." ] [ "_" ] version;
+  underscoreVersion =
+    lib.replaceStrings
+      [ "." ]
+      [ "_" ]
+      version;
 
   src = fetchFromGitHub {
     owner = "kristapsdz";

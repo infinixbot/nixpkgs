@@ -373,13 +373,7 @@ stdenv.mkDerivation (finalAttrs: {
     ++ lib.optional withApparmor libapparmor
     ++ lib.optional withAudit audit
     ++ lib.optional wantCurl (lib.getDev curl)
-    ++ lib.optionals withCompression [
-      zlib
-      bzip2
-      lz4
-      xz
-      zstd
-    ]
+    ++ lib.optionals withCompression [ zlib bzip2 lz4 xz zstd ]
     ++ lib.optional withCoredump elfutils
     ++ lib.optional withCryptsetup (lib.getDev cryptsetup.dev)
     ++ lib.optional withKexectools kexec-tools

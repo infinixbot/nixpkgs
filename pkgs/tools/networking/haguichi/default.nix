@@ -60,7 +60,10 @@ stdenv.mkDerivation (finalAttrs: {
     mainProgram = "haguichi";
     homepage = "https://haguichi.net/";
     changelog = "https://haguichi.net/news/release${
-      lib.strings.replaceStrings [ "." ] [ "" ] finalAttrs.version
+      lib.strings.replaceStrings
+        [ "." ]
+        [ "" ]
+        finalAttrs.version
     }";
     license = lib.licenses.gpl3Plus;
     platforms = lib.platforms.linux;

@@ -298,9 +298,11 @@ in
   };
   imports = [
     # Compatibility with NixOS 23.05.
-    (mkChangedOptionModule [ "services" "knot" "extraConfig" ] [ "services" "knot" "settingsFile" ] (
-      config: mkConfigFile config.services.knot.extraConfig
-    ))
+    (mkChangedOptionModule
+      [ "services" "knot" "extraConfig" ]
+      [ "services" "knot" "settingsFile" ]
+      (config: mkConfigFile config.services.knot.extraConfig)
+    )
   ];
 
   config = mkIf config.services.knot.enable {

@@ -53,7 +53,11 @@ lib.listToAttrs (
     lib.flip lib.concatMap kernelVersionsToTest (
       version:
       let
-        v' = lib.replaceStrings [ "." ] [ "_" ] version;
+        v' =
+          lib.replaceStrings
+            [ "." ]
+            [ "_" ]
+            version;
         mkXfsFlags =
           lib.optionalString (lib.versionOlder version "5.10") " -m bigtime=0 -m inobtcount=0 "
           + lib.optionalString (lib.versionOlder version "5.19") " -i nrext64=0 ";

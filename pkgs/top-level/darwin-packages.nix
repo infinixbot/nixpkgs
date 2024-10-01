@@ -303,7 +303,10 @@ makeScopeWithSplicing' {
       linux-builder = lib.makeOverridable (
         { modules }:
         let
-          toGuest = builtins.replaceStrings [ "darwin" ] [ "linux" ];
+          toGuest =
+            builtins.replaceStrings
+              [ "darwin" ]
+              [ "linux" ];
 
           nixos = import ../../nixos {
             configuration = {

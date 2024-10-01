@@ -20,7 +20,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "openbabel";
     repo = "openbabel";
-    rev = "openbabel-${lib.replaceStrings [ "." ] [ "-" ] version}";
+    rev = "openbabel-${
+      lib.replaceStrings
+        [ "." ]
+        [ "-" ]
+        version
+    }";
     sha256 = "sha256-+pXsWMzex7rB1mm6dnTHzAcyw9jImgx1OZuLeCvbeJ0=";
   };
 

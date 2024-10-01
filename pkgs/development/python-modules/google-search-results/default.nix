@@ -15,7 +15,11 @@ buildPythonPackage rec {
 
   src = fetchPypi {
     inherit version;
-    pname = builtins.replaceStrings [ "-" ] [ "_" ] pname;
+    pname =
+      builtins.replaceStrings
+        [ "-" ]
+        [ "_" ]
+        pname;
     hash = "sha256-YDow7K4q+OYAsiY1dXpt8nXa1Lk0+XXmeHjM1kC3gkU=";
   };
 

@@ -265,8 +265,22 @@ let
     else
       null;
 
-  escapeSqlId = x: ''"${replaceStrings [ ''"'' ] [ ''""'' ] x}"'';
-  escapeSqlStr = x: "'${replaceStrings [ "'" ] [ "''" ] x}'";
+  escapeSqlId =
+    x:
+    ''"${
+      replaceStrings
+        [ ''"'' ]
+        [ ''""'' ]
+        x
+    }"'';
+  escapeSqlStr =
+    x:
+    "'${
+      replaceStrings
+        [ "'" ]
+        [ "''" ]
+        x
+    }'";
 
   setupSql = pkgs.writeText "setup.psql" ''
     \set ON_ERROR_STOP on

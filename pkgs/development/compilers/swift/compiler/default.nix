@@ -93,7 +93,10 @@ let
     if hostPlatform.isDarwin then "lib/swift/${swiftOs}" else "lib/swift/${swiftOs}/${swiftArch}";
 
   # And then there's also a separate subtree for statically linked  modules.
-  toStaticSubdir = lib.replaceStrings [ "/swift/" ] [ "/swift_static/" ];
+  toStaticSubdir =
+    lib.replaceStrings
+      [ "/swift/" ]
+      [ "/swift_static/" ];
   swiftStaticLibSubdir = toStaticSubdir swiftLibSubdir;
   swiftStaticModuleSubdir = toStaticSubdir swiftModuleSubdir;
 
@@ -154,7 +157,11 @@ let
     default_cc_wrapper = clang; # Instead of `@out@` in the original.
     coreutils_bin = lib.getBin coreutils;
     gnugrep_bin = gnugrep;
-    suffixSalt = lib.replaceStrings [ "-" "." ] [ "_" "_" ] targetPlatform.config;
+    suffixSalt =
+      lib.replaceStrings
+        [ "-" "." ]
+        [ "_" "_" ]
+        targetPlatform.config;
     use_response_file_by_default = 1;
     swiftDriver = "";
     # NOTE: @prog@ needs to be filled elsewhere.

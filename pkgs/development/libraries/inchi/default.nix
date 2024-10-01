@@ -10,7 +10,10 @@ let
   versionMajor = "1";
   versionMinor = "0.6";
   version = versionMajor + "." + versionMinor;
-  removeDots = lib.replaceStrings [ "." ] [ "" ];
+  removeDots =
+    lib.replaceStrings
+      [ "." ]
+      [ "" ];
   src-doc = fetchurl {
     url = "http://www.inchi-trust.org/download/${removeDots version}/INCHI-1-DOC.zip";
     sha256 = "1kyda09i9p89xfq90ninwi7w13k1w3ljpl4gqdhpfhi5g8fgxx7f";

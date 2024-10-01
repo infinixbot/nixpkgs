@@ -216,7 +216,13 @@ in
                 target = lib.mkDefault name;
                 source = lib.mkIf (config.text != null) (
                   let
-                    name' = "etc-" + lib.replaceStrings [ "/" ] [ "-" ] name;
+                    name' =
+                      "etc-"
+                      +
+                        lib.replaceStrings
+                          [ "/" ]
+                          [ "-" ]
+                          name;
                   in
                   lib.mkDerivedConfig options.text (pkgs.writeText name')
                 );

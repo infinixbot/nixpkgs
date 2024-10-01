@@ -78,7 +78,10 @@ stdenv.mkDerivation rec {
     ];
     platforms = platforms.unix;
     changelog = "https://cvs.savannah.gnu.org/viewvc/global/global/NEWS?view=markup&pathrev=VERSION-${
-      lib.replaceStrings [ "." ] [ "_" ] version
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
     }";
   };
 }

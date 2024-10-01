@@ -94,13 +94,7 @@ mkDerivation rec {
       qscintilla
       cairo
     ]
-    ++ lib.optionals stdenv.isLinux [
-      libGLU
-      libGL
-      wayland
-      wayland-protocols
-      qtwayland
-    ]
+    ++ lib.optionals stdenv.isLinux [ libGLU libGL wayland wayland-protocols qtwayland ]
     ++ lib.optional stdenv.isDarwin qtmacextras
     ++ lib.optional spacenavSupport libspnav;
 

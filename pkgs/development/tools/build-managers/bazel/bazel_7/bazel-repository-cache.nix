@@ -62,7 +62,10 @@ let
   unmangleName =
     mangledName:
     if mangledName ? moduleDepGraphName then
-      builtins.replaceStrings [ "@" ] [ "~" ] mangledName.moduleDepGraphName
+      builtins.replaceStrings
+        [ "@" ]
+        [ "~" ]
+        mangledName.moduleDepGraphName
     else
       # given moduleExtensionName = "@scope~//path/to:extension.bzl%extension"
       # and moduleExtensionGeneratedRepoName = "repoName"

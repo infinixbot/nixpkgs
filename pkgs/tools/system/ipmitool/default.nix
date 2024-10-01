@@ -23,7 +23,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = pname;
     repo = pname;
-    rev = "IPMITOOL_${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "IPMITOOL_${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     hash = "sha256-VVYvuldRIHhaIUibed9cLX8Avfy760fdBLNO8MoUKCk=";
   };
 

@@ -40,7 +40,10 @@ stdenv.mkDerivation {
     owner = "ossc-db";
     repo = "pg_hint_plan";
     rev = "REL${lib.versions.major postgresql.version}_${
-      builtins.replaceStrings [ "." ] [ "_" ] source.version
+      builtins.replaceStrings
+        [ "." ]
+        [ "_" ]
+        source.version
     }";
     inherit (source) hash;
   };

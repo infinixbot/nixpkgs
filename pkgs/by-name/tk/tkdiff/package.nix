@@ -13,7 +13,10 @@ stdenv.mkDerivation (finalAttrs: {
 
   src = fetchzip {
     url = "mirror://sourceforge/tkdiff/tkdiff-${
-      builtins.replaceStrings [ "." ] [ "-" ] finalAttrs.version
+      builtins.replaceStrings
+        [ "." ]
+        [ "-" ]
+        finalAttrs.version
     }.zip";
     hash = "sha256-ZndpolvaXoCAzR4KF+Bu7DJrXyB/C2H2lWp5FyzOc4M=";
   };

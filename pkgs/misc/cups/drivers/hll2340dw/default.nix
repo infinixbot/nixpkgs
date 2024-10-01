@@ -80,17 +80,7 @@ stdenv.mkDerivation {
     ln -s $out/opt/brother/Printers/HLL2340D/cupswrapper/brother-HLL2340D-cups-en.ppd $out/share/cups/model/
 
     wrapProgram $out/opt/brother/Printers/HLL2340D/lpd/filter_HLL2340D \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          ghostscript
-          a2ps
-          file
-          gnused
-          gnugrep
-          coreutils
-          which
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ ghostscript a2ps file gnused gnugrep coreutils which ]}
   '';
 
   meta = with lib; {

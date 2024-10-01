@@ -65,27 +65,18 @@ stdenv.mkDerivation (finalAttrs: {
         ;
       inherit (builtins) map;
       urls-and-hashes = import (./. + "/urls-and-hashes-${finalAttrs.version}.nix");
-      make-links =
-        pipe
-          [
-            "gcc"
-            "binutils"
-            "gmp"
-            "mpfr"
-            "mpc"
-          ]
-          [
-            (map (
-              vname:
-              fetchurl rec {
-                url = urls-and-hashes."${(toUpper vname) + "_URL"}";
-                sha256 = urls-and-hashes."${(toUpper vname) + "_SUM"}" or "";
-                name = last (splitString "/" url);
-              }
-            ))
-            (map (v: "ln -sT ${v} toolchain/dl/${v.name}"))
-            (lib.concatStringsSep "\n")
-          ];
+      make-links = pipe [ "gcc" "binutils" "gmp" "mpfr" "mpc" ] [
+        (map (
+          vname:
+          fetchurl rec {
+            url = urls-and-hashes."${(toUpper vname) + "_URL"}";
+            sha256 = urls-and-hashes."${(toUpper vname) + "_SUM"}" or "";
+            name = last (splitString "/" url);
+          }
+        ))
+        (map (v: "ln -sT ${v} toolchain/dl/${v.name}"))
+        (lib.concatStringsSep "\n")
+      ];
     in
     ''
       mkdir -p toolchain/dl

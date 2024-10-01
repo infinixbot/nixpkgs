@@ -32,13 +32,7 @@ qtModule {
   buildInputs =
     [ ffmpeg_7 ]
     ++ lib.optionals (!stdenv.hostPlatform.isMinGW) [ libunwind orc ]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [
-      libpulseaudio
-      alsa-lib
-      wayland
-      libXrandr
-      libva
-    ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [ libpulseaudio alsa-lib wayland libXrandr libva ]
     ++ lib.optionals (lib.meta.availableOn stdenv.hostPlatform elfutils) [ elfutils ];
   propagatedBuildInputs =
     [

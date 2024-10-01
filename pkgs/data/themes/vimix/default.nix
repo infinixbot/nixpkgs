@@ -19,15 +19,7 @@ let
 
 in
 lib.checkListOfEnum "${pname}: theme variants"
-  [
-    "doder"
-    "beryl"
-    "ruby"
-    "amethyst"
-    "jade"
-    "grey"
-    "all"
-  ]
+  [ "doder" "beryl" "ruby" "amethyst" "jade" "grey" "all" ]
   themeVariants
   lib.checkListOfEnum
   "${pname}: color variants"

@@ -360,7 +360,14 @@ let
 
       # Used to get an SDK version corresponding to the requested `darwinSdkVersion`.
       # TODO: Treat `darwinSdkVersion` as a constraint rather than as an exact version.
-      resolveSDK = pkgs: pkgs.darwin."apple_sdk_${lib.replaceStrings [ "." ] [ "_" ] darwinSdkVersion}";
+      resolveSDK =
+        pkgs:
+        pkgs.darwin."apple_sdk_${
+          lib.replaceStrings
+            [ "." ]
+            [ "_" ]
+            darwinSdkVersion
+        }";
 
       # `newSdkPackages` is constructed based on the assumption that SDK packages only
       # propagate versioned packages from that SDK -- that they neither propagate

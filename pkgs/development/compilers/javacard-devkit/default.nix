@@ -12,7 +12,11 @@
 stdenv.mkDerivation rec {
   pname = "javacard-devkit";
   version = "2.2.2";
-  uscoreVersion = builtins.replaceStrings [ "." ] [ "_" ] version;
+  uscoreVersion =
+    builtins.replaceStrings
+      [ "." ]
+      [ "_" ]
+      version;
 
   src = requireFile {
     name = "java_card_kit-${uscoreVersion}-linux.zip";

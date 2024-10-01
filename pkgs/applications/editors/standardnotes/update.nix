@@ -12,16 +12,7 @@
 
 writeScript "update-standardnotes" ''
   #!${runtimeShell}
-  PATH=${
-    lib.makeBinPath [
-      jq
-      curl
-      nix
-      coreutils
-      moreutils
-      gnused
-    ]
-  }
+  PATH=${lib.makeBinPath [ jq curl nix coreutils moreutils gnused ]}
 
   set -euo pipefail
   set -x

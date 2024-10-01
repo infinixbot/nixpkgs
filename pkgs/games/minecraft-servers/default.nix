@@ -7,7 +7,10 @@ let
   versions = lib.importJSON ./versions.json;
 
   latestVersion = lib.last (builtins.sort lib.versionOlder (builtins.attrNames versions));
-  escapeVersion = builtins.replaceStrings [ "." ] [ "-" ];
+  escapeVersion =
+    builtins.replaceStrings
+      [ "." ]
+      [ "-" ];
 
   getJavaVersion = v: (builtins.getAttr "openjdk${toString v}" javaPackages.compiler).headless;
 

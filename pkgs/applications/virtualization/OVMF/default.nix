@@ -124,14 +124,7 @@ edk2.mkDerivation projectDscPath (finalAttrs: {
       acpica-tools
     ]
     ++ lib.optionals stdenv.cc.isClang [ llvmPackages.bintools llvmPackages.llvm ]
-    ++ lib.optionals msVarsTemplate [
-      python3
-      pexpect
-      xorriso
-      qemu
-      dosfstools
-      mtools
-    ];
+    ++ lib.optionals msVarsTemplate [ python3 pexpect xorriso qemu dosfstools mtools ];
   strictDeps = true;
 
   hardeningDisable = [

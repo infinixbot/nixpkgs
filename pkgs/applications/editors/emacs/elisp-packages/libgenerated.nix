@@ -126,7 +126,11 @@ in
       deps = sourceArgs.deps or null;
       error = sourceArgs.error or args.error or null;
       hasSource = lib.hasAttr variant args;
-      pname = builtins.replaceStrings [ "@" ] [ "at" ] ename;
+      pname =
+        builtins.replaceStrings
+          [ "@" ]
+          [ "at" ]
+          ename;
       broken = error != null;
     in
     if hasSource then

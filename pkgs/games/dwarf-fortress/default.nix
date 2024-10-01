@@ -69,7 +69,14 @@ let
       throw "Unsupported system";
 
   # Converts a version to a package name.
-  versionToName = version: "dwarf-fortress_${replaceStrings [ "." ] [ "_" ] version}";
+  versionToName =
+    version:
+    "dwarf-fortress_${
+      replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
 
   # A map of names to each Dwarf Fortress package we know about.
   df-games = listToAttrs (

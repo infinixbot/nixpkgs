@@ -24,15 +24,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-0SRu6p/DsHNNI20mkXJitt/Ee5S2ooiy5hNmD+ndecM=";
   };
 
-  binDeps = lib.makeBinPath [
-    coreutils
-    util-linux
-    gnugrep
-    gnused
-    ethtool
-    ipcalc
-    iproute2
-  ];
+  binDeps = lib.makeBinPath [ coreutils util-linux gnugrep gnused ethtool ipcalc iproute2 ];
 
   nativeBuildInputs = [ makeWrapper ];
 

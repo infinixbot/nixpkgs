@@ -38,16 +38,7 @@ stdenv.mkDerivation rec {
     installManPage keychain.1
     wrapProgram $out/bin/keychain \
       --prefix PATH ":" "${
-        lib.makeBinPath [
-          coreutils
-          findutils
-          gawk
-          gnupg
-          gnugrep
-          gnused
-          openssh
-          procps
-        ]
+        lib.makeBinPath [ coreutils findutils gawk gnupg gnugrep gnused openssh procps ]
       }" \
   '';
 

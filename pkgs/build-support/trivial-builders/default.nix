@@ -968,13 +968,7 @@ rec {
         }
         # Carry `meta` information from the underlying `src` if present.
         // (optionalAttrs (src ? meta) { inherit (src) meta; })
-        // (removeAttrs args [
-          "src"
-          "name"
-          "patches"
-          "prePatch"
-          "postPatch"
-        ])
+        // (removeAttrs args [ "src" "name" "patches" "prePatch" "postPatch" ])
       );
 
   # TODO: move docs to Nixpkgs manual

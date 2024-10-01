@@ -58,15 +58,7 @@ stdenv.mkDerivation {
   postInstall = ''
     wrapProgram $out/bin/i3lock-fancy \
       --prefix PATH : ${
-        lib.makeBinPath [
-          coreutils
-          fontconfig
-          gawk
-          getopt
-          i3lock-color
-          imagemagick
-          scrot
-        ]
+        lib.makeBinPath [ coreutils fontconfig gawk getopt i3lock-color imagemagick scrot ]
       }
   '';
 

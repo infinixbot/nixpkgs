@@ -37,7 +37,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "eclipse";
     repo = "sumo";
-    rev = "v${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "v${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     hash = "sha256-y/bkdDWrb1KB0EOVSJPfPVYHGp/zQ2+Shb6eLsFQRNQ=";
     fetchSubmodules = true;
   };

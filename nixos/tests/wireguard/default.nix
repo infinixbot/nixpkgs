@@ -29,7 +29,11 @@ listToAttrs (
   flip concatMap kernelVersionsToTest (
     version:
     let
-      v' = replaceStrings [ "." ] [ "_" ] version;
+      v' =
+        replaceStrings
+          [ "." ]
+          [ "_" ]
+          version;
     in
     flip mapAttrsToList tests (
       name: test:

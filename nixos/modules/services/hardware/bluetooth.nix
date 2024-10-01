@@ -38,7 +38,10 @@ let
 in
 {
   imports = [
-    (mkRenamedOptionModule [ "hardware" "bluetooth" "config" ] [ "hardware" "bluetooth" "settings" ])
+    (mkRenamedOptionModule
+      [ "hardware" "bluetooth" "config" ]
+      [ "hardware" "bluetooth" "settings" ]
+    )
     (mkRemovedOptionModule [ "hardware" "bluetooth" "extraConfig" ] ''
       Use hardware.bluetooth.settings instead.
 

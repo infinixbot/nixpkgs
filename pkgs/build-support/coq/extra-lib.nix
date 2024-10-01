@@ -129,7 +129,10 @@ recursiveUpdate lib (rec {
             loop vv (v ++ [ hd ]) tl
       );
     in
-    loop [ ] [ ] l;
+    loop
+      [ ]
+      [ ]
+      l;
 
   pred = {
     # Predicate intersection, union, and complement

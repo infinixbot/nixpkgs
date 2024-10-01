@@ -14,7 +14,14 @@ args@{
 let
   inherit (lib) lists strings trivial;
 
-  computeName = version: "magma_${strings.replaceStrings [ "." ] [ "_" ] version}";
+  computeName =
+    version:
+    "magma_${
+      strings.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
 
   # buildMagmaPackage :: Release -> Derivation
   buildMagmaPackage =

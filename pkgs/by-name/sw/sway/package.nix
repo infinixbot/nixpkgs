@@ -47,7 +47,11 @@ let
   '';
 in
 symlinkJoin rec {
-  pname = replaceStrings [ "-unwrapped" ] [ "" ] sway.pname;
+  pname =
+    replaceStrings
+      [ "-unwrapped" ]
+      [ "" ]
+      sway.pname;
   inherit (sway) version;
   name = "${pname}-${version}";
 

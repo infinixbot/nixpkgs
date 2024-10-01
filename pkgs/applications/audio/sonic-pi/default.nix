@@ -194,13 +194,7 @@ stdenv.mkDerivation rec {
     # Wrap Qt GUI (distributed binary)
     wrapQtApp $out/bin/sonic-pi \
       --prefix PATH : ${
-        lib.makeBinPath [
-          ruby
-          supercollider-with-sc3-plugins
-          jack2
-          jack-example-tools
-          pipewire.jack
-        ]
+        lib.makeBinPath [ ruby supercollider-with-sc3-plugins jack2 jack-example-tools pipewire.jack ]
       }
 
     # If ImGui was built
@@ -209,13 +203,7 @@ stdenv.mkDerivation rec {
       makeWrapper $out/app/build/gui/imgui/sonic-pi-imgui $out/bin/sonic-pi-imgui \
         --inherit-argv0 \
         --prefix PATH : ${
-          lib.makeBinPath [
-            ruby
-            supercollider-with-sc3-plugins
-            jack2
-            jack-example-tools
-            pipewire.jack
-          ]
+          lib.makeBinPath [ ruby supercollider-with-sc3-plugins jack2 jack-example-tools pipewire.jack ]
         }
     fi
 

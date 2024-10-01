@@ -61,17 +61,7 @@ stdenv.mkDerivation rec {
 
     wrapProgram "$out/share/fgallery/fgallery" \
         --set PERL5LIB "$PERL5LIB" \
-        --set PATH "${
-          lib.makeBinPath [
-            coreutils
-            zip
-            imagemagick
-            pngcrush
-            lcms2
-            facedetect
-            fbida
-          ]
-        }"
+        --set PATH "${lib.makeBinPath [ coreutils zip imagemagick pngcrush lcms2 facedetect fbida ]}"
   '';
 
   meta = with lib; {

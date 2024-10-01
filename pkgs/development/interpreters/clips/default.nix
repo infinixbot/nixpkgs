@@ -10,7 +10,10 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "mirror://sourceforge/clipsrules/CLIPS/${version}/clips_core_source_${
-      builtins.replaceStrings [ "." ] [ "" ] version
+      builtins.replaceStrings
+        [ "." ]
+        [ "" ]
+        version
     }.tar.gz";
     hash = "sha256-qk87uLFZZL9HNPNlyVh+Mplr3dP1C/z1O5UVS+rnbuM=";
   };

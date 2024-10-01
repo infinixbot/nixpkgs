@@ -7,7 +7,11 @@
 
 let
   version = "1.9.22.1";
-  versionSnakeCase = builtins.replaceStrings [ "." ] [ "_" ] version;
+  versionSnakeCase =
+    builtins.replaceStrings
+      [ "." ]
+      [ "_" ]
+      version;
 in
 stdenvNoCC.mkDerivation {
   pname = "aspectj";

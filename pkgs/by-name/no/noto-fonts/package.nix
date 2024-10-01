@@ -29,7 +29,13 @@ stdenvNoCC.mkDerivation rec {
     hash = "sha256-bopBRpIGXtRyAjBuMhJCjwFUlK8WDurxIFbZbRzEE40=";
   };
 
-  _variants = map (variant: builtins.replaceStrings [ " " ] [ "" ] variant) variants;
+  _variants = map (
+    variant:
+    builtins.replaceStrings
+      [ " " ]
+      [ "" ]
+      variant
+  ) variants;
 
   installPhase =
     ''

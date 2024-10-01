@@ -14,18 +14,14 @@ in
 
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "nfs" "lockdPort" ] [
-      "services"
-      "nfs"
-      "server"
-      "lockdPort"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "nfs" "statdPort" ] [
-      "services"
-      "nfs"
-      "server"
-      "statdPort"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "nfs" "lockdPort" ]
+      [ "services" "nfs" "server" "lockdPort" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "nfs" "statdPort" ]
+      [ "services" "nfs" "server" "statdPort" ]
+    )
   ];
 
   ###### interface

@@ -10,7 +10,10 @@ in
 {
   imports = [
     # Should have never been on the top-level.
-    (lib.mkRenamedOptionModule [ "snapraid" ] [ "services" "snapraid" ])
+    (lib.mkRenamedOptionModule
+      [ "snapraid" ]
+      [ "services" "snapraid" ]
+    )
   ];
 
   options.services.snapraid = with lib.types; {

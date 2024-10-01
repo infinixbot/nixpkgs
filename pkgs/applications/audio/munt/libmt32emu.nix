@@ -12,7 +12,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "munt";
     repo = "munt";
-    rev = "${pname}_${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "${pname}_${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     sha256 = "sha256-zY1AFcm8uvFkrKUZHsqtKY2CYTY4bWmkTJ7bZPqXoxk=";
   };
 

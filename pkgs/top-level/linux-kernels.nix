@@ -37,7 +37,11 @@ let
       version = kernelPatches.hardened.${kernel.meta.branch}.version;
       major = lib.versions.major version;
       sha256 = kernelPatches.hardened.${kernel.meta.branch}.sha256;
-      modDirVersion' = builtins.replaceStrings [ kernel.version ] [ version ] kernel.modDirVersion;
+      modDirVersion' =
+        builtins.replaceStrings
+          [ kernel.version ]
+          [ version ]
+          kernel.modDirVersion;
     in
     kernel.override {
       structuredExtraConfig = import ../os-specific/linux/kernel/hardened/config.nix {

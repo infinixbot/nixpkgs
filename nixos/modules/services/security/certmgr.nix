@@ -167,14 +167,7 @@ in
 
     svcManager = mkOption {
       default = "systemd";
-      type = types.enum [
-        "circus"
-        "command"
-        "dummy"
-        "openrc"
-        "systemd"
-        "sysv"
-      ];
+      type = types.enum [ "circus" "command" "dummy" "openrc" "systemd" "sysv" ];
       description = ''
         This specifies the service manager to use for restarting or reloading services.
         See: <https://github.com/cloudflare/certmgr#certmgryaml>.

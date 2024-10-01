@@ -154,9 +154,11 @@ let
         in
         {
           name =
-            (lib.strings.replaceStrings [ "-" ] [ "_" ] (
-              lib.strings.removePrefix "tree-sitter-" (lib.strings.removeSuffix "-grammar" name)
-            ))
+            (lib.strings.replaceStrings
+              [ "-" ]
+              [ "_" ]
+              (lib.strings.removePrefix "tree-sitter-" (lib.strings.removeSuffix "-grammar" name))
+            )
             + ".so";
           path = "${drv}/parser";
         }

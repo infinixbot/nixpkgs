@@ -41,18 +41,22 @@ import ./make-test-python.nix (
       SELECT type, COUNT(*) AS total
       FROM onboard_people GROUP BY type ORDER BY type;
     '';
-    onboardExpected = pkgs.lib.strings.replaceStrings [ "\n" ] [ "\\n" ] ''
-      +------------+-------+
-      | type       | total |
-      +============+=======+
-      | craftsmen  |  2349 |
-      | impotenten |   938 |
-      | passengers |  2813 |
-      | seafarers  |  4468 |
-      | soldiers   |  4177 |
-      | total      |  2467 |
-      +------------+-------+
-    '';
+    onboardExpected =
+      pkgs.lib.strings.replaceStrings
+        [ "\n" ]
+        [ "\\n" ]
+        ''
+          +------------+-------+
+          | type       | total |
+          +============+=======+
+          | craftsmen  |  2349 |
+          | impotenten |   938 |
+          | passengers |  2813 |
+          | seafarers  |  4468 |
+          | soldiers   |  4177 |
+          | total      |  2467 |
+          +------------+-------+
+        '';
   in
   {
     name = "monetdb";

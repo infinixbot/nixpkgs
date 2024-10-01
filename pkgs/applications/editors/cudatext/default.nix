@@ -62,13 +62,7 @@ stdenv.mkDerivation rec {
 
   buildInputs =
     [ libX11 ]
-    ++ lib.optionals (lib.hasPrefix "gtk" widgetset) [
-      pango
-      cairo
-      glib
-      atk
-      gdk-pixbuf
-    ]
+    ++ lib.optionals (lib.hasPrefix "gtk" widgetset) [ pango cairo glib atk gdk-pixbuf ]
     ++ lib.optional (widgetset == "gtk2") gtk2
     ++ lib.optional (widgetset == "gtk3") gtk3
     ++ lib.optional (widgetset == "qt5") libqt5pas;

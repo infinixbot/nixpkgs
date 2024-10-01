@@ -133,7 +133,11 @@ let
   # without interfering. For the moment, it is defined as the target triple,
   # adjusted to be a valid bash identifier. This should be considered an
   # unstable implementation detail, however.
-  suffixSalt = replaceStrings [ "-" "." ] [ "_" "_" ] targetPlatform.config;
+  suffixSalt =
+    replaceStrings
+      [ "-" "." ]
+      [ "_" "_" ]
+      targetPlatform.config;
 
   useGccForLibs =
     useCcForLibs

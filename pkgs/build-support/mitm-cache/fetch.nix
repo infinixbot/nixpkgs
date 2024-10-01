@@ -27,7 +27,10 @@ let
         "https/${builtins.concatStringsSep "/" url'}"
       )
     else
-      builtins.replaceStrings [ "://" ] [ "/" ] url;
+      builtins.replaceStrings
+        [ "://" ]
+        [ "/" ]
+        url;
   code =
     ''
       mkdir -p "$out"

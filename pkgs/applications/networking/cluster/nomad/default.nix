@@ -19,13 +19,7 @@ let
       ...
     }@attrs:
     let
-      attrs' = builtins.removeAttrs attrs [
-        "buildGoModule"
-        "version"
-        "sha256"
-        "vendorHash"
-        "license"
-      ];
+      attrs' = builtins.removeAttrs attrs [ "buildGoModule" "version" "sha256" "vendorHash" "license" ];
     in
     buildGoModule (
       rec {

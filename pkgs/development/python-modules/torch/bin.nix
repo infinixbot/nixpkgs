@@ -25,7 +25,11 @@
 }:
 
 let
-  pyVerNoDot = builtins.replaceStrings [ "." ] [ "" ] python.pythonVersion;
+  pyVerNoDot =
+    builtins.replaceStrings
+      [ "." ]
+      [ "" ]
+      python.pythonVersion;
   srcs = import ./binary-hashes.nix version;
   unsupported = throw "Unsupported system";
   version = "2.4.0";

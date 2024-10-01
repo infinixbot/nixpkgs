@@ -30,15 +30,7 @@ let
       protocol = mkOption {
         description = "Protocol to use.";
         example = "anyconnect";
-        type = types.enum [
-          "anyconnect"
-          "array"
-          "nc"
-          "pulse"
-          "gp"
-          "f5"
-          "fortinet"
-        ];
+        type = types.enum [ "anyconnect" "array" "nc" "pulse" "gp" "f5" "fortinet" ];
       };
 
       user = mkOption {

@@ -14,12 +14,14 @@ let
 in
 {
   imports = [
-    (lib.mkRenamedOptionModule [ "services" "foldingAtHome" ] [ "services" "foldingathome" ])
-    (lib.mkRenamedOptionModule [ "services" "foldingathome" "nickname" ] [
-      "services"
-      "foldingathome"
-      "user"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "foldingAtHome" ]
+      [ "services" "foldingathome" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "foldingathome" "nickname" ]
+      [ "services" "foldingathome" "user" ]
+    )
     (lib.mkRemovedOptionModule [ "services" "foldingathome" "config" ] ''
       Use <literal>services.foldingathome.extraArgs instead<literal>
     '')

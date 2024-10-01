@@ -155,7 +155,12 @@ clangStdenv.mkDerivation rec {
     "-DEXPERIMENTAL=ON" # enable experimental options
     "-DSNAPSHOT=ON" # nightly icons
     "-DUSE_BUILTIN_OPENCSG=ON" # bundled latest opencsg
-    "-DOPENSCAD_VERSION=\"${builtins.replaceStrings [ "-" ] [ "." ] version}\""
+    "-DOPENSCAD_VERSION=\"${
+      builtins.replaceStrings
+        [ "-" ]
+        [ "." ]
+        version
+    }\""
     "-DCMAKE_UNITY_BUILD=ON" # faster build
     # IPO
     "-DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=lld"

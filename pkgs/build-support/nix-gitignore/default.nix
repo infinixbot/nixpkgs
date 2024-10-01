@@ -81,7 +81,10 @@ rec {
         ];
 
       # regex -> regex
-      handleHashesBangs = replaceStrings [ "\\#" "\\!" ] [ "#" "!" ];
+      handleHashesBangs =
+        replaceStrings
+          [ "\\#" "\\!" ]
+          [ "#" "!" ];
 
       # ignore -> regex
       substWildcards =
@@ -124,7 +127,10 @@ rec {
       mapAroundCharclass =
         f: r: # rl = regex or list
         let
-          slightFix = replaceStrings [ "\\]" ] [ "]" ];
+          slightFix =
+            replaceStrings
+              [ "\\]" ]
+              [ "]" ];
         in
         concatStringsSep "" (
           map (rl: if isList rl then slightFix (elemAt rl 0) else f rl) (split "(\\[([^\\\\]|\\\\.)+])" r)

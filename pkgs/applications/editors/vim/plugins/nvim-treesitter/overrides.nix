@@ -35,7 +35,11 @@ let
     // lib.concatMapAttrs (
       k: v:
       let
-        replaced = lib.replaceStrings [ "_" ] [ "-" ] k;
+        replaced =
+          lib.replaceStrings
+            [ "_" ]
+            [ "-" ]
+            k;
       in
       {
         "tree-sitter-${k}" = v;

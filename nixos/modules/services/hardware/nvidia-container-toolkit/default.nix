@@ -7,14 +7,10 @@
 
 {
   imports = [
-    (lib.mkRenamedOptionModule [
-      "virtualisation"
-      "containers"
-      "cdi"
-      "dynamic"
-      "nvidia"
-      "enable"
-    ] [ "hardware" "nvidia-container-toolkit" "enable" ])
+    (lib.mkRenamedOptionModule
+      [ "virtualisation" "containers" "cdi" "dynamic" "nvidia" "enable" ]
+      [ "hardware" "nvidia-container-toolkit" "enable" ]
+    )
   ];
 
   options =

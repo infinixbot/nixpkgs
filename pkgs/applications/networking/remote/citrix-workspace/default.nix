@@ -6,7 +6,14 @@
 let
   inherit (callPackage ./sources.nix { }) supportedVersions unsupportedVersions;
 
-  toAttrName = x: "citrix_workspace_${builtins.replaceStrings [ "." ] [ "_" ] x}";
+  toAttrName =
+    x:
+    "citrix_workspace_${
+      builtins.replaceStrings
+        [ "." ]
+        [ "_" ]
+        x
+    }";
 
   unsupported = lib.listToAttrs (
     map (

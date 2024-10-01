@@ -37,7 +37,12 @@ let
   # getSha256Url :: String -> String -> String -> String
   getSha256Url =
     dmgUrl: oldVersion: newVersion:
-    (builtins.replaceStrings [ oldVersion ] [ newVersion ] dmgUrl) + ".sha256";
+    (builtins.replaceStrings
+      [ oldVersion ]
+      [ newVersion ]
+      dmgUrl
+    )
+    + ".sha256";
 
 in
 {

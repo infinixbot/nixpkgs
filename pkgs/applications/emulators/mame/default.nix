@@ -40,7 +40,11 @@ in
 stdenv.mkDerivation rec {
   pname = "mame";
   version = "0.269";
-  srcVersion = builtins.replaceStrings [ "." ] [ "" ] version;
+  srcVersion =
+    builtins.replaceStrings
+      [ "." ]
+      [ "" ]
+      version;
 
   src = fetchFromGitHub {
     owner = "mamedev";
@@ -95,13 +99,7 @@ stdenv.mkDerivation rec {
       sqlite
       qtbase
     ]
-    ++ lib.optionals stdenv.isLinux [
-      alsa-lib
-      libpulseaudio
-      libXinerama
-      libXi
-      fontconfig
-    ]
+    ++ lib.optionals stdenv.isLinux [ alsa-lib libpulseaudio libXinerama libXi fontconfig ]
     ++ lib.optionals stdenv.isDarwin [ libpcap CoreAudioKit ForceFeedback ];
 
   nativeBuildInputs = [

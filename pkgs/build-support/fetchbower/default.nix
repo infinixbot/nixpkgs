@@ -14,7 +14,12 @@ let
     in
     ver;
 
-  cleanName = name: lib.replaceStrings [ "/" ":" ] [ "-" "-" ] name;
+  cleanName =
+    name:
+    lib.replaceStrings
+      [ "/" ":" ]
+      [ "-" "-" ]
+      name;
 
   fetchbower =
     name: version: target: outputHash:

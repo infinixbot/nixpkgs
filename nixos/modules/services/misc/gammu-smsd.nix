@@ -110,15 +110,7 @@ in
         };
 
         format = lib.mkOption {
-          type = lib.types.enum [
-            "nothing"
-            "text"
-            "textall"
-            "textalldate"
-            "errors"
-            "errorsdate"
-            "binary"
-          ];
+          type = lib.types.enum [ "nothing" "text" "textall" "textalldate" "errors" "errorsdate" "binary" ];
           default = "errors";
           description = "Determines what will be logged to the LogFile";
         };

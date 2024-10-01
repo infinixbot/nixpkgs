@@ -41,7 +41,11 @@ let
       outputHash,
     }:
     let
-      dotless_version = builtins.replaceStrings [ "." ] [ "" ] version;
+      dotless_version =
+        builtins.replaceStrings
+          [ "." ]
+          [ "" ]
+          version;
     in
     stdenv.mkDerivation rec {
       name = "tex-gyre-${variant}-math-${version}";

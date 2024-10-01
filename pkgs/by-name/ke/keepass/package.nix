@@ -71,11 +71,18 @@ stdenv.mkDerivation (finalAttrs: {
       loadTemplate = readFile ./keepass-plugins-load.patch;
       loads = concatStrings (
         map (
-          p: replaceStrings [ "$PATH$" ] [ (unsafeDiscardStringContext (toString p)) ] loadTemplate
+          p:
+          replaceStrings
+            [ "$PATH$" ]
+            [ (unsafeDiscardStringContext (toString p)) ]
+            loadTemplate
         ) plugins
       );
     in
-    replaceStrings [ "$OUTPUT_LC$" "$DO_LOADS$" ] [ outputLc loads ] patchTemplate;
+    replaceStrings
+      [ "$OUTPUT_LC$" "$DO_LOADS$" ]
+      [ outputLc loads ]
+      patchTemplate;
 
   passAsFile = [ "pluginLoadPathsPatch" ];
   postPatch = ''

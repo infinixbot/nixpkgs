@@ -114,15 +114,7 @@ let
       );
 
       libs =
-        lib.optionals stdenv.isLinux [
-          udev
-          libva
-          mesa
-          libnotify
-          xorg.libXScrnSaver
-          cups
-          pciutils
-        ]
+        lib.optionals stdenv.isLinux [ udev libva mesa libnotify xorg.libXScrnSaver cups pciutils ]
         ++ lib.optional pipewireSupport pipewire
         ++ lib.optional ffmpegSupport ffmpeg
         ++ lib.optional gssSupport libkrb5

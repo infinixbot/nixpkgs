@@ -43,17 +43,7 @@ stdenvNoCC.mkDerivation rec {
     patchShebangs $out/bin/xvfb-run
     wrapProgram $out/bin/xvfb-run \
       --set-default FONTCONFIG_FILE "${fontsConf}" \
-      --prefix PATH : ${
-        lib.makeBinPath [
-          getopt
-          xorg.xvfb
-          xauth
-          which
-          util-linux
-          gawk
-          coreutils
-        ]
-      }
+      --prefix PATH : ${lib.makeBinPath [ getopt xorg.xvfb xauth which util-linux gawk coreutils ]}
   '';
 
   doInstallCheck = true;

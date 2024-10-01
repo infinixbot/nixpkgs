@@ -33,7 +33,11 @@ let
   targetPrefix = optionalString (targetPlatform != hostPlatform) (targetPlatform.config + "-");
 
   # See description in cc-wrapper.
-  suffixSalt = replaceStrings [ "-" "." ] [ "_" "_" ] targetPlatform.config;
+  suffixSalt =
+    replaceStrings
+      [ "-" "." ]
+      [ "_" "_" ]
+      targetPlatform.config;
 
   wrapperBinName = "${targetPrefix}${baseBinName}";
 in

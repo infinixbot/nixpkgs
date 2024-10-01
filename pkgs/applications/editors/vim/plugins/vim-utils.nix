@@ -331,7 +331,10 @@ rec {
           # Examples: "my-$exe", "$exe-with-plugins", "\${exe/vim/v1m}"
           executableName ?
             if lib.hasInfix "vim" name then
-              lib.replaceStrings [ "vim" ] [ "$exe" ] name
+              lib.replaceStrings
+                [ "vim" ]
+                [ "$exe" ]
+                name
             else
               "\${exe/vim/${lib.escapeShellArg name}}",
           # A custom vimrc configuration, treated as an argument to vimrcContent (see the documentation in this file).

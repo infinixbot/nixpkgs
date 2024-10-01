@@ -86,7 +86,12 @@ mkDerivation rec {
   src = fetchFromGitHub {
     owner = "qgis";
     repo = "QGIS";
-    rev = "final-${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "final-${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     hash = "sha256-VNgUMEA7VKZXsLG1ZYUIlYvjwRrH8LsliGiVRMnXOM0=";
   };
 

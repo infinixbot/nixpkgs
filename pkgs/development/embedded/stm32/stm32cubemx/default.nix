@@ -18,7 +18,10 @@ let
 
     src = fetchzip {
       url = "https://sw-center.st.com/packs/resource/library/stm32cube_mx_v${
-        builtins.replaceStrings [ "." ] [ "" ] version
+        builtins.replaceStrings
+          [ "." ]
+          [ "" ]
+          version
       }-lin.zip";
       hash = "sha256-By9T43GLM1J63TkRi3kl05h1RflBorU1QHgYOrXQ9N0=";
       stripRoot = false;

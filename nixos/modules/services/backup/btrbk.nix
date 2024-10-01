@@ -196,18 +196,7 @@ in
                         Compress the btrfs send stream before transferring it from/to remote locations using a
                         compression command.
                       '';
-                      type = types.enum [
-                        "gzip"
-                        "pigz"
-                        "bzip2"
-                        "pbzip2"
-                        "bzip3"
-                        "xz"
-                        "lzo"
-                        "lz4"
-                        "zstd"
-                        "no"
-                      ];
+                      type = types.enum [ "gzip" "pigz" "bzip2" "pbzip2" "bzip3" "xz" "lzo" "lz4" "zstd" "no" ];
                       default = "no";
                     };
                   };

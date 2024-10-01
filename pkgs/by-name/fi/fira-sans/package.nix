@@ -10,7 +10,10 @@ stdenvNoCC.mkDerivation rec {
 
   src = fetchzip {
     url = "https://bboxtype.com/downloads/Fira/Download_Folder_FiraSans_${
-      lib.replaceStrings [ "." ] [ "" ] version
+      lib.replaceStrings
+        [ "." ]
+        [ "" ]
+        version
     }.zip";
     hash = "sha256-WBt3oqPK7ACqMhilYkyFx9Ek2ugwdCDFZN+8HLRnGRs";
     stripRoot = false;

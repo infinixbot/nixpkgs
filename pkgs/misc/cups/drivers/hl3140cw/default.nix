@@ -68,15 +68,7 @@ stdenv.mkDerivation {
       --prefix PATH ":" ${lib.makeBinPath [ gnused coreutils gawk ]}
 
     wrapProgram $out/opt/brother/Printers/hl3140cw/lpd/filterhl3140cw \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          ghostscript
-          a2ps
-          file
-          gnused
-          coreutils
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ ghostscript a2ps file gnused coreutils ]}
 
 
     dpkg-deb -x ${cupsdeb} $out

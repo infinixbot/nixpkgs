@@ -96,7 +96,14 @@ let
       true
     else if name == "false" then
       false
-    else if (elem name (attrByPath [ "flags" ] [ ] attrSet)) then
+    else if
+      (elem name (
+        attrByPath
+          [ "flags" ]
+          [ ]
+          attrSet
+      ))
+    then
       true
     else
       attrByPath [ name ] false attrSet;
@@ -210,7 +217,9 @@ let
           else
             work (tail list ++ operator x) ([ key ] ++ doneKeys) ([ x ] ++ result);
     in
-    work startSet [ ] [ ];
+    work startSet
+      [ ]
+      [ ];
 
   innerModifySumArgs =
     f: x: a: b:

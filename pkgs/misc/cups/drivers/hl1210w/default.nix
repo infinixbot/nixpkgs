@@ -58,15 +58,7 @@ stdenv.mkDerivation {
     wrapProgram $out/opt/brother/Printers/HL1210W/lpd/psconvert2 \
       --prefix PATH ":" ${lib.makeBinPath [ gnused coreutils gawk ]}
     wrapProgram $out/opt/brother/Printers/HL1210W/lpd/filter_HL1210W \
-      --prefix PATH ":" ${
-        lib.makeBinPath [
-          ghostscript
-          a2ps
-          file
-          gnused
-          coreutils
-        ]
-      }
+      --prefix PATH ":" ${lib.makeBinPath [ ghostscript a2ps file gnused coreutils ]}
 
     # install cups
     dpkg-deb -x ${cupsdeb} $out

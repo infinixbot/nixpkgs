@@ -46,13 +46,7 @@ let
   archSha256 = if stdenv.hostPlatform.system == "i686-linux" then x32sha256 else x64sha256;
   arch = if stdenv.hostPlatform.system == "i686-linux" then "x32" else "x64";
 
-  libPath = lib.makeLibraryPath [
-    xorg.libX11
-    glib
-    gtk3
-    cairo
-    pango
-  ];
+  libPath = lib.makeLibraryPath [ xorg.libX11 glib gtk3 cairo pango ];
   redirects = [ "/usr/bin/pkexec=${pkexecPath}" ];
 
   binaryPackage = stdenv.mkDerivation {

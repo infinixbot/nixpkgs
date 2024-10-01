@@ -17,7 +17,12 @@ mkDerivation rec {
   src = fetchFromGitHub {
     owner = "jamulussoftware";
     repo = "jamulus";
-    rev = "r${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "r${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     hash = "sha256-uqBre1Hcdmmifm/gii3MlP9LiAovQVsAaPZTmVm1nnM=";
   };
 

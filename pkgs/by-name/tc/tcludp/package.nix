@@ -10,7 +10,13 @@ tcl.mkTclDerivation rec {
 
   src = fetchfossil {
     url = "https://core.tcl-lang.org/tcludp";
-    rev = "ver_" + lib.replaceStrings [ "." ] [ "_" ] version;
+    rev =
+      "ver_"
+      +
+        lib.replaceStrings
+          [ "." ]
+          [ "_" ]
+          version;
     hash = "sha256-PckGwUqL2r5KJEet8sS4U504G63flX84EkQEkQdMifY=";
   };
 

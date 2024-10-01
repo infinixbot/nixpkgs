@@ -97,14 +97,7 @@ stdenv.mkDerivation rec {
 
   pythonPath =
     with python3Packages;
-    requiredPythonModules [
-      pycups
-      pycurl
-      dbus-python
-      pygobject3
-      pycairo
-      pysmbc
-    ];
+    requiredPythonModules [ pycups pycurl dbus-python pygobject3 pycairo pysmbc ];
 
   configureFlags = [
     "--with-udev-rules"

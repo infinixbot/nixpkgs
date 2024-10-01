@@ -318,11 +318,9 @@ in
   };
 
   imports = [
-    (mkRenamedOptionModule [ "users" "ldap" "bind" "password" ] [
-      "users"
-      "ldap"
-      "bind"
-      "passwordFile"
-    ])
+    (mkRenamedOptionModule
+      [ "users" "ldap" "bind" "password" ]
+      [ "users" "ldap" "bind" "passwordFile" ]
+    )
   ];
 }

@@ -100,7 +100,10 @@ let
 
     };
 
-  d2u = lib.replaceStrings [ "." ] [ "_" ];
+  d2u =
+    lib.replaceStrings
+      [ "." ]
+      [ "_" ];
 
 in
 {

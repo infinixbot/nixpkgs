@@ -350,7 +350,15 @@ in
         ];
         # Helper functions for rclone remotes
         rcloneRemoteName = builtins.elemAt (lib.splitString ":" backup.repository) 1;
-        rcloneAttrToOpt = v: "RCLONE_" + lib.toUpper (builtins.replaceStrings [ "-" ] [ "_" ] v);
+        rcloneAttrToOpt =
+          v:
+          "RCLONE_"
+          + lib.toUpper (
+            builtins.replaceStrings
+              [ "-" ]
+              [ "_" ]
+              v
+          );
         rcloneAttrToConf = v: "RCLONE_CONFIG_" + lib.toUpper (rcloneRemoteName + "_" + v);
         toRcloneVal = v: if lib.isBool v then lib.boolToString v else v;
       in

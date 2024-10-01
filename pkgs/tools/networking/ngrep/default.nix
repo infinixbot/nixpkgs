@@ -15,7 +15,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "jpr5";
     repo = "ngrep";
-    rev = "V${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "V${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     sha256 = "1x2fyd7wdqlj1r76ilal06cl2wmbz0ws6i3ys204sbjh1cj6dcl7";
   };
 

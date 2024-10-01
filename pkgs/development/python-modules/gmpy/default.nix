@@ -21,7 +21,12 @@ buildPythonPackage rec {
   src = fetchFromGitHub {
     owner = "aleaxit";
     repo = "gmpy";
-    rev = "refs/tags/gmpy_${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "refs/tags/gmpy_${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     hash = "sha256-kMidOjhKJlDRu2qaiq9c+XcwD1tNAoPhRTvvGcOJe8I=";
   };
 

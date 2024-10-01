@@ -261,7 +261,10 @@ let
 
         # grammars from tree-sitter.builtGrammars
         (lib.removePrefix "tree-sitter-")
-        (lib.replaceStrings [ "-" ] [ "_" ])
+        (lib.replaceStrings
+          [ "-" ]
+          [ "_" ]
+        )
       ];
     in
 

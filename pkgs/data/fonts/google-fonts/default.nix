@@ -48,7 +48,13 @@ stdenvNoCC.mkDerivation {
   # FamilyName-StyleName.ttf, FamilyName[param1,param2,...].ttf, and
   # FamilyName.ttf. This installs all fonts if fonts is empty and otherwise
   # only the specified fonts by FamilyName.
-  fonts = map (font: builtins.replaceStrings [ " " ] [ "" ] font) fonts;
+  fonts = map (
+    font:
+    builtins.replaceStrings
+      [ " " ]
+      [ "" ]
+      font
+  ) fonts;
   installPhase =
     ''
       adobeBlankDest=$adobeBlank/share/fonts/truetype

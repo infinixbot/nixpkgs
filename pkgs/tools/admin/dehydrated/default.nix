@@ -40,16 +40,7 @@ stdenv.mkDerivation rec {
     mkdir -p $out/bin
     cp -a dehydrated $out/bin
     wrapProgram "$out/bin/dehydrated" --prefix PATH : "${
-      lib.makeBinPath [
-        openssl
-        coreutils
-        gnused
-        gnugrep
-        diffutils
-        curl
-        gawk
-        hexdump
-      ]
+      lib.makeBinPath [ openssl coreutils gnused gnugrep diffutils curl gawk hexdump ]
     }"
   '';
 

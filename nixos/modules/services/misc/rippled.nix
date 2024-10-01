@@ -110,15 +110,7 @@ let
 
         protocol = lib.mkOption {
           description = "Protocols expose by rippled.";
-          type = lib.types.listOf (
-            lib.types.enum [
-              "http"
-              "https"
-              "ws"
-              "wss"
-              "peer"
-            ]
-          );
+          type = lib.types.listOf (lib.types.enum [ "http" "https" "ws" "wss" "peer" ]);
         };
 
         user = lib.mkOption {
@@ -285,13 +277,7 @@ in
           Rippled size of the node you are running.
           "tiny", "small", "medium", "large", and "huge"
         '';
-        type = lib.types.enum [
-          "tiny"
-          "small"
-          "medium"
-          "large"
-          "huge"
-        ];
+        type = lib.types.enum [ "tiny" "small" "medium" "large" "huge" ];
         default = "small";
       };
 

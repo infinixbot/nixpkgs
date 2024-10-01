@@ -191,7 +191,12 @@ let
 
         passthru.tests =
           let
-            testVersion = "mariadb_${builtins.replaceStrings [ "." ] [ "" ] (lib.versions.majorMinor version)}";
+            testVersion = "mariadb_${
+              builtins.replaceStrings
+                [ "." ]
+                [ "" ]
+                (lib.versions.majorMinor version)
+            }";
           in
           {
             mariadb-galera-rsync = nixosTests.mariadb-galera.${testVersion};

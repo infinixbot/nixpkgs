@@ -48,7 +48,12 @@ stdenv.mkDerivation rec {
   # append default installPhase with library install for haxe
   postInstall =
     let
-      haxelibPath = "$out/lib/haxe/hashlink/${lib.replaceStrings [ "." ] [ "," ] version}";
+      haxelibPath = "$out/lib/haxe/hashlink/${
+        lib.replaceStrings
+          [ "." ]
+          [ "," ]
+          version
+      }";
     in
     ''
       mkdir -p "${haxelibPath}"

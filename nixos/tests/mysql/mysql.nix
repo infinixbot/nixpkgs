@@ -179,7 +179,11 @@ lib.mapAttrs (
   _: package:
   makeMySQLTest {
     inherit package;
-    name = builtins.replaceStrings [ "-" ] [ "_" ] package.pname;
+    name =
+      builtins.replaceStrings
+        [ "-" ]
+        [ "_" ]
+        package.pname;
     hasMroonga = false;
     useSocketAuth = false;
   }

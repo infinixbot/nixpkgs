@@ -69,13 +69,7 @@ stdenv.mkDerivation rec {
     libCairo=$out/eclipse/libcairo-swt.so
     patchelf --set-interpreter $interpreter $out/eclipse/eclipse
     [ -f $libCairo ] && patchelf --set-rpath ${
-      lib.makeLibraryPath [
-        freetype
-        fontconfig
-        libX11
-        libXrender
-        zlib
-      ]
+      lib.makeLibraryPath [ freetype fontconfig libX11 libXrender zlib ]
     } $libCairo
 
     # Create wrapper script.  Pass -configuration to store

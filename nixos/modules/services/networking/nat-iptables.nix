@@ -85,7 +85,10 @@ let
               if m == null then
                 throw "bad ip:ports `${fwd.destination}'"
               else
-                builtins.replaceStrings [ "-" ] [ ":" ] (elemAt m 1);
+                builtins.replaceStrings
+                  [ "-" ]
+                  [ ":" ]
+                  (elemAt m 1);
           in
           ''
             # Allow connections to ${loopbackip}:${toString fwd.sourcePort} from the host itself

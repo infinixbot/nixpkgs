@@ -15,7 +15,11 @@ in
 stdenv.mkDerivation rec {
   pname = "fmod";
   version = "4.44.64";
-  shortVersion = builtins.replaceStrings [ "." ] [ "" ] version;
+  shortVersion =
+    builtins.replaceStrings
+      [ "." ]
+      [ "" ]
+      version;
 
   src = fetchurl (
     if stdenv.isLinux then

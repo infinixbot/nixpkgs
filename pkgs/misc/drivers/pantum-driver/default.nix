@@ -25,7 +25,10 @@ stdenv.mkDerivation rec {
 
   src = fetchzip {
     url = "https://github.com/ArticExploit/pantum-driver/releases/download/${version}/Pantum.Ubuntu.Driver.V${
-      builtins.replaceStrings [ "." ] [ "_" ] version
+      builtins.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
     }.zip";
     hash = "sha256-TUk6CTnWlSvyG8MOpDRhg/eblAo6X/MDUFOiWuOuro0=";
   };

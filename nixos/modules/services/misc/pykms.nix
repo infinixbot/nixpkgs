@@ -51,14 +51,7 @@ in
       };
 
       logLevel = mkOption {
-        type = types.enum [
-          "CRITICAL"
-          "ERROR"
-          "WARNING"
-          "INFO"
-          "DEBUG"
-          "MININFO"
-        ];
+        type = types.enum [ "CRITICAL" "ERROR" "WARNING" "INFO" "DEBUG" "MININFO" ];
         default = "INFO";
         description = "How much to log";
       };

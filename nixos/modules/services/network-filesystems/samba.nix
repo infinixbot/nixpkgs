@@ -44,34 +44,27 @@ in
       "samba"
       "extraConfig"
     ] "Use services.samba.settings instead.")
-    (lib.mkRenamedOptionModule [ "services" "samba" "invalidUsers" ] [
-      "services"
-      "samba"
-      "settings"
-      "global"
-      "invalid users"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "samba" "securityType" ] [
-      "services"
-      "samba"
-      "settings"
-      "global"
-      "security"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "samba" "shares" ] [ "services" "samba" "settings" ])
+    (lib.mkRenamedOptionModule
+      [ "services" "samba" "invalidUsers" ]
+      [ "services" "samba" "settings" "global" "invalid users" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "samba" "securityType" ]
+      [ "services" "samba" "settings" "global" "security" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "samba" "shares" ]
+      [ "services" "samba" "settings" ]
+    )
 
-    (lib.mkRenamedOptionModule [ "services" "samba" "enableWinbindd" ] [
-      "services"
-      "samba"
-      "winbindd"
-      "enable"
-    ])
-    (lib.mkRenamedOptionModule [ "services" "samba" "enableNmbd" ] [
-      "services"
-      "samba"
-      "nmbd"
-      "enable"
-    ])
+    (lib.mkRenamedOptionModule
+      [ "services" "samba" "enableWinbindd" ]
+      [ "services" "samba" "winbindd" "enable" ]
+    )
+    (lib.mkRenamedOptionModule
+      [ "services" "samba" "enableNmbd" ]
+      [ "services" "samba" "nmbd" "enable" ]
+    )
   ];
 
   ###### interface

@@ -24,7 +24,12 @@ buildPythonPackage rec {
   src = fetchFromGitHub {
     owner = "fabioz";
     repo = "PyDev.Debugger";
-    rev = "pydev_debugger_${lib.replaceStrings [ "." ] [ "_" ] version}";
+    rev = "pydev_debugger_${
+      lib.replaceStrings
+        [ "." ]
+        [ "_" ]
+        version
+    }";
     hash = "sha256-aylmLN7lVUza2lt2K48rJsx3XatXPgPjcmPZ05raLX0=";
   };
 

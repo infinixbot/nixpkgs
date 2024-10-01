@@ -25,7 +25,10 @@ buildLinux (
       if (builtins.match "[^.]*[.][^.]*-.*" version) == null then
         version
       else
-        lib.replaceStrings [ "-" ] [ ".0-" ] version;
+        lib.replaceStrings
+          [ "-" ]
+          [ ".0-" ]
+          version;
 
     src = fetchurl {
       url = "mirror://kernel/linux/kernel/v5.x/linux-${kversion}.tar.xz";

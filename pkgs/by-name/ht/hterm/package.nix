@@ -17,7 +17,11 @@ stdenv.mkDerivation (finalAttrs: {
 
   src =
     let
-      versionWithoutDots = builtins.replaceStrings [ "." ] [ "" ] finalAttrs.version;
+      versionWithoutDots =
+        builtins.replaceStrings
+          [ "." ]
+          [ "" ]
+          finalAttrs.version;
     in
     if stdenv.targetPlatform.is64bit then
       fetchurl {

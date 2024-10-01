@@ -26,7 +26,12 @@ stdenv.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "openMSX";
     repo = "openMSX";
-    rev = "RELEASE_${builtins.replaceStrings [ "." ] [ "_" ] finalAttrs.version}";
+    rev = "RELEASE_${
+      builtins.replaceStrings
+        [ "." ]
+        [ "_" ]
+        finalAttrs.version
+    }";
     hash = "sha256-5ULljLmEDGFp32rnrXKLfL6P3ad2STJUNngBuWlRCbc=";
     fetchSubmodules = true;
   };

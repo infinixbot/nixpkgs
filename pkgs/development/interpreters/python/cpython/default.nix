@@ -312,7 +312,13 @@ let
           pythonAbi = nixpkgsPythonAbiMappings.${parsed.abi.name} or parsed.abi.name;
         in
         # Python <3.11 doesn't distinguish musl and glibc and always prefixes with "gnu"
-        if versionOlder version "3.11" then replaceStrings [ "musl" ] [ "gnu" ] pythonAbi else pythonAbi;
+        if versionOlder version "3.11" then
+          replaceStrings
+            [ "musl" ]
+            [ "gnu" ]
+            pythonAbi
+        else
+          pythonAbi;
 
       multiarch =
         if isDarwin then
@@ -798,7 +804,11 @@ stdenv.mkDerivation (finalAttrs: {
     changelog =
       let
         majorMinor = versions.majorMinor version;
-        dashedVersion = replaceStrings [ "." "a" "b" ] [ "-" "-alpha-" "-beta-" ] version;
+        dashedVersion =
+          replaceStrings
+            [ "." "a" "b" ]
+            [ "-" "-alpha-" "-beta-" ]
+            version;
       in
       if sourceVersion.suffix == "" then
         "https://docs.python.org/release/${version}/whatsnew/changelog.html"
